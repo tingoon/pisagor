@@ -1,0 +1,35 @@
+{
+  "description": "Shared TypeScript compiler configurations for the Pisagor monorepo.",
+  "devDependencies": {
+    "@types/react": "catalog:"
+  },
+  "exports": {
+    "./bun": "./bun/tsconfig.json",
+    "./node": "./node/tsconfig.json",
+    "./react": "./react/tsconfig.json",
+    "./react-stories": "./react-stories/tsconfig.json",
+    "./react-vite": "./react-vite/tsconfig.json",
+    "./vue": "./vue/tsconfig.json",
+    "./vue-stories": "./vue-stories/tsconfig.json",
+    "./vue-vite": "./vue-vite/tsconfig.json"
+  },
+  "files": [
+    "bun",
+    "node",
+    "react",
+    "react-vite",
+    "react-stories",
+    "vue",
+    "vue-stories",
+    "vue-vite"
+  ],
+  "license": "MIT",
+  "name": "@pisagor/tsconfig",
+  "private": true,
+  "repository": {
+    "directory": "packages/tsconfig",
+    "type": "git",
+    "url": "git+https://github.com/tingoon/pisagor.git"
+  },
+  "version": "0.0.0"
+}

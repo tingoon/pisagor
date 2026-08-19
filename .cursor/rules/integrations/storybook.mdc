@@ -1,0 +1,200 @@
+---
+description: Storybook story conventions for package components
+globs: packages/react/**/*.stories.tsx,packages/react-form/**/*.stories.tsx,packages/react-blocks/**/*.stories.tsx,packages/vue/**/*.stories.ts,apps/react/**/*.stories.tsx,apps/vue/**/*.stories.ts
+alwaysApply: false
+---
+
+# Storybook
+
+**Scope:** React stories run in `apps/react`; Vue stories in `apps/vue`. Co-locate `<name>.stories.tsx` (React) or `<name>.stories.ts` (Vue) in public shared package source. React component rules: [React Component Patterns](react-component.mdc).
+
+Reference: [Storybook Docs](https://storybook.js.org/docs).
+
+Storybook **10**, CSF. React uses `@storybook/react-vite` (`.stories.tsx`); Vue uses `@storybook/vue3-vite` (`.stories.ts`).
+
+## React setup
+
+- **Preview:** `import preview from "#/react/preview"` — `#/react/*` is configured in `apps/react/tsconfig.json`. Do not use `@/storybook/…`.
+- **Meta:** `const meta = preview.meta({ … })` — no default export; stories via `meta.story({ … })`.
+- **Global decorator:** `apps/react/.storybook/decorators/app-decorator.tsx` (theme, app `Provider`, padding). Per-story decorators only when a story needs extra context (e.g. mounting a portal host or `<Toaster />`).
+- **Autodocs:** enable in `apps/react/.storybook/preview.tsx` (`tags: ["autodocs"]`) — do not disable per file.
+
+### React imports
+
+| What | Path |
+| ---- | ---- |
+| Preview | `#/react/preview` |
+| UI components | `@pisagor/react/<name>` |
+| Hooks | `@pisagor/react-hooks` |
+| Utils | `@pisagor/utils` |
+| Form module under test | `@pisagor/react-form/tanstack` (hook) or `@pisagor/react-form` / relative `./<name>` (field under test) |
+| Block under test | `@pisagor/react-blocks/<name>` |
+| Storybook config | `apps/react/.storybook/` |
+| Global decorator | `apps/react/.storybook/decorators/app-decorator.tsx` |
+| Recipes | `apps/react/src/recipes/<group>/` — one `<variant>.tsx` per recipe, one `<group>.stories.tsx` |
+
+Use `@pisagor/react/<name>` for every UI import in stories (including the component under test) so stories stay valid if moved out of the component folder.
+
+`@pisagor/react`, `@pisagor/react-hooks`, and `@pisagor/utils` resolve via workspace package exports (same as apps). Runner-only alias `#/react/*` lives in `apps/react/tsconfig.json`, each package's `tsconfig.json`, and `apps/react/vite.config.ts`; Vite reads it via `resolve.alias` and `tsconfigPaths`. Story files are type-checked by `react` and the owning package `tsconfig.json`:
+
+| Consumer | Extends |
+| -------- | ------- |
+| `packages/react`, `packages/react-form`, `packages/react-blocks` | [`@pisagor/tsconfig/react-stories`](../../../packages/tsconfig/react-stories/tsconfig.json) |
+| `apps/react` | [`@pisagor/tsconfig/react-vite`](../../../packages/tsconfig/react-vite/tsconfig.json) |
+| `packages/vue` | [`@pisagor/tsconfig/vue-stories`](../../../packages/tsconfig/vue-stories/tsconfig.json) |
+| `apps/vue` | [`@pisagor/tsconfig/vue-vite`](../../../packages/tsconfig/vue-vite/tsconfig.json) |
+
+## Vue setup
+
+- Stories: CSF default export `meta` + named story exports (`.stories.ts`).
+- Preview / decorators: `apps/vue/.storybook/`.
+- Import components as `@pisagor/vue/<name>`.
+
+## Meta
+
+**Required:** `component`, `title`, `parameters.docs.description.component`.
+
+**Do not set on meta:** shared `args`, `argTypes` — Controls infers from component types.
+
+**Compound components:** declare `subcomponents` on meta — map each exported part (`Trigger`, `Content`, `Item`, …).
+
+**Title:** `Components/<Category>/<Component Name>` — use an existing category when possible:
+
+`Actions`, `Data Display`, `Feedback`, `Forms`, `Layout`, `Media`, `Marketing`, `Navigation`, `Overlay`, `Utilities`
+
+Sub-modules may nest under the parent: `Components/Data Display/<Parent>/<Sub Module>`.
+
+**Component description:** one or two plain sentences — what the component does for the user. No prop names, API jargon, or alias lists. A short cross-reference to a sibling component is OK when it prevents confusion (e.g. Menu vs Dropdown Menu).
+
+**Docs metadata (`@pisagor/react` stories):** set on `parameters.docs` — not on `tags`:
+
+```tsx
+parameters: {
+  docs: {
+    aliases: ["banner", "callout"], // optional; kebab-case; omit when none
+    api: "compound-shorthand", // closed | compound | compound-shorthand
+    description: {
+      component: "Draws attention to a short message without blocking the rest of the interface.",
+    },
+    taxonomy: "standard", // primitive | standard | pattern
+  },
+},
+```
+
+- **`api`** — required on `@pisagor/react` meta; public API model; rendered as a badge on the custom docs page ([`component-docs-page.tsx`](../../../apps/react/src/components/component-docs-page.tsx)). Do not repeat in `description.component`.
+- **`taxonomy`** — required on `@pisagor/react` meta; rendered as a badge on the custom docs page.
+- **`aliases`** — optional alternative names for discovery; single source — do not repeat in `description`.
+- **`checklist`** — optional **per-component** map (`accessibleColor` | `definedBehaviors` | `definedOptions` | `interactiveStates` | `keyboardInteractions` | `platformScales`). Omit the whole key when nothing is supported (no empty `{}`, no explicit `false`). Only set `true`, `"partial"`, or `"not-planned"`. Do not checklist package-level concerns (tokens, light/dark, Provider i18n/RTL). Rendered after Controls.
+- Do not reference third-party design systems or libraries in descriptions or aliases.
+
+## Tags
+
+Use `tags` only for **status** — not for taxonomy, aliases, or package scope. Category and package live in `title` only (`Components/…`, `Forms/…`, `Recipes/…`).
+
+```tsx
+const meta = preview.meta({
+  title: "Components/Actions/Button",
+  parameters: {
+    docs: { api: "closed", taxonomy: "primitive", description: { component: "…" } },
+  },
+});
+```
+
+**API (`parameters.docs.api`, `@pisagor/react` only):**
+
+| Value | Meaning |
+| --- | ------- |
+| `closed` | Single props surface; no subpart composition |
+| `compound` | `Foo.Root` + subparts; composition via compound parts |
+| `compound-shorthand` | Shorthand default export + `Foo.Root` for advanced composition |
+
+**Taxonomy (`parameters.docs.taxonomy`, `@pisagor/react` only):**
+
+| Value | Meaning |
+| --- | ------- |
+| `primitive` | Single control or minimal styled element |
+| `standard` | One UI concept (may be compound or closed) |
+| `pattern` | Multi-component UX orchestration |
+
+**Aliases (`parameters.docs.aliases`, `@pisagor/react` only):**
+
+- Optional; kebab-case strings (`stepper`, `command-palette`, `banner`).
+- 0–4 meaningful aliases per component; omit when the canonical name is enough.
+- Do not duplicate aliases in `description.component`.
+
+**Status tags (optional):**
+
+| Tag | TSDoc |
+| --- | ----- |
+| `experimental` | `@beta` on the component export |
+| `deprecated` | `@deprecated` on the component export |
+
+**Autodocs:** enabled globally in [`preview.tsx`](../../../apps/react/.storybook/preview.tsx) — do not set per story.
+
+New `@pisagor/react` stories: set `title`, `parameters.docs.api`, `parameters.docs.taxonomy`, and `description.component`; add `aliases` when helpful. `@pisagor/react-form` stories use `Forms/…` titles; `@pisagor/react-blocks` stories use `Blocks/…` titles; recipes use `Recipes/…` titles. Copy a sibling story when unsure.
+
+Type-check for custom docs fields is enabled via [`docs-addon.ts`](../../../apps/react/.storybook/addons/docs-addon.ts) in preview.
+
+## File layout
+
+1. **Imports** — `preview`, component(s), icons/helpers.
+2. **Meta** — single `preview.meta({ … })` block.
+3. **Stories** — exported in [story order](#story-order) below.
+4. **Fixtures** — shared sample data at the **bottom** (lowercase const names, e.g. `users`).
+
+## Story order
+
+Skip groups that do not apply.
+
+| Order | Kind | Examples |
+| ----- | ---- | -------- |
+| 1 | **Default** | `Default` — minimal, standard use; **one instance only** |
+| 2 | **Visual variants** | `Sizes`, `Shapes`, `Variants` — one axis per story; grid in one `render` |
+| 3 | **Functional states** | `Disabled`, `Loading`, `Fallback`, `Invalid` — one concern per story |
+| 4 | **Composition** | `WithIcon`, `Nested`, `Group` — compound usage or integration with other components |
+| 5 | **Context** | `Controlled`, `Placements`, `CloseBehavior` — when they teach a real use case |
+| 6 | **`Compound`** (compound + shorthand only) | Last story — `Foo.Root` with subparts; shorthand stories come first |
+
+For components with both shorthand and compound APIs, export a final **`Compound`** story that demonstrates `Foo.Root` + subparts. Prefer shorthand in all other stories unless composition flexibility is required (`asChild`, custom markup).
+
+## Default
+
+- **Closed components:** pass props via `args` on the story (not on meta).
+- **Compound / overlay components:** use `render` with trigger + content; prefer `Trigger asChild` + `Button`.
+- **Omit default props** — do not pass values that match component defaults.
+- **One example** — no galleries or compositions in `Default`.
+
+```tsx
+export const Default = meta.story({
+  args: {
+    alt: "Elena Garcia",
+    fallback: "EG",
+    src: "https://randomuser.me/api/portraits/women/5.jpg",
+  },
+});
+```
+
+## Other stories
+
+- **One story = one idea** — gallery stories vary only the axis being shown.
+- **Prefer `args`** for a single instance; **`render`** for layout, hooks, or composition.
+- **Do not** add stories for escape-hatch props (`imageProps`, `*Props`) — Controls is enough.
+- **Do not** duplicate `Default` or mirror an existing story.
+- **Names:** PascalCase.
+- **Layout:** side-by-side demos use `gap-2` in flex wrappers (not `gap-4`). Do not add `max-w-*`, `mx-auto w-*`, or similar width constraints on the component under test — stories show components at their natural width (`w-full` where the component defines it).
+- **Fixtures:** inline when used once; shared const at file bottom when reused. No trivial render wrappers — use `render: () => …` directly.
+
+## Sample data
+
+- Dummy data only — no real people, GitHub URLs, or personal handles.
+- **Avatars:** `https://randomuser.me/api/portraits/{women|men}/{n}.jpg`
+- **Emails / URLs:** `@example.com`, `https://example.com/…`
+- **Other images:** `https://picsum.photos/seed/{label}/{w}/{h}`
+
+## Overlays
+
+For Dialog, Sheet, Drawer, Popover, Hover Card, etc.:
+
+- `Default` includes an interactive trigger (e.g. `<Dialog.Trigger asChild><Button … /></Dialog.Trigger>`).
+- Add stories for close behaviour, scroll, sides, or non-modal only when `Default` does not cover them.
+- Use `useState` / controlled `open` when the story is about controlled usage.

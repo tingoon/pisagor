@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "react": {
+      "url": "http://127.0.0.1:3001/mcp"
+    },
+    "vue": {
+      "url": "http://127.0.0.1:3002/mcp"
+    },
+    "ark-ui": {
+      "command": "bunx",
+      "args": ["@ark-ui/mcp"]
+    }
+  }
+}

@@ -1,0 +1,23 @@
+pre-commit:
+  parallel: true
+  commands:
+    biome:
+      run: bun run format {staged_files}
+      stage_fixed: true
+
+commit-msg:
+  commands:
+    commitlint:
+      run: bunx commitlint --edit {1}
+
+pre-push:
+  commands:
+    type-check:
+      run: turbo type-check
+
+post-merge:
+  commands:
+    install-dependencies:
+      files: git diff-tree -r --name-only --no-commit-id ORIG_HEAD HEAD
+      glob: [bun.lock]
+      run: bun install --frozen-lockfile

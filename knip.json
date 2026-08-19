@@ -1,0 +1,48 @@
+{
+  "$schema": "./node_modules/knip/schema.json",
+  "workspaces": {
+    "apps/react": {
+      "entry": [
+        ".storybook/**/*",
+        "src/**/*",
+        "../../packages/react-form/**/*.stories.@(ts|tsx)",
+        "../../packages/react/**/*.stories.@(ts|tsx)"
+      ]
+    },
+    "apps/vue": {
+      "entry": [".storybook/**/*", "src/**/*", "../../packages/vue/**/*.stories.@(ts|tsx)"]
+    },
+    "packages/react": {
+      "entry": ["src/**/*", "src/styles.css"],
+      "ignoreDependencies": ["@tailwindcss/typography", "tw-animate-css"],
+      "ignoreIssues": {
+        "src/**/*.stories.tsx": ["unresolved", "dependencies", "unlisted"]
+      }
+    },
+    "packages/react-form": {
+      "ignoreIssues": {
+        "src/**/*.stories.tsx": ["unresolved", "dependencies", "unlisted"]
+      }
+    },
+    "packages/styles": {
+      "entry": ["src/ui/*.ts"]
+    },
+    "packages/tsconfig": {
+      "ignoreDependencies": ["@types/react"]
+    },
+    "packages/vue": {
+      "entry": ["src/components/*/index.ts"],
+      "ignoreIssues": {
+        "src/**/*.stories.ts": ["unresolved", "dependencies", "unlisted"],
+        "src/components/**": ["exports", "types", "duplicates"],
+        "src/hooks/index.ts": ["files"],
+        "src/internal/**": ["exports", "types", "duplicates"]
+      }
+    },
+    "packages/vue-form": {
+      "ignoreIssues": {
+        "src/**/*.stories.ts": ["unresolved", "dependencies", "unlisted"]
+      }
+    }
+  }
+}

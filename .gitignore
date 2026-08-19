@@ -1,0 +1,28 @@
+# dependencies
+node_modules
+.bun/
+
+# build output
+out
+dist
+build
+*.tgz
+storybook-static/
+
+# environment & secrets
+.env
+.env.*
+*.pem
+!*.example
+
+# logs
+logs
+*.log
+
+# caches & tooling
+*.tsbuildinfo
+.turbo/
+
+# OS
+.DS_Store
+Thumbs.db

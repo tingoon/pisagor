@@ -1,0 +1,59 @@
+---
+description: Monorepo ops, Biome, Lefthook, Commitlint, Conventional Commits, Knip, and Bun standards
+alwaysApply: true
+---
+
+# Tooling
+
+Monorepo operations and project tools. Do not add parallel tooling without alignment.
+
+## Monorepo
+
+Workspaces: `apps/*`, `packages/*` (Bun + Turborepo).
+
+- Import workspace packages by package name (`@pisagor/react/button`, `@pisagor/react-form`), not relative paths across roots.
+- Run tasks: `turbo <task> --filter=<workspace>` from repo root; CI uses `bun turbo` ([CI](#verify)).
+- Workspace map: root [`AGENTS.md`](../../AGENTS.md). New workspaces: [AGENTS.md Style Guide](styleguides/agents.mdc).
+
+## Biome
+
+- `bunx biome ci` locally; `bun run format` to fix; Lefthook pre-commit on staged files.
+- Do not add ESLint, Prettier, or parallel formatters. Config: [`biome.json`](../../biome.json).
+
+## Lefthook
+
+- **pre-commit:** `bun run format {staged_files}`
+- **commit-msg:** Commitlint (conventional)
+- **pre-push:** `turbo type-check`
+
+## Commits
+
+- [Conventional Commits](https://www.conventionalcommits.org/); config: [`commitlint.config.ts`](../../commitlint.config.ts).
+- **Scope:** workspace name when scoped (`feat(storybook):`, `fix(react):`); omit for cross-cutting changes.
+- No `Co-authored-by:` / `Signed-off-by:` footers.
+
+## Knip
+
+- CI runs `bun run knip` after `turbo type-check` and `turbo test`.
+- Local: `turbo type-check` then `bun run knip`.
+- Update [`knip.json`](../../knip.json) when adding entry points. Knip entries follow package `exports`.
+
+### Agent workflow
+
+After **substantial edits** (multi-file refactors, import/export changes, new or removed modules, dependency changes, or cross-workspace work):
+
+1. Run `turbo type-check`, then `bun run knip` from the repo root.
+2. Fix every Knip issue in the changed scope — remove unused exports, files, and dependencies; adjust public barrels; update `knip.json` only when a new entry point or documented exception applies.
+3. Do not claim completion while Knip still reports violations in workspaces you touched.
+
+Skip Knip for narrow one-line or config-only fixes unless the user asks or the change affects imports, exports, or dependencies.
+
+## Bun
+
+- Bun only — no npm/yarn/pnpm. Version pinned in [`.devcontainer/Dockerfile`](../../.devcontainer/Dockerfile) and [CI](../../.github/workflows/ci.yml).
+
+## Verify
+
+**Local / agent:** `bunx biome ci`, `turbo type-check`; after substantial edits, also `bun run knip` (see [Knip → Agent workflow](#agent-workflow)).
+
+**CI** ([`.github/workflows/ci.yml`](../../.github/workflows/ci.yml)): `bun install --frozen-lockfile` → `bunx biome ci` → `bun turbo type-check` → `bun turbo test` → `bun run knip` → Storybook build. Add new steps at the end unless order matters. Secrets: [SECURITY.md](../../SECURITY.md).

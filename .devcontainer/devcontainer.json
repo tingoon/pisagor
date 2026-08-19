@@ -1,0 +1,35 @@
+{
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": ["biomejs.biome", "oven.bun-vscode", "bradlc.vscode-tailwindcss"],
+      "settings": {
+        "remote.autoForwardPorts": true
+      }
+    }
+  },
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:1": {
+      "username": "vscode"
+    }
+  },
+  "forwardPorts": [3001, 3002],
+  "portsAttributes": {
+    "3001": {
+      "label": "react",
+      "onAutoForward": "notify"
+    },
+    "3002": {
+      "label": "vue",
+      "onAutoForward": "notify"
+    }
+  },
+  "postCreateCommand": "bun install --frozen-lockfile",
+  "remoteEnv": {
+    "PATH": "${containerEnv:PATH}:${containerWorkspaceFolder}/node_modules/.bin"
+  },
+  "remoteUser": "vscode",
+  "runArgs": ["--name=pisagor", "--init"]
+}

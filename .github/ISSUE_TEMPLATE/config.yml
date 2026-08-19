@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security
+    url: https://github.com/tingoon/pisagor/security/advisories/new
+    about: Report a vulnerability privately
+  - name: Contributing
+    url: https://github.com/tingoon/pisagor/blob/main/CONTRIBUTING.md
+    about: How to set up and open a pull request

@@ -1,0 +1,6 @@
+{
+  "compilerOptions": {
+    "types": ["vite/client", "node"]
+  },
+  "extends": "../vue/tsconfig.json"
+}

@@ -1,0 +1,32 @@
+---
+description: TypeScript typing, style, and TSDoc patterns for .ts and .tsx files
+globs: **/*.ts,**/*.tsx
+alwaysApply: false
+---
+
+# TypeScript Style Guide
+
+Reference: [Google TypeScript Style Guide](https://google.github.io/styleguide/tsguide.html), [TSDoc](https://tsdoc.org/) ([standard tags](https://tsdoc.org/pages/spec/tag_kinds/)). Linting and formatting: [Tooling](../tooling.mdc).
+
+Follow the Google guide for formatting, typing, naming, imports/exports, and error handling. Below are project-specific rules and additions.
+
+**Out of scope:** React/TSX — [React Style Guide](react.mdc). UI component packages — [React Component Patterns](../integrations/react-component.mdc).
+
+---
+
+## Source file basics
+
+- **File names:** kebab-case (e.g. `query-parser.ts`, `api.ts`, `model.ts`).
+
+## Documentation (TSDoc)
+
+Follow the TSDoc spec for syntax and standard tags. Do not use JSDoc-only tags or syntax.
+
+- Summary in third person, present tense (e.g. "Returns…", "Computes…").
+- Document what and when to use; avoid restating the type in the summary.
+- Omit TSDoc for trivial getters/setters or when the type is self-explanatory.
+
+## Project-specific
+
+- **Enums:** Prefer **const objects** or **union types** over standard `enum` (better bundle size and tree-shaking).
+- **Modern features:** Use **`satisfies`** and **const type parameters** where they improve type safety or inference.

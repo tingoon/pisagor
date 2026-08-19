@@ -1,0 +1,58 @@
+---
+description: Core agent boundaries for the repository
+alwaysApply: true
+---
+
+# Core Boundaries
+
+## Instruction priority
+
+1. User chat instructions
+2. Invoked [`.cursor/commands/`](../commands/) workflow (overrides default boundaries for that task)
+3. Nearest `AGENTS.md` for workspace operational context
+4. [`.cursor/rules/`](.) — always apply; must not be contradicted in AGENTS bodies
+
+## Directory layout
+
+```text
+.cursor/
+├── rules/                  # Always-on policies (`.mdc`)
+│   ├── core.mdc            # Instruction priority, folder map, SSOT
+│   ├── tooling.mdc         # Monorepo ops, lint, hooks, CI, commits
+│   ├── styleguides/        # How code is written / read
+│   └── integrations/       # How this repo wires the stack
+└── commands/               # Slash / invoked workflows
+```
+
+Rule bodies live in [`.cursor/rules/`](.) as `.mdc` files.
+
+### Single source of truth (SSOT)
+
+Each topic has **one owner** file. Other files do not restate the rule — they link. If updating a rule would require editing two files, one of them is wrong.
+
+### Styleguides
+
+| File | Topic |
+| ---- | ----- |
+| [TypeScript](styleguides/typescript.mdc) | TypeScript, TSDoc |
+| [React](styleguides/react.mdc) | React component style |
+| [AGENTS.md](styleguides/agents.mdc) | `AGENTS.md` authoring |
+
+### Integrations
+
+| File | Topic |
+| ---- | ----- |
+| [React Component Patterns](integrations/react-component.mdc) | Shared component packages (ui, form, blocks) |
+| [Storybook](integrations/storybook.mdc) | Stories; runners in `apps/react` and `apps/vue` |
+
+## Boundaries
+
+- Minimize scope. Use the simplest correct diff. Do not change unrelated code.
+- Read surrounding code before writing. Match naming, types, imports, and documentation level.
+- Do not over-engineer. Avoid one-off helpers, excessive error handling, or abstractions for unlikely edge cases.
+- Comments only for non-obvious business logic or deep technical details.
+- Do not add tests unless requested or they cover meaningful behavior.
+- Do not create git commits unless explicitly asked.
+- Do not push to remote unless explicitly asked.
+- Prefer action over preamble; state the outcome or next step without filler or sign-offs.
+- Security: [SECURITY.md](../../SECURITY.md).

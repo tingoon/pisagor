@@ -1,0 +1,272 @@
+---
+description: Shared component patterns — package layout, compound API, styling, a11y
+globs: packages/react/src/**/*.tsx,packages/react-form/src/**/*.tsx,packages/react-blocks/src/**/*.tsx,apps/react/src/**/*.tsx
+alwaysApply: false
+---
+
+# React Component Patterns
+
+How to build shared UI components in public packages (`packages/react`, `packages/react-form`, `packages/react-blocks`). General React rules — [React Style Guide](../styleguides/react.mdc).
+
+**References:** [React Style Guide](../styleguides/react.mdc), [Storybook](storybook.mdc), [TypeScript Style Guide](../styleguides/typescript.mdc). Package-specific policy notes may live in that package's `AGENTS.md` (e.g. [`packages/react/AGENTS.md`](../../../packages/react/AGENTS.md)).
+
+**Out of scope:** design tokens, brand palette, spacing taste, theme authoring. General React naming, props order, hooks, body order — [React Style Guide](../styleguides/react.mdc).
+
+---
+
+## Package layout
+
+Folder name, main file, and component export name align: **kebab-case folder** → **`<name>.tsx`** → **PascalCase** component (e.g. `accordion/` → `accordion.tsx` → `Accordion`).
+
+```text
+<kebab-name>/
+├── <name>.tsx
+├── <name>.stories.tsx      # public shared packages — required; Storybook-local — optional
+├── index.ts                  # public shared packages — required; Storybook-local — optional
+└── [optional splits]         # e.g. avatar-group.tsx — large sub-modules only
+```
+
+File-level React rules: [React Style Guide](../styleguides/react.mdc).
+
+### Public shared packages
+
+Applies to published workspace component packages (`@pisagor/react`, `@pisagor/react-form`, `@pisagor/react-blocks`, and future `@pisagor/react-widgets`-style packages):
+
+- One folder per public component — layout above is required.
+- Require `index.ts` barrel (package export map, e.g. `@pisagor/react/*`).
+- Require `<name>.stories.tsx` per component — [Storybook](storybook.mdc).
+
+### Storybook-local components
+
+- Recipes and docs UI in `apps/react` may use a dedicated folder or a single file; `.stories.tsx` and `index.ts` are optional.
+
+### Cross-component imports
+
+- Within a shared package's source (`.tsx` / `.ts`, excluding stories), prefer **relative** imports between sibling components (e.g. `../button`, `../input-group/input-group-core`).
+- **Stories** (`.stories.tsx`) may use the public export map (e.g. `import { Button } from "@pisagor/react/button"`) — same as apps.
+- Apps and other packages use the public export map for that package.
+- For cyclic pairs (e.g. `input` ↔ `input-group` ↔ `textarea`), import the concrete module file, not the barrel `index.ts`.
+- Reuse exported `{name}Variants` from other components — see [Styling](#styling).
+- Use relative imports (`../../utils`, siblings) within the same component folder.
+- Import icons from `@phosphor-icons/react` (e.g. `CaretDownIcon`).
+
+---
+
+## Public API
+
+Choose **closed**, **compound**, or **compound + shorthand** per component.
+
+| Model | Use when | Public API | Barrel (`index.ts`) |
+| ----- | -------- | ---------- | ------------------- |
+| **Closed** | Single props surface; no subpart composition | `Foo` | `export * from "./foo"` |
+| **Compound** | Consumer composes subparts | `Foo.Root`, `Foo.Title`, … | `Object.assign(FooRoot, { … })` |
+| **Shorthand** | Repetitive composition wrapper | `FooShorthand` or root preset (`items`, `title`) | Attached via `Object.assign` on compound barrel |
+
+**Shorthand when:**
+
+1. **Layout blocks** — fixed slots (title / description / action regions)
+2. **Selection lists** — data → options UI (`items` on the root or shorthand)
+3. **Modal headers** — single canonical path: `Foo.Header` with `title` / `description`
+
+**Shorthand not needed:** structural layout compounds, freeform markup lists, leaf primitives.
+
+### Do
+
+**Compound:**
+
+- Name internally `{Name}Root`, `{Name}Item`, …; set `displayName`: root `"Foo.Root"` when a dedicated shorthand export exists, otherwise `"Foo"`; subparts `"Foo.Part"`.
+- Implement compound parts first; shorthand composes them — never the reverse.
+- Export via `Object.assign(FooShorthand, { Root, Item, Trigger, … })` when shorthand exists; otherwise `Object.assign(FooRoot, { … })`.
+- Public surface is `Foo.Root` / `Foo.Part` only. Flat `FooPart` barrel re-exports are forbidden; do not ship a dual compound + flat surface.
+- Detached presets (flat `FooField`) must attach on the namespace as `Foo.Field` (via `Object.assign` on the compound / shorthand object). No parallel flat compat export.
+- Utils, hooks, and variants may remain named exports outside the namespace.
+- `parameters.docs.api` must match the real barrel surface (`compound` / `compound-shorthand` only when the barrel is a true `Foo.Root` / `Foo.Part` namespace).
+
+**Shorthand:**
+
+- Name dedicated shorthand `FooShorthand` (not `FooClosed`); attach via `Object.assign(FooShorthand, { Root, Title, … })`.
+- Type shorthand props with `Omit<FooRootProps, "children">` — no `children` on the default export.
+- Prefer `<Foo title="…" />` over `<Foo.Root><Foo.Title>…</Foo.Title></Foo.Root>` when preset props are enough.
+- Composition uses `Foo.Root` only when flexibility is required (`asChild`, custom markup, slot order); never nest `Foo.Title` / `Foo.Description` under `<Foo>`.
+- Root preset shorthand (`items`, `title`) on `{Name}Root` only when the pattern is thin and there is no dedicated `FooShorthand`.
+- One canonical shorthand path per concern — do not duplicate on both `Root` and `Header` / `Content`.
+
+**Closed:**
+
+- Export a single function with convenience props and DOM sub-element `*Props` bags (content/behavior — not styling).
+- Export `{name}Variants` when part of the public API — see [Styling](#styling).
+- Export via `export * from "./foo"` (shared package barrel only).
+
+**Barrel (both):**
+
+- Re-export types, hooks, or `RootProvider` only when part of the public API.
+- Prefer owner `*Props` (`FooRootProps`, `FooCloseProps`) when wrapping or typing workspace components. Do not use `ComponentProps<typeof Foo>` / `ComponentProps<typeof Foo.Part>` for that — reserve `ComponentProps` for Ark/DOM primitives and third-party components that do not export props.
+
+### Do not
+
+- Do not ship two unrelated API models. Shorthand wraps compound — it is not a separate closed model.
+- Dual API (compound + shorthand) is per-component only — not every component needs both.
+- Do not use `<Foo>` as a composition root when `FooShorthand` is the default export — use `<Foo.Root>`.
+- Do not pass `children` to shorthand exports for manual subpart layout.
+- Do not fall back to `children` in shorthand (`description ?? children`, `title ?? children`).
+- Do not keep placeholder `tv()` slots (`""`, `[]`) to generate `classNames` keys.
+- Do not type wrappers with `ComponentProps<typeof Foo.Part>` when that part exports `FooPartProps` / `FooCloseProps` (owner props).
+- Do not re-export flat `FooPart` siblings from the barrel beside the `Foo.Root` / `Foo.Part` namespace.
+- Do not leave a detached flat `FooField` export beside `Foo.Field`.
+
+**Pattern guide:**
+
+| Pattern | Use |
+| ------- | --- |
+| **Compound + headless** | `{Name}Root` + subparts; headless primitive; `Object.assign` barrel |
+| **Compound + shorthand** | Compound = source of truth; `FooShorthand` or root preset for common cases |
+| **Compound barrel** | `Object.assign(FooRoot, { Item, Trigger, … })` in `index.ts` |
+| **Closed + multi-slot `tv()`** | Single export; `slots:` variants; sub-element `classNames` bags |
+| **Closed + behavior** | Single export; convenience props; minimal `tv()` or `base:` only |
+| **Closed + primitive wrapper** | Thin styled layer over one headless part |
+| **Composition layer** | Composes other package exports (e.g. `@pisagor/react/*`); no new primitive |
+
+**Example:**
+
+```ts
+export const Foo = Object.assign(FooShorthand, {
+  Root: FooRoot,
+  Title: FooTitle,
+  Description: FooDescription,
+  Action: FooAction,
+});
+```
+
+```tsx
+// Shorthand (default export) — not a composition root
+<Foo title="Heads up!" description="…" />
+
+// Composition — always Foo.Root
+<Foo.Root>
+  <Foo.Title>Heads up!</Foo.Title>
+  <Foo.Description>…</Foo.Description>
+</Foo.Root>
+```
+
+In `FooShorthand` (and similar layout compose returns), leave a **blank line between each top-level slot** sibling in JSX. Nested containers group their own children without extra spacing.
+
+---
+
+## File regions
+
+Every `<name>.tsx` file uses `#region` blocks in this order. Skip regions that do not apply; never reorder.
+
+| Order | Region | When |
+| ----- | ------ | ---- |
+| 1 | `Variants` | Component uses `tv()` — see [Styling](#styling) |
+| 2 | `Types` | Props, variant types, context types, item interfaces |
+| 3 | `Context` | Shared React context for compound components only |
+| 4 | `Hooks` | File-local hooks not exported from `index.ts` |
+| 5 | `Component` / `Components` | All component functions — see below |
+
+### Do
+
+- Use **`#region Component`** (singular) when the file exports **one** component function.
+- Use **`#region Components`** (plural) when the file exports **two or more** component functions.
+- Place `Variants` before `Types` so variant types can reference `{name}Variants`.
+- Start at `Types` → `Component(s)` when there is no `tv()`.
+- Follow [react.mdc → Component body order](../styleguides/react.mdc#component-body-order) inside each component function.
+
+### Do not
+
+- Do not add an `Exports` region — public API belongs in `index.ts`.
+
+**Note:** Types region order is file-level type declaration order — not the same as [react.mdc → Props order](../styleguides/react.mdc#props-order) field groups.
+
+Inside `Types`, when all apply: sub-element prop types → `{Name}ClassNames` → `{Name}VariantProps` → root props → public interface → preset interfaces (`AccordionItem`, …).
+
+---
+
+## Types
+
+Follow [React Style Guide](../styleguides/react.mdc) for naming and [props field order](../styleguides/react.mdc#props-order). On the public props interface, add **sub-element bags** after styling props.
+
+### Do
+
+- Extend `ComponentProps<typeof Primitive.Part>` or `ComponentProps<typeof ark.div>`.
+- Use `export interface FooProps` when props are part of the public API.
+- Combine with `interface FooProps extends FooRootProps, FooVariantProps`.
+- Use `Omit<…>` when a convenience prop conflicts with DOM attributes.
+- Add `VariantProps<typeof fooVariants>` + JSDoc `@default` matching `defaultVariants` from [Styling](#styling).
+- Type sub-element bags as `titleProps?: Omit<TitleProps, "children" | "className">`.
+
+| `Omit` usage | Valid | Invalid |
+| --- | --- | --- |
+| Convenience prop conflicts with primitive prop | `type SelectRootProps = Omit<ArkSelectRootProps<Item>, "collection" \| "onValueChange">;` | `type SelectRootProps = ArkSelectRootProps<Item>;` + re-declare `onValueChange` with a different signature |
+| Sub-element prop bags keep ownership of render/styling | `contentProps?: Omit<TooltipContentProps, "children" \| "className">` | `contentProps?: TooltipContentProps` (allows overriding `children`/`className`) |
+| Preserve primitive contracts by default | `interface DialogBodyProps extends ComponentProps<typeof ark.div> {}` (no `Omit` needed) | `type DialogBodyProps = Omit<ComponentProps<typeof ark.div>, "role">` without an explicit conflict |
+
+### Do not
+
+- Do not route styling through `*Props` bags — use `classNames` on multi-slot components only; single-element components use `className`.
+- Do not type `classNames` as `VariantClassNames<typeof fooVariants> & { … }` — use `VariantClassNames` only.
+- `titleProps` / `contentProps` on shorthand APIs: behavior escape-hatches only (`Omit<…, "children" | "className">`).
+
+---
+
+## Headless wrapper
+
+Behavior lives in the headless primitive — the styled layer adds visuals only.
+
+### Do
+
+- Type each part per [Types](#types).
+- Follow [react.mdc → Props order](../styleguides/react.mdc#props-order) for JSX attribute order on each element. On **plain** nodes (`ark.div`, native tags) add `data-scope` / `data-part`; do **not** set them on machine-backed `<XPrimitive.Part>` nodes — Zag already emits them.
+- Alias imports to avoid name clashes (`Accordion as AccordionPrimitive`).
+- Use a factory element (`ark.div`) only when there is no headless part for that DOM node.
+- Forward `asChild` and portal props unchanged.
+- Set overlay defaults when supported: `lazyMount = true`, `unmountOnExit = true`.
+
+### Do not
+
+- Do not reimplement keyboard handling, focus trap, or open/close logic.
+
+---
+
+## Styling
+
+- **`cn()`:** one logical concern per string; `className` last.
+- Use **semantic tokens** (`bg-muted`, `text-muted-foreground`).
+- **`tv()`:** export `{name}Variants`; use `slots:` for multi-part DOM, `base:` for single element; set `defaultVariants` and mirror in destructuring.
+- **`base:`** — single DOM node in the file (or dedicated export e.g. `inputRootVariants`).
+- **`slots:`** — only parts with real default styles; every slot key must have non-empty class strings.
+- **Do not** add placeholder slots (`""`, `[]`) to generate `classNames` keys — remove the slot and override per [Override without a slot](#override-without-a-slot).
+- When a multi-export file names list chrome, use part names (`list`, not `base`) — e.g. `tabsListVariants` uses `slots.list`.
+- Split `tv()` when reuse needs a shared root shell (`inputRootVariants`) separate from optional slots (`inputVariants.clearableRoot`).
+- **Root** always accepts **`className`** — never `rootClassName`.
+- **Single-element components:** merge with `cn(fooVariants({ … }), className)` — no `classNames` prop.
+- **Multi-slot components:** merge with `cn(slots.part({ … }), className, classNames?.part)`; type **`classNames`** as `VariantClassNames<typeof {name}Variants>`.
+- **Root with both** `className` and `classNames?.root`: `cn(slots.root({ … }), className, classNames?.root)`.
+- Apply **motion & focus:** `motion-reduce:transition-none!`; `outline-hidden` + `focus-visible:ring-[3px] focus-visible:ring-ring/32`; style `disabled:`, `data-disabled:`, `aria-disabled:` consistently.
+- On **plain** styled nodes, set **`data-scope="{name}"`** and **`data-part="{part}"`** (root uses `data-part="root"`). On machine-backed parts, omit both — Ark/Zag already emit `data-scope` / `data-part`. Never override those attributes on a primitive part (Zag queries the DOM through them).
+- Mirror variant props on root when useful (`data-variant`, `data-size`, `data-shape`).
+
+### Override without a slot
+
+When a part has no `tv()` slot by design:
+
+1. **Compound part** — pass `className` on `{Name}Part` directly.
+2. **`asChild`** — merge classes onto the child element.
+3. **Remove** erroneous empty slots from `tv()` — do not keep placeholders for typing.
+4. **Do not** add `*Props.className` or per-part styling bags.
+
+---
+
+## Accessibility
+
+- Keep ARIA and semantics from the headless primitive.
+- Require an accessible name on icon-only controls (`aria-label` or visually hidden text).
+- Set `data-state="loading"` / `aria-busy` on loading; disable pointer events.
+- Support `aria-invalid` styling on inputs and triggers.
+
+---
+
+## Storybook
+
+- Follow [Storybook](storybook.mdc) for `*.stories.tsx` (story order, escape-hatch props, sample data).
+- Declare `subcomponents` on meta for compound components.

@@ -1,0 +1,108 @@
+---
+description: AGENTS.md structure and content when creating or editing agent guide files
+globs: **/AGENTS.md
+alwaysApply: false
+---
+
+# AGENTS.md Style Guide
+
+Reference: [AGENTS.md open format](https://agents.md). Prose: [Google Markdown style](https://google.github.io/styleguide/docguide/style.html) — declare language on fenced blocks; use `bash` for Bun/Turborepo commands; no secrets in Markdown ([SECURITY.md](../../../SECURITY.md)).
+
+**Nearest `AGENTS.md` wins** for workspace operational steps; user chat overrides. Instruction priority: [Core Boundaries](../core.mdc).
+
+`AGENTS.md` never overrides [`.cursor/rules/`](../) bodies — **link only**. Nearest `AGENTS.md` resolves workspace-specific **operational** steps (commands, paths), not rule policy.
+
+## Purpose
+
+AI-facing doc for a directory: role, how to run work, local conventions — not a README duplicate.
+
+| Location | Scope |
+| -------- | ----- |
+| **Root** | Monorepo index: workspace map, agent workflow — not rules/commands indexes |
+| **Nested** (`apps/*`, `packages/*`, …) | That workspace only: commands, layout, conventions |
+
+When adding a nested file, update the root [workspace map](../../../AGENTS.md).
+
+## Rules
+
+- **Do not duplicate** bodies from [`.cursor/rules/`](../) or [`.cursor/commands/`](../../commands/) — link instead.
+- **Workflow tips**, not a `package.json` scripts dump.
+- **No secrets** in AGENTS files. Point to [SECURITY.md](../../../SECURITY.md).
+- Prefer **Turborepo** in filtered task examples (`turbo --filter=…` from repo root).
+
+### Titles
+
+- **Root:** short repo name (e.g. `# Monorepo`).
+- **Nested:** one H1 with the workspace’s human-readable name in title case (e.g. `# Form Package`). Do not prefix with `AGENTS.md —`.
+
+## Section catalog
+
+Use only sections that apply. Omit empty ones.
+
+| Section | Root | Nested | Purpose |
+| ------- | :--: | :----: | ------- |
+| Overview | ✓ | ✓ | One short paragraph |
+| Workspace map | ✓ | — | Links to nested `AGENTS.md` |
+| Commands | — | ✓ | Filtered `turbo` / local commands |
+| Layout | — | ✓ | Directory structure |
+| Environment | optional | optional | Point to `.env.example` when present |
+| Conventions | optional | ✓ | Local patterns, import aliases |
+| Agent workflow | ✓ | — | Link [Core Boundaries](../core.mdc) |
+
+Do **not** add canonical rules tables or IDE adapter pointer tables. Slash commands live in [`.cursor/commands/`](../../commands/). Dev setup lives in [`/onboarding`](../../commands/onboarding.md) — do not duplicate steps here.
+
+## Root skeleton
+
+```markdown
+# Monorepo
+
+<Short overview.>
+
+Before making changes, read [`.cursor/rules/`](./.cursor/rules/). Do not duplicate rule text here.
+
+## Agent workflow
+
+<Link [Core Boundaries](./.cursor/rules/core.mdc).>
+
+## Workspace map
+
+<Tree + nested AGENTS.md links.>
+
+Slash commands: `.cursor/commands/`.
+
+## Getting started
+
+<Open in Container → Onboarding — link README and commands.>
+```
+
+Target length: ~70–90 lines unless the repo is large.
+
+## Nested skeleton
+
+```markdown
+# <Workspace name>
+
+<Role in one or two paragraphs.>
+
+## Commands
+
+<Filtered turbo from repo root.>
+
+## Layout
+
+<Directory structure.>
+
+## Environment
+
+<Link `.env.example` when present; exceptions only — no duplicate var table.>
+
+## Conventions
+
+<Local patterns, import aliases.>
+```
+
+Target length: ~50–90 lines unless the workspace is large.
+
+## Upsert
+
+When creating or refreshing `AGENTS.md`, preserve accurate existing sections; merge, do not wipe.

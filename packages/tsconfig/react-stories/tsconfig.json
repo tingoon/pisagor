@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "noUncheckedSideEffectImports": false,
+    "types": ["node"]
+  },
+  "extends": "../react/tsconfig.json"
+}

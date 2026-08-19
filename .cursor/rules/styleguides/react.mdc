@@ -1,0 +1,120 @@
+---
+description: React conventions — naming, props order, hooks, body order, JSX, legacy patterns
+globs: packages/react/src/**/*.tsx,packages/react-form/src/**/*.tsx,packages/react-blocks/src/**/*.tsx,apps/**/*.tsx
+alwaysApply: false
+---
+
+# React Style Guide
+
+**Out of scope:** UI component folder layout, compound API, headless wrappers, Tailwind/`tv()`/`data-scope`/`data-part` — [React Component Patterns](../integrations/react-component.mdc). Typing — [TypeScript Style Guide](typescript.mdc).
+
+---
+
+## File layout
+
+- **File names:** kebab-case (e.g. `sign-in-form.tsx`, `button.tsx`).
+- Use **named exports** only.
+- **One primary component per file** when it is the main export. Group small private components or hooks in the same file only when they are not used elsewhere in the package.
+
+## Naming
+
+- **Component names:** PascalCase (e.g. `Button`, `DataTable`).
+- **Event handlers:** `onX` for props (e.g. `onSubmit`), `handleX` for local handlers (e.g. `handleClick`).
+- **Boolean props:** `is` for state, `can` for capability, `should` for intent, `has` for existence (e.g. `isOpen`, `canClose`, `shouldTruncate`, `hasError`).
+
+## Component implementation
+
+- Use **functional components** only.
+- Keep components focused on rendering — see [Hooks](#hooks) for extracting logic.
+- Define props with `ComponentNameProps` (or `Props` when colocated) via `interface` or `type`, and receive them via destructuring in the parameter list.
+
+## Props order
+
+Three surfaces — different rules:
+
+### Interface / type
+
+Declare props in this **group order**. Skip groups that do not apply; do not reorder groups.
+
+| Order | Group | Examples |
+| ----- | ----- | -------- |
+| 1 | **Variants & appearance** | `variant`, `size`, `shape`, `pill` |
+| 2 | **Behavior & state** | `isLoading`, `isDisabled`, `open`, `defaultOpen` |
+| 3 | **Content** | `title`, `description`, `icon`, `label`, `fallback`, `children` |
+| 4 | **Event handlers** | `onClick`, `onSubmit`, `onOpenChange` |
+| 5 | **Styling** | `className`, `classNames` |
+| 6 | **Rest** | index/signature or documented catch-alls last |
+
+### Destructuring parameter list
+
+Sort destructured props **A–Z**. Put `...rest` last. When both `children` and `...rest` are destructured, put **`children` before `...rest`**. Do not mirror interface group order in the parameter list.
+
+### JSX attributes
+
+| Order | Attribute |
+| ----- | --------- |
+| 1 | `{...rest}` |
+| 2 | `key`, `ref`, `id` |
+| 3 | `data-*`, `aria-*` |
+| 4 | `className` |
+| 5 | Event handlers |
+| 6 | Other explicit props |
+| 7 | `children` |
+
+Put **`{...rest}` first** in JSX — explicit props after override spread values.
+
+### Do not
+
+- Do not list on the interface what `extends ComponentProps<…>` already provides.
+- Do not use `rootClassName` — root styling is always `className` (see [React Component Patterns → Styling](../integrations/react-component.mdc#styling)).
+- Do not put visual styling on sub-element `*Props` bags — those are for content/behavior only; use `className` on the part or `classNames` on multi-slot roots.
+
+## Component body order
+
+Inside a component function, declare logic top-to-bottom in this order. Skip steps that do not apply; do not reorder. Hook rules: [Hooks](#hooks).
+
+| Order | What | Examples |
+| ----- | ---- | -------- |
+| 1 | **Refs** | `useRef` |
+| 2 | **Context & external hooks** | `useContext`, router/query hooks, `useFormContext`, custom `useX` |
+| 3 | **Local state** | `useState`, `useReducer`, `useDisclosure` — group related state together |
+| 4 | **Async / server state** | `useQuery`, `useMutation`, `useSuspenseQuery` |
+| 5 | **Derived values** | Sync `const` from props/state |
+| 6 | **Event handlers** | `handleX` |
+| 7 | **Effects** | `useEffect`, `useLayoutEffect`, effect-like hooks (`useDidUpdate`) |
+| 8 | **Subscriptions & side-effect hooks** | `useHotkey`, listeners |
+| 9 | **Early returns** | Loading, error, or empty guards — after all hooks |
+| 10 | **`return` JSX** | |
+
+## Hooks
+
+### Custom hooks
+
+- **Naming:** camelCase with `use` prefix (e.g. `useAuth`, `usePagination`).
+- Extract reusable or non-trivial logic into custom hooks; keep plain functions for one-off helpers with no React state.
+
+### Rules of hooks
+
+- Run every hook on every render — follow [Component body order](#component-body-order); no hooks after a conditional `return`.
+- Do not insert hooks out of order (e.g. no `useState` after `useEffect`).
+
+### Effects
+
+- Specify the **useEffect** dependency array completely.
+
+### Performance
+
+- Use **useMemo / useCallback / `React.memo`** when profiling or when passing stable references to memoized children or effect deps.
+- Do not apply **useMemo / useCallback / `React.memo`** by default everywhere.
+
+## JSX
+
+- Use `<> </>` (or `<Fragment>`) instead of extra wrapper `div`s when you only need a container.
+- Use a **stable, unique key** for list items (id from data, not array index) when the list can reorder or change.
+
+## Legacy patterns
+
+Ecosystem defaults not covered above:
+
+- Do not use **`forwardRef`** — accept `ref` as a regular prop (React 19).
+- Do not use **`defaultProps`** on function components — use destructuring defaults.
