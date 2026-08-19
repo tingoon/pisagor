@@ -1,0 +1,32 @@
+{
+  "bugs": {
+    "url": "https://github.com/tingoon/pisagor/issues"
+  },
+  "dependencies": {
+    "tailwind-variants": "^3.3.1"
+  },
+  "description": "Shared Tailwind class recipes (tv) for Pisagor components.",
+  "devDependencies": {
+    "@pisagor/tsconfig": "workspace:*"
+  },
+  "exports": {
+    "./accordion": "./src/ui/accordion.ts",
+    "./ui/*": "./src/ui/*.ts"
+  },
+  "homepage": "https://github.com/tingoon/pisagor#readme",
+  "license": "MIT",
+  "name": "@pisagor/styles",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "directory": "packages/styles",
+    "type": "git",
+    "url": "git+https://github.com/tingoon/pisagor.git"
+  },
+  "scripts": {
+    "type-check": "tsc"
+  },
+  "type": "module",
+  "version": "0.0.0"
+}

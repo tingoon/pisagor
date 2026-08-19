@@ -1,0 +1,106 @@
+import { tv } from "tailwind-variants";
+
+export const fileUploadVariants = tv({
+  base: ["group/file-upload", "relative", "flex flex-col justify-center gap-4"],
+});
+
+export const fileUploadDropzoneVariants = tv({
+  base: [
+    "[--space:--spacing(6)]",
+    "p-(--space)",
+    "flex flex-col items-center justify-center gap-2",
+    "text-center",
+    "cursor-pointer",
+    "data-cover:absolute data-cover:inset-0 data-cover:flex data-cover:items-center data-cover:justify-center",
+    "data-dragging:border-primary data-dragging:bg-primary/10",
+    "data-invalid:border-destructive dark:data-invalid:border-destructive-foreground",
+  ],
+});
+
+export const fileUploadDropzoneIconVariants = tv({
+  base: [
+    "p-3",
+    "bg-muted/48",
+    "text-muted-foreground",
+    "rounded-full border",
+    "group-data-dragging/file-upload:border-primary/24 group-data-dragging/file-upload:bg-primary/5 group-data-dragging/file-upload:text-primary",
+    "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+  ],
+});
+
+export const fileUploadTitleVariants = tv({
+  base: ["font-medium text-foreground text-sm"],
+});
+
+export const fileUploadTitle2Variants = tv({
+  base: ["font-medium text-muted-foreground text-sm"],
+});
+
+export const fileUploadDropzoneHelperVariants = tv({
+  base: ["text-muted-foreground text-xs"],
+});
+
+export const fileUploadInlineVariants = tv({
+  base: [
+    "flex-1 items-start justify-start gap-4",
+    "bg-card",
+    "p-2",
+    "rounded-xl border",
+    "fade-in-0 slide-in-from-top-5 animate-in",
+    "motion-reduce:animate-none!",
+  ],
+});
+
+export const fileUploadInline2Variants = tv({
+  base: [
+    "rounded-lg",
+    "hover:bg-destructive/10 hover:text-destructive",
+    "dark:hover:bg-destructive-foreground/10 dark:hover:text-destructive-foreground",
+  ],
+});
+
+export const fileUploadItemVariants = tv({
+  base: ["relative inline-flex"],
+});
+
+export const fileUploadItemPreviewVariants = tv({
+  base: [
+    "flex shrink-0 items-center justify-center",
+    "font-semibold text-[0.5rem] text-primary",
+    "bg-primary/10",
+    "select-none",
+    "rounded-full",
+  ],
+});
+
+export const fileUploadItemPreviewImageVariants = tv({
+  base: ["aspect-square size-full", "object-cover", "rounded-lg"],
+});
+
+export const fileUploadItemNameVariants = tv({
+  base: ["truncate font-medium text-xs", "min-w-0", "overflow-hidden"],
+});
+
+export const fileUploadItemSizeVariants = tv({
+  base: ["text-muted-foreground text-xs"],
+});
+
+export const fileUploadInline3Variants = tv({
+  base: ["flex flex-col gap-2"],
+});
+
+export const fileUploadInline4Variants = tv({
+  base: "size-8",
+});
+
+export const fileUploadInline5Variants = tv({
+  base: "uppercase",
+});
+
+export const fileUploadInline6Variants = tv({
+  base: ["min-w-0 flex-1 overflow-hidden"],
+});
+
+export const fileUploadInline7Variants = tv({
+  base: ["me-auto rtl:ms-auto"],
+});
