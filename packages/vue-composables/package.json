@@ -1,0 +1,35 @@
+{
+  "bugs": {
+    "url": "https://github.com/tingoon/pisagor/issues"
+  },
+  "dependencies": {
+    "@vueuse/core": "^14.2.1"
+  },
+  "description": "Shared Vue composables used by Pisagor packages.",
+  "devDependencies": {
+    "@pisagor/tsconfig": "workspace:*",
+    "vue": "catalog:"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "homepage": "https://github.com/tingoon/pisagor#readme",
+  "license": "MIT",
+  "name": "@pisagor/vue-composables",
+  "peerDependencies": {
+    "vue": "^3.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "directory": "packages/vue-composables",
+    "type": "git",
+    "url": "git+https://github.com/tingoon/pisagor.git"
+  },
+  "scripts": {
+    "type-check": "tsc"
+  },
+  "type": "module",
+  "version": "0.0.0"
+}

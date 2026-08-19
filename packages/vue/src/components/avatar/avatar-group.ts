@@ -1,0 +1,102 @@
+import { ark } from "@ark-ui/vue/factory";
+import { avatarGroupCountVariants, avatarGroupVariants } from "@pisagor/styles/ui/avatar";
+import { cn } from "@pisagor/utils";
+import { defineComponent, h, type PropType } from "vue";
+import type { WithTestId } from "../../internal/types";
+import { Avatar } from "./avatar";
+
+type ArkPart = Parameters<typeof h>[0];
+
+// #region Types
+export interface AvatarGroupUser {
+  fallback?: string;
+  name?: string;
+  src?: string;
+}
+
+export interface AvatarGroupProps extends WithTestId {
+  class?: unknown;
+  /** Maximum number of avatars to show; excess shown as "+N". */
+  max?: number;
+  /** User list rendered as avatars. */
+  users: AvatarGroupUser[];
+}
+// #endregion
+
+// #region Components
+export const AvatarGroupRoot = defineComponent({
+  inheritAttrs: false,
+  name: "AvatarGroupRoot",
+  props: {
+    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    testId: String,
+  },
+  setup(props, { attrs, slots }) {
+    return () =>
+      h(
+        ark.div as ArkPart,
+        {
+          ...attrs,
+          class: cn(avatarGroupVariants(), props.class),
+          "data-part": "group",
+          "data-scope": "avatar",
+          "data-testid": props.testId,
+        },
+        slots,
+      );
+  },
+});
+
+export const AvatarGroupCount = defineComponent({
+  inheritAttrs: false,
+  name: "AvatarGroupCount",
+  props: {
+    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+  },
+  setup(props, { attrs, slots }) {
+    return () =>
+      h(
+        ark.div as ArkPart,
+        {
+          ...attrs,
+          class: cn(avatarGroupCountVariants(), props.class),
+          "data-part": "group-count",
+          "data-scope": "avatar",
+        },
+        slots,
+      );
+  },
+});
+
+export const AvatarGroupShorthand = defineComponent({
+  inheritAttrs: false,
+  name: "AvatarGroup",
+  props: {
+    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    max: { default: undefined, type: Number },
+    testId: String,
+    users: { default: () => [], type: Array as PropType<AvatarGroupUser[]> },
+  },
+  setup(props, { attrs }) {
+    return () => {
+      const visibleUsers = props.max !== undefined ? props.users.slice(0, props.max) : props.users;
+      const remainingCount =
+        props.max !== undefined && props.users.length > props.max
+          ? props.users.length - props.max
+          : 0;
+
+      return h(AvatarGroupRoot, { ...attrs, class: props.class, testId: props.testId }, () => [
+        visibleUsers.map((user) =>
+          h(Avatar, {
+            alt: user.name ?? "",
+            fallback: user.fallback,
+            key: user.src ?? user.fallback ?? user.name,
+            src: user.src,
+          }),
+        ),
+        remainingCount > 0 ? h(AvatarGroupCount, () => `+${remainingCount}`) : null,
+      ]);
+    };
+  },
+});
+// #endregion

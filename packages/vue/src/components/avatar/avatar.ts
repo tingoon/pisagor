@@ -1,0 +1,102 @@
+import { AvatarFallback, AvatarImage, AvatarRoot } from "@ark-ui/vue/avatar";
+import { avatarVariants } from "@pisagor/styles/ui/avatar";
+import { cn } from "@pisagor/utils";
+import type { VariantProps } from "tailwind-variants";
+import { defineComponent, h, type PropType, type VNodeChild } from "vue";
+import type { VariantClassNames, WithTestId } from "../../internal/types";
+
+type ArkPart = Parameters<typeof h>[0];
+
+// #region Types
+type AvatarVariantProps = VariantProps<typeof avatarVariants>;
+export type AvatarShape = NonNullable<AvatarVariantProps["shape"]>;
+export type AvatarSize = NonNullable<AvatarVariantProps["size"]>;
+
+export type AvatarClassNames = VariantClassNames<typeof avatarVariants>;
+
+export interface AvatarProps extends WithTestId {
+  /** Slot class names */
+  classNames?: AvatarClassNames;
+  /** Renders the avatar image with the provided src */
+  src?: string;
+  /** Alt text for the avatar image */
+  alt?: string;
+  /** Renders the fallback content shown until the image loads */
+  fallback?: VNodeChild;
+  /** Extra props forwarded to the avatar image element */
+  imageProps?: Record<string, unknown>;
+  /** Extra props forwarded to the avatar fallback element */
+  fallbackProps?: Record<string, unknown>;
+  /** The size of the avatar */
+  size?: AvatarSize;
+  /** The shape of the avatar */
+  shape?: AvatarShape;
+  class?: unknown;
+}
+
+// #endregion
+
+// #region Component
+export const Avatar = defineComponent({
+  inheritAttrs: false,
+  name: "PisagorAvatar",
+  props: {
+    alt: { default: undefined, type: String },
+    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    classNames: { default: undefined, type: Object as PropType<AvatarClassNames> },
+    fallback: {
+      default: undefined,
+      type: [String, Number, Boolean, Object, Array] as PropType<VNodeChild>,
+    },
+    fallbackProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown> | undefined>,
+    },
+    imageProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown> | undefined>,
+    },
+    shape: { default: "circle", type: String as PropType<AvatarShape> },
+    size: { default: "md", type: String as PropType<AvatarSize> },
+    src: { default: undefined, type: String },
+    testId: String,
+  },
+  setup(props, { attrs, slots }) {
+    return () => {
+      const slots_ = avatarVariants({ shape: props.shape, size: props.size });
+
+      return h(
+        AvatarRoot as ArkPart,
+        {
+          ...attrs,
+          class: cn(slots_.root(), props.class, props.classNames?.root),
+          "data-shape": props.shape,
+          "data-size": props.size,
+          "data-testid": props.testId,
+        },
+        () => [
+          props.src
+            ? h(AvatarImage as ArkPart, {
+                ...(props.imageProps ?? {}),
+                alt: props.alt,
+                class: cn(slots_.image(), props.classNames?.image),
+                src: props.src,
+              })
+            : null,
+          props.fallback !== undefined
+            ? h(
+                AvatarFallback as ArkPart,
+                {
+                  ...(props.fallbackProps ?? {}),
+                  class: cn(slots_.fallback(), props.classNames?.fallback),
+                },
+                () => props.fallback,
+              )
+            : null,
+          slots.default?.(),
+        ],
+      );
+    };
+  },
+});
+// #endregion

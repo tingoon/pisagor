@@ -1,0 +1,6 @@
+@import "tw-animate-css";
+@import "@pisagor/tokens/styles";
+@plugin "@tailwindcss/typography";
+@source "./**/*.ts";
+@source "../../styles/src/ui/**/*.ts";
+@source "../../styles/src/blocks/**/*.ts";
