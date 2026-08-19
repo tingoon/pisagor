@@ -1,0 +1,35 @@
+{
+  "bugs": {
+    "url": "https://github.com/tingoon/pisagor/issues"
+  },
+  "dependencies": {
+    "@mantine/hooks": "^9.5.1"
+  },
+  "description": "Shared hooks used by Pisagor packages.",
+  "devDependencies": {
+    "@pisagor/tsconfig": "workspace:*",
+    "@types/react": "catalog:"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "homepage": "https://github.com/tingoon/pisagor#readme",
+  "license": "MIT",
+  "name": "@pisagor/react-hooks",
+  "peerDependencies": {
+    "react": "^19"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "directory": "packages/react-hooks",
+    "type": "git",
+    "url": "git+https://github.com/tingoon/pisagor.git"
+  },
+  "scripts": {
+    "type-check": "tsc"
+  },
+  "type": "module",
+  "version": "0.0.0"
+}

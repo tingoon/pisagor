@@ -1,0 +1,64 @@
+import { fn } from "storybook/test";
+import preview from "#/react/preview";
+import { AutocompleteField } from "./autocomplete-field";
+
+const meta = preview.meta({
+  component: AutocompleteField,
+  parameters: {
+    docs: {
+      checklist: {
+        accessibleColor: true,
+        definedBehaviors: true,
+        definedOptions: true,
+        interactiveStates: true,
+        keyboardInteractions: true,
+        platformScales: true,
+      },
+      description: {
+        component:
+          "Combines Field and Autocomplete with label, description, and optional error message.",
+      },
+    },
+  },
+  title: "Forms/Fields/Autocomplete Field",
+});
+
+export const Default = meta.story({
+  args: {
+    description: "Start typing to filter options.",
+    id: "autocomplete-field-city",
+    items: cityOptions(),
+    label: "City",
+    onValueChange: fn(),
+  },
+});
+
+export const Invalid = meta.story({
+  args: {
+    error: "Please select a city.",
+    id: "autocomplete-field-city-invalid",
+    invalid: true,
+    items: cityOptions(),
+    label: "City",
+    onValueChange: fn(),
+  },
+});
+
+export const Disabled = meta.story({
+  args: {
+    description: "Start typing to filter options.",
+    disabled: true,
+    id: "autocomplete-field-city-disabled",
+    items: cityOptions(),
+    label: "City",
+    onValueChange: fn(),
+  },
+});
+
+function cityOptions() {
+  return [
+    { label: "Dublin", value: "dublin" },
+    { label: "Mexico City", value: "mexico-city" },
+    { label: "Sao Paulo", value: "sao-paulo" },
+  ];
+}

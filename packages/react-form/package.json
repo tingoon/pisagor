@@ -1,0 +1,39 @@
+{
+  "bugs": {
+    "url": "https://github.com/tingoon/pisagor/issues"
+  },
+  "dependencies": {
+    "@pisagor/react": "workspace:*"
+  },
+  "description": "Form fields and TanStack Form helpers for Pisagor UI.",
+  "devDependencies": {
+    "@pisagor/tsconfig": "workspace:*",
+    "@tanstack/react-form": "^1.33.4",
+    "@types/react": "catalog:",
+    "storybook": "^10.5.7"
+  },
+  "exports": {
+    ".": "./src/fields/index.ts",
+    "./tanstack": "./src/tanstack/index.ts"
+  },
+  "homepage": "https://github.com/tingoon/pisagor#readme",
+  "license": "MIT",
+  "name": "@pisagor/react-form",
+  "peerDependencies": {
+    "@tanstack/react-form": "^1",
+    "react": "^19"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "directory": "packages/react-form",
+    "type": "git",
+    "url": "git+https://github.com/tingoon/pisagor.git"
+  },
+  "scripts": {
+    "type-check": "tsc"
+  },
+  "type": "module",
+  "version": "0.0.0"
+}

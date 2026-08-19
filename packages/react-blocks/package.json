@@ -1,0 +1,31 @@
+{
+  "bugs": {
+    "url": "https://github.com/tingoon/pisagor/issues"
+  },
+  "description": "Composed UI blocks built from @pisagor/react.",
+  "devDependencies": {
+    "@pisagor/tsconfig": "workspace:*"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "homepage": "https://github.com/tingoon/pisagor#readme",
+  "license": "MIT",
+  "name": "@pisagor/react-blocks",
+  "peerDependencies": {
+    "react": "^19"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "directory": "packages/react-blocks",
+    "type": "git",
+    "url": "git+https://github.com/tingoon/pisagor.git"
+  },
+  "scripts": {
+    "type-check": "tsc"
+  },
+  "type": "module",
+  "version": "0.0.0"
+}

@@ -1,0 +1,312 @@
+import { Portal } from "@ark-ui/react";
+import {
+  type CollectionItem,
+  createListCollection,
+  type ListCollection,
+} from "@ark-ui/react/collection";
+import { ark } from "@ark-ui/react/factory";
+import {
+  Select as SelectPrimitive,
+  type SelectRootProps as SelectRootPropsPrimitive,
+  useSelectContext as useSelect,
+} from "@ark-ui/react/select";
+import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
+import {
+  selectClearTriggerVariants,
+  selectContentVariants,
+  selectGroupLabelVariants,
+  selectInline2Variants,
+  selectInline3Variants,
+  selectInline4Variants,
+  selectInlineVariants,
+  selectItemTextVariants,
+  selectItemVariants,
+  selectSeparatorVariants,
+  selectTriggerVariants,
+} from "@pisagor/styles/ui/select";
+import { cn } from "@pisagor/utils";
+import type { ComponentProps, ReactNode } from "react";
+import type { VariantProps } from "tailwind-variants";
+import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
+import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
+import {
+  formControlShellProps,
+  formControlShellVariants,
+  shellVariantArgs,
+} from "../../internal/form-control/form-control-variants";
+import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
+import type { WithTestId } from "../../internal/types";
+import { createContext } from "../../utils";
+import type { inputRootVariants } from "../input";
+import { Separator, type SeparatorProps } from "../separator";
+
+// #region Types
+interface SelectPresetItem {
+  label: string;
+  value: string;
+}
+
+export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
+  SelectRootPropsPrimitive<T>,
+  "collection" | "onValueChange"
+> & {
+  /**
+   * Visual shell variant. When omitted, resolves from the nearest `Surface` context.
+   */
+  variant?: FormControlVariant;
+  collection?: ListCollection<T>;
+  onValueChange?: (value: string | string[]) => void;
+} & WithTestId;
+
+export interface SelectProps extends Omit<SelectRootProps, "children"> {
+  items?: Array<SelectPresetItem | string>;
+  /**
+   * Whether to show a clear button when a value is selected.
+   *
+   * @defaultValue false
+   */
+  clearable?: boolean;
+  placeholder?: string;
+}
+
+interface SelectTriggerProps
+  extends ComponentProps<typeof SelectPrimitive.Trigger>,
+    VariantProps<typeof inputRootVariants> {
+  /** Visual shell variant override for this trigger. */
+  variant?: FormControlVariant;
+  /**
+   * Whether to show a clear button when a value is selected.
+   *
+   * @defaultValue false
+   */
+  clearable?: boolean;
+}
+
+interface SelectGroupProps extends ComponentProps<typeof SelectPrimitive.ItemGroup> {
+  /** The heading of the group */
+  heading?: string | ReactNode;
+}
+
+// #endregion
+
+// #region Context
+const [SelectRootContext, useSelectRoot] = createContext<{ testId?: string }>({
+  name: "SelectRoot",
+  strict: false,
+});
+
+// #endregion
+
+// #region Components
+export const SelectContext = SelectPrimitive.Context;
+
+export function SelectRoot<T extends CollectionItem = CollectionItem>({
+  lazyMount = true,
+  unmountOnExit = true,
+  children,
+  collection: collectionProp,
+  onValueChange,
+  variant,
+  testId,
+  ...rest
+}: SelectRootProps<T>) {
+  const { "data-testid": dataTestId, ...props } = rest as typeof rest & { "data-testid"?: string };
+  const rootContext = { testId: dataTestId ?? testId };
+
+  return (
+    <SelectRootContext value={rootContext}>
+      <FormControlVariantProvider value={variant}>
+        <SelectPrimitive.Root
+          lazyMount={lazyMount}
+          onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
+          unmountOnExit={unmountOnExit}
+          {...props}
+          collection={collectionProp as ListCollection<T>}
+        >
+          {children}
+
+          <SelectPrimitive.HiddenSelect />
+        </SelectPrimitive.Root>
+      </FormControlVariantProvider>
+    </SelectRootContext>
+  );
+}
+SelectRoot.displayName = "Select.Root";
+
+export function SelectTrigger({
+  size = "md",
+  variant: variantProp,
+  clearable = false,
+  children,
+  className,
+  ...rest
+}: SelectTriggerProps) {
+  const { testId } = useSelectRoot() ?? {};
+  const resolved = useFormControlVariant(variantProp);
+  const shellArgs = shellVariantArgs(resolved);
+  const controlProps = formControlShellProps(resolved);
+
+  return (
+    <SelectPrimitive.Control>
+      <SelectPrimitive.Trigger
+        {...rest}
+        {...controlProps}
+        className={cn(
+          formControlShellVariants({ size, ...shellArgs }),
+          selectTriggerVariants(),
+          className,
+        )}
+        data-testid={testId}
+      >
+        {children}
+
+        <div className={selectInline3Variants()}>
+          {clearable && (
+            <SelectClearTrigger>
+              <XIcon />
+            </SelectClearTrigger>
+          )}
+          <SelectPrimitive.Indicator>
+            <CaretUpDownIcon />
+          </SelectPrimitive.Indicator>
+        </div>
+      </SelectPrimitive.Trigger>
+    </SelectPrimitive.Control>
+  );
+}
+SelectTrigger.displayName = "Select.Trigger";
+
+export function SelectSeparator({ className, ...rest }: SeparatorProps) {
+  return (
+    <Separator
+      {...rest}
+      className={cn(selectSeparatorVariants(), className)}
+      dataPart="separator"
+      dataScope="select"
+    />
+  );
+}
+SelectSeparator.displayName = "Select.Separator";
+
+export function SelectValue({
+  className,
+  ...rest
+}: ComponentProps<typeof SelectPrimitive.ValueText>) {
+  return <SelectPrimitive.ValueText {...rest} className={cn(selectInlineVariants(), className)} />;
+}
+SelectValue.displayName = "Select.Value";
+
+export function SelectContent({
+  className,
+  ...rest
+}: ComponentProps<typeof SelectPrimitive.Content>) {
+  return (
+    <Portal>
+      <SelectPrimitive.Positioner>
+        <SelectPrimitive.Content {...rest} className={cn(selectContentVariants(), className)} />
+      </SelectPrimitive.Positioner>
+    </Portal>
+  );
+}
+SelectContent.displayName = "Select.Content";
+
+export function SelectGroup({ heading, children, ...rest }: SelectGroupProps) {
+  return (
+    <SelectPrimitive.ItemGroup {...rest}>
+      {!heading && <SelectGroupLabel>{heading}</SelectGroupLabel>}
+
+      {children}
+    </SelectPrimitive.ItemGroup>
+  );
+}
+SelectGroup.displayName = "Select.Group";
+
+export function SelectGroupLabel({
+  className,
+  ...rest
+}: ComponentProps<typeof SelectPrimitive.ItemGroupLabel>) {
+  return (
+    <SelectPrimitive.ItemGroupLabel
+      {...rest}
+      className={cn(selectGroupLabelVariants(), className)}
+    />
+  );
+}
+SelectGroupLabel.displayName = "Select.GroupLabel";
+
+export function SelectItem({
+  className,
+  children,
+  ...rest
+}: ComponentProps<typeof SelectPrimitive.Item>) {
+  return (
+    <SelectPrimitive.Item {...rest} className={cn(selectItemVariants(), className)}>
+      <SelectPrimitive.ItemText className={selectItemTextVariants()}>
+        {children}
+      </SelectPrimitive.ItemText>
+
+      <span className={selectInline4Variants()}>
+        <SelectPrimitive.ItemIndicator>
+          <CheckIcon />
+        </SelectPrimitive.ItemIndicator>
+      </span>
+    </SelectPrimitive.Item>
+  );
+}
+SelectItem.displayName = "Select.Item";
+
+export function SelectClearTrigger({
+  className,
+  ...rest
+}: ComponentProps<typeof SelectPrimitive.ClearTrigger>) {
+  return (
+    <SelectPrimitive.ClearTrigger
+      {...rest}
+      aria-label="Clear selected value(s)"
+      className={cn(selectClearTriggerVariants(), className)}
+    />
+  );
+}
+SelectClearTrigger.displayName = "Select.ClearTrigger";
+
+export function SelectEmpty({ className, ...rest }: ComponentProps<typeof ark.div>) {
+  const { empty } = useSelect();
+
+  if (empty) {
+    return (
+      <ark.div {...rest} className={cn(selectInline2Variants(), className)} role="presentation" />
+    );
+  }
+
+  return null;
+}
+SelectEmpty.displayName = "Select.Empty";
+
+export function SelectShorthand({
+  items = [],
+  clearable = false,
+  placeholder,
+  ...rest
+}: SelectProps) {
+  const normalized = items.map((item) =>
+    typeof item === "string" ? { label: item, value: item } : item,
+  );
+  const collection = createListCollection({ items: normalized });
+
+  return (
+    <SelectRoot {...rest} collection={collection}>
+      <SelectTrigger clearable={clearable}>
+        <SelectValue placeholder={placeholder} />
+      </SelectTrigger>
+      <SelectContent>
+        {normalized.map((item) => (
+          <SelectItem item={item} key={item.value}>
+            {item.label}
+          </SelectItem>
+        ))}
+      </SelectContent>
+    </SelectRoot>
+  );
+}
+SelectShorthand.displayName = "Select";
+// #endregion

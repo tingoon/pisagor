@@ -1,0 +1,4 @@
+{
+  "extends": "@pisagor/tsconfig/react",
+  "include": ["src"]
+}

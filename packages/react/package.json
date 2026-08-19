@@ -1,0 +1,90 @@
+{
+  "bugs": {
+    "url": "https://github.com/tingoon/pisagor/issues"
+  },
+  "dependencies": {
+    "@ark-ui/react": "^5.38.1",
+    "@pisagor/react-hooks": "workspace:*",
+    "@pisagor/styles": "workspace:*",
+    "@pisagor/utils": "workspace:*",
+    "@tanstack/react-hotkeys": "^0.10.0",
+    "tailwind-variants": "^3.3.1"
+  },
+  "description": "Accessible React UI components built on Ark UI and Tailwind CSS.",
+  "devDependencies": {
+    "@faker-js/faker": "^10.5.0",
+    "@phosphor-icons/react": "^2.1.10",
+    "@pisagor/tsconfig": "workspace:*",
+    "@tailwindcss/typography": "^0.5.20",
+    "@tanstack/react-table": "^8.21.3",
+    "@tanstack/react-virtual": "^3.14.9",
+    "@tiptap/react": "^3.29.2",
+    "@tiptap/starter-kit": "^3.29.2",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "react-phone-number-input": "^3.4.17",
+    "recharts": "^3.10.1",
+    "tw-animate-css": "^1.4.0"
+  },
+  "exports": {
+    ".": "./src/components/index.ts",
+    "./*": "./src/components/*/index.ts",
+    "./charts": "./src/charts/index.ts",
+    "./components": "./src/components/index.ts",
+    "./hooks": "./src/hooks/index.ts",
+    "./styles": "./src/styles.css"
+  },
+  "homepage": "https://github.com/tingoon/pisagor#readme",
+  "license": "MIT",
+  "name": "@pisagor/react",
+  "peerDependencies": {
+    "@phosphor-icons/react": "^2",
+    "@tanstack/react-table": "^8",
+    "@tanstack/react-virtual": "^3",
+    "@tiptap/react": "^3",
+    "@tiptap/starter-kit": "^3",
+    "react": "^19",
+    "react-dom": "^19",
+    "react-phone-number-input": "^3",
+    "recharts": "^3"
+  },
+  "peerDependenciesMeta": {
+    "@tanstack/react-table": {
+      "optional": true
+    },
+    "@tanstack/react-virtual": {
+      "optional": true
+    },
+    "@tiptap/react": {
+      "optional": true
+    },
+    "@tiptap/starter-kit": {
+      "optional": true
+    },
+    "react-phone-number-input": {
+      "optional": true
+    },
+    "recharts": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "directory": "packages/react",
+    "type": "git",
+    "url": "git+https://github.com/tingoon/pisagor.git"
+  },
+  "scripts": {
+    "test": "bun test",
+    "type-check": "tsc"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "type": "module",
+  "version": "0.0.0"
+}

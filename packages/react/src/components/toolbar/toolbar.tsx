@@ -1,0 +1,149 @@
+import { ark } from "@ark-ui/react/factory";
+import { toolbarVariants } from "@pisagor/styles/ui/toolbar";
+import { cn } from "@pisagor/utils";
+import type { ComponentProps, ReactNode } from "react";
+import type { VariantClassNames, WithTestId } from "../../internal/types";
+
+// #region Variants
+
+// #endregion
+
+// #region Types
+type ToolbarTitleProps = ComponentProps<typeof ark.h2>;
+
+type ToolbarDescriptionProps = ComponentProps<typeof ark.p>;
+
+type ToolbarActionsProps = ComponentProps<typeof ark.div>;
+
+type ToolbarClassNames = VariantClassNames<typeof toolbarVariants>;
+
+type ToolbarRootProps = Omit<ComponentProps<typeof ark.div>, "title"> &
+  WithTestId & {
+    /** Slot class names */
+    classNames?: ToolbarClassNames;
+  };
+
+export interface ToolbarProps extends Omit<ToolbarRootProps, "children"> {
+  /** Section heading. */
+  title?: ReactNode;
+  /** Supporting copy below the title. */
+  description?: ReactNode;
+  /** Trailing action buttons or controls. */
+  actions?: ReactNode;
+  /** Extra props forwarded to the title element */
+  titleProps?: Omit<ToolbarTitleProps, "children" | "className">;
+  /** Extra props forwarded to the description element */
+  descriptionProps?: Omit<ToolbarDescriptionProps, "children" | "className">;
+  /** Extra props forwarded to the actions element */
+  actionsProps?: Omit<ToolbarActionsProps, "children" | "className">;
+}
+
+interface ToolbarPartProps extends ComponentProps<typeof ark.div> {
+  /** Slot class names */
+  classNames?: ToolbarClassNames;
+}
+// #endregion
+
+// #region Components
+export function ToolbarRoot({ className, classNames, testId, ...rest }: ToolbarRootProps) {
+  const slots = toolbarVariants();
+
+  return (
+    <ark.div
+      {...rest}
+      className={cn(slots.root(), className, classNames?.root)}
+      data-part="root"
+      data-scope="toolbar"
+      data-testid={testId}
+    />
+  );
+}
+ToolbarRoot.displayName = "Toolbar.Root";
+
+export function ToolbarHeading({ className, classNames, ...rest }: ToolbarPartProps) {
+  const slots = toolbarVariants();
+
+  return (
+    <ark.div
+      {...rest}
+      className={cn(slots.heading(), className, classNames?.heading)}
+      data-part="heading"
+      data-scope="toolbar"
+    />
+  );
+}
+ToolbarHeading.displayName = "Toolbar.Heading";
+
+export function ToolbarTitle({ className, classNames, ...rest }: ToolbarPartProps) {
+  const slots = toolbarVariants();
+
+  return (
+    <ark.h2
+      {...rest}
+      className={cn(slots.title(), className, classNames?.title)}
+      data-part="title"
+      data-scope="toolbar"
+    />
+  );
+}
+ToolbarTitle.displayName = "Toolbar.Title";
+
+export function ToolbarDescription({ className, classNames, ...rest }: ToolbarPartProps) {
+  const slots = toolbarVariants();
+
+  return (
+    <ark.p
+      {...rest}
+      className={cn(slots.description(), className, classNames?.description)}
+      data-part="description"
+      data-scope="toolbar"
+    />
+  );
+}
+ToolbarDescription.displayName = "Toolbar.Description";
+
+export function ToolbarActions({ className, classNames, ...rest }: ToolbarPartProps) {
+  const slots = toolbarVariants();
+
+  return (
+    <ark.div
+      {...rest}
+      className={cn(slots.actions(), className, classNames?.actions)}
+      data-part="actions"
+      data-scope="toolbar"
+    />
+  );
+}
+ToolbarActions.displayName = "Toolbar.Actions";
+
+export function ToolbarShorthand({
+  className,
+  classNames,
+  title,
+  description,
+  actions,
+  titleProps,
+  descriptionProps,
+  actionsProps,
+  ...rest
+}: ToolbarProps) {
+  const hasHeading = title !== undefined || description !== undefined;
+
+  return (
+    <ToolbarRoot {...rest} className={className} classNames={classNames}>
+      {hasHeading && (
+        <ToolbarHeading>
+          {title !== undefined && <ToolbarTitle {...titleProps}>{title}</ToolbarTitle>}
+
+          {description !== undefined && (
+            <ToolbarDescription {...descriptionProps}>{description}</ToolbarDescription>
+          )}
+        </ToolbarHeading>
+      )}
+
+      {actions !== undefined && <ToolbarActions {...actionsProps}>{actions}</ToolbarActions>}
+    </ToolbarRoot>
+  );
+}
+ToolbarShorthand.displayName = "Toolbar";
+// #endregion

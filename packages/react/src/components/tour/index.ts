@@ -1,0 +1,41 @@
+import {
+  TourActions,
+  TourActionTrigger,
+  TourBody,
+  TourClose,
+  TourContent,
+  TourDescription,
+  TourFooter,
+  TourHeader,
+  TourNextStep,
+  TourOverlay,
+  TourPositioner,
+  TourPreviousStep,
+  TourProgressText,
+  TourRoot,
+  TourSpotlight,
+  TourTitle,
+  TourTrigger,
+} from "./tour";
+
+export type { TourActionTriggerProps, TourStepType } from "./tour";
+export { useTourContext } from "./tour";
+
+export const Tour = Object.assign(TourRoot, {
+  Actions: TourActions,
+  ActionTrigger: TourActionTrigger,
+  Body: TourBody,
+  Close: TourClose,
+  Content: TourContent,
+  Description: TourDescription,
+  Footer: TourFooter,
+  Header: TourHeader,
+  NextStep: TourNextStep,
+  Overlay: TourOverlay,
+  Positioner: TourPositioner,
+  PreviousStep: TourPreviousStep,
+  ProgressText: TourProgressText,
+  Spotlight: TourSpotlight,
+  Title: TourTitle,
+  Trigger: TourTrigger,
+});

@@ -1,0 +1,223 @@
+import { Splitter as SplitterPrimitive } from "@ark-ui/react/splitter";
+import { DotsSixVerticalIcon } from "@phosphor-icons/react";
+import {
+  resizableEdgeHandleVariants,
+  resizableInline2Variants,
+  resizableInlineVariants,
+  resizableResizeTriggerHandleVariants,
+  resizableResizeTriggerIndicatorVariants,
+  resizableResizeTriggerVariants,
+  resizableVariants,
+} from "@pisagor/styles/ui/resizable";
+import { cn } from "@pisagor/utils";
+import { type ComponentProps, useCallback, useRef } from "react";
+import type { WithTestId } from "../../internal/types";
+
+export type {
+  SplitterExpandCollapseDetails as ExpandCollapseDetails,
+  SplitterPanelData as PanelData,
+  SplitterResizeDetails as ResizeDetails,
+  SplitterResizeEndDetails as ResizeEndDetails,
+  UseSplitterProps,
+  UseSplitterReturn,
+} from "@ark-ui/react/splitter";
+export {
+  createSplitterRegistry as createRegistry,
+  useSplitter,
+  useSplitterContext,
+} from "@ark-ui/react/splitter";
+
+// #region Variants
+const resizeTriggerClassName = resizableResizeTriggerVariants();
+const resizeTriggerHandleClassName = resizableResizeTriggerHandleVariants();
+// #endregion
+
+// #region Types
+export type ResizableHandlePosition = "bottom" | "center" | "top";
+export type ResizableEdgePlacement = "end" | "start";
+
+interface ResizableEdgeHandleProps extends ComponentProps<"button">, WithTestId {
+  /** Vertical placement of the visible grip. @defaultValue `"center"` */
+  handlePosition?: ResizableHandlePosition;
+  /** Accessible label for the resize control. */
+  label: string;
+  /** Minimum width in pixels. @defaultValue 1 */
+  minWidth?: number;
+  /** Called during drag for live width updates. */
+  onResizeChange?: (width: number) => void;
+  /** Called when a resize interaction ends. */
+  onResizeEnd?: () => void;
+  /** Called when a resize interaction starts. */
+  onResizeStart?: () => void;
+  /** Called when the width settles after drag or double-click reset. */
+  onWidthChange: (width: number) => void;
+  /** Which edge of the resizable region the handle sits on. */
+  placement: ResizableEdgePlacement;
+  /** Current width in pixels. */
+  width: number;
+}
+
+interface ResizableResizeTriggerProps
+  extends ComponentProps<typeof SplitterPrimitive.ResizeTrigger> {
+  /**
+   * Whether to show the handle.
+   *
+   * @defaultValue false
+   */
+  withHandle?: boolean;
+}
+
+interface ResizableRootProps extends ComponentProps<typeof SplitterPrimitive.Root>, WithTestId {}
+// #endregion
+
+// #region Components
+export function ResizableEdgeHandle({
+  className,
+  handlePosition = "center",
+  label,
+  minWidth = 1,
+  onResizeChange,
+  onResizeEnd,
+  onResizeStart,
+  onWidthChange,
+  placement,
+  testId,
+  width,
+  ...rest
+}: ResizableEdgeHandleProps) {
+  const initialWidthRef = useRef(width);
+  const startXRef = useRef(0);
+  const startWidthRef = useRef(width);
+  const liveWidthRef = useRef(width);
+  const isStart = placement === "start";
+  const edgeHandle = resizableEdgeHandleVariants({ handlePosition, placement });
+
+  const applyWidth = useCallback(
+    (nextWidth: number) => {
+      liveWidthRef.current = nextWidth;
+      startWidthRef.current = nextWidth;
+      onResizeChange?.(nextWidth);
+      onWidthChange(nextWidth);
+    },
+    [onResizeChange, onWidthChange],
+  );
+
+  return (
+    <button
+      {...rest}
+      aria-label={label}
+      className={cn(edgeHandle.root(), className)}
+      data-handle-position={handlePosition}
+      data-part="edge-handle"
+      data-scope="resizable"
+      data-testid={testId}
+      onDoubleClick={(event) => {
+        event.preventDefault();
+        onResizeEnd?.();
+        applyWidth(initialWidthRef.current);
+      }}
+      onLostPointerCapture={() => {
+        onResizeEnd?.();
+        onWidthChange(liveWidthRef.current);
+      }}
+      onPointerDown={(event) => {
+        event.currentTarget.setPointerCapture(event.pointerId);
+        startXRef.current = event.clientX;
+        startWidthRef.current = width;
+        liveWidthRef.current = width;
+        onResizeStart?.();
+      }}
+      onPointerMove={(event) => {
+        if (!event.currentTarget.hasPointerCapture(event.pointerId)) {
+          return;
+        }
+
+        const delta = event.clientX - startXRef.current;
+        const next = Math.max(
+          minWidth,
+          isStart ? startWidthRef.current + delta : startWidthRef.current - delta,
+        );
+
+        liveWidthRef.current = next;
+        onResizeChange?.(next);
+      }}
+      onPointerUp={(event) => {
+        event.currentTarget.releasePointerCapture(event.pointerId);
+        onResizeEnd?.();
+        onWidthChange(liveWidthRef.current);
+      }}
+      type="button"
+    >
+      <span className={edgeHandle.grip()}>
+        <DotsSixVerticalIcon className={resizableInlineVariants()} />
+      </span>
+    </button>
+  );
+}
+ResizableEdgeHandle.displayName = "Resizable.EdgeHandle";
+
+export function ResizableRoot({ className, testId, ...rest }: ResizableRootProps) {
+  return (
+    <SplitterPrimitive.Root
+      {...rest}
+      className={cn(resizableVariants(), className)}
+      data-testid={testId}
+    />
+  );
+}
+ResizableRoot.displayName = "Resizable";
+
+export function ResizablePanel(props: ComponentProps<typeof SplitterPrimitive.Panel>) {
+  return <SplitterPrimitive.Panel {...props} />;
+}
+ResizablePanel.displayName = "Resizable.Panel";
+
+export function ResizableResizeTriggerIndicator({
+  className,
+  ...rest
+}: ComponentProps<typeof SplitterPrimitive.ResizeTriggerIndicator>) {
+  return (
+    <SplitterPrimitive.ResizeTriggerIndicator
+      {...rest}
+      className={cn(resizableResizeTriggerIndicatorVariants(), className)}
+    />
+  );
+}
+ResizableResizeTriggerIndicator.displayName = "Resizable.ResizeTriggerIndicator";
+
+export function ResizableResizeTrigger({
+  withHandle = false,
+  className,
+  children,
+  ...rest
+}: ResizableResizeTriggerProps) {
+  return (
+    <SplitterPrimitive.ResizeTrigger
+      {...rest}
+      aria-label="Resize"
+      className={cn(resizeTriggerClassName, className)}
+    >
+      {withHandle ? (
+        <div className={resizeTriggerHandleClassName}>
+          <DotsSixVerticalIcon className={resizableInline2Variants()} />
+        </div>
+      ) : (
+        (children ?? <ResizableResizeTriggerIndicator />)
+      )}
+    </SplitterPrimitive.ResizeTrigger>
+  );
+}
+ResizableResizeTrigger.displayName = "Resizable.ResizeTrigger";
+
+export function ResizableContext(props: ComponentProps<typeof SplitterPrimitive.Context>) {
+  return <SplitterPrimitive.Context {...props} />;
+}
+ResizableContext.displayName = "Resizable.Context";
+
+export function ResizableRootProvider(
+  props: ComponentProps<typeof SplitterPrimitive.RootProvider>,
+) {
+  return <SplitterPrimitive.RootProvider {...props} />;
+}
+ResizableRootProvider.displayName = "Resizable.RootProvider";
+// #endregion

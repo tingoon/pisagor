@@ -1,0 +1,47 @@
+import {
+  ColorPickerArea,
+  ColorPickerAreaThumb,
+  ColorPickerClearTrigger,
+  ColorPickerContent,
+  ColorPickerControl,
+  ColorPickerEyeDropperTrigger,
+  ColorPickerField,
+  ColorPickerInput,
+  ColorPickerRoot,
+  ColorPickerSlider,
+  ColorPickerSwatch,
+  ColorPickerSwatchGroup,
+  ColorPickerSwatchIndicator,
+  ColorPickerSwatchPreview,
+  ColorPickerSwatchTrigger,
+  ColorPickerTransparencyGrid,
+  ColorPickerTrigger,
+  ColorPickerValue,
+  ColorPickerValueSwatch,
+  ColorPickerView,
+} from "./color-picker";
+
+export type { ColorPickerProps } from "./color-picker";
+export { parseColor } from "./color-picker";
+
+export const ColorPicker = Object.assign(ColorPickerRoot, {
+  Area: ColorPickerArea,
+  AreaThumb: ColorPickerAreaThumb,
+  ClearTrigger: ColorPickerClearTrigger,
+  Content: ColorPickerContent,
+  Control: ColorPickerControl,
+  EyeDropperTrigger: ColorPickerEyeDropperTrigger,
+  Field: ColorPickerField,
+  Input: ColorPickerInput,
+  Slider: ColorPickerSlider,
+  Swatch: ColorPickerSwatch,
+  SwatchGroup: ColorPickerSwatchGroup,
+  SwatchIndicator: ColorPickerSwatchIndicator,
+  SwatchPreview: ColorPickerSwatchPreview,
+  SwatchTrigger: ColorPickerSwatchTrigger,
+  TransparencyGrid: ColorPickerTransparencyGrid,
+  Trigger: ColorPickerTrigger,
+  Value: ColorPickerValue,
+  ValueSwatch: ColorPickerValueSwatch,
+  View: ColorPickerView,
+});
