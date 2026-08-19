@@ -1,0 +1,33 @@
+{
+  "bugs": {
+    "url": "https://github.com/tingoon/pisagor/issues"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.6.0"
+  },
+  "description": "Class-name helpers for Pisagor packages.",
+  "devDependencies": {
+    "@pisagor/tsconfig": "workspace:*"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "homepage": "https://github.com/tingoon/pisagor#readme",
+  "license": "MIT",
+  "name": "@pisagor/utils",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "directory": "packages/utils",
+    "type": "git",
+    "url": "git+https://github.com/tingoon/pisagor.git"
+  },
+  "scripts": {
+    "test": "bun test",
+    "type-check": "tsc"
+  },
+  "type": "module",
+  "version": "0.0.0"
+}
