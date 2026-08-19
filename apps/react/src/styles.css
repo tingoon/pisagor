@@ -1,0 +1,29 @@
+@import "tailwindcss";
+@import "@pisagor/react/styles";
+@source "./**/*.{ts,tsx}";
+
+/* Docs chrome follows AppDecorator's `.dark` on <html> (design tokens). */
+.dark .sbdocs-wrapper {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.dark .sbdocs-title,
+.dark .sbdocs-subtitle,
+.dark .sbdocs-content :is(h1, h2, h3, h4, p, li, a) {
+  color: var(--foreground);
+}
+
+.dark .sbdocs-content table tr {
+  background-color: var(--background);
+  border-color: var(--border);
+}
+
+.dark .sbdocs-content table tr:nth-of-type(2n) {
+  background-color: var(--muted);
+}
+
+.dark .sbdocs-content table :is(th, td) {
+  color: var(--foreground);
+  border-color: var(--border);
+}

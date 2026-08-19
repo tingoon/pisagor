@@ -1,0 +1,38 @@
+{
+  "dependencies": {
+    "@ark-ui/react": "^5.38.1",
+    "@phosphor-icons/react": "^2.1.10",
+    "@pisagor/react": "workspace:*",
+    "@pisagor/react-form": "workspace:*",
+    "@pisagor/react-hooks": "workspace:*",
+    "@pisagor/utils": "workspace:*",
+    "@tanstack/react-form": "^1.33.4",
+    "react": "catalog:",
+    "react-dom": "catalog:",
+    "zod": "^4.4.3"
+  },
+  "description": "React Storybook for @pisagor/react package stories.",
+  "devDependencies": {
+    "@pisagor/tsconfig": "workspace:*",
+    "@storybook/addon-a11y": "^10.5.7",
+    "@storybook/addon-docs": "^10.5.7",
+    "@storybook/addon-mcp": "^0.6.0",
+    "@storybook/react-vite": "^10.5.7",
+    "@tailwindcss/vite": "catalog:",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "@vitejs/plugin-react": "catalog:",
+    "storybook": "^10.5.7",
+    "tailwindcss": "catalog:",
+    "vite": "catalog:"
+  },
+  "name": "react",
+  "private": true,
+  "scripts": {
+    "build": "storybook build",
+    "dev": "storybook dev -p 3001",
+    "type-check": "tsc"
+  },
+  "type": "module",
+  "version": "0.0.0"
+}

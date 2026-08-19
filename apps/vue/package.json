@@ -1,0 +1,35 @@
+{
+  "dependencies": {
+    "@ark-ui/vue": "^5.38.1",
+    "@phosphor-icons/vue": "^2.2.1",
+    "@pisagor/utils": "workspace:*",
+    "@pisagor/vue": "workspace:*",
+    "@pisagor/vue-composables": "workspace:*",
+    "@pisagor/vue-form": "workspace:*",
+    "@tanstack/vue-form": "^1.33.4",
+    "vue": "catalog:",
+    "zod": "^4.4.3"
+  },
+  "description": "Vue Storybook for @pisagor/vue package stories.",
+  "devDependencies": {
+    "@pisagor/tsconfig": "workspace:*",
+    "@storybook/addon-a11y": "^10.5.7",
+    "@storybook/addon-docs": "^10.5.7",
+    "@storybook/addon-mcp": "^0.6.0",
+    "@storybook/vue3-vite": "^10.5.7",
+    "@tailwindcss/vite": "catalog:",
+    "@vitejs/plugin-vue": "catalog:",
+    "storybook": "^10.5.7",
+    "tailwindcss": "catalog:",
+    "vite": "catalog:"
+  },
+  "name": "vue",
+  "private": true,
+  "scripts": {
+    "build": "storybook build",
+    "dev": "storybook dev -p 3002",
+    "type-check": "tsc"
+  },
+  "type": "module",
+  "version": "0.0.0"
+}

@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "noUncheckedSideEffectImports": false,
+    "paths": {
+      "#/vue/*": ["./.storybook/*"]
+    }
+  },
+  "extends": "@pisagor/tsconfig/vue-vite",
+  "include": [
+    "src",
+    ".storybook",
+    "vite.config.ts",
+    "env.d.ts",
+    "src/**/*.stories.ts",
+    "../../packages/vue/src/**/*.stories.ts"
+  ]
+}

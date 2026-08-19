@@ -1,0 +1,20 @@
+{
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
+  "extends": "//",
+  "overrides": [
+    {
+      "includes": ["**/*.stories.ts", "../../../packages/vue/src/**/*.stories.ts"],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noArrayIndexKey": "off"
+          }
+        }
+      }
+    }
+  ]
+}
