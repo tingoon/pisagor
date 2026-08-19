@@ -1,0 +1,25 @@
+{
+  "bugs": {
+    "url": "https://github.com/tingoon/pisagor/issues"
+  },
+  "description": "Design tokens and Tailwind theme for Pisagor packages.",
+  "exports": {
+    "./styles": "./src/styles.css"
+  },
+  "homepage": "https://github.com/tingoon/pisagor#readme",
+  "license": "MIT",
+  "name": "@pisagor/tokens",
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "directory": "packages/tokens",
+    "type": "git",
+    "url": "git+https://github.com/tingoon/pisagor.git"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "type": "module",
+  "version": "0.0.0"
+}
