@@ -24,7 +24,15 @@ import {
   SidebarTrigger,
 } from "./sidebar";
 
-export type { SidebarProps } from "./sidebar";
+export type {
+  SidebarContentProps,
+  SidebarMenuActionProps,
+  SidebarMenuButtonProps,
+  SidebarMenuSkeletonProps,
+  SidebarMenuSubButtonProps,
+  SidebarProps,
+  SidebarProviderProps,
+} from "./sidebar";
 
 export { useSidebar } from "./sidebar.context";
 

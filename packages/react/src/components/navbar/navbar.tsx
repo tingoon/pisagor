@@ -7,17 +7,17 @@ import type { VariantClassNames, WithTestId } from "../../internal/types";
 // #region Types
 type NavbarClassNames = VariantClassNames<NavbarSlots>;
 
-interface NavbarRootProps extends ComponentProps<typeof ark.header>, WithTestId {
+export interface NavbarRootProps extends ComponentProps<typeof ark.header>, WithTestId {
   /** Slot class names */
   classNames?: NavbarClassNames;
 }
 
-interface NavbarPartProps extends ComponentProps<typeof ark.div> {
+export interface NavbarPartProps extends ComponentProps<typeof ark.div> {
   /** Slot class names */
   classNames?: NavbarClassNames;
 }
 
-interface NavbarNavProps extends ComponentProps<typeof ark.nav> {
+export interface NavbarNavProps extends ComponentProps<typeof ark.nav> {
   /** Slot class names */
   classNames?: NavbarClassNames;
 }

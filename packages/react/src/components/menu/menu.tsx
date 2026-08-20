@@ -12,27 +12,27 @@ import type { VariantClassNames, WithTestId } from "../../internal/types";
 // #region Types
 type MenuClassNames = VariantClassNames<MenuSlots>;
 
-interface MenuRootProps extends ComponentProps<typeof ark.nav>, WithTestId {
+export interface MenuRootProps extends ComponentProps<typeof ark.nav>, WithTestId {
   /** Slot class names */
   classNames?: MenuClassNames;
 }
 
-interface MenuPartProps extends ComponentProps<typeof ark.div> {
+export interface MenuPartProps extends ComponentProps<typeof ark.div> {
   /** Slot class names */
   classNames?: MenuClassNames;
 }
 
-interface MenuListProps extends ComponentProps<typeof ark.ul> {
+export interface MenuListProps extends ComponentProps<typeof ark.ul> {
   /** Slot class names */
   classNames?: MenuClassNames;
 }
 
-interface MenuItemProps extends ComponentProps<typeof ark.button>, MenuItemVariantProps {
+export interface MenuItemProps extends ComponentProps<typeof ark.button>, MenuItemVariantProps {
   /** Slot class names */
   classNames?: MenuClassNames;
 }
 
-interface MenuLinkProps extends ComponentProps<typeof ark.a> {
+export interface MenuLinkProps extends ComponentProps<typeof ark.a> {
   /** Whether the link represents the current page */
   active?: boolean;
   /** Slot class names */

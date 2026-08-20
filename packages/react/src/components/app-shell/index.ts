@@ -18,6 +18,7 @@ import {
 } from "./panel";
 import { AppShellRail, AppShellRailItem } from "./rail";
 
+export type { AppShellRootProps } from "./app-shell";
 export type {
   AppShellPlacement,
   AppShellRailState,
@@ -27,8 +28,16 @@ export type {
   AppShellResizeHandlePosition,
   AppShellSideState,
 } from "./app-shell.context";
-
 export { useAppShell } from "./app-shell.context";
+export type { AppShellBannerProps } from "./banner";
+export type {
+  AppShellInspectorProps,
+  AppShellInspectorTriggerProps,
+} from "./inspector";
+export type { AppShellHeaderProps } from "./main";
+export type { AppShellNavigationProps } from "./navigation";
+export type { AppShellPanelProps, AppShellPanelTriggerProps } from "./panel";
+export type { AppShellRailItemProps, AppShellRailProps } from "./rail";
 export { useAppShellRail } from "./rail.context";
 
 export const AppShell = Object.assign(AppShellRoot, {

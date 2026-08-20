@@ -10,22 +10,22 @@ import type { VariantClassNames, WithTestId } from "../../internal/types";
 // #region Types
 type NavigationMenuClassNames = VariantClassNames<NavigationMenuSlots>;
 
-interface NavigationMenuProps extends ComponentProps<typeof ark.nav>, WithTestId {
+export interface NavigationMenuProps extends ComponentProps<typeof ark.nav>, WithTestId {
   /** Slot class names */
   classNames?: NavigationMenuClassNames;
 }
 
-interface NavigationMenuPartProps extends ComponentProps<typeof ark.ul> {
+export interface NavigationMenuPartProps extends ComponentProps<typeof ark.ul> {
   /** Slot class names */
   classNames?: NavigationMenuClassNames;
 }
 
-interface NavigationMenuItemProps extends ComponentProps<typeof ark.li> {
+export interface NavigationMenuItemProps extends ComponentProps<typeof ark.li> {
   /** Slot class names */
   classNames?: NavigationMenuClassNames;
 }
 
-interface NavigationMenuLinkProps extends ComponentProps<typeof ark.a> {
+export interface NavigationMenuLinkProps extends ComponentProps<typeof ark.a> {
   /** Whether the link represents the current page */
   active?: boolean;
   /** Slot class names */

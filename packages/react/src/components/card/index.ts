@@ -9,6 +9,8 @@ import {
   CardTitle,
 } from "./card";
 
+export type { CardHeaderProps, CardMediaProps, CardRootProps } from "./card";
+
 export const Card = Object.assign(CardRoot, {
   Action: CardAction,
   Content: CardContent,

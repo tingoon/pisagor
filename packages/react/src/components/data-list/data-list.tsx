@@ -12,7 +12,7 @@ interface DataListPresetItem {
   value: ReactNode;
 }
 
-interface DataListRootProps extends ComponentProps<typeof ark.dl>, WithTestId {
+export interface DataListRootProps extends ComponentProps<typeof ark.dl>, WithTestId {
   /**
    * The orientation of the data list.
    *
@@ -27,7 +27,7 @@ export interface DataListProps extends Omit<DataListRootProps, "children"> {
   items?: DataListPresetItem[];
 }
 
-interface DataListItemProps extends ComponentProps<typeof ark.div> {
+export interface DataListItemProps extends ComponentProps<typeof ark.div> {
   value?: ReactNode;
   /** Slot class names */
   classNames?: DataListClassNames;

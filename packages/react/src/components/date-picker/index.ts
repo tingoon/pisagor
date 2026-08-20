@@ -14,6 +14,7 @@ export type {
   DatePickerInputProps,
   DatePickerPresetTriggerProps,
   DatePickerRootProps as DatePickerProps,
+  DatePickerTimerProps,
   DatePickerTriggerProps,
   DatePickerValueProps,
 } from "./date-picker";

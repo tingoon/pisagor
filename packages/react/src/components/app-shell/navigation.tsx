@@ -6,7 +6,7 @@ import type { AppShellRegionPosition } from "./app-shell.context";
 import { APP_SHELL_NAVIGATION_HEIGHT_VAR } from "./constants";
 import { regionPositionClasses, useSyncFixedRegionHeight } from "./region";
 
-interface AppShellNavigationProps extends ComponentProps<"nav"> {
+export interface AppShellNavigationProps extends ComponentProps<"nav"> {
   /**
    * Scroll behavior for the navigation row.
    *

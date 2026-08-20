@@ -6,7 +6,7 @@ import type { AppShellRegionPosition } from "./app-shell.context";
 import { APP_SHELL_BANNER_HEIGHT_VAR } from "./constants";
 import { regionPositionClasses, useSyncFixedRegionHeight } from "./region";
 
-interface AppShellBannerProps extends ComponentProps<"div"> {
+export interface AppShellBannerProps extends ComponentProps<"div"> {
   /**
    * Scroll behavior for the banner row.
    *

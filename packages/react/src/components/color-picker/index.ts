@@ -24,6 +24,7 @@ import {
 export type {
   ColorPickerAreaProps,
   ColorPickerAreaThumbProps,
+  ColorPickerClearTriggerProps,
   ColorPickerContentProps,
   ColorPickerControlProps,
   ColorPickerEyeDropperTriggerProps,

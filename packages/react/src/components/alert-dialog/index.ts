@@ -12,6 +12,12 @@ import {
   AlertDialogTrigger,
 } from "./alert-dialog";
 
+export type {
+  AlertDialogActionProps,
+  AlertDialogCancelProps,
+  AlertDialogRootProps,
+} from "./alert-dialog";
+
 export const AlertDialog = Object.assign(AlertDialogRoot, {
   Action: AlertDialogAction,
   Body: AlertDialogBody,

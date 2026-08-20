@@ -11,6 +11,8 @@ import {
   ItemTitle,
 } from "./item";
 
+export type { ItemHeaderProps, ItemMediaProps, ItemProps } from "./item";
+
 export const Item = Object.assign(ItemRoot, {
   Actions: ItemActions,
   Content: ItemContent,

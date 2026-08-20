@@ -3,7 +3,7 @@ import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 
 // #region Types
-interface DownloadTriggerProps
+export interface DownloadTriggerProps
   extends ComponentProps<typeof DownloadTriggerPrimitive>,
     WithTestId {}
 // #endregion
