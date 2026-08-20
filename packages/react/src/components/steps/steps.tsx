@@ -58,12 +58,12 @@ export function StepsTrigger({ className, ...rest }: StepsTriggerProps) {
 }
 
 export function StepsIndicator({ className, children, ...rest }: StepsIndicatorProps) {
-  const recipe = stepsIndicatorVariants();
+  const slots = stepsIndicatorVariants();
 
   return (
-    <StepsPrimitive.Indicator {...rest} className={recipe.base({ className })}>
-      <span className={recipe.label()}>{children}</span>
-      <CheckIcon className={recipe.check()} />
+    <StepsPrimitive.Indicator {...rest} className={slots.base({ className })}>
+      <span className={slots.label()}>{children}</span>
+      <CheckIcon className={slots.check()} />
     </StepsPrimitive.Indicator>
   );
 }

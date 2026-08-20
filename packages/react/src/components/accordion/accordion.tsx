@@ -56,25 +56,25 @@ export function AccordionItem({ className, ...rest }: AccordionItemProps) {
 }
 
 export function AccordionItemTrigger({ className, children, ...rest }: AccordionItemTriggerProps) {
-  const recipe = accordionItemTriggerVariants();
+  const slots = accordionItemTriggerVariants();
 
   return (
-    <AccordionPrimitive.ItemTrigger {...rest} className={recipe.base({ className })}>
+    <AccordionPrimitive.ItemTrigger {...rest} className={slots.base({ className })}>
       {children}
 
       <AccordionPrimitive.ItemIndicator>
-        <CaretDownIcon className={recipe.indicator()} />
+        <CaretDownIcon className={slots.indicator()} />
       </AccordionPrimitive.ItemIndicator>
     </AccordionPrimitive.ItemTrigger>
   );
 }
 
 export function AccordionItemContent({ className, children, ...rest }: AccordionItemContentProps) {
-  const recipe = accordionItemContentVariants();
+  const slots = accordionItemContentVariants();
 
   return (
-    <AccordionPrimitive.ItemContent {...rest} className={recipe.base({ className })}>
-      <div className={recipe.body()}>{children}</div>
+    <AccordionPrimitive.ItemContent {...rest} className={slots.base({ className })}>
+      <div className={slots.body()}>{children}</div>
     </AccordionPrimitive.ItemContent>
   );
 }

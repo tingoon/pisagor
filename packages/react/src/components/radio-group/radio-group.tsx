@@ -69,13 +69,13 @@ export function RadioGroupItem({
   const resolved = useFormControlVariant(variantProp);
   const shellArgs = shellVariantArgs(resolved);
   const controlProps = formControlShellProps(resolved);
-  const recipe = radioGroupItemVariants();
+  const slots = radioGroupItemVariants();
 
   return (
-    <RadioGroupPrimitive.Item {...rest} className={recipe.base({ className })}>
+    <RadioGroupPrimitive.Item {...rest} className={slots.base({ className })}>
       <RadioGroupPrimitive.ItemControl
         {...controlProps}
-        className={cn(formControlRadioToggleVariants({ ...shellArgs }), recipe.control())}
+        className={cn(formControlRadioToggleVariants({ ...shellArgs }), slots.control())}
       />
 
       <RadioGroupText>{children}</RadioGroupText>

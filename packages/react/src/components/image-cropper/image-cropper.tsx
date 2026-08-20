@@ -112,11 +112,11 @@ export function ImageCropperSelection({
 }
 
 export function ImageCropperHandle({ className, ...rest }: ImageCropperHandleProps) {
-  const recipe = imageCropperHandleVariants();
+  const slots = imageCropperHandleVariants();
 
   return (
-    <ImageCropperPrimitive.Handle {...rest} className={recipe.base({ className })}>
-      <span aria-hidden className={recipe.grip()} />
+    <ImageCropperPrimitive.Handle {...rest} className={slots.base({ className })}>
+      <span aria-hidden className={slots.grip()} />
     </ImageCropperPrimitive.Handle>
   );
 }

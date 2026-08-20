@@ -214,13 +214,13 @@ export function SelectGroupLabel({ className, ...rest }: SelectGroupLabelProps) 
 }
 
 export function SelectItem({ className, children, ...rest }: SelectItemProps) {
-  const recipe = selectItemVariants();
+  const slots = selectItemVariants();
 
   return (
-    <SelectPrimitive.Item {...rest} className={recipe.base({ className })}>
-      <SelectPrimitive.ItemText className={recipe.text()}>{children}</SelectPrimitive.ItemText>
+    <SelectPrimitive.Item {...rest} className={slots.base({ className })}>
+      <SelectPrimitive.ItemText className={slots.text()}>{children}</SelectPrimitive.ItemText>
 
-      <span className={recipe.indicator()}>
+      <span className={slots.indicator()}>
         <SelectPrimitive.ItemIndicator>
           <CheckIcon />
         </SelectPrimitive.ItemIndicator>

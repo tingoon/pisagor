@@ -218,10 +218,10 @@ export function TreeViewBranchContent({
   children,
   ...rest
 }: TreeViewBranchContentProps) {
-  const recipe = treeViewBranchContentVariants();
+  const slots = treeViewBranchContentVariants();
 
   return (
-    <TreeViewPrimitive.BranchContent {...rest} className={recipe.base({ className })}>
+    <TreeViewPrimitive.BranchContent {...rest} className={slots.base({ className })}>
       <TreeViewBranchIndentGuide />
 
       {children}
@@ -230,10 +230,10 @@ export function TreeViewBranchContent({
 }
 
 function TreeViewBranchIndentGuide({ className, ...rest }: TreeViewBranchIndentGuideProps) {
-  const recipe = treeViewBranchContentVariants();
+  const slots = treeViewBranchContentVariants();
 
   return (
-    <TreeViewPrimitive.BranchIndentGuide {...rest} className={recipe.indentGuide({ className })} />
+    <TreeViewPrimitive.BranchIndentGuide {...rest} className={slots.indentGuide({ className })} />
   );
 }
 

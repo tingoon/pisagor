@@ -290,14 +290,14 @@ export function ColorPickerView({ className, ...rest }: ColorPickerViewProps) {
 }
 
 export function ColorPickerSlider({ className, children, ...rest }: ColorPickerSliderProps) {
-  const recipe = colorPickerChannelSliderVariants();
+  const slots = colorPickerChannelSliderVariants();
 
   return (
-    <ColorPickerPrimitive.ChannelSlider {...rest} className={recipe.base({ className })}>
+    <ColorPickerPrimitive.ChannelSlider {...rest} className={slots.base({ className })}>
       {children}
 
-      <ColorPickerPrimitive.ChannelSliderTrack className={recipe.track()} />
-      <ColorPickerPrimitive.ChannelSliderThumb className={recipe.thumb()} />
+      <ColorPickerPrimitive.ChannelSliderTrack className={slots.track()} />
+      <ColorPickerPrimitive.ChannelSliderThumb className={slots.thumb()} />
     </ColorPickerPrimitive.ChannelSlider>
   );
 }
@@ -377,12 +377,12 @@ export function ColorPickerArea({
   children,
   ...rest
 }: ColorPickerAreaProps) {
-  const recipe = colorPickerAreaVariants();
+  const slots = colorPickerAreaVariants();
 
   return (
     <ColorPickerPrimitive.Area
       {...rest}
-      className={recipe.base({
+      className={slots.base({
         className: cn(
           {
             "after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:bg-[radial-gradient(circle,#fff3_1px,#0000_1px)] after:bg-size-[8px_8px]":
@@ -392,7 +392,7 @@ export function ColorPickerArea({
         ),
       })}
     >
-      <ColorPickerPrimitive.AreaBackground className={recipe.background()} />
+      <ColorPickerPrimitive.AreaBackground className={slots.background()} />
 
       {children}
     </ColorPickerPrimitive.Area>
@@ -413,17 +413,17 @@ export function ColorPickerInput({ channel = "hex", ...rest }: ColorPickerInputP
 }
 
 export function ColorPickerSwatchPreview({ className, ...rest }: ComponentProps<typeof ark.div>) {
-  const recipe = colorPickerInputSwatchVariants();
+  const slots = colorPickerInputSwatchVariants();
 
   return (
     <ark.div
       {...rest}
-      className={recipe.base({ className })}
+      className={slots.base({ className })}
       data-part="input-swatch"
       data-scope="color-picker"
     >
-      <ColorPickerPrimitive.TransparencyGrid className={recipe.grid()} />
-      <ColorPickerPrimitive.ValueSwatch className={recipe.swatch()} />
+      <ColorPickerPrimitive.TransparencyGrid className={slots.grid()} />
+      <ColorPickerPrimitive.ValueSwatch className={slots.swatch()} />
     </ark.div>
   );
 }

@@ -73,11 +73,11 @@ export function MarqueeRoot({
 }
 
 export function MarqueeContent({ className, ...rest }: MarqueeContentProps) {
-  const recipe = marqueeContentVariants();
+  const slots = marqueeContentVariants();
 
   return (
-    <MarqueePrimitive.Viewport className={recipe.viewport()}>
-      <MarqueePrimitive.Content {...rest} className={recipe.base({ className })} />
+    <MarqueePrimitive.Viewport className={slots.viewport()}>
+      <MarqueePrimitive.Content {...rest} className={slots.base({ className })} />
     </MarqueePrimitive.Viewport>
   );
 }

@@ -152,12 +152,12 @@ export function DrawerContentInner({ className, ...rest }: ComponentProps<typeof
 }
 
 export function DrawerGrabber({ className, ...rest }: DrawerGrabberProps) {
-  const recipe = drawerGrabberVariants();
+  const slots = drawerGrabberVariants();
 
   return (
-    <ark.div className={recipe.wrapper()}>
-      <DrawerPrimitive.Grabber {...rest} className={recipe.base({ className })}>
-        <DrawerPrimitive.GrabberIndicator className={recipe.indicator()} />
+    <ark.div className={slots.wrapper()}>
+      <DrawerPrimitive.Grabber {...rest} className={slots.base({ className })}>
+        <DrawerPrimitive.GrabberIndicator className={slots.indicator()} />
       </DrawerPrimitive.Grabber>
     </ark.div>
   );

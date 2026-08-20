@@ -154,15 +154,15 @@ export function DropdownMenuCheckboxItem({
   children,
   ...rest
 }: DropdownMenuCheckboxItemProps) {
-  const recipe = dropdownMenuItemVariants({ inset: true, variant: "default" });
+  const slots = dropdownMenuItemVariants({ inset: true, variant: "default" });
 
   return (
-    <MenuPrimitive.CheckboxItem {...rest} className={recipe.base({ className })}>
-      <MenuPrimitive.ItemIndicator className={recipe.indicator()}>
+    <MenuPrimitive.CheckboxItem {...rest} className={slots.base({ className })}>
+      <MenuPrimitive.ItemIndicator className={slots.indicator()}>
         <CheckIcon />
       </MenuPrimitive.ItemIndicator>
 
-      <MenuPrimitive.ItemText className={recipe.text()}>{children}</MenuPrimitive.ItemText>
+      <MenuPrimitive.ItemText className={slots.text()}>{children}</MenuPrimitive.ItemText>
     </MenuPrimitive.CheckboxItem>
   );
 }
@@ -195,15 +195,15 @@ export function DropdownMenuRadioItem({
   children,
   ...rest
 }: DropdownMenuRadioItemProps) {
-  const recipe = dropdownMenuItemVariants({ inset: true, variant: "default" });
+  const slots = dropdownMenuItemVariants({ inset: true, variant: "default" });
 
   return (
-    <MenuPrimitive.RadioItem {...rest} className={recipe.base({ className })}>
-      <MenuPrimitive.ItemIndicator className={recipe.indicator()}>
+    <MenuPrimitive.RadioItem {...rest} className={slots.base({ className })}>
+      <MenuPrimitive.ItemIndicator className={slots.indicator()}>
         <CheckIcon />
       </MenuPrimitive.ItemIndicator>
 
-      <MenuPrimitive.ItemText className={recipe.text()}>{children}</MenuPrimitive.ItemText>
+      <MenuPrimitive.ItemText className={slots.text()}>{children}</MenuPrimitive.ItemText>
     </MenuPrimitive.RadioItem>
   );
 }

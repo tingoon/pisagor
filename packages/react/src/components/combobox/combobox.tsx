@@ -267,14 +267,14 @@ export function ComboboxItem({
   children,
   ...rest
 }: ComboboxItemProps) {
-  const recipe = comboboxItemVariants({ showIndicator });
+  const slots = comboboxItemVariants({ showIndicator });
 
   return (
-    <ComboboxPrimitive.Item {...rest} className={recipe.base({ className })} persistFocus>
+    <ComboboxPrimitive.Item {...rest} className={slots.base({ className })} persistFocus>
       {children}
 
       {showIndicator ? (
-        <span className={recipe.indicator()}>
+        <span className={slots.indicator()}>
           <ComboboxPrimitive.ItemIndicator>
             <CheckIcon />
           </ComboboxPrimitive.ItemIndicator>

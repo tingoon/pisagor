@@ -27,11 +27,11 @@ export function QrCodeRoot({ className, children, testId, ...rest }: QrCodeRootP
 }
 
 export function QrCodeFrame({ className, ...rest }: QrCodeFrameProps) {
-  const recipe = qrCodeFrameVariants();
+  const slots = qrCodeFrameVariants();
 
   return (
-    <QrCodePrimitive.Frame {...rest} className={recipe.base({ className })}>
-      <QrCodePrimitive.Pattern className={recipe.pattern()} />
+    <QrCodePrimitive.Frame {...rest} className={slots.base({ className })}>
+      <QrCodePrimitive.Pattern className={slots.pattern()} />
     </QrCodePrimitive.Frame>
   );
 }

@@ -196,28 +196,24 @@ export function CalendarClearTrigger(props: CalendarClearTriggerProps) {
 
 export function CalendarYearSelect({ className, ...rest }: CalendarYearSelectProps) {
   const { className: selectClassName, controlProps } = useCalendarSelectShell(className);
-  const recipe = calendarSelectWrapperVariants();
+  const slots = calendarSelectWrapperVariants();
 
   return (
-    <div className={recipe.base()} data-part="year-select-wrapper" data-scope="calendar">
+    <div className={slots.base()} data-part="year-select-wrapper" data-scope="calendar">
       <CalendarPrimitive.YearSelect {...rest} {...controlProps} className={selectClassName} />
-      <CaretDownIcon className={recipe.icon()} data-part="year-select-icon" data-scope="calendar" />
+      <CaretDownIcon className={slots.icon()} data-part="year-select-icon" data-scope="calendar" />
     </div>
   );
 }
 
 export function CalendarMonthSelect({ className, ...rest }: CalendarMonthSelectProps) {
   const { className: selectClassName, controlProps } = useCalendarSelectShell(className);
-  const recipe = calendarSelectWrapperVariants();
+  const slots = calendarSelectWrapperVariants();
 
   return (
-    <div className={recipe.base()} data-part="month-select-wrapper" data-scope="calendar">
+    <div className={slots.base()} data-part="month-select-wrapper" data-scope="calendar">
       <CalendarPrimitive.MonthSelect {...rest} {...controlProps} className={selectClassName} />
-      <CaretDownIcon
-        className={recipe.icon()}
-        data-part="month-select-icon"
-        data-scope="calendar"
-      />
+      <CaretDownIcon className={slots.icon()} data-part="month-select-icon" data-scope="calendar" />
     </div>
   );
 }
@@ -371,15 +367,11 @@ export function CalendarTableCell({
   className,
   ...rest
 }: CalendarTableCellProps) {
-  const recipe = calendarTableCellVariants();
+  const slots = calendarTableCellVariants();
 
   return (
-    <CalendarPrimitive.TableCell
-      className={recipe.base()}
-      value={value}
-      visibleRange={visibleRange}
-    >
-      <CalendarPrimitive.TableCellTrigger {...rest} className={recipe.trigger({ className })} />
+    <CalendarPrimitive.TableCell className={slots.base()} value={value} visibleRange={visibleRange}>
+      <CalendarPrimitive.TableCellTrigger {...rest} className={slots.trigger({ className })} />
     </CalendarPrimitive.TableCell>
   );
 }

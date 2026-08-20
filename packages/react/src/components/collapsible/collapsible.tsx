@@ -58,11 +58,11 @@ export function CollapsibleContent({ className, children, ...rest }: Collapsible
 }
 
 export function CollapsibleIndicator({ className, ...rest }: CollapsibleIndicatorProps) {
-  const recipe = collapsibleIndicatorVariants();
+  const slots = collapsibleIndicatorVariants();
 
   return (
-    <CollapsiblePrimitive.Indicator {...rest} className={recipe.base({ className })}>
-      <CaretDownIcon className={recipe.icon()} />
+    <CollapsiblePrimitive.Indicator {...rest} className={slots.base({ className })}>
+      <CaretDownIcon className={slots.icon()} />
     </CollapsiblePrimitive.Indicator>
   );
 }

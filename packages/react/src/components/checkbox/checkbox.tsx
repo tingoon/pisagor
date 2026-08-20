@@ -54,7 +54,7 @@ export function CheckboxRoot({
   const resolved = useFormControlVariant(variantProp);
   const shellArgs = shellVariantArgs(resolved);
   const controlProps = formControlShellProps(resolved);
-  const recipe = checkbox2Variants();
+  const slots = checkbox2Variants();
 
   const handleCheckedChange =
     onCheckedChange || onValueChange
@@ -70,7 +70,7 @@ export function CheckboxRoot({
       {...controlProps}
       className={cn(
         formControlToggleVariants({ size: "md", ...shellArgs }),
-        recipe.base({ className }),
+        slots.base({ className }),
       )}
       data-testid={testId}
       onCheckedChange={handleCheckedChange}
@@ -92,9 +92,9 @@ export function CheckboxRoot({
 }
 
 function CheckboxIndicator({ className, ...rest }: CheckboxIndicatorProps) {
-  const recipe = checkbox2Variants();
+  const slots = checkbox2Variants();
 
-  return <CheckboxPrimitive.Indicator {...rest} className={recipe.indicator({ className })} />;
+  return <CheckboxPrimitive.Indicator {...rest} className={slots.indicator({ className })} />;
 }
 
 // Keep export for backwards compatibility

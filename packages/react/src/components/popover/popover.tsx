@@ -95,17 +95,17 @@ export function PopoverContent({
   children,
   ...rest
 }: PopoverContentProps) {
-  const recipe = popoverContentVariants();
+  const slots = popoverContentVariants();
 
   return (
     <Portal>
       <PopoverPositioner>
-        <PopoverPrimitive.Content {...rest} className={recipe.base({ className })}>
+        <PopoverPrimitive.Content {...rest} className={slots.base({ className })}>
           {children}
 
           {!!showCloseButton && (
             <PopoverClose asChild>
-              <Button aria-label="Close" className={recipe.close()} size="icon-sm" variant="ghost">
+              <Button aria-label="Close" className={slots.close()} size="icon-sm" variant="ghost">
                 <XIcon />
               </Button>
             </PopoverClose>
