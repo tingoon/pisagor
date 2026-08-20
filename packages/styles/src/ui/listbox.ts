@@ -76,12 +76,30 @@ export const listboxItemIndicatorVariants = tv({
 export const listboxEmptyVariants = tv({
   base: ["px-2 py-1.5", "text-center text-muted-foreground text-sm"],
 });
+
 export type ListboxItemVariantProps = VariantProps<typeof listboxItemVariants>;
+export type ListboxItemVariants = ReturnType<typeof listboxItemVariants>;
+
 export type ListboxVariantProps = VariantProps<typeof listboxVariants>;
+export type ListboxVariants = ReturnType<typeof listboxVariants>;
+
 export type ListboxContentVariantProps = VariantProps<typeof listboxContentVariants>;
+export type ListboxContentVariants = ReturnType<typeof listboxContentVariants>;
+
 export type ListboxItemTextVariantProps = VariantProps<typeof listboxItemTextVariants>;
+export type ListboxItemTextVariants = ReturnType<typeof listboxItemTextVariants>;
+
 export type ListboxItemGroupVariantProps = VariantProps<typeof listboxItemGroupVariants>;
+export type ListboxItemGroupVariants = ReturnType<typeof listboxItemGroupVariants>;
+
 export type ListboxItemGroupLabelVariantProps = VariantProps<typeof listboxItemGroupLabelVariants>;
+export type ListboxItemGroupLabelVariants = ReturnType<typeof listboxItemGroupLabelVariants>;
+
 export type ListboxValueTextVariantProps = VariantProps<typeof listboxValueTextVariants>;
+export type ListboxValueTextVariants = ReturnType<typeof listboxValueTextVariants>;
+
 export type ListboxItemIndicatorVariantProps = VariantProps<typeof listboxItemIndicatorVariants>;
+export type ListboxItemIndicatorVariants = ReturnType<typeof listboxItemIndicatorVariants>;
+
 export type ListboxEmptyVariantProps = VariantProps<typeof listboxEmptyVariants>;
+export type ListboxEmptyVariants = ReturnType<typeof listboxEmptyVariants>;

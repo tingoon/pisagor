@@ -91,14 +91,36 @@ export const itemFooterVariants = tv({
 export const itemInlineVariants = tv({
   base: ["flex flex-col gap-0.5"],
 });
+
 export type ItemVariantProps = VariantProps<typeof itemVariants>;
+export type ItemVariants = ReturnType<typeof itemVariants>;
+
 export type ItemMediaVariantProps = VariantProps<typeof itemMediaVariants>;
+export type ItemMediaVariants = ReturnType<typeof itemMediaVariants>;
+
 export type ItemGroupVariantProps = VariantProps<typeof itemGroupVariants>;
+export type ItemGroupVariants = ReturnType<typeof itemGroupVariants>;
+
 export type ItemSeparatorVariantProps = VariantProps<typeof itemSeparatorVariants>;
+export type ItemSeparatorVariants = ReturnType<typeof itemSeparatorVariants>;
+
 export type ItemContentVariantProps = VariantProps<typeof itemContentVariants>;
+export type ItemContentVariants = ReturnType<typeof itemContentVariants>;
+
 export type ItemTitleVariantProps = VariantProps<typeof itemTitleVariants>;
+export type ItemTitleVariants = ReturnType<typeof itemTitleVariants>;
+
 export type ItemDescriptionVariantProps = VariantProps<typeof itemDescriptionVariants>;
+export type ItemDescriptionVariants = ReturnType<typeof itemDescriptionVariants>;
+
 export type ItemActionsVariantProps = VariantProps<typeof itemActionsVariants>;
+export type ItemActionsVariants = ReturnType<typeof itemActionsVariants>;
+
 export type ItemHeaderVariantProps = VariantProps<typeof itemHeaderVariants>;
+export type ItemHeaderVariants = ReturnType<typeof itemHeaderVariants>;
+
 export type ItemFooterVariantProps = VariantProps<typeof itemFooterVariants>;
+export type ItemFooterVariants = ReturnType<typeof itemFooterVariants>;
+
 export type ItemInlineVariantProps = VariantProps<typeof itemInlineVariants>;
+export type ItemInlineVariants = ReturnType<typeof itemInlineVariants>;

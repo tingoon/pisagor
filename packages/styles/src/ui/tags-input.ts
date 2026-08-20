@@ -62,13 +62,33 @@ export const tagsInputInline5Variants = tv({
 export const tagsInputRootProviderVariants = tv({
   base: ["group/tags-input", "flex w-full flex-col gap-2"],
 });
+
 export type TagsInputVariantProps = VariantProps<typeof tagsInputVariants>;
+export type TagsInputVariants = ReturnType<typeof tagsInputVariants>;
+
 export type TagsInputInlineVariantProps = VariantProps<typeof tagsInputInlineVariants>;
+export type TagsInputInlineVariants = ReturnType<typeof tagsInputInlineVariants>;
+
 export type TagsInputItemVariantProps = VariantProps<typeof tagsInputItemVariants>;
+export type TagsInputItemVariants = ReturnType<typeof tagsInputItemVariants>;
+
 export type TagsInputItemPreviewVariantProps = VariantProps<typeof tagsInputItemPreviewVariants>;
+export type TagsInputItemPreviewVariants = ReturnType<typeof tagsInputItemPreviewVariants>;
+
 export type TagsInputItemTextVariantProps = VariantProps<typeof tagsInputItemTextVariants>;
+export type TagsInputItemTextVariants = ReturnType<typeof tagsInputItemTextVariants>;
+
 export type TagsInputInline2VariantProps = VariantProps<typeof tagsInputInline2Variants>;
+export type TagsInputInline2Variants = ReturnType<typeof tagsInputInline2Variants>;
+
 export type TagsInputInline3VariantProps = VariantProps<typeof tagsInputInline3Variants>;
+export type TagsInputInline3Variants = ReturnType<typeof tagsInputInline3Variants>;
+
 export type TagsInputInline4VariantProps = VariantProps<typeof tagsInputInline4Variants>;
+export type TagsInputInline4Variants = ReturnType<typeof tagsInputInline4Variants>;
+
 export type TagsInputInline5VariantProps = VariantProps<typeof tagsInputInline5Variants>;
+export type TagsInputInline5Variants = ReturnType<typeof tagsInputInline5Variants>;
+
 export type TagsInputRootProviderVariantProps = VariantProps<typeof tagsInputRootProviderVariants>;
+export type TagsInputRootProviderVariants = ReturnType<typeof tagsInputRootProviderVariants>;

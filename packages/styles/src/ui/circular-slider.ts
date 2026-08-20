@@ -38,4 +38,7 @@ export const circularSliderVariants = tv({
     value: ["gap-1", "tabular-nums", "[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0"],
   },
 });
+
 export type CircularSliderVariantProps = VariantProps<typeof circularSliderVariants>;
+export type CircularSliderVariants = ReturnType<typeof circularSliderVariants>;
+export type CircularSliderSlots = keyof CircularSliderVariants;

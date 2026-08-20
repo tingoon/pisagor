@@ -39,24 +39,28 @@ export const avatarVariants = tv({
 });
 
 export const avatarGroupVariants = tv({
-  base: [
-    "flex -space-x-2",
-    "**:data-[scope=avatar]:data-[part=root]:ring-2 **:data-[scope=avatar]:data-[part=root]:ring-background",
-  ],
+  slots: {
+    base: [
+      "flex -space-x-2",
+      "**:data-[scope=avatar]:data-[part=root]:ring-2 **:data-[scope=avatar]:data-[part=root]:ring-background",
+    ],
+    count: [
+      "relative",
+      "size-8",
+      "flex shrink-0 items-center justify-center",
+      "bg-muted",
+      "select-none text-muted-foreground text-sm",
+      "rounded-full",
+      "ring-2 ring-background",
+      "[&_svg]:size-4",
+    ],
+  },
 });
 
-export const avatarGroupCountVariants = tv({
-  base: [
-    "relative",
-    "size-8",
-    "flex shrink-0 items-center justify-center",
-    "bg-muted",
-    "select-none text-muted-foreground text-sm",
-    "rounded-full",
-    "ring-2 ring-background",
-    "[&_svg]:size-4",
-  ],
-});
 export type AvatarVariantProps = VariantProps<typeof avatarVariants>;
+export type AvatarVariants = ReturnType<typeof avatarVariants>;
+export type AvatarSlots = keyof AvatarVariants;
+
 export type AvatarGroupVariantProps = VariantProps<typeof avatarGroupVariants>;
-export type AvatarGroupCountVariantProps = VariantProps<typeof avatarGroupCountVariants>;
+export type AvatarGroupVariants = ReturnType<typeof avatarGroupVariants>;
+export type AvatarGroupSlots = keyof AvatarGroupVariants;

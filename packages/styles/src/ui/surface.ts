@@ -30,4 +30,6 @@ export const surfaceVariants = tv({
     },
   },
 });
+
 export type SurfaceVariantProps = VariantProps<typeof surfaceVariants>;
+export type SurfaceVariants = ReturnType<typeof surfaceVariants>;

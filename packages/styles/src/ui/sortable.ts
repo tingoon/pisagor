@@ -36,7 +36,15 @@ export const sortableHandleVariants = tv({
 export const sortableItemContentVariants = tv({
   base: ["flex min-w-0 flex-1 items-center gap-3 p-3"],
 });
+
 export type SortableVariantProps = VariantProps<typeof sortableVariants>;
+export type SortableVariants = ReturnType<typeof sortableVariants>;
+
 export type SortableItemVariantProps = VariantProps<typeof sortableItemVariants>;
+export type SortableItemVariants = ReturnType<typeof sortableItemVariants>;
+
 export type SortableHandleVariantProps = VariantProps<typeof sortableHandleVariants>;
+export type SortableHandleVariants = ReturnType<typeof sortableHandleVariants>;
+
 export type SortableItemContentVariantProps = VariantProps<typeof sortableItemContentVariants>;
+export type SortableItemContentVariants = ReturnType<typeof sortableItemContentVariants>;

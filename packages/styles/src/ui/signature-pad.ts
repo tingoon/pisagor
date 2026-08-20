@@ -25,4 +25,7 @@ export const signaturePadVariants = tv({
     segment: ["size-full", "min-h-0", "fill-foreground", "touch-none"],
   },
 });
+
 export type SignaturePadVariantProps = VariantProps<typeof signaturePadVariants>;
+export type SignaturePadVariants = ReturnType<typeof signaturePadVariants>;
+export type SignaturePadSlots = keyof SignaturePadVariants;

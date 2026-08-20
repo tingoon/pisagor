@@ -41,12 +41,24 @@ export const bottomNavigationItemIconVariants = tv({
 export const bottomNavigationItemLabelVariants = tv({
   base: ["truncate font-medium text-xs"],
 });
+
 export type BottomNavigationVariantProps = VariantProps<typeof bottomNavigationVariants>;
+export type BottomNavigationVariants = ReturnType<typeof bottomNavigationVariants>;
+
 export type BottomNavigationListVariantProps = VariantProps<typeof bottomNavigationListVariants>;
+export type BottomNavigationListVariants = ReturnType<typeof bottomNavigationListVariants>;
+
 export type BottomNavigationItemVariantProps = VariantProps<typeof bottomNavigationItemVariants>;
+export type BottomNavigationItemVariants = ReturnType<typeof bottomNavigationItemVariants>;
+
 export type BottomNavigationItemIconVariantProps = VariantProps<
   typeof bottomNavigationItemIconVariants
 >;
+export type BottomNavigationItemIconVariants = ReturnType<typeof bottomNavigationItemIconVariants>;
+
 export type BottomNavigationItemLabelVariantProps = VariantProps<
+  typeof bottomNavigationItemLabelVariants
+>;
+export type BottomNavigationItemLabelVariants = ReturnType<
   typeof bottomNavigationItemLabelVariants
 >;

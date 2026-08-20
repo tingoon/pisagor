@@ -21,4 +21,7 @@ export const tooltipVariants = tv({
     ],
   },
 });
+
 export type TooltipVariantProps = VariantProps<typeof tooltipVariants>;
+export type TooltipVariants = ReturnType<typeof tooltipVariants>;
+export type TooltipSlots = keyof TooltipVariants;

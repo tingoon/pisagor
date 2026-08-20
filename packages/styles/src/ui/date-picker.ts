@@ -44,9 +44,21 @@ export const datePickerControlVariants = tv({
 export const datePickerInline2Variants = tv({
   base: "text-muted-foreground",
 });
+
 export type DatePickerTriggerVariantProps = VariantProps<typeof datePickerTriggerVariants>;
+export type DatePickerTriggerVariants = ReturnType<typeof datePickerTriggerVariants>;
+
 export type DatePickerInlineVariantProps = VariantProps<typeof datePickerInlineVariants>;
+export type DatePickerInlineVariants = ReturnType<typeof datePickerInlineVariants>;
+
 export type DatePickerContentVariantProps = VariantProps<typeof datePickerContentVariants>;
+export type DatePickerContentVariants = ReturnType<typeof datePickerContentVariants>;
+
 export type DatePickerValueVariantProps = VariantProps<typeof datePickerValueVariants>;
+export type DatePickerValueVariants = ReturnType<typeof datePickerValueVariants>;
+
 export type DatePickerControlVariantProps = VariantProps<typeof datePickerControlVariants>;
+export type DatePickerControlVariants = ReturnType<typeof datePickerControlVariants>;
+
 export type DatePickerInline2VariantProps = VariantProps<typeof datePickerInline2Variants>;
+export type DatePickerInline2Variants = ReturnType<typeof datePickerInline2Variants>;

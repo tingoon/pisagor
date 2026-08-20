@@ -64,10 +64,24 @@ export const numberFieldScrubberVariants = tv({
 export const numberInputInline2Variants = tv({
   base: ["relative order-last me-1 shrink-0"],
 });
+
 export type NumberFieldVariantProps = VariantProps<typeof numberFieldVariants>;
+export type NumberFieldVariants = ReturnType<typeof numberFieldVariants>;
+
 export type NumberFieldGroupVariantProps = VariantProps<typeof numberFieldGroupVariants>;
+export type NumberFieldGroupVariants = ReturnType<typeof numberFieldGroupVariants>;
+
 export type NumberFieldDecrementVariantProps = VariantProps<typeof numberFieldDecrementVariants>;
+export type NumberFieldDecrementVariants = ReturnType<typeof numberFieldDecrementVariants>;
+
 export type NumberFieldIncrementVariantProps = VariantProps<typeof numberFieldIncrementVariants>;
+export type NumberFieldIncrementVariants = ReturnType<typeof numberFieldIncrementVariants>;
+
 export type NumberInputInlineVariantProps = VariantProps<typeof numberInputInlineVariants>;
+export type NumberInputInlineVariants = ReturnType<typeof numberInputInlineVariants>;
+
 export type NumberFieldScrubberVariantProps = VariantProps<typeof numberFieldScrubberVariants>;
+export type NumberFieldScrubberVariants = ReturnType<typeof numberFieldScrubberVariants>;
+
 export type NumberInputInline2VariantProps = VariantProps<typeof numberInputInline2Variants>;
+export type NumberInputInline2Variants = ReturnType<typeof numberInputInline2Variants>;

@@ -15,7 +15,15 @@ export const dataTableVariants = tv({
 export const dataTableInlineVariants = tv({
   base: ["py-6 text-center text-muted-foreground"],
 });
+
 export type DataTableToolbarVariantProps = VariantProps<typeof dataTableToolbarVariants>;
+export type DataTableToolbarVariants = ReturnType<typeof dataTableToolbarVariants>;
+
 export type DataTableFooterVariantProps = VariantProps<typeof dataTableFooterVariants>;
+export type DataTableFooterVariants = ReturnType<typeof dataTableFooterVariants>;
+
 export type DataTableVariantProps = VariantProps<typeof dataTableVariants>;
+export type DataTableVariants = ReturnType<typeof dataTableVariants>;
+
 export type DataTableInlineVariantProps = VariantProps<typeof dataTableInlineVariants>;
+export type DataTableInlineVariants = ReturnType<typeof dataTableInlineVariants>;

@@ -280,38 +280,108 @@ export const sidebarInline6Variants = tv({
 export const sidebarInline7Variants = tv({
   base: ["h-4 max-w-(--skeleton-width) flex-1"],
 });
+
 export type SidebarWrapperVariantProps = VariantProps<typeof sidebarWrapperVariants>;
+export type SidebarWrapperVariants = ReturnType<typeof sidebarWrapperVariants>;
+
 export type SidebarVariantProps = VariantProps<typeof sidebarVariants>;
+export type SidebarVariants = ReturnType<typeof sidebarVariants>;
+
 export type Sidebar2VariantProps = VariantProps<typeof sidebar2Variants>;
+export type Sidebar2Variants = ReturnType<typeof sidebar2Variants>;
+
 export type Sidebar3VariantProps = VariantProps<typeof sidebar3Variants>;
+export type Sidebar3Variants = ReturnType<typeof sidebar3Variants>;
+
 export type SidebarGapVariantProps = VariantProps<typeof sidebarGapVariants>;
+export type SidebarGapVariants = ReturnType<typeof sidebarGapVariants>;
+
 export type SidebarContainerVariantProps = VariantProps<typeof sidebarContainerVariants>;
+export type SidebarContainerVariants = ReturnType<typeof sidebarContainerVariants>;
+
 export type SidebarInnerVariantProps = VariantProps<typeof sidebarInnerVariants>;
+export type SidebarInnerVariants = ReturnType<typeof sidebarInnerVariants>;
+
 export type SidebarTriggerVariantProps = VariantProps<typeof sidebarTriggerVariants>;
+export type SidebarTriggerVariants = ReturnType<typeof sidebarTriggerVariants>;
+
 export type SidebarRailVariantProps = VariantProps<typeof sidebarRailVariants>;
+export type SidebarRailVariants = ReturnType<typeof sidebarRailVariants>;
+
 export type SidebarInsetVariantProps = VariantProps<typeof sidebarInsetVariants>;
+export type SidebarInsetVariants = ReturnType<typeof sidebarInsetVariants>;
+
 export type SidebarInputVariantProps = VariantProps<typeof sidebarInputVariants>;
+export type SidebarInputVariants = ReturnType<typeof sidebarInputVariants>;
+
 export type SidebarHeaderVariantProps = VariantProps<typeof sidebarHeaderVariants>;
+export type SidebarHeaderVariants = ReturnType<typeof sidebarHeaderVariants>;
+
 export type SidebarFooterVariantProps = VariantProps<typeof sidebarFooterVariants>;
+export type SidebarFooterVariants = ReturnType<typeof sidebarFooterVariants>;
+
 export type SidebarSeparatorVariantProps = VariantProps<typeof sidebarSeparatorVariants>;
+export type SidebarSeparatorVariants = ReturnType<typeof sidebarSeparatorVariants>;
+
 export type SidebarContentVariantProps = VariantProps<typeof sidebarContentVariants>;
+export type SidebarContentVariants = ReturnType<typeof sidebarContentVariants>;
+
 export type SidebarGroupVariantProps = VariantProps<typeof sidebarGroupVariants>;
+export type SidebarGroupVariants = ReturnType<typeof sidebarGroupVariants>;
+
 export type SidebarGroupLabelVariantProps = VariantProps<typeof sidebarGroupLabelVariants>;
+export type SidebarGroupLabelVariants = ReturnType<typeof sidebarGroupLabelVariants>;
+
 export type SidebarGroupActionVariantProps = VariantProps<typeof sidebarGroupActionVariants>;
+export type SidebarGroupActionVariants = ReturnType<typeof sidebarGroupActionVariants>;
+
 export type SidebarGroupContentVariantProps = VariantProps<typeof sidebarGroupContentVariants>;
+export type SidebarGroupContentVariants = ReturnType<typeof sidebarGroupContentVariants>;
+
 export type SidebarMenuVariantProps = VariantProps<typeof sidebarMenuVariants>;
+export type SidebarMenuVariants = ReturnType<typeof sidebarMenuVariants>;
+
 export type SidebarMenuItemVariantProps = VariantProps<typeof sidebarMenuItemVariants>;
+export type SidebarMenuItemVariants = ReturnType<typeof sidebarMenuItemVariants>;
+
 export type SidebarMenuButtonVariantProps = VariantProps<typeof sidebarMenuButtonVariants>;
+export type SidebarMenuButtonVariants = ReturnType<typeof sidebarMenuButtonVariants>;
+
 export type SidebarMenuActionVariantProps = VariantProps<typeof sidebarMenuActionVariants>;
+export type SidebarMenuActionVariants = ReturnType<typeof sidebarMenuActionVariants>;
+
 export type SidebarMenuBadgeVariantProps = VariantProps<typeof sidebarMenuBadgeVariants>;
+export type SidebarMenuBadgeVariants = ReturnType<typeof sidebarMenuBadgeVariants>;
+
 export type SidebarMenuSkeletonVariantProps = VariantProps<typeof sidebarMenuSkeletonVariants>;
+export type SidebarMenuSkeletonVariants = ReturnType<typeof sidebarMenuSkeletonVariants>;
+
 export type SidebarMenuSubVariantProps = VariantProps<typeof sidebarMenuSubVariants>;
+export type SidebarMenuSubVariants = ReturnType<typeof sidebarMenuSubVariants>;
+
 export type SidebarMenuSubItemVariantProps = VariantProps<typeof sidebarMenuSubItemVariants>;
+export type SidebarMenuSubItemVariants = ReturnType<typeof sidebarMenuSubItemVariants>;
+
 export type SidebarMenuSubButtonVariantProps = VariantProps<typeof sidebarMenuSubButtonVariants>;
+export type SidebarMenuSubButtonVariants = ReturnType<typeof sidebarMenuSubButtonVariants>;
+
 export type SidebarInlineVariantProps = VariantProps<typeof sidebarInlineVariants>;
+export type SidebarInlineVariants = ReturnType<typeof sidebarInlineVariants>;
+
 export type SidebarInline2VariantProps = VariantProps<typeof sidebarInline2Variants>;
+export type SidebarInline2Variants = ReturnType<typeof sidebarInline2Variants>;
+
 export type SidebarInline3VariantProps = VariantProps<typeof sidebarInline3Variants>;
+export type SidebarInline3Variants = ReturnType<typeof sidebarInline3Variants>;
+
 export type SidebarInline4VariantProps = VariantProps<typeof sidebarInline4Variants>;
+export type SidebarInline4Variants = ReturnType<typeof sidebarInline4Variants>;
+
 export type SidebarInline5VariantProps = VariantProps<typeof sidebarInline5Variants>;
+export type SidebarInline5Variants = ReturnType<typeof sidebarInline5Variants>;
+
 export type SidebarInline6VariantProps = VariantProps<typeof sidebarInline6Variants>;
+export type SidebarInline6Variants = ReturnType<typeof sidebarInline6Variants>;
+
 export type SidebarInline7VariantProps = VariantProps<typeof sidebarInline7Variants>;
+export type SidebarInline7Variants = ReturnType<typeof sidebarInline7Variants>;

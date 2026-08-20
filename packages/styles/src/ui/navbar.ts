@@ -14,4 +14,7 @@ export const navbarVariants = tv({
     nav: ["flex min-w-0 flex-1 items-center"],
   },
 });
+
 export type NavbarVariantProps = VariantProps<typeof navbarVariants>;
+export type NavbarVariants = ReturnType<typeof navbarVariants>;
+export type NavbarSlots = keyof NavbarVariants;

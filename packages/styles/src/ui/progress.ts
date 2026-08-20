@@ -26,4 +26,7 @@ export const progressVariants = tv({
     value: ["ms-auto tabular-nums"],
   },
 });
+
 export type ProgressVariantProps = VariantProps<typeof progressVariants>;
+export type ProgressVariants = ReturnType<typeof progressVariants>;
+export type ProgressSlots = keyof ProgressVariants;

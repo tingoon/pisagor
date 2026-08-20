@@ -6,4 +6,7 @@ export const fileInputVariants = tv({
     label: ["min-w-0 flex-1 cursor-pointer truncate px-0"],
   },
 });
+
 export type FileInputVariantProps = VariantProps<typeof fileInputVariants>;
+export type FileInputVariants = ReturnType<typeof fileInputVariants>;
+export type FileInputSlots = keyof FileInputVariants;

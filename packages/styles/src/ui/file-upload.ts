@@ -104,27 +104,65 @@ export const fileUploadInline6Variants = tv({
 export const fileUploadInline7Variants = tv({
   base: ["me-auto rtl:ms-auto"],
 });
+
 export type FileUploadVariantProps = VariantProps<typeof fileUploadVariants>;
+export type FileUploadVariants = ReturnType<typeof fileUploadVariants>;
+
 export type FileUploadDropzoneVariantProps = VariantProps<typeof fileUploadDropzoneVariants>;
+export type FileUploadDropzoneVariants = ReturnType<typeof fileUploadDropzoneVariants>;
+
 export type FileUploadDropzoneIconVariantProps = VariantProps<
   typeof fileUploadDropzoneIconVariants
 >;
+export type FileUploadDropzoneIconVariants = ReturnType<typeof fileUploadDropzoneIconVariants>;
+
 export type FileUploadTitleVariantProps = VariantProps<typeof fileUploadTitleVariants>;
+export type FileUploadTitleVariants = ReturnType<typeof fileUploadTitleVariants>;
+
 export type FileUploadTitle2VariantProps = VariantProps<typeof fileUploadTitle2Variants>;
+export type FileUploadTitle2Variants = ReturnType<typeof fileUploadTitle2Variants>;
+
 export type FileUploadDropzoneHelperVariantProps = VariantProps<
   typeof fileUploadDropzoneHelperVariants
 >;
+export type FileUploadDropzoneHelperVariants = ReturnType<typeof fileUploadDropzoneHelperVariants>;
+
 export type FileUploadInlineVariantProps = VariantProps<typeof fileUploadInlineVariants>;
+export type FileUploadInlineVariants = ReturnType<typeof fileUploadInlineVariants>;
+
 export type FileUploadInline2VariantProps = VariantProps<typeof fileUploadInline2Variants>;
+export type FileUploadInline2Variants = ReturnType<typeof fileUploadInline2Variants>;
+
 export type FileUploadItemVariantProps = VariantProps<typeof fileUploadItemVariants>;
+export type FileUploadItemVariants = ReturnType<typeof fileUploadItemVariants>;
+
 export type FileUploadItemPreviewVariantProps = VariantProps<typeof fileUploadItemPreviewVariants>;
+export type FileUploadItemPreviewVariants = ReturnType<typeof fileUploadItemPreviewVariants>;
+
 export type FileUploadItemPreviewImageVariantProps = VariantProps<
   typeof fileUploadItemPreviewImageVariants
 >;
+export type FileUploadItemPreviewImageVariants = ReturnType<
+  typeof fileUploadItemPreviewImageVariants
+>;
+
 export type FileUploadItemNameVariantProps = VariantProps<typeof fileUploadItemNameVariants>;
+export type FileUploadItemNameVariants = ReturnType<typeof fileUploadItemNameVariants>;
+
 export type FileUploadItemSizeVariantProps = VariantProps<typeof fileUploadItemSizeVariants>;
+export type FileUploadItemSizeVariants = ReturnType<typeof fileUploadItemSizeVariants>;
+
 export type FileUploadInline3VariantProps = VariantProps<typeof fileUploadInline3Variants>;
+export type FileUploadInline3Variants = ReturnType<typeof fileUploadInline3Variants>;
+
 export type FileUploadInline4VariantProps = VariantProps<typeof fileUploadInline4Variants>;
+export type FileUploadInline4Variants = ReturnType<typeof fileUploadInline4Variants>;
+
 export type FileUploadInline5VariantProps = VariantProps<typeof fileUploadInline5Variants>;
+export type FileUploadInline5Variants = ReturnType<typeof fileUploadInline5Variants>;
+
 export type FileUploadInline6VariantProps = VariantProps<typeof fileUploadInline6Variants>;
+export type FileUploadInline6Variants = ReturnType<typeof fileUploadInline6Variants>;
+
 export type FileUploadInline7VariantProps = VariantProps<typeof fileUploadInline7Variants>;
+export type FileUploadInline7Variants = ReturnType<typeof fileUploadInline7Variants>;

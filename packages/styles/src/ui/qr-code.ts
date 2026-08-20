@@ -30,5 +30,11 @@ export const qrCodeOverlayVariants = tv({
 });
 
 export type QrCodeVariantProps = VariantProps<typeof qrCodeVariants>;
+export type QrCodeVariants = ReturnType<typeof qrCodeVariants>;
+
 export type QrCodeFrameVariantProps = VariantProps<typeof qrCodeFrameVariants>;
+export type QrCodeFrameVariants = ReturnType<typeof qrCodeFrameVariants>;
+export type QrCodeFrameSlots = keyof QrCodeFrameVariants;
+
 export type QrCodeOverlayVariantProps = VariantProps<typeof qrCodeOverlayVariants>;
+export type QrCodeOverlayVariants = ReturnType<typeof qrCodeOverlayVariants>;

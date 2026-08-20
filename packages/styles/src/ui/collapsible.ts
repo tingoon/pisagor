@@ -30,7 +30,16 @@ export const collapsibleIndicatorVariants = tv({
     icon: ["transition-transform duration-200 motion-reduce:transition-none!"],
   },
 });
+
 export type CollapsibleVariantProps = VariantProps<typeof collapsibleVariants>;
+export type CollapsibleVariants = ReturnType<typeof collapsibleVariants>;
+
 export type CollapsibleTriggerVariantProps = VariantProps<typeof collapsibleTriggerVariants>;
+export type CollapsibleTriggerVariants = ReturnType<typeof collapsibleTriggerVariants>;
+
 export type CollapsibleContentVariantProps = VariantProps<typeof collapsibleContentVariants>;
+export type CollapsibleContentVariants = ReturnType<typeof collapsibleContentVariants>;
+
 export type CollapsibleIndicatorVariantProps = VariantProps<typeof collapsibleIndicatorVariants>;
+export type CollapsibleIndicatorVariants = ReturnType<typeof collapsibleIndicatorVariants>;
+export type CollapsibleIndicatorSlots = keyof CollapsibleIndicatorVariants;

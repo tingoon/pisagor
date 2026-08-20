@@ -68,15 +68,39 @@ export const commandInline4Variants = tv({
 export const commandInline5Variants = tv({
   base: ["max-h-72 min-h-0 flex-1"],
 });
+
 export type CommandDialogContentVariantProps = VariantProps<typeof commandDialogContentVariants>;
+export type CommandDialogContentVariants = ReturnType<typeof commandDialogContentVariants>;
+
 export type CommandInlineVariantProps = VariantProps<typeof commandInlineVariants>;
+export type CommandInlineVariants = ReturnType<typeof commandInlineVariants>;
+
 export type CommandContentVariantProps = VariantProps<typeof commandContentVariants>;
+export type CommandContentVariants = ReturnType<typeof commandContentVariants>;
+
 export type ComboboxControlVariantProps = VariantProps<typeof comboboxControlVariants>;
+export type ComboboxControlVariants = ReturnType<typeof comboboxControlVariants>;
+
 export type CommandInline2VariantProps = VariantProps<typeof commandInline2Variants>;
+export type CommandInline2Variants = ReturnType<typeof commandInline2Variants>;
+
 export type CommandListVariantProps = VariantProps<typeof commandListVariants>;
+export type CommandListVariants = ReturnType<typeof commandListVariants>;
+
 export type CommandEmptyVariantProps = VariantProps<typeof commandEmptyVariants>;
+export type CommandEmptyVariants = ReturnType<typeof commandEmptyVariants>;
+
 export type CommandSeparatorVariantProps = VariantProps<typeof commandSeparatorVariants>;
+export type CommandSeparatorVariants = ReturnType<typeof commandSeparatorVariants>;
+
 export type CommandFooterVariantProps = VariantProps<typeof commandFooterVariants>;
+export type CommandFooterVariants = ReturnType<typeof commandFooterVariants>;
+
 export type CommandInline3VariantProps = VariantProps<typeof commandInline3Variants>;
+export type CommandInline3Variants = ReturnType<typeof commandInline3Variants>;
+
 export type CommandInline4VariantProps = VariantProps<typeof commandInline4Variants>;
+export type CommandInline4Variants = ReturnType<typeof commandInline4Variants>;
+
 export type CommandInline5VariantProps = VariantProps<typeof commandInline5Variants>;
+export type CommandInline5Variants = ReturnType<typeof commandInline5Variants>;

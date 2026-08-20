@@ -87,12 +87,31 @@ export const selectInline2Variants = tv({
 export const selectInline3Variants = tv({
   base: ["ms-auto flex items-center gap-1 rtl:me-auto"],
 });
+
 export type SelectTriggerVariantProps = VariantProps<typeof selectTriggerVariants>;
+export type SelectTriggerVariants = ReturnType<typeof selectTriggerVariants>;
+
 export type SelectSeparatorVariantProps = VariantProps<typeof selectSeparatorVariants>;
+export type SelectSeparatorVariants = ReturnType<typeof selectSeparatorVariants>;
+
 export type SelectInlineVariantProps = VariantProps<typeof selectInlineVariants>;
+export type SelectInlineVariants = ReturnType<typeof selectInlineVariants>;
+
 export type SelectContentVariantProps = VariantProps<typeof selectContentVariants>;
+export type SelectContentVariants = ReturnType<typeof selectContentVariants>;
+
 export type SelectGroupLabelVariantProps = VariantProps<typeof selectGroupLabelVariants>;
+export type SelectGroupLabelVariants = ReturnType<typeof selectGroupLabelVariants>;
+
 export type SelectItemVariantProps = VariantProps<typeof selectItemVariants>;
+export type SelectItemVariants = ReturnType<typeof selectItemVariants>;
+export type SelectItemSlots = keyof SelectItemVariants;
+
 export type SelectClearTriggerVariantProps = VariantProps<typeof selectClearTriggerVariants>;
+export type SelectClearTriggerVariants = ReturnType<typeof selectClearTriggerVariants>;
+
 export type SelectInline2VariantProps = VariantProps<typeof selectInline2Variants>;
+export type SelectInline2Variants = ReturnType<typeof selectInline2Variants>;
+
 export type SelectInline3VariantProps = VariantProps<typeof selectInline3Variants>;
+export type SelectInline3Variants = ReturnType<typeof selectInline3Variants>;

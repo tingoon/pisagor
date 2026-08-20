@@ -163,32 +163,71 @@ export const colorPickerInline4Variants = tv({
 export const colorPickerInline5Variants = tv({
   base: ["flex flex-1 flex-col gap-2.5"],
 });
+
 export type ColorPickerVariantProps = VariantProps<typeof colorPickerVariants>;
+export type ColorPickerVariants = ReturnType<typeof colorPickerVariants>;
+
 export type ColorPickerControlVariantProps = VariantProps<typeof colorPickerControlVariants>;
+export type ColorPickerControlVariants = ReturnType<typeof colorPickerControlVariants>;
+
 export type ColorPickerInlineVariantProps = VariantProps<typeof colorPickerInlineVariants>;
+export type ColorPickerInlineVariants = ReturnType<typeof colorPickerInlineVariants>;
+
 export type ColorPickerContentVariantProps = VariantProps<typeof colorPickerContentVariants>;
+export type ColorPickerContentVariants = ReturnType<typeof colorPickerContentVariants>;
+
 export type ColorPickerViewVariantProps = VariantProps<typeof colorPickerViewVariants>;
+export type ColorPickerViewVariants = ReturnType<typeof colorPickerViewVariants>;
+
 export type ColorPickerChannelSliderVariantProps = VariantProps<
   typeof colorPickerChannelSliderVariants
 >;
+export type ColorPickerChannelSliderVariants = ReturnType<typeof colorPickerChannelSliderVariants>;
+export type ColorPickerChannelSliderSlots = keyof ColorPickerChannelSliderVariants;
+
 export type ColorPickerSwatchGroupVariantProps = VariantProps<
   typeof colorPickerSwatchGroupVariants
 >;
+export type ColorPickerSwatchGroupVariants = ReturnType<typeof colorPickerSwatchGroupVariants>;
+
 export type ColorPickerSwatchTriggerVariantProps = VariantProps<
   typeof colorPickerSwatchTriggerVariants
 >;
+export type ColorPickerSwatchTriggerVariants = ReturnType<typeof colorPickerSwatchTriggerVariants>;
+
 export type ColorPickerSwatchVariantProps = VariantProps<typeof colorPickerSwatchVariants>;
+export type ColorPickerSwatchVariants = ReturnType<typeof colorPickerSwatchVariants>;
+
 export type ColorPickerSwatchIndicatorVariantProps = VariantProps<
   typeof colorPickerSwatchIndicatorVariants
 >;
+export type ColorPickerSwatchIndicatorVariants = ReturnType<
+  typeof colorPickerSwatchIndicatorVariants
+>;
+
 export type ColorPickerValueVariantProps = VariantProps<typeof colorPickerValueVariants>;
+export type ColorPickerValueVariants = ReturnType<typeof colorPickerValueVariants>;
+
 export type ColorPickerValueSwatchVariantProps = VariantProps<
   typeof colorPickerValueSwatchVariants
 >;
+export type ColorPickerValueSwatchVariants = ReturnType<typeof colorPickerValueSwatchVariants>;
+
 export type ColorPickerAreaVariantProps = VariantProps<typeof colorPickerAreaVariants>;
+export type ColorPickerAreaVariants = ReturnType<typeof colorPickerAreaVariants>;
+export type ColorPickerAreaSlots = keyof ColorPickerAreaVariants;
+
 export type ColorPickerAreaThumbVariantProps = VariantProps<typeof colorPickerAreaThumbVariants>;
+export type ColorPickerAreaThumbVariants = ReturnType<typeof colorPickerAreaThumbVariants>;
+
 export type ColorPickerInputSwatchVariantProps = VariantProps<
   typeof colorPickerInputSwatchVariants
 >;
+export type ColorPickerInputSwatchVariants = ReturnType<typeof colorPickerInputSwatchVariants>;
+export type ColorPickerInputSwatchSlots = keyof ColorPickerInputSwatchVariants;
+
 export type ColorPickerInline4VariantProps = VariantProps<typeof colorPickerInline4Variants>;
+export type ColorPickerInline4Variants = ReturnType<typeof colorPickerInline4Variants>;
+
 export type ColorPickerInline5VariantProps = VariantProps<typeof colorPickerInline5Variants>;
+export type ColorPickerInline5Variants = ReturnType<typeof colorPickerInline5Variants>;

@@ -72,4 +72,7 @@ export const alertVariants = tv({
     },
   },
 });
+
 export type AlertVariantProps = VariantProps<typeof alertVariants>;
+export type AlertVariants = ReturnType<typeof alertVariants>;
+export type AlertSlots = keyof AlertVariants;

@@ -28,7 +28,15 @@ export const editablePreviewVariants = tv({
 export const editableControlVariants = tv({
   base: ["group-data-[orientation=vertical]/editable:flex-col", "inline-flex items-center gap-2"],
 });
+
 export type EditableVariantProps = VariantProps<typeof editableVariants>;
+export type EditableVariants = ReturnType<typeof editableVariants>;
+
 export type EditableAreaVariantProps = VariantProps<typeof editableAreaVariants>;
+export type EditableAreaVariants = ReturnType<typeof editableAreaVariants>;
+
 export type EditablePreviewVariantProps = VariantProps<typeof editablePreviewVariants>;
+export type EditablePreviewVariants = ReturnType<typeof editablePreviewVariants>;
+
 export type EditableControlVariantProps = VariantProps<typeof editableControlVariants>;
+export type EditableControlVariants = ReturnType<typeof editableControlVariants>;

@@ -26,5 +26,10 @@ export const checkbox2Variants = tv({
     ],
   },
 });
+
 export type CheckboxGroupVariantProps = VariantProps<typeof checkboxGroupVariants>;
+export type CheckboxGroupVariants = ReturnType<typeof checkboxGroupVariants>;
+
 export type Checkbox2VariantProps = VariantProps<typeof checkbox2Variants>;
+export type Checkbox2Variants = ReturnType<typeof checkbox2Variants>;
+export type Checkbox2Slots = keyof Checkbox2Variants;

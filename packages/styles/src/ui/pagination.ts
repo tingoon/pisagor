@@ -22,6 +22,12 @@ export const paginationEllipsisVariants = tv({
     "[&_svg]:size-4",
   ],
 });
+
 export type PaginationVariantProps = VariantProps<typeof paginationVariants>;
+export type PaginationVariants = ReturnType<typeof paginationVariants>;
+
 export type PaginationInlineVariantProps = VariantProps<typeof paginationInlineVariants>;
+export type PaginationInlineVariants = ReturnType<typeof paginationInlineVariants>;
+
 export type PaginationEllipsisVariantProps = VariantProps<typeof paginationEllipsisVariants>;
+export type PaginationEllipsisVariants = ReturnType<typeof paginationEllipsisVariants>;

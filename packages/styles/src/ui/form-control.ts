@@ -320,11 +320,23 @@ export const formControlZoneVariants = tv({
     },
   },
 });
+
 export type FormControlShellVariantProps = VariantProps<typeof formControlShellVariants>;
+export type FormControlShellVariants = ReturnType<typeof formControlShellVariants>;
+
 export type FormControlGroupShellVariantProps = VariantProps<typeof formControlGroupShellVariants>;
+export type FormControlGroupShellVariants = ReturnType<typeof formControlGroupShellVariants>;
+
 export type FormControlToggleVariantProps = VariantProps<typeof formControlToggleVariants>;
+export type FormControlToggleVariants = ReturnType<typeof formControlToggleVariants>;
+
 export type FormControlRadioToggleVariantProps = VariantProps<
   typeof formControlRadioToggleVariants
 >;
+export type FormControlRadioToggleVariants = ReturnType<typeof formControlRadioToggleVariants>;
+
 export type FormControlSeparatorVariantProps = VariantProps<typeof formControlSeparatorVariants>;
+export type FormControlSeparatorVariants = ReturnType<typeof formControlSeparatorVariants>;
+
 export type FormControlZoneVariantProps = VariantProps<typeof formControlZoneVariants>;
+export type FormControlZoneVariants = ReturnType<typeof formControlZoneVariants>;

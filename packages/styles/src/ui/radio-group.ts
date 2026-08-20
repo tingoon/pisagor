@@ -16,5 +16,10 @@ export const radioGroupItemVariants = tv({
     ],
   },
 });
+
 export type RadioGroupVariantProps = VariantProps<typeof radioGroupVariants>;
+export type RadioGroupVariants = ReturnType<typeof radioGroupVariants>;
+
 export type RadioGroupItemVariantProps = VariantProps<typeof radioGroupItemVariants>;
+export type RadioGroupItemVariants = ReturnType<typeof radioGroupItemVariants>;
+export type RadioGroupItemSlots = keyof RadioGroupItemVariants;

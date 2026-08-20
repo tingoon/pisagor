@@ -16,6 +16,12 @@ export const passwordInputInline2Variants = tv({
     "hidden [[data-scope=password-input][data-part=control]:has(input:not(:placeholder-shown))_&]:flex",
   ],
 });
+
 export type PasswordInputVariantProps = VariantProps<typeof passwordInputVariants>;
+export type PasswordInputVariants = ReturnType<typeof passwordInputVariants>;
+
 export type PasswordInputInlineVariantProps = VariantProps<typeof passwordInputInlineVariants>;
+export type PasswordInputInlineVariants = ReturnType<typeof passwordInputInlineVariants>;
+
 export type PasswordInputInline2VariantProps = VariantProps<typeof passwordInputInline2Variants>;
+export type PasswordInputInline2Variants = ReturnType<typeof passwordInputInline2Variants>;

@@ -25,7 +25,15 @@ export const richTextEditorContentVariants = tv({
 export const richTextEditorInlineVariants = tv({
   base: ["flex flex-wrap items-center gap-0.5"],
 });
+
 export type RichTextEditorVariantProps = VariantProps<typeof richTextEditorVariants>;
+export type RichTextEditorVariants = ReturnType<typeof richTextEditorVariants>;
+
 export type RichTextEditorToolbarVariantProps = VariantProps<typeof richTextEditorToolbarVariants>;
+export type RichTextEditorToolbarVariants = ReturnType<typeof richTextEditorToolbarVariants>;
+
 export type RichTextEditorContentVariantProps = VariantProps<typeof richTextEditorContentVariants>;
+export type RichTextEditorContentVariants = ReturnType<typeof richTextEditorContentVariants>;
+
 export type RichTextEditorInlineVariantProps = VariantProps<typeof richTextEditorInlineVariants>;
+export type RichTextEditorInlineVariants = ReturnType<typeof richTextEditorInlineVariants>;

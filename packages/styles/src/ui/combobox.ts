@@ -78,12 +78,31 @@ export const comboboxInlineVariants = tv({
 export const comboboxInline2Variants = tv({
   base: "size-4",
 });
+
 export type ComboboxItemVariantProps = VariantProps<typeof comboboxItemVariants>;
+export type ComboboxItemVariants = ReturnType<typeof comboboxItemVariants>;
+export type ComboboxItemSlots = keyof ComboboxItemVariants;
+
 export type ComboboxControlVariantProps = VariantProps<typeof comboboxControlVariants>;
+export type ComboboxControlVariants = ReturnType<typeof comboboxControlVariants>;
+
 export type ComboboxTriggerVariantProps = VariantProps<typeof comboboxTriggerVariants>;
+export type ComboboxTriggerVariants = ReturnType<typeof comboboxTriggerVariants>;
+
 export type ComboboxContentVariantProps = VariantProps<typeof comboboxContentVariants>;
+export type ComboboxContentVariants = ReturnType<typeof comboboxContentVariants>;
+
 export type ComboboxGroupLabelVariantProps = VariantProps<typeof comboboxGroupLabelVariants>;
+export type ComboboxGroupLabelVariants = ReturnType<typeof comboboxGroupLabelVariants>;
+
 export type ComboboxEmptyVariantProps = VariantProps<typeof comboboxEmptyVariants>;
+export type ComboboxEmptyVariants = ReturnType<typeof comboboxEmptyVariants>;
+
 export type ComboboxListVariantProps = VariantProps<typeof comboboxListVariants>;
+export type ComboboxListVariants = ReturnType<typeof comboboxListVariants>;
+
 export type ComboboxInlineVariantProps = VariantProps<typeof comboboxInlineVariants>;
+export type ComboboxInlineVariants = ReturnType<typeof comboboxInlineVariants>;
+
 export type ComboboxInline2VariantProps = VariantProps<typeof comboboxInline2Variants>;
+export type ComboboxInline2Variants = ReturnType<typeof comboboxInline2Variants>;

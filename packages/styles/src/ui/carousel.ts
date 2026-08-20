@@ -55,13 +55,29 @@ export const carouselItemVariants = tv({
     "[&_img]:size-full [&_img]:rounded-lg [&_img]:object-cover",
   ],
 });
+
 export type CarouselVariantProps = VariantProps<typeof carouselVariants>;
+export type CarouselVariants = ReturnType<typeof carouselVariants>;
+
 export type CarouselControlVariantProps = VariantProps<typeof carouselControlVariants>;
+export type CarouselControlVariants = ReturnType<typeof carouselControlVariants>;
+
 export type CarouselPreviousVariantProps = VariantProps<typeof carouselPreviousVariants>;
+export type CarouselPreviousVariants = ReturnType<typeof carouselPreviousVariants>;
+
 export type CarouselNextVariantProps = VariantProps<typeof carouselNextVariants>;
+export type CarouselNextVariants = ReturnType<typeof carouselNextVariants>;
+
 export type CarouselIndicatorGroupVariantProps = VariantProps<
   typeof carouselIndicatorGroupVariants
 >;
+export type CarouselIndicatorGroupVariants = ReturnType<typeof carouselIndicatorGroupVariants>;
+
 export type CarouselIndicatorVariantProps = VariantProps<typeof carouselIndicatorVariants>;
+export type CarouselIndicatorVariants = ReturnType<typeof carouselIndicatorVariants>;
+
 export type CarouselGroupVariantProps = VariantProps<typeof carouselGroupVariants>;
+export type CarouselGroupVariants = ReturnType<typeof carouselGroupVariants>;
+
 export type CarouselItemVariantProps = VariantProps<typeof carouselItemVariants>;
+export type CarouselItemVariants = ReturnType<typeof carouselItemVariants>;

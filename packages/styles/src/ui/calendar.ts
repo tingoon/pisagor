@@ -114,19 +114,53 @@ export const calendarSelectLayoutVariants = tv({
     "motion-reduce:transition-none!",
   ],
 });
+
 export type CalendarVariantProps = VariantProps<typeof calendarVariants>;
+export type CalendarVariants = ReturnType<typeof calendarVariants>;
+
 export type CalendarRangeTextVariantProps = VariantProps<typeof calendarRangeTextVariants>;
+export type CalendarRangeTextVariants = ReturnType<typeof calendarRangeTextVariants>;
+
 export type CalendarSelectWrapperVariantProps = VariantProps<typeof calendarSelectWrapperVariants>;
+export type CalendarSelectWrapperVariants = ReturnType<typeof calendarSelectWrapperVariants>;
+export type CalendarSelectWrapperSlots = keyof CalendarSelectWrapperVariants;
+
 export type CalendarViewVariantProps = VariantProps<typeof calendarViewVariants>;
+export type CalendarViewVariants = ReturnType<typeof calendarViewVariants>;
+
 export type CalendarViewControlVariantProps = VariantProps<typeof calendarViewControlVariants>;
+export type CalendarViewControlVariants = ReturnType<typeof calendarViewControlVariants>;
+
 export type CalendarTableVariantProps = VariantProps<typeof calendarTableVariants>;
+export type CalendarTableVariants = ReturnType<typeof calendarTableVariants>;
+
 export type CalendarTableRowVariantProps = VariantProps<typeof calendarTableRowVariants>;
+export type CalendarTableRowVariants = ReturnType<typeof calendarTableRowVariants>;
+
 export type CalendarTableHeaderVariantProps = VariantProps<typeof calendarTableHeaderVariants>;
+export type CalendarTableHeaderVariants = ReturnType<typeof calendarTableHeaderVariants>;
+
 export type CalendarTableCellVariantProps = VariantProps<typeof calendarTableCellVariants>;
+export type CalendarTableCellVariants = ReturnType<typeof calendarTableCellVariants>;
+export type CalendarTableCellSlots = keyof CalendarTableCellVariants;
+
 export type CalendarControlVariantProps = VariantProps<typeof calendarControlVariants>;
+export type CalendarControlVariants = ReturnType<typeof calendarControlVariants>;
+
 export type CalendarLabelVariantProps = VariantProps<typeof calendarLabelVariants>;
+export type CalendarLabelVariants = ReturnType<typeof calendarLabelVariants>;
+
 export type CalendarInlineVariantProps = VariantProps<typeof calendarInlineVariants>;
+export type CalendarInlineVariants = ReturnType<typeof calendarInlineVariants>;
+
 export type CalendarInline2VariantProps = VariantProps<typeof calendarInline2Variants>;
+export type CalendarInline2Variants = ReturnType<typeof calendarInline2Variants>;
+
 export type CalendarInline3VariantProps = VariantProps<typeof calendarInline3Variants>;
+export type CalendarInline3Variants = ReturnType<typeof calendarInline3Variants>;
+
 export type CalendarInline4VariantProps = VariantProps<typeof calendarInline4Variants>;
+export type CalendarInline4Variants = ReturnType<typeof calendarInline4Variants>;
+
 export type CalendarSelectLayoutVariantProps = VariantProps<typeof calendarSelectLayoutVariants>;
+export type CalendarSelectLayoutVariants = ReturnType<typeof calendarSelectLayoutVariants>;

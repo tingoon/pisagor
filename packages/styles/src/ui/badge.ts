@@ -86,4 +86,6 @@ export const badgeVariants = tv({
     },
   },
 });
+
 export type BadgeVariantProps = VariantProps<typeof badgeVariants>;
+export type BadgeVariants = ReturnType<typeof badgeVariants>;

@@ -64,10 +64,25 @@ export const popoverFooterVariants = tv({
 export const popoverInline2Variants = tv({
   base: ["border-s border-t"],
 });
+
 export type PopoverContentVariantProps = VariantProps<typeof popoverContentVariants>;
+export type PopoverContentVariants = ReturnType<typeof popoverContentVariants>;
+export type PopoverContentSlots = keyof PopoverContentVariants;
+
 export type PopoverHeaderVariantProps = VariantProps<typeof popoverHeaderVariants>;
+export type PopoverHeaderVariants = ReturnType<typeof popoverHeaderVariants>;
+
 export type PopoverTitleVariantProps = VariantProps<typeof popoverTitleVariants>;
+export type PopoverTitleVariants = ReturnType<typeof popoverTitleVariants>;
+
 export type PopoverDescriptionVariantProps = VariantProps<typeof popoverDescriptionVariants>;
+export type PopoverDescriptionVariants = ReturnType<typeof popoverDescriptionVariants>;
+
 export type PopoverBodyVariantProps = VariantProps<typeof popoverBodyVariants>;
+export type PopoverBodyVariants = ReturnType<typeof popoverBodyVariants>;
+
 export type PopoverFooterVariantProps = VariantProps<typeof popoverFooterVariants>;
+export type PopoverFooterVariants = ReturnType<typeof popoverFooterVariants>;
+
 export type PopoverInline2VariantProps = VariantProps<typeof popoverInline2Variants>;
+export type PopoverInline2Variants = ReturnType<typeof popoverInline2Variants>;

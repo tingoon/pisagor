@@ -31,4 +31,6 @@ export const swapVariants = tv({
     },
   },
 });
+
 export type SwapVariantProps = VariantProps<typeof swapVariants>;
+export type SwapVariants = ReturnType<typeof swapVariants>;

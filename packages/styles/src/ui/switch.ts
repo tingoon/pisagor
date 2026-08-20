@@ -82,4 +82,7 @@ export const switchVariants = tv({
     },
   },
 });
+
 export type SwitchVariantProps = VariantProps<typeof switchVariants>;
+export type SwitchVariants = ReturnType<typeof switchVariants>;
+export type SwitchSlots = keyof SwitchVariants;

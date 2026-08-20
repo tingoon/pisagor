@@ -22,4 +22,7 @@ export const clipboardVariants = tv({
     },
   },
 });
+
 export type ClipboardVariantProps = VariantProps<typeof clipboardVariants>;
+export type ClipboardVariants = ReturnType<typeof clipboardVariants>;
+export type ClipboardSlots = keyof ClipboardVariants;

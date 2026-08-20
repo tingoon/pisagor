@@ -35,4 +35,7 @@ export const jsonTreeViewVariants = tv({
     ],
   },
 });
+
 export type JsonTreeViewVariantProps = VariantProps<typeof jsonTreeViewVariants>;
+export type JsonTreeViewVariants = ReturnType<typeof jsonTreeViewVariants>;
+export type JsonTreeViewSlots = keyof JsonTreeViewVariants;

@@ -41,6 +41,14 @@ export const accordionContentVariants = tv({
     body: "pt-0 pb-4",
   },
 });
+
 export type AccordionItemVariantProps = VariantProps<typeof accordionItemVariants>;
+export type AccordionItemVariants = ReturnType<typeof accordionItemVariants>;
+
 export type AccordionTriggerVariantProps = VariantProps<typeof accordionTriggerVariants>;
+export type AccordionTriggerVariants = ReturnType<typeof accordionTriggerVariants>;
+export type AccordionTriggerSlots = keyof AccordionTriggerVariants;
+
 export type AccordionContentVariantProps = VariantProps<typeof accordionContentVariants>;
+export type AccordionContentVariants = ReturnType<typeof accordionContentVariants>;
+export type AccordionContentSlots = keyof AccordionContentVariants;

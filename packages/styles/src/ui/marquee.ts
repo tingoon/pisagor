@@ -38,6 +38,14 @@ export const marqueeEdgeVariants = tv({
 });
 
 export type MarqueeVariantProps = VariantProps<typeof marqueeVariants>;
+export type MarqueeVariants = ReturnType<typeof marqueeVariants>;
+
 export type MarqueeContentVariantProps = VariantProps<typeof marqueeContentVariants>;
+export type MarqueeContentVariants = ReturnType<typeof marqueeContentVariants>;
+export type MarqueeContentSlots = keyof MarqueeContentVariants;
+
 export type MarqueeItemVariantProps = VariantProps<typeof marqueeItemVariants>;
+export type MarqueeItemVariants = ReturnType<typeof marqueeItemVariants>;
+
 export type MarqueeEdgeVariantProps = VariantProps<typeof marqueeEdgeVariants>;
+export type MarqueeEdgeVariants = ReturnType<typeof marqueeEdgeVariants>;

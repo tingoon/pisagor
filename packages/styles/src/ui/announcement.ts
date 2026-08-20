@@ -28,5 +28,9 @@ export const announcementTitleVariants = tv({
     "select-none truncate font-medium text-sm",
   ],
 });
+
 export type AnnouncementVariantProps = VariantProps<typeof announcementVariants>;
+export type AnnouncementVariants = ReturnType<typeof announcementVariants>;
+
 export type AnnouncementTitleVariantProps = VariantProps<typeof announcementTitleVariants>;
+export type AnnouncementTitleVariants = ReturnType<typeof announcementTitleVariants>;

@@ -71,14 +71,32 @@ export const floatingPanelInline3Variants = tv({
 export const floatingPanelInline4Variants = tv({
   base: ["hidden group-data-minimized/floating-panel:block"],
 });
+
 export type FloatingPanelContentVariantProps = VariantProps<typeof floatingPanelContentVariants>;
+export type FloatingPanelContentVariants = ReturnType<typeof floatingPanelContentVariants>;
+
 export type FloatingPanelInlineVariantProps = VariantProps<typeof floatingPanelInlineVariants>;
+export type FloatingPanelInlineVariants = ReturnType<typeof floatingPanelInlineVariants>;
+
 export type FloatingPanelInline2VariantProps = VariantProps<typeof floatingPanelInline2Variants>;
+export type FloatingPanelInline2Variants = ReturnType<typeof floatingPanelInline2Variants>;
+
 export type FloatingPanelTitleVariantProps = VariantProps<typeof floatingPanelTitleVariants>;
+export type FloatingPanelTitleVariants = ReturnType<typeof floatingPanelTitleVariants>;
+
 export type FloatingPanelBodyVariantProps = VariantProps<typeof floatingPanelBodyVariants>;
+export type FloatingPanelBodyVariants = ReturnType<typeof floatingPanelBodyVariants>;
+
 export type FloatingPanelFooterVariantProps = VariantProps<typeof floatingPanelFooterVariants>;
+export type FloatingPanelFooterVariants = ReturnType<typeof floatingPanelFooterVariants>;
+
 export type FloatingPanelPositionerVariantProps = VariantProps<
   typeof floatingPanelPositionerVariants
 >;
+export type FloatingPanelPositionerVariants = ReturnType<typeof floatingPanelPositionerVariants>;
+
 export type FloatingPanelInline3VariantProps = VariantProps<typeof floatingPanelInline3Variants>;
+export type FloatingPanelInline3Variants = ReturnType<typeof floatingPanelInline3Variants>;
+
 export type FloatingPanelInline4VariantProps = VariantProps<typeof floatingPanelInline4Variants>;
+export type FloatingPanelInline4Variants = ReturnType<typeof floatingPanelInline4Variants>;

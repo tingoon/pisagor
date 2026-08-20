@@ -45,7 +45,15 @@ export const segmentGroupIndicatorVariants = tv({
     "motion-reduce:transition-none!",
   ],
 });
+
 export type SegmentGroupVariantProps = VariantProps<typeof segmentGroupVariants>;
+export type SegmentGroupVariants = ReturnType<typeof segmentGroupVariants>;
+
 export type SegmentGroupItemVariantProps = VariantProps<typeof segmentGroupItemVariants>;
+export type SegmentGroupItemVariants = ReturnType<typeof segmentGroupItemVariants>;
+
 export type SegmentGroupItemTextVariantProps = VariantProps<typeof segmentGroupItemTextVariants>;
+export type SegmentGroupItemTextVariants = ReturnType<typeof segmentGroupItemTextVariants>;
+
 export type SegmentGroupIndicatorVariantProps = VariantProps<typeof segmentGroupIndicatorVariants>;
+export type SegmentGroupIndicatorVariants = ReturnType<typeof segmentGroupIndicatorVariants>;

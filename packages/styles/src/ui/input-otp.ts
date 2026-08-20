@@ -15,7 +15,15 @@ export const inputOtpSeparatorVariants = tv({
 export const inputOtpVariants = tv({
   base: "group/input-otp",
 });
+
 export type InputOtpControlVariantProps = VariantProps<typeof inputOtpControlVariants>;
+export type InputOtpControlVariants = ReturnType<typeof inputOtpControlVariants>;
+
 export type InputOtpInlineVariantProps = VariantProps<typeof inputOtpInlineVariants>;
+export type InputOtpInlineVariants = ReturnType<typeof inputOtpInlineVariants>;
+
 export type InputOtpSeparatorVariantProps = VariantProps<typeof inputOtpSeparatorVariants>;
+export type InputOtpSeparatorVariants = ReturnType<typeof inputOtpSeparatorVariants>;
+
 export type InputOtpVariantProps = VariantProps<typeof inputOtpVariants>;
+export type InputOtpVariants = ReturnType<typeof inputOtpVariants>;

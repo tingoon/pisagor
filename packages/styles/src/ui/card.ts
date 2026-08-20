@@ -61,11 +61,27 @@ export const cardFooterVariants = tv({
     "py-(--space)",
   ],
 });
+
 export type CardMediaVariantProps = VariantProps<typeof cardMediaVariants>;
+export type CardMediaVariants = ReturnType<typeof cardMediaVariants>;
+
 export type CardVariantProps = VariantProps<typeof cardVariants>;
+export type CardVariants = ReturnType<typeof cardVariants>;
+
 export type CardHeaderVariantProps = VariantProps<typeof cardHeaderVariants>;
+export type CardHeaderVariants = ReturnType<typeof cardHeaderVariants>;
+
 export type CardTitleVariantProps = VariantProps<typeof cardTitleVariants>;
+export type CardTitleVariants = ReturnType<typeof cardTitleVariants>;
+
 export type CardDescriptionVariantProps = VariantProps<typeof cardDescriptionVariants>;
+export type CardDescriptionVariants = ReturnType<typeof cardDescriptionVariants>;
+
 export type CardActionVariantProps = VariantProps<typeof cardActionVariants>;
+export type CardActionVariants = ReturnType<typeof cardActionVariants>;
+
 export type CardContentVariantProps = VariantProps<typeof cardContentVariants>;
+export type CardContentVariants = ReturnType<typeof cardContentVariants>;
+
 export type CardFooterVariantProps = VariantProps<typeof cardFooterVariants>;
+export type CardFooterVariants = ReturnType<typeof cardFooterVariants>;

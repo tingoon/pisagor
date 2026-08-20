@@ -24,5 +24,9 @@ export const hoverCardContentVariants = tv({
 export const hoverCardInlineVariants = tv({
   base: ["border-s border-t"],
 });
+
 export type HoverCardContentVariantProps = VariantProps<typeof hoverCardContentVariants>;
+export type HoverCardContentVariants = ReturnType<typeof hoverCardContentVariants>;
+
 export type HoverCardInlineVariantProps = VariantProps<typeof hoverCardInlineVariants>;
+export type HoverCardInlineVariants = ReturnType<typeof hoverCardInlineVariants>;

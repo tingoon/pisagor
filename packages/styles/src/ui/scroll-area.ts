@@ -37,4 +37,7 @@ export const scrollAreaVariants = tv({
     },
   },
 });
+
 export type ScrollAreaVariantProps = VariantProps<typeof scrollAreaVariants>;
+export type ScrollAreaVariants = ReturnType<typeof scrollAreaVariants>;
+export type ScrollAreaSlots = keyof ScrollAreaVariants;

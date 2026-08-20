@@ -70,7 +70,16 @@ export const tabsTriggerVariants = tv({
 export const tabsContentVariants = tv({
   base: ["flex-1 outline-hidden"],
 });
+
 export type TabsListVariantProps = VariantProps<typeof tabsListVariants>;
+export type TabsListVariants = ReturnType<typeof tabsListVariants>;
+export type TabsListSlots = keyof TabsListVariants;
+
 export type TabsVariantProps = VariantProps<typeof tabsVariants>;
+export type TabsVariants = ReturnType<typeof tabsVariants>;
+
 export type TabsTriggerVariantProps = VariantProps<typeof tabsTriggerVariants>;
+export type TabsTriggerVariants = ReturnType<typeof tabsTriggerVariants>;
+
 export type TabsContentVariantProps = VariantProps<typeof tabsContentVariants>;
+export type TabsContentVariants = ReturnType<typeof tabsContentVariants>;

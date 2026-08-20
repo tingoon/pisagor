@@ -33,9 +33,21 @@ export const breadcrumbSeparatorVariants = tv({
 export const breadcrumbInlineVariants = tv({
   base: "size-4",
 });
+
 export type BreadcrumbListVariantProps = VariantProps<typeof breadcrumbListVariants>;
+export type BreadcrumbListVariants = ReturnType<typeof breadcrumbListVariants>;
+
 export type BreadcrumbItemVariantProps = VariantProps<typeof breadcrumbItemVariants>;
+export type BreadcrumbItemVariants = ReturnType<typeof breadcrumbItemVariants>;
+
 export type BreadcrumbLinkVariantProps = VariantProps<typeof breadcrumbLinkVariants>;
+export type BreadcrumbLinkVariants = ReturnType<typeof breadcrumbLinkVariants>;
+
 export type BreadcrumbPageVariantProps = VariantProps<typeof breadcrumbPageVariants>;
+export type BreadcrumbPageVariants = ReturnType<typeof breadcrumbPageVariants>;
+
 export type BreadcrumbSeparatorVariantProps = VariantProps<typeof breadcrumbSeparatorVariants>;
+export type BreadcrumbSeparatorVariants = ReturnType<typeof breadcrumbSeparatorVariants>;
+
 export type BreadcrumbInlineVariantProps = VariantProps<typeof breadcrumbInlineVariants>;
+export type BreadcrumbInlineVariants = ReturnType<typeof breadcrumbInlineVariants>;

@@ -26,4 +26,6 @@ export const statusVariants = tv({
     },
   },
 });
+
 export type StatusVariantProps = VariantProps<typeof statusVariants>;
+export type StatusVariants = ReturnType<typeof statusVariants>;

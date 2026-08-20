@@ -155,12 +155,32 @@ export const drawerFooterVariants = tv({
 });
 
 export type DrawerOverlayVariantProps = VariantProps<typeof drawerOverlayVariants>;
+export type DrawerOverlayVariants = ReturnType<typeof drawerOverlayVariants>;
+
 export type DrawerPositionerVariantProps = VariantProps<typeof drawerPositionerVariants>;
+export type DrawerPositionerVariants = ReturnType<typeof drawerPositionerVariants>;
+
 export type DrawerContentVariantProps = VariantProps<typeof drawerContentVariants>;
+export type DrawerContentVariants = ReturnType<typeof drawerContentVariants>;
+
 export type DrawerContentInnerVariantProps = VariantProps<typeof drawerContentInnerVariants>;
+export type DrawerContentInnerVariants = ReturnType<typeof drawerContentInnerVariants>;
+
 export type DrawerGrabberVariantProps = VariantProps<typeof drawerGrabberVariants>;
+export type DrawerGrabberVariants = ReturnType<typeof drawerGrabberVariants>;
+export type DrawerGrabberSlots = keyof DrawerGrabberVariants;
+
 export type DrawerHeaderVariantProps = VariantProps<typeof drawerHeaderVariants>;
+export type DrawerHeaderVariants = ReturnType<typeof drawerHeaderVariants>;
+
 export type DrawerTitleVariantProps = VariantProps<typeof drawerTitleVariants>;
+export type DrawerTitleVariants = ReturnType<typeof drawerTitleVariants>;
+
 export type DrawerDescriptionVariantProps = VariantProps<typeof drawerDescriptionVariants>;
+export type DrawerDescriptionVariants = ReturnType<typeof drawerDescriptionVariants>;
+
 export type DrawerBodyVariantProps = VariantProps<typeof drawerBodyVariants>;
+export type DrawerBodyVariants = ReturnType<typeof drawerBodyVariants>;
+
 export type DrawerFooterVariantProps = VariantProps<typeof drawerFooterVariants>;
+export type DrawerFooterVariants = ReturnType<typeof drawerFooterVariants>;

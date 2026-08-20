@@ -50,12 +50,30 @@ export const tableCaptionVariants = tv({
 export const tableWrapperVariants = tv({
   base: ["relative w-full overflow-auto"],
 });
+
 export type TableVariantProps = VariantProps<typeof tableVariants>;
+export type TableVariants = ReturnType<typeof tableVariants>;
+
 export type TableHeaderVariantProps = VariantProps<typeof tableHeaderVariants>;
+export type TableHeaderVariants = ReturnType<typeof tableHeaderVariants>;
+
 export type TableBodyVariantProps = VariantProps<typeof tableBodyVariants>;
+export type TableBodyVariants = ReturnType<typeof tableBodyVariants>;
+
 export type TableFooterVariantProps = VariantProps<typeof tableFooterVariants>;
+export type TableFooterVariants = ReturnType<typeof tableFooterVariants>;
+
 export type TableRowVariantProps = VariantProps<typeof tableRowVariants>;
+export type TableRowVariants = ReturnType<typeof tableRowVariants>;
+
 export type TableHeadVariantProps = VariantProps<typeof tableHeadVariants>;
+export type TableHeadVariants = ReturnType<typeof tableHeadVariants>;
+
 export type TableCellVariantProps = VariantProps<typeof tableCellVariants>;
+export type TableCellVariants = ReturnType<typeof tableCellVariants>;
+
 export type TableCaptionVariantProps = VariantProps<typeof tableCaptionVariants>;
+export type TableCaptionVariants = ReturnType<typeof tableCaptionVariants>;
+
 export type TableWrapperVariantProps = VariantProps<typeof tableWrapperVariants>;
+export type TableWrapperVariants = ReturnType<typeof tableWrapperVariants>;

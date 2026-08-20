@@ -48,5 +48,10 @@ export const statTrendVariants = tv({
     },
   },
 });
+
 export type StatVariantProps = VariantProps<typeof statVariants>;
+export type StatVariants = ReturnType<typeof statVariants>;
+export type StatSlots = keyof StatVariants;
+
 export type StatTrendVariantProps = VariantProps<typeof statTrendVariants>;
+export type StatTrendVariants = ReturnType<typeof statTrendVariants>;

@@ -16,5 +16,9 @@ export const linkBoxOverlayVariants = tv({
     "outline-hidden focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
   ],
 });
+
 export type LinkBoxVariantProps = VariantProps<typeof linkBoxVariants>;
+export type LinkBoxVariants = ReturnType<typeof linkBoxVariants>;
+
 export type LinkBoxOverlayVariantProps = VariantProps<typeof linkBoxOverlayVariants>;
+export type LinkBoxOverlayVariants = ReturnType<typeof linkBoxOverlayVariants>;

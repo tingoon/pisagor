@@ -107,19 +107,44 @@ export const treeViewNodeRenameInputVariants = tv({
     "outline-hidden focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
   ],
 });
+
 export type TreeViewControlVariantProps = VariantProps<typeof treeViewControlVariants>;
+export type TreeViewControlVariants = ReturnType<typeof treeViewControlVariants>;
+
 export type TreeViewVariantProps = VariantProps<typeof treeViewVariants>;
+export type TreeViewVariants = ReturnType<typeof treeViewVariants>;
+
 export type TreeViewLabelVariantProps = VariantProps<typeof treeViewLabelVariants>;
+export type TreeViewLabelVariants = ReturnType<typeof treeViewLabelVariants>;
+
 export type TreeViewTreeVariantProps = VariantProps<typeof treeViewTreeVariants>;
+export type TreeViewTreeVariants = ReturnType<typeof treeViewTreeVariants>;
+
 export type TreeViewBranchVariantProps = VariantProps<typeof treeViewBranchVariants>;
+export type TreeViewBranchVariants = ReturnType<typeof treeViewBranchVariants>;
+
 export type TreeViewBranchTitleVariantProps = VariantProps<typeof treeViewBranchTitleVariants>;
+export type TreeViewBranchTitleVariants = ReturnType<typeof treeViewBranchTitleVariants>;
+
 export type TreeViewBranchIndicatorVariantProps = VariantProps<
   typeof treeViewBranchIndicatorVariants
 >;
+export type TreeViewBranchIndicatorVariants = ReturnType<typeof treeViewBranchIndicatorVariants>;
+
 export type TreeViewBranchContentVariantProps = VariantProps<typeof treeViewBranchContentVariants>;
+export type TreeViewBranchContentVariants = ReturnType<typeof treeViewBranchContentVariants>;
+export type TreeViewBranchContentSlots = keyof TreeViewBranchContentVariants;
+
 export type TreeViewItemIconVariantProps = VariantProps<typeof treeViewItemIconVariants>;
+export type TreeViewItemIconVariants = ReturnType<typeof treeViewItemIconVariants>;
+
 export type TreeViewItemTitleVariantProps = VariantProps<typeof treeViewItemTitleVariants>;
+export type TreeViewItemTitleVariants = ReturnType<typeof treeViewItemTitleVariants>;
+
 export type TreeViewCheckboxVariantProps = VariantProps<typeof treeViewCheckboxVariants>;
+export type TreeViewCheckboxVariants = ReturnType<typeof treeViewCheckboxVariants>;
+
 export type TreeViewNodeRenameInputVariantProps = VariantProps<
   typeof treeViewNodeRenameInputVariants
 >;
+export type TreeViewNodeRenameInputVariants = ReturnType<typeof treeViewNodeRenameInputVariants>;

@@ -66,4 +66,7 @@ export const sliderVariants = tv({
     value: ["ms-auto tabular-nums"],
   },
 });
+
 export type SliderVariantProps = VariantProps<typeof sliderVariants>;
+export type SliderVariants = ReturnType<typeof sliderVariants>;
+export type SliderSlots = keyof SliderVariants;

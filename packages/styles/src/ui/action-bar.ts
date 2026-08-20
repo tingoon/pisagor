@@ -50,9 +50,21 @@ export const actionBarValueVariants = tv({
 export const actionBarInlineVariants = tv({
   base: ["flex items-center gap-1", "**:data-[scope=action-bar]:data-[part=separator]:h-2"],
 });
+
 export type ActionBarPositionerVariantProps = VariantProps<typeof actionBarPositionerVariants>;
+export type ActionBarPositionerVariants = ReturnType<typeof actionBarPositionerVariants>;
+
 export type ActionBarContentVariantProps = VariantProps<typeof actionBarContentVariants>;
+export type ActionBarContentVariants = ReturnType<typeof actionBarContentVariants>;
+
 export type ActionBarSeparatorVariantProps = VariantProps<typeof actionBarSeparatorVariants>;
+export type ActionBarSeparatorVariants = ReturnType<typeof actionBarSeparatorVariants>;
+
 export type ActionBarCloseVariantProps = VariantProps<typeof actionBarCloseVariants>;
+export type ActionBarCloseVariants = ReturnType<typeof actionBarCloseVariants>;
+
 export type ActionBarValueVariantProps = VariantProps<typeof actionBarValueVariants>;
+export type ActionBarValueVariants = ReturnType<typeof actionBarValueVariants>;
+
 export type ActionBarInlineVariantProps = VariantProps<typeof actionBarInlineVariants>;
+export type ActionBarInlineVariants = ReturnType<typeof actionBarInlineVariants>;

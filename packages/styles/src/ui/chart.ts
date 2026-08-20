@@ -78,17 +78,45 @@ export const chartInline12Variants = tv({
 export const chartInline13Variants = tv({
   base: ["size-2 shrink-0 rounded-[2px]"],
 });
+
 export type ChartVariantProps = VariantProps<typeof chartVariants>;
+export type ChartVariants = ReturnType<typeof chartVariants>;
+
 export type ChartInlineVariantProps = VariantProps<typeof chartInlineVariants>;
+export type ChartInlineVariants = ReturnType<typeof chartInlineVariants>;
+
 export type ChartInline2VariantProps = VariantProps<typeof chartInline2Variants>;
+export type ChartInline2Variants = ReturnType<typeof chartInline2Variants>;
+
 export type ChartInline3VariantProps = VariantProps<typeof chartInline3Variants>;
+export type ChartInline3Variants = ReturnType<typeof chartInline3Variants>;
+
 export type ChartInline4VariantProps = VariantProps<typeof chartInline4Variants>;
+export type ChartInline4Variants = ReturnType<typeof chartInline4Variants>;
+
 export type ChartInline5VariantProps = VariantProps<typeof chartInline5Variants>;
+export type ChartInline5Variants = ReturnType<typeof chartInline5Variants>;
+
 export type ChartInline6VariantProps = VariantProps<typeof chartInline6Variants>;
+export type ChartInline6Variants = ReturnType<typeof chartInline6Variants>;
+
 export type ChartInline7VariantProps = VariantProps<typeof chartInline7Variants>;
+export type ChartInline7Variants = ReturnType<typeof chartInline7Variants>;
+
 export type ChartInline8VariantProps = VariantProps<typeof chartInline8Variants>;
+export type ChartInline8Variants = ReturnType<typeof chartInline8Variants>;
+
 export type ChartInline9VariantProps = VariantProps<typeof chartInline9Variants>;
+export type ChartInline9Variants = ReturnType<typeof chartInline9Variants>;
+
 export type ChartInline10VariantProps = VariantProps<typeof chartInline10Variants>;
+export type ChartInline10Variants = ReturnType<typeof chartInline10Variants>;
+
 export type ChartInline11VariantProps = VariantProps<typeof chartInline11Variants>;
+export type ChartInline11Variants = ReturnType<typeof chartInline11Variants>;
+
 export type ChartInline12VariantProps = VariantProps<typeof chartInline12Variants>;
+export type ChartInline12Variants = ReturnType<typeof chartInline12Variants>;
+
 export type ChartInline13VariantProps = VariantProps<typeof chartInline13Variants>;
+export type ChartInline13Variants = ReturnType<typeof chartInline13Variants>;

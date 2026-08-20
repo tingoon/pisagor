@@ -129,48 +129,112 @@ export const appShellVariants = tv({
     "data-resizing:transition-none!",
   ],
 });
+
 export type AppShellRailItemVariantProps = VariantProps<typeof appShellRailItemVariants>;
+export type AppShellRailItemVariants = ReturnType<typeof appShellRailItemVariants>;
+
 export type AppShellBannerVariantProps = VariantProps<typeof appShellBannerVariants>;
+export type AppShellBannerVariants = ReturnType<typeof appShellBannerVariants>;
+
 export type AppShellMainVariantProps = VariantProps<typeof appShellMainVariants>;
+export type AppShellMainVariants = ReturnType<typeof appShellMainVariants>;
+
 export type AppShellHeaderVariantProps = VariantProps<typeof appShellHeaderVariants>;
+export type AppShellHeaderVariants = ReturnType<typeof appShellHeaderVariants>;
+
 export type AppShellContentVariantProps = VariantProps<typeof appShellContentVariants>;
+export type AppShellContentVariants = ReturnType<typeof appShellContentVariants>;
+
 export type AppShellInlineVariantProps = VariantProps<typeof appShellInlineVariants>;
+export type AppShellInlineVariants = ReturnType<typeof appShellInlineVariants>;
+
 export type AppShellInspectorVariantProps = VariantProps<typeof appShellInspectorVariants>;
+export type AppShellInspectorVariants = ReturnType<typeof appShellInspectorVariants>;
+
 export type AppShellInspectorHeaderVariantProps = VariantProps<
   typeof appShellInspectorHeaderVariants
 >;
+export type AppShellInspectorHeaderVariants = ReturnType<typeof appShellInspectorHeaderVariants>;
+
 export type AppShellInspectorContentVariantProps = VariantProps<
   typeof appShellInspectorContentVariants
 >;
+export type AppShellInspectorContentVariants = ReturnType<typeof appShellInspectorContentVariants>;
+
 export type AppShellInspectorFooterVariantProps = VariantProps<
   typeof appShellInspectorFooterVariants
 >;
+export type AppShellInspectorFooterVariants = ReturnType<typeof appShellInspectorFooterVariants>;
+
 export type AppShellInline2VariantProps = VariantProps<typeof appShellInline2Variants>;
+export type AppShellInline2Variants = ReturnType<typeof appShellInline2Variants>;
+
 export type AppShellPanelVariantProps = VariantProps<typeof appShellPanelVariants>;
+export type AppShellPanelVariants = ReturnType<typeof appShellPanelVariants>;
+
 export type AppShellPanelHeaderVariantProps = VariantProps<typeof appShellPanelHeaderVariants>;
+export type AppShellPanelHeaderVariants = ReturnType<typeof appShellPanelHeaderVariants>;
+
 export type AppShellPanelContentVariantProps = VariantProps<typeof appShellPanelContentVariants>;
+export type AppShellPanelContentVariants = ReturnType<typeof appShellPanelContentVariants>;
+
 export type AppShellPanelFooterVariantProps = VariantProps<typeof appShellPanelFooterVariants>;
+export type AppShellPanelFooterVariants = ReturnType<typeof appShellPanelFooterVariants>;
+
 export type AppShellRailVariantProps = VariantProps<typeof appShellRailVariants>;
+export type AppShellRailVariants = ReturnType<typeof appShellRailVariants>;
+
 export type AppShellNavigationVariantProps = VariantProps<typeof appShellNavigationVariants>;
+export type AppShellNavigationVariants = ReturnType<typeof appShellNavigationVariants>;
+
 export type AppShellRegionRelativeColumnVariantProps = VariantProps<
   typeof appShellRegionRelativeColumnVariants
 >;
+export type AppShellRegionRelativeColumnVariants = ReturnType<
+  typeof appShellRegionRelativeColumnVariants
+>;
+
 export type AppShellRegionRelativeRowVariantProps = VariantProps<
   typeof appShellRegionRelativeRowVariants
 >;
+export type AppShellRegionRelativeRowVariants = ReturnType<
+  typeof appShellRegionRelativeRowVariants
+>;
+
 export type AppShellRegionStickyInspectorVariantProps = VariantProps<
   typeof appShellRegionStickyInspectorVariants
 >;
+export type AppShellRegionStickyInspectorVariants = ReturnType<
+  typeof appShellRegionStickyInspectorVariants
+>;
+
 export type AppShellRegionStickyColumnVariantProps = VariantProps<
   typeof appShellRegionStickyColumnVariants
 >;
+export type AppShellRegionStickyColumnVariants = ReturnType<
+  typeof appShellRegionStickyColumnVariants
+>;
+
 export type AppShellRegionStickyBannerVariantProps = VariantProps<
   typeof appShellRegionStickyBannerVariants
 >;
+export type AppShellRegionStickyBannerVariants = ReturnType<
+  typeof appShellRegionStickyBannerVariants
+>;
+
 export type AppShellRegionStickyNavigationVariantProps = VariantProps<
   typeof appShellRegionStickyNavigationVariants
 >;
+export type AppShellRegionStickyNavigationVariants = ReturnType<
+  typeof appShellRegionStickyNavigationVariants
+>;
+
 export type AppShellRegionStickyHeaderVariantProps = VariantProps<
   typeof appShellRegionStickyHeaderVariants
 >;
+export type AppShellRegionStickyHeaderVariants = ReturnType<
+  typeof appShellRegionStickyHeaderVariants
+>;
+
 export type AppShellVariantProps = VariantProps<typeof appShellVariants>;
+export type AppShellVariants = ReturnType<typeof appShellVariants>;

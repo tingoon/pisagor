@@ -19,4 +19,7 @@ export const circularProgressVariants = tv({
     valueWrapper: ["pointer-events-none absolute inset-0 flex items-center justify-center"],
   },
 });
+
 export type CircularProgressVariantProps = VariantProps<typeof circularProgressVariants>;
+export type CircularProgressVariants = ReturnType<typeof circularProgressVariants>;
+export type CircularProgressSlots = keyof CircularProgressVariants;

@@ -19,4 +19,7 @@ export const emptyStateVariants = tv({
     title: ["font-medium text-foreground text-lg/6"],
   },
 });
+
 export type EmptyStateVariantProps = VariantProps<typeof emptyStateVariants>;
+export type EmptyStateVariants = ReturnType<typeof emptyStateVariants>;
+export type EmptyStateSlots = keyof EmptyStateVariants;

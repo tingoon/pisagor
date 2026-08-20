@@ -9,4 +9,7 @@ export const toolbarVariants = tv({
     title: ["font-medium text-foreground text-lg/6"],
   },
 });
+
 export type ToolbarVariantProps = VariantProps<typeof toolbarVariants>;
+export type ToolbarVariants = ReturnType<typeof toolbarVariants>;
+export type ToolbarSlots = keyof ToolbarVariants;

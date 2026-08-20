@@ -89,15 +89,32 @@ export const dropdownMenuShortcutVariants = tv({
 export const dropdownMenuInline5Variants = tv({
   base: ["border-s border-t"],
 });
+
 export type DropdownMenuContentVariantProps = VariantProps<typeof dropdownMenuContentVariants>;
+export type DropdownMenuContentVariants = ReturnType<typeof dropdownMenuContentVariants>;
+
 export type DropdownMenuItemVariantProps = VariantProps<typeof dropdownMenuItemVariants>;
+export type DropdownMenuItemVariants = ReturnType<typeof dropdownMenuItemVariants>;
+export type DropdownMenuItemSlots = keyof DropdownMenuItemVariants;
+
 export type DropdownMenuPositionerVariantProps = VariantProps<
   typeof dropdownMenuPositionerVariants
 >;
+export type DropdownMenuPositionerVariants = ReturnType<typeof dropdownMenuPositionerVariants>;
+
 export type DropdownMenuSeparatorVariantProps = VariantProps<typeof dropdownMenuSeparatorVariants>;
+export type DropdownMenuSeparatorVariants = ReturnType<typeof dropdownMenuSeparatorVariants>;
+
 export type DropdownMenuQuickItemVariantProps = VariantProps<typeof dropdownMenuQuickItemVariants>;
+export type DropdownMenuQuickItemVariants = ReturnType<typeof dropdownMenuQuickItemVariants>;
+
 export type DropdownMenuGroupLabelVariantProps = VariantProps<
   typeof dropdownMenuGroupLabelVariants
 >;
+export type DropdownMenuGroupLabelVariants = ReturnType<typeof dropdownMenuGroupLabelVariants>;
+
 export type DropdownMenuShortcutVariantProps = VariantProps<typeof dropdownMenuShortcutVariants>;
+export type DropdownMenuShortcutVariants = ReturnType<typeof dropdownMenuShortcutVariants>;
+
 export type DropdownMenuInline5VariantProps = VariantProps<typeof dropdownMenuInline5Variants>;
+export type DropdownMenuInline5Variants = ReturnType<typeof dropdownMenuInline5Variants>;

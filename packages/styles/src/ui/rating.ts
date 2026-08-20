@@ -24,4 +24,7 @@ export const ratingVariants = tv({
     ],
   },
 });
+
 export type RatingVariantProps = VariantProps<typeof ratingVariants>;
+export type RatingVariants = ReturnType<typeof ratingVariants>;
+export type RatingSlots = keyof RatingVariants;

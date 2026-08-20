@@ -94,10 +94,22 @@ export const inputGroupTextareaControlVariants = tv({
     "dark:bg-transparent dark:disabled:bg-transparent",
   ],
 });
+
 export type InputGroupAddonVariantProps = VariantProps<typeof inputGroupAddonVariants>;
+export type InputGroupAddonVariants = ReturnType<typeof inputGroupAddonVariants>;
+
 export type InputGroupButtonVariantProps = VariantProps<typeof inputGroupButtonVariants>;
+export type InputGroupButtonVariants = ReturnType<typeof inputGroupButtonVariants>;
+
 export type InputGroupTextVariantProps = VariantProps<typeof inputGroupTextVariants>;
+export type InputGroupTextVariants = ReturnType<typeof inputGroupTextVariants>;
+
 export type InputGroupControlVariantProps = VariantProps<typeof inputGroupControlVariants>;
+export type InputGroupControlVariants = ReturnType<typeof inputGroupControlVariants>;
+
 export type InputGroupTextareaControlVariantProps = VariantProps<
+  typeof inputGroupTextareaControlVariants
+>;
+export type InputGroupTextareaControlVariants = ReturnType<
   typeof inputGroupTextareaControlVariants
 >;

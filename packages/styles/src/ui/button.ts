@@ -108,5 +108,10 @@ export const buttonLoadingVariants = tv({
     srOnly: "sr-only",
   },
 });
+
 export type ButtonVariantProps = VariantProps<typeof buttonVariants>;
+export type ButtonVariants = ReturnType<typeof buttonVariants>;
+
 export type ButtonLoadingVariantProps = VariantProps<typeof buttonLoadingVariants>;
+export type ButtonLoadingVariants = ReturnType<typeof buttonLoadingVariants>;
+export type ButtonLoadingSlots = keyof ButtonLoadingVariants;

@@ -82,13 +82,34 @@ export const stepsContentVariants = tv({
 export const stepsCompletedContentVariants = tv({
   base: "data-[orientation=vertical]:flex-1",
 });
+
 export type StepsVariantProps = VariantProps<typeof stepsVariants>;
+export type StepsVariants = ReturnType<typeof stepsVariants>;
+
 export type StepsListVariantProps = VariantProps<typeof stepsListVariants>;
+export type StepsListVariants = ReturnType<typeof stepsListVariants>;
+
 export type StepsItemVariantProps = VariantProps<typeof stepsItemVariants>;
+export type StepsItemVariants = ReturnType<typeof stepsItemVariants>;
+
 export type StepsTriggerVariantProps = VariantProps<typeof stepsTriggerVariants>;
+export type StepsTriggerVariants = ReturnType<typeof stepsTriggerVariants>;
+
 export type StepsIndicatorVariantProps = VariantProps<typeof stepsIndicatorVariants>;
+export type StepsIndicatorVariants = ReturnType<typeof stepsIndicatorVariants>;
+export type StepsIndicatorSlots = keyof StepsIndicatorVariants;
+
 export type StepsSeparatorVariantProps = VariantProps<typeof stepsSeparatorVariants>;
+export type StepsSeparatorVariants = ReturnType<typeof stepsSeparatorVariants>;
+
 export type StepsTitleVariantProps = VariantProps<typeof stepsTitleVariants>;
+export type StepsTitleVariants = ReturnType<typeof stepsTitleVariants>;
+
 export type StepsDescriptionVariantProps = VariantProps<typeof stepsDescriptionVariants>;
+export type StepsDescriptionVariants = ReturnType<typeof stepsDescriptionVariants>;
+
 export type StepsContentVariantProps = VariantProps<typeof stepsContentVariants>;
+export type StepsContentVariants = ReturnType<typeof stepsContentVariants>;
+
 export type StepsCompletedContentVariantProps = VariantProps<typeof stepsCompletedContentVariants>;
+export type StepsCompletedContentVariants = ReturnType<typeof stepsCompletedContentVariants>;

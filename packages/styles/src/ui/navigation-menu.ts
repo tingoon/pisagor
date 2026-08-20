@@ -18,4 +18,7 @@ export const navigationMenuVariants = tv({
     list: ["flex flex-wrap items-center gap-1"],
   },
 });
+
 export type NavigationMenuVariantProps = VariantProps<typeof navigationMenuVariants>;
+export type NavigationMenuVariants = ReturnType<typeof navigationMenuVariants>;
+export type NavigationMenuSlots = keyof NavigationMenuVariants;

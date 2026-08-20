@@ -45,6 +45,13 @@ export const toastItemVariants = tv({
 export const toastInlineVariants = tv({
   base: ["opacity-64 hover:opacity-100"],
 });
+
 export type ToasterVariantProps = VariantProps<typeof toasterVariants>;
+export type ToasterVariants = ReturnType<typeof toasterVariants>;
+
 export type ToastItemVariantProps = VariantProps<typeof toastItemVariants>;
+export type ToastItemVariants = ReturnType<typeof toastItemVariants>;
+export type ToastItemSlots = keyof ToastItemVariants;
+
 export type ToastInlineVariantProps = VariantProps<typeof toastInlineVariants>;
+export type ToastInlineVariants = ReturnType<typeof toastInlineVariants>;

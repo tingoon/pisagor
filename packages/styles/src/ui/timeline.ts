@@ -51,10 +51,24 @@ export const timelineTitleVariants = tv({
 export const timelineDescriptionVariants = tv({
   base: ["text-muted-foreground text-sm"],
 });
+
 export type TimelineVariantProps = VariantProps<typeof timelineVariants>;
+export type TimelineVariants = ReturnType<typeof timelineVariants>;
+
 export type TimelineItemVariantProps = VariantProps<typeof timelineItemVariants>;
+export type TimelineItemVariants = ReturnType<typeof timelineItemVariants>;
+
 export type TimelineIndicatorVariantProps = VariantProps<typeof timelineIndicatorVariants>;
+export type TimelineIndicatorVariants = ReturnType<typeof timelineIndicatorVariants>;
+
 export type TimelineSeparatorVariantProps = VariantProps<typeof timelineSeparatorVariants>;
+export type TimelineSeparatorVariants = ReturnType<typeof timelineSeparatorVariants>;
+
 export type TimelineContentVariantProps = VariantProps<typeof timelineContentVariants>;
+export type TimelineContentVariants = ReturnType<typeof timelineContentVariants>;
+
 export type TimelineTitleVariantProps = VariantProps<typeof timelineTitleVariants>;
+export type TimelineTitleVariants = ReturnType<typeof timelineTitleVariants>;
+
 export type TimelineDescriptionVariantProps = VariantProps<typeof timelineDescriptionVariants>;
+export type TimelineDescriptionVariants = ReturnType<typeof timelineDescriptionVariants>;

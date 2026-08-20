@@ -34,10 +34,24 @@ export const timerSeparatorVariants = tv({
 export const timerControlVariants = tv({
   base: ["flex items-center gap-2"],
 });
+
 export type TimerVariantProps = VariantProps<typeof timerVariants>;
+export type TimerVariants = ReturnType<typeof timerVariants>;
+
 export type TimerAreaVariantProps = VariantProps<typeof timerAreaVariants>;
+export type TimerAreaVariants = ReturnType<typeof timerAreaVariants>;
+
 export type TimerItemGroupVariantProps = VariantProps<typeof timerItemGroupVariants>;
+export type TimerItemGroupVariants = ReturnType<typeof timerItemGroupVariants>;
+
 export type TimerItemVariantProps = VariantProps<typeof timerItemVariants>;
+export type TimerItemVariants = ReturnType<typeof timerItemVariants>;
+
 export type TimerItemLabelVariantProps = VariantProps<typeof timerItemLabelVariants>;
+export type TimerItemLabelVariants = ReturnType<typeof timerItemLabelVariants>;
+
 export type TimerSeparatorVariantProps = VariantProps<typeof timerSeparatorVariants>;
+export type TimerSeparatorVariants = ReturnType<typeof timerSeparatorVariants>;
+
 export type TimerControlVariantProps = VariantProps<typeof timerControlVariants>;
+export type TimerControlVariants = ReturnType<typeof timerControlVariants>;

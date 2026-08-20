@@ -30,9 +30,21 @@ export const framePanelDescriptionVariants = tv({
 export const framePanelFooterVariants = tv({
   base: ["px-5 py-4"],
 });
+
 export type FrameVariantProps = VariantProps<typeof frameVariants>;
+export type FrameVariants = ReturnType<typeof frameVariants>;
+
 export type FramePanelVariantProps = VariantProps<typeof framePanelVariants>;
+export type FramePanelVariants = ReturnType<typeof framePanelVariants>;
+
 export type FramePanelHeaderVariantProps = VariantProps<typeof framePanelHeaderVariants>;
+export type FramePanelHeaderVariants = ReturnType<typeof framePanelHeaderVariants>;
+
 export type FramePanelTitleVariantProps = VariantProps<typeof framePanelTitleVariants>;
+export type FramePanelTitleVariants = ReturnType<typeof framePanelTitleVariants>;
+
 export type FramePanelDescriptionVariantProps = VariantProps<typeof framePanelDescriptionVariants>;
+export type FramePanelDescriptionVariants = ReturnType<typeof framePanelDescriptionVariants>;
+
 export type FramePanelFooterVariantProps = VariantProps<typeof framePanelFooterVariants>;
+export type FramePanelFooterVariants = ReturnType<typeof framePanelFooterVariants>;

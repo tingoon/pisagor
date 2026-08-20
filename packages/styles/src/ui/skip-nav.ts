@@ -15,5 +15,9 @@ export const skipNavLinkVariants = tv({
 export const skipNavContentVariants = tv({
   base: "outline-hidden",
 });
+
 export type SkipNavLinkVariantProps = VariantProps<typeof skipNavLinkVariants>;
+export type SkipNavLinkVariants = ReturnType<typeof skipNavLinkVariants>;
+
 export type SkipNavContentVariantProps = VariantProps<typeof skipNavContentVariants>;
+export type SkipNavContentVariants = ReturnType<typeof skipNavContentVariants>;

@@ -61,14 +61,36 @@ export const tourInline3Variants = tv({
 export const tourSpotlightVariants = tv({
   base: ["z-50 border-2 border-primary"],
 });
+
 export type TourOverlayVariantProps = VariantProps<typeof tourOverlayVariants>;
+export type TourOverlayVariants = ReturnType<typeof tourOverlayVariants>;
+
 export type TourPositionerVariantProps = VariantProps<typeof tourPositionerVariants>;
+export type TourPositionerVariants = ReturnType<typeof tourPositionerVariants>;
+
 export type TourContentVariantProps = VariantProps<typeof tourContentVariants>;
+export type TourContentVariants = ReturnType<typeof tourContentVariants>;
+
 export type TourTitleVariantProps = VariantProps<typeof tourTitleVariants>;
+export type TourTitleVariants = ReturnType<typeof tourTitleVariants>;
+
 export type TourDescriptionVariantProps = VariantProps<typeof tourDescriptionVariants>;
+export type TourDescriptionVariants = ReturnType<typeof tourDescriptionVariants>;
+
 export type TourProgressTextVariantProps = VariantProps<typeof tourProgressTextVariants>;
+export type TourProgressTextVariants = ReturnType<typeof tourProgressTextVariants>;
+
 export type TourActionsVariantProps = VariantProps<typeof tourActionsVariants>;
+export type TourActionsVariants = ReturnType<typeof tourActionsVariants>;
+
 export type TourInlineVariantProps = VariantProps<typeof tourInlineVariants>;
+export type TourInlineVariants = ReturnType<typeof tourInlineVariants>;
+
 export type TourInline2VariantProps = VariantProps<typeof tourInline2Variants>;
+export type TourInline2Variants = ReturnType<typeof tourInline2Variants>;
+
 export type TourInline3VariantProps = VariantProps<typeof tourInline3Variants>;
+export type TourInline3Variants = ReturnType<typeof tourInline3Variants>;
+
 export type TourSpotlightVariantProps = VariantProps<typeof tourSpotlightVariants>;
+export type TourSpotlightVariants = ReturnType<typeof tourSpotlightVariants>;

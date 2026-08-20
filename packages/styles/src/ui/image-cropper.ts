@@ -77,8 +77,20 @@ export const imageCropperGridVariants = tv({
 });
 
 export type ImageCropperVariantProps = VariantProps<typeof imageCropperVariants>;
+export type ImageCropperVariants = ReturnType<typeof imageCropperVariants>;
+
 export type ImageCropperViewportVariantProps = VariantProps<typeof imageCropperViewportVariants>;
+export type ImageCropperViewportVariants = ReturnType<typeof imageCropperViewportVariants>;
+
 export type ImageCropperImageVariantProps = VariantProps<typeof imageCropperImageVariants>;
+export type ImageCropperImageVariants = ReturnType<typeof imageCropperImageVariants>;
+
 export type ImageCropperSelectionVariantProps = VariantProps<typeof imageCropperSelectionVariants>;
+export type ImageCropperSelectionVariants = ReturnType<typeof imageCropperSelectionVariants>;
+
 export type ImageCropperHandleVariantProps = VariantProps<typeof imageCropperHandleVariants>;
+export type ImageCropperHandleVariants = ReturnType<typeof imageCropperHandleVariants>;
+export type ImageCropperHandleSlots = keyof ImageCropperHandleVariants;
+
 export type ImageCropperGridVariantProps = VariantProps<typeof imageCropperGridVariants>;
+export type ImageCropperGridVariants = ReturnType<typeof imageCropperGridVariants>;

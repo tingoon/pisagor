@@ -67,4 +67,8 @@ export const menuItemVariants = tv({
 });
 
 export type MenuVariantProps = VariantProps<typeof menuVariants>;
+export type MenuVariants = ReturnType<typeof menuVariants>;
+export type MenuSlots = keyof MenuVariants;
+
 export type MenuItemVariantProps = VariantProps<typeof menuItemVariants>;
+export type MenuItemVariants = ReturnType<typeof menuItemVariants>;

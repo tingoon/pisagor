@@ -16,4 +16,7 @@ export const dataListVariants = tv({
     value: ["flex-1", "text-foreground"],
   },
 });
+
 export type DataListVariantProps = VariantProps<typeof dataListVariants>;
+export type DataListVariants = ReturnType<typeof dataListVariants>;
+export type DataListSlots = keyof DataListVariants;

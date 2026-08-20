@@ -27,5 +27,9 @@ export const toggleGroupInlineVariants = tv({
     "data-[orientation=horizontal]:data-[spacing=0]:data-[variant=outline]:first:border-s",
   ],
 });
+
 export type ToggleGroupVariantProps = VariantProps<typeof toggleGroupVariants>;
+export type ToggleGroupVariants = ReturnType<typeof toggleGroupVariants>;
+
 export type ToggleGroupInlineVariantProps = VariantProps<typeof toggleGroupInlineVariants>;
+export type ToggleGroupInlineVariants = ReturnType<typeof toggleGroupInlineVariants>;

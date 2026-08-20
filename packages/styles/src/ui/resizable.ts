@@ -69,11 +69,23 @@ export const resizableResizeTriggerVariants = tv({
     icon: "size-2.5",
   },
 });
+
 export type ResizableEdgeHandleVariantProps = VariantProps<typeof resizableEdgeHandleVariants>;
+export type ResizableEdgeHandleVariants = ReturnType<typeof resizableEdgeHandleVariants>;
+export type ResizableEdgeHandleSlots = keyof ResizableEdgeHandleVariants;
+
 export type ResizableVariantProps = VariantProps<typeof resizableVariants>;
+export type ResizableVariants = ReturnType<typeof resizableVariants>;
+
 export type ResizableResizeTriggerIndicatorVariantProps = VariantProps<
   typeof resizableResizeTriggerIndicatorVariants
 >;
+export type ResizableResizeTriggerIndicatorVariants = ReturnType<
+  typeof resizableResizeTriggerIndicatorVariants
+>;
+
 export type ResizableResizeTriggerVariantProps = VariantProps<
   typeof resizableResizeTriggerVariants
 >;
+export type ResizableResizeTriggerVariants = ReturnType<typeof resizableResizeTriggerVariants>;
+export type ResizableResizeTriggerSlots = keyof ResizableResizeTriggerVariants;

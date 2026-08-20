@@ -24,5 +24,10 @@ export const textareaVariants = tv({
 export const textareaInlineVariants = tv({
   base: ["absolute top-1.5 right-1.5 self-start p-0"],
 });
+
 export type TextareaVariantProps = VariantProps<typeof textareaVariants>;
+export type TextareaVariants = ReturnType<typeof textareaVariants>;
+export type TextareaSlots = keyof TextareaVariants;
+
 export type TextareaInlineVariantProps = VariantProps<typeof textareaInlineVariants>;
+export type TextareaInlineVariants = ReturnType<typeof textareaInlineVariants>;

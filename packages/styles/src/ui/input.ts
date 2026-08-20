@@ -16,5 +16,10 @@ export const inputVariants = tv({
     ],
   },
 });
+
 export type InputRootVariantProps = VariantProps<typeof inputRootVariants>;
+export type InputRootVariants = ReturnType<typeof inputRootVariants>;
+
 export type InputVariantProps = VariantProps<typeof inputVariants>;
+export type InputVariants = ReturnType<typeof inputVariants>;
+export type InputSlots = keyof InputVariants;

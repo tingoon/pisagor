@@ -88,17 +88,42 @@ export const phoneInputInline9Variants = tv({
 export const phoneInputInline10Variants = tv({
   base: ["ms-auto text-muted-foreground tabular-nums"],
 });
+
 export type PhoneInputVariantProps = VariantProps<typeof phoneInputVariants>;
+export type PhoneInputVariants = ReturnType<typeof phoneInputVariants>;
+export type PhoneInputSlots = keyof PhoneInputVariants;
+
 export type PhoneInputInlineVariantProps = VariantProps<typeof phoneInputInlineVariants>;
+export type PhoneInputInlineVariants = ReturnType<typeof phoneInputInlineVariants>;
+
 export type PhoneInputInline2VariantProps = VariantProps<typeof phoneInputInline2Variants>;
+export type PhoneInputInline2Variants = ReturnType<typeof phoneInputInline2Variants>;
+
 export type PhoneInputCountryTriggerVariantProps = VariantProps<
   typeof phoneInputCountryTriggerVariants
 >;
+export type PhoneInputCountryTriggerVariants = ReturnType<typeof phoneInputCountryTriggerVariants>;
+
 export type PhoneInputInline3VariantProps = VariantProps<typeof phoneInputInline3Variants>;
+export type PhoneInputInline3Variants = ReturnType<typeof phoneInputInline3Variants>;
+
 export type PhoneInputInline4VariantProps = VariantProps<typeof phoneInputInline4Variants>;
+export type PhoneInputInline4Variants = ReturnType<typeof phoneInputInline4Variants>;
+
 export type PhoneInputInline5VariantProps = VariantProps<typeof phoneInputInline5Variants>;
+export type PhoneInputInline5Variants = ReturnType<typeof phoneInputInline5Variants>;
+
 export type PhoneInputInline6VariantProps = VariantProps<typeof phoneInputInline6Variants>;
+export type PhoneInputInline6Variants = ReturnType<typeof phoneInputInline6Variants>;
+
 export type PhoneInputInline7VariantProps = VariantProps<typeof phoneInputInline7Variants>;
+export type PhoneInputInline7Variants = ReturnType<typeof phoneInputInline7Variants>;
+
 export type PhoneInputInline8VariantProps = VariantProps<typeof phoneInputInline8Variants>;
+export type PhoneInputInline8Variants = ReturnType<typeof phoneInputInline8Variants>;
+
 export type PhoneInputInline9VariantProps = VariantProps<typeof phoneInputInline9Variants>;
+export type PhoneInputInline9Variants = ReturnType<typeof phoneInputInline9Variants>;
+
 export type PhoneInputInline10VariantProps = VariantProps<typeof phoneInputInline10Variants>;
+export type PhoneInputInline10Variants = ReturnType<typeof phoneInputInline10Variants>;
