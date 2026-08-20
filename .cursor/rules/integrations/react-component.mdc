@@ -80,7 +80,7 @@ Choose **closed**, **compound**, or **compound + shorthand** per component.
 - Public surface is `Foo.Root` / `Foo.Part` only. Flat `FooPart` barrel re-exports are forbidden; do not ship a dual compound + flat surface.
 - Detached presets (flat `FooField`) must attach on the namespace as `Foo.Field` (via `Object.assign` on the compound / shorthand object). No parallel flat compat export.
 - Utils, hooks, and variants may remain named exports outside the namespace.
-- `parameters.docs.api` must match the real barrel surface (`compound` / `compound-shorthand` only when the barrel is a true `Foo.Root` / `Foo.Part` namespace).
+- `parameters.metadata.api` must match the real barrel surface (`compound` / `compound-shorthand` only when the barrel is a true `Foo.Root` / `Foo.Part` namespace).
 
 **Shorthand:**
 

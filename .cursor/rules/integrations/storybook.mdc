@@ -46,14 +46,15 @@ Prefer `@pisagor/react` for light UI imports in stories (including the component
 
 ## Vue setup
 
-- Stories: CSF default export `meta` + named story exports (`.stories.ts`).
+- Stories: CSF via `preview.meta` + `meta.story` (`.stories.ts`), same as React.
 - Preview: `import preview from "#/storybook/preview"` (maps to `apps/vue/.storybook`).
 - Preview / decorators: `apps/vue/.storybook/`.
 - Import components as `@pisagor/vue` (light) or `@pisagor/vue/<heavy>`.
+- **Hidden catalog metadata:** same `parameters.metadata` rules as React — required `api` + `taxonomy` on `@pisagor/vue` component stories; typed via [`addonMetadata`](../../../apps/vue/.storybook/addons/metadata-addon.ts). Mirror the React sibling when porting.
 
 ## Meta
 
-**Required:** `component`, `title`, `parameters.docs.description.component`.
+**Required:** `component`, `title`, `parameters.docs.description.component`. On `@pisagor/react` / `@pisagor/vue` component stories also `parameters.metadata.api` and `parameters.metadata.taxonomy`.
 
 **Do not set on meta:** shared `args`, `argTypes` — Controls infers from component types.
 
@@ -67,26 +68,30 @@ Sub-modules may nest under the parent: `Components/Data Display/<Parent>/<Sub Mo
 
 **Component description:** one or two plain sentences — what the component does for the user. No prop names, API jargon, or alias lists. A short cross-reference to a sibling component is OK when it prevents confusion (e.g. Menu vs Dropdown Menu).
 
-**Docs metadata (`@pisagor/react` stories):** set on `parameters.docs` — not on `tags`:
+**Docs (`parameters.docs`):** only user-visible Autodocs copy — typically `description.component`.
+
+**Hidden catalog metadata (`@pisagor/react` / `@pisagor/vue` stories):** set on `parameters.metadata` — not on `tags` or `docs`. These fields are for agents / tooling / MCP and do **not** render in Storybook Docs UI. Typed via `addonMetadata` in each runner preview ([React](../../../apps/react/.storybook/addons/metadata-addon.ts), [Vue](../../../apps/vue/.storybook/addons/metadata-addon.ts)).
 
 ```tsx
 parameters: {
   docs: {
-    aliases: ["banner", "callout"], // optional; kebab-case; omit when none
-    api: "compound-shorthand", // closed | compound | compound-shorthand
     description: {
       component: "Draws attention to a short message without blocking the rest of the interface.",
     },
+  },
+  metadata: {
+    aliases: ["banner", "callout"], // optional; kebab-case; omit when none
+    api: "compound-shorthand", // closed | compound | compound-shorthand
     taxonomy: "standard", // primitive | standard | pattern
   },
 },
 ```
 
-- **`api`** — required on `@pisagor/react` meta; public API model; rendered as a badge on the custom docs page ([`component-docs-page.tsx`](../../../apps/react/src/components/component-docs-page.tsx)). Do not repeat in `description.component`.
-- **`taxonomy`** — required on `@pisagor/react` meta; rendered as a badge on the custom docs page.
+- **`api`** — required on `@pisagor/react` / `@pisagor/vue` component meta; public API model. Do not repeat in `description.component`.
+- **`taxonomy`** — required on `@pisagor/react` / `@pisagor/vue` component meta.
 - **`aliases`** — optional alternative names for discovery; single source — do not repeat in `description`.
-- **`checklist`** — optional **per-component** map (`accessibleColor` | `definedBehaviors` | `definedOptions` | `interactiveStates` | `keyboardInteractions` | `platformScales`). Omit the whole key when nothing is supported (no empty `{}`, no explicit `false`). Only set `true`, `"partial"`, or `"not-planned"`. Do not checklist package-level concerns (tokens, light/dark, Provider i18n/RTL). Rendered after Controls.
 - Do not reference third-party design systems or libraries in descriptions or aliases.
+- Do not add a custom `parameters.docs.page` to surface these fields.
 
 ## Tags
 
@@ -96,12 +101,13 @@ Use `tags` only for **status** — not for taxonomy, aliases, or package scope. 
 const meta = preview.meta({
   title: "Components/Actions/Button",
   parameters: {
-    docs: { api: "closed", taxonomy: "primitive", description: { component: "…" } },
+    docs: { description: { component: "…" } },
+    metadata: { api: "closed", taxonomy: "primitive" },
   },
 });
 ```
 
-**API (`parameters.docs.api`, `@pisagor/react` only):**
+**API (`parameters.metadata.api`, `@pisagor/react` / `@pisagor/vue` components):**
 
 | Value | Meaning |
 | --- | ------- |
@@ -109,7 +115,7 @@ const meta = preview.meta({
 | `compound` | `Foo.Root` + subparts; composition via compound parts |
 | `compound-shorthand` | Shorthand default export + `Foo.Root` for advanced composition |
 
-**Taxonomy (`parameters.docs.taxonomy`, `@pisagor/react` only):**
+**Taxonomy (`parameters.metadata.taxonomy`, `@pisagor/react` / `@pisagor/vue` components):**
 
 | Value | Meaning |
 | --- | ------- |
@@ -117,7 +123,7 @@ const meta = preview.meta({
 | `standard` | One UI concept (may be compound or closed) |
 | `pattern` | Multi-component UX orchestration |
 
-**Aliases (`parameters.docs.aliases`, `@pisagor/react` only):**
+**Aliases (`parameters.metadata.aliases`, `@pisagor/react` / `@pisagor/vue` components):**
 
 - Optional; kebab-case strings (`stepper`, `command-palette`, `banner`).
 - 0–4 meaningful aliases per component; omit when the canonical name is enough.
@@ -130,11 +136,9 @@ const meta = preview.meta({
 | `experimental` | `@beta` on the component export |
 | `deprecated` | `@deprecated` on the component export |
 
-**Autodocs:** enabled globally in [`preview.tsx`](../../../apps/react/.storybook/preview.tsx) — do not set per story.
+**Autodocs:** enabled globally in each runner’s `preview` — do not set per story.
 
-New `@pisagor/react` stories: set `title`, `parameters.docs.api`, `parameters.docs.taxonomy`, and `description.component`; add `aliases` when helpful. `@pisagor/react-form` stories use `Forms/…` titles; `@pisagor/react-blocks` stories use `Blocks/…` titles; recipes use `Recipes/…` titles. Copy a sibling story when unsure.
-
-Type-check for custom docs fields is enabled via [`docs-addon.ts`](../../../apps/react/.storybook/addons/docs-addon.ts) in preview.
+New `@pisagor/react` / `@pisagor/vue` component stories: set `title`, `parameters.metadata.api`, `parameters.metadata.taxonomy`, and `parameters.docs.description.component`; add `aliases` when helpful. `@pisagor/react-form` / `@pisagor/vue-form` stories use `Forms/…` titles; blocks packages use `Blocks/…` titles; recipes use `Recipes/…` titles. Copy a sibling story when unsure.
 
 ## File layout
 
