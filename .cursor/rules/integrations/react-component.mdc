@@ -200,6 +200,7 @@ Context factory + value types live in [`<name>.context.tsx`](#context-file-namec
 - Do not add an `Exports` region — public API belongs in `index.ts`.
 - Do not add empty `#region` / `#endregion` pairs — skip regions that have no content.
 - Do not keep a `#region Context` in `<name>.tsx` — use `<name>.context.tsx` instead.
+- Do not declare `export type` / `export interface` props outside `#region Types` — keep every part props type in Types; Parts only contain component functions.
 
 **Note:** Types region order is file-level type declaration order — not the same as [react.mdc → Props order](../styleguides/react.mdc#props-order) field groups.
 
