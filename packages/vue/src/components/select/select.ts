@@ -93,13 +93,12 @@ export const SelectRoot = defineComponent({
   setup(props, { attrs, slots }) {
     return () =>
       h(FormControlVariantProvider as ArkPart, { value: props.variant }, () => {
-        const { "data-testid": _, ...restAttrs } = attrs;
         SelectRootContext({ testId: props.testId });
 
         return h(
           SelectPrimitive.Root as ArkPart,
           {
-            ...restAttrs,
+            ...attrs,
             collection: props.collection,
             "data-testid": props.testId,
             lazyMount: props.lazyMount,

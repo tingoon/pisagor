@@ -107,16 +107,14 @@ export const ComboboxRoot = defineComponent({
     variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
   },
   setup(props, { attrs, slots }) {
-    return () => {
-      const { "data-testid": _, ...restAttrs } = attrs;
-
-      return h(FormControlVariantProvider as ArkPart, { value: props.variant }, () => {
+    return () =>
+      h(FormControlVariantProvider as ArkPart, { value: props.variant }, () => {
         ComboboxRootContext({ testId: props.testId });
 
         return h(
           ComboboxPrimitive.Root as ArkPart,
           {
-            ...restAttrs,
+            ...attrs,
             collection: props.collection,
             "data-testid": props.testId,
             lazyMount: props.lazyMount,
@@ -129,7 +127,6 @@ export const ComboboxRoot = defineComponent({
           slots.default?.(),
         );
       });
-    };
   },
 });
 

@@ -100,19 +100,16 @@ export const FloatingPanelRoot = defineComponent({
 
     provideFloatingPanelContext(context);
 
-    return () => {
-      const { "data-testid": _, ...rest } = attrs;
-
-      return h(
+    return () =>
+      h(
         FloatingPanelPrimitive.Root as ArkPart,
         {
-          ...rest,
+          ...attrs,
           lazyMount: props.lazyMount,
           unmountOnExit: props.unmountOnExit,
         },
         slots,
       );
-    };
   },
 });
 

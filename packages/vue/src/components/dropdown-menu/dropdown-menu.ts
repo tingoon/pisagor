@@ -62,15 +62,13 @@ export const DropdownMenuRoot = defineComponent({
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    const { "data-testid": _, ...rest } = attrs;
-
     provideDropdownMenuRoot({ testId: props.testId });
 
     return () =>
       h(
         MenuPrimitive.Root as ArkPart,
         {
-          ...rest,
+          ...attrs,
           lazyMount: props.lazyMount,
           positioning: props.positioning,
           unmountOnExit: props.unmountOnExit,

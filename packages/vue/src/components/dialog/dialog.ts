@@ -98,20 +98,17 @@ export const DialogRoot = defineComponent({
 
     provideDialogContext(context);
 
-    return () => {
-      const { "data-testid": _, ...rest } = attrs;
-
-      return h(
+    return () =>
+      h(
         DialogPrimitive.Root as ArkPart,
         {
-          ...rest,
+          ...attrs,
           lazyMount: props.lazyMount,
           modal: props.modal,
           unmountOnExit: props.unmountOnExit,
         },
         slots,
       );
-    };
   },
 });
 

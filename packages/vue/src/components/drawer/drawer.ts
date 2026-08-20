@@ -76,11 +76,7 @@ export const DrawerRoot = defineComponent({
 
     provideDrawerContext(context);
 
-    return () => {
-      const { "data-testid": _, ...rest } = attrs;
-
-      return h(DrawerPrimitive.Root as ArkPart, { ...rest }, slots);
-    };
+    return () => h(DrawerPrimitive.Root as ArkPart, { ...attrs }, slots);
   },
 });
 

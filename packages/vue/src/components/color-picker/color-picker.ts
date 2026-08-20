@@ -82,7 +82,6 @@ export const ColorPickerRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const { "data-testid": _, ...restAttrs } = attrs;
       const isControlled = props.value !== undefined;
       provideColorPickerRootContext({ testId: props.testId });
 
@@ -101,7 +100,7 @@ export const ColorPickerRoot = defineComponent({
         h(
           ColorPickerPrimitive.Root as ArkPart,
           {
-            ...restAttrs,
+            ...attrs,
             class: cn(colorPickerVariants(), props.class, (attrs as { class?: ClassValue }).class),
             "data-testid": props.testId,
             defaultValue: internalValue ? parseColorArk(internalValue) : undefined,

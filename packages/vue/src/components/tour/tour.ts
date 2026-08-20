@@ -141,20 +141,17 @@ export const TourRoot = defineComponent({
 
     provideTourContext(context);
 
-    return () => {
-      const { "data-testid": _, ...rest } = attrs;
-
-      return h(
+    return () =>
+      h(
         TourPrimitive.Root as ArkPart,
         {
-          ...rest,
+          ...attrs,
           lazyMount: props.lazyMount,
           tour: tour.value,
           unmountOnExit: props.unmountOnExit,
         },
         slots,
       );
-    };
   },
 });
 

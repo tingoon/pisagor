@@ -78,19 +78,16 @@ export const PopoverRoot = defineComponent({
 
     providePopoverContext(context);
 
-    return () => {
-      const { "data-testid": _, ...rest } = attrs;
-
-      return h(
+    return () =>
+      h(
         PopoverPrimitive.Root as ArkPart,
         {
-          ...rest,
+          ...attrs,
           lazyMount: props.lazyMount,
           unmountOnExit: props.unmountOnExit,
         },
         slots,
       );
-    };
   },
 });
 

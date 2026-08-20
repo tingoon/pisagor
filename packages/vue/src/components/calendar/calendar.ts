@@ -99,14 +99,12 @@ export const CalendarRoot = defineComponent({
     variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
   },
   setup(props, { attrs, slots }) {
-    return () => {
-      const { "data-testid": _, ...restAttrs } = attrs;
-
-      return h(FormControlVariantProvider as ArkPart, { value: props.variant }, () =>
+    return () =>
+      h(FormControlVariantProvider as ArkPart, { value: props.variant }, () =>
         h(
           DatePickerPrimitive.Root as ArkPart,
           {
-            ...restAttrs,
+            ...attrs,
             class: cn(calendarVariants(), props.class),
             "data-testid": props.testId,
             inline: true,
@@ -116,7 +114,6 @@ export const CalendarRoot = defineComponent({
           slots,
         ),
       );
-    };
   },
 });
 

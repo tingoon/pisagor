@@ -66,13 +66,11 @@ export const HoverCardRoot = defineComponent({
 
     provideHoverCardContext(context);
 
-    return () => {
-      const { "data-testid": _, ...rest } = attrs;
-
-      return h(
+    return () =>
+      h(
         HoverCardPrimitive.Root as ArkPart,
         {
-          ...rest,
+          ...attrs,
           closeDelay: props.closeDelay,
           lazyMount: props.lazyMount,
           openDelay: props.openDelay,
@@ -81,7 +79,6 @@ export const HoverCardRoot = defineComponent({
         },
         slots,
       );
-    };
   },
 });
 
