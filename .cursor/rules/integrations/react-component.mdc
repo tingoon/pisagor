@@ -162,21 +162,24 @@ Every `<name>.tsx` file uses `#region` blocks in this order. Skip regions that d
 | 2 | `Types` | Props, variant types, context types, item interfaces |
 | 3 | `Context` | Shared React context for compound components only |
 | 4 | `Hooks` | File-local hooks not exported from `index.ts` |
-| 5 | `Component` / `Components` | Compound / closed component functions (not shorthand) |
+| 5 | `Part` / `Parts` | Compound / closed component functions (not shorthand) |
 | 6 | `Shorthand` | `FooShorthand` preset compose — after all compound parts |
 
 ### Do
 
-- Use **`#region Component`** (singular) when the file exports **one** component function.
-- Use **`#region Components`** (plural) when the file exports **two or more** component functions.
-- Use **`#region Shorthand`** when the file exports `FooShorthand` — place it **after** `#region Components`, not inside it.
+- Use **`#region Part`** (singular) when the file exports **one** component function.
+- Use **`#region Parts`** (plural) when the file exports **two or more** component functions.
+- Use **`#region Shorthand`** when the file exports `FooShorthand` — place it **after** `#region Parts`, not inside it.
 - Place `Variants` before `Types` so variant types can reference `{name}Variants`.
-- Start at `Types` → `Component(s)` when there is no `tv()`.
+- Start at `Types` → `Part(s)` when there is no `tv()`.
+- Put **`// #endregion` on the line immediately after** the region's last statement — no blank line before it.
+- Put **one blank line between region blocks** — after `// #endregion`, before the next `// #region`.
 - Follow [react.mdc → Component body order](../styleguides/react.mdc#component-body-order) inside each component function.
 
 ### Do not
 
 - Do not add an `Exports` region — public API belongs in `index.ts`.
+- Do not add empty `#region` / `#endregion` pairs — skip regions that have no content.
 
 **Note:** Types region order is file-level type declaration order — not the same as [react.mdc → Props order](../styleguides/react.mdc#props-order) field groups.
 
