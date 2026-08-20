@@ -32,7 +32,6 @@
     ".": "./src/components/index.ts",
     "./*": "./src/components/*/index.ts",
     "./charts": "./src/charts/index.ts",
-    "./components": "./src/components/index.ts",
     "./hooks": "./src/hooks/index.ts",
     "./styles": "./src/styles.css"
   },

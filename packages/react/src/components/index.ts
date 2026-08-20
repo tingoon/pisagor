@@ -3,6 +3,7 @@ export * from "./action-bar";
 export * from "./alert";
 export * from "./alert-dialog";
 export * from "./announcement";
+export * from "./app-shell";
 export * from "./aspect-ratio";
 export * from "./autocomplete";
 export * from "./avatar";
