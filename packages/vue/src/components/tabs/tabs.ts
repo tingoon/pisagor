@@ -9,7 +9,7 @@ import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
 // #region Types
-export interface TabItem {
+export interface TabsPresetItem {
   content: VNodeChild;
   disabled?: boolean;
   label: VNodeChild;
@@ -26,7 +26,6 @@ export const TabsRoot = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     lazyMount: { default: true, type: Boolean },
-    tabs: { default: undefined, type: Array as PropType<TabItem[]> },
     testId: String,
     unmountOnExit: { default: true, type: Boolean },
   },
@@ -41,23 +40,7 @@ export const TabsRoot = defineComponent({
           lazyMount: props.lazyMount,
           unmountOnExit: props.unmountOnExit,
         },
-        () => [
-          props.tabs
-            ? h(TabsList, null, () =>
-                props.tabs?.map((tab) =>
-                  h(
-                    TabsTrigger,
-                    { disabled: tab.disabled, key: tab.value, value: tab.value },
-                    () => tab.label,
-                  ),
-                ),
-              )
-            : undefined,
-          ...(props.tabs?.map((tab) =>
-            h(TabsContent, { key: tab.value, value: tab.value }, () => tab.content),
-          ) ?? []),
-          slots.default?.(),
-        ],
+        slots,
       );
   },
 });
@@ -124,6 +107,48 @@ export const TabsContent = defineComponent({
           class: cn(tabsContentVariants(), props.class, attrs.class),
         },
         slots,
+      );
+  },
+});
+// #endregion
+
+// #region Shorthand
+export const TabsShorthand = defineComponent({
+  inheritAttrs: false,
+  name: "TabsShorthand",
+  props: {
+    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    items: { default: undefined, type: Array as PropType<TabsPresetItem[]> },
+    lazyMount: { default: true, type: Boolean },
+    testId: String,
+    unmountOnExit: { default: true, type: Boolean },
+    variant: { default: undefined, type: String as PropType<"default" | "underline"> },
+  },
+  setup(props, { attrs }) {
+    return () =>
+      h(
+        TabsRoot,
+        {
+          ...attrs,
+          class: props.class,
+          lazyMount: props.lazyMount,
+          testId: props.testId,
+          unmountOnExit: props.unmountOnExit,
+        },
+        () => [
+          h(TabsList, { variant: props.variant }, () =>
+            props.items?.map((tab) =>
+              h(
+                TabsTrigger,
+                { disabled: tab.disabled, key: tab.value, value: tab.value },
+                () => tab.label,
+              ),
+            ),
+          ),
+          ...(props.items?.map((tab) =>
+            h(TabsContent, { key: tab.value, value: tab.value }, () => tab.content),
+          ) ?? []),
+        ],
       );
   },
 });
