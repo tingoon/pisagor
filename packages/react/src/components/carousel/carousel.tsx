@@ -15,6 +15,11 @@ import type { WithTestId } from "../../internal/types";
 import { Button } from "../button";
 
 // #region Types
+interface CarouselPresetItem {
+  content: ReactNode;
+  key?: string;
+}
+
 export type CarouselControlProps = ComponentProps<typeof CarouselPrimitive.Control>;
 
 export type CarouselPreviousProps = ComponentProps<typeof CarouselPrimitive.PrevTrigger>;
@@ -29,19 +34,10 @@ export type CarouselContentProps = ComponentProps<typeof CarouselPrimitive.ItemG
 
 export type CarouselItemProps = ComponentProps<typeof CarouselPrimitive.Item>;
 
-export type CarouselRootProps = Omit<ComponentProps<typeof CarouselPrimitive.Root>, "slideCount"> &
-  WithTestId;
+export type CarouselRootProps = ComponentProps<typeof CarouselPrimitive.Root> & WithTestId;
 
-export interface CarouselProps extends CarouselRootProps {
-  /**
-   * Shorthand to render a preset layout with controls, items, and indicators.
-   *
-   * @remarks
-   * When provided, `children` is ignored. Prefer compound composition for custom layouts.
-   * `slideCount` is inferred from `slides.length` when shorthand is used.
-   */
-  slides?: Array<{ content: ReactNode; key?: string }>;
-  slideCount?: number;
+export interface CarouselProps extends Omit<CarouselRootProps, "children" | "slideCount"> {
+  slides?: CarouselPresetItem[];
 }
 // #endregion
 
@@ -49,46 +45,18 @@ export interface CarouselProps extends CarouselRootProps {
 export function CarouselRoot({
   spacing = "16px",
   className,
-  slides,
   children,
-  slideCount,
   testId,
   ...rest
-}: CarouselProps) {
-  const computedSlideCount = slides ? slides.length : (slideCount ?? 0);
-
+}: CarouselRootProps) {
   return (
     <CarouselPrimitive.Root
       {...rest}
       className={carouselVariants({ className })}
       data-testid={testId}
-      slideCount={computedSlideCount}
       spacing={spacing}
     >
-      {slides ? (
-        <>
-          <CarouselControl>
-            <CarouselPrevious />
-            <CarouselNext />
-          </CarouselControl>
-
-          <CarouselContent>
-            {slides.map((slide, index) => (
-              <CarouselItem index={index} key={slide.key ?? String(index)}>
-                {slide.content}
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-
-          <CarouselIndicatorGroup>
-            {slides.map((slide, index) => (
-              <CarouselIndicator index={index} key={slide.key ?? String(index)} />
-            ))}
-          </CarouselIndicatorGroup>
-        </>
-      ) : (
-        children
-      )}
+      {children}
     </CarouselPrimitive.Root>
   );
 }
@@ -149,8 +117,35 @@ export function CarouselItem({ className, ...rest }: CarouselItemProps) {
 }
 // #endregion
 
+// #region Shorthand
+export function CarouselShorthand({ slides = [], ...rest }: CarouselProps) {
+  return (
+    <CarouselRoot {...rest} slideCount={slides.length}>
+      <CarouselControl>
+        <CarouselPrevious />
+        <CarouselNext />
+      </CarouselControl>
+
+      <CarouselContent>
+        {slides.map((slide, index) => (
+          <CarouselItem index={index} key={slide.key ?? String(index)}>
+            {slide.content}
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+
+      <CarouselIndicatorGroup>
+        {slides.map((slide, index) => (
+          <CarouselIndicator index={index} key={slide.key ?? String(index)} />
+        ))}
+      </CarouselIndicatorGroup>
+    </CarouselRoot>
+  );
+}
+// #endregion
+
 // #region Display Names
-CarouselRoot.displayName = "Carousel";
+CarouselRoot.displayName = "Carousel.Root";
 CarouselControl.displayName = "Carousel.Control";
 CarouselPrevious.displayName = "Carousel.Previous";
 CarouselNext.displayName = "Carousel.Next";
@@ -158,4 +153,5 @@ CarouselIndicatorGroup.displayName = "Carousel.IndicatorGroup";
 CarouselIndicator.displayName = "Carousel.Indicator";
 CarouselContent.displayName = "Carousel.Content";
 CarouselItem.displayName = "Carousel.Item";
+CarouselShorthand.displayName = "Carousel";
 // #endregion
