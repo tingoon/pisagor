@@ -1,9 +1,9 @@
 import { Accordion as AccordionPrimitive } from "@ark-ui/vue/accordion";
 import { PhCaretDown } from "@phosphor-icons/vue";
 import {
-  accordionContentVariants,
+  accordionItemContentVariants,
+  accordionItemTriggerVariants,
   accordionItemVariants,
-  accordionTriggerVariants,
 } from "@pisagor/styles/accordion";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
@@ -73,15 +73,15 @@ export const AccordionItem = defineComponent({
   },
 });
 
-export const AccordionTrigger = defineComponent({
+export const AccordionItemTrigger = defineComponent({
   inheritAttrs: false,
-  name: "AccordionTrigger",
+  name: "AccordionItemTrigger",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const recipe = accordionTriggerVariants();
+      const recipe = accordionItemTriggerVariants();
 
       return h(
         AccordionPrimitive.ItemTrigger as ArkPart,
@@ -100,15 +100,15 @@ export const AccordionTrigger = defineComponent({
   },
 });
 
-export const AccordionContent = defineComponent({
+export const AccordionItemContent = defineComponent({
   inheritAttrs: false,
-  name: "AccordionContent",
+  name: "AccordionItemContent",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const recipe = accordionContentVariants();
+      const recipe = accordionItemContentVariants();
 
       return h(
         AccordionPrimitive.ItemContent as ArkPart,
@@ -149,8 +149,8 @@ export const AccordionShorthand = defineComponent({
               AccordionItem,
               { disabled: item.disabled, key: item.value, value: item.value },
               () => [
-                h(AccordionTrigger, null, () => item.title),
-                h(AccordionContent, null, () => item.content),
+                h(AccordionItemTrigger, null, () => item.title),
+                h(AccordionItemContent, null, () => item.content),
               ],
             ),
           ),

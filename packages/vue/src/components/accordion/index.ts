@@ -1,16 +1,16 @@
 import {
-  AccordionContent,
   AccordionItem,
+  AccordionItemContent,
+  AccordionItemTrigger,
   AccordionRoot,
   AccordionShorthand,
-  AccordionTrigger,
 } from "./accordion";
 
 export type { AccordionPresetItem, AccordionProps } from "./accordion";
 
 export const Accordion = Object.assign(AccordionShorthand, {
-  Content: AccordionContent,
   Item: AccordionItem,
+  ItemContent: AccordionItemContent,
+  ItemTrigger: AccordionItemTrigger,
   Root: AccordionRoot,
-  Trigger: AccordionTrigger,
 });
