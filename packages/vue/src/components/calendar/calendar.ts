@@ -217,12 +217,12 @@ export const CalendarYearSelect = defineComponent({
   setup(props, { attrs }) {
     return () => {
       const { className: selectClassName, controlProps } = useCalendarSelectShell(props.class);
-      const recipe = calendarSelectWrapperVariants();
+      const slots = calendarSelectWrapperVariants();
 
       return h(
         "div",
         {
-          class: recipe.base(),
+          class: slots.base(),
           "data-part": "year-select-wrapper",
           "data-scope": "calendar",
         },
@@ -234,7 +234,7 @@ export const CalendarYearSelect = defineComponent({
           }),
           h(PhCaretDown, {
             "aria-hidden": true,
-            class: recipe.icon(),
+            class: slots.icon(),
             "data-part": "year-select-icon",
             "data-scope": "calendar",
           }),
@@ -253,12 +253,12 @@ export const CalendarMonthSelect = defineComponent({
   setup(props, { attrs }) {
     return () => {
       const { className: selectClassName, controlProps } = useCalendarSelectShell(props.class);
-      const recipe = calendarSelectWrapperVariants();
+      const slots = calendarSelectWrapperVariants();
 
       return h(
         "div",
         {
-          class: recipe.base(),
+          class: slots.base(),
           "data-part": "month-select-wrapper",
           "data-scope": "calendar",
         },
@@ -270,7 +270,7 @@ export const CalendarMonthSelect = defineComponent({
           }),
           h(PhCaretDown, {
             "aria-hidden": true,
-            class: recipe.icon(),
+            class: slots.icon(),
             "data-part": "month-select-icon",
             "data-scope": "calendar",
           }),
@@ -542,14 +542,14 @@ export const CalendarTableCell = defineComponent({
       type: null as unknown as PropType<CalendarApi["visibleRange"] | undefined>,
     },
   },
-  setup(props, { attrs, slots }) {
+  setup(props, { attrs, slots: children }) {
     return () => {
-      const recipe = calendarTableCellVariants();
+      const slots = calendarTableCellVariants();
 
       return h(
         DatePickerPrimitive.TableCell as ArkPart,
         {
-          class: recipe.base(),
+          class: slots.base(),
           value: props.value,
           visibleRange: props.visibleRange,
         },
@@ -558,9 +558,9 @@ export const CalendarTableCell = defineComponent({
             DatePickerPrimitive.TableCellTrigger as ArkPart,
             {
               ...attrs,
-              class: recipe.trigger({ class: cn(props.class) }),
+              class: slots.trigger({ class: cn(props.class) }),
             },
-            slots.default,
+            children.default,
           ),
       );
     };

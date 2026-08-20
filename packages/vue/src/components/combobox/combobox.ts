@@ -356,22 +356,22 @@ export const ComboboxItem = defineComponent({
     item: { default: undefined, type: Object as PropType<unknown> },
     showIndicator: { default: true, type: Boolean },
   },
-  setup(props, { attrs, slots }) {
+  setup(props, { attrs, slots: children }) {
     return () => {
-      const recipe = comboboxItemVariants({ showIndicator: props.showIndicator });
+      const slots = comboboxItemVariants({ showIndicator: props.showIndicator });
 
       return h(
         ComboboxPrimitive.Item as ArkPart,
         {
           ...attrs,
-          class: recipe.base({ class: cn(props.class, attrs.class) }),
+          class: slots.base({ class: cn(props.class, attrs.class) }),
           item: props.item,
           persistFocus: true,
         },
         () => [
-          slots.default?.(),
+          children.default?.(),
           props.showIndicator
-            ? h("span", { class: recipe.indicator() }, () =>
+            ? h("span", { class: slots.indicator() }, () =>
                 h(ComboboxPrimitive.ItemIndicator as ArkPart, {}, () =>
                   h(PhCheck, { "aria-hidden": true }),
                 ),

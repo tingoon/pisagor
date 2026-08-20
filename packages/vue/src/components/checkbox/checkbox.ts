@@ -61,7 +61,7 @@ export const CheckboxRoot = defineComponent({
       const resolved = useFormControlVariant(props.variant);
       const shellArgs = shellVariantArgs(resolved);
       const controlProps = formControlShellProps(resolved);
-      const recipe = checkbox2Variants();
+      const slots = checkbox2Variants();
 
       return h(
         CheckboxPrimitive.Root as ArkPart,
@@ -70,7 +70,7 @@ export const CheckboxRoot = defineComponent({
           ...controlProps,
           class: cn(
             formControlToggleVariants({ size: "md", ...shellArgs }),
-            recipe.base({ class: props.class }),
+            slots.base({ class: props.class }),
           ),
           "data-testid": props.testId,
           onCheckedChange: (details: { checked: boolean | "indeterminate" }) => {
@@ -84,14 +84,14 @@ export const CheckboxRoot = defineComponent({
             h(
               CheckboxPrimitive.Indicator as ArkPart,
               {
-                class: recipe.indicator(),
+                class: slots.indicator(),
               },
               () => h(PhCheck),
             ),
             h(
               CheckboxPrimitive.Indicator as ArkPart,
               {
-                class: recipe.indicator(),
+                class: slots.indicator(),
                 indeterminate: true,
               },
               () => h(PhMinus),

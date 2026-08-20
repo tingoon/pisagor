@@ -109,7 +109,7 @@ export const FileInput = defineComponent({
       const resolved = useFormControlVariant(props.variant);
       const shellArgs = shellVariantArgs(resolved);
       const controlProps = formControlShellProps(resolved);
-      const recipe = fileInputVariants();
+      const slots = fileInputVariants();
 
       return h(
         "div",
@@ -129,7 +129,7 @@ export const FileInput = defineComponent({
             accept: props.accept,
             "aria-invalid": props.invalid || undefined,
             capture: props.capture,
-            class: recipe.control(),
+            class: slots.control(),
             "data-invalid": props.invalid || undefined,
             "data-part": "control",
             "data-scope": "file-input",
@@ -152,7 +152,7 @@ export const FileInput = defineComponent({
           h(
             InputGroupText as ArkPart,
             {
-              class: recipe.label(),
+              class: slots.label(),
               onClick: props.disabled ? undefined : openPicker,
             },
             () => fileLabel.value ?? props.placeholder,

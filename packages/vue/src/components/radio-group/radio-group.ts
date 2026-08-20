@@ -93,27 +93,27 @@ export const RadioGroupItem = defineComponent({
     value: { required: true, type: String },
     variant: { default: undefined, type: String as PropType<FormControlVariant> },
   },
-  setup(props, { attrs, slots }) {
+  setup(props, { attrs, slots: children }) {
     return () => {
       const resolved = useFormControlVariant(props.variant);
       const shellArgs = shellVariantArgs(resolved);
       const controlProps = formControlShellProps(resolved);
-      const recipe = radioGroupItemVariants();
+      const slots = radioGroupItemVariants();
 
       return h(
         RadioGroupPrimitive.Item as ArkPart,
         {
           ...attrs,
-          class: recipe.base({ class: props.class }),
+          class: slots.base({ class: props.class }),
           disabled: props.disabled,
           value: props.value,
         },
         () => [
           h(RadioGroupPrimitive.ItemControl as ArkPart, {
             ...controlProps,
-            class: cn(formControlRadioToggleVariants({ ...shellArgs }), recipe.control()),
+            class: cn(formControlRadioToggleVariants({ ...shellArgs }), slots.control()),
           }),
-          h(RadioGroupText as ArkPart, null, slots.default),
+          h(RadioGroupText as ArkPart, null, children.default),
           h(RadioGroupPrimitive.ItemHiddenInput as ArkPart, { tabIndex: props.tabIndex }),
         ],
       );

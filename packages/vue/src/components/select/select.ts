@@ -281,26 +281,26 @@ export const SelectItem = defineComponent({
     // Ark uses `item` for collection items.
     item: { default: undefined, type: Object as PropType<unknown> },
   },
-  setup(props, { attrs, slots }) {
+  setup(props, { attrs, slots: children }) {
     return () => {
-      const recipe = selectItemVariants();
+      const slots = selectItemVariants();
 
       return h(
         SelectPrimitive.Item as ArkPart,
         {
           ...attrs,
-          class: recipe.base({ class: cn(props.class, attrs.class) }),
+          class: slots.base({ class: cn(props.class, attrs.class) }),
           item: props.item,
         },
         () => [
           h(
             SelectPrimitive.ItemText as ArkPart,
             {
-              class: recipe.text(),
+              class: slots.text(),
             },
-            slots.default?.(),
+            children.default?.(),
           ),
-          h("span", { class: recipe.indicator() }, () =>
+          h("span", { class: slots.indicator() }, () =>
             h(SelectPrimitive.ItemIndicator as ArkPart, {}, () =>
               h(PhCheck, { "aria-hidden": true }),
             ),

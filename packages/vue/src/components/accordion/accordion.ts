@@ -79,20 +79,20 @@ export const AccordionItemTrigger = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
-  setup(props, { attrs, slots }) {
+  setup(props, { attrs, slots: children }) {
     return () => {
-      const recipe = accordionItemTriggerVariants();
+      const slots = accordionItemTriggerVariants();
 
       return h(
         AccordionPrimitive.ItemTrigger as ArkPart,
         {
           ...attrs,
-          class: recipe.base({ class: props.class }),
+          class: slots.base({ class: props.class }),
         },
         () => [
-          slots.default?.(),
+          children.default?.(),
           h(AccordionPrimitive.ItemIndicator as ArkPart, {}, () =>
-            h(PhCaretDown, { class: recipe.indicator() }),
+            h(PhCaretDown, { class: slots.indicator() }),
           ),
         ],
       );
@@ -106,17 +106,17 @@ export const AccordionItemContent = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
-  setup(props, { attrs, slots }) {
+  setup(props, { attrs, slots: children }) {
     return () => {
-      const recipe = accordionItemContentVariants();
+      const slots = accordionItemContentVariants();
 
       return h(
         AccordionPrimitive.ItemContent as ArkPart,
         {
           ...attrs,
-          class: recipe.base({ class: props.class }),
+          class: slots.base({ class: props.class }),
         },
-        () => h("div", { class: recipe.body() }, slots.default?.()),
+        () => h("div", { class: slots.body() }, children.default?.()),
       );
     };
   },

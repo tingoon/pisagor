@@ -127,14 +127,14 @@ export const MenuItem = defineComponent({
     type: { default: "button", type: String },
     variant: { default: "default", type: String as PropType<"default" | "destructive"> },
   },
-  setup(props, { attrs, slots }) {
+  setup(props, { attrs, slots: children }) {
     return () => {
-      const recipe = menuVariants();
+      const slots = menuVariants();
 
       return h(
         ark.li as ArkPart,
         {
-          class: recipe.wrapper({ class: props.classNames?.wrapper }),
+          class: slots.wrapper({ class: props.classNames?.wrapper }),
           "data-part": "item-wrapper",
           "data-scope": "menu",
           role: "none",
@@ -154,7 +154,7 @@ export const MenuItem = defineComponent({
               "data-variant": props.variant,
               type: props.type,
             },
-            slots,
+            children,
           ),
       );
     };
@@ -169,14 +169,14 @@ export const MenuLink = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<MenuClassNames> },
   },
-  setup(props, { attrs, slots }) {
+  setup(props, { attrs, slots: children }) {
     return () => {
-      const recipe = menuVariants();
+      const slots = menuVariants();
 
       return h(
         ark.li as ArkPart,
         {
-          class: recipe.wrapper({ class: props.classNames?.wrapper }),
+          class: slots.wrapper({ class: props.classNames?.wrapper }),
           "data-part": "item-wrapper",
           "data-scope": "menu",
           role: "none",
@@ -187,12 +187,12 @@ export const MenuLink = defineComponent({
             {
               ...attrs,
               "aria-current": props.active ? "page" : undefined,
-              class: recipe.link({ class: cn(props.class, props.classNames?.link) }),
+              class: slots.link({ class: cn(props.class, props.classNames?.link) }),
               "data-active": props.active,
               "data-part": "link",
               "data-scope": "menu",
             },
-            slots,
+            children,
           ),
       );
     };

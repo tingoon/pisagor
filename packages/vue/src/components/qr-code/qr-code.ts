@@ -46,17 +46,17 @@ export const QrCodeFrame = defineComponent({
   },
   setup(props, { attrs }) {
     return () => {
-      const recipe = qrCodeFrameVariants();
+      const slots = qrCodeFrameVariants();
 
       return h(
         QrCodePrimitive.Frame as ArkPart,
         {
           ...attrs,
-          class: recipe.base({ class: props.class }),
+          class: slots.base({ class: props.class }),
         },
         () =>
           h(QrCodePrimitive.Pattern as ArkPart, {
-            class: recipe.pattern(),
+            class: slots.pattern(),
           }),
       );
     };

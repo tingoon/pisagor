@@ -213,16 +213,16 @@ export const ImageCropperHandle = defineComponent({
   },
   setup(props, { attrs }) {
     return () => {
-      const recipe = imageCropperHandleVariants();
+      const slots = imageCropperHandleVariants();
 
       return h(
         ImageCropperPrimitive.Handle as ArkPart,
         {
           ...attrs,
-          class: recipe.base({ class: props.class }),
+          class: slots.base({ class: props.class }),
           position: props.position,
         },
-        () => h("span", { "aria-hidden": true, class: recipe.grip() }),
+        () => h("span", { "aria-hidden": true, class: slots.grip() }),
       );
     };
   },

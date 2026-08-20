@@ -81,18 +81,18 @@ export const MarqueeRoot = defineComponent({
 export const MarqueeContent = defineComponent({
   inheritAttrs: false,
   name: "MarqueeContent",
-  setup(_, { attrs, slots }) {
+  setup(_, { attrs, slots: children }) {
     return () => {
-      const recipe = marqueeContentVariants();
+      const slots = marqueeContentVariants();
 
-      return h(MarqueePrimitive.Viewport as ArkPart, { class: recipe.viewport() }, () =>
+      return h(MarqueePrimitive.Viewport as ArkPart, { class: slots.viewport() }, () =>
         h(
           MarqueePrimitive.Content as ArkPart,
           {
             ...attrs,
-            class: recipe.base({ class: cn(attrs.class) }),
+            class: slots.base({ class: cn(attrs.class) }),
           },
-          slots,
+          children,
         ),
       );
     };

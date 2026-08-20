@@ -289,23 +289,23 @@ export const ColorPickerSlider = defineComponent({
   inheritAttrs: false,
   name: "ColorPicker.Slider",
   props: { class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> } },
-  setup(props, { attrs, slots }) {
+  setup(props, { attrs, slots: children }) {
     return () => {
-      const recipe = colorPickerChannelSliderVariants();
+      const slots = colorPickerChannelSliderVariants();
 
       return h(
         ColorPickerPrimitive.ChannelSlider as ArkPart,
         {
           ...attrs,
-          class: recipe.base({ class: cn(props.class, (attrs as { class?: ClassValue }).class) }),
+          class: slots.base({ class: cn(props.class, (attrs as { class?: ClassValue }).class) }),
         },
         () => [
-          slots.default?.(),
+          children.default?.(),
           h(ColorPickerPrimitive.ChannelSliderTrack as ArkPart, {
-            class: recipe.track(),
+            class: slots.track(),
           }),
           h(ColorPickerPrimitive.ChannelSliderThumb as ArkPart, {
-            class: recipe.thumb(),
+            class: slots.thumb(),
           }),
         ],
       );
@@ -476,15 +476,15 @@ export const ColorPickerArea = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
     showDots: { default: false, type: Boolean },
   },
-  setup(props, { attrs, slots }) {
+  setup(props, { attrs, slots: children }) {
     return () => {
-      const recipe = colorPickerAreaVariants();
+      const slots = colorPickerAreaVariants();
 
       return h(
         ColorPickerPrimitive.Area as ArkPart,
         {
           ...attrs,
-          class: recipe.base({
+          class: slots.base({
             class: cn(
               {
                 "after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:bg-[radial-gradient(circle,#fff3_1px,#0000_1px)] after:bg-size-[8px_8px]":
@@ -497,9 +497,9 @@ export const ColorPickerArea = defineComponent({
         },
         () => [
           h(ColorPickerPrimitive.AreaBackground as ArkPart, {
-            class: recipe.background(),
+            class: slots.background(),
           }),
-          slots.default?.(),
+          children.default?.(),
         ],
       );
     };
@@ -546,26 +546,26 @@ export const ColorPickerSwatchPreview = defineComponent({
   inheritAttrs: false,
   name: "ColorPicker.SwatchPreview",
   props: { class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> } },
-  setup(props, { attrs, slots }) {
+  setup(props, { attrs, slots: children }) {
     return () => {
-      const recipe = colorPickerInputSwatchVariants();
+      const slots = colorPickerInputSwatchVariants();
 
       return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: recipe.base({ class: cn(props.class, (attrs as { class?: ClassValue }).class) }),
+          class: slots.base({ class: cn(props.class, (attrs as { class?: ClassValue }).class) }),
           "data-part": "input-swatch",
           "data-scope": "color-picker",
         },
         () => [
           h(ColorPickerPrimitive.TransparencyGrid as ArkPart, {
-            class: recipe.grid(),
+            class: slots.grid(),
           }),
           h(ColorPickerPrimitive.ValueSwatch as ArkPart, {
-            class: recipe.swatch(),
+            class: slots.swatch(),
           }),
-          slots.default?.(),
+          children.default?.(),
         ],
       );
     };

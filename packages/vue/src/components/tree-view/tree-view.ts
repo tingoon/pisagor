@@ -198,17 +198,17 @@ export const TreeViewBranchContent = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
-  setup(props, { attrs, slots }) {
+  setup(props, { attrs, slots: children }) {
     return () => {
-      const recipe = treeViewBranchContentVariants();
+      const slots = treeViewBranchContentVariants();
 
       return h(
         TreeViewPrimitive.BranchContent as ArkPart,
         {
           ...attrs,
-          class: recipe.base({ class: props.class }),
+          class: slots.base({ class: props.class }),
         },
-        () => [h(TreeViewBranchIndentGuide), slots.default?.()],
+        () => [h(TreeViewBranchIndentGuide), children.default?.()],
       );
     };
   },
@@ -217,17 +217,17 @@ export const TreeViewBranchContent = defineComponent({
 const TreeViewBranchIndentGuide = defineComponent({
   inheritAttrs: false,
   name: "TreeViewBranchIndentGuide",
-  setup(_, { attrs, slots }) {
+  setup(_, { attrs, slots: children }) {
     return () => {
-      const recipe = treeViewBranchContentVariants();
+      const slots = treeViewBranchContentVariants();
 
       return h(
         TreeViewPrimitive.BranchIndentGuide as ArkPart,
         {
           ...attrs,
-          class: recipe.indentGuide(),
+          class: slots.indentGuide(),
         },
-        slots.default?.(),
+        children.default?.(),
       );
     };
   },

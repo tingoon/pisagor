@@ -107,19 +107,19 @@ export const StepsIndicator = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
-  setup(props, { attrs, slots }) {
+  setup(props, { attrs, slots: children }) {
     return () => {
-      const recipe = stepsIndicatorVariants();
+      const slots = stepsIndicatorVariants();
 
       return h(
         StepsPrimitive.Indicator as ArkPart,
         {
           ...attrs,
-          class: recipe.base({ class: props.class }),
+          class: slots.base({ class: props.class }),
         },
         () => [
-          h("span", { class: recipe.label() }, slots.default?.()),
-          h(PhCheck, { class: recipe.check() }),
+          h("span", { class: slots.label() }, children.default?.()),
+          h(PhCheck, { class: slots.check() }),
         ],
       );
     };

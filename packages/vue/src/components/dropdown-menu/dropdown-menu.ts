@@ -242,21 +242,19 @@ export const DropdownMenuCheckboxItem = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
-  setup(props, { attrs, slots }) {
+  setup(props, { attrs, slots: children }) {
     return () => {
-      const recipe = dropdownMenuItemVariants({ inset: true, variant: "default" });
+      const slots = dropdownMenuItemVariants({ inset: true, variant: "default" });
 
       return h(
         MenuPrimitive.CheckboxItem as ArkPart,
         {
           ...attrs,
-          class: recipe.base({ class: cn(props.class, attrs.class) }),
+          class: slots.base({ class: cn(props.class, attrs.class) }),
         },
         () => [
-          h(MenuPrimitive.ItemIndicator as ArkPart, { class: recipe.indicator() }, () =>
-            h(PhCheck),
-          ),
-          h(MenuPrimitive.ItemText as ArkPart, { class: recipe.text() }, slots),
+          h(MenuPrimitive.ItemIndicator as ArkPart, { class: slots.indicator() }, () => h(PhCheck)),
+          h(MenuPrimitive.ItemText as ArkPart, { class: slots.text() }, children),
         ],
       );
     };
@@ -284,21 +282,19 @@ export const DropdownMenuRadioItem = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
-  setup(props, { attrs, slots }) {
+  setup(props, { attrs, slots: children }) {
     return () => {
-      const recipe = dropdownMenuItemVariants({ inset: true, variant: "default" });
+      const slots = dropdownMenuItemVariants({ inset: true, variant: "default" });
 
       return h(
         MenuPrimitive.RadioItem as ArkPart,
         {
           ...attrs,
-          class: recipe.base({ class: cn(props.class, attrs.class) }),
+          class: slots.base({ class: cn(props.class, attrs.class) }),
         },
         () => [
-          h(MenuPrimitive.ItemIndicator as ArkPart, { class: recipe.indicator() }, () =>
-            h(PhCheck),
-          ),
-          h(MenuPrimitive.ItemText as ArkPart, { class: recipe.text() }, slots),
+          h(MenuPrimitive.ItemIndicator as ArkPart, { class: slots.indicator() }, () => h(PhCheck)),
+          h(MenuPrimitive.ItemText as ArkPart, { class: slots.text() }, children),
         ],
       );
     };

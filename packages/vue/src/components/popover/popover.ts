@@ -135,9 +135,9 @@ export const PopoverContent = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     showCloseButton: { default: false, type: Boolean },
   },
-  setup(props, { attrs, slots }) {
+  setup(props, { attrs, slots: children }) {
     return () => {
-      const recipe = popoverContentVariants();
+      const slots = popoverContentVariants();
 
       return popoverTeleport(
         h(PopoverPositioner, null, () =>
@@ -145,12 +145,12 @@ export const PopoverContent = defineComponent({
             PopoverPrimitive.Content as ArkPart,
             {
               ...attrs,
-              class: recipe.base({ class: props.class }),
+              class: slots.base({ class: props.class }),
             },
             () => [
-              slots.default?.(),
+              children.default?.(),
               props.showCloseButton
-                ? h(PopoverClose, { asChild: true }, () => renderIconCloseButton(recipe.close()))
+                ? h(PopoverClose, { asChild: true }, () => renderIconCloseButton(slots.close()))
                 : null,
             ],
           ),

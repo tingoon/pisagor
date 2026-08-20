@@ -195,22 +195,22 @@ export const DrawerGrabber = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
-  setup(props, { attrs, slots }) {
+  setup(props, { attrs, slots: children }) {
     return () => {
-      const recipe = drawerGrabberVariants();
+      const slots = drawerGrabberVariants();
 
-      return h("div", { class: recipe.wrapper() }, () =>
+      return h("div", { class: slots.wrapper() }, () =>
         h(
           DrawerPrimitive.Grabber as ArkPart,
           {
             ...attrs,
-            class: recipe.base({ class: props.class }),
+            class: slots.base({ class: props.class }),
           },
           () => [
             h(DrawerPrimitive.GrabberIndicator as ArkPart, {
-              class: recipe.indicator(),
+              class: slots.indicator(),
             }),
-            slots.default?.(),
+            children.default?.(),
           ],
         ),
       );

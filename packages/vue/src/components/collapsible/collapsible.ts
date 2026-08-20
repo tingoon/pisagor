@@ -86,17 +86,17 @@ export const CollapsibleIndicator = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
-  setup(props, { attrs, slots }) {
+  setup(props, { attrs, slots: children }) {
     return () => {
-      const recipe = collapsibleIndicatorVariants();
+      const slots = collapsibleIndicatorVariants();
 
       return h(
         CollapsiblePrimitive.Indicator as ArkPart,
         {
           ...attrs,
-          class: recipe.base({ class: props.class }),
+          class: slots.base({ class: props.class }),
         },
-        () => [slots.default?.(), h(PhCaretDown, { class: recipe.icon() })],
+        () => [children.default?.(), h(PhCaretDown, { class: slots.icon() })],
       );
     };
   },
