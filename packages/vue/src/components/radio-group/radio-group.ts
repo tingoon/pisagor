@@ -113,7 +113,7 @@ export const RadioGroupItem = defineComponent({
             ...controlProps,
             class: cn(formControlRadioToggleVariants({ ...shellArgs }), slots.control()),
           }),
-          h(RadioGroupText as ArkPart, null, children.default),
+          h(RadioGroupItemText as ArkPart, null, children.default),
           h(RadioGroupPrimitive.ItemHiddenInput as ArkPart, { tabIndex: props.tabIndex }),
         ],
       );
@@ -121,9 +121,9 @@ export const RadioGroupItem = defineComponent({
   },
 });
 
-export const RadioGroupText = defineComponent({
+export const RadioGroupItemText = defineComponent({
   inheritAttrs: false,
-  name: "RadioGroupText",
+  name: "RadioGroupItemText",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },

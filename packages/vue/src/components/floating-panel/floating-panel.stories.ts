@@ -79,7 +79,7 @@ export const Default = meta.story({
               <Field.Label>Font family</Field.Label>
               <Select.Root :collection="collection" :default-value="['Inter']">
                 <Select.Trigger class="w-full">
-                  <Select.Value />
+                  <Select.ValueText />
                 </Select.Trigger>
                 <Select.Content>
                   <Select.Item v-for="item in collection.items" :key="item" :item="item">
@@ -91,11 +91,11 @@ export const Default = meta.story({
             <Field>
               <Field.Label>Font size</Field.Label>
               <NumberInput class="w-full" default-value="16">
-                <NumberInput.Group>
-                  <NumberInput.Decrement />
+                <NumberInput.Control>
+                  <NumberInput.DecrementTrigger />
                   <NumberInput.Input />
-                  <NumberInput.Increment />
-                </NumberInput.Group>
+                  <NumberInput.IncrementTrigger />
+                </NumberInput.Control>
               </NumberInput>
             </Field>
           </FloatingPanel.Body>
@@ -142,7 +142,7 @@ export const CustomSpacing = meta.story({
               <Field.Label>Font family</Field.Label>
               <Select.Root :collection="collection" :default-value="['Inter']">
                 <Select.Trigger class="w-full">
-                  <Select.Value />
+                  <Select.ValueText />
                 </Select.Trigger>
                 <Select.Content>
                   <Select.Item v-for="item in collection.items" :key="item" :item="item">
@@ -154,11 +154,11 @@ export const CustomSpacing = meta.story({
             <Field>
               <Field.Label>Font size</Field.Label>
               <NumberInput class="w-full" default-value="16">
-                <NumberInput.Group>
-                  <NumberInput.Decrement />
+                <NumberInput.Control>
+                  <NumberInput.DecrementTrigger />
                   <NumberInput.Input />
-                  <NumberInput.Increment />
-                </NumberInput.Group>
+                  <NumberInput.IncrementTrigger />
+                </NumberInput.Control>
               </NumberInput>
             </Field>
           </FloatingPanel.Body>

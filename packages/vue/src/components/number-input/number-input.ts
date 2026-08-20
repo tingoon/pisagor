@@ -1,9 +1,9 @@
 import { NumberInput as NumberInputPrimitive } from "@ark-ui/vue/number-input";
 import { PhMinus, PhPlus } from "@phosphor-icons/vue";
 import {
-  numberFieldDecrementVariants,
-  numberFieldGroupVariants,
-  numberFieldIncrementVariants,
+  numberFieldControlVariants,
+  numberFieldDecrementTriggerVariants,
+  numberFieldIncrementTriggerVariants,
   numberFieldScrubberVariants,
   numberFieldVariants,
   numberInputInline2Variants,
@@ -45,7 +45,7 @@ export interface NumberInputProps extends WithTestId {
   variant?: FormControlVariant;
 }
 
-export interface NumberInputGroupProps {
+export interface NumberInputControlProps {
   class?: unknown;
   clearable?: boolean;
   variant?: FormControlVariant;
@@ -99,17 +99,17 @@ export const NumberInputRoot = defineComponent({
           () =>
             slots.default?.() ?? [
               h(
-                NumberInputGroup as ArkPart,
+                NumberInputControl as ArkPart,
                 { clearable: props.clearable, variant: props.variant },
                 () => [
-                  h(NumberInputDecrement as ArkPart),
+                  h(NumberInputDecrementTrigger as ArkPart),
                   h(NumberInputInput as ArkPart, {
                     placeholder: props.placeholder,
                     size: props.size,
                     variant: props.variant,
                   }),
                   h(NumberInputClearTrigger as ArkPart),
-                  h(NumberInputIncrement as ArkPart),
+                  h(NumberInputIncrementTrigger as ArkPart),
                 ],
               ),
             ],
@@ -118,9 +118,9 @@ export const NumberInputRoot = defineComponent({
   },
 });
 
-export const NumberInputGroup = defineComponent({
+export const NumberInputControl = defineComponent({
   inheritAttrs: false,
-  name: "NumberInputGroup",
+  name: "NumberInputControl",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     clearable: { default: false, type: Boolean },
@@ -138,7 +138,7 @@ export const NumberInputGroup = defineComponent({
           ...attrs,
           ...controlProps,
           class: cn(
-            numberFieldGroupVariants(),
+            numberFieldControlVariants(),
             formControlGroupShellVariants({ size: "md", ...shellArgs }),
             props.class,
           ),
@@ -172,9 +172,9 @@ export const NumberInputClearTrigger = defineComponent({
   },
 });
 
-export const NumberInputDecrement = defineComponent({
+export const NumberInputDecrementTrigger = defineComponent({
   inheritAttrs: false,
-  name: "NumberInputDecrement",
+  name: "NumberInputDecrementTrigger",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
@@ -185,7 +185,7 @@ export const NumberInputDecrement = defineComponent({
         {
           ...attrs,
           asChild: true,
-          class: cn(numberFieldDecrementVariants(), props.class),
+          class: cn(numberFieldDecrementTriggerVariants(), props.class),
         },
         () =>
           h(Button as ArkPart, { "aria-label": "Decrement", variant: "ghost" }, () =>
@@ -195,9 +195,9 @@ export const NumberInputDecrement = defineComponent({
   },
 });
 
-export const NumberInputIncrement = defineComponent({
+export const NumberInputIncrementTrigger = defineComponent({
   inheritAttrs: false,
-  name: "NumberInputIncrement",
+  name: "NumberInputIncrementTrigger",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
@@ -208,7 +208,7 @@ export const NumberInputIncrement = defineComponent({
         {
           ...attrs,
           asChild: true,
-          class: cn(numberFieldIncrementVariants(), props.class),
+          class: cn(numberFieldIncrementTriggerVariants(), props.class),
         },
         () =>
           h(Button as ArkPart, { "aria-label": "Increment", variant: "ghost" }, () =>

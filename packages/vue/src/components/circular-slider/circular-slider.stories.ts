@@ -22,7 +22,7 @@ const meta = preview.meta({
     Marker: CircularSlider.Marker,
     MarkerGroup: CircularSlider.MarkerGroup,
     Thumb: CircularSlider.Thumb,
-    Value: CircularSlider.Value,
+    ValueText: CircularSlider.ValueText,
   },
   title: "Components/Forms/Circular Slider",
 });
@@ -32,7 +32,7 @@ export const Default = meta.story({
     components: { CircularSlider },
     template: `
       <CircularSlider aria-label="Angle" :default-value="45">
-        <CircularSlider.Value suffix="°" />
+        <CircularSlider.ValueText suffix="°" />
       </CircularSlider>
     `,
   }),
@@ -44,7 +44,7 @@ export const OnSurface = meta.story({
     template: `
       <Surface bordered padding="md" variant="default">
         <CircularSlider aria-label="Angle" :default-value="45">
-          <CircularSlider.Value suffix="°" />
+          <CircularSlider.ValueText suffix="°" />
         </CircularSlider>
       </Surface>
     `,
@@ -67,7 +67,7 @@ export const Sizes = meta.story({
           :default-value="45"
           :size="size"
         >
-          <CircularSlider.Value suffix="°" />
+          <CircularSlider.ValueText suffix="°" />
         </CircularSlider>
       </div>
     `,
@@ -98,7 +98,7 @@ export const WithValue = meta.story({
     },
     template: `
       <CircularSlider aria-label="Angle" :default-value="90" :size="120" :thickness="10">
-        <CircularSlider.Value :prefix="prefix()" suffix="°" />
+        <CircularSlider.ValueText :prefix="prefix()" suffix="°" />
       </CircularSlider>
     `,
   }),

@@ -21,13 +21,13 @@ const meta = preview.meta({
     },
   },
   subcomponents: {
+    Backdrop: Dialog.Backdrop,
     Body: Dialog.Body,
-    Close: Dialog.Close,
+    CloseTrigger: Dialog.CloseTrigger,
     Content: Dialog.Content,
     Description: Dialog.Description,
     Footer: Dialog.Footer,
     Header: Dialog.Header,
-    Overlay: Dialog.Overlay,
     Positioner: Dialog.Positioner,
     Title: Dialog.Title,
     Trigger: Dialog.Trigger,
@@ -60,10 +60,10 @@ export const Default = meta.story({
               h("p", { class: "text-muted-foreground text-sm" }, "Dialog body content."),
             ),
             h(Dialog.Footer, null, () => [
-              h(Dialog.Close, { asChild: true }, () =>
+              h(Dialog.CloseTrigger, { asChild: true }, () =>
                 h("button", { class: outlineButtonClass(), type: "button" }, "Cancel"),
               ),
-              h(Dialog.Close, { asChild: true }, () =>
+              h(Dialog.CloseTrigger, { asChild: true }, () =>
                 h("button", { class: outlineButtonClass(), type: "button" }, "Save"),
               ),
             ]),
@@ -112,10 +112,10 @@ export const CustomSpacing = meta.story({
                 ),
               ),
               h(Dialog.Footer, null, () => [
-                h(Dialog.Close, { asChild: true }, () =>
+                h(Dialog.CloseTrigger, { asChild: true }, () =>
                   h("button", { class: outlineButtonClass(), type: "button" }, "Cancel"),
                 ),
-                h(Dialog.Close, { asChild: true }, () =>
+                h(Dialog.CloseTrigger, { asChild: true }, () =>
                   h("button", { class: defaultButtonClass(), type: "button" }, "Save"),
                 ),
               ]),
@@ -155,10 +155,10 @@ export const InitialFocus = meta.story({
               ]),
             ),
             h(Dialog.Footer, null, () => [
-              h(Dialog.Close, { asChild: true }, () =>
+              h(Dialog.CloseTrigger, { asChild: true }, () =>
                 h("button", { class: outlineButtonClass(), type: "button" }, "Cancel"),
               ),
-              h(Dialog.Close, { asChild: true }, () =>
+              h(Dialog.CloseTrigger, { asChild: true }, () =>
                 h("button", { class: defaultButtonClass(), type: "button" }, "Save"),
               ),
             ]),
@@ -214,7 +214,7 @@ export const Nested = meta.story({
                     ]),
                   ),
                   h(Dialog.Footer, null, () => [
-                    h(Dialog.Close, { asChild: true }, () =>
+                    h(Dialog.CloseTrigger, { asChild: true }, () =>
                       h("button", { class: ghostButtonClass(), type: "button" }, "Cancel"),
                     ),
                     h("button", { class: defaultButtonClass(), type: "submit" }, "Save changes"),
@@ -270,7 +270,7 @@ export const NonModal = meta.story({
               ),
             ),
             h(Dialog.Footer, null, () =>
-              h(Dialog.Close, { asChild: true }, () =>
+              h(Dialog.CloseTrigger, { asChild: true }, () =>
                 h("button", { class: outlineButtonClass(), type: "button" }, "Close"),
               ),
             ),
@@ -326,10 +326,10 @@ export const ScrollArea = meta.story({
               ),
             ),
             h(Dialog.Footer, null, () => [
-              h(Dialog.Close, { asChild: true }, () =>
+              h(Dialog.CloseTrigger, { asChild: true }, () =>
                 h("button", { class: ghostButtonClass(), type: "button" }, "Cancel"),
               ),
-              h(Dialog.Close, { asChild: true }, () =>
+              h(Dialog.CloseTrigger, { asChild: true }, () =>
                 h("button", { class: defaultButtonClass(), type: "button" }, "Agree"),
               ),
             ]),

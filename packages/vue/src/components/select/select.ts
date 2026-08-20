@@ -7,10 +7,10 @@ import type { FormControlShellVariantProps } from "@pisagor/styles/ui/form-contr
 import {
   selectClearTriggerVariants,
   selectContentVariants,
-  selectGroupLabelVariants,
   selectInline2Variants,
   selectInline3Variants,
   selectInlineVariants,
+  selectItemGroupLabelVariants,
   selectItemVariants,
   selectSeparatorVariants,
   selectTriggerVariants,
@@ -185,9 +185,9 @@ export const SelectSeparator = defineComponent({
   },
 });
 
-export const SelectValue = defineComponent({
+export const SelectValueText = defineComponent({
   inheritAttrs: false,
-  name: "SelectValue",
+  name: "SelectValueText",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     placeholder: { default: undefined, type: String as PropType<string | undefined> },
@@ -233,9 +233,9 @@ export const SelectContent = defineComponent({
   },
 });
 
-export const SelectGroup = defineComponent({
+export const SelectItemGroup = defineComponent({
   inheritAttrs: false,
-  name: "SelectGroup",
+  name: "SelectItemGroup",
   props: {
     heading: { default: undefined, type: [String, Object] as PropType<VNodeChild | undefined> },
   },
@@ -247,16 +247,16 @@ export const SelectGroup = defineComponent({
           ...attrs,
         },
         () => [
-          props.heading !== undefined ? h(SelectGroupLabel, null, () => props.heading) : null,
+          props.heading !== undefined ? h(SelectItemGroupLabel, null, () => props.heading) : null,
           slots.default?.(),
         ],
       );
   },
 });
 
-export const SelectGroupLabel = defineComponent({
+export const SelectItemGroupLabel = defineComponent({
   inheritAttrs: false,
-  name: "SelectGroupLabel",
+  name: "SelectItemGroupLabel",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
@@ -266,7 +266,7 @@ export const SelectGroupLabel = defineComponent({
         SelectPrimitive.ItemGroupLabel as ArkPart,
         {
           ...attrs,
-          class: cn(selectGroupLabelVariants(), props.class, attrs.class),
+          class: cn(selectItemGroupLabelVariants(), props.class, attrs.class),
         },
         slots.default?.(),
       );
@@ -391,7 +391,7 @@ export const SelectShorthand = defineComponent({
         },
         () => [
           h(SelectTrigger as ArkPart, { clearable: props.clearable }, () =>
-            h(SelectValue as ArkPart, { placeholder: props.placeholder }),
+            h(SelectValueText as ArkPart, { placeholder: props.placeholder }),
           ),
           h(SelectContent as ArkPart, null, () =>
             normalized.map((item) =>

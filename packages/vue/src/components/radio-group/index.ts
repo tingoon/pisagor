@@ -1,9 +1,9 @@
 import {
   RadioGroupItem,
+  RadioGroupItemText,
   RadioGroupLabel,
   RadioGroupRoot,
   RadioGroupShorthand,
-  RadioGroupText,
 } from "./radio-group";
 
 export type {
@@ -15,7 +15,7 @@ export type {
 
 export const RadioGroup = Object.assign(RadioGroupShorthand, {
   Item: RadioGroupItem,
+  ItemText: RadioGroupItemText,
   Label: RadioGroupLabel,
   Root: RadioGroupRoot,
-  Text: RadioGroupText,
 });

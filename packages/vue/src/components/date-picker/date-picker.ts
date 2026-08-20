@@ -9,7 +9,7 @@ import {
   datePickerControlVariants,
   datePickerInlineVariants,
   datePickerTriggerVariants,
-  datePickerValueVariants,
+  datePickerValueTextVariants,
 } from "@pisagor/styles/ui/date-picker";
 import { cn } from "@pisagor/utils";
 
@@ -321,14 +321,14 @@ export const DatePickerContent = defineComponent({
   },
 });
 
-export const DatePickerValue = defineComponent({
+export const DatePickerValueText = defineComponent({
   inheritAttrs: false,
-  name: "DatePicker.Value",
+  name: "DatePicker.ValueText",
   setup(_, { attrs }) {
     return () =>
       h(DatePickerPrimitive.ValueText as ArkPart, {
         ...attrs,
-        class: cn(datePickerValueVariants(), (attrs as { class?: ClassValue }).class),
+        class: cn(datePickerValueTextVariants(), (attrs as { class?: ClassValue }).class),
       });
   },
 });
@@ -373,5 +373,5 @@ export const DatePicker = Object.assign(DatePickerRoot, {
   PresetTrigger: DatePickerPresetTrigger,
   Timer: DatePickerTimer,
   Trigger: DatePickerTrigger,
-  Value: DatePickerValue,
+  ValueText: DatePickerValueText,
 });

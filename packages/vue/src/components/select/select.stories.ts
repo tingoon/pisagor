@@ -22,13 +22,13 @@ const meta = preview.meta({
     Content: Select.Content,
     Context: Select.Context as unknown as typeof Select.Root,
     Empty: Select.Empty,
-    Group: Select.Group,
-    GroupLabel: Select.GroupLabel,
     Item: Select.Item,
+    ItemGroup: Select.ItemGroup,
+    ItemGroupLabel: Select.ItemGroupLabel,
     Root: Select.Root,
     Separator: Select.Separator,
     Trigger: Select.Trigger,
-    Value: Select.Value,
+    ValueText: Select.ValueText,
   },
   title: "Components/Forms/Select",
 });
@@ -64,7 +64,7 @@ export const Sizes = meta.story({
       <div class="flex flex-col gap-2">
         <Select.Root v-for="size in sizes" :key="size" :collection="collection">
           <Select.Trigger :size="size">
-            <Select.Value placeholder="Select framework" />
+            <Select.ValueText placeholder="Select framework" />
           </Select.Trigger>
           <Select.Content>
             <Select.Item v-for="item in collection.items" :key="item.value" :item="item">
@@ -88,7 +88,7 @@ export const Variants = meta.story({
       <div class="flex flex-col gap-2">
         <Select.Root :collection="collection" variant="primary">
           <Select.Trigger>
-            <Select.Value placeholder="Primary" />
+            <Select.ValueText placeholder="Primary" />
           </Select.Trigger>
           <Select.Content>
             <Select.Item v-for="item in collection.items" :key="item" :item="item">
@@ -98,7 +98,7 @@ export const Variants = meta.story({
         </Select.Root>
         <Select.Root :collection="collection" variant="secondary">
           <Select.Trigger>
-            <Select.Value placeholder="Secondary" />
+            <Select.ValueText placeholder="Secondary" />
           </Select.Trigger>
           <Select.Content>
             <Select.Item v-for="item in collection.items" :key="item" :item="item">
@@ -123,7 +123,7 @@ export const OnSurface = meta.story({
         <div class="flex flex-col gap-2">
           <Select.Root :collection="collection" variant="primary">
             <Select.Trigger>
-              <Select.Value placeholder="Primary" />
+              <Select.ValueText placeholder="Primary" />
             </Select.Trigger>
             <Select.Content>
               <Select.Item v-for="item in collection.items" :key="item" :item="item">
@@ -133,7 +133,7 @@ export const OnSurface = meta.story({
           </Select.Root>
           <Select.Root :collection="collection" variant="secondary">
             <Select.Trigger>
-              <Select.Value placeholder="Secondary" />
+              <Select.ValueText placeholder="Secondary" />
             </Select.Trigger>
             <Select.Content>
               <Select.Item v-for="item in collection.items" :key="item" :item="item">
@@ -159,7 +159,7 @@ export const Empty = meta.story({
     template: `
       <Select.Root :collection="collection">
         <Select.Trigger>
-          <Select.Value placeholder="Select an option" />
+          <Select.ValueText placeholder="Select an option" />
         </Select.Trigger>
         <Select.Content>
           <Select.Empty>No items to display. Add an item to get started.</Select.Empty>
@@ -190,14 +190,14 @@ export const Grouping = meta.story({
     template: `
       <Select.Root :collection="collection">
         <Select.Trigger>
-          <Select.Value placeholder="Select framework" />
+          <Select.ValueText placeholder="Select framework" />
         </Select.Trigger>
         <Select.Content>
-          <Select.Group v-for="group in groups" :key="group.category" :heading="group.category">
+          <Select.ItemGroup v-for="group in groups" :key="group.category" :heading="group.category">
             <Select.Item v-for="item in group.items" :key="item.value" :item="item">
               {{ item.label }}
             </Select.Item>
-          </Select.Group>
+          </Select.ItemGroup>
         </Select.Content>
       </Select.Root>
     `,
@@ -240,9 +240,9 @@ export const MaxSelection = meta.story({
     template: `
       <Select.Root :collection="collection" multiple :onValueChange="onValueChange" :value="value">
         <Select.Trigger>
-          <Select.Value class="capitalize">
+          <Select.ValueText class="capitalize">
             <Select.Context v-slot="{ value }">{{ renderValue(value) }}</Select.Context>
-          </Select.Value>
+          </Select.ValueText>
         </Select.Trigger>
         <Select.Content>
           <Select.Item v-for="item in collection.items" :key="item.value" :item="item">
@@ -283,9 +283,9 @@ export const Multiple = meta.story({
     template: `
       <Select.Root :collection="collection" :defaultValue="['javascript', 'typescript']" multiple>
         <Select.Trigger>
-          <Select.Value class="capitalize">
+          <Select.ValueText class="capitalize">
             <Select.Context v-slot="{ value }">{{ renderValue(value) }}</Select.Context>
-          </Select.Value>
+          </Select.ValueText>
         </Select.Trigger>
         <Select.Content>
           <Select.Item v-for="item in collection.items" :key="item.value" :item="item">
@@ -313,7 +313,7 @@ export const Disabled = meta.story({
     template: `
       <Select.Root :collection="collection" disabled>
         <Select.Trigger>
-          <Select.Value placeholder="Select framework" />
+          <Select.ValueText placeholder="Select framework" />
         </Select.Trigger>
         <Select.Content>
           <Select.Item v-for="item in collection.items" :key="item.value" :item="item">
@@ -341,7 +341,7 @@ export const Invalid = meta.story({
     template: `
       <Select.Root :collection="collection" invalid>
         <Select.Trigger>
-          <Select.Value placeholder="Select framework" />
+          <Select.ValueText placeholder="Select framework" />
         </Select.Trigger>
         <Select.Content>
           <Select.Item v-for="item in collection.items" :key="item.value" :item="item">
@@ -369,7 +369,7 @@ export const WithScroll = meta.story({
     template: `
       <Select.Root :collection="collection" :positioning="positioning">
         <Select.Trigger>
-          <Select.Value placeholder="Select framework" />
+          <Select.ValueText placeholder="Select framework" />
         </Select.Trigger>
         <Select.Content class="max-h-56">
           <Select.Item v-for="item in collection.items" :key="item.value" :item="item">
@@ -402,7 +402,7 @@ export const Controlled = meta.story({
     template: `
       <Select.Root :collection="collection" :onValueChange="onValueChange" :value="value">
         <Select.Trigger>
-          <Select.Value placeholder="Select a framework" />
+          <Select.ValueText placeholder="Select a framework" />
         </Select.Trigger>
         <Select.Content>
           <Select.Item v-for="item in collection.items" :key="item.value" :item="item">
@@ -433,14 +433,14 @@ export const Compound = meta.story({
     template: `
       <Select.Root :collection="collection">
         <Select.Trigger>
-          <Select.Value placeholder="Select a fruit" />
+          <Select.ValueText placeholder="Select a fruit" />
         </Select.Trigger>
         <Select.Content>
-          <Select.Group heading="Fruits">
+          <Select.ItemGroup heading="Fruits">
             <Select.Item v-for="item in collection.items" :key="item" :item="item">
               {{ item }}
             </Select.Item>
-          </Select.Group>
+          </Select.ItemGroup>
         </Select.Content>
       </Select.Root>
     `,

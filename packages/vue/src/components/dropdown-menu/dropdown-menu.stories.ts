@@ -34,19 +34,19 @@ const meta = preview.meta({
     Arrow: DropdownMenu.Arrow,
     CheckboxItem: DropdownMenu.CheckboxItem,
     Content: DropdownMenu.Content,
-    Group: DropdownMenu.Group,
-    GroupLabel: DropdownMenu.GroupLabel,
     Item: DropdownMenu.Item,
+    ItemGroup: DropdownMenu.ItemGroup,
+    ItemGroupLabel: DropdownMenu.ItemGroupLabel,
     Positioner: DropdownMenu.Positioner,
     QuickItem: DropdownMenu.QuickItem,
-    RadioGroup: DropdownMenu.RadioGroup,
     RadioItem: DropdownMenu.RadioItem,
+    RadioItemGroup: DropdownMenu.RadioItemGroup,
     Separator: DropdownMenu.Separator,
     Shortcut: DropdownMenu.Shortcut,
     Sub: DropdownMenu.Sub,
     SubContent: DropdownMenu.SubContent,
-    SubTrigger: DropdownMenu.SubTrigger,
     Trigger: DropdownMenu.Trigger,
+    TriggerItem: DropdownMenu.TriggerItem,
   },
   title: "Components/Navigation/Dropdown Menu",
 });
@@ -60,7 +60,7 @@ export const Default = meta.story({
           <Button variant="outline">Open</Button>
         </DropdownMenu.Trigger>
         <DropdownMenu.Content class="w-40">
-          <DropdownMenu.Group>
+          <DropdownMenu.ItemGroup>
             <DropdownMenu.Item value="forward">
               <PhPaperPlaneTilt /> Forward
               <DropdownMenu.Shortcut>⌘F</DropdownMenu.Shortcut>
@@ -68,7 +68,7 @@ export const Default = meta.story({
             <DropdownMenu.Item value="archive">
               <PhArchive /> Archive
             </DropdownMenu.Item>
-          </DropdownMenu.Group>
+          </DropdownMenu.ItemGroup>
         </DropdownMenu.Content>
       </DropdownMenu>
     `,
@@ -120,7 +120,7 @@ export const Checkboxes = meta.story({
           <Button variant="outline">Open</Button>
         </DropdownMenu.Trigger>
         <DropdownMenu.Content class="w-40">
-          <DropdownMenu.Group heading="Appearance">
+          <DropdownMenu.ItemGroup heading="Appearance">
             <DropdownMenu.CheckboxItem checked value="save">
               Status bar
             </DropdownMenu.CheckboxItem>
@@ -130,7 +130,7 @@ export const Checkboxes = meta.story({
             <DropdownMenu.CheckboxItem :checked="false" disabled value="dark-mode">
               Panel
             </DropdownMenu.CheckboxItem>
-          </DropdownMenu.Group>
+          </DropdownMenu.ItemGroup>
         </DropdownMenu.Content>
       </DropdownMenu>
     `,
@@ -174,16 +174,16 @@ export const GroupLabel = meta.story({
           <Button variant="outline">Open</Button>
         </DropdownMenu.Trigger>
         <DropdownMenu.Content class="w-40">
-          <DropdownMenu.Group heading="Account">
+          <DropdownMenu.ItemGroup heading="Account">
             <DropdownMenu.Item value="profile">Profile</DropdownMenu.Item>
             <DropdownMenu.Item value="billing">Billing</DropdownMenu.Item>
-          </DropdownMenu.Group>
+          </DropdownMenu.ItemGroup>
           <DropdownMenu.Separator />
-          <DropdownMenu.Group>
-            <DropdownMenu.GroupLabel>Support</DropdownMenu.GroupLabel>
+          <DropdownMenu.ItemGroup>
+            <DropdownMenu.ItemGroupLabel>Support</DropdownMenu.ItemGroupLabel>
             <DropdownMenu.Item value="docs">Docs</DropdownMenu.Item>
             <DropdownMenu.Item value="contact">Contact</DropdownMenu.Item>
-          </DropdownMenu.Group>
+          </DropdownMenu.ItemGroup>
         </DropdownMenu.Content>
       </DropdownMenu>
     `,
@@ -254,7 +254,7 @@ export const Nested = meta.story({
         <DropdownMenu.Content class="w-40">
           <DropdownMenu.Item value="item-one">Item one</DropdownMenu.Item>
           <DropdownMenu.Sub>
-            <DropdownMenu.SubTrigger>More</DropdownMenu.SubTrigger>
+            <DropdownMenu.TriggerItem>More</DropdownMenu.TriggerItem>
             <DropdownMenu.SubContent>
               <DropdownMenu.Item value="sub-a">Sub item A</DropdownMenu.Item>
               <DropdownMenu.Item value="sub-b">Sub item B</DropdownMenu.Item>
@@ -285,7 +285,7 @@ export const QuickItem = meta.story({
           <Button variant="outline">Open</Button>
         </DropdownMenu.Trigger>
         <DropdownMenu.Content class="w-44">
-          <DropdownMenu.Group heading="Actions">
+          <DropdownMenu.ItemGroup heading="Actions">
             <DropdownMenu.Item value="edit">
               <PhPencil />
               Edit
@@ -302,7 +302,7 @@ export const QuickItem = meta.story({
               <PhChatCircle />
               Comment
             </DropdownMenu.Item>
-          </DropdownMenu.Group>
+          </DropdownMenu.ItemGroup>
           <DropdownMenu.Separator />
           <div class="flex w-full gap-1">
             <DropdownMenu.QuickItem class="min-w-0 flex-1" value="copy">
@@ -329,11 +329,11 @@ export const RadioGroup = meta.story({
           <Button variant="outline">Open</Button>
         </DropdownMenu.Trigger>
         <DropdownMenu.Content class="w-40">
-          <DropdownMenu.RadioGroup value="dark">
+          <DropdownMenu.RadioItemGroup value="dark">
             <DropdownMenu.RadioItem value="light">Light</DropdownMenu.RadioItem>
             <DropdownMenu.RadioItem value="dark">Dark</DropdownMenu.RadioItem>
             <DropdownMenu.RadioItem value="system">System</DropdownMenu.RadioItem>
-          </DropdownMenu.RadioGroup>
+          </DropdownMenu.RadioItemGroup>
         </DropdownMenu.Content>
       </DropdownMenu>
     `,

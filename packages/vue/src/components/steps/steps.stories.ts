@@ -31,8 +31,8 @@ const meta = preview.meta({
     Indicator: Steps.Indicator,
     Item: Steps.Item,
     List: Steps.List,
-    Next: Steps.Next,
-    Previous: Steps.Previous,
+    NextTrigger: Steps.NextTrigger,
+    PrevTrigger: Steps.PrevTrigger,
     Separator: Steps.Separator,
     Title: Steps.Title,
     Trigger: Steps.Trigger,
@@ -71,18 +71,18 @@ export const Default = meta.story({
           <p class="text-muted-foreground text-sm">All steps completed.</p>
         </Steps.CompletedContent>
         <div class="flex flex-row-reverse gap-2">
-          <Steps.Next as-child>
+          <Steps.NextTrigger as-child>
             <Button>
               Next
               <PhCaretRight />
             </Button>
-          </Steps.Next>
-          <Steps.Previous as-child>
+          </Steps.NextTrigger>
+          <Steps.PrevTrigger as-child>
             <Button variant="outline">
               <PhCaretLeft />
               Back
             </Button>
-          </Steps.Previous>
+          </Steps.PrevTrigger>
         </div>
       </Steps>
     `,
@@ -157,18 +157,18 @@ export const Vertical = meta.story({
             <p class="text-muted-foreground">Completed</p>
           </Steps.CompletedContent>
           <div class="flex flex-row-reverse gap-2">
-            <Steps.Next as-child>
+            <Steps.NextTrigger as-child>
               <Button variant="outline">
                 Next
                 <PhCaretRight />
               </Button>
-            </Steps.Next>
-            <Steps.Previous as-child>
+            </Steps.NextTrigger>
+            <Steps.PrevTrigger as-child>
               <Button variant="outline">
                 <PhCaretLeft />
                 Back
               </Button>
-            </Steps.Previous>
+            </Steps.PrevTrigger>
           </div>
         </div>
       </Steps>

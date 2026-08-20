@@ -5,7 +5,7 @@ import { defineComponent, h, type PropType } from "vue";
 import {
   DialogBody,
   type DialogBodyProps,
-  DialogClose,
+  DialogCloseTrigger,
   DialogContent,
   type DialogContentProps,
   DialogDescription,
@@ -103,11 +103,11 @@ export const AlertDialogDescription = defineComponent({
   },
 });
 
-export const AlertDialogClose = defineComponent({
+export const AlertDialogCloseTrigger = defineComponent({
   inheritAttrs: false,
-  name: "AlertDialogClose",
+  name: "AlertDialogCloseTrigger",
   setup(_, { attrs, slots }) {
-    return () => h(DialogClose, { ...attrs }, slots);
+    return () => h(DialogCloseTrigger, { ...attrs }, slots);
   },
 });
 
@@ -156,7 +156,7 @@ export const AlertDialogCancel = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () =>
-      h(AlertDialogClose, { asChild: true }, () =>
+      h(AlertDialogCloseTrigger, { asChild: true }, () =>
         h(
           "button",
           {
@@ -182,7 +182,7 @@ export const AlertDialog = Object.assign(AlertDialogRoot, {
   Action: AlertDialogAction,
   Body: AlertDialogBody,
   Cancel: AlertDialogCancel,
-  Close: AlertDialogClose,
+  CloseTrigger: AlertDialogCloseTrigger,
   Content: AlertDialogContent,
   Description: AlertDialogDescription,
   Footer: AlertDialogFooter,

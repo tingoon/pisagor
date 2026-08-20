@@ -25,15 +25,15 @@ const meta = preview.meta({
     },
   },
   subcomponents: {
+    Backdrop: Drawer.Backdrop,
     Body: Drawer.Body,
-    Close: Drawer.Close,
+    CloseTrigger: Drawer.CloseTrigger,
     Content: Drawer.Content,
     ContentInner: Drawer.ContentInner,
     Description: Drawer.Description,
     Footer: Drawer.Footer,
     Grabber: Drawer.Grabber,
     Header: Drawer.Header,
-    Overlay: Drawer.Overlay,
     Positioner: Drawer.Positioner,
     Title: Drawer.Title,
     Trigger: Drawer.Trigger,
@@ -59,7 +59,7 @@ export const Default = meta.story({
                 h("p", { class: "text-muted-foreground text-sm" }, "Drawer body content."),
               ),
               h(Drawer.Footer, null, () =>
-                h(Drawer.Close, { asChild: true }, () =>
+                h(Drawer.CloseTrigger, { asChild: true }, () =>
                   h("button", { class: outlineButtonClass(), type: "button" }, "Save"),
                 ),
               ),
@@ -102,10 +102,10 @@ export const CustomSpacing = meta.story({
               ]),
               h(Drawer.Footer, null, () =>
                 h(Drawer.ContentInner, null, () => [
-                  h(Drawer.Close, { asChild: true }, () =>
+                  h(Drawer.CloseTrigger, { asChild: true }, () =>
                     h("button", { class: outlineButtonClass(), type: "button" }, "Cancel"),
                   ),
-                  h(Drawer.Close, { asChild: true }, () =>
+                  h(Drawer.CloseTrigger, { asChild: true }, () =>
                     h("button", { class: defaultButtonClass(), type: "button" }, "Save changes"),
                   ),
                 ]),
@@ -147,10 +147,10 @@ export const DrawerContentInner = meta.story({
             ]),
             h(Drawer.Footer, null, () =>
               h(Drawer.ContentInner, null, () => [
-                h(Drawer.Close, { asChild: true }, () =>
+                h(Drawer.CloseTrigger, { asChild: true }, () =>
                   h("button", { class: outlineButtonClass(), type: "button" }, "Cancel"),
                 ),
-                h(Drawer.Close, { asChild: true }, () =>
+                h(Drawer.CloseTrigger, { asChild: true }, () =>
                   h("button", { class: defaultButtonClass(), type: "button" }, "Save"),
                 ),
               ]),
@@ -191,10 +191,10 @@ export const Inset = meta.story({
             ]),
             h(Drawer.Footer, null, () =>
               h(Drawer.ContentInner, null, () => [
-                h(Drawer.Close, { asChild: true }, () =>
+                h(Drawer.CloseTrigger, { asChild: true }, () =>
                   h("button", { class: outlineButtonClass(), type: "button" }, "Cancel"),
                 ),
-                h(Drawer.Close, { asChild: true }, () =>
+                h(Drawer.CloseTrigger, { asChild: true }, () =>
                   h("button", { class: defaultButtonClass(), type: "button" }, "Save"),
                 ),
               ]),

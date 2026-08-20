@@ -1,11 +1,11 @@
 import {
+  DialogBackdrop,
   DialogBody,
-  DialogClose,
+  DialogCloseTrigger,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogOverlay,
   DialogPositioner,
   DialogRoot,
   DialogTitle,
@@ -19,13 +19,13 @@ export type {
   DialogProps,
 } from "./dialog";
 export {
+  DialogBackdrop,
   DialogBody,
-  DialogClose,
+  DialogCloseTrigger,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogOverlay,
   DialogPositioner,
   DialogRoot,
   DialogTitle,
@@ -34,13 +34,13 @@ export {
 } from "./dialog";
 
 export const Dialog = Object.assign(DialogRoot, {
+  Backdrop: DialogBackdrop,
   Body: DialogBody,
-  Close: DialogClose,
+  CloseTrigger: DialogCloseTrigger,
   Content: DialogContent,
   Description: DialogDescription,
   Footer: DialogFooter,
   Header: DialogHeader,
-  Overlay: DialogOverlay,
   Positioner: DialogPositioner,
   Title: DialogTitle,
   Trigger: DialogTrigger,

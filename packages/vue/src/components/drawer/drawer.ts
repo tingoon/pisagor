@@ -1,5 +1,6 @@
 import { Drawer as DrawerPrimitive } from "@ark-ui/vue/drawer";
 import {
+  drawerBackdropVariants,
   drawerBodyVariants,
   drawerContentInnerVariants,
   drawerContentVariants,
@@ -7,7 +8,6 @@ import {
   drawerFooterVariants,
   drawerGrabberVariants,
   drawerHeaderVariants,
-  drawerOverlayVariants,
   drawerPositionerVariants,
   drawerTitleVariants,
 } from "@pisagor/styles/ui/drawer";
@@ -92,9 +92,9 @@ export const DrawerTrigger = defineComponent({
   },
 });
 
-export const DrawerOverlay = defineComponent({
+export const DrawerBackdrop = defineComponent({
   inheritAttrs: false,
-  name: "DrawerOverlay",
+  name: "DrawerBackdrop",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
@@ -104,7 +104,7 @@ export const DrawerOverlay = defineComponent({
         DrawerPrimitive.Backdrop as ArkPart,
         {
           ...attrs,
-          class: cn(drawerOverlayVariants(), props.class),
+          class: cn(drawerBackdropVariants(), props.class),
         },
         slots,
       );
@@ -143,7 +143,7 @@ export const DrawerContent = defineComponent({
 
     return () =>
       drawerTeleport([
-        h(DrawerOverlay),
+        h(DrawerBackdrop),
         h(DrawerPrimitive.Context as ArkPart, null, {
           default: (drawerApi: { swipeDirection: keyof typeof SWIPE_DIRECTION_TO_PLACEMENT }) =>
             h(DrawerPositioner, { variant: props.variant }, () =>
@@ -307,9 +307,9 @@ export const DrawerBody = defineComponent({
   },
 });
 
-export const DrawerClose = defineComponent({
+export const DrawerCloseTrigger = defineComponent({
   inheritAttrs: false,
-  name: "DrawerClose",
+  name: "DrawerCloseTrigger",
   setup(_, { attrs, slots }) {
     return () => h(DrawerPrimitive.CloseTrigger as ArkPart, { ...attrs }, slots);
   },
@@ -338,15 +338,15 @@ export const DrawerFooter = defineComponent({
 // #endregion
 
 export const Drawer = Object.assign(DrawerRoot, {
+  Backdrop: DrawerBackdrop,
   Body: DrawerBody,
-  Close: DrawerClose,
+  CloseTrigger: DrawerCloseTrigger,
   Content: DrawerContent,
   ContentInner: DrawerContentInner,
   Description: DrawerDescription,
   Footer: DrawerFooter,
   Grabber: DrawerGrabber,
   Header: DrawerHeader,
-  Overlay: DrawerOverlay,
   Positioner: DrawerPositioner,
   Title: DrawerTitle,
   Trigger: DrawerTrigger,

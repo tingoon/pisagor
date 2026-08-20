@@ -3,14 +3,14 @@ import {
   SelectContent,
   SelectContext,
   SelectEmpty,
-  SelectGroup,
-  SelectGroupLabel,
   SelectItem,
+  SelectItemGroup,
+  SelectItemGroupLabel,
   SelectRoot,
   SelectSeparator,
   SelectShorthand,
   SelectTrigger,
-  SelectValue,
+  SelectValueText,
 } from "./select";
 
 export type { SelectProps, SelectRootProps } from "./select";
@@ -20,11 +20,11 @@ export const Select = Object.assign(SelectShorthand, {
   Content: SelectContent,
   Context: SelectContext,
   Empty: SelectEmpty,
-  Group: SelectGroup,
-  GroupLabel: SelectGroupLabel,
   Item: SelectItem,
+  ItemGroup: SelectItemGroup,
+  ItemGroupLabel: SelectItemGroupLabel,
   Root: SelectRoot,
   Separator: SelectSeparator,
   Trigger: SelectTrigger,
-  Value: SelectValue,
+  ValueText: SelectValueText,
 });

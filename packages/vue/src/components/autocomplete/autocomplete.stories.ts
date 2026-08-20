@@ -20,15 +20,15 @@ const meta = preview.meta({
     },
   },
   subcomponents: {
-    Clear: Autocomplete.Clear,
+    ClearTrigger: Autocomplete.ClearTrigger,
     Collection: Autocomplete.Collection,
     Content: Autocomplete.Content,
     Control: Autocomplete.Control,
     Empty: Autocomplete.Empty,
-    Group: Autocomplete.Group,
-    GroupLabel: Autocomplete.GroupLabel,
     Input: Autocomplete.Input,
     Item: Autocomplete.Item,
+    ItemGroup: Autocomplete.ItemGroup,
+    ItemGroupLabel: Autocomplete.ItemGroupLabel,
     List: Autocomplete.List,
     Root: Autocomplete.Root,
     Separator: Autocomplete.Separator,
@@ -325,7 +325,7 @@ export const Group = meta.story({
         <Autocomplete.Content class="w-60">
           <Autocomplete.Empty />
           <Autocomplete.List>
-            <Autocomplete.Group
+            <Autocomplete.ItemGroup
               v-for="[continent, group] in groups"
               :key="continent"
               :heading="continent"
@@ -333,7 +333,7 @@ export const Group = meta.story({
               <Autocomplete.Item v-for="item in group" :key="item.value" :item="item">
                 {{ item.label }}
               </Autocomplete.Item>
-            </Autocomplete.Group>
+            </Autocomplete.ItemGroup>
           </Autocomplete.List>
         </Autocomplete.Content>
       </Autocomplete.Root>

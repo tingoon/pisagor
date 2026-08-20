@@ -19,16 +19,16 @@ const meta = preview.meta({
     },
   },
   subcomponents: {
-    Clear: Combobox.Clear,
+    ClearTrigger: Combobox.ClearTrigger,
     Content: Combobox.Content,
     Context: Combobox.Context,
     Control: Combobox.Control,
     Empty: Combobox.Empty,
     FieldInput: Combobox.FieldInput,
-    Group: Combobox.Group,
-    GroupLabel: Combobox.GroupLabel,
     Input: Combobox.Input,
     Item: Combobox.Item,
+    ItemGroup: Combobox.ItemGroup,
+    ItemGroupLabel: Combobox.ItemGroupLabel,
     List: Combobox.List,
     Positioner: Combobox.Positioner,
     Root: Combobox.Root,
@@ -393,7 +393,7 @@ export const Group = meta.story({
         <Combobox.Input placeholder="Select a timezone" />
         <Combobox.Content class="w-60">
           <Combobox.List>
-            <Combobox.Group
+            <Combobox.ItemGroup
               v-for="[continent, group] in groups"
               :key="continent"
               :heading="continent"
@@ -401,7 +401,7 @@ export const Group = meta.story({
               <Combobox.Item v-for="item in group" :key="item.value" :item="item">
                 {{ item.label }}
               </Combobox.Item>
-            </Combobox.Group>
+            </Combobox.ItemGroup>
           </Combobox.List>
         </Combobox.Content>
       </Combobox.Root>

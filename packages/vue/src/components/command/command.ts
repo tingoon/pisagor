@@ -97,7 +97,7 @@ export const CommandDialogContent = defineComponent({
   setup(props, { attrs, slots }) {
     return () =>
       commandTeleport([
-        h(Dialog.Overlay),
+        h(Dialog.Backdrop),
         h(Dialog.Positioner, null, () =>
           h(
             DialogPrimitive.Content as ArkPart,
@@ -261,9 +261,9 @@ export const CommandEmpty = defineComponent({
 });
 CommandEmpty.displayName = "Command.Empty";
 
-export const CommandGroup = defineComponent({
+export const CommandItemGroup = defineComponent({
   inheritAttrs: false,
-  name: "CommandGroup",
+  name: "CommandItemGroup",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     heading: {
@@ -274,26 +274,26 @@ export const CommandGroup = defineComponent({
   setup(props, { attrs, slots }) {
     return () =>
       h(
-        Combobox.Group as ArkPart,
+        Combobox.ItemGroup as ArkPart,
         { ...attrs, class: props.class, heading: props.heading },
         slots.default?.(),
       );
   },
 });
-CommandGroup.displayName = "Command.Group";
+CommandItemGroup.displayName = "Command.ItemGroup";
 
-export const CommandGroupLabel = defineComponent({
+export const CommandItemGroupLabel = defineComponent({
   inheritAttrs: false,
-  name: "CommandGroupLabel",
+  name: "CommandItemGroupLabel",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
     return () =>
-      h(Combobox.GroupLabel as ArkPart, { ...attrs, class: props.class }, slots.default?.());
+      h(Combobox.ItemGroupLabel as ArkPart, { ...attrs, class: props.class }, slots.default?.());
   },
 });
-CommandGroupLabel.displayName = "Command.GroupLabel";
+CommandItemGroupLabel.displayName = "Command.ItemGroupLabel";
 
 export const CommandItem = defineComponent({
   inheritAttrs: false,

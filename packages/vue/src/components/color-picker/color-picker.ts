@@ -21,7 +21,7 @@ import {
   colorPickerSwatchTriggerVariants,
   colorPickerSwatchVariants,
   colorPickerValueSwatchVariants,
-  colorPickerValueVariants,
+  colorPickerValueTextVariants,
   colorPickerVariants,
   colorPickerViewVariants,
 } from "@pisagor/styles/ui/color-picker";
@@ -285,9 +285,9 @@ export const ColorPickerView = defineComponent({
   },
 });
 
-export const ColorPickerSlider = defineComponent({
+export const ColorPickerChannelSlider = defineComponent({
   inheritAttrs: false,
-  name: "ColorPicker.Slider",
+  name: "ColorPicker.ChannelSlider",
   props: { class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> } },
   setup(props, { attrs, slots: children }) {
     return () => {
@@ -427,9 +427,9 @@ export const ColorPickerSwatchIndicator = defineComponent({
   },
 });
 
-export const ColorPickerValue = defineComponent({
+export const ColorPickerValueText = defineComponent({
   inheritAttrs: false,
-  name: "ColorPicker.Value",
+  name: "ColorPicker.ValueText",
   props: { class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> } },
   setup(props, { attrs, slots }) {
     return () =>
@@ -438,7 +438,7 @@ export const ColorPickerValue = defineComponent({
         {
           ...attrs,
           class: cn(
-            colorPickerValueVariants(),
+            colorPickerValueTextVariants(),
             props.class,
             (attrs as { class?: ClassValue }).class,
           ),
@@ -602,11 +602,11 @@ export const ColorPickerField = defineComponent({
                 h(ColorPickerEyeDropperTrigger as ArkPart),
                 h("div", { class: colorPickerInline5Variants() }, () => [
                   h(
-                    ColorPickerSlider as ArkPart,
+                    ColorPickerChannelSlider as ArkPart,
                     { channel: "hue" } as unknown as Parameters<typeof h>[1],
                   ),
                   h(
-                    ColorPickerSlider as ArkPart,
+                    ColorPickerChannelSlider as ArkPart,
                     { channel: "alpha" } as unknown as Parameters<typeof h>[1],
                     () => h(ColorPickerTransparencyGrid as ArkPart),
                   ),
@@ -623,13 +623,13 @@ export const ColorPickerField = defineComponent({
 export const ColorPicker = Object.assign(ColorPickerRoot, {
   Area: ColorPickerArea,
   AreaThumb: ColorPickerAreaThumb,
+  ChannelSlider: ColorPickerChannelSlider,
   ClearTrigger: ColorPickerClearTrigger,
   Content: ColorPickerContent,
   Control: ColorPickerControl,
   EyeDropperTrigger: ColorPickerEyeDropperTrigger,
   Field: ColorPickerField,
   Input: ColorPickerInput,
-  Slider: ColorPickerSlider,
   Swatch: ColorPickerSwatch,
   SwatchGroup: ColorPickerSwatchGroup,
   SwatchIndicator: ColorPickerSwatchIndicator,
@@ -637,7 +637,7 @@ export const ColorPicker = Object.assign(ColorPickerRoot, {
   SwatchTrigger: ColorPickerSwatchTrigger,
   TransparencyGrid: ColorPickerTransparencyGrid,
   Trigger: ColorPickerTrigger,
-  Value: ColorPickerValue,
   ValueSwatch: ColorPickerValueSwatch,
+  ValueText: ColorPickerValueText,
   View: ColorPickerView,
 });

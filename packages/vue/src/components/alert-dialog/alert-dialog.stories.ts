@@ -21,7 +21,7 @@ const meta = preview.meta({
     Action: AlertDialog.Action,
     Body: AlertDialog.Body,
     Cancel: AlertDialog.Cancel,
-    Close: AlertDialog.Close,
+    CloseTrigger: AlertDialog.CloseTrigger,
     Content: AlertDialog.Content,
     Description: AlertDialog.Description,
     Footer: AlertDialog.Footer,
@@ -47,7 +47,7 @@ export const Default = meta.story({
             }),
             h(AlertDialog.Footer, null, () => [
               h(AlertDialog.Cancel, null, () => "Don't allow"),
-              h(AlertDialog.Close, { asChild: true }, () =>
+              h(AlertDialog.CloseTrigger, { asChild: true }, () =>
                 h(AlertDialog.Action, null, () => "Allow"),
               ),
             ]),
@@ -73,7 +73,7 @@ export const Variants = meta.story({
               }),
               h(AlertDialog.Footer, null, () => [
                 h(AlertDialog.Cancel, null, () => "Don't allow"),
-                h(AlertDialog.Close, { asChild: true }, () =>
+                h(AlertDialog.CloseTrigger, { asChild: true }, () =>
                   h(AlertDialog.Action, { variant: "default" }, () => "Allow"),
                 ),
               ]),
@@ -91,7 +91,7 @@ export const Variants = meta.story({
               }),
               h(AlertDialog.Footer, null, () => [
                 h(AlertDialog.Cancel, null, () => "Cancel"),
-                h(AlertDialog.Close, { asChild: true }, () =>
+                h(AlertDialog.CloseTrigger, { asChild: true }, () =>
                   h(AlertDialog.Action, { variant: "destructive" }, () => "Delete project"),
                 ),
               ]),

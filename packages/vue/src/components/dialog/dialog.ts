@@ -1,12 +1,12 @@
 import { Dialog as DialogPrimitive } from "@ark-ui/vue/dialog";
 import {
+  dialogBackdropVariants,
   dialogBodyVariants,
   dialogContentVariants,
   dialogDescriptionVariants,
   dialogFooterVariants,
   dialogHeaderVariants,
   dialogInlineVariants,
-  dialogOverlayVariants,
   dialogPositionerVariants,
   dialogTitleVariants,
 } from "@pisagor/styles/ui/dialog";
@@ -123,9 +123,9 @@ export const DialogTrigger = defineComponent({
   },
 });
 
-export const DialogOverlay = defineComponent({
+export const DialogBackdrop = defineComponent({
   inheritAttrs: false,
-  name: "DialogOverlay",
+  name: "DialogBackdrop",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
@@ -139,7 +139,7 @@ export const DialogOverlay = defineComponent({
 
       return h(DialogPrimitive.Backdrop as ArkPart, {
         ...attrs,
-        class: cn(dialogOverlayVariants(), props.class),
+        class: cn(dialogBackdropVariants(), props.class),
       });
     };
   },
@@ -193,7 +193,7 @@ export const DialogContent = defineComponent({
       }
 
       return dialogTeleport([
-        h(DialogOverlay),
+        h(DialogBackdrop),
         h(DialogPositioner, { bottomStickOnMobile: props.bottomStickOnMobile }, () =>
           h(
             DialogPrimitive.Content as ArkPart,
@@ -211,7 +211,7 @@ export const DialogContent = defineComponent({
             () => [
               slots.default?.(),
               props.showCloseButton
-                ? h(DialogClose, { asChild: true }, () =>
+                ? h(DialogCloseTrigger, { asChild: true }, () =>
                     renderIconCloseButton(dialogInlineVariants()),
                   )
                 : null,
@@ -320,9 +320,9 @@ export const DialogDescription = defineComponent({
   },
 });
 
-export const DialogClose = defineComponent({
+export const DialogCloseTrigger = defineComponent({
   inheritAttrs: false,
-  name: "DialogClose",
+  name: "DialogCloseTrigger",
   setup(_, { attrs, slots }) {
     return () => h(DialogPrimitive.CloseTrigger as ArkPart, { ...attrs }, slots);
   },

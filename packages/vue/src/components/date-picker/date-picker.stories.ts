@@ -23,7 +23,7 @@ const meta = preview.meta({
     PresetTrigger: DatePicker.PresetTrigger,
     Timer: DatePicker.Timer,
     Trigger: DatePicker.Trigger,
-    Value: DatePicker.Value,
+    ValueText: DatePicker.ValueText,
   },
   title: "Components/Forms/Date Picker",
 });
@@ -75,7 +75,7 @@ export const Default = meta.story({
         <DatePicker.Trigger :asChild="true">
           <Button variant="outline">
             <PhCalendar />
-            <DatePicker.Value placeholder="Pick a date" />
+            <DatePicker.ValueText placeholder="Pick a date" />
           </Button>
         </DatePicker.Trigger>
         <DatePicker.Content>
@@ -148,7 +148,7 @@ export const Range = meta.story({
         <DatePicker.Trigger :asChild="true">
           <Button variant="outline">
             <PhCalendar />
-            <DatePicker.Value placeholder="Pick a date range" />
+            <DatePicker.ValueText placeholder="Pick a date range" />
           </Button>
         </DatePicker.Trigger>
         <DatePicker.Content>
@@ -262,7 +262,7 @@ export const Clearable = meta.story({
             <DatePicker.Trigger :asChild="true">
               <Button variant="outline">
                 <PhCalendar />
-                <DatePicker.Value placeholder="Pick a date" />
+                <DatePicker.ValueText placeholder="Pick a date" />
               </Button>
             </DatePicker.Trigger>
             <DatePicker.Content />
@@ -308,7 +308,7 @@ export const WithPresets = meta.story({
         <DatePicker.Trigger :asChild="true">
           <Button variant="outline">
             <PhCalendar />
-            <DatePicker.Value />
+            <DatePicker.ValueText />
           </Button>
         </DatePicker.Trigger>
         <DatePicker.Content>

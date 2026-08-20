@@ -18,14 +18,14 @@ const meta = preview.meta({
   },
   subcomponents: {
     Content: ContextMenu.Content,
-    Group: ContextMenu.Group,
+    ContextTrigger: ContextMenu.ContextTrigger,
     Item: ContextMenu.Item,
+    ItemGroup: ContextMenu.ItemGroup,
     Separator: ContextMenu.Separator,
     Shortcut: ContextMenu.Shortcut,
     Sub: ContextMenu.Sub,
     SubContent: ContextMenu.SubContent,
-    SubTrigger: ContextMenu.SubTrigger,
-    Trigger: ContextMenu.Trigger,
+    TriggerItem: ContextMenu.TriggerItem,
   },
   title: "Components/Navigation/Context Menu",
 });
@@ -35,9 +35,9 @@ export const Default = meta.story({
     components: { ContextMenu, PhCopy, PhPencil, PhTrash },
     template: `
       <ContextMenu>
-        <ContextMenu.Trigger class="flex h-32 w-64 items-center justify-center rounded-lg border border-dashed text-sm">
+        <ContextMenu.ContextTrigger class="flex h-32 w-64 items-center justify-center rounded-lg border border-dashed text-sm">
           Right click here
-        </ContextMenu.Trigger>
+        </ContextMenu.ContextTrigger>
         <ContextMenu.Content class="w-48">
           <ContextMenu.Item value="edit"><PhPencil /> Edit</ContextMenu.Item>
           <ContextMenu.Item value="copy"><PhCopy /> Copy</ContextMenu.Item>

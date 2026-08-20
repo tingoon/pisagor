@@ -21,13 +21,13 @@ const meta = preview.meta({
     },
   },
   subcomponents: {
+    Backdrop: Sheet.Backdrop,
     Body: Sheet.Body,
-    Close: Sheet.Close,
+    CloseTrigger: Sheet.CloseTrigger,
     Content: Sheet.Content,
     Description: Sheet.Description,
     Footer: Sheet.Footer,
     Header: Sheet.Header,
-    Overlay: Sheet.Overlay,
     Positioner: Sheet.Positioner,
     Title: Sheet.Title,
     Trigger: Sheet.Trigger,
@@ -52,7 +52,7 @@ export const Default = meta.story({
               h("p", { class: "text-muted-foreground text-sm" }, "Sheet body content."),
             ),
             h(Sheet.Footer, null, () =>
-              h(Sheet.Close, { asChild: true }, () =>
+              h(Sheet.CloseTrigger, { asChild: true }, () =>
                 h("button", { class: outlineButtonClass(), type: "button" }, "Save changes"),
               ),
             ),
@@ -80,10 +80,10 @@ export const CustomSpacing = meta.story({
               }),
               h(Sheet.Body, null, () => editUserFields()),
               h(Sheet.Footer, null, () => [
-                h(Sheet.Close, { asChild: true }, () =>
+                h(Sheet.CloseTrigger, { asChild: true }, () =>
                   h("button", { class: outlineButtonClass(), type: "button" }, "Cancel"),
                 ),
-                h(Sheet.Close, { asChild: true }, () =>
+                h(Sheet.CloseTrigger, { asChild: true }, () =>
                   h("button", { class: outlineButtonClass(), type: "button" }, "Save changes"),
                 ),
               ]),
@@ -120,10 +120,10 @@ export const Inset = meta.story({
               ]),
             ),
             h(Sheet.Footer, null, () => [
-              h(Sheet.Close, { asChild: true }, () =>
+              h(Sheet.CloseTrigger, { asChild: true }, () =>
                 h("button", { class: outlineButtonClass(), type: "button" }, "Cancel"),
               ),
-              h(Sheet.Close, { asChild: true }, () =>
+              h(Sheet.CloseTrigger, { asChild: true }, () =>
                 h("button", { class: outlineButtonClass(), type: "button" }, "Save changes"),
               ),
             ]),
@@ -155,10 +155,10 @@ export const NoCloseButton = meta.story({
               ),
             ),
             h(Sheet.Footer, null, () => [
-              h(Sheet.Close, { asChild: true }, () =>
+              h(Sheet.CloseTrigger, { asChild: true }, () =>
                 h("button", { class: outlineButtonClass(), type: "button" }, "Cancel"),
               ),
-              h(Sheet.Close, { asChild: true }, () =>
+              h(Sheet.CloseTrigger, { asChild: true }, () =>
                 h("button", { class: outlineButtonClass(), type: "button" }, "Confirm"),
               ),
             ]),
@@ -190,7 +190,7 @@ export const NonModal = meta.story({
               ),
             ),
             h(Sheet.Footer, null, () =>
-              h(Sheet.Close, { asChild: true }, () =>
+              h(Sheet.CloseTrigger, { asChild: true }, () =>
                 h("button", { class: outlineButtonClass(), type: "button" }, "Close"),
               ),
             ),
@@ -224,10 +224,10 @@ export const ScrollArea = meta.story({
               ),
             ),
             h(Sheet.Footer, null, () => [
-              h(Sheet.Close, { asChild: true }, () =>
+              h(Sheet.CloseTrigger, { asChild: true }, () =>
                 h("button", { class: outlineButtonClass(), type: "button" }, "Cancel"),
               ),
-              h(Sheet.Close, { asChild: true }, () =>
+              h(Sheet.CloseTrigger, { asChild: true }, () =>
                 h("button", { class: outlineButtonClass(), type: "button" }, "Agree"),
               ),
             ]),

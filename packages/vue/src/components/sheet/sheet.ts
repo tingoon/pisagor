@@ -10,13 +10,13 @@ import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, Teleport } from "vue";
 import { renderIconCloseButton } from "../../internal/close-button";
 import {
+  DialogBackdrop,
   DialogBody,
   type DialogBodyProps,
   DialogDescription,
   DialogFooter,
   DialogHeader,
   type DialogHeaderProps,
-  DialogOverlay,
   type DialogProps,
   DialogRoot,
   DialogTitle,
@@ -50,14 +50,14 @@ export const SheetTrigger = defineComponent({
   },
 });
 
-export const SheetOverlay = defineComponent({
+export const SheetBackdrop = defineComponent({
   inheritAttrs: false,
-  name: "SheetOverlay",
+  name: "SheetBackdrop",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () => h(DialogOverlay, { ...attrs, class: props.class }, slots);
+    return () => h(DialogBackdrop, { ...attrs, class: props.class }, slots);
   },
 });
 
@@ -106,7 +106,7 @@ export const SheetContent = defineComponent({
       }
 
       return sheetTeleport([
-        h(SheetOverlay),
+        h(SheetBackdrop),
         h(SheetPositioner, { placement: props.placement, variant: props.variant }, () =>
           h(
             DialogPrimitive.Content as ArkPart,
@@ -121,7 +121,7 @@ export const SheetContent = defineComponent({
             () => [
               slots.default?.(),
               props.showCloseButton
-                ? h(SheetClose, { asChild: true }, () =>
+                ? h(SheetCloseTrigger, { asChild: true }, () =>
                     renderIconCloseButton(sheetInlineVariants()),
                   )
                 : null,
@@ -181,9 +181,9 @@ export const SheetBody = defineComponent({
   },
 });
 
-export const SheetClose = defineComponent({
+export const SheetCloseTrigger = defineComponent({
   inheritAttrs: false,
-  name: "SheetClose",
+  name: "SheetCloseTrigger",
   setup(_, { attrs, slots }) {
     return () => h(DialogPrimitive.CloseTrigger as ArkPart, { ...attrs }, slots);
   },
@@ -214,13 +214,13 @@ export const SheetFooter = defineComponent({
 export type { DialogBodyProps as SheetBodyProps, DialogHeaderProps as SheetHeaderProps };
 
 export const Sheet = Object.assign(SheetRoot, {
+  Backdrop: SheetBackdrop,
   Body: SheetBody,
-  Close: SheetClose,
+  CloseTrigger: SheetCloseTrigger,
   Content: SheetContent,
   Description: SheetDescription,
   Footer: SheetFooter,
   Header: SheetHeader,
-  Overlay: SheetOverlay,
   Positioner: SheetPositioner,
   Title: SheetTitle,
   Trigger: SheetTrigger,

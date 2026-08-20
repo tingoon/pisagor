@@ -2,12 +2,12 @@ import { Carousel as CarouselPrimitive } from "@ark-ui/vue/carousel";
 import { PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
 import {
   carouselControlVariants,
-  carouselGroupVariants,
   carouselIndicatorGroupVariants,
   carouselIndicatorVariants,
+  carouselItemGroupVariants,
   carouselItemVariants,
-  carouselNextVariants,
-  carouselPreviousVariants,
+  carouselNextTriggerVariants,
+  carouselPrevTriggerVariants,
   carouselVariants,
 } from "@pisagor/styles/ui/carousel";
 import { cn } from "@pisagor/utils";
@@ -71,9 +71,9 @@ export const CarouselControl = defineComponent({
   },
 });
 
-export const CarouselPrevious = defineComponent({
+export const CarouselPrevTrigger = defineComponent({
   inheritAttrs: false,
-  name: "CarouselPrevious",
+  name: "CarouselPrevTrigger",
   setup(_, { attrs }) {
     return () =>
       h(
@@ -81,7 +81,7 @@ export const CarouselPrevious = defineComponent({
         {
           ...attrs,
           asChild: true,
-          class: cn(carouselPreviousVariants(), attrs.class),
+          class: cn(carouselPrevTriggerVariants(), attrs.class),
         },
         () =>
           h(
@@ -99,9 +99,9 @@ export const CarouselPrevious = defineComponent({
   },
 });
 
-export const CarouselNext = defineComponent({
+export const CarouselNextTrigger = defineComponent({
   inheritAttrs: false,
-  name: "CarouselNext",
+  name: "CarouselNextTrigger",
   setup(_, { attrs }) {
     return () =>
       h(
@@ -109,7 +109,7 @@ export const CarouselNext = defineComponent({
         {
           ...attrs,
           asChild: true,
-          class: cn(carouselNextVariants(), attrs.class),
+          class: cn(carouselNextTriggerVariants(), attrs.class),
         },
         () =>
           h(
@@ -159,16 +159,16 @@ export const CarouselIndicator = defineComponent({
   },
 });
 
-export const CarouselContent = defineComponent({
+export const CarouselItemGroup = defineComponent({
   inheritAttrs: false,
-  name: "CarouselContent",
+  name: "CarouselItemGroup",
   setup(_, { attrs, slots }) {
     return () =>
       h(
         CarouselPrimitive.ItemGroup as ArkPart,
         {
           ...attrs,
-          class: cn(carouselGroupVariants(), attrs.class),
+          class: cn(carouselItemGroupVariants(), attrs.class),
         },
         slots,
       );
@@ -217,8 +217,8 @@ export const CarouselShorthand = defineComponent({
           testId: props.testId,
         },
         () => [
-          h(CarouselControl, null, () => [h(CarouselPrevious), h(CarouselNext)]),
-          h(CarouselContent, null, () =>
+          h(CarouselControl, null, () => [h(CarouselPrevTrigger), h(CarouselNextTrigger)]),
+          h(CarouselItemGroup, null, () =>
             props.slides?.map((slide, index) =>
               h(CarouselItem, { index, key: slide.key ?? String(index) }, () => slide.content),
             ),

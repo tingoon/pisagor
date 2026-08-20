@@ -40,13 +40,13 @@ const meta = preview.meta({
   subcomponents: {
     Branch: TreeView.Branch,
     BranchContent: TreeView.BranchContent,
+    BranchControl: TreeView.BranchControl,
     BranchIndicator: TreeView.BranchIndicator,
-    BranchItem: TreeView.BranchItem,
-    Checkbox: TreeView.Checkbox,
-    Content: TreeView.Content,
     Item: TreeView.Item,
+    ItemText: TreeView.ItemText,
     Label: TreeView.Label,
-    Node: TreeView.Node,
+    NodeCheckbox: TreeView.NodeCheckbox,
+    NodeProvider: TreeView.NodeProvider,
     Tree: TreeView.Tree,
   },
   title: "Components/Navigation/Tree View",
@@ -58,16 +58,16 @@ export const Default = meta.story({
       const collection = createTreeCollection({ rootNode: sampleFileTree });
 
       const renderNode = (node: TreeNodeType, indexPath: number[]): VNode =>
-        h(TreeView.Node as ArkPart, { indexPath, key: node.id, node }, () =>
+        h(TreeView.NodeProvider as ArkPart, { indexPath, key: node.id, node }, () =>
           node.children
             ? h(TreeView.Branch as ArkPart, null, () => [
-                h(TreeView.BranchItem as ArkPart, null, () => node.name),
+                h(TreeView.BranchControl as ArkPart, null, () => node.name),
                 h(TreeView.BranchContent as ArkPart, null, () =>
                   node.children?.map((child, index) => renderNode(child, [...indexPath, index])),
                 ),
               ])
-            : h(TreeView.Content as ArkPart, null, () =>
-                h(TreeView.Item as ArkPart, null, () => node.name),
+            : h(TreeView.Item as ArkPart, null, () =>
+                h(TreeView.ItemText as ArkPart, null, () => node.name),
               ),
         );
 
@@ -89,15 +89,15 @@ export const Links = meta.story({
       const collection = createTreeCollection({ rootNode: docsLinkTree });
 
       const renderNode = (node: TreeNodeWithLink, indexPath: number[]): VNode =>
-        h(TreeView.Node as ArkPart, { indexPath, key: node.id, node }, () =>
+        h(TreeView.NodeProvider as ArkPart, { indexPath, key: node.id, node }, () =>
           node.children
             ? h(TreeView.Branch as ArkPart, null, () => [
-                h(TreeView.BranchItem as ArkPart, { icon: null }, () => node.name),
+                h(TreeView.BranchControl as ArkPart, { icon: null }, () => node.name),
                 h(TreeView.BranchContent as ArkPart, null, () =>
                   node.children?.map((child, index) => renderNode(child, [...indexPath, index])),
                 ),
               ])
-            : h(TreeView.Content as ArkPart, { asChild: true }, () =>
+            : h(TreeView.Item as ArkPart, { asChild: true }, () =>
                 h(
                   "a",
                   {
@@ -105,7 +105,7 @@ export const Links = meta.story({
                     rel: node.href?.startsWith("http") ? "noopener noreferrer" : undefined,
                     target: node.href?.startsWith("http") ? "_blank" : undefined,
                   },
-                  h(TreeView.Item as ArkPart, { icon: PhLink }, () => [
+                  h(TreeView.ItemText as ArkPart, { icon: PhLink }, () => [
                     node.name,
                     node.href?.startsWith("http") ? h(PhArrowSquareOut) : null,
                   ]),
@@ -133,20 +133,20 @@ export const CheckboxTree = meta.story({
       const checkedNodes = ref<string[]>(["readme.md"]);
 
       const renderNode = (node: TreeNodeType, indexPath: number[]): VNode =>
-        h(TreeView.Node as ArkPart, { indexPath, key: node.id, node }, () =>
+        h(TreeView.NodeProvider as ArkPart, { indexPath, key: node.id, node }, () =>
           node.children
             ? h(TreeView.Branch as ArkPart, null, () => [
-                h(TreeView.BranchItem as ArkPart, null, () => [
-                  h(TreeView.Checkbox as ArkPart),
+                h(TreeView.BranchControl as ArkPart, null, () => [
+                  h(TreeView.NodeCheckbox as ArkPart),
                   node.name,
                 ]),
                 h(TreeView.BranchContent as ArkPart, null, () =>
                   node.children?.map((child, index) => renderNode(child, [...indexPath, index])),
                 ),
               ])
-            : h(TreeView.Content as ArkPart, null, () => [
-                h(TreeView.Checkbox as ArkPart),
-                h(TreeView.Item as ArkPart, null, () => node.name),
+            : h(TreeView.Item as ArkPart, null, () => [
+                h(TreeView.NodeCheckbox as ArkPart),
+                h(TreeView.ItemText as ArkPart, null, () => node.name),
               ]),
         );
 
@@ -184,12 +184,12 @@ export const WithContextMenu = meta.story({
       const collection = createTreeCollection({ rootNode: sampleFileTree });
 
       const renderNode = (node: TreeNodeType, indexPath: number[]): VNode =>
-        h(TreeView.Node as ArkPart, { indexPath, key: node.id, node }, () =>
+        h(TreeView.NodeProvider as ArkPart, { indexPath, key: node.id, node }, () =>
           node.children
             ? h(TreeView.Branch as ArkPart, null, () => [
                 h(ContextMenu as ArkPart, null, () => [
-                  h(ContextMenu.Trigger as ArkPart, { asChild: true }, () =>
-                    h(TreeView.BranchItem as ArkPart, null, () => node.name),
+                  h(ContextMenu.ContextTrigger as ArkPart, { asChild: true }, () =>
+                    h(TreeView.BranchControl as ArkPart, null, () => node.name),
                   ),
                   h(ContextMenu.Content as ArkPart, { class: "w-40" }, () => [
                     h(ContextMenu.Item as ArkPart, { value: "add-folder" }, () => [
@@ -218,9 +218,9 @@ export const WithContextMenu = meta.story({
                 ),
               ])
             : h(ContextMenu as ArkPart, null, () => [
-                h(ContextMenu.Trigger as ArkPart, { asChild: true }, () =>
-                  h(TreeView.Content as ArkPart, null, () =>
-                    h(TreeView.Item as ArkPart, null, () => node.name),
+                h(ContextMenu.ContextTrigger as ArkPart, { asChild: true }, () =>
+                  h(TreeView.Item as ArkPart, null, () =>
+                    h(TreeView.ItemText as ArkPart, null, () => node.name),
                   ),
                 ),
                 h(ContextMenu.Content as ArkPart, { class: "w-40" }, () => [
@@ -285,11 +285,11 @@ export const CustomIconsFolder = meta.story({
       });
 
       const renderNode = (node: TreeNodeType, indexPath: number[]): VNode =>
-        h(TreeView.Node as ArkPart, { indexPath, key: node.id, node }, () =>
+        h(TreeView.NodeProvider as ArkPart, { indexPath, key: node.id, node }, () =>
           node.children
             ? h(TreeView.Branch as ArkPart, null, () => [
                 h(
-                  TreeView.BranchItem as ArkPart,
+                  TreeView.BranchControl as ArkPart,
                   { expandedIcon: node.expandedIcon, icon: node.icon },
                   () => node.name,
                 ),
@@ -297,8 +297,8 @@ export const CustomIconsFolder = meta.story({
                   node.children?.map((child, index) => renderNode(child, [...indexPath, index])),
                 ),
               ])
-            : h(TreeView.Content as ArkPart, null, () =>
-                h(TreeView.Item as ArkPart, null, () => node.name),
+            : h(TreeView.Item as ArkPart, null, () =>
+                h(TreeView.ItemText as ArkPart, null, () => node.name),
               ),
         );
 
@@ -320,16 +320,16 @@ export const CustomIconsItem = meta.story({
       const collection = createTreeCollection({ rootNode: sampleFileTree });
 
       const renderNode = (node: TreeNodeType, indexPath: number[]): VNode =>
-        h(TreeView.Node as ArkPart, { indexPath, key: node.id, node }, () =>
+        h(TreeView.NodeProvider as ArkPart, { indexPath, key: node.id, node }, () =>
           node.children
             ? h(TreeView.Branch as ArkPart, null, () => [
-                h(TreeView.BranchItem as ArkPart, null, () => node.name),
+                h(TreeView.BranchControl as ArkPart, null, () => node.name),
                 h(TreeView.BranchContent as ArkPart, null, () =>
                   node.children?.map((child, index) => renderNode(child, [...indexPath, index])),
                 ),
               ])
-            : h(TreeView.Content as ArkPart, null, () =>
-                h(TreeView.Item as ArkPart, { icon: PhStar }, () => node.name),
+            : h(TreeView.Item as ArkPart, null, () =>
+                h(TreeView.ItemText as ArkPart, { icon: PhStar }, () => node.name),
               ),
         );
 
@@ -356,16 +356,16 @@ export const CustomIcons = meta.story({
       const collection = createTreeCollection({ rootNode: sampleFileTree });
 
       const renderNode = (node: TreeNodeType, indexPath: number[]): VNode =>
-        h(TreeView.Node as ArkPart, { indexPath, key: node.id, node }, () =>
+        h(TreeView.NodeProvider as ArkPart, { indexPath, key: node.id, node }, () =>
           node.children
             ? h(TreeView.Branch as ArkPart, null, () => [
-                h(TreeView.BranchItem as ArkPart, null, () => node.name),
+                h(TreeView.BranchControl as ArkPart, null, () => node.name),
                 h(TreeView.BranchContent as ArkPart, null, () =>
                   node.children?.map((child, index) => renderNode(child, [...indexPath, index])),
                 ),
               ])
-            : h(TreeView.Content as ArkPart, null, () =>
-                h(TreeView.Item as ArkPart, null, () => node.name),
+            : h(TreeView.Item as ArkPart, null, () =>
+                h(TreeView.ItemText as ArkPart, null, () => node.name),
               ),
         );
 
@@ -387,16 +387,16 @@ export const MultipleSelection = meta.story({
       const collection = createTreeCollection({ rootNode: sampleFileTree });
 
       const renderNode = (node: TreeNodeType, indexPath: number[]): VNode =>
-        h(TreeView.Node as ArkPart, { indexPath, key: node.id, node }, () =>
+        h(TreeView.NodeProvider as ArkPart, { indexPath, key: node.id, node }, () =>
           node.children
             ? h(TreeView.Branch as ArkPart, null, () => [
-                h(TreeView.BranchItem as ArkPart, null, () => node.name),
+                h(TreeView.BranchControl as ArkPart, null, () => node.name),
                 h(TreeView.BranchContent as ArkPart, null, () =>
                   node.children?.map((child, index) => renderNode(child, [...indexPath, index])),
                 ),
               ])
-            : h(TreeView.Content as ArkPart, null, () =>
-                h(TreeView.Item as ArkPart, null, () => node.name),
+            : h(TreeView.Item as ArkPart, null, () =>
+                h(TreeView.ItemText as ArkPart, null, () => node.name),
               ),
         );
 
@@ -418,16 +418,16 @@ export const Rename = meta.story({
       const collection = shallowRef(createTreeCollection({ rootNode: sampleFileTree }));
 
       const renderNode = (node: TreeNodeType, indexPath: number[]): VNode =>
-        h(TreeView.Node as ArkPart, { indexPath, key: node.id, node }, () =>
+        h(TreeView.NodeProvider as ArkPart, { indexPath, key: node.id, node }, () =>
           node.children
             ? h(TreeView.Branch as ArkPart, null, () => [
-                h(TreeView.BranchItem as ArkPart, null, () => node.name),
+                h(TreeView.BranchControl as ArkPart, null, () => node.name),
                 h(TreeView.BranchContent as ArkPart, null, () =>
                   node.children?.map((child, index) => renderNode(child, [...indexPath, index])),
                 ),
               ])
-            : h(TreeView.Content as ArkPart, null, () =>
-                h(TreeView.Item as ArkPart, null, () => node.name),
+            : h(TreeView.Item as ArkPart, null, () =>
+                h(TreeView.ItemText as ArkPart, null, () => node.name),
               ),
         );
 
@@ -468,16 +468,16 @@ export const Controlled = meta.story({
       const selected = ref<string[]>([]);
 
       const renderNode = (node: TreeNodeType, indexPath: number[]): VNode =>
-        h(TreeView.Node as ArkPart, { indexPath, key: node.id, node }, () =>
+        h(TreeView.NodeProvider as ArkPart, { indexPath, key: node.id, node }, () =>
           node.children
             ? h(TreeView.Branch as ArkPart, null, () => [
-                h(TreeView.BranchItem as ArkPart, null, () => node.name),
+                h(TreeView.BranchControl as ArkPart, null, () => node.name),
                 h(TreeView.BranchContent as ArkPart, null, () =>
                   node.children?.map((child, index) => renderNode(child, [...indexPath, index])),
                 ),
               ])
-            : h(TreeView.Content as ArkPart, null, () =>
-                h(TreeView.Item as ArkPart, null, () => node.name),
+            : h(TreeView.Item as ArkPart, null, () =>
+                h(TreeView.ItemText as ArkPart, null, () => node.name),
               ),
         );
 

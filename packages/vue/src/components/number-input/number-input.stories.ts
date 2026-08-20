@@ -18,9 +18,9 @@ const meta = preview.meta({
   },
   subcomponents: {
     ClearTrigger: NumberInput.ClearTrigger,
-    Decrement: NumberInput.Decrement,
-    Group: NumberInput.Group,
-    Increment: NumberInput.Increment,
+    Control: NumberInput.Control,
+    DecrementTrigger: NumberInput.DecrementTrigger,
+    IncrementTrigger: NumberInput.IncrementTrigger,
     Input: NumberInput.Input,
     Scrubber: NumberInput.Scrubber,
   },
@@ -92,9 +92,9 @@ export const FieldOnly = meta.story({
     components: { NumberInput },
     template: `
       <NumberInput default-value="0">
-        <NumberInput.Group>
+        <NumberInput.Control>
           <NumberInput.Input />
-        </NumberInput.Group>
+        </NumberInput.Control>
       </NumberInput>
     `,
   }),
@@ -108,11 +108,11 @@ export const Formatted = meta.story({
         default-value="19.00"
         :format-options="{ currency: 'USD', style: 'currency' }"
       >
-        <NumberInput.Group>
-          <NumberInput.Decrement />
+        <NumberInput.Control>
+          <NumberInput.DecrementTrigger />
           <NumberInput.Input />
-          <NumberInput.Increment />
-        </NumberInput.Group>
+          <NumberInput.IncrementTrigger />
+        </NumberInput.Control>
       </NumberInput>
     `,
   }),
@@ -123,11 +123,11 @@ export const MouseWheel = meta.story({
     components: { NumberInput },
     template: `
       <NumberInput allow-mouse-wheel default-value="10">
-        <NumberInput.Group>
-          <NumberInput.Decrement />
+        <NumberInput.Control>
+          <NumberInput.DecrementTrigger />
           <NumberInput.Input />
-          <NumberInput.Increment />
-        </NumberInput.Group>
+          <NumberInput.IncrementTrigger />
+        </NumberInput.Control>
       </NumberInput>
     `,
   }),
@@ -138,11 +138,11 @@ export const Range = meta.story({
     components: { NumberInput },
     template: `
       <NumberInput default-value="5" :max="10" :min="0">
-        <NumberInput.Group>
-          <NumberInput.Decrement />
+        <NumberInput.Control>
+          <NumberInput.DecrementTrigger />
           <NumberInput.Input />
-          <NumberInput.Increment />
-        </NumberInput.Group>
+          <NumberInput.IncrementTrigger />
+        </NumberInput.Control>
       </NumberInput>
     `,
   }),
@@ -153,11 +153,11 @@ export const Compound = meta.story({
     components: { NumberInput },
     template: `
       <NumberInput default-value="5">
-        <NumberInput.Group>
-          <NumberInput.Decrement />
+        <NumberInput.Control>
+          <NumberInput.DecrementTrigger />
           <NumberInput.Input placeholder="0" />
-          <NumberInput.Increment />
-        </NumberInput.Group>
+          <NumberInput.IncrementTrigger />
+        </NumberInput.Control>
       </NumberInput>
     `,
   }),
@@ -169,9 +169,9 @@ export const WithScrubber = meta.story({
     template: `
       <NumberInput default-value="10">
         <NumberInput.Scrubber>Opacity</NumberInput.Scrubber>
-        <NumberInput.Group>
+        <NumberInput.Control>
           <NumberInput.Input />
-        </NumberInput.Group>
+        </NumberInput.Control>
       </NumberInput>
     `,
   }),
@@ -184,19 +184,19 @@ export const Step = meta.story({
       <div class="flex flex-col gap-6">
         <NumberInput default-value="0" :step="5">
           <Field.Label>Step 5</Field.Label>
-          <NumberInput.Group>
-            <NumberInput.Decrement />
+          <NumberInput.Control>
+            <NumberInput.DecrementTrigger />
             <NumberInput.Input />
-            <NumberInput.Increment />
-          </NumberInput.Group>
+            <NumberInput.IncrementTrigger />
+          </NumberInput.Control>
         </NumberInput>
         <NumberInput default-value="0.1" :step="0.1">
           <Field.Label>Step 0.1</Field.Label>
-          <NumberInput.Group>
-            <NumberInput.Decrement />
+          <NumberInput.Control>
+            <NumberInput.DecrementTrigger />
             <NumberInput.Input />
-            <NumberInput.Increment />
-          </NumberInput.Group>
+            <NumberInput.IncrementTrigger />
+          </NumberInput.Control>
         </NumberInput>
       </div>
     `,
@@ -232,11 +232,11 @@ export const Controlled = meta.story({
       <div class="flex flex-col gap-2 text-center text-sm">
         <p>Select the number 3</p>
         <NumberInput :onValueChange="onValueChange" :value="value">
-          <NumberInput.Group>
-            <NumberInput.Decrement />
+          <NumberInput.Control>
+            <NumberInput.DecrementTrigger />
             <NumberInput.Input />
-            <NumberInput.Increment />
-          </NumberInput.Group>
+            <NumberInput.IncrementTrigger />
+          </NumberInput.Control>
         </NumberInput>
         <p class="text-center">{{ value === "3" ? "✅" : "❌" }}</p>
       </div>

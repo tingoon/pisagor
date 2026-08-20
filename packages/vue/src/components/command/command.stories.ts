@@ -29,10 +29,10 @@ const meta = preview.meta({
     DialogTrigger: Command.DialogTrigger,
     Empty: Command.Empty,
     Footer: Command.Footer,
-    Group: Command.Group,
-    GroupLabel: Command.GroupLabel,
     Input: Command.Input,
     Item: Command.Item,
+    ItemGroup: Command.ItemGroup,
+    ItemGroupLabel: Command.ItemGroupLabel,
     List: Command.List,
     Separator: Command.Separator,
     Shortcut: Command.Shortcut,
@@ -81,7 +81,7 @@ export const Default = meta.story({
                 collection.value
                   .group()
                   .map(([group, items], index) => [
-                    h(Command.Group, { heading: group, key: group }, () =>
+                    h(Command.ItemGroup, { heading: group, key: group }, () =>
                       items.map((item) =>
                         h(Command.Item as ArkPart, { item, key: item.value }, () => [
                           item.label,
@@ -152,7 +152,7 @@ export const Scrollable = meta.story({
                 collection.value
                   .group()
                   .map(([group, items]) =>
-                    h(Command.Group, { heading: group, key: group }, () =>
+                    h(Command.ItemGroup, { heading: group, key: group }, () =>
                       items.map((item) =>
                         h(Command.Item as ArkPart, { item, key: item.value }, () => item.label),
                       ),
@@ -261,7 +261,7 @@ export const WithDialog = meta.story({
                       collection.value
                         .group()
                         .map(([group, items]) =>
-                          h(Command.Group, { heading: group, key: group }, () =>
+                          h(Command.ItemGroup, { heading: group, key: group }, () =>
                             items.map((item) =>
                               h(Command.Item as ArkPart, { item, key: item.value }, () => [
                                 item.label,
@@ -323,7 +323,7 @@ export const Groups = meta.story({
                   .group()
                   .map(([group, items], index) => [
                     index !== 0 ? h(Command.Separator, { key: `${group}-separator` }) : null,
-                    h(Command.Group, { heading: group, key: group }, () =>
+                    h(Command.ItemGroup, { heading: group, key: group }, () =>
                       items.map((item) =>
                         h(Command.Item as ArkPart, { item, key: item.value }, () => item.label),
                       ),
@@ -372,7 +372,7 @@ export const WithFooter = meta.story({
                 collection.value
                   .group()
                   .map(([group, items]) =>
-                    h(Command.Group, { heading: group, key: group }, () =>
+                    h(Command.ItemGroup, { heading: group, key: group }, () =>
                       items.map((item) =>
                         h(Command.Item as ArkPart, { item, key: item.value }, () => [
                           item.label,

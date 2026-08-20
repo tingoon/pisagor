@@ -3,8 +3,8 @@ import { Menu as MenuPrimitive } from "@ark-ui/vue/menu";
 import { PhCaretRight, PhCheck } from "@phosphor-icons/vue";
 import {
   dropdownMenuContentVariants,
-  dropdownMenuGroupLabelVariants,
   dropdownMenuInline5Variants,
+  dropdownMenuItemGroupLabelVariants,
   dropdownMenuItemVariants,
   dropdownMenuPositionerVariants,
   dropdownMenuQuickItemVariants,
@@ -17,7 +17,7 @@ import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils/create-context";
 
 // #region Types
-export interface DropdownMenuGroupProps {
+export interface DropdownMenuItemGroupProps {
   heading?: string;
 }
 
@@ -26,7 +26,7 @@ export interface DropdownMenuItemProps {
   variant?: "default" | "destructive";
 }
 
-export interface DropdownMenuRadioGroupProps {
+export interface DropdownMenuRadioItemGroupProps {
   heading?: string;
 }
 
@@ -138,9 +138,9 @@ export const DropdownMenuContent = defineComponent({
   },
 });
 
-export const DropdownMenuGroupLabel = defineComponent({
+export const DropdownMenuItemGroupLabel = defineComponent({
   inheritAttrs: false,
-  name: "DropdownMenuGroupLabel",
+  name: "DropdownMenuItemGroupLabel",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
@@ -150,23 +150,23 @@ export const DropdownMenuGroupLabel = defineComponent({
         MenuPrimitive.ItemGroupLabel as ArkPart,
         {
           ...attrs,
-          class: cn(dropdownMenuGroupLabelVariants(), props.class, attrs.class),
+          class: cn(dropdownMenuItemGroupLabelVariants(), props.class, attrs.class),
         },
         slots,
       );
   },
 });
 
-export const DropdownMenuGroup = defineComponent({
+export const DropdownMenuItemGroup = defineComponent({
   inheritAttrs: false,
-  name: "DropdownMenuGroup",
+  name: "DropdownMenuItemGroup",
   props: {
     heading: { default: undefined, type: String },
   },
   setup(props, { attrs, slots }) {
     return () =>
       h(MenuPrimitive.ItemGroup as ArkPart, { ...attrs }, () => [
-        props.heading ? h(DropdownMenuGroupLabel, null, () => props.heading) : undefined,
+        props.heading ? h(DropdownMenuItemGroupLabel, null, () => props.heading) : undefined,
         slots.default?.(),
       ]);
   },
@@ -261,16 +261,16 @@ export const DropdownMenuCheckboxItem = defineComponent({
   },
 });
 
-export const DropdownMenuRadioGroup = defineComponent({
+export const DropdownMenuRadioItemGroup = defineComponent({
   inheritAttrs: false,
-  name: "DropdownMenuRadioGroup",
+  name: "DropdownMenuRadioItemGroup",
   props: {
     heading: { default: undefined, type: String },
   },
   setup(props, { attrs, slots }) {
     return () =>
       h(MenuPrimitive.RadioItemGroup as ArkPart, { ...attrs }, () => [
-        props.heading ? h(DropdownMenuGroupLabel, null, () => props.heading) : undefined,
+        props.heading ? h(DropdownMenuItemGroupLabel, null, () => props.heading) : undefined,
         slots.default?.(),
       ]);
   },
@@ -339,9 +339,9 @@ export const DropdownMenuSubContent = defineComponent({
   },
 });
 
-export const DropdownMenuSubTrigger = defineComponent({
+export const DropdownMenuTriggerItem = defineComponent({
   inheritAttrs: false,
-  name: "DropdownMenuSubTrigger",
+  name: "DropdownMenuTriggerItem",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },

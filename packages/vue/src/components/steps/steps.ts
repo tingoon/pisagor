@@ -225,17 +225,17 @@ export const StepsCompletedContent = defineComponent({
   },
 });
 
-export const StepsPrevious = defineComponent({
+export const StepsPrevTrigger = defineComponent({
   inheritAttrs: false,
-  name: "StepsPrevious",
+  name: "StepsPrevTrigger",
   setup(_, { attrs, slots }) {
     return () => h(StepsPrimitive.PrevTrigger as ArkPart, { ...attrs }, slots);
   },
 });
 
-export const StepsNext = defineComponent({
+export const StepsNextTrigger = defineComponent({
   inheritAttrs: false,
-  name: "StepsNext",
+  name: "StepsNextTrigger",
   setup(_, { attrs, slots }) {
     return () => h(StepsPrimitive.NextTrigger as ArkPart, { ...attrs }, slots);
   },

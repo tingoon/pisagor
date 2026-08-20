@@ -154,9 +154,9 @@ export const TreeViewTree = defineComponent({
   },
 });
 
-export const TreeViewNode = defineComponent({
+export const TreeViewNodeProvider = defineComponent({
   inheritAttrs: false,
-  name: "TreeViewNode",
+  name: "TreeViewNodeProvider",
   setup(_, { attrs, slots }) {
     return () =>
       h(TreeViewPrimitive.NodeProvider as unknown as ArkPart, { ...attrs }, slots.default?.());
@@ -233,9 +233,9 @@ const TreeViewBranchIndentGuide = defineComponent({
   },
 });
 
-export const TreeViewBranchItem = defineComponent({
+export const TreeViewBranchControl = defineComponent({
   inheritAttrs: false,
-  name: "TreeViewBranchItem",
+  name: "TreeViewBranchControl",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     expandedIcon: { default: undefined, type: Object as PropType<ArkPart | null> },
@@ -309,9 +309,9 @@ const TreeViewBranchTitle = defineComponent({
   },
 });
 
-export const TreeViewContent = defineComponent({
+export const TreeViewItem = defineComponent({
   inheritAttrs: false,
-  name: "TreeViewContent",
+  name: "TreeViewItem",
   setup(_, { attrs, slots }) {
     return () =>
       h(
@@ -378,9 +378,9 @@ export const TreeViewNodeInput = defineComponent({
   },
 });
 
-export const TreeViewItem = defineComponent({
+export const TreeViewItemText = defineComponent({
   inheritAttrs: false,
-  name: "TreeViewItem",
+  name: "TreeViewItemText",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     icon: { default: PhFile, type: Object as PropType<ArkPart> },
@@ -411,9 +411,9 @@ export const TreeViewItem = defineComponent({
   },
 });
 
-export const TreeViewCheckbox = defineComponent({
+export const TreeViewNodeCheckbox = defineComponent({
   inheritAttrs: false,
-  name: "TreeViewCheckbox",
+  name: "TreeViewNodeCheckbox",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },

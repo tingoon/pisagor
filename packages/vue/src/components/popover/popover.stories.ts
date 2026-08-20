@@ -26,7 +26,7 @@ const meta = preview.meta({
     Anchor: Popover.Anchor,
     Arrow: Popover.Arrow,
     Body: Popover.Body,
-    Close: Popover.Close,
+    CloseTrigger: Popover.CloseTrigger,
     Content: Popover.Content,
     Description: Popover.Description,
     Footer: Popover.Footer,
@@ -226,7 +226,7 @@ export const ScrollArea = meta.story({
               ),
             ),
             h(Popover.Footer, null, () =>
-              h(Popover.Close, { asChild: true }, () =>
+              h(Popover.CloseTrigger, { asChild: true }, () =>
                 h("button", { class: outlineButtonClass(), type: "button" }, "Close"),
               ),
             ),

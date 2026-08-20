@@ -6,14 +6,14 @@ import type { WithTestId } from "../../internal/types";
 import type { DropdownMenuRootProps } from "../dropdown-menu/dropdown-menu";
 import {
   DropdownMenuContent,
-  DropdownMenuGroup,
   DropdownMenuItem,
+  DropdownMenuItemGroup,
   DropdownMenuRoot,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
   DropdownMenuSub,
   DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
+  DropdownMenuTriggerItem,
   useDropdownMenuRoot,
 } from "../dropdown-menu/dropdown-menu";
 
@@ -45,9 +45,9 @@ export const ContextMenuRoot = defineComponent({
   },
 });
 
-export const ContextMenuTrigger = defineComponent({
+export const ContextMenuContextTrigger = defineComponent({
   inheritAttrs: false,
-  name: "ContextMenuTrigger",
+  name: "ContextMenuContextTrigger",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
@@ -75,11 +75,11 @@ export const ContextMenuContent = defineComponent({
   },
 });
 
-export const ContextMenuGroup = defineComponent({
+export const ContextMenuItemGroup = defineComponent({
   inheritAttrs: false,
-  name: "ContextMenuGroup",
+  name: "ContextMenuItemGroup",
   setup(_, { attrs, slots }) {
-    return () => wrapDropdownMenuPart(DropdownMenuGroup, attrs, slots);
+    return () => wrapDropdownMenuPart(DropdownMenuItemGroup, attrs, slots);
   },
 });
 
@@ -115,11 +115,11 @@ export const ContextMenuSubContent = defineComponent({
   },
 });
 
-export const ContextMenuSubTrigger = defineComponent({
+export const ContextMenuTriggerItem = defineComponent({
   inheritAttrs: false,
-  name: "ContextMenuSubTrigger",
+  name: "ContextMenuTriggerItem",
   setup(_, { attrs, slots }) {
-    return () => wrapDropdownMenuPart(DropdownMenuSubTrigger, attrs, slots);
+    return () => wrapDropdownMenuPart(DropdownMenuTriggerItem, attrs, slots);
   },
 });
 

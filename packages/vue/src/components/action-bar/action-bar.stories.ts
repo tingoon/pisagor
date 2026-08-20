@@ -264,9 +264,9 @@ export const WithDialog = meta.story({
                 />
                 <AlertDialog.Footer>
                   <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
-                  <AlertDialog.Close as-child>
+                  <AlertDialog.CloseTrigger as-child>
                     <AlertDialog.Action variant="destructive">Delete</AlertDialog.Action>
-                  </AlertDialog.Close>
+                  </AlertDialog.CloseTrigger>
                 </AlertDialog.Footer>
               </AlertDialog.Content>
             </AlertDialog>

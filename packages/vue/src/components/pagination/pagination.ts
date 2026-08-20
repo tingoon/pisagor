@@ -36,14 +36,15 @@ export const PaginationRoot = defineComponent({
           class: cn(paginationVariants(), props.class, attrs.class),
           "data-testid": props.testId,
         },
-        slots.default ?? (() => [h(PaginationPrevious), h(PaginationItems), h(PaginationNext)]),
+        slots.default ??
+          (() => [h(PaginationPrevTrigger), h(PaginationItems), h(PaginationNextTrigger)]),
       );
   },
 });
 
-export const PaginationPrevious = defineComponent({
+export const PaginationPrevTrigger = defineComponent({
   inheritAttrs: false,
-  name: "PaginationPrevious",
+  name: "PaginationPrevTrigger",
   setup(_, { attrs, slots }) {
     return () =>
       h(PaginationPrimitive.PrevTrigger as ArkPart, { ...attrs, asChild: true }, () =>
@@ -55,9 +56,9 @@ export const PaginationPrevious = defineComponent({
   },
 });
 
-export const PaginationNext = defineComponent({
+export const PaginationNextTrigger = defineComponent({
   inheritAttrs: false,
-  name: "PaginationNext",
+  name: "PaginationNextTrigger",
   setup(_, { attrs, slots }) {
     return () =>
       h(PaginationPrimitive.NextTrigger as ArkPart, { ...attrs, asChild: true }, () =>

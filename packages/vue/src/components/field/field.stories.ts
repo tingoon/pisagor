@@ -364,11 +364,11 @@ export const NumberInputStory = meta.story({
       <Field>
         <NumberInput default-value="50" :max="100" :min="1">
           <NumberInput.Scrubber>Quantity</NumberInput.Scrubber>
-          <NumberInput.Group>
-            <NumberInput.Decrement />
+          <NumberInput.Control>
+            <NumberInput.DecrementTrigger />
             <NumberInput.Input />
-            <NumberInput.Increment />
-          </NumberInput.Group>
+            <NumberInput.IncrementTrigger />
+          </NumberInput.Control>
         </NumberInput>
       </Field>
     `,
@@ -427,7 +427,7 @@ export const SelectField = meta.story({
         <Field.Label>Country</Field.Label>
         <Select.Root :collection="collection">
           <Select.Trigger class="w-full">
-            <Select.Value placeholder="Select a country" />
+            <Select.ValueText placeholder="Select a country" />
           </Select.Trigger>
           <Select.Content>
             <Select.Item v-for="item in collection.items" :key="item" :item="item">

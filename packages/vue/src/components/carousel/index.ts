@@ -1,11 +1,11 @@
 import {
-  CarouselContent,
   CarouselControl,
   CarouselIndicator,
   CarouselIndicatorGroup,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
+  CarouselItemGroup,
+  CarouselNextTrigger,
+  CarouselPrevTrigger,
   CarouselRoot,
   CarouselShorthand,
 } from "./carousel";
@@ -13,12 +13,12 @@ import {
 export type { CarouselPresetItem, CarouselProps } from "./carousel";
 
 export const Carousel = Object.assign(CarouselShorthand, {
-  Content: CarouselContent,
   Control: CarouselControl,
   Indicator: CarouselIndicator,
   IndicatorGroup: CarouselIndicatorGroup,
   Item: CarouselItem,
-  Next: CarouselNext,
-  Previous: CarouselPrevious,
+  ItemGroup: CarouselItemGroup,
+  NextTrigger: CarouselNextTrigger,
+  PrevTrigger: CarouselPrevTrigger,
   Root: CarouselRoot,
 });

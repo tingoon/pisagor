@@ -150,7 +150,9 @@ export const PopoverContent = defineComponent({
             () => [
               children.default?.(),
               props.showCloseButton
-                ? h(PopoverClose, { asChild: true }, () => renderIconCloseButton(slots.close()))
+                ? h(PopoverCloseTrigger, { asChild: true }, () =>
+                    renderIconCloseButton(slots.close()),
+                  )
                 : null,
             ],
           ),
@@ -267,9 +269,9 @@ export const PopoverFooter = defineComponent({
   },
 });
 
-export const PopoverClose = defineComponent({
+export const PopoverCloseTrigger = defineComponent({
   inheritAttrs: false,
-  name: "PopoverClose",
+  name: "PopoverCloseTrigger",
   setup(_, { attrs, slots }) {
     return () => h(PopoverPrimitive.CloseTrigger as ArkPart, { ...attrs }, slots);
   },
@@ -306,7 +308,7 @@ export const Popover = Object.assign(PopoverRoot, {
   Anchor: PopoverAnchor,
   Arrow: PopoverArrow,
   Body: PopoverBody,
-  Close: PopoverClose,
+  CloseTrigger: PopoverCloseTrigger,
   Content: PopoverContent,
   Description: PopoverDescription,
   Footer: PopoverFooter,

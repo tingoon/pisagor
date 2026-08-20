@@ -6,15 +6,15 @@ import {
   useTour,
 } from "@ark-ui/vue/tour";
 import { PhCaretLeft, PhCaretRight, PhX } from "@phosphor-icons/vue";
-import { dialogOverlayVariants } from "@pisagor/styles/ui/dialog";
+import { dialogBackdropVariants } from "@pisagor/styles/ui/dialog";
 import {
   tourActionsVariants,
+  tourBackdropVariants,
   tourContentVariants,
   tourDescriptionVariants,
   tourInline2Variants,
   tourInline3Variants,
   tourInlineVariants,
-  tourOverlayVariants,
   tourPositionerVariants,
   tourProgressTextVariants,
   tourSpotlightVariants,
@@ -196,9 +196,9 @@ export const TourActionTrigger = defineComponent({
   },
 });
 
-export const TourOverlay = defineComponent({
+export const TourBackdrop = defineComponent({
   inheritAttrs: false,
-  name: "Tour.Overlay",
+  name: "Tour.Backdrop",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
   },
@@ -206,7 +206,7 @@ export const TourOverlay = defineComponent({
     return () =>
       h(TourPrimitive.Backdrop as ArkPart, {
         ...attrs,
-        class: cn(dialogOverlayVariants(), tourOverlayVariants(), props.class),
+        class: cn(dialogBackdropVariants(), tourBackdropVariants(), props.class),
       });
   },
 });
@@ -244,7 +244,7 @@ export const TourContent = defineComponent({
       ];
 
       return h(Teleport, { to: "body" }, () => [
-        h(TourOverlay),
+        h(TourBackdrop),
         h(TourPositioner, null, () =>
           h(
             TourPrimitive.Content as ArkPart,
@@ -256,7 +256,7 @@ export const TourContent = defineComponent({
             () => [
               slots.default ? slots.default() : defaultChildren(),
               props.showCloseButton
-                ? h(TourClose, { asChild: true, class: tourInlineVariants() }, () =>
+                ? h(TourCloseTrigger, { asChild: true, class: tourInlineVariants() }, () =>
                     h(
                       Button as ArkPart,
                       { class: tourInline2Variants(), size: "icon-md", variant: "ghost" },
@@ -371,9 +371,9 @@ export const TourProgressText = defineComponent({
   },
 });
 
-export const TourClose = defineComponent({
+export const TourCloseTrigger = defineComponent({
   inheritAttrs: false,
-  name: "Tour.Close",
+  name: "Tour.CloseTrigger",
   setup(_, { attrs, slots }) {
     return () => h(TourPrimitive.CloseTrigger as ArkPart, { ...attrs }, slots);
   },

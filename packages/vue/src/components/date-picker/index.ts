@@ -7,5 +7,5 @@ export {
   DatePickerPresetTrigger,
   DatePickerTimer,
   DatePickerTrigger,
-  DatePickerValue,
+  DatePickerValueText,
 } from "./date-picker";

@@ -10,9 +10,9 @@ import {
   comboboxContentVariants,
   comboboxControlVariants,
   comboboxEmptyVariants,
-  comboboxGroupLabelVariants,
   comboboxInline2Variants,
   comboboxInlineVariants,
+  comboboxItemGroupLabelVariants,
   comboboxItemVariants,
   comboboxListVariants,
   comboboxTriggerVariants,
@@ -63,7 +63,7 @@ export interface ComboboxInputProps {
   class?: unknown;
 }
 
-export interface ComboboxGroupProps {
+export interface ComboboxItemGroupProps {
   heading?: string | VNodeChild;
   class?: unknown;
 }
@@ -198,7 +198,7 @@ export const ComboboxInput = defineComponent({
                   ? h(ComboboxTrigger as ArkPart, { class: comboboxInlineVariants() })
                   : null,
                 props.clearable && api.value.inputValue
-                  ? h(ComboboxClear as ArkPart, { asChild: true }, () =>
+                  ? h(ComboboxClearTrigger as ArkPart, { asChild: true }, () =>
                       h(InputGroup.Button as ArkPart, { size: "icon-xs", variant: "ghost" }, () =>
                         h(PhX, { "aria-hidden": true }),
                       ),
@@ -237,9 +237,9 @@ export const ComboboxTrigger = defineComponent({
   },
 });
 
-export const ComboboxClear = defineComponent({
+export const ComboboxClearTrigger = defineComponent({
   inheritAttrs: false,
-  name: "ComboboxClear",
+  name: "ComboboxClearTrigger",
   props: {
     "aria-label": { default: "Clear selected value(s)", type: String },
   },
@@ -310,28 +310,28 @@ export const ComboboxContent = defineComponent({
   },
 });
 
-export const ComboboxGroup = defineComponent({
+export const ComboboxItemGroup = defineComponent({
   inheritAttrs: false,
-  name: "ComboboxGroup",
+  name: "ComboboxItemGroup",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     heading: {
       default: undefined,
-      type: [String, Object] as PropType<ComboboxGroupProps["heading"]>,
+      type: [String, Object] as PropType<ComboboxItemGroupProps["heading"]>,
     },
   },
   setup(props, { attrs, slots }) {
     return () =>
       h(ComboboxPrimitive.ItemGroup as ArkPart, { ...attrs, class: props.class }, () => [
-        props.heading ? h(ComboboxGroupLabel, null, () => props.heading) : null,
+        props.heading ? h(ComboboxItemGroupLabel, null, () => props.heading) : null,
         slots.default?.(),
       ]);
   },
 });
 
-export const ComboboxGroupLabel = defineComponent({
+export const ComboboxItemGroupLabel = defineComponent({
   inheritAttrs: false,
-  name: "ComboboxGroupLabel",
+  name: "ComboboxItemGroupLabel",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
@@ -341,7 +341,7 @@ export const ComboboxGroupLabel = defineComponent({
         ComboboxPrimitive.ItemGroupLabel as ArkPart,
         {
           ...attrs,
-          class: cn(comboboxGroupLabelVariants(), props.class, attrs.class),
+          class: cn(comboboxItemGroupLabelVariants(), props.class, attrs.class),
         },
         slots.default?.(),
       );

@@ -260,9 +260,9 @@ export const CircularSliderThumb = defineComponent({
   },
 });
 
-export const CircularSliderValue = defineComponent({
+export const CircularSliderValueText = defineComponent({
   inheritAttrs: false,
-  name: "CircularSliderValue",
+  name: "CircularSliderValueText",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     prefix: { default: "", type: [String, Object, Array] as PropType<VNodeChild> },

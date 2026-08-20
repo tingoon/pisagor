@@ -20,13 +20,13 @@ const meta = preview.meta({
     },
   },
   subcomponents: {
-    Content: Carousel.Content,
     Control: Carousel.Control,
     Indicator: Carousel.Indicator,
     IndicatorGroup: Carousel.IndicatorGroup,
     Item: Carousel.Item,
-    Next: Carousel.Next,
-    Previous: Carousel.Previous,
+    ItemGroup: Carousel.ItemGroup,
+    NextTrigger: Carousel.NextTrigger,
+    PrevTrigger: Carousel.PrevTrigger,
     Root: Carousel.Root,
   },
   title: "Components/Media/Carousel",
@@ -130,14 +130,14 @@ export const ThumbnailIndicatorVertical = meta.story({
     template: `
       <Carousel.Root class="h-40" loop orientation="vertical" :slide-count="slides.length">
         <Carousel.Control class="relative">
-          <Carousel.Previous>Previous</Carousel.Previous>
-          <Carousel.Next>Next</Carousel.Next>
+          <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
+          <Carousel.NextTrigger>Next</Carousel.NextTrigger>
 
-          <Carousel.Content>
+          <Carousel.ItemGroup>
             <Carousel.Item v-for="(slide, index) in slides" :index="index" :key="slide.src">
               <img :alt="slide.alt" :height="300" :src="slide.src" :width="500" />
             </Carousel.Item>
-          </Carousel.Content>
+          </Carousel.ItemGroup>
         </Carousel.Control>
         <Carousel.IndicatorGroup class="ml-4">
           <Carousel.Indicator
@@ -163,14 +163,14 @@ export const ThumbnailIndicator = meta.story({
     template: `
       <Carousel.Root loop :slide-count="slides.length">
         <Carousel.Control class="relative">
-          <Carousel.Previous>Previous</Carousel.Previous>
-          <Carousel.Next>Next</Carousel.Next>
+          <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
+          <Carousel.NextTrigger>Next</Carousel.NextTrigger>
 
-          <Carousel.Content>
+          <Carousel.ItemGroup>
             <Carousel.Item v-for="(slide, index) in slides" :index="index" :key="slide.src">
               <img :alt="slide.alt" :height="300" :src="slide.src" :width="500" />
             </Carousel.Item>
-          </Carousel.Content>
+          </Carousel.ItemGroup>
         </Carousel.Control>
         <Carousel.IndicatorGroup class="mt-4">
           <Carousel.Indicator
@@ -220,10 +220,10 @@ export const Compound = meta.story({
     template: `
       <Carousel.Root :slide-count="slides.length">
         <Carousel.Control>
-          <Carousel.Previous>Previous</Carousel.Previous>
-          <Carousel.Next>Next</Carousel.Next>
+          <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
+          <Carousel.NextTrigger>Next</Carousel.NextTrigger>
         </Carousel.Control>
-        <Carousel.Content>
+        <Carousel.ItemGroup>
           <Carousel.Item v-for="(slideId, index) in slides" :index="index" :key="slideId">
             <Card>
               <Card.Content class="flex aspect-square items-center justify-center">
@@ -231,7 +231,7 @@ export const Compound = meta.story({
               </Card.Content>
             </Card>
           </Carousel.Item>
-        </Carousel.Content>
+        </Carousel.ItemGroup>
       </Carousel.Root>
     `,
   }),

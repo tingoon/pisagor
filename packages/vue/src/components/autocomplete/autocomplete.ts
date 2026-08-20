@@ -78,12 +78,12 @@ export const AutocompleteInput = defineComponent({
   },
 });
 
-export const AutocompleteGroup = Combobox.Group;
-export const AutocompleteGroupLabel = Combobox.GroupLabel;
+export const AutocompleteItemGroup = Combobox.ItemGroup;
+export const AutocompleteItemGroupLabel = Combobox.ItemGroupLabel;
 export const AutocompleteItem = Combobox.Item;
 export const AutocompleteContent = Combobox.Content;
 export const AutocompleteTrigger = Combobox.Trigger;
-export const AutocompleteClear = Combobox.Clear;
+export const AutocompleteClearTrigger = Combobox.ClearTrigger;
 export const AutocompleteEmpty = Combobox.Empty;
 
 export const AutocompleteList = Combobox.List;
