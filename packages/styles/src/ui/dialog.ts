@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const dialogOverlayVariants = tv({
+export const dialogBackdropVariants = tv({
   base: [
     "fixed inset-0 z-50",
     "bg-black/32 backdrop-blur-xs",
@@ -114,8 +114,8 @@ export const dialogInlineVariants = tv({
   base: ["absolute inset-e-2 top-2 opacity-64 hover:opacity-100"],
 });
 
-export type DialogOverlayVariantProps = VariantProps<typeof dialogOverlayVariants>;
-export type DialogOverlayVariants = ReturnType<typeof dialogOverlayVariants>;
+export type DialogBackdropVariantProps = VariantProps<typeof dialogBackdropVariants>;
+export type DialogBackdropVariants = ReturnType<typeof dialogBackdropVariants>;
 
 export type DialogContentVariantProps = VariantProps<typeof dialogContentVariants>;
 export type DialogContentVariants = ReturnType<typeof dialogContentVariants>;

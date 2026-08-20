@@ -59,7 +59,7 @@ export const comboboxContentVariants = tv({
   ],
 });
 
-export const comboboxGroupLabelVariants = tv({
+export const comboboxItemGroupLabelVariants = tv({
   base: ["px-2 py-1.5 font-semibold text-muted-foreground text-xs"],
 });
 
@@ -92,8 +92,10 @@ export type ComboboxTriggerVariants = ReturnType<typeof comboboxTriggerVariants>
 export type ComboboxContentVariantProps = VariantProps<typeof comboboxContentVariants>;
 export type ComboboxContentVariants = ReturnType<typeof comboboxContentVariants>;
 
-export type ComboboxGroupLabelVariantProps = VariantProps<typeof comboboxGroupLabelVariants>;
-export type ComboboxGroupLabelVariants = ReturnType<typeof comboboxGroupLabelVariants>;
+export type ComboboxItemGroupLabelVariantProps = VariantProps<
+  typeof comboboxItemGroupLabelVariants
+>;
+export type ComboboxItemGroupLabelVariants = ReturnType<typeof comboboxItemGroupLabelVariants>;
 
 export type ComboboxEmptyVariantProps = VariantProps<typeof comboboxEmptyVariants>;
 export type ComboboxEmptyVariants = ReturnType<typeof comboboxEmptyVariants>;

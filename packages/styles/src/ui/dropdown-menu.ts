@@ -74,7 +74,7 @@ export const dropdownMenuQuickItemVariants = tv({
   base: ["flex-col gap-1", "[&_svg:not([class*='size-'])]:size-4.5"],
 });
 
-export const dropdownMenuGroupLabelVariants = tv({
+export const dropdownMenuItemGroupLabelVariants = tv({
   base: ["px-2 py-1.5", "font-medium text-muted-foreground text-sm", "pointer-events-none"],
 });
 
@@ -108,10 +108,12 @@ export type DropdownMenuSeparatorVariants = ReturnType<typeof dropdownMenuSepara
 export type DropdownMenuQuickItemVariantProps = VariantProps<typeof dropdownMenuQuickItemVariants>;
 export type DropdownMenuQuickItemVariants = ReturnType<typeof dropdownMenuQuickItemVariants>;
 
-export type DropdownMenuGroupLabelVariantProps = VariantProps<
-  typeof dropdownMenuGroupLabelVariants
+export type DropdownMenuItemGroupLabelVariantProps = VariantProps<
+  typeof dropdownMenuItemGroupLabelVariants
 >;
-export type DropdownMenuGroupLabelVariants = ReturnType<typeof dropdownMenuGroupLabelVariants>;
+export type DropdownMenuItemGroupLabelVariants = ReturnType<
+  typeof dropdownMenuItemGroupLabelVariants
+>;
 
 export type DropdownMenuShortcutVariantProps = VariantProps<typeof dropdownMenuShortcutVariants>;
 export type DropdownMenuShortcutVariants = ReturnType<typeof dropdownMenuShortcutVariants>;

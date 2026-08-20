@@ -33,7 +33,7 @@ export const datePickerContentVariants = tv({
   ],
 });
 
-export const datePickerValueVariants = tv({
+export const datePickerValueTextVariants = tv({
   base: ["font-medium text-sm"],
 });
 
@@ -54,8 +54,8 @@ export type DatePickerInlineVariants = ReturnType<typeof datePickerInlineVariant
 export type DatePickerContentVariantProps = VariantProps<typeof datePickerContentVariants>;
 export type DatePickerContentVariants = ReturnType<typeof datePickerContentVariants>;
 
-export type DatePickerValueVariantProps = VariantProps<typeof datePickerValueVariants>;
-export type DatePickerValueVariants = ReturnType<typeof datePickerValueVariants>;
+export type DatePickerValueTextVariantProps = VariantProps<typeof datePickerValueTextVariants>;
+export type DatePickerValueTextVariants = ReturnType<typeof datePickerValueTextVariants>;
 
 export type DatePickerControlVariantProps = VariantProps<typeof datePickerControlVariants>;
 export type DatePickerControlVariants = ReturnType<typeof datePickerControlVariants>;

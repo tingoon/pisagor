@@ -110,7 +110,7 @@ export const colorPickerSwatchIndicatorVariants = tv({
   ],
 });
 
-export const colorPickerValueVariants = tv({
+export const colorPickerValueTextVariants = tv({
   base: ["font-medium text-sm"],
 });
 
@@ -205,8 +205,8 @@ export type ColorPickerSwatchIndicatorVariants = ReturnType<
   typeof colorPickerSwatchIndicatorVariants
 >;
 
-export type ColorPickerValueVariantProps = VariantProps<typeof colorPickerValueVariants>;
-export type ColorPickerValueVariants = ReturnType<typeof colorPickerValueVariants>;
+export type ColorPickerValueTextVariantProps = VariantProps<typeof colorPickerValueTextVariants>;
+export type ColorPickerValueTextVariants = ReturnType<typeof colorPickerValueTextVariants>;
 
 export type ColorPickerValueSwatchVariantProps = VariantProps<
   typeof colorPickerValueSwatchVariants

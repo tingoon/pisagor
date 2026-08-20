@@ -7,7 +7,7 @@ export const numberFieldVariants = tv({
   ],
 });
 
-export const numberFieldGroupVariants = tv({
+export const numberFieldControlVariants = tv({
   base: [
     "relative",
     "flex w-full justify-between",
@@ -22,7 +22,7 @@ export const numberFieldGroupVariants = tv({
   ],
 });
 
-export const numberFieldDecrementVariants = tv({
+export const numberFieldDecrementTriggerVariants = tv({
   base: [
     "relative",
     "h-8 in-data-[size=lg]:h-9 in-data-[size=sm]:h-7",
@@ -34,7 +34,7 @@ export const numberFieldDecrementVariants = tv({
   ],
 });
 
-export const numberFieldIncrementVariants = tv({
+export const numberFieldIncrementTriggerVariants = tv({
   base: [
     "relative",
     "h-8 in-data-[size=lg]:h-9 in-data-[size=sm]:h-7",
@@ -68,14 +68,22 @@ export const numberInputInline2Variants = tv({
 export type NumberFieldVariantProps = VariantProps<typeof numberFieldVariants>;
 export type NumberFieldVariants = ReturnType<typeof numberFieldVariants>;
 
-export type NumberFieldGroupVariantProps = VariantProps<typeof numberFieldGroupVariants>;
-export type NumberFieldGroupVariants = ReturnType<typeof numberFieldGroupVariants>;
+export type NumberFieldControlVariantProps = VariantProps<typeof numberFieldControlVariants>;
+export type NumberFieldControlVariants = ReturnType<typeof numberFieldControlVariants>;
 
-export type NumberFieldDecrementVariantProps = VariantProps<typeof numberFieldDecrementVariants>;
-export type NumberFieldDecrementVariants = ReturnType<typeof numberFieldDecrementVariants>;
+export type NumberFieldDecrementTriggerVariantProps = VariantProps<
+  typeof numberFieldDecrementTriggerVariants
+>;
+export type NumberFieldDecrementTriggerVariants = ReturnType<
+  typeof numberFieldDecrementTriggerVariants
+>;
 
-export type NumberFieldIncrementVariantProps = VariantProps<typeof numberFieldIncrementVariants>;
-export type NumberFieldIncrementVariants = ReturnType<typeof numberFieldIncrementVariants>;
+export type NumberFieldIncrementTriggerVariantProps = VariantProps<
+  typeof numberFieldIncrementTriggerVariants
+>;
+export type NumberFieldIncrementTriggerVariants = ReturnType<
+  typeof numberFieldIncrementTriggerVariants
+>;
 
 export type NumberInputInlineVariantProps = VariantProps<typeof numberInputInlineVariants>;
 export type NumberInputInlineVariants = ReturnType<typeof numberInputInlineVariants>;

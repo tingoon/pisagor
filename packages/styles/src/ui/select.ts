@@ -43,7 +43,7 @@ export const selectContentVariants = tv({
   ],
 });
 
-export const selectGroupLabelVariants = tv({
+export const selectItemGroupLabelVariants = tv({
   base: ["px-2 py-1.5", "font-semibold text-muted-foreground text-xs"],
 });
 
@@ -100,8 +100,8 @@ export type SelectInlineVariants = ReturnType<typeof selectInlineVariants>;
 export type SelectContentVariantProps = VariantProps<typeof selectContentVariants>;
 export type SelectContentVariants = ReturnType<typeof selectContentVariants>;
 
-export type SelectGroupLabelVariantProps = VariantProps<typeof selectGroupLabelVariants>;
-export type SelectGroupLabelVariants = ReturnType<typeof selectGroupLabelVariants>;
+export type SelectItemGroupLabelVariantProps = VariantProps<typeof selectItemGroupLabelVariants>;
+export type SelectItemGroupLabelVariants = ReturnType<typeof selectItemGroupLabelVariants>;
 
 export type SelectItemVariantProps = VariantProps<typeof selectItemVariants>;
 export type SelectItemVariants = ReturnType<typeof selectItemVariants>;

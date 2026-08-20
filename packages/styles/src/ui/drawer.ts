@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const drawerOverlayVariants = tv({
+export const drawerBackdropVariants = tv({
   base: [
     "[--overlay-alpha:calc(32%*(1-var(--drawer-swipe-progress)))] [--blur:calc(4px*(1-var(--drawer-swipe-progress)))]",
     "fixed inset-0 z-50",
@@ -154,8 +154,8 @@ export const drawerFooterVariants = tv({
   ],
 });
 
-export type DrawerOverlayVariantProps = VariantProps<typeof drawerOverlayVariants>;
-export type DrawerOverlayVariants = ReturnType<typeof drawerOverlayVariants>;
+export type DrawerBackdropVariantProps = VariantProps<typeof drawerBackdropVariants>;
+export type DrawerBackdropVariants = ReturnType<typeof drawerBackdropVariants>;
 
 export type DrawerPositionerVariantProps = VariantProps<typeof drawerPositionerVariants>;
 export type DrawerPositionerVariants = ReturnType<typeof drawerPositionerVariants>;

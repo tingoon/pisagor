@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const tourOverlayVariants = tv({
+export const tourBackdropVariants = tv({
   base: "duration-initial",
 });
 
@@ -62,8 +62,8 @@ export const tourSpotlightVariants = tv({
   base: ["z-50 border-2 border-primary"],
 });
 
-export type TourOverlayVariantProps = VariantProps<typeof tourOverlayVariants>;
-export type TourOverlayVariants = ReturnType<typeof tourOverlayVariants>;
+export type TourBackdropVariantProps = VariantProps<typeof tourBackdropVariants>;
+export type TourBackdropVariants = ReturnType<typeof tourBackdropVariants>;
 
 export type TourPositionerVariantProps = VariantProps<typeof tourPositionerVariants>;
 export type TourPositionerVariants = ReturnType<typeof tourPositionerVariants>;

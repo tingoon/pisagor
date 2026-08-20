@@ -12,7 +12,7 @@ export const carouselControlVariants = tv({
   base: ["flex items-center justify-between gap-2", "data-[orientation=vertical]:flex-col"],
 });
 
-export const carouselPreviousVariants = tv({
+export const carouselPrevTriggerVariants = tv({
   base: [
     "absolute",
     "data-[orientation=horizontal]:-inset-s-12 data-[orientation=horizontal]:top-1/2 data-[orientation=horizontal]:-translate-y-1/2",
@@ -20,7 +20,7 @@ export const carouselPreviousVariants = tv({
   ],
 });
 
-export const carouselNextVariants = tv({
+export const carouselNextTriggerVariants = tv({
   base: [
     "absolute",
     "data-[orientation=horizontal]:-inset-e-12 data-[orientation=horizontal]:top-1/2 data-[orientation=horizontal]:-translate-y-1/2",
@@ -44,7 +44,7 @@ export const carouselIndicatorVariants = tv({
   ],
 });
 
-export const carouselGroupVariants = tv({
+export const carouselItemGroupVariants = tv({
   base: ["min-w-0", "-my-4 py-4", "flex flex-1 gap-4", "overflow-hidden rounded-lg"],
 });
 
@@ -62,11 +62,11 @@ export type CarouselVariants = ReturnType<typeof carouselVariants>;
 export type CarouselControlVariantProps = VariantProps<typeof carouselControlVariants>;
 export type CarouselControlVariants = ReturnType<typeof carouselControlVariants>;
 
-export type CarouselPreviousVariantProps = VariantProps<typeof carouselPreviousVariants>;
-export type CarouselPreviousVariants = ReturnType<typeof carouselPreviousVariants>;
+export type CarouselPrevTriggerVariantProps = VariantProps<typeof carouselPrevTriggerVariants>;
+export type CarouselPrevTriggerVariants = ReturnType<typeof carouselPrevTriggerVariants>;
 
-export type CarouselNextVariantProps = VariantProps<typeof carouselNextVariants>;
-export type CarouselNextVariants = ReturnType<typeof carouselNextVariants>;
+export type CarouselNextTriggerVariantProps = VariantProps<typeof carouselNextTriggerVariants>;
+export type CarouselNextTriggerVariants = ReturnType<typeof carouselNextTriggerVariants>;
 
 export type CarouselIndicatorGroupVariantProps = VariantProps<
   typeof carouselIndicatorGroupVariants
@@ -76,8 +76,8 @@ export type CarouselIndicatorGroupVariants = ReturnType<typeof carouselIndicator
 export type CarouselIndicatorVariantProps = VariantProps<typeof carouselIndicatorVariants>;
 export type CarouselIndicatorVariants = ReturnType<typeof carouselIndicatorVariants>;
 
-export type CarouselGroupVariantProps = VariantProps<typeof carouselGroupVariants>;
-export type CarouselGroupVariants = ReturnType<typeof carouselGroupVariants>;
+export type CarouselItemGroupVariantProps = VariantProps<typeof carouselItemGroupVariants>;
+export type CarouselItemGroupVariants = ReturnType<typeof carouselItemGroupVariants>;
 
 export type CarouselItemVariantProps = VariantProps<typeof carouselItemVariants>;
 export type CarouselItemVariants = ReturnType<typeof carouselItemVariants>;
