@@ -55,11 +55,7 @@
         "@phosphor-icons/vue": "^2.2.1",
         "@pisagor/utils": "workspace:*",
         "@pisagor/vue": "workspace:*",
-        "@pisagor/vue-composables": "workspace:*",
-        "@pisagor/vue-form": "workspace:*",
-        "@tanstack/vue-form": "^1.33.4",
         "vue": "catalog:",
-        "zod": "^4.4.3",
       },
       "devDependencies": {
         "@pisagor/tsconfig": "workspace:*",
