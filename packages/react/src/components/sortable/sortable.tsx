@@ -22,8 +22,8 @@ import type { WithTestId } from "../../internal/types";
 import {
   SortableContext,
   SortableItemContext,
-  useSortableContext,
-  useSortableItemContext,
+  useSortable,
+  useSortableItem,
 } from "./sortable.context";
 
 // #region Types
@@ -316,7 +316,7 @@ export function SortableRoot({
 SortableRoot.displayName = "Sortable";
 
 export function SortableItem({ value, className, children, ...rest }: SortableItemProps) {
-  const { getItemProps, activeId } = useSortableContext();
+  const { getItemProps, activeId } = useSortable();
   const itemProps = getItemProps(value);
   const isDragging = activeId === value;
 
@@ -338,9 +338,9 @@ export function SortableItem({ value, className, children, ...rest }: SortableIt
 SortableItem.displayName = "Sortable.Item";
 
 export function SortableHandle({ className, children, ...rest }: SortableHandleProps) {
-  const { id } = useSortableItemContext();
+  const { id } = useSortableItem();
   const { disabled, endDrag, moveItem, orientation, registerHandle, startDrag, unregisterHandle } =
-    useSortableContext();
+    useSortable();
 
   useEffect(() => {
     registerHandle(id);

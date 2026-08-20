@@ -13,40 +13,32 @@ interface DataTableRowContextValue<TData> {
   row: Row<TData>;
 }
 
-const [DataTableContext, useDataTableContextBase] = createContext<DataTableContextValue<unknown>>({
+export const { DataTableContext, useDataTable } = createContext<DataTableContextValue<unknown>>()({
   name: "DataTable",
 });
 
-const [DataTableHeaderGroupContext, useDataTableHeaderGroupContextBase] = createContext<
+export const { DataTableHeaderGroupContext, useDataTableHeaderGroup } = createContext<
   DataTableHeaderGroupContextValue<unknown>
->({
+>()({
   name: "DataTableHeaderGroup",
 });
 
-const [DataTableRowContext, useDataTableRowContextBase] = createContext<
+export const { DataTableRowContext, useDataTableRow } = createContext<
   DataTableRowContextValue<unknown>
->({
+>()({
   name: "DataTableRow",
 });
 
-function useDataTableContext<TData>() {
-  return useDataTableContextBase() as DataTableContextValue<TData>;
+export function useDataTableContext<TData>() {
+  return useDataTable() as DataTableContextValue<TData>;
 }
 
-function useDataTableHeaderGroupContext<TData>() {
-  return useDataTableHeaderGroupContextBase() as DataTableHeaderGroupContextValue<TData>;
+export function useDataTableHeaderGroupContext<TData>() {
+  return useDataTableHeaderGroup() as DataTableHeaderGroupContextValue<TData>;
 }
 
-function useDataTableRowContext<TData>() {
-  return useDataTableRowContextBase() as DataTableRowContextValue<TData>;
+export function useDataTableRowContext<TData>() {
+  return useDataTableRow() as DataTableRowContextValue<TData>;
 }
 
 export type { DataTableContextValue, DataTableHeaderGroupContextValue, DataTableRowContextValue };
-export {
-  DataTableContext,
-  DataTableHeaderGroupContext,
-  DataTableRowContext,
-  useDataTableContext,
-  useDataTableHeaderGroupContext,
-  useDataTableRowContext,
-};

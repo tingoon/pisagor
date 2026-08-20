@@ -17,43 +17,43 @@ interface DataGridRowContextValue<TData> {
   row: Row<TData>;
 }
 
-const [DataGridContext, useDataGridContextBase] = createContext<DataGridContextValue<unknown>>({
+export const { DataGridContext, useDataGrid } = createContext<DataGridContextValue<unknown>>()({
   name: "DataGrid",
 });
 
-const [DataGridHeaderGroupContext, useDataGridHeaderGroupContextBase] = createContext<
+export const { DataGridHeaderGroupContext, useDataGridHeaderGroup } = createContext<
   DataGridHeaderGroupContextValue<unknown>
->({
+>()({
   name: "DataGridHeaderGroup",
 });
 
-const [DataGridHeaderCellContext, useDataGridHeaderCellContextBase] = createContext<
+export const { DataGridHeaderCellContext, useDataGridHeaderCell } = createContext<
   DataGridHeaderCellContextValue<unknown>
->({
+>()({
   name: "DataGridHeaderCell",
   strict: false,
 });
 
-const [DataGridRowContext, useDataGridRowContextBase] = createContext<
+export const { DataGridRowContext, useDataGridRow } = createContext<
   DataGridRowContextValue<unknown>
->({
+>()({
   name: "DataGridRow",
 });
 
-function useDataGridContext<TData>() {
-  return useDataGridContextBase() as DataGridContextValue<TData>;
+export function useDataGridContext<TData>() {
+  return useDataGrid() as DataGridContextValue<TData>;
 }
 
-function useDataGridHeaderGroupContext<TData>() {
-  return useDataGridHeaderGroupContextBase() as DataGridHeaderGroupContextValue<TData>;
+export function useDataGridHeaderGroupContext<TData>() {
+  return useDataGridHeaderGroup() as DataGridHeaderGroupContextValue<TData>;
 }
 
-function useDataGridHeaderCellContext<TData>() {
-  return useDataGridHeaderCellContextBase() as DataGridHeaderCellContextValue<TData> | undefined;
+export function useDataGridHeaderCellContext<TData>() {
+  return useDataGridHeaderCell() as DataGridHeaderCellContextValue<TData> | undefined;
 }
 
-function useDataGridRowContext<TData>() {
-  return useDataGridRowContextBase() as DataGridRowContextValue<TData>;
+export function useDataGridRowContext<TData>() {
+  return useDataGridRow() as DataGridRowContextValue<TData>;
 }
 
 export type {
@@ -61,14 +61,4 @@ export type {
   DataGridHeaderCellContextValue,
   DataGridHeaderGroupContextValue,
   DataGridRowContextValue,
-};
-export {
-  DataGridContext,
-  DataGridHeaderCellContext,
-  DataGridHeaderGroupContext,
-  DataGridRowContext,
-  useDataGridContext,
-  useDataGridHeaderCellContext,
-  useDataGridHeaderGroupContext,
-  useDataGridRowContext,
 };

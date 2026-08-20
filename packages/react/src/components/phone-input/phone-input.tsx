@@ -25,7 +25,7 @@ import type { VariantClassNames, WithTestId } from "../../internal/types";
 import { Combobox, type ComboboxContentProps } from "../combobox";
 import type { InputProps } from "../input";
 import { InputGroup } from "../input-group";
-import { PhoneInputContextProvider, usePhoneInputContext } from "./phone-input.context";
+import { PhoneInputContext, usePhoneInput } from "./phone-input.context";
 import { phoneInputFlags } from "./phone-input-flags";
 
 // #region Types
@@ -80,7 +80,7 @@ export interface PhoneInputProps
 
 // #region Internal components
 function PhoneInputContainer({ className, children, ...rest }: ComponentProps<"div">) {
-  const { size, testId, variant } = usePhoneInputContext();
+  const { size, testId, variant } = usePhoneInput();
 
   return (
     <InputGroup
@@ -99,7 +99,7 @@ function PhoneInputContainer({ className, children, ...rest }: ComponentProps<"d
 }
 
 function PhoneInputFlag({ country, countryName }: FlagProps) {
-  const { classNames, slots } = usePhoneInputContext();
+  const { classNames, slots } = usePhoneInput();
   const flagClassName = slots.flag({ className: classNames?.flag });
   const emoji = country ? phoneInputFlags[country] : undefined;
 
@@ -127,7 +127,7 @@ function PhoneInputField({
   value,
   ...rest
 }: DefaultInputComponentProps) {
-  const { classNames, inputProps, invalid, size, slots } = usePhoneInputContext();
+  const { classNames, inputProps, invalid, size, slots } = usePhoneInput();
 
   return (
     <InputGroup.Input
@@ -157,7 +157,7 @@ function PhoneInputCountrySelect({
   readOnly,
   value,
 }: PhoneInputCountrySelectProps) {
-  const { classNames, popupProps, size, slots } = usePhoneInputContext();
+  const { classNames, popupProps, size, slots } = usePhoneInput();
 
   const items = useMemo(
     () =>
@@ -276,7 +276,7 @@ export function PhoneInput({
   );
 
   return (
-    <PhoneInputContextProvider value={contextValue}>
+    <PhoneInputContext value={contextValue}>
       <RPNPhoneInput
         {...rest}
         className={cn(className)}
@@ -291,7 +291,7 @@ export function PhoneInput({
         smartCaret={false}
         value={value || undefined}
       />
-    </PhoneInputContextProvider>
+    </PhoneInputContext>
   );
 }
 

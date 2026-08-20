@@ -15,9 +15,8 @@ interface SidebarContextProps {
  *
  * @returns Sidebar open state, mobile state, and layout helpers.
  */
-const [SidebarContext, useSidebar] = createContext<SidebarContextProps>({
+export const { SidebarContext, useSidebar } = createContext<SidebarContextProps>()({
   name: "Sidebar",
 });
 
 export type { SidebarContextProps };
-export { SidebarContext, useSidebar };

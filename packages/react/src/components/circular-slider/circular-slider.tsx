@@ -1,6 +1,6 @@
 import {
   AngleSlider as AngleSliderPrimitive,
-  useAngleSliderContext as useCircularSlider,
+  useAngleSliderContext as useCircularSliderApi,
 } from "@ark-ui/react/angle-slider";
 import { circularSliderVariants } from "@pisagor/styles/ui/circular-slider";
 import type { ComponentProps, ReactNode } from "react";
@@ -10,7 +10,7 @@ import { Field } from "../field";
 import {
   CircularSliderContext,
   type CircularSliderContextValue,
-  useCircularSliderContext,
+  useCircularSlider,
 } from "./circular-slider.context";
 
 // #region Types
@@ -146,7 +146,7 @@ export function CircularSliderControl({
 CircularSliderControl.displayName = "CircularSlider.Control";
 
 function CircularSliderProgressRing() {
-  const api = useCircularSlider();
+  const api = useCircularSliderApi();
   const { size, thickness, ringRadius, ringCircumference } = _useCircularSlider();
   const slots = circularSliderVariants();
 
@@ -216,7 +216,7 @@ export function CircularSliderValue({
   className,
   ...rest
 }: CircularSliderValueProps) {
-  const { value } = useCircularSlider();
+  const { value } = useCircularSliderApi();
   const slots = circularSliderVariants();
 
   return (
@@ -265,7 +265,7 @@ CircularSliderMarker.displayName = "CircularSlider.Marker";
 const CLOCK_MARKER_ANGLES = [0, 60, 120, 180, 240, 300];
 
 const _useCircularSlider = () => {
-  const context = useCircularSliderContext();
+  const context = useCircularSlider();
 
   if (!context.ringRadius) {
     throw new Error("useCircularSlider must be used within a CircularSlider");

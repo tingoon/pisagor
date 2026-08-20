@@ -7,7 +7,7 @@ import { Toggle } from "../toggle";
 import {
   ToggleGroupContext,
   type ToggleGroupContextProps,
-  useToggleGroupContext,
+  useToggleGroup,
 } from "./toggle-group.context";
 
 // #region Types
@@ -69,7 +69,7 @@ export function ToggleGroupRoot({
 ToggleGroupRoot.displayName = "ToggleGroup.Root";
 
 export function ToggleGroupItem({ value, className, ...rest }: ToggleGroupItemProps) {
-  const { variant, size, spacing } = useToggleGroupContext();
+  const { variant, size, spacing } = useToggleGroup();
 
   return (
     <ToggleGroupPrimitive.Item asChild value={value}>

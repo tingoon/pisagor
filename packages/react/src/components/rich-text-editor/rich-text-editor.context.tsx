@@ -5,17 +5,14 @@ interface RichTextEditorContextValue {
   editor: Editor | null;
 }
 
-const [RichTextEditorContext, useRichTextEditorContext] = createContext<RichTextEditorContextValue>(
-  {
+export const { RichTextEditorContext, useRichTextEditor: useRichTextEditorState } =
+  createContext<RichTextEditorContextValue>()({
     name: "RichTextEditor",
-  },
-);
+  });
 
 /**
  * Access the TipTap editor instance from the nearest RichTextEditor root.
  */
 export function useRichTextEditor() {
-  return useRichTextEditorContext().editor;
+  return useRichTextEditorState().editor;
 }
-
-export { RichTextEditorContext };

@@ -2,7 +2,7 @@ import { ark } from "@ark-ui/react/factory";
 import { type AlertVariantProps, alertVariants } from "@pisagor/styles/ui/alert";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
-import { AlertContext, useAlertContext } from "./alert.context";
+import { AlertContext, useAlert } from "./alert.context";
 
 // #region Types
 type AlertTitleProps = ComponentProps<typeof ark.div>;
@@ -58,7 +58,7 @@ export function AlertRoot({ variant, className, children, testId, ...rest }: Ale
 AlertRoot.displayName = "Alert.Root";
 
 export function AlertTitle({ className, children, ...rest }: AlertTitleProps) {
-  const { slots } = useAlertContext();
+  const { slots } = useAlert();
 
   return (
     <ark.div {...rest} className={slots.title({ className })} data-part="title" data-scope="alert">
@@ -69,7 +69,7 @@ export function AlertTitle({ className, children, ...rest }: AlertTitleProps) {
 AlertTitle.displayName = "Alert.Title";
 
 export function AlertDescription({ className, children, ...rest }: AlertDescriptionProps) {
-  const { slots } = useAlertContext();
+  const { slots } = useAlert();
 
   return (
     <ark.div
@@ -85,7 +85,7 @@ export function AlertDescription({ className, children, ...rest }: AlertDescript
 AlertDescription.displayName = "Alert.Description";
 
 export function AlertAction({ className, children, ...rest }: AlertActionProps) {
-  const { slots } = useAlertContext();
+  const { slots } = useAlert();
 
   return (
     <ark.div

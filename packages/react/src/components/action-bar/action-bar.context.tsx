@@ -34,8 +34,6 @@ export interface ActionBarContextValue extends WithTestId {
 /**
  * Returns the nearest action bar context.
  */
-const [ActionBarContext, useActionBar] = createContext<ActionBarContextValue>({
+export const { ActionBarContext, useActionBar } = createContext<ActionBarContextValue>()({
   name: "ActionBar",
 });
-
-export { ActionBarContext, useActionBar };

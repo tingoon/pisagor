@@ -6,8 +6,6 @@ export interface TreeViewContextProps {
   fileIcons?: Record<string, JSX.ElementType | null>;
 }
 
-const [TreeViewContext, useTreeViewLocalContext] = createContext<TreeViewContextProps>({
-  name: "TreeViewLocal",
+export const { TreeViewContext, useTreeView } = createContext<TreeViewContextProps>()({
+  name: "TreeView",
 });
-
-export { TreeViewContext, useTreeViewLocalContext };

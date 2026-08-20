@@ -8,9 +8,7 @@ export interface SurfaceContextValue {
   variant: SurfaceVariant;
 }
 
-const [SurfaceContext, useSurface] = createContext<SurfaceContextValue>({
+export const { SurfaceContext, useSurface } = createContext<SurfaceContextValue>()({
   name: "Surface",
   strict: false,
 });
-
-export { SurfaceContext, useSurface };

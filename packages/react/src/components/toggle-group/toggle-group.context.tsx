@@ -10,8 +10,6 @@ export type ToggleGroupContextProps = Pick<ToggleProps, "variant" | "size"> & {
   spacing?: number;
 };
 
-const [ToggleGroupContext, useToggleGroupContext] = createContext<ToggleGroupContextProps>({
+export const { ToggleGroupContext, useToggleGroup } = createContext<ToggleGroupContextProps>()({
   name: "ToggleGroup",
 });
-
-export { ToggleGroupContext, useToggleGroupContext };

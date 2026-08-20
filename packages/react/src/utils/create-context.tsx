@@ -1,50 +1,66 @@
 import React from "react";
 
-export interface CreateContextOptions<T> {
-  name: string;
+export interface CreateContextOptions<T, Name extends string = string> {
+  name: Name;
   strict?: boolean;
   defaultValue?: T;
 }
 
-export function createContext<T>(
-  options: CreateContextOptions<T>,
-): [React.Context<T | undefined>, () => T];
+type CreateContextResult<Name extends string, T> = {
+  [K in `${Name}Context`]: React.Context<T | undefined>;
+} & {
+  [K in `use${Name}`]: () => T;
+};
 
-export function createContext<T>(
-  options: CreateContextOptions<T> & {
-    strict: false;
-  },
-): [React.Context<T | undefined>, () => T | undefined];
+type CreateContextResultOptional<Name extends string, T> = {
+  [K in `${Name}Context`]: React.Context<T | undefined>;
+} & {
+  [K in `use${Name}`]: () => T | undefined;
+};
 
-export function createContext<T>({ name, strict = true, defaultValue }: CreateContextOptions<T>) {
-  const contextName = `${name}Context`;
+export function createContext<T>() {
+  function createNamedContext<const Name extends string>(
+    options: CreateContextOptions<T, Name> & { strict: false },
+  ): CreateContextResultOptional<Name, T>;
+  function createNamedContext<const Name extends string>(
+    options: CreateContextOptions<T, Name>,
+  ): CreateContextResult<Name, T>;
+  function createNamedContext<const Name extends string>({
+    name,
+    strict = true,
+    defaultValue,
+  }: CreateContextOptions<T, Name>) {
+    const contextName = `${name}Context`;
+    const hookName = `use${name}`;
 
-  const Context = React.createContext<T | undefined>(defaultValue);
-  Context.displayName = contextName;
+    const Context = React.createContext<T | undefined>(defaultValue);
+    Context.displayName = contextName;
 
-  function useContext() {
-    const context = React.useContext(Context);
+    function useContext() {
+      const context = React.useContext(Context);
 
-    if (context === undefined && strict) {
-      const error = new Error(`use${name} must be used within ${contextName}.`);
+      if (context === undefined && strict) {
+        const error = new Error(`${hookName} must be used within ${contextName}.`);
 
-      error.name = `${contextName}Error`;
+        error.name = `${contextName}Error`;
 
-      if (typeof Error.captureStackTrace === "function") {
-        Error.captureStackTrace(error, useContext);
-      } else {
-        error.stack = new Error().stack;
+        if (typeof Error.captureStackTrace === "function") {
+          Error.captureStackTrace(error, useContext);
+        } else {
+          error.stack = new Error().stack;
+        }
+
+        throw error;
       }
 
-      throw error;
+      return context;
     }
 
-    return context;
+    return {
+      [contextName]: Context,
+      [hookName]: useContext,
+    } as CreateContextResult<Name, T> | CreateContextResultOptional<Name, T>;
   }
 
-  if (strict) {
-    return [Context, useContext as () => T];
-  }
-
-  return [Context, useContext as () => T | undefined];
+  return createNamedContext;
 }

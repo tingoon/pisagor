@@ -13,8 +13,6 @@ interface DialogContextProps {
   testId?: string;
 }
 
-const [DialogContext, useDialogLocal] = createContext<DialogContextProps>({
-  name: "DialogLocal",
+export const { DialogContext, useDialog } = createContext<DialogContextProps>()({
+  name: "Dialog",
 });
-
-export { DialogContext, useDialogLocal as useDialog };

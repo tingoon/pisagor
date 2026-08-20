@@ -20,8 +20,6 @@ interface PhoneInputContextValue {
   variant?: FormControlVariant;
 }
 
-const [PhoneInputContextProvider, usePhoneInputContext] = createContext<PhoneInputContextValue>({
+export const { PhoneInputContext, usePhoneInput } = createContext<PhoneInputContextValue>()({
   name: "PhoneInput",
 });
-
-export { PhoneInputContextProvider, usePhoneInputContext };

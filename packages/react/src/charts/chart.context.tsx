@@ -5,8 +5,6 @@ interface ChartContextProps {
   config: ChartConfig;
 }
 
-const [ChartContext, useChart] = createContext<ChartContextProps>({
+export const { ChartContext, useChart } = createContext<ChartContextProps>()({
   name: "Chart",
 });
-
-export { ChartContext, useChart };

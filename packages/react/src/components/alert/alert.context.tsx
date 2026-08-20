@@ -5,8 +5,6 @@ interface AlertContextValue {
   slots: ReturnType<typeof alertVariants>;
 }
 
-const [AlertContext, useAlertContext] = createContext<AlertContextValue>({
+export const { AlertContext, useAlert } = createContext<AlertContextValue>()({
   name: "Alert",
 });
-
-export { AlertContext, useAlertContext };

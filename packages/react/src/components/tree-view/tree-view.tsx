@@ -30,11 +30,7 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "react";
 import type { WithTestId } from "../../internal/types";
 import { checkboxVariants } from "../checkbox";
-import {
-  TreeViewContext,
-  type TreeViewContextProps,
-  useTreeViewLocalContext,
-} from "./tree-view.context";
+import { TreeViewContext, type TreeViewContextProps, useTreeView } from "./tree-view.context";
 
 // #region Types
 export interface TreeNodeType<T = unknown> {
@@ -260,7 +256,7 @@ export function TreeViewItem({
   children,
   ...rest
 }: TreeViewItemProps) {
-  const { fileIcons } = useTreeViewLocalContext();
+  const { fileIcons } = useTreeView();
 
   const getFileIcon = (value: string): JSX.ElementType => {
     const extension = getFileExtension(value);

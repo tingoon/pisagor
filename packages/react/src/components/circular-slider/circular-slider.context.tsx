@@ -8,10 +8,7 @@ export interface CircularSliderContextValue {
   thumbSize: number;
 }
 
-const [CircularSliderContext, useCircularSliderContext] = createContext<CircularSliderContextValue>(
-  {
+export const { CircularSliderContext, useCircularSlider } =
+  createContext<CircularSliderContextValue>()({
     name: "CircularSlider",
-  },
-);
-
-export { CircularSliderContext, useCircularSliderContext };
+  });

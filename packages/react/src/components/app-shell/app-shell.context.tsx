@@ -94,11 +94,9 @@ export const ZERO_REGION_VARS: Record<AppShellRegionVar, string> = {
   "--app-shell-start-rail-width": "0px",
 };
 
-const [AppShellContext, useAppShell] = createContext<AppShellContextValue>({
+export const { AppShellContext, useAppShell } = createContext<AppShellContextValue>()({
   name: "AppShell",
 });
-
-export { AppShellContext, useAppShell };
 
 export function useSideState({
   controlledOpen,

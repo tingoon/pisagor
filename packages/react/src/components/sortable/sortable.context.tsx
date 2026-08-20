@@ -34,25 +34,10 @@ interface SortableItemContextValue {
   isDragging: boolean;
 }
 
-const [SortableContext, useSortableContext] = createContext<SortableContextValue>({
+export const { SortableContext, useSortable } = createContext<SortableContextValue>()({
   name: "Sortable",
 });
 
-const [SortableItemContext, useSortableItemContext] = createContext<SortableItemContextValue>({
+export const { SortableItemContext, useSortableItem } = createContext<SortableItemContextValue>()({
   name: "SortableItem",
 });
-
-/**
- * Access the nearest Sortable root context.
- */
-function useSortable() {
-  return useSortableContext();
-}
-
-export {
-  SortableContext,
-  SortableItemContext,
-  useSortable,
-  useSortableContext,
-  useSortableItemContext,
-};
