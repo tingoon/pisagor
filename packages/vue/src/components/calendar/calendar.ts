@@ -11,11 +11,9 @@ import {
   calendarInline4Variants,
   calendarInlineVariants,
   calendarLabelVariants,
-  calendarMonthSelectIconVariants,
-  calendarMonthSelectWrapperVariants,
   calendarRangeTextVariants,
   calendarSelectLayoutVariants,
-  calendarTableCellTriggerVariants,
+  calendarSelectWrapperVariants,
   calendarTableCellVariants,
   calendarTableHeaderVariants,
   calendarTableRowVariants,
@@ -23,8 +21,6 @@ import {
   calendarVariants,
   calendarViewControlVariants,
   calendarViewVariants,
-  calendarYearSelectIconVariants,
-  calendarYearSelectWrapperVariants,
 } from "@pisagor/styles/ui/calendar";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type UnwrapRef } from "vue";
@@ -221,11 +217,12 @@ export const CalendarYearSelect = defineComponent({
   setup(props, { attrs }) {
     return () => {
       const { className: selectClassName, controlProps } = useCalendarSelectShell(props.class);
+      const recipe = calendarSelectWrapperVariants();
 
       return h(
         "div",
         {
-          class: calendarYearSelectWrapperVariants(),
+          class: recipe.base(),
           "data-part": "year-select-wrapper",
           "data-scope": "calendar",
         },
@@ -237,7 +234,7 @@ export const CalendarYearSelect = defineComponent({
           }),
           h(PhCaretDown, {
             "aria-hidden": true,
-            class: calendarYearSelectIconVariants(),
+            class: recipe.icon(),
             "data-part": "year-select-icon",
             "data-scope": "calendar",
           }),
@@ -256,11 +253,12 @@ export const CalendarMonthSelect = defineComponent({
   setup(props, { attrs }) {
     return () => {
       const { className: selectClassName, controlProps } = useCalendarSelectShell(props.class);
+      const recipe = calendarSelectWrapperVariants();
 
       return h(
         "div",
         {
-          class: calendarMonthSelectWrapperVariants(),
+          class: recipe.base(),
           "data-part": "month-select-wrapper",
           "data-scope": "calendar",
         },
@@ -272,7 +270,7 @@ export const CalendarMonthSelect = defineComponent({
           }),
           h(PhCaretDown, {
             "aria-hidden": true,
-            class: calendarMonthSelectIconVariants(),
+            class: recipe.icon(),
             "data-part": "month-select-icon",
             "data-scope": "calendar",
           }),
@@ -545,11 +543,13 @@ export const CalendarTableCell = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const recipe = calendarTableCellVariants();
+
+      return h(
         DatePickerPrimitive.TableCell as ArkPart,
         {
-          class: calendarTableCellVariants(),
+          class: recipe.base(),
           value: props.value,
           visibleRange: props.visibleRange,
         },
@@ -558,11 +558,12 @@ export const CalendarTableCell = defineComponent({
             DatePickerPrimitive.TableCellTrigger as ArkPart,
             {
               ...attrs,
-              class: cn(calendarTableCellTriggerVariants(), props.class),
+              class: recipe.trigger({ class: cn(props.class) }),
             },
             slots.default,
           ),
       );
+    };
   },
 });
 // #endregion

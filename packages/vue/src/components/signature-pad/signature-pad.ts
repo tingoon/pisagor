@@ -96,7 +96,7 @@ export const SignaturePad = defineComponent({
           {
             ...attrs,
             "aria-invalid": props.invalid || undefined,
-            class: cn(slots_.root(), props.class, props.classNames?.root),
+            class: slots_.base({ class: cn(props.class, props.classNames?.base) }),
             "data-invalid": props.invalid || undefined,
             "data-testid": props.testId,
             defaultPaths: props.defaultPaths,
@@ -116,21 +116,24 @@ export const SignaturePad = defineComponent({
                 ...controlProps,
                 class: cn(
                   formControlZoneVariants({ ...shellArgs }),
-                  slots_.control(),
-                  resolved.variant === "primary" && "shadow-xs/5",
-                  props.classNames?.control,
+                  slots_.control({
+                    class: cn(
+                      resolved.variant === "primary" && "shadow-xs/5",
+                      props.classNames?.control,
+                    ),
+                  }),
                 ),
                 "data-invalid": props.invalid || undefined,
               },
               () => [
                 h(SignaturePadPrimitive.Segment as ArkPart, {
-                  class: cn(slots_.segment(), props.classNames?.segment),
+                  class: slots_.segment({ class: props.classNames?.segment }),
                 }),
                 h(
                   SignaturePadPrimitive.ClearTrigger as ArkPart,
                   {
                     asChild: true,
-                    class: cn(slots_.clear(), props.classNames?.clear),
+                    class: slots_.clear({ class: props.classNames?.clear }),
                   },
                   () =>
                     h(
@@ -140,7 +143,7 @@ export const SignaturePad = defineComponent({
                     ),
                 ),
                 h(SignaturePadPrimitive.Guide as ArkPart, {
-                  class: cn(slots_.guide(), props.classNames?.guide),
+                  class: slots_.guide({ class: props.classNames?.guide }),
                 }),
               ],
             ),

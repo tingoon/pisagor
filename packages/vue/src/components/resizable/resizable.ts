@@ -2,9 +2,6 @@ import { Splitter as SplitterPrimitive } from "@ark-ui/vue/splitter";
 import { PhDotsSixVertical } from "@phosphor-icons/vue";
 import {
   resizableEdgeHandleVariants,
-  resizableInline2Variants,
-  resizableInlineVariants,
-  resizableResizeTriggerHandleVariants,
   resizableResizeTriggerIndicatorVariants,
   resizableResizeTriggerVariants,
   resizableVariants,
@@ -42,8 +39,7 @@ export interface ResizableResizeTriggerProps {
 
 type ArkPart = Parameters<typeof h>[0];
 
-const resizeTriggerClassName = resizableResizeTriggerVariants();
-const resizeTriggerHandleClassName = resizableResizeTriggerHandleVariants();
+const resizeTrigger = resizableResizeTriggerVariants();
 
 // #region Parts
 export const ResizableEdgeHandle = defineComponent({
@@ -74,19 +70,18 @@ export const ResizableEdgeHandle = defineComponent({
 
     const isStart = ref(props.placement === "start");
 
-    return () =>
-      h(
+    return () => {
+      const edgeHandle = resizableEdgeHandleVariants({
+        handlePosition: props.handlePosition,
+        placement: props.placement,
+      });
+
+      return h(
         "button",
         {
           ...attrs,
           "aria-label": props.label,
-          class: cn(
-            resizableEdgeHandleVariants({
-              handlePosition: props.handlePosition,
-              placement: props.placement,
-            }).root(),
-            props.class,
-          ),
+          class: edgeHandle.base({ class: props.class }),
           "data-handle-position": props.handlePosition,
           "data-part": "edge-handle",
           "data-scope": "resizable",
@@ -139,18 +134,12 @@ export const ResizableEdgeHandle = defineComponent({
           type: "button",
         },
         () => [
-          h(
-            "span",
-            {
-              class: resizableEdgeHandleVariants({
-                handlePosition: props.handlePosition,
-                placement: props.placement,
-              }).grip(),
-            },
-            () => h(PhDotsSixVertical, { class: resizableInlineVariants() }),
+          h("span", { class: edgeHandle.grip() }, () =>
+            h(PhDotsSixVertical, { class: edgeHandle.icon() }),
           ),
         ],
       );
+    };
   },
 });
 
@@ -223,12 +212,12 @@ export const ResizableResizeTrigger = defineComponent({
         {
           ...attrs,
           "aria-label": "Resize",
-          class: cn(resizeTriggerClassName, props.class),
+          class: resizeTrigger.base({ class: props.class }),
         },
         () =>
           props.withHandle
-            ? h("div", { class: resizeTriggerHandleClassName }, () =>
-                h(PhDotsSixVertical, { class: resizableInline2Variants() }),
+            ? h("div", { class: resizeTrigger.handle() }, () =>
+                h(PhDotsSixVertical, { class: resizeTrigger.icon() }),
               )
             : (slots.default?.() ?? h(ResizableResizeTriggerIndicator)),
       );

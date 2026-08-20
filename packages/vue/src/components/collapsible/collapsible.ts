@@ -3,7 +3,6 @@ import { PhCaretDown } from "@phosphor-icons/vue";
 import {
   collapsibleContentVariants,
   collapsibleIndicatorVariants,
-  collapsibleInlineVariants,
   collapsibleTriggerVariants,
   collapsibleVariants,
 } from "@pisagor/styles/ui/collapsible";
@@ -88,15 +87,18 @@ export const CollapsibleIndicator = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const recipe = collapsibleIndicatorVariants();
+
+      return h(
         CollapsiblePrimitive.Indicator as ArkPart,
         {
           ...attrs,
-          class: cn(collapsibleIndicatorVariants(), props.class),
+          class: recipe.base({ class: props.class }),
         },
-        () => [slots.default?.(), h(PhCaretDown, { class: collapsibleInlineVariants() })],
+        () => [slots.default?.(), h(PhCaretDown, { class: recipe.icon() })],
       );
+    };
   },
 });
 // #endregion

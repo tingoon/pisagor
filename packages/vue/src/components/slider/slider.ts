@@ -1,6 +1,5 @@
 import { Slider as SliderPrimitive } from "@ark-ui/vue/slider";
 import { sliderVariants } from "@pisagor/styles/ui/slider";
-import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
@@ -72,7 +71,7 @@ export const Slider = defineComponent({
           {
             ...attrs,
             ...trackShellProps,
-            class: cn(variantSlots.root(), props.class),
+            class: variantSlots.base({ class: props.class }),
             "data-testid": props.testId,
             defaultValue: props.defaultValue,
             disabled: props.disabled,
@@ -95,9 +94,7 @@ export const Slider = defineComponent({
                       SliderPrimitive.ValueText as ArkPart,
                       {
                         ...(attrs as object),
-                        class: cn(variantSlots.value(), {
-                          "tabular-nums": true,
-                        }),
+                        class: variantSlots.value({ class: "tabular-nums" }),
                       },
                       undefined,
                     )
@@ -105,21 +102,21 @@ export const Slider = defineComponent({
               ]),
             ],
             slots.default?.(),
-            h(SliderPrimitive.Control as ArkPart, { class: cn(variantSlots.control()) }, () =>
+            h(SliderPrimitive.Control as ArkPart, { class: variantSlots.control() }, () =>
               h(
                 SliderPrimitive.Track as ArkPart,
                 {
-                  class: cn(variantSlots.track(), trackVariantClass),
+                  class: variantSlots.track({ class: trackVariantClass }),
                 },
                 () => [
                   h(SliderPrimitive.Range as ArkPart, {
-                    class: cn(variantSlots.range()),
+                    class: variantSlots.range(),
                   }),
                   ..._values.map((_, index) =>
                     h(
                       SliderPrimitive.Thumb as ArkPart,
                       {
-                        class: cn(variantSlots.thumb(), thumbShadowClass),
+                        class: variantSlots.thumb({ class: thumbShadowClass }),
                         index,
                         tabIndex: props.tabIndex ?? undefined,
                       },
@@ -132,22 +129,22 @@ export const Slider = defineComponent({
             props.showMarkers
               ? h(
                   SliderPrimitive.MarkerGroup as ArkPart,
-                  { class: cn(variantSlots.markerGroup()) },
+                  { class: variantSlots.markerGroup() },
                   () =>
                     Array.from({ length: props.max + 1 }, (_, index) =>
                       h(
                         SliderPrimitive.Marker as ArkPart,
                         {
-                          class: cn(variantSlots.marker()),
+                          class: variantSlots.marker(),
                           "data-interval": index % props.markerInterval === 0 ? undefined : "",
                           key: String(index),
                           value: index,
                         },
                         () => [
-                          h("span", { class: cn(variantSlots.markerTick()) }),
+                          h("span", { class: variantSlots.markerTick() }),
                           h(
                             "span",
-                            { class: cn(variantSlots.markerLabel()) },
+                            { class: variantSlots.markerLabel() },
                             () => props.markerLabels?.[index] ?? String(index),
                           ),
                         ],

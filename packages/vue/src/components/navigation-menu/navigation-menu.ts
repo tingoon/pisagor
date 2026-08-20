@@ -27,7 +27,7 @@ export const NavigationMenuRoot = defineComponent({
         ark.nav as ArkPart,
         {
           ...attrs,
-          class: cn(slots$.root(), props.class, attrs.class, props.classNames?.root),
+          class: slots$.base({ class: cn(props.class, attrs.class, props.classNames?.base) }),
           "data-part": "root",
           "data-scope": "navigation-menu",
           "data-testid": props.testId,
@@ -53,7 +53,7 @@ export const NavigationMenuList = defineComponent({
         ark.ul as ArkPart,
         {
           ...attrs,
-          class: cn(slots$.list(), props.class, attrs.class, props.classNames?.list),
+          class: slots$.list({ class: cn(props.class, attrs.class, props.classNames?.list) }),
           "data-part": "list",
           "data-scope": "navigation-menu",
         },
@@ -78,7 +78,7 @@ export const NavigationMenuItem = defineComponent({
         ark.li as ArkPart,
         {
           ...attrs,
-          class: cn(slots$.item(), props.class, attrs.class, props.classNames?.item),
+          class: slots$.item({ class: cn(props.class, attrs.class, props.classNames?.item) }),
           "data-part": "item",
           "data-scope": "navigation-menu",
         },
@@ -105,7 +105,7 @@ export const NavigationMenuLink = defineComponent({
         {
           ...attrs,
           "aria-current": props.active ? "page" : undefined,
-          class: cn(slots$.link(), props.class, attrs.class, props.classNames?.link),
+          class: slots$.link({ class: cn(props.class, attrs.class, props.classNames?.link) }),
           "data-active": props.active,
           "data-part": "link",
           "data-scope": "navigation-menu",

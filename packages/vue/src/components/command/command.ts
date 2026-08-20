@@ -308,7 +308,7 @@ export const CommandItem = defineComponent({
         ComboboxPrimitive.Item as ArkPart,
         {
           ...attrs,
-          class: cn(comboboxItemVariants({ showIndicator: false }), props.class),
+          class: comboboxItemVariants({ showIndicator: false }).base({ class: props.class }),
           item: props.item,
           persistFocus: true,
         },

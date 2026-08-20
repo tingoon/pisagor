@@ -35,7 +35,7 @@ export const ToolbarRoot = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(toolbarVariants().root(), props.class, props.classNames?.root),
+          class: toolbarVariants().base({ class: cn(props.class, props.classNames?.base) }),
           "data-part": "root",
           "data-scope": "toolbar",
           "data-testid": props.testId,
@@ -60,7 +60,7 @@ export const ToolbarHeading = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(slotsClasses.heading(), props.class, props.classNames?.heading),
+          class: slotsClasses.heading({ class: cn(props.class, props.classNames?.heading) }),
           "data-part": "heading",
           "data-scope": "toolbar",
         },
@@ -84,7 +84,7 @@ export const ToolbarTitle = defineComponent({
         ark.h2 as ArkPart,
         {
           ...attrs,
-          class: cn(slotsClasses.title(), props.class, props.classNames?.title),
+          class: slotsClasses.title({ class: cn(props.class, props.classNames?.title) }),
           "data-part": "title",
           "data-scope": "toolbar",
         },
@@ -108,7 +108,9 @@ export const ToolbarDescription = defineComponent({
         ark.p as ArkPart,
         {
           ...attrs,
-          class: cn(slotsClasses.description(), props.class, props.classNames?.description),
+          class: slotsClasses.description({
+            class: cn(props.class, props.classNames?.description),
+          }),
           "data-part": "description",
           "data-scope": "toolbar",
         },
@@ -132,7 +134,7 @@ export const ToolbarActions = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(slotsClasses.actions(), props.class, props.classNames?.actions),
+          class: slotsClasses.actions({ class: cn(props.class, props.classNames?.actions) }),
           "data-part": "actions",
           "data-scope": "toolbar",
         },

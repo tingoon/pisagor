@@ -40,7 +40,7 @@ export const Switch = defineComponent({
         {
           ...attrs,
           ...controlShellProps,
-          class: cn(slots_.root(), props.class, props.classNames?.root),
+          class: slots_.base({ class: cn(props.class, props.classNames?.base) }),
           "data-testid": props.testId,
           onCheckedChange: (details: { checked: boolean }) => {
             emit("checkedChange", details);
@@ -51,11 +51,11 @@ export const Switch = defineComponent({
           h(
             SwitchPrimitive.Control as ArkPart,
             {
-              class: cn(slots_.control(), props.classNames?.control),
+              class: slots_.control({ class: props.classNames?.control }),
             },
             () =>
               h(SwitchPrimitive.Thumb as ArkPart, {
-                class: cn(slots_.thumb(), props.classNames?.thumb),
+                class: slots_.thumb({ class: props.classNames?.thumb }),
               }),
           ),
           h(SwitchPrimitive.HiddenInput as ArkPart),

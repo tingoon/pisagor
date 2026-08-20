@@ -1,9 +1,7 @@
 import { Accordion as AccordionPrimitive } from "@ark-ui/vue/accordion";
 import { PhCaretDown } from "@phosphor-icons/vue";
 import {
-  accordionContentBodyVariants,
   accordionContentVariants,
-  accordionIndicatorVariants,
   accordionItemVariants,
   accordionTriggerVariants,
 } from "@pisagor/styles/accordion";
@@ -82,20 +80,23 @@ export const AccordionTrigger = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const recipe = accordionTriggerVariants();
+
+      return h(
         AccordionPrimitive.ItemTrigger as ArkPart,
         {
           ...attrs,
-          class: cn(accordionTriggerVariants(), props.class),
+          class: recipe.base({ class: props.class }),
         },
         () => [
           slots.default?.(),
           h(AccordionPrimitive.ItemIndicator as ArkPart, {}, () =>
-            h(PhCaretDown, { class: accordionIndicatorVariants() }),
+            h(PhCaretDown, { class: recipe.indicator() }),
           ),
         ],
       );
+    };
   },
 });
 
@@ -106,15 +107,18 @@ export const AccordionContent = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const recipe = accordionContentVariants();
+
+      return h(
         AccordionPrimitive.ItemContent as ArkPart,
         {
           ...attrs,
-          class: cn(accordionContentVariants(), props.class),
+          class: recipe.base({ class: props.class }),
         },
-        () => h("div", { class: accordionContentBodyVariants() }, slots.default?.()),
+        () => h("div", { class: recipe.body() }, slots.default?.()),
       );
+    };
   },
 });
 

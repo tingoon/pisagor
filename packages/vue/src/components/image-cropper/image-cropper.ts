@@ -10,7 +10,6 @@ import {
   imageCropperGridVariants,
   imageCropperHandleVariants,
   imageCropperImageVariants,
-  imageCropperInlineVariants,
   imageCropperSelectionVariants,
   imageCropperVariants,
   imageCropperViewportVariants,
@@ -213,16 +212,19 @@ export const ImageCropperHandle = defineComponent({
     position: { required: true, type: String as PropType<ImageCropperHandlePosition> },
   },
   setup(props, { attrs }) {
-    return () =>
-      h(
+    return () => {
+      const recipe = imageCropperHandleVariants();
+
+      return h(
         ImageCropperPrimitive.Handle as ArkPart,
         {
           ...attrs,
-          class: cn(imageCropperHandleVariants(), props.class),
+          class: recipe.base({ class: props.class }),
           position: props.position,
         },
-        () => h("span", { "aria-hidden": true, class: imageCropperInlineVariants() }),
+        () => h("span", { "aria-hidden": true, class: recipe.grip() }),
       );
+    };
   },
 });
 

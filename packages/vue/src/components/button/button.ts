@@ -1,9 +1,7 @@
 import { ark } from "@ark-ui/vue/factory";
 import {
   type ButtonVariantProps,
-  buttonInline2Variants,
-  buttonInline3Variants,
-  buttonInlineVariants,
+  buttonLoadingVariants,
   buttonVariants,
 } from "@pisagor/styles/ui/button";
 import { cn } from "@pisagor/utils";
@@ -46,8 +44,10 @@ export const Button = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const loading = buttonLoadingVariants();
+
+      return h(
         ark.button as ArkPart,
         {
           ...attrs,
@@ -73,18 +73,13 @@ export const Button = defineComponent({
         () =>
           props.isLoading
             ? [
-                h(
-                  "span",
-                  { "aria-hidden": true, class: buttonInlineVariants() },
-                  slots.default?.(),
-                ),
-                h("span", { class: buttonInline2Variants() }, slots.default?.()),
-                h("span", { class: buttonInline3Variants() }, () =>
-                  h(Spinner, { "aria-hidden": true }),
-                ),
+                h("span", { "aria-hidden": true, class: loading.hidden() }, slots.default?.()),
+                h("span", { class: loading.srOnly() }, slots.default?.()),
+                h("span", { class: loading.spinner() }, () => h(Spinner, { "aria-hidden": true })),
               ]
             : slots.default?.(),
       );
+    };
   },
 });
 // #endregion

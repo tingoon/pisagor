@@ -66,7 +66,7 @@ export const Avatar = defineComponent({
         AvatarRoot as ArkPart,
         {
           ...attrs,
-          class: cn(slots_.root(), props.class, props.classNames?.root),
+          class: slots_.base({ class: cn(props.class, props.classNames?.base) }),
           "data-shape": props.shape,
           "data-size": props.size,
           "data-testid": props.testId,
@@ -76,7 +76,7 @@ export const Avatar = defineComponent({
             ? h(AvatarImage as ArkPart, {
                 ...(props.imageProps ?? {}),
                 alt: props.alt,
-                class: cn(slots_.image(), props.classNames?.image),
+                class: slots_.image({ class: props.classNames?.image }),
                 src: props.src,
               })
             : null,
@@ -85,7 +85,7 @@ export const Avatar = defineComponent({
                 AvatarFallback as ArkPart,
                 {
                   ...(props.fallbackProps ?? {}),
-                  class: cn(slots_.fallback(), props.classNames?.fallback),
+                  class: slots_.fallback({ class: props.classNames?.fallback }),
                 },
                 () => props.fallback,
               )

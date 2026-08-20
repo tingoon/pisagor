@@ -54,7 +54,7 @@ export const StatRoot = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(slots_.root(), props.class, props.classNames?.root),
+          class: slots_.base({ class: cn(props.class, props.classNames?.base) }),
           "data-part": "root",
           "data-scope": "stat",
           "data-testid": props.testId,
@@ -81,7 +81,7 @@ export const StatLabel = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(slots_.label(), props.class, props.classNames?.label),
+          class: slots_.label({ class: cn(props.class, props.classNames?.label) }),
           "data-part": "label",
           "data-scope": "stat",
         },
@@ -106,7 +106,7 @@ export const StatValue = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(slots_.value(), props.class, props.classNames?.value),
+          class: slots_.value({ class: cn(props.class, props.classNames?.value) }),
           "data-part": "value",
           "data-scope": "stat",
         },
@@ -131,7 +131,7 @@ export const StatDescription = defineComponent({
         ark.p as ArkPart,
         {
           ...attrs,
-          class: cn(slots_.description(), props.class, props.classNames?.description),
+          class: slots_.description({ class: cn(props.class, props.classNames?.description) }),
           "data-part": "description",
           "data-scope": "stat",
         },

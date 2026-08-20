@@ -12,7 +12,7 @@ export interface ScrollAreaProps extends WithTestId {
    * Slot class names.
    *
    * @example
-   * `{ root: "...", viewport: "...", thumb: "..." }`
+   * `{ base: "...", viewport: "...", thumb: "..." }`
    */
   classNames?: VariantClassNames<typeof scrollAreaVariants>;
   /** Extra props forwarded to the scroll area viewport element. */
@@ -50,7 +50,7 @@ export const ScrollArea = defineComponent({
         ScrollAreaPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(slotsClasses.root(), props.class, props.classNames?.root),
+          class: slotsClasses.base({ class: cn(props.class, props.classNames?.base) }),
           "data-testid": props.testId,
         },
         () => [
@@ -58,7 +58,7 @@ export const ScrollArea = defineComponent({
             ScrollAreaPrimitive.Viewport as ArkPart,
             {
               ...(props.viewportProps ?? {}),
-              class: cn(slotsClasses.viewport(), props.classNames?.viewport),
+              class: slotsClasses.viewport({ class: props.classNames?.viewport }),
             },
             () => h(ScrollAreaPrimitive.Content as ArkPart, {}, () => slots.default?.()),
           ),
@@ -66,7 +66,7 @@ export const ScrollArea = defineComponent({
             ScrollAreaPrimitive.Scrollbar as ArkPart,
             {
               ...(props.scrollbarProps ?? {}),
-              class: cn(slotsClasses.scrollbar(), props.classNames?.scrollbar),
+              class: slotsClasses.scrollbar({ class: props.classNames?.scrollbar }),
               orientation: "vertical",
             },
             () =>
@@ -74,7 +74,7 @@ export const ScrollArea = defineComponent({
                 ScrollAreaPrimitive.Thumb as ArkPart,
                 {
                   ...(props.thumbProps ?? {}),
-                  class: cn(slotsClasses.thumb(), props.classNames?.thumb),
+                  class: slotsClasses.thumb({ class: props.classNames?.thumb }),
                 },
                 undefined,
               ),
@@ -83,7 +83,7 @@ export const ScrollArea = defineComponent({
             ScrollAreaPrimitive.Scrollbar as ArkPart,
             {
               ...(props.scrollbarProps ?? {}),
-              class: cn(slotsClasses.scrollbar(), props.classNames?.scrollbar),
+              class: slotsClasses.scrollbar({ class: props.classNames?.scrollbar }),
               orientation: "horizontal",
             },
             () =>
@@ -91,7 +91,7 @@ export const ScrollArea = defineComponent({
                 ScrollAreaPrimitive.Thumb as ArkPart,
                 {
                   ...(props.thumbProps ?? {}),
-                  class: cn(slotsClasses.thumb(), props.classNames?.thumb),
+                  class: slotsClasses.thumb({ class: props.classNames?.thumb }),
                 },
                 undefined,
               ),

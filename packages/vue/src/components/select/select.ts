@@ -10,9 +10,7 @@ import {
   selectGroupLabelVariants,
   selectInline2Variants,
   selectInline3Variants,
-  selectInline4Variants,
   selectInlineVariants,
-  selectItemTextVariants,
   selectItemVariants,
   selectSeparatorVariants,
   selectTriggerVariants,
@@ -284,29 +282,32 @@ export const SelectItem = defineComponent({
     item: { default: undefined, type: Object as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const recipe = selectItemVariants();
+
+      return h(
         SelectPrimitive.Item as ArkPart,
         {
           ...attrs,
-          class: cn(selectItemVariants(), props.class, attrs.class),
+          class: recipe.base({ class: cn(props.class, attrs.class) }),
           item: props.item,
         },
         () => [
           h(
             SelectPrimitive.ItemText as ArkPart,
             {
-              class: selectItemTextVariants(),
+              class: recipe.text(),
             },
             slots.default?.(),
           ),
-          h("span", { class: selectInline4Variants() }, () =>
+          h("span", { class: recipe.indicator() }, () =>
             h(SelectPrimitive.ItemIndicator as ArkPart, {}, () =>
               h(PhCheck, { "aria-hidden": true }),
             ),
           ),
         ],
       );
+    };
   },
 });
 

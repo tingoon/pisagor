@@ -1,6 +1,5 @@
 import { Tooltip as TooltipPrimitive } from "@ark-ui/vue/tooltip";
 import { tooltipVariants } from "@pisagor/styles/ui/tooltip";
-import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, Teleport, type VNodeChild } from "vue";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
@@ -94,14 +93,14 @@ export const Tooltip = defineComponent({
                 TooltipPrimitive.Content as ArkPart,
                 {
                   ...props.contentProps,
-                  class: cn(slots.content(), props.classNames?.content),
+                  class: slots.content({ class: props.classNames?.content }),
                 },
                 () => [
                   h(
                     TooltipPrimitive.Arrow as ArkPart,
                     {
                       ...props.arrowProps,
-                      class: cn(slots.arrow(), props.classNames?.arrow),
+                      class: slots.arrow({ class: props.classNames?.arrow }),
                     },
                     () => h(TooltipPrimitive.ArrowTip as ArkPart),
                   ),

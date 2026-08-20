@@ -57,12 +57,9 @@ export const Rating = defineComponent({
           {
             ...attrs,
             allowHalf: props.allowHalf,
-            class: cn(
-              slots.root(),
-              surfaceTone,
-              props.class,
-              (attrs as { class?: ClassValue }).class,
-            ),
+            class: slots.base({
+              class: cn(surfaceTone, props.class, (attrs as { class?: ClassValue }).class),
+            }),
             count: props.count,
             "data-testid": props.testId,
             "data-variant": resolved.variant,
@@ -78,20 +75,22 @@ export const Rating = defineComponent({
             h(
               RatingGroupPrimitive.Control as ArkPart,
               {
-                class: cn(slots.control(), (attrs as { class?: ClassValue }).class),
+                class: slots.control({
+                  class: cn((attrs as { class?: ClassValue }).class),
+                }),
               },
               () => [
                 ...Array.from({ length: props.count }, (_, i) => i + 1).map((index) =>
                   h(
                     RatingGroupPrimitive.Item as ArkPart,
-                    { class: cn(slots.item()), index, key: index },
+                    { class: slots.item(), index, key: index },
                     () =>
                       h(RatingGroupPrimitive.ItemContext as ArkPart, null, {
                         default: (itemState: { half: boolean; highlighted: boolean }) =>
                           h(
                             "span",
                             {
-                              class: cn(slots.indicator()),
+                              class: slots.indicator(),
                               "data-half": itemState.half ? "" : undefined,
                               "data-highlighted": itemState.highlighted ? "" : undefined,
                               "data-part": "item-indicator",

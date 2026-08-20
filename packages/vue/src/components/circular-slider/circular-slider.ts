@@ -3,7 +3,6 @@ import {
   useAngleSliderContext,
 } from "@ark-ui/vue/angle-slider";
 import { circularSliderVariants } from "@pisagor/styles/ui/circular-slider";
-import { cn } from "@pisagor/utils";
 import {
   defineComponent,
   h,
@@ -102,7 +101,7 @@ export const CircularSliderRoot = defineComponent({
         AngleSliderPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(circularSliderVariants().root(), props.class),
+          class: circularSliderVariants().base({ class: props.class }),
           "data-testid": props.testId,
           defaultValue: props.defaultValue,
           disabled: props.disabled,
@@ -157,7 +156,7 @@ export const CircularSliderControl = defineComponent({
         AngleSliderPrimitive.Control as ArkPart,
         {
           ...attrs,
-          class: cn(circularSliderVariants().control(), props.class),
+          class: circularSliderVariants().control({ class: props.class }),
         },
         () => [
           h(CircularSliderProgressRing),
@@ -194,14 +193,14 @@ const CircularSliderProgressRing = defineComponent({
         "svg",
         {
           "aria-hidden": "true",
-          class: cn(slots.ring()),
+          class: slots.ring(),
           height: size,
           viewBox: `0 0 ${size} ${size}`,
           width: size,
         },
         [
           h("circle", {
-            class: cn(slots.ringTrack()),
+            class: slots.ringTrack(),
             cx: center,
             cy: center,
             fill: "transparent",
@@ -209,7 +208,7 @@ const CircularSliderProgressRing = defineComponent({
             strokeWidth: thickness,
           }),
           h("circle", {
-            class: cn(slots.ringRange()),
+            class: slots.ringRange(),
             cx: center,
             cy: center,
             fill: "transparent",
@@ -243,14 +242,14 @@ export const CircularSliderThumb = defineComponent({
         AngleSliderPrimitive.Thumb as ArkPart,
         {
           ...attrs,
-          class: cn(slots.thumb(), props.class),
+          class: slots.thumb({ class: props.class }),
           style: {
             "--size": `${thumbSize}px`,
           },
         },
         () =>
           h("span", {
-            class: cn(slots.thumbHandle()),
+            class: slots.thumbHandle(),
             style: {
               insetBlockStart: `calc(50% - ${ringRadius}px - ${halfThumb}px)`,
               insetInlineStart: `calc(50% - ${halfThumb}px)`,
@@ -279,7 +278,7 @@ export const CircularSliderValue = defineComponent({
           AngleSliderPrimitive.ValueText as ArkPart,
           {
             ...attrs,
-            class: cn(slots.value(), props.class),
+            class: slots.value({ class: props.class }),
           },
           () => [props.prefix, " ", unref(api).value, " ", props.suffix],
         ),
@@ -299,7 +298,7 @@ export const CircularSliderMarkerGroup = defineComponent({
         AngleSliderPrimitive.MarkerGroup as ArkPart,
         {
           ...attrs,
-          class: cn(circularSliderVariants().markerGroup(), props.class),
+          class: circularSliderVariants().markerGroup({ class: props.class }),
         },
         slots,
       );
@@ -329,7 +328,7 @@ export const CircularSliderMarker = defineComponent({
 
       return h(AngleSliderPrimitive.Marker as ArkPart, {
         ...attrs,
-        class: cn(slots.marker(), props.class),
+        class: slots.marker({ class: props.class }),
         style: {
           "--marker-height": `${markerHeight}px`,
           "--marker-offset": `${markerOffset}px`,

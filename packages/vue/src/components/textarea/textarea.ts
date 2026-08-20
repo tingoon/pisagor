@@ -96,9 +96,9 @@ export const Textarea = defineComponent({
           ...controlProps,
           class: cn(
             formControlShellVariants({ size: "md", ...shellArgs }),
-            slots.rootLayout(),
-            props.class,
-            props.classNames?.rootLayout,
+            slots.rootLayout({
+              class: cn(props.class, props.classNames?.rootLayout),
+            }),
           ),
           "data-testid": props.testId,
           defaultValue: props.defaultValue,
@@ -111,16 +111,13 @@ export const Textarea = defineComponent({
 
       return h(
         InputGroupRoot as ArkPart,
-        { class: cn(slots.group(), props.classNames?.group), variant: props.variant },
+        { class: slots.group({ class: props.classNames?.group }), variant: props.variant },
         () => [
           h(FieldPrimitive.Textarea as ArkPart, {
             ...attrs,
-            class: cn(
-              slots.clearableRoot(),
-              canClear.value && "pe-9",
-              props.class,
-              props.classNames?.clearableRoot,
-            ),
+            class: slots.clearableRoot({
+              class: cn(canClear.value && "pe-9", props.class, props.classNames?.clearableRoot),
+            }),
             "data-testid": props.testId,
             defaultValue: props.defaultValue,
             disabled: props.disabled,

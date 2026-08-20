@@ -149,13 +149,13 @@ export const Clipboard = defineComponent({
           h(
             ClipboardPrimitive.Control as ArkPart,
             {
-              class: cn(slots_.control(), props.classNames?.control),
+              class: slots_.control({ class: props.classNames?.control }),
             },
             () => [
               props.variant === "input"
                 ? h(ClipboardPrimitive.Input as ArkPart, {
                     ...controlProps,
-                    class: cn(shellClassName, slots_.input(), props.classNames?.input),
+                    class: cn(shellClassName, slots_.input({ class: props.classNames?.input })),
                     readOnly: true,
                   })
                 : null,
@@ -163,7 +163,7 @@ export const Clipboard = defineComponent({
               props.variant === "value"
                 ? h(ClipboardPrimitive.ValueText as ArkPart, {
                     ...controlProps,
-                    class: cn(shellClassName, slots_.value(), props.classNames?.value),
+                    class: cn(shellClassName, slots_.value({ class: props.classNames?.value })),
                   })
                 : null,
 
@@ -180,7 +180,7 @@ export const Clipboard = defineComponent({
                     h(
                       ClipboardPrimitive.Indicator as ArkPart,
                       {
-                        class: cn(slots_.indicator(), props.classNames?.indicator),
+                        class: slots_.indicator({ class: props.classNames?.indicator }),
                       },
                       { copied: () => copiedIcon, default: () => copyIcon },
                     ),
@@ -194,10 +194,10 @@ export const Clipboard = defineComponent({
         return control;
       }
 
-      return h("div", { class: cn(slots_.field(), props.classNames?.field) }, [
+      return h("div", { class: slots_.field({ class: props.classNames?.field }) }, [
         h(
           "span",
-          { ...props.labelProps, class: cn(slots_.label(), props.classNames?.label) },
+          { ...props.labelProps, class: slots_.label({ class: props.classNames?.label }) },
           props.label,
         ),
         control,

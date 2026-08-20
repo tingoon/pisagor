@@ -27,7 +27,7 @@ export const NavbarRoot = defineComponent({
         ark.header as ArkPart,
         {
           ...attrs,
-          class: cn(slots$.root(), props.class, attrs.class, props.classNames?.root),
+          class: slots$.base({ class: cn(props.class, attrs.class, props.classNames?.base) }),
           "data-part": "root",
           "data-scope": "navbar",
           "data-testid": props.testId,
@@ -53,7 +53,7 @@ export const NavbarBrand = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(slots$.brand(), props.class, attrs.class, props.classNames?.brand),
+          class: slots$.brand({ class: cn(props.class, attrs.class, props.classNames?.brand) }),
           "data-part": "brand",
           "data-scope": "navbar",
         },
@@ -78,7 +78,7 @@ export const NavbarContent = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(slots$.content(), props.class, attrs.class, props.classNames?.content),
+          class: slots$.content({ class: cn(props.class, attrs.class, props.classNames?.content) }),
           "data-part": "content",
           "data-scope": "navbar",
         },
@@ -105,7 +105,7 @@ export const NavbarNav = defineComponent({
         {
           ...attrs,
           "aria-label": props.ariaLabel,
-          class: cn(slots$.nav(), props.class, attrs.class, props.classNames?.nav),
+          class: slots$.nav({ class: cn(props.class, attrs.class, props.classNames?.nav) }),
           "data-part": "nav",
           "data-scope": "navbar",
         },
@@ -130,7 +130,7 @@ export const NavbarActions = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(slots$.actions(), props.class, attrs.class, props.classNames?.actions),
+          class: slots$.actions({ class: cn(props.class, attrs.class, props.classNames?.actions) }),
           "data-part": "actions",
           "data-scope": "navbar",
         },

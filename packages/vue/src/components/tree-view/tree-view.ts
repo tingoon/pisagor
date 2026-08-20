@@ -14,7 +14,6 @@ import {
 } from "@phosphor-icons/vue";
 import {
   treeViewBranchContentVariants,
-  treeViewBranchIndentGuideVariants,
   treeViewBranchIndicatorVariants,
   treeViewBranchTitleVariants,
   treeViewBranchVariants,
@@ -200,15 +199,18 @@ export const TreeViewBranchContent = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const recipe = treeViewBranchContentVariants();
+
+      return h(
         TreeViewPrimitive.BranchContent as ArkPart,
         {
           ...attrs,
-          class: cn(treeViewBranchContentVariants(), props.class),
+          class: recipe.base({ class: props.class }),
         },
         () => [h(TreeViewBranchIndentGuide), slots.default?.()],
       );
+    };
   },
 });
 
@@ -216,15 +218,18 @@ const TreeViewBranchIndentGuide = defineComponent({
   inheritAttrs: false,
   name: "TreeViewBranchIndentGuide",
   setup(_, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const recipe = treeViewBranchContentVariants();
+
+      return h(
         TreeViewPrimitive.BranchIndentGuide as ArkPart,
         {
           ...attrs,
-          class: treeViewBranchIndentGuideVariants(),
+          class: recipe.indentGuide(),
         },
         slots.default?.(),
       );
+    };
   },
 });
 

@@ -128,13 +128,13 @@ export const ToastItem = defineComponent({
         ToastPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(slots.root(), props.class, props.classNames?.root),
+          class: slots.base({ class: cn(props.class, props.classNames?.base) }),
         },
         () => [
           h(
             "div",
             {
-              class: cn(slots.content(), props.classNames?.content),
+              class: slots.content({ class: props.classNames?.content }),
               "data-part": "content",
               "data-scope": "toast",
             },
@@ -143,22 +143,23 @@ export const ToastItem = defineComponent({
                 "div",
                 {
                   ...(props.iconProps ?? {}),
-                  class: cn(slots.icon(), props.classNames?.icon),
+                  class: slots.icon({ class: props.classNames?.icon }),
                   "data-part": "icon",
                   "data-scope": "toast",
                 },
                 () => icon,
               ),
-              h("div", { class: cn(slots.body(), props.classNames?.body) }, () => [
+              h("div", { class: slots.body({ class: props.classNames?.body }) }, () => [
                 h(
                   ToastPrimitive.Title as ArkPart,
                   {
                     ...(props.titleProps ?? {}),
-                    class: cn(
-                      slots.title(),
-                      props.classNames?.title,
-                      (props.titleProps as { class?: ClassValue } | undefined)?.class,
-                    ),
+                    class: slots.title({
+                      class: cn(
+                        props.classNames?.title,
+                        (props.titleProps as { class?: ClassValue } | undefined)?.class,
+                      ),
+                    }),
                   },
                   () => toastData.title,
                 ),
@@ -167,11 +168,12 @@ export const ToastItem = defineComponent({
                       ToastPrimitive.Description as ArkPart,
                       {
                         ...(props.descriptionProps ?? {}),
-                        class: cn(
-                          slots.description(),
-                          props.classNames?.description,
-                          (props.descriptionProps as { class?: ClassValue } | undefined)?.class,
-                        ),
+                        class: slots.description({
+                          class: cn(
+                            props.classNames?.description,
+                            (props.descriptionProps as { class?: ClassValue } | undefined)?.class,
+                          ),
+                        }),
                       },
                       () => toastData.description,
                     )
@@ -183,7 +185,7 @@ export const ToastItem = defineComponent({
             "div",
             {
               ...(props.actionsProps ?? {}),
-              class: cn(slots.actions(), props.classNames?.actions),
+              class: slots.actions({ class: props.classNames?.actions }),
               "data-part": "actions",
               "data-scope": "toast",
             },

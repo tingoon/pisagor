@@ -12,7 +12,6 @@ import {
   comboboxEmptyVariants,
   comboboxGroupLabelVariants,
   comboboxInline2Variants,
-  comboboxInline3Variants,
   comboboxInlineVariants,
   comboboxItemVariants,
   comboboxListVariants,
@@ -358,23 +357,21 @@ export const ComboboxItem = defineComponent({
     showIndicator: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const recipe = comboboxItemVariants({ showIndicator: props.showIndicator });
+
+      return h(
         ComboboxPrimitive.Item as ArkPart,
         {
           ...attrs,
-          class: cn(
-            comboboxItemVariants({ showIndicator: props.showIndicator }),
-            props.class,
-            attrs.class,
-          ),
+          class: recipe.base({ class: cn(props.class, attrs.class) }),
           item: props.item,
           persistFocus: true,
         },
         () => [
           slots.default?.(),
           props.showIndicator
-            ? h("span", { class: comboboxInline3Variants() }, () =>
+            ? h("span", { class: recipe.indicator() }, () =>
                 h(ComboboxPrimitive.ItemIndicator as ArkPart, {}, () =>
                   h(PhCheck, { "aria-hidden": true }),
                 ),
@@ -382,6 +379,7 @@ export const ComboboxItem = defineComponent({
             : null,
         ],
       );
+    };
   },
 });
 

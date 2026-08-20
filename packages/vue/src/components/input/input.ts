@@ -112,7 +112,7 @@ export const Input = defineComponent({
       return h(InputGroupRoot as ArkPart, { size: props.size, variant: props.variant }, () => [
         h(FieldPrimitive.Input as ArkPart, {
           ...attrs,
-          class: cn(slots.clearableRoot(), props.class, props.classNames?.clearableRoot),
+          class: slots.clearableRoot({ class: cn(props.class, props.classNames?.clearableRoot) }),
           "data-size": props.size,
           "data-testid": props.testId,
           defaultValue: props.defaultValue,

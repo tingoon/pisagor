@@ -1,4 +1,4 @@
-import { fileInputControlVariants, fileInputInlineVariants } from "@pisagor/styles/ui/file-input";
+import { fileInputVariants } from "@pisagor/styles/ui/file-input";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, ref } from "vue";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
@@ -109,6 +109,7 @@ export const FileInput = defineComponent({
       const resolved = useFormControlVariant(props.variant);
       const shellArgs = shellVariantArgs(resolved);
       const controlProps = formControlShellProps(resolved);
+      const recipe = fileInputVariants();
 
       return h(
         "div",
@@ -128,7 +129,7 @@ export const FileInput = defineComponent({
             accept: props.accept,
             "aria-invalid": props.invalid || undefined,
             capture: props.capture,
-            class: fileInputControlVariants(),
+            class: recipe.control(),
             "data-invalid": props.invalid || undefined,
             "data-part": "control",
             "data-scope": "file-input",
@@ -151,7 +152,7 @@ export const FileInput = defineComponent({
           h(
             InputGroupText as ArkPart,
             {
-              class: fileInputInlineVariants(),
+              class: recipe.label(),
               onClick: props.disabled ? undefined : openPicker,
             },
             () => fileLabel.value ?? props.placeholder,

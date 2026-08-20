@@ -56,7 +56,7 @@ export const Progress = defineComponent({
         ProgressRoot as ArkPart,
         {
           ...attrs,
-          class: cn(variantSlots.root(), props.class, props.classNames?.root),
+          class: variantSlots.base({ class: cn(props.class, props.classNames?.base) }),
           "data-testid": props.testId,
           modelValue: props.indeterminate ? null : props.value,
           orientation: props.orientation,
@@ -67,34 +67,38 @@ export const Progress = defineComponent({
 
             if (showHeader) {
               children.push(
-                h("div", { class: cn(variantSlots.header(), props.classNames?.header) }, () => {
-                  const headerNodes: VNode[] = [];
+                h(
+                  "div",
+                  { class: variantSlots.header({ class: props.classNames?.header }) },
+                  () => {
+                    const headerNodes: VNode[] = [];
 
-                  if (props.label) {
-                    headerNodes.push(
-                      h(
-                        FieldLabel as ArkPart,
-                        {
-                          class: cn(fieldLabelVariants()),
-                        },
-                        () => props.label,
-                      ),
-                    );
-                  }
+                    if (props.label) {
+                      headerNodes.push(
+                        h(
+                          FieldLabel as ArkPart,
+                          {
+                            class: cn(fieldLabelVariants()),
+                          },
+                          () => props.label,
+                        ),
+                      );
+                    }
 
-                  if (props.isValueVisible) {
-                    headerNodes.push(
-                      h(FieldLabel as ArkPart, { asChild: true }, () =>
-                        h(ProgressValueText as ArkPart, {
-                          ...props.valueProps,
-                          class: cn(variantSlots.value(), props.classNames?.value),
-                        }),
-                      ),
-                    );
-                  }
+                    if (props.isValueVisible) {
+                      headerNodes.push(
+                        h(FieldLabel as ArkPart, { asChild: true }, () =>
+                          h(ProgressValueText as ArkPart, {
+                            ...props.valueProps,
+                            class: variantSlots.value({ class: props.classNames?.value }),
+                          }),
+                        ),
+                      );
+                    }
 
-                  return headerNodes;
-                }),
+                    return headerNodes;
+                  },
+                ),
               );
             }
 
@@ -108,12 +112,12 @@ export const Progress = defineComponent({
                 ProgressTrack as ArkPart,
                 {
                   ...props.trackProps,
-                  class: cn(variantSlots.track(), props.classNames?.track),
+                  class: variantSlots.track({ class: props.classNames?.track }),
                 },
                 () =>
                   h(ProgressRange as ArkPart, {
                     ...props.rangeProps,
-                    class: cn(variantSlots.range(), props.classNames?.range),
+                    class: variantSlots.range({ class: props.classNames?.range }),
                   }),
               ),
             );

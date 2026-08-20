@@ -4,7 +4,6 @@ import {
   marqueeEdgeVariants,
   marqueeItemVariants,
   marqueeVariants,
-  marqueeViewportVariants,
 } from "@pisagor/styles/ui/marquee";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
@@ -83,17 +82,20 @@ export const MarqueeContent = defineComponent({
   inheritAttrs: false,
   name: "MarqueeContent",
   setup(_, { attrs, slots }) {
-    return () =>
-      h(MarqueePrimitive.Viewport as ArkPart, { class: marqueeViewportVariants() }, () =>
+    return () => {
+      const recipe = marqueeContentVariants();
+
+      return h(MarqueePrimitive.Viewport as ArkPart, { class: recipe.viewport() }, () =>
         h(
           MarqueePrimitive.Content as ArkPart,
           {
             ...attrs,
-            class: cn(marqueeContentVariants(), attrs.class),
+            class: recipe.base({ class: cn(attrs.class) }),
           },
           slots,
         ),
       );
+    };
   },
 });
 

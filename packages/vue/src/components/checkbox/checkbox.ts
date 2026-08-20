@@ -1,10 +1,6 @@
 import { Checkbox as CheckboxPrimitive } from "@ark-ui/vue/checkbox";
 import { PhCheck, PhMinus } from "@phosphor-icons/vue";
-import {
-  checkbox2Variants,
-  checkboxGroupVariants,
-  checkboxIndicatorVariants,
-} from "@pisagor/styles/ui/checkbox";
+import { checkbox2Variants, checkboxGroupVariants } from "@pisagor/styles/ui/checkbox";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import {
@@ -65,6 +61,7 @@ export const CheckboxRoot = defineComponent({
       const resolved = useFormControlVariant(props.variant);
       const shellArgs = shellVariantArgs(resolved);
       const controlProps = formControlShellProps(resolved);
+      const recipe = checkbox2Variants();
 
       return h(
         CheckboxPrimitive.Root as ArkPart,
@@ -73,8 +70,7 @@ export const CheckboxRoot = defineComponent({
           ...controlProps,
           class: cn(
             formControlToggleVariants({ size: "md", ...shellArgs }),
-            checkbox2Variants(),
-            props.class,
+            recipe.base({ class: props.class }),
           ),
           "data-testid": props.testId,
           onCheckedChange: (details: { checked: boolean | "indeterminate" }) => {
@@ -88,14 +84,14 @@ export const CheckboxRoot = defineComponent({
             h(
               CheckboxPrimitive.Indicator as ArkPart,
               {
-                class: checkboxIndicatorVariants(),
+                class: recipe.indicator(),
               },
               () => h(PhCheck),
             ),
             h(
               CheckboxPrimitive.Indicator as ArkPart,
               {
-                class: checkboxIndicatorVariants(),
+                class: recipe.indicator(),
                 indeterminate: true,
               },
               () => h(PhMinus),

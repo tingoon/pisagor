@@ -1,9 +1,5 @@
 import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/vue/radio-group";
-import {
-  radioGroupItemControlVariants,
-  radioGroupItemVariants,
-  radioGroupVariants,
-} from "@pisagor/styles/ui/radio-group";
+import { radioGroupItemVariants, radioGroupVariants } from "@pisagor/styles/ui/radio-group";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
@@ -102,22 +98,20 @@ export const RadioGroupItem = defineComponent({
       const resolved = useFormControlVariant(props.variant);
       const shellArgs = shellVariantArgs(resolved);
       const controlProps = formControlShellProps(resolved);
+      const recipe = radioGroupItemVariants();
 
       return h(
         RadioGroupPrimitive.Item as ArkPart,
         {
           ...attrs,
-          class: cn(radioGroupItemVariants(), props.class),
+          class: recipe.base({ class: props.class }),
           disabled: props.disabled,
           value: props.value,
         },
         () => [
           h(RadioGroupPrimitive.ItemControl as ArkPart, {
             ...controlProps,
-            class: cn(
-              formControlRadioToggleVariants({ ...shellArgs }),
-              radioGroupItemControlVariants(),
-            ),
+            class: cn(formControlRadioToggleVariants({ ...shellArgs }), recipe.control()),
           }),
           h(RadioGroupText as ArkPart, null, slots.default),
           h(RadioGroupPrimitive.ItemHiddenInput as ArkPart, { tabIndex: props.tabIndex }),

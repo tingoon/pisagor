@@ -52,7 +52,7 @@ export const DataListRoot = defineComponent({
         ark.dl,
         {
           ...attrs,
-          class: cn(slots_.root(), props.class, props.classNames?.root),
+          class: slots_.base({ class: cn(props.class, props.classNames?.base) }),
           "data-orientation": props.orientation,
           "data-part": "root",
           "data-scope": "data-list",
@@ -78,7 +78,7 @@ export const DataListItemLabel = defineComponent({
         ark.dt,
         {
           ...attrs,
-          class: cn(slots_.label(), props.class),
+          class: slots_.label({ class: props.class }),
           "data-part": "item-label",
           "data-scope": "data-list",
         },
@@ -102,7 +102,7 @@ export const DataListItemValue = defineComponent({
         ark.dd,
         {
           ...attrs,
-          class: cn(slots_.value(), props.class),
+          class: slots_.value({ class: props.class }),
           "data-part": "item-value",
           "data-scope": "data-list",
         },
@@ -133,7 +133,7 @@ export const DataListItem = defineComponent({
         ark.div,
         {
           ...attrs,
-          class: cn(slots_.item(), props.class, props.classNames?.item),
+          class: slots_.item({ class: cn(props.class, props.classNames?.item) }),
           "data-part": "item",
           "data-scope": "data-list",
         },

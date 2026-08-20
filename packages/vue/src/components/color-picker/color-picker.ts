@@ -7,16 +7,11 @@ import {
 import { ark } from "@ark-ui/vue/factory";
 import { PhCheck, PhEyedropper, PhX } from "@phosphor-icons/vue";
 import {
-  colorPickerAreaBackgroundVariants,
   colorPickerAreaThumbVariants,
   colorPickerAreaVariants,
-  colorPickerChannelSliderThumbVariants,
-  colorPickerChannelSliderTrackVariants,
   colorPickerChannelSliderVariants,
   colorPickerContentVariants,
   colorPickerControlVariants,
-  colorPickerInline2Variants,
-  colorPickerInline3Variants,
   colorPickerInline4Variants,
   colorPickerInline5Variants,
   colorPickerInlineVariants,
@@ -295,27 +290,26 @@ export const ColorPickerSlider = defineComponent({
   name: "ColorPicker.Slider",
   props: { class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> } },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const recipe = colorPickerChannelSliderVariants();
+
+      return h(
         ColorPickerPrimitive.ChannelSlider as ArkPart,
         {
           ...attrs,
-          class: cn(
-            colorPickerChannelSliderVariants(),
-            props.class,
-            (attrs as { class?: ClassValue }).class,
-          ),
+          class: recipe.base({ class: cn(props.class, (attrs as { class?: ClassValue }).class) }),
         },
         () => [
           slots.default?.(),
           h(ColorPickerPrimitive.ChannelSliderTrack as ArkPart, {
-            class: cn(colorPickerChannelSliderTrackVariants()),
+            class: recipe.track(),
           }),
           h(ColorPickerPrimitive.ChannelSliderThumb as ArkPart, {
-            class: cn(colorPickerChannelSliderThumbVariants()),
+            class: recipe.thumb(),
           }),
         ],
       );
+    };
   },
 });
 
@@ -483,28 +477,32 @@ export const ColorPickerArea = defineComponent({
     showDots: { default: false, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const recipe = colorPickerAreaVariants();
+
+      return h(
         ColorPickerPrimitive.Area as ArkPart,
         {
           ...attrs,
-          class: cn(
-            colorPickerAreaVariants(),
-            {
-              "after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:bg-[radial-gradient(circle,#fff3_1px,#0000_1px)] after:bg-size-[8px_8px]":
-                props.showDots,
-            },
-            props.class,
-            (attrs as { class?: ClassValue }).class,
-          ),
+          class: recipe.base({
+            class: cn(
+              {
+                "after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:bg-[radial-gradient(circle,#fff3_1px,#0000_1px)] after:bg-size-[8px_8px]":
+                  props.showDots,
+              },
+              props.class,
+              (attrs as { class?: ClassValue }).class,
+            ),
+          }),
         },
         () => [
           h(ColorPickerPrimitive.AreaBackground as ArkPart, {
-            class: cn(colorPickerAreaBackgroundVariants()),
+            class: recipe.background(),
           }),
           slots.default?.(),
         ],
       );
+    };
   },
 });
 
@@ -549,29 +547,28 @@ export const ColorPickerSwatchPreview = defineComponent({
   name: "ColorPicker.SwatchPreview",
   props: { class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> } },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const recipe = colorPickerInputSwatchVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(
-            colorPickerInputSwatchVariants(),
-            props.class,
-            (attrs as { class?: ClassValue }).class,
-          ),
+          class: recipe.base({ class: cn(props.class, (attrs as { class?: ClassValue }).class) }),
           "data-part": "input-swatch",
           "data-scope": "color-picker",
         },
         () => [
           h(ColorPickerPrimitive.TransparencyGrid as ArkPart, {
-            class: cn(colorPickerInline2Variants()),
+            class: recipe.grid(),
           }),
           h(ColorPickerPrimitive.ValueSwatch as ArkPart, {
-            class: cn(colorPickerInline3Variants()),
+            class: recipe.swatch(),
           }),
           slots.default?.(),
         ],
       );
+    };
   },
 });
 

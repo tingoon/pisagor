@@ -51,7 +51,7 @@ const CircularProgressTrack = defineComponent({
         {
           ...props.trackProps,
           "aria-hidden": "true",
-          class: cn(slots.track(), props.classNames?.track),
+          class: slots.track({ class: props.classNames?.track }),
           "data-part": "circle",
           "data-scope": "circular-progress",
           height: props.size,
@@ -68,7 +68,7 @@ const CircularProgressTrack = defineComponent({
             strokeWidth: props.thickness,
           }),
           h("circle", {
-            class: cn(slots.range(), props.classNames?.range),
+            class: slots.range({ class: props.classNames?.range }),
             cx: props.size / 2,
             cy: props.size / 2,
             "data-part": "range",
@@ -126,11 +126,11 @@ export const CircularProgress = defineComponent({
         children.push(
           h(
             "span",
-            { class: cn(variantSlots.valueWrapper(), props.classNames?.valueWrapper) },
+            { class: variantSlots.valueWrapper({ class: props.classNames?.valueWrapper }) },
             () =>
               h(CircularProgressValue as ArkPart, {
                 ...props.valueProps,
-                class: cn(variantSlots.value(), props.classNames?.value),
+                class: variantSlots.value({ class: props.classNames?.value }),
               }),
           ),
         );
@@ -154,7 +154,7 @@ export const CircularProgress = defineComponent({
         ProgressRoot as ArkPart,
         {
           ...attrs,
-          class: cn(variantSlots.root(), props.class, props.classNames?.root),
+          class: variantSlots.base({ class: cn(props.class, props.classNames?.base) }),
           "data-testid": props.testId,
           modelValue: props.indeterminate ? null : props.value,
         },

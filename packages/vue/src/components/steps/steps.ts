@@ -6,8 +6,6 @@ import {
   stepsContentVariants,
   stepsDescriptionVariants,
   stepsIndicatorVariants,
-  stepsInline2Variants,
-  stepsInlineVariants,
   stepsItemVariants,
   stepsListVariants,
   stepsSeparatorVariants,
@@ -110,18 +108,21 @@ export const StepsIndicator = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const recipe = stepsIndicatorVariants();
+
+      return h(
         StepsPrimitive.Indicator as ArkPart,
         {
           ...attrs,
-          class: cn(stepsIndicatorVariants(), props.class),
+          class: recipe.base({ class: props.class }),
         },
         () => [
-          h("span", { class: stepsInlineVariants() }, slots.default?.()),
-          h(PhCheck, { class: stepsInline2Variants() }),
+          h("span", { class: recipe.label() }, slots.default?.()),
+          h(PhCheck, { class: recipe.check() }),
         ],
       );
+    };
   },
 });
 

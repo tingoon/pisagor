@@ -58,7 +58,7 @@ export const AlertRoot = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(contextValue.value.slots.root(), props.class, props.classNames?.root),
+          class: contextValue.value.slots.base({ class: cn(props.class, props.classNames?.base) }),
           "data-part": "root",
           "data-scope": "alert",
           "data-testid": props.testId,
@@ -89,7 +89,7 @@ export const AlertTitle = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(variantSlots.title(), classNames?.title, props.class),
+          class: variantSlots.title({ class: cn(props.class, classNames?.title) }),
           "data-part": "title",
           "data-scope": "alert",
         },
@@ -120,7 +120,7 @@ export const AlertDescription = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(variantSlots.description(), classNames?.description, props.class),
+          class: variantSlots.description({ class: cn(props.class, classNames?.description) }),
           "data-part": "description",
           "data-scope": "alert",
         },
@@ -151,7 +151,7 @@ export const AlertAction = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(variantSlots.action(), classNames?.action, props.class),
+          class: variantSlots.action({ class: cn(props.class, classNames?.action) }),
           "data-part": "action",
           "data-scope": "alert",
         },

@@ -2,7 +2,6 @@ import { QrCode as QrCodePrimitive } from "@ark-ui/vue/qr-code";
 import {
   qrCodeFrameVariants,
   qrCodeOverlayVariants,
-  qrCodePatternVariants,
   qrCodeVariants,
 } from "@pisagor/styles/ui/qr-code";
 import { cn } from "@pisagor/utils";
@@ -46,18 +45,21 @@ export const QrCodeFrame = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs }) {
-    return () =>
-      h(
+    return () => {
+      const recipe = qrCodeFrameVariants();
+
+      return h(
         QrCodePrimitive.Frame as ArkPart,
         {
           ...attrs,
-          class: cn(qrCodeFrameVariants(), props.class),
+          class: recipe.base({ class: props.class }),
         },
         () =>
           h(QrCodePrimitive.Pattern as ArkPart, {
-            class: qrCodePatternVariants(),
+            class: recipe.pattern(),
           }),
       );
+    };
   },
 });
 

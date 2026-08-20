@@ -36,7 +36,7 @@ export const EmptyStateRoot = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(slots_.root(), props.class, props.classNames?.root),
+          class: slots_.base({ class: cn(props.class, props.classNames?.base) }),
           "data-part": "root",
           "data-scope": "empty-state",
           "data-testid": props.testId,
@@ -65,7 +65,7 @@ function createEmptyStatePart(slot: keyof ReturnType<typeof emptyStateVariants>,
           element as ArkPart,
           {
             ...attrs,
-            class: cn(slots_[slot](), props.class, props.classNames?.[slot]),
+            class: slots_[slot]({ class: cn(props.class, props.classNames?.[slot]) }),
             "data-part": part,
             "data-scope": "empty-state",
           },

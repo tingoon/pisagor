@@ -49,7 +49,7 @@ export const JsonTreeView = defineComponent({
         JsonTreeViewPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(slots_.root(), props.class, props.classNames?.root),
+          class: slots_.base({ class: cn(props.class, props.classNames?.base) }),
           data: props.data,
           "data-testid": props.testId,
           defaultExpandedDepth: props.defaultExpandedDepth,
@@ -61,7 +61,7 @@ export const JsonTreeView = defineComponent({
             JsonTreeViewPrimitive.Tree as ArkPart,
             {
               ...props.treeProps,
-              class: cn(slots_.tree(), props.classNames?.tree),
+              class: slots_.tree({ class: props.classNames?.tree }),
             },
             {
               arrow: () => h(PhCaretRight),

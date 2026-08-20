@@ -82,12 +82,14 @@ export const PhoneInput = defineComponent({
               InputGroup.Addon as ArkPart,
               {
                 align: "inline-start",
-                class: cn(slots.countryTrigger(), (attrs as { class?: ClassValue }).class),
+                class: slots.countryTrigger({
+                  class: cn((attrs as { class?: ClassValue }).class),
+                }),
                 "data-part": "country-trigger",
                 "data-scope": "phone-input",
               },
               () =>
-                h("span", { class: cn(slots.flag(), phoneInputInlineVariants()) }, () =>
+                h("span", { class: slots.flag({ class: phoneInputInlineVariants() }) }, () =>
                   h(PhGlobe),
                 ),
             ),
@@ -97,11 +99,12 @@ export const PhoneInput = defineComponent({
                 ...props.inputProps,
                 ...attrs,
                 "aria-invalid": props.invalid || undefined,
-                class: cn(
-                  slots.input(),
-                  (props.inputProps as unknown as { class?: ClassValue } | undefined)?.class,
-                  (attrs as { class?: ClassValue }).class,
-                ),
+                class: slots.input({
+                  class: cn(
+                    (props.inputProps as unknown as { class?: ClassValue } | undefined)?.class,
+                    (attrs as { class?: ClassValue }).class,
+                  ),
+                }),
                 "data-invalid": props.invalid || undefined,
                 "data-testid": props.testId ? `${props.testId}-input` : undefined,
                 disabled: props.disabled,

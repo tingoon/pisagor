@@ -1,10 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import {
-  menuItemVariants,
-  menuItemWrapper2Variants,
-  menuItemWrapperVariants,
-  menuVariants,
-} from "@pisagor/styles/ui/menu";
+import { menuItemVariants, menuVariants } from "@pisagor/styles/ui/menu";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
@@ -38,7 +33,7 @@ export const MenuRoot = defineComponent({
         {
           ...attrs,
           "aria-label": ariaLabel,
-          class: cn(slots$.root(), attrs.class, props.classNames?.root),
+          class: slots$.base({ class: cn(attrs.class, props.classNames?.base) }),
           "data-part": "root",
           "data-scope": "menu",
           "data-testid": props.testId,
@@ -63,7 +58,7 @@ export const MenuList = defineComponent({
         ark.ul as ArkPart,
         {
           ...attrs,
-          class: cn(slots$.list(), attrs.class, props.classNames?.list),
+          class: slots$.list({ class: cn(attrs.class, props.classNames?.list) }),
           "data-part": "list",
           "data-scope": "menu",
           role: "list",
@@ -88,7 +83,7 @@ export const MenuGroup = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(slots$.group(), attrs.class, props.classNames?.group),
+          class: slots$.group({ class: cn(attrs.class, props.classNames?.group) }),
           "data-part": "group",
           "data-scope": "menu",
           role: "group",
@@ -113,7 +108,7 @@ export const MenuGroupLabel = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(slots$.groupLabel(), attrs.class, props.classNames?.groupLabel),
+          class: slots$.groupLabel({ class: cn(attrs.class, props.classNames?.groupLabel) }),
           "data-part": "group-label",
           "data-scope": "menu",
         },
@@ -133,11 +128,13 @@ export const MenuItem = defineComponent({
     variant: { default: "default", type: String as PropType<"default" | "destructive"> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const recipe = menuVariants();
+
+      return h(
         ark.li as ArkPart,
         {
-          class: menuItemWrapperVariants(),
+          class: recipe.wrapper({ class: props.classNames?.wrapper }),
           "data-part": "item-wrapper",
           "data-scope": "menu",
           role: "none",
@@ -160,6 +157,7 @@ export const MenuItem = defineComponent({
             slots,
           ),
       );
+    };
   },
 });
 
@@ -173,12 +171,12 @@ export const MenuLink = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = menuVariants();
+      const recipe = menuVariants();
 
       return h(
         ark.li as ArkPart,
         {
-          class: menuItemWrapper2Variants(),
+          class: recipe.wrapper({ class: props.classNames?.wrapper }),
           "data-part": "item-wrapper",
           "data-scope": "menu",
           role: "none",
@@ -189,7 +187,7 @@ export const MenuLink = defineComponent({
             {
               ...attrs,
               "aria-current": props.active ? "page" : undefined,
-              class: cn(slots$.link(), props.class, props.classNames?.link),
+              class: recipe.link({ class: cn(props.class, props.classNames?.link) }),
               "data-active": props.active,
               "data-part": "link",
               "data-scope": "menu",
@@ -216,7 +214,7 @@ export const MenuSeparator = defineComponent({
         {
           ...attrs,
           "aria-hidden": true,
-          class: cn(slots$.separator(), attrs.class, props.classNames?.separator),
+          class: slots$.separator({ class: cn(attrs.class, props.classNames?.separator) }),
           "data-part": "separator",
           "data-scope": "menu",
           role: "separator",
@@ -241,7 +239,7 @@ export const MenuShortcut = defineComponent({
         ark.span as ArkPart,
         {
           ...attrs,
-          class: cn(slots$.shortcut(), attrs.class, props.classNames?.shortcut),
+          class: slots$.shortcut({ class: cn(attrs.class, props.classNames?.shortcut) }),
           "data-part": "shortcut",
           "data-scope": "menu",
         },

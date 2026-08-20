@@ -6,7 +6,6 @@ import {
   popoverFooterVariants,
   popoverHeaderVariants,
   popoverInline2Variants,
-  popoverInlineVariants,
   popoverTitleVariants,
 } from "@pisagor/styles/ui/popover";
 import { cn } from "@pisagor/utils";
@@ -137,26 +136,27 @@ export const PopoverContent = defineComponent({
     showCloseButton: { default: false, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      popoverTeleport(
+    return () => {
+      const recipe = popoverContentVariants();
+
+      return popoverTeleport(
         h(PopoverPositioner, null, () =>
           h(
             PopoverPrimitive.Content as ArkPart,
             {
               ...attrs,
-              class: cn(popoverContentVariants(), props.class),
+              class: recipe.base({ class: props.class }),
             },
             () => [
               slots.default?.(),
               props.showCloseButton
-                ? h(PopoverClose, { asChild: true }, () =>
-                    renderIconCloseButton(popoverInlineVariants()),
-                  )
+                ? h(PopoverClose, { asChild: true }, () => renderIconCloseButton(recipe.close()))
                 : null,
             ],
           ),
         ),
       );
+    };
   },
 });
 

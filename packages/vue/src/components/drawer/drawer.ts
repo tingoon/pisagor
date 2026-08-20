@@ -5,10 +5,8 @@ import {
   drawerContentVariants,
   drawerDescriptionVariants,
   drawerFooterVariants,
-  drawerGrabberIndicatorVariants,
   drawerGrabberVariants,
   drawerHeaderVariants,
-  drawerInlineVariants,
   drawerOverlayVariants,
   drawerPositionerVariants,
   drawerTitleVariants,
@@ -198,22 +196,25 @@ export const DrawerGrabber = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h("div", { class: drawerInlineVariants() }, () =>
+    return () => {
+      const recipe = drawerGrabberVariants();
+
+      return h("div", { class: recipe.wrapper() }, () =>
         h(
           DrawerPrimitive.Grabber as ArkPart,
           {
             ...attrs,
-            class: cn(drawerGrabberVariants(), props.class),
+            class: recipe.base({ class: props.class }),
           },
           () => [
             h(DrawerPrimitive.GrabberIndicator as ArkPart, {
-              class: drawerGrabberIndicatorVariants(),
+              class: recipe.indicator(),
             }),
             slots.default?.(),
           ],
         ),
       );
+    };
   },
 });
 
