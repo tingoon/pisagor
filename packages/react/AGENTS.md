@@ -116,7 +116,7 @@ Rules:
 - `testId` is optional and app-owned. Prefer `getByRole` / `getByLabelText` first.
 - Use `testId` when multiple instances share the same role/label, or for Playwright/Cypress anchors.
 - Do not use `testId` for styling; use `data-scope` / `data-part` for CSS.
-- If both `testId` and `data-testid` are passed, `data-testid` wins.
+- Prefer `testId` over passing `data-testid` directly.
 
 Query priority:
 

@@ -89,11 +89,9 @@ export function FloatingPanelRoot({
   testId,
   ...rest
 }: FloatingPanelRootProps) {
-  const { "data-testid": dataTestId, ...props } = rest as typeof rest & { "data-testid"?: string };
-
   return (
-    <FloatingPanelRootContext value={{ testId: dataTestId ?? testId }}>
-      <FloatingPanelPrimitive.Root lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...props} />
+    <FloatingPanelRootContext value={{ testId }}>
+      <FloatingPanelPrimitive.Root lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...rest} />
     </FloatingPanelRootContext>
   );
 }

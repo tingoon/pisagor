@@ -69,11 +69,9 @@ export function DrawerRoot({
   testId,
   ...rest
 }: DrawerRootProps) {
-  const { "data-testid": dataTestId, ...props } = rest as typeof rest & { "data-testid"?: string };
-
   return (
-    <DrawerContext value={{ testId: dataTestId ?? testId }}>
-      <DrawerPrimitive.Root lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...props} />
+    <DrawerContext value={{ testId }}>
+      <DrawerPrimitive.Root lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...rest} />
     </DrawerContext>
   );
 }

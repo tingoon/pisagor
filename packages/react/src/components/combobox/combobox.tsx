@@ -125,18 +125,15 @@ export function ComboboxRoot<T extends CollectionItem = CollectionItem>({
   testId,
   ...rest
 }: ComboboxRootProps<T>) {
-  const { "data-testid": dataTestId, ...props } = rest as typeof rest & { "data-testid"?: string };
-  const rootContext = { testId: dataTestId ?? testId };
-
   return (
-    <ComboboxRootContext value={rootContext}>
+    <ComboboxRootContext value={{ testId }}>
       <FormControlVariantProvider value={variant}>
         <ComboboxPrimitive.Root
           lazyMount={lazyMount}
           onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
           openOnClick={openOnClick}
           unmountOnExit={unmountOnExit}
-          {...props}
+          {...rest}
           collection={collectionProp as ListCollection<T>}
         >
           {children}

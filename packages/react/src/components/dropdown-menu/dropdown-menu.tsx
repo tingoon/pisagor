@@ -71,15 +71,13 @@ export function DropdownMenuRoot({
   testId,
   ...rest
 }: DropdownMenuRootProps) {
-  const { "data-testid": dataTestId, ...props } = rest as typeof rest & { "data-testid"?: string };
-
   return (
-    <DropdownMenuRootContext value={{ testId: dataTestId ?? testId }}>
+    <DropdownMenuRootContext value={{ testId }}>
       <MenuPrimitive.Root
         lazyMount={lazyMount}
         positioning={positioning}
         unmountOnExit={unmountOnExit}
-        {...props}
+        {...rest}
       />
     </DropdownMenuRootContext>
   );

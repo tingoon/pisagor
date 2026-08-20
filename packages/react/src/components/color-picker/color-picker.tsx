@@ -160,7 +160,6 @@ export function ColorPickerRoot({
   testId,
   ...rest
 }: ColorPickerProps) {
-  const { "data-testid": dataTestId, ...props } = rest as typeof rest & { "data-testid"?: string };
   const [internalValue, setInternalValue] = useState(defaultValue);
 
   const isControlled = value !== undefined;
@@ -173,7 +172,7 @@ export function ColorPickerRoot({
   };
 
   return (
-    <ColorPickerRootContext value={{ testId: dataTestId ?? testId }}>
+    <ColorPickerRootContext value={{ testId }}>
       <FormControlVariantProvider value={variant}>
         <ColorPickerPrimitive.Root
           className={colorPickerVariants({ className })}
@@ -183,7 +182,7 @@ export function ColorPickerRoot({
           positioning={positioning}
           unmountOnExit={unmountOnExit}
           value={isControlled && value ? parseColor(value) : undefined}
-          {...props}
+          {...rest}
         >
           {children}
 

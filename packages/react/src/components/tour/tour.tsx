@@ -84,7 +84,6 @@ export function TourRoot({
   testId,
   ...rest
 }: TourProps) {
-  const { "data-testid": dataTestId, ...props } = rest as typeof rest & { "data-testid"?: string };
   const [isStarted, setIsStarted] = useState(false);
 
   const tour = useTour({ steps });
@@ -107,12 +106,12 @@ export function TourRoot({
   }, [tour]);
 
   return (
-    <TourContext value={{ handleStart, testId: dataTestId ?? testId, tour }}>
+    <TourContext value={{ handleStart, testId, tour }}>
       <TourPrimitive.Root
         lazyMount={lazyMount}
         tour={tour}
         unmountOnExit={unmountOnExit}
-        {...props}
+        {...rest}
       />
     </TourContext>
   );

@@ -61,15 +61,13 @@ export function PopoverRoot({
   testId,
   ...rest
 }: PopoverRootProps) {
-  const { "data-testid": dataTestId, ...props } = rest as typeof rest & { "data-testid"?: string };
-
   return (
-    <PopoverRootContext value={{ testId: dataTestId ?? testId }}>
+    <PopoverRootContext value={{ testId }}>
       <PopoverPrimitive.Root
         lazyMount={lazyMount}
         modal={modal}
         unmountOnExit={unmountOnExit}
-        {...props}
+        {...rest}
       />
     </PopoverRootContext>
   );

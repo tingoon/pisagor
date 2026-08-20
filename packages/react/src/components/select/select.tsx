@@ -108,17 +108,14 @@ export function SelectRoot<T extends CollectionItem = CollectionItem>({
   testId,
   ...rest
 }: SelectRootProps<T>) {
-  const { "data-testid": dataTestId, ...props } = rest as typeof rest & { "data-testid"?: string };
-  const rootContext = { testId: dataTestId ?? testId };
-
   return (
-    <SelectRootContext value={rootContext}>
+    <SelectRootContext value={{ testId }}>
       <FormControlVariantProvider value={variant}>
         <SelectPrimitive.Root
           lazyMount={lazyMount}
           onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
           unmountOnExit={unmountOnExit}
-          {...props}
+          {...rest}
           collection={collectionProp as ListCollection<T>}
         >
           {children}

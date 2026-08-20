@@ -27,17 +27,15 @@ export function HoverCardRoot({
   testId,
   ...rest
 }: HoverCardRootProps) {
-  const { "data-testid": dataTestId, ...props } = rest as typeof rest & { "data-testid"?: string };
-
   return (
-    <HoverCardRootContext value={{ testId: dataTestId ?? testId }}>
+    <HoverCardRootContext value={{ testId }}>
       <HoverCardPrimitive.Root
         closeDelay={closeDelay}
         lazyMount={lazyMount}
         openDelay={openDelay}
         positioning={positioning}
         unmountOnExit={unmountOnExit}
-        {...props}
+        {...rest}
       />
     </HoverCardRootContext>
   );

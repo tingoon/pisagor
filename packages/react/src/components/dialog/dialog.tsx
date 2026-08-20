@@ -90,15 +90,13 @@ export function DialogRoot({
   testId,
   ...rest
 }: DialogRootProps) {
-  const { "data-testid": dataTestId, ...props } = rest as typeof rest & { "data-testid"?: string };
-
   return (
-    <DialogContext value={{ modal, testId: dataTestId ?? testId }}>
+    <DialogContext value={{ modal, testId }}>
       <DialogPrimitive.Root
         lazyMount={lazyMount}
         modal={modal}
         unmountOnExit={unmountOnExit}
-        {...props}
+        {...rest}
       />
     </DialogContext>
   );

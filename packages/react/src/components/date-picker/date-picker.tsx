@@ -82,16 +82,14 @@ export function DatePickerRoot({
   testId,
   ...rest
 }: DatePickerRootProps) {
-  const { "data-testid": dataTestId, ...props } = rest as typeof rest & { "data-testid"?: string };
-
   return (
-    <DatePickerRootContext value={{ testId: dataTestId ?? testId }}>
+    <DatePickerRootContext value={{ testId }}>
       <FormControlVariantProvider value={variant}>
         <DatePickerPrimitive.Root
           inline={false}
           onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
           positioning={positioning}
-          {...props}
+          {...rest}
         />
       </FormControlVariantProvider>
     </DatePickerRootContext>
