@@ -5,16 +5,13 @@ const meta = preview.meta({
   component: AvatarGroup,
   parameters: {
     docs: {
-      api: "compound-shorthand",
-      checklist: {
-        accessibleColor: true,
-        definedOptions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Shows several people at once by stacking avatars, with an optional count for members that do not fit.",
       },
+    },
+    metadata: {
+      api: "compound-shorthand",
       taxonomy: "standard",
     },
   },

@@ -17,20 +17,14 @@ const meta = preview.meta({
   component: ContextMenu,
   parameters: {
     docs: {
-      aliases: ["right-click-menu"],
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Opens a menu of actions at the pointer so users can act on an item in its surrounding context.",
       },
+    },
+    metadata: {
+      aliases: ["right-click-menu"],
+      api: "compound",
       taxonomy: "pattern",
     },
   },

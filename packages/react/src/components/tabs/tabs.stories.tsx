@@ -7,20 +7,14 @@ const meta = preview.meta({
   component: Tabs,
   parameters: {
     docs: {
-      aliases: ["tablist"],
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Organizes related content into panels that users switch between without leaving the page.",
       },
+    },
+    metadata: {
+      aliases: ["tablist"],
+      api: "compound",
       taxonomy: "standard",
     },
   },

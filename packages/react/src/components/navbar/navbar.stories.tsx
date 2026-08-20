@@ -12,23 +12,17 @@ const meta = preview.meta({
   component: Navbar,
   parameters: {
     docs: {
-      aliases: ["header"],
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Top application bar with brand, navigation, and action slots. Pair with Sidebar for dashboard layouts.",
       },
-      taxonomy: "pattern",
     },
     layout: "fullscreen",
+    metadata: {
+      aliases: ["header"],
+      api: "compound",
+      taxonomy: "pattern",
+    },
   },
   subcomponents: {
     Actions: Navbar.Actions,

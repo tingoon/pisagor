@@ -6,14 +6,6 @@ const meta = preview.meta({
   component: FileField,
   parameters: {
     docs: {
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component: "Combines Field and FileInput for uploading one or more files with validation.",
       },

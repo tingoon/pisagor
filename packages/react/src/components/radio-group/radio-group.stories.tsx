@@ -6,18 +6,12 @@ const meta = preview.meta({
   component: RadioGroup,
   parameters: {
     docs: {
-      api: "compound-shorthand",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component: "Lets users pick exactly one option from a small set of related choices.",
       },
+    },
+    metadata: {
+      api: "compound-shorthand",
       taxonomy: "standard",
     },
   },

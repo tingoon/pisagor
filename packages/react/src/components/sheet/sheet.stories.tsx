@@ -5,20 +5,14 @@ const meta = preview.meta({
   component: Sheet,
   parameters: {
     docs: {
-      aliases: ["side-panel"],
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Slides a panel in from the edge of the screen for secondary tasks on mobile and desktop.",
       },
+    },
+    metadata: {
+      aliases: ["side-panel"],
+      api: "compound",
       taxonomy: "pattern",
     },
   },

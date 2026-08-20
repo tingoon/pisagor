@@ -6,20 +6,14 @@ const meta = preview.meta({
   component: RichTextEditor,
   parameters: {
     docs: {
-      aliases: ["wysiwyg", "rte"],
-      api: "compound-shorthand",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Lets users write and format rich text with common styles such as bold, lists, and emphasis.",
       },
+    },
+    metadata: {
+      aliases: ["wysiwyg", "rte"],
+      api: "compound-shorthand",
       taxonomy: "standard",
     },
   },

@@ -6,20 +6,14 @@ const meta = preview.meta({
   component: Accordion,
   parameters: {
     docs: {
-      aliases: ["disclosure"],
-      api: "compound-shorthand",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Lets users expand and collapse sections of content so they can scan headings and open only what they need.",
       },
+    },
+    metadata: {
+      aliases: ["disclosure"],
+      api: "compound-shorthand",
       taxonomy: "standard",
     },
   },

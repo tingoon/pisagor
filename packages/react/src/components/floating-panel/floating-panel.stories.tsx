@@ -15,20 +15,14 @@ const meta = preview.meta({
   component: FloatingPanel,
   parameters: {
     docs: {
-      aliases: ["window"],
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Presents draggable, resizable content in a floating window for tools or inspectors.",
       },
+    },
+    metadata: {
+      aliases: ["window"],
+      api: "compound",
       taxonomy: "pattern",
     },
   },

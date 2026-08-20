@@ -5,19 +5,13 @@ const meta = preview.meta({
   component: Toolbar,
   parameters: {
     docs: {
-      api: "compound-shorthand",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Organizes a section heading on the left and related actions on the right for list and page headers.",
       },
+    },
+    metadata: {
+      api: "compound-shorthand",
       taxonomy: "pattern",
     },
   },

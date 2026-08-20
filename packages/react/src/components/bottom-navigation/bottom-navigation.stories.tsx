@@ -6,20 +6,14 @@ const meta = preview.meta({
   component: BottomNavigation,
   parameters: {
     docs: {
-      aliases: ["tab-bar"],
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Gives mobile users quick access to the main sections of an app from a bar fixed to the bottom of the screen.",
       },
+    },
+    metadata: {
+      aliases: ["tab-bar"],
+      api: "compound",
       taxonomy: "pattern",
     },
   },

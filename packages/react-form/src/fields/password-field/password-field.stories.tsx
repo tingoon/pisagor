@@ -6,14 +6,6 @@ const meta = preview.meta({
   component: PasswordField,
   parameters: {
     docs: {
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Combines Field and PasswordInput with show-hide control, label, and optional error message.",

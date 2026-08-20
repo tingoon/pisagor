@@ -7,18 +7,12 @@ const meta = preview.meta({
   component: DatePicker,
   parameters: {
     docs: {
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component: "Lets users pick a date or range from a calendar inside a field or popover.",
       },
+    },
+    metadata: {
+      api: "compound",
       taxonomy: "pattern",
     },
   },

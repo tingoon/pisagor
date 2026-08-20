@@ -6,19 +6,13 @@ const meta = preview.meta({
   component: Slider,
   parameters: {
     docs: {
-      api: "closed",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Lets users pick a value along a track by dragging a thumb, optionally with labeled steps.",
       },
+    },
+    metadata: {
+      api: "closed",
       taxonomy: "standard",
     },
   },

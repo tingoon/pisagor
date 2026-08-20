@@ -6,14 +6,6 @@ const meta = preview.meta({
   component: SelectField,
   parameters: {
     docs: {
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component: "Combines Field and Select with label, helper text, and optional error message.",
       },

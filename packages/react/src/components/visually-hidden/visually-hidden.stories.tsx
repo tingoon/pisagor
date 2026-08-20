@@ -5,15 +5,14 @@ const meta = preview.meta({
   component: VisuallyHidden,
   parameters: {
     docs: {
-      aliases: ["screenreader-only", "sr-only"],
-      api: "closed",
-      checklist: {
-        accessibleColor: true,
-      },
       description: {
         component:
           "Hides text from the screen while keeping it available to screen readers and other assistive technology.",
       },
+    },
+    metadata: {
+      aliases: ["screenreader-only", "sr-only"],
+      api: "closed",
       taxonomy: "primitive",
     },
   },

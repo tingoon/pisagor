@@ -6,20 +6,14 @@ const meta = preview.meta({
   component: Carousel,
   parameters: {
     docs: {
-      aliases: ["slideshow"],
-      api: "compound-shorthand",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Steps through a set of slides or images so users can browse one item at a time without leaving the page.",
       },
+    },
+    metadata: {
+      aliases: ["slideshow"],
+      api: "compound-shorthand",
       taxonomy: "standard",
     },
   },

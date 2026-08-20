@@ -5,17 +5,14 @@ const meta = preview.meta({
   component: Spinner,
   parameters: {
     docs: {
-      aliases: ["loader"],
-      api: "closed",
-      checklist: {
-        accessibleColor: true,
-        definedOptions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Shows that something is loading when the wait time is short and a progress bar is not needed.",
       },
+    },
+    metadata: {
+      aliases: ["loader"],
+      api: "closed",
       taxonomy: "primitive",
     },
   },

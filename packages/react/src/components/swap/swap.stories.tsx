@@ -7,16 +7,13 @@ const meta = preview.meta({
   component: Swap,
   parameters: {
     docs: {
-      api: "closed",
-      checklist: {
-        definedOptions: true,
-        interactiveStates: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Swaps between two pieces of content with a transition, such as play and pause icons.",
       },
+    },
+    metadata: {
+      api: "closed",
       taxonomy: "primitive",
     },
   },

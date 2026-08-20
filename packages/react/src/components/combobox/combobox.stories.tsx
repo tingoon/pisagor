@@ -8,19 +8,13 @@ const meta = preview.meta({
   component: Combobox,
   parameters: {
     docs: {
-      api: "compound-shorthand",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Internal selection engine that combines search with a filterable list. Prefer Select, Autocomplete, or Listbox in application code.",
       },
+    },
+    metadata: {
+      api: "compound-shorthand",
       taxonomy: "standard",
     },
   },

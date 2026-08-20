@@ -7,20 +7,14 @@ const meta = preview.meta({
   component: HoverCard,
   parameters: {
     docs: {
-      aliases: ["popover-card"],
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Reveals richer preview content when the user pauses over a trigger, without opening a full overlay.",
       },
+    },
+    metadata: {
+      aliases: ["popover-card"],
+      api: "compound",
       taxonomy: "standard",
     },
   },

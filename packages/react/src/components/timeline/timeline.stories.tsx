@@ -6,17 +6,14 @@ const meta = preview.meta({
   component: Timeline,
   parameters: {
     docs: {
-      aliases: ["activity", "milestones"],
-      api: "compound-shorthand",
-      checklist: {
-        accessibleColor: true,
-        definedOptions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Shows a sequence of events or milestones so users can follow progress over time.",
       },
+    },
+    metadata: {
+      aliases: ["activity", "milestones"],
+      api: "compound-shorthand",
       taxonomy: "standard",
     },
   },

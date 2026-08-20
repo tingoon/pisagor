@@ -5,10 +5,12 @@ const meta = preview.meta({
   component: Separator,
   parameters: {
     docs: {
-      api: "closed",
       description: {
         component: "Visually divides sections of content so grouped information is easier to scan.",
       },
+    },
+    metadata: {
+      api: "closed",
       taxonomy: "primitive",
     },
   },

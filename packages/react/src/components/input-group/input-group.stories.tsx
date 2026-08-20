@@ -15,19 +15,13 @@ const meta = preview.meta({
   component: InputGroup,
   parameters: {
     docs: {
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Combines inputs with icons, buttons, or labels in one control so related actions stay together.",
       },
+    },
+    metadata: {
+      api: "compound",
       taxonomy: "standard",
     },
   },

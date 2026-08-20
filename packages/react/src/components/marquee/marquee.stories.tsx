@@ -27,15 +27,13 @@ const meta = preview.meta({
   component: Marquee,
   parameters: {
     docs: {
-      api: "compound-shorthand",
-      checklist: {
-        definedOptions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Scrolls content horizontally in a continuous loop for logos, quotes, or promotional strips.",
       },
+    },
+    metadata: {
+      api: "compound-shorthand",
       taxonomy: "standard",
     },
   },

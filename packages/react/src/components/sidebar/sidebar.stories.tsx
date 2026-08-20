@@ -6,23 +6,17 @@ const meta = preview.meta({
   component: Sidebar.Provider,
   parameters: {
     docs: {
-      aliases: ["side-nav"],
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Provides a collapsible application sidebar with keyboard shortcut, mobile sheet fallback, and nested menu primitives.",
       },
-      taxonomy: "pattern",
     },
     layout: "fullscreen",
+    metadata: {
+      aliases: ["side-nav"],
+      api: "compound",
+      taxonomy: "pattern",
+    },
   },
   subcomponents: {
     Content: Sidebar.Content,

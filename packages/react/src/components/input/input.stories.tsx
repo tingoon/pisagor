@@ -6,19 +6,13 @@ const meta = preview.meta({
   component: Input,
   parameters: {
     docs: {
-      api: "closed",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Captures a single line of text from the user for names, search terms, and other short values.",
       },
+    },
+    metadata: {
+      api: "closed",
       taxonomy: "primitive",
     },
   },

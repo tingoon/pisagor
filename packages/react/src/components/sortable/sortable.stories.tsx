@@ -6,20 +6,14 @@ const meta = preview.meta({
   component: Sortable,
   parameters: {
     docs: {
-      aliases: ["reorder", "drag-list"],
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Lets users reorder a list by dragging items or moving them with Alt and arrow keys.",
       },
+    },
+    metadata: {
+      aliases: ["reorder", "drag-list"],
+      api: "compound",
       taxonomy: "standard",
     },
   },

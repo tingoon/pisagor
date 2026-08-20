@@ -6,16 +6,13 @@ const meta = preview.meta({
   component: Avatar,
   parameters: {
     docs: {
-      api: "closed",
-      checklist: {
-        accessibleColor: true,
-        definedOptions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Shows who a user is in the interface — usually a profile photo, or initials or an icon when there is no image or it has not loaded yet.",
       },
+    },
+    metadata: {
+      api: "closed",
       taxonomy: "standard",
     },
   },

@@ -8,22 +8,16 @@ const meta = preview.meta({
   component: AppShell,
   parameters: {
     docs: {
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Multi-region application shell with draggable side panels and an optional inspector for dashboard layouts.",
       },
-      taxonomy: "pattern",
     },
     layout: "fullscreen",
+    metadata: {
+      api: "compound",
+      taxonomy: "pattern",
+    },
   },
   subcomponents: {
     Banner: AppShell.Banner,

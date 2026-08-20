@@ -13,19 +13,13 @@ const meta = preview.meta({
   component: DataTable,
   parameters: {
     docs: {
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: "partial",
-      },
       description: {
         component:
           "Renders basic tabular data with columns and rows. Prefer Data Grid when you need resize, virtualization, or advanced interactions.",
       },
+    },
+    metadata: {
+      api: "compound",
       taxonomy: "pattern",
     },
   },

@@ -8,20 +8,14 @@ const meta = preview.meta({
   component: Autocomplete,
   parameters: {
     docs: {
-      aliases: ["typeahead"],
-      api: "compound-shorthand",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Helps users pick one option from a long list by typing to filter suggestions as they go.",
       },
+    },
+    metadata: {
+      aliases: ["typeahead"],
+      api: "compound-shorthand",
       taxonomy: "standard",
     },
   },

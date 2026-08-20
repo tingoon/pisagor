@@ -6,19 +6,13 @@ const meta = preview.meta({
   component: Collapsible,
   parameters: {
     docs: {
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Hides and reveals a section of content behind a trigger so users can keep dense pages manageable.",
       },
+    },
+    metadata: {
+      api: "compound",
       taxonomy: "standard",
     },
   },

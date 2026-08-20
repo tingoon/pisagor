@@ -7,11 +7,13 @@ const meta = preview.meta({
   component: Presence,
   parameters: {
     docs: {
-      api: "closed",
       description: {
         component:
           "Animates elements in and out of the tree so enter and exit transitions feel smooth.",
       },
+    },
+    metadata: {
+      api: "closed",
       taxonomy: "primitive",
     },
   },

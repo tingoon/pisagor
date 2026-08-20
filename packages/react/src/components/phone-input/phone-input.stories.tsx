@@ -7,19 +7,13 @@ const meta = preview.meta({
   component: PhoneInput,
   parameters: {
     docs: {
-      api: "closed",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Collects phone numbers with a searchable country selector and consistent international formatting.",
       },
+    },
+    metadata: {
+      api: "closed",
       taxonomy: "pattern",
     },
   },

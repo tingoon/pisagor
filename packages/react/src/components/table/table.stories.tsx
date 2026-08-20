@@ -7,17 +7,13 @@ const meta = preview.meta({
   component: Table,
   parameters: {
     docs: {
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Presents rows and columns of data in a structured grid for comparison and scanning.",
       },
+    },
+    metadata: {
+      api: "compound",
       taxonomy: "standard",
     },
   },

@@ -14,19 +14,13 @@ const meta = preview.meta({
   component: Steps,
   parameters: {
     docs: {
-      aliases: ["stepper", "wizard"],
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component: "Guides users through a multi-step flow and shows which stage they are on.",
       },
+    },
+    metadata: {
+      aliases: ["stepper", "wizard"],
+      api: "compound",
       taxonomy: "pattern",
     },
   },

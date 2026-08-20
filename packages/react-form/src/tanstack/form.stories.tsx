@@ -10,14 +10,6 @@ const meta = preview.meta({
   component: Fragment,
   parameters: {
     docs: {
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Shows every connected form field wired to a single form with default values and a submit button.",

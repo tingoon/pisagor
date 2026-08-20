@@ -6,19 +6,13 @@ const meta = preview.meta({
   component: NumberInput,
   parameters: {
     docs: {
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Captures numeric values with optional steppers and validation for quantities and settings.",
       },
+    },
+    metadata: {
+      api: "compound",
       taxonomy: "standard",
     },
   },

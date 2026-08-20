@@ -61,16 +61,13 @@ const meta = preview.meta({
   component: Surface,
   parameters: {
     docs: {
-      api: "closed",
-      checklist: {
-        definedBehaviors: true,
-        definedOptions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Provides a semantic background layer for grouped content such as cards and panels, with automatic elevation for nested sections.",
       },
+    },
+    metadata: {
+      api: "closed",
       taxonomy: "primitive",
     },
   },

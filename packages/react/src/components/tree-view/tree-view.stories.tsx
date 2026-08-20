@@ -20,20 +20,14 @@ const meta = preview.meta({
   component: TreeView,
   parameters: {
     docs: {
-      aliases: ["tree"],
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Browses nested folders or categories in an expandable tree for files, navigation, and hierarchies.",
       },
+    },
+    metadata: {
+      aliases: ["tree"],
+      api: "compound",
       taxonomy: "pattern",
     },
   },

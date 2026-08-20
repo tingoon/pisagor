@@ -8,20 +8,14 @@ const meta = preview.meta({
   component: Command,
   parameters: {
     docs: {
-      aliases: ["command-palette"],
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Offers a searchable command palette for jumping to actions, pages, or settings from the keyboard.",
       },
+    },
+    metadata: {
+      aliases: ["command-palette"],
+      api: "compound",
       taxonomy: "pattern",
     },
   },

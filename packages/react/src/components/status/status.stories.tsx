@@ -6,16 +6,13 @@ const meta = preview.meta({
   component: Status,
   parameters: {
     docs: {
-      api: "closed",
-      checklist: {
-        accessibleColor: "partial",
-        definedOptions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Signals state with a small colored dot so users can see availability or severity at a glance.",
       },
+    },
+    metadata: {
+      api: "closed",
       taxonomy: "primitive",
     },
   },

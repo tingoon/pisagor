@@ -7,20 +7,14 @@ const meta = preview.meta({
   component: FileUpload,
   parameters: {
     docs: {
-      aliases: ["upload"],
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Lets users choose files to upload with drag-and-drop or a file picker and shows upload progress.",
       },
+    },
+    metadata: {
+      aliases: ["upload"],
+      api: "compound",
       taxonomy: "pattern",
     },
   },

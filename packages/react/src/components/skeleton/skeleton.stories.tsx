@@ -5,17 +5,14 @@ const meta = preview.meta({
   component: Skeleton,
   parameters: {
     docs: {
-      aliases: ["placeholder"],
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedOptions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Placeholder shapes that pulse while content loads so layouts feel stable instead of empty.",
       },
+    },
+    metadata: {
+      aliases: ["placeholder"],
+      api: "compound",
       taxonomy: "primitive",
     },
   },

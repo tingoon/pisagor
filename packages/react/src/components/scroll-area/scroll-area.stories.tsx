@@ -6,16 +6,13 @@ const meta = preview.meta({
   component: ScrollArea,
   parameters: {
     docs: {
-      api: "closed",
-      checklist: {
-        definedBehaviors: true,
-        definedOptions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Scrolls overflow content with styled scrollbars and optional fade edges that match the surrounding interface.",
       },
+    },
+    metadata: {
+      api: "closed",
       taxonomy: "standard",
     },
   },

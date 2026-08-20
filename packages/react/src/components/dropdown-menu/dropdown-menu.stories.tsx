@@ -26,19 +26,13 @@ const meta = preview.meta({
   component: DropdownMenu,
   parameters: {
     docs: {
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Opens a dropdown list of actions or destinations from a trigger for navigation and contextual commands.",
       },
+    },
+    metadata: {
+      api: "compound",
       taxonomy: "standard",
     },
   },

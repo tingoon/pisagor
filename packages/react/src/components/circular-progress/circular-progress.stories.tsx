@@ -7,16 +7,13 @@ const meta = preview.meta({
   component: CircularProgress,
   parameters: {
     docs: {
-      api: "closed",
-      checklist: {
-        accessibleColor: true,
-        definedOptions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Shows how far along a task is on a circular track, including indeterminate loading when the duration is unknown.",
       },
+    },
+    metadata: {
+      api: "closed",
       taxonomy: "primitive",
     },
   },

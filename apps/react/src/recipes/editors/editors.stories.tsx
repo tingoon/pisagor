@@ -7,14 +7,6 @@ const meta = preview.meta({
   component: IdeLayoutRecipe,
   parameters: {
     docs: {
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Editor compositions for IDE layouts, rich text toolbars, and editable user cards.",

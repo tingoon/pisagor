@@ -14,20 +14,14 @@ const meta = preview.meta({
   ],
   parameters: {
     docs: {
-      aliases: ["snackbar"],
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Shows brief feedback messages that appear and dismiss automatically after an action completes.",
       },
+    },
+    metadata: {
+      aliases: ["snackbar"],
+      api: "compound",
       taxonomy: "standard",
     },
   },

@@ -6,20 +6,14 @@ const meta = preview.meta({
   component: Announcement,
   parameters: {
     docs: {
-      aliases: ["banner", "callout"],
-      api: "compound-shorthand",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Draws attention to a short product or marketing message without blocking the rest of the interface.",
       },
+    },
+    metadata: {
+      aliases: ["banner", "callout"],
+      api: "compound-shorthand",
       taxonomy: "standard",
     },
   },

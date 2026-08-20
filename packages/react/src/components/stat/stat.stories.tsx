@@ -6,17 +6,14 @@ const meta = preview.meta({
   component: Stat,
   parameters: {
     docs: {
-      aliases: ["metric"],
-      api: "compound-shorthand",
-      checklist: {
-        accessibleColor: true,
-        definedOptions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Displays a metric with supporting context so users can quickly scan performance and changes.",
       },
+    },
+    metadata: {
+      aliases: ["metric"],
+      api: "compound-shorthand",
       taxonomy: "standard",
     },
   },

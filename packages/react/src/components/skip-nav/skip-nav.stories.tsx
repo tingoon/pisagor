@@ -5,20 +5,14 @@ const meta = preview.meta({
   component: SkipNav.Link,
   parameters: {
     docs: {
-      aliases: ["skip-link"],
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Lets keyboard users jump past repetitive navigation straight to the main content.",
       },
+    },
+    metadata: {
+      aliases: ["skip-link"],
+      api: "compound",
       taxonomy: "standard",
     },
   },

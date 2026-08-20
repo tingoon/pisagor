@@ -7,20 +7,14 @@ const meta = preview.meta({
   component: Clipboard,
   parameters: {
     docs: {
-      aliases: ["copy"],
-      api: "closed",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Copies text to the clipboard with clear feedback so users can reuse values without selecting manually.",
       },
+    },
+    metadata: {
+      aliases: ["copy"],
+      api: "closed",
       taxonomy: "standard",
     },
   },

@@ -5,19 +5,13 @@ const meta = preview.meta({
   component: AlertDialog,
   parameters: {
     docs: {
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Interrupts the user with a focused confirmation before a destructive or irreversible action proceeds.",
       },
+    },
+    metadata: {
+      api: "compound",
       taxonomy: "pattern",
     },
   },

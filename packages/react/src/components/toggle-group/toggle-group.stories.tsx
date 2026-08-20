@@ -8,19 +8,13 @@ const meta = preview.meta({
   component: ToggleGroup,
   parameters: {
     docs: {
-      api: "compound-shorthand",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Lets users choose one or more pressed states from a row of related toggle buttons.",
       },
+    },
+    metadata: {
+      api: "compound-shorthand",
       taxonomy: "standard",
     },
   },

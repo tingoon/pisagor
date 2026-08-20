@@ -6,16 +6,13 @@ const meta = preview.meta({
   component: Badge,
   parameters: {
     docs: {
-      api: "closed",
-      checklist: {
-        accessibleColor: "partial",
-        definedOptions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Labels content with a compact status, category, or count so users can scan it quickly.",
       },
+    },
+    metadata: {
+      api: "closed",
       taxonomy: "primitive",
     },
   },

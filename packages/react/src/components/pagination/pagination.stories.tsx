@@ -7,20 +7,14 @@ const meta = preview.meta({
   component: Pagination,
   parameters: {
     docs: {
-      aliases: ["pager"],
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Moves through long lists or result sets page by page with previous, next, and numbered links.",
       },
+    },
+    metadata: {
+      aliases: ["pager"],
+      api: "compound",
       taxonomy: "standard",
     },
   },

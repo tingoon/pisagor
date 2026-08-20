@@ -7,17 +7,14 @@ const meta = preview.meta({
   component: Progress,
   parameters: {
     docs: {
-      aliases: ["progress-bar"],
-      api: "closed",
-      checklist: {
-        accessibleColor: true,
-        definedOptions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Shows how complete a task is along a track, including indeterminate loading when progress is unknown.",
       },
+    },
+    metadata: {
+      aliases: ["progress-bar"],
+      api: "closed",
       taxonomy: "primitive",
     },
   },

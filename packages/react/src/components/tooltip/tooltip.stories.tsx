@@ -6,19 +6,13 @@ const meta = preview.meta({
   component: Tooltip,
   parameters: {
     docs: {
-      api: "closed",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Explains a control or label on hover or focus with a short message that does not block interaction.",
       },
+    },
+    metadata: {
+      api: "closed",
       taxonomy: "standard",
     },
   },

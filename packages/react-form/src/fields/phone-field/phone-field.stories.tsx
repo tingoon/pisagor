@@ -6,14 +6,6 @@ const meta = preview.meta({
   component: PhoneField,
   parameters: {
     docs: {
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Combines Field and PhoneInput with country selection and optional error message.",

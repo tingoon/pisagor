@@ -50,7 +50,7 @@ Prefer placing new work in the lowest taxonomy level that still solves the use c
 ## Feedback Components
 
 - `alert`: block-level feedback for status, warning, error, or actionable callouts within page flow.
-- `announcement`: compact promotional or informational surface; Storybook `parameters.docs.aliases`: `banner`, `callout`.
+- `announcement`: compact promotional or informational surface; Storybook `parameters.metadata.aliases`: `banner`, `callout`.
 
 ## Naming
 
@@ -68,18 +68,17 @@ Prefer placing new work in the lowest taxonomy level that still solves the use c
 ### Storybook metadata
 
 - Canonical sidebar name → `title` only (no aliases in title).
-- API model → `parameters.docs.api` (`closed` | `compound` | `compound-shorthand`).
-- Taxonomy → `parameters.docs.taxonomy` (`primitive` | `standard` | `pattern`).
-- Alternative names → `parameters.docs.aliases` (optional); not repeated in `description`.
-- Custom docs page in `apps/react` renders API, taxonomy, and alias badges.
+- API model → `parameters.metadata.api` (`closed` | `compound` | `compound-shorthand`) — hidden metadata; not shown in Docs UI.
+- Taxonomy → `parameters.metadata.taxonomy` (`primitive` | `standard` | `pattern`) — hidden metadata; not shown in Docs UI.
+- Alternative names → `parameters.metadata.aliases` (optional); not repeated in `description` — hidden metadata; not shown in Docs UI.
 
 ### New component checklist
 
 1. kebab-case folder and export path (`dropdown-menu`)
 2. PascalCase component export (`DropdownMenu`)
 3. Storybook `title`: `Components/<Category>/<Component Name>`
-4. `parameters.docs.api` + `parameters.docs.taxonomy` + `description.component`
-5. `parameters.docs.aliases` when common alternative names exist
+4. `parameters.metadata.api` + `parameters.metadata.taxonomy` + `parameters.docs.description.component`
+5. `parameters.metadata.aliases` when common alternative names exist
 
 ## Select Stack
 

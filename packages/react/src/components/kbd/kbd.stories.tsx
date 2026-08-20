@@ -6,17 +6,14 @@ const meta = preview.meta({
   component: Kbd,
   parameters: {
     docs: {
-      aliases: ["keyboard"],
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedOptions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Displays keyboard shortcuts in a monospace badge so users know which keys to press.",
       },
+    },
+    metadata: {
+      aliases: ["keyboard"],
+      api: "compound",
       taxonomy: "primitive",
     },
   },

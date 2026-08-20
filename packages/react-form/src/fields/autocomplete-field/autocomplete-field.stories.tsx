@@ -6,14 +6,6 @@ const meta = preview.meta({
   component: AutocompleteField,
   parameters: {
     docs: {
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Combines Field and Autocomplete with label, description, and optional error message.",

@@ -9,19 +9,13 @@ const meta = preview.meta({
   component: Tour,
   parameters: {
     docs: {
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Walks new users through key parts of the interface step by step with guided highlights.",
       },
+    },
+    metadata: {
+      api: "compound",
       taxonomy: "pattern",
     },
   },

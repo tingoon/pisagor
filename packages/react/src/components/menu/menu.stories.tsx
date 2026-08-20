@@ -13,20 +13,14 @@ const meta = preview.meta({
   component: Menu,
   parameters: {
     docs: {
-      aliases: ["nav", "navigation"],
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Always-visible list of navigation links or actions. For popup menus opened from a trigger, use Dropdown Menu.",
       },
+    },
+    metadata: {
+      aliases: ["nav", "navigation"],
+      api: "compound",
       taxonomy: "standard",
     },
   },

@@ -6,20 +6,14 @@ const meta = preview.meta({
   component: Dialog,
   parameters: {
     docs: {
-      aliases: ["modal"],
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Focuses attention on a task or decision in a modal layer above the current page.",
       },
+    },
+    metadata: {
+      aliases: ["modal"],
+      api: "compound",
       taxonomy: "standard",
     },
   },

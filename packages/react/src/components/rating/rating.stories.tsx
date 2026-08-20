@@ -7,19 +7,13 @@ const meta = preview.meta({
   component: Rating,
   parameters: {
     docs: {
-      api: "closed",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Collects or displays a star-style score so users can rate or review at a glance.",
       },
+    },
+    metadata: {
+      api: "closed",
       taxonomy: "standard",
     },
   },

@@ -5,20 +5,14 @@ const meta = preview.meta({
   component: Drawer,
   parameters: {
     docs: {
-      aliases: ["tray"],
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Slides a panel over the page for secondary tasks or details without leaving the current context.",
       },
+    },
+    metadata: {
+      aliases: ["tray"],
+      api: "compound",
       taxonomy: "standard",
     },
   },

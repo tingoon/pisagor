@@ -18,20 +18,14 @@ const meta = preview.meta({
   component: Listbox,
   parameters: {
     docs: {
-      aliases: ["list-box"],
-      api: "compound-shorthand",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Lets users choose one or more options from a scrollable list with clear selection states.",
       },
+    },
+    metadata: {
+      aliases: ["list-box"],
+      api: "compound-shorthand",
       taxonomy: "standard",
     },
   },

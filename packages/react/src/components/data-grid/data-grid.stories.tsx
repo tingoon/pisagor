@@ -50,20 +50,14 @@ const meta = preview.meta({
   component: DataGrid,
   parameters: {
     docs: {
-      aliases: ["advanced-table"],
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: "partial",
-      },
       description: {
         component:
           "Displays large or interactive tabular datasets with grid behaviors such as column resize and virtualization. Prefer Data Table for basic lists.",
       },
+    },
+    metadata: {
+      aliases: ["advanced-table"],
+      api: "compound",
       taxonomy: "pattern",
     },
   },

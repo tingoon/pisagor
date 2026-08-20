@@ -6,16 +6,13 @@ const meta = preview.meta({
   component: Card,
   parameters: {
     docs: {
-      api: "compound",
-      checklist: {
-        definedBehaviors: true,
-        definedOptions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Groups related content and actions into a contained surface that people can scan and compare.",
       },
+    },
+    metadata: {
+      api: "compound",
       taxonomy: "standard",
     },
   },

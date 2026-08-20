@@ -5,20 +5,14 @@ const meta = preview.meta({
   component: Breadcrumb,
   parameters: {
     docs: {
-      aliases: ["breadcrumbs"],
-      api: "compound-shorthand",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Shows where the user is within a hierarchy and lets them jump back to earlier levels.",
       },
+    },
+    metadata: {
+      aliases: ["breadcrumbs"],
+      api: "compound-shorthand",
       taxonomy: "standard",
     },
   },

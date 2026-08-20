@@ -5,11 +5,13 @@ const meta = preview.meta({
   component: AspectRatio,
   parameters: {
     docs: {
-      api: "closed",
       description: {
         component:
           "Keeps media and embedded content at a consistent width-to-height ratio as the layout changes.",
       },
+    },
+    metadata: {
+      api: "closed",
       taxonomy: "primitive",
     },
   },

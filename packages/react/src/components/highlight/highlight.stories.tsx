@@ -7,16 +7,13 @@ const meta = preview.meta({
   component: Highlight,
   parameters: {
     docs: {
-      api: "closed",
-      checklist: {
-        accessibleColor: true,
-        definedOptions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Emphasizes matching words inside text so search results and queries are easier to spot.",
       },
+    },
+    metadata: {
+      api: "closed",
       taxonomy: "primitive",
     },
   },

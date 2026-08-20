@@ -6,17 +6,14 @@ const meta = preview.meta({
   component: File,
   parameters: {
     docs: {
-      aliases: ["attachment", "file-row"],
-      api: "compound-shorthand",
-      checklist: {
-        accessibleColor: true,
-        definedOptions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Represents a file such as an uploaded attachment or downloadable document with its name and metadata.",
       },
+    },
+    metadata: {
+      aliases: ["attachment", "file-row"],
+      api: "compound-shorthand",
       taxonomy: "standard",
     },
   },

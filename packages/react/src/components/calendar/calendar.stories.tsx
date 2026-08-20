@@ -6,20 +6,14 @@ const meta = preview.meta({
   component: Calendar,
   parameters: {
     docs: {
-      aliases: ["date-grid"],
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Lets users browse dates and pick a day, month, or range on a familiar calendar grid.",
       },
+    },
+    metadata: {
+      aliases: ["date-grid"],
+      api: "compound",
       taxonomy: "pattern",
     },
   },

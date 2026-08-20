@@ -5,20 +5,14 @@ const meta = preview.meta({
   component: Popover,
   parameters: {
     docs: {
-      aliases: ["flyout"],
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Anchors extra content to a trigger for compact forms, menus, or details without a full modal.",
       },
+    },
+    metadata: {
+      aliases: ["flyout"],
+      api: "compound",
       taxonomy: "standard",
     },
   },

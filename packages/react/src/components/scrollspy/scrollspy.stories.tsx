@@ -6,20 +6,14 @@ const meta = preview.meta({
   component: Scrollspy,
   parameters: {
     docs: {
-      aliases: ["scroll-spy"],
-      api: "closed",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Highlights navigation links to show which section is currently visible while scrolling.",
       },
+    },
+    metadata: {
+      aliases: ["scroll-spy"],
+      api: "closed",
       taxonomy: "pattern",
     },
   },

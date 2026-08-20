@@ -5,13 +5,12 @@ const meta = preview.meta({
   component: Provider,
   parameters: {
     docs: {
-      api: "closed",
-      checklist: {
-        definedBehaviors: true,
-      },
       description: {
         component: "Wraps the app with locale, icons, hotkeys, and toasts.",
       },
+    },
+    metadata: {
+      api: "closed",
       taxonomy: "primitive",
     },
   },

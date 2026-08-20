@@ -5,19 +5,13 @@ const meta = preview.meta({
   component: NavigationMenu,
   parameters: {
     docs: {
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Displays a horizontal set of navigation links so users can move between top-level sections.",
       },
+    },
+    metadata: {
+      api: "compound",
       taxonomy: "pattern",
     },
   },

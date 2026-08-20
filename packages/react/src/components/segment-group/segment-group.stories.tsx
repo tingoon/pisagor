@@ -6,20 +6,14 @@ const meta = preview.meta({
   component: SegmentGroup,
   parameters: {
     docs: {
-      aliases: ["segmented-control"],
-      api: "compound-shorthand",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Switches between a few related views or modes with segmented controls that show the current choice.",
       },
+    },
+    metadata: {
+      aliases: ["segmented-control"],
+      api: "compound-shorthand",
       taxonomy: "standard",
     },
   },

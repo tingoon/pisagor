@@ -6,14 +6,6 @@ const meta = preview.meta({
   component: NumberField,
   parameters: {
     docs: {
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Combines Field and NumberInput with steppers, label, and optional error message.",

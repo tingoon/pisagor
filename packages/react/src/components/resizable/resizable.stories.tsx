@@ -8,18 +8,13 @@ const meta = preview.meta({
   component: Resizable,
   parameters: {
     docs: {
-      api: "compound",
-      checklist: {
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Splits space between panels with draggable handles so users can adjust layout to their needs.",
       },
+    },
+    metadata: {
+      api: "compound",
       taxonomy: "standard",
     },
   },

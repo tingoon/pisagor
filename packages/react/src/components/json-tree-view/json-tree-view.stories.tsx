@@ -5,19 +5,13 @@ const meta = preview.meta({
   component: JsonTreeView,
   parameters: {
     docs: {
-      api: "closed",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Explores nested JSON as an expandable tree so structured data is easier to inspect.",
       },
+    },
+    metadata: {
+      api: "closed",
       taxonomy: "pattern",
     },
   },

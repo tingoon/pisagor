@@ -6,20 +6,14 @@ const meta = preview.meta({
   component: Chart,
   parameters: {
     docs: {
-      aliases: ["graph"],
-      api: "compound",
-      checklist: {
-        accessibleColor: "partial",
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: "partial",
-        platformScales: true,
-      },
       description: {
         component:
           "Wraps charts in themed, accessible layout so data visualizations match the rest of the interface.",
       },
+    },
+    metadata: {
+      aliases: ["graph"],
+      api: "compound",
       taxonomy: "pattern",
     },
   },

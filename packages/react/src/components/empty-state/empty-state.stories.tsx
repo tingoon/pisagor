@@ -6,20 +6,14 @@ const meta = preview.meta({
   component: EmptyState,
   parameters: {
     docs: {
-      aliases: ["empty"],
-      api: "compound-shorthand",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Shows a centered placeholder when a view has no data and offers the next relevant actions.",
       },
+    },
+    metadata: {
+      aliases: ["empty"],
+      api: "compound-shorthand",
       taxonomy: "pattern",
     },
   },

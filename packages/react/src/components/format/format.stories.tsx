@@ -5,16 +5,13 @@ const meta = preview.meta({
   component: Format.Number,
   parameters: {
     docs: {
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedOptions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Formats numbers, bytes, and relative times for display so values read naturally in the user locale.",
       },
+    },
+    metadata: {
+      api: "compound",
       taxonomy: "primitive",
     },
   },

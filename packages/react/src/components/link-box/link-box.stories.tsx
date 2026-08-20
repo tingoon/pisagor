@@ -5,19 +5,14 @@ const meta = preview.meta({
   component: LinkBox,
   parameters: {
     docs: {
-      aliases: ["link-overlay"],
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Makes an entire card or tile clickable while keeping nested buttons usable underneath.",
       },
+    },
+    metadata: {
+      aliases: ["link-overlay"],
+      api: "compound",
       taxonomy: "primitive",
     },
   },

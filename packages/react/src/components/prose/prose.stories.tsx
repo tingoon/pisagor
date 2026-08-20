@@ -5,16 +5,13 @@ const meta = preview.meta({
   component: Prose,
   parameters: {
     docs: {
-      api: "closed",
-      checklist: {
-        accessibleColor: true,
-        definedOptions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Styles long-form written content with readable typography for articles, docs, and markdown.",
       },
+    },
+    metadata: {
+      api: "closed",
       taxonomy: "primitive",
     },
   },

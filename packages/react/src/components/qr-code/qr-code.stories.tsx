@@ -7,17 +7,14 @@ const meta = preview.meta({
   component: QrCode,
   parameters: {
     docs: {
-      aliases: ["qrcode"],
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedOptions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Displays a scannable QR code so users can open links or share data with a phone camera.",
       },
+    },
+    metadata: {
+      aliases: ["qrcode"],
+      api: "compound",
       taxonomy: "standard",
     },
   },

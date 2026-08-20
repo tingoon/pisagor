@@ -6,14 +6,6 @@ const meta = preview.meta({
   component: DateField,
   parameters: {
     docs: {
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Combines Field and DatePicker with inline input, calendar popover, and optional error message.",

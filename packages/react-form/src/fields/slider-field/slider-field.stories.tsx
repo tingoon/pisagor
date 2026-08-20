@@ -6,14 +6,6 @@ const meta = preview.meta({
   component: SliderField,
   parameters: {
     docs: {
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component: "Combines Field and Slider for numeric range input with validation.",
       },

@@ -15,20 +15,14 @@ const meta = preview.meta({
   component: ActionBar,
   parameters: {
     docs: {
-      aliases: ["bulk-actions"],
-      api: "compound",
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Surfaces bulk actions when one or more items are selected, keeping primary tools close without cluttering the page.",
       },
+    },
+    metadata: {
+      aliases: ["bulk-actions"],
+      api: "compound",
       taxonomy: "pattern",
     },
   },
