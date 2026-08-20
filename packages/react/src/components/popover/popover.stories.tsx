@@ -20,7 +20,7 @@ const meta = preview.meta({
     Anchor: Popover.Anchor,
     Arrow: Popover.Arrow,
     Body: Popover.Body,
-    Close: Popover.Close,
+    CloseTrigger: Popover.CloseTrigger,
     Content: Popover.Content,
     Description: Popover.Description,
     Footer: Popover.Footer,
@@ -196,9 +196,9 @@ export const ScrollArea = meta.story({
             </ul>
           </Popover.Body>
           <Popover.Footer>
-            <Popover.Close asChild>
+            <Popover.CloseTrigger asChild>
               <Button>Close</Button>
-            </Popover.Close>
+            </Popover.CloseTrigger>
           </Popover.Footer>
         </Popover.Content>
       </Popover>

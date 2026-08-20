@@ -3,8 +3,8 @@ import {
   PaginationItem,
   PaginationItemLink,
   PaginationItems,
-  PaginationNext,
-  PaginationPrevious,
+  PaginationNextTrigger,
+  PaginationPrevTrigger,
   PaginationRoot,
 } from "./pagination";
 
@@ -13,8 +13,8 @@ export type {
   PaginationItemLinkProps,
   PaginationItemProps,
   PaginationItemsProps,
-  PaginationNextProps,
-  PaginationPreviousProps,
+  PaginationNextTriggerProps,
+  PaginationPrevTriggerProps,
   PaginationRootProps,
 } from "./pagination";
 
@@ -23,6 +23,6 @@ export const Pagination = Object.assign(PaginationRoot, {
   Item: PaginationItem,
   ItemLink: PaginationItemLink,
   Items: PaginationItems,
-  Next: PaginationNext,
-  Previous: PaginationPrevious,
+  NextTrigger: PaginationNextTrigger,
+  PrevTrigger: PaginationPrevTrigger,
 });

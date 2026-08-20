@@ -30,14 +30,14 @@ const meta = preview.meta({
   },
   subcomponents: {
     Content: ContextMenu.Content,
-    Group: ContextMenu.Group,
+    ContextTrigger: ContextMenu.ContextTrigger,
     Item: ContextMenu.Item,
+    ItemGroup: ContextMenu.ItemGroup,
     Separator: ContextMenu.Separator,
     Shortcut: ContextMenu.Shortcut,
     Sub: ContextMenu.Sub,
     SubContent: ContextMenu.SubContent,
-    SubTrigger: ContextMenu.SubTrigger,
-    Trigger: ContextMenu.Trigger,
+    TriggerItem: ContextMenu.TriggerItem,
   },
   title: "Components/Overlay/Context Menu",
 });
@@ -45,12 +45,12 @@ const meta = preview.meta({
 export const Default = meta.story({
   render: () => (
     <ContextMenu>
-      <ContextMenu.Trigger className="flex aspect-video items-center justify-center rounded-2xl border border-dashed p-20 text-sm">
+      <ContextMenu.ContextTrigger className="flex aspect-video items-center justify-center rounded-2xl border border-dashed p-20 text-sm">
         <span className="pointer-fine:inline-block hidden">Open the menu with a right-click</span>
         <span className="pointer-coarse:inline-block hidden">Long press here</span>
-      </ContextMenu.Trigger>
+      </ContextMenu.ContextTrigger>
       <ContextMenu.Content className="w-40">
-        <ContextMenu.Group>
+        <ContextMenu.ItemGroup>
           <ContextMenu.Item value="forward">
             <PaperPlaneTiltIcon /> Forward
             <ContextMenu.Shortcut>⌘F</ContextMenu.Shortcut>
@@ -68,9 +68,9 @@ export const Default = meta.story({
             <ContextMenu.Shortcut>⌘Z</ContextMenu.Shortcut>
           </ContextMenu.Item>
           <ContextMenu.Sub>
-            <ContextMenu.SubTrigger>
+            <ContextMenu.TriggerItem>
               <FolderOpenIcon /> Move to
-            </ContextMenu.SubTrigger>
+            </ContextMenu.TriggerItem>
             <ContextMenu.SubContent>
               <ContextMenu.Item value="move-to-folder-1">
                 <ArchiveIcon /> Junk
@@ -82,10 +82,10 @@ export const Default = meta.story({
                 <BellIcon /> Reminders
               </ContextMenu.Item>
               <ContextMenu.Sub>
-                <ContextMenu.SubTrigger>
+                <ContextMenu.TriggerItem>
                   <PlusCircleIcon />
                   More
-                </ContextMenu.SubTrigger>
+                </ContextMenu.TriggerItem>
                 <ContextMenu.SubContent>
                   <ContextMenu.Item value="move-to-folder-4">
                     <NotePencilIcon />
@@ -104,7 +104,7 @@ export const Default = meta.story({
             <TrashIcon /> Delete
             <ContextMenu.Shortcut>⌘ ⌫</ContextMenu.Shortcut>
           </ContextMenu.Item>
-        </ContextMenu.Group>
+        </ContextMenu.ItemGroup>
       </ContextMenu.Content>
     </ContextMenu>
   ),

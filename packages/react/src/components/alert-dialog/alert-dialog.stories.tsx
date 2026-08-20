@@ -19,7 +19,7 @@ const meta = preview.meta({
     Action: AlertDialog.Action,
     Body: AlertDialog.Body,
     Cancel: AlertDialog.Cancel,
-    Close: AlertDialog.Close,
+    CloseTrigger: AlertDialog.CloseTrigger,
     Content: AlertDialog.Content,
     Description: AlertDialog.Description,
     Footer: AlertDialog.Footer,
@@ -43,9 +43,9 @@ export const Default = meta.story({
         />
         <AlertDialog.Footer>
           <AlertDialog.Cancel>Don't allow</AlertDialog.Cancel>
-          <AlertDialog.Close asChild>
+          <AlertDialog.CloseTrigger asChild>
             <AlertDialog.Action>Allow</AlertDialog.Action>
-          </AlertDialog.Close>
+          </AlertDialog.CloseTrigger>
         </AlertDialog.Footer>
       </AlertDialog.Content>
     </AlertDialog>
@@ -66,9 +66,9 @@ export const Variants = meta.story({
           />
           <AlertDialog.Footer>
             <AlertDialog.Cancel>Don't allow</AlertDialog.Cancel>
-            <AlertDialog.Close asChild>
+            <AlertDialog.CloseTrigger asChild>
               <AlertDialog.Action variant="default">Allow</AlertDialog.Action>
-            </AlertDialog.Close>
+            </AlertDialog.CloseTrigger>
           </AlertDialog.Footer>
         </AlertDialog.Content>
       </AlertDialog>
@@ -83,9 +83,9 @@ export const Variants = meta.story({
           />
           <AlertDialog.Footer>
             <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
-            <AlertDialog.Close asChild>
+            <AlertDialog.CloseTrigger asChild>
               <AlertDialog.Action variant="destructive">Delete project</AlertDialog.Action>
-            </AlertDialog.Close>
+            </AlertDialog.CloseTrigger>
           </AlertDialog.Footer>
         </AlertDialog.Content>
       </AlertDialog>

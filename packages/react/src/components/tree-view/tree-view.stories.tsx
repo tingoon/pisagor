@@ -34,13 +34,13 @@ const meta = preview.meta({
   subcomponents: {
     Branch: TreeView.Branch,
     BranchContent: TreeView.BranchContent,
+    BranchControl: TreeView.BranchControl,
     BranchIndicator: TreeView.BranchIndicator,
-    BranchItem: TreeView.BranchItem,
-    Checkbox: TreeView.Checkbox,
-    Content: TreeView.Content,
     Item: TreeView.Item,
+    ItemText: TreeView.ItemText,
     Label: TreeView.Label,
-    Node: TreeView.Node,
+    NodeCheckbox: TreeView.NodeCheckbox,
+    NodeProvider: TreeView.NodeProvider,
     Tree: TreeView.Tree,
   },
   title: "Components/Navigation/Tree View",
@@ -77,10 +77,10 @@ export const Default = meta.story({
 
     const TreeNode = ({ node, indexPath, ...rest }: NodeProviderProps) => {
       return (
-        <TreeView.Node {...rest} indexPath={indexPath} node={node}>
+        <TreeView.NodeProvider {...rest} indexPath={indexPath} node={node}>
           {node.children ? (
             <TreeView.Branch>
-              <TreeView.BranchItem>{node.name}</TreeView.BranchItem>
+              <TreeView.BranchControl>{node.name}</TreeView.BranchControl>
 
               <TreeView.BranchContent>
                 {node.children.map((child, index) => (
@@ -89,11 +89,11 @@ export const Default = meta.story({
               </TreeView.BranchContent>
             </TreeView.Branch>
           ) : (
-            <TreeView.Content>
-              <TreeView.Item>{node.name}</TreeView.Item>
-            </TreeView.Content>
+            <TreeView.Item>
+              <TreeView.ItemText>{node.name}</TreeView.ItemText>
+            </TreeView.Item>
           )}
-        </TreeView.Node>
+        </TreeView.NodeProvider>
       );
     };
     return (
@@ -154,10 +154,10 @@ export const Links = meta.story({
 
     const TreeNode = ({ node, indexPath }: NodeProviderProps<TreeNodeWithLinks>) => {
       return (
-        <TreeView.Node indexPath={indexPath} node={node}>
+        <TreeView.NodeProvider indexPath={indexPath} node={node}>
           {node.children ? (
             <TreeView.Branch>
-              <TreeView.BranchItem icon={null}>{node.name}</TreeView.BranchItem>
+              <TreeView.BranchControl icon={null}>{node.name}</TreeView.BranchControl>
               <TreeView.BranchContent>
                 {node.children.map((child, index) => (
                   <TreeNode indexPath={[...indexPath, index]} key={child.id} node={child} />
@@ -165,20 +165,20 @@ export const Links = meta.story({
               </TreeView.BranchContent>
             </TreeView.Branch>
           ) : (
-            <TreeView.Content asChild>
+            <TreeView.Item asChild>
               <a
                 href={node.href ?? "#"}
                 rel={node.href?.startsWith("http") ? "noopener noreferrer" : undefined}
                 target={node.href?.startsWith("http") ? "_blank" : undefined}
               >
-                <TreeView.Item icon={LinkIcon}>
+                <TreeView.ItemText icon={LinkIcon}>
                   {node.name}
                   {node.href?.startsWith("http") && <ArrowSquareOutIcon />}
-                </TreeView.Item>
+                </TreeView.ItemText>
               </a>
-            </TreeView.Content>
+            </TreeView.Item>
           )}
-        </TreeView.Node>
+        </TreeView.NodeProvider>
       );
     };
     return (
@@ -227,13 +227,13 @@ export const CheckboxTree = meta.story({
 
     const TreeNode = ({ node, indexPath }: { node: TreeNodeType; indexPath: number[] }) => {
       return (
-        <TreeView.Node indexPath={indexPath} node={node}>
+        <TreeView.NodeProvider indexPath={indexPath} node={node}>
           {node.children ? (
             <TreeView.Branch>
-              <TreeView.BranchItem>
-                <TreeView.Checkbox />
+              <TreeView.BranchControl>
+                <TreeView.NodeCheckbox />
                 {node.name}
-              </TreeView.BranchItem>
+              </TreeView.BranchControl>
               <TreeView.BranchContent>
                 {node.children.map((child, index) => (
                   <TreeNode indexPath={[...indexPath, index]} key={child.id} node={child} />
@@ -241,12 +241,12 @@ export const CheckboxTree = meta.story({
               </TreeView.BranchContent>
             </TreeView.Branch>
           ) : (
-            <TreeView.Content>
-              <TreeView.Checkbox />
-              <TreeView.Item>{node.name}</TreeView.Item>
-            </TreeView.Content>
+            <TreeView.Item>
+              <TreeView.NodeCheckbox />
+              <TreeView.ItemText>{node.name}</TreeView.ItemText>
+            </TreeView.Item>
           )}
-        </TreeView.Node>
+        </TreeView.NodeProvider>
       );
     };
     const [checkedNodes, setCheckedNodes] = useState<string[]>(["readme.md"]);
@@ -305,13 +305,13 @@ export const WithContextMenu = meta.story({
 
     const TreeNode = ({ node, indexPath, ...rest }: NodeProviderProps) => {
       return (
-        <TreeView.Node {...rest} indexPath={indexPath} node={node}>
+        <TreeView.NodeProvider {...rest} indexPath={indexPath} node={node}>
           {node.children ? (
             <TreeView.Branch>
               <ContextMenu>
-                <ContextMenu.Trigger asChild>
-                  <TreeView.BranchItem>{node.name}</TreeView.BranchItem>
-                </ContextMenu.Trigger>
+                <ContextMenu.ContextTrigger asChild>
+                  <TreeView.BranchControl>{node.name}</TreeView.BranchControl>
+                </ContextMenu.ContextTrigger>
                 <ContextMenu.Content className="w-40">
                   <ContextMenu.Item value="add-folder">
                     <FolderPlusIcon aria-hidden />
@@ -341,11 +341,11 @@ export const WithContextMenu = meta.story({
             </TreeView.Branch>
           ) : (
             <ContextMenu>
-              <ContextMenu.Trigger asChild>
-                <TreeView.Content>
-                  <TreeView.Item>{node.name}</TreeView.Item>
-                </TreeView.Content>
-              </ContextMenu.Trigger>
+              <ContextMenu.ContextTrigger asChild>
+                <TreeView.Item>
+                  <TreeView.ItemText>{node.name}</TreeView.ItemText>
+                </TreeView.Item>
+              </ContextMenu.ContextTrigger>
               <ContextMenu.Content className="w-40">
                 <ContextMenu.Item value="add-file">
                   <PencilSimpleIcon aria-hidden />
@@ -359,7 +359,7 @@ export const WithContextMenu = meta.story({
               </ContextMenu.Content>
             </ContextMenu>
           )}
-        </TreeView.Node>
+        </TreeView.NodeProvider>
       );
     };
     return (
@@ -411,12 +411,12 @@ export const CustomIconsFolder = meta.story({
 
     const TreeNode = ({ node, indexPath, ...rest }: NodeProviderProps) => {
       return (
-        <TreeView.Node {...rest} indexPath={indexPath} node={node}>
+        <TreeView.NodeProvider {...rest} indexPath={indexPath} node={node}>
           {node.children ? (
             <TreeView.Branch>
-              <TreeView.BranchItem expandedIcon={node.expandedIcon} icon={node.icon}>
+              <TreeView.BranchControl expandedIcon={node.expandedIcon} icon={node.icon}>
                 {node.name}
-              </TreeView.BranchItem>
+              </TreeView.BranchControl>
               <TreeView.BranchContent>
                 {node.children.map((child, index) => (
                   <TreeNode indexPath={[...indexPath, index]} key={child.id} node={child} />
@@ -424,11 +424,11 @@ export const CustomIconsFolder = meta.story({
               </TreeView.BranchContent>
             </TreeView.Branch>
           ) : (
-            <TreeView.Content>
-              <TreeView.Item>{node.name}</TreeView.Item>
-            </TreeView.Content>
+            <TreeView.Item>
+              <TreeView.ItemText>{node.name}</TreeView.ItemText>
+            </TreeView.Item>
           )}
-        </TreeView.Node>
+        </TreeView.NodeProvider>
       );
     };
     return (
@@ -476,10 +476,10 @@ export const CustomIconsItem = meta.story({
 
     const TreeNode = ({ node, indexPath, ...rest }: NodeProviderProps) => {
       return (
-        <TreeView.Node {...rest} indexPath={indexPath} node={node}>
+        <TreeView.NodeProvider {...rest} indexPath={indexPath} node={node}>
           {node.children ? (
             <TreeView.Branch>
-              <TreeView.BranchItem>{node.name}</TreeView.BranchItem>
+              <TreeView.BranchControl>{node.name}</TreeView.BranchControl>
 
               <TreeView.BranchContent>
                 {node.children.map((child, index) => (
@@ -488,11 +488,11 @@ export const CustomIconsItem = meta.story({
               </TreeView.BranchContent>
             </TreeView.Branch>
           ) : (
-            <TreeView.Content>
-              <TreeView.Item icon={StarIcon}>{node.name}</TreeView.Item>
-            </TreeView.Content>
+            <TreeView.Item>
+              <TreeView.ItemText icon={StarIcon}>{node.name}</TreeView.ItemText>
+            </TreeView.Item>
           )}
-        </TreeView.Node>
+        </TreeView.NodeProvider>
       );
     };
     return (
@@ -545,10 +545,10 @@ export const CustomIcons = meta.story({
 
     const TreeNode = ({ node, indexPath, ...rest }: NodeProviderProps) => {
       return (
-        <TreeView.Node {...rest} indexPath={indexPath} node={node}>
+        <TreeView.NodeProvider {...rest} indexPath={indexPath} node={node}>
           {node.children ? (
             <TreeView.Branch>
-              <TreeView.BranchItem>{node.name}</TreeView.BranchItem>
+              <TreeView.BranchControl>{node.name}</TreeView.BranchControl>
 
               <TreeView.BranchContent>
                 {node.children.map((child, index) => (
@@ -557,11 +557,11 @@ export const CustomIcons = meta.story({
               </TreeView.BranchContent>
             </TreeView.Branch>
           ) : (
-            <TreeView.Content>
-              <TreeView.Item>{node.name}</TreeView.Item>
-            </TreeView.Content>
+            <TreeView.Item>
+              <TreeView.ItemText>{node.name}</TreeView.ItemText>
+            </TreeView.Item>
           )}
-        </TreeView.Node>
+        </TreeView.NodeProvider>
       );
     };
     return (
@@ -609,10 +609,10 @@ export const MultipleSelection = meta.story({
 
     const TreeNode = ({ node, indexPath, ...rest }: NodeProviderProps) => {
       return (
-        <TreeView.Node {...rest} indexPath={indexPath} node={node}>
+        <TreeView.NodeProvider {...rest} indexPath={indexPath} node={node}>
           {node.children ? (
             <TreeView.Branch>
-              <TreeView.BranchItem>{node.name}</TreeView.BranchItem>
+              <TreeView.BranchControl>{node.name}</TreeView.BranchControl>
 
               <TreeView.BranchContent>
                 {node.children.map((child, index) => (
@@ -621,11 +621,11 @@ export const MultipleSelection = meta.story({
               </TreeView.BranchContent>
             </TreeView.Branch>
           ) : (
-            <TreeView.Content>
-              <TreeView.Item>{node.name}</TreeView.Item>
-            </TreeView.Content>
+            <TreeView.Item>
+              <TreeView.ItemText>{node.name}</TreeView.ItemText>
+            </TreeView.Item>
           )}
-        </TreeView.Node>
+        </TreeView.NodeProvider>
       );
     };
     return (
@@ -673,10 +673,10 @@ export const Rename = meta.story({
 
     const TreeNode = ({ node, indexPath, ...rest }: NodeProviderProps) => {
       return (
-        <TreeView.Node {...rest} indexPath={indexPath} node={node}>
+        <TreeView.NodeProvider {...rest} indexPath={indexPath} node={node}>
           {node.children ? (
             <TreeView.Branch>
-              <TreeView.BranchItem>{node.name}</TreeView.BranchItem>
+              <TreeView.BranchControl>{node.name}</TreeView.BranchControl>
 
               <TreeView.BranchContent>
                 {node.children.map((child, index) => (
@@ -685,11 +685,11 @@ export const Rename = meta.story({
               </TreeView.BranchContent>
             </TreeView.Branch>
           ) : (
-            <TreeView.Content>
-              <TreeView.Item>{node.name}</TreeView.Item>
-            </TreeView.Content>
+            <TreeView.Item>
+              <TreeView.ItemText>{node.name}</TreeView.ItemText>
+            </TreeView.Item>
           )}
-        </TreeView.Node>
+        </TreeView.NodeProvider>
       );
     };
     const [collection, setCollection] = useState(initialCollection);
@@ -745,10 +745,10 @@ export const Controlled = meta.story({
 
     const TreeNode = ({ node, indexPath }: NodeProviderProps) => {
       return (
-        <TreeView.Node indexPath={indexPath} key={node.id} node={node}>
+        <TreeView.NodeProvider indexPath={indexPath} key={node.id} node={node}>
           {node.children ? (
             <TreeView.Branch>
-              <TreeView.BranchItem>{node.name}</TreeView.BranchItem>
+              <TreeView.BranchControl>{node.name}</TreeView.BranchControl>
 
               <TreeView.BranchContent>
                 {node.children.map((child, index) => (
@@ -757,11 +757,11 @@ export const Controlled = meta.story({
               </TreeView.BranchContent>
             </TreeView.Branch>
           ) : (
-            <TreeView.Content>
-              <TreeView.Item>{node.name}</TreeView.Item>
-            </TreeView.Content>
+            <TreeView.Item>
+              <TreeView.ItemText>{node.name}</TreeView.ItemText>
+            </TreeView.Item>
           )}
-        </TreeView.Node>
+        </TreeView.NodeProvider>
       );
     };
     const [selected, setSelected] = useState<string[]>([]);

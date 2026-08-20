@@ -22,13 +22,13 @@ const meta = preview.meta({
     Content: Select.Content,
     Context: Select.Context,
     Empty: Select.Empty,
-    Group: Select.Group,
-    GroupLabel: Select.GroupLabel,
     Item: Select.Item,
+    ItemGroup: Select.ItemGroup,
+    ItemGroupLabel: Select.ItemGroupLabel,
     Root: Select.Root,
     Separator: Select.Separator,
     Trigger: Select.Trigger,
-    Value: Select.Value,
+    ValueText: Select.ValueText,
   },
   title: "Components/Forms/Select",
 });
@@ -55,7 +55,7 @@ export const Sizes = meta.story({
         {(["sm", "md", "lg"] as const).map((size) => (
           <Select.Root collection={collection} key={size}>
             <Select.Trigger size={size}>
-              <Select.Value placeholder="Select framework" />
+              <Select.ValueText placeholder="Select framework" />
             </Select.Trigger>
             <Select.Content>
               {collection.items.map((item) => (
@@ -81,7 +81,7 @@ export const Variants = meta.story({
       <div className="flex flex-col gap-2">
         <Select.Root collection={collection} variant="primary">
           <Select.Trigger>
-            <Select.Value placeholder="Primary" />
+            <Select.ValueText placeholder="Primary" />
           </Select.Trigger>
           <Select.Content>
             {collection.items.map((item) => (
@@ -93,7 +93,7 @@ export const Variants = meta.story({
         </Select.Root>
         <Select.Root collection={collection} variant="secondary">
           <Select.Trigger>
-            <Select.Value placeholder="Secondary" />
+            <Select.ValueText placeholder="Secondary" />
           </Select.Trigger>
           <Select.Content>
             {collection.items.map((item) => (
@@ -121,7 +121,7 @@ export const Empty = meta.story({
     return (
       <Select.Root collection={collection}>
         <Select.Trigger>
-          <Select.Value placeholder="Select an option" />
+          <Select.ValueText placeholder="Select an option" />
         </Select.Trigger>
         <Select.Content>
           <Select.Empty>No items to display. Add an item to get started.</Select.Empty>
@@ -147,17 +147,17 @@ export const Grouping = meta.story({
     return (
       <Select.Root collection={collection}>
         <Select.Trigger>
-          <Select.Value placeholder="Select framework" />
+          <Select.ValueText placeholder="Select framework" />
         </Select.Trigger>
         <Select.Content>
           {collection.group().map(([category, items]) => (
-            <Select.Group heading={category} key={category}>
+            <Select.ItemGroup heading={category} key={category}>
               {items.map((item) => (
                 <Select.Item item={item} key={item.value}>
                   {item.label}
                 </Select.Item>
               ))}
-            </Select.Group>
+            </Select.ItemGroup>
           ))}
         </Select.Content>
       </Select.Root>
@@ -197,9 +197,9 @@ export const MaxSelection = meta.story({
     return (
       <Select.Root collection={collection} multiple onValueChange={handleValueChange} value={value}>
         <Select.Trigger>
-          <Select.Value className="capitalize">
+          <Select.ValueText className="capitalize">
             <Select.Context>{({ value }) => renderValue(value)}</Select.Context>
-          </Select.Value>
+          </Select.ValueText>
         </Select.Trigger>
         <Select.Content>
           {collection.items.map((item) => (
@@ -237,9 +237,9 @@ export const Multiple = meta.story({
     return (
       <Select.Root collection={collection} defaultValue={["javascript", "typescript"]} multiple>
         <Select.Trigger>
-          <Select.Value className="capitalize">
+          <Select.ValueText className="capitalize">
             <Select.Context>{({ value }) => renderValue(value)}</Select.Context>
-          </Select.Value>
+          </Select.ValueText>
         </Select.Trigger>
         <Select.Content>
           {collection.items.map((item) => (
@@ -265,7 +265,7 @@ export const Disabled = meta.story({
     return (
       <Select.Root collection={collection} disabled>
         <Select.Trigger>
-          <Select.Value placeholder="Select framework" />
+          <Select.ValueText placeholder="Select framework" />
         </Select.Trigger>
         <Select.Content>
           {collection.items.map((item) => (
@@ -291,7 +291,7 @@ export const Invalid = meta.story({
     return (
       <Select.Root collection={collection} invalid>
         <Select.Trigger>
-          <Select.Value placeholder="Select framework" />
+          <Select.ValueText placeholder="Select framework" />
         </Select.Trigger>
         <Select.Content>
           {collection.items.map((item) => (
@@ -316,7 +316,7 @@ export const WithScroll = meta.story({
     return (
       <Select.Root collection={collection} positioning={{ fitViewport: true }}>
         <Select.Trigger>
-          <Select.Value placeholder="Select framework" />
+          <Select.ValueText placeholder="Select framework" />
         </Select.Trigger>
         <Select.Content className="max-h-56">
           {collection.items.map((item) => (
@@ -348,7 +348,7 @@ export const Controlled = meta.story({
         value={value}
       >
         <Select.Trigger>
-          <Select.Value placeholder="Select a framework" />
+          <Select.ValueText placeholder="Select a framework" />
         </Select.Trigger>
         <Select.Content>
           {collection.items.map((item) => (
@@ -377,16 +377,16 @@ export const Compound = meta.story({
     return (
       <Select.Root collection={collection}>
         <Select.Trigger>
-          <Select.Value placeholder="Select a fruit" />
+          <Select.ValueText placeholder="Select a fruit" />
         </Select.Trigger>
         <Select.Content>
-          <Select.Group heading="Fruits">
+          <Select.ItemGroup heading="Fruits">
             {collection.items.map((item) => (
               <Select.Item item={item} key={item}>
                 {item}
               </Select.Item>
             ))}
-          </Select.Group>
+          </Select.ItemGroup>
         </Select.Content>
       </Select.Root>
     );

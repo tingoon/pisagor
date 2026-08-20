@@ -48,7 +48,7 @@ export type PopoverTitleProps = ComponentProps<typeof PopoverPrimitive.Title>;
 
 export type PopoverDescriptionProps = ComponentProps<typeof PopoverPrimitive.Description>;
 
-export type PopoverCloseProps = ComponentProps<typeof PopoverPrimitive.CloseTrigger>;
+export type PopoverCloseTriggerProps = ComponentProps<typeof PopoverPrimitive.CloseTrigger>;
 
 export type PopoverArrowProps = ComponentProps<typeof PopoverPrimitive.Arrow>;
 // #endregion
@@ -104,11 +104,11 @@ export function PopoverContent({
           {children}
 
           {!!showCloseButton && (
-            <PopoverClose asChild>
+            <PopoverCloseTrigger asChild>
               <Button aria-label="Close" className={slots.close()} size="icon-sm" variant="ghost">
                 <XIcon />
               </Button>
-            </PopoverClose>
+            </PopoverCloseTrigger>
           )}
         </PopoverPrimitive.Content>
       </PopoverPositioner>
@@ -173,7 +173,7 @@ export function PopoverFooter({ className, ...rest }: ComponentProps<typeof ark.
   );
 }
 
-export function PopoverClose(props: PopoverCloseProps) {
+export function PopoverCloseTrigger(props: PopoverCloseTriggerProps) {
   return <PopoverPrimitive.CloseTrigger {...props} />;
 }
 
@@ -204,6 +204,6 @@ PopoverTitle.displayName = "Popover.Title";
 PopoverDescription.displayName = "Popover.Description";
 PopoverBody.displayName = "Popover.Body";
 PopoverFooter.displayName = "Popover.Footer";
-PopoverClose.displayName = "Popover.Close";
+PopoverCloseTrigger.displayName = "Popover.CloseTrigger";
 PopoverArrow.displayName = "Popover.Arrow";
 // #endregion

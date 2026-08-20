@@ -4,13 +4,13 @@ import type { FormControlVariant } from "../../internal/form-control/form-contro
 import type { WithTestId } from "../../internal/types";
 import {
   Combobox,
-  type ComboboxClearProps,
+  type ComboboxClearTriggerProps,
   type ComboboxContentProps,
   type ComboboxControlProps,
   type ComboboxEmptyProps,
-  type ComboboxGroupLabelProps,
-  type ComboboxGroupProps,
   type ComboboxInputProps,
+  type ComboboxItemGroupLabelProps,
+  type ComboboxItemGroupProps,
   type ComboboxItemProps,
   type ComboboxListProps,
   type ComboboxTriggerProps,
@@ -63,8 +63,8 @@ export function AutocompleteInput({
   return <Combobox.Input {...rest} clearable={clearable} showTrigger={showTrigger} />;
 }
 
-export function AutocompleteGroupLabel(props: ComboboxGroupLabelProps) {
-  return <Combobox.GroupLabel {...props} />;
+export function AutocompleteItemGroupLabel(props: ComboboxItemGroupLabelProps) {
+  return <Combobox.ItemGroupLabel {...props} />;
 }
 
 export function AutocompleteItem(props: ComboboxItemProps) {
@@ -79,12 +79,12 @@ export function AutocompleteTrigger(props: ComboboxTriggerProps) {
   return <Combobox.Trigger {...props} />;
 }
 
-export function AutocompleteClear(props: ComboboxClearProps) {
-  return <Combobox.Clear {...props} />;
+export function AutocompleteClearTrigger(props: ComboboxClearTriggerProps) {
+  return <Combobox.ClearTrigger {...props} />;
 }
 
-export function AutocompleteGroup(props: ComboboxGroupProps) {
-  return <Combobox.Group {...props} />;
+export function AutocompleteItemGroup(props: ComboboxItemGroupProps) {
+  return <Combobox.ItemGroup {...props} />;
 }
 
 export function AutocompleteEmpty(props: ComboboxEmptyProps) {
@@ -122,12 +122,12 @@ export function AutocompleteShorthand({ items, clearable, ...rest }: Autocomplet
 AutocompleteRoot.displayName = "Autocomplete.Root";
 AutocompleteControl.displayName = "Autocomplete.Control";
 AutocompleteInput.displayName = "Autocomplete.Input";
-AutocompleteGroupLabel.displayName = "Autocomplete.GroupLabel";
+AutocompleteItemGroupLabel.displayName = "Autocomplete.ItemGroupLabel";
 AutocompleteItem.displayName = "Autocomplete.Item";
 AutocompleteContent.displayName = "Autocomplete.Content";
 AutocompleteTrigger.displayName = "Autocomplete.Trigger";
-AutocompleteClear.displayName = "Autocomplete.Clear";
-AutocompleteGroup.displayName = "Autocomplete.Group";
+AutocompleteClearTrigger.displayName = "Autocomplete.ClearTrigger";
+AutocompleteItemGroup.displayName = "Autocomplete.ItemGroup";
 AutocompleteEmpty.displayName = "Autocomplete.Empty";
 AutocompleteList.displayName = "Autocomplete.List";
 AutocompleteCollection.displayName = "Autocomplete.Collection";

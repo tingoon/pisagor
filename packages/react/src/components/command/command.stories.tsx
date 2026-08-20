@@ -26,10 +26,10 @@ const meta = preview.meta({
     DialogTrigger: Command.DialogTrigger,
     Empty: Command.Empty,
     Footer: Command.Footer,
-    Group: Command.Group,
-    GroupLabel: Command.GroupLabel,
     Input: Command.Input,
     Item: Command.Item,
+    ItemGroup: Command.ItemGroup,
+    ItemGroupLabel: Command.ItemGroupLabel,
     List: Command.List,
     Separator: Command.Separator,
     Shortcut: Command.Shortcut,
@@ -70,7 +70,7 @@ export const Default = meta.story({
           <Command.Empty />
           <Command.List>
             {collection.group().map(([group, items], index) => (
-              <Command.Group heading={group} key={group}>
+              <Command.ItemGroup heading={group} key={group}>
                 {items.map((item) => (
                   <Command.Item item={item} key={item.value}>
                     {item.label}
@@ -78,7 +78,7 @@ export const Default = meta.story({
                   </Command.Item>
                 ))}
                 {index < collection.group().length - 1 && <Command.Separator />}
-              </Command.Group>
+              </Command.ItemGroup>
             ))}
           </Command.List>
         </Command.Content>
@@ -132,13 +132,13 @@ export const Scrollable = meta.story({
           <Command.Empty />
           <Command.List>
             {collection.group().map(([group, items]) => (
-              <Command.Group heading={group} key={group}>
+              <Command.ItemGroup heading={group} key={group}>
                 {items.map((item) => (
                   <Command.Item item={item} key={item.value}>
                     {item.label}
                   </Command.Item>
                 ))}
-              </Command.Group>
+              </Command.ItemGroup>
             ))}
           </Command.List>
         </Command.Content>
@@ -219,14 +219,14 @@ export const WithDialog = meta.story({
               <Command.Empty>No results found. Try a different search.</Command.Empty>
               <Command.List>
                 {collection.group().map(([group, items]) => (
-                  <Command.Group heading={group} key={group}>
+                  <Command.ItemGroup heading={group} key={group}>
                     {items.map((item) => (
                       <Command.Item item={item} key={item.value}>
                         {item.label}
                         <Command.Shortcut>{item.shortcut}</Command.Shortcut>
                       </Command.Item>
                     ))}
-                  </Command.Group>
+                  </Command.ItemGroup>
                 ))}
               </Command.List>
             </Command.Content>
@@ -272,13 +272,13 @@ export const Groups = meta.story({
             {collection.group().map(([group, items], index) => (
               <>
                 {index !== 0 && <Command.Separator />}
-                <Command.Group heading={group} key={group}>
+                <Command.ItemGroup heading={group} key={group}>
                   {items.map((item) => (
                     <Command.Item item={item} key={item.value}>
                       {item.label}
                     </Command.Item>
                   ))}
-                </Command.Group>
+                </Command.ItemGroup>
               </>
             ))}
           </Command.List>
@@ -315,14 +315,14 @@ export const WithFooter = meta.story({
           <Command.Empty />
           <Command.List>
             {collection.group().map(([group, items]) => (
-              <Command.Group heading={group} key={group}>
+              <Command.ItemGroup heading={group} key={group}>
                 {items.map((item) => (
                   <Command.Item item={item} key={item.value}>
                     {item.label}
                     <Command.Shortcut>{item.shortcut}</Command.Shortcut>
                   </Command.Item>
                 ))}
-              </Command.Group>
+              </Command.ItemGroup>
             ))}
           </Command.List>
         </Command.Content>

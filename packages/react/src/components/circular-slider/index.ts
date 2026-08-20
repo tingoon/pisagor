@@ -4,7 +4,7 @@ import {
   CircularSliderMarkerGroup,
   CircularSliderRoot,
   CircularSliderThumb,
-  CircularSliderValue,
+  CircularSliderValueText,
 } from "./circular-slider";
 
 export type {
@@ -15,7 +15,7 @@ export type {
   CircularSliderProps,
   CircularSliderRootProps,
   CircularSliderThumbProps,
-  CircularSliderValueProps,
+  CircularSliderValueTextProps,
 } from "./circular-slider";
 
 export const CircularSlider = Object.assign(CircularSliderRoot, {
@@ -23,5 +23,5 @@ export const CircularSlider = Object.assign(CircularSliderRoot, {
   Marker: CircularSliderMarker,
   MarkerGroup: CircularSliderMarkerGroup,
   Thumb: CircularSliderThumb,
-  Value: CircularSliderValue,
+  ValueText: CircularSliderValueText,
 });

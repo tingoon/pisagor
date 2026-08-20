@@ -1,17 +1,17 @@
 import {
   NumberInputClearTrigger,
-  NumberInputDecrement,
-  NumberInputGroup,
-  NumberInputIncrement,
+  NumberInputControl,
+  NumberInputDecrementTrigger,
+  NumberInputIncrementTrigger,
   NumberInputInput,
   NumberInputRoot,
   NumberInputScrubber,
 } from "./number-input";
 
 export type {
-  NumberInputDecrementProps,
-  NumberInputGroupProps,
-  NumberInputIncrementProps,
+  NumberInputControlProps,
+  NumberInputDecrementTriggerProps,
+  NumberInputIncrementTriggerProps,
   NumberInputProps,
   NumberInputRootProps,
   NumberInputScrubberProps,
@@ -19,9 +19,9 @@ export type {
 
 export const NumberInput = Object.assign(NumberInputRoot, {
   ClearTrigger: NumberInputClearTrigger,
-  Decrement: NumberInputDecrement,
-  Group: NumberInputGroup,
-  Increment: NumberInputIncrement,
+  Control: NumberInputControl,
+  DecrementTrigger: NumberInputDecrementTrigger,
+  IncrementTrigger: NumberInputIncrementTrigger,
   Input: NumberInputInput,
   Scrubber: NumberInputScrubber,
 });

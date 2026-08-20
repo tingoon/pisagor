@@ -22,8 +22,8 @@ import type { ComponentProps } from "react";
 import {
   Combobox,
   type ComboboxEmptyProps,
-  type ComboboxGroupLabelProps,
-  type ComboboxGroupProps,
+  type ComboboxItemGroupLabelProps,
+  type ComboboxItemGroupProps,
   type ComboboxItemProps,
   type ComboboxListProps,
   type ComboboxRootProps,
@@ -94,7 +94,7 @@ export function CommandDialogContent({
 }: CommandDialogContentProps) {
   return (
     <Portal>
-      <Dialog.Overlay />
+      <Dialog.Backdrop />
 
       <Dialog.Positioner>
         <DialogPrimitive.Content
@@ -175,12 +175,12 @@ export function CommandEmpty({ className, children, ...rest }: ComboboxEmptyProp
   );
 }
 
-export function CommandGroup(props: ComboboxGroupProps) {
-  return <Combobox.Group {...props} />;
+export function CommandItemGroup(props: ComboboxItemGroupProps) {
+  return <Combobox.ItemGroup {...props} />;
 }
 
-export function CommandGroupLabel(props: ComboboxGroupLabelProps) {
-  return <Combobox.GroupLabel {...props} />;
+export function CommandItemGroupLabel(props: ComboboxItemGroupLabelProps) {
+  return <Combobox.ItemGroupLabel {...props} />;
 }
 
 export function CommandItem({ className, ...rest }: ComboboxItemProps) {
@@ -229,8 +229,8 @@ CommandContent.displayName = "Command.Content";
 CommandInput.displayName = "Command.Input";
 CommandList.displayName = "Command.List";
 CommandEmpty.displayName = "Command.Empty";
-CommandGroup.displayName = "Command.Group";
-CommandGroupLabel.displayName = "Command.GroupLabel";
+CommandItemGroup.displayName = "Command.ItemGroup";
+CommandItemGroupLabel.displayName = "Command.ItemGroupLabel";
 CommandItem.displayName = "Command.Item";
 CommandSeparator.displayName = "Command.Separator";
 CommandShortcut.displayName = "Command.Shortcut";

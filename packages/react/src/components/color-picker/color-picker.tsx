@@ -22,7 +22,7 @@ import {
   colorPickerSwatchTriggerVariants,
   colorPickerSwatchVariants,
   colorPickerValueSwatchVariants,
-  colorPickerValueVariants,
+  colorPickerValueTextVariants,
   colorPickerVariants,
   colorPickerViewVariants,
 } from "@pisagor/styles/ui/color-picker";
@@ -110,7 +110,9 @@ export type ColorPickerContentProps = ComponentProps<typeof ColorPickerPrimitive
 
 export type ColorPickerViewProps = ComponentProps<typeof ColorPickerPrimitive.View>;
 
-export type ColorPickerSliderProps = ComponentProps<typeof ColorPickerPrimitive.ChannelSlider>;
+export type ColorPickerChannelSliderProps = ComponentProps<
+  typeof ColorPickerPrimitive.ChannelSlider
+>;
 
 export type ColorPickerSwatchGroupProps = ComponentProps<typeof ColorPickerPrimitive.SwatchGroup>;
 
@@ -124,7 +126,7 @@ export type ColorPickerSwatchIndicatorProps = ComponentProps<
   typeof ColorPickerPrimitive.SwatchIndicator
 >;
 
-export type ColorPickerValueProps = ComponentProps<typeof ColorPickerPrimitive.ValueText>;
+export type ColorPickerValueTextProps = ComponentProps<typeof ColorPickerPrimitive.ValueText>;
 
 export type ColorPickerValueSwatchProps = ComponentProps<typeof ColorPickerPrimitive.ValueSwatch>;
 
@@ -289,7 +291,11 @@ export function ColorPickerView({ className, ...rest }: ColorPickerViewProps) {
   return <ColorPickerPrimitive.View {...rest} className={colorPickerViewVariants({ className })} />;
 }
 
-export function ColorPickerSlider({ className, children, ...rest }: ColorPickerSliderProps) {
+export function ColorPickerChannelSlider({
+  className,
+  children,
+  ...rest
+}: ColorPickerChannelSliderProps) {
   const slots = colorPickerChannelSliderVariants();
 
   return (
@@ -356,9 +362,12 @@ export function ColorPickerSwatchIndicator({
   );
 }
 
-export function ColorPickerValue({ className, ...rest }: ColorPickerValueProps) {
+export function ColorPickerValueText({ className, ...rest }: ColorPickerValueTextProps) {
   return (
-    <ColorPickerPrimitive.ValueText {...rest} className={colorPickerValueVariants({ className })} />
+    <ColorPickerPrimitive.ValueText
+      {...rest}
+      className={colorPickerValueTextVariants({ className })}
+    />
   );
 }
 
@@ -457,10 +466,10 @@ export function ColorPickerField({ clearable = false, ...rest }: ColorPickerProp
           <div className={colorPickerInline4Variants()}>
             <ColorPickerEyeDropperTrigger />
             <div className={colorPickerInline5Variants()}>
-              <ColorPickerSlider channel="hue" />
-              <ColorPickerSlider channel="alpha">
+              <ColorPickerChannelSlider channel="hue" />
+              <ColorPickerChannelSlider channel="alpha">
                 <ColorPickerTransparencyGrid />
-              </ColorPickerSlider>
+              </ColorPickerChannelSlider>
             </div>
           </div>
         </ColorPickerView>
@@ -478,13 +487,13 @@ ColorPickerTrigger.displayName = "ColorPicker.Trigger";
 ColorPickerTransparencyGrid.displayName = "ColorPicker.TransparencyGrid";
 ColorPickerContent.displayName = "ColorPicker.Content";
 ColorPickerView.displayName = "ColorPicker.View";
-ColorPickerSlider.displayName = "ColorPicker.Slider";
+ColorPickerChannelSlider.displayName = "ColorPicker.ChannelSlider";
 ColorPickerEyeDropperTrigger.displayName = "ColorPicker.EyeDropperTrigger";
 ColorPickerSwatchGroup.displayName = "ColorPicker.SwatchGroup";
 ColorPickerSwatchTrigger.displayName = "ColorPicker.SwatchTrigger";
 ColorPickerSwatch.displayName = "ColorPicker.Swatch";
 ColorPickerSwatchIndicator.displayName = "ColorPicker.SwatchIndicator";
-ColorPickerValue.displayName = "ColorPicker.Value";
+ColorPickerValueText.displayName = "ColorPicker.ValueText";
 ColorPickerValueSwatch.displayName = "ColorPicker.ValueSwatch";
 ColorPickerArea.displayName = "ColorPicker.Area";
 ColorPickerAreaThumb.displayName = "ColorPicker.AreaThumb";

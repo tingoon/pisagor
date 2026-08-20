@@ -3,7 +3,7 @@ import { Button, type ButtonProps } from "../button";
 import {
   Dialog,
   type DialogBodyProps,
-  type DialogCloseProps,
+  type DialogCloseTriggerProps,
   type DialogContentProps,
   type DialogDescriptionProps,
   type DialogFooterProps,
@@ -16,7 +16,9 @@ import {
 // #region Types
 export interface AlertDialogRootProps extends DialogRootProps {}
 
-export interface AlertDialogActionProps extends DialogCloseProps, Omit<ButtonProps, "variant"> {
+export interface AlertDialogActionProps
+  extends DialogCloseTriggerProps,
+    Omit<ButtonProps, "variant"> {
   /**
    * The variant of the action button
    *
@@ -25,7 +27,9 @@ export interface AlertDialogActionProps extends DialogCloseProps, Omit<ButtonPro
   variant?: "default" | "destructive";
 }
 
-export interface AlertDialogCancelProps extends DialogCloseProps, Omit<ButtonProps, "variant"> {}
+export interface AlertDialogCancelProps
+  extends DialogCloseTriggerProps,
+    Omit<ButtonProps, "variant"> {}
 // #endregion
 
 // #region Parts
@@ -68,8 +72,8 @@ export function AlertDialogDescription(props: DialogDescriptionProps) {
   return <Dialog.Description {...props} />;
 }
 
-export function AlertDialogClose(props: DialogCloseProps) {
-  return <Dialog.Close {...props} />;
+export function AlertDialogCloseTrigger(props: DialogCloseTriggerProps) {
+  return <Dialog.CloseTrigger {...props} />;
 }
 
 export function AlertDialogFooter(props: DialogFooterProps) {
@@ -82,9 +86,9 @@ export function AlertDialogAction({ variant = "default", ...rest }: AlertDialogA
 
 export function AlertDialogCancel(props: AlertDialogCancelProps) {
   return (
-    <AlertDialogClose asChild>
+    <AlertDialogCloseTrigger asChild>
       <Button variant="outline" {...props} />
-    </AlertDialogClose>
+    </AlertDialogCloseTrigger>
   );
 }
 // #endregion
@@ -97,7 +101,7 @@ AlertDialogBody.displayName = "AlertDialog.Body";
 AlertDialogHeader.displayName = "AlertDialog.Header";
 AlertDialogTitle.displayName = "AlertDialog.Title";
 AlertDialogDescription.displayName = "AlertDialog.Description";
-AlertDialogClose.displayName = "AlertDialog.Close";
+AlertDialogCloseTrigger.displayName = "AlertDialog.CloseTrigger";
 AlertDialogFooter.displayName = "AlertDialog.Footer";
 AlertDialogAction.displayName = "AlertDialog.Action";
 AlertDialogCancel.displayName = "AlertDialog.Cancel";

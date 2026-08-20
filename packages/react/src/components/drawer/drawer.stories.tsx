@@ -17,15 +17,15 @@ const meta = preview.meta({
     },
   },
   subcomponents: {
+    Backdrop: Drawer.Backdrop,
     Body: Drawer.Body,
-    Close: Drawer.Close,
+    CloseTrigger: Drawer.CloseTrigger,
     Content: Drawer.Content,
     ContentInner: Drawer.ContentInner,
     Description: Drawer.Description,
     Footer: Drawer.Footer,
     Grabber: Drawer.Grabber,
     Header: Drawer.Header,
-    Overlay: Drawer.Overlay,
     Positioner: Drawer.Positioner,
     Title: Drawer.Title,
     Trigger: Drawer.Trigger,
@@ -60,12 +60,12 @@ export const Default = meta.story({
         </Drawer.ContentInner>
         <Drawer.Footer>
           <Drawer.ContentInner>
-            <Drawer.Close asChild>
+            <Drawer.CloseTrigger asChild>
               <Button variant="outline">Cancel</Button>
-            </Drawer.Close>
-            <Drawer.Close asChild>
+            </Drawer.CloseTrigger>
+            <Drawer.CloseTrigger asChild>
               <Button>Save changes</Button>
-            </Drawer.Close>
+            </Drawer.CloseTrigger>
           </Drawer.ContentInner>
         </Drawer.Footer>
       </Drawer.Content>
@@ -100,12 +100,12 @@ export const CustomSpacing = meta.story({
         </Drawer.ContentInner>
         <Drawer.Footer>
           <Drawer.ContentInner>
-            <Drawer.Close asChild>
+            <Drawer.CloseTrigger asChild>
               <Button variant="outline">Cancel</Button>
-            </Drawer.Close>
-            <Drawer.Close asChild>
+            </Drawer.CloseTrigger>
+            <Drawer.CloseTrigger asChild>
               <Button>Save changes</Button>
-            </Drawer.Close>
+            </Drawer.CloseTrigger>
           </Drawer.ContentInner>
         </Drawer.Footer>
       </Drawer.Content>
@@ -140,12 +140,12 @@ export const DrawerContentInner = meta.story({
         </Drawer.ContentInner>
         <Drawer.Footer>
           <Drawer.ContentInner>
-            <Drawer.Close asChild>
+            <Drawer.CloseTrigger asChild>
               <Button variant="outline">Cancel</Button>
-            </Drawer.Close>
-            <Drawer.Close asChild>
+            </Drawer.CloseTrigger>
+            <Drawer.CloseTrigger asChild>
               <Button>Save</Button>
-            </Drawer.Close>
+            </Drawer.CloseTrigger>
           </Drawer.ContentInner>
         </Drawer.Footer>
       </Drawer.Content>
@@ -180,12 +180,12 @@ export const Inset = meta.story({
         </Drawer.ContentInner>
         <Drawer.Footer>
           <Drawer.ContentInner>
-            <Drawer.Close asChild>
+            <Drawer.CloseTrigger asChild>
               <Button variant="outline">Cancel</Button>
-            </Drawer.Close>
-            <Drawer.Close asChild>
+            </Drawer.CloseTrigger>
+            <Drawer.CloseTrigger asChild>
               <Button>Save</Button>
-            </Drawer.Close>
+            </Drawer.CloseTrigger>
           </Drawer.ContentInner>
         </Drawer.Footer>
       </Drawer.Content>

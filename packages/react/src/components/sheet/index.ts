@@ -1,5 +1,5 @@
 export type {
-  SheetCloseProps,
+  SheetCloseTriggerProps,
   SheetContentProps,
   SheetPositionerProps,
   SheetProps,
@@ -7,13 +7,13 @@ export type {
 } from "./sheet";
 
 import {
+  SheetBackdrop,
   SheetBody,
-  SheetClose,
+  SheetCloseTrigger,
   SheetContent,
   SheetDescription,
   SheetFooter,
   SheetHeader,
-  SheetOverlay,
   SheetPositioner,
   SheetRoot,
   SheetTitle,
@@ -21,13 +21,13 @@ import {
 } from "./sheet";
 
 export const Sheet = Object.assign(SheetRoot, {
+  Backdrop: SheetBackdrop,
   Body: SheetBody,
-  Close: SheetClose,
+  CloseTrigger: SheetCloseTrigger,
   Content: SheetContent,
   Description: SheetDescription,
   Footer: SheetFooter,
   Header: SheetHeader,
-  Overlay: SheetOverlay,
   Positioner: SheetPositioner,
   Title: SheetTitle,
   Trigger: SheetTrigger,

@@ -17,9 +17,9 @@ const meta = preview.meta({
   },
   subcomponents: {
     Item: RadioGroup.Item,
+    ItemText: RadioGroup.ItemText,
     Label: RadioGroup.Label,
     Root: RadioGroup.Root,
-    Text: RadioGroup.Text,
   },
   title: "Components/Forms/Radio Group",
 });

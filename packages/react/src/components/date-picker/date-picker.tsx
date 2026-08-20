@@ -10,7 +10,7 @@ import {
   datePickerInline2Variants,
   datePickerInlineVariants,
   datePickerTriggerVariants,
-  datePickerValueVariants,
+  datePickerValueTextVariants,
 } from "@pisagor/styles/ui/date-picker";
 import type { ComponentProps } from "react";
 import { useClearableInput } from "../../hooks";
@@ -69,7 +69,7 @@ export interface DatePickerRootProps
   onValueChange?: (value: ComponentProps<typeof DatePickerPrimitive.Root>["value"]) => void;
 }
 
-export type DatePickerValueProps = ComponentProps<typeof DatePickerPrimitive.ValueText>;
+export type DatePickerValueTextProps = ComponentProps<typeof DatePickerPrimitive.ValueText>;
 
 export type DatePickerPresetTriggerProps = ComponentProps<typeof DatePickerPrimitive.PresetTrigger>;
 // #endregion
@@ -251,9 +251,12 @@ export function DatePickerContent({
   );
 }
 
-export function DatePickerValue({ className, ...rest }: DatePickerValueProps) {
+export function DatePickerValueText({ className, ...rest }: DatePickerValueTextProps) {
   return (
-    <DatePickerPrimitive.ValueText {...rest} className={datePickerValueVariants({ className })} />
+    <DatePickerPrimitive.ValueText
+      {...rest}
+      className={datePickerValueTextVariants({ className })}
+    />
   );
 }
 
@@ -269,6 +272,6 @@ DatePickerInput.displayName = "DatePicker.Input";
 DatePickerClearTrigger.displayName = "DatePicker.ClearTrigger";
 DatePickerTimer.displayName = "DatePicker.Timer";
 DatePickerContent.displayName = "DatePicker.Content";
-DatePickerValue.displayName = "DatePicker.Value";
+DatePickerValueText.displayName = "DatePicker.ValueText";
 DatePickerPresetTrigger.displayName = "DatePicker.PresetTrigger";
 // #endregion

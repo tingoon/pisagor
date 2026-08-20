@@ -33,9 +33,9 @@ export type StepsContentProps = ComponentProps<typeof StepsPrimitive.Content>;
 
 export type StepsCompletedContentProps = ComponentProps<typeof StepsPrimitive.CompletedContent>;
 
-export type StepsPreviousProps = ComponentProps<typeof StepsPrimitive.PrevTrigger>;
+export type StepsPrevTriggerProps = ComponentProps<typeof StepsPrimitive.PrevTrigger>;
 
-export type StepsNextProps = ComponentProps<typeof StepsPrimitive.NextTrigger>;
+export type StepsNextTriggerProps = ComponentProps<typeof StepsPrimitive.NextTrigger>;
 // #endregion
 
 // #region Parts
@@ -107,11 +107,11 @@ export function StepsCompletedContent({ className, ...rest }: StepsCompletedCont
   );
 }
 
-export function StepsPrevious(props: StepsPreviousProps) {
+export function StepsPrevTrigger(props: StepsPrevTriggerProps) {
   return <StepsPrimitive.PrevTrigger {...props} />;
 }
 
-export function StepsNext(props: StepsNextProps) {
+export function StepsNextTrigger(props: StepsNextTriggerProps) {
   return <StepsPrimitive.NextTrigger {...props} />;
 }
 // #endregion
@@ -127,6 +127,6 @@ StepsTitle.displayName = "Steps.Title";
 StepsDescription.displayName = "Steps.Description";
 StepsContent.displayName = "Steps.Content";
 StepsCompletedContent.displayName = "Steps.CompletedContent";
-StepsPrevious.displayName = "Steps.Previous";
-StepsNext.displayName = "Steps.Next";
+StepsPrevTrigger.displayName = "Steps.PrevTrigger";
+StepsNextTrigger.displayName = "Steps.NextTrigger";
 // #endregion

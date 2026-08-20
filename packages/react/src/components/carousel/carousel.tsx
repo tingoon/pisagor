@@ -2,12 +2,12 @@ import { Carousel as CarouselPrimitive } from "@ark-ui/react/carousel";
 import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
 import {
   carouselControlVariants,
-  carouselGroupVariants,
   carouselIndicatorGroupVariants,
   carouselIndicatorVariants,
+  carouselItemGroupVariants,
   carouselItemVariants,
-  carouselNextVariants,
-  carouselPreviousVariants,
+  carouselNextTriggerVariants,
+  carouselPrevTriggerVariants,
   carouselVariants,
 } from "@pisagor/styles/ui/carousel";
 import type { ComponentProps, ReactNode } from "react";
@@ -22,15 +22,15 @@ interface CarouselPresetItem {
 
 export type CarouselControlProps = ComponentProps<typeof CarouselPrimitive.Control>;
 
-export type CarouselPreviousProps = ComponentProps<typeof CarouselPrimitive.PrevTrigger>;
+export type CarouselPrevTriggerProps = ComponentProps<typeof CarouselPrimitive.PrevTrigger>;
 
-export type CarouselNextProps = ComponentProps<typeof CarouselPrimitive.NextTrigger>;
+export type CarouselNextTriggerProps = ComponentProps<typeof CarouselPrimitive.NextTrigger>;
 
 export type CarouselIndicatorGroupProps = ComponentProps<typeof CarouselPrimitive.IndicatorGroup>;
 
 export type CarouselIndicatorProps = ComponentProps<typeof CarouselPrimitive.Indicator>;
 
-export type CarouselContentProps = ComponentProps<typeof CarouselPrimitive.ItemGroup>;
+export type CarouselItemGroupProps = ComponentProps<typeof CarouselPrimitive.ItemGroup>;
 
 export type CarouselItemProps = ComponentProps<typeof CarouselPrimitive.Item>;
 
@@ -65,12 +65,12 @@ export function CarouselControl({ className, ...rest }: CarouselControlProps) {
   return <CarouselPrimitive.Control {...rest} className={carouselControlVariants({ className })} />;
 }
 
-export function CarouselPrevious({ className, ...rest }: CarouselPreviousProps) {
+export function CarouselPrevTrigger({ className, ...rest }: CarouselPrevTriggerProps) {
   return (
     <CarouselPrimitive.PrevTrigger
       {...rest}
       asChild
-      className={carouselPreviousVariants({ className })}
+      className={carouselPrevTriggerVariants({ className })}
     >
       <Button aria-label="Previous" clickEffect={false} pill size="icon-md" variant="outline">
         <CaretLeftIcon aria-hidden />
@@ -79,12 +79,12 @@ export function CarouselPrevious({ className, ...rest }: CarouselPreviousProps) 
   );
 }
 
-export function CarouselNext({ className, ...rest }: CarouselNextProps) {
+export function CarouselNextTrigger({ className, ...rest }: CarouselNextTriggerProps) {
   return (
     <CarouselPrimitive.NextTrigger
       {...rest}
       asChild
-      className={carouselNextVariants({ className })}
+      className={carouselNextTriggerVariants({ className })}
     >
       <Button aria-label="Next" clickEffect={false} pill size="icon-md" variant="outline">
         <CaretRightIcon aria-hidden />
@@ -108,8 +108,10 @@ export function CarouselIndicator({ className, ...rest }: CarouselIndicatorProps
   );
 }
 
-export function CarouselContent({ className, ...rest }: CarouselContentProps) {
-  return <CarouselPrimitive.ItemGroup {...rest} className={carouselGroupVariants({ className })} />;
+export function CarouselItemGroup({ className, ...rest }: CarouselItemGroupProps) {
+  return (
+    <CarouselPrimitive.ItemGroup {...rest} className={carouselItemGroupVariants({ className })} />
+  );
 }
 
 export function CarouselItem({ className, ...rest }: CarouselItemProps) {
@@ -122,17 +124,17 @@ export function CarouselShorthand({ slides = [], ...rest }: CarouselProps) {
   return (
     <CarouselRoot {...rest} slideCount={slides.length}>
       <CarouselControl>
-        <CarouselPrevious />
-        <CarouselNext />
+        <CarouselPrevTrigger />
+        <CarouselNextTrigger />
       </CarouselControl>
 
-      <CarouselContent>
+      <CarouselItemGroup>
         {slides.map((slide, index) => (
           <CarouselItem index={index} key={slide.key ?? String(index)}>
             {slide.content}
           </CarouselItem>
         ))}
-      </CarouselContent>
+      </CarouselItemGroup>
 
       <CarouselIndicatorGroup>
         {slides.map((slide, index) => (
@@ -147,11 +149,11 @@ export function CarouselShorthand({ slides = [], ...rest }: CarouselProps) {
 // #region Display Names
 CarouselRoot.displayName = "Carousel.Root";
 CarouselControl.displayName = "Carousel.Control";
-CarouselPrevious.displayName = "Carousel.Previous";
-CarouselNext.displayName = "Carousel.Next";
+CarouselPrevTrigger.displayName = "Carousel.PrevTrigger";
+CarouselNextTrigger.displayName = "Carousel.NextTrigger";
 CarouselIndicatorGroup.displayName = "Carousel.IndicatorGroup";
 CarouselIndicator.displayName = "Carousel.Indicator";
-CarouselContent.displayName = "Carousel.Content";
+CarouselItemGroup.displayName = "Carousel.ItemGroup";
 CarouselItem.displayName = "Carousel.Item";
 CarouselShorthand.displayName = "Carousel";
 // #endregion

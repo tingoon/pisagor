@@ -4,12 +4,12 @@ import { Tour as TourPrimitive, type TourStepDetails, useTour } from "@ark-ui/re
 import { CaretLeftIcon, CaretRightIcon, XIcon } from "@phosphor-icons/react";
 import {
   tourActionsVariants,
+  tourBackdropVariants,
   tourContentVariants,
   tourDescriptionVariants,
   tourInline2Variants,
   tourInline3Variants,
   tourInlineVariants,
-  tourOverlayVariants,
   tourPositionerVariants,
   tourProgressTextVariants,
   tourSpotlightVariants,
@@ -22,11 +22,11 @@ import type { WithTestId } from "../../internal/types";
 import { Button } from "../button";
 import {
   Dialog,
+  type DialogBackdropProps,
   type DialogBodyProps,
   type DialogFooterProps,
   type DialogHeaderProps,
-  type DialogOverlayProps,
-  dialogOverlayVariants,
+  dialogBackdropVariants,
 } from "../dialog";
 import { TourContext, useTourContext } from "./tour.context";
 
@@ -73,7 +73,7 @@ export type TourDescriptionProps = ComponentProps<typeof TourPrimitive.Descripti
 
 export type TourProgressTextProps = ComponentProps<typeof TourPrimitive.ProgressText>;
 
-export type TourCloseProps = ComponentProps<typeof TourPrimitive.CloseTrigger>;
+export type TourCloseTriggerProps = ComponentProps<typeof TourPrimitive.CloseTrigger>;
 // #endregion
 
 // #region Parts
@@ -141,11 +141,11 @@ export function TourActionTrigger(props: TourActionTriggerProps) {
   return <TourPrimitive.ActionTrigger {...props} />;
 }
 
-export function TourOverlay({ className, ...rest }: DialogOverlayProps) {
+export function TourBackdrop({ className, ...rest }: DialogBackdropProps) {
   return (
     <TourPrimitive.Backdrop
       {...rest}
-      className={cn(dialogOverlayVariants(), tourOverlayVariants(), className)}
+      className={cn(dialogBackdropVariants(), tourBackdropVariants(), className)}
     />
   );
 }
@@ -164,7 +164,7 @@ export function TourContent({
 
   return (
     <Portal>
-      <TourOverlay />
+      <TourBackdrop />
       <TourPositioner>
         <TourPrimitive.Content
           {...rest}
@@ -188,13 +188,13 @@ export function TourContent({
           )}
 
           {!!showCloseButton && (
-            <TourClose asChild className={tourInlineVariants()}>
+            <TourCloseTrigger asChild className={tourInlineVariants()}>
               <Button className={tourInline2Variants()} size="icon-md" variant="ghost">
                 <XIcon />
 
                 <span className={tourInline3Variants()}>Close</span>
               </Button>
-            </TourClose>
+            </TourCloseTrigger>
           )}
         </TourPrimitive.Content>
       </TourPositioner>
@@ -246,7 +246,7 @@ export function TourProgressText({ className, ...rest }: TourProgressTextProps) 
   );
 }
 
-export function TourClose(props: TourCloseProps) {
+export function TourCloseTrigger(props: TourCloseTriggerProps) {
   return <TourPrimitive.CloseTrigger {...props} />;
 }
 
@@ -347,7 +347,7 @@ export function TourNextStep({ ...rest }: Omit<TourActionTriggerProps, "action">
 TourRoot.displayName = "Tour";
 TourTrigger.displayName = "Tour.Trigger";
 TourActionTrigger.displayName = "Tour.ActionTrigger";
-TourOverlay.displayName = "Tour.Overlay";
+TourBackdrop.displayName = "Tour.Backdrop";
 TourPositioner.displayName = "Tour.Positioner";
 TourContent.displayName = "Tour.Content";
 TourBody.displayName = "Tour.Body";
@@ -356,7 +356,7 @@ TourHeader.displayName = "Tour.Header";
 TourTitle.displayName = "Tour.Title";
 TourDescription.displayName = "Tour.Description";
 TourProgressText.displayName = "Tour.ProgressText";
-TourClose.displayName = "Tour.Close";
+TourCloseTrigger.displayName = "Tour.CloseTrigger";
 TourFooter.displayName = "Tour.Footer";
 TourActions.displayName = "Tour.Actions";
 TourPreviousStep.displayName = "Tour.PreviousStep";

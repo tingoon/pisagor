@@ -28,7 +28,7 @@ function FormControlsDemo({ showOverride }: { showOverride?: boolean }) {
         <Field.Label htmlFor="surface-team">Team</Field.Label>
         <Select.Root collection={selectCollection} id="surface-team">
           <Select.Trigger>
-            <Select.Value placeholder="Choose a team" />
+            <Select.ValueText placeholder="Choose a team" />
           </Select.Trigger>
           <Select.Content>
             {selectCollection.items.map((item) => (

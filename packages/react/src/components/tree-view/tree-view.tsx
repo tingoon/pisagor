@@ -51,7 +51,7 @@ export interface TreeViewProps
 export interface NodeProviderProps<T extends TreeNodeType = TreeNodeType>
   extends TreeViewPrimitive.NodeProviderProps<T> {}
 
-export interface TreeViewBranchItemProps
+export interface TreeViewBranchControlProps
   extends ComponentProps<typeof TreeViewPrimitive.BranchControl>,
     Pick<TreeViewBranchTitleProps, "icon" | "expandedIcon"> {}
 
@@ -73,7 +73,7 @@ export interface TreeViewBranchTitleProps
 
 export interface TreeViewItemTitleProps extends ComponentProps<typeof TreeViewPrimitive.ItemText> {}
 
-export interface TreeViewItemProps extends TreeViewItemTitleProps {
+export interface TreeViewItemTextProps extends TreeViewItemTitleProps {
   /**
    * Custom file icon
    *
@@ -96,9 +96,9 @@ export type TreeViewBranchIndentGuideProps = ComponentProps<
   typeof TreeViewPrimitive.BranchIndentGuide
 >;
 
-export type TreeViewContentProps = ComponentProps<typeof TreeViewPrimitive.Item>;
+export type TreeViewItemProps = ComponentProps<typeof TreeViewPrimitive.Item>;
 
-export type TreeViewCheckboxProps = ComponentProps<typeof TreeViewPrimitive.NodeCheckbox>;
+export type TreeViewNodeCheckboxProps = ComponentProps<typeof TreeViewPrimitive.NodeCheckbox>;
 
 export type TreeViewNodeInputProps = ComponentProps<typeof TreeViewPrimitive.NodeRenameInput>;
 // #endregion
@@ -142,7 +142,7 @@ export function TreeViewTree({ className, ...rest }: TreeViewTreeProps) {
   return <TreeViewPrimitive.Tree {...rest} className={treeViewTreeVariants({ className })} />;
 }
 
-export const TreeViewNode = <T extends TreeNodeType>(props: NodeProviderProps<T>) => (
+export const TreeViewNodeProvider = <T extends TreeNodeType>(props: NodeProviderProps<T>) => (
   <TreeViewPrimitive.NodeProvider {...props} />
 );
 
@@ -150,13 +150,13 @@ export function TreeViewBranch(props: TreeViewBranchProps) {
   return <TreeViewPrimitive.Branch className={treeViewBranchVariants()} {...props} />;
 }
 
-export function TreeViewBranchItem({
+export function TreeViewBranchControl({
   icon,
   expandedIcon,
   className,
   children,
   ...rest
-}: TreeViewBranchItemProps) {
+}: TreeViewBranchControlProps) {
   return (
     <TreeViewPrimitive.BranchControl {...rest} className={treeViewControlVariants({ className })}>
       <TreeViewBranchIndicator />
@@ -237,16 +237,16 @@ function TreeViewBranchIndentGuide({ className, ...rest }: TreeViewBranchIndentG
   );
 }
 
-export function TreeViewContent({ className, ...rest }: TreeViewContentProps) {
+export function TreeViewItem({ className, ...rest }: TreeViewItemProps) {
   return <TreeViewPrimitive.Item {...rest} className={treeViewControlVariants({ className })} />;
 }
 
-export function TreeViewItem({
+export function TreeViewItemText({
   icon: Icon = FileIcon,
   className,
   children,
   ...rest
-}: TreeViewItemProps) {
+}: TreeViewItemTextProps) {
   const { fileIcons } = useTreeView();
 
   const getFileIcon = (value: string): JSX.ElementType => {
@@ -295,7 +295,7 @@ function TreeViewItemTitle({ className, ...rest }: TreeViewItemTitleProps) {
   );
 }
 
-export function TreeViewCheckbox({ className, ...rest }: TreeViewCheckboxProps) {
+export function TreeViewNodeCheckbox({ className, ...rest }: TreeViewNodeCheckboxProps) {
   return (
     <TreeViewPrimitive.NodeCheckbox
       {...rest}
@@ -332,12 +332,12 @@ const getFileExtension = (file: string) => {
 TreeViewRoot.displayName = "TreeView";
 TreeViewLabel.displayName = "TreeView.Label";
 TreeViewTree.displayName = "TreeView.Tree";
-TreeViewNode.displayName = "TreeView.Node";
+TreeViewNodeProvider.displayName = "TreeView.NodeProvider";
 TreeViewBranch.displayName = "TreeView.Branch";
-TreeViewBranchItem.displayName = "TreeView.BranchItem";
+TreeViewBranchControl.displayName = "TreeView.BranchControl";
 TreeViewBranchIndicator.displayName = "TreeView.BranchIndicator";
 TreeViewBranchContent.displayName = "TreeView.BranchContent";
-TreeViewContent.displayName = "TreeView.Content";
 TreeViewItem.displayName = "TreeView.Item";
-TreeViewCheckbox.displayName = "TreeView.Checkbox";
+TreeViewItemText.displayName = "TreeView.ItemText";
+TreeViewNodeCheckbox.displayName = "TreeView.NodeCheckbox";
 // #endregion

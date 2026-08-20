@@ -16,9 +16,9 @@ import {
   comboboxContentVariants,
   comboboxControlVariants,
   comboboxEmptyVariants,
-  comboboxGroupLabelVariants,
   comboboxInline2Variants,
   comboboxInlineVariants,
+  comboboxItemGroupLabelVariants,
   comboboxItemVariants,
   comboboxListVariants,
   comboboxTriggerVariants,
@@ -85,7 +85,7 @@ export interface ComboboxInputProps
   showTrigger?: boolean;
 }
 
-export interface ComboboxGroupProps extends ComponentProps<typeof ComboboxPrimitive.ItemGroup> {
+export interface ComboboxItemGroupProps extends ComponentProps<typeof ComboboxPrimitive.ItemGroup> {
   /** The heading of the group */
   heading?: string | ReactNode;
 }
@@ -98,7 +98,7 @@ export type ComboboxControlProps = ComponentProps<typeof ComboboxPrimitive.Contr
 
 export type ComboboxTriggerProps = ComponentProps<typeof ComboboxPrimitive.Trigger>;
 
-export type ComboboxClearProps = ComponentProps<typeof ComboboxPrimitive.ClearTrigger>;
+export type ComboboxClearTriggerProps = ComponentProps<typeof ComboboxPrimitive.ClearTrigger>;
 
 export type ComboboxFieldInputProps = ComponentProps<typeof ComboboxPrimitive.Input>;
 
@@ -106,7 +106,7 @@ export type ComboboxPositionerProps = ComponentProps<typeof ComboboxPrimitive.Po
 
 export type ComboboxContentProps = ComponentProps<typeof ComboboxPrimitive.Content>;
 
-export type ComboboxGroupLabelProps = ComponentProps<typeof ComboboxPrimitive.ItemGroupLabel>;
+export type ComboboxItemGroupLabelProps = ComponentProps<typeof ComboboxPrimitive.ItemGroupLabel>;
 
 export type ComboboxEmptyProps = ComponentProps<typeof ComboboxPrimitive.Empty>;
 
@@ -190,11 +190,11 @@ export function ComboboxInput({
             </InputGroup.Button>
           )}
           {clearable && inputValue && (
-            <ComboboxClear asChild>
+            <ComboboxClearTrigger asChild>
               <InputGroup.Button size="icon-xs" variant="ghost">
                 <XIcon />
               </InputGroup.Button>
-            </ComboboxClear>
+            </ComboboxClearTrigger>
           )}
         </InputGroup.Addon>
       </InputGroup>
@@ -214,10 +214,10 @@ export function ComboboxTrigger({ className, children, ...rest }: ComboboxTrigge
   );
 }
 
-export function ComboboxClear({
+export function ComboboxClearTrigger({
   "aria-label": ariaLabel = "Clear selected value(s)",
   ...rest
-}: ComboboxClearProps) {
+}: ComboboxClearTriggerProps) {
   return <ComboboxPrimitive.ClearTrigger aria-label={ariaLabel} {...rest} />;
 }
 
@@ -242,21 +242,21 @@ export function ComboboxContent({ className, children, ...rest }: ComboboxConten
   );
 }
 
-export function ComboboxGroup({ heading, children, ...rest }: ComboboxGroupProps) {
+export function ComboboxItemGroup({ heading, children, ...rest }: ComboboxItemGroupProps) {
   return (
     <ComboboxPrimitive.ItemGroup {...rest}>
-      {!!heading && <ComboboxGroupLabel>{heading}</ComboboxGroupLabel>}
+      {!!heading && <ComboboxItemGroupLabel>{heading}</ComboboxItemGroupLabel>}
 
       {children}
     </ComboboxPrimitive.ItemGroup>
   );
 }
 
-export function ComboboxGroupLabel({ className, ...rest }: ComboboxGroupLabelProps) {
+export function ComboboxItemGroupLabel({ className, ...rest }: ComboboxItemGroupLabelProps) {
   return (
     <ComboboxPrimitive.ItemGroupLabel
       {...rest}
-      className={comboboxGroupLabelVariants({ className })}
+      className={comboboxItemGroupLabelVariants({ className })}
     />
   );
 }
@@ -326,12 +326,12 @@ ComboboxRoot.displayName = "Combobox.Root";
 ComboboxControl.displayName = "Combobox.Control";
 ComboboxInput.displayName = "Combobox.Input";
 ComboboxTrigger.displayName = "Combobox.Trigger";
-ComboboxClear.displayName = "Combobox.Clear";
+ComboboxClearTrigger.displayName = "Combobox.ClearTrigger";
 ComboboxFieldInput.displayName = "Combobox.FieldInput";
 ComboboxPositioner.displayName = "Combobox.Positioner";
 ComboboxContent.displayName = "Combobox.Content";
-ComboboxGroup.displayName = "Combobox.Group";
-ComboboxGroupLabel.displayName = "Combobox.GroupLabel";
+ComboboxItemGroup.displayName = "Combobox.ItemGroup";
+ComboboxItemGroupLabel.displayName = "Combobox.ItemGroupLabel";
 ComboboxItem.displayName = "Combobox.Item";
 ComboboxEmpty.displayName = "Combobox.Empty";
 ComboboxList.displayName = "Combobox.List";

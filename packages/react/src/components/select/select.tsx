@@ -15,10 +15,10 @@ import type { InputRootVariantProps } from "@pisagor/styles/ui/input";
 import {
   selectClearTriggerVariants,
   selectContentVariants,
-  selectGroupLabelVariants,
   selectInline2Variants,
   selectInline3Variants,
   selectInlineVariants,
+  selectItemGroupLabelVariants,
   selectItemVariants,
   selectSeparatorVariants,
   selectTriggerVariants,
@@ -79,16 +79,16 @@ export interface SelectTriggerProps
   clearable?: boolean;
 }
 
-export interface SelectGroupProps extends ComponentProps<typeof SelectPrimitive.ItemGroup> {
+export interface SelectItemGroupProps extends ComponentProps<typeof SelectPrimitive.ItemGroup> {
   /** The heading of the group */
   heading?: string | ReactNode;
 }
 
-export type SelectValueProps = ComponentProps<typeof SelectPrimitive.ValueText>;
+export type SelectValueTextProps = ComponentProps<typeof SelectPrimitive.ValueText>;
 
 export type SelectContentProps = ComponentProps<typeof SelectPrimitive.Content>;
 
-export type SelectGroupLabelProps = ComponentProps<typeof SelectPrimitive.ItemGroupLabel>;
+export type SelectItemGroupLabelProps = ComponentProps<typeof SelectPrimitive.ItemGroupLabel>;
 
 export type SelectItemProps = ComponentProps<typeof SelectPrimitive.Item>;
 
@@ -183,7 +183,7 @@ export function SelectSeparator({ className, ...rest }: SeparatorProps) {
   );
 }
 
-export function SelectValue({ className, ...rest }: SelectValueProps) {
+export function SelectValueText({ className, ...rest }: SelectValueTextProps) {
   return <SelectPrimitive.ValueText {...rest} className={selectInlineVariants({ className })} />;
 }
 
@@ -197,19 +197,22 @@ export function SelectContent({ className, ...rest }: SelectContentProps) {
   );
 }
 
-export function SelectGroup({ heading, children, ...rest }: SelectGroupProps) {
+export function SelectItemGroup({ heading, children, ...rest }: SelectItemGroupProps) {
   return (
     <SelectPrimitive.ItemGroup {...rest}>
-      {!heading && <SelectGroupLabel>{heading}</SelectGroupLabel>}
+      {!heading && <SelectItemGroupLabel>{heading}</SelectItemGroupLabel>}
 
       {children}
     </SelectPrimitive.ItemGroup>
   );
 }
 
-export function SelectGroupLabel({ className, ...rest }: SelectGroupLabelProps) {
+export function SelectItemGroupLabel({ className, ...rest }: SelectItemGroupLabelProps) {
   return (
-    <SelectPrimitive.ItemGroupLabel {...rest} className={selectGroupLabelVariants({ className })} />
+    <SelectPrimitive.ItemGroupLabel
+      {...rest}
+      className={selectItemGroupLabelVariants({ className })}
+    />
   );
 }
 
@@ -267,7 +270,7 @@ export function SelectShorthand({
   return (
     <SelectRoot {...rest} collection={collection}>
       <SelectTrigger clearable={clearable}>
-        <SelectValue placeholder={placeholder} />
+        <SelectValueText placeholder={placeholder} />
       </SelectTrigger>
       <SelectContent>
         {normalized.map((item) => (
@@ -285,10 +288,10 @@ export function SelectShorthand({
 SelectRoot.displayName = "Select.Root";
 SelectTrigger.displayName = "Select.Trigger";
 SelectSeparator.displayName = "Select.Separator";
-SelectValue.displayName = "Select.Value";
+SelectValueText.displayName = "Select.ValueText";
 SelectContent.displayName = "Select.Content";
-SelectGroup.displayName = "Select.Group";
-SelectGroupLabel.displayName = "Select.GroupLabel";
+SelectItemGroup.displayName = "Select.ItemGroup";
+SelectItemGroupLabel.displayName = "Select.ItemGroupLabel";
 SelectItem.displayName = "Select.Item";
 SelectClearTrigger.displayName = "Select.ClearTrigger";
 SelectEmpty.displayName = "Select.Empty";

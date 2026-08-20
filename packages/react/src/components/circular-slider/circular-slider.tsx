@@ -41,7 +41,7 @@ export interface CircularSliderControlProps
   step?: number;
 }
 
-export interface CircularSliderValueProps
+export interface CircularSliderValueTextProps
   extends Omit<ComponentProps<typeof AngleSliderPrimitive.ValueText>, "prefix"> {
   prefix?: ReactNode | string;
   suffix?: ReactNode | string;
@@ -207,12 +207,12 @@ export function CircularSliderThumb({ className, ...rest }: CircularSliderThumbP
   );
 }
 
-export function CircularSliderValue({
+export function CircularSliderValueText({
   prefix = "",
   suffix = "",
   className,
   ...rest
-}: CircularSliderValueProps) {
+}: CircularSliderValueTextProps) {
   const { value } = useCircularSliderApi();
   const slots = circularSliderVariants();
 
@@ -273,7 +273,7 @@ const _useCircularSlider = () => {
 CircularSliderRoot.displayName = "CircularSlider";
 CircularSliderControl.displayName = "CircularSlider.Control";
 CircularSliderThumb.displayName = "CircularSlider.Thumb";
-CircularSliderValue.displayName = "CircularSlider.Value";
+CircularSliderValueText.displayName = "CircularSlider.ValueText";
 CircularSliderMarkerGroup.displayName = "CircularSlider.MarkerGroup";
 CircularSliderMarker.displayName = "CircularSlider.Marker";
 // #endregion

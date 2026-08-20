@@ -5,8 +5,8 @@ import { CaretRightIcon, CheckIcon } from "@phosphor-icons/react";
 import {
   type DropdownMenuItemVariantProps,
   dropdownMenuContentVariants,
-  dropdownMenuGroupLabelVariants,
   dropdownMenuInline5Variants,
+  dropdownMenuItemGroupLabelVariants,
   dropdownMenuItemVariants,
   dropdownMenuPositionerVariants,
   dropdownMenuQuickItemVariants,
@@ -18,7 +18,7 @@ import type { WithTestId } from "../../internal/types";
 import { DropdownMenuRootContext, useDropdownMenuRoot } from "./dropdown-menu.context";
 
 // #region Types
-export interface DropdownMenuGroupProps extends ComponentProps<typeof MenuPrimitive.ItemGroup> {
+export interface DropdownMenuItemGroupProps extends ComponentProps<typeof MenuPrimitive.ItemGroup> {
   /** The heading of the menu item group. */
   heading?: string;
 }
@@ -27,7 +27,7 @@ export interface DropdownMenuItemProps
   extends ComponentProps<typeof MenuPrimitive.Item>,
     DropdownMenuItemVariantProps {}
 
-export interface DropdownMenuRadioGroupProps
+export interface DropdownMenuRadioItemGroupProps
   extends ComponentProps<typeof MenuPrimitive.RadioItemGroup> {
   /** The heading of the menu radio item group. */
   heading?: string;
@@ -43,7 +43,7 @@ export type DropdownMenuPositionerProps = ComponentProps<typeof MenuPrimitive.Po
 
 export type DropdownMenuCheckboxItemProps = ComponentProps<typeof MenuPrimitive.CheckboxItem>;
 
-export type DropdownMenuGroupLabelProps = ComponentProps<typeof MenuPrimitive.ItemGroupLabel>;
+export type DropdownMenuItemGroupLabelProps = ComponentProps<typeof MenuPrimitive.ItemGroupLabel>;
 
 export type DropdownMenuRadioItemProps = ComponentProps<typeof MenuPrimitive.RadioItem>;
 
@@ -53,7 +53,14 @@ export type DropdownMenuArrowProps = ComponentProps<typeof MenuPrimitive.Arrow>;
 
 export type DropdownMenuSeparatorProps = ComponentProps<typeof MenuPrimitive.Separator>;
 
-export type DropdownMenuSubTriggerProps = ComponentProps<typeof MenuPrimitive.TriggerItem>;
+export type DropdownMenuTriggerItemProps = ComponentProps<typeof MenuPrimitive.TriggerItem>;
+
+export type DropdownMenuContentProps = MenuContentProps;
+
+export type DropdownMenuShortcutProps = ComponentProps<typeof ark.span> & {
+  dataPart?: string;
+  dataScope?: string;
+};
 // #endregion
 
 // #region Parts
@@ -90,8 +97,6 @@ export function DropdownMenuPositioner({ className, ...rest }: DropdownMenuPosit
   );
 }
 
-export type DropdownMenuContentProps = MenuContentProps;
-
 export function DropdownMenuContent({ className, children, ...rest }: DropdownMenuContentProps) {
   return (
     <Portal>
@@ -104,10 +109,10 @@ export function DropdownMenuContent({ className, children, ...rest }: DropdownMe
   );
 }
 
-export function DropdownMenuGroup({ heading, children, ...rest }: DropdownMenuGroupProps) {
+export function DropdownMenuItemGroup({ heading, children, ...rest }: DropdownMenuItemGroupProps) {
   return (
     <MenuPrimitive.ItemGroup {...rest}>
-      {!!heading && <DropdownMenuGroupLabel>{heading}</DropdownMenuGroupLabel>}
+      {!!heading && <DropdownMenuItemGroupLabel>{heading}</DropdownMenuItemGroupLabel>}
 
       {children}
     </MenuPrimitive.ItemGroup>
@@ -167,25 +172,28 @@ export function DropdownMenuCheckboxItem({
   );
 }
 
-export function DropdownMenuRadioGroup({
+export function DropdownMenuRadioItemGroup({
   heading,
   children,
   ...rest
-}: DropdownMenuRadioGroupProps) {
+}: DropdownMenuRadioItemGroupProps) {
   return (
     <MenuPrimitive.RadioItemGroup {...rest}>
-      {!!heading && <DropdownMenuGroupLabel>{heading}</DropdownMenuGroupLabel>}
+      {!!heading && <DropdownMenuItemGroupLabel>{heading}</DropdownMenuItemGroupLabel>}
 
       {children}
     </MenuPrimitive.RadioItemGroup>
   );
 }
 
-export function DropdownMenuGroupLabel({ className, ...rest }: DropdownMenuGroupLabelProps) {
+export function DropdownMenuItemGroupLabel({
+  className,
+  ...rest
+}: DropdownMenuItemGroupLabelProps) {
   return (
     <MenuPrimitive.ItemGroupLabel
       {...rest}
-      className={dropdownMenuGroupLabelVariants({ className })}
+      className={dropdownMenuItemGroupLabelVariants({ className })}
     />
   );
 }
@@ -222,11 +230,11 @@ export function DropdownMenuSubContent({ className, ...rest }: DropdownMenuSubCo
   );
 }
 
-export function DropdownMenuSubTrigger({
+export function DropdownMenuTriggerItem({
   className,
   children,
   ...rest
-}: DropdownMenuSubTriggerProps) {
+}: DropdownMenuTriggerItemProps) {
   return (
     <MenuPrimitive.TriggerItem
       {...rest}
@@ -240,11 +248,6 @@ export function DropdownMenuSubTrigger({
     </MenuPrimitive.TriggerItem>
   );
 }
-
-export type DropdownMenuShortcutProps = ComponentProps<typeof ark.span> & {
-  dataPart?: string;
-  dataScope?: string;
-};
 
 export function DropdownMenuShortcut({
   className,
@@ -284,17 +287,17 @@ DropdownMenuRoot.displayName = "DropdownMenu";
 DropdownMenuTrigger.displayName = "DropdownMenu.Trigger";
 DropdownMenuPositioner.displayName = "DropdownMenu.Positioner";
 DropdownMenuContent.displayName = "DropdownMenu.Content";
-DropdownMenuGroup.displayName = "DropdownMenu.Group";
+DropdownMenuItemGroup.displayName = "DropdownMenu.ItemGroup";
 DropdownMenuSeparator.displayName = "DropdownMenu.Separator";
 DropdownMenuItem.displayName = "DropdownMenu.Item";
 DropdownMenuQuickItem.displayName = "DropdownMenu.QuickItem";
 DropdownMenuCheckboxItem.displayName = "DropdownMenu.CheckboxItem";
-DropdownMenuRadioGroup.displayName = "DropdownMenu.RadioGroup";
-DropdownMenuGroupLabel.displayName = "DropdownMenu.GroupLabel";
+DropdownMenuRadioItemGroup.displayName = "DropdownMenu.RadioItemGroup";
+DropdownMenuItemGroupLabel.displayName = "DropdownMenu.ItemGroupLabel";
 DropdownMenuRadioItem.displayName = "DropdownMenu.RadioItem";
 DropdownMenuSub.displayName = "DropdownMenu.Sub";
 DropdownMenuSubContent.displayName = "DropdownMenu.SubContent";
-DropdownMenuSubTrigger.displayName = "DropdownMenu.SubTrigger";
+DropdownMenuTriggerItem.displayName = "DropdownMenu.TriggerItem";
 DropdownMenuShortcut.displayName = "DropdownMenu.Shortcut";
 DropdownMenuArrow.displayName = "DropdownMenu.Arrow";
 // #endregion

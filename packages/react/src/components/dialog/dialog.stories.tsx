@@ -18,13 +18,13 @@ const meta = preview.meta({
     },
   },
   subcomponents: {
+    Backdrop: Dialog.Backdrop,
     Body: Dialog.Body,
-    Close: Dialog.Close,
+    CloseTrigger: Dialog.CloseTrigger,
     Content: Dialog.Content,
     Description: Dialog.Description,
     Footer: Dialog.Footer,
     Header: Dialog.Header,
-    Overlay: Dialog.Overlay,
     Positioner: Dialog.Positioner,
     Title: Dialog.Title,
     Trigger: Dialog.Trigger,
@@ -63,12 +63,12 @@ export const Default = meta.story({
           </Field.Set>
         </Dialog.Body>
         <Dialog.Footer>
-          <Dialog.Close asChild>
+          <Dialog.CloseTrigger asChild>
             <Button variant="outline">Cancel</Button>
-          </Dialog.Close>
-          <Dialog.Close asChild>
+          </Dialog.CloseTrigger>
+          <Dialog.CloseTrigger asChild>
             <Button>Save</Button>
-          </Dialog.Close>
+          </Dialog.CloseTrigger>
         </Dialog.Footer>
       </Dialog.Content>
     </Dialog>
@@ -104,12 +104,12 @@ export const CustomSpacing = meta.story({
           </Field.Set>
         </Dialog.Body>
         <Dialog.Footer>
-          <Dialog.Close asChild>
+          <Dialog.CloseTrigger asChild>
             <Button variant="outline">Cancel</Button>
-          </Dialog.Close>
-          <Dialog.Close asChild>
+          </Dialog.CloseTrigger>
+          <Dialog.CloseTrigger asChild>
             <Button>Save</Button>
-          </Dialog.Close>
+          </Dialog.CloseTrigger>
         </Dialog.Footer>
       </Dialog.Content>
     </Dialog>
@@ -143,12 +143,12 @@ export const InitialFocus = meta.story({
             </Field.Group>
           </Dialog.Body>
           <Dialog.Footer>
-            <Dialog.Close asChild>
+            <Dialog.CloseTrigger asChild>
               <Button variant="outline">Cancel</Button>
-            </Dialog.Close>
-            <Dialog.Close asChild>
+            </Dialog.CloseTrigger>
+            <Dialog.CloseTrigger asChild>
               <Button>Save</Button>
-            </Dialog.Close>
+            </Dialog.CloseTrigger>
           </Dialog.Footer>
         </Dialog.Content>
       </Dialog>
@@ -202,9 +202,9 @@ export const Nested = meta.story({
                 </Field.Group>
               </Dialog.Body>
               <Dialog.Footer>
-                <Dialog.Close asChild>
+                <Dialog.CloseTrigger asChild>
                   <Button variant="ghost">Cancel</Button>
-                </Dialog.Close>
+                </Dialog.CloseTrigger>
                 <Button type="submit">Save changes</Button>
               </Dialog.Footer>
             </Dialog.Content>
@@ -249,9 +249,9 @@ export const NonModal = meta.story({
           </p>
         </Dialog.Body>
         <Dialog.Footer>
-          <Dialog.Close asChild>
+          <Dialog.CloseTrigger asChild>
             <Button variant="outline">Close</Button>
-          </Dialog.Close>
+          </Dialog.CloseTrigger>
         </Dialog.Footer>
       </Dialog.Content>
     </Dialog>
@@ -291,12 +291,12 @@ export const ScrollArea = meta.story({
           </div>
         </Dialog.Body>
         <Dialog.Footer>
-          <Dialog.Close asChild>
+          <Dialog.CloseTrigger asChild>
             <Button variant="ghost">Cancel</Button>
-          </Dialog.Close>
-          <Dialog.Close asChild>
+          </Dialog.CloseTrigger>
+          <Dialog.CloseTrigger asChild>
             <Button>Agree</Button>
-          </Dialog.Close>
+          </Dialog.CloseTrigger>
         </Dialog.Footer>
       </Dialog.Content>
     </Dialog>

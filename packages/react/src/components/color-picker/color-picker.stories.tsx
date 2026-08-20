@@ -28,12 +28,12 @@ const meta = preview.meta({
   subcomponents: {
     Area: ColorPicker.Area,
     AreaThumb: ColorPicker.AreaThumb,
+    ChannelSlider: ColorPicker.ChannelSlider,
     ClearTrigger: ColorPicker.ClearTrigger,
     Content: ColorPicker.Content,
     Control: ColorPicker.Control,
     EyeDropperTrigger: ColorPicker.EyeDropperTrigger,
     Input: ColorPicker.Input,
-    Slider: ColorPicker.Slider,
     Swatch: ColorPicker.Swatch,
     SwatchGroup: ColorPicker.SwatchGroup,
     SwatchIndicator: ColorPicker.SwatchIndicator,
@@ -41,8 +41,8 @@ const meta = preview.meta({
     SwatchTrigger: ColorPicker.SwatchTrigger,
     TransparencyGrid: ColorPicker.TransparencyGrid,
     Trigger: ColorPicker.Trigger,
-    Value: ColorPicker.Value,
     ValueSwatch: ColorPicker.ValueSwatch,
+    ValueText: ColorPicker.ValueText,
     View: ColorPicker.View,
   },
   title: "Components/Forms/Color Picker",
@@ -75,10 +75,10 @@ export const Default = meta.story({
           <div className="flex items-center gap-3">
             <ColorPicker.EyeDropperTrigger />
             <div className="flex flex-1 flex-col gap-2.5">
-              <ColorPicker.Slider channel="hue" />
-              <ColorPicker.Slider channel="alpha">
+              <ColorPicker.ChannelSlider channel="hue" />
+              <ColorPicker.ChannelSlider channel="alpha">
                 <ColorPicker.TransparencyGrid />
-              </ColorPicker.Slider>
+              </ColorPicker.ChannelSlider>
             </div>
           </div>
         </ColorPicker.View>
@@ -150,10 +150,10 @@ export const CustomSpacing = meta.story({
           <div className="flex items-center gap-3">
             <ColorPicker.EyeDropperTrigger />
             <div className="flex flex-1 flex-col gap-2.5">
-              <ColorPicker.Slider channel="hue" />
-              <ColorPicker.Slider channel="alpha">
+              <ColorPicker.ChannelSlider channel="hue" />
+              <ColorPicker.ChannelSlider channel="alpha">
                 <ColorPicker.TransparencyGrid />
-              </ColorPicker.Slider>
+              </ColorPicker.ChannelSlider>
             </div>
           </div>
         </ColorPicker.View>
@@ -304,12 +304,12 @@ export const InputCompact = meta.story({
           <ColorPicker.AreaThumb />
         </ColorPicker.Area>
         <ColorPicker.View format="hsla">
-          <ColorPicker.Slider channel="hue" />
-          <ColorPicker.Slider channel="saturation" />
-          <ColorPicker.Slider channel="lightness" />
-          <ColorPicker.Slider channel="alpha">
+          <ColorPicker.ChannelSlider channel="hue" />
+          <ColorPicker.ChannelSlider channel="saturation" />
+          <ColorPicker.ChannelSlider channel="lightness" />
+          <ColorPicker.ChannelSlider channel="alpha">
             <ColorPicker.TransparencyGrid />
-          </ColorPicker.Slider>
+          </ColorPicker.ChannelSlider>
         </ColorPicker.View>
       </ColorPicker.Content>
     </ColorPicker>
@@ -369,7 +369,7 @@ export const Invalid = meta.story({
           <ColorPicker.AreaThumb />
         </ColorPicker.Area>
         <ColorPicker.View format="hsla">
-          <ColorPicker.Slider channel="hue" />
+          <ColorPicker.ChannelSlider channel="hue" />
         </ColorPicker.View>
       </ColorPicker.Content>
     </ColorPicker>
@@ -396,7 +396,7 @@ export const InputWithPopover = meta.story({
           <ColorPicker.AreaThumb />
         </ColorPicker.Area>
         <ColorPicker.View format="hsla">
-          <ColorPicker.Slider channel="hue" />
+          <ColorPicker.ChannelSlider channel="hue" />
         </ColorPicker.View>
       </ColorPicker.Content>
     </ColorPicker>
@@ -454,21 +454,21 @@ export const PopoverSlidersOnly = meta.story({
           <div className="flex flex-col gap-2">
             <Field>
               <Field.Label>Hue</Field.Label>
-              <ColorPicker.Slider channel="hue" />
+              <ColorPicker.ChannelSlider channel="hue" />
             </Field>
             <Field>
               <Field.Label>Saturation</Field.Label>
-              <ColorPicker.Slider channel="saturation" />
+              <ColorPicker.ChannelSlider channel="saturation" />
             </Field>
             <Field>
               <Field.Label>Lightness</Field.Label>
-              <ColorPicker.Slider channel="lightness" />
+              <ColorPicker.ChannelSlider channel="lightness" />
             </Field>
             <Field>
               <Field.Label>Alpha</Field.Label>
-              <ColorPicker.Slider channel="alpha">
+              <ColorPicker.ChannelSlider channel="alpha">
                 <ColorPicker.TransparencyGrid />
-              </ColorPicker.Slider>
+              </ColorPicker.ChannelSlider>
             </Field>
           </div>
         </ColorPicker.View>
@@ -492,7 +492,7 @@ export const PopoverWithChannelEditing = meta.story({
         <ColorPicker.Area>
           <ColorPicker.AreaThumb />
         </ColorPicker.Area>
-        <ColorPicker.Slider channel="hue" />
+        <ColorPicker.ChannelSlider channel="hue" />
         <div className="grid grid-cols-3 gap-2">
           <ColorPicker.Input asChild channel="red">
             <Input />
@@ -537,7 +537,7 @@ export const PopoverWithSwatchPicker = meta.story({
             <ColorPicker.AreaThumb />
           </ColorPicker.Area>
           <ColorPicker.View format="hsla">
-            <ColorPicker.Slider channel="hue" />
+            <ColorPicker.ChannelSlider channel="hue" />
           </ColorPicker.View>
           <ColorPicker.SwatchGroup>
             {swatches.map((color) => (
@@ -561,9 +561,9 @@ export const SliderAlphaChannel = meta.story({
   render: (args) => (
     <ColorPicker {...args}>
       <ColorPicker.View format="rgba">
-        <ColorPicker.Slider channel="alpha">
+        <ColorPicker.ChannelSlider channel="alpha">
           <ColorPicker.TransparencyGrid />
-        </ColorPicker.Slider>
+        </ColorPicker.ChannelSlider>
       </ColorPicker.View>
     </ColorPicker>
   ),
@@ -577,7 +577,7 @@ export const SliderControlled = meta.story({
       <div className="flex flex-col gap-2">
         <ColorPicker className="w-full" format="hsla" inline onValueChange={setColor} value={color}>
           <ColorPicker.View format="hsla">
-            <ColorPicker.Slider channel="hue" />
+            <ColorPicker.ChannelSlider channel="hue" />
           </ColorPicker.View>
         </ColorPicker>
         <p className="text-center text-muted-foreground text-sm">{color}</p>
@@ -596,7 +596,7 @@ export const SliderDisabled = meta.story({
   render: (args) => (
     <ColorPicker {...args}>
       <ColorPicker.View format="hsla">
-        <ColorPicker.Slider channel="hue" />
+        <ColorPicker.ChannelSlider channel="hue" />
       </ColorPicker.View>
     </ColorPicker>
   ),
@@ -612,9 +612,9 @@ export const SliderHsbaChannels = meta.story({
     <ColorPicker {...args}>
       <ColorPicker.View format="hsba">
         <div className="flex w-full flex-col gap-2">
-          <ColorPicker.Slider channel="hue" />
-          <ColorPicker.Slider channel="saturation" />
-          <ColorPicker.Slider channel="brightness" />
+          <ColorPicker.ChannelSlider channel="hue" />
+          <ColorPicker.ChannelSlider channel="saturation" />
+          <ColorPicker.ChannelSlider channel="brightness" />
         </div>
       </ColorPicker.View>
     </ColorPicker>
@@ -631,9 +631,9 @@ export const SliderHslChannels = meta.story({
     <ColorPicker {...args}>
       <ColorPicker.View format="hsla">
         <div className="flex w-full flex-col gap-2">
-          <ColorPicker.Slider channel="hue" />
-          <ColorPicker.Slider channel="saturation" />
-          <ColorPicker.Slider channel="lightness" />
+          <ColorPicker.ChannelSlider channel="hue" />
+          <ColorPicker.ChannelSlider channel="saturation" />
+          <ColorPicker.ChannelSlider channel="lightness" />
         </div>
       </ColorPicker.View>
     </ColorPicker>
@@ -650,9 +650,9 @@ export const SliderRgbChannels = meta.story({
     <ColorPicker {...args}>
       <ColorPicker.View format="rgba">
         <div className="flex w-full flex-col gap-2">
-          <ColorPicker.Slider channel="red" />
-          <ColorPicker.Slider channel="green" />
-          <ColorPicker.Slider channel="blue" />
+          <ColorPicker.ChannelSlider channel="red" />
+          <ColorPicker.ChannelSlider channel="green" />
+          <ColorPicker.ChannelSlider channel="blue" />
         </div>
       </ColorPicker.View>
     </ColorPicker>
@@ -670,7 +670,7 @@ export const SliderVertical = meta.story({
     <ColorPicker {...args}>
       <ColorPicker.View format="hsla">
         <div className="flex flex-col gap-2">
-          <ColorPicker.Slider channel="hue" orientation="vertical" />
+          <ColorPicker.ChannelSlider channel="hue" orientation="vertical" />
         </div>
       </ColorPicker.View>
     </ColorPicker>

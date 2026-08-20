@@ -14,11 +14,11 @@ import type { ComponentProps } from "react";
 import { Button } from "../button";
 import {
   Dialog,
+  type DialogBackdropProps,
   type DialogBodyProps,
   type DialogDescriptionProps,
   type DialogFooterProps,
   type DialogHeaderProps,
-  type DialogOverlayProps,
   type DialogProps,
   type DialogTitleProps,
 } from "../dialog";
@@ -44,7 +44,7 @@ export type SheetProps = DialogProps;
 
 export type SheetTriggerProps = ComponentProps<typeof DialogPrimitive.Trigger>;
 
-export type SheetCloseProps = ComponentProps<typeof DialogPrimitive.CloseTrigger>;
+export type SheetCloseTriggerProps = ComponentProps<typeof DialogPrimitive.CloseTrigger>;
 // #endregion
 
 // #region Parts
@@ -56,8 +56,8 @@ export function SheetTrigger(props: SheetTriggerProps) {
   return <DialogPrimitive.Trigger {...props} />;
 }
 
-export function SheetOverlay(props: DialogOverlayProps) {
-  return <Dialog.Overlay {...props} />;
+export function SheetBackdrop(props: DialogBackdropProps) {
+  return <Dialog.Backdrop {...props} />;
 }
 
 export function SheetPositioner({
@@ -86,7 +86,7 @@ export function SheetContent({
 
   return (
     <Portal>
-      <SheetOverlay />
+      <SheetBackdrop />
 
       <SheetPositioner placement={placement} variant={variant}>
         <DialogPrimitive.Content
@@ -97,7 +97,7 @@ export function SheetContent({
           {children}
 
           {!!showCloseButton && (
-            <SheetClose asChild>
+            <SheetCloseTrigger asChild>
               <Button
                 aria-label="Close"
                 className={sheetInlineVariants()}
@@ -106,7 +106,7 @@ export function SheetContent({
               >
                 <XIcon />
               </Button>
-            </SheetClose>
+            </SheetCloseTrigger>
           )}
         </DialogPrimitive.Content>
       </SheetPositioner>
@@ -137,7 +137,7 @@ export function SheetBody({ className, ...rest }: DialogBodyProps) {
   );
 }
 
-export function SheetClose(props: SheetCloseProps) {
+export function SheetCloseTrigger(props: SheetCloseTriggerProps) {
   return <DialogPrimitive.CloseTrigger {...props} />;
 }
 
@@ -156,13 +156,13 @@ export function SheetFooter({ className, ...rest }: DialogFooterProps) {
 // #region Display Names
 SheetRoot.displayName = "Sheet";
 SheetTrigger.displayName = "Sheet.Trigger";
-SheetOverlay.displayName = "Sheet.Overlay";
+SheetBackdrop.displayName = "Sheet.Backdrop";
 SheetPositioner.displayName = "Sheet.Positioner";
 SheetContent.displayName = "Sheet.Content";
 SheetHeader.displayName = "Sheet.Header";
 SheetTitle.displayName = "Sheet.Title";
 SheetDescription.displayName = "Sheet.Description";
 SheetBody.displayName = "Sheet.Body";
-SheetClose.displayName = "Sheet.Close";
+SheetCloseTrigger.displayName = "Sheet.CloseTrigger";
 SheetFooter.displayName = "Sheet.Footer";
 // #endregion

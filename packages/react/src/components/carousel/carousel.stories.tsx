@@ -18,13 +18,13 @@ const meta = preview.meta({
     },
   },
   subcomponents: {
-    Content: Carousel.Content,
     Control: Carousel.Control,
     Indicator: Carousel.Indicator,
     IndicatorGroup: Carousel.IndicatorGroup,
     Item: Carousel.Item,
-    Next: Carousel.Next,
-    Previous: Carousel.Previous,
+    ItemGroup: Carousel.ItemGroup,
+    NextTrigger: Carousel.NextTrigger,
+    PrevTrigger: Carousel.PrevTrigger,
     Root: Carousel.Root,
   },
   title: "Components/Media/Carousel",
@@ -83,16 +83,16 @@ export const ThumbnailIndicatorVertical = meta.story({
     return (
       <Carousel.Root className="h-40" loop orientation="vertical" slideCount={slides.length}>
         <Carousel.Control className="relative">
-          <Carousel.Previous>Previous</Carousel.Previous>
-          <Carousel.Next>Next</Carousel.Next>
+          <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
+          <Carousel.NextTrigger>Next</Carousel.NextTrigger>
 
-          <Carousel.Content>
+          <Carousel.ItemGroup>
             {slides.map((slide, index) => (
               <Carousel.Item index={index} key={slide.src}>
                 <img alt={slide.alt} height={300} src={slide.src} width={500} />
               </Carousel.Item>
             ))}
-          </Carousel.Content>
+          </Carousel.ItemGroup>
         </Carousel.Control>
         <Carousel.IndicatorGroup className="ml-4">
           {slides.map((slide, index) => (
@@ -113,16 +113,16 @@ export const ThumbnailIndicator = meta.story({
     return (
       <Carousel.Root loop slideCount={slides.length}>
         <Carousel.Control className="relative">
-          <Carousel.Previous>Previous</Carousel.Previous>
-          <Carousel.Next>Next</Carousel.Next>
+          <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
+          <Carousel.NextTrigger>Next</Carousel.NextTrigger>
 
-          <Carousel.Content>
+          <Carousel.ItemGroup>
             {slides.map((slide, index) => (
               <Carousel.Item index={index} key={slide.src}>
                 <img alt={slide.alt} height={300} src={slide.src} width={500} />
               </Carousel.Item>
             ))}
-          </Carousel.Content>
+          </Carousel.ItemGroup>
         </Carousel.Control>
         <Carousel.IndicatorGroup className="mt-4">
           {slides.map((slide, index) => (
@@ -164,16 +164,16 @@ export const Compound = meta.story({
     return (
       <Carousel.Root slideCount={slides.length}>
         <Carousel.Control>
-          <Carousel.Previous>Previous</Carousel.Previous>
-          <Carousel.Next>Next</Carousel.Next>
+          <Carousel.PrevTrigger>Previous</Carousel.PrevTrigger>
+          <Carousel.NextTrigger>Next</Carousel.NextTrigger>
         </Carousel.Control>
-        <Carousel.Content>
+        <Carousel.ItemGroup>
           {slides.map((slide, index) => (
             <Carousel.Item index={index} key={slide.key}>
               {slide.content}
             </Carousel.Item>
           ))}
-        </Carousel.Content>
+        </Carousel.ItemGroup>
       </Carousel.Root>
     );
   },

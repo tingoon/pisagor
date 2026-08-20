@@ -6,7 +6,7 @@ import {
   DatePickerRoot,
   DatePickerTimer,
   DatePickerTrigger,
-  DatePickerValue,
+  DatePickerValueText,
 } from "./date-picker";
 
 export type {
@@ -16,7 +16,7 @@ export type {
   DatePickerRootProps as DatePickerProps,
   DatePickerTimerProps,
   DatePickerTriggerProps,
-  DatePickerValueProps,
+  DatePickerValueTextProps,
 } from "./date-picker";
 
 export const DatePicker = Object.assign(DatePickerRoot, {
@@ -26,5 +26,5 @@ export const DatePicker = Object.assign(DatePickerRoot, {
   PresetTrigger: DatePickerPresetTrigger,
   Timer: DatePickerTimer,
   Trigger: DatePickerTrigger,
-  Value: DatePickerValue,
+  ValueText: DatePickerValueText,
 });

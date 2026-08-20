@@ -40,19 +40,19 @@ const meta = preview.meta({
     Arrow: DropdownMenu.Arrow,
     CheckboxItem: DropdownMenu.CheckboxItem,
     Content: DropdownMenu.Content,
-    Group: DropdownMenu.Group,
-    GroupLabel: DropdownMenu.GroupLabel,
     Item: DropdownMenu.Item,
+    ItemGroup: DropdownMenu.ItemGroup,
+    ItemGroupLabel: DropdownMenu.ItemGroupLabel,
     Positioner: DropdownMenu.Positioner,
     QuickItem: DropdownMenu.QuickItem,
-    RadioGroup: DropdownMenu.RadioGroup,
     RadioItem: DropdownMenu.RadioItem,
+    RadioItemGroup: DropdownMenu.RadioItemGroup,
     Separator: DropdownMenu.Separator,
     Shortcut: DropdownMenu.Shortcut,
     Sub: DropdownMenu.Sub,
     SubContent: DropdownMenu.SubContent,
-    SubTrigger: DropdownMenu.SubTrigger,
     Trigger: DropdownMenu.Trigger,
+    TriggerItem: DropdownMenu.TriggerItem,
   },
   title: "Components/Navigation/Dropdown Menu",
 });
@@ -64,7 +64,7 @@ export const Default = meta.story({
         <Button variant="outline">Open</Button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Content className="w-40">
-        <DropdownMenu.Group>
+        <DropdownMenu.ItemGroup>
           <DropdownMenu.Item value="forward">
             <PaperPlaneTiltIcon /> Forward
             <DropdownMenu.Shortcut>⌘F</DropdownMenu.Shortcut>
@@ -78,9 +78,9 @@ export const Default = meta.story({
             <DropdownMenu.Shortcut>⌘Z</DropdownMenu.Shortcut>
           </DropdownMenu.Item>
           <DropdownMenu.Sub>
-            <DropdownMenu.SubTrigger>
+            <DropdownMenu.TriggerItem>
               <FolderOpenIcon /> Move to
-            </DropdownMenu.SubTrigger>
+            </DropdownMenu.TriggerItem>
             <DropdownMenu.SubContent>
               <DropdownMenu.Item value="move-to-folder-1">
                 <ArchiveIcon /> Junk
@@ -92,10 +92,10 @@ export const Default = meta.story({
                 <BellIcon /> Reminders
               </DropdownMenu.Item>
               <DropdownMenu.Sub>
-                <DropdownMenu.SubTrigger>
+                <DropdownMenu.TriggerItem>
                   <PlusCircleIcon />
                   More
-                </DropdownMenu.SubTrigger>
+                </DropdownMenu.TriggerItem>
                 <DropdownMenu.SubContent>
                   <DropdownMenu.Item value="move-to-folder-4">
                     <NotePencilIcon />
@@ -110,11 +110,11 @@ export const Default = meta.story({
             </DropdownMenu.SubContent>
           </DropdownMenu.Sub>
           <DropdownMenu.Separator />
-          <DropdownMenu.RadioGroup heading="Priority" value="medium">
+          <DropdownMenu.RadioItemGroup heading="Priority" value="medium">
             <DropdownMenu.RadioItem value="low">Low</DropdownMenu.RadioItem>
             <DropdownMenu.RadioItem value="medium">Medium</DropdownMenu.RadioItem>
             <DropdownMenu.RadioItem value="high">High</DropdownMenu.RadioItem>
-          </DropdownMenu.RadioGroup>
+          </DropdownMenu.RadioItemGroup>
           <DropdownMenu.Separator />
           <DropdownMenu.CheckboxItem checked value="block">
             Block sender
@@ -124,7 +124,7 @@ export const Default = meta.story({
             <TrashIcon /> Delete
             <DropdownMenu.Shortcut>⌘ ⌫</DropdownMenu.Shortcut>
           </DropdownMenu.Item>
-        </DropdownMenu.Group>
+        </DropdownMenu.ItemGroup>
       </DropdownMenu.Content>
     </DropdownMenu>
   ),
@@ -170,7 +170,7 @@ export const Checkboxes = meta.story({
         <Button variant="outline">Open</Button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Content className="w-40">
-        <DropdownMenu.Group heading="Appearance">
+        <DropdownMenu.ItemGroup heading="Appearance">
           <DropdownMenu.CheckboxItem checked value="save">
             Status bar
           </DropdownMenu.CheckboxItem>
@@ -180,7 +180,7 @@ export const Checkboxes = meta.story({
           <DropdownMenu.CheckboxItem checked={false} disabled value="dark-mode">
             Panel
           </DropdownMenu.CheckboxItem>
-        </DropdownMenu.Group>
+        </DropdownMenu.ItemGroup>
       </DropdownMenu.Content>
     </DropdownMenu>
   ),
@@ -218,16 +218,16 @@ export const GroupLabel = meta.story({
         <Button variant="outline">Open</Button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Content className="w-40">
-        <DropdownMenu.Group heading="Account">
+        <DropdownMenu.ItemGroup heading="Account">
           <DropdownMenu.Item value="profile">Profile</DropdownMenu.Item>
           <DropdownMenu.Item value="billing">Billing</DropdownMenu.Item>
-        </DropdownMenu.Group>
+        </DropdownMenu.ItemGroup>
         <DropdownMenu.Separator />
-        <DropdownMenu.Group>
-          <DropdownMenu.GroupLabel>Support</DropdownMenu.GroupLabel>
+        <DropdownMenu.ItemGroup>
+          <DropdownMenu.ItemGroupLabel>Support</DropdownMenu.ItemGroupLabel>
           <DropdownMenu.Item value="docs">Docs</DropdownMenu.Item>
           <DropdownMenu.Item value="contact">Contact</DropdownMenu.Item>
-        </DropdownMenu.Group>
+        </DropdownMenu.ItemGroup>
       </DropdownMenu.Content>
     </DropdownMenu>
   ),
@@ -289,7 +289,7 @@ export const Nested = meta.story({
       <DropdownMenu.Content className="w-40">
         <DropdownMenu.Item value="item-one">Item one</DropdownMenu.Item>
         <DropdownMenu.Sub>
-          <DropdownMenu.SubTrigger>More</DropdownMenu.SubTrigger>
+          <DropdownMenu.TriggerItem>More</DropdownMenu.TriggerItem>
           <DropdownMenu.SubContent>
             <DropdownMenu.Item value="sub-a">Sub item A</DropdownMenu.Item>
             <DropdownMenu.Item value="sub-b">Sub item B</DropdownMenu.Item>
@@ -308,7 +308,7 @@ export const QuickItem = meta.story({
         <Button variant="outline">Open</Button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Content className="w-44">
-        <DropdownMenu.Group heading="Actions">
+        <DropdownMenu.ItemGroup heading="Actions">
           <DropdownMenu.Item value="edit">
             <PencilIcon />
             Edit
@@ -325,7 +325,7 @@ export const QuickItem = meta.story({
             <ChatCircleIcon />
             Comment
           </DropdownMenu.Item>
-        </DropdownMenu.Group>
+        </DropdownMenu.ItemGroup>
         <DropdownMenu.Separator />
         <div className="flex w-full gap-1">
           <DropdownMenu.QuickItem className="min-w-0 flex-1" value="copy">
@@ -349,11 +349,11 @@ export const RadioGroup = meta.story({
         <Button variant="outline">Open</Button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Content className="w-40">
-        <DropdownMenu.RadioGroup value="dark">
+        <DropdownMenu.RadioItemGroup value="dark">
           <DropdownMenu.RadioItem value="light">Light</DropdownMenu.RadioItem>
           <DropdownMenu.RadioItem value="dark">Dark</DropdownMenu.RadioItem>
           <DropdownMenu.RadioItem value="system">System</DropdownMenu.RadioItem>
-        </DropdownMenu.RadioGroup>
+        </DropdownMenu.RadioItemGroup>
       </DropdownMenu.Content>
     </DropdownMenu>
   ),

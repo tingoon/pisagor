@@ -23,8 +23,8 @@ const meta = preview.meta({
     Item: Pagination.Item,
     ItemLink: Pagination.ItemLink,
     Items: Pagination.Items,
-    Next: Pagination.Next,
-    Previous: Pagination.Previous,
+    NextTrigger: Pagination.NextTrigger,
+    PrevTrigger: Pagination.PrevTrigger,
   },
   title: "Components/Navigation/Pagination",
 });
@@ -63,9 +63,9 @@ export const PageRange = meta.story({
 export const CustomComposition = meta.story({
   render: () => (
     <Pagination count={50} pageSize={10}>
-      <Pagination.Previous />
+      <Pagination.PrevTrigger />
       <Pagination.Items />
-      <Pagination.Next />
+      <Pagination.NextTrigger />
     </Pagination>
   ),
 });

@@ -1,9 +1,9 @@
 import { NumberInput as NumberInputPrimitive } from "@ark-ui/react/number-input";
 import { MinusIcon, PlusIcon } from "@phosphor-icons/react";
 import {
-  numberFieldDecrementVariants,
-  numberFieldGroupVariants,
-  numberFieldIncrementVariants,
+  numberFieldControlVariants,
+  numberFieldDecrementTriggerVariants,
+  numberFieldIncrementTriggerVariants,
   numberFieldScrubberVariants,
   numberFieldVariants,
   numberInputInline2Variants,
@@ -45,16 +45,16 @@ export interface NumberInputProps extends NumberInputRootProps {
   onValueChange?: (value: number) => void;
 }
 
-export type NumberInputGroupProps = ComponentProps<typeof NumberInputPrimitive.Control> & {
+export type NumberInputControlProps = ComponentProps<typeof NumberInputPrimitive.Control> & {
   variant?: FormControlVariant;
   clearable?: boolean;
 };
 
-export type NumberInputDecrementProps = ComponentProps<
+export type NumberInputDecrementTriggerProps = ComponentProps<
   typeof NumberInputPrimitive.DecrementTrigger
 >;
 
-export type NumberInputIncrementProps = ComponentProps<
+export type NumberInputIncrementTriggerProps = ComponentProps<
   typeof NumberInputPrimitive.IncrementTrigger
 >;
 
@@ -85,24 +85,24 @@ export function NumberInputRoot({
         }
       >
         {children ?? (
-          <NumberInputGroup clearable={clearable} variant={variant}>
-            <NumberInputDecrement />
+          <NumberInputControl clearable={clearable} variant={variant}>
+            <NumberInputDecrementTrigger />
             <NumberInputInput placeholder={placeholder} variant={variant} />
             <NumberInputClearTrigger />
-            <NumberInputIncrement />
-          </NumberInputGroup>
+            <NumberInputIncrementTrigger />
+          </NumberInputControl>
         )}
       </NumberInputPrimitive.Root>
     </FormControlVariantProvider>
   );
 }
 
-export function NumberInputGroup({
+export function NumberInputControl({
   variant: variantProp,
   clearable = false,
   className,
   ...rest
-}: NumberInputGroupProps) {
+}: NumberInputControlProps) {
   const resolved = useFormControlVariant(variantProp);
   const shellArgs = shellVariantArgs(resolved);
   const controlProps = formControlShellProps(resolved);
@@ -112,7 +112,7 @@ export function NumberInputGroup({
       {...rest}
       {...controlProps}
       className={cn(
-        numberFieldGroupVariants(),
+        numberFieldControlVariants(),
         formControlGroupShellVariants({ size: "md", ...shellArgs }),
         className,
       )}
@@ -143,12 +143,15 @@ export function NumberInputClearTrigger() {
   );
 }
 
-export function NumberInputDecrement({ className, ...rest }: NumberInputDecrementProps) {
+export function NumberInputDecrementTrigger({
+  className,
+  ...rest
+}: NumberInputDecrementTriggerProps) {
   return (
     <NumberInputPrimitive.DecrementTrigger
       {...rest}
       asChild
-      className={numberFieldDecrementVariants({ className })}
+      className={numberFieldDecrementTriggerVariants({ className })}
     >
       <Button aria-label="Decrement" variant="ghost">
         <MinusIcon aria-hidden />
@@ -157,12 +160,15 @@ export function NumberInputDecrement({ className, ...rest }: NumberInputDecremen
   );
 }
 
-export function NumberInputIncrement({ className, ...rest }: NumberInputIncrementProps) {
+export function NumberInputIncrementTrigger({
+  className,
+  ...rest
+}: NumberInputIncrementTriggerProps) {
   return (
     <NumberInputPrimitive.IncrementTrigger
       {...rest}
       asChild
-      className={numberFieldIncrementVariants({ className })}
+      className={numberFieldIncrementTriggerVariants({ className })}
     >
       <Button aria-label="Increment" variant="ghost">
         <PlusIcon aria-hidden />
@@ -201,10 +207,10 @@ export function NumberInputScrubber({ className, children, ...rest }: NumberInpu
 
 // #region Display Names
 NumberInputRoot.displayName = "NumberInput";
-NumberInputGroup.displayName = "NumberInput.Group";
+NumberInputControl.displayName = "NumberInput.Control";
 NumberInputClearTrigger.displayName = "NumberInput.ClearTrigger";
-NumberInputDecrement.displayName = "NumberInput.Decrement";
-NumberInputIncrement.displayName = "NumberInput.Increment";
+NumberInputDecrementTrigger.displayName = "NumberInput.DecrementTrigger";
+NumberInputIncrementTrigger.displayName = "NumberInput.IncrementTrigger";
 NumberInputInput.displayName = "NumberInput.Input";
 NumberInputScrubber.displayName = "NumberInput.Scrubber";
 // #endregion

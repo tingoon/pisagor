@@ -15,9 +15,9 @@ import { Button, type ButtonProps } from "../button";
 // #region Types
 export type PaginationRootProps = ComponentProps<typeof PaginationPrimitive.Root> & WithTestId;
 
-export type PaginationPreviousProps = ComponentProps<typeof PaginationPrimitive.PrevTrigger>;
+export type PaginationPrevTriggerProps = ComponentProps<typeof PaginationPrimitive.PrevTrigger>;
 
-export type PaginationNextProps = ComponentProps<typeof PaginationPrimitive.NextTrigger>;
+export type PaginationNextTriggerProps = ComponentProps<typeof PaginationPrimitive.NextTrigger>;
 
 export type PaginationItemProps = ComponentProps<typeof PaginationPrimitive.Item>;
 
@@ -44,16 +44,16 @@ export function PaginationRoot({ className, children, testId, ...rest }: Paginat
     >
       {children ?? (
         <>
-          <PaginationPrevious />
+          <PaginationPrevTrigger />
           <PaginationItems />
-          <PaginationNext />
+          <PaginationNextTrigger />
         </>
       )}
     </PaginationPrimitive.Root>
   );
 }
 
-export function PaginationPrevious(props: PaginationPreviousProps) {
+export function PaginationPrevTrigger(props: PaginationPrevTriggerProps) {
   return (
     <PaginationPrimitive.PrevTrigger asChild {...props}>
       <Button variant="ghost">
@@ -64,7 +64,7 @@ export function PaginationPrevious(props: PaginationPreviousProps) {
   );
 }
 
-export function PaginationNext(props: PaginationNextProps) {
+export function PaginationNextTrigger(props: PaginationNextTriggerProps) {
   return (
     <PaginationPrimitive.NextTrigger asChild {...props}>
       <Button variant="ghost">
@@ -150,8 +150,8 @@ export function PaginationEllipsis({ className, ...rest }: PaginationEllipsisPro
 
 // #region Display Names
 PaginationRoot.displayName = "Pagination";
-PaginationPrevious.displayName = "Pagination.Previous";
-PaginationNext.displayName = "Pagination.Next";
+PaginationPrevTrigger.displayName = "Pagination.PrevTrigger";
+PaginationNextTrigger.displayName = "Pagination.NextTrigger";
 PaginationItem.displayName = "Pagination.Item";
 PaginationItems.displayName = "Pagination.Items";
 PaginationItemLink.displayName = "Pagination.ItemLink";

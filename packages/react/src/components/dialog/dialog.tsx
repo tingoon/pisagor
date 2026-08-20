@@ -4,13 +4,13 @@ import { Portal } from "@ark-ui/react/portal";
 import { XIcon } from "@phosphor-icons/react";
 import {
   type DialogContentVariantProps,
+  dialogBackdropVariants,
   dialogBodyVariants,
   dialogContentVariants,
   dialogDescriptionVariants,
   dialogFooterVariants,
   dialogHeaderVariants,
   dialogInlineVariants,
-  dialogOverlayVariants,
   dialogPositionerVariants,
   dialogTitleVariants,
 } from "@pisagor/styles/ui/dialog";
@@ -58,6 +58,25 @@ export interface DialogHeaderProps extends ComponentProps<typeof ark.div> {
   dataScope?: string;
 }
 
+export type DialogTriggerProps = ComponentProps<typeof DialogPrimitive.Trigger>;
+
+export type DialogBackdropProps = ComponentProps<typeof DialogPrimitive.Backdrop>;
+
+export type DialogPositionerProps = ComponentProps<typeof DialogPrimitive.Positioner> & {
+  bottomStickOnMobile?: boolean;
+};
+
+export type DialogTitleProps = ComponentProps<typeof DialogPrimitive.Title>;
+
+export type DialogDescriptionProps = ComponentProps<typeof DialogPrimitive.Description>;
+
+export type DialogCloseTriggerProps = ComponentProps<typeof DialogPrimitive.CloseTrigger>;
+
+export type DialogFooterProps = ComponentProps<typeof ark.div> & {
+  dataPart?: string;
+  dataScope?: string;
+};
+
 export type DialogRootProps = ComponentProps<typeof DialogPrimitive.Root> & WithTestId;
 
 export type DialogProps = DialogRootProps;
@@ -85,27 +104,19 @@ export function DialogRoot({
   );
 }
 
-export type DialogTriggerProps = ComponentProps<typeof DialogPrimitive.Trigger>;
-
 export function DialogTrigger(props: DialogTriggerProps) {
   return <DialogPrimitive.Trigger {...props} />;
 }
 
-export type DialogOverlayProps = ComponentProps<typeof DialogPrimitive.Backdrop>;
-
-export function DialogOverlay({ className, ...rest }: DialogOverlayProps) {
+export function DialogBackdrop({ className, ...rest }: DialogBackdropProps) {
   const { modal } = useDialog();
 
   if (!modal) {
     return null;
   }
 
-  return <DialogPrimitive.Backdrop {...rest} className={dialogOverlayVariants({ className })} />;
+  return <DialogPrimitive.Backdrop {...rest} className={dialogBackdropVariants({ className })} />;
 }
-
-export type DialogPositionerProps = ComponentProps<typeof DialogPrimitive.Positioner> & {
-  bottomStickOnMobile?: boolean;
-};
 
 export function DialogPositioner({
   bottomStickOnMobile,
@@ -116,7 +127,7 @@ export function DialogPositioner({
     <DialogPrimitive.Positioner
       {...rest}
       className={dialogPositionerVariants({
-        bottomStickOnMobile: bottomStickOnMobile || undefined,
+        bottomStickOnMobile,
         className,
       })}
     />
@@ -135,7 +146,7 @@ export function DialogContent({
 
   return (
     <Portal>
-      <DialogOverlay />
+      <DialogBackdrop />
 
       <DialogPositioner bottomStickOnMobile={bottomStickOnMobile}>
         <DialogPrimitive.Content
@@ -146,7 +157,7 @@ export function DialogContent({
           {children}
 
           {!!showCloseButton && (
-            <DialogClose asChild>
+            <DialogCloseTrigger asChild>
               <Button
                 aria-label="Close"
                 className={dialogInlineVariants()}
@@ -155,7 +166,7 @@ export function DialogContent({
               >
                 <XIcon />
               </Button>
-            </DialogClose>
+            </DialogCloseTrigger>
           )}
         </DialogPrimitive.Content>
       </DialogPositioner>
@@ -207,13 +218,9 @@ export function DialogHeader({
   );
 }
 
-export type DialogTitleProps = ComponentProps<typeof DialogPrimitive.Title>;
-
 export function DialogTitle({ className, ...rest }: DialogTitleProps) {
   return <DialogPrimitive.Title {...rest} className={dialogTitleVariants({ className })} />;
 }
-
-export type DialogDescriptionProps = ComponentProps<typeof DialogPrimitive.Description>;
 
 export function DialogDescription({ className, ...rest }: DialogDescriptionProps) {
   return (
@@ -221,16 +228,9 @@ export function DialogDescription({ className, ...rest }: DialogDescriptionProps
   );
 }
 
-export type DialogCloseProps = ComponentProps<typeof DialogPrimitive.CloseTrigger>;
-
-export function DialogClose(props: DialogCloseProps) {
+export function DialogCloseTrigger(props: DialogCloseTriggerProps) {
   return <DialogPrimitive.CloseTrigger {...props} />;
 }
-
-export type DialogFooterProps = ComponentProps<typeof ark.div> & {
-  dataPart?: string;
-  dataScope?: string;
-};
 
 export function DialogFooter({
   className,
@@ -252,13 +252,13 @@ export function DialogFooter({
 // #region Display Names
 DialogRoot.displayName = "Dialog";
 DialogTrigger.displayName = "Dialog.Trigger";
-DialogOverlay.displayName = "Dialog.Overlay";
+DialogBackdrop.displayName = "Dialog.Backdrop";
 DialogPositioner.displayName = "Dialog.Positioner";
 DialogContent.displayName = "Dialog.Content";
 DialogBody.displayName = "Dialog.Body";
 DialogHeader.displayName = "Dialog.Header";
 DialogTitle.displayName = "Dialog.Title";
 DialogDescription.displayName = "Dialog.Description";
-DialogClose.displayName = "Dialog.Close";
+DialogCloseTrigger.displayName = "Dialog.CloseTrigger";
 DialogFooter.displayName = "Dialog.Footer";
 // #endregion

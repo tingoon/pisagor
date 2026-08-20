@@ -22,7 +22,7 @@ const meta = preview.meta({
     Marker: CircularSlider.Marker,
     MarkerGroup: CircularSlider.MarkerGroup,
     Thumb: CircularSlider.Thumb,
-    Value: CircularSlider.Value,
+    ValueText: CircularSlider.ValueText,
   },
   title: "Components/Forms/Circular Slider",
 });
@@ -34,7 +34,7 @@ export const Default = meta.story({
   },
   render: (args) => (
     <CircularSlider {...args}>
-      <CircularSlider.Value suffix="°" />
+      <CircularSlider.ValueText suffix="°" />
     </CircularSlider>
   ),
 });
@@ -49,7 +49,7 @@ export const Sizes = meta.story({
     <div className="flex flex-wrap items-center gap-2">
       {[120, 180, 240].map((size) => (
         <CircularSlider aria-label="Angle" defaultValue={45} key={size} size={size}>
-          <CircularSlider.Value suffix="°" />
+          <CircularSlider.ValueText suffix="°" />
         </CircularSlider>
       ))}
     </div>
@@ -83,7 +83,7 @@ export const WithValue = meta.story({
   },
   render: (args) => (
     <CircularSlider {...args}>
-      <CircularSlider.Value prefix={<ThermometerIcon className="size-4" />} suffix="°" />
+      <CircularSlider.ValueText prefix={<ThermometerIcon className="size-4" />} suffix="°" />
     </CircularSlider>
   ),
 });

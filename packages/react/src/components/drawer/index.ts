@@ -1,13 +1,13 @@
 import {
+  DrawerBackdrop,
   DrawerBody,
-  DrawerClose,
+  DrawerCloseTrigger,
   DrawerContent,
   DrawerContentInner,
   DrawerDescription,
   DrawerFooter,
   DrawerGrabber,
   DrawerHeader,
-  DrawerOverlay,
   DrawerPositioner,
   DrawerRoot,
   DrawerTitle,
@@ -15,12 +15,12 @@ import {
 } from "./drawer";
 
 export type {
+  DrawerBackdropProps,
   DrawerBodyProps,
-  DrawerCloseProps,
+  DrawerCloseTriggerProps,
   DrawerContentProps,
   DrawerGrabberProps,
   DrawerHeaderProps,
-  DrawerOverlayProps,
   DrawerPositionerProps,
   DrawerRootProps,
   DrawerTitleProps,
@@ -28,15 +28,15 @@ export type {
 } from "./drawer";
 
 export const Drawer = Object.assign(DrawerRoot, {
+  Backdrop: DrawerBackdrop,
   Body: DrawerBody,
-  Close: DrawerClose,
+  CloseTrigger: DrawerCloseTrigger,
   Content: DrawerContent,
   ContentInner: DrawerContentInner,
   Description: DrawerDescription,
   Footer: DrawerFooter,
   Grabber: DrawerGrabber,
   Header: DrawerHeader,
-  Overlay: DrawerOverlay,
   Positioner: DrawerPositioner,
   Title: DrawerTitle,
   Trigger: DrawerTrigger,

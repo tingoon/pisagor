@@ -1,26 +1,26 @@
 import {
+  DialogBackdrop,
   DialogBody,
-  DialogClose,
+  DialogCloseTrigger,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogOverlay,
   DialogPositioner,
   DialogRoot,
   DialogTitle,
   DialogTrigger,
 } from "./dialog";
 
-export { dialogContentVariants, dialogOverlayVariants } from "@pisagor/styles/ui/dialog";
+export { dialogBackdropVariants, dialogContentVariants } from "@pisagor/styles/ui/dialog";
 export type {
+  DialogBackdropProps,
   DialogBodyProps,
-  DialogCloseProps,
+  DialogCloseTriggerProps,
   DialogContentProps,
   DialogDescriptionProps,
   DialogFooterProps,
   DialogHeaderProps,
-  DialogOverlayProps,
   DialogPositionerProps,
   DialogProps,
   DialogRootProps,
@@ -29,13 +29,13 @@ export type {
 } from "./dialog";
 
 export const Dialog = Object.assign(DialogRoot, {
+  Backdrop: DialogBackdrop,
   Body: DialogBody,
-  Close: DialogClose,
+  CloseTrigger: DialogCloseTrigger,
   Content: DialogContent,
   Description: DialogDescription,
   Footer: DialogFooter,
   Header: DialogHeader,
-  Overlay: DialogOverlay,
   Positioner: DialogPositioner,
   Title: DialogTitle,
   Trigger: DialogTrigger,

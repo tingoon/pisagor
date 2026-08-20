@@ -34,7 +34,7 @@ export interface RadioGroupItemProps extends ComponentProps<typeof RadioGroupPri
   variant?: FormControlVariant;
 }
 
-export type RadioGroupTextProps = ComponentProps<typeof RadioGroupPrimitive.ItemText>;
+export type RadioGroupItemTextProps = ComponentProps<typeof RadioGroupPrimitive.ItemText>;
 
 export type RadioGroupLabelProps = ComponentProps<typeof RadioGroupPrimitive.Label>;
 // #endregion
@@ -78,14 +78,14 @@ export function RadioGroupItem({
         className={cn(formControlRadioToggleVariants({ ...shellArgs }), slots.control())}
       />
 
-      <RadioGroupText>{children}</RadioGroupText>
+      <RadioGroupItemText>{children}</RadioGroupItemText>
 
       <RadioGroupPrimitive.ItemHiddenInput tabIndex={tabIndex} />
     </RadioGroupPrimitive.Item>
   );
 }
 
-export function RadioGroupText({ className, children, ...rest }: RadioGroupTextProps) {
+export function RadioGroupItemText({ className, children, ...rest }: RadioGroupItemTextProps) {
   return (
     <Field.Label asChild>
       <RadioGroupPrimitive.ItemText {...rest} className={className}>
@@ -121,7 +121,7 @@ export function RadioGroupShorthand({ items = [], ...rest }: RadioGroupProps) {
 // #region Display Names
 RadioGroupRoot.displayName = "RadioGroup.Root";
 RadioGroupItem.displayName = "RadioGroup.Item";
-RadioGroupText.displayName = "RadioGroup.Text";
+RadioGroupItemText.displayName = "RadioGroup.ItemText";
 RadioGroupLabel.displayName = "RadioGroup.Label";
 RadioGroupShorthand.displayName = "RadioGroup";
 // #endregion

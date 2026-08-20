@@ -1,22 +1,22 @@
 import {
   RadioGroupItem,
+  RadioGroupItemText,
   RadioGroupLabel,
   RadioGroupRoot,
   RadioGroupShorthand,
-  RadioGroupText,
 } from "./radio-group";
 
 export type {
   RadioGroupItemProps,
+  RadioGroupItemTextProps,
   RadioGroupLabelProps,
   RadioGroupProps,
   RadioGroupRootProps,
-  RadioGroupTextProps,
 } from "./radio-group";
 
 export const RadioGroup = Object.assign(RadioGroupShorthand, {
   Item: RadioGroupItem,
+  ItemText: RadioGroupItemText,
   Label: RadioGroupLabel,
   Root: RadioGroupRoot,
-  Text: RadioGroupText,
 });

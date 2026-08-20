@@ -90,6 +90,13 @@ export interface CalendarTableNextMonthProps extends CalendarTableBodyProps {
    */
   months?: number;
 }
+
+export type CalendarRootProps = ComponentProps<typeof CalendarPrimitive.Root> & WithTestId;
+
+export interface CalendarProps extends CalendarRootProps {
+  /** Visual shell variant for embedded selects. When omitted, resolves from the nearest `Surface` context. */
+  variant?: FormControlVariant;
+}
 // #endregion
 
 // #region Parts
@@ -119,13 +126,6 @@ const getWeekRowKey = (
     day: number;
   }>,
 ) => week.map((day) => `${day.year}-${day.month}-${day.day}`).join("/");
-
-export type CalendarRootProps = ComponentProps<typeof CalendarPrimitive.Root> & WithTestId;
-
-export interface CalendarProps extends CalendarRootProps {
-  /** Visual shell variant for embedded selects. When omitted, resolves from the nearest `Surface` context. */
-  variant?: FormControlVariant;
-}
 
 export function CalendarRoot({
   lazyMount = true,

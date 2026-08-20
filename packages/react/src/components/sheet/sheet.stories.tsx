@@ -17,13 +17,13 @@ const meta = preview.meta({
     },
   },
   subcomponents: {
+    Backdrop: Sheet.Backdrop,
     Body: Sheet.Body,
-    Close: Sheet.Close,
+    CloseTrigger: Sheet.CloseTrigger,
     Content: Sheet.Content,
     Description: Sheet.Description,
     Footer: Sheet.Footer,
     Header: Sheet.Header,
-    Overlay: Sheet.Overlay,
     Positioner: Sheet.Positioner,
     Title: Sheet.Title,
     Trigger: Sheet.Trigger,
@@ -55,12 +55,12 @@ export const Default = meta.story({
           </Field.Group>
         </Sheet.Body>
         <Sheet.Footer>
-          <Sheet.Close asChild>
+          <Sheet.CloseTrigger asChild>
             <Button variant="outline">Cancel</Button>
-          </Sheet.Close>
-          <Sheet.Close asChild>
+          </Sheet.CloseTrigger>
+          <Sheet.CloseTrigger asChild>
             <Button>Save changes</Button>
-          </Sheet.Close>
+          </Sheet.CloseTrigger>
         </Sheet.Footer>
       </Sheet.Content>
     </Sheet>
@@ -91,12 +91,12 @@ export const CustomSpacing = meta.story({
           </Field.Group>
         </Sheet.Body>
         <Sheet.Footer>
-          <Sheet.Close asChild>
+          <Sheet.CloseTrigger asChild>
             <Button variant="outline">Cancel</Button>
-          </Sheet.Close>
-          <Sheet.Close asChild>
+          </Sheet.CloseTrigger>
+          <Sheet.CloseTrigger asChild>
             <Button>Save changes</Button>
-          </Sheet.Close>
+          </Sheet.CloseTrigger>
         </Sheet.Footer>
       </Sheet.Content>
     </Sheet>
@@ -127,12 +127,12 @@ export const Inset = meta.story({
           </Field.Group>
         </Sheet.Body>
         <Sheet.Footer>
-          <Sheet.Close asChild>
+          <Sheet.CloseTrigger asChild>
             <Button variant="outline">Cancel</Button>
-          </Sheet.Close>
-          <Sheet.Close asChild>
+          </Sheet.CloseTrigger>
+          <Sheet.CloseTrigger asChild>
             <Button>Save changes</Button>
-          </Sheet.Close>
+          </Sheet.CloseTrigger>
         </Sheet.Footer>
       </Sheet.Content>
     </Sheet>
@@ -157,12 +157,12 @@ export const NoCloseButton = meta.story({
           </p>
         </Sheet.Body>
         <Sheet.Footer>
-          <Sheet.Close asChild>
+          <Sheet.CloseTrigger asChild>
             <Button variant="outline">Cancel</Button>
-          </Sheet.Close>
-          <Sheet.Close asChild>
+          </Sheet.CloseTrigger>
+          <Sheet.CloseTrigger asChild>
             <Button>Confirm</Button>
-          </Sheet.Close>
+          </Sheet.CloseTrigger>
         </Sheet.Footer>
       </Sheet.Content>
     </Sheet>
@@ -187,9 +187,9 @@ export const NonModal = meta.story({
           </p>
         </Sheet.Body>
         <Sheet.Footer>
-          <Sheet.Close asChild>
+          <Sheet.CloseTrigger asChild>
             <Button variant="outline">Close</Button>
-          </Sheet.Close>
+          </Sheet.CloseTrigger>
         </Sheet.Footer>
       </Sheet.Content>
     </Sheet>
@@ -249,12 +249,12 @@ export const ScrollArea = meta.story({
           </div>
         </Sheet.Body>
         <Sheet.Footer>
-          <Sheet.Close asChild>
+          <Sheet.CloseTrigger asChild>
             <Button variant="ghost">Cancel</Button>
-          </Sheet.Close>
-          <Sheet.Close asChild>
+          </Sheet.CloseTrigger>
+          <Sheet.CloseTrigger asChild>
             <Button>Agree</Button>
-          </Sheet.Close>
+          </Sheet.CloseTrigger>
         </Sheet.Footer>
       </Sheet.Content>
     </Sheet>

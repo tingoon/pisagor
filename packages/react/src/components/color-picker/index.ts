@@ -1,6 +1,7 @@
 import {
   ColorPickerArea,
   ColorPickerAreaThumb,
+  ColorPickerChannelSlider,
   ColorPickerClearTrigger,
   ColorPickerContent,
   ColorPickerControl,
@@ -8,7 +9,6 @@ import {
   ColorPickerField,
   ColorPickerInput,
   ColorPickerRoot,
-  ColorPickerSlider,
   ColorPickerSwatch,
   ColorPickerSwatchGroup,
   ColorPickerSwatchIndicator,
@@ -16,14 +16,15 @@ import {
   ColorPickerSwatchTrigger,
   ColorPickerTransparencyGrid,
   ColorPickerTrigger,
-  ColorPickerValue,
   ColorPickerValueSwatch,
+  ColorPickerValueText,
   ColorPickerView,
 } from "./color-picker";
 
 export type {
   ColorPickerAreaProps,
   ColorPickerAreaThumbProps,
+  ColorPickerChannelSliderProps,
   ColorPickerClearTriggerProps,
   ColorPickerContentProps,
   ColorPickerControlProps,
@@ -31,15 +32,14 @@ export type {
   ColorPickerInputProps,
   ColorPickerProps,
   ColorPickerRootProps,
-  ColorPickerSliderProps,
   ColorPickerSwatchGroupProps,
   ColorPickerSwatchIndicatorProps,
   ColorPickerSwatchProps,
   ColorPickerSwatchTriggerProps,
   ColorPickerTransparencyGridProps,
   ColorPickerTriggerProps,
-  ColorPickerValueProps,
   ColorPickerValueSwatchProps,
+  ColorPickerValueTextProps,
   ColorPickerViewProps,
 } from "./color-picker";
 export { parseColor } from "./color-picker";
@@ -47,13 +47,13 @@ export { parseColor } from "./color-picker";
 export const ColorPicker = Object.assign(ColorPickerRoot, {
   Area: ColorPickerArea,
   AreaThumb: ColorPickerAreaThumb,
+  ChannelSlider: ColorPickerChannelSlider,
   ClearTrigger: ColorPickerClearTrigger,
   Content: ColorPickerContent,
   Control: ColorPickerControl,
   EyeDropperTrigger: ColorPickerEyeDropperTrigger,
   Field: ColorPickerField,
   Input: ColorPickerInput,
-  Slider: ColorPickerSlider,
   Swatch: ColorPickerSwatch,
   SwatchGroup: ColorPickerSwatchGroup,
   SwatchIndicator: ColorPickerSwatchIndicator,
@@ -61,7 +61,7 @@ export const ColorPicker = Object.assign(ColorPickerRoot, {
   SwatchTrigger: ColorPickerSwatchTrigger,
   TransparencyGrid: ColorPickerTransparencyGrid,
   Trigger: ColorPickerTrigger,
-  Value: ColorPickerValue,
   ValueSwatch: ColorPickerValueSwatch,
+  ValueText: ColorPickerValueText,
   View: ColorPickerView,
 });

@@ -4,6 +4,7 @@ import { Portal } from "@ark-ui/react/portal";
 import {
   type DrawerContentVariantProps,
   type DrawerPositionerVariantProps,
+  drawerBackdropVariants,
   drawerBodyVariants,
   drawerContentInnerVariants,
   drawerContentVariants,
@@ -11,7 +12,6 @@ import {
   drawerFooterVariants,
   drawerGrabberVariants,
   drawerHeaderVariants,
-  drawerOverlayVariants,
   drawerPositionerVariants,
   drawerTitleVariants,
 } from "@pisagor/styles/ui/drawer";
@@ -49,13 +49,13 @@ export interface DrawerRootProps extends ComponentProps<typeof DrawerPrimitive.R
 
 export type DrawerTriggerProps = ComponentProps<typeof DrawerPrimitive.Trigger>;
 
-export type DrawerOverlayProps = ComponentProps<typeof DrawerPrimitive.Backdrop>;
+export type DrawerBackdropProps = ComponentProps<typeof DrawerPrimitive.Backdrop>;
 
 export type DrawerGrabberProps = ComponentProps<typeof DrawerPrimitive.Grabber>;
 
 export type DrawerTitleProps = ComponentProps<typeof DrawerPrimitive.Title>;
 
-export type DrawerCloseProps = ComponentProps<typeof DrawerPrimitive.CloseTrigger>;
+export type DrawerCloseTriggerProps = ComponentProps<typeof DrawerPrimitive.CloseTrigger>;
 // #endregion
 
 // #region Parts
@@ -82,8 +82,8 @@ export function DrawerTrigger(props: DrawerTriggerProps) {
   return <DrawerPrimitive.Trigger {...props} />;
 }
 
-export function DrawerOverlay({ className, ...rest }: DrawerOverlayProps) {
-  return <DrawerPrimitive.Backdrop {...rest} className={drawerOverlayVariants({ className })} />;
+export function DrawerBackdrop({ className, ...rest }: DrawerBackdropProps) {
+  return <DrawerPrimitive.Backdrop {...rest} className={drawerBackdropVariants({ className })} />;
 }
 
 export function DrawerPositioner({
@@ -116,7 +116,7 @@ export function DrawerContent({
 
   return (
     <Portal>
-      <DrawerOverlay />
+      <DrawerBackdrop />
       <DrawerPrimitive.Context>
         {({ swipeDirection }) => (
           <DrawerPositioner variant={variant}>
@@ -214,7 +214,7 @@ export function DrawerBody({ scrollFade = false, className, ...rest }: DrawerBod
   );
 }
 
-export function DrawerClose(props: DrawerCloseProps) {
+export function DrawerCloseTrigger(props: DrawerCloseTriggerProps) {
   return <DrawerPrimitive.CloseTrigger {...props} />;
 }
 
@@ -233,7 +233,7 @@ export function DrawerFooter({ className, ...rest }: ComponentProps<typeof ark.d
 // #region Display Names
 DrawerRoot.displayName = "Drawer";
 DrawerTrigger.displayName = "Drawer.Trigger";
-DrawerOverlay.displayName = "Drawer.Overlay";
+DrawerBackdrop.displayName = "Drawer.Backdrop";
 DrawerPositioner.displayName = "Drawer.Positioner";
 DrawerContent.displayName = "Drawer.Content";
 DrawerContentInner.displayName = "Drawer.ContentInner";
@@ -242,6 +242,6 @@ DrawerHeader.displayName = "Drawer.Header";
 DrawerTitle.displayName = "Drawer.Title";
 DrawerDescription.displayName = "Drawer.Description";
 DrawerBody.displayName = "Drawer.Body";
-DrawerClose.displayName = "Drawer.Close";
+DrawerCloseTrigger.displayName = "Drawer.CloseTrigger";
 DrawerFooter.displayName = "Drawer.Footer";
 // #endregion

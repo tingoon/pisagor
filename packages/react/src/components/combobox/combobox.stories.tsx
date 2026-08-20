@@ -19,16 +19,16 @@ const meta = preview.meta({
     },
   },
   subcomponents: {
-    Clear: Combobox.Clear,
+    ClearTrigger: Combobox.ClearTrigger,
     Content: Combobox.Content,
     Context: Combobox.Context,
     Control: Combobox.Control,
     Empty: Combobox.Empty,
     FieldInput: Combobox.FieldInput,
-    Group: Combobox.Group,
-    GroupLabel: Combobox.GroupLabel,
     Input: Combobox.Input,
     Item: Combobox.Item,
+    ItemGroup: Combobox.ItemGroup,
+    ItemGroupLabel: Combobox.ItemGroupLabel,
     List: Combobox.List,
     Positioner: Combobox.Positioner,
     Root: Combobox.Root,
@@ -321,13 +321,13 @@ export const Group = meta.story({
         <Combobox.Content className="w-60">
           <Combobox.List>
             {collection.group().map(([continent, group]) => (
-              <Combobox.Group heading={continent} key={continent}>
+              <Combobox.ItemGroup heading={continent} key={continent}>
                 {group.map((item) => (
                   <Combobox.Item item={item} key={item.value}>
                     {item.label}
                   </Combobox.Item>
                 ))}
-              </Combobox.Group>
+              </Combobox.ItemGroup>
             ))}
           </Combobox.List>
         </Combobox.Content>

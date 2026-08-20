@@ -5,19 +5,19 @@ import type { WithTestId } from "../../internal/types";
 import {
   DropdownMenu,
   type DropdownMenuContentProps,
-  type DropdownMenuGroupProps,
+  type DropdownMenuItemGroupProps,
   type DropdownMenuItemProps,
   type DropdownMenuRootProps,
   type DropdownMenuSeparatorProps,
   type DropdownMenuShortcutProps,
-  type DropdownMenuSubTriggerProps,
+  type DropdownMenuTriggerItemProps,
 } from "../dropdown-menu";
 import { useDropdownMenuRoot } from "../dropdown-menu/dropdown-menu.context";
 
 // #region Types
 export interface ContextMenuRootProps extends DropdownMenuRootProps, WithTestId {}
 
-export type ContextMenuTriggerProps = ComponentProps<typeof MenuPrimitive.ContextTrigger>;
+export type ContextMenuContextTriggerProps = ComponentProps<typeof MenuPrimitive.ContextTrigger>;
 // #endregion
 
 // #region Parts
@@ -25,7 +25,7 @@ export function ContextMenuRoot({ testId, ...rest }: ContextMenuRootProps) {
   return <DropdownMenu {...rest} testId={testId} />;
 }
 
-export function ContextMenuTrigger({ className, ...rest }: ContextMenuTriggerProps) {
+export function ContextMenuContextTrigger({ className, ...rest }: ContextMenuContextTriggerProps) {
   const { testId } = useDropdownMenuRoot() ?? {};
 
   return (
@@ -41,8 +41,8 @@ export function ContextMenuContent(props: DropdownMenuContentProps) {
   return <DropdownMenu.Content {...props} />;
 }
 
-export function ContextMenuGroup(props: DropdownMenuGroupProps) {
-  return <DropdownMenu.Group {...props} />;
+export function ContextMenuItemGroup(props: DropdownMenuItemGroupProps) {
+  return <DropdownMenu.ItemGroup {...props} />;
 }
 
 export function ContextMenuSeparator(props: DropdownMenuSeparatorProps) {
@@ -61,8 +61,8 @@ export function ContextMenuSubContent(props: DropdownMenuContentProps) {
   return <DropdownMenu.SubContent {...props} />;
 }
 
-export function ContextMenuSubTrigger(props: DropdownMenuSubTriggerProps) {
-  return <DropdownMenu.SubTrigger {...props} />;
+export function ContextMenuTriggerItem(props: DropdownMenuTriggerItemProps) {
+  return <DropdownMenu.TriggerItem {...props} />;
 }
 
 export function ContextMenuShortcut(props: DropdownMenuShortcutProps) {
@@ -72,13 +72,13 @@ export function ContextMenuShortcut(props: DropdownMenuShortcutProps) {
 
 // #region Display Names
 ContextMenuRoot.displayName = "ContextMenu";
-ContextMenuTrigger.displayName = "ContextMenu.Trigger";
+ContextMenuContextTrigger.displayName = "ContextMenu.ContextTrigger";
 ContextMenuContent.displayName = "ContextMenu.Content";
-ContextMenuGroup.displayName = "ContextMenu.Group";
+ContextMenuItemGroup.displayName = "ContextMenu.ItemGroup";
 ContextMenuSeparator.displayName = "ContextMenu.Separator";
 ContextMenuItem.displayName = "ContextMenu.Item";
 ContextMenuSub.displayName = "ContextMenu.Sub";
 ContextMenuSubContent.displayName = "ContextMenu.SubContent";
-ContextMenuSubTrigger.displayName = "ContextMenu.SubTrigger";
+ContextMenuTriggerItem.displayName = "ContextMenu.TriggerItem";
 ContextMenuShortcut.displayName = "ContextMenu.Shortcut";
 // #endregion
