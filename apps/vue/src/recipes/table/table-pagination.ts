@@ -32,7 +32,10 @@ export const TablePagination = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props) {
-    const { Previous, Next } = Pagination as unknown as { Previous: ArkPart; Next: ArkPart };
+    const { PrevTrigger, NextTrigger } = Pagination as unknown as {
+      PrevTrigger: ArkPart;
+      NextTrigger: ArkPart;
+    };
     const page = ref(1);
     const pageSize = ref(2);
 
@@ -88,7 +91,7 @@ export const TablePagination = defineComponent({
               page: page.value,
               pageSize: pageSize.value,
             },
-            () => [h(Previous, null), h(Next, null)],
+            () => [h(PrevTrigger, null), h(NextTrigger, null)],
           ),
         ]),
       ]);

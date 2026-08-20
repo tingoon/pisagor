@@ -13,7 +13,7 @@ export const PopoverDialog = defineComponent({
       Header: ArkPart;
       Body: ArkPart;
       Footer: ArkPart;
-      Close: ArkPart;
+      CloseTrigger: ArkPart;
     };
 
     const popoverParts = Popover as unknown as {
@@ -56,7 +56,7 @@ export const PopoverDialog = defineComponent({
             ]),
           ),
           h(dialogParts.Footer, null, () =>
-            h(dialogParts.Close, { asChild: true }, () =>
+            h(dialogParts.CloseTrigger, { asChild: true }, () =>
               h(Button as ArkPart, { type: "button", variant: "outline" }, () => "Close"),
             ),
           ),

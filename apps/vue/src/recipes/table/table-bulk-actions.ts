@@ -188,7 +188,7 @@ export const TableBulkActions = defineComponent({
                     ]),
                     h(AlertDialog.Footer as ArkPart, null, () => [
                       h(AlertDialog.Cancel as ArkPart, null, () => "Cancel"),
-                      h(AlertDialog.Close as ArkPart, { asChild: true }, () =>
+                      h(AlertDialog.CloseTrigger as ArkPart, { asChild: true }, () =>
                         h(
                           AlertDialog.Action as ArkPart,
                           { variant: "destructive" },

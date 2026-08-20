@@ -52,7 +52,7 @@ export const TableRowMenu = defineComponent({
             .slice(0, 3)
             .map((user) =>
               h(ContextMenu as ArkPart, { key: user.id }, () => [
-                h(ContextMenu.Trigger as ArkPart, { asChild: true }, () =>
+                h(ContextMenu.ContextTrigger as ArkPart, { asChild: true }, () =>
                   h(Table.Row as ArkPart, null, () => [
                     h(Table.Cell as ArkPart, { class: "font-medium" }, () => user.name),
                     h(Table.Cell as ArkPart, null, () => user.email),

@@ -19,7 +19,7 @@ export const MenuDialog = defineComponent({
       Header: ArkPart;
       Body: ArkPart;
       Footer: ArkPart;
-      Close: ArkPart;
+      CloseTrigger: ArkPart;
     };
 
     const setOpen = (next: boolean) => {
@@ -73,10 +73,10 @@ export const MenuDialog = defineComponent({
                 ),
               ),
               h(dialogParts.Footer, null, () => [
-                h(dialogParts.Close, { asChild: true }, () =>
+                h(dialogParts.CloseTrigger, { asChild: true }, () =>
                   h(Button as ArkPart, { type: "button", variant: "outline" }, () => "Cancel"),
                 ),
-                h(dialogParts.Close, { asChild: true }, () =>
+                h(dialogParts.CloseTrigger, { asChild: true }, () =>
                   h(Button as ArkPart, { type: "button" }, () => "Save"),
                 ),
               ]),
