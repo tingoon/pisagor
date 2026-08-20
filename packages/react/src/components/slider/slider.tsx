@@ -1,5 +1,5 @@
 import { Slider as SliderPrimitive } from "@ark-ui/react/slider";
-import { sliderVariants } from "@pisagor/styles/ui/slider";
+import { type SliderSlots, sliderVariants } from "@pisagor/styles/ui/slider";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";
@@ -8,39 +8,28 @@ import { formControlShellProps } from "../../internal/form-control/form-control-
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 import { Field } from "../field";
+import { SliderContext, useSlider } from "./slider.context";
 
 // #region Types
-export type SliderControlProps = ComponentProps<typeof SliderPrimitive.Control>;
+type SliderControlProps = ComponentProps<typeof SliderPrimitive.Control>;
 
-export type SliderTrackProps = ComponentProps<typeof SliderPrimitive.Track>;
+type SliderTrackProps = ComponentProps<typeof SliderPrimitive.Track>;
 
-export type SliderRangeProps = ComponentProps<typeof SliderPrimitive.Range>;
+type SliderRangeProps = ComponentProps<typeof SliderPrimitive.Range>;
 
-export type SliderThumbProps = ComponentProps<typeof SliderPrimitive.Thumb>;
+type SliderThumbProps = ComponentProps<typeof SliderPrimitive.Thumb>;
 
-export type SliderValueProps = ComponentProps<typeof SliderPrimitive.ValueText>;
+type SliderValueProps = ComponentProps<typeof SliderPrimitive.ValueText>;
 
-type SliderClassNames = VariantClassNames<typeof sliderVariants>;
+type SliderClassNames = VariantClassNames<SliderSlots>;
 
-export type SliderRootProps = Omit<ComponentProps<typeof SliderPrimitive.Root>, "onValueChange">;
+type SliderRootProps = ComponentProps<typeof SliderPrimitive.Root> &
+  WithTestId & {
+    /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
+    variant?: FormControlVariant;
+  };
 
-export interface SliderProps extends SliderRootProps, WithTestId {
-  /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
-  variant?: FormControlVariant;
-  /**
-   * Controlled slider value.
-   *
-   * @remarks
-   * When set, `defaultValue` is ignored. Pair with `onValueChange` to handle updates.
-   */
-  value?: number[];
-  /**
-   * Initial slider value when uncontrolled.
-   *
-   * @remarks
-   * Ignored when `value` is set.
-   */
-  defaultValue?: number[];
+export interface SliderProps extends Omit<SliderRootProps, "children" | "onValueChange"> {
   /**
    * Whether to show the current value text next to the label.
    *
@@ -86,40 +75,175 @@ export interface SliderProps extends SliderRootProps, WithTestId {
   thumbProps?: Omit<SliderThumbProps, "children" | "index" | "className">;
   /** Extra props forwarded to the slider value text element */
   valueProps?: Omit<SliderValueProps, "children" | "className">;
+  children?: ReactNode;
 }
 // #endregion
 
-// #region Part
-export function Slider({
-  variant: variantProp,
-  value,
-  defaultValue,
-  min = 0,
-  max = 100,
-  showValue = false,
-  markerInterval = 1,
-  showMarkers = false,
-  label,
-  markerLabels = [],
+// #region Parts
+function SliderRoot({
   children,
-  tabIndex,
-  onValueChange,
-  controlProps,
-  trackProps,
-  rangeProps,
-  thumbProps,
-  valueProps,
   className,
-  classNames,
   testId,
+  variant: variantProp,
   ...rest
-}: SliderProps) {
+}: SliderRootProps) {
   const resolved = useFormControlVariant(variantProp);
   const shellControlProps = formControlShellProps(resolved);
   const slots = sliderVariants();
   const thumbShadowClass = resolved.variant === "secondary" ? "shadow-none" : undefined;
   const trackVariantClass = resolved.variant === "secondary" ? "bg-muted/40" : "bg-input/64";
 
+  return (
+    <SliderContext value={{ slots, thumbShadowClass, trackVariantClass }}>
+      <SliderPrimitive.Root
+        {...rest}
+        {...shellControlProps}
+        className={slots.base({ className })}
+        data-testid={testId}
+      >
+        {children}
+      </SliderPrimitive.Root>
+    </SliderContext>
+  );
+}
+SliderRoot.displayName = "Slider.Root";
+
+function SliderHeader({ className, children, ...rest }: ComponentProps<"div">) {
+  const { slots } = useSlider();
+
+  return (
+    <div {...rest} className={slots.header({ className })}>
+      {children}
+    </div>
+  );
+}
+SliderHeader.displayName = "Slider.Header";
+
+function SliderValue({ className, ...rest }: SliderValueProps) {
+  const { slots } = useSlider();
+
+  return <SliderPrimitive.ValueText {...rest} className={slots.value({ className })} />;
+}
+SliderValue.displayName = "Slider.Value";
+
+function SliderControl({ className, children, ...rest }: SliderControlProps) {
+  const { slots } = useSlider();
+
+  return (
+    <SliderPrimitive.Control {...rest} className={slots.control({ className })}>
+      {children}
+    </SliderPrimitive.Control>
+  );
+}
+SliderControl.displayName = "Slider.Control";
+
+function SliderTrack({ className, children, ...rest }: SliderTrackProps) {
+  const { slots, trackVariantClass } = useSlider();
+
+  return (
+    <SliderPrimitive.Track
+      {...rest}
+      className={slots.track({ className: cn(trackVariantClass, className) })}
+    >
+      {children}
+    </SliderPrimitive.Track>
+  );
+}
+SliderTrack.displayName = "Slider.Track";
+
+function SliderRange({ className, ...rest }: SliderRangeProps) {
+  const { slots } = useSlider();
+
+  return <SliderPrimitive.Range {...rest} className={slots.range({ className })} />;
+}
+SliderRange.displayName = "Slider.Range";
+
+function SliderThumb({ className, ...rest }: SliderThumbProps) {
+  const { slots, thumbShadowClass } = useSlider();
+
+  return (
+    <SliderPrimitive.Thumb
+      {...rest}
+      className={slots.thumb({ className: cn(thumbShadowClass, className) })}
+    />
+  );
+}
+SliderThumb.displayName = "Slider.Thumb";
+
+function SliderMarkerGroup({
+  className,
+  children,
+  ...rest
+}: ComponentProps<typeof SliderPrimitive.MarkerGroup>) {
+  const { slots } = useSlider();
+
+  return (
+    <SliderPrimitive.MarkerGroup {...rest} className={slots.markerGroup({ className })}>
+      {children}
+    </SliderPrimitive.MarkerGroup>
+  );
+}
+SliderMarkerGroup.displayName = "Slider.MarkerGroup";
+
+function SliderMarker({
+  className,
+  children,
+  ...rest
+}: ComponentProps<typeof SliderPrimitive.Marker>) {
+  const { slots } = useSlider();
+
+  return (
+    <SliderPrimitive.Marker {...rest} className={slots.marker({ className })}>
+      {children}
+    </SliderPrimitive.Marker>
+  );
+}
+SliderMarker.displayName = "Slider.Marker";
+
+function SliderMarkerTick({ className, ...rest }: ComponentProps<"span">) {
+  const { slots } = useSlider();
+
+  return <span {...rest} className={slots.markerTick({ className })} />;
+}
+SliderMarkerTick.displayName = "Slider.MarkerTick";
+
+function SliderMarkerLabel({ className, children, ...rest }: ComponentProps<"span">) {
+  const { slots } = useSlider();
+
+  return (
+    <span {...rest} className={slots.markerLabel({ className })}>
+      {children}
+    </span>
+  );
+}
+SliderMarkerLabel.displayName = "Slider.MarkerLabel";
+// #endregion
+
+// #region Closed
+export function Slider({
+  children,
+  className,
+  classNames,
+  controlProps,
+  defaultValue,
+  label,
+  markerInterval = 1,
+  markerLabels = [],
+  max = 100,
+  min = 0,
+  onValueChange,
+  rangeProps,
+  showMarkers = false,
+  showValue = false,
+  tabIndex,
+  testId,
+  thumbProps,
+  trackProps,
+  value,
+  valueProps,
+  variant,
+  ...rest
+}: SliderProps) {
   const _values = useMemo(() => {
     if (Array.isArray(value)) {
       return value;
@@ -139,19 +263,19 @@ export function Slider({
     : undefined;
 
   return (
-    <SliderPrimitive.Root
+    <SliderRoot
       {...rest}
-      {...shellControlProps}
-      className={slots.base({ className: cn(className, classNames?.base) })}
-      data-testid={testId}
+      className={className}
       defaultValue={defaultValue}
       max={max}
       min={min}
       onValueChange={handleValueChange}
+      testId={testId}
       value={value}
+      variant={variant}
     >
       {(label !== undefined || showValue) && (
-        <div className={slots.header({ className: classNames?.header })}>
+        <SliderHeader className={classNames?.header}>
           {label !== undefined && (
             <Field.Label>
               <SliderPrimitive.Label>{label}</SliderPrimitive.Label>
@@ -160,69 +284,56 @@ export function Slider({
 
           {showValue && (
             <Field.Label asChild>
-              <SliderPrimitive.ValueText
-                {...valueProps}
-                className={slots.value({ className: classNames?.value })}
-              />
+              <SliderValue {...valueProps} className={classNames?.value} />
             </Field.Label>
           )}
-        </div>
+        </SliderHeader>
       )}
 
       {children}
 
-      <SliderPrimitive.Control
-        {...controlProps}
-        className={slots.control({ className: classNames?.control })}
-      >
-        <SliderPrimitive.Track
-          {...trackProps}
-          className={slots.track({ className: cn(trackVariantClass, classNames?.track) })}
-        >
-          <SliderPrimitive.Range
-            {...rangeProps}
-            className={slots.range({ className: classNames?.range })}
-          />
-        </SliderPrimitive.Track>
+      <SliderControl {...controlProps} className={classNames?.control}>
+        <SliderTrack {...trackProps} className={classNames?.track}>
+          <SliderRange {...rangeProps} className={classNames?.range} />
+        </SliderTrack>
 
         {Array.from({ length: _values.length }, (_, index) => {
           const key = `slider-thumb-${index}`;
 
           return (
-            <SliderPrimitive.Thumb
+            <SliderThumb
               {...thumbProps}
-              className={slots.thumb({ className: cn(thumbShadowClass, classNames?.thumb) })}
+              className={classNames?.thumb}
               index={index}
               key={key}
               tabIndex={tabIndex ?? undefined}
             >
               <SliderPrimitive.HiddenInput />
-            </SliderPrimitive.Thumb>
+            </SliderThumb>
           );
         })}
-      </SliderPrimitive.Control>
+      </SliderControl>
 
       {showMarkers && (
-        <SliderPrimitive.MarkerGroup
-          className={slots.markerGroup({ className: classNames?.markerGroup })}
-        >
+        <SliderMarkerGroup className={classNames?.markerGroup}>
           {Array.from({ length: max + 1 }, (_, index) => (
-            <SliderPrimitive.Marker
-              className={slots.marker({ className: classNames?.marker })}
+            <SliderMarker
+              className={classNames?.marker}
               data-interval={index % markerInterval === 0 ? undefined : ""}
               key={String(index)}
               value={index}
             >
-              <span className={slots.markerTick({ className: classNames?.markerTick })} />
+              <SliderMarkerTick className={classNames?.markerTick} />
 
-              <span className={slots.markerLabel({ className: classNames?.markerLabel })}>
+              <SliderMarkerLabel className={classNames?.markerLabel}>
                 {markerLabels?.[index] ?? index}
-              </span>
-            </SliderPrimitive.Marker>
+              </SliderMarkerLabel>
+            </SliderMarker>
           ))}
-        </SliderPrimitive.MarkerGroup>
+        </SliderMarkerGroup>
       )}
-    </SliderPrimitive.Root>
+    </SliderRoot>
   );
 }
+Slider.displayName = "Slider";
 // #endregion

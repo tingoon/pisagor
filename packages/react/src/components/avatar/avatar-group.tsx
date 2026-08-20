@@ -1,9 +1,9 @@
 import { ark } from "@ark-ui/react/factory";
-import { avatarGroupCountVariants, avatarGroupVariants } from "@pisagor/styles/ui/avatar";
-import { cn } from "@pisagor/utils";
+import { avatarGroupVariants } from "@pisagor/styles/ui/avatar";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 import { Avatar } from "./avatar";
+import { AvatarGroupContext, useAvatarGroup } from "./avatar-group.context";
 
 // #region Types
 export interface AvatarGroupRootProps extends ComponentProps<typeof ark.div>, WithTestId {}
@@ -18,25 +18,31 @@ export interface AvatarGroupProps extends Omit<AvatarGroupRootProps, "children">
 
 // #region Parts
 export function AvatarGroupRoot({ className, children, testId, ...rest }: AvatarGroupRootProps) {
+  const slots = avatarGroupVariants();
+
   return (
-    <ark.div
-      {...rest}
-      className={cn(avatarGroupVariants(), className)}
-      data-part="group"
-      data-scope="avatar"
-      data-testid={testId}
-    >
-      {children}
-    </ark.div>
+    <AvatarGroupContext value={{ slots }}>
+      <ark.div
+        {...rest}
+        className={slots.base({ className })}
+        data-part="group"
+        data-scope="avatar"
+        data-testid={testId}
+      >
+        {children}
+      </ark.div>
+    </AvatarGroupContext>
   );
 }
 AvatarGroupRoot.displayName = "AvatarGroup.Root";
 
 export function AvatarGroupCount({ className, ...rest }: ComponentProps<typeof ark.div>) {
+  const { slots } = useAvatarGroup();
+
   return (
     <ark.div
       {...rest}
-      className={cn(avatarGroupCountVariants(), className)}
+      className={slots.count({ className })}
       data-part="group-count"
       data-scope="avatar"
     />

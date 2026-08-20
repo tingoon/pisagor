@@ -1,11 +1,12 @@
 import { Portal } from "@ark-ui/react/portal";
 import { Tooltip as TooltipPrimitive } from "@ark-ui/react/tooltip";
-import { tooltipVariants } from "@pisagor/styles/ui/tooltip";
+import { type TooltipSlots, tooltipVariants } from "@pisagor/styles/ui/tooltip";
 import type { ComponentProps, ReactElement, ReactNode } from "react";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
+import { TooltipContext, useTooltip } from "./tooltip.context";
 
 // #region Types
-export type TooltipContentProps = ComponentProps<typeof TooltipPrimitive.Content>;
+type TooltipContentProps = ComponentProps<typeof TooltipPrimitive.Content>;
 
 type TooltipContextApi = Parameters<ComponentProps<typeof TooltipPrimitive.Context>["children"]>[0];
 
@@ -13,17 +14,17 @@ export type TooltipTriggerHandleProps = ReturnType<TooltipContextApi["getTrigger
 
 export type TooltipTriggerHandle = (props: TooltipTriggerHandleProps) => ReactElement;
 
-export type TooltipTriggerProps = ComponentProps<typeof TooltipPrimitive.Trigger>;
+type TooltipTriggerProps = ComponentProps<typeof TooltipPrimitive.Trigger>;
 
-export type TooltipPositionerProps = ComponentProps<typeof TooltipPrimitive.Positioner>;
+type TooltipPositionerProps = ComponentProps<typeof TooltipPrimitive.Positioner>;
 
-export type TooltipArrowProps = ComponentProps<typeof TooltipPrimitive.Arrow>;
+type TooltipArrowProps = ComponentProps<typeof TooltipPrimitive.Arrow>;
 
-type TooltipClassNames = VariantClassNames<typeof tooltipVariants>;
+type TooltipClassNames = VariantClassNames<TooltipSlots>;
 
-export type TooltipRootProps = Omit<ComponentProps<typeof TooltipPrimitive.Root>, "children">;
+type TooltipRootProps = ComponentProps<typeof TooltipPrimitive.Root> & WithTestId;
 
-export interface TooltipProps extends TooltipRootProps, WithTestId {
+export interface TooltipProps extends Omit<TooltipRootProps, "children"> {
   /** Slot class names */
   classNames?: TooltipClassNames;
   /** Tooltip text or content */
@@ -41,66 +42,117 @@ export interface TooltipProps extends TooltipRootProps, WithTestId {
 }
 // #endregion
 
-// #region Part
-export function Tooltip({
-  content,
+// #region Parts
+function TooltipRoot({
   children,
-  classNames,
-  contentProps,
-  triggerProps,
-  positionerProps,
-  arrowProps,
-  testId,
-  positioning = {
-    placement: "top",
-  },
-  lazyMount = true,
-  unmountOnExit = true,
   closeDelay = 150,
+  lazyMount = true,
   openDelay = 400,
+  positioning = { placement: "top" },
+  unmountOnExit = true,
   ...rest
-}: TooltipProps) {
+}: TooltipRootProps) {
   const slots = tooltipVariants();
 
+  return (
+    <TooltipContext value={{ slots }}>
+      <TooltipPrimitive.Root
+        {...rest}
+        closeDelay={closeDelay}
+        lazyMount={lazyMount}
+        openDelay={openDelay}
+        positioning={positioning}
+        unmountOnExit={unmountOnExit}
+      >
+        {children}
+      </TooltipPrimitive.Root>
+    </TooltipContext>
+  );
+}
+TooltipRoot.displayName = "Tooltip.Root";
+
+function TooltipTrigger({
+  asChild = true,
+  children,
+  testId,
+  ...rest
+}: TooltipTriggerProps & WithTestId) {
+  return (
+    <TooltipPrimitive.Trigger {...rest} asChild={asChild} data-testid={testId}>
+      {children}
+    </TooltipPrimitive.Trigger>
+  );
+}
+TooltipTrigger.displayName = "Tooltip.Trigger";
+
+function TooltipPositioner({ children, ...rest }: TooltipPositionerProps) {
+  return <TooltipPrimitive.Positioner {...rest}>{children}</TooltipPrimitive.Positioner>;
+}
+TooltipPositioner.displayName = "Tooltip.Positioner";
+
+function TooltipContent({ className, children, ...rest }: TooltipContentProps) {
+  const { slots } = useTooltip();
+
+  return (
+    <TooltipPrimitive.Content {...rest} className={slots.content({ className })}>
+      {children}
+    </TooltipPrimitive.Content>
+  );
+}
+TooltipContent.displayName = "Tooltip.Content";
+
+function TooltipArrow({ className, children, ...rest }: TooltipArrowProps) {
+  const { slots } = useTooltip();
+
+  return (
+    <TooltipPrimitive.Arrow {...rest} className={slots.arrow({ className })}>
+      {children}
+    </TooltipPrimitive.Arrow>
+  );
+}
+TooltipArrow.displayName = "Tooltip.Arrow";
+// #endregion
+
+// #region Closed
+export function Tooltip({
+  arrowProps,
+  children,
+  classNames,
+  content,
+  contentProps,
+  positionerProps,
+  testId,
+  triggerProps,
+  ...rest
+}: TooltipProps) {
   const trigger =
     typeof children === "function" ? (
       <TooltipPrimitive.Context>
         {(api) => children(api.getTriggerProps())}
       </TooltipPrimitive.Context>
     ) : (
-      <TooltipPrimitive.Trigger {...triggerProps} asChild data-testid={testId}>
+      <TooltipTrigger {...triggerProps} testId={testId}>
         {children}
-      </TooltipPrimitive.Trigger>
+      </TooltipTrigger>
     );
 
   return (
-    <TooltipPrimitive.Root
-      {...rest}
-      closeDelay={closeDelay}
-      lazyMount={lazyMount}
-      openDelay={openDelay}
-      positioning={positioning}
-      unmountOnExit={unmountOnExit}
-    >
+    <TooltipRoot {...rest}>
       {trigger}
+
       <Portal>
-        <TooltipPrimitive.Positioner {...positionerProps}>
-          <TooltipPrimitive.Content
-            {...contentProps}
-            className={slots.content({ className: classNames?.content })}
-          >
-            <TooltipPrimitive.Arrow
-              {...arrowProps}
-              className={slots.arrow({ className: classNames?.arrow })}
-            >
+        <TooltipPositioner {...positionerProps}>
+          <TooltipContent {...contentProps} className={classNames?.content}>
+            <TooltipArrow {...arrowProps} className={classNames?.arrow}>
               <TooltipPrimitive.ArrowTip />
-            </TooltipPrimitive.Arrow>
+            </TooltipArrow>
 
             {content}
-          </TooltipPrimitive.Content>
-        </TooltipPrimitive.Positioner>
+          </TooltipContent>
+        </TooltipPositioner>
       </Portal>
-    </TooltipPrimitive.Root>
+    </TooltipRoot>
   );
 }
+Tooltip.displayName = "Tooltip";
 // #endregion

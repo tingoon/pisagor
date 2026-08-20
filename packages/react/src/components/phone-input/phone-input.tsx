@@ -1,6 +1,7 @@
 import { createListCollection } from "@ark-ui/react/collection";
 import { CaretUpDownIcon, GlobeIcon } from "@phosphor-icons/react";
 import {
+  type PhoneInputSlots,
   type PhoneInputVariantProps,
   phoneInputCountryTriggerVariants,
   phoneInputInline2Variants,
@@ -29,7 +30,7 @@ import { PhoneInputContext, usePhoneInput } from "./phone-input.context";
 import { phoneInputFlags } from "./phone-input-flags";
 
 // #region Types
-type PhoneInputClassNames = VariantClassNames<typeof phoneInputVariants>;
+type PhoneInputClassNames = VariantClassNames<PhoneInputSlots>;
 
 type PhoneInputSize = NonNullable<PhoneInputVariantProps["size"]>;
 
@@ -78,7 +79,7 @@ export interface PhoneInputProps
 }
 // #endregion
 
-// #region Internal components
+// #region Parts
 function PhoneInputContainer({ className, children, ...rest }: ComponentProps<"div">) {
   const { size, testId, variant } = usePhoneInput();
 
@@ -243,7 +244,7 @@ function PhoneInputCountrySelect({
 }
 // #endregion
 
-// #region Part
+// #region Closed
 export function PhoneInput({
   className,
   classNames,

@@ -1,2 +1,2 @@
-export type { ClipboardProps, ClipboardRootProps } from "./clipboard";
+export type { ClipboardProps } from "./clipboard";
 export { Clipboard } from "./clipboard";

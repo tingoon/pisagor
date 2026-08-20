@@ -1,6 +1,6 @@
 import { SignaturePad as SignaturePadPrimitive } from "@ark-ui/react/signature-pad";
 import { ArrowCounterClockwiseIcon } from "@phosphor-icons/react";
-import { signaturePadVariants } from "@pisagor/styles/ui/signature-pad";
+import { type SignaturePadSlots, signaturePadVariants } from "@pisagor/styles/ui/signature-pad";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
@@ -13,79 +13,69 @@ import {
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 import { Button } from "../button";
+import { SignaturePadContext, useSignaturePad } from "./signature-pad.context";
 
 // #region Types
-type SignaturePadClassNames = VariantClassNames<typeof signaturePadVariants>;
+type SignaturePadClassNames = VariantClassNames<SignaturePadSlots>;
 
-export type SignaturePadRootProps = ComponentProps<typeof SignaturePadPrimitive.Root>;
+type SignaturePadRootProps = ComponentProps<typeof SignaturePadPrimitive.Root> &
+  WithTestId & {
+    /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
+    variant?: FormControlVariant;
+    /** Marks the control as invalid for styling and assistive tech. */
+    invalid?: boolean;
+  };
 
-export interface SignaturePadProps extends SignaturePadRootProps, WithTestId {
-  /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
-  variant?: FormControlVariant;
-  /** Marks the control as invalid for styling and assistive tech. */
-  invalid?: boolean;
+export interface SignaturePadProps extends Omit<SignaturePadRootProps, "children"> {
   /** Slot class names */
   classNames?: SignaturePadClassNames;
 }
 
-export interface SignaturePadControlProps
-  extends Omit<ComponentProps<typeof SignaturePadPrimitive.Control>, "className"> {
-  classNames?: SignaturePadClassNames;
-}
+type SignaturePadControlProps = ComponentProps<typeof SignaturePadPrimitive.Control>;
 
-export interface SignaturePadSegmentProps
-  extends Omit<ComponentProps<typeof SignaturePadPrimitive.Segment>, "className"> {
-  classNames?: SignaturePadClassNames;
-}
+type SignaturePadSegmentProps = ComponentProps<typeof SignaturePadPrimitive.Segment>;
 
-export interface SignaturePadClearProps
-  extends Omit<ComponentProps<typeof SignaturePadPrimitive.ClearTrigger>, "className"> {
-  classNames?: SignaturePadClassNames;
-}
+type SignaturePadClearProps = ComponentProps<typeof SignaturePadPrimitive.ClearTrigger>;
 
-export interface SignaturePadGuideProps
-  extends Omit<ComponentProps<typeof SignaturePadPrimitive.Guide>, "className"> {
-  classNames?: SignaturePadClassNames;
-}
+type SignaturePadGuideProps = ComponentProps<typeof SignaturePadPrimitive.Guide>;
 // #endregion
 
-// #region Part
-export function SignaturePad({
+// #region Parts
+function SignaturePadRoot({
+  children,
   className,
-  classNames,
+  invalid = false,
   testId,
   variant,
-  invalid = false,
   ...rest
-}: SignaturePadProps) {
+}: SignaturePadRootProps) {
   const slots = signaturePadVariants();
 
   return (
     <FormControlVariantProvider value={variant}>
-      <SignaturePadPrimitive.Root
-        {...rest}
-        aria-invalid={invalid || undefined}
-        className={slots.base({ className: cn(className, classNames?.base) })}
-        data-invalid={invalid || undefined}
-        data-testid={testId}
-      >
-        <SignaturePadControl classNames={classNames} invalid={invalid}>
-          <SignaturePadSegment classNames={classNames} />
-          <SignaturePadClear classNames={classNames} />
-          <SignaturePadGuide classNames={classNames} />
-        </SignaturePadControl>
-      </SignaturePadPrimitive.Root>
+      <SignaturePadContext value={{ slots }}>
+        <SignaturePadPrimitive.Root
+          {...rest}
+          aria-invalid={invalid || undefined}
+          className={slots.base({ className })}
+          data-invalid={invalid || undefined}
+          data-testid={testId}
+        >
+          {children}
+        </SignaturePadPrimitive.Root>
+      </SignaturePadContext>
     </FormControlVariantProvider>
   );
 }
+SignaturePadRoot.displayName = "SignaturePad.Root";
 
 function SignaturePadControl({
-  classNames,
   children,
+  className,
   invalid,
   ...rest
 }: SignaturePadControlProps & { invalid?: boolean }) {
-  const slots = signaturePadVariants();
+  const { slots } = useSignaturePad();
   const resolved = useFormControlVariant();
   const shellArgs = shellVariantArgs(resolved);
   const controlProps = formControlShellProps(resolved);
@@ -97,7 +87,7 @@ function SignaturePadControl({
       className={cn(
         formControlZoneVariants({ ...shellArgs }),
         slots.control({
-          className: cn(resolved.variant === "primary" && "shadow-xs/5", classNames?.control),
+          className: cn(resolved.variant === "primary" && "shadow-xs/5", className),
         }),
       )}
       data-invalid={invalid || undefined}
@@ -106,42 +96,60 @@ function SignaturePadControl({
     </SignaturePadPrimitive.Control>
   );
 }
+SignaturePadControl.displayName = "SignaturePad.Control";
 
-function SignaturePadSegment({ classNames, ...rest }: SignaturePadSegmentProps) {
-  const slots = signaturePadVariants();
+function SignaturePadSegment({ className, ...rest }: SignaturePadSegmentProps) {
+  const { slots } = useSignaturePad();
 
-  return (
-    <SignaturePadPrimitive.Segment
-      {...rest}
-      className={slots.segment({ className: classNames?.segment })}
-    />
-  );
+  return <SignaturePadPrimitive.Segment {...rest} className={slots.segment({ className })} />;
 }
+SignaturePadSegment.displayName = "SignaturePad.Segment";
 
-function SignaturePadClear({ classNames, ...rest }: SignaturePadClearProps) {
-  const slots = signaturePadVariants();
+function SignaturePadClear({ className, ...rest }: SignaturePadClearProps) {
+  const { slots } = useSignaturePad();
 
   return (
-    <SignaturePadPrimitive.ClearTrigger
-      {...rest}
-      asChild
-      className={slots.clear({ className: classNames?.clear })}
-    >
+    <SignaturePadPrimitive.ClearTrigger {...rest} asChild className={slots.clear({ className })}>
       <Button aria-label="Clear signature" size="icon-md" variant="ghost">
         <ArrowCounterClockwiseIcon />
       </Button>
     </SignaturePadPrimitive.ClearTrigger>
   );
 }
+SignaturePadClear.displayName = "SignaturePad.Clear";
 
-function SignaturePadGuide({ classNames, ...rest }: SignaturePadGuideProps) {
-  const slots = signaturePadVariants();
+function SignaturePadGuide({ className, ...rest }: SignaturePadGuideProps) {
+  const { slots } = useSignaturePad();
 
+  return <SignaturePadPrimitive.Guide {...rest} className={slots.guide({ className })} />;
+}
+SignaturePadGuide.displayName = "SignaturePad.Guide";
+// #endregion
+
+// #region Closed
+export function SignaturePad({
+  className,
+  classNames,
+  invalid = false,
+  testId,
+  variant,
+  ...rest
+}: SignaturePadProps) {
   return (
-    <SignaturePadPrimitive.Guide
+    <SignaturePadRoot
       {...rest}
-      className={slots.guide({ className: classNames?.guide })}
-    />
+      className={className}
+      invalid={invalid}
+      testId={testId}
+      variant={variant}
+    >
+      <SignaturePadControl className={classNames?.control} invalid={invalid}>
+        <SignaturePadSegment className={classNames?.segment} />
+        <SignaturePadClear className={classNames?.clear} />
+        <SignaturePadGuide className={classNames?.guide} />
+      </SignaturePadControl>
+    </SignaturePadRoot>
   );
 }
+SignaturePad.displayName = "SignaturePad";
 // #endregion

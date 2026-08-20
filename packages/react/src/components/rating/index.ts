@@ -1,8 +1,2 @@
-export type {
-  RatingControlProps,
-  RatingIndicatorProps,
-  RatingItemProps,
-  RatingProps,
-  RatingRootProps,
-} from "./rating";
+export type { RatingProps } from "./rating";
 export { Rating } from "./rating";

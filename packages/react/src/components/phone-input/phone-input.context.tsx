@@ -1,11 +1,15 @@
-import type { PhoneInputVariantProps, phoneInputVariants } from "@pisagor/styles/ui/phone-input";
+import type {
+  PhoneInputSlots,
+  PhoneInputVariantProps,
+  PhoneInputVariants,
+} from "@pisagor/styles/ui/phone-input";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import type { VariantClassNames } from "../../internal/types";
 import { createContext } from "../../utils/create-context";
 import type { ComboboxContentProps } from "../combobox";
 import type { InputProps } from "../input";
 
-type PhoneInputClassNames = VariantClassNames<typeof phoneInputVariants>;
+type PhoneInputClassNames = VariantClassNames<PhoneInputSlots>;
 
 type PhoneInputSize = NonNullable<PhoneInputVariantProps["size"]>;
 
@@ -15,7 +19,7 @@ interface PhoneInputContextValue {
   invalid?: boolean;
   popupProps?: Omit<ComboboxContentProps, "className" | "children">;
   size: PhoneInputSize;
-  slots: ReturnType<typeof phoneInputVariants>;
+  slots: PhoneInputVariants;
   testId?: string;
   variant?: FormControlVariant;
 }

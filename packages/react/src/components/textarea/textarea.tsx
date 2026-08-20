@@ -1,7 +1,11 @@
 import { Field as FieldPrimitive } from "@ark-ui/react/field";
-import { textareaInlineVariants, textareaVariants } from "@pisagor/styles/ui/textarea";
+import {
+  type TextareaSlots,
+  textareaInlineVariants,
+  textareaVariants,
+} from "@pisagor/styles/ui/textarea";
 import { cn } from "@pisagor/utils";
-import type { ChangeEventHandler, ComponentProps } from "react";
+import type { ChangeEventHandler, ComponentProps, ReactNode } from "react";
 import { useClearableInput } from "../../hooks";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import {
@@ -13,17 +17,20 @@ import { useFormControlVariant } from "../../internal/form-control/use-form-cont
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 import { Input } from "../input";
 import { InputGroupAddon, InputGroupRoot } from "../input-group/input-group-core";
+import { TextareaContext, useTextarea } from "./textarea.context";
 
 // #region Types
-type TextareaClassNames = VariantClassNames<typeof textareaVariants>;
+type TextareaClassNames = VariantClassNames<TextareaSlots>;
 
-export type TextareaRootProps = ComponentProps<typeof FieldPrimitive.Textarea>;
+type TextareaRootProps = ComponentProps<typeof FieldPrimitive.Textarea> &
+  WithTestId & {
+    /**
+     * Visual shell variant. When omitted, resolves from the nearest `Surface` context.
+     */
+    variant?: FormControlVariant;
+  };
 
-export interface TextareaProps extends TextareaRootProps, WithTestId {
-  /**
-   * Visual shell variant. When omitted, resolves from the nearest `Surface` context.
-   */
-  variant?: FormControlVariant;
+export interface TextareaProps extends TextareaRootProps {
   /**
    * Whether to show a clear button when the textarea has a value.
    *
@@ -37,24 +44,97 @@ export interface TextareaProps extends TextareaRootProps, WithTestId {
 }
 // #endregion
 
-// #region Part
-export function Textarea({
-  variant: variantProp,
-  clearable = false,
-  value,
-  defaultValue,
-  disabled,
-  readOnly,
-  onChange,
-  onValueChange,
+// #region Parts
+function TextareaProvider({ children }: { children: ReactNode }) {
+  const slots = textareaVariants();
+
+  return <TextareaContext value={{ slots }}>{children}</TextareaContext>;
+}
+TextareaProvider.displayName = "Textarea.Provider";
+
+function TextareaField({
   className,
   classNames,
-  ref,
+  testId,
+  variant: variantProp,
+  ...rest
+}: TextareaRootProps & { classNames?: TextareaClassNames }) {
+  const { slots } = useTextarea();
+  const resolved = useFormControlVariant(variantProp);
+  const shellArgs = shellVariantArgs(resolved);
+  const controlProps = formControlShellProps(resolved);
+
+  return (
+    <FieldPrimitive.Textarea
+      {...rest}
+      {...controlProps}
+      className={cn(
+        formControlShellVariants({ size: "md", ...shellArgs }),
+        slots.rootLayout({ className: cn(className, classNames?.rootLayout) }),
+      )}
+      data-testid={testId}
+    />
+  );
+}
+TextareaField.displayName = "Textarea.Field";
+
+function TextareaGroup({
+  children,
+  className,
+  variant,
+}: {
+  children: ReactNode;
+  className?: string;
+  variant?: FormControlVariant;
+}) {
+  const { slots } = useTextarea();
+
+  return (
+    <InputGroupRoot className={slots.group({ className })} variant={variant}>
+      {children}
+    </InputGroupRoot>
+  );
+}
+TextareaGroup.displayName = "Textarea.Group";
+
+function TextareaClearableField({
+  canClear,
+  className,
+  classNames,
   testId,
   ...rest
-}: TextareaProps) {
-  const resolved = useFormControlVariant(variantProp);
+}: TextareaRootProps & { canClear?: boolean; classNames?: TextareaClassNames }) {
+  const { slots } = useTextarea();
 
+  return (
+    <FieldPrimitive.Textarea
+      {...rest}
+      className={slots.clearableRoot({
+        className: cn(canClear && "pe-9", className, classNames?.clearableRoot),
+      })}
+      data-testid={testId}
+    />
+  );
+}
+TextareaClearableField.displayName = "Textarea.ClearableField";
+// #endregion
+
+// #region Closed
+export function Textarea({
+  className,
+  classNames,
+  clearable = false,
+  defaultValue,
+  disabled,
+  onChange,
+  onValueChange,
+  readOnly,
+  ref,
+  testId,
+  value,
+  variant: variantProp,
+  ...rest
+}: TextareaProps) {
   const { canClear, handleChange, handleClear, mergedRef } = useClearableInput({
     clearable,
     defaultValue,
@@ -67,9 +147,6 @@ export function Textarea({
   });
 
   const skipClearable = !clearable;
-  const shellArgs = shellVariantArgs(resolved);
-  const controlProps = formControlShellProps(resolved);
-  const slots = textareaVariants();
 
   const changeHandler: ChangeEventHandler<HTMLTextAreaElement> | undefined = skipClearable
     ? onChange || onValueChange
@@ -80,47 +157,46 @@ export function Textarea({
       : undefined
     : handleChange;
 
-  if (skipClearable) {
-    return (
-      <FieldPrimitive.Textarea
-        {...rest}
-        ref={ref}
-        {...controlProps}
-        className={cn(
-          formControlShellVariants({ size: "md", ...shellArgs }),
-          slots.rootLayout({ className: cn(className, classNames?.rootLayout) }),
-        )}
-        data-testid={testId}
-        defaultValue={defaultValue}
-        disabled={disabled}
-        onChange={changeHandler}
-        readOnly={readOnly}
-        value={value}
-      />
-    );
-  }
-
   return (
-    <InputGroupRoot className={slots.group({ className: classNames?.group })} variant={variantProp}>
-      <FieldPrimitive.Textarea
-        {...rest}
-        className={slots.clearableRoot({
-          className: cn(canClear && "pe-9", className, classNames?.clearableRoot),
-        })}
-        data-testid={testId}
-        defaultValue={defaultValue}
-        disabled={disabled}
-        onChange={handleChange}
-        readOnly={readOnly}
-        ref={mergedRef}
-        value={value}
-      />
-      {canClear ? (
-        <InputGroupAddon align="inline-end" className={textareaInlineVariants()}>
-          <Input.ClearButton onClear={handleClear} />
-        </InputGroupAddon>
-      ) : null}
-    </InputGroupRoot>
+    <TextareaProvider>
+      {skipClearable ? (
+        <TextareaField
+          {...rest}
+          className={className}
+          classNames={classNames}
+          defaultValue={defaultValue}
+          disabled={disabled}
+          onChange={changeHandler}
+          readOnly={readOnly}
+          ref={ref}
+          testId={testId}
+          value={value}
+          variant={variantProp}
+        />
+      ) : (
+        <TextareaGroup className={classNames?.group} variant={variantProp}>
+          <TextareaClearableField
+            {...rest}
+            canClear={canClear}
+            className={className}
+            classNames={classNames}
+            defaultValue={defaultValue}
+            disabled={disabled}
+            onChange={handleChange}
+            readOnly={readOnly}
+            ref={mergedRef}
+            testId={testId}
+            value={value}
+          />
+          {canClear ? (
+            <InputGroupAddon align="inline-end" className={textareaInlineVariants()}>
+              <Input.ClearButton onClear={handleClear} />
+            </InputGroupAddon>
+          ) : null}
+        </TextareaGroup>
+      )}
+    </TextareaProvider>
   );
 }
+Textarea.displayName = "Textarea";
 // #endregion

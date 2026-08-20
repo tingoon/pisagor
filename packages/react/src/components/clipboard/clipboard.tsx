@@ -1,6 +1,10 @@
 import { Clipboard as ClipboardPrimitive } from "@ark-ui/react/clipboard";
 import { CheckIcon, ClipboardIcon } from "@phosphor-icons/react";
-import { type ClipboardVariantProps, clipboardVariants } from "@pisagor/styles/ui/clipboard";
+import {
+  type ClipboardSlots,
+  type ClipboardVariantProps,
+  clipboardVariants,
+} from "@pisagor/styles/ui/clipboard";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
@@ -12,15 +16,16 @@ import {
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 import { Button, type ButtonProps } from "../button";
+import { ClipboardContext, useClipboard } from "./clipboard.context";
 
 // #region Types
-type ClipboardClassNames = VariantClassNames<typeof clipboardVariants>;
+type ClipboardClassNames = VariantClassNames<ClipboardSlots>;
 
 type ClipboardValueSize = ClipboardVariantProps["valueSize"];
 
-export type ClipboardRootProps = ComponentProps<typeof ClipboardPrimitive.Root>;
+type ClipboardRootProps = ComponentProps<typeof ClipboardPrimitive.Root> & WithTestId;
 
-export interface ClipboardProps extends Omit<ClipboardRootProps, "children">, WithTestId {
+export interface ClipboardProps extends Omit<ClipboardRootProps, "children"> {
   /**
    * Display mode for the copy control.
    *
@@ -61,45 +66,129 @@ export interface ClipboardProps extends Omit<ClipboardRootProps, "children">, Wi
 }
 // #endregion
 
-// #region Part
-export function Clipboard({
-  variant = "input",
-  controlVariant: controlVariantProp,
+// #region Parts
+function ClipboardProvider({
+  children,
   valueSize = "md",
+}: {
+  children: ReactNode;
+  valueSize?: ClipboardValueSize;
+}) {
+  const slots = clipboardVariants({ valueSize });
+
+  return <ClipboardContext value={{ slots }}>{children}</ClipboardContext>;
+}
+ClipboardProvider.displayName = "Clipboard.Provider";
+
+function ClipboardRoot({ children, className, testId, ...rest }: ClipboardRootProps) {
+  return (
+    <ClipboardPrimitive.Root {...rest} className={className} data-testid={testId}>
+      {children}
+    </ClipboardPrimitive.Root>
+  );
+}
+ClipboardRoot.displayName = "Clipboard.Root";
+
+function ClipboardControl({
+  className,
+  children,
+  ...rest
+}: ComponentProps<typeof ClipboardPrimitive.Control>) {
+  const { slots } = useClipboard();
+
+  return (
+    <ClipboardPrimitive.Control {...rest} className={slots.control({ className })}>
+      {children}
+    </ClipboardPrimitive.Control>
+  );
+}
+ClipboardControl.displayName = "Clipboard.Control";
+
+function ClipboardInput({ className, ...rest }: ComponentProps<typeof ClipboardPrimitive.Input>) {
+  const { slots } = useClipboard();
+
+  return <ClipboardPrimitive.Input {...rest} className={slots.input({ className })} />;
+}
+ClipboardInput.displayName = "Clipboard.Input";
+
+function ClipboardValue({
+  className,
+  ...rest
+}: ComponentProps<typeof ClipboardPrimitive.ValueText>) {
+  const { slots } = useClipboard();
+
+  return <ClipboardPrimitive.ValueText {...rest} className={slots.value({ className })} />;
+}
+ClipboardValue.displayName = "Clipboard.Value";
+
+function ClipboardIndicator({
+  className,
+  ...rest
+}: ComponentProps<typeof ClipboardPrimitive.Indicator>) {
+  const { slots } = useClipboard();
+
+  return <ClipboardPrimitive.Indicator {...rest} className={slots.indicator({ className })} />;
+}
+ClipboardIndicator.displayName = "Clipboard.Indicator";
+
+function ClipboardField({ className, children, ...rest }: ComponentProps<"div">) {
+  const { slots } = useClipboard();
+
+  return (
+    <div {...rest} className={slots.field({ className })}>
+      {children}
+    </div>
+  );
+}
+ClipboardField.displayName = "Clipboard.Field";
+
+function ClipboardLabel({ className, children, ...rest }: ComponentProps<"span">) {
+  const { slots } = useClipboard();
+
+  return (
+    <span {...rest} className={slots.label({ className })}>
+      {children}
+    </span>
+  );
+}
+ClipboardLabel.displayName = "Clipboard.Label";
+// #endregion
+
+// #region Closed
+export function Clipboard({
+  buttonAriaLabel = "Copy to clipboard",
   buttonSize = "icon-md",
   buttonVariant,
-  label,
-  copiedIcon = <CheckIcon />,
-  copyIcon = <ClipboardIcon />,
-  buttonAriaLabel = "Copy to clipboard",
   className,
   classNames,
+  controlVariant: controlVariantProp,
+  copiedIcon = <CheckIcon />,
+  copyIcon = <ClipboardIcon />,
+  label,
   labelProps,
   testId,
+  valueSize = "md",
+  variant = "input",
   ...rest
 }: ClipboardProps) {
   const resolved = useFormControlVariant(controlVariantProp);
   const shellArgs = shellVariantArgs(resolved);
   const controlProps = formControlShellProps(resolved);
   const shellClassName = formControlShellVariants({ size: "md", ...shellArgs });
-  const slots = clipboardVariants({ valueSize });
 
   const control = (
-    <ClipboardPrimitive.Root {...rest} className={cn(className)} data-testid={testId}>
-      <ClipboardPrimitive.Control className={slots.control({ className: classNames?.control })}>
+    <ClipboardRoot {...rest} className={className} testId={testId}>
+      <ClipboardControl className={classNames?.control}>
         {variant === "input" && (
-          <ClipboardPrimitive.Input
+          <ClipboardInput
             {...controlProps}
-            className={cn(shellClassName, slots.input({ className: classNames?.input }))}
+            className={cn(shellClassName, classNames?.input)}
             readOnly
           />
         )}
 
         {variant === "value" && (
-          <ClipboardPrimitive.ValueText
-            {...controlProps}
-            className={cn(shellClassName, slots.value({ className: classNames?.value }))}
-          />
+          <ClipboardValue {...controlProps} className={cn(shellClassName, classNames?.value)} />
         )}
 
         <ClipboardPrimitive.Trigger asChild>
@@ -109,29 +198,28 @@ export function Clipboard({
             type="button"
             variant={buttonVariant}
           >
-            <ClipboardPrimitive.Indicator
-              className={slots.indicator({ className: classNames?.indicator })}
-              copied={copiedIcon}
-            >
+            <ClipboardIndicator className={classNames?.indicator} copied={copiedIcon}>
               {copyIcon}
-            </ClipboardPrimitive.Indicator>
+            </ClipboardIndicator>
           </Button>
         </ClipboardPrimitive.Trigger>
-      </ClipboardPrimitive.Control>
-    </ClipboardPrimitive.Root>
+      </ClipboardControl>
+    </ClipboardRoot>
   );
 
-  if (!label) {
-    return control;
-  }
-
   return (
-    <div className={slots.field({ className: classNames?.field })}>
-      <span {...labelProps} className={slots.label({ className: classNames?.label })}>
-        {label}
-      </span>
-      {control}
-    </div>
+    <ClipboardProvider valueSize={valueSize}>
+      {label ? (
+        <ClipboardField className={classNames?.field}>
+          <ClipboardLabel {...labelProps} className={classNames?.label}>
+            {label}
+          </ClipboardLabel>
+          {control}
+        </ClipboardField>
+      ) : (
+        control
+      )}
+    </ClipboardProvider>
   );
 }
 Clipboard.displayName = "Clipboard";

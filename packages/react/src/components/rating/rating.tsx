@@ -1,6 +1,6 @@
 import { RatingGroup as RatingGroupPrimitive } from "@ark-ui/react/rating-group";
 import { StarIcon } from "@phosphor-icons/react";
-import { ratingVariants } from "@pisagor/styles/ui/rating";
+import { type RatingSlots, ratingVariants } from "@pisagor/styles/ui/rating";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactElement, ReactNode } from "react";
 import { cloneElement } from "react";
@@ -8,24 +8,24 @@ import { FormControlVariantProvider } from "../../internal/form-control/form-con
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
+import { RatingContext, useRating } from "./rating.context";
 
 // #region Types
-export type RatingControlProps = ComponentProps<typeof RatingGroupPrimitive.Control>;
+type RatingControlProps = ComponentProps<typeof RatingGroupPrimitive.Control>;
 
-export type RatingItemProps = ComponentProps<typeof RatingGroupPrimitive.Item>;
+type RatingItemProps = ComponentProps<typeof RatingGroupPrimitive.Item>;
 
-export type RatingIndicatorProps = ComponentProps<"span">;
+type RatingIndicatorProps = ComponentProps<"span">;
 
-type RatingClassNames = VariantClassNames<typeof ratingVariants>;
+type RatingClassNames = VariantClassNames<RatingSlots>;
 
-export type RatingRootProps = Omit<
-  ComponentProps<typeof RatingGroupPrimitive.Root>,
-  "onValueChange"
->;
+type RatingRootProps = ComponentProps<typeof RatingGroupPrimitive.Root> &
+  WithTestId & {
+    /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
+    variant?: FormControlVariant;
+  };
 
-export interface RatingProps extends RatingRootProps, WithTestId {
-  /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
-  variant?: FormControlVariant;
+export interface RatingProps extends Omit<RatingRootProps, "children" | "onValueChange"> {
   /** Slot class names */
   classNames?: RatingClassNames;
   /**
@@ -64,89 +64,134 @@ export interface RatingProps extends RatingRootProps, WithTestId {
 }
 // #endregion
 
-// #region Part
-export function Rating({
-  icon = <StarIcon />,
-  className,
-  classNames,
+// #region Parts
+function RatingRoot({
   allowHalf = false,
+  children,
+  className,
   count = 5,
-  controlProps,
-  itemProps,
-  indicatorProps,
-  onValueChange,
-  variant: variantProp,
   testId,
+  variant: variantProp,
   ...rest
-}: RatingProps) {
+}: RatingRootProps) {
   const resolved = useFormControlVariant(variantProp);
   const slots = ratingVariants();
   const surfaceTone = resolved.variant === "secondary" ? "opacity-90" : undefined;
 
   return (
     <FormControlVariantProvider value={variantProp}>
-      <RatingGroupPrimitive.Root
-        {...rest}
-        allowHalf={allowHalf}
-        className={slots.base({ className: cn(surfaceTone, className, classNames?.base) })}
-        count={count}
-        data-testid={testId}
-        data-variant={resolved.variant}
-        onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
-      >
-        <RatingGroupPrimitive.Control
-          {...controlProps}
-          className={slots.control({ className: classNames?.control })}
+      <RatingContext value={{ slots }}>
+        <RatingGroupPrimitive.Root
+          {...rest}
+          allowHalf={allowHalf}
+          className={slots.base({ className: cn(surfaceTone, className) })}
+          count={count}
+          data-testid={testId}
+          data-variant={resolved.variant}
         >
-          <RatingGroupPrimitive.Context>
-            {({ items }) =>
-              items.map((item) => (
-                <RatingItem
-                  {...itemProps}
-                  className={slots.item({ className: classNames?.item })}
-                  index={item}
-                  key={item}
-                >
-                  <RatingGroupPrimitive.ItemContext>
-                    {({ half, highlighted }) => (
-                      <span
-                        {...indicatorProps}
-                        className={slots.indicator({ className: classNames?.indicator })}
-                        data-half={half ? "" : undefined}
-                        data-highlighted={highlighted ? "" : undefined}
-                        data-part="item-indicator"
-                        data-scope="rating"
-                      >
-                        {cloneElement(
-                          icon as ReactElement,
-                          {
-                            "data-bg": "",
-                          } as ComponentProps<"svg">,
-                        )}
-
-                        {cloneElement(
-                          icon as ReactElement,
-                          {
-                            "data-fg": "",
-                            fill: "currentColor",
-                          } as ComponentProps<"svg">,
-                        )}
-                      </span>
-                    )}
-                  </RatingGroupPrimitive.ItemContext>
-                </RatingItem>
-              ))
-            }
-          </RatingGroupPrimitive.Context>
-
-          <RatingGroupPrimitive.HiddenInput />
-        </RatingGroupPrimitive.Control>
-      </RatingGroupPrimitive.Root>
+          {children}
+        </RatingGroupPrimitive.Root>
+      </RatingContext>
     </FormControlVariantProvider>
   );
 }
+RatingRoot.displayName = "Rating.Root";
+
+function RatingControl({ className, children, ...rest }: RatingControlProps) {
+  const { slots } = useRating();
+
+  return (
+    <RatingGroupPrimitive.Control {...rest} className={slots.control({ className })}>
+      {children}
+    </RatingGroupPrimitive.Control>
+  );
+}
+RatingControl.displayName = "Rating.Control";
 
 function RatingItem({ className, ...rest }: RatingItemProps) {
-  return <RatingGroupPrimitive.Item {...rest} className={className} />;
+  const { slots } = useRating();
+
+  return <RatingGroupPrimitive.Item {...rest} className={slots.item({ className })} />;
 }
+RatingItem.displayName = "Rating.Item";
+
+function RatingIndicator({ className, children, ...rest }: RatingIndicatorProps) {
+  const { slots } = useRating();
+
+  return (
+    <span
+      {...rest}
+      className={slots.indicator({ className })}
+      data-part="item-indicator"
+      data-scope="rating"
+    >
+      {children}
+    </span>
+  );
+}
+RatingIndicator.displayName = "Rating.Indicator";
+// #endregion
+
+// #region Closed
+export function Rating({
+  className,
+  classNames,
+  controlProps,
+  icon = <StarIcon />,
+  indicatorProps,
+  itemProps,
+  onValueChange,
+  testId,
+  variant,
+  ...rest
+}: RatingProps) {
+  return (
+    <RatingRoot
+      {...rest}
+      className={className}
+      onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
+      testId={testId}
+      variant={variant}
+    >
+      <RatingControl {...controlProps} className={classNames?.control}>
+        <RatingGroupPrimitive.Context>
+          {({ items }) =>
+            items.map((item) => (
+              <RatingItem {...itemProps} className={classNames?.item} index={item} key={item}>
+                <RatingGroupPrimitive.ItemContext>
+                  {({ half, highlighted }) => (
+                    <RatingIndicator
+                      {...indicatorProps}
+                      className={classNames?.indicator}
+                      data-half={half ? "" : undefined}
+                      data-highlighted={highlighted ? "" : undefined}
+                    >
+                      {cloneElement(
+                        icon as ReactElement,
+                        {
+                          "data-bg": "",
+                        } as ComponentProps<"svg">,
+                      )}
+
+                      {cloneElement(
+                        icon as ReactElement,
+                        {
+                          "data-fg": "",
+                          fill: "currentColor",
+                        } as ComponentProps<"svg">,
+                      )}
+                    </RatingIndicator>
+                  )}
+                </RatingGroupPrimitive.ItemContext>
+              </RatingItem>
+            ))
+          }
+        </RatingGroupPrimitive.Context>
+
+        <RatingGroupPrimitive.HiddenInput />
+      </RatingControl>
+    </RatingRoot>
+  );
+}
+Rating.displayName = "Rating";
 // #endregion

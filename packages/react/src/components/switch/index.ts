@@ -1,8 +1,2 @@
-export type {
-  SwitchControlProps,
-  SwitchHiddenInputProps,
-  SwitchProps,
-  SwitchRootProps,
-  SwitchThumbProps,
-} from "./switch";
+export type { SwitchProps } from "./switch";
 export { Switch } from "./switch";

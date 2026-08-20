@@ -1,21 +1,27 @@
 import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/react/scroll-area";
-import { type ScrollAreaVariantProps, scrollAreaVariants } from "@pisagor/styles/ui/scroll-area";
-import { cn } from "@pisagor/utils";
+import {
+  type ScrollAreaSlots,
+  type ScrollAreaVariantProps,
+  scrollAreaVariants,
+} from "@pisagor/styles/ui/scroll-area";
 import type { ComponentProps } from "react";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
+import { ScrollAreaContext, useScrollArea } from "./scroll-area.context";
 
 // #region Types
-export type ScrollAreaViewportProps = ComponentProps<typeof ScrollAreaPrimitive.Viewport>;
+type ScrollAreaViewportProps = ComponentProps<typeof ScrollAreaPrimitive.Viewport>;
 
-export type ScrollAreaScrollbarProps = ComponentProps<typeof ScrollAreaPrimitive.Scrollbar>;
+type ScrollAreaScrollbarProps = ComponentProps<typeof ScrollAreaPrimitive.Scrollbar>;
 
-export type ScrollAreaThumbProps = ComponentProps<typeof ScrollAreaPrimitive.Thumb>;
+type ScrollAreaThumbProps = ComponentProps<typeof ScrollAreaPrimitive.Thumb>;
 
-type ScrollAreaClassNames = VariantClassNames<typeof scrollAreaVariants>;
+type ScrollAreaClassNames = VariantClassNames<ScrollAreaSlots>;
 
-export type ScrollAreaRootProps = ComponentProps<typeof ScrollAreaPrimitive.Root>;
+type ScrollAreaRootProps = ComponentProps<typeof ScrollAreaPrimitive.Root> &
+  ScrollAreaVariantProps &
+  WithTestId;
 
-export interface ScrollAreaProps extends ScrollAreaRootProps, ScrollAreaVariantProps, WithTestId {
+export interface ScrollAreaProps extends Omit<ScrollAreaRootProps, "children"> {
   /** Slot class names */
   classNames?: ScrollAreaClassNames;
   /** Extra props forwarded to the scroll area viewport element */
@@ -24,80 +30,110 @@ export interface ScrollAreaProps extends ScrollAreaRootProps, ScrollAreaVariantP
   scrollbarProps?: Omit<ScrollAreaScrollbarProps, "children" | "className" | "orientation">;
   /** Extra props forwarded to each scroll area thumb element */
   thumbProps?: Omit<ScrollAreaThumbProps, "children" | "className">;
-}
-
-interface ScrollAreaScrollbarSlotProps {
-  orientation: ScrollAreaScrollbarProps["orientation"];
-  classNames?: ScrollAreaClassNames;
-  scrollbarProps?: Omit<ScrollAreaScrollbarProps, "children" | "className" | "orientation">;
-  thumbProps?: Omit<ScrollAreaThumbProps, "children" | "className">;
+  children?: React.ReactNode;
 }
 // #endregion
 
 // #region Parts
 function ScrollAreaRoot({
-  scrollFade = false,
-  className,
-  classNames,
-  viewportProps,
-  scrollbarProps,
-  thumbProps,
   children,
+  className,
+  scrollFade = false,
   testId,
   ...rest
-}: ScrollAreaProps) {
+}: ScrollAreaRootProps) {
   const slots = scrollAreaVariants({ scrollFade });
 
   return (
-    <ScrollAreaPrimitive.Root
-      {...rest}
-      className={slots.base({ className: cn(className, classNames?.base) })}
-      data-testid={testId}
-    >
-      <ScrollAreaPrimitive.Viewport
-        {...viewportProps}
-        className={slots.viewport({ className: classNames?.viewport })}
+    <ScrollAreaContext value={{ slots }}>
+      <ScrollAreaPrimitive.Root
+        {...rest}
+        className={slots.base({ className })}
+        data-testid={testId}
       >
-        <ScrollAreaPrimitive.Content>{children}</ScrollAreaPrimitive.Content>
-      </ScrollAreaPrimitive.Viewport>
-      <ScrollAreaScrollbar
-        classNames={classNames}
-        orientation="vertical"
-        scrollbarProps={scrollbarProps}
-        thumbProps={thumbProps}
-      />
-      <ScrollAreaScrollbar
-        classNames={classNames}
-        orientation="horizontal"
-        scrollbarProps={scrollbarProps}
-        thumbProps={thumbProps}
-      />
-      <ScrollAreaPrimitive.Corner />
-    </ScrollAreaPrimitive.Root>
+        {children}
+      </ScrollAreaPrimitive.Root>
+    </ScrollAreaContext>
   );
 }
+ScrollAreaRoot.displayName = "ScrollArea.Root";
+
+function ScrollAreaViewport({ className, children, ...rest }: ScrollAreaViewportProps) {
+  const { slots } = useScrollArea();
+
+  return (
+    <ScrollAreaPrimitive.Viewport {...rest} className={slots.viewport({ className })}>
+      <ScrollAreaPrimitive.Content>{children}</ScrollAreaPrimitive.Content>
+    </ScrollAreaPrimitive.Viewport>
+  );
+}
+ScrollAreaViewport.displayName = "ScrollArea.Viewport";
 
 function ScrollAreaScrollbar({
+  className,
   orientation,
-  classNames,
-  scrollbarProps,
-  thumbProps,
-}: ScrollAreaScrollbarSlotProps) {
-  const slots = scrollAreaVariants();
+  children,
+  ...rest
+}: ScrollAreaScrollbarProps) {
+  const { slots } = useScrollArea();
 
   return (
     <ScrollAreaPrimitive.Scrollbar
-      {...scrollbarProps}
-      className={slots.scrollbar({ className: classNames?.scrollbar })}
+      {...rest}
+      className={slots.scrollbar({ className })}
       orientation={orientation}
     >
-      <ScrollAreaPrimitive.Thumb
-        {...thumbProps}
-        className={slots.thumb({ className: classNames?.thumb })}
-      />
+      {children}
     </ScrollAreaPrimitive.Scrollbar>
   );
 }
+ScrollAreaScrollbar.displayName = "ScrollArea.Scrollbar";
 
-export const ScrollArea = ScrollAreaRoot;
+function ScrollAreaThumb({ className, ...rest }: ScrollAreaThumbProps) {
+  const { slots } = useScrollArea();
+
+  return <ScrollAreaPrimitive.Thumb {...rest} className={slots.thumb({ className })} />;
+}
+ScrollAreaThumb.displayName = "ScrollArea.Thumb";
+// #endregion
+
+// #region Closed
+export function ScrollArea({
+  children,
+  className,
+  classNames,
+  scrollbarProps,
+  scrollFade,
+  testId,
+  thumbProps,
+  viewportProps,
+  ...rest
+}: ScrollAreaProps) {
+  return (
+    <ScrollAreaRoot {...rest} className={className} scrollFade={scrollFade} testId={testId}>
+      <ScrollAreaViewport {...viewportProps} className={classNames?.viewport}>
+        {children}
+      </ScrollAreaViewport>
+
+      <ScrollAreaScrollbar
+        {...scrollbarProps}
+        className={classNames?.scrollbar}
+        orientation="vertical"
+      >
+        <ScrollAreaThumb {...thumbProps} className={classNames?.thumb} />
+      </ScrollAreaScrollbar>
+
+      <ScrollAreaScrollbar
+        {...scrollbarProps}
+        className={classNames?.scrollbar}
+        orientation="horizontal"
+      >
+        <ScrollAreaThumb {...thumbProps} className={classNames?.thumb} />
+      </ScrollAreaScrollbar>
+
+      <ScrollAreaPrimitive.Corner />
+    </ScrollAreaRoot>
+  );
+}
+ScrollArea.displayName = "ScrollArea";
 // #endregion

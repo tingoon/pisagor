@@ -1,6 +1,5 @@
 import { Switch as SwitchPrimitive } from "@ark-ui/react/switch";
-import { switchVariants } from "@pisagor/styles/ui/switch";
-import { cn } from "@pisagor/utils";
+import { type SwitchSlots, switchVariants } from "@pisagor/styles/ui/switch";
 import type { ComponentProps } from "react";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import {
@@ -9,21 +8,24 @@ import {
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
+import { SwitchContext, useSwitch } from "./switch.context";
 
 // #region Types
-export type SwitchControlProps = ComponentProps<typeof SwitchPrimitive.Control>;
+type SwitchControlProps = ComponentProps<typeof SwitchPrimitive.Control>;
 
-export type SwitchThumbProps = ComponentProps<typeof SwitchPrimitive.Thumb>;
+type SwitchThumbProps = ComponentProps<typeof SwitchPrimitive.Thumb>;
 
-export type SwitchHiddenInputProps = ComponentProps<typeof SwitchPrimitive.HiddenInput>;
+type SwitchHiddenInputProps = ComponentProps<typeof SwitchPrimitive.HiddenInput>;
 
-type SwitchClassNames = VariantClassNames<typeof switchVariants>;
+type SwitchClassNames = VariantClassNames<SwitchSlots>;
 
-export type SwitchRootProps = ComponentProps<typeof SwitchPrimitive.Root>;
+type SwitchRootProps = ComponentProps<typeof SwitchPrimitive.Root> &
+  WithTestId & {
+    /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
+    variant?: FormControlVariant;
+  };
 
-export interface SwitchProps extends SwitchRootProps, WithTestId {
-  /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
-  variant?: FormControlVariant;
+export interface SwitchProps extends Omit<SwitchRootProps, "children"> {
   onValueChange?: (value: boolean) => void;
   /** Slot class names */
   classNames?: SwitchClassNames;
@@ -36,24 +38,71 @@ export interface SwitchProps extends SwitchRootProps, WithTestId {
 }
 // #endregion
 
-// #region Part
-export function Switch({
-  variant: variantProp,
-  onCheckedChange,
-  onValueChange,
-  controlProps,
-  thumbProps,
-  hiddenInputProps,
+// #region Parts
+function SwitchRoot({
+  children,
   className,
-  classNames,
   testId,
+  variant: variantProp,
   ...rest
-}: SwitchProps) {
+}: SwitchRootProps) {
   const resolved = useFormControlVariant(variantProp);
   const shellArgs = shellVariantArgs(resolved);
   const controlShellProps = formControlShellProps(resolved);
   const slots = switchVariants({ ...shellArgs });
 
+  return (
+    <SwitchContext value={{ slots }}>
+      <SwitchPrimitive.Root
+        {...rest}
+        {...controlShellProps}
+        className={slots.base({ className })}
+        data-testid={testId}
+      >
+        {children}
+      </SwitchPrimitive.Root>
+    </SwitchContext>
+  );
+}
+SwitchRoot.displayName = "Switch.Root";
+
+function SwitchControl({ className, children, ...rest }: SwitchControlProps) {
+  const { slots } = useSwitch();
+
+  return (
+    <SwitchPrimitive.Control {...rest} className={slots.control({ className })}>
+      {children}
+    </SwitchPrimitive.Control>
+  );
+}
+SwitchControl.displayName = "Switch.Control";
+
+function SwitchThumb({ className, ...rest }: SwitchThumbProps) {
+  const { slots } = useSwitch();
+
+  return <SwitchPrimitive.Thumb {...rest} className={slots.thumb({ className })} />;
+}
+SwitchThumb.displayName = "Switch.Thumb";
+
+function SwitchHiddenInput(props: SwitchHiddenInputProps) {
+  return <SwitchPrimitive.HiddenInput {...props} />;
+}
+SwitchHiddenInput.displayName = "Switch.HiddenInput";
+// #endregion
+
+// #region Closed
+export function Switch({
+  className,
+  classNames,
+  controlProps,
+  hiddenInputProps,
+  onCheckedChange,
+  onValueChange,
+  testId,
+  thumbProps,
+  variant,
+  ...rest
+}: SwitchProps) {
   const handleCheckedChange =
     onCheckedChange || onValueChange
       ? (details: Parameters<NonNullable<SwitchRootProps["onCheckedChange"]>>[0]) => {
@@ -63,25 +112,20 @@ export function Switch({
       : undefined;
 
   return (
-    <SwitchPrimitive.Root
+    <SwitchRoot
       {...rest}
-      {...controlShellProps}
-      className={slots.base({ className: cn(className, classNames?.base) })}
-      data-testid={testId}
+      className={className}
       onCheckedChange={handleCheckedChange}
+      testId={testId}
+      variant={variant}
     >
-      <SwitchPrimitive.Control
-        {...controlProps}
-        className={slots.control({ className: classNames?.control })}
-      >
-        <SwitchPrimitive.Thumb
-          {...thumbProps}
-          className={slots.thumb({ className: classNames?.thumb })}
-        />
-      </SwitchPrimitive.Control>
+      <SwitchControl {...controlProps} className={classNames?.control}>
+        <SwitchThumb {...thumbProps} className={classNames?.thumb} />
+      </SwitchControl>
 
-      <SwitchPrimitive.HiddenInput {...hiddenInputProps} />
-    </SwitchPrimitive.Root>
+      <SwitchHiddenInput {...hiddenInputProps} />
+    </SwitchRoot>
   );
 }
+Switch.displayName = "Switch";
 // #endregion

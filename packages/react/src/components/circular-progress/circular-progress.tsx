@@ -1,23 +1,29 @@
 import { ark } from "@ark-ui/react/factory";
 import {
   Progress as ProgressPrimitive,
-  useProgressContext as useCircularProgress,
+  useProgressContext as useArkCircularProgress,
 } from "@ark-ui/react/progress";
-import { circularProgressVariants } from "@pisagor/styles/ui/circular-progress";
-import { cn } from "@pisagor/utils";
-import type { ComponentProps } from "react";
+import {
+  type CircularProgressSlots,
+  circularProgressVariants,
+} from "@pisagor/styles/ui/circular-progress";
+import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
+import {
+  CircularProgressSlotsContext,
+  useCircularProgressSlots,
+} from "./circular-progress.context";
 
 // #region Types
-export type CircularProgressTrackProps = ComponentProps<typeof ark.svg>;
+type CircularProgressTrackProps = ComponentProps<typeof ark.svg>;
 
-export type CircularProgressValueProps = ComponentProps<typeof ProgressPrimitive.ValueText>;
+type CircularProgressValueProps = ComponentProps<typeof ProgressPrimitive.ValueText>;
 
-type CircularProgressClassNames = VariantClassNames<typeof circularProgressVariants>;
+type CircularProgressClassNames = VariantClassNames<CircularProgressSlots>;
 
-export type CircularProgressRootProps = ComponentProps<typeof ProgressPrimitive.Root>;
+type CircularProgressRootProps = ComponentProps<typeof ProgressPrimitive.Root> & WithTestId;
 
-export interface CircularProgressProps extends CircularProgressRootProps, WithTestId {
+export interface CircularProgressProps extends Omit<CircularProgressRootProps, "children"> {
   /** Slot class names */
   classNames?: CircularProgressClassNames;
   /**
@@ -44,67 +50,61 @@ export interface CircularProgressProps extends CircularProgressRootProps, WithTe
   trackProps?: Omit<CircularProgressTrackProps, "className" | "height" | "viewBox" | "width">;
   /** Extra props forwarded to the circular progress value element */
   valueProps?: Omit<CircularProgressValueProps, "children" | "className">;
+  children?: ReactNode;
 }
 
-interface CircularProgressTrackSlotProps {
+interface CircularProgressTrackPartProps {
   size?: number;
   thickness?: number;
-  classNames?: CircularProgressClassNames;
+  className?: string;
+  rangeClassName?: string;
   trackProps?: Omit<CircularProgressTrackProps, "className" | "height" | "viewBox" | "width">;
 }
 // #endregion
 
-// #region Part
-export function CircularProgress({
-  value,
-  indeterminate = false,
-  size = 32,
-  thickness = 4,
-  isValueVisible,
-  className,
-  classNames,
-  trackProps,
-  valueProps,
-  children,
-  testId,
-  ...rest
-}: CircularProgressProps) {
+// #region Parts
+function CircularProgressRoot({ children, className, testId, ...rest }: CircularProgressRootProps) {
   const slots = circularProgressVariants();
 
   return (
-    <ProgressPrimitive.Root
-      {...rest}
-      className={slots.base({ className: cn(className, classNames?.base) })}
-      data-testid={testId}
-      value={indeterminate ? null : value}
-    >
-      {isValueVisible && (
-        <span className={slots.valueWrapper({ className: classNames?.valueWrapper })}>
-          <CircularProgressValue
-            {...valueProps}
-            className={slots.value({ className: classNames?.value })}
-          />
-        </span>
-      )}
-      {children}
-      <CircularProgressTrack
-        classNames={classNames}
-        size={size}
-        thickness={thickness}
-        trackProps={trackProps}
-      />
-    </ProgressPrimitive.Root>
+    <CircularProgressSlotsContext value={{ slots }}>
+      <ProgressPrimitive.Root {...rest} className={slots.base({ className })} data-testid={testId}>
+        {children}
+      </ProgressPrimitive.Root>
+    </CircularProgressSlotsContext>
   );
 }
+CircularProgressRoot.displayName = "CircularProgress.Root";
+
+function CircularProgressValueWrapper({
+  className,
+  children,
+}: {
+  className?: string;
+  children?: ReactNode;
+}) {
+  const { slots } = useCircularProgressSlots();
+
+  return <span className={slots.valueWrapper({ className })}>{children}</span>;
+}
+CircularProgressValueWrapper.displayName = "CircularProgress.ValueWrapper";
+
+function CircularProgressValue({ className, ...rest }: CircularProgressValueProps) {
+  const { slots } = useCircularProgressSlots();
+
+  return <ProgressPrimitive.ValueText {...rest} className={slots.value({ className })} />;
+}
+CircularProgressValue.displayName = "CircularProgress.Value";
 
 function CircularProgressTrack({
+  className,
+  rangeClassName,
   size = 32,
   thickness = 4,
-  classNames,
   trackProps,
-}: CircularProgressTrackSlotProps) {
-  const slots = circularProgressVariants();
-  const { max, min, value } = useCircularProgress();
+}: CircularProgressTrackPartProps) {
+  const { slots } = useCircularProgressSlots();
+  const { max, min, value } = useArkCircularProgress();
 
   const radius = size / 2 - thickness / 2;
   const circumference = 2 * Math.PI * radius;
@@ -117,7 +117,7 @@ function CircularProgressTrack({
     <ark.svg
       {...trackProps}
       aria-hidden="true"
-      className={slots.track({ className: classNames?.track })}
+      className={slots.track({ className })}
       data-part="circle"
       data-scope="circular-progress"
       height={size}
@@ -133,7 +133,7 @@ function CircularProgressTrack({
         strokeWidth={thickness}
       />
       <circle
-        className={slots.range({ className: classNames?.range })}
+        className={slots.range({ className: rangeClassName })}
         cx={size / 2}
         cy={size / 2}
         data-part="range"
@@ -147,8 +147,48 @@ function CircularProgressTrack({
     </ark.svg>
   );
 }
+CircularProgressTrack.displayName = "CircularProgress.Track";
+// #endregion
 
-function CircularProgressValue({ className, ...rest }: CircularProgressValueProps) {
-  return <ProgressPrimitive.ValueText {...rest} className={className} />;
+// #region Closed
+export function CircularProgress({
+  children,
+  className,
+  classNames,
+  indeterminate = false,
+  isValueVisible,
+  size = 32,
+  testId,
+  thickness = 4,
+  trackProps,
+  value,
+  valueProps,
+  ...rest
+}: CircularProgressProps) {
+  return (
+    <CircularProgressRoot
+      {...rest}
+      className={className}
+      testId={testId}
+      value={indeterminate ? null : value}
+    >
+      {isValueVisible && (
+        <CircularProgressValueWrapper className={classNames?.valueWrapper}>
+          <CircularProgressValue {...valueProps} className={classNames?.value} />
+        </CircularProgressValueWrapper>
+      )}
+
+      {children}
+
+      <CircularProgressTrack
+        className={classNames?.track}
+        rangeClassName={classNames?.range}
+        size={size}
+        thickness={thickness}
+        trackProps={trackProps}
+      />
+    </CircularProgressRoot>
+  );
 }
+CircularProgress.displayName = "CircularProgress";
 // #endregion
