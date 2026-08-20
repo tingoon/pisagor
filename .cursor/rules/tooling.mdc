@@ -11,7 +11,7 @@ Monorepo operations and project tools. Do not add parallel tooling without align
 
 Workspaces: `apps/*`, `packages/*` (Bun + Turborepo).
 
-- Import workspace packages by package name (`@pisagor/react/button`, `@pisagor/react-form`), not relative paths across roots.
+- Import workspace packages by package name (`@pisagor/react`, `@pisagor/react-form`), not relative paths across roots.
 - Run tasks: `turbo <task> --filter=<workspace>` from repo root; CI uses `bun turbo` ([CI](#verify)).
 - Workspace map: root [`AGENTS.md`](../../AGENTS.md). New workspaces: [AGENTS.md Style Guide](styleguides/agents.mdc).
 

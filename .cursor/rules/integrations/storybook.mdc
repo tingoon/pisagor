@@ -24,8 +24,8 @@ Storybook **10**, CSF. React uses `@storybook/react-vite` (`.stories.tsx`); Vue 
 | What | Path |
 | ---- | ---- |
 | Preview | `#/react/preview` |
-| UI components | `@pisagor/react/<name>` |
-| Hooks | `@pisagor/react-hooks` |
+| UI components | `@pisagor/react` (light) or `@pisagor/react/<heavy>` |
+| Hooks | `@pisagor/react/hooks` or `@pisagor/react-hooks` |
 | Utils | `@pisagor/utils` |
 | Form module under test | `@pisagor/react-form/tanstack` (hook) or `@pisagor/react-form` / relative `./<name>` (field under test) |
 | Block under test | `@pisagor/react-blocks/<name>` |
@@ -33,7 +33,7 @@ Storybook **10**, CSF. React uses `@storybook/react-vite` (`.stories.tsx`); Vue 
 | Global decorator | `apps/react/.storybook/decorators/app-decorator.tsx` |
 | Recipes | `apps/react/src/recipes/<group>/` — one `<variant>.tsx` per recipe, one `<group>.stories.tsx` |
 
-Use `@pisagor/react/<name>` for every UI import in stories (including the component under test) so stories stay valid if moved out of the component folder.
+Prefer `@pisagor/react` for light UI imports in stories (including the component under test). Heavy components (`data-grid`, `charts`, `rich-text-editor`, `phone-input`) stay on dedicated subpaths.
 
 `@pisagor/react`, `@pisagor/react-hooks`, and `@pisagor/utils` resolve via workspace package exports (same as apps). Runner-only alias `#/react/*` lives in `apps/react/tsconfig.json`, each package's `tsconfig.json`, and `apps/react/vite.config.ts`; Vite reads it via `resolve.alias` and `tsconfigPaths`. Story files are type-checked by `react` and the owning package `tsconfig.json`:
 
@@ -48,7 +48,7 @@ Use `@pisagor/react/<name>` for every UI import in stories (including the compon
 
 - Stories: CSF default export `meta` + named story exports (`.stories.ts`).
 - Preview / decorators: `apps/vue/.storybook/`.
-- Import components as `@pisagor/vue/<name>`.
+- Import components as `@pisagor/vue` (light) or `@pisagor/vue/<heavy>`.
 
 ## Meta
 

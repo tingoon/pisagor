@@ -4,8 +4,8 @@ Multi-framework UI library: React and Vue components on Ark UI, Tailwind CSS v4,
 
 | Package | Description |
 | --- | --- |
-| [`@pisagor/react`](./packages/react) | Components (`@pisagor/react/button`, …) |
-| [`@pisagor/vue`](./packages/vue) | Vue components (Accordion for now) |
+| [`@pisagor/react`](./packages/react) | Components (`@pisagor/react`, heavy via subpath) |
+| [`@pisagor/vue`](./packages/vue) | Vue components (`@pisagor/vue`, heavy via subpath) |
 | [`@pisagor/react-form`](./packages/react-form) | Fields and TanStack Form helpers |
 | [`@pisagor/react-hooks`](./packages/react-hooks) | Shared React hooks |
 | [`@pisagor/vue-composables`](./packages/vue-composables) | Shared Vue composables |
@@ -24,11 +24,10 @@ bun add @pisagor/react @pisagor/react-hooks @pisagor/utils
 
 Peer dependencies: `react` ^19, `react-dom` ^19, `@phosphor-icons/react` ^2, Tailwind CSS v4.
 
-Heavy components need extra optional peers: `chart` → `recharts`; `data-grid` → `@tanstack/react-table` + `@tanstack/react-virtual`; `rich-text-editor` → `@tiptap/react` + `@tiptap/starter-kit`; `phone-input` → `react-phone-number-input`.
+The root `@pisagor/react` / `@pisagor/vue` barrels export **light** components only. Heavy components are subpath-only and need extra optional peers: `charts` → `recharts`; `data-grid` → `@tanstack/react-table` + `@tanstack/react-virtual` (Vue: `@tanstack/vue-table` + `@tanstack/vue-virtual`); `rich-text-editor` → `@tiptap/react` + `@tiptap/starter-kit` (Vue: `@tiptap/vue-3`); `phone-input` → `react-phone-number-input` (React).
 
 ```tsx
-import { Button } from "@pisagor/react/button";
-import { Provider } from "@pisagor/react/provider";
+import { Button, Provider } from "@pisagor/react";
 import "@pisagor/react/styles";
 
 export function App() {
@@ -46,8 +45,6 @@ Import styles once in the app CSS (Tailwind v4). Point `@source` at the package 
 @import "tailwindcss";
 @import "@pisagor/react/styles";
 ```
-
-There is no root `@pisagor/react` barrel — import each component path.
 
 ## Development
 
