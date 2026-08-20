@@ -64,7 +64,7 @@ export function SelectField({
         {...(value !== undefined ? { value: value ? [value] : [] } : {})}
       >
         <Select.Trigger className="w-full" id={id}>
-          <Select.Value placeholder={placeholder} />
+          <Select.ValueText placeholder={placeholder} />
         </Select.Trigger>
         <Select.Content>
           {normalizedItems.map((item) => (

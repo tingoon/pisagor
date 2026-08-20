@@ -56,12 +56,12 @@ export function NumberField({
         onValueChange={onValueChange}
         {...(value !== undefined ? { value: Number.isFinite(value) ? String(value) : "" } : {})}
       >
-        <NumberInput.Group clearable={clearable}>
-          <NumberInput.Decrement />
+        <NumberInput.Control clearable={clearable}>
+          <NumberInput.DecrementTrigger />
           <NumberInput.Input placeholder={placeholder} />
           {clearable ? <NumberInput.ClearTrigger /> : null}
-          <NumberInput.Increment />
-        </NumberInput.Group>
+          <NumberInput.IncrementTrigger />
+        </NumberInput.Control>
       </NumberInput>
     </FieldShell>
   );
