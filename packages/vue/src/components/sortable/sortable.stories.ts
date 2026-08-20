@@ -1,4 +1,4 @@
-import { Sortable } from "@pisagor/vue/sortable";
+import { Sortable } from "@pisagor/vue";
 import { ref } from "vue";
 import preview from "#/vue/preview";
 

@@ -1,6 +1,5 @@
 import { PhMinus, PhPlus } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue/button";
-import { Progress } from "@pisagor/vue/progress";
+import { Button, Progress } from "@pisagor/vue";
 import { onMounted, ref } from "vue";
 import preview from "#/vue/preview";
 

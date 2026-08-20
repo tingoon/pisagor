@@ -7,7 +7,7 @@ import {
   PhPlus,
   PhStar,
 } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue/button";
+import { Button } from "@pisagor/vue";
 import preview from "#/vue/preview";
 
 const meta = preview.meta({

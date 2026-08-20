@@ -1,6 +1,5 @@
 import { PhDownloadSimple, PhTrash } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue/button";
-import { File } from "@pisagor/vue/file";
+import { Button, File } from "@pisagor/vue";
 import { h } from "vue";
 import preview from "#/vue/preview";
 

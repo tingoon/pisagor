@@ -1,8 +1,5 @@
 import { PhDownload, PhFish } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue/button";
-import { Card } from "@pisagor/vue/card";
-import { Input } from "@pisagor/vue/input";
-import { QrCode } from "@pisagor/vue/qr-code";
+import { Button, Card, Input, QrCode } from "@pisagor/vue";
 import { computed, ref } from "vue";
 import preview from "#/vue/preview";
 

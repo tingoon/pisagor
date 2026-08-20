@@ -1,7 +1,4 @@
-import { Button } from "@pisagor/vue/button";
-import { Calendar, parseDate } from "@pisagor/vue/calendar";
-import { Card } from "@pisagor/vue/card";
-import { Surface } from "@pisagor/vue/surface";
+import { Button, Calendar, Card, parseDate, Surface } from "@pisagor/vue";
 import { ref } from "vue";
 import preview from "#/vue/preview";
 

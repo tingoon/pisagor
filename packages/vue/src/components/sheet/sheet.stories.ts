@@ -1,6 +1,4 @@
-import { Field } from "@pisagor/vue/field";
-import { Input } from "@pisagor/vue/input";
-import { Sheet } from "@pisagor/vue/sheet";
+import { Field, Input, Sheet } from "@pisagor/vue";
 import { h } from "vue";
 import preview from "#/vue/preview";
 import { outlineButtonClass } from "../../internal/story-button";

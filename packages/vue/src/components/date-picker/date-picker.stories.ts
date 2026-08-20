@@ -1,9 +1,5 @@
 import { PhCalendar } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue/button";
-import { Calendar, parseDate } from "@pisagor/vue/calendar";
-import { DatePicker } from "@pisagor/vue/date-picker";
-import { Field } from "@pisagor/vue/field";
-import { Surface } from "@pisagor/vue/surface";
+import { Button, Calendar, DatePicker, Field, parseDate, Surface } from "@pisagor/vue";
 import { computed, defineComponent, h, ref } from "vue";
 import preview from "#/vue/preview";
 

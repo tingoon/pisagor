@@ -1,6 +1,5 @@
 import { PhMinus, PhPlus } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue/button";
-import { CircularProgress } from "@pisagor/vue/circular-progress";
+import { Button, CircularProgress } from "@pisagor/vue";
 import { onMounted, ref } from "vue";
 import preview from "#/vue/preview";
 

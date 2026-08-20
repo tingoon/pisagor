@@ -1,8 +1,5 @@
 import { PhBell, PhDatabase, PhHouse, PhMagnifyingGlass, PhUser } from "@phosphor-icons/vue";
-import { Avatar } from "@pisagor/vue/avatar";
-import { Button } from "@pisagor/vue/button";
-import { Navbar } from "@pisagor/vue/navbar";
-import { Sidebar } from "@pisagor/vue/sidebar";
+import { Avatar, Button, Navbar, Sidebar } from "@pisagor/vue";
 import { h } from "vue";
 import preview from "#/vue/preview";
 

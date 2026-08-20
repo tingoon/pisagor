@@ -1,6 +1,4 @@
-import { Checkbox } from "@pisagor/vue/checkbox";
-import { Field } from "@pisagor/vue/field";
-import { Surface } from "@pisagor/vue/surface";
+import { Checkbox, Field, Surface } from "@pisagor/vue";
 import { ref } from "vue";
 import preview from "#/vue/preview";
 

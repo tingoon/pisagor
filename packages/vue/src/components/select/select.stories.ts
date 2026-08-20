@@ -1,6 +1,5 @@
 import { createListCollection } from "@ark-ui/vue/collection";
-import { Select } from "@pisagor/vue/select";
-import { Surface } from "@pisagor/vue/surface";
+import { Select, Surface } from "@pisagor/vue";
 import { ref } from "vue";
 import preview from "#/vue/preview";
 

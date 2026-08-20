@@ -1,5 +1,4 @@
-import { Button } from "@pisagor/vue/button";
-import { VisuallyHidden } from "@pisagor/vue/visually-hidden";
+import { Button, VisuallyHidden } from "@pisagor/vue";
 import preview from "#/vue/preview";
 
 const meta = preview.meta({

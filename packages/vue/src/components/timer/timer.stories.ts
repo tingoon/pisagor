@@ -1,7 +1,5 @@
 import { PhArrowCounterClockwise, PhGear, PhPause, PhPlay } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue/button";
-import { Card } from "@pisagor/vue/card";
-import { Timer } from "@pisagor/vue/timer";
+import { Button, Card, Timer } from "@pisagor/vue";
 import { ref } from "vue";
 import preview from "#/vue/preview";
 

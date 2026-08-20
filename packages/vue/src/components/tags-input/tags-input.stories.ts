@@ -1,11 +1,7 @@
 import { useListCollection } from "@ark-ui/vue/collection";
 import { useFilter } from "@ark-ui/vue/locale";
 import { useTagsInput } from "@ark-ui/vue/tags-input";
-import { Button } from "@pisagor/vue/button";
-import { Combobox } from "@pisagor/vue/combobox";
-import { Field } from "@pisagor/vue/field";
-import { Surface } from "@pisagor/vue/surface";
-import { TagsInput } from "@pisagor/vue/tags-input";
+import { Button, Combobox, Field, Surface, TagsInput } from "@pisagor/vue";
 import { computed, ref } from "vue";
 import preview from "#/vue/preview";
 

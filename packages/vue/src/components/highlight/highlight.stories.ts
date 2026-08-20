@@ -1,6 +1,5 @@
 import { useHighlight } from "@ark-ui/vue/highlight";
-import { Highlight } from "@pisagor/vue/highlight";
-import { Input } from "@pisagor/vue/input";
+import { Highlight, Input } from "@pisagor/vue";
 import { ref } from "vue";
 import preview from "#/vue/preview";
 

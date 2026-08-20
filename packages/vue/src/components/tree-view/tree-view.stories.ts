@@ -11,13 +11,8 @@ import {
   PhStar,
   PhTrash,
 } from "@phosphor-icons/vue";
-import { ContextMenu } from "@pisagor/vue/context-menu";
-import {
-  createFileIcons,
-  createTreeCollection,
-  type TreeNodeType,
-  TreeView,
-} from "@pisagor/vue/tree-view";
+import type { TreeNodeType } from "@pisagor/vue";
+import { ContextMenu, createFileIcons, createTreeCollection, TreeView } from "@pisagor/vue";
 import { h, ref, shallowRef, type VNode } from "vue";
 import preview from "#/vue/preview";
 

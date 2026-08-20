@@ -1,4 +1,4 @@
-import { Prose } from "@pisagor/vue/prose";
+import { Prose } from "@pisagor/vue";
 import preview from "#/vue/preview";
 
 const meta = preview.meta({

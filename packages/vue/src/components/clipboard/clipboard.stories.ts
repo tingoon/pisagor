@@ -1,7 +1,5 @@
 import { PhSparkle } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue/button";
-import { Clipboard } from "@pisagor/vue/clipboard";
-import { Surface } from "@pisagor/vue/surface";
+import { Button, Clipboard, Surface } from "@pisagor/vue";
 import { h, ref } from "vue";
 import preview from "#/vue/preview";
 

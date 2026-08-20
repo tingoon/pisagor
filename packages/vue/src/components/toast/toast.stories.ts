@@ -1,6 +1,5 @@
 import { createToaster } from "@ark-ui/vue/toast";
-import { Button } from "@pisagor/vue/button";
-import { Toaster, toast } from "@pisagor/vue/toast";
+import { Button, Toaster, toast } from "@pisagor/vue";
 import preview from "#/vue/preview";
 
 const meta = preview.meta({

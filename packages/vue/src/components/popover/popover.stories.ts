@@ -1,8 +1,6 @@
 import { buttonVariants } from "@pisagor/styles/ui/button";
 import { cn } from "@pisagor/utils";
-import { Field } from "@pisagor/vue/field";
-import { Input } from "@pisagor/vue/input";
-import { Popover } from "@pisagor/vue/popover";
+import { Field, Input, Popover } from "@pisagor/vue";
 import { h } from "vue";
 import preview from "#/vue/preview";
 import { outlineButtonClass } from "../../internal/story-button";

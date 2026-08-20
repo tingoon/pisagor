@@ -8,8 +8,7 @@ import {
   PhSparkle,
   PhStack,
 } from "@phosphor-icons/vue";
-import { Card } from "@pisagor/vue/card";
-import { Marquee } from "@pisagor/vue/marquee";
+import { Card, Marquee } from "@pisagor/vue";
 import { type Component, h } from "vue";
 import preview from "#/vue/preview";
 

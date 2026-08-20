@@ -1,11 +1,14 @@
 import { PhPercent, PhSparkle } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue/button";
-import { ColorPicker, parseColor } from "@pisagor/vue/color-picker";
-import { Field } from "@pisagor/vue/field";
-import { Input } from "@pisagor/vue/input";
-import { InputGroup } from "@pisagor/vue/input-group";
-import { Separator } from "@pisagor/vue/separator";
-import { Surface } from "@pisagor/vue/surface";
+import {
+  Button,
+  ColorPicker,
+  Field,
+  Input,
+  InputGroup,
+  parseColor,
+  Separator,
+  Surface,
+} from "@pisagor/vue";
 import { computed, ref } from "vue";
 import preview from "#/vue/preview";
 

@@ -1,4 +1,4 @@
-import { JsonTreeView } from "@pisagor/vue/json-tree-view";
+import { JsonTreeView } from "@pisagor/vue";
 import preview from "#/vue/preview";
 
 const meta = preview.meta({

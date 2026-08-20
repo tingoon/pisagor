@@ -6,8 +6,7 @@ import {
   PhHardDrive,
   PhUser,
 } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue/button";
-import { Steps } from "@pisagor/vue/steps";
+import { Button, Steps } from "@pisagor/vue";
 import { ref } from "vue";
 import preview from "#/vue/preview";
 

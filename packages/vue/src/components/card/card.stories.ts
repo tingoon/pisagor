@@ -1,6 +1,5 @@
 import { PhCurrencyDollar } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue/button";
-import { Card } from "@pisagor/vue/card";
+import { Button, Card } from "@pisagor/vue";
 import preview from "#/vue/preview";
 
 const meta = preview.meta({

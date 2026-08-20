@@ -1,5 +1,4 @@
-import { Surface } from "@pisagor/vue/surface";
-import { Switch } from "@pisagor/vue/switch";
+import { Surface, Switch } from "@pisagor/vue";
 import { ref } from "vue";
 import preview from "#/vue/preview";
 

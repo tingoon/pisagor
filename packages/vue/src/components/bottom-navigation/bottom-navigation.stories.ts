@@ -1,6 +1,5 @@
 import { PhBell, PhGear, PhHouse, PhMagnifyingGlass, PhUser } from "@phosphor-icons/vue";
-import { BottomNavigation } from "@pisagor/vue/bottom-navigation";
-import { ScrollArea } from "@pisagor/vue/scroll-area";
+import { BottomNavigation, ScrollArea } from "@pisagor/vue";
 import preview from "#/vue/preview";
 
 const meta = preview.meta({

@@ -1,6 +1,5 @@
 import { PhArrowUpRight, PhPlusCircle } from "@phosphor-icons/vue";
-import { Badge } from "@pisagor/vue/badge";
-import { Spinner } from "@pisagor/vue/spinner";
+import { Badge, Spinner } from "@pisagor/vue";
 import preview from "#/vue/preview";
 
 const meta = preview.meta({

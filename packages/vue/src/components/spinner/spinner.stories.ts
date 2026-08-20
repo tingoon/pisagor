@@ -1,4 +1,4 @@
-import { Spinner } from "@pisagor/vue/spinner";
+import { Spinner } from "@pisagor/vue";
 import preview from "#/vue/preview";
 
 const meta = preview.meta({

@@ -8,19 +8,22 @@ import {
   PhMagnifyingGlass,
   PhX,
 } from "@phosphor-icons/vue";
-import { Avatar } from "@pisagor/vue/avatar";
-import { Badge, type BadgeVariant } from "@pisagor/vue/badge";
-import { Button } from "@pisagor/vue/button";
-import { Checkbox } from "@pisagor/vue/checkbox";
+import type { BadgeVariant } from "@pisagor/vue";
+import {
+  Avatar,
+  Badge,
+  Button,
+  Checkbox,
+  DropdownMenu,
+  InputGroup,
+  Pagination,
+  Select,
+  Skeleton,
+  Sortable,
+  Spinner,
+  Table,
+} from "@pisagor/vue";
 import { DataGrid, renderDataGridCell, useDataGrid } from "@pisagor/vue/data-grid";
-import { DropdownMenu } from "@pisagor/vue/dropdown-menu";
-import { InputGroup } from "@pisagor/vue/input-group";
-import { Pagination } from "@pisagor/vue/pagination";
-import { Select } from "@pisagor/vue/select";
-import { Skeleton } from "@pisagor/vue/skeleton";
-import { Sortable } from "@pisagor/vue/sortable";
-import { Spinner } from "@pisagor/vue/spinner";
-import { Table } from "@pisagor/vue/table";
 import {
   type CellContext,
   type ColumnDef,

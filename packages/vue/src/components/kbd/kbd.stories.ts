@@ -1,7 +1,5 @@
 import { PhFloppyDisk } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue/button";
-import { Kbd } from "@pisagor/vue/kbd";
-import { Tooltip } from "@pisagor/vue/tooltip";
+import { Button, Kbd, Tooltip } from "@pisagor/vue";
 import { h } from "vue";
 import preview from "#/vue/preview";
 

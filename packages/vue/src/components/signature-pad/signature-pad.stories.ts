@@ -1,6 +1,4 @@
-import { Field } from "@pisagor/vue/field";
-import { SignaturePad } from "@pisagor/vue/signature-pad";
-import { Surface } from "@pisagor/vue/surface";
+import { Field, SignaturePad, Surface } from "@pisagor/vue";
 import { ref } from "vue";
 import preview from "#/vue/preview";
 

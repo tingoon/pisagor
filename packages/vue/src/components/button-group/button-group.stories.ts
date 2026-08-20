@@ -12,8 +12,7 @@ import {
   PhTextItalic,
   PhTextUnderline,
 } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue/button";
-import { ButtonGroup } from "@pisagor/vue/button-group";
+import { Button, ButtonGroup } from "@pisagor/vue";
 import preview from "#/vue/preview";
 
 const meta = preview.meta({

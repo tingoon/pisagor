@@ -1,4 +1,4 @@
-import { ClientOnly } from "@pisagor/vue/client-only";
+import { ClientOnly } from "@pisagor/vue";
 import preview from "#/vue/preview";
 
 const meta = preview.meta({

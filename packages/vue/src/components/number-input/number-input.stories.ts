@@ -1,6 +1,4 @@
-import { Field } from "@pisagor/vue/field";
-import { NumberInput } from "@pisagor/vue/number-input";
-import { Surface } from "@pisagor/vue/surface";
+import { Field, NumberInput, Surface } from "@pisagor/vue";
 import { ref } from "vue";
 import preview from "#/vue/preview";
 

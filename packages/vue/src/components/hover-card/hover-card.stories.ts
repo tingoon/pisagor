@@ -1,9 +1,7 @@
 import { PhMapPin } from "@phosphor-icons/vue";
 import { buttonVariants } from "@pisagor/styles/ui/button";
 import { cn } from "@pisagor/utils";
-import { Avatar } from "@pisagor/vue/avatar";
-import { Button } from "@pisagor/vue/button";
-import { HoverCard } from "@pisagor/vue/hover-card";
+import { Avatar, Button, HoverCard } from "@pisagor/vue";
 import { h, ref } from "vue";
 import preview from "#/vue/preview";
 

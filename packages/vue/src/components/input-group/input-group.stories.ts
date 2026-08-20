@@ -1,9 +1,5 @@
 import { PhAt, PhCopy, PhEye, PhFileCode, PhFunnel, PhMagnifyingGlass } from "@phosphor-icons/vue";
-import { Badge } from "@pisagor/vue/badge";
-import { InputGroup } from "@pisagor/vue/input-group";
-import { Kbd } from "@pisagor/vue/kbd";
-import { Spinner } from "@pisagor/vue/spinner";
-import { Surface } from "@pisagor/vue/surface";
+import { Badge, InputGroup, Kbd, Spinner, Surface } from "@pisagor/vue";
 import { h } from "vue";
 import preview from "#/vue/preview";
 

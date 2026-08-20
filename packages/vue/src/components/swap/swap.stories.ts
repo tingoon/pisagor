@@ -1,6 +1,5 @@
 import { PhMoon, PhSun } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue/button";
-import { Swap } from "@pisagor/vue/swap";
+import { Button, Swap } from "@pisagor/vue";
 import { h, reactive } from "vue";
 import preview from "#/vue/preview";
 

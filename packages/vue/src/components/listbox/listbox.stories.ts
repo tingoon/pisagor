@@ -12,14 +12,7 @@ import {
   PhPlusSquare,
   PhTrash,
 } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue/button";
-import { Field } from "@pisagor/vue/field";
-import { Input } from "@pisagor/vue/input";
-import { Item } from "@pisagor/vue/item";
-import { Kbd } from "@pisagor/vue/kbd";
-import { Listbox } from "@pisagor/vue/listbox";
-import { Popover } from "@pisagor/vue/popover";
-import { Separator } from "@pisagor/vue/separator";
+import { Button, Field, Input, Item, Kbd, Listbox, Popover, Separator } from "@pisagor/vue";
 import { computed, h, ref } from "vue";
 import preview from "#/vue/preview";
 

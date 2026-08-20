@@ -1,19 +1,21 @@
 import { createListCollection, useListCollection } from "@ark-ui/vue/collection";
 import { useFilter } from "@ark-ui/vue/locale";
 import { PhArrowRight } from "@phosphor-icons/vue";
-import { Autocomplete } from "@pisagor/vue/autocomplete";
-import { Checkbox } from "@pisagor/vue/checkbox";
-import { Combobox } from "@pisagor/vue/combobox";
-import { Field } from "@pisagor/vue/field";
-import { Input } from "@pisagor/vue/input";
-import { InputGroup } from "@pisagor/vue/input-group";
-import { NumberInput } from "@pisagor/vue/number-input";
-import { RadioGroup } from "@pisagor/vue/radio-group";
-import { Select } from "@pisagor/vue/select";
-import { Slider } from "@pisagor/vue/slider";
-import { Surface } from "@pisagor/vue/surface";
-import { Switch } from "@pisagor/vue/switch";
-import { Textarea } from "@pisagor/vue/textarea";
+import {
+  Autocomplete,
+  Checkbox,
+  Combobox,
+  Field,
+  Input,
+  InputGroup,
+  NumberInput,
+  RadioGroup,
+  Select,
+  Slider,
+  Surface,
+  Switch,
+  Textarea,
+} from "@pisagor/vue";
 import preview from "#/vue/preview";
 
 const meta = preview.meta({

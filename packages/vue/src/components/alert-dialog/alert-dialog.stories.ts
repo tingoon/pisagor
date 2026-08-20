@@ -1,4 +1,4 @@
-import { AlertDialog } from "@pisagor/vue/alert-dialog";
+import { AlertDialog } from "@pisagor/vue";
 import { h } from "vue";
 import preview from "#/vue/preview";
 import { outlineButtonClass } from "../../internal/story-button";

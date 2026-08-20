@@ -1,6 +1,5 @@
-import { Field } from "@pisagor/vue/field";
+import { Field, Surface } from "@pisagor/vue";
 import { PhoneInput } from "@pisagor/vue/phone-input";
-import { Surface } from "@pisagor/vue/surface";
 import { ref } from "vue";
 import preview from "#/vue/preview";
 

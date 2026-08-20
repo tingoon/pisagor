@@ -1,6 +1,4 @@
-import { Field } from "@pisagor/vue/field";
-import { RadioGroup } from "@pisagor/vue/radio-group";
-import { Surface } from "@pisagor/vue/surface";
+import { Field, RadioGroup, Surface } from "@pisagor/vue";
 import { ref } from "vue";
 import preview from "#/vue/preview";
 

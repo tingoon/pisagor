@@ -1,4 +1,4 @@
-import { Avatar, AvatarGroup } from "@pisagor/vue/avatar";
+import { Avatar, AvatarGroup } from "@pisagor/vue";
 import preview from "#/vue/preview";
 
 const meta = preview.meta({

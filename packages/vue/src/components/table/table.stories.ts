@@ -1,8 +1,6 @@
 import { PhDotsThreeVertical, PhEye, PhPencilSimple, PhTrash } from "@phosphor-icons/vue";
-import { Badge, type BadgeVariant } from "@pisagor/vue/badge";
-import { Button } from "@pisagor/vue/button";
-import { DropdownMenu } from "@pisagor/vue/dropdown-menu";
-import { Table } from "@pisagor/vue/table";
+import type { BadgeVariant } from "@pisagor/vue";
+import { Badge, Button, DropdownMenu, Table } from "@pisagor/vue";
 import preview from "#/vue/preview";
 
 const meta = preview.meta({

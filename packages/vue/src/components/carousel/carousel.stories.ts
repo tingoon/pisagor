@@ -1,5 +1,4 @@
-import { Card } from "@pisagor/vue/card";
-import { Carousel } from "@pisagor/vue/carousel";
+import { Card, Carousel } from "@pisagor/vue";
 import { h, ref } from "vue";
 import preview from "#/vue/preview";
 

@@ -1,10 +1,7 @@
 import { waitForElement, waitForEvent } from "@ark-ui/vue/tour";
 import { PhKeyboard, PhPlus } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue/button";
-import { Checkbox } from "@pisagor/vue/checkbox";
-import { Field } from "@pisagor/vue/field";
-import { Input } from "@pisagor/vue/input";
-import { Tour, type TourStepType, useTourContext } from "@pisagor/vue/tour";
+import type { TourStepType } from "@pisagor/vue";
+import { Button, Checkbox, Field, Input, Tour, useTourContext } from "@pisagor/vue";
 import { defineComponent, h, ref, toValue } from "vue";
 import preview from "#/vue/preview";
 

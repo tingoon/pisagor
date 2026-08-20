@@ -1,4 +1,4 @@
-import { LinkBox } from "@pisagor/vue/link-box";
+import { LinkBox } from "@pisagor/vue";
 import preview from "#/vue/preview";
 
 const meta = preview.meta({

@@ -1,4 +1,4 @@
-import { Frame } from "@pisagor/vue/frame";
+import { Frame } from "@pisagor/vue";
 import preview from "#/vue/preview";
 
 const meta = preview.meta({

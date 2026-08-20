@@ -1,9 +1,6 @@
 import { useFileUploadContext } from "@ark-ui/vue/file-upload";
 import { PhCamera, PhFolder, PhPaperclip, PhTrash, PhX } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue/button";
-import { FileUpload } from "@pisagor/vue/file-upload";
-import { Separator } from "@pisagor/vue/separator";
-import { Surface } from "@pisagor/vue/surface";
+import { Button, FileUpload, Separator, Surface } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 import preview from "#/vue/preview";
 

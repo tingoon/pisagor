@@ -1,5 +1,4 @@
-import { Accordion } from "@pisagor/vue/accordion";
-import { Card } from "@pisagor/vue/card";
+import { Accordion, Card } from "@pisagor/vue";
 import { h, ref } from "vue";
 import preview from "#/vue/preview";
 

@@ -1,5 +1,4 @@
-import { ScrollArea } from "@pisagor/vue/scroll-area";
-import { Separator } from "@pisagor/vue/separator";
+import { ScrollArea, Separator } from "@pisagor/vue";
 import preview from "#/vue/preview";
 
 const meta = preview.meta({

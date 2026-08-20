@@ -1,7 +1,4 @@
-import { Button } from "@pisagor/vue/button";
-import { Card } from "@pisagor/vue/card";
-import { Clipboard } from "@pisagor/vue/clipboard";
-import { Collapsible } from "@pisagor/vue/collapsible";
+import { Button, Card, Clipboard, Collapsible } from "@pisagor/vue";
 import { ref } from "vue";
 import preview from "#/vue/preview";
 

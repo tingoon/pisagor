@@ -1,5 +1,5 @@
 import { PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
-import { Pagination } from "@pisagor/vue/pagination";
+import { Pagination } from "@pisagor/vue";
 import { ref } from "vue";
 import preview from "#/vue/preview";
 

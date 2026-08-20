@@ -1,5 +1,4 @@
-import { FileInput } from "@pisagor/vue/file-input";
-import { Surface } from "@pisagor/vue/surface";
+import { FileInput, Surface } from "@pisagor/vue";
 import preview from "#/vue/preview";
 
 const meta = preview.meta({

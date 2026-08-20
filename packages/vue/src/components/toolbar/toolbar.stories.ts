@@ -1,5 +1,4 @@
-import { Button } from "@pisagor/vue/button";
-import { Toolbar } from "@pisagor/vue/toolbar";
+import { Button, Toolbar } from "@pisagor/vue";
 import { Fragment, h } from "vue";
 import preview from "#/vue/preview";
 

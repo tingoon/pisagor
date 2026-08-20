@@ -1,4 +1,4 @@
-import { NavigationMenu } from "@pisagor/vue/navigation-menu";
+import { NavigationMenu } from "@pisagor/vue";
 import { h } from "vue";
 import preview from "#/vue/preview";
 

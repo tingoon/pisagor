@@ -1,6 +1,4 @@
-import { Field } from "@pisagor/vue/field";
-import { Surface } from "@pisagor/vue/surface";
-import { Textarea } from "@pisagor/vue/textarea";
+import { Field, Surface, Textarea } from "@pisagor/vue";
 import { ref } from "vue";
 import preview from "#/vue/preview";
 

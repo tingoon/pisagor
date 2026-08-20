@@ -1,7 +1,5 @@
 import { PhDownload, PhFileText } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue/button";
-import { DownloadTrigger } from "@pisagor/vue/download-trigger";
-import { Item } from "@pisagor/vue/item";
+import { Button, DownloadTrigger, Item } from "@pisagor/vue";
 import preview from "#/vue/preview";
 
 const meta = preview.meta({

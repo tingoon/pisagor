@@ -1,4 +1,4 @@
-import { SegmentGroup } from "@pisagor/vue/segment-group";
+import { SegmentGroup } from "@pisagor/vue";
 import { computed, ref } from "vue";
 import preview from "#/vue/preview";
 

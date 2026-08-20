@@ -1,5 +1,4 @@
-import { Card } from "@pisagor/vue/card";
-import { Skeleton } from "@pisagor/vue/skeleton";
+import { Card, Skeleton } from "@pisagor/vue";
 import preview from "#/vue/preview";
 
 const meta = preview.meta({

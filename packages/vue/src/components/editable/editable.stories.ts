@@ -1,11 +1,5 @@
 import { PhCheck, PhPencilSimple, PhX } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue/button";
-import { Card } from "@pisagor/vue/card";
-import { Editable } from "@pisagor/vue/editable";
-import { Field } from "@pisagor/vue/field";
-import { Input } from "@pisagor/vue/input";
-import { Surface } from "@pisagor/vue/surface";
-import { Textarea } from "@pisagor/vue/textarea";
+import { Button, Card, Editable, Field, Input, Surface, Textarea } from "@pisagor/vue";
 import { ref } from "vue";
 import preview from "#/vue/preview";
 

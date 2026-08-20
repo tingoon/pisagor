@@ -1,6 +1,5 @@
 import { PhHouse, PhMagnifyingGlass, PhUser } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue/button";
-import { Sidebar } from "@pisagor/vue/sidebar";
+import { Button, Sidebar } from "@pisagor/vue";
 import { h } from "vue";
 import preview from "#/vue/preview";
 

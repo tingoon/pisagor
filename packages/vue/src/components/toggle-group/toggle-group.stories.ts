@@ -1,5 +1,5 @@
 import { PhTextB, PhTextItalic, PhTextUnderline } from "@phosphor-icons/vue";
-import { ToggleGroup } from "@pisagor/vue/toggle-group";
+import { ToggleGroup } from "@pisagor/vue";
 import { ref } from "vue";
 import preview from "#/vue/preview";
 

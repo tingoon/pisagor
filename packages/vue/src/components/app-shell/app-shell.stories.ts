@@ -1,8 +1,5 @@
 import { PhWarning } from "@phosphor-icons/vue";
-import { Announcement } from "@pisagor/vue/announcement";
-import { AppShell, useAppShell } from "@pisagor/vue/app-shell";
-import { Badge } from "@pisagor/vue/badge";
-import { Button } from "@pisagor/vue/button";
+import { Announcement, AppShell, Badge, Button, useAppShell } from "@pisagor/vue";
 import { defineComponent, h, ref, type VNodeChild } from "vue";
 import preview from "#/vue/preview";
 

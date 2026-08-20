@@ -1,6 +1,4 @@
-import { Button } from "@pisagor/vue/button";
-import { ScrollArea } from "@pisagor/vue/scroll-area";
-import { Scrollspy } from "@pisagor/vue/scrollspy";
+import { Button, ScrollArea, Scrollspy } from "@pisagor/vue";
 import { ref } from "vue";
 import preview from "#/vue/preview";
 

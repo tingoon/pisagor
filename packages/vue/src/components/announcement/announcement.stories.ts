@@ -1,6 +1,5 @@
 import { PhArrowUpRight, PhCheckCircle, PhSparkle, PhWarning } from "@phosphor-icons/vue";
-import { Announcement } from "@pisagor/vue/announcement";
-import { Badge } from "@pisagor/vue/badge";
+import { Announcement, Badge } from "@pisagor/vue";
 import { h } from "vue";
 import preview from "#/vue/preview";
 

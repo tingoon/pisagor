@@ -1,4 +1,4 @@
-import { SkipNav } from "@pisagor/vue/skip-nav";
+import { SkipNav } from "@pisagor/vue";
 import preview from "#/vue/preview";
 
 const meta = preview.meta({

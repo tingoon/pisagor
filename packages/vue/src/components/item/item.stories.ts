@@ -7,9 +7,7 @@ import {
   PhShieldWarning,
   PhUser,
 } from "@phosphor-icons/vue";
-import { Avatar } from "@pisagor/vue/avatar";
-import { Button } from "@pisagor/vue/button";
-import { Item } from "@pisagor/vue/item";
+import { Avatar, Button, Item } from "@pisagor/vue";
 import preview from "#/vue/preview";
 
 const meta = preview.meta({

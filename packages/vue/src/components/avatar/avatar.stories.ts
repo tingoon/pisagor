@@ -1,5 +1,5 @@
 import { PhUser } from "@phosphor-icons/vue";
-import { Avatar } from "@pisagor/vue/avatar";
+import { Avatar } from "@pisagor/vue";
 import { h } from "vue";
 import preview from "#/vue/preview";
 

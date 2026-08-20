@@ -1,5 +1,4 @@
-import { InputOTP } from "@pisagor/vue/input-otp";
-import { Surface } from "@pisagor/vue/surface";
+import { InputOTP, Surface } from "@pisagor/vue";
 import { ref } from "vue";
 import preview from "#/vue/preview";
 

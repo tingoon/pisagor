@@ -1,5 +1,5 @@
 import { PhArrowDown, PhArrowUp } from "@phosphor-icons/vue";
-import { Stat } from "@pisagor/vue/stat";
+import { Stat } from "@pisagor/vue";
 import { h } from "vue";
 import preview from "#/vue/preview";
 

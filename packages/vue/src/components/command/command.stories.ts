@@ -1,9 +1,7 @@
 import { useListCollection } from "@ark-ui/vue/collection";
 import { useFilter } from "@ark-ui/vue/locale";
 import { PhArrowBendDownLeft, PhArrowDown, PhArrowUp } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue/button";
-import { Command } from "@pisagor/vue/command";
-import { Kbd } from "@pisagor/vue/kbd";
+import { Button, Command, Kbd } from "@pisagor/vue";
 import { h, ref } from "vue";
 import preview from "#/vue/preview";
 

@@ -1,4 +1,4 @@
-import { Provider } from "@pisagor/vue/provider";
+import { Provider } from "@pisagor/vue";
 import preview from "#/vue/preview";
 
 const meta = preview.meta({

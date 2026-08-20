@@ -1,4 +1,4 @@
-import { Separator } from "@pisagor/vue/separator";
+import { Separator } from "@pisagor/vue";
 import preview from "#/vue/preview";
 
 const meta = preview.meta({

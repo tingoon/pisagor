@@ -1,6 +1,5 @@
 import { PhGear, PhShield, PhUser } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue/button";
-import { Tabs } from "@pisagor/vue/tabs";
+import { Button, Tabs } from "@pisagor/vue";
 import { ref } from "vue";
 import preview from "#/vue/preview";
 

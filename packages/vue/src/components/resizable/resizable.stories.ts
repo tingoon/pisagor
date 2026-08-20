@@ -1,5 +1,5 @@
 import { cn } from "@pisagor/utils";
-import { Resizable } from "@pisagor/vue/resizable";
+import { Resizable } from "@pisagor/vue";
 import { ref } from "vue";
 import preview from "#/vue/preview";
 

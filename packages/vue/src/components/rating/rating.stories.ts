@@ -1,8 +1,5 @@
 import { PhHeart } from "@phosphor-icons/vue";
-import { Avatar } from "@pisagor/vue/avatar";
-import { Card } from "@pisagor/vue/card";
-import { Rating } from "@pisagor/vue/rating";
-import { Surface } from "@pisagor/vue/surface";
+import { Avatar, Card, Rating, Surface } from "@pisagor/vue";
 import { computed, ref } from "vue";
 import preview from "#/vue/preview";
 

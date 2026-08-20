@@ -1,4 +1,4 @@
-import { AspectRatio } from "@pisagor/vue/aspect-ratio";
+import { AspectRatio } from "@pisagor/vue";
 import preview from "#/vue/preview";
 
 const meta = preview.meta({

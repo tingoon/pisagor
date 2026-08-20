@@ -1,5 +1,5 @@
 import { cn } from "@pisagor/utils";
-import { Presence } from "@pisagor/vue/presence";
+import { Presence } from "@pisagor/vue";
 import { h, ref } from "vue";
 import preview from "#/vue/preview";
 import { outlineButtonClass } from "../../internal/story-button";

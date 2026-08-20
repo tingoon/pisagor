@@ -6,7 +6,7 @@ import {
   PhSignOut,
   PhUser,
 } from "@phosphor-icons/vue";
-import { Menu } from "@pisagor/vue/menu";
+import { Menu } from "@pisagor/vue";
 import { h } from "vue";
 import preview from "#/vue/preview";
 

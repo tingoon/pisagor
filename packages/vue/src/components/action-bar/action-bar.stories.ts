@@ -7,10 +7,7 @@ import {
   PhTrash,
   PhX,
 } from "@phosphor-icons/vue";
-import { ActionBar } from "@pisagor/vue/action-bar";
-import { AlertDialog } from "@pisagor/vue/alert-dialog";
-import { Button } from "@pisagor/vue/button";
-import { DropdownMenu } from "@pisagor/vue/dropdown-menu";
+import { ActionBar, AlertDialog, Button, DropdownMenu } from "@pisagor/vue";
 import { ref } from "vue";
 import preview from "#/vue/preview";
 

@@ -7,11 +7,7 @@ import {
   PhGearSix,
   PhX,
 } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue/button";
-import { Field } from "@pisagor/vue/field";
-import { FloatingPanel } from "@pisagor/vue/floating-panel";
-import { NumberInput } from "@pisagor/vue/number-input";
-import { Select } from "@pisagor/vue/select";
+import { Button, Field, FloatingPanel, NumberInput, Select } from "@pisagor/vue";
 import { ref } from "vue";
 import preview from "#/vue/preview";
 

@@ -6,8 +6,7 @@ import {
   PhSparkle,
   PhWarning,
 } from "@phosphor-icons/vue";
-import { Alert } from "@pisagor/vue/alert";
-import { Button } from "@pisagor/vue/button";
+import { Alert, Button } from "@pisagor/vue";
 import { h } from "vue";
 import preview from "#/vue/preview";
 

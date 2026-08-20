@@ -1,6 +1,5 @@
 import { PhMagnifyingGlassMinus, PhMagnifyingGlassPlus } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue/button";
-import { ImageCropper } from "@pisagor/vue/image-cropper";
+import { Button, ImageCropper } from "@pisagor/vue";
 import { ref } from "vue";
 import preview from "#/vue/preview";
 

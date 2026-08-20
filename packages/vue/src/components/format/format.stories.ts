@@ -1,4 +1,4 @@
-import { Format } from "@pisagor/vue/format";
+import { Format } from "@pisagor/vue";
 import preview from "#/vue/preview";
 
 const meta = preview.meta({

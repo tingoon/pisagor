@@ -1,6 +1,5 @@
 import { PhThermometer } from "@phosphor-icons/vue";
-import { CircularSlider } from "@pisagor/vue/circular-slider";
-import { Surface } from "@pisagor/vue/surface";
+import { CircularSlider, Surface } from "@pisagor/vue";
 import { computed, h, ref } from "vue";
 import preview from "#/vue/preview";
 

@@ -1,7 +1,5 @@
 import { PhCaretDown, PhCaretUp } from "@phosphor-icons/vue";
-import { Badge } from "@pisagor/vue/badge";
-import { DataTable, useDataTable } from "@pisagor/vue/data-table";
-import { Table } from "@pisagor/vue/table";
+import { Badge, DataTable, Table, useDataTable } from "@pisagor/vue";
 import {
   type ColumnDef,
   getSortedRowModel,

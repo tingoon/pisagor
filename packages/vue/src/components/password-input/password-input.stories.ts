@@ -1,5 +1,4 @@
-import { PasswordInput } from "@pisagor/vue/password-input";
-import { Surface } from "@pisagor/vue/surface";
+import { PasswordInput, Surface } from "@pisagor/vue";
 import { ref } from "vue";
 import preview from "#/vue/preview";
 

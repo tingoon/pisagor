@@ -1,10 +1,4 @@
-import { Checkbox } from "@pisagor/vue/checkbox";
-import { Field } from "@pisagor/vue/field";
-import { Input } from "@pisagor/vue/input";
-import { Select } from "@pisagor/vue/select";
-import { Surface } from "@pisagor/vue/surface";
-import { Switch } from "@pisagor/vue/switch";
-import { Textarea } from "@pisagor/vue/textarea";
+import { Checkbox, Field, Input, Select, Surface, Switch, Textarea } from "@pisagor/vue";
 import { defineComponent } from "vue";
 import preview from "#/vue/preview";
 

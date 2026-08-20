@@ -1,6 +1,4 @@
-import { Breadcrumb } from "@pisagor/vue/breadcrumb";
-import { Button } from "@pisagor/vue/button";
-import { DropdownMenu } from "@pisagor/vue/dropdown-menu";
+import { Breadcrumb, Button, DropdownMenu } from "@pisagor/vue";
 import preview from "#/vue/preview";
 
 const meta = preview.meta({

@@ -1,9 +1,7 @@
 import { useListCollection } from "@ark-ui/vue/collection";
 import { useFilter } from "@ark-ui/vue/locale";
 import { PhAppleLogo } from "@phosphor-icons/vue";
-import { Autocomplete } from "@pisagor/vue/autocomplete";
-import { InputGroup } from "@pisagor/vue/input-group";
-import { Surface } from "@pisagor/vue/surface";
+import { Autocomplete, InputGroup, Surface } from "@pisagor/vue";
 import { computed, ref } from "vue";
 import preview from "#/vue/preview";
 
