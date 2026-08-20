@@ -16,11 +16,15 @@ import type { WithTestId } from "../../internal/types";
 import { Button } from "../button";
 
 // #region Types
+export interface CarouselPresetItem {
+  content: VNodeChild;
+  key?: string;
+}
+
 export interface CarouselProps extends WithTestId {
-  spacing?: string;
-  slides?: Array<{ content: VNodeChild; key?: string }>;
-  slideCount?: number;
   class?: unknown;
+  slides?: CarouselPresetItem[];
+  spacing?: string;
 }
 
 type ArkPart = Parameters<typeof h>[0];
@@ -31,49 +35,23 @@ export const CarouselRoot = defineComponent({
   name: "CarouselRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    slideCount: { default: undefined, type: Number },
-    slides: {
-      default: undefined,
-      type: Array as PropType<Array<{ content: VNodeChild; key?: string }>>,
-    },
+    slideCount: { required: true, type: Number },
     spacing: { default: "16px", type: String },
     testId: String,
   },
   setup(props, { attrs, slots }) {
-    return () => {
-      const computedSlideCount = props.slides ? props.slides.length : (props.slideCount ?? 0);
-
-      return h(
+    return () =>
+      h(
         CarouselPrimitive.Root as ArkPart,
         {
           ...attrs,
           class: cn(carouselVariants(), props.class),
           "data-testid": props.testId,
-          slideCount: computedSlideCount,
+          slideCount: props.slideCount,
           spacing: props.spacing,
         },
-        () =>
-          props.slides
-            ? [
-                h(CarouselControl, null, () => [h(CarouselPrevious), h(CarouselNext)]),
-                h(CarouselContent, null, () =>
-                  props.slides?.map((slide, index) =>
-                    h(
-                      CarouselItem,
-                      { index, key: slide.key ?? String(index) },
-                      () => slide.content,
-                    ),
-                  ),
-                ),
-                h(CarouselIndicatorGroup, null, () =>
-                  props.slides?.map((slide, index) =>
-                    h(CarouselIndicator, { index, key: slide.key ?? String(index) }),
-                  ),
-                ),
-              ]
-            : slots.default?.(),
+        slots,
       );
-    };
   },
 });
 
@@ -200,12 +178,58 @@ export const CarouselContent = defineComponent({
 export const CarouselItem = defineComponent({
   inheritAttrs: false,
   name: "CarouselItem",
-  setup(_, { attrs }) {
+  setup(_, { attrs, slots }) {
     return () =>
-      h(CarouselPrimitive.Item as ArkPart, {
-        ...attrs,
-        class: cn(carouselItemVariants(), attrs.class),
-      });
+      h(
+        CarouselPrimitive.Item as ArkPart,
+        {
+          ...attrs,
+          class: cn(carouselItemVariants(), attrs.class),
+        },
+        slots,
+      );
+  },
+});
+// #endregion
+
+// #region Shorthand
+export const CarouselShorthand = defineComponent({
+  inheritAttrs: false,
+  name: "CarouselShorthand",
+  props: {
+    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    slides: {
+      default: () => [],
+      type: Array as PropType<CarouselPresetItem[]>,
+    },
+    spacing: { default: "16px", type: String },
+    testId: String,
+  },
+  setup(props, { attrs }) {
+    return () =>
+      h(
+        CarouselRoot,
+        {
+          ...attrs,
+          class: props.class,
+          slideCount: props.slides?.length ?? 0,
+          spacing: props.spacing,
+          testId: props.testId,
+        },
+        () => [
+          h(CarouselControl, null, () => [h(CarouselPrevious), h(CarouselNext)]),
+          h(CarouselContent, null, () =>
+            props.slides?.map((slide, index) =>
+              h(CarouselItem, { index, key: slide.key ?? String(index) }, () => slide.content),
+            ),
+          ),
+          h(CarouselIndicatorGroup, null, () =>
+            props.slides?.map((slide, index) =>
+              h(CarouselIndicator, { index, key: slide.key ?? String(index) }),
+            ),
+          ),
+        ],
+      );
   },
 });
 // #endregion

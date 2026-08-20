@@ -7,11 +7,12 @@ import {
   CarouselNext,
   CarouselPrevious,
   CarouselRoot,
+  CarouselShorthand,
 } from "./carousel";
 
-export type { CarouselProps } from "./carousel";
+export type { CarouselPresetItem, CarouselProps } from "./carousel";
 
-export const Carousel = Object.assign(CarouselRoot, {
+export const Carousel = Object.assign(CarouselShorthand, {
   Content: CarouselContent,
   Control: CarouselControl,
   Indicator: CarouselIndicator,
@@ -19,4 +20,5 @@ export const Carousel = Object.assign(CarouselRoot, {
   Item: CarouselItem,
   Next: CarouselNext,
   Previous: CarouselPrevious,
+  Root: CarouselRoot,
 });
