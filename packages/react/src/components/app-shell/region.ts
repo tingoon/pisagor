@@ -1,3 +1,4 @@
+import { useUncontrolled } from "@pisagor/react-hooks";
 import {
   appShellRegionRelativeColumnVariants,
   appShellRegionRelativeRowVariants,
@@ -7,7 +8,7 @@ import {
   appShellRegionStickyInspectorVariants,
   appShellRegionStickyNavigationVariants,
 } from "@pisagor/styles/ui/app-shell";
-import { type RefObject, useCallback, useLayoutEffect, useMemo, useState } from "react";
+import { type RefObject, useCallback, useLayoutEffect, useMemo } from "react";
 import type {
   AppShellFixedStackVar,
   AppShellPlacement,
@@ -199,18 +200,11 @@ export function useRegisteredRailState({
   placement: AppShellPlacement;
   statesRef: RefObject<Partial<Record<AppShellPlacement, AppShellRailState>>>;
 }) {
-  const [_activeRailId, _setActiveRailId] = useState(defaultActiveRailId);
-  const activeRailId = activeRailIdProp ?? _activeRailId;
-
-  const setActiveRailId = useCallback(
-    (id: string) => {
-      onActiveRailIdChange?.(id);
-      if (activeRailIdProp === undefined) {
-        _setActiveRailId(id);
-      }
-    },
-    [activeRailIdProp, onActiveRailIdChange],
-  );
+  const [activeRailId, setActiveRailId] = useUncontrolled({
+    defaultValue: defaultActiveRailId,
+    onChange: onActiveRailIdChange,
+    value: activeRailIdProp,
+  });
 
   const railState = useMemo(
     () => ({ activeRailId, placement, setActiveRailId }),

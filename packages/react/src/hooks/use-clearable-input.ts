@@ -1,6 +1,6 @@
-import { useMergedRef } from "@pisagor/react-hooks";
+import { useMergedRef, useUncontrolled } from "@pisagor/react-hooks";
 import type { ChangeEvent, ChangeEventHandler, Ref } from "react";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useRef } from "react";
 
 type ClearableElement = HTMLInputElement | HTMLTextAreaElement;
 
@@ -31,25 +31,23 @@ export function useClearableInput(options: UseClearableInputOptions) {
 
   const inputRef = useRef<ClearableElement>(null);
   const mergedRef = useMergedRef(inputRef, forwardedRef);
-  const isControlled = value !== undefined;
-  const [internalValue, setInternalValue] = useState(() =>
-    defaultValue !== undefined ? String(defaultValue) : "",
-  );
 
-  const currentValue = isControlled ? String(value ?? "") : internalValue;
+  const [currentValue, setCurrentValue] = useUncontrolled({
+    defaultValue: defaultValue !== undefined ? String(defaultValue) : undefined,
+    finalValue: "",
+    onChange: onValueChange,
+    value: value !== undefined ? String(value) : undefined,
+  });
 
   const canClear =
     clearable && type !== "file" && !disabled && !readOnly && currentValue.length > 0;
 
   const handleChange = useCallback(
     (event: ChangeEvent<ClearableElement>) => {
-      if (!isControlled) {
-        setInternalValue(event.target.value);
-      }
+      setCurrentValue(event.target.value);
       onChange?.(event);
-      onValueChange?.(event.target.value);
     },
-    [isControlled, onChange, onValueChange],
+    [onChange, setCurrentValue],
   );
 
   const handleClear = useCallback(() => {
@@ -58,9 +56,7 @@ export function useClearableInput(options: UseClearableInputOptions) {
       return;
     }
 
-    if (!isControlled) {
-      setInternalValue("");
-    }
+    setCurrentValue("");
 
     const prototype =
       element instanceof HTMLTextAreaElement
@@ -70,18 +66,17 @@ export function useClearableInput(options: UseClearableInputOptions) {
     setter?.call(element, "");
     element.dispatchEvent(new Event("input", { bubbles: true }));
 
-    if (onChange || onValueChange) {
+    if (onChange) {
       const event = {
         currentTarget: element,
         target: element,
       } as ChangeEvent<ClearableElement>;
 
-      onChange?.(event);
-      onValueChange?.("");
+      onChange(event);
     }
 
     element.focus();
-  }, [canClear, isControlled, onChange, onValueChange]);
+  }, [canClear, onChange, setCurrentValue]);
 
   return {
     canClear,

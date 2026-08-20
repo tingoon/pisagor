@@ -1,4 +1,5 @@
-import { type RefObject, useCallback, useState } from "react";
+import { useUncontrolled } from "@pisagor/react-hooks";
+import { type RefObject, useCallback } from "react";
 import { createContext } from "../../utils";
 
 export type AppShellPlacement = "start" | "end";
@@ -103,23 +104,23 @@ export function useSideState({
   defaultOpen = false,
   onOpenChange,
 }: UseSideStateOptions): AppShellSideState {
-  const [uncontrolledOpen, setUncontrolledOpen] = useState(defaultOpen);
-  const open = controlledOpen ?? uncontrolledOpen;
+  const [open, setOpenValue] = useUncontrolled({
+    defaultValue: defaultOpen,
+    finalValue: false,
+    onChange: onOpenChange,
+    value: controlledOpen,
+  });
 
   const setOpen = useCallback(
     (value: boolean | ((current: boolean) => boolean)) => {
-      const next = typeof value === "function" ? value(open) : value;
-      onOpenChange?.(next);
-      if (controlledOpen === undefined) {
-        setUncontrolledOpen(next);
-      }
+      setOpenValue(typeof value === "function" ? value(open) : value);
     },
-    [controlledOpen, onOpenChange, open],
+    [open, setOpenValue],
   );
 
   const toggle = useCallback(() => {
-    setOpen((current) => !current);
-  }, [setOpen]);
+    setOpenValue(!open);
+  }, [open, setOpenValue]);
 
   return { open, setOpen, toggle };
 }

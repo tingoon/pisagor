@@ -2,6 +2,7 @@ import { Portal } from "@ark-ui/react";
 import { ark } from "@ark-ui/react/factory";
 import { Presence } from "@ark-ui/react/presence";
 import { XIcon } from "@phosphor-icons/react";
+import { useUncontrolled } from "@pisagor/react-hooks";
 import {
   actionBarCloseVariants,
   actionBarContentVariants,
@@ -12,7 +13,7 @@ import {
 } from "@pisagor/styles/ui/action-bar";
 import { useHotkey } from "@tanstack/react-hotkeys";
 import type { ComponentProps, MouseEvent, PropsWithChildren, ReactNode } from "react";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo } from "react";
 import type { WithTestId } from "../../internal/types";
 import { Badge, type BadgeProps } from "../badge";
 import { Button } from "../button";
@@ -98,26 +99,20 @@ export function ActionBarRoot({
   children,
   testId,
 }: PropsWithChildren<ActionBarProps>) {
-  const [internalOpen, setInternalOpen] = useState(defaultOpen);
-
-  const isControlled = open !== undefined;
-  const isOpen = isControlled ? open : internalOpen;
+  const [isOpen, setOpen] = useUncontrolled({
+    defaultValue: defaultOpen,
+    finalValue: false,
+    onChange: onOpenChange,
+    value: open,
+  });
 
   const handleClose = useCallback(() => {
-    if (!isControlled) {
-      setInternalOpen(false);
-    }
-
-    onOpenChange?.(false);
-  }, [isControlled, onOpenChange]);
+    setOpen(false);
+  }, [setOpen]);
 
   const handleOpen = useCallback(() => {
-    if (!isControlled) {
-      setInternalOpen(true);
-    }
-
-    onOpenChange?.(true);
-  }, [isControlled, onOpenChange]);
+    setOpen(true);
+  }, [setOpen]);
 
   useHotkey(
     "Escape",

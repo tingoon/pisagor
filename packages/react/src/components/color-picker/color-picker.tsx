@@ -7,6 +7,7 @@ import {
 import { ark } from "@ark-ui/react/factory";
 import { Portal } from "@ark-ui/react/portal";
 import { CheckIcon, EyedropperIcon, XIcon } from "@phosphor-icons/react";
+import { useUncontrolled } from "@pisagor/react-hooks";
 import {
   colorPickerAreaThumbVariants,
   colorPickerAreaVariants,
@@ -27,8 +28,7 @@ import {
   colorPickerViewVariants,
 } from "@pisagor/styles/ui/color-picker";
 import { cn } from "@pisagor/utils";
-import type { ComponentProps } from "react";
-import { useState } from "react";
+import { type ComponentProps, useMemo } from "react";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import type { WithTestId } from "../../internal/types";
@@ -160,15 +160,18 @@ export function ColorPickerRoot({
   testId,
   ...rest
 }: ColorPickerProps) {
-  const [internalValue, setInternalValue] = useState(defaultValue);
+  const [color, setColor, isControlled] = useUncontrolled({
+    defaultValue,
+    onChange: onValueChange,
+    value,
+  });
 
-  const isControlled = value !== undefined;
+  const parsedColor = useMemo(() => {
+    return color ? parseColor(color) : undefined;
+  }, [color]);
 
   const handleValueChange = (e: ColorPickerValueChangeDetails) => {
-    if (!isControlled) {
-      setInternalValue(e.valueAsString);
-    }
-    onValueChange?.(e.valueAsString);
+    setColor(e.valueAsString);
   };
 
   return (
@@ -176,12 +179,12 @@ export function ColorPickerRoot({
       <FormControlVariantProvider value={variant}>
         <ColorPickerPrimitive.Root
           className={colorPickerVariants({ className })}
-          defaultValue={internalValue ? parseColor(internalValue) : undefined}
+          defaultValue={!isControlled ? parsedColor : undefined}
           lazyMount={lazyMount}
           onValueChange={handleValueChange}
           positioning={positioning}
           unmountOnExit={unmountOnExit}
-          value={isControlled && value ? parseColor(value) : undefined}
+          value={isControlled ? parsedColor : undefined}
           {...rest}
         >
           {children}
