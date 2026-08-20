@@ -1,5 +1,10 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type AlertSlots, type AlertVariantProps, alertVariants } from "@pisagor/styles/ui/alert";
+import {
+  type AlertSlots,
+  type AlertVariantProps,
+  type AlertVariants,
+  alertVariants,
+} from "@pisagor/styles/ui/alert";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType, toValue, type VNodeChild } from "vue";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
@@ -23,7 +28,7 @@ export interface AlertProps extends WithTestId {
 
 interface AlertContextValue {
   classNames?: AlertClassNames;
-  slots: ReturnType<typeof alertVariants>;
+  slots: AlertVariants;
 }
 // #endregion
 

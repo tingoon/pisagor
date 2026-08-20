@@ -1,8 +1,8 @@
-import type { alertVariants } from "@pisagor/styles/ui/alert";
+import type { AlertVariants } from "@pisagor/styles/ui/alert";
 import { createContext } from "../../utils";
 
 interface AlertContextValue {
-  slots: ReturnType<typeof alertVariants>;
+  slots: AlertVariants;
 }
 
 export const { AlertContext, useAlert } = createContext<AlertContextValue>()({
