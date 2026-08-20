@@ -4,7 +4,7 @@ export const accordionItemVariants = tv({
   base: "flex flex-col border-b last:border-b-0",
 });
 
-export const accordionTriggerVariants = tv({
+export const accordionItemTriggerVariants = tv({
   slots: {
     base: [
       "flex flex-1 items-center justify-between gap-3",
@@ -30,7 +30,7 @@ export const accordionTriggerVariants = tv({
   },
 });
 
-export const accordionContentVariants = tv({
+export const accordionItemContentVariants = tv({
   slots: {
     base: [
       "overflow-hidden rounded-md text-sm",
@@ -45,10 +45,10 @@ export const accordionContentVariants = tv({
 export type AccordionItemVariantProps = VariantProps<typeof accordionItemVariants>;
 export type AccordionItemVariants = ReturnType<typeof accordionItemVariants>;
 
-export type AccordionTriggerVariantProps = VariantProps<typeof accordionTriggerVariants>;
-export type AccordionTriggerVariants = ReturnType<typeof accordionTriggerVariants>;
-export type AccordionTriggerSlots = keyof AccordionTriggerVariants;
+export type AccordionItemTriggerVariantProps = VariantProps<typeof accordionItemTriggerVariants>;
+export type AccordionItemTriggerVariants = ReturnType<typeof accordionItemTriggerVariants>;
+export type AccordionItemTriggerSlots = keyof AccordionItemTriggerVariants;
 
-export type AccordionContentVariantProps = VariantProps<typeof accordionContentVariants>;
-export type AccordionContentVariants = ReturnType<typeof accordionContentVariants>;
-export type AccordionContentSlots = keyof AccordionContentVariants;
+export type AccordionItemContentVariantProps = VariantProps<typeof accordionItemContentVariants>;
+export type AccordionItemContentVariants = ReturnType<typeof accordionItemContentVariants>;
+export type AccordionItemContentSlots = keyof AccordionItemContentVariants;
