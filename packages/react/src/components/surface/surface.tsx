@@ -1,9 +1,8 @@
 import { ark } from "@ark-ui/react/factory";
-import { surfaceVariants } from "@pisagor/styles/ui/surface";
+import { type SurfaceVariantProps, surfaceVariants } from "@pisagor/styles/ui/surface";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
-import type { VariantProps } from "tailwind-variants";
 import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils/create-context";
 
@@ -12,7 +11,6 @@ import { createContext } from "../../utils/create-context";
 // #endregion
 
 // #region Types
-type SurfaceVariantProps = VariantProps<typeof surfaceVariants>;
 
 export type SurfaceVariant = NonNullable<SurfaceVariantProps["variant"]>;
 

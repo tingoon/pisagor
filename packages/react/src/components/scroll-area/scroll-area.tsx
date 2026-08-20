@@ -1,8 +1,7 @@
 import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/react/scroll-area";
-import { scrollAreaVariants } from "@pisagor/styles/ui/scroll-area";
+import { type ScrollAreaVariantProps, scrollAreaVariants } from "@pisagor/styles/ui/scroll-area";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import type { VariantProps } from "tailwind-variants";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
 // #region Variants
@@ -17,8 +16,6 @@ type ScrollAreaScrollbarProps = ComponentProps<typeof ScrollAreaPrimitive.Scroll
 type ScrollAreaThumbProps = ComponentProps<typeof ScrollAreaPrimitive.Thumb>;
 
 type ScrollAreaClassNames = VariantClassNames<typeof scrollAreaVariants>;
-
-type ScrollAreaVariantProps = VariantProps<typeof scrollAreaVariants>;
 
 type ScrollAreaRootProps = ComponentProps<typeof ScrollAreaPrimitive.Root>;
 

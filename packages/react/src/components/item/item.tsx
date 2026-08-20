@@ -1,5 +1,7 @@
 import { ark } from "@ark-ui/react/factory";
 import {
+  type ItemMediaVariantProps,
+  type ItemVariantProps,
   itemActionsVariants,
   itemContentVariants,
   itemDescriptionVariants,
@@ -14,7 +16,6 @@ import {
 } from "@pisagor/styles/ui/item";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
-import type { VariantProps } from "tailwind-variants";
 import type { WithTestId } from "../../internal/types";
 import { Separator, type SeparatorProps } from "../separator";
 
@@ -23,14 +24,9 @@ import { Separator, type SeparatorProps } from "../separator";
 // #endregion
 
 // #region Types
-interface ItemProps
-  extends ComponentProps<typeof ark.div>,
-    VariantProps<typeof itemVariants>,
-    WithTestId {}
+interface ItemProps extends ComponentProps<typeof ark.div>, ItemVariantProps, WithTestId {}
 
-interface ItemMediaProps
-  extends ComponentProps<typeof ark.div>,
-    VariantProps<typeof itemMediaVariants> {}
+interface ItemMediaProps extends ComponentProps<typeof ark.div>, ItemMediaVariantProps {}
 
 interface ItemHeaderProps extends Omit<ComponentProps<typeof ark.div>, "title"> {
   /** Shorthand: renders an ItemTitle inside the header. */

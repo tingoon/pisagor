@@ -9,6 +9,7 @@ import {
 } from "@ark-ui/react/listbox";
 import { CheckIcon } from "@phosphor-icons/react";
 import {
+  type ListboxItemVariantProps,
   listboxContentVariants,
   listboxEmptyVariants,
   listboxItemGroupLabelVariants,
@@ -21,7 +22,6 @@ import {
 } from "@pisagor/styles/ui/listbox";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import type { VariantProps } from "tailwind-variants";
 import type { WithTestId } from "../../internal/types";
 import { DropdownMenu, type DropdownMenuShortcutProps } from "../dropdown-menu";
 
@@ -49,7 +49,7 @@ export interface ListboxProps extends Omit<ListboxRootProps, "children"> {
 
 interface ListboxItemProps
   extends ComponentProps<typeof ListboxPrimitive.Item>,
-    VariantProps<typeof listboxItemVariants> {}
+    ListboxItemVariantProps {}
 
 interface ListboxItemGroupProps extends ComponentProps<typeof ListboxPrimitive.ItemGroup> {
   /** The heading of the listbox item group. */
@@ -172,6 +172,9 @@ export function ListboxShortcut(props: DropdownMenuShortcutProps) {
 }
 ListboxShortcut.displayName = "Listbox.Shortcut";
 
+// #endregion
+
+// #region Shorthand
 export function ListboxShorthand({ items, collection: collectionProp, ...rest }: ListboxProps) {
   const collection = items
     ? createListCollection({

@@ -117,6 +117,9 @@ export function RadioGroupLabel({
 }
 RadioGroupLabel.displayName = "RadioGroup.Label";
 
+// #endregion
+
+// #region Shorthand
 export function RadioGroupShorthand({ items = [], ...rest }: RadioGroupProps) {
   return (
     <RadioGroupRoot {...rest}>

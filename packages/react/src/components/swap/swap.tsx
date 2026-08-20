@@ -1,8 +1,7 @@
 import { Swap as SwapPrimitive } from "@ark-ui/react/swap";
-import { swapVariants } from "@pisagor/styles/ui/swap";
+import { type SwapVariantProps, swapVariants } from "@pisagor/styles/ui/swap";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
-import type { VariantProps } from "tailwind-variants";
 import type { WithTestId } from "../../internal/types";
 
 // #region Variants
@@ -13,8 +12,6 @@ import type { WithTestId } from "../../internal/types";
 type SwapOnIndicatorProps = ComponentProps<typeof SwapPrimitive.Indicator>;
 
 type SwapOffIndicatorProps = ComponentProps<typeof SwapPrimitive.Indicator>;
-
-type SwapVariantProps = VariantProps<typeof swapVariants>;
 
 type SwapRootProps = ComponentProps<typeof SwapPrimitive.Root>;
 

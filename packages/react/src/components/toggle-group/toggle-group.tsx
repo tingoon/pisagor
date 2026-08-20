@@ -102,6 +102,9 @@ export function ToggleGroupItem({ value, className, ...rest }: ToggleGroupItemPr
 }
 ToggleGroupItem.displayName = "ToggleGroup.Item";
 
+// #endregion
+
+// #region Shorthand
 export function ToggleGroupShorthand({ items, ...rest }: ToggleGroupProps) {
   return (
     <ToggleGroupRoot {...rest}>

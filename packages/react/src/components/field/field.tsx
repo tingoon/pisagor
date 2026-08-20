@@ -2,6 +2,7 @@ import { ark } from "@ark-ui/react/factory";
 import { Field as FieldPrimitive } from "@ark-ui/react/field";
 import { Fieldset as FieldsetPrimitive } from "@ark-ui/react/fieldset";
 import {
+  type FieldVariantProps,
   fieldContentVariants,
   fieldDescriptionVariants,
   fieldErrorVariants,
@@ -18,7 +19,6 @@ import {
 } from "@pisagor/styles/ui/field";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import type { VariantProps } from "tailwind-variants";
 import {
   formControlSeparatorVariants,
   shellVariantArgs,
@@ -34,7 +34,7 @@ import { Separator } from "../separator";
 // #region Types
 export interface FieldProps
   extends ComponentProps<typeof FieldPrimitive.Root>,
-    VariantProps<typeof fieldVariants>,
+    FieldVariantProps,
     WithTestId {}
 
 interface FieldLegendProps extends ComponentProps<typeof FieldsetPrimitive.Legend> {

@@ -2,6 +2,8 @@ import { Dialog as DialogPrimitive } from "@ark-ui/react/dialog";
 import { Portal } from "@ark-ui/react/portal";
 import { XIcon } from "@phosphor-icons/react";
 import {
+  type SheetContentVariantProps,
+  type SheetPositionerVariantProps,
   sheetBodyVariants,
   sheetContentVariants,
   sheetFooterVariants,
@@ -10,7 +12,6 @@ import {
 } from "@pisagor/styles/ui/sheet";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import type { VariantProps } from "tailwind-variants";
 import { Button } from "../button";
 import {
   Dialog,
@@ -31,11 +32,11 @@ import { useDialog } from "../dialog/dialog";
 // #region Types
 interface SheetPositionerProps
   extends ComponentProps<typeof DialogPrimitive.Positioner>,
-    VariantProps<typeof sheetPositionerVariants> {}
+    SheetPositionerVariantProps {}
 
 interface SheetContentProps
   extends ComponentProps<typeof DialogPrimitive.Content>,
-    VariantProps<typeof sheetContentVariants> {
+    SheetContentVariantProps {
   /**
    * Whether to show a close button at the top right corner.
    *

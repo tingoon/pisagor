@@ -162,12 +162,14 @@ Every `<name>.tsx` file uses `#region` blocks in this order. Skip regions that d
 | 2 | `Types` | Props, variant types, context types, item interfaces |
 | 3 | `Context` | Shared React context for compound components only |
 | 4 | `Hooks` | File-local hooks not exported from `index.ts` |
-| 5 | `Component` / `Components` | All component functions — see below |
+| 5 | `Component` / `Components` | Compound / closed component functions (not shorthand) |
+| 6 | `Shorthand` | `FooShorthand` preset compose — after all compound parts |
 
 ### Do
 
 - Use **`#region Component`** (singular) when the file exports **one** component function.
 - Use **`#region Components`** (plural) when the file exports **two or more** component functions.
+- Use **`#region Shorthand`** when the file exports `FooShorthand` — place it **after** `#region Components`, not inside it.
 - Place `Variants` before `Types` so variant types can reference `{name}Variants`.
 - Start at `Types` → `Component(s)` when there is no `tv()`.
 - Follow [react.mdc → Component body order](../styleguides/react.mdc#component-body-order) inside each component function.

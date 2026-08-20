@@ -1,8 +1,11 @@
 import { ark } from "@ark-ui/react/factory";
-import { announcementTitleVariants, announcementVariants } from "@pisagor/styles/ui/announcement";
+import {
+  type AnnouncementVariantProps,
+  announcementTitleVariants,
+  announcementVariants,
+} from "@pisagor/styles/ui/announcement";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
-import type { VariantProps } from "tailwind-variants";
 import type { WithTestId } from "../../internal/types";
 
 // #region Variants
@@ -13,7 +16,7 @@ import type { WithTestId } from "../../internal/types";
 type AnnouncementTitleProps = ComponentProps<typeof ark.span>;
 
 type AnnouncementRootProps = Omit<ComponentProps<typeof ark.div>, "title"> &
-  VariantProps<typeof announcementVariants> &
+  AnnouncementVariantProps &
   WithTestId & {
     /**
      * The ARIA role of the announcement.
@@ -65,6 +68,9 @@ export function AnnouncementTitle({ className, ...rest }: AnnouncementTitleProps
 }
 AnnouncementTitle.displayName = "Announcement.Title";
 
+// #endregion
+
+// #region Shorthand
 export function AnnouncementShorthand({ badge, title, titleProps, ...rest }: AnnouncementProps) {
   return (
     <AnnouncementRoot {...rest}>

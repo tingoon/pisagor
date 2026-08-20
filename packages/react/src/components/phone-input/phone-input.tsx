@@ -1,6 +1,7 @@
 import { createListCollection } from "@ark-ui/react/collection";
 import { CaretUpDownIcon, GlobeIcon } from "@phosphor-icons/react";
 import {
+  type PhoneInputVariantProps,
   phoneInputCountryTriggerVariants,
   phoneInputInline2Variants,
   phoneInputInline3Variants,
@@ -19,7 +20,6 @@ import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import type { DefaultInputComponentProps, FlagProps } from "react-phone-number-input";
 import RPNPhoneInput, { type Country, getCountryCallingCode } from "react-phone-number-input";
-import type { VariantProps } from "tailwind-variants";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 import { createContext } from "../../utils/create-context";
@@ -35,7 +35,7 @@ import { phoneInputFlags } from "./phone-input-flags";
 // #region Types
 type PhoneInputClassNames = VariantClassNames<typeof phoneInputVariants>;
 
-type PhoneInputSize = NonNullable<VariantProps<typeof phoneInputVariants>["size"]>;
+type PhoneInputSize = NonNullable<PhoneInputVariantProps["size"]>;
 
 interface PhoneInputContextValue {
   classNames?: PhoneInputClassNames;

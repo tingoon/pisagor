@@ -1,5 +1,6 @@
 import { Tabs as TabsPrimitive } from "@ark-ui/react/tabs";
 import {
+  type TabsListVariantProps,
   tabsContentVariants,
   tabsListVariants,
   tabsTriggerVariants,
@@ -7,7 +8,6 @@ import {
 } from "@pisagor/styles/ui/tabs";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
-import type { VariantProps } from "tailwind-variants";
 import type { WithTestId } from "../../internal/types";
 
 // #region Variants
@@ -22,9 +22,7 @@ interface TabItem {
   disabled?: boolean;
 }
 
-interface TabsListProps
-  extends ComponentProps<typeof TabsPrimitive.List>,
-    VariantProps<typeof tabsListVariants> {}
+interface TabsListProps extends ComponentProps<typeof TabsPrimitive.List>, TabsListVariantProps {}
 
 interface TabsRootProps extends ComponentProps<typeof TabsPrimitive.Root>, WithTestId {
   tabs?: TabItem[];

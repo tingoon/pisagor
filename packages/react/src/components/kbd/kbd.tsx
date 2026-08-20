@@ -1,8 +1,7 @@
 import { ark } from "@ark-ui/react/factory";
-import { kbdGroupVariants, kbdVariants } from "@pisagor/styles/ui/kbd";
+import { type KbdVariantProps, kbdGroupVariants, kbdVariants } from "@pisagor/styles/ui/kbd";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import type { VariantProps } from "tailwind-variants";
 import type { WithTestId } from "../../internal/types";
 
 // #region Variants
@@ -10,10 +9,7 @@ import type { WithTestId } from "../../internal/types";
 // #endregion
 
 // #region Types
-interface KbdProps
-  extends ComponentProps<typeof ark.kbd>,
-    VariantProps<typeof kbdVariants>,
-    WithTestId {}
+interface KbdProps extends ComponentProps<typeof ark.kbd>, KbdVariantProps, WithTestId {}
 // #endregion
 
 // #region Components

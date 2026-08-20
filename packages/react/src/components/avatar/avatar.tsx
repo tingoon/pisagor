@@ -1,8 +1,7 @@
 import { Avatar as AvatarPrimitive } from "@ark-ui/react/avatar";
-import { avatarVariants } from "@pisagor/styles/ui/avatar";
+import { type AvatarVariantProps, avatarVariants } from "@pisagor/styles/ui/avatar";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
-import type { VariantProps } from "tailwind-variants";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
 // #region Variants
@@ -17,8 +16,6 @@ type AvatarFallbackProps = ComponentProps<typeof AvatarPrimitive.Fallback>;
 type AvatarRootProps = ComponentProps<typeof AvatarPrimitive.Root>;
 
 type AvatarClassNames = VariantClassNames<typeof avatarVariants>;
-
-type AvatarVariantProps = VariantProps<typeof avatarVariants>;
 
 interface AvatarProps extends AvatarRootProps, AvatarVariantProps, WithTestId {
   /** Slot class names */

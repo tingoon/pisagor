@@ -107,6 +107,9 @@ export function SegmentGroupIndicator({
 }
 SegmentGroupIndicator.displayName = "SegmentGroup.Indicator";
 
+// #endregion
+
+// #region Shorthand
 export function SegmentGroupShorthand({ items, ...rest }: SegmentGroupProps) {
   return (
     <SegmentGroupRoot {...rest}>

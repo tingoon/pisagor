@@ -1,8 +1,7 @@
 import { ark } from "@ark-ui/react/factory";
-import { badgeVariants } from "@pisagor/styles/ui/badge";
+import { type BadgeVariantProps, badgeVariants } from "@pisagor/styles/ui/badge";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import type { VariantProps } from "tailwind-variants";
 import type { WithTestId } from "../../internal/types";
 
 // #region Variants
@@ -10,7 +9,6 @@ import type { WithTestId } from "../../internal/types";
 // #endregion
 
 // #region Types
-type BadgeVariantProps = VariantProps<typeof badgeVariants>;
 
 export type BadgeVariant = BadgeVariantProps["variant"];
 

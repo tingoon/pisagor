@@ -1,9 +1,8 @@
 import { Toggle as TogglePrimitive } from "@ark-ui/react/toggle";
-import { buttonVariants } from "@pisagor/styles/ui/button";
-import { toggleVariants } from "@pisagor/styles/ui/toggle";
+import { type ButtonVariantProps, buttonVariants } from "@pisagor/styles/ui/button";
+import { type ToggleVariantProps, toggleVariants } from "@pisagor/styles/ui/toggle";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import type { VariantProps } from "tailwind-variants";
 import type { WithTestId } from "../../internal/types";
 
 // #region Variants
@@ -11,9 +10,6 @@ import type { WithTestId } from "../../internal/types";
 // #endregion
 
 // #region Types
-type ToggleVariantProps = VariantProps<typeof toggleVariants>;
-
-type ButtonVariantProps = VariantProps<typeof buttonVariants>;
 
 type ToggleRootProps = ComponentProps<typeof TogglePrimitive.Root>;
 

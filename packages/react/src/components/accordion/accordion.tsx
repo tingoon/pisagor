@@ -88,6 +88,9 @@ export function AccordionContent({
 }
 AccordionContent.displayName = "Accordion.Content";
 
+// #endregion
+
+// #region Shorthand
 export function AccordionShorthand({ items, ...rest }: AccordionProps) {
   return (
     <AccordionRoot {...rest}>

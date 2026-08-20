@@ -118,6 +118,9 @@ export function DataListItem({
 }
 DataListItem.displayName = "DataList.Item";
 
+// #endregion
+
+// #region Shorthand
 export function DataListShorthand({ items, ...rest }: DataListProps) {
   return (
     <DataListRoot {...rest}>

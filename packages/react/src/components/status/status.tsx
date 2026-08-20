@@ -1,8 +1,7 @@
 import { ark } from "@ark-ui/react/factory";
-import { statusVariants } from "@pisagor/styles/ui/status";
+import { type StatusVariantProps, statusVariants } from "@pisagor/styles/ui/status";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import type { VariantProps } from "tailwind-variants";
 import type { WithTestId } from "../../internal/types";
 
 // #region Variants
@@ -10,7 +9,6 @@ import type { WithTestId } from "../../internal/types";
 // #endregion
 
 // #region Types
-type StatusVariantProps = VariantProps<typeof statusVariants>;
 
 type StatusRootProps = ComponentProps<typeof ark.span>;
 

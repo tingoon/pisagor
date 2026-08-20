@@ -1,8 +1,12 @@
 import { ark } from "@ark-ui/react/factory";
-import { statTrendVariants, statVariants } from "@pisagor/styles/ui/stat";
+import {
+  type StatTrendVariantProps,
+  type StatVariantProps,
+  statTrendVariants,
+  statVariants,
+} from "@pisagor/styles/ui/stat";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
-import type { VariantProps } from "tailwind-variants";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
 // #region Variants
@@ -13,10 +17,6 @@ import type { VariantClassNames, WithTestId } from "../../internal/types";
 type StatLabelProps = ComponentProps<typeof ark.div>;
 
 type StatValueProps = ComponentProps<typeof ark.div>;
-
-type StatVariantProps = VariantProps<typeof statVariants>;
-
-type StatTrendVariantProps = VariantProps<typeof statTrendVariants>;
 
 type StatTrendProps = ComponentProps<typeof ark.div> & StatTrendVariantProps;
 
@@ -126,6 +126,9 @@ export function StatTrend({ trend = "neutral", className, ...rest }: StatTrendPr
 }
 StatTrend.displayName = "Stat.Trend";
 
+// #endregion
+
+// #region Shorthand
 export function StatShorthand({
   variant,
   className,

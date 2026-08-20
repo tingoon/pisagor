@@ -11,6 +11,7 @@ import {
   useSelectContext as useSelect,
 } from "@ark-ui/react/select";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
+import type { InputRootVariantProps } from "@pisagor/styles/ui/input";
 import {
   selectClearTriggerVariants,
   selectContentVariants,
@@ -26,7 +27,6 @@ import {
 } from "@pisagor/styles/ui/select";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
-import type { VariantProps } from "tailwind-variants";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import {
@@ -37,7 +37,6 @@ import {
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
 import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils";
-import type { inputRootVariants } from "../input";
 import { Separator, type SeparatorProps } from "../separator";
 
 // #region Types
@@ -71,7 +70,7 @@ export interface SelectProps extends Omit<SelectRootProps, "children"> {
 
 interface SelectTriggerProps
   extends ComponentProps<typeof SelectPrimitive.Trigger>,
-    VariantProps<typeof inputRootVariants> {
+    InputRootVariantProps {
   /** Visual shell variant override for this trigger. */
   variant?: FormControlVariant;
   /**
@@ -282,6 +281,9 @@ export function SelectEmpty({ className, ...rest }: ComponentProps<typeof ark.di
 }
 SelectEmpty.displayName = "Select.Empty";
 
+// #endregion
+
+// #region Shorthand
 export function SelectShorthand({
   items = [],
   clearable = false,

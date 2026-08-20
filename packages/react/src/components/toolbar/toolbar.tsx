@@ -116,6 +116,9 @@ export function ToolbarActions({ className, classNames, ...rest }: ToolbarPartPr
 }
 ToolbarActions.displayName = "Toolbar.Actions";
 
+// #endregion
+
+// #region Shorthand
 export function ToolbarShorthand({
   className,
   classNames,

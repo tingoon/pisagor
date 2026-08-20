@@ -1,14 +1,8 @@
 import { ark } from "@ark-ui/react/factory";
-import { alertVariants } from "@pisagor/styles/ui/alert";
-import { cn } from "@pisagor/utils";
+import { type AlertVariantProps, alertVariants } from "@pisagor/styles/ui/alert";
 import type { ComponentProps, ReactNode } from "react";
-import type { VariantProps } from "tailwind-variants";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 import { createContext } from "../../utils";
-
-// #region Variants
-
-// #endregion
 
 // #region Types
 type AlertTitleProps = ComponentProps<typeof ark.div>;
@@ -19,14 +13,9 @@ type AlertActionProps = ComponentProps<typeof ark.div>;
 
 type AlertClassNames = VariantClassNames<typeof alertVariants>;
 
-type AlertVariantProps = VariantProps<typeof alertVariants>;
-
 type AlertRootProps = Omit<ComponentProps<typeof ark.div>, "title"> &
   AlertVariantProps &
-  WithTestId & {
-    /** Slot class names */
-    classNames?: AlertClassNames;
-  };
+  WithTestId;
 
 export interface AlertProps extends Omit<AlertRootProps, "children"> {
   /** Leading icon, rendered as a direct child so the grid layout aligns. */
@@ -37,6 +26,8 @@ export interface AlertProps extends Omit<AlertRootProps, "children"> {
   description?: ReactNode;
   /** Trailing action area. */
   action?: ReactNode;
+  /** Slot class names */
+  classNames?: AlertClassNames;
   /** Extra props forwarded to the alert title element */
   titleProps?: Omit<AlertTitleProps, "children" | "className">;
   /** Extra props forwarded to the alert description element */
@@ -46,7 +37,6 @@ export interface AlertProps extends Omit<AlertRootProps, "children"> {
 }
 
 interface AlertContextValue {
-  classNames?: AlertClassNames;
   slots: ReturnType<typeof alertVariants>;
 }
 // #endregion
@@ -58,21 +48,14 @@ const [AlertContext, useAlertContext] = createContext<AlertContextValue>({
 // #endregion
 
 // #region Components
-export function AlertRoot({
-  variant,
-  className,
-  classNames,
-  children,
-  testId,
-  ...rest
-}: AlertRootProps) {
+export function AlertRoot({ variant, className, children, testId, ...rest }: AlertRootProps) {
   const slots = alertVariants({ variant });
 
   return (
-    <AlertContext value={{ classNames, slots }}>
+    <AlertContext value={{ slots }}>
       <ark.div
         {...rest}
-        className={cn(slots.root(), className, classNames?.root)}
+        className={slots.root({ className })}
         data-part="root"
         data-scope="alert"
         data-testid={testId}
@@ -85,15 +68,10 @@ export function AlertRoot({
 AlertRoot.displayName = "Alert.Root";
 
 export function AlertTitle({ className, children, ...rest }: AlertTitleProps) {
-  const { classNames, slots } = useAlertContext();
+  const { slots } = useAlertContext();
 
   return (
-    <ark.div
-      {...rest}
-      className={cn(slots.title(), classNames?.title, className)}
-      data-part="title"
-      data-scope="alert"
-    >
+    <ark.div {...rest} className={slots.title({ className })} data-part="title" data-scope="alert">
       {children}
     </ark.div>
   );
@@ -101,12 +79,12 @@ export function AlertTitle({ className, children, ...rest }: AlertTitleProps) {
 AlertTitle.displayName = "Alert.Title";
 
 export function AlertDescription({ className, children, ...rest }: AlertDescriptionProps) {
-  const { classNames, slots } = useAlertContext();
+  const { slots } = useAlertContext();
 
   return (
     <ark.div
       {...rest}
-      className={cn(slots.description(), classNames?.description, className)}
+      className={slots.description({ className })}
       data-part="description"
       data-scope="alert"
     >
@@ -117,12 +95,12 @@ export function AlertDescription({ className, children, ...rest }: AlertDescript
 AlertDescription.displayName = "Alert.Description";
 
 export function AlertAction({ className, children, ...rest }: AlertActionProps) {
-  const { classNames, slots } = useAlertContext();
+  const { slots } = useAlertContext();
 
   return (
     <ark.div
       {...rest}
-      className={cn(slots.action(), classNames?.action, className)}
+      className={slots.action({ className })}
       data-part="action"
       data-scope="alert"
     >
@@ -132,6 +110,9 @@ export function AlertAction({ className, children, ...rest }: AlertActionProps) 
 }
 AlertAction.displayName = "Alert.Action";
 
+// #endregion
+
+// #region Shorthand
 export function AlertShorthand({
   variant,
   className,
@@ -146,16 +127,26 @@ export function AlertShorthand({
   ...rest
 }: AlertProps) {
   return (
-    <AlertRoot {...rest} className={className} classNames={classNames} variant={variant}>
+    <AlertRoot {...rest} className={className} variant={variant}>
       {icon}
 
-      {title !== undefined && <AlertTitle {...titleProps}>{title}</AlertTitle>}
-
-      {description !== undefined && (
-        <AlertDescription {...descriptionProps}>{description}</AlertDescription>
+      {title !== undefined && (
+        <AlertTitle {...titleProps} className={classNames?.title}>
+          {title}
+        </AlertTitle>
       )}
 
-      {action !== undefined && <AlertAction {...actionProps}>{action}</AlertAction>}
+      {description !== undefined && (
+        <AlertDescription {...descriptionProps} className={classNames?.description}>
+          {description}
+        </AlertDescription>
+      )}
+
+      {action !== undefined && (
+        <AlertAction {...actionProps} className={classNames?.action}>
+          {action}
+        </AlertAction>
+      )}
     </AlertRoot>
   );
 }

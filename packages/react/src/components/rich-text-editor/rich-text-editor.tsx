@@ -329,6 +329,9 @@ export function RichTextEditorContent({ className, ...rest }: RichTextEditorCont
 }
 RichTextEditorContent.displayName = "RichTextEditor.Content";
 
+// #endregion
+
+// #region Shorthand
 export function RichTextEditorShorthand(props: Omit<RichTextEditorRootProps, "children">) {
   return (
     <RichTextEditorRoot {...props}>

@@ -3,6 +3,7 @@ import { ark } from "@ark-ui/react/factory";
 import { Portal } from "@ark-ui/react/portal";
 import { XIcon } from "@phosphor-icons/react";
 import {
+  type DialogContentVariantProps,
   dialogBodyVariants,
   dialogContentVariants,
   dialogDescriptionVariants,
@@ -15,7 +16,6 @@ import {
 } from "@pisagor/styles/ui/dialog";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import type { VariantProps } from "tailwind-variants";
 import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils";
 import { Button } from "../button";
@@ -41,7 +41,7 @@ interface DialogContextProps {
 
 export interface DialogContentProps
   extends ComponentProps<typeof DialogPrimitive.Content>,
-    VariantProps<typeof dialogContentVariants> {
+    DialogContentVariantProps {
   /**
    * Whether to stick the dialog to the bottom of the screen on mobile.
    *

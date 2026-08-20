@@ -91,6 +91,9 @@ export function MarqueeEdge({ className, ...rest }: ComponentProps<typeof Marque
 }
 MarqueeEdge.displayName = "Marquee.Edge";
 
+// #endregion
+
+// #region Shorthand
 export function MarqueeShorthand({ items, ...rest }: MarqueeProps) {
   return (
     <MarqueeRoot {...rest}>

@@ -1,12 +1,14 @@
 import { ark } from "@ark-ui/react/factory";
+import type { FormControlGroupShellVariantProps } from "@pisagor/styles/ui/form-control";
 import {
+  type InputGroupAddonVariantProps,
+  type InputGroupButtonVariantProps,
   inputGroupAddonVariants,
   inputGroupButtonVariants,
   inputGroupTextVariants,
 } from "@pisagor/styles/ui/input-group";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, MouseEvent } from "react";
-import type { VariantProps } from "tailwind-variants";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import {
   formControlGroupShellVariants,
@@ -24,7 +26,7 @@ import { Button, type ButtonProps } from "../button";
 // #region Types
 export interface InputGroupProps
   extends ComponentProps<typeof ark.div>,
-    VariantProps<typeof formControlGroupShellVariants>,
+    FormControlGroupShellVariantProps,
     WithTestId {
   /**
    * Visual shell variant. When omitted, resolves from the nearest `Surface` context.
@@ -34,11 +36,11 @@ export interface InputGroupProps
 
 export interface InputGroupAddonProps
   extends ComponentProps<typeof ark.div>,
-    VariantProps<typeof inputGroupAddonVariants> {}
+    InputGroupAddonVariantProps {}
 
 export interface InputGroupButtonProps
   extends Omit<ButtonProps, "size">,
-    VariantProps<typeof inputGroupButtonVariants> {}
+    InputGroupButtonVariantProps {}
 // #endregion
 
 // #region Components

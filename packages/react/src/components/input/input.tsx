@@ -1,8 +1,11 @@
 import { FieldInput as InputPrimitive } from "@ark-ui/react/field";
-import { inputRootVariants, inputVariants } from "@pisagor/styles/ui/input";
+import {
+  type InputRootVariantProps,
+  inputRootVariants,
+  inputVariants,
+} from "@pisagor/styles/ui/input";
 import { cn } from "@pisagor/utils";
 import type { ChangeEventHandler, ComponentProps } from "react";
-import type { VariantProps } from "tailwind-variants";
 import { useClearableInput } from "../../hooks";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import {
@@ -17,7 +20,7 @@ import { InputClearAddon } from "./input-clear-button";
 // #region Types
 type InputClassNames = VariantClassNames<typeof inputVariants>;
 
-type InputVariantProps = VariantProps<typeof inputRootVariants>;
+type InputVariantProps = InputRootVariantProps;
 
 type InputRootProps = Omit<ComponentProps<typeof InputPrimitive>, "size">;
 

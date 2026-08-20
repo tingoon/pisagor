@@ -44,6 +44,9 @@ export function AvatarGroupCount({ className, ...rest }: ComponentProps<typeof a
 }
 AvatarGroupCount.displayName = "AvatarGroup.Count";
 
+// #endregion
+
+// #region Shorthand
 export function AvatarGroupShorthand({ users, max, ...rest }: AvatarGroupProps) {
   const visibleUsers = max !== undefined ? users.slice(0, max) : users;
   const remainingCount = max !== undefined && users.length > max ? users.length - max : 0;

@@ -1,9 +1,8 @@
 import { Clipboard as ClipboardPrimitive } from "@ark-ui/react/clipboard";
 import { CheckIcon, ClipboardIcon } from "@phosphor-icons/react";
-import { clipboardVariants } from "@pisagor/styles/ui/clipboard";
+import { type ClipboardVariantProps, clipboardVariants } from "@pisagor/styles/ui/clipboard";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
-import type { VariantProps } from "tailwind-variants";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import {
   formControlShellProps,
@@ -21,7 +20,7 @@ import { Button, type ButtonProps } from "../button";
 // #region Types
 type ClipboardClassNames = VariantClassNames<typeof clipboardVariants>;
 
-type ClipboardValueSize = VariantProps<typeof clipboardVariants>["valueSize"];
+type ClipboardValueSize = ClipboardVariantProps["valueSize"];
 
 type ClipboardRootProps = ComponentProps<typeof ClipboardPrimitive.Root>;
 

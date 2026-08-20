@@ -122,6 +122,9 @@ export function EmptyStateActions({ className, classNames, ...rest }: EmptyState
 }
 EmptyStateActions.displayName = "EmptyState.Actions";
 
+// #endregion
+
+// #region Shorthand
 export function EmptyStateShorthand({
   className,
   classNames,

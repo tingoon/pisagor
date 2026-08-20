@@ -1,12 +1,12 @@
 import { ark } from "@ark-ui/react/factory";
 import {
+  type ButtonGroupVariantProps,
   buttonGroupSeparatorVariants,
   buttonGroupTextVariants,
   buttonGroupVariants,
 } from "@pisagor/styles/ui/button-group";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import type { VariantProps } from "tailwind-variants";
 import type { WithTestId } from "../../internal/types";
 import { Separator, type SeparatorProps } from "../separator";
 
@@ -17,7 +17,7 @@ import { Separator, type SeparatorProps } from "../separator";
 // #region Types
 interface ButtonGroupProps
   extends ComponentProps<typeof ark.fieldset>,
-    VariantProps<typeof buttonGroupVariants>,
+    ButtonGroupVariantProps,
     WithTestId {}
 // #endregion
 

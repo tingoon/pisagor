@@ -1,5 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import {
+  type ButtonVariantProps,
   buttonInline2Variants,
   buttonInline3Variants,
   buttonInlineVariants,
@@ -7,12 +8,10 @@ import {
 } from "@pisagor/styles/ui/button";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import type { VariantProps } from "tailwind-variants";
 import type { WithTestId } from "../../internal/types";
 import { Spinner } from "../spinner";
 
 // #region Types
-type ButtonVariantProps = VariantProps<typeof buttonVariants>;
 
 type ButtonRootProps = ComponentProps<typeof ark.button>;
 

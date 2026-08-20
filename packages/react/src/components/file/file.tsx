@@ -1,6 +1,7 @@
 import { ark } from "@ark-ui/react/factory";
 import { FileIcon } from "@phosphor-icons/react";
 import {
+  type FileVariantProps,
   fileActionsVariants,
   fileContentVariants,
   fileMediaVariants,
@@ -11,7 +12,6 @@ import {
 } from "@pisagor/styles/ui/file";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
-import type { VariantProps } from "tailwind-variants";
 import type { WithTestId } from "../../internal/types";
 import { Format } from "../format";
 
@@ -20,7 +20,6 @@ import { Format } from "../format";
 // #endregion
 
 // #region Types
-type FileVariantProps = VariantProps<typeof fileVariants>;
 
 export interface FileRootProps
   extends ComponentProps<typeof ark.div>,
@@ -152,6 +151,9 @@ export function FileActions({ className, ...rest }: FileActionsProps) {
 }
 FileActions.displayName = "File.Actions";
 
+// #endregion
+
+// #region Shorthand
 export function FileShorthand({ name, meta, size, media, actions, ...rest }: FileProps) {
   return (
     <FileRoot {...rest}>

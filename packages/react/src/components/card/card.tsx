@@ -1,5 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import {
+  type CardMediaVariantProps,
   cardActionVariants,
   cardContentVariants,
   cardDescriptionVariants,
@@ -11,7 +12,6 @@ import {
 } from "@pisagor/styles/ui/card";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import type { VariantProps } from "tailwind-variants";
 import type { WithTestId } from "../../internal/types";
 
 // #region Variants
@@ -21,9 +21,7 @@ import type { WithTestId } from "../../internal/types";
 // #region Types
 interface CardRootProps extends ComponentProps<typeof ark.div>, WithTestId {}
 
-interface CardMediaProps
-  extends ComponentProps<typeof ark.div>,
-    VariantProps<typeof cardMediaVariants> {}
+interface CardMediaProps extends ComponentProps<typeof ark.div>, CardMediaVariantProps {}
 
 interface HeaderProps extends ComponentProps<typeof ark.div> {
   /** The description of the card */

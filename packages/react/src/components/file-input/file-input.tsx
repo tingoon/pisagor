@@ -1,8 +1,8 @@
 import { ark } from "@ark-ui/react/factory";
 import { fileInputControlVariants, fileInputInlineVariants } from "@pisagor/styles/ui/file-input";
+import type { FormControlGroupShellVariantProps } from "@pisagor/styles/ui/form-control";
 import { cn } from "@pisagor/utils";
 import { type ChangeEventHandler, type ComponentProps, useRef, useState } from "react";
-import type { VariantProps } from "tailwind-variants";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import {
   formControlGroupShellVariants,
@@ -14,7 +14,7 @@ import type { WithTestId } from "../../internal/types";
 import { InputGroupAddon, InputGroupButton, InputGroupText } from "../input-group/input-group-core";
 
 // #region Types
-type FileInputVariantProps = VariantProps<typeof formControlGroupShellVariants>;
+type FileInputVariantProps = FormControlGroupShellVariantProps;
 
 type NativeFileInputProps = Omit<
   ComponentProps<"input">,

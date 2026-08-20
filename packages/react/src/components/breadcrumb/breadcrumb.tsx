@@ -141,6 +141,9 @@ export function BreadcrumbEllipsis(props: ComponentProps<typeof ark.span>) {
 }
 BreadcrumbEllipsis.displayName = "Breadcrumb.Ellipsis";
 
+// #endregion
+
+// #region Shorthand
 export function BreadcrumbShorthand({ items, ...rest }: BreadcrumbProps) {
   return (
     <BreadcrumbRoot {...rest}>

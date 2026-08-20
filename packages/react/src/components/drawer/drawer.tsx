@@ -2,6 +2,8 @@ import { Drawer as DrawerPrimitive } from "@ark-ui/react/drawer";
 import { ark } from "@ark-ui/react/factory";
 import { Portal } from "@ark-ui/react/portal";
 import {
+  type DrawerContentVariantProps,
+  type DrawerPositionerVariantProps,
   drawerBodyVariants,
   drawerContentInnerVariants,
   drawerContentVariants,
@@ -17,7 +19,6 @@ import {
 } from "@pisagor/styles/ui/drawer";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import type { VariantProps } from "tailwind-variants";
 import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils";
 import { ScrollArea } from "../scroll-area";
@@ -29,11 +30,11 @@ import { ScrollArea } from "../scroll-area";
 // #region Types
 interface DrawerPositionerProps
   extends ComponentProps<typeof DrawerPrimitive.Positioner>,
-    VariantProps<typeof drawerPositionerVariants> {}
+    DrawerPositionerVariantProps {}
 
 interface DrawerContentProps
   extends ComponentProps<typeof DrawerPrimitive.Content>,
-    VariantProps<typeof drawerContentVariants> {}
+    DrawerContentVariantProps {}
 
 interface DrawerHeaderProps extends ComponentProps<typeof ark.div> {
   /** The description of the drawer */

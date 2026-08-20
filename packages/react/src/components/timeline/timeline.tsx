@@ -142,6 +142,9 @@ export function TimelineDescription({ className, ...rest }: TimelineDescriptionP
 }
 TimelineDescription.displayName = "Timeline.Description";
 
+// #endregion
+
+// #region Shorthand
 export function TimelineShorthand({ items = [], ...rest }: TimelineProps) {
   return (
     <TimelineRoot {...rest}>

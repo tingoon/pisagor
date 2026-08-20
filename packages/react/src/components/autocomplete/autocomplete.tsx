@@ -117,6 +117,9 @@ export function AutocompleteSeparator(props: SeparatorProps) {
 }
 AutocompleteSeparator.displayName = "Autocomplete.Separator";
 
+// #endregion
+
+// #region Shorthand
 export function AutocompleteShorthand({ items, clearable, ...rest }: AutocompleteProps) {
   return (
     <Combobox

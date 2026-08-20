@@ -12,6 +12,7 @@ import {
 import { Portal } from "@ark-ui/react/portal";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
 import {
+  type ComboboxItemVariantProps,
   comboboxContentVariants,
   comboboxControlVariants,
   comboboxEmptyVariants,
@@ -23,15 +24,14 @@ import {
   comboboxListVariants,
   comboboxTriggerVariants,
 } from "@pisagor/styles/ui/combobox";
+import type { InputRootVariantProps } from "@pisagor/styles/ui/input";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
-import type { VariantProps } from "tailwind-variants";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils";
 import { Button } from "../button";
-import type { inputRootVariants } from "../input";
 import { InputGroup } from "../input-group";
 
 // #region Variants
@@ -66,7 +66,7 @@ export interface ComboboxProps extends Omit<ComboboxRootProps, "children"> {
 
 export interface ComboboxInputProps
   extends Omit<ComponentProps<typeof ComboboxPrimitive.Input>, "size">,
-    VariantProps<typeof inputRootVariants> {
+    InputRootVariantProps {
   /** Visual shell variant override for this input. */
   variant?: FormControlVariant;
   /**
@@ -97,7 +97,7 @@ export interface ComboboxGroupProps extends ComponentProps<typeof ComboboxPrimit
 
 export interface ComboboxItemProps
   extends ComponentProps<typeof ComboboxPrimitive.Item>,
-    VariantProps<typeof comboboxItemVariants> {}
+    ComboboxItemVariantProps {}
 
 // #endregion
 
@@ -327,6 +327,9 @@ export function ComboboxList({ className, ...rest }: ComboboxListProps) {
 }
 ComboboxList.displayName = "Combobox.List";
 
+// #endregion
+
+// #region Shorthand
 export function ComboboxShorthand({ items = [], clearable = false, id, ...rest }: ComboboxProps) {
   const normalized = items.map((item) =>
     typeof item === "string" ? { label: item, value: item } : item,

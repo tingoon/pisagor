@@ -3,6 +3,7 @@ import { ark } from "@ark-ui/react/factory";
 import { type MenuContentProps, Menu as MenuPrimitive } from "@ark-ui/react/menu";
 import { CaretRightIcon, CheckIcon } from "@phosphor-icons/react";
 import {
+  type DropdownMenuItemVariantProps,
   dropdownMenuContentVariants,
   dropdownMenuGroupLabelVariants,
   dropdownMenuInline2Variants,
@@ -20,7 +21,6 @@ import {
 } from "@pisagor/styles/ui/dropdown-menu";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import type { VariantProps } from "tailwind-variants";
 import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils";
 
@@ -36,7 +36,7 @@ export interface DropdownMenuGroupProps extends ComponentProps<typeof MenuPrimit
 
 export interface DropdownMenuItemProps
   extends ComponentProps<typeof MenuPrimitive.Item>,
-    VariantProps<typeof dropdownMenuItemVariants> {}
+    DropdownMenuItemVariantProps {}
 
 interface DropdownMenuRadioGroupProps extends ComponentProps<typeof MenuPrimitive.RadioItemGroup> {
   /** The heading of the menu radio item group. */

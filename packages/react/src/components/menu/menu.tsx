@@ -1,5 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import {
+  type MenuItemVariantProps,
   menuItemVariants,
   menuItemWrapper2Variants,
   menuItemWrapperVariants,
@@ -7,7 +8,6 @@ import {
 } from "@pisagor/styles/ui/menu";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import type { VariantProps } from "tailwind-variants";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
 // #region Variants
@@ -32,9 +32,7 @@ interface MenuListProps extends ComponentProps<typeof ark.ul> {
   classNames?: MenuClassNames;
 }
 
-interface MenuItemProps
-  extends ComponentProps<typeof ark.button>,
-    VariantProps<typeof menuItemVariants> {
+interface MenuItemProps extends ComponentProps<typeof ark.button>, MenuItemVariantProps {
   /** Slot class names */
   classNames?: MenuClassNames;
 }

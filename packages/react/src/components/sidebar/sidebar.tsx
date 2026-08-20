@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import { SidebarSimpleIcon } from "@phosphor-icons/react";
-import { buttonVariants } from "@pisagor/styles/ui/button";
+import { type ButtonVariantProps, buttonVariants } from "@pisagor/styles/ui/button";
 import {
   sidebar2Variants,
   sidebar3Variants,
@@ -41,7 +41,6 @@ import {
 import { cn } from "@pisagor/utils";
 import { useHotkey } from "@tanstack/react-hotkeys";
 import { type ComponentProps, type CSSProperties, useCallback, useMemo, useState } from "react";
-import type { VariantProps } from "tailwind-variants";
 import { useIsMobile } from "../../hooks";
 import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils";
@@ -128,9 +127,7 @@ interface SidebarMenuSkeletonProps extends ComponentProps<typeof ark.div> {
   showIcon?: boolean;
 }
 
-interface SidebarMenuSubButtonProps
-  extends ComponentProps<typeof ark.a>,
-    VariantProps<typeof buttonVariants> {
+interface SidebarMenuSubButtonProps extends ComponentProps<typeof ark.a>, ButtonVariantProps {
   isActive?: boolean;
 }
 
