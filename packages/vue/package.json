@@ -25,7 +25,6 @@
     ".": "./src/components/index.ts",
     "./*": "./src/components/*/index.ts",
     "./charts": "./src/charts/index.ts",
-    "./components": "./src/components/index.ts",
     "./styles": "./src/styles.css"
   },
   "homepage": "https://github.com/tingoon/pisagor#readme",
