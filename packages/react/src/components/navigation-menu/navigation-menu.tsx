@@ -1,11 +1,14 @@
 import { ark } from "@ark-ui/react/factory";
-import { navigationMenuVariants } from "@pisagor/styles/ui/navigation-menu";
+import {
+  type NavigationMenuSlots,
+  navigationMenuVariants,
+} from "@pisagor/styles/ui/navigation-menu";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
 // #region Types
-type NavigationMenuClassNames = VariantClassNames<typeof navigationMenuVariants>;
+type NavigationMenuClassNames = VariantClassNames<NavigationMenuSlots>;
 
 interface NavigationMenuProps extends ComponentProps<typeof ark.nav>, WithTestId {
   /** Slot class names */
@@ -42,7 +45,7 @@ export function NavigationMenuRoot({
   return (
     <ark.nav
       {...rest}
-      className={slots.base({ className: cn(className, classNames?.base) })}
+      className={slots.base({ className: className })}
       data-part="root"
       data-scope="navigation-menu"
       data-testid={testId}

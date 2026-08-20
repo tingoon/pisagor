@@ -1,12 +1,12 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type AlertVariantProps, alertVariants } from "@pisagor/styles/ui/alert";
+import { type AlertSlots, type AlertVariantProps, alertVariants } from "@pisagor/styles/ui/alert";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType, toValue, type VNodeChild } from "vue";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 import { createContext } from "../../utils/create-context";
 
 // #region Types
-type AlertClassNames = VariantClassNames<typeof alertVariants>;
+type AlertClassNames = VariantClassNames<AlertSlots>;
 
 export interface AlertProps extends WithTestId {
   action?: VNodeChild;
@@ -58,7 +58,7 @@ export const AlertRoot = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: contextValue.value.slots.base({ class: cn(props.class, props.classNames?.base) }),
+          class: contextValue.value.slots.base({ class: props.class }),
           "data-part": "root",
           "data-scope": "alert",
           "data-testid": props.testId,

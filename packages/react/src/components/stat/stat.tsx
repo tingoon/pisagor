@@ -1,5 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import {
+  type StatSlots,
   type StatTrendVariantProps,
   type StatVariantProps,
   statTrendVariants,
@@ -16,7 +17,7 @@ type StatValueProps = ComponentProps<typeof ark.div>;
 
 type StatTrendProps = ComponentProps<typeof ark.div> & StatTrendVariantProps;
 
-type StatClassNames = VariantClassNames<typeof statVariants>;
+type StatClassNames = VariantClassNames<StatSlots>;
 
 type StatRootProps = ComponentProps<typeof ark.div> &
   StatVariantProps &
@@ -57,7 +58,7 @@ export function StatRoot({ variant, className, classNames, testId, ...rest }: St
   return (
     <ark.div
       {...rest}
-      className={slots.base({ className: cn(className, classNames?.base) })}
+      className={slots.base({ className: className })}
       data-part="root"
       data-scope="stat"
       data-testid={testId}

@@ -6,13 +6,13 @@ import {
   ProgressValueText,
 } from "@ark-ui/vue/progress";
 import { fieldLabelVariants } from "@pisagor/styles/ui/field";
-import { progressVariants } from "@pisagor/styles/ui/progress";
+import { type ProgressSlots, progressVariants } from "@pisagor/styles/ui/progress";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNode } from "vue";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
 // #region Types
-type ProgressClassNames = VariantClassNames<typeof progressVariants>;
+type ProgressClassNames = VariantClassNames<ProgressSlots>;
 
 export interface ProgressProps extends WithTestId {
   class?: unknown;
@@ -56,7 +56,7 @@ export const Progress = defineComponent({
         ProgressRoot as ArkPart,
         {
           ...attrs,
-          class: variantSlots.base({ class: cn(props.class, props.classNames?.base) }),
+          class: variantSlots.base({ class: props.class }),
           "data-testid": props.testId,
           modelValue: props.indeterminate ? null : props.value,
           orientation: props.orientation,

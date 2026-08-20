@@ -1,6 +1,4 @@
-export type VariantClassNames<
-  TVariants extends (...args: never[]) => Record<string, (...args: never[]) => string>,
-> = Partial<{ [K in keyof ReturnType<TVariants>]: string }>;
+export type VariantClassNames<T extends string> = Partial<Record<Exclude<T, "base">, string>>;
 
 export interface WithTestId {
   /**

@@ -1,10 +1,10 @@
 import { ark } from "@ark-ui/vue/factory";
-import { toolbarVariants } from "@pisagor/styles/ui/toolbar";
+import { type ToolbarSlots, toolbarVariants } from "@pisagor/styles/ui/toolbar";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
-type ToolbarClassNames = VariantClassNames<typeof toolbarVariants>;
+type ToolbarClassNames = VariantClassNames<ToolbarSlots>;
 
 // #region Types
 export interface ToolbarProps extends Omit<WithTestId, "testId">, WithTestId {
@@ -35,7 +35,7 @@ export const ToolbarRoot = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: toolbarVariants().base({ class: cn(props.class, props.classNames?.base) }),
+          class: toolbarVariants().base({ class: props.class }),
           "data-part": "root",
           "data-scope": "toolbar",
           "data-testid": props.testId,

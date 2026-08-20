@@ -1,11 +1,11 @@
 import { ark } from "@ark-ui/vue/factory";
-import { menuItemVariants, menuVariants } from "@pisagor/styles/ui/menu";
+import { type MenuSlots, menuItemVariants, menuVariants } from "@pisagor/styles/ui/menu";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
 // #region Types
-type MenuClassNames = VariantClassNames<typeof menuVariants>;
+type MenuClassNames = VariantClassNames<MenuSlots>;
 
 export interface MenuRootProps extends WithTestId {
   /** Slot class names */
@@ -33,7 +33,7 @@ export const MenuRoot = defineComponent({
         {
           ...attrs,
           "aria-label": ariaLabel,
-          class: slots$.base({ class: cn(attrs.class, props.classNames?.base) }),
+          class: slots$.base({ class: attrs.class as string | undefined }),
           "data-part": "root",
           "data-scope": "menu",
           "data-testid": props.testId,

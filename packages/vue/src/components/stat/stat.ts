@@ -1,5 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
 import {
+  type StatSlots,
   type StatTrendVariantProps,
   type StatVariantProps,
   statTrendVariants,
@@ -16,7 +17,7 @@ type ArkPart = Parameters<typeof h>[0];
 type StatVariant = NonNullable<StatVariantProps["variant"]>;
 type StatTrendVariant = NonNullable<StatTrendVariantProps["trend"]>;
 
-type StatClassNames = VariantClassNames<typeof statVariants>;
+type StatClassNames = VariantClassNames<StatSlots>;
 
 export interface StatProps extends Omit<WithTestId, "testId"> {
   class?: unknown;
@@ -54,7 +55,7 @@ export const StatRoot = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: slots_.base({ class: cn(props.class, props.classNames?.base) }),
+          class: slots_.base({ class: props.class }),
           "data-part": "root",
           "data-scope": "stat",
           "data-testid": props.testId,

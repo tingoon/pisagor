@@ -5,7 +5,7 @@ import {
   SignaturePad as SignaturePadPrimitive,
 } from "@ark-ui/vue/signature-pad";
 import { PhArrowCounterClockwise } from "@phosphor-icons/vue";
-import { signaturePadVariants } from "@pisagor/styles/ui/signature-pad";
+import { type SignaturePadSlots, signaturePadVariants } from "@pisagor/styles/ui/signature-pad";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
@@ -21,7 +21,7 @@ import { Button } from "../button";
 
 type ArkPart = Parameters<typeof h>[0];
 
-type SignaturePadClassNames = VariantClassNames<typeof signaturePadVariants>;
+type SignaturePadClassNames = VariantClassNames<SignaturePadSlots>;
 
 // #region Types
 export interface SignaturePadProps extends WithTestId {
@@ -96,7 +96,7 @@ export const SignaturePad = defineComponent({
           {
             ...attrs,
             "aria-invalid": props.invalid || undefined,
-            class: slots_.base({ class: cn(props.class, props.classNames?.base) }),
+            class: slots_.base({ class: props.class }),
             "data-invalid": props.invalid || undefined,
             "data-testid": props.testId,
             defaultPaths: props.defaultPaths,

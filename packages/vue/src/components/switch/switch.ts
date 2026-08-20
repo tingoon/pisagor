@@ -1,6 +1,5 @@
 import { Switch as SwitchPrimitive } from "@ark-ui/vue/switch";
-import { switchVariants } from "@pisagor/styles/ui/switch";
-import { cn } from "@pisagor/utils";
+import { type SwitchSlots, switchVariants } from "@pisagor/styles/ui/switch";
 import { defineComponent, h, type PropType } from "vue";
 import {
   type FormControlVariant,
@@ -10,7 +9,7 @@ import {
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
 import type { VariantClassNames } from "../../internal/types";
 
-type SwitchClassNames = VariantClassNames<typeof switchVariants>;
+type SwitchClassNames = VariantClassNames<SwitchSlots>;
 
 type ArkPart = Parameters<typeof h>[0];
 
@@ -40,7 +39,7 @@ export const Switch = defineComponent({
         {
           ...attrs,
           ...controlShellProps,
-          class: slots_.base({ class: cn(props.class, props.classNames?.base) }),
+          class: slots_.base({ class: props.class }),
           "data-testid": props.testId,
           onCheckedChange: (details: { checked: boolean }) => {
             emit("checkedChange", details);

@@ -4,7 +4,12 @@ import {
   Toast as ToastPrimitive,
 } from "@ark-ui/vue/toast";
 import { PhCheckCircle, PhInfo, PhWarning, PhWarningCircle, PhX } from "@phosphor-icons/vue";
-import { toasterVariants, toastInlineVariants, toastItemVariants } from "@pisagor/styles/ui/toast";
+import {
+  type ToastItemSlots,
+  toasterVariants,
+  toastInlineVariants,
+  toastItemVariants,
+} from "@pisagor/styles/ui/toast";
 import { cn } from "@pisagor/utils";
 
 type ClassValue = Parameters<typeof cn>[0];
@@ -15,7 +20,7 @@ import { Button } from "../button";
 import { Spinner } from "../spinner";
 
 // #region Types
-type ToastItemClassNames = VariantClassNames<typeof toastItemVariants>;
+type ToastItemClassNames = VariantClassNames<ToastItemSlots>;
 
 type ToastType = "error" | "info" | "loading" | "success" | "warning";
 
@@ -105,7 +110,7 @@ export const ToastItem = defineComponent({
   props: {
     actionsProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
     actionTriggerProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<ToastItemClassNames> },
     closeTriggerProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
     descriptionProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
@@ -128,7 +133,7 @@ export const ToastItem = defineComponent({
         ToastPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: slots.base({ class: cn(props.class, props.classNames?.base) }),
+          class: slots.base({ class: props.class }),
         },
         () => [
           h(

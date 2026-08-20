@@ -1,11 +1,14 @@
 import { ark } from "@ark-ui/vue/factory";
-import { navigationMenuVariants } from "@pisagor/styles/ui/navigation-menu";
+import {
+  type NavigationMenuSlots,
+  navigationMenuVariants,
+} from "@pisagor/styles/ui/navigation-menu";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 
 // #region Types
-type NavigationMenuClassNames = VariantClassNames<typeof navigationMenuVariants>;
+type NavigationMenuClassNames = VariantClassNames<NavigationMenuSlots>;
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];
@@ -27,7 +30,7 @@ export const NavigationMenuRoot = defineComponent({
         ark.nav as ArkPart,
         {
           ...attrs,
-          class: slots$.base({ class: cn(props.class, attrs.class, props.classNames?.base) }),
+          class: slots$.base({ class: cn(props.class, attrs.class) }),
           "data-part": "root",
           "data-scope": "navigation-menu",
           "data-testid": props.testId,

@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { emptyStateVariants } from "@pisagor/styles/ui/empty-state";
+import { type EmptyStateSlots, emptyStateVariants } from "@pisagor/styles/ui/empty-state";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
@@ -7,7 +7,7 @@ import type { VariantClassNames, WithTestId } from "../../internal/types";
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-type EmptyStateClassNames = VariantClassNames<typeof emptyStateVariants>;
+type EmptyStateClassNames = VariantClassNames<EmptyStateSlots>;
 
 export interface EmptyStateProps extends WithTestId {
   actions?: VNodeChild;
@@ -36,7 +36,7 @@ export const EmptyStateRoot = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: slots_.base({ class: cn(props.class, props.classNames?.base) }),
+          class: slots_.base({ class: props.class }),
           "data-part": "root",
           "data-scope": "empty-state",
           "data-testid": props.testId,
@@ -47,7 +47,7 @@ export const EmptyStateRoot = defineComponent({
   },
 });
 
-function createEmptyStatePart(slot: keyof ReturnType<typeof emptyStateVariants>, part: string) {
+function createEmptyStatePart(slot: Exclude<EmptyStateSlots, "base">, part: string) {
   return defineComponent({
     inheritAttrs: false,
     name: `EmptyState${slot.charAt(0).toUpperCase()}${slot.slice(1)}`,

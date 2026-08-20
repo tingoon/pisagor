@@ -1,6 +1,7 @@
 import { FieldInput as InputPrimitive } from "@ark-ui/react/field";
 import {
   type InputRootVariantProps,
+  type InputSlots,
   inputRootVariants,
   inputVariants,
 } from "@pisagor/styles/ui/input";
@@ -18,7 +19,7 @@ import { InputGroupRoot } from "../input-group/input-group-core";
 import { InputClearAddon } from "./input-clear-button";
 
 // #region Types
-type InputClassNames = VariantClassNames<typeof inputVariants>;
+type InputClassNames = VariantClassNames<InputSlots>;
 
 type InputVariantProps = InputRootVariantProps;
 

@@ -108,6 +108,7 @@ Choose **closed**, **compound**, or **compound + shorthand** per component.
 **Closed:**
 
 - Export a single function with convenience props and DOM sub-element `*Props` bags (content/behavior — not styling).
+- **Closed multi-slot:** implement private Parts + `<name>.context.tsx` (`slots` from styles `FooVariants`); compose in `#region Closed`. Do not export parts or part prop types from the barrel — only `Foo` / `FooProps`.
 - Export `{name}Variants` when part of the public API — see [Styling](#styling).
 - Export via `export * from "./foo"` (shared package barrel only).
 
@@ -175,8 +176,8 @@ Every `<name>.tsx` file uses `#region` blocks in this order. Skip regions that d
 | 1 | `Variants` | Component uses `tv()` — see [Styling](#styling) |
 | 2 | `Types` | Props, variant types, item interfaces (not context value types) |
 | 3 | `Hooks` | File-local hooks not exported from `index.ts` |
-| 4 | `Part` / `Parts` | Compound / closed component functions (not shorthand) |
-| 5 | `Shorthand` | `FooShorthand` preset compose — after all compound parts |
+| 4 | `Part` / `Parts` | Compound / closed component functions (not shorthand/closed compose) |
+| 5 | `Shorthand` / `Closed` | Preset compose — after all parts (`FooShorthand` or closed `Foo`) |
 
 Context factory + value types live in [`<name>.context.tsx`](#context-file-namecontexttsx) — not a region in `<name>.tsx`.
 
@@ -185,6 +186,7 @@ Context factory + value types live in [`<name>.context.tsx`](#context-file-namec
 - Use **`#region Part`** (singular) when the file exports **one** component function.
 - Use **`#region Parts`** (plural) when the file exports **two or more** component functions.
 - Use **`#region Shorthand`** when the file exports `FooShorthand` — place it **after** `#region Parts`, not inside it.
+- Use **`#region Closed`** for closed multi-slot compose (`Foo` that wires private parts) — place it **after** `#region Parts`, not inside it. Parts stay file-private; do not barrel-export them.
 - Place `Variants` before `Types` so variant types can reference `{name}Variants`.
 - Start at `Types` → `Part(s)` when there is no `tv()`.
 - Put **`// #endregion` on the line immediately after** the region's last statement — no blank line before it.
@@ -225,7 +227,7 @@ Follow [React Style Guide](../styleguides/react.mdc) for naming and [props field
 ### Do not
 
 - Do not route styling through `*Props` bags — use `classNames` on multi-slot components only; single-element components use `className`.
-- Do not type `classNames` as `VariantClassNames<typeof fooVariants> & { … }` — use `VariantClassNames` only.
+- Do not type `classNames` as `VariantClassNames<FooSlots> & { … }` — use `VariantClassNames` only.
 - `titleProps` / `contentProps` on shorthand APIs: behavior escape-hatches only (`Omit<…, "children" | "className">`).
 
 ---
@@ -261,8 +263,8 @@ Behavior lives in the headless primitive — the styled layer adds visuals only.
 - Split `tv()` when reuse needs a shared root shell (`inputRootVariants`) separate from optional slots (`inputVariants.clearableRoot`).
 - **Root** always accepts **`className`** — never `rootClassName`.
 - **Single-element components:** merge with `cn(fooVariants({ … }), className)` — no `classNames` prop.
-- **Multi-slot components:** merge via the slot API — `slots.part({ className: classNames?.part })` or `slots.part({ className: cn(className, classNames?.part) })` when both apply; type **`classNames`** as `VariantClassNames<typeof {name}Variants>`.
-- **Root with both** `className` and `classNames?.base`: `slots.base({ className: cn(className, classNames?.base) })`.
+- **Multi-slot components:** merge via the slot API — `slots.part({ className: classNames?.part })`; type **`classNames`** as `VariantClassNames<{Name}Slots>` (`base` is omitted — root styling is always `className`).
+- **Root slot:** `slots.base({ className })` — never `classNames?.base`.
 - **Shell + slot:** keep outer `cn` only for a separate shell recipe — `cn(shellVariants(…), slots.part({ className: classNames?.part }))`.
 - Prefer `slots.part({ className })` over `cn(slots.part(), className)`.
 - Apply **motion & focus:** `motion-reduce:transition-none!`; `outline-hidden` + `focus-visible:ring-[3px] focus-visible:ring-ring/32`; style `disabled:`, `data-disabled:`, `aria-disabled:` consistently.

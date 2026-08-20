@@ -12,7 +12,12 @@ import {
   WarningIcon,
   XIcon,
 } from "@phosphor-icons/react";
-import { toasterVariants, toastInlineVariants, toastItemVariants } from "@pisagor/styles/ui/toast";
+import {
+  type ToastItemSlots,
+  toasterVariants,
+  toastInlineVariants,
+  toastItemVariants,
+} from "@pisagor/styles/ui/toast";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, CSSProperties, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
@@ -25,7 +30,7 @@ export type ToastDescriptionProps = ComponentProps<typeof ToastPrimitive.Descrip
 export type ToastActionTriggerProps = ComponentProps<typeof ToastPrimitive.ActionTrigger>;
 export type ToastCloseTriggerProps = ComponentProps<typeof ToastPrimitive.CloseTrigger>;
 
-type ToastItemClassNames = VariantClassNames<typeof toastItemVariants>;
+type ToastItemClassNames = VariantClassNames<ToastItemSlots>;
 
 export type ToasterRootProps = Omit<
   ComponentProps<typeof ToasterPrimitive>,
@@ -116,10 +121,7 @@ export function ToastItem({
   const isExplicitClosable = toastData.closable === false;
 
   return (
-    <ToastPrimitive.Root
-      {...rest}
-      className={slots.base({ className: cn(className, classNames?.base) })}
-    >
+    <ToastPrimitive.Root {...rest} className={slots.base({ className: className })}>
       <div className={slots.content({ className: classNames?.content })}>
         <div
           {...iconProps}

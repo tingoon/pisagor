@@ -1,11 +1,16 @@
 import { ark } from "@ark-ui/react/factory";
-import { type MenuItemVariantProps, menuItemVariants, menuVariants } from "@pisagor/styles/ui/menu";
+import {
+  type MenuItemVariantProps,
+  type MenuSlots,
+  menuItemVariants,
+  menuVariants,
+} from "@pisagor/styles/ui/menu";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
 // #region Types
-type MenuClassNames = VariantClassNames<typeof menuVariants>;
+type MenuClassNames = VariantClassNames<MenuSlots>;
 
 interface MenuRootProps extends ComponentProps<typeof ark.nav>, WithTestId {
   /** Slot class names */
@@ -49,7 +54,7 @@ export function MenuRoot({
     <ark.nav
       {...rest}
       aria-label={ariaLabel}
-      className={slots.base({ className: cn(className, classNames?.base) })}
+      className={slots.base({ className: className })}
       data-part="root"
       data-scope="menu"
       data-testid={testId}

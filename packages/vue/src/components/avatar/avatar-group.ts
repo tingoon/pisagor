@@ -1,6 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { avatarGroupCountVariants, avatarGroupVariants } from "@pisagor/styles/ui/avatar";
-import { cn } from "@pisagor/utils";
+import { avatarGroupVariants } from "@pisagor/styles/ui/avatar";
 import { defineComponent, h, type PropType } from "vue";
 import type { WithTestId } from "../../internal/types";
 import { Avatar } from "./avatar";
@@ -32,18 +31,21 @@ export const AvatarGroupRoot = defineComponent({
     testId: String,
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = avatarGroupVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(avatarGroupVariants(), props.class),
+          class: variantSlots.base({ class: props.class }),
           "data-part": "group",
           "data-scope": "avatar",
           "data-testid": props.testId,
         },
         slots,
       );
+    };
   },
 });
 
@@ -54,17 +56,20 @@ export const AvatarGroupCount = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = avatarGroupVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(avatarGroupCountVariants(), props.class),
+          class: variantSlots.count({ class: props.class }),
           "data-part": "group-count",
           "data-scope": "avatar",
         },
         slots,
       );
+    };
   },
 });
 

@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { toolbarVariants } from "@pisagor/styles/ui/toolbar";
+import { type ToolbarSlots, toolbarVariants } from "@pisagor/styles/ui/toolbar";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
@@ -11,7 +11,7 @@ type ToolbarDescriptionProps = ComponentProps<typeof ark.p>;
 
 type ToolbarActionsProps = ComponentProps<typeof ark.div>;
 
-type ToolbarClassNames = VariantClassNames<typeof toolbarVariants>;
+type ToolbarClassNames = VariantClassNames<ToolbarSlots>;
 
 type ToolbarRootProps = Omit<ComponentProps<typeof ark.div>, "title"> &
   WithTestId & {
@@ -47,7 +47,7 @@ export function ToolbarRoot({ className, classNames, testId, ...rest }: ToolbarR
   return (
     <ark.div
       {...rest}
-      className={slots.base({ className: cn(className, classNames?.base) })}
+      className={slots.base({ className: className })}
       data-part="root"
       data-scope="toolbar"
       data-testid={testId}

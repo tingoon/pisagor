@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { emptyStateVariants } from "@pisagor/styles/ui/empty-state";
+import { type EmptyStateSlots, emptyStateVariants } from "@pisagor/styles/ui/empty-state";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
@@ -13,7 +13,7 @@ type EmptyStateActionsProps = ComponentProps<typeof ark.div>;
 
 type EmptyStateMediaProps = ComponentProps<typeof ark.div>;
 
-type EmptyStateClassNames = VariantClassNames<typeof emptyStateVariants>;
+type EmptyStateClassNames = VariantClassNames<EmptyStateSlots>;
 
 type EmptyStateRootProps = Omit<ComponentProps<typeof ark.div>, "title"> &
   WithTestId & {
@@ -53,7 +53,7 @@ export function EmptyStateRoot({ className, classNames, testId, ...rest }: Empty
   return (
     <ark.div
       {...rest}
-      className={slots.base({ className: cn(className, classNames?.base) })}
+      className={slots.base({ className: className })}
       data-part="root"
       data-scope="empty-state"
       data-testid={testId}

@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { dataListVariants } from "@pisagor/styles/ui/data-list";
+import { type DataListSlots, dataListVariants } from "@pisagor/styles/ui/data-list";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
@@ -10,7 +10,7 @@ interface DataListPresetItem {
   value: VNodeChild;
 }
 
-type DataListClassNames = VariantClassNames<typeof dataListVariants>;
+type DataListClassNames = VariantClassNames<DataListSlots>;
 
 type ArkPart = Parameters<typeof h>[0];
 
@@ -52,7 +52,7 @@ export const DataListRoot = defineComponent({
         ark.dl,
         {
           ...attrs,
-          class: slots_.base({ class: cn(props.class, props.classNames?.base) }),
+          class: slots_.base({ class: props.class }),
           "data-orientation": props.orientation,
           "data-part": "root",
           "data-scope": "data-list",

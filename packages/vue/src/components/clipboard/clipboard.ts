@@ -1,6 +1,10 @@
 import { Clipboard as ClipboardPrimitive } from "@ark-ui/vue/clipboard";
 import { PhCheck, PhClipboard } from "@phosphor-icons/vue";
-import { type ClipboardVariantProps, clipboardVariants } from "@pisagor/styles/ui/clipboard";
+import {
+  type ClipboardSlots,
+  type ClipboardVariantProps,
+  clipboardVariants,
+} from "@pisagor/styles/ui/clipboard";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import {
@@ -14,7 +18,7 @@ import type { VariantClassNames, WithTestId } from "../../internal/types";
 import { Button, type ButtonProps } from "../button";
 
 // #region Types
-type ClipboardClassNames = VariantClassNames<typeof clipboardVariants>;
+type ClipboardClassNames = VariantClassNames<ClipboardSlots>;
 
 type ClipboardValueSize = ClipboardVariantProps["valueSize"];
 

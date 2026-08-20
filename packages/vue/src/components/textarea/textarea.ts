@@ -1,5 +1,9 @@
 import { Field as FieldPrimitive } from "@ark-ui/vue/field";
-import { textareaInlineVariants, textareaVariants } from "@pisagor/styles/ui/textarea";
+import {
+  type TextareaSlots,
+  textareaInlineVariants,
+  textareaVariants,
+} from "@pisagor/styles/ui/textarea";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
 import { type ClearableChangeEvent, useClearableInput } from "../../hooks/use-clearable-input";
@@ -15,7 +19,7 @@ import { InputClearButton } from "../input/input-clear-button";
 import { InputGroupAddon, InputGroupRoot } from "../input-group/input-group-core";
 
 type ArkPart = Parameters<typeof h>[0];
-type TextareaClassNames = VariantClassNames<typeof textareaVariants>;
+type TextareaClassNames = VariantClassNames<TextareaSlots>;
 
 type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
 

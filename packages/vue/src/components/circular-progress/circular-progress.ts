@@ -1,12 +1,14 @@
 import { ark } from "@ark-ui/vue/factory";
 import { ProgressRoot, ProgressValueText, useProgressContext } from "@ark-ui/vue/progress";
-import { circularProgressVariants } from "@pisagor/styles/ui/circular-progress";
-import { cn } from "@pisagor/utils";
+import {
+  type CircularProgressSlots,
+  circularProgressVariants,
+} from "@pisagor/styles/ui/circular-progress";
 import { computed, defineComponent, h, type PropType, type VNode } from "vue";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
 // #region Types
-type CircularProgressClassNames = VariantClassNames<typeof circularProgressVariants>;
+type CircularProgressClassNames = VariantClassNames<CircularProgressSlots>;
 
 export interface CircularProgressProps extends WithTestId {
   class?: unknown;
@@ -154,7 +156,7 @@ export const CircularProgress = defineComponent({
         ProgressRoot as ArkPart,
         {
           ...attrs,
-          class: variantSlots.base({ class: cn(props.class, props.classNames?.base) }),
+          class: variantSlots.base({ class: props.class }),
           "data-testid": props.testId,
           modelValue: props.indeterminate ? null : props.value,
         },

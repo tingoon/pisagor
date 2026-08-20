@@ -1,6 +1,5 @@
 import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/vue/scroll-area";
-import { scrollAreaVariants } from "@pisagor/styles/ui/scroll-area";
-import { cn } from "@pisagor/utils";
+import { type ScrollAreaSlots, scrollAreaVariants } from "@pisagor/styles/ui/scroll-area";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
@@ -14,7 +13,7 @@ export interface ScrollAreaProps extends WithTestId {
    * @example
    * `{ base: "...", viewport: "...", thumb: "..." }`
    */
-  classNames?: VariantClassNames<typeof scrollAreaVariants>;
+  classNames?: VariantClassNames<ScrollAreaSlots>;
   /** Extra props forwarded to the scroll area viewport element. */
   viewportProps?: Record<string, unknown>;
   /** Extra props forwarded to each scroll area scrollbar element. */
@@ -34,7 +33,7 @@ export const ScrollArea = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: {
       default: undefined,
-      type: Object as PropType<VariantClassNames<typeof scrollAreaVariants>>,
+      type: Object as PropType<VariantClassNames<ScrollAreaSlots>>,
     },
     scrollbarProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
     scrollFade: { default: false, type: Boolean },
@@ -50,7 +49,7 @@ export const ScrollArea = defineComponent({
         ScrollAreaPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: slotsClasses.base({ class: cn(props.class, props.classNames?.base) }),
+          class: slotsClasses.base({ class: props.class }),
           "data-testid": props.testId,
         },
         () => [

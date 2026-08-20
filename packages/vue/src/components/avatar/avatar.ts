@@ -1,6 +1,9 @@
 import { AvatarFallback, AvatarImage, AvatarRoot } from "@ark-ui/vue/avatar";
-import { type AvatarVariantProps, avatarVariants } from "@pisagor/styles/ui/avatar";
-import { cn } from "@pisagor/utils";
+import {
+  type AvatarSlots,
+  type AvatarVariantProps,
+  avatarVariants,
+} from "@pisagor/styles/ui/avatar";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
@@ -10,7 +13,7 @@ type ArkPart = Parameters<typeof h>[0];
 export type AvatarShape = NonNullable<AvatarVariantProps["shape"]>;
 export type AvatarSize = NonNullable<AvatarVariantProps["size"]>;
 
-export type AvatarClassNames = VariantClassNames<typeof avatarVariants>;
+export type AvatarClassNames = VariantClassNames<AvatarSlots>;
 
 export interface AvatarProps extends WithTestId {
   /** Slot class names */
@@ -66,7 +69,7 @@ export const Avatar = defineComponent({
         AvatarRoot as ArkPart,
         {
           ...attrs,
-          class: slots_.base({ class: cn(props.class, props.classNames?.base) }),
+          class: slots_.base({ class: props.class }),
           "data-shape": props.shape,
           "data-size": props.size,
           "data-testid": props.testId,

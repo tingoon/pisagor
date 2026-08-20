@@ -1,5 +1,5 @@
 import { Field as FieldPrimitive } from "@ark-ui/vue/field";
-import { inputRootVariants, inputVariants } from "@pisagor/styles/ui/input";
+import { type InputSlots, inputRootVariants, inputVariants } from "@pisagor/styles/ui/input";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
 import { type ClearableChangeEvent, useClearableInput } from "../../hooks/use-clearable-input";
@@ -15,7 +15,7 @@ import { InputClearAddon } from "./input-clear-button";
 
 type ArkPart = Parameters<typeof h>[0];
 type InputSize = "lg" | "md" | "sm";
-type InputClassNames = VariantClassNames<typeof inputVariants>;
+type InputClassNames = VariantClassNames<InputSlots>;
 
 type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
 

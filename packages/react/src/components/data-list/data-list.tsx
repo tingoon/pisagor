@@ -1,11 +1,11 @@
 import { ark } from "@ark-ui/react/factory";
-import { dataListVariants } from "@pisagor/styles/ui/data-list";
+import { type DataListSlots, dataListVariants } from "@pisagor/styles/ui/data-list";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
 // #region Types
-type DataListClassNames = VariantClassNames<typeof dataListVariants>;
+type DataListClassNames = VariantClassNames<DataListSlots>;
 
 interface DataListPresetItem {
   label: ReactNode;
@@ -48,7 +48,7 @@ export function DataListRoot({
   return (
     <ark.dl
       {...rest}
-      className={slots.base({ className: cn(className, classNames?.base) })}
+      className={slots.base({ className: className })}
       data-orientation={orientation}
       data-part="root"
       data-scope="data-list"

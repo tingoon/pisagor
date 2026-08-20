@@ -1,11 +1,11 @@
 import { ark } from "@ark-ui/vue/factory";
-import { navbarVariants } from "@pisagor/styles/ui/navbar";
+import { type NavbarSlots, navbarVariants } from "@pisagor/styles/ui/navbar";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 
 // #region Types
-type NavbarClassNames = VariantClassNames<typeof navbarVariants>;
+type NavbarClassNames = VariantClassNames<NavbarSlots>;
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];
@@ -27,7 +27,7 @@ export const NavbarRoot = defineComponent({
         ark.header as ArkPart,
         {
           ...attrs,
-          class: slots$.base({ class: cn(props.class, attrs.class, props.classNames?.base) }),
+          class: slots$.base({ class: cn(props.class, attrs.class) }),
           "data-part": "root",
           "data-scope": "navbar",
           "data-testid": props.testId,
