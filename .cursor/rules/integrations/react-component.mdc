@@ -88,7 +88,7 @@ Choose **closed**, **compound**, or **compound + shorthand** per component.
 
 **Compound:**
 
-- Name internally `{Name}Root`, `{Name}Item`, …; set `displayName`: root `"Foo.Root"` when a dedicated shorthand export exists, otherwise `"Foo"`; subparts `"Foo.Part"`.
+- Name internally `{Name}Root`, `{Name}Item`, …; set `displayName`: root `"Foo.Root"` when a dedicated shorthand export exists, otherwise `"Foo"`; subparts `"Foo.Part"`. Place every part’s `displayName` in one contiguous block at the **end** of `#region Parts` / `#region Part` (and of `#region Shorthand` / `#region Closed` when those exports set `displayName`) — not immediately under each function.
 - Implement compound parts first; shorthand composes them — never the reverse.
 - Export via `Object.assign(FooShorthand, { Root, Item, Trigger, … })` when shorthand exists; otherwise `Object.assign(FooRoot, { … })`.
 - Public surface is `Foo.Root` / `Foo.Part` only. Flat `FooPart` barrel re-exports are forbidden; do not ship a dual compound + flat surface.
