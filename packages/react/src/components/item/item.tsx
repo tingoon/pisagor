@@ -43,7 +43,6 @@ export function ItemGroup({ className, ...rest }: ComponentProps<typeof ark.div>
     />
   );
 }
-ItemGroup.displayName = "Item.Group";
 
 export function ItemSeparator({ className, ...rest }: SeparatorProps) {
   return (
@@ -56,7 +55,6 @@ export function ItemSeparator({ className, ...rest }: SeparatorProps) {
     />
   );
 }
-ItemSeparator.displayName = "Item.Separator";
 
 export function ItemRoot({ variant = "default", className, testId, ...rest }: ItemProps) {
   return (
@@ -70,7 +68,6 @@ export function ItemRoot({ variant = "default", className, testId, ...rest }: It
     />
   );
 }
-ItemRoot.displayName = "Item";
 
 export function ItemMedia({ variant = "default", className, ...rest }: ItemMediaProps) {
   return (
@@ -83,7 +80,6 @@ export function ItemMedia({ variant = "default", className, ...rest }: ItemMedia
     />
   );
 }
-ItemMedia.displayName = "Item.Media";
 
 export function ItemContent({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -95,7 +91,6 @@ export function ItemContent({ className, ...rest }: ComponentProps<typeof ark.di
     />
   );
 }
-ItemContent.displayName = "Item.Content";
 
 export function ItemTitle({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -107,7 +102,6 @@ export function ItemTitle({ className, ...rest }: ComponentProps<typeof ark.div>
     />
   );
 }
-ItemTitle.displayName = "Item.Title";
 
 export function ItemDescription({ className, ...rest }: ComponentProps<typeof ark.p>) {
   return (
@@ -119,7 +113,6 @@ export function ItemDescription({ className, ...rest }: ComponentProps<typeof ar
     />
   );
 }
-ItemDescription.displayName = "Item.Description";
 
 export function ItemActions({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -131,7 +124,6 @@ export function ItemActions({ className, ...rest }: ComponentProps<typeof ark.di
     />
   );
 }
-ItemActions.displayName = "Item.Actions";
 
 export function ItemHeader({ title, description, className, children, ...rest }: ItemHeaderProps) {
   return (
@@ -153,7 +145,6 @@ export function ItemHeader({ title, description, className, children, ...rest }:
     </ark.div>
   );
 }
-ItemHeader.displayName = "Item.Header";
 
 export function ItemFooter({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -165,5 +156,15 @@ export function ItemFooter({ className, ...rest }: ComponentProps<typeof ark.div
     />
   );
 }
+
+ItemGroup.displayName = "Item.Group";
+ItemSeparator.displayName = "Item.Separator";
+ItemRoot.displayName = "Item";
+ItemMedia.displayName = "Item.Media";
+ItemContent.displayName = "Item.Content";
+ItemTitle.displayName = "Item.Title";
+ItemDescription.displayName = "Item.Description";
+ItemActions.displayName = "Item.Actions";
+ItemHeader.displayName = "Item.Header";
 ItemFooter.displayName = "Item.Footer";
 // #endregion

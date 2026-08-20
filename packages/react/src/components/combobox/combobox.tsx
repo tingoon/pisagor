@@ -145,7 +145,6 @@ export function ComboboxRoot<T extends CollectionItem = CollectionItem>({
     </ComboboxRootContext>
   );
 }
-ComboboxRoot.displayName = "Combobox.Root";
 
 export const ComboboxContext = ComboboxPrimitive.Context;
 
@@ -160,7 +159,6 @@ export function ComboboxControl({ className, ...rest }: ComboboxControlProps) {
     />
   );
 }
-ComboboxControl.displayName = "Combobox.Control";
 
 export function ComboboxInput({
   size = "md",
@@ -203,7 +201,6 @@ export function ComboboxInput({
     </ComboboxControl>
   );
 }
-ComboboxInput.displayName = "Combobox.Input";
 
 export function ComboboxTrigger({ className, children, ...rest }: ComboboxTriggerProps) {
   return (
@@ -216,7 +213,6 @@ export function ComboboxTrigger({ className, children, ...rest }: ComboboxTrigge
     </ComboboxPrimitive.Trigger>
   );
 }
-ComboboxTrigger.displayName = "Combobox.Trigger";
 
 export function ComboboxClear({
   "aria-label": ariaLabel = "Clear selected value(s)",
@@ -224,18 +220,15 @@ export function ComboboxClear({
 }: ComboboxClearProps) {
   return <ComboboxPrimitive.ClearTrigger aria-label={ariaLabel} {...rest} />;
 }
-ComboboxClear.displayName = "Combobox.Clear";
 
 /** Composable combobox input for custom controls (e.g. Tags Input). */
 export function ComboboxFieldInput(props: ComboboxFieldInputProps) {
   return <ComboboxPrimitive.Input {...props} />;
 }
-ComboboxFieldInput.displayName = "Combobox.FieldInput";
 
 export function ComboboxPositioner(props: ComboboxPositionerProps) {
   return <ComboboxPrimitive.Positioner {...props} />;
 }
-ComboboxPositioner.displayName = "Combobox.Positioner";
 
 export function ComboboxContent({ className, children, ...rest }: ComboboxContentProps) {
   return (
@@ -248,7 +241,6 @@ export function ComboboxContent({ className, children, ...rest }: ComboboxConten
     </Portal>
   );
 }
-ComboboxContent.displayName = "Combobox.Content";
 
 export function ComboboxGroup({ heading, children, ...rest }: ComboboxGroupProps) {
   return (
@@ -259,7 +251,6 @@ export function ComboboxGroup({ heading, children, ...rest }: ComboboxGroupProps
     </ComboboxPrimitive.ItemGroup>
   );
 }
-ComboboxGroup.displayName = "Combobox.Group";
 
 export function ComboboxGroupLabel({ className, ...rest }: ComboboxGroupLabelProps) {
   return (
@@ -269,7 +260,6 @@ export function ComboboxGroupLabel({ className, ...rest }: ComboboxGroupLabelPro
     />
   );
 }
-ComboboxGroupLabel.displayName = "Combobox.GroupLabel";
 
 export function ComboboxItem({
   showIndicator = true,
@@ -293,7 +283,6 @@ export function ComboboxItem({
     </ComboboxPrimitive.Item>
   );
 }
-ComboboxItem.displayName = "Combobox.Item";
 
 export function ComboboxEmpty({ className, children, ...rest }: ComboboxEmptyProps) {
   return (
@@ -302,11 +291,23 @@ export function ComboboxEmpty({ className, children, ...rest }: ComboboxEmptyPro
     </ComboboxPrimitive.Empty>
   );
 }
-ComboboxEmpty.displayName = "Combobox.Empty";
 
 export function ComboboxList({ className, ...rest }: ComboboxListProps) {
   return <ComboboxPrimitive.List {...rest} className={comboboxListVariants({ className })} />;
 }
+
+ComboboxRoot.displayName = "Combobox.Root";
+ComboboxControl.displayName = "Combobox.Control";
+ComboboxInput.displayName = "Combobox.Input";
+ComboboxTrigger.displayName = "Combobox.Trigger";
+ComboboxClear.displayName = "Combobox.Clear";
+ComboboxFieldInput.displayName = "Combobox.FieldInput";
+ComboboxPositioner.displayName = "Combobox.Positioner";
+ComboboxContent.displayName = "Combobox.Content";
+ComboboxGroup.displayName = "Combobox.Group";
+ComboboxGroupLabel.displayName = "Combobox.GroupLabel";
+ComboboxItem.displayName = "Combobox.Item";
+ComboboxEmpty.displayName = "Combobox.Empty";
 ComboboxList.displayName = "Combobox.List";
 // #endregion
 

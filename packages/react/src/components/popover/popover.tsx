@@ -74,24 +74,20 @@ export function PopoverRoot({
     </PopoverRootContext>
   );
 }
-PopoverRoot.displayName = "Popover";
 
 export function PopoverTrigger(props: PopoverTriggerProps) {
   const { testId } = usePopoverRoot() ?? {};
 
   return <PopoverPrimitive.Trigger data-testid={testId} {...props} />;
 }
-PopoverTrigger.displayName = "Popover.Trigger";
 
 export function PopoverAnchor(props: PopoverAnchorProps) {
   return <PopoverPrimitive.Anchor {...props} />;
 }
-PopoverAnchor.displayName = "Popover.Anchor";
 
 export function PopoverPositioner(props: PopoverPositionerProps) {
   return <PopoverPrimitive.Positioner {...props} />;
 }
-PopoverPositioner.displayName = "Popover.Positioner";
 
 export function PopoverContent({
   showCloseButton = false,
@@ -119,7 +115,6 @@ export function PopoverContent({
     </Portal>
   );
 }
-PopoverContent.displayName = "Popover.Content";
 
 export function PopoverHeader({
   title,
@@ -143,19 +138,16 @@ export function PopoverHeader({
     </ark.div>
   );
 }
-PopoverHeader.displayName = "Popover.Header";
 
 export function PopoverTitle({ className, ...rest }: PopoverTitleProps) {
   return <PopoverPrimitive.Title {...rest} className={popoverTitleVariants({ className })} />;
 }
-PopoverTitle.displayName = "Popover.Title";
 
 export function PopoverDescription({ className, ...rest }: PopoverDescriptionProps) {
   return (
     <PopoverPrimitive.Description {...rest} className={popoverDescriptionVariants({ className })} />
   );
 }
-PopoverDescription.displayName = "Popover.Description";
 
 export function PopoverBody({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -169,7 +161,6 @@ export function PopoverBody({ className, ...rest }: ComponentProps<typeof ark.di
     </ScrollArea>
   );
 }
-PopoverBody.displayName = "Popover.Body";
 
 export function PopoverFooter({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -181,12 +172,10 @@ export function PopoverFooter({ className, ...rest }: ComponentProps<typeof ark.
     />
   );
 }
-PopoverFooter.displayName = "Popover.Footer";
 
 export function PopoverClose(props: PopoverCloseProps) {
   return <PopoverPrimitive.CloseTrigger {...props} />;
 }
-PopoverClose.displayName = "Popover.Close";
 
 export function PopoverArrow({ style, ...rest }: PopoverArrowProps) {
   return (
@@ -202,5 +191,17 @@ export function PopoverArrow({ style, ...rest }: PopoverArrowProps) {
     </PopoverPrimitive.Arrow>
   );
 }
+
+PopoverRoot.displayName = "Popover";
+PopoverTrigger.displayName = "Popover.Trigger";
+PopoverAnchor.displayName = "Popover.Anchor";
+PopoverPositioner.displayName = "Popover.Positioner";
+PopoverContent.displayName = "Popover.Content";
+PopoverHeader.displayName = "Popover.Header";
+PopoverTitle.displayName = "Popover.Title";
+PopoverDescription.displayName = "Popover.Description";
+PopoverBody.displayName = "Popover.Body";
+PopoverFooter.displayName = "Popover.Footer";
+PopoverClose.displayName = "Popover.Close";
 PopoverArrow.displayName = "Popover.Arrow";
 // #endregion

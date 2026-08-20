@@ -61,7 +61,6 @@ export function MenuRoot({
     />
   );
 }
-MenuRoot.displayName = "Menu";
 
 export function MenuList({ className, classNames, ...rest }: MenuListProps) {
   const slots = menuVariants();
@@ -76,7 +75,6 @@ export function MenuList({ className, classNames, ...rest }: MenuListProps) {
     />
   );
 }
-MenuList.displayName = "Menu.List";
 
 export function MenuGroup({ className, classNames, ...rest }: MenuPartProps) {
   const slots = menuVariants();
@@ -91,7 +89,6 @@ export function MenuGroup({ className, classNames, ...rest }: MenuPartProps) {
     />
   );
 }
-MenuGroup.displayName = "Menu.Group";
 
 export function MenuGroupLabel({
   className,
@@ -109,7 +106,6 @@ export function MenuGroupLabel({
     />
   );
 }
-MenuGroupLabel.displayName = "Menu.GroupLabel";
 
 export function MenuItem({
   className,
@@ -138,7 +134,6 @@ export function MenuItem({
     </ark.li>
   );
 }
-MenuItem.displayName = "Menu.Item";
 
 export function MenuLink({ active = false, className, classNames, ...rest }: MenuLinkProps) {
   const slots = menuVariants();
@@ -161,7 +156,6 @@ export function MenuLink({ active = false, className, classNames, ...rest }: Men
     </ark.li>
   );
 }
-MenuLink.displayName = "Menu.Link";
 
 export function MenuSeparator({
   className,
@@ -181,7 +175,6 @@ export function MenuSeparator({
     />
   );
 }
-MenuSeparator.displayName = "Menu.Separator";
 
 export function MenuShortcut({
   className,
@@ -199,5 +192,13 @@ export function MenuShortcut({
     />
   );
 }
+
+MenuRoot.displayName = "Menu";
+MenuList.displayName = "Menu.List";
+MenuGroup.displayName = "Menu.Group";
+MenuGroupLabel.displayName = "Menu.GroupLabel";
+MenuItem.displayName = "Menu.Item";
+MenuLink.displayName = "Menu.Link";
+MenuSeparator.displayName = "Menu.Separator";
 MenuShortcut.displayName = "Menu.Shortcut";
 // #endregion

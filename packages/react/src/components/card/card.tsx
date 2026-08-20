@@ -40,7 +40,6 @@ export function CardRoot({ className, children, testId, ...rest }: CardRootProps
     </ark.div>
   );
 }
-CardRoot.displayName = "Card";
 
 export function CardMedia({ variant = "default", className, ...rest }: CardMediaProps) {
   return (
@@ -53,7 +52,6 @@ export function CardMedia({ variant = "default", className, ...rest }: CardMedia
     />
   );
 }
-CardMedia.displayName = "Card.Media";
 
 export function CardHeader({ title, description, className, children, ...rest }: CardHeaderProps) {
   return (
@@ -71,7 +69,6 @@ export function CardHeader({ title, description, className, children, ...rest }:
     </ark.div>
   );
 }
-CardHeader.displayName = "Card.Header";
 
 export function CardTitle({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -83,7 +80,6 @@ export function CardTitle({ className, ...rest }: ComponentProps<typeof ark.div>
     />
   );
 }
-CardTitle.displayName = "Card.Title";
 
 export function CardDescription({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -95,7 +91,6 @@ export function CardDescription({ className, ...rest }: ComponentProps<typeof ar
     />
   );
 }
-CardDescription.displayName = "Card.Description";
 
 export function CardAction({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -107,7 +102,6 @@ export function CardAction({ className, ...rest }: ComponentProps<typeof ark.div
     />
   );
 }
-CardAction.displayName = "Card.Action";
 
 export function CardContent({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -119,7 +113,6 @@ export function CardContent({ className, ...rest }: ComponentProps<typeof ark.di
     />
   );
 }
-CardContent.displayName = "Card.Content";
 
 export function CardFooter({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -131,5 +124,13 @@ export function CardFooter({ className, ...rest }: ComponentProps<typeof ark.div
     />
   );
 }
+
+CardRoot.displayName = "Card";
+CardMedia.displayName = "Card.Media";
+CardHeader.displayName = "Card.Header";
+CardTitle.displayName = "Card.Title";
+CardDescription.displayName = "Card.Description";
+CardAction.displayName = "Card.Action";
+CardContent.displayName = "Card.Content";
 CardFooter.displayName = "Card.Footer";
 // #endregion

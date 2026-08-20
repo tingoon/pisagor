@@ -67,7 +67,6 @@ export function SegmentGroupRoot({
     </SegmentGroupPrimitive.Root>
   );
 }
-SegmentGroupRoot.displayName = "SegmentGroup.Root";
 
 export function SegmentGroupItem({ className, children, text, ...rest }: SegmentGroupItemProps) {
   const content = children ?? text;
@@ -81,7 +80,6 @@ export function SegmentGroupItem({ className, children, text, ...rest }: Segment
     </SegmentGroupPrimitive.Item>
   );
 }
-SegmentGroupItem.displayName = "SegmentGroup.Item";
 
 function SegmentGroupItemText({ className, ...rest }: SegmentGroupItemTextProps) {
   return (
@@ -91,7 +89,6 @@ function SegmentGroupItemText({ className, ...rest }: SegmentGroupItemTextProps)
     />
   );
 }
-SegmentGroupItemText.displayName = "SegmentGroup.ItemText";
 
 export function SegmentGroupIndicator({ className, ...rest }: SegmentGroupIndicatorProps) {
   return (
@@ -101,6 +98,10 @@ export function SegmentGroupIndicator({ className, ...rest }: SegmentGroupIndica
     />
   );
 }
+
+SegmentGroupRoot.displayName = "SegmentGroup.Root";
+SegmentGroupItem.displayName = "SegmentGroup.Item";
+SegmentGroupItemText.displayName = "SegmentGroup.ItemText";
 SegmentGroupIndicator.displayName = "SegmentGroup.Indicator";
 // #endregion
 

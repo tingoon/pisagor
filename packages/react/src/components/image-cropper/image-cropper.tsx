@@ -76,14 +76,12 @@ export function ImageCropperRoot({
     </ImageCropperPrimitive.Root>
   );
 }
-ImageCropperRoot.displayName = "ImageCropper";
 
 export function ImageCropperImage({ className, ...rest }: ImageCropperImageProps) {
   return (
     <ImageCropperPrimitive.Image {...rest} className={imageCropperImageVariants({ className })} />
   );
 }
-ImageCropperImage.displayName = "ImageCropper.Image";
 
 export function ImageCropperSelection({
   axis = "both",
@@ -112,7 +110,6 @@ export function ImageCropperSelection({
     </ImageCropperPrimitive.Selection>
   );
 }
-ImageCropperSelection.displayName = "ImageCropper.Selection";
 
 export function ImageCropperHandle({ className, ...rest }: ImageCropperHandleProps) {
   const recipe = imageCropperHandleVariants();
@@ -123,12 +120,16 @@ export function ImageCropperHandle({ className, ...rest }: ImageCropperHandlePro
     </ImageCropperPrimitive.Handle>
   );
 }
-ImageCropperHandle.displayName = "ImageCropper.Handle";
 
 export function ImageCropperGrid({ className, ...rest }: ImageCropperGridProps) {
   return (
     <ImageCropperPrimitive.Grid {...rest} className={imageCropperGridVariants({ className })} />
   );
 }
+
+ImageCropperRoot.displayName = "ImageCropper";
+ImageCropperImage.displayName = "ImageCropper.Image";
+ImageCropperSelection.displayName = "ImageCropper.Selection";
+ImageCropperHandle.displayName = "ImageCropper.Handle";
 ImageCropperGrid.displayName = "ImageCropper.Grid";
 // #endregion

@@ -126,7 +126,6 @@ export function TagsInputRoot({
     </FormControlVariantProvider>
   );
 }
-TagsInputRoot.displayName = "TagsInput";
 
 export function TagsInputControl({
   size,
@@ -152,7 +151,6 @@ export function TagsInputControl({
     </TagsInputPrimitive.Control>
   );
 }
-TagsInputControl.displayName = "TagsInput.Control";
 
 export function TagsInputItem({
   showDelete = true,
@@ -170,7 +168,6 @@ export function TagsInputItem({
     </TagsInputPrimitive.Item>
   );
 }
-TagsInputItem.displayName = "TagsInput.Item";
 
 export function TagsInputItemPreview({ className, ...rest }: TagsInputItemPreviewProps) {
   return (
@@ -180,14 +177,12 @@ export function TagsInputItemPreview({ className, ...rest }: TagsInputItemPrevie
     />
   );
 }
-TagsInputItemPreview.displayName = "TagsInput.ItemPreview";
 
 export function TagsInputItemText({ className, ...rest }: TagsInputItemTextProps) {
   return (
     <TagsInputPrimitive.ItemText {...rest} className={tagsInputItemTextVariants({ className })} />
   );
 }
-TagsInputItemText.displayName = "TagsInput.ItemText";
 
 export function TagsInputItemDeleteTrigger({
   className,
@@ -207,7 +202,6 @@ export function TagsInputItemDeleteTrigger({
     </TagsInputPrimitive.ItemDeleteTrigger>
   );
 }
-TagsInputItemDeleteTrigger.displayName = "TagsInput.ItemDeleteTrigger";
 
 export function TagsInputItemInput(props: TagsInputItemInputProps) {
   return (
@@ -216,7 +210,6 @@ export function TagsInputItemInput(props: TagsInputItemInputProps) {
     </TagsInputPrimitive.ItemInput>
   );
 }
-TagsInputItemInput.displayName = "TagsInput.ItemInput";
 
 export function TagsInputInput(props: TagsInputInputProps) {
   return (
@@ -225,7 +218,6 @@ export function TagsInputInput(props: TagsInputInputProps) {
     </TagsInputPrimitive.Input>
   );
 }
-TagsInputInput.displayName = "TagsInput.Input";
 
 export function TagsInputClearTrigger({
   className,
@@ -244,7 +236,6 @@ export function TagsInputClearTrigger({
     </TagsInputPrimitive.ClearTrigger>
   );
 }
-TagsInputClearTrigger.displayName = "TagsInput.ClearTrigger";
 
 export function TagsInputRootProvider({
   size = "md",
@@ -266,4 +257,14 @@ export function TagsInputRootProvider({
     </TagsInputPrimitive.RootProvider>
   );
 }
+
+TagsInputRoot.displayName = "TagsInput";
+TagsInputControl.displayName = "TagsInput.Control";
+TagsInputItem.displayName = "TagsInput.Item";
+TagsInputItemPreview.displayName = "TagsInput.ItemPreview";
+TagsInputItemText.displayName = "TagsInput.ItemText";
+TagsInputItemDeleteTrigger.displayName = "TagsInput.ItemDeleteTrigger";
+TagsInputItemInput.displayName = "TagsInput.ItemInput";
+TagsInputInput.displayName = "TagsInput.Input";
+TagsInputClearTrigger.displayName = "TagsInput.ClearTrigger";
 // #endregion

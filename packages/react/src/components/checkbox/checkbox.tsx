@@ -42,8 +42,6 @@ export function CheckboxGroup({ className, onValueChange, ...rest }: CheckboxGro
   );
 }
 
-CheckboxGroup.displayName = "Checkbox.Group";
-
 export function CheckboxRoot({
   variant: variantProp,
   tabIndex,
@@ -92,15 +90,17 @@ export function CheckboxRoot({
     </CheckboxPrimitive.Root>
   );
 }
-CheckboxRoot.displayName = "Checkbox";
 
 function CheckboxIndicator({ className, ...rest }: CheckboxIndicatorProps) {
   const recipe = checkbox2Variants();
 
   return <CheckboxPrimitive.Indicator {...rest} className={recipe.indicator({ className })} />;
 }
-CheckboxIndicator.displayName = "Checkbox.Indicator";
 
 // Keep export for backwards compatibility
 export const checkboxVariants = formControlToggleVariants;
+
+CheckboxGroup.displayName = "Checkbox.Group";
+CheckboxRoot.displayName = "Checkbox";
+CheckboxIndicator.displayName = "Checkbox.Indicator";
 // #endregion

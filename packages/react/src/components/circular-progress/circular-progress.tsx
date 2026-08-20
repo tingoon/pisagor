@@ -74,7 +74,6 @@ function CircularProgressRoot({ children, className, testId, ...rest }: Circular
     </CircularProgressSlotsContext>
   );
 }
-CircularProgressRoot.displayName = "CircularProgress.Root";
 
 function CircularProgressValueWrapper({
   className,
@@ -87,14 +86,12 @@ function CircularProgressValueWrapper({
 
   return <span className={slots.valueWrapper({ className })}>{children}</span>;
 }
-CircularProgressValueWrapper.displayName = "CircularProgress.ValueWrapper";
 
 function CircularProgressValue({ className, ...rest }: CircularProgressValueProps) {
   const { slots } = useCircularProgressSlots();
 
   return <ProgressPrimitive.ValueText {...rest} className={slots.value({ className })} />;
 }
-CircularProgressValue.displayName = "CircularProgress.Value";
 
 function CircularProgressTrack({
   className,
@@ -147,6 +144,10 @@ function CircularProgressTrack({
     </ark.svg>
   );
 }
+
+CircularProgressRoot.displayName = "CircularProgress.Root";
+CircularProgressValueWrapper.displayName = "CircularProgress.ValueWrapper";
+CircularProgressValue.displayName = "CircularProgress.Value";
 CircularProgressTrack.displayName = "CircularProgress.Track";
 // #endregion
 

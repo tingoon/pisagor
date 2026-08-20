@@ -69,7 +69,6 @@ function TooltipRoot({
     </TooltipContext>
   );
 }
-TooltipRoot.displayName = "Tooltip.Root";
 
 function TooltipTrigger({
   asChild = true,
@@ -83,12 +82,10 @@ function TooltipTrigger({
     </TooltipPrimitive.Trigger>
   );
 }
-TooltipTrigger.displayName = "Tooltip.Trigger";
 
 function TooltipPositioner({ children, ...rest }: TooltipPositionerProps) {
   return <TooltipPrimitive.Positioner {...rest}>{children}</TooltipPrimitive.Positioner>;
 }
-TooltipPositioner.displayName = "Tooltip.Positioner";
 
 function TooltipContent({ className, children, ...rest }: TooltipContentProps) {
   const { slots } = useTooltip();
@@ -99,7 +96,6 @@ function TooltipContent({ className, children, ...rest }: TooltipContentProps) {
     </TooltipPrimitive.Content>
   );
 }
-TooltipContent.displayName = "Tooltip.Content";
 
 function TooltipArrow({ className, children, ...rest }: TooltipArrowProps) {
   const { slots } = useTooltip();
@@ -110,6 +106,11 @@ function TooltipArrow({ className, children, ...rest }: TooltipArrowProps) {
     </TooltipPrimitive.Arrow>
   );
 }
+
+TooltipRoot.displayName = "Tooltip.Root";
+TooltipTrigger.displayName = "Tooltip.Trigger";
+TooltipPositioner.displayName = "Tooltip.Positioner";
+TooltipContent.displayName = "Tooltip.Content";
 TooltipArrow.displayName = "Tooltip.Arrow";
 // #endregion
 

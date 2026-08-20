@@ -64,7 +64,6 @@ export function TimelineRoot({
     />
   );
 }
-TimelineRoot.displayName = "Timeline.Root";
 
 export function TimelineItem({ className, ...rest }: TimelineItemProps) {
   return (
@@ -76,7 +75,6 @@ export function TimelineItem({ className, ...rest }: TimelineItemProps) {
     />
   );
 }
-TimelineItem.displayName = "Timeline.Item";
 
 export function TimelineIndicator({ className, children, ...rest }: TimelineIndicatorProps) {
   return (
@@ -90,7 +88,6 @@ export function TimelineIndicator({ className, children, ...rest }: TimelineIndi
     </ark.div>
   );
 }
-TimelineIndicator.displayName = "Timeline.Indicator";
 
 export function TimelineSeparator({ className, ...rest }: TimelineSeparatorProps) {
   return (
@@ -103,7 +100,6 @@ export function TimelineSeparator({ className, ...rest }: TimelineSeparatorProps
     />
   );
 }
-TimelineSeparator.displayName = "Timeline.Separator";
 
 export function TimelineContent({ className, ...rest }: TimelineContentProps) {
   return (
@@ -115,7 +111,6 @@ export function TimelineContent({ className, ...rest }: TimelineContentProps) {
     />
   );
 }
-TimelineContent.displayName = "Timeline.Content";
 
 export function TimelineTitle({ className, ...rest }: TimelineTitleProps) {
   return (
@@ -127,7 +122,6 @@ export function TimelineTitle({ className, ...rest }: TimelineTitleProps) {
     />
   );
 }
-TimelineTitle.displayName = "Timeline.Title";
 
 export function TimelineDescription({ className, ...rest }: TimelineDescriptionProps) {
   return (
@@ -139,6 +133,13 @@ export function TimelineDescription({ className, ...rest }: TimelineDescriptionP
     />
   );
 }
+
+TimelineRoot.displayName = "Timeline.Root";
+TimelineItem.displayName = "Timeline.Item";
+TimelineIndicator.displayName = "Timeline.Indicator";
+TimelineSeparator.displayName = "Timeline.Separator";
+TimelineContent.displayName = "Timeline.Content";
+TimelineTitle.displayName = "Timeline.Title";
 TimelineDescription.displayName = "Timeline.Description";
 // #endregion
 

@@ -64,12 +64,10 @@ export function FieldRoot({
     />
   );
 }
-FieldRoot.displayName = "Field";
 
 export function FieldSet({ className, ...rest }: FieldSetProps) {
   return <FieldsetPrimitive.Root {...rest} className={fieldSetVariants({ className })} />;
 }
-FieldSet.displayName = "Field.Set";
 
 export function FieldLegend({ variant = "legend", className, ...rest }: FieldLegendProps) {
   return (
@@ -80,7 +78,6 @@ export function FieldLegend({ variant = "legend", className, ...rest }: FieldLeg
     />
   );
 }
-FieldLegend.displayName = "Field.Legend";
 
 export function FieldGroup({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -92,7 +89,6 @@ export function FieldGroup({ className, ...rest }: ComponentProps<typeof ark.div
     />
   );
 }
-FieldGroup.displayName = "Field.Group";
 
 export function FieldContent({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -104,12 +100,10 @@ export function FieldContent({ className, ...rest }: ComponentProps<typeof ark.d
     />
   );
 }
-FieldContent.displayName = "Field.Content";
 
 export function FieldLabel({ className, ...rest }: FieldLabelProps) {
   return <FieldPrimitive.Label {...rest} className={fieldLabelVariants({ className })} />;
 }
-FieldLabel.displayName = "Field.Label";
 
 export function FieldRequiredIndicator({
   className,
@@ -126,7 +120,6 @@ export function FieldRequiredIndicator({
     </FieldPrimitive.RequiredIndicator>
   );
 }
-FieldRequiredIndicator.displayName = "Field.RequiredIndicator";
 
 export function FieldTitle({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -138,7 +131,6 @@ export function FieldTitle({ className, ...rest }: ComponentProps<typeof ark.div
     />
   );
 }
-FieldTitle.displayName = "Field.Title";
 
 export function FieldDescription({ className, ...rest }: ComponentProps<typeof ark.p>) {
   return (
@@ -150,7 +142,6 @@ export function FieldDescription({ className, ...rest }: ComponentProps<typeof a
     />
   );
 }
-FieldDescription.displayName = "Field.Description";
 
 export function FieldSeparator({ children, className, ...rest }: ComponentProps<typeof ark.div>) {
   const resolved = useFormControlVariant();
@@ -172,15 +163,25 @@ export function FieldSeparator({ children, className, ...rest }: ComponentProps<
     </ark.div>
   );
 }
-FieldSeparator.displayName = "Field.Separator";
 
 export function FieldHelper({ className, ...rest }: FieldHelperProps) {
   return <FieldPrimitive.HelperText {...rest} className={fieldHelperVariants({ className })} />;
 }
-FieldHelper.displayName = "Field.Helper";
 
 export function FieldError({ className, ...rest }: FieldErrorProps) {
   return <FieldPrimitive.ErrorText {...rest} className={fieldErrorVariants({ className })} />;
 }
+
+FieldRoot.displayName = "Field";
+FieldSet.displayName = "Field.Set";
+FieldLegend.displayName = "Field.Legend";
+FieldGroup.displayName = "Field.Group";
+FieldContent.displayName = "Field.Content";
+FieldLabel.displayName = "Field.Label";
+FieldRequiredIndicator.displayName = "Field.RequiredIndicator";
+FieldTitle.displayName = "Field.Title";
+FieldDescription.displayName = "Field.Description";
+FieldSeparator.displayName = "Field.Separator";
+FieldHelper.displayName = "Field.Helper";
 FieldError.displayName = "Field.Error";
 // #endregion

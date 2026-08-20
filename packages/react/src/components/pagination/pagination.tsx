@@ -52,7 +52,6 @@ export function PaginationRoot({ className, children, testId, ...rest }: Paginat
     </PaginationPrimitive.Root>
   );
 }
-PaginationRoot.displayName = "Pagination";
 
 export function PaginationPrevious(props: PaginationPreviousProps) {
   return (
@@ -64,7 +63,6 @@ export function PaginationPrevious(props: PaginationPreviousProps) {
     </PaginationPrimitive.PrevTrigger>
   );
 }
-PaginationPrevious.displayName = "Pagination.Previous";
 
 export function PaginationNext(props: PaginationNextProps) {
   return (
@@ -76,7 +74,6 @@ export function PaginationNext(props: PaginationNextProps) {
     </PaginationPrimitive.NextTrigger>
   );
 }
-PaginationNext.displayName = "Pagination.Next";
 
 export function PaginationItem({ className, children, ...rest }: PaginationItemProps) {
   return (
@@ -87,7 +84,6 @@ export function PaginationItem({ className, children, ...rest }: PaginationItemP
     </PaginationPrimitive.Item>
   );
 }
-PaginationItem.displayName = "Pagination.Item";
 
 export function PaginationItems(props: PaginationItemsProps) {
   return (
@@ -112,7 +108,6 @@ export function PaginationItems(props: PaginationItemsProps) {
     </PaginationPrimitive.Context>
   );
 }
-PaginationItems.displayName = "Pagination.Items";
 
 export function PaginationItemLink({ page, children, ...rest }: PaginationItemLinkProps) {
   const pagination = usePagination();
@@ -143,7 +138,6 @@ export function PaginationItemLink({ page, children, ...rest }: PaginationItemLi
     </Button>
   );
 }
-PaginationItemLink.displayName = "Pagination.ItemLink";
 
 export function PaginationEllipsis({ className, ...rest }: PaginationEllipsisProps) {
   return (
@@ -152,5 +146,12 @@ export function PaginationEllipsis({ className, ...rest }: PaginationEllipsisPro
     </PaginationPrimitive.Ellipsis>
   );
 }
+
+PaginationRoot.displayName = "Pagination";
+PaginationPrevious.displayName = "Pagination.Previous";
+PaginationNext.displayName = "Pagination.Next";
+PaginationItem.displayName = "Pagination.Item";
+PaginationItems.displayName = "Pagination.Items";
+PaginationItemLink.displayName = "Pagination.ItemLink";
 PaginationEllipsis.displayName = "Pagination.Ellipsis";
 // #endregion

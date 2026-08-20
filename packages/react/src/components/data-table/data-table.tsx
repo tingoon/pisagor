@@ -126,12 +126,10 @@ function DataTableHeader<TData>({ children }: DataTableHeaderProps) {
     </>
   );
 }
-DataTableHeader.displayName = "DataTable.Header";
 
 function DataTableHeaderRow(props: DataTableHeaderRowProps) {
   return <Table.Row data-part="header-row" data-scope="data-table" {...props} />;
 }
-DataTableHeaderRow.displayName = "DataTable.HeaderRow";
 
 function DataTableHead<TData>({ columnId, children, className, ...rest }: DataTableHeadProps) {
   const { headerGroup } = useDataTableHeaderGroupContext<TData>();
@@ -166,7 +164,6 @@ function DataTableHead<TData>({ columnId, children, className, ...rest }: DataTa
     </>
   );
 }
-DataTableHead.displayName = "DataTable.Head";
 
 /**
  * Renders a table cell using the column definition's cell renderer.
@@ -200,7 +197,6 @@ function DataTableBody<TData>({ children, empty = null }: DataTableBodyProps) {
     </>
   );
 }
-DataTableBody.displayName = "DataTable.Body";
 
 function DataTableRow<TData>({ className, ...rest }: DataTableRowProps) {
   const row = useDataTableRowContext<TData>().row;
@@ -216,7 +212,6 @@ function DataTableRow<TData>({ className, ...rest }: DataTableRowProps) {
     />
   );
 }
-DataTableRow.displayName = "DataTable.Row";
 
 function DataTableCell<TData>({ columnId, children, ...rest }: DataTableCellProps) {
   const row = useDataTableRowContext<TData>().row;
@@ -245,7 +240,6 @@ function DataTableCell<TData>({ columnId, children, ...rest }: DataTableCellProp
     </>
   );
 }
-DataTableCell.displayName = "DataTable.Cell";
 
 function DataTableEmpty({
   children = "No results. Try a different search or clear filters.",
@@ -264,7 +258,6 @@ function DataTableEmpty({
     </Table.Row>
   );
 }
-DataTableEmpty.displayName = "DataTable.Empty";
 
 function DataTableToolbar({ className, ...rest }: ComponentProps<"div">) {
   return (
@@ -276,7 +269,6 @@ function DataTableToolbar({ className, ...rest }: ComponentProps<"div">) {
     />
   );
 }
-DataTableToolbar.displayName = "DataTable.Toolbar";
 
 function DataTableFooter({ className, ...rest }: ComponentProps<"div">) {
   return (
@@ -288,7 +280,6 @@ function DataTableFooter({ className, ...rest }: ComponentProps<"div">) {
     />
   );
 }
-DataTableFooter.displayName = "DataTable.Footer";
 
 function DataTableRoot<TData>({
   children,
@@ -321,7 +312,6 @@ function DataTableRoot<TData>({
 export function DataTable<TData>(props: DataTableProps<TData>) {
   return DataTableRoot(props);
 }
-DataTable.displayName = "DataTable";
 
 DataTable.Body = DataTableBody;
 
@@ -340,4 +330,15 @@ DataTable.HeaderRow = DataTableHeaderRow;
 DataTable.Row = DataTableRow;
 
 DataTable.Toolbar = DataTableToolbar;
+
+DataTableHeader.displayName = "DataTable.Header";
+DataTableHeaderRow.displayName = "DataTable.HeaderRow";
+DataTableHead.displayName = "DataTable.Head";
+DataTableBody.displayName = "DataTable.Body";
+DataTableRow.displayName = "DataTable.Row";
+DataTableCell.displayName = "DataTable.Cell";
+DataTableEmpty.displayName = "DataTable.Empty";
+DataTableToolbar.displayName = "DataTable.Toolbar";
+DataTableFooter.displayName = "DataTable.Footer";
+DataTable.displayName = "DataTable";
 // #endregion

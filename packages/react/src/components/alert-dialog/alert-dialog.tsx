@@ -36,17 +36,14 @@ export function AlertDialogRoot({ children, ...rest }: AlertDialogRootProps) {
     </Dialog>
   );
 }
-AlertDialogRoot.displayName = "AlertDialog";
 
 export function AlertDialogTrigger(props: DialogTriggerProps) {
   return <Dialog.Trigger {...props} />;
 }
-AlertDialogTrigger.displayName = "AlertDialog.Trigger";
 
 export function AlertDialogContent(props: DialogContentProps) {
   return <Dialog.Content showCloseButton={false} {...props} />;
 }
-AlertDialogContent.displayName = "AlertDialog.Content";
 
 export function AlertDialogBody({ className, ...rest }: DialogBodyProps) {
   return (
@@ -58,37 +55,30 @@ export function AlertDialogBody({ className, ...rest }: DialogBodyProps) {
     />
   );
 }
-AlertDialogBody.displayName = "AlertDialog.Body";
 
 export function AlertDialogHeader(props: DialogHeaderProps) {
   return <Dialog.Header dataPart="header" dataScope="alert-dialog" {...props} />;
 }
-AlertDialogHeader.displayName = "AlertDialog.Header";
 
 export function AlertDialogTitle(props: DialogTitleProps) {
   return <Dialog.Title {...props} />;
 }
-AlertDialogTitle.displayName = "AlertDialog.Title";
 
 export function AlertDialogDescription(props: DialogDescriptionProps) {
   return <Dialog.Description {...props} />;
 }
-AlertDialogDescription.displayName = "AlertDialog.Description";
 
 export function AlertDialogClose(props: DialogCloseProps) {
   return <Dialog.Close {...props} />;
 }
-AlertDialogClose.displayName = "AlertDialog.Close";
 
 export function AlertDialogFooter(props: DialogFooterProps) {
   return <Dialog.Footer dataPart="footer" dataScope="alert-dialog" {...props} />;
 }
-AlertDialogFooter.displayName = "AlertDialog.Footer";
 
 export function AlertDialogAction({ variant = "default", ...rest }: AlertDialogActionProps) {
   return <Button {...rest} variant={variant} />;
 }
-AlertDialogAction.displayName = "AlertDialog.Action";
 
 export function AlertDialogCancel(props: AlertDialogCancelProps) {
   return (
@@ -97,5 +87,16 @@ export function AlertDialogCancel(props: AlertDialogCancelProps) {
     </AlertDialogClose>
   );
 }
+
+AlertDialogRoot.displayName = "AlertDialog";
+AlertDialogTrigger.displayName = "AlertDialog.Trigger";
+AlertDialogContent.displayName = "AlertDialog.Content";
+AlertDialogBody.displayName = "AlertDialog.Body";
+AlertDialogHeader.displayName = "AlertDialog.Header";
+AlertDialogTitle.displayName = "AlertDialog.Title";
+AlertDialogDescription.displayName = "AlertDialog.Description";
+AlertDialogClose.displayName = "AlertDialog.Close";
+AlertDialogFooter.displayName = "AlertDialog.Footer";
+AlertDialogAction.displayName = "AlertDialog.Action";
 AlertDialogCancel.displayName = "AlertDialog.Cancel";
 // #endregion

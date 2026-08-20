@@ -191,7 +191,6 @@ export function ColorPickerRoot({
     </ColorPickerRootContext>
   );
 }
-ColorPickerRoot.displayName = "ColorPicker";
 
 export function ColorPickerClearTrigger({
   clearable = false,
@@ -236,7 +235,6 @@ export function ColorPickerClearTrigger({
     </InputGroup.Addon>
   );
 }
-ColorPickerClearTrigger.displayName = "ColorPicker.ClearTrigger";
 
 export function ColorPickerControl({
   clearable = false,
@@ -257,12 +255,10 @@ export function ColorPickerControl({
     </ColorPickerPrimitive.Control>
   );
 }
-ColorPickerControl.displayName = "ColorPicker.Control";
 
 export function ColorPickerTrigger(props: ColorPickerTriggerProps) {
   return <ColorPickerPrimitive.Trigger {...props} />;
 }
-ColorPickerTrigger.displayName = "ColorPicker.Trigger";
 
 export function ColorPickerTransparencyGrid({
   className,
@@ -275,7 +271,6 @@ export function ColorPickerTransparencyGrid({
     />
   );
 }
-ColorPickerTransparencyGrid.displayName = "ColorPicker.TransparencyGrid";
 
 export function ColorPickerContent({ className, ...rest }: ColorPickerContentProps) {
   return (
@@ -289,12 +284,10 @@ export function ColorPickerContent({ className, ...rest }: ColorPickerContentPro
     </Portal>
   );
 }
-ColorPickerContent.displayName = "ColorPicker.Content";
 
 export function ColorPickerView({ className, ...rest }: ColorPickerViewProps) {
   return <ColorPickerPrimitive.View {...rest} className={colorPickerViewVariants({ className })} />;
 }
-ColorPickerView.displayName = "ColorPicker.View";
 
 export function ColorPickerSlider({ className, children, ...rest }: ColorPickerSliderProps) {
   const recipe = colorPickerChannelSliderVariants();
@@ -308,7 +301,6 @@ export function ColorPickerSlider({ className, children, ...rest }: ColorPickerS
     </ColorPickerPrimitive.ChannelSlider>
   );
 }
-ColorPickerSlider.displayName = "ColorPicker.Slider";
 
 export function ColorPickerEyeDropperTrigger({
   variant = "outline",
@@ -324,7 +316,6 @@ export function ColorPickerEyeDropperTrigger({
     </ColorPickerPrimitive.EyeDropperTrigger>
   );
 }
-ColorPickerEyeDropperTrigger.displayName = "ColorPicker.EyeDropperTrigger";
 
 export function ColorPickerSwatchGroup({ className, ...rest }: ColorPickerSwatchGroupProps) {
   return (
@@ -334,7 +325,6 @@ export function ColorPickerSwatchGroup({ className, ...rest }: ColorPickerSwatch
     />
   );
 }
-ColorPickerSwatchGroup.displayName = "ColorPicker.SwatchGroup";
 
 export function ColorPickerSwatchTrigger({ className, ...rest }: ColorPickerSwatchTriggerProps) {
   return (
@@ -344,14 +334,12 @@ export function ColorPickerSwatchTrigger({ className, ...rest }: ColorPickerSwat
     />
   );
 }
-ColorPickerSwatchTrigger.displayName = "ColorPicker.SwatchTrigger";
 
 export function ColorPickerSwatch({ className, ...rest }: ColorPickerSwatchProps) {
   return (
     <ColorPickerPrimitive.Swatch {...rest} className={colorPickerSwatchVariants({ className })} />
   );
 }
-ColorPickerSwatch.displayName = "ColorPicker.Swatch";
 
 export function ColorPickerSwatchIndicator({
   className,
@@ -367,14 +355,12 @@ export function ColorPickerSwatchIndicator({
     </ColorPickerPrimitive.SwatchIndicator>
   );
 }
-ColorPickerSwatchIndicator.displayName = "ColorPicker.SwatchIndicator";
 
 export function ColorPickerValue({ className, ...rest }: ColorPickerValueProps) {
   return (
     <ColorPickerPrimitive.ValueText {...rest} className={colorPickerValueVariants({ className })} />
   );
 }
-ColorPickerValue.displayName = "ColorPicker.Value";
 
 export function ColorPickerValueSwatch({ className, ...rest }: ColorPickerValueSwatchProps) {
   return (
@@ -384,7 +370,6 @@ export function ColorPickerValueSwatch({ className, ...rest }: ColorPickerValueS
     />
   );
 }
-ColorPickerValueSwatch.displayName = "ColorPicker.ValueSwatch";
 
 export function ColorPickerArea({
   className,
@@ -413,7 +398,6 @@ export function ColorPickerArea({
     </ColorPickerPrimitive.Area>
   );
 }
-ColorPickerArea.displayName = "ColorPicker.Area";
 
 export function ColorPickerAreaThumb({ className, ...rest }: ColorPickerAreaThumbProps) {
   return (
@@ -423,12 +407,10 @@ export function ColorPickerAreaThumb({ className, ...rest }: ColorPickerAreaThum
     />
   );
 }
-ColorPickerAreaThumb.displayName = "ColorPicker.AreaThumb";
 
 export function ColorPickerInput({ channel = "hex", ...rest }: ColorPickerInputProps) {
   return <ColorPickerPrimitive.ChannelInput {...rest} channel={channel} />;
 }
-ColorPickerInput.displayName = "ColorPicker.Input";
 
 export function ColorPickerSwatchPreview({ className, ...rest }: ComponentProps<typeof ark.div>) {
   const recipe = colorPickerInputSwatchVariants();
@@ -445,7 +427,6 @@ export function ColorPickerSwatchPreview({ className, ...rest }: ComponentProps<
     </ark.div>
   );
 }
-ColorPickerSwatchPreview.displayName = "ColorPicker.SwatchPreview";
 
 /**
  * Compact preset that renders a swatch trigger, hex input, and standard
@@ -487,5 +468,25 @@ export function ColorPickerField({ clearable = false, ...rest }: ColorPickerProp
     </ColorPickerRoot>
   );
 }
+
+ColorPickerRoot.displayName = "ColorPicker";
+ColorPickerClearTrigger.displayName = "ColorPicker.ClearTrigger";
+ColorPickerControl.displayName = "ColorPicker.Control";
+ColorPickerTrigger.displayName = "ColorPicker.Trigger";
+ColorPickerTransparencyGrid.displayName = "ColorPicker.TransparencyGrid";
+ColorPickerContent.displayName = "ColorPicker.Content";
+ColorPickerView.displayName = "ColorPicker.View";
+ColorPickerSlider.displayName = "ColorPicker.Slider";
+ColorPickerEyeDropperTrigger.displayName = "ColorPicker.EyeDropperTrigger";
+ColorPickerSwatchGroup.displayName = "ColorPicker.SwatchGroup";
+ColorPickerSwatchTrigger.displayName = "ColorPicker.SwatchTrigger";
+ColorPickerSwatch.displayName = "ColorPicker.Swatch";
+ColorPickerSwatchIndicator.displayName = "ColorPicker.SwatchIndicator";
+ColorPickerValue.displayName = "ColorPicker.Value";
+ColorPickerValueSwatch.displayName = "ColorPicker.ValueSwatch";
+ColorPickerArea.displayName = "ColorPicker.Area";
+ColorPickerAreaThumb.displayName = "ColorPicker.AreaThumb";
+ColorPickerInput.displayName = "ColorPicker.Input";
+ColorPickerSwatchPreview.displayName = "ColorPicker.SwatchPreview";
 ColorPickerField.displayName = "ColorPicker.Field";
 // #endregion

@@ -60,20 +60,21 @@ function AvatarRoot({
     </AvatarContext>
   );
 }
-AvatarRoot.displayName = "Avatar.Root";
 
 function AvatarImage({ className, ...rest }: AvatarImageProps) {
   const { slots } = useAvatar();
 
   return <AvatarPrimitive.Image {...rest} className={slots.image({ className })} />;
 }
-AvatarImage.displayName = "Avatar.Image";
 
 function AvatarFallback({ className, ...rest }: AvatarFallbackProps) {
   const { slots } = useAvatar();
 
   return <AvatarPrimitive.Fallback {...rest} className={slots.fallback({ className })} />;
 }
+
+AvatarRoot.displayName = "Avatar.Root";
+AvatarImage.displayName = "Avatar.Image";
 AvatarFallback.displayName = "Avatar.Fallback";
 // #endregion
 

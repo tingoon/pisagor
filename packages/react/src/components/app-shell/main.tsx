@@ -31,7 +31,6 @@ export function AppShellMain({ className, style, ...rest }: ComponentProps<"div"
     />
   );
 }
-AppShellMain.displayName = "AppShell.Main";
 
 export function AppShellHeader({ className, position = "fixed", ...rest }: AppShellHeaderProps) {
   return (
@@ -48,7 +47,6 @@ export function AppShellHeader({ className, position = "fixed", ...rest }: AppSh
     />
   );
 }
-AppShellHeader.displayName = "AppShell.Header";
 
 export function AppShellContent({ className, ...rest }: ComponentProps<"main">) {
   return (
@@ -60,4 +58,7 @@ export function AppShellContent({ className, ...rest }: ComponentProps<"main">) 
     />
   );
 }
+
+AppShellMain.displayName = "AppShell.Main";
+AppShellHeader.displayName = "AppShell.Header";
 AppShellContent.displayName = "AppShell.Content";

@@ -52,7 +52,6 @@ export function BreadcrumbRoot({
     </ark.nav>
   );
 }
-BreadcrumbRoot.displayName = "Breadcrumb.Root";
 
 export function BreadcrumbList({ className, ...rest }: ComponentProps<typeof ark.ol>) {
   return (
@@ -65,7 +64,6 @@ export function BreadcrumbList({ className, ...rest }: ComponentProps<typeof ark
     />
   );
 }
-BreadcrumbList.displayName = "Breadcrumb.List";
 
 export function BreadcrumbItem({ className, ...rest }: ComponentProps<typeof ark.li>) {
   return (
@@ -77,7 +75,6 @@ export function BreadcrumbItem({ className, ...rest }: ComponentProps<typeof ark
     />
   );
 }
-BreadcrumbItem.displayName = "Breadcrumb.Item";
 
 export function BreadcrumbLink({ className, ...rest }: ComponentProps<typeof ark.a>) {
   return (
@@ -89,7 +86,6 @@ export function BreadcrumbLink({ className, ...rest }: ComponentProps<typeof ark
     />
   );
 }
-BreadcrumbLink.displayName = "Breadcrumb.Link";
 
 export function BreadcrumbPage({ className, ...rest }: ComponentProps<typeof ark.span>) {
   return (
@@ -102,7 +98,6 @@ export function BreadcrumbPage({ className, ...rest }: ComponentProps<typeof ark
     />
   );
 }
-BreadcrumbPage.displayName = "Breadcrumb.Page";
 
 export function BreadcrumbSeparator({
   children,
@@ -122,7 +117,6 @@ export function BreadcrumbSeparator({
     </ark.li>
   );
 }
-BreadcrumbSeparator.displayName = "Breadcrumb.Separator";
 
 export function BreadcrumbEllipsis(props: ComponentProps<typeof ark.span>) {
   return (
@@ -137,6 +131,13 @@ export function BreadcrumbEllipsis(props: ComponentProps<typeof ark.span>) {
     </ark.span>
   );
 }
+
+BreadcrumbRoot.displayName = "Breadcrumb.Root";
+BreadcrumbList.displayName = "Breadcrumb.List";
+BreadcrumbItem.displayName = "Breadcrumb.Item";
+BreadcrumbLink.displayName = "Breadcrumb.Link";
+BreadcrumbPage.displayName = "Breadcrumb.Page";
+BreadcrumbSeparator.displayName = "Breadcrumb.Separator";
 BreadcrumbEllipsis.displayName = "Breadcrumb.Ellipsis";
 // #endregion
 

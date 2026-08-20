@@ -97,7 +97,6 @@ export function DatePickerRoot({
     </DatePickerRootContext>
   );
 }
-DatePickerRoot.displayName = "DatePicker";
 
 export function DatePickerTrigger({
   className,
@@ -116,7 +115,6 @@ export function DatePickerTrigger({
     </DatePickerPrimitive.Control>
   );
 }
-DatePickerTrigger.displayName = "DatePicker.Trigger";
 
 export function DatePickerInput({
   size,
@@ -153,7 +151,6 @@ export function DatePickerInput({
     </DatePickerPrimitive.Control>
   );
 }
-DatePickerInput.displayName = "DatePicker.Input";
 
 export function DatePickerClearTrigger() {
   const api = useDatePicker();
@@ -170,7 +167,6 @@ export function DatePickerClearTrigger() {
     </DatePickerPrimitive.ClearTrigger>
   );
 }
-DatePickerClearTrigger.displayName = "DatePicker.ClearTrigger";
 
 export function DatePickerTimer({
   id,
@@ -222,7 +218,6 @@ export function DatePickerTimer({
     </InputGroup>
   );
 }
-DatePickerTimer.displayName = "DatePicker.Timer";
 
 export function DatePickerContent({
   className,
@@ -255,17 +250,23 @@ export function DatePickerContent({
     </Portal>
   );
 }
-DatePickerContent.displayName = "DatePicker.Content";
 
 export function DatePickerValue({ className, ...rest }: DatePickerValueProps) {
   return (
     <DatePickerPrimitive.ValueText {...rest} className={datePickerValueVariants({ className })} />
   );
 }
-DatePickerValue.displayName = "DatePicker.Value";
 
 export function DatePickerPresetTrigger(props: DatePickerPresetTriggerProps) {
   return <Calendar.PresetTrigger {...props} />;
 }
+
+DatePickerRoot.displayName = "DatePicker";
+DatePickerTrigger.displayName = "DatePicker.Trigger";
+DatePickerInput.displayName = "DatePicker.Input";
+DatePickerClearTrigger.displayName = "DatePicker.ClearTrigger";
+DatePickerTimer.displayName = "DatePicker.Timer";
+DatePickerContent.displayName = "DatePicker.Content";
+DatePickerValue.displayName = "DatePicker.Value";
 DatePickerPresetTrigger.displayName = "DatePicker.PresetTrigger";
 // #endregion

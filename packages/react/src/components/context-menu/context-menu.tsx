@@ -24,7 +24,6 @@ export type ContextMenuTriggerProps = ComponentProps<typeof MenuPrimitive.Contex
 export function ContextMenuRoot({ testId, ...rest }: ContextMenuRootProps) {
   return <DropdownMenu {...rest} testId={testId} />;
 }
-ContextMenuRoot.displayName = "ContextMenu";
 
 export function ContextMenuTrigger({ className, ...rest }: ContextMenuTriggerProps) {
   const { testId } = useDropdownMenuRoot() ?? {};
@@ -37,45 +36,47 @@ export function ContextMenuTrigger({ className, ...rest }: ContextMenuTriggerPro
     />
   );
 }
-ContextMenuTrigger.displayName = "ContextMenu.Trigger";
 
 export function ContextMenuContent(props: DropdownMenuContentProps) {
   return <DropdownMenu.Content {...props} />;
 }
-ContextMenuContent.displayName = "ContextMenu.Content";
 
 export function ContextMenuGroup(props: DropdownMenuGroupProps) {
   return <DropdownMenu.Group {...props} />;
 }
-ContextMenuGroup.displayName = "ContextMenu.Group";
 
 export function ContextMenuSeparator(props: DropdownMenuSeparatorProps) {
   return <DropdownMenu.Separator {...props} />;
 }
-ContextMenuSeparator.displayName = "ContextMenu.Separator";
 
 export function ContextMenuItem(props: DropdownMenuItemProps) {
   return <DropdownMenu.Item {...props} />;
 }
-ContextMenuItem.displayName = "ContextMenu.Item";
 
 export function ContextMenuSub(props: DropdownMenuRootProps) {
   return <DropdownMenu.Sub {...props} />;
 }
-ContextMenuSub.displayName = "ContextMenu.Sub";
 
 export function ContextMenuSubContent(props: DropdownMenuContentProps) {
   return <DropdownMenu.SubContent {...props} />;
 }
-ContextMenuSubContent.displayName = "ContextMenu.SubContent";
 
 export function ContextMenuSubTrigger(props: DropdownMenuSubTriggerProps) {
   return <DropdownMenu.SubTrigger {...props} />;
 }
-ContextMenuSubTrigger.displayName = "ContextMenu.SubTrigger";
 
 export function ContextMenuShortcut(props: DropdownMenuShortcutProps) {
   return <DropdownMenu.Shortcut dataPart="shortcut" dataScope="context-menu" {...props} />;
 }
+
+ContextMenuRoot.displayName = "ContextMenu";
+ContextMenuTrigger.displayName = "ContextMenu.Trigger";
+ContextMenuContent.displayName = "ContextMenu.Content";
+ContextMenuGroup.displayName = "ContextMenu.Group";
+ContextMenuSeparator.displayName = "ContextMenu.Separator";
+ContextMenuItem.displayName = "ContextMenu.Item";
+ContextMenuSub.displayName = "ContextMenu.Sub";
+ContextMenuSubContent.displayName = "ContextMenu.SubContent";
+ContextMenuSubTrigger.displayName = "ContextMenu.SubTrigger";
 ContextMenuShortcut.displayName = "ContextMenu.Shortcut";
 // #endregion

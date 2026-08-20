@@ -95,7 +95,6 @@ function RatingRoot({
     </FormControlVariantProvider>
   );
 }
-RatingRoot.displayName = "Rating.Root";
 
 function RatingControl({ className, children, ...rest }: RatingControlProps) {
   const { slots } = useRating();
@@ -106,14 +105,12 @@ function RatingControl({ className, children, ...rest }: RatingControlProps) {
     </RatingGroupPrimitive.Control>
   );
 }
-RatingControl.displayName = "Rating.Control";
 
 function RatingItem({ className, ...rest }: RatingItemProps) {
   const { slots } = useRating();
 
   return <RatingGroupPrimitive.Item {...rest} className={slots.item({ className })} />;
 }
-RatingItem.displayName = "Rating.Item";
 
 function RatingIndicator({ className, children, ...rest }: RatingIndicatorProps) {
   const { slots } = useRating();
@@ -129,6 +126,10 @@ function RatingIndicator({ className, children, ...rest }: RatingIndicatorProps)
     </span>
   );
 }
+
+RatingRoot.displayName = "Rating.Root";
+RatingControl.displayName = "Rating.Control";
+RatingItem.displayName = "Rating.Item";
 RatingIndicator.displayName = "Rating.Indicator";
 // #endregion
 

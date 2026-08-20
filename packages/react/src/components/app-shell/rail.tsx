@@ -102,7 +102,6 @@ export function AppShellRail({
     </AppShellRailContext>
   );
 }
-AppShellRail.displayName = "AppShell.Rail";
 
 export function AppShellRailItem({
   isActive,
@@ -163,4 +162,6 @@ export function AppShellRailItem({
     </Tooltip>
   );
 }
+
+AppShellRail.displayName = "AppShell.Rail";
 AppShellRailItem.displayName = "AppShell.RailItem";

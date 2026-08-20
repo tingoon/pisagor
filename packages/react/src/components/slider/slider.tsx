@@ -106,7 +106,6 @@ function SliderRoot({
     </SliderContext>
   );
 }
-SliderRoot.displayName = "Slider.Root";
 
 function SliderHeader({ className, children, ...rest }: ComponentProps<"div">) {
   const { slots } = useSlider();
@@ -117,14 +116,12 @@ function SliderHeader({ className, children, ...rest }: ComponentProps<"div">) {
     </div>
   );
 }
-SliderHeader.displayName = "Slider.Header";
 
 function SliderValue({ className, ...rest }: SliderValueProps) {
   const { slots } = useSlider();
 
   return <SliderPrimitive.ValueText {...rest} className={slots.value({ className })} />;
 }
-SliderValue.displayName = "Slider.Value";
 
 function SliderControl({ className, children, ...rest }: SliderControlProps) {
   const { slots } = useSlider();
@@ -135,7 +132,6 @@ function SliderControl({ className, children, ...rest }: SliderControlProps) {
     </SliderPrimitive.Control>
   );
 }
-SliderControl.displayName = "Slider.Control";
 
 function SliderTrack({ className, children, ...rest }: SliderTrackProps) {
   const { slots, trackVariantClass } = useSlider();
@@ -149,14 +145,12 @@ function SliderTrack({ className, children, ...rest }: SliderTrackProps) {
     </SliderPrimitive.Track>
   );
 }
-SliderTrack.displayName = "Slider.Track";
 
 function SliderRange({ className, ...rest }: SliderRangeProps) {
   const { slots } = useSlider();
 
   return <SliderPrimitive.Range {...rest} className={slots.range({ className })} />;
 }
-SliderRange.displayName = "Slider.Range";
 
 function SliderThumb({ className, ...rest }: SliderThumbProps) {
   const { slots, thumbShadowClass } = useSlider();
@@ -168,7 +162,6 @@ function SliderThumb({ className, ...rest }: SliderThumbProps) {
     />
   );
 }
-SliderThumb.displayName = "Slider.Thumb";
 
 function SliderMarkerGroup({
   className,
@@ -183,7 +176,6 @@ function SliderMarkerGroup({
     </SliderPrimitive.MarkerGroup>
   );
 }
-SliderMarkerGroup.displayName = "Slider.MarkerGroup";
 
 function SliderMarker({
   className,
@@ -198,14 +190,12 @@ function SliderMarker({
     </SliderPrimitive.Marker>
   );
 }
-SliderMarker.displayName = "Slider.Marker";
 
 function SliderMarkerTick({ className, ...rest }: ComponentProps<"span">) {
   const { slots } = useSlider();
 
   return <span {...rest} className={slots.markerTick({ className })} />;
 }
-SliderMarkerTick.displayName = "Slider.MarkerTick";
 
 function SliderMarkerLabel({ className, children, ...rest }: ComponentProps<"span">) {
   const { slots } = useSlider();
@@ -216,6 +206,17 @@ function SliderMarkerLabel({ className, children, ...rest }: ComponentProps<"spa
     </span>
   );
 }
+
+SliderRoot.displayName = "Slider.Root";
+SliderHeader.displayName = "Slider.Header";
+SliderValue.displayName = "Slider.Value";
+SliderControl.displayName = "Slider.Control";
+SliderTrack.displayName = "Slider.Track";
+SliderRange.displayName = "Slider.Range";
+SliderThumb.displayName = "Slider.Thumb";
+SliderMarkerGroup.displayName = "Slider.MarkerGroup";
+SliderMarker.displayName = "Slider.Marker";
+SliderMarkerTick.displayName = "Slider.MarkerTick";
 SliderMarkerLabel.displayName = "Slider.MarkerLabel";
 // #endregion
 

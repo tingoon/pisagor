@@ -64,7 +64,6 @@ function SwitchRoot({
     </SwitchContext>
   );
 }
-SwitchRoot.displayName = "Switch.Root";
 
 function SwitchControl({ className, children, ...rest }: SwitchControlProps) {
   const { slots } = useSwitch();
@@ -75,18 +74,20 @@ function SwitchControl({ className, children, ...rest }: SwitchControlProps) {
     </SwitchPrimitive.Control>
   );
 }
-SwitchControl.displayName = "Switch.Control";
 
 function SwitchThumb({ className, ...rest }: SwitchThumbProps) {
   const { slots } = useSwitch();
 
   return <SwitchPrimitive.Thumb {...rest} className={slots.thumb({ className })} />;
 }
-SwitchThumb.displayName = "Switch.Thumb";
 
 function SwitchHiddenInput(props: SwitchHiddenInputProps) {
   return <SwitchPrimitive.HiddenInput {...props} />;
 }
+
+SwitchRoot.displayName = "Switch.Root";
+SwitchControl.displayName = "Switch.Control";
+SwitchThumb.displayName = "Switch.Thumb";
 SwitchHiddenInput.displayName = "Switch.HiddenInput";
 // #endregion
 

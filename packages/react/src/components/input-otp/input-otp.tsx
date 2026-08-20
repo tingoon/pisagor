@@ -57,7 +57,6 @@ export function InputOTPRoot({
     </FormControlVariantProvider>
   );
 }
-InputOTPRoot.displayName = "InputOTP";
 
 export function InputOTPSlot({ className, variant, ...rest }: InputOTPSlotProps) {
   return (
@@ -66,7 +65,6 @@ export function InputOTPSlot({ className, variant, ...rest }: InputOTPSlotProps)
     </PinInputPrimitive.Input>
   );
 }
-InputOTPSlot.displayName = "InputOTP.Slot";
 
 export function InputOTPSeparator({ className, ...rest }: ComponentProps<typeof ark.hr>) {
   return (
@@ -78,5 +76,8 @@ export function InputOTPSeparator({ className, ...rest }: ComponentProps<typeof 
     />
   );
 }
+
+InputOTPRoot.displayName = "InputOTP";
+InputOTPSlot.displayName = "InputOTP.Slot";
 InputOTPSeparator.displayName = "InputOTP.Separator";
 // #endregion

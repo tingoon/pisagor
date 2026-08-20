@@ -117,7 +117,6 @@ export function TourRoot({
     </TourContext>
   );
 }
-TourRoot.displayName = "Tour";
 
 export function TourTrigger({ onClick, ...rest }: TourTriggerProps) {
   const { handleStart } = useTourContext();
@@ -137,12 +136,10 @@ export function TourTrigger({ onClick, ...rest }: TourTriggerProps) {
     />
   );
 }
-TourTrigger.displayName = "Tour.Trigger";
 
 export function TourActionTrigger(props: TourActionTriggerProps) {
   return <TourPrimitive.ActionTrigger {...props} />;
 }
-TourActionTrigger.displayName = "Tour.ActionTrigger";
 
 export function TourOverlay({ className, ...rest }: DialogOverlayProps) {
   return (
@@ -152,12 +149,10 @@ export function TourOverlay({ className, ...rest }: DialogOverlayProps) {
     />
   );
 }
-TourOverlay.displayName = "Tour.Overlay";
 
 export function TourPositioner(props: TourPositionerProps) {
   return <TourPrimitive.Positioner className={tourPositionerVariants()} {...props} />;
 }
-TourPositioner.displayName = "Tour.Positioner";
 
 export function TourContent({
   showCloseButton = true,
@@ -208,22 +203,18 @@ export function TourContent({
     </Portal>
   );
 }
-TourContent.displayName = "Tour.Content";
 
 export function TourBody(props: DialogBodyProps) {
   return <Dialog.Body dataPart="body" dataScope="tour" {...props} />;
 }
-TourBody.displayName = "Tour.Body";
 
 export function TourSpotlight(props: TourSpotlightProps) {
   return <TourPrimitive.Spotlight className={tourSpotlightVariants()} {...props} />;
 }
-TourSpotlight.displayName = "Tour.Spotlight";
 
 export function TourHeader(props: DialogHeaderProps) {
   return <Dialog.Header dataPart="header" dataScope="tour" {...props} />;
 }
-TourHeader.displayName = "Tour.Header";
 
 export function TourTitle({ className, ...rest }: TourTitleProps) {
   const { tour } = useTourContext();
@@ -234,7 +225,6 @@ export function TourTitle({ className, ...rest }: TourTitleProps) {
     </TourPrimitive.Title>
   );
 }
-TourTitle.displayName = "Tour.Title";
 
 export function TourDescription({ className, ...rest }: TourDescriptionProps) {
   const { tour } = useTourContext();
@@ -245,7 +235,6 @@ export function TourDescription({ className, ...rest }: TourDescriptionProps) {
     </TourPrimitive.Description>
   );
 }
-TourDescription.displayName = "Tour.Description";
 
 export function TourProgressText({ className, ...rest }: TourProgressTextProps) {
   const { tour } = useTourContext();
@@ -256,12 +245,10 @@ export function TourProgressText({ className, ...rest }: TourProgressTextProps) 
     </TourPrimitive.ProgressText>
   );
 }
-TourProgressText.displayName = "Tour.ProgressText";
 
 export function TourClose(props: TourCloseProps) {
   return <TourPrimitive.CloseTrigger {...props} />;
 }
-TourClose.displayName = "Tour.Close";
 
 export function TourFooter({ children, ...rest }: DialogFooterProps) {
   return (
@@ -272,7 +259,6 @@ export function TourFooter({ children, ...rest }: DialogFooterProps) {
     </TourPrimitive.Control>
   );
 }
-TourFooter.displayName = "Tour.Footer";
 
 export function TourActions({ className, ...rest }: DialogFooterProps) {
   const { tour } = useTourContext();
@@ -308,7 +294,6 @@ export function TourActions({ className, ...rest }: DialogFooterProps) {
     </TourPrimitive.Control>
   );
 }
-TourActions.displayName = "Tour.Actions";
 
 export function TourPreviousStep({ ...rest }: Omit<TourActionTriggerProps, "action">) {
   const { tour } = useTourContext();
@@ -331,7 +316,6 @@ export function TourPreviousStep({ ...rest }: Omit<TourActionTriggerProps, "acti
     </TourActionTrigger>
   );
 }
-TourPreviousStep.displayName = "Tour.PreviousStep";
 
 export function TourNextStep({ ...rest }: Omit<TourActionTriggerProps, "action">) {
   const { tour } = useTourContext();
@@ -357,5 +341,22 @@ export function TourNextStep({ ...rest }: Omit<TourActionTriggerProps, "action">
     </TourActionTrigger>
   );
 }
+
+TourRoot.displayName = "Tour";
+TourTrigger.displayName = "Tour.Trigger";
+TourActionTrigger.displayName = "Tour.ActionTrigger";
+TourOverlay.displayName = "Tour.Overlay";
+TourPositioner.displayName = "Tour.Positioner";
+TourContent.displayName = "Tour.Content";
+TourBody.displayName = "Tour.Body";
+TourSpotlight.displayName = "Tour.Spotlight";
+TourHeader.displayName = "Tour.Header";
+TourTitle.displayName = "Tour.Title";
+TourDescription.displayName = "Tour.Description";
+TourProgressText.displayName = "Tour.ProgressText";
+TourClose.displayName = "Tour.Close";
+TourFooter.displayName = "Tour.Footer";
+TourActions.displayName = "Tour.Actions";
+TourPreviousStep.displayName = "Tour.PreviousStep";
 TourNextStep.displayName = "Tour.NextStep";
 // #endregion

@@ -60,7 +60,6 @@ export function TableRoot({
     </div>
   );
 }
-TableRoot.displayName = "Table";
 
 export function TableHeader({ className, ...rest }: TableHeaderProps) {
   return (
@@ -72,7 +71,6 @@ export function TableHeader({ className, ...rest }: TableHeaderProps) {
     />
   );
 }
-TableHeader.displayName = "Table.Header";
 
 export function TableBody({ className, ...rest }: TableBodyProps) {
   return (
@@ -84,7 +82,6 @@ export function TableBody({ className, ...rest }: TableBodyProps) {
     />
   );
 }
-TableBody.displayName = "Table.Body";
 
 export function TableFooter({ className, ...rest }: TableFooterProps) {
   return (
@@ -96,7 +93,6 @@ export function TableFooter({ className, ...rest }: TableFooterProps) {
     />
   );
 }
-TableFooter.displayName = "Table.Footer";
 
 export function TableRow({ className, ...rest }: TableRowProps) {
   return (
@@ -108,7 +104,6 @@ export function TableRow({ className, ...rest }: TableRowProps) {
     />
   );
 }
-TableRow.displayName = "Table.Row";
 
 export function TableHead({ className, ...rest }: TableHeadProps) {
   return (
@@ -120,7 +115,6 @@ export function TableHead({ className, ...rest }: TableHeadProps) {
     />
   );
 }
-TableHead.displayName = "Table.Head";
 
 export function TableCell({ className, ...rest }: TableCellProps) {
   return (
@@ -132,7 +126,6 @@ export function TableCell({ className, ...rest }: TableCellProps) {
     />
   );
 }
-TableCell.displayName = "Table.Cell";
 
 export function TableCaption({ className, ...rest }: TableCaptionProps) {
   return (
@@ -144,5 +137,13 @@ export function TableCaption({ className, ...rest }: TableCaptionProps) {
     />
   );
 }
+
+TableRoot.displayName = "Table";
+TableHeader.displayName = "Table.Header";
+TableBody.displayName = "Table.Body";
+TableFooter.displayName = "Table.Footer";
+TableRow.displayName = "Table.Row";
+TableHead.displayName = "Table.Head";
+TableCell.displayName = "Table.Cell";
 TableCaption.displayName = "Table.Caption";
 // #endregion

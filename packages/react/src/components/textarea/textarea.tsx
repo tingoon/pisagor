@@ -50,7 +50,6 @@ function TextareaProvider({ children }: { children: ReactNode }) {
 
   return <TextareaContext value={{ slots }}>{children}</TextareaContext>;
 }
-TextareaProvider.displayName = "Textarea.Provider";
 
 function TextareaField({
   className,
@@ -76,7 +75,6 @@ function TextareaField({
     />
   );
 }
-TextareaField.displayName = "Textarea.Field";
 
 function TextareaGroup({
   children,
@@ -95,7 +93,6 @@ function TextareaGroup({
     </InputGroupRoot>
   );
 }
-TextareaGroup.displayName = "Textarea.Group";
 
 function TextareaClearableField({
   canClear,
@@ -116,6 +113,10 @@ function TextareaClearableField({
     />
   );
 }
+
+TextareaProvider.displayName = "Textarea.Provider";
+TextareaField.displayName = "Textarea.Field";
+TextareaGroup.displayName = "Textarea.Group";
 TextareaClearableField.displayName = "Textarea.ClearableField";
 // #endregion
 

@@ -44,22 +44,18 @@ export function StepsRoot({ className, testId, ...rest }: StepsRootProps) {
     <StepsPrimitive.Root {...rest} className={stepsVariants({ className })} data-testid={testId} />
   );
 }
-StepsRoot.displayName = "Steps";
 
 export function StepsList({ className, ...rest }: StepsListProps) {
   return <StepsPrimitive.List {...rest} className={stepsListVariants({ className })} />;
 }
-StepsList.displayName = "Steps.List";
 
 export function StepsItem({ className, ...rest }: StepsItemProps) {
   return <StepsPrimitive.Item {...rest} className={stepsItemVariants({ className })} />;
 }
-StepsItem.displayName = "Steps.Item";
 
 export function StepsTrigger({ className, ...rest }: StepsTriggerProps) {
   return <StepsPrimitive.Trigger {...rest} className={stepsTriggerVariants({ className })} />;
 }
-StepsTrigger.displayName = "Steps.Trigger";
 
 export function StepsIndicator({ className, children, ...rest }: StepsIndicatorProps) {
   const recipe = stepsIndicatorVariants();
@@ -71,12 +67,10 @@ export function StepsIndicator({ className, children, ...rest }: StepsIndicatorP
     </StepsPrimitive.Indicator>
   );
 }
-StepsIndicator.displayName = "Steps.Indicator";
 
 export function StepsSeparator({ className, ...rest }: StepsSeparatorProps) {
   return <StepsPrimitive.Separator {...rest} className={stepsSeparatorVariants({ className })} />;
 }
-StepsSeparator.displayName = "Steps.Separator";
 
 export function StepsTitle({ className, ...rest }: ComponentProps<typeof ark.span>) {
   return (
@@ -88,7 +82,6 @@ export function StepsTitle({ className, ...rest }: ComponentProps<typeof ark.spa
     />
   );
 }
-StepsTitle.displayName = "Steps.Title";
 
 export function StepsDescription({ className, ...rest }: ComponentProps<typeof ark.span>) {
   return (
@@ -100,12 +93,10 @@ export function StepsDescription({ className, ...rest }: ComponentProps<typeof a
     />
   );
 }
-StepsDescription.displayName = "Steps.Description";
 
 export function StepsContent({ className, ...rest }: StepsContentProps) {
   return <StepsPrimitive.Content {...rest} className={stepsContentVariants({ className })} />;
 }
-StepsContent.displayName = "Steps.Content";
 
 export function StepsCompletedContent({ className, ...rest }: StepsCompletedContentProps) {
   return (
@@ -115,15 +106,25 @@ export function StepsCompletedContent({ className, ...rest }: StepsCompletedCont
     />
   );
 }
-StepsCompletedContent.displayName = "Steps.CompletedContent";
 
 export function StepsPrevious(props: StepsPreviousProps) {
   return <StepsPrimitive.PrevTrigger {...props} />;
 }
-StepsPrevious.displayName = "Steps.Previous";
 
 export function StepsNext(props: StepsNextProps) {
   return <StepsPrimitive.NextTrigger {...props} />;
 }
+
+StepsRoot.displayName = "Steps";
+StepsList.displayName = "Steps.List";
+StepsItem.displayName = "Steps.Item";
+StepsTrigger.displayName = "Steps.Trigger";
+StepsIndicator.displayName = "Steps.Indicator";
+StepsSeparator.displayName = "Steps.Separator";
+StepsTitle.displayName = "Steps.Title";
+StepsDescription.displayName = "Steps.Description";
+StepsContent.displayName = "Steps.Content";
+StepsCompletedContent.displayName = "Steps.CompletedContent";
+StepsPrevious.displayName = "Steps.Previous";
 StepsNext.displayName = "Steps.Next";
 // #endregion

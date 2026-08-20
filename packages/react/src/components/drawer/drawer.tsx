@@ -77,17 +77,14 @@ export function DrawerRoot({
     </DrawerContext>
   );
 }
-DrawerRoot.displayName = "Drawer";
 
 export function DrawerTrigger(props: DrawerTriggerProps) {
   return <DrawerPrimitive.Trigger {...props} />;
 }
-DrawerTrigger.displayName = "Drawer.Trigger";
 
 export function DrawerOverlay({ className, ...rest }: DrawerOverlayProps) {
   return <DrawerPrimitive.Backdrop {...rest} className={drawerOverlayVariants({ className })} />;
 }
-DrawerOverlay.displayName = "Drawer.Overlay";
 
 export function DrawerPositioner({
   variant = "default",
@@ -101,7 +98,6 @@ export function DrawerPositioner({
     />
   );
 }
-DrawerPositioner.displayName = "Drawer.Positioner";
 
 const SWIPE_DIRECTION_TO_PLACEMENT = {
   down: "down",
@@ -143,7 +139,6 @@ export function DrawerContent({
     </Portal>
   );
 }
-DrawerContent.displayName = "Drawer.Content";
 
 export function DrawerContentInner({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -155,7 +150,6 @@ export function DrawerContentInner({ className, ...rest }: ComponentProps<typeof
     />
   );
 }
-DrawerContentInner.displayName = "Drawer.ContentInner";
 
 export function DrawerGrabber({ className, ...rest }: DrawerGrabberProps) {
   const recipe = drawerGrabberVariants();
@@ -168,7 +162,6 @@ export function DrawerGrabber({ className, ...rest }: DrawerGrabberProps) {
     </ark.div>
   );
 }
-DrawerGrabber.displayName = "Drawer.Grabber";
 
 export function DrawerHeader({
   className,
@@ -192,12 +185,10 @@ export function DrawerHeader({
     </ark.div>
   );
 }
-DrawerHeader.displayName = "Drawer.Header";
 
 export function DrawerTitle({ className, ...rest }: DrawerTitleProps) {
   return <DrawerPrimitive.Title {...rest} className={drawerTitleVariants({ className })} />;
 }
-DrawerTitle.displayName = "Drawer.Title";
 
 export function DrawerDescription({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -209,7 +200,6 @@ export function DrawerDescription({ className, ...rest }: ComponentProps<typeof 
     />
   );
 }
-DrawerDescription.displayName = "Drawer.Description";
 
 export function DrawerBody({ scrollFade = false, className, ...rest }: DrawerBodyProps) {
   return (
@@ -223,12 +213,10 @@ export function DrawerBody({ scrollFade = false, className, ...rest }: DrawerBod
     </ScrollArea>
   );
 }
-DrawerBody.displayName = "Drawer.Body";
 
 export function DrawerClose(props: DrawerCloseProps) {
   return <DrawerPrimitive.CloseTrigger {...props} />;
 }
-DrawerClose.displayName = "Drawer.Close";
 
 export function DrawerFooter({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -240,5 +228,18 @@ export function DrawerFooter({ className, ...rest }: ComponentProps<typeof ark.d
     />
   );
 }
+
+DrawerRoot.displayName = "Drawer";
+DrawerTrigger.displayName = "Drawer.Trigger";
+DrawerOverlay.displayName = "Drawer.Overlay";
+DrawerPositioner.displayName = "Drawer.Positioner";
+DrawerContent.displayName = "Drawer.Content";
+DrawerContentInner.displayName = "Drawer.ContentInner";
+DrawerGrabber.displayName = "Drawer.Grabber";
+DrawerHeader.displayName = "Drawer.Header";
+DrawerTitle.displayName = "Drawer.Title";
+DrawerDescription.displayName = "Drawer.Description";
+DrawerBody.displayName = "Drawer.Body";
+DrawerClose.displayName = "Drawer.Close";
 DrawerFooter.displayName = "Drawer.Footer";
 // #endregion

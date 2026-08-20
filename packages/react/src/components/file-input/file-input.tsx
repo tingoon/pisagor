@@ -102,7 +102,6 @@ function FileInputRoot({
     </FileInputContext>
   );
 }
-FileInputRoot.displayName = "FileInput.Root";
 
 function FileInputControl({ className, ...rest }: ComponentProps<"input">) {
   const { slots } = useFileInput();
@@ -117,7 +116,6 @@ function FileInputControl({ className, ...rest }: ComponentProps<"input">) {
     />
   );
 }
-FileInputControl.displayName = "FileInput.Control";
 
 function FileInputLabel({ children, className, ...rest }: ComponentProps<typeof InputGroupText>) {
   const { slots } = useFileInput();
@@ -128,6 +126,9 @@ function FileInputLabel({ children, className, ...rest }: ComponentProps<typeof 
     </InputGroupText>
   );
 }
+
+FileInputRoot.displayName = "FileInput.Root";
+FileInputControl.displayName = "FileInput.Control";
 FileInputLabel.displayName = "FileInput.Label";
 // #endregion
 

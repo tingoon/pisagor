@@ -313,7 +313,6 @@ export function SortableRoot({
     </SortableContext>
   );
 }
-SortableRoot.displayName = "Sortable";
 
 export function SortableItem({ value, className, children, ...rest }: SortableItemProps) {
   const { getItemProps, activeId } = useSortable();
@@ -335,7 +334,6 @@ export function SortableItem({ value, className, children, ...rest }: SortableIt
     </SortableItemContext>
   );
 }
-SortableItem.displayName = "Sortable.Item";
 
 export function SortableHandle({ className, children, ...rest }: SortableHandleProps) {
   const { id } = useSortableItem();
@@ -400,7 +398,6 @@ export function SortableHandle({ className, children, ...rest }: SortableHandleP
     </ark.div>
   );
 }
-SortableHandle.displayName = "Sortable.Handle";
 
 export function SortableItemContent({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -412,5 +409,9 @@ export function SortableItemContent({ className, ...rest }: ComponentProps<typeo
     />
   );
 }
+
+SortableRoot.displayName = "Sortable";
+SortableItem.displayName = "Sortable.Item";
+SortableHandle.displayName = "Sortable.Handle";
 SortableItemContent.displayName = "Sortable.ItemContent";
 // #endregion

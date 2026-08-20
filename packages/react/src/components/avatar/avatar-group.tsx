@@ -34,7 +34,6 @@ export function AvatarGroupRoot({ className, children, testId, ...rest }: Avatar
     </AvatarGroupContext>
   );
 }
-AvatarGroupRoot.displayName = "AvatarGroup.Root";
 
 export function AvatarGroupCount({ className, ...rest }: ComponentProps<typeof ark.div>) {
   const { slots } = useAvatarGroup();
@@ -48,6 +47,8 @@ export function AvatarGroupCount({ className, ...rest }: ComponentProps<typeof a
     />
   );
 }
+
+AvatarGroupRoot.displayName = "AvatarGroup.Root";
 AvatarGroupCount.displayName = "AvatarGroup.Count";
 // #endregion
 

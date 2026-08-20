@@ -92,12 +92,10 @@ export function CarouselRoot({
     </CarouselPrimitive.Root>
   );
 }
-CarouselRoot.displayName = "Carousel";
 
 export function CarouselControl({ className, ...rest }: CarouselControlProps) {
   return <CarouselPrimitive.Control {...rest} className={carouselControlVariants({ className })} />;
 }
-CarouselControl.displayName = "Carousel.Control";
 
 export function CarouselPrevious({ className, ...rest }: CarouselPreviousProps) {
   return (
@@ -112,7 +110,6 @@ export function CarouselPrevious({ className, ...rest }: CarouselPreviousProps) 
     </CarouselPrimitive.PrevTrigger>
   );
 }
-CarouselPrevious.displayName = "Carousel.Previous";
 
 export function CarouselNext({ className, ...rest }: CarouselNextProps) {
   return (
@@ -127,7 +124,6 @@ export function CarouselNext({ className, ...rest }: CarouselNextProps) {
     </CarouselPrimitive.NextTrigger>
   );
 }
-CarouselNext.displayName = "Carousel.Next";
 
 export function CarouselIndicatorGroup({ className, ...rest }: CarouselIndicatorGroupProps) {
   return (
@@ -137,22 +133,27 @@ export function CarouselIndicatorGroup({ className, ...rest }: CarouselIndicator
     />
   );
 }
-CarouselIndicatorGroup.displayName = "Carousel.IndicatorGroup";
 
 export function CarouselIndicator({ className, ...rest }: CarouselIndicatorProps) {
   return (
     <CarouselPrimitive.Indicator {...rest} className={carouselIndicatorVariants({ className })} />
   );
 }
-CarouselIndicator.displayName = "Carousel.Indicator";
 
 export function CarouselContent({ className, ...rest }: CarouselContentProps) {
   return <CarouselPrimitive.ItemGroup {...rest} className={carouselGroupVariants({ className })} />;
 }
-CarouselContent.displayName = "Carousel.Content";
 
 export function CarouselItem({ className, ...rest }: CarouselItemProps) {
   return <CarouselPrimitive.Item {...rest} className={carouselItemVariants({ className })} />;
 }
+
+CarouselRoot.displayName = "Carousel";
+CarouselControl.displayName = "Carousel.Control";
+CarouselPrevious.displayName = "Carousel.Previous";
+CarouselNext.displayName = "Carousel.Next";
+CarouselIndicatorGroup.displayName = "Carousel.IndicatorGroup";
+CarouselIndicator.displayName = "Carousel.Indicator";
+CarouselContent.displayName = "Carousel.Content";
 CarouselItem.displayName = "Carousel.Item";
 // #endregion

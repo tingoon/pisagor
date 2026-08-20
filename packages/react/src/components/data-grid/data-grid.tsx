@@ -191,12 +191,10 @@ function DataGridHeader<TData>({ children }: DataGridHeaderProps) {
     </>
   );
 }
-DataGridHeader.displayName = "DataGrid.Header";
 
 function DataGridHeaderRow(props: DataGridHeaderRowProps) {
   return <Table.Row data-part="header-row" data-scope="data-grid" {...props} />;
 }
-DataGridHeaderRow.displayName = "DataGrid.HeaderRow";
 
 const dataTableFilterHeadClassName = dataGridFilterHeadVariants();
 
@@ -230,7 +228,6 @@ function DataGridColumnResizer({ className, ...rest }: DataGridColumnResizerProp
     />
   );
 }
-DataGridColumnResizer.displayName = "DataGrid.ColumnResizer";
 
 function DataGridHeadCell<TData>({
   header,
@@ -303,7 +300,6 @@ function DataGridHead<TData>({
     </>
   );
 }
-DataGridHead.displayName = "DataGrid.Head";
 
 /**
  * Renders a table cell using the column definition's cell renderer.
@@ -344,7 +340,6 @@ function DataGridBody<TData>({ children, empty = null }: DataGridBodyProps) {
     </>
   );
 }
-DataGridBody.displayName = "DataGrid.Body";
 
 function DataGridVirtualBody<TData>({
   children,
@@ -427,7 +422,6 @@ function DataGridVirtualBody<TData>({
     </>
   );
 }
-DataGridVirtualBody.displayName = "DataGrid.VirtualBody";
 
 function DataGridRowProvider<TData>({ row, children }: DataGridRowProviderProps<TData>) {
   return (
@@ -436,7 +430,6 @@ function DataGridRowProvider<TData>({ row, children }: DataGridRowProviderProps<
     </DataGridRowContext>
   );
 }
-DataGridRowProvider.displayName = "DataGrid.RowProvider";
 
 function DataGridRow<TData>({ className, style, ...rest }: DataGridRowProps) {
   const row = useDataGridRowContext<TData>().row;
@@ -457,7 +450,6 @@ function DataGridRow<TData>({ className, style, ...rest }: DataGridRowProps) {
     />
   );
 }
-DataGridRow.displayName = "DataGrid.Row";
 
 function DataGridCell<TData>({ columnId, children, className, style, ...rest }: DataGridCellProps) {
   const table = useDataGridContext<TData>().table;
@@ -507,7 +499,6 @@ function DataGridCell<TData>({ columnId, children, className, style, ...rest }: 
     </>
   );
 }
-DataGridCell.displayName = "DataGrid.Cell";
 
 function DataGridEmpty({
   children = "No results. Try a different search or clear filters.",
@@ -526,7 +517,6 @@ function DataGridEmpty({
     </Table.Row>
   );
 }
-DataGridEmpty.displayName = "DataGrid.Empty";
 
 function DataGridToolbar({ className, ...rest }: ComponentProps<"div">) {
   return (
@@ -538,7 +528,6 @@ function DataGridToolbar({ className, ...rest }: ComponentProps<"div">) {
     />
   );
 }
-DataGridToolbar.displayName = "DataGrid.Toolbar";
 
 function DataGridFooter({ className, ...rest }: ComponentProps<"div">) {
   return (
@@ -550,7 +539,6 @@ function DataGridFooter({ className, ...rest }: ComponentProps<"div">) {
     />
   );
 }
-DataGridFooter.displayName = "DataGrid.Footer";
 
 function DataGridRoot<TData>({
   children,
@@ -584,7 +572,6 @@ function DataGridRoot<TData>({
 export function DataGrid<TData>(props: DataGridProps<TData>) {
   return DataGridRoot(props);
 }
-DataGrid.displayName = "DataGrid";
 
 DataGrid.Body = DataGridBody;
 
@@ -609,4 +596,18 @@ DataGrid.RowProvider = DataGridRowProvider;
 DataGrid.Toolbar = DataGridToolbar;
 
 DataGrid.VirtualBody = DataGridVirtualBody;
+
+DataGridHeader.displayName = "DataGrid.Header";
+DataGridHeaderRow.displayName = "DataGrid.HeaderRow";
+DataGridColumnResizer.displayName = "DataGrid.ColumnResizer";
+DataGridHead.displayName = "DataGrid.Head";
+DataGridBody.displayName = "DataGrid.Body";
+DataGridVirtualBody.displayName = "DataGrid.VirtualBody";
+DataGridRowProvider.displayName = "DataGrid.RowProvider";
+DataGridRow.displayName = "DataGrid.Row";
+DataGridCell.displayName = "DataGrid.Cell";
+DataGridEmpty.displayName = "DataGrid.Empty";
+DataGridToolbar.displayName = "DataGrid.Toolbar";
+DataGridFooter.displayName = "DataGrid.Footer";
+DataGrid.displayName = "DataGrid";
 // #endregion

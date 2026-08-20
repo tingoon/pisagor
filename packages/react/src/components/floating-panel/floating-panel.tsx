@@ -97,12 +97,10 @@ export function FloatingPanelRoot({
     </FloatingPanelRootContext>
   );
 }
-FloatingPanelRoot.displayName = "FloatingPanel";
 
 export function FloatingPanelTrigger(props: FloatingPanelTriggerProps) {
   return <FloatingPanelPrimitive.Trigger {...props} />;
 }
-FloatingPanelTrigger.displayName = "FloatingPanel.Trigger";
 
 export function FloatingPanelContent({
   resizable = true,
@@ -139,12 +137,10 @@ export function FloatingPanelContent({
     </Portal>
   );
 }
-FloatingPanelContent.displayName = "FloatingPanel.Content";
 
 export function FloatingPanelDragTrigger(props: FloatingPanelDragTriggerProps) {
   return <FloatingPanelPrimitive.DragTrigger {...props} />;
 }
-FloatingPanelDragTrigger.displayName = "FloatingPanel.DragTrigger";
 
 export function FloatingPanelHeader({
   className,
@@ -165,7 +161,6 @@ export function FloatingPanelHeader({
     </FloatingPanelDragTrigger>
   );
 }
-FloatingPanelHeader.displayName = "FloatingPanel.Header";
 
 export function FloatingPanelControl({ className, ...rest }: FloatingPanelControlProps) {
   return (
@@ -175,7 +170,6 @@ export function FloatingPanelControl({ className, ...rest }: FloatingPanelContro
     />
   );
 }
-FloatingPanelControl.displayName = "FloatingPanel.Control";
 
 export function FloatingPanelMinimize({
   size = "icon-xs",
@@ -190,7 +184,6 @@ export function FloatingPanelMinimize({
     </FloatingPanelPrimitive.StageTrigger>
   );
 }
-FloatingPanelMinimize.displayName = "FloatingPanel.Minimize";
 
 export function FloatingPanelMaximize({
   size = "icon-xs",
@@ -205,7 +198,6 @@ export function FloatingPanelMaximize({
     </FloatingPanelPrimitive.StageTrigger>
   );
 }
-FloatingPanelMaximize.displayName = "FloatingPanel.Maximize";
 
 export function FloatingPanelRestore({
   size = "icon-xs",
@@ -221,29 +213,24 @@ export function FloatingPanelRestore({
     </FloatingPanelPrimitive.StageTrigger>
   );
 }
-FloatingPanelRestore.displayName = "FloatingPanel.Restore";
 
 export function FloatingPanelTitle({ className, ...rest }: FloatingPanelTitleProps) {
   return (
     <FloatingPanelPrimitive.Title {...rest} className={floatingPanelTitleVariants({ className })} />
   );
 }
-FloatingPanelTitle.displayName = "FloatingPanel.Title";
 
 export function FloatingPanelResizeTrigger(props: FloatingPanelResizeTriggerProps) {
   return <FloatingPanelPrimitive.ResizeTrigger {...props} />;
 }
-FloatingPanelResizeTrigger.displayName = "FloatingPanel.ResizeTrigger";
 
 export function FloatingPanelStageTrigger(props: FloatingPanelStageTriggerProps) {
   return <FloatingPanelPrimitive.StageTrigger {...props} />;
 }
-FloatingPanelStageTrigger.displayName = "FloatingPanel.StageTrigger";
 
 export function FloatingPanelCloseTrigger(props: FloatingPanelCloseTriggerProps) {
   return <FloatingPanelPrimitive.CloseTrigger {...props} />;
 }
-FloatingPanelCloseTrigger.displayName = "FloatingPanel.CloseTrigger";
 
 export function FloatingPanelBody({
   scrollFade = false,
@@ -259,7 +246,6 @@ export function FloatingPanelBody({
     </ScrollArea>
   );
 }
-FloatingPanelBody.displayName = "FloatingPanel.Body";
 
 export function FloatingPanelFooter({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -271,5 +257,20 @@ export function FloatingPanelFooter({ className, ...rest }: ComponentProps<typeo
     />
   );
 }
+
+FloatingPanelRoot.displayName = "FloatingPanel";
+FloatingPanelTrigger.displayName = "FloatingPanel.Trigger";
+FloatingPanelContent.displayName = "FloatingPanel.Content";
+FloatingPanelDragTrigger.displayName = "FloatingPanel.DragTrigger";
+FloatingPanelHeader.displayName = "FloatingPanel.Header";
+FloatingPanelControl.displayName = "FloatingPanel.Control";
+FloatingPanelMinimize.displayName = "FloatingPanel.Minimize";
+FloatingPanelMaximize.displayName = "FloatingPanel.Maximize";
+FloatingPanelRestore.displayName = "FloatingPanel.Restore";
+FloatingPanelTitle.displayName = "FloatingPanel.Title";
+FloatingPanelResizeTrigger.displayName = "FloatingPanel.ResizeTrigger";
+FloatingPanelStageTrigger.displayName = "FloatingPanel.StageTrigger";
+FloatingPanelCloseTrigger.displayName = "FloatingPanel.CloseTrigger";
+FloatingPanelBody.displayName = "FloatingPanel.Body";
 FloatingPanelFooter.displayName = "FloatingPanel.Footer";
 // #endregion

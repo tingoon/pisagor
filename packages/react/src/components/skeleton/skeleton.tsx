@@ -33,7 +33,6 @@ export function SkeletonRoot({ className, testId, ...rest }: SkeletonRootProps) 
     />
   );
 }
-SkeletonRoot.displayName = "Skeleton";
 
 export function SkeletonCircle({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -45,7 +44,6 @@ export function SkeletonCircle({ className, ...rest }: ComponentProps<typeof ark
     />
   );
 }
-SkeletonCircle.displayName = "Skeleton.Circle";
 
 export function SkeletonText({ className, lines = 2, ...rest }: SkeletonTextProps) {
   return (
@@ -63,5 +61,8 @@ export function SkeletonText({ className, lines = 2, ...rest }: SkeletonTextProp
     </ark.div>
   );
 }
+
+SkeletonRoot.displayName = "Skeleton";
+SkeletonCircle.displayName = "Skeleton.Circle";
 SkeletonText.displayName = "Skeleton.Text";
 // #endregion

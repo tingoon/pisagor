@@ -108,17 +108,14 @@ export function EditableRoot({
     />
   );
 }
-EditableRoot.displayName = "Editable";
 
 export function EditableArea({ className, ...rest }: EditableAreaProps) {
   return <EditablePrimitive.Area {...rest} className={editableAreaVariants({ className })} />;
 }
-EditableArea.displayName = "Editable.Area";
 
 export function EditableInput(props: EditableInputProps) {
   return <EditablePrimitive.Input {...props} />;
 }
-EditableInput.displayName = "Editable.Input";
 
 export function EditablePreview({
   size = "md",
@@ -152,25 +149,29 @@ export function EditablePreview({
     />
   );
 }
-EditablePreview.displayName = "Editable.Preview";
 
 export function EditableControl({ className, ...rest }: EditableControlProps) {
   return <EditablePrimitive.Control {...rest} className={editableControlVariants({ className })} />;
 }
-EditableControl.displayName = "Editable.Control";
 
 export function EditableEditTrigger(props: EditableEditTriggerProps) {
   return <EditablePrimitive.EditTrigger {...props} />;
 }
-EditableEditTrigger.displayName = "Editable.EditTrigger";
 
 export function EditableCancelTrigger(props: EditableCancelTriggerProps) {
   return <EditablePrimitive.CancelTrigger {...props} />;
 }
-EditableCancelTrigger.displayName = "Editable.CancelTrigger";
 
 export function EditableSubmitTrigger(props: EditableSubmitTriggerProps) {
   return <EditablePrimitive.SubmitTrigger {...props} />;
 }
+
+EditableRoot.displayName = "Editable";
+EditableArea.displayName = "Editable.Area";
+EditableInput.displayName = "Editable.Input";
+EditablePreview.displayName = "Editable.Preview";
+EditableControl.displayName = "Editable.Control";
+EditableEditTrigger.displayName = "Editable.EditTrigger";
+EditableCancelTrigger.displayName = "Editable.CancelTrigger";
 EditableSubmitTrigger.displayName = "Editable.SubmitTrigger";
 // #endregion

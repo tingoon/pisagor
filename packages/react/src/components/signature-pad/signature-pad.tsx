@@ -67,7 +67,6 @@ function SignaturePadRoot({
     </FormControlVariantProvider>
   );
 }
-SignaturePadRoot.displayName = "SignaturePad.Root";
 
 function SignaturePadControl({
   children,
@@ -96,14 +95,12 @@ function SignaturePadControl({
     </SignaturePadPrimitive.Control>
   );
 }
-SignaturePadControl.displayName = "SignaturePad.Control";
 
 function SignaturePadSegment({ className, ...rest }: SignaturePadSegmentProps) {
   const { slots } = useSignaturePad();
 
   return <SignaturePadPrimitive.Segment {...rest} className={slots.segment({ className })} />;
 }
-SignaturePadSegment.displayName = "SignaturePad.Segment";
 
 function SignaturePadClear({ className, ...rest }: SignaturePadClearProps) {
   const { slots } = useSignaturePad();
@@ -116,13 +113,17 @@ function SignaturePadClear({ className, ...rest }: SignaturePadClearProps) {
     </SignaturePadPrimitive.ClearTrigger>
   );
 }
-SignaturePadClear.displayName = "SignaturePad.Clear";
 
 function SignaturePadGuide({ className, ...rest }: SignaturePadGuideProps) {
   const { slots } = useSignaturePad();
 
   return <SignaturePadPrimitive.Guide {...rest} className={slots.guide({ className })} />;
 }
+
+SignaturePadRoot.displayName = "SignaturePad.Root";
+SignaturePadControl.displayName = "SignaturePad.Control";
+SignaturePadSegment.displayName = "SignaturePad.Segment";
+SignaturePadClear.displayName = "SignaturePad.Clear";
 SignaturePadGuide.displayName = "SignaturePad.Guide";
 // #endregion
 

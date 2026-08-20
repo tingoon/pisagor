@@ -143,7 +143,6 @@ export function AppShellPanel({
     </aside>
   );
 }
-AppShellPanel.displayName = "AppShell.Panel";
 
 export function AppShellPanelHeader({ className, ...rest }: ComponentProps<"div">) {
   return (
@@ -155,7 +154,6 @@ export function AppShellPanelHeader({ className, ...rest }: ComponentProps<"div"
     />
   );
 }
-AppShellPanelHeader.displayName = "AppShell.PanelHeader";
 
 export function AppShellPanelContent({ className, ...rest }: ComponentProps<"div">) {
   return (
@@ -169,7 +167,6 @@ export function AppShellPanelContent({ className, ...rest }: ComponentProps<"div
     </ScrollArea>
   );
 }
-AppShellPanelContent.displayName = "AppShell.PanelContent";
 
 export function AppShellPanelFooter({ className, ...rest }: ComponentProps<"div">) {
   return (
@@ -181,7 +178,6 @@ export function AppShellPanelFooter({ className, ...rest }: ComponentProps<"div"
     />
   );
 }
-AppShellPanelFooter.displayName = "AppShell.PanelFooter";
 
 export function AppShellPanelTrigger({
   placement = "start",
@@ -215,4 +211,9 @@ export function AppShellPanelTrigger({
     </AppShellSideTrigger>
   );
 }
+
+AppShellPanel.displayName = "AppShell.Panel";
+AppShellPanelHeader.displayName = "AppShell.PanelHeader";
+AppShellPanelContent.displayName = "AppShell.PanelContent";
+AppShellPanelFooter.displayName = "AppShell.PanelFooter";
 AppShellPanelTrigger.displayName = "AppShell.PanelTrigger";

@@ -50,12 +50,10 @@ export function AccordionRoot({
     </AccordionPrimitive.Root>
   );
 }
-AccordionRoot.displayName = "Accordion.Root";
 
 export function AccordionItem({ className, ...rest }: AccordionItemProps) {
   return <AccordionPrimitive.Item {...rest} className={accordionItemVariants({ className })} />;
 }
-AccordionItem.displayName = "Accordion.Item";
 
 export function AccordionTrigger({ className, children, ...rest }: AccordionTriggerProps) {
   const recipe = accordionTriggerVariants();
@@ -70,7 +68,6 @@ export function AccordionTrigger({ className, children, ...rest }: AccordionTrig
     </AccordionPrimitive.ItemTrigger>
   );
 }
-AccordionTrigger.displayName = "Accordion.Trigger";
 
 export function AccordionContent({ className, children, ...rest }: AccordionContentProps) {
   const recipe = accordionContentVariants();
@@ -81,6 +78,10 @@ export function AccordionContent({ className, children, ...rest }: AccordionCont
     </AccordionPrimitive.ItemContent>
   );
 }
+
+AccordionRoot.displayName = "Accordion.Root";
+AccordionItem.displayName = "Accordion.Item";
+AccordionTrigger.displayName = "Accordion.Trigger";
 AccordionContent.displayName = "Accordion.Content";
 // #endregion
 

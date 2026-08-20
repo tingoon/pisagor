@@ -55,7 +55,6 @@ export function AlertRoot({ variant, className, children, testId, ...rest }: Ale
     </AlertContext>
   );
 }
-AlertRoot.displayName = "Alert.Root";
 
 export function AlertTitle({ className, children, ...rest }: AlertTitleProps) {
   const { slots } = useAlert();
@@ -66,7 +65,6 @@ export function AlertTitle({ className, children, ...rest }: AlertTitleProps) {
     </ark.div>
   );
 }
-AlertTitle.displayName = "Alert.Title";
 
 export function AlertDescription({ className, children, ...rest }: AlertDescriptionProps) {
   const { slots } = useAlert();
@@ -82,7 +80,6 @@ export function AlertDescription({ className, children, ...rest }: AlertDescript
     </ark.div>
   );
 }
-AlertDescription.displayName = "Alert.Description";
 
 export function AlertAction({ className, children, ...rest }: AlertActionProps) {
   const { slots } = useAlert();
@@ -98,6 +95,10 @@ export function AlertAction({ className, children, ...rest }: AlertActionProps) 
     </ark.div>
   );
 }
+
+AlertRoot.displayName = "Alert.Root";
+AlertTitle.displayName = "Alert.Title";
+AlertDescription.displayName = "Alert.Description";
 AlertAction.displayName = "Alert.Action";
 // #endregion
 

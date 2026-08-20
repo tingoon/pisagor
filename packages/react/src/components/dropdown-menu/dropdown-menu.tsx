@@ -77,21 +77,18 @@ export function DropdownMenuRoot({
     </DropdownMenuRootContext>
   );
 }
-DropdownMenuRoot.displayName = "DropdownMenu";
 
 export function DropdownMenuTrigger(props: DropdownMenuTriggerProps) {
   const { testId } = useDropdownMenuRoot() ?? {};
 
   return <MenuPrimitive.Trigger data-testid={testId} {...props} />;
 }
-DropdownMenuTrigger.displayName = "DropdownMenu.Trigger";
 
 export function DropdownMenuPositioner({ className, ...rest }: DropdownMenuPositionerProps) {
   return (
     <MenuPrimitive.Positioner {...rest} className={dropdownMenuPositionerVariants({ className })} />
   );
 }
-DropdownMenuPositioner.displayName = "DropdownMenu.Positioner";
 
 export type DropdownMenuContentProps = MenuContentProps;
 
@@ -106,7 +103,6 @@ export function DropdownMenuContent({ className, children, ...rest }: DropdownMe
     </Portal>
   );
 }
-DropdownMenuContent.displayName = "DropdownMenu.Content";
 
 export function DropdownMenuGroup({ heading, children, ...rest }: DropdownMenuGroupProps) {
   return (
@@ -117,14 +113,12 @@ export function DropdownMenuGroup({ heading, children, ...rest }: DropdownMenuGr
     </MenuPrimitive.ItemGroup>
   );
 }
-DropdownMenuGroup.displayName = "DropdownMenu.Group";
 
 export function DropdownMenuSeparator({ className, ...rest }: DropdownMenuSeparatorProps) {
   return (
     <MenuPrimitive.Separator {...rest} className={dropdownMenuSeparatorVariants({ className })} />
   );
 }
-DropdownMenuSeparator.displayName = "DropdownMenu.Separator";
 
 export function DropdownMenuItem({
   variant = "default",
@@ -139,7 +133,6 @@ export function DropdownMenuItem({
     />
   );
 }
-DropdownMenuItem.displayName = "DropdownMenu.Item";
 
 export function DropdownMenuQuickItem({
   variant = "default",
@@ -155,7 +148,6 @@ export function DropdownMenuQuickItem({
     />
   );
 }
-DropdownMenuQuickItem.displayName = "DropdownMenu.QuickItem";
 
 export function DropdownMenuCheckboxItem({
   className,
@@ -174,7 +166,6 @@ export function DropdownMenuCheckboxItem({
     </MenuPrimitive.CheckboxItem>
   );
 }
-DropdownMenuCheckboxItem.displayName = "DropdownMenu.CheckboxItem";
 
 export function DropdownMenuRadioGroup({
   heading,
@@ -189,7 +180,6 @@ export function DropdownMenuRadioGroup({
     </MenuPrimitive.RadioItemGroup>
   );
 }
-DropdownMenuRadioGroup.displayName = "DropdownMenu.RadioGroup";
 
 export function DropdownMenuGroupLabel({ className, ...rest }: DropdownMenuGroupLabelProps) {
   return (
@@ -199,7 +189,6 @@ export function DropdownMenuGroupLabel({ className, ...rest }: DropdownMenuGroup
     />
   );
 }
-DropdownMenuGroupLabel.displayName = "DropdownMenu.GroupLabel";
 
 export function DropdownMenuRadioItem({
   className,
@@ -218,12 +207,10 @@ export function DropdownMenuRadioItem({
     </MenuPrimitive.RadioItem>
   );
 }
-DropdownMenuRadioItem.displayName = "DropdownMenu.RadioItem";
 
 export function DropdownMenuSub(props: DropdownMenuRootProps) {
   return <DropdownMenuRoot {...props} />;
 }
-DropdownMenuSub.displayName = "DropdownMenu.Sub";
 
 export function DropdownMenuSubContent({ className, ...rest }: DropdownMenuSubContentProps) {
   return (
@@ -234,7 +221,6 @@ export function DropdownMenuSubContent({ className, ...rest }: DropdownMenuSubCo
     </Portal>
   );
 }
-DropdownMenuSubContent.displayName = "DropdownMenu.SubContent";
 
 export function DropdownMenuSubTrigger({
   className,
@@ -254,7 +240,6 @@ export function DropdownMenuSubTrigger({
     </MenuPrimitive.TriggerItem>
   );
 }
-DropdownMenuSubTrigger.displayName = "DropdownMenu.SubTrigger";
 
 export type DropdownMenuShortcutProps = ComponentProps<typeof ark.span> & {
   dataPart?: string;
@@ -276,7 +261,6 @@ export function DropdownMenuShortcut({
     />
   );
 }
-DropdownMenuShortcut.displayName = "DropdownMenu.Shortcut";
 
 export function DropdownMenuArrow({ style, ...rest }: DropdownMenuArrowProps) {
   return (
@@ -293,5 +277,22 @@ export function DropdownMenuArrow({ style, ...rest }: DropdownMenuArrowProps) {
     </MenuPrimitive.Arrow>
   );
 }
+
+DropdownMenuRoot.displayName = "DropdownMenu";
+DropdownMenuTrigger.displayName = "DropdownMenu.Trigger";
+DropdownMenuPositioner.displayName = "DropdownMenu.Positioner";
+DropdownMenuContent.displayName = "DropdownMenu.Content";
+DropdownMenuGroup.displayName = "DropdownMenu.Group";
+DropdownMenuSeparator.displayName = "DropdownMenu.Separator";
+DropdownMenuItem.displayName = "DropdownMenu.Item";
+DropdownMenuQuickItem.displayName = "DropdownMenu.QuickItem";
+DropdownMenuCheckboxItem.displayName = "DropdownMenu.CheckboxItem";
+DropdownMenuRadioGroup.displayName = "DropdownMenu.RadioGroup";
+DropdownMenuGroupLabel.displayName = "DropdownMenu.GroupLabel";
+DropdownMenuRadioItem.displayName = "DropdownMenu.RadioItem";
+DropdownMenuSub.displayName = "DropdownMenu.Sub";
+DropdownMenuSubContent.displayName = "DropdownMenu.SubContent";
+DropdownMenuSubTrigger.displayName = "DropdownMenu.SubTrigger";
+DropdownMenuShortcut.displayName = "DropdownMenu.Shortcut";
 DropdownMenuArrow.displayName = "DropdownMenu.Arrow";
 // #endregion

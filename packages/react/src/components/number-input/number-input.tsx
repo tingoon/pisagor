@@ -96,7 +96,6 @@ export function NumberInputRoot({
     </FormControlVariantProvider>
   );
 }
-NumberInputRoot.displayName = "NumberInput";
 
 export function NumberInputGroup({
   variant: variantProp,
@@ -121,7 +120,6 @@ export function NumberInputGroup({
     />
   );
 }
-NumberInputGroup.displayName = "NumberInput.Group";
 
 export function NumberInputClearTrigger() {
   return (
@@ -144,7 +142,6 @@ export function NumberInputClearTrigger() {
     </NumberInputPrimitive.Context>
   );
 }
-NumberInputClearTrigger.displayName = "NumberInput.ClearTrigger";
 
 export function NumberInputDecrement({ className, ...rest }: NumberInputDecrementProps) {
   return (
@@ -159,7 +156,6 @@ export function NumberInputDecrement({ className, ...rest }: NumberInputDecremen
     </NumberInputPrimitive.DecrementTrigger>
   );
 }
-NumberInputDecrement.displayName = "NumberInput.Decrement";
 
 export function NumberInputIncrement({ className, ...rest }: NumberInputIncrementProps) {
   return (
@@ -174,7 +170,6 @@ export function NumberInputIncrement({ className, ...rest }: NumberInputIncremen
     </NumberInputPrimitive.IncrementTrigger>
   );
 }
-NumberInputIncrement.displayName = "NumberInput.Increment";
 
 export function NumberInputInput({ size, variant, className, classNames, ...rest }: InputProps) {
   return (
@@ -188,7 +183,6 @@ export function NumberInputInput({ size, variant, className, classNames, ...rest
     </NumberInputPrimitive.Input>
   );
 }
-NumberInputInput.displayName = "NumberInput.Input";
 
 export function NumberInputScrubber({ className, children, ...rest }: NumberInputScrubberProps) {
   return (
@@ -203,5 +197,12 @@ export function NumberInputScrubber({ className, children, ...rest }: NumberInpu
     </NumberInputPrimitive.Scrubber>
   );
 }
+
+NumberInputRoot.displayName = "NumberInput";
+NumberInputGroup.displayName = "NumberInput.Group";
+NumberInputClearTrigger.displayName = "NumberInput.ClearTrigger";
+NumberInputDecrement.displayName = "NumberInput.Decrement";
+NumberInputIncrement.displayName = "NumberInput.Increment";
+NumberInputInput.displayName = "NumberInput.Input";
 NumberInputScrubber.displayName = "NumberInput.Scrubber";
 // #endregion

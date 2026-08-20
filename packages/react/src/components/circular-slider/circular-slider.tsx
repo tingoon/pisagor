@@ -106,7 +106,6 @@ export function CircularSliderRoot({
     </CircularSliderContext>
   );
 }
-CircularSliderRoot.displayName = "CircularSlider";
 
 export function CircularSliderControl({
   className,
@@ -143,7 +142,6 @@ export function CircularSliderControl({
     </AngleSliderPrimitive.Control>
   );
 }
-CircularSliderControl.displayName = "CircularSlider.Control";
 
 function CircularSliderProgressRing() {
   const api = useCircularSliderApi();
@@ -208,7 +206,6 @@ export function CircularSliderThumb({ className, ...rest }: CircularSliderThumbP
     </AngleSliderPrimitive.Thumb>
   );
 }
-CircularSliderThumb.displayName = "CircularSlider.Thumb";
 
 export function CircularSliderValue({
   prefix = "",
@@ -227,7 +224,6 @@ export function CircularSliderValue({
     </Field.Label>
   );
 }
-CircularSliderValue.displayName = "CircularSlider.Value";
 
 export function CircularSliderMarkerGroup({ className, ...rest }: CircularSliderMarkerGroupProps) {
   const slots = circularSliderVariants();
@@ -236,7 +232,6 @@ export function CircularSliderMarkerGroup({ className, ...rest }: CircularSlider
     <AngleSliderPrimitive.MarkerGroup {...rest} className={slots.markerGroup({ className })} />
   );
 }
-CircularSliderMarkerGroup.displayName = "CircularSlider.MarkerGroup";
 
 export function CircularSliderMarker({ className, style, ...rest }: CircularSliderMarkerProps) {
   const { size, thickness } = _useCircularSlider();
@@ -260,7 +255,6 @@ export function CircularSliderMarker({ className, style, ...rest }: CircularSlid
     />
   );
 }
-CircularSliderMarker.displayName = "CircularSlider.Marker";
 
 const CLOCK_MARKER_ANGLES = [0, 60, 120, 180, 240, 300];
 
@@ -273,4 +267,11 @@ const _useCircularSlider = () => {
 
   return context;
 };
+
+CircularSliderRoot.displayName = "CircularSlider";
+CircularSliderControl.displayName = "CircularSlider.Control";
+CircularSliderThumb.displayName = "CircularSlider.Thumb";
+CircularSliderValue.displayName = "CircularSlider.Value";
+CircularSliderMarkerGroup.displayName = "CircularSlider.MarkerGroup";
+CircularSliderMarker.displayName = "CircularSlider.Marker";
 // #endregion

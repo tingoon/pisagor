@@ -79,12 +79,10 @@ export interface CommandProps<T extends CollectionItem = CollectionItem>
 
 // #region Parts
 export const CommandDialog = Dialog;
-CommandDialog.displayName = "Command.Dialog";
 
 export function CommandDialogTrigger(props: DialogTriggerProps) {
   return <Dialog.Trigger {...props} />;
 }
-CommandDialogTrigger.displayName = "Command.DialogTrigger";
 
 export function CommandDialogContent({
   size = "lg",
@@ -115,7 +113,6 @@ export function CommandDialogContent({
     </Portal>
   );
 }
-CommandDialogContent.displayName = "Command.DialogContent";
 
 export function CommandRoot<T extends CollectionItem = CollectionItem>({
   lazyMount = true,
@@ -140,12 +137,10 @@ export function CommandRoot<T extends CollectionItem = CollectionItem>({
     />
   );
 }
-CommandRoot.displayName = "Command";
 
 export function CommandContent({ className, ...rest }: CommandContentProps) {
   return <ComboboxPrimitive.Content {...rest} className={commandContentVariants({ className })} />;
 }
-CommandContent.displayName = "Command.Content";
 
 export function CommandInput({ size, className, ...rest }: CommandInputProps) {
   const { testId } = useComboboxRoot() ?? {};
@@ -163,7 +158,6 @@ export function CommandInput({ size, className, ...rest }: CommandInputProps) {
     </ComboboxPrimitive.Control>
   );
 }
-CommandInput.displayName = "Command.Input";
 
 export function CommandList({ className, ...rest }: CommandListProps) {
   return (
@@ -172,7 +166,6 @@ export function CommandList({ className, ...rest }: CommandListProps) {
     </div>
   );
 }
-CommandList.displayName = "Command.List";
 
 export function CommandEmpty({ className, children, ...rest }: ComboboxEmptyProps) {
   return (
@@ -181,17 +174,14 @@ export function CommandEmpty({ className, children, ...rest }: ComboboxEmptyProp
     </Combobox.Empty>
   );
 }
-CommandEmpty.displayName = "Command.Empty";
 
 export function CommandGroup(props: ComboboxGroupProps) {
   return <Combobox.Group {...props} />;
 }
-CommandGroup.displayName = "Command.Group";
 
 export function CommandGroupLabel(props: ComboboxGroupLabelProps) {
   return <Combobox.GroupLabel {...props} />;
 }
-CommandGroupLabel.displayName = "Command.GroupLabel";
 
 export function CommandItem({ className, ...rest }: ComboboxItemProps) {
   return (
@@ -202,7 +192,6 @@ export function CommandItem({ className, ...rest }: ComboboxItemProps) {
     />
   );
 }
-CommandItem.displayName = "Command.Item";
 
 export function CommandSeparator({ className, ...rest }: ComponentProps<"div">) {
   return (
@@ -214,12 +203,10 @@ export function CommandSeparator({ className, ...rest }: ComponentProps<"div">) 
     />
   );
 }
-CommandSeparator.displayName = "Command.Separator";
 
 export function CommandShortcut(props: DropdownMenuShortcutProps) {
   return <DropdownMenu.Shortcut dataPart="shortcut" dataScope="command" {...props} />;
 }
-CommandShortcut.displayName = "Command.Shortcut";
 
 export function CommandFooter({ className, ...rest }: ComponentProps<"div">) {
   return (
@@ -231,5 +218,19 @@ export function CommandFooter({ className, ...rest }: ComponentProps<"div">) {
     />
   );
 }
+
+CommandDialog.displayName = "Command.Dialog";
+CommandDialogTrigger.displayName = "Command.DialogTrigger";
+CommandDialogContent.displayName = "Command.DialogContent";
+CommandRoot.displayName = "Command";
+CommandContent.displayName = "Command.Content";
+CommandInput.displayName = "Command.Input";
+CommandList.displayName = "Command.List";
+CommandEmpty.displayName = "Command.Empty";
+CommandGroup.displayName = "Command.Group";
+CommandGroupLabel.displayName = "Command.GroupLabel";
+CommandItem.displayName = "Command.Item";
+CommandSeparator.displayName = "Command.Separator";
+CommandShortcut.displayName = "Command.Shortcut";
 CommandFooter.displayName = "Command.Footer";
 // #endregion

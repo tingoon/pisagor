@@ -66,7 +66,6 @@ export function StatRoot({ variant, className, classNames, testId, ...rest }: St
     />
   );
 }
-StatRoot.displayName = "Stat.Root";
 
 export function StatLabel({ className, classNames, ...rest }: StatPartProps) {
   const slots = statVariants();
@@ -80,7 +79,6 @@ export function StatLabel({ className, classNames, ...rest }: StatPartProps) {
     />
   );
 }
-StatLabel.displayName = "Stat.Label";
 
 export function StatValue({ className, classNames, ...rest }: StatPartProps) {
   const slots = statVariants();
@@ -94,7 +92,6 @@ export function StatValue({ className, classNames, ...rest }: StatPartProps) {
     />
   );
 }
-StatValue.displayName = "Stat.Value";
 
 export function StatDescription({ className, classNames, ...rest }: StatPartProps) {
   const slots = statVariants();
@@ -108,7 +105,6 @@ export function StatDescription({ className, classNames, ...rest }: StatPartProp
     />
   );
 }
-StatDescription.displayName = "Stat.Description";
 
 export function StatTrend({ trend = "neutral", className, ...rest }: StatTrendProps) {
   return (
@@ -121,6 +117,11 @@ export function StatTrend({ trend = "neutral", className, ...rest }: StatTrendPr
     />
   );
 }
+
+StatRoot.displayName = "Stat.Root";
+StatLabel.displayName = "Stat.Label";
+StatValue.displayName = "Stat.Value";
+StatDescription.displayName = "Stat.Description";
 StatTrend.displayName = "Stat.Trend";
 // #endregion
 

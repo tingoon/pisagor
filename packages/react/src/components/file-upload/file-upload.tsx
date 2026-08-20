@@ -100,12 +100,10 @@ export function FileUploadRoot({
     </FileUploadPrimitive.Root>
   );
 }
-FileUploadRoot.displayName = "FileUpload";
 
 export function FileUploadTrigger(props: FileUploadTriggerProps) {
   return <FileUploadPrimitive.Trigger {...props} />;
 }
-FileUploadTrigger.displayName = "FileUpload.Trigger";
 
 export function FileUploadDropzone({
   variant: variantProp,
@@ -128,7 +126,6 @@ export function FileUploadDropzone({
     />
   );
 }
-FileUploadDropzone.displayName = "FileUpload.Dropzone";
 
 export function FileUploadDropzoneIcon({
   className,
@@ -146,7 +143,6 @@ export function FileUploadDropzoneIcon({
     </ark.div>
   );
 }
-FileUploadDropzoneIcon.displayName = "FileUpload.DropzoneIcon";
 
 export function FileUploadTitle({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -158,7 +154,6 @@ export function FileUploadTitle({ className, ...rest }: ComponentProps<typeof ar
     />
   );
 }
-FileUploadTitle.displayName = "FileUpload.Title";
 
 export function FileUploadDescription({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -170,7 +165,6 @@ export function FileUploadDescription({ className, ...rest }: ComponentProps<typ
     />
   );
 }
-FileUploadDescription.displayName = "FileUpload.Description";
 
 export function FileUploadHelper({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -182,12 +176,10 @@ export function FileUploadHelper({ className, ...rest }: ComponentProps<typeof a
     />
   );
 }
-FileUploadHelper.displayName = "FileUpload.Helper";
 
 export function FileUploadItemGroup(props: FileUploadItemGroupProps) {
   return <FileUploadPrimitive.ItemGroup {...props} />;
 }
-FileUploadItemGroup.displayName = "FileUpload.ItemGroup";
 
 export function FileUploadList({ className, ...rest }: FileUploadListProps) {
   const fileUpload = useFileUpload();
@@ -241,12 +233,10 @@ export function FileUploadList({ className, ...rest }: FileUploadListProps) {
     </FileUploadItemGroup>
   );
 }
-FileUploadList.displayName = "FileUpload.List";
 
 export function FileUploadItem({ className, ...rest }: FileUploadItemProps) {
   return <FileUploadPrimitive.Item {...rest} className={fileUploadItemVariants({ className })} />;
 }
-FileUploadItem.displayName = "FileUpload.Item";
 
 export function FileUploadItemPreview({ className, ...rest }: FileUploadItemPreviewProps) {
   return (
@@ -256,7 +246,6 @@ export function FileUploadItemPreview({ className, ...rest }: FileUploadItemPrev
     />
   );
 }
-FileUploadItemPreview.displayName = "FileUpload.ItemPreview";
 
 export function FileUploadItemPreviewImage({
   className,
@@ -269,14 +258,12 @@ export function FileUploadItemPreviewImage({
     />
   );
 }
-FileUploadItemPreviewImage.displayName = "FileUpload.ItemPreviewImage";
 
 export function FileUploadItemName({ className, ...rest }: FileUploadItemNameProps) {
   return (
     <FileUploadPrimitive.ItemName {...rest} className={fileUploadItemNameVariants({ className })} />
   );
 }
-FileUploadItemName.displayName = "FileUpload.ItemName";
 
 export function FileUploadItemSize({ className, ...rest }: FileUploadItemSizeProps) {
   return (
@@ -286,15 +273,29 @@ export function FileUploadItemSize({ className, ...rest }: FileUploadItemSizePro
     />
   );
 }
-FileUploadItemSize.displayName = "FileUpload.ItemSize";
 
 export function FileUploadItemDeleteTrigger(props: FileUploadItemDeleteTriggerProps) {
   return <FileUploadPrimitive.ItemDeleteTrigger {...props} />;
 }
-FileUploadItemDeleteTrigger.displayName = "FileUpload.ItemDeleteTrigger";
 
 export function FileUploadClearTrigger(props: FileUploadClearTriggerProps) {
   return <FileUploadPrimitive.ClearTrigger {...props} />;
 }
+
+FileUploadRoot.displayName = "FileUpload";
+FileUploadTrigger.displayName = "FileUpload.Trigger";
+FileUploadDropzone.displayName = "FileUpload.Dropzone";
+FileUploadDropzoneIcon.displayName = "FileUpload.DropzoneIcon";
+FileUploadTitle.displayName = "FileUpload.Title";
+FileUploadDescription.displayName = "FileUpload.Description";
+FileUploadHelper.displayName = "FileUpload.Helper";
+FileUploadItemGroup.displayName = "FileUpload.ItemGroup";
+FileUploadList.displayName = "FileUpload.List";
+FileUploadItem.displayName = "FileUpload.Item";
+FileUploadItemPreview.displayName = "FileUpload.ItemPreview";
+FileUploadItemPreviewImage.displayName = "FileUpload.ItemPreviewImage";
+FileUploadItemName.displayName = "FileUpload.ItemName";
+FileUploadItemSize.displayName = "FileUpload.ItemSize";
+FileUploadItemDeleteTrigger.displayName = "FileUpload.ItemDeleteTrigger";
 FileUploadClearTrigger.displayName = "FileUpload.ClearTrigger";
 // #endregion

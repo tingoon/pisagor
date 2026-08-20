@@ -51,17 +51,14 @@ export type SheetCloseProps = ComponentProps<typeof DialogPrimitive.CloseTrigger
 export function SheetRoot(props: SheetProps) {
   return <Dialog {...props} />;
 }
-SheetRoot.displayName = "Sheet";
 
 export function SheetTrigger(props: SheetTriggerProps) {
   return <DialogPrimitive.Trigger {...props} />;
 }
-SheetTrigger.displayName = "Sheet.Trigger";
 
 export function SheetOverlay(props: DialogOverlayProps) {
   return <Dialog.Overlay {...props} />;
 }
-SheetOverlay.displayName = "Sheet.Overlay";
 
 export function SheetPositioner({
   variant = "default",
@@ -76,7 +73,6 @@ export function SheetPositioner({
     />
   );
 }
-SheetPositioner.displayName = "Sheet.Positioner";
 
 export function SheetContent({
   showCloseButton = true,
@@ -117,22 +113,18 @@ export function SheetContent({
     </Portal>
   );
 }
-SheetContent.displayName = "Sheet.Content";
 
 export function SheetHeader(props: DialogHeaderProps) {
   return <Dialog.Header dataPart="header" dataScope="sheet" {...props} />;
 }
-SheetHeader.displayName = "Sheet.Header";
 
 export function SheetTitle(props: DialogTitleProps) {
   return <Dialog.Title {...props} />;
 }
-SheetTitle.displayName = "Sheet.Title";
 
 export function SheetDescription(props: DialogDescriptionProps) {
   return <Dialog.Description {...props} />;
 }
-SheetDescription.displayName = "Sheet.Description";
 
 export function SheetBody({ className, ...rest }: DialogBodyProps) {
   return (
@@ -144,12 +136,10 @@ export function SheetBody({ className, ...rest }: DialogBodyProps) {
     />
   );
 }
-SheetBody.displayName = "Sheet.Body";
 
 export function SheetClose(props: SheetCloseProps) {
   return <DialogPrimitive.CloseTrigger {...props} />;
 }
-SheetClose.displayName = "Sheet.Close";
 
 export function SheetFooter({ className, ...rest }: DialogFooterProps) {
   return (
@@ -161,5 +151,16 @@ export function SheetFooter({ className, ...rest }: DialogFooterProps) {
     />
   );
 }
+
+SheetRoot.displayName = "Sheet";
+SheetTrigger.displayName = "Sheet.Trigger";
+SheetOverlay.displayName = "Sheet.Overlay";
+SheetPositioner.displayName = "Sheet.Positioner";
+SheetContent.displayName = "Sheet.Content";
+SheetHeader.displayName = "Sheet.Header";
+SheetTitle.displayName = "Sheet.Title";
+SheetDescription.displayName = "Sheet.Description";
+SheetBody.displayName = "Sheet.Body";
+SheetClose.displayName = "Sheet.Close";
 SheetFooter.displayName = "Sheet.Footer";
 // #endregion

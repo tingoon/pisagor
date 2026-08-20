@@ -85,12 +85,10 @@ export function ListboxRoot<T extends CollectionItem = CollectionItem>({
     </ListboxPrimitive.Root>
   );
 }
-ListboxRoot.displayName = "Listbox.Root";
 
 export function ListboxContent({ className, ...rest }: ListboxContentProps) {
   return <ListboxPrimitive.Content {...rest} className={listboxContentVariants({ className })} />;
 }
-ListboxContent.displayName = "Listbox.Content";
 
 export function ListboxItem({ variant = "default", className, ...rest }: ListboxItemProps) {
   return (
@@ -101,12 +99,10 @@ export function ListboxItem({ variant = "default", className, ...rest }: Listbox
     />
   );
 }
-ListboxItem.displayName = "Listbox.Item";
 
 export function ListboxItemText({ className, ...rest }: ListboxItemTextProps) {
   return <ListboxPrimitive.ItemText {...rest} className={listboxItemTextVariants({ className })} />;
 }
-ListboxItemText.displayName = "Listbox.ItemText";
 
 export function ListboxItemGroup({ heading, className, children, ...rest }: ListboxItemGroupProps) {
   return (
@@ -116,7 +112,6 @@ export function ListboxItemGroup({ heading, className, children, ...rest }: List
     </ListboxPrimitive.ItemGroup>
   );
 }
-ListboxItemGroup.displayName = "Listbox.ItemGroup";
 
 export function ListboxItemGroupLabel({ className, ...rest }: ListboxItemGroupLabelProps) {
   return (
@@ -126,14 +121,12 @@ export function ListboxItemGroupLabel({ className, ...rest }: ListboxItemGroupLa
     />
   );
 }
-ListboxItemGroupLabel.displayName = "Listbox.ItemGroupLabel";
 
 export function ListboxValueText({ className, ...rest }: ListboxValueTextProps) {
   return (
     <ListboxPrimitive.ValueText {...rest} className={listboxValueTextVariants({ className })} />
   );
 }
-ListboxValueText.displayName = "Listbox.ValueText";
 
 export function ListboxItemIndicator({ className, children, ...rest }: ListboxItemIndicatorProps) {
   return (
@@ -145,16 +138,24 @@ export function ListboxItemIndicator({ className, children, ...rest }: ListboxIt
     </ListboxPrimitive.ItemIndicator>
   );
 }
-ListboxItemIndicator.displayName = "Listbox.ItemIndicator";
 
 export function ListboxEmpty({ className, ...rest }: ListboxEmptyProps) {
   return <ListboxPrimitive.Empty {...rest} className={listboxEmptyVariants({ className })} />;
 }
-ListboxEmpty.displayName = "Listbox.Empty";
 
 export function ListboxShortcut(props: DropdownMenuShortcutProps) {
   return <DropdownMenu.Shortcut dataPart="shortcut" dataScope="listbox" {...props} />;
 }
+
+ListboxRoot.displayName = "Listbox.Root";
+ListboxContent.displayName = "Listbox.Content";
+ListboxItem.displayName = "Listbox.Item";
+ListboxItemText.displayName = "Listbox.ItemText";
+ListboxItemGroup.displayName = "Listbox.ItemGroup";
+ListboxItemGroupLabel.displayName = "Listbox.ItemGroupLabel";
+ListboxValueText.displayName = "Listbox.ValueText";
+ListboxItemIndicator.displayName = "Listbox.ItemIndicator";
+ListboxEmpty.displayName = "Listbox.Empty";
 ListboxShortcut.displayName = "Listbox.Shortcut";
 // #endregion
 

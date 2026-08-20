@@ -65,7 +65,6 @@ export function ToggleGroupRoot({
     </ToggleGroupContext>
   );
 }
-ToggleGroupRoot.displayName = "ToggleGroup.Root";
 
 export function ToggleGroupItem({ value, className, ...rest }: ToggleGroupItemProps) {
   const { variant, size, spacing } = useToggleGroup();
@@ -83,6 +82,8 @@ export function ToggleGroupItem({ value, className, ...rest }: ToggleGroupItemPr
     </ToggleGroupPrimitive.Item>
   );
 }
+
+ToggleGroupRoot.displayName = "ToggleGroup.Root";
 ToggleGroupItem.displayName = "ToggleGroup.Item";
 // #endregion
 

@@ -25,7 +25,6 @@ export function QrCodeRoot({ className, children, testId, ...rest }: QrCodeRootP
     </QrCodePrimitive.Root>
   );
 }
-QrCodeRoot.displayName = "QrCode";
 
 export function QrCodeFrame({ className, ...rest }: QrCodeFrameProps) {
   const recipe = qrCodeFrameVariants();
@@ -36,15 +35,17 @@ export function QrCodeFrame({ className, ...rest }: QrCodeFrameProps) {
     </QrCodePrimitive.Frame>
   );
 }
-QrCodeFrame.displayName = "QrCode.Frame";
 
 export function QrCodeOverlay({ className, ...rest }: QrCodeOverlayProps) {
   return <QrCodePrimitive.Overlay {...rest} className={qrCodeOverlayVariants({ className })} />;
 }
-QrCodeOverlay.displayName = "QrCode.Overlay";
 
 export function QrCodeDownload(props: QrCodeDownloadProps) {
   return <QrCodePrimitive.DownloadTrigger {...props} />;
 }
+
+QrCodeRoot.displayName = "QrCode";
+QrCodeFrame.displayName = "QrCode.Frame";
+QrCodeOverlay.displayName = "QrCode.Overlay";
 QrCodeDownload.displayName = "QrCode.Download";
 // #endregion

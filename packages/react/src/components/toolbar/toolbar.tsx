@@ -54,7 +54,6 @@ export function ToolbarRoot({ className, classNames, testId, ...rest }: ToolbarR
     />
   );
 }
-ToolbarRoot.displayName = "Toolbar.Root";
 
 export function ToolbarHeading({ className, classNames, ...rest }: ToolbarPartProps) {
   const slots = toolbarVariants();
@@ -68,7 +67,6 @@ export function ToolbarHeading({ className, classNames, ...rest }: ToolbarPartPr
     />
   );
 }
-ToolbarHeading.displayName = "Toolbar.Heading";
 
 export function ToolbarTitle({ className, classNames, ...rest }: ToolbarPartProps) {
   const slots = toolbarVariants();
@@ -82,7 +80,6 @@ export function ToolbarTitle({ className, classNames, ...rest }: ToolbarPartProp
     />
   );
 }
-ToolbarTitle.displayName = "Toolbar.Title";
 
 export function ToolbarDescription({ className, classNames, ...rest }: ToolbarPartProps) {
   const slots = toolbarVariants();
@@ -96,7 +93,6 @@ export function ToolbarDescription({ className, classNames, ...rest }: ToolbarPa
     />
   );
 }
-ToolbarDescription.displayName = "Toolbar.Description";
 
 export function ToolbarActions({ className, classNames, ...rest }: ToolbarPartProps) {
   const slots = toolbarVariants();
@@ -110,6 +106,11 @@ export function ToolbarActions({ className, classNames, ...rest }: ToolbarPartPr
     />
   );
 }
+
+ToolbarRoot.displayName = "Toolbar.Root";
+ToolbarHeading.displayName = "Toolbar.Heading";
+ToolbarTitle.displayName = "Toolbar.Title";
+ToolbarDescription.displayName = "Toolbar.Description";
 ToolbarActions.displayName = "Toolbar.Actions";
 // #endregion
 

@@ -60,7 +60,6 @@ export function EmptyStateRoot({ className, classNames, testId, ...rest }: Empty
     />
   );
 }
-EmptyStateRoot.displayName = "EmptyState.Root";
 
 export function EmptyStateMedia({ className, classNames, ...rest }: EmptyStatePartProps) {
   const slots = emptyStateVariants();
@@ -74,7 +73,6 @@ export function EmptyStateMedia({ className, classNames, ...rest }: EmptyStatePa
     />
   );
 }
-EmptyStateMedia.displayName = "EmptyState.Media";
 
 export function EmptyStateTitle({ className, classNames, ...rest }: EmptyStatePartProps) {
   const slots = emptyStateVariants();
@@ -88,7 +86,6 @@ export function EmptyStateTitle({ className, classNames, ...rest }: EmptyStatePa
     />
   );
 }
-EmptyStateTitle.displayName = "EmptyState.Title";
 
 export function EmptyStateDescription({ className, classNames, ...rest }: EmptyStatePartProps) {
   const slots = emptyStateVariants();
@@ -102,7 +99,6 @@ export function EmptyStateDescription({ className, classNames, ...rest }: EmptyS
     />
   );
 }
-EmptyStateDescription.displayName = "EmptyState.Description";
 
 export function EmptyStateActions({ className, classNames, ...rest }: EmptyStatePartProps) {
   const slots = emptyStateVariants();
@@ -116,6 +112,11 @@ export function EmptyStateActions({ className, classNames, ...rest }: EmptyState
     />
   );
 }
+
+EmptyStateRoot.displayName = "EmptyState.Root";
+EmptyStateMedia.displayName = "EmptyState.Media";
+EmptyStateTitle.displayName = "EmptyState.Title";
+EmptyStateDescription.displayName = "EmptyState.Description";
 EmptyStateActions.displayName = "EmptyState.Actions";
 // #endregion
 

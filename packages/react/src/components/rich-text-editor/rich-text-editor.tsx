@@ -193,7 +193,6 @@ export function RichTextEditorRoot({
     </RichTextEditorContext>
   );
 }
-RichTextEditorRoot.displayName = "RichTextEditor.Root";
 
 export function RichTextEditorToolbar({
   className,
@@ -292,7 +291,6 @@ export function RichTextEditorToolbar({
     </ark.div>
   );
 }
-RichTextEditorToolbar.displayName = "RichTextEditor.Toolbar";
 
 export function RichTextEditorContent({ className, ...rest }: RichTextEditorContentProps) {
   const editor = useRichTextEditor();
@@ -308,6 +306,9 @@ export function RichTextEditorContent({ className, ...rest }: RichTextEditorCont
     </ark.div>
   );
 }
+
+RichTextEditorRoot.displayName = "RichTextEditor.Root";
+RichTextEditorToolbar.displayName = "RichTextEditor.Toolbar";
 RichTextEditorContent.displayName = "RichTextEditor.Content";
 // #endregion
 

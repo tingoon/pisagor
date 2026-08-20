@@ -56,7 +56,6 @@ function ScrollAreaRoot({
     </ScrollAreaContext>
   );
 }
-ScrollAreaRoot.displayName = "ScrollArea.Root";
 
 function ScrollAreaViewport({ className, children, ...rest }: ScrollAreaViewportProps) {
   const { slots } = useScrollArea();
@@ -67,7 +66,6 @@ function ScrollAreaViewport({ className, children, ...rest }: ScrollAreaViewport
     </ScrollAreaPrimitive.Viewport>
   );
 }
-ScrollAreaViewport.displayName = "ScrollArea.Viewport";
 
 function ScrollAreaScrollbar({
   className,
@@ -87,13 +85,16 @@ function ScrollAreaScrollbar({
     </ScrollAreaPrimitive.Scrollbar>
   );
 }
-ScrollAreaScrollbar.displayName = "ScrollArea.Scrollbar";
 
 function ScrollAreaThumb({ className, ...rest }: ScrollAreaThumbProps) {
   const { slots } = useScrollArea();
 
   return <ScrollAreaPrimitive.Thumb {...rest} className={slots.thumb({ className })} />;
 }
+
+ScrollAreaRoot.displayName = "ScrollArea.Root";
+ScrollAreaViewport.displayName = "ScrollArea.Viewport";
+ScrollAreaScrollbar.displayName = "ScrollArea.Scrollbar";
 ScrollAreaThumb.displayName = "ScrollArea.Thumb";
 // #endregion
 

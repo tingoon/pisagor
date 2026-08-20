@@ -33,7 +33,6 @@ export function FrameRoot({ className, testId, ...rest }: FrameRootProps) {
     />
   );
 }
-FrameRoot.displayName = "Frame";
 
 export function FramePanel({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -45,7 +44,6 @@ export function FramePanel({ className, ...rest }: ComponentProps<typeof ark.div
     />
   );
 }
-FramePanel.displayName = "Frame.Panel";
 
 export function FrameHeader({
   title,
@@ -69,7 +67,6 @@ export function FrameHeader({
     </ark.header>
   );
 }
-FrameHeader.displayName = "Frame.Header";
 
 export function FrameTitle({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -81,7 +78,6 @@ export function FrameTitle({ className, ...rest }: ComponentProps<typeof ark.div
     />
   );
 }
-FrameTitle.displayName = "Frame.Title";
 
 export function FrameDescription({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -93,7 +89,6 @@ export function FrameDescription({ className, ...rest }: ComponentProps<typeof a
     />
   );
 }
-FrameDescription.displayName = "Frame.Description";
 
 export function FrameFooter({ className, ...rest }: ComponentProps<typeof ark.footer>) {
   return (
@@ -105,5 +100,11 @@ export function FrameFooter({ className, ...rest }: ComponentProps<typeof ark.fo
     />
   );
 }
+
+FrameRoot.displayName = "Frame";
+FramePanel.displayName = "Frame.Panel";
+FrameHeader.displayName = "Frame.Header";
+FrameTitle.displayName = "Frame.Title";
+FrameDescription.displayName = "Frame.Description";
 FrameFooter.displayName = "Frame.Footer";
 // #endregion

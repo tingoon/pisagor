@@ -50,12 +50,10 @@ export function AutocompleteRoot<T extends CollectionItem = CollectionItem>(
 ) {
   return <Combobox.Root allowCustomValue inputBehavior="autocomplete" {...props} />;
 }
-AutocompleteRoot.displayName = "Autocomplete.Root";
 
 export function AutocompleteControl(props: ComboboxControlProps) {
   return <Combobox.Control {...props} />;
 }
-AutocompleteControl.displayName = "Autocomplete.Control";
 
 export function AutocompleteInput({
   clearable = false,
@@ -64,56 +62,59 @@ export function AutocompleteInput({
 }: ComboboxInputProps) {
   return <Combobox.Input {...rest} clearable={clearable} showTrigger={showTrigger} />;
 }
-AutocompleteInput.displayName = "Autocomplete.Input";
 
 export function AutocompleteGroupLabel(props: ComboboxGroupLabelProps) {
   return <Combobox.GroupLabel {...props} />;
 }
-AutocompleteGroupLabel.displayName = "Autocomplete.GroupLabel";
 
 export function AutocompleteItem(props: ComboboxItemProps) {
   return <Combobox.Item {...props} />;
 }
-AutocompleteItem.displayName = "Autocomplete.Item";
 
 export function AutocompleteContent(props: ComboboxContentProps) {
   return <Combobox.Content {...props} />;
 }
-AutocompleteContent.displayName = "Autocomplete.Content";
 
 export function AutocompleteTrigger(props: ComboboxTriggerProps) {
   return <Combobox.Trigger {...props} />;
 }
-AutocompleteTrigger.displayName = "Autocomplete.Trigger";
 
 export function AutocompleteClear(props: ComboboxClearProps) {
   return <Combobox.Clear {...props} />;
 }
-AutocompleteClear.displayName = "Autocomplete.Clear";
 
 export function AutocompleteGroup(props: ComboboxGroupProps) {
   return <Combobox.Group {...props} />;
 }
-AutocompleteGroup.displayName = "Autocomplete.Group";
 
 export function AutocompleteEmpty(props: ComboboxEmptyProps) {
   return <Combobox.Empty {...props} />;
 }
-AutocompleteEmpty.displayName = "Autocomplete.Empty";
 
 export function AutocompleteList(props: ComboboxListProps) {
   return <Combobox.List {...props} />;
 }
-AutocompleteList.displayName = "Autocomplete.List";
 
 export function AutocompleteCollection(props: ComboboxListProps) {
   return <Combobox.List {...props} />;
 }
-AutocompleteCollection.displayName = "Autocomplete.Collection";
 
 export function AutocompleteSeparator(props: SeparatorProps) {
   return <Separator dataPart="separator" dataScope="autocomplete" {...props} />;
 }
+
+AutocompleteRoot.displayName = "Autocomplete.Root";
+AutocompleteControl.displayName = "Autocomplete.Control";
+AutocompleteInput.displayName = "Autocomplete.Input";
+AutocompleteGroupLabel.displayName = "Autocomplete.GroupLabel";
+AutocompleteItem.displayName = "Autocomplete.Item";
+AutocompleteContent.displayName = "Autocomplete.Content";
+AutocompleteTrigger.displayName = "Autocomplete.Trigger";
+AutocompleteClear.displayName = "Autocomplete.Clear";
+AutocompleteGroup.displayName = "Autocomplete.Group";
+AutocompleteEmpty.displayName = "Autocomplete.Empty";
+AutocompleteList.displayName = "Autocomplete.List";
+AutocompleteCollection.displayName = "Autocomplete.Collection";
 AutocompleteSeparator.displayName = "Autocomplete.Separator";
 // #endregion
 

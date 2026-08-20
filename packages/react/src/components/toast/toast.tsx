@@ -93,8 +93,6 @@ export function ToasterRoot({
   );
 }
 
-ToasterRoot.displayName = "Toaster";
-
 const TOAST_ICONS = {
   error: <WarningCircleIcon />,
   info: <InfoIcon />,
@@ -180,5 +178,6 @@ export function ToastItem({
   );
 }
 
+ToasterRoot.displayName = "Toaster";
 ToastItem.displayName = "Toaster.Item";
 // #endregion

@@ -66,7 +66,6 @@ export function FileRoot({ className, testId, ...rest }: FileRootProps) {
     />
   );
 }
-FileRoot.displayName = "File.Root";
 
 export function FileMedia({ variant = "icon", className, children, ...rest }: FileMediaProps) {
   return (
@@ -81,7 +80,6 @@ export function FileMedia({ variant = "icon", className, children, ...rest }: Fi
     </ark.div>
   );
 }
-FileMedia.displayName = "File.Media";
 
 export function FileContent({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -93,7 +91,6 @@ export function FileContent({ className, ...rest }: ComponentProps<typeof ark.di
     />
   );
 }
-FileContent.displayName = "File.Content";
 
 export function FileName({ className, ...rest }: FileNameProps) {
   return (
@@ -105,7 +102,6 @@ export function FileName({ className, ...rest }: FileNameProps) {
     />
   );
 }
-FileName.displayName = "File.Name";
 
 export function FileMeta({ className, ...rest }: FileMetaProps) {
   return (
@@ -117,7 +113,6 @@ export function FileMeta({ className, ...rest }: FileMetaProps) {
     />
   );
 }
-FileMeta.displayName = "File.Meta";
 
 export function FileSize({ value, className, ...rest }: FileSizeProps) {
   return (
@@ -131,7 +126,6 @@ export function FileSize({ value, className, ...rest }: FileSizeProps) {
     </ark.div>
   );
 }
-FileSize.displayName = "File.Size";
 
 export function FileActions({ className, ...rest }: FileActionsProps) {
   return (
@@ -143,6 +137,13 @@ export function FileActions({ className, ...rest }: FileActionsProps) {
     />
   );
 }
+
+FileRoot.displayName = "File.Root";
+FileMedia.displayName = "File.Media";
+FileContent.displayName = "File.Content";
+FileName.displayName = "File.Name";
+FileMeta.displayName = "File.Meta";
+FileSize.displayName = "File.Size";
 FileActions.displayName = "File.Actions";
 // #endregion
 

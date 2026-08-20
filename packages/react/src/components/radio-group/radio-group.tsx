@@ -58,7 +58,6 @@ export function RadioGroupRoot({
     </RadioGroupPrimitive.Root>
   );
 }
-RadioGroupRoot.displayName = "RadioGroup.Root";
 
 export function RadioGroupItem({
   variant: variantProp,
@@ -85,7 +84,6 @@ export function RadioGroupItem({
     </RadioGroupPrimitive.Item>
   );
 }
-RadioGroupItem.displayName = "RadioGroup.Item";
 
 export function RadioGroupText({ className, children, ...rest }: RadioGroupTextProps) {
   return (
@@ -96,7 +94,6 @@ export function RadioGroupText({ className, children, ...rest }: RadioGroupTextP
     </Field.Label>
   );
 }
-RadioGroupText.displayName = "RadioGroup.Text";
 
 export function RadioGroupLabel({ children, ...rest }: RadioGroupLabelProps) {
   return (
@@ -105,6 +102,10 @@ export function RadioGroupLabel({ children, ...rest }: RadioGroupLabelProps) {
     </Field.Label>
   );
 }
+
+RadioGroupRoot.displayName = "RadioGroup.Root";
+RadioGroupItem.displayName = "RadioGroup.Item";
+RadioGroupText.displayName = "RadioGroup.Text";
 RadioGroupLabel.displayName = "RadioGroup.Label";
 // #endregion
 

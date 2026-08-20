@@ -129,7 +129,6 @@ export function SelectRoot<T extends CollectionItem = CollectionItem>({
     </SelectRootContext>
   );
 }
-SelectRoot.displayName = "Select.Root";
 
 export function SelectTrigger({
   size = "md",
@@ -172,7 +171,6 @@ export function SelectTrigger({
     </SelectPrimitive.Control>
   );
 }
-SelectTrigger.displayName = "Select.Trigger";
 
 export function SelectSeparator({ className, ...rest }: SeparatorProps) {
   return (
@@ -184,12 +182,10 @@ export function SelectSeparator({ className, ...rest }: SeparatorProps) {
     />
   );
 }
-SelectSeparator.displayName = "Select.Separator";
 
 export function SelectValue({ className, ...rest }: SelectValueProps) {
   return <SelectPrimitive.ValueText {...rest} className={selectInlineVariants({ className })} />;
 }
-SelectValue.displayName = "Select.Value";
 
 export function SelectContent({ className, ...rest }: SelectContentProps) {
   return (
@@ -200,7 +196,6 @@ export function SelectContent({ className, ...rest }: SelectContentProps) {
     </Portal>
   );
 }
-SelectContent.displayName = "Select.Content";
 
 export function SelectGroup({ heading, children, ...rest }: SelectGroupProps) {
   return (
@@ -211,14 +206,12 @@ export function SelectGroup({ heading, children, ...rest }: SelectGroupProps) {
     </SelectPrimitive.ItemGroup>
   );
 }
-SelectGroup.displayName = "Select.Group";
 
 export function SelectGroupLabel({ className, ...rest }: SelectGroupLabelProps) {
   return (
     <SelectPrimitive.ItemGroupLabel {...rest} className={selectGroupLabelVariants({ className })} />
   );
 }
-SelectGroupLabel.displayName = "Select.GroupLabel";
 
 export function SelectItem({ className, children, ...rest }: SelectItemProps) {
   const recipe = selectItemVariants();
@@ -235,7 +228,6 @@ export function SelectItem({ className, children, ...rest }: SelectItemProps) {
     </SelectPrimitive.Item>
   );
 }
-SelectItem.displayName = "Select.Item";
 
 export function SelectClearTrigger({ className, ...rest }: SelectClearTriggerProps) {
   return (
@@ -246,7 +238,6 @@ export function SelectClearTrigger({ className, ...rest }: SelectClearTriggerPro
     />
   );
 }
-SelectClearTrigger.displayName = "Select.ClearTrigger";
 
 export function SelectEmpty({ className, ...rest }: ComponentProps<typeof ark.div>) {
   const { empty } = useSelect();
@@ -259,6 +250,16 @@ export function SelectEmpty({ className, ...rest }: ComponentProps<typeof ark.di
 
   return null;
 }
+
+SelectRoot.displayName = "Select.Root";
+SelectTrigger.displayName = "Select.Trigger";
+SelectSeparator.displayName = "Select.Separator";
+SelectValue.displayName = "Select.Value";
+SelectContent.displayName = "Select.Content";
+SelectGroup.displayName = "Select.Group";
+SelectGroupLabel.displayName = "Select.GroupLabel";
+SelectItem.displayName = "Select.Item";
+SelectClearTrigger.displayName = "Select.ClearTrigger";
 SelectEmpty.displayName = "Select.Empty";
 // #endregion
 

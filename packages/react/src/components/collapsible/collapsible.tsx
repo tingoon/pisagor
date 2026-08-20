@@ -42,14 +42,12 @@ export function CollapsibleRoot({
     />
   );
 }
-CollapsibleRoot.displayName = "Collapsible";
 
 export function CollapsibleTrigger({ className, ...rest }: CollapsibleTriggerProps) {
   return (
     <CollapsiblePrimitive.Trigger {...rest} className={collapsibleTriggerVariants({ className })} />
   );
 }
-CollapsibleTrigger.displayName = "Collapsible.Trigger";
 
 export function CollapsibleContent({ className, children, ...rest }: CollapsibleContentProps) {
   return (
@@ -58,7 +56,6 @@ export function CollapsibleContent({ className, children, ...rest }: Collapsible
     </CollapsiblePrimitive.Content>
   );
 }
-CollapsibleContent.displayName = "Collapsible.Content";
 
 export function CollapsibleIndicator({ className, ...rest }: CollapsibleIndicatorProps) {
   const recipe = collapsibleIndicatorVariants();
@@ -69,5 +66,9 @@ export function CollapsibleIndicator({ className, ...rest }: CollapsibleIndicato
     </CollapsiblePrimitive.Indicator>
   );
 }
+
+CollapsibleRoot.displayName = "Collapsible";
+CollapsibleTrigger.displayName = "Collapsible.Trigger";
+CollapsibleContent.displayName = "Collapsible.Content";
 CollapsibleIndicator.displayName = "Collapsible.Indicator";
 // #endregion

@@ -37,7 +37,6 @@ export function NavbarRoot({ className, classNames, testId, ...rest }: NavbarRoo
     />
   );
 }
-NavbarRoot.displayName = "Navbar";
 
 export function NavbarBrand({ className, classNames, ...rest }: NavbarPartProps) {
   const slots = navbarVariants();
@@ -51,7 +50,6 @@ export function NavbarBrand({ className, classNames, ...rest }: NavbarPartProps)
     />
   );
 }
-NavbarBrand.displayName = "Navbar.Brand";
 
 export function NavbarContent({ className, classNames, ...rest }: NavbarPartProps) {
   const slots = navbarVariants();
@@ -65,7 +63,6 @@ export function NavbarContent({ className, classNames, ...rest }: NavbarPartProp
     />
   );
 }
-NavbarContent.displayName = "Navbar.Content";
 
 export function NavbarNav({
   "aria-label": ariaLabel = "Main",
@@ -85,7 +82,6 @@ export function NavbarNav({
     />
   );
 }
-NavbarNav.displayName = "Navbar.Nav";
 
 export function NavbarActions({ className, classNames, ...rest }: NavbarPartProps) {
   const slots = navbarVariants();
@@ -99,5 +95,10 @@ export function NavbarActions({ className, classNames, ...rest }: NavbarPartProp
     />
   );
 }
+
+NavbarRoot.displayName = "Navbar";
+NavbarBrand.displayName = "Navbar.Brand";
+NavbarContent.displayName = "Navbar.Content";
+NavbarNav.displayName = "Navbar.Nav";
 NavbarActions.displayName = "Navbar.Actions";
 // #endregion

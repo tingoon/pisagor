@@ -30,7 +30,6 @@ export function BottomNavigationRoot({ className, testId, ...rest }: BottomNavig
     />
   );
 }
-BottomNavigationRoot.displayName = "BottomNavigation";
 
 export function BottomNavigationList({
   "aria-label": ariaLabel,
@@ -39,14 +38,12 @@ export function BottomNavigationList({
 }: BottomNavigationListProps) {
   return <TabsPrimitive.List {...rest} className={bottomNavigationListVariants({ className })} />;
 }
-BottomNavigationList.displayName = "BottomNavigation.List";
 
 export function BottomNavigationItem({ className, ...rest }: BottomNavigationItemProps) {
   return (
     <TabsPrimitive.Trigger {...rest} className={bottomNavigationItemVariants({ className })} />
   );
 }
-BottomNavigationItem.displayName = "BottomNavigation.Item";
 
 export function BottomNavigationItemIcon({ className, ...rest }: ComponentProps<typeof ark.span>) {
   return (
@@ -59,7 +56,6 @@ export function BottomNavigationItemIcon({ className, ...rest }: ComponentProps<
     />
   );
 }
-BottomNavigationItemIcon.displayName = "BottomNavigation.ItemIcon";
 
 export function BottomNavigationItemLabel({ className, ...rest }: ComponentProps<typeof ark.span>) {
   return (
@@ -71,5 +67,10 @@ export function BottomNavigationItemLabel({ className, ...rest }: ComponentProps
     />
   );
 }
+
+BottomNavigationRoot.displayName = "BottomNavigation";
+BottomNavigationList.displayName = "BottomNavigation.List";
+BottomNavigationItem.displayName = "BottomNavigation.Item";
+BottomNavigationItemIcon.displayName = "BottomNavigation.ItemIcon";
 BottomNavigationItemLabel.displayName = "BottomNavigation.ItemLabel";
 // #endregion

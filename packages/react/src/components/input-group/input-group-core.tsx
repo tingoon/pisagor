@@ -63,7 +63,6 @@ export function InputGroupRoot({
     />
   );
 }
-InputGroupRoot.displayName = "InputGroup";
 
 export function InputGroupAddon({
   align = "inline-start",
@@ -89,7 +88,6 @@ export function InputGroupAddon({
     />
   );
 }
-InputGroupAddon.displayName = "InputGroup.Addon";
 
 export function InputGroupButton({
   className,
@@ -108,7 +106,6 @@ export function InputGroupButton({
     />
   );
 }
-InputGroupButton.displayName = "InputGroup.Button";
 
 export function InputGroupText({ className, ...rest }: ComponentProps<typeof ark.span>) {
   return (
@@ -120,5 +117,9 @@ export function InputGroupText({ className, ...rest }: ComponentProps<typeof ark
     />
   );
 }
+
+InputGroupRoot.displayName = "InputGroup";
+InputGroupAddon.displayName = "InputGroup.Addon";
+InputGroupButton.displayName = "InputGroup.Button";
 InputGroupText.displayName = "InputGroup.Text";
 // #endregion

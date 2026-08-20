@@ -66,7 +66,6 @@ export function TabsRoot({
     </TabsPrimitive.Root>
   );
 }
-TabsRoot.displayName = "Tabs";
 
 export function TabsList({ variant = "default", className, children, ...rest }: TabsListProps) {
   const { list, indicator } = tabsListVariants({ variant });
@@ -79,15 +78,17 @@ export function TabsList({ variant = "default", className, children, ...rest }: 
     </TabsPrimitive.List>
   );
 }
-TabsList.displayName = "Tabs.List";
 
 export function TabsTrigger({ className, ...rest }: TabsTriggerProps) {
   return <TabsPrimitive.Trigger {...rest} className={tabsTriggerVariants({ className })} />;
 }
-TabsTrigger.displayName = "Tabs.Trigger";
 
 export function TabsContent({ className, ...rest }: TabsContentProps) {
   return <TabsPrimitive.Content {...rest} className={tabsContentVariants({ className })} />;
 }
+
+TabsRoot.displayName = "Tabs";
+TabsList.displayName = "Tabs.List";
+TabsTrigger.displayName = "Tabs.Trigger";
 TabsContent.displayName = "Tabs.Content";
 // #endregion

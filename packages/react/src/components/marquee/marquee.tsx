@@ -71,7 +71,6 @@ export function MarqueeRoot({
     </MarqueePrimitive.Root>
   );
 }
-MarqueeRoot.displayName = "Marquee.Root";
 
 export function MarqueeContent({ className, ...rest }: MarqueeContentProps) {
   const recipe = marqueeContentVariants();
@@ -82,16 +81,18 @@ export function MarqueeContent({ className, ...rest }: MarqueeContentProps) {
     </MarqueePrimitive.Viewport>
   );
 }
-MarqueeContent.displayName = "Marquee.Content";
 
 export function MarqueeItem({ className, ...rest }: MarqueeItemProps) {
   return <MarqueePrimitive.Item {...rest} className={marqueeItemVariants({ className })} />;
 }
-MarqueeItem.displayName = "Marquee.Item";
 
 export function MarqueeEdge({ className, ...rest }: MarqueeEdgeProps) {
   return <MarqueePrimitive.Edge {...rest} className={marqueeEdgeVariants({ className })} />;
 }
+
+MarqueeRoot.displayName = "Marquee.Root";
+MarqueeContent.displayName = "Marquee.Content";
+MarqueeItem.displayName = "Marquee.Item";
 MarqueeEdge.displayName = "Marquee.Edge";
 // #endregion
 

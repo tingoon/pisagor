@@ -29,7 +29,6 @@ export function ButtonGroupRoot({ className, orientation, testId, ...rest }: But
     />
   );
 }
-ButtonGroupRoot.displayName = "ButtonGroup";
 
 export function ButtonGroupText({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -41,7 +40,6 @@ export function ButtonGroupText({ className, ...rest }: ComponentProps<typeof ar
     />
   );
 }
-ButtonGroupText.displayName = "ButtonGroup.Text";
 
 export function ButtonGroupSeparator({
   orientation = "vertical",
@@ -58,5 +56,8 @@ export function ButtonGroupSeparator({
     />
   );
 }
+
+ButtonGroupRoot.displayName = "ButtonGroup";
+ButtonGroupText.displayName = "ButtonGroup.Text";
 ButtonGroupSeparator.displayName = "ButtonGroup.Separator";
 // #endregion

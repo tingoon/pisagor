@@ -133,27 +133,22 @@ export function TreeViewRoot({
     </TreeViewContext>
   );
 }
-TreeViewRoot.displayName = "TreeView";
 
 export function TreeViewLabel({ className, ...rest }: TreeViewLabelProps) {
   return <TreeViewPrimitive.Label {...rest} className={treeViewLabelVariants({ className })} />;
 }
-TreeViewLabel.displayName = "TreeView.Label";
 
 export function TreeViewTree({ className, ...rest }: TreeViewTreeProps) {
   return <TreeViewPrimitive.Tree {...rest} className={treeViewTreeVariants({ className })} />;
 }
-TreeViewTree.displayName = "TreeView.Tree";
 
 export const TreeViewNode = <T extends TreeNodeType>(props: NodeProviderProps<T>) => (
   <TreeViewPrimitive.NodeProvider {...props} />
 );
-TreeViewNode.displayName = "TreeView.Node";
 
 export function TreeViewBranch(props: TreeViewBranchProps) {
   return <TreeViewPrimitive.Branch className={treeViewBranchVariants()} {...props} />;
 }
-TreeViewBranch.displayName = "TreeView.Branch";
 
 export function TreeViewBranchItem({
   icon,
@@ -171,7 +166,6 @@ export function TreeViewBranchItem({
     </TreeViewPrimitive.BranchControl>
   );
 }
-TreeViewBranchItem.displayName = "TreeView.BranchItem";
 
 function TreeViewBranchTitle({
   icon: Icon,
@@ -218,7 +212,6 @@ export function TreeViewBranchIndicator({ className, ...rest }: TreeViewBranchIn
     </TreeViewPrimitive.BranchIndicator>
   );
 }
-TreeViewBranchIndicator.displayName = "TreeView.BranchIndicator";
 
 export function TreeViewBranchContent({
   className,
@@ -235,7 +228,6 @@ export function TreeViewBranchContent({
     </TreeViewPrimitive.BranchContent>
   );
 }
-TreeViewBranchContent.displayName = "TreeView.BranchContent";
 
 function TreeViewBranchIndentGuide({ className, ...rest }: TreeViewBranchIndentGuideProps) {
   const recipe = treeViewBranchContentVariants();
@@ -248,7 +240,6 @@ function TreeViewBranchIndentGuide({ className, ...rest }: TreeViewBranchIndentG
 export function TreeViewContent({ className, ...rest }: TreeViewContentProps) {
   return <TreeViewPrimitive.Item {...rest} className={treeViewControlVariants({ className })} />;
 }
-TreeViewContent.displayName = "TreeView.Content";
 
 export function TreeViewItem({
   icon: Icon = FileIcon,
@@ -286,7 +277,6 @@ export function TreeViewItem({
     </TreeViewPrimitive.NodeContext>
   );
 }
-TreeViewItem.displayName = "TreeView.Item";
 
 function TreeViewItemIcon({ className, ...rest }: ComponentProps<typeof ark.span>) {
   return (
@@ -317,7 +307,6 @@ export function TreeViewCheckbox({ className, ...rest }: TreeViewCheckboxProps) 
     </TreeViewPrimitive.NodeCheckbox>
   );
 }
-TreeViewCheckbox.displayName = "TreeView.Checkbox";
 
 function TreeViewNodeInput({ className, ...rest }: TreeViewNodeInputProps) {
   return (
@@ -337,4 +326,16 @@ const getFileExtension = (file: string) => {
 
   return name ? `.${name}` : null;
 };
+
+TreeViewRoot.displayName = "TreeView";
+TreeViewLabel.displayName = "TreeView.Label";
+TreeViewTree.displayName = "TreeView.Tree";
+TreeViewNode.displayName = "TreeView.Node";
+TreeViewBranch.displayName = "TreeView.Branch";
+TreeViewBranchItem.displayName = "TreeView.BranchItem";
+TreeViewBranchIndicator.displayName = "TreeView.BranchIndicator";
+TreeViewBranchContent.displayName = "TreeView.BranchContent";
+TreeViewContent.displayName = "TreeView.Content";
+TreeViewItem.displayName = "TreeView.Item";
+TreeViewCheckbox.displayName = "TreeView.Checkbox";
 // #endregion

@@ -70,7 +70,6 @@ function ProgressRoot({
     </ProgressContext>
   );
 }
-ProgressRoot.displayName = "Progress.Root";
 
 function ProgressHeader({ className, children, ...rest }: ProgressHeaderProps) {
   const { slots } = useProgress();
@@ -81,14 +80,12 @@ function ProgressHeader({ className, children, ...rest }: ProgressHeaderProps) {
     </div>
   );
 }
-ProgressHeader.displayName = "Progress.Header";
 
 function ProgressValue({ className, ...rest }: ProgressValueProps) {
   const { slots } = useProgress();
 
   return <ProgressPrimitive.ValueText {...rest} className={slots.value({ className })} />;
 }
-ProgressValue.displayName = "Progress.Value";
 
 function ProgressTrack({ className, children, ...rest }: ProgressTrackProps) {
   const { slots } = useProgress();
@@ -99,13 +96,17 @@ function ProgressTrack({ className, children, ...rest }: ProgressTrackProps) {
     </ProgressPrimitive.Track>
   );
 }
-ProgressTrack.displayName = "Progress.Track";
 
 function ProgressRange({ className, ...rest }: ProgressRangeProps) {
   const { slots } = useProgress();
 
   return <ProgressPrimitive.Range {...rest} className={slots.range({ className })} />;
 }
+
+ProgressRoot.displayName = "Progress.Root";
+ProgressHeader.displayName = "Progress.Header";
+ProgressValue.displayName = "Progress.Value";
+ProgressTrack.displayName = "Progress.Track";
 ProgressRange.displayName = "Progress.Range";
 // #endregion
 

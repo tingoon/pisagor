@@ -28,7 +28,6 @@ export function InputClearButton({ onClear, ...rest }: InputClearButtonProps) {
     </InputGroupButton>
   );
 }
-InputClearButton.displayName = "Input.ClearButton";
 
 export function InputClearAddon({ onClear, ...rest }: InputClearButtonProps) {
   return (
@@ -37,5 +36,7 @@ export function InputClearAddon({ onClear, ...rest }: InputClearButtonProps) {
     </InputGroupAddon>
   );
 }
+
+InputClearButton.displayName = "Input.ClearButton";
 InputClearAddon.displayName = "Input.ClearAddon";
 // #endregion

@@ -42,14 +42,12 @@ export function HoverCardRoot({
     </HoverCardRootContext>
   );
 }
-HoverCardRoot.displayName = "HoverCard";
 
 export function HoverCardTrigger(props: HoverCardTriggerProps) {
   const { testId } = useHoverCardRoot() ?? {};
 
   return <HoverCardPrimitive.Trigger data-testid={testId} {...props} />;
 }
-HoverCardTrigger.displayName = "HoverCard.Trigger";
 
 export function HoverCardArrow({ style, ...rest }: HoverCardArrowProps) {
   return (
@@ -65,7 +63,6 @@ export function HoverCardArrow({ style, ...rest }: HoverCardArrowProps) {
     </HoverCardPrimitive.Arrow>
   );
 }
-HoverCardArrow.displayName = "HoverCard.Arrow";
 
 export function HoverCardContent({ className, children, ...rest }: HoverCardContentProps) {
   return (
@@ -80,5 +77,9 @@ export function HoverCardContent({ className, children, ...rest }: HoverCardCont
     </Portal>
   );
 }
+
+HoverCardRoot.displayName = "HoverCard";
+HoverCardTrigger.displayName = "HoverCard.Trigger";
+HoverCardArrow.displayName = "HoverCard.Arrow";
 HoverCardContent.displayName = "HoverCard.Content";
 // #endregion

@@ -19,7 +19,6 @@ export function InputGroupInput({ className, classNames, ...rest }: InputProps) 
     />
   );
 }
-InputGroupInput.displayName = "InputGroup.Input";
 
 export function InputGroupTextarea({ classNames, ...rest }: TextareaProps) {
   return (
@@ -32,5 +31,7 @@ export function InputGroupTextarea({ classNames, ...rest }: TextareaProps) {
     />
   );
 }
+
+InputGroupInput.displayName = "InputGroup.Input";
 InputGroupTextarea.displayName = "InputGroup.Textarea";
 // #endregion

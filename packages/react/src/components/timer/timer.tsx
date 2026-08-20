@@ -80,12 +80,10 @@ export function TimerRoot({
     </TimerPrimitive.Root>
   );
 }
-TimerRoot.displayName = "Timer";
 
 export function TimerArea({ className, ...rest }: TimerAreaProps) {
   return <TimerPrimitive.Area {...rest} className={timerAreaVariants({ className })} />;
 }
-TimerArea.displayName = "Timer.Area";
 
 export function TimerItemGroup({
   orientation = "vertical",
@@ -102,12 +100,10 @@ export function TimerItemGroup({
     />
   );
 }
-TimerItemGroup.displayName = "Timer.ItemGroup";
 
 export function TimerItem({ className, ...rest }: TimerItemProps) {
   return <TimerPrimitive.Item {...rest} className={timerItemVariants({ className })} />;
 }
-TimerItem.displayName = "Timer.Item";
 
 export function TimerItemLabel({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -119,7 +115,6 @@ export function TimerItemLabel({ className, ...rest }: ComponentProps<typeof ark
     />
   );
 }
-TimerItemLabel.displayName = "Timer.ItemLabel";
 
 export function TimerSeparator({ className, children, ...rest }: TimerSeparatorProps) {
   return (
@@ -128,42 +123,34 @@ export function TimerSeparator({ className, children, ...rest }: TimerSeparatorP
     </TimerPrimitive.Separator>
   );
 }
-TimerSeparator.displayName = "Timer.Separator";
 
 export function TimerControl({ className, ...rest }: TimerControlProps) {
   return <TimerPrimitive.Control {...rest} className={timerControlVariants({ className })} />;
 }
-TimerControl.displayName = "Timer.Control";
 
 export function TimerActionTrigger(props: TimerActionTriggerProps) {
   return <TimerPrimitive.ActionTrigger {...props} />;
 }
-TimerActionTrigger.displayName = "Timer.ActionTrigger";
 
 export function TimerPause(props: TimerActionProps) {
   return <TimerPrimitive.ActionTrigger aria-label="Pause" {...props} action="pause" />;
 }
-TimerPause.displayName = "Timer.Pause";
 
 export function TimerResume(props: TimerActionProps) {
   return <TimerPrimitive.ActionTrigger aria-label="Resume" {...props} action="resume" />;
 }
-TimerResume.displayName = "Timer.Resume";
 
 export function TimerStart(props: TimerActionProps) {
   return <TimerPrimitive.ActionTrigger aria-label="Start" {...props} action="start" />;
 }
-TimerStart.displayName = "Timer.Start";
 
 export function TimerReset(props: TimerActionProps) {
   return <TimerPrimitive.ActionTrigger aria-label="Reset" {...props} action="reset" />;
 }
-TimerReset.displayName = "Timer.Reset";
 
 export function TimerRestart(props: TimerActionProps) {
   return <TimerPrimitive.ActionTrigger aria-label="Restart" {...props} action="restart" />;
 }
-TimerRestart.displayName = "Timer.Restart";
 
 export function TimerPlay(props: TimerActionProps) {
   const { paused } = useTimer();
@@ -174,5 +161,19 @@ export function TimerPlay(props: TimerActionProps) {
 
   return <TimerStart {...props} />;
 }
+
+TimerRoot.displayName = "Timer";
+TimerArea.displayName = "Timer.Area";
+TimerItemGroup.displayName = "Timer.ItemGroup";
+TimerItem.displayName = "Timer.Item";
+TimerItemLabel.displayName = "Timer.ItemLabel";
+TimerSeparator.displayName = "Timer.Separator";
+TimerControl.displayName = "Timer.Control";
+TimerActionTrigger.displayName = "Timer.ActionTrigger";
+TimerPause.displayName = "Timer.Pause";
+TimerResume.displayName = "Timer.Resume";
+TimerStart.displayName = "Timer.Start";
+TimerReset.displayName = "Timer.Reset";
+TimerRestart.displayName = "Timer.Restart";
 TimerPlay.displayName = "Timer.Play";
 // #endregion

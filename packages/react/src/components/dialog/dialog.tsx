@@ -84,14 +84,12 @@ export function DialogRoot({
     </DialogContext>
   );
 }
-DialogRoot.displayName = "Dialog";
 
 export type DialogTriggerProps = ComponentProps<typeof DialogPrimitive.Trigger>;
 
 export function DialogTrigger(props: DialogTriggerProps) {
   return <DialogPrimitive.Trigger {...props} />;
 }
-DialogTrigger.displayName = "Dialog.Trigger";
 
 export type DialogOverlayProps = ComponentProps<typeof DialogPrimitive.Backdrop>;
 
@@ -104,7 +102,6 @@ export function DialogOverlay({ className, ...rest }: DialogOverlayProps) {
 
   return <DialogPrimitive.Backdrop {...rest} className={dialogOverlayVariants({ className })} />;
 }
-DialogOverlay.displayName = "Dialog.Overlay";
 
 export type DialogPositionerProps = ComponentProps<typeof DialogPrimitive.Positioner> & {
   bottomStickOnMobile?: boolean;
@@ -125,7 +122,6 @@ export function DialogPositioner({
     />
   );
 }
-DialogPositioner.displayName = "Dialog.Positioner";
 
 export function DialogContent({
   showCloseButton = true,
@@ -166,7 +162,6 @@ export function DialogContent({
     </Portal>
   );
 }
-DialogContent.displayName = "Dialog.Content";
 
 export function DialogBody({
   scrollFade = false,
@@ -186,7 +181,6 @@ export function DialogBody({
     </ScrollArea>
   );
 }
-DialogBody.displayName = "Dialog.Body";
 
 export function DialogHeader({
   className,
@@ -212,14 +206,12 @@ export function DialogHeader({
     </ark.div>
   );
 }
-DialogHeader.displayName = "Dialog.Header";
 
 export type DialogTitleProps = ComponentProps<typeof DialogPrimitive.Title>;
 
 export function DialogTitle({ className, ...rest }: DialogTitleProps) {
   return <DialogPrimitive.Title {...rest} className={dialogTitleVariants({ className })} />;
 }
-DialogTitle.displayName = "Dialog.Title";
 
 export type DialogDescriptionProps = ComponentProps<typeof DialogPrimitive.Description>;
 
@@ -228,14 +220,12 @@ export function DialogDescription({ className, ...rest }: DialogDescriptionProps
     <DialogPrimitive.Description {...rest} className={dialogDescriptionVariants({ className })} />
   );
 }
-DialogDescription.displayName = "Dialog.Description";
 
 export type DialogCloseProps = ComponentProps<typeof DialogPrimitive.CloseTrigger>;
 
 export function DialogClose(props: DialogCloseProps) {
   return <DialogPrimitive.CloseTrigger {...props} />;
 }
-DialogClose.displayName = "Dialog.Close";
 
 export type DialogFooterProps = ComponentProps<typeof ark.div> & {
   dataPart?: string;
@@ -257,5 +247,16 @@ export function DialogFooter({
     />
   );
 }
+
+DialogRoot.displayName = "Dialog";
+DialogTrigger.displayName = "Dialog.Trigger";
+DialogOverlay.displayName = "Dialog.Overlay";
+DialogPositioner.displayName = "Dialog.Positioner";
+DialogContent.displayName = "Dialog.Content";
+DialogBody.displayName = "Dialog.Body";
+DialogHeader.displayName = "Dialog.Header";
+DialogTitle.displayName = "Dialog.Title";
+DialogDescription.displayName = "Dialog.Description";
+DialogClose.displayName = "Dialog.Close";
 DialogFooter.displayName = "Dialog.Footer";
 // #endregion

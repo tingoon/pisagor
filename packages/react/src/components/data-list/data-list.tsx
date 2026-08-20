@@ -58,7 +58,6 @@ export function DataListRoot({
     </ark.dl>
   );
 }
-DataListRoot.displayName = "DataList.Root";
 
 function DataListItemLabel({ className, ...rest }: ComponentProps<typeof ark.dt>) {
   const slots = dataListVariants();
@@ -72,7 +71,6 @@ function DataListItemLabel({ className, ...rest }: ComponentProps<typeof ark.dt>
     />
   );
 }
-DataListItemLabel.displayName = "DataList.ItemLabel";
 
 function DataListItemValue({ className, ...rest }: ComponentProps<typeof ark.dd>) {
   const slots = dataListVariants();
@@ -86,7 +84,6 @@ function DataListItemValue({ className, ...rest }: ComponentProps<typeof ark.dd>
     />
   );
 }
-DataListItemValue.displayName = "DataList.ItemValue";
 
 export function DataListItem({
   value,
@@ -111,6 +108,10 @@ export function DataListItem({
     </ark.div>
   );
 }
+
+DataListRoot.displayName = "DataList.Root";
+DataListItemLabel.displayName = "DataList.ItemLabel";
+DataListItemValue.displayName = "DataList.ItemValue";
 DataListItem.displayName = "DataList.Item";
 // #endregion
 

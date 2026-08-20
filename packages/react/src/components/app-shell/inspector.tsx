@@ -143,7 +143,6 @@ export function AppShellInspector({
     </aside>
   );
 }
-AppShellInspector.displayName = "AppShell.Inspector";
 
 export function AppShellInspectorHeader({ className, ...rest }: ComponentProps<"div">) {
   return (
@@ -155,7 +154,6 @@ export function AppShellInspectorHeader({ className, ...rest }: ComponentProps<"
     />
   );
 }
-AppShellInspectorHeader.displayName = "AppShell.InspectorHeader";
 
 export function AppShellInspectorContent({ className, ...rest }: ComponentProps<"div">) {
   return (
@@ -169,7 +167,6 @@ export function AppShellInspectorContent({ className, ...rest }: ComponentProps<
     </ScrollArea>
   );
 }
-AppShellInspectorContent.displayName = "AppShell.InspectorContent";
 
 export function AppShellInspectorFooter({ className, ...rest }: ComponentProps<"div">) {
   return (
@@ -181,7 +178,6 @@ export function AppShellInspectorFooter({ className, ...rest }: ComponentProps<"
     />
   );
 }
-AppShellInspectorFooter.displayName = "AppShell.InspectorFooter";
 
 export function AppShellInspectorTrigger({
   placement = "end",
@@ -215,4 +211,9 @@ export function AppShellInspectorTrigger({
     </AppShellSideTrigger>
   );
 }
+
+AppShellInspector.displayName = "AppShell.Inspector";
+AppShellInspectorHeader.displayName = "AppShell.InspectorHeader";
+AppShellInspectorContent.displayName = "AppShell.InspectorContent";
+AppShellInspectorFooter.displayName = "AppShell.InspectorFooter";
 AppShellInspectorTrigger.displayName = "AppShell.InspectorTrigger";

@@ -19,7 +19,6 @@ export function KbdRoot({ variant = "default", className, testId, ...rest }: Kbd
     />
   );
 }
-KbdRoot.displayName = "Kbd";
 
 export function KbdGroup({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
@@ -31,5 +30,7 @@ export function KbdGroup({ className, ...rest }: ComponentProps<typeof ark.div>)
     />
   );
 }
+
+KbdRoot.displayName = "Kbd";
 KbdGroup.displayName = "Kbd.Group";
 // #endregion

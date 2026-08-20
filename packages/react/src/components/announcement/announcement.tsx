@@ -49,7 +49,6 @@ export function AnnouncementRoot({
     />
   );
 }
-AnnouncementRoot.displayName = "Announcement.Root";
 
 export function AnnouncementTitle({ className, ...rest }: AnnouncementTitleProps) {
   return (
@@ -61,6 +60,8 @@ export function AnnouncementTitle({ className, ...rest }: AnnouncementTitleProps
     />
   );
 }
+
+AnnouncementRoot.displayName = "Announcement.Root";
 AnnouncementTitle.displayName = "Announcement.Title";
 // #endregion
 

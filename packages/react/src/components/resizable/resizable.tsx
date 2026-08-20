@@ -159,7 +159,6 @@ export function ResizableEdgeHandle({
     </button>
   );
 }
-ResizableEdgeHandle.displayName = "Resizable.EdgeHandle";
 
 export function ResizableRoot({ className, testId, ...rest }: ResizableRootProps) {
   return (
@@ -170,12 +169,10 @@ export function ResizableRoot({ className, testId, ...rest }: ResizableRootProps
     />
   );
 }
-ResizableRoot.displayName = "Resizable";
 
 export function ResizablePanel(props: ResizablePanelProps) {
   return <SplitterPrimitive.Panel {...props} />;
 }
-ResizablePanel.displayName = "Resizable.Panel";
 
 export function ResizableResizeTriggerIndicator({
   className,
@@ -188,7 +185,6 @@ export function ResizableResizeTriggerIndicator({
     />
   );
 }
-ResizableResizeTriggerIndicator.displayName = "Resizable.ResizeTriggerIndicator";
 
 export function ResizableResizeTrigger({
   withHandle = false,
@@ -212,15 +208,20 @@ export function ResizableResizeTrigger({
     </SplitterPrimitive.ResizeTrigger>
   );
 }
-ResizableResizeTrigger.displayName = "Resizable.ResizeTrigger";
 
 export function ResizableContext(props: ResizableContextProps) {
   return <SplitterPrimitive.Context {...props} />;
 }
-ResizableContext.displayName = "Resizable.Context";
 
 export function ResizableRootProvider(props: ResizableRootProviderProps) {
   return <SplitterPrimitive.RootProvider {...props} />;
 }
+
+ResizableEdgeHandle.displayName = "Resizable.EdgeHandle";
+ResizableRoot.displayName = "Resizable";
+ResizablePanel.displayName = "Resizable.Panel";
+ResizableResizeTriggerIndicator.displayName = "Resizable.ResizeTriggerIndicator";
+ResizableResizeTrigger.displayName = "Resizable.ResizeTrigger";
+ResizableContext.displayName = "Resizable.Context";
 ResizableRootProvider.displayName = "Resizable.RootProvider";
 // #endregion

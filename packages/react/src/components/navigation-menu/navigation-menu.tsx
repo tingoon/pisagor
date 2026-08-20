@@ -52,7 +52,6 @@ export function NavigationMenuRoot({
     />
   );
 }
-NavigationMenuRoot.displayName = "NavigationMenu";
 
 export function NavigationMenuList({ className, classNames, ...rest }: NavigationMenuPartProps) {
   const slots = navigationMenuVariants();
@@ -66,7 +65,6 @@ export function NavigationMenuList({ className, classNames, ...rest }: Navigatio
     />
   );
 }
-NavigationMenuList.displayName = "NavigationMenu.List";
 
 export function NavigationMenuItem({ className, classNames, ...rest }: NavigationMenuItemProps) {
   const slots = navigationMenuVariants();
@@ -80,7 +78,6 @@ export function NavigationMenuItem({ className, classNames, ...rest }: Navigatio
     />
   );
 }
-NavigationMenuItem.displayName = "NavigationMenu.Item";
 
 export function NavigationMenuLink({
   active = false,
@@ -101,5 +98,9 @@ export function NavigationMenuLink({
     />
   );
 }
+
+NavigationMenuRoot.displayName = "NavigationMenu";
+NavigationMenuList.displayName = "NavigationMenu.List";
+NavigationMenuItem.displayName = "NavigationMenu.Item";
 NavigationMenuLink.displayName = "NavigationMenu.Link";
 // #endregion

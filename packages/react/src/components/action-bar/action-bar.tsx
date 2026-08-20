@@ -178,7 +178,6 @@ export function ActionBarRoot({
     </ActionBarContext>
   );
 }
-ActionBarRoot.displayName = "ActionBar";
 
 export function ActionBarTrigger({ onClick, ...rest }: ActionBarTriggerProps) {
   const { onOpen, isOpen } = useActionBar();
@@ -200,7 +199,6 @@ export function ActionBarTrigger({ onClick, ...rest }: ActionBarTriggerProps) {
     />
   );
 }
-ActionBarTrigger.displayName = "ActionBar.Trigger";
 
 export function ActionBarContent({
   "aria-labelledby": ariaLabelledby,
@@ -236,7 +234,6 @@ export function ActionBarContent({
     </Portal>
   );
 }
-ActionBarContent.displayName = "ActionBar.Content";
 
 export function ActionBarSeparator({ className, ...rest }: ActionBarSeparatorProps) {
   return (
@@ -249,7 +246,6 @@ export function ActionBarSeparator({ className, ...rest }: ActionBarSeparatorPro
     />
   );
 }
-ActionBarSeparator.displayName = "ActionBar.Separator";
 
 export function ActionBarClose({ className, onClick, ...rest }: ActionBarCloseProps) {
   const { onClose, isOpen } = useActionBar();
@@ -272,7 +268,6 @@ export function ActionBarClose({ className, onClick, ...rest }: ActionBarClosePr
     />
   );
 }
-ActionBarClose.displayName = "ActionBar.Close";
 
 export function ActionBarValue({
   label,
@@ -293,10 +288,16 @@ export function ActionBarValue({
     </Badge>
   );
 }
-ActionBarValue.displayName = "ActionBar.Value";
 
 export function ActionBarBody({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return <ark.div {...rest} className={actionBarInlineVariants({ className })} />;
 }
+
+ActionBarRoot.displayName = "ActionBar";
+ActionBarTrigger.displayName = "ActionBar.Trigger";
+ActionBarContent.displayName = "ActionBar.Content";
+ActionBarSeparator.displayName = "ActionBar.Separator";
+ActionBarClose.displayName = "ActionBar.Close";
+ActionBarValue.displayName = "ActionBar.Value";
 ActionBarBody.displayName = "ActionBar.Body";
 // #endregion

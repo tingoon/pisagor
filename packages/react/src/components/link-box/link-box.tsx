@@ -19,7 +19,6 @@ export function LinkBoxRoot({ className, testId, ...rest }: LinkBoxRootProps) {
     />
   );
 }
-LinkBoxRoot.displayName = "LinkBox";
 
 export function LinkOverlayLink({ className, ...rest }: ComponentProps<typeof ark.a>) {
   return (
@@ -31,5 +30,7 @@ export function LinkOverlayLink({ className, ...rest }: ComponentProps<typeof ar
     />
   );
 }
+
+LinkBoxRoot.displayName = "LinkBox";
 LinkOverlayLink.displayName = "LinkBox.Overlay";
 // #endregion

@@ -78,7 +78,6 @@ function ClipboardProvider({
 
   return <ClipboardContext value={{ slots }}>{children}</ClipboardContext>;
 }
-ClipboardProvider.displayName = "Clipboard.Provider";
 
 function ClipboardRoot({ children, className, testId, ...rest }: ClipboardRootProps) {
   return (
@@ -87,7 +86,6 @@ function ClipboardRoot({ children, className, testId, ...rest }: ClipboardRootPr
     </ClipboardPrimitive.Root>
   );
 }
-ClipboardRoot.displayName = "Clipboard.Root";
 
 function ClipboardControl({
   className,
@@ -102,14 +100,12 @@ function ClipboardControl({
     </ClipboardPrimitive.Control>
   );
 }
-ClipboardControl.displayName = "Clipboard.Control";
 
 function ClipboardInput({ className, ...rest }: ComponentProps<typeof ClipboardPrimitive.Input>) {
   const { slots } = useClipboard();
 
   return <ClipboardPrimitive.Input {...rest} className={slots.input({ className })} />;
 }
-ClipboardInput.displayName = "Clipboard.Input";
 
 function ClipboardValue({
   className,
@@ -119,7 +115,6 @@ function ClipboardValue({
 
   return <ClipboardPrimitive.ValueText {...rest} className={slots.value({ className })} />;
 }
-ClipboardValue.displayName = "Clipboard.Value";
 
 function ClipboardIndicator({
   className,
@@ -129,7 +124,6 @@ function ClipboardIndicator({
 
   return <ClipboardPrimitive.Indicator {...rest} className={slots.indicator({ className })} />;
 }
-ClipboardIndicator.displayName = "Clipboard.Indicator";
 
 function ClipboardField({ className, children, ...rest }: ComponentProps<"div">) {
   const { slots } = useClipboard();
@@ -140,7 +134,6 @@ function ClipboardField({ className, children, ...rest }: ComponentProps<"div">)
     </div>
   );
 }
-ClipboardField.displayName = "Clipboard.Field";
 
 function ClipboardLabel({ className, children, ...rest }: ComponentProps<"span">) {
   const { slots } = useClipboard();
@@ -151,6 +144,14 @@ function ClipboardLabel({ className, children, ...rest }: ComponentProps<"span">
     </span>
   );
 }
+
+ClipboardProvider.displayName = "Clipboard.Provider";
+ClipboardRoot.displayName = "Clipboard.Root";
+ClipboardControl.displayName = "Clipboard.Control";
+ClipboardInput.displayName = "Clipboard.Input";
+ClipboardValue.displayName = "Clipboard.Value";
+ClipboardIndicator.displayName = "Clipboard.Indicator";
+ClipboardField.displayName = "Clipboard.Field";
 ClipboardLabel.displayName = "Clipboard.Label";
 // #endregion
 
