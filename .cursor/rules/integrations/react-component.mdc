@@ -254,15 +254,17 @@ Behavior lives in the headless primitive — the styled layer adds visuals only.
 - **`cn()`:** one logical concern per string; `className` last.
 - Use **semantic tokens** (`bg-muted`, `text-muted-foreground`).
 - **`tv()`:** export `{name}Variants`; use `slots:` for multi-part DOM, `base:` for single element; set `defaultVariants` and mirror in destructuring.
-- **`base:`** — single DOM node in the file (or dedicated export e.g. `inputRootVariants`).
+- **`base:`** — tv default key. Single-element recipes use top-level `base:`; multi-slot recipes name the primary element slot `base` (not `root`). Dedicated shared shells may still use names like `inputRootVariants`.
 - **`slots:`** — only parts with real default styles; every slot key must have non-empty class strings.
 - **Do not** add placeholder slots (`""`, `[]`) to generate `classNames` keys — remove the slot and override per [Override without a slot](#override-without-a-slot).
 - When a multi-export file names list chrome, use part names (`list`, not `base`) — e.g. `tabsListVariants` uses `slots.list`.
 - Split `tv()` when reuse needs a shared root shell (`inputRootVariants`) separate from optional slots (`inputVariants.clearableRoot`).
 - **Root** always accepts **`className`** — never `rootClassName`.
 - **Single-element components:** merge with `cn(fooVariants({ … }), className)` — no `classNames` prop.
-- **Multi-slot components:** merge with `cn(slots.part({ … }), className, classNames?.part)`; type **`classNames`** as `VariantClassNames<typeof {name}Variants>`.
-- **Root with both** `className` and `classNames?.root`: `cn(slots.root({ … }), className, classNames?.root)`.
+- **Multi-slot components:** merge via the slot API — `slots.part({ className: classNames?.part })` or `slots.part({ className: cn(className, classNames?.part) })` when both apply; type **`classNames`** as `VariantClassNames<typeof {name}Variants>`.
+- **Root with both** `className` and `classNames?.base`: `slots.base({ className: cn(className, classNames?.base) })`.
+- **Shell + slot:** keep outer `cn` only for a separate shell recipe — `cn(shellVariants(…), slots.part({ className: classNames?.part }))`.
+- Prefer `slots.part({ className })` over `cn(slots.part(), className)`.
 - Apply **motion & focus:** `motion-reduce:transition-none!`; `outline-hidden` + `focus-visible:ring-[3px] focus-visible:ring-ring/32`; style `disabled:`, `data-disabled:`, `aria-disabled:` consistently.
 - On **plain** styled nodes, set **`data-scope="{name}"`** and **`data-part="{part}"`** (root uses `data-part="root"`). On machine-backed parts, omit both — Ark/Zag already emit `data-scope` / `data-part`. Never override those attributes on a primitive part (Zag queries the DOM through them).
 - Mirror variant props on root when useful (`data-variant`, `data-size`, `data-shape`).
