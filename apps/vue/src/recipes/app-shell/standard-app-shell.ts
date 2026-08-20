@@ -1,7 +1,6 @@
 import { PhGear, PhHouse, PhMagnifyingGlass, PhSquaresFour, PhUsers } from "@phosphor-icons/vue";
 import { cn } from "@pisagor/utils";
-import { AppShell, useAppShell } from "@pisagor/vue/app-shell";
-import { Button } from "@pisagor/vue/button";
+import { AppShell, Button, useAppShell } from "@pisagor/vue";
 import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];

@@ -1,6 +1,5 @@
 import { PhCopy, PhDotsThree, PhFile, PhFolder } from "@phosphor-icons/vue";
-import { DropdownMenu } from "@pisagor/vue/dropdown-menu";
-import { InputGroup } from "@pisagor/vue/input-group";
+import { DropdownMenu, InputGroup } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];

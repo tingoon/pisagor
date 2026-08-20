@@ -1,8 +1,6 @@
 import { useFilter, useListCollection } from "@ark-ui/vue";
 import { useTagsInput } from "@ark-ui/vue/tags-input";
-import { Combobox } from "@pisagor/vue/combobox";
-import { Field } from "@pisagor/vue/field";
-import { TagsInput } from "@pisagor/vue/tags-input";
+import { Combobox, Field, TagsInput } from "@pisagor/vue";
 import { computed, defineComponent, h, type PropType, useId } from "vue";
 
 const FRAMEWORK_ITEMS = [

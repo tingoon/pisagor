@@ -1,6 +1,5 @@
 import { PhTextB, PhTextItalic, PhTextStrikethrough, PhTextUnderline } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue/button";
-import { Tooltip } from "@pisagor/vue/tooltip";
+import { Button, Tooltip } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];

@@ -1,6 +1,4 @@
-import { Button } from "@pisagor/vue/button";
-import { Field } from "@pisagor/vue/field";
-import { Input } from "@pisagor/vue/input";
+import { Button, Field, Input } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];

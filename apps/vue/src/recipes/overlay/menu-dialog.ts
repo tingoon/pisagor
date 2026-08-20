@@ -1,7 +1,5 @@
 import { PhGear, PhInfo, PhUser } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue/button";
-import { Dialog } from "@pisagor/vue/dialog";
-import { DropdownMenu } from "@pisagor/vue/dropdown-menu";
+import { Button, Dialog, DropdownMenu } from "@pisagor/vue";
 import { defineComponent, h, ref } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];

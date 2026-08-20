@@ -1,7 +1,5 @@
 import { PhInfo } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue/button";
-import { InputGroup } from "@pisagor/vue/input-group";
-import { Tooltip } from "@pisagor/vue/tooltip";
+import { Button, InputGroup, Tooltip } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];

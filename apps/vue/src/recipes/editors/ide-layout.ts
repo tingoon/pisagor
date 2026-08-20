@@ -1,13 +1,7 @@
 import { PhX } from "@phosphor-icons/vue";
 import { cn } from "@pisagor/utils";
-import { Button } from "@pisagor/vue/button";
-import { Tabs } from "@pisagor/vue/tabs";
-import {
-  createTreeCollection,
-  type NodeProviderProps,
-  type TreeNodeType,
-  TreeView,
-} from "@pisagor/vue/tree-view";
+import type { NodeProviderProps, TreeNodeType } from "@pisagor/vue";
+import { Button, createTreeCollection, Tabs, TreeView } from "@pisagor/vue";
 import { defineComponent, h, type PropType, ref } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];

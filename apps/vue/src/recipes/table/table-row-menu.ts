@@ -1,6 +1,5 @@
 import { PhEye, PhPencil, PhTrash } from "@phosphor-icons/vue";
-import { ContextMenu } from "@pisagor/vue/context-menu";
-import { Table } from "@pisagor/vue/table";
+import { ContextMenu, Table } from "@pisagor/vue";
 import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];

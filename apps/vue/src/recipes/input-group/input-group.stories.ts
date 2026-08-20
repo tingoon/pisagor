@@ -1,4 +1,4 @@
-import { InputGroup } from "@pisagor/vue/input-group";
+import { InputGroup } from "@pisagor/vue";
 import preview from "#/vue/preview";
 import { CodeEditorInput } from "./code-editor-input";
 import { InputGroupWithButton } from "./input-group-with-button";

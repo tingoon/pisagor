@@ -1,6 +1,5 @@
 import { PhMagnifyingGlass } from "@phosphor-icons/vue";
-import { Button } from "@pisagor/vue/button";
-import { InputGroup } from "@pisagor/vue/input-group";
+import { Button, InputGroup } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];

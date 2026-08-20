@@ -1,9 +1,6 @@
 import { PhGlobe } from "@phosphor-icons/vue";
 import { cn } from "@pisagor/utils";
-import { Button } from "@pisagor/vue/button";
-import { Card } from "@pisagor/vue/card";
-import { Field } from "@pisagor/vue/field";
-import { Input } from "@pisagor/vue/input";
+import { Button, Card, Field, Input } from "@pisagor/vue";
 import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];

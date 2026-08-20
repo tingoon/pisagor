@@ -1,6 +1,4 @@
-import { Button } from "@pisagor/vue/button";
-import { Dialog } from "@pisagor/vue/dialog";
-import { Popover } from "@pisagor/vue/popover";
+import { Button, Dialog, Popover } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];

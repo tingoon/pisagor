@@ -1,5 +1,4 @@
-import { Checkbox } from "@pisagor/vue/checkbox";
-import { Field } from "@pisagor/vue/field";
+import { Checkbox, Field } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];

@@ -1,7 +1,5 @@
 import { cn } from "@pisagor/utils";
-import { Pagination } from "@pisagor/vue/pagination";
-import { Select } from "@pisagor/vue/select";
-import { Table } from "@pisagor/vue/table";
+import { Pagination, Select, Table } from "@pisagor/vue";
 import { computed, defineComponent, h, type PropType, ref } from "vue";
 
 export interface TablePaginationProps {

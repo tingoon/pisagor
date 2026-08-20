@@ -7,13 +7,7 @@ import {
   PhTrash,
 } from "@phosphor-icons/vue";
 import { cn } from "@pisagor/utils";
-import { ActionBar } from "@pisagor/vue/action-bar";
-import { AlertDialog } from "@pisagor/vue/alert-dialog";
-import { Badge } from "@pisagor/vue/badge";
-import { Button } from "@pisagor/vue/button";
-import { Checkbox } from "@pisagor/vue/checkbox";
-import { DropdownMenu } from "@pisagor/vue/dropdown-menu";
-import { Table } from "@pisagor/vue/table";
+import { ActionBar, AlertDialog, Badge, Button, Checkbox, DropdownMenu, Table } from "@pisagor/vue";
 import { computed, defineComponent, h, type PropType, ref } from "vue";
 
 export interface TableBulkActionsProps {
