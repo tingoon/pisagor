@@ -277,7 +277,9 @@ export function DropdownMenuArrow({ style, ...rest }: DropdownMenuArrowProps) {
     </MenuPrimitive.Arrow>
   );
 }
+// #endregion
 
+// #region Display Names
 DropdownMenuRoot.displayName = "DropdownMenu";
 DropdownMenuTrigger.displayName = "DropdownMenu.Trigger";
 DropdownMenuPositioner.displayName = "DropdownMenu.Positioner";

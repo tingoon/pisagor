@@ -36,7 +36,9 @@ export function InputClearAddon({ onClear, ...rest }: InputClearButtonProps) {
     </InputGroupAddon>
   );
 }
+// #endregion
 
+// #region Display Names
 InputClearButton.displayName = "Input.ClearButton";
 InputClearAddon.displayName = "Input.ClearAddon";
 // #endregion

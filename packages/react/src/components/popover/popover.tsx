@@ -191,7 +191,9 @@ export function PopoverArrow({ style, ...rest }: PopoverArrowProps) {
     </PopoverPrimitive.Arrow>
   );
 }
+// #endregion
 
+// #region Display Names
 PopoverRoot.displayName = "Popover";
 PopoverTrigger.displayName = "Popover.Trigger";
 PopoverAnchor.displayName = "Popover.Anchor";

@@ -216,7 +216,9 @@ export function ResizableContext(props: ResizableContextProps) {
 export function ResizableRootProvider(props: ResizableRootProviderProps) {
   return <SplitterPrimitive.RootProvider {...props} />;
 }
+// #endregion
 
+// #region Display Names
 ResizableEdgeHandle.displayName = "Resizable.EdgeHandle";
 ResizableRoot.displayName = "Resizable";
 ResizablePanel.displayName = "Resizable.Panel";

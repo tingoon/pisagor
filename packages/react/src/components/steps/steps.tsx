@@ -114,7 +114,9 @@ export function StepsPrevious(props: StepsPreviousProps) {
 export function StepsNext(props: StepsNextProps) {
   return <StepsPrimitive.NextTrigger {...props} />;
 }
+// #endregion
 
+// #region Display Names
 StepsRoot.displayName = "Steps";
 StepsList.displayName = "Steps.List";
 StepsItem.displayName = "Steps.Item";

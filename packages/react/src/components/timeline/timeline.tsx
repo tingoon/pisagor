@@ -133,14 +133,6 @@ export function TimelineDescription({ className, ...rest }: TimelineDescriptionP
     />
   );
 }
-
-TimelineRoot.displayName = "Timeline.Root";
-TimelineItem.displayName = "Timeline.Item";
-TimelineIndicator.displayName = "Timeline.Indicator";
-TimelineSeparator.displayName = "Timeline.Separator";
-TimelineContent.displayName = "Timeline.Content";
-TimelineTitle.displayName = "Timeline.Title";
-TimelineDescription.displayName = "Timeline.Description";
 // #endregion
 
 // #region Shorthand
@@ -173,5 +165,15 @@ export function TimelineShorthand({ items = [], ...rest }: TimelineProps) {
     </TimelineRoot>
   );
 }
+// #endregion
+
+// #region Display Names
+TimelineRoot.displayName = "Timeline.Root";
+TimelineItem.displayName = "Timeline.Item";
+TimelineIndicator.displayName = "Timeline.Indicator";
+TimelineSeparator.displayName = "Timeline.Separator";
+TimelineContent.displayName = "Timeline.Content";
+TimelineTitle.displayName = "Timeline.Title";
+TimelineDescription.displayName = "Timeline.Description";
 TimelineShorthand.displayName = "Timeline";
 // #endregion

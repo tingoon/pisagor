@@ -171,7 +171,9 @@ export function FieldHelper({ className, ...rest }: FieldHelperProps) {
 export function FieldError({ className, ...rest }: FieldErrorProps) {
   return <FieldPrimitive.ErrorText {...rest} className={fieldErrorVariants({ className })} />;
 }
+// #endregion
 
+// #region Display Names
 FieldRoot.displayName = "Field";
 FieldSet.displayName = "Field.Set";
 FieldLegend.displayName = "Field.Legend";

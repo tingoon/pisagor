@@ -77,7 +77,9 @@ export function HoverCardContent({ className, children, ...rest }: HoverCardCont
     </Portal>
   );
 }
+// #endregion
 
+// #region Display Names
 HoverCardRoot.displayName = "HoverCard";
 HoverCardTrigger.displayName = "HoverCard.Trigger";
 HoverCardArrow.displayName = "HoverCard.Arrow";

@@ -156,7 +156,9 @@ export function ItemFooter({ className, ...rest }: ComponentProps<typeof ark.div
     />
   );
 }
+// #endregion
 
+// #region Display Names
 ItemGroup.displayName = "Item.Group";
 ItemSeparator.displayName = "Item.Separator";
 ItemRoot.displayName = "Item";

@@ -95,11 +95,6 @@ export function AlertAction({ className, children, ...rest }: AlertActionProps) 
     </ark.div>
   );
 }
-
-AlertRoot.displayName = "Alert.Root";
-AlertTitle.displayName = "Alert.Title";
-AlertDescription.displayName = "Alert.Description";
-AlertAction.displayName = "Alert.Action";
 // #endregion
 
 // #region Shorthand
@@ -140,5 +135,12 @@ export function AlertShorthand({
     </AlertRoot>
   );
 }
+// #endregion
+
+// #region Display Names
+AlertRoot.displayName = "Alert.Root";
+AlertTitle.displayName = "Alert.Title";
+AlertDescription.displayName = "Alert.Description";
+AlertAction.displayName = "Alert.Action";
 AlertShorthand.displayName = "Alert";
 // #endregion

@@ -67,7 +67,9 @@ export function BottomNavigationItemLabel({ className, ...rest }: ComponentProps
     />
   );
 }
+// #endregion
 
+// #region Display Names
 BottomNavigationRoot.displayName = "BottomNavigation";
 BottomNavigationList.displayName = "BottomNavigation.List";
 BottomNavigationItem.displayName = "BottomNavigation.Item";

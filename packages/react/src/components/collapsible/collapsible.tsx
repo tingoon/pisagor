@@ -66,7 +66,9 @@ export function CollapsibleIndicator({ className, ...rest }: CollapsibleIndicato
     </CollapsiblePrimitive.Indicator>
   );
 }
+// #endregion
 
+// #region Display Names
 CollapsibleRoot.displayName = "Collapsible";
 CollapsibleTrigger.displayName = "Collapsible.Trigger";
 CollapsibleContent.displayName = "Collapsible.Content";

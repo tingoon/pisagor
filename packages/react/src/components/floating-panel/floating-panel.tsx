@@ -257,7 +257,9 @@ export function FloatingPanelFooter({ className, ...rest }: ComponentProps<typeo
     />
   );
 }
+// #endregion
 
+// #region Display Names
 FloatingPanelRoot.displayName = "FloatingPanel";
 FloatingPanelTrigger.displayName = "FloatingPanel.Trigger";
 FloatingPanelContent.displayName = "FloatingPanel.Content";

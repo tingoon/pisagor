@@ -56,7 +56,9 @@ export function ButtonGroupSeparator({
     />
   );
 }
+// #endregion
 
+// #region Display Names
 ButtonGroupRoot.displayName = "ButtonGroup";
 ButtonGroupText.displayName = "ButtonGroup.Text";
 ButtonGroupSeparator.displayName = "ButtonGroup.Separator";

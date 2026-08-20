@@ -31,7 +31,9 @@ export function InputGroupTextarea({ classNames, ...rest }: TextareaProps) {
     />
   );
 }
+// #endregion
 
+// #region Display Names
 InputGroupInput.displayName = "InputGroup.Input";
 InputGroupTextarea.displayName = "InputGroup.Textarea";
 // #endregion

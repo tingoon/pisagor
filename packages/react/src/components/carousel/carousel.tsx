@@ -147,7 +147,9 @@ export function CarouselContent({ className, ...rest }: CarouselContentProps) {
 export function CarouselItem({ className, ...rest }: CarouselItemProps) {
   return <CarouselPrimitive.Item {...rest} className={carouselItemVariants({ className })} />;
 }
+// #endregion
 
+// #region Display Names
 CarouselRoot.displayName = "Carousel";
 CarouselControl.displayName = "Carousel.Control";
 CarouselPrevious.displayName = "Carousel.Previous";

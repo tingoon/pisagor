@@ -658,7 +658,9 @@ export function SidebarMenuSubButton({
     />
   );
 }
+// #endregion
 
+// #region Display Names
 SidebarProvider.displayName = "Sidebar.Provider";
 SidebarRoot.displayName = "Sidebar";
 SidebarTrigger.displayName = "Sidebar.Trigger";

@@ -89,11 +89,6 @@ export function MarqueeItem({ className, ...rest }: MarqueeItemProps) {
 export function MarqueeEdge({ className, ...rest }: MarqueeEdgeProps) {
   return <MarqueePrimitive.Edge {...rest} className={marqueeEdgeVariants({ className })} />;
 }
-
-MarqueeRoot.displayName = "Marquee.Root";
-MarqueeContent.displayName = "Marquee.Content";
-MarqueeItem.displayName = "Marquee.Item";
-MarqueeEdge.displayName = "Marquee.Edge";
 // #endregion
 
 // #region Shorthand
@@ -114,5 +109,12 @@ export function MarqueeShorthand({ items, ...rest }: MarqueeProps) {
     </MarqueeRoot>
   );
 }
+// #endregion
+
+// #region Display Names
+MarqueeRoot.displayName = "Marquee.Root";
+MarqueeContent.displayName = "Marquee.Content";
+MarqueeItem.displayName = "Marquee.Item";
+MarqueeEdge.displayName = "Marquee.Edge";
 MarqueeShorthand.displayName = "Marquee";
 // #endregion

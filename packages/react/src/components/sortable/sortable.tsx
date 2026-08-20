@@ -409,7 +409,9 @@ export function SortableItemContent({ className, ...rest }: ComponentProps<typeo
     />
   );
 }
+// #endregion
 
+// #region Display Names
 SortableRoot.displayName = "Sortable";
 SortableItem.displayName = "Sortable.Item";
 SortableHandle.displayName = "Sortable.Handle";

@@ -295,20 +295,6 @@ export function ComboboxEmpty({ className, children, ...rest }: ComboboxEmptyPro
 export function ComboboxList({ className, ...rest }: ComboboxListProps) {
   return <ComboboxPrimitive.List {...rest} className={comboboxListVariants({ className })} />;
 }
-
-ComboboxRoot.displayName = "Combobox.Root";
-ComboboxControl.displayName = "Combobox.Control";
-ComboboxInput.displayName = "Combobox.Input";
-ComboboxTrigger.displayName = "Combobox.Trigger";
-ComboboxClear.displayName = "Combobox.Clear";
-ComboboxFieldInput.displayName = "Combobox.FieldInput";
-ComboboxPositioner.displayName = "Combobox.Positioner";
-ComboboxContent.displayName = "Combobox.Content";
-ComboboxGroup.displayName = "Combobox.Group";
-ComboboxGroupLabel.displayName = "Combobox.GroupLabel";
-ComboboxItem.displayName = "Combobox.Item";
-ComboboxEmpty.displayName = "Combobox.Empty";
-ComboboxList.displayName = "Combobox.List";
 // #endregion
 
 // #region Shorthand
@@ -333,5 +319,21 @@ export function ComboboxShorthand({ items = [], clearable = false, id, ...rest }
     </ComboboxRoot>
   );
 }
+// #endregion
+
+// #region Display Names
+ComboboxRoot.displayName = "Combobox.Root";
+ComboboxControl.displayName = "Combobox.Control";
+ComboboxInput.displayName = "Combobox.Input";
+ComboboxTrigger.displayName = "Combobox.Trigger";
+ComboboxClear.displayName = "Combobox.Clear";
+ComboboxFieldInput.displayName = "Combobox.FieldInput";
+ComboboxPositioner.displayName = "Combobox.Positioner";
+ComboboxContent.displayName = "Combobox.Content";
+ComboboxGroup.displayName = "Combobox.Group";
+ComboboxGroupLabel.displayName = "Combobox.GroupLabel";
+ComboboxItem.displayName = "Combobox.Item";
+ComboboxEmpty.displayName = "Combobox.Empty";
+ComboboxList.displayName = "Combobox.List";
 ComboboxShorthand.displayName = "Combobox";
 // #endregion

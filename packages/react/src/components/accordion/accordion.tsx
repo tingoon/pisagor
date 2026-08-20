@@ -78,11 +78,6 @@ export function AccordionContent({ className, children, ...rest }: AccordionCont
     </AccordionPrimitive.ItemContent>
   );
 }
-
-AccordionRoot.displayName = "Accordion.Root";
-AccordionItem.displayName = "Accordion.Item";
-AccordionTrigger.displayName = "Accordion.Trigger";
-AccordionContent.displayName = "Accordion.Content";
 // #endregion
 
 // #region Shorthand
@@ -98,5 +93,12 @@ export function AccordionShorthand({ items, ...rest }: AccordionProps) {
     </AccordionRoot>
   );
 }
+// #endregion
+
+// #region Display Names
+AccordionRoot.displayName = "Accordion.Root";
+AccordionItem.displayName = "Accordion.Item";
+AccordionTrigger.displayName = "Accordion.Trigger";
+AccordionContent.displayName = "Accordion.Content";
 AccordionShorthand.displayName = "Accordion";
 // #endregion

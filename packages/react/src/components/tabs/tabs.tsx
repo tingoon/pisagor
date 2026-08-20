@@ -86,7 +86,9 @@ export function TabsTrigger({ className, ...rest }: TabsTriggerProps) {
 export function TabsContent({ className, ...rest }: TabsContentProps) {
   return <TabsPrimitive.Content {...rest} className={tabsContentVariants({ className })} />;
 }
+// #endregion
 
+// #region Display Names
 TabsRoot.displayName = "Tabs";
 TabsList.displayName = "Tabs.List";
 TabsTrigger.displayName = "Tabs.Trigger";

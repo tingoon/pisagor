@@ -102,12 +102,6 @@ function ProgressRange({ className, ...rest }: ProgressRangeProps) {
 
   return <ProgressPrimitive.Range {...rest} className={slots.range({ className })} />;
 }
-
-ProgressRoot.displayName = "Progress.Root";
-ProgressHeader.displayName = "Progress.Header";
-ProgressValue.displayName = "Progress.Value";
-ProgressTrack.displayName = "Progress.Track";
-ProgressRange.displayName = "Progress.Range";
 // #endregion
 
 // #region Closed
@@ -155,5 +149,13 @@ export function Progress({
     </ProgressRoot>
   );
 }
+// #endregion
+
+// #region Display Names
+ProgressRoot.displayName = "Progress.Root";
+ProgressHeader.displayName = "Progress.Header";
+ProgressValue.displayName = "Progress.Value";
+ProgressTrack.displayName = "Progress.Track";
+ProgressRange.displayName = "Progress.Range";
 Progress.displayName = "Progress";
 // #endregion

@@ -330,7 +330,9 @@ DataTable.HeaderRow = DataTableHeaderRow;
 DataTable.Row = DataTableRow;
 
 DataTable.Toolbar = DataTableToolbar;
+// #endregion
 
+// #region Display Names
 DataTableHeader.displayName = "DataTable.Header";
 DataTableHeaderRow.displayName = "DataTable.HeaderRow";
 DataTableHead.displayName = "DataTable.Head";

@@ -82,9 +82,6 @@ export function ToggleGroupItem({ value, className, ...rest }: ToggleGroupItemPr
     </ToggleGroupPrimitive.Item>
   );
 }
-
-ToggleGroupRoot.displayName = "ToggleGroup.Root";
-ToggleGroupItem.displayName = "ToggleGroup.Item";
 // #endregion
 
 // #region Shorthand
@@ -99,5 +96,10 @@ export function ToggleGroupShorthand({ items, ...rest }: ToggleGroupProps) {
     </ToggleGroupRoot>
   );
 }
+// #endregion
+
+// #region Display Names
+ToggleGroupRoot.displayName = "ToggleGroup.Root";
+ToggleGroupItem.displayName = "ToggleGroup.Item";
 ToggleGroupShorthand.displayName = "ToggleGroup";
 // #endregion

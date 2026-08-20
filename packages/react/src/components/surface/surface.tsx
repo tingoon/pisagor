@@ -70,5 +70,8 @@ export function Surface({
     </SurfaceContext>
   );
 }
+// #endregion
+
+// #region Display Names
 Surface.displayName = "Surface";
 // #endregion

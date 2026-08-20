@@ -117,7 +117,9 @@ export function InputGroupText({ className, ...rest }: ComponentProps<typeof ark
     />
   );
 }
+// #endregion
 
+// #region Display Names
 InputGroupRoot.displayName = "InputGroup";
 InputGroupAddon.displayName = "InputGroup.Addon";
 InputGroupButton.displayName = "InputGroup.Button";

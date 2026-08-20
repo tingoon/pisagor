@@ -43,7 +43,9 @@ export function QrCodeOverlay({ className, ...rest }: QrCodeOverlayProps) {
 export function QrCodeDownload(props: QrCodeDownloadProps) {
   return <QrCodePrimitive.DownloadTrigger {...props} />;
 }
+// #endregion
 
+// #region Display Names
 QrCodeRoot.displayName = "QrCode";
 QrCodeFrame.displayName = "QrCode.Frame";
 QrCodeOverlay.displayName = "QrCode.Overlay";

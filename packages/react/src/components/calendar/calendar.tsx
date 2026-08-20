@@ -383,7 +383,9 @@ export function CalendarTableCell({
     </CalendarPrimitive.TableCell>
   );
 }
+// #endregion
 
+// #region Display Names
 CalendarRoot.displayName = "Calendar";
 CalendarControl.displayName = "Calendar.Control";
 CalendarLabel.displayName = "Calendar.Label";

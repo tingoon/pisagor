@@ -144,11 +144,6 @@ function CircularProgressTrack({
     </ark.svg>
   );
 }
-
-CircularProgressRoot.displayName = "CircularProgress.Root";
-CircularProgressValueWrapper.displayName = "CircularProgress.ValueWrapper";
-CircularProgressValue.displayName = "CircularProgress.Value";
-CircularProgressTrack.displayName = "CircularProgress.Track";
 // #endregion
 
 // #region Closed
@@ -191,5 +186,12 @@ export function CircularProgress({
     </CircularProgressRoot>
   );
 }
+// #endregion
+
+// #region Display Names
+CircularProgressRoot.displayName = "CircularProgress.Root";
+CircularProgressValueWrapper.displayName = "CircularProgress.ValueWrapper";
+CircularProgressValue.displayName = "CircularProgress.Value";
+CircularProgressTrack.displayName = "CircularProgress.Track";
 CircularProgress.displayName = "CircularProgress";
 // #endregion

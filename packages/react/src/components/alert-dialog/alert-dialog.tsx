@@ -87,7 +87,9 @@ export function AlertDialogCancel(props: AlertDialogCancelProps) {
     </AlertDialogClose>
   );
 }
+// #endregion
 
+// #region Display Names
 AlertDialogRoot.displayName = "AlertDialog";
 AlertDialogTrigger.displayName = "AlertDialog.Trigger";
 AlertDialogContent.displayName = "AlertDialog.Content";

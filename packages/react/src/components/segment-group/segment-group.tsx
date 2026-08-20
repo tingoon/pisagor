@@ -98,11 +98,6 @@ export function SegmentGroupIndicator({ className, ...rest }: SegmentGroupIndica
     />
   );
 }
-
-SegmentGroupRoot.displayName = "SegmentGroup.Root";
-SegmentGroupItem.displayName = "SegmentGroup.Item";
-SegmentGroupItemText.displayName = "SegmentGroup.ItemText";
-SegmentGroupIndicator.displayName = "SegmentGroup.Indicator";
 // #endregion
 
 // #region Shorthand
@@ -120,5 +115,12 @@ export function SegmentGroupShorthand({ items, ...rest }: SegmentGroupProps) {
     </SegmentGroupRoot>
   );
 }
+// #endregion
+
+// #region Display Names
+SegmentGroupRoot.displayName = "SegmentGroup.Root";
+SegmentGroupItem.displayName = "SegmentGroup.Item";
+SegmentGroupItemText.displayName = "SegmentGroup.ItemText";
+SegmentGroupIndicator.displayName = "SegmentGroup.Indicator";
 SegmentGroupShorthand.displayName = "SegmentGroup";
 // #endregion

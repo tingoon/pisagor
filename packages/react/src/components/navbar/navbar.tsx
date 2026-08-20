@@ -95,7 +95,9 @@ export function NavbarActions({ className, classNames, ...rest }: NavbarPartProp
     />
   );
 }
+// #endregion
 
+// #region Display Names
 NavbarRoot.displayName = "Navbar";
 NavbarBrand.displayName = "Navbar.Brand";
 NavbarContent.displayName = "Navbar.Content";

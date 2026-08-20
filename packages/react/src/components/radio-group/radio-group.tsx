@@ -102,11 +102,6 @@ export function RadioGroupLabel({ children, ...rest }: RadioGroupLabelProps) {
     </Field.Label>
   );
 }
-
-RadioGroupRoot.displayName = "RadioGroup.Root";
-RadioGroupItem.displayName = "RadioGroup.Item";
-RadioGroupText.displayName = "RadioGroup.Text";
-RadioGroupLabel.displayName = "RadioGroup.Label";
 // #endregion
 
 // #region Shorthand
@@ -121,5 +116,12 @@ export function RadioGroupShorthand({ items = [], ...rest }: RadioGroupProps) {
     </RadioGroupRoot>
   );
 }
+// #endregion
+
+// #region Display Names
+RadioGroupRoot.displayName = "RadioGroup.Root";
+RadioGroupItem.displayName = "RadioGroup.Item";
+RadioGroupText.displayName = "RadioGroup.Text";
+RadioGroupLabel.displayName = "RadioGroup.Label";
 RadioGroupShorthand.displayName = "RadioGroup";
 // #endregion

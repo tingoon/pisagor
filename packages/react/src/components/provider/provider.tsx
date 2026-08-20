@@ -61,6 +61,8 @@ export function Provider({
     </LocaleProvider>
   );
 }
+// #endregion
 
+// #region Display Names
 Provider.displayName = "Provider";
 // #endregion

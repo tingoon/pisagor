@@ -60,9 +60,6 @@ export function AnnouncementTitle({ className, ...rest }: AnnouncementTitleProps
     />
   );
 }
-
-AnnouncementRoot.displayName = "Announcement.Root";
-AnnouncementTitle.displayName = "Announcement.Title";
 // #endregion
 
 // #region Shorthand
@@ -75,5 +72,10 @@ export function AnnouncementShorthand({ badge, title, titleProps, ...rest }: Ann
     </AnnouncementRoot>
   );
 }
+// #endregion
+
+// #region Display Names
+AnnouncementRoot.displayName = "Announcement.Root";
+AnnouncementTitle.displayName = "Announcement.Title";
 AnnouncementShorthand.displayName = "Announcement";
 // #endregion

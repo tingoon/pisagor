@@ -30,7 +30,9 @@ export function KbdGroup({ className, ...rest }: ComponentProps<typeof ark.div>)
     />
   );
 }
+// #endregion
 
+// #region Display Names
 KbdRoot.displayName = "Kbd";
 KbdGroup.displayName = "Kbd.Group";
 // #endregion

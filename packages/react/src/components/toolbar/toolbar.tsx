@@ -106,12 +106,6 @@ export function ToolbarActions({ className, classNames, ...rest }: ToolbarPartPr
     />
   );
 }
-
-ToolbarRoot.displayName = "Toolbar.Root";
-ToolbarHeading.displayName = "Toolbar.Heading";
-ToolbarTitle.displayName = "Toolbar.Title";
-ToolbarDescription.displayName = "Toolbar.Description";
-ToolbarActions.displayName = "Toolbar.Actions";
 // #endregion
 
 // #region Shorthand
@@ -144,5 +138,13 @@ export function ToolbarShorthand({
     </ToolbarRoot>
   );
 }
+// #endregion
+
+// #region Display Names
+ToolbarRoot.displayName = "Toolbar.Root";
+ToolbarHeading.displayName = "Toolbar.Heading";
+ToolbarTitle.displayName = "Toolbar.Title";
+ToolbarDescription.displayName = "Toolbar.Description";
+ToolbarActions.displayName = "Toolbar.Actions";
 ToolbarShorthand.displayName = "Toolbar";
 // #endregion

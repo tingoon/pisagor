@@ -197,7 +197,9 @@ export function NumberInputScrubber({ className, children, ...rest }: NumberInpu
     </NumberInputPrimitive.Scrubber>
   );
 }
+// #endregion
 
+// #region Display Names
 NumberInputRoot.displayName = "NumberInput";
 NumberInputGroup.displayName = "NumberInput.Group";
 NumberInputClearTrigger.displayName = "NumberInput.ClearTrigger";

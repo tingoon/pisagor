@@ -137,7 +137,9 @@ export function TableCaption({ className, ...rest }: TableCaptionProps) {
     />
   );
 }
+// #endregion
 
+// #region Display Names
 TableRoot.displayName = "Table";
 TableHeader.displayName = "Table.Header";
 TableBody.displayName = "Table.Body";

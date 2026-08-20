@@ -76,7 +76,9 @@ export function InputOTPSeparator({ className, ...rest }: ComponentProps<typeof 
     />
   );
 }
+// #endregion
 
+// #region Display Names
 InputOTPRoot.displayName = "InputOTP";
 InputOTPSlot.displayName = "InputOTP.Slot";
 InputOTPSeparator.displayName = "InputOTP.Separator";

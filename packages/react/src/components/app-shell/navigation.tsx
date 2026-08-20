@@ -43,4 +43,7 @@ export function AppShellNavigation({
     />
   );
 }
+
+// #region Display Names
 AppShellNavigation.displayName = "AppShell.Navigation";
+// #endregion

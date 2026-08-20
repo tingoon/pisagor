@@ -326,7 +326,9 @@ const getFileExtension = (file: string) => {
 
   return name ? `.${name}` : null;
 };
+// #endregion
 
+// #region Display Names
 TreeViewRoot.displayName = "TreeView";
 TreeViewLabel.displayName = "TreeView.Label";
 TreeViewTree.displayName = "TreeView.Tree";

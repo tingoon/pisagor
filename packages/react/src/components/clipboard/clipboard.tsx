@@ -144,15 +144,6 @@ function ClipboardLabel({ className, children, ...rest }: ComponentProps<"span">
     </span>
   );
 }
-
-ClipboardProvider.displayName = "Clipboard.Provider";
-ClipboardRoot.displayName = "Clipboard.Root";
-ClipboardControl.displayName = "Clipboard.Control";
-ClipboardInput.displayName = "Clipboard.Input";
-ClipboardValue.displayName = "Clipboard.Value";
-ClipboardIndicator.displayName = "Clipboard.Indicator";
-ClipboardField.displayName = "Clipboard.Field";
-ClipboardLabel.displayName = "Clipboard.Label";
 // #endregion
 
 // #region Closed
@@ -223,5 +214,16 @@ export function Clipboard({
     </ClipboardProvider>
   );
 }
+// #endregion
+
+// #region Display Names
+ClipboardProvider.displayName = "Clipboard.Provider";
+ClipboardRoot.displayName = "Clipboard.Root";
+ClipboardControl.displayName = "Clipboard.Control";
+ClipboardInput.displayName = "Clipboard.Input";
+ClipboardValue.displayName = "Clipboard.Value";
+ClipboardIndicator.displayName = "Clipboard.Indicator";
+ClipboardField.displayName = "Clipboard.Field";
+ClipboardLabel.displayName = "Clipboard.Label";
 Clipboard.displayName = "Clipboard";
 // #endregion

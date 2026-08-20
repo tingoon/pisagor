@@ -341,7 +341,9 @@ export function TourNextStep({ ...rest }: Omit<TourActionTriggerProps, "action">
     </TourActionTrigger>
   );
 }
+// #endregion
 
+// #region Display Names
 TourRoot.displayName = "Tour";
 TourTrigger.displayName = "Tour.Trigger";
 TourActionTrigger.displayName = "Tour.ActionTrigger";

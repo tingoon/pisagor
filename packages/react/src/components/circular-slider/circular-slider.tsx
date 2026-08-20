@@ -267,7 +267,9 @@ const _useCircularSlider = () => {
 
   return context;
 };
+// #endregion
 
+// #region Display Names
 CircularSliderRoot.displayName = "CircularSlider";
 CircularSliderControl.displayName = "CircularSlider.Control";
 CircularSliderThumb.displayName = "CircularSlider.Thumb";

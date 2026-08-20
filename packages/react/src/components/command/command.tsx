@@ -218,7 +218,9 @@ export function CommandFooter({ className, ...rest }: ComponentProps<"div">) {
     />
   );
 }
+// #endregion
 
+// #region Display Names
 CommandDialog.displayName = "Command.Dialog";
 CommandDialogTrigger.displayName = "Command.DialogTrigger";
 CommandDialogContent.displayName = "Command.DialogContent";

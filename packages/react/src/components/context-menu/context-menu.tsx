@@ -68,7 +68,9 @@ export function ContextMenuSubTrigger(props: DropdownMenuSubTriggerProps) {
 export function ContextMenuShortcut(props: DropdownMenuShortcutProps) {
   return <DropdownMenu.Shortcut dataPart="shortcut" dataScope="context-menu" {...props} />;
 }
+// #endregion
 
+// #region Display Names
 ContextMenuRoot.displayName = "ContextMenu";
 ContextMenuTrigger.displayName = "ContextMenu.Trigger";
 ContextMenuContent.displayName = "ContextMenu.Content";

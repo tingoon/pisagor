@@ -137,14 +137,6 @@ export function FileActions({ className, ...rest }: FileActionsProps) {
     />
   );
 }
-
-FileRoot.displayName = "File.Root";
-FileMedia.displayName = "File.Media";
-FileContent.displayName = "File.Content";
-FileName.displayName = "File.Name";
-FileMeta.displayName = "File.Meta";
-FileSize.displayName = "File.Size";
-FileActions.displayName = "File.Actions";
 // #endregion
 
 // #region Shorthand
@@ -165,5 +157,15 @@ export function FileShorthand({ name, meta, size, media, actions, ...rest }: Fil
     </FileRoot>
   );
 }
+// #endregion
+
+// #region Display Names
+FileRoot.displayName = "File.Root";
+FileMedia.displayName = "File.Media";
+FileContent.displayName = "File.Content";
+FileName.displayName = "File.Name";
+FileMeta.displayName = "File.Meta";
+FileSize.displayName = "File.Size";
+FileActions.displayName = "File.Actions";
 FileShorthand.displayName = "File";
 // #endregion

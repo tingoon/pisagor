@@ -43,4 +43,7 @@ export function AppShellBanner({
     />
   );
 }
+
+// #region Display Names
 AppShellBanner.displayName = "AppShell.Banner";
+// #endregion

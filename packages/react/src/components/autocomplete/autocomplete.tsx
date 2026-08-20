@@ -102,20 +102,6 @@ export function AutocompleteCollection(props: ComboboxListProps) {
 export function AutocompleteSeparator(props: SeparatorProps) {
   return <Separator dataPart="separator" dataScope="autocomplete" {...props} />;
 }
-
-AutocompleteRoot.displayName = "Autocomplete.Root";
-AutocompleteControl.displayName = "Autocomplete.Control";
-AutocompleteInput.displayName = "Autocomplete.Input";
-AutocompleteGroupLabel.displayName = "Autocomplete.GroupLabel";
-AutocompleteItem.displayName = "Autocomplete.Item";
-AutocompleteContent.displayName = "Autocomplete.Content";
-AutocompleteTrigger.displayName = "Autocomplete.Trigger";
-AutocompleteClear.displayName = "Autocomplete.Clear";
-AutocompleteGroup.displayName = "Autocomplete.Group";
-AutocompleteEmpty.displayName = "Autocomplete.Empty";
-AutocompleteList.displayName = "Autocomplete.List";
-AutocompleteCollection.displayName = "Autocomplete.Collection";
-AutocompleteSeparator.displayName = "Autocomplete.Separator";
 // #endregion
 
 // #region Shorthand
@@ -130,5 +116,21 @@ export function AutocompleteShorthand({ items, clearable, ...rest }: Autocomplet
     />
   );
 }
+// #endregion
+
+// #region Display Names
+AutocompleteRoot.displayName = "Autocomplete.Root";
+AutocompleteControl.displayName = "Autocomplete.Control";
+AutocompleteInput.displayName = "Autocomplete.Input";
+AutocompleteGroupLabel.displayName = "Autocomplete.GroupLabel";
+AutocompleteItem.displayName = "Autocomplete.Item";
+AutocompleteContent.displayName = "Autocomplete.Content";
+AutocompleteTrigger.displayName = "Autocomplete.Trigger";
+AutocompleteClear.displayName = "Autocomplete.Clear";
+AutocompleteGroup.displayName = "Autocomplete.Group";
+AutocompleteEmpty.displayName = "Autocomplete.Empty";
+AutocompleteList.displayName = "Autocomplete.List";
+AutocompleteCollection.displayName = "Autocomplete.Collection";
+AutocompleteSeparator.displayName = "Autocomplete.Separator";
 AutocompleteShorthand.displayName = "Autocomplete";
 // #endregion

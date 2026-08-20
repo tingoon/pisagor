@@ -157,5 +157,8 @@ export function PasswordInput({
     </PasswordInputPrimitive.Root>
   );
 }
+// #endregion
+
+// #region Display Names
 PasswordInput.displayName = "PasswordInput";
 // #endregion

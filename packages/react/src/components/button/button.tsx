@@ -73,5 +73,8 @@ export function Button({
     </ark.button>
   );
 }
+// #endregion
+
+// #region Display Names
 Button.displayName = "Button";
 // #endregion

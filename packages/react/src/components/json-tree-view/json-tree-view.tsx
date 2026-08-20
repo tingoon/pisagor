@@ -52,9 +52,6 @@ function JsonTreeViewTree({ className, ...rest }: JsonTreeViewTreeProps) {
 
   return <JsonTreeViewPrimitive.Tree {...rest} className={slots.tree({ className })} />;
 }
-
-JsonTreeViewRoot.displayName = "JsonTreeView.Root";
-JsonTreeViewTree.displayName = "JsonTreeView.Tree";
 // #endregion
 
 // #region Closed
@@ -77,5 +74,10 @@ export function JsonTreeView({
     </JsonTreeViewRoot>
   );
 }
+// #endregion
+
+// #region Display Names
+JsonTreeViewRoot.displayName = "JsonTreeView.Root";
+JsonTreeViewTree.displayName = "JsonTreeView.Tree";
 JsonTreeView.displayName = "JsonTreeView";
 // #endregion

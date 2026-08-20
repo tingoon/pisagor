@@ -106,12 +106,6 @@ function TooltipArrow({ className, children, ...rest }: TooltipArrowProps) {
     </TooltipPrimitive.Arrow>
   );
 }
-
-TooltipRoot.displayName = "Tooltip.Root";
-TooltipTrigger.displayName = "Tooltip.Trigger";
-TooltipPositioner.displayName = "Tooltip.Positioner";
-TooltipContent.displayName = "Tooltip.Content";
-TooltipArrow.displayName = "Tooltip.Arrow";
 // #endregion
 
 // #region Closed
@@ -155,5 +149,13 @@ export function Tooltip({
     </TooltipRoot>
   );
 }
+// #endregion
+
+// #region Display Names
+TooltipRoot.displayName = "Tooltip.Root";
+TooltipTrigger.displayName = "Tooltip.Trigger";
+TooltipPositioner.displayName = "Tooltip.Positioner";
+TooltipContent.displayName = "Tooltip.Content";
+TooltipArrow.displayName = "Tooltip.Arrow";
 Tooltip.displayName = "Tooltip";
 // #endregion

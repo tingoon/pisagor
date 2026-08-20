@@ -30,7 +30,9 @@ export function LinkOverlayLink({ className, ...rest }: ComponentProps<typeof ar
     />
   );
 }
+// #endregion
 
+// #region Display Names
 LinkBoxRoot.displayName = "LinkBox";
 LinkOverlayLink.displayName = "LinkBox.Overlay";
 // #endregion

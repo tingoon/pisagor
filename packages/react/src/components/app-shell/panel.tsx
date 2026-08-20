@@ -212,8 +212,10 @@ export function AppShellPanelTrigger({
   );
 }
 
+// #region Display Names
 AppShellPanel.displayName = "AppShell.Panel";
 AppShellPanelHeader.displayName = "AppShell.PanelHeader";
 AppShellPanelContent.displayName = "AppShell.PanelContent";
 AppShellPanelFooter.displayName = "AppShell.PanelFooter";
 AppShellPanelTrigger.displayName = "AppShell.PanelTrigger";
+// #endregion

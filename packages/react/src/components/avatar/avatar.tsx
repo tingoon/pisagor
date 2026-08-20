@@ -72,10 +72,6 @@ function AvatarFallback({ className, ...rest }: AvatarFallbackProps) {
 
   return <AvatarPrimitive.Fallback {...rest} className={slots.fallback({ className })} />;
 }
-
-AvatarRoot.displayName = "Avatar.Root";
-AvatarImage.displayName = "Avatar.Image";
-AvatarFallback.displayName = "Avatar.Fallback";
 // #endregion
 
 // #region Closed
@@ -103,5 +99,11 @@ export function Avatar({
     </AvatarRoot>
   );
 }
+// #endregion
+
+// #region Display Names
+AvatarRoot.displayName = "Avatar.Root";
+AvatarImage.displayName = "Avatar.Image";
+AvatarFallback.displayName = "Avatar.Fallback";
 Avatar.displayName = "Avatar";
 // #endregion

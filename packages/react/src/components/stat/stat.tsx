@@ -117,12 +117,6 @@ export function StatTrend({ trend = "neutral", className, ...rest }: StatTrendPr
     />
   );
 }
-
-StatRoot.displayName = "Stat.Root";
-StatLabel.displayName = "Stat.Label";
-StatValue.displayName = "Stat.Value";
-StatDescription.displayName = "Stat.Description";
-StatTrend.displayName = "Stat.Trend";
 // #endregion
 
 // #region Shorthand
@@ -154,5 +148,13 @@ export function StatShorthand({
     </StatRoot>
   );
 }
+// #endregion
+
+// #region Display Names
+StatRoot.displayName = "Stat.Root";
+StatLabel.displayName = "Stat.Label";
+StatValue.displayName = "Stat.Value";
+StatDescription.displayName = "Stat.Description";
+StatTrend.displayName = "Stat.Trend";
 StatShorthand.displayName = "Stat";
 // #endregion

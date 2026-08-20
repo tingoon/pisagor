@@ -146,17 +146,6 @@ export function ListboxEmpty({ className, ...rest }: ListboxEmptyProps) {
 export function ListboxShortcut(props: DropdownMenuShortcutProps) {
   return <DropdownMenu.Shortcut dataPart="shortcut" dataScope="listbox" {...props} />;
 }
-
-ListboxRoot.displayName = "Listbox.Root";
-ListboxContent.displayName = "Listbox.Content";
-ListboxItem.displayName = "Listbox.Item";
-ListboxItemText.displayName = "Listbox.ItemText";
-ListboxItemGroup.displayName = "Listbox.ItemGroup";
-ListboxItemGroupLabel.displayName = "Listbox.ItemGroupLabel";
-ListboxValueText.displayName = "Listbox.ValueText";
-ListboxItemIndicator.displayName = "Listbox.ItemIndicator";
-ListboxEmpty.displayName = "Listbox.Empty";
-ListboxShortcut.displayName = "Listbox.Shortcut";
 // #endregion
 
 // #region Shorthand
@@ -183,5 +172,18 @@ export function ListboxShorthand({ items, collection: collectionProp, ...rest }:
     </ListboxRoot>
   );
 }
+// #endregion
+
+// #region Display Names
+ListboxRoot.displayName = "Listbox.Root";
+ListboxContent.displayName = "Listbox.Content";
+ListboxItem.displayName = "Listbox.Item";
+ListboxItemText.displayName = "Listbox.ItemText";
+ListboxItemGroup.displayName = "Listbox.ItemGroup";
+ListboxItemGroupLabel.displayName = "Listbox.ItemGroupLabel";
+ListboxValueText.displayName = "Listbox.ValueText";
+ListboxItemIndicator.displayName = "Listbox.ItemIndicator";
+ListboxEmpty.displayName = "Listbox.Empty";
+ListboxShortcut.displayName = "Listbox.Shortcut";
 ListboxShorthand.displayName = "Listbox";
 // #endregion

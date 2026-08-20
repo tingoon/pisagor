@@ -250,17 +250,6 @@ export function SelectEmpty({ className, ...rest }: ComponentProps<typeof ark.di
 
   return null;
 }
-
-SelectRoot.displayName = "Select.Root";
-SelectTrigger.displayName = "Select.Trigger";
-SelectSeparator.displayName = "Select.Separator";
-SelectValue.displayName = "Select.Value";
-SelectContent.displayName = "Select.Content";
-SelectGroup.displayName = "Select.Group";
-SelectGroupLabel.displayName = "Select.GroupLabel";
-SelectItem.displayName = "Select.Item";
-SelectClearTrigger.displayName = "Select.ClearTrigger";
-SelectEmpty.displayName = "Select.Empty";
 // #endregion
 
 // #region Shorthand
@@ -290,5 +279,18 @@ export function SelectShorthand({
     </SelectRoot>
   );
 }
+// #endregion
+
+// #region Display Names
+SelectRoot.displayName = "Select.Root";
+SelectTrigger.displayName = "Select.Trigger";
+SelectSeparator.displayName = "Select.Separator";
+SelectValue.displayName = "Select.Value";
+SelectContent.displayName = "Select.Content";
+SelectGroup.displayName = "Select.Group";
+SelectGroupLabel.displayName = "Select.GroupLabel";
+SelectItem.displayName = "Select.Item";
+SelectClearTrigger.displayName = "Select.ClearTrigger";
+SelectEmpty.displayName = "Select.Empty";
 SelectShorthand.displayName = "Select";
 // #endregion

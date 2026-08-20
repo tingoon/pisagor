@@ -131,14 +131,6 @@ export function BreadcrumbEllipsis(props: ComponentProps<typeof ark.span>) {
     </ark.span>
   );
 }
-
-BreadcrumbRoot.displayName = "Breadcrumb.Root";
-BreadcrumbList.displayName = "Breadcrumb.List";
-BreadcrumbItem.displayName = "Breadcrumb.Item";
-BreadcrumbLink.displayName = "Breadcrumb.Link";
-BreadcrumbPage.displayName = "Breadcrumb.Page";
-BreadcrumbSeparator.displayName = "Breadcrumb.Separator";
-BreadcrumbEllipsis.displayName = "Breadcrumb.Ellipsis";
 // #endregion
 
 // #region Shorthand
@@ -166,5 +158,15 @@ export function BreadcrumbShorthand({ items, ...rest }: BreadcrumbProps) {
     </BreadcrumbRoot>
   );
 }
+// #endregion
+
+// #region Display Names
+BreadcrumbRoot.displayName = "Breadcrumb.Root";
+BreadcrumbList.displayName = "Breadcrumb.List";
+BreadcrumbItem.displayName = "Breadcrumb.Item";
+BreadcrumbLink.displayName = "Breadcrumb.Link";
+BreadcrumbPage.displayName = "Breadcrumb.Page";
+BreadcrumbSeparator.displayName = "Breadcrumb.Separator";
+BreadcrumbEllipsis.displayName = "Breadcrumb.Ellipsis";
 BreadcrumbShorthand.displayName = "Breadcrumb";
 // #endregion

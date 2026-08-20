@@ -212,8 +212,10 @@ export function AppShellInspectorTrigger({
   );
 }
 
+// #region Display Names
 AppShellInspector.displayName = "AppShell.Inspector";
 AppShellInspectorHeader.displayName = "AppShell.InspectorHeader";
 AppShellInspectorContent.displayName = "AppShell.InspectorContent";
 AppShellInspectorFooter.displayName = "AppShell.InspectorFooter";
 AppShellInspectorTrigger.displayName = "AppShell.InspectorTrigger";
+// #endregion

@@ -151,7 +151,9 @@ export function SheetFooter({ className, ...rest }: DialogFooterProps) {
     />
   );
 }
+// #endregion
 
+// #region Display Names
 SheetRoot.displayName = "Sheet";
 SheetTrigger.displayName = "Sheet.Trigger";
 SheetOverlay.displayName = "Sheet.Overlay";

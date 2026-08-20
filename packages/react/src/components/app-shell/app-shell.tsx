@@ -169,4 +169,7 @@ export function AppShellRoot({ className, style, testId, children, ...rest }: Ap
     </AppShellContext>
   );
 }
+
+// #region Display Names
 AppShellRoot.displayName = "AppShell";
+// #endregion

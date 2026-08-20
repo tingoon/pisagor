@@ -124,7 +124,9 @@ export function CardFooter({ className, ...rest }: ComponentProps<typeof ark.div
     />
   );
 }
+// #endregion
 
+// #region Display Names
 CardRoot.displayName = "Card";
 CardMedia.displayName = "Card.Media";
 CardHeader.displayName = "Card.Header";

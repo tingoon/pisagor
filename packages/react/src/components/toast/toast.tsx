@@ -177,7 +177,9 @@ export function ToastItem({
     </ToastPrimitive.Root>
   );
 }
+// #endregion
 
+// #region Display Names
 ToasterRoot.displayName = "Toaster";
 ToastItem.displayName = "Toaster.Item";
 // #endregion

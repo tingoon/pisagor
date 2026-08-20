@@ -98,7 +98,9 @@ export function NavigationMenuLink({
     />
   );
 }
+// #endregion
 
+// #region Display Names
 NavigationMenuRoot.displayName = "NavigationMenu";
 NavigationMenuList.displayName = "NavigationMenu.List";
 NavigationMenuItem.displayName = "NavigationMenu.Item";

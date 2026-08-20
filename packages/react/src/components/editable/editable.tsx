@@ -165,7 +165,9 @@ export function EditableCancelTrigger(props: EditableCancelTriggerProps) {
 export function EditableSubmitTrigger(props: EditableSubmitTriggerProps) {
   return <EditablePrimitive.SubmitTrigger {...props} />;
 }
+// #endregion
 
+// #region Display Names
 EditableRoot.displayName = "Editable";
 EditableArea.displayName = "Editable.Area";
 EditableInput.displayName = "Editable.Input";

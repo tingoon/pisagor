@@ -91,11 +91,6 @@ function ScrollAreaThumb({ className, ...rest }: ScrollAreaThumbProps) {
 
   return <ScrollAreaPrimitive.Thumb {...rest} className={slots.thumb({ className })} />;
 }
-
-ScrollAreaRoot.displayName = "ScrollArea.Root";
-ScrollAreaViewport.displayName = "ScrollArea.Viewport";
-ScrollAreaScrollbar.displayName = "ScrollArea.Scrollbar";
-ScrollAreaThumb.displayName = "ScrollArea.Thumb";
 // #endregion
 
 // #region Closed
@@ -136,5 +131,12 @@ export function ScrollArea({
     </ScrollAreaRoot>
   );
 }
+// #endregion
+
+// #region Display Names
+ScrollAreaRoot.displayName = "ScrollArea.Root";
+ScrollAreaViewport.displayName = "ScrollArea.Viewport";
+ScrollAreaScrollbar.displayName = "ScrollArea.Scrollbar";
+ScrollAreaThumb.displayName = "ScrollArea.Thumb";
 ScrollArea.displayName = "ScrollArea";
 // #endregion

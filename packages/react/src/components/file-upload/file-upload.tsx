@@ -281,7 +281,9 @@ export function FileUploadItemDeleteTrigger(props: FileUploadItemDeleteTriggerPr
 export function FileUploadClearTrigger(props: FileUploadClearTriggerProps) {
   return <FileUploadPrimitive.ClearTrigger {...props} />;
 }
+// #endregion
 
+// #region Display Names
 FileUploadRoot.displayName = "FileUpload";
 FileUploadTrigger.displayName = "FileUpload.Trigger";
 FileUploadDropzone.displayName = "FileUpload.Dropzone";

@@ -257,7 +257,9 @@ export function TagsInputRootProvider({
     </TagsInputPrimitive.RootProvider>
   );
 }
+// #endregion
 
+// #region Display Names
 TagsInputRoot.displayName = "TagsInput";
 TagsInputControl.displayName = "TagsInput.Control";
 TagsInputItem.displayName = "TagsInput.Item";

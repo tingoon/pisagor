@@ -247,7 +247,9 @@ export function DialogFooter({
     />
   );
 }
+// #endregion
 
+// #region Display Names
 DialogRoot.displayName = "Dialog";
 DialogTrigger.displayName = "Dialog.Trigger";
 DialogOverlay.displayName = "Dialog.Overlay";

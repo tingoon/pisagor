@@ -47,9 +47,6 @@ export function AvatarGroupCount({ className, ...rest }: ComponentProps<typeof a
     />
   );
 }
-
-AvatarGroupRoot.displayName = "AvatarGroup.Root";
-AvatarGroupCount.displayName = "AvatarGroup.Count";
 // #endregion
 
 // #region Shorthand
@@ -71,5 +68,10 @@ export function AvatarGroupShorthand({ users, max, ...rest }: AvatarGroupProps) 
     </AvatarGroupRoot>
   );
 }
+// #endregion
+
+// #region Display Names
+AvatarGroupRoot.displayName = "AvatarGroup.Root";
+AvatarGroupCount.displayName = "AvatarGroup.Count";
 AvatarGroupShorthand.displayName = "AvatarGroup";
 // #endregion

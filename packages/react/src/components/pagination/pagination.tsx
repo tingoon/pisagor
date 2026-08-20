@@ -146,7 +146,9 @@ export function PaginationEllipsis({ className, ...rest }: PaginationEllipsisPro
     </PaginationPrimitive.Ellipsis>
   );
 }
+// #endregion
 
+// #region Display Names
 PaginationRoot.displayName = "Pagination";
 PaginationPrevious.displayName = "Pagination.Previous";
 PaginationNext.displayName = "Pagination.Next";

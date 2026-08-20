@@ -126,11 +126,6 @@ function RatingIndicator({ className, children, ...rest }: RatingIndicatorProps)
     </span>
   );
 }
-
-RatingRoot.displayName = "Rating.Root";
-RatingControl.displayName = "Rating.Control";
-RatingItem.displayName = "Rating.Item";
-RatingIndicator.displayName = "Rating.Indicator";
 // #endregion
 
 // #region Closed
@@ -194,5 +189,12 @@ export function Rating({
     </RatingRoot>
   );
 }
+// #endregion
+
+// #region Display Names
+RatingRoot.displayName = "Rating.Root";
+RatingControl.displayName = "Rating.Control";
+RatingItem.displayName = "Rating.Item";
+RatingIndicator.displayName = "Rating.Indicator";
 Rating.displayName = "Rating";
 // #endregion

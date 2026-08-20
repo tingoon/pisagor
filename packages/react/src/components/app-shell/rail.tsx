@@ -163,5 +163,7 @@ export function AppShellRailItem({
   );
 }
 
+// #region Display Names
 AppShellRail.displayName = "AppShell.Rail";
 AppShellRailItem.displayName = "AppShell.RailItem";
+// #endregion

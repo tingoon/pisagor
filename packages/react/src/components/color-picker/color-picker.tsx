@@ -468,7 +468,9 @@ export function ColorPickerField({ clearable = false, ...rest }: ColorPickerProp
     </ColorPickerRoot>
   );
 }
+// #endregion
 
+// #region Display Names
 ColorPickerRoot.displayName = "ColorPicker";
 ColorPickerClearTrigger.displayName = "ColorPicker.ClearTrigger";
 ColorPickerControl.displayName = "ColorPicker.Control";

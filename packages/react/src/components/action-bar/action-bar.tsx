@@ -292,7 +292,9 @@ export function ActionBarValue({
 export function ActionBarBody({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return <ark.div {...rest} className={actionBarInlineVariants({ className })} />;
 }
+// #endregion
 
+// #region Display Names
 ActionBarRoot.displayName = "ActionBar";
 ActionBarTrigger.displayName = "ActionBar.Trigger";
 ActionBarContent.displayName = "ActionBar.Content";

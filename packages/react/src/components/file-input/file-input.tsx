@@ -126,10 +126,6 @@ function FileInputLabel({ children, className, ...rest }: ComponentProps<typeof 
     </InputGroupText>
   );
 }
-
-FileInputRoot.displayName = "FileInput.Root";
-FileInputControl.displayName = "FileInput.Control";
-FileInputLabel.displayName = "FileInput.Label";
 // #endregion
 
 // #region Closed
@@ -217,5 +213,11 @@ export function FileInput({
     </FileInputRoot>
   );
 }
+// #endregion
+
+// #region Display Names
+FileInputRoot.displayName = "FileInput.Root";
+FileInputControl.displayName = "FileInput.Control";
+FileInputLabel.displayName = "FileInput.Label";
 FileInput.displayName = "FileInput";
 // #endregion

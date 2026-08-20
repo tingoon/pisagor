@@ -133,5 +133,8 @@ export function Input({
     </InputGroupRoot>
   );
 }
+// #endregion
+
+// #region Display Names
 Input.displayName = "Input";
 // #endregion

@@ -61,7 +61,9 @@ export function SkeletonText({ className, lines = 2, ...rest }: SkeletonTextProp
     </ark.div>
   );
 }
+// #endregion
 
+// #region Display Names
 SkeletonRoot.displayName = "Skeleton";
 SkeletonCircle.displayName = "Skeleton.Circle";
 SkeletonText.displayName = "Skeleton.Text";

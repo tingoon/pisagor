@@ -112,12 +112,6 @@ export function EmptyStateActions({ className, classNames, ...rest }: EmptyState
     />
   );
 }
-
-EmptyStateRoot.displayName = "EmptyState.Root";
-EmptyStateMedia.displayName = "EmptyState.Media";
-EmptyStateTitle.displayName = "EmptyState.Title";
-EmptyStateDescription.displayName = "EmptyState.Description";
-EmptyStateActions.displayName = "EmptyState.Actions";
 // #endregion
 
 // #region Shorthand
@@ -148,5 +142,13 @@ export function EmptyStateShorthand({
     </EmptyStateRoot>
   );
 }
+// #endregion
+
+// #region Display Names
+EmptyStateRoot.displayName = "EmptyState.Root";
+EmptyStateMedia.displayName = "EmptyState.Media";
+EmptyStateTitle.displayName = "EmptyState.Title";
+EmptyStateDescription.displayName = "EmptyState.Description";
+EmptyStateActions.displayName = "EmptyState.Actions";
 EmptyStateShorthand.displayName = "EmptyState";
 // #endregion

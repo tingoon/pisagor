@@ -206,18 +206,6 @@ function SliderMarkerLabel({ className, children, ...rest }: ComponentProps<"spa
     </span>
   );
 }
-
-SliderRoot.displayName = "Slider.Root";
-SliderHeader.displayName = "Slider.Header";
-SliderValue.displayName = "Slider.Value";
-SliderControl.displayName = "Slider.Control";
-SliderTrack.displayName = "Slider.Track";
-SliderRange.displayName = "Slider.Range";
-SliderThumb.displayName = "Slider.Thumb";
-SliderMarkerGroup.displayName = "Slider.MarkerGroup";
-SliderMarker.displayName = "Slider.Marker";
-SliderMarkerTick.displayName = "Slider.MarkerTick";
-SliderMarkerLabel.displayName = "Slider.MarkerLabel";
 // #endregion
 
 // #region Closed
@@ -336,5 +324,19 @@ export function Slider({
     </SliderRoot>
   );
 }
+// #endregion
+
+// #region Display Names
+SliderRoot.displayName = "Slider.Root";
+SliderHeader.displayName = "Slider.Header";
+SliderValue.displayName = "Slider.Value";
+SliderControl.displayName = "Slider.Control";
+SliderTrack.displayName = "Slider.Track";
+SliderRange.displayName = "Slider.Range";
+SliderThumb.displayName = "Slider.Thumb";
+SliderMarkerGroup.displayName = "Slider.MarkerGroup";
+SliderMarker.displayName = "Slider.Marker";
+SliderMarkerTick.displayName = "Slider.MarkerTick";
+SliderMarkerLabel.displayName = "Slider.MarkerLabel";
 Slider.displayName = "Slider";
 // #endregion

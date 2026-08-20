@@ -192,7 +192,9 @@ export function MenuShortcut({
     />
   );
 }
+// #endregion
 
+// #region Display Names
 MenuRoot.displayName = "Menu";
 MenuList.displayName = "Menu.List";
 MenuGroup.displayName = "Menu.Group";

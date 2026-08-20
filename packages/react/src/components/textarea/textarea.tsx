@@ -113,11 +113,6 @@ function TextareaClearableField({
     />
   );
 }
-
-TextareaProvider.displayName = "Textarea.Provider";
-TextareaField.displayName = "Textarea.Field";
-TextareaGroup.displayName = "Textarea.Group";
-TextareaClearableField.displayName = "Textarea.ClearableField";
 // #endregion
 
 // #region Closed
@@ -199,5 +194,12 @@ export function Textarea({
     </TextareaProvider>
   );
 }
+// #endregion
+
+// #region Display Names
+TextareaProvider.displayName = "Textarea.Provider";
+TextareaField.displayName = "Textarea.Field";
+TextareaGroup.displayName = "Textarea.Group";
+TextareaClearableField.displayName = "Textarea.ClearableField";
 Textarea.displayName = "Textarea";
 // #endregion

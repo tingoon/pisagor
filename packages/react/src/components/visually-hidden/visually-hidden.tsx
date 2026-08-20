@@ -22,5 +22,8 @@ export function VisuallyHidden({ className, testId, ...rest }: VisuallyHiddenPro
     />
   );
 }
+// #endregion
+
+// #region Display Names
 VisuallyHidden.displayName = "VisuallyHidden";
 // #endregion

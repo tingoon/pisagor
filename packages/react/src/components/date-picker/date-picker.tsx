@@ -260,7 +260,9 @@ export function DatePickerValue({ className, ...rest }: DatePickerValueProps) {
 export function DatePickerPresetTrigger(props: DatePickerPresetTriggerProps) {
   return <Calendar.PresetTrigger {...props} />;
 }
+// #endregion
 
+// #region Display Names
 DatePickerRoot.displayName = "DatePicker";
 DatePickerTrigger.displayName = "DatePicker.Trigger";
 DatePickerInput.displayName = "DatePicker.Input";

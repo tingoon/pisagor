@@ -108,11 +108,6 @@ export function DataListItem({
     </ark.div>
   );
 }
-
-DataListRoot.displayName = "DataList.Root";
-DataListItemLabel.displayName = "DataList.ItemLabel";
-DataListItemValue.displayName = "DataList.ItemValue";
-DataListItem.displayName = "DataList.Item";
 // #endregion
 
 // #region Shorthand
@@ -128,5 +123,12 @@ export function DataListShorthand({ items, ...rest }: DataListProps) {
     </DataListRoot>
   );
 }
+// #endregion
+
+// #region Display Names
+DataListRoot.displayName = "DataList.Root";
+DataListItemLabel.displayName = "DataList.ItemLabel";
+DataListItemValue.displayName = "DataList.ItemValue";
+DataListItem.displayName = "DataList.Item";
 DataListShorthand.displayName = "DataList";
 // #endregion

@@ -100,7 +100,9 @@ export function FrameFooter({ className, ...rest }: ComponentProps<typeof ark.fo
     />
   );
 }
+// #endregion
 
+// #region Display Names
 FrameRoot.displayName = "Frame";
 FramePanel.displayName = "Frame.Panel";
 FrameHeader.displayName = "Frame.Header";

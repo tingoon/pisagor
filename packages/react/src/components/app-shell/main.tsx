@@ -59,6 +59,8 @@ export function AppShellContent({ className, ...rest }: ComponentProps<"main">) 
   );
 }
 
+// #region Display Names
 AppShellMain.displayName = "AppShell.Main";
 AppShellHeader.displayName = "AppShell.Header";
 AppShellContent.displayName = "AppShell.Content";
+// #endregion

@@ -126,7 +126,9 @@ export function ImageCropperGrid({ className, ...rest }: ImageCropperGridProps) 
     <ImageCropperPrimitive.Grid {...rest} className={imageCropperGridVariants({ className })} />
   );
 }
+// #endregion
 
+// #region Display Names
 ImageCropperRoot.displayName = "ImageCropper";
 ImageCropperImage.displayName = "ImageCropper.Image";
 ImageCropperSelection.displayName = "ImageCropper.Selection";

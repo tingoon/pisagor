@@ -99,7 +99,9 @@ function CheckboxIndicator({ className, ...rest }: CheckboxIndicatorProps) {
 
 // Keep export for backwards compatibility
 export const checkboxVariants = formControlToggleVariants;
+// #endregion
 
+// #region Display Names
 CheckboxGroup.displayName = "Checkbox.Group";
 CheckboxRoot.displayName = "Checkbox";
 CheckboxIndicator.displayName = "Checkbox.Indicator";

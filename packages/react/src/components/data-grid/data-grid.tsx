@@ -596,7 +596,9 @@ DataGrid.RowProvider = DataGridRowProvider;
 DataGrid.Toolbar = DataGridToolbar;
 
 DataGrid.VirtualBody = DataGridVirtualBody;
+// #endregion
 
+// #region Display Names
 DataGridHeader.displayName = "DataGrid.Header";
 DataGridHeaderRow.displayName = "DataGrid.HeaderRow";
 DataGridColumnResizer.displayName = "DataGrid.ColumnResizer";

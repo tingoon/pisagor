@@ -161,7 +161,9 @@ export function TimerPlay(props: TimerActionProps) {
 
   return <TimerStart {...props} />;
 }
+// #endregion
 
+// #region Display Names
 TimerRoot.displayName = "Timer";
 TimerArea.displayName = "Timer.Area";
 TimerItemGroup.displayName = "Timer.ItemGroup";

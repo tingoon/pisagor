@@ -119,12 +119,6 @@ function SignaturePadGuide({ className, ...rest }: SignaturePadGuideProps) {
 
   return <SignaturePadPrimitive.Guide {...rest} className={slots.guide({ className })} />;
 }
-
-SignaturePadRoot.displayName = "SignaturePad.Root";
-SignaturePadControl.displayName = "SignaturePad.Control";
-SignaturePadSegment.displayName = "SignaturePad.Segment";
-SignaturePadClear.displayName = "SignaturePad.Clear";
-SignaturePadGuide.displayName = "SignaturePad.Guide";
 // #endregion
 
 // #region Closed
@@ -152,5 +146,13 @@ export function SignaturePad({
     </SignaturePadRoot>
   );
 }
+// #endregion
+
+// #region Display Names
+SignaturePadRoot.displayName = "SignaturePad.Root";
+SignaturePadControl.displayName = "SignaturePad.Control";
+SignaturePadSegment.displayName = "SignaturePad.Segment";
+SignaturePadClear.displayName = "SignaturePad.Clear";
+SignaturePadGuide.displayName = "SignaturePad.Guide";
 SignaturePad.displayName = "SignaturePad";
 // #endregion
