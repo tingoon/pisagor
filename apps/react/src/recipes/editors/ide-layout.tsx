@@ -41,7 +41,7 @@ export function IdeLayout({ className }: IdeLayoutProps) {
       </div>
       <div className="flex flex-1 flex-col rounded-lg border p-0.5">
         {activeItem && (
-          <Tabs className="flex-1" value={activeItem}>
+          <Tabs.Root className="flex-1" value={activeItem}>
             <Tabs.List variant="underline">
               <Tabs.Trigger value={activeItem}>
                 {activeItem}
@@ -58,7 +58,7 @@ export function IdeLayout({ className }: IdeLayoutProps) {
             <Tabs.Content className="p-2 text-muted-foreground text-sm" value={activeItem}>
               {"// File content"}
             </Tabs.Content>
-          </Tabs>
+          </Tabs.Root>
         )}
       </div>
     </div>

@@ -10,7 +10,7 @@ import type { ComponentProps, ReactNode } from "react";
 import type { WithTestId } from "../../internal/types";
 
 // #region Types
-interface TabItem {
+interface TabsPresetItem {
   value: string;
   label: ReactNode;
   content: ReactNode;
@@ -21,13 +21,21 @@ export interface TabsListProps
   extends ComponentProps<typeof TabsPrimitive.List>,
     TabsListVariantProps {}
 
-export interface TabsRootProps extends ComponentProps<typeof TabsPrimitive.Root>, WithTestId {
-  tabs?: TabItem[];
-}
+export type TabsRootProps = ComponentProps<typeof TabsPrimitive.Root> & WithTestId;
 
 export type TabsTriggerProps = ComponentProps<typeof TabsPrimitive.Trigger>;
 
 export type TabsContentProps = ComponentProps<typeof TabsPrimitive.Content>;
+
+export interface TabsProps extends Omit<TabsRootProps, "children"> {
+  /**
+   * The visual variant of the tab list.
+   *
+   * @defaultValue "default"
+   */
+  variant?: TabsListProps["variant"];
+  items?: TabsPresetItem[];
+}
 // #endregion
 
 // #region Parts
@@ -35,7 +43,6 @@ export function TabsRoot({
   lazyMount = true,
   unmountOnExit = true,
   className,
-  tabs,
   children,
   testId,
   ...rest
@@ -48,20 +55,6 @@ export function TabsRoot({
       lazyMount={lazyMount}
       unmountOnExit={unmountOnExit}
     >
-      {tabs && (
-        <TabsList>
-          {tabs.map((tab) => (
-            <TabsTrigger disabled={tab.disabled} key={tab.value} value={tab.value}>
-              {tab.label}
-            </TabsTrigger>
-          ))}
-        </TabsList>
-      )}
-      {tabs?.map((tab) => (
-        <TabsContent key={tab.value} value={tab.value}>
-          {tab.content}
-        </TabsContent>
-      ))}
       {children}
     </TabsPrimitive.Root>
   );
@@ -88,9 +81,32 @@ export function TabsContent({ className, ...rest }: TabsContentProps) {
 }
 // #endregion
 
+// #region Shorthand
+export function TabsShorthand({ items, variant, ...rest }: TabsProps) {
+  return (
+    <TabsRoot {...rest}>
+      <TabsList variant={variant}>
+        {items?.map((tab) => (
+          <TabsTrigger disabled={tab.disabled} key={tab.value} value={tab.value}>
+            {tab.label}
+          </TabsTrigger>
+        ))}
+      </TabsList>
+
+      {items?.map((tab) => (
+        <TabsContent key={tab.value} value={tab.value}>
+          {tab.content}
+        </TabsContent>
+      ))}
+    </TabsRoot>
+  );
+}
+// #endregion
+
 // #region Display Names
-TabsRoot.displayName = "Tabs";
+TabsRoot.displayName = "Tabs.Root";
 TabsList.displayName = "Tabs.List";
 TabsTrigger.displayName = "Tabs.Trigger";
 TabsContent.displayName = "Tabs.Content";
+TabsShorthand.displayName = "Tabs";
 // #endregion
