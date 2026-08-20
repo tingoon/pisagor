@@ -20,12 +20,12 @@ export function TableRowMenu({ className }: TableRowMenuProps) {
       <Table.Body>
         {workspaceUsers.slice(0, 3).map((user) => (
           <ContextMenu key={user.id}>
-            <ContextMenu.Trigger asChild>
+            <ContextMenu.ContextTrigger asChild>
               <Table.Row>
                 <Table.Cell className="font-medium">{user.name}</Table.Cell>
                 <Table.Cell>{user.email}</Table.Cell>
               </Table.Row>
-            </ContextMenu.Trigger>
+            </ContextMenu.ContextTrigger>
             <ContextMenu.Content className="min-w-40">
               <ContextMenu.Item value="view">
                 <EyeIcon />

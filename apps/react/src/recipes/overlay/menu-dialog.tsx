@@ -35,12 +35,12 @@ export function MenuDialog() {
             </p>
           </Dialog.Body>
           <Dialog.Footer>
-            <Dialog.Close asChild>
+            <Dialog.CloseTrigger asChild>
               <Button variant="outline">Cancel</Button>
-            </Dialog.Close>
-            <Dialog.Close asChild>
+            </Dialog.CloseTrigger>
+            <Dialog.CloseTrigger asChild>
               <Button>Save</Button>
-            </Dialog.Close>
+            </Dialog.CloseTrigger>
           </Dialog.Footer>
         </Dialog.Content>
       </Dialog>

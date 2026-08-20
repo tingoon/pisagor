@@ -47,8 +47,8 @@ export function TablePagination({ className }: TablePaginationProps) {
           page={page}
           pageSize={pageSize}
         >
-          <Pagination.Previous />
-          <Pagination.Next />
+          <Pagination.PrevTrigger />
+          <Pagination.NextTrigger />
         </Pagination>
       </div>
     </div>

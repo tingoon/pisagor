@@ -156,9 +156,9 @@ export function TableBulkActions({ className }: TableBulkActionsProps) {
                 </AlertDialog.Body>
                 <AlertDialog.Footer>
                   <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
-                  <AlertDialog.Close asChild>
+                  <AlertDialog.CloseTrigger asChild>
                     <AlertDialog.Action variant="destructive">Delete</AlertDialog.Action>
-                  </AlertDialog.Close>
+                  </AlertDialog.CloseTrigger>
                 </AlertDialog.Footer>
               </AlertDialog.Content>
             </AlertDialog>

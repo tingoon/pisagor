@@ -67,10 +67,10 @@ export function IdeLayout({ className }: IdeLayoutProps) {
 
 function TreeNode({ node, indexPath, ...rest }: NodeProviderProps) {
   return (
-    <TreeView.Node {...rest} indexPath={indexPath} node={node}>
+    <TreeView.NodeProvider {...rest} indexPath={indexPath} node={node}>
       {node.children ? (
         <TreeView.Branch>
-          <TreeView.BranchItem>{node.name}</TreeView.BranchItem>
+          <TreeView.BranchControl>{node.name}</TreeView.BranchControl>
 
           <TreeView.BranchContent>
             {node.children.map((child, index) => (
@@ -79,11 +79,11 @@ function TreeNode({ node, indexPath, ...rest }: NodeProviderProps) {
           </TreeView.BranchContent>
         </TreeView.Branch>
       ) : (
-        <TreeView.Content>
-          <TreeView.Item>{node.name}</TreeView.Item>
-        </TreeView.Content>
+        <TreeView.Item>
+          <TreeView.ItemText>{node.name}</TreeView.ItemText>
+        </TreeView.Item>
       )}
-    </TreeView.Node>
+    </TreeView.NodeProvider>
   );
 }
 

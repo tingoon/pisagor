@@ -25,9 +25,9 @@ export function PopoverDialog() {
           </Popover>
         </Dialog.Body>
         <Dialog.Footer>
-          <Dialog.Close asChild>
+          <Dialog.CloseTrigger asChild>
             <Button variant="outline">Close</Button>
-          </Dialog.Close>
+          </Dialog.CloseTrigger>
         </Dialog.Footer>
       </Dialog.Content>
     </Dialog>
