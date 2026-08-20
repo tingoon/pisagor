@@ -1,7 +1,4 @@
-import { Button } from "@pisagor/react/button";
-import { Card } from "@pisagor/react/card";
-import { Field } from "@pisagor/react/field";
-import { Textarea } from "@pisagor/react/textarea";
+import { Button, Card, Field, Textarea } from "@pisagor/react";
 import type { SubmitEvent } from "react";
 import { useState } from "react";
 

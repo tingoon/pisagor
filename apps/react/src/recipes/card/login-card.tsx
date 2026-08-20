@@ -1,8 +1,5 @@
 import { GlobeIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react/button";
-import { Card } from "@pisagor/react/card";
-import { Field } from "@pisagor/react/field";
-import { Input } from "@pisagor/react/input";
+import { Button, Card, Field, Input } from "@pisagor/react";
 import { cn } from "@pisagor/utils";
 
 export interface LoginCardProps {

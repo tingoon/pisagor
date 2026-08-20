@@ -1,5 +1,4 @@
-import { Checkbox } from "@pisagor/react/checkbox";
-import { Field } from "@pisagor/react/field";
+import { Checkbox, Field } from "@pisagor/react";
 
 export function SettingsPanel() {
   return (

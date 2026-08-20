@@ -6,13 +6,16 @@ import {
   PencilSimpleIcon,
   TrashIcon,
 } from "@phosphor-icons/react";
-import { ActionBar } from "@pisagor/react/action-bar";
-import { AlertDialog } from "@pisagor/react/alert-dialog";
-import { Badge, type BadgeVariant } from "@pisagor/react/badge";
-import { Button } from "@pisagor/react/button";
-import { Checkbox } from "@pisagor/react/checkbox";
-import { DropdownMenu } from "@pisagor/react/dropdown-menu";
-import { Table } from "@pisagor/react/table";
+import type { BadgeVariant } from "@pisagor/react";
+import {
+  ActionBar,
+  AlertDialog,
+  Badge,
+  Button,
+  Checkbox,
+  DropdownMenu,
+  Table,
+} from "@pisagor/react";
 import { cn } from "@pisagor/utils";
 import { useState } from "react";
 

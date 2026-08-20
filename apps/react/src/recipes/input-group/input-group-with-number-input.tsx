@@ -1,5 +1,4 @@
-import { InputGroup } from "@pisagor/react/input-group";
-import { NumberInput } from "@pisagor/react/number-input";
+import { InputGroup, NumberInput } from "@pisagor/react";
 
 export function InputGroupWithNumberInput() {
   return (

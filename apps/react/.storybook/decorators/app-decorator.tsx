@@ -1,4 +1,4 @@
-import { Provider } from "@pisagor/react/provider";
+import { Provider } from "@pisagor/react";
 import { useMediaQuery } from "@pisagor/react-hooks";
 import type { Decorator } from "@storybook/react-vite";
 import { useEffect } from "react";

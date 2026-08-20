@@ -5,8 +5,7 @@ import {
   SquaresFourIcon,
   UsersIcon,
 } from "@phosphor-icons/react";
-import { AppShell, useAppShell } from "@pisagor/react/app-shell";
-import { Button } from "@pisagor/react/button";
+import { AppShell, Button, useAppShell } from "@pisagor/react";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 

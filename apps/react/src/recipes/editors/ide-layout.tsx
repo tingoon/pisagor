@@ -1,12 +1,6 @@
 import { XIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react/button";
-import { Tabs } from "@pisagor/react/tabs";
-import {
-  createTreeCollection,
-  type NodeProviderProps,
-  type TreeNodeType,
-  TreeView,
-} from "@pisagor/react/tree-view";
+import type { NodeProviderProps, TreeNodeType } from "@pisagor/react";
+import { Button, createTreeCollection, Tabs, TreeView } from "@pisagor/react";
 import { cn } from "@pisagor/utils";
 import { useState } from "react";
 

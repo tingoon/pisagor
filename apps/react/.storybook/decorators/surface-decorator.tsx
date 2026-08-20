@@ -1,4 +1,4 @@
-import { Surface } from "@pisagor/react/surface";
+import { Surface } from "@pisagor/react";
 import type { Decorator } from "@storybook/react-vite";
 import type { PropsWithChildren } from "react";
 

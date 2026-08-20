@@ -1,5 +1,4 @@
-import { Field } from "@pisagor/react/field";
-import { Input } from "@pisagor/react/input";
+import { Field, Input } from "@pisagor/react";
 
 export function FormGrid() {
   return (

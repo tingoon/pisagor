@@ -1,6 +1,5 @@
 import { CopyIcon, DotsThreeIcon, FileIcon, FolderIcon } from "@phosphor-icons/react";
-import { DropdownMenu } from "@pisagor/react/dropdown-menu";
-import { InputGroup } from "@pisagor/react/input-group";
+import { DropdownMenu, InputGroup } from "@pisagor/react";
 
 export function InputGroupWithMenu() {
   return (

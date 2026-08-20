@@ -1,6 +1,4 @@
-import { Button } from "@pisagor/react/button";
-import { Dialog } from "@pisagor/react/dialog";
-import { Popover } from "@pisagor/react/popover";
+import { Button, Dialog, Popover } from "@pisagor/react";
 
 export function PopoverDialog() {
   return (

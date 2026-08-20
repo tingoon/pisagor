@@ -1,6 +1,4 @@
-import { Avatar, AvatarGroup } from "@pisagor/react/avatar";
-import { Button } from "@pisagor/react/button";
-import { Popover } from "@pisagor/react/popover";
+import { Avatar, AvatarGroup, Button, Popover } from "@pisagor/react";
 
 export function AvatarGroupOverflow() {
   return (

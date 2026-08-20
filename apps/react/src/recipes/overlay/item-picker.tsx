@@ -1,7 +1,4 @@
-import { Avatar } from "@pisagor/react/avatar";
-import { Button } from "@pisagor/react/button";
-import { DropdownMenu } from "@pisagor/react/dropdown-menu";
-import { Item } from "@pisagor/react/item";
+import { Avatar, Button, DropdownMenu, Item } from "@pisagor/react";
 
 export function ItemPicker() {
   return (

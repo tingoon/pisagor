@@ -1,7 +1,5 @@
 import { InfoIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react/button";
-import { InputGroup } from "@pisagor/react/input-group";
-import { Tooltip } from "@pisagor/react/tooltip";
+import { Button, InputGroup, Tooltip } from "@pisagor/react";
 
 export function InputGroupWithTooltip() {
   return (

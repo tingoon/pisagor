@@ -1,6 +1,4 @@
-import { Pagination } from "@pisagor/react/pagination";
-import { Select } from "@pisagor/react/select";
-import { Table } from "@pisagor/react/table";
+import { Pagination, Select, Table } from "@pisagor/react";
 import { cn } from "@pisagor/utils";
 import { useState } from "react";
 

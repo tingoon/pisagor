@@ -1,6 +1,4 @@
-import { Button } from "@pisagor/react/button";
-import { Field } from "@pisagor/react/field";
-import { Input } from "@pisagor/react/input";
+import { Button, Field, Input } from "@pisagor/react";
 
 export function FormSection() {
   return (

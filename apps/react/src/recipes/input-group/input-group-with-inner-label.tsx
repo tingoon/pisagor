@@ -1,8 +1,5 @@
 import { InfoIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react/button";
-import { Field } from "@pisagor/react/field";
-import { InputGroup } from "@pisagor/react/input-group";
-import { Tooltip } from "@pisagor/react/tooltip";
+import { Button, Field, InputGroup, Tooltip } from "@pisagor/react";
 
 export function InputGroupWithInnerLabel() {
   return (

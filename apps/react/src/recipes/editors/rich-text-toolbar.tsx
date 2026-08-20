@@ -4,9 +4,7 @@ import {
   TextStrikethroughIcon,
   TextUnderlineIcon,
 } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react/button";
-import { ButtonGroup } from "@pisagor/react/button-group";
-import { Tooltip } from "@pisagor/react/tooltip";
+import { Button, ButtonGroup, Tooltip } from "@pisagor/react";
 
 export function RichTextToolbar() {
   return (

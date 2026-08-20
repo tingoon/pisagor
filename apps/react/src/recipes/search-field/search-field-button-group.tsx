@@ -1,7 +1,5 @@
 import { MagnifyingGlassIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react/button";
-import { ButtonGroup } from "@pisagor/react/button-group";
-import { Input } from "@pisagor/react/input";
+import { Button, ButtonGroup, Input } from "@pisagor/react";
 
 export function SearchFieldButtonGroup() {
   return (

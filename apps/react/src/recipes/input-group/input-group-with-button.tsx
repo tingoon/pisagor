@@ -1,4 +1,4 @@
-import { InputGroup } from "@pisagor/react/input-group";
+import { InputGroup } from "@pisagor/react";
 
 export function InputGroupWithButton() {
   return (

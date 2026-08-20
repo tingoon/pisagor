@@ -1,6 +1,5 @@
 import { CheckIcon, XIcon } from "@phosphor-icons/react";
-import { Field } from "@pisagor/react/field";
-import { PasswordInput } from "@pisagor/react/password-input";
+import { Field, PasswordInput } from "@pisagor/react";
 import { cn } from "@pisagor/utils";
 import { useId, useMemo, useState } from "react";
 

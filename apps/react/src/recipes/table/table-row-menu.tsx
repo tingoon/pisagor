@@ -1,6 +1,5 @@
 import { EyeIcon, PencilSimpleIcon, TrashIcon } from "@phosphor-icons/react";
-import { ContextMenu } from "@pisagor/react/context-menu";
-import { Table } from "@pisagor/react/table";
+import { ContextMenu, Table } from "@pisagor/react";
 
 export interface TableRowMenuProps {
   className?: string;

@@ -1,7 +1,5 @@
 import { GearIcon, InfoIcon, UserIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react/button";
-import { Dialog } from "@pisagor/react/dialog";
-import { DropdownMenu } from "@pisagor/react/dropdown-menu";
+import { Button, Dialog, DropdownMenu } from "@pisagor/react";
 import { useState } from "react";
 
 export function MenuDialog() {

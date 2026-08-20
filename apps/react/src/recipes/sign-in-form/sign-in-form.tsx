@@ -1,4 +1,4 @@
-import { Field } from "@pisagor/react/field";
+import { Field } from "@pisagor/react";
 import { useAppForm } from "@pisagor/react-form/tanstack";
 import { z } from "zod";
 

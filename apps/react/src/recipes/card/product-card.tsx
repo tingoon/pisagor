@@ -1,6 +1,4 @@
-import { Button } from "@pisagor/react/button";
-import { Card } from "@pisagor/react/card";
-import { LinkBox } from "@pisagor/react/link-box";
+import { Button, Card, LinkBox } from "@pisagor/react";
 
 export function ProductCard() {
   return (

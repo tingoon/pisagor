@@ -1,6 +1,4 @@
-import { Badge } from "@pisagor/react/badge";
-import { Field } from "@pisagor/react/field";
-import { Input } from "@pisagor/react/input";
+import { Badge, Field, Input } from "@pisagor/react";
 
 export function LabelAccessory() {
   return (
