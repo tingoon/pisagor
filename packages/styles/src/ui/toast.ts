@@ -11,17 +11,7 @@ export const toasterVariants = tv({
 export const toastItemVariants = tv({
   slots: {
     actions: ["flex items-center gap-2"],
-    body: ["flex flex-col gap-0.5"],
-    content: ["flex items-start gap-1.5"],
-    description: ["text-muted-foreground text-sm"],
-    icon: [
-      "in-data-[type=warning]:text-warning",
-      "in-data-[type=success]:text-success",
-      "in-data-[type=error]:text-destructive",
-      "in-data-[type=info]:text-info",
-      "[&_svg]:pointer-events-none [&_svg]:h-lh [&_svg]:w-4 [&_svg]:shrink-0",
-    ],
-    root: [
+    base: [
       "z-(--z-index) translate-x-(--x) translate-y-(--y)",
       "relative",
       "w-[calc(100%-var(--viewport-offset-left))] sm:w-(--width)",
@@ -37,6 +27,16 @@ export const toastItemVariants = tv({
       "data-[state=closed]:duration-[300ms,300ms,150ms]",
       "data-[state=closed]:ease-[cubic-bezier(0.06,0.71,0.55,1)]",
       "motion-reduce:transition-none!",
+    ],
+    body: ["flex flex-col gap-0.5"],
+    content: ["flex items-start gap-1.5"],
+    description: ["text-muted-foreground text-sm"],
+    icon: [
+      "in-data-[type=warning]:text-warning",
+      "in-data-[type=success]:text-success",
+      "in-data-[type=error]:text-destructive",
+      "in-data-[type=info]:text-info",
+      "[&_svg]:pointer-events-none [&_svg]:h-lh [&_svg]:w-4 [&_svg]:shrink-0",
     ],
     title: ["font-medium text-sm"],
   },

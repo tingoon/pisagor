@@ -2,6 +2,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const navigationMenuVariants = tv({
   slots: {
+    base: ["group/navigation-menu", "w-full"],
     item: ["shrink-0"],
     link: [
       "inline-flex items-center gap-2",
@@ -15,7 +16,6 @@ export const navigationMenuVariants = tv({
       "data-[active=true]:bg-accent data-[active=true]:text-accent-foreground",
     ],
     list: ["flex flex-wrap items-center gap-1"],
-    root: ["group/navigation-menu", "w-full"],
   },
 });
 export type NavigationMenuVariantProps = VariantProps<typeof navigationMenuVariants>;

@@ -1,26 +1,29 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
 export const popoverContentVariants = tv({
-  base: [
-    "relative",
-    "z-[calc(50+var(--layer-index,0))]",
-    "[--space:--spacing(4)]",
-    "w-auto min-w-32",
-    "flex flex-col",
-    "bg-popover",
-    "text-popover-foreground",
-    "rounded-xl border shadow-lg/5",
-    "outline-hidden",
-    "origin-(--transform-origin)",
-    "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
-    "data-[state=closed]:zoom-out-[98%] data-[state=open]:zoom-in-[98%]",
-    "data-[state=closed]:animate-out data-[state=open]:animate-in",
-    "data-[placement=bottom]:slide-in-from-top-2",
-    "data-[placement=left]:slide-in-from-end-2",
-    "data-[placement=right]:slide-in-from-start-2",
-    "data-[placement=top]:slide-in-from-bottom-2",
-    "motion-reduce:animate-none!",
-  ],
+  slots: {
+    base: [
+      "relative",
+      "z-[calc(50+var(--layer-index,0))]",
+      "[--space:--spacing(4)]",
+      "w-auto min-w-32",
+      "flex flex-col",
+      "bg-popover",
+      "text-popover-foreground",
+      "rounded-xl border shadow-lg/5",
+      "outline-hidden",
+      "origin-(--transform-origin)",
+      "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
+      "data-[state=closed]:zoom-out-[98%] data-[state=open]:zoom-in-[98%]",
+      "data-[state=closed]:animate-out data-[state=open]:animate-in",
+      "data-[placement=bottom]:slide-in-from-top-2",
+      "data-[placement=left]:slide-in-from-end-2",
+      "data-[placement=right]:slide-in-from-start-2",
+      "data-[placement=top]:slide-in-from-bottom-2",
+      "motion-reduce:animate-none!",
+    ],
+    close: ["absolute inset-e-2 top-2 opacity-64 hover:opacity-100"],
+  },
 });
 
 export const popoverHeaderVariants = tv({
@@ -58,10 +61,6 @@ export const popoverFooterVariants = tv({
   ],
 });
 
-export const popoverInlineVariants = tv({
-  base: ["absolute inset-e-2 top-2 opacity-64 hover:opacity-100"],
-});
-
 export const popoverInline2Variants = tv({
   base: ["border-s border-t"],
 });
@@ -71,5 +70,4 @@ export type PopoverTitleVariantProps = VariantProps<typeof popoverTitleVariants>
 export type PopoverDescriptionVariantProps = VariantProps<typeof popoverDescriptionVariants>;
 export type PopoverBodyVariantProps = VariantProps<typeof popoverBodyVariants>;
 export type PopoverFooterVariantProps = VariantProps<typeof popoverFooterVariants>;
-export type PopoverInlineVariantProps = VariantProps<typeof popoverInlineVariants>;
 export type PopoverInline2VariantProps = VariantProps<typeof popoverInline2Variants>;

@@ -2,6 +2,11 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const sliderVariants = tv({
   slots: {
+    base: [
+      "flex flex-col gap-3",
+      "data-[orientation=horizontal]:w-full",
+      "data-[orientation=vertical]:h-full",
+    ],
     control: [
       "relative",
       "w-full",
@@ -36,11 +41,6 @@ export const sliderVariants = tv({
       "select-none",
       "data-[orientation=horizontal]:h-full",
       "data-[orientation=vertical]:w-full data-[orientation=vertical]:not-[[class^='h-']]:not-[[class*='_h-']]:self-stretch",
-    ],
-    root: [
-      "flex flex-col gap-3",
-      "data-[orientation=horizontal]:w-full",
-      "data-[orientation=vertical]:h-full",
     ],
     thumb: [
       "relative",

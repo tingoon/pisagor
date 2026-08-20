@@ -48,21 +48,25 @@ export const selectGroupLabelVariants = tv({
 });
 
 export const selectItemVariants = tv({
-  base: [
-    "relative",
-    "w-full",
-    "py-1.5 ps-2 pe-8",
-    "flex items-center gap-2",
-    "select-none text-base md:text-sm",
-    "rounded-md",
-    "cursor-default",
-    "outline-hidden",
-    "in-[[data-scope=select][data-part=content]:has([data-scope=select][data-part=item-group-label])]:ps-4",
-    "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
-    "data-disabled:pointer-events-none data-disabled:opacity-64",
-    "[&_svg]:pointer-events-none [&_svg]:shrink-0",
-    "[&_svg:not([class*='size-'])]:size-4 [&_svg]:text-muted-foreground",
-  ],
+  slots: {
+    base: [
+      "relative",
+      "w-full",
+      "py-1.5 ps-2 pe-8",
+      "flex items-center gap-2",
+      "select-none text-base md:text-sm",
+      "rounded-md",
+      "cursor-default",
+      "outline-hidden",
+      "in-[[data-scope=select][data-part=content]:has([data-scope=select][data-part=item-group-label])]:ps-4",
+      "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
+      "data-disabled:pointer-events-none data-disabled:opacity-64",
+      "[&_svg]:pointer-events-none [&_svg]:shrink-0",
+      "[&_svg:not([class*='size-'])]:size-4 [&_svg]:text-muted-foreground",
+    ],
+    indicator: ["absolute inset-e-2 flex size-4 items-center justify-center"],
+    text: ["flex w-full flex-1 items-center gap-2"],
+  },
 });
 
 export const selectClearTriggerVariants = tv({
@@ -83,14 +87,6 @@ export const selectInline2Variants = tv({
 export const selectInline3Variants = tv({
   base: ["ms-auto flex items-center gap-1 rtl:me-auto"],
 });
-
-export const selectItemTextVariants = tv({
-  base: ["flex w-full flex-1 items-center gap-2"],
-});
-
-export const selectInline4Variants = tv({
-  base: ["absolute inset-e-2 flex size-4 items-center justify-center"],
-});
 export type SelectTriggerVariantProps = VariantProps<typeof selectTriggerVariants>;
 export type SelectSeparatorVariantProps = VariantProps<typeof selectSeparatorVariants>;
 export type SelectInlineVariantProps = VariantProps<typeof selectInlineVariants>;
@@ -100,5 +96,3 @@ export type SelectItemVariantProps = VariantProps<typeof selectItemVariants>;
 export type SelectClearTriggerVariantProps = VariantProps<typeof selectClearTriggerVariants>;
 export type SelectInline2VariantProps = VariantProps<typeof selectInline2Variants>;
 export type SelectInline3VariantProps = VariantProps<typeof selectInline3Variants>;
-export type SelectItemTextVariantProps = VariantProps<typeof selectItemTextVariants>;
-export type SelectInline4VariantProps = VariantProps<typeof selectInline4Variants>;

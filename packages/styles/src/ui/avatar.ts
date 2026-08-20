@@ -6,15 +6,7 @@ export const avatarVariants = tv({
     size: "md",
   },
   slots: {
-    fallback: [
-      "size-full",
-      "flex items-center justify-center",
-      "bg-muted",
-      "rounded-[inherit]",
-      "[&_svg]:size-4 group-data-[size=lg]/avatar:[&_svg]:size-4.5 group-data-[size=sm]/avatar:[&_svg]:size-3",
-    ],
-    image: ["size-full", "aspect-square object-cover", "rounded-[inherit]"],
-    root: [
+    base: [
       "group/avatar",
       "relative",
       "size-8",
@@ -23,17 +15,25 @@ export const avatarVariants = tv({
       "select-none font-medium text-xs",
       "after:absolute after:inset-0 after:rounded-[inherit] after:border after:border-border after:mix-blend-darken dark:after:mix-blend-lighten",
     ],
+    fallback: [
+      "size-full",
+      "flex items-center justify-center",
+      "bg-muted",
+      "rounded-[inherit]",
+      "[&_svg]:size-4 group-data-[size=lg]/avatar:[&_svg]:size-4.5 group-data-[size=sm]/avatar:[&_svg]:size-3",
+    ],
+    image: ["size-full", "aspect-square object-cover", "rounded-[inherit]"],
   },
   variants: {
     shape: {
-      circle: { root: "rounded-full" },
-      rounded: { root: "rounded-lg" },
-      square: { root: "rounded-none" },
+      circle: { base: "rounded-full" },
+      rounded: { base: "rounded-lg" },
+      square: { base: "rounded-none" },
     },
     size: {
-      lg: { root: "size-10" },
-      md: { root: "size-8" },
-      sm: { root: "size-6" },
+      lg: { base: "size-10" },
+      md: { base: "size-8" },
+      sm: { base: "size-6" },
     },
   },
 });

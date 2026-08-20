@@ -62,22 +62,21 @@ export const treeViewBranchIndicatorVariants = tv({
 });
 
 export const treeViewBranchContentVariants = tv({
-  base: [
-    "relative overflow-hidden",
-    "data-[state=open]:animate-[expand_150ms_ease-out]",
-    "data-[state=closed]:animate-[collapse_150ms_ease-out]",
-    "motion-reduce:animate-none!",
-  ],
-});
-
-export const treeViewBranchIndentGuideVariants = tv({
-  base: [
-    "absolute z-1",
-    "h-full w-px",
-    "bg-border",
-    "inset-s-[calc(var(--padding-inline)+var(--indentation)*(var(--depth)-1)+var(--icon-size)*0.5*var(--depth))]",
-    "pointer-events-none",
-  ],
+  slots: {
+    base: [
+      "relative overflow-hidden",
+      "data-[state=open]:animate-[expand_150ms_ease-out]",
+      "data-[state=closed]:animate-[collapse_150ms_ease-out]",
+      "motion-reduce:animate-none!",
+    ],
+    indentGuide: [
+      "absolute z-1",
+      "h-full w-px",
+      "bg-border",
+      "inset-s-[calc(var(--padding-inline)+var(--indentation)*(var(--depth)-1)+var(--icon-size)*0.5*var(--depth))]",
+      "pointer-events-none",
+    ],
+  },
 });
 
 export const treeViewItemIconVariants = tv({
@@ -118,9 +117,6 @@ export type TreeViewBranchIndicatorVariantProps = VariantProps<
   typeof treeViewBranchIndicatorVariants
 >;
 export type TreeViewBranchContentVariantProps = VariantProps<typeof treeViewBranchContentVariants>;
-export type TreeViewBranchIndentGuideVariantProps = VariantProps<
-  typeof treeViewBranchIndentGuideVariants
->;
 export type TreeViewItemIconVariantProps = VariantProps<typeof treeViewItemIconVariants>;
 export type TreeViewItemTitleVariantProps = VariantProps<typeof treeViewItemTitleVariants>;
 export type TreeViewCheckboxVariantProps = VariantProps<typeof treeViewCheckboxVariants>;

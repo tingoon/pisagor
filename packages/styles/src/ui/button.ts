@@ -101,18 +101,12 @@ export const buttonVariants = tv({
   },
 });
 
-export const buttonInlineVariants = tv({
-  base: "invisible",
-});
-
-export const buttonInline2Variants = tv({
-  base: "sr-only",
-});
-
-export const buttonInline3Variants = tv({
-  base: ["absolute inset-0 flex items-center justify-center"],
+export const buttonLoadingVariants = tv({
+  slots: {
+    hidden: "invisible",
+    spinner: ["absolute inset-0 flex items-center justify-center"],
+    srOnly: "sr-only",
+  },
 });
 export type ButtonVariantProps = VariantProps<typeof buttonVariants>;
-export type ButtonInlineVariantProps = VariantProps<typeof buttonInlineVariants>;
-export type ButtonInline2VariantProps = VariantProps<typeof buttonInline2Variants>;
-export type ButtonInline3VariantProps = VariantProps<typeof buttonInline3Variants>;
+export type ButtonLoadingVariantProps = VariantProps<typeof buttonLoadingVariants>;

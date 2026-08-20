@@ -8,30 +8,16 @@ export const calendarRangeTextVariants = tv({
   base: ["font-medium text-sm"],
 });
 
-export const calendarYearSelectWrapperVariants = tv({
-  base: ["relative w-fit has-[select:disabled]:opacity-64"],
-});
-
-export const calendarYearSelectIconVariants = tv({
-  base: [
-    "absolute inset-e-2.5 top-1/2 -translate-y-1/2",
-    "size-4",
-    "select-none text-muted-foreground",
-    "pointer-events-none",
-  ],
-});
-
-export const calendarMonthSelectWrapperVariants = tv({
-  base: ["relative w-fit has-[select:disabled]:opacity-64"],
-});
-
-export const calendarMonthSelectIconVariants = tv({
-  base: [
-    "absolute inset-e-2.5 top-1/2 -translate-y-1/2",
-    "size-4",
-    "select-none text-muted-foreground",
-    "pointer-events-none",
-  ],
+export const calendarSelectWrapperVariants = tv({
+  slots: {
+    base: ["relative w-fit has-[select:disabled]:opacity-64"],
+    icon: [
+      "absolute inset-e-2.5 top-1/2 -translate-y-1/2",
+      "size-4",
+      "select-none text-muted-foreground",
+      "pointer-events-none",
+    ],
+  },
 });
 
 export const calendarViewVariants = tv({
@@ -60,33 +46,32 @@ export const calendarTableHeaderVariants = tv({
 });
 
 export const calendarTableCellVariants = tv({
-  base: [
-    "relative",
-    "h-(--cell-size) w-full",
-    "select-none text-center",
-    "[&:first-child[aria-selected=true]_div]:rounded-s-lg",
-    "[&:last-child[aria-selected=true]_div]:rounded-e-lg",
-  ],
-});
-
-export const calendarTableCellTriggerVariants = tv({
-  base: [
-    "inline-flex items-center justify-center gap-1",
-    "h-(--cell-size) w-full min-w-(--cell-size) data-[view=day]:h-(--cell-size)",
-    "select-none whitespace-nowrap font-normal text-base text-foreground leading-none sm:text-sm",
-    "rounded-lg border border-transparent",
-    "hover:bg-accent hover:text-accent-foreground",
-    "data-today:data-selected:after:bg-background data-today:after:absolute data-today:after:bottom-1 data-today:after:left-1/2 data-today:after:size-1 data-today:after:-translate-x-1/2 data-today:after:rounded-full data-today:after:bg-primary",
-    "data-focus:border-primary data-focus:bg-accent/30 data-focus:text-primary data-focus:ring-[3px] data-focus:ring-ring/32",
-    "outline-hidden focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
-    "data-disabled:pointer-events-none data-disabled:opacity-64",
-    "data-unavailable:pointer-events-none data-unavailable:line-through data-unavailable:opacity-64",
-    "data-[view=day]:data-in-range:rounded-none data-[view=day]:data-in-range:not-[data-selected]:bg-primary/10",
-    "data-selected:bg-primary! data-selected:text-primary-foreground!",
-    "data-hover-range-start:rounded-s-lg! data-range-start:rounded-s-lg!",
-    "data-hover-range-end:rounded-e-lg! data-range-end:rounded-e-lg!",
-    "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
-  ],
+  slots: {
+    base: [
+      "relative",
+      "h-(--cell-size) w-full",
+      "select-none text-center",
+      "[&:first-child[aria-selected=true]_div]:rounded-s-lg",
+      "[&:last-child[aria-selected=true]_div]:rounded-e-lg",
+    ],
+    trigger: [
+      "inline-flex items-center justify-center gap-1",
+      "h-(--cell-size) w-full min-w-(--cell-size) data-[view=day]:h-(--cell-size)",
+      "select-none whitespace-nowrap font-normal text-base text-foreground leading-none sm:text-sm",
+      "rounded-lg border border-transparent",
+      "hover:bg-accent hover:text-accent-foreground",
+      "data-today:data-selected:after:bg-background data-today:after:absolute data-today:after:bottom-1 data-today:after:left-1/2 data-today:after:size-1 data-today:after:-translate-x-1/2 data-today:after:rounded-full data-today:after:bg-primary",
+      "data-focus:border-primary data-focus:bg-accent/30 data-focus:text-primary data-focus:ring-[3px] data-focus:ring-ring/32",
+      "outline-hidden focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
+      "data-disabled:pointer-events-none data-disabled:opacity-64",
+      "data-unavailable:pointer-events-none data-unavailable:line-through data-unavailable:opacity-64",
+      "data-[view=day]:data-in-range:rounded-none data-[view=day]:data-in-range:not-[data-selected]:bg-primary/10",
+      "data-selected:bg-primary! data-selected:text-primary-foreground!",
+      "data-hover-range-start:rounded-s-lg! data-range-start:rounded-s-lg!",
+      "data-hover-range-end:rounded-e-lg! data-range-end:rounded-e-lg!",
+      "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+    ],
+  },
 });
 
 export const calendarControlVariants = tv({
@@ -131,27 +116,13 @@ export const calendarSelectLayoutVariants = tv({
 });
 export type CalendarVariantProps = VariantProps<typeof calendarVariants>;
 export type CalendarRangeTextVariantProps = VariantProps<typeof calendarRangeTextVariants>;
-export type CalendarYearSelectWrapperVariantProps = VariantProps<
-  typeof calendarYearSelectWrapperVariants
->;
-export type CalendarYearSelectIconVariantProps = VariantProps<
-  typeof calendarYearSelectIconVariants
->;
-export type CalendarMonthSelectWrapperVariantProps = VariantProps<
-  typeof calendarMonthSelectWrapperVariants
->;
-export type CalendarMonthSelectIconVariantProps = VariantProps<
-  typeof calendarMonthSelectIconVariants
->;
+export type CalendarSelectWrapperVariantProps = VariantProps<typeof calendarSelectWrapperVariants>;
 export type CalendarViewVariantProps = VariantProps<typeof calendarViewVariants>;
 export type CalendarViewControlVariantProps = VariantProps<typeof calendarViewControlVariants>;
 export type CalendarTableVariantProps = VariantProps<typeof calendarTableVariants>;
 export type CalendarTableRowVariantProps = VariantProps<typeof calendarTableRowVariants>;
 export type CalendarTableHeaderVariantProps = VariantProps<typeof calendarTableHeaderVariants>;
 export type CalendarTableCellVariantProps = VariantProps<typeof calendarTableCellVariants>;
-export type CalendarTableCellTriggerVariantProps = VariantProps<
-  typeof calendarTableCellTriggerVariants
->;
 export type CalendarControlVariantProps = VariantProps<typeof calendarControlVariants>;
 export type CalendarLabelVariantProps = VariantProps<typeof calendarLabelVariants>;
 export type CalendarInlineVariantProps = VariantProps<typeof calendarInlineVariants>;

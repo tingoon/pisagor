@@ -5,27 +5,27 @@ export const statVariants = tv({
     variant: "outline",
   },
   slots: {
-    description: ["text-muted-foreground text-sm"],
-    label: ["text-muted-foreground text-sm"],
-    root: [
+    base: [
       "group/stat",
       "flex w-full flex-col gap-1.5",
       "rounded-xl border p-4",
       "bg-card text-card-foreground",
       "shadow-xs/5",
     ],
+    description: ["text-muted-foreground text-sm"],
+    label: ["text-muted-foreground text-sm"],
     value: ["font-semibold text-2xl leading-none tracking-tight"],
   },
   variants: {
     variant: {
       default: {
-        root: "border-transparent bg-transparent p-0 shadow-none",
+        base: "border-transparent bg-transparent p-0 shadow-none",
       },
       muted: {
-        root: "border-transparent bg-muted/48",
+        base: "border-transparent bg-muted/48",
       },
       outline: {
-        root: "border-border bg-card",
+        base: "border-border bg-card",
       },
     },
   },

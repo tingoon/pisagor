@@ -10,7 +10,10 @@ export const qrCodeVariants = tv({
 });
 
 export const qrCodeFrameVariants = tv({
-  base: ["size-(--qr-code-size)", "bg-background", "fill-black", "rounded-md", "overflow-hidden"],
+  slots: {
+    base: ["size-(--qr-code-size)", "bg-background", "fill-black", "rounded-md", "overflow-hidden"],
+    pattern: "fill-inherit",
+  },
 });
 
 export const qrCodeOverlayVariants = tv({
@@ -26,10 +29,6 @@ export const qrCodeOverlayVariants = tv({
   ],
 });
 
-export const qrCodePatternVariants = tv({
-  base: "fill-inherit",
-});
 export type QrCodeVariantProps = VariantProps<typeof qrCodeVariants>;
 export type QrCodeFrameVariantProps = VariantProps<typeof qrCodeFrameVariants>;
 export type QrCodeOverlayVariantProps = VariantProps<typeof qrCodeOverlayVariants>;
-export type QrCodePatternVariantProps = VariantProps<typeof qrCodePatternVariants>;

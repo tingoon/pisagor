@@ -35,19 +35,23 @@ export const stepsTriggerVariants = tv({
 });
 
 export const stepsIndicatorVariants = tv({
-  base: [
-    "flex shrink-0 items-center justify-center tabular-nums",
-    "size-(--steps-size)",
-    "bg-muted text-muted-foreground",
-    "font-medium text-sm",
-    "rounded-full border",
-    "transition-colors",
-    "in-focus-visible:ring-[3px] in-focus-visible:ring-ring/32",
-    "data-current:border-primary data-current:bg-primary data-current:text-primary-foreground",
-    "data-complete:border-primary data-complete:bg-primary data-complete:text-primary-foreground",
-    "[&_svg]:size-(--steps-icon-size) [&_svg]:shrink-0",
-    "motion-reduce:transition-none!",
-  ],
+  slots: {
+    base: [
+      "flex shrink-0 items-center justify-center tabular-nums",
+      "size-(--steps-size)",
+      "bg-muted text-muted-foreground",
+      "font-medium text-sm",
+      "rounded-full border",
+      "transition-colors",
+      "in-focus-visible:ring-[3px] in-focus-visible:ring-ring/32",
+      "data-current:border-primary data-current:bg-primary data-current:text-primary-foreground",
+      "data-complete:border-primary data-complete:bg-primary data-complete:text-primary-foreground",
+      "[&_svg]:size-(--steps-icon-size) [&_svg]:shrink-0",
+      "motion-reduce:transition-none!",
+    ],
+    check: ["hidden group-data-complete/step:block"],
+    label: "group-data-complete/step:hidden",
+  },
 });
 
 export const stepsSeparatorVariants = tv({
@@ -78,14 +82,6 @@ export const stepsContentVariants = tv({
 export const stepsCompletedContentVariants = tv({
   base: "data-[orientation=vertical]:flex-1",
 });
-
-export const stepsInlineVariants = tv({
-  base: "group-data-complete/step:hidden",
-});
-
-export const stepsInline2Variants = tv({
-  base: ["hidden group-data-complete/step:block"],
-});
 export type StepsVariantProps = VariantProps<typeof stepsVariants>;
 export type StepsListVariantProps = VariantProps<typeof stepsListVariants>;
 export type StepsItemVariantProps = VariantProps<typeof stepsItemVariants>;
@@ -96,5 +92,3 @@ export type StepsTitleVariantProps = VariantProps<typeof stepsTitleVariants>;
 export type StepsDescriptionVariantProps = VariantProps<typeof stepsDescriptionVariants>;
 export type StepsContentVariantProps = VariantProps<typeof stepsContentVariants>;
 export type StepsCompletedContentVariantProps = VariantProps<typeof stepsCompletedContentVariants>;
-export type StepsInlineVariantProps = VariantProps<typeof stepsInlineVariants>;
-export type StepsInline2VariantProps = VariantProps<typeof stepsInline2Variants>;

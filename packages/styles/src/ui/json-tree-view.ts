@@ -2,7 +2,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const jsonTreeViewVariants = tv({
   slots: {
-    root: [
+    base: [
       "w-full min-w-0",
       "font-mono text-foreground",
       "**:data-[part=branch-content]:relative",

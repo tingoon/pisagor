@@ -39,36 +39,32 @@ export const colorPickerViewVariants = tv({
 });
 
 export const colorPickerChannelSliderVariants = tv({
-  base: [
-    "relative",
-    "flex items-center",
-    "touch-none select-none",
-    "rounded-full border",
-    "data-[orientation=horizontal]:w-full",
-    "data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-40 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
-    "group-data-disabled/color-picker:pointer-events-none group-data-disabled/color-picker:cursor-not-allowed group-data-disabled/color-picker:opacity-64",
-  ],
-});
-
-export const colorPickerChannelSliderTrackVariants = tv({
-  base: [
-    "grow",
-    "rounded-full",
-    "select-none overflow-hidden",
-    "data-[orientation=horizontal]:h-2 data-[orientation=horizontal]:w-full",
-    "data-[orientation=vertical]:h-full data-[orientation=vertical]:w-2",
-  ],
-});
-
-export const colorPickerChannelSliderThumbVariants = tv({
-  base: [
-    "relative shrink-0",
-    "size-4.5",
-    "-translate-1/2",
-    "rounded-full border-[3px] border-white shadow-[0_0_0_1px_rgba(0,0,0,0.1),inset_0_0_0_1px_rgba(0,0,0,0.1)]",
-    "outline-hidden ring-1 ring-border/64",
-    "origin-left data-[orientation=vertical]:origin-bottom",
-  ],
+  slots: {
+    base: [
+      "relative",
+      "flex items-center",
+      "touch-none select-none",
+      "rounded-full border",
+      "data-[orientation=horizontal]:w-full",
+      "data-[orientation=vertical]:h-full data-[orientation=vertical]:min-h-40 data-[orientation=vertical]:w-auto data-[orientation=vertical]:flex-col",
+      "group-data-disabled/color-picker:pointer-events-none group-data-disabled/color-picker:cursor-not-allowed group-data-disabled/color-picker:opacity-64",
+    ],
+    thumb: [
+      "relative shrink-0",
+      "size-4.5",
+      "-translate-1/2",
+      "rounded-full border-[3px] border-white shadow-[0_0_0_1px_rgba(0,0,0,0.1),inset_0_0_0_1px_rgba(0,0,0,0.1)]",
+      "outline-hidden ring-1 ring-border/64",
+      "origin-left data-[orientation=vertical]:origin-bottom",
+    ],
+    track: [
+      "grow",
+      "rounded-full",
+      "select-none overflow-hidden",
+      "data-[orientation=horizontal]:h-2 data-[orientation=horizontal]:w-full",
+      "data-[orientation=vertical]:h-full data-[orientation=vertical]:w-2",
+    ],
+  },
 });
 
 export const colorPickerSwatchGroupVariants = tv({
@@ -123,7 +119,10 @@ export const colorPickerValueSwatchVariants = tv({
 });
 
 export const colorPickerAreaVariants = tv({
-  base: ["relative", "aspect-square size-full", "rounded-xl border", "touch-none"],
+  slots: {
+    background: ["size-full rounded-[inherit]"],
+    base: ["relative", "aspect-square size-full", "rounded-xl border", "touch-none"],
+  },
 });
 
 export const colorPickerAreaThumbVariants = tv({
@@ -136,33 +135,25 @@ export const colorPickerAreaThumbVariants = tv({
 });
 
 export const colorPickerInputSwatchVariants = tv({
-  base: [
-    "relative",
-    "size-8",
-    "shrink-0",
-    "rounded-full border",
-    "pointer-events-none overflow-hidden",
-    "group-data-[size=lg]/input-group:size-5",
-    "group-data-[size=md]/input-group:size-4",
-    "group-data-[size=sm]/input-group:size-3.5",
-    "group-data-disabled/color-input:opacity-64",
-  ],
-});
-
-export const colorPickerInline2Variants = tv({
-  base: [
-    "size-full rounded-[calc(var(--radius-sm)-0.5px)]",
-    "bg-[linear-gradient(45deg,#e4e4e4_25%,transparent_25%),linear-gradient(-45deg,#e4e4e4_25%,transparent_25%),linear-gradient(45deg,transparent_75%,#e4e4e4_75%),linear-gradient(-45deg,transparent_75%,#e4e4e4_75%)]",
-    "bg-position-[0_0,0_4px,4px_-4px,-4px_0] bg-size-(--spacing(2))",
-  ],
-});
-
-export const colorPickerAreaBackgroundVariants = tv({
-  base: ["size-full rounded-[inherit]"],
-});
-
-export const colorPickerInline3Variants = tv({
-  base: ["z-1 size-full"],
+  slots: {
+    base: [
+      "relative",
+      "size-8",
+      "shrink-0",
+      "rounded-full border",
+      "pointer-events-none overflow-hidden",
+      "group-data-[size=lg]/input-group:size-5",
+      "group-data-[size=md]/input-group:size-4",
+      "group-data-[size=sm]/input-group:size-3.5",
+      "group-data-disabled/color-input:opacity-64",
+    ],
+    grid: [
+      "size-full rounded-[calc(var(--radius-sm)-0.5px)]",
+      "bg-[linear-gradient(45deg,#e4e4e4_25%,transparent_25%),linear-gradient(-45deg,#e4e4e4_25%,transparent_25%),linear-gradient(45deg,transparent_75%,#e4e4e4_75%),linear-gradient(-45deg,transparent_75%,#e4e4e4_75%)]",
+      "bg-position-[0_0,0_4px,4px_-4px,-4px_0] bg-size-(--spacing(2))",
+    ],
+    swatch: ["z-1 size-full"],
+  },
 });
 
 export const colorPickerInline4Variants = tv({
@@ -179,12 +170,6 @@ export type ColorPickerContentVariantProps = VariantProps<typeof colorPickerCont
 export type ColorPickerViewVariantProps = VariantProps<typeof colorPickerViewVariants>;
 export type ColorPickerChannelSliderVariantProps = VariantProps<
   typeof colorPickerChannelSliderVariants
->;
-export type ColorPickerChannelSliderTrackVariantProps = VariantProps<
-  typeof colorPickerChannelSliderTrackVariants
->;
-export type ColorPickerChannelSliderThumbVariantProps = VariantProps<
-  typeof colorPickerChannelSliderThumbVariants
 >;
 export type ColorPickerSwatchGroupVariantProps = VariantProps<
   typeof colorPickerSwatchGroupVariants
@@ -205,10 +190,5 @@ export type ColorPickerAreaThumbVariantProps = VariantProps<typeof colorPickerAr
 export type ColorPickerInputSwatchVariantProps = VariantProps<
   typeof colorPickerInputSwatchVariants
 >;
-export type ColorPickerInline2VariantProps = VariantProps<typeof colorPickerInline2Variants>;
-export type ColorPickerAreaBackgroundVariantProps = VariantProps<
-  typeof colorPickerAreaBackgroundVariants
->;
-export type ColorPickerInline3VariantProps = VariantProps<typeof colorPickerInline3Variants>;
 export type ColorPickerInline4VariantProps = VariantProps<typeof colorPickerInline4Variants>;
 export type ColorPickerInline5VariantProps = VariantProps<typeof colorPickerInline5Variants>;

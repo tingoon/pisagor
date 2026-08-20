@@ -25,14 +25,12 @@ export const collapsibleContentVariants = tv({
 });
 
 export const collapsibleIndicatorVariants = tv({
-  base: "data-[state=open]:[&_svg]:rotate-180",
-});
-
-export const collapsibleInlineVariants = tv({
-  base: ["transition-transform duration-200 motion-reduce:transition-none!"],
+  slots: {
+    base: "data-[state=open]:[&_svg]:rotate-180",
+    icon: ["transition-transform duration-200 motion-reduce:transition-none!"],
+  },
 });
 export type CollapsibleVariantProps = VariantProps<typeof collapsibleVariants>;
 export type CollapsibleTriggerVariantProps = VariantProps<typeof collapsibleTriggerVariants>;
 export type CollapsibleContentVariantProps = VariantProps<typeof collapsibleContentVariants>;
 export type CollapsibleIndicatorVariantProps = VariantProps<typeof collapsibleIndicatorVariants>;
-export type CollapsibleInlineVariantProps = VariantProps<typeof collapsibleInlineVariants>;

@@ -2,6 +2,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const menuVariants = tv({
   slots: {
+    base: ["group/menu", "w-full"],
     group: ["flex flex-col gap-1"],
     groupLabel: ["px-2 py-1.5", "font-medium text-muted-foreground text-sm", "pointer-events-none"],
     item: [
@@ -37,13 +38,13 @@ export const menuVariants = tv({
       "[&_svg:not([class*='size-'])]:size-3.5 [&_svg]:pointer-events-none [&_svg]:shrink-0",
     ],
     list: ["flex flex-col gap-1 p-1"],
-    root: ["group/menu", "w-full"],
     separator: ["my-1 h-px bg-border"],
     shortcut: [
       "ms-auto rtl:me-auto",
       "text-muted-foreground text-xs tracking-widest",
       "group-data-[variant=destructive]/menu-item:text-destructive dark:group-data-[variant=destructive]/menu-item:text-destructive-foreground",
     ],
+    wrapper: "list-none",
   },
 });
 
@@ -65,14 +66,5 @@ export const menuItemVariants = tv({
   },
 });
 
-export const menuItemWrapperVariants = tv({
-  base: "list-none",
-});
-
-export const menuItemWrapper2Variants = tv({
-  base: "list-none",
-});
 export type MenuVariantProps = VariantProps<typeof menuVariants>;
 export type MenuItemVariantProps = VariantProps<typeof menuItemVariants>;
-export type MenuItemWrapperVariantProps = VariantProps<typeof menuItemWrapperVariants>;
-export type MenuItemWrapper2VariantProps = VariantProps<typeof menuItemWrapper2Variants>;

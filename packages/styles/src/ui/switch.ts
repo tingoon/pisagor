@@ -4,28 +4,28 @@ export const switchVariants = tv({
   compoundVariants: [
     {
       class: {
-        root: "data-[state=unchecked]:bg-input dark:data-[state=unchecked]:bg-input",
+        base: "data-[state=unchecked]:bg-input dark:data-[state=unchecked]:bg-input",
       },
       surfaceVariant: undefined,
       variant: "primary",
     },
     {
       class: {
-        root: "data-[state=unchecked]:bg-muted/64",
+        base: "data-[state=unchecked]:bg-muted/64",
       },
       surfaceVariant: "default",
       variant: "secondary",
     },
     {
       class: {
-        root: "data-[state=unchecked]:bg-input dark:data-[state=unchecked]:bg-input",
+        base: "data-[state=unchecked]:bg-input dark:data-[state=unchecked]:bg-input",
       },
       surfaceVariant: ["secondary", "tertiary"],
       variant: "secondary",
     },
     {
       class: {
-        root: "data-[state=unchecked]:bg-muted/64",
+        base: "data-[state=unchecked]:bg-muted/64",
       },
       surfaceVariant: undefined,
       variant: "secondary",
@@ -36,8 +36,7 @@ export const switchVariants = tv({
     variant: "primary",
   },
   slots: {
-    control: ["flex size-full items-center"],
-    root: [
+    base: [
       "group/switch",
       "[--thumb-size:--spacing(5)] sm:[--thumb-size:--spacing(4)]",
       "h-[calc(var(--thumb-size)+2px)] w-[calc(var(--thumb-size)*2-2px)]",
@@ -53,6 +52,7 @@ export const switchVariants = tv({
       "data-disabled:pointer-events-none data-disabled:opacity-64",
       "motion-reduce:transition-none!",
     ],
+    control: ["flex size-full items-center"],
     thumb: [
       "block",
       "aspect-square h-full w-auto",

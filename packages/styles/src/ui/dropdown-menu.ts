@@ -24,30 +24,40 @@ export const dropdownMenuContentVariants = tv({
 });
 
 export const dropdownMenuItemVariants = tv({
-  base: [
-    "group/dropdown-menu-item",
-    "relative",
-    "w-full",
-    "px-2.5 py-1.5",
-    "flex items-center gap-2",
-    "select-none text-sm",
-    "rounded-lg",
-    "outline-hidden",
-    "group-data-[date=open]/trigger-item:bg-accent group-data-[date=open]/trigger-item:text-accent-foreground",
-    "data-disabled:pointer-events-none data-disabled:opacity-64",
-    "[&_svg:not([class*='size-'])]:size-3.5 [&_svg]:pointer-events-none [&_svg]:shrink-0",
-  ],
   defaultVariants: {
+    inset: false,
     variant: "default",
   },
+  slots: {
+    base: [
+      "group/dropdown-menu-item",
+      "relative",
+      "w-full",
+      "px-2.5 py-1.5",
+      "flex items-center gap-2",
+      "select-none text-sm",
+      "rounded-lg",
+      "outline-hidden",
+      "group-data-[date=open]/trigger-item:bg-accent group-data-[date=open]/trigger-item:text-accent-foreground",
+      "data-disabled:pointer-events-none data-disabled:opacity-64",
+      "[&_svg:not([class*='size-'])]:size-3.5 [&_svg]:pointer-events-none [&_svg]:shrink-0",
+    ],
+    indicator: ["pointer-events-none absolute inset-s-2 flex size-3.5 items-center justify-center"],
+    text: ["flex items-center gap-2"],
+  },
   variants: {
+    inset: {
+      true: { base: "ps-8" },
+    },
     variant: {
-      default: ["data-highlighted:bg-accent data-highlighted:text-accent-foreground"],
-      destructive: [
-        "text-destructive dark:text-destructive-foreground",
-        "data-highlighted:bg-destructive/10 dark:data-highlighted:bg-destructive-foreground/10",
-        "**:[svg]:text-destructive! dark:**:[svg]:text-destructive-foreground!",
-      ],
+      default: { base: ["data-highlighted:bg-accent data-highlighted:text-accent-foreground"] },
+      destructive: {
+        base: [
+          "text-destructive dark:text-destructive-foreground",
+          "data-highlighted:bg-destructive/10 dark:data-highlighted:bg-destructive-foreground/10",
+          "**:[svg]:text-destructive! dark:**:[svg]:text-destructive-foreground!",
+        ],
+      },
     },
   },
 });
@@ -64,16 +74,8 @@ export const dropdownMenuQuickItemVariants = tv({
   base: ["flex-col gap-1", "[&_svg:not([class*='size-'])]:size-4.5"],
 });
 
-export const dropdownMenuInlineVariants = tv({
-  base: "ps-8",
-});
-
 export const dropdownMenuGroupLabelVariants = tv({
   base: ["px-2 py-1.5", "font-medium text-muted-foreground text-sm", "pointer-events-none"],
-});
-
-export const dropdownMenuRadioItemVariants = tv({
-  base: "ps-8",
 });
 
 export const dropdownMenuShortcutVariants = tv({
@@ -82,22 +84,6 @@ export const dropdownMenuShortcutVariants = tv({
     "text-muted-foreground text-xs tracking-widest",
     "group-data-highlighted/menu-item:group-data-[variant=destructive]/menu-item:text-destructive dark:group-data-highlighted/menu-item:group-data-[variant=destructive]/menu-item:text-destructive-foreground",
   ],
-});
-
-export const dropdownMenuInline2Variants = tv({
-  base: ["pointer-events-none absolute inset-s-2 flex size-3.5 items-center justify-center"],
-});
-
-export const dropdownMenuInline3Variants = tv({
-  base: ["flex items-center gap-2"],
-});
-
-export const dropdownMenuInline4Variants = tv({
-  base: ["pointer-events-none absolute inset-s-2 flex size-3.5 items-center justify-center"],
-});
-
-export const dropdownMenuRadioItemTextVariants = tv({
-  base: ["flex items-center gap-2"],
 });
 
 export const dropdownMenuInline5Variants = tv({
@@ -110,16 +96,8 @@ export type DropdownMenuPositionerVariantProps = VariantProps<
 >;
 export type DropdownMenuSeparatorVariantProps = VariantProps<typeof dropdownMenuSeparatorVariants>;
 export type DropdownMenuQuickItemVariantProps = VariantProps<typeof dropdownMenuQuickItemVariants>;
-export type DropdownMenuInlineVariantProps = VariantProps<typeof dropdownMenuInlineVariants>;
 export type DropdownMenuGroupLabelVariantProps = VariantProps<
   typeof dropdownMenuGroupLabelVariants
 >;
-export type DropdownMenuRadioItemVariantProps = VariantProps<typeof dropdownMenuRadioItemVariants>;
 export type DropdownMenuShortcutVariantProps = VariantProps<typeof dropdownMenuShortcutVariants>;
-export type DropdownMenuInline2VariantProps = VariantProps<typeof dropdownMenuInline2Variants>;
-export type DropdownMenuInline3VariantProps = VariantProps<typeof dropdownMenuInline3Variants>;
-export type DropdownMenuInline4VariantProps = VariantProps<typeof dropdownMenuInline4Variants>;
-export type DropdownMenuRadioItemTextVariantProps = VariantProps<
-  typeof dropdownMenuRadioItemTextVariants
->;
 export type DropdownMenuInline5VariantProps = VariantProps<typeof dropdownMenuInline5Variants>;

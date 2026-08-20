@@ -15,8 +15,7 @@ export const alertVariants = tv({
       "sm:[svg~&]:col-start-2",
       "sm:[svg~[data-scope=alert][data-part=description]~&]:col-start-3",
     ],
-    description: ["flex flex-col gap-2.5", "text-muted-foreground", "[svg~&]:col-start-2"],
-    root: [
+    base: [
       "relative",
       "px-3.5 py-3",
       "grid w-full items-start gap-x-2 gap-y-0.5",
@@ -26,19 +25,20 @@ export const alertVariants = tv({
       "has-[>svg]:gap-x-2 [&_svg]:h-lh [&_svg]:w-4",
       "has-[[data-scope=alert][data-part=action]]:grid-cols-[1fr_auto]",
     ],
+    description: ["flex flex-col gap-2.5", "text-muted-foreground", "[svg~&]:col-start-2"],
     title: ["font-heading font-medium", "[svg~&]:col-start-2"],
   },
   variants: {
     variant: {
       default: {
-        root: [
+        base: [
           "bg-input/4",
           "[&_svg]:text-muted-foreground",
           "[&_[data-scope=alert][data-part=action]_[data-variant=ghost]]:hover:bg-muted",
         ],
       },
       destructive: {
-        root: [
+        base: [
           "bg-destructive/4",
           "border-destructive/32",
           "[&_svg]:text-destructive",
@@ -46,7 +46,7 @@ export const alertVariants = tv({
         ],
       },
       info: {
-        root: [
+        base: [
           "bg-info/4",
           "border-info/32",
           "[&_svg]:text-info",
@@ -54,7 +54,7 @@ export const alertVariants = tv({
         ],
       },
       success: {
-        root: [
+        base: [
           "bg-success/4",
           "border-success/32",
           "[&_svg]:text-success",
@@ -62,7 +62,7 @@ export const alertVariants = tv({
         ],
       },
       warning: {
-        root: [
+        base: [
           "bg-warning/4",
           "border-warning/32",
           "[&_svg]:text-warning",

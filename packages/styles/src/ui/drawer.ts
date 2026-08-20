@@ -102,15 +102,19 @@ export const drawerContentInnerVariants = tv({
 });
 
 export const drawerGrabberVariants = tv({
-  base: [
-    "h-1 w-12",
-    "mx-auto",
-    "hidden shrink-0",
-    "bg-muted-foreground/32",
-    "rounded-full",
-    "touch-none",
-    "group-data-[swipe-direction=down]/drawer:flex",
-  ],
+  slots: {
+    base: [
+      "h-1 w-12",
+      "mx-auto",
+      "hidden shrink-0",
+      "bg-muted-foreground/32",
+      "rounded-full",
+      "touch-none",
+      "group-data-[swipe-direction=down]/drawer:flex",
+    ],
+    indicator: ["size-full rounded-full"],
+    wrapper: "p-(--space)",
+  },
 });
 
 export const drawerHeaderVariants = tv({
@@ -150,13 +154,6 @@ export const drawerFooterVariants = tv({
   ],
 });
 
-export const drawerInlineVariants = tv({
-  base: "p-(--space)",
-});
-
-export const drawerGrabberIndicatorVariants = tv({
-  base: ["size-full rounded-full"],
-});
 export type DrawerOverlayVariantProps = VariantProps<typeof drawerOverlayVariants>;
 export type DrawerPositionerVariantProps = VariantProps<typeof drawerPositionerVariants>;
 export type DrawerContentVariantProps = VariantProps<typeof drawerContentVariants>;
@@ -167,7 +164,3 @@ export type DrawerTitleVariantProps = VariantProps<typeof drawerTitleVariants>;
 export type DrawerDescriptionVariantProps = VariantProps<typeof drawerDescriptionVariants>;
 export type DrawerBodyVariantProps = VariantProps<typeof drawerBodyVariants>;
 export type DrawerFooterVariantProps = VariantProps<typeof drawerFooterVariants>;
-export type DrawerInlineVariantProps = VariantProps<typeof drawerInlineVariants>;
-export type DrawerGrabberIndicatorVariantProps = VariantProps<
-  typeof drawerGrabberIndicatorVariants
->;

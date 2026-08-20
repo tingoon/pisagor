@@ -1,27 +1,30 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
 export const comboboxItemVariants = tv({
-  base: [
-    "relative",
-    "py-1.5 ps-2",
-    "text-sm",
-    "flex w-full items-center gap-2",
-    "rounded-xl",
-    "select-none",
-    "cursor-default",
-    "outline-hidden",
-    "data-[=checked]:bg-accent data-[state=checked]:text-accent-foreground",
-    "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
-    "data-disabled:pointer-events-none data-disabled:opacity-64",
-    "[&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
-  ],
   defaultVariants: {
     showIndicator: true,
   },
+  slots: {
+    base: [
+      "relative",
+      "py-1.5 ps-2",
+      "text-sm",
+      "flex w-full items-center gap-2",
+      "rounded-xl",
+      "select-none",
+      "cursor-default",
+      "outline-hidden",
+      "data-[=checked]:bg-accent data-[state=checked]:text-accent-foreground",
+      "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
+      "data-disabled:pointer-events-none data-disabled:opacity-64",
+      "[&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
+    ],
+    indicator: ["absolute inset-e-2 flex size-3.5 items-center justify-center"],
+  },
   variants: {
     showIndicator: {
-      false: "pe-2",
-      true: "pe-8",
+      false: { base: "pe-2" },
+      true: { base: "pe-8" },
     },
   },
 });
@@ -75,10 +78,6 @@ export const comboboxInlineVariants = tv({
 export const comboboxInline2Variants = tv({
   base: "size-4",
 });
-
-export const comboboxInline3Variants = tv({
-  base: ["absolute inset-e-2 flex size-3.5 items-center justify-center"],
-});
 export type ComboboxItemVariantProps = VariantProps<typeof comboboxItemVariants>;
 export type ComboboxControlVariantProps = VariantProps<typeof comboboxControlVariants>;
 export type ComboboxTriggerVariantProps = VariantProps<typeof comboboxTriggerVariants>;
@@ -88,4 +87,3 @@ export type ComboboxEmptyVariantProps = VariantProps<typeof comboboxEmptyVariant
 export type ComboboxListVariantProps = VariantProps<typeof comboboxListVariants>;
 export type ComboboxInlineVariantProps = VariantProps<typeof comboboxInlineVariants>;
 export type ComboboxInline2VariantProps = VariantProps<typeof comboboxInline2Variants>;
-export type ComboboxInline3VariantProps = VariantProps<typeof comboboxInline3Variants>;

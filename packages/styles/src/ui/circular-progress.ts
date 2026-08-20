@@ -2,10 +2,10 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const circularProgressVariants = tv({
   slots: {
+    base: ["group/circular-progress", "relative", "inline-flex items-center justify-center"],
     range: [
       "fill-none stroke-primary transition-all duration-300 ease-out motion-reduce:transition-none!",
     ],
-    root: ["group/circular-progress", "relative", "inline-flex items-center justify-center"],
     track: [
       "block",
       "-rotate-90",

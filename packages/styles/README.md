@@ -9,10 +9,7 @@ src/
 ```
 
 ```ts
-import {
-  accordionItemVariants,
-  accordionTriggerVariants,
-} from "@pisagor/styles/accordion";
+import { accordionItemVariants } from "@pisagor/styles/accordion";
 
 cn(accordionItemVariants(), className);
 ```

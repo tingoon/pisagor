@@ -5,7 +5,7 @@ export const scrollAreaVariants = tv({
     scrollFade: false,
   },
   slots: {
-    root: ["size-full min-h-0 [--fade-size:1.5rem]"],
+    base: ["size-full min-h-0 [--fade-size:1.5rem]"],
     scrollbar: [
       "flex",
       "m-1",

@@ -2,6 +2,7 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const dataListVariants = tv({
   slots: {
+    base: ["group/data-list", "flex flex-col gap-1", "text-sm"],
     item: [
       "flex gap-4 py-2",
       "group-data-[orientation=horizontal]/data-list:flex-row group-data-[orientation=horizontal]/data-list:items-center",
@@ -12,7 +13,6 @@ export const dataListVariants = tv({
       "font-medium text-muted-foreground",
       "group-data-[orientation=vertical]/data-list:min-w-0",
     ],
-    root: ["group/data-list", "flex flex-col gap-1", "text-sm"],
     value: ["flex-1", "text-foreground"],
   },
 });

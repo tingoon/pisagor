@@ -2,6 +2,11 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const circularSliderVariants = tv({
   slots: {
+    base: [
+      "relative",
+      "flex flex-col items-center justify-center",
+      "data-disabled:pointer-events-none data-disabled:opacity-64",
+    ],
     control: ["group/circular-slider-control absolute inset-0"],
     marker: [
       "absolute inset-s-[calc(50%-1px)] top-0 bottom-0 w-0.5",
@@ -14,11 +19,6 @@ export const circularSliderVariants = tv({
     ring: ["pointer-events-none -rotate-90"],
     ringRange: ["stroke-primary [stroke-linecap:round]"],
     ringTrack: ["stroke-muted"],
-    root: [
-      "relative",
-      "flex flex-col items-center justify-center",
-      "data-disabled:pointer-events-none data-disabled:opacity-64",
-    ],
     thumb: [
       "absolute inset-0 z-10 flex items-center justify-center",
       "outline-hidden",

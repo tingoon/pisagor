@@ -2,6 +2,11 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const ratingVariants = tv({
   slots: {
+    base: [
+      "**:data-[scope=rating]:data-[part=item-indicator]:size-6",
+      "text-warning",
+      "data-readonly:pointer-events-none",
+    ],
     control: ["inline-flex items-center gap-1"],
     indicator: [
       "relative inline-flex",
@@ -16,11 +21,6 @@ export const ratingVariants = tv({
       "not-[[data-disabled],[data-readonly]]:cursor-pointer",
       "data-disabled:opacity-64 data-disabled:grayscale",
       "outline-hidden focus-visible:ring-current not-data-readonly:focus-visible:ring-[3px] focus-visible:ring-offset-1 focus-visible:ring-offset-background",
-    ],
-    root: [
-      "**:data-[scope=rating]:data-[part=item-indicator]:size-6",
-      "text-warning",
-      "data-readonly:pointer-events-none",
     ],
   },
 });
