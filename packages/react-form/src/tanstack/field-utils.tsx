@@ -1,4 +1,4 @@
-import { Field } from "@pisagor/react/field";
+import { Field } from "@pisagor/react";
 import type { AnyFieldApi } from "@tanstack/react-form";
 import type { FormEvent } from "react";
 import { useSubmissionAttempts } from "./hooks";

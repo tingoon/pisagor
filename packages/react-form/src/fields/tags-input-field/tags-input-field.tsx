@@ -1,4 +1,5 @@
-import { TagsInput, type TagsInputProps } from "@pisagor/react/tags-input";
+import type { TagsInputProps } from "@pisagor/react";
+import { TagsInput } from "@pisagor/react";
 import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
 import type { SetRequired } from "../../internal/types";
 

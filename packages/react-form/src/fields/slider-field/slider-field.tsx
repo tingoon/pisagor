@@ -1,4 +1,5 @@
-import { Slider, type SliderProps } from "@pisagor/react/slider";
+import type { SliderProps } from "@pisagor/react";
+import { Slider } from "@pisagor/react";
 import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
 import type { SetRequired } from "../../internal/types";
 

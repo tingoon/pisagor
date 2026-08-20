@@ -1,5 +1,5 @@
-import { Field } from "@pisagor/react/field";
-import { Switch, type SwitchProps } from "@pisagor/react/switch";
+import type { SwitchProps } from "@pisagor/react";
+import { Field, Switch } from "@pisagor/react";
 import type { FieldPresentationProps } from "../../internal/field-shell";
 import type { SetRequired } from "../../internal/types";
 

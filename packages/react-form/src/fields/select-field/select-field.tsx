@@ -1,4 +1,5 @@
-import { Select, type SelectRootProps } from "@pisagor/react/select";
+import type { SelectRootProps } from "@pisagor/react";
+import { Select } from "@pisagor/react";
 import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
 
 // #region Types

@@ -1,4 +1,4 @@
-import type { DatePickerProps } from "@pisagor/react/date-picker";
+import type { DatePickerProps } from "@pisagor/react";
 import {
   DateField as DateFieldControl,
   type DateFieldProps,

@@ -1,5 +1,5 @@
-import { parseDate } from "@pisagor/react/calendar";
-import type { DatePickerProps } from "@pisagor/react/date-picker";
+import type { DatePickerProps } from "@pisagor/react";
+import { parseDate } from "@pisagor/react";
 import { useAppForm } from "@pisagor/react-form/tanstack";
 import { Fragment } from "react";
 import preview from "#/react/preview";

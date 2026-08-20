@@ -1,4 +1,5 @@
-import { Textarea, type TextareaProps } from "@pisagor/react/textarea";
+import type { TextareaProps } from "@pisagor/react";
+import { Textarea } from "@pisagor/react";
 import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
 import type { SetRequired } from "../../internal/types";
 

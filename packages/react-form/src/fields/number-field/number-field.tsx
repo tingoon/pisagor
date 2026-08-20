@@ -1,4 +1,5 @@
-import { NumberInput, type NumberInputProps } from "@pisagor/react/number-input";
+import type { NumberInputProps } from "@pisagor/react";
+import { NumberInput } from "@pisagor/react";
 import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
 import type { SetRequired } from "../../internal/types";
 
