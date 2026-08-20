@@ -1,11 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import {
-  type MenuItemVariantProps,
-  menuItemVariants,
-  menuItemWrapper2Variants,
-  menuItemWrapperVariants,
-  menuVariants,
-} from "@pisagor/styles/ui/menu";
+import { type MenuItemVariantProps, menuItemVariants, menuVariants } from "@pisagor/styles/ui/menu";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
@@ -55,7 +49,7 @@ export function MenuRoot({
     <ark.nav
       {...rest}
       aria-label={ariaLabel}
-      className={cn(slots.root(), className, classNames?.root)}
+      className={slots.base({ className: cn(className, classNames?.base) })}
       data-part="root"
       data-scope="menu"
       data-testid={testId}
@@ -70,7 +64,7 @@ export function MenuList({ className, classNames, ...rest }: MenuListProps) {
   return (
     <ark.ul
       {...rest}
-      className={cn(slots.list(), className, classNames?.list)}
+      className={slots.list({ className: cn(className, classNames?.list) })}
       data-part="list"
       data-scope="menu"
       role="list"
@@ -85,7 +79,7 @@ export function MenuGroup({ className, classNames, ...rest }: MenuPartProps) {
   return (
     <ark.div
       {...rest}
-      className={cn(slots.group(), className, classNames?.group)}
+      className={slots.group({ className: cn(className, classNames?.group) })}
       data-part="group"
       data-scope="menu"
       role="group"
@@ -104,7 +98,7 @@ export function MenuGroupLabel({
   return (
     <ark.div
       {...rest}
-      className={cn(slots.groupLabel(), className, classNames?.groupLabel)}
+      className={slots.groupLabel({ className: cn(className, classNames?.groupLabel) })}
       data-part="group-label"
       data-scope="menu"
     />
@@ -119,9 +113,11 @@ export function MenuItem({
   variant = "default",
   ...rest
 }: MenuItemProps) {
+  const slots = menuVariants();
+
   return (
     <ark.li
-      className={menuItemWrapperVariants()}
+      className={slots.wrapper({ className: classNames?.wrapper })}
       data-part="item-wrapper"
       data-scope="menu"
       role="none"
@@ -144,7 +140,7 @@ export function MenuLink({ active = false, className, classNames, ...rest }: Men
 
   return (
     <ark.li
-      className={menuItemWrapper2Variants()}
+      className={slots.wrapper({ className: classNames?.wrapper })}
       data-part="item-wrapper"
       data-scope="menu"
       role="none"
@@ -152,7 +148,7 @@ export function MenuLink({ active = false, className, classNames, ...rest }: Men
       <ark.a
         {...rest}
         aria-current={active ? "page" : undefined}
-        className={cn(slots.link(), className, classNames?.link)}
+        className={slots.link({ className: cn(className, classNames?.link) })}
         data-active={active}
         data-part="link"
         data-scope="menu"
@@ -173,7 +169,7 @@ export function MenuSeparator({
     <ark.div
       {...rest}
       aria-hidden
-      className={cn(slots.separator(), className, classNames?.separator)}
+      className={slots.separator({ className: cn(className, classNames?.separator) })}
       data-part="separator"
       data-scope="menu"
       role="separator"
@@ -192,7 +188,7 @@ export function MenuShortcut({
   return (
     <ark.span
       {...rest}
-      className={cn(slots.shortcut(), className, classNames?.shortcut)}
+      className={slots.shortcut({ className: cn(className, classNames?.shortcut) })}
       data-part="shortcut"
       data-scope="menu"
     />

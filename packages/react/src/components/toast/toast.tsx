@@ -116,26 +116,32 @@ export function ToastItem({
   const isExplicitClosable = toastData.closable === false;
 
   return (
-    <ToastPrimitive.Root {...rest} className={cn(slots.root(), className, classNames?.root)}>
-      <div className={cn(slots.content(), classNames?.content)}>
+    <ToastPrimitive.Root
+      {...rest}
+      className={slots.base({ className: cn(className, classNames?.base) })}
+    >
+      <div className={slots.content({ className: classNames?.content })}>
         <div
           {...iconProps}
-          className={cn(slots.icon(), classNames?.icon)}
+          className={slots.icon({ className: classNames?.icon })}
           data-part="icon"
           data-scope="toast"
         >
           {ToastIcon}
         </div>
 
-        <div className={cn(slots.body(), classNames?.body)}>
-          <ToastPrimitive.Title {...titleProps} className={cn(slots.title(), classNames?.title)}>
+        <div className={slots.body({ className: classNames?.body })}>
+          <ToastPrimitive.Title
+            {...titleProps}
+            className={slots.title({ className: classNames?.title })}
+          >
             {toastData.title}
           </ToastPrimitive.Title>
 
           {toastData.description && (
             <ToastPrimitive.Description
               {...descriptionProps}
-              className={cn(slots.description(), classNames?.description)}
+              className={slots.description({ className: classNames?.description })}
             >
               {toastData.description}
             </ToastPrimitive.Description>
@@ -143,7 +149,7 @@ export function ToastItem({
         </div>
       </div>
 
-      <div {...actionsProps} className={cn(slots.actions(), classNames?.actions)}>
+      <div {...actionsProps} className={slots.actions({ className: classNames?.actions })}>
         {toastData.action && (
           <ToastPrimitive.ActionTrigger
             {...actionTriggerProps}

@@ -47,7 +47,7 @@ export function ToolbarRoot({ className, classNames, testId, ...rest }: ToolbarR
   return (
     <ark.div
       {...rest}
-      className={cn(slots.root(), className, classNames?.root)}
+      className={slots.base({ className: cn(className, classNames?.base) })}
       data-part="root"
       data-scope="toolbar"
       data-testid={testId}
@@ -62,7 +62,7 @@ export function ToolbarHeading({ className, classNames, ...rest }: ToolbarPartPr
   return (
     <ark.div
       {...rest}
-      className={cn(slots.heading(), className, classNames?.heading)}
+      className={slots.heading({ className: cn(className, classNames?.heading) })}
       data-part="heading"
       data-scope="toolbar"
     />
@@ -76,7 +76,7 @@ export function ToolbarTitle({ className, classNames, ...rest }: ToolbarPartProp
   return (
     <ark.h2
       {...rest}
-      className={cn(slots.title(), className, classNames?.title)}
+      className={slots.title({ className: cn(className, classNames?.title) })}
       data-part="title"
       data-scope="toolbar"
     />
@@ -90,7 +90,7 @@ export function ToolbarDescription({ className, classNames, ...rest }: ToolbarPa
   return (
     <ark.p
       {...rest}
-      className={cn(slots.description(), className, classNames?.description)}
+      className={slots.description({ className: cn(className, classNames?.description) })}
       data-part="description"
       data-scope="toolbar"
     />
@@ -104,7 +104,7 @@ export function ToolbarActions({ className, classNames, ...rest }: ToolbarPartPr
   return (
     <ark.div
       {...rest}
-      className={cn(slots.actions(), className, classNames?.actions)}
+      className={slots.actions({ className: cn(className, classNames?.actions) })}
       data-part="actions"
       data-scope="toolbar"
     />

@@ -3,7 +3,6 @@ import {
   imageCropperGridVariants,
   imageCropperHandleVariants,
   imageCropperImageVariants,
-  imageCropperInlineVariants,
   imageCropperSelectionVariants,
   imageCropperVariants,
   imageCropperViewportVariants,
@@ -116,9 +115,11 @@ export function ImageCropperSelection({
 ImageCropperSelection.displayName = "ImageCropper.Selection";
 
 export function ImageCropperHandle({ className, ...rest }: ImageCropperHandleProps) {
+  const recipe = imageCropperHandleVariants();
+
   return (
-    <ImageCropperPrimitive.Handle {...rest} className={cn(imageCropperHandleVariants(), className)}>
-      <span aria-hidden className={imageCropperInlineVariants()} />
+    <ImageCropperPrimitive.Handle {...rest} className={recipe.base({ className })}>
+      <span aria-hidden className={recipe.grip()} />
     </ImageCropperPrimitive.Handle>
   );
 }

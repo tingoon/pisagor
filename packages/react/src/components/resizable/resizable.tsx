@@ -2,9 +2,6 @@ import { Splitter as SplitterPrimitive } from "@ark-ui/react/splitter";
 import { DotsSixVerticalIcon } from "@phosphor-icons/react";
 import {
   resizableEdgeHandleVariants,
-  resizableInline2Variants,
-  resizableInlineVariants,
-  resizableResizeTriggerHandleVariants,
   resizableResizeTriggerIndicatorVariants,
   resizableResizeTriggerVariants,
   resizableVariants,
@@ -28,8 +25,7 @@ export {
 } from "@ark-ui/react/splitter";
 
 // #region Variants
-const resizeTriggerClassName = resizableResizeTriggerVariants();
-const resizeTriggerHandleClassName = resizableResizeTriggerHandleVariants();
+const resizeTrigger = resizableResizeTriggerVariants();
 // #endregion
 
 // #region Types
@@ -116,7 +112,7 @@ export function ResizableEdgeHandle({
     <button
       {...rest}
       aria-label={label}
-      className={cn(edgeHandle.root(), className)}
+      className={edgeHandle.base({ className })}
       data-handle-position={handlePosition}
       data-part="edge-handle"
       data-scope="resizable"
@@ -159,7 +155,7 @@ export function ResizableEdgeHandle({
       type="button"
     >
       <span className={edgeHandle.grip()}>
-        <DotsSixVerticalIcon className={resizableInlineVariants()} />
+        <DotsSixVerticalIcon className={edgeHandle.icon()} />
       </span>
     </button>
   );
@@ -205,11 +201,11 @@ export function ResizableResizeTrigger({
     <SplitterPrimitive.ResizeTrigger
       {...rest}
       aria-label="Resize"
-      className={cn(resizeTriggerClassName, className)}
+      className={resizeTrigger.base({ className })}
     >
       {withHandle ? (
-        <div className={resizeTriggerHandleClassName}>
-          <DotsSixVerticalIcon className={resizableInline2Variants()} />
+        <div className={resizeTrigger.handle()}>
+          <DotsSixVerticalIcon className={resizeTrigger.icon()} />
         </div>
       ) : (
         (children ?? <ResizableResizeTriggerIndicator />)

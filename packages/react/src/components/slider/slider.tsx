@@ -142,7 +142,7 @@ export function Slider({
     <SliderPrimitive.Root
       {...rest}
       {...shellControlProps}
-      className={cn(slots.root(), className, classNames?.root)}
+      className={slots.base({ className: cn(className, classNames?.base) })}
       data-testid={testId}
       defaultValue={defaultValue}
       max={max}
@@ -151,7 +151,7 @@ export function Slider({
       value={value}
     >
       {(label !== undefined || showValue) && (
-        <div className={cn(slots.header(), classNames?.header)}>
+        <div className={slots.header({ className: classNames?.header })}>
           {label !== undefined && (
             <Field.Label>
               <SliderPrimitive.Label>{label}</SliderPrimitive.Label>
@@ -162,7 +162,7 @@ export function Slider({
             <Field.Label asChild>
               <SliderPrimitive.ValueText
                 {...valueProps}
-                className={cn(slots.value(), classNames?.value)}
+                className={slots.value({ className: classNames?.value })}
               />
             </Field.Label>
           )}
@@ -173,13 +173,16 @@ export function Slider({
 
       <SliderPrimitive.Control
         {...controlProps}
-        className={cn(slots.control(), classNames?.control)}
+        className={slots.control({ className: classNames?.control })}
       >
         <SliderPrimitive.Track
           {...trackProps}
-          className={cn(slots.track(), trackVariantClass, classNames?.track)}
+          className={slots.track({ className: cn(trackVariantClass, classNames?.track) })}
         >
-          <SliderPrimitive.Range {...rangeProps} className={cn(slots.range(), classNames?.range)} />
+          <SliderPrimitive.Range
+            {...rangeProps}
+            className={slots.range({ className: classNames?.range })}
+          />
         </SliderPrimitive.Track>
 
         {Array.from({ length: _values.length }, (_, index) => {
@@ -188,7 +191,7 @@ export function Slider({
           return (
             <SliderPrimitive.Thumb
               {...thumbProps}
-              className={cn(slots.thumb(), thumbShadowClass, classNames?.thumb)}
+              className={slots.thumb({ className: cn(thumbShadowClass, classNames?.thumb) })}
               index={index}
               key={key}
               tabIndex={tabIndex ?? undefined}
@@ -200,17 +203,19 @@ export function Slider({
       </SliderPrimitive.Control>
 
       {showMarkers && (
-        <SliderPrimitive.MarkerGroup className={cn(slots.markerGroup(), classNames?.markerGroup)}>
+        <SliderPrimitive.MarkerGroup
+          className={slots.markerGroup({ className: classNames?.markerGroup })}
+        >
           {Array.from({ length: max + 1 }, (_, index) => (
             <SliderPrimitive.Marker
-              className={cn(slots.marker(), classNames?.marker)}
+              className={slots.marker({ className: classNames?.marker })}
               data-interval={index % markerInterval === 0 ? undefined : ""}
               key={String(index)}
               value={index}
             >
-              <span className={cn(slots.markerTick(), classNames?.markerTick)} />
+              <span className={slots.markerTick({ className: classNames?.markerTick })} />
 
-              <span className={cn(slots.markerLabel(), classNames?.markerLabel)}>
+              <span className={slots.markerLabel({ className: classNames?.markerLabel })}>
                 {markerLabels?.[index] ?? index}
               </span>
             </SliderPrimitive.Marker>

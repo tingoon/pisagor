@@ -3,7 +3,6 @@ import {
   useAngleSliderContext as useCircularSlider,
 } from "@ark-ui/react/angle-slider";
 import { circularSliderVariants } from "@pisagor/styles/ui/circular-slider";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";
 import type { WithTestId } from "../../internal/types";
@@ -88,7 +87,7 @@ export function CircularSliderRoot({
     <CircularSliderContext value={values}>
       <AngleSliderPrimitive.Root
         {...rest}
-        className={cn(slots.root(), className)}
+        className={slots.base({ className })}
         data-testid={testId}
         onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
         step={step}
@@ -131,7 +130,7 @@ export function CircularSliderControl({
   }, [markers, markersAtSteps, step]);
 
   return (
-    <AngleSliderPrimitive.Control {...rest} className={cn(slots.control(), className)}>
+    <AngleSliderPrimitive.Control {...rest} className={slots.control({ className })}>
       <CircularSliderProgressRing />
       {markerValues ? (
         <CircularSliderMarkerGroup>
@@ -159,13 +158,13 @@ function CircularSliderProgressRing() {
   return (
     <svg
       aria-hidden="true"
-      className={cn(slots.ring())}
+      className={slots.ring()}
       height={size}
       viewBox={`0 0 ${size} ${size}`}
       width={size}
     >
       <circle
-        className={cn(slots.ringTrack())}
+        className={slots.ringTrack()}
         cx={center}
         cy={center}
         fill="transparent"
@@ -173,7 +172,7 @@ function CircularSliderProgressRing() {
         strokeWidth={thickness}
       />
       <circle
-        className={cn(slots.ringRange())}
+        className={slots.ringRange()}
         cx={center}
         cy={center}
         fill="transparent"
@@ -194,13 +193,13 @@ export function CircularSliderThumb({ className, ...rest }: CircularSliderThumbP
   return (
     <AngleSliderPrimitive.Thumb
       {...rest}
-      className={cn(slots.thumb(), className)}
+      className={slots.thumb({ className })}
       style={{
         "--size": `${thumbSize}px`,
       }}
     >
       <span
-        className={cn(slots.thumbHandle())}
+        className={slots.thumbHandle()}
         style={{
           insetBlockStart: `calc(50% - ${ringRadius}px - ${halfThumb}px)`,
           insetInlineStart: `calc(50% - ${halfThumb}px)`,
@@ -222,7 +221,7 @@ export function CircularSliderValue({
 
   return (
     <Field.Label asChild>
-      <AngleSliderPrimitive.ValueText {...rest} className={cn(slots.value(), className)}>
+      <AngleSliderPrimitive.ValueText {...rest} className={slots.value({ className })}>
         {prefix} {value} {suffix}
       </AngleSliderPrimitive.ValueText>
     </Field.Label>
@@ -234,7 +233,7 @@ export function CircularSliderMarkerGroup({ className, ...rest }: CircularSlider
   const slots = circularSliderVariants();
 
   return (
-    <AngleSliderPrimitive.MarkerGroup {...rest} className={cn(slots.markerGroup(), className)} />
+    <AngleSliderPrimitive.MarkerGroup {...rest} className={slots.markerGroup({ className })} />
   );
 }
 CircularSliderMarkerGroup.displayName = "CircularSlider.MarkerGroup";
@@ -251,7 +250,7 @@ export function CircularSliderMarker({ className, style, ...rest }: CircularSlid
   return (
     <AngleSliderPrimitive.Marker
       {...rest}
-      className={cn(slots.marker(), className)}
+      className={slots.marker({ className })}
       style={{
         ...style,
         "--marker-height": `${markerHeight}px`,

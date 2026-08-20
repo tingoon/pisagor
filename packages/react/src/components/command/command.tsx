@@ -198,7 +198,7 @@ export function CommandItem({ className, ...rest }: ComboboxItemProps) {
   return (
     <ComboboxPrimitive.Item
       {...rest}
-      className={cn(comboboxItemVariants({ showIndicator: false }), className)}
+      className={comboboxItemVariants({ showIndicator: false }).base({ className })}
       persistFocus
     />
   );

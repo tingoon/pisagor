@@ -18,9 +18,7 @@ import {
   selectGroupLabelVariants,
   selectInline2Variants,
   selectInline3Variants,
-  selectInline4Variants,
   selectInlineVariants,
-  selectItemTextVariants,
   selectItemVariants,
   selectSeparatorVariants,
   selectTriggerVariants,
@@ -226,13 +224,13 @@ export function SelectGroupLabel({ className, ...rest }: SelectGroupLabelProps) 
 SelectGroupLabel.displayName = "Select.GroupLabel";
 
 export function SelectItem({ className, children, ...rest }: SelectItemProps) {
-  return (
-    <SelectPrimitive.Item {...rest} className={cn(selectItemVariants(), className)}>
-      <SelectPrimitive.ItemText className={selectItemTextVariants()}>
-        {children}
-      </SelectPrimitive.ItemText>
+  const recipe = selectItemVariants();
 
-      <span className={selectInline4Variants()}>
+  return (
+    <SelectPrimitive.Item {...rest} className={recipe.base({ className })}>
+      <SelectPrimitive.ItemText className={recipe.text()}>{children}</SelectPrimitive.ItemText>
+
+      <span className={recipe.indicator()}>
         <SelectPrimitive.ItemIndicator>
           <CheckIcon />
         </SelectPrimitive.ItemIndicator>

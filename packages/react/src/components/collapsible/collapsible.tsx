@@ -3,7 +3,6 @@ import { CaretDownIcon } from "@phosphor-icons/react";
 import {
   collapsibleContentVariants,
   collapsibleIndicatorVariants,
-  collapsibleInlineVariants,
   collapsibleTriggerVariants,
   collapsibleVariants,
 } from "@pisagor/styles/ui/collapsible";
@@ -66,12 +65,11 @@ export function CollapsibleContent({ className, children, ...rest }: Collapsible
 CollapsibleContent.displayName = "Collapsible.Content";
 
 export function CollapsibleIndicator({ className, ...rest }: CollapsibleIndicatorProps) {
+  const recipe = collapsibleIndicatorVariants();
+
   return (
-    <CollapsiblePrimitive.Indicator
-      {...rest}
-      className={cn(collapsibleIndicatorVariants(), className)}
-    >
-      <CaretDownIcon className={collapsibleInlineVariants()} />
+    <CollapsiblePrimitive.Indicator {...rest} className={recipe.base({ className })}>
+      <CaretDownIcon className={recipe.icon()} />
     </CollapsiblePrimitive.Indicator>
   );
 }

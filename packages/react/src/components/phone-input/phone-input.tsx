@@ -100,7 +100,7 @@ function PhoneInputContainer({ className, children, ...rest }: ComponentProps<"d
 
 function PhoneInputFlag({ country, countryName }: FlagProps) {
   const { classNames, slots } = usePhoneInputContext();
-  const flagClassName = cn(slots.flag(), classNames?.flag);
+  const flagClassName = slots.flag({ className: classNames?.flag });
   const emoji = country ? phoneInputFlags[country] : undefined;
 
   if (!emoji) {
@@ -135,7 +135,7 @@ function PhoneInputField({
       {...inputProps}
       aria-invalid={invalid || undefined}
       autoComplete={inputProps?.autoComplete ?? rest.autoComplete ?? "tel"}
-      className={cn(slots.input(), classNames?.input, className)}
+      className={slots.input({ className: cn(className, classNames?.input) })}
       classNames={inputProps?.classNames}
       onBlur={onBlur}
       onChange={(event) => onChange?.(event.target.value)}
@@ -187,8 +187,7 @@ function PhoneInputCountrySelect({
         align="inline-start"
         className={cn(
           phoneInputCountryTriggerVariants(),
-          slots.countryTrigger(),
-          classNames?.countryTrigger,
+          slots.countryTrigger({ className: classNames?.countryTrigger }),
         )}
         data-part="country-trigger"
         data-scope="phone-input"
@@ -215,12 +214,12 @@ function PhoneInputCountrySelect({
           </Combobox.Trigger>
         </Combobox.Control>
       </InputGroup.Addon>
-      <Combobox.Content {...popupProps} className={cn(slots.popup(), classNames?.popup)}>
+      <Combobox.Content {...popupProps} className={slots.popup({ className: classNames?.popup })}>
         <div className={phoneInputInline8Variants()}>
           <InputGroup size={size}>
             <Combobox.FieldInput asChild>
               <InputGroup.Input
-                className={cn(slots.search(), classNames?.search)}
+                className={slots.search({ className: classNames?.search })}
                 placeholder="Search country..."
               />
             </Combobox.FieldInput>

@@ -48,7 +48,7 @@ export function DataListRoot({
   return (
     <ark.dl
       {...rest}
-      className={cn(slots.root(), className, classNames?.root)}
+      className={slots.base({ className: cn(className, classNames?.base) })}
       data-orientation={orientation}
       data-part="root"
       data-scope="data-list"
@@ -66,7 +66,7 @@ function DataListItemLabel({ className, ...rest }: ComponentProps<typeof ark.dt>
   return (
     <ark.dt
       {...rest}
-      className={cn(slots.label(), className)}
+      className={slots.label({ className })}
       data-part="item-label"
       data-scope="data-list"
     />
@@ -80,7 +80,7 @@ function DataListItemValue({ className, ...rest }: ComponentProps<typeof ark.dd>
   return (
     <ark.dd
       {...rest}
-      className={cn(slots.value(), className)}
+      className={slots.value({ className })}
       data-part="item-value"
       data-scope="data-list"
     />
@@ -98,7 +98,7 @@ export function DataListItem({
   return (
     <ark.div
       {...rest}
-      className={cn(dataListVariants().item(), className, classNames?.item)}
+      className={dataListVariants().item({ className: cn(className, classNames?.item) })}
       data-part="item"
       data-scope="data-list"
     >

@@ -66,27 +66,33 @@ export function Progress({
   return (
     <ProgressPrimitive.Root
       {...rest}
-      className={cn(slots.root(), className, classNames?.root)}
+      className={slots.base({ className: cn(className, classNames?.base) })}
       data-testid={testId}
       orientation={orientation}
       value={indeterminate ? null : value}
     >
       {showHeader && (
-        <div className={cn(slots.header(), classNames?.header)}>
+        <div className={slots.header({ className: classNames?.header })}>
           {label && <Field.Label>{label}</Field.Label>}
           {isValueVisible && (
             <Field.Label asChild>
               <ProgressPrimitive.ValueText
                 {...valueProps}
-                className={cn(slots.value(), classNames?.value)}
+                className={slots.value({ className: classNames?.value })}
               />
             </Field.Label>
           )}
         </div>
       )}
       {children}
-      <ProgressPrimitive.Track {...trackProps} className={cn(slots.track(), classNames?.track)}>
-        <ProgressPrimitive.Range {...rangeProps} className={cn(slots.range(), classNames?.range)} />
+      <ProgressPrimitive.Track
+        {...trackProps}
+        className={slots.track({ className: classNames?.track })}
+      >
+        <ProgressPrimitive.Range
+          {...rangeProps}
+          className={slots.range({ className: classNames?.range })}
+        />
       </ProgressPrimitive.Track>
     </ProgressPrimitive.Root>
   );

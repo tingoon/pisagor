@@ -51,12 +51,12 @@ function ScrollAreaRoot({
   return (
     <ScrollAreaPrimitive.Root
       {...rest}
-      className={cn(slots.root(), className, classNames?.root)}
+      className={slots.base({ className: cn(className, classNames?.base) })}
       data-testid={testId}
     >
       <ScrollAreaPrimitive.Viewport
         {...viewportProps}
-        className={cn(slots.viewport(), classNames?.viewport)}
+        className={slots.viewport({ className: classNames?.viewport })}
       >
         <ScrollAreaPrimitive.Content>{children}</ScrollAreaPrimitive.Content>
       </ScrollAreaPrimitive.Viewport>
@@ -88,10 +88,13 @@ function ScrollAreaScrollbar({
   return (
     <ScrollAreaPrimitive.Scrollbar
       {...scrollbarProps}
-      className={cn(slots.scrollbar(), classNames?.scrollbar)}
+      className={slots.scrollbar({ className: classNames?.scrollbar })}
       orientation={orientation}
     >
-      <ScrollAreaPrimitive.Thumb {...thumbProps} className={cn(slots.thumb(), classNames?.thumb)} />
+      <ScrollAreaPrimitive.Thumb
+        {...thumbProps}
+        className={slots.thumb({ className: classNames?.thumb })}
+      />
     </ScrollAreaPrimitive.Scrollbar>
   );
 }

@@ -18,7 +18,6 @@ import {
   comboboxEmptyVariants,
   comboboxGroupLabelVariants,
   comboboxInline2Variants,
-  comboboxInline3Variants,
   comboboxInlineVariants,
   comboboxItemVariants,
   comboboxListVariants,
@@ -282,16 +281,14 @@ export function ComboboxItem({
   children,
   ...rest
 }: ComboboxItemProps) {
+  const recipe = comboboxItemVariants({ showIndicator });
+
   return (
-    <ComboboxPrimitive.Item
-      {...rest}
-      className={cn(comboboxItemVariants({ showIndicator }), className)}
-      persistFocus
-    >
+    <ComboboxPrimitive.Item {...rest} className={recipe.base({ className })} persistFocus>
       {children}
 
       {showIndicator ? (
-        <span className={comboboxInline3Variants()}>
+        <span className={recipe.indicator()}>
           <ComboboxPrimitive.ItemIndicator>
             <CheckIcon />
           </ComboboxPrimitive.ItemIndicator>

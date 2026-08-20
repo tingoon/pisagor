@@ -30,7 +30,7 @@ export function NavbarRoot({ className, classNames, testId, ...rest }: NavbarRoo
   return (
     <ark.header
       {...rest}
-      className={cn(slots.root(), className, classNames?.root)}
+      className={slots.base({ className: cn(className, classNames?.base) })}
       data-part="root"
       data-scope="navbar"
       data-testid={testId}
@@ -45,7 +45,7 @@ export function NavbarBrand({ className, classNames, ...rest }: NavbarPartProps)
   return (
     <ark.div
       {...rest}
-      className={cn(slots.brand(), className, classNames?.brand)}
+      className={slots.brand({ className: cn(className, classNames?.brand) })}
       data-part="brand"
       data-scope="navbar"
     />
@@ -59,7 +59,7 @@ export function NavbarContent({ className, classNames, ...rest }: NavbarPartProp
   return (
     <ark.div
       {...rest}
-      className={cn(slots.content(), className, classNames?.content)}
+      className={slots.content({ className: cn(className, classNames?.content) })}
       data-part="content"
       data-scope="navbar"
     />
@@ -79,7 +79,7 @@ export function NavbarNav({
     <ark.nav
       {...rest}
       aria-label={ariaLabel}
-      className={cn(slots.nav(), className, classNames?.nav)}
+      className={slots.nav({ className: cn(className, classNames?.nav) })}
       data-part="nav"
       data-scope="navbar"
     />
@@ -93,7 +93,7 @@ export function NavbarActions({ className, classNames, ...rest }: NavbarPartProp
   return (
     <ark.div
       {...rest}
-      className={cn(slots.actions(), className, classNames?.actions)}
+      className={slots.actions({ className: cn(className, classNames?.actions) })}
       data-part="actions"
       data-scope="navbar"
     />

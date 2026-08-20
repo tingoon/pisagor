@@ -65,7 +65,7 @@ export function SignaturePad({
       <SignaturePadPrimitive.Root
         {...rest}
         aria-invalid={invalid || undefined}
-        className={cn(slots.root(), className, classNames?.root)}
+        className={slots.base({ className: cn(className, classNames?.base) })}
         data-invalid={invalid || undefined}
         data-testid={testId}
       >
@@ -96,9 +96,9 @@ function SignaturePadControl({
       {...controlProps}
       className={cn(
         formControlZoneVariants({ ...shellArgs }),
-        slots.control(),
-        resolved.variant === "primary" && "shadow-xs/5",
-        classNames?.control,
+        slots.control({
+          className: cn(resolved.variant === "primary" && "shadow-xs/5", classNames?.control),
+        }),
       )}
       data-invalid={invalid || undefined}
     >
@@ -111,7 +111,10 @@ function SignaturePadSegment({ classNames, ...rest }: SignaturePadSegmentProps) 
   const slots = signaturePadVariants();
 
   return (
-    <SignaturePadPrimitive.Segment {...rest} className={cn(slots.segment(), classNames?.segment)} />
+    <SignaturePadPrimitive.Segment
+      {...rest}
+      className={slots.segment({ className: classNames?.segment })}
+    />
   );
 }
 
@@ -122,7 +125,7 @@ function SignaturePadClear({ classNames, ...rest }: SignaturePadClearProps) {
     <SignaturePadPrimitive.ClearTrigger
       {...rest}
       asChild
-      className={cn(slots.clear(), classNames?.clear)}
+      className={slots.clear({ className: classNames?.clear })}
     >
       <Button aria-label="Clear signature" size="icon-md" variant="ghost">
         <ArrowCounterClockwiseIcon />
@@ -134,6 +137,11 @@ function SignaturePadClear({ classNames, ...rest }: SignaturePadClearProps) {
 function SignaturePadGuide({ classNames, ...rest }: SignaturePadGuideProps) {
   const slots = signaturePadVariants();
 
-  return <SignaturePadPrimitive.Guide {...rest} className={cn(slots.guide(), classNames?.guide)} />;
+  return (
+    <SignaturePadPrimitive.Guide
+      {...rest}
+      className={slots.guide({ className: classNames?.guide })}
+    />
+  );
 }
 // #endregion

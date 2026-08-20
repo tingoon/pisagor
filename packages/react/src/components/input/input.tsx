@@ -117,7 +117,7 @@ export function Input({
     <InputGroupRoot size={size} variant={variantProp}>
       <InputPrimitive
         {...rest}
-        className={cn(slots.clearableRoot(), className, classNames?.clearableRoot)}
+        className={slots.clearableRoot({ className: cn(className, classNames?.clearableRoot) })}
         data-size={size}
         data-testid={testId}
         defaultValue={defaultValue}

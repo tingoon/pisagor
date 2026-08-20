@@ -86,11 +86,11 @@ export function Clipboard({
 
   const control = (
     <ClipboardPrimitive.Root {...rest} className={cn(className)} data-testid={testId}>
-      <ClipboardPrimitive.Control className={cn(slots.control(), classNames?.control)}>
+      <ClipboardPrimitive.Control className={slots.control({ className: classNames?.control })}>
         {variant === "input" && (
           <ClipboardPrimitive.Input
             {...controlProps}
-            className={cn(shellClassName, slots.input(), classNames?.input)}
+            className={cn(shellClassName, slots.input({ className: classNames?.input }))}
             readOnly
           />
         )}
@@ -98,7 +98,7 @@ export function Clipboard({
         {variant === "value" && (
           <ClipboardPrimitive.ValueText
             {...controlProps}
-            className={cn(shellClassName, slots.value(), classNames?.value)}
+            className={cn(shellClassName, slots.value({ className: classNames?.value }))}
           />
         )}
 
@@ -110,7 +110,7 @@ export function Clipboard({
             variant={buttonVariant}
           >
             <ClipboardPrimitive.Indicator
-              className={cn(slots.indicator(), classNames?.indicator)}
+              className={slots.indicator({ className: classNames?.indicator })}
               copied={copiedIcon}
             >
               {copyIcon}
@@ -126,8 +126,8 @@ export function Clipboard({
   }
 
   return (
-    <div className={cn(slots.field(), classNames?.field)}>
-      <span {...labelProps} className={cn(slots.label(), classNames?.label)}>
+    <div className={slots.field({ className: classNames?.field })}>
+      <span {...labelProps} className={slots.label({ className: classNames?.label })}>
         {label}
       </span>
       {control}

@@ -57,7 +57,7 @@ export function StatRoot({ variant, className, classNames, testId, ...rest }: St
   return (
     <ark.div
       {...rest}
-      className={cn(slots.root(), className, classNames?.root)}
+      className={slots.base({ className: cn(className, classNames?.base) })}
       data-part="root"
       data-scope="stat"
       data-testid={testId}
@@ -73,7 +73,7 @@ export function StatLabel({ className, classNames, ...rest }: StatPartProps) {
   return (
     <ark.div
       {...rest}
-      className={cn(slots.label(), className, classNames?.label)}
+      className={slots.label({ className: cn(className, classNames?.label) })}
       data-part="label"
       data-scope="stat"
     />
@@ -87,7 +87,7 @@ export function StatValue({ className, classNames, ...rest }: StatPartProps) {
   return (
     <ark.div
       {...rest}
-      className={cn(slots.value(), className, classNames?.value)}
+      className={slots.value({ className: cn(className, classNames?.value) })}
       data-part="value"
       data-scope="stat"
     />
@@ -101,7 +101,7 @@ export function StatDescription({ className, classNames, ...rest }: StatPartProp
   return (
     <ark.p
       {...rest}
-      className={cn(slots.description(), className, classNames?.description)}
+      className={slots.description({ className: cn(className, classNames?.description) })}
       data-part="description"
       data-scope="stat"
     />

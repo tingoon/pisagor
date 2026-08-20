@@ -88,9 +88,7 @@ export function Textarea({
         {...controlProps}
         className={cn(
           formControlShellVariants({ size: "md", ...shellArgs }),
-          slots.rootLayout(),
-          className,
-          classNames?.rootLayout,
+          slots.rootLayout({ className: cn(className, classNames?.rootLayout) }),
         )}
         data-testid={testId}
         defaultValue={defaultValue}
@@ -103,15 +101,12 @@ export function Textarea({
   }
 
   return (
-    <InputGroupRoot className={cn(slots.group(), classNames?.group)} variant={variantProp}>
+    <InputGroupRoot className={slots.group({ className: classNames?.group })} variant={variantProp}>
       <FieldPrimitive.Textarea
         {...rest}
-        className={cn(
-          slots.clearableRoot(),
-          canClear && "pe-9",
-          className,
-          classNames?.clearableRoot,
-        )}
+        className={slots.clearableRoot({
+          className: cn(canClear && "pe-9", className, classNames?.clearableRoot),
+        })}
         data-testid={testId}
         defaultValue={defaultValue}
         disabled={disabled}

@@ -1,7 +1,6 @@
 import { Portal } from "@ark-ui/react/portal";
 import { Tooltip as TooltipPrimitive } from "@ark-ui/react/tooltip";
 import { tooltipVariants } from "@pisagor/styles/ui/tooltip";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactElement, ReactNode } from "react";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
@@ -88,11 +87,11 @@ export function Tooltip({
         <TooltipPrimitive.Positioner {...positionerProps}>
           <TooltipPrimitive.Content
             {...contentProps}
-            className={cn(slots.content(), classNames?.content)}
+            className={slots.content({ className: classNames?.content })}
           >
             <TooltipPrimitive.Arrow
               {...arrowProps}
-              className={cn(slots.arrow(), classNames?.arrow)}
+              className={slots.arrow({ className: classNames?.arrow })}
             >
               <TooltipPrimitive.ArrowTip />
             </TooltipPrimitive.Arrow>

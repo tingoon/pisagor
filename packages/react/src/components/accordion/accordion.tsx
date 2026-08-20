@@ -1,9 +1,7 @@
 import { Accordion as AccordionPrimitive } from "@ark-ui/react/accordion";
 import { CaretDownIcon } from "@phosphor-icons/react";
 import {
-  accordionContentBodyVariants,
   accordionContentVariants,
-  accordionIndicatorVariants,
   accordionItemVariants,
   accordionTriggerVariants,
 } from "@pisagor/styles/accordion";
@@ -61,12 +59,14 @@ export function AccordionItem({ className, ...rest }: AccordionItemProps) {
 AccordionItem.displayName = "Accordion.Item";
 
 export function AccordionTrigger({ className, children, ...rest }: AccordionTriggerProps) {
+  const recipe = accordionTriggerVariants();
+
   return (
-    <AccordionPrimitive.ItemTrigger {...rest} className={cn(accordionTriggerVariants(), className)}>
+    <AccordionPrimitive.ItemTrigger {...rest} className={recipe.base({ className })}>
       {children}
 
       <AccordionPrimitive.ItemIndicator>
-        <CaretDownIcon className={accordionIndicatorVariants()} />
+        <CaretDownIcon className={recipe.indicator()} />
       </AccordionPrimitive.ItemIndicator>
     </AccordionPrimitive.ItemTrigger>
   );
@@ -74,9 +74,11 @@ export function AccordionTrigger({ className, children, ...rest }: AccordionTrig
 AccordionTrigger.displayName = "Accordion.Trigger";
 
 export function AccordionContent({ className, children, ...rest }: AccordionContentProps) {
+  const recipe = accordionContentVariants();
+
   return (
-    <AccordionPrimitive.ItemContent {...rest} className={cn(accordionContentVariants(), className)}>
-      <div className={accordionContentBodyVariants()}>{children}</div>
+    <AccordionPrimitive.ItemContent {...rest} className={recipe.base({ className })}>
+      <div className={recipe.body()}>{children}</div>
     </AccordionPrimitive.ItemContent>
   );
 }

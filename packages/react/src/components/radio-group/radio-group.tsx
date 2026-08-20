@@ -1,9 +1,5 @@
 import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/react/radio-group";
-import {
-  radioGroupItemControlVariants,
-  radioGroupItemVariants,
-  radioGroupVariants,
-} from "@pisagor/styles/ui/radio-group";
+import { radioGroupItemVariants, radioGroupVariants } from "@pisagor/styles/ui/radio-group";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
@@ -74,15 +70,13 @@ export function RadioGroupItem({
   const resolved = useFormControlVariant(variantProp);
   const shellArgs = shellVariantArgs(resolved);
   const controlProps = formControlShellProps(resolved);
+  const recipe = radioGroupItemVariants();
 
   return (
-    <RadioGroupPrimitive.Item {...rest} className={cn(radioGroupItemVariants(), className)}>
+    <RadioGroupPrimitive.Item {...rest} className={recipe.base({ className })}>
       <RadioGroupPrimitive.ItemControl
         {...controlProps}
-        className={cn(
-          formControlRadioToggleVariants({ ...shellArgs }),
-          radioGroupItemControlVariants(),
-        )}
+        className={cn(formControlRadioToggleVariants({ ...shellArgs }), recipe.control())}
       />
 
       <RadioGroupText>{children}</RadioGroupText>

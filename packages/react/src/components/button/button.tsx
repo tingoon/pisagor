@@ -1,9 +1,7 @@
 import { ark } from "@ark-ui/react/factory";
 import {
   type ButtonVariantProps,
-  buttonInline2Variants,
-  buttonInline3Variants,
-  buttonInlineVariants,
+  buttonLoadingVariants,
   buttonVariants,
 } from "@pisagor/styles/ui/button";
 import { cn } from "@pisagor/utils";
@@ -45,6 +43,8 @@ export function Button({
   disabled,
   ...rest
 }: ButtonProps) {
+  const loading = buttonLoadingVariants();
+
   return (
     <ark.button
       {...rest}
@@ -61,11 +61,11 @@ export function Button({
     >
       {isLoading ? (
         <>
-          <span aria-hidden className={buttonInlineVariants()}>
+          <span aria-hidden className={loading.hidden()}>
             {children}
           </span>
-          <span className={buttonInline2Variants()}>{children}</span>
-          <span className={buttonInline3Variants()}>
+          <span className={loading.srOnly()}>{children}</span>
+          <span className={loading.spinner()}>
             <Spinner aria-hidden />
           </span>
         </>

@@ -53,7 +53,7 @@ export function EmptyStateRoot({ className, classNames, testId, ...rest }: Empty
   return (
     <ark.div
       {...rest}
-      className={cn(slots.root(), className, classNames?.root)}
+      className={slots.base({ className: cn(className, classNames?.base) })}
       data-part="root"
       data-scope="empty-state"
       data-testid={testId}
@@ -68,7 +68,7 @@ export function EmptyStateMedia({ className, classNames, ...rest }: EmptyStatePa
   return (
     <ark.div
       {...rest}
-      className={cn(slots.media(), className, classNames?.media)}
+      className={slots.media({ className: cn(className, classNames?.media) })}
       data-part="media"
       data-scope="empty-state"
     />
@@ -82,7 +82,7 @@ export function EmptyStateTitle({ className, classNames, ...rest }: EmptyStatePa
   return (
     <ark.h3
       {...rest}
-      className={cn(slots.title(), className, classNames?.title)}
+      className={slots.title({ className: cn(className, classNames?.title) })}
       data-part="title"
       data-scope="empty-state"
     />
@@ -96,7 +96,7 @@ export function EmptyStateDescription({ className, classNames, ...rest }: EmptyS
   return (
     <ark.p
       {...rest}
-      className={cn(slots.description(), className, classNames?.description)}
+      className={slots.description({ className: cn(className, classNames?.description) })}
       data-part="description"
       data-scope="empty-state"
     />
@@ -110,7 +110,7 @@ export function EmptyStateActions({ className, classNames, ...rest }: EmptyState
   return (
     <ark.div
       {...rest}
-      className={cn(slots.actions(), className, classNames?.actions)}
+      className={slots.actions({ className: cn(className, classNames?.actions) })}
       data-part="actions"
       data-scope="empty-state"
     />

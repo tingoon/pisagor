@@ -6,16 +6,10 @@ import {
   type DropdownMenuItemVariantProps,
   dropdownMenuContentVariants,
   dropdownMenuGroupLabelVariants,
-  dropdownMenuInline2Variants,
-  dropdownMenuInline3Variants,
-  dropdownMenuInline4Variants,
   dropdownMenuInline5Variants,
-  dropdownMenuInlineVariants,
   dropdownMenuItemVariants,
   dropdownMenuPositionerVariants,
   dropdownMenuQuickItemVariants,
-  dropdownMenuRadioItemTextVariants,
-  dropdownMenuRadioItemVariants,
   dropdownMenuSeparatorVariants,
   dropdownMenuShortcutVariants,
 } from "@pisagor/styles/ui/dropdown-menu";
@@ -144,7 +138,7 @@ export function DropdownMenuItem({
   return (
     <MenuPrimitive.Item
       {...rest}
-      className={cn(dropdownMenuItemVariants({ variant }), className)}
+      className={dropdownMenuItemVariants({ variant }).base({ className })}
       data-variant={variant}
     />
   );
@@ -159,11 +153,9 @@ export function DropdownMenuQuickItem({
   return (
     <MenuPrimitive.Item
       {...rest}
-      className={cn(
-        dropdownMenuItemVariants({ variant }),
-        dropdownMenuQuickItemVariants(),
-        className,
-      )}
+      className={dropdownMenuItemVariants({ variant }).base({
+        className: cn(dropdownMenuQuickItemVariants(), className),
+      })}
     />
   );
 }
@@ -174,22 +166,15 @@ export function DropdownMenuCheckboxItem({
   children,
   ...rest
 }: DropdownMenuCheckboxItemProps) {
+  const recipe = dropdownMenuItemVariants({ inset: true, variant: "default" });
+
   return (
-    <MenuPrimitive.CheckboxItem
-      {...rest}
-      className={cn(
-        dropdownMenuItemVariants({ variant: "default" }),
-        dropdownMenuInlineVariants(),
-        className,
-      )}
-    >
-      <MenuPrimitive.ItemIndicator className={dropdownMenuInline2Variants()}>
+    <MenuPrimitive.CheckboxItem {...rest} className={recipe.base({ className })}>
+      <MenuPrimitive.ItemIndicator className={recipe.indicator()}>
         <CheckIcon />
       </MenuPrimitive.ItemIndicator>
 
-      <MenuPrimitive.ItemText className={dropdownMenuInline3Variants()}>
-        {children}
-      </MenuPrimitive.ItemText>
+      <MenuPrimitive.ItemText className={recipe.text()}>{children}</MenuPrimitive.ItemText>
     </MenuPrimitive.CheckboxItem>
   );
 }
@@ -225,22 +210,15 @@ export function DropdownMenuRadioItem({
   children,
   ...rest
 }: DropdownMenuRadioItemProps) {
+  const recipe = dropdownMenuItemVariants({ inset: true, variant: "default" });
+
   return (
-    <MenuPrimitive.RadioItem
-      {...rest}
-      className={cn(
-        dropdownMenuItemVariants({ variant: "default" }),
-        dropdownMenuRadioItemVariants(),
-        className,
-      )}
-    >
-      <MenuPrimitive.ItemIndicator className={dropdownMenuInline4Variants()}>
+    <MenuPrimitive.RadioItem {...rest} className={recipe.base({ className })}>
+      <MenuPrimitive.ItemIndicator className={recipe.indicator()}>
         <CheckIcon />
       </MenuPrimitive.ItemIndicator>
 
-      <MenuPrimitive.ItemText className={dropdownMenuRadioItemTextVariants()}>
-        {children}
-      </MenuPrimitive.ItemText>
+      <MenuPrimitive.ItemText className={recipe.text()}>{children}</MenuPrimitive.ItemText>
     </MenuPrimitive.RadioItem>
   );
 }
@@ -270,7 +248,7 @@ export function DropdownMenuSubTrigger({
   return (
     <MenuPrimitive.TriggerItem
       {...rest}
-      className={cn(dropdownMenuItemVariants({ variant: "default" }), className)}
+      className={dropdownMenuItemVariants({ variant: "default" }).base({ className })}
     >
       {children}
 

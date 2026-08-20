@@ -8,16 +8,11 @@ import { ark } from "@ark-ui/react/factory";
 import { Portal } from "@ark-ui/react/portal";
 import { CheckIcon, EyedropperIcon, XIcon } from "@phosphor-icons/react";
 import {
-  colorPickerAreaBackgroundVariants,
   colorPickerAreaThumbVariants,
   colorPickerAreaVariants,
-  colorPickerChannelSliderThumbVariants,
-  colorPickerChannelSliderTrackVariants,
   colorPickerChannelSliderVariants,
   colorPickerContentVariants,
   colorPickerControlVariants,
-  colorPickerInline2Variants,
-  colorPickerInline3Variants,
   colorPickerInline4Variants,
   colorPickerInline5Variants,
   colorPickerInlineVariants,
@@ -304,19 +299,14 @@ export function ColorPickerView({ className, ...rest }: ColorPickerViewProps) {
 ColorPickerView.displayName = "ColorPicker.View";
 
 export function ColorPickerSlider({ className, children, ...rest }: ColorPickerSliderProps) {
+  const recipe = colorPickerChannelSliderVariants();
+
   return (
-    <ColorPickerPrimitive.ChannelSlider
-      {...rest}
-      className={cn(colorPickerChannelSliderVariants(), className)}
-    >
+    <ColorPickerPrimitive.ChannelSlider {...rest} className={recipe.base({ className })}>
       {children}
 
-      <ColorPickerPrimitive.ChannelSliderTrack
-        className={cn(colorPickerChannelSliderTrackVariants())}
-      />
-      <ColorPickerPrimitive.ChannelSliderThumb
-        className={cn(colorPickerChannelSliderThumbVariants())}
-      />
+      <ColorPickerPrimitive.ChannelSliderTrack className={recipe.track()} />
+      <ColorPickerPrimitive.ChannelSliderThumb className={recipe.thumb()} />
     </ColorPickerPrimitive.ChannelSlider>
   );
 }
@@ -407,19 +397,22 @@ export function ColorPickerArea({
   children,
   ...rest
 }: ColorPickerAreaProps) {
+  const recipe = colorPickerAreaVariants();
+
   return (
     <ColorPickerPrimitive.Area
       {...rest}
-      className={cn(
-        colorPickerAreaVariants(),
-        {
-          "after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:bg-[radial-gradient(circle,#fff3_1px,#0000_1px)] after:bg-size-[8px_8px]":
-            showDots,
-        },
-        className,
-      )}
+      className={recipe.base({
+        className: cn(
+          {
+            "after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:bg-[radial-gradient(circle,#fff3_1px,#0000_1px)] after:bg-size-[8px_8px]":
+              showDots,
+          },
+          className,
+        ),
+      })}
     >
-      <ColorPickerPrimitive.AreaBackground className={colorPickerAreaBackgroundVariants()} />
+      <ColorPickerPrimitive.AreaBackground className={recipe.background()} />
 
       {children}
     </ColorPickerPrimitive.Area>
@@ -443,15 +436,17 @@ export function ColorPickerInput({ channel = "hex", ...rest }: ColorPickerInputP
 ColorPickerInput.displayName = "ColorPicker.Input";
 
 export function ColorPickerSwatchPreview({ className, ...rest }: ComponentProps<typeof ark.div>) {
+  const recipe = colorPickerInputSwatchVariants();
+
   return (
     <ark.div
       {...rest}
-      className={cn(colorPickerInputSwatchVariants(), className)}
+      className={recipe.base({ className })}
       data-part="input-swatch"
       data-scope="color-picker"
     >
-      <ColorPickerPrimitive.TransparencyGrid className={cn(colorPickerInline2Variants())} />
-      <ColorPickerPrimitive.ValueSwatch className={colorPickerInline3Variants()} />
+      <ColorPickerPrimitive.TransparencyGrid className={recipe.grid()} />
+      <ColorPickerPrimitive.ValueSwatch className={recipe.swatch()} />
     </ark.div>
   );
 }

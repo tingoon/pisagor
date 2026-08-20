@@ -37,7 +37,7 @@ export function JsonTreeView({
   return (
     <JsonTreeViewPrimitive.Root
       {...rest}
-      className={cn(slots.root(), className, classNames?.root)}
+      className={slots.base({ className: cn(className, classNames?.base) })}
       data-testid={testId}
       lazyMount={lazyMount}
       unmountOnExit={unmountOnExit}
@@ -45,7 +45,7 @@ export function JsonTreeView({
       <JsonTreeViewPrimitive.Tree
         {...treeProps}
         arrow={<CaretRightIcon />}
-        className={cn(slots.tree(), classNames?.tree)}
+        className={slots.tree({ className: classNames?.tree })}
         renderValue={renderValue}
       />
     </JsonTreeViewPrimitive.Root>

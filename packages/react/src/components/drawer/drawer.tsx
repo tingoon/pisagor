@@ -9,10 +9,8 @@ import {
   drawerContentVariants,
   drawerDescriptionVariants,
   drawerFooterVariants,
-  drawerGrabberIndicatorVariants,
   drawerGrabberVariants,
   drawerHeaderVariants,
-  drawerInlineVariants,
   drawerOverlayVariants,
   drawerPositionerVariants,
   drawerTitleVariants,
@@ -163,10 +161,12 @@ export function DrawerContentInner({ className, ...rest }: ComponentProps<typeof
 DrawerContentInner.displayName = "Drawer.ContentInner";
 
 export function DrawerGrabber({ className, ...rest }: DrawerGrabberProps) {
+  const recipe = drawerGrabberVariants();
+
   return (
-    <ark.div className={drawerInlineVariants()}>
-      <DrawerPrimitive.Grabber {...rest} className={cn(drawerGrabberVariants(), className)}>
-        <DrawerPrimitive.GrabberIndicator className={drawerGrabberIndicatorVariants()} />
+    <ark.div className={recipe.wrapper()}>
+      <DrawerPrimitive.Grabber {...rest} className={recipe.base({ className })}>
+        <DrawerPrimitive.GrabberIndicator className={recipe.indicator()} />
       </DrawerPrimitive.Grabber>
     </ark.div>
   );

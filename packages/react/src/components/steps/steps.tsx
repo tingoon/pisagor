@@ -6,8 +6,6 @@ import {
   stepsContentVariants,
   stepsDescriptionVariants,
   stepsIndicatorVariants,
-  stepsInline2Variants,
-  stepsInlineVariants,
   stepsItemVariants,
   stepsListVariants,
   stepsSeparatorVariants,
@@ -69,10 +67,12 @@ export function StepsTrigger({ className, ...rest }: StepsTriggerProps) {
 StepsTrigger.displayName = "Steps.Trigger";
 
 export function StepsIndicator({ className, children, ...rest }: StepsIndicatorProps) {
+  const recipe = stepsIndicatorVariants();
+
   return (
-    <StepsPrimitive.Indicator {...rest} className={cn(stepsIndicatorVariants(), className)}>
-      <span className={stepsInlineVariants()}>{children}</span>
-      <CheckIcon className={stepsInline2Variants()} />
+    <StepsPrimitive.Indicator {...rest} className={recipe.base({ className })}>
+      <span className={recipe.label()}>{children}</span>
+      <CheckIcon className={recipe.check()} />
     </StepsPrimitive.Indicator>
   );
 }

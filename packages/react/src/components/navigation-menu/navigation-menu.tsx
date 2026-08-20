@@ -42,7 +42,7 @@ export function NavigationMenuRoot({
   return (
     <ark.nav
       {...rest}
-      className={cn(slots.root(), className, classNames?.root)}
+      className={slots.base({ className: cn(className, classNames?.base) })}
       data-part="root"
       data-scope="navigation-menu"
       data-testid={testId}
@@ -57,7 +57,7 @@ export function NavigationMenuList({ className, classNames, ...rest }: Navigatio
   return (
     <ark.ul
       {...rest}
-      className={cn(slots.list(), className, classNames?.list)}
+      className={slots.list({ className: cn(className, classNames?.list) })}
       data-part="list"
       data-scope="navigation-menu"
     />
@@ -71,7 +71,7 @@ export function NavigationMenuItem({ className, classNames, ...rest }: Navigatio
   return (
     <ark.li
       {...rest}
-      className={cn(slots.item(), className, classNames?.item)}
+      className={slots.item({ className: cn(className, classNames?.item) })}
       data-part="item"
       data-scope="navigation-menu"
     />
@@ -91,7 +91,7 @@ export function NavigationMenuLink({
     <ark.a
       {...rest}
       aria-current={active ? "page" : undefined}
-      className={cn(slots.link(), className, classNames?.link)}
+      className={slots.link({ className: cn(className, classNames?.link) })}
       data-active={active}
       data-part="link"
       data-scope="navigation-menu"

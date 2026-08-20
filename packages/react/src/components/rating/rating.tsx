@@ -88,7 +88,7 @@ export function Rating({
       <RatingGroupPrimitive.Root
         {...rest}
         allowHalf={allowHalf}
-        className={cn(slots.root(), surfaceTone, className, classNames?.root)}
+        className={slots.base({ className: cn(surfaceTone, className, classNames?.base) })}
         count={count}
         data-testid={testId}
         data-variant={resolved.variant}
@@ -96,14 +96,14 @@ export function Rating({
       >
         <RatingGroupPrimitive.Control
           {...controlProps}
-          className={cn(slots.control(), classNames?.control)}
+          className={slots.control({ className: classNames?.control })}
         >
           <RatingGroupPrimitive.Context>
             {({ items }) =>
               items.map((item) => (
                 <RatingItem
                   {...itemProps}
-                  className={cn(slots.item(), classNames?.item)}
+                  className={slots.item({ className: classNames?.item })}
                   index={item}
                   key={item}
                 >
@@ -111,7 +111,7 @@ export function Rating({
                     {({ half, highlighted }) => (
                       <span
                         {...indicatorProps}
-                        className={cn(slots.indicator(), classNames?.indicator)}
+                        className={slots.indicator({ className: classNames?.indicator })}
                         data-half={half ? "" : undefined}
                         data-highlighted={highlighted ? "" : undefined}
                         data-part="item-indicator"

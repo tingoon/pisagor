@@ -45,7 +45,7 @@ export function AlertRoot({ variant, className, children, testId, ...rest }: Ale
     <AlertContext value={{ slots }}>
       <ark.div
         {...rest}
-        className={slots.root({ className })}
+        className={slots.base({ className })}
         data-part="root"
         data-scope="alert"
         data-testid={testId}

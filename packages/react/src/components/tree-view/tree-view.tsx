@@ -14,7 +14,6 @@ import {
 } from "@phosphor-icons/react";
 import {
   treeViewBranchContentVariants,
-  treeViewBranchIndentGuideVariants,
   treeViewBranchIndicatorVariants,
   treeViewBranchTitleVariants,
   treeViewBranchVariants,
@@ -230,11 +229,10 @@ export function TreeViewBranchContent({
   children,
   ...rest
 }: TreeViewBranchContentProps) {
+  const recipe = treeViewBranchContentVariants();
+
   return (
-    <TreeViewPrimitive.BranchContent
-      {...rest}
-      className={cn(treeViewBranchContentVariants(), className)}
-    >
+    <TreeViewPrimitive.BranchContent {...rest} className={recipe.base({ className })}>
       <TreeViewBranchIndentGuide />
 
       {children}
@@ -244,11 +242,10 @@ export function TreeViewBranchContent({
 TreeViewBranchContent.displayName = "TreeView.BranchContent";
 
 function TreeViewBranchIndentGuide({ className, ...rest }: TreeViewBranchIndentGuideProps) {
+  const recipe = treeViewBranchContentVariants();
+
   return (
-    <TreeViewPrimitive.BranchIndentGuide
-      {...rest}
-      className={cn(treeViewBranchIndentGuideVariants(), className)}
-    />
+    <TreeViewPrimitive.BranchIndentGuide {...rest} className={recipe.indentGuide({ className })} />
   );
 }
 

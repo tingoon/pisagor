@@ -74,13 +74,16 @@ export function CircularProgress({
   return (
     <ProgressPrimitive.Root
       {...rest}
-      className={cn(slots.root(), className, classNames?.root)}
+      className={slots.base({ className: cn(className, classNames?.base) })}
       data-testid={testId}
       value={indeterminate ? null : value}
     >
       {isValueVisible && (
-        <span className={cn(slots.valueWrapper(), classNames?.valueWrapper)}>
-          <CircularProgressValue {...valueProps} className={cn(slots.value(), classNames?.value)} />
+        <span className={slots.valueWrapper({ className: classNames?.valueWrapper })}>
+          <CircularProgressValue
+            {...valueProps}
+            className={slots.value({ className: classNames?.value })}
+          />
         </span>
       )}
       {children}
@@ -114,7 +117,7 @@ function CircularProgressTrack({
     <ark.svg
       {...trackProps}
       aria-hidden="true"
-      className={cn(slots.track(), classNames?.track)}
+      className={slots.track({ className: classNames?.track })}
       data-part="circle"
       data-scope="circular-progress"
       height={size}
@@ -130,7 +133,7 @@ function CircularProgressTrack({
         strokeWidth={thickness}
       />
       <circle
-        className={cn(slots.range(), classNames?.range)}
+        className={slots.range({ className: classNames?.range })}
         cx={size / 2}
         cy={size / 2}
         data-part="range"

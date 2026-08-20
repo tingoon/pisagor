@@ -9,7 +9,6 @@ import {
   popoverFooterVariants,
   popoverHeaderVariants,
   popoverInline2Variants,
-  popoverInlineVariants,
   popoverTitleVariants,
 } from "@pisagor/styles/ui/popover";
 import { cn } from "@pisagor/utils";
@@ -101,20 +100,17 @@ export function PopoverContent({
   children,
   ...rest
 }: PopoverContentProps) {
+  const recipe = popoverContentVariants();
+
   return (
     <Portal>
       <PopoverPositioner>
-        <PopoverPrimitive.Content {...rest} className={cn(popoverContentVariants(), className)}>
+        <PopoverPrimitive.Content {...rest} className={recipe.base({ className })}>
           {children}
 
           {!!showCloseButton && (
             <PopoverClose asChild>
-              <Button
-                aria-label="Close"
-                className={popoverInlineVariants()}
-                size="icon-sm"
-                variant="ghost"
-              >
+              <Button aria-label="Close" className={recipe.close()} size="icon-sm" variant="ghost">
                 <XIcon />
               </Button>
             </PopoverClose>

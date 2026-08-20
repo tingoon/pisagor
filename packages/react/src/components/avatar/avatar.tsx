@@ -49,7 +49,7 @@ export function Avatar({
   return (
     <AvatarPrimitive.Root
       {...rest}
-      className={cn(slots.root(), className, classNames?.root)}
+      className={slots.base({ className: cn(className, classNames?.base) })}
       data-shape={shape}
       data-size={size}
       data-testid={testId}
@@ -58,14 +58,14 @@ export function Avatar({
         <AvatarPrimitive.Image
           {...imageProps}
           alt={alt}
-          className={cn(slots.image(), classNames?.image)}
+          className={slots.image({ className: classNames?.image })}
           src={src}
         />
       )}
       {fallback !== undefined && (
         <AvatarPrimitive.Fallback
           {...fallbackProps}
-          className={cn(slots.fallback(), classNames?.fallback)}
+          className={slots.fallback({ className: classNames?.fallback })}
         >
           {fallback}
         </AvatarPrimitive.Fallback>

@@ -2,7 +2,6 @@ import { QrCode as QrCodePrimitive } from "@ark-ui/react/qr-code";
 import {
   qrCodeFrameVariants,
   qrCodeOverlayVariants,
-  qrCodePatternVariants,
   qrCodeVariants,
 } from "@pisagor/styles/ui/qr-code";
 import { cn } from "@pisagor/utils";
@@ -34,9 +33,11 @@ export function QrCodeRoot({ className, children, testId, ...rest }: QrCodeRootP
 QrCodeRoot.displayName = "QrCode";
 
 export function QrCodeFrame({ className, ...rest }: QrCodeFrameProps) {
+  const recipe = qrCodeFrameVariants();
+
   return (
-    <QrCodePrimitive.Frame {...rest} className={cn(qrCodeFrameVariants(), className)}>
-      <QrCodePrimitive.Pattern className={qrCodePatternVariants()} />
+    <QrCodePrimitive.Frame {...rest} className={recipe.base({ className })}>
+      <QrCodePrimitive.Pattern className={recipe.pattern()} />
     </QrCodePrimitive.Frame>
   );
 }

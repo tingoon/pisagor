@@ -66,15 +66,18 @@ export function Switch({
     <SwitchPrimitive.Root
       {...rest}
       {...controlShellProps}
-      className={cn(slots.root(), className, classNames?.root)}
+      className={slots.base({ className: cn(className, classNames?.base) })}
       data-testid={testId}
       onCheckedChange={handleCheckedChange}
     >
       <SwitchPrimitive.Control
         {...controlProps}
-        className={cn(slots.control(), classNames?.control)}
+        className={slots.control({ className: classNames?.control })}
       >
-        <SwitchPrimitive.Thumb {...thumbProps} className={cn(slots.thumb(), classNames?.thumb)} />
+        <SwitchPrimitive.Thumb
+          {...thumbProps}
+          className={slots.thumb({ className: classNames?.thumb })}
+        />
       </SwitchPrimitive.Control>
 
       <SwitchPrimitive.HiddenInput {...hiddenInputProps} />

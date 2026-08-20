@@ -1,10 +1,6 @@
 import { Checkbox as CheckboxPrimitive } from "@ark-ui/react/checkbox";
 import { CheckIcon, MinusIcon } from "@phosphor-icons/react";
-import {
-  checkbox2Variants,
-  checkboxGroupVariants,
-  checkboxIndicatorVariants,
-} from "@pisagor/styles/ui/checkbox";
+import { checkbox2Variants, checkboxGroupVariants } from "@pisagor/styles/ui/checkbox";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
@@ -60,6 +56,7 @@ export function CheckboxRoot({
   const resolved = useFormControlVariant(variantProp);
   const shellArgs = shellVariantArgs(resolved);
   const controlProps = formControlShellProps(resolved);
+  const recipe = checkbox2Variants();
 
   const handleCheckedChange =
     onCheckedChange || onValueChange
@@ -75,8 +72,7 @@ export function CheckboxRoot({
       {...controlProps}
       className={cn(
         formControlToggleVariants({ size: "md", ...shellArgs }),
-        checkbox2Variants(),
-        className,
+        recipe.base({ className }),
       )}
       data-testid={testId}
       onCheckedChange={handleCheckedChange}
@@ -99,9 +95,9 @@ export function CheckboxRoot({
 CheckboxRoot.displayName = "Checkbox";
 
 function CheckboxIndicator({ className, ...rest }: CheckboxIndicatorProps) {
-  return (
-    <CheckboxPrimitive.Indicator {...rest} className={cn(checkboxIndicatorVariants(), className)} />
-  );
+  const recipe = checkbox2Variants();
+
+  return <CheckboxPrimitive.Indicator {...rest} className={recipe.indicator({ className })} />;
 }
 CheckboxIndicator.displayName = "Checkbox.Indicator";
 

@@ -10,11 +10,9 @@ import {
   calendarInline4Variants,
   calendarInlineVariants,
   calendarLabelVariants,
-  calendarMonthSelectIconVariants,
-  calendarMonthSelectWrapperVariants,
   calendarRangeTextVariants,
   calendarSelectLayoutVariants,
-  calendarTableCellTriggerVariants,
+  calendarSelectWrapperVariants,
   calendarTableCellVariants,
   calendarTableHeaderVariants,
   calendarTableRowVariants,
@@ -22,8 +20,6 @@ import {
   calendarVariants,
   calendarViewControlVariants,
   calendarViewVariants,
-  calendarYearSelectIconVariants,
-  calendarYearSelectWrapperVariants,
 } from "@pisagor/styles/ui/calendar";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
@@ -200,35 +196,25 @@ export function CalendarClearTrigger(props: CalendarClearTriggerProps) {
 
 export function CalendarYearSelect({ className, ...rest }: CalendarYearSelectProps) {
   const { className: selectClassName, controlProps } = useCalendarSelectShell(className);
+  const recipe = calendarSelectWrapperVariants();
 
   return (
-    <div
-      className={cn(calendarYearSelectWrapperVariants())}
-      data-part="year-select-wrapper"
-      data-scope="calendar"
-    >
+    <div className={recipe.base()} data-part="year-select-wrapper" data-scope="calendar">
       <CalendarPrimitive.YearSelect {...rest} {...controlProps} className={selectClassName} />
-      <CaretDownIcon
-        className={cn(calendarYearSelectIconVariants())}
-        data-part="year-select-icon"
-        data-scope="calendar"
-      />
+      <CaretDownIcon className={recipe.icon()} data-part="year-select-icon" data-scope="calendar" />
     </div>
   );
 }
 
 export function CalendarMonthSelect({ className, ...rest }: CalendarMonthSelectProps) {
   const { className: selectClassName, controlProps } = useCalendarSelectShell(className);
+  const recipe = calendarSelectWrapperVariants();
 
   return (
-    <div
-      className={cn(calendarMonthSelectWrapperVariants())}
-      data-part="month-select-wrapper"
-      data-scope="calendar"
-    >
+    <div className={recipe.base()} data-part="month-select-wrapper" data-scope="calendar">
       <CalendarPrimitive.MonthSelect {...rest} {...controlProps} className={selectClassName} />
       <CaretDownIcon
-        className={cn(calendarMonthSelectIconVariants())}
+        className={recipe.icon()}
         data-part="month-select-icon"
         data-scope="calendar"
       />
@@ -385,16 +371,15 @@ export function CalendarTableCell({
   className,
   ...rest
 }: CalendarTableCellProps) {
+  const recipe = calendarTableCellVariants();
+
   return (
     <CalendarPrimitive.TableCell
-      className={cn(calendarTableCellVariants())}
+      className={recipe.base()}
       value={value}
       visibleRange={visibleRange}
     >
-      <CalendarPrimitive.TableCellTrigger
-        {...rest}
-        className={cn(calendarTableCellTriggerVariants(), className)}
-      />
+      <CalendarPrimitive.TableCellTrigger {...rest} className={recipe.trigger({ className })} />
     </CalendarPrimitive.TableCell>
   );
 }

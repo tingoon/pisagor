@@ -4,7 +4,6 @@ import {
   marqueeEdgeVariants,
   marqueeItemVariants,
   marqueeVariants,
-  marqueeViewportVariants,
 } from "@pisagor/styles/ui/marquee";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
@@ -76,9 +75,11 @@ export function MarqueeRoot({
 MarqueeRoot.displayName = "Marquee.Root";
 
 export function MarqueeContent({ className, ...rest }: MarqueeContentProps) {
+  const recipe = marqueeContentVariants();
+
   return (
-    <MarqueePrimitive.Viewport className={marqueeViewportVariants()}>
-      <MarqueePrimitive.Content {...rest} className={cn(marqueeContentVariants(), className)} />
+    <MarqueePrimitive.Viewport className={recipe.viewport()}>
+      <MarqueePrimitive.Content {...rest} className={recipe.base({ className })} />
     </MarqueePrimitive.Viewport>
   );
 }

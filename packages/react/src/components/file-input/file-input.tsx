@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { fileInputControlVariants, fileInputInlineVariants } from "@pisagor/styles/ui/file-input";
+import { fileInputVariants } from "@pisagor/styles/ui/file-input";
 import type { FormControlGroupShellVariantProps } from "@pisagor/styles/ui/form-control";
 import { cn } from "@pisagor/utils";
 import { type ChangeEventHandler, type ComponentProps, useRef, useState } from "react";
@@ -85,6 +85,7 @@ export function FileInput({
   const controlProps = formControlShellProps(resolved);
   const inputRef = useRef<HTMLInputElement>(null);
   const [fileLabel, setFileLabel] = useState<string>();
+  const recipe = fileInputVariants();
 
   const setRefs = (node: HTMLInputElement | null) => {
     inputRef.current = node;
@@ -127,7 +128,7 @@ export function FileInput({
         accept={accept}
         aria-invalid={invalid || undefined}
         capture={capture}
-        className={fileInputControlVariants()}
+        className={recipe.control()}
         data-invalid={invalid || undefined}
         data-part="control"
         data-scope="file-input"
@@ -145,10 +146,7 @@ export function FileInput({
           {browseLabel}
         </InputGroupButton>
       </InputGroupAddon>
-      <InputGroupText
-        className={fileInputInlineVariants()}
-        onClick={disabled ? undefined : openPicker}
-      >
+      <InputGroupText className={recipe.label()} onClick={disabled ? undefined : openPicker}>
         {fileLabel ?? placeholder}
       </InputGroupText>
     </ark.div>
