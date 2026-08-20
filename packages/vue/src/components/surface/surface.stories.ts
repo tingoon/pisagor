@@ -1,6 +1,6 @@
 import { Checkbox, Field, Input, Select, Surface, Switch, Textarea } from "@pisagor/vue";
 import { defineComponent } from "vue";
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 
 const FormControlsDemo = defineComponent({
   components: { Checkbox, Field, Input, Select, Switch, Textarea },

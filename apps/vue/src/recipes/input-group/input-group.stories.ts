@@ -1,5 +1,5 @@
 import { InputGroup } from "@pisagor/vue";
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 import { CodeEditorInput } from "./code-editor-input";
 import { InputGroupWithButton } from "./input-group-with-button";
 import { InputGroupWithInnerLabel } from "./input-group-with-inner-label";

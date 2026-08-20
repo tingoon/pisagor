@@ -13,7 +13,7 @@ import {
   TextUnderlineIcon,
 } from "@phosphor-icons/react";
 import { Button, ButtonGroup } from "@pisagor/react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: ButtonGroup,

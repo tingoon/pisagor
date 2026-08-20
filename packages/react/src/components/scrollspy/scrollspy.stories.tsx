@@ -1,6 +1,6 @@
 import { Button, ScrollArea, Scrollspy } from "@pisagor/react";
 import { useRef } from "react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Scrollspy,

@@ -1,5 +1,5 @@
 import { fn } from "storybook/test";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 import { RichTextEditorField } from "./rich-text-editor-field";
 
 const meta = preview.meta({

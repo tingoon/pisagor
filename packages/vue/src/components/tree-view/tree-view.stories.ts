@@ -14,7 +14,7 @@ import {
 import type { TreeNodeType } from "@pisagor/vue";
 import { ContextMenu, createFileIcons, createTreeCollection, TreeView } from "@pisagor/vue";
 import { h, ref, shallowRef, type VNode } from "vue";
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 
 type ArkPart = Parameters<typeof h>[0];
 

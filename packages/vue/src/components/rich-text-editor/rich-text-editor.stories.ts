@@ -1,6 +1,6 @@
 import { RichTextEditor } from "@pisagor/vue/rich-text-editor";
 import { ref } from "vue";
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: RichTextEditor,

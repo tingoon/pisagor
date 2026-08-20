@@ -12,7 +12,7 @@ import {
 import { Button, Field, Input, Item, Kbd, Listbox, Popover, Separator } from "@pisagor/react";
 import type { CSSProperties } from "react";
 import { useCallback, useState } from "react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Listbox,

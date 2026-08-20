@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 import { FormGrid as FormGridRecipe } from "./form-grid";
 import { FormSection as FormSectionRecipe } from "./form-section";
 import { FormSectionTextarea as FormSectionTextareaRecipe } from "./form-section-textarea";

@@ -8,7 +8,7 @@ import {
 } from "@phosphor-icons/vue";
 import { Alert, Button } from "@pisagor/vue";
 import { h } from "vue";
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Alert,

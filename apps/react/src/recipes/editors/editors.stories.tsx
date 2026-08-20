@@ -1,4 +1,4 @@
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 import { EditableUserCard as EditableUserCardRecipe } from "./editable-user-card";
 import { IdeLayout as IdeLayoutRecipe } from "./ide-layout";
 import { RichTextToolbar as RichTextToolbarRecipe } from "./rich-text-toolbar";

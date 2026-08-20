@@ -1,4 +1,4 @@
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 import { TableBulkActions } from "./table-bulk-actions";
 import { TablePagination } from "./table-pagination";
 import { TableRowMenu } from "./table-row-menu";

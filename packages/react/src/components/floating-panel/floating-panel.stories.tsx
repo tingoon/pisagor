@@ -9,7 +9,7 @@ import {
 } from "@phosphor-icons/react";
 import { Button, Field, FloatingPanel, NumberInput, Select } from "@pisagor/react";
 import { useState } from "react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: FloatingPanel,

@@ -1,4 +1,4 @@
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 import { LoginCard } from "./login-card";
 import { LoginCardCustomSpacing } from "./login-card-custom-spacing";
 import { ProductCard } from "./product-card";

@@ -1,7 +1,7 @@
 import { PhMinus, PhPlus } from "@phosphor-icons/vue";
 import { Button, CircularProgress } from "@pisagor/vue";
 import { onMounted, ref } from "vue";
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: CircularProgress,

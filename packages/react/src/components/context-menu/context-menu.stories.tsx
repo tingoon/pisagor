@@ -11,7 +11,7 @@ import {
   TrashIcon,
 } from "@phosphor-icons/react";
 import { ContextMenu } from "@pisagor/react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: ContextMenu,

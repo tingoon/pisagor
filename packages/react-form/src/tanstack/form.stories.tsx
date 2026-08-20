@@ -2,7 +2,7 @@ import type { DatePickerProps } from "@pisagor/react";
 import { parseDate } from "@pisagor/react";
 import { useAppForm } from "@pisagor/react-form/tanstack";
 import { Fragment } from "react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 type DatePickerValue = NonNullable<DatePickerProps["value"]>;
 

@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 import { AvatarGroupOverflow as AvatarGroupOverflowRecipe } from "./avatar-group-overflow";
 import { ItemPicker as ItemPickerRecipe } from "./item-picker";
 import { MenuDialog as MenuDialogRecipe } from "./menu-dialog";

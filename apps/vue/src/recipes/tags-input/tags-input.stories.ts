@@ -1,4 +1,4 @@
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 import { TagsWithCombobox } from "./tags-with-combobox";
 
 const meta = preview.meta({

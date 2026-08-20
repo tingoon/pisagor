@@ -1,7 +1,7 @@
 import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
 import { Pagination } from "@pisagor/react";
 import { useState } from "react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Pagination,

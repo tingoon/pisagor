@@ -1,6 +1,6 @@
 import { PlusIcon } from "@phosphor-icons/react";
 import { Status } from "@pisagor/react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Status,

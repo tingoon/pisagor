@@ -1,7 +1,7 @@
 import { PhTextB, PhTextItalic, PhTextUnderline } from "@phosphor-icons/vue";
 import { Toggle } from "@pisagor/vue";
 import { ref } from "vue";
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Toggle,

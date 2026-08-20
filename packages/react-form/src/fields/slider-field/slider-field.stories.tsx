@@ -1,5 +1,5 @@
 import { fn } from "storybook/test";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 import { SliderField } from "./slider-field";
 
 const meta = preview.meta({

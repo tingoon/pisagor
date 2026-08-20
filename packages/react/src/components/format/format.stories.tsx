@@ -1,5 +1,5 @@
 import { Format } from "@pisagor/react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Format.Number,

@@ -1,7 +1,7 @@
 import { PhGear, PhShield, PhUser } from "@phosphor-icons/vue";
 import { Button, Tabs } from "@pisagor/vue";
 import { ref } from "vue";
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Tabs,

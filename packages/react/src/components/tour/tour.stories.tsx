@@ -3,7 +3,7 @@ import { KeyboardIcon, PlusIcon } from "@phosphor-icons/react";
 import type { TourStepType } from "@pisagor/react";
 import { Button, Checkbox, Field, Input, Tour, useTourContext } from "@pisagor/react";
 import { useRef, useState } from "react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Tour,

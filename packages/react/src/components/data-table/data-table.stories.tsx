@@ -7,7 +7,7 @@ import {
   type SortingState,
 } from "@tanstack/react-table";
 import { useMemo, useState } from "react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: DataTable,

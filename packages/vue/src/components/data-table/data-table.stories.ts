@@ -7,7 +7,7 @@ import {
   type SortingState,
 } from "@tanstack/vue-table";
 import { computed, defineComponent, h, ref } from "vue";
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: DataTable,

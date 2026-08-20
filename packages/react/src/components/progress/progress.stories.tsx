@@ -1,7 +1,7 @@
 import { MinusIcon, PlusIcon } from "@phosphor-icons/react";
 import { Button, ButtonGroup, Field, Progress } from "@pisagor/react";
 import { useEffect, useState } from "react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Progress,

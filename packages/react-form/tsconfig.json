@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "paths": {
-      "#/react/*": ["../../apps/react/.storybook/*"]
+      "#/storybook/*": ["../../apps/react/.storybook/*"]
     }
   },
   "extends": "@pisagor/tsconfig/react-stories",

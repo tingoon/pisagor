@@ -1,6 +1,6 @@
 import { PhInfo } from "@phosphor-icons/vue";
 import { Button, DataList, Popover } from "@pisagor/vue";
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: DataList,

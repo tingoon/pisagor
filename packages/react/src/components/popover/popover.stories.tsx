@@ -1,5 +1,5 @@
 import { Button, Field, Input, Popover } from "@pisagor/react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Popover,

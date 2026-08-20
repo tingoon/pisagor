@@ -1,7 +1,7 @@
 import { useHighlight } from "@ark-ui/vue/highlight";
 import { Highlight, Input } from "@pisagor/vue";
 import { ref } from "vue";
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Highlight,

@@ -1,6 +1,6 @@
 import { FloppyDiskIcon } from "@phosphor-icons/react";
 import { Button, Kbd, Tooltip } from "@pisagor/react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Kbd,

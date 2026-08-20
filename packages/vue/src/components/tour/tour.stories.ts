@@ -3,7 +3,7 @@ import { PhKeyboard, PhPlus } from "@phosphor-icons/vue";
 import type { TourStepType } from "@pisagor/vue";
 import { Button, Checkbox, Field, Input, Tour, useTourContext } from "@pisagor/vue";
 import { defineComponent, h, ref, toValue } from "vue";
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Tour,

@@ -2,7 +2,7 @@ import { buttonVariants } from "@pisagor/styles/ui/button";
 import { cn } from "@pisagor/utils";
 import { Drawer, Field, Input } from "@pisagor/vue";
 import { h } from "vue";
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 import { outlineButtonClass } from "../../internal/story-button";
 
 function defaultButtonClass(className?: string) {

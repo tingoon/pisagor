@@ -1,6 +1,6 @@
 import { Chart, type ChartConfig } from "@pisagor/react/charts";
 import { Bar, BarChart, CartesianGrid, XAxis } from "recharts";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Chart,

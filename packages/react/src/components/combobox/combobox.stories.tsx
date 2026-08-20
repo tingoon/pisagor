@@ -2,7 +2,7 @@ import { useFilter, useListCollection } from "@ark-ui/react";
 import { AppleLogoIcon } from "@phosphor-icons/react";
 import { Combobox, InputGroup } from "@pisagor/react";
 import { useState } from "react";
-import preview, { SurfaceDecorator } from "#/react/preview";
+import preview, { SurfaceDecorator } from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Combobox,

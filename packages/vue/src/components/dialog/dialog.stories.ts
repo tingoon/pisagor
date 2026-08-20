@@ -2,7 +2,7 @@ import { buttonVariants } from "@pisagor/styles/ui/button";
 import { cn } from "@pisagor/utils";
 import { Dialog, Field, Input, Select } from "@pisagor/vue";
 import { h } from "vue";
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 import { outlineButtonClass } from "../../internal/story-button";
 
 const meta = preview.meta({

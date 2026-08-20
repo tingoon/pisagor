@@ -1,4 +1,4 @@
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 import { AvatarGroupOverflow } from "./avatar-group-overflow";
 import { ItemPicker } from "./item-picker";
 import { MenuDialog } from "./menu-dialog";

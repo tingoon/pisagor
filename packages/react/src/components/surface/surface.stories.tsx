@@ -1,6 +1,6 @@
 import { createListCollection } from "@ark-ui/react";
 import { Checkbox, Field, Input, Select, Surface, Switch, Textarea } from "@pisagor/react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 const selectCollection = createListCollection({
   items: ["Design", "Engineering", "Marketing"],

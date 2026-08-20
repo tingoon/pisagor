@@ -7,7 +7,7 @@ import {
   WarningIcon,
 } from "@phosphor-icons/react";
 import { Alert, Button } from "@pisagor/react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Alert,

@@ -1,5 +1,5 @@
 import { fn } from "storybook/test";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 import { PasswordField } from "./password-field";
 
 const meta = preview.meta({

@@ -1,5 +1,5 @@
 import { fn } from "storybook/test";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 import { RadioGroupField } from "./radio-group-field";
 
 const meta = preview.meta({

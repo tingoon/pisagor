@@ -1,6 +1,6 @@
 import { Button, Toolbar } from "@pisagor/vue";
 import { Fragment, h } from "vue";
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Toolbar,

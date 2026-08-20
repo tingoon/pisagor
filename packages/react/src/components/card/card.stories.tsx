@@ -1,6 +1,6 @@
 import { CurrencyDollarIcon } from "@phosphor-icons/react";
 import { Button, Card } from "@pisagor/react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Card,

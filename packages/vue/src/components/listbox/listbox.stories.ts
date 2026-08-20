@@ -14,7 +14,7 @@ import {
 } from "@phosphor-icons/vue";
 import { Button, Field, Input, Item, Kbd, Listbox, Popover, Separator } from "@pisagor/vue";
 import { computed, h, ref } from "vue";
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 
 type ArkPart = Parameters<typeof h>[0];
 

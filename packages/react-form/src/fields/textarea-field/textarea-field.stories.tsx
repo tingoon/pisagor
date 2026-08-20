@@ -1,5 +1,5 @@
 import { fn } from "storybook/test";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 import { TextareaField } from "./textarea-field";
 
 const meta = preview.meta({

@@ -1,4 +1,4 @@
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 import { SearchFieldButtonGroup } from "./search-field-button-group";
 import { SearchFieldInline } from "./search-field-inline";
 

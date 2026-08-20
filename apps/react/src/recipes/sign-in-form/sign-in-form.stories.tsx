@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 import { SignInForm } from "./sign-in-form";
 
 const meta = preview.meta({

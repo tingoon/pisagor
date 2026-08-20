@@ -7,7 +7,7 @@ import {
   UserIcon,
 } from "@phosphor-icons/react";
 import { Menu } from "@pisagor/react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Menu,

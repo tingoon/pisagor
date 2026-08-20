@@ -1,7 +1,7 @@
 import { PhMoon, PhSun } from "@phosphor-icons/vue";
 import { Button, Swap } from "@pisagor/vue";
 import { h, reactive } from "vue";
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Swap,

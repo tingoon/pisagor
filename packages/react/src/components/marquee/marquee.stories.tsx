@@ -10,7 +10,7 @@ import {
   StackIcon,
 } from "@phosphor-icons/react";
 import { Card, Marquee } from "@pisagor/react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 const marqueeIcons: Icon[] = [
   GlobeIcon,

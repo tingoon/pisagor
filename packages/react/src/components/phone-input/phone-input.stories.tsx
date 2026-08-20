@@ -1,7 +1,7 @@
 import { Field } from "@pisagor/react";
 import { PhoneInput } from "@pisagor/react/phone-input";
 import { useState } from "react";
-import preview, { SurfaceDecorator } from "#/react/preview";
+import preview, { SurfaceDecorator } from "#/storybook/preview";
 
 const meta = preview.meta({
   component: PhoneInput,

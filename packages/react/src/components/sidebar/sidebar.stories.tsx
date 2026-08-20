@@ -1,6 +1,6 @@
 import { HouseIcon, MagnifyingGlassIcon, UserIcon } from "@phosphor-icons/react";
 import { Button, Sidebar } from "@pisagor/react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Sidebar.Provider,

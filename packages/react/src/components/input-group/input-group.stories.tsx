@@ -9,7 +9,7 @@ import {
   PlusIcon,
 } from "@phosphor-icons/react";
 import { Badge, Button, InputGroup, Kbd, Spinner } from "@pisagor/react";
-import preview, { SurfaceDecorator } from "#/react/preview";
+import preview, { SurfaceDecorator } from "#/storybook/preview";
 
 const meta = preview.meta({
   component: InputGroup,

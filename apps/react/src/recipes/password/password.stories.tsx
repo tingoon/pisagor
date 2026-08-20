@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 import { PasswordStrength } from "./password-strength";
 
 const meta = preview.meta({

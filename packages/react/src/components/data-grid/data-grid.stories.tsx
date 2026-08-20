@@ -44,7 +44,7 @@ import {
   type VisibilityState,
 } from "@tanstack/react-table";
 import { Fragment, type ReactNode, useEffect, useMemo, useState } from "react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: DataGrid,

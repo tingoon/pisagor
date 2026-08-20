@@ -1,7 +1,7 @@
 import { PhArrowUpRight, PhCheckCircle, PhSparkle, PhWarning } from "@phosphor-icons/vue";
 import { Announcement, Badge } from "@pisagor/vue";
 import { h } from "vue";
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Announcement,

@@ -1,6 +1,6 @@
 import { AlertDialog } from "@pisagor/vue";
 import { h } from "vue";
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 import { outlineButtonClass } from "../../internal/story-button";
 
 const meta = preview.meta({

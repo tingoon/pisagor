@@ -2,7 +2,7 @@
   "compilerOptions": {
     "noUncheckedSideEffectImports": false,
     "paths": {
-      "#/vue/*": ["./.storybook/*"]
+      "#/storybook/*": ["./.storybook/*"]
     }
   },
   "extends": "@pisagor/tsconfig/vue-vite",

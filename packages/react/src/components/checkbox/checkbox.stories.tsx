@@ -1,7 +1,7 @@
 import type { CheckboxCheckedState } from "@ark-ui/react";
 import { Checkbox, Field } from "@pisagor/react";
 import { useState } from "react";
-import preview, { SurfaceDecorator } from "#/react/preview";
+import preview, { SurfaceDecorator } from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Checkbox,

@@ -1,7 +1,7 @@
 import { PhSparkle } from "@phosphor-icons/vue";
 import { Button, Clipboard, Surface } from "@pisagor/vue";
 import { h, ref } from "vue";
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Clipboard,

@@ -1,7 +1,7 @@
 import { cn } from "@pisagor/utils";
 import { Resizable } from "@pisagor/vue";
 import { ref } from "vue";
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Resizable,

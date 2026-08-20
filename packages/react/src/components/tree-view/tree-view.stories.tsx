@@ -14,7 +14,7 @@ import {
 import type { NodeProviderProps, TreeNodeType } from "@pisagor/react";
 import { ContextMenu, createFileIcons, createTreeCollection, TreeView } from "@pisagor/react";
 import { useState } from "react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: TreeView,

@@ -1,4 +1,4 @@
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 import { EditableUserCard } from "./editable-user-card";
 import { IdeLayout } from "./ide-layout";
 import { RichTextToolbar } from "./rich-text-toolbar";

@@ -1,4 +1,4 @@
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 import { StandardAppShell } from "./standard-app-shell";
 
 const meta = preview.meta({

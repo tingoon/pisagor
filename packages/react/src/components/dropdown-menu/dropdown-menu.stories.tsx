@@ -20,7 +20,7 @@ import {
   UserIcon,
 } from "@phosphor-icons/react";
 import { Button, DropdownMenu } from "@pisagor/react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: DropdownMenu,

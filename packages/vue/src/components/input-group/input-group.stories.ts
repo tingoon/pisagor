@@ -1,7 +1,7 @@
 import { PhAt, PhCopy, PhEye, PhFileCode, PhFunnel, PhMagnifyingGlass } from "@phosphor-icons/vue";
 import { Badge, InputGroup, Kbd, Spinner, Surface } from "@pisagor/vue";
 import { h } from "vue";
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: InputGroup,

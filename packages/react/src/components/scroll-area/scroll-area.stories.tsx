@@ -1,6 +1,6 @@
 import { ScrollArea, Separator } from "@pisagor/react";
 import { Fragment } from "react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: ScrollArea,

@@ -1,7 +1,7 @@
 import { useHighlight } from "@ark-ui/react/highlight";
 import { Highlight, Input } from "@pisagor/react";
 import { Fragment, useState } from "react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Highlight,

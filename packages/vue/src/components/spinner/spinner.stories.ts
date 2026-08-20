@@ -1,5 +1,5 @@
 import { Spinner } from "@pisagor/vue";
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Spinner,

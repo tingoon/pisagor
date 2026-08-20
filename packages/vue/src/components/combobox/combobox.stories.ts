@@ -3,7 +3,7 @@ import { useFilter } from "@ark-ui/vue/locale";
 import { PhAppleLogo } from "@phosphor-icons/vue";
 import { Combobox, InputGroup, Surface } from "@pisagor/vue";
 import { computed, ref } from "vue";
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Combobox,

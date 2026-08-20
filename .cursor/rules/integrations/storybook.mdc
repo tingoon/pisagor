@@ -14,7 +14,7 @@ Storybook **10**, CSF. React uses `@storybook/react-vite` (`.stories.tsx`); Vue 
 
 ## React setup
 
-- **Preview:** `import preview from "#/react/preview"` — `#/react/*` is configured in `apps/react/tsconfig.json`. Do not use `@/storybook/…`.
+- **Preview:** `import preview from "#/storybook/preview"` — `#/storybook/*` maps to the runner’s `.storybook` (React → `apps/react/.storybook`, Vue → `apps/vue/.storybook`). Do not use `@/storybook/…`.
 - **Meta:** `const meta = preview.meta({ … })` — no default export; stories via `meta.story({ … })`.
 - **Global decorator:** `apps/react/.storybook/decorators/app-decorator.tsx` (theme, app `Provider`, padding). Per-story decorators only when a story needs extra context (e.g. mounting a portal host or `<Toaster />`).
 - **Autodocs:** enable in `apps/react/.storybook/preview.tsx` (`tags: ["autodocs"]`) — do not disable per file.
@@ -23,7 +23,7 @@ Storybook **10**, CSF. React uses `@storybook/react-vite` (`.stories.tsx`); Vue 
 
 | What | Path |
 | ---- | ---- |
-| Preview | `#/react/preview` |
+| Preview | `#/storybook/preview` |
 | UI components | `@pisagor/react` (light) or `@pisagor/react/<heavy>` |
 | Hooks | `@pisagor/react/hooks` or `@pisagor/react-hooks` |
 | Utils | `@pisagor/utils` |
@@ -35,7 +35,7 @@ Storybook **10**, CSF. React uses `@storybook/react-vite` (`.stories.tsx`); Vue 
 
 Prefer `@pisagor/react` for light UI imports in stories (including the component under test). Heavy components (`data-grid`, `charts`, `rich-text-editor`, `phone-input`) stay on dedicated subpaths.
 
-`@pisagor/react`, `@pisagor/react-hooks`, and `@pisagor/utils` resolve via workspace package exports (same as apps). Runner-only alias `#/react/*` lives in `apps/react/tsconfig.json`, each package's `tsconfig.json`, and `apps/react/vite.config.ts`; Vite reads it via `resolve.alias` and `tsconfigPaths`. Story files are type-checked by `react` and the owning package `tsconfig.json`:
+`@pisagor/react`, `@pisagor/react-hooks`, and `@pisagor/utils` resolve via workspace package exports (same as apps). Runner-only alias `#/storybook/*` lives in each runner’s `tsconfig.json` and each package’s `tsconfig.json`; Vite reads it via `resolve.tsconfigPaths`. Story files are type-checked by the runner and the owning package `tsconfig.json`:
 
 | Consumer | Extends |
 | -------- | ------- |
@@ -47,6 +47,7 @@ Prefer `@pisagor/react` for light UI imports in stories (including the component
 ## Vue setup
 
 - Stories: CSF default export `meta` + named story exports (`.stories.ts`).
+- Preview: `import preview from "#/storybook/preview"` (maps to `apps/vue/.storybook`).
 - Preview / decorators: `apps/vue/.storybook/`.
 - Import components as `@pisagor/vue` (light) or `@pisagor/vue/<heavy>`.
 

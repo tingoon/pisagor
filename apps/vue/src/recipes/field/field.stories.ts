@@ -1,4 +1,4 @@
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 import { FormGrid } from "./form-grid";
 import { FormSection } from "./form-section";
 import { FormSectionTextarea } from "./form-section-textarea";

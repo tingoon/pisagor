@@ -1,7 +1,7 @@
 import { SparkleIcon } from "@phosphor-icons/react";
 import { Button, Clipboard } from "@pisagor/react";
 import { useState } from "react";
-import preview, { SurfaceDecorator } from "#/react/preview";
+import preview, { SurfaceDecorator } from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Clipboard,

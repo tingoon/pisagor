@@ -1,6 +1,6 @@
 import { ArrowUpRightIcon, PlusCircleIcon } from "@phosphor-icons/react";
 import { Badge, Spinner } from "@pisagor/react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Badge,

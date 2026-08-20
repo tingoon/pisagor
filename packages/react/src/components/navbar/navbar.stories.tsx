@@ -6,7 +6,7 @@ import {
   UserIcon,
 } from "@phosphor-icons/react";
 import { Avatar, Button, Navbar, NavigationMenu, Sidebar } from "@pisagor/react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Navbar,

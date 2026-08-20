@@ -1,7 +1,7 @@
 import { PhBell, PhDatabase, PhHouse, PhMagnifyingGlass, PhUser } from "@phosphor-icons/vue";
 import { Avatar, Button, Navbar, Sidebar } from "@pisagor/vue";
 import { h } from "vue";
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 
 type ArkPart = Parameters<typeof h>[0];
 

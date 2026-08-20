@@ -1,7 +1,7 @@
 import { PhWarning } from "@phosphor-icons/vue";
 import { Announcement, AppShell, Badge, Button, useAppShell } from "@pisagor/vue";
 import { defineComponent, h, ref, type VNodeChild } from "vue";
-import preview from "#/vue/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: AppShell,

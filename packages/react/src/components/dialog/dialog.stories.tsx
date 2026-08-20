@@ -1,6 +1,6 @@
 import { Button, Dialog, Field, Input, Select } from "@pisagor/react";
 import { useRef } from "react";
-import preview from "#/react/preview";
+import preview from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Dialog,
