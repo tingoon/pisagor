@@ -10,7 +10,7 @@ type NavbarClassNames = VariantClassNames<typeof navbarVariants>;
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Components
+// #region Parts
 export const NavbarRoot = defineComponent({
   inheritAttrs: false,
   name: "NavbarRoot",

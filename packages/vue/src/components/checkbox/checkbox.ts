@@ -23,7 +23,7 @@ export interface CheckboxProps extends WithTestId {
   variant?: FormControlVariant;
 }
 
-// #region Components
+// #region Parts
 export const CheckboxGroup = defineComponent({
   emits: {
     valueChange: (_value: string[]) => true,

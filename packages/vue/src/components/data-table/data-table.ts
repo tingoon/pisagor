@@ -38,7 +38,6 @@ export type DataTableProps<TData = unknown> = Omit<TableOptions<TData>, "getCore
   class?: unknown;
   testId?: string;
 };
-
 // #endregion
 
 // #region Context + Hooks
@@ -111,7 +110,7 @@ export function renderDataTableCell<TData>(cell: Cell<TData, unknown>): VNodeChi
 }
 // #endregion
 
-// #region Components
+// #region Parts
 export const DataTableRoot = defineComponent({
   inheritAttrs: false,
   name: "DataTableRoot",

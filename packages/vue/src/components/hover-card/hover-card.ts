@@ -40,7 +40,7 @@ function hoverCardTeleport(content: ReturnType<typeof h> | ReturnType<typeof h>[
   return h(Teleport, { to: "body" }, () => content);
 }
 
-// #region Components
+// #region Parts
 export const HoverCardRoot = defineComponent({
   inheritAttrs: false,
   name: "HoverCardRoot",

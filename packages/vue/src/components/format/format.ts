@@ -7,10 +7,7 @@ import { defineComponent, h } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Types
-// #endregion
-
-// #region Components
+// #region Parts
 export const FormatByte = defineComponent({
   inheritAttrs: false,
   name: "FormatByte",

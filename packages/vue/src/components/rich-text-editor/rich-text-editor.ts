@@ -101,7 +101,7 @@ const richTextEditorRootProps = {
   variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
 };
 
-// #region Components
+// #region Parts
 export const RichTextEditorRoot = defineComponent({
   inheritAttrs: false,
   name: "RichTextEditorRoot",

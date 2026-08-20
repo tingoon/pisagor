@@ -19,7 +19,7 @@ export interface ButtonGroupProps extends WithTestId {
 }
 // #endregion
 
-// #region Components
+// #region Parts
 export const ButtonGroupRoot = defineComponent({
   inheritAttrs: false,
   name: "ButtonGroupRoot",

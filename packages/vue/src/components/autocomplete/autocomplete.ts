@@ -33,7 +33,7 @@ export interface AutocompleteProps extends Omit<AutocompleteRootProps, "children
 }
 // #endregion
 
-// #region Components
+// #region Parts
 type ArkPart = Parameters<typeof h>[0];
 
 export const AutocompleteRoot = defineComponent({

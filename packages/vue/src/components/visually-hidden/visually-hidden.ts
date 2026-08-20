@@ -12,7 +12,7 @@ export interface VisuallyHiddenProps extends WithTestId {
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Component
+// #region Part
 /**
  * Hides content visually while keeping it available to assistive technology.
  */

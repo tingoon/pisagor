@@ -40,7 +40,7 @@ export interface FieldLabelProps {
 }
 // #endregion
 
-// #region Components
+// #region Parts
 export const FieldRoot = defineComponent({
   inheritAttrs: false,
   name: "FieldRoot",

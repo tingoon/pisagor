@@ -60,7 +60,6 @@ export interface ChartTooltipContentProps extends WithTestId {
   nameKey?: string;
   payload?: unknown[];
 }
-
 // #endregion
 
 // #region Context
@@ -77,7 +76,6 @@ function useChart(): ChartContextValue {
   // `createContext(..., { strict: true })` ensures this is never undefined at runtime.
   return useChartContext() as ChartContextValue;
 }
-
 // #endregion
 
 // #region Helpers
@@ -117,10 +115,9 @@ function getPayloadConfig(config: ChartConfig, item: ChartPayloadEntry, key: str
   if (name && name in config) return config[name];
   return undefined;
 }
-
 // #endregion
 
-// #region Components
+// #region Parts
 export const ChartStyle = defineComponent({
   inheritAttrs: false,
   name: "ChartStyle",
@@ -461,5 +458,4 @@ export const Chart = Object.assign(ChartContainer, {
   Tooltip: ChartTooltip,
   TooltipContent: ChartTooltipContent,
 });
-
 // #endregion

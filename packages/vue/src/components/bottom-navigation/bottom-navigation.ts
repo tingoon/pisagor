@@ -12,7 +12,7 @@ import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Components
+// #region Parts
 export const BottomNavigationRoot = defineComponent({
   inheritAttrs: false,
   name: "BottomNavigationRoot",

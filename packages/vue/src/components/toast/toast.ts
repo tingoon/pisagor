@@ -49,7 +49,6 @@ export interface ToastItemProps extends WithTestId {
   actionTriggerProps?: Record<string, unknown>;
   closeTriggerProps?: Record<string, unknown>;
 }
-
 // #endregion
 
 // #region Constants
@@ -66,10 +65,9 @@ const TOAST_ICONS = {
   success: h(PhCheckCircle),
   warning: h(PhWarning),
 } as const;
-
 // #endregion
 
-// #region Components
+// #region Parts
 type ArkPart = Parameters<typeof h>[0];
 
 export const ToasterRoot = defineComponent({
@@ -233,5 +231,4 @@ export const ToastItem = defineComponent({
     };
   },
 });
-
 // #endregion

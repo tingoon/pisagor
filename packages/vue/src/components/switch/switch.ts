@@ -14,7 +14,7 @@ type SwitchClassNames = VariantClassNames<typeof switchVariants>;
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Component
+// #region Part
 export const Switch = defineComponent({
   emits: {
     checkedChange: (_details: { checked: boolean }) => true,

@@ -54,7 +54,7 @@ const [provideCircularSliderContext, , useCircularSliderContext] =
 
 const CLOCK_MARKER_ANGLES = [0, 60, 120, 180, 240, 300];
 
-// #region Components
+// #region Parts
 export const CircularSliderRoot = defineComponent({
   inheritAttrs: false,
   name: "CircularSliderRoot",

@@ -34,7 +34,7 @@ export interface TextareaProps extends WithTestId {
 }
 // #endregion
 
-// #region Component
+// #region Part
 export const Textarea = defineComponent({
   inheritAttrs: false,
   name: "PisagorTextarea",

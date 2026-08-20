@@ -27,7 +27,7 @@ function wrapDropdownMenuPart(
   return h(component, attrs as object, slots);
 }
 
-// #region Components
+// #region Parts
 export const ContextMenuRoot = defineComponent({
   inheritAttrs: false,
   name: "ContextMenuRoot",

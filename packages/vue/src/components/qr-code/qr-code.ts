@@ -17,7 +17,7 @@ export interface QrCodeRootProps extends WithTestId {
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Components
+// #region Parts
 export const QrCodeRoot = defineComponent({
   inheritAttrs: false,
   name: "QrCodeRoot",

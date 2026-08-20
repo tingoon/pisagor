@@ -23,7 +23,7 @@ export interface AvatarGroupProps extends WithTestId {
 }
 // #endregion
 
-// #region Components
+// #region Parts
 export const AvatarGroupRoot = defineComponent({
   inheritAttrs: false,
   name: "AvatarGroupRoot",

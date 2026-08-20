@@ -37,7 +37,7 @@ export interface InputGroupButtonProps extends Omit<ButtonProps, "size"> {
 }
 // #endregion
 
-// #region Components
+// #region Parts
 export const InputGroupRoot = defineComponent({
   inheritAttrs: false,
   name: "InputGroupRoot",

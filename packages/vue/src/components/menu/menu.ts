@@ -20,7 +20,7 @@ export interface MenuRootProps extends WithTestId {
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Components
+// #region Parts
 export const MenuRoot = defineComponent({
   inheritAttrs: false,
   name: "MenuRoot",

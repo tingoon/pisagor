@@ -58,7 +58,6 @@ export interface TreeViewProps extends WithTestId {
 export interface NodeProviderProps<T extends TreeNodeType = TreeNodeType> {
   value: T;
 }
-
 // #endregion
 
 // #region Context
@@ -67,7 +66,6 @@ const [provideTreeViewContext, useTreeViewContext] = createContext<TreeViewConte
   name: "TreeViewLocal",
   strict: false,
 });
-
 // #endregion
 
 // #region Helpers
@@ -86,10 +84,9 @@ const getFileExtension = (file: string) => {
   const name = file.includes(".") ? file.split(".").at(-1)?.toLowerCase() : null;
   return name ? `.${name}` : null;
 };
-
 // #endregion
 
-// #region Components
+// #region Parts
 type ArkPart = Parameters<typeof h>[0];
 
 export const TreeViewRoot = defineComponent({
@@ -434,5 +431,4 @@ export const TreeViewCheckbox = defineComponent({
       );
   },
 });
-
 // #endregion

@@ -54,7 +54,7 @@ const [provideDropdownMenuRoot, useDropdownMenuRoot] = createContext<{ testId?: 
 export { useDropdownMenuRoot };
 // #endregion
 
-// #region Components
+// #region Parts
 export const DropdownMenuRoot = defineComponent({
   inheritAttrs: false,
   name: "DropdownMenuRoot",

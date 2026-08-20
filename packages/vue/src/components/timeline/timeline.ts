@@ -33,10 +33,9 @@ export interface TimelineProps extends WithTestId {
   class?: unknown;
   items?: TimelinePresetItem[];
 }
-
 // #endregion
 
-// #region Components
+// #region Parts
 export const TimelineRoot = defineComponent({
   inheritAttrs: false,
   name: "TimelineRoot",

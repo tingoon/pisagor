@@ -59,7 +59,7 @@ interface CommandInputProps {
 }
 // #endregion
 
-// #region Components
+// #region Parts
 function commandTeleport(content: Array<ReturnType<typeof h>>) {
   return h(Teleport, { to: "body" }, () => content);
 }

@@ -75,7 +75,7 @@ function dialogTeleport(content: VNodeChild) {
   return h(Teleport, { to: "body" }, () => content);
 }
 
-// #region Components
+// #region Parts
 export const DialogRoot = defineComponent({
   inheritAttrs: false,
   name: "DialogRoot",

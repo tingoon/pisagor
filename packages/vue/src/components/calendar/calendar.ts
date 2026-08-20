@@ -71,7 +71,7 @@ export interface CalendarProps extends WithTestId {
 }
 // #endregion
 
-// #region Components
+// #region Parts
 function useCalendarSelectShell(className?: ClassValue) {
   const resolved = useFormControlVariant();
   const shellArgs = shellVariantArgs(resolved);

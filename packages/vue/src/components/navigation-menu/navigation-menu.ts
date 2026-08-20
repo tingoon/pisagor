@@ -10,7 +10,7 @@ type NavigationMenuClassNames = VariantClassNames<typeof navigationMenuVariants>
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Components
+// #region Parts
 export const NavigationMenuRoot = defineComponent({
   inheritAttrs: false,
   name: "NavigationMenuRoot",

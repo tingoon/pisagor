@@ -20,7 +20,7 @@ import {
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Components
+// #region Parts
 export const AlertDialogRoot = defineComponent({
   inheritAttrs: false,
   name: "AlertDialogRoot",

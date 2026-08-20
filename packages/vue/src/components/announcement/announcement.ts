@@ -24,7 +24,7 @@ export interface AnnouncementProps extends WithTestId {
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Components
+// #region Parts
 export const AnnouncementRoot = defineComponent({
   inheritAttrs: false,
   name: "AnnouncementRoot",

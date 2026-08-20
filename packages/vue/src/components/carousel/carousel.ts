@@ -25,7 +25,7 @@ export interface CarouselProps extends WithTestId {
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Components
+// #region Parts
 export const CarouselRoot = defineComponent({
   inheritAttrs: false,
   name: "CarouselRoot",
@@ -208,5 +208,4 @@ export const CarouselItem = defineComponent({
       });
   },
 });
-
 // #endregion

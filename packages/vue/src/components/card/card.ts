@@ -22,10 +22,9 @@ type ArkPart = Parameters<typeof h>[0];
 export interface CardRootProps extends WithTestId {
   class?: unknown;
 }
-
 // #endregion
 
-// #region Components
+// #region Parts
 export const CardRoot = defineComponent({
   inheritAttrs: false,
   name: "CardRoot",

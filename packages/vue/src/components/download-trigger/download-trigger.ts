@@ -13,7 +13,7 @@ export interface DownloadTriggerProps extends WithTestId {
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Component
+// #region Part
 export const DownloadTrigger = defineComponent({
   inheritAttrs: false,
   name: "PisagorDownloadTrigger",

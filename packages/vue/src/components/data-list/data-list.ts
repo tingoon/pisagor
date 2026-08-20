@@ -29,10 +29,9 @@ interface DataListRootProps extends WithTestId {
 export interface DataListProps extends Omit<DataListRootProps, "children"> {
   items?: DataListPresetItem[];
 }
-
 // #endregion
 
-// #region Components
+// #region Parts
 export const DataListRoot = defineComponent({
   inheritAttrs: false,
   name: "DataListRoot",

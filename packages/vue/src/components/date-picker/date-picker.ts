@@ -58,7 +58,7 @@ const [provideDatePickerRootContext, useDatePickerRoot] = createContext<{ testId
 });
 // #endregion
 
-// #region Components
+// #region Parts
 export const DatePickerRoot = defineComponent({
   inheritAttrs: false,
   name: "DatePicker",

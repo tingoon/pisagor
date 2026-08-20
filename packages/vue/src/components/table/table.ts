@@ -32,10 +32,9 @@ export interface TableProps extends WithTestId {
 }
 
 type ArkPart = Parameters<typeof h>[0];
-
 // #endregion
 
-// #region Components
+// #region Parts
 export const TableRoot = defineComponent({
   inheritAttrs: false,
   name: "TableRoot",

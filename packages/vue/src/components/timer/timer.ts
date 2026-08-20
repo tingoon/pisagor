@@ -27,10 +27,9 @@ export interface TimerRootProps extends WithTestId {
 }
 
 type ArkPart = Parameters<typeof h>[0];
-
 // #endregion
 
-// #region Components
+// #region Parts
 export const TimerRoot = defineComponent({
   inheritAttrs: false,
   name: "TimerRoot",
@@ -269,5 +268,4 @@ export const TimerPlay = defineComponent({
       timer.value.paused ? h(TimerResume, { ...attrs }, slots) : h(TimerStart, { ...attrs }, slots);
   },
 });
-
 // #endregion

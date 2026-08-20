@@ -35,7 +35,7 @@ export interface BreadcrumbProps extends BreadcrumbRootProps {
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Components
+// #region Parts
 export const BreadcrumbRoot = defineComponent({
   inheritAttrs: false,
   name: "BreadcrumbRoot",

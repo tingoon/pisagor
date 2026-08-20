@@ -31,10 +31,9 @@ export interface AvatarProps extends WithTestId {
   shape?: AvatarShape;
   class?: unknown;
 }
-
 // #endregion
 
-// #region Component
+// #region Part
 export const Avatar = defineComponent({
   inheritAttrs: false,
   name: "PisagorAvatar",

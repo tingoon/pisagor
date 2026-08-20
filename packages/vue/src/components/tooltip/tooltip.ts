@@ -33,7 +33,7 @@ function isTriggerHandle(
   return typeof children === "function";
 }
 
-// #region Component
+// #region Part
 export const Tooltip = defineComponent({
   inheritAttrs: false,
   name: "PisagorTooltip",

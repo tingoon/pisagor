@@ -23,7 +23,7 @@ export interface CircularProgressProps extends WithTestId {
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Components
+// #region Parts
 const CircularProgressTrack = defineComponent({
   inheritAttrs: false,
   name: "CircularProgressTrack",

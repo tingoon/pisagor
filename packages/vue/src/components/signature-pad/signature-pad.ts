@@ -60,7 +60,7 @@ export interface SignaturePadProps extends WithTestId {
 }
 // #endregion
 
-// #region Component
+// #region Part
 export const SignaturePad = defineComponent({
   inheritAttrs: false,
   name: "SignaturePad",

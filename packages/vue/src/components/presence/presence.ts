@@ -1,7 +1,7 @@
 import { Presence as PresencePrimitive } from "@ark-ui/vue/presence";
 import { defineComponent, h } from "vue";
 
-// #region Component
+// #region Part
 export const Presence = defineComponent({
   inheritAttrs: false,
   name: "PisagorPresence",

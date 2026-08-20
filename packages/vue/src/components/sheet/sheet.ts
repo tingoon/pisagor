@@ -33,7 +33,7 @@ function sheetTeleport(content: ReturnType<typeof h> | ReturnType<typeof h>[]) {
   return h(Teleport, { to: "body" }, () => content);
 }
 
-// #region Components
+// #region Parts
 export const SheetRoot = defineComponent({
   inheritAttrs: false,
   name: "SheetRoot",

@@ -19,7 +19,7 @@ export interface TabItem {
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Components
+// #region Parts
 export const TabsRoot = defineComponent({
   inheritAttrs: false,
   name: "TabsRoot",

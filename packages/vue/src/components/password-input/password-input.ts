@@ -41,7 +41,7 @@ export interface PasswordInputProps extends WithTestId {
 }
 // #endregion
 
-// #region Component
+// #region Part
 export const PasswordInput = defineComponent({
   inheritAttrs: false,
   name: "PasswordInput",

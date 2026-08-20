@@ -26,7 +26,7 @@ export interface JsonTreeViewProps extends WithTestId {
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Component
+// #region Part
 export const JsonTreeView = defineComponent({
   inheritAttrs: false,
   name: "PisagorJsonTreeView",

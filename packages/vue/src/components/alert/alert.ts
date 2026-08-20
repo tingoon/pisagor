@@ -35,7 +35,7 @@ const [provideAlertContext, , useAlertContextRef] = createContext<AlertContextVa
 });
 // #endregion
 
-// #region Components
+// #region Parts
 export const AlertRoot = defineComponent({
   inheritAttrs: false,
   name: "AlertRoot",

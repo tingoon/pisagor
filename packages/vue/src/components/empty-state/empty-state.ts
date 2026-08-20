@@ -19,7 +19,7 @@ export interface EmptyStateProps extends WithTestId {
 }
 // #endregion
 
-// #region Components
+// #region Parts
 export const EmptyStateRoot = defineComponent({
   inheritAttrs: false,
   name: "EmptyStateRoot",

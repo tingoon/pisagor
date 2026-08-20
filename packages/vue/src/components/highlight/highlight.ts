@@ -10,10 +10,9 @@ type ArkPart = Parameters<typeof h>[0];
 export interface HighlightProps extends WithTestId {
   class?: unknown;
 }
-
 // #endregion
 
-// #region Component
+// #region Part
 export const Highlight = defineComponent({
   inheritAttrs: false,
   name: "PisagorHighlight",

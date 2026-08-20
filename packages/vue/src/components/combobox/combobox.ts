@@ -80,7 +80,7 @@ export { useComboboxRoot };
 
 // #endregion
 
-// #region Components
+// #region Parts
 type ArkPart = Parameters<typeof h>[0];
 
 export const ComboboxContext = ComboboxPrimitive.Context;
@@ -468,5 +468,4 @@ export const ComboboxShorthand = defineComponent({
     };
   },
 });
-
 // #endregion

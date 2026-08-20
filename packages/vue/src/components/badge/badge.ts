@@ -24,7 +24,7 @@ export interface BadgeProps extends WithTestId {
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Component
+// #region Part
 export const Badge = defineComponent({
   inheritAttrs: false,
   name: "PisagorBadge",

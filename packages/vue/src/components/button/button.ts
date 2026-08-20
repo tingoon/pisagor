@@ -24,7 +24,7 @@ export interface ButtonProps extends ButtonVariantProps, WithTestId {
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Component
+// #region Part
 export const Button = defineComponent({
   inheritAttrs: false,
   name: "PisagorButton",

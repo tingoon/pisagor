@@ -12,7 +12,7 @@ import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Components
+// #region Parts
 export const CollapsibleRoot = defineComponent({
   inheritAttrs: false,
   name: "CollapsibleRoot",

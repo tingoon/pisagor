@@ -24,7 +24,7 @@ export type StepsProps = WithTestId;
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Components
+// #region Parts
 export const StepsRoot = defineComponent({
   inheritAttrs: false,
   name: "StepsRoot",
@@ -239,5 +239,4 @@ export const StepsNext = defineComponent({
     return () => h(StepsPrimitive.NextTrigger as ArkPart, { ...attrs }, slots);
   },
 });
-
 // #endregion

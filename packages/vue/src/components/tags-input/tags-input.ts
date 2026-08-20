@@ -53,10 +53,9 @@ export interface TagsInputItemProps {
   value: string;
   index: number;
 }
-
 // #endregion
 
-// #region Components
+// #region Parts
 export const TagsInputContext = TagsInputPrimitive.Context;
 
 export const TagsInputInput = defineComponent({
@@ -379,5 +378,4 @@ export const TagsInputRootProvider = defineComponent({
       );
   },
 });
-
 // #endregion

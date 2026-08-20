@@ -41,7 +41,7 @@ export interface ItemHeaderProps {
 }
 // #endregion
 
-// #region Components
+// #region Parts
 export const ItemGroup = defineComponent({
   inheritAttrs: false,
   name: "ItemGroup",

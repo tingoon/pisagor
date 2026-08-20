@@ -36,7 +36,7 @@ type ArkPart = Parameters<typeof h>[0];
 
 const SKIP_NAV_ID = "skip-nav-content";
 
-// #region Components
+// #region Parts
 export const SkipNavLink = defineComponent({
   inheritAttrs: false,
   name: "SkipNavLink",

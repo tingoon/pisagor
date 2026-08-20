@@ -17,10 +17,9 @@ export interface ProseProps extends WithTestId {
    */
   html?: string;
 }
-
 // #endregion
 
-// #region Component
+// #region Part
 export const Prose = defineComponent({
   inheritAttrs: false,
   name: "PisagorProse",

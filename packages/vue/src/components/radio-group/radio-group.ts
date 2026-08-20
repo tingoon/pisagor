@@ -48,7 +48,7 @@ export interface RadioGroupItemProps {
 }
 // #endregion
 
-// #region Components
+// #region Parts
 export const RadioGroupRoot = defineComponent({
   inheritAttrs: false,
   name: "RadioGroupRoot",

@@ -79,7 +79,6 @@ interface DataGridHeadProps {
    */
   filter?: boolean;
 }
-
 // #endregion
 
 // #region Context + Hooks
@@ -184,7 +183,7 @@ export function renderDataGridCell<TData>(cell: Cell<TData, unknown>): VNodeChil
 }
 // #endregion
 
-// #region Components
+// #region Parts
 export const DataGridRoot = defineComponent({
   inheritAttrs: false,
   name: "DataGridRoot",

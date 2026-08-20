@@ -90,7 +90,7 @@ export interface EditablePreviewProps {
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Components
+// #region Parts
 export const EditableRoot = defineComponent({
   inheritAttrs: false,
   name: "EditableRoot",

@@ -43,6 +43,7 @@ import { Button } from "../button";
 import { Sheet } from "../sheet";
 import { Tooltip, type TooltipProps } from "../tooltip";
 
+// #region Types
 type SidebarState = "expanded" | "collapsed";
 
 type SidebarPlacement = "left" | "right";
@@ -81,14 +82,18 @@ interface SidebarContextValue {
   placement: SidebarPlacement;
   collapsible: SidebarCollapsible;
 }
+// #endregion
 
+// #region Context
 const [provideSidebarContext, useSidebarContext] = createContext<SidebarContextValue>({
   name: "Sidebar",
   strict: false,
 });
 
 export const useSidebar = () => useSidebarContext();
+// #endregion
 
+// #region Helpers
 const SIDEBAR_STORAGE_KEY = "sidebar_state";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -134,7 +139,9 @@ function useIsMobile(breakpointPx = 768) {
 
   return isMobile;
 }
+// #endregion
 
+// #region Parts
 export const SidebarProvider = defineComponent({
   inheritAttrs: false,
   name: "SidebarProvider",
@@ -345,7 +352,6 @@ export const SidebarRoot = defineComponent({
   },
 });
 
-// #region Remaining Compound Components (minimal)
 export const SidebarContent = defineComponent({
   inheritAttrs: false,
   name: "SidebarContent",
@@ -785,7 +791,6 @@ export const SidebarInsetPlaceholder = defineComponent({
     return () => h("div", attrs, slots.default?.());
   },
 });
-
 // #endregion
 
 export { SidebarProvider as SidebarProviderRoot };

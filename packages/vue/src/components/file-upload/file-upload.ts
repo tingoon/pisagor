@@ -51,7 +51,7 @@ interface FileUploadDropzoneProps {
 }
 // #endregion
 
-// #region Components
+// #region Parts
 export const FileUploadRoot = defineComponent({
   inheritAttrs: false,
   name: "FileUpload",

@@ -43,6 +43,7 @@ export interface SegmentGroupItemProps {
 
 type ArkPart = Parameters<typeof h>[0];
 
+// #region Parts
 export const SegmentGroupRoot = defineComponent({
   inheritAttrs: false,
   name: "SegmentGroupRoot",
@@ -152,7 +153,9 @@ export const SegmentGroupIndicator = defineComponent({
       );
   },
 });
+// #endregion
 
+// #region Shorthand
 export const SegmentGroupShorthand = defineComponent({
   inheritAttrs: false,
   name: "SegmentGroup",
@@ -200,5 +203,4 @@ export const SegmentGroupShorthand = defineComponent({
       );
   },
 });
-
 // #endregion

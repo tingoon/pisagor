@@ -57,7 +57,6 @@ export interface SortableItemProps {
 export interface SortableHandleProps {
   class?: unknown;
 }
-
 // #endregion
 
 // #region Context
@@ -68,7 +67,6 @@ const [provideSortableItemContext, useSortableItemContext] =
   createContext<SortableItemContextValue>({
     name: "SortableItem",
   });
-
 // #endregion
 
 // #region Helpers
@@ -86,10 +84,9 @@ function reorder(list: string[], from: number, to: number) {
 export function useSortable() {
   return useSortableContext();
 }
-
 // #endregion
 
-// #region Components
+// #region Parts
 type ArkPart = Parameters<typeof h>[0];
 
 export const SortableRoot = defineComponent({
@@ -400,5 +397,4 @@ export const SortableItemContent = defineComponent({
       );
   },
 });
-
 // #endregion

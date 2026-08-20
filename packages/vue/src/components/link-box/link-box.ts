@@ -12,7 +12,7 @@ export interface LinkBoxRootProps extends WithTestId {
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Components
+// #region Parts
 export const LinkBoxRoot = defineComponent({
   inheritAttrs: false,
   name: "LinkBoxRoot",

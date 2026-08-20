@@ -87,7 +87,6 @@ interface ActionBarContextValue extends WithTestId {
   positioning: Required<ActionBarPositioning>;
   testId?: string;
 }
-
 // #endregion
 
 // #region Context
@@ -95,7 +94,6 @@ const [provideActionBarContext, useActionBarContext] = createContext<ActionBarCo
   name: "ActionBar",
   strict: false,
 });
-
 // #endregion
 
 // #region Constants
@@ -104,10 +102,9 @@ const defaultPositioning: Required<ActionBarPositioning> = { gutter: "16px", pla
 function actionBarTeleport(content: ReturnType<typeof h> | ReturnType<typeof h>[]) {
   return h(Teleport, { to: "body" }, () => content);
 }
-
 // #endregion
 
-// #region Components
+// #region Parts
 export const ActionBarRoot = defineComponent({
   inheritAttrs: false,
   name: "ActionBarRoot",
@@ -398,5 +395,4 @@ export const ActionBarBody = defineComponent({
       );
   },
 });
-
 // #endregion

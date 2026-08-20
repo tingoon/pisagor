@@ -70,7 +70,7 @@ const [SelectRootContext, useSelectRoot] = createContext<{ testId?: string }>({
 });
 // #endregion
 
-// #region Components
+// #region Parts
 type ArkPart = Parameters<typeof h>[0];
 
 export const SelectContext = SelectPrimitive.Context;

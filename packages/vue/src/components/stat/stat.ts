@@ -34,10 +34,9 @@ export interface StatProps extends Omit<WithTestId, "testId"> {
   descriptionProps?: Record<string, unknown>;
   trendProps?: Record<string, unknown>;
 }
-
 // #endregion
 
-// #region Components
+// #region Parts
 export const StatRoot = defineComponent({
   inheritAttrs: false,
   name: "StatRoot",

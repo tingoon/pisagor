@@ -14,7 +14,7 @@ export interface StatusProps extends WithTestId {
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Component
+// #region Part
 export const Status = defineComponent({
   inheritAttrs: false,
   name: "PisagorStatus",

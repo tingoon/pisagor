@@ -13,7 +13,7 @@ export interface KbdProps extends WithTestId {
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Components
+// #region Parts
 export const KbdRoot = defineComponent({
   inheritAttrs: false,
   name: "KbdRoot",

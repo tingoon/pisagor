@@ -19,7 +19,7 @@ export interface PaginationItemLinkProps extends ButtonProps {
 }
 // #endregion
 
-// #region Components
+// #region Parts
 export const PaginationRoot = defineComponent({
   inheritAttrs: false,
   name: "PaginationRoot",

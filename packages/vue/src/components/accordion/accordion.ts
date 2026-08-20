@@ -30,7 +30,7 @@ export interface AccordionProps extends WithTestId {
 // Ark Vue parts are polymorphic; `h()` overloads reject attr spreads without a cast.
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Components
+// #region Parts
 export const AccordionRoot = defineComponent({
   inheritAttrs: false,
   name: "AccordionRoot",

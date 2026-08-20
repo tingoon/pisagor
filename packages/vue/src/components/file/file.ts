@@ -35,7 +35,7 @@ export interface FileProps extends WithTestId {
 }
 // #endregion
 
-// #region Components
+// #region Parts
 export const FileRoot = defineComponent({
   inheritAttrs: false,
   name: "FileRoot",

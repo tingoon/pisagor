@@ -59,7 +59,7 @@ function popoverTeleport(content: ReturnType<typeof h> | ReturnType<typeof h>[])
   return h(Teleport, { to: "body" }, () => content);
 }
 
-// #region Components
+// #region Parts
 export const PopoverRoot = defineComponent({
   inheritAttrs: false,
   name: "PopoverRoot",

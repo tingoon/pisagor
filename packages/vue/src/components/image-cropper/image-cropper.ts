@@ -92,7 +92,7 @@ export interface ImageCropperSelectionProps {
 }
 // #endregion
 
-// #region Components
+// #region Parts
 export const ImageCropperRoot = defineComponent({
   inheritAttrs: false,
   name: "ImageCropper",

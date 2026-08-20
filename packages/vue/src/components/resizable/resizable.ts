@@ -45,7 +45,7 @@ type ArkPart = Parameters<typeof h>[0];
 const resizeTriggerClassName = resizableResizeTriggerVariants();
 const resizeTriggerHandleClassName = resizableResizeTriggerHandleVariants();
 
-// #region Components
+// #region Parts
 export const ResizableEdgeHandle = defineComponent({
   inheritAttrs: false,
   name: "ResizableEdgeHandle",
@@ -264,5 +264,4 @@ export const ResizableRootProvider = defineComponent({
       );
   },
 });
-
 // #endregion

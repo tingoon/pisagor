@@ -20,7 +20,7 @@ export interface ToolbarProps extends Omit<WithTestId, "testId">, WithTestId {
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Components
+// #region Parts
 export const ToolbarRoot = defineComponent({
   inheritAttrs: false,
   name: "ToolbarRoot",
@@ -195,5 +195,4 @@ export const ToolbarShorthand = defineComponent({
     };
   },
 });
-
 // #endregion

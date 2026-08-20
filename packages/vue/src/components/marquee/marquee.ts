@@ -22,7 +22,7 @@ export interface MarqueeProps extends WithTestId {
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Components
+// #region Parts
 export const MarqueeRoot = defineComponent({
   inheritAttrs: false,
   name: "MarqueeRoot",
@@ -148,5 +148,4 @@ export const MarqueeShorthand = defineComponent({
     return () => h(MarqueeRoot, { ...attrs, ...props }, {});
   },
 });
-
 // #endregion

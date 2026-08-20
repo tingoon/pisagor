@@ -88,7 +88,7 @@ const [provideTourContext, , useTourContextRef] = createContext<TourContextProps
 export { useTourContextRef as useTourContext };
 // #endregion
 
-// #region Components
+// #region Parts
 export const TourRoot = defineComponent({
   inheritAttrs: false,
   name: "TourRoot",

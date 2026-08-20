@@ -80,7 +80,7 @@ function floatingPanelTeleport(content: VNodeChild) {
   return h(Teleport, { to: "body" }, () => content);
 }
 
-// #region Components
+// #region Parts
 export const FloatingPanelRoot = defineComponent({
   inheritAttrs: false,
   name: "FloatingPanel",

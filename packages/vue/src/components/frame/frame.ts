@@ -12,7 +12,7 @@ import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Components
+// #region Parts
 export const FrameRoot = defineComponent({
   inheritAttrs: false,
   name: "FrameRoot",

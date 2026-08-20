@@ -38,10 +38,9 @@ export type ListboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
 export interface ListboxProps extends Omit<ListboxRootProps, "children"> {
   items?: ListboxPresetItem[];
 }
-
 // #endregion
 
-// #region Components
+// #region Parts
 type ArkPart = Parameters<typeof h>[0];
 
 export const ListboxRoot = defineComponent({

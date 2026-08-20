@@ -99,7 +99,6 @@ export const APP_SHELL_DEFAULT_INSPECTOR_RESIZABLE_PROPS = {
   enabled: true,
   handlePosition: "top",
 } as const satisfies Required<Pick<AppShellResizableProps, "enabled" | "handlePosition">>;
-
 // #endregion
 
 // #region Constants
@@ -215,7 +214,6 @@ function useHotkey(toggle: () => void) {
     if (handler) window.removeEventListener("keydown", handler);
   });
 }
-
 // #endregion
 
 // #region Contexts
@@ -310,7 +308,6 @@ function partitionAppShellChildren(children: VNodeChild[]): AppShellSlots {
 
   return slots;
 }
-
 // #endregion
 
 // #region Helper composables
@@ -455,10 +452,9 @@ function useRegisteredRailState({
 
   return railState;
 }
-
 // #endregion
 
-// #region Components
+// #region Parts
 export const AppShellRoot = defineComponent({
   inheritAttrs: false,
   name: "AppShell",
@@ -1116,9 +1112,7 @@ export const AppShellRail = defineComponent({
       );
   },
 });
-
 // #endregion
-
 // #endregion
 
 export const AppShellRailItem = defineComponent({

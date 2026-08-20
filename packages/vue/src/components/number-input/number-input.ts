@@ -52,7 +52,7 @@ export interface NumberInputGroupProps {
 }
 // #endregion
 
-// #region Components
+// #region Parts
 export const NumberInputRoot = defineComponent({
   inheritAttrs: false,
   name: "NumberInputRoot",
