@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const paginationVariants = tv({
   base: ["mx-auto", "w-full", "flex justify-center gap-1"],
@@ -22,3 +22,6 @@ export const paginationEllipsisVariants = tv({
     "[&_svg]:size-4",
   ],
 });
+export type PaginationVariantProps = VariantProps<typeof paginationVariants>;
+export type PaginationInlineVariantProps = VariantProps<typeof paginationInlineVariants>;
+export type PaginationEllipsisVariantProps = VariantProps<typeof paginationEllipsisVariants>;

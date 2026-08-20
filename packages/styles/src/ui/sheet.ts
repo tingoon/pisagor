@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const sheetPositionerVariants = tv({
   base: ["fixed inset-0 z-50 grid h-svh w-screen"],
@@ -81,3 +81,8 @@ export const sheetFooterVariants = tv({
 export const sheetInlineVariants = tv({
   base: ["absolute inset-e-2 top-2 opacity-64 hover:opacity-100"],
 });
+export type SheetPositionerVariantProps = VariantProps<typeof sheetPositionerVariants>;
+export type SheetContentVariantProps = VariantProps<typeof sheetContentVariants>;
+export type SheetBodyVariantProps = VariantProps<typeof sheetBodyVariants>;
+export type SheetFooterVariantProps = VariantProps<typeof sheetFooterVariants>;
+export type SheetInlineVariantProps = VariantProps<typeof sheetInlineVariants>;

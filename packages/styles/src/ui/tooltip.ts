@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const tooltipVariants = tv({
   slots: {
@@ -21,3 +21,4 @@ export const tooltipVariants = tv({
     ],
   },
 });
+export type TooltipVariantProps = VariantProps<typeof tooltipVariants>;

@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const inputOtpControlVariants = tv({
   base: ["flex items-center gap-2", "*:data-[scope=pin-input]:data-[part=input]:size-9"],
@@ -15,3 +15,7 @@ export const inputOtpSeparatorVariants = tv({
 export const inputOtpVariants = tv({
   base: "group/input-otp",
 });
+export type InputOtpControlVariantProps = VariantProps<typeof inputOtpControlVariants>;
+export type InputOtpInlineVariantProps = VariantProps<typeof inputOtpInlineVariants>;
+export type InputOtpSeparatorVariantProps = VariantProps<typeof inputOtpSeparatorVariants>;
+export type InputOtpVariantProps = VariantProps<typeof inputOtpVariants>;

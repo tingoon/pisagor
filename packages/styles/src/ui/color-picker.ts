@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const colorPickerVariants = tv({
   base: ["group/color-picker", "w-fit", "flex gap-2"],
@@ -172,3 +172,43 @@ export const colorPickerInline4Variants = tv({
 export const colorPickerInline5Variants = tv({
   base: ["flex flex-1 flex-col gap-2.5"],
 });
+export type ColorPickerVariantProps = VariantProps<typeof colorPickerVariants>;
+export type ColorPickerControlVariantProps = VariantProps<typeof colorPickerControlVariants>;
+export type ColorPickerInlineVariantProps = VariantProps<typeof colorPickerInlineVariants>;
+export type ColorPickerContentVariantProps = VariantProps<typeof colorPickerContentVariants>;
+export type ColorPickerViewVariantProps = VariantProps<typeof colorPickerViewVariants>;
+export type ColorPickerChannelSliderVariantProps = VariantProps<
+  typeof colorPickerChannelSliderVariants
+>;
+export type ColorPickerChannelSliderTrackVariantProps = VariantProps<
+  typeof colorPickerChannelSliderTrackVariants
+>;
+export type ColorPickerChannelSliderThumbVariantProps = VariantProps<
+  typeof colorPickerChannelSliderThumbVariants
+>;
+export type ColorPickerSwatchGroupVariantProps = VariantProps<
+  typeof colorPickerSwatchGroupVariants
+>;
+export type ColorPickerSwatchTriggerVariantProps = VariantProps<
+  typeof colorPickerSwatchTriggerVariants
+>;
+export type ColorPickerSwatchVariantProps = VariantProps<typeof colorPickerSwatchVariants>;
+export type ColorPickerSwatchIndicatorVariantProps = VariantProps<
+  typeof colorPickerSwatchIndicatorVariants
+>;
+export type ColorPickerValueVariantProps = VariantProps<typeof colorPickerValueVariants>;
+export type ColorPickerValueSwatchVariantProps = VariantProps<
+  typeof colorPickerValueSwatchVariants
+>;
+export type ColorPickerAreaVariantProps = VariantProps<typeof colorPickerAreaVariants>;
+export type ColorPickerAreaThumbVariantProps = VariantProps<typeof colorPickerAreaThumbVariants>;
+export type ColorPickerInputSwatchVariantProps = VariantProps<
+  typeof colorPickerInputSwatchVariants
+>;
+export type ColorPickerInline2VariantProps = VariantProps<typeof colorPickerInline2Variants>;
+export type ColorPickerAreaBackgroundVariantProps = VariantProps<
+  typeof colorPickerAreaBackgroundVariants
+>;
+export type ColorPickerInline3VariantProps = VariantProps<typeof colorPickerInline3Variants>;
+export type ColorPickerInline4VariantProps = VariantProps<typeof colorPickerInline4Variants>;
+export type ColorPickerInline5VariantProps = VariantProps<typeof colorPickerInline5Variants>;

@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const swapVariants = tv({
   base: ["[&>span]:motion-reduce:animate-none!"],
@@ -31,3 +31,4 @@ export const swapVariants = tv({
     },
   },
 });
+export type SwapVariantProps = VariantProps<typeof swapVariants>;

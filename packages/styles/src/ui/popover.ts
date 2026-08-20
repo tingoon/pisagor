@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const popoverContentVariants = tv({
   base: [
@@ -65,3 +65,11 @@ export const popoverInlineVariants = tv({
 export const popoverInline2Variants = tv({
   base: ["border-s border-t"],
 });
+export type PopoverContentVariantProps = VariantProps<typeof popoverContentVariants>;
+export type PopoverHeaderVariantProps = VariantProps<typeof popoverHeaderVariants>;
+export type PopoverTitleVariantProps = VariantProps<typeof popoverTitleVariants>;
+export type PopoverDescriptionVariantProps = VariantProps<typeof popoverDescriptionVariants>;
+export type PopoverBodyVariantProps = VariantProps<typeof popoverBodyVariants>;
+export type PopoverFooterVariantProps = VariantProps<typeof popoverFooterVariants>;
+export type PopoverInlineVariantProps = VariantProps<typeof popoverInlineVariants>;
+export type PopoverInline2VariantProps = VariantProps<typeof popoverInline2Variants>;

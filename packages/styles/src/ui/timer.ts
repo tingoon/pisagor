@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const timerVariants = tv({
   base: ["min-w-0", "flex flex-col items-start gap-4", "text-foreground"],
@@ -34,3 +34,10 @@ export const timerSeparatorVariants = tv({
 export const timerControlVariants = tv({
   base: ["flex items-center gap-2"],
 });
+export type TimerVariantProps = VariantProps<typeof timerVariants>;
+export type TimerAreaVariantProps = VariantProps<typeof timerAreaVariants>;
+export type TimerItemGroupVariantProps = VariantProps<typeof timerItemGroupVariants>;
+export type TimerItemVariantProps = VariantProps<typeof timerItemVariants>;
+export type TimerItemLabelVariantProps = VariantProps<typeof timerItemLabelVariants>;
+export type TimerSeparatorVariantProps = VariantProps<typeof timerSeparatorVariants>;
+export type TimerControlVariantProps = VariantProps<typeof timerControlVariants>;

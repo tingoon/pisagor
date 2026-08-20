@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const hoverCardContentVariants = tv({
   base: [
@@ -24,3 +24,5 @@ export const hoverCardContentVariants = tv({
 export const hoverCardInlineVariants = tv({
   base: ["border-s border-t"],
 });
+export type HoverCardContentVariantProps = VariantProps<typeof hoverCardContentVariants>;
+export type HoverCardInlineVariantProps = VariantProps<typeof hoverCardInlineVariants>;

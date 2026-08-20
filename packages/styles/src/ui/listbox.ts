@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const listboxItemVariants = tv({
   base: [
@@ -76,3 +76,12 @@ export const listboxItemIndicatorVariants = tv({
 export const listboxEmptyVariants = tv({
   base: ["px-2 py-1.5", "text-center text-muted-foreground text-sm"],
 });
+export type ListboxItemVariantProps = VariantProps<typeof listboxItemVariants>;
+export type ListboxVariantProps = VariantProps<typeof listboxVariants>;
+export type ListboxContentVariantProps = VariantProps<typeof listboxContentVariants>;
+export type ListboxItemTextVariantProps = VariantProps<typeof listboxItemTextVariants>;
+export type ListboxItemGroupVariantProps = VariantProps<typeof listboxItemGroupVariants>;
+export type ListboxItemGroupLabelVariantProps = VariantProps<typeof listboxItemGroupLabelVariants>;
+export type ListboxValueTextVariantProps = VariantProps<typeof listboxValueTextVariants>;
+export type ListboxItemIndicatorVariantProps = VariantProps<typeof listboxItemIndicatorVariants>;
+export type ListboxEmptyVariantProps = VariantProps<typeof listboxEmptyVariants>;

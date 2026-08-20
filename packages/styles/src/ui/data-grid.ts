@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const dataGridColumnResizerVariants = tv({
   base: [
@@ -38,3 +38,11 @@ export const dataGridFilterHeadVariants = tv({
     "**:data-[scope=select]:data-[part=trigger]:h-7 **:data-[scope=select]:data-[part=trigger]:w-full **:data-[scope=select]:data-[part=trigger]:max-w-none",
   ],
 });
+export type DataGridColumnResizerVariantProps = VariantProps<typeof dataGridColumnResizerVariants>;
+export type DataGridToolbarVariantProps = VariantProps<typeof dataGridToolbarVariants>;
+export type DataGridFooterVariantProps = VariantProps<typeof dataGridFooterVariants>;
+export type DataGridVariantProps = VariantProps<typeof dataGridVariants>;
+export type DataGridInlineVariantProps = VariantProps<typeof dataGridInlineVariants>;
+export type DataGridInline2VariantProps = VariantProps<typeof dataGridInline2Variants>;
+export type DataGridInline3VariantProps = VariantProps<typeof dataGridInline3Variants>;
+export type DataGridFilterHeadVariantProps = VariantProps<typeof dataGridFilterHeadVariants>;

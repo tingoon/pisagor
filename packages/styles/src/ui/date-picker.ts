@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const datePickerTriggerVariants = tv({
   base: [
@@ -44,3 +44,9 @@ export const datePickerControlVariants = tv({
 export const datePickerInline2Variants = tv({
   base: "text-muted-foreground",
 });
+export type DatePickerTriggerVariantProps = VariantProps<typeof datePickerTriggerVariants>;
+export type DatePickerInlineVariantProps = VariantProps<typeof datePickerInlineVariants>;
+export type DatePickerContentVariantProps = VariantProps<typeof datePickerContentVariants>;
+export type DatePickerValueVariantProps = VariantProps<typeof datePickerValueVariants>;
+export type DatePickerControlVariantProps = VariantProps<typeof datePickerControlVariants>;
+export type DatePickerInline2VariantProps = VariantProps<typeof datePickerInline2Variants>;

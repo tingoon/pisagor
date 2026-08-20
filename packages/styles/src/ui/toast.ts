@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const toasterVariants = tv({
   base: [
@@ -45,3 +45,6 @@ export const toastItemVariants = tv({
 export const toastInlineVariants = tv({
   base: ["opacity-64 hover:opacity-100"],
 });
+export type ToasterVariantProps = VariantProps<typeof toasterVariants>;
+export type ToastItemVariantProps = VariantProps<typeof toastItemVariants>;
+export type ToastInlineVariantProps = VariantProps<typeof toastInlineVariants>;

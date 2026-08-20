@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const navbarVariants = tv({
   slots: {
@@ -14,3 +14,4 @@ export const navbarVariants = tv({
     ],
   },
 });
+export type NavbarVariantProps = VariantProps<typeof navbarVariants>;

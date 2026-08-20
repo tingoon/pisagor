@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const progressVariants = tv({
   slots: {
@@ -26,3 +26,4 @@ export const progressVariants = tv({
     value: ["ms-auto tabular-nums"],
   },
 });
+export type ProgressVariantProps = VariantProps<typeof progressVariants>;

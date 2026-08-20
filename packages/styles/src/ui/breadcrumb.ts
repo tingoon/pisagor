@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const breadcrumbListVariants = tv({
   base: [
@@ -33,3 +33,9 @@ export const breadcrumbSeparatorVariants = tv({
 export const breadcrumbInlineVariants = tv({
   base: "size-4",
 });
+export type BreadcrumbListVariantProps = VariantProps<typeof breadcrumbListVariants>;
+export type BreadcrumbItemVariantProps = VariantProps<typeof breadcrumbItemVariants>;
+export type BreadcrumbLinkVariantProps = VariantProps<typeof breadcrumbLinkVariants>;
+export type BreadcrumbPageVariantProps = VariantProps<typeof breadcrumbPageVariants>;
+export type BreadcrumbSeparatorVariantProps = VariantProps<typeof breadcrumbSeparatorVariants>;
+export type BreadcrumbInlineVariantProps = VariantProps<typeof breadcrumbInlineVariants>;

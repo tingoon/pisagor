@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const sortableVariants = tv({
   base: ["flex gap-2"],
@@ -36,3 +36,7 @@ export const sortableHandleVariants = tv({
 export const sortableItemContentVariants = tv({
   base: ["flex min-w-0 flex-1 items-center gap-3 p-3"],
 });
+export type SortableVariantProps = VariantProps<typeof sortableVariants>;
+export type SortableItemVariantProps = VariantProps<typeof sortableItemVariants>;
+export type SortableHandleVariantProps = VariantProps<typeof sortableHandleVariants>;
+export type SortableItemContentVariantProps = VariantProps<typeof sortableItemContentVariants>;

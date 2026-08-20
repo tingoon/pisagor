@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const scrollAreaVariants = tv({
   defaultVariants: {
@@ -37,3 +37,4 @@ export const scrollAreaVariants = tv({
     },
   },
 });
+export type ScrollAreaVariantProps = VariantProps<typeof scrollAreaVariants>;

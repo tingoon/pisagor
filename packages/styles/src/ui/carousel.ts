@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const carouselVariants = tv({
   base: [
@@ -55,3 +55,13 @@ export const carouselItemVariants = tv({
     "[&_img]:size-full [&_img]:rounded-lg [&_img]:object-cover",
   ],
 });
+export type CarouselVariantProps = VariantProps<typeof carouselVariants>;
+export type CarouselControlVariantProps = VariantProps<typeof carouselControlVariants>;
+export type CarouselPreviousVariantProps = VariantProps<typeof carouselPreviousVariants>;
+export type CarouselNextVariantProps = VariantProps<typeof carouselNextVariants>;
+export type CarouselIndicatorGroupVariantProps = VariantProps<
+  typeof carouselIndicatorGroupVariants
+>;
+export type CarouselIndicatorVariantProps = VariantProps<typeof carouselIndicatorVariants>;
+export type CarouselGroupVariantProps = VariantProps<typeof carouselGroupVariants>;
+export type CarouselItemVariantProps = VariantProps<typeof carouselItemVariants>;

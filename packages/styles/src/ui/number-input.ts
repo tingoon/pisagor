@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const numberFieldVariants = tv({
   base: [
@@ -64,3 +64,10 @@ export const numberFieldScrubberVariants = tv({
 export const numberInputInline2Variants = tv({
   base: ["relative order-last me-1 shrink-0"],
 });
+export type NumberFieldVariantProps = VariantProps<typeof numberFieldVariants>;
+export type NumberFieldGroupVariantProps = VariantProps<typeof numberFieldGroupVariants>;
+export type NumberFieldDecrementVariantProps = VariantProps<typeof numberFieldDecrementVariants>;
+export type NumberFieldIncrementVariantProps = VariantProps<typeof numberFieldIncrementVariants>;
+export type NumberInputInlineVariantProps = VariantProps<typeof numberInputInlineVariants>;
+export type NumberFieldScrubberVariantProps = VariantProps<typeof numberFieldScrubberVariants>;
+export type NumberInputInline2VariantProps = VariantProps<typeof numberInputInline2Variants>;

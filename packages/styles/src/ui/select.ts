@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const selectTriggerVariants = tv({
   base: [
@@ -91,3 +91,14 @@ export const selectItemTextVariants = tv({
 export const selectInline4Variants = tv({
   base: ["absolute inset-e-2 flex size-4 items-center justify-center"],
 });
+export type SelectTriggerVariantProps = VariantProps<typeof selectTriggerVariants>;
+export type SelectSeparatorVariantProps = VariantProps<typeof selectSeparatorVariants>;
+export type SelectInlineVariantProps = VariantProps<typeof selectInlineVariants>;
+export type SelectContentVariantProps = VariantProps<typeof selectContentVariants>;
+export type SelectGroupLabelVariantProps = VariantProps<typeof selectGroupLabelVariants>;
+export type SelectItemVariantProps = VariantProps<typeof selectItemVariants>;
+export type SelectClearTriggerVariantProps = VariantProps<typeof selectClearTriggerVariants>;
+export type SelectInline2VariantProps = VariantProps<typeof selectInline2Variants>;
+export type SelectInline3VariantProps = VariantProps<typeof selectInline3Variants>;
+export type SelectItemTextVariantProps = VariantProps<typeof selectItemTextVariants>;
+export type SelectInline4VariantProps = VariantProps<typeof selectInline4Variants>;

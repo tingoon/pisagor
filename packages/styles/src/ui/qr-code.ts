@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const qrCodeVariants = tv({
   base: [
@@ -29,3 +29,7 @@ export const qrCodeOverlayVariants = tv({
 export const qrCodePatternVariants = tv({
   base: "fill-inherit",
 });
+export type QrCodeVariantProps = VariantProps<typeof qrCodeVariants>;
+export type QrCodeFrameVariantProps = VariantProps<typeof qrCodeFrameVariants>;
+export type QrCodeOverlayVariantProps = VariantProps<typeof qrCodeOverlayVariants>;
+export type QrCodePatternVariantProps = VariantProps<typeof qrCodePatternVariants>;

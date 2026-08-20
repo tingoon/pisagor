@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const fileUploadVariants = tv({
   base: ["group/file-upload", "relative", "flex flex-col justify-center gap-4"],
@@ -104,3 +104,27 @@ export const fileUploadInline6Variants = tv({
 export const fileUploadInline7Variants = tv({
   base: ["me-auto rtl:ms-auto"],
 });
+export type FileUploadVariantProps = VariantProps<typeof fileUploadVariants>;
+export type FileUploadDropzoneVariantProps = VariantProps<typeof fileUploadDropzoneVariants>;
+export type FileUploadDropzoneIconVariantProps = VariantProps<
+  typeof fileUploadDropzoneIconVariants
+>;
+export type FileUploadTitleVariantProps = VariantProps<typeof fileUploadTitleVariants>;
+export type FileUploadTitle2VariantProps = VariantProps<typeof fileUploadTitle2Variants>;
+export type FileUploadDropzoneHelperVariantProps = VariantProps<
+  typeof fileUploadDropzoneHelperVariants
+>;
+export type FileUploadInlineVariantProps = VariantProps<typeof fileUploadInlineVariants>;
+export type FileUploadInline2VariantProps = VariantProps<typeof fileUploadInline2Variants>;
+export type FileUploadItemVariantProps = VariantProps<typeof fileUploadItemVariants>;
+export type FileUploadItemPreviewVariantProps = VariantProps<typeof fileUploadItemPreviewVariants>;
+export type FileUploadItemPreviewImageVariantProps = VariantProps<
+  typeof fileUploadItemPreviewImageVariants
+>;
+export type FileUploadItemNameVariantProps = VariantProps<typeof fileUploadItemNameVariants>;
+export type FileUploadItemSizeVariantProps = VariantProps<typeof fileUploadItemSizeVariants>;
+export type FileUploadInline3VariantProps = VariantProps<typeof fileUploadInline3Variants>;
+export type FileUploadInline4VariantProps = VariantProps<typeof fileUploadInline4Variants>;
+export type FileUploadInline5VariantProps = VariantProps<typeof fileUploadInline5Variants>;
+export type FileUploadInline6VariantProps = VariantProps<typeof fileUploadInline6Variants>;
+export type FileUploadInline7VariantProps = VariantProps<typeof fileUploadInline7Variants>;

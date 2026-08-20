@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const resizableEdgeHandleVariants = tv({
   defaultVariants: {
@@ -76,3 +76,16 @@ export const resizableResizeTriggerHandleVariants = tv({
     "group-focus-visible/resizable-resize-trigger:border-accent group-focus-visible/resizable-resize-trigger:bg-accent group-focus-visible/resizable-resize-trigger:text-accent-foreground",
   ],
 });
+export type ResizableEdgeHandleVariantProps = VariantProps<typeof resizableEdgeHandleVariants>;
+export type ResizableVariantProps = VariantProps<typeof resizableVariants>;
+export type ResizableResizeTriggerIndicatorVariantProps = VariantProps<
+  typeof resizableResizeTriggerIndicatorVariants
+>;
+export type ResizableInlineVariantProps = VariantProps<typeof resizableInlineVariants>;
+export type ResizableInline2VariantProps = VariantProps<typeof resizableInline2Variants>;
+export type ResizableResizeTriggerVariantProps = VariantProps<
+  typeof resizableResizeTriggerVariants
+>;
+export type ResizableResizeTriggerHandleVariantProps = VariantProps<
+  typeof resizableResizeTriggerHandleVariants
+>;

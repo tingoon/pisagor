@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const clipboardVariants = tv({
   defaultVariants: {
@@ -22,3 +22,4 @@ export const clipboardVariants = tv({
     },
   },
 });
+export type ClipboardVariantProps = VariantProps<typeof clipboardVariants>;

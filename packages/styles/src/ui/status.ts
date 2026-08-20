@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const statusVariants = tv({
   base: [
@@ -26,3 +26,4 @@ export const statusVariants = tv({
     },
   },
 });
+export type StatusVariantProps = VariantProps<typeof statusVariants>;

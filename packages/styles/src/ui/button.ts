@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const buttonVariants = tv({
   base: [
@@ -112,3 +112,7 @@ export const buttonInline2Variants = tv({
 export const buttonInline3Variants = tv({
   base: ["absolute inset-0 flex items-center justify-center"],
 });
+export type ButtonVariantProps = VariantProps<typeof buttonVariants>;
+export type ButtonInlineVariantProps = VariantProps<typeof buttonInlineVariants>;
+export type ButtonInline2VariantProps = VariantProps<typeof buttonInline2Variants>;
+export type ButtonInline3VariantProps = VariantProps<typeof buttonInline3Variants>;

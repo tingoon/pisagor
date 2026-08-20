@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const appShellRailItemVariants = tv({
   base: [
@@ -129,3 +129,48 @@ export const appShellVariants = tv({
     "data-resizing:transition-none!",
   ],
 });
+export type AppShellRailItemVariantProps = VariantProps<typeof appShellRailItemVariants>;
+export type AppShellBannerVariantProps = VariantProps<typeof appShellBannerVariants>;
+export type AppShellMainVariantProps = VariantProps<typeof appShellMainVariants>;
+export type AppShellHeaderVariantProps = VariantProps<typeof appShellHeaderVariants>;
+export type AppShellContentVariantProps = VariantProps<typeof appShellContentVariants>;
+export type AppShellInlineVariantProps = VariantProps<typeof appShellInlineVariants>;
+export type AppShellInspectorVariantProps = VariantProps<typeof appShellInspectorVariants>;
+export type AppShellInspectorHeaderVariantProps = VariantProps<
+  typeof appShellInspectorHeaderVariants
+>;
+export type AppShellInspectorContentVariantProps = VariantProps<
+  typeof appShellInspectorContentVariants
+>;
+export type AppShellInspectorFooterVariantProps = VariantProps<
+  typeof appShellInspectorFooterVariants
+>;
+export type AppShellInline2VariantProps = VariantProps<typeof appShellInline2Variants>;
+export type AppShellPanelVariantProps = VariantProps<typeof appShellPanelVariants>;
+export type AppShellPanelHeaderVariantProps = VariantProps<typeof appShellPanelHeaderVariants>;
+export type AppShellPanelContentVariantProps = VariantProps<typeof appShellPanelContentVariants>;
+export type AppShellPanelFooterVariantProps = VariantProps<typeof appShellPanelFooterVariants>;
+export type AppShellRailVariantProps = VariantProps<typeof appShellRailVariants>;
+export type AppShellNavigationVariantProps = VariantProps<typeof appShellNavigationVariants>;
+export type AppShellRegionRelativeColumnVariantProps = VariantProps<
+  typeof appShellRegionRelativeColumnVariants
+>;
+export type AppShellRegionRelativeRowVariantProps = VariantProps<
+  typeof appShellRegionRelativeRowVariants
+>;
+export type AppShellRegionStickyInspectorVariantProps = VariantProps<
+  typeof appShellRegionStickyInspectorVariants
+>;
+export type AppShellRegionStickyColumnVariantProps = VariantProps<
+  typeof appShellRegionStickyColumnVariants
+>;
+export type AppShellRegionStickyBannerVariantProps = VariantProps<
+  typeof appShellRegionStickyBannerVariants
+>;
+export type AppShellRegionStickyNavigationVariantProps = VariantProps<
+  typeof appShellRegionStickyNavigationVariants
+>;
+export type AppShellRegionStickyHeaderVariantProps = VariantProps<
+  typeof appShellRegionStickyHeaderVariants
+>;
+export type AppShellVariantProps = VariantProps<typeof appShellVariants>;

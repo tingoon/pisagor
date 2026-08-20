@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const ratingVariants = tv({
   slots: {
@@ -24,3 +24,4 @@ export const ratingVariants = tv({
     ],
   },
 });
+export type RatingVariantProps = VariantProps<typeof ratingVariants>;

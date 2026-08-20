@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const emptyStateVariants = tv({
   slots: {
@@ -19,3 +19,4 @@ export const emptyStateVariants = tv({
     title: ["font-medium text-foreground text-lg/6"],
   },
 });
+export type EmptyStateVariantProps = VariantProps<typeof emptyStateVariants>;

@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const signaturePadVariants = tv({
   slots: {
@@ -25,3 +25,4 @@ export const signaturePadVariants = tv({
     segment: ["size-full", "min-h-0", "fill-foreground", "touch-none"],
   },
 });
+export type SignaturePadVariantProps = VariantProps<typeof signaturePadVariants>;

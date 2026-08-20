@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const buttonGroupVariants = tv({
   base: [
@@ -41,3 +41,6 @@ export const buttonGroupTextVariants = tv({
 export const buttonGroupSeparatorVariants = tv({
   base: ["relative", "self-stretch", "bg-input", "data-[orientation=vertical]:h-auto", "m-0!"],
 });
+export type ButtonGroupVariantProps = VariantProps<typeof buttonGroupVariants>;
+export type ButtonGroupTextVariantProps = VariantProps<typeof buttonGroupTextVariants>;
+export type ButtonGroupSeparatorVariantProps = VariantProps<typeof buttonGroupSeparatorVariants>;

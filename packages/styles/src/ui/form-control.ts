@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const formControlShellVariants = tv({
   base: [
@@ -320,3 +320,11 @@ export const formControlZoneVariants = tv({
     },
   },
 });
+export type FormControlShellVariantProps = VariantProps<typeof formControlShellVariants>;
+export type FormControlGroupShellVariantProps = VariantProps<typeof formControlGroupShellVariants>;
+export type FormControlToggleVariantProps = VariantProps<typeof formControlToggleVariants>;
+export type FormControlRadioToggleVariantProps = VariantProps<
+  typeof formControlRadioToggleVariants
+>;
+export type FormControlSeparatorVariantProps = VariantProps<typeof formControlSeparatorVariants>;
+export type FormControlZoneVariantProps = VariantProps<typeof formControlZoneVariants>;

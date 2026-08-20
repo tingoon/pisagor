@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const fileVariants = tv({
   base: [
@@ -44,3 +44,10 @@ export const fileSizeVariants = tv({
 export const fileActionsVariants = tv({
   base: ["flex shrink-0 items-center gap-1"],
 });
+export type FileVariantProps = VariantProps<typeof fileVariants>;
+export type FileMediaVariantProps = VariantProps<typeof fileMediaVariants>;
+export type FileContentVariantProps = VariantProps<typeof fileContentVariants>;
+export type FileNameVariantProps = VariantProps<typeof fileNameVariants>;
+export type FileMetaVariantProps = VariantProps<typeof fileMetaVariants>;
+export type FileSizeVariantProps = VariantProps<typeof fileSizeVariants>;
+export type FileActionsVariantProps = VariantProps<typeof fileActionsVariants>;

@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const phoneInputVariants = tv({
   defaultVariants: {
@@ -88,3 +88,17 @@ export const phoneInputInline9Variants = tv({
 export const phoneInputInline10Variants = tv({
   base: ["ms-auto text-muted-foreground tabular-nums"],
 });
+export type PhoneInputVariantProps = VariantProps<typeof phoneInputVariants>;
+export type PhoneInputInlineVariantProps = VariantProps<typeof phoneInputInlineVariants>;
+export type PhoneInputInline2VariantProps = VariantProps<typeof phoneInputInline2Variants>;
+export type PhoneInputCountryTriggerVariantProps = VariantProps<
+  typeof phoneInputCountryTriggerVariants
+>;
+export type PhoneInputInline3VariantProps = VariantProps<typeof phoneInputInline3Variants>;
+export type PhoneInputInline4VariantProps = VariantProps<typeof phoneInputInline4Variants>;
+export type PhoneInputInline5VariantProps = VariantProps<typeof phoneInputInline5Variants>;
+export type PhoneInputInline6VariantProps = VariantProps<typeof phoneInputInline6Variants>;
+export type PhoneInputInline7VariantProps = VariantProps<typeof phoneInputInline7Variants>;
+export type PhoneInputInline8VariantProps = VariantProps<typeof phoneInputInline8Variants>;
+export type PhoneInputInline9VariantProps = VariantProps<typeof phoneInputInline9Variants>;
+export type PhoneInputInline10VariantProps = VariantProps<typeof phoneInputInline10Variants>;

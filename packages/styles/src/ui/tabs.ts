@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const tabsListVariants = tv({
   defaultVariants: {
@@ -70,3 +70,7 @@ export const tabsTriggerVariants = tv({
 export const tabsContentVariants = tv({
   base: ["flex-1 outline-hidden"],
 });
+export type TabsListVariantProps = VariantProps<typeof tabsListVariants>;
+export type TabsVariantProps = VariantProps<typeof tabsVariants>;
+export type TabsTriggerVariantProps = VariantProps<typeof tabsTriggerVariants>;
+export type TabsContentVariantProps = VariantProps<typeof tabsContentVariants>;

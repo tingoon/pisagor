@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const surfaceVariants = tv({
   base: "text-foreground",
@@ -30,3 +30,4 @@ export const surfaceVariants = tv({
     },
   },
 });
+export type SurfaceVariantProps = VariantProps<typeof surfaceVariants>;

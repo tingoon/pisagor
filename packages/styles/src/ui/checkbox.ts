@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const checkboxGroupVariants = tv({
   base: ["flex flex-col gap-2"],
@@ -27,3 +27,6 @@ export const checkboxIndicatorVariants = tv({
     "data-[state=indeterminate]:text-foreground",
   ],
 });
+export type CheckboxGroupVariantProps = VariantProps<typeof checkboxGroupVariants>;
+export type Checkbox2VariantProps = VariantProps<typeof checkbox2Variants>;
+export type CheckboxIndicatorVariantProps = VariantProps<typeof checkboxIndicatorVariants>;

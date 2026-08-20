@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const bottomNavigationVariants = tv({
   base: ["w-full", "min-h-[calc(var(--spacing)*14+env(safe-area-inset-bottom,0))]"],
@@ -41,3 +41,12 @@ export const bottomNavigationItemIconVariants = tv({
 export const bottomNavigationItemLabelVariants = tv({
   base: ["truncate font-medium text-xs"],
 });
+export type BottomNavigationVariantProps = VariantProps<typeof bottomNavigationVariants>;
+export type BottomNavigationListVariantProps = VariantProps<typeof bottomNavigationListVariants>;
+export type BottomNavigationItemVariantProps = VariantProps<typeof bottomNavigationItemVariants>;
+export type BottomNavigationItemIconVariantProps = VariantProps<
+  typeof bottomNavigationItemIconVariants
+>;
+export type BottomNavigationItemLabelVariantProps = VariantProps<
+  typeof bottomNavigationItemLabelVariants
+>;

@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const stepsVariants = tv({
   base: [
@@ -86,3 +86,15 @@ export const stepsInlineVariants = tv({
 export const stepsInline2Variants = tv({
   base: ["hidden group-data-complete/step:block"],
 });
+export type StepsVariantProps = VariantProps<typeof stepsVariants>;
+export type StepsListVariantProps = VariantProps<typeof stepsListVariants>;
+export type StepsItemVariantProps = VariantProps<typeof stepsItemVariants>;
+export type StepsTriggerVariantProps = VariantProps<typeof stepsTriggerVariants>;
+export type StepsIndicatorVariantProps = VariantProps<typeof stepsIndicatorVariants>;
+export type StepsSeparatorVariantProps = VariantProps<typeof stepsSeparatorVariants>;
+export type StepsTitleVariantProps = VariantProps<typeof stepsTitleVariants>;
+export type StepsDescriptionVariantProps = VariantProps<typeof stepsDescriptionVariants>;
+export type StepsContentVariantProps = VariantProps<typeof stepsContentVariants>;
+export type StepsCompletedContentVariantProps = VariantProps<typeof stepsCompletedContentVariants>;
+export type StepsInlineVariantProps = VariantProps<typeof stepsInlineVariants>;
+export type StepsInline2VariantProps = VariantProps<typeof stepsInline2Variants>;

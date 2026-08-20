@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const segmentGroupVariants = tv({
   base: [
@@ -45,3 +45,7 @@ export const segmentGroupIndicatorVariants = tv({
     "motion-reduce:transition-none!",
   ],
 });
+export type SegmentGroupVariantProps = VariantProps<typeof segmentGroupVariants>;
+export type SegmentGroupItemVariantProps = VariantProps<typeof segmentGroupItemVariants>;
+export type SegmentGroupItemTextVariantProps = VariantProps<typeof segmentGroupItemTextVariants>;
+export type SegmentGroupIndicatorVariantProps = VariantProps<typeof segmentGroupIndicatorVariants>;

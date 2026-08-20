@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const announcementVariants = tv({
   base: [
@@ -28,3 +28,5 @@ export const announcementTitleVariants = tv({
     "select-none truncate font-medium text-sm",
   ],
 });
+export type AnnouncementVariantProps = VariantProps<typeof announcementVariants>;
+export type AnnouncementTitleVariantProps = VariantProps<typeof announcementTitleVariants>;

@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const avatarVariants = tv({
   defaultVariants: {
@@ -57,3 +57,6 @@ export const avatarGroupCountVariants = tv({
     "[&_svg]:size-4",
   ],
 });
+export type AvatarVariantProps = VariantProps<typeof avatarVariants>;
+export type AvatarGroupVariantProps = VariantProps<typeof avatarGroupVariants>;
+export type AvatarGroupCountVariantProps = VariantProps<typeof avatarGroupCountVariants>;

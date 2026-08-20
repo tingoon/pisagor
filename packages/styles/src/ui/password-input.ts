@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const passwordInputVariants = tv({
   base: ["group/password-input w-full flex flex-col items-start gap-2"],
@@ -16,3 +16,6 @@ export const passwordInputInline2Variants = tv({
     "hidden [[data-scope=password-input][data-part=control]:has(input:not(:placeholder-shown))_&]:flex",
   ],
 });
+export type PasswordInputVariantProps = VariantProps<typeof passwordInputVariants>;
+export type PasswordInputInlineVariantProps = VariantProps<typeof passwordInputInlineVariants>;
+export type PasswordInputInline2VariantProps = VariantProps<typeof passwordInputInline2Variants>;

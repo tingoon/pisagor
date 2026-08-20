@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const toggleGroupVariants = tv({
   base: ["w-fit", "flex items-center gap-[--spacing(var(--gap))]", "rounded-lg"],
@@ -27,3 +27,5 @@ export const toggleGroupInlineVariants = tv({
     "data-[orientation=horizontal]:data-[spacing=0]:data-[variant=outline]:first:border-s",
   ],
 });
+export type ToggleGroupVariantProps = VariantProps<typeof toggleGroupVariants>;
+export type ToggleGroupInlineVariantProps = VariantProps<typeof toggleGroupInlineVariants>;

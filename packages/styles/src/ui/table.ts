@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const tableVariants = tv({
   base: ["group/table", "w-full", "caption-bottom", "text-foreground text-sm"],
@@ -50,3 +50,12 @@ export const tableCaptionVariants = tv({
 export const tableWrapperVariants = tv({
   base: ["relative w-full overflow-auto"],
 });
+export type TableVariantProps = VariantProps<typeof tableVariants>;
+export type TableHeaderVariantProps = VariantProps<typeof tableHeaderVariants>;
+export type TableBodyVariantProps = VariantProps<typeof tableBodyVariants>;
+export type TableFooterVariantProps = VariantProps<typeof tableFooterVariants>;
+export type TableRowVariantProps = VariantProps<typeof tableRowVariants>;
+export type TableHeadVariantProps = VariantProps<typeof tableHeadVariants>;
+export type TableCellVariantProps = VariantProps<typeof tableCellVariants>;
+export type TableCaptionVariantProps = VariantProps<typeof tableCaptionVariants>;
+export type TableWrapperVariantProps = VariantProps<typeof tableWrapperVariants>;

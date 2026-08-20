@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const kbdVariants = tv({
   base: [
@@ -25,3 +25,5 @@ export const kbdVariants = tv({
 export const kbdGroupVariants = tv({
   base: ["inline-flex items-center gap-1"],
 });
+export type KbdVariantProps = VariantProps<typeof kbdVariants>;
+export type KbdGroupVariantProps = VariantProps<typeof kbdGroupVariants>;

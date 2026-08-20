@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const textareaVariants = tv({
   slots: {
@@ -24,3 +24,5 @@ export const textareaVariants = tv({
 export const textareaInlineVariants = tv({
   base: ["absolute top-1.5 right-1.5 self-start p-0"],
 });
+export type TextareaVariantProps = VariantProps<typeof textareaVariants>;
+export type TextareaInlineVariantProps = VariantProps<typeof textareaInlineVariants>;

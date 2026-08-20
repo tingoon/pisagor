@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const timelineVariants = tv({
   base: ["group/timeline", "relative flex"],
@@ -51,3 +51,10 @@ export const timelineTitleVariants = tv({
 export const timelineDescriptionVariants = tv({
   base: ["text-muted-foreground text-sm"],
 });
+export type TimelineVariantProps = VariantProps<typeof timelineVariants>;
+export type TimelineItemVariantProps = VariantProps<typeof timelineItemVariants>;
+export type TimelineIndicatorVariantProps = VariantProps<typeof timelineIndicatorVariants>;
+export type TimelineSeparatorVariantProps = VariantProps<typeof timelineSeparatorVariants>;
+export type TimelineContentVariantProps = VariantProps<typeof timelineContentVariants>;
+export type TimelineTitleVariantProps = VariantProps<typeof timelineTitleVariants>;
+export type TimelineDescriptionVariantProps = VariantProps<typeof timelineDescriptionVariants>;

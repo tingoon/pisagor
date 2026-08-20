@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const cardMediaVariants = tv({
   base: ["flex shrink-0 items-center gap-2", "[&_svg]:pointer-events-none", "px-(--space)"],
@@ -61,3 +61,11 @@ export const cardFooterVariants = tv({
     "py-(--space)",
   ],
 });
+export type CardMediaVariantProps = VariantProps<typeof cardMediaVariants>;
+export type CardVariantProps = VariantProps<typeof cardVariants>;
+export type CardHeaderVariantProps = VariantProps<typeof cardHeaderVariants>;
+export type CardTitleVariantProps = VariantProps<typeof cardTitleVariants>;
+export type CardDescriptionVariantProps = VariantProps<typeof cardDescriptionVariants>;
+export type CardActionVariantProps = VariantProps<typeof cardActionVariants>;
+export type CardContentVariantProps = VariantProps<typeof cardContentVariants>;
+export type CardFooterVariantProps = VariantProps<typeof cardFooterVariants>;

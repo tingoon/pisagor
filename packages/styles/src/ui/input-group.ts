@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const inputGroupAddonVariants = tv({
   base: [
@@ -94,3 +94,10 @@ export const inputGroupTextareaControlVariants = tv({
     "dark:bg-transparent dark:disabled:bg-transparent",
   ],
 });
+export type InputGroupAddonVariantProps = VariantProps<typeof inputGroupAddonVariants>;
+export type InputGroupButtonVariantProps = VariantProps<typeof inputGroupButtonVariants>;
+export type InputGroupTextVariantProps = VariantProps<typeof inputGroupTextVariants>;
+export type InputGroupControlVariantProps = VariantProps<typeof inputGroupControlVariants>;
+export type InputGroupTextareaControlVariantProps = VariantProps<
+  typeof inputGroupTextareaControlVariants
+>;

@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const collapsibleVariants = tv({
   base: "group/collapsible",
@@ -31,3 +31,8 @@ export const collapsibleIndicatorVariants = tv({
 export const collapsibleInlineVariants = tv({
   base: ["transition-transform duration-200 motion-reduce:transition-none!"],
 });
+export type CollapsibleVariantProps = VariantProps<typeof collapsibleVariants>;
+export type CollapsibleTriggerVariantProps = VariantProps<typeof collapsibleTriggerVariants>;
+export type CollapsibleContentVariantProps = VariantProps<typeof collapsibleContentVariants>;
+export type CollapsibleIndicatorVariantProps = VariantProps<typeof collapsibleIndicatorVariants>;
+export type CollapsibleInlineVariantProps = VariantProps<typeof collapsibleInlineVariants>;

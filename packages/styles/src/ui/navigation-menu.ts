@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const navigationMenuVariants = tv({
   slots: {
@@ -18,3 +18,4 @@ export const navigationMenuVariants = tv({
     root: ["group/navigation-menu", "w-full"],
   },
 });
+export type NavigationMenuVariantProps = VariantProps<typeof navigationMenuVariants>;

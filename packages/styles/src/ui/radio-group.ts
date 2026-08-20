@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const radioGroupVariants = tv({
   base: [
@@ -17,3 +17,6 @@ export const radioGroupItemControlVariants = tv({
     "data-invalid:data-[state=checked]:bg-transparent data-invalid:data-[state=checked]:before:bg-destructive-foreground",
   ],
 });
+export type RadioGroupVariantProps = VariantProps<typeof radioGroupVariants>;
+export type RadioGroupItemVariantProps = VariantProps<typeof radioGroupItemVariants>;
+export type RadioGroupItemControlVariantProps = VariantProps<typeof radioGroupItemControlVariants>;

@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const drawerOverlayVariants = tv({
   base: [
@@ -157,3 +157,17 @@ export const drawerInlineVariants = tv({
 export const drawerGrabberIndicatorVariants = tv({
   base: ["size-full rounded-full"],
 });
+export type DrawerOverlayVariantProps = VariantProps<typeof drawerOverlayVariants>;
+export type DrawerPositionerVariantProps = VariantProps<typeof drawerPositionerVariants>;
+export type DrawerContentVariantProps = VariantProps<typeof drawerContentVariants>;
+export type DrawerContentInnerVariantProps = VariantProps<typeof drawerContentInnerVariants>;
+export type DrawerGrabberVariantProps = VariantProps<typeof drawerGrabberVariants>;
+export type DrawerHeaderVariantProps = VariantProps<typeof drawerHeaderVariants>;
+export type DrawerTitleVariantProps = VariantProps<typeof drawerTitleVariants>;
+export type DrawerDescriptionVariantProps = VariantProps<typeof drawerDescriptionVariants>;
+export type DrawerBodyVariantProps = VariantProps<typeof drawerBodyVariants>;
+export type DrawerFooterVariantProps = VariantProps<typeof drawerFooterVariants>;
+export type DrawerInlineVariantProps = VariantProps<typeof drawerInlineVariants>;
+export type DrawerGrabberIndicatorVariantProps = VariantProps<
+  typeof drawerGrabberIndicatorVariants
+>;

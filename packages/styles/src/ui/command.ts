@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const commandDialogContentVariants = tv({
   base: ["max-sm:row-start-1", "border-0 p-0"],
@@ -68,3 +68,15 @@ export const commandInline4Variants = tv({
 export const commandInline5Variants = tv({
   base: ["max-h-72 min-h-0 flex-1"],
 });
+export type CommandDialogContentVariantProps = VariantProps<typeof commandDialogContentVariants>;
+export type CommandInlineVariantProps = VariantProps<typeof commandInlineVariants>;
+export type CommandContentVariantProps = VariantProps<typeof commandContentVariants>;
+export type ComboboxControlVariantProps = VariantProps<typeof comboboxControlVariants>;
+export type CommandInline2VariantProps = VariantProps<typeof commandInline2Variants>;
+export type CommandListVariantProps = VariantProps<typeof commandListVariants>;
+export type CommandEmptyVariantProps = VariantProps<typeof commandEmptyVariants>;
+export type CommandSeparatorVariantProps = VariantProps<typeof commandSeparatorVariants>;
+export type CommandFooterVariantProps = VariantProps<typeof commandFooterVariants>;
+export type CommandInline3VariantProps = VariantProps<typeof commandInline3Variants>;
+export type CommandInline4VariantProps = VariantProps<typeof commandInline4Variants>;
+export type CommandInline5VariantProps = VariantProps<typeof commandInline5Variants>;

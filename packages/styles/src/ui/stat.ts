@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const statVariants = tv({
   defaultVariants: {
@@ -48,3 +48,5 @@ export const statTrendVariants = tv({
     },
   },
 });
+export type StatVariantProps = VariantProps<typeof statVariants>;
+export type StatTrendVariantProps = VariantProps<typeof statTrendVariants>;

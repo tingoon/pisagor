@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const switchVariants = tv({
   compoundVariants: [
@@ -82,3 +82,4 @@ export const switchVariants = tv({
     },
   },
 });
+export type SwitchVariantProps = VariantProps<typeof switchVariants>;

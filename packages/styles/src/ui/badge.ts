@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const badgeVariants = tv({
   base: [
@@ -86,3 +86,4 @@ export const badgeVariants = tv({
     },
   },
 });
+export type BadgeVariantProps = VariantProps<typeof badgeVariants>;

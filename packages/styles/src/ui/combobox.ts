@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const comboboxItemVariants = tv({
   base: [
@@ -79,3 +79,13 @@ export const comboboxInline2Variants = tv({
 export const comboboxInline3Variants = tv({
   base: ["absolute inset-e-2 flex size-3.5 items-center justify-center"],
 });
+export type ComboboxItemVariantProps = VariantProps<typeof comboboxItemVariants>;
+export type ComboboxControlVariantProps = VariantProps<typeof comboboxControlVariants>;
+export type ComboboxTriggerVariantProps = VariantProps<typeof comboboxTriggerVariants>;
+export type ComboboxContentVariantProps = VariantProps<typeof comboboxContentVariants>;
+export type ComboboxGroupLabelVariantProps = VariantProps<typeof comboboxGroupLabelVariants>;
+export type ComboboxEmptyVariantProps = VariantProps<typeof comboboxEmptyVariants>;
+export type ComboboxListVariantProps = VariantProps<typeof comboboxListVariants>;
+export type ComboboxInlineVariantProps = VariantProps<typeof comboboxInlineVariants>;
+export type ComboboxInline2VariantProps = VariantProps<typeof comboboxInline2Variants>;
+export type ComboboxInline3VariantProps = VariantProps<typeof comboboxInline3Variants>;

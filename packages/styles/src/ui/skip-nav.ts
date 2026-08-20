@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const skipNavLinkVariants = tv({
   base: [
@@ -15,3 +15,5 @@ export const skipNavLinkVariants = tv({
 export const skipNavContentVariants = tv({
   base: "outline-hidden",
 });
+export type SkipNavLinkVariantProps = VariantProps<typeof skipNavLinkVariants>;
+export type SkipNavContentVariantProps = VariantProps<typeof skipNavContentVariants>;

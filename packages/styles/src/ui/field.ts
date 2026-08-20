@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const fieldVariants = tv({
   base: [
@@ -117,3 +117,18 @@ export const fieldErrorVariants = tv({
 export const fieldInlineVariants = tv({
   base: ["absolute inset-0 top-1/2"],
 });
+export type FieldVariantProps = VariantProps<typeof fieldVariants>;
+export type FieldSetVariantProps = VariantProps<typeof fieldSetVariants>;
+export type FieldLegendVariantProps = VariantProps<typeof fieldLegendVariants>;
+export type FieldGroupVariantProps = VariantProps<typeof fieldGroupVariants>;
+export type FieldContentVariantProps = VariantProps<typeof fieldContentVariants>;
+export type FieldLabelVariantProps = VariantProps<typeof fieldLabelVariants>;
+export type FieldRequiredIndicatorVariantProps = VariantProps<
+  typeof fieldRequiredIndicatorVariants
+>;
+export type FieldTitleVariantProps = VariantProps<typeof fieldTitleVariants>;
+export type FieldDescriptionVariantProps = VariantProps<typeof fieldDescriptionVariants>;
+export type FieldSeparatorVariantProps = VariantProps<typeof fieldSeparatorVariants>;
+export type FieldHelperVariantProps = VariantProps<typeof fieldHelperVariants>;
+export type FieldErrorVariantProps = VariantProps<typeof fieldErrorVariants>;
+export type FieldInlineVariantProps = VariantProps<typeof fieldInlineVariants>;

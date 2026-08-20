@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const marqueeVariants = tv({
   base: ["group/marquee", "relative", "w-full max-w-full", "isolate"],
@@ -37,3 +37,8 @@ export const marqueeEdgeVariants = tv({
 export const marqueeViewportVariants = tv({
   base: ["flex overflow-hidden"],
 });
+export type MarqueeVariantProps = VariantProps<typeof marqueeVariants>;
+export type MarqueeContentVariantProps = VariantProps<typeof marqueeContentVariants>;
+export type MarqueeItemVariantProps = VariantProps<typeof marqueeItemVariants>;
+export type MarqueeEdgeVariantProps = VariantProps<typeof marqueeEdgeVariants>;
+export type MarqueeViewportVariantProps = VariantProps<typeof marqueeViewportVariants>;

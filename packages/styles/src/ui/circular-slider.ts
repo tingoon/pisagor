@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const circularSliderVariants = tv({
   slots: {
@@ -38,3 +38,4 @@ export const circularSliderVariants = tv({
     value: ["gap-1", "tabular-nums", "[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0"],
   },
 });
+export type CircularSliderVariantProps = VariantProps<typeof circularSliderVariants>;

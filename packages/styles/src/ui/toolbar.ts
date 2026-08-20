@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const toolbarVariants = tv({
   slots: {
@@ -9,3 +9,4 @@ export const toolbarVariants = tv({
     title: ["font-medium text-foreground text-lg/6"],
   },
 });
+export type ToolbarVariantProps = VariantProps<typeof toolbarVariants>;

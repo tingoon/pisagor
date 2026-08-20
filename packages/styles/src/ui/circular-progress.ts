@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const circularProgressVariants = tv({
   slots: {
@@ -19,3 +19,4 @@ export const circularProgressVariants = tv({
     valueWrapper: ["pointer-events-none absolute inset-0 flex items-center justify-center"],
   },
 });
+export type CircularProgressVariantProps = VariantProps<typeof circularProgressVariants>;

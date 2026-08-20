@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const accordionItemVariants = tv({
   base: "flex flex-col border-b last:border-b-0",
@@ -43,3 +43,8 @@ export const accordionContentVariants = tv({
 export const accordionContentBodyVariants = tv({
   base: "pt-0 pb-4",
 });
+export type AccordionItemVariantProps = VariantProps<typeof accordionItemVariants>;
+export type AccordionTriggerVariantProps = VariantProps<typeof accordionTriggerVariants>;
+export type AccordionIndicatorVariantProps = VariantProps<typeof accordionIndicatorVariants>;
+export type AccordionContentVariantProps = VariantProps<typeof accordionContentVariants>;
+export type AccordionContentBodyVariantProps = VariantProps<typeof accordionContentBodyVariants>;

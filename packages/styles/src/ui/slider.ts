@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const sliderVariants = tv({
   slots: {
@@ -66,3 +66,4 @@ export const sliderVariants = tv({
     value: ["ms-auto tabular-nums"],
   },
 });
+export type SliderVariantProps = VariantProps<typeof sliderVariants>;

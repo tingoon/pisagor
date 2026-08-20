@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const menuVariants = tv({
   slots: {
@@ -72,3 +72,7 @@ export const menuItemWrapperVariants = tv({
 export const menuItemWrapper2Variants = tv({
   base: "list-none",
 });
+export type MenuVariantProps = VariantProps<typeof menuVariants>;
+export type MenuItemVariantProps = VariantProps<typeof menuItemVariants>;
+export type MenuItemWrapperVariantProps = VariantProps<typeof menuItemWrapperVariants>;
+export type MenuItemWrapper2VariantProps = VariantProps<typeof menuItemWrapper2Variants>;

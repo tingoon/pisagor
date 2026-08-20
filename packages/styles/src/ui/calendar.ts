@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const calendarVariants = tv({
   base: ["[--cell-size:--spacing(9)]", "w-fit"],
@@ -129,3 +129,33 @@ export const calendarSelectLayoutVariants = tv({
     "motion-reduce:transition-none!",
   ],
 });
+export type CalendarVariantProps = VariantProps<typeof calendarVariants>;
+export type CalendarRangeTextVariantProps = VariantProps<typeof calendarRangeTextVariants>;
+export type CalendarYearSelectWrapperVariantProps = VariantProps<
+  typeof calendarYearSelectWrapperVariants
+>;
+export type CalendarYearSelectIconVariantProps = VariantProps<
+  typeof calendarYearSelectIconVariants
+>;
+export type CalendarMonthSelectWrapperVariantProps = VariantProps<
+  typeof calendarMonthSelectWrapperVariants
+>;
+export type CalendarMonthSelectIconVariantProps = VariantProps<
+  typeof calendarMonthSelectIconVariants
+>;
+export type CalendarViewVariantProps = VariantProps<typeof calendarViewVariants>;
+export type CalendarViewControlVariantProps = VariantProps<typeof calendarViewControlVariants>;
+export type CalendarTableVariantProps = VariantProps<typeof calendarTableVariants>;
+export type CalendarTableRowVariantProps = VariantProps<typeof calendarTableRowVariants>;
+export type CalendarTableHeaderVariantProps = VariantProps<typeof calendarTableHeaderVariants>;
+export type CalendarTableCellVariantProps = VariantProps<typeof calendarTableCellVariants>;
+export type CalendarTableCellTriggerVariantProps = VariantProps<
+  typeof calendarTableCellTriggerVariants
+>;
+export type CalendarControlVariantProps = VariantProps<typeof calendarControlVariants>;
+export type CalendarLabelVariantProps = VariantProps<typeof calendarLabelVariants>;
+export type CalendarInlineVariantProps = VariantProps<typeof calendarInlineVariants>;
+export type CalendarInline2VariantProps = VariantProps<typeof calendarInline2Variants>;
+export type CalendarInline3VariantProps = VariantProps<typeof calendarInline3Variants>;
+export type CalendarInline4VariantProps = VariantProps<typeof calendarInline4Variants>;
+export type CalendarSelectLayoutVariantProps = VariantProps<typeof calendarSelectLayoutVariants>;

@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const dropdownMenuContentVariants = tv({
   base: [
@@ -103,3 +103,23 @@ export const dropdownMenuRadioItemTextVariants = tv({
 export const dropdownMenuInline5Variants = tv({
   base: ["border-s border-t"],
 });
+export type DropdownMenuContentVariantProps = VariantProps<typeof dropdownMenuContentVariants>;
+export type DropdownMenuItemVariantProps = VariantProps<typeof dropdownMenuItemVariants>;
+export type DropdownMenuPositionerVariantProps = VariantProps<
+  typeof dropdownMenuPositionerVariants
+>;
+export type DropdownMenuSeparatorVariantProps = VariantProps<typeof dropdownMenuSeparatorVariants>;
+export type DropdownMenuQuickItemVariantProps = VariantProps<typeof dropdownMenuQuickItemVariants>;
+export type DropdownMenuInlineVariantProps = VariantProps<typeof dropdownMenuInlineVariants>;
+export type DropdownMenuGroupLabelVariantProps = VariantProps<
+  typeof dropdownMenuGroupLabelVariants
+>;
+export type DropdownMenuRadioItemVariantProps = VariantProps<typeof dropdownMenuRadioItemVariants>;
+export type DropdownMenuShortcutVariantProps = VariantProps<typeof dropdownMenuShortcutVariants>;
+export type DropdownMenuInline2VariantProps = VariantProps<typeof dropdownMenuInline2Variants>;
+export type DropdownMenuInline3VariantProps = VariantProps<typeof dropdownMenuInline3Variants>;
+export type DropdownMenuInline4VariantProps = VariantProps<typeof dropdownMenuInline4Variants>;
+export type DropdownMenuRadioItemTextVariantProps = VariantProps<
+  typeof dropdownMenuRadioItemTextVariants
+>;
+export type DropdownMenuInline5VariantProps = VariantProps<typeof dropdownMenuInline5Variants>;

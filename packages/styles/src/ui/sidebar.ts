@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const sidebarWrapperVariants = tv({
   base: ["group/sidebar-wrapper", "flex", "min-h-svh w-full", "has-data-[variant=inset]:bg-muted"],
@@ -280,3 +280,38 @@ export const sidebarInline6Variants = tv({
 export const sidebarInline7Variants = tv({
   base: ["h-4 max-w-(--skeleton-width) flex-1"],
 });
+export type SidebarWrapperVariantProps = VariantProps<typeof sidebarWrapperVariants>;
+export type SidebarVariantProps = VariantProps<typeof sidebarVariants>;
+export type Sidebar2VariantProps = VariantProps<typeof sidebar2Variants>;
+export type Sidebar3VariantProps = VariantProps<typeof sidebar3Variants>;
+export type SidebarGapVariantProps = VariantProps<typeof sidebarGapVariants>;
+export type SidebarContainerVariantProps = VariantProps<typeof sidebarContainerVariants>;
+export type SidebarInnerVariantProps = VariantProps<typeof sidebarInnerVariants>;
+export type SidebarTriggerVariantProps = VariantProps<typeof sidebarTriggerVariants>;
+export type SidebarRailVariantProps = VariantProps<typeof sidebarRailVariants>;
+export type SidebarInsetVariantProps = VariantProps<typeof sidebarInsetVariants>;
+export type SidebarInputVariantProps = VariantProps<typeof sidebarInputVariants>;
+export type SidebarHeaderVariantProps = VariantProps<typeof sidebarHeaderVariants>;
+export type SidebarFooterVariantProps = VariantProps<typeof sidebarFooterVariants>;
+export type SidebarSeparatorVariantProps = VariantProps<typeof sidebarSeparatorVariants>;
+export type SidebarContentVariantProps = VariantProps<typeof sidebarContentVariants>;
+export type SidebarGroupVariantProps = VariantProps<typeof sidebarGroupVariants>;
+export type SidebarGroupLabelVariantProps = VariantProps<typeof sidebarGroupLabelVariants>;
+export type SidebarGroupActionVariantProps = VariantProps<typeof sidebarGroupActionVariants>;
+export type SidebarGroupContentVariantProps = VariantProps<typeof sidebarGroupContentVariants>;
+export type SidebarMenuVariantProps = VariantProps<typeof sidebarMenuVariants>;
+export type SidebarMenuItemVariantProps = VariantProps<typeof sidebarMenuItemVariants>;
+export type SidebarMenuButtonVariantProps = VariantProps<typeof sidebarMenuButtonVariants>;
+export type SidebarMenuActionVariantProps = VariantProps<typeof sidebarMenuActionVariants>;
+export type SidebarMenuBadgeVariantProps = VariantProps<typeof sidebarMenuBadgeVariants>;
+export type SidebarMenuSkeletonVariantProps = VariantProps<typeof sidebarMenuSkeletonVariants>;
+export type SidebarMenuSubVariantProps = VariantProps<typeof sidebarMenuSubVariants>;
+export type SidebarMenuSubItemVariantProps = VariantProps<typeof sidebarMenuSubItemVariants>;
+export type SidebarMenuSubButtonVariantProps = VariantProps<typeof sidebarMenuSubButtonVariants>;
+export type SidebarInlineVariantProps = VariantProps<typeof sidebarInlineVariants>;
+export type SidebarInline2VariantProps = VariantProps<typeof sidebarInline2Variants>;
+export type SidebarInline3VariantProps = VariantProps<typeof sidebarInline3Variants>;
+export type SidebarInline4VariantProps = VariantProps<typeof sidebarInline4Variants>;
+export type SidebarInline5VariantProps = VariantProps<typeof sidebarInline5Variants>;
+export type SidebarInline6VariantProps = VariantProps<typeof sidebarInline6Variants>;
+export type SidebarInline7VariantProps = VariantProps<typeof sidebarInline7Variants>;

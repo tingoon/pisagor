@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 import { formControlShellVariants } from "./form-control";
 
@@ -16,3 +16,5 @@ export const inputVariants = tv({
     ],
   },
 });
+export type InputRootVariantProps = VariantProps<typeof inputRootVariants>;
+export type InputVariantProps = VariantProps<typeof inputVariants>;

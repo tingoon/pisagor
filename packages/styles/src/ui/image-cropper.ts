@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const imageCropperVariants = tv({
   base: [
@@ -76,3 +76,10 @@ export const imageCropperGridVariants = tv({
 export const imageCropperInlineVariants = tv({
   base: ["block size-(--cropper-handler-size)"],
 });
+export type ImageCropperVariantProps = VariantProps<typeof imageCropperVariants>;
+export type ImageCropperViewportVariantProps = VariantProps<typeof imageCropperViewportVariants>;
+export type ImageCropperImageVariantProps = VariantProps<typeof imageCropperImageVariants>;
+export type ImageCropperSelectionVariantProps = VariantProps<typeof imageCropperSelectionVariants>;
+export type ImageCropperHandleVariantProps = VariantProps<typeof imageCropperHandleVariants>;
+export type ImageCropperGridVariantProps = VariantProps<typeof imageCropperGridVariants>;
+export type ImageCropperInlineVariantProps = VariantProps<typeof imageCropperInlineVariants>;

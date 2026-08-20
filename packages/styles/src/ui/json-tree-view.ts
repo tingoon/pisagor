@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const jsonTreeViewVariants = tv({
   slots: {
@@ -35,3 +35,4 @@ export const jsonTreeViewVariants = tv({
     ],
   },
 });
+export type JsonTreeViewVariantProps = VariantProps<typeof jsonTreeViewVariants>;

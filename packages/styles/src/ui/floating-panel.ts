@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const floatingPanelContentVariants = tv({
   base: [
@@ -71,3 +71,14 @@ export const floatingPanelInline3Variants = tv({
 export const floatingPanelInline4Variants = tv({
   base: ["hidden group-data-minimized/floating-panel:block"],
 });
+export type FloatingPanelContentVariantProps = VariantProps<typeof floatingPanelContentVariants>;
+export type FloatingPanelInlineVariantProps = VariantProps<typeof floatingPanelInlineVariants>;
+export type FloatingPanelInline2VariantProps = VariantProps<typeof floatingPanelInline2Variants>;
+export type FloatingPanelTitleVariantProps = VariantProps<typeof floatingPanelTitleVariants>;
+export type FloatingPanelBodyVariantProps = VariantProps<typeof floatingPanelBodyVariants>;
+export type FloatingPanelFooterVariantProps = VariantProps<typeof floatingPanelFooterVariants>;
+export type FloatingPanelPositionerVariantProps = VariantProps<
+  typeof floatingPanelPositionerVariants
+>;
+export type FloatingPanelInline3VariantProps = VariantProps<typeof floatingPanelInline3Variants>;
+export type FloatingPanelInline4VariantProps = VariantProps<typeof floatingPanelInline4Variants>;

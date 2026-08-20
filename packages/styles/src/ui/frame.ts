@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const frameVariants = tv({
   base: [
@@ -30,3 +30,9 @@ export const framePanelDescriptionVariants = tv({
 export const framePanelFooterVariants = tv({
   base: ["px-5 py-4"],
 });
+export type FrameVariantProps = VariantProps<typeof frameVariants>;
+export type FramePanelVariantProps = VariantProps<typeof framePanelVariants>;
+export type FramePanelHeaderVariantProps = VariantProps<typeof framePanelHeaderVariants>;
+export type FramePanelTitleVariantProps = VariantProps<typeof framePanelTitleVariants>;
+export type FramePanelDescriptionVariantProps = VariantProps<typeof framePanelDescriptionVariants>;
+export type FramePanelFooterVariantProps = VariantProps<typeof framePanelFooterVariants>;

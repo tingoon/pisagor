@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const dataListVariants = tv({
   slots: {
@@ -16,3 +16,4 @@ export const dataListVariants = tv({
     value: ["flex-1", "text-foreground"],
   },
 });
+export type DataListVariantProps = VariantProps<typeof dataListVariants>;

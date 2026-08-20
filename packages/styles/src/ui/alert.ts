@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const alertVariants = tv({
   defaultVariants: {
@@ -72,3 +72,4 @@ export const alertVariants = tv({
     },
   },
 });
+export type AlertVariantProps = VariantProps<typeof alertVariants>;

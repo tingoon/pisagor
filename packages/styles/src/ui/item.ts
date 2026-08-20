@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const itemVariants = tv({
   base: [
@@ -91,3 +91,14 @@ export const itemFooterVariants = tv({
 export const itemInlineVariants = tv({
   base: ["flex flex-col gap-0.5"],
 });
+export type ItemVariantProps = VariantProps<typeof itemVariants>;
+export type ItemMediaVariantProps = VariantProps<typeof itemMediaVariants>;
+export type ItemGroupVariantProps = VariantProps<typeof itemGroupVariants>;
+export type ItemSeparatorVariantProps = VariantProps<typeof itemSeparatorVariants>;
+export type ItemContentVariantProps = VariantProps<typeof itemContentVariants>;
+export type ItemTitleVariantProps = VariantProps<typeof itemTitleVariants>;
+export type ItemDescriptionVariantProps = VariantProps<typeof itemDescriptionVariants>;
+export type ItemActionsVariantProps = VariantProps<typeof itemActionsVariants>;
+export type ItemHeaderVariantProps = VariantProps<typeof itemHeaderVariants>;
+export type ItemFooterVariantProps = VariantProps<typeof itemFooterVariants>;
+export type ItemInlineVariantProps = VariantProps<typeof itemInlineVariants>;
