@@ -18,10 +18,10 @@ const meta = preview.meta({
     },
   },
   subcomponents: {
-    Content: Accordion.Content,
     Item: Accordion.Item,
+    ItemContent: Accordion.ItemContent,
+    ItemTrigger: Accordion.ItemTrigger,
     Root: Accordion.Root,
-    Trigger: Accordion.Trigger,
   },
   title: "Components/Layout/Accordion",
 });
@@ -105,8 +105,8 @@ export const Compound = meta.story({
   render: () => (
     <Accordion.Root defaultValue={["item-1"]}>
       <Accordion.Item value="item-1">
-        <Accordion.Trigger>Product information</Accordion.Trigger>
-        <Accordion.Content className="flex flex-col gap-2 text-muted-foreground">
+        <Accordion.ItemTrigger>Product information</Accordion.ItemTrigger>
+        <Accordion.ItemContent className="flex flex-col gap-2 text-muted-foreground">
           <p>
             Our flagship product combines cutting-edge technology with sleek design. Built with
             premium materials, it offers unparalleled performance and reliability.
@@ -115,25 +115,25 @@ export const Compound = meta.story({
             Key features include advanced processing capabilities, and an intuitive user interface
             designed for both beginners and experts.
           </p>
-        </Accordion.Content>
+        </Accordion.ItemContent>
       </Accordion.Item>
       <Accordion.Item value="item-2">
-        <Accordion.Trigger>Shipping details</Accordion.Trigger>
-        <Accordion.Content className="flex flex-col gap-2 text-muted-foreground">
+        <Accordion.ItemTrigger>Shipping details</Accordion.ItemTrigger>
+        <Accordion.ItemContent className="flex flex-col gap-2 text-muted-foreground">
           <p>
             We offer worldwide shipping through trusted courier partners. Standard delivery takes 3
             to 5 business days, while express shipping ensures delivery within 1 to 2 business days.
           </p>
-        </Accordion.Content>
+        </Accordion.ItemContent>
       </Accordion.Item>
       <Accordion.Item value="item-3">
-        <Accordion.Trigger>Return policy</Accordion.Trigger>
-        <Accordion.Content className="flex flex-col gap-2 text-muted-foreground">
+        <Accordion.ItemTrigger>Return policy</Accordion.ItemTrigger>
+        <Accordion.ItemContent className="flex flex-col gap-2 text-muted-foreground">
           <p>
             We stand behind our products with a comprehensive 30-day return policy. If you&apos;re
             not completely satisfied, return the item in its original condition.
           </p>
-        </Accordion.Content>
+        </Accordion.ItemContent>
       </Accordion.Item>
     </Accordion.Root>
   ),

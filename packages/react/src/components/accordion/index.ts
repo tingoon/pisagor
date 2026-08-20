@@ -1,22 +1,22 @@
 import {
-  AccordionContent,
   AccordionItem,
+  AccordionItemContent,
+  AccordionItemTrigger,
   AccordionRoot,
   AccordionShorthand,
-  AccordionTrigger,
 } from "./accordion";
 
 export type {
-  AccordionContentProps,
+  AccordionItemContentProps,
   AccordionItemProps,
+  AccordionItemTriggerProps,
   AccordionProps,
   AccordionRootProps,
-  AccordionTriggerProps,
 } from "./accordion";
 
 export const Accordion = Object.assign(AccordionShorthand, {
-  Content: AccordionContent,
   Item: AccordionItem,
+  ItemContent: AccordionItemContent,
+  ItemTrigger: AccordionItemTrigger,
   Root: AccordionRoot,
-  Trigger: AccordionTrigger,
 });

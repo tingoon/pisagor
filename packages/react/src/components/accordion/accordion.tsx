@@ -1,9 +1,9 @@
 import { Accordion as AccordionPrimitive } from "@ark-ui/react/accordion";
 import { CaretDownIcon } from "@phosphor-icons/react";
 import {
-  accordionContentVariants,
+  accordionItemContentVariants,
+  accordionItemTriggerVariants,
   accordionItemVariants,
-  accordionTriggerVariants,
 } from "@pisagor/styles/accordion";
 import type { ComponentProps, ReactNode } from "react";
 import type { WithTestId } from "../../internal/types";
@@ -20,9 +20,9 @@ export type AccordionRootProps = ComponentProps<typeof AccordionPrimitive.Root> 
 
 export type AccordionItemProps = ComponentProps<typeof AccordionPrimitive.Item>;
 
-export type AccordionTriggerProps = ComponentProps<typeof AccordionPrimitive.ItemTrigger>;
+export type AccordionItemTriggerProps = ComponentProps<typeof AccordionPrimitive.ItemTrigger>;
 
-export type AccordionContentProps = ComponentProps<typeof AccordionPrimitive.ItemContent>;
+export type AccordionItemContentProps = ComponentProps<typeof AccordionPrimitive.ItemContent>;
 
 export interface AccordionProps extends Omit<AccordionRootProps, "children"> {
   items?: AccordionPresetItem[];
@@ -55,8 +55,8 @@ export function AccordionItem({ className, ...rest }: AccordionItemProps) {
   return <AccordionPrimitive.Item {...rest} className={accordionItemVariants({ className })} />;
 }
 
-export function AccordionTrigger({ className, children, ...rest }: AccordionTriggerProps) {
-  const recipe = accordionTriggerVariants();
+export function AccordionItemTrigger({ className, children, ...rest }: AccordionItemTriggerProps) {
+  const recipe = accordionItemTriggerVariants();
 
   return (
     <AccordionPrimitive.ItemTrigger {...rest} className={recipe.base({ className })}>
@@ -69,8 +69,8 @@ export function AccordionTrigger({ className, children, ...rest }: AccordionTrig
   );
 }
 
-export function AccordionContent({ className, children, ...rest }: AccordionContentProps) {
-  const recipe = accordionContentVariants();
+export function AccordionItemContent({ className, children, ...rest }: AccordionItemContentProps) {
+  const recipe = accordionItemContentVariants();
 
   return (
     <AccordionPrimitive.ItemContent {...rest} className={recipe.base({ className })}>
@@ -86,8 +86,8 @@ export function AccordionShorthand({ items, ...rest }: AccordionProps) {
     <AccordionRoot {...rest}>
       {items?.map((item) => (
         <AccordionItem disabled={item.disabled} key={item.value} value={item.value}>
-          <AccordionTrigger>{item.title}</AccordionTrigger>
-          <AccordionContent>{item.content}</AccordionContent>
+          <AccordionItemTrigger>{item.title}</AccordionItemTrigger>
+          <AccordionItemContent>{item.content}</AccordionItemContent>
         </AccordionItem>
       ))}
     </AccordionRoot>
@@ -98,7 +98,7 @@ export function AccordionShorthand({ items, ...rest }: AccordionProps) {
 // #region Display Names
 AccordionRoot.displayName = "Accordion.Root";
 AccordionItem.displayName = "Accordion.Item";
-AccordionTrigger.displayName = "Accordion.Trigger";
-AccordionContent.displayName = "Accordion.Content";
+AccordionItemTrigger.displayName = "Accordion.ItemTrigger";
+AccordionItemContent.displayName = "Accordion.ItemContent";
 AccordionShorthand.displayName = "Accordion";
 // #endregion
