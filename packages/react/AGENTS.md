@@ -25,6 +25,7 @@ Within this package, import sibling components with **relative paths** (`../butt
 
 Package-private helpers live under [`src/internal/`](./src/internal/) (e.g. [`internal/form-control/`](./src/internal/form-control/) for Surface shell resolution). Do not re-export them from component barrels or `@pisagor/react/hooks`.
 
+Compound shared React context lives in `<name>.context.tsx` beside the main file — see [React Component Patterns → Context file](../../.cursor/rules/integrations/react-component.mdc#context-file-namecontexttsx).
 ## Component Taxonomy
 
 - **Primitive**: low-level wrappers over Ark UI or DOM primitives; narrowly scoped behavior and styling surface.
