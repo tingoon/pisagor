@@ -4,30 +4,15 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils/create-context";
+import { SurfaceContext, type SurfaceVariant, useSurface } from "./surface.context";
 
 // #region Types
-
-export type SurfaceVariant = NonNullable<SurfaceVariantProps["variant"]>;
-
-export interface SurfaceContextValue {
-  depth: number;
-  variant: SurfaceVariant;
-}
-
 const AUTO_VARIANTS = [
   "default",
   "secondary",
   "tertiary",
   "tertiary",
 ] as const satisfies readonly SurfaceVariant[];
-
-const [SurfaceContext, useSurface] = createContext<SurfaceContextValue>({
-  name: "Surface",
-  strict: false,
-});
-
-export { useSurface };
 
 export interface SurfaceProps
   extends ComponentProps<typeof ark.div>,

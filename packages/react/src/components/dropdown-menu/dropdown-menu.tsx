@@ -22,7 +22,7 @@ import {
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils";
+import { DropdownMenuRootContext, useDropdownMenuRoot } from "./dropdown-menu.context";
 
 // #region Types
 export interface DropdownMenuGroupProps extends ComponentProps<typeof MenuPrimitive.ItemGroup> {
@@ -61,15 +61,6 @@ export type DropdownMenuArrowProps = ComponentProps<typeof MenuPrimitive.Arrow>;
 export type DropdownMenuSeparatorProps = ComponentProps<typeof MenuPrimitive.Separator>;
 
 export type DropdownMenuSubTriggerProps = ComponentProps<typeof MenuPrimitive.TriggerItem>;
-// #endregion
-
-// #region Context
-const [DropdownMenuRootContext, useDropdownMenuRoot] = createContext<{ testId?: string }>({
-  name: "DropdownMenuRoot",
-  strict: false,
-});
-
-export { useDropdownMenuRoot };
 // #endregion
 
 // #region Parts

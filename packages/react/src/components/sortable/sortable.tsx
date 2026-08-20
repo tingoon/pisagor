@@ -19,41 +19,15 @@ import {
   useState,
 } from "react";
 import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils";
+import {
+  SortableContext,
+  SortableItemContext,
+  useSortableContext,
+  useSortableItemContext,
+} from "./sortable.context";
 
 // #region Types
 type SortableOrientation = "vertical" | "horizontal";
-
-interface SortableContextValue {
-  activeId: string | null;
-  disabled: boolean;
-  endDrag: () => void;
-  getItemProps: (id: string) => {
-    "aria-disabled"?: boolean;
-    "data-dragging"?: string;
-    "data-drop-target"?: string;
-    draggable: boolean;
-    onDragEnd: (event: DragEvent) => void;
-    onDragEnter: (event: DragEvent) => void;
-    onDragLeave: (event: DragEvent) => void;
-    onDragOver: (event: DragEvent) => void;
-    onDragStart: (event: DragEvent) => void;
-    onDrop: (event: DragEvent) => void;
-    onKeyDown: (event: KeyboardEvent) => void;
-    tabIndex: number;
-  };
-  hasHandle: (id: string) => boolean;
-  moveItem: (id: string, delta: -1 | 1) => void;
-  orientation: SortableOrientation;
-  registerHandle: (id: string) => void;
-  startDrag: (id: string, event: DragEvent) => void;
-  unregisterHandle: (id: string) => void;
-}
-
-interface SortableItemContextValue {
-  id: string;
-  isDragging: boolean;
-}
 
 export interface SortableRootProps
   extends Omit<ComponentProps<typeof ark.div>, "onDragStart">,
@@ -89,16 +63,6 @@ export interface SortableItemProps extends ComponentProps<typeof ark.div> {
 export interface SortableHandleProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
-// #region Context
-const [SortableContext, useSortableContext] = createContext<SortableContextValue>({
-  name: "Sortable",
-});
-
-const [SortableItemContext, useSortableItemContext] = createContext<SortableItemContextValue>({
-  name: "SortableItem",
-});
-// #endregion
-
 // #region Hooks
 function reorder(list: string[], from: number, to: number) {
   if (from === to || from < 0 || to < 0) {
@@ -115,13 +79,6 @@ function reorder(list: string[], from: number, to: number) {
   next.splice(to, 0, moved);
 
   return next;
-}
-
-/**
- * Access the nearest Sortable root context.
- */
-export function useSortable() {
-  return useSortableContext();
 }
 // #endregion
 

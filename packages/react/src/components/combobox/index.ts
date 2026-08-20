@@ -33,7 +33,8 @@ export type {
   ComboboxRootProps,
   ComboboxTriggerProps,
 } from "./combobox";
-export { useComboboxRoot } from "./combobox";
+
+export { useComboboxRoot } from "./combobox.context";
 
 export const Combobox = Object.assign(ComboboxShorthand, {
   Clear: ComboboxClear,

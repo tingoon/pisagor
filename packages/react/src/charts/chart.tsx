@@ -28,7 +28,7 @@ import {
   type TooltipValueType,
 } from "recharts";
 import type { WithTestId } from "../internal/types";
-import { createContext } from "../utils/create-context";
+import { ChartContext, useChart } from "./chart.context";
 import "./chart-series.css";
 
 // #region Types
@@ -82,10 +82,6 @@ export type NameType = number | string;
 
 export type TooltipType = "none";
 
-interface ChartContextProps {
-  config: ChartConfig;
-}
-
 interface ChartContainerProps extends ComponentProps<"div">, WithTestId {
   children: ComponentProps<typeof ResponsiveContainer>["children"];
   config: ChartConfig;
@@ -96,12 +92,6 @@ interface ChartStyleProps {
   config: ChartConfig;
   id: string;
 }
-// #endregion
-
-// #region Context
-const [ChartContext, useChart] = createContext<ChartContextProps>({
-  name: "Chart",
-});
 // #endregion
 
 // #region Helpers

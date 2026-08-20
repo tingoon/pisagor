@@ -37,9 +37,9 @@ import { useState } from "react";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils";
 import { Button, type ButtonProps } from "../button";
 import { InputGroup, type InputGroupButtonProps } from "../input-group";
+import { ColorPickerRootContext, useColorPickerRoot } from "./color-picker.context";
 
 // #region Types
 export type ColorPickerRootProps = Omit<
@@ -138,13 +138,6 @@ export type ColorPickerAreaThumbProps = ComponentProps<typeof ColorPickerPrimiti
 export type ColorPickerInputProps = Partial<
   ComponentProps<typeof ColorPickerPrimitive.ChannelInput>
 >;
-// #endregion
-
-// #region Context
-const [ColorPickerRootContext, useColorPickerRoot] = createContext<{ testId?: string }>({
-  name: "ColorPickerRoot",
-  strict: false,
-});
 // #endregion
 
 // #region Parts

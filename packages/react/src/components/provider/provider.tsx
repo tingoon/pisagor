@@ -2,11 +2,11 @@ import { LocaleProvider } from "@ark-ui/react";
 import { IconContext } from "@phosphor-icons/react";
 import { HotkeysProvider } from "@tanstack/react-hotkeys";
 import type { ReactNode } from "react";
-import { createContext } from "../../utils";
 import { Toaster } from "../toast";
+import { type ProviderMessages, ProviderMessagesContext } from "./provider.context";
 
 // #region Types
-export type ProviderMessages = Record<string, string>;
+export type { ProviderMessages } from "./provider.context";
 
 export interface ProviderProps {
   children: ReactNode;
@@ -24,24 +24,6 @@ export interface ProviderProps {
 }
 // #endregion
 
-// #region Context
-const [ProviderMessagesContext, useProviderMessagesContext] = createContext<ProviderMessages>({
-  defaultValue: {},
-  name: "ProviderMessages",
-  strict: false,
-});
-
-/**
- * Resolve a library message key from the nearest `Provider` message map.
- * Falls back to `fallback` when the key is missing.
- */
-export function useProviderMessage(key: string, fallback: string) {
-  const messages = useProviderMessagesContext() ?? {};
-  return messages[key] ?? fallback;
-}
-
-export { useProviderMessagesContext as useProviderMessages };
-
 const RTL_LANGS = new Set(["ar", "fa", "he", "ur"]);
 
 function resolveDir(locale: string, dir?: "ltr" | "rtl"): "ltr" | "rtl" {
@@ -51,7 +33,6 @@ function resolveDir(locale: string, dir?: "ltr" | "rtl"): "ltr" | "rtl" {
   const language = locale.split("-")[0]?.toLowerCase() ?? "en";
   return RTL_LANGS.has(language) ? "rtl" : "ltr";
 }
-// #endregion
 
 // #region Part
 export function Provider({

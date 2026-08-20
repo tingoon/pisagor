@@ -1,4 +1,4 @@
-import type { SurfaceVariant } from "../../components/surface/surface";
+import type { SurfaceVariant } from "../../components/surface/surface.context";
 
 export {
   formControlGroupShellVariants,

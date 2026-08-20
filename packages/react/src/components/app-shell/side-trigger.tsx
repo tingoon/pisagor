@@ -3,7 +3,7 @@ import { cn } from "@pisagor/utils";
 import type { ReactNode } from "react";
 import { Button, type ButtonProps } from "../button";
 import { Swap } from "../swap";
-import type { AppShellPlacement } from "./context";
+import type { AppShellPlacement } from "./app-shell.context";
 
 export function AppShellSideTrigger({
   "aria-label": ariaLabel,

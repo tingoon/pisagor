@@ -15,9 +15,9 @@ import {
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils";
 import { Button } from "../button";
 import { ScrollArea } from "../scroll-area";
+import { PopoverRootContext, usePopoverRoot } from "./popover.context";
 
 // #region Types
 export interface PopoverContentProps extends ComponentProps<typeof PopoverPrimitive.Content> {
@@ -53,13 +53,6 @@ export type PopoverDescriptionProps = ComponentProps<typeof PopoverPrimitive.Des
 export type PopoverCloseProps = ComponentProps<typeof PopoverPrimitive.CloseTrigger>;
 
 export type PopoverArrowProps = ComponentProps<typeof PopoverPrimitive.Arrow>;
-// #endregion
-
-// #region Context
-const [PopoverRootContext, usePopoverRoot] = createContext<{ testId?: string }>({
-  name: "PopoverRoot",
-  strict: false,
-});
 // #endregion
 
 // #region Parts

@@ -30,9 +30,9 @@ import type { ComponentProps, ReactNode } from "react";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils";
 import { Button } from "../button";
 import { InputGroup } from "../input-group";
+import { ComboboxRootContext, useComboboxRoot } from "./combobox.context";
 
 // #region Types
 interface ComboboxPresetItem {
@@ -112,15 +112,6 @@ export type ComboboxGroupLabelProps = ComponentProps<typeof ComboboxPrimitive.It
 export type ComboboxEmptyProps = ComponentProps<typeof ComboboxPrimitive.Empty>;
 
 export type ComboboxListProps = ComponentProps<typeof ComboboxListPrimitive>;
-// #endregion
-
-// #region Context
-const [ComboboxRootContext, useComboboxRoot] = createContext<{ testId?: string }>({
-  name: "ComboboxRoot",
-  strict: false,
-});
-
-export { useComboboxRoot };
 // #endregion
 
 // #region Parts

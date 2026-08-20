@@ -1,5 +1,5 @@
-import type { SurfaceVariant } from "../../components/surface/surface";
-import { useSurface } from "../../components/surface/surface";
+import type { SurfaceVariant } from "../../components/surface/surface.context";
+import { useSurface } from "../../components/surface/surface.context";
 import { useFormControlVariantContext } from "./form-control-variant-context";
 import type { FormControlSurfaceVariant, FormControlVariant } from "./form-control-variants";
 

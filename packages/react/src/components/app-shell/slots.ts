@@ -1,5 +1,5 @@
 import { Children, isValidElement, type ReactNode } from "react";
-import type { AppShellPlacement } from "./context";
+import type { AppShellPlacement } from "./app-shell.context";
 
 export interface AppShellSlots {
   banner: ReactNode;

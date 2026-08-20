@@ -43,7 +43,6 @@ import { useHotkey } from "@tanstack/react-hotkeys";
 import { type ComponentProps, type CSSProperties, useCallback, useMemo, useState } from "react";
 import { useIsMobile } from "../../hooks";
 import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils";
 import { Button, type ButtonProps } from "../button";
 import { Input, type InputProps } from "../input";
 import { ScrollArea } from "../scroll-area";
@@ -51,18 +50,9 @@ import { Separator, type SeparatorProps } from "../separator";
 import { Sheet, type SheetProps } from "../sheet";
 import { Skeleton } from "../skeleton";
 import { Tooltip, type TooltipProps } from "../tooltip";
+import { SidebarContext, type SidebarContextProps, useSidebar } from "./sidebar.context";
 
 // #region Types
-interface SidebarContextProps {
-  isMobile: boolean;
-  open: boolean;
-  openMobile: boolean;
-  setOpen: (open: boolean) => void;
-  setOpenMobile: (open: boolean) => void;
-  state: "expanded" | "collapsed";
-  toggleSidebar: () => void;
-}
-
 interface SidebarProviderProps extends ComponentProps<"div"> {
   /**
    * The default open state of the sidebar.
@@ -132,18 +122,7 @@ interface SidebarMenuSubButtonProps extends ComponentProps<typeof ark.a>, Button
 }
 // #endregion
 
-// #region Context
-/**
- * Returns the nearest sidebar context.
- *
- * @returns Sidebar open state, mobile state, and layout helpers.
- */
-const [SidebarContext, useSidebar] = createContext<SidebarContextProps>({
-  name: "Sidebar",
-});
-
-export { useSidebar };
-
+// #region Constants
 const SIDEBAR_STORAGE_KEY = "sidebar_state";
 
 const SIDEBAR_WIDTH = "16rem";

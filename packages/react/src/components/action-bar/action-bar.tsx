@@ -15,42 +15,12 @@ import { useHotkey } from "@tanstack/react-hotkeys";
 import type { ComponentProps, MouseEvent, PropsWithChildren, ReactNode } from "react";
 import { useCallback, useMemo, useState } from "react";
 import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils";
 import { Badge, type BadgeProps } from "../badge";
 import { Button } from "../button";
 import { Separator, type SeparatorProps } from "../separator";
+import { ActionBarContext, type ActionBarContextValue, useActionBar } from "./action-bar.context";
 
 // #region Types
-interface ActionBarPositioning {
-  /**
-   * The gutter from the edge in pixels.
-   *
-   * @defaultValue '16px'
-   */
-  gutter?: string;
-  /**
-   * The placement of the action bar.
-   *
-   * @defaultValue "bottom"
-   */
-  placement?: "bottom" | "bottom-start" | "bottom-end";
-}
-
-interface ActionBarContextValue extends WithTestId {
-  /** The open state of the action bar */
-  isOpen?: boolean;
-  /** Whether to lazy mount the action bar */
-  lazyMount?: boolean;
-  /** The function to call when the action bar is closed */
-  onClose?: () => void;
-  /** The function to call when the action bar is opened */
-  onOpen?: () => void;
-  /** The positioning of the action bar. */
-  positioning: ActionBarPositioning;
-  /** The function to call when the action bar is mounted */
-  unmountOnExit?: boolean;
-}
-
 interface ActionBarActionItem {
   /** Icon rendered before the label */
   icon?: ReactNode;
@@ -109,15 +79,6 @@ export interface ActionBarValueProps extends BadgeProps {
   /** The label of the selection trigger */
   label?: string;
 }
-// #endregion
-
-// #region Context
-/**
- * Returns the nearest action bar context.
- */
-const [ActionBarContext, useActionBar] = createContext<ActionBarContextValue>({
-  name: "ActionBar",
-});
 // #endregion
 
 // #region Constants

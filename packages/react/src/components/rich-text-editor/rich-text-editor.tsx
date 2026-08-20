@@ -13,7 +13,7 @@ import {
   richTextEditorVariants,
 } from "@pisagor/styles/ui/rich-text-editor";
 import { cn } from "@pisagor/utils";
-import { type Editor, EditorContent, useEditor, useEditorState } from "@tiptap/react";
+import { EditorContent, useEditor, useEditorState } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { type ComponentProps, type ReactNode, useEffect, useMemo } from "react";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
@@ -24,15 +24,11 @@ import {
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
 import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils";
 import { Toggle } from "../toggle";
 import { VisuallyHidden } from "../visually-hidden";
+import { RichTextEditorContext, useRichTextEditor } from "./rich-text-editor.context";
 
 // #region Types
-interface RichTextEditorContextValue {
-  editor: Editor | null;
-}
-
 export interface RichTextEditorRootProps
   extends Omit<ComponentProps<typeof ark.div>, "defaultValue" | "onChange">,
     WithTestId {
@@ -80,21 +76,6 @@ export interface RichTextEditorRootProps
 export interface RichTextEditorToolbarProps extends ComponentProps<typeof ark.div> {}
 
 export interface RichTextEditorContentProps extends ComponentProps<typeof ark.div> {}
-// #endregion
-
-// #region Context
-const [RichTextEditorContext, useRichTextEditorContext] = createContext<RichTextEditorContextValue>(
-  {
-    name: "RichTextEditor",
-  },
-);
-
-/**
- * Access the TipTap editor instance from the nearest RichTextEditor root.
- */
-export function useRichTextEditor() {
-  return useRichTextEditorContext().editor;
-}
 // #endregion
 
 // #region Parts

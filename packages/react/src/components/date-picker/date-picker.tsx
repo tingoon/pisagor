@@ -18,11 +18,11 @@ import { useClearableInput } from "../../hooks";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils";
 import { Button } from "../button";
 import { Calendar } from "../calendar";
 import { Input, type InputProps } from "../input";
 import { InputGroup } from "../input-group";
+import { DatePickerRootContext, useDatePickerRoot } from "./date-picker.context";
 
 // #region Types
 export interface DatePickerTriggerProps extends ComponentProps<typeof DatePickerPrimitive.Trigger> {
@@ -73,13 +73,6 @@ export interface DatePickerRootProps
 export type DatePickerValueProps = ComponentProps<typeof DatePickerPrimitive.ValueText>;
 
 export type DatePickerPresetTriggerProps = ComponentProps<typeof DatePickerPrimitive.PresetTrigger>;
-// #endregion
-
-// #region Context
-const [DatePickerRootContext, useDatePickerRoot] = createContext<{ testId?: string }>({
-  name: "DatePickerRoot",
-  strict: false,
-});
 // #endregion
 
 // #region Parts

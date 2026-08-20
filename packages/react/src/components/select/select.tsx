@@ -36,8 +36,8 @@ import {
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
 import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils";
 import { Separator, type SeparatorProps } from "../separator";
+import { SelectRootContext, useSelectRoot } from "./select.context";
 
 // #region Types
 interface SelectPresetItem {
@@ -95,13 +95,6 @@ export type SelectGroupLabelProps = ComponentProps<typeof SelectPrimitive.ItemGr
 export type SelectItemProps = ComponentProps<typeof SelectPrimitive.Item>;
 
 export type SelectClearTriggerProps = ComponentProps<typeof SelectPrimitive.ClearTrigger>;
-// #endregion
-
-// #region Context
-const [SelectRootContext, useSelectRoot] = createContext<{ testId?: string }>({
-  name: "SelectRoot",
-  strict: false,
-});
 // #endregion
 
 // #region Parts

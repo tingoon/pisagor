@@ -5,7 +5,7 @@ import {
 } from "@pisagor/styles/ui/app-shell";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import type { AppShellRegionPosition } from "./context";
+import type { AppShellRegionPosition } from "./app-shell.context";
 import { regionPositionClasses } from "./region";
 
 interface AppShellHeaderProps extends ComponentProps<"header"> {

@@ -2,12 +2,12 @@ import { appShellRailItemVariants, appShellRailVariants } from "@pisagor/styles/
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils";
 import { Button, type ButtonProps } from "../button";
 import { Tooltip, type TooltipProps } from "../tooltip";
+import type { AppShellPlacement, AppShellRegionPosition } from "./app-shell.context";
+import { useAppShell } from "./app-shell.context";
 import { APP_SHELL_RAIL_WIDTH } from "./constants";
-import type { AppShellPlacement, AppShellRailState, AppShellRegionPosition } from "./context";
-import { useAppShell } from "./context";
+import { AppShellRailContext, useAppShellRail } from "./rail.context";
 import {
   gridAreaFor,
   regionPositionClasses,
@@ -15,12 +15,6 @@ import {
   useRegionWidth,
   useRegisteredRailState,
 } from "./region";
-
-const [AppShellRailContext, useAppShellRail] = createContext<AppShellRailState>({
-  name: "AppShellRail",
-});
-
-export { useAppShellRail };
 
 interface AppShellRailProps extends ComponentProps<"aside">, WithTestId {
   activeRailId?: string;

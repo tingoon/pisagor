@@ -14,7 +14,7 @@ import {
   type AppShellSideState,
   ZERO_FIXED_STACK_VARS,
   ZERO_REGION_VARS,
-} from "./context";
+} from "./app-shell.context";
 import { type AppShellSlots, partitionAppShellChildren } from "./slots";
 
 const APP_SHELL_GRID_COLUMNS = `

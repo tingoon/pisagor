@@ -26,9 +26,10 @@ export type {
   AppShellResizableProps,
   AppShellResizeHandlePosition,
   AppShellSideState,
-} from "./context";
-export { useAppShell } from "./context";
-export { useAppShellRail } from "./rail";
+} from "./app-shell.context";
+
+export { useAppShell } from "./app-shell.context";
+export { useAppShellRail } from "./rail.context";
 
 export const AppShell = Object.assign(AppShellRoot, {
   Banner: AppShellBanner,

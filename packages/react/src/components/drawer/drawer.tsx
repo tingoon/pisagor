@@ -20,8 +20,8 @@ import {
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils";
 import { ScrollArea } from "../scroll-area";
+import { DrawerContext, useDrawer } from "./drawer.context";
 
 // #region Types
 export interface DrawerPositionerProps
@@ -59,13 +59,6 @@ export type DrawerGrabberProps = ComponentProps<typeof DrawerPrimitive.Grabber>;
 export type DrawerTitleProps = ComponentProps<typeof DrawerPrimitive.Title>;
 
 export type DrawerCloseProps = ComponentProps<typeof DrawerPrimitive.CloseTrigger>;
-// #endregion
-
-// #region Context
-const [DrawerContext, useDrawer] = createContext<{ testId?: string }>({
-  name: "Drawer",
-  strict: false,
-});
 // #endregion
 
 // #region Parts

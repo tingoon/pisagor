@@ -22,27 +22,16 @@ import type { DefaultInputComponentProps, FlagProps } from "react-phone-number-i
 import RPNPhoneInput, { type Country, getCountryCallingCode } from "react-phone-number-input";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
-import { createContext } from "../../utils/create-context";
 import { Combobox, type ComboboxContentProps } from "../combobox";
 import type { InputProps } from "../input";
 import { InputGroup } from "../input-group";
+import { PhoneInputContextProvider, usePhoneInputContext } from "./phone-input.context";
 import { phoneInputFlags } from "./phone-input-flags";
 
 // #region Types
 type PhoneInputClassNames = VariantClassNames<typeof phoneInputVariants>;
 
 type PhoneInputSize = NonNullable<PhoneInputVariantProps["size"]>;
-
-interface PhoneInputContextValue {
-  classNames?: PhoneInputClassNames;
-  inputProps?: Omit<InputProps, "className" | "onChange" | "onBlur" | "size" | "type" | "value">;
-  invalid?: boolean;
-  popupProps?: Omit<ComboboxContentProps, "className" | "children">;
-  size: PhoneInputSize;
-  slots: ReturnType<typeof phoneInputVariants>;
-  testId?: string;
-  variant?: FormControlVariant;
-}
 
 interface CountrySelectOption {
   label: string;
@@ -87,12 +76,6 @@ export interface PhoneInputProps
   /** Country dropdown props (Combobox.Content, except `className` and `children`). */
   popupProps?: Omit<ComboboxContentProps, "className" | "children">;
 }
-// #endregion
-
-// #region Context
-const [PhoneInputContextProvider, usePhoneInputContext] = createContext<PhoneInputContextValue>({
-  name: "PhoneInput",
-});
 // #endregion
 
 // #region Internal components

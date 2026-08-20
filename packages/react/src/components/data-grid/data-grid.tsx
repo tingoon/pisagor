@@ -15,10 +15,8 @@ import {
   flexRender,
   getCoreRowModel,
   type Header,
-  type HeaderGroup,
   type Row,
   type TableOptions,
-  type Table as TableType,
   useReactTable,
 } from "@tanstack/react-table";
 import { useVirtualizer } from "@tanstack/react-virtual";
@@ -32,26 +30,23 @@ import {
   useState,
 } from "react";
 import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils";
 import { Table, type TableCellProps, type TableHeadProps, type TableRowProps } from "../table";
+import {
+  DataGridContext,
+  type DataGridContextValue,
+  DataGridHeaderCellContext,
+  type DataGridHeaderCellContextValue,
+  DataGridHeaderGroupContext,
+  type DataGridHeaderGroupContextValue,
+  DataGridRowContext,
+  type DataGridRowContextValue,
+  useDataGridContext,
+  useDataGridHeaderCellContext,
+  useDataGridHeaderGroupContext,
+  useDataGridRowContext,
+} from "./data-grid.context";
 
 // #region Types
-interface DataGridContextValue<TData> {
-  table: TableType<TData>;
-}
-
-interface DataGridHeaderGroupContextValue<TData> {
-  headerGroup: HeaderGroup<TData>;
-}
-
-interface DataGridHeaderCellContextValue<TData> {
-  header: Header<TData, unknown>;
-}
-
-interface DataGridRowContextValue<TData> {
-  row: Row<TData>;
-}
-
 /**
  * @typeParam TData - Row shape passed to `columns` and `data`.
  */
@@ -136,31 +131,6 @@ interface DataGridRowProviderProps<TData> {
 }
 // #endregion
 
-// #region Context
-const [DataGridContext, useDataGridContextBase] = createContext<DataGridContextValue<unknown>>({
-  name: "DataGrid",
-});
-
-const [DataGridHeaderGroupContext, useDataGridHeaderGroupContextBase] = createContext<
-  DataGridHeaderGroupContextValue<unknown>
->({
-  name: "DataGridHeaderGroup",
-});
-
-const [DataGridHeaderCellContext, useDataGridHeaderCellContextBase] = createContext<
-  DataGridHeaderCellContextValue<unknown>
->({
-  name: "DataGridHeaderCell",
-  strict: false,
-});
-
-const [DataGridRowContext, useDataGridRowContextBase] = createContext<
-  DataGridRowContextValue<unknown>
->({
-  name: "DataGridRow",
-});
-// #endregion
-
 // #region Hooks
 /**
  * Returns the TanStack Table instance from the nearest DataGrid context.
@@ -205,22 +175,6 @@ function columnSizeStyle(column: Column<unknown>, enabled: boolean): CSSProperti
 // #endregion
 
 // #region Parts
-function useDataGridContext<TData>() {
-  return useDataGridContextBase() as DataGridContextValue<TData>;
-}
-
-function useDataGridHeaderGroupContext<TData>() {
-  return useDataGridHeaderGroupContextBase() as DataGridHeaderGroupContextValue<TData>;
-}
-
-function useDataGridHeaderCellContext<TData>() {
-  return useDataGridHeaderCellContextBase() as DataGridHeaderCellContextValue<TData> | undefined;
-}
-
-function useDataGridRowContext<TData>() {
-  return useDataGridRowContextBase() as DataGridRowContextValue<TData>;
-}
-
 function DataGridHeader<TData>({ children }: DataGridHeaderProps) {
   const table = useDataGridContext<TData>().table;
 

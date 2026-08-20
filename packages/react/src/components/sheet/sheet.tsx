@@ -23,7 +23,7 @@ import {
   type DialogProps,
   type DialogTitleProps,
 } from "../dialog";
-import { useDialog } from "../dialog/dialog";
+import { useDialog } from "../dialog/dialog.context";
 
 // #region Types
 export interface SheetPositionerProps

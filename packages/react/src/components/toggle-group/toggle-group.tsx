@@ -3,19 +3,14 @@ import { toggleGroupInlineVariants, toggleGroupVariants } from "@pisagor/styles/
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils";
-import { Toggle, type ToggleProps } from "../toggle";
+import { Toggle } from "../toggle";
+import {
+  ToggleGroupContext,
+  type ToggleGroupContextProps,
+  useToggleGroupContext,
+} from "./toggle-group.context";
 
 // #region Types
-type ToggleGroupContextProps = Pick<ToggleProps, "variant" | "size"> & {
-  /**
-   * Gap between items.
-   *
-   * @defaultValue 0
-   */
-  spacing?: number;
-};
-
 interface ToggleGroupPresetItem {
   value: string;
   children: ReactNode;
@@ -36,12 +31,6 @@ export interface ToggleGroupProps extends Omit<ToggleGroupRootProps, "children">
 }
 
 export interface ToggleGroupItemProps extends ComponentProps<typeof ToggleGroupPrimitive.Item> {}
-// #endregion
-
-// #region Context
-const [ToggleGroupContext, useToggleGroupContext] = createContext<ToggleGroupContextProps>({
-  name: "ToggleGroup",
-});
 // #endregion
 
 // #region Parts

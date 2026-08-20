@@ -25,7 +25,8 @@ import {
 } from "./sidebar";
 
 export type { SidebarProps } from "./sidebar";
-export { useSidebar } from "./sidebar";
+
+export { useSidebar } from "./sidebar.context";
 
 export const Sidebar = Object.assign(SidebarRoot, {
   Content: SidebarContent,

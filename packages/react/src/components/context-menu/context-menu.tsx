@@ -13,7 +13,7 @@ import {
   type DropdownMenuShortcutProps,
   type DropdownMenuSubTriggerProps,
 } from "../dropdown-menu";
-import { useDropdownMenuRoot } from "../dropdown-menu/dropdown-menu";
+import { useDropdownMenuRoot } from "../dropdown-menu/dropdown-menu.context";
 
 // #region Types
 export interface ContextMenuRootProps extends DropdownMenuRootProps, WithTestId {}

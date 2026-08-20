@@ -16,9 +16,9 @@ import {
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils";
 import { Button, type ButtonProps } from "../button";
 import { ScrollArea } from "../scroll-area";
+import { FloatingPanelRootContext, useFloatingPanelRoot } from "./floating-panel.context";
 
 // #region Types
 export interface FloatingPanelRootProps
@@ -81,13 +81,6 @@ export type FloatingPanelStageTriggerProps = ComponentProps<
 export type FloatingPanelCloseTriggerProps = ComponentProps<
   typeof FloatingPanelPrimitive.CloseTrigger
 >;
-// #endregion
-
-// #region Context
-const [FloatingPanelRootContext, useFloatingPanelRoot] = createContext<{ testId?: string }>({
-  name: "FloatingPanelRoot",
-  strict: false,
-});
 // #endregion
 
 // #region Parts

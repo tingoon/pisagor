@@ -15,8 +15,8 @@ import type {
   AppShellRegionVar,
   AppShellResizableProps,
   AppShellSideState,
-} from "./context";
-import { type AppShellRailState, useAppShell, useSideState } from "./context";
+} from "./app-shell.context";
+import { type AppShellRailState, useAppShell, useSideState } from "./app-shell.context";
 
 export function useRegionWidth(name: AppShellRegionVar, width: string) {
   const { setRegionVar } = useAppShell();

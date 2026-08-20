@@ -30,8 +30,12 @@ import {
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "react";
 import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils";
 import { checkboxVariants } from "../checkbox";
+import {
+  TreeViewContext,
+  type TreeViewContextProps,
+  useTreeViewLocalContext,
+} from "./tree-view.context";
 
 // #region Types
 export interface TreeNodeType<T = unknown> {
@@ -43,11 +47,6 @@ export interface TreeNodeType<T = unknown> {
 }
 
 export type TreeCollection = arkTreeCollection;
-
-interface TreeViewContextProps {
-  /** Custom extension icons */
-  fileIcons?: Record<string, JSX.ElementType | null>;
-}
 
 export interface TreeViewProps
   extends TreeViewPrimitive.RootComponentProps,
@@ -107,12 +106,6 @@ export type TreeViewContentProps = ComponentProps<typeof TreeViewPrimitive.Item>
 export type TreeViewCheckboxProps = ComponentProps<typeof TreeViewPrimitive.NodeCheckbox>;
 
 export type TreeViewNodeInputProps = ComponentProps<typeof TreeViewPrimitive.NodeRenameInput>;
-// #endregion
-
-// #region Context
-const [TreeViewContext, useTreeViewLocalContext] = createContext<TreeViewContextProps>({
-  name: "TreeViewLocal",
-});
 // #endregion
 
 // #region Parts

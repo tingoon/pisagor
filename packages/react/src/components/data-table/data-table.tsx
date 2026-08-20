@@ -9,30 +9,25 @@ import {
   type Cell,
   flexRender,
   getCoreRowModel,
-  type HeaderGroup,
-  type Row,
   type TableOptions,
-  type Table as TableType,
   useReactTable,
 } from "@tanstack/react-table";
 import { type ComponentProps, type ReactNode, useMemo } from "react";
 import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils";
 import { Table, type TableCellProps, type TableHeadProps, type TableRowProps } from "../table";
+import {
+  DataTableContext,
+  type DataTableContextValue,
+  DataTableHeaderGroupContext,
+  type DataTableHeaderGroupContextValue,
+  DataTableRowContext,
+  type DataTableRowContextValue,
+  useDataTableContext,
+  useDataTableHeaderGroupContext,
+  useDataTableRowContext,
+} from "./data-table.context";
 
 // #region Types
-interface DataTableContextValue<TData> {
-  table: TableType<TData>;
-}
-
-interface DataTableHeaderGroupContextValue<TData> {
-  headerGroup: HeaderGroup<TData>;
-}
-
-interface DataTableRowContextValue<TData> {
-  row: Row<TData>;
-}
-
 /**
  * @typeParam TData - Row shape passed to `columns` and `data`.
  */
@@ -83,24 +78,6 @@ interface DataTableEmptyProps extends TableRowProps {
 }
 // #endregion
 
-// #region Context
-const [DataTableContext, useDataTableContextBase] = createContext<DataTableContextValue<unknown>>({
-  name: "DataTable",
-});
-
-const [DataTableHeaderGroupContext, useDataTableHeaderGroupContextBase] = createContext<
-  DataTableHeaderGroupContextValue<unknown>
->({
-  name: "DataTableHeaderGroup",
-});
-
-const [DataTableRowContext, useDataTableRowContextBase] = createContext<
-  DataTableRowContextValue<unknown>
->({
-  name: "DataTableRow",
-});
-// #endregion
-
 // #region Hooks
 /**
  * Returns the TanStack Table instance from the nearest DataTable context.
@@ -134,18 +111,6 @@ export function useDataTableRow<TData>() {
 // #endregion
 
 // #region Parts
-function useDataTableContext<TData>() {
-  return useDataTableContextBase() as DataTableContextValue<TData>;
-}
-
-function useDataTableHeaderGroupContext<TData>() {
-  return useDataTableHeaderGroupContextBase() as DataTableHeaderGroupContextValue<TData>;
-}
-
-function useDataTableRowContext<TData>() {
-  return useDataTableRowContextBase() as DataTableRowContextValue<TData>;
-}
-
 function DataTableHeader<TData>({ children }: DataTableHeaderProps) {
   const table = useDataTableContext<TData>().table;
 

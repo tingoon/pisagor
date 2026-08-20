@@ -2,8 +2,8 @@ import { appShellNavigationVariants } from "@pisagor/styles/ui/app-shell";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { useRef } from "react";
+import type { AppShellRegionPosition } from "./app-shell.context";
 import { APP_SHELL_NAVIGATION_HEIGHT_VAR } from "./constants";
-import type { AppShellRegionPosition } from "./context";
 import { regionPositionClasses, useSyncFixedRegionHeight } from "./region";
 
 interface AppShellNavigationProps extends ComponentProps<"nav"> {

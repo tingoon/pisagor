@@ -17,24 +17,11 @@ import {
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils";
 import { Button } from "../button";
 import { ScrollArea } from "../scroll-area";
+import { DialogContext, useDialog } from "./dialog.context";
 
 // #region Types
-interface DialogContextProps {
-  /**
-   * Used internally to show or hide the overlay.
-   *
-   * @defaultValue true
-   *
-   * @remarks
-   * When `false`, the overlay is not rendered and content outside the dialog stays interactable.
-   */
-  modal?: boolean;
-  testId?: string;
-}
-
 export interface DialogContentProps
   extends ComponentProps<typeof DialogPrimitive.Content>,
     DialogContentVariantProps {
@@ -77,14 +64,6 @@ export type DialogRootProps = ComponentProps<typeof DialogPrimitive.Root> & With
 export type DialogProps = DialogRootProps;
 // #endregion
 
-// #region Context
-const [DialogContext, useDialogLocal] = createContext<DialogContextProps>({
-  name: "DialogLocal",
-});
-
-export { useDialogLocal as useDialog };
-// #endregion
-
 // #region Parts
 export function DialogRoot({
   modal = true,
@@ -118,7 +97,7 @@ DialogTrigger.displayName = "Dialog.Trigger";
 export type DialogOverlayProps = ComponentProps<typeof DialogPrimitive.Backdrop>;
 
 export function DialogOverlay({ className, ...rest }: DialogOverlayProps) {
-  const { modal } = useDialogLocal();
+  const { modal } = useDialog();
 
   if (!modal) {
     return null;
@@ -157,7 +136,7 @@ export function DialogContent({
   children,
   ...rest
 }: DialogContentProps) {
-  const { testId } = useDialogLocal();
+  const { testId } = useDialog();
 
   return (
     <Portal>

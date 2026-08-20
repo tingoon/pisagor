@@ -32,7 +32,8 @@ export type {
   TourTitleProps,
   TourTriggerProps,
 } from "./tour";
-export { useTourContext } from "./tour";
+
+export { useTourContext } from "./tour.context";
 
 export const Tour = Object.assign(TourRoot, {
   Actions: TourActions,

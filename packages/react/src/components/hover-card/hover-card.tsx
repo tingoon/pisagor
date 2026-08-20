@@ -4,7 +4,7 @@ import { hoverCardContentVariants, hoverCardInlineVariants } from "@pisagor/styl
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils";
+import { HoverCardRootContext, useHoverCardRoot } from "./hover-card.context";
 
 // #region Types
 export type HoverCardRootProps = ComponentProps<typeof HoverCardPrimitive.Root> & WithTestId;
@@ -16,13 +16,6 @@ export type HoverCardTriggerProps = ComponentProps<typeof HoverCardPrimitive.Tri
 export type HoverCardArrowProps = ComponentProps<typeof HoverCardPrimitive.Arrow>;
 
 export type HoverCardContentProps = ComponentProps<typeof HoverCardPrimitive.Content>;
-// #endregion
-
-// #region Context
-const [HoverCardRootContext, useHoverCardRoot] = createContext<{ testId?: string }>({
-  name: "HoverCardRoot",
-  strict: false,
-});
 // #endregion
 
 // #region Parts

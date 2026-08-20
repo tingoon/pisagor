@@ -7,18 +7,14 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";
 import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils";
 import { Field } from "../field";
+import {
+  CircularSliderContext,
+  type CircularSliderContextValue,
+  useCircularSliderContext,
+} from "./circular-slider.context";
 
 // #region Types
-interface CircularSliderContextValue {
-  ringCircumference: number;
-  ringRadius: number;
-  size: number;
-  thickness: number;
-  thumbSize: number;
-}
-
 export type CircularSliderHiddenInputProps = ComponentProps<
   typeof AngleSliderPrimitive.HiddenInput
 >;
@@ -59,14 +55,6 @@ export type CircularSliderMarkerGroupProps = ComponentProps<
 >;
 
 export type CircularSliderMarkerProps = ComponentProps<typeof AngleSliderPrimitive.Marker>;
-// #endregion
-
-// #region Context
-const [CircularSliderContext, useCircularSliderContext] = createContext<CircularSliderContextValue>(
-  {
-    name: "CircularSlider",
-  },
-);
 // #endregion
 
 // #region Parts

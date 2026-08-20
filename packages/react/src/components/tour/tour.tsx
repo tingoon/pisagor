@@ -1,11 +1,6 @@
 import { Portal } from "@ark-ui/react";
 import { ark } from "@ark-ui/react/factory";
-import {
-  Tour as TourPrimitive,
-  type TourStepDetails,
-  type UseTourReturn,
-  useTour,
-} from "@ark-ui/react/tour";
+import { Tour as TourPrimitive, type TourStepDetails, useTour } from "@ark-ui/react/tour";
 import { CaretLeftIcon, CaretRightIcon, XIcon } from "@phosphor-icons/react";
 import {
   tourActionsVariants,
@@ -24,7 +19,6 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps, MouseEvent } from "react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils";
 import { Button } from "../button";
 import {
   Dialog,
@@ -34,17 +28,10 @@ import {
   type DialogOverlayProps,
   dialogOverlayVariants,
 } from "../dialog";
+import { TourContext, useTourContext } from "./tour.context";
 
 // #region Types
 export type TourStepType = TourStepDetails;
-
-interface TourProviderProps {
-  /** The function to start the tour */
-  handleStart: () => void;
-  /** The tour instance */
-  tour: UseTourReturn;
-  testId?: string;
-}
 
 export type TourRootProps = Omit<ComponentProps<typeof TourPrimitive.Root>, "tour"> & WithTestId;
 
@@ -87,15 +74,6 @@ export type TourDescriptionProps = ComponentProps<typeof TourPrimitive.Descripti
 export type TourProgressTextProps = ComponentProps<typeof TourPrimitive.ProgressText>;
 
 export type TourCloseProps = ComponentProps<typeof TourPrimitive.CloseTrigger>;
-// #endregion
-
-// #region Context
-/** Returns the nearest tour context. */
-const [TourContext, useTourContext] = createContext<TourProviderProps>({
-  name: "Tour",
-});
-
-export { useTourContext };
 // #endregion
 
 // #region Parts

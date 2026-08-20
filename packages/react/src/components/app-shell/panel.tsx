@@ -14,8 +14,12 @@ import type { WithTestId } from "../../internal/types";
 import type { ButtonProps } from "../button";
 import { Resizable } from "../resizable";
 import { ScrollArea } from "../scroll-area";
-import type { AppShellPlacement, AppShellRegionPosition, AppShellResizableProps } from "./context";
-import { useAppShell } from "./context";
+import type {
+  AppShellPlacement,
+  AppShellRegionPosition,
+  AppShellResizableProps,
+} from "./app-shell.context";
+import { useAppShell } from "./app-shell.context";
 import {
   gridAreaFor,
   mergeResizableProps,

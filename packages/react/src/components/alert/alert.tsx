@@ -2,7 +2,7 @@ import { ark } from "@ark-ui/react/factory";
 import { type AlertVariantProps, alertVariants } from "@pisagor/styles/ui/alert";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
-import { createContext } from "../../utils";
+import { AlertContext, useAlertContext } from "./alert.context";
 
 // #region Types
 type AlertTitleProps = ComponentProps<typeof ark.div>;
@@ -35,16 +35,6 @@ export interface AlertProps extends Omit<AlertRootProps, "children"> {
   /** Extra props forwarded to the alert action element */
   actionProps?: Omit<AlertActionProps, "children" | "className">;
 }
-
-interface AlertContextValue {
-  slots: ReturnType<typeof alertVariants>;
-}
-// #endregion
-
-// #region Context
-const [AlertContext, useAlertContext] = createContext<AlertContextValue>({
-  name: "Alert",
-});
 // #endregion
 
 // #region Parts
