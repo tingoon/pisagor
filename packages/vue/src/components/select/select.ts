@@ -3,6 +3,7 @@ import { createListCollection } from "@ark-ui/vue/collection";
 import type { SelectRootProps as ArkSelectRootProps } from "@ark-ui/vue/select";
 import { Select as SelectPrimitive, useSelectContext as useSelect } from "@ark-ui/vue/select";
 import { PhCaretUpDown, PhCheck, PhX } from "@phosphor-icons/vue";
+import type { FormControlShellVariantProps } from "@pisagor/styles/ui/form-control";
 import {
   selectClearTriggerVariants,
   selectContentVariants,
@@ -17,7 +18,6 @@ import {
   selectTriggerVariants,
 } from "@pisagor/styles/ui/select";
 import { cn } from "@pisagor/utils";
-import type { VariantProps } from "tailwind-variants";
 import { defineComponent, h, type PropType, Teleport, type VNodeChild } from "vue";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
@@ -60,7 +60,7 @@ export interface SelectProps extends Omit<SelectRootProps, "children"> {
   placeholder?: string;
 }
 
-export type SelectTriggerSize = VariantProps<typeof formControlShellVariants>["size"];
+export type SelectTriggerSize = FormControlShellVariantProps["size"];
 // #endregion
 
 // #region Context

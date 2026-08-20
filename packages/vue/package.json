@@ -6,8 +6,7 @@
     "@ark-ui/vue": "^5.38.1",
     "@pisagor/styles": "workspace:*",
     "@pisagor/tokens": "workspace:*",
-    "@pisagor/utils": "workspace:*",
-    "tailwind-variants": "^3.3.1"
+    "@pisagor/utils": "workspace:*"
   },
   "description": "Accessible Vue UI components built on Ark UI and Tailwind CSS.",
   "devDependencies": {

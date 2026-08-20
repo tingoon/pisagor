@@ -1,5 +1,7 @@
 import { ark } from "@ark-ui/vue/factory";
 import {
+  type ItemMediaVariantProps,
+  type ItemVariantProps,
   itemActionsVariants,
   itemContentVariants,
   itemDescriptionVariants,
@@ -13,13 +15,9 @@ import {
   itemVariants,
 } from "@pisagor/styles/ui/item";
 import { cn } from "@pisagor/utils";
-import type { VariantProps } from "tailwind-variants";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { WithTestId } from "../../internal/types";
 import { Separator } from "../separator";
-
-type ItemVariantProps = VariantProps<typeof itemVariants>;
-type ItemMediaVariantProps = VariantProps<typeof itemMediaVariants>;
 
 type ArkPart = Parameters<typeof h>[0];
 

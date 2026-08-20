@@ -1,16 +1,14 @@
 import { ark } from "@ark-ui/vue/factory";
 import {
+  type ButtonGroupVariantProps,
   buttonGroupSeparatorVariants,
   buttonGroupTextVariants,
   buttonGroupVariants,
 } from "@pisagor/styles/ui/button-group";
 import { cn } from "@pisagor/utils";
-import type { VariantProps } from "tailwind-variants";
 import { defineComponent, h, type PropType } from "vue";
 import type { WithTestId } from "../../internal/types";
 import { Separator, type SeparatorProps } from "../separator";
-
-type ButtonGroupVariantProps = VariantProps<typeof buttonGroupVariants>;
 
 type ArkPart = Parameters<typeof h>[0];
 

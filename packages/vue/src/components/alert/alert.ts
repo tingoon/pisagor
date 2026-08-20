@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { alertVariants } from "@pisagor/styles/ui/alert";
+import { type AlertVariantProps, alertVariants } from "@pisagor/styles/ui/alert";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType, toValue, type VNodeChild } from "vue";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
@@ -7,8 +7,6 @@ import { createContext } from "../../utils/create-context";
 
 // #region Types
 type AlertClassNames = VariantClassNames<typeof alertVariants>;
-
-type AlertVariant = "default" | "destructive" | "info" | "success" | "warning";
 
 export interface AlertProps extends WithTestId {
   action?: VNodeChild;
@@ -20,7 +18,7 @@ export interface AlertProps extends WithTestId {
   icon?: VNodeChild;
   title?: VNodeChild;
   titleProps?: Record<string, unknown>;
-  variant?: AlertVariant;
+  variant?: AlertVariantProps["variant"];
 }
 
 interface AlertContextValue {
@@ -45,7 +43,7 @@ export const AlertRoot = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<AlertClassNames> },
     testId: String,
-    variant: { default: undefined, type: String as PropType<AlertVariant> },
+    variant: { default: undefined, type: String as PropType<AlertVariantProps["variant"]> },
   },
   setup(props, { attrs, slots }) {
     const contextValue = computed(() => ({
@@ -177,7 +175,7 @@ export const AlertShorthand = defineComponent({
     testId: String,
     title: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
     titleProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
-    variant: { default: undefined, type: String as PropType<AlertVariant> },
+    variant: { default: undefined, type: String as PropType<AlertVariantProps["variant"]> },
   },
   setup(props, { attrs }) {
     return () => {

@@ -1,5 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
 import {
+  type CardMediaVariantProps,
   cardActionVariants,
   cardContentVariants,
   cardDescriptionVariants,
@@ -10,11 +11,9 @@ import {
   cardVariants,
 } from "@pisagor/styles/ui/card";
 import { cn } from "@pisagor/utils";
-import type { VariantProps } from "tailwind-variants";
 import { defineComponent, h, type PropType } from "vue";
 import type { WithTestId } from "../../internal/types";
 
-type CardMediaVariantProps = VariantProps<typeof cardMediaVariants>;
 export type CardMediaVariant = NonNullable<CardMediaVariantProps["variant"]>;
 
 type ArkPart = Parameters<typeof h>[0];

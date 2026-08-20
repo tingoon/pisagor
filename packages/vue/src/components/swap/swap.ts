@@ -1,12 +1,10 @@
 import { Swap as SwapPrimitive } from "@ark-ui/vue/swap";
-import { swapVariants } from "@pisagor/styles/ui/swap";
+import { type SwapVariantProps, swapVariants } from "@pisagor/styles/ui/swap";
 import { cn } from "@pisagor/utils";
-import type { VariantProps } from "tailwind-variants";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { WithTestId } from "../../internal/types";
 
 // #region Types
-type SwapVariantProps = VariantProps<typeof swapVariants>;
 export type SwapVariant = NonNullable<SwapVariantProps["variant"]>;
 
 export interface SwapProps extends WithTestId {

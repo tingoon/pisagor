@@ -1,18 +1,17 @@
 import { ark } from "@ark-ui/vue/factory";
 import {
+  type ButtonVariantProps,
   buttonInline2Variants,
   buttonInline3Variants,
   buttonInlineVariants,
   buttonVariants,
 } from "@pisagor/styles/ui/button";
 import { cn } from "@pisagor/utils";
-import type { VariantProps } from "tailwind-variants";
 import { defineComponent, h, type PropType } from "vue";
 import type { WithTestId } from "../../internal/types";
 import { Spinner } from "../spinner";
 
 // #region Types
-type ButtonVariantProps = VariantProps<typeof buttonVariants>;
 
 export interface ButtonProps extends ButtonVariantProps, WithTestId {
   class?: unknown;

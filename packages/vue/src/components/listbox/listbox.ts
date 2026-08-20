@@ -4,6 +4,7 @@ import type { ListboxRootProps as ArkListboxRootProps } from "@ark-ui/vue/listbo
 import { Listbox as ListboxPrimitive } from "@ark-ui/vue/listbox";
 import { PhCheck } from "@phosphor-icons/vue";
 import {
+  type ListboxItemVariantProps,
   listboxContentVariants,
   listboxEmptyVariants,
   listboxItemGroupLabelVariants,
@@ -15,7 +16,6 @@ import {
   listboxVariants,
 } from "@pisagor/styles/ui/listbox";
 import { cn } from "@pisagor/utils";
-import type { VariantProps } from "tailwind-variants";
 import { defineComponent, h, type PropType } from "vue";
 import type { WithTestId } from "../../internal/types";
 import { DropdownMenu } from "../dropdown-menu";
@@ -39,7 +39,6 @@ export interface ListboxProps extends Omit<ListboxRootProps, "children"> {
   items?: ListboxPresetItem[];
 }
 
-type ListboxItemVariantProps = VariantProps<typeof listboxItemVariants>;
 // #endregion
 
 // #region Components

@@ -65,9 +65,7 @@ export const DrawerRoot = defineComponent({
   inheritAttrs: false,
   name: "DrawerRoot",
   props: {
-    lazyMount: { default: false, type: Boolean },
     testId: String,
-    unmountOnExit: { default: false, type: Boolean },
   },
   setup(props, { attrs, slots }) {
     const context = reactive<DrawerContextProps>({
@@ -83,15 +81,7 @@ export const DrawerRoot = defineComponent({
     return () => {
       const { "data-testid": _, ...rest } = attrs;
 
-      return h(
-        DrawerPrimitive.Root as ArkPart,
-        {
-          ...rest,
-          lazyMount: props.lazyMount,
-          unmountOnExit: props.unmountOnExit,
-        },
-        slots,
-      );
+      return h(DrawerPrimitive.Root as ArkPart, { ...rest }, slots);
     };
   },
 });

@@ -1,11 +1,8 @@
-import { surfaceVariants } from "@pisagor/styles/ui/surface";
+import { type SurfaceVariantProps, surfaceVariants } from "@pisagor/styles/ui/surface";
 import { cn } from "@pisagor/utils";
-import type { VariantProps } from "tailwind-variants";
 import { computed, defineComponent, h, type PropType } from "vue";
 import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils/create-context";
-
-type SurfaceVariantProps = VariantProps<typeof surfaceVariants>;
 
 export type SurfaceVariant = NonNullable<SurfaceVariantProps["variant"]>;
 

@@ -1,6 +1,7 @@
 import { ark } from "@ark-ui/vue/factory";
 import { PhFile } from "@phosphor-icons/vue";
 import {
+  type FileMediaVariantProps,
   fileActionsVariants,
   fileContentVariants,
   fileMediaVariants,
@@ -10,12 +11,10 @@ import {
   fileVariants,
 } from "@pisagor/styles/ui/file";
 import { cn } from "@pisagor/utils";
-import type { VariantProps } from "tailwind-variants";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { WithTestId } from "../../internal/types";
 import { Format } from "../format";
 
-type FileMediaVariantProps = VariantProps<typeof fileMediaVariants>;
 export type FileMediaVariant = NonNullable<FileMediaVariantProps["variant"]>;
 
 type ArkPart = Parameters<typeof h>[0];

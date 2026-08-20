@@ -1,14 +1,12 @@
 import { AvatarFallback, AvatarImage, AvatarRoot } from "@ark-ui/vue/avatar";
-import { avatarVariants } from "@pisagor/styles/ui/avatar";
+import { type AvatarVariantProps, avatarVariants } from "@pisagor/styles/ui/avatar";
 import { cn } from "@pisagor/utils";
-import type { VariantProps } from "tailwind-variants";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-type AvatarVariantProps = VariantProps<typeof avatarVariants>;
 export type AvatarShape = NonNullable<AvatarVariantProps["shape"]>;
 export type AvatarSize = NonNullable<AvatarVariantProps["size"]>;
 

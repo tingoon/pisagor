@@ -1,12 +1,8 @@
 import { Toggle as TogglePrimitive } from "@ark-ui/vue/toggle";
-import { buttonVariants } from "@pisagor/styles/ui/button";
-import { toggleVariants } from "@pisagor/styles/ui/toggle";
+import { type ButtonVariantProps, buttonVariants } from "@pisagor/styles/ui/button";
+import { type ToggleVariantProps, toggleVariants } from "@pisagor/styles/ui/toggle";
 import { cn } from "@pisagor/utils";
-import type { VariantProps } from "tailwind-variants";
 import { defineComponent, h, type PropType } from "vue";
-
-type ToggleVariantProps = VariantProps<typeof toggleVariants>;
-type ButtonVariantProps = VariantProps<typeof buttonVariants>;
 
 type ArkPart = Parameters<typeof h>[0];
 

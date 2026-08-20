@@ -65,7 +65,6 @@ export const PopoverRoot = defineComponent({
   name: "PopoverRoot",
   props: {
     lazyMount: { default: true, type: Boolean },
-    modal: { default: false, type: Boolean },
     testId: String,
     unmountOnExit: { default: true, type: Boolean },
   },
@@ -88,7 +87,6 @@ export const PopoverRoot = defineComponent({
         {
           ...rest,
           lazyMount: props.lazyMount,
-          modal: props.modal,
           unmountOnExit: props.unmountOnExit,
         },
         slots,

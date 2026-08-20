@@ -1,15 +1,17 @@
 import { ark } from "@ark-ui/vue/factory";
-import { statTrendVariants, statVariants } from "@pisagor/styles/ui/stat";
+import {
+  type StatTrendVariantProps,
+  type StatVariantProps,
+  statTrendVariants,
+  statVariants,
+} from "@pisagor/styles/ui/stat";
 import { cn } from "@pisagor/utils";
-import type { VariantProps } from "tailwind-variants";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-type StatVariantProps = VariantProps<typeof statVariants>;
-type StatTrendVariantProps = VariantProps<typeof statTrendVariants>;
 
 type StatVariant = NonNullable<StatVariantProps["variant"]>;
 type StatTrendVariant = NonNullable<StatTrendVariantProps["trend"]>;

@@ -1,8 +1,7 @@
 import { Clipboard as ClipboardPrimitive } from "@ark-ui/vue/clipboard";
 import { PhCheck, PhClipboard } from "@phosphor-icons/vue";
-import { clipboardVariants } from "@pisagor/styles/ui/clipboard";
+import { type ClipboardVariantProps, clipboardVariants } from "@pisagor/styles/ui/clipboard";
 import { cn } from "@pisagor/utils";
-import type { VariantProps } from "tailwind-variants";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import {
   type FormControlVariant,
@@ -17,7 +16,7 @@ import { Button, type ButtonProps } from "../button";
 // #region Types
 type ClipboardClassNames = VariantClassNames<typeof clipboardVariants>;
 
-type ClipboardValueSize = VariantProps<typeof clipboardVariants>["valueSize"];
+type ClipboardValueSize = ClipboardVariantProps["valueSize"];
 
 export interface ClipboardProps extends WithTestId {
   /** Accessible label for icon-only copy buttons */
