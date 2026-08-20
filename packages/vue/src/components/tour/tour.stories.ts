@@ -14,6 +14,10 @@ const meta = preview.meta({
           "Walks new users through key parts of the interface step by step with guided highlights.",
       },
     },
+    metadata: {
+      api: "compound",
+      taxonomy: "pattern",
+    },
   },
   subcomponents: {
     Actions: Tour.Actions,

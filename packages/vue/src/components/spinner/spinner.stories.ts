@@ -10,6 +10,11 @@ const meta = preview.meta({
           "Shows that something is loading when the wait time is short and a progress bar is not needed.",
       },
     },
+    metadata: {
+      aliases: ["loader"],
+      api: "closed",
+      taxonomy: "primitive",
+    },
   },
   title: "Components/Feedback/Spinner",
 });

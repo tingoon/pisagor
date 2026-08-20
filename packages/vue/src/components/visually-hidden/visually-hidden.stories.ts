@@ -10,6 +10,11 @@ const meta = preview.meta({
           "Hides text from the screen while keeping it available to screen readers and other assistive technology.",
       },
     },
+    metadata: {
+      aliases: ["screenreader-only", "sr-only"],
+      api: "closed",
+      taxonomy: "primitive",
+    },
   },
   title: "Components/Utilities/Visually Hidden",
 });

@@ -12,6 +12,10 @@ const meta = preview.meta({
           "Counts up or down through intervals so users can track elapsed time or remaining time.",
       },
     },
+    metadata: {
+      api: "compound",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     ActionTrigger: Timer.ActionTrigger,

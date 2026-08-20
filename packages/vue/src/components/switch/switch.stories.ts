@@ -10,6 +10,10 @@ const meta = preview.meta({
         component: "Toggles a setting on or off with immediate visual feedback.",
       },
     },
+    metadata: {
+      api: "closed",
+      taxonomy: "standard",
+    },
   },
   title: "Components/Forms/Switch",
 });

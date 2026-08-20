@@ -20,6 +20,11 @@ const meta = preview.meta({
           "Surfaces bulk actions when one or more items are selected, keeping primary tools close without cluttering the page.",
       },
     },
+    metadata: {
+      aliases: ["bulk-actions"],
+      api: "compound",
+      taxonomy: "pattern",
+    },
   },
   subcomponents: {
     Body: ActionBar.Body,

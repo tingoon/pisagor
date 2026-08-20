@@ -10,6 +10,11 @@ const meta = preview.meta({
           "Wraps charts in themed, accessible layout so data visualizations match the rest of the interface.",
       },
     },
+    metadata: {
+      aliases: ["graph"],
+      api: "compound",
+      taxonomy: "pattern",
+    },
   },
   subcomponents: {
     Legend: Chart.Legend,

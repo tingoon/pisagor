@@ -14,6 +14,11 @@ const meta = preview.meta({
           "Focuses attention on a task or decision in a modal layer above the current page.",
       },
     },
+    metadata: {
+      aliases: ["modal"],
+      api: "compound",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Body: Dialog.Body,

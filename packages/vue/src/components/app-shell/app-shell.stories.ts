@@ -13,6 +13,10 @@ const meta = preview.meta({
       },
     },
     layout: "fullscreen",
+    metadata: {
+      api: "compound",
+      taxonomy: "pattern",
+    },
   },
   subcomponents: {
     Banner: AppShell.Banner,

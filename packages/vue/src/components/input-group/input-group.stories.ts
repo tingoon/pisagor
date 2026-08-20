@@ -12,6 +12,10 @@ const meta = preview.meta({
           "Combines inputs with icons, buttons, or labels in one control so related actions stay together.",
       },
     },
+    metadata: {
+      api: "compound",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Addon: InputGroup.Addon,

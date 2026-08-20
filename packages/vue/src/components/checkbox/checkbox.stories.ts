@@ -11,6 +11,10 @@ const meta = preview.meta({
           "Lets users turn an individual option on or off, alone or as part of a multi-select list.",
       },
     },
+    metadata: {
+      api: "compound",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Group: Checkbox.Group,

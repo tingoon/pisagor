@@ -11,6 +11,10 @@ const meta = preview.meta({
         component: "Phone number input with optional globe flag preview.",
       },
     },
+    metadata: {
+      api: "closed",
+      taxonomy: "pattern",
+    },
   },
   title: "Components/Forms/Phone Input",
 });

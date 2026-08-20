@@ -10,6 +10,11 @@ const meta = preview.meta({
         component: "Fixed bottom bar for switching between primary app sections on mobile.",
       },
     },
+    metadata: {
+      aliases: ["tab-bar"],
+      api: "compound",
+      taxonomy: "pattern",
+    },
   },
   subcomponents: {
     Item: BottomNavigation.Item,

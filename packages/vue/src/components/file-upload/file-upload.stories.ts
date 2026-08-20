@@ -15,6 +15,11 @@ const meta = preview.meta({
           "Lets users choose files to upload with drag-and-drop or a file picker and shows upload progress.",
       },
     },
+    metadata: {
+      aliases: ["upload"],
+      api: "compound",
+      taxonomy: "pattern",
+    },
   },
   subcomponents: {
     ClearTrigger: FileUpload.ClearTrigger,

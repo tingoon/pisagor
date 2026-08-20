@@ -13,6 +13,11 @@ const meta = preview.meta({
         component: "Lets users filter options while typing.",
       },
     },
+    metadata: {
+      aliases: ["typeahead"],
+      api: "compound-shorthand",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Clear: Autocomplete.Clear,

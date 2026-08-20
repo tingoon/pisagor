@@ -31,6 +31,11 @@ const meta = preview.meta({
           "Browses nested folders or categories in an expandable tree for files, navigation, and hierarchies.",
       },
     },
+    metadata: {
+      aliases: ["tree"],
+      api: "compound",
+      taxonomy: "pattern",
+    },
   },
   subcomponents: {
     Branch: TreeView.Branch,

@@ -5,14 +5,6 @@ const meta = preview.meta({
   component: TagsWithCombobox,
   parameters: {
     docs: {
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Tags input paired with a combobox for searchable tag selection and custom value entry.",

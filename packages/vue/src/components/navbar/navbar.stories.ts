@@ -13,6 +13,11 @@ const meta = preview.meta({
         component: "Top app bar with brand, navigation, and action regions.",
       },
     },
+    metadata: {
+      aliases: ["header"],
+      api: "compound",
+      taxonomy: "pattern",
+    },
   },
   subcomponents: {
     Actions: Navbar.Actions,

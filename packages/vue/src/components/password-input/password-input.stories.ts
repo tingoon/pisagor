@@ -11,6 +11,10 @@ const meta = preview.meta({
           "Collects passwords with a show-hide control so users can enter credentials securely and verify them.",
       },
     },
+    metadata: {
+      api: "closed",
+      taxonomy: "standard",
+    },
   },
   title: "Components/Forms/Password Input",
 });

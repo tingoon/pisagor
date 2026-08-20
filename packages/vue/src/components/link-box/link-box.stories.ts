@@ -10,6 +10,11 @@ const meta = preview.meta({
           "Makes an entire card or tile clickable while keeping nested buttons usable underneath.",
       },
     },
+    metadata: {
+      aliases: ["link-overlay"],
+      api: "compound",
+      taxonomy: "primitive",
+    },
   },
   subcomponents: {
     Overlay: LinkBox.Overlay,

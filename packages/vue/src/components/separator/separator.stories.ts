@@ -9,6 +9,10 @@ const meta = preview.meta({
         component: "Visually divides sections of content so grouped information is easier to scan.",
       },
     },
+    metadata: {
+      api: "closed",
+      taxonomy: "primitive",
+    },
   },
   title: "Components/Layout/Separator",
 });

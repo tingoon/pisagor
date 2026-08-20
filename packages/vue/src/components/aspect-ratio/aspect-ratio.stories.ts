@@ -10,6 +10,10 @@ const meta = preview.meta({
           "Keeps media and embedded content at a consistent width-to-height ratio as the layout changes.",
       },
     },
+    metadata: {
+      api: "closed",
+      taxonomy: "primitive",
+    },
   },
   title: "Components/Layout/Aspect Ratio",
 });

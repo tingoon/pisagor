@@ -20,6 +20,11 @@ const meta = preview.meta({
           "Shows brief feedback messages that appear and dismiss automatically after an action completes.",
       },
     },
+    metadata: {
+      aliases: ["snackbar"],
+      api: "compound",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Item: Toaster.Item,

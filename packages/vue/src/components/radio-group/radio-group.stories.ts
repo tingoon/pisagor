@@ -10,6 +10,10 @@ const meta = preview.meta({
         component: "Lets users pick exactly one option from a small set of related choices.",
       },
     },
+    metadata: {
+      api: "compound-shorthand",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Item: RadioGroup.Item,

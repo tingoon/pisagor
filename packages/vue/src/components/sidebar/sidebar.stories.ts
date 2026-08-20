@@ -13,6 +13,11 @@ const meta = preview.meta({
       },
     },
     layout: "fullscreen",
+    metadata: {
+      aliases: ["side-nav"],
+      api: "compound",
+      taxonomy: "pattern",
+    },
   },
   subcomponents: {
     Content: Sidebar.Content,

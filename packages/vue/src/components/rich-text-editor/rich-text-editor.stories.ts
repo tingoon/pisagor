@@ -11,6 +11,11 @@ const meta = preview.meta({
           "Lets users write and format rich text with common styles such as bold, lists, and emphasis.",
       },
     },
+    metadata: {
+      aliases: ["wysiwyg", "rte"],
+      api: "compound-shorthand",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Content: RichTextEditor.Content,

@@ -10,6 +10,11 @@ const meta = preview.meta({
           "Shows where the user is within a hierarchy and lets them jump back to earlier levels.",
       },
     },
+    metadata: {
+      aliases: ["breadcrumbs"],
+      api: "compound-shorthand",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Ellipsis: Breadcrumb.Ellipsis,

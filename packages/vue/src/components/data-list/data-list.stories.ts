@@ -11,6 +11,10 @@ const meta = preview.meta({
           "Presents label-value pairs in a readable list for summaries, metadata, and detail views.",
       },
     },
+    metadata: {
+      api: "compound-shorthand",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Item: DataList.Item,

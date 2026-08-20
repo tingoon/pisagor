@@ -11,6 +11,10 @@ const meta = preview.meta({
           "Organizes a section heading on the left and related actions on the right for list and page headers.",
       },
     },
+    metadata: {
+      api: "compound-shorthand",
+      taxonomy: "pattern",
+    },
   },
   subcomponents: {
     Actions: Toolbar.Actions,

@@ -14,6 +14,11 @@ const meta = preview.meta({
           "Displays keyboard shortcuts in a monospace badge so users know which keys to press.",
       },
     },
+    metadata: {
+      aliases: ["keyboard"],
+      api: "compound",
+      taxonomy: "primitive",
+    },
   },
   subcomponents: {
     Group: Kbd.Group,

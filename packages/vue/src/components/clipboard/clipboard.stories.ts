@@ -12,6 +12,11 @@ const meta = preview.meta({
           "Copies text to the clipboard with clear feedback so users can reuse values without selecting manually.",
       },
     },
+    metadata: {
+      aliases: ["copy"],
+      api: "closed",
+      taxonomy: "standard",
+    },
   },
   title: "Components/Actions/Clipboard",
 });

@@ -11,6 +11,10 @@ const meta = preview.meta({
           "Captures longer text such as messages, notes, and descriptions over multiple lines.",
       },
     },
+    metadata: {
+      api: "closed",
+      taxonomy: "primitive",
+    },
   },
   title: "Components/Forms/Textarea",
 });

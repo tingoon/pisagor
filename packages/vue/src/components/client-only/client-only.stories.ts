@@ -10,6 +10,10 @@ const meta = preview.meta({
           "Renders content only in the browser so server output stays stable when a feature depends on client APIs.",
       },
     },
+    metadata: {
+      api: "closed",
+      taxonomy: "primitive",
+    },
   },
   title: "Components/Utilities/Client Only",
 });

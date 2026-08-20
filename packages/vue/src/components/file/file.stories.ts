@@ -12,6 +12,11 @@ const meta = preview.meta({
           "Represents a file such as an uploaded attachment or downloadable document with its name and metadata.",
       },
     },
+    metadata: {
+      aliases: ["attachment", "file-row"],
+      api: "compound-shorthand",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Actions: File.Actions,

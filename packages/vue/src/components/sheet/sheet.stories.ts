@@ -14,6 +14,11 @@ const meta = preview.meta({
           "Slides a panel in from the edge of the screen for secondary tasks on mobile and desktop.",
       },
     },
+    metadata: {
+      aliases: ["side-panel"],
+      api: "compound",
+      taxonomy: "pattern",
+    },
   },
   subcomponents: {
     Body: Sheet.Body,

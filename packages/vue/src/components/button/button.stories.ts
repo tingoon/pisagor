@@ -19,6 +19,10 @@ const meta = preview.meta({
           "Triggers an action or navigation when clicked, with styles that reflect how important the action is.",
       },
     },
+    metadata: {
+      api: "closed",
+      taxonomy: "primitive",
+    },
   },
   title: "Components/Actions/Button",
 });

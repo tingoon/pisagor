@@ -34,6 +34,10 @@ const meta = preview.meta({
           "Scrolls content horizontally in a continuous loop for logos, quotes, or promotional strips.",
       },
     },
+    metadata: {
+      api: "compound-shorthand",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Content: Marquee.Content,

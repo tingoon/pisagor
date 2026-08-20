@@ -12,6 +12,11 @@ const meta = preview.meta({
           "Displays a metric with supporting context so users can quickly scan performance and changes.",
       },
     },
+    metadata: {
+      aliases: ["metric"],
+      api: "compound-shorthand",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Description: Stat.Description,

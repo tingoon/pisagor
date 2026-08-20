@@ -12,6 +12,10 @@ const meta = preview.meta({
           "Lets users choose one option from a dropdown list when screen space for all choices is limited.",
       },
     },
+    metadata: {
+      api: "compound-shorthand",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     ClearTrigger: Select.ClearTrigger,

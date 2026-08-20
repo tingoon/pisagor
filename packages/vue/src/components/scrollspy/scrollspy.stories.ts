@@ -11,6 +11,11 @@ const meta = preview.meta({
           "Highlights navigation links to show which section is currently visible while scrolling.",
       },
     },
+    metadata: {
+      aliases: ["scroll-spy"],
+      api: "closed",
+      taxonomy: "pattern",
+    },
   },
   title: "Components/Navigation/Scroll Spy",
 });

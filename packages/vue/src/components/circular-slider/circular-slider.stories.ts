@@ -12,6 +12,10 @@ const meta = preview.meta({
           "Lets users choose a value by dragging around a circular control instead of a straight track.",
       },
     },
+    metadata: {
+      api: "compound",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Control: CircularSlider.Control,

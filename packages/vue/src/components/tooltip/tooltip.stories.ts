@@ -14,6 +14,10 @@ const meta = preview.meta({
           "Explains a control or label on hover or focus with a short message that does not block interaction.",
       },
     },
+    metadata: {
+      api: "closed",
+      taxonomy: "standard",
+    },
   },
   title: "Components/Overlay/Tooltip",
 });

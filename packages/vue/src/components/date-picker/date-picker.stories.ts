@@ -11,6 +11,10 @@ const meta = preview.meta({
         component: "Pick a date from a calendar popover.",
       },
     },
+    metadata: {
+      api: "compound",
+      taxonomy: "pattern",
+    },
   },
   subcomponents: {
     ClearTrigger: DatePicker.ClearTrigger,

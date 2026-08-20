@@ -11,6 +11,11 @@ const meta = preview.meta({
           "Lets users browse dates and pick a day, month, or range on a familiar calendar grid.",
       },
     },
+    metadata: {
+      aliases: ["date-grid"],
+      api: "compound",
+      taxonomy: "pattern",
+    },
   },
   subcomponents: {
     MonthSelect: Calendar.MonthSelect,

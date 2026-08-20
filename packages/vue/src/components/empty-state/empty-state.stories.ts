@@ -12,6 +12,11 @@ const meta = preview.meta({
           "Shows a centered placeholder when a view has no data and offers the next relevant actions.",
       },
     },
+    metadata: {
+      aliases: ["empty"],
+      api: "compound-shorthand",
+      taxonomy: "pattern",
+    },
   },
   subcomponents: {
     Actions: EmptyState.Actions,

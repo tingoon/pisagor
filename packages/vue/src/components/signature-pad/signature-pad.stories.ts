@@ -10,6 +10,10 @@ const meta = preview.meta({
         component: "Captures a handwritten signature on a canvas for approvals and forms.",
       },
     },
+    metadata: {
+      api: "closed",
+      taxonomy: "standard",
+    },
   },
   title: "Components/Forms/Signature Pad",
 });

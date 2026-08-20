@@ -16,3 +16,13 @@ Light components: prefer the root barrel (`import { Accordion } from "@pisagor/v
 ## Internal imports
 
 Within this package, import sibling components with relative paths. Apps and stories use `@pisagor/vue` (light barrel) or `@pisagor/vue/<heavy>`.
+
+## Storybook metadata
+
+Same catalog fields as React — [Storybook](../../.cursor/rules/integrations/storybook.mdc):
+
+- `parameters.docs.description.component` — user-visible Autodocs copy
+- `parameters.metadata.api` / `taxonomy` — required; hidden metadata
+- `parameters.metadata.aliases` — optional; hidden metadata
+
+Mirror the React sibling story when porting. Do not put `api` / `taxonomy` / `aliases` under `docs`.

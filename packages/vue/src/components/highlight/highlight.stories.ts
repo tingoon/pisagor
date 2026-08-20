@@ -11,6 +11,10 @@ const meta = preview.meta({
         component: "Highlights matching text segments for search results and emphasis.",
       },
     },
+    metadata: {
+      api: "closed",
+      taxonomy: "primitive",
+    },
   },
   title: "Components/Data Display/Highlight",
 });

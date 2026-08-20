@@ -10,6 +10,10 @@ const meta = preview.meta({
           "Shows several people at once by stacking avatars, with an optional count for members that do not fit.",
       },
     },
+    metadata: {
+      api: "compound-shorthand",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Avatar,

@@ -13,6 +13,11 @@ const meta = preview.meta({
           "Steps through a set of slides or images so users can browse one item at a time without leaving the page.",
       },
     },
+    metadata: {
+      aliases: ["slideshow"],
+      api: "compound-shorthand",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Content: Carousel.Content,

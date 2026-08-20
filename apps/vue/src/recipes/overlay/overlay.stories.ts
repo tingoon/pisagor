@@ -8,14 +8,6 @@ const meta = preview.meta({
   component: MenuDialog,
   parameters: {
     docs: {
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Overlay compositions for menus, dialogs, popovers, item pickers, and avatar overflow.",

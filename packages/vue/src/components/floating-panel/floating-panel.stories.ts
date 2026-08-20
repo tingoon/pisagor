@@ -20,6 +20,11 @@ const meta = preview.meta({
           "Presents draggable, resizable content in a floating window for tools or inspectors.",
       },
     },
+    metadata: {
+      aliases: ["window"],
+      api: "compound",
+      taxonomy: "pattern",
+    },
   },
   subcomponents: {
     Body: FloatingPanel.Body,

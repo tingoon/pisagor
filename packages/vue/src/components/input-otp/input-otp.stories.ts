@@ -11,6 +11,10 @@ const meta = preview.meta({
           "Collects one-time passcodes as separate digits so users can enter and review verification codes.",
       },
     },
+    metadata: {
+      api: "compound",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Separator: InputOTP.Separator,

@@ -18,6 +18,10 @@ const meta = preview.meta({
           "Renders basic tabular data with columns and rows. Prefer Data Grid when you need resize, virtualization, or advanced interactions.",
       },
     },
+    metadata: {
+      api: "compound",
+      taxonomy: "pattern",
+    },
   },
   subcomponents: {
     Body: DataTable.Body,

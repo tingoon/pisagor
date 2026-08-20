@@ -19,6 +19,10 @@ const meta = preview.meta({
           "Lays out a row of media, title, description, and actions for lists, menus, and pickers.",
       },
     },
+    metadata: {
+      api: "compound",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Actions: Item.Actions,

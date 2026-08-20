@@ -12,6 +12,10 @@ const meta = preview.meta({
           "Swaps between two pieces of content with a transition, such as play and pause icons.",
       },
     },
+    metadata: {
+      api: "closed",
+      taxonomy: "primitive",
+    },
   },
   title: "Components/Actions/Swap",
 });

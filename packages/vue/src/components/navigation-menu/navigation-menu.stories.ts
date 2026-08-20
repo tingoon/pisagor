@@ -10,6 +10,10 @@ const meta = preview.meta({
         component: "Horizontal list of navigation links for primary site sections.",
       },
     },
+    metadata: {
+      api: "compound",
+      taxonomy: "pattern",
+    },
   },
   subcomponents: {
     Item: NavigationMenu.Item,

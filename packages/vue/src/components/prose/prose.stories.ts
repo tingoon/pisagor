@@ -10,6 +10,10 @@ const meta = preview.meta({
           "Styles long-form written content with readable typography for articles and documentation.",
       },
     },
+    metadata: {
+      api: "closed",
+      taxonomy: "primitive",
+    },
   },
   title: "Components/Data Display/Prose",
 });

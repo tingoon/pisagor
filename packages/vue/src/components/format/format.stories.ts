@@ -10,6 +10,10 @@ const meta = preview.meta({
           "Formats byte counts, numbers, and relative dates in a consistent, accessible way.",
       },
     },
+    metadata: {
+      api: "compound",
+      taxonomy: "primitive",
+    },
   },
   title: "Components/Data Display/Format",
 });

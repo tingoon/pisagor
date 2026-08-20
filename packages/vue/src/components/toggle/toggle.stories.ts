@@ -12,6 +12,10 @@ const meta = preview.meta({
           "Stays pressed or released to turn a single option on or off, similar to a checkbox styled as a button.",
       },
     },
+    metadata: {
+      api: "closed",
+      taxonomy: "primitive",
+    },
   },
   title: "Components/Actions/Toggle",
 });

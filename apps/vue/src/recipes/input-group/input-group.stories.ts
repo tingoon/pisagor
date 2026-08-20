@@ -11,14 +11,6 @@ const meta = preview.meta({
   component: InputGroup,
   parameters: {
     docs: {
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component:
           "Input group compositions for code editing, menus, inline actions, labels, number inputs, and tooltips.",

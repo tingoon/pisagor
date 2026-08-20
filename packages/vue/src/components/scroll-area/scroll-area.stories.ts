@@ -10,6 +10,10 @@ const meta = preview.meta({
           "Scrolls overflow content with styled scrollbars and optional fade edges that match the surrounding interface.",
       },
     },
+    metadata: {
+      api: "closed",
+      taxonomy: "standard",
+    },
   },
   title: "Components/Layout/Scroll Area",
 });

@@ -10,6 +10,11 @@ const meta = preview.meta({
         component: "Lets users switch between discrete options.",
       },
     },
+    metadata: {
+      aliases: ["segmented-control"],
+      api: "compound-shorthand",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Indicator: SegmentGroup.Indicator,

@@ -70,6 +70,11 @@ const meta = preview.meta({
         component: "Displays large or interactive tabular datasets with grid behaviors.",
       },
     },
+    metadata: {
+      aliases: ["advanced-table"],
+      api: "compound",
+      taxonomy: "pattern",
+    },
   },
   subcomponents: {
     Body: DataGrid.Body,

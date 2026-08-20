@@ -16,6 +16,11 @@ const meta = preview.meta({
           "Anchors extra content to a trigger for compact forms, menus, or details without a full modal.",
       },
     },
+    metadata: {
+      aliases: ["flyout"],
+      api: "compound",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Anchor: Popover.Anchor,

@@ -16,6 +16,11 @@ const meta = preview.meta({
           "Offers a searchable command palette for jumping to actions, pages, or settings from the keyboard.",
       },
     },
+    metadata: {
+      aliases: ["command-palette"],
+      api: "compound",
+      taxonomy: "pattern",
+    },
   },
   subcomponents: {
     Content: Command.Content,

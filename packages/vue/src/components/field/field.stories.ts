@@ -27,6 +27,10 @@ const meta = preview.meta({
           "Wraps a form control with label, description, and error text so inputs are easier to understand and fix.",
       },
     },
+    metadata: {
+      api: "compound",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Content: Field.Content,

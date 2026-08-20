@@ -10,6 +10,10 @@ const meta = preview.meta({
           "Explores nested JSON as an expandable tree so structured data is easier to inspect.",
       },
     },
+    metadata: {
+      api: "closed",
+      taxonomy: "pattern",
+    },
   },
   title: "Components/Data Display/JSON Tree View",
 });

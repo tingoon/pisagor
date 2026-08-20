@@ -12,6 +12,10 @@ const meta = preview.meta({
           "Presents rows and columns of data in a structured grid for comparison and scanning.",
       },
     },
+    metadata: {
+      api: "compound",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Body: Table.Body,

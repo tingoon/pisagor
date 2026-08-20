@@ -19,6 +19,11 @@ const meta = preview.meta({
           "Always-visible list of navigation links or actions. For popup menus opened from a trigger, use Dropdown Menu.",
       },
     },
+    metadata: {
+      aliases: ["nav", "navigation"],
+      api: "compound",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Group: Menu.Group,

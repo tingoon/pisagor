@@ -11,6 +11,10 @@ const meta = preview.meta({
         component: "Select one or more options from a compact set.",
       },
     },
+    metadata: {
+      api: "compound-shorthand",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Item: ToggleGroup.Item,

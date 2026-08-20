@@ -9,6 +9,10 @@ const meta = preview.meta({
         component: "Wraps the app with locale and shared library context.",
       },
     },
+    metadata: {
+      api: "closed",
+      taxonomy: "primitive",
+    },
   },
   title: "Components/Utilities/Provider",
 });

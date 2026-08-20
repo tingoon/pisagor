@@ -11,6 +11,10 @@ const meta = preview.meta({
           "Hides and reveals a section of content behind a trigger so users can keep dense pages manageable.",
       },
     },
+    metadata: {
+      api: "compound",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Content: Collapsible.Content,

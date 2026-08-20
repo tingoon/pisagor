@@ -12,6 +12,11 @@ const meta = preview.meta({
           "Displays a scannable QR code so users can open links or share data with a phone camera.",
       },
     },
+    metadata: {
+      aliases: ["qrcode"],
+      api: "compound",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Download: QrCode.Download,

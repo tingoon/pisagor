@@ -13,6 +13,10 @@ const meta = preview.meta({
         component: "Lets users enter multiple values as tags.",
       },
     },
+    metadata: {
+      api: "compound",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     ClearTrigger: TagsInput.ClearTrigger,

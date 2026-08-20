@@ -12,6 +12,10 @@ const meta = preview.meta({
           "Displays a user or entity image with a shaped fallback when the source is unavailable.",
       },
     },
+    metadata: {
+      api: "closed",
+      taxonomy: "standard",
+    },
   },
   title: "Components/Media/Avatar",
 });

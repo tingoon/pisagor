@@ -11,6 +11,10 @@ const meta = preview.meta({
           "Starts a file download when activated so users can save content without navigating away.",
       },
     },
+    metadata: {
+      api: "closed",
+      taxonomy: "primitive",
+    },
   },
   title: "Components/Actions/Download Trigger",
 });

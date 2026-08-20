@@ -12,6 +12,11 @@ const meta = preview.meta({
           "Organizes related content into panels that users switch between without leaving the page.",
       },
     },
+    metadata: {
+      aliases: ["tablist"],
+      api: "compound",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Content: Tabs.Content,

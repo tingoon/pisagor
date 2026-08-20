@@ -11,6 +11,10 @@ const meta = preview.meta({
           "Lets users pick a value along a track by dragging a thumb, optionally with labeled steps.",
       },
     },
+    metadata: {
+      api: "closed",
+      taxonomy: "standard",
+    },
   },
   title: "Components/Forms/Slider",
 });

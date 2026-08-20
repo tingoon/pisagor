@@ -11,6 +11,11 @@ const meta = preview.meta({
           "Lets users reorder a list by dragging items or moving them with Alt and arrow keys.",
       },
     },
+    metadata: {
+      aliases: ["reorder", "drag-list"],
+      api: "compound",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Handle: Sortable.Handle,

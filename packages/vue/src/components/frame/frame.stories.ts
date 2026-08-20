@@ -10,6 +10,10 @@ const meta = preview.meta({
           "Embeds external content in a framed viewport with a consistent chrome around it.",
       },
     },
+    metadata: {
+      api: "compound",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Description: Frame.Description,

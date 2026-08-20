@@ -11,6 +11,10 @@ const meta = preview.meta({
         component: "A star rating component built on Ark UI rating-group.",
       },
     },
+    metadata: {
+      api: "closed",
+      taxonomy: "standard",
+    },
   },
   title: "Components/Forms/Rating",
 });

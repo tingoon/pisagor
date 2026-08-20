@@ -10,6 +10,11 @@ const meta = preview.meta({
           "Placeholder shapes that pulse while content loads so layouts feel stable instead of empty.",
       },
     },
+    metadata: {
+      aliases: ["placeholder"],
+      api: "compound",
+      taxonomy: "primitive",
+    },
   },
   subcomponents: {
     Circle: Skeleton.Circle,

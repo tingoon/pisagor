@@ -12,6 +12,11 @@ const meta = preview.meta({
           "Shows how complete a task is along a track, including indeterminate loading when progress is unknown.",
       },
     },
+    metadata: {
+      aliases: ["progress-bar"],
+      api: "closed",
+      taxonomy: "primitive",
+    },
   },
   title: "Components/Feedback/Progress",
 });

@@ -11,6 +11,10 @@ const meta = preview.meta({
           "Labels content with a compact status, category, or count so users can scan it quickly.",
       },
     },
+    metadata: {
+      api: "closed",
+      taxonomy: "primitive",
+    },
   },
   title: "Components/Data Display/Badge",
 });

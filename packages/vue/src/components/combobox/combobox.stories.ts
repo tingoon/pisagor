@@ -13,6 +13,10 @@ const meta = preview.meta({
         component: "Lets users filter options while typing and pick a single result.",
       },
     },
+    metadata: {
+      api: "compound-shorthand",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Clear: Combobox.Clear,

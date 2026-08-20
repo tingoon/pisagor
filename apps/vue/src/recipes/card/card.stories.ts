@@ -7,11 +7,6 @@ const meta = preview.meta({
   component: LoginCard,
   parameters: {
     docs: {
-      checklist: {
-        definedBehaviors: true,
-        definedOptions: true,
-        platformScales: true,
-      },
       description: {
         component: "Card compositions for login flows, custom spacing, and product display.",
       },

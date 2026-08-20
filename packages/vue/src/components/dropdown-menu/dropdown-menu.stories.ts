@@ -25,6 +25,10 @@ const meta = preview.meta({
           "Opens a dropdown list of actions or destinations from a trigger for navigation and contextual commands.",
       },
     },
+    metadata: {
+      api: "compound",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Arrow: DropdownMenu.Arrow,

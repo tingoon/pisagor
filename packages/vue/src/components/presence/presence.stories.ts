@@ -13,6 +13,10 @@ const meta = preview.meta({
           "Animates elements in and out of the tree so enter and exit transitions feel smooth.",
       },
     },
+    metadata: {
+      api: "closed",
+      taxonomy: "primitive",
+    },
   },
   title: "Components/Utilities/Presence",
 });

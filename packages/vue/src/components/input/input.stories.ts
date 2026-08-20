@@ -11,6 +11,10 @@ const meta = preview.meta({
           "Captures a single line of text from the user for names, search terms, and other short values.",
       },
     },
+    metadata: {
+      api: "closed",
+      taxonomy: "primitive",
+    },
   },
   title: "Components/Forms/Input",
 });

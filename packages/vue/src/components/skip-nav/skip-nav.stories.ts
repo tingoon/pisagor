@@ -10,6 +10,11 @@ const meta = preview.meta({
           "Lets keyboard users jump past repetitive navigation straight to the main content.",
       },
     },
+    metadata: {
+      aliases: ["skip-link"],
+      api: "compound",
+      taxonomy: "standard",
+    },
   },
   title: "Components/Navigation/Skip Nav",
 });

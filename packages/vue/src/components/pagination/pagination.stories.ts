@@ -12,6 +12,11 @@ const meta = preview.meta({
           "Moves through long lists or result sets page by page with previous, next, and numbered links.",
       },
     },
+    metadata: {
+      aliases: ["pager"],
+      api: "compound",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Ellipsis: Pagination.Ellipsis,

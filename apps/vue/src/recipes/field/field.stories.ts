@@ -10,14 +10,6 @@ const meta = preview.meta({
   component: FormGrid,
   parameters: {
     docs: {
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        interactiveStates: true,
-        keyboardInteractions: true,
-        platformScales: true,
-      },
       description: {
         component: "Field layout compositions for grids, sections, labels, and settings rows.",
       },

@@ -10,6 +10,10 @@ const meta = preview.meta({
           "Captures one or more files from the user with native file-picker styling aligned to Input.",
       },
     },
+    metadata: {
+      api: "closed",
+      taxonomy: "primitive",
+    },
   },
   title: "Components/Forms/File Input",
 });

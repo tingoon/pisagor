@@ -11,6 +11,10 @@ const meta = preview.meta({
           "Signals state with a small colored dot so users can see availability or severity at a glance.",
       },
     },
+    metadata: {
+      api: "closed",
+      taxonomy: "primitive",
+    },
   },
   title: "Components/Feedback/Status",
 });

@@ -12,6 +12,11 @@ const meta = preview.meta({
           "Draws attention to a short product or marketing message without blocking the rest of the interface.",
       },
     },
+    metadata: {
+      aliases: ["banner", "callout"],
+      api: "compound-shorthand",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Root: Announcement.Root,

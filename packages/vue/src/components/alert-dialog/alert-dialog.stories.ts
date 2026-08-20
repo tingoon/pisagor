@@ -12,6 +12,10 @@ const meta = preview.meta({
           "Interrupts the user with a focused confirmation before a destructive or irreversible action proceeds.",
       },
     },
+    metadata: {
+      api: "compound",
+      taxonomy: "pattern",
+    },
   },
   subcomponents: {
     Action: AlertDialog.Action,

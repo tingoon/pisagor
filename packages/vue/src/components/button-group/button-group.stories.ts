@@ -24,6 +24,10 @@ const meta = preview.meta({
           "Groups related actions together so users can compare choices and pick one option from a set.",
       },
     },
+    metadata: {
+      api: "compound",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Separator: ButtonGroup.Separator,

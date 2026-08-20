@@ -12,6 +12,10 @@ const meta = preview.meta({
           "Turns static text into inline editing so users can update a value where it is shown.",
       },
     },
+    metadata: {
+      api: "compound",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Area: Editable.Area,

@@ -12,6 +12,10 @@ const meta = preview.meta({
           "Shows how far along a task is on a circular track, including indeterminate loading when the duration is unknown.",
       },
     },
+    metadata: {
+      api: "closed",
+      taxonomy: "primitive",
+    },
   },
   title: "Components/Feedback/Circular Progress",
 });

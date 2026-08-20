@@ -7,12 +7,6 @@ const meta = preview.meta({
   component: TableBulkActions,
   parameters: {
     docs: {
-      checklist: {
-        accessibleColor: true,
-        definedBehaviors: true,
-        definedOptions: true,
-        platformScales: true,
-      },
       description: {
         component: "Table compositions with bulk actions, row menus, and pagination controls.",
       },

@@ -11,6 +11,11 @@ const meta = preview.meta({
           "Lets users expand and collapse sections of content so they can scan headings and open only what they need.",
       },
     },
+    metadata: {
+      aliases: ["disclosure"],
+      api: "compound-shorthand",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Content: Accordion.Content,

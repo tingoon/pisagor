@@ -10,6 +10,11 @@ const meta = preview.meta({
         component: "Opens a menu of actions at the pointer position when the user right-clicks.",
       },
     },
+    metadata: {
+      aliases: ["right-click-menu"],
+      api: "compound",
+      taxonomy: "pattern",
+    },
   },
   subcomponents: {
     Content: ContextMenu.Content,

@@ -11,6 +11,10 @@ const meta = preview.meta({
           "Captures numeric values with optional steppers and validation for quantities and settings.",
       },
     },
+    metadata: {
+      api: "compound",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     ClearTrigger: NumberInput.ClearTrigger,

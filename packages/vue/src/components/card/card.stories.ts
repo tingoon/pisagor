@@ -11,6 +11,10 @@ const meta = preview.meta({
           "Groups related content and actions into a contained surface that people can scan and compare.",
       },
     },
+    metadata: {
+      api: "compound",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Action: Card.Action,

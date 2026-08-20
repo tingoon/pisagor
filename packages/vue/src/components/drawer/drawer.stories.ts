@@ -18,6 +18,11 @@ const meta = preview.meta({
           "Slides a panel over the page for secondary tasks or details without leaving the current context.",
       },
     },
+    metadata: {
+      aliases: ["tray"],
+      api: "compound",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Body: Drawer.Body,

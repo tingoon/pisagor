@@ -11,6 +11,11 @@ const meta = preview.meta({
         component: "Displays milestones and progress over time in a compact, scannable layout.",
       },
     },
+    metadata: {
+      aliases: ["activity", "milestones"],
+      api: "compound-shorthand",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Content: Timeline.Content,

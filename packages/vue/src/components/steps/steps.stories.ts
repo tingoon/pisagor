@@ -18,6 +18,11 @@ const meta = preview.meta({
         component: "Guides users through a multi-step flow and shows which stage they are on.",
       },
     },
+    metadata: {
+      aliases: ["stepper", "wizard"],
+      api: "compound",
+      taxonomy: "pattern",
+    },
   },
   subcomponents: {
     CompletedContent: Steps.CompletedContent,

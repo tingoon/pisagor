@@ -51,6 +51,10 @@ const meta = preview.meta({
           "Provides a semantic background layer for grouped content such as cards and panels, with automatic elevation for nested sections.",
       },
     },
+    metadata: {
+      api: "closed",
+      taxonomy: "primitive",
+    },
   },
   title: "Components/Layout/Surface",
 });

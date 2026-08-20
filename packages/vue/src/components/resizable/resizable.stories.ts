@@ -12,6 +12,10 @@ const meta = preview.meta({
           "Splits space between panels with draggable handles so users can adjust layout to their needs.",
       },
     },
+    metadata: {
+      api: "compound",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     EdgeHandle: Resizable.EdgeHandle,

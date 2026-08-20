@@ -26,6 +26,11 @@ const meta = preview.meta({
         component: "Lets users choose an option from a static list.",
       },
     },
+    metadata: {
+      aliases: ["list-box"],
+      api: "compound-shorthand",
+      taxonomy: "standard",
+    },
   },
   subcomponents: {
     Content: Listbox.Content,
