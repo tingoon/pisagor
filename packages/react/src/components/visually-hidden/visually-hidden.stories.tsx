@@ -1,5 +1,4 @@
-import { Button } from "@pisagor/react/button";
-import { VisuallyHidden } from "@pisagor/react/visually-hidden";
+import { Button, VisuallyHidden } from "@pisagor/react";
 import preview from "#/react/preview";
 
 const meta = preview.meta({

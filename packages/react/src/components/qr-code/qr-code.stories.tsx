@@ -1,8 +1,5 @@
 import { DownloadIcon, FishIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react/button";
-import { Card } from "@pisagor/react/card";
-import { Input } from "@pisagor/react/input";
-import { QrCode } from "@pisagor/react/qr-code";
+import { Button, Card, Input, QrCode } from "@pisagor/react";
 import { useState } from "react";
 import preview from "#/react/preview";
 

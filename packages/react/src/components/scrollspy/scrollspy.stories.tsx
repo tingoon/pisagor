@@ -1,6 +1,4 @@
-import { Button } from "@pisagor/react/button";
-import { ScrollArea } from "@pisagor/react/scroll-area";
-import { Scrollspy } from "@pisagor/react/scrollspy";
+import { Button, ScrollArea, Scrollspy } from "@pisagor/react";
 import { useRef } from "react";
 import preview from "#/react/preview";
 

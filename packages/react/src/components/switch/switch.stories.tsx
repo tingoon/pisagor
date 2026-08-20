@@ -1,5 +1,4 @@
-import { Field } from "@pisagor/react/field";
-import { Switch } from "@pisagor/react/switch";
+import { Field, Switch } from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/react/preview";
 

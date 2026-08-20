@@ -1,4 +1,4 @@
-import { SegmentGroup } from "@pisagor/react/segment-group";
+import { SegmentGroup } from "@pisagor/react";
 import { useState } from "react";
 import preview from "#/react/preview";
 

@@ -1,10 +1,5 @@
 import { CheckIcon, PencilSimpleIcon, XIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react/button";
-import { Card } from "@pisagor/react/card";
-import { Editable } from "@pisagor/react/editable";
-import { Field } from "@pisagor/react/field";
-import { Input } from "@pisagor/react/input";
-import { Textarea } from "@pisagor/react/textarea";
+import { Button, Card, Editable, Field, Input, Textarea } from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/react/preview";
 

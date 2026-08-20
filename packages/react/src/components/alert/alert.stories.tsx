@@ -6,8 +6,7 @@ import {
   SparkleIcon,
   WarningIcon,
 } from "@phosphor-icons/react";
-import { Alert } from "@pisagor/react/alert";
-import { Button } from "@pisagor/react/button";
+import { Alert, Button } from "@pisagor/react";
 import preview from "#/react/preview";
 
 const meta = preview.meta({

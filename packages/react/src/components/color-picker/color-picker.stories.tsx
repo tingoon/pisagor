@@ -1,10 +1,13 @@
 import { PercentIcon, SparkleIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react/button";
-import { ColorPicker, parseColor } from "@pisagor/react/color-picker";
-import { Field } from "@pisagor/react/field";
-import { Input } from "@pisagor/react/input";
-import { InputGroup } from "@pisagor/react/input-group";
-import { Separator } from "@pisagor/react/separator";
+import {
+  Button,
+  ColorPicker,
+  Field,
+  Input,
+  InputGroup,
+  parseColor,
+  Separator,
+} from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/react/preview";
 

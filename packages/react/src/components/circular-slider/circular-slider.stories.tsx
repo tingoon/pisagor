@@ -1,5 +1,5 @@
 import { ThermometerIcon } from "@phosphor-icons/react";
-import { CircularSlider } from "@pisagor/react/circular-slider";
+import { CircularSlider } from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/react/preview";
 

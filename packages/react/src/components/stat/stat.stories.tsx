@@ -1,5 +1,5 @@
 import { ArrowDownIcon, ArrowUpIcon } from "@phosphor-icons/react";
-import { Stat } from "@pisagor/react/stat";
+import { Stat } from "@pisagor/react";
 import preview from "#/react/preview";
 
 const meta = preview.meta({

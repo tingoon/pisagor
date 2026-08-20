@@ -1,4 +1,4 @@
-import { Input } from "@pisagor/react/input";
+import { Input } from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/react/preview";
 

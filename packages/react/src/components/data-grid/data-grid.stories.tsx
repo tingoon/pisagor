@@ -8,20 +8,23 @@ import {
   MagnifyingGlassIcon,
   XIcon,
 } from "@phosphor-icons/react";
-import { Avatar } from "@pisagor/react/avatar";
-import { Badge, type BadgeVariant } from "@pisagor/react/badge";
-import { Button } from "@pisagor/react/button";
-import { Checkbox } from "@pisagor/react/checkbox";
+import type { BadgeVariant } from "@pisagor/react";
+import {
+  Avatar,
+  Badge,
+  Button,
+  Checkbox,
+  DropdownMenu,
+  Input,
+  InputGroup,
+  Pagination,
+  Select,
+  Skeleton,
+  Sortable,
+  Spinner,
+  Table,
+} from "@pisagor/react";
 import { DataGrid, renderDataGridCell, useDataGrid } from "@pisagor/react/data-grid";
-import { DropdownMenu } from "@pisagor/react/dropdown-menu";
-import { Input } from "@pisagor/react/input";
-import { InputGroup } from "@pisagor/react/input-group";
-import { Pagination } from "@pisagor/react/pagination";
-import { Select } from "@pisagor/react/select";
-import { Skeleton } from "@pisagor/react/skeleton";
-import { Sortable } from "@pisagor/react/sortable";
-import { Spinner } from "@pisagor/react/spinner";
-import { Table } from "@pisagor/react/table";
 import {
   type ColumnDef,
   type ColumnFiltersState,

@@ -1,5 +1,4 @@
-import { Field } from "@pisagor/react/field";
-import { SignaturePad } from "@pisagor/react/signature-pad";
+import { Field, SignaturePad } from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/react/preview";
 

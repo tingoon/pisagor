@@ -1,11 +1,5 @@
 import { createListCollection } from "@ark-ui/react";
-import { Checkbox } from "@pisagor/react/checkbox";
-import { Field } from "@pisagor/react/field";
-import { Input } from "@pisagor/react/input";
-import { Select } from "@pisagor/react/select";
-import { Surface } from "@pisagor/react/surface";
-import { Switch } from "@pisagor/react/switch";
-import { Textarea } from "@pisagor/react/textarea";
+import { Checkbox, Field, Input, Select, Surface, Switch, Textarea } from "@pisagor/react";
 import preview from "#/react/preview";
 
 const selectCollection = createListCollection({

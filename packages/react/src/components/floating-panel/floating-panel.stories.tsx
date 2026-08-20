@@ -7,11 +7,7 @@ import {
   GearSixIcon,
   XIcon,
 } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react/button";
-import { Field } from "@pisagor/react/field";
-import { FloatingPanel } from "@pisagor/react/floating-panel";
-import { NumberInput } from "@pisagor/react/number-input";
-import { Select } from "@pisagor/react/select";
+import { Button, Field, FloatingPanel, NumberInput, Select } from "@pisagor/react";
 import { useState } from "react";
 import preview from "#/react/preview";
 

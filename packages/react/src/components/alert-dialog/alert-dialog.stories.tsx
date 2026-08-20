@@ -1,5 +1,4 @@
-import { AlertDialog } from "@pisagor/react/alert-dialog";
-import { Button } from "@pisagor/react/button";
+import { AlertDialog, Button } from "@pisagor/react";
 import preview from "#/react/preview";
 
 const meta = preview.meta({

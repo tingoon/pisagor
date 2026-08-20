@@ -1,6 +1,5 @@
 import { GearIcon, ShieldIcon, UserIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react/button";
-import { Tabs } from "@pisagor/react/tabs";
+import { Button, Tabs } from "@pisagor/react";
 import { useState } from "react";
 import preview from "#/react/preview";
 

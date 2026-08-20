@@ -1,4 +1,4 @@
-import { LinkBox } from "@pisagor/react/link-box";
+import { LinkBox } from "@pisagor/react";
 import preview from "#/react/preview";
 
 const meta = preview.meta({

@@ -1,8 +1,4 @@
-import { Badge } from "@pisagor/react/badge";
-import { Button } from "@pisagor/react/button";
-import { Card } from "@pisagor/react/card";
-import { Clipboard } from "@pisagor/react/clipboard";
-import { Collapsible } from "@pisagor/react/collapsible";
+import { Badge, Button, Card, Clipboard, Collapsible } from "@pisagor/react";
 import { useState } from "react";
 import preview from "#/react/preview";
 

@@ -1,6 +1,4 @@
-import { Button } from "@pisagor/react/button";
-import { Calendar, parseDate } from "@pisagor/react/calendar";
-import { Card } from "@pisagor/react/card";
+import { Button, Calendar, Card, parseDate } from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/react/preview";
 

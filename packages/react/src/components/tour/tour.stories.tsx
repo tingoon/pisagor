@@ -1,10 +1,7 @@
 import { waitForElement, waitForEvent } from "@ark-ui/react/tour";
 import { KeyboardIcon, PlusIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react/button";
-import { Checkbox } from "@pisagor/react/checkbox";
-import { Field } from "@pisagor/react/field";
-import { Input } from "@pisagor/react/input";
-import { Tour, type TourStepType, useTourContext } from "@pisagor/react/tour";
+import type { TourStepType } from "@pisagor/react";
+import { Button, Checkbox, Field, Input, Tour, useTourContext } from "@pisagor/react";
 import { useRef, useState } from "react";
 import preview from "#/react/preview";
 

@@ -1,7 +1,5 @@
 import { ArrowCounterClockwiseIcon, GearIcon, PauseIcon, PlayIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react/button";
-import { Card } from "@pisagor/react/card";
-import { Timer } from "@pisagor/react/timer";
+import { Button, Card, Timer } from "@pisagor/react";
 import { useState } from "react";
 import preview from "#/react/preview";
 

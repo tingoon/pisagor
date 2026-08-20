@@ -1,5 +1,4 @@
-import { Field } from "@pisagor/react/field";
-import { Textarea } from "@pisagor/react/textarea";
+import { Field, Textarea } from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/react/preview";
 

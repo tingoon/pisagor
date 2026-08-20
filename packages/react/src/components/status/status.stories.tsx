@@ -1,5 +1,5 @@
 import { PlusIcon } from "@phosphor-icons/react";
-import { Status } from "@pisagor/react/status";
+import { Status } from "@pisagor/react";
 import preview from "#/react/preview";
 
 const meta = preview.meta({

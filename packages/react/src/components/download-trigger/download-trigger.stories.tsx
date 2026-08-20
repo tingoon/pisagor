@@ -1,7 +1,5 @@
 import { DownloadIcon, FileTextIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react/button";
-import { DownloadTrigger } from "@pisagor/react/download-trigger";
-import { Item } from "@pisagor/react/item";
+import { Button, DownloadTrigger, Item } from "@pisagor/react";
 import preview from "#/react/preview";
 
 const meta = preview.meta({

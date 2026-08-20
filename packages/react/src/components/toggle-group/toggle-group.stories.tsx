@@ -1,5 +1,5 @@
 import { TextBIcon, TextItalicIcon, TextUnderlineIcon } from "@phosphor-icons/react";
-import { ToggleGroup } from "@pisagor/react/toggle-group";
+import { ToggleGroup } from "@pisagor/react";
 import { cn } from "@pisagor/utils";
 import { useState } from "react";
 import preview from "#/react/preview";

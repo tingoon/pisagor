@@ -1,17 +1,19 @@
 import { createListCollection, useFilter, useListCollection } from "@ark-ui/react";
 import { ArrowRightIcon } from "@phosphor-icons/react";
-import { Autocomplete } from "@pisagor/react/autocomplete";
-import { Checkbox } from "@pisagor/react/checkbox";
-import { Combobox } from "@pisagor/react/combobox";
-import { Field } from "@pisagor/react/field";
-import { Input } from "@pisagor/react/input";
-import { InputGroup } from "@pisagor/react/input-group";
-import { NumberInput } from "@pisagor/react/number-input";
-import { RadioGroup } from "@pisagor/react/radio-group";
-import { Select } from "@pisagor/react/select";
-import { Slider } from "@pisagor/react/slider";
-import { Switch } from "@pisagor/react/switch";
-import { Textarea } from "@pisagor/react/textarea";
+import {
+  Autocomplete,
+  Checkbox,
+  Combobox,
+  Field,
+  Input,
+  InputGroup,
+  NumberInput,
+  RadioGroup,
+  Select,
+  Slider,
+  Switch,
+  Textarea,
+} from "@pisagor/react";
 import preview, { SurfaceDecorator } from "#/react/preview";
 
 const meta = preview.meta({

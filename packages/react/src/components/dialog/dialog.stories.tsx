@@ -1,8 +1,4 @@
-import { Button } from "@pisagor/react/button";
-import { Dialog } from "@pisagor/react/dialog";
-import { Field } from "@pisagor/react/field";
-import { Input } from "@pisagor/react/input";
-import { Select } from "@pisagor/react/select";
+import { Button, Dialog, Field, Input, Select } from "@pisagor/react";
 import { useRef } from "react";
 import preview from "#/react/preview";
 

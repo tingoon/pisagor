@@ -1,4 +1,4 @@
-import { Avatar, AvatarGroup } from "@pisagor/react/avatar";
+import { Avatar, AvatarGroup } from "@pisagor/react";
 import preview from "#/react/preview";
 
 const meta = preview.meta({

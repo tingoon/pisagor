@@ -1,7 +1,5 @@
 import { CaretDownIcon, CaretUpIcon } from "@phosphor-icons/react";
-import { Badge } from "@pisagor/react/badge";
-import { DataTable, useDataTable } from "@pisagor/react/data-table";
-import { Table } from "@pisagor/react/table";
+import { Badge, DataTable, Table, useDataTable } from "@pisagor/react";
 import {
   type ColumnDef,
   flexRender,

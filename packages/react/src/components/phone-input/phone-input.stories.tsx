@@ -1,4 +1,4 @@
-import { Field } from "@pisagor/react/field";
+import { Field } from "@pisagor/react";
 import { PhoneInput } from "@pisagor/react/phone-input";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/react/preview";

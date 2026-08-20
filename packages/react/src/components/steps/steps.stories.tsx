@@ -6,8 +6,7 @@ import {
   HardDriveIcon,
   UserIcon,
 } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react/button";
-import { Steps } from "@pisagor/react/steps";
+import { Button, Steps } from "@pisagor/react";
 import { useState } from "react";
 import preview from "#/react/preview";
 

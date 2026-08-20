@@ -4,14 +4,14 @@ Package-local guidance for component work in `packages/react` (`@pisagor/react`)
 
 ## Heavy imports
 
-Prefer dedicated entry points; install optional peers only when you import these:
+Heavy components are **not** on the root `@pisagor/react` barrel. Import them only from dedicated subpaths; install optional peers when you use these:
 
 - `@pisagor/react/data-grid` — `@tanstack/react-table`, `@tanstack/react-virtual`
 - `@pisagor/react/charts` — `recharts`
 - `@pisagor/react/rich-text-editor` — `@tiptap/react`, `@tiptap/starter-kit`
 - `@pisagor/react/phone-input` — `react-phone-number-input`
 
-Import only from the specific `@pisagor/react/<component>` path you need.
+Light components: prefer the root barrel (`import { Button } from "@pisagor/react"`). Use a subpath (`@pisagor/react/button`) only when you need a tight import graph.
 
 ## Design tokens (`styles.css`)
 
@@ -21,7 +21,7 @@ Do **not** add component-only palettes to `:root` (e.g. sidebar chrome, chart se
 
 ## Internal imports
 
-Within this package, import sibling components with **relative paths** (`../button`, `../scroll-area`) in component source files. **Stories** may use `@pisagor/react/*` like apps. Do not use `@pisagor/react/*` in non-story `.tsx` / `.ts` under `packages/react/src`. For cyclic dependencies (`input`, `input-group`, `textarea`), import the concrete `.tsx` module instead of the folder barrel.
+Within this package, import sibling components with **relative paths** (`../button`, `../scroll-area`) in component source files. **Stories** may use `@pisagor/react` (light barrel) or `@pisagor/react/<heavy>` like apps. Do not use `@pisagor/react` / `@pisagor/react/*` in non-story `.tsx` / `.ts` under `packages/react/src`. For cyclic dependencies (`input`, `input-group`, `textarea`), import the concrete `.tsx` module instead of the folder barrel.
 
 Package-private helpers live under [`src/internal/`](./src/internal/) (e.g. [`internal/form-control/`](./src/internal/form-control/) for Surface shell resolution). Do not re-export them from component barrels or `@pisagor/react/hooks`.
 

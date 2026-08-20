@@ -7,9 +7,7 @@ import {
   ShieldWarningIcon,
   UserIcon,
 } from "@phosphor-icons/react";
-import { Avatar } from "@pisagor/react/avatar";
-import { Button } from "@pisagor/react/button";
-import { Item } from "@pisagor/react/item";
+import { Avatar, Button, Item } from "@pisagor/react";
 import preview from "#/react/preview";
 
 const meta = preview.meta({

@@ -1,4 +1,4 @@
-import { ClientOnly } from "@pisagor/react/client-only";
+import { ClientOnly } from "@pisagor/react";
 import preview from "#/react/preview";
 
 const meta = preview.meta({

@@ -1,4 +1,4 @@
-import { SkipNav } from "@pisagor/react/skip-nav";
+import { SkipNav } from "@pisagor/react";
 import preview from "#/react/preview";
 
 const meta = preview.meta({

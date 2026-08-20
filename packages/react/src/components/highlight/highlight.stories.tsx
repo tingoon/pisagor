@@ -1,6 +1,5 @@
 import { useHighlight } from "@ark-ui/react/highlight";
-import { Highlight } from "@pisagor/react/highlight";
-import { Input } from "@pisagor/react/input";
+import { Highlight, Input } from "@pisagor/react";
 import { Fragment, useState } from "react";
 import preview from "#/react/preview";
 

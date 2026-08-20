@@ -1,6 +1,5 @@
 import { MagnifyingGlassIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react/button";
-import { EmptyState } from "@pisagor/react/empty-state";
+import { Button, EmptyState } from "@pisagor/react";
 import preview from "#/react/preview";
 
 const meta = preview.meta({

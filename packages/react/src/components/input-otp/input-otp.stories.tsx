@@ -1,4 +1,4 @@
-import { InputOTP } from "@pisagor/react/input-otp";
+import { InputOTP } from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/react/preview";
 

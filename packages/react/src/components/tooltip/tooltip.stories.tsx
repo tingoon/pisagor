@@ -1,7 +1,5 @@
 import { TextBIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react/button";
-import { Kbd } from "@pisagor/react/kbd";
-import { Tooltip } from "@pisagor/react/tooltip";
+import { Button, Kbd, Tooltip } from "@pisagor/react";
 import preview from "#/react/preview";
 
 const meta = preview.meta({

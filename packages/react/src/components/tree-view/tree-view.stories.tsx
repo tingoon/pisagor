@@ -11,14 +11,8 @@ import {
   StarIcon,
   TrashIcon,
 } from "@phosphor-icons/react";
-import { ContextMenu } from "@pisagor/react/context-menu";
-import {
-  createFileIcons,
-  createTreeCollection,
-  type NodeProviderProps,
-  type TreeNodeType,
-  TreeView,
-} from "@pisagor/react/tree-view";
+import type { NodeProviderProps, TreeNodeType } from "@pisagor/react";
+import { ContextMenu, createFileIcons, createTreeCollection, TreeView } from "@pisagor/react";
 import { useState } from "react";
 import preview from "#/react/preview";
 

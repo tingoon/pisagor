@@ -1,5 +1,4 @@
-import { Card } from "@pisagor/react/card";
-import { Skeleton } from "@pisagor/react/skeleton";
+import { Card, Skeleton } from "@pisagor/react";
 import preview from "#/react/preview";
 
 const meta = preview.meta({

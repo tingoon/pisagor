@@ -1,5 +1,4 @@
-import { Card } from "@pisagor/react/card";
-import { Carousel } from "@pisagor/react/carousel";
+import { Card, Carousel } from "@pisagor/react";
 import { useState } from "react";
 import preview from "#/react/preview";
 

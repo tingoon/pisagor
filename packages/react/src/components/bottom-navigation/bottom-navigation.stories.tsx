@@ -1,6 +1,5 @@
 import { BellIcon, HouseIcon, MagnifyingGlassIcon, UserIcon } from "@phosphor-icons/react";
-import { BottomNavigation } from "@pisagor/react/bottom-navigation";
-import { ScrollArea } from "@pisagor/react/scroll-area";
+import { BottomNavigation, ScrollArea } from "@pisagor/react";
 import preview from "#/react/preview";
 
 const meta = preview.meta({

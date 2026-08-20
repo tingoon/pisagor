@@ -1,8 +1,5 @@
 import { MinusIcon, PlusIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react/button";
-import { ButtonGroup } from "@pisagor/react/button-group";
-import { CircularProgress } from "@pisagor/react/circular-progress";
-import { Field } from "@pisagor/react/field";
+import { Button, ButtonGroup, CircularProgress, Field } from "@pisagor/react";
 import { useEffect, useState } from "react";
 import preview from "#/react/preview";
 

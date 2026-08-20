@@ -1,5 +1,4 @@
-import { Prose } from "@pisagor/react/prose";
-import { ScrollArea } from "@pisagor/react/scroll-area";
+import { Prose, ScrollArea } from "@pisagor/react";
 import preview from "#/react/preview";
 
 const meta = preview.meta({

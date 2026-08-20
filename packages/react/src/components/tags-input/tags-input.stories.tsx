@@ -1,9 +1,6 @@
 import { useFilter, useListCollection } from "@ark-ui/react";
 import { useTagsInput } from "@ark-ui/react/tags-input";
-import { Button } from "@pisagor/react/button";
-import { Combobox } from "@pisagor/react/combobox";
-import { Field } from "@pisagor/react/field";
-import { TagsInput } from "@pisagor/react/tags-input";
+import { Button, Combobox, Field, TagsInput } from "@pisagor/react";
 import { useId, useState } from "react";
 import preview, { SurfaceDecorator } from "#/react/preview";
 

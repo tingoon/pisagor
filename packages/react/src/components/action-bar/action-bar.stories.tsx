@@ -7,10 +7,7 @@ import {
   TrashIcon,
   XIcon,
 } from "@phosphor-icons/react";
-import { ActionBar } from "@pisagor/react/action-bar";
-import { AlertDialog } from "@pisagor/react/alert-dialog";
-import { Button } from "@pisagor/react/button";
-import { DropdownMenu } from "@pisagor/react/dropdown-menu";
+import { ActionBar, AlertDialog, Button, DropdownMenu } from "@pisagor/react";
 import { useState } from "react";
 import preview from "#/react/preview";
 

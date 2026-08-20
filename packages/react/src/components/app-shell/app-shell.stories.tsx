@@ -1,9 +1,6 @@
 import { faker } from "@faker-js/faker";
 import { WarningIcon } from "@phosphor-icons/react";
-import { Announcement } from "@pisagor/react/announcement";
-import { AppShell, useAppShell } from "@pisagor/react/app-shell";
-import { Badge } from "@pisagor/react/badge";
-import { Button } from "@pisagor/react/button";
+import { Announcement, AppShell, Badge, Button, useAppShell } from "@pisagor/react";
 import { useDisclosure } from "@pisagor/react-hooks";
 import preview from "#/react/preview";
 

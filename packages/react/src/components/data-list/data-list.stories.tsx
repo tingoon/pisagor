@@ -1,7 +1,5 @@
 import { InfoIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react/button";
-import { DataList } from "@pisagor/react/data-list";
-import { Popover } from "@pisagor/react/popover";
+import { Button, DataList, Popover } from "@pisagor/react";
 import preview from "#/react/preview";
 
 const meta = preview.meta({

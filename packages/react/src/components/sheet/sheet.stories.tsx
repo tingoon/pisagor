@@ -1,7 +1,4 @@
-import { Button } from "@pisagor/react/button";
-import { Field } from "@pisagor/react/field";
-import { Input } from "@pisagor/react/input";
-import { Sheet } from "@pisagor/react/sheet";
+import { Button, Field, Input, Sheet } from "@pisagor/react";
 import preview from "#/react/preview";
 
 const meta = preview.meta({

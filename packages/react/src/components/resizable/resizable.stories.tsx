@@ -1,4 +1,4 @@
-import { Resizable } from "@pisagor/react/resizable";
+import { Resizable } from "@pisagor/react";
 import { cn } from "@pisagor/utils";
 import type { ReactNode } from "react";
 import { useState } from "react";

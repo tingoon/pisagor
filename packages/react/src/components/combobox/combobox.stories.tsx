@@ -1,7 +1,6 @@
 import { useFilter, useListCollection } from "@ark-ui/react";
 import { AppleLogoIcon } from "@phosphor-icons/react";
-import { Combobox } from "@pisagor/react/combobox";
-import { InputGroup } from "@pisagor/react/input-group";
+import { Combobox, InputGroup } from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/react/preview";
 

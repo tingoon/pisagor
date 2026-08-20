@@ -1,5 +1,4 @@
-import { Accordion } from "@pisagor/react/accordion";
-import { Card } from "@pisagor/react/card";
+import { Accordion, Card } from "@pisagor/react";
 import { useState } from "react";
 import preview from "#/react/preview";
 

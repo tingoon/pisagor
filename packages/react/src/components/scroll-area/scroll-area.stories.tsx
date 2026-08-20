@@ -1,5 +1,4 @@
-import { ScrollArea } from "@pisagor/react/scroll-area";
-import { Separator } from "@pisagor/react/separator";
+import { ScrollArea, Separator } from "@pisagor/react";
 import { Fragment } from "react";
 import preview from "#/react/preview";
 

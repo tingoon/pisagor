@@ -1,5 +1,4 @@
-import { Button } from "@pisagor/react/button";
-import { Toolbar } from "@pisagor/react/toolbar";
+import { Button, Toolbar } from "@pisagor/react";
 import preview from "#/react/preview";
 
 const meta = preview.meta({

@@ -9,14 +9,7 @@ import {
   PlusSquareIcon,
   TrashIcon,
 } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react/button";
-import { Field } from "@pisagor/react/field";
-import { Input } from "@pisagor/react/input";
-import { Item } from "@pisagor/react/item";
-import { Kbd } from "@pisagor/react/kbd";
-import { Listbox } from "@pisagor/react/listbox";
-import { Popover } from "@pisagor/react/popover";
-import { Separator } from "@pisagor/react/separator";
+import { Button, Field, Input, Item, Kbd, Listbox, Popover, Separator } from "@pisagor/react";
 import type { CSSProperties } from "react";
 import { useCallback, useState } from "react";
 import preview from "#/react/preview";

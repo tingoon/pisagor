@@ -6,7 +6,7 @@ import {
   SignOutIcon,
   UserIcon,
 } from "@phosphor-icons/react";
-import { Menu } from "@pisagor/react/menu";
+import { Menu } from "@pisagor/react";
 import preview from "#/react/preview";
 
 const meta = preview.meta({

@@ -1,4 +1,4 @@
-import { Frame } from "@pisagor/react/frame";
+import { Frame } from "@pisagor/react";
 import preview from "#/react/preview";
 
 const meta = preview.meta({

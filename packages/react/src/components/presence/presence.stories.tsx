@@ -1,5 +1,4 @@
-import { Button } from "@pisagor/react/button";
-import { Presence } from "@pisagor/react/presence";
+import { Button, Presence } from "@pisagor/react";
 import { cn } from "@pisagor/utils";
 import { useState } from "react";
 import preview from "#/react/preview";

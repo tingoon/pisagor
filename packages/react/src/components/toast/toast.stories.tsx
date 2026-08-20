@@ -1,6 +1,5 @@
 import { createToaster } from "@ark-ui/react/toast";
-import { Button } from "@pisagor/react/button";
-import { Toaster, toast } from "@pisagor/react/toast";
+import { Button, Toaster, toast } from "@pisagor/react";
 import preview from "#/react/preview";
 
 const meta = preview.meta({

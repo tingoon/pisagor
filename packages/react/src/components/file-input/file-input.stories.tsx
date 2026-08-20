@@ -1,4 +1,4 @@
-import { FileInput } from "@pisagor/react/file-input";
+import { FileInput } from "@pisagor/react";
 import preview, { SurfaceDecorator } from "#/react/preview";
 
 const meta = preview.meta({

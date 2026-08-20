@@ -19,8 +19,7 @@ import {
   TrashIcon,
   UserIcon,
 } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react/button";
-import { DropdownMenu } from "@pisagor/react/dropdown-menu";
+import { Button, DropdownMenu } from "@pisagor/react";
 import preview from "#/react/preview";
 
 const meta = preview.meta({

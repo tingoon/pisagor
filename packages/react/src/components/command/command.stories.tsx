@@ -1,8 +1,6 @@
 import { useFilter, useListCollection } from "@ark-ui/react";
 import { ArrowBendDownLeftIcon, ArrowDownIcon, ArrowUpIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react/button";
-import { Command } from "@pisagor/react/command";
-import { Kbd } from "@pisagor/react/kbd";
+import { Button, Command, Kbd } from "@pisagor/react";
 import { useState } from "react";
 import preview from "#/react/preview";
 

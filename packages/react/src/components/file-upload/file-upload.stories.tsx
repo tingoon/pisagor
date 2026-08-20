@@ -1,8 +1,6 @@
 import { useFileUpload } from "@ark-ui/react/file-upload";
 import { CameraIcon, FolderIcon, PaperclipIcon, TrashIcon, XIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react/button";
-import { FileUpload } from "@pisagor/react/file-upload";
-import { Separator } from "@pisagor/react/separator";
+import { Button, FileUpload, Separator } from "@pisagor/react";
 import preview, { SurfaceDecorator } from "#/react/preview";
 
 const meta = preview.meta({

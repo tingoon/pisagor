@@ -1,7 +1,5 @@
 import { MapPinIcon } from "@phosphor-icons/react";
-import { Avatar } from "@pisagor/react/avatar";
-import { Button } from "@pisagor/react/button";
-import { HoverCard } from "@pisagor/react/hover-card";
+import { Avatar, Button, HoverCard } from "@pisagor/react";
 import { useState } from "react";
 import preview from "#/react/preview";
 

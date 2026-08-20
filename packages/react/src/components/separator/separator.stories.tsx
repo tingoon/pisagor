@@ -1,4 +1,4 @@
-import { Separator } from "@pisagor/react/separator";
+import { Separator } from "@pisagor/react";
 import preview from "#/react/preview";
 
 const meta = preview.meta({

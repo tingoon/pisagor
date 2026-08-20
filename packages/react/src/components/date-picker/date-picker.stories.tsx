@@ -1,8 +1,5 @@
 import { CalendarIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react/button";
-import { Calendar, parseDate } from "@pisagor/react/calendar";
-import { DatePicker } from "@pisagor/react/date-picker";
-import { Field } from "@pisagor/react/field";
+import { Button, Calendar, DatePicker, Field, parseDate } from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/react/preview";
 

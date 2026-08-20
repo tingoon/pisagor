@@ -1,6 +1,5 @@
 import type { CheckboxCheckedState } from "@ark-ui/react";
-import { Checkbox } from "@pisagor/react/checkbox";
-import { Field } from "@pisagor/react/field";
+import { Checkbox, Field } from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/react/preview";
 

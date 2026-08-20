@@ -1,5 +1,4 @@
-import { Field } from "@pisagor/react/field";
-import { RadioGroup } from "@pisagor/react/radio-group";
+import { Field, RadioGroup } from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/react/preview";
 

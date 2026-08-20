@@ -1,6 +1,5 @@
 import { SparkleIcon } from "@phosphor-icons/react";
-import { Button } from "@pisagor/react/button";
-import { Clipboard } from "@pisagor/react/clipboard";
+import { Button, Clipboard } from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/react/preview";
 
