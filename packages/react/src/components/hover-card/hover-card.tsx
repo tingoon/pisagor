@@ -7,8 +7,15 @@ import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils";
 
 // #region Types
-interface HoverCardProps extends ComponentProps<typeof HoverCardPrimitive.Root>, WithTestId {}
+export type HoverCardRootProps = ComponentProps<typeof HoverCardPrimitive.Root> & WithTestId;
 
+export type HoverCardProps = HoverCardRootProps;
+
+export type HoverCardTriggerProps = ComponentProps<typeof HoverCardPrimitive.Trigger>;
+
+export type HoverCardArrowProps = ComponentProps<typeof HoverCardPrimitive.Arrow>;
+
+export type HoverCardContentProps = ComponentProps<typeof HoverCardPrimitive.Content>;
 // #endregion
 
 // #region Context
@@ -16,10 +23,9 @@ const [HoverCardRootContext, useHoverCardRoot] = createContext<{ testId?: string
   name: "HoverCardRoot",
   strict: false,
 });
-
 // #endregion
 
-// #region Components
+// #region Parts
 export function HoverCardRoot({
   lazyMount = true,
   unmountOnExit = true,
@@ -28,7 +34,7 @@ export function HoverCardRoot({
   positioning = { placement: "top" },
   testId,
   ...rest
-}: HoverCardProps) {
+}: HoverCardRootProps) {
   const { "data-testid": dataTestId, ...props } = rest as typeof rest & { "data-testid"?: string };
 
   return (
@@ -46,17 +52,14 @@ export function HoverCardRoot({
 }
 HoverCardRoot.displayName = "HoverCard";
 
-export function HoverCardTrigger(props: ComponentProps<typeof HoverCardPrimitive.Trigger>) {
+export function HoverCardTrigger(props: HoverCardTriggerProps) {
   const { testId } = useHoverCardRoot() ?? {};
 
   return <HoverCardPrimitive.Trigger data-testid={testId} {...props} />;
 }
 HoverCardTrigger.displayName = "HoverCard.Trigger";
 
-export function HoverCardArrow({
-  style,
-  ...rest
-}: ComponentProps<typeof HoverCardPrimitive.Arrow>) {
+export function HoverCardArrow({ style, ...rest }: HoverCardArrowProps) {
   return (
     <HoverCardPrimitive.Arrow
       {...rest}
@@ -72,11 +75,7 @@ export function HoverCardArrow({
 }
 HoverCardArrow.displayName = "HoverCard.Arrow";
 
-export function HoverCardContent({
-  className,
-  children,
-  ...rest
-}: ComponentProps<typeof HoverCardPrimitive.Content>) {
+export function HoverCardContent({ className, children, ...rest }: HoverCardContentProps) {
   return (
     <Portal>
       <HoverCardPrimitive.Positioner>
@@ -90,5 +89,4 @@ export function HoverCardContent({
   );
 }
 HoverCardContent.displayName = "HoverCard.Content";
-
 // #endregion

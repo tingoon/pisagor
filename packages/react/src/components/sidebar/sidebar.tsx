@@ -130,7 +130,6 @@ interface SidebarMenuSkeletonProps extends ComponentProps<typeof ark.div> {
 interface SidebarMenuSubButtonProps extends ComponentProps<typeof ark.a>, ButtonVariantProps {
   isActive?: boolean;
 }
-
 // #endregion
 
 // #region Context
@@ -152,10 +151,9 @@ const SIDEBAR_WIDTH = "16rem";
 const SIDEBAR_WIDTH_MOBILE = "18rem";
 
 const SIDEBAR_WIDTH_ICON = "3rem";
-
 // #endregion
 
-// #region Components
+// #region Parts
 export function SidebarProvider({
   defaultOpen = true,
   open: openProp,

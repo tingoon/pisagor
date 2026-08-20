@@ -1,11 +1,19 @@
 export type {
+  DropdownMenuArrowProps,
+  DropdownMenuCheckboxItemProps,
   DropdownMenuContentProps,
+  DropdownMenuGroupLabelProps,
   DropdownMenuGroupProps,
   DropdownMenuItemProps,
+  DropdownMenuPositionerProps,
+  DropdownMenuRadioGroupProps,
+  DropdownMenuRadioItemProps,
   DropdownMenuRootProps,
   DropdownMenuSeparatorProps,
   DropdownMenuShortcutProps,
+  DropdownMenuSubContentProps,
   DropdownMenuSubTriggerProps,
+  DropdownMenuTriggerProps,
 } from "./dropdown-menu";
 
 import {

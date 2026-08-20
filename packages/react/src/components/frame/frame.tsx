@@ -22,7 +22,7 @@ interface FrameHeaderProps extends ComponentProps<typeof ark.header> {
 interface FrameRootProps extends ComponentProps<typeof ark.div>, WithTestId {}
 // #endregion
 
-// #region Components
+// #region Parts
 export function FrameRoot({ className, testId, ...rest }: FrameRootProps) {
   return (
     <ark.div
@@ -107,5 +107,4 @@ export function FrameFooter({ className, ...rest }: ComponentProps<typeof ark.fo
   );
 }
 FrameFooter.displayName = "Frame.Footer";
-
 // #endregion

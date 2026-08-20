@@ -27,31 +27,35 @@ import { useFormControlVariant } from "../../internal/form-control/use-form-cont
 import type { WithTestId } from "../../internal/types";
 import { Separator } from "../separator";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
-export interface FieldProps
-  extends ComponentProps<typeof FieldPrimitive.Root>,
-    FieldVariantProps,
-    WithTestId {}
+export type FieldRootProps = ComponentProps<typeof FieldPrimitive.Root> &
+  FieldVariantProps &
+  WithTestId;
 
-interface FieldLegendProps extends ComponentProps<typeof FieldsetPrimitive.Legend> {
+export type FieldProps = FieldRootProps;
+
+export interface FieldLegendProps extends ComponentProps<typeof FieldsetPrimitive.Legend> {
   /** The variant of the legend. */
   variant?: "legend" | "label";
 }
 
+export type FieldSetProps = ComponentProps<typeof FieldsetPrimitive.Root>;
+
+export type FieldLabelProps = ComponentProps<typeof FieldPrimitive.Label>;
+
+export type FieldHelperProps = ComponentProps<typeof FieldPrimitive.HelperText>;
+
+export type FieldErrorProps = ComponentProps<typeof FieldPrimitive.ErrorText>;
 // #endregion
 
-// #region Components
+// #region Parts
 export function FieldRoot({
   orientation = "vertical",
   reverse = false,
   className,
   testId,
   ...rest
-}: FieldProps) {
+}: FieldRootProps) {
   return (
     <FieldPrimitive.Root
       {...rest}
@@ -63,7 +67,7 @@ export function FieldRoot({
 }
 FieldRoot.displayName = "Field";
 
-export function FieldSet({ className, ...rest }: ComponentProps<typeof FieldsetPrimitive.Root>) {
+export function FieldSet({ className, ...rest }: FieldSetProps) {
   return <FieldsetPrimitive.Root {...rest} className={cn(fieldSetVariants(), className)} />;
 }
 FieldSet.displayName = "Field.Set";
@@ -102,8 +106,6 @@ export function FieldContent({ className, ...rest }: ComponentProps<typeof ark.d
   );
 }
 FieldContent.displayName = "Field.Content";
-
-export type FieldLabelProps = ComponentProps<typeof FieldPrimitive.Label>;
 
 export function FieldLabel({ className, ...rest }: FieldLabelProps) {
   return <FieldPrimitive.Label {...rest} className={cn(fieldLabelVariants(), className)} />;
@@ -173,20 +175,13 @@ export function FieldSeparator({ children, className, ...rest }: ComponentProps<
 }
 FieldSeparator.displayName = "Field.Separator";
 
-export function FieldHelper({
-  className,
-  ...rest
-}: ComponentProps<typeof FieldPrimitive.HelperText>) {
+export function FieldHelper({ className, ...rest }: FieldHelperProps) {
   return <FieldPrimitive.HelperText {...rest} className={cn(fieldHelperVariants(), className)} />;
 }
 FieldHelper.displayName = "Field.Helper";
 
-export function FieldError({
-  className,
-  ...rest
-}: ComponentProps<typeof FieldPrimitive.ErrorText>) {
+export function FieldError({ className, ...rest }: FieldErrorProps) {
   return <FieldPrimitive.ErrorText {...rest} className={cn(fieldErrorVariants(), className)} />;
 }
 FieldError.displayName = "Field.Error";
-
 // #endregion

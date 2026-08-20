@@ -22,7 +22,7 @@ interface SkeletonTextProps extends ComponentProps<typeof ark.div> {
 interface SkeletonRootProps extends ComponentProps<typeof ark.div>, WithTestId {}
 // #endregion
 
-// #region Components
+// #region Parts
 export function SkeletonRoot({ className, testId, ...rest }: SkeletonRootProps) {
   return (
     <ark.div
@@ -65,5 +65,4 @@ export function SkeletonText({ className, lines = 2, ...rest }: SkeletonTextProp
   );
 }
 SkeletonText.displayName = "Skeleton.Text";
-
 // #endregion

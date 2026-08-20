@@ -109,16 +109,22 @@ export interface ActionBarValueProps extends BadgeProps {
   /** The label of the selection trigger */
   label?: string;
 }
+// #endregion
 
+// #region Context
 /**
  * Returns the nearest action bar context.
  */
 const [ActionBarContext, useActionBar] = createContext<ActionBarContextValue>({
   name: "ActionBar",
 });
+// #endregion
 
+// #region Constants
 const defaultPositioning = { gutter: "16px", placement: "bottom" } as const;
+// #endregion
 
+// #region Parts
 export function ActionBarRoot({
   open,
   defaultOpen = false,
@@ -333,5 +339,4 @@ export function ActionBarBody({ className, ...rest }: ComponentProps<typeof ark.
   return <ark.div {...rest} className={cn(actionBarInlineVariants(), className)} />;
 }
 ActionBarBody.displayName = "ActionBar.Body";
-
 // #endregion

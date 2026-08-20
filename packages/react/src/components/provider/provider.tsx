@@ -53,7 +53,7 @@ function resolveDir(locale: string, dir?: "ltr" | "rtl"): "ltr" | "rtl" {
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function Provider({
   children,
   locale = "en-US",

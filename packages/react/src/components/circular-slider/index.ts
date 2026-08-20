@@ -7,7 +7,16 @@ import {
   CircularSliderValue,
 } from "./circular-slider";
 
-export type { CircularSliderProps } from "./circular-slider";
+export type {
+  CircularSliderControlProps,
+  CircularSliderHiddenInputProps,
+  CircularSliderMarkerGroupProps,
+  CircularSliderMarkerProps,
+  CircularSliderProps,
+  CircularSliderRootProps,
+  CircularSliderThumbProps,
+  CircularSliderValueProps,
+} from "./circular-slider";
 
 export const CircularSlider = Object.assign(CircularSliderRoot, {
   Control: CircularSliderControl,

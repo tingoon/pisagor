@@ -9,7 +9,17 @@ import {
   EditableSubmitTrigger,
 } from "./editable";
 
-export type { EditableInputProps, EditableProps } from "./editable";
+export type {
+  EditableAreaProps,
+  EditableCancelTriggerProps,
+  EditableControlProps,
+  EditableEditTriggerProps,
+  EditableInputProps,
+  EditablePreviewProps,
+  EditableProps,
+  EditableRootProps,
+  EditableSubmitTriggerProps,
+} from "./editable";
 
 export const Editable = Object.assign(EditableRoot, {
   Area: EditableArea,

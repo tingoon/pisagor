@@ -204,7 +204,7 @@ function columnSizeStyle(column: Column<unknown>, enabled: boolean): CSSProperti
 }
 // #endregion
 
-// #region Components
+// #region Parts
 function useDataGridContext<TData>() {
   return useDataGridContextBase() as DataGridContextValue<TData>;
 }

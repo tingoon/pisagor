@@ -4,17 +4,13 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 type HighlightRootProps = ComponentProps<typeof HighlightPrimitive>;
 
 interface HighlightProps extends HighlightRootProps, WithTestId {}
 // #endregion
 
-// #region Component
+// #region Part
 export function Highlight({ className, testId, ...rest }: HighlightProps) {
   return (
     <HighlightPrimitive

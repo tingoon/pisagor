@@ -25,16 +25,12 @@ import {
 } from "../dialog";
 import { useDialog } from "../dialog/dialog";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
-interface SheetPositionerProps
+export interface SheetPositionerProps
   extends ComponentProps<typeof DialogPrimitive.Positioner>,
     SheetPositionerVariantProps {}
 
-interface SheetContentProps
+export interface SheetContentProps
   extends ComponentProps<typeof DialogPrimitive.Content>,
     SheetContentVariantProps {
   /**
@@ -45,17 +41,20 @@ interface SheetContentProps
   showCloseButton?: boolean;
 }
 
-// #endregion
-
-// #region Components
 export type SheetProps = DialogProps;
 
+export type SheetTriggerProps = ComponentProps<typeof DialogPrimitive.Trigger>;
+
+export type SheetCloseProps = ComponentProps<typeof DialogPrimitive.CloseTrigger>;
+// #endregion
+
+// #region Parts
 export function SheetRoot(props: SheetProps) {
   return <Dialog {...props} />;
 }
 SheetRoot.displayName = "Sheet";
 
-export function SheetTrigger(props: ComponentProps<typeof DialogPrimitive.Trigger>) {
+export function SheetTrigger(props: SheetTriggerProps) {
   return <DialogPrimitive.Trigger {...props} />;
 }
 SheetTrigger.displayName = "Sheet.Trigger";
@@ -148,7 +147,7 @@ export function SheetBody({ className, ...rest }: DialogBodyProps) {
 }
 SheetBody.displayName = "Sheet.Body";
 
-export function SheetClose(props: ComponentProps<typeof DialogPrimitive.CloseTrigger>) {
+export function SheetClose(props: SheetCloseProps) {
   return <DialogPrimitive.CloseTrigger {...props} />;
 }
 SheetClose.displayName = "Sheet.Close";
@@ -164,5 +163,4 @@ export function SheetFooter({ className, ...rest }: DialogFooterProps) {
   );
 }
 SheetFooter.displayName = "Sheet.Footer";
-
 // #endregion

@@ -4,15 +4,11 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 interface KbdProps extends ComponentProps<typeof ark.kbd>, KbdVariantProps, WithTestId {}
 // #endregion
 
-// #region Components
+// #region Parts
 export function KbdRoot({ variant = "default", className, testId, ...rest }: KbdProps) {
   return (
     <ark.kbd
@@ -37,5 +33,4 @@ export function KbdGroup({ className, ...rest }: ComponentProps<typeof ark.div>)
   );
 }
 KbdGroup.displayName = "Kbd.Group";
-
 // #endregion

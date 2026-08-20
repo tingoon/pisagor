@@ -5,13 +5,9 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 
-type ToggleRootProps = ComponentProps<typeof TogglePrimitive.Root>;
+export type ToggleRootProps = ComponentProps<typeof TogglePrimitive.Root>;
 
 export interface ToggleProps extends ToggleRootProps, ToggleVariantProps, WithTestId {
   /**
@@ -25,7 +21,7 @@ export interface ToggleProps extends ToggleRootProps, ToggleVariantProps, WithTe
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function Toggle({
   variant = "ghost",
   size = "md",

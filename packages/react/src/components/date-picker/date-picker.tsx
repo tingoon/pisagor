@@ -25,7 +25,7 @@ import { Input, type InputProps } from "../input";
 import { InputGroup } from "../input-group";
 
 // #region Types
-interface DatePickerTriggerProps extends ComponentProps<typeof DatePickerPrimitive.Trigger> {
+export interface DatePickerTriggerProps extends ComponentProps<typeof DatePickerPrimitive.Trigger> {
   /**
    * Whether to show a clear button when a date is selected.
    *
@@ -54,7 +54,7 @@ interface DatePickerTimerProps extends InputProps {
   clearable?: boolean;
 }
 
-interface DatePickerContentProps extends ComponentProps<typeof DatePickerPrimitive.Content> {
+export interface DatePickerContentProps extends ComponentProps<typeof DatePickerPrimitive.Content> {
   /**
    * When `true` (default), auto-renders the standard month/year navigation and
    * day grid inside the content — no need to add calendar sub-components manually.
@@ -70,6 +70,9 @@ export interface DatePickerRootProps
   onValueChange?: (value: ComponentProps<typeof DatePickerPrimitive.Root>["value"]) => void;
 }
 
+export type DatePickerValueProps = ComponentProps<typeof DatePickerPrimitive.ValueText>;
+
+export type DatePickerPresetTriggerProps = ComponentProps<typeof DatePickerPrimitive.PresetTrigger>;
 // #endregion
 
 // #region Context
@@ -77,10 +80,9 @@ const [DatePickerRootContext, useDatePickerRoot] = createContext<{ testId?: stri
   name: "DatePickerRoot",
   strict: false,
 });
-
 // #endregion
 
-// #region Components
+// #region Parts
 export function DatePickerRoot({
   positioning = { placement: "top" },
   onValueChange,
@@ -266,21 +268,15 @@ export function DatePickerContent({
 }
 DatePickerContent.displayName = "DatePicker.Content";
 
-export function DatePickerValue({
-  className,
-  ...rest
-}: ComponentProps<typeof DatePickerPrimitive.ValueText>) {
+export function DatePickerValue({ className, ...rest }: DatePickerValueProps) {
   return (
     <DatePickerPrimitive.ValueText {...rest} className={cn(datePickerValueVariants(), className)} />
   );
 }
 DatePickerValue.displayName = "DatePicker.Value";
 
-export function DatePickerPresetTrigger(
-  props: ComponentProps<typeof DatePickerPrimitive.PresetTrigger>,
-) {
+export function DatePickerPresetTrigger(props: DatePickerPresetTriggerProps) {
   return <Calendar.PresetTrigger {...props} />;
 }
 DatePickerPresetTrigger.displayName = "DatePicker.PresetTrigger";
-
 // #endregion

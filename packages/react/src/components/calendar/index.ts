@@ -25,7 +25,31 @@ import {
   CalendarYearSelect,
 } from "./calendar";
 
-export type { CalendarProps, CalendarTableBodyProps } from "./calendar";
+export type {
+  CalendarClearTriggerProps,
+  CalendarContextProps,
+  CalendarControlProps,
+  CalendarLabelProps,
+  CalendarMonthSelectProps,
+  CalendarNextTriggerProps,
+  CalendarPresetTriggerProps,
+  CalendarPrevTriggerProps,
+  CalendarProps,
+  CalendarRootProps,
+  CalendarTableBodyProps,
+  CalendarTableCellProps,
+  CalendarTableHeaderProps,
+  CalendarTableHeadProps,
+  CalendarTableNextMonthProps,
+  CalendarTableProps,
+  CalendarTableRowProps,
+  CalendarTriggerProps,
+  CalendarViewControlProps,
+  CalendarViewDateProps,
+  CalendarViewProps,
+  CalendarWeekDaysProps,
+  CalendarYearSelectProps,
+} from "./calendar";
 export { parseDate } from "./calendar";
 
 export const Calendar = Object.assign(CalendarRoot, {

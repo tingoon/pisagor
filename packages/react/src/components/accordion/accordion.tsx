@@ -19,15 +19,20 @@ interface AccordionPresetItem {
   disabled?: boolean;
 }
 
-type AccordionRootProps = ComponentProps<typeof AccordionPrimitive.Root> & WithTestId;
+export type AccordionRootProps = ComponentProps<typeof AccordionPrimitive.Root> & WithTestId;
+
+export type AccordionItemProps = ComponentProps<typeof AccordionPrimitive.Item>;
+
+export type AccordionTriggerProps = ComponentProps<typeof AccordionPrimitive.ItemTrigger>;
+
+export type AccordionContentProps = ComponentProps<typeof AccordionPrimitive.ItemContent>;
 
 export interface AccordionProps extends Omit<AccordionRootProps, "children"> {
   items?: AccordionPresetItem[];
 }
-
 // #endregion
 
-// #region Components
+// #region Parts
 export function AccordionRoot({
   collapsible = true,
   lazyMount = true,
@@ -50,19 +55,12 @@ export function AccordionRoot({
 }
 AccordionRoot.displayName = "Accordion.Root";
 
-export function AccordionItem({
-  className,
-  ...rest
-}: ComponentProps<typeof AccordionPrimitive.Item>) {
+export function AccordionItem({ className, ...rest }: AccordionItemProps) {
   return <AccordionPrimitive.Item {...rest} className={cn(accordionItemVariants(), className)} />;
 }
 AccordionItem.displayName = "Accordion.Item";
 
-export function AccordionTrigger({
-  className,
-  children,
-  ...rest
-}: ComponentProps<typeof AccordionPrimitive.ItemTrigger>) {
+export function AccordionTrigger({ className, children, ...rest }: AccordionTriggerProps) {
   return (
     <AccordionPrimitive.ItemTrigger {...rest} className={cn(accordionTriggerVariants(), className)}>
       {children}
@@ -75,11 +73,7 @@ export function AccordionTrigger({
 }
 AccordionTrigger.displayName = "Accordion.Trigger";
 
-export function AccordionContent({
-  className,
-  children,
-  ...rest
-}: ComponentProps<typeof AccordionPrimitive.ItemContent>) {
+export function AccordionContent({ className, children, ...rest }: AccordionContentProps) {
   return (
     <AccordionPrimitive.ItemContent {...rest} className={cn(accordionContentVariants(), className)}>
       <div className={accordionContentBodyVariants()}>{children}</div>
@@ -87,7 +81,6 @@ export function AccordionContent({
   );
 }
 AccordionContent.displayName = "Accordion.Content";
-
 // #endregion
 
 // #region Shorthand

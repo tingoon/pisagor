@@ -90,7 +90,7 @@ function getSectionScrollOffset(sectionElement: HTMLElement, scrollElement: HTML
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function Scrollspy({
   children,
   className,

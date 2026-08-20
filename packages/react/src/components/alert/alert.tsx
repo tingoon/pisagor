@@ -47,7 +47,7 @@ const [AlertContext, useAlertContext] = createContext<AlertContextValue>({
 });
 // #endregion
 
-// #region Components
+// #region Parts
 export function AlertRoot({ variant, className, children, testId, ...rest }: AlertRootProps) {
   const slots = alertVariants({ variant });
 
@@ -109,7 +109,6 @@ export function AlertAction({ className, children, ...rest }: AlertActionProps) 
   );
 }
 AlertAction.displayName = "Alert.Action";
-
 // #endregion
 
 // #region Shorthand

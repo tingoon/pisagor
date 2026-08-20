@@ -46,7 +46,9 @@ interface TourProviderProps {
   testId?: string;
 }
 
-interface TourProps extends Omit<ComponentProps<typeof TourPrimitive.Root>, "tour">, WithTestId {
+export type TourRootProps = Omit<ComponentProps<typeof TourPrimitive.Root>, "tour"> & WithTestId;
+
+export interface TourProps extends TourRootProps {
   /** Whether to enable arrow key navigation between steps */
   keyboardNavigation?: boolean;
   /** Called when the tour status changes */
@@ -61,9 +63,9 @@ interface TourProps extends Omit<ComponentProps<typeof TourPrimitive.Root>, "tou
   steps: TourStepDetails[];
 }
 
-interface TourTriggerProps extends ComponentProps<typeof ark.button> {}
+export interface TourTriggerProps extends ComponentProps<typeof ark.button> {}
 
-interface TourContentProps extends ComponentProps<typeof TourPrimitive.Content> {
+export interface TourContentProps extends ComponentProps<typeof TourPrimitive.Content> {
   /**
    * Whether to show a close button at the top right corner.
    *
@@ -72,13 +74,31 @@ interface TourContentProps extends ComponentProps<typeof TourPrimitive.Content> 
   showCloseButton?: boolean;
 }
 
+export type TourActionTriggerProps = ComponentProps<typeof TourPrimitive.ActionTrigger>;
+
+export type TourPositionerProps = ComponentProps<typeof TourPrimitive.Positioner>;
+
+export type TourSpotlightProps = ComponentProps<typeof TourPrimitive.Spotlight>;
+
+export type TourTitleProps = ComponentProps<typeof TourPrimitive.Title>;
+
+export type TourDescriptionProps = ComponentProps<typeof TourPrimitive.Description>;
+
+export type TourProgressTextProps = ComponentProps<typeof TourPrimitive.ProgressText>;
+
+export type TourCloseProps = ComponentProps<typeof TourPrimitive.CloseTrigger>;
+// #endregion
+
+// #region Context
 /** Returns the nearest tour context. */
 const [TourContext, useTourContext] = createContext<TourProviderProps>({
   name: "Tour",
 });
 
 export { useTourContext };
+// #endregion
 
+// #region Parts
 export function TourRoot({
   steps = [],
   lazyMount = true,
@@ -141,8 +161,6 @@ export function TourTrigger({ onClick, ...rest }: TourTriggerProps) {
 }
 TourTrigger.displayName = "Tour.Trigger";
 
-export type TourActionTriggerProps = ComponentProps<typeof TourPrimitive.ActionTrigger>;
-
 export function TourActionTrigger(props: TourActionTriggerProps) {
   return <TourPrimitive.ActionTrigger {...props} />;
 }
@@ -158,7 +176,7 @@ export function TourOverlay({ className, ...rest }: DialogOverlayProps) {
 }
 TourOverlay.displayName = "Tour.Overlay";
 
-export function TourPositioner(props: ComponentProps<typeof TourPrimitive.Positioner>) {
+export function TourPositioner(props: TourPositionerProps) {
   return <TourPrimitive.Positioner className={cn(tourPositionerVariants())} {...props} />;
 }
 TourPositioner.displayName = "Tour.Positioner";
@@ -219,7 +237,7 @@ export function TourBody(props: DialogBodyProps) {
 }
 TourBody.displayName = "Tour.Body";
 
-export function TourSpotlight(props: ComponentProps<typeof TourPrimitive.Spotlight>) {
+export function TourSpotlight(props: TourSpotlightProps) {
   return <TourPrimitive.Spotlight className={tourSpotlightVariants()} {...props} />;
 }
 TourSpotlight.displayName = "Tour.Spotlight";
@@ -229,7 +247,7 @@ export function TourHeader(props: DialogHeaderProps) {
 }
 TourHeader.displayName = "Tour.Header";
 
-export function TourTitle({ className, ...rest }: ComponentProps<typeof TourPrimitive.Title>) {
+export function TourTitle({ className, ...rest }: TourTitleProps) {
   const { tour } = useTourContext();
 
   return (
@@ -240,10 +258,7 @@ export function TourTitle({ className, ...rest }: ComponentProps<typeof TourPrim
 }
 TourTitle.displayName = "Tour.Title";
 
-export function TourDescription({
-  className,
-  ...rest
-}: ComponentProps<typeof TourPrimitive.Description>) {
+export function TourDescription({ className, ...rest }: TourDescriptionProps) {
   const { tour } = useTourContext();
 
   return (
@@ -254,10 +269,7 @@ export function TourDescription({
 }
 TourDescription.displayName = "Tour.Description";
 
-export function TourProgressText({
-  className,
-  ...rest
-}: ComponentProps<typeof TourPrimitive.ProgressText>) {
+export function TourProgressText({ className, ...rest }: TourProgressTextProps) {
   const { tour } = useTourContext();
 
   return (
@@ -268,7 +280,7 @@ export function TourProgressText({
 }
 TourProgressText.displayName = "Tour.ProgressText";
 
-export function TourClose(props: ComponentProps<typeof TourPrimitive.CloseTrigger>) {
+export function TourClose(props: TourCloseProps) {
   return <TourPrimitive.CloseTrigger {...props} />;
 }
 TourClose.displayName = "Tour.Close";
@@ -368,5 +380,4 @@ export function TourNextStep({ ...rest }: Omit<TourActionTriggerProps, "action">
   );
 }
 TourNextStep.displayName = "Tour.NextStep";
-
 // #endregion

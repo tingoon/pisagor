@@ -12,7 +12,7 @@ import { Children, isValidElement } from "react";
 import type { WithTestId } from "../../internal/types";
 
 // #region Types
-interface MarqueeRootProps
+export interface MarqueeRootProps
   extends Omit<ComponentProps<typeof MarqueePrimitive.Root>, "side">,
     WithTestId {
   /**
@@ -32,9 +32,15 @@ export interface MarqueeProps extends Omit<MarqueeRootProps, "children"> {
   /** Items to auto-render inside a MarqueeContent; each item is wrapped in MarqueeItem */
   items?: ReactNode[];
 }
+
+export type MarqueeContentProps = ComponentProps<typeof MarqueePrimitive.Content>;
+
+export type MarqueeItemProps = ComponentProps<typeof MarqueePrimitive.Item>;
+
+export type MarqueeEdgeProps = ComponentProps<typeof MarqueePrimitive.Edge>;
 // #endregion
 
-// #region Components
+// #region Parts
 export function MarqueeRoot({
   speed = 50,
   showEdges = true,
@@ -69,10 +75,7 @@ export function MarqueeRoot({
 }
 MarqueeRoot.displayName = "Marquee.Root";
 
-export function MarqueeContent({
-  className,
-  ...rest
-}: ComponentProps<typeof MarqueePrimitive.Content>) {
+export function MarqueeContent({ className, ...rest }: MarqueeContentProps) {
   return (
     <MarqueePrimitive.Viewport className={marqueeViewportVariants()}>
       <MarqueePrimitive.Content {...rest} className={cn(marqueeContentVariants(), className)} />
@@ -81,16 +84,15 @@ export function MarqueeContent({
 }
 MarqueeContent.displayName = "Marquee.Content";
 
-export function MarqueeItem({ className, ...rest }: ComponentProps<typeof MarqueePrimitive.Item>) {
+export function MarqueeItem({ className, ...rest }: MarqueeItemProps) {
   return <MarqueePrimitive.Item {...rest} className={cn(marqueeItemVariants(), className)} />;
 }
 MarqueeItem.displayName = "Marquee.Item";
 
-export function MarqueeEdge({ className, ...rest }: ComponentProps<typeof MarqueePrimitive.Edge>) {
+export function MarqueeEdge({ className, ...rest }: MarqueeEdgeProps) {
   return <MarqueePrimitive.Edge {...rest} className={cn(marqueeEdgeVariants(), className)} />;
 }
 MarqueeEdge.displayName = "Marquee.Edge";
-
 // #endregion
 
 // #region Shorthand
@@ -112,5 +114,4 @@ export function MarqueeShorthand({ items, ...rest }: MarqueeProps) {
   );
 }
 MarqueeShorthand.displayName = "Marquee";
-
 // #endregion

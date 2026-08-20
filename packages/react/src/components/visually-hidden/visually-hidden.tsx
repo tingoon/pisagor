@@ -8,7 +8,7 @@ import type { WithTestId } from "../../internal/types";
 export interface VisuallyHiddenProps extends ComponentProps<typeof ark.span>, WithTestId {}
 // #endregion
 
-// #region Component
+// #region Part
 /**
  * Hides content visually while keeping it available to assistive technology.
  */

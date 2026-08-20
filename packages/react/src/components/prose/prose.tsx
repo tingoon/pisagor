@@ -4,10 +4,6 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 interface ProseProps
   extends Omit<ComponentProps<typeof ark.div>, "dangerouslySetInnerHTML">,
@@ -23,7 +19,7 @@ interface ProseProps
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function Prose({ className, html, children, testId, ...rest }: ProseProps) {
   return (
     <ark.div

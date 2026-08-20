@@ -3,16 +3,15 @@ import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 
 // #region Types
-interface FormatByteProps extends ComponentProps<typeof FormatPrimitive.Byte>, WithTestId {}
+export type FormatByteProps = ComponentProps<typeof FormatPrimitive.Byte> & WithTestId;
 
-interface FormatNumberProps extends ComponentProps<typeof FormatPrimitive.Number>, WithTestId {}
+export type FormatNumberProps = ComponentProps<typeof FormatPrimitive.Number> & WithTestId;
 
-interface FormatRelativeTimeProps
-  extends ComponentProps<typeof FormatPrimitive.RelativeTime>,
-    WithTestId {}
+export type FormatRelativeTimeProps = ComponentProps<typeof FormatPrimitive.RelativeTime> &
+  WithTestId;
 // #endregion
 
-// #region Components
+// #region Parts
 export function FormatByte({ testId, ...rest }: FormatByteProps) {
   return <FormatPrimitive.Byte {...rest} data-testid={testId} />;
 }

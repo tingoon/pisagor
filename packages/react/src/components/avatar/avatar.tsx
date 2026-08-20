@@ -4,20 +4,16 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
-type AvatarImageProps = ComponentProps<typeof AvatarPrimitive.Image>;
+export type AvatarImageProps = ComponentProps<typeof AvatarPrimitive.Image>;
 
-type AvatarFallbackProps = ComponentProps<typeof AvatarPrimitive.Fallback>;
+export type AvatarFallbackProps = ComponentProps<typeof AvatarPrimitive.Fallback>;
 
-type AvatarRootProps = ComponentProps<typeof AvatarPrimitive.Root>;
+export type AvatarRootProps = ComponentProps<typeof AvatarPrimitive.Root>;
 
 type AvatarClassNames = VariantClassNames<typeof avatarVariants>;
 
-interface AvatarProps extends AvatarRootProps, AvatarVariantProps, WithTestId {
+export interface AvatarProps extends AvatarRootProps, AvatarVariantProps, WithTestId {
   /** Slot class names */
   classNames?: AvatarClassNames;
   /** Renders the avatar image with the provided src */
@@ -33,7 +29,7 @@ interface AvatarProps extends AvatarRootProps, AvatarVariantProps, WithTestId {
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function Avatar({
   size = "md",
   shape = "circle",

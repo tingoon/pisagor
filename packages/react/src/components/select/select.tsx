@@ -68,7 +68,7 @@ export interface SelectProps extends Omit<SelectRootProps, "children"> {
   placeholder?: string;
 }
 
-interface SelectTriggerProps
+export interface SelectTriggerProps
   extends ComponentProps<typeof SelectPrimitive.Trigger>,
     InputRootVariantProps {
   /** Visual shell variant override for this trigger. */
@@ -81,11 +81,20 @@ interface SelectTriggerProps
   clearable?: boolean;
 }
 
-interface SelectGroupProps extends ComponentProps<typeof SelectPrimitive.ItemGroup> {
+export interface SelectGroupProps extends ComponentProps<typeof SelectPrimitive.ItemGroup> {
   /** The heading of the group */
   heading?: string | ReactNode;
 }
 
+export type SelectValueProps = ComponentProps<typeof SelectPrimitive.ValueText>;
+
+export type SelectContentProps = ComponentProps<typeof SelectPrimitive.Content>;
+
+export type SelectGroupLabelProps = ComponentProps<typeof SelectPrimitive.ItemGroupLabel>;
+
+export type SelectItemProps = ComponentProps<typeof SelectPrimitive.Item>;
+
+export type SelectClearTriggerProps = ComponentProps<typeof SelectPrimitive.ClearTrigger>;
 // #endregion
 
 // #region Context
@@ -93,10 +102,9 @@ const [SelectRootContext, useSelectRoot] = createContext<{ testId?: string }>({
   name: "SelectRoot",
   strict: false,
 });
-
 // #endregion
 
-// #region Components
+// #region Parts
 export const SelectContext = SelectPrimitive.Context;
 
 export function SelectRoot<T extends CollectionItem = CollectionItem>({
@@ -187,18 +195,12 @@ export function SelectSeparator({ className, ...rest }: SeparatorProps) {
 }
 SelectSeparator.displayName = "Select.Separator";
 
-export function SelectValue({
-  className,
-  ...rest
-}: ComponentProps<typeof SelectPrimitive.ValueText>) {
+export function SelectValue({ className, ...rest }: SelectValueProps) {
   return <SelectPrimitive.ValueText {...rest} className={cn(selectInlineVariants(), className)} />;
 }
 SelectValue.displayName = "Select.Value";
 
-export function SelectContent({
-  className,
-  ...rest
-}: ComponentProps<typeof SelectPrimitive.Content>) {
+export function SelectContent({ className, ...rest }: SelectContentProps) {
   return (
     <Portal>
       <SelectPrimitive.Positioner>
@@ -220,10 +222,7 @@ export function SelectGroup({ heading, children, ...rest }: SelectGroupProps) {
 }
 SelectGroup.displayName = "Select.Group";
 
-export function SelectGroupLabel({
-  className,
-  ...rest
-}: ComponentProps<typeof SelectPrimitive.ItemGroupLabel>) {
+export function SelectGroupLabel({ className, ...rest }: SelectGroupLabelProps) {
   return (
     <SelectPrimitive.ItemGroupLabel
       {...rest}
@@ -233,11 +232,7 @@ export function SelectGroupLabel({
 }
 SelectGroupLabel.displayName = "Select.GroupLabel";
 
-export function SelectItem({
-  className,
-  children,
-  ...rest
-}: ComponentProps<typeof SelectPrimitive.Item>) {
+export function SelectItem({ className, children, ...rest }: SelectItemProps) {
   return (
     <SelectPrimitive.Item {...rest} className={cn(selectItemVariants(), className)}>
       <SelectPrimitive.ItemText className={selectItemTextVariants()}>
@@ -254,10 +249,7 @@ export function SelectItem({
 }
 SelectItem.displayName = "Select.Item";
 
-export function SelectClearTrigger({
-  className,
-  ...rest
-}: ComponentProps<typeof SelectPrimitive.ClearTrigger>) {
+export function SelectClearTrigger({ className, ...rest }: SelectClearTriggerProps) {
   return (
     <SelectPrimitive.ClearTrigger
       {...rest}
@@ -280,7 +272,6 @@ export function SelectEmpty({ className, ...rest }: ComponentProps<typeof ark.di
   return null;
 }
 SelectEmpty.displayName = "Select.Empty";
-
 // #endregion
 
 // #region Shorthand

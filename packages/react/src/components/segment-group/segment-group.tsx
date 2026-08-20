@@ -18,7 +18,7 @@ interface SegmentGroupPresetItem {
   disabled?: boolean;
 }
 
-interface SegmentGroupRootProps
+export interface SegmentGroupRootProps
   extends Omit<ComponentProps<typeof SegmentGroupPrimitive.Root>, "onValueChange">,
     WithTestId {
   /**
@@ -34,13 +34,16 @@ export interface SegmentGroupProps extends Omit<SegmentGroupRootProps, "children
   items?: SegmentGroupPresetItem[];
 }
 
-interface SegmentGroupItemProps extends ComponentProps<typeof SegmentGroupPrimitive.Item> {
+export interface SegmentGroupItemProps extends ComponentProps<typeof SegmentGroupPrimitive.Item> {
   text?: ReactNode;
 }
 
+export type SegmentGroupItemTextProps = ComponentProps<typeof SegmentGroupPrimitive.ItemText>;
+
+export type SegmentGroupIndicatorProps = ComponentProps<typeof SegmentGroupPrimitive.Indicator>;
 // #endregion
 
-// #region Components
+// #region Parts
 export function SegmentGroupRoot({
   orientation = "horizontal",
   variant = "default",
@@ -81,10 +84,7 @@ export function SegmentGroupItem({ className, children, text, ...rest }: Segment
 }
 SegmentGroupItem.displayName = "SegmentGroup.Item";
 
-function SegmentGroupItemText({
-  className,
-  ...rest
-}: ComponentProps<typeof SegmentGroupPrimitive.ItemText>) {
+function SegmentGroupItemText({ className, ...rest }: SegmentGroupItemTextProps) {
   return (
     <SegmentGroupPrimitive.ItemText
       {...rest}
@@ -94,10 +94,7 @@ function SegmentGroupItemText({
 }
 SegmentGroupItemText.displayName = "SegmentGroup.ItemText";
 
-export function SegmentGroupIndicator({
-  className,
-  ...rest
-}: ComponentProps<typeof SegmentGroupPrimitive.Indicator>) {
+export function SegmentGroupIndicator({ className, ...rest }: SegmentGroupIndicatorProps) {
   return (
     <SegmentGroupPrimitive.Indicator
       {...rest}
@@ -106,7 +103,6 @@ export function SegmentGroupIndicator({
   );
 }
 SegmentGroupIndicator.displayName = "SegmentGroup.Indicator";
-
 // #endregion
 
 // #region Shorthand

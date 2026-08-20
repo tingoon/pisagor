@@ -1,1 +1,7 @@
-export { PasswordInput, type PasswordInputProps } from "./password-input";
+export {
+  PasswordInput,
+  type PasswordInputIndicatorProps,
+  type PasswordInputProps,
+  type PasswordInputRootProps,
+  type PasswordInputVisibilityTriggerProps,
+} from "./password-input";

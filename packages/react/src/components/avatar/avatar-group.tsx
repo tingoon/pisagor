@@ -16,7 +16,7 @@ export interface AvatarGroupProps extends Omit<AvatarGroupRootProps, "children">
 }
 // #endregion
 
-// #region Components
+// #region Parts
 export function AvatarGroupRoot({ className, children, testId, ...rest }: AvatarGroupRootProps) {
   return (
     <ark.div
@@ -43,7 +43,6 @@ export function AvatarGroupCount({ className, ...rest }: ComponentProps<typeof a
   );
 }
 AvatarGroupCount.displayName = "AvatarGroup.Count";
-
 // #endregion
 
 // #region Shorthand

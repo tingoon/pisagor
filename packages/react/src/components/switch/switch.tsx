@@ -10,20 +10,16 @@ import {
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
-type SwitchControlProps = ComponentProps<typeof SwitchPrimitive.Control>;
+export type SwitchControlProps = ComponentProps<typeof SwitchPrimitive.Control>;
 
-type SwitchThumbProps = ComponentProps<typeof SwitchPrimitive.Thumb>;
+export type SwitchThumbProps = ComponentProps<typeof SwitchPrimitive.Thumb>;
 
-type SwitchHiddenInputProps = ComponentProps<typeof SwitchPrimitive.HiddenInput>;
+export type SwitchHiddenInputProps = ComponentProps<typeof SwitchPrimitive.HiddenInput>;
 
 type SwitchClassNames = VariantClassNames<typeof switchVariants>;
 
-type SwitchRootProps = ComponentProps<typeof SwitchPrimitive.Root>;
+export type SwitchRootProps = ComponentProps<typeof SwitchPrimitive.Root>;
 
 export interface SwitchProps extends SwitchRootProps, WithTestId {
   /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
@@ -40,7 +36,7 @@ export interface SwitchProps extends SwitchRootProps, WithTestId {
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function Switch({
   variant: variantProp,
   onCheckedChange,

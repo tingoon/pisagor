@@ -42,10 +42,9 @@ export interface AutocompleteProps extends Omit<AutocompleteRootProps, "children
    */
   clearable?: boolean;
 }
-
 // #endregion
 
-// #region Components
+// #region Parts
 export function AutocompleteRoot<T extends CollectionItem = CollectionItem>(
   props: AutocompleteRootProps<T>,
 ) {
@@ -116,7 +115,6 @@ export function AutocompleteSeparator(props: SeparatorProps) {
   return <Separator dataPart="separator" dataScope="autocomplete" {...props} />;
 }
 AutocompleteSeparator.displayName = "Autocomplete.Separator";
-
 // #endregion
 
 // #region Shorthand
@@ -132,5 +130,4 @@ export function AutocompleteShorthand({ items, clearable, ...rest }: Autocomplet
   );
 }
 AutocompleteShorthand.displayName = "Autocomplete";
-
 // #endregion

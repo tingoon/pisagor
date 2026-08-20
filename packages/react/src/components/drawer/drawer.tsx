@@ -23,27 +23,23 @@ import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils";
 import { ScrollArea } from "../scroll-area";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
-interface DrawerPositionerProps
+export interface DrawerPositionerProps
   extends ComponentProps<typeof DrawerPrimitive.Positioner>,
     DrawerPositionerVariantProps {}
 
-interface DrawerContentProps
+export interface DrawerContentProps
   extends ComponentProps<typeof DrawerPrimitive.Content>,
     DrawerContentVariantProps {}
 
-interface DrawerHeaderProps extends ComponentProps<typeof ark.div> {
+export interface DrawerHeaderProps extends ComponentProps<typeof ark.div> {
   /** The description of the drawer */
   description?: string;
   /** The title of the drawer */
   title?: string;
 }
 
-interface DrawerBodyProps extends ComponentProps<typeof ark.div> {
+export interface DrawerBodyProps extends ComponentProps<typeof ark.div> {
   /**
    * Whether to add a fade effect to the scroll area.
    *
@@ -52,8 +48,17 @@ interface DrawerBodyProps extends ComponentProps<typeof ark.div> {
   scrollFade?: boolean;
 }
 
-interface DrawerRootProps extends ComponentProps<typeof DrawerPrimitive.Root>, WithTestId {}
+export interface DrawerRootProps extends ComponentProps<typeof DrawerPrimitive.Root>, WithTestId {}
 
+export type DrawerTriggerProps = ComponentProps<typeof DrawerPrimitive.Trigger>;
+
+export type DrawerOverlayProps = ComponentProps<typeof DrawerPrimitive.Backdrop>;
+
+export type DrawerGrabberProps = ComponentProps<typeof DrawerPrimitive.Grabber>;
+
+export type DrawerTitleProps = ComponentProps<typeof DrawerPrimitive.Title>;
+
+export type DrawerCloseProps = ComponentProps<typeof DrawerPrimitive.CloseTrigger>;
 // #endregion
 
 // #region Context
@@ -61,10 +66,9 @@ const [DrawerContext, useDrawer] = createContext<{ testId?: string }>({
   name: "Drawer",
   strict: false,
 });
-
 // #endregion
 
-// #region Components
+// #region Parts
 /**
  * Drawer root. `lazyMount` and `unmountOnExit` default to `false` because enabling
  * either option currently breaks swipe-to-dismiss in Ark Drawer.
@@ -85,15 +89,12 @@ export function DrawerRoot({
 }
 DrawerRoot.displayName = "Drawer";
 
-export function DrawerTrigger(props: ComponentProps<typeof DrawerPrimitive.Trigger>) {
+export function DrawerTrigger(props: DrawerTriggerProps) {
   return <DrawerPrimitive.Trigger {...props} />;
 }
 DrawerTrigger.displayName = "Drawer.Trigger";
 
-export function DrawerOverlay({
-  className,
-  ...rest
-}: ComponentProps<typeof DrawerPrimitive.Backdrop>) {
+export function DrawerOverlay({ className, ...rest }: DrawerOverlayProps) {
   return <DrawerPrimitive.Backdrop {...rest} className={cn(drawerOverlayVariants(), className)} />;
 }
 DrawerOverlay.displayName = "Drawer.Overlay";
@@ -168,10 +169,7 @@ export function DrawerContentInner({ className, ...rest }: ComponentProps<typeof
 }
 DrawerContentInner.displayName = "Drawer.ContentInner";
 
-export function DrawerGrabber({
-  className,
-  ...rest
-}: ComponentProps<typeof DrawerPrimitive.Grabber>) {
+export function DrawerGrabber({ className, ...rest }: DrawerGrabberProps) {
   return (
     <ark.div className={drawerInlineVariants()}>
       <DrawerPrimitive.Grabber {...rest} className={cn(drawerGrabberVariants(), className)}>
@@ -206,7 +204,7 @@ export function DrawerHeader({
 }
 DrawerHeader.displayName = "Drawer.Header";
 
-export function DrawerTitle({ className, ...rest }: ComponentProps<typeof DrawerPrimitive.Title>) {
+export function DrawerTitle({ className, ...rest }: DrawerTitleProps) {
   return <DrawerPrimitive.Title {...rest} className={cn(drawerTitleVariants(), className)} />;
 }
 DrawerTitle.displayName = "Drawer.Title";
@@ -237,7 +235,7 @@ export function DrawerBody({ scrollFade = false, className, ...rest }: DrawerBod
 }
 DrawerBody.displayName = "Drawer.Body";
 
-export function DrawerClose(props: ComponentProps<typeof DrawerPrimitive.CloseTrigger>) {
+export function DrawerClose(props: DrawerCloseProps) {
   return <DrawerPrimitive.CloseTrigger {...props} />;
 }
 DrawerClose.displayName = "Drawer.Close";
@@ -253,5 +251,4 @@ export function DrawerFooter({ className, ...rest }: ComponentProps<typeof ark.d
   );
 }
 DrawerFooter.displayName = "Drawer.Footer";
-
 // #endregion

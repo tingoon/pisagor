@@ -21,11 +21,12 @@ import { Button, type ButtonProps } from "../button";
 import { ScrollArea } from "../scroll-area";
 
 // #region Types
-interface FloatingPanelRootProps
+export interface FloatingPanelRootProps
   extends ComponentProps<typeof FloatingPanelPrimitive.Root>,
     WithTestId {}
 
-interface FloatingPanelContentProps extends ComponentProps<typeof FloatingPanelPrimitive.Content> {
+export interface FloatingPanelContentProps
+  extends ComponentProps<typeof FloatingPanelPrimitive.Content> {
   /**
    * Whether to enable a resizable panel.
    *
@@ -34,16 +35,23 @@ interface FloatingPanelContentProps extends ComponentProps<typeof FloatingPanelP
   resizable?: boolean;
 }
 
-interface FloatingPanelHeaderProps extends ComponentProps<typeof FloatingPanelPrimitive.Header> {
+export interface FloatingPanelHeaderProps
+  extends ComponentProps<typeof FloatingPanelPrimitive.Header> {
   /** Renders FloatingPanel.Title with the provided text */
   title?: string;
 }
 
-interface FloatingPanelStageTriggerProps
-  extends Omit<ComponentProps<typeof FloatingPanelPrimitive.StageTrigger>, "stage">,
-    ButtonProps {}
+export type FloatingPanelMinimizeProps = Omit<
+  ComponentProps<typeof FloatingPanelPrimitive.StageTrigger>,
+  "stage"
+> &
+  ButtonProps;
 
-interface FloatingPanelBodyProps extends ComponentProps<typeof FloatingPanelPrimitive.Body> {
+export type FloatingPanelMaximizeProps = FloatingPanelMinimizeProps;
+
+export type FloatingPanelRestoreProps = FloatingPanelMinimizeProps;
+
+export interface FloatingPanelBodyProps extends ComponentProps<typeof FloatingPanelPrimitive.Body> {
   /**
    * Whether to add a fade effect to the scroll area.
    *
@@ -51,6 +59,28 @@ interface FloatingPanelBodyProps extends ComponentProps<typeof FloatingPanelPrim
    */
   scrollFade?: boolean;
 }
+
+export type FloatingPanelTriggerProps = ComponentProps<typeof FloatingPanelPrimitive.Trigger>;
+
+export type FloatingPanelDragTriggerProps = ComponentProps<
+  typeof FloatingPanelPrimitive.DragTrigger
+>;
+
+export type FloatingPanelControlProps = ComponentProps<typeof FloatingPanelPrimitive.Control>;
+
+export type FloatingPanelTitleProps = ComponentProps<typeof FloatingPanelPrimitive.Title>;
+
+export type FloatingPanelResizeTriggerProps = ComponentProps<
+  typeof FloatingPanelPrimitive.ResizeTrigger
+>;
+
+export type FloatingPanelStageTriggerProps = ComponentProps<
+  typeof FloatingPanelPrimitive.StageTrigger
+>;
+
+export type FloatingPanelCloseTriggerProps = ComponentProps<
+  typeof FloatingPanelPrimitive.CloseTrigger
+>;
 // #endregion
 
 // #region Context
@@ -58,10 +88,9 @@ const [FloatingPanelRootContext, useFloatingPanelRoot] = createContext<{ testId?
   name: "FloatingPanelRoot",
   strict: false,
 });
-
 // #endregion
 
-// #region Components
+// #region Parts
 export function FloatingPanelRoot({
   lazyMount = true,
   unmountOnExit = true,
@@ -78,7 +107,7 @@ export function FloatingPanelRoot({
 }
 FloatingPanelRoot.displayName = "FloatingPanel";
 
-export function FloatingPanelTrigger(props: ComponentProps<typeof FloatingPanelPrimitive.Trigger>) {
+export function FloatingPanelTrigger(props: FloatingPanelTriggerProps) {
   return <FloatingPanelPrimitive.Trigger {...props} />;
 }
 FloatingPanelTrigger.displayName = "FloatingPanel.Trigger";
@@ -120,9 +149,7 @@ export function FloatingPanelContent({
 }
 FloatingPanelContent.displayName = "FloatingPanel.Content";
 
-export function FloatingPanelDragTrigger(
-  props: ComponentProps<typeof FloatingPanelPrimitive.DragTrigger>,
-) {
+export function FloatingPanelDragTrigger(props: FloatingPanelDragTriggerProps) {
   return <FloatingPanelPrimitive.DragTrigger {...props} />;
 }
 FloatingPanelDragTrigger.displayName = "FloatingPanel.DragTrigger";
@@ -148,10 +175,7 @@ export function FloatingPanelHeader({
 }
 FloatingPanelHeader.displayName = "FloatingPanel.Header";
 
-export function FloatingPanelControl({
-  className,
-  ...rest
-}: ComponentProps<typeof FloatingPanelPrimitive.Control>) {
+export function FloatingPanelControl({ className, ...rest }: FloatingPanelControlProps) {
   return (
     <FloatingPanelPrimitive.Control
       {...rest}
@@ -165,7 +189,7 @@ export function FloatingPanelMinimize({
   size = "icon-xs",
   variant = "ghost",
   ...rest
-}: FloatingPanelStageTriggerProps) {
+}: FloatingPanelMinimizeProps) {
   return (
     <FloatingPanelPrimitive.StageTrigger {...rest} asChild stage="minimized">
       <Button aria-label="Minimize" size={size} variant={variant}>
@@ -180,7 +204,7 @@ export function FloatingPanelMaximize({
   size = "icon-xs",
   variant = "ghost",
   ...rest
-}: FloatingPanelStageTriggerProps) {
+}: FloatingPanelMaximizeProps) {
   return (
     <FloatingPanelPrimitive.StageTrigger {...rest} asChild stage="maximized">
       <Button aria-label="Maximize" size={size} variant={variant}>
@@ -195,7 +219,7 @@ export function FloatingPanelRestore({
   size = "icon-xs",
   variant = "outline",
   ...rest
-}: FloatingPanelStageTriggerProps) {
+}: FloatingPanelRestoreProps) {
   return (
     <FloatingPanelPrimitive.StageTrigger {...rest} asChild stage="default">
       <Button aria-label="Restore" size={size} variant={variant}>
@@ -207,10 +231,7 @@ export function FloatingPanelRestore({
 }
 FloatingPanelRestore.displayName = "FloatingPanel.Restore";
 
-export function FloatingPanelTitle({
-  className,
-  ...rest
-}: ComponentProps<typeof FloatingPanelPrimitive.Title>) {
+export function FloatingPanelTitle({ className, ...rest }: FloatingPanelTitleProps) {
   return (
     <FloatingPanelPrimitive.Title
       {...rest}
@@ -220,23 +241,17 @@ export function FloatingPanelTitle({
 }
 FloatingPanelTitle.displayName = "FloatingPanel.Title";
 
-export function FloatingPanelResizeTrigger(
-  props: ComponentProps<typeof FloatingPanelPrimitive.ResizeTrigger>,
-) {
+export function FloatingPanelResizeTrigger(props: FloatingPanelResizeTriggerProps) {
   return <FloatingPanelPrimitive.ResizeTrigger {...props} />;
 }
 FloatingPanelResizeTrigger.displayName = "FloatingPanel.ResizeTrigger";
 
-export function FloatingPanelStageTrigger(
-  props: ComponentProps<typeof FloatingPanelPrimitive.StageTrigger>,
-) {
+export function FloatingPanelStageTrigger(props: FloatingPanelStageTriggerProps) {
   return <FloatingPanelPrimitive.StageTrigger {...props} />;
 }
 FloatingPanelStageTrigger.displayName = "FloatingPanel.StageTrigger";
 
-export function FloatingPanelCloseTrigger(
-  props: ComponentProps<typeof FloatingPanelPrimitive.CloseTrigger>,
-) {
+export function FloatingPanelCloseTrigger(props: FloatingPanelCloseTriggerProps) {
   return <FloatingPanelPrimitive.CloseTrigger {...props} />;
 }
 FloatingPanelCloseTrigger.displayName = "FloatingPanel.CloseTrigger";
@@ -268,5 +283,4 @@ export function FloatingPanelFooter({ className, ...rest }: ComponentProps<typeo
   );
 }
 FloatingPanelFooter.displayName = "FloatingPanel.Footer";
-
 // #endregion

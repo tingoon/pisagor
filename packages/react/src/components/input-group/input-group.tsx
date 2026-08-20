@@ -6,7 +6,7 @@ import { cn } from "@pisagor/utils";
 import { Input, type InputProps } from "../input/input";
 import { Textarea, type TextareaProps } from "../textarea/textarea";
 
-// #region Components
+// #region Parts
 export function InputGroupInput({ className, classNames, ...rest }: InputProps) {
   return (
     <Input
@@ -33,5 +33,4 @@ export function InputGroupTextarea({ classNames, ...rest }: TextareaProps) {
   );
 }
 InputGroupTextarea.displayName = "InputGroup.Textarea";
-
 // #endregion

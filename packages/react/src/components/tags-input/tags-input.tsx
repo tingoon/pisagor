@@ -19,10 +19,14 @@ import type { WithTestId } from "../../internal/types";
 import { InputGroup, type InputGroupProps } from "../input-group";
 
 // #region Types
-export interface TagsInputProps
-  extends Omit<ComponentProps<typeof TagsInputPrimitive.Root>, "onValueChange">,
-    Pick<InputGroupProps, "size" | "variant">,
-    WithTestId {
+export type TagsInputRootProps = Omit<
+  ComponentProps<typeof TagsInputPrimitive.Root>,
+  "onValueChange"
+> &
+  Pick<InputGroupProps, "size" | "variant"> &
+  WithTestId;
+
+export interface TagsInputProps extends TagsInputRootProps {
   /**
    * Whether to show the clear button.
    *
@@ -34,43 +38,53 @@ export interface TagsInputProps
   placeholder?: string;
 }
 
-interface TagsInputControlProps
-  extends ComponentProps<typeof TagsInputPrimitive.Control>,
-    Pick<InputGroupProps, "size" | "variant"> {
-  /**
-   * Whether to show the clear button.
-   *
-   * @defaultValue false
-   */
-  clearable?: boolean;
-}
+export type TagsInputControlProps = ComponentProps<typeof TagsInputPrimitive.Control> &
+  Pick<InputGroupProps, "size" | "variant"> & {
+    /**
+     * Whether to show the clear button.
+     *
+     * @defaultValue false
+     */
+    clearable?: boolean;
+  };
 
-interface TagsInputItemProps
-  extends ComponentProps<typeof TagsInputPrimitive.Item>,
-    Pick<InputGroupProps, "size"> {
-  /**
-   * Whether to show the clear trigger.
-   *
-   * @defaultValue false
-   */
-  showDelete?: boolean;
-}
+export type TagsInputItemProps = ComponentProps<typeof TagsInputPrimitive.Item> &
+  Pick<InputGroupProps, "size"> & {
+    /**
+     * Whether to show the clear trigger.
+     *
+     * @defaultValue false
+     */
+    showDelete?: boolean;
+  };
 
-interface TagsInputRootProviderProps
-  extends ComponentProps<typeof TagsInputPrimitive.RootProvider>,
-    Pick<InputGroupProps, "size">,
-    WithTestId {
-  /**
-   * Whether to show the clear button.
-   *
-   * @defaultValue false
-   */
-  clearable?: boolean;
-}
+export type TagsInputRootProviderProps = ComponentProps<typeof TagsInputPrimitive.RootProvider> &
+  Pick<InputGroupProps, "size"> &
+  WithTestId & {
+    /**
+     * Whether to show the clear button.
+     *
+     * @defaultValue false
+     */
+    clearable?: boolean;
+  };
 
+export type TagsInputItemPreviewProps = ComponentProps<typeof TagsInputPrimitive.ItemPreview>;
+
+export type TagsInputItemTextProps = ComponentProps<typeof TagsInputPrimitive.ItemText>;
+
+export type TagsInputItemDeleteTriggerProps = ComponentProps<
+  typeof TagsInputPrimitive.ItemDeleteTrigger
+>;
+
+export type TagsInputItemInputProps = ComponentProps<typeof TagsInputPrimitive.ItemInput>;
+
+export type TagsInputInputProps = ComponentProps<typeof TagsInputPrimitive.Input>;
+
+export type TagsInputClearTriggerProps = ComponentProps<typeof TagsInputPrimitive.ClearTrigger>;
 // #endregion
 
-// #region Components
+// #region Parts
 export const TagsInputContext = TagsInputPrimitive.Context;
 
 export function TagsInputRoot({
@@ -159,10 +173,7 @@ export function TagsInputItem({
 }
 TagsInputItem.displayName = "TagsInput.Item";
 
-export function TagsInputItemPreview({
-  className,
-  ...rest
-}: ComponentProps<typeof TagsInputPrimitive.ItemPreview>) {
+export function TagsInputItemPreview({ className, ...rest }: TagsInputItemPreviewProps) {
   return (
     <TagsInputPrimitive.ItemPreview
       {...rest}
@@ -172,10 +183,7 @@ export function TagsInputItemPreview({
 }
 TagsInputItemPreview.displayName = "TagsInput.ItemPreview";
 
-export function TagsInputItemText({
-  className,
-  ...rest
-}: ComponentProps<typeof TagsInputPrimitive.ItemText>) {
+export function TagsInputItemText({ className, ...rest }: TagsInputItemTextProps) {
   return (
     <TagsInputPrimitive.ItemText {...rest} className={cn(tagsInputItemTextVariants(), className)} />
   );
@@ -186,7 +194,7 @@ export function TagsInputItemDeleteTrigger({
   className,
   children,
   ...rest
-}: ComponentProps<typeof TagsInputPrimitive.ItemDeleteTrigger>) {
+}: TagsInputItemDeleteTriggerProps) {
   return (
     <TagsInputPrimitive.ItemDeleteTrigger {...rest} asChild>
       <InputGroup.Button
@@ -202,7 +210,7 @@ export function TagsInputItemDeleteTrigger({
 }
 TagsInputItemDeleteTrigger.displayName = "TagsInput.ItemDeleteTrigger";
 
-export function TagsInputItemInput(props: ComponentProps<typeof TagsInputPrimitive.ItemInput>) {
+export function TagsInputItemInput(props: TagsInputItemInputProps) {
   return (
     <TagsInputPrimitive.ItemInput asChild {...props}>
       <InputGroup.Input className={cn(tagsInputInline3Variants())} />
@@ -211,7 +219,7 @@ export function TagsInputItemInput(props: ComponentProps<typeof TagsInputPrimiti
 }
 TagsInputItemInput.displayName = "TagsInput.ItemInput";
 
-export function TagsInputInput(props: ComponentProps<typeof TagsInputPrimitive.Input>) {
+export function TagsInputInput(props: TagsInputInputProps) {
   return (
     <TagsInputPrimitive.Input asChild {...props}>
       <InputGroup.Input className={cn(tagsInputInline4Variants())} />
@@ -224,7 +232,7 @@ export function TagsInputClearTrigger({
   className,
   children,
   ...rest
-}: ComponentProps<typeof TagsInputPrimitive.ClearTrigger>) {
+}: TagsInputClearTriggerProps) {
   return (
     <TagsInputPrimitive.ClearTrigger {...rest} asChild>
       <InputGroup.Button
@@ -259,5 +267,4 @@ export function TagsInputRootProvider({
     </TagsInputPrimitive.RootProvider>
   );
 }
-
 // #endregion

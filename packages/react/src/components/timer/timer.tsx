@@ -17,7 +17,7 @@ import type { WithTestId } from "../../internal/types";
 // #region Types
 type TimerUnit = "hours" | "minutes" | "seconds";
 
-interface TimerItemGroupProps extends ComponentProps<typeof ark.div> {
+export interface TimerItemGroupProps extends ComponentProps<typeof ark.div> {
   /**
    * The orientation of the timer item group.
    *
@@ -26,18 +26,28 @@ interface TimerItemGroupProps extends ComponentProps<typeof ark.div> {
   orientation?: "horizontal" | "vertical";
 }
 
-interface TimerActionProps
+export interface TimerActionProps
   extends Omit<ComponentProps<typeof TimerPrimitive.ActionTrigger>, "action"> {}
 
-interface TimerRootProps extends ComponentProps<typeof TimerPrimitive.Root>, WithTestId {
-  units?: TimerUnit[];
-  /** Auto-render Timer.Control with play and reset buttons */
-  isControlsVisible?: boolean;
-}
+export type TimerRootProps = ComponentProps<typeof TimerPrimitive.Root> &
+  WithTestId & {
+    units?: TimerUnit[];
+    /** Auto-render Timer.Control with play and reset buttons */
+    isControlsVisible?: boolean;
+  };
 
+export type TimerAreaProps = ComponentProps<typeof TimerPrimitive.Area>;
+
+export type TimerItemProps = ComponentProps<typeof TimerPrimitive.Item>;
+
+export type TimerSeparatorProps = ComponentProps<typeof TimerPrimitive.Separator>;
+
+export type TimerControlProps = ComponentProps<typeof TimerPrimitive.Control>;
+
+export type TimerActionTriggerProps = ComponentProps<typeof TimerPrimitive.ActionTrigger>;
 // #endregion
 
-// #region Components
+// #region Parts
 export function TimerRoot({
   className,
   units,
@@ -73,7 +83,7 @@ export function TimerRoot({
 }
 TimerRoot.displayName = "Timer";
 
-export function TimerArea({ className, ...rest }: ComponentProps<typeof TimerPrimitive.Area>) {
+export function TimerArea({ className, ...rest }: TimerAreaProps) {
   return <TimerPrimitive.Area {...rest} className={cn(timerAreaVariants(), className)} />;
 }
 TimerArea.displayName = "Timer.Area";
@@ -95,7 +105,7 @@ export function TimerItemGroup({
 }
 TimerItemGroup.displayName = "Timer.ItemGroup";
 
-export function TimerItem({ className, ...rest }: ComponentProps<typeof TimerPrimitive.Item>) {
+export function TimerItem({ className, ...rest }: TimerItemProps) {
   return <TimerPrimitive.Item {...rest} className={cn(timerItemVariants(), className)} />;
 }
 TimerItem.displayName = "Timer.Item";
@@ -112,11 +122,7 @@ export function TimerItemLabel({ className, ...rest }: ComponentProps<typeof ark
 }
 TimerItemLabel.displayName = "Timer.ItemLabel";
 
-export function TimerSeparator({
-  className,
-  children,
-  ...rest
-}: ComponentProps<typeof TimerPrimitive.Separator>) {
+export function TimerSeparator({ className, children, ...rest }: TimerSeparatorProps) {
   return (
     <TimerPrimitive.Separator {...rest} className={cn(timerSeparatorVariants(), className)}>
       {children ?? ":"}
@@ -125,15 +131,12 @@ export function TimerSeparator({
 }
 TimerSeparator.displayName = "Timer.Separator";
 
-export function TimerControl({
-  className,
-  ...rest
-}: ComponentProps<typeof TimerPrimitive.Control>) {
+export function TimerControl({ className, ...rest }: TimerControlProps) {
   return <TimerPrimitive.Control {...rest} className={cn(timerControlVariants(), className)} />;
 }
 TimerControl.displayName = "Timer.Control";
 
-export function TimerActionTrigger(props: ComponentProps<typeof TimerPrimitive.ActionTrigger>) {
+export function TimerActionTrigger(props: TimerActionTriggerProps) {
   return <TimerPrimitive.ActionTrigger {...props} />;
 }
 TimerActionTrigger.displayName = "Timer.ActionTrigger";

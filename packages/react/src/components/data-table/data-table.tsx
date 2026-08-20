@@ -133,7 +133,7 @@ export function useDataTableRow<TData>() {
 }
 // #endregion
 
-// #region Components
+// #region Parts
 function useDataTableContext<TData>() {
   return useDataTableContextBase() as DataTableContextValue<TData>;
 }

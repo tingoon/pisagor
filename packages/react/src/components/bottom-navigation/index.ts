@@ -6,6 +6,13 @@ import {
   BottomNavigationRoot,
 } from "./bottom-navigation";
 
+export type {
+  BottomNavigationItemProps,
+  BottomNavigationListProps,
+  BottomNavigationProps,
+  BottomNavigationRootProps,
+} from "./bottom-navigation";
+
 export const BottomNavigation = Object.assign(BottomNavigationRoot, {
   Item: BottomNavigationItem,
   ItemIcon: BottomNavigationItemIcon,

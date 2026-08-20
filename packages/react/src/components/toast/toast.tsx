@@ -19,26 +19,25 @@ import type { VariantClassNames } from "../../internal/types";
 import { Button } from "../button";
 import { Spinner } from "../spinner";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
-type ToastTitleProps = ComponentProps<typeof ToastPrimitive.Title>;
-type ToastDescriptionProps = ComponentProps<typeof ToastPrimitive.Description>;
-type ToastActionTriggerProps = ComponentProps<typeof ToastPrimitive.ActionTrigger>;
-type ToastCloseTriggerProps = ComponentProps<typeof ToastPrimitive.CloseTrigger>;
+export type ToastTitleProps = ComponentProps<typeof ToastPrimitive.Title>;
+export type ToastDescriptionProps = ComponentProps<typeof ToastPrimitive.Description>;
+export type ToastActionTriggerProps = ComponentProps<typeof ToastPrimitive.ActionTrigger>;
+export type ToastCloseTriggerProps = ComponentProps<typeof ToastPrimitive.CloseTrigger>;
 
 type ToastItemClassNames = VariantClassNames<typeof toastItemVariants>;
 
-type ToasterRootProps = Omit<ComponentProps<typeof ToasterPrimitive>, "toaster" | "children">;
+export type ToasterRootProps = Omit<
+  ComponentProps<typeof ToasterPrimitive>,
+  "toaster" | "children"
+>;
 
 export interface ToasterProps extends ToasterRootProps {
   /** Toaster instance */
   toaster?: CreateToasterReturn<ReactNode>;
 }
 
-type ToastItemRootProps = ComponentProps<typeof ToastPrimitive.Root>;
+export type ToastItemRootProps = ComponentProps<typeof ToastPrimitive.Root>;
 
 export interface ToastItemProps extends ToastItemRootProps {
   /** Slot class names */
@@ -61,10 +60,9 @@ export interface ToastItemProps extends ToastItemRootProps {
   /** Extra props forwarded to the toast close trigger element */
   closeTriggerProps?: Omit<ToastCloseTriggerProps, "asChild" | "children" | "className">;
 }
-
 // #endregion
 
-// #region Components
+// #region Parts
 export const toast = createToaster({
   max: 3,
   overlap: true,

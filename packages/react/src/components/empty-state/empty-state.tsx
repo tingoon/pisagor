@@ -4,10 +4,6 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 type EmptyStateTitleProps = ComponentProps<typeof ark.h3>;
 
@@ -50,7 +46,7 @@ interface EmptyStatePartProps extends ComponentProps<typeof ark.div> {
 }
 // #endregion
 
-// #region Components
+// #region Parts
 export function EmptyStateRoot({ className, classNames, testId, ...rest }: EmptyStateRootProps) {
   const slots = emptyStateVariants();
 
@@ -121,7 +117,6 @@ export function EmptyStateActions({ className, classNames, ...rest }: EmptyState
   );
 }
 EmptyStateActions.displayName = "EmptyState.Actions";
-
 // #endregion
 
 // #region Shorthand

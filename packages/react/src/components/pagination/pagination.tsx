@@ -14,17 +14,29 @@ import type { WithTestId } from "../../internal/types";
 import { Button, type ButtonProps } from "../button";
 
 // #region Types
-interface PaginationProps extends ComponentProps<typeof PaginationPrimitive.Root>, WithTestId {}
+export type PaginationRootProps = ComponentProps<typeof PaginationPrimitive.Root> & WithTestId;
 
-interface PaginationItemLinkProps extends ButtonProps {
+export type PaginationPreviousProps = ComponentProps<typeof PaginationPrimitive.PrevTrigger>;
+
+export type PaginationNextProps = ComponentProps<typeof PaginationPrimitive.NextTrigger>;
+
+export type PaginationItemProps = ComponentProps<typeof PaginationPrimitive.Item>;
+
+export type PaginationItemsProps = Omit<
+  ComponentProps<typeof PaginationPrimitive.Context>,
+  "children"
+>;
+
+export type PaginationEllipsisProps = ComponentProps<typeof PaginationPrimitive.Ellipsis>;
+
+export interface PaginationItemLinkProps extends ButtonProps {
   /** The page number to link to. */
   page?: "previous" | "next" | number;
 }
-
 // #endregion
 
-// #region Components
-export function PaginationRoot({ className, children, testId, ...rest }: PaginationProps) {
+// #region Parts
+export function PaginationRoot({ className, children, testId, ...rest }: PaginationRootProps) {
   return (
     <PaginationPrimitive.Root
       {...rest}
@@ -43,7 +55,7 @@ export function PaginationRoot({ className, children, testId, ...rest }: Paginat
 }
 PaginationRoot.displayName = "Pagination";
 
-export function PaginationPrevious(props: ComponentProps<typeof PaginationPrimitive.PrevTrigger>) {
+export function PaginationPrevious(props: PaginationPreviousProps) {
   return (
     <PaginationPrimitive.PrevTrigger asChild {...props}>
       <Button variant="ghost">
@@ -55,7 +67,7 @@ export function PaginationPrevious(props: ComponentProps<typeof PaginationPrimit
 }
 PaginationPrevious.displayName = "Pagination.Previous";
 
-export function PaginationNext(props: ComponentProps<typeof PaginationPrimitive.NextTrigger>) {
+export function PaginationNext(props: PaginationNextProps) {
   return (
     <PaginationPrimitive.NextTrigger asChild {...props}>
       <Button variant="ghost">
@@ -67,11 +79,7 @@ export function PaginationNext(props: ComponentProps<typeof PaginationPrimitive.
 }
 PaginationNext.displayName = "Pagination.Next";
 
-export function PaginationItem({
-  className,
-  children,
-  ...rest
-}: ComponentProps<typeof PaginationPrimitive.Item>) {
+export function PaginationItem({ className, children, ...rest }: PaginationItemProps) {
   return (
     <PaginationPrimitive.Item {...rest} asChild>
       <Button className={cn(paginationInlineVariants(), className)} size="icon-md" variant="ghost">
@@ -82,9 +90,7 @@ export function PaginationItem({
 }
 PaginationItem.displayName = "Pagination.Item";
 
-export function PaginationItems(
-  props: Omit<ComponentProps<typeof PaginationPrimitive.Context>, "children">,
-) {
+export function PaginationItems(props: PaginationItemsProps) {
   return (
     <PaginationPrimitive.Context {...props}>
       {({ pages }) =>
@@ -140,10 +146,7 @@ export function PaginationItemLink({ page, children, ...rest }: PaginationItemLi
 }
 PaginationItemLink.displayName = "Pagination.ItemLink";
 
-export function PaginationEllipsis({
-  className,
-  ...rest
-}: ComponentProps<typeof PaginationPrimitive.Ellipsis>) {
+export function PaginationEllipsis({ className, ...rest }: PaginationEllipsisProps) {
   return (
     <PaginationPrimitive.Ellipsis {...rest} className={cn(paginationEllipsisVariants(), className)}>
       <DotsThreeIcon />
@@ -151,5 +154,4 @@ export function PaginationEllipsis({
   );
 }
 PaginationEllipsis.displayName = "Pagination.Ellipsis";
-
 // #endregion

@@ -97,7 +97,7 @@ export function useRichTextEditor() {
 }
 // #endregion
 
-// #region Components
+// #region Parts
 export function RichTextEditorRoot({
   variant: variantProp,
   defaultValue,
@@ -328,7 +328,6 @@ export function RichTextEditorContent({ className, ...rest }: RichTextEditorCont
   );
 }
 RichTextEditorContent.displayName = "RichTextEditor.Content";
-
 // #endregion
 
 // #region Shorthand

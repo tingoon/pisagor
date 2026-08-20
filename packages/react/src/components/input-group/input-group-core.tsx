@@ -19,10 +19,6 @@ import { useFormControlVariant } from "../../internal/form-control/use-form-cont
 import type { WithTestId } from "../../internal/types";
 import { Button, type ButtonProps } from "../button";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 export interface InputGroupProps
   extends ComponentProps<typeof ark.div>,
@@ -43,7 +39,7 @@ export interface InputGroupButtonProps
     InputGroupButtonVariantProps {}
 // #endregion
 
-// #region Components
+// #region Parts
 export function InputGroupRoot({
   size = "md",
   variant: variantProp,
@@ -126,5 +122,4 @@ export function InputGroupText({ className, ...rest }: ComponentProps<typeof ark
   );
 }
 InputGroupText.displayName = "InputGroup.Text";
-
 // #endregion

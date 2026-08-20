@@ -4,10 +4,6 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 type NavigationMenuClassNames = VariantClassNames<typeof navigationMenuVariants>;
 
@@ -34,7 +30,7 @@ interface NavigationMenuLinkProps extends ComponentProps<typeof ark.a> {
 }
 // #endregion
 
-// #region Components
+// #region Parts
 export function NavigationMenuRoot({
   className,
   classNames,

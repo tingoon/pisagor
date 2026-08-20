@@ -31,7 +31,7 @@ export interface ButtonProps extends ButtonRootProps, ButtonVariantProps, WithTe
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function Button({
   variant = "default",
   size = "md",

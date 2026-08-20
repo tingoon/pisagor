@@ -42,12 +42,13 @@ import { Button, type ButtonProps } from "../button";
 import { InputGroup, type InputGroupButtonProps } from "../input-group";
 
 // #region Types
-export interface ColorPickerProps
-  extends Omit<
-      ComponentProps<typeof ColorPickerPrimitive.Root>,
-      "defaultValue" | "value" | "onValueChange"
-    >,
-    WithTestId {
+export type ColorPickerRootProps = Omit<
+  ComponentProps<typeof ColorPickerPrimitive.Root>,
+  "defaultValue" | "value" | "onValueChange"
+> &
+  WithTestId;
+
+export interface ColorPickerProps extends ColorPickerRootProps {
   /** Visual shell variant for preset field input. When omitted, resolves from `Surface`. */
   variant?: FormControlVariant;
   /**
@@ -83,26 +84,60 @@ interface ColorPickerClearTriggerProps extends InputGroupButtonProps {
   clearable?: boolean;
 }
 
-interface ColorPickerControlProps extends ComponentProps<typeof ColorPickerPrimitive.Control> {
+export type ColorPickerControlProps = ComponentProps<typeof ColorPickerPrimitive.Control> & {
   /**
    * Whether to show a clear button when a color is selected.
    *
    * @defaultValue false
    */
   clearable?: boolean;
-}
+};
 
-interface ColorPickerEyeDropperTriggerProps
-  extends ComponentProps<typeof ColorPickerPrimitive.EyeDropperTrigger>,
-    ButtonProps {}
+export type ColorPickerEyeDropperTriggerProps = ComponentProps<
+  typeof ColorPickerPrimitive.EyeDropperTrigger
+> &
+  ButtonProps;
 
-interface ColorPickerAreaProps extends ComponentProps<typeof ColorPickerPrimitive.Area> {
+export type ColorPickerAreaProps = ComponentProps<typeof ColorPickerPrimitive.Area> & {
   /**
    *
    */
   showDots?: boolean;
-}
+};
 
+export type ColorPickerTriggerProps = ComponentProps<typeof ColorPickerPrimitive.Trigger>;
+
+export type ColorPickerTransparencyGridProps = ComponentProps<
+  typeof ColorPickerPrimitive.TransparencyGrid
+>;
+
+export type ColorPickerContentProps = ComponentProps<typeof ColorPickerPrimitive.Content>;
+
+export type ColorPickerViewProps = ComponentProps<typeof ColorPickerPrimitive.View>;
+
+export type ColorPickerSliderProps = ComponentProps<typeof ColorPickerPrimitive.ChannelSlider>;
+
+export type ColorPickerSwatchGroupProps = ComponentProps<typeof ColorPickerPrimitive.SwatchGroup>;
+
+export type ColorPickerSwatchTriggerProps = ComponentProps<
+  typeof ColorPickerPrimitive.SwatchTrigger
+>;
+
+export type ColorPickerSwatchProps = ComponentProps<typeof ColorPickerPrimitive.Swatch>;
+
+export type ColorPickerSwatchIndicatorProps = ComponentProps<
+  typeof ColorPickerPrimitive.SwatchIndicator
+>;
+
+export type ColorPickerValueProps = ComponentProps<typeof ColorPickerPrimitive.ValueText>;
+
+export type ColorPickerValueSwatchProps = ComponentProps<typeof ColorPickerPrimitive.ValueSwatch>;
+
+export type ColorPickerAreaThumbProps = ComponentProps<typeof ColorPickerPrimitive.AreaThumb>;
+
+export type ColorPickerInputProps = Partial<
+  ComponentProps<typeof ColorPickerPrimitive.ChannelInput>
+>;
 // #endregion
 
 // #region Context
@@ -110,10 +145,9 @@ const [ColorPickerRootContext, useColorPickerRoot] = createContext<{ testId?: st
   name: "ColorPickerRoot",
   strict: false,
 });
-
 // #endregion
 
-// #region Components
+// #region Parts
 /**
  * Parses a color string into an Ark UI color object.
  *
@@ -237,7 +271,7 @@ export function ColorPickerControl({
 }
 ColorPickerControl.displayName = "ColorPicker.Control";
 
-export function ColorPickerTrigger(props: ComponentProps<typeof ColorPickerPrimitive.Trigger>) {
+export function ColorPickerTrigger(props: ColorPickerTriggerProps) {
   return <ColorPickerPrimitive.Trigger {...props} />;
 }
 ColorPickerTrigger.displayName = "ColorPicker.Trigger";
@@ -245,7 +279,7 @@ ColorPickerTrigger.displayName = "ColorPicker.Trigger";
 export function ColorPickerTransparencyGrid({
   className,
   ...rest
-}: ComponentProps<typeof ColorPickerPrimitive.TransparencyGrid>) {
+}: ColorPickerTransparencyGridProps) {
   return (
     <ColorPickerPrimitive.TransparencyGrid
       {...rest}
@@ -255,10 +289,7 @@ export function ColorPickerTransparencyGrid({
 }
 ColorPickerTransparencyGrid.displayName = "ColorPicker.TransparencyGrid";
 
-export function ColorPickerContent({
-  className,
-  ...rest
-}: ComponentProps<typeof ColorPickerPrimitive.Content>) {
+export function ColorPickerContent({ className, ...rest }: ColorPickerContentProps) {
   return (
     <Portal>
       <ColorPickerPrimitive.Positioner>
@@ -272,21 +303,14 @@ export function ColorPickerContent({
 }
 ColorPickerContent.displayName = "ColorPicker.Content";
 
-export function ColorPickerView({
-  className,
-  ...rest
-}: ComponentProps<typeof ColorPickerPrimitive.View>) {
+export function ColorPickerView({ className, ...rest }: ColorPickerViewProps) {
   return (
     <ColorPickerPrimitive.View {...rest} className={cn(colorPickerViewVariants(), className)} />
   );
 }
 ColorPickerView.displayName = "ColorPicker.View";
 
-export function ColorPickerSlider({
-  className,
-  children,
-  ...rest
-}: ComponentProps<typeof ColorPickerPrimitive.ChannelSlider>) {
+export function ColorPickerSlider({ className, children, ...rest }: ColorPickerSliderProps) {
   return (
     <ColorPickerPrimitive.ChannelSlider
       {...rest}
@@ -321,10 +345,7 @@ export function ColorPickerEyeDropperTrigger({
 }
 ColorPickerEyeDropperTrigger.displayName = "ColorPicker.EyeDropperTrigger";
 
-export function ColorPickerSwatchGroup({
-  className,
-  ...rest
-}: ComponentProps<typeof ColorPickerPrimitive.SwatchGroup>) {
+export function ColorPickerSwatchGroup({ className, ...rest }: ColorPickerSwatchGroupProps) {
   return (
     <ColorPickerPrimitive.SwatchGroup
       {...rest}
@@ -334,10 +355,7 @@ export function ColorPickerSwatchGroup({
 }
 ColorPickerSwatchGroup.displayName = "ColorPicker.SwatchGroup";
 
-export function ColorPickerSwatchTrigger({
-  className,
-  ...rest
-}: ComponentProps<typeof ColorPickerPrimitive.SwatchTrigger>) {
+export function ColorPickerSwatchTrigger({ className, ...rest }: ColorPickerSwatchTriggerProps) {
   return (
     <ColorPickerPrimitive.SwatchTrigger
       {...rest}
@@ -347,10 +365,7 @@ export function ColorPickerSwatchTrigger({
 }
 ColorPickerSwatchTrigger.displayName = "ColorPicker.SwatchTrigger";
 
-export function ColorPickerSwatch({
-  className,
-  ...rest
-}: ComponentProps<typeof ColorPickerPrimitive.Swatch>) {
+export function ColorPickerSwatch({ className, ...rest }: ColorPickerSwatchProps) {
   return (
     <ColorPickerPrimitive.Swatch {...rest} className={cn(colorPickerSwatchVariants(), className)} />
   );
@@ -361,7 +376,7 @@ export function ColorPickerSwatchIndicator({
   className,
   children,
   ...rest
-}: ComponentProps<typeof ColorPickerPrimitive.SwatchIndicator>) {
+}: ColorPickerSwatchIndicatorProps) {
   return (
     <ColorPickerPrimitive.SwatchIndicator
       {...rest}
@@ -373,10 +388,7 @@ export function ColorPickerSwatchIndicator({
 }
 ColorPickerSwatchIndicator.displayName = "ColorPicker.SwatchIndicator";
 
-export function ColorPickerValue({
-  className,
-  ...rest
-}: ComponentProps<typeof ColorPickerPrimitive.ValueText>) {
+export function ColorPickerValue({ className, ...rest }: ColorPickerValueProps) {
   return (
     <ColorPickerPrimitive.ValueText
       {...rest}
@@ -386,10 +398,7 @@ export function ColorPickerValue({
 }
 ColorPickerValue.displayName = "ColorPicker.Value";
 
-export function ColorPickerValueSwatch({
-  className,
-  ...rest
-}: ComponentProps<typeof ColorPickerPrimitive.ValueSwatch>) {
+export function ColorPickerValueSwatch({ className, ...rest }: ColorPickerValueSwatchProps) {
   return (
     <ColorPickerPrimitive.ValueSwatch
       {...rest}
@@ -425,10 +434,7 @@ export function ColorPickerArea({
 }
 ColorPickerArea.displayName = "ColorPicker.Area";
 
-export function ColorPickerAreaThumb({
-  className,
-  ...rest
-}: ComponentProps<typeof ColorPickerPrimitive.AreaThumb>) {
+export function ColorPickerAreaThumb({ className, ...rest }: ColorPickerAreaThumbProps) {
   return (
     <ColorPickerPrimitive.AreaThumb
       {...rest}
@@ -438,10 +444,7 @@ export function ColorPickerAreaThumb({
 }
 ColorPickerAreaThumb.displayName = "ColorPicker.AreaThumb";
 
-export function ColorPickerInput({
-  channel = "hex",
-  ...rest
-}: Partial<ComponentProps<typeof ColorPickerPrimitive.ChannelInput>>) {
+export function ColorPickerInput({ channel = "hex", ...rest }: ColorPickerInputProps) {
   return <ColorPickerPrimitive.ChannelInput {...rest} channel={channel} />;
 }
 ColorPickerInput.displayName = "ColorPicker.Input";

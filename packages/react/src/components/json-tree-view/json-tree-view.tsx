@@ -5,18 +5,14 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
-type JsonTreeViewTreeProps = ComponentProps<typeof JsonTreeViewPrimitive.Tree>;
+export type JsonTreeViewTreeProps = ComponentProps<typeof JsonTreeViewPrimitive.Tree>;
 
 type JsonTreeViewClassNames = VariantClassNames<typeof jsonTreeViewVariants>;
 
-type JsonTreeViewRootProps = ComponentProps<typeof JsonTreeViewPrimitive.Root>;
+export type JsonTreeViewRootProps = ComponentProps<typeof JsonTreeViewPrimitive.Root>;
 
-interface JsonTreeViewProps extends JsonTreeViewRootProps, WithTestId {
+export interface JsonTreeViewProps extends JsonTreeViewRootProps, WithTestId {
   /** Slot class names */
   classNames?: JsonTreeViewClassNames;
   renderValue?: JsonTreeViewTreeProps["renderValue"];
@@ -25,7 +21,7 @@ interface JsonTreeViewProps extends JsonTreeViewRootProps, WithTestId {
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function JsonTreeView({
   lazyMount = true,
   unmountOnExit = true,

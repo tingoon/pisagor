@@ -47,7 +47,7 @@ export interface TimelineProps extends Omit<TimelineRootProps, "children"> {
 }
 // #endregion
 
-// #region Components
+// #region Parts
 export function TimelineRoot({
   orientation = "vertical",
   className,
@@ -141,7 +141,6 @@ export function TimelineDescription({ className, ...rest }: TimelineDescriptionP
   );
 }
 TimelineDescription.displayName = "Timeline.Description";
-
 // #endregion
 
 // #region Shorthand

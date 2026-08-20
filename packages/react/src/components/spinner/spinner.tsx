@@ -8,7 +8,7 @@ import type { WithTestId } from "../../internal/types";
 interface SpinnerProps extends ComponentProps<"svg">, WithTestId {}
 // #endregion
 
-// #region Component
+// #region Part
 export function Spinner({ "aria-label": ariaLabel, className, testId, ...rest }: SpinnerProps) {
   return (
     <CircleNotchIcon

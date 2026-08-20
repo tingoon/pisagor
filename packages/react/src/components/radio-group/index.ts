@@ -6,7 +6,13 @@ import {
   RadioGroupText,
 } from "./radio-group";
 
-export type { RadioGroupProps, RadioGroupRootProps } from "./radio-group";
+export type {
+  RadioGroupItemProps,
+  RadioGroupLabelProps,
+  RadioGroupProps,
+  RadioGroupRootProps,
+  RadioGroupTextProps,
+} from "./radio-group";
 
 export const RadioGroup = Object.assign(RadioGroupShorthand, {
   Item: RadioGroupItem,

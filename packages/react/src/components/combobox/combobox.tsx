@@ -34,10 +34,6 @@ import { createContext } from "../../utils";
 import { Button } from "../button";
 import { InputGroup } from "../input-group";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 interface ComboboxPresetItem {
   label: string;
@@ -99,6 +95,23 @@ export interface ComboboxItemProps
   extends ComponentProps<typeof ComboboxPrimitive.Item>,
     ComboboxItemVariantProps {}
 
+export type ComboboxControlProps = ComponentProps<typeof ComboboxPrimitive.Control>;
+
+export type ComboboxTriggerProps = ComponentProps<typeof ComboboxPrimitive.Trigger>;
+
+export type ComboboxClearProps = ComponentProps<typeof ComboboxPrimitive.ClearTrigger>;
+
+export type ComboboxFieldInputProps = ComponentProps<typeof ComboboxPrimitive.Input>;
+
+export type ComboboxPositionerProps = ComponentProps<typeof ComboboxPrimitive.Positioner>;
+
+export type ComboboxContentProps = ComponentProps<typeof ComboboxPrimitive.Content>;
+
+export type ComboboxGroupLabelProps = ComponentProps<typeof ComboboxPrimitive.ItemGroupLabel>;
+
+export type ComboboxEmptyProps = ComponentProps<typeof ComboboxPrimitive.Empty>;
+
+export type ComboboxListProps = ComponentProps<typeof ComboboxListPrimitive>;
 // #endregion
 
 // #region Context
@@ -108,10 +121,9 @@ const [ComboboxRootContext, useComboboxRoot] = createContext<{ testId?: string }
 });
 
 export { useComboboxRoot };
-
 // #endregion
 
-// #region Components
+// #region Parts
 export function ComboboxRoot<T extends CollectionItem = CollectionItem>({
   openOnClick = true,
   lazyMount = true,
@@ -146,8 +158,6 @@ export function ComboboxRoot<T extends CollectionItem = CollectionItem>({
 ComboboxRoot.displayName = "Combobox.Root";
 
 export const ComboboxContext = ComboboxPrimitive.Context;
-
-export type ComboboxControlProps = ComponentProps<typeof ComboboxPrimitive.Control>;
 
 export function ComboboxControl({ className, ...rest }: ComboboxControlProps) {
   const { testId } = useComboboxRoot() ?? {};
@@ -205,8 +215,6 @@ export function ComboboxInput({
 }
 ComboboxInput.displayName = "Combobox.Input";
 
-export type ComboboxTriggerProps = ComponentProps<typeof ComboboxPrimitive.Trigger>;
-
 export function ComboboxTrigger({ className, children, ...rest }: ComboboxTriggerProps) {
   return (
     <ComboboxPrimitive.Trigger
@@ -224,8 +232,6 @@ export function ComboboxTrigger({ className, children, ...rest }: ComboboxTrigge
 }
 ComboboxTrigger.displayName = "Combobox.Trigger";
 
-export type ComboboxClearProps = ComponentProps<typeof ComboboxPrimitive.ClearTrigger>;
-
 export function ComboboxClear({
   "aria-label": ariaLabel = "Clear selected value(s)",
   ...rest
@@ -235,17 +241,15 @@ export function ComboboxClear({
 ComboboxClear.displayName = "Combobox.Clear";
 
 /** Composable combobox input for custom controls (e.g. Tags Input). */
-export function ComboboxFieldInput(props: ComponentProps<typeof ComboboxPrimitive.Input>) {
+export function ComboboxFieldInput(props: ComboboxFieldInputProps) {
   return <ComboboxPrimitive.Input {...props} />;
 }
 ComboboxFieldInput.displayName = "Combobox.FieldInput";
 
-export function ComboboxPositioner(props: ComponentProps<typeof ComboboxPrimitive.Positioner>) {
+export function ComboboxPositioner(props: ComboboxPositionerProps) {
   return <ComboboxPrimitive.Positioner {...props} />;
 }
 ComboboxPositioner.displayName = "Combobox.Positioner";
-
-export type ComboboxContentProps = ComponentProps<typeof ComboboxPrimitive.Content>;
 
 export function ComboboxContent({ className, children, ...rest }: ComboboxContentProps) {
   return (
@@ -270,8 +274,6 @@ export function ComboboxGroup({ heading, children, ...rest }: ComboboxGroupProps
   );
 }
 ComboboxGroup.displayName = "Combobox.Group";
-
-export type ComboboxGroupLabelProps = ComponentProps<typeof ComboboxPrimitive.ItemGroupLabel>;
 
 export function ComboboxGroupLabel({ className, ...rest }: ComboboxGroupLabelProps) {
   return (
@@ -309,8 +311,6 @@ export function ComboboxItem({
 }
 ComboboxItem.displayName = "Combobox.Item";
 
-export type ComboboxEmptyProps = ComponentProps<typeof ComboboxPrimitive.Empty>;
-
 export function ComboboxEmpty({ className, children, ...rest }: ComboboxEmptyProps) {
   return (
     <ComboboxPrimitive.Empty {...rest} className={cn(comboboxEmptyVariants(), className)}>
@@ -320,13 +320,10 @@ export function ComboboxEmpty({ className, children, ...rest }: ComboboxEmptyPro
 }
 ComboboxEmpty.displayName = "Combobox.Empty";
 
-export type ComboboxListProps = ComponentProps<typeof ComboboxListPrimitive>;
-
 export function ComboboxList({ className, ...rest }: ComboboxListProps) {
   return <ComboboxPrimitive.List {...rest} className={cn(comboboxListVariants(), className)} />;
 }
 ComboboxList.displayName = "Combobox.List";
-
 // #endregion
 
 // #region Shorthand

@@ -36,7 +36,7 @@ const resizeTriggerHandleClassName = resizableResizeTriggerHandleVariants();
 export type ResizableHandlePosition = "bottom" | "center" | "top";
 export type ResizableEdgePlacement = "end" | "start";
 
-interface ResizableEdgeHandleProps extends ComponentProps<"button">, WithTestId {
+export interface ResizableEdgeHandleProps extends ComponentProps<"button">, WithTestId {
   /** Vertical placement of the visible grip. @defaultValue `"center"` */
   handlePosition?: ResizableHandlePosition;
   /** Accessible label for the resize control. */
@@ -57,7 +57,7 @@ interface ResizableEdgeHandleProps extends ComponentProps<"button">, WithTestId 
   width: number;
 }
 
-interface ResizableResizeTriggerProps
+export interface ResizableResizeTriggerProps
   extends ComponentProps<typeof SplitterPrimitive.ResizeTrigger> {
   /**
    * Whether to show the handle.
@@ -67,10 +67,20 @@ interface ResizableResizeTriggerProps
   withHandle?: boolean;
 }
 
-interface ResizableRootProps extends ComponentProps<typeof SplitterPrimitive.Root>, WithTestId {}
+export type ResizableRootProps = ComponentProps<typeof SplitterPrimitive.Root> & WithTestId;
+
+export type ResizablePanelProps = ComponentProps<typeof SplitterPrimitive.Panel>;
+
+export type ResizableResizeTriggerIndicatorProps = ComponentProps<
+  typeof SplitterPrimitive.ResizeTriggerIndicator
+>;
+
+export type ResizableContextProps = ComponentProps<typeof SplitterPrimitive.Context>;
+
+export type ResizableRootProviderProps = ComponentProps<typeof SplitterPrimitive.RootProvider>;
 // #endregion
 
-// #region Components
+// #region Parts
 export function ResizableEdgeHandle({
   className,
   handlePosition = "center",
@@ -167,7 +177,7 @@ export function ResizableRoot({ className, testId, ...rest }: ResizableRootProps
 }
 ResizableRoot.displayName = "Resizable";
 
-export function ResizablePanel(props: ComponentProps<typeof SplitterPrimitive.Panel>) {
+export function ResizablePanel(props: ResizablePanelProps) {
   return <SplitterPrimitive.Panel {...props} />;
 }
 ResizablePanel.displayName = "Resizable.Panel";
@@ -175,7 +185,7 @@ ResizablePanel.displayName = "Resizable.Panel";
 export function ResizableResizeTriggerIndicator({
   className,
   ...rest
-}: ComponentProps<typeof SplitterPrimitive.ResizeTriggerIndicator>) {
+}: ResizableResizeTriggerIndicatorProps) {
   return (
     <SplitterPrimitive.ResizeTriggerIndicator
       {...rest}
@@ -209,14 +219,12 @@ export function ResizableResizeTrigger({
 }
 ResizableResizeTrigger.displayName = "Resizable.ResizeTrigger";
 
-export function ResizableContext(props: ComponentProps<typeof SplitterPrimitive.Context>) {
+export function ResizableContext(props: ResizableContextProps) {
   return <SplitterPrimitive.Context {...props} />;
 }
 ResizableContext.displayName = "Resizable.Context";
 
-export function ResizableRootProvider(
-  props: ComponentProps<typeof SplitterPrimitive.RootProvider>,
-) {
+export function ResizableRootProvider(props: ResizableRootProviderProps) {
   return <SplitterPrimitive.RootProvider {...props} />;
 }
 ResizableRootProvider.displayName = "Resizable.RootProvider";

@@ -39,7 +39,7 @@ export interface TableCellProps extends ComponentProps<typeof ark.td> {}
 export interface TableCaptionProps extends ComponentProps<typeof ark.caption> {}
 // #endregion
 
-// #region Components
+// #region Parts
 export function TableRoot({
   variant = "plain",
   isHoverable = true,
@@ -146,5 +146,4 @@ export function TableCaption({ className, ...rest }: TableCaptionProps) {
   );
 }
 TableCaption.displayName = "Table.Caption";
-
 // #endregion

@@ -13,7 +13,17 @@ import {
   SelectValue,
 } from "./select";
 
-export type { SelectProps, SelectRootProps } from "./select";
+export type {
+  SelectClearTriggerProps,
+  SelectContentProps,
+  SelectGroupLabelProps,
+  SelectGroupProps,
+  SelectItemProps,
+  SelectProps,
+  SelectRootProps,
+  SelectTriggerProps,
+  SelectValueProps,
+} from "./select";
 
 export const Select = Object.assign(SelectShorthand, {
   ClearTrigger: SelectClearTrigger,

@@ -21,10 +21,6 @@ import { createContext } from "../../utils";
 import { Button } from "../button";
 import { ScrollArea } from "../scroll-area";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 interface DialogContextProps {
   /**
@@ -76,7 +72,9 @@ export interface DialogHeaderProps extends ComponentProps<typeof ark.div> {
   dataScope?: string;
 }
 
-export interface DialogProps extends ComponentProps<typeof DialogPrimitive.Root>, WithTestId {}
+export type DialogRootProps = ComponentProps<typeof DialogPrimitive.Root> & WithTestId;
+
+export type DialogProps = DialogRootProps;
 // #endregion
 
 // #region Context
@@ -85,17 +83,16 @@ const [DialogContext, useDialogLocal] = createContext<DialogContextProps>({
 });
 
 export { useDialogLocal as useDialog };
-
 // #endregion
 
-// #region Components
+// #region Parts
 export function DialogRoot({
   modal = true,
   lazyMount = true,
   unmountOnExit = true,
   testId,
   ...rest
-}: DialogProps) {
+}: DialogRootProps) {
   const { "data-testid": dataTestId, ...props } = rest as typeof rest & { "data-testid"?: string };
 
   return (
@@ -283,5 +280,4 @@ export function DialogFooter({
   );
 }
 DialogFooter.displayName = "Dialog.Footer";
-
 // #endregion

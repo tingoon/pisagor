@@ -8,6 +8,16 @@ import {
   PaginationRoot,
 } from "./pagination";
 
+export type {
+  PaginationEllipsisProps,
+  PaginationItemLinkProps,
+  PaginationItemProps,
+  PaginationItemsProps,
+  PaginationNextProps,
+  PaginationPreviousProps,
+  PaginationRootProps,
+} from "./pagination";
+
 export const Pagination = Object.assign(PaginationRoot, {
   Ellipsis: PaginationEllipsis,
   Item: PaginationItem,

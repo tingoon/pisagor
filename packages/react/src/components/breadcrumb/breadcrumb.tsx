@@ -32,10 +32,9 @@ export interface BreadcrumbRootProps extends ComponentProps<typeof ark.nav>, Wit
 export interface BreadcrumbProps extends Omit<BreadcrumbRootProps, "children"> {
   items?: BreadcrumbPresetItem[];
 }
-
 // #endregion
 
-// #region Components
+// #region Parts
 export function BreadcrumbRoot({
   "aria-label": ariaLabel = "Breadcrumb",
   children,
@@ -140,7 +139,6 @@ export function BreadcrumbEllipsis(props: ComponentProps<typeof ark.span>) {
   );
 }
 BreadcrumbEllipsis.displayName = "Breadcrumb.Ellipsis";
-
 // #endregion
 
 // #region Shorthand
@@ -169,5 +167,4 @@ export function BreadcrumbShorthand({ items, ...rest }: BreadcrumbProps) {
   );
 }
 BreadcrumbShorthand.displayName = "Breadcrumb";
-
 // #endregion

@@ -8,7 +8,7 @@ import type { WithTestId } from "../../internal/types";
 interface LinkBoxRootProps extends ComponentProps<typeof ark.div>, WithTestId {}
 // #endregion
 
-// #region Components
+// #region Parts
 export function LinkBoxRoot({ className, testId, ...rest }: LinkBoxRootProps) {
   return (
     <ark.div

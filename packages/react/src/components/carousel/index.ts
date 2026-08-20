@@ -9,7 +9,17 @@ import {
   CarouselRoot,
 } from "./carousel";
 
-export type { CarouselProps } from "./carousel";
+export type {
+  CarouselContentProps,
+  CarouselControlProps,
+  CarouselIndicatorGroupProps,
+  CarouselIndicatorProps,
+  CarouselItemProps,
+  CarouselNextProps,
+  CarouselPreviousProps,
+  CarouselProps,
+  CarouselRootProps,
+} from "./carousel";
 
 export const Carousel = Object.assign(CarouselRoot, {
   Content: CarouselContent,

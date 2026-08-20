@@ -25,10 +25,6 @@ import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 import { DropdownMenu, type DropdownMenuShortcutProps } from "../dropdown-menu";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 interface ListboxPresetItem {
   label: string;
@@ -36,7 +32,7 @@ interface ListboxPresetItem {
   disabled?: boolean;
 }
 
-interface ListboxRootProps<T extends CollectionItem = CollectionItem>
+export interface ListboxRootProps<T extends CollectionItem = CollectionItem>
   extends Omit<ListboxRootPropsPrimitive<T>, "collection" | "onValueChange">,
     WithTestId {
   collection?: ListCollection<T>;
@@ -47,18 +43,29 @@ export interface ListboxProps extends Omit<ListboxRootProps, "children"> {
   items?: ListboxPresetItem[];
 }
 
-interface ListboxItemProps
+export interface ListboxItemProps
   extends ComponentProps<typeof ListboxPrimitive.Item>,
     ListboxItemVariantProps {}
 
-interface ListboxItemGroupProps extends ComponentProps<typeof ListboxPrimitive.ItemGroup> {
+export interface ListboxItemGroupProps extends ComponentProps<typeof ListboxPrimitive.ItemGroup> {
   /** The heading of the listbox item group. */
   heading?: string;
 }
 
+export type ListboxContentProps = ComponentProps<typeof ListboxPrimitive.Content>;
+
+export type ListboxItemTextProps = ComponentProps<typeof ListboxPrimitive.ItemText>;
+
+export type ListboxItemGroupLabelProps = ComponentProps<typeof ListboxPrimitive.ItemGroupLabel>;
+
+export type ListboxValueTextProps = ComponentProps<typeof ListboxPrimitive.ValueText>;
+
+export type ListboxItemIndicatorProps = ComponentProps<typeof ListboxPrimitive.ItemIndicator>;
+
+export type ListboxEmptyProps = ComponentProps<typeof ListboxPrimitive.Empty>;
 // #endregion
 
-// #region Components
+// #region Parts
 export function ListboxRoot<T extends CollectionItem = CollectionItem>({
   className,
   collection: collectionProp,
@@ -81,10 +88,7 @@ export function ListboxRoot<T extends CollectionItem = CollectionItem>({
 }
 ListboxRoot.displayName = "Listbox.Root";
 
-export function ListboxContent({
-  className,
-  ...rest
-}: ComponentProps<typeof ListboxPrimitive.Content>) {
+export function ListboxContent({ className, ...rest }: ListboxContentProps) {
   return <ListboxPrimitive.Content {...rest} className={cn(listboxContentVariants(), className)} />;
 }
 ListboxContent.displayName = "Listbox.Content";
@@ -100,10 +104,7 @@ export function ListboxItem({ variant = "default", className, ...rest }: Listbox
 }
 ListboxItem.displayName = "Listbox.Item";
 
-export function ListboxItemText({
-  className,
-  ...rest
-}: ComponentProps<typeof ListboxPrimitive.ItemText>) {
+export function ListboxItemText({ className, ...rest }: ListboxItemTextProps) {
   return (
     <ListboxPrimitive.ItemText {...rest} className={cn(listboxItemTextVariants(), className)} />
   );
@@ -120,10 +121,7 @@ export function ListboxItemGroup({ heading, className, children, ...rest }: List
 }
 ListboxItemGroup.displayName = "Listbox.ItemGroup";
 
-export function ListboxItemGroupLabel({
-  className,
-  ...rest
-}: ComponentProps<typeof ListboxPrimitive.ItemGroupLabel>) {
+export function ListboxItemGroupLabel({ className, ...rest }: ListboxItemGroupLabelProps) {
   return (
     <ListboxPrimitive.ItemGroupLabel
       {...rest}
@@ -133,21 +131,14 @@ export function ListboxItemGroupLabel({
 }
 ListboxItemGroupLabel.displayName = "Listbox.ItemGroupLabel";
 
-export function ListboxValueText({
-  className,
-  ...rest
-}: ComponentProps<typeof ListboxPrimitive.ValueText>) {
+export function ListboxValueText({ className, ...rest }: ListboxValueTextProps) {
   return (
     <ListboxPrimitive.ValueText {...rest} className={cn(listboxValueTextVariants(), className)} />
   );
 }
 ListboxValueText.displayName = "Listbox.ValueText";
 
-export function ListboxItemIndicator({
-  className,
-  children,
-  ...rest
-}: ComponentProps<typeof ListboxPrimitive.ItemIndicator>) {
+export function ListboxItemIndicator({ className, children, ...rest }: ListboxItemIndicatorProps) {
   return (
     <ListboxPrimitive.ItemIndicator
       {...rest}
@@ -159,10 +150,7 @@ export function ListboxItemIndicator({
 }
 ListboxItemIndicator.displayName = "Listbox.ItemIndicator";
 
-export function ListboxEmpty({
-  className,
-  ...rest
-}: ComponentProps<typeof ListboxPrimitive.Empty>) {
+export function ListboxEmpty({ className, ...rest }: ListboxEmptyProps) {
   return <ListboxPrimitive.Empty {...rest} className={cn(listboxEmptyVariants(), className)} />;
 }
 ListboxEmpty.displayName = "Listbox.Empty";
@@ -171,7 +159,6 @@ export function ListboxShortcut(props: DropdownMenuShortcutProps) {
   return <DropdownMenu.Shortcut dataPart="shortcut" dataScope="listbox" {...props} />;
 }
 ListboxShortcut.displayName = "Listbox.Shortcut";
-
 // #endregion
 
 // #region Shorthand
@@ -199,5 +186,4 @@ export function ListboxShorthand({ items, collection: collectionProp, ...rest }:
   );
 }
 ListboxShorthand.displayName = "Listbox";
-
 // #endregion

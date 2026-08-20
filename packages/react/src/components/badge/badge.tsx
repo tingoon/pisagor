@@ -4,10 +4,6 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 
 export type BadgeVariant = BadgeVariantProps["variant"];
@@ -17,7 +13,7 @@ type BadgeRootProps = ComponentProps<typeof ark.span>;
 export interface BadgeProps extends BadgeRootProps, BadgeVariantProps, WithTestId {}
 // #endregion
 
-// #region Component
+// #region Part
 export function Badge({
   variant = "default",
   size = "md",

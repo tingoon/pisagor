@@ -20,13 +20,28 @@ import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 
 // #region Types
-interface StepsTriggerProps extends ComponentProps<typeof StepsPrimitive.Trigger> {}
+export type StepsTriggerProps = ComponentProps<typeof StepsPrimitive.Trigger>;
 
-interface StepsRootProps extends ComponentProps<typeof StepsPrimitive.Root>, WithTestId {}
+export type StepsRootProps = ComponentProps<typeof StepsPrimitive.Root> & WithTestId;
 
+export type StepsListProps = ComponentProps<typeof StepsPrimitive.List>;
+
+export type StepsItemProps = ComponentProps<typeof StepsPrimitive.Item>;
+
+export type StepsIndicatorProps = ComponentProps<typeof StepsPrimitive.Indicator>;
+
+export type StepsSeparatorProps = ComponentProps<typeof StepsPrimitive.Separator>;
+
+export type StepsContentProps = ComponentProps<typeof StepsPrimitive.Content>;
+
+export type StepsCompletedContentProps = ComponentProps<typeof StepsPrimitive.CompletedContent>;
+
+export type StepsPreviousProps = ComponentProps<typeof StepsPrimitive.PrevTrigger>;
+
+export type StepsNextProps = ComponentProps<typeof StepsPrimitive.NextTrigger>;
 // #endregion
 
-// #region Components
+// #region Parts
 export function StepsRoot({ className, testId, ...rest }: StepsRootProps) {
   return (
     <StepsPrimitive.Root
@@ -38,12 +53,12 @@ export function StepsRoot({ className, testId, ...rest }: StepsRootProps) {
 }
 StepsRoot.displayName = "Steps";
 
-export function StepsList({ className, ...rest }: ComponentProps<typeof StepsPrimitive.List>) {
+export function StepsList({ className, ...rest }: StepsListProps) {
   return <StepsPrimitive.List {...rest} className={cn(stepsListVariants(), className)} />;
 }
 StepsList.displayName = "Steps.List";
 
-export function StepsItem({ className, ...rest }: ComponentProps<typeof StepsPrimitive.Item>) {
+export function StepsItem({ className, ...rest }: StepsItemProps) {
   return <StepsPrimitive.Item {...rest} className={cn(stepsItemVariants(), className)} />;
 }
 StepsItem.displayName = "Steps.Item";
@@ -53,11 +68,7 @@ export function StepsTrigger({ className, ...rest }: StepsTriggerProps) {
 }
 StepsTrigger.displayName = "Steps.Trigger";
 
-export function StepsIndicator({
-  className,
-  children,
-  ...rest
-}: ComponentProps<typeof StepsPrimitive.Indicator>) {
+export function StepsIndicator({ className, children, ...rest }: StepsIndicatorProps) {
   return (
     <StepsPrimitive.Indicator {...rest} className={cn(stepsIndicatorVariants(), className)}>
       <span className={stepsInlineVariants()}>{children}</span>
@@ -67,10 +78,7 @@ export function StepsIndicator({
 }
 StepsIndicator.displayName = "Steps.Indicator";
 
-export function StepsSeparator({
-  className,
-  ...rest
-}: ComponentProps<typeof StepsPrimitive.Separator>) {
+export function StepsSeparator({ className, ...rest }: StepsSeparatorProps) {
   return <StepsPrimitive.Separator {...rest} className={cn(stepsSeparatorVariants(), className)} />;
 }
 StepsSeparator.displayName = "Steps.Separator";
@@ -99,18 +107,12 @@ export function StepsDescription({ className, ...rest }: ComponentProps<typeof a
 }
 StepsDescription.displayName = "Steps.Description";
 
-export function StepsContent({
-  className,
-  ...rest
-}: ComponentProps<typeof StepsPrimitive.Content>) {
+export function StepsContent({ className, ...rest }: StepsContentProps) {
   return <StepsPrimitive.Content {...rest} className={cn(stepsContentVariants(), className)} />;
 }
 StepsContent.displayName = "Steps.Content";
 
-export function StepsCompletedContent({
-  className,
-  ...rest
-}: ComponentProps<typeof StepsPrimitive.CompletedContent>) {
+export function StepsCompletedContent({ className, ...rest }: StepsCompletedContentProps) {
   return (
     <StepsPrimitive.CompletedContent
       {...rest}
@@ -120,12 +122,12 @@ export function StepsCompletedContent({
 }
 StepsCompletedContent.displayName = "Steps.CompletedContent";
 
-export function StepsPrevious(props: ComponentProps<typeof StepsPrimitive.PrevTrigger>) {
+export function StepsPrevious(props: StepsPreviousProps) {
   return <StepsPrimitive.PrevTrigger {...props} />;
 }
 StepsPrevious.displayName = "Steps.Previous";
 
-export function StepsNext(props: ComponentProps<typeof StepsPrimitive.NextTrigger>) {
+export function StepsNext(props: StepsNextProps) {
   return <StepsPrimitive.NextTrigger {...props} />;
 }
 StepsNext.displayName = "Steps.Next";

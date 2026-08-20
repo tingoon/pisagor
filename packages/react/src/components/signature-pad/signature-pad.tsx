@@ -14,16 +14,12 @@ import { useFormControlVariant } from "../../internal/form-control/use-form-cont
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 import { Button } from "../button";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 type SignaturePadClassNames = VariantClassNames<typeof signaturePadVariants>;
 
-type SignaturePadRootProps = ComponentProps<typeof SignaturePadPrimitive.Root>;
+export type SignaturePadRootProps = ComponentProps<typeof SignaturePadPrimitive.Root>;
 
-interface SignaturePadProps extends SignaturePadRootProps, WithTestId {
+export interface SignaturePadProps extends SignaturePadRootProps, WithTestId {
   /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
   variant?: FormControlVariant;
   /** Marks the control as invalid for styling and assistive tech. */
@@ -32,28 +28,28 @@ interface SignaturePadProps extends SignaturePadRootProps, WithTestId {
   classNames?: SignaturePadClassNames;
 }
 
-interface SignaturePadControlProps
+export interface SignaturePadControlProps
   extends Omit<ComponentProps<typeof SignaturePadPrimitive.Control>, "className"> {
   classNames?: SignaturePadClassNames;
 }
 
-interface SignaturePadSegmentProps
+export interface SignaturePadSegmentProps
   extends Omit<ComponentProps<typeof SignaturePadPrimitive.Segment>, "className"> {
   classNames?: SignaturePadClassNames;
 }
 
-interface SignaturePadClearProps
+export interface SignaturePadClearProps
   extends Omit<ComponentProps<typeof SignaturePadPrimitive.ClearTrigger>, "className"> {
   classNames?: SignaturePadClassNames;
 }
 
-interface SignaturePadGuideProps
+export interface SignaturePadGuideProps
   extends Omit<ComponentProps<typeof SignaturePadPrimitive.Guide>, "className"> {
   classNames?: SignaturePadClassNames;
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function SignaturePad({
   className,
   classNames,

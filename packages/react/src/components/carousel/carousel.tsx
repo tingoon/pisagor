@@ -16,9 +16,24 @@ import type { WithTestId } from "../../internal/types";
 import { Button } from "../button";
 
 // #region Types
-export interface CarouselProps
-  extends Omit<ComponentProps<typeof CarouselPrimitive.Root>, "slideCount">,
-    WithTestId {
+export type CarouselControlProps = ComponentProps<typeof CarouselPrimitive.Control>;
+
+export type CarouselPreviousProps = ComponentProps<typeof CarouselPrimitive.PrevTrigger>;
+
+export type CarouselNextProps = ComponentProps<typeof CarouselPrimitive.NextTrigger>;
+
+export type CarouselIndicatorGroupProps = ComponentProps<typeof CarouselPrimitive.IndicatorGroup>;
+
+export type CarouselIndicatorProps = ComponentProps<typeof CarouselPrimitive.Indicator>;
+
+export type CarouselContentProps = ComponentProps<typeof CarouselPrimitive.ItemGroup>;
+
+export type CarouselItemProps = ComponentProps<typeof CarouselPrimitive.Item>;
+
+export type CarouselRootProps = Omit<ComponentProps<typeof CarouselPrimitive.Root>, "slideCount"> &
+  WithTestId;
+
+export interface CarouselProps extends CarouselRootProps {
   /**
    * Shorthand to render a preset layout with controls, items, and indicators.
    *
@@ -29,10 +44,9 @@ export interface CarouselProps
   slides?: Array<{ content: ReactNode; key?: string }>;
   slideCount?: number;
 }
-
 // #endregion
 
-// #region Components
+// #region Parts
 export function CarouselRoot({
   spacing = "16px",
   className,
@@ -81,20 +95,14 @@ export function CarouselRoot({
 }
 CarouselRoot.displayName = "Carousel";
 
-export function CarouselControl({
-  className,
-  ...rest
-}: ComponentProps<typeof CarouselPrimitive.Control>) {
+export function CarouselControl({ className, ...rest }: CarouselControlProps) {
   return (
     <CarouselPrimitive.Control {...rest} className={cn(carouselControlVariants(), className)} />
   );
 }
 CarouselControl.displayName = "Carousel.Control";
 
-export function CarouselPrevious({
-  className,
-  ...rest
-}: ComponentProps<typeof CarouselPrimitive.PrevTrigger>) {
+export function CarouselPrevious({ className, ...rest }: CarouselPreviousProps) {
   return (
     <CarouselPrimitive.PrevTrigger
       {...rest}
@@ -109,10 +117,7 @@ export function CarouselPrevious({
 }
 CarouselPrevious.displayName = "Carousel.Previous";
 
-export function CarouselNext({
-  className,
-  ...rest
-}: ComponentProps<typeof CarouselPrimitive.NextTrigger>) {
+export function CarouselNext({ className, ...rest }: CarouselNextProps) {
   return (
     <CarouselPrimitive.NextTrigger
       {...rest}
@@ -127,10 +132,7 @@ export function CarouselNext({
 }
 CarouselNext.displayName = "Carousel.Next";
 
-export function CarouselIndicatorGroup({
-  className,
-  ...rest
-}: ComponentProps<typeof CarouselPrimitive.IndicatorGroup>) {
+export function CarouselIndicatorGroup({ className, ...rest }: CarouselIndicatorGroupProps) {
   return (
     <CarouselPrimitive.IndicatorGroup
       {...rest}
@@ -140,30 +142,21 @@ export function CarouselIndicatorGroup({
 }
 CarouselIndicatorGroup.displayName = "Carousel.IndicatorGroup";
 
-export function CarouselIndicator({
-  className,
-  ...rest
-}: ComponentProps<typeof CarouselPrimitive.Indicator>) {
+export function CarouselIndicator({ className, ...rest }: CarouselIndicatorProps) {
   return (
     <CarouselPrimitive.Indicator {...rest} className={cn(carouselIndicatorVariants(), className)} />
   );
 }
 CarouselIndicator.displayName = "Carousel.Indicator";
 
-export function CarouselContent({
-  className,
-  ...rest
-}: ComponentProps<typeof CarouselPrimitive.ItemGroup>) {
+export function CarouselContent({ className, ...rest }: CarouselContentProps) {
   return (
     <CarouselPrimitive.ItemGroup {...rest} className={cn(carouselGroupVariants(), className)} />
   );
 }
 CarouselContent.displayName = "Carousel.Content";
 
-export function CarouselItem({
-  className,
-  ...rest
-}: ComponentProps<typeof CarouselPrimitive.Item>) {
+export function CarouselItem({ className, ...rest }: CarouselItemProps) {
   return <CarouselPrimitive.Item {...rest} className={cn(carouselItemVariants(), className)} />;
 }
 CarouselItem.displayName = "Carousel.Item";

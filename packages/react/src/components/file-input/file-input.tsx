@@ -58,7 +58,7 @@ function formatFileLabel(files: File[]): string | undefined {
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function FileInput({
   size = "md",
   variant: variantProp,

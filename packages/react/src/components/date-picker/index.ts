@@ -10,8 +10,12 @@ import {
 } from "./date-picker";
 
 export type {
+  DatePickerContentProps,
   DatePickerInputProps,
+  DatePickerPresetTriggerProps,
   DatePickerRootProps as DatePickerProps,
+  DatePickerTriggerProps,
+  DatePickerValueProps,
 } from "./date-picker";
 
 export const DatePicker = Object.assign(DatePickerRoot, {

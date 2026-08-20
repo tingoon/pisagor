@@ -4,10 +4,6 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 type DataListClassNames = VariantClassNames<typeof dataListVariants>;
 
@@ -36,10 +32,9 @@ interface DataListItemProps extends ComponentProps<typeof ark.div> {
   /** Slot class names */
   classNames?: DataListClassNames;
 }
-
 // #endregion
 
-// #region Components
+// #region Parts
 export function DataListRoot({
   orientation = "horizontal",
   className,
@@ -117,7 +112,6 @@ export function DataListItem({
   );
 }
 DataListItem.displayName = "DataList.Item";
-
 // #endregion
 
 // #region Shorthand
@@ -134,5 +128,4 @@ export function DataListShorthand({ items, ...rest }: DataListProps) {
   );
 }
 DataListShorthand.displayName = "DataList";
-
 // #endregion

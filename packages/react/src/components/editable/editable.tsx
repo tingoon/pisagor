@@ -15,12 +15,13 @@ import type { WithTestId } from "../../internal/types";
 import type { ButtonProps } from "../button";
 
 // #region Types
-export interface EditableProps
-  extends Omit<
-      ComponentProps<typeof EditablePrimitive.Root>,
-      "onValueChange" | "value" | "defaultValue"
-    >,
-    WithTestId {
+export type EditableRootProps = Omit<
+  ComponentProps<typeof EditablePrimitive.Root>,
+  "onValueChange" | "value" | "defaultValue"
+> &
+  WithTestId;
+
+export interface EditableProps extends EditableRootProps {
   /** The orientation of the editable */
   orientation?: "horizontal" | "vertical";
   /**
@@ -49,7 +50,7 @@ export interface EditableProps
 export interface EditableInputProps
   extends Omit<ComponentProps<typeof EditablePrimitive.Input>, "size"> {}
 
-interface EditablePreviewProps extends ComponentProps<typeof EditablePrimitive.Preview> {
+export interface EditablePreviewProps extends ComponentProps<typeof EditablePrimitive.Preview> {
   /**
    * The size of the preview
    *
@@ -66,9 +67,18 @@ interface EditablePreviewProps extends ComponentProps<typeof EditablePrimitive.P
   controlVariant?: FormControlVariant;
 }
 
+export type EditableAreaProps = ComponentProps<typeof EditablePrimitive.Area>;
+
+export type EditableControlProps = ComponentProps<typeof EditablePrimitive.Control>;
+
+export type EditableEditTriggerProps = ComponentProps<typeof EditablePrimitive.EditTrigger>;
+
+export type EditableCancelTriggerProps = ComponentProps<typeof EditablePrimitive.CancelTrigger>;
+
+export type EditableSubmitTriggerProps = ComponentProps<typeof EditablePrimitive.SubmitTrigger>;
 // #endregion
 
-// #region Components
+// #region Parts
 export function EditableRoot({
   orientation = "horizontal",
   value,
@@ -100,10 +110,7 @@ export function EditableRoot({
 }
 EditableRoot.displayName = "Editable";
 
-export function EditableArea({
-  className,
-  ...rest
-}: ComponentProps<typeof EditablePrimitive.Area>) {
+export function EditableArea({ className, ...rest }: EditableAreaProps) {
   return <EditablePrimitive.Area {...rest} className={cn(editableAreaVariants(), className)} />;
 }
 EditableArea.displayName = "Editable.Area";
@@ -147,31 +154,24 @@ export function EditablePreview({
 }
 EditablePreview.displayName = "Editable.Preview";
 
-export function EditableControl({
-  className,
-  ...rest
-}: ComponentProps<typeof EditablePrimitive.Control>) {
+export function EditableControl({ className, ...rest }: EditableControlProps) {
   return (
     <EditablePrimitive.Control {...rest} className={cn(editableControlVariants(), className)} />
   );
 }
 EditableControl.displayName = "Editable.Control";
 
-export function EditableEditTrigger(props: ComponentProps<typeof EditablePrimitive.EditTrigger>) {
+export function EditableEditTrigger(props: EditableEditTriggerProps) {
   return <EditablePrimitive.EditTrigger {...props} />;
 }
 EditableEditTrigger.displayName = "Editable.EditTrigger";
 
-export function EditableCancelTrigger(
-  props: ComponentProps<typeof EditablePrimitive.CancelTrigger>,
-) {
+export function EditableCancelTrigger(props: EditableCancelTriggerProps) {
   return <EditablePrimitive.CancelTrigger {...props} />;
 }
 EditableCancelTrigger.displayName = "Editable.CancelTrigger";
 
-export function EditableSubmitTrigger(
-  props: ComponentProps<typeof EditablePrimitive.SubmitTrigger>,
-) {
+export function EditableSubmitTrigger(props: EditableSubmitTriggerProps) {
   return <EditablePrimitive.SubmitTrigger {...props} />;
 }
 EditableSubmitTrigger.displayName = "Editable.SubmitTrigger";

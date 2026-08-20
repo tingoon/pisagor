@@ -8,20 +8,16 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
-type CircularProgressTrackProps = ComponentProps<typeof ark.svg>;
+export type CircularProgressTrackProps = ComponentProps<typeof ark.svg>;
 
-type CircularProgressValueProps = ComponentProps<typeof ProgressPrimitive.ValueText>;
+export type CircularProgressValueProps = ComponentProps<typeof ProgressPrimitive.ValueText>;
 
 type CircularProgressClassNames = VariantClassNames<typeof circularProgressVariants>;
 
-type CircularProgressRootProps = ComponentProps<typeof ProgressPrimitive.Root>;
+export type CircularProgressRootProps = ComponentProps<typeof ProgressPrimitive.Root>;
 
-interface CircularProgressProps extends CircularProgressRootProps, WithTestId {
+export interface CircularProgressProps extends CircularProgressRootProps, WithTestId {
   /** Slot class names */
   classNames?: CircularProgressClassNames;
   /**
@@ -58,7 +54,7 @@ interface CircularProgressTrackSlotProps {
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function CircularProgress({
   value,
   indeterminate = false,

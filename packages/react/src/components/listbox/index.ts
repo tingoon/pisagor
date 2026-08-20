@@ -14,7 +14,18 @@ import {
   ListboxValueText,
 } from "./listbox";
 
-export type { ListboxProps } from "./listbox";
+export type {
+  ListboxContentProps,
+  ListboxEmptyProps,
+  ListboxItemGroupLabelProps,
+  ListboxItemGroupProps,
+  ListboxItemIndicatorProps,
+  ListboxItemProps,
+  ListboxItemTextProps,
+  ListboxProps,
+  ListboxRootProps,
+  ListboxValueTextProps,
+} from "./listbox";
 
 export const Listbox = Object.assign(ListboxShorthand, {
   Content: ListboxContent,

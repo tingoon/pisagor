@@ -33,14 +33,17 @@ export interface RadioGroupProps extends Omit<RadioGroupRootProps, "children"> {
   items?: RadioGroupPresetItem[];
 }
 
-interface RadioGroupItemProps extends ComponentProps<typeof RadioGroupPrimitive.Item> {
+export interface RadioGroupItemProps extends ComponentProps<typeof RadioGroupPrimitive.Item> {
   /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
   variant?: FormControlVariant;
 }
 
+export type RadioGroupTextProps = ComponentProps<typeof RadioGroupPrimitive.ItemText>;
+
+export type RadioGroupLabelProps = ComponentProps<typeof RadioGroupPrimitive.Label>;
 // #endregion
 
-// #region Components
+// #region Parts
 export function RadioGroupRoot({
   className,
   children,
@@ -90,11 +93,7 @@ export function RadioGroupItem({
 }
 RadioGroupItem.displayName = "RadioGroup.Item";
 
-export function RadioGroupText({
-  className,
-  children,
-  ...rest
-}: ComponentProps<typeof RadioGroupPrimitive.ItemText>) {
+export function RadioGroupText({ className, children, ...rest }: RadioGroupTextProps) {
   return (
     <Field.Label asChild>
       <RadioGroupPrimitive.ItemText {...rest} className={className}>
@@ -105,10 +104,7 @@ export function RadioGroupText({
 }
 RadioGroupText.displayName = "RadioGroup.Text";
 
-export function RadioGroupLabel({
-  children,
-  ...rest
-}: ComponentProps<typeof RadioGroupPrimitive.Label>) {
+export function RadioGroupLabel({ children, ...rest }: RadioGroupLabelProps) {
   return (
     <Field.Label asChild>
       <RadioGroupPrimitive.Label {...rest}>{children}</RadioGroupPrimitive.Label>
@@ -116,7 +112,6 @@ export function RadioGroupLabel({
   );
 }
 RadioGroupLabel.displayName = "RadioGroup.Label";
-
 // #endregion
 
 // #region Shorthand
@@ -132,5 +127,4 @@ export function RadioGroupShorthand({ items = [], ...rest }: RadioGroupProps) {
   );
 }
 RadioGroupShorthand.displayName = "RadioGroup";
-
 // #endregion

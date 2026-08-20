@@ -13,10 +13,17 @@ import type { WithTestId } from "../../internal/types";
 import { InputGroup, type InputGroupButtonProps, type InputGroupProps } from "../input-group";
 
 // #region Types
-type PasswordInputRootProps = Pick<
+export type PasswordInputRootProps = Pick<
   ComponentProps<typeof PasswordInputPrimitive.Root>,
   "className" | "defaultVisible" | "invalid" | "onVisibilityChange" | "visible"
 >;
+
+export type PasswordInputVisibilityTriggerProps = Omit<
+  ComponentProps<typeof PasswordInputPrimitive.VisibilityTrigger>,
+  "asChild"
+>;
+
+export type PasswordInputIndicatorProps = ComponentProps<typeof PasswordInputPrimitive.Indicator>;
 
 export interface PasswordInputProps
   extends PasswordInputRootProps,
@@ -35,17 +42,14 @@ export interface PasswordInputProps
    */
   clearable?: boolean;
   clearButtonProps?: InputGroupButtonProps;
-  visibilityTriggerProps?: Omit<
-    ComponentProps<typeof PasswordInputPrimitive.VisibilityTrigger>,
-    "asChild"
-  >;
-  indicatorProps?: ComponentProps<typeof PasswordInputPrimitive.Indicator>;
+  visibilityTriggerProps?: PasswordInputVisibilityTriggerProps;
+  indicatorProps?: PasswordInputIndicatorProps;
   /** Called with the string value when the input changes. */
   onValueChange?: (value: string) => void;
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function PasswordInput({
   className,
   size = "md",

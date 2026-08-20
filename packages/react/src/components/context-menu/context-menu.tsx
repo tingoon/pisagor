@@ -16,19 +16,18 @@ import {
 import { useDropdownMenuRoot } from "../dropdown-menu/dropdown-menu";
 
 // #region Types
-interface ContextMenuRootProps extends DropdownMenuRootProps, WithTestId {}
+export interface ContextMenuRootProps extends DropdownMenuRootProps, WithTestId {}
+
+export type ContextMenuTriggerProps = ComponentProps<typeof MenuPrimitive.ContextTrigger>;
 // #endregion
 
-// #region Components
+// #region Parts
 export function ContextMenuRoot({ testId, ...rest }: ContextMenuRootProps) {
   return <DropdownMenu {...rest} testId={testId} />;
 }
 ContextMenuRoot.displayName = "ContextMenu";
 
-export function ContextMenuTrigger({
-  className,
-  ...rest
-}: ComponentProps<typeof MenuPrimitive.ContextTrigger>) {
+export function ContextMenuTrigger({ className, ...rest }: ContextMenuTriggerProps) {
   const { testId } = useDropdownMenuRoot() ?? {};
 
   return (
@@ -80,5 +79,4 @@ export function ContextMenuShortcut(props: DropdownMenuShortcutProps) {
   return <DropdownMenu.Shortcut dataPart="shortcut" dataScope="context-menu" {...props} />;
 }
 ContextMenuShortcut.displayName = "ContextMenu.Shortcut";
-
 // #endregion

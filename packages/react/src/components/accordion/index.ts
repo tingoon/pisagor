@@ -6,7 +6,13 @@ import {
   AccordionTrigger,
 } from "./accordion";
 
-export type { AccordionProps } from "./accordion";
+export type {
+  AccordionContentProps,
+  AccordionItemProps,
+  AccordionProps,
+  AccordionRootProps,
+  AccordionTriggerProps,
+} from "./accordion";
 
 export const Accordion = Object.assign(AccordionShorthand, {
   Content: AccordionContent,

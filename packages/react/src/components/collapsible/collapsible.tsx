@@ -12,12 +12,18 @@ import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 
 // #region Types
-interface CollapsibleRootProps
+export interface CollapsibleRootProps
   extends ComponentProps<typeof CollapsiblePrimitive.Root>,
     WithTestId {}
+
+export type CollapsibleTriggerProps = ComponentProps<typeof CollapsiblePrimitive.Trigger>;
+
+export type CollapsibleContentProps = ComponentProps<typeof CollapsiblePrimitive.Content>;
+
+export type CollapsibleIndicatorProps = ComponentProps<typeof CollapsiblePrimitive.Indicator>;
 // #endregion
 
-// #region Components
+// #region Parts
 export function CollapsibleRoot({
   collapsedHeight,
   lazyMount = true,
@@ -40,10 +46,7 @@ export function CollapsibleRoot({
 }
 CollapsibleRoot.displayName = "Collapsible";
 
-export function CollapsibleTrigger({
-  className,
-  ...rest
-}: ComponentProps<typeof CollapsiblePrimitive.Trigger>) {
+export function CollapsibleTrigger({ className, ...rest }: CollapsibleTriggerProps) {
   return (
     <CollapsiblePrimitive.Trigger
       {...rest}
@@ -53,11 +56,7 @@ export function CollapsibleTrigger({
 }
 CollapsibleTrigger.displayName = "Collapsible.Trigger";
 
-export function CollapsibleContent({
-  className,
-  children,
-  ...rest
-}: ComponentProps<typeof CollapsiblePrimitive.Content>) {
+export function CollapsibleContent({ className, children, ...rest }: CollapsibleContentProps) {
   return (
     <CollapsiblePrimitive.Content {...rest} className={cn(collapsibleContentVariants())}>
       <div className={className}>{children}</div>
@@ -66,10 +65,7 @@ export function CollapsibleContent({
 }
 CollapsibleContent.displayName = "Collapsible.Content";
 
-export function CollapsibleIndicator({
-  className,
-  ...rest
-}: ComponentProps<typeof CollapsiblePrimitive.Indicator>) {
+export function CollapsibleIndicator({ className, ...rest }: CollapsibleIndicatorProps) {
   return (
     <CollapsiblePrimitive.Indicator
       {...rest}

@@ -15,6 +15,17 @@ import {
   TimerStart,
 } from "./timer";
 
+export type {
+  TimerActionProps,
+  TimerActionTriggerProps,
+  TimerAreaProps,
+  TimerControlProps,
+  TimerItemGroupProps,
+  TimerItemProps,
+  TimerRootProps,
+  TimerSeparatorProps,
+} from "./timer";
+
 export const Timer = Object.assign(TimerRoot, {
   ActionTrigger: TimerActionTrigger,
   Area: TimerArea,

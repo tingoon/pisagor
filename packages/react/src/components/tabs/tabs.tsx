@@ -10,10 +10,6 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { WithTestId } from "../../internal/types";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 interface TabItem {
   value: string;
@@ -22,15 +18,20 @@ interface TabItem {
   disabled?: boolean;
 }
 
-interface TabsListProps extends ComponentProps<typeof TabsPrimitive.List>, TabsListVariantProps {}
+export interface TabsListProps
+  extends ComponentProps<typeof TabsPrimitive.List>,
+    TabsListVariantProps {}
 
-interface TabsRootProps extends ComponentProps<typeof TabsPrimitive.Root>, WithTestId {
+export interface TabsRootProps extends ComponentProps<typeof TabsPrimitive.Root>, WithTestId {
   tabs?: TabItem[];
 }
 
+export type TabsTriggerProps = ComponentProps<typeof TabsPrimitive.Trigger>;
+
+export type TabsContentProps = ComponentProps<typeof TabsPrimitive.Content>;
 // #endregion
 
-// #region Components
+// #region Parts
 export function TabsRoot({
   lazyMount = true,
   unmountOnExit = true,
@@ -81,12 +82,12 @@ export function TabsList({ variant = "default", className, children, ...rest }: 
 }
 TabsList.displayName = "Tabs.List";
 
-export function TabsTrigger({ className, ...rest }: ComponentProps<typeof TabsPrimitive.Trigger>) {
+export function TabsTrigger({ className, ...rest }: TabsTriggerProps) {
   return <TabsPrimitive.Trigger {...rest} className={cn(tabsTriggerVariants(), className)} />;
 }
 TabsTrigger.displayName = "Tabs.Trigger";
 
-export function TabsContent({ className, ...rest }: ComponentProps<typeof TabsPrimitive.Content>) {
+export function TabsContent({ className, ...rest }: TabsContentProps) {
   return <TabsPrimitive.Content {...rest} className={cn(tabsContentVariants(), className)} />;
 }
 TabsContent.displayName = "Tabs.Content";

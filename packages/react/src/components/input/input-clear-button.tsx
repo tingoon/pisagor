@@ -9,7 +9,9 @@ import {
 interface InputClearButtonProps extends InputGroupButtonProps {
   onClear: () => void;
 }
+// #endregion
 
+// #region Parts
 export function InputClearButton({ onClear, ...rest }: InputClearButtonProps) {
   return (
     <InputGroupButton

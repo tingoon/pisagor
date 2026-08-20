@@ -13,6 +13,19 @@ import {
   StepsTrigger,
 } from "./steps";
 
+export type {
+  StepsCompletedContentProps,
+  StepsContentProps,
+  StepsIndicatorProps,
+  StepsItemProps,
+  StepsListProps,
+  StepsNextProps,
+  StepsPreviousProps,
+  StepsRootProps,
+  StepsSeparatorProps,
+  StepsTriggerProps,
+} from "./steps";
+
 export const Steps = Object.assign(StepsRoot, {
   CompletedContent: StepsCompletedContent,
   Content: StepsContent,

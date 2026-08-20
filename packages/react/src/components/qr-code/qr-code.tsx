@@ -10,10 +10,16 @@ import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 
 // #region Types
-interface QrCodeRootProps extends ComponentProps<typeof QrCodePrimitive.Root>, WithTestId {}
+export type QrCodeRootProps = ComponentProps<typeof QrCodePrimitive.Root> & WithTestId;
+
+export type QrCodeFrameProps = ComponentProps<typeof QrCodePrimitive.Frame>;
+
+export type QrCodeOverlayProps = ComponentProps<typeof QrCodePrimitive.Overlay>;
+
+export type QrCodeDownloadProps = ComponentProps<typeof QrCodePrimitive.DownloadTrigger>;
 // #endregion
 
-// #region Components
+// #region Parts
 export function QrCodeRoot({ className, children, testId, ...rest }: QrCodeRootProps) {
   return (
     <QrCodePrimitive.Root
@@ -27,7 +33,7 @@ export function QrCodeRoot({ className, children, testId, ...rest }: QrCodeRootP
 }
 QrCodeRoot.displayName = "QrCode";
 
-export function QrCodeFrame({ className, ...rest }: ComponentProps<typeof QrCodePrimitive.Frame>) {
+export function QrCodeFrame({ className, ...rest }: QrCodeFrameProps) {
   return (
     <QrCodePrimitive.Frame {...rest} className={cn(qrCodeFrameVariants(), className)}>
       <QrCodePrimitive.Pattern className={qrCodePatternVariants()} />
@@ -36,17 +42,13 @@ export function QrCodeFrame({ className, ...rest }: ComponentProps<typeof QrCode
 }
 QrCodeFrame.displayName = "QrCode.Frame";
 
-export function QrCodeOverlay({
-  className,
-  ...rest
-}: ComponentProps<typeof QrCodePrimitive.Overlay>) {
+export function QrCodeOverlay({ className, ...rest }: QrCodeOverlayProps) {
   return <QrCodePrimitive.Overlay {...rest} className={cn(qrCodeOverlayVariants(), className)} />;
 }
 QrCodeOverlay.displayName = "QrCode.Overlay";
 
-export function QrCodeDownload(props: ComponentProps<typeof QrCodePrimitive.DownloadTrigger>) {
+export function QrCodeDownload(props: QrCodeDownloadProps) {
   return <QrCodePrimitive.DownloadTrigger {...props} />;
 }
 QrCodeDownload.displayName = "QrCode.Download";
-
 // #endregion

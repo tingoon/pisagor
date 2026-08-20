@@ -10,10 +10,6 @@ import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils";
 import { Field } from "../field";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 interface CircularSliderContextValue {
   ringCircumference: number;
@@ -23,9 +19,11 @@ interface CircularSliderContextValue {
   thumbSize: number;
 }
 
-type CircularSliderHiddenInputProps = ComponentProps<typeof AngleSliderPrimitive.HiddenInput>;
+export type CircularSliderHiddenInputProps = ComponentProps<
+  typeof AngleSliderPrimitive.HiddenInput
+>;
 
-type CircularSliderRootProps = Omit<
+export type CircularSliderRootProps = Omit<
   ComponentProps<typeof AngleSliderPrimitive.Root>,
   "onValueChange"
 >;
@@ -41,17 +39,26 @@ export interface CircularSliderProps
   hiddenInputProps?: Omit<CircularSliderHiddenInputProps, "className">;
 }
 
-interface CircularSliderControlProps extends ComponentProps<typeof AngleSliderPrimitive.Control> {
+export interface CircularSliderControlProps
+  extends ComponentProps<typeof AngleSliderPrimitive.Control> {
   markers?: boolean | number[];
   markersAtSteps?: boolean;
   step?: number;
 }
 
-interface CircularSliderValueProps
+export interface CircularSliderValueProps
   extends Omit<ComponentProps<typeof AngleSliderPrimitive.ValueText>, "prefix"> {
   prefix?: ReactNode | string;
   suffix?: ReactNode | string;
 }
+
+export type CircularSliderThumbProps = ComponentProps<typeof AngleSliderPrimitive.Thumb>;
+
+export type CircularSliderMarkerGroupProps = ComponentProps<
+  typeof AngleSliderPrimitive.MarkerGroup
+>;
+
+export type CircularSliderMarkerProps = ComponentProps<typeof AngleSliderPrimitive.Marker>;
 // #endregion
 
 // #region Context
@@ -62,7 +69,7 @@ const [CircularSliderContext, useCircularSliderContext] = createContext<Circular
 );
 // #endregion
 
-// #region Components
+// #region Parts
 export function CircularSliderRoot({
   className,
   children,
@@ -190,10 +197,7 @@ function CircularSliderProgressRing() {
   );
 }
 
-export function CircularSliderThumb({
-  className,
-  ...rest
-}: ComponentProps<typeof AngleSliderPrimitive.Thumb>) {
+export function CircularSliderThumb({ className, ...rest }: CircularSliderThumbProps) {
   const { thumbSize, ringRadius } = _useCircularSlider();
   const slots = circularSliderVariants();
 
@@ -238,10 +242,7 @@ export function CircularSliderValue({
 }
 CircularSliderValue.displayName = "CircularSlider.Value";
 
-export function CircularSliderMarkerGroup({
-  className,
-  ...rest
-}: ComponentProps<typeof AngleSliderPrimitive.MarkerGroup>) {
+export function CircularSliderMarkerGroup({ className, ...rest }: CircularSliderMarkerGroupProps) {
   const slots = circularSliderVariants();
 
   return (
@@ -250,11 +251,7 @@ export function CircularSliderMarkerGroup({
 }
 CircularSliderMarkerGroup.displayName = "CircularSlider.MarkerGroup";
 
-export function CircularSliderMarker({
-  className,
-  style,
-  ...rest
-}: ComponentProps<typeof AngleSliderPrimitive.Marker>) {
+export function CircularSliderMarker({ className, style, ...rest }: CircularSliderMarkerProps) {
   const { size, thickness } = _useCircularSlider();
   const slots = circularSliderVariants();
 

@@ -68,11 +68,15 @@ interface CommandInputProps extends Omit<ComponentProps<typeof ComboboxPrimitive
 
 interface CommandListProps extends ComboboxListProps {}
 
+export type CommandContentProps = ComponentProps<typeof ComboboxPrimitive.Content>;
+
 export interface CommandProps<T extends CollectionItem = CollectionItem>
   extends ComboboxRootProps<T> {
   className?: string;
 }
+// #endregion
 
+// #region Parts
 export const CommandDialog = Dialog;
 CommandDialog.displayName = "Command.Dialog";
 
@@ -137,10 +141,7 @@ export function CommandRoot<T extends CollectionItem = CollectionItem>({
 }
 CommandRoot.displayName = "Command";
 
-export function CommandContent({
-  className,
-  ...rest
-}: ComponentProps<typeof ComboboxPrimitive.Content>) {
+export function CommandContent({ className, ...rest }: CommandContentProps) {
   return (
     <ComboboxPrimitive.Content {...rest} className={cn(commandContentVariants(), className)} />
   );

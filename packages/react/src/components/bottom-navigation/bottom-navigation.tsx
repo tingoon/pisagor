@@ -12,11 +12,17 @@ import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 
 // #region Types
-interface BottomNavigationProps extends ComponentProps<typeof TabsPrimitive.Root>, WithTestId {}
+export type BottomNavigationRootProps = ComponentProps<typeof TabsPrimitive.Root> & WithTestId;
+
+export type BottomNavigationProps = BottomNavigationRootProps;
+
+export type BottomNavigationListProps = ComponentProps<typeof TabsPrimitive.List>;
+
+export type BottomNavigationItemProps = ComponentProps<typeof TabsPrimitive.Trigger>;
 // #endregion
 
-// #region Components
-export function BottomNavigationRoot({ className, testId, ...rest }: BottomNavigationProps) {
+// #region Parts
+export function BottomNavigationRoot({ className, testId, ...rest }: BottomNavigationRootProps) {
   return (
     <TabsPrimitive.Root
       {...rest}
@@ -31,15 +37,12 @@ export function BottomNavigationList({
   "aria-label": ariaLabel,
   className,
   ...rest
-}: ComponentProps<typeof TabsPrimitive.List>) {
+}: BottomNavigationListProps) {
   return <TabsPrimitive.List {...rest} className={cn(bottomNavigationListVariants(), className)} />;
 }
 BottomNavigationList.displayName = "BottomNavigation.List";
 
-export function BottomNavigationItem({
-  className,
-  ...rest
-}: ComponentProps<typeof TabsPrimitive.Trigger>) {
+export function BottomNavigationItem({ className, ...rest }: BottomNavigationItemProps) {
   return (
     <TabsPrimitive.Trigger {...rest} className={cn(bottomNavigationItemVariants(), className)} />
   );

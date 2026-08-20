@@ -10,10 +10,6 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 type MenuClassNames = VariantClassNames<typeof menuVariants>;
 
@@ -45,7 +41,7 @@ interface MenuLinkProps extends ComponentProps<typeof ark.a> {
 }
 // #endregion
 
-// #region Components
+// #region Parts
 export function MenuRoot({
   "aria-label": ariaLabel = "Menu",
   className,

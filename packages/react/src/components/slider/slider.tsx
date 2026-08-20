@@ -9,24 +9,20 @@ import { useFormControlVariant } from "../../internal/form-control/use-form-cont
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 import { Field } from "../field";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
-type SliderControlProps = ComponentProps<typeof SliderPrimitive.Control>;
+export type SliderControlProps = ComponentProps<typeof SliderPrimitive.Control>;
 
-type SliderTrackProps = ComponentProps<typeof SliderPrimitive.Track>;
+export type SliderTrackProps = ComponentProps<typeof SliderPrimitive.Track>;
 
-type SliderRangeProps = ComponentProps<typeof SliderPrimitive.Range>;
+export type SliderRangeProps = ComponentProps<typeof SliderPrimitive.Range>;
 
-type SliderThumbProps = ComponentProps<typeof SliderPrimitive.Thumb>;
+export type SliderThumbProps = ComponentProps<typeof SliderPrimitive.Thumb>;
 
-type SliderValueProps = ComponentProps<typeof SliderPrimitive.ValueText>;
+export type SliderValueProps = ComponentProps<typeof SliderPrimitive.ValueText>;
 
 type SliderClassNames = VariantClassNames<typeof sliderVariants>;
 
-type SliderRootProps = Omit<ComponentProps<typeof SliderPrimitive.Root>, "onValueChange">;
+export type SliderRootProps = Omit<ComponentProps<typeof SliderPrimitive.Root>, "onValueChange">;
 
 export interface SliderProps extends SliderRootProps, WithTestId {
   /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
@@ -93,7 +89,7 @@ export interface SliderProps extends SliderRootProps, WithTestId {
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function Slider({
   variant: variantProp,
   value,

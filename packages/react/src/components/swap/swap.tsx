@@ -4,18 +4,14 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { WithTestId } from "../../internal/types";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
-type SwapOnIndicatorProps = ComponentProps<typeof SwapPrimitive.Indicator>;
+export type SwapOnIndicatorProps = ComponentProps<typeof SwapPrimitive.Indicator>;
 
-type SwapOffIndicatorProps = ComponentProps<typeof SwapPrimitive.Indicator>;
+export type SwapOffIndicatorProps = ComponentProps<typeof SwapPrimitive.Indicator>;
 
-type SwapRootProps = ComponentProps<typeof SwapPrimitive.Root>;
+export type SwapRootProps = ComponentProps<typeof SwapPrimitive.Root>;
 
-interface SwapProps extends SwapRootProps, SwapVariantProps, WithTestId {
+export interface SwapProps extends SwapRootProps, SwapVariantProps, WithTestId {
   /** Content shown when swapped on. */
   on?: ReactNode;
   /** Content shown when swapped off. */
@@ -27,7 +23,7 @@ interface SwapProps extends SwapRootProps, SwapVariantProps, WithTestId {
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function Swap({
   variant = "fade",
   className,

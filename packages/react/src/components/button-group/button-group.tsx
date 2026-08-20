@@ -10,10 +10,6 @@ import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 import { Separator, type SeparatorProps } from "../separator";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 interface ButtonGroupProps
   extends ComponentProps<typeof ark.fieldset>,
@@ -21,7 +17,7 @@ interface ButtonGroupProps
     WithTestId {}
 // #endregion
 
-// #region Components
+// #region Parts
 export function ButtonGroupRoot({ className, orientation, testId, ...rest }: ButtonGroupProps) {
   return (
     <ark.fieldset
@@ -64,5 +60,4 @@ export function ButtonGroupSeparator({
   );
 }
 ButtonGroupSeparator.displayName = "ButtonGroup.Separator";
-
 // #endregion

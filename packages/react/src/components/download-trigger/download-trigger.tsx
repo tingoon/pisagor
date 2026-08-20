@@ -8,7 +8,7 @@ interface DownloadTriggerProps
     WithTestId {}
 // #endregion
 
-// #region Component
+// #region Part
 export function DownloadTrigger({ testId, ...rest }: DownloadTriggerProps) {
   return <DownloadTriggerPrimitive {...rest} data-testid={testId} />;
 }

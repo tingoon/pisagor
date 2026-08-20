@@ -9,22 +9,21 @@ import type { FormControlVariant } from "../../internal/form-control/form-contro
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
-type RatingControlProps = ComponentProps<typeof RatingGroupPrimitive.Control>;
+export type RatingControlProps = ComponentProps<typeof RatingGroupPrimitive.Control>;
 
-type RatingItemProps = ComponentProps<typeof RatingGroupPrimitive.Item>;
+export type RatingItemProps = ComponentProps<typeof RatingGroupPrimitive.Item>;
 
-type RatingIndicatorProps = ComponentProps<"span">;
+export type RatingIndicatorProps = ComponentProps<"span">;
 
 type RatingClassNames = VariantClassNames<typeof ratingVariants>;
 
-type RatingRootProps = Omit<ComponentProps<typeof RatingGroupPrimitive.Root>, "onValueChange">;
+export type RatingRootProps = Omit<
+  ComponentProps<typeof RatingGroupPrimitive.Root>,
+  "onValueChange"
+>;
 
-interface RatingProps extends RatingRootProps, WithTestId {
+export interface RatingProps extends RatingRootProps, WithTestId {
   /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
   variant?: FormControlVariant;
   /** Slot class names */
@@ -65,7 +64,7 @@ interface RatingProps extends RatingRootProps, WithTestId {
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function Rating({
   icon = <StarIcon />,
   className,

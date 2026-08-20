@@ -48,7 +48,7 @@ export interface InputProps extends InputRootProps, InputVariantProps, WithTestI
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function Input({
   size = "md",
   variant: variantProp,

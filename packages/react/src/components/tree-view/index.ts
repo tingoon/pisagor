@@ -14,7 +14,25 @@ import {
   TreeViewTree,
 } from "./tree-view";
 
-export type { NodeProviderProps, TreeCollection, TreeNodeType } from "./tree-view";
+export type {
+  NodeProviderProps,
+  TreeCollection,
+  TreeNodeType,
+  TreeViewBranchContentProps,
+  TreeViewBranchIndentGuideProps,
+  TreeViewBranchIndicatorProps,
+  TreeViewBranchItemProps,
+  TreeViewBranchProps,
+  TreeViewBranchTitleProps,
+  TreeViewCheckboxProps,
+  TreeViewContentProps,
+  TreeViewItemProps,
+  TreeViewItemTitleProps,
+  TreeViewLabelProps,
+  TreeViewNodeInputProps,
+  TreeViewProps,
+  TreeViewTreeProps,
+} from "./tree-view";
 export {
   createFileIcons,
   createTreeCollection,

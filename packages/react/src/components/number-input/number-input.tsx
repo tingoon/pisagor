@@ -25,10 +25,14 @@ import { Field } from "../field";
 import { Input, type InputProps } from "../input";
 
 // #region Types
-export interface NumberInputProps
-  extends Omit<ComponentProps<typeof NumberInputPrimitive.Root>, "onValueChange">,
-    Pick<InputProps, "size" | "variant">,
-    WithTestId {
+export type NumberInputRootProps = Omit<
+  ComponentProps<typeof NumberInputPrimitive.Root>,
+  "onValueChange"
+> &
+  Pick<InputProps, "size" | "variant"> &
+  WithTestId;
+
+export interface NumberInputProps extends NumberInputRootProps {
   /**
    * Whether to show a clear button when the input has a value.
    *
@@ -41,14 +45,23 @@ export interface NumberInputProps
   onValueChange?: (value: number) => void;
 }
 
-interface NumberInputGroupProps extends ComponentProps<typeof NumberInputPrimitive.Control> {
+export type NumberInputGroupProps = ComponentProps<typeof NumberInputPrimitive.Control> & {
   variant?: FormControlVariant;
   clearable?: boolean;
-}
+};
 
+export type NumberInputDecrementProps = ComponentProps<
+  typeof NumberInputPrimitive.DecrementTrigger
+>;
+
+export type NumberInputIncrementProps = ComponentProps<
+  typeof NumberInputPrimitive.IncrementTrigger
+>;
+
+export type NumberInputScrubberProps = ComponentProps<typeof NumberInputPrimitive.Scrubber>;
 // #endregion
 
-// #region Components
+// #region Parts
 export function NumberInputRoot({
   size = "md",
   variant,
@@ -133,10 +146,7 @@ export function NumberInputClearTrigger() {
 }
 NumberInputClearTrigger.displayName = "NumberInput.ClearTrigger";
 
-export function NumberInputDecrement({
-  className,
-  ...rest
-}: ComponentProps<typeof NumberInputPrimitive.DecrementTrigger>) {
+export function NumberInputDecrement({ className, ...rest }: NumberInputDecrementProps) {
   return (
     <NumberInputPrimitive.DecrementTrigger
       {...rest}
@@ -151,10 +161,7 @@ export function NumberInputDecrement({
 }
 NumberInputDecrement.displayName = "NumberInput.Decrement";
 
-export function NumberInputIncrement({
-  className,
-  ...rest
-}: ComponentProps<typeof NumberInputPrimitive.IncrementTrigger>) {
+export function NumberInputIncrement({ className, ...rest }: NumberInputIncrementProps) {
   return (
     <NumberInputPrimitive.IncrementTrigger
       {...rest}
@@ -183,11 +190,7 @@ export function NumberInputInput({ size, variant, className, classNames, ...rest
 }
 NumberInputInput.displayName = "NumberInput.Input";
 
-export function NumberInputScrubber({
-  className,
-  children,
-  ...rest
-}: ComponentProps<typeof NumberInputPrimitive.Scrubber>) {
+export function NumberInputScrubber({ className, children, ...rest }: NumberInputScrubberProps) {
   return (
     <NumberInputPrimitive.Scrubber
       {...rest}

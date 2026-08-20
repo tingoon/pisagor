@@ -21,7 +21,26 @@ import {
   ColorPickerView,
 } from "./color-picker";
 
-export type { ColorPickerProps } from "./color-picker";
+export type {
+  ColorPickerAreaProps,
+  ColorPickerAreaThumbProps,
+  ColorPickerContentProps,
+  ColorPickerControlProps,
+  ColorPickerEyeDropperTriggerProps,
+  ColorPickerInputProps,
+  ColorPickerProps,
+  ColorPickerRootProps,
+  ColorPickerSliderProps,
+  ColorPickerSwatchGroupProps,
+  ColorPickerSwatchIndicatorProps,
+  ColorPickerSwatchProps,
+  ColorPickerSwatchTriggerProps,
+  ColorPickerTransparencyGridProps,
+  ColorPickerTriggerProps,
+  ColorPickerValueProps,
+  ColorPickerValueSwatchProps,
+  ColorPickerViewProps,
+} from "./color-picker";
 export { parseColor } from "./color-picker";
 
 export const ColorPicker = Object.assign(ColorPickerRoot, {

@@ -6,10 +6,6 @@ import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils";
 import { Toggle, type ToggleProps } from "../toggle";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 type ToggleGroupContextProps = Pick<ToggleProps, "variant" | "size"> & {
   /**
@@ -26,7 +22,7 @@ interface ToggleGroupPresetItem {
   disabled?: boolean;
 }
 
-type ToggleGroupRootProps = Omit<
+export type ToggleGroupRootProps = Omit<
   ComponentProps<typeof ToggleGroupPrimitive.Root>,
   "onValueChange"
 > &
@@ -39,17 +35,16 @@ export interface ToggleGroupProps extends Omit<ToggleGroupRootProps, "children">
   items?: ToggleGroupPresetItem[];
 }
 
-interface ToggleGroupItemProps extends ComponentProps<typeof ToggleGroupPrimitive.Item> {}
+export interface ToggleGroupItemProps extends ComponentProps<typeof ToggleGroupPrimitive.Item> {}
 // #endregion
 
 // #region Context
 const [ToggleGroupContext, useToggleGroupContext] = createContext<ToggleGroupContextProps>({
   name: "ToggleGroup",
 });
-
 // #endregion
 
-// #region Components
+// #region Parts
 export function ToggleGroupRoot({
   multiple = true,
   orientation = "horizontal",
@@ -101,7 +96,6 @@ export function ToggleGroupItem({ value, className, ...rest }: ToggleGroupItemPr
   );
 }
 ToggleGroupItem.displayName = "ToggleGroup.Item";
-
 // #endregion
 
 // #region Shorthand

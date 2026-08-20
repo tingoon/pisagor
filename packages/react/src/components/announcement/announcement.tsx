@@ -8,10 +8,6 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { WithTestId } from "../../internal/types";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 type AnnouncementTitleProps = ComponentProps<typeof ark.span>;
 
@@ -36,7 +32,7 @@ export interface AnnouncementProps extends Omit<AnnouncementRootProps, "children
 }
 // #endregion
 
-// #region Components
+// #region Parts
 export function AnnouncementRoot({
   className,
   role = "status",
@@ -67,7 +63,6 @@ export function AnnouncementTitle({ className, ...rest }: AnnouncementTitleProps
   );
 }
 AnnouncementTitle.displayName = "Announcement.Title";
-
 // #endregion
 
 // #region Shorthand
@@ -81,5 +76,4 @@ export function AnnouncementShorthand({ badge, title, titleProps, ...rest }: Ann
   );
 }
 AnnouncementShorthand.displayName = "Announcement";
-
 // #endregion

@@ -30,7 +30,7 @@ export interface SkipNavContentProps extends ComponentProps<typeof ark.div>, Wit
 }
 // #endregion
 
-// #region Components
+// #region Parts
 const SKIP_NAV_ID = "skip-nav-content";
 
 export function SkipNavLink({

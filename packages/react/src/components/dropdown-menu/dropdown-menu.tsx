@@ -24,10 +24,6 @@ import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 export interface DropdownMenuGroupProps extends ComponentProps<typeof MenuPrimitive.ItemGroup> {
   /** The heading of the menu item group. */
@@ -38,7 +34,8 @@ export interface DropdownMenuItemProps
   extends ComponentProps<typeof MenuPrimitive.Item>,
     DropdownMenuItemVariantProps {}
 
-interface DropdownMenuRadioGroupProps extends ComponentProps<typeof MenuPrimitive.RadioItemGroup> {
+export interface DropdownMenuRadioGroupProps
+  extends ComponentProps<typeof MenuPrimitive.RadioItemGroup> {
   /** The heading of the menu radio item group. */
   heading?: string;
 }
@@ -47,6 +44,23 @@ export interface DropdownMenuRootProps
   extends ComponentProps<typeof MenuPrimitive.Root>,
     WithTestId {}
 
+export type DropdownMenuTriggerProps = ComponentProps<typeof MenuPrimitive.Trigger>;
+
+export type DropdownMenuPositionerProps = ComponentProps<typeof MenuPrimitive.Positioner>;
+
+export type DropdownMenuCheckboxItemProps = ComponentProps<typeof MenuPrimitive.CheckboxItem>;
+
+export type DropdownMenuGroupLabelProps = ComponentProps<typeof MenuPrimitive.ItemGroupLabel>;
+
+export type DropdownMenuRadioItemProps = ComponentProps<typeof MenuPrimitive.RadioItem>;
+
+export type DropdownMenuSubContentProps = ComponentProps<typeof MenuPrimitive.Content>;
+
+export type DropdownMenuArrowProps = ComponentProps<typeof MenuPrimitive.Arrow>;
+
+export type DropdownMenuSeparatorProps = ComponentProps<typeof MenuPrimitive.Separator>;
+
+export type DropdownMenuSubTriggerProps = ComponentProps<typeof MenuPrimitive.TriggerItem>;
 // #endregion
 
 // #region Context
@@ -56,10 +70,9 @@ const [DropdownMenuRootContext, useDropdownMenuRoot] = createContext<{ testId?: 
 });
 
 export { useDropdownMenuRoot };
-
 // #endregion
 
-// #region Components
+// #region Parts
 export function DropdownMenuRoot({
   lazyMount = true,
   positioning = { placement: "bottom-end" },
@@ -82,17 +95,14 @@ export function DropdownMenuRoot({
 }
 DropdownMenuRoot.displayName = "DropdownMenu";
 
-export function DropdownMenuTrigger(props: ComponentProps<typeof MenuPrimitive.Trigger>) {
+export function DropdownMenuTrigger(props: DropdownMenuTriggerProps) {
   const { testId } = useDropdownMenuRoot() ?? {};
 
   return <MenuPrimitive.Trigger data-testid={testId} {...props} />;
 }
 DropdownMenuTrigger.displayName = "DropdownMenu.Trigger";
 
-export function DropdownMenuPositioner({
-  className,
-  ...rest
-}: ComponentProps<typeof MenuPrimitive.Positioner>) {
+export function DropdownMenuPositioner({ className, ...rest }: DropdownMenuPositionerProps) {
   return (
     <MenuPrimitive.Positioner
       {...rest}
@@ -127,8 +137,6 @@ export function DropdownMenuGroup({ heading, children, ...rest }: DropdownMenuGr
   );
 }
 DropdownMenuGroup.displayName = "DropdownMenu.Group";
-
-export type DropdownMenuSeparatorProps = ComponentProps<typeof MenuPrimitive.Separator>;
 
 export function DropdownMenuSeparator({ className, ...rest }: DropdownMenuSeparatorProps) {
   return (
@@ -174,7 +182,7 @@ export function DropdownMenuCheckboxItem({
   className,
   children,
   ...rest
-}: ComponentProps<typeof MenuPrimitive.CheckboxItem>) {
+}: DropdownMenuCheckboxItemProps) {
   return (
     <MenuPrimitive.CheckboxItem
       {...rest}
@@ -211,10 +219,7 @@ export function DropdownMenuRadioGroup({
 }
 DropdownMenuRadioGroup.displayName = "DropdownMenu.RadioGroup";
 
-export function DropdownMenuGroupLabel({
-  className,
-  ...rest
-}: ComponentProps<typeof MenuPrimitive.ItemGroupLabel>) {
+export function DropdownMenuGroupLabel({ className, ...rest }: DropdownMenuGroupLabelProps) {
   return (
     <MenuPrimitive.ItemGroupLabel
       {...rest}
@@ -228,7 +233,7 @@ export function DropdownMenuRadioItem({
   className,
   children,
   ...rest
-}: ComponentProps<typeof MenuPrimitive.RadioItem>) {
+}: DropdownMenuRadioItemProps) {
   return (
     <MenuPrimitive.RadioItem
       {...rest}
@@ -255,10 +260,7 @@ export function DropdownMenuSub(props: DropdownMenuRootProps) {
 }
 DropdownMenuSub.displayName = "DropdownMenu.Sub";
 
-export function DropdownMenuSubContent({
-  className,
-  ...rest
-}: ComponentProps<typeof MenuPrimitive.Content>) {
+export function DropdownMenuSubContent({ className, ...rest }: DropdownMenuSubContentProps) {
   return (
     <Portal>
       <DropdownMenuPositioner>
@@ -268,8 +270,6 @@ export function DropdownMenuSubContent({
   );
 }
 DropdownMenuSubContent.displayName = "DropdownMenu.SubContent";
-
-export type DropdownMenuSubTriggerProps = ComponentProps<typeof MenuPrimitive.TriggerItem>;
 
 export function DropdownMenuSubTrigger({
   className,
@@ -313,7 +313,7 @@ export function DropdownMenuShortcut({
 }
 DropdownMenuShortcut.displayName = "DropdownMenu.Shortcut";
 
-export function DropdownMenuArrow({ style, ...rest }: ComponentProps<typeof MenuPrimitive.Arrow>) {
+export function DropdownMenuArrow({ style, ...rest }: DropdownMenuArrowProps) {
   return (
     <MenuPrimitive.Arrow
       {...rest}
@@ -329,5 +329,4 @@ export function DropdownMenuArrow({ style, ...rest }: ComponentProps<typeof Menu
   );
 }
 DropdownMenuArrow.displayName = "DropdownMenu.Arrow";
-
 // #endregion

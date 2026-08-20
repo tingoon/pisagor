@@ -5,10 +5,6 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactElement, ReactNode } from "react";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 export type TooltipContentProps = ComponentProps<typeof TooltipPrimitive.Content>;
 
@@ -18,15 +14,15 @@ export type TooltipTriggerHandleProps = ReturnType<TooltipContextApi["getTrigger
 
 export type TooltipTriggerHandle = (props: TooltipTriggerHandleProps) => ReactElement;
 
-type TooltipTriggerProps = ComponentProps<typeof TooltipPrimitive.Trigger>;
+export type TooltipTriggerProps = ComponentProps<typeof TooltipPrimitive.Trigger>;
 
-type TooltipPositionerProps = ComponentProps<typeof TooltipPrimitive.Positioner>;
+export type TooltipPositionerProps = ComponentProps<typeof TooltipPrimitive.Positioner>;
 
-type TooltipArrowProps = ComponentProps<typeof TooltipPrimitive.Arrow>;
+export type TooltipArrowProps = ComponentProps<typeof TooltipPrimitive.Arrow>;
 
 type TooltipClassNames = VariantClassNames<typeof tooltipVariants>;
 
-type TooltipRootProps = Omit<ComponentProps<typeof TooltipPrimitive.Root>, "children">;
+export type TooltipRootProps = Omit<ComponentProps<typeof TooltipPrimitive.Root>, "children">;
 
 export interface TooltipProps extends TooltipRootProps, WithTestId {
   /** Slot class names */
@@ -46,7 +42,7 @@ export interface TooltipProps extends TooltipRootProps, WithTestId {
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function Tooltip({
   content,
   children,

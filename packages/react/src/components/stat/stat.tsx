@@ -9,10 +9,6 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 type StatLabelProps = ComponentProps<typeof ark.div>;
 
@@ -54,7 +50,7 @@ interface StatPartProps extends ComponentProps<typeof ark.div> {
 }
 // #endregion
 
-// #region Components
+// #region Parts
 export function StatRoot({ variant, className, classNames, testId, ...rest }: StatRootProps) {
   const slots = statVariants({ variant });
 
@@ -125,7 +121,6 @@ export function StatTrend({ trend = "neutral", className, ...rest }: StatTrendPr
   );
 }
 StatTrend.displayName = "Stat.Trend";
-
 // #endregion
 
 // #region Shorthand

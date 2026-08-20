@@ -6,10 +6,6 @@ import { useMemo } from "react";
 import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils/create-context";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 
 export type SurfaceVariant = NonNullable<SurfaceVariantProps["variant"]>;
@@ -47,7 +43,7 @@ export interface SurfaceProps
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function Surface({
   variant: variantProp,
   padding,

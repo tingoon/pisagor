@@ -13,6 +13,19 @@ import {
   PopoverTrigger,
 } from "./popover";
 
+export type {
+  PopoverAnchorProps,
+  PopoverArrowProps,
+  PopoverCloseProps,
+  PopoverContentProps,
+  PopoverDescriptionProps,
+  PopoverHeaderProps,
+  PopoverPositionerProps,
+  PopoverRootProps,
+  PopoverTitleProps,
+  PopoverTriggerProps,
+} from "./popover";
+
 export const Popover = Object.assign(PopoverRoot, {
   Anchor: PopoverAnchor,
   Arrow: PopoverArrow,

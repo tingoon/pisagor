@@ -4,10 +4,6 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 
 type StatusRootProps = ComponentProps<typeof ark.span>;
@@ -15,7 +11,7 @@ type StatusRootProps = ComponentProps<typeof ark.span>;
 interface StatusProps extends StatusRootProps, StatusVariantProps, WithTestId {}
 // #endregion
 
-// #region Component
+// #region Part
 export function Status({ variant, size, className, testId, ...rest }: StatusProps) {
   return (
     <ark.span

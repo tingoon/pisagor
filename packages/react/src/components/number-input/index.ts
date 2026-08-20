@@ -8,7 +8,14 @@ import {
   NumberInputScrubber,
 } from "./number-input";
 
-export type { NumberInputProps } from "./number-input";
+export type {
+  NumberInputDecrementProps,
+  NumberInputGroupProps,
+  NumberInputIncrementProps,
+  NumberInputProps,
+  NumberInputRootProps,
+  NumberInputScrubberProps,
+} from "./number-input";
 
 export const NumberInput = Object.assign(NumberInputRoot, {
   ClearTrigger: NumberInputClearTrigger,

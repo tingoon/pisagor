@@ -14,14 +14,10 @@ import type { VariantClassNames, WithTestId } from "../../internal/types";
 import { Input } from "../input";
 import { InputGroupAddon, InputGroupRoot } from "../input-group/input-group-core";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 type TextareaClassNames = VariantClassNames<typeof textareaVariants>;
 
-type TextareaRootProps = ComponentProps<typeof FieldPrimitive.Textarea>;
+export type TextareaRootProps = ComponentProps<typeof FieldPrimitive.Textarea>;
 
 export interface TextareaProps extends TextareaRootProps, WithTestId {
   /**
@@ -41,7 +37,7 @@ export interface TextareaProps extends TextareaRootProps, WithTestId {
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function Textarea({
   variant: variantProp,
   clearable = false,

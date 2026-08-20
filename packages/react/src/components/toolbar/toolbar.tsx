@@ -4,10 +4,6 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 type ToolbarTitleProps = ComponentProps<typeof ark.h2>;
 
@@ -44,7 +40,7 @@ interface ToolbarPartProps extends ComponentProps<typeof ark.div> {
 }
 // #endregion
 
-// #region Components
+// #region Parts
 export function ToolbarRoot({ className, classNames, testId, ...rest }: ToolbarRootProps) {
   const slots = toolbarVariants();
 
@@ -115,7 +111,6 @@ export function ToolbarActions({ className, classNames, ...rest }: ToolbarPartPr
   );
 }
 ToolbarActions.displayName = "Toolbar.Actions";
-
 // #endregion
 
 // #region Shorthand

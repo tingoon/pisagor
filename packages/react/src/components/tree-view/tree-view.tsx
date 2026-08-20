@@ -33,10 +33,6 @@ import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils";
 import { checkboxVariants } from "../checkbox";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 export interface TreeNodeType<T = unknown> {
   children?: TreeNodeType<T>[] | undefined;
@@ -61,11 +57,12 @@ export interface TreeViewProps
 export interface NodeProviderProps<T extends TreeNodeType = TreeNodeType>
   extends TreeViewPrimitive.NodeProviderProps<T> {}
 
-interface TreeViewBranchItemProps
+export interface TreeViewBranchItemProps
   extends ComponentProps<typeof TreeViewPrimitive.BranchControl>,
     Pick<TreeViewBranchTitleProps, "icon" | "expandedIcon"> {}
 
-interface TreeViewBranchTitleProps extends ComponentProps<typeof TreeViewPrimitive.BranchText> {
+export interface TreeViewBranchTitleProps
+  extends ComponentProps<typeof TreeViewPrimitive.BranchText> {
   /**
    * Custom expanded icon
    *
@@ -80,9 +77,9 @@ interface TreeViewBranchTitleProps extends ComponentProps<typeof TreeViewPrimiti
   icon?: JSX.ElementType | null;
 }
 
-interface TreeViewItemTitleProps extends ComponentProps<typeof TreeViewPrimitive.ItemText> {}
+export interface TreeViewItemTitleProps extends ComponentProps<typeof TreeViewPrimitive.ItemText> {}
 
-interface TreeViewItemProps extends TreeViewItemTitleProps {
+export interface TreeViewItemProps extends TreeViewItemTitleProps {
   /**
    * Custom file icon
    *
@@ -91,17 +88,34 @@ interface TreeViewItemProps extends TreeViewItemTitleProps {
   icon?: JSX.ElementType;
 }
 
-type CreateFileIconsArgs = Record<`.${string}`, JSX.ElementType | null>;
+export type TreeViewLabelProps = ComponentProps<typeof TreeViewPrimitive.Label>;
+
+export type TreeViewTreeProps = ComponentProps<typeof TreeViewPrimitive.Tree>;
+
+export type TreeViewBranchProps = ComponentProps<typeof TreeViewPrimitive.Branch>;
+
+export type TreeViewBranchIndicatorProps = ComponentProps<typeof TreeViewPrimitive.BranchIndicator>;
+
+export type TreeViewBranchContentProps = ComponentProps<typeof TreeViewPrimitive.BranchContent>;
+
+export type TreeViewBranchIndentGuideProps = ComponentProps<
+  typeof TreeViewPrimitive.BranchIndentGuide
+>;
+
+export type TreeViewContentProps = ComponentProps<typeof TreeViewPrimitive.Item>;
+
+export type TreeViewCheckboxProps = ComponentProps<typeof TreeViewPrimitive.NodeCheckbox>;
+
+export type TreeViewNodeInputProps = ComponentProps<typeof TreeViewPrimitive.NodeRenameInput>;
 // #endregion
 
 // #region Context
 const [TreeViewContext, useTreeViewLocalContext] = createContext<TreeViewContextProps>({
   name: "TreeViewLocal",
 });
-
 // #endregion
 
-// #region Components
+// #region Parts
 export const createTreeCollection = <T extends TreeNodeType>(
   options: Parameters<typeof arkCreateTreeCollection<T>>[0],
 ) =>
@@ -133,18 +147,12 @@ export function TreeViewRoot({
 }
 TreeViewRoot.displayName = "TreeView";
 
-export function TreeViewLabel({
-  className,
-  ...rest
-}: ComponentProps<typeof TreeViewPrimitive.Label>) {
+export function TreeViewLabel({ className, ...rest }: TreeViewLabelProps) {
   return <TreeViewPrimitive.Label {...rest} className={cn(treeViewLabelVariants(), className)} />;
 }
 TreeViewLabel.displayName = "TreeView.Label";
 
-export function TreeViewTree({
-  className,
-  ...rest
-}: ComponentProps<typeof TreeViewPrimitive.Tree>) {
+export function TreeViewTree({ className, ...rest }: TreeViewTreeProps) {
   return <TreeViewPrimitive.Tree {...rest} className={cn(treeViewTreeVariants(), className)} />;
 }
 TreeViewTree.displayName = "TreeView.Tree";
@@ -154,7 +162,7 @@ export const TreeViewNode = <T extends TreeNodeType>(props: NodeProviderProps<T>
 );
 TreeViewNode.displayName = "TreeView.Node";
 
-export function TreeViewBranch(props: ComponentProps<typeof TreeViewPrimitive.Branch>) {
+export function TreeViewBranch(props: TreeViewBranchProps) {
   return <TreeViewPrimitive.Branch className={cn(treeViewBranchVariants())} {...props} />;
 }
 TreeViewBranch.displayName = "TreeView.Branch";
@@ -212,10 +220,7 @@ function TreeViewBranchTitle({
   );
 }
 
-export function TreeViewBranchIndicator({
-  className,
-  ...rest
-}: ComponentProps<typeof TreeViewPrimitive.BranchIndicator>) {
+export function TreeViewBranchIndicator({ className, ...rest }: TreeViewBranchIndicatorProps) {
   return (
     <TreeViewPrimitive.BranchIndicator
       {...rest}
@@ -231,7 +236,7 @@ export function TreeViewBranchContent({
   className,
   children,
   ...rest
-}: ComponentProps<typeof TreeViewPrimitive.BranchContent>) {
+}: TreeViewBranchContentProps) {
   return (
     <TreeViewPrimitive.BranchContent
       {...rest}
@@ -245,10 +250,7 @@ export function TreeViewBranchContent({
 }
 TreeViewBranchContent.displayName = "TreeView.BranchContent";
 
-function TreeViewBranchIndentGuide({
-  className,
-  ...rest
-}: ComponentProps<typeof TreeViewPrimitive.BranchIndentGuide>) {
+function TreeViewBranchIndentGuide({ className, ...rest }: TreeViewBranchIndentGuideProps) {
   return (
     <TreeViewPrimitive.BranchIndentGuide
       {...rest}
@@ -257,10 +259,7 @@ function TreeViewBranchIndentGuide({
   );
 }
 
-export function TreeViewContent({
-  className,
-  ...rest
-}: ComponentProps<typeof TreeViewPrimitive.Item>) {
+export function TreeViewContent({ className, ...rest }: TreeViewContentProps) {
   return <TreeViewPrimitive.Item {...rest} className={cn(treeViewControlVariants(), className)} />;
 }
 TreeViewContent.displayName = "TreeView.Content";
@@ -320,10 +319,7 @@ function TreeViewItemTitle({ className, ...rest }: TreeViewItemTitleProps) {
   );
 }
 
-export function TreeViewCheckbox({
-  className,
-  ...rest
-}: ComponentProps<typeof TreeViewPrimitive.NodeCheckbox>) {
+export function TreeViewCheckbox({ className, ...rest }: TreeViewCheckboxProps) {
   return (
     <TreeViewPrimitive.NodeCheckbox
       {...rest}
@@ -337,10 +333,7 @@ export function TreeViewCheckbox({
 }
 TreeViewCheckbox.displayName = "TreeView.Checkbox";
 
-function TreeViewNodeInput({
-  className,
-  ...rest
-}: ComponentProps<typeof TreeViewPrimitive.NodeRenameInput>) {
+function TreeViewNodeInput({ className, ...rest }: TreeViewNodeInputProps) {
   return (
     <TreeViewPrimitive.NodeRenameInput
       {...rest}
@@ -349,6 +342,8 @@ function TreeViewNodeInput({
   );
 }
 
+type CreateFileIconsArgs = Record<`.${string}`, JSX.ElementType | null>;
+
 export const createFileIcons = (args: CreateFileIconsArgs) => ({ ...args });
 
 const getFileExtension = (file: string) => {
@@ -356,5 +351,4 @@ const getFileExtension = (file: string) => {
 
   return name ? `.${name}` : null;
 };
-
 // #endregion

@@ -16,6 +16,23 @@ import {
   FloatingPanelTrigger,
 } from "./floating-panel";
 
+export type {
+  FloatingPanelBodyProps,
+  FloatingPanelCloseTriggerProps,
+  FloatingPanelContentProps,
+  FloatingPanelControlProps,
+  FloatingPanelDragTriggerProps,
+  FloatingPanelHeaderProps,
+  FloatingPanelMaximizeProps,
+  FloatingPanelMinimizeProps,
+  FloatingPanelResizeTriggerProps,
+  FloatingPanelRestoreProps,
+  FloatingPanelRootProps,
+  FloatingPanelStageTriggerProps,
+  FloatingPanelTitleProps,
+  FloatingPanelTriggerProps,
+} from "./floating-panel";
+
 export const FloatingPanel = Object.assign(FloatingPanelRoot, {
   Body: FloatingPanelBody,
   CloseTrigger: FloatingPanelCloseTrigger,

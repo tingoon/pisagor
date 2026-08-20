@@ -17,20 +17,25 @@ import { useFormControlVariant } from "../../internal/form-control/use-form-cont
 import type { WithTestId } from "../../internal/types";
 
 // #region Types
-interface CheckboxGroupProps
-  extends Omit<ComponentProps<typeof CheckboxPrimitive.Group>, "onValueChange"> {
+export type CheckboxGroupProps = Omit<
+  ComponentProps<typeof CheckboxPrimitive.Group>,
+  "onValueChange"
+> & {
   onValueChange?: (value: string[]) => void;
-}
+};
 
-export interface CheckboxProps extends ComponentProps<typeof CheckboxPrimitive.Root>, WithTestId {
+export type CheckboxRootProps = ComponentProps<typeof CheckboxPrimitive.Root> & WithTestId;
+
+export interface CheckboxProps extends CheckboxRootProps {
   /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
   variant?: FormControlVariant;
   onValueChange?: (value: boolean) => void;
 }
 
+type CheckboxIndicatorProps = ComponentProps<typeof CheckboxPrimitive.Indicator>;
 // #endregion
 
-// #region Components
+// #region Parts
 export function CheckboxGroup({ className, onValueChange, ...rest }: CheckboxGroupProps) {
   return (
     <CheckboxPrimitive.Group
@@ -93,10 +98,7 @@ export function CheckboxRoot({
 }
 CheckboxRoot.displayName = "Checkbox";
 
-function CheckboxIndicator({
-  className,
-  ...rest
-}: ComponentProps<typeof CheckboxPrimitive.Indicator>) {
+function CheckboxIndicator({ className, ...rest }: CheckboxIndicatorProps) {
   return (
     <CheckboxPrimitive.Indicator {...rest} className={cn(checkboxIndicatorVariants(), className)} />
   );
@@ -105,5 +107,4 @@ CheckboxIndicator.displayName = "Checkbox.Indicator";
 
 // Keep export for backwards compatibility
 export const checkboxVariants = formControlToggleVariants;
-
 // #endregion

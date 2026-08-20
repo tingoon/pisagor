@@ -15,10 +15,6 @@ import type { ComponentProps, ReactNode } from "react";
 import type { WithTestId } from "../../internal/types";
 import { Format } from "../format";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 
 export interface FileRootProps
@@ -60,7 +56,7 @@ export interface FileProps extends Omit<FileRootProps, "children" | "title"> {
 }
 // #endregion
 
-// #region Components
+// #region Parts
 export function FileRoot({ className, testId, ...rest }: FileRootProps) {
   return (
     <ark.div
@@ -150,7 +146,6 @@ export function FileActions({ className, ...rest }: FileActionsProps) {
   );
 }
 FileActions.displayName = "File.Actions";
-
 // #endregion
 
 // #region Shorthand

@@ -15,7 +15,7 @@ import {
   CommandShortcut,
 } from "./command";
 
-export type { CommandProps } from "./command";
+export type { CommandContentProps, CommandProps } from "./command";
 
 export const Command = Object.assign(CommandRoot, {
   Content: CommandContent,

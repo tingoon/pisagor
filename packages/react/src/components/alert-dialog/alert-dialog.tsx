@@ -9,13 +9,13 @@ import {
   type DialogDescriptionProps,
   type DialogFooterProps,
   type DialogHeaderProps,
-  type DialogProps,
+  type DialogRootProps,
   type DialogTitleProps,
   type DialogTriggerProps,
 } from "../dialog";
 
 // #region Types
-interface AlertDialogRootProps extends DialogProps {}
+interface AlertDialogRootProps extends DialogRootProps {}
 
 interface AlertDialogActionProps extends DialogCloseProps, Omit<ButtonProps, "variant"> {
   /**
@@ -27,7 +27,9 @@ interface AlertDialogActionProps extends DialogCloseProps, Omit<ButtonProps, "va
 }
 
 interface AlertDialogCancelProps extends DialogCloseProps, Omit<ButtonProps, "variant"> {}
+// #endregion
 
+// #region Parts
 export function AlertDialogRoot({ children, ...rest }: AlertDialogRootProps) {
   return (
     <Dialog {...rest} role="alertdialog">
@@ -97,5 +99,4 @@ export function AlertDialogCancel(props: AlertDialogCancelProps) {
   );
 }
 AlertDialogCancel.displayName = "AlertDialog.Cancel";
-
 // #endregion

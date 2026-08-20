@@ -125,7 +125,7 @@ export function useSortable() {
 }
 // #endregion
 
-// #region Components
+// #region Parts
 export function SortableRoot({
   items,
   onValueChange,

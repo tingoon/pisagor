@@ -13,7 +13,7 @@ import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 
 // #region Types
-type ImageCropperProps = Omit<
+export type ImageCropperRootProps = Omit<
   ComponentProps<typeof ImageCropperPrimitive.Root>,
   "src" | "cropShape"
 > &
@@ -31,7 +31,13 @@ type ImageCropperProps = Omit<
     cropShape?: "rectangle" | "circle";
   };
 
-interface ImageCropperSelectionProps
+export type ImageCropperImageProps = ComponentProps<typeof ImageCropperPrimitive.Image>;
+
+export type ImageCropperHandleProps = ComponentProps<typeof ImageCropperPrimitive.Handle>;
+
+export type ImageCropperGridProps = ComponentProps<typeof ImageCropperPrimitive.Grid>;
+
+export interface ImageCropperSelectionProps
   extends ComponentProps<typeof ImageCropperPrimitive.Selection> {
   /**
    * The axis of the grid to show.
@@ -40,10 +46,9 @@ interface ImageCropperSelectionProps
    */
   axis?: "horizontal" | "vertical" | "both";
 }
-
 // #endregion
 
-// #region Components
+// #region Parts
 export function ImageCropperRoot({
   className,
   children,
@@ -52,7 +57,7 @@ export function ImageCropperRoot({
   cropShape,
   testId,
   ...rest
-}: ImageCropperProps) {
+}: ImageCropperRootProps) {
   return (
     <ImageCropperPrimitive.Root
       className={cn(imageCropperVariants(), className, { ...rest })}
@@ -74,10 +79,7 @@ export function ImageCropperRoot({
 }
 ImageCropperRoot.displayName = "ImageCropper";
 
-export function ImageCropperImage({
-  className,
-  ...rest
-}: ComponentProps<typeof ImageCropperPrimitive.Image>) {
+export function ImageCropperImage({ className, ...rest }: ImageCropperImageProps) {
   return (
     <ImageCropperPrimitive.Image {...rest} className={cn(imageCropperImageVariants(), className)} />
   );
@@ -113,10 +115,7 @@ export function ImageCropperSelection({
 }
 ImageCropperSelection.displayName = "ImageCropper.Selection";
 
-export function ImageCropperHandle({
-  className,
-  ...rest
-}: ComponentProps<typeof ImageCropperPrimitive.Handle>) {
+export function ImageCropperHandle({ className, ...rest }: ImageCropperHandleProps) {
   return (
     <ImageCropperPrimitive.Handle {...rest} className={cn(imageCropperHandleVariants(), className)}>
       <span aria-hidden className={imageCropperInlineVariants()} />
@@ -125,10 +124,7 @@ export function ImageCropperHandle({
 }
 ImageCropperHandle.displayName = "ImageCropper.Handle";
 
-export function ImageCropperGrid({
-  className,
-  ...rest
-}: ComponentProps<typeof ImageCropperPrimitive.Grid>) {
+export function ImageCropperGrid({ className, ...rest }: ImageCropperGridProps) {
   return (
     <ImageCropperPrimitive.Grid {...rest} className={cn(imageCropperGridVariants(), className)} />
   );

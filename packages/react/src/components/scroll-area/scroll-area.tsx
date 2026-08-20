@@ -4,22 +4,18 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
-type ScrollAreaViewportProps = ComponentProps<typeof ScrollAreaPrimitive.Viewport>;
+export type ScrollAreaViewportProps = ComponentProps<typeof ScrollAreaPrimitive.Viewport>;
 
-type ScrollAreaScrollbarProps = ComponentProps<typeof ScrollAreaPrimitive.Scrollbar>;
+export type ScrollAreaScrollbarProps = ComponentProps<typeof ScrollAreaPrimitive.Scrollbar>;
 
-type ScrollAreaThumbProps = ComponentProps<typeof ScrollAreaPrimitive.Thumb>;
+export type ScrollAreaThumbProps = ComponentProps<typeof ScrollAreaPrimitive.Thumb>;
 
 type ScrollAreaClassNames = VariantClassNames<typeof scrollAreaVariants>;
 
-type ScrollAreaRootProps = ComponentProps<typeof ScrollAreaPrimitive.Root>;
+export type ScrollAreaRootProps = ComponentProps<typeof ScrollAreaPrimitive.Root>;
 
-interface ScrollAreaProps extends ScrollAreaRootProps, ScrollAreaVariantProps, WithTestId {
+export interface ScrollAreaProps extends ScrollAreaRootProps, ScrollAreaVariantProps, WithTestId {
   /** Slot class names */
   classNames?: ScrollAreaClassNames;
   /** Extra props forwarded to the scroll area viewport element */
@@ -38,7 +34,7 @@ interface ScrollAreaScrollbarSlotProps {
 }
 // #endregion
 
-// #region Components
+// #region Parts
 function ScrollAreaRoot({
   scrollFade = false,
   className,

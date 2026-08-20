@@ -39,7 +39,43 @@ import type { WithTestId } from "../../internal/types";
 import { Button, type ButtonProps } from "../button";
 
 // #region Types
-interface CalendarWeekDaysProps extends ComponentProps<typeof CalendarPrimitive.TableHead> {
+export type CalendarControlProps = ComponentProps<typeof CalendarPrimitive.Control>;
+
+export type CalendarLabelProps = ComponentProps<typeof CalendarPrimitive.Label>;
+
+export type CalendarTriggerProps = ComponentProps<typeof CalendarPrimitive.Trigger>;
+
+export type CalendarPresetTriggerProps = ComponentProps<typeof CalendarPrimitive.PresetTrigger>;
+
+export type CalendarViewDateProps = ComponentProps<typeof CalendarPrimitive.RangeText>;
+
+export type CalendarClearTriggerProps = ComponentProps<typeof CalendarPrimitive.ClearTrigger>;
+
+export type CalendarYearSelectProps = ComponentProps<typeof CalendarPrimitive.YearSelect>;
+
+export type CalendarMonthSelectProps = ComponentProps<typeof CalendarPrimitive.MonthSelect>;
+
+export type CalendarViewProps = ComponentProps<typeof CalendarPrimitive.View>;
+
+export type CalendarContextProps = ComponentProps<typeof CalendarPrimitive.Context>;
+
+export type CalendarViewControlProps = ComponentProps<typeof CalendarPrimitive.ViewControl>;
+
+export type CalendarPrevTriggerProps = ComponentProps<typeof CalendarPrimitive.PrevTrigger>;
+
+export type CalendarNextTriggerProps = ComponentProps<typeof CalendarPrimitive.NextTrigger>;
+
+export type CalendarTableProps = ComponentProps<typeof CalendarPrimitive.Table>;
+
+export type CalendarTableHeadProps = ComponentProps<typeof CalendarPrimitive.TableHead>;
+
+export type CalendarTableRowProps = ComponentProps<typeof CalendarPrimitive.TableRow>;
+
+export type CalendarTableHeaderProps = ComponentProps<typeof CalendarPrimitive.TableHeader>;
+
+export type CalendarTableCellProps = ComponentProps<typeof CalendarPrimitive.TableCell>;
+
+export interface CalendarWeekDaysProps extends CalendarTableHeadProps {
   /**
    * The format of the week days
    *
@@ -50,7 +86,7 @@ interface CalendarWeekDaysProps extends ComponentProps<typeof CalendarPrimitive.
 
 export type CalendarTableBodyProps = ComponentProps<typeof CalendarPrimitive.TableBody>;
 
-interface CalendarTableNextMonthProps extends CalendarTableBodyProps {
+export interface CalendarTableNextMonthProps extends CalendarTableBodyProps {
   /**
    * The number of months to offset
    *
@@ -60,7 +96,7 @@ interface CalendarTableNextMonthProps extends CalendarTableBodyProps {
 }
 // #endregion
 
-// #region Components
+// #region Parts
 function useCalendarSelectShell(className?: string) {
   const resolved = useFormControlVariant();
   const shellArgs = shellVariantArgs(resolved);
@@ -88,7 +124,9 @@ const getWeekRowKey = (
   }>,
 ) => week.map((day) => `${day.year}-${day.month}-${day.day}`).join("/");
 
-export interface CalendarProps extends ComponentProps<typeof CalendarPrimitive.Root>, WithTestId {
+export type CalendarRootProps = ComponentProps<typeof CalendarPrimitive.Root> & WithTestId;
+
+export interface CalendarProps extends CalendarRootProps {
   /** Visual shell variant for embedded selects. When omitted, resolves from the nearest `Surface` context. */
   variant?: FormControlVariant;
 }
@@ -115,28 +153,23 @@ export function CalendarRoot({
   );
 }
 
-export function CalendarControl(props: ComponentProps<typeof CalendarPrimitive.Control>) {
+export function CalendarControl(props: CalendarControlProps) {
   return <CalendarPrimitive.Control className={calendarControlVariants()} {...props} />;
 }
 
-export function CalendarLabel(props: ComponentProps<typeof CalendarPrimitive.Label>) {
+export function CalendarLabel(props: CalendarLabelProps) {
   return <CalendarPrimitive.Label className={calendarLabelVariants()} {...props} />;
 }
 
-export function CalendarTrigger(props: ComponentProps<typeof CalendarPrimitive.Trigger>) {
+export function CalendarTrigger(props: CalendarTriggerProps) {
   return <CalendarPrimitive.Trigger {...props} />;
 }
 
-export function CalendarPresetTrigger(
-  props: ComponentProps<typeof CalendarPrimitive.PresetTrigger>,
-) {
+export function CalendarPresetTrigger(props: CalendarPresetTriggerProps) {
   return <CalendarPrimitive.PresetTrigger {...props} />;
 }
 
-export function CalendarViewDate({
-  className,
-  ...rest
-}: ComponentProps<typeof CalendarPrimitive.RangeText>) {
+export function CalendarViewDate({ className, ...rest }: CalendarViewDateProps) {
   return (
     <CalendarPrimitive.RangeText {...rest} className={cn(calendarRangeTextVariants(), className)} />
   );
@@ -161,14 +194,11 @@ export function CalendarTodayTrigger({ variant = "outline", size = "lg", ...rest
   );
 }
 
-export function CalendarClearTrigger(props: ComponentProps<typeof CalendarPrimitive.ClearTrigger>) {
+export function CalendarClearTrigger(props: CalendarClearTriggerProps) {
   return <CalendarPrimitive.ClearTrigger {...props} />;
 }
 
-export function CalendarYearSelect({
-  className,
-  ...rest
-}: ComponentProps<typeof CalendarPrimitive.YearSelect>) {
+export function CalendarYearSelect({ className, ...rest }: CalendarYearSelectProps) {
   const { className: selectClassName, controlProps } = useCalendarSelectShell(className);
 
   return (
@@ -187,10 +217,7 @@ export function CalendarYearSelect({
   );
 }
 
-export function CalendarMonthSelect({
-  className,
-  ...rest
-}: ComponentProps<typeof CalendarPrimitive.MonthSelect>) {
+export function CalendarMonthSelect({ className, ...rest }: CalendarMonthSelectProps) {
   const { className: selectClassName, controlProps } = useCalendarSelectShell(className);
 
   return (
@@ -209,21 +236,15 @@ export function CalendarMonthSelect({
   );
 }
 
-export function CalendarView({
-  className,
-  ...rest
-}: ComponentProps<typeof CalendarPrimitive.View>) {
+export function CalendarView({ className, ...rest }: CalendarViewProps) {
   return <CalendarPrimitive.View {...rest} className={cn(calendarViewVariants(), className)} />;
 }
 
-export function CalendarContext(props: ComponentProps<typeof CalendarPrimitive.Context>) {
+export function CalendarContext(props: CalendarContextProps) {
   return <CalendarPrimitive.Context {...props} />;
 }
 
-export function CalendarViewControl({
-  className,
-  ...rest
-}: ComponentProps<typeof CalendarPrimitive.ViewControl>) {
+export function CalendarViewControl({ className, ...rest }: CalendarViewControlProps) {
   return (
     <CalendarPrimitive.ViewControl
       {...rest}
@@ -232,7 +253,7 @@ export function CalendarViewControl({
   );
 }
 
-export function CalendarPrevTrigger(props: ComponentProps<typeof CalendarPrimitive.PrevTrigger>) {
+export function CalendarPrevTrigger(props: CalendarPrevTriggerProps) {
   return (
     <CalendarPrimitive.PrevTrigger asChild {...props}>
       <Button
@@ -247,7 +268,7 @@ export function CalendarPrevTrigger(props: ComponentProps<typeof CalendarPrimiti
   );
 }
 
-export function CalendarNextTrigger(props: ComponentProps<typeof CalendarPrimitive.NextTrigger>) {
+export function CalendarNextTrigger(props: CalendarNextTriggerProps) {
   return (
     <CalendarPrimitive.NextTrigger asChild {...props}>
       <Button
@@ -262,10 +283,7 @@ export function CalendarNextTrigger(props: ComponentProps<typeof CalendarPrimiti
   );
 }
 
-export function CalendarTable({
-  className,
-  ...rest
-}: ComponentProps<typeof CalendarPrimitive.Table>) {
+export function CalendarTable({ className, ...rest }: CalendarTableProps) {
   return <CalendarPrimitive.Table {...rest} className={cn(calendarTableVariants(), className)} />;
 }
 
@@ -338,23 +356,17 @@ export function CalendarTableNextMonth({
   );
 }
 
-export function CalendarTableHead(props: ComponentProps<typeof CalendarPrimitive.TableHead>) {
+export function CalendarTableHead(props: CalendarTableHeadProps) {
   return <CalendarPrimitive.TableHead {...props} />;
 }
 
-export function CalendarTableRow({
-  className,
-  ...rest
-}: ComponentProps<typeof CalendarPrimitive.TableRow>) {
+export function CalendarTableRow({ className, ...rest }: CalendarTableRowProps) {
   return (
     <CalendarPrimitive.TableRow {...rest} className={cn(calendarTableRowVariants(), className)} />
   );
 }
 
-export function CalendarTableHeader({
-  className,
-  ...rest
-}: ComponentProps<typeof CalendarPrimitive.TableHeader>) {
+export function CalendarTableHeader({ className, ...rest }: CalendarTableHeaderProps) {
   return (
     <CalendarPrimitive.TableHeader
       {...rest}
@@ -372,7 +384,7 @@ export function CalendarTableCell({
   visibleRange,
   className,
   ...rest
-}: ComponentProps<typeof CalendarPrimitive.TableCell>) {
+}: CalendarTableCellProps) {
   return (
     <CalendarPrimitive.TableCell
       className={cn(calendarTableCellVariants())}

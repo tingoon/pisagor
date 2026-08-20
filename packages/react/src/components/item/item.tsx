@@ -19,10 +19,6 @@ import type { ComponentProps, ReactNode } from "react";
 import type { WithTestId } from "../../internal/types";
 import { Separator, type SeparatorProps } from "../separator";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 interface ItemProps extends ComponentProps<typeof ark.div>, ItemVariantProps, WithTestId {}
 
@@ -36,7 +32,7 @@ interface ItemHeaderProps extends Omit<ComponentProps<typeof ark.div>, "title"> 
 }
 // #endregion
 
-// #region Components
+// #region Parts
 export function ItemGroup({ className, ...rest }: ComponentProps<typeof ark.div>) {
   return (
     <ark.div
@@ -171,5 +167,4 @@ export function ItemFooter({ className, ...rest }: ComponentProps<typeof ark.div
   );
 }
 ItemFooter.displayName = "Item.Footer";
-
 // #endregion

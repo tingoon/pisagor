@@ -13,7 +13,15 @@ import {
   FieldTitle,
 } from "./field";
 
-export type { FieldLabelProps, FieldProps } from "./field";
+export type {
+  FieldErrorProps,
+  FieldHelperProps,
+  FieldLabelProps,
+  FieldLegendProps,
+  FieldProps,
+  FieldRootProps,
+  FieldSetProps,
+} from "./field";
 
 export const Field = Object.assign(FieldRoot, {
   Content: FieldContent,

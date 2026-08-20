@@ -1,2 +1,3 @@
 export { buttonVariants } from "@pisagor/styles/ui/button";
-export * from "./button";
+export type { ButtonProps } from "./button";
+export { Button } from "./button";

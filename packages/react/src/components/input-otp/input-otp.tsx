@@ -13,15 +13,22 @@ import type { WithTestId } from "../../internal/types";
 import { Input, type InputProps } from "../input/input";
 
 // #region Types
-export interface InputOTPProps
-  extends Omit<ComponentProps<typeof PinInputPrimitive.Root>, "onValueChange">,
-    Pick<InputProps, "size" | "variant">,
-    WithTestId {
+export type InputOTPRootProps = Omit<
+  ComponentProps<typeof PinInputPrimitive.Root>,
+  "onValueChange"
+> &
+  Pick<InputProps, "size" | "variant"> &
+  WithTestId;
+
+export interface InputOTPProps extends InputOTPRootProps {
   onValueChange?: (value: string[]) => void;
 }
+
+export type InputOTPSlotProps = ComponentProps<typeof PinInputPrimitive.Input> &
+  Pick<InputProps, "variant">;
 // #endregion
 
-// #region Components
+// #region Parts
 export function InputOTPRoot({
   placeholder,
   otp = true,
@@ -53,11 +60,7 @@ export function InputOTPRoot({
 }
 InputOTPRoot.displayName = "InputOTP";
 
-export function InputOTPSlot({
-  className,
-  variant,
-  ...rest
-}: ComponentProps<typeof PinInputPrimitive.Input> & Pick<InputProps, "variant">) {
+export function InputOTPSlot({ className, variant, ...rest }: InputOTPSlotProps) {
   return (
     <PinInputPrimitive.Input {...rest} asChild>
       <Input className={cn(inputOtpInlineVariants(), className)} variant={variant} />

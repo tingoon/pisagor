@@ -37,21 +37,45 @@ import type { WithTestId } from "../../internal/types";
 import { Button } from "../button";
 
 // #region Types
-interface FileUploadListProps
+export interface FileUploadListProps
   extends Omit<ComponentProps<typeof FileUploadPrimitive.Item>, "file"> {}
 
-interface FileUploadRootProps extends ComponentProps<typeof FileUploadPrimitive.Root>, WithTestId {
+export interface FileUploadRootProps
+  extends ComponentProps<typeof FileUploadPrimitive.Root>,
+    WithTestId {
   onValueChange?: (value: File[]) => void;
 }
 
-interface FileUploadDropzoneProps extends ComponentProps<typeof FileUploadPrimitive.Dropzone> {
+export interface FileUploadDropzoneProps
+  extends ComponentProps<typeof FileUploadPrimitive.Dropzone> {
   /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
   variant?: FormControlVariant;
 }
 
+export type FileUploadTriggerProps = ComponentProps<typeof FileUploadPrimitive.Trigger>;
+
+export type FileUploadItemGroupProps = ComponentProps<typeof FileUploadPrimitive.ItemGroup>;
+
+export type FileUploadItemProps = ComponentProps<typeof FileUploadPrimitive.Item>;
+
+export type FileUploadItemPreviewProps = ComponentProps<typeof FileUploadPrimitive.ItemPreview>;
+
+export type FileUploadItemPreviewImageProps = ComponentProps<
+  typeof FileUploadPrimitive.ItemPreviewImage
+>;
+
+export type FileUploadItemNameProps = ComponentProps<typeof FileUploadPrimitive.ItemName>;
+
+export type FileUploadItemSizeProps = ComponentProps<typeof FileUploadPrimitive.ItemSizeText>;
+
+export type FileUploadItemDeleteTriggerProps = ComponentProps<
+  typeof FileUploadPrimitive.ItemDeleteTrigger
+>;
+
+export type FileUploadClearTriggerProps = ComponentProps<typeof FileUploadPrimitive.ClearTrigger>;
 // #endregion
 
-// #region Components
+// #region Parts
 export function FileUploadRoot({
   className,
   children,
@@ -78,7 +102,7 @@ export function FileUploadRoot({
 }
 FileUploadRoot.displayName = "FileUpload";
 
-export function FileUploadTrigger(props: ComponentProps<typeof FileUploadPrimitive.Trigger>) {
+export function FileUploadTrigger(props: FileUploadTriggerProps) {
   return <FileUploadPrimitive.Trigger {...props} />;
 }
 FileUploadTrigger.displayName = "FileUpload.Trigger";
@@ -160,7 +184,7 @@ export function FileUploadHelper({ className, ...rest }: ComponentProps<typeof a
 }
 FileUploadHelper.displayName = "FileUpload.Helper";
 
-export function FileUploadItemGroup(props: ComponentProps<typeof FileUploadPrimitive.ItemGroup>) {
+export function FileUploadItemGroup(props: FileUploadItemGroupProps) {
   return <FileUploadPrimitive.ItemGroup {...props} />;
 }
 FileUploadItemGroup.displayName = "FileUpload.ItemGroup";
@@ -219,18 +243,12 @@ export function FileUploadList({ className, ...rest }: FileUploadListProps) {
 }
 FileUploadList.displayName = "FileUpload.List";
 
-export function FileUploadItem({
-  className,
-  ...rest
-}: ComponentProps<typeof FileUploadPrimitive.Item>) {
+export function FileUploadItem({ className, ...rest }: FileUploadItemProps) {
   return <FileUploadPrimitive.Item {...rest} className={cn(fileUploadItemVariants(), className)} />;
 }
 FileUploadItem.displayName = "FileUpload.Item";
 
-export function FileUploadItemPreview({
-  className,
-  ...rest
-}: ComponentProps<typeof FileUploadPrimitive.ItemPreview>) {
+export function FileUploadItemPreview({ className, ...rest }: FileUploadItemPreviewProps) {
   return (
     <FileUploadPrimitive.ItemPreview
       {...rest}
@@ -243,7 +261,7 @@ FileUploadItemPreview.displayName = "FileUpload.ItemPreview";
 export function FileUploadItemPreviewImage({
   className,
   ...rest
-}: ComponentProps<typeof FileUploadPrimitive.ItemPreviewImage>) {
+}: FileUploadItemPreviewImageProps) {
   return (
     <FileUploadPrimitive.ItemPreviewImage
       {...rest}
@@ -253,10 +271,7 @@ export function FileUploadItemPreviewImage({
 }
 FileUploadItemPreviewImage.displayName = "FileUpload.ItemPreviewImage";
 
-export function FileUploadItemName({
-  className,
-  ...rest
-}: ComponentProps<typeof FileUploadPrimitive.ItemName>) {
+export function FileUploadItemName({ className, ...rest }: FileUploadItemNameProps) {
   return (
     <FileUploadPrimitive.ItemName
       {...rest}
@@ -266,10 +281,7 @@ export function FileUploadItemName({
 }
 FileUploadItemName.displayName = "FileUpload.ItemName";
 
-export function FileUploadItemSize({
-  className,
-  ...rest
-}: ComponentProps<typeof FileUploadPrimitive.ItemSizeText>) {
+export function FileUploadItemSize({ className, ...rest }: FileUploadItemSizeProps) {
   return (
     <FileUploadPrimitive.ItemSizeText
       {...rest}
@@ -279,18 +291,13 @@ export function FileUploadItemSize({
 }
 FileUploadItemSize.displayName = "FileUpload.ItemSize";
 
-export function FileUploadItemDeleteTrigger(
-  props: ComponentProps<typeof FileUploadPrimitive.ItemDeleteTrigger>,
-) {
+export function FileUploadItemDeleteTrigger(props: FileUploadItemDeleteTriggerProps) {
   return <FileUploadPrimitive.ItemDeleteTrigger {...props} />;
 }
 FileUploadItemDeleteTrigger.displayName = "FileUpload.ItemDeleteTrigger";
 
-export function FileUploadClearTrigger(
-  props: ComponentProps<typeof FileUploadPrimitive.ClearTrigger>,
-) {
+export function FileUploadClearTrigger(props: FileUploadClearTriggerProps) {
   return <FileUploadPrimitive.ClearTrigger {...props} />;
 }
 FileUploadClearTrigger.displayName = "FileUpload.ClearTrigger";
-
 // #endregion

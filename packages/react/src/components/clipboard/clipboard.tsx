@@ -13,18 +13,14 @@ import { useFormControlVariant } from "../../internal/form-control/use-form-cont
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 import { Button, type ButtonProps } from "../button";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 type ClipboardClassNames = VariantClassNames<typeof clipboardVariants>;
 
 type ClipboardValueSize = ClipboardVariantProps["valueSize"];
 
-type ClipboardRootProps = ComponentProps<typeof ClipboardPrimitive.Root>;
+export type ClipboardRootProps = ComponentProps<typeof ClipboardPrimitive.Root>;
 
-interface ClipboardProps extends Omit<ClipboardRootProps, "children">, WithTestId {
+export interface ClipboardProps extends Omit<ClipboardRootProps, "children">, WithTestId {
   /**
    * Display mode for the copy control.
    *
@@ -65,7 +61,7 @@ interface ClipboardProps extends Omit<ClipboardRootProps, "children">, WithTestI
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function Clipboard({
   variant = "input",
   controlVariant: controlVariantProp,

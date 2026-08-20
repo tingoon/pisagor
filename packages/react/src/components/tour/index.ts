@@ -18,7 +18,20 @@ import {
   TourTrigger,
 } from "./tour";
 
-export type { TourActionTriggerProps, TourStepType } from "./tour";
+export type {
+  TourActionTriggerProps,
+  TourCloseProps,
+  TourContentProps,
+  TourDescriptionProps,
+  TourPositionerProps,
+  TourProgressTextProps,
+  TourProps,
+  TourRootProps,
+  TourSpotlightProps,
+  TourStepType,
+  TourTitleProps,
+  TourTriggerProps,
+} from "./tour";
 export { useTourContext } from "./tour";
 
 export const Tour = Object.assign(TourRoot, {

@@ -4,10 +4,6 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 type NavbarClassNames = VariantClassNames<typeof navbarVariants>;
 
@@ -27,7 +23,7 @@ interface NavbarNavProps extends ComponentProps<typeof ark.nav> {
 }
 // #endregion
 
-// #region Components
+// #region Parts
 export function NavbarRoot({ className, classNames, testId, ...rest }: NavbarRootProps) {
   const slots = navbarVariants();
 

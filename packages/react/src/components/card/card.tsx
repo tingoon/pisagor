@@ -14,10 +14,6 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 interface CardRootProps extends ComponentProps<typeof ark.div>, WithTestId {}
 
@@ -31,7 +27,7 @@ interface HeaderProps extends ComponentProps<typeof ark.div> {
 }
 // #endregion
 
-// #region Components
+// #region Parts
 export function CardRoot({ className, children, testId, ...rest }: CardRootProps) {
   return (
     <ark.div
@@ -137,5 +133,4 @@ export function CardFooter({ className, ...rest }: ComponentProps<typeof ark.div
   );
 }
 CardFooter.displayName = "Card.Footer";
-
 // #endregion

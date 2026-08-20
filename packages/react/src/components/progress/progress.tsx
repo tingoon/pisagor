@@ -5,22 +5,18 @@ import type { ComponentProps } from "react";
 import type { VariantClassNames, WithTestId } from "../../internal/types";
 import { Field } from "../field";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
-type ProgressTrackProps = ComponentProps<typeof ProgressPrimitive.Track>;
+export type ProgressTrackProps = ComponentProps<typeof ProgressPrimitive.Track>;
 
-type ProgressRangeProps = ComponentProps<typeof ProgressPrimitive.Range>;
+export type ProgressRangeProps = ComponentProps<typeof ProgressPrimitive.Range>;
 
-type ProgressValueProps = ComponentProps<typeof ProgressPrimitive.ValueText>;
+export type ProgressValueProps = ComponentProps<typeof ProgressPrimitive.ValueText>;
 
 type ProgressClassNames = VariantClassNames<typeof progressVariants>;
 
-type ProgressRootProps = Omit<ComponentProps<typeof ProgressPrimitive.Root>, "value">;
+export type ProgressRootProps = Omit<ComponentProps<typeof ProgressPrimitive.Root>, "value">;
 
-interface ProgressProps extends ProgressRootProps, WithTestId {
+export interface ProgressProps extends ProgressRootProps, WithTestId {
   /** Slot class names */
   classNames?: ProgressClassNames;
   /**
@@ -48,7 +44,7 @@ interface ProgressProps extends ProgressRootProps, WithTestId {
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function Progress({
   className,
   classNames,

@@ -23,6 +23,7 @@ export type {
   DialogOverlayProps,
   DialogPositionerProps,
   DialogProps,
+  DialogRootProps,
   DialogTitleProps,
   DialogTriggerProps,
 } from "./dialog";

@@ -1,4 +1,10 @@
-export type { SheetProps } from "./sheet";
+export type {
+  SheetCloseProps,
+  SheetContentProps,
+  SheetPositionerProps,
+  SheetProps,
+  SheetTriggerProps,
+} from "./sheet";
 
 import {
   SheetBody,

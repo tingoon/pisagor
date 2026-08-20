@@ -28,10 +28,6 @@ import type { InputProps } from "../input";
 import { InputGroup } from "../input-group";
 import { phoneInputFlags } from "./phone-input-flags";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 type PhoneInputClassNames = VariantClassNames<typeof phoneInputVariants>;
 
@@ -265,7 +261,7 @@ function PhoneInputCountrySelect({
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function PhoneInput({
   className,
   classNames,

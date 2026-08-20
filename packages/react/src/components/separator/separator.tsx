@@ -4,10 +4,6 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 
-// #region Variants
-
-// #endregion
-
 // #region Types
 type SeparatorRootProps = ComponentProps<typeof ark.div>;
 
@@ -23,7 +19,7 @@ export interface SeparatorProps extends SeparatorRootProps, WithTestId {
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function Separator({
   orientation = "horizontal",
   className,
