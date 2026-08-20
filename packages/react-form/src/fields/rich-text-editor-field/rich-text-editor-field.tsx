@@ -17,7 +17,7 @@ export interface RichTextEditorFieldProps
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function RichTextEditorField({
   className,
   description,

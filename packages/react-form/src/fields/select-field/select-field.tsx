@@ -20,7 +20,7 @@ export interface SelectFieldProps
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function SelectField({
   className,
   description,

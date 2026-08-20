@@ -16,7 +16,7 @@ export interface PasswordFieldProps extends FieldPresentationProps, PasswordInpu
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function PasswordField({
   className,
   description,

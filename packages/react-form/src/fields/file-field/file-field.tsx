@@ -15,7 +15,7 @@ export interface FileFieldProps extends FieldPresentationProps, FileInputControl
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function FileField({
   className,
   description,

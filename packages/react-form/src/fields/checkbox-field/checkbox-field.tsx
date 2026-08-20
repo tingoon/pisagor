@@ -14,7 +14,7 @@ export interface CheckboxFieldProps
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function CheckboxField({
   checked,
   className,

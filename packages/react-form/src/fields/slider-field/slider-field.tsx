@@ -17,7 +17,7 @@ export interface SliderFieldProps
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function SliderField({
   className,
   description,

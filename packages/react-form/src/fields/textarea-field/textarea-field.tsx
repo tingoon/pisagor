@@ -16,7 +16,7 @@ export interface TextareaFieldProps extends FieldPresentationProps, TextareaCont
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function TextareaField({
   className,
   description,

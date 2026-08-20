@@ -17,7 +17,7 @@ export interface NumberFieldProps extends FieldPresentationProps, NumberInputCon
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function NumberField({
   className,
   clearable = false,

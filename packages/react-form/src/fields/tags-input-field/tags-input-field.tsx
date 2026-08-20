@@ -12,7 +12,7 @@ export interface TagsInputFieldProps extends FieldPresentationProps, TagsInputCo
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function TagsInputField({
   className,
   description,

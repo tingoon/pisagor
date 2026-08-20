@@ -16,7 +16,7 @@ export interface TextFieldProps extends FieldPresentationProps, InputControlProp
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function TextField({
   className,
   description,

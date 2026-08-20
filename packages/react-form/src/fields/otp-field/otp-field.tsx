@@ -20,7 +20,7 @@ export interface OtpFieldProps
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function OtpField({
   className,
   description,

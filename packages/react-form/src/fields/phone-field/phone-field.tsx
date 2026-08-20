@@ -12,7 +12,7 @@ export interface PhoneFieldProps
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function PhoneField({
   className,
   defaultCountry,

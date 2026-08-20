@@ -21,7 +21,7 @@ export interface RadioGroupFieldProps
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function RadioGroupField({
   className,
   description,

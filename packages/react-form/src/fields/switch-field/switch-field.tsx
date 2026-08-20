@@ -17,7 +17,7 @@ export interface SwitchFieldProps extends FieldPresentationProps, SwitchControlP
 }
 // #endregion
 
-// #region Component
+// #region Part
 export function SwitchField({
   checked,
   className,
