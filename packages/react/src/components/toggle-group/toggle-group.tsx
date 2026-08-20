@@ -1,6 +1,5 @@
 import { ToggleGroup as ToggleGroupPrimitive } from "@ark-ui/react/toggle-group";
 import { toggleGroupInlineVariants, toggleGroupVariants } from "@pisagor/styles/ui/toggle-group";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { WithTestId } from "../../internal/types";
 import { Toggle } from "../toggle";
@@ -51,7 +50,7 @@ export function ToggleGroupRoot({
     <ToggleGroupContext value={{ size, spacing, variant }}>
       <ToggleGroupPrimitive.Root
         {...rest}
-        className={cn(toggleGroupVariants({ orientation }), className)}
+        className={toggleGroupVariants({ className, orientation })}
         data-testid={testId}
         multiple={multiple}
         onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
@@ -75,7 +74,7 @@ export function ToggleGroupItem({ value, className, ...rest }: ToggleGroupItemPr
     <ToggleGroupPrimitive.Item asChild value={value}>
       <Toggle
         {...rest}
-        className={cn(toggleGroupInlineVariants(), className)}
+        className={toggleGroupInlineVariants({ className })}
         data-spacing={spacing}
         data-variant={variant}
         size={size}

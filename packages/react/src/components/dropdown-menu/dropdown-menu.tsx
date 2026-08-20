@@ -13,7 +13,6 @@ import {
   dropdownMenuSeparatorVariants,
   dropdownMenuShortcutVariants,
 } from "@pisagor/styles/ui/dropdown-menu";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 import { DropdownMenuRootContext, useDropdownMenuRoot } from "./dropdown-menu.context";
@@ -89,10 +88,7 @@ DropdownMenuTrigger.displayName = "DropdownMenu.Trigger";
 
 export function DropdownMenuPositioner({ className, ...rest }: DropdownMenuPositionerProps) {
   return (
-    <MenuPrimitive.Positioner
-      {...rest}
-      className={cn(dropdownMenuPositionerVariants(), className)}
-    />
+    <MenuPrimitive.Positioner {...rest} className={dropdownMenuPositionerVariants({ className })} />
   );
 }
 DropdownMenuPositioner.displayName = "DropdownMenu.Positioner";
@@ -103,7 +99,7 @@ export function DropdownMenuContent({ className, children, ...rest }: DropdownMe
   return (
     <Portal>
       <DropdownMenuPositioner>
-        <MenuPrimitive.Content {...rest} className={cn(dropdownMenuContentVariants(), className)}>
+        <MenuPrimitive.Content {...rest} className={dropdownMenuContentVariants({ className })}>
           {children}
         </MenuPrimitive.Content>
       </DropdownMenuPositioner>
@@ -125,7 +121,7 @@ DropdownMenuGroup.displayName = "DropdownMenu.Group";
 
 export function DropdownMenuSeparator({ className, ...rest }: DropdownMenuSeparatorProps) {
   return (
-    <MenuPrimitive.Separator {...rest} className={cn(dropdownMenuSeparatorVariants(), className)} />
+    <MenuPrimitive.Separator {...rest} className={dropdownMenuSeparatorVariants({ className })} />
   );
 }
 DropdownMenuSeparator.displayName = "DropdownMenu.Separator";
@@ -154,7 +150,7 @@ export function DropdownMenuQuickItem({
     <MenuPrimitive.Item
       {...rest}
       className={dropdownMenuItemVariants({ variant }).base({
-        className: cn(dropdownMenuQuickItemVariants(), className),
+        className: dropdownMenuQuickItemVariants({ className }),
       })}
     />
   );
@@ -199,7 +195,7 @@ export function DropdownMenuGroupLabel({ className, ...rest }: DropdownMenuGroup
   return (
     <MenuPrimitive.ItemGroupLabel
       {...rest}
-      className={cn(dropdownMenuGroupLabelVariants(), className)}
+      className={dropdownMenuGroupLabelVariants({ className })}
     />
   );
 }
@@ -233,7 +229,7 @@ export function DropdownMenuSubContent({ className, ...rest }: DropdownMenuSubCo
   return (
     <Portal>
       <DropdownMenuPositioner>
-        <MenuPrimitive.Content {...rest} className={cn(dropdownMenuContentVariants(), className)} />
+        <MenuPrimitive.Content {...rest} className={dropdownMenuContentVariants({ className })} />
       </DropdownMenuPositioner>
     </Portal>
   );
@@ -274,7 +270,7 @@ export function DropdownMenuShortcut({
   return (
     <ark.span
       {...rest}
-      className={cn(dropdownMenuShortcutVariants(), className)}
+      className={dropdownMenuShortcutVariants({ className })}
       data-part={dataPart}
       data-scope={dataScope}
     />

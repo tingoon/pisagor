@@ -7,7 +7,6 @@ import {
   inputGroupButtonVariants,
   inputGroupTextVariants,
 } from "@pisagor/styles/ui/input-group";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, MouseEvent } from "react";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import {
@@ -55,7 +54,7 @@ export function InputGroupRoot({
     <ark.div
       {...rest}
       {...controlProps}
-      className={cn(formControlGroupShellVariants({ size, ...shellArgs }), className)}
+      className={formControlGroupShellVariants({ className, size, ...shellArgs })}
       data-part="root"
       data-scope="input-group"
       data-size={size}
@@ -81,7 +80,7 @@ export function InputGroupAddon({
   return (
     <ark.div
       {...rest}
-      className={cn(inputGroupAddonVariants({ align }), className)}
+      className={inputGroupAddonVariants({ align, className })}
       data-align={align}
       data-part="addon"
       data-scope="input-group"
@@ -101,7 +100,7 @@ export function InputGroupButton({
   return (
     <Button
       {...rest}
-      className={cn(inputGroupButtonVariants({ size }), className)}
+      className={inputGroupButtonVariants({ className, size })}
       data-part="button"
       data-scope="input-group"
       data-size={size}
@@ -115,7 +114,7 @@ export function InputGroupText({ className, ...rest }: ComponentProps<typeof ark
   return (
     <ark.span
       {...rest}
-      className={cn(inputGroupTextVariants(), className)}
+      className={inputGroupTextVariants({ className })}
       data-part="text"
       data-scope="input-group"
     />

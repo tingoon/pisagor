@@ -6,7 +6,6 @@ import {
   collapsibleTriggerVariants,
   collapsibleVariants,
 } from "@pisagor/styles/ui/collapsible";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 
@@ -34,7 +33,7 @@ export function CollapsibleRoot({
   return (
     <CollapsiblePrimitive.Root
       {...rest}
-      className={cn(collapsibleVariants(), className)}
+      className={collapsibleVariants({ className })}
       collapsedHeight={collapsedHeight}
       data-partial-collapse={collapsedHeight ? "" : undefined}
       data-testid={testId}
@@ -47,17 +46,14 @@ CollapsibleRoot.displayName = "Collapsible";
 
 export function CollapsibleTrigger({ className, ...rest }: CollapsibleTriggerProps) {
   return (
-    <CollapsiblePrimitive.Trigger
-      {...rest}
-      className={cn(collapsibleTriggerVariants(), className)}
-    />
+    <CollapsiblePrimitive.Trigger {...rest} className={collapsibleTriggerVariants({ className })} />
   );
 }
 CollapsibleTrigger.displayName = "Collapsible.Trigger";
 
 export function CollapsibleContent({ className, children, ...rest }: CollapsibleContentProps) {
   return (
-    <CollapsiblePrimitive.Content {...rest} className={cn(collapsibleContentVariants())}>
+    <CollapsiblePrimitive.Content {...rest} className={collapsibleContentVariants()}>
       <div className={className}>{children}</div>
     </CollapsiblePrimitive.Content>
   );

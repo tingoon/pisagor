@@ -11,7 +11,6 @@ import {
   popoverInline2Variants,
   popoverTitleVariants,
 } from "@pisagor/styles/ui/popover";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 import { Button } from "../button";
@@ -132,7 +131,7 @@ export function PopoverHeader({
   return (
     <ark.div
       {...rest}
-      className={cn(popoverHeaderVariants(), className)}
+      className={popoverHeaderVariants({ className })}
       data-part="header"
       data-scope="popover"
     >
@@ -147,16 +146,13 @@ export function PopoverHeader({
 PopoverHeader.displayName = "Popover.Header";
 
 export function PopoverTitle({ className, ...rest }: PopoverTitleProps) {
-  return <PopoverPrimitive.Title {...rest} className={cn(popoverTitleVariants(), className)} />;
+  return <PopoverPrimitive.Title {...rest} className={popoverTitleVariants({ className })} />;
 }
 PopoverTitle.displayName = "Popover.Title";
 
 export function PopoverDescription({ className, ...rest }: PopoverDescriptionProps) {
   return (
-    <PopoverPrimitive.Description
-      {...rest}
-      className={cn(popoverDescriptionVariants(), className)}
-    />
+    <PopoverPrimitive.Description {...rest} className={popoverDescriptionVariants({ className })} />
   );
 }
 PopoverDescription.displayName = "Popover.Description";
@@ -166,7 +162,7 @@ export function PopoverBody({ className, ...rest }: ComponentProps<typeof ark.di
     <ScrollArea>
       <ark.div
         {...rest}
-        className={cn(popoverBodyVariants(), className)}
+        className={popoverBodyVariants({ className })}
         data-part="body"
         data-scope="popover"
       />
@@ -179,7 +175,7 @@ export function PopoverFooter({ className, ...rest }: ComponentProps<typeof ark.
   return (
     <ark.div
       {...rest}
-      className={cn(popoverFooterVariants(), className)}
+      className={popoverFooterVariants({ className })}
       data-part="footer"
       data-scope="popover"
     />

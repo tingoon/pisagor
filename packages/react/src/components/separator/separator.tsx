@@ -1,6 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
 import { separatorVariants } from "@pisagor/styles/ui/separator";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 
@@ -32,7 +31,7 @@ export function Separator({
     <ark.div
       {...rest}
       aria-orientation={orientation}
-      className={cn(separatorVariants(), className)}
+      className={separatorVariants({ className })}
       data-orientation={orientation}
       data-part={dataPart}
       data-scope={dataScope}

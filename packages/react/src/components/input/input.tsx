@@ -101,7 +101,7 @@ export function Input({
         {...rest}
         ref={ref}
         {...controlProps}
-        className={cn(inputRootVariants({ size, ...shellArgs }), className)}
+        className={inputRootVariants({ className, size, ...shellArgs })}
         data-size={size}
         data-testid={testId}
         defaultValue={defaultValue}

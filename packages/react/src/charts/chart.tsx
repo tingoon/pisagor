@@ -139,7 +139,7 @@ export function ChartContainer({
     <ChartContext value={{ config }}>
       <div
         {...rest}
-        className={cn(chartVariants(), className)}
+        className={chartVariants({ className })}
         data-chart={chartId}
         data-part="root"
         data-scope="chart"
@@ -236,7 +236,7 @@ export function ChartTooltipContent({
   const nestLabel = payload.length === 1 && indicator !== "dot";
 
   return (
-    <div className={cn(chartInline3Variants(), className)}>
+    <div className={chartInline3Variants({ className })}>
       {nestLabel ? null : tooltipLabel}
       <div className={chartInline9Variants()}>
         {payload.map((item, index) => {
@@ -318,7 +318,7 @@ export function ChartLegendContent({
         const itemConfig = getPayload(config, item, key);
 
         return (
-          <div className={cn(chartInline8Variants())} key={item.value}>
+          <div className={chartInline8Variants()} key={item.value}>
             {itemConfig?.icon && !hideIcon ? (
               <itemConfig.icon />
             ) : (

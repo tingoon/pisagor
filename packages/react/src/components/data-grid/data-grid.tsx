@@ -532,7 +532,7 @@ function DataGridToolbar({ className, ...rest }: ComponentProps<"div">) {
   return (
     <div
       {...rest}
-      className={cn(dataGridToolbarVariants(), className)}
+      className={dataGridToolbarVariants({ className })}
       data-part="toolbar"
       data-scope="data-grid"
     />
@@ -544,7 +544,7 @@ function DataGridFooter({ className, ...rest }: ComponentProps<"div">) {
   return (
     <div
       {...rest}
-      className={cn(dataGridFooterVariants(), className)}
+      className={dataGridFooterVariants({ className })}
       data-part="footer"
       data-scope="data-grid"
     />
@@ -570,7 +570,7 @@ function DataGridRoot<TData>({
   return (
     <DataGridContext value={contextValue as DataGridContextValue<unknown>}>
       <div
-        className={cn(dataGridVariants(), className)}
+        className={dataGridVariants({ className })}
         data-part="root"
         data-scope="data-grid"
         data-testid={testId}

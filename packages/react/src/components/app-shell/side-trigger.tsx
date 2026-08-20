@@ -1,5 +1,4 @@
 import { appShellInlineVariants } from "@pisagor/styles/ui/app-shell";
-import { cn } from "@pisagor/utils";
 import type { ReactNode } from "react";
 import { Button, type ButtonProps } from "../button";
 import { Swap } from "../swap";
@@ -40,7 +39,7 @@ export function AppShellSideTrigger({
       {...rest}
       aria-label={ariaLabel ?? `Toggle ${placement} region`}
       aria-pressed={open}
-      className={cn(appShellInlineVariants(), className)}
+      className={appShellInlineVariants({ className })}
       data-part={dataPart}
       data-placement={placement}
       data-scope="app-shell"

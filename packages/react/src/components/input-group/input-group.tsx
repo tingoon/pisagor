@@ -11,7 +11,7 @@ export function InputGroupInput({ className, classNames, ...rest }: InputProps) 
   return (
     <Input
       {...rest}
-      className={cn(inputGroupControlVariants(), className)}
+      className={inputGroupControlVariants({ className })}
       classNames={{
         ...classNames,
         clearableRoot: cn(inputGroupControlVariants(), classNames?.clearableRoot),

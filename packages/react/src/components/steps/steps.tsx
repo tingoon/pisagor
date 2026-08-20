@@ -13,7 +13,6 @@ import {
   stepsTriggerVariants,
   stepsVariants,
 } from "@pisagor/styles/ui/steps";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 
@@ -42,27 +41,23 @@ export type StepsNextProps = ComponentProps<typeof StepsPrimitive.NextTrigger>;
 // #region Parts
 export function StepsRoot({ className, testId, ...rest }: StepsRootProps) {
   return (
-    <StepsPrimitive.Root
-      {...rest}
-      className={cn(stepsVariants(), className)}
-      data-testid={testId}
-    />
+    <StepsPrimitive.Root {...rest} className={stepsVariants({ className })} data-testid={testId} />
   );
 }
 StepsRoot.displayName = "Steps";
 
 export function StepsList({ className, ...rest }: StepsListProps) {
-  return <StepsPrimitive.List {...rest} className={cn(stepsListVariants(), className)} />;
+  return <StepsPrimitive.List {...rest} className={stepsListVariants({ className })} />;
 }
 StepsList.displayName = "Steps.List";
 
 export function StepsItem({ className, ...rest }: StepsItemProps) {
-  return <StepsPrimitive.Item {...rest} className={cn(stepsItemVariants(), className)} />;
+  return <StepsPrimitive.Item {...rest} className={stepsItemVariants({ className })} />;
 }
 StepsItem.displayName = "Steps.Item";
 
 export function StepsTrigger({ className, ...rest }: StepsTriggerProps) {
-  return <StepsPrimitive.Trigger {...rest} className={cn(stepsTriggerVariants(), className)} />;
+  return <StepsPrimitive.Trigger {...rest} className={stepsTriggerVariants({ className })} />;
 }
 StepsTrigger.displayName = "Steps.Trigger";
 
@@ -79,7 +74,7 @@ export function StepsIndicator({ className, children, ...rest }: StepsIndicatorP
 StepsIndicator.displayName = "Steps.Indicator";
 
 export function StepsSeparator({ className, ...rest }: StepsSeparatorProps) {
-  return <StepsPrimitive.Separator {...rest} className={cn(stepsSeparatorVariants(), className)} />;
+  return <StepsPrimitive.Separator {...rest} className={stepsSeparatorVariants({ className })} />;
 }
 StepsSeparator.displayName = "Steps.Separator";
 
@@ -87,7 +82,7 @@ export function StepsTitle({ className, ...rest }: ComponentProps<typeof ark.spa
   return (
     <ark.span
       {...rest}
-      className={cn(stepsTitleVariants(), className)}
+      className={stepsTitleVariants({ className })}
       data-part="title"
       data-scope="steps"
     />
@@ -99,7 +94,7 @@ export function StepsDescription({ className, ...rest }: ComponentProps<typeof a
   return (
     <ark.span
       {...rest}
-      className={cn(stepsDescriptionVariants(), className)}
+      className={stepsDescriptionVariants({ className })}
       data-part="description"
       data-scope="steps"
     />
@@ -108,7 +103,7 @@ export function StepsDescription({ className, ...rest }: ComponentProps<typeof a
 StepsDescription.displayName = "Steps.Description";
 
 export function StepsContent({ className, ...rest }: StepsContentProps) {
-  return <StepsPrimitive.Content {...rest} className={cn(stepsContentVariants(), className)} />;
+  return <StepsPrimitive.Content {...rest} className={stepsContentVariants({ className })} />;
 }
 StepsContent.displayName = "Steps.Content";
 
@@ -116,7 +111,7 @@ export function StepsCompletedContent({ className, ...rest }: StepsCompletedCont
   return (
     <StepsPrimitive.CompletedContent
       {...rest}
-      className={cn(stepsCompletedContentVariants(), className)}
+      className={stepsCompletedContentVariants({ className })}
     />
   );
 }

@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import { fileInputVariants } from "@pisagor/styles/ui/file-input";
 import type { FormControlGroupShellVariantProps } from "@pisagor/styles/ui/form-control";
-import { cn } from "@pisagor/utils";
 import { type ChangeEventHandler, type ComponentProps, useRef, useState } from "react";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import {
@@ -90,7 +89,7 @@ function FileInputRoot({
       <ark.div
         {...rest}
         {...controlProps}
-        className={cn(formControlGroupShellVariants({ size, ...shellArgs }), className)}
+        className={formControlGroupShellVariants({ className, size, ...shellArgs })}
         data-disabled={disabled ? true : undefined}
         data-part="root"
         data-scope="file-input"

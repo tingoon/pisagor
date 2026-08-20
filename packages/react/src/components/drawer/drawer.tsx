@@ -15,7 +15,6 @@ import {
   drawerPositionerVariants,
   drawerTitleVariants,
 } from "@pisagor/styles/ui/drawer";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 import { ScrollArea } from "../scroll-area";
@@ -86,7 +85,7 @@ export function DrawerTrigger(props: DrawerTriggerProps) {
 DrawerTrigger.displayName = "Drawer.Trigger";
 
 export function DrawerOverlay({ className, ...rest }: DrawerOverlayProps) {
-  return <DrawerPrimitive.Backdrop {...rest} className={cn(drawerOverlayVariants(), className)} />;
+  return <DrawerPrimitive.Backdrop {...rest} className={drawerOverlayVariants({ className })} />;
 }
 DrawerOverlay.displayName = "Drawer.Overlay";
 
@@ -98,7 +97,7 @@ export function DrawerPositioner({
   return (
     <DrawerPrimitive.Positioner
       {...rest}
-      className={cn(drawerPositionerVariants({ variant }), className)}
+      className={drawerPositionerVariants({ className, variant })}
     />
   );
 }
@@ -127,13 +126,11 @@ export function DrawerContent({
           <DrawerPositioner variant={variant}>
             <DrawerPrimitive.Content
               {...rest}
-              className={cn(
-                drawerContentVariants({
-                  placement: SWIPE_DIRECTION_TO_PLACEMENT[swipeDirection],
-                  variant,
-                }),
+              className={drawerContentVariants({
                 className,
-              )}
+                placement: SWIPE_DIRECTION_TO_PLACEMENT[swipeDirection],
+                variant,
+              })}
               data-testid={testId}
             >
               <DrawerGrabber />
@@ -152,7 +149,7 @@ export function DrawerContentInner({ className, ...rest }: ComponentProps<typeof
   return (
     <ark.div
       {...rest}
-      className={cn(drawerContentInnerVariants(), className)}
+      className={drawerContentInnerVariants({ className })}
       data-part="content-inner"
       data-scope="drawer"
     />
@@ -183,7 +180,7 @@ export function DrawerHeader({
   return (
     <ark.div
       {...rest}
-      className={cn(drawerHeaderVariants(), className)}
+      className={drawerHeaderVariants({ className })}
       data-part="header"
       data-scope="drawer"
     >
@@ -198,7 +195,7 @@ export function DrawerHeader({
 DrawerHeader.displayName = "Drawer.Header";
 
 export function DrawerTitle({ className, ...rest }: DrawerTitleProps) {
-  return <DrawerPrimitive.Title {...rest} className={cn(drawerTitleVariants(), className)} />;
+  return <DrawerPrimitive.Title {...rest} className={drawerTitleVariants({ className })} />;
 }
 DrawerTitle.displayName = "Drawer.Title";
 
@@ -206,7 +203,7 @@ export function DrawerDescription({ className, ...rest }: ComponentProps<typeof 
   return (
     <ark.div
       {...rest}
-      className={cn(drawerDescriptionVariants(), className)}
+      className={drawerDescriptionVariants({ className })}
       data-part="description"
       data-scope="drawer"
     />
@@ -219,7 +216,7 @@ export function DrawerBody({ scrollFade = false, className, ...rest }: DrawerBod
     <ScrollArea scrollFade={scrollFade}>
       <ark.div
         {...rest}
-        className={cn(drawerBodyVariants(), className)}
+        className={drawerBodyVariants({ className })}
         data-part="body"
         data-scope="drawer"
       />
@@ -237,7 +234,7 @@ export function DrawerFooter({ className, ...rest }: ComponentProps<typeof ark.d
   return (
     <ark.div
       {...rest}
-      className={cn(drawerFooterVariants(), className)}
+      className={drawerFooterVariants({ className })}
       data-part="footer"
       data-scope="drawer"
     />

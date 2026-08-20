@@ -7,19 +7,18 @@ import {
   framePanelVariants,
   frameVariants,
 } from "@pisagor/styles/ui/frame";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 
 // #region Types
-interface FrameHeaderProps extends ComponentProps<typeof ark.header> {
+export interface FrameHeaderProps extends ComponentProps<typeof ark.header> {
   /** The description of the dialog */
   description?: string;
   /** The title of the dialog */
   title?: string;
 }
 
-interface FrameRootProps extends ComponentProps<typeof ark.div>, WithTestId {}
+export interface FrameRootProps extends ComponentProps<typeof ark.div>, WithTestId {}
 // #endregion
 
 // #region Parts
@@ -27,7 +26,7 @@ export function FrameRoot({ className, testId, ...rest }: FrameRootProps) {
   return (
     <ark.div
       {...rest}
-      className={cn(frameVariants(), className)}
+      className={frameVariants({ className })}
       data-part="root"
       data-scope="frame"
       data-testid={testId}
@@ -40,7 +39,7 @@ export function FramePanel({ className, ...rest }: ComponentProps<typeof ark.div
   return (
     <ark.div
       {...rest}
-      className={cn(framePanelVariants(), className)}
+      className={framePanelVariants({ className })}
       data-part="panel"
       data-scope="frame"
     />
@@ -58,7 +57,7 @@ export function FrameHeader({
   return (
     <ark.header
       {...rest}
-      className={cn(framePanelHeaderVariants(), className)}
+      className={framePanelHeaderVariants({ className })}
       data-part="panel-header"
       data-scope="frame"
     >
@@ -76,7 +75,7 @@ export function FrameTitle({ className, ...rest }: ComponentProps<typeof ark.div
   return (
     <ark.div
       {...rest}
-      className={cn(framePanelTitleVariants(), className)}
+      className={framePanelTitleVariants({ className })}
       data-part="panel-title"
       data-scope="frame"
     />
@@ -88,7 +87,7 @@ export function FrameDescription({ className, ...rest }: ComponentProps<typeof a
   return (
     <ark.div
       {...rest}
-      className={cn(framePanelDescriptionVariants(), className)}
+      className={framePanelDescriptionVariants({ className })}
       data-part="panel-description"
       data-scope="frame"
     />
@@ -100,7 +99,7 @@ export function FrameFooter({ className, ...rest }: ComponentProps<typeof ark.fo
   return (
     <ark.footer
       {...rest}
-      className={cn(framePanelFooterVariants(), className)}
+      className={framePanelFooterVariants({ className })}
       data-part="panel-footer"
       data-scope="frame"
     />

@@ -99,7 +99,7 @@ export function EditableRoot({
   return (
     <EditablePrimitive.Root
       {...rest}
-      className={cn(editableVariants(), className)}
+      className={editableVariants({ className })}
       data-orientation={orientation}
       data-testid={testId}
       defaultValue={defaultValue}
@@ -111,7 +111,7 @@ export function EditableRoot({
 EditableRoot.displayName = "Editable";
 
 export function EditableArea({ className, ...rest }: EditableAreaProps) {
-  return <EditablePrimitive.Area {...rest} className={cn(editableAreaVariants(), className)} />;
+  return <EditablePrimitive.Area {...rest} className={editableAreaVariants({ className })} />;
 }
 EditableArea.displayName = "Editable.Area";
 
@@ -155,9 +155,7 @@ export function EditablePreview({
 EditablePreview.displayName = "Editable.Preview";
 
 export function EditableControl({ className, ...rest }: EditableControlProps) {
-  return (
-    <EditablePrimitive.Control {...rest} className={cn(editableControlVariants(), className)} />
-  );
+  return <EditablePrimitive.Control {...rest} className={editableControlVariants({ className })} />;
 }
 EditableControl.displayName = "Editable.Control";
 

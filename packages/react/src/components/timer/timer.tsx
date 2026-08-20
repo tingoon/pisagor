@@ -9,7 +9,6 @@ import {
   timerSeparatorVariants,
   timerVariants,
 } from "@pisagor/styles/ui/timer";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { Fragment } from "react";
 import type { WithTestId } from "../../internal/types";
@@ -57,7 +56,7 @@ export function TimerRoot({
   ...rest
 }: TimerRootProps) {
   return (
-    <TimerPrimitive.Root {...rest} className={cn(timerVariants(), className)} data-testid={testId}>
+    <TimerPrimitive.Root {...rest} className={timerVariants({ className })} data-testid={testId}>
       {units && (
         <TimerArea>
           {units.map((unit, index) => (
@@ -84,7 +83,7 @@ export function TimerRoot({
 TimerRoot.displayName = "Timer";
 
 export function TimerArea({ className, ...rest }: TimerAreaProps) {
-  return <TimerPrimitive.Area {...rest} className={cn(timerAreaVariants(), className)} />;
+  return <TimerPrimitive.Area {...rest} className={timerAreaVariants({ className })} />;
 }
 TimerArea.displayName = "Timer.Area";
 
@@ -96,7 +95,7 @@ export function TimerItemGroup({
   return (
     <ark.div
       {...rest}
-      className={cn(timerItemGroupVariants(), className)}
+      className={timerItemGroupVariants({ className })}
       data-orientation={orientation}
       data-part="item-group"
       data-scope="timer"
@@ -106,7 +105,7 @@ export function TimerItemGroup({
 TimerItemGroup.displayName = "Timer.ItemGroup";
 
 export function TimerItem({ className, ...rest }: TimerItemProps) {
-  return <TimerPrimitive.Item {...rest} className={cn(timerItemVariants(), className)} />;
+  return <TimerPrimitive.Item {...rest} className={timerItemVariants({ className })} />;
 }
 TimerItem.displayName = "Timer.Item";
 
@@ -114,7 +113,7 @@ export function TimerItemLabel({ className, ...rest }: ComponentProps<typeof ark
   return (
     <ark.div
       {...rest}
-      className={cn(timerItemLabelVariants(), className)}
+      className={timerItemLabelVariants({ className })}
       data-part="item-label"
       data-scope="timer"
     />
@@ -124,7 +123,7 @@ TimerItemLabel.displayName = "Timer.ItemLabel";
 
 export function TimerSeparator({ className, children, ...rest }: TimerSeparatorProps) {
   return (
-    <TimerPrimitive.Separator {...rest} className={cn(timerSeparatorVariants(), className)}>
+    <TimerPrimitive.Separator {...rest} className={timerSeparatorVariants({ className })}>
       {children ?? ":"}
     </TimerPrimitive.Separator>
   );
@@ -132,7 +131,7 @@ export function TimerSeparator({ className, children, ...rest }: TimerSeparatorP
 TimerSeparator.displayName = "Timer.Separator";
 
 export function TimerControl({ className, ...rest }: TimerControlProps) {
-  return <TimerPrimitive.Control {...rest} className={cn(timerControlVariants(), className)} />;
+  return <TimerPrimitive.Control {...rest} className={timerControlVariants({ className })} />;
 }
 TimerControl.displayName = "Timer.Control";
 

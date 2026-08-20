@@ -10,7 +10,6 @@ import {
   actionBarSeparatorVariants,
   actionBarValueVariants,
 } from "@pisagor/styles/ui/action-bar";
-import { cn } from "@pisagor/utils";
 import { useHotkey } from "@tanstack/react-hotkeys";
 import type { ComponentProps, MouseEvent, PropsWithChildren, ReactNode } from "react";
 import { useCallback, useMemo, useState } from "react";
@@ -217,7 +216,7 @@ export function ActionBarContent({
     <Portal>
       <Presence asChild lazyMount={lazyMount} present={isOpen} unmountOnExit={unmountOnExit}>
         <ark.div
-          className={cn(actionBarPositionerVariants({ placement }))}
+          className={actionBarPositionerVariants({ placement })}
           data-part="positioner"
           data-placement={placement}
           data-scope="action-bar"
@@ -226,7 +225,7 @@ export function ActionBarContent({
           <ark.div
             {...rest}
             aria-labelledby={ariaLabelledby}
-            className={cn(actionBarContentVariants(), className)}
+            className={actionBarContentVariants({ className })}
             data-part="content"
             data-scope="action-bar"
             data-testid={testId}
@@ -243,7 +242,7 @@ export function ActionBarSeparator({ className, ...rest }: ActionBarSeparatorPro
   return (
     <Separator
       {...rest}
-      className={cn(actionBarSeparatorVariants(), className)}
+      className={actionBarSeparatorVariants({ className })}
       dataPart="separator"
       dataScope="action-bar"
       orientation="vertical"
@@ -264,7 +263,7 @@ export function ActionBarClose({ className, onClick, ...rest }: ActionBarClosePr
     <ark.button
       {...rest}
       aria-label="Close"
-      className={cn(actionBarCloseVariants(), className)}
+      className={actionBarCloseVariants({ className })}
       data-part="close"
       data-scope="action-bar"
       data-state={isOpen ? "open" : "closed"}
@@ -285,7 +284,7 @@ export function ActionBarValue({
   return (
     <Badge
       {...rest}
-      className={cn(actionBarValueVariants(), className)}
+      className={actionBarValueVariants({ className })}
       data-part="value"
       data-scope="action-bar"
       variant="secondary"
@@ -297,7 +296,7 @@ export function ActionBarValue({
 ActionBarValue.displayName = "ActionBar.Value";
 
 export function ActionBarBody({ className, ...rest }: ComponentProps<typeof ark.div>) {
-  return <ark.div {...rest} className={cn(actionBarInlineVariants(), className)} />;
+  return <ark.div {...rest} className={actionBarInlineVariants({ className })} />;
 }
 ActionBarBody.displayName = "ActionBar.Body";
 // #endregion

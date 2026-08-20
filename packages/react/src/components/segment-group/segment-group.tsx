@@ -5,7 +5,6 @@ import {
   segmentGroupItemVariants,
   segmentGroupVariants,
 } from "@pisagor/styles/ui/segment-group";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { WithTestId } from "../../internal/types";
 
@@ -56,7 +55,7 @@ export function SegmentGroupRoot({
   return (
     <SegmentGroupPrimitive.Root
       {...rest}
-      className={cn(segmentGroupVariants(), className)}
+      className={segmentGroupVariants({ className })}
       data-testid={testId}
       data-variant={variant}
       onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
@@ -74,7 +73,7 @@ export function SegmentGroupItem({ className, children, text, ...rest }: Segment
   const content = children ?? text;
 
   return (
-    <SegmentGroupPrimitive.Item {...rest} className={cn(segmentGroupItemVariants(), className)}>
+    <SegmentGroupPrimitive.Item {...rest} className={segmentGroupItemVariants({ className })}>
       {content != null && <SegmentGroupItemText>{content}</SegmentGroupItemText>}
 
       <SegmentGroupPrimitive.ItemControl />
@@ -88,7 +87,7 @@ function SegmentGroupItemText({ className, ...rest }: SegmentGroupItemTextProps)
   return (
     <SegmentGroupPrimitive.ItemText
       {...rest}
-      className={cn(segmentGroupItemTextVariants(), className)}
+      className={segmentGroupItemTextVariants({ className })}
     />
   );
 }
@@ -98,7 +97,7 @@ export function SegmentGroupIndicator({ className, ...rest }: SegmentGroupIndica
   return (
     <SegmentGroupPrimitive.Indicator
       {...rest}
-      className={cn(segmentGroupIndicatorVariants(), className)}
+      className={segmentGroupIndicatorVariants({ className })}
     />
   );
 }

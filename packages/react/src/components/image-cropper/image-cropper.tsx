@@ -63,7 +63,7 @@ export function ImageCropperRoot({
       cropShape={cropShape}
       data-testid={testId}
     >
-      <ImageCropperPrimitive.Viewport className={cn(imageCropperViewportVariants())}>
+      <ImageCropperPrimitive.Viewport className={imageCropperViewportVariants()}>
         {src ? (
           <>
             <ImageCropperImage alt={alt} src={src} />
@@ -80,7 +80,7 @@ ImageCropperRoot.displayName = "ImageCropper";
 
 export function ImageCropperImage({ className, ...rest }: ImageCropperImageProps) {
   return (
-    <ImageCropperPrimitive.Image {...rest} className={cn(imageCropperImageVariants(), className)} />
+    <ImageCropperPrimitive.Image {...rest} className={imageCropperImageVariants({ className })} />
   );
 }
 ImageCropperImage.displayName = "ImageCropper.Image";
@@ -94,7 +94,7 @@ export function ImageCropperSelection({
   return (
     <ImageCropperPrimitive.Selection
       {...rest}
-      className={cn(imageCropperSelectionVariants(), className)}
+      className={imageCropperSelectionVariants({ className })}
     >
       {children}
 
@@ -127,7 +127,7 @@ ImageCropperHandle.displayName = "ImageCropper.Handle";
 
 export function ImageCropperGrid({ className, ...rest }: ImageCropperGridProps) {
   return (
-    <ImageCropperPrimitive.Grid {...rest} className={cn(imageCropperGridVariants(), className)} />
+    <ImageCropperPrimitive.Grid {...rest} className={imageCropperGridVariants({ className })} />
   );
 }
 ImageCropperGrid.displayName = "ImageCropper.Grid";

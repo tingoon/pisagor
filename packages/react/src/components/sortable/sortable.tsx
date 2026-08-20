@@ -301,7 +301,7 @@ export function SortableRoot({
     <SortableContext value={contextValue}>
       <ark.div
         {...rest}
-        className={cn(sortableVariants({ orientation }), className)}
+        className={sortableVariants({ className, orientation })}
         data-orientation={orientation}
         data-part="root"
         data-scope="sortable"
@@ -325,7 +325,7 @@ export function SortableItem({ value, className, children, ...rest }: SortableIt
       <ark.div
         {...rest}
         {...itemProps}
-        className={cn(sortableItemVariants(), className)}
+        className={sortableItemVariants({ className })}
         data-part="item"
         data-scope="sortable"
         role="listitem"
@@ -406,7 +406,7 @@ export function SortableItemContent({ className, ...rest }: ComponentProps<typeo
   return (
     <ark.div
       {...rest}
-      className={cn(sortableItemContentVariants(), className)}
+      className={sortableItemContentVariants({ className })}
       data-part="item-content"
       data-scope="sortable"
     />

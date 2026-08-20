@@ -5,7 +5,6 @@ import {
   marqueeItemVariants,
   marqueeVariants,
 } from "@pisagor/styles/ui/marquee";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { Children, isValidElement } from "react";
 import type { WithTestId } from "../../internal/types";
@@ -55,7 +54,7 @@ export function MarqueeRoot({
   return (
     <MarqueePrimitive.Root
       {...rest}
-      className={cn(marqueeVariants(), className)}
+      className={marqueeVariants({ className })}
       data-orientation={orientation}
       data-testid={testId}
       side={side}
@@ -86,12 +85,12 @@ export function MarqueeContent({ className, ...rest }: MarqueeContentProps) {
 MarqueeContent.displayName = "Marquee.Content";
 
 export function MarqueeItem({ className, ...rest }: MarqueeItemProps) {
-  return <MarqueePrimitive.Item {...rest} className={cn(marqueeItemVariants(), className)} />;
+  return <MarqueePrimitive.Item {...rest} className={marqueeItemVariants({ className })} />;
 }
 MarqueeItem.displayName = "Marquee.Item";
 
 export function MarqueeEdge({ className, ...rest }: MarqueeEdgeProps) {
-  return <MarqueePrimitive.Edge {...rest} className={cn(marqueeEdgeVariants(), className)} />;
+  return <MarqueePrimitive.Edge {...rest} className={marqueeEdgeVariants({ className })} />;
 }
 MarqueeEdge.displayName = "Marquee.Edge";
 // #endregion

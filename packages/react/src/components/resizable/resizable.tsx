@@ -6,7 +6,6 @@ import {
   resizableResizeTriggerVariants,
   resizableVariants,
 } from "@pisagor/styles/ui/resizable";
-import { cn } from "@pisagor/utils";
 import { type ComponentProps, useCallback, useRef } from "react";
 import type { WithTestId } from "../../internal/types";
 
@@ -166,7 +165,7 @@ export function ResizableRoot({ className, testId, ...rest }: ResizableRootProps
   return (
     <SplitterPrimitive.Root
       {...rest}
-      className={cn(resizableVariants(), className)}
+      className={resizableVariants({ className })}
       data-testid={testId}
     />
   );
@@ -185,7 +184,7 @@ export function ResizableResizeTriggerIndicator({
   return (
     <SplitterPrimitive.ResizeTriggerIndicator
       {...rest}
-      className={cn(resizableResizeTriggerIndicatorVariants(), className)}
+      className={resizableResizeTriggerIndicatorVariants({ className })}
     />
   );
 }

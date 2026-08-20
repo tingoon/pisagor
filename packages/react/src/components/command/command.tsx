@@ -42,7 +42,7 @@ import { InputGroup } from "../input-group";
 import { Separator } from "../separator";
 
 // #region Types
-interface CommandDialogContentProps extends DialogContentProps {
+export interface CommandDialogContentProps extends DialogContentProps {
   /**
    * The description of the dialog
    *
@@ -57,7 +57,8 @@ interface CommandDialogContentProps extends DialogContentProps {
   title?: string;
 }
 
-interface CommandInputProps extends Omit<ComponentProps<typeof ComboboxPrimitive.Input>, "size"> {
+export interface CommandInputProps
+  extends Omit<ComponentProps<typeof ComboboxPrimitive.Input>, "size"> {
   /**
    * The size of the input
    *
@@ -66,7 +67,7 @@ interface CommandInputProps extends Omit<ComponentProps<typeof ComboboxPrimitive
   size?: InputProps["size"];
 }
 
-interface CommandListProps extends ComboboxListProps {}
+export interface CommandListProps extends ComboboxListProps {}
 
 export type CommandContentProps = ComponentProps<typeof ComboboxPrimitive.Content>;
 
@@ -126,7 +127,7 @@ export function CommandRoot<T extends CollectionItem = CollectionItem>({
   return (
     <Combobox.Root
       {...rest}
-      className={cn(commandInlineVariants(), className)}
+      className={commandInlineVariants({ className })}
       closeOnSelect={false}
       disableLayer
       inputBehavior="autohighlight"
@@ -142,9 +143,7 @@ export function CommandRoot<T extends CollectionItem = CollectionItem>({
 CommandRoot.displayName = "Command";
 
 export function CommandContent({ className, ...rest }: CommandContentProps) {
-  return (
-    <ComboboxPrimitive.Content {...rest} className={cn(commandContentVariants(), className)} />
-  );
+  return <ComboboxPrimitive.Content {...rest} className={commandContentVariants({ className })} />;
 }
 CommandContent.displayName = "Command.Content";
 
@@ -152,8 +151,8 @@ export function CommandInput({ size, className, ...rest }: CommandInputProps) {
   const { testId } = useComboboxRoot() ?? {};
 
   return (
-    <ComboboxPrimitive.Control className={cn(comboboxControlVariants())}>
-      <InputGroup {...rest} className={cn(commandInline2Variants(), className)} size={size}>
+    <ComboboxPrimitive.Control className={comboboxControlVariants()}>
+      <InputGroup {...rest} className={commandInline2Variants({ className })} size={size}>
         <InputGroup.Addon>
           <MagnifyingGlassIcon aria-hidden className={commandInline4Variants()} />
         </InputGroup.Addon>
@@ -169,7 +168,7 @@ CommandInput.displayName = "Command.Input";
 export function CommandList({ className, ...rest }: CommandListProps) {
   return (
     <div className={commandInline5Variants()}>
-      <Combobox.List {...rest} className={cn(commandListVariants(), className)} />
+      <Combobox.List {...rest} className={commandListVariants({ className })} />
     </div>
   );
 }
@@ -177,7 +176,7 @@ CommandList.displayName = "Command.List";
 
 export function CommandEmpty({ className, children, ...rest }: ComboboxEmptyProps) {
   return (
-    <Combobox.Empty {...rest} className={cn(commandEmptyVariants(), className)}>
+    <Combobox.Empty {...rest} className={commandEmptyVariants({ className })}>
       {children || "No results found. Try a different search."}
     </Combobox.Empty>
   );
@@ -209,7 +208,7 @@ export function CommandSeparator({ className, ...rest }: ComponentProps<"div">) 
   return (
     <Separator
       {...rest}
-      className={cn(commandSeparatorVariants(), className)}
+      className={commandSeparatorVariants({ className })}
       dataPart="separator"
       dataScope="command"
     />
@@ -226,7 +225,7 @@ export function CommandFooter({ className, ...rest }: ComponentProps<"div">) {
   return (
     <div
       {...rest}
-      className={cn(commandFooterVariants(), className)}
+      className={commandFooterVariants({ className })}
       data-part="footer"
       data-scope="command"
     />

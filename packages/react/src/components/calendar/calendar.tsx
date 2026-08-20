@@ -139,7 +139,7 @@ export function CalendarRoot({
     <FormControlVariantProvider value={variant}>
       <CalendarPrimitive.Root
         {...rest}
-        className={cn(calendarVariants(), className)}
+        className={calendarVariants({ className })}
         data-testid={testId}
         inline
         lazyMount={lazyMount}
@@ -167,7 +167,7 @@ export function CalendarPresetTrigger(props: CalendarPresetTriggerProps) {
 
 export function CalendarViewDate({ className, ...rest }: CalendarViewDateProps) {
   return (
-    <CalendarPrimitive.RangeText {...rest} className={cn(calendarRangeTextVariants(), className)} />
+    <CalendarPrimitive.RangeText {...rest} className={calendarRangeTextVariants({ className })} />
   );
 }
 
@@ -223,7 +223,7 @@ export function CalendarMonthSelect({ className, ...rest }: CalendarMonthSelectP
 }
 
 export function CalendarView({ className, ...rest }: CalendarViewProps) {
-  return <CalendarPrimitive.View {...rest} className={cn(calendarViewVariants(), className)} />;
+  return <CalendarPrimitive.View {...rest} className={calendarViewVariants({ className })} />;
 }
 
 export function CalendarContext(props: CalendarContextProps) {
@@ -234,7 +234,7 @@ export function CalendarViewControl({ className, ...rest }: CalendarViewControlP
   return (
     <CalendarPrimitive.ViewControl
       {...rest}
-      className={cn(calendarViewControlVariants(), className)}
+      className={calendarViewControlVariants({ className })}
     />
   );
 }
@@ -270,7 +270,7 @@ export function CalendarNextTrigger(props: CalendarNextTriggerProps) {
 }
 
 export function CalendarTable({ className, ...rest }: CalendarTableProps) {
-  return <CalendarPrimitive.Table {...rest} className={cn(calendarTableVariants(), className)} />;
+  return <CalendarPrimitive.Table {...rest} className={calendarTableVariants({ className })} />;
 }
 
 export function CalendarWeekDays({ format = "narrow", ...rest }: CalendarWeekDaysProps) {
@@ -348,7 +348,7 @@ export function CalendarTableHead(props: CalendarTableHeadProps) {
 
 export function CalendarTableRow({ className, ...rest }: CalendarTableRowProps) {
   return (
-    <CalendarPrimitive.TableRow {...rest} className={cn(calendarTableRowVariants(), className)} />
+    <CalendarPrimitive.TableRow {...rest} className={calendarTableRowVariants({ className })} />
   );
 }
 
@@ -356,7 +356,7 @@ export function CalendarTableHeader({ className, ...rest }: CalendarTableHeaderP
   return (
     <CalendarPrimitive.TableHeader
       {...rest}
-      className={cn(calendarTableHeaderVariants(), className)}
+      className={calendarTableHeaderVariants({ className })}
     />
   );
 }

@@ -10,16 +10,15 @@ import {
   cardTitleVariants,
   cardVariants,
 } from "@pisagor/styles/ui/card";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 
 // #region Types
-interface CardRootProps extends ComponentProps<typeof ark.div>, WithTestId {}
+export interface CardRootProps extends ComponentProps<typeof ark.div>, WithTestId {}
 
-interface CardMediaProps extends ComponentProps<typeof ark.div>, CardMediaVariantProps {}
+export interface CardMediaProps extends ComponentProps<typeof ark.div>, CardMediaVariantProps {}
 
-interface HeaderProps extends ComponentProps<typeof ark.div> {
+export interface CardHeaderProps extends ComponentProps<typeof ark.div> {
   /** The description of the card */
   description?: string;
   /** The title of the card */
@@ -32,7 +31,7 @@ export function CardRoot({ className, children, testId, ...rest }: CardRootProps
   return (
     <ark.div
       {...rest}
-      className={cn(cardVariants(), className)}
+      className={cardVariants({ className })}
       data-part="root"
       data-scope="card"
       data-testid={testId}
@@ -47,7 +46,7 @@ export function CardMedia({ variant = "default", className, ...rest }: CardMedia
   return (
     <ark.div
       {...rest}
-      className={cn(cardMediaVariants({ variant }), className)}
+      className={cardMediaVariants({ className, variant })}
       data-part="media"
       data-scope="card"
       data-variant={variant}
@@ -56,11 +55,11 @@ export function CardMedia({ variant = "default", className, ...rest }: CardMedia
 }
 CardMedia.displayName = "Card.Media";
 
-export function CardHeader({ title, description, className, children, ...rest }: HeaderProps) {
+export function CardHeader({ title, description, className, children, ...rest }: CardHeaderProps) {
   return (
     <ark.div
       {...rest}
-      className={cn(cardHeaderVariants(), className)}
+      className={cardHeaderVariants({ className })}
       data-part="header"
       data-scope="card"
     >
@@ -78,7 +77,7 @@ export function CardTitle({ className, ...rest }: ComponentProps<typeof ark.div>
   return (
     <ark.div
       {...rest}
-      className={cn(cardTitleVariants(), className)}
+      className={cardTitleVariants({ className })}
       data-part="title"
       data-scope="card"
     />
@@ -90,7 +89,7 @@ export function CardDescription({ className, ...rest }: ComponentProps<typeof ar
   return (
     <ark.div
       {...rest}
-      className={cn(cardDescriptionVariants(), className)}
+      className={cardDescriptionVariants({ className })}
       data-part="description"
       data-scope="card"
     />
@@ -102,7 +101,7 @@ export function CardAction({ className, ...rest }: ComponentProps<typeof ark.div
   return (
     <ark.div
       {...rest}
-      className={cn(cardActionVariants(), className)}
+      className={cardActionVariants({ className })}
       data-part="action"
       data-scope="card"
     />
@@ -114,7 +113,7 @@ export function CardContent({ className, ...rest }: ComponentProps<typeof ark.di
   return (
     <ark.div
       {...rest}
-      className={cn(cardContentVariants(), className)}
+      className={cardContentVariants({ className })}
       data-part="content"
       data-scope="card"
     />
@@ -126,7 +125,7 @@ export function CardFooter({ className, ...rest }: ComponentProps<typeof ark.div
   return (
     <ark.div
       {...rest}
-      className={cn(cardFooterVariants(), className)}
+      className={cardFooterVariants({ className })}
       data-part="footer"
       data-scope="card"
     />

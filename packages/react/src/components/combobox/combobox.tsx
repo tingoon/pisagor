@@ -155,7 +155,7 @@ export function ComboboxControl({ className, ...rest }: ComboboxControlProps) {
   return (
     <ComboboxPrimitive.Control
       {...rest}
-      className={cn(comboboxControlVariants(), className)}
+      className={comboboxControlVariants({ className })}
       data-testid={testId}
     />
   );
@@ -207,11 +207,7 @@ ComboboxInput.displayName = "Combobox.Input";
 
 export function ComboboxTrigger({ className, children, ...rest }: ComboboxTriggerProps) {
   return (
-    <ComboboxPrimitive.Trigger
-      {...rest}
-      asChild
-      className={cn(comboboxTriggerVariants(), className)}
-    >
+    <ComboboxPrimitive.Trigger {...rest} asChild className={comboboxTriggerVariants({ className })}>
       {children ?? (
         <Button className={comboboxInline2Variants()} variant="ghost">
           <CaretUpDownIcon />
@@ -245,7 +241,7 @@ export function ComboboxContent({ className, children, ...rest }: ComboboxConten
   return (
     <Portal>
       <ComboboxPositioner>
-        <ComboboxPrimitive.Content {...rest} className={cn(comboboxContentVariants(), className)}>
+        <ComboboxPrimitive.Content {...rest} className={comboboxContentVariants({ className })}>
           {children}
         </ComboboxPrimitive.Content>
       </ComboboxPositioner>
@@ -269,7 +265,7 @@ export function ComboboxGroupLabel({ className, ...rest }: ComboboxGroupLabelPro
   return (
     <ComboboxPrimitive.ItemGroupLabel
       {...rest}
-      className={cn(comboboxGroupLabelVariants(), className)}
+      className={comboboxGroupLabelVariants({ className })}
     />
   );
 }
@@ -301,7 +297,7 @@ ComboboxItem.displayName = "Combobox.Item";
 
 export function ComboboxEmpty({ className, children, ...rest }: ComboboxEmptyProps) {
   return (
-    <ComboboxPrimitive.Empty {...rest} className={cn(comboboxEmptyVariants(), className)}>
+    <ComboboxPrimitive.Empty {...rest} className={comboboxEmptyVariants({ className })}>
       {children || "No results found. Try a different search."}
     </ComboboxPrimitive.Empty>
   );
@@ -309,7 +305,7 @@ export function ComboboxEmpty({ className, children, ...rest }: ComboboxEmptyPro
 ComboboxEmpty.displayName = "Combobox.Empty";
 
 export function ComboboxList({ className, ...rest }: ComboboxListProps) {
-  return <ComboboxPrimitive.List {...rest} className={cn(comboboxListVariants(), className)} />;
+  return <ComboboxPrimitive.List {...rest} className={comboboxListVariants({ className })} />;
 }
 ComboboxList.displayName = "Combobox.List";
 // #endregion

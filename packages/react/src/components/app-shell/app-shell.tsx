@@ -1,5 +1,4 @@
 import { appShellVariants } from "@pisagor/styles/ui/app-shell";
-import { cn } from "@pisagor/utils";
 import { useHotkey } from "@tanstack/react-hotkeys";
 import { type ComponentProps, useCallback, useMemo, useRef, useState } from "react";
 import type { WithTestId } from "../../internal/types";
@@ -55,7 +54,7 @@ function buildGridRows(hasBanner: boolean, hasNavigation: boolean) {
   return [...(hasBanner ? ["auto"] : []), ...(hasNavigation ? ["auto"] : []), "auto"].join(" ");
 }
 
-interface AppShellRootProps extends ComponentProps<"div">, WithTestId {}
+export interface AppShellRootProps extends ComponentProps<"div">, WithTestId {}
 
 function useShellGridStyle(slots: AppShellSlots) {
   const hasBanner = Boolean(slots.banner);
@@ -149,7 +148,7 @@ export function AppShellRoot({ className, style, testId, children, ...rest }: Ap
     <AppShellContext value={contextValue}>
       <div
         {...rest}
-        className={cn(appShellVariants(), className)}
+        className={appShellVariants({ className })}
         data-part="root"
         data-resizing={regionResizing ? "" : undefined}
         data-scope="app-shell"

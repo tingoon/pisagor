@@ -8,7 +8,6 @@ import {
   breadcrumbPageVariants,
   breadcrumbSeparatorVariants,
 } from "@pisagor/styles/ui/breadcrumb";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { Fragment } from "react";
 import type { WithTestId } from "../../internal/types";
@@ -59,7 +58,7 @@ export function BreadcrumbList({ className, ...rest }: ComponentProps<typeof ark
   return (
     <ark.ol
       {...rest}
-      className={cn(breadcrumbListVariants(), className)}
+      className={breadcrumbListVariants({ className })}
       data-part="list"
       data-scope="breadcrumb"
       role="list"
@@ -72,7 +71,7 @@ export function BreadcrumbItem({ className, ...rest }: ComponentProps<typeof ark
   return (
     <ark.li
       {...rest}
-      className={cn(breadcrumbItemVariants(), className)}
+      className={breadcrumbItemVariants({ className })}
       data-part="item"
       data-scope="breadcrumb"
     />
@@ -84,7 +83,7 @@ export function BreadcrumbLink({ className, ...rest }: ComponentProps<typeof ark
   return (
     <ark.a
       {...rest}
-      className={cn(breadcrumbLinkVariants(), className)}
+      className={breadcrumbLinkVariants({ className })}
       data-part="link"
       data-scope="breadcrumb"
     />
@@ -97,7 +96,7 @@ export function BreadcrumbPage({ className, ...rest }: ComponentProps<typeof ark
     <ark.span
       {...rest}
       aria-current="page"
-      className={cn(breadcrumbPageVariants(), className)}
+      className={breadcrumbPageVariants({ className })}
       data-part="page"
       data-scope="breadcrumb"
     />
@@ -114,7 +113,7 @@ export function BreadcrumbSeparator({
     <ark.li
       {...rest}
       aria-hidden="true"
-      className={cn(breadcrumbSeparatorVariants(), className)}
+      className={breadcrumbSeparatorVariants({ className })}
       data-part="separator"
       data-scope="breadcrumb"
       role="presentation"

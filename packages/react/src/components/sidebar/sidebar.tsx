@@ -53,7 +53,7 @@ import { Tooltip, type TooltipProps } from "../tooltip";
 import { SidebarContext, type SidebarContextProps, useSidebar } from "./sidebar.context";
 
 // #region Types
-interface SidebarProviderProps extends ComponentProps<"div"> {
+export interface SidebarProviderProps extends ComponentProps<"div"> {
   /**
    * The default open state of the sidebar.
    *
@@ -86,7 +86,7 @@ export interface SidebarProps extends SheetProps, WithTestId {
   variant?: "sidebar" | "floating" | "inset";
 }
 
-interface SidebarContentProps extends ComponentProps<"div"> {
+export interface SidebarContentProps extends ComponentProps<"div"> {
   /**
    * Whether to add a scroll fade effect to the sidebar content.
    *
@@ -95,7 +95,7 @@ interface SidebarContentProps extends ComponentProps<"div"> {
   scrollFade?: boolean;
 }
 
-interface SidebarMenuButtonProps extends ButtonProps {
+export interface SidebarMenuButtonProps extends ButtonProps {
   /**
    * Whether the button is active.
    *
@@ -109,15 +109,17 @@ interface SidebarMenuButtonProps extends ButtonProps {
   tooltip?: string | Omit<TooltipProps, "children">;
 }
 
-interface SidebarMenuActionProps extends ComponentProps<typeof ark.button> {
+export interface SidebarMenuActionProps extends ComponentProps<typeof ark.button> {
   showOnHover?: boolean;
 }
 
-interface SidebarMenuSkeletonProps extends ComponentProps<typeof ark.div> {
+export interface SidebarMenuSkeletonProps extends ComponentProps<typeof ark.div> {
   showIcon?: boolean;
 }
 
-interface SidebarMenuSubButtonProps extends ComponentProps<typeof ark.a>, ButtonVariantProps {
+export interface SidebarMenuSubButtonProps
+  extends ComponentProps<typeof ark.a>,
+    ButtonVariantProps {
   isActive?: boolean;
 }
 // #endregion
@@ -191,7 +193,7 @@ export function SidebarProvider({
     <SidebarContext value={contextValue}>
       <ark.div
         {...rest}
-        className={cn(sidebarWrapperVariants(), className)}
+        className={sidebarWrapperVariants({ className })}
         data-part="wrapper"
         data-scope="sidebar"
         style={
@@ -222,7 +224,7 @@ export function SidebarRoot(props: SidebarProps) {
     return (
       <ark.div
         {...rest}
-        className={cn(sidebarVariants(), className)}
+        className={sidebarVariants({ className })}
         data-part="root"
         data-scope="sidebar"
         data-testid={testId}
@@ -237,7 +239,7 @@ export function SidebarRoot(props: SidebarProps) {
       <Sheet onOpenChange={({ open }) => setOpenMobile(open)} open={openMobile} testId={testId}>
         <Sheet.Content
           {...rest}
-          className={cn(sidebar2Variants())}
+          className={sidebar2Variants()}
           data-mobile="true"
           data-sidebar="sidebar"
           data-testid={testId}
@@ -262,7 +264,7 @@ export function SidebarRoot(props: SidebarProps) {
   return (
     <ark.div
       {...rest}
-      className={cn(sidebar3Variants())}
+      className={sidebar3Variants()}
       data-collapsible={state === "collapsed" ? collapsible : ""}
       data-part="root"
       data-placement={placement}
@@ -272,25 +274,21 @@ export function SidebarRoot(props: SidebarProps) {
       data-variant={variant}
     >
       <ark.div
-        className={cn(
-          sidebarGapVariants({ padded: variant === "floating" || variant === "inset" }),
-        )}
+        className={sidebarGapVariants({ padded: variant === "floating" || variant === "inset" })}
         data-part="gap"
         data-scope="sidebar"
       />
       <ark.div
-        className={cn(
-          sidebarContainerVariants({
-            padded: variant === "floating" || variant === "inset",
-            placement,
-          }),
+        className={sidebarContainerVariants({
           className,
-        )}
+          padded: variant === "floating" || variant === "inset",
+          placement,
+        })}
         data-part="container"
         data-scope="sidebar"
       >
         <ark.div
-          className={cn(sidebarInnerVariants())}
+          className={sidebarInnerVariants()}
           data-part="inner"
           data-scope="sidebar"
           data-sidebar="sidebar"
@@ -308,7 +306,7 @@ export function SidebarTrigger({ className, onClick, ...rest }: ButtonProps) {
   return (
     <Button
       {...rest}
-      className={cn(sidebarTriggerVariants(), className)}
+      className={sidebarTriggerVariants({ className })}
       data-part="trigger"
       data-scope="sidebar"
       data-sidebar="trigger"
@@ -332,7 +330,7 @@ export function SidebarRail({ className, ...rest }: ComponentProps<typeof ark.bu
     <ark.button
       {...rest}
       aria-label="Toggle sidebar"
-      className={cn(sidebarRailVariants(), className)}
+      className={sidebarRailVariants({ className })}
       data-part="rail"
       data-scope="sidebar"
       data-sidebar="rail"
@@ -348,7 +346,7 @@ export function SidebarInset({ className, ...rest }: ComponentProps<typeof ark.m
   return (
     <ark.main
       {...rest}
-      className={cn(sidebarInsetVariants(), className)}
+      className={sidebarInsetVariants({ className })}
       data-part="inset"
       data-scope="sidebar"
     />
@@ -359,7 +357,7 @@ export function SidebarInput({ className, classNames, ...rest }: InputProps) {
   return (
     <Input
       {...rest}
-      className={cn(sidebarInputVariants(), className)}
+      className={sidebarInputVariants({ className })}
       classNames={classNames}
       data-sidebar="input"
     />
@@ -370,7 +368,7 @@ export function SidebarHeader({ className, ...rest }: ComponentProps<typeof ark.
   return (
     <ark.div
       {...rest}
-      className={cn(sidebarHeaderVariants(), className)}
+      className={sidebarHeaderVariants({ className })}
       data-part="header"
       data-scope="sidebar"
       data-sidebar="header"
@@ -382,7 +380,7 @@ export function SidebarFooter({ className, ...rest }: ComponentProps<typeof ark.
   return (
     <ark.div
       {...rest}
-      className={cn(sidebarFooterVariants(), className)}
+      className={sidebarFooterVariants({ className })}
       data-part="footer"
       data-scope="sidebar"
       data-sidebar="footer"
@@ -394,7 +392,7 @@ export function SidebarSeparator({ className, ...rest }: SeparatorProps) {
   return (
     <Separator
       {...rest}
-      className={cn(sidebarSeparatorVariants(), className)}
+      className={sidebarSeparatorVariants({ className })}
       data-sidebar="separator"
       dataPart="separator"
       dataScope="sidebar"
@@ -407,7 +405,7 @@ export function SidebarContent({ scrollFade = false, className, ...rest }: Sideb
     <ScrollArea className={sidebarInline5Variants()} scrollFade={scrollFade}>
       <ark.div
         {...rest}
-        className={cn(sidebarContentVariants(), className)}
+        className={sidebarContentVariants({ className })}
         data-part="content"
         data-scope="sidebar"
         data-sidebar="content"
@@ -420,7 +418,7 @@ export function SidebarGroup({ className, ...rest }: ComponentProps<typeof ark.d
   return (
     <ark.div
       {...rest}
-      className={cn(sidebarGroupVariants(), className)}
+      className={sidebarGroupVariants({ className })}
       data-part="group"
       data-scope="sidebar"
       data-sidebar="group"
@@ -432,7 +430,7 @@ export function SidebarGroupLabel({ className, ...rest }: ComponentProps<typeof 
   return (
     <ark.div
       {...rest}
-      className={cn(sidebarGroupLabelVariants(), className)}
+      className={sidebarGroupLabelVariants({ className })}
       data-part="group-label"
       data-scope="sidebar"
       data-sidebar="group-label"
@@ -465,7 +463,7 @@ export function SidebarGroupContent({ className, ...rest }: ComponentProps<typeo
   return (
     <ark.div
       {...rest}
-      className={cn(sidebarGroupContentVariants(), className)}
+      className={sidebarGroupContentVariants({ className })}
       data-part="group-content"
       data-scope="sidebar"
       data-sidebar="group-content"
@@ -477,7 +475,7 @@ export function SidebarMenu({ className, ...rest }: ComponentProps<typeof ark.ul
   return (
     <ark.ul
       {...rest}
-      className={cn(sidebarMenuVariants(), className)}
+      className={sidebarMenuVariants({ className })}
       data-part="menu"
       data-scope="sidebar"
       data-sidebar="menu"
@@ -489,7 +487,7 @@ export function SidebarMenuItem({ className, ...rest }: ComponentProps<typeof ar
   return (
     <ark.li
       {...rest}
-      className={cn(sidebarMenuItemVariants(), className)}
+      className={sidebarMenuItemVariants({ className })}
       data-part="menu-item"
       data-scope="sidebar"
       data-sidebar="menu-item"
@@ -510,7 +508,7 @@ export function SidebarMenuButton({
   const button = (
     <Button
       {...rest}
-      className={cn(sidebarMenuButtonVariants(), className)}
+      className={sidebarMenuButtonVariants({ className })}
       clickEffect={false}
       data-active={isActive}
       data-part="menu-button"
@@ -575,7 +573,7 @@ export function SidebarMenuBadge({ className, ...rest }: ComponentProps<typeof a
   return (
     <ark.div
       {...rest}
-      className={cn(sidebarMenuBadgeVariants(), className)}
+      className={sidebarMenuBadgeVariants({ className })}
       data-part="menu-badge"
       data-scope="sidebar"
       data-sidebar="menu-badge"
@@ -593,7 +591,7 @@ export function SidebarMenuSkeleton({
   return (
     <ark.div
       {...rest}
-      className={cn(sidebarMenuSkeletonVariants(), className)}
+      className={sidebarMenuSkeletonVariants({ className })}
       data-part="menu-skeleton"
       data-scope="sidebar"
       data-sidebar="menu-skeleton"
@@ -618,7 +616,7 @@ export function SidebarMenuSub({ className, ...rest }: ComponentProps<typeof ark
   return (
     <ark.ul
       {...rest}
-      className={cn(sidebarMenuSubVariants(), className)}
+      className={sidebarMenuSubVariants({ className })}
       data-part="menu-sub"
       data-scope="sidebar"
       data-sidebar="menu-sub"
@@ -629,7 +627,7 @@ export function SidebarMenuSub({ className, ...rest }: ComponentProps<typeof ark
 export function SidebarMenuSubItem({ className, ...props }: ComponentProps<typeof ark.li>) {
   return (
     <ark.li
-      className={cn(sidebarMenuSubItemVariants(), className)}
+      className={sidebarMenuSubItemVariants({ className })}
       data-part="menu-sub-item"
       data-scope="sidebar"
       data-sidebar="menu-sub-item"

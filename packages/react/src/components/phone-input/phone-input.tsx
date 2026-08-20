@@ -202,7 +202,7 @@ function PhoneInputCountrySelect({
             onFocus={onFocus}
           >
             <InputGroup.Button
-              className={cn(phoneInputInline3Variants())}
+              className={phoneInputInline3Variants()}
               disabled={isDisabled}
               size="sm"
               type="button"

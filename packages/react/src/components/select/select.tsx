@@ -178,7 +178,7 @@ export function SelectSeparator({ className, ...rest }: SeparatorProps) {
   return (
     <Separator
       {...rest}
-      className={cn(selectSeparatorVariants(), className)}
+      className={selectSeparatorVariants({ className })}
       dataPart="separator"
       dataScope="select"
     />
@@ -187,7 +187,7 @@ export function SelectSeparator({ className, ...rest }: SeparatorProps) {
 SelectSeparator.displayName = "Select.Separator";
 
 export function SelectValue({ className, ...rest }: SelectValueProps) {
-  return <SelectPrimitive.ValueText {...rest} className={cn(selectInlineVariants(), className)} />;
+  return <SelectPrimitive.ValueText {...rest} className={selectInlineVariants({ className })} />;
 }
 SelectValue.displayName = "Select.Value";
 
@@ -195,7 +195,7 @@ export function SelectContent({ className, ...rest }: SelectContentProps) {
   return (
     <Portal>
       <SelectPrimitive.Positioner>
-        <SelectPrimitive.Content {...rest} className={cn(selectContentVariants(), className)} />
+        <SelectPrimitive.Content {...rest} className={selectContentVariants({ className })} />
       </SelectPrimitive.Positioner>
     </Portal>
   );
@@ -215,10 +215,7 @@ SelectGroup.displayName = "Select.Group";
 
 export function SelectGroupLabel({ className, ...rest }: SelectGroupLabelProps) {
   return (
-    <SelectPrimitive.ItemGroupLabel
-      {...rest}
-      className={cn(selectGroupLabelVariants(), className)}
-    />
+    <SelectPrimitive.ItemGroupLabel {...rest} className={selectGroupLabelVariants({ className })} />
   );
 }
 SelectGroupLabel.displayName = "Select.GroupLabel";
@@ -245,7 +242,7 @@ export function SelectClearTrigger({ className, ...rest }: SelectClearTriggerPro
     <SelectPrimitive.ClearTrigger
       {...rest}
       aria-label="Clear selected value(s)"
-      className={cn(selectClearTriggerVariants(), className)}
+      className={selectClearTriggerVariants({ className })}
     />
   );
 }
@@ -256,7 +253,7 @@ export function SelectEmpty({ className, ...rest }: ComponentProps<typeof ark.di
 
   if (empty) {
     return (
-      <ark.div {...rest} className={cn(selectInline2Variants(), className)} role="presentation" />
+      <ark.div {...rest} className={selectInline2Variants({ className })} role="presentation" />
     );
   }
 

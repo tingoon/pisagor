@@ -6,7 +6,6 @@ import {
   tabsTriggerVariants,
   tabsVariants,
 } from "@pisagor/styles/ui/tabs";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { WithTestId } from "../../internal/types";
 
@@ -44,7 +43,7 @@ export function TabsRoot({
   return (
     <TabsPrimitive.Root
       {...rest}
-      className={cn(tabsVariants(), className)}
+      className={tabsVariants({ className })}
       data-testid={testId}
       lazyMount={lazyMount}
       unmountOnExit={unmountOnExit}
@@ -73,22 +72,22 @@ export function TabsList({ variant = "default", className, children, ...rest }: 
   const { list, indicator } = tabsListVariants({ variant });
 
   return (
-    <TabsPrimitive.List {...rest} className={cn(list(), className)}>
+    <TabsPrimitive.List {...rest} className={list({ className })}>
       {children}
 
-      <TabsPrimitive.Indicator className={cn(indicator())} />
+      <TabsPrimitive.Indicator className={indicator()} />
     </TabsPrimitive.List>
   );
 }
 TabsList.displayName = "Tabs.List";
 
 export function TabsTrigger({ className, ...rest }: TabsTriggerProps) {
-  return <TabsPrimitive.Trigger {...rest} className={cn(tabsTriggerVariants(), className)} />;
+  return <TabsPrimitive.Trigger {...rest} className={tabsTriggerVariants({ className })} />;
 }
 TabsTrigger.displayName = "Tabs.Trigger";
 
 export function TabsContent({ className, ...rest }: TabsContentProps) {
-  return <TabsPrimitive.Content {...rest} className={cn(tabsContentVariants(), className)} />;
+  return <TabsPrimitive.Content {...rest} className={tabsContentVariants({ className })} />;
 }
 TabsContent.displayName = "Tabs.Content";
 // #endregion

@@ -5,12 +5,11 @@ import {
   skeletonTextVariants,
   skeletonVariants,
 } from "@pisagor/styles/ui/skeleton";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 
 // #region Types
-interface SkeletonTextProps extends ComponentProps<typeof ark.div> {
+export interface SkeletonTextProps extends ComponentProps<typeof ark.div> {
   /**
    * The number of lines of the skeleton text.
    *
@@ -19,7 +18,7 @@ interface SkeletonTextProps extends ComponentProps<typeof ark.div> {
   lines?: number;
 }
 
-interface SkeletonRootProps extends ComponentProps<typeof ark.div>, WithTestId {}
+export interface SkeletonRootProps extends ComponentProps<typeof ark.div>, WithTestId {}
 // #endregion
 
 // #region Parts
@@ -27,7 +26,7 @@ export function SkeletonRoot({ className, testId, ...rest }: SkeletonRootProps) 
   return (
     <ark.div
       {...rest}
-      className={cn(skeletonVariants(), className)}
+      className={skeletonVariants({ className })}
       data-part="root"
       data-scope="skeleton"
       data-testid={testId}
@@ -40,7 +39,7 @@ export function SkeletonCircle({ className, ...rest }: ComponentProps<typeof ark
   return (
     <ark.div
       {...rest}
-      className={cn(skeletonCircleVariants(), className)}
+      className={skeletonCircleVariants({ className })}
       data-part="circle"
       data-scope="skeleton"
     />
@@ -52,7 +51,7 @@ export function SkeletonText({ className, lines = 2, ...rest }: SkeletonTextProp
   return (
     <ark.div
       {...rest}
-      className={cn(skeletonTextVariants(), className)}
+      className={skeletonTextVariants({ className })}
       data-part="text"
       data-scope="skeleton"
     >

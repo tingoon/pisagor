@@ -1,6 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
 import { badgeVariants } from "@pisagor/styles/ui/badge";
-import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { WithTestId } from "../../internal/types";
 
@@ -41,10 +40,12 @@ export const Badge = defineComponent({
         ark.span as ArkPart,
         {
           ...attrs,
-          class: cn(
-            badgeVariants({ pill: props.pill, size: props.size, variant: props.variant }),
-            props.class,
-          ),
+          class: badgeVariants({
+            class: props.class as string | undefined,
+            pill: props.pill,
+            size: props.size,
+            variant: props.variant,
+          }),
           "data-part": "root",
           "data-scope": "badge",
           "data-size": props.size,

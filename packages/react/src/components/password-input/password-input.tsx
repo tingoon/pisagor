@@ -5,7 +5,6 @@ import {
   passwordInputInlineVariants,
   passwordInputVariants,
 } from "@pisagor/styles/ui/password-input";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { useClearableInput } from "../../hooks";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
@@ -92,7 +91,7 @@ export function PasswordInput({
 
   return (
     <PasswordInputPrimitive.Root
-      className={cn(passwordInputVariants(), className)}
+      className={passwordInputVariants({ className })}
       data-size={size}
       data-testid={testId}
       defaultVisible={defaultVisible}
@@ -102,7 +101,7 @@ export function PasswordInput({
     >
       <PasswordInputPrimitive.Control asChild>
         <InputGroup
-          className={cn(passwordInputInlineVariants())}
+          className={passwordInputInlineVariants()}
           data-clearable={clearable || undefined}
           variant={variant}
         >

@@ -8,7 +8,7 @@ import type { ComponentProps } from "react";
 import type { AppShellRegionPosition } from "./app-shell.context";
 import { regionPositionClasses } from "./region";
 
-interface AppShellHeaderProps extends ComponentProps<"header"> {
+export interface AppShellHeaderProps extends ComponentProps<"header"> {
   /**
    * Scroll behavior for the page header row inside `AppShell.Main`.
    *
@@ -24,7 +24,7 @@ export function AppShellMain({ className, style, ...rest }: ComponentProps<"div"
   return (
     <div
       {...rest}
-      className={cn(appShellMainVariants(), className)}
+      className={appShellMainVariants({ className })}
       data-part="main"
       data-scope="app-shell"
       style={{ gridArea: "main", ...style }}
@@ -54,7 +54,7 @@ export function AppShellContent({ className, ...rest }: ComponentProps<"main">) 
   return (
     <main
       {...rest}
-      className={cn(appShellContentVariants(), className)}
+      className={appShellContentVariants({ className })}
       data-part="content"
       data-scope="app-shell"
     />

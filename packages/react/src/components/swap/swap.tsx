@@ -1,6 +1,5 @@
 import { Swap as SwapPrimitive } from "@ark-ui/react/swap";
 import { type SwapVariantProps, swapVariants } from "@pisagor/styles/ui/swap";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { WithTestId } from "../../internal/types";
 
@@ -40,7 +39,7 @@ export function Swap({
   return (
     <SwapPrimitive.Root
       {...rest}
-      className={cn(swapVariants({ variant }), className)}
+      className={swapVariants({ className, variant })}
       data-testid={testId}
       lazyMount={lazyMount}
       unmountOnExit={unmountOnExit}

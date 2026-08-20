@@ -8,7 +8,6 @@ import {
   timelineTitleVariants,
   timelineVariants,
 } from "@pisagor/styles/ui/timeline";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { WithTestId } from "../../internal/types";
 
@@ -57,7 +56,7 @@ export function TimelineRoot({
   return (
     <ark.ol
       {...rest}
-      className={cn(timelineVariants({ orientation }), className)}
+      className={timelineVariants({ className, orientation })}
       data-orientation={orientation}
       data-part="root"
       data-scope="timeline"
@@ -71,7 +70,7 @@ export function TimelineItem({ className, ...rest }: TimelineItemProps) {
   return (
     <ark.li
       {...rest}
-      className={cn(timelineItemVariants(), className)}
+      className={timelineItemVariants({ className })}
       data-part="item"
       data-scope="timeline"
     />
@@ -83,7 +82,7 @@ export function TimelineIndicator({ className, children, ...rest }: TimelineIndi
   return (
     <ark.div
       {...rest}
-      className={cn(timelineIndicatorVariants(), className)}
+      className={timelineIndicatorVariants({ className })}
       data-part="indicator"
       data-scope="timeline"
     >
@@ -98,7 +97,7 @@ export function TimelineSeparator({ className, ...rest }: TimelineSeparatorProps
     <ark.div
       {...rest}
       aria-hidden="true"
-      className={cn(timelineSeparatorVariants(), className)}
+      className={timelineSeparatorVariants({ className })}
       data-part="separator"
       data-scope="timeline"
     />
@@ -110,7 +109,7 @@ export function TimelineContent({ className, ...rest }: TimelineContentProps) {
   return (
     <ark.div
       {...rest}
-      className={cn(timelineContentVariants(), className)}
+      className={timelineContentVariants({ className })}
       data-part="content"
       data-scope="timeline"
     />
@@ -122,7 +121,7 @@ export function TimelineTitle({ className, ...rest }: TimelineTitleProps) {
   return (
     <ark.div
       {...rest}
-      className={cn(timelineTitleVariants(), className)}
+      className={timelineTitleVariants({ className })}
       data-part="title"
       data-scope="timeline"
     />
@@ -134,7 +133,7 @@ export function TimelineDescription({ className, ...rest }: TimelineDescriptionP
   return (
     <ark.div
       {...rest}
-      className={cn(timelineDescriptionVariants(), className)}
+      className={timelineDescriptionVariants({ className })}
       data-part="description"
       data-scope="timeline"
     />

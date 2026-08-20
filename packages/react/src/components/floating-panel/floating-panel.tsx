@@ -13,7 +13,6 @@ import {
   floatingPanelPositionerVariants,
   floatingPanelTitleVariants,
 } from "@pisagor/styles/ui/floating-panel";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 import { Button, type ButtonProps } from "../button";
@@ -118,7 +117,7 @@ export function FloatingPanelContent({
       <FloatingPanelPrimitive.Positioner className={floatingPanelPositionerVariants()}>
         <FloatingPanelPrimitive.Content
           {...rest}
-          className={cn(floatingPanelContentVariants(), className)}
+          className={floatingPanelContentVariants({ className })}
           data-testid={testId}
         >
           {children}
@@ -157,7 +156,7 @@ export function FloatingPanelHeader({
     <FloatingPanelDragTrigger>
       <FloatingPanelPrimitive.Header
         {...rest}
-        className={cn(floatingPanelInlineVariants(), className)}
+        className={floatingPanelInlineVariants({ className })}
       >
         {title && <FloatingPanelTitle>{title}</FloatingPanelTitle>}
 
@@ -172,7 +171,7 @@ export function FloatingPanelControl({ className, ...rest }: FloatingPanelContro
   return (
     <FloatingPanelPrimitive.Control
       {...rest}
-      className={cn(floatingPanelInline2Variants(), className)}
+      className={floatingPanelInline2Variants({ className })}
     />
   );
 }
@@ -226,10 +225,7 @@ FloatingPanelRestore.displayName = "FloatingPanel.Restore";
 
 export function FloatingPanelTitle({ className, ...rest }: FloatingPanelTitleProps) {
   return (
-    <FloatingPanelPrimitive.Title
-      {...rest}
-      className={cn(floatingPanelTitleVariants(), className)}
-    />
+    <FloatingPanelPrimitive.Title {...rest} className={floatingPanelTitleVariants({ className })} />
   );
 }
 FloatingPanelTitle.displayName = "FloatingPanel.Title";
@@ -257,7 +253,7 @@ export function FloatingPanelBody({
 }: FloatingPanelBodyProps) {
   return (
     <ScrollArea scrollFade={scrollFade}>
-      <FloatingPanelPrimitive.Body {...rest} className={cn(floatingPanelBodyVariants(), className)}>
+      <FloatingPanelPrimitive.Body {...rest} className={floatingPanelBodyVariants({ className })}>
         {children}
       </FloatingPanelPrimitive.Body>
     </ScrollArea>
@@ -269,7 +265,7 @@ export function FloatingPanelFooter({ className, ...rest }: ComponentProps<typeo
   return (
     <ark.div
       {...rest}
-      className={cn(floatingPanelFooterVariants(), className)}
+      className={floatingPanelFooterVariants({ className })}
       data-part="footer"
       data-scope="floating-panel"
     />

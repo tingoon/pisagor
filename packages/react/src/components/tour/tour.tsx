@@ -155,7 +155,7 @@ export function TourOverlay({ className, ...rest }: DialogOverlayProps) {
 TourOverlay.displayName = "Tour.Overlay";
 
 export function TourPositioner(props: TourPositionerProps) {
-  return <TourPrimitive.Positioner className={cn(tourPositionerVariants())} {...props} />;
+  return <TourPrimitive.Positioner className={tourPositionerVariants()} {...props} />;
 }
 TourPositioner.displayName = "Tour.Positioner";
 
@@ -173,7 +173,7 @@ export function TourContent({
       <TourPositioner>
         <TourPrimitive.Content
           {...rest}
-          className={cn(tourContentVariants(), className)}
+          className={tourContentVariants({ className })}
           data-testid={testId}
         >
           {children ?? (
@@ -229,7 +229,7 @@ export function TourTitle({ className, ...rest }: TourTitleProps) {
   const { tour } = useTourContext();
 
   return (
-    <TourPrimitive.Title {...rest} className={cn(tourTitleVariants(), className)}>
+    <TourPrimitive.Title {...rest} className={tourTitleVariants({ className })}>
       {tour.step?.title}
     </TourPrimitive.Title>
   );
@@ -240,7 +240,7 @@ export function TourDescription({ className, ...rest }: TourDescriptionProps) {
   const { tour } = useTourContext();
 
   return (
-    <TourPrimitive.Description {...rest} className={cn(tourDescriptionVariants(), className)}>
+    <TourPrimitive.Description {...rest} className={tourDescriptionVariants({ className })}>
       {tour.step?.description}
     </TourPrimitive.Description>
   );
@@ -251,7 +251,7 @@ export function TourProgressText({ className, ...rest }: TourProgressTextProps) 
   const { tour } = useTourContext();
 
   return (
-    <TourPrimitive.ProgressText {...rest} className={cn(tourProgressTextVariants(), className)}>
+    <TourPrimitive.ProgressText {...rest} className={tourProgressTextVariants({ className })}>
       {tour.getProgressText()}
     </TourPrimitive.ProgressText>
   );
@@ -286,7 +286,7 @@ export function TourActions({ className, ...rest }: DialogFooterProps) {
   return (
     <TourPrimitive.Control {...rest} asChild>
       <Dialog.Footer
-        className={cn(tourActionsVariants(), className)}
+        className={tourActionsVariants({ className })}
         dataPart="actions"
         dataScope="tour"
       >

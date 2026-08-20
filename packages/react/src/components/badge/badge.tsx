@@ -1,11 +1,9 @@
 import { ark } from "@ark-ui/react/factory";
 import { type BadgeVariantProps, badgeVariants } from "@pisagor/styles/ui/badge";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 
 // #region Types
-
 export type BadgeVariant = BadgeVariantProps["variant"];
 
 type BadgeRootProps = ComponentProps<typeof ark.span>;
@@ -25,7 +23,7 @@ export function Badge({
   return (
     <ark.span
       {...rest}
-      className={cn(badgeVariants({ pill, size, variant }), className)}
+      className={badgeVariants({ className, pill, size, variant })}
       data-part="root"
       data-scope="badge"
       data-size={size}

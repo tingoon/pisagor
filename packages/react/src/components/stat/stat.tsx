@@ -114,7 +114,7 @@ export function StatTrend({ trend = "neutral", className, ...rest }: StatTrendPr
   return (
     <ark.div
       {...rest}
-      className={cn(statTrendVariants({ trend }), className)}
+      className={statTrendVariants({ className, trend })}
       data-part="trend"
       data-scope="stat"
       data-trend={trend}

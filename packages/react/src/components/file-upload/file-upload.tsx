@@ -87,7 +87,7 @@ export function FileUploadRoot({
   return (
     <FileUploadPrimitive.Root
       {...rest}
-      className={cn(fileUploadVariants(), className)}
+      className={fileUploadVariants({ className })}
       data-testid={testId}
       onFileChange={(details) => {
         onFileChange?.(details);
@@ -138,7 +138,7 @@ export function FileUploadDropzoneIcon({
   return (
     <ark.div
       {...rest}
-      className={cn(fileUploadDropzoneIconVariants(), className)}
+      className={fileUploadDropzoneIconVariants({ className })}
       data-part="dropzone-icon"
       data-scope="file-upload"
     >
@@ -152,7 +152,7 @@ export function FileUploadTitle({ className, ...rest }: ComponentProps<typeof ar
   return (
     <ark.div
       {...rest}
-      className={cn(fileUploadTitleVariants(), className)}
+      className={fileUploadTitleVariants({ className })}
       data-part="title"
       data-scope="file-upload"
     />
@@ -164,7 +164,7 @@ export function FileUploadDescription({ className, ...rest }: ComponentProps<typ
   return (
     <ark.div
       {...rest}
-      className={cn(fileUploadTitle2Variants(), className)}
+      className={fileUploadTitle2Variants({ className })}
       data-part="title"
       data-scope="file-upload"
     />
@@ -176,7 +176,7 @@ export function FileUploadHelper({ className, ...rest }: ComponentProps<typeof a
   return (
     <ark.div
       {...rest}
-      className={cn(fileUploadDropzoneHelperVariants(), className)}
+      className={fileUploadDropzoneHelperVariants({ className })}
       data-part="dropzone-helper"
       data-scope="file-upload"
     />
@@ -210,7 +210,7 @@ export function FileUploadList({ className, ...rest }: FileUploadListProps) {
         return (
           <FileUploadItem
             {...rest}
-            className={cn(fileUploadInlineVariants(), className)}
+            className={fileUploadInlineVariants({ className })}
             file={file}
             key={key}
           >
@@ -231,7 +231,7 @@ export function FileUploadList({ className, ...rest }: FileUploadListProps) {
             </div>
 
             <FileUploadItemDeleteTrigger asChild className={fileUploadInline7Variants()}>
-              <Button className={cn(fileUploadInline2Variants())} size="icon-xs" variant="ghost">
+              <Button className={fileUploadInline2Variants()} size="icon-xs" variant="ghost">
                 <XIcon />
               </Button>
             </FileUploadItemDeleteTrigger>
@@ -244,7 +244,7 @@ export function FileUploadList({ className, ...rest }: FileUploadListProps) {
 FileUploadList.displayName = "FileUpload.List";
 
 export function FileUploadItem({ className, ...rest }: FileUploadItemProps) {
-  return <FileUploadPrimitive.Item {...rest} className={cn(fileUploadItemVariants(), className)} />;
+  return <FileUploadPrimitive.Item {...rest} className={fileUploadItemVariants({ className })} />;
 }
 FileUploadItem.displayName = "FileUpload.Item";
 
@@ -252,7 +252,7 @@ export function FileUploadItemPreview({ className, ...rest }: FileUploadItemPrev
   return (
     <FileUploadPrimitive.ItemPreview
       {...rest}
-      className={cn(fileUploadItemPreviewVariants(), className)}
+      className={fileUploadItemPreviewVariants({ className })}
     />
   );
 }
@@ -265,7 +265,7 @@ export function FileUploadItemPreviewImage({
   return (
     <FileUploadPrimitive.ItemPreviewImage
       {...rest}
-      className={cn(fileUploadItemPreviewImageVariants(), className)}
+      className={fileUploadItemPreviewImageVariants({ className })}
     />
   );
 }
@@ -273,10 +273,7 @@ FileUploadItemPreviewImage.displayName = "FileUpload.ItemPreviewImage";
 
 export function FileUploadItemName({ className, ...rest }: FileUploadItemNameProps) {
   return (
-    <FileUploadPrimitive.ItemName
-      {...rest}
-      className={cn(fileUploadItemNameVariants(), className)}
-    />
+    <FileUploadPrimitive.ItemName {...rest} className={fileUploadItemNameVariants({ className })} />
   );
 }
 FileUploadItemName.displayName = "FileUpload.ItemName";
@@ -285,7 +282,7 @@ export function FileUploadItemSize({ className, ...rest }: FileUploadItemSizePro
   return (
     <FileUploadPrimitive.ItemSizeText
       {...rest}
-      className={cn(fileUploadItemSizeVariants(), className)}
+      className={fileUploadItemSizeVariants({ className })}
     />
   );
 }

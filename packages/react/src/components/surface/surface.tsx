@@ -1,6 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
 import { type SurfaceVariantProps, surfaceVariants } from "@pisagor/styles/ui/surface";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import type { WithTestId } from "../../internal/types";
@@ -53,10 +52,13 @@ export function Surface({
     <SurfaceContext value={surface}>
       <ark.div
         {...rest}
-        className={cn(
-          surfaceVariants({ bordered, padding, rounded, variant: surface.variant }),
+        className={surfaceVariants({
+          bordered,
           className,
-        )}
+          padding,
+          rounded,
+          variant: surface.variant,
+        })}
         data-depth={surface.depth}
         data-part="root"
         data-scope="surface"

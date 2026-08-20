@@ -32,7 +32,7 @@ import {
 } from "./region";
 import { AppShellSideTrigger } from "./side-trigger";
 
-interface AppShellInspectorProps extends ComponentProps<"aside">, WithTestId {
+export interface AppShellInspectorProps extends ComponentProps<"aside">, WithTestId {
   /**
    * Initial inspector width in pixels.
    *
@@ -66,7 +66,7 @@ interface AppShellInspectorProps extends ComponentProps<"aside">, WithTestId {
   resizableProps?: AppShellResizableProps;
 }
 
-interface AppShellInspectorTriggerProps extends Omit<ButtonProps, "children"> {
+export interface AppShellInspectorTriggerProps extends Omit<ButtonProps, "children"> {
   /** Custom content when no `on` / `off` icons are provided. */
   children?: ReactNode;
   /** Content shown when the region is open. */
@@ -149,7 +149,7 @@ export function AppShellInspectorHeader({ className, ...rest }: ComponentProps<"
   return (
     <div
       {...rest}
-      className={cn(appShellInspectorHeaderVariants(), className)}
+      className={appShellInspectorHeaderVariants({ className })}
       data-part="inspector-header"
       data-scope="app-shell"
     />
@@ -162,7 +162,7 @@ export function AppShellInspectorContent({ className, ...rest }: ComponentProps<
     <ScrollArea className={appShellInline2Variants()}>
       <div
         {...rest}
-        className={cn(appShellInspectorContentVariants(), className)}
+        className={appShellInspectorContentVariants({ className })}
         data-part="inspector-content"
         data-scope="app-shell"
       />
@@ -175,7 +175,7 @@ export function AppShellInspectorFooter({ className, ...rest }: ComponentProps<"
   return (
     <div
       {...rest}
-      className={cn(appShellInspectorFooterVariants(), className)}
+      className={appShellInspectorFooterVariants({ className })}
       data-part="inspector-footer"
       data-scope="app-shell"
     />

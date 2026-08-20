@@ -17,7 +17,6 @@ import {
   fieldTitleVariants,
   fieldVariants,
 } from "@pisagor/styles/ui/field";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import {
   formControlSeparatorVariants,
@@ -59,7 +58,7 @@ export function FieldRoot({
   return (
     <FieldPrimitive.Root
       {...rest}
-      className={cn(fieldVariants({ orientation, reverse }), className)}
+      className={fieldVariants({ className, orientation, reverse })}
       data-orientation={orientation}
       data-testid={testId}
     />
@@ -68,7 +67,7 @@ export function FieldRoot({
 FieldRoot.displayName = "Field";
 
 export function FieldSet({ className, ...rest }: FieldSetProps) {
-  return <FieldsetPrimitive.Root {...rest} className={cn(fieldSetVariants(), className)} />;
+  return <FieldsetPrimitive.Root {...rest} className={fieldSetVariants({ className })} />;
 }
 FieldSet.displayName = "Field.Set";
 
@@ -76,7 +75,7 @@ export function FieldLegend({ variant = "legend", className, ...rest }: FieldLeg
   return (
     <FieldsetPrimitive.Legend
       {...rest}
-      className={cn(fieldLegendVariants(), className)}
+      className={fieldLegendVariants({ className })}
       data-variant={variant}
     />
   );
@@ -87,7 +86,7 @@ export function FieldGroup({ className, ...rest }: ComponentProps<typeof ark.div
   return (
     <ark.div
       {...rest}
-      className={cn(fieldGroupVariants(), className)}
+      className={fieldGroupVariants({ className })}
       data-part="group"
       data-scope="field"
     />
@@ -99,7 +98,7 @@ export function FieldContent({ className, ...rest }: ComponentProps<typeof ark.d
   return (
     <ark.div
       {...rest}
-      className={cn(fieldContentVariants(), className)}
+      className={fieldContentVariants({ className })}
       data-part="content"
       data-scope="field"
     />
@@ -108,7 +107,7 @@ export function FieldContent({ className, ...rest }: ComponentProps<typeof ark.d
 FieldContent.displayName = "Field.Content";
 
 export function FieldLabel({ className, ...rest }: FieldLabelProps) {
-  return <FieldPrimitive.Label {...rest} className={cn(fieldLabelVariants(), className)} />;
+  return <FieldPrimitive.Label {...rest} className={fieldLabelVariants({ className })} />;
 }
 FieldLabel.displayName = "Field.Label";
 
@@ -121,7 +120,7 @@ export function FieldRequiredIndicator({
     <FieldPrimitive.RequiredIndicator
       {...rest}
       aria-hidden
-      className={cn(fieldRequiredIndicatorVariants(), className)}
+      className={fieldRequiredIndicatorVariants({ className })}
     >
       {children ?? "*"}
     </FieldPrimitive.RequiredIndicator>
@@ -133,7 +132,7 @@ export function FieldTitle({ className, ...rest }: ComponentProps<typeof ark.div
   return (
     <ark.div
       {...rest}
-      className={cn(fieldTitleVariants(), className)}
+      className={fieldTitleVariants({ className })}
       data-part="title"
       data-scope="field"
     />
@@ -145,7 +144,7 @@ export function FieldDescription({ className, ...rest }: ComponentProps<typeof a
   return (
     <ark.p
       {...rest}
-      className={cn(fieldDescriptionVariants(), className)}
+      className={fieldDescriptionVariants({ className })}
       data-part="description"
       data-scope="field"
     />
@@ -160,7 +159,7 @@ export function FieldSeparator({ children, className, ...rest }: ComponentProps<
   return (
     <ark.div
       {...rest}
-      className={cn(fieldSeparatorVariants(), className)}
+      className={fieldSeparatorVariants({ className })}
       data-content={!!children}
       data-part="separator"
       data-scope="field"
@@ -168,7 +167,7 @@ export function FieldSeparator({ children, className, ...rest }: ComponentProps<
       <Separator className={fieldInlineVariants()} />
 
       {!!children && (
-        <span className={cn(formControlSeparatorVariants({ ...shellArgs }))}>{children}</span>
+        <span className={formControlSeparatorVariants({ ...shellArgs })}>{children}</span>
       )}
     </ark.div>
   );
@@ -176,12 +175,12 @@ export function FieldSeparator({ children, className, ...rest }: ComponentProps<
 FieldSeparator.displayName = "Field.Separator";
 
 export function FieldHelper({ className, ...rest }: FieldHelperProps) {
-  return <FieldPrimitive.HelperText {...rest} className={cn(fieldHelperVariants(), className)} />;
+  return <FieldPrimitive.HelperText {...rest} className={fieldHelperVariants({ className })} />;
 }
 FieldHelper.displayName = "Field.Helper";
 
 export function FieldError({ className, ...rest }: FieldErrorProps) {
-  return <FieldPrimitive.ErrorText {...rest} className={cn(fieldErrorVariants(), className)} />;
+  return <FieldPrimitive.ErrorText {...rest} className={fieldErrorVariants({ className })} />;
 }
 FieldError.displayName = "Field.Error";
 // #endregion

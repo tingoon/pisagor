@@ -10,7 +10,6 @@ import {
   sheetInlineVariants,
   sheetPositionerVariants,
 } from "@pisagor/styles/ui/sheet";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { Button } from "../button";
 import {
@@ -73,7 +72,7 @@ export function SheetPositioner({
   return (
     <DialogPrimitive.Positioner
       {...rest}
-      className={cn(sheetPositionerVariants({ placement, variant }), className)}
+      className={sheetPositionerVariants({ className, placement, variant })}
     />
   );
 }
@@ -96,7 +95,7 @@ export function SheetContent({
       <SheetPositioner placement={placement} variant={variant}>
         <DialogPrimitive.Content
           {...rest}
-          className={cn(sheetContentVariants({ placement, variant }), className)}
+          className={sheetContentVariants({ className, placement, variant })}
           data-testid={testId}
         >
           {children}
@@ -139,7 +138,7 @@ export function SheetBody({ className, ...rest }: DialogBodyProps) {
   return (
     <Dialog.Body
       {...rest}
-      className={cn(sheetBodyVariants(), className)}
+      className={sheetBodyVariants({ className })}
       dataPart="body"
       dataScope="sheet"
     />
@@ -156,7 +155,7 @@ export function SheetFooter({ className, ...rest }: DialogFooterProps) {
   return (
     <Dialog.Footer
       {...rest}
-      className={cn(sheetFooterVariants(), className)}
+      className={sheetFooterVariants({ className })}
       dataPart="footer"
       dataScope="sheet"
     />

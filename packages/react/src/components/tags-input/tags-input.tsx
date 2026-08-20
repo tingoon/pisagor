@@ -12,7 +12,6 @@ import {
   tagsInputRootProviderVariants,
   tagsInputVariants,
 } from "@pisagor/styles/ui/tags-input";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { WithTestId } from "../../internal/types";
@@ -104,7 +103,7 @@ export function TagsInputRoot({
     <FormControlVariantProvider value={variant}>
       <TagsInputPrimitive.Root
         {...rest}
-        className={cn(tagsInputVariants(), className)}
+        className={tagsInputVariants({ className })}
         data-size={size}
         data-testid={testId}
         editable={editable}
@@ -143,7 +142,7 @@ export function TagsInputControl({
     <TagsInputPrimitive.Control asChild>
       <InputGroup
         {...rest}
-        className={cn(tagsInputInlineVariants(), className)}
+        className={tagsInputInlineVariants({ className })}
         size={size}
         variant={variant}
       >
@@ -162,7 +161,7 @@ export function TagsInputItem({
   ...rest
 }: TagsInputItemProps) {
   return (
-    <TagsInputPrimitive.Item {...rest} className={cn(tagsInputItemVariants(), className)}>
+    <TagsInputPrimitive.Item {...rest} className={tagsInputItemVariants({ className })}>
       <TagsInputItemPreview>
         <TagsInputItemText>{children}</TagsInputItemText>
         {showDelete && <TagsInputItemDeleteTrigger />}
@@ -177,7 +176,7 @@ export function TagsInputItemPreview({ className, ...rest }: TagsInputItemPrevie
   return (
     <TagsInputPrimitive.ItemPreview
       {...rest}
-      className={cn(tagsInputItemPreviewVariants(), className)}
+      className={tagsInputItemPreviewVariants({ className })}
     />
   );
 }
@@ -185,7 +184,7 @@ TagsInputItemPreview.displayName = "TagsInput.ItemPreview";
 
 export function TagsInputItemText({ className, ...rest }: TagsInputItemTextProps) {
   return (
-    <TagsInputPrimitive.ItemText {...rest} className={cn(tagsInputItemTextVariants(), className)} />
+    <TagsInputPrimitive.ItemText {...rest} className={tagsInputItemTextVariants({ className })} />
   );
 }
 TagsInputItemText.displayName = "TagsInput.ItemText";
@@ -199,7 +198,7 @@ export function TagsInputItemDeleteTrigger({
     <TagsInputPrimitive.ItemDeleteTrigger {...rest} asChild>
       <InputGroup.Button
         aria-label="Remove tag"
-        className={cn(tagsInputInline2Variants(), className)}
+        className={tagsInputInline2Variants({ className })}
         size="icon-xs"
         variant="ghost"
       >
@@ -213,7 +212,7 @@ TagsInputItemDeleteTrigger.displayName = "TagsInput.ItemDeleteTrigger";
 export function TagsInputItemInput(props: TagsInputItemInputProps) {
   return (
     <TagsInputPrimitive.ItemInput asChild {...props}>
-      <InputGroup.Input className={cn(tagsInputInline3Variants())} />
+      <InputGroup.Input className={tagsInputInline3Variants()} />
     </TagsInputPrimitive.ItemInput>
   );
 }
@@ -222,7 +221,7 @@ TagsInputItemInput.displayName = "TagsInput.ItemInput";
 export function TagsInputInput(props: TagsInputInputProps) {
   return (
     <TagsInputPrimitive.Input asChild {...props}>
-      <InputGroup.Input className={cn(tagsInputInline4Variants())} />
+      <InputGroup.Input className={tagsInputInline4Variants()} />
     </TagsInputPrimitive.Input>
   );
 }
@@ -236,7 +235,7 @@ export function TagsInputClearTrigger({
   return (
     <TagsInputPrimitive.ClearTrigger {...rest} asChild>
       <InputGroup.Button
-        className={cn(tagsInputInline5Variants(), className)}
+        className={tagsInputInline5Variants({ className })}
         size="icon-xs"
         variant="ghost"
       >
@@ -258,7 +257,7 @@ export function TagsInputRootProvider({
   return (
     <TagsInputPrimitive.RootProvider
       {...rest}
-      className={cn(tagsInputRootProviderVariants(), className)}
+      className={tagsInputRootProviderVariants({ className })}
       data-size={size}
       data-testid={testId}
     >

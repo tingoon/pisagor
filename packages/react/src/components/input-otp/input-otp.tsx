@@ -6,7 +6,6 @@ import {
   inputOtpSeparatorVariants,
   inputOtpVariants,
 } from "@pisagor/styles/ui/input-otp";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { WithTestId } from "../../internal/types";
@@ -49,7 +48,7 @@ export function InputOTPRoot({
         otp={otp}
         placeholder={placeholder ?? ""}
       >
-        <PinInputPrimitive.Control className={cn(inputOtpControlVariants(), className)}>
+        <PinInputPrimitive.Control className={inputOtpControlVariants({ className })}>
           {children}
         </PinInputPrimitive.Control>
 
@@ -63,7 +62,7 @@ InputOTPRoot.displayName = "InputOTP";
 export function InputOTPSlot({ className, variant, ...rest }: InputOTPSlotProps) {
   return (
     <PinInputPrimitive.Input {...rest} asChild>
-      <Input className={cn(inputOtpInlineVariants(), className)} variant={variant} />
+      <Input className={inputOtpInlineVariants({ className })} variant={variant} />
     </PinInputPrimitive.Input>
   );
 }
@@ -73,7 +72,7 @@ export function InputOTPSeparator({ className, ...rest }: ComponentProps<typeof 
   return (
     <ark.hr
       {...rest}
-      className={cn(inputOtpSeparatorVariants(), className)}
+      className={inputOtpSeparatorVariants({ className })}
       data-part="separator"
       data-scope="input-otp"
     />

@@ -10,13 +10,11 @@ import {
   fileSizeVariants,
   fileVariants,
 } from "@pisagor/styles/ui/file";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { WithTestId } from "../../internal/types";
 import { Format } from "../format";
 
 // #region Types
-
 export interface FileRootProps
   extends ComponentProps<typeof ark.div>,
     FileVariantProps,
@@ -61,7 +59,7 @@ export function FileRoot({ className, testId, ...rest }: FileRootProps) {
   return (
     <ark.div
       {...rest}
-      className={cn(fileVariants(), className)}
+      className={fileVariants({ className })}
       data-part="root"
       data-scope="file"
       data-testid={testId}
@@ -74,7 +72,7 @@ export function FileMedia({ variant = "icon", className, children, ...rest }: Fi
   return (
     <ark.div
       {...rest}
-      className={cn(fileMediaVariants({ variant }), className)}
+      className={fileMediaVariants({ className, variant })}
       data-part="media"
       data-scope="file"
       data-variant={variant}
@@ -89,7 +87,7 @@ export function FileContent({ className, ...rest }: ComponentProps<typeof ark.di
   return (
     <ark.div
       {...rest}
-      className={cn(fileContentVariants(), className)}
+      className={fileContentVariants({ className })}
       data-part="content"
       data-scope="file"
     />
@@ -101,7 +99,7 @@ export function FileName({ className, ...rest }: FileNameProps) {
   return (
     <ark.div
       {...rest}
-      className={cn(fileNameVariants(), className)}
+      className={fileNameVariants({ className })}
       data-part="name"
       data-scope="file"
     />
@@ -113,7 +111,7 @@ export function FileMeta({ className, ...rest }: FileMetaProps) {
   return (
     <ark.div
       {...rest}
-      className={cn(fileMetaVariants(), className)}
+      className={fileMetaVariants({ className })}
       data-part="meta"
       data-scope="file"
     />
@@ -125,7 +123,7 @@ export function FileSize({ value, className, ...rest }: FileSizeProps) {
   return (
     <ark.div
       {...rest}
-      className={cn(fileSizeVariants(), className)}
+      className={fileSizeVariants({ className })}
       data-part="size"
       data-scope="file"
     >
@@ -139,7 +137,7 @@ export function FileActions({ className, ...rest }: FileActionsProps) {
   return (
     <ark.div
       {...rest}
-      className={cn(fileActionsVariants(), className)}
+      className={fileActionsVariants({ className })}
       data-part="actions"
       data-scope="file"
     />

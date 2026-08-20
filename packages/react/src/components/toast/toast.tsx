@@ -18,7 +18,6 @@ import {
   toastInlineVariants,
   toastItemVariants,
 } from "@pisagor/styles/ui/toast";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, CSSProperties, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { Button } from "../button";
@@ -84,7 +83,7 @@ export function ToasterRoot({
     <Portal>
       <ToasterPrimitive
         {...rest}
-        className={cn(toasterVariants(), className)}
+        className={toasterVariants({ className })}
         style={{ "--width": "356px", ...style } as CSSProperties}
         toaster={toasterInstance}
       >

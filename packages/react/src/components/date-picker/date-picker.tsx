@@ -12,7 +12,6 @@ import {
   datePickerTriggerVariants,
   datePickerValueVariants,
 } from "@pisagor/styles/ui/date-picker";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { useClearableInput } from "../../hooks";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
@@ -45,7 +44,7 @@ export interface DatePickerInputProps
   clearable?: boolean;
 }
 
-interface DatePickerTimerProps extends InputProps {
+export interface DatePickerTimerProps extends InputProps {
   /**
    * Whether to show a clear button when the input has a value.
    *
@@ -110,7 +109,7 @@ export function DatePickerTrigger({
 
   return (
     <DatePickerPrimitive.Control className={datePickerControlVariants()} data-testid={testId}>
-      <DatePickerPrimitive.Trigger {...rest} className={cn(datePickerTriggerVariants(), className)}>
+      <DatePickerPrimitive.Trigger {...rest} className={datePickerTriggerVariants({ className })}>
         {children}
       </DatePickerPrimitive.Trigger>
       {clearable ? <DatePickerClearTrigger /> : null}
@@ -202,7 +201,7 @@ export function DatePickerTimer({
         <ClockIcon />
       </InputGroup.Addon>
       <InputGroup.Input
-        className={cn(datePickerInlineVariants(), className)}
+        className={datePickerInlineVariants({ className })}
         classNames={classNames}
         clearable={false}
         defaultValue={defaultValue}
@@ -234,10 +233,7 @@ export function DatePickerContent({
   return (
     <Portal>
       <DatePickerPrimitive.Positioner>
-        <DatePickerPrimitive.Content
-          {...rest}
-          className={cn(datePickerContentVariants(), className)}
-        >
+        <DatePickerPrimitive.Content {...rest} className={datePickerContentVariants({ className })}>
           {showCalendar && !children ? (
             <>
               <Calendar.ViewControl>
@@ -263,7 +259,7 @@ DatePickerContent.displayName = "DatePicker.Content";
 
 export function DatePickerValue({ className, ...rest }: DatePickerValueProps) {
   return (
-    <DatePickerPrimitive.ValueText {...rest} className={cn(datePickerValueVariants(), className)} />
+    <DatePickerPrimitive.ValueText {...rest} className={datePickerValueVariants({ className })} />
   );
 }
 DatePickerValue.displayName = "DatePicker.Value";

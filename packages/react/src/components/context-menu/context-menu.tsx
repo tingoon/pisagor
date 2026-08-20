@@ -1,6 +1,5 @@
 import { Menu as MenuPrimitive } from "@ark-ui/react/menu";
 import { contextMenuTriggerVariants } from "@pisagor/styles/ui/context-menu";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 import {
@@ -33,7 +32,7 @@ export function ContextMenuTrigger({ className, ...rest }: ContextMenuTriggerPro
   return (
     <MenuPrimitive.ContextTrigger
       {...rest}
-      className={cn(contextMenuTriggerVariants(), className)}
+      className={contextMenuTriggerVariants({ className })}
       data-testid={testId}
     />
   );

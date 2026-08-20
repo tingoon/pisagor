@@ -4,13 +4,11 @@ import {
   buttonLoadingVariants,
   buttonVariants,
 } from "@pisagor/styles/ui/button";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 import { Spinner } from "../spinner";
 
 // #region Types
-
 type ButtonRootProps = ComponentProps<typeof ark.button>;
 
 export interface ButtonProps extends ButtonRootProps, ButtonVariantProps, WithTestId {
@@ -49,7 +47,7 @@ export function Button({
     <ark.button
       {...rest}
       aria-busy={isLoading || undefined}
-      className={cn(buttonVariants({ clickEffect, pill, size, variant }), className)}
+      className={buttonVariants({ className, clickEffect, pill, size, variant })}
       data-part="root"
       data-scope="button"
       data-size={size}

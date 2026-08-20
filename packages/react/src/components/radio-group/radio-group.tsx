@@ -50,7 +50,7 @@ export function RadioGroupRoot({
   return (
     <RadioGroupPrimitive.Root
       {...rest}
-      className={cn(radioGroupVariants(), className)}
+      className={radioGroupVariants({ className })}
       data-testid={testId}
       onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
     >

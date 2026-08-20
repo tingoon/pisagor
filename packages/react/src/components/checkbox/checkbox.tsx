@@ -36,7 +36,7 @@ export function CheckboxGroup({ className, onValueChange, ...rest }: CheckboxGro
   return (
     <CheckboxPrimitive.Group
       {...rest}
-      className={cn(checkboxGroupVariants(), className)}
+      className={checkboxGroupVariants({ className })}
       onValueChange={onValueChange}
     />
   );

@@ -10,7 +10,6 @@ import {
   tableVariants,
   tableWrapperVariants,
 } from "@pisagor/styles/ui/table";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 
@@ -51,7 +50,7 @@ export function TableRoot({
     <div className={tableWrapperVariants()} data-part="wrapper" data-scope="table">
       <ark.table
         {...rest}
-        className={cn(tableVariants(), className)}
+        className={tableVariants({ className })}
         data-hoverable={isHoverable}
         data-part="root"
         data-scope="table"
@@ -67,7 +66,7 @@ export function TableHeader({ className, ...rest }: TableHeaderProps) {
   return (
     <ark.thead
       {...rest}
-      className={cn(tableHeaderVariants(), className)}
+      className={tableHeaderVariants({ className })}
       data-part="header"
       data-scope="table"
     />
@@ -79,7 +78,7 @@ export function TableBody({ className, ...rest }: TableBodyProps) {
   return (
     <ark.tbody
       {...rest}
-      className={cn(tableBodyVariants(), className)}
+      className={tableBodyVariants({ className })}
       data-part="body"
       data-scope="table"
     />
@@ -91,7 +90,7 @@ export function TableFooter({ className, ...rest }: TableFooterProps) {
   return (
     <ark.tfoot
       {...rest}
-      className={cn(tableFooterVariants(), className)}
+      className={tableFooterVariants({ className })}
       data-part="footer"
       data-scope="table"
     />
@@ -103,7 +102,7 @@ export function TableRow({ className, ...rest }: TableRowProps) {
   return (
     <ark.tr
       {...rest}
-      className={cn(tableRowVariants(), className)}
+      className={tableRowVariants({ className })}
       data-part="row"
       data-scope="table"
     />
@@ -115,7 +114,7 @@ export function TableHead({ className, ...rest }: TableHeadProps) {
   return (
     <ark.th
       {...rest}
-      className={cn(tableHeadVariants(), className)}
+      className={tableHeadVariants({ className })}
       data-part="head"
       data-scope="table"
     />
@@ -127,7 +126,7 @@ export function TableCell({ className, ...rest }: TableCellProps) {
   return (
     <ark.td
       {...rest}
-      className={cn(tableCellVariants(), className)}
+      className={tableCellVariants({ className })}
       data-part="cell"
       data-scope="table"
     />
@@ -139,7 +138,7 @@ export function TableCaption({ className, ...rest }: TableCaptionProps) {
   return (
     <ark.caption
       {...rest}
-      className={cn(tableCaptionVariants(), className)}
+      className={tableCaptionVariants({ className })}
       data-part="caption"
       data-scope="table"
     />

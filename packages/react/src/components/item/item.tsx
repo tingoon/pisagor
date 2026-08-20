@@ -14,17 +14,16 @@ import {
   itemTitleVariants,
   itemVariants,
 } from "@pisagor/styles/ui/item";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { WithTestId } from "../../internal/types";
 import { Separator, type SeparatorProps } from "../separator";
 
 // #region Types
-interface ItemProps extends ComponentProps<typeof ark.div>, ItemVariantProps, WithTestId {}
+export interface ItemProps extends ComponentProps<typeof ark.div>, ItemVariantProps, WithTestId {}
 
-interface ItemMediaProps extends ComponentProps<typeof ark.div>, ItemMediaVariantProps {}
+export interface ItemMediaProps extends ComponentProps<typeof ark.div>, ItemMediaVariantProps {}
 
-interface ItemHeaderProps extends Omit<ComponentProps<typeof ark.div>, "title"> {
+export interface ItemHeaderProps extends Omit<ComponentProps<typeof ark.div>, "title"> {
   /** Shorthand: renders an ItemTitle inside the header. */
   title?: ReactNode;
   /** Shorthand: renders an ItemDescription inside the header. */
@@ -37,7 +36,7 @@ export function ItemGroup({ className, ...rest }: ComponentProps<typeof ark.div>
   return (
     <ark.div
       {...rest}
-      className={cn(itemGroupVariants(), className)}
+      className={itemGroupVariants({ className })}
       data-part="group"
       data-scope="item"
       role="list"
@@ -50,7 +49,7 @@ export function ItemSeparator({ className, ...rest }: SeparatorProps) {
   return (
     <Separator
       {...rest}
-      className={cn(itemSeparatorVariants(), className)}
+      className={itemSeparatorVariants({ className })}
       dataPart="separator"
       dataScope="item"
       orientation="horizontal"
@@ -63,7 +62,7 @@ export function ItemRoot({ variant = "default", className, testId, ...rest }: It
   return (
     <ark.div
       {...rest}
-      className={cn(itemVariants({ variant }), className)}
+      className={itemVariants({ className, variant })}
       data-part="root"
       data-scope="item"
       data-testid={testId}
@@ -77,7 +76,7 @@ export function ItemMedia({ variant = "default", className, ...rest }: ItemMedia
   return (
     <ark.div
       {...rest}
-      className={cn(itemMediaVariants({ className, variant }))}
+      className={itemMediaVariants({ className, variant })}
       data-part="media"
       data-scope="item"
       data-variant={variant}
@@ -90,7 +89,7 @@ export function ItemContent({ className, ...rest }: ComponentProps<typeof ark.di
   return (
     <ark.div
       {...rest}
-      className={cn(itemContentVariants(), className)}
+      className={itemContentVariants({ className })}
       data-part="content"
       data-scope="item"
     />
@@ -102,7 +101,7 @@ export function ItemTitle({ className, ...rest }: ComponentProps<typeof ark.div>
   return (
     <ark.div
       {...rest}
-      className={cn(itemTitleVariants(), className)}
+      className={itemTitleVariants({ className })}
       data-part="title"
       data-scope="item"
     />
@@ -114,7 +113,7 @@ export function ItemDescription({ className, ...rest }: ComponentProps<typeof ar
   return (
     <ark.p
       {...rest}
-      className={cn(itemDescriptionVariants(), className)}
+      className={itemDescriptionVariants({ className })}
       data-part="description"
       data-scope="item"
     />
@@ -126,7 +125,7 @@ export function ItemActions({ className, ...rest }: ComponentProps<typeof ark.di
   return (
     <ark.div
       {...rest}
-      className={cn(itemActionsVariants(), className)}
+      className={itemActionsVariants({ className })}
       data-part="actions"
       data-scope="item"
     />
@@ -138,7 +137,7 @@ export function ItemHeader({ title, description, className, children, ...rest }:
   return (
     <ark.div
       {...rest}
-      className={cn(itemHeaderVariants(), className)}
+      className={itemHeaderVariants({ className })}
       data-part="header"
       data-scope="item"
     >
@@ -160,7 +159,7 @@ export function ItemFooter({ className, ...rest }: ComponentProps<typeof ark.div
   return (
     <ark.div
       {...rest}
-      className={cn(itemFooterVariants(), className)}
+      className={itemFooterVariants({ className })}
       data-part="footer"
       data-scope="item"
     />

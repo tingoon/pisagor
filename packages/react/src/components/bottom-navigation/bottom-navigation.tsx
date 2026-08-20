@@ -7,7 +7,6 @@ import {
   bottomNavigationListVariants,
   bottomNavigationVariants,
 } from "@pisagor/styles/ui/bottom-navigation";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 
@@ -26,7 +25,7 @@ export function BottomNavigationRoot({ className, testId, ...rest }: BottomNavig
   return (
     <TabsPrimitive.Root
       {...rest}
-      className={cn(bottomNavigationVariants(), className)}
+      className={bottomNavigationVariants({ className })}
       data-testid={testId}
     />
   );
@@ -38,13 +37,13 @@ export function BottomNavigationList({
   className,
   ...rest
 }: BottomNavigationListProps) {
-  return <TabsPrimitive.List {...rest} className={cn(bottomNavigationListVariants(), className)} />;
+  return <TabsPrimitive.List {...rest} className={bottomNavigationListVariants({ className })} />;
 }
 BottomNavigationList.displayName = "BottomNavigation.List";
 
 export function BottomNavigationItem({ className, ...rest }: BottomNavigationItemProps) {
   return (
-    <TabsPrimitive.Trigger {...rest} className={cn(bottomNavigationItemVariants(), className)} />
+    <TabsPrimitive.Trigger {...rest} className={bottomNavigationItemVariants({ className })} />
   );
 }
 BottomNavigationItem.displayName = "BottomNavigation.Item";
@@ -54,7 +53,7 @@ export function BottomNavigationItemIcon({ className, ...rest }: ComponentProps<
     <ark.span
       {...rest}
       aria-hidden
-      className={cn(bottomNavigationItemIconVariants(), className)}
+      className={bottomNavigationItemIconVariants({ className })}
       data-part="item-icon"
       data-scope="bottom-navigation"
     />
@@ -66,7 +65,7 @@ export function BottomNavigationItemLabel({ className, ...rest }: ComponentProps
   return (
     <ark.span
       {...rest}
-      className={cn(bottomNavigationItemLabelVariants(), className)}
+      className={bottomNavigationItemLabelVariants({ className })}
       data-part="item-label"
       data-scope="bottom-navigation"
     />

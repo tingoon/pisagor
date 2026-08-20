@@ -8,7 +8,6 @@ import {
   paginationInlineVariants,
   paginationVariants,
 } from "@pisagor/styles/ui/pagination";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 import { Button, type ButtonProps } from "../button";
@@ -40,7 +39,7 @@ export function PaginationRoot({ className, children, testId, ...rest }: Paginat
   return (
     <PaginationPrimitive.Root
       {...rest}
-      className={cn(paginationVariants(), className)}
+      className={paginationVariants({ className })}
       data-testid={testId}
     >
       {children ?? (
@@ -82,7 +81,7 @@ PaginationNext.displayName = "Pagination.Next";
 export function PaginationItem({ className, children, ...rest }: PaginationItemProps) {
   return (
     <PaginationPrimitive.Item {...rest} asChild>
-      <Button className={cn(paginationInlineVariants(), className)} size="icon-md" variant="ghost">
+      <Button className={paginationInlineVariants({ className })} size="icon-md" variant="ghost">
         {children}
       </Button>
     </PaginationPrimitive.Item>
@@ -148,7 +147,7 @@ PaginationItemLink.displayName = "Pagination.ItemLink";
 
 export function PaginationEllipsis({ className, ...rest }: PaginationEllipsisProps) {
   return (
-    <PaginationPrimitive.Ellipsis {...rest} className={cn(paginationEllipsisVariants(), className)}>
+    <PaginationPrimitive.Ellipsis {...rest} className={paginationEllipsisVariants({ className })}>
       <DotsThreeIcon />
     </PaginationPrimitive.Ellipsis>
   );

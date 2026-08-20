@@ -4,7 +4,6 @@ import {
   qrCodeOverlayVariants,
   qrCodeVariants,
 } from "@pisagor/styles/ui/qr-code";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 
@@ -21,11 +20,7 @@ export type QrCodeDownloadProps = ComponentProps<typeof QrCodePrimitive.Download
 // #region Parts
 export function QrCodeRoot({ className, children, testId, ...rest }: QrCodeRootProps) {
   return (
-    <QrCodePrimitive.Root
-      {...rest}
-      className={cn(qrCodeVariants(), className)}
-      data-testid={testId}
-    >
+    <QrCodePrimitive.Root {...rest} className={qrCodeVariants({ className })} data-testid={testId}>
       {children ?? <QrCodeFrame />}
     </QrCodePrimitive.Root>
   );
@@ -44,7 +39,7 @@ export function QrCodeFrame({ className, ...rest }: QrCodeFrameProps) {
 QrCodeFrame.displayName = "QrCode.Frame";
 
 export function QrCodeOverlay({ className, ...rest }: QrCodeOverlayProps) {
-  return <QrCodePrimitive.Overlay {...rest} className={cn(qrCodeOverlayVariants(), className)} />;
+  return <QrCodePrimitive.Overlay {...rest} className={qrCodeOverlayVariants({ className })} />;
 }
 QrCodeOverlay.displayName = "QrCode.Overlay";
 

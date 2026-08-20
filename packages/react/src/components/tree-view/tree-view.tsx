@@ -125,7 +125,7 @@ export function TreeViewRoot({
     <TreeViewContext value={{ fileIcons }}>
       <TreeViewPrimitive.Root
         {...rest}
-        className={cn(treeViewVariants(), className)}
+        className={treeViewVariants({ className })}
         data-testid={testId}
         lazyMount={lazyMount}
         unmountOnExit={unmountOnExit}
@@ -136,12 +136,12 @@ export function TreeViewRoot({
 TreeViewRoot.displayName = "TreeView";
 
 export function TreeViewLabel({ className, ...rest }: TreeViewLabelProps) {
-  return <TreeViewPrimitive.Label {...rest} className={cn(treeViewLabelVariants(), className)} />;
+  return <TreeViewPrimitive.Label {...rest} className={treeViewLabelVariants({ className })} />;
 }
 TreeViewLabel.displayName = "TreeView.Label";
 
 export function TreeViewTree({ className, ...rest }: TreeViewTreeProps) {
-  return <TreeViewPrimitive.Tree {...rest} className={cn(treeViewTreeVariants(), className)} />;
+  return <TreeViewPrimitive.Tree {...rest} className={treeViewTreeVariants({ className })} />;
 }
 TreeViewTree.displayName = "TreeView.Tree";
 
@@ -151,7 +151,7 @@ export const TreeViewNode = <T extends TreeNodeType>(props: NodeProviderProps<T>
 TreeViewNode.displayName = "TreeView.Node";
 
 export function TreeViewBranch(props: TreeViewBranchProps) {
-  return <TreeViewPrimitive.Branch className={cn(treeViewBranchVariants())} {...props} />;
+  return <TreeViewPrimitive.Branch className={treeViewBranchVariants()} {...props} />;
 }
 TreeViewBranch.displayName = "TreeView.Branch";
 
@@ -163,7 +163,7 @@ export function TreeViewBranchItem({
   ...rest
 }: TreeViewBranchItemProps) {
   return (
-    <TreeViewPrimitive.BranchControl {...rest} className={cn(treeViewControlVariants(), className)}>
+    <TreeViewPrimitive.BranchControl {...rest} className={treeViewControlVariants({ className })}>
       <TreeViewBranchIndicator />
       <TreeViewBranchTitle expandedIcon={expandedIcon} icon={icon}>
         {children}
@@ -189,7 +189,7 @@ function TreeViewBranchTitle({
           ) : (
             <TreeViewPrimitive.BranchText
               {...rest}
-              className={cn(treeViewBranchTitleVariants(), className)}
+              className={treeViewBranchTitleVariants({ className })}
             >
               {Icon !== null && !nodeState.expanded && (
                 <TreeViewItemIcon>{Icon ? <Icon /> : <FolderIcon />}</TreeViewItemIcon>
@@ -212,7 +212,7 @@ export function TreeViewBranchIndicator({ className, ...rest }: TreeViewBranchIn
   return (
     <TreeViewPrimitive.BranchIndicator
       {...rest}
-      className={cn(treeViewBranchIndicatorVariants(), className)}
+      className={treeViewBranchIndicatorVariants({ className })}
     >
       <CaretRightIcon />
     </TreeViewPrimitive.BranchIndicator>
@@ -246,7 +246,7 @@ function TreeViewBranchIndentGuide({ className, ...rest }: TreeViewBranchIndentG
 }
 
 export function TreeViewContent({ className, ...rest }: TreeViewContentProps) {
-  return <TreeViewPrimitive.Item {...rest} className={cn(treeViewControlVariants(), className)} />;
+  return <TreeViewPrimitive.Item {...rest} className={treeViewControlVariants({ className })} />;
 }
 TreeViewContent.displayName = "TreeView.Content";
 
@@ -292,7 +292,7 @@ function TreeViewItemIcon({ className, ...rest }: ComponentProps<typeof ark.span
   return (
     <ark.span
       {...rest}
-      className={cn(treeViewItemIconVariants(), className)}
+      className={treeViewItemIconVariants({ className })}
       data-part="item-icon"
       data-scope="tree-view"
     />
@@ -301,7 +301,7 @@ function TreeViewItemIcon({ className, ...rest }: ComponentProps<typeof ark.span
 
 function TreeViewItemTitle({ className, ...rest }: TreeViewItemTitleProps) {
   return (
-    <TreeViewPrimitive.ItemText {...rest} className={cn(treeViewItemTitleVariants(), className)} />
+    <TreeViewPrimitive.ItemText {...rest} className={treeViewItemTitleVariants({ className })} />
   );
 }
 
@@ -323,7 +323,7 @@ function TreeViewNodeInput({ className, ...rest }: TreeViewNodeInputProps) {
   return (
     <TreeViewPrimitive.NodeRenameInput
       {...rest}
-      className={cn(treeViewNodeRenameInputVariants(), className)}
+      className={treeViewNodeRenameInputVariants({ className })}
     />
   );
 }

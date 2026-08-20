@@ -1,11 +1,10 @@
 import { ark } from "@ark-ui/react/factory";
 import { proseVariants } from "@pisagor/styles/ui/prose";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 
 // #region Types
-interface ProseProps
+export interface ProseProps
   extends Omit<ComponentProps<typeof ark.div>, "dangerouslySetInnerHTML">,
     WithTestId {
   /**
@@ -24,7 +23,7 @@ export function Prose({ className, html, children, testId, ...rest }: ProseProps
   return (
     <ark.div
       {...rest}
-      className={cn(proseVariants(), className)}
+      className={proseVariants({ className })}
       data-part="root"
       data-scope="prose"
       data-testid={testId}

@@ -13,7 +13,6 @@ import type { VariantClassNames, WithTestId } from "../../internal/types";
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-
 type StatVariant = NonNullable<StatVariantProps["variant"]>;
 type StatTrendVariant = NonNullable<StatTrendVariantProps["trend"]>;
 

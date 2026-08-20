@@ -1,5 +1,4 @@
 import { alertDialogBodyVariants } from "@pisagor/styles/ui/alert-dialog";
-import { cn } from "@pisagor/utils";
 import { Button, type ButtonProps } from "../button";
 import {
   Dialog,
@@ -15,9 +14,9 @@ import {
 } from "../dialog";
 
 // #region Types
-interface AlertDialogRootProps extends DialogRootProps {}
+export interface AlertDialogRootProps extends DialogRootProps {}
 
-interface AlertDialogActionProps extends DialogCloseProps, Omit<ButtonProps, "variant"> {
+export interface AlertDialogActionProps extends DialogCloseProps, Omit<ButtonProps, "variant"> {
   /**
    * The variant of the action button
    *
@@ -26,7 +25,7 @@ interface AlertDialogActionProps extends DialogCloseProps, Omit<ButtonProps, "va
   variant?: "default" | "destructive";
 }
 
-interface AlertDialogCancelProps extends DialogCloseProps, Omit<ButtonProps, "variant"> {}
+export interface AlertDialogCancelProps extends DialogCloseProps, Omit<ButtonProps, "variant"> {}
 // #endregion
 
 // #region Parts
@@ -53,7 +52,7 @@ export function AlertDialogBody({ className, ...rest }: DialogBodyProps) {
   return (
     <Dialog.Body
       {...rest}
-      className={cn(alertDialogBodyVariants(), className)}
+      className={alertDialogBodyVariants({ className })}
       dataPart="body"
       dataScope="alert-dialog"
     />

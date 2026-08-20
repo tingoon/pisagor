@@ -4,7 +4,6 @@ import {
   announcementTitleVariants,
   announcementVariants,
 } from "@pisagor/styles/ui/announcement";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { WithTestId } from "../../internal/types";
 
@@ -42,7 +41,7 @@ export function AnnouncementRoot({
   return (
     <ark.div
       {...rest}
-      className={cn(announcementVariants(), className)}
+      className={announcementVariants({ className })}
       data-part="root"
       data-scope="announcement"
       data-testid={testId}
@@ -56,7 +55,7 @@ export function AnnouncementTitle({ className, ...rest }: AnnouncementTitleProps
   return (
     <ark.span
       {...rest}
-      className={cn(announcementTitleVariants(), className)}
+      className={announcementTitleVariants({ className })}
       data-part="title"
       data-scope="announcement"
     />

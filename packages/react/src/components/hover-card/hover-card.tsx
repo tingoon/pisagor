@@ -1,7 +1,6 @@
 import { Portal } from "@ark-ui/react";
 import { HoverCard as HoverCardPrimitive } from "@ark-ui/react/hover-card";
 import { hoverCardContentVariants, hoverCardInlineVariants } from "@pisagor/styles/ui/hover-card";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 import { HoverCardRootContext, useHoverCardRoot } from "./hover-card.context";
@@ -72,7 +71,7 @@ export function HoverCardContent({ className, children, ...rest }: HoverCardCont
   return (
     <Portal>
       <HoverCardPrimitive.Positioner>
-        <HoverCardPrimitive.Content {...rest} className={cn(hoverCardContentVariants(), className)}>
+        <HoverCardPrimitive.Content {...rest} className={hoverCardContentVariants({ className })}>
           {children}
 
           <HoverCardArrow />

@@ -16,7 +16,7 @@ import {
   useRegisteredRailState,
 } from "./region";
 
-interface AppShellRailProps extends ComponentProps<"aside">, WithTestId {
+export interface AppShellRailProps extends ComponentProps<"aside">, WithTestId {
   activeRailId?: string;
   defaultActiveRailId?: string;
   onActiveRailIdChange?: (id: string) => void;
@@ -37,7 +37,7 @@ interface AppShellRailProps extends ComponentProps<"aside">, WithTestId {
   position?: AppShellRegionPosition;
 }
 
-interface AppShellRailItemProps extends ButtonProps {
+export interface AppShellRailItemProps extends ButtonProps {
   /** When `railId` is set, marks this item active when it matches the rail's active id. */
   isActive?: boolean;
   /**
@@ -125,7 +125,7 @@ export function AppShellRailItem({
     <Button
       {...rest}
       aria-current={active ? "page" : undefined}
-      className={cn(appShellRailItemVariants(), className)}
+      className={appShellRailItemVariants({ className })}
       clickEffect={false}
       data-active={active}
       data-part="rail-item"

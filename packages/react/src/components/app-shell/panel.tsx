@@ -32,7 +32,7 @@ import {
 } from "./region";
 import { AppShellSideTrigger } from "./side-trigger";
 
-interface AppShellPanelProps extends ComponentProps<"aside">, WithTestId {
+export interface AppShellPanelProps extends ComponentProps<"aside">, WithTestId {
   /**
    * Initial panel width in pixels.
    *
@@ -66,7 +66,7 @@ interface AppShellPanelProps extends ComponentProps<"aside">, WithTestId {
   resizableProps?: AppShellResizableProps;
 }
 
-interface AppShellPanelTriggerProps extends Omit<ButtonProps, "children"> {
+export interface AppShellPanelTriggerProps extends Omit<ButtonProps, "children"> {
   /** Custom content when no `on` / `off` icons are provided. */
   children?: ReactNode;
   /** Content shown when the region is open. */
@@ -149,7 +149,7 @@ export function AppShellPanelHeader({ className, ...rest }: ComponentProps<"div"
   return (
     <div
       {...rest}
-      className={cn(appShellPanelHeaderVariants(), className)}
+      className={appShellPanelHeaderVariants({ className })}
       data-part="panel-header"
       data-scope="app-shell"
     />
@@ -162,7 +162,7 @@ export function AppShellPanelContent({ className, ...rest }: ComponentProps<"div
     <ScrollArea className={appShellInline2Variants()}>
       <div
         {...rest}
-        className={cn(appShellPanelContentVariants(), className)}
+        className={appShellPanelContentVariants({ className })}
         data-part="panel-content"
         data-scope="app-shell"
       />
@@ -175,7 +175,7 @@ export function AppShellPanelFooter({ className, ...rest }: ComponentProps<"div"
   return (
     <div
       {...rest}
-      className={cn(appShellPanelFooterVariants(), className)}
+      className={appShellPanelFooterVariants({ className })}
       data-part="panel-footer"
       data-scope="app-shell"
     />

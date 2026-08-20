@@ -5,7 +5,6 @@ import {
   accordionItemVariants,
   accordionTriggerVariants,
 } from "@pisagor/styles/accordion";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { WithTestId } from "../../internal/types";
 
@@ -54,7 +53,7 @@ export function AccordionRoot({
 AccordionRoot.displayName = "Accordion.Root";
 
 export function AccordionItem({ className, ...rest }: AccordionItemProps) {
-  return <AccordionPrimitive.Item {...rest} className={cn(accordionItemVariants(), className)} />;
+  return <AccordionPrimitive.Item {...rest} className={accordionItemVariants({ className })} />;
 }
 AccordionItem.displayName = "Accordion.Item";
 

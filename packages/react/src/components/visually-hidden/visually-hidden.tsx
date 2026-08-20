@@ -1,6 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
 import { visuallyHiddenVariants } from "@pisagor/styles/ui/visually-hidden";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 
@@ -16,7 +15,7 @@ export function VisuallyHidden({ className, testId, ...rest }: VisuallyHiddenPro
   return (
     <ark.span
       {...rest}
-      className={cn(visuallyHiddenVariants(), className)}
+      className={visuallyHiddenVariants({ className })}
       data-part="root"
       data-scope="visually-hidden"
       data-testid={testId}

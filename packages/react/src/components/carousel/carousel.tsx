@@ -10,7 +10,6 @@ import {
   carouselPreviousVariants,
   carouselVariants,
 } from "@pisagor/styles/ui/carousel";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { WithTestId } from "../../internal/types";
 import { Button } from "../button";
@@ -61,7 +60,7 @@ export function CarouselRoot({
   return (
     <CarouselPrimitive.Root
       {...rest}
-      className={cn(carouselVariants(), className)}
+      className={carouselVariants({ className })}
       data-testid={testId}
       slideCount={computedSlideCount}
       spacing={spacing}
@@ -96,9 +95,7 @@ export function CarouselRoot({
 CarouselRoot.displayName = "Carousel";
 
 export function CarouselControl({ className, ...rest }: CarouselControlProps) {
-  return (
-    <CarouselPrimitive.Control {...rest} className={cn(carouselControlVariants(), className)} />
-  );
+  return <CarouselPrimitive.Control {...rest} className={carouselControlVariants({ className })} />;
 }
 CarouselControl.displayName = "Carousel.Control";
 
@@ -107,7 +104,7 @@ export function CarouselPrevious({ className, ...rest }: CarouselPreviousProps) 
     <CarouselPrimitive.PrevTrigger
       {...rest}
       asChild
-      className={cn(carouselPreviousVariants(), className)}
+      className={carouselPreviousVariants({ className })}
     >
       <Button aria-label="Previous" clickEffect={false} pill size="icon-md" variant="outline">
         <CaretLeftIcon aria-hidden />
@@ -122,7 +119,7 @@ export function CarouselNext({ className, ...rest }: CarouselNextProps) {
     <CarouselPrimitive.NextTrigger
       {...rest}
       asChild
-      className={cn(carouselNextVariants(), className)}
+      className={carouselNextVariants({ className })}
     >
       <Button aria-label="Next" clickEffect={false} pill size="icon-md" variant="outline">
         <CaretRightIcon aria-hidden />
@@ -136,7 +133,7 @@ export function CarouselIndicatorGroup({ className, ...rest }: CarouselIndicator
   return (
     <CarouselPrimitive.IndicatorGroup
       {...rest}
-      className={cn(carouselIndicatorGroupVariants(), className)}
+      className={carouselIndicatorGroupVariants({ className })}
     />
   );
 }
@@ -144,20 +141,18 @@ CarouselIndicatorGroup.displayName = "Carousel.IndicatorGroup";
 
 export function CarouselIndicator({ className, ...rest }: CarouselIndicatorProps) {
   return (
-    <CarouselPrimitive.Indicator {...rest} className={cn(carouselIndicatorVariants(), className)} />
+    <CarouselPrimitive.Indicator {...rest} className={carouselIndicatorVariants({ className })} />
   );
 }
 CarouselIndicator.displayName = "Carousel.Indicator";
 
 export function CarouselContent({ className, ...rest }: CarouselContentProps) {
-  return (
-    <CarouselPrimitive.ItemGroup {...rest} className={cn(carouselGroupVariants(), className)} />
-  );
+  return <CarouselPrimitive.ItemGroup {...rest} className={carouselGroupVariants({ className })} />;
 }
 CarouselContent.displayName = "Carousel.Content";
 
 export function CarouselItem({ className, ...rest }: CarouselItemProps) {
-  return <CarouselPrimitive.Item {...rest} className={cn(carouselItemVariants(), className)} />;
+  return <CarouselPrimitive.Item {...rest} className={carouselItemVariants({ className })} />;
 }
 CarouselItem.displayName = "Carousel.Item";
 // #endregion

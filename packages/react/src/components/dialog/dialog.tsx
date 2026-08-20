@@ -14,7 +14,6 @@ import {
   dialogPositionerVariants,
   dialogTitleVariants,
 } from "@pisagor/styles/ui/dialog";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 import { Button } from "../button";
@@ -103,7 +102,7 @@ export function DialogOverlay({ className, ...rest }: DialogOverlayProps) {
     return null;
   }
 
-  return <DialogPrimitive.Backdrop {...rest} className={cn(dialogOverlayVariants(), className)} />;
+  return <DialogPrimitive.Backdrop {...rest} className={dialogOverlayVariants({ className })} />;
 }
 DialogOverlay.displayName = "Dialog.Overlay";
 
@@ -119,10 +118,10 @@ export function DialogPositioner({
   return (
     <DialogPrimitive.Positioner
       {...rest}
-      className={cn(
-        dialogPositionerVariants({ bottomStickOnMobile: bottomStickOnMobile || undefined }),
+      className={dialogPositionerVariants({
+        bottomStickOnMobile: bottomStickOnMobile || undefined,
         className,
-      )}
+      })}
     />
   );
 }
@@ -145,7 +144,7 @@ export function DialogContent({
       <DialogPositioner bottomStickOnMobile={bottomStickOnMobile}>
         <DialogPrimitive.Content
           {...rest}
-          className={cn(dialogContentVariants({ bottomStickOnMobile, size }), className)}
+          className={dialogContentVariants({ bottomStickOnMobile, className, size })}
           data-testid={testId}
         >
           {children}
@@ -180,7 +179,7 @@ export function DialogBody({
     <ScrollArea scrollFade={scrollFade}>
       <ark.div
         {...rest}
-        className={cn(dialogBodyVariants(), className)}
+        className={dialogBodyVariants({ className })}
         data-part={dataPart}
         data-scope={dataScope}
       />
@@ -201,7 +200,7 @@ export function DialogHeader({
   return (
     <ark.div
       {...rest}
-      className={cn(dialogHeaderVariants(), className)}
+      className={dialogHeaderVariants({ className })}
       data-part={dataPart}
       data-scope={dataScope}
     >
@@ -218,7 +217,7 @@ DialogHeader.displayName = "Dialog.Header";
 export type DialogTitleProps = ComponentProps<typeof DialogPrimitive.Title>;
 
 export function DialogTitle({ className, ...rest }: DialogTitleProps) {
-  return <DialogPrimitive.Title {...rest} className={cn(dialogTitleVariants(), className)} />;
+  return <DialogPrimitive.Title {...rest} className={dialogTitleVariants({ className })} />;
 }
 DialogTitle.displayName = "Dialog.Title";
 
@@ -226,7 +225,7 @@ export type DialogDescriptionProps = ComponentProps<typeof DialogPrimitive.Descr
 
 export function DialogDescription({ className, ...rest }: DialogDescriptionProps) {
   return (
-    <DialogPrimitive.Description {...rest} className={cn(dialogDescriptionVariants(), className)} />
+    <DialogPrimitive.Description {...rest} className={dialogDescriptionVariants({ className })} />
   );
 }
 DialogDescription.displayName = "Dialog.Description";
@@ -252,7 +251,7 @@ export function DialogFooter({
   return (
     <ark.div
       {...rest}
-      className={cn(dialogFooterVariants(), className)}
+      className={dialogFooterVariants({ className })}
       data-part={dataPart}
       data-scope={dataScope}
     />

@@ -77,7 +77,7 @@ export function NumberInputRoot({
     <FormControlVariantProvider value={variant}>
       <NumberInputPrimitive.Root
         {...rest}
-        className={cn(numberFieldVariants(), className)}
+        className={numberFieldVariants({ className })}
         data-size={size}
         data-testid={testId}
         onValueChange={
@@ -151,7 +151,7 @@ export function NumberInputDecrement({ className, ...rest }: NumberInputDecremen
     <NumberInputPrimitive.DecrementTrigger
       {...rest}
       asChild
-      className={cn(numberFieldDecrementVariants(), className)}
+      className={numberFieldDecrementVariants({ className })}
     >
       <Button aria-label="Decrement" variant="ghost">
         <MinusIcon aria-hidden />
@@ -166,7 +166,7 @@ export function NumberInputIncrement({ className, ...rest }: NumberInputIncremen
     <NumberInputPrimitive.IncrementTrigger
       {...rest}
       asChild
-      className={cn(numberFieldIncrementVariants(), className)}
+      className={numberFieldIncrementVariants({ className })}
     >
       <Button aria-label="Increment" variant="ghost">
         <PlusIcon aria-hidden />
@@ -180,7 +180,7 @@ export function NumberInputInput({ size, variant, className, classNames, ...rest
   return (
     <NumberInputPrimitive.Input {...rest} asChild>
       <Input
-        className={cn(numberInputInlineVariants(), className)}
+        className={numberInputInlineVariants({ className })}
         classNames={classNames}
         size={size}
         variant={variant}
@@ -195,7 +195,7 @@ export function NumberInputScrubber({ className, children, ...rest }: NumberInpu
     <NumberInputPrimitive.Scrubber
       {...rest}
       asChild
-      className={cn(numberFieldScrubberVariants(), className)}
+      className={numberFieldScrubberVariants({ className })}
     >
       <NumberInputPrimitive.Label asChild>
         <Field.Label>{children}</Field.Label>

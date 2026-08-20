@@ -10,7 +10,6 @@ import type { WithTestId } from "../../internal/types";
 import { Spinner } from "../spinner";
 
 // #region Types
-
 export interface ButtonProps extends ButtonVariantProps, WithTestId {
   class?: unknown;
   clickEffect?: boolean;

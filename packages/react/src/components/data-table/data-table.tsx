@@ -4,7 +4,6 @@ import {
   dataTableToolbarVariants,
   dataTableVariants,
 } from "@pisagor/styles/ui/data-table";
-import { cn } from "@pisagor/utils";
 import {
   type Cell,
   flexRender,
@@ -271,7 +270,7 @@ function DataTableToolbar({ className, ...rest }: ComponentProps<"div">) {
   return (
     <div
       {...rest}
-      className={cn(dataTableToolbarVariants(), className)}
+      className={dataTableToolbarVariants({ className })}
       data-part="toolbar"
       data-scope="data-table"
     />
@@ -283,7 +282,7 @@ function DataTableFooter({ className, ...rest }: ComponentProps<"div">) {
   return (
     <div
       {...rest}
-      className={cn(dataTableFooterVariants(), className)}
+      className={dataTableFooterVariants({ className })}
       data-part="footer"
       data-scope="data-table"
     />
@@ -308,7 +307,7 @@ function DataTableRoot<TData>({
   return (
     <DataTableContext value={contextValue as DataTableContextValue<unknown>}>
       <div
-        className={cn(dataTableVariants(), className)}
+        className={dataTableVariants({ className })}
         data-part="root"
         data-scope="data-table"
         data-testid={testId}

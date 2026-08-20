@@ -5,13 +5,12 @@ import {
   buttonGroupTextVariants,
   buttonGroupVariants,
 } from "@pisagor/styles/ui/button-group";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 import { Separator, type SeparatorProps } from "../separator";
 
 // #region Types
-interface ButtonGroupProps
+export interface ButtonGroupProps
   extends ComponentProps<typeof ark.fieldset>,
     ButtonGroupVariantProps,
     WithTestId {}
@@ -22,7 +21,7 @@ export function ButtonGroupRoot({ className, orientation, testId, ...rest }: But
   return (
     <ark.fieldset
       {...rest}
-      className={cn(buttonGroupVariants({ orientation }), className)}
+      className={buttonGroupVariants({ className, orientation })}
       data-orientation={orientation}
       data-part="root"
       data-scope="button-group"
@@ -36,7 +35,7 @@ export function ButtonGroupText({ className, ...rest }: ComponentProps<typeof ar
   return (
     <ark.div
       {...rest}
-      className={cn(buttonGroupTextVariants(), className)}
+      className={buttonGroupTextVariants({ className })}
       data-part="text"
       data-scope="button-group"
     />
@@ -52,7 +51,7 @@ export function ButtonGroupSeparator({
   return (
     <Separator
       {...rest}
-      className={cn(buttonGroupSeparatorVariants(), className)}
+      className={buttonGroupSeparatorVariants({ className })}
       dataPart="separator"
       dataScope="button-group"
       orientation={orientation}

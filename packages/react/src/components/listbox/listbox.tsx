@@ -20,7 +20,6 @@ import {
   listboxValueTextVariants,
   listboxVariants,
 } from "@pisagor/styles/ui/listbox";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 import { DropdownMenu, type DropdownMenuShortcutProps } from "../dropdown-menu";
@@ -77,7 +76,7 @@ export function ListboxRoot<T extends CollectionItem = CollectionItem>({
   return (
     <ListboxPrimitive.Root
       {...rest}
-      className={cn(listboxVariants(), className)}
+      className={listboxVariants({ className })}
       collection={collectionProp as ListCollection<T>}
       data-testid={testId}
       onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
@@ -89,7 +88,7 @@ export function ListboxRoot<T extends CollectionItem = CollectionItem>({
 ListboxRoot.displayName = "Listbox.Root";
 
 export function ListboxContent({ className, ...rest }: ListboxContentProps) {
-  return <ListboxPrimitive.Content {...rest} className={cn(listboxContentVariants(), className)} />;
+  return <ListboxPrimitive.Content {...rest} className={listboxContentVariants({ className })} />;
 }
 ListboxContent.displayName = "Listbox.Content";
 
@@ -97,7 +96,7 @@ export function ListboxItem({ variant = "default", className, ...rest }: Listbox
   return (
     <ListboxPrimitive.Item
       {...rest}
-      className={cn(listboxItemVariants({ variant }), className)}
+      className={listboxItemVariants({ className, variant })}
       data-variant={variant}
     />
   );
@@ -105,15 +104,13 @@ export function ListboxItem({ variant = "default", className, ...rest }: Listbox
 ListboxItem.displayName = "Listbox.Item";
 
 export function ListboxItemText({ className, ...rest }: ListboxItemTextProps) {
-  return (
-    <ListboxPrimitive.ItemText {...rest} className={cn(listboxItemTextVariants(), className)} />
-  );
+  return <ListboxPrimitive.ItemText {...rest} className={listboxItemTextVariants({ className })} />;
 }
 ListboxItemText.displayName = "Listbox.ItemText";
 
 export function ListboxItemGroup({ heading, className, children, ...rest }: ListboxItemGroupProps) {
   return (
-    <ListboxPrimitive.ItemGroup {...rest} className={cn(listboxItemGroupVariants(), className)}>
+    <ListboxPrimitive.ItemGroup {...rest} className={listboxItemGroupVariants({ className })}>
       {!!heading && <ListboxItemGroupLabel>{heading}</ListboxItemGroupLabel>}
       {children}
     </ListboxPrimitive.ItemGroup>
@@ -125,7 +122,7 @@ export function ListboxItemGroupLabel({ className, ...rest }: ListboxItemGroupLa
   return (
     <ListboxPrimitive.ItemGroupLabel
       {...rest}
-      className={cn(listboxItemGroupLabelVariants(), className)}
+      className={listboxItemGroupLabelVariants({ className })}
     />
   );
 }
@@ -133,7 +130,7 @@ ListboxItemGroupLabel.displayName = "Listbox.ItemGroupLabel";
 
 export function ListboxValueText({ className, ...rest }: ListboxValueTextProps) {
   return (
-    <ListboxPrimitive.ValueText {...rest} className={cn(listboxValueTextVariants(), className)} />
+    <ListboxPrimitive.ValueText {...rest} className={listboxValueTextVariants({ className })} />
   );
 }
 ListboxValueText.displayName = "Listbox.ValueText";
@@ -142,7 +139,7 @@ export function ListboxItemIndicator({ className, children, ...rest }: ListboxIt
   return (
     <ListboxPrimitive.ItemIndicator
       {...rest}
-      className={cn(listboxItemIndicatorVariants(), className)}
+      className={listboxItemIndicatorVariants({ className })}
     >
       {children ?? <CheckIcon />}
     </ListboxPrimitive.ItemIndicator>
@@ -151,7 +148,7 @@ export function ListboxItemIndicator({ className, children, ...rest }: ListboxIt
 ListboxItemIndicator.displayName = "Listbox.ItemIndicator";
 
 export function ListboxEmpty({ className, ...rest }: ListboxEmptyProps) {
-  return <ListboxPrimitive.Empty {...rest} className={cn(listboxEmptyVariants(), className)} />;
+  return <ListboxPrimitive.Empty {...rest} className={listboxEmptyVariants({ className })} />;
 }
 ListboxEmpty.displayName = "Listbox.Empty";
 

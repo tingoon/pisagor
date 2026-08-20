@@ -70,7 +70,7 @@ export interface ColorPickerProps extends ColorPickerRootProps {
   onValueChange?: (value: string) => void;
 }
 
-interface ColorPickerClearTriggerProps extends InputGroupButtonProps {
+export interface ColorPickerClearTriggerProps extends InputGroupButtonProps {
   /**
    * Whether to show the clear button.
    *
@@ -174,7 +174,7 @@ export function ColorPickerRoot({
     <ColorPickerRootContext value={{ testId: dataTestId ?? testId }}>
       <FormControlVariantProvider value={variant}>
         <ColorPickerPrimitive.Root
-          className={cn(colorPickerVariants(), className)}
+          className={colorPickerVariants({ className })}
           defaultValue={internalValue ? parseColor(internalValue) : undefined}
           lazyMount={lazyMount}
           onValueChange={handleValueChange}
@@ -249,7 +249,7 @@ export function ColorPickerControl({
   return (
     <ColorPickerPrimitive.Control
       {...rest}
-      className={cn(colorPickerControlVariants(), className)}
+      className={colorPickerControlVariants({ className })}
       data-testid={testId}
     >
       {children}
@@ -271,7 +271,7 @@ export function ColorPickerTransparencyGrid({
   return (
     <ColorPickerPrimitive.TransparencyGrid
       {...rest}
-      className={cn(colorPickerInlineVariants(), className)}
+      className={colorPickerInlineVariants({ className })}
     />
   );
 }
@@ -283,7 +283,7 @@ export function ColorPickerContent({ className, ...rest }: ColorPickerContentPro
       <ColorPickerPrimitive.Positioner>
         <ColorPickerPrimitive.Content
           {...rest}
-          className={cn(colorPickerContentVariants(), className)}
+          className={colorPickerContentVariants({ className })}
         />
       </ColorPickerPrimitive.Positioner>
     </Portal>
@@ -292,9 +292,7 @@ export function ColorPickerContent({ className, ...rest }: ColorPickerContentPro
 ColorPickerContent.displayName = "ColorPicker.Content";
 
 export function ColorPickerView({ className, ...rest }: ColorPickerViewProps) {
-  return (
-    <ColorPickerPrimitive.View {...rest} className={cn(colorPickerViewVariants(), className)} />
-  );
+  return <ColorPickerPrimitive.View {...rest} className={colorPickerViewVariants({ className })} />;
 }
 ColorPickerView.displayName = "ColorPicker.View";
 
@@ -332,7 +330,7 @@ export function ColorPickerSwatchGroup({ className, ...rest }: ColorPickerSwatch
   return (
     <ColorPickerPrimitive.SwatchGroup
       {...rest}
-      className={cn(colorPickerSwatchGroupVariants(), className)}
+      className={colorPickerSwatchGroupVariants({ className })}
     />
   );
 }
@@ -342,7 +340,7 @@ export function ColorPickerSwatchTrigger({ className, ...rest }: ColorPickerSwat
   return (
     <ColorPickerPrimitive.SwatchTrigger
       {...rest}
-      className={cn(colorPickerSwatchTriggerVariants(), className)}
+      className={colorPickerSwatchTriggerVariants({ className })}
     />
   );
 }
@@ -350,7 +348,7 @@ ColorPickerSwatchTrigger.displayName = "ColorPicker.SwatchTrigger";
 
 export function ColorPickerSwatch({ className, ...rest }: ColorPickerSwatchProps) {
   return (
-    <ColorPickerPrimitive.Swatch {...rest} className={cn(colorPickerSwatchVariants(), className)} />
+    <ColorPickerPrimitive.Swatch {...rest} className={colorPickerSwatchVariants({ className })} />
   );
 }
 ColorPickerSwatch.displayName = "ColorPicker.Swatch";
@@ -363,7 +361,7 @@ export function ColorPickerSwatchIndicator({
   return (
     <ColorPickerPrimitive.SwatchIndicator
       {...rest}
-      className={cn(colorPickerSwatchIndicatorVariants(), className)}
+      className={colorPickerSwatchIndicatorVariants({ className })}
     >
       {children || <CheckIcon />}
     </ColorPickerPrimitive.SwatchIndicator>
@@ -373,10 +371,7 @@ ColorPickerSwatchIndicator.displayName = "ColorPicker.SwatchIndicator";
 
 export function ColorPickerValue({ className, ...rest }: ColorPickerValueProps) {
   return (
-    <ColorPickerPrimitive.ValueText
-      {...rest}
-      className={cn(colorPickerValueVariants(), className)}
-    />
+    <ColorPickerPrimitive.ValueText {...rest} className={colorPickerValueVariants({ className })} />
   );
 }
 ColorPickerValue.displayName = "ColorPicker.Value";
@@ -385,7 +380,7 @@ export function ColorPickerValueSwatch({ className, ...rest }: ColorPickerValueS
   return (
     <ColorPickerPrimitive.ValueSwatch
       {...rest}
-      className={cn(colorPickerValueSwatchVariants(), className)}
+      className={colorPickerValueSwatchVariants({ className })}
     />
   );
 }
@@ -424,7 +419,7 @@ export function ColorPickerAreaThumb({ className, ...rest }: ColorPickerAreaThum
   return (
     <ColorPickerPrimitive.AreaThumb
       {...rest}
-      className={cn(colorPickerAreaThumbVariants(), className)}
+      className={colorPickerAreaThumbVariants({ className })}
     />
   );
 }

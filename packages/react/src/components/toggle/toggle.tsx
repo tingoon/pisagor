@@ -6,7 +6,6 @@ import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
 
 // #region Types
-
 export type ToggleRootProps = ComponentProps<typeof TogglePrimitive.Root>;
 
 export interface ToggleProps extends ToggleRootProps, ToggleVariantProps, WithTestId {

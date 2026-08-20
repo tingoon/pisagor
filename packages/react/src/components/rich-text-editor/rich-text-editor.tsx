@@ -231,7 +231,7 @@ export function RichTextEditorToolbar({
   return (
     <ark.div
       {...rest}
-      className={cn(richTextEditorToolbarVariants(), className)}
+      className={richTextEditorToolbarVariants({ className })}
       data-part="toolbar"
       data-scope="rich-text-editor"
     >
@@ -300,7 +300,7 @@ export function RichTextEditorContent({ className, ...rest }: RichTextEditorCont
   return (
     <ark.div
       {...rest}
-      className={cn(richTextEditorContentVariants(), className)}
+      className={richTextEditorContentVariants({ className })}
       data-part="content"
       data-scope="rich-text-editor"
     >
