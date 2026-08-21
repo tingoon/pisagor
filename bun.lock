@@ -22,10 +22,10 @@
       "version": "0.0.0",
       "dependencies": {
         "@ark-ui/react": "^5.38.1",
+        "@mantine/hooks": "^9.5.1",
         "@phosphor-icons/react": "^2.1.10",
         "@pisagor/react": "workspace:*",
         "@pisagor/react-form": "workspace:*",
-        "@pisagor/react-hooks": "workspace:*",
         "@pisagor/utils": "workspace:*",
         "@tanstack/react-form": "^1.33.4",
         "react": "catalog:",
@@ -77,7 +77,7 @@
       "version": "0.0.0",
       "dependencies": {
         "@ark-ui/react": "^5.38.1",
-        "@pisagor/react-hooks": "workspace:*",
+        "@mantine/hooks": "^9.5.1",
         "@pisagor/styles": "workspace:*",
         "@pisagor/utils": "workspace:*",
         "@tanstack/react-hotkeys": "^0.10.0",
@@ -149,15 +149,8 @@
     "packages/react-hooks": {
       "name": "@pisagor/react-hooks",
       "version": "0.0.0",
-      "dependencies": {
-        "@mantine/hooks": "^9.5.1",
-      },
       "devDependencies": {
         "@pisagor/tsconfig": "workspace:*",
-        "@types/react": "catalog:",
-      },
-      "peerDependencies": {
-        "react": "^19",
       },
     },
     "packages/styles": {

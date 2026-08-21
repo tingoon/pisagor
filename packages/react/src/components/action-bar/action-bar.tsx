@@ -1,8 +1,8 @@
 import { Portal } from "@ark-ui/react";
 import { ark } from "@ark-ui/react/factory";
 import { Presence } from "@ark-ui/react/presence";
+import { useUncontrolled } from "@mantine/hooks";
 import { XIcon } from "@phosphor-icons/react";
-import { useUncontrolled } from "@pisagor/react-hooks";
 import {
   actionBarCloseVariants,
   actionBarContentVariants,

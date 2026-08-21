@@ -1,4 +1,4 @@
-import { useUncontrolled } from "@pisagor/react-hooks";
+import { useUncontrolled } from "@mantine/hooks";
 import {
   appShellRegionRelativeColumnVariants,
   appShellRegionRelativeRowVariants,

@@ -6,8 +6,8 @@ import {
 } from "@ark-ui/react/color-picker";
 import { ark } from "@ark-ui/react/factory";
 import { Portal } from "@ark-ui/react/portal";
+import { useUncontrolled } from "@mantine/hooks";
 import { CheckIcon, EyedropperIcon, XIcon } from "@phosphor-icons/react";
-import { useUncontrolled } from "@pisagor/react-hooks";
 import {
   colorPickerAreaThumbVariants,
   colorPickerAreaVariants,

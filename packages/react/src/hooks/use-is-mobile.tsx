@@ -1,4 +1,4 @@
-import { useMediaQuery } from "@pisagor/react-hooks";
+import { useMediaQuery } from "@mantine/hooks";
 
 /**
  * Mobile layout breakpoint in CSS pixels.

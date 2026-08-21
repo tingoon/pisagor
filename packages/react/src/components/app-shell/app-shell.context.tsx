@@ -1,4 +1,4 @@
-import { useUncontrolled } from "@pisagor/react-hooks";
+import { useUncontrolled } from "@mantine/hooks";
 import { type RefObject, useCallback } from "react";
 import { createContext } from "../../utils";
 

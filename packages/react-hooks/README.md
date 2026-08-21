@@ -1,7 +1,5 @@
 # @pisagor/react-hooks
 
-Shared React hooks for Pisagor packages: Mantine `@mantine/hooks` re-exports.
+Shared React hooks for Pisagor packages.
 
-```tsx
-import { useMediaQuery } from "@pisagor/react-hooks";
-```
+Use `@mantine/hooks` directly when you need Mantine hooks (`useDisclosure`, `useMediaQuery`, `useUncontrolled`, …).

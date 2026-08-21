@@ -1,10 +1,10 @@
 {
   "dependencies": {
     "@ark-ui/react": "^5.38.1",
+    "@mantine/hooks": "^9.5.1",
     "@phosphor-icons/react": "^2.1.10",
     "@pisagor/react": "workspace:*",
     "@pisagor/react-form": "workspace:*",
-    "@pisagor/react-hooks": "workspace:*",
     "@pisagor/utils": "workspace:*",
     "@tanstack/react-form": "^1.33.4",
     "react": "catalog:",

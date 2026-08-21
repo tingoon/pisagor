@@ -19,7 +19,7 @@ Packages export TypeScript source. Use a bundler that compiles TS (Vite, etc.).
 ## Install
 
 ```bash
-bun add @pisagor/react @pisagor/react-hooks @pisagor/utils
+bun add @pisagor/react @pisagor/utils
 ```
 
 Peer dependencies: `react` ^19, `react-dom` ^19, `@phosphor-icons/react` ^2, Tailwind CSS v4.

@@ -1,4 +1,4 @@
-import { useMergedRef, useUncontrolled } from "@pisagor/react-hooks";
+import { useMergedRef, useUncontrolled } from "@mantine/hooks";
 import type { ChangeEvent, ChangeEventHandler, Ref } from "react";
 import { useCallback, useRef } from "react";
 

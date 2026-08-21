@@ -4,7 +4,7 @@
   },
   "dependencies": {
     "@ark-ui/react": "^5.38.1",
-    "@pisagor/react-hooks": "workspace:*",
+    "@mantine/hooks": "^9.5.1",
     "@pisagor/styles": "workspace:*",
     "@pisagor/utils": "workspace:*",
     "@tanstack/react-hotkeys": "^0.10.0"

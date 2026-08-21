@@ -25,7 +25,7 @@ Storybook **10**, CSF. React uses `@storybook/react-vite` (`.stories.tsx`); Vue 
 | ---- | ---- |
 | Preview | `#/storybook/preview` |
 | UI components | `@pisagor/react` (light) or `@pisagor/react/<heavy>` |
-| Hooks | `@pisagor/react/hooks` or `@pisagor/react-hooks` |
+| Hooks | `@pisagor/react/hooks` or `@mantine/hooks` |
 | Utils | `@pisagor/utils` |
 | Form module under test | `@pisagor/react-form/tanstack` (hook) or `@pisagor/react-form` / relative `./<name>` (field under test) |
 | Block under test | `@pisagor/react-blocks/<name>` |
@@ -35,7 +35,7 @@ Storybook **10**, CSF. React uses `@storybook/react-vite` (`.stories.tsx`); Vue 
 
 Prefer `@pisagor/react` for light UI imports in stories (including the component under test). Heavy components (`data-grid`, `charts`, `rich-text-editor`, `phone-input`) stay on dedicated subpaths.
 
-`@pisagor/react`, `@pisagor/react-hooks`, and `@pisagor/utils` resolve via workspace package exports (same as apps). Runner-only alias `#/storybook/*` lives in each runner’s `tsconfig.json` and each package’s `tsconfig.json`; Vite reads it via `resolve.tsconfigPaths`. Story files are type-checked by the runner and the owning package `tsconfig.json`:
+`@pisagor/react` and `@pisagor/utils` resolve via workspace package exports (same as apps). Runner-only alias `#/storybook/*` lives in each runner’s `tsconfig.json` and each package’s `tsconfig.json`; Vite reads it via `resolve.tsconfigPaths`. Story files are type-checked by the runner and the owning package `tsconfig.json`:
 
 | Consumer | Extends |
 | -------- | ------- |
