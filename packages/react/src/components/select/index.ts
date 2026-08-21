@@ -16,6 +16,7 @@ import {
 export type {
   SelectClearTriggerProps,
   SelectContentProps,
+  SelectEmptyProps,
   SelectItemGroupLabelProps,
   SelectItemGroupProps,
   SelectItemProps,

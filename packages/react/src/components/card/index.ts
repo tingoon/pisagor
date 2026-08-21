@@ -9,7 +9,16 @@ import {
   CardTitle,
 } from "./card";
 
-export type { CardHeaderProps, CardMediaProps, CardRootProps } from "./card";
+export type {
+  CardActionProps,
+  CardContentProps,
+  CardDescriptionProps,
+  CardFooterProps,
+  CardHeaderProps,
+  CardMediaProps,
+  CardRootProps,
+  CardTitleProps,
+} from "./card";
 
 export const Card = Object.assign(CardRoot, {
   Action: CardAction,

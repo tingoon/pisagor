@@ -8,7 +8,7 @@ import { ark } from "@ark-ui/react/factory";
 import {
   Select as SelectPrimitive,
   type SelectRootProps as SelectRootPropsPrimitive,
-  useSelectContext as useSelect,
+  useSelectContext,
 } from "@ark-ui/react/select";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
 import type { InputRootVariantProps } from "@pisagor/styles/ui/input";
@@ -93,6 +93,8 @@ export type SelectItemGroupLabelProps = ComponentProps<typeof SelectPrimitive.It
 export type SelectItemProps = ComponentProps<typeof SelectPrimitive.Item>;
 
 export type SelectClearTriggerProps = ComponentProps<typeof SelectPrimitive.ClearTrigger>;
+
+export interface SelectEmptyProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Parts
@@ -239,8 +241,8 @@ export function SelectClearTrigger({ className, ...rest }: SelectClearTriggerPro
   );
 }
 
-export function SelectEmpty({ className, ...rest }: ComponentProps<typeof ark.div>) {
-  const { empty } = useSelect();
+export function SelectEmpty({ className, ...rest }: SelectEmptyProps) {
+  const { empty } = useSelectContext();
 
   if (empty) {
     return (

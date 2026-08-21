@@ -24,6 +24,16 @@ export interface CardHeaderProps extends ComponentProps<typeof ark.div> {
   /** The title of the card */
   title?: string;
 }
+
+export interface CardTitleProps extends ComponentProps<typeof ark.div> {}
+
+export interface CardDescriptionProps extends ComponentProps<typeof ark.div> {}
+
+export interface CardActionProps extends ComponentProps<typeof ark.div> {}
+
+export interface CardContentProps extends ComponentProps<typeof ark.div> {}
+
+export interface CardFooterProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Parts
@@ -70,7 +80,7 @@ export function CardHeader({ title, description, className, children, ...rest }:
   );
 }
 
-export function CardTitle({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function CardTitle({ className, ...rest }: CardTitleProps) {
   return (
     <ark.div
       {...rest}
@@ -81,7 +91,7 @@ export function CardTitle({ className, ...rest }: ComponentProps<typeof ark.div>
   );
 }
 
-export function CardDescription({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function CardDescription({ className, ...rest }: CardDescriptionProps) {
   return (
     <ark.div
       {...rest}
@@ -92,7 +102,7 @@ export function CardDescription({ className, ...rest }: ComponentProps<typeof ar
   );
 }
 
-export function CardAction({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function CardAction({ className, ...rest }: CardActionProps) {
   return (
     <ark.div
       {...rest}
@@ -103,7 +113,7 @@ export function CardAction({ className, ...rest }: ComponentProps<typeof ark.div
   );
 }
 
-export function CardContent({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function CardContent({ className, ...rest }: CardContentProps) {
   return (
     <ark.div
       {...rest}
@@ -114,7 +124,7 @@ export function CardContent({ className, ...rest }: ComponentProps<typeof ark.di
   );
 }
 
-export function CardFooter({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function CardFooter({ className, ...rest }: CardFooterProps) {
   return (
     <ark.div
       {...rest}

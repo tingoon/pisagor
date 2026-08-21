@@ -14,6 +14,8 @@ export interface AvatarGroupProps extends Omit<AvatarGroupRootProps, "children">
   /** Maximum number of avatars to show; excess shown as "+N". */
   max?: number;
 }
+
+export interface AvatarGroupCountProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Parts
@@ -35,7 +37,7 @@ export function AvatarGroupRoot({ className, children, testId, ...rest }: Avatar
   );
 }
 
-export function AvatarGroupCount({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function AvatarGroupCount({ className, ...rest }: AvatarGroupCountProps) {
   const { slots } = useAvatarGroup();
 
   return (

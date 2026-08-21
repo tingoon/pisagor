@@ -10,11 +10,14 @@ import {
 } from "./menu";
 
 export type {
+  MenuGroupLabelProps,
   MenuItemProps,
   MenuLinkProps,
   MenuListProps,
   MenuPartProps,
   MenuRootProps,
+  MenuSeparatorProps,
+  MenuShortcutProps,
 } from "./menu";
 
 export const Menu = Object.assign(MenuRoot, {

@@ -19,6 +19,14 @@ export interface FrameHeaderProps extends ComponentProps<typeof ark.header> {
 }
 
 export interface FrameRootProps extends ComponentProps<typeof ark.div>, WithTestId {}
+
+export interface FramePanelProps extends ComponentProps<typeof ark.div> {}
+
+export interface FrameTitleProps extends ComponentProps<typeof ark.div> {}
+
+export interface FrameDescriptionProps extends ComponentProps<typeof ark.div> {}
+
+export interface FrameFooterProps extends ComponentProps<typeof ark.footer> {}
 // #endregion
 
 // #region Parts
@@ -34,7 +42,7 @@ export function FrameRoot({ className, testId, ...rest }: FrameRootProps) {
   );
 }
 
-export function FramePanel({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function FramePanel({ className, ...rest }: FramePanelProps) {
   return (
     <ark.div
       {...rest}
@@ -68,7 +76,7 @@ export function FrameHeader({
   );
 }
 
-export function FrameTitle({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function FrameTitle({ className, ...rest }: FrameTitleProps) {
   return (
     <ark.div
       {...rest}
@@ -79,7 +87,7 @@ export function FrameTitle({ className, ...rest }: ComponentProps<typeof ark.div
   );
 }
 
-export function FrameDescription({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function FrameDescription({ className, ...rest }: FrameDescriptionProps) {
   return (
     <ark.div
       {...rest}
@@ -90,7 +98,7 @@ export function FrameDescription({ className, ...rest }: ComponentProps<typeof a
   );
 }
 
-export function FrameFooter({ className, ...rest }: ComponentProps<typeof ark.footer>) {
+export function FrameFooter({ className, ...rest }: FrameFooterProps) {
   return (
     <ark.footer
       {...rest}

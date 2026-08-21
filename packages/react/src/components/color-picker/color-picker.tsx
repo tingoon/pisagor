@@ -2,7 +2,7 @@ import {
   ColorPicker as ColorPickerPrimitive,
   type ColorPickerValueChangeDetails,
   parseColor as parseColorArk,
-  useColorPickerContext as useColorPicker,
+  useColorPickerContext,
 } from "@ark-ui/react/color-picker";
 import { ark } from "@ark-ui/react/factory";
 import { Portal } from "@ark-ui/react/portal";
@@ -135,6 +135,8 @@ export type ColorPickerAreaThumbProps = ComponentProps<typeof ColorPickerPrimiti
 export type ColorPickerInputProps = Partial<
   ComponentProps<typeof ColorPickerPrimitive.ChannelInput>
 >;
+
+export interface ColorPickerSwatchPreviewProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Parts
@@ -202,7 +204,7 @@ export function ColorPickerClearTrigger({
   onClick,
   ...rest
 }: ColorPickerClearTriggerProps) {
-  const api = useColorPicker();
+  const api = useColorPickerContext();
 
   if (!clearable) {
     return null;
@@ -423,7 +425,7 @@ export function ColorPickerInput({ channel = "hex", ...rest }: ColorPickerInputP
   return <ColorPickerPrimitive.ChannelInput {...rest} channel={channel} />;
 }
 
-export function ColorPickerSwatchPreview({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function ColorPickerSwatchPreview({ className, ...rest }: ColorPickerSwatchPreviewProps) {
   const slots = colorPickerInputSwatchVariants();
 
   return (

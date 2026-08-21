@@ -75,6 +75,10 @@ interface DataTableEmptyProps extends TableRowProps {
   colSpan?: number;
   children?: ReactNode;
 }
+
+interface DataTableToolbarProps extends ComponentProps<"div"> {}
+
+interface DataTableFooterProps extends ComponentProps<"div"> {}
 // #endregion
 
 // #region Hooks
@@ -259,7 +263,7 @@ function DataTableEmpty({
   );
 }
 
-function DataTableToolbar({ className, ...rest }: ComponentProps<"div">) {
+function DataTableToolbar({ className, ...rest }: DataTableToolbarProps) {
   return (
     <div
       {...rest}
@@ -270,7 +274,7 @@ function DataTableToolbar({ className, ...rest }: ComponentProps<"div">) {
   );
 }
 
-function DataTableFooter({ className, ...rest }: ComponentProps<"div">) {
+function DataTableFooter({ className, ...rest }: DataTableFooterProps) {
   return (
     <div
       {...rest}

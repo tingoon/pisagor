@@ -5,6 +5,8 @@ import type { WithTestId } from "../../internal/types";
 
 // #region Types
 export interface KbdProps extends ComponentProps<typeof ark.kbd>, KbdVariantProps, WithTestId {}
+
+export interface KbdGroupProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Parts
@@ -20,7 +22,7 @@ export function KbdRoot({ variant = "default", className, testId, ...rest }: Kbd
   );
 }
 
-export function KbdGroup({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function KbdGroup({ className, ...rest }: KbdGroupProps) {
   return (
     <ark.div
       {...rest}

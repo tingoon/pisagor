@@ -56,6 +56,12 @@ export type DrawerGrabberProps = ComponentProps<typeof DrawerPrimitive.Grabber>;
 export type DrawerTitleProps = ComponentProps<typeof DrawerPrimitive.Title>;
 
 export type DrawerCloseTriggerProps = ComponentProps<typeof DrawerPrimitive.CloseTrigger>;
+
+export interface DrawerContentInnerProps extends ComponentProps<typeof ark.div> {}
+
+export interface DrawerDescriptionProps extends ComponentProps<typeof ark.div> {}
+
+export interface DrawerFooterProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Parts
@@ -138,7 +144,7 @@ export function DrawerContent({
   );
 }
 
-export function DrawerContentInner({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function DrawerContentInner({ className, ...rest }: DrawerContentInnerProps) {
   return (
     <ark.div
       {...rest}
@@ -188,7 +194,7 @@ export function DrawerTitle({ className, ...rest }: DrawerTitleProps) {
   return <DrawerPrimitive.Title {...rest} className={drawerTitleVariants({ className })} />;
 }
 
-export function DrawerDescription({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function DrawerDescription({ className, ...rest }: DrawerDescriptionProps) {
   return (
     <ark.div
       {...rest}
@@ -216,7 +222,7 @@ export function DrawerCloseTrigger(props: DrawerCloseTriggerProps) {
   return <DrawerPrimitive.CloseTrigger {...props} />;
 }
 
-export function DrawerFooter({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function DrawerFooter({ className, ...rest }: DrawerFooterProps) {
   return (
     <ark.div
       {...rest}

@@ -1,6 +1,11 @@
 import { SortableHandle, SortableItem, SortableItemContent, SortableRoot } from "./sortable";
 
-export type { SortableHandleProps, SortableItemProps, SortableRootProps } from "./sortable";
+export type {
+  SortableHandleProps,
+  SortableItemContentProps,
+  SortableItemProps,
+  SortableRootProps,
+} from "./sortable";
 
 export { useSortable } from "./sortable.context";
 

@@ -129,6 +129,10 @@ interface DataGridRowProviderProps<TData> {
   row: Row<TData>;
   children: ReactNode;
 }
+
+interface DataGridToolbarProps extends ComponentProps<"div"> {}
+
+interface DataGridFooterProps extends ComponentProps<"div"> {}
 // #endregion
 
 // #region Hooks
@@ -518,7 +522,7 @@ function DataGridEmpty({
   );
 }
 
-function DataGridToolbar({ className, ...rest }: ComponentProps<"div">) {
+function DataGridToolbar({ className, ...rest }: DataGridToolbarProps) {
   return (
     <div
       {...rest}
@@ -529,7 +533,7 @@ function DataGridToolbar({ className, ...rest }: ComponentProps<"div">) {
   );
 }
 
-function DataGridFooter({ className, ...rest }: ComponentProps<"div">) {
+function DataGridFooter({ className, ...rest }: DataGridFooterProps) {
   return (
     <div
       {...rest}

@@ -40,6 +40,8 @@ export interface FileSizeProps extends Omit<ComponentProps<typeof ark.div>, "chi
 
 export interface FileActionsProps extends ComponentProps<typeof ark.div> {}
 
+export interface FileContentProps extends ComponentProps<typeof ark.div> {}
+
 export interface FileProps extends Omit<FileRootProps, "children" | "title"> {
   /** Display name for the file. */
   name: ReactNode;
@@ -81,7 +83,7 @@ export function FileMedia({ variant = "icon", className, children, ...rest }: Fi
   );
 }
 
-export function FileContent({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function FileContent({ className, ...rest }: FileContentProps) {
   return (
     <ark.div
       {...rest}

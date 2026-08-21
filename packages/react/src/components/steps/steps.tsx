@@ -36,6 +36,10 @@ export type StepsCompletedContentProps = ComponentProps<typeof StepsPrimitive.Co
 export type StepsPrevTriggerProps = ComponentProps<typeof StepsPrimitive.PrevTrigger>;
 
 export type StepsNextTriggerProps = ComponentProps<typeof StepsPrimitive.NextTrigger>;
+
+export interface StepsTitleProps extends ComponentProps<typeof ark.span> {}
+
+export interface StepsDescriptionProps extends ComponentProps<typeof ark.span> {}
 // #endregion
 
 // #region Parts
@@ -72,7 +76,7 @@ export function StepsSeparator({ className, ...rest }: StepsSeparatorProps) {
   return <StepsPrimitive.Separator {...rest} className={stepsSeparatorVariants({ className })} />;
 }
 
-export function StepsTitle({ className, ...rest }: ComponentProps<typeof ark.span>) {
+export function StepsTitle({ className, ...rest }: StepsTitleProps) {
   return (
     <ark.span
       {...rest}
@@ -83,7 +87,7 @@ export function StepsTitle({ className, ...rest }: ComponentProps<typeof ark.spa
   );
 }
 
-export function StepsDescription({ className, ...rest }: ComponentProps<typeof ark.span>) {
+export function StepsDescription({ className, ...rest }: StepsDescriptionProps) {
   return (
     <ark.span
       {...rest}

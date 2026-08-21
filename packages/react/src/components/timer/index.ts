@@ -21,6 +21,7 @@ export type {
   TimerAreaProps,
   TimerControlProps,
   TimerItemGroupProps,
+  TimerItemLabelProps,
   TimerItemProps,
   TimerRootProps,
   TimerSeparatorProps,

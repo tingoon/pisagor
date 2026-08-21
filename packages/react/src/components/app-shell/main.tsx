@@ -20,7 +20,11 @@ export interface AppShellHeaderProps extends ComponentProps<"header"> {
   position?: AppShellRegionPosition;
 }
 
-export function AppShellMain({ className, style, ...rest }: ComponentProps<"div">) {
+export interface AppShellMainProps extends ComponentProps<"div"> {}
+
+export interface AppShellContentProps extends ComponentProps<"main"> {}
+
+export function AppShellMain({ className, style, ...rest }: AppShellMainProps) {
   return (
     <div
       {...rest}
@@ -48,7 +52,7 @@ export function AppShellHeader({ className, position = "fixed", ...rest }: AppSh
   );
 }
 
-export function AppShellContent({ className, ...rest }: ComponentProps<"main">) {
+export function AppShellContent({ className, ...rest }: AppShellContentProps) {
   return (
     <main
       {...rest}

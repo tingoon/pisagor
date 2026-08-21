@@ -16,6 +16,7 @@ import {
 export type {
   StepsCompletedContentProps,
   StepsContentProps,
+  StepsDescriptionProps,
   StepsIndicatorProps,
   StepsItemProps,
   StepsListProps,
@@ -23,6 +24,7 @@ export type {
   StepsPrevTriggerProps,
   StepsRootProps,
   StepsSeparatorProps,
+  StepsTitleProps,
   StepsTriggerProps,
 } from "./steps";
 

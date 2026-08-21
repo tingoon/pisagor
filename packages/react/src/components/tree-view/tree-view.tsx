@@ -101,6 +101,8 @@ export type TreeViewItemProps = ComponentProps<typeof TreeViewPrimitive.Item>;
 export type TreeViewNodeCheckboxProps = ComponentProps<typeof TreeViewPrimitive.NodeCheckbox>;
 
 export type TreeViewNodeInputProps = ComponentProps<typeof TreeViewPrimitive.NodeRenameInput>;
+
+interface TreeViewItemIconProps extends ComponentProps<typeof ark.span> {}
 // #endregion
 
 // #region Parts
@@ -278,7 +280,7 @@ export function TreeViewItemText({
   );
 }
 
-function TreeViewItemIcon({ className, ...rest }: ComponentProps<typeof ark.span>) {
+function TreeViewItemIcon({ className, ...rest }: TreeViewItemIconProps) {
   return (
     <ark.span
       {...rest}

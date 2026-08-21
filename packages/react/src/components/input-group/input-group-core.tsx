@@ -36,6 +36,8 @@ export interface InputGroupAddonProps
 export interface InputGroupButtonProps
   extends Omit<ButtonProps, "size">,
     InputGroupButtonVariantProps {}
+
+export interface InputGroupTextProps extends ComponentProps<typeof ark.span> {}
 // #endregion
 
 // #region Parts
@@ -107,7 +109,7 @@ export function InputGroupButton({
   );
 }
 
-export function InputGroupText({ className, ...rest }: ComponentProps<typeof ark.span>) {
+export function InputGroupText({ className, ...rest }: InputGroupTextProps) {
   return (
     <ark.span
       {...rest}

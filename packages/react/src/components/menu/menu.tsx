@@ -38,6 +38,21 @@ export interface MenuLinkProps extends ComponentProps<typeof ark.a> {
   /** Slot class names */
   classNames?: MenuClassNames;
 }
+
+export interface MenuGroupLabelProps extends ComponentProps<typeof ark.div> {
+  /** Slot class names */
+  classNames?: MenuClassNames;
+}
+
+export interface MenuSeparatorProps extends ComponentProps<typeof ark.div> {
+  /** Slot class names */
+  classNames?: MenuClassNames;
+}
+
+export interface MenuShortcutProps extends ComponentProps<typeof ark.span> {
+  /** Slot class names */
+  classNames?: MenuClassNames;
+}
 // #endregion
 
 // #region Parts
@@ -90,11 +105,7 @@ export function MenuGroup({ className, classNames, ...rest }: MenuPartProps) {
   );
 }
 
-export function MenuGroupLabel({
-  className,
-  classNames,
-  ...rest
-}: ComponentProps<typeof ark.div> & { classNames?: MenuClassNames }) {
+export function MenuGroupLabel({ className, classNames, ...rest }: MenuGroupLabelProps) {
   const slots = menuVariants();
 
   return (
@@ -157,11 +168,7 @@ export function MenuLink({ active = false, className, classNames, ...rest }: Men
   );
 }
 
-export function MenuSeparator({
-  className,
-  classNames,
-  ...rest
-}: ComponentProps<typeof ark.div> & { classNames?: MenuClassNames }) {
+export function MenuSeparator({ className, classNames, ...rest }: MenuSeparatorProps) {
   const slots = menuVariants();
 
   return (
@@ -176,11 +183,7 @@ export function MenuSeparator({
   );
 }
 
-export function MenuShortcut({
-  className,
-  classNames,
-  ...rest
-}: ComponentProps<typeof ark.span> & { classNames?: MenuClassNames }) {
+export function MenuShortcut({ className, classNames, ...rest }: MenuShortcutProps) {
   const slots = menuVariants();
 
   return (

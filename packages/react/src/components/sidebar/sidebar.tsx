@@ -122,6 +122,32 @@ export interface SidebarMenuSubButtonProps
     ButtonVariantProps {
   isActive?: boolean;
 }
+
+export interface SidebarRailProps extends ComponentProps<typeof ark.button> {}
+
+export interface SidebarInsetProps extends ComponentProps<typeof ark.main> {}
+
+export interface SidebarHeaderProps extends ComponentProps<typeof ark.div> {}
+
+export interface SidebarFooterProps extends ComponentProps<typeof ark.div> {}
+
+export interface SidebarGroupProps extends ComponentProps<typeof ark.div> {}
+
+export interface SidebarGroupLabelProps extends ComponentProps<typeof ark.div> {}
+
+export interface SidebarGroupActionProps extends ComponentProps<typeof ark.button> {}
+
+export interface SidebarGroupContentProps extends ComponentProps<typeof ark.div> {}
+
+export interface SidebarMenuProps extends ComponentProps<typeof ark.ul> {}
+
+export interface SidebarMenuItemProps extends ComponentProps<typeof ark.li> {}
+
+export interface SidebarMenuBadgeProps extends ComponentProps<typeof ark.div> {}
+
+export interface SidebarMenuSubProps extends ComponentProps<typeof ark.ul> {}
+
+export interface SidebarMenuSubItemProps extends ComponentProps<typeof ark.li> {}
 // #endregion
 
 // #region Constants
@@ -323,7 +349,7 @@ export function SidebarTrigger({ className, onClick, ...rest }: ButtonProps) {
   );
 }
 
-export function SidebarRail({ className, ...rest }: ComponentProps<typeof ark.button>) {
+export function SidebarRail({ className, ...rest }: SidebarRailProps) {
   const { toggleSidebar } = useSidebar();
 
   return (
@@ -342,7 +368,7 @@ export function SidebarRail({ className, ...rest }: ComponentProps<typeof ark.bu
   );
 }
 
-export function SidebarInset({ className, ...rest }: ComponentProps<typeof ark.main>) {
+export function SidebarInset({ className, ...rest }: SidebarInsetProps) {
   return (
     <ark.main
       {...rest}
@@ -364,7 +390,7 @@ export function SidebarInput({ className, classNames, ...rest }: InputProps) {
   );
 }
 
-export function SidebarHeader({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function SidebarHeader({ className, ...rest }: SidebarHeaderProps) {
   return (
     <ark.div
       {...rest}
@@ -376,7 +402,7 @@ export function SidebarHeader({ className, ...rest }: ComponentProps<typeof ark.
   );
 }
 
-export function SidebarFooter({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function SidebarFooter({ className, ...rest }: SidebarFooterProps) {
   return (
     <ark.div
       {...rest}
@@ -414,7 +440,7 @@ export function SidebarContent({ scrollFade = false, className, ...rest }: Sideb
   );
 }
 
-export function SidebarGroup({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function SidebarGroup({ className, ...rest }: SidebarGroupProps) {
   return (
     <ark.div
       {...rest}
@@ -426,7 +452,7 @@ export function SidebarGroup({ className, ...rest }: ComponentProps<typeof ark.d
   );
 }
 
-export function SidebarGroupLabel({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function SidebarGroupLabel({ className, ...rest }: SidebarGroupLabelProps) {
   return (
     <ark.div
       {...rest}
@@ -438,7 +464,7 @@ export function SidebarGroupLabel({ className, ...rest }: ComponentProps<typeof 
   );
 }
 
-export function SidebarGroupAction({ className, ...rest }: ComponentProps<typeof ark.button>) {
+export function SidebarGroupAction({ className, ...rest }: SidebarGroupActionProps) {
   return (
     <ark.button
       {...rest}
@@ -459,7 +485,7 @@ export function SidebarGroupAction({ className, ...rest }: ComponentProps<typeof
   );
 }
 
-export function SidebarGroupContent({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function SidebarGroupContent({ className, ...rest }: SidebarGroupContentProps) {
   return (
     <ark.div
       {...rest}
@@ -471,7 +497,7 @@ export function SidebarGroupContent({ className, ...rest }: ComponentProps<typeo
   );
 }
 
-export function SidebarMenu({ className, ...rest }: ComponentProps<typeof ark.ul>) {
+export function SidebarMenu({ className, ...rest }: SidebarMenuProps) {
   return (
     <ark.ul
       {...rest}
@@ -483,7 +509,7 @@ export function SidebarMenu({ className, ...rest }: ComponentProps<typeof ark.ul
   );
 }
 
-export function SidebarMenuItem({ className, ...rest }: ComponentProps<typeof ark.li>) {
+export function SidebarMenuItem({ className, ...rest }: SidebarMenuItemProps) {
   return (
     <ark.li
       {...rest}
@@ -569,7 +595,7 @@ export function SidebarMenuAction({
   );
 }
 
-export function SidebarMenuBadge({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function SidebarMenuBadge({ className, ...rest }: SidebarMenuBadgeProps) {
   return (
     <ark.div
       {...rest}
@@ -612,7 +638,7 @@ export function SidebarMenuSkeleton({
   );
 }
 
-export function SidebarMenuSub({ className, ...rest }: ComponentProps<typeof ark.ul>) {
+export function SidebarMenuSub({ className, ...rest }: SidebarMenuSubProps) {
   return (
     <ark.ul
       {...rest}
@@ -624,7 +650,7 @@ export function SidebarMenuSub({ className, ...rest }: ComponentProps<typeof ark
   );
 }
 
-export function SidebarMenuSubItem({ className, ...props }: ComponentProps<typeof ark.li>) {
+export function SidebarMenuSubItem({ className, ...props }: SidebarMenuSubItemProps) {
   return (
     <ark.li
       className={sidebarMenuSubItemVariants({ className })}

@@ -22,6 +22,7 @@ export type {
   FloatingPanelContentProps,
   FloatingPanelControlProps,
   FloatingPanelDragTriggerProps,
+  FloatingPanelFooterProps,
   FloatingPanelHeaderProps,
   FloatingPanelMaximizeProps,
   FloatingPanelMinimizeProps,

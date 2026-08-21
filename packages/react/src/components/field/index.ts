@@ -14,13 +14,19 @@ import {
 } from "./field";
 
 export type {
+  FieldContentProps,
+  FieldDescriptionProps,
   FieldErrorProps,
+  FieldGroupProps,
   FieldHelperProps,
   FieldLabelProps,
   FieldLegendProps,
   FieldProps,
+  FieldRequiredIndicatorProps,
   FieldRootProps,
+  FieldSeparatorProps,
   FieldSetProps,
+  FieldTitleProps,
 } from "./field";
 
 export const Field = Object.assign(FieldRoot, {

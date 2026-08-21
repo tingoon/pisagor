@@ -81,6 +81,12 @@ export interface AppShellInspectorTriggerProps extends Omit<ButtonProps, "childr
   placement?: AppShellPlacement;
 }
 
+export interface AppShellInspectorHeaderProps extends ComponentProps<"div"> {}
+
+export interface AppShellInspectorContentProps extends ComponentProps<"div"> {}
+
+export interface AppShellInspectorFooterProps extends ComponentProps<"div"> {}
+
 export function AppShellInspector({
   placement = "end",
   defaultOpen = false,
@@ -144,7 +150,7 @@ export function AppShellInspector({
   );
 }
 
-export function AppShellInspectorHeader({ className, ...rest }: ComponentProps<"div">) {
+export function AppShellInspectorHeader({ className, ...rest }: AppShellInspectorHeaderProps) {
   return (
     <div
       {...rest}
@@ -155,7 +161,7 @@ export function AppShellInspectorHeader({ className, ...rest }: ComponentProps<"
   );
 }
 
-export function AppShellInspectorContent({ className, ...rest }: ComponentProps<"div">) {
+export function AppShellInspectorContent({ className, ...rest }: AppShellInspectorContentProps) {
   return (
     <ScrollArea className={appShellInline2Variants()}>
       <div
@@ -168,7 +174,7 @@ export function AppShellInspectorContent({ className, ...rest }: ComponentProps<
   );
 }
 
-export function AppShellInspectorFooter({ className, ...rest }: ComponentProps<"div">) {
+export function AppShellInspectorFooter({ className, ...rest }: AppShellInspectorFooterProps) {
   return (
     <div
       {...rest}

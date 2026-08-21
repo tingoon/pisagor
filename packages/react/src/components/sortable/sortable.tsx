@@ -61,6 +61,8 @@ export interface SortableItemProps extends ComponentProps<typeof ark.div> {
 }
 
 export interface SortableHandleProps extends ComponentProps<typeof ark.div> {}
+
+export interface SortableItemContentProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Hooks
@@ -399,7 +401,7 @@ export function SortableHandle({ className, children, ...rest }: SortableHandleP
   );
 }
 
-export function SortableItemContent({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function SortableItemContent({ className, ...rest }: SortableItemContentProps) {
   return (
     <ark.div
       {...rest}

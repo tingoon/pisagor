@@ -16,9 +16,11 @@ import {
 export type {
   PopoverAnchorProps,
   PopoverArrowProps,
+  PopoverBodyProps,
   PopoverCloseTriggerProps,
   PopoverContentProps,
   PopoverDescriptionProps,
+  PopoverFooterProps,
   PopoverHeaderProps,
   PopoverPositionerProps,
   PopoverRootProps,

@@ -18,6 +18,10 @@ export type BottomNavigationProps = BottomNavigationRootProps;
 export type BottomNavigationListProps = ComponentProps<typeof TabsPrimitive.List>;
 
 export type BottomNavigationItemProps = ComponentProps<typeof TabsPrimitive.Trigger>;
+
+export interface BottomNavigationItemIconProps extends ComponentProps<typeof ark.span> {}
+
+export interface BottomNavigationItemLabelProps extends ComponentProps<typeof ark.span> {}
 // #endregion
 
 // #region Parts
@@ -45,7 +49,7 @@ export function BottomNavigationItem({ className, ...rest }: BottomNavigationIte
   );
 }
 
-export function BottomNavigationItemIcon({ className, ...rest }: ComponentProps<typeof ark.span>) {
+export function BottomNavigationItemIcon({ className, ...rest }: BottomNavigationItemIconProps) {
   return (
     <ark.span
       {...rest}
@@ -57,7 +61,7 @@ export function BottomNavigationItemIcon({ className, ...rest }: ComponentProps<
   );
 }
 
-export function BottomNavigationItemLabel({ className, ...rest }: ComponentProps<typeof ark.span>) {
+export function BottomNavigationItemLabel({ className, ...rest }: BottomNavigationItemLabelProps) {
   return (
     <ark.span
       {...rest}

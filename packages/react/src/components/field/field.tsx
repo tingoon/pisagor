@@ -45,6 +45,18 @@ export type FieldLabelProps = ComponentProps<typeof FieldPrimitive.Label>;
 export type FieldHelperProps = ComponentProps<typeof FieldPrimitive.HelperText>;
 
 export type FieldErrorProps = ComponentProps<typeof FieldPrimitive.ErrorText>;
+
+export interface FieldGroupProps extends ComponentProps<typeof ark.div> {}
+
+export interface FieldContentProps extends ComponentProps<typeof ark.div> {}
+
+export interface FieldRequiredIndicatorProps extends ComponentProps<typeof ark.span> {}
+
+export interface FieldTitleProps extends ComponentProps<typeof ark.div> {}
+
+export interface FieldDescriptionProps extends ComponentProps<typeof ark.p> {}
+
+export interface FieldSeparatorProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Parts
@@ -79,7 +91,7 @@ export function FieldLegend({ variant = "legend", className, ...rest }: FieldLeg
   );
 }
 
-export function FieldGroup({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function FieldGroup({ className, ...rest }: FieldGroupProps) {
   return (
     <ark.div
       {...rest}
@@ -90,7 +102,7 @@ export function FieldGroup({ className, ...rest }: ComponentProps<typeof ark.div
   );
 }
 
-export function FieldContent({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function FieldContent({ className, ...rest }: FieldContentProps) {
   return (
     <ark.div
       {...rest}
@@ -109,7 +121,7 @@ export function FieldRequiredIndicator({
   className,
   children,
   ...rest
-}: ComponentProps<typeof ark.span>) {
+}: FieldRequiredIndicatorProps) {
   return (
     <FieldPrimitive.RequiredIndicator
       {...rest}
@@ -121,7 +133,7 @@ export function FieldRequiredIndicator({
   );
 }
 
-export function FieldTitle({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function FieldTitle({ className, ...rest }: FieldTitleProps) {
   return (
     <ark.div
       {...rest}
@@ -132,7 +144,7 @@ export function FieldTitle({ className, ...rest }: ComponentProps<typeof ark.div
   );
 }
 
-export function FieldDescription({ className, ...rest }: ComponentProps<typeof ark.p>) {
+export function FieldDescription({ className, ...rest }: FieldDescriptionProps) {
   return (
     <ark.p
       {...rest}
@@ -143,7 +155,7 @@ export function FieldDescription({ className, ...rest }: ComponentProps<typeof a
   );
 }
 
-export function FieldSeparator({ children, className, ...rest }: ComponentProps<typeof ark.div>) {
+export function FieldSeparator({ children, className, ...rest }: FieldSeparatorProps) {
   const resolved = useFormControlVariant();
   const shellArgs = shellVariantArgs(resolved);
 

@@ -79,6 +79,8 @@ export interface ActionBarValueProps extends BadgeProps {
   /** The label of the selection trigger */
   label?: string;
 }
+
+export interface ActionBarBodyProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Constants
@@ -284,7 +286,7 @@ export function ActionBarValue({
   );
 }
 
-export function ActionBarBody({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function ActionBarBody({ className, ...rest }: ActionBarBodyProps) {
   return <ark.div {...rest} className={actionBarInlineVariants({ className })} />;
 }
 // #endregion

@@ -19,6 +19,8 @@ export interface SkeletonTextProps extends ComponentProps<typeof ark.div> {
 }
 
 export interface SkeletonRootProps extends ComponentProps<typeof ark.div>, WithTestId {}
+
+export interface SkeletonCircleProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Parts
@@ -34,7 +36,7 @@ export function SkeletonRoot({ className, testId, ...rest }: SkeletonRootProps) 
   );
 }
 
-export function SkeletonCircle({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function SkeletonCircle({ className, ...rest }: SkeletonCircleProps) {
   return (
     <ark.div
       {...rest}

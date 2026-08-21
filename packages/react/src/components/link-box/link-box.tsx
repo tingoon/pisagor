@@ -5,6 +5,8 @@ import type { WithTestId } from "../../internal/types";
 
 // #region Types
 export interface LinkBoxRootProps extends ComponentProps<typeof ark.div>, WithTestId {}
+
+export interface LinkOverlayLinkProps extends ComponentProps<typeof ark.a> {}
 // #endregion
 
 // #region Parts
@@ -20,7 +22,7 @@ export function LinkBoxRoot({ className, testId, ...rest }: LinkBoxRootProps) {
   );
 }
 
-export function LinkOverlayLink({ className, ...rest }: ComponentProps<typeof ark.a>) {
+export function LinkOverlayLink({ className, ...rest }: LinkOverlayLinkProps) {
   return (
     <ark.a
       {...rest}

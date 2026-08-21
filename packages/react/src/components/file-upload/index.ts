@@ -19,7 +19,10 @@ import {
 
 export type {
   FileUploadClearTriggerProps,
+  FileUploadDescriptionProps,
+  FileUploadDropzoneIconProps,
   FileUploadDropzoneProps,
+  FileUploadHelperProps,
   FileUploadItemDeleteTriggerProps,
   FileUploadItemGroupProps,
   FileUploadItemNameProps,
@@ -29,6 +32,7 @@ export type {
   FileUploadItemSizeProps,
   FileUploadListProps,
   FileUploadRootProps,
+  FileUploadTitleProps,
   FileUploadTriggerProps,
 } from "./file-upload";
 

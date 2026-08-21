@@ -7,6 +7,8 @@ import {
 } from "./bottom-navigation";
 
 export type {
+  BottomNavigationItemIconProps,
+  BottomNavigationItemLabelProps,
   BottomNavigationItemProps,
   BottomNavigationListProps,
   BottomNavigationProps,

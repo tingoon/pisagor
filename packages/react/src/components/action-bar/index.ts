@@ -9,6 +9,7 @@ import {
 } from "./action-bar";
 
 export type {
+  ActionBarBodyProps,
   ActionBarCloseProps,
   ActionBarContentProps,
   ActionBarProps,

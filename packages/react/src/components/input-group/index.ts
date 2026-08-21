@@ -10,6 +10,7 @@ export type {
   InputGroupAddonProps,
   InputGroupButtonProps,
   InputGroupProps,
+  InputGroupTextProps,
 } from "./input-group-core";
 
 export const InputGroup = Object.assign(InputGroupRoot, {

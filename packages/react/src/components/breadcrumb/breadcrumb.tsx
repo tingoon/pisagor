@@ -19,6 +19,13 @@ interface BreadcrumbPresetItem {
   isCurrentPage?: boolean;
 }
 
+export interface BreadcrumbListProps extends ComponentProps<typeof ark.ol> {}
+export interface BreadcrumbItemProps extends ComponentProps<typeof ark.li> {}
+export interface BreadcrumbLinkProps extends ComponentProps<typeof ark.a> {}
+export interface BreadcrumbPageProps extends ComponentProps<typeof ark.span> {}
+export interface BreadcrumbSeparatorProps extends ComponentProps<typeof ark.li> {}
+export interface BreadcrumbEllipsisProps extends ComponentProps<typeof ark.span> {}
+
 export interface BreadcrumbRootProps extends ComponentProps<typeof ark.nav>, WithTestId {
   /**
    * Accessible label for the breadcrumb navigation landmark.
@@ -53,7 +60,7 @@ export function BreadcrumbRoot({
   );
 }
 
-export function BreadcrumbList({ className, ...rest }: ComponentProps<typeof ark.ol>) {
+export function BreadcrumbList({ className, ...rest }: BreadcrumbListProps) {
   return (
     <ark.ol
       {...rest}
@@ -65,7 +72,7 @@ export function BreadcrumbList({ className, ...rest }: ComponentProps<typeof ark
   );
 }
 
-export function BreadcrumbItem({ className, ...rest }: ComponentProps<typeof ark.li>) {
+export function BreadcrumbItem({ className, ...rest }: BreadcrumbItemProps) {
   return (
     <ark.li
       {...rest}
@@ -76,7 +83,7 @@ export function BreadcrumbItem({ className, ...rest }: ComponentProps<typeof ark
   );
 }
 
-export function BreadcrumbLink({ className, ...rest }: ComponentProps<typeof ark.a>) {
+export function BreadcrumbLink({ className, ...rest }: BreadcrumbLinkProps) {
   return (
     <ark.a
       {...rest}
@@ -87,7 +94,7 @@ export function BreadcrumbLink({ className, ...rest }: ComponentProps<typeof ark
   );
 }
 
-export function BreadcrumbPage({ className, ...rest }: ComponentProps<typeof ark.span>) {
+export function BreadcrumbPage({ className, ...rest }: BreadcrumbPageProps) {
   return (
     <ark.span
       {...rest}
@@ -99,11 +106,7 @@ export function BreadcrumbPage({ className, ...rest }: ComponentProps<typeof ark
   );
 }
 
-export function BreadcrumbSeparator({
-  children,
-  className,
-  ...rest
-}: ComponentProps<typeof ark.li>) {
+export function BreadcrumbSeparator({ children, className, ...rest }: BreadcrumbSeparatorProps) {
   return (
     <ark.li
       {...rest}
@@ -118,7 +121,7 @@ export function BreadcrumbSeparator({
   );
 }
 
-export function BreadcrumbEllipsis(props: ComponentProps<typeof ark.span>) {
+export function BreadcrumbEllipsis(props: BreadcrumbEllipsisProps) {
   return (
     <ark.span
       aria-hidden="true"

@@ -14,6 +14,8 @@ export interface ButtonGroupProps
   extends ComponentProps<typeof ark.fieldset>,
     ButtonGroupVariantProps,
     WithTestId {}
+
+export interface ButtonGroupTextProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Parts
@@ -30,7 +32,7 @@ export function ButtonGroupRoot({ className, orientation, testId, ...rest }: But
   );
 }
 
-export function ButtonGroupText({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function ButtonGroupText({ className, ...rest }: ButtonGroupTextProps) {
   return (
     <ark.div
       {...rest}

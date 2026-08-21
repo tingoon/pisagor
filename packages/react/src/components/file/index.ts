@@ -11,6 +11,7 @@ import {
 
 export type {
   FileActionsProps,
+  FileContentProps,
   FileMediaProps,
   FileMetaProps,
   FileNameProps,

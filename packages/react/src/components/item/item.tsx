@@ -29,10 +29,22 @@ export interface ItemHeaderProps extends Omit<ComponentProps<typeof ark.div>, "t
   /** Shorthand: renders an ItemDescription inside the header. */
   description?: ReactNode;
 }
+
+export interface ItemGroupProps extends ComponentProps<typeof ark.div> {}
+
+export interface ItemContentProps extends ComponentProps<typeof ark.div> {}
+
+export interface ItemTitleProps extends ComponentProps<typeof ark.div> {}
+
+export interface ItemDescriptionProps extends ComponentProps<typeof ark.p> {}
+
+export interface ItemActionsProps extends ComponentProps<typeof ark.div> {}
+
+export interface ItemFooterProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Parts
-export function ItemGroup({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function ItemGroup({ className, ...rest }: ItemGroupProps) {
   return (
     <ark.div
       {...rest}
@@ -81,7 +93,7 @@ export function ItemMedia({ variant = "default", className, ...rest }: ItemMedia
   );
 }
 
-export function ItemContent({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function ItemContent({ className, ...rest }: ItemContentProps) {
   return (
     <ark.div
       {...rest}
@@ -92,7 +104,7 @@ export function ItemContent({ className, ...rest }: ComponentProps<typeof ark.di
   );
 }
 
-export function ItemTitle({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function ItemTitle({ className, ...rest }: ItemTitleProps) {
   return (
     <ark.div
       {...rest}
@@ -103,7 +115,7 @@ export function ItemTitle({ className, ...rest }: ComponentProps<typeof ark.div>
   );
 }
 
-export function ItemDescription({ className, ...rest }: ComponentProps<typeof ark.p>) {
+export function ItemDescription({ className, ...rest }: ItemDescriptionProps) {
   return (
     <ark.p
       {...rest}
@@ -114,7 +126,7 @@ export function ItemDescription({ className, ...rest }: ComponentProps<typeof ar
   );
 }
 
-export function ItemActions({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function ItemActions({ className, ...rest }: ItemActionsProps) {
   return (
     <ark.div
       {...rest}
@@ -146,7 +158,7 @@ export function ItemHeader({ title, description, className, children, ...rest }:
   );
 }
 
-export function ItemFooter({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function ItemFooter({ className, ...rest }: ItemFooterProps) {
   return (
     <ark.div
       {...rest}

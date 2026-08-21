@@ -77,10 +77,12 @@ export interface PhoneInputProps
   /** Country dropdown props (Combobox.Content, except `className` and `children`). */
   popupProps?: Omit<ComboboxContentProps, "className" | "children">;
 }
+
+interface PhoneInputContainerProps extends ComponentProps<"div"> {}
 // #endregion
 
 // #region Parts
-function PhoneInputContainer({ className, children, ...rest }: ComponentProps<"div">) {
+function PhoneInputContainer({ className, children, ...rest }: PhoneInputContainerProps) {
   const { size, testId, variant } = usePhoneInput();
 
   return (

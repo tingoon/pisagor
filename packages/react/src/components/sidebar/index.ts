@@ -26,12 +26,25 @@ import {
 
 export type {
   SidebarContentProps,
+  SidebarFooterProps,
+  SidebarGroupActionProps,
+  SidebarGroupContentProps,
+  SidebarGroupLabelProps,
+  SidebarGroupProps,
+  SidebarHeaderProps,
+  SidebarInsetProps,
   SidebarMenuActionProps,
+  SidebarMenuBadgeProps,
   SidebarMenuButtonProps,
+  SidebarMenuItemProps,
+  SidebarMenuProps,
   SidebarMenuSkeletonProps,
   SidebarMenuSubButtonProps,
+  SidebarMenuSubItemProps,
+  SidebarMenuSubProps,
   SidebarProps,
   SidebarProviderProps,
+  SidebarRailProps,
 } from "./sidebar";
 
 export { useSidebar } from "./sidebar.context";

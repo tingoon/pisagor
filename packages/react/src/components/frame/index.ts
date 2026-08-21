@@ -7,7 +7,14 @@ import {
   FrameTitle,
 } from "./frame";
 
-export type { FrameHeaderProps, FrameRootProps } from "./frame";
+export type {
+  FrameDescriptionProps,
+  FrameFooterProps,
+  FrameHeaderProps,
+  FramePanelProps,
+  FrameRootProps,
+  FrameTitleProps,
+} from "./frame";
 
 export const Frame = Object.assign(FrameRoot, {
   Description: FrameDescription,

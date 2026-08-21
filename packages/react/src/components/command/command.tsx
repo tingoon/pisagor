@@ -75,6 +75,10 @@ export interface CommandProps<T extends CollectionItem = CollectionItem>
   extends ComboboxRootProps<T> {
   className?: string;
 }
+
+export interface CommandSeparatorProps extends ComponentProps<"div"> {}
+
+export interface CommandFooterProps extends ComponentProps<"div"> {}
 // #endregion
 
 // #region Parts
@@ -193,7 +197,7 @@ export function CommandItem({ className, ...rest }: ComboboxItemProps) {
   );
 }
 
-export function CommandSeparator({ className, ...rest }: ComponentProps<"div">) {
+export function CommandSeparator({ className, ...rest }: CommandSeparatorProps) {
   return (
     <Separator
       {...rest}
@@ -208,7 +212,7 @@ export function CommandShortcut(props: DropdownMenuShortcutProps) {
   return <DropdownMenu.Shortcut dataPart="shortcut" dataScope="command" {...props} />;
 }
 
-export function CommandFooter({ className, ...rest }: ComponentProps<"div">) {
+export function CommandFooter({ className, ...rest }: CommandFooterProps) {
   return (
     <div
       {...rest}

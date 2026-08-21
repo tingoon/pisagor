@@ -80,6 +80,8 @@ export type FloatingPanelStageTriggerProps = ComponentProps<
 export type FloatingPanelCloseTriggerProps = ComponentProps<
   typeof FloatingPanelPrimitive.CloseTrigger
 >;
+
+export interface FloatingPanelFooterProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Parts
@@ -245,7 +247,7 @@ export function FloatingPanelBody({
   );
 }
 
-export function FloatingPanelFooter({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function FloatingPanelFooter({ className, ...rest }: FloatingPanelFooterProps) {
   return (
     <ark.div
       {...rest}

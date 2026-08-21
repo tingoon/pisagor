@@ -51,6 +51,10 @@ export type PopoverDescriptionProps = ComponentProps<typeof PopoverPrimitive.Des
 export type PopoverCloseTriggerProps = ComponentProps<typeof PopoverPrimitive.CloseTrigger>;
 
 export type PopoverArrowProps = ComponentProps<typeof PopoverPrimitive.Arrow>;
+
+export interface PopoverBodyProps extends ComponentProps<typeof ark.div> {}
+
+export interface PopoverFooterProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Parts
@@ -147,7 +151,7 @@ export function PopoverDescription({ className, ...rest }: PopoverDescriptionPro
   );
 }
 
-export function PopoverBody({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function PopoverBody({ className, ...rest }: PopoverBodyProps) {
   return (
     <ScrollArea>
       <ark.div
@@ -160,7 +164,7 @@ export function PopoverBody({ className, ...rest }: ComponentProps<typeof ark.di
   );
 }
 
-export function PopoverFooter({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function PopoverFooter({ className, ...rest }: PopoverFooterProps) {
   return (
     <ark.div
       {...rest}

@@ -31,12 +31,21 @@ export type {
 export { useAppShell } from "./app-shell.context";
 export type { AppShellBannerProps } from "./banner";
 export type {
+  AppShellInspectorContentProps,
+  AppShellInspectorFooterProps,
+  AppShellInspectorHeaderProps,
   AppShellInspectorProps,
   AppShellInspectorTriggerProps,
 } from "./inspector";
-export type { AppShellHeaderProps } from "./main";
+export type { AppShellContentProps, AppShellHeaderProps, AppShellMainProps } from "./main";
 export type { AppShellNavigationProps } from "./navigation";
-export type { AppShellPanelProps, AppShellPanelTriggerProps } from "./panel";
+export type {
+  AppShellPanelContentProps,
+  AppShellPanelFooterProps,
+  AppShellPanelHeaderProps,
+  AppShellPanelProps,
+  AppShellPanelTriggerProps,
+} from "./panel";
 export type { AppShellRailItemProps, AppShellRailProps } from "./rail";
 export { useAppShellRail } from "./rail.context";
 

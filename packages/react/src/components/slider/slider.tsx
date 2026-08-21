@@ -77,6 +77,16 @@ export interface SliderProps extends Omit<SliderRootProps, "children" | "onValue
   valueProps?: Omit<SliderValueProps, "children" | "className">;
   children?: ReactNode;
 }
+
+interface SliderHeaderProps extends ComponentProps<"div"> {}
+
+interface SliderMarkerGroupProps extends ComponentProps<typeof SliderPrimitive.MarkerGroup> {}
+
+interface SliderMarkerProps extends ComponentProps<typeof SliderPrimitive.Marker> {}
+
+interface SliderMarkerTickProps extends ComponentProps<"span"> {}
+
+interface SliderMarkerLabelProps extends ComponentProps<"span"> {}
 // #endregion
 
 // #region Parts
@@ -107,7 +117,7 @@ function SliderRoot({
   );
 }
 
-function SliderHeader({ className, children, ...rest }: ComponentProps<"div">) {
+function SliderHeader({ className, children, ...rest }: SliderHeaderProps) {
   const { slots } = useSlider();
 
   return (
@@ -163,11 +173,7 @@ function SliderThumb({ className, ...rest }: SliderThumbProps) {
   );
 }
 
-function SliderMarkerGroup({
-  className,
-  children,
-  ...rest
-}: ComponentProps<typeof SliderPrimitive.MarkerGroup>) {
+function SliderMarkerGroup({ className, children, ...rest }: SliderMarkerGroupProps) {
   const { slots } = useSlider();
 
   return (
@@ -177,11 +183,7 @@ function SliderMarkerGroup({
   );
 }
 
-function SliderMarker({
-  className,
-  children,
-  ...rest
-}: ComponentProps<typeof SliderPrimitive.Marker>) {
+function SliderMarker({ className, children, ...rest }: SliderMarkerProps) {
   const { slots } = useSlider();
 
   return (
@@ -191,13 +193,13 @@ function SliderMarker({
   );
 }
 
-function SliderMarkerTick({ className, ...rest }: ComponentProps<"span">) {
+function SliderMarkerTick({ className, ...rest }: SliderMarkerTickProps) {
   const { slots } = useSlider();
 
   return <span {...rest} className={slots.markerTick({ className })} />;
 }
 
-function SliderMarkerLabel({ className, children, ...rest }: ComponentProps<"span">) {
+function SliderMarkerLabel({ className, children, ...rest }: SliderMarkerLabelProps) {
   const { slots } = useSlider();
 
   return (

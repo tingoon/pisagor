@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { Timer as TimerPrimitive, useTimerContext as useTimer } from "@ark-ui/react/timer";
+import { Timer as TimerPrimitive, useTimerContext } from "@ark-ui/react/timer";
 import {
   timerAreaVariants,
   timerControlVariants,
@@ -44,6 +44,8 @@ export type TimerSeparatorProps = ComponentProps<typeof TimerPrimitive.Separator
 export type TimerControlProps = ComponentProps<typeof TimerPrimitive.Control>;
 
 export type TimerActionTriggerProps = ComponentProps<typeof TimerPrimitive.ActionTrigger>;
+
+export interface TimerItemLabelProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Parts
@@ -105,7 +107,7 @@ export function TimerItem({ className, ...rest }: TimerItemProps) {
   return <TimerPrimitive.Item {...rest} className={timerItemVariants({ className })} />;
 }
 
-export function TimerItemLabel({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function TimerItemLabel({ className, ...rest }: TimerItemLabelProps) {
   return (
     <ark.div
       {...rest}
@@ -153,7 +155,7 @@ export function TimerRestart(props: TimerActionProps) {
 }
 
 export function TimerPlay(props: TimerActionProps) {
-  const { paused } = useTimer();
+  const { paused } = useTimerContext();
 
   if (paused) {
     return <TimerResume {...props} />;

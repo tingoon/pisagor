@@ -81,6 +81,12 @@ export interface AppShellPanelTriggerProps extends Omit<ButtonProps, "children">
   placement?: AppShellPlacement;
 }
 
+export interface AppShellPanelHeaderProps extends ComponentProps<"div"> {}
+
+export interface AppShellPanelContentProps extends ComponentProps<"div"> {}
+
+export interface AppShellPanelFooterProps extends ComponentProps<"div"> {}
+
 export function AppShellPanel({
   placement = "start",
   defaultOpen = false,
@@ -144,7 +150,7 @@ export function AppShellPanel({
   );
 }
 
-export function AppShellPanelHeader({ className, ...rest }: ComponentProps<"div">) {
+export function AppShellPanelHeader({ className, ...rest }: AppShellPanelHeaderProps) {
   return (
     <div
       {...rest}
@@ -155,7 +161,7 @@ export function AppShellPanelHeader({ className, ...rest }: ComponentProps<"div"
   );
 }
 
-export function AppShellPanelContent({ className, ...rest }: ComponentProps<"div">) {
+export function AppShellPanelContent({ className, ...rest }: AppShellPanelContentProps) {
   return (
     <ScrollArea className={appShellInline2Variants()}>
       <div
@@ -168,7 +174,7 @@ export function AppShellPanelContent({ className, ...rest }: ComponentProps<"div
   );
 }
 
-export function AppShellPanelFooter({ className, ...rest }: ComponentProps<"div">) {
+export function AppShellPanelFooter({ className, ...rest }: AppShellPanelFooterProps) {
   return (
     <div
       {...rest}

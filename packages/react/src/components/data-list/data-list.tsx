@@ -32,6 +32,10 @@ export interface DataListItemProps extends ComponentProps<typeof ark.div> {
   /** Slot class names */
   classNames?: DataListClassNames;
 }
+
+interface DataListItemLabelProps extends ComponentProps<typeof ark.dt> {}
+
+interface DataListItemValueProps extends ComponentProps<typeof ark.dd> {}
 // #endregion
 
 // #region Parts
@@ -59,7 +63,7 @@ export function DataListRoot({
   );
 }
 
-function DataListItemLabel({ className, ...rest }: ComponentProps<typeof ark.dt>) {
+function DataListItemLabel({ className, ...rest }: DataListItemLabelProps) {
   const slots = dataListVariants();
 
   return (
@@ -72,7 +76,7 @@ function DataListItemLabel({ className, ...rest }: ComponentProps<typeof ark.dt>
   );
 }
 
-function DataListItemValue({ className, ...rest }: ComponentProps<typeof ark.dd>) {
+function DataListItemValue({ className, ...rest }: DataListItemValueProps) {
   const slots = dataListVariants();
 
   return (

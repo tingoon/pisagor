@@ -10,7 +10,12 @@ import {
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
 import type { WithTestId } from "../../internal/types";
-import { InputGroupAddon, InputGroupButton, InputGroupText } from "../input-group/input-group-core";
+import {
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupText,
+  type InputGroupTextProps,
+} from "../input-group/input-group-core";
 import { FileInputContext, useFileInput } from "./file-input.context";
 
 // #region Types
@@ -49,6 +54,10 @@ export interface FileInputProps extends NativeFileInputProps, FileInputVariantPr
   /** Alias for `onFilesChange`; matches `FileUpload` callback naming. */
   onValueChange?: (files: File[]) => void;
 }
+
+interface FileInputControlProps extends ComponentProps<"input"> {}
+
+interface FileInputLabelProps extends InputGroupTextProps {}
 // #endregion
 
 // #region Helpers
@@ -103,7 +112,7 @@ function FileInputRoot({
   );
 }
 
-function FileInputControl({ className, ...rest }: ComponentProps<"input">) {
+function FileInputControl({ className, ...rest }: FileInputControlProps) {
   const { slots } = useFileInput();
 
   return (
@@ -117,7 +126,7 @@ function FileInputControl({ className, ...rest }: ComponentProps<"input">) {
   );
 }
 
-function FileInputLabel({ children, className, ...rest }: ComponentProps<typeof InputGroupText>) {
+function FileInputLabel({ children, className, ...rest }: FileInputLabelProps) {
   const { slots } = useFileInput();
 
   return (

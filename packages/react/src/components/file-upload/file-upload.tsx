@@ -1,8 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import {
-  FileUpload as FileUploadPrimitive,
-  useFileUploadContext as useFileUpload,
-} from "@ark-ui/react/file-upload";
+import { FileUpload as FileUploadPrimitive, useFileUploadContext } from "@ark-ui/react/file-upload";
 import { UploadIcon, XIcon } from "@phosphor-icons/react";
 import {
   fileUploadDropzoneHelperVariants,
@@ -73,6 +70,14 @@ export type FileUploadItemDeleteTriggerProps = ComponentProps<
 >;
 
 export type FileUploadClearTriggerProps = ComponentProps<typeof FileUploadPrimitive.ClearTrigger>;
+
+export interface FileUploadDropzoneIconProps extends ComponentProps<typeof ark.div> {}
+
+export interface FileUploadTitleProps extends ComponentProps<typeof ark.div> {}
+
+export interface FileUploadDescriptionProps extends ComponentProps<typeof ark.div> {}
+
+export interface FileUploadHelperProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Parts
@@ -131,7 +136,7 @@ export function FileUploadDropzoneIcon({
   className,
   children,
   ...rest
-}: ComponentProps<typeof ark.div>) {
+}: FileUploadDropzoneIconProps) {
   return (
     <ark.div
       {...rest}
@@ -144,7 +149,7 @@ export function FileUploadDropzoneIcon({
   );
 }
 
-export function FileUploadTitle({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function FileUploadTitle({ className, ...rest }: FileUploadTitleProps) {
   return (
     <ark.div
       {...rest}
@@ -155,7 +160,7 @@ export function FileUploadTitle({ className, ...rest }: ComponentProps<typeof ar
   );
 }
 
-export function FileUploadDescription({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function FileUploadDescription({ className, ...rest }: FileUploadDescriptionProps) {
   return (
     <ark.div
       {...rest}
@@ -166,7 +171,7 @@ export function FileUploadDescription({ className, ...rest }: ComponentProps<typ
   );
 }
 
-export function FileUploadHelper({ className, ...rest }: ComponentProps<typeof ark.div>) {
+export function FileUploadHelper({ className, ...rest }: FileUploadHelperProps) {
   return (
     <ark.div
       {...rest}
@@ -182,7 +187,7 @@ export function FileUploadItemGroup(props: FileUploadItemGroupProps) {
 }
 
 export function FileUploadList({ className, ...rest }: FileUploadListProps) {
-  const fileUpload = useFileUpload();
+  const fileUpload = useFileUploadContext();
 
   const files = fileUpload.acceptedFiles;
 

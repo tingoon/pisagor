@@ -34,6 +34,7 @@ export type {
   ColorPickerRootProps,
   ColorPickerSwatchGroupProps,
   ColorPickerSwatchIndicatorProps,
+  ColorPickerSwatchPreviewProps,
   ColorPickerSwatchProps,
   ColorPickerSwatchTriggerProps,
   ColorPickerTransparencyGridProps,

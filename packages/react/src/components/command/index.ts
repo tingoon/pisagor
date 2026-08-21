@@ -18,9 +18,11 @@ import {
 export type {
   CommandContentProps,
   CommandDialogContentProps,
+  CommandFooterProps,
   CommandInputProps,
   CommandListProps,
   CommandProps,
+  CommandSeparatorProps,
 } from "./command";
 
 export const Command = Object.assign(CommandRoot, {
