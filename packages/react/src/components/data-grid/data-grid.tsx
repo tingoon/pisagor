@@ -9,16 +9,17 @@ import {
   dataGridVariants,
 } from "@pisagor/styles/ui/data-grid";
 import { cn } from "@pisagor/utils";
+import type { RowData } from "@tanstack/react-table";
+import { flexRender } from "@tanstack/react-table";
 import {
-  type Cell,
-  type Column,
-  flexRender,
+  type LegacyCell as Cell,
+  type LegacyColumn as Column,
   getCoreRowModel,
-  type Header,
-  type Row,
-  type TableOptions,
-  useReactTable,
-} from "@tanstack/react-table";
+  type LegacyHeader as Header,
+  type LegacyRow as Row,
+  type LegacyTableOptions as TableOptions,
+  useLegacyTable,
+} from "@tanstack/react-table/legacy";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import {
   type ComponentProps,
@@ -50,7 +51,7 @@ import {
 /**
  * @typeParam TData - Row shape passed to `columns` and `data`.
  */
-export type DataGridProps<TData> = {
+export type DataGridProps<TData extends RowData> = {
   children: ReactNode;
   className?: string;
   getCoreRowModel?: TableOptions<TData>["getCoreRowModel"];
@@ -125,7 +126,7 @@ interface DataGridEmptyProps extends TableRowProps {
 
 interface DataGridColumnResizerProps extends ComponentProps<"div"> {}
 
-interface DataGridRowProviderProps<TData> {
+interface DataGridRowProviderProps<TData extends RowData> {
   row: Row<TData>;
   children: ReactNode;
 }
@@ -142,7 +143,7 @@ interface DataGridFooterProps extends ComponentProps<"div"> {}
  * @typeParam TData - Row shape for the table context.
  * @returns The table instance for the current row model.
  */
-export function useDataGrid<TData>() {
+export function useDataGrid<TData extends RowData>() {
   return useDataGridContext<TData>().table;
 }
 
@@ -152,7 +153,7 @@ export function useDataGrid<TData>() {
  * @typeParam TData - Row shape for the table context.
  * @returns The active header group.
  */
-export function useDataGridHeaderGroup<TData>() {
+export function useDataGridHeaderGroup<TData extends RowData>() {
   return useDataGridHeaderGroupContext<TData>().headerGroup;
 }
 
@@ -162,11 +163,11 @@ export function useDataGridHeaderGroup<TData>() {
  * @typeParam TData - Row shape for the table context.
  * @returns The active table row.
  */
-export function useDataGridRow<TData>() {
+export function useDataGridRow<TData extends RowData>() {
   return useDataGridRowContext<TData>().row;
 }
 
-function columnSizeStyle(column: Column<unknown>, enabled: boolean): CSSProperties | undefined {
+function columnSizeStyle(column: Column<RowData>, enabled: boolean): CSSProperties | undefined {
   if (!enabled) {
     return undefined;
   }
@@ -179,7 +180,7 @@ function columnSizeStyle(column: Column<unknown>, enabled: boolean): CSSProperti
 // #endregion
 
 // #region Parts
-function DataGridHeader<TData>({ children }: DataGridHeaderProps) {
+function DataGridHeader<TData extends RowData>({ children }: DataGridHeaderProps) {
   const table = useDataGridContext<TData>().table;
 
   return (
@@ -187,7 +188,7 @@ function DataGridHeader<TData>({ children }: DataGridHeaderProps) {
       {table.getHeaderGroups().map((headerGroup) => (
         <DataGridHeaderGroupContext
           key={headerGroup.id}
-          value={{ headerGroup } as DataGridHeaderGroupContextValue<unknown>}
+          value={{ headerGroup } as DataGridHeaderGroupContextValue<RowData>}
         >
           {children}
         </DataGridHeaderGroupContext>
@@ -233,7 +234,7 @@ function DataGridColumnResizer({ className, ...rest }: DataGridColumnResizerProp
   );
 }
 
-function DataGridHeadCell<TData>({
+function DataGridHeadCell<TData extends RowData>({
   header,
   children,
   className,
@@ -245,14 +246,14 @@ function DataGridHeadCell<TData>({
   const headClassName = cn(filter && dataTableFilterHeadClassName, className);
 
   return (
-    <DataGridHeaderCellContext value={{ header } as DataGridHeaderCellContextValue<unknown>}>
+    <DataGridHeaderCellContext value={{ header } as DataGridHeaderCellContextValue<RowData>}>
       <Table.Head
         {...rest}
         className={cn(sizingEnabled && "relative", headClassName)}
         data-part="head"
         data-scope="data-grid"
         style={{
-          ...columnSizeStyle(header.column as Column<unknown>, sizingEnabled),
+          ...columnSizeStyle(header.column as Column<RowData>, sizingEnabled),
           ...rest.style,
         }}
       >
@@ -267,7 +268,7 @@ function DataGridHeadCell<TData>({
   );
 }
 
-function DataGridHead<TData>({
+function DataGridHead<TData extends RowData>({
   columnId,
   children,
   className,
@@ -311,7 +312,7 @@ function DataGridHead<TData>({
  * @typeParam TData - Row shape for the cell context.
  * @returns The rendered cell content, or null for placeholder cells.
  */
-export function renderDataGridCell<TData>(cell: Cell<TData, unknown>) {
+export function renderDataGridCell<TData extends RowData>(cell: Cell<TData, unknown>) {
   if (cell.getIsPlaceholder()) {
     return null;
   }
@@ -326,7 +327,7 @@ export function renderDataGridCell<TData>(cell: Cell<TData, unknown>) {
   return flexRender(cell.column.columnDef.cell, cell.getContext());
 }
 
-function DataGridBody<TData>({ children, empty = null }: DataGridBodyProps) {
+function DataGridBody<TData extends RowData>({ children, empty = null }: DataGridBodyProps) {
   const table = useDataGridContext<TData>().table;
   const rows = table.getRowModel().rows;
 
@@ -337,7 +338,7 @@ function DataGridBody<TData>({ children, empty = null }: DataGridBodyProps) {
   return (
     <>
       {rows.map((row) => (
-        <DataGridRowContext key={row.id} value={{ row } as DataGridRowContextValue<unknown>}>
+        <DataGridRowContext key={row.id} value={{ row } as DataGridRowContextValue<RowData>}>
           {children}
         </DataGridRowContext>
       ))}
@@ -345,7 +346,7 @@ function DataGridBody<TData>({ children, empty = null }: DataGridBodyProps) {
   );
 }
 
-function DataGridVirtualBody<TData>({
+function DataGridVirtualBody<TData extends RowData>({
   children,
   empty = null,
   estimateSize = 40,
@@ -413,7 +414,7 @@ function DataGridVirtualBody<TData>({
         }
 
         return (
-          <DataGridRowContext key={row.id} value={{ row } as DataGridRowContextValue<unknown>}>
+          <DataGridRowContext key={row.id} value={{ row } as DataGridRowContextValue<RowData>}>
             {children}
           </DataGridRowContext>
         );
@@ -427,15 +428,18 @@ function DataGridVirtualBody<TData>({
   );
 }
 
-function DataGridRowProvider<TData>({ row, children }: DataGridRowProviderProps<TData>) {
+function DataGridRowProvider<TData extends RowData>({
+  row,
+  children,
+}: DataGridRowProviderProps<TData>) {
   return (
-    <DataGridRowContext value={{ row } as DataGridRowContextValue<unknown>}>
+    <DataGridRowContext value={{ row } as DataGridRowContextValue<RowData>}>
       {children}
     </DataGridRowContext>
   );
 }
 
-function DataGridRow<TData>({ className, style, ...rest }: DataGridRowProps) {
+function DataGridRow<TData extends RowData>({ className, style, ...rest }: DataGridRowProps) {
   const row = useDataGridRowContext<TData>().row;
 
   return (
@@ -455,7 +459,13 @@ function DataGridRow<TData>({ className, style, ...rest }: DataGridRowProps) {
   );
 }
 
-function DataGridCell<TData>({ columnId, children, className, style, ...rest }: DataGridCellProps) {
+function DataGridCell<TData extends RowData>({
+  columnId,
+  children,
+  className,
+  style,
+  ...rest
+}: DataGridCellProps) {
   const table = useDataGridContext<TData>().table;
   const row = useDataGridRowContext<TData>().row;
   const sizingEnabled = Boolean(table.options.enableColumnResizing);
@@ -474,7 +484,7 @@ function DataGridCell<TData>({ columnId, children, className, style, ...rest }: 
         data-part="cell"
         data-scope="data-grid"
         style={{
-          ...columnSizeStyle(cell.column as Column<unknown>, sizingEnabled),
+          ...columnSizeStyle(cell.column as Column<RowData>, sizingEnabled),
           ...style,
         }}
       >
@@ -493,7 +503,7 @@ function DataGridCell<TData>({ columnId, children, className, style, ...rest }: 
           data-scope="data-grid"
           key={cell.id}
           style={{
-            ...columnSizeStyle(cell.column as Column<unknown>, sizingEnabled),
+            ...columnSizeStyle(cell.column as Column<RowData>, sizingEnabled),
             ...style,
           }}
         >
@@ -544,14 +554,14 @@ function DataGridFooter({ className, ...rest }: DataGridFooterProps) {
   );
 }
 
-function DataGridRoot<TData>({
+function DataGridRoot<TData extends RowData>({
   children,
   className,
   getCoreRowModel: getCoreRowModelOption,
   testId,
   ...rest
 }: DataGridProps<TData>) {
-  const table = useReactTable<TData>({
+  const table = useLegacyTable<TData>({
     columnResizeMode: rest.columnResizeMode ?? "onChange",
     getCoreRowModel: getCoreRowModelOption ?? getCoreRowModel(),
     ...rest,
@@ -560,7 +570,7 @@ function DataGridRoot<TData>({
   const contextValue = useMemo(() => ({ table }), [table]);
 
   return (
-    <DataGridContext value={contextValue as DataGridContextValue<unknown>}>
+    <DataGridContext value={contextValue as DataGridContextValue<RowData>}>
       <div
         className={dataGridVariants({ className })}
         data-part="root"
@@ -573,7 +583,7 @@ function DataGridRoot<TData>({
   );
 }
 
-export function DataGrid<TData>(props: DataGridProps<TData>) {
+export function DataGrid<TData extends RowData>(props: DataGridProps<TData>) {
   return DataGridRoot(props);
 }
 

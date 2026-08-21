@@ -4,13 +4,14 @@ import {
   dataTableToolbarVariants,
   dataTableVariants,
 } from "@pisagor/styles/ui/data-table";
+import type { RowData } from "@tanstack/react-table";
+import { flexRender } from "@tanstack/react-table";
 import {
-  type Cell,
-  flexRender,
+  type LegacyCell as Cell,
   getCoreRowModel,
-  type TableOptions,
-  useReactTable,
-} from "@tanstack/react-table";
+  type LegacyTableOptions as TableOptions,
+  useLegacyTable,
+} from "@tanstack/react-table/legacy";
 import { type ComponentProps, type ReactNode, useMemo } from "react";
 import type { WithTestId } from "../../internal/types";
 import { Table, type TableCellProps, type TableHeadProps, type TableRowProps } from "../table";
@@ -30,7 +31,7 @@ import {
 /**
  * @typeParam TData - Row shape passed to `columns` and `data`.
  */
-export type DataTableProps<TData> = {
+export type DataTableProps<TData extends RowData> = {
   children: ReactNode;
   className?: string;
   getCoreRowModel?: TableOptions<TData>["getCoreRowModel"];
@@ -88,7 +89,7 @@ interface DataTableFooterProps extends ComponentProps<"div"> {}
  * @typeParam TData - Row shape for the table context.
  * @returns The table instance for the current row model.
  */
-export function useDataTable<TData>() {
+export function useDataTable<TData extends RowData>() {
   return useDataTableContext<TData>().table;
 }
 
@@ -98,7 +99,7 @@ export function useDataTable<TData>() {
  * @typeParam TData - Row shape for the table context.
  * @returns The active header group.
  */
-export function useDataTableHeaderGroup<TData>() {
+export function useDataTableHeaderGroup<TData extends RowData>() {
   return useDataTableHeaderGroupContext<TData>().headerGroup;
 }
 
@@ -108,13 +109,13 @@ export function useDataTableHeaderGroup<TData>() {
  * @typeParam TData - Row shape for the table context.
  * @returns The active table row.
  */
-export function useDataTableRow<TData>() {
+export function useDataTableRow<TData extends RowData>() {
   return useDataTableRowContext<TData>().row;
 }
 // #endregion
 
 // #region Parts
-function DataTableHeader<TData>({ children }: DataTableHeaderProps) {
+function DataTableHeader<TData extends RowData>({ children }: DataTableHeaderProps) {
   const table = useDataTableContext<TData>().table;
 
   return (
@@ -122,7 +123,7 @@ function DataTableHeader<TData>({ children }: DataTableHeaderProps) {
       {table.getHeaderGroups().map((headerGroup) => (
         <DataTableHeaderGroupContext
           key={headerGroup.id}
-          value={{ headerGroup } as DataTableHeaderGroupContextValue<unknown>}
+          value={{ headerGroup } as DataTableHeaderGroupContextValue<RowData>}
         >
           {children}
         </DataTableHeaderGroupContext>
@@ -135,7 +136,12 @@ function DataTableHeaderRow(props: DataTableHeaderRowProps) {
   return <Table.Row data-part="header-row" data-scope="data-table" {...props} />;
 }
 
-function DataTableHead<TData>({ columnId, children, className, ...rest }: DataTableHeadProps) {
+function DataTableHead<TData extends RowData>({
+  columnId,
+  children,
+  className,
+  ...rest
+}: DataTableHeadProps) {
   const { headerGroup } = useDataTableHeaderGroupContext<TData>();
 
   if (columnId) {
@@ -175,7 +181,7 @@ function DataTableHead<TData>({ columnId, children, className, ...rest }: DataTa
  * @typeParam TData - Row shape for the cell context.
  * @returns The rendered cell content, or null for placeholder cells.
  */
-export function renderDataTableCell<TData>(cell: Cell<TData, unknown>) {
+export function renderDataTableCell<TData extends RowData>(cell: Cell<TData, unknown>) {
   if (cell.getIsPlaceholder()) {
     return null;
   }
@@ -183,7 +189,7 @@ export function renderDataTableCell<TData>(cell: Cell<TData, unknown>) {
   return flexRender(cell.column.columnDef.cell, cell.getContext());
 }
 
-function DataTableBody<TData>({ children, empty = null }: DataTableBodyProps) {
+function DataTableBody<TData extends RowData>({ children, empty = null }: DataTableBodyProps) {
   const table = useDataTableContext<TData>().table;
   const rows = table.getRowModel().rows;
 
@@ -194,7 +200,7 @@ function DataTableBody<TData>({ children, empty = null }: DataTableBodyProps) {
   return (
     <>
       {rows.map((row) => (
-        <DataTableRowContext key={row.id} value={{ row } as DataTableRowContextValue<unknown>}>
+        <DataTableRowContext key={row.id} value={{ row } as DataTableRowContextValue<RowData>}>
           {children}
         </DataTableRowContext>
       ))}
@@ -202,7 +208,7 @@ function DataTableBody<TData>({ children, empty = null }: DataTableBodyProps) {
   );
 }
 
-function DataTableRow<TData>({ className, ...rest }: DataTableRowProps) {
+function DataTableRow<TData extends RowData>({ className, ...rest }: DataTableRowProps) {
   const row = useDataTableRowContext<TData>().row;
 
   return (
@@ -217,7 +223,7 @@ function DataTableRow<TData>({ className, ...rest }: DataTableRowProps) {
   );
 }
 
-function DataTableCell<TData>({ columnId, children, ...rest }: DataTableCellProps) {
+function DataTableCell<TData extends RowData>({ columnId, children, ...rest }: DataTableCellProps) {
   const row = useDataTableRowContext<TData>().row;
 
   if (columnId) {
@@ -285,14 +291,14 @@ function DataTableFooter({ className, ...rest }: DataTableFooterProps) {
   );
 }
 
-function DataTableRoot<TData>({
+function DataTableRoot<TData extends RowData>({
   children,
   className,
   getCoreRowModel: getCoreRowModelOption,
   testId,
   ...rest
 }: DataTableProps<TData>) {
-  const table = useReactTable<TData>({
+  const table = useLegacyTable<TData>({
     getCoreRowModel: getCoreRowModelOption ?? getCoreRowModel(),
     ...rest,
   });
@@ -300,7 +306,7 @@ function DataTableRoot<TData>({
   const contextValue = useMemo(() => ({ table }), [table]);
 
   return (
-    <DataTableContext value={contextValue as DataTableContextValue<unknown>}>
+    <DataTableContext value={contextValue as DataTableContextValue<RowData>}>
       <div
         className={dataTableVariants({ className })}
         data-part="root"
@@ -313,7 +319,7 @@ function DataTableRoot<TData>({
   );
 }
 
-export function DataTable<TData>(props: DataTableProps<TData>) {
+export function DataTable<TData extends RowData>(props: DataTableProps<TData>) {
   return DataTableRoot(props);
 }
 

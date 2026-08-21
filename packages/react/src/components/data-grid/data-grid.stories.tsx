@@ -25,12 +25,19 @@ import {
   Table,
 } from "@pisagor/react";
 import { DataGrid, renderDataGridCell, useDataGrid } from "@pisagor/react/data-grid";
+import type {
+  ColumnFiltersState,
+  ColumnPinningState,
+  ExpandedState,
+  GroupingState,
+  PaginationState,
+  RowData,
+  RowSelectionState,
+  SortingState,
+  ColumnVisibilityState as VisibilityState,
+} from "@tanstack/react-table";
 import {
-  type ColumnDef,
-  type ColumnFiltersState,
-  type ColumnPinningState,
-  type ExpandedState,
-  type GroupingState,
+  type LegacyColumnDef as ColumnDef,
   getExpandedRowModel,
   getFacetedRowModel,
   getFacetedUniqueValues,
@@ -38,11 +45,8 @@ import {
   getGroupedRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-  type PaginationState,
-  type Row,
-  type SortingState,
-  type VisibilityState,
-} from "@tanstack/react-table";
+  type LegacyRow as Row,
+} from "@tanstack/react-table/legacy";
 import { Fragment, type ReactNode, useEffect, useMemo, useState } from "react";
 import preview from "#/storybook/preview";
 
@@ -320,7 +324,7 @@ function DataGridColumnLayoutView({
   );
 }
 
-function DataGridExpandableBody<TData>({
+function DataGridExpandableBody<TData extends RowData>({
   colSpan,
   renderDetail,
 }: {
@@ -363,7 +367,7 @@ function DataGridExpandableBody<TData>({
   );
 }
 
-function FilterChipsToolbar<TData>() {
+function FilterChipsToolbar<TData extends RowData>() {
   const table = useDataGrid<TData>();
   const filters = table.getState().columnFilters;
   const globalFilter = table.getState().globalFilter;
@@ -405,7 +409,7 @@ function FilterChipsToolbar<TData>() {
   );
 }
 
-function DataGridPaginationBar<TData>() {
+function DataGridPaginationBar<TData extends RowData>() {
   const table = useDataGrid<TData>();
   const { pageIndex, pageSize } = table.getState().pagination;
   const total = table.getFilteredRowModel().rows.length;
@@ -431,7 +435,7 @@ function DataGridPaginationBar<TData>() {
   );
 }
 
-function ColumnVisibilityMenu<TData>() {
+function ColumnVisibilityMenu<TData extends RowData>() {
   const table = useDataGrid<TData>();
 
   return (
@@ -553,7 +557,7 @@ function useUserColumns(options?: { selectable?: boolean; sortable?: boolean }) 
         accessorKey: "joinedAt",
         cell: ({ row }) => formatDate(row.original.joinedAt),
         header: sortable ? sortableHeader("Joined") : "Joined",
-        sortingFn: "datetime",
+        sortFn: "datetime",
       },
     );
 
@@ -835,7 +839,7 @@ export const RowSelection = meta.story({
   },
 });
 
-function SelectionSummary<TData>({ onClear }: { onClear: () => void }) {
+function SelectionSummary<TData extends RowData>({ onClear }: { onClear: () => void }) {
   const table = useDataGrid<TData>();
   const selected = table.getFilteredSelectedRowModel().rows.length;
   const total = table.getFilteredRowModel().rows.length;
@@ -938,7 +942,7 @@ export const ExpandingRows = meta.story({
   },
 });
 
-function countLeaves<TData>(row: Row<TData>): number {
+function countLeaves<TData extends RowData>(row: Row<TData>): number {
   if (!row.subRows.length) {
     return 1;
   }
@@ -1406,7 +1410,7 @@ function ManualPaginationBar({ total }: { total: number }) {
 
 export const GlobalSelection = meta.story({
   render: () => {
-    const [rowSelection, setRowSelection] = useState<Record<string, boolean>>({
+    const [rowSelection, setRowSelection] = useState<RowSelectionState>({
       "2": true,
       "5": true,
     });
@@ -1439,7 +1443,7 @@ export const GlobalSelection = meta.story({
   },
 });
 
-function GlobalSelectionSummary<TData>({ onClear }: { onClear: () => void }) {
+function GlobalSelectionSummary<TData extends RowData>({ onClear }: { onClear: () => void }) {
   const table = useDataGrid<TData>();
   const selected = table.getSelectedRowModel().rows.length;
   const total = table.getCoreRowModel().rows.length;
@@ -1593,8 +1597,8 @@ export const StripedVariant = meta.story({
 export const ColumnPinning = meta.story({
   render: () => {
     const [columnPinning, setColumnPinning] = useState<ColumnPinningState>({
-      left: ["name"],
-      right: ["actions"],
+      end: ["actions"],
+      start: ["name"],
     });
 
     const columns = useMemo<ColumnDef<User>[]>(
@@ -1603,7 +1607,7 @@ export const ColumnPinning = meta.story({
           accessorKey: "name",
           cell: ({ row }) => <span className="font-medium">{row.original.name}</span>,
           header: "Name",
-          meta: { pinned: "left" as const },
+          meta: { pinned: "start" as const },
         },
         { accessorKey: "email", header: "Email" },
         { accessorKey: "role", header: "Role" },
@@ -1625,7 +1629,7 @@ export const ColumnPinning = meta.story({
           ),
           header: "",
           id: "actions",
-          meta: { pinned: "right" as const },
+          meta: { pinned: "end" as const },
           size: 48,
         },
       ],
@@ -1643,7 +1647,7 @@ export const ColumnPinning = meta.story({
         >
           <DataGrid.Toolbar>
             <p className="text-muted-foreground text-sm">
-              Name pinned left, actions pinned right — scroll horizontally to see pinning.
+              Name pinned start, actions pinned end — scroll horizontally to see pinning.
             </p>
           </DataGrid.Toolbar>
           <Table className="min-w-[960px]">
@@ -1652,15 +1656,15 @@ export const ColumnPinning = meta.story({
                 <DataGrid.HeaderRow>
                   {columns.map((column) => {
                     const id = "accessorKey" in column ? String(column.accessorKey) : column.id;
-                    const pinned = (column.meta as { pinned?: "left" | "right" } | undefined)
+                    const pinned = (column.meta as { pinned?: "start" | "end" } | undefined)
                       ?.pinned;
 
                     return (
                       <DataGrid.Head
                         className={
-                          pinned === "left"
+                          pinned === "start"
                             ? "sticky inset-s-0 z-10 bg-background shadow-[inset_-1px_0_0_var(--border)]"
-                            : pinned === "right"
+                            : pinned === "end"
                               ? "sticky inset-e-0 z-10 bg-background shadow-[inset_1px_0_0_var(--border)]"
                               : undefined
                         }
@@ -1677,15 +1681,15 @@ export const ColumnPinning = meta.story({
                 <DataGrid.Row>
                   {columns.map((column) => {
                     const id = "accessorKey" in column ? String(column.accessorKey) : column.id;
-                    const pinned = (column.meta as { pinned?: "left" | "right" } | undefined)
+                    const pinned = (column.meta as { pinned?: "start" | "end" } | undefined)
                       ?.pinned;
 
                     return (
                       <DataGrid.Cell
                         className={
-                          pinned === "left"
+                          pinned === "start"
                             ? "sticky inset-s-0 z-10 bg-background shadow-[inset_-1px_0_0_var(--border)]"
-                            : pinned === "right"
+                            : pinned === "end"
                               ? "sticky inset-e-0 z-10 bg-background shadow-[inset_1px_0_0_var(--border)]"
                               : undefined
                         }

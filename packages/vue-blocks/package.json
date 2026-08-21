@@ -4,7 +4,8 @@
   },
   "description": "Composed UI blocks built from @pisagor/vue.",
   "devDependencies": {
-    "@pisagor/tsconfig": "workspace:*"
+    "@pisagor/tsconfig": "workspace:*",
+    "vue": "catalog:"
   },
   "exports": {
     ".": "./src/index.ts"

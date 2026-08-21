@@ -4,7 +4,8 @@
   },
   "description": "Composed UI blocks built from @pisagor/react.",
   "devDependencies": {
-    "@pisagor/tsconfig": "workspace:*"
+    "@pisagor/tsconfig": "workspace:*",
+    "react": "catalog:"
   },
   "exports": {
     ".": "./src/index.ts"

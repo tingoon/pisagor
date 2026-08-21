@@ -1,11 +1,7 @@
 import { CaretDownIcon, CaretUpIcon } from "@phosphor-icons/react";
 import { Badge, DataTable, Table, useDataTable } from "@pisagor/react";
-import {
-  type ColumnDef,
-  flexRender,
-  getSortedRowModel,
-  type SortingState,
-} from "@tanstack/react-table";
+import { flexRender, type SortingState } from "@tanstack/react-table";
+import { type LegacyColumnDef as ColumnDef, getSortedRowModel } from "@tanstack/react-table/legacy";
 import { useMemo, useState } from "react";
 import preview from "#/storybook/preview";
 
