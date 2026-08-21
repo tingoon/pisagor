@@ -30,7 +30,7 @@
   "homepage": "https://github.com/tingoon/pisagor#readme",
   "license": "MIT",
   "name": "pisagor",
-  "packageManager": "bun@1.3.14",
+  "packageManager": "bun@1.4.0",
   "private": true,
   "repository": {
     "type": "git",
