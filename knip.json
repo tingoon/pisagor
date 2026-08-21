@@ -10,7 +10,13 @@
       ]
     },
     "apps/vue": {
-      "entry": [".storybook/**/*", "src/**/*", "../../packages/vue/**/*.stories.@(ts|tsx)"]
+      "entry": [
+        ".storybook/**/*",
+        "src/**/*",
+        "../../packages/vue/**/*.stories.@(ts|tsx)",
+        "../../packages/vue-form/**/*.stories.@(ts|tsx)"
+      ],
+      "ignoreDependencies": ["@pisagor/vue-form", "@tanstack/vue-form"]
     },
     "packages/react": {
       "entry": ["src/**/*", "src/styles.css"],

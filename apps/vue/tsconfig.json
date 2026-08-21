@@ -12,6 +12,7 @@
     "vite.config.ts",
     "env.d.ts",
     "src/**/*.stories.ts",
-    "../../packages/vue/src/**/*.stories.ts"
+    "../../packages/vue/src/**/*.stories.ts",
+    "../../packages/vue-form/src/**/*.stories.ts"
   ]
 }
