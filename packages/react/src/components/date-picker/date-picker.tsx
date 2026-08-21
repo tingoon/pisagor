@@ -1,7 +1,4 @@
-import {
-  DatePicker as DatePickerPrimitive,
-  useDatePickerContext as useDatePicker,
-} from "@ark-ui/react/date-picker";
+import { DatePicker as DatePickerPrimitive, useDatePickerContext } from "@ark-ui/react/date-picker";
 import { Portal } from "@ark-ui/react/portal";
 import { CalendarIcon, ClockIcon, XIcon } from "@phosphor-icons/react";
 import {
@@ -151,7 +148,7 @@ export function DatePickerInput({
 }
 
 export function DatePickerClearTrigger() {
-  const api = useDatePicker();
+  const api = useDatePickerContext();
 
   if (api.disabled || api.readOnly || api.value.length === 0) {
     return null;

@@ -7,7 +7,7 @@ import {
   type ComboboxList as ComboboxListPrimitive,
   Combobox as ComboboxPrimitive,
   type ComboboxRootProps as ComboboxRootPropsPrimitive,
-  useComboboxContext as useCombobox,
+  useComboboxContext,
 } from "@ark-ui/react/combobox";
 import { Portal } from "@ark-ui/react/portal";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
@@ -166,7 +166,7 @@ export function ComboboxInput({
   className,
   ...rest
 }: ComboboxInputProps) {
-  const { inputValue } = useCombobox();
+  const { inputValue } = useComboboxContext();
 
   return (
     <ComboboxControl data-size={size}>

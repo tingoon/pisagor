@@ -1,7 +1,4 @@
-import {
-  Pagination as PaginationPrimitive,
-  usePaginationContext as usePagination,
-} from "@ark-ui/react/pagination";
+import { Pagination as PaginationPrimitive, usePaginationContext } from "@ark-ui/react/pagination";
 import { CaretLeftIcon, CaretRightIcon, DotsThreeIcon } from "@phosphor-icons/react";
 import {
   paginationEllipsisVariants,
@@ -110,7 +107,7 @@ export function PaginationItems(props: PaginationItemsProps) {
 }
 
 export function PaginationItemLink({ page, children, ...rest }: PaginationItemLinkProps) {
-  const pagination = usePagination();
+  const pagination = usePaginationContext();
 
   const pageValue = () => {
     if (page === "previous") {

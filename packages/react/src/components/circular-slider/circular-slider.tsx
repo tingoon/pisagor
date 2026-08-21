@@ -1,6 +1,6 @@
 import {
   AngleSlider as AngleSliderPrimitive,
-  useAngleSliderContext as useCircularSliderApi,
+  useAngleSliderContext,
 } from "@ark-ui/react/angle-slider";
 import { circularSliderVariants } from "@pisagor/styles/ui/circular-slider";
 import type { ComponentProps, ReactNode } from "react";
@@ -144,7 +144,7 @@ export function CircularSliderControl({
 }
 
 function CircularSliderProgressRing() {
-  const api = useCircularSliderApi();
+  const api = useAngleSliderContext();
   const { size, thickness, ringRadius, ringCircumference } = _useCircularSlider();
   const slots = circularSliderVariants();
 
@@ -213,7 +213,7 @@ export function CircularSliderValueText({
   className,
   ...rest
 }: CircularSliderValueTextProps) {
-  const { value } = useCircularSliderApi();
+  const { value } = useAngleSliderContext();
   const slots = circularSliderVariants();
 
   return (

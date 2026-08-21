@@ -1,8 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import {
-  Progress as ProgressPrimitive,
-  useProgressContext as useArkCircularProgress,
-} from "@ark-ui/react/progress";
+import { Progress as ProgressPrimitive, useProgressContext } from "@ark-ui/react/progress";
 import {
   type CircularProgressSlots,
   circularProgressVariants,
@@ -101,7 +98,7 @@ function CircularProgressTrack({
   trackProps,
 }: CircularProgressTrackPartProps) {
   const { slots } = useCircularProgressSlots();
-  const { max, min, value } = useArkCircularProgress();
+  const { max, min, value } = useProgressContext();
 
   const radius = size / 2 - thickness / 2;
   const circumference = 2 * Math.PI * radius;
