@@ -1,0 +1,59 @@
+import { fn } from "storybook/test";
+import preview from "#/storybook/preview";
+import { SwitchField } from "./switch-field";
+
+const meta = preview.meta({
+  component: SwitchField,
+  parameters: {
+    docs: {
+      description: {
+        component: "Combines Field and Switch with label, helper text, and optional error message.",
+      },
+    },
+  },
+  title: "Forms/Fields/Switch Field",
+});
+
+export const Default = meta.story({
+  args: {
+    description: "Get release updates by email.",
+    id: "switch-field-notifications",
+    label: "Enable notifications",
+    onValueChange: fn(),
+  },
+  render: (args) => ({
+    components: { SwitchField },
+    setup: () => ({ args }),
+    template: `<SwitchField v-bind="args" />`,
+  }),
+});
+
+export const Invalid = meta.story({
+  args: {
+    error: "You must enable notifications to continue.",
+    id: "switch-field-notifications-invalid",
+    invalid: true,
+    label: "Enable notifications",
+    onValueChange: fn(),
+  },
+  render: (args) => ({
+    components: { SwitchField },
+    setup: () => ({ args }),
+    template: `<SwitchField v-bind="args" />`,
+  }),
+});
+
+export const Disabled = meta.story({
+  args: {
+    description: "Get release updates by email.",
+    disabled: true,
+    id: "switch-field-notifications-disabled",
+    label: "Enable notifications",
+    onValueChange: fn(),
+  },
+  render: (args) => ({
+    components: { SwitchField },
+    setup: () => ({ args }),
+    template: `<SwitchField v-bind="args" />`,
+  }),
+});

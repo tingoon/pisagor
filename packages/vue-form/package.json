@@ -2,9 +2,15 @@
   "bugs": {
     "url": "https://github.com/tingoon/pisagor/issues"
   },
+  "dependencies": {
+    "@pisagor/vue": "workspace:*"
+  },
   "description": "Form fields and TanStack Form helpers for Pisagor Vue UI.",
   "devDependencies": {
-    "@pisagor/tsconfig": "workspace:*"
+    "@pisagor/tsconfig": "workspace:*",
+    "@tanstack/vue-form": "^1.33.5",
+    "storybook": "^10.5.7",
+    "vue": "catalog:"
   },
   "exports": {
     ".": "./src/fields/index.ts",
