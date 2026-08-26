@@ -3,26 +3,10 @@ import {
   DatePicker as CalendarPrimitive,
 } from "@ark-ui/react/date-picker";
 import { CaretDownIcon, CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
-import {
-  calendarControlVariants,
-  calendarInline2Variants,
-  calendarInline3Variants,
-  calendarInline4Variants,
-  calendarInlineVariants,
-  calendarLabelVariants,
-  calendarRangeTextVariants,
-  calendarSelectLayoutVariants,
-  calendarSelectWrapperVariants,
-  calendarTableCellVariants,
-  calendarTableHeaderVariants,
-  calendarTableRowVariants,
-  calendarTableVariants,
-  calendarVariants,
-  calendarViewControlVariants,
-  calendarViewVariants,
-} from "@pisagor/styles/ui/calendar";
+import { calendarTableCellVariants, calendarVariants } from "@pisagor/styles/ui/calendar";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
+import { useMemo } from "react";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import {
@@ -32,6 +16,7 @@ import {
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
 import { Button, type ButtonProps } from "../button";
+import { CalendarSlotsContext, useCalendar } from "./calendar.context";
 
 // #region Types
 export type CalendarControlProps = ComponentProps<typeof CalendarPrimitive.Control>;
@@ -100,6 +85,7 @@ export interface CalendarProps extends CalendarRootProps {
 
 // #region Parts
 function useCalendarSelectShell(className?: string) {
+  const { slots } = useCalendar();
   const resolved = useFormControlVariant();
   const shellArgs = shellVariantArgs(resolved);
   const controlProps = formControlShellProps(resolved);
@@ -107,7 +93,7 @@ function useCalendarSelectShell(className?: string) {
   return {
     className: cn(
       formControlShellVariants({ size: "md", ...shellArgs }),
-      calendarSelectLayoutVariants(),
+      slots.select(),
       className,
     ),
     controlProps,
@@ -131,27 +117,38 @@ export function CalendarRoot({
   unmountOnExit = true,
   className,
   variant,
+  children,
   ...rest
 }: CalendarProps) {
+  const slots = useMemo(() => calendarVariants(), []);
+
   return (
     <FormControlVariantProvider value={variant}>
-      <CalendarPrimitive.Root
-        {...rest}
-        className={calendarVariants({ className })}
-        inline
-        lazyMount={lazyMount}
-        unmountOnExit={unmountOnExit}
-      />
+      <CalendarSlotsContext value={{ slots }}>
+        <CalendarPrimitive.Root
+          {...rest}
+          className={slots.base({ className })}
+          inline
+          lazyMount={lazyMount}
+          unmountOnExit={unmountOnExit}
+        >
+          {children}
+        </CalendarPrimitive.Root>
+      </CalendarSlotsContext>
     </FormControlVariantProvider>
   );
 }
 
-export function CalendarControl(props: CalendarControlProps) {
-  return <CalendarPrimitive.Control className={calendarControlVariants()} {...props} />;
+export function CalendarControl({ className, ...rest }: CalendarControlProps) {
+  const { slots } = useCalendar();
+
+  return <CalendarPrimitive.Control {...rest} className={slots.control({ className })} />;
 }
 
-export function CalendarLabel(props: CalendarLabelProps) {
-  return <CalendarPrimitive.Label className={calendarLabelVariants()} {...props} />;
+export function CalendarLabel({ className, ...rest }: CalendarLabelProps) {
+  const { slots } = useCalendar();
+
+  return <CalendarPrimitive.Label {...rest} className={slots.label({ className })} />;
 }
 
 export function CalendarTrigger(props: CalendarTriggerProps) {
@@ -163,9 +160,9 @@ export function CalendarPresetTrigger(props: CalendarPresetTriggerProps) {
 }
 
 export function CalendarViewDate({ className, ...rest }: CalendarViewDateProps) {
-  return (
-    <CalendarPrimitive.RangeText {...rest} className={calendarRangeTextVariants({ className })} />
-  );
+  const { slots } = useCalendar();
+
+  return <CalendarPrimitive.RangeText {...rest} className={slots.rangeText({ className })} />;
 }
 
 export function CalendarTodayTrigger({ variant = "outline", size = "lg", ...rest }: ButtonProps) {
@@ -192,31 +189,41 @@ export function CalendarClearTrigger(props: CalendarClearTriggerProps) {
 }
 
 export function CalendarYearSelect({ className, ...rest }: CalendarYearSelectProps) {
+  const { slots } = useCalendar();
   const { className: selectClassName, controlProps } = useCalendarSelectShell(className);
-  const slots = calendarSelectWrapperVariants();
 
   return (
-    <div className={slots.base()} data-part="year-select-wrapper" data-scope="calendar">
+    <div className={slots.selectWrapper()} data-part="year-select-wrapper" data-scope="calendar">
       <CalendarPrimitive.YearSelect {...rest} {...controlProps} className={selectClassName} />
-      <CaretDownIcon className={slots.icon()} data-part="year-select-icon" data-scope="calendar" />
+      <CaretDownIcon
+        className={slots.selectIcon()}
+        data-part="year-select-icon"
+        data-scope="calendar"
+      />
     </div>
   );
 }
 
 export function CalendarMonthSelect({ className, ...rest }: CalendarMonthSelectProps) {
+  const { slots } = useCalendar();
   const { className: selectClassName, controlProps } = useCalendarSelectShell(className);
-  const slots = calendarSelectWrapperVariants();
 
   return (
-    <div className={slots.base()} data-part="month-select-wrapper" data-scope="calendar">
+    <div className={slots.selectWrapper()} data-part="month-select-wrapper" data-scope="calendar">
       <CalendarPrimitive.MonthSelect {...rest} {...controlProps} className={selectClassName} />
-      <CaretDownIcon className={slots.icon()} data-part="month-select-icon" data-scope="calendar" />
+      <CaretDownIcon
+        className={slots.selectIcon()}
+        data-part="month-select-icon"
+        data-scope="calendar"
+      />
     </div>
   );
 }
 
 export function CalendarView({ className, ...rest }: CalendarViewProps) {
-  return <CalendarPrimitive.View {...rest} className={calendarViewVariants({ className })} />;
+  const { slots } = useCalendar();
+
+  return <CalendarPrimitive.View {...rest} className={slots.view({ className })} />;
 }
 
 export function CalendarContext(props: CalendarContextProps) {
@@ -224,46 +231,49 @@ export function CalendarContext(props: CalendarContextProps) {
 }
 
 export function CalendarViewControl({ className, ...rest }: CalendarViewControlProps) {
-  return (
-    <CalendarPrimitive.ViewControl
-      {...rest}
-      className={calendarViewControlVariants({ className })}
-    />
-  );
+  const { slots } = useCalendar();
+
+  return <CalendarPrimitive.ViewControl {...rest} className={slots.viewControl({ className })} />;
 }
 
 export function CalendarPrevTrigger(props: CalendarPrevTriggerProps) {
+  const { slots } = useCalendar();
+
   return (
     <CalendarPrimitive.PrevTrigger asChild {...props}>
       <Button
         aria-label="Previous month"
-        className={calendarInlineVariants()}
+        className={slots.prevTrigger()}
         size="icon-md"
         variant="ghost"
       >
-        <CaretLeftIcon aria-hidden className={calendarInline2Variants()} />
+        <CaretLeftIcon aria-hidden className={slots.prevIcon()} />
       </Button>
     </CalendarPrimitive.PrevTrigger>
   );
 }
 
 export function CalendarNextTrigger(props: CalendarNextTriggerProps) {
+  const { slots } = useCalendar();
+
   return (
     <CalendarPrimitive.NextTrigger asChild {...props}>
       <Button
         aria-label="Next month"
-        className={calendarInline3Variants()}
+        className={slots.nextTrigger()}
         size="icon-md"
         variant="ghost"
       >
-        <CaretRightIcon aria-hidden className={calendarInline4Variants()} />
+        <CaretRightIcon aria-hidden className={slots.nextIcon()} />
       </Button>
     </CalendarPrimitive.NextTrigger>
   );
 }
 
 export function CalendarTable({ className, ...rest }: CalendarTableProps) {
-  return <CalendarPrimitive.Table {...rest} className={calendarTableVariants({ className })} />;
+  const { slots } = useCalendar();
+
+  return <CalendarPrimitive.Table {...rest} className={slots.table({ className })} />;
 }
 
 export function CalendarWeekDays({ format = "narrow", ...rest }: CalendarWeekDaysProps) {
@@ -340,18 +350,15 @@ export function CalendarTableHead(props: CalendarTableHeadProps) {
 }
 
 export function CalendarTableRow({ className, ...rest }: CalendarTableRowProps) {
-  return (
-    <CalendarPrimitive.TableRow {...rest} className={calendarTableRowVariants({ className })} />
-  );
+  const { slots } = useCalendar();
+
+  return <CalendarPrimitive.TableRow {...rest} className={slots.tableRow({ className })} />;
 }
 
 export function CalendarTableHeader({ className, ...rest }: CalendarTableHeaderProps) {
-  return (
-    <CalendarPrimitive.TableHeader
-      {...rest}
-      className={calendarTableHeaderVariants({ className })}
-    />
-  );
+  const { slots } = useCalendar();
+
+  return <CalendarPrimitive.TableHeader {...rest} className={slots.tableHeader({ className })} />;
 }
 
 export function CalendarTableBody(props: CalendarTableBodyProps) {

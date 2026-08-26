@@ -1,20 +1,13 @@
 import { ark } from "@ark-ui/react/factory";
 import { FileIcon } from "@phosphor-icons/react";
-import {
-  type FileVariantProps,
-  fileActionsVariants,
-  fileContentVariants,
-  fileMediaVariants,
-  fileMetaVariants,
-  fileNameVariants,
-  fileSizeVariants,
-  fileVariants,
-} from "@pisagor/styles/ui/file";
+import { type FileVariantProps, fileVariants } from "@pisagor/styles/ui/file";
 import type { ComponentProps, ReactNode } from "react";
+import { useMemo } from "react";
 import { Format } from "../format";
+import { FileContext, useFile } from "./file.context";
 
 // #region Types
-export interface FileRootProps extends ComponentProps<typeof ark.div>, FileVariantProps {}
+export interface FileRootProps extends ComponentProps<typeof ark.div> {}
 
 export interface FileMediaProps extends ComponentProps<typeof ark.div> {
   /**
@@ -22,7 +15,7 @@ export interface FileMediaProps extends ComponentProps<typeof ark.div> {
    *
    * @defaultValue "icon"
    */
-  variant?: "icon" | "image";
+  variant?: NonNullable<FileVariantProps["variant"]>;
 }
 
 export interface FileNameProps extends ComponentProps<typeof ark.div> {}
@@ -53,17 +46,25 @@ export interface FileProps extends Omit<FileRootProps, "children" | "title"> {
 // #endregion
 
 // #region Parts
-export function FileRoot({ className, ...rest }: FileRootProps) {
+export function FileRoot({ className, children, ...rest }: FileRootProps) {
+  const slots = useMemo(() => fileVariants(), []);
+
   return (
-    <ark.div {...rest} className={fileVariants({ className })} data-part="root" data-scope="file" />
+    <FileContext value={{ slots }}>
+      <ark.div {...rest} className={slots.base({ className })} data-part="root" data-scope="file">
+        {children}
+      </ark.div>
+    </FileContext>
   );
 }
 
 export function FileMedia({ variant = "icon", className, children, ...rest }: FileMediaProps) {
+  const { slots } = useFile();
+
   return (
     <ark.div
       {...rest}
-      className={fileMediaVariants({ className, variant })}
+      className={slots.media({ className, variant })}
       data-part="media"
       data-scope="file"
       data-variant={variant}
@@ -74,10 +75,12 @@ export function FileMedia({ variant = "icon", className, children, ...rest }: Fi
 }
 
 export function FileContent({ className, ...rest }: FileContentProps) {
+  const { slots } = useFile();
+
   return (
     <ark.div
       {...rest}
-      className={fileContentVariants({ className })}
+      className={slots.content({ className })}
       data-part="content"
       data-scope="file"
     />
@@ -85,45 +88,38 @@ export function FileContent({ className, ...rest }: FileContentProps) {
 }
 
 export function FileName({ className, ...rest }: FileNameProps) {
+  const { slots } = useFile();
+
   return (
-    <ark.div
-      {...rest}
-      className={fileNameVariants({ className })}
-      data-part="name"
-      data-scope="file"
-    />
+    <ark.div {...rest} className={slots.name({ className })} data-part="name" data-scope="file" />
   );
 }
 
 export function FileMeta({ className, ...rest }: FileMetaProps) {
+  const { slots } = useFile();
+
   return (
-    <ark.div
-      {...rest}
-      className={fileMetaVariants({ className })}
-      data-part="meta"
-      data-scope="file"
-    />
+    <ark.div {...rest} className={slots.meta({ className })} data-part="meta" data-scope="file" />
   );
 }
 
 export function FileSize({ value, className, ...rest }: FileSizeProps) {
+  const { slots } = useFile();
+
   return (
-    <ark.div
-      {...rest}
-      className={fileSizeVariants({ className })}
-      data-part="size"
-      data-scope="file"
-    >
+    <ark.div {...rest} className={slots.size({ className })} data-part="size" data-scope="file">
       <Format.Byte value={value} />
     </ark.div>
   );
 }
 
 export function FileActions({ className, ...rest }: FileActionsProps) {
+  const { slots } = useFile();
+
   return (
     <ark.div
       {...rest}
-      className={fileActionsVariants({ className })}
+      className={slots.actions({ className })}
       data-part="actions"
       data-scope="file"
     />

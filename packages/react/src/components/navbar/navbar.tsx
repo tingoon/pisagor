@@ -1,62 +1,55 @@
 import { ark } from "@ark-ui/react/factory";
-import { type NavbarSlots, navbarVariants } from "@pisagor/styles/ui/navbar";
-import { cn } from "@pisagor/utils";
+import { navbarVariants } from "@pisagor/styles/ui/navbar";
 import type { ComponentProps } from "react";
-import type { VariantClassNames } from "../../internal/types";
+import { useMemo } from "react";
+import { NavbarContext, useNavbar } from "./navbar.context";
 
 // #region Types
-type NavbarClassNames = VariantClassNames<NavbarSlots>;
+export interface NavbarRootProps extends ComponentProps<typeof ark.header> {}
 
-export interface NavbarRootProps extends ComponentProps<typeof ark.header> {
-  /** Slot class names */
-  classNames?: NavbarClassNames;
-}
+export interface NavbarPartProps extends ComponentProps<typeof ark.div> {}
 
-export interface NavbarPartProps extends ComponentProps<typeof ark.div> {
-  /** Slot class names */
-  classNames?: NavbarClassNames;
-}
-
-export interface NavbarNavProps extends ComponentProps<typeof ark.nav> {
-  /** Slot class names */
-  classNames?: NavbarClassNames;
-}
+export interface NavbarNavProps extends ComponentProps<typeof ark.nav> {}
 // #endregion
 
 // #region Parts
-export function NavbarRoot({ className, classNames, ...rest }: NavbarRootProps) {
-  const slots = navbarVariants();
+export function NavbarRoot({ children, className, ...rest }: NavbarRootProps) {
+  const slots = useMemo(() => navbarVariants(), []);
 
   return (
-    <ark.header
-      {...rest}
-      className={slots.base({ className: className })}
-      data-part="root"
-      data-scope="navbar"
-    />
+    <NavbarContext value={{ slots }}>
+      <ark.header
+        {...rest}
+        className={slots.base({ className })}
+        data-part="root"
+        data-scope="navbar"
+      >
+        {children}
+      </ark.header>
+    </NavbarContext>
   );
 }
 
-export function NavbarBrand({ className, classNames, ...rest }: NavbarPartProps) {
-  const slots = navbarVariants();
+export function NavbarBrand({ className, ...rest }: NavbarPartProps) {
+  const { slots } = useNavbar();
 
   return (
     <ark.div
       {...rest}
-      className={slots.brand({ className: cn(className, classNames?.brand) })}
+      className={slots.brand({ className })}
       data-part="brand"
       data-scope="navbar"
     />
   );
 }
 
-export function NavbarContent({ className, classNames, ...rest }: NavbarPartProps) {
-  const slots = navbarVariants();
+export function NavbarContent({ className, ...rest }: NavbarPartProps) {
+  const { slots } = useNavbar();
 
   return (
     <ark.div
       {...rest}
-      className={slots.content({ className: cn(className, classNames?.content) })}
+      className={slots.content({ className })}
       data-part="content"
       data-scope="navbar"
     />
@@ -66,29 +59,28 @@ export function NavbarContent({ className, classNames, ...rest }: NavbarPartProp
 export function NavbarNav({
   "aria-label": ariaLabel = "Main",
   className,
-  classNames,
   ...rest
 }: NavbarNavProps) {
-  const slots = navbarVariants();
+  const { slots } = useNavbar();
 
   return (
     <ark.nav
       {...rest}
       aria-label={ariaLabel}
-      className={slots.nav({ className: cn(className, classNames?.nav) })}
+      className={slots.nav({ className })}
       data-part="nav"
       data-scope="navbar"
     />
   );
 }
 
-export function NavbarActions({ className, classNames, ...rest }: NavbarPartProps) {
-  const slots = navbarVariants();
+export function NavbarActions({ className, ...rest }: NavbarPartProps) {
+  const { slots } = useNavbar();
 
   return (
     <ark.div
       {...rest}
-      className={slots.actions({ className: cn(className, classNames?.actions) })}
+      className={slots.actions({ className })}
       data-part="actions"
       data-scope="navbar"
     />

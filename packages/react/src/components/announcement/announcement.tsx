@@ -1,10 +1,11 @@
 import { ark } from "@ark-ui/react/factory";
 import {
   type AnnouncementVariantProps,
-  announcementTitleVariants,
   announcementVariants,
 } from "@pisagor/styles/ui/announcement";
 import type { ComponentProps, ReactNode } from "react";
+import { useMemo } from "react";
+import { AnnouncementContext, useAnnouncement } from "./announcement.context";
 
 // #region Types
 type AnnouncementTitleProps = ComponentProps<typeof ark.span>;
@@ -30,23 +31,36 @@ export interface AnnouncementProps extends Omit<AnnouncementRootProps, "children
 // #endregion
 
 // #region Parts
-export function AnnouncementRoot({ className, role = "status", ...rest }: AnnouncementRootProps) {
+export function AnnouncementRoot({
+  className,
+  role = "status",
+  children,
+  ...rest
+}: AnnouncementRootProps) {
+  const slots = useMemo(() => announcementVariants(), []);
+
   return (
-    <ark.div
-      {...rest}
-      className={announcementVariants({ className })}
-      data-part="root"
-      data-scope="announcement"
-      role={role}
-    />
+    <AnnouncementContext value={{ slots }}>
+      <ark.div
+        {...rest}
+        className={slots.base({ className })}
+        data-part="root"
+        data-scope="announcement"
+        role={role}
+      >
+        {children}
+      </ark.div>
+    </AnnouncementContext>
   );
 }
 
 export function AnnouncementTitle({ className, ...rest }: AnnouncementTitleProps) {
+  const { slots } = useAnnouncement();
+
   return (
     <ark.span
       {...rest}
-      className={announcementTitleVariants({ className })}
+      className={slots.title({ className })}
       data-part="title"
       data-scope="announcement"
     />

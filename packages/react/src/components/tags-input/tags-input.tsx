@@ -1,11 +1,16 @@
 import { TagsInput as TagsInputPrimitive, useTagsInputContext } from "@ark-ui/react/tags-input";
 import { XIcon } from "@phosphor-icons/react";
-import { tagsInputVariants } from "@pisagor/styles/ui/tags-input";
+import { tagsInputItemVariants, tagsInputVariants } from "@pisagor/styles/ui/tags-input";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import { InputGroup, type InputGroupProps } from "../input-group";
-import { TagsInputSlotsContext, useTagsInput } from "./tags-input.context";
+import {
+  TagsInputItemContext,
+  TagsInputSlotsContext,
+  useTagsInput,
+  useTagsInputItem,
+} from "./tags-input.context";
 
 // #region Types
 export type TagsInputRootProps = Omit<
@@ -144,29 +149,31 @@ export function TagsInputItem({
   children,
   ...rest
 }: TagsInputItemProps) {
-  const { slots } = useTagsInput();
+  const slots = useMemo(() => tagsInputItemVariants(), []);
 
   return (
-    <TagsInputPrimitive.Item {...rest} className={slots.item({ className })}>
-      <TagsInputItemPreview>
-        <TagsInputItemText>{children}</TagsInputItemText>
-        {showDelete && <TagsInputItemDeleteTrigger />}
-      </TagsInputItemPreview>
-      <TagsInputItemInput />
-    </TagsInputPrimitive.Item>
+    <TagsInputItemContext value={{ slots }}>
+      <TagsInputPrimitive.Item {...rest} className={slots.base({ className })}>
+        <TagsInputItemPreview>
+          <TagsInputItemText>{children}</TagsInputItemText>
+          {showDelete && <TagsInputItemDeleteTrigger />}
+        </TagsInputItemPreview>
+        <TagsInputItemInput />
+      </TagsInputPrimitive.Item>
+    </TagsInputItemContext>
   );
 }
 
 export function TagsInputItemPreview({ className, ...rest }: TagsInputItemPreviewProps) {
-  const { slots } = useTagsInput();
+  const { slots } = useTagsInputItem();
 
-  return <TagsInputPrimitive.ItemPreview {...rest} className={slots.itemPreview({ className })} />;
+  return <TagsInputPrimitive.ItemPreview {...rest} className={slots.preview({ className })} />;
 }
 
 export function TagsInputItemText({ className, ...rest }: TagsInputItemTextProps) {
-  const { slots } = useTagsInput();
+  const { slots } = useTagsInputItem();
 
-  return <TagsInputPrimitive.ItemText {...rest} className={slots.itemText({ className })} />;
+  return <TagsInputPrimitive.ItemText {...rest} className={slots.text({ className })} />;
 }
 
 export function TagsInputItemDeleteTrigger({
@@ -174,13 +181,13 @@ export function TagsInputItemDeleteTrigger({
   children,
   ...rest
 }: TagsInputItemDeleteTriggerProps) {
-  const { slots } = useTagsInput();
+  const { slots } = useTagsInputItem();
 
   return (
     <TagsInputPrimitive.ItemDeleteTrigger {...rest} asChild>
       <InputGroup.Button
         aria-label="Remove tag"
-        className={slots.itemDelete({ className })}
+        className={slots.delete({ className })}
         size="icon-xs"
         variant="ghost"
       >
@@ -191,11 +198,11 @@ export function TagsInputItemDeleteTrigger({
 }
 
 export function TagsInputItemInput(props: TagsInputItemInputProps) {
-  const { slots } = useTagsInput();
+  const { slots } = useTagsInputItem();
 
   return (
     <TagsInputPrimitive.ItemInput asChild {...props}>
-      <InputGroup.Input className={slots.itemInput()} />
+      <InputGroup.Input className={slots.input()} />
     </TagsInputPrimitive.ItemInput>
   );
 }

@@ -1,12 +1,9 @@
 import { ark } from "@ark-ui/react/factory";
-import {
-  type ButtonGroupVariantProps,
-  buttonGroupSeparatorVariants,
-  buttonGroupTextVariants,
-  buttonGroupVariants,
-} from "@pisagor/styles/ui/button-group";
+import { type ButtonGroupVariantProps, buttonGroupVariants } from "@pisagor/styles/ui/button-group";
 import type { ComponentProps } from "react";
+import { useMemo } from "react";
 import { Separator, type SeparatorProps } from "../separator";
+import { ButtonGroupContext, useButtonGroup } from "./button-group.context";
 
 // #region Types
 export interface ButtonGroupProps
@@ -17,23 +14,31 @@ export interface ButtonGroupTextProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Parts
-export function ButtonGroupRoot({ className, orientation, ...rest }: ButtonGroupProps) {
+export function ButtonGroupRoot({ className, orientation, children, ...rest }: ButtonGroupProps) {
+  const slots = useMemo(() => buttonGroupVariants({ orientation }), [orientation]);
+
   return (
-    <ark.fieldset
-      {...rest}
-      className={buttonGroupVariants({ className, orientation })}
-      data-orientation={orientation}
-      data-part="root"
-      data-scope="button-group"
-    />
+    <ButtonGroupContext value={{ slots }}>
+      <ark.fieldset
+        {...rest}
+        className={slots.base({ className })}
+        data-orientation={orientation}
+        data-part="root"
+        data-scope="button-group"
+      >
+        {children}
+      </ark.fieldset>
+    </ButtonGroupContext>
   );
 }
 
 export function ButtonGroupText({ className, ...rest }: ButtonGroupTextProps) {
+  const { slots } = useButtonGroup();
+
   return (
     <ark.div
       {...rest}
-      className={buttonGroupTextVariants({ className })}
+      className={slots.text({ className })}
       data-part="text"
       data-scope="button-group"
     />
@@ -45,10 +50,12 @@ export function ButtonGroupSeparator({
   className,
   ...rest
 }: SeparatorProps) {
+  const { slots } = useButtonGroup();
+
   return (
     <Separator
       {...rest}
-      className={buttonGroupSeparatorVariants({ className })}
+      className={slots.separator({ className })}
       dataPart="separator"
       dataScope="button-group"
       orientation={orientation}

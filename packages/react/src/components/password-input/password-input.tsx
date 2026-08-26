@@ -1,11 +1,8 @@
 import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/react/password-input";
 import { EyeIcon, EyeSlashIcon, XIcon } from "@phosphor-icons/react";
-import {
-  passwordInputInline2Variants,
-  passwordInputInlineVariants,
-  passwordInputVariants,
-} from "@pisagor/styles/ui/password-input";
+import { passwordInputVariants } from "@pisagor/styles/ui/password-input";
 import type { ComponentProps } from "react";
+import { useMemo } from "react";
 import { useClearableInput } from "../../hooks";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import { InputGroup, type InputGroupButtonProps, type InputGroupProps } from "../input-group";
@@ -75,6 +72,8 @@ export function PasswordInput({
     ...restClearButtonProps
   } = clearButtonProps ?? {};
 
+  const slots = useMemo(() => passwordInputVariants(), []);
+
   const { canClear, handleChange, handleClear, mergedRef } = useClearableInput({
     clearable,
     defaultValue,
@@ -88,7 +87,7 @@ export function PasswordInput({
 
   return (
     <PasswordInputPrimitive.Root
-      className={passwordInputVariants({ className })}
+      className={slots.base({ className })}
       data-size={size}
       defaultVisible={defaultVisible}
       invalid={invalid}
@@ -97,7 +96,7 @@ export function PasswordInput({
     >
       <PasswordInputPrimitive.Control asChild>
         <InputGroup
-          className={passwordInputInlineVariants()}
+          className={slots.control()}
           data-clearable={clearable || undefined}
           variant={variant}
         >
@@ -114,7 +113,7 @@ export function PasswordInput({
             <InputGroup.Input clearable={false} />
           </PasswordInputPrimitive.Input>
           {canClear ? (
-            <InputGroup.Addon align="inline-end" className={passwordInputInline2Variants()}>
+            <InputGroup.Addon align="inline-end" className={slots.clearAddon()}>
               <InputGroup.Button
                 aria-label="Clear"
                 data-part="clear-trigger"

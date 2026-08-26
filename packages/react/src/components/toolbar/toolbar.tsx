@@ -1,8 +1,9 @@
 import { ark } from "@ark-ui/react/factory";
 import { type ToolbarSlots, toolbarVariants } from "@pisagor/styles/ui/toolbar";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
+import { useMemo } from "react";
 import type { VariantClassNames } from "../../internal/types";
+import { ToolbarContext, useToolbar } from "./toolbar.context";
 
 // #region Types
 type ToolbarTitleProps = ComponentProps<typeof ark.h2>;
@@ -11,12 +12,11 @@ type ToolbarDescriptionProps = ComponentProps<typeof ark.p>;
 
 type ToolbarActionsProps = ComponentProps<typeof ark.div>;
 
+type ToolbarHeadingProps = ComponentProps<typeof ark.div>;
+
 type ToolbarClassNames = VariantClassNames<ToolbarSlots>;
 
-type ToolbarRootProps = Omit<ComponentProps<typeof ark.div>, "title"> & {
-  /** Slot class names */
-  classNames?: ToolbarClassNames;
-};
+type ToolbarRootProps = Omit<ComponentProps<typeof ark.div>, "title">;
 
 export interface ToolbarProps extends Omit<ToolbarRootProps, "children"> {
   /** Section heading. */
@@ -25,6 +25,8 @@ export interface ToolbarProps extends Omit<ToolbarRootProps, "children"> {
   description?: ReactNode;
   /** Trailing action buttons or controls. */
   actions?: ReactNode;
+  /** Slot class names */
+  classNames?: ToolbarClassNames;
   /** Extra props forwarded to the title element */
   titleProps?: Omit<ToolbarTitleProps, "children" | "className">;
   /** Extra props forwarded to the description element */
@@ -32,73 +34,72 @@ export interface ToolbarProps extends Omit<ToolbarRootProps, "children"> {
   /** Extra props forwarded to the actions element */
   actionsProps?: Omit<ToolbarActionsProps, "children" | "className">;
 }
-
-interface ToolbarPartProps extends ComponentProps<typeof ark.div> {
-  /** Slot class names */
-  classNames?: ToolbarClassNames;
-}
 // #endregion
 
 // #region Parts
-export function ToolbarRoot({ className, classNames, ...rest }: ToolbarRootProps) {
-  const slots = toolbarVariants();
+export function ToolbarRoot({ children, className, ...rest }: ToolbarRootProps) {
+  const slots = useMemo(() => toolbarVariants(), []);
 
   return (
-    <ark.div
-      {...rest}
-      className={slots.base({ className: className })}
-      data-part="root"
-      data-scope="toolbar"
-    />
+    <ToolbarContext value={{ slots }}>
+      <ark.div
+        {...rest}
+        className={slots.base({ className })}
+        data-part="root"
+        data-scope="toolbar"
+      >
+        {children}
+      </ark.div>
+    </ToolbarContext>
   );
 }
 
-export function ToolbarHeading({ className, classNames, ...rest }: ToolbarPartProps) {
-  const slots = toolbarVariants();
+export function ToolbarHeading({ className, ...rest }: ToolbarHeadingProps) {
+  const { slots } = useToolbar();
 
   return (
     <ark.div
       {...rest}
-      className={slots.heading({ className: cn(className, classNames?.heading) })}
+      className={slots.heading({ className })}
       data-part="heading"
       data-scope="toolbar"
     />
   );
 }
 
-export function ToolbarTitle({ className, classNames, ...rest }: ToolbarPartProps) {
-  const slots = toolbarVariants();
+export function ToolbarTitle({ className, ...rest }: ToolbarTitleProps) {
+  const { slots } = useToolbar();
 
   return (
     <ark.h2
       {...rest}
-      className={slots.title({ className: cn(className, classNames?.title) })}
+      className={slots.title({ className })}
       data-part="title"
       data-scope="toolbar"
     />
   );
 }
 
-export function ToolbarDescription({ className, classNames, ...rest }: ToolbarPartProps) {
-  const slots = toolbarVariants();
+export function ToolbarDescription({ className, ...rest }: ToolbarDescriptionProps) {
+  const { slots } = useToolbar();
 
   return (
     <ark.p
       {...rest}
-      className={slots.description({ className: cn(className, classNames?.description) })}
+      className={slots.description({ className })}
       data-part="description"
       data-scope="toolbar"
     />
   );
 }
 
-export function ToolbarActions({ className, classNames, ...rest }: ToolbarPartProps) {
-  const slots = toolbarVariants();
+export function ToolbarActions({ className, ...rest }: ToolbarActionsProps) {
+  const { slots } = useToolbar();
 
   return (
     <ark.div
       {...rest}
-      className={slots.actions({ className: cn(className, classNames?.actions) })}
+      className={slots.actions({ className })}
       data-part="actions"
       data-scope="toolbar"
     />
@@ -121,18 +122,28 @@ export function ToolbarShorthand({
   const hasHeading = title !== undefined || description !== undefined;
 
   return (
-    <ToolbarRoot {...rest} className={className} classNames={classNames}>
+    <ToolbarRoot {...rest} className={className}>
       {hasHeading && (
-        <ToolbarHeading>
-          {title !== undefined && <ToolbarTitle {...titleProps}>{title}</ToolbarTitle>}
+        <ToolbarHeading className={classNames?.heading}>
+          {title !== undefined && (
+            <ToolbarTitle {...titleProps} className={classNames?.title}>
+              {title}
+            </ToolbarTitle>
+          )}
 
           {description !== undefined && (
-            <ToolbarDescription {...descriptionProps}>{description}</ToolbarDescription>
+            <ToolbarDescription {...descriptionProps} className={classNames?.description}>
+              {description}
+            </ToolbarDescription>
           )}
         </ToolbarHeading>
       )}
 
-      {actions !== undefined && <ToolbarActions {...actionsProps}>{actions}</ToolbarActions>}
+      {actions !== undefined && (
+        <ToolbarActions {...actionsProps} className={classNames?.actions}>
+          {actions}
+        </ToolbarActions>
+      )}
     </ToolbarRoot>
   );
 }

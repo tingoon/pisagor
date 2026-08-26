@@ -1,11 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import { DotsSixVerticalIcon } from "@phosphor-icons/react";
-import {
-  sortableHandleVariants,
-  sortableItemContentVariants,
-  sortableItemVariants,
-  sortableVariants,
-} from "@pisagor/styles/ui/sortable";
+import { sortableItemVariants, sortableVariants } from "@pisagor/styles/ui/sortable";
 import { cn } from "@pisagor/utils";
 import {
   type ComponentProps,
@@ -315,13 +310,14 @@ export function SortableItem({ value, className, children, ...rest }: SortableIt
   const { getItemProps, activeId } = useSortable();
   const itemProps = getItemProps(value);
   const isDragging = activeId === value;
+  const slots = useMemo(() => sortableItemVariants(), []);
 
   return (
-    <SortableItemContext value={{ id: value, isDragging }}>
+    <SortableItemContext value={{ id: value, isDragging, slots }}>
       <ark.div
         {...rest}
         {...itemProps}
-        className={sortableItemVariants({ className })}
+        className={slots.base({ className })}
         data-part="item"
         data-scope="sortable"
         role="listitem"
@@ -333,7 +329,7 @@ export function SortableItem({ value, className, children, ...rest }: SortableIt
 }
 
 export function SortableHandle({ className, children, ...rest }: SortableHandleProps) {
-  const { id } = useSortableItem();
+  const { id, slots } = useSortableItem();
   const { disabled, endDrag, moveItem, orientation, registerHandle, startDrag, unregisterHandle } =
     useSortable();
 
@@ -350,11 +346,9 @@ export function SortableHandle({ className, children, ...rest }: SortableHandleP
       {...rest}
       aria-disabled={disabled || undefined}
       aria-label={rest["aria-label"] ?? "Drag to reorder"}
-      className={cn(
-        sortableHandleVariants(),
-        disabled && "pointer-events-none opacity-50",
-        className,
-      )}
+      className={slots.handle({
+        className: cn(disabled && "pointer-events-none opacity-50", className),
+      })}
       data-part="handle"
       data-scope="sortable"
       draggable={!disabled}
@@ -397,10 +391,12 @@ export function SortableHandle({ className, children, ...rest }: SortableHandleP
 }
 
 export function SortableItemContent({ className, ...rest }: SortableItemContentProps) {
+  const { slots } = useSortableItem();
+
   return (
     <ark.div
       {...rest}
-      className={sortableItemContentVariants({ className })}
+      className={slots.content({ className })}
       data-part="item-content"
       data-scope="sortable"
     />

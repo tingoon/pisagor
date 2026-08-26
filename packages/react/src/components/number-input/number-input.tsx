@@ -1,16 +1,9 @@
 import { NumberInput as NumberInputPrimitive } from "@ark-ui/react/number-input";
 import { MinusIcon, PlusIcon } from "@phosphor-icons/react";
-import {
-  numberFieldControlVariants,
-  numberFieldDecrementTriggerVariants,
-  numberFieldIncrementTriggerVariants,
-  numberFieldScrubberVariants,
-  numberFieldVariants,
-  numberInputInline2Variants,
-  numberInputInlineVariants,
-} from "@pisagor/styles/ui/number-input";
+import { numberFieldVariants } from "@pisagor/styles/ui/number-input";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
+import { useMemo } from "react";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import {
@@ -22,6 +15,7 @@ import { useFormControlVariant } from "../../internal/form-control/use-form-cont
 import { Button } from "../button";
 import { Field } from "../field";
 import { Input, type InputProps } from "../input";
+import { NumberInputContext, useNumberInput } from "./number-input.context";
 
 // #region Types
 export type NumberInputRootProps = Omit<
@@ -70,25 +64,29 @@ export function NumberInputRoot({
   className,
   ...rest
 }: NumberInputProps) {
+  const slots = useMemo(() => numberFieldVariants(), []);
+
   return (
     <FormControlVariantProvider value={variant}>
-      <NumberInputPrimitive.Root
-        {...rest}
-        className={numberFieldVariants({ className })}
-        data-size={size}
-        onValueChange={
-          onValueChange ? (details) => onValueChange(Number(details.value)) : undefined
-        }
-      >
-        {children ?? (
-          <NumberInputControl clearable={clearable} variant={variant}>
-            <NumberInputDecrementTrigger />
-            <NumberInputInput placeholder={placeholder} variant={variant} />
-            <NumberInputClearTrigger />
-            <NumberInputIncrementTrigger />
-          </NumberInputControl>
-        )}
-      </NumberInputPrimitive.Root>
+      <NumberInputContext value={{ slots }}>
+        <NumberInputPrimitive.Root
+          {...rest}
+          className={slots.base({ className })}
+          data-size={size}
+          onValueChange={
+            onValueChange ? (details) => onValueChange(Number(details.value)) : undefined
+          }
+        >
+          {children ?? (
+            <NumberInputControl clearable={clearable} variant={variant}>
+              <NumberInputDecrementTrigger />
+              <NumberInputInput placeholder={placeholder} variant={variant} />
+              <NumberInputClearTrigger />
+              <NumberInputIncrementTrigger />
+            </NumberInputControl>
+          )}
+        </NumberInputPrimitive.Root>
+      </NumberInputContext>
     </FormControlVariantProvider>
   );
 }
@@ -99,6 +97,7 @@ export function NumberInputControl({
   className,
   ...rest
 }: NumberInputControlProps) {
+  const { slots } = useNumberInput();
   const resolved = useFormControlVariant(variantProp);
   const shellArgs = shellVariantArgs(resolved);
   const controlProps = formControlShellProps(resolved);
@@ -108,7 +107,7 @@ export function NumberInputControl({
       {...rest}
       {...controlProps}
       className={cn(
-        numberFieldControlVariants(),
+        slots.control(),
         formControlGroupShellVariants({ size: "md", ...shellArgs }),
         className,
       )}
@@ -118,6 +117,8 @@ export function NumberInputControl({
 }
 
 export function NumberInputClearTrigger() {
+  const { slots } = useNumberInput();
+
   return (
     <NumberInputPrimitive.Context>
       {(api) => {
@@ -130,7 +131,7 @@ export function NumberInputClearTrigger() {
 
         return (
           <Input.ClearButton
-            className={numberInputInline2Variants()}
+            className={slots.clearTrigger()}
             onClear={() => api.setValue(Number.NaN)}
           />
         );
@@ -143,11 +144,13 @@ export function NumberInputDecrementTrigger({
   className,
   ...rest
 }: NumberInputDecrementTriggerProps) {
+  const { slots } = useNumberInput();
+
   return (
     <NumberInputPrimitive.DecrementTrigger
       {...rest}
       asChild
-      className={numberFieldDecrementTriggerVariants({ className })}
+      className={slots.decrementTrigger({ className })}
     >
       <Button aria-label="Decrement" variant="ghost">
         <MinusIcon aria-hidden />
@@ -160,11 +163,13 @@ export function NumberInputIncrementTrigger({
   className,
   ...rest
 }: NumberInputIncrementTriggerProps) {
+  const { slots } = useNumberInput();
+
   return (
     <NumberInputPrimitive.IncrementTrigger
       {...rest}
       asChild
-      className={numberFieldIncrementTriggerVariants({ className })}
+      className={slots.incrementTrigger({ className })}
     >
       <Button aria-label="Increment" variant="ghost">
         <PlusIcon aria-hidden />
@@ -174,10 +179,12 @@ export function NumberInputIncrementTrigger({
 }
 
 export function NumberInputInput({ size, variant, className, classNames, ...rest }: InputProps) {
+  const { slots } = useNumberInput();
+
   return (
     <NumberInputPrimitive.Input {...rest} asChild>
       <Input
-        className={numberInputInlineVariants({ className })}
+        className={slots.input({ className })}
         classNames={classNames}
         size={size}
         variant={variant}
@@ -187,12 +194,10 @@ export function NumberInputInput({ size, variant, className, classNames, ...rest
 }
 
 export function NumberInputScrubber({ className, children, ...rest }: NumberInputScrubberProps) {
+  const { slots } = useNumberInput();
+
   return (
-    <NumberInputPrimitive.Scrubber
-      {...rest}
-      asChild
-      className={numberFieldScrubberVariants({ className })}
-    >
+    <NumberInputPrimitive.Scrubber {...rest} asChild className={slots.scrubber({ className })}>
       <NumberInputPrimitive.Label asChild>
         <Field.Label>{children}</Field.Label>
       </NumberInputPrimitive.Label>

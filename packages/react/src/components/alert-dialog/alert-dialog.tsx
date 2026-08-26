@@ -1,4 +1,3 @@
-import { alertDialogBodyVariants } from "@pisagor/styles/ui/alert-dialog";
 import { Button, type ButtonProps } from "../button";
 import {
   Dialog,
@@ -12,6 +11,7 @@ import {
   type DialogTitleProps,
   type DialogTriggerProps,
 } from "../dialog";
+import { useDialog } from "../dialog/dialog.context";
 
 // #region Types
 export interface AlertDialogRootProps extends DialogRootProps {}
@@ -50,10 +50,12 @@ export function AlertDialogContent(props: DialogContentProps) {
 }
 
 export function AlertDialogBody({ className, ...rest }: DialogBodyProps) {
+  const { slots } = useDialog();
+
   return (
     <Dialog.Body
       {...rest}
-      className={alertDialogBodyVariants({ className })}
+      className={slots.alertBody({ className })}
       dataPart="body"
       dataScope="alert-dialog"
     />

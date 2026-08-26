@@ -2,19 +2,9 @@ import { Dialog as DialogPrimitive } from "@ark-ui/react/dialog";
 import { ark } from "@ark-ui/react/factory";
 import { Portal } from "@ark-ui/react/portal";
 import { XIcon } from "@phosphor-icons/react";
-import {
-  type DialogContentVariantProps,
-  dialogBackdropVariants,
-  dialogBodyVariants,
-  dialogContentVariants,
-  dialogDescriptionVariants,
-  dialogFooterVariants,
-  dialogHeaderVariants,
-  dialogInlineVariants,
-  dialogPositionerVariants,
-  dialogTitleVariants,
-} from "@pisagor/styles/ui/dialog";
+import { type DialogVariantProps, dialogVariants } from "@pisagor/styles/ui/dialog";
 import type { ComponentProps } from "react";
+import { useMemo } from "react";
 import { Button } from "../button";
 import { ScrollArea } from "../scroll-area";
 import { DialogContext, useDialog } from "./dialog.context";
@@ -22,7 +12,7 @@ import { DialogContext, useDialog } from "./dialog.context";
 // #region Types
 export interface DialogContentProps
   extends ComponentProps<typeof DialogPrimitive.Content>,
-    DialogContentVariantProps {
+    DialogVariantProps {
   /**
    * Whether to stick the dialog to the bottom of the screen on mobile.
    *
@@ -88,8 +78,10 @@ export function DialogRoot({
   unmountOnExit = true,
   ...rest
 }: DialogRootProps) {
+  const slots = useMemo(() => dialogVariants(), []);
+
   return (
-    <DialogContext value={{ modal }}>
+    <DialogContext value={{ modal, slots }}>
       <DialogPrimitive.Root
         lazyMount={lazyMount}
         modal={modal}
@@ -105,13 +97,13 @@ export function DialogTrigger(props: DialogTriggerProps) {
 }
 
 export function DialogBackdrop({ className, ...rest }: DialogBackdropProps) {
-  const { modal } = useDialog();
+  const { modal, slots } = useDialog();
 
   if (!modal) {
     return null;
   }
 
-  return <DialogPrimitive.Backdrop {...rest} className={dialogBackdropVariants({ className })} />;
+  return <DialogPrimitive.Backdrop {...rest} className={slots.backdrop({ className })} />;
 }
 
 export function DialogPositioner({
@@ -119,13 +111,12 @@ export function DialogPositioner({
   className,
   ...rest
 }: DialogPositionerProps) {
+  const { slots } = useDialog();
+
   return (
     <DialogPrimitive.Positioner
       {...rest}
-      className={dialogPositionerVariants({
-        bottomStickOnMobile,
-        className,
-      })}
+      className={slots.positioner({ bottomStickOnMobile, className })}
     />
   );
 }
@@ -138,6 +129,8 @@ export function DialogContent({
   children,
   ...rest
 }: DialogContentProps) {
+  const { slots } = useDialog();
+
   return (
     <Portal>
       <DialogBackdrop />
@@ -145,18 +138,13 @@ export function DialogContent({
       <DialogPositioner bottomStickOnMobile={bottomStickOnMobile}>
         <DialogPrimitive.Content
           {...rest}
-          className={dialogContentVariants({ bottomStickOnMobile, className, size })}
+          className={slots.content({ bottomStickOnMobile, className, size })}
         >
           {children}
 
           {!!showCloseButton && (
             <DialogCloseTrigger asChild>
-              <Button
-                aria-label="Close"
-                className={dialogInlineVariants()}
-                size="icon-sm"
-                variant="ghost"
-              >
+              <Button aria-label="Close" className={slots.inline()} size="icon-sm" variant="ghost">
                 <XIcon />
               </Button>
             </DialogCloseTrigger>
@@ -174,11 +162,13 @@ export function DialogBody({
   dataScope = "dialog",
   ...rest
 }: DialogBodyProps) {
+  const { slots } = useDialog();
+
   return (
     <ScrollArea scrollFade={scrollFade}>
       <ark.div
         {...rest}
-        className={dialogBodyVariants({ className })}
+        className={slots.body({ className })}
         data-part={dataPart}
         data-scope={dataScope}
       />
@@ -195,10 +185,12 @@ export function DialogHeader({
   dataScope = "dialog",
   ...rest
 }: DialogHeaderProps) {
+  const { slots } = useDialog();
+
   return (
     <ark.div
       {...rest}
-      className={dialogHeaderVariants({ className })}
+      className={slots.header({ className })}
       data-part={dataPart}
       data-scope={dataScope}
     >
@@ -212,13 +204,15 @@ export function DialogHeader({
 }
 
 export function DialogTitle({ className, ...rest }: DialogTitleProps) {
-  return <DialogPrimitive.Title {...rest} className={dialogTitleVariants({ className })} />;
+  const { slots } = useDialog();
+
+  return <DialogPrimitive.Title {...rest} className={slots.title({ className })} />;
 }
 
 export function DialogDescription({ className, ...rest }: DialogDescriptionProps) {
-  return (
-    <DialogPrimitive.Description {...rest} className={dialogDescriptionVariants({ className })} />
-  );
+  const { slots } = useDialog();
+
+  return <DialogPrimitive.Description {...rest} className={slots.description({ className })} />;
 }
 
 export function DialogCloseTrigger(props: DialogCloseTriggerProps) {
@@ -231,10 +225,12 @@ export function DialogFooter({
   dataScope = "dialog",
   ...rest
 }: DialogFooterProps) {
+  const { slots } = useDialog();
+
   return (
     <ark.div
       {...rest}
-      className={dialogFooterVariants({ className })}
+      className={slots.footer({ className })}
       data-part={dataPart}
       data-scope={dataScope}
     />

@@ -2,7 +2,7 @@ import { Portal } from "@ark-ui/react";
 import { ark } from "@ark-ui/react/factory";
 import { Tour as TourPrimitive, type TourStepDetails, useTour } from "@ark-ui/react/tour";
 import { CaretLeftIcon, CaretRightIcon, XIcon } from "@phosphor-icons/react";
-import { dialogBackdropVariants } from "@pisagor/styles/ui/dialog";
+import { dialogVariants } from "@pisagor/styles/ui/dialog";
 import { tourVariants } from "@pisagor/styles/ui/tour";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, MouseEvent } from "react";
@@ -130,11 +130,12 @@ export function TourActionTrigger(props: TourActionTriggerProps) {
 
 export function TourBackdrop({ className, ...rest }: DialogBackdropProps) {
   const { slots } = useTourContext();
+  const dialogSlots = useMemo(() => dialogVariants(), []);
 
   return (
     <TourPrimitive.Backdrop
       {...rest}
-      className={cn(dialogBackdropVariants(), slots.backdrop(), className)}
+      className={cn(dialogSlots.backdrop(), slots.backdrop(), className)}
     />
   );
 }

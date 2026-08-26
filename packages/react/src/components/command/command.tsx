@@ -5,7 +5,7 @@ import { Dialog as DialogPrimitive } from "@ark-ui/react/dialog";
 import { MagnifyingGlassIcon } from "@phosphor-icons/react";
 import { comboboxVariants } from "@pisagor/styles/ui/combobox";
 import { commandVariants } from "@pisagor/styles/ui/command";
-import { dialogContentVariants } from "@pisagor/styles/ui/dialog";
+import { dialogVariants } from "@pisagor/styles/ui/dialog";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
@@ -81,6 +81,7 @@ export function CommandDialogContent({
   ...rest
 }: CommandDialogContentProps) {
   const slots = useMemo(() => commandVariants(), []);
+  const dialogSlots = useMemo(() => dialogVariants(), []);
 
   return (
     <CommandContext value={{ slots }}>
@@ -90,7 +91,7 @@ export function CommandDialogContent({
         <Dialog.Positioner>
           <DialogPrimitive.Content
             {...rest}
-            className={cn(slots.dialogContent(), dialogContentVariants({ size }), className)}
+            className={cn(slots.dialogContent(), dialogSlots.content({ size }), className)}
           >
             <Dialog.Header
               className={slots.dialogHeader()}

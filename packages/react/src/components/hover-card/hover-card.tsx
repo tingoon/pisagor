@@ -1,7 +1,9 @@
 import { Portal } from "@ark-ui/react";
 import { HoverCard as HoverCardPrimitive } from "@ark-ui/react/hover-card";
-import { hoverCardContentVariants, hoverCardInlineVariants } from "@pisagor/styles/ui/hover-card";
+import { hoverCardVariants } from "@pisagor/styles/ui/hover-card";
 import type { ComponentProps } from "react";
+import { useMemo } from "react";
+import { HoverCardContext, useHoverCard } from "./hover-card.context";
 
 // #region Types
 export type HoverCardRootProps = ComponentProps<typeof HoverCardPrimitive.Root>;
@@ -22,17 +24,24 @@ export function HoverCardRoot({
   closeDelay = 300,
   openDelay = 600,
   positioning = { placement: "top" },
+  children,
   ...rest
 }: HoverCardRootProps) {
+  const slots = useMemo(() => hoverCardVariants(), []);
+
   return (
-    <HoverCardPrimitive.Root
-      closeDelay={closeDelay}
-      lazyMount={lazyMount}
-      openDelay={openDelay}
-      positioning={positioning}
-      unmountOnExit={unmountOnExit}
-      {...rest}
-    />
+    <HoverCardContext value={{ slots }}>
+      <HoverCardPrimitive.Root
+        closeDelay={closeDelay}
+        lazyMount={lazyMount}
+        openDelay={openDelay}
+        positioning={positioning}
+        unmountOnExit={unmountOnExit}
+        {...rest}
+      >
+        {children}
+      </HoverCardPrimitive.Root>
+    </HoverCardContext>
   );
 }
 
@@ -41,6 +50,8 @@ export function HoverCardTrigger(props: HoverCardTriggerProps) {
 }
 
 export function HoverCardArrow({ style, ...rest }: HoverCardArrowProps) {
+  const { slots } = useHoverCard();
+
   return (
     <HoverCardPrimitive.Arrow
       {...rest}
@@ -50,16 +61,18 @@ export function HoverCardArrow({ style, ...rest }: HoverCardArrowProps) {
         ...style,
       }}
     >
-      <HoverCardPrimitive.ArrowTip className={hoverCardInlineVariants()} />
+      <HoverCardPrimitive.ArrowTip className={slots.arrowTip()} />
     </HoverCardPrimitive.Arrow>
   );
 }
 
 export function HoverCardContent({ className, children, ...rest }: HoverCardContentProps) {
+  const { slots } = useHoverCard();
+
   return (
     <Portal>
       <HoverCardPrimitive.Positioner>
-        <HoverCardPrimitive.Content {...rest} className={hoverCardContentVariants({ className })}>
+        <HoverCardPrimitive.Content {...rest} className={slots.content({ className })}>
           {children}
 
           <HoverCardArrow />

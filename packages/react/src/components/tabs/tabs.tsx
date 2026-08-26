@@ -1,12 +1,8 @@
 import { Tabs as TabsPrimitive } from "@ark-ui/react/tabs";
-import {
-  type TabsListVariantProps,
-  tabsContentVariants,
-  tabsListVariants,
-  tabsTriggerVariants,
-  tabsVariants,
-} from "@pisagor/styles/ui/tabs";
+import { type TabsVariantProps, tabsVariants } from "@pisagor/styles/ui/tabs";
 import type { ComponentProps, ReactNode } from "react";
+import { useMemo } from "react";
+import { TabsContext, useTabs } from "./tabs.context";
 
 // #region Types
 interface TabsPresetItem {
@@ -18,7 +14,7 @@ interface TabsPresetItem {
 
 export interface TabsListProps
   extends ComponentProps<typeof TabsPrimitive.List>,
-    TabsListVariantProps {}
+    Pick<TabsVariantProps, "variant"> {}
 
 export type TabsRootProps = ComponentProps<typeof TabsPrimitive.Root>;
 
@@ -45,36 +41,44 @@ export function TabsRoot({
   children,
   ...rest
 }: TabsRootProps) {
+  const slots = useMemo(() => tabsVariants(), []);
+
   return (
-    <TabsPrimitive.Root
-      {...rest}
-      className={tabsVariants({ className })}
-      lazyMount={lazyMount}
-      unmountOnExit={unmountOnExit}
-    >
-      {children}
-    </TabsPrimitive.Root>
+    <TabsContext value={{ slots }}>
+      <TabsPrimitive.Root
+        {...rest}
+        className={slots.base({ className })}
+        lazyMount={lazyMount}
+        unmountOnExit={unmountOnExit}
+      >
+        {children}
+      </TabsPrimitive.Root>
+    </TabsContext>
   );
 }
 
 export function TabsList({ variant = "default", className, children, ...rest }: TabsListProps) {
-  const { list, indicator } = tabsListVariants({ variant });
+  const { slots } = useTabs();
 
   return (
-    <TabsPrimitive.List {...rest} className={list({ className })}>
+    <TabsPrimitive.List {...rest} className={slots.list({ className, variant })}>
       {children}
 
-      <TabsPrimitive.Indicator className={indicator()} />
+      <TabsPrimitive.Indicator className={slots.indicator({ variant })} />
     </TabsPrimitive.List>
   );
 }
 
 export function TabsTrigger({ className, ...rest }: TabsTriggerProps) {
-  return <TabsPrimitive.Trigger {...rest} className={tabsTriggerVariants({ className })} />;
+  const { slots } = useTabs();
+
+  return <TabsPrimitive.Trigger {...rest} className={slots.trigger({ className })} />;
 }
 
 export function TabsContent({ className, ...rest }: TabsContentProps) {
-  return <TabsPrimitive.Content {...rest} className={tabsContentVariants({ className })} />;
+  const { slots } = useTabs();
+
+  return <TabsPrimitive.Content {...rest} className={slots.content({ className })} />;
 }
 // #endregion
 

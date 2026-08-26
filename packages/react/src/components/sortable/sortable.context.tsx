@@ -1,3 +1,4 @@
+import type { SortableItemVariants } from "@pisagor/styles/ui/sortable";
 import type { DragEvent, KeyboardEvent } from "react";
 import { createContext } from "../../utils";
 
@@ -32,6 +33,7 @@ interface SortableContextValue {
 interface SortableItemContextValue {
   id: string;
   isDragging: boolean;
+  slots: SortableItemVariants;
 }
 
 export const { SortableContext, useSortable } = createContext<SortableContextValue>()({

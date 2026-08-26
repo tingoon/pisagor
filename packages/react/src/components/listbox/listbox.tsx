@@ -10,18 +10,13 @@ import {
 import { CheckIcon } from "@phosphor-icons/react";
 import {
   type ListboxItemVariantProps,
-  listboxContentVariants,
-  listboxEmptyVariants,
-  listboxItemGroupLabelVariants,
-  listboxItemGroupVariants,
-  listboxItemIndicatorVariants,
-  listboxItemTextVariants,
   listboxItemVariants,
-  listboxValueTextVariants,
   listboxVariants,
 } from "@pisagor/styles/ui/listbox";
 import type { ComponentProps } from "react";
+import { useMemo } from "react";
 import { DropdownMenu, type DropdownMenuShortcutProps } from "../dropdown-menu";
+import { ListboxContext, ListboxItemContext, useListbox, useListboxItem } from "./listbox.context";
 
 // #region Types
 interface ListboxPresetItem {
@@ -70,39 +65,56 @@ export function ListboxRoot<T extends CollectionItem = CollectionItem>({
   onValueChange,
   ...rest
 }: ListboxRootProps<T>) {
+  const slots = useMemo(() => listboxVariants(), []);
+
   return (
-    <ListboxPrimitive.Root
-      {...rest}
-      className={listboxVariants({ className })}
-      collection={collectionProp as ListCollection<T>}
-      onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
-    >
-      {children}
-    </ListboxPrimitive.Root>
+    <ListboxContext value={{ slots }}>
+      <ListboxPrimitive.Root
+        {...rest}
+        className={slots.base({ className })}
+        collection={collectionProp as ListCollection<T>}
+        onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
+      >
+        {children}
+      </ListboxPrimitive.Root>
+    </ListboxContext>
   );
 }
 
 export function ListboxContent({ className, ...rest }: ListboxContentProps) {
-  return <ListboxPrimitive.Content {...rest} className={listboxContentVariants({ className })} />;
+  const { slots } = useListbox();
+
+  return <ListboxPrimitive.Content {...rest} className={slots.content({ className })} />;
 }
 
-export function ListboxItem({ variant = "default", className, ...rest }: ListboxItemProps) {
+export function ListboxItem({
+  variant = "default",
+  className,
+  children,
+  ...rest
+}: ListboxItemProps) {
+  const slots = useMemo(() => listboxItemVariants({ variant }), [variant]);
+
   return (
-    <ListboxPrimitive.Item
-      {...rest}
-      className={listboxItemVariants({ className, variant })}
-      data-variant={variant}
-    />
+    <ListboxItemContext value={{ slots }}>
+      <ListboxPrimitive.Item {...rest} className={slots.base({ className })} data-variant={variant}>
+        {children}
+      </ListboxPrimitive.Item>
+    </ListboxItemContext>
   );
 }
 
 export function ListboxItemText({ className, ...rest }: ListboxItemTextProps) {
-  return <ListboxPrimitive.ItemText {...rest} className={listboxItemTextVariants({ className })} />;
+  const { slots } = useListboxItem();
+
+  return <ListboxPrimitive.ItemText {...rest} className={slots.text({ className })} />;
 }
 
 export function ListboxItemGroup({ heading, className, children, ...rest }: ListboxItemGroupProps) {
+  const { slots } = useListbox();
+
   return (
-    <ListboxPrimitive.ItemGroup {...rest} className={listboxItemGroupVariants({ className })}>
+    <ListboxPrimitive.ItemGroup {...rest} className={slots.itemGroup({ className })}>
       {!!heading && <ListboxItemGroupLabel>{heading}</ListboxItemGroupLabel>}
       {children}
     </ListboxPrimitive.ItemGroup>
@@ -110,33 +122,33 @@ export function ListboxItemGroup({ heading, className, children, ...rest }: List
 }
 
 export function ListboxItemGroupLabel({ className, ...rest }: ListboxItemGroupLabelProps) {
+  const { slots } = useListbox();
+
   return (
-    <ListboxPrimitive.ItemGroupLabel
-      {...rest}
-      className={listboxItemGroupLabelVariants({ className })}
-    />
+    <ListboxPrimitive.ItemGroupLabel {...rest} className={slots.itemGroupLabel({ className })} />
   );
 }
 
 export function ListboxValueText({ className, ...rest }: ListboxValueTextProps) {
-  return (
-    <ListboxPrimitive.ValueText {...rest} className={listboxValueTextVariants({ className })} />
-  );
+  const { slots } = useListbox();
+
+  return <ListboxPrimitive.ValueText {...rest} className={slots.valueText({ className })} />;
 }
 
 export function ListboxItemIndicator({ className, children, ...rest }: ListboxItemIndicatorProps) {
+  const { slots } = useListboxItem();
+
   return (
-    <ListboxPrimitive.ItemIndicator
-      {...rest}
-      className={listboxItemIndicatorVariants({ className })}
-    >
+    <ListboxPrimitive.ItemIndicator {...rest} className={slots.indicator({ className })}>
       {children ?? <CheckIcon />}
     </ListboxPrimitive.ItemIndicator>
   );
 }
 
 export function ListboxEmpty({ className, ...rest }: ListboxEmptyProps) {
-  return <ListboxPrimitive.Empty {...rest} className={listboxEmptyVariants({ className })} />;
+  const { slots } = useListbox();
+
+  return <ListboxPrimitive.Empty {...rest} className={slots.empty({ className })} />;
 }
 
 export function ListboxShortcut(props: DropdownMenuShortcutProps) {

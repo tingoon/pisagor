@@ -1,19 +1,4 @@
-import {
-  chartInline2Variants,
-  chartInline3Variants,
-  chartInline4Variants,
-  chartInline5Variants,
-  chartInline6Variants,
-  chartInline7Variants,
-  chartInline8Variants,
-  chartInline9Variants,
-  chartInline10Variants,
-  chartInline11Variants,
-  chartInline12Variants,
-  chartInline13Variants,
-  chartInlineVariants,
-  chartVariants,
-} from "@pisagor/styles/ui/chart";
+import { chartVariants } from "@pisagor/styles/ui/chart";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ComponentType, ReactNode } from "react";
 import { useId, useMemo } from "react";
@@ -126,12 +111,13 @@ const getPayload = (config: ChartConfig, payload: unknown, key: string) => {
 export function ChartContainer({ children, className, config, id, ...rest }: ChartContainerProps) {
   const uniqueId = useId();
   const chartId = `chart-${id || uniqueId.replace(/:/g, "")}`;
+  const slots = useMemo(() => chartVariants(), []);
 
   return (
-    <ChartContext value={{ config }}>
+    <ChartContext value={{ config, slots }}>
       <div
         {...rest}
-        className={chartVariants({ className })}
+        className={slots.base({ className })}
         data-chart={chartId}
         data-part="root"
         data-scope="chart"
@@ -186,7 +172,7 @@ export function ChartTooltipContent({
   nameKey,
   payload,
 }: CustomTooltipProps) {
-  const { config } = useChart();
+  const { config, slots } = useChart();
 
   const tooltipLabel = useMemo(() => {
     if (hideLabel || !payload?.length) {
@@ -207,7 +193,7 @@ export function ChartTooltipContent({
 
     if (labelFormatter) {
       return (
-        <div className={cn(chartInlineVariants(), labelClassName)}>
+        <div className={slots.label({ className: labelClassName })}>
           {labelFormatter(value, payload)}
         </div>
       );
@@ -217,8 +203,8 @@ export function ChartTooltipContent({
       return null;
     }
 
-    return <div className={cn(chartInline2Variants(), labelClassName)}>{value}</div>;
-  }, [label, labelFormatter, payload, hideLabel, labelClassName, config, labelKey]);
+    return <div className={slots.label({ className: labelClassName })}>{value}</div>;
+  }, [label, labelFormatter, payload, hideLabel, labelClassName, config, labelKey, slots]);
 
   if (!(active && payload?.length)) {
     return null;
@@ -227,9 +213,9 @@ export function ChartTooltipContent({
   const nestLabel = payload.length === 1 && indicator !== "dot";
 
   return (
-    <div className={chartInline3Variants({ className })}>
+    <div className={slots.tooltip({ className })}>
       {nestLabel ? null : tooltipLabel}
-      <div className={chartInline9Variants()}>
+      <div className={slots.tooltipStack()}>
         {payload.map((item, index) => {
           const key = `${nameKey || item.name || item.dataKey || "value"}`;
           const itemConfig = getPayload(config, item, key);
@@ -237,7 +223,7 @@ export function ChartTooltipContent({
 
           return (
             <div
-              className={cn(chartInline4Variants(), indicator === "dot" && "items-center")}
+              className={cn(slots.tooltipItem(), indicator === "dot" && "items-center")}
               key={key}
             >
               {formatter && item?.value !== undefined && item.name ? (
@@ -249,7 +235,7 @@ export function ChartTooltipContent({
                   ) : (
                     !hideIndicator && (
                       <div
-                        className={cn(chartInline5Variants(), {
+                        className={cn(slots.indicator(), {
                           "h-2.5 w-2.5": indicator === "dot",
                           "my-0.5": nestLabel && indicator === "dashed",
                           "w-0 border-[1.5px] border-dashed bg-transparent": indicator === "dashed",
@@ -262,17 +248,13 @@ export function ChartTooltipContent({
                       />
                     )
                   )}
-                  <div
-                    className={cn(chartInline6Variants(), nestLabel ? "items-end" : "items-center")}
-                  >
-                    <div className={chartInline10Variants()}>
+                  <div className={cn(slots.tooltipRow(), nestLabel ? "items-end" : "items-center")}>
+                    <div className={slots.tooltipStack()}>
                       {nestLabel ? tooltipLabel : null}
-                      <span className={chartInline11Variants()}>
-                        {itemConfig?.label || item.name}
-                      </span>
+                      <span className={slots.tooltipLabel()}>{itemConfig?.label || item.name}</span>
                     </div>
                     {item.value && (
-                      <span className={chartInline12Variants()}>{item.value.toLocaleString()}</span>
+                      <span className={slots.tooltipValue()}>{item.value.toLocaleString()}</span>
                     )}
                   </div>
                 </>
@@ -294,27 +276,25 @@ export function ChartLegendContent({
   payload,
   verticalAlign = "bottom",
 }: ChartLegendContentProps) {
-  const { config } = useChart();
+  const { config, slots } = useChart();
 
   if (!payload?.length) {
     return null;
   }
 
   return (
-    <div
-      className={cn(chartInline7Variants(), verticalAlign === "top" ? "pb-3" : "pt-3", className)}
-    >
+    <div className={cn(slots.legend(), verticalAlign === "top" ? "pb-3" : "pt-3", className)}>
       {payload.map((item) => {
         const key = `${nameKey || item.dataKey || "value"}`;
         const itemConfig = getPayload(config, item, key);
 
         return (
-          <div className={chartInline8Variants()} key={item.value}>
+          <div className={slots.legendItem()} key={item.value}>
             {itemConfig?.icon && !hideIcon ? (
               <itemConfig.icon />
             ) : (
               <div
-                className={chartInline13Variants()}
+                className={slots.swatch()}
                 style={{
                   backgroundColor: item.color,
                 }}

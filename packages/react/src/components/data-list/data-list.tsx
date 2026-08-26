@@ -1,11 +1,16 @@
 import { ark } from "@ark-ui/react/factory";
-import { type DataListSlots, dataListVariants } from "@pisagor/styles/ui/data-list";
-import { cn } from "@pisagor/utils";
+import {
+  type DataListItemSlots,
+  dataListItemVariants,
+  dataListVariants,
+} from "@pisagor/styles/ui/data-list";
 import type { ComponentProps, ReactNode } from "react";
+import { useMemo } from "react";
 import type { VariantClassNames } from "../../internal/types";
+import { DataListItemContext, useDataListItem } from "./data-list.context";
 
 // #region Types
-type DataListClassNames = VariantClassNames<DataListSlots>;
+type DataListClassNames = VariantClassNames<DataListItemSlots>;
 
 interface DataListPresetItem {
   label: ReactNode;
@@ -19,8 +24,6 @@ export interface DataListRootProps extends ComponentProps<typeof ark.dl> {
    * @defaultValue "horizontal"
    */
   orientation?: "horizontal" | "vertical";
-  /** Slot class names */
-  classNames?: DataListClassNames;
 }
 
 export interface DataListProps extends Omit<DataListRootProps, "children"> {
@@ -42,16 +45,13 @@ interface DataListItemValueProps extends ComponentProps<typeof ark.dd> {}
 export function DataListRoot({
   orientation = "horizontal",
   className,
-  classNames,
   children,
   ...rest
 }: DataListRootProps) {
-  const slots = dataListVariants();
-
   return (
     <ark.dl
       {...rest}
-      className={slots.base({ className: className })}
+      className={dataListVariants({ className })}
       data-orientation={orientation}
       data-part="root"
       data-scope="data-list"
@@ -62,7 +62,7 @@ export function DataListRoot({
 }
 
 function DataListItemLabel({ className, ...rest }: DataListItemLabelProps) {
-  const slots = dataListVariants();
+  const { slots } = useDataListItem();
 
   return (
     <ark.dt
@@ -75,7 +75,7 @@ function DataListItemLabel({ className, ...rest }: DataListItemLabelProps) {
 }
 
 function DataListItemValue({ className, ...rest }: DataListItemValueProps) {
-  const slots = dataListVariants();
+  const { slots } = useDataListItem();
 
   return (
     <ark.dd
@@ -94,20 +94,24 @@ export function DataListItem({
   children,
   ...rest
 }: DataListItemProps) {
+  const slots = useMemo(() => dataListItemVariants(), []);
+
   return (
-    <ark.div
-      {...rest}
-      className={dataListVariants().item({ className: cn(className, classNames?.item) })}
-      data-part="item"
-      data-scope="data-list"
-    >
-      {children != null && (
-        <DataListItemLabel className={classNames?.label}>{children}</DataListItemLabel>
-      )}
-      {value != null && (
-        <DataListItemValue className={classNames?.value}>{value}</DataListItemValue>
-      )}
-    </ark.div>
+    <DataListItemContext value={{ slots }}>
+      <ark.div
+        {...rest}
+        className={slots.base({ className })}
+        data-part="item"
+        data-scope="data-list"
+      >
+        {children != null && (
+          <DataListItemLabel className={classNames?.label}>{children}</DataListItemLabel>
+        )}
+        {value != null && (
+          <DataListItemValue className={classNames?.value}>{value}</DataListItemValue>
+        )}
+      </ark.div>
+    </DataListItemContext>
   );
 }
 // #endregion

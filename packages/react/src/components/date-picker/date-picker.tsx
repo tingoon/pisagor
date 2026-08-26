@@ -1,22 +1,19 @@
 import { DatePicker as DatePickerPrimitive, useDatePickerContext } from "@ark-ui/react/date-picker";
 import { Portal } from "@ark-ui/react/portal";
 import { CalendarIcon, ClockIcon, XIcon } from "@phosphor-icons/react";
-import {
-  datePickerContentVariants,
-  datePickerControlVariants,
-  datePickerInline2Variants,
-  datePickerInlineVariants,
-  datePickerTriggerVariants,
-  datePickerValueTextVariants,
-} from "@pisagor/styles/ui/date-picker";
+import { calendarVariants } from "@pisagor/styles/ui/calendar";
+import { datePickerVariants } from "@pisagor/styles/ui/date-picker";
 import type { ComponentProps } from "react";
+import { useMemo } from "react";
 import { useClearableInput } from "../../hooks";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import { Button } from "../button";
 import { Calendar } from "../calendar";
+import { CalendarSlotsContext } from "../calendar/calendar.context";
 import { Input, type InputProps } from "../input";
 import { InputGroup } from "../input-group";
+import { DatePickerSlotsContext, useDatePicker } from "./date-picker.context";
 
 // #region Types
 export interface DatePickerTriggerProps extends ComponentProps<typeof DatePickerPrimitive.Trigger> {
@@ -73,16 +70,26 @@ export function DatePickerRoot({
   positioning = { placement: "top" },
   onValueChange,
   variant,
+  children,
   ...rest
 }: DatePickerRootProps) {
+  const slots = useMemo(() => datePickerVariants(), []);
+  const calendarSlots = useMemo(() => calendarVariants(), []);
+
   return (
     <FormControlVariantProvider value={variant}>
-      <DatePickerPrimitive.Root
-        inline={false}
-        onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
-        positioning={positioning}
-        {...rest}
-      />
+      <DatePickerSlotsContext value={{ slots }}>
+        <CalendarSlotsContext value={{ slots: calendarSlots }}>
+          <DatePickerPrimitive.Root
+            inline={false}
+            onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
+            positioning={positioning}
+            {...rest}
+          >
+            {children}
+          </DatePickerPrimitive.Root>
+        </CalendarSlotsContext>
+      </DatePickerSlotsContext>
     </FormControlVariantProvider>
   );
 }
@@ -93,9 +100,11 @@ export function DatePickerTrigger({
   clearable = false,
   ...rest
 }: DatePickerTriggerProps) {
+  const { slots } = useDatePicker();
+
   return (
-    <DatePickerPrimitive.Control className={datePickerControlVariants()}>
-      <DatePickerPrimitive.Trigger {...rest} className={datePickerTriggerVariants({ className })}>
+    <DatePickerPrimitive.Control className={slots.control()}>
+      <DatePickerPrimitive.Trigger {...rest} className={slots.trigger({ className })}>
         {children}
       </DatePickerPrimitive.Trigger>
       {clearable ? <DatePickerClearTrigger /> : null}
@@ -109,6 +118,8 @@ export function DatePickerInput({
   clearable = false,
   ...rest
 }: DatePickerInputProps) {
+  const { slots } = useDatePicker();
+
   return (
     <DatePickerPrimitive.Control>
       <InputGroup className={className} size={size}>
@@ -127,7 +138,7 @@ export function DatePickerInput({
           >
             <DatePickerPrimitive.Trigger asChild>
               <Button aria-label="Open calendar" size="icon-md" variant="ghost">
-                <CalendarIcon aria-hidden className={datePickerInline2Variants()} />
+                <CalendarIcon aria-hidden className={slots.icon()} />
               </Button>
             </DatePickerPrimitive.Trigger>
           </InputGroup.Button>
@@ -166,6 +177,7 @@ export function DatePickerTimer({
   ref,
   ...rest
 }: DatePickerTimerProps) {
+  const { slots } = useDatePicker();
   const { canClear, handleChange, handleClear, mergedRef } = useClearableInput({
     clearable,
     defaultValue,
@@ -182,7 +194,7 @@ export function DatePickerTimer({
         <ClockIcon />
       </InputGroup.Addon>
       <InputGroup.Input
-        className={datePickerInlineVariants({ className })}
+        className={slots.timer({ className })}
         classNames={classNames}
         clearable={false}
         defaultValue={defaultValue}
@@ -210,10 +222,12 @@ export function DatePickerContent({
   children,
   ...rest
 }: DatePickerContentProps) {
+  const { slots } = useDatePicker();
+
   return (
     <Portal>
       <DatePickerPrimitive.Positioner>
-        <DatePickerPrimitive.Content {...rest} className={datePickerContentVariants({ className })}>
+        <DatePickerPrimitive.Content {...rest} className={slots.content({ className })}>
           {showCalendar && !children ? (
             <>
               <Calendar.ViewControl>
@@ -237,12 +251,9 @@ export function DatePickerContent({
 }
 
 export function DatePickerValueText({ className, ...rest }: DatePickerValueTextProps) {
-  return (
-    <DatePickerPrimitive.ValueText
-      {...rest}
-      className={datePickerValueTextVariants({ className })}
-    />
-  );
+  const { slots } = useDatePicker();
+
+  return <DatePickerPrimitive.ValueText {...rest} className={slots.valueText({ className })} />;
 }
 
 export function DatePickerPresetTrigger(props: DatePickerPresetTriggerProps) {

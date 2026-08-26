@@ -1,0 +1,19 @@
+import type { BreadcrumbItemVariants, BreadcrumbVariants } from "@pisagor/styles/ui/breadcrumb";
+import { createContext } from "../../utils";
+
+interface BreadcrumbContextValue {
+  slots: BreadcrumbVariants;
+}
+
+interface BreadcrumbItemContextValue {
+  slots: BreadcrumbItemVariants;
+}
+
+export const { BreadcrumbContext, useBreadcrumb } = createContext<BreadcrumbContextValue>()({
+  name: "Breadcrumb",
+});
+
+export const { BreadcrumbItemContext, useBreadcrumbItem } =
+  createContext<BreadcrumbItemContextValue>()({
+    name: "BreadcrumbItem",
+  });

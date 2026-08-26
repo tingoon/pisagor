@@ -1,11 +1,9 @@
 import { Accordion as AccordionPrimitive } from "@ark-ui/react/accordion";
 import { CaretDownIcon } from "@phosphor-icons/react";
-import {
-  accordionItemContentVariants,
-  accordionItemTriggerVariants,
-  accordionItemVariants,
-} from "@pisagor/styles/accordion";
+import { accordionItemVariants } from "@pisagor/styles/accordion";
 import type { ComponentProps, ReactNode } from "react";
+import { useMemo } from "react";
+import { AccordionItemContext, useAccordionItem } from "./accordion.context";
 
 // #region Types
 interface AccordionPresetItem {
@@ -48,15 +46,23 @@ export function AccordionRoot({
   );
 }
 
-export function AccordionItem({ className, ...rest }: AccordionItemProps) {
-  return <AccordionPrimitive.Item {...rest} className={accordionItemVariants({ className })} />;
+export function AccordionItem({ className, children, ...rest }: AccordionItemProps) {
+  const slots = useMemo(() => accordionItemVariants(), []);
+
+  return (
+    <AccordionItemContext value={{ slots }}>
+      <AccordionPrimitive.Item {...rest} className={slots.base({ className })}>
+        {children}
+      </AccordionPrimitive.Item>
+    </AccordionItemContext>
+  );
 }
 
 export function AccordionItemTrigger({ className, children, ...rest }: AccordionItemTriggerProps) {
-  const slots = accordionItemTriggerVariants();
+  const { slots } = useAccordionItem();
 
   return (
-    <AccordionPrimitive.ItemTrigger {...rest} className={slots.base({ className })}>
+    <AccordionPrimitive.ItemTrigger {...rest} className={slots.trigger({ className })}>
       {children}
 
       <AccordionPrimitive.ItemIndicator>
@@ -67,10 +73,10 @@ export function AccordionItemTrigger({ className, children, ...rest }: Accordion
 }
 
 export function AccordionItemContent({ className, children, ...rest }: AccordionItemContentProps) {
-  const slots = accordionItemContentVariants();
+  const { slots } = useAccordionItem();
 
   return (
-    <AccordionPrimitive.ItemContent {...rest} className={slots.base({ className })}>
+    <AccordionPrimitive.ItemContent {...rest} className={slots.content({ className })}>
       <div className={slots.body()}>{children}</div>
     </AccordionPrimitive.ItemContent>
   );

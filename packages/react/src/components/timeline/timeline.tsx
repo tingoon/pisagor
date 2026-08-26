@@ -1,14 +1,9 @@
 import { ark } from "@ark-ui/react/factory";
-import {
-  timelineContentVariants,
-  timelineDescriptionVariants,
-  timelineIndicatorVariants,
-  timelineItemVariants,
-  timelineSeparatorVariants,
-  timelineTitleVariants,
-  timelineVariants,
-} from "@pisagor/styles/ui/timeline";
+import { timelineItemVariants, timelineVariants } from "@pisagor/styles/ui/timeline";
 import type { ComponentProps, ReactNode } from "react";
+import { useMemo } from "react";
+import { TimelineItemContext, useTimelineItem } from "./timeline.context";
+
 // #region Types
 export interface TimelineRootProps extends ComponentProps<typeof ark.ol> {
   /**
@@ -57,22 +52,30 @@ export function TimelineRoot({ orientation = "vertical", className, ...rest }: T
   );
 }
 
-export function TimelineItem({ className, ...rest }: TimelineItemProps) {
+export function TimelineItem({ className, children, ...rest }: TimelineItemProps) {
+  const slots = useMemo(() => timelineItemVariants(), []);
+
   return (
-    <ark.li
-      {...rest}
-      className={timelineItemVariants({ className })}
-      data-part="item"
-      data-scope="timeline"
-    />
+    <TimelineItemContext value={{ slots }}>
+      <ark.li
+        {...rest}
+        className={slots.base({ className })}
+        data-part="item"
+        data-scope="timeline"
+      >
+        {children}
+      </ark.li>
+    </TimelineItemContext>
   );
 }
 
 export function TimelineIndicator({ className, children, ...rest }: TimelineIndicatorProps) {
+  const { slots } = useTimelineItem();
+
   return (
     <ark.div
       {...rest}
-      className={timelineIndicatorVariants({ className })}
+      className={slots.indicator({ className })}
       data-part="indicator"
       data-scope="timeline"
     >
@@ -82,11 +85,13 @@ export function TimelineIndicator({ className, children, ...rest }: TimelineIndi
 }
 
 export function TimelineSeparator({ className, ...rest }: TimelineSeparatorProps) {
+  const { slots } = useTimelineItem();
+
   return (
     <ark.div
       {...rest}
       aria-hidden="true"
-      className={timelineSeparatorVariants({ className })}
+      className={slots.separator({ className })}
       data-part="separator"
       data-scope="timeline"
     />
@@ -94,10 +99,12 @@ export function TimelineSeparator({ className, ...rest }: TimelineSeparatorProps
 }
 
 export function TimelineContent({ className, ...rest }: TimelineContentProps) {
+  const { slots } = useTimelineItem();
+
   return (
     <ark.div
       {...rest}
-      className={timelineContentVariants({ className })}
+      className={slots.content({ className })}
       data-part="content"
       data-scope="timeline"
     />
@@ -105,10 +112,12 @@ export function TimelineContent({ className, ...rest }: TimelineContentProps) {
 }
 
 export function TimelineTitle({ className, ...rest }: TimelineTitleProps) {
+  const { slots } = useTimelineItem();
+
   return (
     <ark.div
       {...rest}
-      className={timelineTitleVariants({ className })}
+      className={slots.title({ className })}
       data-part="title"
       data-scope="timeline"
     />
@@ -116,10 +125,12 @@ export function TimelineTitle({ className, ...rest }: TimelineTitleProps) {
 }
 
 export function TimelineDescription({ className, ...rest }: TimelineDescriptionProps) {
+  const { slots } = useTimelineItem();
+
   return (
     <ark.div
       {...rest}
-      className={timelineDescriptionVariants({ className })}
+      className={slots.description({ className })}
       data-part="description"
       data-scope="timeline"
     />

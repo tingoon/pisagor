@@ -1,6 +1,7 @@
 import { ToggleGroup as ToggleGroupPrimitive } from "@ark-ui/react/toggle-group";
-import { toggleGroupInlineVariants, toggleGroupVariants } from "@pisagor/styles/ui/toggle-group";
+import { toggleGroupVariants } from "@pisagor/styles/ui/toggle-group";
 import type { ComponentProps, ReactNode } from "react";
+import { useMemo } from "react";
 import { Toggle } from "../toggle";
 import {
   ToggleGroupContext,
@@ -19,7 +20,7 @@ export type ToggleGroupRootProps = Omit<
   ComponentProps<typeof ToggleGroupPrimitive.Root>,
   "onValueChange"
 > &
-  ToggleGroupContextProps & {
+  Omit<ToggleGroupContextProps, "slots"> & {
     onValueChange?: (value: string | string[]) => void;
   };
 
@@ -43,11 +44,13 @@ export function ToggleGroupRoot({
   onValueChange,
   ...rest
 }: ToggleGroupRootProps) {
+  const slots = useMemo(() => toggleGroupVariants({ orientation }), [orientation]);
+
   return (
-    <ToggleGroupContext value={{ size, spacing, variant }}>
+    <ToggleGroupContext value={{ size, slots, spacing, variant }}>
       <ToggleGroupPrimitive.Root
         {...rest}
-        className={toggleGroupVariants({ className, orientation })}
+        className={slots.base({ className })}
         multiple={multiple}
         onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
         orientation={orientation}
@@ -63,13 +66,13 @@ export function ToggleGroupRoot({
 }
 
 export function ToggleGroupItem({ value, className, ...rest }: ToggleGroupItemProps) {
-  const { variant, size, spacing } = useToggleGroup();
+  const { slots, variant, size, spacing } = useToggleGroup();
 
   return (
     <ToggleGroupPrimitive.Item asChild value={value}>
       <Toggle
         {...rest}
-        className={toggleGroupInlineVariants({ className })}
+        className={slots.item({ className })}
         data-spacing={spacing}
         data-variant={variant}
         size={size}

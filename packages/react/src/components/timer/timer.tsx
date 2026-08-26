@@ -1,9 +1,9 @@
 import { ark } from "@ark-ui/react/factory";
 import { Timer as TimerPrimitive, useTimerContext } from "@ark-ui/react/timer";
-import { timerVariants } from "@pisagor/styles/ui/timer";
+import { timerItemGroupVariants, timerVariants } from "@pisagor/styles/ui/timer";
 import type { ComponentProps } from "react";
 import { Fragment, useMemo } from "react";
-import { TimerContext, useTimer } from "./timer.context";
+import { TimerContext, TimerItemGroupContext, useTimer, useTimerItemGroup } from "./timer.context";
 
 // #region Types
 type TimerUnit = "hours" | "minutes" | "seconds";
@@ -86,34 +86,39 @@ export function TimerArea({ className, ...rest }: TimerAreaProps) {
 export function TimerItemGroup({
   orientation = "vertical",
   className,
+  children,
   ...rest
 }: TimerItemGroupProps) {
-  const { slots } = useTimer();
+  const slots = useMemo(() => timerItemGroupVariants(), []);
 
   return (
-    <ark.div
-      {...rest}
-      className={slots.itemGroup({ className })}
-      data-orientation={orientation}
-      data-part="item-group"
-      data-scope="timer"
-    />
+    <TimerItemGroupContext value={{ slots }}>
+      <ark.div
+        {...rest}
+        className={slots.base({ className })}
+        data-orientation={orientation}
+        data-part="item-group"
+        data-scope="timer"
+      >
+        {children}
+      </ark.div>
+    </TimerItemGroupContext>
   );
 }
 
 export function TimerItem({ className, ...rest }: TimerItemProps) {
-  const { slots } = useTimer();
+  const { slots } = useTimerItemGroup();
 
   return <TimerPrimitive.Item {...rest} className={slots.item({ className })} />;
 }
 
 export function TimerItemLabel({ className, ...rest }: TimerItemLabelProps) {
-  const { slots } = useTimer();
+  const { slots } = useTimerItemGroup();
 
   return (
     <ark.div
       {...rest}
-      className={slots.itemLabel({ className })}
+      className={slots.label({ className })}
       data-part="item-label"
       data-scope="timer"
     />

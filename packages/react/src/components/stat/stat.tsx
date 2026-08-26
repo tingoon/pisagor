@@ -6,24 +6,23 @@ import {
   statTrendVariants,
   statVariants,
 } from "@pisagor/styles/ui/stat";
-import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
+import { useMemo } from "react";
 import type { VariantClassNames } from "../../internal/types";
+import { StatContext, useStat } from "./stat.context";
 
 // #region Types
 type StatLabelProps = ComponentProps<typeof ark.div>;
 
 type StatValueProps = ComponentProps<typeof ark.div>;
 
+type StatDescriptionProps = ComponentProps<typeof ark.p>;
+
 type StatTrendProps = ComponentProps<typeof ark.div> & StatTrendVariantProps;
 
 type StatClassNames = VariantClassNames<StatSlots>;
 
-type StatRootProps = ComponentProps<typeof ark.div> &
-  StatVariantProps & {
-    /** Slot class names */
-    classNames?: StatClassNames;
-  };
+type StatRootProps = ComponentProps<typeof ark.div> & StatVariantProps;
 
 export interface StatProps extends Omit<StatRootProps, "children"> {
   /** Metric label. */
@@ -34,70 +33,61 @@ export interface StatProps extends Omit<StatRootProps, "children"> {
   description?: ReactNode;
   /** Trend indicator content. */
   trend?: ReactNode;
+  /** Slot class names */
+  classNames?: StatClassNames;
   /** Extra props forwarded to the label element */
   labelProps?: Omit<StatLabelProps, "children" | "className">;
   /** Extra props forwarded to the value element */
   valueProps?: Omit<StatValueProps, "children" | "className">;
   /** Extra props forwarded to the description element */
-  descriptionProps?: Omit<StatPartProps, "children" | "className">;
+  descriptionProps?: Omit<StatDescriptionProps, "children" | "className">;
   /** Extra props forwarded to the trend element */
   trendProps?: Omit<StatTrendProps, "children" | "className">;
-}
-
-interface StatPartProps extends ComponentProps<typeof ark.div> {
-  /** Slot class names */
-  classNames?: StatClassNames;
 }
 // #endregion
 
 // #region Parts
-export function StatRoot({ variant, className, classNames, ...rest }: StatRootProps) {
-  const slots = statVariants({ variant });
+export function StatRoot({ children, className, variant, ...rest }: StatRootProps) {
+  const slots = useMemo(() => statVariants(), []);
 
   return (
-    <ark.div
-      {...rest}
-      className={slots.base({ className: className })}
-      data-part="root"
-      data-scope="stat"
-      data-variant={variant}
-    />
+    <StatContext value={{ slots }}>
+      <ark.div
+        {...rest}
+        className={slots.base({ className, variant })}
+        data-part="root"
+        data-scope="stat"
+        data-variant={variant}
+      >
+        {children}
+      </ark.div>
+    </StatContext>
   );
 }
 
-export function StatLabel({ className, classNames, ...rest }: StatPartProps) {
-  const slots = statVariants();
+export function StatLabel({ className, ...rest }: StatLabelProps) {
+  const { slots } = useStat();
 
   return (
-    <ark.div
-      {...rest}
-      className={slots.label({ className: cn(className, classNames?.label) })}
-      data-part="label"
-      data-scope="stat"
-    />
+    <ark.div {...rest} className={slots.label({ className })} data-part="label" data-scope="stat" />
   );
 }
 
-export function StatValue({ className, classNames, ...rest }: StatPartProps) {
-  const slots = statVariants();
+export function StatValue({ className, ...rest }: StatValueProps) {
+  const { slots } = useStat();
 
   return (
-    <ark.div
-      {...rest}
-      className={slots.value({ className: cn(className, classNames?.value) })}
-      data-part="value"
-      data-scope="stat"
-    />
+    <ark.div {...rest} className={slots.value({ className })} data-part="value" data-scope="stat" />
   );
 }
 
-export function StatDescription({ className, classNames, ...rest }: StatPartProps) {
-  const slots = statVariants();
+export function StatDescription({ className, ...rest }: StatDescriptionProps) {
+  const { slots } = useStat();
 
   return (
     <ark.p
       {...rest}
-      className={slots.description({ className: cn(className, classNames?.description) })}
+      className={slots.description({ className })}
       data-part="description"
       data-scope="stat"
     />
@@ -133,13 +123,23 @@ export function StatShorthand({
   ...rest
 }: StatProps) {
   return (
-    <StatRoot {...rest} className={className} classNames={classNames} variant={variant}>
-      {label !== undefined && <StatLabel {...labelProps}>{label}</StatLabel>}
+    <StatRoot {...rest} className={className} variant={variant}>
+      {label !== undefined && (
+        <StatLabel {...labelProps} className={classNames?.label}>
+          {label}
+        </StatLabel>
+      )}
 
-      {value !== undefined && <StatValue {...valueProps}>{value}</StatValue>}
+      {value !== undefined && (
+        <StatValue {...valueProps} className={classNames?.value}>
+          {value}
+        </StatValue>
+      )}
 
       {description !== undefined && (
-        <StatDescription {...descriptionProps}>{description}</StatDescription>
+        <StatDescription {...descriptionProps} className={classNames?.description}>
+          {description}
+        </StatDescription>
       )}
 
       {trend !== undefined && <StatTrend {...trendProps}>{trend}</StatTrend>}

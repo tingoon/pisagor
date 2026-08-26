@@ -1,9 +1,17 @@
 import { ark } from "@ark-ui/react/factory";
 import { Tabs as TabsPrimitive } from "@ark-ui/react/tabs";
-import { bottomNavigationVariants } from "@pisagor/styles/ui/bottom-navigation";
+import {
+  bottomNavigationItemVariants,
+  bottomNavigationVariants,
+} from "@pisagor/styles/ui/bottom-navigation";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
-import { BottomNavigationContext, useBottomNavigation } from "./bottom-navigation.context";
+import {
+  BottomNavigationContext,
+  BottomNavigationItemContext,
+  useBottomNavigation,
+  useBottomNavigationItem,
+} from "./bottom-navigation.context";
 
 // #region Types
 export type BottomNavigationRootProps = ComponentProps<typeof TabsPrimitive.Root>;
@@ -36,20 +44,26 @@ export function BottomNavigationList({ className, ...rest }: BottomNavigationLis
   return <TabsPrimitive.List {...rest} className={slots.list({ className })} />;
 }
 
-export function BottomNavigationItem({ className, ...rest }: BottomNavigationItemProps) {
-  const { slots } = useBottomNavigation();
+export function BottomNavigationItem({ className, children, ...rest }: BottomNavigationItemProps) {
+  const slots = useMemo(() => bottomNavigationItemVariants(), []);
 
-  return <TabsPrimitive.Trigger {...rest} className={slots.item({ className })} />;
+  return (
+    <BottomNavigationItemContext value={{ slots }}>
+      <TabsPrimitive.Trigger {...rest} className={slots.base({ className })}>
+        {children}
+      </TabsPrimitive.Trigger>
+    </BottomNavigationItemContext>
+  );
 }
 
 export function BottomNavigationItemIcon({ className, ...rest }: BottomNavigationItemIconProps) {
-  const { slots } = useBottomNavigation();
+  const { slots } = useBottomNavigationItem();
 
   return (
     <ark.span
       {...rest}
       aria-hidden
-      className={slots.itemIcon({ className })}
+      className={slots.icon({ className })}
       data-part="item-icon"
       data-scope="bottom-navigation"
     />
@@ -57,12 +71,12 @@ export function BottomNavigationItemIcon({ className, ...rest }: BottomNavigatio
 }
 
 export function BottomNavigationItemLabel({ className, ...rest }: BottomNavigationItemLabelProps) {
-  const { slots } = useBottomNavigation();
+  const { slots } = useBottomNavigationItem();
 
   return (
     <ark.span
       {...rest}
-      className={slots.itemLabel({ className })}
+      className={slots.label({ className })}
       data-part="item-label"
       data-scope="bottom-navigation"
     />

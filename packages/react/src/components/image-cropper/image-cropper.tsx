@@ -1,14 +1,9 @@
 import { ImageCropper as ImageCropperPrimitive } from "@ark-ui/react/image-cropper";
-import {
-  imageCropperGridVariants,
-  imageCropperHandleVariants,
-  imageCropperImageVariants,
-  imageCropperSelectionVariants,
-  imageCropperVariants,
-  imageCropperViewportVariants,
-} from "@pisagor/styles/ui/image-cropper";
-import { cn } from "@pisagor/utils";
+import { imageCropperVariants } from "@pisagor/styles/ui/image-cropper";
 import type { ComponentProps } from "react";
+import { useMemo } from "react";
+import { ImageCropperContext, useImageCropper } from "./image-cropper.context";
+
 // #region Types
 export type ImageCropperRootProps = Omit<
   ComponentProps<typeof ImageCropperPrimitive.Root>,
@@ -53,29 +48,34 @@ export function ImageCropperRoot({
   cropShape,
   ...rest
 }: ImageCropperRootProps) {
+  const slots = useMemo(() => imageCropperVariants(), []);
+
   return (
-    <ImageCropperPrimitive.Root
-      className={cn(imageCropperVariants(), className, { ...rest })}
-      cropShape={cropShape}
-    >
-      <ImageCropperPrimitive.Viewport className={imageCropperViewportVariants()}>
-        {src ? (
-          <>
-            <ImageCropperImage alt={alt} src={src} />
-            <ImageCropperSelection />
-          </>
-        ) : (
-          children
-        )}
-      </ImageCropperPrimitive.Viewport>
-    </ImageCropperPrimitive.Root>
+    <ImageCropperContext value={{ slots }}>
+      <ImageCropperPrimitive.Root
+        {...rest}
+        className={slots.base({ className })}
+        cropShape={cropShape}
+      >
+        <ImageCropperPrimitive.Viewport className={slots.viewport()}>
+          {src ? (
+            <>
+              <ImageCropperImage alt={alt} src={src} />
+              <ImageCropperSelection />
+            </>
+          ) : (
+            children
+          )}
+        </ImageCropperPrimitive.Viewport>
+      </ImageCropperPrimitive.Root>
+    </ImageCropperContext>
   );
 }
 
 export function ImageCropperImage({ className, ...rest }: ImageCropperImageProps) {
-  return (
-    <ImageCropperPrimitive.Image {...rest} className={imageCropperImageVariants({ className })} />
-  );
+  const { slots } = useImageCropper();
+
+  return <ImageCropperPrimitive.Image {...rest} className={slots.image({ className })} />;
 }
 
 export function ImageCropperSelection({
@@ -84,11 +84,10 @@ export function ImageCropperSelection({
   children,
   ...rest
 }: ImageCropperSelectionProps) {
+  const { slots } = useImageCropper();
+
   return (
-    <ImageCropperPrimitive.Selection
-      {...rest}
-      className={imageCropperSelectionVariants({ className })}
-    >
+    <ImageCropperPrimitive.Selection {...rest} className={slots.selection({ className })}>
       {children}
 
       {(axis === "horizontal" || axis === "both") && <ImageCropperGrid axis="horizontal" />}
@@ -107,19 +106,19 @@ export function ImageCropperSelection({
 }
 
 export function ImageCropperHandle({ className, ...rest }: ImageCropperHandleProps) {
-  const slots = imageCropperHandleVariants();
+  const { slots } = useImageCropper();
 
   return (
-    <ImageCropperPrimitive.Handle {...rest} className={slots.base({ className })}>
-      <span aria-hidden className={slots.grip()} />
+    <ImageCropperPrimitive.Handle {...rest} className={slots.handle({ className })}>
+      <span aria-hidden className={slots.handleGrip()} />
     </ImageCropperPrimitive.Handle>
   );
 }
 
 export function ImageCropperGrid({ className, ...rest }: ImageCropperGridProps) {
-  return (
-    <ImageCropperPrimitive.Grid {...rest} className={imageCropperGridVariants({ className })} />
-  );
+  const { slots } = useImageCropper();
+
+  return <ImageCropperPrimitive.Grid {...rest} className={slots.grid({ className })} />;
 }
 // #endregion
 

@@ -1,12 +1,8 @@
 import { Splitter as SplitterPrimitive } from "@ark-ui/react/splitter";
 import { DotsSixVerticalIcon } from "@phosphor-icons/react";
-import {
-  resizableEdgeHandleVariants,
-  resizableResizeTriggerIndicatorVariants,
-  resizableResizeTriggerVariants,
-  resizableVariants,
-} from "@pisagor/styles/ui/resizable";
-import { type ComponentProps, useCallback, useRef } from "react";
+import { resizableEdgeHandleVariants, resizableVariants } from "@pisagor/styles/ui/resizable";
+import { type ComponentProps, useCallback, useMemo, useRef } from "react";
+import { ResizableSlotsContext, useResizable } from "./resizable.context";
 
 export type {
   SplitterExpandCollapseDetails as ExpandCollapseDetails,
@@ -21,10 +17,6 @@ export {
   useSplitter,
   useSplitterContext,
 } from "@ark-ui/react/splitter";
-
-// #region Variants
-const resizeTrigger = resizableResizeTriggerVariants();
-// #endregion
 
 // #region Types
 export type ResizableHandlePosition = "bottom" | "center" | "top";
@@ -157,8 +149,16 @@ export function ResizableEdgeHandle({
   );
 }
 
-export function ResizableRoot({ className, ...rest }: ResizableRootProps) {
-  return <SplitterPrimitive.Root {...rest} className={resizableVariants({ className })} />;
+export function ResizableRoot({ className, children, ...rest }: ResizableRootProps) {
+  const slots = useMemo(() => resizableVariants(), []);
+
+  return (
+    <ResizableSlotsContext value={{ slots }}>
+      <SplitterPrimitive.Root {...rest} className={slots.base({ className })}>
+        {children}
+      </SplitterPrimitive.Root>
+    </ResizableSlotsContext>
+  );
 }
 
 export function ResizablePanel(props: ResizablePanelProps) {
@@ -169,10 +169,12 @@ export function ResizableResizeTriggerIndicator({
   className,
   ...rest
 }: ResizableResizeTriggerIndicatorProps) {
+  const { slots } = useResizable();
+
   return (
     <SplitterPrimitive.ResizeTriggerIndicator
       {...rest}
-      className={resizableResizeTriggerIndicatorVariants({ className })}
+      className={slots.resizeTriggerIndicator({ className })}
     />
   );
 }
@@ -183,15 +185,17 @@ export function ResizableResizeTrigger({
   children,
   ...rest
 }: ResizableResizeTriggerProps) {
+  const { slots } = useResizable();
+
   return (
     <SplitterPrimitive.ResizeTrigger
       {...rest}
       aria-label="Resize"
-      className={resizeTrigger.base({ className })}
+      className={slots.resizeTrigger({ className })}
     >
       {withHandle ? (
-        <div className={resizeTrigger.handle()}>
-          <DotsSixVerticalIcon className={resizeTrigger.icon()} />
+        <div className={slots.resizeTriggerHandle()}>
+          <DotsSixVerticalIcon className={slots.resizeTriggerIcon()} />
         </div>
       ) : (
         (children ?? <ResizableResizeTriggerIndicator />)
@@ -204,8 +208,20 @@ export function ResizableContext(props: ResizableContextProps) {
   return <SplitterPrimitive.Context {...props} />;
 }
 
-export function ResizableRootProvider(props: ResizableRootProviderProps) {
-  return <SplitterPrimitive.RootProvider {...props} />;
+export function ResizableRootProvider({
+  className,
+  children,
+  ...rest
+}: ResizableRootProviderProps) {
+  const slots = useMemo(() => resizableVariants(), []);
+
+  return (
+    <ResizableSlotsContext value={{ slots }}>
+      <SplitterPrimitive.RootProvider {...rest} className={slots.base({ className })}>
+        {children}
+      </SplitterPrimitive.RootProvider>
+    </ResizableSlotsContext>
+  );
 }
 // #endregion
 

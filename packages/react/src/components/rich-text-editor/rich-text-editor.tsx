@@ -6,12 +6,7 @@ import {
   TextItalicIcon,
   TextStrikethroughIcon,
 } from "@phosphor-icons/react";
-import {
-  richTextEditorContentVariants,
-  richTextEditorInlineVariants,
-  richTextEditorToolbarVariants,
-  richTextEditorVariants,
-} from "@pisagor/styles/ui/rich-text-editor";
+import { richTextEditorVariants } from "@pisagor/styles/ui/rich-text-editor";
 import { cn } from "@pisagor/utils";
 import { EditorContent, useEditor, useEditorState } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
@@ -25,7 +20,7 @@ import {
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
 import { Toggle } from "../toggle";
 import { VisuallyHidden } from "../visually-hidden";
-import { RichTextEditorContext, useRichTextEditor } from "./rich-text-editor.context";
+import { RichTextEditorContext, useRichTextEditorState } from "./rich-text-editor.context";
 
 // #region Types
 export interface RichTextEditorRootProps
@@ -97,6 +92,7 @@ export function RichTextEditorRoot({
   const shellArgs = shellVariantArgs(resolved);
   const controlProps = formControlShellProps(resolved);
   const resolvedAriaLabel = ariaLabel ?? (id ? undefined : "Rich text editor");
+  const slots = useMemo(() => richTextEditorVariants(), []);
 
   const editor = useEditor({
     content: value ?? defaultValue ?? "<p></p>",
@@ -149,7 +145,7 @@ export function RichTextEditorRoot({
     });
   }, [editor, id, invalid]);
 
-  const contextValue = useMemo(() => ({ editor }), [editor]);
+  const contextValue = useMemo(() => ({ editor, slots }), [editor, slots]);
 
   return (
     <RichTextEditorContext value={contextValue}>
@@ -162,9 +158,8 @@ export function RichTextEditorRoot({
         aria-readonly={readOnly || undefined}
         className={cn(
           formControlShellVariants({ ...shellArgs }),
-          richTextEditorVariants(),
+          slots.base({ className }),
           disabled && "pointer-events-none opacity-64",
-          className,
         )}
         data-disabled={disabled ? "true" : undefined}
         data-invalid={invalid ? "true" : undefined}
@@ -195,7 +190,7 @@ export function RichTextEditorToolbar({
   children,
   ...rest
 }: RichTextEditorToolbarProps) {
-  const editor = useRichTextEditor();
+  const { editor, slots } = useRichTextEditorState();
   const activeMarks = useEditorState({
     editor,
     selector: ({ editor: current }) => {
@@ -226,12 +221,12 @@ export function RichTextEditorToolbar({
   return (
     <ark.div
       {...rest}
-      className={richTextEditorToolbarVariants({ className })}
+      className={slots.toolbar({ className })}
       data-part="toolbar"
       data-scope="rich-text-editor"
     >
       {children ?? (
-        <div className={richTextEditorInlineVariants()}>
+        <div className={slots.inline()}>
           <Toggle
             aria-label="Bold"
             onPressedChange={() => editor.chain().focus().toggleBold().run()}
@@ -289,12 +284,12 @@ export function RichTextEditorToolbar({
 }
 
 export function RichTextEditorContent({ className, ...rest }: RichTextEditorContentProps) {
-  const editor = useRichTextEditor();
+  const { editor, slots } = useRichTextEditorState();
 
   return (
     <ark.div
       {...rest}
-      className={richTextEditorContentVariants({ className })}
+      className={slots.content({ className })}
       data-part="content"
       data-scope="rich-text-editor"
     >

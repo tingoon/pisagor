@@ -1,6 +1,9 @@
 import { ark } from "@ark-ui/react/factory";
-import { linkBoxOverlayVariants, linkBoxVariants } from "@pisagor/styles/ui/link-box";
+import { linkBoxVariants } from "@pisagor/styles/ui/link-box";
 import type { ComponentProps } from "react";
+import { useMemo } from "react";
+import { LinkBoxContext, useLinkBox } from "./link-box.context";
+
 // #region Types
 export interface LinkBoxRootProps extends ComponentProps<typeof ark.div> {}
 
@@ -8,22 +11,30 @@ export interface LinkOverlayLinkProps extends ComponentProps<typeof ark.a> {}
 // #endregion
 
 // #region Parts
-export function LinkBoxRoot({ className, ...rest }: LinkBoxRootProps) {
+export function LinkBoxRoot({ className, children, ...rest }: LinkBoxRootProps) {
+  const slots = useMemo(() => linkBoxVariants(), []);
+
   return (
-    <ark.div
-      {...rest}
-      className={linkBoxVariants({ className })}
-      data-part="root"
-      data-scope="link-box"
-    />
+    <LinkBoxContext value={{ slots }}>
+      <ark.div
+        {...rest}
+        className={slots.base({ className })}
+        data-part="root"
+        data-scope="link-box"
+      >
+        {children}
+      </ark.div>
+    </LinkBoxContext>
   );
 }
 
 export function LinkOverlayLink({ className, ...rest }: LinkOverlayLinkProps) {
+  const { slots } = useLinkBox();
+
   return (
     <ark.a
       {...rest}
-      className={linkBoxOverlayVariants({ className })}
+      className={slots.overlay({ className })}
       data-part="overlay"
       data-scope="link-box"
     />

@@ -1,12 +1,10 @@
 import { Collapsible as CollapsiblePrimitive } from "@ark-ui/react/collapsible";
 import { CaretDownIcon } from "@phosphor-icons/react";
-import {
-  collapsibleContentVariants,
-  collapsibleIndicatorVariants,
-  collapsibleTriggerVariants,
-  collapsibleVariants,
-} from "@pisagor/styles/ui/collapsible";
+import { collapsibleVariants } from "@pisagor/styles/ui/collapsible";
 import type { ComponentProps } from "react";
+import { useMemo } from "react";
+import { CollapsibleContext, useCollapsible } from "./collapsible.context";
+
 // #region Types
 export interface CollapsibleRootProps extends ComponentProps<typeof CollapsiblePrimitive.Root> {}
 
@@ -23,39 +21,48 @@ export function CollapsibleRoot({
   lazyMount = true,
   unmountOnExit = true,
   className,
+  children,
   ...rest
 }: CollapsibleRootProps) {
+  const slots = useMemo(() => collapsibleVariants(), []);
+
   return (
-    <CollapsiblePrimitive.Root
-      {...rest}
-      className={collapsibleVariants({ className })}
-      collapsedHeight={collapsedHeight}
-      data-partial-collapse={collapsedHeight ? "" : undefined}
-      lazyMount={collapsedHeight ? false : lazyMount}
-      unmountOnExit={collapsedHeight ? false : unmountOnExit}
-    />
+    <CollapsibleContext value={{ slots }}>
+      <CollapsiblePrimitive.Root
+        {...rest}
+        className={slots.base({ className })}
+        collapsedHeight={collapsedHeight}
+        data-partial-collapse={collapsedHeight ? "" : undefined}
+        lazyMount={collapsedHeight ? false : lazyMount}
+        unmountOnExit={collapsedHeight ? false : unmountOnExit}
+      >
+        {children}
+      </CollapsiblePrimitive.Root>
+    </CollapsibleContext>
   );
 }
 
 export function CollapsibleTrigger({ className, ...rest }: CollapsibleTriggerProps) {
-  return (
-    <CollapsiblePrimitive.Trigger {...rest} className={collapsibleTriggerVariants({ className })} />
-  );
+  const { slots } = useCollapsible();
+
+  return <CollapsiblePrimitive.Trigger {...rest} className={slots.trigger({ className })} />;
 }
 
 export function CollapsibleContent({ className, children, ...rest }: CollapsibleContentProps) {
+  const { slots } = useCollapsible();
+
   return (
-    <CollapsiblePrimitive.Content {...rest} className={collapsibleContentVariants()}>
+    <CollapsiblePrimitive.Content {...rest} className={slots.content()}>
       <div className={className}>{children}</div>
     </CollapsiblePrimitive.Content>
   );
 }
 
 export function CollapsibleIndicator({ className, ...rest }: CollapsibleIndicatorProps) {
-  const slots = collapsibleIndicatorVariants();
+  const { slots } = useCollapsible();
 
   return (
-    <CollapsiblePrimitive.Indicator {...rest} className={slots.base({ className })}>
+    <CollapsiblePrimitive.Indicator {...rest} className={slots.indicator({ className })}>
       <CaretDownIcon className={slots.icon()} />
     </CollapsiblePrimitive.Indicator>
   );

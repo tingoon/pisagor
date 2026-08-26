@@ -67,17 +67,18 @@ export function CircularSliderRoot({
   hiddenInputProps,
   ...rest
 }: CircularSliderProps) {
-  const slots = circularSliderVariants();
+  const slots = useMemo(() => circularSliderVariants(), []);
 
   const values = useMemo(
     () => ({
       ringCircumference: 2 * Math.PI * (size / 2 - thickness / 2),
       ringRadius: size / 2 - thickness / 2,
       size,
+      slots,
       thickness,
       thumbSize: Math.max(thickness + 8, 16),
     }),
-    [size, thickness],
+    [size, slots, thickness],
   );
 
   return (
@@ -110,7 +111,7 @@ export function CircularSliderControl({
   step = 1,
   ...rest
 }: CircularSliderControlProps) {
-  const slots = circularSliderVariants();
+  const { slots } = _useCircularSlider();
 
   const markerValues = useMemo(() => {
     if (Array.isArray(markers) && markers.length > 0) {
@@ -141,8 +142,7 @@ export function CircularSliderControl({
 
 function CircularSliderProgressRing() {
   const api = useAngleSliderContext();
-  const { size, thickness, ringRadius, ringCircumference } = _useCircularSlider();
-  const slots = circularSliderVariants();
+  const { size, thickness, ringRadius, ringCircumference, slots } = _useCircularSlider();
 
   const percent = api.value / 360;
   const dashLength = percent * ringCircumference;
@@ -179,8 +179,7 @@ function CircularSliderProgressRing() {
 }
 
 export function CircularSliderThumb({ className, ...rest }: CircularSliderThumbProps) {
-  const { thumbSize, ringRadius } = _useCircularSlider();
-  const slots = circularSliderVariants();
+  const { thumbSize, ringRadius, slots } = _useCircularSlider();
 
   const halfThumb = thumbSize / 2;
 
@@ -210,7 +209,7 @@ export function CircularSliderValueText({
   ...rest
 }: CircularSliderValueTextProps) {
   const { value } = useAngleSliderContext();
-  const slots = circularSliderVariants();
+  const { slots } = _useCircularSlider();
 
   return (
     <Field.Label asChild>
@@ -222,7 +221,7 @@ export function CircularSliderValueText({
 }
 
 export function CircularSliderMarkerGroup({ className, ...rest }: CircularSliderMarkerGroupProps) {
-  const slots = circularSliderVariants();
+  const { slots } = _useCircularSlider();
 
   return (
     <AngleSliderPrimitive.MarkerGroup {...rest} className={slots.markerGroup({ className })} />
@@ -230,8 +229,7 @@ export function CircularSliderMarkerGroup({ className, ...rest }: CircularSlider
 }
 
 export function CircularSliderMarker({ className, style, ...rest }: CircularSliderMarkerProps) {
-  const { size, thickness } = _useCircularSlider();
-  const slots = circularSliderVariants();
+  const { size, thickness, slots } = _useCircularSlider();
 
   const ringRadius = size / 2 - thickness / 2;
   const markerHeight = Math.max(8, Math.min(thickness * 1.1, 16));

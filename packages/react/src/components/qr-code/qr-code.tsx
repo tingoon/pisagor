@@ -1,10 +1,9 @@
 import { QrCode as QrCodePrimitive } from "@ark-ui/react/qr-code";
-import {
-  qrCodeFrameVariants,
-  qrCodeOverlayVariants,
-  qrCodeVariants,
-} from "@pisagor/styles/ui/qr-code";
+import { qrCodeVariants } from "@pisagor/styles/ui/qr-code";
 import type { ComponentProps } from "react";
+import { useMemo } from "react";
+import { QrCodeContext, useQrCode } from "./qr-code.context";
+
 // #region Types
 export type QrCodeRootProps = ComponentProps<typeof QrCodePrimitive.Root>;
 
@@ -17,25 +16,31 @@ export type QrCodeDownloadProps = ComponentProps<typeof QrCodePrimitive.Download
 
 // #region Parts
 export function QrCodeRoot({ className, children, ...rest }: QrCodeRootProps) {
+  const slots = useMemo(() => qrCodeVariants(), []);
+
   return (
-    <QrCodePrimitive.Root {...rest} className={qrCodeVariants({ className })}>
-      {children ?? <QrCodeFrame />}
-    </QrCodePrimitive.Root>
+    <QrCodeContext value={{ slots }}>
+      <QrCodePrimitive.Root {...rest} className={slots.base({ className })}>
+        {children ?? <QrCodeFrame />}
+      </QrCodePrimitive.Root>
+    </QrCodeContext>
   );
 }
 
 export function QrCodeFrame({ className, ...rest }: QrCodeFrameProps) {
-  const slots = qrCodeFrameVariants();
+  const { slots } = useQrCode();
 
   return (
-    <QrCodePrimitive.Frame {...rest} className={slots.base({ className })}>
+    <QrCodePrimitive.Frame {...rest} className={slots.frame({ className })}>
       <QrCodePrimitive.Pattern className={slots.pattern()} />
     </QrCodePrimitive.Frame>
   );
 }
 
 export function QrCodeOverlay({ className, ...rest }: QrCodeOverlayProps) {
-  return <QrCodePrimitive.Overlay {...rest} className={qrCodeOverlayVariants({ className })} />;
+  const { slots } = useQrCode();
+
+  return <QrCodePrimitive.Overlay {...rest} className={slots.overlay({ className })} />;
 }
 
 export function QrCodeDownload(props: QrCodeDownloadProps) {

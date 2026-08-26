@@ -1,14 +1,11 @@
 import { ark } from "@ark-ui/react/factory";
 import { PinInput as PinInputPrimitive } from "@ark-ui/react/pin-input";
-import {
-  inputOtpControlVariants,
-  inputOtpInlineVariants,
-  inputOtpSeparatorVariants,
-  inputOtpVariants,
-} from "@pisagor/styles/ui/input-otp";
+import { inputOtpVariants } from "@pisagor/styles/ui/input-otp";
 import type { ComponentProps } from "react";
+import { useMemo } from "react";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import { Input, type InputProps } from "../input/input";
+import { InputOTPContext, useInputOTP } from "./input-otp.context";
 
 // #region Types
 export type InputOTPRootProps = Omit<
@@ -37,38 +34,46 @@ export function InputOTPRoot({
   onValueChange,
   ...rest
 }: InputOTPProps) {
+  const slots = useMemo(() => inputOtpVariants(), []);
+
   return (
     <FormControlVariantProvider value={variant}>
-      <PinInputPrimitive.Root
-        {...rest}
-        className={inputOtpVariants()}
-        onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
-        otp={otp}
-        placeholder={placeholder ?? ""}
-      >
-        <PinInputPrimitive.Control className={inputOtpControlVariants({ className })}>
-          {children}
-        </PinInputPrimitive.Control>
+      <InputOTPContext value={{ slots }}>
+        <PinInputPrimitive.Root
+          {...rest}
+          className={slots.base()}
+          onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
+          otp={otp}
+          placeholder={placeholder ?? ""}
+        >
+          <PinInputPrimitive.Control className={slots.control({ className })}>
+            {children}
+          </PinInputPrimitive.Control>
 
-        <PinInputPrimitive.HiddenInput />
-      </PinInputPrimitive.Root>
+          <PinInputPrimitive.HiddenInput />
+        </PinInputPrimitive.Root>
+      </InputOTPContext>
     </FormControlVariantProvider>
   );
 }
 
 export function InputOTPSlot({ className, variant, ...rest }: InputOTPSlotProps) {
+  const { slots } = useInputOTP();
+
   return (
     <PinInputPrimitive.Input {...rest} asChild>
-      <Input className={inputOtpInlineVariants({ className })} variant={variant} />
+      <Input className={slots.input({ className })} variant={variant} />
     </PinInputPrimitive.Input>
   );
 }
 
 export function InputOTPSeparator({ className, ...rest }: InputOTPSeparatorProps) {
+  const { slots } = useInputOTP();
+
   return (
     <ark.hr
       {...rest}
-      className={inputOtpSeparatorVariants({ className })}
+      className={slots.separator({ className })}
       data-part="separator"
       data-scope="input-otp"
     />

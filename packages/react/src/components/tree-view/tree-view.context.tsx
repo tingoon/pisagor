@@ -1,3 +1,8 @@
+import type {
+  TreeViewBranchVariants,
+  TreeViewItemVariants,
+  TreeViewVariants,
+} from "@pisagor/styles/ui/tree-view";
 import type { JSX } from "react";
 import { createContext } from "../../utils";
 
@@ -6,6 +11,28 @@ export interface TreeViewContextProps {
   fileIcons?: Record<string, JSX.ElementType | null>;
 }
 
-export const { TreeViewContext, useTreeView } = createContext<TreeViewContextProps>()({
+interface TreeViewContextValue extends TreeViewContextProps {
+  slots: TreeViewVariants;
+}
+
+interface TreeViewBranchContextValue {
+  slots: TreeViewBranchVariants;
+}
+
+interface TreeViewItemContextValue {
+  slots: TreeViewItemVariants;
+}
+
+export const { TreeViewContext, useTreeView } = createContext<TreeViewContextValue>()({
   name: "TreeView",
+});
+
+export const { TreeViewBranchContext, useTreeViewBranch } =
+  createContext<TreeViewBranchContextValue>()({
+    name: "TreeViewBranch",
+  });
+
+export const { TreeViewItemContext, useTreeViewItem } = createContext<TreeViewItemContextValue>()({
+  name: "TreeViewItem",
+  strict: false,
 });

@@ -1,12 +1,9 @@
 import { Marquee as MarqueePrimitive } from "@ark-ui/react/marquee";
-import {
-  marqueeContentVariants,
-  marqueeEdgeVariants,
-  marqueeItemVariants,
-  marqueeVariants,
-} from "@pisagor/styles/ui/marquee";
+import { marqueeVariants } from "@pisagor/styles/ui/marquee";
 import type { ComponentProps, ReactNode } from "react";
-import { Children, isValidElement } from "react";
+import { Children, isValidElement, useMemo } from "react";
+import { MarqueeContext, useMarquee } from "./marquee.context";
+
 // #region Types
 export interface MarqueeRootProps
   extends Omit<ComponentProps<typeof MarqueePrimitive.Root>, "side"> {
@@ -45,44 +42,51 @@ export function MarqueeRoot({
   children,
   ...rest
 }: MarqueeRootProps) {
+  const slots = useMemo(() => marqueeVariants(), []);
   const side = orientation === "horizontal" ? "start" : "bottom";
 
   return (
-    <MarqueePrimitive.Root
-      {...rest}
-      className={marqueeVariants({ className })}
-      data-orientation={orientation}
-      side={side}
-      spacing={spacing}
-      speed={speed}
-    >
-      {children}
-      {showEdges && (
-        <>
-          <MarqueeEdge side={orientation === "horizontal" ? "start" : "top"} />
-          <MarqueeEdge side={orientation === "horizontal" ? "end" : "bottom"} />
-        </>
-      )}
-    </MarqueePrimitive.Root>
+    <MarqueeContext value={{ slots }}>
+      <MarqueePrimitive.Root
+        {...rest}
+        className={slots.base({ className })}
+        data-orientation={orientation}
+        side={side}
+        spacing={spacing}
+        speed={speed}
+      >
+        {children}
+        {showEdges && (
+          <>
+            <MarqueeEdge side={orientation === "horizontal" ? "start" : "top"} />
+            <MarqueeEdge side={orientation === "horizontal" ? "end" : "bottom"} />
+          </>
+        )}
+      </MarqueePrimitive.Root>
+    </MarqueeContext>
   );
 }
 
 export function MarqueeContent({ className, ...rest }: MarqueeContentProps) {
-  const slots = marqueeContentVariants();
+  const { slots } = useMarquee();
 
   return (
     <MarqueePrimitive.Viewport className={slots.viewport()}>
-      <MarqueePrimitive.Content {...rest} className={slots.base({ className })} />
+      <MarqueePrimitive.Content {...rest} className={slots.content({ className })} />
     </MarqueePrimitive.Viewport>
   );
 }
 
 export function MarqueeItem({ className, ...rest }: MarqueeItemProps) {
-  return <MarqueePrimitive.Item {...rest} className={marqueeItemVariants({ className })} />;
+  const { slots } = useMarquee();
+
+  return <MarqueePrimitive.Item {...rest} className={slots.item({ className })} />;
 }
 
 export function MarqueeEdge({ className, ...rest }: MarqueeEdgeProps) {
-  return <MarqueePrimitive.Edge {...rest} className={marqueeEdgeVariants({ className })} />;
+  const { slots } = useMarquee();
+
+  return <MarqueePrimitive.Edge {...rest} className={slots.edge({ className })} />;
 }
 // #endregion
 

@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { skipNavContentVariants, skipNavLinkVariants } from "@pisagor/styles/ui/skip-nav";
+import { skipNavVariants } from "@pisagor/styles/ui/skip-nav";
 import type { ComponentProps } from "react";
 // #region Types
 export interface SkipNavLinkProps extends ComponentProps<typeof ark.a> {
@@ -31,10 +31,12 @@ export interface SkipNavContentProps extends ComponentProps<typeof ark.div> {
 const SKIP_NAV_ID = "skip-nav-content";
 
 export function SkipNavLink({ id = SKIP_NAV_ID, className, children, ...rest }: SkipNavLinkProps) {
+  const slots = skipNavVariants();
+
   return (
     <ark.a
       {...rest}
-      className={skipNavLinkVariants({ className })}
+      className={slots.link({ className })}
       data-part="link"
       data-scope="skip-nav"
       href={`#${id}`}
@@ -45,10 +47,12 @@ export function SkipNavLink({ id = SKIP_NAV_ID, className, children, ...rest }: 
 }
 
 export function SkipNavContent({ id = SKIP_NAV_ID, className, ...rest }: SkipNavContentProps) {
+  const slots = skipNavVariants();
+
   return (
     <ark.div
       {...rest}
-      className={skipNavContentVariants({ className })}
+      className={slots.content({ className })}
       data-part="content"
       data-scope="skip-nav"
       id={id}

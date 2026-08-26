@@ -1,72 +1,60 @@
 import { ark } from "@ark-ui/react/factory";
-import {
-  type NavigationMenuSlots,
-  navigationMenuVariants,
-} from "@pisagor/styles/ui/navigation-menu";
-import { cn } from "@pisagor/utils";
+import { navigationMenuVariants } from "@pisagor/styles/ui/navigation-menu";
 import type { ComponentProps } from "react";
-import type { VariantClassNames } from "../../internal/types";
+import { useMemo } from "react";
+import { NavigationMenuContext, useNavigationMenu } from "./navigation-menu.context";
 
 // #region Types
-type NavigationMenuClassNames = VariantClassNames<NavigationMenuSlots>;
+export interface NavigationMenuProps extends ComponentProps<typeof ark.nav> {}
 
-export interface NavigationMenuProps extends ComponentProps<typeof ark.nav> {
-  /** Slot class names */
-  classNames?: NavigationMenuClassNames;
-}
+export interface NavigationMenuPartProps extends ComponentProps<typeof ark.ul> {}
 
-export interface NavigationMenuPartProps extends ComponentProps<typeof ark.ul> {
-  /** Slot class names */
-  classNames?: NavigationMenuClassNames;
-}
-
-export interface NavigationMenuItemProps extends ComponentProps<typeof ark.li> {
-  /** Slot class names */
-  classNames?: NavigationMenuClassNames;
-}
+export interface NavigationMenuItemProps extends ComponentProps<typeof ark.li> {}
 
 export interface NavigationMenuLinkProps extends ComponentProps<typeof ark.a> {
   /** Whether the link represents the current page */
   active?: boolean;
-  /** Slot class names */
-  classNames?: NavigationMenuClassNames;
 }
 // #endregion
 
 // #region Parts
-export function NavigationMenuRoot({ className, classNames, ...rest }: NavigationMenuProps) {
-  const slots = navigationMenuVariants();
+export function NavigationMenuRoot({ children, className, ...rest }: NavigationMenuProps) {
+  const slots = useMemo(() => navigationMenuVariants(), []);
 
   return (
-    <ark.nav
-      {...rest}
-      className={slots.base({ className: className })}
-      data-part="root"
-      data-scope="navigation-menu"
-    />
+    <NavigationMenuContext value={{ slots }}>
+      <ark.nav
+        {...rest}
+        className={slots.base({ className })}
+        data-part="root"
+        data-scope="navigation-menu"
+      >
+        {children}
+      </ark.nav>
+    </NavigationMenuContext>
   );
 }
 
-export function NavigationMenuList({ className, classNames, ...rest }: NavigationMenuPartProps) {
-  const slots = navigationMenuVariants();
+export function NavigationMenuList({ className, ...rest }: NavigationMenuPartProps) {
+  const { slots } = useNavigationMenu();
 
   return (
     <ark.ul
       {...rest}
-      className={slots.list({ className: cn(className, classNames?.list) })}
+      className={slots.list({ className })}
       data-part="list"
       data-scope="navigation-menu"
     />
   );
 }
 
-export function NavigationMenuItem({ className, classNames, ...rest }: NavigationMenuItemProps) {
-  const slots = navigationMenuVariants();
+export function NavigationMenuItem({ className, ...rest }: NavigationMenuItemProps) {
+  const { slots } = useNavigationMenu();
 
   return (
     <ark.li
       {...rest}
-      className={slots.item({ className: cn(className, classNames?.item) })}
+      className={slots.item({ className })}
       data-part="item"
       data-scope="navigation-menu"
     />
@@ -76,16 +64,15 @@ export function NavigationMenuItem({ className, classNames, ...rest }: Navigatio
 export function NavigationMenuLink({
   active = false,
   className,
-  classNames,
   ...rest
 }: NavigationMenuLinkProps) {
-  const slots = navigationMenuVariants();
+  const { slots } = useNavigationMenu();
 
   return (
     <ark.a
       {...rest}
       aria-current={active ? "page" : undefined}
-      className={slots.link({ className: cn(className, classNames?.link) })}
+      className={slots.link({ className })}
       data-active={active}
       data-part="link"
       data-scope="navigation-menu"

@@ -1,15 +1,14 @@
 import { ark } from "@ark-ui/react/factory";
 import { CaretRightIcon, DotsThreeIcon } from "@phosphor-icons/react";
-import {
-  breadcrumbInlineVariants,
-  breadcrumbItemVariants,
-  breadcrumbLinkVariants,
-  breadcrumbListVariants,
-  breadcrumbPageVariants,
-  breadcrumbSeparatorVariants,
-} from "@pisagor/styles/ui/breadcrumb";
+import { breadcrumbItemVariants, breadcrumbVariants } from "@pisagor/styles/ui/breadcrumb";
 import type { ComponentProps, ReactNode } from "react";
-import { Fragment } from "react";
+import { Fragment, useMemo } from "react";
+import {
+  BreadcrumbContext,
+  BreadcrumbItemContext,
+  useBreadcrumb,
+  useBreadcrumbItem,
+} from "./breadcrumb.context";
 
 // #region Types
 interface BreadcrumbPresetItem {
@@ -45,18 +44,24 @@ export function BreadcrumbRoot({
   children,
   ...rest
 }: BreadcrumbRootProps) {
+  const slots = useMemo(() => breadcrumbVariants(), []);
+
   return (
-    <ark.nav {...rest} aria-label={ariaLabel} data-part="root" data-scope="breadcrumb">
-      {children}
-    </ark.nav>
+    <BreadcrumbContext value={{ slots }}>
+      <ark.nav {...rest} aria-label={ariaLabel} data-part="root" data-scope="breadcrumb">
+        {children}
+      </ark.nav>
+    </BreadcrumbContext>
   );
 }
 
 export function BreadcrumbList({ className, ...rest }: BreadcrumbListProps) {
+  const { slots } = useBreadcrumb();
+
   return (
     <ark.ol
       {...rest}
-      className={breadcrumbListVariants({ className })}
+      className={slots.list({ className })}
       data-part="list"
       data-scope="breadcrumb"
       role="list"
@@ -64,22 +69,30 @@ export function BreadcrumbList({ className, ...rest }: BreadcrumbListProps) {
   );
 }
 
-export function BreadcrumbItem({ className, ...rest }: BreadcrumbItemProps) {
+export function BreadcrumbItem({ className, children, ...rest }: BreadcrumbItemProps) {
+  const slots = useMemo(() => breadcrumbItemVariants(), []);
+
   return (
-    <ark.li
-      {...rest}
-      className={breadcrumbItemVariants({ className })}
-      data-part="item"
-      data-scope="breadcrumb"
-    />
+    <BreadcrumbItemContext value={{ slots }}>
+      <ark.li
+        {...rest}
+        className={slots.base({ className })}
+        data-part="item"
+        data-scope="breadcrumb"
+      >
+        {children}
+      </ark.li>
+    </BreadcrumbItemContext>
   );
 }
 
 export function BreadcrumbLink({ className, ...rest }: BreadcrumbLinkProps) {
+  const { slots } = useBreadcrumbItem();
+
   return (
     <ark.a
       {...rest}
-      className={breadcrumbLinkVariants({ className })}
+      className={slots.link({ className })}
       data-part="link"
       data-scope="breadcrumb"
     />
@@ -87,11 +100,13 @@ export function BreadcrumbLink({ className, ...rest }: BreadcrumbLinkProps) {
 }
 
 export function BreadcrumbPage({ className, ...rest }: BreadcrumbPageProps) {
+  const { slots } = useBreadcrumbItem();
+
   return (
     <ark.span
       {...rest}
       aria-current="page"
-      className={breadcrumbPageVariants({ className })}
+      className={slots.page({ className })}
       data-part="page"
       data-scope="breadcrumb"
     />
@@ -99,11 +114,13 @@ export function BreadcrumbPage({ className, ...rest }: BreadcrumbPageProps) {
 }
 
 export function BreadcrumbSeparator({ children, className, ...rest }: BreadcrumbSeparatorProps) {
+  const { slots } = useBreadcrumb();
+
   return (
     <ark.li
       {...rest}
       aria-hidden="true"
-      className={breadcrumbSeparatorVariants({ className })}
+      className={slots.separator({ className })}
       data-part="separator"
       data-scope="breadcrumb"
       role="presentation"
@@ -114,6 +131,8 @@ export function BreadcrumbSeparator({ children, className, ...rest }: Breadcrumb
 }
 
 export function BreadcrumbEllipsis(props: BreadcrumbEllipsisProps) {
+  const { slots } = useBreadcrumb();
+
   return (
     <ark.span
       aria-hidden="true"
@@ -122,7 +141,7 @@ export function BreadcrumbEllipsis(props: BreadcrumbEllipsisProps) {
       role="presentation"
       {...props}
     >
-      <DotsThreeIcon className={breadcrumbInlineVariants()} />
+      <DotsThreeIcon className={slots.ellipsis()} />
     </ark.span>
   );
 }

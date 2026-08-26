@@ -1,31 +1,20 @@
 import { Drawer as DrawerPrimitive } from "@ark-ui/react/drawer";
 import { ark } from "@ark-ui/react/factory";
 import { Portal } from "@ark-ui/react/portal";
-import {
-  type DrawerContentVariantProps,
-  type DrawerPositionerVariantProps,
-  drawerBackdropVariants,
-  drawerBodyVariants,
-  drawerContentInnerVariants,
-  drawerContentVariants,
-  drawerDescriptionVariants,
-  drawerFooterVariants,
-  drawerGrabberVariants,
-  drawerHeaderVariants,
-  drawerPositionerVariants,
-  drawerTitleVariants,
-} from "@pisagor/styles/ui/drawer";
+import { type DrawerVariantProps, drawerVariants } from "@pisagor/styles/ui/drawer";
 import type { ComponentProps } from "react";
+import { useMemo } from "react";
 import { ScrollArea } from "../scroll-area";
+import { DrawerContext, useDrawer } from "./drawer.context";
 
 // #region Types
 export interface DrawerPositionerProps
   extends ComponentProps<typeof DrawerPrimitive.Positioner>,
-    DrawerPositionerVariantProps {}
+    Pick<DrawerVariantProps, "variant"> {}
 
 export interface DrawerContentProps
   extends ComponentProps<typeof DrawerPrimitive.Content>,
-    DrawerContentVariantProps {}
+    Pick<DrawerVariantProps, "variant"> {}
 
 export interface DrawerHeaderProps extends ComponentProps<typeof ark.div> {
   /** The description of the drawer */
@@ -68,7 +57,13 @@ export interface DrawerFooterProps extends ComponentProps<typeof ark.div> {}
  * either option currently breaks swipe-to-dismiss in Ark Drawer.
  */
 export function DrawerRoot({ lazyMount = false, unmountOnExit = false, ...rest }: DrawerRootProps) {
-  return <DrawerPrimitive.Root lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...rest} />;
+  const slots = useMemo(() => drawerVariants(), []);
+
+  return (
+    <DrawerContext value={{ slots }}>
+      <DrawerPrimitive.Root lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...rest} />
+    </DrawerContext>
+  );
 }
 
 export function DrawerTrigger(props: DrawerTriggerProps) {
@@ -76,7 +71,9 @@ export function DrawerTrigger(props: DrawerTriggerProps) {
 }
 
 export function DrawerBackdrop({ className, ...rest }: DrawerBackdropProps) {
-  return <DrawerPrimitive.Backdrop {...rest} className={drawerBackdropVariants({ className })} />;
+  const { slots } = useDrawer();
+
+  return <DrawerPrimitive.Backdrop {...rest} className={slots.backdrop({ className })} />;
 }
 
 export function DrawerPositioner({
@@ -84,11 +81,10 @@ export function DrawerPositioner({
   className,
   ...rest
 }: DrawerPositionerProps) {
+  const { slots } = useDrawer();
+
   return (
-    <DrawerPrimitive.Positioner
-      {...rest}
-      className={drawerPositionerVariants({ className, variant })}
-    />
+    <DrawerPrimitive.Positioner {...rest} className={slots.positioner({ className, variant })} />
   );
 }
 
@@ -105,6 +101,8 @@ export function DrawerContent({
   children,
   ...rest
 }: DrawerContentProps) {
+  const { slots } = useDrawer();
+
   return (
     <Portal>
       <DrawerBackdrop />
@@ -113,7 +111,7 @@ export function DrawerContent({
           <DrawerPositioner variant={variant}>
             <DrawerPrimitive.Content
               {...rest}
-              className={drawerContentVariants({
+              className={slots.content({
                 className,
                 placement: SWIPE_DIRECTION_TO_PLACEMENT[swipeDirection],
                 variant,
@@ -131,10 +129,12 @@ export function DrawerContent({
 }
 
 export function DrawerContentInner({ className, ...rest }: DrawerContentInnerProps) {
+  const { slots } = useDrawer();
+
   return (
     <ark.div
       {...rest}
-      className={drawerContentInnerVariants({ className })}
+      className={slots.contentInner({ className })}
       data-part="content-inner"
       data-scope="drawer"
     />
@@ -142,12 +142,12 @@ export function DrawerContentInner({ className, ...rest }: DrawerContentInnerPro
 }
 
 export function DrawerGrabber({ className, ...rest }: DrawerGrabberProps) {
-  const slots = drawerGrabberVariants();
+  const { slots } = useDrawer();
 
   return (
-    <ark.div className={slots.wrapper()}>
-      <DrawerPrimitive.Grabber {...rest} className={slots.base({ className })}>
-        <DrawerPrimitive.GrabberIndicator className={slots.indicator()} />
+    <ark.div className={slots.grabberWrapper()}>
+      <DrawerPrimitive.Grabber {...rest} className={slots.grabber({ className })}>
+        <DrawerPrimitive.GrabberIndicator className={slots.grabberIcon()} />
       </DrawerPrimitive.Grabber>
     </ark.div>
   );
@@ -160,10 +160,12 @@ export function DrawerHeader({
   children,
   ...rest
 }: DrawerHeaderProps) {
+  const { slots } = useDrawer();
+
   return (
     <ark.div
       {...rest}
-      className={drawerHeaderVariants({ className })}
+      className={slots.header({ className })}
       data-part="header"
       data-scope="drawer"
     >
@@ -177,14 +179,18 @@ export function DrawerHeader({
 }
 
 export function DrawerTitle({ className, ...rest }: DrawerTitleProps) {
-  return <DrawerPrimitive.Title {...rest} className={drawerTitleVariants({ className })} />;
+  const { slots } = useDrawer();
+
+  return <DrawerPrimitive.Title {...rest} className={slots.title({ className })} />;
 }
 
 export function DrawerDescription({ className, ...rest }: DrawerDescriptionProps) {
+  const { slots } = useDrawer();
+
   return (
     <ark.div
       {...rest}
-      className={drawerDescriptionVariants({ className })}
+      className={slots.description({ className })}
       data-part="description"
       data-scope="drawer"
     />
@@ -192,11 +198,13 @@ export function DrawerDescription({ className, ...rest }: DrawerDescriptionProps
 }
 
 export function DrawerBody({ scrollFade = false, className, ...rest }: DrawerBodyProps) {
+  const { slots } = useDrawer();
+
   return (
     <ScrollArea scrollFade={scrollFade}>
       <ark.div
         {...rest}
-        className={drawerBodyVariants({ className })}
+        className={slots.body({ className })}
         data-part="body"
         data-scope="drawer"
       />
@@ -209,10 +217,12 @@ export function DrawerCloseTrigger(props: DrawerCloseTriggerProps) {
 }
 
 export function DrawerFooter({ className, ...rest }: DrawerFooterProps) {
+  const { slots } = useDrawer();
+
   return (
     <ark.div
       {...rest}
-      className={drawerFooterVariants({ className })}
+      className={slots.footer({ className })}
       data-part="footer"
       data-scope="drawer"
     />

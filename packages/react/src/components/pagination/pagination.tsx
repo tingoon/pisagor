@@ -1,12 +1,10 @@
 import { Pagination as PaginationPrimitive, usePaginationContext } from "@ark-ui/react/pagination";
 import { CaretLeftIcon, CaretRightIcon, DotsThreeIcon } from "@phosphor-icons/react";
-import {
-  paginationEllipsisVariants,
-  paginationInlineVariants,
-  paginationVariants,
-} from "@pisagor/styles/ui/pagination";
+import { paginationVariants } from "@pisagor/styles/ui/pagination";
 import type { ComponentProps } from "react";
+import { useMemo } from "react";
 import { Button, type ButtonProps } from "../button";
+import { PaginationContext, usePagination } from "./pagination.context";
 
 // #region Types
 export type PaginationRootProps = ComponentProps<typeof PaginationPrimitive.Root>;
@@ -32,16 +30,20 @@ export interface PaginationItemLinkProps extends ButtonProps {
 
 // #region Parts
 export function PaginationRoot({ className, children, ...rest }: PaginationRootProps) {
+  const slots = useMemo(() => paginationVariants(), []);
+
   return (
-    <PaginationPrimitive.Root {...rest} className={paginationVariants({ className })}>
-      {children ?? (
-        <>
-          <PaginationPrevTrigger />
-          <PaginationItems />
-          <PaginationNextTrigger />
-        </>
-      )}
-    </PaginationPrimitive.Root>
+    <PaginationContext value={{ slots }}>
+      <PaginationPrimitive.Root {...rest} className={slots.base({ className })}>
+        {children ?? (
+          <>
+            <PaginationPrevTrigger />
+            <PaginationItems />
+            <PaginationNextTrigger />
+          </>
+        )}
+      </PaginationPrimitive.Root>
+    </PaginationContext>
   );
 }
 
@@ -68,9 +70,11 @@ export function PaginationNextTrigger(props: PaginationNextTriggerProps) {
 }
 
 export function PaginationItem({ className, children, ...rest }: PaginationItemProps) {
+  const { slots } = usePagination();
+
   return (
     <PaginationPrimitive.Item {...rest} asChild>
-      <Button className={paginationInlineVariants({ className })} size="icon-md" variant="ghost">
+      <Button className={slots.item({ className })} size="icon-md" variant="ghost">
         {children}
       </Button>
     </PaginationPrimitive.Item>
@@ -132,8 +136,10 @@ export function PaginationItemLink({ page, children, ...rest }: PaginationItemLi
 }
 
 export function PaginationEllipsis({ className, ...rest }: PaginationEllipsisProps) {
+  const { slots } = usePagination();
+
   return (
-    <PaginationPrimitive.Ellipsis {...rest} className={paginationEllipsisVariants({ className })}>
+    <PaginationPrimitive.Ellipsis {...rest} className={slots.ellipsis({ className })}>
       <DotsThreeIcon />
     </PaginationPrimitive.Ellipsis>
   );

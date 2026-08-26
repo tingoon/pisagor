@@ -1,8 +1,10 @@
+import type { RichTextEditorVariants } from "@pisagor/styles/ui/rich-text-editor";
 import type { Editor } from "@tiptap/react";
 import { createContext } from "../../utils";
 
 interface RichTextEditorContextValue {
   editor: Editor | null;
+  slots: RichTextEditorVariants;
 }
 
 export const { RichTextEditorContext, useRichTextEditor: useRichTextEditorState } =

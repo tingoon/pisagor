@@ -1,11 +1,8 @@
 import { SegmentGroup as SegmentGroupPrimitive } from "@ark-ui/react/segment-group";
-import {
-  segmentGroupIndicatorVariants,
-  segmentGroupItemTextVariants,
-  segmentGroupItemVariants,
-  segmentGroupVariants,
-} from "@pisagor/styles/ui/segment-group";
+import { segmentGroupVariants } from "@pisagor/styles/ui/segment-group";
 import type { ComponentProps, ReactNode } from "react";
+import { useMemo } from "react";
+import { SegmentGroupContext, useSegmentGroup } from "./segment-group.context";
 
 // #region Types
 type SegmentGroupVariant = "default" | "underline";
@@ -49,26 +46,31 @@ export function SegmentGroupRoot({
   onValueChange,
   ...rest
 }: SegmentGroupRootProps) {
-  return (
-    <SegmentGroupPrimitive.Root
-      {...rest}
-      className={segmentGroupVariants({ className })}
-      data-variant={variant}
-      onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
-      orientation={orientation}
-    >
-      <SegmentGroupIndicator />
+  const slots = useMemo(() => segmentGroupVariants(), []);
 
-      {children}
-    </SegmentGroupPrimitive.Root>
+  return (
+    <SegmentGroupContext value={{ slots }}>
+      <SegmentGroupPrimitive.Root
+        {...rest}
+        className={slots.base({ className })}
+        data-variant={variant}
+        onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
+        orientation={orientation}
+      >
+        <SegmentGroupIndicator />
+
+        {children}
+      </SegmentGroupPrimitive.Root>
+    </SegmentGroupContext>
   );
 }
 
 export function SegmentGroupItem({ className, children, text, ...rest }: SegmentGroupItemProps) {
+  const { slots } = useSegmentGroup();
   const content = children ?? text;
 
   return (
-    <SegmentGroupPrimitive.Item {...rest} className={segmentGroupItemVariants({ className })}>
+    <SegmentGroupPrimitive.Item {...rest} className={slots.item({ className })}>
       {content != null && <SegmentGroupItemText>{content}</SegmentGroupItemText>}
 
       <SegmentGroupPrimitive.ItemControl />
@@ -78,21 +80,15 @@ export function SegmentGroupItem({ className, children, text, ...rest }: Segment
 }
 
 function SegmentGroupItemText({ className, ...rest }: SegmentGroupItemTextProps) {
-  return (
-    <SegmentGroupPrimitive.ItemText
-      {...rest}
-      className={segmentGroupItemTextVariants({ className })}
-    />
-  );
+  const { slots } = useSegmentGroup();
+
+  return <SegmentGroupPrimitive.ItemText {...rest} className={slots.itemText({ className })} />;
 }
 
 export function SegmentGroupIndicator({ className, ...rest }: SegmentGroupIndicatorProps) {
-  return (
-    <SegmentGroupPrimitive.Indicator
-      {...rest}
-      className={segmentGroupIndicatorVariants({ className })}
-    />
-  );
+  const { slots } = useSegmentGroup();
+
+  return <SegmentGroupPrimitive.Indicator {...rest} className={slots.indicator({ className })} />;
 }
 // #endregion
 

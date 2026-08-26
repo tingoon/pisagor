@@ -1,9 +1,5 @@
 import { Field as FieldPrimitive } from "@ark-ui/react/field";
-import {
-  type TextareaSlots,
-  textareaInlineVariants,
-  textareaVariants,
-} from "@pisagor/styles/ui/textarea";
+import { type TextareaSlots, textareaVariants } from "@pisagor/styles/ui/textarea";
 import { cn } from "@pisagor/utils";
 import type { ChangeEventHandler, ComponentProps, ReactNode } from "react";
 import { useClearableInput } from "../../hooks";
@@ -108,6 +104,16 @@ function TextareaClearableField({
     />
   );
 }
+
+function TextareaClearAddon({ onClear }: { onClear: () => void }) {
+  const { slots } = useTextarea();
+
+  return (
+    <InputGroupAddon align="inline-end" className={slots.clearAddon()}>
+      <Input.ClearButton onClear={onClear} />
+    </InputGroupAddon>
+  );
+}
 // #endregion
 
 // #region Closed
@@ -176,11 +182,7 @@ export function Textarea({
             ref={mergedRef}
             value={value}
           />
-          {canClear ? (
-            <InputGroupAddon align="inline-end" className={textareaInlineVariants()}>
-              <Input.ClearButton onClear={handleClear} />
-            </InputGroupAddon>
-          ) : null}
+          {canClear ? <TextareaClearAddon onClear={handleClear} /> : null}
         </TextareaGroup>
       )}
     </TextareaProvider>
@@ -193,5 +195,6 @@ TextareaProvider.displayName = "Textarea.Provider";
 TextareaField.displayName = "Textarea.Field";
 TextareaGroup.displayName = "Textarea.Group";
 TextareaClearableField.displayName = "Textarea.ClearableField";
+TextareaClearAddon.displayName = "Textarea.ClearAddon";
 Textarea.displayName = "Textarea";
 // #endregion
