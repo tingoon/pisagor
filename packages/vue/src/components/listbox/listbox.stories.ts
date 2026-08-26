@@ -78,8 +78,8 @@ export const DisabledItem = meta.story({
       return { collection };
     },
     template: `
-      <Item.Group>
-      <Item class="p-1" variant="outline">
+      <Item.Group variant="outline">
+      <Item class="p-1">
         <Listbox.Root :collection="collection">
           <Listbox.Content>
             <Listbox.Item v-for="item in collection.items" :key="item.value" :item="item">
@@ -126,8 +126,8 @@ export const Grid = meta.story({
       return { collection };
     },
     template: `
-      <Item.Group>
-      <Item class="p-1" variant="outline">
+      <Item.Group variant="outline">
+      <Item class="p-1">
         <Listbox.Root :collection="collection">
           <Listbox.Content
             class="grid grid-cols-[repeat(var(--column-count),1fr)] gap-1"
@@ -160,8 +160,8 @@ export const Grouping = meta.story({
       return { collection };
     },
     template: `
-      <Item.Group>
-      <Item class="p-1" variant="outline">
+      <Item.Group variant="outline">
+      <Item class="p-1">
         <Listbox.Root :collection="collection">
           <Listbox.Content>
             <Listbox.ItemGroup
@@ -237,8 +237,8 @@ export const Disabled = meta.story({
       return { collection };
     },
     template: `
-      <Item.Group>
-      <Item class="p-1" variant="outline">
+      <Item.Group variant="outline">
+      <Item class="p-1">
         <Listbox.Root :collection="collection" disabled>
           <Listbox.Content>
             <Listbox.Item v-for="item in collection.items" :key="item.value" :item="item">
@@ -317,8 +317,8 @@ export const SelectionExtended = meta.story({
         <p class="text-center text-muted-foreground text-sm">
           Hold <Kbd>⌘</Kbd> or <Kbd>Ctrl</Kbd> to select multiple
         </p>
-        <Item.Group>
-        <Item class="w-full p-1" variant="outline">
+        <Item.Group variant="outline">
+        <Item class="w-full p-1">
           <Listbox.Root :collection="collection" selectionMode="extended">
             <Listbox.Content>
               <Listbox.Item v-for="item in collection.items" :key="item.value" :item="item">
@@ -348,8 +348,8 @@ export const SelectionMultiple = meta.story({
       return { collection };
     },
     template: `
-      <Item.Group>
-      <Item class="p-1" variant="outline">
+      <Item.Group variant="outline">
+      <Item class="p-1">
         <Listbox.Root :collection="collection" selectionMode="multiple">
           <Listbox.Content>
             <Listbox.Item v-for="item in collection.items" :key="item.value" :item="item">
@@ -378,8 +378,8 @@ export const SelectionNone = meta.story({
       return { collection };
     },
     template: `
-      <Item.Group>
-      <Item class="p-1" variant="outline">
+      <Item.Group variant="outline">
+      <Item class="p-1">
         <Listbox.Root aria-label="File actions" class="w-full" :collection="collection" selectionMode="none">
           <Listbox.Content>
             <Listbox.ItemGroup heading="Actions">
@@ -479,8 +479,8 @@ export const TransferList = meta.story({
     },
     template: `
       <div class="flex gap-2 max-sm:flex-col">
-        <Item.Group>
-        <Item class="w-full p-1" variant="outline">
+        <Item.Group variant="outline">
+        <Item class="w-full p-1">
           <Listbox.Root
             class="min-h-40"
             :collection="availableCollection"
@@ -507,8 +507,8 @@ export const TransferList = meta.story({
             <PhCaretLeft />
           </Button>
         </div>
-        <Item.Group>
-        <Item class="w-full p-1" variant="outline">
+        <Item.Group variant="outline">
+        <Item class="w-full p-1">
           <Listbox.Root
             class="min-h-40"
             :collection="selectedCollection"
@@ -558,8 +558,8 @@ export const WithDescription = meta.story({
       return { collection };
     },
     template: `
-      <Item.Group>
-      <Item class="p-1" variant="outline">
+      <Item.Group variant="outline">
+      <Item class="p-1">
         <Listbox.Root :collection="collection">
           <Listbox.Content>
             <Listbox.Item v-for="item in collection.items" :key="item.value" :item="item">
@@ -602,8 +602,8 @@ export const WithFilter = meta.story({
       return { collection, isEmpty, onValueChange, search };
     },
     template: `
-      <Item.Group>
-      <Item class="flex flex-col gap-2 p-1" variant="outline">
+      <Item.Group variant="outline">
+      <Item class="flex flex-col gap-2 p-1">
         <Input :onValueChange="onValueChange" placeholder="Search..." :value="search" />
         <Listbox.Root :collection="collection">
           <Listbox.Content>
@@ -634,8 +634,8 @@ export const WithIcon = meta.story({
       return { collection };
     },
     template: `
-      <Item.Group>
-      <Item class="p-1" variant="outline">
+      <Item.Group variant="outline">
+      <Item class="p-1">
         <Listbox.Root :collection="collection">
           <Listbox.Content>
             <Listbox.Item v-for="item in collection.items" :key="item.value" :item="item">
@@ -750,8 +750,8 @@ export const Controlled = meta.story({
     template: `
       <div class="flex flex-col gap-2">
         <p class="text-center text-muted-foreground text-sm">Selected the Large size</p>
-        <Item.Group>
-        <Item class="p-1" variant="outline">
+        <Item.Group variant="outline">
+        <Item class="p-1">
           <Listbox.Root :collection="collection" :onValueChange="onValueChange" :value="value">
             <Listbox.Content>
               <Listbox.Item v-for="item in collection.items" :key="item.value" :item="item">

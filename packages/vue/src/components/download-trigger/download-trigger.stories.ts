@@ -28,8 +28,8 @@ export const Default = meta.story({
     },
     template: `
       <div class="flex flex-col gap-2">
-        <Item.Group>
-          <Item variant="outline">
+        <Item.Group variant="outline">
+          <Item>
             <PhFileText />
             <Item.Title>{{ text }}</Item.Title>
           </Item>

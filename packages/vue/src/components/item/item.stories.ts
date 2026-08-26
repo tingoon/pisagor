@@ -42,19 +42,17 @@ export const Default = meta.story({
   render: () => ({
     components: { Button, Item, PhDotsThree },
     template: `
-      <Item.Group>
-        <Item variant="outline">
-          <Item.Content>
-            <Item.Title>Basic item</Item.Title>
-            <Item.Description>An item with title and description.</Item.Description>
-          </Item.Content>
-          <Item.Actions>
-            <Button size="icon-sm" variant="outline">
-              <PhDotsThree />
-            </Button>
-          </Item.Actions>
-        </Item>
-      </Item.Group>
+      <Item variant="outline">
+        <Item.Content>
+          <Item.Title>Basic item</Item.Title>
+          <Item.Description>An item with title and description.</Item.Description>
+        </Item.Content>
+        <Item.Actions>
+          <Button size="icon-sm" variant="outline">
+            <PhDotsThree />
+          </Button>
+        </Item.Actions>
+      </Item>
     `,
   }),
 });
@@ -91,22 +89,20 @@ export const Icon = meta.story({
   render: () => ({
     components: { Button, Item, PhShieldWarning },
     template: `
-      <Item.Group>
-        <Item variant="outline">
-          <Item.Media variant="icon">
-            <PhShieldWarning />
-          </Item.Media>
-          <Item.Content>
-            <Item.Title>Security alert</Item.Title>
-            <Item.Description>New login detected from unknown device.</Item.Description>
-          </Item.Content>
-          <Item.Actions>
-            <Button size="sm" variant="outline">
-              Review
-            </Button>
-          </Item.Actions>
-        </Item>
-      </Item.Group>
+      <Item variant="outline">
+        <Item.Media variant="icon">
+          <PhShieldWarning />
+        </Item.Media>
+        <Item.Content>
+          <Item.Title>Security alert</Item.Title>
+          <Item.Description>New login detected from unknown device.</Item.Description>
+        </Item.Content>
+        <Item.Actions>
+          <Button size="sm" variant="outline">
+            Review
+          </Button>
+        </Item.Actions>
+      </Item>
     `,
   }),
 });
@@ -115,8 +111,8 @@ export const CustomSpacing = meta.story({
   render: () => ({
     components: { Item, PhUser },
     template: `
-      <Item.Group class="gap-2">
-        <Item class="w-full [--space:--spacing(2)]" variant="outline">
+      <Item.Group class="gap-2" variant="outline">
+        <Item class="w-full [--space:--spacing(2)]">
           <Item.Media variant="icon">
             <PhUser />
           </Item.Media>
@@ -127,7 +123,7 @@ export const CustomSpacing = meta.story({
             </Item.Description>
           </Item.Content>
         </Item>
-        <Item class="w-full [--space:--spacing(3)] md:[--space:--spacing(5)]" variant="outline">
+        <Item class="w-full [--space:--spacing(3)] md:[--space:--spacing(5)]">
           <Item.Media variant="icon">
             <PhUser />
           </Item.Media>
@@ -145,19 +141,17 @@ export const WithMedia = meta.story({
   render: () => ({
     components: { Item, PhCaretRight, PhSealCheck },
     template: `
-      <Item.Group>
-        <Item variant="outline">
-          <Item.Media>
-            <PhSealCheck class="size-5" />
-          </Item.Media>
-          <Item.Content>
-            <Item.Title>Your profile has been verified.</Item.Title>
-          </Item.Content>
-          <Item.Actions>
-            <PhCaretRight class="size-4" />
-          </Item.Actions>
-        </Item>
-      </Item.Group>
+      <Item variant="outline">
+        <Item.Media>
+          <PhSealCheck class="size-5" />
+        </Item.Media>
+        <Item.Content>
+          <Item.Title>Your profile has been verified.</Item.Title>
+        </Item.Content>
+        <Item.Actions>
+          <PhCaretRight class="size-4" />
+        </Item.Actions>
+      </Item>
     `,
   }),
 });
@@ -166,22 +160,20 @@ export const WithAvatar = meta.story({
   render: () => ({
     components: { Avatar, Button, Item },
     template: `
-      <Item.Group>
-        <Item variant="outline">
-          <Item.Media>
-            <Avatar alt="jane.doe@example.com" fallback="JD" size="sm" />
-          </Item.Media>
-          <Item.Content>
-            <Item.Title>Jane Doe</Item.Title>
-            <Item.Description>Last seen 5 months ago</Item.Description>
-          </Item.Content>
-          <Item.Actions>
-            <Button size="sm" variant="outline">
-              View
-            </Button>
-          </Item.Actions>
-        </Item>
-      </Item.Group>
+      <Item variant="outline">
+        <Item.Media>
+          <Avatar alt="jane.doe@example.com" fallback="JD" size="sm" />
+        </Item.Media>
+        <Item.Content>
+          <Item.Title>Jane Doe</Item.Title>
+          <Item.Description>Last seen 5 months ago</Item.Description>
+        </Item.Content>
+        <Item.Actions>
+          <Button size="sm" variant="outline">
+            View
+          </Button>
+        </Item.Actions>
+      </Item>
     `,
   }),
 });
@@ -210,8 +202,8 @@ export const Image = meta.story({
       return { images };
     },
     template: `
-      <Item.Group class="gap-2">
-        <Item variant="outline" v-for="image in images" :key="image.src">
+      <Item.Group class="gap-2" variant="outline">
+        <Item v-for="image in images" :key="image.src">
           <Item.Media variant="image">
             <img
               :alt="image.alt"
@@ -265,8 +257,8 @@ export const Group = meta.story({
       return { people };
     },
     template: `
-      <Item.Group>
-        <Item variant="outline" v-for="person in people" :key="person.id">
+      <Item.Group variant="outline">
+        <Item v-for="person in people" :key="person.id">
           <Item.Media>
             <Avatar class="grayscale" :fallback="person.username.charAt(0).toUpperCase()" />
           </Item.Media>
@@ -289,23 +281,21 @@ export const Header = meta.story({
   render: () => ({
     components: { Item },
     template: `
-      <Item.Group>
-        <Item variant="outline">
-          <Item.Header>
-            <img
-              alt="Item preview"
-              class="aspect-square w-full grayscale"
-              height="128"
-              src="https://picsum.photos/seed/1/500/300"
-              width="128"
-            />
-          </Item.Header>
-          <Item.Content>
-            <Item.Title>Item title</Item.Title>
-            <Item.Description>Brief description of the item.</Item.Description>
-          </Item.Content>
-        </Item>
-      </Item.Group>
+      <Item variant="outline">
+        <Item.Header>
+          <img
+            alt="Item preview"
+            class="aspect-square w-full grayscale"
+            height="128"
+            src="https://picsum.photos/seed/1/500/300"
+            width="128"
+          />
+        </Item.Header>
+        <Item.Content>
+          <Item.Title>Item title</Item.Title>
+          <Item.Description>Brief description of the item.</Item.Description>
+        </Item.Content>
+      </Item>
     `,
   }),
 });

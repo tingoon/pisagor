@@ -3,15 +3,15 @@ import {
   ItemContent,
   ItemDescription,
   ItemFooter,
-  ItemGroup,
   ItemHeader,
   ItemMedia,
   ItemRoot,
-  ItemSeparator,
   ItemTitle,
 } from "./item";
+import { ItemGroup, ItemSeparator } from "./item-group";
 
 export type { ItemHeaderProps, ItemMediaProps, ItemProps } from "./item";
+export type { ItemGroupProps } from "./item-group";
 
 export const Item = Object.assign(ItemRoot, {
   Actions: ItemActions,

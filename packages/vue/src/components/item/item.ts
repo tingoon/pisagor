@@ -1,15 +1,13 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type ItemVariantProps, type ItemVariants, itemVariants } from "@pisagor/styles/ui/item";
-import { cn } from "@pisagor/utils";
-import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils/create-context";
-import { Separator } from "../separator";
+import { type ItemVariantProps, itemVariants } from "@pisagor/styles/ui/item";
+import { computed, defineComponent, h, type PropType, unref, type VNodeChild } from "vue";
+import { provideItemContext, resolveItemVariant, useItemSlots } from "./item.context";
+import { useItemGroupContextRef } from "./item-group.context";
 
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface ItemProps extends WithTestId {
+export interface ItemProps {
   class?: unknown;
   variant?: ItemVariantProps["variant"];
 }
@@ -26,98 +24,50 @@ export interface ItemHeaderProps {
   /** Shorthand: renders an ItemTitle inside the header. */
   title?: VNodeChild;
 }
-
-interface ItemContextValue {
-  slots: ItemVariants;
-}
-// #endregion
-
-// #region Context
-const [provideItemContext, useItemContext] = createContext<ItemContextValue>({
-  name: "Item",
-});
-
-function useItemSlots() {
-  const context = useItemContext();
-
-  if (!context) {
-    throw new Error("useItem must be used within ItemContext.");
-  }
-
-  return context.slots;
-}
 // #endregion
 
 // #region Parts
-export const ItemGroup = defineComponent({
-  inheritAttrs: false,
-  name: "ItemGroup",
-  props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-  },
-  setup(props, { attrs, slots }) {
-    const itemSlots = itemVariants();
-    provideItemContext({ slots: itemSlots });
-
-    return () =>
-      h(
-        ark.div as ArkPart,
-        {
-          ...attrs,
-          class: cn(itemSlots.group(), props.class),
-          "data-part": "group",
-          "data-scope": "item",
-          role: "list",
-        },
-        slots.default?.(),
-      );
-  },
-});
-
-export const ItemSeparator = defineComponent({
-  inheritAttrs: false,
-  name: "ItemSeparator",
-  props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-  },
-  setup(props, { attrs }) {
-    const itemSlots = useItemSlots();
-
-    return () =>
-      h(Separator as ArkPart, {
-        ...attrs,
-        class: cn(itemSlots.separator(), props.class),
-        dataPart: "separator",
-        dataScope: "item",
-        orientation: "horizontal",
-      });
-  },
-});
-
 export const ItemRoot = defineComponent({
   inheritAttrs: false,
   name: "ItemRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    testId: String,
-    variant: { default: "default", type: String as PropType<ItemVariantProps["variant"]> },
+    variant: {
+      default: undefined,
+      type: String as PropType<ItemVariantProps["variant"]>,
+    },
   },
   setup(props, { attrs, slots }) {
-    const itemSlots = useItemSlots();
+    const groupRef = useItemGroupContextRef();
+    const itemSlots = itemVariants();
 
-    return () =>
-      h(
+    provideItemContext(
+      computed(() => {
+        const group = groupRef === undefined ? undefined : unref(groupRef);
+
+        return {
+          slots: itemSlots,
+          variant: resolveItemVariant(props.variant, group?.variant),
+        };
+      }),
+    );
+
+    return () => {
+      const group = groupRef === undefined ? undefined : unref(groupRef);
+      const resolvedVariant = resolveItemVariant(props.variant, group?.variant);
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: itemSlots.base({ class: props.class, variant: props.variant }),
+          class: itemSlots.base({ class: props.class, variant: resolvedVariant }),
           "data-part": "root",
           "data-scope": "item",
-          "data-testid": props.testId,
-          "data-variant": props.variant,
+          "data-variant": resolvedVariant,
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -126,7 +76,10 @@ export const ItemMedia = defineComponent({
   name: "ItemMedia",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    variant: { default: "default", type: String as PropType<ItemVariantProps["variant"]> },
+    variant: {
+      default: "default",
+      type: String as PropType<ItemVariantProps["variant"]>,
+    },
   },
   setup(props, { attrs, slots }) {
     const itemSlots = useItemSlots();
