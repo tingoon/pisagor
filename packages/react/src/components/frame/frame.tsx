@@ -5,12 +5,7 @@ import { useMemo } from "react";
 import { FrameContext, useFrame } from "./frame.context";
 
 // #region Types
-export interface FrameHeaderProps extends ComponentProps<typeof ark.header> {
-  /** The description of the dialog */
-  description?: string;
-  /** The title of the dialog */
-  title?: string;
-}
+export interface FrameHeaderProps extends ComponentProps<typeof ark.header> {}
 
 export interface FrameRootProps extends ComponentProps<typeof ark.div> {}
 
@@ -36,26 +31,17 @@ export function FrameRoot({ className, children, ...rest }: FrameRootProps) {
   );
 }
 
-export function FramePanel({ className, ...rest }: FramePanelProps) {
+export function FramePanel({ className, children, ...rest }: FramePanelProps) {
   const { slots } = useFrame();
 
   return (
-    <ark.div
-      {...rest}
-      className={slots.panel({ className })}
-      data-part="panel"
-      data-scope="frame"
-    />
+    <ark.div {...rest} className={slots.panel({ className })} data-part="panel" data-scope="frame">
+      {children}
+    </ark.div>
   );
 }
 
-export function FrameHeader({
-  title,
-  description,
-  className,
-  children,
-  ...rest
-}: FrameHeaderProps) {
+export function FrameHeader({ className, children, ...rest }: FrameHeaderProps) {
   const { slots } = useFrame();
 
   return (
@@ -65,16 +51,12 @@ export function FrameHeader({
       data-part="panel-header"
       data-scope="frame"
     >
-      {!!title && <FrameTitle>{title}</FrameTitle>}
-
-      {!!description && <FrameDescription>{description}</FrameDescription>}
-
       {children}
     </ark.header>
   );
 }
 
-export function FrameTitle({ className, ...rest }: FrameTitleProps) {
+export function FrameTitle({ className, children, ...rest }: FrameTitleProps) {
   const { slots } = useFrame();
 
   return (
@@ -83,11 +65,13 @@ export function FrameTitle({ className, ...rest }: FrameTitleProps) {
       className={slots.panelTitle({ className })}
       data-part="panel-title"
       data-scope="frame"
-    />
+    >
+      {children}
+    </ark.div>
   );
 }
 
-export function FrameDescription({ className, ...rest }: FrameDescriptionProps) {
+export function FrameDescription({ className, children, ...rest }: FrameDescriptionProps) {
   const { slots } = useFrame();
 
   return (
@@ -96,11 +80,13 @@ export function FrameDescription({ className, ...rest }: FrameDescriptionProps) 
       className={slots.panelDescription({ className })}
       data-part="panel-description"
       data-scope="frame"
-    />
+    >
+      {children}
+    </ark.div>
   );
 }
 
-export function FrameFooter({ className, ...rest }: FrameFooterProps) {
+export function FrameFooter({ className, children, ...rest }: FrameFooterProps) {
   const { slots } = useFrame();
 
   return (
@@ -109,7 +95,9 @@ export function FrameFooter({ className, ...rest }: FrameFooterProps) {
       className={slots.panelFooter({ className })}
       data-part="panel-footer"
       data-scope="frame"
-    />
+    >
+      {children}
+    </ark.footer>
   );
 }
 // #endregion

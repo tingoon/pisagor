@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import { type ItemVariantProps, itemVariants } from "@pisagor/styles/ui/item";
-import type { ComponentProps, ReactNode } from "react";
+import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { ItemContext, useItem } from "./item.context";
 import { useItemGroup } from "./item-group.context";
@@ -10,12 +10,7 @@ export interface ItemProps extends ComponentProps<typeof ark.div>, ItemVariantPr
 
 export interface ItemMediaProps extends ComponentProps<typeof ark.div>, ItemVariantProps {}
 
-export interface ItemHeaderProps extends Omit<ComponentProps<typeof ark.div>, "title"> {
-  /** Shorthand: renders an ItemTitle inside the header. */
-  title?: ReactNode;
-  /** Shorthand: renders an ItemDescription inside the header. */
-  description?: ReactNode;
-}
+export interface ItemHeaderProps extends ComponentProps<typeof ark.div> {}
 
 export interface ItemContentProps extends ComponentProps<typeof ark.div> {}
 
@@ -49,7 +44,7 @@ export function ItemRoot({ variant: variantProp, className, children, ...rest }:
   );
 }
 
-export function ItemMedia({ variant = "default", className, ...rest }: ItemMediaProps) {
+export function ItemMedia({ variant = "default", className, children, ...rest }: ItemMediaProps) {
   const { slots } = useItem();
 
   return (
@@ -59,11 +54,13 @@ export function ItemMedia({ variant = "default", className, ...rest }: ItemMedia
       data-part="media"
       data-scope="item"
       data-variant={variant}
-    />
+    >
+      {children}
+    </ark.div>
   );
 }
 
-export function ItemContent({ className, ...rest }: ItemContentProps) {
+export function ItemContent({ className, children, ...rest }: ItemContentProps) {
   const { slots } = useItem();
 
   return (
@@ -72,19 +69,23 @@ export function ItemContent({ className, ...rest }: ItemContentProps) {
       className={slots.content({ className })}
       data-part="content"
       data-scope="item"
-    />
+    >
+      {children}
+    </ark.div>
   );
 }
 
-export function ItemTitle({ className, ...rest }: ItemTitleProps) {
+export function ItemTitle({ className, children, ...rest }: ItemTitleProps) {
   const { slots } = useItem();
 
   return (
-    <ark.div {...rest} className={slots.title({ className })} data-part="title" data-scope="item" />
+    <ark.div {...rest} className={slots.title({ className })} data-part="title" data-scope="item">
+      {children}
+    </ark.div>
   );
 }
 
-export function ItemDescription({ className, ...rest }: ItemDescriptionProps) {
+export function ItemDescription({ className, children, ...rest }: ItemDescriptionProps) {
   const { slots } = useItem();
 
   return (
@@ -93,11 +94,13 @@ export function ItemDescription({ className, ...rest }: ItemDescriptionProps) {
       className={slots.description({ className })}
       data-part="description"
       data-scope="item"
-    />
+    >
+      {children}
+    </ark.p>
   );
 }
 
-export function ItemActions({ className, ...rest }: ItemActionsProps) {
+export function ItemActions({ className, children, ...rest }: ItemActionsProps) {
   const { slots } = useItem();
 
   return (
@@ -106,38 +109,29 @@ export function ItemActions({ className, ...rest }: ItemActionsProps) {
       className={slots.actions({ className })}
       data-part="actions"
       data-scope="item"
-    />
-  );
-}
-
-export function ItemHeader({ title, description, className, children, ...rest }: ItemHeaderProps) {
-  const { slots } = useItem();
-
-  return (
-    <ark.div {...rest} className={slots.header({ className })} data-part="header" data-scope="item">
-      {(title || description) && (
-        <div className={slots.inline()}>
-          {title && <ItemTitle>{title}</ItemTitle>}
-
-          {description && <ItemDescription>{description}</ItemDescription>}
-        </div>
-      )}
-
+    >
       {children}
     </ark.div>
   );
 }
 
-export function ItemFooter({ className, ...rest }: ItemFooterProps) {
+export function ItemHeader({ className, children, ...rest }: ItemHeaderProps) {
   const { slots } = useItem();
 
   return (
-    <ark.div
-      {...rest}
-      className={slots.footer({ className })}
-      data-part="footer"
-      data-scope="item"
-    />
+    <ark.div {...rest} className={slots.header({ className })} data-part="header" data-scope="item">
+      {children}
+    </ark.div>
+  );
+}
+
+export function ItemFooter({ className, children, ...rest }: ItemFooterProps) {
+  const { slots } = useItem();
+
+  return (
+    <ark.div {...rest} className={slots.footer({ className })} data-part="footer" data-scope="item">
+      {children}
+    </ark.div>
   );
 }
 // #endregion

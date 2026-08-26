@@ -24,10 +24,7 @@ export interface FloatingPanelContentProps
 }
 
 export interface FloatingPanelHeaderProps
-  extends ComponentProps<typeof FloatingPanelPrimitive.Header> {
-  /** Renders FloatingPanel.Title with the provided text */
-  title?: string;
-}
+  extends ComponentProps<typeof FloatingPanelPrimitive.Header> {}
 
 export type FloatingPanelMinimizeProps = Omit<
   ComponentProps<typeof FloatingPanelPrimitive.StageTrigger>,
@@ -77,13 +74,16 @@ export interface FloatingPanelFooterProps extends ComponentProps<typeof ark.div>
 export function FloatingPanelRoot({
   lazyMount = true,
   unmountOnExit = true,
+  children,
   ...rest
 }: FloatingPanelRootProps) {
   const slots = useMemo(() => floatingPanelVariants(), []);
 
   return (
     <FloatingPanelContext value={{ slots }}>
-      <FloatingPanelPrimitive.Root lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...rest} />
+      <FloatingPanelPrimitive.Root lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...rest}>
+        {children}
+      </FloatingPanelPrimitive.Root>
     </FloatingPanelContext>
   );
 }
@@ -128,29 +128,26 @@ export function FloatingPanelDragTrigger(props: FloatingPanelDragTriggerProps) {
   return <FloatingPanelPrimitive.DragTrigger {...props} />;
 }
 
-export function FloatingPanelHeader({
-  className,
-  title,
-  children,
-  ...rest
-}: FloatingPanelHeaderProps) {
+export function FloatingPanelHeader({ className, children, ...rest }: FloatingPanelHeaderProps) {
   const { slots = floatingPanelVariants() } = useFloatingPanel() ?? {};
 
   return (
     <FloatingPanelDragTrigger>
       <FloatingPanelPrimitive.Header {...rest} className={slots.header({ className })}>
-        {title && <FloatingPanelTitle>{title}</FloatingPanelTitle>}
-
         {children}
       </FloatingPanelPrimitive.Header>
     </FloatingPanelDragTrigger>
   );
 }
 
-export function FloatingPanelControl({ className, ...rest }: FloatingPanelControlProps) {
+export function FloatingPanelControl({ className, children, ...rest }: FloatingPanelControlProps) {
   const { slots = floatingPanelVariants() } = useFloatingPanel() ?? {};
 
-  return <FloatingPanelPrimitive.Control {...rest} className={slots.control({ className })} />;
+  return (
+    <FloatingPanelPrimitive.Control {...rest} className={slots.control({ className })}>
+      {children}
+    </FloatingPanelPrimitive.Control>
+  );
 }
 
 export function FloatingPanelMinimize({
@@ -198,10 +195,14 @@ export function FloatingPanelRestore({
   );
 }
 
-export function FloatingPanelTitle({ className, ...rest }: FloatingPanelTitleProps) {
+export function FloatingPanelTitle({ className, children, ...rest }: FloatingPanelTitleProps) {
   const { slots = floatingPanelVariants() } = useFloatingPanel() ?? {};
 
-  return <FloatingPanelPrimitive.Title {...rest} className={slots.title({ className })} />;
+  return (
+    <FloatingPanelPrimitive.Title {...rest} className={slots.title({ className })}>
+      {children}
+    </FloatingPanelPrimitive.Title>
+  );
 }
 
 export function FloatingPanelResizeTrigger(props: FloatingPanelResizeTriggerProps) {
@@ -233,7 +234,7 @@ export function FloatingPanelBody({
   );
 }
 
-export function FloatingPanelFooter({ className, ...rest }: FloatingPanelFooterProps) {
+export function FloatingPanelFooter({ className, children, ...rest }: FloatingPanelFooterProps) {
   const { slots = floatingPanelVariants() } = useFloatingPanel() ?? {};
 
   return (
@@ -242,7 +243,9 @@ export function FloatingPanelFooter({ className, ...rest }: FloatingPanelFooterP
       className={slots.footer({ className })}
       data-part="footer"
       data-scope="floating-panel"
-    />
+    >
+      {children}
+    </ark.div>
   );
 }
 // #endregion
