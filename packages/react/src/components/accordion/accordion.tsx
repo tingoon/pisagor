@@ -1,6 +1,6 @@
 import { Accordion as AccordionPrimitive } from "@ark-ui/react/accordion";
 import { CaretDownIcon } from "@phosphor-icons/react";
-import { accordionItemVariants } from "@pisagor/styles/accordion";
+import { accordionItemVariants } from "@pisagor/recipes/accordion";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";
 import { AccordionItemContext, useAccordionItem } from "./accordion.context";

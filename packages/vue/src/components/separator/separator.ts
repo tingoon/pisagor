@@ -1,4 +1,4 @@
-import { separatorVariants } from "@pisagor/styles/ui/separator";
+import { separatorVariants } from "@pisagor/recipes/separator";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 

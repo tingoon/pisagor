@@ -1,4 +1,4 @@
-import type { TableVariants } from "@pisagor/styles/ui/table";
+import type { TableVariants } from "@pisagor/recipes/table";
 import { createContext } from "../../utils";
 
 interface TableContextValue {

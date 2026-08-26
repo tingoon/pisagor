@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { linkBoxVariants } from "@pisagor/styles/ui/link-box";
+import { linkBoxVariants } from "@pisagor/recipes/link-box";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { LinkBoxContext, useLinkBox } from "./link-box.context";

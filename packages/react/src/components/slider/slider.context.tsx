@@ -1,4 +1,4 @@
-import type { SliderVariants } from "@pisagor/styles/ui/slider";
+import type { SliderVariants } from "@pisagor/recipes/slider";
 import { createContext } from "../../utils";
 
 interface SliderContextValue {

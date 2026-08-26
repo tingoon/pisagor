@@ -1,5 +1,5 @@
 import { Dialog as DialogPrimitive } from "@ark-ui/vue/dialog";
-import { type DialogVariants, dialogVariants } from "@pisagor/styles/ui/dialog";
+import { type DialogVariants, dialogVariants } from "@pisagor/recipes/dialog";
 import {
   defineComponent,
   h,

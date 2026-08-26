@@ -3,7 +3,7 @@ import {
   type DataListItemSlots,
   dataListItemVariants,
   dataListVariants,
-} from "@pisagor/styles/ui/data-list";
+} from "@pisagor/recipes/data-list";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";
 import type { VariantClassNames } from "../../internal/types";

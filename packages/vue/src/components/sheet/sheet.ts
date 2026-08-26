@@ -1,5 +1,5 @@
 import { Dialog as DialogPrimitive } from "@ark-ui/vue/dialog";
-import { type SheetVariants, sheetVariants } from "@pisagor/styles/ui/sheet";
+import { type SheetVariants, sheetVariants } from "@pisagor/recipes/sheet";
 import { defineComponent, h, type PropType, reactive, Teleport } from "vue";
 import { renderIconCloseButton } from "../../internal/close-button";
 import { createContext } from "../../utils/create-context";

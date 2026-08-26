@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/vue/factory";
 import { Steps as StepsPrimitive } from "@ark-ui/vue/steps";
 import { PhCheck } from "@phosphor-icons/vue";
-import { stepsItemVariants, stepsVariants } from "@pisagor/styles/ui/steps";
+import { stepsItemVariants, stepsVariants } from "@pisagor/recipes/steps";
 import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];

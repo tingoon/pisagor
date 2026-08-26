@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type EmptyStateSlots, emptyStateVariants } from "@pisagor/styles/ui/empty-state";
+import { type EmptyStateSlots, emptyStateVariants } from "@pisagor/recipes/empty-state";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";

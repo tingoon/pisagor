@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { type ToolbarSlots, toolbarVariants } from "@pisagor/styles/ui/toolbar";
+import { type ToolbarSlots, toolbarVariants } from "@pisagor/recipes/toolbar";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";
 import type { VariantClassNames } from "../../internal/types";

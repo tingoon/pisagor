@@ -1,6 +1,6 @@
 import { Collapsible as CollapsiblePrimitive } from "@ark-ui/vue/collapsible";
 import { PhCaretDown } from "@phosphor-icons/vue";
-import { collapsibleVariants } from "@pisagor/styles/ui/collapsible";
+import { collapsibleVariants } from "@pisagor/recipes/collapsible";
 import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];

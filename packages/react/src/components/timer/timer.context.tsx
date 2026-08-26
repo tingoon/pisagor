@@ -1,4 +1,4 @@
-import type { TimerItemGroupVariants, TimerVariants } from "@pisagor/styles/ui/timer";
+import type { TimerItemGroupVariants, TimerVariants } from "@pisagor/recipes/timer";
 import { createContext } from "../../utils";
 
 interface TimerContextValue {

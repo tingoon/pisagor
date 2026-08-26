@@ -5,8 +5,8 @@ import {
   ProgressTrack,
   ProgressValueText,
 } from "@ark-ui/vue/progress";
-import { fieldVariants } from "@pisagor/styles/ui/field";
-import { type ProgressSlots, progressVariants } from "@pisagor/styles/ui/progress";
+import { fieldVariants } from "@pisagor/recipes/field";
+import { type ProgressSlots, progressVariants } from "@pisagor/recipes/progress";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNode } from "vue";
 import type { VariantClassNames } from "../../internal/types";

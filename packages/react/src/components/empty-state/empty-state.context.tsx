@@ -1,4 +1,4 @@
-import type { EmptyStateVariants } from "@pisagor/styles/ui/empty-state";
+import type { EmptyStateVariants } from "@pisagor/recipes/empty-state";
 import { createContext } from "../../utils";
 
 interface EmptyStateContextValue {

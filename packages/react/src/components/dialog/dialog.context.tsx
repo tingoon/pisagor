@@ -1,4 +1,4 @@
-import type { DialogVariants } from "@pisagor/styles/ui/dialog";
+import type { DialogVariants } from "@pisagor/recipes/dialog";
 import { createContext } from "../../utils";
 
 interface DialogContextValue {

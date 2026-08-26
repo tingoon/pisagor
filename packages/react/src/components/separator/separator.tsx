@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { separatorVariants } from "@pisagor/styles/ui/separator";
+import { separatorVariants } from "@pisagor/recipes/separator";
 import type { ComponentProps } from "react";
 
 // #region Types

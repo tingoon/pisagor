@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { type ButtonGroupVariantProps, buttonGroupVariants } from "@pisagor/styles/ui/button-group";
+import { type ButtonGroupVariantProps, buttonGroupVariants } from "@pisagor/recipes/button-group";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { Separator, type SeparatorProps } from "../separator";

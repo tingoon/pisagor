@@ -1,4 +1,4 @@
-import type { ColorPickerVariants } from "@pisagor/styles/ui/color-picker";
+import type { ColorPickerVariants } from "@pisagor/recipes/color-picker";
 import { createContext } from "../../utils";
 
 interface ColorPickerContextValue {

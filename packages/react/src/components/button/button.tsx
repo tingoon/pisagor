@@ -3,7 +3,7 @@ import {
   type ButtonVariantProps,
   buttonLoadingVariants,
   buttonVariants,
-} from "@pisagor/styles/ui/button";
+} from "@pisagor/recipes/button";
 import type { ComponentProps } from "react";
 import { Spinner } from "../spinner";
 

@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { badgeVariants } from "@pisagor/styles/ui/badge";
+import { badgeVariants } from "@pisagor/recipes/badge";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types

@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { type CardVariantProps, cardVariants } from "@pisagor/styles/ui/card";
+import { type CardVariantProps, cardVariants } from "@pisagor/recipes/card";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { CardContext, useCard } from "./card.context";

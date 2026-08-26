@@ -1,4 +1,4 @@
-import type { SortableItemVariants } from "@pisagor/styles/ui/sortable";
+import type { SortableItemVariants } from "@pisagor/recipes/sortable";
 import type { DragEvent, KeyboardEvent } from "react";
 import { createContext } from "../../utils";
 

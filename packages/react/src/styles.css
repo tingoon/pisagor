@@ -1,8 +1,8 @@
 @import "tw-animate-css";
 @plugin "@tailwindcss/typography";
 @source "./**/*.{ts,tsx}";
-@source "../../styles/src/ui/**/*.ts";
-@source "../../styles/src/blocks/**/*.ts";
+@source "../../recipes/src/ui/**/*.ts";
+@source "../../recipes/src/blocks/**/*.ts";
 
 @custom-variant dark (&:is(.dark *));
 

@@ -1,5 +1,5 @@
 import { QrCode as QrCodePrimitive } from "@ark-ui/react/qr-code";
-import { qrCodeVariants } from "@pisagor/styles/ui/qr-code";
+import { qrCodeVariants } from "@pisagor/recipes/qr-code";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { QrCodeContext, useQrCode } from "./qr-code.context";

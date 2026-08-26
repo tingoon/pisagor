@@ -5,7 +5,7 @@ import {
   type StatVariantProps,
   statTrendVariants,
   statVariants,
-} from "@pisagor/styles/ui/stat";
+} from "@pisagor/recipes/stat";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";
 import type { VariantClassNames } from "../../internal/types";

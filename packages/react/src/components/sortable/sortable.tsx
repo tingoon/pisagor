@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import { DotsSixVerticalIcon } from "@phosphor-icons/react";
-import { sortableItemVariants, sortableVariants } from "@pisagor/styles/ui/sortable";
+import { sortableItemVariants, sortableVariants } from "@pisagor/recipes/sortable";
 import { cn } from "@pisagor/utils";
 import {
   type ComponentProps,

@@ -4,7 +4,7 @@ import {
   type PhoneInputSlots,
   type PhoneInputVariantProps,
   phoneInputVariants,
-} from "@pisagor/styles/ui/phone-input";
+} from "@pisagor/recipes/phone-input";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";

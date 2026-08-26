@@ -1,6 +1,6 @@
 import { RatingGroup as RatingGroupPrimitive } from "@ark-ui/vue/rating-group";
 import { PhStar } from "@phosphor-icons/vue";
-import { ratingVariants } from "@pisagor/styles/ui/rating";
+import { ratingVariants } from "@pisagor/recipes/rating";
 import { cn } from "@pisagor/utils";
 
 type ClassValue = Parameters<typeof cn>[0];

@@ -1,5 +1,5 @@
 import { Popover as PopoverPrimitive } from "@ark-ui/vue/popover";
-import { popoverContentVariants } from "@pisagor/styles/ui/popover";
+import { popoverContentVariants } from "@pisagor/recipes/popover";
 import { type CSSProperties, defineComponent, h, type PropType, Teleport } from "vue";
 import { renderIconCloseButton } from "../../internal/close-button";
 

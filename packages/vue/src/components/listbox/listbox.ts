@@ -7,7 +7,7 @@ import {
   type ListboxItemVariantProps,
   listboxItemVariants,
   listboxVariants,
-} from "@pisagor/styles/ui/listbox";
+} from "@pisagor/recipes/listbox";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { DropdownMenu } from "../dropdown-menu";

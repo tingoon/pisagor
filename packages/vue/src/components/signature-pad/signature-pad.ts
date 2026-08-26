@@ -5,7 +5,7 @@ import {
   SignaturePad as SignaturePadPrimitive,
 } from "@ark-ui/vue/signature-pad";
 import { PhArrowCounterClockwise } from "@phosphor-icons/vue";
-import { type SignaturePadSlots, signaturePadVariants } from "@pisagor/styles/ui/signature-pad";
+import { type SignaturePadSlots, signaturePadVariants } from "@pisagor/recipes/signature-pad";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";

@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { frameVariants } from "@pisagor/styles/ui/frame";
+import { frameVariants } from "@pisagor/recipes/frame";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { FrameContext, useFrame } from "./frame.context";

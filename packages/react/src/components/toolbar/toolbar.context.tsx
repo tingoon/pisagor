@@ -1,4 +1,4 @@
-import type { ToolbarVariants } from "@pisagor/styles/ui/toolbar";
+import type { ToolbarVariants } from "@pisagor/recipes/toolbar";
 import { createContext } from "../../utils";
 
 interface ToolbarContextValue {

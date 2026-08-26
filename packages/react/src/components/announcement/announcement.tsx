@@ -1,8 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import {
-  type AnnouncementVariantProps,
-  announcementVariants,
-} from "@pisagor/styles/ui/announcement";
+import { type AnnouncementVariantProps, announcementVariants } from "@pisagor/recipes/announcement";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";
 import { AnnouncementContext, useAnnouncement } from "./announcement.context";

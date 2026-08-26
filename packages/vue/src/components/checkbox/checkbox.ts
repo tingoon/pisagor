@@ -1,6 +1,6 @@
 import { Checkbox as CheckboxPrimitive } from "@ark-ui/vue/checkbox";
 import { PhCheck, PhMinus } from "@phosphor-icons/vue";
-import { checkbox2Variants, checkboxGroupVariants } from "@pisagor/styles/ui/checkbox";
+import { checkbox2Variants, checkboxGroupVariants } from "@pisagor/recipes/checkbox";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import {

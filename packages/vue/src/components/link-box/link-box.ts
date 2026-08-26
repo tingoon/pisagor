@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { linkBoxVariants } from "@pisagor/styles/ui/link-box";
+import { linkBoxVariants } from "@pisagor/recipes/link-box";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types

@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { type SurfaceVariantProps, surfaceVariants } from "@pisagor/styles/ui/surface";
+import { type SurfaceVariantProps, surfaceVariants } from "@pisagor/recipes/surface";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { SurfaceContext, type SurfaceVariant, useSurface } from "./surface.context";

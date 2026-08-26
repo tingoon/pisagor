@@ -1,8 +1,8 @@
 import { DatePicker as DatePickerPrimitive, useDatePickerContext } from "@ark-ui/react/date-picker";
 import { Portal } from "@ark-ui/react/portal";
 import { CalendarIcon, ClockIcon, XIcon } from "@phosphor-icons/react";
-import { calendarVariants } from "@pisagor/styles/ui/calendar";
-import { datePickerVariants } from "@pisagor/styles/ui/date-picker";
+import { calendarVariants } from "@pisagor/recipes/calendar";
+import { datePickerVariants } from "@pisagor/recipes/date-picker";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { useClearableInput } from "../../hooks";

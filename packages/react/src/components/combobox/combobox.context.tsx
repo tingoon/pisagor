@@ -1,4 +1,4 @@
-import type { ComboboxVariants } from "@pisagor/styles/ui/combobox";
+import type { ComboboxVariants } from "@pisagor/recipes/combobox";
 import { createContext } from "../../utils";
 
 export interface ComboboxRootContextValue {

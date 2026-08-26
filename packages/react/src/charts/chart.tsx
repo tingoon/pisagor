@@ -1,4 +1,4 @@
-import { chartVariants } from "@pisagor/styles/ui/chart";
+import { chartVariants } from "@pisagor/recipes/chart";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ComponentType, ReactNode } from "react";
 import { useId, useMemo } from "react";

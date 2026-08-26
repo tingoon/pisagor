@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import { Timer as TimerPrimitive, useTimerContext } from "@ark-ui/react/timer";
-import { timerItemGroupVariants, timerVariants } from "@pisagor/styles/ui/timer";
+import { timerItemGroupVariants, timerVariants } from "@pisagor/recipes/timer";
 import type { ComponentProps } from "react";
 import { Fragment, useMemo } from "react";
 import { TimerContext, TimerItemGroupContext, useTimer, useTimerItemGroup } from "./timer.context";

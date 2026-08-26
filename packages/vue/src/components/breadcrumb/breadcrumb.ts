@@ -5,7 +5,7 @@ import {
   type BreadcrumbVariants,
   breadcrumbItemVariants,
   breadcrumbVariants,
-} from "@pisagor/styles/ui/breadcrumb";
+} from "@pisagor/recipes/breadcrumb";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { createContext } from "../../utils/create-context";
 

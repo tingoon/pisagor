@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { skeletonVariants } from "@pisagor/styles/ui/skeleton";
+import { skeletonVariants } from "@pisagor/recipes/skeleton";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 

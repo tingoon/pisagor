@@ -1,4 +1,4 @@
-import type { ClipboardVariants } from "@pisagor/styles/ui/clipboard";
+import type { ClipboardVariants } from "@pisagor/recipes/clipboard";
 import { createContext } from "../../utils";
 
 interface ClipboardContextValue {

@@ -1,4 +1,4 @@
-import type { PaginationVariants } from "@pisagor/styles/ui/pagination";
+import type { PaginationVariants } from "@pisagor/recipes/pagination";
 import { createContext } from "../../utils";
 
 interface PaginationContextValue {

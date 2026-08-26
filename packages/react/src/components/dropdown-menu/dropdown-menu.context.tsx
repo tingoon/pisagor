@@ -1,4 +1,4 @@
-import type { DropdownMenuVariants } from "@pisagor/styles/ui/dropdown-menu";
+import type { DropdownMenuVariants } from "@pisagor/recipes/dropdown-menu";
 import { createContext } from "../../utils";
 
 interface DropdownMenuContextValue {

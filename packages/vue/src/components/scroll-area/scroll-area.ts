@@ -1,5 +1,5 @@
 import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/vue/scroll-area";
-import { type ScrollAreaSlots, scrollAreaVariants } from "@pisagor/styles/ui/scroll-area";
+import { type ScrollAreaSlots, scrollAreaVariants } from "@pisagor/recipes/scroll-area";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 

@@ -1,4 +1,4 @@
-import { type ChartVariants, chartVariants } from "@pisagor/styles/ui/chart";
+import { type ChartVariants, chartVariants } from "@pisagor/recipes/chart";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { createContext } from "../utils/create-context";

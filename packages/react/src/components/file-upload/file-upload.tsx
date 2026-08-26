@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/react/factory";
 import { FileUpload as FileUploadPrimitive, useFileUploadContext } from "@ark-ui/react/file-upload";
 import { UploadIcon, XIcon } from "@phosphor-icons/react";
-import { fileUploadItemVariants, fileUploadVariants } from "@pisagor/styles/ui/file-upload";
+import { fileUploadItemVariants, fileUploadVariants } from "@pisagor/recipes/file-upload";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";

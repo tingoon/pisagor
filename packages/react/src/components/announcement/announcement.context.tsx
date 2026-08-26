@@ -1,4 +1,4 @@
-import type { AnnouncementVariants } from "@pisagor/styles/ui/announcement";
+import type { AnnouncementVariants } from "@pisagor/recipes/announcement";
 import { createContext } from "../../utils";
 
 interface AnnouncementContextValue {

@@ -3,7 +3,7 @@ import {
   type ButtonVariantProps,
   buttonLoadingVariants,
   buttonVariants,
-} from "@pisagor/styles/ui/button";
+} from "@pisagor/recipes/button";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { Spinner } from "../spinner";

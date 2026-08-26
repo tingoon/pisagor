@@ -1,4 +1,4 @@
-import type { NavbarVariants } from "@pisagor/styles/ui/navbar";
+import type { NavbarVariants } from "@pisagor/recipes/navbar";
 import { createContext } from "../../utils";
 
 interface NavbarContextValue {

@@ -1,5 +1,5 @@
 import { PhGlobe } from "@phosphor-icons/vue";
-import { phoneInputVariants } from "@pisagor/styles/ui/phone-input";
+import { phoneInputVariants } from "@pisagor/recipes/phone-input";
 import { cn } from "@pisagor/utils";
 
 type ClassValue = Parameters<typeof cn>[0];

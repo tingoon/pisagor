@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { type KbdVariantProps, kbdGroupVariants, kbdVariants } from "@pisagor/styles/ui/kbd";
+import { type KbdVariantProps, kbdGroupVariants, kbdVariants } from "@pisagor/recipes/kbd";
 import type { ComponentProps } from "react";
 // #region Types
 export interface KbdProps extends ComponentProps<typeof ark.kbd>, KbdVariantProps {}

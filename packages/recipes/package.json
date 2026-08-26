@@ -10,17 +10,17 @@
     "@pisagor/tsconfig": "workspace:*"
   },
   "exports": {
-    "./accordion": "./src/ui/accordion.ts",
-    "./ui/*": "./src/ui/*.ts"
+    ".": "./src/ui/index.ts",
+    "./*": "./src/ui/*.ts"
   },
   "homepage": "https://github.com/tingoon/pisagor#readme",
   "license": "MIT",
-  "name": "@pisagor/styles",
+  "name": "@pisagor/recipes",
   "publishConfig": {
     "access": "public"
   },
   "repository": {
-    "directory": "packages/styles",
+    "directory": "packages/recipes",
     "type": "git",
     "url": "git+https://github.com/tingoon/pisagor.git"
   },

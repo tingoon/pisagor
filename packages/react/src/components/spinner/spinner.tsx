@@ -1,5 +1,5 @@
 import { CircleNotchIcon } from "@phosphor-icons/react";
-import { spinnerVariants } from "@pisagor/styles/ui/spinner";
+import { spinnerVariants } from "@pisagor/recipes/spinner";
 import type { ComponentProps } from "react";
 // #region Types
 export interface SpinnerProps extends ComponentProps<"svg"> {}

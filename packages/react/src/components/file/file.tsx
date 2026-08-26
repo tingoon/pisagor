@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import { FileIcon } from "@phosphor-icons/react";
-import { type FileVariantProps, fileVariants } from "@pisagor/styles/ui/file";
+import { type FileVariantProps, fileVariants } from "@pisagor/recipes/file";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";
 import { Format } from "../format";

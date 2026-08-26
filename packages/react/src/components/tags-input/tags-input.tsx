@@ -1,6 +1,6 @@
 import { TagsInput as TagsInputPrimitive, useTagsInputContext } from "@ark-ui/react/tags-input";
 import { XIcon } from "@phosphor-icons/react";
-import { tagsInputItemVariants, tagsInputVariants } from "@pisagor/styles/ui/tags-input";
+import { tagsInputItemVariants, tagsInputVariants } from "@pisagor/recipes/tags-input";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";

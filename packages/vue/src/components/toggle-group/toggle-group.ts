@@ -1,5 +1,5 @@
 import { ToggleGroup as ToggleGroupPrimitive } from "@ark-ui/vue/toggle-group";
-import { type ToggleGroupVariants, toggleGroupVariants } from "@pisagor/styles/ui/toggle-group";
+import { type ToggleGroupVariants, toggleGroupVariants } from "@pisagor/recipes/toggle-group";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { createContext } from "../../utils/create-context";

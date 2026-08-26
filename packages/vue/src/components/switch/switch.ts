@@ -1,5 +1,5 @@
 import { Switch as SwitchPrimitive } from "@ark-ui/vue/switch";
-import { type SwitchSlots, switchVariants } from "@pisagor/styles/ui/switch";
+import { type SwitchSlots, switchVariants } from "@pisagor/recipes/switch";
 import { defineComponent, h, type PropType } from "vue";
 import {
   type FormControlVariant,

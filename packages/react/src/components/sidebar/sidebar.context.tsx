@@ -1,4 +1,4 @@
-import type { SidebarVariants } from "@pisagor/styles/ui/sidebar";
+import type { SidebarVariants } from "@pisagor/recipes/sidebar";
 import { createContext } from "../../utils";
 
 interface SidebarContextProps {

@@ -6,7 +6,7 @@ import {
   type DropdownMenuItemVariantProps,
   dropdownMenuItemVariants,
   dropdownMenuVariants,
-} from "@pisagor/styles/ui/dropdown-menu";
+} from "@pisagor/recipes/dropdown-menu";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { DropdownMenuContext, useDropdownMenu } from "./dropdown-menu.context";

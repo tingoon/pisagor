@@ -6,7 +6,7 @@ import {
   useComboboxContext as useCombobox,
 } from "@ark-ui/vue/combobox";
 import { PhCaretUpDown, PhCheck, PhX } from "@phosphor-icons/vue";
-import { comboboxVariants } from "@pisagor/styles/ui/combobox";
+import { comboboxVariants } from "@pisagor/recipes/combobox";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, Teleport, type VNodeChild } from "vue";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";

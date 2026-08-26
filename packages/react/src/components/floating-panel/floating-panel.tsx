@@ -2,7 +2,7 @@ import { ark } from "@ark-ui/react/factory";
 import { FloatingPanel as FloatingPanelPrimitive } from "@ark-ui/react/floating-panel";
 import { Portal } from "@ark-ui/react/portal";
 import { ArrowsOutIcon, CornersInIcon, MinusIcon } from "@phosphor-icons/react";
-import { floatingPanelVariants } from "@pisagor/styles/ui/floating-panel";
+import { floatingPanelVariants } from "@pisagor/recipes/floating-panel";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { Button, type ButtonProps } from "../button";

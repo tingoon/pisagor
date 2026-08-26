@@ -1,4 +1,4 @@
-import type { ResizableVariants } from "@pisagor/styles/ui/resizable";
+import type { ResizableVariants } from "@pisagor/recipes/resizable";
 import { createContext } from "../../utils";
 
 interface ResizableContextValue {

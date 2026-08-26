@@ -1,4 +1,4 @@
-import type { ActionBarVariants } from "@pisagor/styles/ui/action-bar";
+import type { ActionBarVariants } from "@pisagor/recipes/action-bar";
 import { createContext } from "../../utils";
 
 interface ActionBarPositioning {

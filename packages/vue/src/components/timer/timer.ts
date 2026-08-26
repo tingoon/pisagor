@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
 import { Timer as TimerPrimitive, useTimerContext as useTimer } from "@ark-ui/vue/timer";
-import { timerItemGroupVariants, timerVariants } from "@pisagor/styles/ui/timer";
+import { timerItemGroupVariants, timerVariants } from "@pisagor/recipes/timer";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types

@@ -2,7 +2,7 @@ import {
   AngleSlider as AngleSliderPrimitive,
   useAngleSliderContext,
 } from "@ark-ui/react/angle-slider";
-import { circularSliderVariants } from "@pisagor/styles/ui/circular-slider";
+import { circularSliderVariants } from "@pisagor/recipes/circular-slider";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";
 import { Field } from "../field";

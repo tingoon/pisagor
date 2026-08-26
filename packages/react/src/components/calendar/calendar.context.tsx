@@ -1,4 +1,4 @@
-import type { CalendarVariants } from "@pisagor/styles/ui/calendar";
+import type { CalendarVariants } from "@pisagor/recipes/calendar";
 import { createContext } from "../../utils";
 
 interface CalendarContextValue {

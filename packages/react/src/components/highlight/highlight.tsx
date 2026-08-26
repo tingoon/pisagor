@@ -1,5 +1,5 @@
 import { Highlight as HighlightPrimitive } from "@ark-ui/react/highlight";
-import { highlightVariants } from "@pisagor/styles/ui/highlight";
+import { highlightVariants } from "@pisagor/recipes/highlight";
 import type { ComponentProps } from "react";
 
 // #region Types

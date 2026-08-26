@@ -1,5 +1,5 @@
 import { SegmentGroup as SegmentGroupPrimitive } from "@ark-ui/vue/segment-group";
-import { segmentGroupVariants } from "@pisagor/styles/ui/segment-group";
+import { segmentGroupVariants } from "@pisagor/recipes/segment-group";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 

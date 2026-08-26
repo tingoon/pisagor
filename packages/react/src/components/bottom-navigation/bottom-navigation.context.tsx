@@ -1,7 +1,7 @@
 import type {
   BottomNavigationItemVariants,
   BottomNavigationVariants,
-} from "@pisagor/styles/ui/bottom-navigation";
+} from "@pisagor/recipes/bottom-navigation";
 import { createContext } from "../../utils";
 
 interface BottomNavigationContextValue {

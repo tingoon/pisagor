@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/react/factory";
 import { Field as FieldPrimitive } from "@ark-ui/react/field";
 import { Fieldset as FieldsetPrimitive } from "@ark-ui/react/fieldset";
-import { type FieldVariantProps, fieldVariants } from "@pisagor/styles/ui/field";
+import { type FieldVariantProps, fieldVariants } from "@pisagor/recipes/field";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import {

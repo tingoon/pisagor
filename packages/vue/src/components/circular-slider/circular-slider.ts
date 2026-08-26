@@ -2,7 +2,7 @@ import {
   AngleSlider as AngleSliderPrimitive,
   useAngleSliderContext,
 } from "@ark-ui/vue/angle-slider";
-import { circularSliderVariants } from "@pisagor/styles/ui/circular-slider";
+import { circularSliderVariants } from "@pisagor/recipes/circular-slider";
 import {
   defineComponent,
   h,

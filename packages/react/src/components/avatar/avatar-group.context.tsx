@@ -1,4 +1,4 @@
-import type { AvatarGroupVariants } from "@pisagor/styles/ui/avatar";
+import type { AvatarGroupVariants } from "@pisagor/recipes/avatar";
 import { createContext } from "../../utils";
 
 interface AvatarGroupContextValue {

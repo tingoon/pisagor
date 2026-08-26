@@ -1,5 +1,5 @@
 import { PhArrowsInLineHorizontal, PhArrowsOutLineHorizontal } from "@phosphor-icons/vue";
-import { appShellVariants } from "@pisagor/styles/ui/app-shell";
+import { appShellVariants } from "@pisagor/recipes/app-shell";
 import { cn } from "@pisagor/utils";
 import type { Component, VNode, VNodeChild } from "vue";
 import {

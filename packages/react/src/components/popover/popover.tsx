@@ -2,7 +2,7 @@ import { ark } from "@ark-ui/react/factory";
 import { Popover as PopoverPrimitive } from "@ark-ui/react/popover";
 import { Portal } from "@ark-ui/react/portal";
 import { XIcon } from "@phosphor-icons/react";
-import { popoverContentVariants } from "@pisagor/styles/ui/popover";
+import { popoverContentVariants } from "@pisagor/recipes/popover";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { Button } from "../button";

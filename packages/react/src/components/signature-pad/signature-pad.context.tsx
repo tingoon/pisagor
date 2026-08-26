@@ -1,4 +1,4 @@
-import type { SignaturePadVariants } from "@pisagor/styles/ui/signature-pad";
+import type { SignaturePadVariants } from "@pisagor/recipes/signature-pad";
 import { createContext } from "../../utils";
 
 interface SignaturePadContextValue {

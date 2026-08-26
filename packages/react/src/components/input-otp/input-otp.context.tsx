@@ -1,4 +1,4 @@
-import type { InputOtpVariants } from "@pisagor/styles/ui/input-otp";
+import type { InputOtpVariants } from "@pisagor/recipes/input-otp";
 import { createContext } from "../../utils";
 
 interface InputOTPContextValue {

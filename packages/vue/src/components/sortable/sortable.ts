@@ -4,7 +4,7 @@ import {
   type SortableItemVariants,
   sortableItemVariants,
   sortableVariants,
-} from "@pisagor/styles/ui/sortable";
+} from "@pisagor/recipes/sortable";
 import { cn } from "@pisagor/utils";
 import {
   defineComponent,

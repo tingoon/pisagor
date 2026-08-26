@@ -1,4 +1,4 @@
-import type { JsonTreeViewVariants } from "@pisagor/styles/ui/json-tree-view";
+import type { JsonTreeViewVariants } from "@pisagor/recipes/json-tree-view";
 import { createContext } from "../../utils";
 
 interface JsonTreeViewContextValue {

@@ -1,4 +1,4 @@
-import type { AlertVariants } from "@pisagor/styles/ui/alert";
+import type { AlertVariants } from "@pisagor/recipes/alert";
 import { createContext } from "../../utils";
 
 interface AlertContextValue {

@@ -1,6 +1,6 @@
 import { SignaturePad as SignaturePadPrimitive } from "@ark-ui/react/signature-pad";
 import { ArrowCounterClockwiseIcon } from "@phosphor-icons/react";
-import { type SignaturePadSlots, signaturePadVariants } from "@pisagor/styles/ui/signature-pad";
+import { type SignaturePadSlots, signaturePadVariants } from "@pisagor/recipes/signature-pad";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";

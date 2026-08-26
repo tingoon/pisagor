@@ -1,4 +1,4 @@
-import { fileInputVariants } from "@pisagor/styles/ui/file-input";
+import { fileInputVariants } from "@pisagor/recipes/file-input";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, ref } from "vue";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";

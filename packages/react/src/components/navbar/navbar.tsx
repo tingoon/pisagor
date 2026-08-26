@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { navbarVariants } from "@pisagor/styles/ui/navbar";
+import { navbarVariants } from "@pisagor/recipes/navbar";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { NavbarContext, useNavbar } from "./navbar.context";

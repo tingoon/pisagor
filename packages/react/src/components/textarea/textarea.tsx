@@ -1,5 +1,5 @@
 import { Field as FieldPrimitive } from "@ark-ui/react/field";
-import { type TextareaSlots, textareaVariants } from "@pisagor/styles/ui/textarea";
+import { type TextareaSlots, textareaVariants } from "@pisagor/recipes/textarea";
 import { cn } from "@pisagor/utils";
 import type { ChangeEventHandler, ComponentProps, ReactNode } from "react";
 import { useClearableInput } from "../../hooks";

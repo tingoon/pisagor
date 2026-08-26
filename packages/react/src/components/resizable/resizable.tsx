@@ -1,6 +1,6 @@
 import { Splitter as SplitterPrimitive } from "@ark-ui/react/splitter";
 import { DotsSixVerticalIcon } from "@phosphor-icons/react";
-import { resizableEdgeHandleVariants, resizableVariants } from "@pisagor/styles/ui/resizable";
+import { resizableEdgeHandleVariants, resizableVariants } from "@pisagor/recipes/resizable";
 import { type ComponentProps, useCallback, useMemo, useRef } from "react";
 import { ResizableSlotsContext, useResizable } from "./resizable.context";
 

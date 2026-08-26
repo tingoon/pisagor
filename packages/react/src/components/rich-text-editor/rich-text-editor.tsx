@@ -6,7 +6,7 @@ import {
   TextItalicIcon,
   TextStrikethroughIcon,
 } from "@phosphor-icons/react";
-import { richTextEditorVariants } from "@pisagor/styles/ui/rich-text-editor";
+import { richTextEditorVariants } from "@pisagor/recipes/rich-text-editor";
 import { cn } from "@pisagor/utils";
 import { EditorContent, useEditor, useEditorState } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";

@@ -1,7 +1,7 @@
 import { Dialog as DialogPrimitive } from "@ark-ui/react/dialog";
 import { Portal } from "@ark-ui/react/portal";
 import { XIcon } from "@phosphor-icons/react";
-import { type SheetVariantProps, sheetVariants } from "@pisagor/styles/ui/sheet";
+import { type SheetVariantProps, sheetVariants } from "@pisagor/recipes/sheet";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { Button } from "../button";

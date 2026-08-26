@@ -9,7 +9,7 @@ import {
 import {
   type RichTextEditorVariants,
   richTextEditorVariants,
-} from "@pisagor/styles/ui/rich-text-editor";
+} from "@pisagor/recipes/rich-text-editor";
 import { cn } from "@pisagor/utils";
 import StarterKit from "@tiptap/starter-kit";
 import { type Editor, EditorContent, useEditor } from "@tiptap/vue-3";

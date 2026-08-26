@@ -30,7 +30,7 @@
         "src/**/*.stories.tsx": ["unresolved", "dependencies", "unlisted"]
       }
     },
-    "packages/styles": {
+    "packages/recipes": {
       "entry": ["src/ui/*.ts"]
     },
     "packages/tsconfig": {

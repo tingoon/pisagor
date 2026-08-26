@@ -1,4 +1,4 @@
-import type { MarqueeVariants } from "@pisagor/styles/ui/marquee";
+import type { MarqueeVariants } from "@pisagor/recipes/marquee";
 import { createContext } from "../../utils";
 
 interface MarqueeContextValue {

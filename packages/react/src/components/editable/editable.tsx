@@ -1,6 +1,6 @@
 import { Editable as EditablePrimitive } from "@ark-ui/react/editable";
-import { buttonVariants } from "@pisagor/styles/ui/button";
-import { editableVariants } from "@pisagor/styles/ui/editable";
+import { buttonVariants } from "@pisagor/recipes/button";
+import { editableVariants } from "@pisagor/recipes/editable";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";

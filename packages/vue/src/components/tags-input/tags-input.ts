@@ -4,7 +4,7 @@ import {
   useTagsInputContext,
 } from "@ark-ui/vue/tags-input";
 import { PhX } from "@phosphor-icons/vue";
-import { tagsInputItemVariants, tagsInputVariants } from "@pisagor/styles/ui/tags-input";
+import { tagsInputItemVariants, tagsInputVariants } from "@pisagor/recipes/tags-input";
 import { cn } from "@pisagor/utils";
 
 type ClassValue = Parameters<typeof cn>[0];

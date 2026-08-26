@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
 import { PhFile } from "@phosphor-icons/vue";
-import { type FileVariantProps, fileVariants } from "@pisagor/styles/ui/file";
+import { type FileVariantProps, fileVariants } from "@pisagor/recipes/file";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { Format } from "../format";
 

@@ -3,7 +3,7 @@ import { Progress as ProgressPrimitive, useProgressContext } from "@ark-ui/react
 import {
   type CircularProgressSlots,
   circularProgressVariants,
-} from "@pisagor/styles/ui/circular-progress";
+} from "@pisagor/recipes/circular-progress";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import {

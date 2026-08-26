@@ -1,4 +1,4 @@
-import type { LinkBoxVariants } from "@pisagor/styles/ui/link-box";
+import type { LinkBoxVariants } from "@pisagor/recipes/link-box";
 import { createContext } from "../../utils";
 
 interface LinkBoxContextValue {

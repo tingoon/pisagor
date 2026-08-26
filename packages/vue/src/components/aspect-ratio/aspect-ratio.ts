@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { aspectRatioVariants } from "@pisagor/styles/ui/aspect-ratio";
+import { aspectRatioVariants } from "@pisagor/recipes/aspect-ratio";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 

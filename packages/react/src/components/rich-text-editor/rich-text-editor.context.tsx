@@ -1,4 +1,4 @@
-import type { RichTextEditorVariants } from "@pisagor/styles/ui/rich-text-editor";
+import type { RichTextEditorVariants } from "@pisagor/recipes/rich-text-editor";
 import type { Editor } from "@tiptap/react";
 import { createContext } from "../../utils";
 

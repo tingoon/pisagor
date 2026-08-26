@@ -1,5 +1,5 @@
 import { Slider as SliderPrimitive } from "@ark-ui/react/slider";
-import { type SliderSlots, sliderVariants } from "@pisagor/styles/ui/slider";
+import { type SliderSlots, sliderVariants } from "@pisagor/recipes/slider";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";

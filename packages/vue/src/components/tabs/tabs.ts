@@ -1,5 +1,5 @@
 import { Tabs as TabsPrimitive } from "@ark-ui/vue/tabs";
-import { tabsVariants } from "@pisagor/styles/ui/tabs";
+import { tabsVariants } from "@pisagor/recipes/tabs";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 

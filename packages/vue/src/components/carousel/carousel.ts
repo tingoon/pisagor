@@ -1,6 +1,6 @@
 import { Carousel as CarouselPrimitive } from "@ark-ui/vue/carousel";
 import { PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
-import { carouselVariants } from "@pisagor/styles/ui/carousel";
+import { carouselVariants } from "@pisagor/recipes/carousel";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { Button } from "../button";

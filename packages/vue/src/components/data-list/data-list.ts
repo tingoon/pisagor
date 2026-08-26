@@ -3,7 +3,7 @@ import {
   type DataListItemSlots,
   dataListItemVariants,
   dataListVariants,
-} from "@pisagor/styles/ui/data-list";
+} from "@pisagor/recipes/data-list";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 

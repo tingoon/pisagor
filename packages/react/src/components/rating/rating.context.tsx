@@ -1,4 +1,4 @@
-import type { RatingVariants } from "@pisagor/styles/ui/rating";
+import type { RatingVariants } from "@pisagor/recipes/rating";
 import { createContext } from "../../utils";
 
 interface RatingContextValue {

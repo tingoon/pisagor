@@ -1,4 +1,4 @@
-import type { SelectVariants } from "@pisagor/styles/ui/select";
+import type { SelectVariants } from "@pisagor/recipes/select";
 import { createContext } from "../../utils";
 
 export interface SelectRootContextValue {

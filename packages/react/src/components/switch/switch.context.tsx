@@ -1,4 +1,4 @@
-import type { SwitchVariants } from "@pisagor/styles/ui/switch";
+import type { SwitchVariants } from "@pisagor/recipes/switch";
 import { createContext } from "../../utils";
 
 interface SwitchContextValue {

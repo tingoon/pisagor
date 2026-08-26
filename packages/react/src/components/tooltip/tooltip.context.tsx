@@ -1,4 +1,4 @@
-import type { TooltipVariants } from "@pisagor/styles/ui/tooltip";
+import type { TooltipVariants } from "@pisagor/recipes/tooltip";
 import { createContext } from "../../utils";
 
 interface TooltipContextValue {

@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { aspectRatioVariants } from "@pisagor/styles/ui/aspect-ratio";
+import { aspectRatioVariants } from "@pisagor/recipes/aspect-ratio";
 import type { ComponentProps } from "react";
 
 // #region Types

@@ -1,4 +1,4 @@
-import type { TextareaVariants } from "@pisagor/styles/ui/textarea";
+import type { TextareaVariants } from "@pisagor/recipes/textarea";
 import { createContext } from "../../utils";
 
 interface TextareaContextValue {

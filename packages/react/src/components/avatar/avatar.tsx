@@ -1,9 +1,5 @@
 import { Avatar as AvatarPrimitive } from "@ark-ui/react/avatar";
-import {
-  type AvatarSlots,
-  type AvatarVariantProps,
-  avatarVariants,
-} from "@pisagor/styles/ui/avatar";
+import { type AvatarSlots, type AvatarVariantProps, avatarVariants } from "@pisagor/recipes/avatar";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { AvatarContext, useAvatar } from "./avatar.context";

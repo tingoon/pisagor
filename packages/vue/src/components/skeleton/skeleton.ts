@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { skeletonVariants } from "@pisagor/styles/ui/skeleton";
+import { skeletonVariants } from "@pisagor/recipes/skeleton";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types

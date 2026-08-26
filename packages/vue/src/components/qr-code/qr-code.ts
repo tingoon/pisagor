@@ -1,5 +1,5 @@
 import { QrCode as QrCodePrimitive } from "@ark-ui/vue/qr-code";
-import { qrCodeVariants } from "@pisagor/styles/ui/qr-code";
+import { qrCodeVariants } from "@pisagor/recipes/qr-code";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types

@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { frameVariants } from "@pisagor/styles/ui/frame";
+import { frameVariants } from "@pisagor/recipes/frame";
 import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];

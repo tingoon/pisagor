@@ -1,6 +1,6 @@
 import { Checkbox as CheckboxPrimitive } from "@ark-ui/react/checkbox";
 import { CheckIcon, MinusIcon } from "@phosphor-icons/react";
-import { checkbox2Variants, checkboxGroupVariants } from "@pisagor/styles/ui/checkbox";
+import { checkbox2Variants, checkboxGroupVariants } from "@pisagor/recipes/checkbox";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";

@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
-import { fileInputVariants } from "@pisagor/styles/ui/file-input";
-import type { FormControlGroupShellVariantProps } from "@pisagor/styles/ui/form-control";
+import { fileInputVariants } from "@pisagor/recipes/file-input";
+import type { FormControlGroupShellVariantProps } from "@pisagor/recipes/form-control";
 import { type ChangeEventHandler, type ComponentProps, useRef, useState } from "react";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import {

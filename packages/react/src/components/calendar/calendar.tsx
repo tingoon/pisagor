@@ -3,7 +3,7 @@ import {
   DatePicker as CalendarPrimitive,
 } from "@ark-ui/react/date-picker";
 import { CaretDownIcon, CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
-import { calendarTableCellVariants, calendarVariants } from "@pisagor/styles/ui/calendar";
+import { calendarTableCellVariants, calendarVariants } from "@pisagor/recipes/calendar";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";

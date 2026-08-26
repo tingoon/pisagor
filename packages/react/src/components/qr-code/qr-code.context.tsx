@@ -1,4 +1,4 @@
-import type { QrCodeVariants } from "@pisagor/styles/ui/qr-code";
+import type { QrCodeVariants } from "@pisagor/recipes/qr-code";
 import { createContext } from "../../utils";
 
 interface QrCodeContextValue {

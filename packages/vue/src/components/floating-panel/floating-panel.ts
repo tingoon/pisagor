@@ -1,9 +1,6 @@
 import { FloatingPanel as FloatingPanelPrimitive } from "@ark-ui/vue/floating-panel";
 import { PhArrowsOut, PhCornersIn, PhMinus } from "@phosphor-icons/vue";
-import {
-  type FloatingPanelVariants,
-  floatingPanelVariants,
-} from "@pisagor/styles/ui/floating-panel";
+import { type FloatingPanelVariants, floatingPanelVariants } from "@pisagor/recipes/floating-panel";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, reactive, Teleport, type VNodeChild } from "vue";
 import { createContext } from "../../utils/create-context";

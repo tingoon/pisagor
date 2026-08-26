@@ -1,4 +1,4 @@
-import type { HoverCardVariants } from "@pisagor/styles/ui/hover-card";
+import type { HoverCardVariants } from "@pisagor/recipes/hover-card";
 import { createContext } from "../../utils";
 
 interface HoverCardContextValue {

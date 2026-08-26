@@ -1,4 +1,4 @@
-import type { NumberFieldVariants } from "@pisagor/styles/ui/number-input";
+import type { NumberFieldVariants } from "@pisagor/recipes/number-input";
 import { createContext } from "../../utils";
 
 interface NumberInputContextValue {

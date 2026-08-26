@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/react/factory";
 import { Steps as StepsPrimitive } from "@ark-ui/react/steps";
 import { CheckIcon } from "@phosphor-icons/react";
-import { stepsItemVariants, stepsVariants } from "@pisagor/styles/ui/steps";
+import { stepsItemVariants, stepsVariants } from "@pisagor/recipes/steps";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { StepsContext, StepsItemContext, useSteps, useStepsItem } from "./steps.context";

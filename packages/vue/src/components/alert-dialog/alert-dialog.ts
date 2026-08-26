@@ -1,5 +1,5 @@
-import { buttonVariants } from "@pisagor/styles/ui/button";
-import { dialogVariants } from "@pisagor/styles/ui/dialog";
+import { buttonVariants } from "@pisagor/recipes/button";
+import { dialogVariants } from "@pisagor/recipes/dialog";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import {

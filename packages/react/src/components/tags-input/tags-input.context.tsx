@@ -1,4 +1,4 @@
-import type { TagsInputItemVariants, TagsInputVariants } from "@pisagor/styles/ui/tags-input";
+import type { TagsInputItemVariants, TagsInputVariants } from "@pisagor/recipes/tags-input";
 import { createContext } from "../../utils";
 
 interface TagsInputContextValue {

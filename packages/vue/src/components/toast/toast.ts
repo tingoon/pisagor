@@ -4,7 +4,7 @@ import {
   Toast as ToastPrimitive,
 } from "@ark-ui/vue/toast";
 import { PhCheckCircle, PhInfo, PhWarning, PhWarningCircle, PhX } from "@phosphor-icons/vue";
-import { type ToastItemSlots, toasterVariants, toastItemVariants } from "@pisagor/styles/ui/toast";
+import { type ToastItemSlots, toasterVariants, toastItemVariants } from "@pisagor/recipes/toast";
 import { cn } from "@pisagor/utils";
 
 type ClassValue = Parameters<typeof cn>[0];

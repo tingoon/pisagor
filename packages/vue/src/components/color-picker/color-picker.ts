@@ -6,7 +6,7 @@ import {
 } from "@ark-ui/vue/color-picker";
 import { ark } from "@ark-ui/vue/factory";
 import { PhCheck, PhEyedropper, PhX } from "@phosphor-icons/vue";
-import { colorPickerVariants } from "@pisagor/styles/ui/color-picker";
+import { colorPickerVariants } from "@pisagor/recipes/color-picker";
 import { cn } from "@pisagor/utils";
 
 type ClassValue = Parameters<typeof cn>[0];

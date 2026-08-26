@@ -1,5 +1,5 @@
 import { Switch as SwitchPrimitive } from "@ark-ui/react/switch";
-import { type SwitchSlots, switchVariants } from "@pisagor/styles/ui/switch";
+import { type SwitchSlots, switchVariants } from "@pisagor/recipes/switch";
 import type { ComponentProps } from "react";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import {

@@ -1,4 +1,4 @@
-import type { FileUploadItemVariants, FileUploadVariants } from "@pisagor/styles/ui/file-upload";
+import type { FileUploadItemVariants, FileUploadVariants } from "@pisagor/recipes/file-upload";
 import { createContext } from "../../utils";
 
 interface FileUploadContextValue {

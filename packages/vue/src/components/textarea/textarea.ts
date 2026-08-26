@@ -1,5 +1,5 @@
 import { Field as FieldPrimitive } from "@ark-ui/vue/field";
-import { type TextareaSlots, textareaVariants } from "@pisagor/styles/ui/textarea";
+import { type TextareaSlots, textareaVariants } from "@pisagor/recipes/textarea";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
 import { type ClearableChangeEvent, useClearableInput } from "../../hooks/use-clearable-input";

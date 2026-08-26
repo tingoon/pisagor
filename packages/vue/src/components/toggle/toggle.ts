@@ -1,6 +1,6 @@
 import { Toggle as TogglePrimitive } from "@ark-ui/vue/toggle";
-import { type ButtonVariantProps, buttonVariants } from "@pisagor/styles/ui/button";
-import { type ToggleVariantProps, toggleVariants } from "@pisagor/styles/ui/toggle";
+import { type ButtonVariantProps, buttonVariants } from "@pisagor/recipes/button";
+import { type ToggleVariantProps, toggleVariants } from "@pisagor/recipes/toggle";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 

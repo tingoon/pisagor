@@ -1,12 +1,12 @@
 import { ark } from "@ark-ui/react/factory";
-import type { FormControlGroupShellVariantProps } from "@pisagor/styles/ui/form-control";
+import type { FormControlGroupShellVariantProps } from "@pisagor/recipes/form-control";
 import {
   type InputGroupAddonVariantProps,
   type InputGroupButtonVariantProps,
   inputGroupAddonVariants,
   inputGroupButtonVariants,
   inputGroupTextVariants,
-} from "@pisagor/styles/ui/input-group";
+} from "@pisagor/recipes/input-group";
 import type { ComponentProps, MouseEvent } from "react";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import {

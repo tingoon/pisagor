@@ -1,6 +1,6 @@
 # Vue Components
 
-Package-local guidance for `packages/vue` (`@pisagor/vue`). Uses `@pisagor/styles` recipes and `@pisagor/tokens` via `./styles`.
+Package-local guidance for `packages/vue` (`@pisagor/vue`). Uses `@pisagor/recipes` and `@pisagor/tokens` via `./styles`.
 
 ## Heavy imports
 

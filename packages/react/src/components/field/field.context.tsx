@@ -1,4 +1,4 @@
-import type { FieldVariants } from "@pisagor/styles/ui/field";
+import type { FieldVariants } from "@pisagor/recipes/field";
 import { createContext } from "../../utils";
 
 interface FieldContextValue {

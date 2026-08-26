@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/vue/factory";
 import { Menu as MenuPrimitive } from "@ark-ui/vue/menu";
 import { PhCaretRight, PhCheck } from "@phosphor-icons/vue";
-import { dropdownMenuItemVariants, dropdownMenuVariants } from "@pisagor/styles/ui/dropdown-menu";
+import { dropdownMenuItemVariants, dropdownMenuVariants } from "@pisagor/recipes/dropdown-menu";
 import { cn } from "@pisagor/utils";
 import { type CSSProperties, defineComponent, h, type PropType } from "vue";
 

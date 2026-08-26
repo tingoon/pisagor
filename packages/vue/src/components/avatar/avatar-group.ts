@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { avatarGroupVariants } from "@pisagor/styles/ui/avatar";
+import { avatarGroupVariants } from "@pisagor/recipes/avatar";
 import { defineComponent, h, type PropType } from "vue";
 import { Avatar } from "./avatar";
 

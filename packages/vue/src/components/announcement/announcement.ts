@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { announcementVariants } from "@pisagor/styles/ui/announcement";
+import { announcementVariants } from "@pisagor/recipes/announcement";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
 // #region Types

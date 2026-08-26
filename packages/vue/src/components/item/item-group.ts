@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type ItemVariantProps, itemVariants } from "@pisagor/styles/ui/item";
+import { type ItemVariantProps, itemVariants } from "@pisagor/recipes/item";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
 import { Separator } from "../separator";

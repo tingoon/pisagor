@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import { CaretRightIcon, DotsThreeIcon } from "@phosphor-icons/react";
-import { breadcrumbItemVariants, breadcrumbVariants } from "@pisagor/styles/ui/breadcrumb";
+import { breadcrumbItemVariants, breadcrumbVariants } from "@pisagor/recipes/breadcrumb";
 import type { ComponentProps, ReactNode } from "react";
 import { Fragment, useMemo } from "react";
 import {

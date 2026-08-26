@@ -3,7 +3,7 @@ import { Tabs as TabsPrimitive } from "@ark-ui/vue/tabs";
 import {
   bottomNavigationItemVariants,
   bottomNavigationVariants,
-} from "@pisagor/styles/ui/bottom-navigation";
+} from "@pisagor/recipes/bottom-navigation";
 import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];

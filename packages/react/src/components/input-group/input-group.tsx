@@ -1,7 +1,7 @@
 import {
   inputGroupControlVariants,
   inputGroupTextareaControlVariants,
-} from "@pisagor/styles/ui/input-group";
+} from "@pisagor/recipes/input-group";
 import { cn } from "@pisagor/utils";
 import { Input, type InputProps } from "../input/input";
 import { Textarea, type TextareaProps } from "../textarea/textarea";

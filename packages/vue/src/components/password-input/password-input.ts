@@ -1,6 +1,6 @@
 import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/vue/password-input";
 import { PhEye, PhEyeSlash, PhX } from "@phosphor-icons/vue";
-import { passwordInputVariants } from "@pisagor/styles/ui/password-input";
+import { passwordInputVariants } from "@pisagor/recipes/password-input";
 import { defineComponent, h, type PropType } from "vue";
 import { type ClearableChangeEvent, useClearableInput } from "../../hooks/use-clearable-input";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";

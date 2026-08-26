@@ -1,4 +1,4 @@
-import type { SheetVariants } from "@pisagor/styles/ui/sheet";
+import type { SheetVariants } from "@pisagor/recipes/sheet";
 import { createContext } from "../../utils";
 
 interface SheetContextValue {

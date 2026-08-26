@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { type MenuItemVariantProps, menuItemVariants, menuVariants } from "@pisagor/styles/ui/menu";
+import { type MenuItemVariantProps, menuItemVariants, menuVariants } from "@pisagor/recipes/menu";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";

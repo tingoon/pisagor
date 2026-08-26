@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { type AlertSlots, type AlertVariantProps, alertVariants } from "@pisagor/styles/ui/alert";
+import { type AlertSlots, type AlertVariantProps, alertVariants } from "@pisagor/recipes/alert";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { AlertContext, useAlert } from "./alert.context";

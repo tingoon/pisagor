@@ -1,4 +1,4 @@
-import type { CircularSliderVariants } from "@pisagor/styles/ui/circular-slider";
+import type { CircularSliderVariants } from "@pisagor/recipes/circular-slider";
 import { createContext } from "../../utils";
 
 export interface CircularSliderContextValue {

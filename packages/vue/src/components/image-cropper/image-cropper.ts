@@ -6,7 +6,7 @@ import {
   type ImageCropperRotationChangeDetails,
   type ImageCropperZoomChangeDetails,
 } from "@ark-ui/vue/image-cropper";
-import { imageCropperVariants } from "@pisagor/styles/ui/image-cropper";
+import { imageCropperVariants } from "@pisagor/recipes/image-cropper";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 

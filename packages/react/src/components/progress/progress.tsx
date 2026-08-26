@@ -1,5 +1,5 @@
 import { Progress as ProgressPrimitive } from "@ark-ui/react/progress";
-import { type ProgressSlots, progressVariants } from "@pisagor/styles/ui/progress";
+import { type ProgressSlots, progressVariants } from "@pisagor/recipes/progress";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { Field } from "../field";

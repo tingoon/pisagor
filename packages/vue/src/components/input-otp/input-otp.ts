@@ -3,7 +3,7 @@ import {
   PinInput as PinInputPrimitive,
   type PinInputValueChangeDetails,
 } from "@ark-ui/vue/pin-input";
-import { inputOtpVariants } from "@pisagor/styles/ui/input-otp";
+import { inputOtpVariants } from "@pisagor/recipes/input-otp";
 import { cn } from "@pisagor/utils";
 
 type ClassValue = Parameters<typeof cn>[0];

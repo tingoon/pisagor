@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type ButtonGroupVariantProps, buttonGroupVariants } from "@pisagor/styles/ui/button-group";
+import { type ButtonGroupVariantProps, buttonGroupVariants } from "@pisagor/recipes/button-group";
 import { defineComponent, h, type PropType } from "vue";
 import { Separator, type SeparatorProps } from "../separator";
 

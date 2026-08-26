@@ -1,9 +1,5 @@
 import { AvatarFallback, AvatarImage, AvatarRoot } from "@ark-ui/vue/avatar";
-import {
-  type AvatarSlots,
-  type AvatarVariantProps,
-  avatarVariants,
-} from "@pisagor/styles/ui/avatar";
+import { type AvatarSlots, type AvatarVariantProps, avatarVariants } from "@pisagor/recipes/avatar";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 

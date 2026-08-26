@@ -16,7 +16,7 @@ import {
   treeViewBranchVariants,
   treeViewItemVariants,
   treeViewVariants,
-} from "@pisagor/styles/ui/tree-view";
+} from "@pisagor/recipes/tree-view";
 import { cn } from "@pisagor/utils";
 import { defineComponent, Fragment, h, type PropType } from "vue";
 import { formControlToggleVariants } from "../../internal/form-control/form-control-variants";

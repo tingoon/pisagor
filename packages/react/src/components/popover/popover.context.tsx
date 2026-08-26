@@ -1,4 +1,4 @@
-import type { PopoverContentVariants } from "@pisagor/styles/ui/popover";
+import type { PopoverContentVariants } from "@pisagor/recipes/popover";
 import { createContext } from "../../utils";
 
 interface PopoverContentContextValue {

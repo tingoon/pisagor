@@ -11,8 +11,8 @@ import {
   useSelectContext,
 } from "@ark-ui/react/select";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
-import type { InputRootVariantProps } from "@pisagor/styles/ui/input";
-import { selectVariants } from "@pisagor/styles/ui/select";
+import type { InputRootVariantProps } from "@pisagor/recipes/input";
+import { selectVariants } from "@pisagor/recipes/select";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";

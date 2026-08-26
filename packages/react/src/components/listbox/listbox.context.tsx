@@ -1,4 +1,4 @@
-import type { ListboxItemVariants, ListboxVariants } from "@pisagor/styles/ui/listbox";
+import type { ListboxItemVariants, ListboxVariants } from "@pisagor/recipes/listbox";
 import { createContext } from "../../utils";
 
 interface ListboxContextValue {

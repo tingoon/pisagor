@@ -1,6 +1,6 @@
 import { NumberInput as NumberInputPrimitive } from "@ark-ui/react/number-input";
 import { MinusIcon, PlusIcon } from "@phosphor-icons/react";
-import { numberFieldVariants } from "@pisagor/styles/ui/number-input";
+import { numberFieldVariants } from "@pisagor/recipes/number-input";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";

@@ -1,4 +1,4 @@
-import type { ProgressVariants } from "@pisagor/styles/ui/progress";
+import type { ProgressVariants } from "@pisagor/recipes/progress";
 import { createContext } from "../../utils";
 
 interface ProgressContextValue {

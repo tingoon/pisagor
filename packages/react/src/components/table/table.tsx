@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { tableVariants } from "@pisagor/styles/ui/table";
+import { tableVariants } from "@pisagor/recipes/table";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { TableContext, useTable } from "./table.context";

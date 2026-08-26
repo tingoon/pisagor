@@ -4,7 +4,7 @@ import {
   type AlertVariantProps,
   type AlertVariants,
   alertVariants,
-} from "@pisagor/styles/ui/alert";
+} from "@pisagor/recipes/alert";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType, toValue, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";

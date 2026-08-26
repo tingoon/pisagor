@@ -4,7 +4,7 @@ import {
   type ClipboardSlots,
   type ClipboardVariantProps,
   clipboardVariants,
-} from "@pisagor/styles/ui/clipboard";
+} from "@pisagor/recipes/clipboard";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";

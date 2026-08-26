@@ -1,4 +1,4 @@
-import type { CircularProgressVariants } from "@pisagor/styles/ui/circular-progress";
+import type { CircularProgressVariants } from "@pisagor/recipes/circular-progress";
 import { createContext } from "../../utils";
 
 interface CircularProgressContextValue {

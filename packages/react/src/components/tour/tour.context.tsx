@@ -1,5 +1,5 @@
 import type { UseTourReturn } from "@ark-ui/react/tour";
-import type { TourVariants } from "@pisagor/styles/ui/tour";
+import type { TourVariants } from "@pisagor/recipes/tour";
 import { createContext } from "../../utils";
 
 export interface TourProviderProps {

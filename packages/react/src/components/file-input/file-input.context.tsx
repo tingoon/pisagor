@@ -1,4 +1,4 @@
-import type { FileInputVariants } from "@pisagor/styles/ui/file-input";
+import type { FileInputVariants } from "@pisagor/recipes/file-input";
 import { createContext } from "../../utils";
 
 interface FileInputContextValue {

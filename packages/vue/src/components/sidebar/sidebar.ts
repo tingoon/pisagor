@@ -1,5 +1,5 @@
 import { PhSidebarSimple } from "@phosphor-icons/vue";
-import { sidebarVariants } from "@pisagor/styles/ui/sidebar";
+import { sidebarVariants } from "@pisagor/recipes/sidebar";
 import { cn } from "@pisagor/utils";
 
 type ClassValue = Parameters<typeof cn>[0];

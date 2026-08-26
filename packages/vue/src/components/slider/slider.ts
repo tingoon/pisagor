@@ -1,5 +1,5 @@
 import { Slider as SliderPrimitive } from "@ark-ui/vue/slider";
-import { sliderVariants } from "@pisagor/styles/ui/slider";
+import { sliderVariants } from "@pisagor/recipes/slider";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";

@@ -3,7 +3,7 @@ import { ProgressRoot, ProgressValueText, useProgressContext } from "@ark-ui/vue
 import {
   type CircularProgressSlots,
   circularProgressVariants,
-} from "@pisagor/styles/ui/circular-progress";
+} from "@pisagor/recipes/circular-progress";
 import { computed, defineComponent, h, type PropType, type VNode } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 

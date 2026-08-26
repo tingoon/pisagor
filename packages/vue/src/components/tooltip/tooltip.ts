@@ -1,5 +1,5 @@
 import { Tooltip as TooltipPrimitive } from "@ark-ui/vue/tooltip";
-import { type TooltipSlots, tooltipVariants } from "@pisagor/styles/ui/tooltip";
+import { type TooltipSlots, tooltipVariants } from "@pisagor/recipes/tooltip";
 import { defineComponent, h, type PropType, Teleport, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 

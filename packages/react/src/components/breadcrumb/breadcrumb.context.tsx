@@ -1,4 +1,4 @@
-import type { BreadcrumbItemVariants, BreadcrumbVariants } from "@pisagor/styles/ui/breadcrumb";
+import type { BreadcrumbItemVariants, BreadcrumbVariants } from "@pisagor/recipes/breadcrumb";
 import { createContext } from "../../utils";
 
 interface BreadcrumbContextValue {

@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { timelineItemVariants, timelineVariants } from "@pisagor/styles/ui/timeline";
+import { timelineItemVariants, timelineVariants } from "@pisagor/recipes/timeline";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];

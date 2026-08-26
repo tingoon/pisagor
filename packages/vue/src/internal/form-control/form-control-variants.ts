@@ -7,7 +7,7 @@ export {
   formControlShellVariants,
   formControlToggleVariants,
   formControlZoneVariants,
-} from "@pisagor/styles/ui/form-control";
+} from "@pisagor/recipes/form-control";
 
 export type FormControlVariant = "primary" | "secondary";
 

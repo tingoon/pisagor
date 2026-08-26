@@ -6,8 +6,8 @@ import {
   useTour,
 } from "@ark-ui/vue/tour";
 import { PhCaretLeft, PhCaretRight, PhX } from "@phosphor-icons/vue";
-import { dialogVariants } from "@pisagor/styles/ui/dialog";
-import { type TourVariants, tourVariants } from "@pisagor/styles/ui/tour";
+import { dialogVariants } from "@pisagor/recipes/dialog";
+import { type TourVariants, tourVariants } from "@pisagor/recipes/tour";
 import { cn } from "@pisagor/utils";
 import {
   computed,

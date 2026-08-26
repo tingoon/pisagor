@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { avatarGroupVariants } from "@pisagor/styles/ui/avatar";
+import { avatarGroupVariants } from "@pisagor/recipes/avatar";
 import type { ComponentProps } from "react";
 import { Avatar } from "./avatar";
 import { AvatarGroupContext, useAvatarGroup } from "./avatar-group.context";

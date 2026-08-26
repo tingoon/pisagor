@@ -2,7 +2,7 @@ import type {
   PhoneInputSlots,
   PhoneInputVariantProps,
   PhoneInputVariants,
-} from "@pisagor/styles/ui/phone-input";
+} from "@pisagor/recipes/phone-input";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import type { VariantClassNames } from "../../internal/types";
 import { createContext } from "../../utils/create-context";

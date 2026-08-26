@@ -1,4 +1,4 @@
-import type { TabsVariants } from "@pisagor/styles/ui/tabs";
+import type { TabsVariants } from "@pisagor/recipes/tabs";
 import { createContext } from "../../utils";
 
 interface TabsContextValue {

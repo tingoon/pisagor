@@ -23,14 +23,14 @@ Instruction priority: [Core Boundaries](./.cursor/rules/core.mdc).
 │   ├── vue-composables/        Vue composables (`@pisagor/vue-composables`)
 │   ├── vue-form/               Vue form fields (`@pisagor/vue-form`)
 │   ├── vue/                    Vue UI components (`@pisagor/vue`)
-│   ├── styles/                 tv() class recipes (`@pisagor/styles`)
+│   ├── recipes/                tv() class recipes (`@pisagor/recipes`)
 │   ├── tokens/                 design tokens / Tailwind theme (`@pisagor/tokens`)
 │   ├── utils/                  class-name helpers (`@pisagor/utils`)
 │   └── tsconfig/               TypeScript configs (`@pisagor/tsconfig`)
 └── .cursor/                    rules and commands
 ```
 
-`@pisagor/tokens` = CSS theme; `@pisagor/styles` = shared `tv()` recipes. `@pisagor/vue` imports tokens via `styles.css`; `@pisagor/react` still duplicates tokens in its own `styles.css` until wired.
+`@pisagor/tokens` = CSS theme; `@pisagor/recipes` = shared `tv()` recipes. `@pisagor/vue` imports tokens via `styles.css`; `@pisagor/react` still duplicates tokens in its own `styles.css` until wired.
 
 | Path | Notes |
 | ---- | ----- |

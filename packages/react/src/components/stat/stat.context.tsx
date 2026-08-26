@@ -1,4 +1,4 @@
-import type { StatVariants } from "@pisagor/styles/ui/stat";
+import type { StatVariants } from "@pisagor/recipes/stat";
 import { createContext } from "../../utils";
 
 interface StatContextValue {

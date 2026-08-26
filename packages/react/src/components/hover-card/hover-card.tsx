@@ -1,6 +1,6 @@
 import { Portal } from "@ark-ui/react";
 import { HoverCard as HoverCardPrimitive } from "@ark-ui/react/hover-card";
-import { hoverCardVariants } from "@pisagor/styles/ui/hover-card";
+import { hoverCardVariants } from "@pisagor/recipes/hover-card";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { HoverCardContext, useHoverCard } from "./hover-card.context";

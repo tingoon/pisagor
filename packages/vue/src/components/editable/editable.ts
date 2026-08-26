@@ -2,8 +2,8 @@ import {
   Editable as EditablePrimitive,
   type EditableValueChangeDetails,
 } from "@ark-ui/vue/editable";
-import { buttonVariants } from "@pisagor/styles/ui/button";
-import { editableVariants } from "@pisagor/styles/ui/editable";
+import { buttonVariants } from "@pisagor/recipes/button";
+import { editableVariants } from "@pisagor/recipes/editable";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";

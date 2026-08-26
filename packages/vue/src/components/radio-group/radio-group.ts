@@ -1,5 +1,5 @@
 import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/vue/radio-group";
-import { radioGroupItemVariants, radioGroupVariants } from "@pisagor/styles/ui/radio-group";
+import { radioGroupItemVariants, radioGroupVariants } from "@pisagor/recipes/radio-group";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";

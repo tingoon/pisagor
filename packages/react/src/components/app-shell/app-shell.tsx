@@ -1,4 +1,4 @@
-import { appShellVariants } from "@pisagor/styles/ui/app-shell";
+import { appShellVariants } from "@pisagor/recipes/app-shell";
 import { useHotkey } from "@tanstack/react-hotkeys";
 import { type ComponentProps, useCallback, useMemo, useRef, useState } from "react";
 import {

@@ -1,4 +1,4 @@
-import type { AccordionItemVariants } from "@pisagor/styles/accordion";
+import type { AccordionItemVariants } from "@pisagor/recipes/accordion";
 import { createContext } from "../../utils";
 
 interface AccordionItemContextValue {

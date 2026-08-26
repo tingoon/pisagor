@@ -1,6 +1,6 @@
 import { Field as FieldPrimitive } from "@ark-ui/vue/field";
 import { Fieldset as FieldsetPrimitive } from "@ark-ui/vue/fieldset";
-import { fieldVariants } from "@pisagor/styles/ui/field";
+import { fieldVariants } from "@pisagor/recipes/field";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import {

@@ -1,5 +1,5 @@
 import { Drawer as DrawerPrimitive } from "@ark-ui/vue/drawer";
-import { type DrawerVariants, drawerVariants } from "@pisagor/styles/ui/drawer";
+import { type DrawerVariants, drawerVariants } from "@pisagor/recipes/drawer";
 import { defineComponent, h, type PropType, reactive, Teleport } from "vue";
 import { createContext } from "../../utils/create-context";
 

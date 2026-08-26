@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { type BadgeVariantProps, badgeVariants } from "@pisagor/styles/ui/badge";
+import { type BadgeVariantProps, badgeVariants } from "@pisagor/recipes/badge";
 import type { ComponentProps } from "react";
 // #region Types
 export type BadgeVariant = BadgeVariantProps["variant"];

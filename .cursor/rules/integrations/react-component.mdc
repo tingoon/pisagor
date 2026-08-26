@@ -108,7 +108,7 @@ Choose **closed**, **compound**, or **compound + shorthand** per component.
 **Closed:**
 
 - Export a single function with convenience props and DOM sub-element `*Props` bags (content/behavior — not styling).
-- **Closed multi-slot:** implement private Parts + `<name>.context.tsx` (`slots` from styles `FooVariants`); compose in `#region Closed`. Do not export parts or part prop types from the barrel — only `Foo` / `FooProps`.
+- **Closed multi-slot:** implement private Parts + `<name>.context.tsx` (`slots` from recipes `FooVariants`); compose in `#region Closed`. Do not export parts or part prop types from the barrel — only `Foo` / `FooProps`.
 - Export `{name}Variants` when part of the public API — see [Styling](#styling).
 - Export via `export * from "./foo"` (shared package barrel only).
 

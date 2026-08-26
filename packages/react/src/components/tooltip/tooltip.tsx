@@ -1,6 +1,6 @@
 import { Portal } from "@ark-ui/react/portal";
 import { Tooltip as TooltipPrimitive } from "@ark-ui/react/tooltip";
-import { type TooltipSlots, tooltipVariants } from "@pisagor/styles/ui/tooltip";
+import { type TooltipSlots, tooltipVariants } from "@pisagor/recipes/tooltip";
 import type { ComponentProps, ReactElement, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { TooltipContext, useTooltip } from "./tooltip.context";

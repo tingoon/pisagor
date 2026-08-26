@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type MenuSlots, menuItemVariants, menuVariants } from "@pisagor/styles/ui/menu";
+import { type MenuSlots, menuItemVariants, menuVariants } from "@pisagor/recipes/menu";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { VariantClassNames } from "../../internal/types";

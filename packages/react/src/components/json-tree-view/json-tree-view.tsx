@@ -1,6 +1,6 @@
 import { JsonTreeView as JsonTreeViewPrimitive } from "@ark-ui/react/json-tree-view";
 import { CaretRightIcon } from "@phosphor-icons/react";
-import { type JsonTreeViewSlots, jsonTreeViewVariants } from "@pisagor/styles/ui/json-tree-view";
+import { type JsonTreeViewSlots, jsonTreeViewVariants } from "@pisagor/recipes/json-tree-view";
 import type { ComponentProps } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { JsonTreeViewContext, useJsonTreeView } from "./json-tree-view.context";

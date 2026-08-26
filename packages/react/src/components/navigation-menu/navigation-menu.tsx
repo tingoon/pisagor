@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { navigationMenuVariants } from "@pisagor/styles/ui/navigation-menu";
+import { navigationMenuVariants } from "@pisagor/recipes/navigation-menu";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { NavigationMenuContext, useNavigationMenu } from "./navigation-menu.context";

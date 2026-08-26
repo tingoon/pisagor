@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
 import { PhX } from "@phosphor-icons/vue";
-import { type ActionBarVariants, actionBarVariants } from "@pisagor/styles/ui/action-bar";
+import { type ActionBarVariants, actionBarVariants } from "@pisagor/recipes/action-bar";
 import { cn } from "@pisagor/utils";
 import {
   defineComponent,

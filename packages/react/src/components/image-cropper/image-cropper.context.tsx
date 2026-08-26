@@ -1,4 +1,4 @@
-import type { ImageCropperVariants } from "@pisagor/styles/ui/image-cropper";
+import type { ImageCropperVariants } from "@pisagor/recipes/image-cropper";
 import { createContext } from "../../utils";
 
 interface ImageCropperContextValue {

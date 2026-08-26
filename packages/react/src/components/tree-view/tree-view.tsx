@@ -16,7 +16,7 @@ import {
   treeViewBranchVariants,
   treeViewItemVariants,
   treeViewVariants,
-} from "@pisagor/styles/ui/tree-view";
+} from "@pisagor/recipes/tree-view";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "react";
 import { useMemo } from "react";

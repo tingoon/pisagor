@@ -4,7 +4,7 @@ import {
   useFileUploadContext,
 } from "@ark-ui/vue/file-upload";
 import { PhUpload, PhX } from "@phosphor-icons/vue";
-import { fileUploadItemVariants, fileUploadVariants } from "@pisagor/styles/ui/file-upload";
+import { fileUploadItemVariants, fileUploadVariants } from "@pisagor/recipes/file-upload";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";

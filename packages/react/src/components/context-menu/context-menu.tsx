@@ -1,5 +1,5 @@
 import { Menu as MenuPrimitive } from "@ark-ui/react/menu";
-import { contextMenuTriggerVariants } from "@pisagor/styles/ui/context-menu";
+import { contextMenuTriggerVariants } from "@pisagor/recipes/context-menu";
 import type { ComponentProps } from "react";
 import {
   DropdownMenu,

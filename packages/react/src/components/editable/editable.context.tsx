@@ -1,4 +1,4 @@
-import type { EditableVariants } from "@pisagor/styles/ui/editable";
+import type { EditableVariants } from "@pisagor/recipes/editable";
 import { createContext } from "../../utils";
 
 interface EditableContextValue {

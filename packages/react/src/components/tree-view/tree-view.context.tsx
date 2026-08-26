@@ -2,7 +2,7 @@ import type {
   TreeViewBranchVariants,
   TreeViewItemVariants,
   TreeViewVariants,
-} from "@pisagor/styles/ui/tree-view";
+} from "@pisagor/recipes/tree-view";
 import type { JSX } from "react";
 import { createContext } from "../../utils";
 

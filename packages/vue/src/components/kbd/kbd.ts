@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { kbdGroupVariants, kbdVariants } from "@pisagor/styles/ui/kbd";
+import { kbdGroupVariants, kbdVariants } from "@pisagor/recipes/kbd";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 

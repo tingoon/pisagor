@@ -1,8 +1,8 @@
 import { ark } from "@ark-ui/vue/factory";
 import { Pagination as PaginationPrimitive, usePaginationContext } from "@ark-ui/vue/pagination";
 import { PhCaretLeft, PhCaretRight, PhDotsThree } from "@phosphor-icons/vue";
-import { buttonVariants } from "@pisagor/styles/ui/button";
-import { paginationVariants } from "@pisagor/styles/ui/pagination";
+import { buttonVariants } from "@pisagor/recipes/button";
+import { paginationVariants } from "@pisagor/recipes/pagination";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { Button, type ButtonProps } from "../button";

@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { visuallyHiddenVariants } from "@pisagor/styles/ui/visually-hidden";
+import { visuallyHiddenVariants } from "@pisagor/recipes/visually-hidden";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 

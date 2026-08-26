@@ -3,7 +3,7 @@ import {
   type ScrollAreaSlots,
   type ScrollAreaVariantProps,
   scrollAreaVariants,
-} from "@pisagor/styles/ui/scroll-area";
+} from "@pisagor/recipes/scroll-area";
 import type { ComponentProps } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { ScrollAreaContext, useScrollArea } from "./scroll-area.context";

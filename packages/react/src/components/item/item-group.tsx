@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { type ItemVariantProps, itemVariants } from "@pisagor/styles/ui/item";
+import { type ItemVariantProps, itemVariants } from "@pisagor/recipes/item";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { Separator, type SeparatorProps } from "../separator";

@@ -1,6 +1,6 @@
 import { NumberInput as NumberInputPrimitive } from "@ark-ui/vue/number-input";
 import { PhMinus, PhPlus } from "@phosphor-icons/vue";
-import { numberFieldVariants } from "@pisagor/styles/ui/number-input";
+import { numberFieldVariants } from "@pisagor/recipes/number-input";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";

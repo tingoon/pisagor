@@ -5,7 +5,7 @@ import {
   type StatVariantProps,
   statTrendVariants,
   statVariants,
-} from "@pisagor/styles/ui/stat";
+} from "@pisagor/recipes/stat";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";

@@ -1,6 +1,6 @@
 import { Pagination as PaginationPrimitive, usePaginationContext } from "@ark-ui/react/pagination";
 import { CaretLeftIcon, CaretRightIcon, DotsThreeIcon } from "@phosphor-icons/react";
-import { paginationVariants } from "@pisagor/styles/ui/pagination";
+import { paginationVariants } from "@pisagor/recipes/pagination";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { Button, type ButtonProps } from "../button";

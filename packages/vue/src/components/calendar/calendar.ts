@@ -4,7 +4,7 @@ import {
   type UseDatePickerContext,
 } from "@ark-ui/vue/date-picker";
 import { PhCaretDown, PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
-import { calendarTableCellVariants, calendarVariants } from "@pisagor/styles/ui/calendar";
+import { calendarTableCellVariants, calendarVariants } from "@pisagor/recipes/calendar";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type UnwrapRef } from "vue";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";

@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type CardVariantProps, cardVariants } from "@pisagor/styles/ui/card";
+import { type CardVariantProps, cardVariants } from "@pisagor/recipes/card";
 import { defineComponent, h, type PropType } from "vue";
 
 export type CardMediaVariant = NonNullable<CardVariantProps["variant"]>;

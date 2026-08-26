@@ -1,4 +1,4 @@
-import type { ScrollAreaVariants } from "@pisagor/styles/ui/scroll-area";
+import type { ScrollAreaVariants } from "@pisagor/recipes/scroll-area";
 import { createContext } from "../../utils";
 
 interface ScrollAreaContextValue {

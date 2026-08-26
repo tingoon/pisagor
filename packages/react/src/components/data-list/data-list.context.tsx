@@ -1,4 +1,4 @@
-import type { DataListItemVariants } from "@pisagor/styles/ui/data-list";
+import type { DataListItemVariants } from "@pisagor/recipes/data-list";
 import { createContext } from "../../utils";
 
 interface DataListItemContextValue {

@@ -2,7 +2,7 @@ import { Dialog as DialogPrimitive } from "@ark-ui/react/dialog";
 import { ark } from "@ark-ui/react/factory";
 import { Portal } from "@ark-ui/react/portal";
 import { XIcon } from "@phosphor-icons/react";
-import { type DialogVariantProps, dialogVariants } from "@pisagor/styles/ui/dialog";
+import { type DialogVariantProps, dialogVariants } from "@pisagor/recipes/dialog";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { Button } from "../button";

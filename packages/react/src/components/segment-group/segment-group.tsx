@@ -1,5 +1,5 @@
 import { SegmentGroup as SegmentGroupPrimitive } from "@ark-ui/react/segment-group";
-import { segmentGroupVariants } from "@pisagor/styles/ui/segment-group";
+import { segmentGroupVariants } from "@pisagor/recipes/segment-group";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";
 import { SegmentGroupContext, useSegmentGroup } from "./segment-group.context";

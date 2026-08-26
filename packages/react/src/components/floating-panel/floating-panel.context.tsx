@@ -1,4 +1,4 @@
-import type { FloatingPanelVariants } from "@pisagor/styles/ui/floating-panel";
+import type { FloatingPanelVariants } from "@pisagor/recipes/floating-panel";
 import { createContext } from "../../utils";
 
 export interface FloatingPanelContextValue {

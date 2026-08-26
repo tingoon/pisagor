@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { type StatusVariantProps, statusVariants } from "@pisagor/styles/ui/status";
+import { type StatusVariantProps, statusVariants } from "@pisagor/recipes/status";
 import type { ComponentProps } from "react";
 
 // #region Types

@@ -1,6 +1,6 @@
 import { Splitter as SplitterPrimitive } from "@ark-ui/vue/splitter";
 import { PhDotsSixVertical } from "@phosphor-icons/vue";
-import { resizableEdgeHandleVariants, resizableVariants } from "@pisagor/styles/ui/resizable";
+import { resizableEdgeHandleVariants, resizableVariants } from "@pisagor/recipes/resizable";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, ref } from "vue";
 

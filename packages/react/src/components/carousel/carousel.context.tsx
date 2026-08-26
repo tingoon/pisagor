@@ -1,4 +1,4 @@
-import type { CarouselVariants } from "@pisagor/styles/ui/carousel";
+import type { CarouselVariants } from "@pisagor/recipes/carousel";
 import { createContext } from "../../utils";
 
 interface CarouselContextValue {

@@ -1,5 +1,5 @@
 import { Swap as SwapPrimitive } from "@ark-ui/react/swap";
-import { type SwapVariantProps, swapVariants } from "@pisagor/styles/ui/swap";
+import { type SwapVariantProps, swapVariants } from "@pisagor/recipes/swap";
 import type { ComponentProps, ReactNode } from "react";
 // #region Types
 export type SwapOnIndicatorProps = ComponentProps<typeof SwapPrimitive.Indicator>;

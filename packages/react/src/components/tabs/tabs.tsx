@@ -1,5 +1,5 @@
 import { Tabs as TabsPrimitive } from "@ark-ui/react/tabs";
-import { type TabsVariantProps, tabsVariants } from "@pisagor/styles/ui/tabs";
+import { type TabsVariantProps, tabsVariants } from "@pisagor/recipes/tabs";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";
 import { TabsContext, useTabs } from "./tabs.context";

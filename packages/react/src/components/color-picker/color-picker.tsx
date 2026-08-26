@@ -8,7 +8,7 @@ import { ark } from "@ark-ui/react/factory";
 import { Portal } from "@ark-ui/react/portal";
 import { useUncontrolled } from "@mantine/hooks";
 import { CheckIcon, EyedropperIcon, XIcon } from "@phosphor-icons/react";
-import { colorPickerVariants } from "@pisagor/styles/ui/color-picker";
+import { colorPickerVariants } from "@pisagor/recipes/color-picker";
 import { cn } from "@pisagor/utils";
 import { type ComponentProps, useMemo } from "react";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";

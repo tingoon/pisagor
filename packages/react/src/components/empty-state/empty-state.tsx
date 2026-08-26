@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { type EmptyStateSlots, emptyStateVariants } from "@pisagor/styles/ui/empty-state";
+import { type EmptyStateSlots, emptyStateVariants } from "@pisagor/recipes/empty-state";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";
 import type { VariantClassNames } from "../../internal/types";

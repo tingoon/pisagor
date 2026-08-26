@@ -3,7 +3,7 @@ import { Tabs as TabsPrimitive } from "@ark-ui/react/tabs";
 import {
   bottomNavigationItemVariants,
   bottomNavigationVariants,
-} from "@pisagor/styles/ui/bottom-navigation";
+} from "@pisagor/recipes/bottom-navigation";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import {

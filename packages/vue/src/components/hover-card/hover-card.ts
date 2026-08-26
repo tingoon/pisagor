@@ -1,5 +1,5 @@
 import { HoverCard as HoverCardPrimitive } from "@ark-ui/vue/hover-card";
-import { hoverCardVariants } from "@pisagor/styles/ui/hover-card";
+import { hoverCardVariants } from "@pisagor/recipes/hover-card";
 import { type CSSProperties, defineComponent, h, type PropType, Teleport } from "vue";
 
 // #region Types

@@ -12,7 +12,7 @@ import {
   type ListboxItemVariantProps,
   listboxItemVariants,
   listboxVariants,
-} from "@pisagor/styles/ui/listbox";
+} from "@pisagor/recipes/listbox";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { DropdownMenu, type DropdownMenuShortcutProps } from "../dropdown-menu";

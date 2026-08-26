@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { skipNavVariants } from "@pisagor/styles/ui/skip-nav";
+import { skipNavVariants } from "@pisagor/recipes/skip-nav";
 import type { ComponentProps } from "react";
 // #region Types
 export interface SkipNavLinkProps extends ComponentProps<typeof ark.a> {

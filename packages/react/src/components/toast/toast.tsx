@@ -12,7 +12,7 @@ import {
   WarningIcon,
   XIcon,
 } from "@phosphor-icons/react";
-import { type ToastItemSlots, toasterVariants, toastItemVariants } from "@pisagor/styles/ui/toast";
+import { type ToastItemSlots, toasterVariants, toastItemVariants } from "@pisagor/recipes/toast";
 import type { ComponentProps, CSSProperties, ReactNode } from "react";
 import { useMemo } from "react";
 import type { VariantClassNames } from "../../internal/types";

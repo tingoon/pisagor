@@ -4,7 +4,7 @@ import {
   type ClipboardSlots,
   type ClipboardVariantProps,
   clipboardVariants,
-} from "@pisagor/styles/ui/clipboard";
+} from "@pisagor/recipes/clipboard";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import {

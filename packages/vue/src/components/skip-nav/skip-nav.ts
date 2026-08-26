@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { skipNavVariants } from "@pisagor/styles/ui/skip-nav";
+import { skipNavVariants } from "@pisagor/recipes/skip-nav";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 

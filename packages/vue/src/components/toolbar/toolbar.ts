@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type ToolbarSlots, toolbarVariants } from "@pisagor/styles/ui/toolbar";
+import { type ToolbarSlots, toolbarVariants } from "@pisagor/recipes/toolbar";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";

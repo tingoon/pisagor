@@ -1,4 +1,4 @@
-import type { CardVariants } from "@pisagor/styles/ui/card";
+import type { CardVariants } from "@pisagor/recipes/card";
 import { createContext } from "../../utils";
 
 interface CardContextValue {

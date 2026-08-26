@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { proseVariants } from "@pisagor/styles/ui/prose";
+import { proseVariants } from "@pisagor/recipes/prose";
 import type { ComponentProps } from "react";
 // #region Types
 export interface ProseProps

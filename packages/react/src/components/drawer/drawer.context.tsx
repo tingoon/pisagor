@@ -1,4 +1,4 @@
-import type { DrawerVariants } from "@pisagor/styles/ui/drawer";
+import type { DrawerVariants } from "@pisagor/recipes/drawer";
 import { createContext } from "../../utils";
 
 interface DrawerContextValue {

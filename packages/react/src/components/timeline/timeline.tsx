@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { timelineItemVariants, timelineVariants } from "@pisagor/styles/ui/timeline";
+import { timelineItemVariants, timelineVariants } from "@pisagor/recipes/timeline";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";
 import { TimelineItemContext, useTimelineItem } from "./timeline.context";

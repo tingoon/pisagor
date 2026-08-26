@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { proseVariants } from "@pisagor/styles/ui/prose";
+import { proseVariants } from "@pisagor/recipes/prose";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 

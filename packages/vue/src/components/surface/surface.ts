@@ -1,4 +1,4 @@
-import { type SurfaceVariantProps, surfaceVariants } from "@pisagor/styles/ui/surface";
+import { type SurfaceVariantProps, surfaceVariants } from "@pisagor/recipes/surface";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
 import { createContext } from "../../utils/create-context";

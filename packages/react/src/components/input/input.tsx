@@ -4,7 +4,7 @@ import {
   type InputSlots,
   inputRootVariants,
   inputVariants,
-} from "@pisagor/styles/ui/input";
+} from "@pisagor/recipes/input";
 import { cn } from "@pisagor/utils";
 import type { ChangeEventHandler, ComponentProps } from "react";
 import { useClearableInput } from "../../hooks";

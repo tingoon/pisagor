@@ -1,4 +1,4 @@
-import type { CollapsibleVariants } from "@pisagor/styles/ui/collapsible";
+import type { CollapsibleVariants } from "@pisagor/recipes/collapsible";
 import { createContext } from "../../utils";
 
 interface CollapsibleContextValue {

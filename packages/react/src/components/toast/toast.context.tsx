@@ -1,4 +1,4 @@
-import type { ToastItemVariants } from "@pisagor/styles/ui/toast";
+import type { ToastItemVariants } from "@pisagor/recipes/toast";
 import { createContext } from "../../utils";
 
 interface ToastItemContextValue {

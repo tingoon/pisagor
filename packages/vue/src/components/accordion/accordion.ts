@@ -1,6 +1,6 @@
 import { Accordion as AccordionPrimitive } from "@ark-ui/vue/accordion";
 import { PhCaretDown } from "@phosphor-icons/vue";
-import { accordionItemVariants } from "@pisagor/styles/accordion";
+import { accordionItemVariants } from "@pisagor/recipes/accordion";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
 // #region Types

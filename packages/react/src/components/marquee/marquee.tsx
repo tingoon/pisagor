@@ -1,5 +1,5 @@
 import { Marquee as MarqueePrimitive } from "@ark-ui/react/marquee";
-import { marqueeVariants } from "@pisagor/styles/ui/marquee";
+import { marqueeVariants } from "@pisagor/recipes/marquee";
 import type { ComponentProps, ReactNode } from "react";
 import { Children, isValidElement, useMemo } from "react";
 import { MarqueeContext, useMarquee } from "./marquee.context";

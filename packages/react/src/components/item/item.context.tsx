@@ -1,4 +1,4 @@
-import type { ItemVariantProps, ItemVariants } from "@pisagor/styles/ui/item";
+import type { ItemVariantProps, ItemVariants } from "@pisagor/recipes/item";
 import { createContext } from "../../utils";
 
 export interface ItemContextValue extends ItemVariantProps {

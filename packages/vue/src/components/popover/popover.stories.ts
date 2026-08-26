@@ -1,4 +1,4 @@
-import { buttonVariants } from "@pisagor/styles/ui/button";
+import { buttonVariants } from "@pisagor/recipes/button";
 import { cn } from "@pisagor/utils";
 import { Field, Input, Popover } from "@pisagor/vue";
 import { h } from "vue";

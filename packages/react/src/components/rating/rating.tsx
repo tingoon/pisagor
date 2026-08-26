@@ -1,6 +1,6 @@
 import { RatingGroup as RatingGroupPrimitive } from "@ark-ui/react/rating-group";
 import { StarIcon } from "@phosphor-icons/react";
-import { type RatingSlots, ratingVariants } from "@pisagor/styles/ui/rating";
+import { type RatingSlots, ratingVariants } from "@pisagor/recipes/rating";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactElement, ReactNode } from "react";
 import { cloneElement } from "react";

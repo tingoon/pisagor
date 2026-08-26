@@ -1,4 +1,4 @@
-import type { ToggleGroupVariants } from "@pisagor/styles/ui/toggle-group";
+import type { ToggleGroupVariants } from "@pisagor/recipes/toggle-group";
 import { createContext } from "../../utils";
 import type { ToggleProps } from "../toggle";
 

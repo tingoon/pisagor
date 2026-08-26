@@ -14,4 +14,4 @@ The root `@pisagor/vue` barrel exports **light** components only. Heavy componen
 - `@pisagor/vue/rich-text-editor`
 - `@pisagor/vue/phone-input`
 
-Styles import `@pisagor/tokens` and scan `@pisagor/styles` recipes.
+Styles import `@pisagor/tokens` and scan `@pisagor/recipes` recipes.

@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type ItemVariantProps, itemVariants } from "@pisagor/styles/ui/item";
+import { type ItemVariantProps, itemVariants } from "@pisagor/recipes/item";
 import { computed, defineComponent, h, type PropType, unref } from "vue";
 import { provideItemContext, resolveItemVariant, useItemSlots } from "./item.context";
 import { useItemGroupContextRef } from "./item-group.context";

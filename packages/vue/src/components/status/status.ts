@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { statusVariants } from "@pisagor/styles/ui/status";
+import { statusVariants } from "@pisagor/recipes/status";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 

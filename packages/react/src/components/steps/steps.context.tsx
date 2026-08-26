@@ -1,4 +1,4 @@
-import type { StepsItemVariants, StepsVariants } from "@pisagor/styles/ui/steps";
+import type { StepsItemVariants, StepsVariants } from "@pisagor/recipes/steps";
 import { createContext } from "../../utils";
 
 interface StepsContextValue {

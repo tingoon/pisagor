@@ -1,4 +1,4 @@
-import type { MenuVariants } from "@pisagor/styles/ui/menu";
+import type { MenuVariants } from "@pisagor/recipes/menu";
 import { createContext } from "../../utils";
 
 interface MenuContextValue {

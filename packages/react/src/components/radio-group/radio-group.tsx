@@ -1,5 +1,5 @@
 import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/react/radio-group";
-import { radioGroupItemVariants, radioGroupVariants } from "@pisagor/styles/ui/radio-group";
+import { radioGroupItemVariants, radioGroupVariants } from "@pisagor/recipes/radio-group";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";

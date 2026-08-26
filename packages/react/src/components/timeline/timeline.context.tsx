@@ -1,4 +1,4 @@
-import type { TimelineItemVariants } from "@pisagor/styles/ui/timeline";
+import type { TimelineItemVariants } from "@pisagor/recipes/timeline";
 import { createContext } from "../../utils";
 
 interface TimelineItemContextValue {

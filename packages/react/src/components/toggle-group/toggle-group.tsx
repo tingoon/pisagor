@@ -1,5 +1,5 @@
 import { ToggleGroup as ToggleGroupPrimitive } from "@ark-ui/react/toggle-group";
-import { toggleGroupVariants } from "@pisagor/styles/ui/toggle-group";
+import { toggleGroupVariants } from "@pisagor/recipes/toggle-group";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";
 import { Toggle } from "../toggle";

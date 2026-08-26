@@ -4,7 +4,7 @@ import {
   useDatePickerContext as useDatePicker,
 } from "@ark-ui/vue/date-picker";
 import { PhCalendar, PhClock, PhX } from "@phosphor-icons/vue";
-import { datePickerVariants } from "@pisagor/styles/ui/date-picker";
+import { datePickerVariants } from "@pisagor/recipes/date-picker";
 import { cn } from "@pisagor/utils";
 
 type ClassValue = Parameters<typeof cn>[0];

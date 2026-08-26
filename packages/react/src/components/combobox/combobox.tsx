@@ -11,8 +11,8 @@ import {
 } from "@ark-ui/react/combobox";
 import { Portal } from "@ark-ui/react/portal";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
-import { type ComboboxVariantProps, comboboxVariants } from "@pisagor/styles/ui/combobox";
-import type { InputRootVariantProps } from "@pisagor/styles/ui/input";
+import { type ComboboxVariantProps, comboboxVariants } from "@pisagor/recipes/combobox";
+import type { InputRootVariantProps } from "@pisagor/recipes/input";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";

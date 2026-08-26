@@ -1,4 +1,4 @@
-import type { ChartVariants } from "@pisagor/styles/ui/chart";
+import type { ChartVariants } from "@pisagor/recipes/chart";
 import { createContext } from "../utils/create-context";
 import type { ChartConfig } from "./chart";
 

@@ -1,7 +1,7 @@
 import { Drawer as DrawerPrimitive } from "@ark-ui/react/drawer";
 import { ark } from "@ark-ui/react/factory";
 import { Portal } from "@ark-ui/react/portal";
-import { type DrawerVariantProps, drawerVariants } from "@pisagor/styles/ui/drawer";
+import { type DrawerVariantProps, drawerVariants } from "@pisagor/recipes/drawer";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { ScrollArea } from "../scroll-area";

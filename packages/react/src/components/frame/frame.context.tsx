@@ -1,4 +1,4 @@
-import type { FrameVariants } from "@pisagor/styles/ui/frame";
+import type { FrameVariants } from "@pisagor/recipes/frame";
 import { createContext } from "../../utils";
 
 interface FrameContextValue {

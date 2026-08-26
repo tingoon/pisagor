@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/react/factory";
 import { SidebarSimpleIcon } from "@phosphor-icons/react";
-import { type ButtonVariantProps, buttonVariants } from "@pisagor/styles/ui/button";
-import { sidebarVariants } from "@pisagor/styles/ui/sidebar";
+import { type ButtonVariantProps, buttonVariants } from "@pisagor/recipes/button";
+import { sidebarVariants } from "@pisagor/recipes/sidebar";
 import { cn } from "@pisagor/utils";
 import { useHotkey } from "@tanstack/react-hotkeys";
 import { type ComponentProps, type CSSProperties, useCallback, useMemo, useState } from "react";
