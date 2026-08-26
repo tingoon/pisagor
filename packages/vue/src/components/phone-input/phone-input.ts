@@ -1,5 +1,5 @@
 import { PhGlobe } from "@phosphor-icons/vue";
-import { phoneInputInlineVariants, phoneInputVariants } from "@pisagor/styles/ui/phone-input";
+import { phoneInputVariants } from "@pisagor/styles/ui/phone-input";
 import { cn } from "@pisagor/utils";
 
 type ClassValue = Parameters<typeof cn>[0];
@@ -88,10 +88,7 @@ export const PhoneInput = defineComponent({
                 "data-part": "country-trigger",
                 "data-scope": "phone-input",
               },
-              () =>
-                h("span", { class: slots.flag({ class: phoneInputInlineVariants() }) }, () =>
-                  h(PhGlobe),
-                ),
+              () => h("span", { class: slots.flag({ class: slots.flagIcon() }) }, () => h(PhGlobe)),
             ),
             h(
               InputGroup.Input as ArkPart,

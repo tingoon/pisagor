@@ -1,20 +1,9 @@
 import { ark } from "@ark-ui/vue/factory";
-import {
-  type CardMediaVariantProps,
-  cardActionVariants,
-  cardContentVariants,
-  cardDescriptionVariants,
-  cardFooterVariants,
-  cardHeaderVariants,
-  cardMediaVariants,
-  cardTitleVariants,
-  cardVariants,
-} from "@pisagor/styles/ui/card";
-import { cn } from "@pisagor/utils";
+import { type CardVariantProps, cardVariants } from "@pisagor/styles/ui/card";
 import { defineComponent, h, type PropType } from "vue";
 import type { WithTestId } from "../../internal/types";
 
-export type CardMediaVariant = NonNullable<CardMediaVariantProps["variant"]>;
+export type CardMediaVariant = NonNullable<CardVariantProps["variant"]>;
 
 type ArkPart = Parameters<typeof h>[0];
 
@@ -33,18 +22,21 @@ export const CardRoot = defineComponent({
     testId: String,
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = cardVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(cardVariants(), props.class),
+          class: variantSlots.base({ class: props.class }),
           "data-part": "root",
           "data-scope": "card",
           "data-testid": props.testId,
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -54,15 +46,17 @@ export const CardMedia = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     testId: String,
-    variant: { default: "default", type: String as PropType<CardMediaVariantProps["variant"]> },
+    variant: { default: "default", type: String as PropType<CardVariantProps["variant"]> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = cardVariants({ variant: props.variant });
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(cardMediaVariants({ variant: props.variant }), props.class),
+          class: variantSlots.media({ class: props.class }),
           "data-part": "media",
           "data-scope": "card",
           "data-testid": props.testId,
@@ -70,6 +64,7 @@ export const CardMedia = defineComponent({
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -83,12 +78,14 @@ export const CardHeader = defineComponent({
     title: { default: undefined, type: String },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = cardVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(cardHeaderVariants(), props.class),
+          class: variantSlots.header({ class: props.class }),
           "data-part": "header",
           "data-scope": "card",
           "data-testid": props.testId,
@@ -99,6 +96,7 @@ export const CardHeader = defineComponent({
           slots.default?.(),
         ],
       );
+    };
   },
 });
 
@@ -110,18 +108,21 @@ export const CardTitle = defineComponent({
     testId: String,
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = cardVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(cardTitleVariants(), props.class),
+          class: variantSlots.title({ class: props.class }),
           "data-part": "title",
           "data-scope": "card",
           "data-testid": props.testId,
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -133,18 +134,21 @@ export const CardDescription = defineComponent({
     testId: String,
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = cardVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(cardDescriptionVariants(), props.class),
+          class: variantSlots.description({ class: props.class }),
           "data-part": "description",
           "data-scope": "card",
           "data-testid": props.testId,
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -156,18 +160,21 @@ export const CardAction = defineComponent({
     testId: String,
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = cardVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(cardActionVariants(), props.class),
+          class: variantSlots.action({ class: props.class }),
           "data-part": "action",
           "data-scope": "card",
           "data-testid": props.testId,
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -179,18 +186,21 @@ export const CardContent = defineComponent({
     testId: String,
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = cardVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(cardContentVariants(), props.class),
+          class: variantSlots.content({ class: props.class }),
           "data-part": "content",
           "data-scope": "card",
           "data-testid": props.testId,
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -202,18 +212,21 @@ export const CardFooter = defineComponent({
     testId: String,
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = cardVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(cardFooterVariants(), props.class),
+          class: variantSlots.footer({ class: props.class }),
           "data-part": "footer",
           "data-scope": "card",
           "data-testid": props.testId,
         },
         slots.default?.(),
       );
+    };
   },
 });
 // #endregion

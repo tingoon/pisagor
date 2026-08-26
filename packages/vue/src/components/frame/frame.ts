@@ -1,13 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import {
-  framePanelDescriptionVariants,
-  framePanelFooterVariants,
-  framePanelHeaderVariants,
-  framePanelTitleVariants,
-  framePanelVariants,
-  frameVariants,
-} from "@pisagor/styles/ui/frame";
-import { cn } from "@pisagor/utils";
+import { frameVariants } from "@pisagor/styles/ui/frame";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -21,18 +13,21 @@ export const FrameRoot = defineComponent({
     testId: String,
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = frameVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(frameVariants(), props.class),
+          class: variantSlots.base({ class: props.class }),
           "data-part": "root",
           "data-scope": "frame",
           "data-testid": props.testId,
         },
-        slots,
+        slots.default?.(),
       );
+    };
   },
 });
 
@@ -43,17 +38,20 @@ export const FramePanel = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = frameVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(framePanelVariants(), props.class),
+          class: variantSlots.panel({ class: props.class }),
           "data-part": "panel",
           "data-scope": "frame",
         },
-        slots,
+        slots.default?.(),
       );
+    };
   },
 });
 
@@ -64,17 +62,20 @@ export const FrameTitle = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = frameVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(framePanelTitleVariants(), props.class),
+          class: variantSlots.panelTitle({ class: props.class }),
           "data-part": "panel-title",
           "data-scope": "frame",
         },
-        slots,
+        slots.default?.(),
       );
+    };
   },
 });
 
@@ -85,17 +86,20 @@ export const FrameDescription = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = frameVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(framePanelDescriptionVariants(), props.class),
+          class: variantSlots.panelDescription({ class: props.class }),
           "data-part": "panel-description",
           "data-scope": "frame",
         },
-        slots,
+        slots.default?.(),
       );
+    };
   },
 });
 
@@ -108,12 +112,14 @@ export const FrameHeader = defineComponent({
     title: { default: undefined, type: [String, Object] as PropType<VNodeChild> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = frameVariants();
+
+      return h(
         ark.header as ArkPart,
         {
           ...attrs,
-          class: cn(framePanelHeaderVariants(), props.class),
+          class: variantSlots.panelHeader({ class: props.class }),
           "data-part": "panel-header",
           "data-scope": "frame",
         },
@@ -123,6 +129,7 @@ export const FrameHeader = defineComponent({
           slots.default?.(),
         ],
       );
+    };
   },
 });
 
@@ -133,17 +140,20 @@ export const FrameFooter = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = frameVariants();
+
+      return h(
         ark.footer as ArkPart,
         {
           ...attrs,
-          class: cn(framePanelFooterVariants(), props.class),
+          class: variantSlots.panelFooter({ class: props.class }),
           "data-part": "panel-footer",
           "data-scope": "frame",
         },
-        slots,
+        slots.default?.(),
       );
+    };
   },
 });
 // #endregion

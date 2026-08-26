@@ -4,26 +4,7 @@ import {
   useFileUploadContext,
 } from "@ark-ui/vue/file-upload";
 import { PhUpload, PhX } from "@phosphor-icons/vue";
-import {
-  fileUploadDropzoneHelperVariants,
-  fileUploadDropzoneIconVariants,
-  fileUploadDropzoneVariants,
-  fileUploadInline2Variants,
-  fileUploadInline3Variants,
-  fileUploadInline4Variants,
-  fileUploadInline5Variants,
-  fileUploadInline6Variants,
-  fileUploadInline7Variants,
-  fileUploadInlineVariants,
-  fileUploadItemNameVariants,
-  fileUploadItemPreviewImageVariants,
-  fileUploadItemPreviewVariants,
-  fileUploadItemSizeVariants,
-  fileUploadItemVariants,
-  fileUploadTitle2Variants,
-  fileUploadTitleVariants,
-  fileUploadVariants,
-} from "@pisagor/styles/ui/file-upload";
+import { fileUploadVariants } from "@pisagor/styles/ui/file-upload";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
@@ -68,12 +49,13 @@ export const FileUploadRoot = defineComponent({
       const onFileChange = attrs.onFileChange as
         | ((details: FileUploadFileChangeDetails) => void)
         | undefined;
+      const variantSlots = fileUploadVariants();
 
       return h(
         FileUploadPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(fileUploadVariants(), props.class),
+          class: variantSlots.base({ class: props.class }),
           "data-testid": props.testId,
           onFileChange: (details: FileUploadFileChangeDetails) => {
             onFileChange?.(details);
@@ -106,6 +88,7 @@ export const FileUploadDropzone = defineComponent({
       const resolved = useFormControlVariant(props.variant);
       const shellArgs = shellVariantArgs(resolved);
       const controlProps = formControlShellProps(resolved);
+      const variantSlots = fileUploadVariants();
 
       return h(
         FileUploadPrimitive.Dropzone as ArkPart,
@@ -114,7 +97,7 @@ export const FileUploadDropzone = defineComponent({
           ...controlProps,
           class: cn(
             formControlZoneVariants({ ...shellArgs }),
-            fileUploadDropzoneVariants(),
+            variantSlots.dropzone(),
             props.class,
           ),
         },
@@ -131,17 +114,20 @@ export const FileUploadDropzoneIcon = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = fileUploadVariants();
+
+      return h(
         "div",
         {
           ...attrs,
-          class: cn(fileUploadDropzoneIconVariants(), props.class),
+          class: variantSlots.dropzoneIcon({ class: props.class }),
           "data-part": "dropzone-icon",
           "data-scope": "file-upload",
         },
         () => slots.default?.() ?? h(PhUpload),
       );
+    };
   },
 });
 
@@ -152,17 +138,20 @@ export const FileUploadTitle = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = fileUploadVariants();
+
+      return h(
         "div",
         {
           ...attrs,
-          class: cn(fileUploadTitleVariants(), props.class),
+          class: variantSlots.title({ class: props.class }),
           "data-part": "title",
           "data-scope": "file-upload",
         },
         slots,
       );
+    };
   },
 });
 
@@ -173,17 +162,20 @@ export const FileUploadDescription = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = fileUploadVariants();
+
+      return h(
         "div",
         {
           ...attrs,
-          class: cn(fileUploadTitle2Variants(), props.class),
+          class: variantSlots.description({ class: props.class }),
           "data-part": "title",
           "data-scope": "file-upload",
         },
         slots,
       );
+    };
   },
 });
 
@@ -194,17 +186,20 @@ export const FileUploadHelper = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = fileUploadVariants();
+
+      return h(
         "div",
         {
           ...attrs,
-          class: cn(fileUploadDropzoneHelperVariants(), props.class),
+          class: variantSlots.helper({ class: props.class }),
           "data-part": "dropzone-helper",
           "data-scope": "file-upload",
         },
         slots,
       );
+    };
   },
 });
 
@@ -224,16 +219,19 @@ export const FileUploadItem = defineComponent({
     file: { required: true, type: Object as PropType<File> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = fileUploadVariants();
+
+      return h(
         FileUploadPrimitive.Item as ArkPart,
         {
           ...attrs,
-          class: cn(fileUploadItemVariants(), props.class),
+          class: variantSlots.item({ class: props.class }),
           file: props.file,
         },
         slots,
       );
+    };
   },
 });
 
@@ -245,16 +243,19 @@ export const FileUploadItemPreview = defineComponent({
     type: { default: undefined, type: String },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = fileUploadVariants();
+
+      return h(
         FileUploadPrimitive.ItemPreview as ArkPart,
         {
           ...attrs,
-          class: cn(fileUploadItemPreviewVariants(), props.class),
+          class: variantSlots.itemPreview({ class: props.class }),
           type: props.type,
         },
         slots,
       );
+    };
   },
 });
 
@@ -265,11 +266,14 @@ export const FileUploadItemPreviewImage = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs }) {
-    return () =>
-      h(FileUploadPrimitive.ItemPreviewImage as ArkPart, {
+    return () => {
+      const variantSlots = fileUploadVariants();
+
+      return h(FileUploadPrimitive.ItemPreviewImage as ArkPart, {
         ...attrs,
-        class: cn(fileUploadItemPreviewImageVariants(), props.class),
+        class: variantSlots.itemPreviewImage({ class: props.class }),
       });
+    };
   },
 });
 
@@ -280,15 +284,18 @@ export const FileUploadItemName = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = fileUploadVariants();
+
+      return h(
         FileUploadPrimitive.ItemName as ArkPart,
         {
           ...attrs,
-          class: cn(fileUploadItemNameVariants(), props.class),
+          class: variantSlots.itemName({ class: props.class }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -299,15 +306,18 @@ export const FileUploadItemSize = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = fileUploadVariants();
+
+      return h(
         FileUploadPrimitive.ItemSizeText as ArkPart,
         {
           ...attrs,
-          class: cn(fileUploadItemSizeVariants(), props.class),
+          class: variantSlots.itemSize({ class: props.class }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -338,12 +348,13 @@ export const FileUploadList = defineComponent({
 
     return () => {
       const files = fileUpload.value.acceptedFiles;
+      const variantSlots = fileUploadVariants();
 
       if (files.length === 0) {
         return null;
       }
 
-      return h(FileUploadItemGroup, { class: fileUploadInline3Variants() }, () =>
+      return h(FileUploadItemGroup, { class: variantSlots.itemGroup() }, () =>
         files.map((file, index) => {
           const isImage = file.type.startsWith("image/");
           const key = `${file.name}-${index}`;
@@ -353,7 +364,7 @@ export const FileUploadList = defineComponent({
             FileUploadItem as ArkPart,
             {
               ...attrs,
-              class: cn(fileUploadInlineVariants(), props.class),
+              class: variantSlots.listItem({ class: props.class }),
               file,
               key,
             },
@@ -361,25 +372,25 @@ export const FileUploadList = defineComponent({
               h(
                 FileUploadItemPreview as ArkPart,
                 {
-                  class: fileUploadInline4Variants(),
+                  class: variantSlots.listPreview(),
                   type: isImage ? "image/*" : ".*",
                 },
                 () =>
                   isImage
                     ? h(FileUploadItemPreviewImage)
-                    : h("span", { class: fileUploadInline5Variants() }, extension),
+                    : h("span", { class: variantSlots.extension() }, extension),
               ),
-              h("div", { class: fileUploadInline6Variants() }, [
+              h("div", { class: variantSlots.itemContent() }, [
                 h(FileUploadItemName),
                 h(FileUploadItemSize),
               ]),
               h(
                 FileUploadItemDeleteTrigger,
-                { asChild: true, class: fileUploadInline7Variants() },
+                { asChild: true, class: variantSlots.deleteTrigger() },
                 () =>
                   h(
                     Button as ArkPart,
-                    { class: fileUploadInline2Variants(), size: "icon-xs", variant: "ghost" },
+                    { class: variantSlots.deleteButton(), size: "icon-xs", variant: "ghost" },
                     () => h(PhX),
                   ),
               ),

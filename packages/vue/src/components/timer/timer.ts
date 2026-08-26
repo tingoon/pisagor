@@ -1,18 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
 import { Timer as TimerPrimitive, useTimerContext as useTimer } from "@ark-ui/vue/timer";
-import {
-  timerAreaVariants,
-  timerControlVariants,
-  timerItemGroupVariants,
-  timerItemLabelVariants,
-  timerItemVariants,
-  timerSeparatorVariants,
-  timerVariants,
-} from "@pisagor/styles/ui/timer";
-import { cn } from "@pisagor/utils";
-
-type ClassValue = Parameters<typeof cn>[0];
-
+import { timerVariants } from "@pisagor/styles/ui/timer";
 import { defineComponent, h, type PropType } from "vue";
 import type { WithTestId } from "../../internal/types";
 
@@ -23,7 +11,7 @@ export interface TimerRootProps extends WithTestId {
   units?: TimerUnit[];
   /** Auto-render Timer.Control with play and reset buttons */
   isControlsVisible?: boolean;
-  class?: ClassValue;
+  class?: unknown;
 }
 
 type ArkPart = Parameters<typeof h>[0];
@@ -34,18 +22,20 @@ export const TimerRoot = defineComponent({
   inheritAttrs: false,
   name: "TimerRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     isControlsVisible: { default: undefined, type: Boolean },
     testId: String,
     units: { default: undefined, type: Array as PropType<TimerUnit[]> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = timerVariants();
+
+      return h(
         TimerPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(timerVariants(), props.class),
+          class: variantSlots.base({ class: props.class }),
           "data-testid": props.testId,
         },
         () => [
@@ -66,6 +56,7 @@ export const TimerRoot = defineComponent({
           slots.default?.(),
         ],
       );
+    };
   },
 });
 
@@ -73,18 +64,21 @@ export const TimerArea = defineComponent({
   inheritAttrs: false,
   name: "TimerArea",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = timerVariants();
+
+      return h(
         TimerPrimitive.Area as ArkPart,
         {
           ...attrs,
-          class: cn(timerAreaVariants(), props.class, attrs.class),
+          class: variantSlots.area({ class: props.class }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -92,41 +86,50 @@ export const TimerItemGroup = defineComponent({
   inheritAttrs: false,
   name: "TimerItemGroup",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     orientation: {
       default: "vertical",
       type: String as PropType<"horizontal" | "vertical">,
     },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = timerVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(timerItemGroupVariants(), props.class, attrs.class),
+          class: variantSlots.itemGroup({ class: props.class }),
           "data-orientation": props.orientation,
           "data-part": "item-group",
           "data-scope": "timer",
         },
         slots,
       );
+    };
   },
 });
 
 export const TimerItem = defineComponent({
   inheritAttrs: false,
   name: "TimerItem",
-  setup(_, { attrs, slots }) {
-    return () =>
-      h(
+  props: {
+    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+  },
+  setup(props, { attrs, slots }) {
+    return () => {
+      const variantSlots = timerVariants();
+
+      return h(
         TimerPrimitive.Item as ArkPart,
         {
           ...attrs,
-          class: cn(timerItemVariants(), (attrs as { class?: ClassValue }).class),
+          class: variantSlots.item({ class: props.class }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -134,36 +137,45 @@ export const TimerItemLabel = defineComponent({
   inheritAttrs: false,
   name: "TimerItemLabel",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = timerVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(timerItemLabelVariants(), props.class, attrs.class),
+          class: variantSlots.itemLabel({ class: props.class }),
           "data-part": "item-label",
           "data-scope": "timer",
         },
         slots,
       );
+    };
   },
 });
 
 export const TimerSeparator = defineComponent({
   inheritAttrs: false,
   name: "TimerSeparator",
-  setup(_, { attrs, slots }) {
-    return () =>
-      h(
+  props: {
+    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+  },
+  setup(props, { attrs, slots }) {
+    return () => {
+      const variantSlots = timerVariants();
+
+      return h(
         TimerPrimitive.Separator as ArkPart,
         {
           ...attrs,
-          class: cn(timerSeparatorVariants(), (attrs as { class?: ClassValue }).class),
+          class: variantSlots.separator({ class: props.class }),
         },
         () => slots.default?.() ?? ":",
       );
+    };
   },
 });
 
@@ -171,18 +183,21 @@ export const TimerControl = defineComponent({
   inheritAttrs: false,
   name: "TimerControl",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = timerVariants();
+
+      return h(
         TimerPrimitive.Control as ArkPart,
         {
           ...attrs,
-          class: cn(timerControlVariants(), props.class, attrs.class),
+          class: variantSlots.control({ class: props.class }),
         },
         slots,
       );
+    };
   },
 });
 

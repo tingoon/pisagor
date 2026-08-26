@@ -5,7 +5,7 @@ import {
   ProgressTrack,
   ProgressValueText,
 } from "@ark-ui/vue/progress";
-import { fieldLabelVariants } from "@pisagor/styles/ui/field";
+import { fieldVariants } from "@pisagor/styles/ui/field";
 import { type ProgressSlots, progressVariants } from "@pisagor/styles/ui/progress";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNode } from "vue";
@@ -78,7 +78,7 @@ export const Progress = defineComponent({
                         h(
                           FieldLabel as ArkPart,
                           {
-                            class: cn(fieldLabelVariants()),
+                            class: cn(fieldVariants().label()),
                           },
                           () => props.label,
                         ),

@@ -1,16 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import {
-  tableBodyVariants,
-  tableCaptionVariants,
-  tableCellVariants,
-  tableFooterVariants,
-  tableHeaderVariants,
-  tableHeadVariants,
-  tableRowVariants,
-  tableVariants,
-  tableWrapperVariants,
-} from "@pisagor/styles/ui/table";
-import { cn } from "@pisagor/utils";
+import { tableVariants } from "@pisagor/styles/ui/table";
 import { defineComponent, h, type PropType } from "vue";
 import type { WithTestId } from "../../internal/types";
 
@@ -45,11 +34,13 @@ export const TableRoot = defineComponent({
     variant: { default: "plain", type: String as PropType<TableProps["variant"]> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = tableVariants();
+
+      return h(
         "div" as ArkPart,
         {
-          class: tableWrapperVariants(),
+          class: variantSlots.wrapper(),
           "data-part": "wrapper",
           "data-scope": "table",
         },
@@ -58,7 +49,7 @@ export const TableRoot = defineComponent({
             ark.table as ArkPart,
             {
               ...attrs,
-              class: cn(tableVariants(), props.class),
+              class: variantSlots.base({ class: props.class }),
               "data-hoverable": props.isHoverable ? "true" : undefined,
               "data-part": "root",
               "data-scope": "table",
@@ -68,6 +59,7 @@ export const TableRoot = defineComponent({
             slots.default?.(),
           ),
       );
+    };
   },
 });
 
@@ -78,17 +70,20 @@ export const TableHeader = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = tableVariants();
+
+      return h(
         ark.thead as ArkPart,
         {
           ...attrs,
-          class: cn(tableHeaderVariants(), props.class),
+          class: variantSlots.header({ class: props.class }),
           "data-part": "header",
           "data-scope": "table",
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -99,17 +94,20 @@ export const TableBody = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = tableVariants();
+
+      return h(
         ark.tbody as ArkPart,
         {
           ...attrs,
-          class: cn(tableBodyVariants(), props.class),
+          class: variantSlots.body({ class: props.class }),
           "data-part": "body",
           "data-scope": "table",
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -120,17 +118,20 @@ export const TableFooter = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = tableVariants();
+
+      return h(
         ark.tfoot as ArkPart,
         {
           ...attrs,
-          class: cn(tableFooterVariants(), props.class),
+          class: variantSlots.footer({ class: props.class }),
           "data-part": "footer",
           "data-scope": "table",
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -141,17 +142,20 @@ export const TableRow = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = tableVariants();
+
+      return h(
         ark.tr as ArkPart,
         {
           ...attrs,
-          class: cn(tableRowVariants(), props.class),
+          class: variantSlots.row({ class: props.class }),
           "data-part": "row",
           "data-scope": "table",
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -162,17 +166,20 @@ export const TableHead = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = tableVariants();
+
+      return h(
         ark.th as ArkPart,
         {
           ...attrs,
-          class: cn(tableHeadVariants(), props.class),
+          class: variantSlots.head({ class: props.class }),
           "data-part": "head",
           "data-scope": "table",
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -183,17 +190,20 @@ export const TableCell = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = tableVariants();
+
+      return h(
         ark.td as ArkPart,
         {
           ...attrs,
-          class: cn(tableCellVariants(), props.class),
+          class: variantSlots.cell({ class: props.class }),
           "data-part": "cell",
           "data-scope": "table",
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -204,17 +214,20 @@ export const TableCaption = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = tableVariants();
+
+      return h(
         ark.caption as ArkPart,
         {
           ...attrs,
-          class: cn(tableCaptionVariants(), props.class),
+          class: variantSlots.caption({ class: props.class }),
           "data-part": "caption",
           "data-scope": "table",
         },
         slots.default?.(),
       );
+    };
   },
 });
 // #endregion

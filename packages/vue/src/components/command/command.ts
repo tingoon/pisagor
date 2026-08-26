@@ -2,21 +2,8 @@ import type { CollectionItem, ListCollection } from "@ark-ui/vue/collection";
 import { Combobox as ComboboxPrimitive } from "@ark-ui/vue/combobox";
 import { Dialog as DialogPrimitive } from "@ark-ui/vue/dialog";
 import { PhMagnifyingGlass } from "@phosphor-icons/vue";
-import { comboboxItemVariants } from "@pisagor/styles/ui/combobox";
-import {
-  comboboxControlVariants,
-  commandContentVariants,
-  commandDialogContentVariants,
-  commandEmptyVariants,
-  commandFooterVariants,
-  commandInline2Variants,
-  commandInline3Variants,
-  commandInline4Variants,
-  commandInline5Variants,
-  commandInlineVariants,
-  commandListVariants,
-  commandSeparatorVariants,
-} from "@pisagor/styles/ui/command";
+import { comboboxVariants } from "@pisagor/styles/ui/combobox";
+import { commandVariants } from "@pisagor/styles/ui/command";
 import { dialogContentVariants } from "@pisagor/styles/ui/dialog";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, Teleport, type VNodeChild } from "vue";
@@ -95,8 +82,10 @@ export const CommandDialogContent = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      commandTeleport([
+    return () => {
+      const variantSlots = commandVariants();
+
+      return commandTeleport([
         h(Dialog.Backdrop),
         h(Dialog.Positioner, null, () =>
           h(
@@ -104,14 +93,14 @@ export const CommandDialogContent = defineComponent({
             {
               ...attrs,
               class: cn(
-                commandDialogContentVariants(),
+                variantSlots.dialogContent(),
                 dialogContentVariants({ size: props.size }),
                 props.class,
               ),
             },
             () => [
               h(Dialog.Header as ArkPart, {
-                class: commandInline3Variants(),
+                class: variantSlots.dialogHeader(),
                 description: props.description,
                 title: props.title,
               }),
@@ -120,6 +109,7 @@ export const CommandDialogContent = defineComponent({
           ),
         ),
       ]);
+    };
   },
 });
 CommandDialogContent.displayName = "Command.DialogContent";
@@ -142,12 +132,14 @@ export const CommandRoot = defineComponent({
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = commandVariants();
+
+      return h(
         Combobox.Root as ArkPart,
         {
           ...attrs,
-          class: cn(commandInlineVariants(), props.class),
+          class: variantSlots.base({ class: props.class }),
           closeOnSelect: false,
           collection: props.collection,
           disableLayer: true,
@@ -162,6 +154,7 @@ export const CommandRoot = defineComponent({
         },
         slots.default?.(),
       );
+    };
   },
 });
 CommandRoot.displayName = "Command";
@@ -173,15 +166,18 @@ export const CommandContent = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = commandVariants();
+
+      return h(
         ComboboxPrimitive.Content as ArkPart,
         {
           ...attrs,
-          class: cn(commandContentVariants(), props.class, attrs.class),
+          class: cn(variantSlots.content(), props.class, attrs.class),
         },
         slots.default?.(),
       );
+    };
   },
 });
 CommandContent.displayName = "Command.Content";
@@ -196,14 +192,16 @@ export const CommandInput = defineComponent({
   setup(props, { attrs }) {
     const { testId } = useComboboxRoot() ?? {};
 
-    return () =>
-      h(ComboboxPrimitive.Control as ArkPart, { class: comboboxControlVariants() }, () =>
+    return () => {
+      const variantSlots = commandVariants();
+
+      return h(ComboboxPrimitive.Control as ArkPart, { class: variantSlots.control() }, () =>
         h(
           InputGroup as ArkPart,
-          { class: cn(commandInline2Variants(), props.class), size: props.size },
+          { class: variantSlots.input({ class: props.class }), size: props.size },
           () => [
             h(InputGroup.Addon as ArkPart, null, () =>
-              h(PhMagnifyingGlass, { "aria-hidden": true, class: commandInline4Variants() }),
+              h(PhMagnifyingGlass, { "aria-hidden": true, class: variantSlots.inputIcon() }),
             ),
             h(ComboboxPrimitive.Input as ArkPart, { asChild: true }, () =>
               h(InputGroup.Input as ArkPart, {
@@ -215,6 +213,7 @@ export const CommandInput = defineComponent({
           ],
         ),
       );
+    };
   },
 });
 CommandInput.displayName = "Command.Input";
@@ -226,17 +225,20 @@ export const CommandList = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h("div", { class: commandInline5Variants() }, () =>
+    return () => {
+      const variantSlots = commandVariants();
+
+      return h("div", { class: variantSlots.listWrapper() }, () =>
         h(
           Combobox.List as ArkPart,
           {
             ...attrs,
-            class: cn(commandListVariants(), props.class, attrs.class),
+            class: cn(variantSlots.list(), props.class, attrs.class),
           },
           slots.default?.(),
         ),
       );
+    };
   },
 });
 CommandList.displayName = "Command.List";
@@ -248,15 +250,18 @@ export const CommandEmpty = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = commandVariants();
+
+      return h(
         Combobox.Empty as ArkPart,
         {
           ...attrs,
-          class: cn(commandEmptyVariants(), props.class, attrs.class),
+          class: cn(variantSlots.empty(), props.class, attrs.class),
         },
         slots.default?.() ?? "No results found. Try a different search.",
       );
+    };
   },
 });
 CommandEmpty.displayName = "Command.Empty";
@@ -308,7 +313,7 @@ export const CommandItem = defineComponent({
         ComboboxPrimitive.Item as ArkPart,
         {
           ...attrs,
-          class: comboboxItemVariants({ showIndicator: false }).base({ class: props.class }),
+          class: comboboxVariants({ showIndicator: false }).item({ class: props.class }),
           item: props.item,
           persistFocus: true,
         },
@@ -325,13 +330,16 @@ export const CommandSeparator = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs }) {
-    return () =>
-      h(Separator as ArkPart, {
+    return () => {
+      const variantSlots = commandVariants();
+
+      return h(Separator as ArkPart, {
         ...attrs,
-        class: cn(commandSeparatorVariants(), props.class),
+        class: variantSlots.separator({ class: props.class }),
         dataPart: "separator",
         dataScope: "command",
       });
+    };
   },
 });
 CommandSeparator.displayName = "Command.Separator";
@@ -360,17 +368,20 @@ export const CommandFooter = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = commandVariants();
+
+      return h(
         "div",
         {
           ...attrs,
-          class: cn(commandFooterVariants(), props.class),
+          class: variantSlots.footer({ class: props.class }),
           "data-part": "footer",
           "data-scope": "command",
         },
         slots.default?.(),
       );
+    };
   },
 });
 CommandFooter.displayName = "Command.Footer";

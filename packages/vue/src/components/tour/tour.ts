@@ -7,19 +7,7 @@ import {
 } from "@ark-ui/vue/tour";
 import { PhCaretLeft, PhCaretRight, PhX } from "@phosphor-icons/vue";
 import { dialogBackdropVariants } from "@pisagor/styles/ui/dialog";
-import {
-  tourActionsVariants,
-  tourBackdropVariants,
-  tourContentVariants,
-  tourDescriptionVariants,
-  tourInline2Variants,
-  tourInline3Variants,
-  tourInlineVariants,
-  tourPositionerVariants,
-  tourProgressTextVariants,
-  tourSpotlightVariants,
-  tourTitleVariants,
-} from "@pisagor/styles/ui/tour";
+import { type TourVariants, tourVariants } from "@pisagor/styles/ui/tour";
 import { cn } from "@pisagor/utils";
 import {
   computed,
@@ -47,6 +35,8 @@ export type TourStepType = TourStepDetails;
 interface TourContextProps {
   /** The function to start the tour */
   handleStart: () => void;
+  /** Slot class recipes from `tourVariants`. */
+  slots: TourVariants;
   /** The tour instance */
   tour: UnwrapRef<UseTourReturn>;
   testId?: string;
@@ -131,6 +121,7 @@ export const TourRoot = defineComponent({
 
     const context = reactive({
       handleStart,
+      slots: tourVariants(),
       testId: props.testId,
       tour,
     });
@@ -200,11 +191,15 @@ export const TourBackdrop = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
   },
   setup(props, { attrs }) {
-    return () =>
-      h(TourPrimitive.Backdrop as ArkPart, {
+    return () => {
+      const ctx = toValue(useTourContextRef());
+      if (!ctx) return null;
+
+      return h(TourPrimitive.Backdrop as ArkPart, {
         ...attrs,
-        class: cn(dialogBackdropVariants(), tourBackdropVariants(), props.class),
+        class: cn(dialogBackdropVariants(), ctx.slots.backdrop(), props.class),
       });
+    };
   },
 });
 
@@ -212,12 +207,16 @@ export const TourPositioner = defineComponent({
   inheritAttrs: false,
   name: "Tour.Positioner",
   setup(_, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const ctx = toValue(useTourContextRef());
+      if (!ctx) return null;
+
+      return h(
         TourPrimitive.Positioner as ArkPart,
-        { class: cn(tourPositionerVariants()), ...attrs },
+        { class: cn(ctx.slots.positioner()), ...attrs },
         slots,
       );
+    };
   },
 });
 
@@ -232,7 +231,7 @@ export const TourContent = defineComponent({
     return () => {
       const ctx = toValue(useTourContextRef());
       if (!ctx) return null;
-      const { testId } = ctx;
+      const { slots: recipeSlots, testId } = ctx;
 
       const defaultChildren = () => [
         h(TourHeader, null, () => [h(TourTitle), h(TourProgressText)]),
@@ -247,17 +246,17 @@ export const TourContent = defineComponent({
             TourPrimitive.Content as ArkPart,
             {
               ...attrs,
-              class: cn(tourContentVariants(), props.class),
+              class: cn(recipeSlots.content(), props.class),
               "data-testid": testId,
             },
             () => [
               slots.default ? slots.default() : defaultChildren(),
               props.showCloseButton
-                ? h(TourCloseTrigger, { asChild: true, class: tourInlineVariants() }, () =>
+                ? h(TourCloseTrigger, { asChild: true, class: recipeSlots.close() }, () =>
                     h(
                       Button as ArkPart,
-                      { class: tourInline2Variants(), size: "icon-md", variant: "ghost" },
-                      () => [h(PhX), h("span", { class: tourInline3Variants() }, "Close")],
+                      { class: recipeSlots.closeButton(), size: "icon-md", variant: "ghost" },
+                      () => [h(PhX), h("span", { class: recipeSlots.closeLabel() }, "Close")],
                     ),
                   )
                 : null,
@@ -282,11 +281,15 @@ export const TourSpotlight = defineComponent({
   inheritAttrs: false,
   name: "Tour.Spotlight",
   setup(_, { attrs }) {
-    return () =>
-      h(TourPrimitive.Spotlight as ArkPart, {
-        class: tourSpotlightVariants(),
+    return () => {
+      const ctx = toValue(useTourContextRef());
+      if (!ctx) return null;
+
+      return h(TourPrimitive.Spotlight as ArkPart, {
+        class: ctx.slots.spotlight(),
         ...attrs,
       });
+    };
   },
 });
 
@@ -309,11 +312,11 @@ export const TourTitle = defineComponent({
     return () => {
       const ctx = toValue(useTourContextRef());
       if (!ctx) return null;
-      const { tour } = ctx;
+      const { slots: recipeSlots, tour } = ctx;
 
       return h(
         TourPrimitive.Title as ArkPart,
-        { ...attrs, class: cn(tourTitleVariants(), props.class) },
+        { ...attrs, class: cn(recipeSlots.title(), props.class) },
         () => tour.step?.title,
       );
     };
@@ -330,13 +333,13 @@ export const TourDescription = defineComponent({
     return () => {
       const ctx = toValue(useTourContextRef());
       if (!ctx) return null;
-      const { tour } = ctx;
+      const { slots: recipeSlots, tour } = ctx;
 
       return h(
         TourPrimitive.Description as ArkPart,
         {
           ...attrs,
-          class: cn(tourDescriptionVariants(), props.class),
+          class: cn(recipeSlots.description(), props.class),
         },
         () => tour.step?.description,
       );
@@ -354,13 +357,13 @@ export const TourProgressText = defineComponent({
     return () => {
       const ctx = toValue(useTourContextRef());
       if (!ctx) return null;
-      const { tour } = ctx;
+      const { slots: recipeSlots, tour } = ctx;
 
       return h(
         TourPrimitive.ProgressText as ArkPart,
         {
           ...attrs,
-          class: cn(tourProgressTextVariants(), props.class),
+          class: cn(recipeSlots.progressText(), props.class),
         },
         () => tour.getProgressText(),
       );
@@ -397,7 +400,7 @@ export const TourActions = defineComponent({
     return () => {
       const ctx = toValue(useTourContextRef());
       if (!ctx) return null;
-      const { tour } = ctx;
+      const { slots: recipeSlots, tour } = ctx;
       const actions = tour.step?.actions ?? [];
 
       if (actions.length === 0) {
@@ -408,7 +411,7 @@ export const TourActions = defineComponent({
         h(
           DialogFooter as ArkPart,
           {
-            class: cn(tourActionsVariants(), props.class),
+            class: cn(recipeSlots.actions(), props.class),
             dataPart: "actions",
             dataScope: "tour",
           },

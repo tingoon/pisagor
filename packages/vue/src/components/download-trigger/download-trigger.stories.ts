@@ -28,10 +28,12 @@ export const Default = meta.story({
     },
     template: `
       <div class="flex flex-col gap-2">
-        <Item variant="outline">
-          <PhFileText />
-          <Item.Title>{{ text }}</Item.Title>
-        </Item>
+        <Item.Group>
+          <Item variant="outline">
+            <PhFileText />
+            <Item.Title>{{ text }}</Item.Title>
+          </Item>
+        </Item.Group>
         <DownloadTrigger as-child :data="text" file-name="hello.txt" mime-type="text/plain">
           <Button size="lg" variant="outline">
             <PhDownload />

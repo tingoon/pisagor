@@ -1,15 +1,8 @@
 import { FloatingPanel as FloatingPanelPrimitive } from "@ark-ui/vue/floating-panel";
 import { PhArrowsOut, PhCornersIn, PhMinus } from "@phosphor-icons/vue";
 import {
-  floatingPanelBodyVariants,
-  floatingPanelContentVariants,
-  floatingPanelFooterVariants,
-  floatingPanelInline2Variants,
-  floatingPanelInline3Variants,
-  floatingPanelInline4Variants,
-  floatingPanelInlineVariants,
-  floatingPanelPositionerVariants,
-  floatingPanelTitleVariants,
+  type FloatingPanelVariants,
+  floatingPanelVariants,
 } from "@pisagor/styles/ui/floating-panel";
 import { cn } from "@pisagor/utils";
 import {
@@ -27,6 +20,7 @@ import { ScrollArea } from "../scroll-area";
 
 // #region Types
 interface FloatingPanelContextProps {
+  slots: FloatingPanelVariants;
   testId?: string;
 }
 
@@ -64,11 +58,10 @@ interface FloatingPanelBodyProps {
 // #endregion
 
 // #region Context
-const [provideFloatingPanelContext, useFloatingPanelRoot] =
-  createContext<FloatingPanelContextProps>({
-    name: "FloatingPanelRoot",
-    strict: false,
-  });
+const [provideFloatingPanelContext, useFloatingPanel] = createContext<FloatingPanelContextProps>({
+  name: "FloatingPanel",
+  strict: false,
+});
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];
@@ -78,6 +71,10 @@ const RESIZE_AXES: ResizeAxis[] = ["n", "e", "w", "s", "ne", "se", "sw", "nw"];
 
 function floatingPanelTeleport(content: VNodeChild) {
   return h(Teleport, { to: "body" }, () => content);
+}
+
+function useFloatingPanelSlots() {
+  return useFloatingPanel()?.slots ?? floatingPanelVariants();
 }
 
 // #region Parts
@@ -91,6 +88,7 @@ export const FloatingPanelRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     const context = reactive<FloatingPanelContextProps>({
+      slots: floatingPanelVariants(),
       testId: props.testId,
     });
 
@@ -144,30 +142,30 @@ export const FloatingPanelContent = defineComponent({
     resizable: { default: true, type: Boolean as PropType<FloatingPanelContentProps["resizable"]> },
   },
   setup(props, { attrs, slots }) {
-    const floatingPanelContext = useFloatingPanelRoot();
+    const floatingPanelContext = useFloatingPanel();
 
-    return () =>
-      floatingPanelTeleport(
-        h(
-          FloatingPanelPrimitive.Positioner as ArkPart,
-          { class: floatingPanelPositionerVariants() },
-          () =>
-            h(
-              FloatingPanelPrimitive.Content as ArkPart,
-              {
-                ...attrs,
-                class: cn(floatingPanelContentVariants(), props.class),
-                "data-testid": floatingPanelContext?.testId,
-              },
-              () => [
-                slots.default?.(),
-                props.resizable
-                  ? RESIZE_AXES.map((axis) => h(FloatingPanelResizeTrigger, { axis, key: axis }))
-                  : null,
-              ],
-            ),
+    return () => {
+      const panelSlots = floatingPanelContext?.slots ?? floatingPanelVariants();
+
+      return floatingPanelTeleport(
+        h(FloatingPanelPrimitive.Positioner as ArkPart, { class: panelSlots.positioner() }, () =>
+          h(
+            FloatingPanelPrimitive.Content as ArkPart,
+            {
+              ...attrs,
+              class: cn(panelSlots.content(), props.class),
+              "data-testid": floatingPanelContext?.testId,
+            },
+            () => [
+              slots.default?.(),
+              props.resizable
+                ? RESIZE_AXES.map((axis) => h(FloatingPanelResizeTrigger, { axis, key: axis }))
+                : null,
+            ],
+          ),
         ),
       );
+    };
   },
 });
 
@@ -187,17 +185,20 @@ export const FloatingPanelHeader = defineComponent({
     title: String as PropType<FloatingPanelHeaderProps["title"]>,
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(FloatingPanelDragTrigger, null, () =>
+    return () => {
+      const panelSlots = useFloatingPanelSlots();
+
+      return h(FloatingPanelDragTrigger, null, () =>
         h(
           FloatingPanelPrimitive.Header as ArkPart,
-          { ...attrs, class: cn(floatingPanelInlineVariants(), props.class) },
+          { ...attrs, class: cn(panelSlots.header(), props.class) },
           () => [
             props.title ? h(FloatingPanelTitle, null, () => props.title) : null,
             slots.default?.(),
           ],
         ),
       );
+    };
   },
 });
 
@@ -208,12 +209,15 @@ export const FloatingPanelControl = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const panelSlots = useFloatingPanelSlots();
+
+      return h(
         FloatingPanelPrimitive.Control as ArkPart,
-        { ...attrs, class: cn(floatingPanelInline2Variants(), props.class) },
+        { ...attrs, class: cn(panelSlots.control(), props.class) },
         slots,
       );
+    };
   },
 });
 
@@ -291,8 +295,10 @@ export const FloatingPanelRestore = defineComponent({
     },
   },
   setup(props, { attrs }) {
-    return () =>
-      h(
+    return () => {
+      const panelSlots = useFloatingPanelSlots();
+
+      return h(
         FloatingPanelPrimitive.StageTrigger as ArkPart,
         { ...attrs, asChild: true, stage: "default" },
         () =>
@@ -305,11 +311,12 @@ export const FloatingPanelRestore = defineComponent({
               variant: props.variant,
             },
             () => [
-              h(PhCornersIn, { class: floatingPanelInline3Variants() }),
-              h(PhArrowsOut, { class: floatingPanelInline4Variants() }),
+              h(PhCornersIn, { class: panelSlots.maximizedIcon() }),
+              h(PhArrowsOut, { class: panelSlots.minimizedIcon() }),
             ],
           ),
       );
+    };
   },
 });
 
@@ -320,15 +327,18 @@ export const FloatingPanelTitle = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const panelSlots = useFloatingPanelSlots();
+
+      return h(
         FloatingPanelPrimitive.Title as ArkPart,
         {
           ...attrs,
-          class: cn(floatingPanelTitleVariants(), props.class),
+          class: cn(panelSlots.title(), props.class),
         },
         slots,
       );
+    };
   },
 });
 
@@ -356,17 +366,20 @@ export const FloatingPanelBody = defineComponent({
     scrollFade: { default: false, type: Boolean as PropType<FloatingPanelBodyProps["scrollFade"]> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(ScrollArea, { scrollFade: props.scrollFade }, () =>
+    return () => {
+      const panelSlots = useFloatingPanelSlots();
+
+      return h(ScrollArea, { scrollFade: props.scrollFade }, () =>
         h(
           FloatingPanelPrimitive.Body as ArkPart,
           {
             ...attrs,
-            class: cn(floatingPanelBodyVariants(), props.class),
+            class: cn(panelSlots.body(), props.class),
           },
           slots,
         ),
       );
+    };
   },
 });
 
@@ -377,17 +390,20 @@ export const FloatingPanelFooter = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const panelSlots = useFloatingPanelSlots();
+
+      return h(
         "div",
         {
           ...attrs,
-          class: cn(floatingPanelFooterVariants(), props.class),
+          class: cn(panelSlots.footer(), props.class),
           "data-part": "footer",
           "data-scope": "floating-panel",
         },
         slots,
       );
+    };
   },
 });
 // #endregion

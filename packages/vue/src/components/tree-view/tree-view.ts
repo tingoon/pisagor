@@ -28,9 +28,9 @@ import {
 } from "@pisagor/styles/ui/tree-view";
 import { cn } from "@pisagor/utils";
 import { defineComponent, Fragment, h, type PropType } from "vue";
+import { formControlToggleVariants } from "../../internal/form-control/form-control-variants";
 import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils/create-context";
-import { checkboxVariants } from "../checkbox";
 
 // #region Types
 export interface TreeNodeType<T = unknown> {
@@ -423,7 +423,12 @@ export const TreeViewNodeCheckbox = defineComponent({
         TreeViewPrimitive.NodeCheckbox as ArkPart,
         {
           ...attrs,
-          class: cn(checkboxVariants(), treeViewCheckboxVariants(), props.class, attrs.class),
+          class: cn(
+            formControlToggleVariants(),
+            treeViewCheckboxVariants(),
+            props.class,
+            attrs.class,
+          ),
         },
         () =>
           h(

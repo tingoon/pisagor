@@ -1,13 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
 import { PhX } from "@phosphor-icons/vue";
-import {
-  actionBarCloseVariants,
-  actionBarContentVariants,
-  actionBarInlineVariants,
-  actionBarPositionerVariants,
-  actionBarSeparatorVariants,
-  actionBarValueVariants,
-} from "@pisagor/styles/ui/action-bar";
+import { type ActionBarVariants, actionBarVariants } from "@pisagor/styles/ui/action-bar";
 import { cn } from "@pisagor/utils";
 import {
   defineComponent,
@@ -85,6 +78,7 @@ interface ActionBarContextValue extends WithTestId {
   onClose?: () => void;
   onOpen?: () => void;
   positioning: Required<ActionBarPositioning>;
+  slots: ActionBarVariants;
   testId?: string;
 }
 // #endregion
@@ -161,6 +155,7 @@ export const ActionBarRoot = defineComponent({
       onClose: handleClose,
       onOpen: handleOpen,
       positioning: { ...defaultPositioning, ...(props.positioning ?? {}) },
+      slots: actionBarVariants(),
       testId: props.testId,
       unmountOnExit: props.unmountOnExit,
     });
@@ -272,7 +267,7 @@ export const ActionBarContent = defineComponent({
         h(
           "div",
           {
-            class: cn(actionBarPositionerVariants({ placement })),
+            class: cn(context.slots.positioner({ placement })),
             "data-part": "positioner",
             "data-placement": placement,
             "data-scope": "action-bar",
@@ -283,7 +278,7 @@ export const ActionBarContent = defineComponent({
               ark.div as unknown as ArkPart,
               {
                 ...attrs,
-                class: cn(actionBarContentVariants(), props.class, attrs.class),
+                class: cn(context.slots.content(), props.class, attrs.class),
                 "data-part": "content",
                 "data-scope": "action-bar",
                 "data-testid": context.testId,
@@ -306,12 +301,14 @@ export const ActionBarSeparator = defineComponent({
     testId: String,
   },
   setup(props, { attrs }) {
+    const context = useActionBarContext();
+
     return () =>
       h(
         Separator as ArkPart,
         {
           ...attrs,
-          class: cn(actionBarSeparatorVariants(), props.class, attrs.class),
+          class: cn((context?.slots ?? actionBarVariants()).separator(), props.class, attrs.class),
           "data-testid": props.testId,
           dataPart: "separator",
           dataScope: "action-bar",
@@ -337,7 +334,7 @@ export const ActionBarClose = defineComponent({
         ark.button as unknown as ArkPart,
         {
           ...attrs,
-          class: cn(actionBarCloseVariants(), props.class, attrs.class),
+          class: cn((context?.slots ?? actionBarVariants()).close(), props.class, attrs.class),
           "data-part": "close",
           "data-scope": "action-bar",
           "data-state": context?.isOpen ? "open" : "closed",
@@ -362,12 +359,14 @@ export const ActionBarValue = defineComponent({
     label: { default: undefined, type: String },
   },
   setup(props, { attrs, slots }) {
+    const context = useActionBarContext();
+
     return () =>
       h(
         Badge as ArkPart,
         {
           ...attrs,
-          class: cn(actionBarValueVariants(), props.class, attrs.class),
+          class: cn((context?.slots ?? actionBarVariants()).value(), props.class, attrs.class),
           "data-part": "value",
           "data-scope": "action-bar",
           variant: "secondary",
@@ -384,12 +383,14 @@ export const ActionBarBody = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
+    const context = useActionBarContext();
+
     return () =>
       h(
         ark.div as unknown as ArkPart,
         {
           ...attrs,
-          class: cn(actionBarInlineVariants(), props.class, attrs.class),
+          class: cn((context?.slots ?? actionBarVariants()).body(), props.class, attrs.class),
         },
         slots.default?.(),
       );

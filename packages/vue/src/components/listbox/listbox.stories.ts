@@ -78,6 +78,7 @@ export const DisabledItem = meta.story({
       return { collection };
     },
     template: `
+      <Item.Group>
       <Item class="p-1" variant="outline">
         <Listbox.Root :collection="collection">
           <Listbox.Content>
@@ -88,6 +89,7 @@ export const DisabledItem = meta.story({
           </Listbox.Content>
         </Listbox.Root>
       </Item>
+      </Item.Group>
     `,
   }),
 });
@@ -124,6 +126,7 @@ export const Grid = meta.story({
       return { collection };
     },
     template: `
+      <Item.Group>
       <Item class="p-1" variant="outline">
         <Listbox.Root :collection="collection">
           <Listbox.Content
@@ -136,6 +139,7 @@ export const Grid = meta.story({
           </Listbox.Content>
         </Listbox.Root>
       </Item>
+      </Item.Group>
     `,
   }),
 });
@@ -156,6 +160,7 @@ export const Grouping = meta.story({
       return { collection };
     },
     template: `
+      <Item.Group>
       <Item class="p-1" variant="outline">
         <Listbox.Root :collection="collection">
           <Listbox.Content>
@@ -172,6 +177,7 @@ export const Grouping = meta.story({
           </Listbox.Content>
         </Listbox.Root>
       </Item>
+      </Item.Group>
     `,
   }),
 });
@@ -231,6 +237,7 @@ export const Disabled = meta.story({
       return { collection };
     },
     template: `
+      <Item.Group>
       <Item class="p-1" variant="outline">
         <Listbox.Root :collection="collection" disabled>
           <Listbox.Content>
@@ -241,6 +248,7 @@ export const Disabled = meta.story({
           </Listbox.Content>
         </Listbox.Root>
       </Item>
+      </Item.Group>
     `,
   }),
 });
@@ -309,6 +317,7 @@ export const SelectionExtended = meta.story({
         <p class="text-center text-muted-foreground text-sm">
           Hold <Kbd>⌘</Kbd> or <Kbd>Ctrl</Kbd> to select multiple
         </p>
+        <Item.Group>
         <Item class="w-full p-1" variant="outline">
           <Listbox.Root :collection="collection" selectionMode="extended">
             <Listbox.Content>
@@ -319,6 +328,7 @@ export const SelectionExtended = meta.story({
             </Listbox.Content>
           </Listbox.Root>
         </Item>
+        </Item.Group>
       </div>
     `,
   }),
@@ -338,6 +348,7 @@ export const SelectionMultiple = meta.story({
       return { collection };
     },
     template: `
+      <Item.Group>
       <Item class="p-1" variant="outline">
         <Listbox.Root :collection="collection" selectionMode="multiple">
           <Listbox.Content>
@@ -348,6 +359,7 @@ export const SelectionMultiple = meta.story({
           </Listbox.Content>
         </Listbox.Root>
       </Item>
+      </Item.Group>
     `,
   }),
 });
@@ -366,6 +378,7 @@ export const SelectionNone = meta.story({
       return { collection };
     },
     template: `
+      <Item.Group>
       <Item class="p-1" variant="outline">
         <Listbox.Root aria-label="File actions" class="w-full" :collection="collection" selectionMode="none">
           <Listbox.Content>
@@ -407,6 +420,7 @@ export const SelectionNone = meta.story({
           </Listbox.Content>
         </Listbox.Root>
       </Item>
+      </Item.Group>
     `,
   }),
 });
@@ -465,6 +479,7 @@ export const TransferList = meta.story({
     },
     template: `
       <div class="flex gap-2 max-sm:flex-col">
+        <Item.Group>
         <Item class="w-full p-1" variant="outline">
           <Listbox.Root
             class="min-h-40"
@@ -483,6 +498,7 @@ export const TransferList = meta.story({
             </Listbox.Content>
           </Listbox.Root>
         </Item>
+        </Item.Group>
         <div class="flex flex-row-reverse justify-center gap-2 sm:flex-col">
           <Button :disabled="availableValue.length === 0" size="icon-md" variant="outline" @click="moveToSelected">
             <PhCaretRight />
@@ -491,6 +507,7 @@ export const TransferList = meta.story({
             <PhCaretLeft />
           </Button>
         </div>
+        <Item.Group>
         <Item class="w-full p-1" variant="outline">
           <Listbox.Root
             class="min-h-40"
@@ -509,6 +526,7 @@ export const TransferList = meta.story({
             </Listbox.Content>
           </Listbox.Root>
         </Item>
+        </Item.Group>
       </div>
     `,
   }),
@@ -540,6 +558,7 @@ export const WithDescription = meta.story({
       return { collection };
     },
     template: `
+      <Item.Group>
       <Item class="p-1" variant="outline">
         <Listbox.Root :collection="collection">
           <Listbox.Content>
@@ -553,6 +572,7 @@ export const WithDescription = meta.story({
           </Listbox.Content>
         </Listbox.Root>
       </Item>
+      </Item.Group>
     `,
   }),
 });
@@ -582,6 +602,7 @@ export const WithFilter = meta.story({
       return { collection, isEmpty, onValueChange, search };
     },
     template: `
+      <Item.Group>
       <Item class="flex flex-col gap-2 p-1" variant="outline">
         <Input :onValueChange="onValueChange" placeholder="Search..." :value="search" />
         <Listbox.Root :collection="collection">
@@ -594,6 +615,7 @@ export const WithFilter = meta.story({
           </Listbox.Content>
         </Listbox.Root>
       </Item>
+      </Item.Group>
     `,
   }),
 });
@@ -612,6 +634,7 @@ export const WithIcon = meta.story({
       return { collection };
     },
     template: `
+      <Item.Group>
       <Item class="p-1" variant="outline">
         <Listbox.Root :collection="collection">
           <Listbox.Content>
@@ -623,6 +646,7 @@ export const WithIcon = meta.story({
           </Listbox.Content>
         </Listbox.Root>
       </Item>
+      </Item.Group>
     `,
   }),
 });
@@ -726,6 +750,7 @@ export const Controlled = meta.story({
     template: `
       <div class="flex flex-col gap-2">
         <p class="text-center text-muted-foreground text-sm">Selected the Large size</p>
+        <Item.Group>
         <Item class="p-1" variant="outline">
           <Listbox.Root :collection="collection" :onValueChange="onValueChange" :value="value">
             <Listbox.Content>
@@ -736,6 +761,7 @@ export const Controlled = meta.story({
             </Listbox.Content>
           </Listbox.Root>
         </Item>
+        </Item.Group>
         <p class="text-center text-muted-foreground text-sm">{{ isLarge ? "✅" : "❌" }}</p>
       </div>
     `,

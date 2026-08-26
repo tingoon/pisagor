@@ -1,20 +1,6 @@
 import { Field as FieldPrimitive } from "@ark-ui/vue/field";
 import { Fieldset as FieldsetPrimitive } from "@ark-ui/vue/fieldset";
-import {
-  fieldContentVariants,
-  fieldDescriptionVariants,
-  fieldErrorVariants,
-  fieldGroupVariants,
-  fieldHelperVariants,
-  fieldInlineVariants,
-  fieldLabelVariants,
-  fieldLegendVariants,
-  fieldRequiredIndicatorVariants,
-  fieldSeparatorVariants,
-  fieldSetVariants,
-  fieldTitleVariants,
-  fieldVariants,
-} from "@pisagor/styles/ui/field";
+import { fieldVariants } from "@pisagor/styles/ui/field";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import {
@@ -51,20 +37,23 @@ export const FieldRoot = defineComponent({
     testId: String,
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = fieldVariants({
+        orientation: props.orientation,
+        reverse: props.reverse,
+      });
+
+      return h(
         FieldPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(
-            fieldVariants({ orientation: props.orientation, reverse: props.reverse }),
-            props.class,
-          ),
+          class: cn(variantSlots.base(), props.class),
           "data-orientation": props.orientation,
           "data-testid": props.testId,
         },
         slots,
       );
+    };
   },
 });
 
@@ -75,15 +64,18 @@ export const FieldSet = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = fieldVariants();
+
+      return h(
         FieldsetPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(fieldSetVariants(), props.class),
+          class: cn(variantSlots.set(), props.class),
         },
         slots,
       );
+    };
   },
 });
 
@@ -95,16 +87,19 @@ export const FieldLegend = defineComponent({
     variant: { default: "legend", type: String as PropType<"label" | "legend"> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = fieldVariants();
+
+      return h(
         FieldsetPrimitive.Legend as ArkPart,
         {
           ...attrs,
-          class: cn(fieldLegendVariants(), props.class),
+          class: cn(variantSlots.legend(), props.class),
           "data-variant": props.variant,
         },
         slots,
       );
+    };
   },
 });
 
@@ -115,17 +110,20 @@ export const FieldGroup = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = fieldVariants();
+
+      return h(
         "div",
         {
           ...attrs,
-          class: cn(fieldGroupVariants(), props.class),
+          class: cn(variantSlots.group(), props.class),
           "data-part": "group",
           "data-scope": "field",
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -136,17 +134,20 @@ export const FieldContent = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = fieldVariants();
+
+      return h(
         "div",
         {
           ...attrs,
-          class: cn(fieldContentVariants(), props.class),
+          class: cn(variantSlots.content(), props.class),
           "data-part": "content",
           "data-scope": "field",
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -158,16 +159,19 @@ export const FieldLabel = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = fieldVariants();
+
+      return h(
         FieldPrimitive.Label as ArkPart,
         {
           ...attrs,
           asChild: props.asChild,
-          class: cn(fieldLabelVariants(), props.class),
+          class: cn(variantSlots.label(), props.class),
         },
         slots,
       );
+    };
   },
 });
 
@@ -178,16 +182,19 @@ export const FieldRequiredIndicator = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = fieldVariants();
+
+      return h(
         FieldPrimitive.RequiredIndicator as ArkPart,
         {
           ...attrs,
           "aria-hidden": true,
-          class: cn(fieldRequiredIndicatorVariants(), props.class),
+          class: cn(variantSlots.requiredIndicator(), props.class),
         },
         () => slots.default?.() ?? "*",
       );
+    };
   },
 });
 
@@ -198,17 +205,20 @@ export const FieldTitle = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = fieldVariants();
+
+      return h(
         "div",
         {
           ...attrs,
-          class: cn(fieldTitleVariants(), props.class),
+          class: cn(variantSlots.title(), props.class),
           "data-part": "title",
           "data-scope": "field",
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -219,17 +229,20 @@ export const FieldDescription = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = fieldVariants();
+
+      return h(
         "p",
         {
           ...attrs,
-          class: cn(fieldDescriptionVariants(), props.class),
+          class: cn(variantSlots.description(), props.class),
           "data-part": "description",
           "data-scope": "field",
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -244,18 +257,19 @@ export const FieldSeparator = defineComponent({
       const resolved = useFormControlVariant();
       const shellArgs = shellVariantArgs(resolved);
       const children = slots.default?.();
+      const variantSlots = fieldVariants();
 
       return h(
         "div",
         {
           ...attrs,
-          class: cn(fieldSeparatorVariants(), props.class),
+          class: cn(variantSlots.separator(), props.class),
           "data-content": !!children,
           "data-part": "separator",
           "data-scope": "field",
         },
         [
-          h(Separator as ArkPart, { class: fieldInlineVariants() }),
+          h(Separator as ArkPart, { class: variantSlots.inline() }),
           children
             ? h("span", { class: cn(formControlSeparatorVariants({ ...shellArgs })) }, children)
             : null,
@@ -272,15 +286,18 @@ export const FieldHelper = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = fieldVariants();
+
+      return h(
         FieldPrimitive.HelperText as ArkPart,
         {
           ...attrs,
-          class: cn(fieldHelperVariants(), props.class),
+          class: cn(variantSlots.helper(), props.class),
         },
         slots,
       );
+    };
   },
 });
 
@@ -291,15 +308,18 @@ export const FieldError = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = fieldVariants();
+
+      return h(
         FieldPrimitive.ErrorText as ArkPart,
         {
           ...attrs,
-          class: cn(fieldErrorVariants(), props.class),
+          class: cn(variantSlots.error(), props.class),
         },
         slots,
       );
+    };
   },
 });
 // #endregion

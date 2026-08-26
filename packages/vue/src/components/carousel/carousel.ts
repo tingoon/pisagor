@@ -1,15 +1,6 @@
 import { Carousel as CarouselPrimitive } from "@ark-ui/vue/carousel";
 import { PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
-import {
-  carouselControlVariants,
-  carouselIndicatorGroupVariants,
-  carouselIndicatorVariants,
-  carouselItemGroupVariants,
-  carouselItemVariants,
-  carouselNextTriggerVariants,
-  carouselPrevTriggerVariants,
-  carouselVariants,
-} from "@pisagor/styles/ui/carousel";
+import { carouselVariants } from "@pisagor/styles/ui/carousel";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { WithTestId } from "../../internal/types";
@@ -28,6 +19,7 @@ export interface CarouselProps extends WithTestId {
 }
 
 type ArkPart = Parameters<typeof h>[0];
+// #endregion
 
 // #region Parts
 export const CarouselRoot = defineComponent({
@@ -40,18 +32,21 @@ export const CarouselRoot = defineComponent({
     testId: String,
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = carouselVariants();
+
+      return h(
         CarouselPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(carouselVariants(), props.class),
+          class: variantSlots.base({ class: props.class }),
           "data-testid": props.testId,
           slideCount: props.slideCount,
           spacing: props.spacing,
         },
         slots,
       );
+    };
   },
 });
 
@@ -59,15 +54,18 @@ export const CarouselControl = defineComponent({
   inheritAttrs: false,
   name: "CarouselControl",
   setup(_, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = carouselVariants();
+
+      return h(
         CarouselPrimitive.Control as ArkPart,
         {
           ...attrs,
-          class: cn(carouselControlVariants(), attrs.class),
+          class: cn(variantSlots.control(), attrs.class),
         },
         slots,
       );
+    };
   },
 });
 
@@ -75,13 +73,15 @@ export const CarouselPrevTrigger = defineComponent({
   inheritAttrs: false,
   name: "CarouselPrevTrigger",
   setup(_, { attrs }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = carouselVariants();
+
+      return h(
         CarouselPrimitive.PrevTrigger as ArkPart,
         {
           ...attrs,
           asChild: true,
-          class: cn(carouselPrevTriggerVariants(), attrs.class),
+          class: cn(variantSlots.prevTrigger(), attrs.class),
         },
         () =>
           h(
@@ -96,6 +96,7 @@ export const CarouselPrevTrigger = defineComponent({
             () => [h(PhCaretLeft)],
           ),
       );
+    };
   },
 });
 
@@ -103,13 +104,15 @@ export const CarouselNextTrigger = defineComponent({
   inheritAttrs: false,
   name: "CarouselNextTrigger",
   setup(_, { attrs }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = carouselVariants();
+
+      return h(
         CarouselPrimitive.NextTrigger as ArkPart,
         {
           ...attrs,
           asChild: true,
-          class: cn(carouselNextTriggerVariants(), attrs.class),
+          class: cn(variantSlots.nextTrigger(), attrs.class),
         },
         () =>
           h(
@@ -124,6 +127,7 @@ export const CarouselNextTrigger = defineComponent({
             () => [h(PhCaretRight)],
           ),
       );
+    };
   },
 });
 
@@ -131,15 +135,18 @@ export const CarouselIndicatorGroup = defineComponent({
   inheritAttrs: false,
   name: "CarouselIndicatorGroup",
   setup(_, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = carouselVariants();
+
+      return h(
         CarouselPrimitive.IndicatorGroup as ArkPart,
         {
           ...attrs,
-          class: cn(carouselIndicatorGroupVariants(), attrs.class),
+          class: cn(variantSlots.indicatorGroup(), attrs.class),
         },
         slots,
       );
+    };
   },
 });
 
@@ -147,15 +154,18 @@ export const CarouselIndicator = defineComponent({
   inheritAttrs: false,
   name: "CarouselIndicator",
   setup(_, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = carouselVariants();
+
+      return h(
         CarouselPrimitive.Indicator as ArkPart,
         {
           ...attrs,
-          class: cn(carouselIndicatorVariants(), attrs.class),
+          class: cn(variantSlots.indicator(), attrs.class),
         },
         slots,
       );
+    };
   },
 });
 
@@ -163,15 +173,18 @@ export const CarouselItemGroup = defineComponent({
   inheritAttrs: false,
   name: "CarouselItemGroup",
   setup(_, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = carouselVariants();
+
+      return h(
         CarouselPrimitive.ItemGroup as ArkPart,
         {
           ...attrs,
-          class: cn(carouselItemGroupVariants(), attrs.class),
+          class: cn(variantSlots.itemGroup(), attrs.class),
         },
         slots,
       );
+    };
   },
 });
 
@@ -179,15 +192,18 @@ export const CarouselItem = defineComponent({
   inheritAttrs: false,
   name: "CarouselItem",
   setup(_, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = carouselVariants();
+
+      return h(
         CarouselPrimitive.Item as ArkPart,
         {
           ...attrs,
-          class: cn(carouselItemVariants(), attrs.class),
+          class: cn(variantSlots.item(), attrs.class),
         },
         slots,
       );
+    };
   },
 });
 // #endregion

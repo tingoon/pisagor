@@ -3,12 +3,7 @@ import {
   type EditableValueChangeDetails,
 } from "@ark-ui/vue/editable";
 import { buttonVariants } from "@pisagor/styles/ui/button";
-import {
-  editableAreaVariants,
-  editableControlVariants,
-  editablePreviewVariants,
-  editableVariants,
-} from "@pisagor/styles/ui/editable";
+import { editableVariants } from "@pisagor/styles/ui/editable";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
@@ -124,14 +119,16 @@ export const EditableRoot = defineComponent({
     value: { default: undefined, type: String },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = editableVariants();
+
+      return h(
         EditablePrimitive.Root as ArkPart,
         {
           ...attrs,
           activationMode: props.activationMode,
           autoResize: props.autoResize,
-          class: cn(editableVariants(), props.class),
+          class: variantSlots.base({ class: props.class }),
           "data-orientation": props.orientation,
           "data-testid": props.testId,
           defaultEdit: props.defaultEdit,
@@ -152,6 +149,7 @@ export const EditableRoot = defineComponent({
         },
         slots,
       );
+    };
   },
 });
 
@@ -162,15 +160,18 @@ export const EditableArea = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = editableVariants();
+
+      return h(
         EditablePrimitive.Area as ArkPart,
         {
           ...attrs,
-          class: cn(editableAreaVariants(), props.class),
+          class: variantSlots.area({ class: props.class }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -196,6 +197,7 @@ export const EditablePreview = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
+      const variantSlots = editableVariants();
       const resolved = useFormControlVariant(props.controlVariant);
       const controlProps = formControlShellProps(resolved);
       const previewShellClass =
@@ -215,7 +217,7 @@ export const EditablePreview = defineComponent({
           class: cn(
             buttonVariants({ clickEffect: false, size: props.size, variant: props.variant }),
             previewShellClass,
-            editablePreviewVariants(),
+            variantSlots.preview(),
             previewShellClass ? "dark:hover:bg-transparent" : undefined,
             props.class,
           ),
@@ -233,15 +235,18 @@ export const EditableControl = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = editableVariants();
+
+      return h(
         EditablePrimitive.Control as ArkPart,
         {
           ...attrs,
-          class: cn(editableControlVariants(), props.class),
+          class: variantSlots.control({ class: props.class }),
         },
         slots,
       );
+    };
   },
 });
 

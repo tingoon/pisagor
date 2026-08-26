@@ -1,22 +1,9 @@
 import { ark } from "@ark-ui/vue/factory";
-import {
-  type ItemMediaVariantProps,
-  type ItemVariantProps,
-  itemActionsVariants,
-  itemContentVariants,
-  itemDescriptionVariants,
-  itemFooterVariants,
-  itemGroupVariants,
-  itemHeaderVariants,
-  itemInlineVariants,
-  itemMediaVariants,
-  itemSeparatorVariants,
-  itemTitleVariants,
-  itemVariants,
-} from "@pisagor/styles/ui/item";
+import { type ItemVariantProps, type ItemVariants, itemVariants } from "@pisagor/styles/ui/item";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { WithTestId } from "../../internal/types";
+import { createContext } from "../../utils/create-context";
 import { Separator } from "../separator";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -29,7 +16,7 @@ export interface ItemProps extends WithTestId {
 
 export interface ItemMediaProps {
   class?: unknown;
-  variant?: ItemMediaVariantProps["variant"];
+  variant?: ItemVariantProps["variant"];
 }
 
 export interface ItemHeaderProps {
@@ -38,6 +25,26 @@ export interface ItemHeaderProps {
   description?: VNodeChild;
   /** Shorthand: renders an ItemTitle inside the header. */
   title?: VNodeChild;
+}
+
+interface ItemContextValue {
+  slots: ItemVariants;
+}
+// #endregion
+
+// #region Context
+const [provideItemContext, useItemContext] = createContext<ItemContextValue>({
+  name: "Item",
+});
+
+function useItemSlots() {
+  const context = useItemContext();
+
+  if (!context) {
+    throw new Error("useItem must be used within ItemContext.");
+  }
+
+  return context.slots;
 }
 // #endregion
 
@@ -49,12 +56,15 @@ export const ItemGroup = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
+    const itemSlots = itemVariants();
+    provideItemContext({ slots: itemSlots });
+
     return () =>
       h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(itemGroupVariants(), props.class),
+          class: cn(itemSlots.group(), props.class),
           "data-part": "group",
           "data-scope": "item",
           role: "list",
@@ -71,10 +81,12 @@ export const ItemSeparator = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs }) {
+    const itemSlots = useItemSlots();
+
     return () =>
       h(Separator as ArkPart, {
         ...attrs,
-        class: cn(itemSeparatorVariants(), props.class),
+        class: cn(itemSlots.separator(), props.class),
         dataPart: "separator",
         dataScope: "item",
         orientation: "horizontal",
@@ -91,12 +103,14 @@ export const ItemRoot = defineComponent({
     variant: { default: "default", type: String as PropType<ItemVariantProps["variant"]> },
   },
   setup(props, { attrs, slots }) {
+    const itemSlots = useItemSlots();
+
     return () =>
       h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(itemVariants({ variant: props.variant }), props.class),
+          class: itemSlots.base({ class: props.class, variant: props.variant }),
           "data-part": "root",
           "data-scope": "item",
           "data-testid": props.testId,
@@ -112,15 +126,17 @@ export const ItemMedia = defineComponent({
   name: "ItemMedia",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    variant: { default: "default", type: String as PropType<ItemMediaVariantProps["variant"]> },
+    variant: { default: "default", type: String as PropType<ItemVariantProps["variant"]> },
   },
   setup(props, { attrs, slots }) {
+    const itemSlots = useItemSlots();
+
     return () =>
       h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(itemMediaVariants({ variant: props.variant }), props.class),
+          class: itemSlots.media({ class: props.class, variant: props.variant }),
           "data-part": "media",
           "data-scope": "item",
           "data-variant": props.variant,
@@ -137,12 +153,14 @@ export const ItemContent = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
+    const itemSlots = useItemSlots();
+
     return () =>
       h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(itemContentVariants(), props.class),
+          class: itemSlots.content({ class: props.class }),
           "data-part": "content",
           "data-scope": "item",
         },
@@ -158,12 +176,14 @@ export const ItemTitle = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
+    const itemSlots = useItemSlots();
+
     return () =>
       h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(itemTitleVariants(), props.class),
+          class: itemSlots.title({ class: props.class }),
           "data-part": "title",
           "data-scope": "item",
         },
@@ -179,12 +199,14 @@ export const ItemDescription = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
+    const itemSlots = useItemSlots();
+
     return () =>
       h(
         ark.p as ArkPart,
         {
           ...attrs,
-          class: cn(itemDescriptionVariants(), props.class),
+          class: itemSlots.description({ class: props.class }),
           "data-part": "description",
           "data-scope": "item",
         },
@@ -200,12 +222,14 @@ export const ItemActions = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
+    const itemSlots = useItemSlots();
+
     return () =>
       h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(itemActionsVariants(), props.class),
+          class: itemSlots.actions({ class: props.class }),
           "data-part": "actions",
           "data-scope": "item",
         },
@@ -229,18 +253,20 @@ export const ItemHeader = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const itemSlots = useItemSlots();
+
     return () =>
       h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(itemHeaderVariants(), props.class),
+          class: itemSlots.header({ class: props.class }),
           "data-part": "header",
           "data-scope": "item",
         },
         () => [
           props.title || props.description
-            ? h("div", { class: itemInlineVariants() }, [
+            ? h("div", { class: itemSlots.inline() }, [
                 props.title ? h(ItemTitle, null, () => props.title) : null,
                 props.description ? h(ItemDescription, null, () => props.description) : null,
               ])
@@ -258,12 +284,14 @@ export const ItemFooter = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
+    const itemSlots = useItemSlots();
+
     return () =>
       h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(itemFooterVariants(), props.class),
+          class: itemSlots.footer({ class: props.class }),
           "data-part": "footer",
           "data-scope": "item",
         },

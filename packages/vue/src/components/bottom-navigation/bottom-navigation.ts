@@ -1,13 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
 import { Tabs as TabsPrimitive } from "@ark-ui/vue/tabs";
-import {
-  bottomNavigationItemIconVariants,
-  bottomNavigationItemLabelVariants,
-  bottomNavigationItemVariants,
-  bottomNavigationListVariants,
-  bottomNavigationVariants,
-} from "@pisagor/styles/ui/bottom-navigation";
-import { cn } from "@pisagor/utils";
+import { bottomNavigationVariants } from "@pisagor/styles/ui/bottom-navigation";
 import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -21,16 +14,19 @@ export const BottomNavigationRoot = defineComponent({
     testId: String,
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = bottomNavigationVariants();
+
+      return h(
         TabsPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(bottomNavigationVariants(), props.class, attrs.class),
+          class: variantSlots.base({ class: props.class }),
           "data-testid": props.testId,
         },
         slots,
       );
+    };
   },
 });
 
@@ -42,16 +38,19 @@ export const BottomNavigationList = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = bottomNavigationVariants();
+
+      return h(
         TabsPrimitive.List as ArkPart,
         {
           ...attrs,
           "aria-label": props.ariaLabel ?? (attrs["aria-label"] as string | undefined),
-          class: cn(bottomNavigationListVariants(), props.class, attrs.class),
+          class: variantSlots.list({ class: props.class }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -62,15 +61,18 @@ export const BottomNavigationItem = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = bottomNavigationVariants();
+
+      return h(
         TabsPrimitive.Trigger as ArkPart,
         {
           ...attrs,
-          class: cn(bottomNavigationItemVariants(), props.class, attrs.class),
+          class: variantSlots.item({ class: props.class }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -81,18 +83,21 @@ export const BottomNavigationItemIcon = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = bottomNavigationVariants();
+
+      return h(
         ark.span as ArkPart,
         {
           ...attrs,
           "aria-hidden": true,
-          class: cn(bottomNavigationItemIconVariants(), props.class, attrs.class),
+          class: variantSlots.itemIcon({ class: props.class }),
           "data-part": "item-icon",
           "data-scope": "bottom-navigation",
         },
         slots,
       );
+    };
   },
 });
 
@@ -103,17 +108,20 @@ export const BottomNavigationItemLabel = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = bottomNavigationVariants();
+
+      return h(
         ark.span as ArkPart,
         {
           ...attrs,
-          class: cn(bottomNavigationItemLabelVariants(), props.class, attrs.class),
+          class: variantSlots.itemLabel({ class: props.class }),
           "data-part": "item-label",
           "data-scope": "bottom-navigation",
         },
         slots,
       );
+    };
   },
 });
 // #endregion

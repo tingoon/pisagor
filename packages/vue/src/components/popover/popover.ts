@@ -1,14 +1,5 @@
 import { Popover as PopoverPrimitive } from "@ark-ui/vue/popover";
-import {
-  popoverBodyVariants,
-  popoverContentVariants,
-  popoverDescriptionVariants,
-  popoverFooterVariants,
-  popoverHeaderVariants,
-  popoverInline2Variants,
-  popoverTitleVariants,
-} from "@pisagor/styles/ui/popover";
-import { cn } from "@pisagor/utils";
+import { popoverContentVariants } from "@pisagor/styles/ui/popover";
 import {
   type CSSProperties,
   defineComponent,
@@ -168,12 +159,14 @@ export const PopoverHeader = defineComponent({
     title: String,
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const recipe = popoverContentVariants();
+
+      return h(
         "div",
         {
           ...attrs,
-          class: cn(popoverHeaderVariants(), props.class),
+          class: recipe.header({ class: props.class }),
           "data-part": "header",
           "data-scope": "popover",
         },
@@ -183,6 +176,7 @@ export const PopoverHeader = defineComponent({
           slots.default?.(),
         ],
       );
+    };
   },
 });
 
@@ -193,15 +187,18 @@ export const PopoverTitle = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const recipe = popoverContentVariants();
+
+      return h(
         PopoverPrimitive.Title as ArkPart,
         {
           ...attrs,
-          class: cn(popoverTitleVariants(), props.class),
+          class: recipe.title({ class: props.class }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -212,15 +209,18 @@ export const PopoverDescription = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const recipe = popoverContentVariants();
+
+      return h(
         PopoverPrimitive.Description as ArkPart,
         {
           ...attrs,
-          class: cn(popoverDescriptionVariants(), props.class),
+          class: recipe.description({ class: props.class }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -231,17 +231,20 @@ export const PopoverBody = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const recipe = popoverContentVariants();
+
+      return h(
         "div",
         {
           ...attrs,
-          class: cn(popoverBodyVariants(), props.class),
+          class: recipe.body({ class: props.class }),
           "data-part": "body",
           "data-scope": "popover",
         },
         slots,
       );
+    };
   },
 });
 
@@ -252,17 +255,20 @@ export const PopoverFooter = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const recipe = popoverContentVariants();
+
+      return h(
         "div",
         {
           ...attrs,
-          class: cn(popoverFooterVariants(), props.class),
+          class: recipe.footer({ class: props.class }),
           "data-part": "footer",
           "data-scope": "popover",
         },
         slots,
       );
+    };
   },
 });
 
@@ -281,8 +287,10 @@ export const PopoverArrow = defineComponent({
     style: { default: undefined, type: Object as PropType<CSSProperties> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const recipe = popoverContentVariants();
+
+      return h(
         PopoverPrimitive.Arrow as ArkPart,
         {
           ...attrs,
@@ -293,10 +301,11 @@ export const PopoverArrow = defineComponent({
           } as CSSProperties,
         },
         () => [
-          h(PopoverPrimitive.ArrowTip as ArkPart, { class: popoverInline2Variants() }),
+          h(PopoverPrimitive.ArrowTip as ArkPart, { class: recipe.arrowTip() }),
           slots.default?.(),
         ],
       );
+    };
   },
 });
 // #endregion

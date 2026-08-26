@@ -1,28 +1,5 @@
 import { PhSidebarSimple } from "@phosphor-icons/vue";
-import {
-  sidebar2Variants,
-  sidebar3Variants,
-  sidebarContainerVariants,
-  sidebarContentVariants,
-  sidebarFooterVariants,
-  sidebarGapVariants,
-  sidebarGroupActionVariants,
-  sidebarGroupContentVariants,
-  sidebarGroupLabelVariants,
-  sidebarGroupVariants,
-  sidebarHeaderVariants,
-  sidebarInnerVariants,
-  sidebarInputVariants,
-  sidebarInsetVariants,
-  sidebarMenuButtonVariants,
-  sidebarMenuSkeletonVariants,
-  sidebarMenuSubVariants,
-  sidebarMenuVariants,
-  sidebarRailVariants,
-  sidebarSeparatorVariants,
-  sidebarVariants,
-  sidebarWrapperVariants,
-} from "@pisagor/styles/ui/sidebar";
+import { sidebarVariants } from "@pisagor/styles/ui/sidebar";
 import { cn } from "@pisagor/utils";
 
 type ClassValue = Parameters<typeof cn>[0];
@@ -215,13 +192,15 @@ export const SidebarProvider = defineComponent({
 
     provideSidebarContext(contextValue);
 
-    return () =>
-      h(
+    return () => {
+      const variantSlots = sidebarVariants();
+
+      return h(
         "div",
         {
           ...attrs,
           class: cn(
-            sidebarWrapperVariants(),
+            variantSlots.wrapper(),
             props.className,
             (attrs as { class?: ClassValue }).class,
           ),
@@ -237,6 +216,7 @@ export const SidebarProvider = defineComponent({
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -256,12 +236,20 @@ export const SidebarRoot = defineComponent({
     return () => {
       if (!ctx) return null;
 
+      const variantSlots = sidebarVariants();
+      const padded = props.variant === "floating" || props.variant === "inset";
+      const layoutSlots = sidebarVariants({ padded, placement: props.placement });
+
       if (props.collapsible === "none") {
         return h(
           "aside",
           {
             ...attrs,
-            class: cn(sidebarVariants(), props.className, (attrs as { class?: ClassValue }).class),
+            class: cn(
+              variantSlots.base(),
+              props.className,
+              (attrs as { class?: ClassValue }).class,
+            ),
             "data-part": "root",
             "data-scope": "sidebar",
             "data-testid": props.testId,
@@ -284,7 +272,7 @@ export const SidebarRoot = defineComponent({
                 Sheet.Content as ArkPart,
                 {
                   ...(attrs as object),
-                  class: cn(sidebar2Variants()),
+                  class: variantSlots.mobile(),
                   "data-mobile": "true",
                   "data-sidebar": "sidebar",
                   "data-testid": props.testId,
@@ -301,7 +289,7 @@ export const SidebarRoot = defineComponent({
         "aside",
         {
           ...attrs,
-          class: cn(sidebar3Variants(), props.className, (attrs as { class?: ClassValue }).class),
+          class: cn(variantSlots.peer(), props.className, (attrs as { class?: ClassValue }).class),
           "data-collapsible": ctx.state === "collapsed" ? props.collapsible : "",
           "data-part": "root",
           "data-placement": props.placement,
@@ -312,11 +300,7 @@ export const SidebarRoot = defineComponent({
         },
         () => [
           h("div", {
-            class: cn(
-              sidebarGapVariants({
-                padded: props.variant === "floating" || props.variant === "inset",
-              }),
-            ),
+            class: layoutSlots.gap(),
             "data-part": "gap",
             "data-scope": "sidebar",
           }),
@@ -324,10 +308,7 @@ export const SidebarRoot = defineComponent({
             "div",
             {
               class: cn(
-                sidebarContainerVariants({
-                  padded: props.variant === "floating" || props.variant === "inset",
-                  placement: props.placement,
-                }),
+                layoutSlots.container(),
                 props.className,
                 (attrs as { class?: ClassValue }).class,
               ),
@@ -338,7 +319,7 @@ export const SidebarRoot = defineComponent({
               h(
                 "div",
                 {
-                  class: cn(sidebarInnerVariants()),
+                  class: variantSlots.inner(),
                   "data-part": "inner",
                   "data-scope": "sidebar",
                   "data-sidebar": "sidebar",
@@ -361,13 +342,15 @@ export const SidebarContent = defineComponent({
     testId: String,
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = sidebarVariants();
+
+      return h(
         "div",
         {
           ...attrs,
           class: cn(
-            sidebarContentVariants(),
+            variantSlots.content(),
             props.className,
             (attrs as { class?: ClassValue }).class,
           ),
@@ -377,6 +360,7 @@ export const SidebarContent = defineComponent({
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -385,13 +369,15 @@ export const SidebarHeader = defineComponent({
   name: "SidebarHeader",
   props: { className: { default: undefined, type: String }, testId: String },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = sidebarVariants();
+
+      return h(
         "div",
         {
           ...attrs,
           class: cn(
-            sidebarHeaderVariants(),
+            variantSlots.header(),
             props.className,
             (attrs as { class?: ClassValue }).class,
           ),
@@ -401,6 +387,7 @@ export const SidebarHeader = defineComponent({
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -409,13 +396,15 @@ export const SidebarFooter = defineComponent({
   name: "SidebarFooter",
   props: { className: { default: undefined, type: String }, testId: String },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = sidebarVariants();
+
+      return h(
         "div",
         {
           ...attrs,
           class: cn(
-            sidebarFooterVariants(),
+            variantSlots.footer(),
             props.className,
             (attrs as { class?: ClassValue }).class,
           ),
@@ -425,6 +414,7 @@ export const SidebarFooter = defineComponent({
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -433,14 +423,17 @@ export const SidebarGap = defineComponent({
   name: "SidebarGap",
   props: { padded: { default: false, type: Boolean }, testId: String },
   setup(props, { attrs }) {
-    return () =>
-      h("div", {
+    return () => {
+      const variantSlots = sidebarVariants({ padded: props.padded });
+
+      return h("div", {
         ...attrs,
-        class: cn(sidebarGapVariants({ padded: props.padded })),
+        class: variantSlots.gap(),
         "data-part": "gap",
         "data-scope": "sidebar",
         "data-testid": props.testId,
       });
+    };
   },
 });
 
@@ -452,11 +445,13 @@ export const SidebarSeparator = defineComponent({
     testId: String,
   },
   setup(props, { attrs }) {
-    return () =>
-      h("div", {
+    return () => {
+      const variantSlots = sidebarVariants();
+
+      return h("div", {
         ...attrs,
         class: cn(
-          sidebarSeparatorVariants(),
+          variantSlots.separator(),
           props.className,
           (attrs as { class?: ClassValue }).class,
         ),
@@ -464,6 +459,7 @@ export const SidebarSeparator = defineComponent({
         "data-scope": "sidebar",
         "data-testid": props.testId,
       });
+    };
   },
 });
 
@@ -476,16 +472,14 @@ export const SidebarRail = defineComponent({
     testId: String,
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = sidebarVariants();
+
+      return h(
         "div",
         {
           ...attrs,
-          class: cn(
-            sidebarRailVariants(),
-            props.className,
-            (attrs as { class?: ClassValue }).class,
-          ),
+          class: cn(variantSlots.rail(), props.className, (attrs as { class?: ClassValue }).class),
           "data-part": "rail",
           "data-placement": props.placement,
           "data-scope": "sidebar",
@@ -493,6 +487,7 @@ export const SidebarRail = defineComponent({
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -504,12 +499,19 @@ export const SidebarTrigger = defineComponent({
   },
   setup(props, { attrs }) {
     const ctx = useSidebarContext();
-    return () =>
-      h(
+    return () => {
+      const variantSlots = sidebarVariants();
+
+      return h(
         Button as ArkPart,
         {
           ...attrs,
-          class: cn("p-2", props.className, (attrs as { class?: ClassValue }).class),
+          class: cn(
+            variantSlots.trigger(),
+            "p-2",
+            props.className,
+            (attrs as { class?: ClassValue }).class,
+          ),
           clickEffect: false,
           "data-part": "trigger",
           "data-scope": "sidebar",
@@ -517,8 +519,9 @@ export const SidebarTrigger = defineComponent({
           size: "icon-md",
           variant: "ghost",
         },
-        () => h(PhSidebarSimple),
+        () => h(PhSidebarSimple, { class: variantSlots.triggerIcon() }),
       );
+    };
   },
 });
 
@@ -526,17 +529,20 @@ export const SidebarInset = defineComponent({
   inheritAttrs: false,
   name: "SidebarInset",
   setup(_, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = sidebarVariants();
+
+      return h(
         "div",
         {
           ...attrs,
-          class: cn(sidebarInsetVariants(), (attrs as { class?: ClassValue }).class),
+          class: cn(variantSlots.inset(), (attrs as { class?: ClassValue }).class),
           "data-part": "inset",
           "data-scope": "sidebar",
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -548,14 +554,17 @@ export const SidebarInput = defineComponent({
     testId: String,
   },
   setup(props, { attrs }) {
-    return () =>
-      h("input", {
+    return () => {
+      const variantSlots = sidebarVariants();
+
+      return h("input", {
         ...attrs,
-        class: cn(sidebarInputVariants(), props.className, (attrs as { class?: ClassValue }).class),
+        class: cn(variantSlots.input(), props.className, (attrs as { class?: ClassValue }).class),
         "data-part": "input",
         "data-scope": "sidebar",
         "data-testid": props.testId,
       });
+    };
   },
 });
 
@@ -566,21 +575,20 @@ export const SidebarGroup = defineComponent({
     className: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = sidebarVariants();
+
+      return h(
         "div",
         {
           ...attrs,
-          class: cn(
-            sidebarGroupVariants(),
-            props.className,
-            (attrs as { class?: ClassValue }).class,
-          ),
+          class: cn(variantSlots.group(), props.className, (attrs as { class?: ClassValue }).class),
           "data-part": "group",
           "data-scope": "sidebar",
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -588,17 +596,20 @@ export const SidebarGroupLabel = defineComponent({
   inheritAttrs: false,
   name: "SidebarGroupLabel",
   setup(_, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = sidebarVariants();
+
+      return h(
         "div",
         {
           ...attrs,
-          class: cn(sidebarGroupLabelVariants(), (attrs as { class?: ClassValue }).class),
+          class: cn(variantSlots.groupLabel(), (attrs as { class?: ClassValue }).class),
           "data-part": "group-label",
           "data-scope": "sidebar",
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -606,17 +617,20 @@ export const SidebarGroupAction = defineComponent({
   inheritAttrs: false,
   name: "SidebarGroupAction",
   setup(_, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = sidebarVariants();
+
+      return h(
         "div",
         {
           ...attrs,
-          class: cn(sidebarGroupActionVariants(), (attrs as { class?: ClassValue }).class),
+          class: cn(variantSlots.groupAction(), (attrs as { class?: ClassValue }).class),
           "data-part": "group-action",
           "data-scope": "sidebar",
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -624,17 +638,20 @@ export const SidebarGroupContent = defineComponent({
   inheritAttrs: false,
   name: "SidebarGroupContent",
   setup(_, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = sidebarVariants();
+
+      return h(
         "div",
         {
           ...attrs,
-          class: cn(sidebarGroupContentVariants(), (attrs as { class?: ClassValue }).class),
+          class: cn(variantSlots.groupContent(), (attrs as { class?: ClassValue }).class),
           "data-part": "group-content",
           "data-scope": "sidebar",
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -642,17 +659,20 @@ export const SidebarMenu = defineComponent({
   inheritAttrs: false,
   name: "SidebarMenu",
   setup(_, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = sidebarVariants();
+
+      return h(
         "div",
         {
           ...attrs,
-          class: cn(sidebarMenuVariants(), (attrs as { class?: ClassValue }).class),
+          class: cn(variantSlots.menu(), (attrs as { class?: ClassValue }).class),
           "data-part": "menu",
           "data-scope": "sidebar",
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -669,34 +689,41 @@ export const SidebarMenuButton = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const button = h(
-      Button as ArkPart,
-      {
-        ...(attrs as object),
-        class: cn(
-          sidebarMenuButtonVariants(),
-          props.className,
-          (attrs as { class?: ClassValue }).class,
-        ),
-        clickEffect: false,
-        "data-active": props.isActive,
-        "data-part": "menu-button",
-        "data-scope": "sidebar",
-        "data-size": props.size ?? "md",
-        onClick: (event: MouseEvent) =>
-          (attrs as { onClick?: (event: MouseEvent) => unknown }).onClick?.(event),
-        size: (props.size ?? (attrs as { size?: string }).size ?? "md") as string,
-        variant: "ghost",
-      },
-      () => slots.default?.(),
-    );
+    return () => {
+      const variantSlots = sidebarVariants();
 
-    if (!props.tooltip) return button;
+      const button = h(
+        Button as ArkPart,
+        {
+          ...(attrs as object),
+          class: cn(
+            variantSlots.menuButton(),
+            props.className,
+            (attrs as { class?: ClassValue }).class,
+          ),
+          clickEffect: false,
+          "data-active": props.isActive,
+          "data-part": "menu-button",
+          "data-scope": "sidebar",
+          "data-size": props.size ?? "md",
+          onClick: (event: MouseEvent) =>
+            (attrs as { onClick?: (event: MouseEvent) => unknown }).onClick?.(event),
+          size: (props.size ?? (attrs as { size?: string }).size ?? "md") as string,
+          variant: "ghost",
+        },
+        () => slots.default?.(),
+      );
 
-    const tooltipArgs =
-      typeof props.tooltip === "string" ? { content: props.tooltip } : props.tooltip;
-    return () =>
-      h(Tooltip as ArkPart, { ...tooltipArgs, positioning: { placement: "right" } }, () => button);
+      if (!props.tooltip) return button;
+
+      const tooltipArgs =
+        typeof props.tooltip === "string" ? { content: props.tooltip } : props.tooltip;
+      return h(
+        Tooltip as ArkPart,
+        { ...tooltipArgs, positioning: { placement: "right" } },
+        () => button,
+      );
+    };
   },
 });
 
@@ -704,17 +731,20 @@ export const SidebarMenuItem = defineComponent({
   inheritAttrs: false,
   name: "SidebarMenuItem",
   setup(_, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = sidebarVariants();
+
+      return h(
         "div",
         {
           ...attrs,
-          class: cn("min-w-0", (attrs as { class?: ClassValue }).class),
+          class: cn(variantSlots.menuItem(), "min-w-0", (attrs as { class?: ClassValue }).class),
           "data-part": "menu-item",
           "data-scope": "sidebar",
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -723,13 +753,15 @@ export const SidebarMenuSkeleton = defineComponent({
   name: "SidebarMenuSkeleton",
   props: { className: { default: undefined, type: [String, Object, Array] as PropType<unknown> } },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = sidebarVariants();
+
+      return h(
         "div",
         {
           ...attrs,
           class: cn(
-            sidebarMenuSkeletonVariants(),
+            variantSlots.menuSkeleton(),
             props.className,
             (attrs as { class?: ClassValue }).class,
           ),
@@ -738,6 +770,7 @@ export const SidebarMenuSkeleton = defineComponent({
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -745,17 +778,20 @@ export const SidebarMenuSub = defineComponent({
   inheritAttrs: false,
   name: "SidebarMenuSub",
   setup(_, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = sidebarVariants();
+
+      return h(
         "div",
         {
           ...attrs,
-          class: cn(sidebarMenuSubVariants(), (attrs as { class?: ClassValue }).class),
+          class: cn(variantSlots.menuSub(), (attrs as { class?: ClassValue }).class),
           "data-part": "menu-sub",
           "data-scope": "sidebar",
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -766,12 +802,20 @@ export const SidebarMenuAction = defineComponent({
   inheritAttrs: false,
   name: "SidebarMenuAction",
   setup(_, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = sidebarVariants();
+
+      return h(
         "div",
-        { ...attrs, "data-part": "menu-action", "data-scope": "sidebar" },
+        {
+          ...attrs,
+          class: cn(variantSlots.menuAction(), (attrs as { class?: ClassValue }).class),
+          "data-part": "menu-action",
+          "data-scope": "sidebar",
+        },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -779,8 +823,20 @@ export const SidebarMenuBadge = defineComponent({
   inheritAttrs: false,
   name: "SidebarMenuBadge",
   setup(_, { attrs, slots }) {
-    return () =>
-      h("div", { ...attrs, "data-part": "menu-badge", "data-scope": "sidebar" }, slots.default?.());
+    return () => {
+      const variantSlots = sidebarVariants();
+
+      return h(
+        "div",
+        {
+          ...attrs,
+          class: cn(variantSlots.menuBadge(), (attrs as { class?: ClassValue }).class),
+          "data-part": "menu-badge",
+          "data-scope": "sidebar",
+        },
+        slots.default?.(),
+      );
+    };
   },
 });
 

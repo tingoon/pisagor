@@ -103,6 +103,4 @@ export const CheckboxRoot = defineComponent({
     };
   },
 });
-
-export const checkboxVariants = formControlToggleVariants;
 // #endregion
