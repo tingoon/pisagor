@@ -28,8 +28,8 @@ export const Default = meta.story({
   },
   render: (args) => (
     <div className="flex flex-col gap-2">
-      <Item.Group>
-        <Item variant="outline">
+      <Item.Group variant="outline">
+        <Item>
           <FileTextIcon />
           <Item.Title>{sampleText()}</Item.Title>
         </Item>

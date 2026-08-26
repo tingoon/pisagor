@@ -40,19 +40,17 @@ const meta = preview.meta({
 
 export const Default = meta.story({
   render: () => (
-    <Item.Group>
-      <Item variant="outline">
-        <Item.Content>
-          <Item.Title>Basic item</Item.Title>
-          <Item.Description>An item with title and description.</Item.Description>
-        </Item.Content>
-        <Item.Actions>
-          <Button size="icon-sm" variant="outline">
-            <DotsThreeIcon />
-          </Button>
-        </Item.Actions>
-      </Item>
-    </Item.Group>
+    <Item variant="outline">
+      <Item.Content>
+        <Item.Title>Basic item</Item.Title>
+        <Item.Description>An item with title and description.</Item.Description>
+      </Item.Content>
+      <Item.Actions>
+        <Button size="icon-sm" variant="outline">
+          <DotsThreeIcon />
+        </Button>
+      </Item.Actions>
+    </Item>
   ),
 });
 
@@ -83,29 +81,27 @@ export const Variants = meta.story({
 
 export const Icon = meta.story({
   render: () => (
-    <Item.Group>
-      <Item variant="outline">
-        <Item.Media variant="icon">
-          <ShieldWarningIcon />
-        </Item.Media>
-        <Item.Content>
-          <Item.Title>Security alert</Item.Title>
-          <Item.Description>New login detected from unknown device.</Item.Description>
-        </Item.Content>
-        <Item.Actions>
-          <Button size="sm" variant="outline">
-            Review
-          </Button>
-        </Item.Actions>
-      </Item>
-    </Item.Group>
+    <Item variant="outline">
+      <Item.Media variant="icon">
+        <ShieldWarningIcon />
+      </Item.Media>
+      <Item.Content>
+        <Item.Title>Security alert</Item.Title>
+        <Item.Description>New login detected from unknown device.</Item.Description>
+      </Item.Content>
+      <Item.Actions>
+        <Button size="sm" variant="outline">
+          Review
+        </Button>
+      </Item.Actions>
+    </Item>
   ),
 });
 
 export const CustomSpacing = meta.story({
   render: () => (
-    <Item.Group className="gap-2">
-      <Item className="w-full [--space:--spacing(2)]" variant="outline">
+    <Item.Group className="gap-2" variant="outline">
+      <Item className="w-full [--space:--spacing(2)]">
         <Item.Media variant="icon">
           <UserIcon />
         </Item.Media>
@@ -116,7 +112,7 @@ export const CustomSpacing = meta.story({
           </Item.Description>
         </Item.Content>
       </Item>
-      <Item className="w-full [--space:--spacing(3)] md:[--space:--spacing(5)]" variant="outline">
+      <Item className="w-full [--space:--spacing(3)] md:[--space:--spacing(5)]">
         <Item.Media variant="icon">
           <UserIcon />
         </Item.Media>
@@ -131,40 +127,36 @@ export const CustomSpacing = meta.story({
 
 export const WithMedia = meta.story({
   render: () => (
-    <Item.Group>
-      <Item variant="outline">
-        <Item.Media>
-          <SealCheckIcon className="size-5" />
-        </Item.Media>
-        <Item.Content>
-          <Item.Title>Your profile has been verified.</Item.Title>
-        </Item.Content>
-        <Item.Actions>
-          <CaretRightIcon className="size-4" />
-        </Item.Actions>
-      </Item>
-    </Item.Group>
+    <Item variant="outline">
+      <Item.Media>
+        <SealCheckIcon className="size-5" />
+      </Item.Media>
+      <Item.Content>
+        <Item.Title>Your profile has been verified.</Item.Title>
+      </Item.Content>
+      <Item.Actions>
+        <CaretRightIcon className="size-4" />
+      </Item.Actions>
+    </Item>
   ),
 });
 
 export const WithAvatar = meta.story({
   render: () => (
-    <Item.Group>
-      <Item variant="outline">
-        <Item.Media>
-          <Avatar alt="jane.doe@example.com" fallback="JD" size="sm" />
-        </Item.Media>
-        <Item.Content>
-          <Item.Title>Jane Doe</Item.Title>
-          <Item.Description>Last seen 5 months ago</Item.Description>
-        </Item.Content>
-        <Item.Actions>
-          <Button size="sm" variant="outline">
-            View
-          </Button>
-        </Item.Actions>
-      </Item>
-    </Item.Group>
+    <Item variant="outline">
+      <Item.Media>
+        <Avatar alt="jane.doe@example.com" fallback="JD" size="sm" />
+      </Item.Media>
+      <Item.Content>
+        <Item.Title>Jane Doe</Item.Title>
+        <Item.Description>Last seen 5 months ago</Item.Description>
+      </Item.Content>
+      <Item.Actions>
+        <Button size="sm" variant="outline">
+          View
+        </Button>
+      </Item.Actions>
+    </Item>
   ),
 });
 
@@ -188,9 +180,9 @@ export const Image = meta.story({
       },
     ];
     return (
-      <Item.Group className="gap-2">
+      <Item.Group className="gap-2" variant="outline">
         {images.map((image) => (
-          <Item key={image.src} variant="outline">
+          <Item key={image.src}>
             <Item.Media variant="image">
               <img
                 alt={image.alt}
@@ -237,9 +229,9 @@ export const Link = meta.story({
 
 export const Group = meta.story({
   render: () => (
-    <Item.Group>
+    <Item.Group variant="outline">
       {people.map((person) => (
-        <Item key={person.id} variant="outline">
+        <Item key={person.id}>
           <Item.Media>
             <Avatar className="grayscale" fallback={person.username.charAt(0).toUpperCase()} />
           </Item.Media>
@@ -260,23 +252,21 @@ export const Group = meta.story({
 
 export const Header = meta.story({
   render: () => (
-    <Item.Group>
-      <Item variant="outline">
-        <Item.Header>
-          <img
-            alt="Item preview"
-            className="aspect-square w-full grayscale"
-            height={128}
-            src="https://picsum.photos/seed/1/500/300"
-            width={128}
-          />
-        </Item.Header>
-        <Item.Content>
-          <Item.Title>Item title</Item.Title>
-          <Item.Description>Brief description of the item.</Item.Description>
-        </Item.Content>
-      </Item>
-    </Item.Group>
+    <Item variant="outline">
+      <Item.Header>
+        <img
+          alt="Item preview"
+          className="aspect-square w-full grayscale"
+          height={128}
+          src="https://picsum.photos/seed/1/500/300"
+          width={128}
+        />
+      </Item.Header>
+      <Item.Content>
+        <Item.Title>Item title</Item.Title>
+        <Item.Description>Brief description of the item.</Item.Description>
+      </Item.Content>
+    </Item>
   ),
 });
 

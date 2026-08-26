@@ -1,7 +1,7 @@
-import type { ItemVariants } from "@pisagor/styles/ui/item";
+import type { ItemVariantProps, ItemVariants } from "@pisagor/styles/ui/item";
 import { createContext } from "../../utils";
 
-interface ItemContextValue {
+export interface ItemContextValue extends ItemVariantProps {
   slots: ItemVariants;
 }
 

@@ -3,8 +3,8 @@ import { type ItemVariantProps, itemVariants } from "@pisagor/styles/ui/item";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";
 import type { WithTestId } from "../../internal/types";
-import { Separator, type SeparatorProps } from "../separator";
 import { ItemContext, useItem } from "./item.context";
+import { useItemGroup } from "./item-group.context";
 
 // #region Types
 export interface ItemProps extends ComponentProps<typeof ark.div>, ItemVariantProps, WithTestId {}
@@ -18,8 +18,6 @@ export interface ItemHeaderProps extends Omit<ComponentProps<typeof ark.div>, "t
   description?: ReactNode;
 }
 
-export interface ItemGroupProps extends ComponentProps<typeof ark.div> {}
-
 export interface ItemContentProps extends ComponentProps<typeof ark.div> {}
 
 export interface ItemTitleProps extends ComponentProps<typeof ark.div> {}
@@ -32,50 +30,30 @@ export interface ItemFooterProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Parts
-export function ItemGroup({ className, children, ...rest }: ItemGroupProps) {
+export function ItemRoot({
+  variant: variantProp,
+  className,
+  testId,
+  children,
+  ...rest
+}: ItemProps) {
+  const group = useItemGroup();
+  const variant = variantProp ?? group?.variant ?? "default";
   const slots = useMemo(() => itemVariants(), []);
 
   return (
-    <ItemContext value={{ slots }}>
+    <ItemContext value={{ slots, variant }}>
       <ark.div
         {...rest}
-        className={slots.group({ className })}
-        data-part="group"
+        className={slots.base({ className, variant })}
+        data-part="root"
         data-scope="item"
-        role="list"
+        data-testid={testId}
+        data-variant={variant}
       >
         {children}
       </ark.div>
     </ItemContext>
-  );
-}
-
-export function ItemSeparator({ className, ...rest }: SeparatorProps) {
-  const { slots } = useItem();
-
-  return (
-    <Separator
-      {...rest}
-      className={slots.separator({ className })}
-      dataPart="separator"
-      dataScope="item"
-      orientation="horizontal"
-    />
-  );
-}
-
-export function ItemRoot({ variant = "default", className, testId, ...rest }: ItemProps) {
-  const { slots } = useItem();
-
-  return (
-    <ark.div
-      {...rest}
-      className={slots.base({ className, variant })}
-      data-part="root"
-      data-scope="item"
-      data-testid={testId}
-      data-variant={variant}
-    />
   );
 }
 
@@ -173,8 +151,6 @@ export function ItemFooter({ className, ...rest }: ItemFooterProps) {
 // #endregion
 
 // #region Display Names
-ItemGroup.displayName = "Item.Group";
-ItemSeparator.displayName = "Item.Separator";
 ItemRoot.displayName = "Item";
 ItemMedia.displayName = "Item.Media";
 ItemContent.displayName = "Item.Content";

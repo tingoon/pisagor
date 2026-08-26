@@ -70,8 +70,8 @@ export const DisabledItem = meta.story({
       ],
     });
     return (
-      <Item.Group>
-        <Item className="p-1" variant="outline">
+      <Item.Group variant="outline">
+        <Item className="p-1">
           <Listbox.Root collection={collection}>
             <Listbox.Content>
               {collection.items.map((item) => (
@@ -116,8 +116,8 @@ export const Grid = meta.story({
       ],
     });
     return (
-      <Item.Group>
-        <Item className="p-1" variant="outline">
+      <Item.Group variant="outline">
+        <Item className="p-1">
           <Listbox.Root collection={collection}>
             <Listbox.Content
               className="grid grid-cols-[repeat(var(--column-count),1fr)] gap-1"
@@ -148,8 +148,8 @@ export const Grouping = meta.story({
       ],
     });
     return (
-      <Item.Group>
-        <Item className="p-1" variant="outline">
+      <Item.Group variant="outline">
+        <Item className="p-1">
           <Listbox.Root collection={collection}>
             <Listbox.Content>
               {collection.group().map(([region, items]) => (
@@ -215,8 +215,8 @@ export const Disabled = meta.story({
       ],
     });
     return (
-      <Item.Group>
-        <Item className="p-1" variant="outline">
+      <Item.Group variant="outline">
+        <Item className="p-1">
           <Listbox.Root collection={collection} disabled>
             <Listbox.Content>
               {collection.items.map((item) => (
@@ -309,8 +309,8 @@ export const SelectionExtended = meta.story({
         <p className="text-center text-muted-foreground text-sm">
           Hold <Kbd>⌘</Kbd> or <Kbd>Ctrl</Kbd> to select multiple
         </p>
-        <Item.Group>
-          <Item className="w-full p-1" variant="outline">
+        <Item.Group variant="outline">
+          <Item className="w-full p-1">
             <Listbox.Root collection={collection} selectionMode="extended">
               <Listbox.Content>
                 {collection.items.map((item) => (
@@ -338,8 +338,8 @@ export const SelectionMultiple = meta.story({
       ],
     });
     return (
-      <Item.Group>
-        <Item className="p-1" variant="outline">
+      <Item.Group variant="outline">
+        <Item className="p-1">
           <Listbox.Root collection={collection} selectionMode="multiple">
             <Listbox.Content>
               {collection.items.map((item) => (
@@ -370,8 +370,8 @@ export const SelectionNone = meta.story({
       ],
     });
     return (
-      <Item.Group>
-        <Item className="p-1" variant="outline">
+      <Item.Group variant="outline">
+        <Item className="p-1">
           <Listbox.Root
             aria-label="File actions"
             className="w-full"
@@ -451,8 +451,8 @@ export const TransferList = meta.story({
 
     return (
       <div className="flex gap-2 max-sm:flex-col">
-        <Item.Group>
-          <Item className="w-full p-1" variant="outline">
+        <Item.Group variant="outline">
+          <Item className="w-full p-1">
             <Listbox.Root
               className="min-h-40"
               collection={availableCollection}
@@ -491,8 +491,8 @@ export const TransferList = meta.story({
             <CaretLeftIcon />
           </Button>
         </div>
-        <Item.Group>
-          <Item className="w-full p-1" variant="outline">
+        <Item.Group variant="outline">
+          <Item className="w-full p-1">
             <Listbox.Root
               className="min-h-40"
               collection={selectedCollection}
@@ -540,8 +540,8 @@ export const WithDescription = meta.story({
       ],
     });
     return (
-      <Item.Group>
-        <Item className="p-1" variant="outline">
+      <Item.Group variant="outline">
+        <Item className="p-1">
           <Listbox.Root collection={collection}>
             <Listbox.Content>
               {collection.items.map((item) => (
@@ -579,8 +579,8 @@ export const WithFilter = meta.story({
     const isEmpty = collection.items.length === 0 && search;
 
     return (
-      <Item.Group>
-        <Item className="flex flex-col gap-2 p-1" variant="outline">
+      <Item.Group variant="outline">
+        <Item className="flex flex-col gap-2 p-1">
           <Input
             onChange={(e) => {
               const value = e.target.value;
@@ -618,8 +618,8 @@ export const WithIcon = meta.story({
       ],
     });
     return (
-      <Item.Group>
-        <Item className="p-1" variant="outline">
+      <Item.Group variant="outline">
+        <Item className="p-1">
           <Listbox.Root collection={collection}>
             <Listbox.Content>
               {collection.items.map((item) => (
@@ -714,8 +714,8 @@ export const Controlled = meta.story({
     return (
       <div className="flex flex-col gap-2">
         <p className="text-center text-muted-foreground text-sm">Selected the Large size</p>
-        <Item.Group>
-          <Item className="p-1" variant="outline">
+        <Item.Group variant="outline">
+          <Item className="p-1">
             <Listbox.Root
               collection={collection}
               onValueChange={(value) => setValue(Array.isArray(value) ? value : [value])}
