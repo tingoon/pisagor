@@ -1,42 +1,30 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
 export const editableVariants = tv({
-  base: [
-    "group/editable",
-    "relative",
-    "w-full",
-    "data-[orientation=vertical]:items-end",
-    "flex items-center gap-2",
-  ],
-});
-
-export const editableAreaVariants = tv({
-  base: "w-full",
-});
-
-export const editablePreviewVariants = tv({
-  base: [
-    "w-full justify-start",
-    "px-3",
-    "whitespace-pre-wrap font-normal text-base sm:text-sm",
-    "dark:hover:bg-input/32",
-    "data-placeholder-shown:text-muted-foreground",
-    "in-[[data-scope=editable][data-part=area]:has(textarea)]:items-start",
-  ],
-});
-
-export const editableControlVariants = tv({
-  base: ["group-data-[orientation=vertical]/editable:flex-col", "inline-flex items-center gap-2"],
+  slots: {
+    area: "w-full",
+    base: [
+      "group/editable",
+      "relative",
+      "w-full",
+      "data-[orientation=vertical]:items-end",
+      "flex items-center gap-2",
+    ],
+    control: [
+      "group-data-[orientation=vertical]/editable:flex-col",
+      "inline-flex items-center gap-2",
+    ],
+    preview: [
+      "w-full justify-start",
+      "px-3",
+      "whitespace-pre-wrap font-normal text-base sm:text-sm",
+      "dark:hover:bg-input/32",
+      "data-placeholder-shown:text-muted-foreground",
+      "in-[[data-scope=editable][data-part=area]:has(textarea)]:items-start",
+    ],
+  },
 });
 
 export type EditableVariantProps = VariantProps<typeof editableVariants>;
 export type EditableVariants = ReturnType<typeof editableVariants>;
-
-export type EditableAreaVariantProps = VariantProps<typeof editableAreaVariants>;
-export type EditableAreaVariants = ReturnType<typeof editableAreaVariants>;
-
-export type EditablePreviewVariantProps = VariantProps<typeof editablePreviewVariants>;
-export type EditablePreviewVariants = ReturnType<typeof editablePreviewVariants>;
-
-export type EditableControlVariantProps = VariantProps<typeof editableControlVariants>;
-export type EditableControlVariants = ReturnType<typeof editableControlVariants>;
+export type EditableSlots = keyof EditableVariants;

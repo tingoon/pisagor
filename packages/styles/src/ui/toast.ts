@@ -29,6 +29,7 @@ export const toastItemVariants = tv({
       "motion-reduce:transition-none!",
     ],
     body: ["flex flex-col gap-0.5"],
+    close: ["opacity-64 hover:opacity-100"],
     content: ["flex items-start gap-1.5"],
     description: ["text-muted-foreground text-sm"],
     icon: [
@@ -42,16 +43,9 @@ export const toastItemVariants = tv({
   },
 });
 
-export const toastInlineVariants = tv({
-  base: ["opacity-64 hover:opacity-100"],
-});
-
 export type ToasterVariantProps = VariantProps<typeof toasterVariants>;
 export type ToasterVariants = ReturnType<typeof toasterVariants>;
 
 export type ToastItemVariantProps = VariantProps<typeof toastItemVariants>;
 export type ToastItemVariants = ReturnType<typeof toastItemVariants>;
 export type ToastItemSlots = keyof ToastItemVariants;
-
-export type ToastInlineVariantProps = VariantProps<typeof toastInlineVariants>;
-export type ToastInlineVariants = ReturnType<typeof toastInlineVariants>;
