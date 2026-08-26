@@ -68,6 +68,7 @@ Put **`{...rest}` first** in JSX — explicit props after override spread values
 - Do not list on the interface what `extends ComponentProps<…>` already provides.
 - Do not use `rootClassName` — root styling is always `className` (see [React Component Patterns → Styling](../integrations/react-component.mdc#styling)).
 - Do not put visual styling on sub-element `*Props` bags — those are for content/behavior only; use `className` on the part or `classNames` on multi-slot roots.
+- Do not leave `children` in `...rest` or pass it as a JSX attribute (`children={…}` / `{...rest}` on a self-closing tag). Destructure `children` and render it as nested JSX (`>{children}</>`).
 
 ## Component body order
 
