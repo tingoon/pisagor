@@ -25,12 +25,6 @@ interface FloatingPanelContentProps {
   resizable?: boolean;
 }
 
-interface FloatingPanelHeaderProps {
-  class?: unknown;
-  /** Renders FloatingPanel.Title with the provided text */
-  title?: string;
-}
-
 interface FloatingPanelStageTriggerProps {
   class?: unknown;
   size?: ButtonProps["size"];
@@ -165,7 +159,6 @@ export const FloatingPanelHeader = defineComponent({
   name: "FloatingPanel.Header",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    title: String as PropType<FloatingPanelHeaderProps["title"]>,
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -175,10 +168,7 @@ export const FloatingPanelHeader = defineComponent({
         h(
           FloatingPanelPrimitive.Header as ArkPart,
           { ...attrs, class: cn(panelSlots.header(), props.class) },
-          () => [
-            props.title ? h(FloatingPanelTitle, null, () => props.title) : null,
-            slots.default?.(),
-          ],
+          slots.default?.(),
         ),
       );
     };

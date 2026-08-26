@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
 import { frameVariants } from "@pisagor/styles/ui/frame";
-import { defineComponent, h, type PropType, type VNodeChild } from "vue";
+import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
 
@@ -106,8 +106,6 @@ export const FrameHeader = defineComponent({
   name: "FrameHeader",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    description: { default: undefined, type: [String, Object] as PropType<VNodeChild> },
-    title: { default: undefined, type: [String, Object] as PropType<VNodeChild> },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -121,11 +119,7 @@ export const FrameHeader = defineComponent({
           "data-part": "panel-header",
           "data-scope": "frame",
         },
-        () => [
-          props.title !== undefined && h(FrameTitle, null, () => props.title),
-          props.description !== undefined && h(FrameDescription, null, () => props.description),
-          slots.default?.(),
-        ],
+        slots.default?.(),
       );
     };
   },

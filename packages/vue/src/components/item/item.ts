@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
 import { type ItemVariantProps, itemVariants } from "@pisagor/styles/ui/item";
-import { computed, defineComponent, h, type PropType, unref, type VNodeChild } from "vue";
+import { computed, defineComponent, h, type PropType, unref } from "vue";
 import { provideItemContext, resolveItemVariant, useItemSlots } from "./item.context";
 import { useItemGroupContextRef } from "./item-group.context";
 
@@ -19,10 +19,6 @@ export interface ItemMediaProps {
 
 export interface ItemHeaderProps {
   class?: unknown;
-  /** Shorthand: renders an ItemDescription inside the header. */
-  description?: VNodeChild;
-  /** Shorthand: renders an ItemTitle inside the header. */
-  title?: VNodeChild;
 }
 // #endregion
 
@@ -196,14 +192,6 @@ export const ItemHeader = defineComponent({
   name: "ItemHeader",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    description: {
-      default: undefined,
-      type: [String, Number, Boolean, Object, Array] as PropType<VNodeChild>,
-    },
-    title: {
-      default: undefined,
-      type: [String, Number, Boolean, Object, Array] as PropType<VNodeChild>,
-    },
   },
   setup(props, { attrs, slots }) {
     const itemSlots = useItemSlots();
@@ -217,15 +205,7 @@ export const ItemHeader = defineComponent({
           "data-part": "header",
           "data-scope": "item",
         },
-        () => [
-          props.title || props.description
-            ? h("div", { class: itemSlots.inline() }, [
-                props.title ? h(ItemTitle, null, () => props.title) : null,
-                props.description ? h(ItemDescription, null, () => props.description) : null,
-              ])
-            : null,
-          slots.default?.(),
-        ],
+        slots.default?.(),
       );
   },
 });
