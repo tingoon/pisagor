@@ -24,31 +24,29 @@ import {
   Spinner,
   Table,
 } from "@pisagor/react";
-import { DataGrid, renderDataGridCell, useDataGrid } from "@pisagor/react/data-grid";
+import {
+  type ColumnDef,
+  DataGrid,
+  type DataGridFeatures,
+  type PaginationState,
+  type Row,
+  type RowSelectionState,
+  renderDataGridCell,
+  type SortingState,
+  useDataGrid,
+  type VisibilityState,
+} from "@pisagor/react/data-grid";
 import type {
   ColumnFiltersState,
   ColumnPinningState,
   ExpandedState,
   GroupingState,
-  PaginationState,
   RowData,
-  RowSelectionState,
-  SortingState,
-  ColumnVisibilityState as VisibilityState,
 } from "@tanstack/react-table";
-import {
-  type LegacyColumnDef as ColumnDef,
-  getExpandedRowModel,
-  getFacetedRowModel,
-  getFacetedUniqueValues,
-  getFilteredRowModel,
-  getGroupedRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  type LegacyRow as Row,
-} from "@tanstack/react-table/legacy";
 import { Fragment, type ReactNode, useEffect, useMemo, useState } from "react";
 import preview from "#/storybook/preview";
+
+type DataGridRow<TData extends RowData> = Row<DataGridFeatures, TData>;
 
 const meta = preview.meta({
   component: DataGrid,
@@ -329,7 +327,7 @@ function DataGridExpandableBody<TData extends RowData>({
   renderDetail,
 }: {
   colSpan: number;
-  renderDetail: (row: Row<TData>) => ReactNode;
+  renderDetail: (row: DataGridRow<TData>) => ReactNode;
 }) {
   const table = useDataGrid<TData>();
   const rows = table.getRowModel().rows;
@@ -369,8 +367,8 @@ function DataGridExpandableBody<TData extends RowData>({
 
 function FilterChipsToolbar<TData extends RowData>() {
   const table = useDataGrid<TData>();
-  const filters = table.getState().columnFilters;
-  const globalFilter = table.getState().globalFilter;
+  const filters = table.store.state.columnFilters;
+  const globalFilter = table.store.state.globalFilter;
 
   if (filters.length === 0 && !globalFilter) {
     return null;
@@ -411,7 +409,7 @@ function FilterChipsToolbar<TData extends RowData>() {
 
 function DataGridPaginationBar<TData extends RowData>() {
   const table = useDataGrid<TData>();
-  const { pageIndex, pageSize } = table.getState().pagination;
+  const { pageIndex, pageSize } = table.store.state.pagination;
   const total = table.getFilteredRowModel().rows.length;
   const from = total === 0 ? 0 : pageIndex * pageSize + 1;
   const to = Math.min((pageIndex + 1) * pageSize, total);
@@ -590,7 +588,6 @@ export const Sorting = meta.story({
           columns={columns}
           data={allUsers.slice(0, 12)}
           enableMultiSort
-          getSortedRowModel={getSortedRowModel()}
           isMultiSortEvent={(event: unknown) => (event as MouseEvent).shiftKey}
           onSortingChange={setSorting}
           state={{ sorting }}
@@ -620,8 +617,6 @@ export const Paginated = meta.story({
         <DataGrid<User>
           columns={columns}
           data={allUsers}
-          getPaginationRowModel={getPaginationRowModel()}
-          getSortedRowModel={getSortedRowModel()}
           onPaginationChange={setPagination}
           state={{ pagination }}
         >
@@ -734,10 +729,6 @@ export const ColumnFilters = meta.story({
         <DataGrid<User>
           columns={columnsWithFilters}
           data={allUsers}
-          getFacetedRowModel={getFacetedRowModel()}
-          getFacetedUniqueValues={getFacetedUniqueValues()}
-          getFilteredRowModel={getFilteredRowModel()}
-          getPaginationRowModel={getPaginationRowModel()}
           initialState={{ pagination: { pageIndex: 0, pageSize: 8 } }}
           onColumnFiltersChange={setColumnFilters}
           onGlobalFilterChange={setGlobalFilter}
@@ -823,7 +814,6 @@ export const RowSelection = meta.story({
           columns={columns}
           data={allUsers}
           enableRowSelection
-          getPaginationRowModel={getPaginationRowModel()}
           onPaginationChange={setPagination}
           onRowSelectionChange={setRowSelection}
           state={{ pagination, rowSelection }}
@@ -922,7 +912,6 @@ export const ExpandingRows = meta.story({
         <DataGrid<OrgNode>
           columns={columns}
           data={orgTree}
-          getExpandedRowModel={getExpandedRowModel()}
           getRowId={(row: OrgNode) => row.id}
           getSubRows={(row: OrgNode) => row.subRows}
           onExpandedChange={setExpanded}
@@ -931,8 +920,7 @@ export const ExpandingRows = meta.story({
         >
           <DataGrid.Toolbar>
             <p className="text-muted-foreground text-sm">
-              Hierarchical rows via <code className="text-xs">getSubRows</code> and{" "}
-              <code className="text-xs">getExpandedRowModel</code>.
+              Hierarchical rows via <code className="text-xs">getSubRows</code>.
             </p>
           </DataGrid.Toolbar>
           <DataGridView colSpan={3} />
@@ -942,7 +930,7 @@ export const ExpandingRows = meta.story({
   },
 });
 
-function countLeaves<TData extends RowData>(row: Row<TData>): number {
+function countLeaves<TData extends RowData>(row: DataGridRow<TData>): number {
   if (!row.subRows.length) {
     return 1;
   }
@@ -1017,8 +1005,6 @@ export const GroupedRows = meta.story({
         <DataGrid<User>
           columns={columns}
           data={allUsers.slice(0, 24)}
-          getExpandedRowModel={getExpandedRowModel()}
-          getGroupedRowModel={getGroupedRowModel()}
           getRowId={(row: User) => row.id}
           onExpandedChange={setExpanded}
           onGroupingChange={setGrouping}
@@ -1264,7 +1250,6 @@ export const OrdersWithFooter = meta.story({
         <DataGrid<Order>
           columns={columns}
           data={orders.slice(0, 12)}
-          getSortedRowModel={getSortedRowModel()}
           onSortingChange={setSorting}
           state={{ sorting }}
         >
@@ -1388,7 +1373,7 @@ export const ManualPagination = meta.story({
 
 function ManualPaginationBar({ total }: { total: number }) {
   const table = useDataGrid<User>();
-  const { pageIndex, pageSize } = table.getState().pagination;
+  const { pageIndex, pageSize } = table.store.state.pagination;
   const from = total === 0 ? 0 : pageIndex * pageSize + 1;
   const to = Math.min((pageIndex + 1) * pageSize, total);
 
@@ -1426,7 +1411,6 @@ export const GlobalSelection = meta.story({
           columns={columns}
           data={allUsers}
           enableRowSelection
-          getPaginationRowModel={getPaginationRowModel()}
           getRowId={(row: User) => row.id}
           onPaginationChange={setPagination}
           onRowSelectionChange={setRowSelection}
@@ -1721,8 +1705,6 @@ export const ActiveFilterChips = meta.story({
         <DataGrid<User>
           columns={columns}
           data={allUsers}
-          getFilteredRowModel={getFilteredRowModel()}
-          getPaginationRowModel={getPaginationRowModel()}
           initialState={{ pagination: { pageIndex: 0, pageSize: 8 } }}
           onColumnFiltersChange={setColumnFilters}
           onGlobalFilterChange={setGlobalFilter}
@@ -1818,8 +1800,6 @@ export const MultiGrouping = meta.story({
         <DataGrid<User>
           columns={columns}
           data={allUsers.slice(0, 30)}
-          getExpandedRowModel={getExpandedRowModel()}
-          getGroupedRowModel={getGroupedRowModel()}
           getRowId={(row: User) => row.id}
           onExpandedChange={setExpanded}
           onGroupingChange={setGrouping}

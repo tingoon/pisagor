@@ -1,20 +1,10 @@
-import {
-  dataTableFooterVariants,
-  dataTableInlineVariants,
-  dataTableToolbarVariants,
-  dataTableVariants,
-} from "@pisagor/styles/ui/data-table";
-import type { RowData } from "@tanstack/react-table";
-import { flexRender } from "@tanstack/react-table";
-import {
-  type LegacyCell as Cell,
-  getCoreRowModel,
-  type LegacyTableOptions as TableOptions,
-  useLegacyTable,
-} from "@tanstack/react-table/legacy";
+import { dataTableVariants } from "@pisagor/recipes/data-table";
+import type { RowData, TableOptions } from "@tanstack/react-table";
+import { flexRender, useTable } from "@tanstack/react-table";
 import { type ComponentProps, type ReactNode, useMemo } from "react";
 import { Table, type TableCellProps, type TableHeadProps, type TableRowProps } from "../table";
 import {
+  type Cell,
   DataTableContext,
   type DataTableContextValue,
   DataTableHeaderGroupContext,
@@ -25,6 +15,7 @@ import {
   useDataTableHeaderGroupContext,
   useDataTableRowContext,
 } from "./data-table.context";
+import { type DataTableFeatures, dataTableFeatures } from "./data-table.features";
 
 // #region Types
 /**
@@ -33,8 +24,13 @@ import {
 export type DataTableProps<TData extends RowData> = {
   children: ReactNode;
   className?: string;
-  getCoreRowModel?: TableOptions<TData>["getCoreRowModel"];
-} & Omit<TableOptions<TData>, "getCoreRowModel">;
+  /**
+   * TanStack Table features. Defaults to the DataTable feature preset.
+   *
+   * @defaultValue dataTableFeatures
+   */
+  features?: DataTableFeatures;
+} & Omit<TableOptions<DataTableFeatures, TData>, "features">;
 
 interface DataTableHeaderProps {
   children: ReactNode;
@@ -179,7 +175,9 @@ function DataTableHead<TData extends RowData>({
  * @typeParam TData - Row shape for the cell context.
  * @returns The rendered cell content, or null for placeholder cells.
  */
-export function renderDataTableCell<TData extends RowData>(cell: Cell<TData, unknown>) {
+export function renderDataTableCell<TData extends RowData>(
+  cell: Cell<DataTableFeatures, TData, unknown>,
+) {
   if (cell.getIsPlaceholder()) {
     return null;
   }
@@ -255,12 +253,12 @@ function DataTableEmpty({
   className,
   ...rest
 }: DataTableEmptyProps) {
-  const table = useDataTableContext().table;
+  const { slots, table } = useDataTableContext();
   const span = colSpan ?? table.getAllColumns().length;
 
   return (
     <Table.Row {...rest} className={className} data-part="empty" data-scope="data-table">
-      <Table.Cell className={dataTableInlineVariants()} colSpan={span}>
+      <Table.Cell className={slots.empty()} colSpan={span}>
         {children}
       </Table.Cell>
     </Table.Row>
@@ -268,10 +266,12 @@ function DataTableEmpty({
 }
 
 function DataTableToolbar({ className, ...rest }: DataTableToolbarProps) {
+  const { slots } = useDataTableContext();
+
   return (
     <div
       {...rest}
-      className={dataTableToolbarVariants({ className })}
+      className={slots.toolbar({ className })}
       data-part="toolbar"
       data-scope="data-table"
     />
@@ -279,10 +279,12 @@ function DataTableToolbar({ className, ...rest }: DataTableToolbarProps) {
 }
 
 function DataTableFooter({ className, ...rest }: DataTableFooterProps) {
+  const { slots } = useDataTableContext();
+
   return (
     <div
       {...rest}
-      className={dataTableFooterVariants({ className })}
+      className={slots.footer({ className })}
       data-part="footer"
       data-scope="data-table"
     />
@@ -292,19 +294,20 @@ function DataTableFooter({ className, ...rest }: DataTableFooterProps) {
 function DataTableRoot<TData extends RowData>({
   children,
   className,
-  getCoreRowModel: getCoreRowModelOption,
+  features = dataTableFeatures,
   ...rest
 }: DataTableProps<TData>) {
-  const table = useLegacyTable<TData>({
-    getCoreRowModel: getCoreRowModelOption ?? getCoreRowModel(),
+  const table = useTable({
     ...rest,
+    features,
   });
+  const slots = useMemo(() => dataTableVariants(), []);
 
-  const contextValue = useMemo(() => ({ table }), [table]);
+  const contextValue = useMemo(() => ({ slots, table }), [slots, table]);
 
   return (
     <DataTableContext value={contextValue as DataTableContextValue<RowData>}>
-      <div className={dataTableVariants({ className })} data-part="root" data-scope="data-table">
+      <div className={slots.base({ className })} data-part="root" data-scope="data-table">
         {children}
       </div>
     </DataTableContext>

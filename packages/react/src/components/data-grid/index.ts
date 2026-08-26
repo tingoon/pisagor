@@ -1,9 +1,10 @@
 import type {
   RowData,
   CellContext as TableCellContext,
+  ColumnDef as TableColumnDef,
   HeaderContext as TableHeaderContext,
 } from "@tanstack/react-table";
-import type { LegacyFeatures } from "@tanstack/react-table/legacy";
+import type { DataGridFeatures } from "./data-grid.features";
 
 export type {
   ColumnSizingState,
@@ -12,11 +13,6 @@ export type {
   RowSelectionState,
   SortingState,
 } from "@tanstack/react-table";
-export type {
-  LegacyColumn as Column,
-  LegacyColumnDef as ColumnDef,
-  LegacyFeatures,
-} from "@tanstack/react-table/legacy";
 export type { DataGridProps } from "./data-grid";
 export {
   DataGrid,
@@ -25,17 +21,24 @@ export {
   useDataGridHeaderGroup,
   useDataGridRow,
 } from "./data-grid";
+export type { Column, Row, TableType } from "./data-grid.context";
+export type { DataGridFeatures } from "./data-grid.features";
+export { dataGridFeatures } from "./data-grid.features";
 
-/** v8-shaped cell context bound to legacy table features. */
-export type CellContext<TData extends RowData, TValue = unknown> = TableCellContext<
-  LegacyFeatures,
+export type ColumnDef<TData extends RowData, TValue = unknown> = TableColumnDef<
+  DataGridFeatures,
   TData,
   TValue
 >;
 
-/** v8-shaped header context bound to legacy table features. */
+export type CellContext<TData extends RowData, TValue = unknown> = TableCellContext<
+  DataGridFeatures,
+  TData,
+  TValue
+>;
+
 export type HeaderContext<TData extends RowData, TValue = unknown> = TableHeaderContext<
-  LegacyFeatures,
+  DataGridFeatures,
   TData,
   TValue
 >;

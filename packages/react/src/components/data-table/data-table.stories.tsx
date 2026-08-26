@@ -1,7 +1,13 @@
 import { CaretDownIcon, CaretUpIcon } from "@phosphor-icons/react";
-import { Badge, DataTable, Table, useDataTable } from "@pisagor/react";
-import { flexRender, type SortingState } from "@tanstack/react-table";
-import { type LegacyColumnDef as ColumnDef, getSortedRowModel } from "@tanstack/react-table/legacy";
+import {
+  Badge,
+  type ColumnDef,
+  DataTable,
+  type SortingState,
+  Table,
+  useDataTable,
+} from "@pisagor/react";
+import { flexRender } from "@tanstack/react-table";
 import { useMemo, useState } from "react";
 import preview from "#/storybook/preview";
 
@@ -164,7 +170,6 @@ export const Sorting = meta.story({
         columns={columns}
         data={users}
         getRowId={(row) => row.id}
-        getSortedRowModel={getSortedRowModel()}
         onSortingChange={setSorting}
         state={{ sorting }}
       >

@@ -1,26 +1,31 @@
-import type { RowData } from "@tanstack/react-table";
+import type { DataGridVariants } from "@pisagor/recipes/data-grid";
 import type {
-  LegacyHeader as Header,
-  LegacyHeaderGroup as HeaderGroup,
-  LegacyRow as Row,
-  LegacyReactTable as TableType,
-} from "@tanstack/react-table/legacy";
+  Cell,
+  Column,
+  Header,
+  HeaderGroup,
+  Row,
+  RowData,
+  Table as TableType,
+} from "@tanstack/react-table";
 import { createContext } from "../../utils";
+import type { DataGridFeatures } from "./data-grid.features";
 
 interface DataGridContextValue<TData extends RowData> {
-  table: TableType<TData>;
+  slots: DataGridVariants;
+  table: TableType<DataGridFeatures, TData>;
 }
 
 interface DataGridHeaderGroupContextValue<TData extends RowData> {
-  headerGroup: HeaderGroup<TData>;
+  headerGroup: HeaderGroup<DataGridFeatures, TData>;
 }
 
 interface DataGridHeaderCellContextValue<TData extends RowData> {
-  header: Header<TData, unknown>;
+  header: Header<DataGridFeatures, TData, unknown>;
 }
 
 interface DataGridRowContextValue<TData extends RowData> {
-  row: Row<TData>;
+  row: Row<DataGridFeatures, TData>;
 }
 
 export const { DataGridContext, useDataGrid } = createContext<DataGridContextValue<RowData>>()({
@@ -63,8 +68,14 @@ export function useDataGridRowContext<TData extends RowData>() {
 }
 
 export type {
+  Cell,
+  Column,
   DataGridContextValue,
   DataGridHeaderCellContextValue,
   DataGridHeaderGroupContextValue,
   DataGridRowContextValue,
+  Header,
+  HeaderGroup,
+  Row,
+  TableType,
 };

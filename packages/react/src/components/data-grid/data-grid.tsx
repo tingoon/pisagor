@@ -1,25 +1,7 @@
-import {
-  dataGridColumnResizerVariants,
-  dataGridFilterHeadVariants,
-  dataGridFooterVariants,
-  dataGridInline2Variants,
-  dataGridInline3Variants,
-  dataGridInlineVariants,
-  dataGridToolbarVariants,
-  dataGridVariants,
-} from "@pisagor/styles/ui/data-grid";
+import { dataGridVariants } from "@pisagor/recipes/data-grid";
 import { cn } from "@pisagor/utils";
-import type { RowData } from "@tanstack/react-table";
-import { flexRender } from "@tanstack/react-table";
-import {
-  type LegacyCell as Cell,
-  type LegacyColumn as Column,
-  getCoreRowModel,
-  type LegacyHeader as Header,
-  type LegacyRow as Row,
-  type LegacyTableOptions as TableOptions,
-  useLegacyTable,
-} from "@tanstack/react-table/legacy";
+import type { RowData, TableOptions } from "@tanstack/react-table";
+import { flexRender, useTable } from "@tanstack/react-table";
 import { useVirtualizer } from "@tanstack/react-virtual";
 import {
   type ComponentProps,
@@ -32,6 +14,8 @@ import {
 } from "react";
 import { Table, type TableCellProps, type TableHeadProps, type TableRowProps } from "../table";
 import {
+  type Cell,
+  type Column,
   DataGridContext,
   type DataGridContextValue,
   DataGridHeaderCellContext,
@@ -40,11 +24,14 @@ import {
   type DataGridHeaderGroupContextValue,
   DataGridRowContext,
   type DataGridRowContextValue,
+  type Header,
+  type Row,
   useDataGridContext,
   useDataGridHeaderCellContext,
   useDataGridHeaderGroupContext,
   useDataGridRowContext,
 } from "./data-grid.context";
+import { type DataGridFeatures, dataGridFeatures } from "./data-grid.features";
 
 // #region Types
 /**
@@ -53,8 +40,13 @@ import {
 export type DataGridProps<TData extends RowData> = {
   children: ReactNode;
   className?: string;
-  getCoreRowModel?: TableOptions<TData>["getCoreRowModel"];
-} & Omit<TableOptions<TData>, "getCoreRowModel">;
+  /**
+   * TanStack Table features. Defaults to the DataGrid kitchen-sink preset.
+   *
+   * @defaultValue dataGridFeatures
+   */
+  features?: DataGridFeatures;
+} & Omit<TableOptions<DataGridFeatures, TData>, "features">;
 
 interface DataGridHeaderProps {
   children: ReactNode;
@@ -125,7 +117,7 @@ interface DataGridEmptyProps extends TableRowProps {
 interface DataGridColumnResizerProps extends ComponentProps<"div"> {}
 
 interface DataGridRowProviderProps<TData extends RowData> {
-  row: Row<TData>;
+  row: Row<DataGridFeatures, TData>;
   children: ReactNode;
 }
 
@@ -165,7 +157,10 @@ export function useDataGridRow<TData extends RowData>() {
   return useDataGridRowContext<TData>().row;
 }
 
-function columnSizeStyle(column: Column<RowData>, enabled: boolean): CSSProperties | undefined {
+function columnSizeStyle<TData extends RowData>(
+  column: Column<DataGridFeatures, TData, unknown>,
+  enabled: boolean,
+): CSSProperties | undefined {
   if (!enabled) {
     return undefined;
   }
@@ -199,10 +194,9 @@ function DataGridHeaderRow(props: DataGridHeaderRowProps) {
   return <Table.Row data-part="header-row" data-scope="data-grid" {...props} />;
 }
 
-const dataTableFilterHeadClassName = dataGridFilterHeadVariants();
-
 function DataGridColumnResizer({ className, ...rest }: DataGridColumnResizerProps) {
   const headerCell = useDataGridHeaderCellContext();
+  const { slots } = useDataGridContext();
 
   if (!headerCell) {
     return null;
@@ -219,7 +213,7 @@ function DataGridColumnResizer({ className, ...rest }: DataGridColumnResizerProp
       {...rest}
       aria-hidden="true"
       className={cn(
-        dataGridColumnResizerVariants(),
+        slots.columnResizer(),
         header.column.getIsResizing() && "bg-primary",
         className,
       )}
@@ -238,10 +232,10 @@ function DataGridHeadCell<TData extends RowData>({
   className,
   filter = false,
   ...rest
-}: DataGridHeadProps & { header: Header<TData, unknown> }) {
-  const table = useDataGridContext<TData>().table;
+}: DataGridHeadProps & { header: Header<DataGridFeatures, TData, unknown> }) {
+  const { slots, table } = useDataGridContext<TData>();
   const sizingEnabled = Boolean(table.options.enableColumnResizing);
-  const headClassName = cn(filter && dataTableFilterHeadClassName, className);
+  const headClassName = cn(filter && slots.filterHead(), className);
 
   return (
     <DataGridHeaderCellContext value={{ header } as DataGridHeaderCellContextValue<RowData>}>
@@ -251,7 +245,7 @@ function DataGridHeadCell<TData extends RowData>({
         data-part="head"
         data-scope="data-grid"
         style={{
-          ...columnSizeStyle(header.column as Column<RowData>, sizingEnabled),
+          ...columnSizeStyle(header.column, sizingEnabled),
           ...rest.style,
         }}
       >
@@ -310,7 +304,9 @@ function DataGridHead<TData extends RowData>({
  * @typeParam TData - Row shape for the cell context.
  * @returns The rendered cell content, or null for placeholder cells.
  */
-export function renderDataGridCell<TData extends RowData>(cell: Cell<TData, unknown>) {
+export function renderDataGridCell<TData extends RowData>(
+  cell: Cell<DataGridFeatures, TData, unknown>,
+) {
   if (cell.getIsPlaceholder()) {
     return null;
   }
@@ -351,7 +347,7 @@ function DataGridVirtualBody<TData extends RowData>({
   overscan = 8,
   viewportHeight = "24rem",
 }: DataGridVirtualBodyProps) {
-  const table = useDataGridContext<TData>().table;
+  const { slots, table } = useDataGridContext<TData>();
   const rows = table.getRowModel().rows;
   const anchorRef = useRef<HTMLTableRowElement>(null);
   const [scrollElement, setScrollElement] = useState<HTMLElement | null>(null);
@@ -384,7 +380,7 @@ function DataGridVirtualBody<TData extends RowData>({
   if (rows.length === 0) {
     return (
       <>
-        <tr className={dataGridInlineVariants()} ref={anchorRef} />
+        <tr className={slots.anchor()} ref={anchorRef} />
         {empty}
       </>
     );
@@ -402,7 +398,7 @@ function DataGridVirtualBody<TData extends RowData>({
           <td colSpan={table.getAllColumns().length} style={{ height: paddingTop }} />
         </tr>
       ) : (
-        <tr className={dataGridInline2Variants()} ref={anchorRef} />
+        <tr className={slots.anchor()} ref={anchorRef} />
       )}
       {virtualRows.map((virtualRow) => {
         const row = rows[virtualRow.index];
@@ -482,7 +478,7 @@ function DataGridCell<TData extends RowData>({
         data-part="cell"
         data-scope="data-grid"
         style={{
-          ...columnSizeStyle(cell.column as Column<RowData>, sizingEnabled),
+          ...columnSizeStyle(cell.column, sizingEnabled),
           ...style,
         }}
       >
@@ -501,7 +497,7 @@ function DataGridCell<TData extends RowData>({
           data-scope="data-grid"
           key={cell.id}
           style={{
-            ...columnSizeStyle(cell.column as Column<RowData>, sizingEnabled),
+            ...columnSizeStyle(cell.column, sizingEnabled),
             ...style,
           }}
         >
@@ -518,12 +514,12 @@ function DataGridEmpty({
   className,
   ...rest
 }: DataGridEmptyProps) {
-  const table = useDataGridContext().table;
+  const { slots, table } = useDataGridContext();
   const span = colSpan ?? table.getAllColumns().length;
 
   return (
     <Table.Row {...rest} className={className} data-part="empty" data-scope="data-grid">
-      <Table.Cell className={dataGridInline3Variants()} colSpan={span}>
+      <Table.Cell className={slots.empty()} colSpan={span}>
         {children}
       </Table.Cell>
     </Table.Row>
@@ -531,10 +527,12 @@ function DataGridEmpty({
 }
 
 function DataGridToolbar({ className, ...rest }: DataGridToolbarProps) {
+  const { slots } = useDataGridContext();
+
   return (
     <div
       {...rest}
-      className={dataGridToolbarVariants({ className })}
+      className={slots.toolbar({ className })}
       data-part="toolbar"
       data-scope="data-grid"
     />
@@ -542,10 +540,12 @@ function DataGridToolbar({ className, ...rest }: DataGridToolbarProps) {
 }
 
 function DataGridFooter({ className, ...rest }: DataGridFooterProps) {
+  const { slots } = useDataGridContext();
+
   return (
     <div
       {...rest}
-      className={dataGridFooterVariants({ className })}
+      className={slots.footer({ className })}
       data-part="footer"
       data-scope="data-grid"
     />
@@ -555,20 +555,22 @@ function DataGridFooter({ className, ...rest }: DataGridFooterProps) {
 function DataGridRoot<TData extends RowData>({
   children,
   className,
-  getCoreRowModel: getCoreRowModelOption,
+  columnResizeMode = "onChange",
+  features = dataGridFeatures,
   ...rest
 }: DataGridProps<TData>) {
-  const table = useLegacyTable<TData>({
-    columnResizeMode: rest.columnResizeMode ?? "onChange",
-    getCoreRowModel: getCoreRowModelOption ?? getCoreRowModel(),
+  const table = useTable({
     ...rest,
+    columnResizeMode,
+    features,
   });
+  const slots = useMemo(() => dataGridVariants(), []);
 
-  const contextValue = useMemo(() => ({ table }), [table]);
+  const contextValue = useMemo(() => ({ slots, table }), [slots, table]);
 
   return (
     <DataGridContext value={contextValue as DataGridContextValue<RowData>}>
-      <div className={dataGridVariants({ className })} data-part="root" data-scope="data-grid">
+      <div className={slots.base({ className })} data-part="root" data-scope="data-grid">
         {children}
       </div>
     </DataGridContext>

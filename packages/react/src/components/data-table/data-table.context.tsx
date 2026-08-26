@@ -1,21 +1,27 @@
-import type { RowData } from "@tanstack/react-table";
+import type { DataTableVariants } from "@pisagor/recipes/data-table";
 import type {
-  LegacyHeaderGroup as HeaderGroup,
-  LegacyRow as Row,
-  LegacyReactTable as TableType,
-} from "@tanstack/react-table/legacy";
+  Cell,
+  Column,
+  Header,
+  HeaderGroup,
+  Row,
+  RowData,
+  Table as TableType,
+} from "@tanstack/react-table";
 import { createContext } from "../../utils";
+import type { DataTableFeatures } from "./data-table.features";
 
 interface DataTableContextValue<TData extends RowData> {
-  table: TableType<TData>;
+  slots: DataTableVariants;
+  table: TableType<DataTableFeatures, TData>;
 }
 
 interface DataTableHeaderGroupContextValue<TData extends RowData> {
-  headerGroup: HeaderGroup<TData>;
+  headerGroup: HeaderGroup<DataTableFeatures, TData>;
 }
 
 interface DataTableRowContextValue<TData extends RowData> {
-  row: Row<TData>;
+  row: Row<DataTableFeatures, TData>;
 }
 
 export const { DataTableContext, useDataTable } = createContext<DataTableContextValue<RowData>>()({
@@ -46,4 +52,14 @@ export function useDataTableRowContext<TData extends RowData>() {
   return useDataTableRow() as DataTableRowContextValue<TData>;
 }
 
-export type { DataTableContextValue, DataTableHeaderGroupContextValue, DataTableRowContextValue };
+export type {
+  Cell,
+  Column,
+  DataTableContextValue,
+  DataTableHeaderGroupContextValue,
+  DataTableRowContextValue,
+  Header,
+  HeaderGroup,
+  Row,
+  TableType,
+};

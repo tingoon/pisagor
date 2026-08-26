@@ -1,9 +1,10 @@
 import type {
   RowData,
   CellContext as TableCellContext,
+  ColumnDef as TableColumnDef,
   HeaderContext as TableHeaderContext,
 } from "@tanstack/react-table";
-import type { LegacyFeatures } from "@tanstack/react-table/legacy";
+import type { DataTableFeatures } from "./data-table.features";
 
 export type {
   ColumnVisibilityState as VisibilityState,
@@ -11,11 +12,6 @@ export type {
   RowSelectionState,
   SortingState,
 } from "@tanstack/react-table";
-export type {
-  LegacyColumn as Column,
-  LegacyColumnDef as ColumnDef,
-  LegacyFeatures,
-} from "@tanstack/react-table/legacy";
 export type { DataTableProps } from "./data-table";
 export {
   DataTable,
@@ -24,17 +20,24 @@ export {
   useDataTableHeaderGroup,
   useDataTableRow,
 } from "./data-table";
+export type { Column, Row, TableType } from "./data-table.context";
+export type { DataTableFeatures } from "./data-table.features";
+export { dataTableFeatures } from "./data-table.features";
 
-/** v8-shaped cell context bound to legacy table features. */
-export type CellContext<TData extends RowData, TValue = unknown> = TableCellContext<
-  LegacyFeatures,
+export type ColumnDef<TData extends RowData, TValue = unknown> = TableColumnDef<
+  DataTableFeatures,
   TData,
   TValue
 >;
 
-/** v8-shaped header context bound to legacy table features. */
+export type CellContext<TData extends RowData, TValue = unknown> = TableCellContext<
+  DataTableFeatures,
+  TData,
+  TValue
+>;
+
 export type HeaderContext<TData extends RowData, TValue = unknown> = TableHeaderContext<
-  LegacyFeatures,
+  DataTableFeatures,
   TData,
   TValue
 >;
