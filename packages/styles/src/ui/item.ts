@@ -31,7 +31,6 @@ export const itemVariants = tv({
       "flex basis-full items-center justify-between gap-2",
       "[&_img]:size-full [&_img]:rounded-xl [&_img]:object-cover",
     ],
-    inline: ["flex flex-col gap-0.5"],
     media: [
       "flex shrink-0 items-center justify-center gap-2",
       "group-has-[[data-scope=item][data-part=description]]/item:translate-y-0.5 group-has-[[data-scope=item][data-part=description]]/item:self-start",
