@@ -13,17 +13,8 @@ import {
   PhMinus,
 } from "@phosphor-icons/vue";
 import {
-  treeViewBranchContentVariants,
-  treeViewBranchIndicatorVariants,
-  treeViewBranchTitleVariants,
   treeViewBranchVariants,
-  treeViewCheckboxVariants,
-  treeViewControlVariants,
-  treeViewItemIconVariants,
-  treeViewItemTitleVariants,
-  treeViewLabelVariants,
-  treeViewNodeRenameInputVariants,
-  treeViewTreeVariants,
+  treeViewItemVariants,
   treeViewVariants,
 } from "@pisagor/styles/ui/tree-view";
 import { cn } from "@pisagor/utils";
@@ -99,17 +90,20 @@ export const TreeViewRoot = defineComponent({
   setup(props, { attrs, slots }) {
     provideTreeViewContext({ fileIcons: props.fileIcons });
 
-    return () =>
-      h(
+    return () => {
+      const variantSlots = treeViewVariants();
+
+      return h(
         TreeViewPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(treeViewVariants(), props.class),
+          class: variantSlots.base({ class: props.class }),
           lazyMount: props.lazyMount,
           unmountOnExit: props.unmountOnExit,
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -120,15 +114,18 @@ export const TreeViewLabel = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = treeViewVariants();
+
+      return h(
         TreeViewPrimitive.Label as ArkPart,
         {
           ...attrs,
-          class: cn(treeViewLabelVariants(), props.class),
+          class: variantSlots.label({ class: props.class }),
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -139,15 +136,18 @@ export const TreeViewTree = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = treeViewVariants();
+
+      return h(
         TreeViewPrimitive.Tree as ArkPart,
         {
           ...attrs,
-          class: cn(treeViewTreeVariants(), props.class),
+          class: variantSlots.tree({ class: props.class }),
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -164,12 +164,15 @@ export const TreeViewBranch = defineComponent({
   inheritAttrs: false,
   name: "TreeViewBranch",
   setup(_, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = treeViewBranchVariants();
+
+      return h(
         TreeViewPrimitive.Branch as ArkPart,
-        { ...attrs, class: cn(treeViewBranchVariants()) },
+        { ...attrs, class: variantSlots.base({ class: attrs.class as string | undefined }) },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -177,15 +180,18 @@ export const TreeViewBranchIndicator = defineComponent({
   inheritAttrs: false,
   name: "TreeViewBranchIndicator",
   setup(_, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = treeViewBranchVariants();
+
+      return h(
         TreeViewPrimitive.BranchIndicator as ArkPart,
         {
           ...attrs,
-          class: treeViewBranchIndicatorVariants(),
+          class: variantSlots.indicator(),
         },
         () => slots.default?.() ?? h(PhCaretRight),
       );
+    };
   },
 });
 
@@ -197,13 +203,13 @@ export const TreeViewBranchContent = defineComponent({
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const slots = treeViewBranchContentVariants();
+      const variantSlots = treeViewBranchVariants();
 
       return h(
         TreeViewPrimitive.BranchContent as ArkPart,
         {
           ...attrs,
-          class: slots.base({ class: props.class }),
+          class: variantSlots.content({ class: props.class }),
         },
         () => [h(TreeViewBranchIndentGuide), children.default?.()],
       );
@@ -216,13 +222,13 @@ const TreeViewBranchIndentGuide = defineComponent({
   name: "TreeViewBranchIndentGuide",
   setup(_, { attrs, slots: children }) {
     return () => {
-      const slots = treeViewBranchContentVariants();
+      const variantSlots = treeViewBranchVariants();
 
       return h(
         TreeViewPrimitive.BranchIndentGuide as ArkPart,
         {
           ...attrs,
-          class: slots.indentGuide(),
+          class: variantSlots.indentGuide(),
         },
         children.default?.(),
       );
@@ -239,12 +245,14 @@ export const TreeViewBranchControl = defineComponent({
     icon: { default: undefined, type: Object as PropType<ArkPart | null> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = treeViewVariants();
+
+      return h(
         TreeViewPrimitive.BranchControl as ArkPart,
         {
           ...attrs,
-          class: cn(treeViewControlVariants(), props.class),
+          class: variantSlots.control({ class: props.class }),
         },
         () => [
           h(TreeViewBranchIndicator),
@@ -253,6 +261,7 @@ export const TreeViewBranchControl = defineComponent({
           ),
         ],
       );
+    };
   },
 });
 
@@ -282,12 +291,13 @@ const TreeViewBranchTitle = defineComponent({
 
           const showCollapsedIcon = IconComponent !== null && !expanded;
           const showExpandedIcon = ExpandedIconComponent !== null && expanded;
+          const variantSlots = treeViewBranchVariants();
 
           return h(
             TreeViewPrimitive.BranchText as ArkPart,
             {
               ...attrs,
-              class: cn(treeViewBranchTitleVariants(), props.class),
+              class: variantSlots.title({ class: props.class }),
             },
             () => [
               showCollapsedIcon
@@ -310,12 +320,15 @@ export const TreeViewItem = defineComponent({
   inheritAttrs: false,
   name: "TreeViewItem",
   setup(_, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = treeViewVariants();
+
+      return h(
         TreeViewPrimitive.Item as ArkPart,
-        { ...attrs, class: cn(treeViewControlVariants()) },
+        { ...attrs, class: variantSlots.control({ class: attrs.class as string | undefined }) },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -326,15 +339,18 @@ export const TreeViewItemTitle = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = treeViewItemVariants();
+
+      return h(
         TreeViewPrimitive.ItemText as ArkPart,
         {
           ...attrs,
-          class: cn(treeViewItemTitleVariants(), props.class),
+          class: variantSlots.title({ class: props.class }),
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -342,17 +358,20 @@ const TreeViewItemIcon = defineComponent({
   inheritAttrs: false,
   name: "TreeViewItemIcon",
   setup(_, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = treeViewItemVariants();
+
+      return h(
         ark.span as ArkPart,
         {
           ...attrs,
-          class: cn(treeViewItemIconVariants(), attrs.class),
+          class: variantSlots.icon({ class: attrs.class as string | undefined }),
           "data-part": "item-icon",
           "data-scope": "tree-view",
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -363,15 +382,18 @@ export const TreeViewNodeInput = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = treeViewItemVariants();
+
+      return h(
         TreeViewPrimitive.NodeRenameInput as ArkPart,
         {
           ...attrs,
-          class: cn(treeViewNodeRenameInputVariants(), props.class),
+          class: variantSlots.renameInput({ class: props.class }),
         },
         undefined,
       );
+    };
   },
 });
 
@@ -415,17 +437,14 @@ export const TreeViewNodeCheckbox = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = treeViewItemVariants();
+
+      return h(
         TreeViewPrimitive.NodeCheckbox as ArkPart,
         {
           ...attrs,
-          class: cn(
-            formControlToggleVariants(),
-            treeViewCheckboxVariants(),
-            props.class,
-            attrs.class,
-          ),
+          class: cn(formControlToggleVariants(), variantSlots.checkbox(), props.class, attrs.class),
         },
         () =>
           h(
@@ -436,6 +455,7 @@ export const TreeViewNodeCheckbox = defineComponent({
             () => h(PhCheck),
           ),
       );
+    };
   },
 });
 // #endregion

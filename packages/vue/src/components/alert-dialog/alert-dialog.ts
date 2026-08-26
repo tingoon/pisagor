@@ -1,5 +1,5 @@
-import { alertDialogBodyVariants } from "@pisagor/styles/ui/alert-dialog";
 import { buttonVariants } from "@pisagor/styles/ui/button";
+import { dialogVariants } from "@pisagor/styles/ui/dialog";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import {
@@ -16,6 +16,7 @@ import {
   DialogRoot,
   DialogTitle,
   DialogTrigger,
+  useDialog,
 } from "../dialog/dialog";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -59,18 +60,21 @@ export const AlertDialogBody = defineComponent({
     scrollFade: { default: false, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = useDialog()?.slots ?? dialogVariants();
+
+      return h(
         DialogBody as ArkPart,
         {
           ...attrs,
-          class: cn(alertDialogBodyVariants(), props.class),
+          class: cn(variantSlots.alertBody(), props.class),
           dataPart: "body",
           dataScope: "alert-dialog",
           scrollFade: props.scrollFade,
         },
         slots,
       );
+    };
   },
 });
 

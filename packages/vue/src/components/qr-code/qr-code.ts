@@ -1,10 +1,5 @@
 import { QrCode as QrCodePrimitive } from "@ark-ui/vue/qr-code";
-import {
-  qrCodeFrameVariants,
-  qrCodeOverlayVariants,
-  qrCodeVariants,
-} from "@pisagor/styles/ui/qr-code";
-import { cn } from "@pisagor/utils";
+import { qrCodeVariants } from "@pisagor/styles/ui/qr-code";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
@@ -23,15 +18,18 @@ export const QrCodeRoot = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = qrCodeVariants();
+
+      return h(
         QrCodePrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(qrCodeVariants(), props.class),
+          class: variantSlots.base({ class: props.class }),
         },
         () => slots.default?.() ?? h(QrCodeFrame),
       );
+    };
   },
 });
 
@@ -43,17 +41,17 @@ export const QrCodeFrame = defineComponent({
   },
   setup(props, { attrs }) {
     return () => {
-      const slots = qrCodeFrameVariants();
+      const variantSlots = qrCodeVariants();
 
       return h(
         QrCodePrimitive.Frame as ArkPart,
         {
           ...attrs,
-          class: slots.base({ class: props.class }),
+          class: variantSlots.frame({ class: props.class }),
         },
         () =>
           h(QrCodePrimitive.Pattern as ArkPart, {
-            class: slots.pattern(),
+            class: variantSlots.pattern(),
           }),
       );
     };
@@ -67,15 +65,18 @@ export const QrCodeOverlay = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = qrCodeVariants();
+
+      return h(
         QrCodePrimitive.Overlay as ArkPart,
         {
           ...attrs,
-          class: cn(qrCodeOverlayVariants(), props.class),
+          class: variantSlots.overlay({ class: props.class }),
         },
         slots.default?.(),
       );
+    };
   },
 });
 

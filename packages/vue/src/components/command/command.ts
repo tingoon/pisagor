@@ -4,7 +4,7 @@ import { Dialog as DialogPrimitive } from "@ark-ui/vue/dialog";
 import { PhMagnifyingGlass } from "@phosphor-icons/vue";
 import { comboboxVariants } from "@pisagor/styles/ui/combobox";
 import { commandVariants } from "@pisagor/styles/ui/command";
-import { dialogContentVariants } from "@pisagor/styles/ui/dialog";
+import { dialogVariants } from "@pisagor/styles/ui/dialog";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, Teleport, type VNodeChild } from "vue";
 import { Combobox, type ComboboxRootProps } from "../combobox";
@@ -84,6 +84,7 @@ export const CommandDialogContent = defineComponent({
   setup(props, { attrs, slots }) {
     return () => {
       const variantSlots = commandVariants();
+      const dialogSlots = dialogVariants();
 
       return commandTeleport([
         h(Dialog.Backdrop),
@@ -94,7 +95,7 @@ export const CommandDialogContent = defineComponent({
               ...attrs,
               class: cn(
                 variantSlots.dialogContent(),
-                dialogContentVariants({ size: props.size }),
+                dialogSlots.content({ size: props.size }),
                 props.class,
               ),
             },

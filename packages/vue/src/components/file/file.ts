@@ -1,20 +1,10 @@
 import { ark } from "@ark-ui/vue/factory";
 import { PhFile } from "@phosphor-icons/vue";
-import {
-  type FileMediaVariantProps,
-  fileActionsVariants,
-  fileContentVariants,
-  fileMediaVariants,
-  fileMetaVariants,
-  fileNameVariants,
-  fileSizeVariants,
-  fileVariants,
-} from "@pisagor/styles/ui/file";
-import { cn } from "@pisagor/utils";
+import { type FileVariantProps, fileVariants } from "@pisagor/styles/ui/file";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { Format } from "../format";
 
-export type FileMediaVariant = NonNullable<FileMediaVariantProps["variant"]>;
+export type FileMediaVariant = NonNullable<FileVariantProps["variant"]>;
 
 type ArkPart = Parameters<typeof h>[0];
 
@@ -42,17 +32,20 @@ export const FileRoot = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = fileVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(fileVariants(), props.class),
+          class: variantSlots.base({ class: props.class }),
           "data-part": "root",
           "data-scope": "file",
         },
         slots,
       );
+    };
   },
 });
 
@@ -61,21 +54,24 @@ export const FileMedia = defineComponent({
   name: "FileMedia",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    variant: { default: "icon", type: String as PropType<FileMediaVariantProps["variant"]> },
+    variant: { default: "icon", type: String as PropType<FileVariantProps["variant"]> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = fileVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(fileMediaVariants({ variant: props.variant }), props.class),
+          class: variantSlots.media({ class: props.class, variant: props.variant }),
           "data-part": "media",
           "data-scope": "file",
           "data-variant": props.variant,
         },
         () => slots.default?.() ?? h(PhFile),
       );
+    };
   },
 });
 
@@ -86,17 +82,20 @@ export const FileContent = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = fileVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(fileContentVariants(), props.class),
+          class: variantSlots.content({ class: props.class }),
           "data-part": "content",
           "data-scope": "file",
         },
         slots,
       );
+    };
   },
 });
 
@@ -107,17 +106,20 @@ export const FileName = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = fileVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(fileNameVariants(), props.class),
+          class: variantSlots.name({ class: props.class }),
           "data-part": "name",
           "data-scope": "file",
         },
         slots,
       );
+    };
   },
 });
 
@@ -128,17 +130,20 @@ export const FileMeta = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = fileVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(fileMetaVariants(), props.class),
+          class: variantSlots.meta({ class: props.class }),
           "data-part": "meta",
           "data-scope": "file",
         },
         slots,
       );
+    };
   },
 });
 
@@ -150,17 +155,20 @@ export const FileSize = defineComponent({
     value: { required: true, type: Number },
   },
   setup(props, { attrs }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = fileVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(fileSizeVariants(), props.class),
+          class: variantSlots.size({ class: props.class }),
           "data-part": "size",
           "data-scope": "file",
         },
         () => h(Format.Byte, { value: props.value }),
       );
+    };
   },
 });
 
@@ -171,17 +179,20 @@ export const FileActions = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = fileVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(fileActionsVariants(), props.class),
+          class: variantSlots.actions({ class: props.class }),
           "data-part": "actions",
           "data-scope": "file",
         },
         slots,
       );
+    };
   },
 });
 

@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
 import { Timer as TimerPrimitive, useTimerContext as useTimer } from "@ark-ui/vue/timer";
-import { timerVariants } from "@pisagor/styles/ui/timer";
+import { timerItemGroupVariants, timerVariants } from "@pisagor/styles/ui/timer";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
@@ -91,13 +91,13 @@ export const TimerItemGroup = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timerVariants();
+      const variantSlots = timerItemGroupVariants();
 
       return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: variantSlots.itemGroup({ class: props.class }),
+          class: variantSlots.base({ class: props.class }),
           "data-orientation": props.orientation,
           "data-part": "item-group",
           "data-scope": "timer",
@@ -116,7 +116,7 @@ export const TimerItem = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timerVariants();
+      const variantSlots = timerItemGroupVariants();
 
       return h(
         TimerPrimitive.Item as ArkPart,
@@ -138,13 +138,13 @@ export const TimerItemLabel = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timerVariants();
+      const variantSlots = timerItemGroupVariants();
 
       return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: variantSlots.itemLabel({ class: props.class }),
+          class: variantSlots.label({ class: props.class }),
           "data-part": "item-label",
           "data-scope": "timer",
         },

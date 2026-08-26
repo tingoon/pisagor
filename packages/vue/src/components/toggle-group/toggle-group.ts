@@ -1,5 +1,5 @@
 import { ToggleGroup as ToggleGroupPrimitive } from "@ark-ui/vue/toggle-group";
-import { toggleGroupInlineVariants, toggleGroupVariants } from "@pisagor/styles/ui/toggle-group";
+import { type ToggleGroupVariants, toggleGroupVariants } from "@pisagor/styles/ui/toggle-group";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { createContext } from "../../utils/create-context";
@@ -9,8 +9,9 @@ export type ToggleGroupVariant = "ghost" | "outline";
 export type ToggleGroupSize = "lg" | "md" | "sm";
 
 interface ToggleGroupContextValue {
-  spacing: number;
   size: ToggleGroupSize;
+  slots: ToggleGroupVariants;
+  spacing: number;
   variant: ToggleGroupVariant;
 }
 
@@ -69,8 +70,11 @@ export const ToggleGroupRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
+      const variantSlots = toggleGroupVariants({ orientation: props.orientation });
+
       ToggleGroupContextProvider({
         size: props.size,
+        slots: variantSlots,
         spacing: props.spacing,
         variant: props.variant,
       });
@@ -79,7 +83,7 @@ export const ToggleGroupRoot = defineComponent({
         ToggleGroupPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(toggleGroupVariants({ orientation: props.orientation }), props.class),
+          class: cn(variantSlots.base(), props.class),
           defaultValue: props.defaultValue,
           modelValue: props.value,
           multiple: props.multiple,
@@ -129,7 +133,7 @@ export const ToggleGroupItem = defineComponent({
             Toggle as ArkPart,
             {
               ...attrs,
-              class: cn(toggleGroupInlineVariants(), props.class),
+              class: cn(ctx?.slots.item() ?? toggleGroupVariants().item(), props.class),
               "data-spacing": ctx?.spacing ?? 0,
               "data-variant": ctx?.variant ?? "ghost",
               disabled: props.disabled,

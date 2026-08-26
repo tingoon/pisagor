@@ -1,6 +1,5 @@
 import { HoverCard as HoverCardPrimitive } from "@ark-ui/vue/hover-card";
-import { hoverCardContentVariants, hoverCardInlineVariants } from "@pisagor/styles/ui/hover-card";
-import { cn } from "@pisagor/utils";
+import { hoverCardVariants } from "@pisagor/styles/ui/hover-card";
 import { type CSSProperties, defineComponent, h, type PropType, Teleport } from "vue";
 
 // #region Types
@@ -72,8 +71,10 @@ export const HoverCardArrow = defineComponent({
     style: { default: undefined, type: Object as PropType<CSSProperties> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = hoverCardVariants();
+
+      return h(
         HoverCardPrimitive.Arrow as ArkPart,
         {
           ...attrs,
@@ -84,10 +85,11 @@ export const HoverCardArrow = defineComponent({
           } as CSSProperties,
         },
         () => [
-          h(HoverCardPrimitive.ArrowTip as ArkPart, { class: hoverCardInlineVariants() }),
+          h(HoverCardPrimitive.ArrowTip as ArkPart, { class: variantSlots.arrowTip() }),
           slots.default?.(),
         ],
       );
+    };
   },
 });
 
@@ -98,19 +100,22 @@ export const HoverCardContent = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      hoverCardTeleport(
+    return () => {
+      const variantSlots = hoverCardVariants();
+
+      return hoverCardTeleport(
         h(HoverCardPrimitive.Positioner as ArkPart, {}, () =>
           h(
             HoverCardPrimitive.Content as ArkPart,
             {
               ...attrs,
-              class: cn(hoverCardContentVariants(), props.class),
+              class: variantSlots.content({ class: props.class }),
             },
             () => [slots.default?.(), h(HoverCardArrow)],
           ),
         ),
       );
+    };
   },
 });
 // #endregion

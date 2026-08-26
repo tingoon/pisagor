@@ -7,9 +7,7 @@ import {
   PhTextStrikethrough,
 } from "@phosphor-icons/vue";
 import {
-  richTextEditorContentVariants,
-  richTextEditorInlineVariants,
-  richTextEditorToolbarVariants,
+  type RichTextEditorVariants,
   richTextEditorVariants,
 } from "@pisagor/styles/ui/rich-text-editor";
 import { cn } from "@pisagor/utils";
@@ -32,6 +30,7 @@ type ArkPart = Parameters<typeof h>[0];
 // #region Types
 interface RichTextEditorContextValue {
   editor: Editor | null;
+  slots: RichTextEditorVariants;
 }
 
 export interface RichTextEditorRootProps {
@@ -105,6 +104,8 @@ export const RichTextEditorRoot = defineComponent({
   name: "RichTextEditorRoot",
   props: richTextEditorRootProps,
   setup(props, { attrs, slots }) {
+    const recipeSlots = richTextEditorVariants();
+
     const editor = useEditor({
       content: props.value ?? props.defaultValue ?? "<p></p>",
       editable: !(props.readOnly || props.disabled),
@@ -160,7 +161,10 @@ export const RichTextEditorRoot = defineComponent({
       });
     });
 
-    const contextValue = shallowReactive<RichTextEditorContextValue>({ editor: null });
+    const contextValue = shallowReactive<RichTextEditorContextValue>({
+      editor: null,
+      slots: recipeSlots,
+    });
 
     watchEffect(() => {
       contextValue.editor = editor.value ?? null;
@@ -185,9 +189,8 @@ export const RichTextEditorRoot = defineComponent({
           "aria-readonly": props.readOnly || undefined,
           class: cn(
             formControlShellVariants({ ...shellArgs }),
-            richTextEditorVariants(),
+            recipeSlots.base({ class: props.class }),
             props.disabled && "pointer-events-none opacity-64",
-            props.class,
           ),
           "data-disabled": props.disabled ? "true" : undefined,
           "data-invalid": props.invalid ? "true" : undefined,
@@ -226,8 +229,9 @@ export const RichTextEditorToolbar = defineComponent({
 
     return () => {
       const editor = context?.editor;
+      const recipeSlots = context?.slots;
 
-      if (!editor) {
+      if (!editor || !recipeSlots) {
         return null;
       }
 
@@ -243,13 +247,13 @@ export const RichTextEditorToolbar = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(richTextEditorToolbarVariants(), props.class),
+          class: recipeSlots.toolbar({ class: props.class }),
           "data-part": "toolbar",
           "data-scope": "rich-text-editor",
         },
         () =>
           slots.default?.() ?? [
-            h("div", { class: richTextEditorInlineVariants() }, () => [
+            h("div", { class: recipeSlots.inline() }, () => [
               h(
                 Toggle as ArkPart,
                 {
@@ -324,17 +328,20 @@ export const RichTextEditorContent = defineComponent({
   setup(props, { attrs }) {
     const context = useRichTextEditorContext();
 
-    return () =>
-      h(
+    return () => {
+      const recipeSlots = context?.slots;
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(richTextEditorContentVariants(), props.class),
+          class: recipeSlots?.content({ class: props.class }),
           "data-part": "content",
           "data-scope": "rich-text-editor",
         },
         () => h(EditorContent as ArkPart, { editor: context?.editor }),
       );
+    };
   },
 });
 

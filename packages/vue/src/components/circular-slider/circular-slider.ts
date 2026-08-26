@@ -23,6 +23,7 @@ interface CircularSliderContextValue {
   ringCircumference: number;
   ringRadius: number;
   size: number;
+  slots: ReturnType<typeof circularSliderVariants>;
   thickness: number;
   thumbSize: number;
 }
@@ -76,10 +77,12 @@ export const CircularSliderRoot = defineComponent({
     value: { default: undefined, type: Number },
   },
   setup(props, { attrs, slots }) {
+    const variantSlots = circularSliderVariants();
     const context = reactive<CircularSliderContextValue>({
       ringCircumference: 2 * Math.PI * (props.size / 2 - props.thickness / 2),
       ringRadius: props.size / 2 - props.thickness / 2,
       size: props.size,
+      slots: variantSlots,
       thickness: props.thickness,
       thumbSize: Math.max(props.thickness + 8, 16),
     });
@@ -99,7 +102,7 @@ export const CircularSliderRoot = defineComponent({
         AngleSliderPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: circularSliderVariants().base({ class: props.class }),
+          class: context.slots.base({ class: props.class }),
           defaultValue: props.defaultValue,
           disabled: props.disabled,
           modelValue: props.value,
@@ -139,7 +142,12 @@ export const CircularSliderControl = defineComponent({
     step: { default: 1, type: Number },
   },
   setup(props, { attrs }) {
+    const contextRef = useCircularSliderContext();
+
     return () => {
+      const context = toValue(contextRef);
+      if (!context) return null;
+
       const markerValues =
         Array.isArray(props.markers) && props.markers.length > 0
           ? props.markers
@@ -153,7 +161,7 @@ export const CircularSliderControl = defineComponent({
         AngleSliderPrimitive.Control as ArkPart,
         {
           ...attrs,
-          class: circularSliderVariants().control({ class: props.class }),
+          class: context.slots.control({ class: props.class }),
         },
         () => [
           h(CircularSliderProgressRing),
@@ -178,8 +186,7 @@ const CircularSliderProgressRing = defineComponent({
     return () => {
       const context = toValue(contextRef);
       if (!context) return null;
-      const { size, thickness, ringRadius, ringCircumference } = context;
-      const slots = circularSliderVariants();
+      const { size, thickness, ringRadius, ringCircumference, slots } = context;
 
       const percent = unref(api).value / 360;
       const dashLength = percent * ringCircumference;
@@ -231,8 +238,7 @@ export const CircularSliderThumb = defineComponent({
     return () => {
       const context = toValue(contextRef);
       if (!context) return null;
-      const { thumbSize, ringRadius } = context;
-      const slots = circularSliderVariants();
+      const { thumbSize, ringRadius, slots } = context;
       const halfThumb = thumbSize / 2;
 
       return h(
@@ -267,19 +273,23 @@ export const CircularSliderValueText = defineComponent({
   },
   setup(props, { attrs }) {
     const api = useAngleSliderContext();
-    const slots = circularSliderVariants();
+    const contextRef = useCircularSliderContext();
 
-    return () =>
-      h(FieldLabel as ArkPart, { asChild: true }, () =>
+    return () => {
+      const context = toValue(contextRef);
+      if (!context) return null;
+
+      return h(FieldLabel as ArkPart, { asChild: true }, () =>
         h(
           AngleSliderPrimitive.ValueText as ArkPart,
           {
             ...attrs,
-            class: slots.value({ class: props.class }),
+            class: context.slots.value({ class: props.class }),
           },
           () => [props.prefix, " ", unref(api).value, " ", props.suffix],
         ),
       );
+    };
   },
 });
 
@@ -290,15 +300,21 @@ export const CircularSliderMarkerGroup = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    const contextRef = useCircularSliderContext();
+
+    return () => {
+      const context = toValue(contextRef);
+      if (!context) return null;
+
+      return h(
         AngleSliderPrimitive.MarkerGroup as ArkPart,
         {
           ...attrs,
-          class: circularSliderVariants().markerGroup({ class: props.class }),
+          class: context.slots.markerGroup({ class: props.class }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -315,8 +331,7 @@ export const CircularSliderMarker = defineComponent({
     return () => {
       const context = toValue(contextRef);
       if (!context) return null;
-      const { size, thickness } = context;
-      const slots = circularSliderVariants();
+      const { size, thickness, slots } = context;
 
       const ringRadius = size / 2 - thickness / 2;
       const markerHeight = Math.max(8, Math.min(thickness * 1.1, 16));

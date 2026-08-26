@@ -1,19 +1,7 @@
 import { ark } from "@ark-ui/vue/factory";
 import { Steps as StepsPrimitive } from "@ark-ui/vue/steps";
 import { PhCheck } from "@phosphor-icons/vue";
-import {
-  stepsCompletedContentVariants,
-  stepsContentVariants,
-  stepsDescriptionVariants,
-  stepsIndicatorVariants,
-  stepsItemVariants,
-  stepsListVariants,
-  stepsSeparatorVariants,
-  stepsTitleVariants,
-  stepsTriggerVariants,
-  stepsVariants,
-} from "@pisagor/styles/ui/steps";
-import { cn } from "@pisagor/utils";
+import { stepsItemVariants, stepsVariants } from "@pisagor/styles/ui/steps";
 import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -26,15 +14,18 @@ export const StepsRoot = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = stepsVariants();
+
+      return h(
         StepsPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(stepsVariants(), props.class),
+          class: variantSlots.base({ class: props.class }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -45,15 +36,18 @@ export const StepsList = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = stepsVariants();
+
+      return h(
         StepsPrimitive.List as ArkPart,
         {
           ...attrs,
-          class: cn(stepsListVariants(), props.class),
+          class: variantSlots.list({ class: props.class }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -64,15 +58,18 @@ export const StepsItem = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = stepsItemVariants();
+
+      return h(
         StepsPrimitive.Item as ArkPart,
         {
           ...attrs,
-          class: cn(stepsItemVariants(), props.class),
+          class: variantSlots.base({ class: props.class }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -83,15 +80,18 @@ export const StepsTrigger = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = stepsItemVariants();
+
+      return h(
         StepsPrimitive.Trigger as ArkPart,
         {
           ...attrs,
-          class: cn(stepsTriggerVariants(), props.class),
+          class: variantSlots.trigger({ class: props.class }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -103,17 +103,17 @@ export const StepsIndicator = defineComponent({
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const slots = stepsIndicatorVariants();
+      const variantSlots = stepsItemVariants();
 
       return h(
         StepsPrimitive.Indicator as ArkPart,
         {
           ...attrs,
-          class: slots.base({ class: props.class }),
+          class: variantSlots.indicator({ class: props.class }),
         },
         () => [
-          h("span", { class: slots.label() }, children.default?.()),
-          h(PhCheck, { class: slots.check() }),
+          h("span", { class: variantSlots.label() }, children.default?.()),
+          h(PhCheck, { class: variantSlots.check() }),
         ],
       );
     };
@@ -127,15 +127,18 @@ export const StepsSeparator = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = stepsItemVariants();
+
+      return h(
         StepsPrimitive.Separator as ArkPart,
         {
           ...attrs,
-          class: cn(stepsSeparatorVariants(), props.class),
+          class: variantSlots.separator({ class: props.class }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -146,17 +149,20 @@ export const StepsTitle = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = stepsItemVariants();
+
+      return h(
         ark.span as ArkPart,
         {
           ...attrs,
-          class: cn(stepsTitleVariants(), props.class),
+          class: variantSlots.title({ class: props.class }),
           "data-part": "title",
           "data-scope": "steps",
         },
         slots,
       );
+    };
   },
 });
 
@@ -167,17 +173,20 @@ export const StepsDescription = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = stepsItemVariants();
+
+      return h(
         ark.span as ArkPart,
         {
           ...attrs,
-          class: cn(stepsDescriptionVariants(), props.class),
+          class: variantSlots.description({ class: props.class }),
           "data-part": "description",
           "data-scope": "steps",
         },
         slots,
       );
+    };
   },
 });
 
@@ -188,15 +197,18 @@ export const StepsContent = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = stepsVariants();
+
+      return h(
         StepsPrimitive.Content as ArkPart,
         {
           ...attrs,
-          class: cn(stepsContentVariants(), props.class),
+          class: variantSlots.content({ class: props.class }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -207,15 +219,18 @@ export const StepsCompletedContent = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = stepsVariants();
+
+      return h(
         StepsPrimitive.CompletedContent as ArkPart,
         {
           ...attrs,
-          class: cn(stepsCompletedContentVariants(), props.class),
+          class: variantSlots.completedContent({ class: props.class }),
         },
         slots,
       );
+    };
   },
 });
 

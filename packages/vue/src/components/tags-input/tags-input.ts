@@ -4,7 +4,7 @@ import {
   useTagsInputContext,
 } from "@ark-ui/vue/tags-input";
 import { PhX } from "@phosphor-icons/vue";
-import { tagsInputVariants } from "@pisagor/styles/ui/tags-input";
+import { tagsInputItemVariants, tagsInputVariants } from "@pisagor/styles/ui/tags-input";
 import { cn } from "@pisagor/utils";
 
 type ClassValue = Parameters<typeof cn>[0];
@@ -77,7 +77,7 @@ export const TagsInputItemDeleteTrigger = defineComponent({
   },
   setup(props, { attrs, slots: vueSlots }) {
     return () => {
-      const slots = tagsInputVariants();
+      const slots = tagsInputItemVariants();
 
       return h(
         TagsInputPrimitive.ItemDeleteTrigger as ArkPart,
@@ -91,7 +91,7 @@ export const TagsInputItemDeleteTrigger = defineComponent({
             InputGroup.Button as ArkPart,
             {
               "aria-label": props["aria-label"],
-              class: slots.itemDelete({
+              class: slots.delete({
                 class: cn(props.class, (attrs as { class?: ClassValue }).class),
               }),
               size: "icon-xs",
@@ -113,13 +113,13 @@ export const TagsInputItemText = defineComponent({
   },
   setup(props, { attrs, slots: vueSlots }) {
     return () => {
-      const slots = tagsInputVariants();
+      const slots = tagsInputItemVariants();
 
       return h(
         TagsInputPrimitive.ItemText as ArkPart,
         {
           ...(attrs as object),
-          class: slots.itemText({
+          class: slots.text({
             class: cn(props.class, (attrs as { class?: ClassValue }).class),
           }),
         },
@@ -137,13 +137,13 @@ export const TagsInputItemPreview = defineComponent({
   },
   setup(props, { attrs, slots: vueSlots }) {
     return () => {
-      const slots = tagsInputVariants();
+      const slots = tagsInputItemVariants();
 
       return h(
         TagsInputPrimitive.ItemPreview as ArkPart,
         {
           ...(attrs as object),
-          class: slots.itemPreview({
+          class: slots.preview({
             class: cn(props.class, (attrs as { class?: ClassValue }).class),
           }),
         },
@@ -158,7 +158,7 @@ export const TagsInputItemInput = defineComponent({
   name: "TagsInput.ItemInput",
   setup(_, { attrs }) {
     return () => {
-      const slots = tagsInputVariants();
+      const slots = tagsInputItemVariants();
 
       return h(
         TagsInputPrimitive.ItemInput as ArkPart,
@@ -168,7 +168,7 @@ export const TagsInputItemInput = defineComponent({
         },
         () =>
           h(InputGroup.Input as ArkPart, {
-            class: slots.itemInput(),
+            class: slots.input(),
           }),
       );
     };
@@ -187,13 +187,13 @@ export const TagsInputItem = defineComponent({
   },
   setup(props, { attrs, slots: vueSlots }) {
     return () => {
-      const slots = tagsInputVariants();
+      const slots = tagsInputItemVariants();
 
       return h(
         TagsInputPrimitive.Item as ArkPart,
         {
           ...(attrs as object),
-          class: slots.item({
+          class: slots.base({
             class: cn(props.class, (attrs as { class?: ClassValue }).class),
           }),
           disabled: props.disabled,

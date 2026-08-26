@@ -1,11 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import {
-  type ButtonGroupVariantProps,
-  buttonGroupSeparatorVariants,
-  buttonGroupTextVariants,
-  buttonGroupVariants,
-} from "@pisagor/styles/ui/button-group";
-import { cn } from "@pisagor/utils";
+import { type ButtonGroupVariantProps, buttonGroupVariants } from "@pisagor/styles/ui/button-group";
 import { defineComponent, h, type PropType } from "vue";
 import { Separator, type SeparatorProps } from "../separator";
 
@@ -30,18 +24,21 @@ export const ButtonGroupRoot = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = buttonGroupVariants({ orientation: props.orientation });
+
+      return h(
         ark.fieldset as ArkPart,
         {
           ...attrs,
-          class: cn(buttonGroupVariants({ orientation: props.orientation }), props.class),
+          class: variantSlots.base({ class: props.class }),
           "data-orientation": props.orientation,
           "data-part": "root",
           "data-scope": "button-group",
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -52,17 +49,20 @@ export const ButtonGroupText = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = buttonGroupVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(buttonGroupTextVariants(), props.class),
+          class: variantSlots.text({ class: props.class }),
           "data-part": "text",
           "data-scope": "button-group",
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -74,14 +74,17 @@ export const ButtonGroupSeparator = defineComponent({
     orientation: { default: "vertical", type: String as PropType<SeparatorProps["orientation"]> },
   },
   setup(props, { attrs }) {
-    return () =>
-      h(Separator as ArkPart, {
+    return () => {
+      const variantSlots = buttonGroupVariants();
+
+      return h(Separator as ArkPart, {
         ...attrs,
-        class: cn(buttonGroupSeparatorVariants(), props.class),
+        class: variantSlots.separator({ class: props.class }),
         dataPart: "separator",
         dataScope: "button-group",
         orientation: props.orientation,
       });
+    };
   },
 });
 // #endregion

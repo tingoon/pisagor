@@ -1,10 +1,5 @@
 import { Tabs as TabsPrimitive } from "@ark-ui/vue/tabs";
-import {
-  tabsContentVariants,
-  tabsListVariants,
-  tabsTriggerVariants,
-  tabsVariants,
-} from "@pisagor/styles/ui/tabs";
+import { tabsVariants } from "@pisagor/styles/ui/tabs";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
@@ -29,17 +24,20 @@ export const TabsRoot = defineComponent({
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = tabsVariants();
+
+      return h(
         TabsPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(tabsVariants(), props.class, attrs.class),
+          class: variantSlots.base({ class: cn(props.class, attrs.class) }),
           lazyMount: props.lazyMount,
           unmountOnExit: props.unmountOnExit,
         },
         slots,
       );
+    };
   },
 });
 
@@ -52,18 +50,18 @@ export const TabsList = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const { indicator, list } = tabsListVariants({ variant: props.variant });
+      const variantSlots = tabsVariants();
 
       return h(
         TabsPrimitive.List as ArkPart,
         {
           ...attrs,
-          class: cn(list(), props.class, attrs.class),
+          class: variantSlots.list({ class: cn(props.class, attrs.class), variant: props.variant }),
         },
         () => [
           slots.default?.(),
           h(TabsPrimitive.Indicator as ArkPart, {
-            class: indicator(),
+            class: variantSlots.indicator({ variant: props.variant }),
           }),
         ],
       );
@@ -78,15 +76,18 @@ export const TabsTrigger = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = tabsVariants();
+
+      return h(
         TabsPrimitive.Trigger as ArkPart,
         {
           ...attrs,
-          class: cn(tabsTriggerVariants(), props.class, attrs.class),
+          class: variantSlots.trigger({ class: cn(props.class, attrs.class) }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -97,15 +98,18 @@ export const TabsContent = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = tabsVariants();
+
+      return h(
         TabsPrimitive.Content as ArkPart,
         {
           ...attrs,
-          class: cn(tabsContentVariants(), props.class, attrs.class),
+          class: variantSlots.content({ class: cn(props.class, attrs.class) }),
         },
         slots,
       );
+    };
   },
 });
 // #endregion

@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { skipNavContentVariants, skipNavLinkVariants } from "@pisagor/styles/ui/skip-nav";
+import { skipNavVariants } from "@pisagor/styles/ui/skip-nav";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 
@@ -44,12 +44,14 @@ export const SkipNavLink = defineComponent({
     id: { default: SKIP_NAV_ID, type: String },
   },
   setup(props, { attrs, slots }) {
+    const variantSlots = skipNavVariants();
+
     return () =>
       h(
         ark.a as ArkPart,
         {
           ...attrs,
-          class: cn(skipNavLinkVariants(), props.class, attrs.class),
+          class: cn(variantSlots.link(), props.class, attrs.class),
           "data-part": "link",
           "data-scope": "skip-nav",
           href: `#${props.id}`,
@@ -67,12 +69,14 @@ export const SkipNavContent = defineComponent({
     id: { default: SKIP_NAV_ID, type: String },
   },
   setup(props, { attrs, slots }) {
+    const variantSlots = skipNavVariants();
+
     return () =>
       h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(skipNavContentVariants(), props.class, attrs.class),
+          class: cn(variantSlots.content(), props.class, attrs.class),
           "data-part": "content",
           "data-scope": "skip-nav",
           id: props.id,

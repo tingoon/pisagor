@@ -1,11 +1,6 @@
 import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/vue/password-input";
 import { PhEye, PhEyeSlash, PhX } from "@phosphor-icons/vue";
-import {
-  passwordInputInline2Variants,
-  passwordInputInlineVariants,
-  passwordInputVariants,
-} from "@pisagor/styles/ui/password-input";
-import { cn } from "@pisagor/utils";
+import { passwordInputVariants } from "@pisagor/styles/ui/password-input";
 import { defineComponent, h, type PropType } from "vue";
 import { type ClearableChangeEvent, useClearableInput } from "../../hooks/use-clearable-input";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
@@ -87,11 +82,12 @@ export const PasswordInput = defineComponent({
     return () => {
       const { onClick: onClearClick, ...restClearButtonProps } = props.clearButtonProps ?? {};
       const { fallback, ...restIndicatorProps } = props.indicatorProps ?? {};
+      const variantSlots = passwordInputVariants();
 
       return h(
         PasswordInputPrimitive.Root as ArkPart,
         {
-          class: cn(passwordInputVariants(), props.class),
+          class: variantSlots.base({ class: props.class }),
           "data-size": props.size,
           defaultVisible: props.defaultVisible,
           invalid: props.invalid,
@@ -103,7 +99,7 @@ export const PasswordInput = defineComponent({
             h(
               InputGroup as ArkPart,
               {
-                class: cn(passwordInputInlineVariants()),
+                class: variantSlots.control(),
                 "data-clearable": props.clearable || undefined,
                 size: props.size,
                 variant: props.variant,
@@ -127,7 +123,7 @@ export const PasswordInput = defineComponent({
                 canClear.value
                   ? h(
                       InputGroup.Addon as ArkPart,
-                      { align: "inline-end", class: passwordInputInline2Variants() },
+                      { align: "inline-end", class: variantSlots.clearAddon() },
                       () =>
                         h(
                           InputGroup.Button as ArkPart,

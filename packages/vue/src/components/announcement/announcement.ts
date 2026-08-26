@@ -1,6 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { announcementTitleVariants, announcementVariants } from "@pisagor/styles/ui/announcement";
-import { cn } from "@pisagor/utils";
+import { announcementVariants } from "@pisagor/styles/ui/announcement";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
 // #region Types
@@ -32,18 +31,21 @@ export const AnnouncementRoot = defineComponent({
     role: { default: "status", type: String as PropType<AnnouncementProps["role"]> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = announcementVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(announcementVariants(), props.class),
+          class: variantSlots.base({ class: props.class }),
           "data-part": "root",
           "data-scope": "announcement",
           role: props.role,
         },
         slots,
       );
+    };
   },
 });
 
@@ -54,17 +56,20 @@ export const AnnouncementTitle = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = announcementVariants();
+
+      return h(
         ark.span as ArkPart,
         {
           ...attrs,
-          class: cn(announcementTitleVariants(), props.class),
+          class: variantSlots.title({ class: props.class }),
           "data-part": "title",
           "data-scope": "announcement",
         },
         slots,
       );
+    };
   },
 });
 

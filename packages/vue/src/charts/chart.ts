@@ -1,18 +1,4 @@
-import {
-  chartInline2Variants,
-  chartInline3Variants,
-  chartInline4Variants,
-  chartInline5Variants,
-  chartInline6Variants,
-  chartInline7Variants,
-  chartInline8Variants,
-  chartInline9Variants,
-  chartInline10Variants,
-  chartInline11Variants,
-  chartInline12Variants,
-  chartInline13Variants,
-  chartVariants,
-} from "@pisagor/styles/ui/chart";
+import { type ChartVariants, chartVariants } from "@pisagor/styles/ui/chart";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { createContext } from "../utils/create-context";
@@ -64,6 +50,7 @@ export interface ChartTooltipContentProps {
 // #region Context
 interface ChartContextValue {
   config: ChartConfig;
+  slots: ChartVariants;
 }
 
 const [provideChartContext, useChartContext] = createContext<ChartContextValue>({
@@ -167,14 +154,15 @@ export const ChartContainer = defineComponent({
   },
   setup(props, { attrs, slots }) {
     const uniqueId = computed(() => props.id ?? `chart-${Math.random().toString(36).slice(2)}`);
-    provideChartContext(computed(() => ({ config: props.config })));
+    const variantSlots = chartVariants();
+    provideChartContext(computed(() => ({ config: props.config, slots: variantSlots })));
 
     return () =>
       h(
         "div" as ArkPart,
         {
           ...attrs,
-          class: cn(chartVariants(), props.class),
+          class: cn(variantSlots.base(), props.class),
           "data-chart": uniqueId.value,
           "data-part": "root",
           "data-scope": "chart",
@@ -220,7 +208,7 @@ export const ChartTooltipContent = defineComponent({
     return () => {
       const payload = props.payload ?? [];
 
-      const { config } = useChart();
+      const { config, slots: variantSlots } = useChart();
 
       if (!(props.active && payload.length)) {
         return null;
@@ -232,19 +220,19 @@ export const ChartTooltipContent = defineComponent({
 
       const nestLabel = payload.length === 1 && props.indicator !== "dot";
 
-      return h("div" as ArkPart, { class: cn(chartInline3Variants(), props.className) }, () => [
+      return h("div" as ArkPart, { class: cn(variantSlots.tooltip(), props.className) }, () => [
         nestLabel
           ? null
           : tooltipLabelValue != null
             ? h(
                 "div",
-                { class: cn(chartInline2Variants(), props.labelClassName) },
+                { class: cn(variantSlots.label(), props.labelClassName) },
                 () => tooltipLabelValue,
               )
             : null,
         h(
           "div" as ArkPart,
-          { class: chartInline9Variants() },
+          { class: variantSlots.tooltipStack() },
           payload.map((entry, index) => {
             const item = entry as ChartPayloadEntry;
             const itemKey = (
@@ -269,27 +257,31 @@ export const ChartTooltipContent = defineComponent({
 
             return h(
               "div" as ArkPart,
-              { class: chartInline4Variants(), key: itemKey + String(index) },
+              { class: variantSlots.tooltipItem(), key: itemKey + String(index) },
               () => [
                 props.hideIndicator
                   ? null
                   : h("div" as ArkPart, {
-                      class: cn(chartInline5Variants()),
+                      class: cn(variantSlots.indicator()),
                       style: {
                         "--color-bg": indicatorColor ?? "",
                         "--color-border": indicatorColor ?? "",
                       },
                     }),
-                h("div" as ArkPart, { class: chartInline6Variants() }, () =>
+                h("div" as ArkPart, { class: variantSlots.tooltipRow() }, () =>
                   [
-                    h("div" as ArkPart, { class: chartInline10Variants() }, () =>
+                    h("div" as ArkPart, { class: variantSlots.tooltipStack() }, () =>
                       [
                         nestLabel ? tooltipLabelValue : null,
-                        h("span" as ArkPart, { class: chartInline11Variants() }, () => itemLabel),
+                        h(
+                          "span" as ArkPart,
+                          { class: variantSlots.tooltipLabel() },
+                          () => itemLabel,
+                        ),
                       ].filter(Boolean),
                     ),
                     itemValue != null
-                      ? h("span" as ArkPart, { class: chartInline12Variants() }, () =>
+                      ? h("span" as ArkPart, { class: variantSlots.tooltipValue() }, () =>
                           String(itemValue),
                         )
                       : null,
@@ -321,7 +313,7 @@ export const ChartLegendContent = defineComponent({
   setup(props, { slots }) {
     return () => {
       const payload = props.payload ?? [];
-      const { config } = useChart();
+      const { config, slots: variantSlots } = useChart();
 
       if (!payload.length) {
         return null;
@@ -331,7 +323,7 @@ export const ChartLegendContent = defineComponent({
         "div" as ArkPart,
         {
           class: cn(
-            chartInline7Variants(),
+            variantSlots.legend(),
             props.verticalAlign === "top" ? "pb-3" : "pt-3",
             props.className,
           ),
@@ -353,11 +345,11 @@ export const ChartLegendContent = defineComponent({
                 (typeof item?.color === "string" ? item.color : undefined) ??
                 (typeof item?.payload?.color === "string" ? item.payload.color : undefined);
 
-              return h("div" as ArkPart, { class: chartInline8Variants(), key: itemKey }, () => [
+              return h("div" as ArkPart, { class: variantSlots.legendItem(), key: itemKey }, () => [
                 itemConfig?.icon && !props.hideIcon
                   ? h(itemConfig.icon, null)
                   : h("div" as ArkPart, {
-                      class: chartInline13Variants(),
+                      class: variantSlots.swatch(),
                       style: { backgroundColor: indicatorColor ?? "" },
                     }),
                 itemLabel,

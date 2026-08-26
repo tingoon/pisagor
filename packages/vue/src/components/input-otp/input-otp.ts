@@ -3,12 +3,7 @@ import {
   PinInput as PinInputPrimitive,
   type PinInputValueChangeDetails,
 } from "@ark-ui/vue/pin-input";
-import {
-  inputOtpControlVariants,
-  inputOtpInlineVariants,
-  inputOtpSeparatorVariants,
-  inputOtpVariants,
-} from "@pisagor/styles/ui/input-otp";
+import { inputOtpVariants } from "@pisagor/styles/ui/input-otp";
 import { cn } from "@pisagor/utils";
 
 type ClassValue = Parameters<typeof cn>[0];
@@ -59,14 +54,17 @@ export const InputOTPRoot = defineComponent({
     variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(FormControlVariantProvider as ArkPart, { value: props.variant }, () =>
+    return () => {
+      const variantSlots = inputOtpVariants();
+      const attrClass = (attrs as { class?: ClassValue }).class;
+
+      return h(FormControlVariantProvider as ArkPart, { value: props.variant }, () =>
         h(
           PinInputPrimitive.Root as ArkPart,
           {
             ...attrs,
             blurOnComplete: props.blurOnComplete,
-            class: cn(inputOtpVariants(), props.class, (attrs as { class?: ClassValue }).class),
+            class: variantSlots.base({ class: cn(props.class, attrClass) }),
             count: props.count,
             defaultValue: props.defaultValue,
             disabled: props.disabled,
@@ -83,11 +81,7 @@ export const InputOTPRoot = defineComponent({
             h(
               PinInputPrimitive.Control as ArkPart,
               {
-                class: cn(
-                  inputOtpControlVariants(),
-                  props.class,
-                  (attrs as { class?: ClassValue }).class,
-                ),
+                class: variantSlots.control({ class: cn(props.class, attrClass) }),
               },
               () => slots.default?.(),
             ),
@@ -95,6 +89,7 @@ export const InputOTPRoot = defineComponent({
           ],
         ),
       );
+    };
   },
 });
 
@@ -106,8 +101,10 @@ export const InputOTPSlot = defineComponent({
     variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
   },
   setup(props, { attrs }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = inputOtpVariants();
+
+      return h(
         PinInputPrimitive.Input as ArkPart,
         {
           ...(attrs as object),
@@ -116,14 +113,13 @@ export const InputOTPSlot = defineComponent({
         () =>
           h(Input as ArkPart, {
             ...(attrs as object),
-            class: cn(
-              inputOtpInlineVariants(),
-              props.class,
-              (attrs as { class?: ClassValue }).class,
-            ),
+            class: variantSlots.input({
+              class: cn(props.class, (attrs as { class?: ClassValue }).class),
+            }),
             variant: props.variant,
           }),
       );
+    };
   },
 });
 
@@ -134,16 +130,17 @@ export const InputOTPSeparator = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
   },
   setup(props, { attrs }) {
-    return () =>
-      h(ark.hr as ArkPart, {
+    return () => {
+      const variantSlots = inputOtpVariants();
+
+      return h(ark.hr as ArkPart, {
         ...attrs,
-        class: cn(
-          inputOtpSeparatorVariants(),
-          props.class,
-          (attrs as { class?: ClassValue }).class,
-        ),
+        class: variantSlots.separator({
+          class: cn(props.class, (attrs as { class?: ClassValue }).class),
+        }),
         "data-part": "separator",
         "data-scope": "input-otp",
       });
+    };
   },
 });

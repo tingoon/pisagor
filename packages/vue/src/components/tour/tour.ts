@@ -6,7 +6,7 @@ import {
   useTour,
 } from "@ark-ui/vue/tour";
 import { PhCaretLeft, PhCaretRight, PhX } from "@phosphor-icons/vue";
-import { dialogBackdropVariants } from "@pisagor/styles/ui/dialog";
+import { dialogVariants } from "@pisagor/styles/ui/dialog";
 import { type TourVariants, tourVariants } from "@pisagor/styles/ui/tour";
 import { cn } from "@pisagor/utils";
 import {
@@ -189,7 +189,7 @@ export const TourBackdrop = defineComponent({
 
       return h(TourPrimitive.Backdrop as ArkPart, {
         ...attrs,
-        class: cn(dialogBackdropVariants(), ctx.slots.backdrop(), props.class),
+        class: cn(dialogVariants().backdrop(), ctx.slots.backdrop(), props.class),
       });
     };
   },

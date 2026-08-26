@@ -1,6 +1,9 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type DataListSlots, dataListVariants } from "@pisagor/styles/ui/data-list";
-import { cn } from "@pisagor/utils";
+import {
+  type DataListItemSlots,
+  dataListItemVariants,
+  dataListVariants,
+} from "@pisagor/styles/ui/data-list";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 
@@ -10,7 +13,7 @@ interface DataListPresetItem {
   value: VNodeChild;
 }
 
-type DataListClassNames = VariantClassNames<DataListSlots>;
+type DataListClassNames = VariantClassNames<DataListItemSlots>;
 
 type ArkPart = Parameters<typeof h>[0];
 
@@ -21,8 +24,6 @@ interface DataListRootProps {
    * @defaultValue "horizontal"
    */
   orientation?: "horizontal" | "vertical";
-  /** Slot class names */
-  classNames?: DataListClassNames;
   class?: unknown;
 }
 
@@ -37,28 +38,24 @@ export const DataListRoot = defineComponent({
   name: "DataListRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<DataListClassNames> },
     orientation: {
       default: "horizontal",
       type: String as PropType<DataListRootProps["orientation"]>,
     },
   },
   setup(props, { attrs, slots }) {
-    return () => {
-      const slots_ = dataListVariants();
-
-      return h(
+    return () =>
+      h(
         ark.dl,
         {
           ...attrs,
-          class: slots_.base({ class: props.class }),
+          class: dataListVariants({ class: props.class }),
           "data-orientation": props.orientation,
           "data-part": "root",
           "data-scope": "data-list",
         },
         slots.default?.(),
       );
-    };
   },
 });
 
@@ -70,7 +67,7 @@ export const DataListItemLabel = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots_ = dataListVariants();
+      const slots_ = dataListItemVariants();
 
       return h(
         ark.dt,
@@ -94,7 +91,7 @@ export const DataListItemValue = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots_ = dataListVariants();
+      const slots_ = dataListItemVariants();
 
       return h(
         ark.dd,
@@ -123,7 +120,7 @@ export const DataListItem = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots_ = dataListVariants();
+      const slots_ = dataListItemVariants();
 
       const label = slots.default?.();
 
@@ -131,7 +128,7 @@ export const DataListItem = defineComponent({
         ark.div,
         {
           ...attrs,
-          class: slots_.item({ class: cn(props.class, props.classNames?.item) }),
+          class: slots_.base({ class: props.class }),
           "data-part": "item",
           "data-scope": "data-list",
         },
@@ -161,7 +158,6 @@ export const DataListShorthand = defineComponent({
   name: "DataListShorthand",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<DataListClassNames> },
     items: { default: undefined, type: Array as PropType<DataListPresetItem[]> },
     orientation: {
       default: "horizontal",
@@ -175,7 +171,6 @@ export const DataListShorthand = defineComponent({
         {
           ...attrs,
           class: props.class,
-          classNames: props.classNames,
           orientation: props.orientation,
         },
         () =>

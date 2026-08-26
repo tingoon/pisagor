@@ -1,11 +1,6 @@
 import { Accordion as AccordionPrimitive } from "@ark-ui/vue/accordion";
 import { PhCaretDown } from "@phosphor-icons/vue";
-import {
-  accordionItemContentVariants,
-  accordionItemTriggerVariants,
-  accordionItemVariants,
-} from "@pisagor/styles/accordion";
-import { cn } from "@pisagor/utils";
+import { accordionItemVariants } from "@pisagor/styles/accordion";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
 // #region Types
@@ -58,15 +53,18 @@ export const AccordionItem = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = accordionItemVariants();
+
+      return h(
         AccordionPrimitive.Item as ArkPart,
         {
           ...attrs,
-          class: cn(accordionItemVariants(), props.class),
+          class: variantSlots.base({ class: props.class }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -78,18 +76,18 @@ export const AccordionItemTrigger = defineComponent({
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const slots = accordionItemTriggerVariants();
+      const variantSlots = accordionItemVariants();
 
       return h(
         AccordionPrimitive.ItemTrigger as ArkPart,
         {
           ...attrs,
-          class: slots.base({ class: props.class }),
+          class: variantSlots.trigger({ class: props.class }),
         },
         () => [
           children.default?.(),
           h(AccordionPrimitive.ItemIndicator as ArkPart, {}, () =>
-            h(PhCaretDown, { class: slots.indicator() }),
+            h(PhCaretDown, { class: variantSlots.indicator() }),
           ),
         ],
       );
@@ -105,15 +103,15 @@ export const AccordionItemContent = defineComponent({
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const slots = accordionItemContentVariants();
+      const variantSlots = accordionItemVariants();
 
       return h(
         AccordionPrimitive.ItemContent as ArkPart,
         {
           ...attrs,
-          class: slots.base({ class: props.class }),
+          class: variantSlots.content({ class: props.class }),
         },
-        () => h("div", { class: slots.body() }, children.default?.()),
+        () => h("div", { class: variantSlots.body() }, children.default?.()),
       );
     };
   },

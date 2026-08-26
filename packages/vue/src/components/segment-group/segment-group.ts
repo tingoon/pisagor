@@ -1,10 +1,5 @@
 import { SegmentGroup as SegmentGroupPrimitive } from "@ark-ui/vue/segment-group";
-import {
-  segmentGroupIndicatorVariants,
-  segmentGroupItemTextVariants,
-  segmentGroupItemVariants,
-  segmentGroupVariants,
-} from "@pisagor/styles/ui/segment-group";
+import { segmentGroupVariants } from "@pisagor/styles/ui/segment-group";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
@@ -58,12 +53,14 @@ export const SegmentGroupRoot = defineComponent({
     variant: { default: "default", type: String as PropType<SegmentGroupVariant> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = segmentGroupVariants();
+
+      return h(
         SegmentGroupPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(segmentGroupVariants(), props.class),
+          class: variantSlots.base({ class: props.class }),
           "data-orientation": props.orientation,
           "data-variant": props.variant,
           defaultValue: props.defaultValue,
@@ -76,6 +73,7 @@ export const SegmentGroupRoot = defineComponent({
         },
         () => [h(SegmentGroupIndicator as ArkPart), slots.default?.()],
       );
+    };
   },
 });
 
@@ -91,12 +89,13 @@ export const SegmentGroupItem = defineComponent({
   setup(props, { attrs, slots }) {
     return () => {
       const content = slots.default?.() ?? props.text;
+      const variantSlots = segmentGroupVariants();
 
       return h(
         SegmentGroupPrimitive.Item as ArkPart,
         {
           ...attrs,
-          class: cn(segmentGroupItemVariants(), props.class, attrs.class),
+          class: variantSlots.item({ class: cn(props.class, attrs.class) }),
           disabled: props.disabled,
           value: props.value,
         },
@@ -119,15 +118,18 @@ export const SegmentGroupItemText = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = segmentGroupVariants();
+
+      return h(
         SegmentGroupPrimitive.ItemText as ArkPart,
         {
           ...attrs,
-          class: cn(segmentGroupItemTextVariants(), props.class, attrs.class),
+          class: variantSlots.itemText({ class: cn(props.class, attrs.class) }),
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -138,15 +140,18 @@ export const SegmentGroupIndicator = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = segmentGroupVariants();
+
+      return h(
         SegmentGroupPrimitive.Indicator as ArkPart,
         {
           ...attrs,
-          class: cn(segmentGroupIndicatorVariants(), props.class, attrs.class),
+          class: variantSlots.indicator({ class: cn(props.class, attrs.class) }),
         },
         slots.default?.(),
       );
+    };
   },
 });
 // #endregion

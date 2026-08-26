@@ -1,8 +1,7 @@
 import { ark } from "@ark-ui/vue/factory";
 import { PhDotsSixVertical } from "@phosphor-icons/vue";
 import {
-  sortableHandleVariants,
-  sortableItemContentVariants,
+  type SortableItemVariants,
   sortableItemVariants,
   sortableVariants,
 } from "@pisagor/styles/ui/sortable";
@@ -38,6 +37,7 @@ interface SortableContextValue {
 interface SortableItemContextValue {
   id: string;
   isDragging: boolean;
+  slots: SortableItemVariants;
 }
 
 export interface SortableRootProps {
@@ -271,9 +271,11 @@ export const SortableItem = defineComponent({
       return () => null;
     }
 
+    const itemSlots = sortableItemVariants();
     const itemContext = reactive<SortableItemContextValue>({
       id: props.value,
       isDragging: false,
+      slots: itemSlots,
     });
 
     provideSortableItemContext(itemContext);
@@ -287,7 +289,7 @@ export const SortableItem = defineComponent({
         {
           ...attrs,
           ...itemProps,
-          class: cn(sortableItemVariants(), props.class),
+          class: itemSlots.base({ class: cn(props.class, attrs.class) }),
           "data-part": "item",
           "data-scope": "sortable",
           role: "listitem",
@@ -329,12 +331,13 @@ export const SortableHandle = defineComponent({
           "aria-disabled": sortable.disabled || undefined,
           "aria-label":
             (attrs["aria-label"] as string | undefined) ?? props.ariaLabel ?? "Drag to reorder",
-          class: cn(
-            sortableHandleVariants(),
-            sortable.disabled && "pointer-events-none opacity-50",
-            props.class,
-            attrs.class,
-          ),
+          class: itemContext.slots.handle({
+            class: cn(
+              sortable.disabled && "pointer-events-none opacity-50",
+              props.class,
+              attrs.class,
+            ),
+          }),
           "data-part": "handle",
           "data-scope": "sortable",
           draggable: !sortable.disabled,
@@ -381,12 +384,18 @@ export const SortableItemContent = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
+    const itemContext = useSortableItemContext();
+
+    if (!itemContext) {
+      return () => null;
+    }
+
     return () =>
       h(
         ark.div as unknown as ArkPart,
         {
           ...attrs,
-          class: cn(sortableItemContentVariants(), props.class, attrs.class),
+          class: itemContext.slots.content({ class: cn(props.class, attrs.class) }),
           "data-part": "item-content",
           "data-scope": "sortable",
         },

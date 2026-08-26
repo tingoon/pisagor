@@ -6,14 +6,7 @@ import {
   type ImageCropperRotationChangeDetails,
   type ImageCropperZoomChangeDetails,
 } from "@ark-ui/vue/image-cropper";
-import {
-  imageCropperGridVariants,
-  imageCropperHandleVariants,
-  imageCropperImageVariants,
-  imageCropperSelectionVariants,
-  imageCropperVariants,
-  imageCropperViewportVariants,
-} from "@pisagor/styles/ui/image-cropper";
+import { imageCropperVariants } from "@pisagor/styles/ui/image-cropper";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 
@@ -134,7 +127,7 @@ export const ImageCropperRoot = defineComponent({
         {
           ...attrs,
           aspectRatio: props.aspectRatio,
-          class: cn(imageCropperVariants(), props.class),
+          class: cn(imageCropperVariants().base(), props.class),
           cropShape: props.cropShape,
           fixedCropArea: props.fixedCropArea,
           initialCrop: props.initialCrop,
@@ -155,7 +148,7 @@ export const ImageCropperRoot = defineComponent({
           h(
             ImageCropperPrimitive.Viewport as ArkPart,
             {
-              class: cn(imageCropperViewportVariants()),
+              class: cn(imageCropperVariants().viewport()),
             },
             () =>
               props.src
@@ -179,7 +172,7 @@ export const ImageCropperImage = defineComponent({
     return () =>
       h(ImageCropperPrimitive.Image as ArkPart, {
         ...attrs,
-        class: cn(imageCropperImageVariants(), props.class),
+        class: cn(imageCropperVariants().image(), props.class),
       });
   },
 });
@@ -196,7 +189,7 @@ export const ImageCropperGrid = defineComponent({
       h(ImageCropperPrimitive.Grid as ArkPart, {
         ...attrs,
         axis: props.axis,
-        class: cn(imageCropperGridVariants(), props.class),
+        class: cn(imageCropperVariants().grid(), props.class),
       });
   },
 });
@@ -210,16 +203,16 @@ export const ImageCropperHandle = defineComponent({
   },
   setup(props, { attrs }) {
     return () => {
-      const slots = imageCropperHandleVariants();
+      const slots = imageCropperVariants();
 
       return h(
         ImageCropperPrimitive.Handle as ArkPart,
         {
           ...attrs,
-          class: slots.base({ class: props.class }),
+          class: slots.handle({ class: props.class }),
           position: props.position,
         },
-        () => h("span", { "aria-hidden": true, class: slots.grip() }),
+        () => h("span", { "aria-hidden": true, class: slots.handleGrip() }),
       );
     };
   },
@@ -238,7 +231,7 @@ export const ImageCropperSelection = defineComponent({
         ImageCropperPrimitive.Selection as ArkPart,
         {
           ...attrs,
-          class: cn(imageCropperSelectionVariants(), props.class),
+          class: cn(imageCropperVariants().selection(), props.class),
         },
         () => [
           slots.default?.(),

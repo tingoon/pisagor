@@ -1,6 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { linkBoxOverlayVariants, linkBoxVariants } from "@pisagor/styles/ui/link-box";
-import { cn } from "@pisagor/utils";
+import { linkBoxVariants } from "@pisagor/styles/ui/link-box";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
@@ -19,17 +18,20 @@ export const LinkBoxRoot = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = linkBoxVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(linkBoxVariants(), props.class),
+          class: variantSlots.base({ class: props.class }),
           "data-part": "root",
           "data-scope": "link-box",
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -40,17 +42,20 @@ export const LinkOverlayLink = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = linkBoxVariants();
+
+      return h(
         ark.a as ArkPart,
         {
           ...attrs,
-          class: cn(linkBoxOverlayVariants(), props.class),
+          class: variantSlots.overlay({ class: props.class }),
           "data-part": "overlay",
           "data-scope": "link-box",
         },
         slots.default?.(),
       );
+    };
   },
 });
 // #endregion

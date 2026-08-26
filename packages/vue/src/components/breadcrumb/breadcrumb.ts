@@ -1,15 +1,13 @@
 import { ark } from "@ark-ui/vue/factory";
 import { PhCaretRight, PhDotsThree } from "@phosphor-icons/vue";
 import {
-  breadcrumbInlineVariants,
+  type BreadcrumbItemVariants,
+  type BreadcrumbVariants,
   breadcrumbItemVariants,
-  breadcrumbLinkVariants,
-  breadcrumbListVariants,
-  breadcrumbPageVariants,
-  breadcrumbSeparatorVariants,
+  breadcrumbVariants,
 } from "@pisagor/styles/ui/breadcrumb";
-import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
+import { createContext } from "../../utils/create-context";
 
 // #region Types
 export interface BreadcrumbPresetItem {
@@ -30,9 +28,28 @@ export interface BreadcrumbRootProps {
 export interface BreadcrumbProps extends BreadcrumbRootProps {
   items?: BreadcrumbPresetItem[];
 }
+
+interface BreadcrumbContextValue {
+  slots: BreadcrumbVariants;
+}
+
+interface BreadcrumbItemContextValue {
+  slots: BreadcrumbItemVariants;
+}
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];
+
+// #region Context
+const [provideBreadcrumbContext, useBreadcrumbContext] = createContext<BreadcrumbContextValue>({
+  name: "Breadcrumb",
+});
+
+const [provideBreadcrumbItemContext, useBreadcrumbItemContext] =
+  createContext<BreadcrumbItemContextValue>({
+    name: "BreadcrumbItem",
+  });
+// #endregion
 
 // #region Parts
 export const BreadcrumbRoot = defineComponent({
@@ -42,6 +59,10 @@ export const BreadcrumbRoot = defineComponent({
     ariaLabel: { default: "Breadcrumb", type: String },
   },
   setup(props, { attrs, slots }) {
+    const recipeSlots = breadcrumbVariants();
+
+    provideBreadcrumbContext({ slots: recipeSlots });
+
     return () =>
       h(
         ark.nav as ArkPart,
@@ -63,12 +84,14 @@ export const BreadcrumbList = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
+    const context = useBreadcrumbContext();
+
     return () =>
       h(
         ark.ol as ArkPart,
         {
           ...attrs,
-          class: cn(breadcrumbListVariants(), props.class, attrs.class),
+          class: context?.slots.list({ class: props.class }),
           "data-part": "list",
           "data-scope": "breadcrumb",
           role: "list",
@@ -85,12 +108,16 @@ export const BreadcrumbItem = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
+    const recipeSlots = breadcrumbItemVariants();
+
+    provideBreadcrumbItemContext({ slots: recipeSlots });
+
     return () =>
       h(
         ark.li as ArkPart,
         {
           ...attrs,
-          class: cn(breadcrumbItemVariants(), props.class, attrs.class),
+          class: recipeSlots.base({ class: props.class }),
           "data-part": "item",
           "data-scope": "breadcrumb",
         },
@@ -106,12 +133,14 @@ export const BreadcrumbLink = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
+    const context = useBreadcrumbItemContext();
+
     return () =>
       h(
         ark.a as ArkPart,
         {
           ...attrs,
-          class: cn(breadcrumbLinkVariants(), props.class, attrs.class),
+          class: context?.slots.link({ class: props.class }),
           "data-part": "link",
           "data-scope": "breadcrumb",
         },
@@ -127,13 +156,15 @@ export const BreadcrumbPage = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
+    const context = useBreadcrumbItemContext();
+
     return () =>
       h(
         ark.span as ArkPart,
         {
           ...attrs,
           "aria-current": "page",
-          class: cn(breadcrumbPageVariants(), props.class, attrs.class),
+          class: context?.slots.page({ class: props.class }),
           "data-part": "page",
           "data-scope": "breadcrumb",
         },
@@ -149,13 +180,15 @@ export const BreadcrumbSeparator = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
+    const context = useBreadcrumbContext();
+
     return () =>
       h(
         ark.li as ArkPart,
         {
           ...attrs,
           "aria-hidden": "true",
-          class: cn(breadcrumbSeparatorVariants(), props.class, attrs.class),
+          class: context?.slots.separator({ class: props.class }),
           "data-part": "separator",
           "data-scope": "breadcrumb",
           role: "presentation",
@@ -169,6 +202,8 @@ export const BreadcrumbEllipsis = defineComponent({
   inheritAttrs: false,
   name: "BreadcrumbEllipsis",
   setup(_, { attrs }) {
+    const context = useBreadcrumbContext();
+
     return () =>
       h(
         ark.span as ArkPart,
@@ -179,7 +214,7 @@ export const BreadcrumbEllipsis = defineComponent({
           "data-scope": "breadcrumb",
           role: "presentation",
         },
-        () => h(PhDotsThree, { class: breadcrumbInlineVariants() }),
+        () => h(PhDotsThree, { class: context?.slots.ellipsis() }),
       );
   },
 });

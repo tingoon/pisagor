@@ -2,11 +2,7 @@ import { ark } from "@ark-ui/vue/factory";
 import { Pagination as PaginationPrimitive, usePaginationContext } from "@ark-ui/vue/pagination";
 import { PhCaretLeft, PhCaretRight, PhDotsThree } from "@phosphor-icons/vue";
 import { buttonVariants } from "@pisagor/styles/ui/button";
-import {
-  paginationEllipsisVariants,
-  paginationInlineVariants,
-  paginationVariants,
-} from "@pisagor/styles/ui/pagination";
+import { paginationVariants } from "@pisagor/styles/ui/pagination";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { Button, type ButtonProps } from "../button";
@@ -27,16 +23,19 @@ export const PaginationRoot = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = paginationVariants();
+
+      return h(
         PaginationPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(paginationVariants(), props.class, attrs.class),
+          class: variantSlots.base({ class: cn(props.class, attrs.class) }),
         },
         slots.default ??
           (() => [h(PaginationPrevTrigger), h(PaginationItems), h(PaginationNextTrigger)]),
       );
+    };
   },
 });
 
@@ -75,18 +74,21 @@ export const PaginationItem = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(PaginationPrimitive.Item as ArkPart, { ...attrs, asChild: true }, () =>
+    return () => {
+      const variantSlots = paginationVariants();
+
+      return h(PaginationPrimitive.Item as ArkPart, { ...attrs, asChild: true }, () =>
         h(
           Button as ArkPart,
           {
-            class: cn(paginationInlineVariants(), props.class, attrs.class),
+            class: variantSlots.item({ class: cn(props.class, attrs.class) }),
             size: "icon-md",
             variant: "ghost",
           },
           slots,
         ),
       );
+    };
   },
 });
 
@@ -171,15 +173,18 @@ export const PaginationEllipsis = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = paginationVariants();
+
+      return h(
         PaginationPrimitive.Ellipsis as ArkPart,
         {
           ...attrs,
-          class: cn(paginationEllipsisVariants(), props.class, attrs.class),
+          class: variantSlots.ellipsis({ class: cn(props.class, attrs.class) }),
         },
         slots.default ?? (() => h(PhDotsThree)),
       );
+    };
   },
 });
 // #endregion

@@ -1,6 +1,9 @@
 import { ark } from "@ark-ui/vue/factory";
 import { Tabs as TabsPrimitive } from "@ark-ui/vue/tabs";
-import { bottomNavigationVariants } from "@pisagor/styles/ui/bottom-navigation";
+import {
+  bottomNavigationItemVariants,
+  bottomNavigationVariants,
+} from "@pisagor/styles/ui/bottom-navigation";
 import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -60,13 +63,13 @@ export const BottomNavigationItem = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = bottomNavigationVariants();
+      const variantSlots = bottomNavigationItemVariants();
 
       return h(
         TabsPrimitive.Trigger as ArkPart,
         {
           ...attrs,
-          class: variantSlots.item({ class: props.class }),
+          class: variantSlots.base({ class: props.class }),
         },
         slots,
       );
@@ -82,14 +85,14 @@ export const BottomNavigationItemIcon = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = bottomNavigationVariants();
+      const variantSlots = bottomNavigationItemVariants();
 
       return h(
         ark.span as ArkPart,
         {
           ...attrs,
           "aria-hidden": true,
-          class: variantSlots.itemIcon({ class: props.class }),
+          class: variantSlots.icon({ class: props.class }),
           "data-part": "item-icon",
           "data-scope": "bottom-navigation",
         },
@@ -107,13 +110,13 @@ export const BottomNavigationItemLabel = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = bottomNavigationVariants();
+      const variantSlots = bottomNavigationItemVariants();
 
       return h(
         ark.span as ArkPart,
         {
           ...attrs,
-          class: variantSlots.itemLabel({ class: props.class }),
+          class: variantSlots.label({ class: props.class }),
           "data-part": "item-label",
           "data-scope": "bottom-navigation",
         },

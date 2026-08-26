@@ -4,7 +4,7 @@ import {
   useFileUploadContext,
 } from "@ark-ui/vue/file-upload";
 import { PhUpload, PhX } from "@phosphor-icons/vue";
-import { fileUploadVariants } from "@pisagor/styles/ui/file-upload";
+import { fileUploadItemVariants, fileUploadVariants } from "@pisagor/styles/ui/file-upload";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
@@ -217,13 +217,13 @@ export const FileUploadItem = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fileUploadVariants();
+      const variantSlots = fileUploadItemVariants();
 
       return h(
         FileUploadPrimitive.Item as ArkPart,
         {
           ...attrs,
-          class: variantSlots.item({ class: props.class }),
+          class: variantSlots.base({ class: props.class }),
           file: props.file,
         },
         slots,
@@ -241,13 +241,13 @@ export const FileUploadItemPreview = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fileUploadVariants();
+      const variantSlots = fileUploadItemVariants();
 
       return h(
         FileUploadPrimitive.ItemPreview as ArkPart,
         {
           ...attrs,
-          class: variantSlots.itemPreview({ class: props.class }),
+          class: variantSlots.preview({ class: props.class }),
           type: props.type,
         },
         slots,
@@ -264,11 +264,11 @@ export const FileUploadItemPreviewImage = defineComponent({
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = fileUploadVariants();
+      const variantSlots = fileUploadItemVariants();
 
       return h(FileUploadPrimitive.ItemPreviewImage as ArkPart, {
         ...attrs,
-        class: variantSlots.itemPreviewImage({ class: props.class }),
+        class: variantSlots.previewImage({ class: props.class }),
       });
     };
   },
@@ -282,13 +282,13 @@ export const FileUploadItemName = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fileUploadVariants();
+      const variantSlots = fileUploadItemVariants();
 
       return h(
         FileUploadPrimitive.ItemName as ArkPart,
         {
           ...attrs,
-          class: variantSlots.itemName({ class: props.class }),
+          class: variantSlots.name({ class: props.class }),
         },
         slots,
       );
@@ -304,13 +304,13 @@ export const FileUploadItemSize = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fileUploadVariants();
+      const variantSlots = fileUploadItemVariants();
 
       return h(
         FileUploadPrimitive.ItemSizeText as ArkPart,
         {
           ...attrs,
-          class: variantSlots.itemSize({ class: props.class }),
+          class: variantSlots.size({ class: props.class }),
         },
         slots,
       );
@@ -321,8 +321,22 @@ export const FileUploadItemSize = defineComponent({
 export const FileUploadItemDeleteTrigger = defineComponent({
   inheritAttrs: false,
   name: "FileUpload.ItemDeleteTrigger",
-  setup(_, { attrs, slots }) {
-    return () => h(FileUploadPrimitive.ItemDeleteTrigger as ArkPart, { ...attrs }, slots);
+  props: {
+    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+  },
+  setup(props, { attrs, slots }) {
+    return () => {
+      const variantSlots = fileUploadItemVariants();
+
+      return h(
+        FileUploadPrimitive.ItemDeleteTrigger as ArkPart,
+        {
+          ...attrs,
+          class: variantSlots.deleteTrigger({ class: props.class }),
+        },
+        slots,
+      );
+    };
   },
 });
 
@@ -345,13 +359,14 @@ export const FileUploadList = defineComponent({
 
     return () => {
       const files = fileUpload.value.acceptedFiles;
-      const variantSlots = fileUploadVariants();
+      const rootSlots = fileUploadVariants();
+      const itemSlots = fileUploadItemVariants();
 
       if (files.length === 0) {
         return null;
       }
 
-      return h(FileUploadItemGroup, { class: variantSlots.itemGroup() }, () =>
+      return h(FileUploadItemGroup, { class: rootSlots.itemGroup() }, () =>
         files.map((file, index) => {
           const isImage = file.type.startsWith("image/");
           const key = `${file.name}-${index}`;
@@ -361,7 +376,7 @@ export const FileUploadList = defineComponent({
             FileUploadItem as ArkPart,
             {
               ...attrs,
-              class: variantSlots.listItem({ class: props.class }),
+              class: itemSlots.listItem({ class: props.class }),
               file,
               key,
             },
@@ -369,27 +384,24 @@ export const FileUploadList = defineComponent({
               h(
                 FileUploadItemPreview as ArkPart,
                 {
-                  class: variantSlots.listPreview(),
+                  class: itemSlots.listPreview(),
                   type: isImage ? "image/*" : ".*",
                 },
                 () =>
                   isImage
                     ? h(FileUploadItemPreviewImage)
-                    : h("span", { class: variantSlots.extension() }, extension),
+                    : h("span", { class: itemSlots.extension() }, extension),
               ),
-              h("div", { class: variantSlots.itemContent() }, [
+              h("div", { class: itemSlots.content() }, [
                 h(FileUploadItemName),
                 h(FileUploadItemSize),
               ]),
-              h(
-                FileUploadItemDeleteTrigger,
-                { asChild: true, class: variantSlots.deleteTrigger() },
-                () =>
-                  h(
-                    Button as ArkPart,
-                    { class: variantSlots.deleteButton(), size: "icon-xs", variant: "ghost" },
-                    () => h(PhX),
-                  ),
+              h(FileUploadItemDeleteTrigger, { asChild: true }, () =>
+                h(
+                  Button as ArkPart,
+                  { class: itemSlots.deleteButton(), size: "icon-xs", variant: "ghost" },
+                  () => h(PhX),
+                ),
               ),
             ],
           );

@@ -1,9 +1,5 @@
 import { Field as FieldPrimitive } from "@ark-ui/vue/field";
-import {
-  type TextareaSlots,
-  textareaInlineVariants,
-  textareaVariants,
-} from "@pisagor/styles/ui/textarea";
+import { type TextareaSlots, textareaVariants } from "@pisagor/styles/ui/textarea";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
 import { type ClearableChangeEvent, useClearableInput } from "../../hooks/use-clearable-input";
@@ -130,7 +126,7 @@ export const Textarea = defineComponent({
           canClear.value
             ? h(
                 InputGroupAddon as ArkPart,
-                { align: "inline-end", class: textareaInlineVariants() },
+                { align: "inline-end", class: slots.clearAddon() },
                 () => h(InputClearButton as ArkPart, { onClear: handleClear }),
               )
             : null,

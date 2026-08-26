@@ -5,14 +5,7 @@ import { Listbox as ListboxPrimitive } from "@ark-ui/vue/listbox";
 import { PhCheck } from "@phosphor-icons/vue";
 import {
   type ListboxItemVariantProps,
-  listboxContentVariants,
-  listboxEmptyVariants,
-  listboxItemGroupLabelVariants,
-  listboxItemGroupVariants,
-  listboxItemIndicatorVariants,
-  listboxItemTextVariants,
   listboxItemVariants,
-  listboxValueTextVariants,
   listboxVariants,
 } from "@pisagor/styles/ui/listbox";
 import { cn } from "@pisagor/utils";
@@ -57,12 +50,14 @@ export const ListboxRoot = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = listboxVariants();
+
+      return h(
         ListboxPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(listboxVariants(), props.class, attrs.class),
+          class: variantSlots.base({ class: cn(props.class, attrs.class) }),
           collection: props.collection,
           onValueChange: props.onValueChange
             ? (details: { value: string | string[] }) => props.onValueChange?.(details.value)
@@ -70,6 +65,7 @@ export const ListboxRoot = defineComponent({
         },
         slots.default?.(),
       );
+    };
   },
 });
 ListboxRoot.displayName = "Listbox.Root";
@@ -81,15 +77,18 @@ export const ListboxContent = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = listboxVariants();
+
+      return h(
         ListboxPrimitive.Content as ArkPart,
         {
           ...attrs,
-          class: cn(listboxContentVariants(), props.class, attrs.class),
+          class: variantSlots.content({ class: cn(props.class, attrs.class) }),
         },
         slots.default?.(),
       );
+    };
   },
 });
 ListboxContent.displayName = "Listbox.Content";
@@ -106,17 +105,20 @@ export const ListboxItem = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = listboxItemVariants({ variant: props.variant });
+
+      return h(
         ListboxPrimitive.Item as ArkPart,
         {
           ...attrs,
-          class: cn(listboxItemVariants({ variant: props.variant }), props.class, attrs.class),
+          class: variantSlots.base({ class: cn(props.class, attrs.class) }),
           "data-variant": props.variant,
           item: props.item,
         },
         slots.default?.(),
       );
+    };
   },
 });
 ListboxItem.displayName = "Listbox.Item";
@@ -128,15 +130,18 @@ export const ListboxItemText = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = listboxItemVariants();
+
+      return h(
         ListboxPrimitive.ItemText as ArkPart,
         {
           ...attrs,
-          class: cn(listboxItemTextVariants(), props.class, attrs.class),
+          class: variantSlots.text({ class: cn(props.class, attrs.class) }),
         },
         slots.default?.(),
       );
+    };
   },
 });
 ListboxItemText.displayName = "Listbox.ItemText";
@@ -149,18 +154,21 @@ export const ListboxItemGroup = defineComponent({
     heading: { default: undefined, type: String as PropType<string | undefined> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = listboxVariants();
+
+      return h(
         ListboxPrimitive.ItemGroup as ArkPart,
         {
           ...attrs,
-          class: cn(listboxItemGroupVariants(), props.class, attrs.class),
+          class: variantSlots.itemGroup({ class: cn(props.class, attrs.class) }),
         },
         () => [
           props.heading ? h(ListboxItemGroupLabel, null, () => props.heading) : null,
           slots.default?.(),
         ],
       );
+    };
   },
 });
 ListboxItemGroup.displayName = "Listbox.ItemGroup";
@@ -172,15 +180,18 @@ export const ListboxItemGroupLabel = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = listboxVariants();
+
+      return h(
         ListboxPrimitive.ItemGroupLabel as ArkPart,
         {
           ...attrs,
-          class: cn(listboxItemGroupLabelVariants(), props.class, attrs.class),
+          class: variantSlots.itemGroupLabel({ class: cn(props.class, attrs.class) }),
         },
         slots.default?.(),
       );
+    };
   },
 });
 ListboxItemGroupLabel.displayName = "Listbox.ItemGroupLabel";
@@ -192,15 +203,18 @@ export const ListboxValueText = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = listboxVariants();
+
+      return h(
         ListboxPrimitive.ValueText as ArkPart,
         {
           ...attrs,
-          class: cn(listboxValueTextVariants(), props.class, attrs.class),
+          class: variantSlots.valueText({ class: cn(props.class, attrs.class) }),
         },
         slots.default?.(),
       );
+    };
   },
 });
 ListboxValueText.displayName = "Listbox.ValueText";
@@ -212,15 +226,18 @@ export const ListboxItemIndicator = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = listboxItemVariants();
+
+      return h(
         ListboxPrimitive.ItemIndicator as ArkPart,
         {
           ...attrs,
-          class: cn(listboxItemIndicatorVariants(), props.class, attrs.class),
+          class: variantSlots.indicator({ class: cn(props.class, attrs.class) }),
         },
         slots.default?.() ?? h(PhCheck, { "aria-hidden": true }),
       );
+    };
   },
 });
 ListboxItemIndicator.displayName = "Listbox.ItemIndicator";
@@ -232,15 +249,18 @@ export const ListboxEmpty = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = listboxVariants();
+
+      return h(
         ListboxPrimitive.Empty as ArkPart,
         {
           ...attrs,
-          class: cn(listboxEmptyVariants(), props.class, attrs.class),
+          class: variantSlots.empty({ class: cn(props.class, attrs.class) }),
         },
         slots.default?.(),
       );
+    };
   },
 });
 ListboxEmpty.displayName = "Listbox.Empty";

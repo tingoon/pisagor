@@ -1,20 +1,13 @@
 import { Drawer as DrawerPrimitive } from "@ark-ui/vue/drawer";
-import {
-  drawerBackdropVariants,
-  drawerBodyVariants,
-  drawerContentInnerVariants,
-  drawerContentVariants,
-  drawerDescriptionVariants,
-  drawerFooterVariants,
-  drawerGrabberVariants,
-  drawerHeaderVariants,
-  drawerPositionerVariants,
-  drawerTitleVariants,
-} from "@pisagor/styles/ui/drawer";
-import { cn } from "@pisagor/utils";
-import { defineComponent, h, type PropType, Teleport } from "vue";
+import { type DrawerVariants, drawerVariants } from "@pisagor/styles/ui/drawer";
+import { defineComponent, h, type PropType, reactive, Teleport } from "vue";
+import { createContext } from "../../utils/create-context";
 
 // #region Types
+interface DrawerContextValue {
+  slots: DrawerVariants;
+}
+
 export interface DrawerHeaderProps {
   class?: unknown;
   description?: string;
@@ -29,6 +22,17 @@ export interface DrawerBodyProps {
 export interface DrawerProps {
   lazyMount?: boolean;
   unmountOnExit?: boolean;
+}
+// #endregion
+
+// #region Context
+const [provideDrawerContext, useDrawerLocal] = createContext<DrawerContextValue>({
+  name: "DrawerLocal",
+  strict: false,
+});
+
+function useDrawerSlots() {
+  return useDrawerLocal()?.slots ?? drawerVariants();
 }
 // #endregion
 
@@ -50,6 +54,11 @@ export const DrawerRoot = defineComponent({
   inheritAttrs: false,
   name: "DrawerRoot",
   setup(_, { attrs, slots }) {
+    const context = reactive<DrawerContextValue>({
+      slots: drawerVariants(),
+    });
+    provideDrawerContext(context);
+
     return () => h(DrawerPrimitive.Root as ArkPart, { ...attrs }, slots);
   },
 });
@@ -69,15 +78,18 @@ export const DrawerBackdrop = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const drawerSlots = useDrawerSlots();
+
+      return h(
         DrawerPrimitive.Backdrop as ArkPart,
         {
           ...attrs,
-          class: cn(drawerBackdropVariants(), props.class),
+          class: drawerSlots.backdrop({ class: props.class }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -89,15 +101,18 @@ export const DrawerPositioner = defineComponent({
     variant: { default: "default", type: String as PropType<"default" | "inset"> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const drawerSlots = useDrawerSlots();
+
+      return h(
         DrawerPrimitive.Positioner as ArkPart,
         {
           ...attrs,
-          class: cn(drawerPositionerVariants({ variant: props.variant }), props.class),
+          class: drawerSlots.positioner({ class: props.class, variant: props.variant }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -109,8 +124,10 @@ export const DrawerContent = defineComponent({
     variant: { default: "default", type: String as PropType<"default" | "inset"> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      drawerTeleport([
+    return () => {
+      const drawerSlots = useDrawerSlots();
+
+      return drawerTeleport([
         h(DrawerBackdrop),
         h(DrawerPrimitive.Context as ArkPart, null, {
           default: (drawerApi: { swipeDirection: keyof typeof SWIPE_DIRECTION_TO_PLACEMENT }) =>
@@ -119,19 +136,18 @@ export const DrawerContent = defineComponent({
                 DrawerPrimitive.Content as ArkPart,
                 {
                   ...attrs,
-                  class: cn(
-                    drawerContentVariants({
-                      placement: SWIPE_DIRECTION_TO_PLACEMENT[drawerApi.swipeDirection],
-                      variant: props.variant,
-                    }),
-                    props.class,
-                  ),
+                  class: drawerSlots.content({
+                    class: props.class,
+                    placement: SWIPE_DIRECTION_TO_PLACEMENT[drawerApi.swipeDirection],
+                    variant: props.variant,
+                  }),
                 },
                 () => [h(DrawerGrabber), slots.default?.()],
               ),
             ),
         }),
       ]);
+    };
   },
 });
 
@@ -142,17 +158,20 @@ export const DrawerContentInner = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const drawerSlots = useDrawerSlots();
+
+      return h(
         "div",
         {
           ...attrs,
-          class: cn(drawerContentInnerVariants(), props.class),
+          class: drawerSlots.contentInner({ class: props.class }),
           "data-part": "content-inner",
           "data-scope": "drawer",
         },
         slots,
       );
+    };
   },
 });
 
@@ -164,18 +183,18 @@ export const DrawerGrabber = defineComponent({
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const slots = drawerGrabberVariants();
+      const drawerSlots = useDrawerSlots();
 
-      return h("div", { class: slots.wrapper() }, () =>
+      return h("div", { class: drawerSlots.grabberWrapper() }, () =>
         h(
           DrawerPrimitive.Grabber as ArkPart,
           {
             ...attrs,
-            class: slots.base({ class: props.class }),
+            class: drawerSlots.grabber({ class: props.class }),
           },
           () => [
             h(DrawerPrimitive.GrabberIndicator as ArkPart, {
-              class: slots.indicator(),
+              class: drawerSlots.grabberIcon(),
             }),
             children.default?.(),
           ],
@@ -194,12 +213,14 @@ export const DrawerHeader = defineComponent({
     title: String,
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const drawerSlots = useDrawerSlots();
+
+      return h(
         "div",
         {
           ...attrs,
-          class: cn(drawerHeaderVariants(), props.class),
+          class: drawerSlots.header({ class: props.class }),
           "data-part": "header",
           "data-scope": "drawer",
         },
@@ -209,6 +230,7 @@ export const DrawerHeader = defineComponent({
           slots.default?.(),
         ],
       );
+    };
   },
 });
 
@@ -219,15 +241,18 @@ export const DrawerTitle = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const drawerSlots = useDrawerSlots();
+
+      return h(
         DrawerPrimitive.Title as ArkPart,
         {
           ...attrs,
-          class: cn(drawerTitleVariants(), props.class),
+          class: drawerSlots.title({ class: props.class }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -238,17 +263,20 @@ export const DrawerDescription = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const drawerSlots = useDrawerSlots();
+
+      return h(
         "div",
         {
           ...attrs,
-          class: cn(drawerDescriptionVariants(), props.class),
+          class: drawerSlots.description({ class: props.class }),
           "data-part": "description",
           "data-scope": "drawer",
         },
         slots,
       );
+    };
   },
 });
 
@@ -260,17 +288,20 @@ export const DrawerBody = defineComponent({
     scrollFade: { default: false, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const drawerSlots = useDrawerSlots();
+
+      return h(
         "div",
         {
           ...attrs,
-          class: cn(drawerBodyVariants(), props.class),
+          class: drawerSlots.body({ class: props.class }),
           "data-part": "body",
           "data-scope": "drawer",
         },
         slots,
       );
+    };
   },
 });
 
@@ -289,17 +320,20 @@ export const DrawerFooter = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const drawerSlots = useDrawerSlots();
+
+      return h(
         "div",
         {
           ...attrs,
-          class: cn(drawerFooterVariants(), props.class),
+          class: drawerSlots.footer({ class: props.class }),
           "data-part": "footer",
           "data-scope": "drawer",
         },
         slots,
       );
+    };
   },
 });
 // #endregion

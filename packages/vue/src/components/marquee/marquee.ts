@@ -1,10 +1,5 @@
 import { Marquee as MarqueePrimitive } from "@ark-ui/vue/marquee";
-import {
-  marqueeContentVariants,
-  marqueeEdgeVariants,
-  marqueeItemVariants,
-  marqueeVariants,
-} from "@pisagor/styles/ui/marquee";
+import { marqueeVariants } from "@pisagor/styles/ui/marquee";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
@@ -39,12 +34,13 @@ export const MarqueeRoot = defineComponent({
     return () => {
       const side = props.orientation === "horizontal" ? "start" : "bottom";
       const items = props.items;
+      const variantSlots = marqueeVariants();
 
       return h(
         MarqueePrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(marqueeVariants(), props.class),
+          class: variantSlots.base({ class: props.class }),
           "data-orientation": props.orientation,
           side,
           spacing: props.spacing,
@@ -80,14 +76,14 @@ export const MarqueeContent = defineComponent({
   name: "MarqueeContent",
   setup(_, { attrs, slots: children }) {
     return () => {
-      const slots = marqueeContentVariants();
+      const variantSlots = marqueeVariants();
 
-      return h(MarqueePrimitive.Viewport as ArkPart, { class: slots.viewport() }, () =>
+      return h(MarqueePrimitive.Viewport as ArkPart, { class: variantSlots.viewport() }, () =>
         h(
           MarqueePrimitive.Content as ArkPart,
           {
             ...attrs,
-            class: slots.base({ class: cn(attrs.class) }),
+            class: variantSlots.content({ class: cn(attrs.class) }),
           },
           children,
         ),
@@ -100,15 +96,18 @@ export const MarqueeItem = defineComponent({
   inheritAttrs: false,
   name: "MarqueeItem",
   setup(_, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = marqueeVariants();
+
+      return h(
         MarqueePrimitive.Item as ArkPart,
         {
           ...attrs,
-          class: cn(marqueeItemVariants(), attrs.class),
+          class: variantSlots.item({ class: cn(attrs.class) }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -116,15 +115,18 @@ export const MarqueeEdge = defineComponent({
   inheritAttrs: false,
   name: "MarqueeEdge",
   setup(_, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = marqueeVariants();
+
+      return h(
         MarqueePrimitive.Edge as ArkPart,
         {
           ...attrs,
-          class: cn(marqueeEdgeVariants(), attrs.class),
+          class: variantSlots.edge({ class: cn(attrs.class) }),
         },
         slots,
       );
+    };
   },
 });
 

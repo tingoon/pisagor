@@ -1,11 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import {
-  skeletonCircleVariants,
-  skeletonInlineVariants,
-  skeletonTextVariants,
-  skeletonVariants,
-} from "@pisagor/styles/ui/skeleton";
-import { cn } from "@pisagor/utils";
+import { skeletonVariants } from "@pisagor/styles/ui/skeleton";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
@@ -29,17 +23,20 @@ export const SkeletonRoot = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = skeletonVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(skeletonVariants(), props.class),
+          class: variantSlots.base({ class: props.class }),
           "data-part": "root",
           "data-scope": "skeleton",
         },
         slots,
       );
+    };
   },
 });
 
@@ -50,13 +47,16 @@ export const SkeletonCircle = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs }) {
-    return () =>
-      h(ark.div as ArkPart, {
+    return () => {
+      const variantSlots = skeletonVariants();
+
+      return h(ark.div as ArkPart, {
         ...attrs,
-        class: cn(skeletonCircleVariants(), props.class),
+        class: variantSlots.circle({ class: props.class }),
         "data-part": "circle",
         "data-scope": "skeleton",
       });
+    };
   },
 });
 
@@ -68,20 +68,23 @@ export const SkeletonText = defineComponent({
     lines: { default: 2, type: Number },
   },
   setup(props, { attrs }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = skeletonVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(skeletonTextVariants(), props.class),
+          class: variantSlots.text({ class: props.class }),
           "data-part": "text",
           "data-scope": "skeleton",
         },
         () =>
           Array.from({ length: props.lines }).map((_, index) =>
-            h("div", { class: skeletonInlineVariants(), key: `skeleton-text-${index}` }),
+            h("div", { class: variantSlots.line(), key: `skeleton-text-${index}` }),
           ),
       );
+    };
   },
 });
 // #endregion

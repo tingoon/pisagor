@@ -1,12 +1,6 @@
 import { Collapsible as CollapsiblePrimitive } from "@ark-ui/vue/collapsible";
 import { PhCaretDown } from "@phosphor-icons/vue";
-import {
-  collapsibleContentVariants,
-  collapsibleIndicatorVariants,
-  collapsibleTriggerVariants,
-  collapsibleVariants,
-} from "@pisagor/styles/ui/collapsible";
-import { cn } from "@pisagor/utils";
+import { collapsibleVariants } from "@pisagor/styles/ui/collapsible";
 import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -24,12 +18,14 @@ export const CollapsibleRoot = defineComponent({
   setup(props, { attrs, slots }) {
     const partialCollapse = props.collapsedHeight !== undefined;
 
-    return () =>
-      h(
+    return () => {
+      const variantSlots = collapsibleVariants();
+
+      return h(
         CollapsiblePrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(collapsibleVariants(), props.class),
+          class: variantSlots.base({ class: props.class }),
           collapsedHeight: props.collapsedHeight,
           "data-partial-collapse": props.collapsedHeight ? "" : undefined,
           lazyMount: partialCollapse ? false : props.lazyMount,
@@ -37,6 +33,7 @@ export const CollapsibleRoot = defineComponent({
         },
         slots,
       );
+    };
   },
 });
 
@@ -47,15 +44,18 @@ export const CollapsibleTrigger = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = collapsibleVariants();
+
+      return h(
         CollapsiblePrimitive.Trigger as ArkPart,
         {
           ...attrs,
-          class: cn(collapsibleTriggerVariants(), props.class),
+          class: variantSlots.trigger({ class: props.class }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -66,15 +66,18 @@ export const CollapsibleContent = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = collapsibleVariants();
+
+      return h(
         CollapsiblePrimitive.Content as ArkPart,
         {
           ...attrs,
-          class: cn(collapsibleContentVariants()),
+          class: variantSlots.content(),
         },
         () => h("div", { class: props.class }, slots.default?.()),
       );
+    };
   },
 });
 
@@ -86,15 +89,15 @@ export const CollapsibleIndicator = defineComponent({
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const slots = collapsibleIndicatorVariants();
+      const variantSlots = collapsibleVariants();
 
       return h(
         CollapsiblePrimitive.Indicator as ArkPart,
         {
           ...attrs,
-          class: slots.base({ class: props.class }),
+          class: variantSlots.indicator({ class: props.class }),
         },
-        () => [children.default?.(), h(PhCaretDown, { class: slots.icon() })],
+        () => [children.default?.(), h(PhCaretDown, { class: variantSlots.icon() })],
       );
     };
   },

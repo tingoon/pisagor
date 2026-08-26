@@ -6,25 +6,7 @@ import {
 } from "@ark-ui/vue/color-picker";
 import { ark } from "@ark-ui/vue/factory";
 import { PhCheck, PhEyedropper, PhX } from "@phosphor-icons/vue";
-import {
-  colorPickerAreaThumbVariants,
-  colorPickerAreaVariants,
-  colorPickerChannelSliderVariants,
-  colorPickerContentVariants,
-  colorPickerControlVariants,
-  colorPickerInline4Variants,
-  colorPickerInline5Variants,
-  colorPickerInlineVariants,
-  colorPickerInputSwatchVariants,
-  colorPickerSwatchGroupVariants,
-  colorPickerSwatchIndicatorVariants,
-  colorPickerSwatchTriggerVariants,
-  colorPickerSwatchVariants,
-  colorPickerValueSwatchVariants,
-  colorPickerValueTextVariants,
-  colorPickerVariants,
-  colorPickerViewVariants,
-} from "@pisagor/styles/ui/color-picker";
+import { colorPickerVariants } from "@pisagor/styles/ui/color-picker";
 import { cn } from "@pisagor/utils";
 
 type ClassValue = Parameters<typeof cn>[0];
@@ -92,7 +74,11 @@ export const ColorPickerRoot = defineComponent({
           ColorPickerPrimitive.Root as ArkPart,
           {
             ...attrs,
-            class: cn(colorPickerVariants(), props.class, (attrs as { class?: ClassValue }).class),
+            class: cn(
+              colorPickerVariants().base(),
+              props.class,
+              (attrs as { class?: ClassValue }).class,
+            ),
             defaultValue: internalValue ? parseColorArk(internalValue) : undefined,
             lazyMount: props.lazyMount,
             onValueChange: props.onValueChange ? handleValueChange : undefined,
@@ -182,7 +168,7 @@ export const ColorPickerControl = defineComponent({
         {
           ...attrs,
           class: cn(
-            colorPickerControlVariants(),
+            colorPickerVariants().control(),
             props.class,
             (attrs as { class?: ClassValue }).class,
           ),
@@ -215,7 +201,7 @@ export const ColorPickerTransparencyGrid = defineComponent({
       h(ColorPickerPrimitive.TransparencyGrid as ArkPart, {
         ...attrs,
         class: cn(
-          colorPickerInlineVariants(),
+          colorPickerVariants().transparencyGrid(),
           props.class,
           (attrs as { class?: ClassValue }).class,
         ),
@@ -238,7 +224,7 @@ export const ColorPickerContent = defineComponent({
             {
               ...attrs,
               class: cn(
-                colorPickerContentVariants(),
+                colorPickerVariants().content(),
                 props.class,
                 (attrs as { class?: ClassValue }).class,
               ),
@@ -261,7 +247,7 @@ export const ColorPickerView = defineComponent({
         {
           ...attrs,
           class: cn(
-            colorPickerViewVariants(),
+            colorPickerVariants().view(),
             props.class,
             (attrs as { class?: ClassValue }).class,
           ),
@@ -277,21 +263,23 @@ export const ColorPickerChannelSlider = defineComponent({
   props: { class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> } },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const slots = colorPickerChannelSliderVariants();
+      const slots = colorPickerVariants();
 
       return h(
         ColorPickerPrimitive.ChannelSlider as ArkPart,
         {
           ...attrs,
-          class: slots.base({ class: cn(props.class, (attrs as { class?: ClassValue }).class) }),
+          class: slots.channelSlider({
+            class: cn(props.class, (attrs as { class?: ClassValue }).class),
+          }),
         },
         () => [
           children.default?.(),
           h(ColorPickerPrimitive.ChannelSliderTrack as ArkPart, {
-            class: slots.track(),
+            class: slots.channelSliderTrack(),
           }),
           h(ColorPickerPrimitive.ChannelSliderThumb as ArkPart, {
-            class: slots.thumb(),
+            class: slots.channelSliderThumb(),
           }),
         ],
       );
@@ -340,7 +328,7 @@ export const ColorPickerSwatchGroup = defineComponent({
         {
           ...attrs,
           class: cn(
-            colorPickerSwatchGroupVariants(),
+            colorPickerVariants().swatchGroup(),
             props.class,
             (attrs as { class?: ClassValue }).class,
           ),
@@ -361,7 +349,7 @@ export const ColorPickerSwatchTrigger = defineComponent({
         {
           ...attrs,
           class: cn(
-            colorPickerSwatchTriggerVariants(),
+            colorPickerVariants().swatchTrigger(),
             props.class,
             (attrs as { class?: ClassValue }).class,
           ),
@@ -382,7 +370,7 @@ export const ColorPickerSwatch = defineComponent({
         {
           ...attrs,
           class: cn(
-            colorPickerSwatchVariants(),
+            colorPickerVariants().swatch(),
             props.class,
             (attrs as { class?: ClassValue }).class,
           ),
@@ -403,7 +391,7 @@ export const ColorPickerSwatchIndicator = defineComponent({
         {
           ...attrs,
           class: cn(
-            colorPickerSwatchIndicatorVariants(),
+            colorPickerVariants().swatchIndicator(),
             props.class,
             (attrs as { class?: ClassValue }).class,
           ),
@@ -424,7 +412,7 @@ export const ColorPickerValueText = defineComponent({
         {
           ...attrs,
           class: cn(
-            colorPickerValueTextVariants(),
+            colorPickerVariants().valueText(),
             props.class,
             (attrs as { class?: ClassValue }).class,
           ),
@@ -445,7 +433,7 @@ export const ColorPickerValueSwatch = defineComponent({
         {
           ...attrs,
           class: cn(
-            colorPickerValueSwatchVariants(),
+            colorPickerVariants().valueSwatch(),
             props.class,
             (attrs as { class?: ClassValue }).class,
           ),
@@ -464,13 +452,13 @@ export const ColorPickerArea = defineComponent({
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const slots = colorPickerAreaVariants();
+      const slots = colorPickerVariants();
 
       return h(
         ColorPickerPrimitive.Area as ArkPart,
         {
           ...attrs,
-          class: slots.base({
+          class: slots.area({
             class: cn(
               {
                 "after:pointer-events-none after:absolute after:inset-0 after:rounded-[inherit] after:bg-[radial-gradient(circle,#fff3_1px,#0000_1px)] after:bg-size-[8px_8px]":
@@ -483,7 +471,7 @@ export const ColorPickerArea = defineComponent({
         },
         () => [
           h(ColorPickerPrimitive.AreaBackground as ArkPart, {
-            class: slots.background(),
+            class: slots.areaBackground(),
           }),
           children.default?.(),
         ],
@@ -501,7 +489,7 @@ export const ColorPickerAreaThumb = defineComponent({
       h(ColorPickerPrimitive.AreaThumb as ArkPart, {
         ...attrs,
         class: cn(
-          colorPickerAreaThumbVariants(),
+          colorPickerVariants().areaThumb(),
           props.class,
           (attrs as { class?: ClassValue }).class,
         ),
@@ -534,22 +522,24 @@ export const ColorPickerSwatchPreview = defineComponent({
   props: { class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> } },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const slots = colorPickerInputSwatchVariants();
+      const slots = colorPickerVariants();
 
       return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: slots.base({ class: cn(props.class, (attrs as { class?: ClassValue }).class) }),
+          class: slots.inputSwatch({
+            class: cn(props.class, (attrs as { class?: ClassValue }).class),
+          }),
           "data-part": "input-swatch",
           "data-scope": "color-picker",
         },
         () => [
           h(ColorPickerPrimitive.TransparencyGrid as ArkPart, {
-            class: slots.grid(),
+            class: slots.inputSwatchGrid(),
           }),
           h(ColorPickerPrimitive.ValueSwatch as ArkPart, {
-            class: slots.swatch(),
+            class: slots.inputSwatchSwatch(),
           }),
           children.default?.(),
         ],
@@ -584,9 +574,9 @@ export const ColorPickerField = defineComponent({
             ColorPickerView as ArkPart,
             { format: "hsla" } as unknown as Parameters<typeof h>[1],
             () => [
-              h("div", { class: colorPickerInline4Variants() }, () => [
+              h("div", { class: colorPickerVariants().channelRow() }, () => [
                 h(ColorPickerEyeDropperTrigger as ArkPart),
-                h("div", { class: colorPickerInline5Variants() }, () => [
+                h("div", { class: colorPickerVariants().channelStack() }, () => [
                   h(
                     ColorPickerChannelSlider as ArkPart,
                     { channel: "hue" } as unknown as Parameters<typeof h>[1],

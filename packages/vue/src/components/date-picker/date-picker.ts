@@ -4,13 +4,7 @@ import {
   useDatePickerContext as useDatePicker,
 } from "@ark-ui/vue/date-picker";
 import { PhCalendar, PhClock, PhX } from "@phosphor-icons/vue";
-import {
-  datePickerContentVariants,
-  datePickerControlVariants,
-  datePickerInlineVariants,
-  datePickerTriggerVariants,
-  datePickerValueTextVariants,
-} from "@pisagor/styles/ui/date-picker";
+import { datePickerVariants } from "@pisagor/styles/ui/date-picker";
 import { cn } from "@pisagor/utils";
 
 type ClassValue = Parameters<typeof cn>[0];
@@ -98,14 +92,14 @@ export const DatePickerTrigger = defineComponent({
         DatePickerPrimitive.Control as ArkPart,
         {
           ...attrs,
-          class: datePickerControlVariants(),
+          class: datePickerVariants().control(),
         },
         () => [
           h(
             DatePickerPrimitive.Trigger as ArkPart,
             {
               ...attrs,
-              class: datePickerTriggerVariants(),
+              class: datePickerVariants().trigger(),
             },
             () => slots.default?.(),
           ),
@@ -235,7 +229,7 @@ export const DatePickerTimer = defineComponent({
           {
             ...attrs,
             class: cn(
-              datePickerInlineVariants(),
+              datePickerVariants().timer(),
               props.class,
               (attrs as { class?: ClassValue }).class,
             ),
@@ -273,7 +267,7 @@ export const DatePickerContent = defineComponent({
           {
             ...attrs,
             class: cn(
-              datePickerContentVariants(),
+              datePickerVariants().content(),
               props.class,
               (attrs as { class?: ClassValue }).class,
             ),
@@ -307,7 +301,7 @@ export const DatePickerValueText = defineComponent({
     return () =>
       h(DatePickerPrimitive.ValueText as ArkPart, {
         ...attrs,
-        class: cn(datePickerValueTextVariants(), (attrs as { class?: ClassValue }).class),
+        class: cn(datePickerVariants().valueText(), (attrs as { class?: ClassValue }).class),
       });
   },
 });

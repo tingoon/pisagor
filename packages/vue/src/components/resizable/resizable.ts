@@ -1,11 +1,6 @@
 import { Splitter as SplitterPrimitive } from "@ark-ui/vue/splitter";
 import { PhDotsSixVertical } from "@phosphor-icons/vue";
-import {
-  resizableEdgeHandleVariants,
-  resizableResizeTriggerIndicatorVariants,
-  resizableResizeTriggerVariants,
-  resizableVariants,
-} from "@pisagor/styles/ui/resizable";
+import { resizableEdgeHandleVariants, resizableVariants } from "@pisagor/styles/ui/resizable";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, ref } from "vue";
 
@@ -37,8 +32,6 @@ export interface ResizableResizeTriggerProps {
 }
 
 type ArkPart = Parameters<typeof h>[0];
-
-const resizeTrigger = resizableResizeTriggerVariants();
 
 // #region Parts
 export const ResizableEdgeHandle = defineComponent({
@@ -152,7 +145,7 @@ export const ResizableRoot = defineComponent({
         SplitterPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(resizableVariants(), props.class),
+          class: cn(resizableVariants().base(), props.class),
         },
         slots,
       );
@@ -186,7 +179,7 @@ export const ResizableResizeTriggerIndicator = defineComponent({
         SplitterPrimitive.ResizeTriggerIndicator as ArkPart,
         {
           ...attrs,
-          class: cn(resizableResizeTriggerIndicatorVariants(), props.class),
+          class: cn(resizableVariants().resizeTriggerIndicator(), props.class),
         },
         slots,
       );
@@ -207,12 +200,12 @@ export const ResizableResizeTrigger = defineComponent({
         {
           ...attrs,
           "aria-label": "Resize",
-          class: resizeTrigger.base({ class: props.class }),
+          class: resizableVariants().resizeTrigger({ class: props.class }),
         },
         () =>
           props.withHandle
-            ? h("div", { class: resizeTrigger.handle() }, () =>
-                h(PhDotsSixVertical, { class: resizeTrigger.icon() }),
+            ? h("div", { class: resizableVariants().resizeTriggerHandle() }, () =>
+                h(PhDotsSixVertical, { class: resizableVariants().resizeTriggerIcon() }),
               )
             : (slots.default?.() ?? h(ResizableResizeTriggerIndicator)),
       );

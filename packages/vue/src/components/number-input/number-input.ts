@@ -1,14 +1,6 @@
 import { NumberInput as NumberInputPrimitive } from "@ark-ui/vue/number-input";
 import { PhMinus, PhPlus } from "@phosphor-icons/vue";
-import {
-  numberFieldControlVariants,
-  numberFieldDecrementTriggerVariants,
-  numberFieldIncrementTriggerVariants,
-  numberFieldScrubberVariants,
-  numberFieldVariants,
-  numberInputInline2Variants,
-  numberInputInlineVariants,
-} from "@pisagor/styles/ui/number-input";
+import { numberFieldVariants } from "@pisagor/styles/ui/number-input";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
@@ -80,7 +72,7 @@ export const NumberInputRoot = defineComponent({
           NumberInputPrimitive.Root as ArkPart,
           {
             ...attrs,
-            class: cn(numberFieldVariants(), props.class),
+            class: cn(numberFieldVariants().base(), props.class),
             "data-size": props.size,
             defaultValue: props.defaultValue,
             disabled: props.disabled,
@@ -135,7 +127,7 @@ export const NumberInputControl = defineComponent({
           ...attrs,
           ...controlProps,
           class: cn(
-            numberFieldControlVariants(),
+            numberFieldVariants().control(),
             formControlGroupShellVariants({ size: "md", ...shellArgs }),
             props.class,
           ),
@@ -161,7 +153,7 @@ export const NumberInputClearTrigger = defineComponent({
           }
 
           return h(InputClearButton as ArkPart, {
-            class: numberInputInline2Variants(),
+            class: numberFieldVariants().clearTrigger(),
             onClear: () => api.setValue(Number.NaN),
           });
         },
@@ -182,7 +174,7 @@ export const NumberInputDecrementTrigger = defineComponent({
         {
           ...attrs,
           asChild: true,
-          class: cn(numberFieldDecrementTriggerVariants(), props.class),
+          class: cn(numberFieldVariants().decrementTrigger(), props.class),
         },
         () =>
           h(Button as ArkPart, { "aria-label": "Decrement", variant: "ghost" }, () =>
@@ -205,7 +197,7 @@ export const NumberInputIncrementTrigger = defineComponent({
         {
           ...attrs,
           asChild: true,
-          class: cn(numberFieldIncrementTriggerVariants(), props.class),
+          class: cn(numberFieldVariants().incrementTrigger(), props.class),
         },
         () =>
           h(Button as ArkPart, { "aria-label": "Increment", variant: "ghost" }, () =>
@@ -230,7 +222,7 @@ export const NumberInputInput = defineComponent({
       h(NumberInputPrimitive.Input as ArkPart, { asChild: true, ...attrs }, () =>
         h(Input as ArkPart, {
           ...(attrs as object),
-          class: cn(numberInputInlineVariants(), props.class),
+          class: cn(numberFieldVariants().input(), props.class),
           classNames: props.classNames,
           placeholder: props.placeholder,
           size: props.size,
@@ -253,7 +245,7 @@ export const NumberInputScrubber = defineComponent({
         {
           ...attrs,
           asChild: true,
-          class: cn(numberFieldScrubberVariants(), props.class),
+          class: cn(numberFieldVariants().scrubber(), props.class),
         },
         () =>
           h(NumberInputPrimitive.Label as ArkPart, { asChild: true }, () =>

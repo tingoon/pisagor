@@ -1,14 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import {
-  timelineContentVariants,
-  timelineDescriptionVariants,
-  timelineIndicatorVariants,
-  timelineItemVariants,
-  timelineSeparatorVariants,
-  timelineTitleVariants,
-  timelineVariants,
-} from "@pisagor/styles/ui/timeline";
-import { cn } from "@pisagor/utils";
+import { timelineItemVariants, timelineVariants } from "@pisagor/styles/ui/timeline";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -48,7 +39,7 @@ export const TimelineRoot = defineComponent({
         ark.ol as ArkPart,
         {
           ...attrs,
-          class: cn(timelineVariants({ orientation: props.orientation }), props.class),
+          class: timelineVariants({ class: props.class, orientation: props.orientation }),
           "data-orientation": props.orientation,
           "data-part": "root",
           "data-scope": "timeline",
@@ -65,17 +56,20 @@ export const TimelineItem = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = timelineItemVariants();
+
+      return h(
         ark.li as ArkPart,
         {
           ...attrs,
-          class: cn(timelineItemVariants(), props.class),
+          class: variantSlots.base({ class: props.class }),
           "data-part": "item",
           "data-scope": "timeline",
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -86,17 +80,20 @@ export const TimelineIndicator = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = timelineItemVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(timelineIndicatorVariants(), props.class),
+          class: variantSlots.indicator({ class: props.class }),
           "data-part": "indicator",
           "data-scope": "timeline",
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -107,18 +104,21 @@ export const TimelineSeparator = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = timelineItemVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
           "aria-hidden": "true",
-          class: cn(timelineSeparatorVariants(), props.class),
+          class: variantSlots.separator({ class: props.class }),
           "data-part": "separator",
           "data-scope": "timeline",
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -129,17 +129,20 @@ export const TimelineContent = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = timelineItemVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(timelineContentVariants(), props.class),
+          class: variantSlots.content({ class: props.class }),
           "data-part": "content",
           "data-scope": "timeline",
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -150,17 +153,20 @@ export const TimelineTitle = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = timelineItemVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(timelineTitleVariants(), props.class),
+          class: variantSlots.title({ class: props.class }),
           "data-part": "title",
           "data-scope": "timeline",
         },
         slots.default?.(),
       );
+    };
   },
 });
 
@@ -171,17 +177,20 @@ export const TimelineDescription = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = timelineItemVariants();
+
+      return h(
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(timelineDescriptionVariants(), props.class),
+          class: variantSlots.description({ class: props.class }),
           "data-part": "description",
           "data-scope": "timeline",
         },
         slots.default?.(),
       );
+    };
   },
 });
 

@@ -1,14 +1,8 @@
 import { Dialog as DialogPrimitive } from "@ark-ui/vue/dialog";
-import {
-  sheetBodyVariants,
-  sheetContentVariants,
-  sheetFooterVariants,
-  sheetInlineVariants,
-  sheetPositionerVariants,
-} from "@pisagor/styles/ui/sheet";
-import { cn } from "@pisagor/utils";
-import { defineComponent, h, type PropType, Teleport } from "vue";
+import { type SheetVariants, sheetVariants } from "@pisagor/styles/ui/sheet";
+import { defineComponent, h, type PropType, reactive, Teleport } from "vue";
 import { renderIconCloseButton } from "../../internal/close-button";
+import { createContext } from "../../utils/create-context";
 import {
   DialogBackdrop,
   DialogBody,
@@ -24,7 +18,22 @@ import {
 } from "../dialog";
 
 // #region Types
+interface SheetContextValue {
+  slots: SheetVariants;
+}
+
 export type SheetProps = DialogProps;
+// #endregion
+
+// #region Context
+const [provideSheetContext, useSheetLocal] = createContext<SheetContextValue>({
+  name: "SheetLocal",
+  strict: false,
+});
+
+function useSheetSlots() {
+  return useSheetLocal()?.slots ?? sheetVariants();
+}
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];
@@ -38,6 +47,11 @@ export const SheetRoot = defineComponent({
   inheritAttrs: false,
   name: "SheetRoot",
   setup(_, { attrs, slots }) {
+    const context = reactive<SheetContextValue>({
+      slots: sheetVariants(),
+    });
+    provideSheetContext(context);
+
     return () => h(DialogRoot, { ...attrs }, slots);
   },
 });
@@ -73,18 +87,22 @@ export const SheetPositioner = defineComponent({
     variant: { default: "default", type: String as PropType<"default" | "inset"> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const sheetSlots = useSheetSlots();
+
+      return h(
         DialogPrimitive.Positioner as ArkPart,
         {
           ...attrs,
-          class: cn(
-            sheetPositionerVariants({ placement: props.placement, variant: props.variant }),
-            props.class,
-          ),
+          class: sheetSlots.positioner({
+            class: props.class,
+            placement: props.placement,
+            variant: props.variant,
+          }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -105,6 +123,8 @@ export const SheetContent = defineComponent({
         return null;
       }
 
+      const sheetSlots = useSheetSlots();
+
       return sheetTeleport([
         h(SheetBackdrop),
         h(SheetPositioner, { placement: props.placement, variant: props.variant }, () =>
@@ -112,16 +132,17 @@ export const SheetContent = defineComponent({
             DialogPrimitive.Content as ArkPart,
             {
               ...attrs,
-              class: cn(
-                sheetContentVariants({ placement: props.placement, variant: props.variant }),
-                props.class,
-              ),
+              class: sheetSlots.content({
+                class: props.class,
+                placement: props.placement,
+                variant: props.variant,
+              }),
             },
             () => [
               slots.default?.(),
               props.showCloseButton
                 ? h(SheetCloseTrigger, { asChild: true }, () =>
-                    renderIconCloseButton(sheetInlineVariants()),
+                    renderIconCloseButton(sheetSlots.inline()),
                   )
                 : null,
             ],
@@ -165,18 +186,21 @@ export const SheetBody = defineComponent({
     scrollFade: { default: false, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const sheetSlots = useSheetSlots();
+
+      return h(
         DialogBody as ArkPart,
         {
           ...attrs,
-          class: cn(sheetBodyVariants(), props.class),
+          class: sheetSlots.body({ class: props.class }),
           dataPart: "body",
           dataScope: "sheet",
           scrollFade: props.scrollFade,
         },
         slots,
       );
+    };
   },
 });
 
@@ -195,17 +219,20 @@ export const SheetFooter = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const sheetSlots = useSheetSlots();
+
+      return h(
         DialogFooter as ArkPart,
         {
           ...attrs,
-          class: cn(sheetFooterVariants(), props.class),
+          class: sheetSlots.footer({ class: props.class }),
           dataPart: "footer",
           dataScope: "sheet",
         },
         slots,
       );
+    };
   },
 });
 // #endregion

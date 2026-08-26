@@ -1,16 +1,5 @@
 import { Dialog as DialogPrimitive } from "@ark-ui/vue/dialog";
-import {
-  dialogBackdropVariants,
-  dialogBodyVariants,
-  dialogContentVariants,
-  dialogDescriptionVariants,
-  dialogFooterVariants,
-  dialogHeaderVariants,
-  dialogInlineVariants,
-  dialogPositionerVariants,
-  dialogTitleVariants,
-} from "@pisagor/styles/ui/dialog";
-import { cn } from "@pisagor/utils";
+import { type DialogVariants, dialogVariants } from "@pisagor/styles/ui/dialog";
 import {
   defineComponent,
   h,
@@ -24,8 +13,9 @@ import { renderIconCloseButton } from "../../internal/close-button";
 import { createContext } from "../../utils/create-context";
 
 // #region Types
-interface DialogContextProps {
+interface DialogContextValue {
   modal?: boolean;
+  slots: DialogVariants;
 }
 
 export interface DialogContentProps {
@@ -59,7 +49,7 @@ export interface DialogProps {
 // #endregion
 
 // #region Context
-const [provideDialogContext, useDialogLocal] = createContext<DialogContextProps>({
+const [provideDialogContext, useDialogLocal] = createContext<DialogContextValue>({
   name: "DialogLocal",
 });
 
@@ -73,6 +63,10 @@ function dialogTeleport(content: VNodeChild) {
   return h(Teleport, { to: "body" }, () => content);
 }
 
+function useDialogSlots() {
+  return useDialogLocal()?.slots ?? dialogVariants();
+}
+
 // #region Parts
 export const DialogRoot = defineComponent({
   inheritAttrs: false,
@@ -83,8 +77,9 @@ export const DialogRoot = defineComponent({
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    const context = reactive<DialogContextProps>({
+    const context = reactive<DialogContextValue>({
       modal: props.modal,
+      slots: dialogVariants(),
     });
 
     watchEffect(() => {
@@ -131,7 +126,7 @@ export const DialogBackdrop = defineComponent({
 
       return h(DialogPrimitive.Backdrop as ArkPart, {
         ...attrs,
-        class: cn(dialogBackdropVariants(), props.class),
+        class: dialogContext.slots.backdrop({ class: props.class }),
       });
     };
   },
@@ -145,20 +140,21 @@ export const DialogPositioner = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const dialogSlots = useDialogSlots();
+
+      return h(
         DialogPrimitive.Positioner as ArkPart,
         {
           ...attrs,
-          class: cn(
-            dialogPositionerVariants({
-              bottomStickOnMobile: props.bottomStickOnMobile || undefined,
-            }),
-            props.class,
-          ),
+          class: dialogSlots.positioner({
+            bottomStickOnMobile: props.bottomStickOnMobile || undefined,
+            class: props.class,
+          }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -191,19 +187,17 @@ export const DialogContent = defineComponent({
             DialogPrimitive.Content as ArkPart,
             {
               ...attrs,
-              class: cn(
-                dialogContentVariants({
-                  bottomStickOnMobile: props.bottomStickOnMobile,
-                  size: props.size,
-                }),
-                props.class,
-              ),
+              class: dialogContext.slots.content({
+                bottomStickOnMobile: props.bottomStickOnMobile,
+                class: props.class,
+                size: props.size,
+              }),
             },
             () => [
               slots.default?.(),
               props.showCloseButton
                 ? h(DialogCloseTrigger, { asChild: true }, () =>
-                    renderIconCloseButton(dialogInlineVariants()),
+                    renderIconCloseButton(dialogContext.slots.inline()),
                   )
                 : null,
             ],
@@ -226,12 +220,13 @@ export const DialogBody = defineComponent({
   setup(props, { attrs, slots }) {
     return () => {
       const { "data-part": _, "data-scope": __, ...rest } = attrs;
+      const dialogSlots = useDialogSlots();
 
       return h(
         "div",
         {
           ...rest,
-          class: cn(dialogBodyVariants(), props.class),
+          class: dialogSlots.body({ class: props.class }),
           "data-part": props.dataPart,
           "data-scope": props.dataScope,
         },
@@ -254,12 +249,13 @@ export const DialogHeader = defineComponent({
   setup(props, { attrs, slots }) {
     return () => {
       const { "data-part": _, "data-scope": __, ...rest } = attrs;
+      const dialogSlots = useDialogSlots();
 
       return h(
         "div",
         {
           ...rest,
-          class: cn(dialogHeaderVariants(), props.class),
+          class: dialogSlots.header({ class: props.class }),
           "data-part": props.dataPart,
           "data-scope": props.dataScope,
         },
@@ -280,15 +276,18 @@ export const DialogTitle = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const dialogSlots = useDialogSlots();
+
+      return h(
         DialogPrimitive.Title as ArkPart,
         {
           ...attrs,
-          class: cn(dialogTitleVariants(), props.class),
+          class: dialogSlots.title({ class: props.class }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -299,15 +298,18 @@ export const DialogDescription = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const dialogSlots = useDialogSlots();
+
+      return h(
         DialogPrimitive.Description as ArkPart,
         {
           ...attrs,
-          class: cn(dialogDescriptionVariants(), props.class),
+          class: dialogSlots.description({ class: props.class }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -330,12 +332,13 @@ export const DialogFooter = defineComponent({
   setup(props, { attrs, slots }) {
     return () => {
       const { "data-part": _, "data-scope": __, ...rest } = attrs;
+      const dialogSlots = useDialogSlots();
 
       return h(
         "div",
         {
           ...rest,
-          class: cn(dialogFooterVariants(), props.class),
+          class: dialogSlots.footer({ class: props.class }),
           "data-part": props.dataPart,
           "data-scope": props.dataScope,
         },

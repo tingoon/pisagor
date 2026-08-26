@@ -1,16 +1,7 @@
 import { ark } from "@ark-ui/vue/factory";
 import { Menu as MenuPrimitive } from "@ark-ui/vue/menu";
 import { PhCaretRight, PhCheck } from "@phosphor-icons/vue";
-import {
-  dropdownMenuContentVariants,
-  dropdownMenuInline5Variants,
-  dropdownMenuItemGroupLabelVariants,
-  dropdownMenuItemVariants,
-  dropdownMenuPositionerVariants,
-  dropdownMenuQuickItemVariants,
-  dropdownMenuSeparatorVariants,
-  dropdownMenuShortcutVariants,
-} from "@pisagor/styles/ui/dropdown-menu";
+import { dropdownMenuItemVariants, dropdownMenuVariants } from "@pisagor/styles/ui/dropdown-menu";
 import { cn } from "@pisagor/utils";
 import { type CSSProperties, defineComponent, h, type PropType } from "vue";
 
@@ -86,15 +77,18 @@ export const DropdownMenuPositioner = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = dropdownMenuVariants();
+
+      return h(
         MenuPrimitive.Positioner as ArkPart,
         {
           ...attrs,
-          class: cn(dropdownMenuPositionerVariants(), props.class, attrs.class),
+          class: variantSlots.positioner({ class: cn(props.class, attrs.class) }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -105,17 +99,20 @@ export const DropdownMenuContent = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(DropdownMenuPositioner, null, () =>
+    return () => {
+      const variantSlots = dropdownMenuVariants();
+
+      return h(DropdownMenuPositioner, null, () =>
         h(
           MenuPrimitive.Content as ArkPart,
           {
             ...attrs,
-            class: cn(dropdownMenuContentVariants(), props.class, attrs.class),
+            class: variantSlots.content({ class: cn(props.class, attrs.class) }),
           },
           slots,
         ),
       );
+    };
   },
 });
 
@@ -126,15 +123,18 @@ export const DropdownMenuItemGroupLabel = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = dropdownMenuVariants();
+
+      return h(
         MenuPrimitive.ItemGroupLabel as ArkPart,
         {
           ...attrs,
-          class: cn(dropdownMenuItemGroupLabelVariants(), props.class, attrs.class),
+          class: variantSlots.itemGroupLabel({ class: cn(props.class, attrs.class) }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -160,15 +160,18 @@ export const DropdownMenuSeparator = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = dropdownMenuVariants();
+
+      return h(
         MenuPrimitive.Separator as ArkPart,
         {
           ...attrs,
-          class: cn(dropdownMenuSeparatorVariants(), props.class, attrs.class),
+          class: variantSlots.separator({ class: cn(props.class, attrs.class) }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -203,17 +206,20 @@ export const DropdownMenuQuickItem = defineComponent({
     variant: { default: "default", type: String as PropType<"default" | "destructive"> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = dropdownMenuVariants();
+
+      return h(
         MenuPrimitive.Item as ArkPart,
         {
           ...attrs,
           class: dropdownMenuItemVariants({ variant: props.variant }).base({
-            class: cn(dropdownMenuQuickItemVariants(), props.class, attrs.class),
+            class: variantSlots.quickItem({ class: cn(props.class, attrs.class) }),
           }),
         },
         slots,
       );
+    };
   },
 });
 
@@ -305,17 +311,20 @@ export const DropdownMenuSubContent = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(DropdownMenuPositioner, {}, () =>
+    return () => {
+      const variantSlots = dropdownMenuVariants();
+
+      return h(DropdownMenuPositioner, {}, () =>
         h(
           MenuPrimitive.Content as ArkPart,
           {
             ...attrs,
-            class: cn(dropdownMenuContentVariants(), props.class, attrs.class),
+            class: variantSlots.content({ class: cn(props.class, attrs.class) }),
           },
           slots,
         ),
       );
+    };
   },
 });
 
@@ -351,12 +360,13 @@ export const DropdownMenuShortcut = defineComponent({
   setup(props, { attrs, slots }) {
     return () => {
       const { "data-part": _, "data-scope": __, ...rest } = attrs;
+      const variantSlots = dropdownMenuVariants();
 
       return h(
         ark.span as ArkPart,
         {
           ...rest,
-          class: cn(dropdownMenuShortcutVariants(), props.class, attrs.class),
+          class: variantSlots.shortcut({ class: cn(props.class, attrs.class) }),
           "data-part": props.dataPart,
           "data-scope": props.dataScope,
         },
@@ -370,8 +380,10 @@ export const DropdownMenuArrow = defineComponent({
   inheritAttrs: false,
   name: "DropdownMenuArrow",
   setup(_, { attrs }) {
-    return () =>
-      h(
+    return () => {
+      const variantSlots = dropdownMenuVariants();
+
+      return h(
         MenuPrimitive.Arrow as ArkPart,
         {
           ...attrs,
@@ -382,8 +394,9 @@ export const DropdownMenuArrow = defineComponent({
             ...(attrs.style as CSSProperties | undefined),
           } as CSSProperties,
         },
-        () => h(MenuPrimitive.ArrowTip as ArkPart, { class: dropdownMenuInline5Variants() }),
+        () => h(MenuPrimitive.ArrowTip as ArkPart, { class: variantSlots.arrowTip() }),
       );
+    };
   },
 });
 // #endregion
