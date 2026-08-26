@@ -3,8 +3,8 @@
     "url": "https://github.com/tingoon/pisagor/issues"
   },
   "dependencies": {
-    "@ark-ui/react": "^5.38.2",
-    "@mantine/hooks": "^9.5.1",
+    "@ark-ui/react": "^5.39.0",
+    "@mantine/hooks": "^9.5.2",
     "@pisagor/styles": "workspace:*",
     "@pisagor/utils": "workspace:*",
     "@tanstack/react-hotkeys": "^0.10.0"
@@ -17,8 +17,8 @@
     "@tailwindcss/typography": "^0.5.20",
     "@tanstack/react-table": "^9.1.2",
     "@tanstack/react-virtual": "^3.14.10",
-    "@tiptap/react": "^3.30.2",
-    "@tiptap/starter-kit": "^3.30.2",
+    "@tiptap/react": "^3.30.4",
+    "@tiptap/starter-kit": "^3.30.4",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "react": "catalog:",

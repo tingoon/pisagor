@@ -24,6 +24,7 @@
     "@types/node": "^26.3.0",
     "knip": "^6.32.2",
     "lefthook": "^2.1.10",
+    "taze": "^21.1.0",
     "turbo": "^2.10.12",
     "typescript": "^7.0.2"
   },
@@ -40,7 +41,8 @@
     "check": "biome ci && turbo type-check --output-logs=errors-only && knip",
     "format": "biome check --write .",
     "knip": "knip",
-    "prepare": "lefthook install"
+    "prepare": "lefthook install",
+    "taze": "taze -r -w"
   },
   "type": "module",
   "workspaces": [
