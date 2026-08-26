@@ -1,14 +1,13 @@
 import { ark } from "@ark-ui/vue/factory";
 import { type CardVariantProps, cardVariants } from "@pisagor/styles/ui/card";
 import { defineComponent, h, type PropType } from "vue";
-import type { WithTestId } from "../../internal/types";
 
 export type CardMediaVariant = NonNullable<CardVariantProps["variant"]>;
 
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface CardRootProps extends WithTestId {
+export interface CardRootProps {
   class?: unknown;
 }
 // #endregion
@@ -19,7 +18,6 @@ export const CardRoot = defineComponent({
   name: "CardRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -32,7 +30,6 @@ export const CardRoot = defineComponent({
           class: variantSlots.base({ class: props.class }),
           "data-part": "root",
           "data-scope": "card",
-          "data-testid": props.testId,
         },
         slots.default?.(),
       );
@@ -45,7 +42,6 @@ export const CardMedia = defineComponent({
   name: "CardMedia",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    testId: String,
     variant: { default: "default", type: String as PropType<CardVariantProps["variant"]> },
   },
   setup(props, { attrs, slots }) {
@@ -59,7 +55,6 @@ export const CardMedia = defineComponent({
           class: variantSlots.media({ class: props.class }),
           "data-part": "media",
           "data-scope": "card",
-          "data-testid": props.testId,
           "data-variant": props.variant,
         },
         slots.default?.(),
@@ -74,7 +69,6 @@ export const CardHeader = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     description: { default: undefined, type: String },
-    testId: String,
     title: { default: undefined, type: String },
   },
   setup(props, { attrs, slots }) {
@@ -88,7 +82,6 @@ export const CardHeader = defineComponent({
           class: variantSlots.header({ class: props.class }),
           "data-part": "header",
           "data-scope": "card",
-          "data-testid": props.testId,
         },
         () => [
           props.title ? h(CardTitle, null, () => props.title) : null,
@@ -105,7 +98,6 @@ export const CardTitle = defineComponent({
   name: "CardTitle",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -118,7 +110,6 @@ export const CardTitle = defineComponent({
           class: variantSlots.title({ class: props.class }),
           "data-part": "title",
           "data-scope": "card",
-          "data-testid": props.testId,
         },
         slots.default?.(),
       );
@@ -131,7 +122,6 @@ export const CardDescription = defineComponent({
   name: "CardDescription",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -144,7 +134,6 @@ export const CardDescription = defineComponent({
           class: variantSlots.description({ class: props.class }),
           "data-part": "description",
           "data-scope": "card",
-          "data-testid": props.testId,
         },
         slots.default?.(),
       );
@@ -157,7 +146,6 @@ export const CardAction = defineComponent({
   name: "CardAction",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -170,7 +158,6 @@ export const CardAction = defineComponent({
           class: variantSlots.action({ class: props.class }),
           "data-part": "action",
           "data-scope": "card",
-          "data-testid": props.testId,
         },
         slots.default?.(),
       );
@@ -183,7 +170,6 @@ export const CardContent = defineComponent({
   name: "CardContent",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -196,7 +182,6 @@ export const CardContent = defineComponent({
           class: variantSlots.content({ class: props.class }),
           "data-part": "content",
           "data-scope": "card",
-          "data-testid": props.testId,
         },
         slots.default?.(),
       );
@@ -209,7 +194,6 @@ export const CardFooter = defineComponent({
   name: "CardFooter",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -222,7 +206,6 @@ export const CardFooter = defineComponent({
           class: variantSlots.footer({ class: props.class }),
           "data-part": "footer",
           "data-scope": "card",
-          "data-testid": props.testId,
         },
         slots.default?.(),
       );

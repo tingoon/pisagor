@@ -19,7 +19,6 @@ import {
   shellVariantArgs,
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { WithTestId } from "../../internal/types";
 import { Button } from "../button/button";
 import { FieldLabel } from "../field/field";
 import { Input, type InputProps } from "../input/input";
@@ -29,7 +28,7 @@ type ArkPart = Parameters<typeof h>[0];
 type InputSize = InputProps["size"];
 
 // #region Types
-export interface NumberInputProps extends WithTestId {
+export interface NumberInputProps {
   class?: unknown;
   clearable?: boolean;
   defaultValue?: string;
@@ -71,7 +70,6 @@ export const NumberInputRoot = defineComponent({
     readOnly: { default: undefined, type: Boolean },
     size: { default: "md", type: String as PropType<InputSize> },
     step: { default: undefined, type: Number },
-    testId: String,
     value: { default: undefined, type: String },
     variant: { default: undefined, type: String as PropType<FormControlVariant> },
   },
@@ -84,7 +82,6 @@ export const NumberInputRoot = defineComponent({
             ...attrs,
             class: cn(numberFieldVariants(), props.class),
             "data-size": props.size,
-            "data-testid": props.testId,
             defaultValue: props.defaultValue,
             disabled: props.disabled,
             max: props.max,

@@ -2,7 +2,6 @@ import { Menu as MenuPrimitive } from "@ark-ui/vue/menu";
 import { contextMenuTriggerVariants } from "@pisagor/styles/ui/context-menu";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNode } from "vue";
-import type { WithTestId } from "../../internal/types";
 import type { DropdownMenuRootProps } from "../dropdown-menu/dropdown-menu";
 import {
   DropdownMenuContent,
@@ -14,7 +13,6 @@ import {
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuTriggerItem,
-  useDropdownMenuRoot,
 } from "../dropdown-menu/dropdown-menu";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -37,7 +35,6 @@ export const ContextMenuRoot = defineComponent({
       default: () => ({ placement: "bottom-end" }),
       type: Object as PropType<Record<string, unknown>>,
     },
-    testId: String,
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
@@ -52,15 +49,12 @@ export const ContextMenuContextTrigger = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    const context = useDropdownMenuRoot();
-
     return () =>
       h(
         MenuPrimitive.ContextTrigger as ArkPart,
         {
           ...attrs,
           class: cn(contextMenuTriggerVariants(), props.class, attrs.class),
-          "data-testid": context?.testId,
         },
         slots,
       );
@@ -141,4 +135,4 @@ export const ContextMenuShortcut = defineComponent({
 });
 // #endregion
 
-export type ContextMenuRootProps = DropdownMenuRootProps & WithTestId;
+export type ContextMenuRootProps = DropdownMenuRootProps;

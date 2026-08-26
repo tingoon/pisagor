@@ -9,7 +9,7 @@ import {
   shellVariantArgs,
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 import { InputGroupRoot } from "../input-group/input-group-core";
 import { InputClearAddon } from "./input-clear-button";
 
@@ -20,7 +20,7 @@ type InputClassNames = VariantClassNames<InputSlots>;
 type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
 
 // #region Types
-export interface InputProps extends WithTestId {
+export interface InputProps {
   class?: unknown;
   classNames?: InputClassNames;
   clearable?: boolean;
@@ -53,7 +53,6 @@ export const Input = defineComponent({
     onValueChange: { default: undefined, type: Function as PropType<InputProps["onValueChange"]> },
     readOnly: { default: undefined, type: Boolean },
     size: { default: "md", type: String as PropType<InputSize> },
-    testId: String,
     type: { default: "text", type: String },
     value: { default: undefined, type: [String, Number, Array] as PropType<InputProps["value"]> },
     variant: { default: undefined, type: String as PropType<FormControlVariant> },
@@ -99,7 +98,6 @@ export const Input = defineComponent({
           ...controlProps,
           class: cn(inputRootVariants({ size: props.size, ...shellArgs }), props.class),
           "data-size": props.size,
-          "data-testid": props.testId,
           defaultValue: props.defaultValue,
           disabled: props.disabled,
           onInput: changeHandler,
@@ -114,7 +112,6 @@ export const Input = defineComponent({
           ...attrs,
           class: slots.clearableRoot({ class: cn(props.class, props.classNames?.clearableRoot) }),
           "data-size": props.size,
-          "data-testid": props.testId,
           defaultValue: props.defaultValue,
           disabled: props.disabled,
           onInput: handleChange,

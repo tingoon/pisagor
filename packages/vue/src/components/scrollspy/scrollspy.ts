@@ -1,6 +1,5 @@
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, onMounted, onUnmounted, type PropType, ref } from "vue";
-import type { WithTestId } from "../../internal/types";
 
 // #region Types
 type ScrollTarget = HTMLElement | Document | null | undefined;
@@ -9,7 +8,7 @@ const SCROLLSPY_ANCHOR = "data-scrollspy-anchor";
 const SCROLLSPY_OFFSET = "data-scrollspy-offset";
 const SCROLLSPY_ANCHOR_SELECTOR = `[${SCROLLSPY_ANCHOR}]`;
 
-export interface ScrollspyProps extends WithTestId {
+export interface ScrollspyProps {
   class?: unknown;
   /**
    * Whether to update the URL hash when the active section changes.
@@ -106,7 +105,6 @@ export const Scrollspy = defineComponent({
     onUpdate: { default: undefined, type: Function as PropType<ScrollspyProps["onUpdate"]> },
     smooth: { default: true, type: Boolean as PropType<ScrollspyProps["smooth"]> },
     targetRef: { default: undefined, type: Object as PropType<ScrollspyProps["targetRef"]> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     const selfRef = ref<HTMLDivElement | null>(null);
@@ -298,7 +296,6 @@ export const Scrollspy = defineComponent({
           class: cn(props.class),
           "data-part": "root",
           "data-scope": "scrollspy",
-          "data-testid": props.testId,
           ref: selfRef,
         },
         slots.default?.(),

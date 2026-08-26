@@ -15,7 +15,6 @@ import {
 } from "@pisagor/styles/ui/chart";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType, type VNodeChild } from "vue";
-import type { WithTestId } from "../internal/types";
 import { createContext } from "../utils/create-context";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -32,7 +31,7 @@ export type ChartConfig = Record<
   }
 >;
 
-export interface ChartLegendContentProps extends WithTestId {
+export interface ChartLegendContentProps {
   className?: string;
   hideIcon?: boolean;
   nameKey?: string;
@@ -40,7 +39,7 @@ export interface ChartLegendContentProps extends WithTestId {
   verticalAlign?: "top" | "bottom";
 }
 
-export interface ChartTooltipContentProps extends WithTestId {
+export interface ChartTooltipContentProps {
   active?: boolean;
   className?: string;
   color?: string;
@@ -165,7 +164,6 @@ export const ChartContainer = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     config: { required: true, type: Object as PropType<ChartConfig> },
     id: { default: undefined, type: String },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     const uniqueId = computed(() => props.id ?? `chart-${Math.random().toString(36).slice(2)}`);
@@ -180,7 +178,6 @@ export const ChartContainer = defineComponent({
           "data-chart": uniqueId.value,
           "data-part": "root",
           "data-scope": "chart",
-          "data-testid": props.testId,
         },
         () => [h(ChartStyle, { config: props.config, id: uniqueId.value }), slots.default?.()],
       );

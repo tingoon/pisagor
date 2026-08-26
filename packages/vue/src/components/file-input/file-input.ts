@@ -8,13 +8,12 @@ import {
   shellVariantArgs,
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { WithTestId } from "../../internal/types";
 import { InputGroupAddon, InputGroupButton, InputGroupText } from "../input-group/input-group-core";
 
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface FileInputProps extends WithTestId {
+export interface FileInputProps {
   accept?: string;
   /** Label for the browse button. */
   browseLabel?: string;
@@ -86,7 +85,6 @@ export const FileInput = defineComponent({
     placeholder: { default: "No file chosen", type: String },
     required: { default: undefined, type: Boolean },
     size: { default: "md", type: String as PropType<FileInputProps["size"]> },
-    testId: String,
     variant: { default: undefined, type: String as PropType<FormControlVariant> },
   },
   setup(props, { attrs }) {
@@ -121,7 +119,6 @@ export const FileInput = defineComponent({
           "data-part": "root",
           "data-scope": "file-input",
           "data-size": props.size,
-          "data-testid": props.testId,
           role: "group",
         },
         [

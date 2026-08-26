@@ -9,11 +9,10 @@ import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { WithTestId } from "../../internal/types";
 
 type ArkPart = Parameters<typeof h>[0];
 
-export interface RatingProps extends WithTestId {
+export interface RatingProps {
   allowHalf?: boolean;
   class?: ClassValue;
   count?: number;
@@ -39,7 +38,6 @@ export const Rating = defineComponent({
     icon: { default: undefined, type: [Object, Function, String] as PropType<VNodeChild> },
     onValueChange: { default: undefined, type: Function as PropType<RatingProps["onValueChange"]> },
     readOnly: { default: undefined, type: Boolean },
-    testId: String,
     value: { default: undefined, type: Number },
     variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
   },
@@ -61,7 +59,6 @@ export const Rating = defineComponent({
               class: cn(surfaceTone, props.class, (attrs as { class?: ClassValue }).class),
             }),
             count: props.count,
-            "data-testid": props.testId,
             "data-variant": resolved.variant,
             defaultValue: props.defaultValue,
             disabled: props.disabled,

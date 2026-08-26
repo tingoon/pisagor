@@ -17,7 +17,6 @@ import {
 } from "@pisagor/styles/ui/listbox";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
-import type { WithTestId } from "../../internal/types";
 import { DropdownMenu } from "../dropdown-menu";
 
 // #region Types
@@ -33,7 +32,7 @@ export type ListboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
 > & {
   collection?: ListCollection<T>;
   onValueChange?: (value: string | string[]) => void;
-} & WithTestId;
+};
 
 export interface ListboxProps extends Omit<ListboxRootProps, "children"> {
   items?: ListboxPresetItem[];
@@ -56,7 +55,6 @@ export const ListboxRoot = defineComponent({
       default: undefined,
       type: Function as PropType<ListboxRootProps["onValueChange"]>,
     },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -66,7 +64,6 @@ export const ListboxRoot = defineComponent({
           ...attrs,
           class: cn(listboxVariants(), props.class, attrs.class),
           collection: props.collection,
-          "data-testid": props.testId,
           onValueChange: props.onValueChange
             ? (details: { value: string | string[] }) => props.onValueChange?.(details.value)
             : undefined,
@@ -284,7 +281,6 @@ export const ListboxShorthand = defineComponent({
       default: undefined,
       type: Function as PropType<ListboxRootProps["onValueChange"]>,
     },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -305,7 +301,6 @@ export const ListboxShorthand = defineComponent({
           class: props.class,
           collection,
           onValueChange: props.onValueChange,
-          testId: props.testId,
         },
         () =>
           items

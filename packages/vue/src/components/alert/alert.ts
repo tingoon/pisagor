@@ -7,13 +7,13 @@ import {
 } from "@pisagor/styles/ui/alert";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType, toValue, type VNodeChild } from "vue";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 import { createContext } from "../../utils/create-context";
 
 // #region Types
 type AlertClassNames = VariantClassNames<AlertSlots>;
 
-export interface AlertProps extends WithTestId {
+export interface AlertProps {
   action?: VNodeChild;
   actionProps?: Record<string, unknown>;
   class?: unknown;
@@ -47,7 +47,6 @@ export const AlertRoot = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<AlertClassNames> },
-    testId: String,
     variant: { default: undefined, type: String as PropType<AlertVariantProps["variant"]> },
   },
   setup(props, { attrs, slots }) {
@@ -66,7 +65,6 @@ export const AlertRoot = defineComponent({
           class: contextValue.value.slots.base({ class: props.class }),
           "data-part": "root",
           "data-scope": "alert",
-          "data-testid": props.testId,
         },
         slots,
       );
@@ -177,7 +175,6 @@ export const AlertShorthand = defineComponent({
     description: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
     descriptionProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
     icon: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
-    testId: String,
     title: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
     titleProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
     variant: { default: undefined, type: String as PropType<AlertVariantProps["variant"]> },
@@ -208,7 +205,6 @@ export const AlertShorthand = defineComponent({
           ...attrs,
           class: props.class,
           classNames: props.classNames,
-          testId: props.testId,
           variant: props.variant,
         },
         () => nodes,

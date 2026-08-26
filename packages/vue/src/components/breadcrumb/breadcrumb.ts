@@ -10,7 +10,6 @@ import {
 } from "@pisagor/styles/ui/breadcrumb";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import type { WithTestId } from "../../internal/types";
 
 // #region Types
 export interface BreadcrumbPresetItem {
@@ -19,7 +18,7 @@ export interface BreadcrumbPresetItem {
   label: VNodeChild;
 }
 
-export interface BreadcrumbRootProps extends WithTestId {
+export interface BreadcrumbRootProps {
   /**
    * Accessible label for the breadcrumb navigation landmark.
    *
@@ -41,7 +40,6 @@ export const BreadcrumbRoot = defineComponent({
   name: "BreadcrumbRoot",
   props: {
     ariaLabel: { default: "Breadcrumb", type: String },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -52,7 +50,6 @@ export const BreadcrumbRoot = defineComponent({
           "aria-label": props.ariaLabel,
           "data-part": "root",
           "data-scope": "breadcrumb",
-          "data-testid": props.testId,
         },
         slots,
       );
@@ -193,11 +190,10 @@ export const BreadcrumbShorthand = defineComponent({
   props: {
     ariaLabel: { default: "Breadcrumb", type: String },
     items: { default: undefined, type: Array as PropType<BreadcrumbPresetItem[]> },
-    testId: String,
   },
   setup(props, { attrs }) {
     return () =>
-      h(BreadcrumbRoot, { ...attrs, ariaLabel: props.ariaLabel, testId: props.testId }, () =>
+      h(BreadcrumbRoot, { ...attrs, ariaLabel: props.ariaLabel }, () =>
         props.items
           ? h(BreadcrumbList, null, () =>
               props.items?.flatMap((item, index) => {

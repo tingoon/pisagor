@@ -2,10 +2,9 @@ import { ark } from "@ark-ui/vue/factory";
 import { kbdGroupVariants, kbdVariants } from "@pisagor/styles/ui/kbd";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
-import type { WithTestId } from "../../internal/types";
 
 // #region Types
-export interface KbdProps extends WithTestId {
+export interface KbdProps {
   class?: unknown;
   variant?: "default" | "outline";
 }
@@ -19,7 +18,6 @@ export const KbdRoot = defineComponent({
   name: "KbdRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    testId: String,
     variant: { default: "default", type: String as PropType<KbdProps["variant"]> },
   },
   setup(props, { attrs, slots }) {
@@ -31,7 +29,6 @@ export const KbdRoot = defineComponent({
           class: cn(kbdVariants({ variant: props.variant }), props.class),
           "data-part": "root",
           "data-scope": "kbd",
-          "data-testid": props.testId,
         },
         slots,
       );

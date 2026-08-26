@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
 import { avatarGroupVariants } from "@pisagor/styles/ui/avatar";
 import { defineComponent, h, type PropType } from "vue";
-import type { WithTestId } from "../../internal/types";
 import { Avatar } from "./avatar";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -13,7 +12,7 @@ export interface AvatarGroupUser {
   src?: string;
 }
 
-export interface AvatarGroupProps extends WithTestId {
+export interface AvatarGroupProps {
   class?: unknown;
   /** Maximum number of avatars to show; excess shown as "+N". */
   max?: number;
@@ -28,7 +27,6 @@ export const AvatarGroupRoot = defineComponent({
   name: "AvatarGroupRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -41,7 +39,6 @@ export const AvatarGroupRoot = defineComponent({
           class: variantSlots.base({ class: props.class }),
           "data-part": "group",
           "data-scope": "avatar",
-          "data-testid": props.testId,
         },
         slots,
       );
@@ -79,7 +76,6 @@ export const AvatarGroupShorthand = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     max: { default: undefined, type: Number },
-    testId: String,
     users: { default: () => [], type: Array as PropType<AvatarGroupUser[]> },
   },
   setup(props, { attrs }) {
@@ -90,7 +86,7 @@ export const AvatarGroupShorthand = defineComponent({
           ? props.users.length - props.max
           : 0;
 
-      return h(AvatarGroupRoot, { ...attrs, class: props.class, testId: props.testId }, () => [
+      return h(AvatarGroupRoot, { ...attrs, class: props.class }, () => [
         visibleUsers.map((user) =>
           h(Avatar, {
             alt: user.name ?? "",

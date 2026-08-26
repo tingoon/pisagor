@@ -23,7 +23,6 @@ import {
   shellVariantArgs,
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils/create-context";
 import { Toggle } from "../toggle/toggle";
 import { VisuallyHidden } from "../visually-hidden/visually-hidden";
@@ -35,7 +34,7 @@ interface RichTextEditorContextValue {
   editor: Editor | null;
 }
 
-export interface RichTextEditorRootProps extends WithTestId {
+export interface RichTextEditorRootProps {
   "aria-label"?: string;
   class?: unknown;
   /** Initial HTML content for uncontrolled usage. */
@@ -96,7 +95,6 @@ const richTextEditorRootProps = {
     type: Function as PropType<RichTextEditorRootProps["onValueChange"]>,
   },
   readOnly: { default: false, type: Boolean },
-  testId: String,
   value: { default: undefined, type: String },
   variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
 };
@@ -196,7 +194,6 @@ export const RichTextEditorRoot = defineComponent({
           "data-part": "root",
           "data-readonly": props.readOnly ? "true" : undefined,
           "data-scope": "rich-text-editor",
-          "data-testid": props.testId,
           role: "group",
         },
         () => [

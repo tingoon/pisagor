@@ -17,7 +17,6 @@ import {
   ref,
   watchEffect,
 } from "vue";
-import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils/create-context";
 
 // #region Types
@@ -41,7 +40,7 @@ interface SortableItemContextValue {
   isDragging: boolean;
 }
 
-export interface SortableRootProps extends WithTestId {
+export interface SortableRootProps {
   items: string[];
   onValueChange?: (items: string[]) => void;
   orientation?: SortableOrientation;
@@ -101,7 +100,6 @@ export const SortableRoot = defineComponent({
       default: "vertical",
       type: String as PropType<SortableOrientation>,
     },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     const activeId = ref<string | null>(null);
@@ -253,7 +251,6 @@ export const SortableRoot = defineComponent({
           "data-orientation": props.orientation,
           "data-part": "root",
           "data-scope": "sortable",
-          "data-testid": props.testId,
           role: "list",
         },
         () => slots.default?.(),

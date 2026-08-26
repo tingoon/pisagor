@@ -18,8 +18,6 @@ type ClassValue = Parameters<typeof cn>[0];
 import { computed, defineComponent, h, type PropType, ref } from "vue";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
-import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils/create-context";
 import { Button } from "../button";
 import type { InputProps } from "../input";
 import { InputGroup } from "../input-group";
@@ -27,7 +25,7 @@ import { InputGroupRoot } from "../input-group/input-group-core";
 
 type ArkPart = Parameters<typeof h>[0];
 
-export interface DatePickerRootProps extends WithTestId {
+export interface DatePickerRootProps {
   variant?: FormControlVariant;
   positioning?: unknown;
   onValueChange?: (value: unknown) => void;
@@ -51,13 +49,6 @@ export interface DatePickerContentProps {
   showCalendar?: boolean;
 }
 
-// #region Context
-const [provideDatePickerRootContext, useDatePickerRoot] = createContext<{ testId?: string }>({
-  name: "DatePickerRoot",
-  strict: false,
-});
-// #endregion
-
 // #region Parts
 export const DatePickerRoot = defineComponent({
   inheritAttrs: false,
@@ -69,7 +60,6 @@ export const DatePickerRoot = defineComponent({
       type: Function as PropType<DatePickerRootProps["onValueChange"]>,
     },
     positioning: { default: { placement: "top" }, type: Object as PropType<unknown> },
-    testId: String,
     value: { default: undefined, type: null as unknown as PropType<unknown> },
     variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
   },
@@ -80,7 +70,6 @@ export const DatePickerRoot = defineComponent({
           DatePickerPrimitive.Root as ArkPart,
           {
             ...attrs,
-            "data-testid": props.testId,
             defaultValue: props.defaultValue,
             modelValue: props.value,
             onValueChange: props.onValueChange
@@ -90,8 +79,6 @@ export const DatePickerRoot = defineComponent({
             positioning: props.positioning,
           },
           () => {
-            provideDatePickerRootContext({ testId: props.testId });
-
             return [slots.default?.()];
           },
         ),
@@ -107,14 +94,11 @@ export const DatePickerTrigger = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const { testId } = useDatePickerRoot() ?? {};
-
       return h(
         DatePickerPrimitive.Control as ArkPart,
         {
           ...attrs,
           class: datePickerControlVariants(),
-          "data-testid": testId,
         },
         () => [
           h(
@@ -141,9 +125,7 @@ export const DatePickerInput = defineComponent({
   },
   setup(props, { attrs }) {
     return () => {
-      const { testId } = useDatePickerRoot() ?? {};
-
-      return h(DatePickerPrimitive.Control as ArkPart, { ...attrs, "data-testid": testId }, () =>
+      return h(DatePickerPrimitive.Control as ArkPart, { ...attrs }, () =>
         h(InputGroupRoot as ArkPart, { size: props.size }, () => [
           h(DatePickerPrimitive.Input as ArkPart, { asChild: true }, () =>
             h(InputGroup.Input as ArkPart, {

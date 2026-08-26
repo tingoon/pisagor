@@ -9,7 +9,6 @@ import {
   shellVariantArgs,
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { WithTestId } from "../../internal/types";
 import { FieldLabel } from "../field/field";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -21,7 +20,7 @@ export interface RadioGroupPresetItem {
   value: string;
 }
 
-export interface RadioGroupRootProps extends WithTestId {
+export interface RadioGroupRootProps {
   class?: unknown;
   defaultValue?: string | null;
   disabled?: boolean;
@@ -58,7 +57,6 @@ export const RadioGroupRoot = defineComponent({
       type: Function as PropType<RadioGroupRootProps["onValueChange"]>,
     },
     orientation: { default: undefined, type: String as PropType<"horizontal" | "vertical"> },
-    testId: String,
     value: { default: undefined, type: [String, null] as PropType<string | null> },
   },
   setup(props, { attrs, slots }) {
@@ -68,7 +66,6 @@ export const RadioGroupRoot = defineComponent({
         {
           ...attrs,
           class: cn(radioGroupVariants(), props.class),
-          "data-testid": props.testId,
           defaultValue: props.defaultValue,
           disabled: props.disabled,
           modelValue: props.value,
@@ -172,7 +169,6 @@ export const RadioGroupShorthand = defineComponent({
       type: Function as PropType<RadioGroupRootProps["onValueChange"]>,
     },
     orientation: { default: undefined, type: String as PropType<"horizontal" | "vertical"> },
-    testId: String,
     value: { default: undefined, type: [String, null] as PropType<string | null> },
   },
   setup(props, { attrs }) {
@@ -186,7 +182,6 @@ export const RadioGroupShorthand = defineComponent({
           name: props.name,
           onValueChange: props.onValueChange,
           orientation: props.orientation,
-          testId: props.testId,
           value: props.value,
         },
         () =>

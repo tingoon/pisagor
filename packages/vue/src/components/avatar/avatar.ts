@@ -5,7 +5,7 @@ import {
   avatarVariants,
 } from "@pisagor/styles/ui/avatar";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 
 type ArkPart = Parameters<typeof h>[0];
 
@@ -15,7 +15,7 @@ export type AvatarSize = NonNullable<AvatarVariantProps["size"]>;
 
 export type AvatarClassNames = VariantClassNames<AvatarSlots>;
 
-export interface AvatarProps extends WithTestId {
+export interface AvatarProps {
   /** Slot class names */
   classNames?: AvatarClassNames;
   /** Renders the avatar image with the provided src */
@@ -59,7 +59,6 @@ export const Avatar = defineComponent({
     shape: { default: "circle", type: String as PropType<AvatarShape> },
     size: { default: "md", type: String as PropType<AvatarSize> },
     src: { default: undefined, type: String },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -72,7 +71,6 @@ export const Avatar = defineComponent({
           class: slots_.base({ class: props.class }),
           "data-shape": props.shape,
           "data-size": props.size,
-          "data-testid": props.testId,
         },
         () => [
           props.src

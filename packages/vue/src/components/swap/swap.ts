@@ -2,12 +2,11 @@ import { Swap as SwapPrimitive } from "@ark-ui/vue/swap";
 import { type SwapVariantProps, swapVariants } from "@pisagor/styles/ui/swap";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import type { WithTestId } from "../../internal/types";
 
 // #region Types
 export type SwapVariant = NonNullable<SwapVariantProps["variant"]>;
 
-export interface SwapProps extends WithTestId {
+export interface SwapProps {
   class?: unknown;
   lazyMount?: boolean;
   /**
@@ -43,7 +42,6 @@ export const Swap = defineComponent({
     on: { default: undefined, type: [String, Object, Array, Function] as PropType<VNodeChild> },
     onIndicatorProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
     swap: { default: false, type: Boolean },
-    testId: String,
     unmountOnExit: { default: true, type: Boolean },
     variant: { default: "fade", type: String as PropType<SwapVariant> },
   },
@@ -54,7 +52,6 @@ export const Swap = defineComponent({
         {
           ...attrs,
           class: cn(swapVariants({ variant: props.variant }), props.class),
-          "data-testid": props.testId,
           lazyMount: props.lazyMount,
           swap: props.swap,
           unmountOnExit: props.unmountOnExit,

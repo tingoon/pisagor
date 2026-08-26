@@ -11,7 +11,6 @@ export const BottomNavigationRoot = defineComponent({
   name: "BottomNavigationRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -22,7 +21,6 @@ export const BottomNavigationRoot = defineComponent({
         {
           ...attrs,
           class: variantSlots.base({ class: props.class }),
-          "data-testid": props.testId,
         },
         slots,
       );

@@ -12,15 +12,9 @@ import {
   drawerTitleVariants,
 } from "@pisagor/styles/ui/drawer";
 import { cn } from "@pisagor/utils";
-import { defineComponent, h, type PropType, reactive, Teleport, watchEffect } from "vue";
-import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils/create-context";
+import { defineComponent, h, type PropType, Teleport } from "vue";
 
 // #region Types
-interface DrawerContextProps {
-  testId?: string;
-}
-
 export interface DrawerHeaderProps {
   class?: unknown;
   description?: string;
@@ -32,17 +26,10 @@ export interface DrawerBodyProps {
   scrollFade?: boolean;
 }
 
-export interface DrawerProps extends WithTestId {
+export interface DrawerProps {
   lazyMount?: boolean;
   unmountOnExit?: boolean;
 }
-// #endregion
-
-// #region Context
-const [provideDrawerContext, useDrawer] = createContext<DrawerContextProps>({
-  name: "Drawer",
-  strict: false,
-});
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];
@@ -62,20 +49,7 @@ function drawerTeleport(content: ReturnType<typeof h> | ReturnType<typeof h>[]) 
 export const DrawerRoot = defineComponent({
   inheritAttrs: false,
   name: "DrawerRoot",
-  props: {
-    testId: String,
-  },
-  setup(props, { attrs, slots }) {
-    const context = reactive<DrawerContextProps>({
-      testId: props.testId,
-    });
-
-    watchEffect(() => {
-      context.testId = props.testId;
-    });
-
-    provideDrawerContext(context);
-
+  setup(_, { attrs, slots }) {
     return () => h(DrawerPrimitive.Root as ArkPart, { ...attrs }, slots);
   },
 });
@@ -135,8 +109,6 @@ export const DrawerContent = defineComponent({
     variant: { default: "default", type: String as PropType<"default" | "inset"> },
   },
   setup(props, { attrs, slots }) {
-    const drawerContext = useDrawer() ?? {};
-
     return () =>
       drawerTeleport([
         h(DrawerBackdrop),
@@ -154,7 +126,6 @@ export const DrawerContent = defineComponent({
                     }),
                     props.class,
                   ),
-                  "data-testid": drawerContext.testId,
                 },
                 () => [h(DrawerGrabber), slots.default?.()],
               ),

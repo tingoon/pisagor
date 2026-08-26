@@ -12,7 +12,6 @@ import {
 } from "@pisagor/styles/ui/file";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import type { WithTestId } from "../../internal/types";
 import { Format } from "../format";
 
 export type FileMediaVariant = NonNullable<FileMediaVariantProps["variant"]>;
@@ -20,7 +19,7 @@ export type FileMediaVariant = NonNullable<FileMediaVariantProps["variant"]>;
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface FileProps extends WithTestId {
+export interface FileProps {
   /** Trailing actions (download, remove, …). */
   actions?: VNodeChild;
   class?: unknown;
@@ -41,7 +40,6 @@ export const FileRoot = defineComponent({
   name: "FileRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -52,7 +50,6 @@ export const FileRoot = defineComponent({
           class: cn(fileVariants(), props.class),
           "data-part": "root",
           "data-scope": "file",
-          "data-testid": props.testId,
         },
         slots,
       );
@@ -198,11 +195,10 @@ export const FileShorthand = defineComponent({
     meta: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
     name: { required: true, type: [String, Object, Array] as PropType<VNodeChild> },
     size: { default: undefined, type: Number },
-    testId: String,
   },
   setup(props, { attrs }) {
     return () =>
-      h(FileRoot, { ...attrs, class: props.class, testId: props.testId }, () => [
+      h(FileRoot, { ...attrs, class: props.class }, () => [
         h(FileMedia, null, () => props.media),
 
         h(FileContent, null, () => [

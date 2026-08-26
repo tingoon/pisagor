@@ -116,7 +116,6 @@ export const SheetContent = defineComponent({
                 sheetContentVariants({ placement: props.placement, variant: props.variant }),
                 props.class,
               ),
-              "data-testid": dialogContext.testId,
             },
             () => [
               slots.default?.(),

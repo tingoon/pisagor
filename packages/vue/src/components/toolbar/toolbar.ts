@@ -2,12 +2,12 @@ import { ark } from "@ark-ui/vue/factory";
 import { type ToolbarSlots, toolbarVariants } from "@pisagor/styles/ui/toolbar";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 
 type ToolbarClassNames = VariantClassNames<ToolbarSlots>;
 
 // #region Types
-export interface ToolbarProps extends Omit<WithTestId, "testId">, WithTestId {
+export interface ToolbarProps {
   class?: unknown;
   classNames?: ToolbarClassNames;
   title?: VNodeChild;
@@ -27,7 +27,6 @@ export const ToolbarRoot = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<ToolbarClassNames> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -38,7 +37,6 @@ export const ToolbarRoot = defineComponent({
           class: toolbarVariants().base({ class: props.class }),
           "data-part": "root",
           "data-scope": "toolbar",
-          "data-testid": props.testId,
         },
         slots,
       );
@@ -159,7 +157,6 @@ export const ToolbarShorthand = defineComponent({
       type: [String, Object, Array, Function] as PropType<VNodeChild>,
     },
     descriptionProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
-    testId: String,
     title: { default: undefined, type: [String, Object, Array, Function] as PropType<VNodeChild> },
     titleProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
   },
@@ -190,7 +187,6 @@ export const ToolbarShorthand = defineComponent({
           ...attrs,
           class: props.class,
           classNames: props.classNames,
-          testId: props.testId,
         },
         () => nodes,
       );

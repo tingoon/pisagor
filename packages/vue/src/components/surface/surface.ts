@@ -1,7 +1,6 @@
 import { type SurfaceVariantProps, surfaceVariants } from "@pisagor/styles/ui/surface";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
-import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils/create-context";
 
 export type SurfaceVariant = NonNullable<SurfaceVariantProps["variant"]>;
@@ -27,7 +26,7 @@ export function useSurface() {
   return useSurfaceContext();
 }
 
-export interface SurfaceProps extends WithTestId {
+export interface SurfaceProps {
   bordered?: boolean;
   class?: unknown;
   padding?: SurfaceVariantProps["padding"];
@@ -45,7 +44,6 @@ export const Surface = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     padding: { default: undefined, type: String as PropType<SurfaceVariantProps["padding"]> },
     rounded: { default: true, type: Boolean },
-    testId: String,
     variant: { default: undefined, type: String as PropType<SurfaceVariant> },
   },
   setup(props, { attrs, slots }) {
@@ -78,7 +76,6 @@ export const Surface = defineComponent({
           "data-depth": surface.value.depth,
           "data-part": "root",
           "data-scope": "surface",
-          "data-testid": props.testId,
           "data-variant": surface.value.variant,
         },
         slots.default?.(),

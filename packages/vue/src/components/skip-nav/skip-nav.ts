@@ -2,10 +2,9 @@ import { ark } from "@ark-ui/vue/factory";
 import { skipNavContentVariants, skipNavLinkVariants } from "@pisagor/styles/ui/skip-nav";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
-import type { WithTestId } from "../../internal/types";
 
 // #region Types
-export interface SkipNavLinkProps extends WithTestId {
+export interface SkipNavLinkProps {
   /**
    * The id of the element to skip to.
    *
@@ -18,7 +17,7 @@ export interface SkipNavLinkProps extends WithTestId {
   class?: unknown;
 }
 
-export interface SkipNavContentProps extends WithTestId {
+export interface SkipNavContentProps {
   /**
    * The id that SkipNavLink links to.
    *
@@ -43,7 +42,6 @@ export const SkipNavLink = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     id: { default: SKIP_NAV_ID, type: String },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -54,7 +52,6 @@ export const SkipNavLink = defineComponent({
           class: cn(skipNavLinkVariants(), props.class, attrs.class),
           "data-part": "link",
           "data-scope": "skip-nav",
-          "data-testid": props.testId,
           href: `#${props.id}`,
         },
         slots.default ?? (() => "Skip to content"),
@@ -68,7 +65,6 @@ export const SkipNavContent = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     id: { default: SKIP_NAV_ID, type: String },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () =>

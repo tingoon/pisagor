@@ -16,13 +16,12 @@ type ClassValue = Parameters<typeof cn>[0];
 import { defineComponent, h, type PropType } from "vue";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
-import type { WithTestId } from "../../internal/types";
 import type { InputProps } from "../input";
 import { Input } from "../input";
 
 type ArkPart = Parameters<typeof h>[0];
 
-export interface InputOTPProps extends WithTestId {
+export interface InputOTPProps {
   class?: ClassValue;
   otp?: boolean;
   placeholder?: string;
@@ -56,7 +55,6 @@ export const InputOTPRoot = defineComponent({
     otp: { default: true, type: Boolean },
     placeholder: { default: undefined, type: String },
     size: { default: undefined, type: String as PropType<InputOTPProps["size"]> },
-    testId: String,
     value: { default: undefined, type: Array as PropType<string[] | undefined> },
     variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
   },
@@ -70,7 +68,6 @@ export const InputOTPRoot = defineComponent({
             blurOnComplete: props.blurOnComplete,
             class: cn(inputOtpVariants(), props.class, (attrs as { class?: ClassValue }).class),
             count: props.count,
-            "data-testid": props.testId,
             defaultValue: props.defaultValue,
             disabled: props.disabled,
             invalid: props.invalid,

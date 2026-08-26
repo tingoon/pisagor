@@ -10,7 +10,6 @@ export const FrameRoot = defineComponent({
   name: "FrameRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -23,7 +22,6 @@ export const FrameRoot = defineComponent({
           class: variantSlots.base({ class: props.class }),
           "data-part": "root",
           "data-scope": "frame",
-          "data-testid": props.testId,
         },
         slots.default?.(),
       );

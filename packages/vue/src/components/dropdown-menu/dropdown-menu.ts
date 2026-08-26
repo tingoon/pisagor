@@ -13,8 +13,6 @@ import {
 } from "@pisagor/styles/ui/dropdown-menu";
 import { cn } from "@pisagor/utils";
 import { type CSSProperties, defineComponent, h, type PropType } from "vue";
-import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils/create-context";
 
 // #region Types
 export interface DropdownMenuItemGroupProps {
@@ -30,7 +28,7 @@ export interface DropdownMenuRadioItemGroupProps {
   heading?: string;
 }
 
-export interface DropdownMenuRootProps extends WithTestId {
+export interface DropdownMenuRootProps {
   lazyMount?: boolean;
   positioning?: Record<string, unknown>;
   unmountOnExit?: boolean;
@@ -38,15 +36,6 @@ export interface DropdownMenuRootProps extends WithTestId {
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];
-
-// #region Context
-const [provideDropdownMenuRoot, useDropdownMenuRoot] = createContext<{ testId?: string }>({
-  name: "DropdownMenuRoot",
-  strict: false,
-});
-
-export { useDropdownMenuRoot };
-// #endregion
 
 // #region Parts
 export const DropdownMenuRoot = defineComponent({
@@ -58,12 +47,9 @@ export const DropdownMenuRoot = defineComponent({
       default: () => ({ placement: "bottom-end" }),
       type: Object as PropType<Record<string, unknown>>,
     },
-    testId: String,
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    provideDropdownMenuRoot({ testId: props.testId });
-
     return () =>
       h(
         MenuPrimitive.Root as ArkPart,
@@ -82,14 +68,11 @@ export const DropdownMenuTrigger = defineComponent({
   inheritAttrs: false,
   name: "DropdownMenuTrigger",
   setup(_, { attrs, slots }) {
-    const context = useDropdownMenuRoot();
-
     return () =>
       h(
         MenuPrimitive.Trigger as ArkPart,
         {
           ...attrs,
-          "data-testid": context?.testId,
         },
         slots,
       );
@@ -308,7 +291,6 @@ export const DropdownMenuSub = defineComponent({
       default: () => ({ placement: "bottom-end" }),
       type: Object as PropType<Record<string, unknown>>,
     },
-    testId: String,
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {

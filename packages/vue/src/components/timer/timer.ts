@@ -2,12 +2,11 @@ import { ark } from "@ark-ui/vue/factory";
 import { Timer as TimerPrimitive, useTimerContext as useTimer } from "@ark-ui/vue/timer";
 import { timerVariants } from "@pisagor/styles/ui/timer";
 import { defineComponent, h, type PropType } from "vue";
-import type { WithTestId } from "../../internal/types";
 
 // #region Types
 type TimerUnit = "hours" | "minutes" | "seconds";
 
-export interface TimerRootProps extends WithTestId {
+export interface TimerRootProps {
   units?: TimerUnit[];
   /** Auto-render Timer.Control with play and reset buttons */
   isControlsVisible?: boolean;
@@ -24,7 +23,6 @@ export const TimerRoot = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     isControlsVisible: { default: undefined, type: Boolean },
-    testId: String,
     units: { default: undefined, type: Array as PropType<TimerUnit[]> },
   },
   setup(props, { attrs, slots }) {
@@ -36,7 +34,6 @@ export const TimerRoot = defineComponent({
         {
           ...attrs,
           class: variantSlots.base({ class: props.class }),
-          "data-testid": props.testId,
         },
         () => [
           props.units

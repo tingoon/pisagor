@@ -21,13 +21,11 @@ import {
   watchEffect,
 } from "vue";
 import { renderIconCloseButton } from "../../internal/close-button";
-import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils/create-context";
 
 // #region Types
 interface DialogContextProps {
   modal?: boolean;
-  testId?: string;
 }
 
 export interface DialogContentProps {
@@ -52,7 +50,7 @@ export interface DialogHeaderProps {
   title?: string;
 }
 
-export interface DialogProps extends WithTestId {
+export interface DialogProps {
   collapsible?: boolean;
   lazyMount?: boolean;
   modal?: boolean;
@@ -82,18 +80,15 @@ export const DialogRoot = defineComponent({
   props: {
     lazyMount: { default: true, type: Boolean },
     modal: { default: true, type: Boolean },
-    testId: String,
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
     const context = reactive<DialogContextProps>({
       modal: props.modal,
-      testId: props.testId,
     });
 
     watchEffect(() => {
       context.modal = props.modal;
-      context.testId = props.testId;
     });
 
     provideDialogContext(context);
@@ -203,7 +198,6 @@ export const DialogContent = defineComponent({
                 }),
                 props.class,
               ),
-              "data-testid": dialogContext.testId,
             },
             () => [
               slots.default?.(),

@@ -2,10 +2,9 @@ import { ark } from "@ark-ui/vue/factory";
 import { announcementTitleVariants, announcementVariants } from "@pisagor/styles/ui/announcement";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import type { WithTestId } from "../../internal/types";
 
 // #region Types
-export interface AnnouncementProps extends WithTestId {
+export interface AnnouncementProps {
   /** Optional badge or label rendered before the title. */
   badge?: VNodeChild;
   class?: unknown;
@@ -31,7 +30,6 @@ export const AnnouncementRoot = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     role: { default: "status", type: String as PropType<AnnouncementProps["role"]> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -42,7 +40,6 @@ export const AnnouncementRoot = defineComponent({
           class: cn(announcementVariants(), props.class),
           "data-part": "root",
           "data-scope": "announcement",
-          "data-testid": props.testId,
           role: props.role,
         },
         slots,
@@ -78,7 +75,6 @@ export const AnnouncementShorthand = defineComponent({
     badge: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     role: { default: undefined, type: String as PropType<AnnouncementProps["role"]> },
-    testId: String,
     title: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
     titleProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
   },
@@ -90,7 +86,6 @@ export const AnnouncementShorthand = defineComponent({
           ...attrs,
           class: props.class,
           role: props.role,
-          testId: props.testId,
         },
         () => [
           props.badge,

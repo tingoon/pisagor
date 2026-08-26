@@ -1,23 +1,9 @@
 import { Popover as PopoverPrimitive } from "@ark-ui/vue/popover";
 import { popoverContentVariants } from "@pisagor/styles/ui/popover";
-import {
-  type CSSProperties,
-  defineComponent,
-  h,
-  type PropType,
-  reactive,
-  Teleport,
-  watchEffect,
-} from "vue";
+import { type CSSProperties, defineComponent, h, type PropType, Teleport } from "vue";
 import { renderIconCloseButton } from "../../internal/close-button";
-import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils/create-context";
 
 // #region Types
-interface PopoverContextProps {
-  testId?: string;
-}
-
 export interface PopoverContentProps {
   class?: unknown;
   showCloseButton?: boolean;
@@ -29,18 +15,11 @@ export interface PopoverHeaderProps {
   title?: string;
 }
 
-export interface PopoverProps extends WithTestId {
+export interface PopoverProps {
   lazyMount?: boolean;
   modal?: boolean;
   unmountOnExit?: boolean;
 }
-// #endregion
-
-// #region Context
-const [providePopoverContext, usePopoverRoot] = createContext<PopoverContextProps>({
-  name: "PopoverRoot",
-  strict: false,
-});
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];
@@ -55,20 +34,9 @@ export const PopoverRoot = defineComponent({
   name: "PopoverRoot",
   props: {
     lazyMount: { default: true, type: Boolean },
-    testId: String,
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    const context = reactive<PopoverContextProps>({
-      testId: props.testId,
-    });
-
-    watchEffect(() => {
-      context.testId = props.testId;
-    });
-
-    providePopoverContext(context);
-
     return () =>
       h(
         PopoverPrimitive.Root as ArkPart,
@@ -86,14 +54,11 @@ export const PopoverTrigger = defineComponent({
   inheritAttrs: false,
   name: "PopoverTrigger",
   setup(_, { attrs, slots }) {
-    const popoverContext = usePopoverRoot() ?? {};
-
     return () =>
       h(
         PopoverPrimitive.Trigger as ArkPart,
         {
           ...attrs,
-          "data-testid": popoverContext.testId,
         },
         slots,
       );

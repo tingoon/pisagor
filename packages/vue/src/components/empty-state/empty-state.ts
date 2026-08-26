@@ -2,14 +2,14 @@ import { ark } from "@ark-ui/vue/factory";
 import { type EmptyStateSlots, emptyStateVariants } from "@pisagor/styles/ui/empty-state";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 type EmptyStateClassNames = VariantClassNames<EmptyStateSlots>;
 
-export interface EmptyStateProps extends WithTestId {
+export interface EmptyStateProps {
   actions?: VNodeChild;
   class?: unknown;
   classNames?: EmptyStateClassNames;
@@ -26,7 +26,6 @@ export const EmptyStateRoot = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<EmptyStateClassNames> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -39,7 +38,6 @@ export const EmptyStateRoot = defineComponent({
           class: slots_.base({ class: props.class }),
           "data-part": "root",
           "data-scope": "empty-state",
-          "data-testid": props.testId,
         },
         slots,
       );
@@ -90,7 +88,6 @@ export const EmptyStateShorthand = defineComponent({
     classNames: { default: undefined, type: Object as PropType<EmptyStateClassNames> },
     description: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
     media: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
-    testId: String,
     title: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
   },
   setup(props, { attrs }) {
@@ -101,7 +98,6 @@ export const EmptyStateShorthand = defineComponent({
           ...attrs,
           class: props.class,
           classNames: props.classNames,
-          testId: props.testId,
         },
         () => [
           props.media !== undefined && h(EmptyStateMedia, null, () => props.media),

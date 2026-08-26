@@ -21,7 +21,6 @@ import {
   type UnwrapRef,
   watchEffect,
 } from "vue";
-import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils/create-context";
 import { Button } from "../button";
 import { DialogBody, DialogFooter, DialogHeader } from "../dialog";
@@ -39,10 +38,9 @@ interface TourContextProps {
   slots: TourVariants;
   /** The tour instance */
   tour: UnwrapRef<UseTourReturn>;
-  testId?: string;
 }
 
-export interface TourRootProps extends WithTestId {
+export interface TourRootProps {
   /** Whether to enable arrow key navigation between steps */
   keyboardNavigation?: boolean;
   /**
@@ -94,7 +92,6 @@ export const TourRoot = defineComponent({
       type: Function as PropType<TourRootProps["onStepChange"]>,
     },
     steps: { default: () => [], type: Array as PropType<TourStepDetails[]> },
-    testId: String,
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
@@ -122,12 +119,7 @@ export const TourRoot = defineComponent({
     const context = reactive({
       handleStart,
       slots: tourVariants(),
-      testId: props.testId,
       tour,
-    });
-
-    watchEffect(() => {
-      context.testId = props.testId;
     });
 
     provideTourContext(context);
@@ -231,7 +223,7 @@ export const TourContent = defineComponent({
     return () => {
       const ctx = toValue(useTourContextRef());
       if (!ctx) return null;
-      const { slots: recipeSlots, testId } = ctx;
+      const { slots: recipeSlots } = ctx;
 
       const defaultChildren = () => [
         h(TourHeader, null, () => [h(TourTitle), h(TourProgressText)]),
@@ -247,7 +239,6 @@ export const TourContent = defineComponent({
             {
               ...attrs,
               class: cn(recipeSlots.content(), props.class),
-              "data-testid": testId,
             },
             () => [
               slots.default ? slots.default() : defaultChildren(),

@@ -3,7 +3,6 @@ import { PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
 import { carouselVariants } from "@pisagor/styles/ui/carousel";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import type { WithTestId } from "../../internal/types";
 import { Button } from "../button";
 
 // #region Types
@@ -12,7 +11,7 @@ export interface CarouselPresetItem {
   key?: string;
 }
 
-export interface CarouselProps extends WithTestId {
+export interface CarouselProps {
   class?: unknown;
   slides?: CarouselPresetItem[];
   spacing?: string;
@@ -29,7 +28,6 @@ export const CarouselRoot = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     slideCount: { required: true, type: Number },
     spacing: { default: "16px", type: String },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -40,7 +38,6 @@ export const CarouselRoot = defineComponent({
         {
           ...attrs,
           class: variantSlots.base({ class: props.class }),
-          "data-testid": props.testId,
           slideCount: props.slideCount,
           spacing: props.spacing,
         },
@@ -219,7 +216,6 @@ export const CarouselShorthand = defineComponent({
       type: Array as PropType<CarouselPresetItem[]>,
     },
     spacing: { default: "16px", type: String },
-    testId: String,
   },
   setup(props, { attrs }) {
     return () =>
@@ -230,7 +226,6 @@ export const CarouselShorthand = defineComponent({
           class: props.class,
           slideCount: props.slides?.length ?? 0,
           spacing: props.spacing,
-          testId: props.testId,
         },
         () => [
           h(CarouselControl, null, () => [h(CarouselPrevTrigger), h(CarouselNextTrigger)]),

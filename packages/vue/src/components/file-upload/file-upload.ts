@@ -14,13 +14,12 @@ import {
   shellVariantArgs,
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { WithTestId } from "../../internal/types";
 import { Button } from "../button";
 
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-interface FileUploadRootProps extends WithTestId {
+interface FileUploadRootProps {
   class?: unknown;
   onValueChange?: (value: File[]) => void;
 }
@@ -42,7 +41,6 @@ export const FileUploadRoot = defineComponent({
       default: undefined,
       type: Function as PropType<FileUploadRootProps["onValueChange"]>,
     },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -56,7 +54,6 @@ export const FileUploadRoot = defineComponent({
         {
           ...attrs,
           class: variantSlots.base({ class: props.class }),
-          "data-testid": props.testId,
           onFileChange: (details: FileUploadFileChangeDetails) => {
             onFileChange?.(details);
             props.onValueChange?.(details.acceptedFiles);

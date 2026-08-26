@@ -19,7 +19,6 @@ export const CollapsibleRoot = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     collapsedHeight: { default: undefined, type: [Number, String] as PropType<number | string> },
     lazyMount: { default: true, type: Boolean },
-    testId: String,
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
@@ -33,7 +32,6 @@ export const CollapsibleRoot = defineComponent({
           class: cn(collapsibleVariants(), props.class),
           collapsedHeight: props.collapsedHeight,
           "data-partial-collapse": props.collapsedHeight ? "" : undefined,
-          "data-testid": props.testId,
           lazyMount: partialCollapse ? false : props.lazyMount,
           unmountOnExit: partialCollapse ? false : props.unmountOnExit,
         },

@@ -32,14 +32,12 @@ type ClassValue = Parameters<typeof cn>[0];
 import { defineComponent, h, type PropType, Teleport } from "vue";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
-import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils/create-context";
 import { Button } from "../button";
 import { InputGroup } from "../input-group";
 
 type ArkPart = Parameters<typeof h>[0];
 
-export interface ColorPickerProps extends WithTestId {
+export interface ColorPickerProps {
   class?: ClassValue;
   variant?: FormControlVariant;
   positioning?: unknown;
@@ -52,11 +50,6 @@ export interface ColorPickerProps extends WithTestId {
 }
 
 export const parseColor = parseColorArk;
-
-const [provideColorPickerRootContext, useColorPickerRoot] = createContext<{ testId?: string }>({
-  name: "ColorPickerRoot",
-  strict: false,
-});
 
 function colorPickerTeleport(content: ReturnType<typeof h> | Array<ReturnType<typeof h>>) {
   return h(Teleport, { to: "body" }, () => content);
@@ -75,7 +68,6 @@ export const ColorPickerRoot = defineComponent({
       type: Function as PropType<ColorPickerProps["onValueChange"]>,
     },
     positioning: { default: { placement: "top-start" }, type: Object as PropType<unknown> },
-    testId: String,
     unmountOnExit: { default: true, type: Boolean },
     value: { default: undefined, type: String as PropType<string | undefined> },
     variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
@@ -83,7 +75,6 @@ export const ColorPickerRoot = defineComponent({
   setup(props, { attrs, slots }) {
     return () => {
       const isControlled = props.value !== undefined;
-      provideColorPickerRootContext({ testId: props.testId });
 
       // Uncontrolled internal state is kept as a string; we parse on render.
       const internalValue = (isControlled ? undefined : props.defaultValue) ?? "";
@@ -102,7 +93,6 @@ export const ColorPickerRoot = defineComponent({
           {
             ...attrs,
             class: cn(colorPickerVariants(), props.class, (attrs as { class?: ClassValue }).class),
-            "data-testid": props.testId,
             defaultValue: internalValue ? parseColorArk(internalValue) : undefined,
             lazyMount: props.lazyMount,
             onValueChange: props.onValueChange ? handleValueChange : undefined,
@@ -187,8 +177,6 @@ export const ColorPickerControl = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const { testId } = useColorPickerRoot() ?? {};
-
       return h(
         ColorPickerPrimitive.Control as ArkPart,
         {
@@ -198,7 +186,6 @@ export const ColorPickerControl = defineComponent({
             props.class,
             (attrs as { class?: ClassValue }).class,
           ),
-          "data-testid": testId,
         },
         () => [
           slots.default?.(),

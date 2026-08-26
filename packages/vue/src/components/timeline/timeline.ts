@@ -10,7 +10,6 @@ import {
 } from "@pisagor/styles/ui/timeline";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import type { WithTestId } from "../../internal/types";
 
 type ArkPart = Parameters<typeof h>[0];
 
@@ -23,7 +22,7 @@ export interface TimelinePresetItem {
   indicator?: VNodeChild;
 }
 
-export interface TimelineProps extends WithTestId {
+export interface TimelineProps {
   /**
    * Timeline layout.
    *
@@ -42,7 +41,6 @@ export const TimelineRoot = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     orientation: { default: "vertical", type: String as PropType<TimelineProps["orientation"]> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -54,7 +52,6 @@ export const TimelineRoot = defineComponent({
           "data-orientation": props.orientation,
           "data-part": "root",
           "data-scope": "timeline",
-          "data-testid": props.testId,
         },
         slots.default?.(),
       );
@@ -195,7 +192,6 @@ export const TimelineShorthand = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     items: { default: undefined, type: Array as PropType<TimelinePresetItem[]> },
     orientation: { default: "vertical", type: String as PropType<TimelineProps["orientation"]> },
-    testId: String,
   },
   setup(props, { attrs }) {
     return () =>
@@ -205,7 +201,6 @@ export const TimelineShorthand = defineComponent({
           ...attrs,
           class: props.class,
           orientation: props.orientation,
-          testId: props.testId,
         },
         () =>
           (props.items ?? []).map((item, index) => {

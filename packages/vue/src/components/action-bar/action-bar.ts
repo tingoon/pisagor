@@ -13,7 +13,6 @@ import {
   type VNodeChild,
   watchEffect,
 } from "vue";
-import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils/create-context";
 import { Badge, type BadgeProps } from "../badge";
 import { Button } from "../button";
@@ -36,9 +35,7 @@ interface ActionBarActionItem {
   disabled?: boolean;
 }
 
-export interface ActionBarProps
-  extends Pick<ActionBarContextValue, "lazyMount" | "unmountOnExit">,
-    WithTestId {
+export interface ActionBarProps extends Pick<ActionBarContextValue, "lazyMount" | "unmountOnExit"> {
   closeOnEscape?: boolean;
   defaultOpen?: boolean;
   onOpenChange?: (open: boolean) => void;
@@ -71,7 +68,7 @@ export interface ActionBarValueProps
   children?: VNodeChild;
 }
 
-interface ActionBarContextValue extends WithTestId {
+interface ActionBarContextValue {
   isOpen?: boolean;
   lazyMount?: boolean;
   unmountOnExit?: boolean;
@@ -79,7 +76,6 @@ interface ActionBarContextValue extends WithTestId {
   onOpen?: () => void;
   positioning: Required<ActionBarPositioning>;
   slots: ActionBarVariants;
-  testId?: string;
 }
 // #endregion
 
@@ -111,7 +107,6 @@ export const ActionBarRoot = defineComponent({
     onOpenChange: { default: undefined, type: Function as PropType<(open: boolean) => void> },
     open: { default: undefined, type: Boolean },
     positioning: { default: undefined, type: Object as PropType<ActionBarPositioning> },
-    testId: String,
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
@@ -156,7 +151,6 @@ export const ActionBarRoot = defineComponent({
       onOpen: handleOpen,
       positioning: { ...defaultPositioning, ...(props.positioning ?? {}) },
       slots: actionBarVariants(),
-      testId: props.testId,
       unmountOnExit: props.unmountOnExit,
     });
 
@@ -164,7 +158,6 @@ export const ActionBarRoot = defineComponent({
       contextValue.isOpen = isOpen();
       contextValue.lazyMount = props.lazyMount;
       contextValue.unmountOnExit = props.unmountOnExit;
-      contextValue.testId = props.testId;
       contextValue.positioning = { ...defaultPositioning, ...(props.positioning ?? {}) };
     });
 
@@ -281,7 +274,6 @@ export const ActionBarContent = defineComponent({
                 class: cn(context.slots.content(), props.class, attrs.class),
                 "data-part": "content",
                 "data-scope": "action-bar",
-                "data-testid": context.testId,
                 role: "toolbar",
               },
               slots.default?.(),
@@ -298,7 +290,6 @@ export const ActionBarSeparator = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     orientation: { default: "vertical", type: String as PropType<"horizontal" | "vertical"> },
-    testId: String,
   },
   setup(props, { attrs }) {
     const context = useActionBarContext();
@@ -309,7 +300,6 @@ export const ActionBarSeparator = defineComponent({
         {
           ...attrs,
           class: cn((context?.slots ?? actionBarVariants()).separator(), props.class, attrs.class),
-          "data-testid": props.testId,
           dataPart: "separator",
           dataScope: "action-bar",
           orientation: "vertical",

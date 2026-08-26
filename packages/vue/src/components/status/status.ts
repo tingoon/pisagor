@@ -2,10 +2,9 @@ import { ark } from "@ark-ui/vue/factory";
 import { statusVariants } from "@pisagor/styles/ui/status";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
-import type { WithTestId } from "../../internal/types";
 
 // #region Types
-export interface StatusProps extends WithTestId {
+export interface StatusProps {
   class?: unknown;
   size?: "sm" | "md" | "lg";
   variant?: "default" | "success" | "info" | "warning" | "destructive";
@@ -21,7 +20,6 @@ export const Status = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     size: { default: undefined, type: String as PropType<StatusProps["size"]> },
-    testId: String,
     variant: { default: undefined, type: String as PropType<StatusProps["variant"]> },
   },
   setup(props, { attrs, slots }) {
@@ -34,7 +32,6 @@ export const Status = defineComponent({
           "data-part": "indicator",
           "data-scope": "status",
           "data-size": props.size,
-          "data-testid": props.testId,
         },
         slots,
       );

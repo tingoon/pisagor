@@ -7,7 +7,6 @@ import {
 } from "@pisagor/styles/ui/skeleton";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
-import type { WithTestId } from "../../internal/types";
 
 // #region Types
 export interface SkeletonTextProps {
@@ -15,7 +14,7 @@ export interface SkeletonTextProps {
   lines?: number;
 }
 
-export interface SkeletonProps extends WithTestId {
+export interface SkeletonProps {
   class?: unknown;
 }
 // #endregion
@@ -28,7 +27,6 @@ export const SkeletonRoot = defineComponent({
   name: "SkeletonRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -39,7 +37,6 @@ export const SkeletonRoot = defineComponent({
           class: cn(skeletonVariants(), props.class),
           "data-part": "root",
           "data-scope": "skeleton",
-          "data-testid": props.testId,
         },
         slots,
       );

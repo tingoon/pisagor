@@ -25,7 +25,6 @@ export const PaginationRoot = defineComponent({
   name: "PaginationRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -34,7 +33,6 @@ export const PaginationRoot = defineComponent({
         {
           ...attrs,
           class: cn(paginationVariants(), props.class, attrs.class),
-          "data-testid": props.testId,
         },
         slots.default ??
           (() => [h(PaginationPrevTrigger), h(PaginationItems), h(PaginationNextTrigger)]),

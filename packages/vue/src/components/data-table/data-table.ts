@@ -36,7 +36,6 @@ interface DataTableRowContextValue<TData> {
 export type DataTableProps<TData = unknown> = Omit<TableOptions<TData>, "getCoreRowModel"> & {
   getCoreRowModel?: TableOptions<TData>["getCoreRowModel"];
   class?: unknown;
-  testId?: string;
 };
 // #endregion
 
@@ -116,7 +115,6 @@ export const DataTableRoot = defineComponent({
   name: "DataTableRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     const options = new Proxy(
@@ -159,7 +157,6 @@ export const DataTableRoot = defineComponent({
           class: cn(dataTableVariants(), props.class),
           "data-part": "root",
           "data-scope": "data-table",
-          "data-testid": props.testId,
         },
         () => slots.default?.(),
       );

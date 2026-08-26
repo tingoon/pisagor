@@ -5,11 +5,10 @@ import { FormControlVariantProvider } from "../../internal/form-control/form-con
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import { formControlShellProps } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { WithTestId } from "../../internal/types";
 
 type ArkPart = Parameters<typeof h>[0];
 
-export interface SliderProps extends WithTestId {
+export interface SliderProps {
   class?: unknown;
   defaultValue?: number[];
   disabled?: boolean;
@@ -23,7 +22,6 @@ export interface SliderProps extends WithTestId {
   showValue?: boolean;
   step?: number;
   tabIndex?: number;
-  testId?: string;
   value?: number[];
   variant?: FormControlVariant;
 }
@@ -45,7 +43,6 @@ export const Slider = defineComponent({
     showValue: { default: false, type: Boolean },
     step: { default: undefined, type: Number },
     tabIndex: { default: undefined, type: Number },
-    testId: String,
     value: { default: undefined, type: Array as PropType<number[] | undefined> },
     variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
   },
@@ -72,7 +69,6 @@ export const Slider = defineComponent({
             ...attrs,
             ...trackShellProps,
             class: variantSlots.base({ class: props.class }),
-            "data-testid": props.testId,
             defaultValue: props.defaultValue,
             disabled: props.disabled,
             max: props.max,

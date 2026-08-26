@@ -7,7 +7,6 @@ import {
 } from "@pisagor/styles/ui/segment-group";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import type { WithTestId } from "../../internal/types";
 
 // #region Types
 export type SegmentGroupVariant = "default" | "underline";
@@ -18,13 +17,12 @@ export interface SegmentGroupPresetItem {
   value: string;
 }
 
-export interface SegmentGroupRootProps extends WithTestId {
+export interface SegmentGroupRootProps {
   class?: unknown;
   defaultValue?: string | null;
   disabled?: boolean;
   onValueChange?: (value: string | null) => void;
   orientation?: "horizontal" | "vertical";
-  testId?: string;
   value?: string | null;
   variant?: SegmentGroupVariant;
 }
@@ -56,7 +54,6 @@ export const SegmentGroupRoot = defineComponent({
       type: Function as PropType<SegmentGroupRootProps["onValueChange"]>,
     },
     orientation: { default: "horizontal", type: String as PropType<"horizontal" | "vertical"> },
-    testId: String,
     value: { default: undefined, type: [String, null] as PropType<string | null> },
     variant: { default: "default", type: String as PropType<SegmentGroupVariant> },
   },
@@ -68,7 +65,6 @@ export const SegmentGroupRoot = defineComponent({
           ...attrs,
           class: cn(segmentGroupVariants(), props.class),
           "data-orientation": props.orientation,
-          "data-testid": props.testId,
           "data-variant": props.variant,
           defaultValue: props.defaultValue,
           disabled: props.disabled,
@@ -170,7 +166,6 @@ export const SegmentGroupShorthand = defineComponent({
         type: Function as PropType<SegmentGroupRootProps["onValueChange"]>,
       },
       orientation: { default: "horizontal", type: String as PropType<"horizontal" | "vertical"> },
-      testId: String,
       value: { default: undefined, type: [String, null] as PropType<string | null> },
       variant: { default: "default", type: String as PropType<SegmentGroupVariant> },
     } as const),
@@ -186,7 +181,6 @@ export const SegmentGroupShorthand = defineComponent({
           disabled: props.disabled,
           onValueChange: props.onValueChange,
           orientation: props.orientation,
-          testId: props.testId,
           value: props.value,
           variant: props.variant,
         },

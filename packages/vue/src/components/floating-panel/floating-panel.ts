@@ -5,15 +5,7 @@ import {
   floatingPanelVariants,
 } from "@pisagor/styles/ui/floating-panel";
 import { cn } from "@pisagor/utils";
-import {
-  defineComponent,
-  h,
-  type PropType,
-  reactive,
-  Teleport,
-  type VNodeChild,
-  watchEffect,
-} from "vue";
+import { defineComponent, h, type PropType, reactive, Teleport, type VNodeChild } from "vue";
 import { createContext } from "../../utils/create-context";
 import { Button, type ButtonProps } from "../button";
 import { ScrollArea } from "../scroll-area";
@@ -21,7 +13,6 @@ import { ScrollArea } from "../scroll-area";
 // #region Types
 interface FloatingPanelContextProps {
   slots: FloatingPanelVariants;
-  testId?: string;
 }
 
 interface FloatingPanelContentProps {
@@ -83,19 +74,12 @@ export const FloatingPanelRoot = defineComponent({
   name: "FloatingPanel",
   props: {
     lazyMount: { default: true, type: Boolean },
-    testId: String,
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
     const context = reactive<FloatingPanelContextProps>({
       slots: floatingPanelVariants(),
-      testId: props.testId,
     });
-
-    watchEffect(() => {
-      context.testId = props.testId;
-    });
-
     provideFloatingPanelContext(context);
 
     return () =>
@@ -154,7 +138,6 @@ export const FloatingPanelContent = defineComponent({
             {
               ...attrs,
               class: cn(panelSlots.content(), props.class),
-              "data-testid": floatingPanelContext?.testId,
             },
             () => [
               slots.default?.(),

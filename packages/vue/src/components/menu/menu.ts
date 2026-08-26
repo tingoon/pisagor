@@ -2,12 +2,12 @@ import { ark } from "@ark-ui/vue/factory";
 import { type MenuSlots, menuItemVariants, menuVariants } from "@pisagor/styles/ui/menu";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 
 // #region Types
 type MenuClassNames = VariantClassNames<MenuSlots>;
 
-export interface MenuRootProps extends WithTestId {
+export interface MenuRootProps {
   /** Slot class names */
   classNames?: MenuClassNames;
 }
@@ -21,9 +21,8 @@ export const MenuRoot = defineComponent({
   name: "MenuRoot",
   props: {
     classNames: { default: undefined, type: Object as PropType<MenuClassNames> },
-    testId: String,
   },
-  setup(props, { attrs, slots }) {
+  setup(_props, { attrs, slots }) {
     return () => {
       const slots$ = menuVariants();
       const ariaLabel = (attrs["aria-label"] as string | undefined) ?? "Menu";
@@ -36,7 +35,6 @@ export const MenuRoot = defineComponent({
           class: slots$.base({ class: attrs.class as string | undefined }),
           "data-part": "root",
           "data-scope": "menu",
-          "data-testid": props.testId,
         },
         slots,
       );

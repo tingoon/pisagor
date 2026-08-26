@@ -6,10 +6,9 @@ import {
 } from "@pisagor/styles/ui/qr-code";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
-import type { WithTestId } from "../../internal/types";
 
 // #region Types
-export interface QrCodeRootProps extends WithTestId {
+export interface QrCodeRootProps {
   class?: unknown;
 }
 // #endregion
@@ -22,7 +21,6 @@ export const QrCodeRoot = defineComponent({
   name: "QrCodeRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -31,7 +29,6 @@ export const QrCodeRoot = defineComponent({
         {
           ...attrs,
           class: cn(qrCodeVariants(), props.class),
-          "data-testid": props.testId,
         },
         () => slots.default?.() ?? h(QrCodeFrame),
       );

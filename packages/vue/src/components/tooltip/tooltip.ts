@@ -1,14 +1,14 @@
 import { Tooltip as TooltipPrimitive } from "@ark-ui/vue/tooltip";
 import { type TooltipSlots, tooltipVariants } from "@pisagor/styles/ui/tooltip";
 import { defineComponent, h, type PropType, Teleport, type VNodeChild } from "vue";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 
 // #region Types
 export type TooltipTriggerHandle = (props: Record<string, unknown>) => VNodeChild;
 
 type TooltipClassNames = VariantClassNames<TooltipSlots>;
 
-export interface TooltipProps extends WithTestId {
+export interface TooltipProps {
   arrowProps?: Record<string, unknown>;
   children: VNodeChild | TooltipTriggerHandle;
   classNames?: TooltipClassNames;
@@ -53,7 +53,6 @@ export const Tooltip = defineComponent({
       default: () => ({ placement: "top" }),
       type: Object as PropType<Record<string, unknown>>,
     },
-    testId: String,
     triggerProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
     unmountOnExit: { default: true, type: Boolean },
   },
@@ -70,7 +69,6 @@ export const Tooltip = defineComponent({
             {
               ...props.triggerProps,
               asChild: true,
-              "data-testid": props.testId,
             },
             () => props.children,
           );

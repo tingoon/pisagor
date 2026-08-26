@@ -17,7 +17,6 @@ export const NavbarRoot = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<NavbarClassNames> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -30,7 +29,6 @@ export const NavbarRoot = defineComponent({
           class: slots$.base({ class: cn(props.class, attrs.class) }),
           "data-part": "root",
           "data-scope": "navbar",
-          "data-testid": props.testId,
         },
         slots,
       );

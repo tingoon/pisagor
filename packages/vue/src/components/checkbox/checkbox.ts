@@ -10,11 +10,10 @@ import {
   shellVariantArgs,
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { WithTestId } from "../../internal/types";
 
 type ArkPart = Parameters<typeof h>[0];
 
-export interface CheckboxProps extends WithTestId {
+export interface CheckboxProps {
   /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
   variant?: FormControlVariant;
 }
@@ -53,7 +52,6 @@ export const CheckboxRoot = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     tabIndex: { default: undefined, type: Number },
-    testId: String,
     variant: { default: undefined, type: String as PropType<FormControlVariant> },
   },
   setup(props, { attrs, emit }) {
@@ -72,7 +70,6 @@ export const CheckboxRoot = defineComponent({
             formControlToggleVariants({ size: "md", ...shellArgs }),
             slots.base({ class: props.class }),
           ),
-          "data-testid": props.testId,
           onCheckedChange: (details: { checked: boolean | "indeterminate" }) => {
             emit("checkedChange", details);
             emit("valueChange", details.checked === true);

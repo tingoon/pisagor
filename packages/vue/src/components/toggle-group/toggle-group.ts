@@ -2,7 +2,6 @@ import { ToggleGroup as ToggleGroupPrimitive } from "@ark-ui/vue/toggle-group";
 import { toggleGroupInlineVariants, toggleGroupVariants } from "@pisagor/styles/ui/toggle-group";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils/create-context";
 import { Toggle } from "../toggle";
 
@@ -15,7 +14,7 @@ interface ToggleGroupContextValue {
   variant: ToggleGroupVariant;
 }
 
-export interface ToggleGroupRootProps extends WithTestId {
+export interface ToggleGroupRootProps {
   class?: unknown;
   defaultValue?: string[];
   disabled?: boolean;
@@ -23,7 +22,6 @@ export interface ToggleGroupRootProps extends WithTestId {
   orientation?: "horizontal" | "vertical";
   onValueChange?: (value: string | string[]) => void;
   spacing?: number;
-  testId?: string;
   variant?: ToggleGroupVariant;
   size?: ToggleGroupSize;
   value?: string[];
@@ -66,7 +64,6 @@ export const ToggleGroupRoot = defineComponent({
     },
     size: { default: "md", type: String as PropType<ToggleGroupSize> },
     spacing: { default: 0, type: Number },
-    testId: String,
     value: { default: undefined, type: Array as PropType<string[] | undefined> },
     variant: { default: "ghost", type: String as PropType<ToggleGroupVariant> },
   },
@@ -83,7 +80,6 @@ export const ToggleGroupRoot = defineComponent({
         {
           ...attrs,
           class: cn(toggleGroupVariants({ orientation: props.orientation }), props.class),
-          "data-testid": props.testId,
           defaultValue: props.defaultValue,
           modelValue: props.value,
           multiple: props.multiple,
@@ -162,7 +158,6 @@ export const ToggleGroupShorthand = defineComponent({
     orientation: { default: "horizontal", type: String as PropType<"horizontal" | "vertical"> },
     size: { default: "md", type: String as PropType<ToggleGroupSize> },
     spacing: { default: 0, type: Number },
-    testId: String,
     value: { default: undefined, type: Array as PropType<string[] | undefined> },
     variant: { default: "ghost", type: String as PropType<ToggleGroupVariant> },
   },
@@ -179,7 +174,6 @@ export const ToggleGroupShorthand = defineComponent({
           orientation: props.orientation,
           size: props.size,
           spacing: props.spacing,
-          testId: props.testId,
           value: props.value,
           variant: props.variant,
         },

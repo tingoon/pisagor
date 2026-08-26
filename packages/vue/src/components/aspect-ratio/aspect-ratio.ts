@@ -11,7 +11,6 @@ export const AspectRatio = defineComponent({
   name: "AspectRatio",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -22,7 +21,6 @@ export const AspectRatio = defineComponent({
           class: cn(aspectRatioVariants(), props.class),
           "data-part": "root",
           "data-scope": "aspect-ratio",
-          "data-testid": props.testId,
         },
         slots,
       );

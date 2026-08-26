@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
 import { badgeVariants } from "@pisagor/styles/ui/badge";
 import { defineComponent, h, type PropType } from "vue";
-import type { WithTestId } from "../../internal/types";
 
 // #region Types
 export type BadgeVariant =
@@ -13,7 +12,7 @@ export type BadgeVariant =
   | "success"
   | "warning";
 
-export interface BadgeProps extends WithTestId {
+export interface BadgeProps {
   class?: unknown;
   pill?: boolean;
   size: "sm" | "md" | "lg";
@@ -31,7 +30,6 @@ export const Badge = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     pill: { default: false, type: Boolean },
     size: { default: "md", type: String as PropType<BadgeProps["size"]> },
-    testId: String,
     variant: { default: "default", type: String as PropType<BadgeProps["variant"]> },
   },
   setup(props, { attrs, slots }) {
@@ -49,7 +47,6 @@ export const Badge = defineComponent({
           "data-part": "root",
           "data-scope": "badge",
           "data-size": props.size,
-          "data-testid": props.testId,
           "data-variant": props.variant,
         },
         slots,

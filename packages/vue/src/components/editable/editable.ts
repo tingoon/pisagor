@@ -9,11 +9,10 @@ import { defineComponent, h, type PropType } from "vue";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import { formControlShellProps } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { WithTestId } from "../../internal/types";
 import type { ButtonProps } from "../button";
 
 // #region Types
-export interface EditableProps extends WithTestId {
+export interface EditableProps {
   /** The activation mode for the preview element. */
   activationMode?: "focus" | "dblclick" | "click" | "none";
   /** Whether the editable should auto-resize to fit the content. */
@@ -115,7 +114,6 @@ export const EditableRoot = defineComponent({
     required: { default: undefined, type: Boolean },
     selectOnFocus: { default: undefined, type: Boolean },
     submitMode: { default: undefined, type: String as PropType<EditableProps["submitMode"]> },
-    testId: String,
     value: { default: undefined, type: String },
   },
   setup(props, { attrs, slots }) {
@@ -130,7 +128,6 @@ export const EditableRoot = defineComponent({
           autoResize: props.autoResize,
           class: variantSlots.base({ class: props.class }),
           "data-orientation": props.orientation,
-          "data-testid": props.testId,
           defaultEdit: props.defaultEdit,
           defaultValue: props.defaultValue,
           disabled: props.disabled,

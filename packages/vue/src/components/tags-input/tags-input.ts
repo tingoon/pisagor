@@ -12,7 +12,6 @@ type ClassValue = Parameters<typeof cn>[0];
 import { defineComponent, h, type PropType } from "vue";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
-import type { WithTestId } from "../../internal/types";
 import { InputGroup } from "../input-group";
 import type { InputGroupProps } from "../input-group/input-group-core";
 
@@ -20,7 +19,7 @@ type ArkPart = Parameters<typeof h>[0];
 
 type TagsInputSize = NonNullable<InputGroupProps["size"]>;
 
-export interface TagsInputProps extends WithTestId {
+export interface TagsInputProps {
   class?: ClassValue;
   clearable?: boolean;
   defaultValue?: string[];
@@ -29,7 +28,6 @@ export interface TagsInputProps extends WithTestId {
   placeholder?: string;
   onValueChange?: (value: string[]) => void;
   size?: TagsInputSize;
-  testId?: string;
   variant?: FormControlVariant;
   value?: string[];
   tabIndex?: number;
@@ -307,7 +305,6 @@ export const TagsInputRoot = defineComponent({
     placeholderText: { default: "", type: String },
     size: { default: "md", type: String as PropType<TagsInputSize> },
     tabIndex: { default: undefined, type: Number },
-    testId: String,
     value: { default: undefined, type: Array as PropType<string[] | undefined> },
     variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
   },
@@ -324,7 +321,6 @@ export const TagsInputRoot = defineComponent({
               class: cn(props.class, (attrs as { class?: ClassValue }).class),
             }),
             "data-size": props.size,
-            "data-testid": props.testId,
             defaultValue: props.defaultValue,
             editable: props.editable,
             modelValue: props.value,
@@ -365,7 +361,6 @@ export const TagsInputRootProvider = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
     clearable: { default: false, type: Boolean },
     size: { default: "md", type: String as PropType<TagsInputSize> },
-    testId: String,
   },
   setup(props, { attrs, slots: vueSlots }) {
     return () => {
@@ -379,7 +374,6 @@ export const TagsInputRootProvider = defineComponent({
             class: cn(props.class, (attrs as { class?: ClassValue }).class),
           }),
           "data-size": props.size,
-          "data-testid": props.testId,
         },
         () => [
           h(

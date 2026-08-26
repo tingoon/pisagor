@@ -2,10 +2,9 @@ import { ark } from "@ark-ui/vue/factory";
 import { linkBoxOverlayVariants, linkBoxVariants } from "@pisagor/styles/ui/link-box";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
-import type { WithTestId } from "../../internal/types";
 
 // #region Types
-export interface LinkBoxRootProps extends WithTestId {
+export interface LinkBoxRootProps {
   class?: unknown;
 }
 // #endregion
@@ -18,7 +17,6 @@ export const LinkBoxRoot = defineComponent({
   name: "LinkBoxRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -29,7 +27,6 @@ export const LinkBoxRoot = defineComponent({
           class: cn(linkBoxVariants(), props.class),
           "data-part": "root",
           "data-scope": "link-box",
-          "data-testid": props.testId,
         },
         slots.default?.(),
       );

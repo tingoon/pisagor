@@ -14,7 +14,7 @@ import {
   shellVariantArgs,
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 import { Button, type ButtonProps } from "../button";
 
 // #region Types
@@ -22,7 +22,7 @@ type ClipboardClassNames = VariantClassNames<ClipboardSlots>;
 
 type ClipboardValueSize = ClipboardVariantProps["valueSize"];
 
-export interface ClipboardProps extends WithTestId {
+export interface ClipboardProps {
   /** Accessible label for icon-only copy buttons */
   buttonAriaLabel?: string;
   /**
@@ -114,7 +114,6 @@ export const Clipboard = defineComponent({
       default: undefined,
       type: Function as PropType<ClipboardProps["onValueChange"]>,
     },
-    testId: String,
     timeout: { default: undefined, type: Number },
     translations: {
       default: undefined,
@@ -140,7 +139,6 @@ export const Clipboard = defineComponent({
         {
           ...attrs,
           class: cn(props.class),
-          "data-testid": props.testId,
           defaultValue: props.defaultValue,
           ids: props.ids,
           modelValue: props.value,

@@ -20,7 +20,6 @@ export const NavigationMenuRoot = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<NavigationMenuClassNames> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -33,7 +32,6 @@ export const NavigationMenuRoot = defineComponent({
           class: slots$.base({ class: cn(props.class, attrs.class) }),
           "data-part": "root",
           "data-scope": "navigation-menu",
-          "data-testid": props.testId,
         },
         slots,
       );

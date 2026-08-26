@@ -26,7 +26,6 @@ export const TabsRoot = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     lazyMount: { default: true, type: Boolean },
-    testId: String,
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
@@ -36,7 +35,6 @@ export const TabsRoot = defineComponent({
         {
           ...attrs,
           class: cn(tabsVariants(), props.class, attrs.class),
-          "data-testid": props.testId,
           lazyMount: props.lazyMount,
           unmountOnExit: props.unmountOnExit,
         },
@@ -120,7 +118,6 @@ export const TabsShorthand = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     items: { default: undefined, type: Array as PropType<TabsPresetItem[]> },
     lazyMount: { default: true, type: Boolean },
-    testId: String,
     unmountOnExit: { default: true, type: Boolean },
     variant: { default: undefined, type: String as PropType<"default" | "underline"> },
   },
@@ -132,7 +129,6 @@ export const TabsShorthand = defineComponent({
           ...attrs,
           class: props.class,
           lazyMount: props.lazyMount,
-          testId: props.testId,
           unmountOnExit: props.unmountOnExit,
         },
         () => [

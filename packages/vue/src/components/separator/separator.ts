@@ -1,9 +1,8 @@
 import { separatorVariants } from "@pisagor/styles/ui/separator";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
-import type { WithTestId } from "../../internal/types";
 
-export interface SeparatorProps extends WithTestId {
+export interface SeparatorProps {
   class?: unknown;
   dataPart?: string;
   dataScope?: string;
@@ -18,7 +17,6 @@ export const Separator = defineComponent({
     dataPart: { default: "root", type: String },
     dataScope: { default: "separator", type: String },
     orientation: { default: "horizontal", type: String as PropType<"horizontal" | "vertical"> },
-    testId: String,
   },
   setup(props, { attrs }) {
     return () =>
@@ -29,7 +27,6 @@ export const Separator = defineComponent({
         "data-orientation": props.orientation,
         "data-part": props.dataPart,
         "data-scope": props.dataScope,
-        "data-testid": props.testId,
         role: "separator",
       });
   },

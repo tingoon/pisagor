@@ -6,11 +6,10 @@ import {
 } from "@pisagor/styles/ui/button";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
-import type { WithTestId } from "../../internal/types";
 import { Spinner } from "../spinner";
 
 // #region Types
-export interface ButtonProps extends ButtonVariantProps, WithTestId {
+export interface ButtonProps extends ButtonVariantProps {
   class?: unknown;
   clickEffect?: boolean;
   disabled?: boolean;
@@ -35,7 +34,6 @@ export const Button = defineComponent({
       default: "md",
       type: String as PropType<NonNullable<ButtonVariantProps["size"]>>,
     },
-    testId: String,
     type: { default: "button", type: String as PropType<NonNullable<ButtonProps["type"]>> },
     variant: {
       default: "default",
@@ -64,7 +62,6 @@ export const Button = defineComponent({
           "data-scope": "button",
           "data-size": props.size,
           "data-state": props.isLoading ? "loading" : "idle",
-          "data-testid": props.testId,
           "data-variant": props.variant,
           disabled: props.disabled || props.isLoading,
           type: props.type,

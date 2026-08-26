@@ -9,7 +9,6 @@ import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { type ClearableChangeEvent, useClearableInput } from "../../hooks/use-clearable-input";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
-import type { WithTestId } from "../../internal/types";
 import { InputGroup } from "../input-group";
 import type { InputGroupButtonProps, InputGroupProps } from "../input-group/input-group-core";
 
@@ -19,7 +18,7 @@ type InputGroupSize = InputGroupProps["size"];
 type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
 
 // #region Types
-export interface PasswordInputProps extends WithTestId {
+export interface PasswordInputProps {
   class?: unknown;
   clearButtonProps?: InputGroupButtonProps;
   clearable?: boolean;
@@ -66,7 +65,6 @@ export const PasswordInput = defineComponent({
     placeholder: { default: undefined, type: String },
     readOnly: { default: undefined, type: Boolean },
     size: { default: "md", type: String as PropType<InputGroupSize> },
-    testId: String,
     value: { default: undefined, type: String },
     variant: { default: undefined, type: String as PropType<FormControlVariant> },
     visibilityTriggerProps: {
@@ -95,7 +93,6 @@ export const PasswordInput = defineComponent({
         {
           class: cn(passwordInputVariants(), props.class),
           "data-size": props.size,
-          "data-testid": props.testId,
           defaultVisible: props.defaultVisible,
           invalid: props.invalid,
           onVisibilityChange: props.onVisibilityChange,

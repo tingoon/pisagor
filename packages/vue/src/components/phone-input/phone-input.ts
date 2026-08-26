@@ -7,14 +7,13 @@ type ClassValue = Parameters<typeof cn>[0];
 import { defineComponent, h, type PropType, ref } from "vue";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
-import type { WithTestId } from "../../internal/types";
 import type { InputProps } from "../input";
 import { InputGroup } from "../input-group";
 import { InputGroupRoot } from "../input-group/input-group-core";
 
 type ArkPart = Parameters<typeof h>[0];
 
-export interface PhoneInputProps extends WithTestId {
+export interface PhoneInputProps {
   class?: ClassValue;
   size?: InputProps["size"];
   variant?: FormControlVariant;
@@ -48,7 +47,6 @@ export const PhoneInput = defineComponent({
     onChange: { default: undefined, type: Function as PropType<PhoneInputProps["onChange"]> },
     readOnly: { default: undefined, type: Boolean },
     size: { default: undefined, type: String as PropType<PhoneInputProps["size"]> },
-    testId: String,
     value: { default: undefined, type: String as PropType<string | undefined> },
     variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
   },
@@ -72,7 +70,6 @@ export const PhoneInput = defineComponent({
             class: cn(props.class, (attrs as { class?: ClassValue }).class),
             "data-part": "root",
             "data-scope": "phone-input",
-            "data-testid": props.testId,
             role: "group",
             size: props.size,
             variant: props.variant,
@@ -103,7 +100,6 @@ export const PhoneInput = defineComponent({
                   ),
                 }),
                 "data-invalid": props.invalid || undefined,
-                "data-testid": props.testId ? `${props.testId}-input` : undefined,
                 disabled: props.disabled,
                 onValueChange: handleValueChange,
                 readOnly: props.readOnly,

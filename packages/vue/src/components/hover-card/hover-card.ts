@@ -1,37 +1,16 @@
 import { HoverCard as HoverCardPrimitive } from "@ark-ui/vue/hover-card";
 import { hoverCardContentVariants, hoverCardInlineVariants } from "@pisagor/styles/ui/hover-card";
 import { cn } from "@pisagor/utils";
-import {
-  type CSSProperties,
-  defineComponent,
-  h,
-  type PropType,
-  reactive,
-  Teleport,
-  watchEffect,
-} from "vue";
-import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils/create-context";
+import { type CSSProperties, defineComponent, h, type PropType, Teleport } from "vue";
 
 // #region Types
-interface HoverCardContextProps {
-  testId?: string;
-}
-
-export interface HoverCardProps extends WithTestId {
+export interface HoverCardProps {
   closeDelay?: number;
   lazyMount?: boolean;
   openDelay?: number;
   positioning?: Record<string, unknown>;
   unmountOnExit?: boolean;
 }
-// #endregion
-
-// #region Context
-const [provideHoverCardContext, useHoverCardRoot] = createContext<HoverCardContextProps>({
-  name: "HoverCardRoot",
-  strict: false,
-});
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];
@@ -52,20 +31,9 @@ export const HoverCardRoot = defineComponent({
       default: () => ({ placement: "top" }),
       type: Object as PropType<Record<string, unknown>>,
     },
-    testId: String,
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    const context = reactive<HoverCardContextProps>({
-      testId: props.testId,
-    });
-
-    watchEffect(() => {
-      context.testId = props.testId;
-    });
-
-    provideHoverCardContext(context);
-
     return () =>
       h(
         HoverCardPrimitive.Root as ArkPart,
@@ -86,14 +54,11 @@ export const HoverCardTrigger = defineComponent({
   inheritAttrs: false,
   name: "HoverCardTrigger",
   setup(_, { attrs, slots }) {
-    const hoverCardContext = useHoverCardRoot() ?? {};
-
     return () =>
       h(
         HoverCardPrimitive.Trigger as ArkPart,
         {
           ...attrs,
-          "data-testid": hoverCardContext.testId,
         },
         slots,
       );

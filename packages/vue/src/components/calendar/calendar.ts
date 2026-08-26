@@ -32,7 +32,6 @@ import {
   shellVariantArgs,
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { WithTestId } from "../../internal/types";
 import { Button, type ButtonProps } from "../button";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -60,7 +59,7 @@ interface CalendarTableNextMonthProps {
   tabIndex?: number | string;
 }
 
-export interface CalendarProps extends WithTestId {
+export interface CalendarProps {
   class?: unknown;
   /** Visual shell variant for embedded selects. When omitted, resolves from the nearest `Surface` context. */
   variant?: FormControlVariant;
@@ -94,7 +93,6 @@ export const CalendarRoot = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
     lazyMount: { default: true, type: Boolean },
-    testId: String,
     unmountOnExit: { default: true, type: Boolean },
     variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
   },
@@ -106,7 +104,6 @@ export const CalendarRoot = defineComponent({
           {
             ...attrs,
             class: cn(calendarVariants(), props.class),
-            "data-testid": props.testId,
             inline: true,
             lazyMount: props.lazyMount,
             unmountOnExit: props.unmountOnExit,

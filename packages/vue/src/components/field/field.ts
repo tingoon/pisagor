@@ -8,13 +8,12 @@ import {
   shellVariantArgs,
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { WithTestId } from "../../internal/types";
 import { Separator } from "../separator/separator";
 
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface FieldProps extends WithTestId {
+export interface FieldProps {
   class?: unknown;
   orientation?: "horizontal" | "responsive" | "vertical";
   reverse?: boolean;
@@ -34,7 +33,6 @@ export const FieldRoot = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     orientation: { default: "vertical", type: String as PropType<FieldProps["orientation"]> },
     reverse: { default: false, type: Boolean },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -49,7 +47,6 @@ export const FieldRoot = defineComponent({
           ...attrs,
           class: cn(variantSlots.base(), props.class),
           "data-orientation": props.orientation,
-          "data-testid": props.testId,
         },
         slots,
       );

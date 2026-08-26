@@ -8,13 +8,12 @@ import {
 } from "@pisagor/styles/ui/resizable";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, ref } from "vue";
-import type { WithTestId } from "../../internal/types";
 
 // #region Types
 export type ResizableHandlePosition = "bottom" | "center" | "top";
 export type ResizableEdgePlacement = "end" | "start";
 
-export interface ResizableEdgeHandleProps extends WithTestId {
+export interface ResizableEdgeHandleProps {
   handlePosition?: ResizableHandlePosition;
   /** Accessible label for the resize control. */
   label: string;
@@ -28,7 +27,7 @@ export interface ResizableEdgeHandleProps extends WithTestId {
 }
 
 // We keep the primitive wrapper types intentionally loose; `h()` polymorphic casts.
-export interface ResizableRootProps extends WithTestId {
+export interface ResizableRootProps {
   class?: unknown;
 }
 
@@ -58,7 +57,6 @@ export const ResizableEdgeHandle = defineComponent({
     onResizeStart: { default: undefined, type: Function as PropType<() => void> },
     onWidthChange: { required: true, type: Function as PropType<(width: number) => void> },
     placement: { required: true, type: String as PropType<ResizableEdgePlacement> },
-    testId: String,
     width: { required: true, type: Number },
   },
   setup(props, { attrs }) {
@@ -85,7 +83,6 @@ export const ResizableEdgeHandle = defineComponent({
           "data-handle-position": props.handlePosition,
           "data-part": "edge-handle",
           "data-scope": "resizable",
-          "data-testid": props.testId,
           onDoubleClick: (event: MouseEvent) => {
             event.preventDefault();
             props.onResizeEnd?.();
@@ -148,7 +145,6 @@ export const ResizableRoot = defineComponent({
   name: "ResizableRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -157,7 +153,6 @@ export const ResizableRoot = defineComponent({
         {
           ...attrs,
           class: cn(resizableVariants(), props.class),
-          "data-testid": props.testId,
         },
         slots,
       );

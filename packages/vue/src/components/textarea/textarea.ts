@@ -14,7 +14,7 @@ import {
   shellVariantArgs,
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 import { InputClearButton } from "../input/input-clear-button";
 import { InputGroupAddon, InputGroupRoot } from "../input-group/input-group-core";
 
@@ -24,7 +24,7 @@ type TextareaClassNames = VariantClassNames<TextareaSlots>;
 type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
 
 // #region Types
-export interface TextareaProps extends WithTestId {
+export interface TextareaProps {
   class?: unknown;
   classNames?: TextareaClassNames;
   clearable?: boolean;
@@ -57,7 +57,6 @@ export const Textarea = defineComponent({
       type: Function as PropType<TextareaProps["onValueChange"]>,
     },
     readOnly: { default: undefined, type: Boolean },
-    testId: String,
     value: {
       default: undefined,
       type: [String, Number, Array] as PropType<TextareaProps["value"]>,
@@ -104,7 +103,6 @@ export const Textarea = defineComponent({
               class: cn(props.class, props.classNames?.rootLayout),
             }),
           ),
-          "data-testid": props.testId,
           defaultValue: props.defaultValue,
           disabled: props.disabled,
           onInput: changeHandler,
@@ -122,7 +120,6 @@ export const Textarea = defineComponent({
             class: slots.clearableRoot({
               class: cn(canClear.value && "pe-9", props.class, props.classNames?.clearableRoot),
             }),
-            "data-testid": props.testId,
             defaultValue: props.defaultValue,
             disabled: props.disabled,
             onInput: handleChange,

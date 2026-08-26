@@ -13,7 +13,6 @@ import {
   type VNodeChild,
   watchEffect,
 } from "vue";
-import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils/create-context";
 import { FieldLabel } from "../field/field";
 
@@ -28,7 +27,7 @@ interface CircularSliderContextValue {
   thumbSize: number;
 }
 
-export interface CircularSliderProps extends WithTestId {
+export interface CircularSliderProps {
   class?: unknown;
   defaultValue?: number;
   disabled?: boolean;
@@ -73,7 +72,6 @@ export const CircularSliderRoot = defineComponent({
     },
     size: { default: 100, type: Number },
     step: { default: 1, type: Number },
-    testId: String,
     thickness: { default: 6, type: Number },
     value: { default: undefined, type: Number },
   },
@@ -102,7 +100,6 @@ export const CircularSliderRoot = defineComponent({
         {
           ...attrs,
           class: circularSliderVariants().base({ class: props.class }),
-          "data-testid": props.testId,
           defaultValue: props.defaultValue,
           disabled: props.disabled,
           modelValue: props.value,

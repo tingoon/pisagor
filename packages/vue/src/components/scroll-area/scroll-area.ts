@@ -1,10 +1,10 @@
 import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/vue/scroll-area";
 import { type ScrollAreaSlots, scrollAreaVariants } from "@pisagor/styles/ui/scroll-area";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 
 // #region Types
-export interface ScrollAreaProps extends WithTestId {
+export interface ScrollAreaProps {
   class?: unknown;
   scrollFade?: boolean;
   /**
@@ -37,7 +37,6 @@ export const ScrollArea = defineComponent({
     },
     scrollbarProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
     scrollFade: { default: false, type: Boolean },
-    testId: String,
     thumbProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
     viewportProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
   },
@@ -50,7 +49,6 @@ export const ScrollArea = defineComponent({
         {
           ...attrs,
           class: slotsClasses.base({ class: props.class }),
-          "data-testid": props.testId,
         },
         () => [
           h(

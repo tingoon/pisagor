@@ -2,10 +2,9 @@ import { ark } from "@ark-ui/vue/factory";
 import { visuallyHiddenVariants } from "@pisagor/styles/ui/visually-hidden";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
-import type { WithTestId } from "../../internal/types";
 
 // #region Types
-export interface VisuallyHiddenProps extends WithTestId {
+export interface VisuallyHiddenProps {
   class?: unknown;
 }
 // #endregion
@@ -21,7 +20,6 @@ export const VisuallyHidden = defineComponent({
   name: "VisuallyHidden",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -32,7 +30,6 @@ export const VisuallyHidden = defineComponent({
           class: cn(visuallyHiddenVariants(), props.class),
           "data-part": "root",
           "data-scope": "visually-hidden",
-          "data-testid": props.testId,
         },
         slots,
       );

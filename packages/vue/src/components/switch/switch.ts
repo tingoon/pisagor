@@ -24,7 +24,6 @@ export const Switch = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<SwitchClassNames> },
-    testId: String,
     variant: { default: undefined, type: String as PropType<FormControlVariant> },
   },
   setup(props, { attrs, emit }) {
@@ -40,7 +39,6 @@ export const Switch = defineComponent({
           ...attrs,
           ...controlShellProps,
           class: slots_.base({ class: props.class }),
-          "data-testid": props.testId,
           onCheckedChange: (details: { checked: boolean }) => {
             emit("checkedChange", details);
             emit("valueChange", details.checked === true);

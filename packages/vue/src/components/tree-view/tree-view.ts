@@ -29,7 +29,6 @@ import {
 import { cn } from "@pisagor/utils";
 import { defineComponent, Fragment, h, type PropType } from "vue";
 import { formControlToggleVariants } from "../../internal/form-control/form-control-variants";
-import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils/create-context";
 
 // #region Types
@@ -47,7 +46,7 @@ interface TreeViewContextValue {
   fileIcons?: Record<string, unknown | null>;
 }
 
-export interface TreeViewProps extends WithTestId {
+export interface TreeViewProps {
   fileIcons?: Record<string, unknown | null>;
   lazyMount?: boolean;
   unmountOnExit?: boolean;
@@ -95,7 +94,6 @@ export const TreeViewRoot = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     fileIcons: { default: undefined, type: Object as PropType<Record<string, unknown | null>> },
     lazyMount: { default: true, type: Boolean },
-    testId: String,
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
@@ -107,7 +105,6 @@ export const TreeViewRoot = defineComponent({
         {
           ...attrs,
           class: cn(treeViewVariants(), props.class),
-          "data-testid": props.testId,
           lazyMount: props.lazyMount,
           unmountOnExit: props.unmountOnExit,
         },

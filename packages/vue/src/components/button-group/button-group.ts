@@ -7,13 +7,12 @@ import {
 } from "@pisagor/styles/ui/button-group";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
-import type { WithTestId } from "../../internal/types";
 import { Separator, type SeparatorProps } from "../separator";
 
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface ButtonGroupProps extends WithTestId {
+export interface ButtonGroupProps {
   class?: unknown;
   orientation?: ButtonGroupVariantProps["orientation"];
 }
@@ -29,7 +28,6 @@ export const ButtonGroupRoot = defineComponent({
       default: "horizontal",
       type: String as PropType<ButtonGroupVariantProps["orientation"]>,
     },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -41,7 +39,6 @@ export const ButtonGroupRoot = defineComponent({
           "data-orientation": props.orientation,
           "data-part": "root",
           "data-scope": "button-group",
-          "data-testid": props.testId,
         },
         slots.default?.(),
       );

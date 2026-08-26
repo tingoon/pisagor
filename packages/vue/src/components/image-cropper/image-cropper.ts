@@ -16,7 +16,6 @@ import {
 } from "@pisagor/styles/ui/image-cropper";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
-import type { WithTestId } from "../../internal/types";
 
 type ArkPart = Parameters<typeof h>[0];
 
@@ -28,7 +27,7 @@ interface CropRect {
 }
 
 // #region Types
-export interface ImageCropperProps extends WithTestId {
+export interface ImageCropperProps {
   /** Alt text for the auto-rendered image. */
   alt?: string;
   /**
@@ -126,7 +125,6 @@ export const ImageCropperRoot = defineComponent({
     },
     rotation: { default: undefined, type: Number },
     src: { default: undefined, type: String },
-    testId: String,
     zoom: { default: undefined, type: Number },
   },
   setup(props, { attrs, slots }) {
@@ -138,7 +136,6 @@ export const ImageCropperRoot = defineComponent({
           aspectRatio: props.aspectRatio,
           class: cn(imageCropperVariants(), props.class),
           cropShape: props.cropShape,
-          "data-testid": props.testId,
           fixedCropArea: props.fixedCropArea,
           initialCrop: props.initialCrop,
           maxHeight: props.maxHeight,

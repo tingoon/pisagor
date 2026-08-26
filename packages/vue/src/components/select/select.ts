@@ -15,8 +15,6 @@ import {
   shellVariantArgs,
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils/create-context";
 import { Separator } from "../separator/separator";
 
 // #region Types
@@ -35,7 +33,7 @@ export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
   variant?: FormControlVariant;
   collection?: ListCollection<T>;
   onValueChange?: (value: string | string[]) => void;
-} & WithTestId;
+};
 
 export interface SelectProps extends Omit<SelectRootProps, "children"> {
   items?: Array<SelectPresetItem | string>;
@@ -49,13 +47,6 @@ export interface SelectProps extends Omit<SelectRootProps, "children"> {
 }
 
 export type SelectTriggerSize = FormControlShellVariantProps["size"];
-// #endregion
-
-// #region Context
-const [SelectRootContext, useSelectRoot] = createContext<{ testId?: string }>({
-  name: "SelectRoot",
-  strict: false,
-});
 // #endregion
 
 // #region Parts
@@ -76,21 +67,17 @@ export const SelectRoot = defineComponent({
       default: undefined,
       type: Function as PropType<SelectRootProps["onValueChange"]>,
     },
-    testId: String,
     unmountOnExit: { default: true, type: Boolean },
     variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
   },
   setup(props, { attrs, slots }) {
     return () =>
       h(FormControlVariantProvider as ArkPart, { value: props.variant }, () => {
-        SelectRootContext({ testId: props.testId });
-
         return h(
           SelectPrimitive.Root as ArkPart,
           {
             ...attrs,
             collection: props.collection,
-            "data-testid": props.testId,
             lazyMount: props.lazyMount,
             onValueChange: props.onValueChange
               ? (details: { value: string | string[] }) => props.onValueChange?.(details.value)
@@ -110,12 +97,10 @@ export const SelectTrigger = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     clearable: { default: false, type: Boolean },
     size: { default: "md", type: String as PropType<SelectTriggerSize> },
-    testId: { default: undefined, type: String as PropType<string | undefined> },
     variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const { testId } = useSelectRoot() ?? {};
       const resolved = useFormControlVariant(props.variant);
       const shellArgs = shellVariantArgs(resolved);
       const controlProps = formControlShellProps(resolved);
@@ -134,7 +119,6 @@ export const SelectTrigger = defineComponent({
               attrs.class,
             ),
             "data-size": props.size,
-            "data-testid": testId,
           },
           () => [
             slots.default?.(),
@@ -377,7 +361,6 @@ export const SelectShorthand = defineComponent({
       type: Array as PropType<Array<SelectPresetItem | string> | undefined>,
     },
     placeholder: { default: undefined, type: String as PropType<string | undefined> },
-    testId: String,
     variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
   },
   setup(props, { attrs }) {
@@ -393,7 +376,6 @@ export const SelectShorthand = defineComponent({
         {
           ...attrs,
           collection,
-          testId: props.testId,
           variant: props.variant,
         },
         () => [

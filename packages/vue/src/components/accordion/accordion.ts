@@ -7,7 +7,6 @@ import {
 } from "@pisagor/styles/accordion";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import type { WithTestId } from "../../internal/types";
 
 // #region Types
 export interface AccordionPresetItem {
@@ -17,7 +16,7 @@ export interface AccordionPresetItem {
   disabled?: boolean;
 }
 
-export interface AccordionProps extends WithTestId {
+export interface AccordionProps {
   items?: AccordionPresetItem[];
   collapsible?: boolean;
   lazyMount?: boolean;
@@ -35,7 +34,6 @@ export const AccordionRoot = defineComponent({
   props: {
     collapsible: { default: true, type: Boolean },
     lazyMount: { default: true, type: Boolean },
-    testId: String,
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
@@ -45,7 +43,6 @@ export const AccordionRoot = defineComponent({
         {
           ...attrs,
           collapsible: props.collapsible,
-          "data-testid": props.testId,
           lazyMount: props.lazyMount,
           unmountOnExit: props.unmountOnExit,
         },
@@ -129,7 +126,6 @@ export const AccordionShorthand = defineComponent({
     collapsible: { default: true, type: Boolean },
     items: { default: undefined, type: Array as PropType<AccordionPresetItem[]> },
     lazyMount: { default: true, type: Boolean },
-    testId: String,
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs }) {
@@ -140,7 +136,6 @@ export const AccordionShorthand = defineComponent({
           ...attrs,
           collapsible: props.collapsible,
           lazyMount: props.lazyMount,
-          testId: props.testId,
           unmountOnExit: props.unmountOnExit,
         },
         () =>

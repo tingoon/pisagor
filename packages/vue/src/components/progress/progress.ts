@@ -9,12 +9,12 @@ import { fieldVariants } from "@pisagor/styles/ui/field";
 import { type ProgressSlots, progressVariants } from "@pisagor/styles/ui/progress";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNode } from "vue";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 
 // #region Types
 type ProgressClassNames = VariantClassNames<ProgressSlots>;
 
-export interface ProgressProps extends WithTestId {
+export interface ProgressProps {
   class?: unknown;
   classNames?: ProgressClassNames;
   indeterminate?: boolean;
@@ -42,7 +42,6 @@ export const Progress = defineComponent({
     label: { default: undefined, type: String },
     orientation: { default: "horizontal", type: String as PropType<ProgressProps["orientation"]> },
     rangeProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
-    testId: String,
     trackProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
     value: { default: undefined, type: Number },
     valueProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
@@ -57,7 +56,6 @@ export const Progress = defineComponent({
         {
           ...attrs,
           class: variantSlots.base({ class: props.class }),
-          "data-testid": props.testId,
           modelValue: props.indeterminate ? null : props.value,
           orientation: props.orientation,
         },

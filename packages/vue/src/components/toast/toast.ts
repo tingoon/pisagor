@@ -10,7 +10,7 @@ import { cn } from "@pisagor/utils";
 type ClassValue = Parameters<typeof cn>[0];
 
 import { defineComponent, h, type PropType, Teleport } from "vue";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 import { Button } from "../button";
 import { Spinner } from "../spinner";
 
@@ -32,13 +32,13 @@ type ToastData = {
   action?: ToastAction;
 };
 
-export interface ToasterProps extends WithTestId {
+export interface ToasterProps {
   toaster?: unknown;
   class?: ClassValue;
   style?: Record<string, unknown>;
 }
 
-export interface ToastItemProps extends WithTestId {
+export interface ToastItemProps {
   toast: ToastData;
   class?: ClassValue;
   classNames?: ToastItemClassNames;
@@ -76,7 +76,6 @@ export const ToasterRoot = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
     style: { default: undefined, type: Object as PropType<Record<string, unknown>> },
-    testId: String,
     toaster: { default: undefined, type: Object as PropType<unknown> },
   },
   setup(props, { attrs }) {
@@ -110,7 +109,6 @@ export const ToastItem = defineComponent({
     closeTriggerProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
     descriptionProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
     iconProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
-    testId: String,
     titleProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
     toast: { required: true, type: Object as PropType<ToastData> },
   },

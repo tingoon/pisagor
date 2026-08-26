@@ -15,10 +15,6 @@ import {
 } from "@pisagor/styles/ui/steps";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
-import type { WithTestId } from "../../internal/types";
-
-// #region Types
-export type StepsProps = WithTestId;
 
 type ArkPart = Parameters<typeof h>[0];
 
@@ -28,7 +24,6 @@ export const StepsRoot = defineComponent({
   name: "StepsRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -37,7 +32,6 @@ export const StepsRoot = defineComponent({
         {
           ...attrs,
           class: cn(stepsVariants(), props.class),
-          "data-testid": props.testId,
         },
         slots,
       );

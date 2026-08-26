@@ -23,10 +23,7 @@ import {
   DropdownMenuSubContent,
   DropdownMenuTrigger,
   DropdownMenuTriggerItem,
-  useDropdownMenuRoot,
 } from "./dropdown-menu";
-
-export { useDropdownMenuRoot };
 
 export const DropdownMenu = Object.assign(DropdownMenuRoot, {
   Arrow: DropdownMenuArrow,

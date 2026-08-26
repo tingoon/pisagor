@@ -8,7 +8,7 @@ import {
 } from "@pisagor/styles/ui/stat";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 
 type ArkPart = Parameters<typeof h>[0];
 
@@ -18,10 +18,9 @@ type StatTrendVariant = NonNullable<StatTrendVariantProps["trend"]>;
 
 type StatClassNames = VariantClassNames<StatSlots>;
 
-export interface StatProps extends Omit<WithTestId, "testId"> {
+export interface StatProps {
   class?: unknown;
   classNames?: StatClassNames;
-  testId?: string;
   variant?: StatVariant;
 
   label?: VNodeChild;
@@ -43,7 +42,6 @@ export const StatRoot = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<StatClassNames> },
-    testId: String,
     variant: { default: "outline", type: String as PropType<StatVariant> },
   },
   setup(props, { attrs, slots }) {
@@ -57,7 +55,6 @@ export const StatRoot = defineComponent({
           class: slots_.base({ class: props.class }),
           "data-part": "root",
           "data-scope": "stat",
-          "data-testid": props.testId,
           "data-variant": props.variant,
         },
         slots.default?.(),
@@ -146,7 +143,6 @@ export const StatTrend = defineComponent({
   name: "StatTrend",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    testId: String,
     trend: { default: "neutral", type: String as PropType<StatTrendVariant> },
   },
   setup(props, { attrs, slots }) {
@@ -158,7 +154,6 @@ export const StatTrend = defineComponent({
           class: cn(statTrendVariants({ trend: props.trend }), props.class),
           "data-part": "trend",
           "data-scope": "stat",
-          "data-testid": props.testId,
           "data-trend": props.trend,
         },
         slots.default?.(),
@@ -189,7 +184,6 @@ export const StatShorthand = defineComponent({
       default: undefined,
       type: Object as PropType<Record<string, unknown> | undefined>,
     },
-    testId: String,
     trend: {
       default: undefined,
       type: [String, Number, Boolean, Object, Array] as PropType<VNodeChild>,
@@ -216,7 +210,6 @@ export const StatShorthand = defineComponent({
           ...attrs,
           class: props.class,
           classNames: props.classNames,
-          testId: props.testId,
           variant: props.variant,
         },
         () => [

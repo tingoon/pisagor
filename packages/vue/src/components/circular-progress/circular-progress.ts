@@ -5,12 +5,12 @@ import {
   circularProgressVariants,
 } from "@pisagor/styles/ui/circular-progress";
 import { computed, defineComponent, h, type PropType, type VNode } from "vue";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 
 // #region Types
 type CircularProgressClassNames = VariantClassNames<CircularProgressSlots>;
 
-export interface CircularProgressProps extends WithTestId {
+export interface CircularProgressProps {
   class?: unknown;
   classNames?: CircularProgressClassNames;
   indeterminate?: boolean;
@@ -111,7 +111,6 @@ export const CircularProgress = defineComponent({
     indeterminate: { default: false, type: Boolean },
     isValueVisible: { default: undefined, type: Boolean },
     size: { default: 32, type: Number },
-    testId: String,
     thickness: { default: 4, type: Number },
     trackProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
     value: { default: undefined, type: Number },
@@ -157,7 +156,6 @@ export const CircularProgress = defineComponent({
         {
           ...attrs,
           class: variantSlots.base({ class: props.class }),
-          "data-testid": props.testId,
           modelValue: props.indeterminate ? null : props.value,
         },
         () => children,

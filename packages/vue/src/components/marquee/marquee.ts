@@ -7,10 +7,9 @@ import {
 } from "@pisagor/styles/ui/marquee";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import type { WithTestId } from "../../internal/types";
 
 // #region Types
-export interface MarqueeProps extends WithTestId {
+export interface MarqueeProps {
   orientation?: "horizontal" | "vertical";
   showEdges?: boolean;
   spacing?: string;
@@ -35,7 +34,6 @@ export const MarqueeRoot = defineComponent({
     showEdges: { default: true, type: Boolean },
     spacing: { default: "16px", type: String },
     speed: { default: 50, type: Number },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -48,7 +46,6 @@ export const MarqueeRoot = defineComponent({
           ...attrs,
           class: cn(marqueeVariants(), props.class),
           "data-orientation": props.orientation,
-          "data-testid": props.testId,
           side,
           spacing: props.spacing,
           speed: props.speed,
@@ -144,7 +141,6 @@ export const MarqueeShorthand = defineComponent({
     showEdges: { default: true, type: Boolean },
     spacing: { default: "16px", type: String },
     speed: { default: 50, type: Number },
-    testId: String,
   },
   setup(props, { attrs }) {
     return () => h(MarqueeRoot, { ...attrs, ...props }, {});

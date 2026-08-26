@@ -16,7 +16,7 @@ import {
   shellVariantArgs,
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 import { Button } from "../button";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -24,7 +24,7 @@ type ArkPart = Parameters<typeof h>[0];
 type SignaturePadClassNames = VariantClassNames<SignaturePadSlots>;
 
 // #region Types
-export interface SignaturePadProps extends WithTestId {
+export interface SignaturePadProps {
   class?: unknown;
   /** Slot class names */
   classNames?: SignaturePadClassNames;
@@ -80,7 +80,6 @@ export const SignaturePad = defineComponent({
     paths: { default: undefined, type: Array as PropType<string[] | undefined> },
     readOnly: { default: undefined, type: Boolean },
     required: { default: undefined, type: Boolean },
-    testId: String,
     variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
   },
   setup(props, { attrs }) {
@@ -98,7 +97,6 @@ export const SignaturePad = defineComponent({
             "aria-invalid": props.invalid || undefined,
             class: slots_.base({ class: props.class }),
             "data-invalid": props.invalid || undefined,
-            "data-testid": props.testId,
             defaultPaths: props.defaultPaths,
             disabled: props.disabled,
             drawing: props.drawing,

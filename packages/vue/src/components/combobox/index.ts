@@ -17,7 +17,6 @@ import {
 } from "./combobox";
 
 export type { ComboboxProps, ComboboxRootProps } from "./combobox";
-export { useComboboxRoot } from "./combobox";
 
 export const Combobox = Object.assign(ComboboxShorthand, {
   ClearTrigger: ComboboxClearTrigger,

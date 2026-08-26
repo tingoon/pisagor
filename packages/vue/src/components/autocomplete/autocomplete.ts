@@ -2,7 +2,6 @@ import type { CollectionItem, ListCollection } from "@ark-ui/vue/collection";
 import { createListCollection } from "@ark-ui/vue/collection";
 import { defineComponent, h, type PropType } from "vue";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
-import type { WithTestId } from "../../internal/types";
 import { Combobox } from "../combobox";
 import type { ComboboxRootProps } from "../combobox/combobox";
 import { Separator } from "../separator/separator";
@@ -18,9 +17,9 @@ export type AutocompleteRootProps<T extends CollectionItem = CollectionItem> = O
   "children"
 > & {
   collection?: ListCollection<T>;
-} & WithTestId & {
-    variant?: FormControlVariant;
-  };
+} & {
+  variant?: FormControlVariant;
+};
 
 export interface AutocompleteProps extends Omit<AutocompleteRootProps, "children"> {
   items?: Array<AutocompletePresetItem | string>;
@@ -119,7 +118,6 @@ export const AutocompleteShorthand = defineComponent({
       default: undefined,
       type: Array as PropType<Array<AutocompletePresetItem | string> | undefined>,
     },
-    testId: String,
     variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
   },
   setup(props, { attrs, slots }) {
@@ -136,7 +134,6 @@ export const AutocompleteShorthand = defineComponent({
         {
           ...attrs,
           collection,
-          testId: props.testId,
           variant: props.variant,
         },
         () => [

@@ -11,8 +11,6 @@ import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, Teleport, type VNodeChild } from "vue";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
-import type { WithTestId } from "../../internal/types";
-import { createContext } from "../../utils/create-context";
 import { Button } from "../button";
 import { InputGroup } from "../input-group";
 
@@ -32,7 +30,7 @@ export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   variant?: FormControlVariant;
   collection?: ListCollection<T>;
   onValueChange?: (value: string[]) => void;
-} & WithTestId;
+};
 
 export interface ComboboxProps extends Omit<ComboboxRootProps, "children"> {
   items?: Array<ComboboxPresetItem | string>;
@@ -59,16 +57,6 @@ export interface ComboboxItemGroupProps {
 }
 // #endregion
 
-// #region Context
-const [ComboboxRootContext, useComboboxRoot] = createContext<{ testId?: string }>({
-  name: "ComboboxRoot",
-  strict: false,
-});
-
-export { useComboboxRoot };
-
-// #endregion
-
 // #region Parts
 type ArkPart = Parameters<typeof h>[0];
 
@@ -92,21 +80,17 @@ export const ComboboxRoot = defineComponent({
       type: Function as PropType<ComboboxRootProps["onValueChange"]>,
     },
     openOnClick: { default: true, type: Boolean },
-    testId: String,
     unmountOnExit: { default: true, type: Boolean },
     variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
   },
   setup(props, { attrs, slots }) {
     return () =>
       h(FormControlVariantProvider as ArkPart, { value: props.variant }, () => {
-        ComboboxRootContext({ testId: props.testId });
-
         return h(
           ComboboxPrimitive.Root as ArkPart,
           {
             ...attrs,
             collection: props.collection,
-            "data-testid": props.testId,
             lazyMount: props.lazyMount,
             onValueChange: props.onValueChange
               ? (details: { value: string[] }) => props.onValueChange?.(details.value)
@@ -129,7 +113,6 @@ export const ComboboxControl = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const { testId } = useComboboxRoot() ?? {};
       const styleSlots = comboboxVariants();
 
       return h(
@@ -137,7 +120,6 @@ export const ComboboxControl = defineComponent({
         {
           ...attrs,
           class: cn(styleSlots.control(), props.class, attrs.class),
-          "data-testid": testId,
         },
         slots.default?.(),
       );
@@ -154,7 +136,6 @@ export const ComboboxInput = defineComponent({
     disabled: { default: undefined, type: Boolean },
     showTrigger: { default: true, type: Boolean },
     size: { default: "md", type: String as PropType<ComboboxInputProps["size"]> },
-    testId: String,
     variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
   },
   setup(props, { attrs, slots }) {
@@ -435,7 +416,6 @@ export const ComboboxShorthand = defineComponent({
       default: undefined,
       type: Array as PropType<Array<ComboboxPresetItem | string> | undefined>,
     },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -450,7 +430,6 @@ export const ComboboxShorthand = defineComponent({
         {
           ...attrs,
           collection,
-          testId: props.testId,
         },
         () => [
           h(ComboboxInput as ArkPart, { clearable: props.clearable }),

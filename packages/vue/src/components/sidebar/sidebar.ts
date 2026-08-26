@@ -14,7 +14,6 @@ import {
   ref,
   watchEffect,
 } from "vue";
-import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils/create-context";
 import { Button } from "../button";
 import { Sheet } from "../sheet";
@@ -27,7 +26,7 @@ type SidebarPlacement = "left" | "right";
 type SidebarVariant = "sidebar" | "floating" | "inset";
 type SidebarCollapsible = "offcanvas" | "icon" | "none";
 
-export interface SidebarProps extends WithTestId {
+export interface SidebarProps {
   className?: string;
   collapsible?: SidebarCollapsible;
   placement?: SidebarPlacement;
@@ -129,7 +128,6 @@ export const SidebarProvider = defineComponent({
     onOpenChange: { default: undefined, type: Function as PropType<(open: boolean) => void> },
     open: { default: undefined, type: Boolean },
     placement: { default: "left", type: String as PropType<SidebarPlacement> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     const isMobileRef = useIsMobile();
@@ -206,7 +204,6 @@ export const SidebarProvider = defineComponent({
           ),
           "data-part": "wrapper",
           "data-scope": "sidebar",
-          "data-testid": props.testId,
           style: {
             "--sidebar-width": "16rem",
             "--sidebar-width-icon": "3rem",
@@ -227,7 +224,6 @@ export const SidebarRoot = defineComponent({
     className: { default: undefined, type: String },
     collapsible: { default: "offcanvas", type: String as PropType<SidebarCollapsible> },
     placement: { default: "left", type: String as PropType<SidebarPlacement> },
-    testId: String,
     variant: { default: "sidebar", type: String as PropType<SidebarVariant> },
   },
   setup(props, { attrs, slots }) {
@@ -252,7 +248,6 @@ export const SidebarRoot = defineComponent({
             ),
             "data-part": "root",
             "data-scope": "sidebar",
-            "data-testid": props.testId,
           },
           slots.default?.(),
         );
@@ -264,7 +259,6 @@ export const SidebarRoot = defineComponent({
           {
             onOpenChange: ({ open }: { open: boolean }) => ctx.setOpenMobile(open),
             open: ctx.openMobile,
-            testId: props.testId,
           },
           {
             default: () =>
@@ -275,7 +269,6 @@ export const SidebarRoot = defineComponent({
                   class: variantSlots.mobile(),
                   "data-mobile": "true",
                   "data-sidebar": "sidebar",
-                  "data-testid": props.testId,
                   placement: props.placement === "left" ? "left" : "right",
                   style: { "--sidebar-width": "18rem" },
                 },
@@ -295,7 +288,6 @@ export const SidebarRoot = defineComponent({
           "data-placement": props.placement,
           "data-scope": "sidebar",
           "data-state": ctx.state,
-          "data-testid": props.testId,
           "data-variant": props.variant,
         },
         () => [
@@ -339,7 +331,6 @@ export const SidebarContent = defineComponent({
   props: {
     className: { default: undefined, type: String },
     scrollFade: { default: false, type: Boolean },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -356,7 +347,6 @@ export const SidebarContent = defineComponent({
           ),
           "data-part": "content",
           "data-scope": "sidebar",
-          "data-testid": props.testId,
         },
         slots.default?.(),
       );
@@ -367,7 +357,7 @@ export const SidebarContent = defineComponent({
 export const SidebarHeader = defineComponent({
   inheritAttrs: false,
   name: "SidebarHeader",
-  props: { className: { default: undefined, type: String }, testId: String },
+  props: { className: { default: undefined, type: String } },
   setup(props, { attrs, slots }) {
     return () => {
       const variantSlots = sidebarVariants();
@@ -383,7 +373,6 @@ export const SidebarHeader = defineComponent({
           ),
           "data-part": "header",
           "data-scope": "sidebar",
-          "data-testid": props.testId,
         },
         slots.default?.(),
       );
@@ -394,7 +383,7 @@ export const SidebarHeader = defineComponent({
 export const SidebarFooter = defineComponent({
   inheritAttrs: false,
   name: "SidebarFooter",
-  props: { className: { default: undefined, type: String }, testId: String },
+  props: { className: { default: undefined, type: String } },
   setup(props, { attrs, slots }) {
     return () => {
       const variantSlots = sidebarVariants();
@@ -410,7 +399,6 @@ export const SidebarFooter = defineComponent({
           ),
           "data-part": "footer",
           "data-scope": "sidebar",
-          "data-testid": props.testId,
         },
         slots.default?.(),
       );
@@ -421,7 +409,7 @@ export const SidebarFooter = defineComponent({
 export const SidebarGap = defineComponent({
   inheritAttrs: false,
   name: "SidebarGap",
-  props: { padded: { default: false, type: Boolean }, testId: String },
+  props: { padded: { default: false, type: Boolean } },
   setup(props, { attrs }) {
     return () => {
       const variantSlots = sidebarVariants({ padded: props.padded });
@@ -431,7 +419,6 @@ export const SidebarGap = defineComponent({
         class: variantSlots.gap(),
         "data-part": "gap",
         "data-scope": "sidebar",
-        "data-testid": props.testId,
       });
     };
   },
@@ -442,7 +429,6 @@ export const SidebarSeparator = defineComponent({
   name: "SidebarSeparator",
   props: {
     className: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
-    testId: String,
   },
   setup(props, { attrs }) {
     return () => {
@@ -457,7 +443,6 @@ export const SidebarSeparator = defineComponent({
         ),
         "data-part": "separator",
         "data-scope": "sidebar",
-        "data-testid": props.testId,
       });
     };
   },
@@ -469,7 +454,6 @@ export const SidebarRail = defineComponent({
   props: {
     className: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
     placement: { default: "left", type: String as PropType<SidebarPlacement> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -483,7 +467,6 @@ export const SidebarRail = defineComponent({
           "data-part": "rail",
           "data-placement": props.placement,
           "data-scope": "sidebar",
-          "data-testid": props.testId,
         },
         slots.default?.(),
       );
@@ -551,7 +534,6 @@ export const SidebarInput = defineComponent({
   name: "SidebarInput",
   props: {
     className: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
-    testId: String,
   },
   setup(props, { attrs }) {
     return () => {
@@ -562,7 +544,6 @@ export const SidebarInput = defineComponent({
         class: cn(variantSlots.input(), props.className, (attrs as { class?: ClassValue }).class),
         "data-part": "input",
         "data-scope": "sidebar",
-        "data-testid": props.testId,
       });
     };
   },

@@ -434,7 +434,6 @@ export const AppShellRoot = defineComponent({
   name: "AppShell",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     const regionRevision = ref(0);
@@ -516,7 +515,6 @@ export const AppShellRoot = defineComponent({
           "data-part": "root",
           "data-resizing": regionResizing.value ? "" : undefined,
           "data-scope": "app-shell",
-          "data-testid": props.testId,
           ref: shellRef,
           style: {
             ...shellStyle,
@@ -678,7 +676,6 @@ export const AppShellPanel = defineComponent({
     placement: { default: "start", type: String as PropType<AppShellPlacement> },
     position: { default: "fixed", type: String as PropType<AppShellRegionPosition> },
     resizableProps: { default: undefined, type: Object as PropType<AppShellResizableProps> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     const { defaultPanelResizableProps, panelStates } = useAppShell() as AppShellContextValue;
@@ -725,7 +722,6 @@ export const AppShellPanel = defineComponent({
           "data-position": props.position,
           "data-scope": "app-shell",
           "data-state": side.open ? "open" : "closed",
-          "data-testid": props.testId,
           style: {
             gridArea: gridAreaFor(props.placement, "panel"),
             ...(attrs as AttrsWithClassStyle).style,
@@ -857,7 +853,6 @@ export const AppShellInspector = defineComponent({
     placement: { default: "end", type: String as PropType<AppShellPlacement> },
     position: { default: "fixed", type: String as PropType<AppShellRegionPosition> },
     resizableProps: { default: undefined, type: Object as PropType<AppShellResizableProps> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     const { defaultInspectorResizableProps, inspectorStates } =
@@ -907,7 +902,6 @@ export const AppShellInspector = defineComponent({
           "data-position": props.position,
           "data-scope": "app-shell",
           "data-state": side.open ? "open" : "closed",
-          "data-testid": props.testId,
           style: {
             gridArea: gridAreaFor(props.placement, "inspector"),
             ...(attrs as AttrsWithClassStyle).style,
@@ -1038,7 +1032,6 @@ export const AppShellRail = defineComponent({
     onActiveRailIdChange: { default: undefined, type: Function as PropType<(id: string) => void> },
     placement: { default: "start", type: String as PropType<AppShellPlacement> },
     position: { default: "fixed", type: String as PropType<AppShellRegionPosition> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     const { railStates } = useAppShell() as AppShellContextValue;
@@ -1076,7 +1069,6 @@ export const AppShellRail = defineComponent({
           "data-placement": props.placement,
           "data-position": props.position,
           "data-scope": "app-shell",
-          "data-testid": props.testId,
           style: {
             gridArea: gridAreaFor(props.placement, "rail"),
             ...(attrs as AttrsWithClassStyle).style,

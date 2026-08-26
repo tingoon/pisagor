@@ -1,10 +1,9 @@
 import { ark } from "@ark-ui/vue/factory";
 import { tableVariants } from "@pisagor/styles/ui/table";
 import { defineComponent, h, type PropType } from "vue";
-import type { WithTestId } from "../../internal/types";
 
 // #region Types
-export interface TableProps extends WithTestId {
+export interface TableProps {
   /**
    * Whether the table rows are hoverable.
    *
@@ -30,7 +29,6 @@ export const TableRoot = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     isHoverable: { default: true, type: Boolean },
-    testId: String,
     variant: { default: "plain", type: String as PropType<TableProps["variant"]> },
   },
   setup(props, { attrs, slots }) {
@@ -53,7 +51,6 @@ export const TableRoot = defineComponent({
               "data-hoverable": props.isHoverable ? "true" : undefined,
               "data-part": "root",
               "data-scope": "table",
-              "data-testid": props.testId,
               "data-variant": props.variant,
             },
             slots.default?.(),

@@ -18,7 +18,6 @@ export const Toggle = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     disabled: { default: false, type: Boolean },
     size: { default: "md", type: String as PropType<ToggleVariantProps["size"]> },
-    testId: String,
     variant: {
       default: "ghost",
       type: String as PropType<Extract<ButtonVariantProps["variant"], "outline" | "ghost">>,
@@ -35,7 +34,6 @@ export const Toggle = defineComponent({
             toggleVariants({ size: props.size }),
             props.class,
           ),
-          "data-testid": props.testId,
           disabled: props.disabled,
           onPressedChange: (pressed: boolean) => {
             emit("pressedChange", pressed);

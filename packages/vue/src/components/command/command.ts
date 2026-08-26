@@ -7,7 +7,7 @@ import { commandVariants } from "@pisagor/styles/ui/command";
 import { dialogContentVariants } from "@pisagor/styles/ui/dialog";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, Teleport, type VNodeChild } from "vue";
-import { Combobox, type ComboboxRootProps, useComboboxRoot } from "../combobox";
+import { Combobox, type ComboboxRootProps } from "../combobox";
 import { Dialog, type DialogContentProps } from "../dialog";
 import { DropdownMenu } from "../dropdown-menu";
 import type { InputProps } from "../input/input";
@@ -128,7 +128,6 @@ export const CommandRoot = defineComponent({
       default: undefined,
       type: Function as PropType<CommandProps["onValueChange"]>,
     },
-    testId: String,
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
@@ -149,7 +148,6 @@ export const CommandRoot = defineComponent({
           onValueChange: props.onValueChange,
           open: true,
           selectionBehavior: "clear",
-          testId: props.testId,
           unmountOnExit: props.unmountOnExit,
         },
         slots.default?.(),
@@ -190,8 +188,6 @@ export const CommandInput = defineComponent({
     size: { default: undefined, type: String as PropType<CommandInputProps["size"]> },
   },
   setup(props, { attrs }) {
-    const { testId } = useComboboxRoot() ?? {};
-
     return () => {
       const variantSlots = commandVariants();
 
@@ -207,7 +203,6 @@ export const CommandInput = defineComponent({
               h(InputGroup.Input as ArkPart, {
                 ...attrs,
                 autofocus: true,
-                "data-testid": testId,
               }),
             ),
           ],

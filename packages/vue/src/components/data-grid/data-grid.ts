@@ -60,7 +60,6 @@ interface DataGridRowContextValue<TData> {
 export type DataGridProps<TData = unknown> = Omit<TableOptions<TData>, "getCoreRowModel"> & {
   getCoreRowModel?: TableOptions<TData>["getCoreRowModel"];
   class?: unknown;
-  testId?: string;
 };
 
 interface DataGridHeadProps {
@@ -189,7 +188,6 @@ export const DataGridRoot = defineComponent({
   name: "DataGridRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     const options = new Proxy(
@@ -241,7 +239,6 @@ export const DataGridRoot = defineComponent({
           class: cn(dataGridVariants(), props.class),
           "data-part": "root",
           "data-scope": "data-grid",
-          "data-testid": props.testId,
         },
         () => slots.default?.(),
       );

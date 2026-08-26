@@ -2,7 +2,7 @@ import { ark } from "@ark-ui/vue/factory";
 import { type DataListSlots, dataListVariants } from "@pisagor/styles/ui/data-list";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 
 // #region Types
 interface DataListPresetItem {
@@ -14,7 +14,7 @@ type DataListClassNames = VariantClassNames<DataListSlots>;
 
 type ArkPart = Parameters<typeof h>[0];
 
-interface DataListRootProps extends WithTestId {
+interface DataListRootProps {
   /**
    * The orientation of the data list.
    *
@@ -42,7 +42,6 @@ export const DataListRoot = defineComponent({
       default: "horizontal",
       type: String as PropType<DataListRootProps["orientation"]>,
     },
-    testId: String,
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -56,7 +55,6 @@ export const DataListRoot = defineComponent({
           "data-orientation": props.orientation,
           "data-part": "root",
           "data-scope": "data-list",
-          "data-testid": props.testId,
         },
         slots.default?.(),
       );
@@ -169,7 +167,6 @@ export const DataListShorthand = defineComponent({
       default: "horizontal",
       type: String as PropType<DataListRootProps["orientation"]>,
     },
-    testId: String,
   },
   setup(props, { attrs }) {
     return () =>
@@ -180,7 +177,6 @@ export const DataListShorthand = defineComponent({
           class: props.class,
           classNames: props.classNames,
           orientation: props.orientation,
-          testId: props.testId,
         },
         () =>
           props.items?.map((item, index) =>
