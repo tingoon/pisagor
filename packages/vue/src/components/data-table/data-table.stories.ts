@@ -1,11 +1,6 @@
 import { PhCaretDown, PhCaretUp } from "@phosphor-icons/vue";
 import { Badge, DataTable, Table, useDataTable } from "@pisagor/vue";
-import {
-  type ColumnDef,
-  getSortedRowModel,
-  type HeaderGroup,
-  type SortingState,
-} from "@tanstack/vue-table";
+import type { ColumnDef, SortingState } from "@pisagor/vue/data-table";
 import { computed, defineComponent, h, ref } from "vue";
 import preview from "#/storybook/preview";
 
@@ -129,7 +124,7 @@ const SortableHead = defineComponent({
   setup() {
     return () => {
       const table = useDataTable<User>();
-      const headerGroup = table.getHeaderGroups()[0] as HeaderGroup<User> | undefined;
+      const headerGroup = table.getHeaderGroups()[0];
 
       if (!headerGroup) {
         return null;
@@ -178,7 +173,6 @@ export const Sorting = meta.story({
     setup() {
       const columns = useColumns();
       const sorting = ref<SortingState>([{ desc: false, id: "name" }]);
-      const sortedRowModel = getSortedRowModel();
 
       const handleSortingChange = (
         updater: SortingState | ((state: SortingState) => SortingState),
@@ -189,14 +183,13 @@ export const Sorting = meta.story({
       const state = computed(() => ({ sorting: sorting.value }));
       const emptyNode = h(DataTable.Empty, { colSpan: 3 });
 
-      return { columns, emptyNode, handleSortingChange, sortedRowModel, state, users };
+      return { columns, emptyNode, handleSortingChange, state, users };
     },
     template: `
       <DataTable
         :columns="columns"
         :data="users"
         :getRowId="(row) => row.id"
-        :getSortedRowModel="sortedRowModel"
         :onSortingChange="handleSortingChange"
         :state="state"
       >

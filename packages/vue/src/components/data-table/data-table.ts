@@ -1,59 +1,64 @@
-import {
-  dataTableFooterVariants,
-  dataTableInlineVariants,
-  dataTableToolbarVariants,
-  dataTableVariants,
-} from "@pisagor/styles/ui/data-table";
+import { type DataTableVariants, dataTableVariants } from "@pisagor/recipes/data-table";
 import { cn } from "@pisagor/utils";
 import {
   type Cell,
-  getCoreRowModel,
   type HeaderGroup,
   type Row,
+  type RowData,
   type TableOptions,
   type Table as TableType,
-  useVueTable,
+  useTable,
 } from "@tanstack/vue-table";
 import { computed, defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { createContext } from "../../utils/create-context";
 import { Table } from "../table";
+import { type DataTableFeatures, dataTableFeatures } from "./data-table.features";
 
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-interface DataTableContextValue<TData> {
-  table: TableType<TData>;
+interface DataTableContextValue<TData extends RowData> {
+  slots: DataTableVariants;
+  table: TableType<DataTableFeatures, TData>;
 }
 
-interface DataTableHeaderGroupContextValue<TData> {
-  headerGroup: HeaderGroup<TData>;
+interface DataTableHeaderGroupContextValue<TData extends RowData> {
+  headerGroup: HeaderGroup<DataTableFeatures, TData>;
 }
 
-interface DataTableRowContextValue<TData> {
-  row: Row<TData>;
+interface DataTableRowContextValue<TData extends RowData> {
+  row: Row<DataTableFeatures, TData>;
 }
 
-export type DataTableProps<TData = unknown> = Omit<TableOptions<TData>, "getCoreRowModel"> & {
-  getCoreRowModel?: TableOptions<TData>["getCoreRowModel"];
+/**
+ * @typeParam TData - Row shape passed to `columns` and `data`.
+ */
+export type DataTableProps<TData extends RowData = RowData> = {
   class?: unknown;
-};
+  /**
+   * TanStack Table features. Defaults to the DataTable feature preset.
+   *
+   * @defaultValue dataTableFeatures
+   */
+  features?: DataTableFeatures;
+} & Omit<TableOptions<DataTableFeatures, TData>, "features">;
 // #endregion
 
 // #region Context + Hooks
 const [provideDataTableContext, useDataTableContextBase] = createContext<
-  DataTableContextValue<unknown>
+  DataTableContextValue<RowData>
 >({
   name: "DataTable",
 });
 
 const [provideDataTableHeaderGroupContext, useDataTableHeaderGroupContextBase] = createContext<
-  DataTableHeaderGroupContextValue<unknown>
+  DataTableHeaderGroupContextValue<RowData>
 >({
   name: "DataTableHeaderGroup",
 });
 
 const [provideDataTableRowContext, useDataTableRowContextBase] = createContext<
-  DataTableRowContextValue<unknown>
+  DataTableRowContextValue<RowData>
 >({
   name: "DataTableRow",
 });
@@ -64,7 +69,7 @@ const [provideDataTableRowContext, useDataTableRowContextBase] = createContext<
  * @typeParam TData - Row shape for the table context.
  * @returns The table instance for the current row model.
  */
-export function useDataTable<TData>() {
+export function useDataTable<TData extends RowData>() {
   return useDataTableContextBase() as unknown as DataTableContextValue<TData>["table"];
 }
 
@@ -74,7 +79,7 @@ export function useDataTable<TData>() {
  * @typeParam TData - Row shape for the table context.
  * @returns The active header group.
  */
-export function useDataTableHeaderGroup<TData>() {
+export function useDataTableHeaderGroup<TData extends RowData>() {
   return useDataTableHeaderGroupContextBase() as unknown as DataTableHeaderGroupContextValue<TData>;
 }
 
@@ -84,8 +89,8 @@ export function useDataTableHeaderGroup<TData>() {
  * @typeParam TData - Row shape for the table context.
  * @returns The active table row.
  */
-export function useDataTableRow<TData>() {
-  return useDataTableRowContextBase() as unknown as Row<TData>;
+export function useDataTableRow<TData extends RowData>() {
+  return useDataTableRowContextBase() as unknown as Row<DataTableFeatures, TData>;
 }
 
 function flexRender(template: unknown, context: unknown): VNodeChild {
@@ -100,13 +105,17 @@ function flexRender(template: unknown, context: unknown): VNodeChild {
  * @typeParam TData - Row shape for the cell context.
  * @returns The rendered cell content, or null for placeholder cells.
  */
-export function renderDataTableCell<TData>(cell: Cell<TData, unknown>): VNodeChild {
+export function renderDataTableCell<TData extends RowData>(
+  cell: Cell<DataTableFeatures, TData, unknown>,
+): VNodeChild {
   if (cell.getIsPlaceholder()) {
     return null;
   }
 
   return flexRender(cell.column.columnDef.cell, cell.getContext());
 }
+
+export type { Cell, HeaderGroup, Row, TableType };
 // #endregion
 
 // #region Parts
@@ -123,12 +132,9 @@ export const DataTableRoot = defineComponent({
         get(_target, key: string) {
           switch (key) {
             case "data":
-              return (attrs.data as unknown[] | undefined) ?? [];
-            case "getCoreRowModel":
-              return (
-                (attrs.getCoreRowModel as TableOptions<unknown>["getCoreRowModel"]) ??
-                getCoreRowModel()
-              );
+              return (attrs.data as RowData[] | undefined) ?? [];
+            case "features":
+              return (attrs.features as DataTableFeatures | undefined) ?? dataTableFeatures;
             default:
               return (attrs as Record<string, unknown>)[key];
           }
@@ -137,16 +143,20 @@ export const DataTableRoot = defineComponent({
           return { configurable: true, enumerable: true };
         },
         has(_target, key: string) {
-          return key in attrs || key === "data" || key === "getCoreRowModel";
+          return key in attrs || key === "data" || key === "features";
         },
         ownKeys() {
-          return Array.from(new Set([...Reflect.ownKeys(attrs), "data", "getCoreRowModel"]));
+          return Array.from(new Set([...Reflect.ownKeys(attrs), "data", "features"]));
         },
       },
-    ) as TableOptions<unknown>;
+    ) as TableOptions<DataTableFeatures, RowData>;
 
-    const table = useVueTable(options);
-    const contextValue = computed<DataTableContextValue<unknown>>(() => ({ table }));
+    const table = useTable(options);
+    const variantSlots = dataTableVariants();
+    const contextValue = computed<DataTableContextValue<RowData>>(() => ({
+      slots: variantSlots,
+      table,
+    }));
 
     provideDataTableContext(contextValue);
 
@@ -154,7 +164,7 @@ export const DataTableRoot = defineComponent({
       h(
         "div" as ArkPart,
         {
-          class: cn(dataTableVariants(), props.class),
+          class: cn(variantSlots.base(), props.class),
           "data-part": "root",
           "data-scope": "data-table",
         },
@@ -168,7 +178,7 @@ export const DataTableHeader = defineComponent({
   name: "DataTableHeader",
   setup(_, { slots }) {
     return () => {
-      const { table } = useDataTableContextBase() as unknown as DataTableContextValue<unknown>;
+      const { table } = useDataTableContextBase() as unknown as DataTableContextValue<RowData>;
 
       return table
         .getHeaderGroups()
@@ -185,7 +195,10 @@ const DataTableHeaderGroupProvider = defineComponent({
   inheritAttrs: false,
   name: "DataTableHeaderGroupProvider",
   props: {
-    headerGroup: { required: true, type: Object as PropType<HeaderGroup<unknown>> },
+    headerGroup: {
+      required: true,
+      type: Object as PropType<HeaderGroup<DataTableFeatures, RowData>>,
+    },
   },
   setup(props, { slots }) {
     provideDataTableHeaderGroupContext(computed(() => ({ headerGroup: props.headerGroup })));
@@ -219,9 +232,9 @@ export const DataTableHead = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const { headerGroup } = useDataTableHeaderGroup<unknown>();
+      const { headerGroup } = useDataTableHeaderGroup<RowData>();
 
-      const renderHeader = (header: HeaderGroup<unknown>["headers"][number]) =>
+      const renderHeader = (header: HeaderGroup<DataTableFeatures, RowData>["headers"][number]) =>
         h(
           Table.Head as ArkPart,
           {
@@ -258,7 +271,7 @@ export const DataTableBody = defineComponent({
   },
   setup(props, { slots }) {
     return () => {
-      const { table } = useDataTableContextBase() as unknown as DataTableContextValue<unknown>;
+      const { table } = useDataTableContextBase() as unknown as DataTableContextValue<RowData>;
       const rows = table.getRowModel().rows;
 
       if (rows.length === 0) {
@@ -276,7 +289,7 @@ const DataTableRowProvider = defineComponent({
   inheritAttrs: false,
   name: "DataTableRowProvider",
   props: {
-    row: { required: true, type: Object as PropType<Row<unknown>> },
+    row: { required: true, type: Object as PropType<Row<DataTableFeatures, RowData>> },
   },
   setup(props, { slots }) {
     provideDataTableRowContext(computed(() => ({ row: props.row })));
@@ -293,7 +306,7 @@ export const DataTableRow = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const { row } = useDataTableRowContextBase() as unknown as DataTableRowContextValue<unknown>;
+      const { row } = useDataTableRowContextBase() as unknown as DataTableRowContextValue<RowData>;
 
       return h(
         Table.Row as ArkPart,
@@ -320,7 +333,7 @@ export const DataTableCell = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const { row } = useDataTableRowContextBase() as unknown as DataTableRowContextValue<unknown>;
+      const { row } = useDataTableRowContextBase() as unknown as DataTableRowContextValue<RowData>;
 
       if (props.columnId) {
         const cell = row.getVisibleCells().find((item) => item.column.id === props.columnId);
@@ -362,7 +375,8 @@ export const DataTableEmpty = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const { table } = useDataTableContextBase() as unknown as DataTableContextValue<unknown>;
+      const { slots: variantSlots, table } =
+        useDataTableContextBase() as unknown as DataTableContextValue<RowData>;
       const span = props.colSpan ?? table.getAllColumns().length;
 
       return h(
@@ -371,7 +385,7 @@ export const DataTableEmpty = defineComponent({
         () =>
           h(
             Table.Cell as ArkPart,
-            { class: dataTableInlineVariants(), colSpan: span },
+            { class: variantSlots.empty(), colSpan: span },
             () => slots.default?.() ?? "No results. Try a different search or clear filters.",
           ),
       );
@@ -386,17 +400,21 @@ export const DataTableToolbar = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const { slots: variantSlots } =
+        useDataTableContextBase() as unknown as DataTableContextValue<RowData>;
+
+      return h(
         "div" as ArkPart,
         {
           ...attrs,
-          class: cn(dataTableToolbarVariants(), props.class),
+          class: cn(variantSlots.toolbar(), props.class),
           "data-part": "toolbar",
           "data-scope": "data-table",
         },
         () => slots.default?.(),
       );
+    };
   },
 });
 
@@ -407,17 +425,21 @@ export const DataTableFooter = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
+    return () => {
+      const { slots: variantSlots } =
+        useDataTableContextBase() as unknown as DataTableContextValue<RowData>;
+
+      return h(
         "div" as ArkPart,
         {
           ...attrs,
-          class: cn(dataTableFooterVariants(), props.class),
+          class: cn(variantSlots.footer(), props.class),
           "data-part": "footer",
           "data-scope": "data-table",
         },
         () => slots.default?.(),
       );
+    };
   },
 });
 // #endregion

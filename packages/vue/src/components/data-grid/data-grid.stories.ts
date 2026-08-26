@@ -23,26 +23,25 @@ import {
   Spinner,
   Table,
 } from "@pisagor/vue";
-import { DataGrid, renderDataGridCell, useDataGrid } from "@pisagor/vue/data-grid";
 import {
   type CellContext,
   type ColumnDef,
-  type ColumnFiltersState,
-  type ColumnPinningState,
-  type ExpandedState,
-  type GroupingState,
-  getExpandedRowModel,
-  getFacetedRowModel,
-  getFacetedUniqueValues,
-  getFilteredRowModel,
-  getGroupedRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
+  DataGrid,
+  type DataGridFeatures,
   type HeaderContext,
   type PaginationState,
-  type Row,
+  renderDataGridCell,
   type SortingState,
+  useDataGrid,
   type VisibilityState,
+} from "@pisagor/vue/data-grid";
+import type {
+  ColumnFiltersState,
+  ColumnPinningState,
+  ExpandedState,
+  GroupingState,
+  Row,
+  RowData,
 } from "@tanstack/vue-table";
 import {
   computed,
@@ -57,6 +56,8 @@ import {
 import preview from "#/storybook/preview";
 
 type ArkPart = Parameters<typeof h>[0];
+
+type DataGridRow<TData extends RowData> = Row<DataGridFeatures, TData>;
 
 function applyUpdater<T>(current: T, updater: T | ((old: T) => T)): T {
   return typeof updater === "function" ? (updater as (old: T) => T)(current) : updater;
@@ -378,8 +379,10 @@ const DataGridExpandableBody = defineComponent({
   name: "DataGridExpandableBody",
   props: {
     colSpan: { required: true, type: Number },
-    // biome-ignore lint/suspicious/noExplicitAny: accepts row renderers for any row shape
-    renderDetail: { required: true, type: Function as PropType<(row: Row<any>) => VNodeChild> },
+    renderDetail: {
+      required: true,
+      type: Function as PropType<(row: DataGridRow<RowData>) => VNodeChild>,
+    },
   },
   setup(props) {
     return () => {
@@ -431,8 +434,8 @@ const FilterChipsToolbar = defineComponent({
   setup() {
     return () => {
       const table = useDataGrid();
-      const filters = table.getState().columnFilters;
-      const globalFilter = table.getState().globalFilter as string | undefined;
+      const filters = table.store.state.columnFilters;
+      const globalFilter = table.store.state.globalFilter as string | undefined;
 
       if (filters.length === 0 && !globalFilter) {
         return null;
@@ -484,7 +487,7 @@ const DataGridPaginationBar = defineComponent({
   setup() {
     return () => {
       const table = useDataGrid();
-      const { pageIndex, pageSize } = table.getState().pagination;
+      const { pageIndex, pageSize } = table.store.state.pagination;
       const total = table.getFilteredRowModel().rows.length;
       const from = total === 0 ? 0 : pageIndex * pageSize + 1;
       const to = Math.min((pageIndex + 1) * pageSize, total);
@@ -629,7 +632,7 @@ function userColumns(options?: {
       accessorKey: "joinedAt",
       cell: ({ row }: CellContext<FullUser, unknown>) => formatDate(row.original.joinedAt),
       header: sortable ? sortableHeaderRenderer("Joined") : "Joined",
-      sortingFn: "datetime",
+      sortFn: "datetime",
     },
   );
 
@@ -707,7 +710,7 @@ const ManualPaginationBar = defineComponent({
   setup(props) {
     return () => {
       const table = useDataGrid();
-      const { pageIndex, pageSize } = table.getState().pagination;
+      const { pageIndex, pageSize } = table.store.state.pagination;
       const from = props.total === 0 ? 0 : pageIndex * pageSize + 1;
       const to = Math.min((pageIndex + 1) * pageSize, props.total);
 
@@ -791,12 +794,15 @@ const PageSizeSelect = defineComponent({
   },
 });
 
-function countLeaves(row: Row<unknown>): number {
+function countLeaves(row: DataGridRow<OrgNode>): number {
   if (!row.subRows.length) {
     return 1;
   }
 
-  return row.subRows.reduce((total, subRow) => total + countLeaves(subRow), 0);
+  return row.subRows.reduce(
+    (total: number, subRow: DataGridRow<OrgNode>) => total + countLeaves(subRow),
+    0,
+  );
 }
 // #endregion
 
@@ -889,7 +895,6 @@ export const Sorting = meta.story({
       const sorting = ref<SortingState>([{ desc: false, id: "name" }]);
       const columns = userColumns({ sortable: true });
       const data = allUsers.slice(0, 12);
-      const sortedRowModel = getSortedRowModel();
       const isMultiSortEvent = (event: unknown) => (event as MouseEvent).shiftKey;
 
       const handleSortingChange = (
@@ -900,7 +905,7 @@ export const Sorting = meta.story({
 
       const state = computed(() => ({ sorting: sorting.value }));
 
-      return { columns, data, handleSortingChange, isMultiSortEvent, sortedRowModel, state };
+      return { columns, data, handleSortingChange, isMultiSortEvent, state };
     },
     template: `
       <DataGridShell>
@@ -908,7 +913,6 @@ export const Sorting = meta.story({
           :columns="columns"
           :data="data"
           :enableMultiSort="true"
-          :getSortedRowModel="sortedRowModel"
           :isMultiSortEvent="isMultiSortEvent"
           :onSortingChange="handleSortingChange"
           :state="state"
@@ -931,8 +935,6 @@ export const Paginated = meta.story({
     setup() {
       const pagination = ref<PaginationState>({ pageIndex: 0, pageSize: 8 });
       const columns = userColumns({ sortable: true });
-      const paginationRowModel = getPaginationRowModel();
-      const sortedRowModel = getSortedRowModel();
 
       const handlePaginationChange = (
         updater: PaginationState | ((old: PaginationState) => PaginationState),
@@ -951,8 +953,6 @@ export const Paginated = meta.story({
         columns,
         handlePageSizeChange,
         handlePaginationChange,
-        paginationRowModel,
-        sortedRowModel,
         state,
       };
     },
@@ -961,8 +961,6 @@ export const Paginated = meta.story({
         <DataGrid
           :columns="columns"
           :data="allUsers"
-          :getPaginationRowModel="paginationRowModel"
-          :getSortedRowModel="sortedRowModel"
           :onPaginationChange="handlePaginationChange"
           :state="state"
         >
@@ -1054,10 +1052,6 @@ export const ColumnFilters = meta.story({
         return column;
       });
 
-      const facetedRowModel = getFacetedRowModel();
-      const facetedUniqueValues = getFacetedUniqueValues();
-      const filteredRowModel = getFilteredRowModel();
-      const paginationRowModel = getPaginationRowModel();
       const initialState = { pagination: { pageIndex: 0, pageSize: 8 } };
 
       const handleColumnFiltersChange = (
@@ -1088,15 +1082,11 @@ export const ColumnFilters = meta.story({
         allUsers,
         clearFilters,
         columnsWithFilters,
-        facetedRowModel,
-        facetedUniqueValues,
-        filteredRowModel,
         globalFilter,
         handleColumnFiltersChange,
         handleGlobalFilterChange,
         handleGlobalInput,
         initialState,
-        paginationRowModel,
         state,
       };
     },
@@ -1105,10 +1095,6 @@ export const ColumnFilters = meta.story({
         <DataGrid
           :columns="columnsWithFilters"
           :data="allUsers"
-          :getFacetedRowModel="facetedRowModel"
-          :getFacetedUniqueValues="facetedUniqueValues"
-          :getFilteredRowModel="filteredRowModel"
-          :getPaginationRowModel="paginationRowModel"
           :initialState="initialState"
           :onColumnFiltersChange="handleColumnFiltersChange"
           :onGlobalFilterChange="handleGlobalFilterChange"
@@ -1189,7 +1175,6 @@ export const RowSelection = meta.story({
       const rowSelection = ref<Record<string, boolean>>({});
       const pagination = ref<PaginationState>({ pageIndex: 0, pageSize: 6 });
       const columns = userColumns({ selectable: true });
-      const paginationRowModel = getPaginationRowModel();
 
       const handlePaginationChange = (
         updater: PaginationState | ((old: PaginationState) => PaginationState),
@@ -1220,7 +1205,6 @@ export const RowSelection = meta.story({
         columns,
         handlePaginationChange,
         handleRowSelectionChange,
-        paginationRowModel,
         state,
       };
     },
@@ -1230,7 +1214,6 @@ export const RowSelection = meta.story({
           :columns="columns"
           :data="allUsers"
           :enableRowSelection="true"
-          :getPaginationRowModel="paginationRowModel"
           :onPaginationChange="handlePaginationChange"
           :onRowSelectionChange="handleRowSelectionChange"
           :state="state"
@@ -1295,7 +1278,7 @@ export const ExpandingRows = meta.story({
         },
         {
           cell: ({ row }: CellContext<OrgNode, unknown>) => {
-            const leafCount = countLeaves(row as Row<unknown>);
+            const leafCount = countLeaves(row as DataGridRow<OrgNode>);
             return h(
               "span",
               { class: "text-muted-foreground tabular-nums" },
@@ -1307,7 +1290,6 @@ export const ExpandingRows = meta.story({
         },
       ];
 
-      const expandedRowModel = getExpandedRowModel();
       const getRowId = (row: OrgNode) => row.id;
       const getSubRows = (row: OrgNode) => row.subRows;
 
@@ -1321,7 +1303,6 @@ export const ExpandingRows = meta.story({
 
       return {
         columns,
-        expandedRowModel,
         getRowId,
         getSubRows,
         handleExpandedChange,
@@ -1334,7 +1315,6 @@ export const ExpandingRows = meta.story({
         <DataGrid
           :columns="columns"
           :data="orgTree"
-          :getExpandedRowModel="expandedRowModel"
           :getRowId="getRowId"
           :getSubRows="getSubRows"
           :onExpandedChange="handleExpandedChange"
@@ -1343,8 +1323,7 @@ export const ExpandingRows = meta.story({
         >
           <DataGrid.Toolbar>
             <p class="text-muted-foreground text-sm">
-              Hierarchical rows via <code class="text-xs">getSubRows</code> and
-              <code class="text-xs">getExpandedRowModel</code>.
+              Hierarchical rows via <code class="text-xs">getSubRows</code>.
             </p>
           </DataGrid.Toolbar>
           <DataGridView :colSpan="3" />
@@ -1419,8 +1398,6 @@ export const GroupedRows = meta.story({
         },
       ];
 
-      const expandedRowModel = getExpandedRowModel();
-      const groupedRowModel = getGroupedRowModel();
       const getRowId = (row: FullUser) => row.id;
 
       const handleExpandedChange = (
@@ -1446,9 +1423,7 @@ export const GroupedRows = meta.story({
       return {
         columns,
         data,
-        expandedRowModel,
         getRowId,
-        groupedRowModel,
         grouping,
         handleExpandedChange,
         handleGroupByChange,
@@ -1461,8 +1436,6 @@ export const GroupedRows = meta.story({
         <DataGrid
           :columns="columns"
           :data="data"
-          :getExpandedRowModel="expandedRowModel"
-          :getGroupedRowModel="groupedRowModel"
           :getRowId="getRowId"
           :onExpandedChange="handleExpandedChange"
           :onGroupingChange="handleGroupingChange"
@@ -1635,7 +1608,7 @@ export const RowDetails = meta.story({
       const data = allUsers.slice(0, 8);
       const state = computed(() => ({ expanded: expanded.value }));
 
-      const renderDetail = (row: Row<FullUser>) =>
+      const renderDetail = (row: DataGridRow<FullUser>) =>
         h("div", { class: "grid gap-3 sm:grid-cols-2" }, [
           h("div", null, [
             h("p", { class: "font-medium text-sm" }, "Profile"),
@@ -1729,8 +1702,6 @@ export const OrdersWithFooter = meta.story({
         },
       ];
 
-      const sortedRowModel = getSortedRowModel();
-
       const handleSortingChange = (
         updater: SortingState | ((old: SortingState) => SortingState),
       ) => {
@@ -1740,14 +1711,13 @@ export const OrdersWithFooter = meta.story({
       const data = orders.slice(0, 12);
       const state = computed(() => ({ sorting: sorting.value }));
 
-      return { columns, data, handleSortingChange, sortedRowModel, state };
+      return { columns, data, handleSortingChange, state };
     },
     template: `
       <DataGridShell>
         <DataGrid
           :columns="columns"
           :data="data"
-          :getSortedRowModel="sortedRowModel"
           :onSortingChange="handleSortingChange"
           :state="state"
         >
@@ -1901,7 +1871,6 @@ export const GlobalSelection = meta.story({
       const rowSelection = ref<Record<string, boolean>>({ "2": true, "5": true });
       const pagination = ref<PaginationState>({ pageIndex: 0, pageSize: 6 });
       const columns = userColumns({ selectable: true });
-      const paginationRowModel = getPaginationRowModel();
       const getRowId = (row: FullUser) => row.id;
 
       const handlePaginationChange = (
@@ -1934,7 +1903,6 @@ export const GlobalSelection = meta.story({
         getRowId,
         handlePaginationChange,
         handleRowSelectionChange,
-        paginationRowModel,
         state,
       };
     },
@@ -1944,7 +1912,6 @@ export const GlobalSelection = meta.story({
           :columns="columns"
           :data="allUsers"
           :enableRowSelection="true"
-          :getPaginationRowModel="paginationRowModel"
           :getRowId="getRowId"
           :onPaginationChange="handlePaginationChange"
           :onRowSelectionChange="handleRowSelectionChange"
@@ -2074,11 +2041,11 @@ export const ColumnPinning = meta.story({
   render: () => ({
     components: { DataGrid, DataGridShell, PhDotsThreeVertical, Table },
     setup() {
-      const columnPinning = ref<ColumnPinningState>({ left: ["name"], right: ["actions"] });
+      const columnPinning = ref<ColumnPinningState>({ end: ["actions"], start: ["name"] });
 
       const columns: (ColumnDef<FullUser> & {
         id: string;
-        meta?: { pinned?: "left" | "right" };
+        meta?: { pinned?: "start" | "end" };
       })[] = [
         {
           accessorKey: "name",
@@ -2086,7 +2053,7 @@ export const ColumnPinning = meta.story({
             h("span", { class: "font-medium" }, row.original.name),
           header: "Name",
           id: "name",
-          meta: { pinned: "left" },
+          meta: { pinned: "start" },
         },
         { accessorKey: "email", header: "Email", id: "email" },
         { accessorKey: "role", header: "Role", id: "role" },
@@ -2109,15 +2076,15 @@ export const ColumnPinning = meta.story({
             ),
           header: "",
           id: "actions",
-          meta: { pinned: "right" },
+          meta: { pinned: "end" },
           size: 48,
         },
       ];
 
-      const pinnedClass = (pinned: "left" | "right" | undefined) =>
-        pinned === "left"
+      const pinnedClass = (pinned: "start" | "end" | undefined) =>
+        pinned === "start"
           ? "sticky inset-s-0 z-10 bg-background shadow-[inset_-1px_0_0_var(--border)]"
-          : pinned === "right"
+          : pinned === "end"
             ? "sticky inset-e-0 z-10 bg-background shadow-[inset_1px_0_0_var(--border)]"
             : undefined;
 
@@ -2143,7 +2110,7 @@ export const ColumnPinning = meta.story({
         >
           <DataGrid.Toolbar>
             <p class="text-muted-foreground text-sm">
-              Name pinned left, actions pinned right — scroll horizontally to see pinning.
+              Name pinned start, actions pinned end — scroll horizontally to see pinning.
             </p>
           </DataGrid.Toolbar>
           <Table class="min-w-[960px]">
@@ -2193,8 +2160,6 @@ export const ActiveFilterChips = meta.story({
       const columnFilters = ref<ColumnFiltersState>([{ id: "role", value: "Admin" }]);
       const globalFilter = ref("alice");
       const columns = userColumns();
-      const filteredRowModel = getFilteredRowModel();
-      const paginationRowModel = getPaginationRowModel();
       const initialState = { pagination: { pageIndex: 0, pageSize: 8 } };
 
       const handleColumnFiltersChange = (
@@ -2219,13 +2184,11 @@ export const ActiveFilterChips = meta.story({
       return {
         allUsers,
         columns,
-        filteredRowModel,
         globalFilter,
         handleColumnFiltersChange,
         handleGlobalFilterChange,
         handleGlobalInput,
         initialState,
-        paginationRowModel,
         state,
       };
     },
@@ -2234,8 +2197,6 @@ export const ActiveFilterChips = meta.story({
         <DataGrid
           :columns="columns"
           :data="allUsers"
-          :getFilteredRowModel="filteredRowModel"
-          :getPaginationRowModel="paginationRowModel"
           :initialState="initialState"
           :onColumnFiltersChange="handleColumnFiltersChange"
           :onGlobalFilterChange="handleGlobalFilterChange"
@@ -2328,8 +2289,6 @@ export const MultiGrouping = meta.story({
         },
       ];
 
-      const expandedRowModel = getExpandedRowModel();
-      const groupedRowModel = getGroupedRowModel();
       const getRowId = (row: FullUser) => row.id;
 
       const handleExpandedChange = (
@@ -2350,9 +2309,7 @@ export const MultiGrouping = meta.story({
       return {
         columns,
         data,
-        expandedRowModel,
         getRowId,
-        groupedRowModel,
         handleExpandedChange,
         handleGroupingChange,
         state,
@@ -2363,8 +2320,6 @@ export const MultiGrouping = meta.story({
         <DataGrid
           :columns="columns"
           :data="data"
-          :getExpandedRowModel="expandedRowModel"
-          :getGroupedRowModel="groupedRowModel"
           :getRowId="getRowId"
           :onExpandedChange="handleExpandedChange"
           :onGroupingChange="handleGroupingChange"

@@ -1,3 +1,9 @@
+import type {
+  RowData,
+  CellContext as TableCellContext,
+  ColumnDef as TableColumnDef,
+  HeaderContext as TableHeaderContext,
+} from "@tanstack/vue-table";
 import {
   DataTableBody,
   DataTableCell,
@@ -14,8 +20,17 @@ import {
   useDataTableHeaderGroup,
   useDataTableRow,
 } from "./data-table";
+import type { DataTableFeatures } from "./data-table.features";
 
-export type { DataTableProps } from "./data-table";
+export type {
+  ColumnVisibilityState as VisibilityState,
+  PaginationState,
+  RowSelectionState,
+  SortingState,
+} from "@tanstack/vue-table";
+export type { DataTableProps, HeaderGroup, Row, TableType } from "./data-table";
+export type { DataTableFeatures } from "./data-table.features";
+export { dataTableFeatures } from "./data-table.features";
 
 export const DataTable = Object.assign(DataTableRoot, {
   Body: DataTableBody,
@@ -30,3 +45,21 @@ export const DataTable = Object.assign(DataTableRoot, {
 });
 
 export { renderDataTableCell, useDataTable, useDataTableHeaderGroup, useDataTableRow };
+
+export type ColumnDef<TData extends RowData, TValue = unknown> = TableColumnDef<
+  DataTableFeatures,
+  TData,
+  TValue
+>;
+
+export type CellContext<TData extends RowData, TValue = unknown> = TableCellContext<
+  DataTableFeatures,
+  TData,
+  TValue
+>;
+
+export type HeaderContext<TData extends RowData, TValue = unknown> = TableHeaderContext<
+  DataTableFeatures,
+  TData,
+  TValue
+>;
