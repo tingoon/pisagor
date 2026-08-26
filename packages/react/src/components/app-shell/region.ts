@@ -1,13 +1,5 @@
 import { useUncontrolled } from "@mantine/hooks";
-import {
-  appShellRegionRelativeColumnVariants,
-  appShellRegionRelativeRowVariants,
-  appShellRegionStickyBannerVariants,
-  appShellRegionStickyColumnVariants,
-  appShellRegionStickyHeaderVariants,
-  appShellRegionStickyInspectorVariants,
-  appShellRegionStickyNavigationVariants,
-} from "@pisagor/styles/ui/app-shell";
+import type { AppShellVariants } from "@pisagor/styles/ui/app-shell";
 import { type RefObject, useCallback, useLayoutEffect, useMemo } from "react";
 import type {
   AppShellFixedStackVar,
@@ -64,34 +56,33 @@ export function useShellRegionResizeCallbacks(regionVar: AppShellRegionVar) {
 }
 
 export function regionPositionClasses(
+  slots: AppShellVariants,
   position: AppShellRegionPosition = "fixed",
   orientation: "column" | "row" = "column",
   rowLayer?: "banner" | "header" | "navigation",
   columnLayer?: "inspector",
 ) {
   if (position === "relative") {
-    return orientation === "column"
-      ? appShellRegionRelativeColumnVariants()
-      : appShellRegionRelativeRowVariants();
+    return orientation === "column" ? slots.regionRelativeColumn() : slots.regionRelativeRow();
   }
 
   if (orientation === "column") {
     if (columnLayer === "inspector") {
-      return appShellRegionStickyInspectorVariants();
+      return slots.regionStickyInspector();
     }
 
-    return appShellRegionStickyColumnVariants();
+    return slots.regionStickyColumn();
   }
 
   if (rowLayer === "banner") {
-    return appShellRegionStickyBannerVariants();
+    return slots.regionStickyBanner();
   }
 
   if (rowLayer === "navigation") {
-    return appShellRegionStickyNavigationVariants();
+    return slots.regionStickyNavigation();
   }
 
-  return appShellRegionStickyHeaderVariants();
+  return slots.regionStickyHeader();
 }
 
 export function useSyncFixedRegionHeight(

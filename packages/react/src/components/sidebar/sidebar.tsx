@@ -1,43 +1,7 @@
 import { ark } from "@ark-ui/react/factory";
 import { SidebarSimpleIcon } from "@phosphor-icons/react";
 import { type ButtonVariantProps, buttonVariants } from "@pisagor/styles/ui/button";
-import {
-  sidebar2Variants,
-  sidebar3Variants,
-  sidebarContainerVariants,
-  sidebarContentVariants,
-  sidebarFooterVariants,
-  sidebarGapVariants,
-  sidebarGroupActionVariants,
-  sidebarGroupContentVariants,
-  sidebarGroupLabelVariants,
-  sidebarGroupVariants,
-  sidebarHeaderVariants,
-  sidebarInline2Variants,
-  sidebarInline3Variants,
-  sidebarInline4Variants,
-  sidebarInline5Variants,
-  sidebarInline6Variants,
-  sidebarInline7Variants,
-  sidebarInlineVariants,
-  sidebarInnerVariants,
-  sidebarInputVariants,
-  sidebarInsetVariants,
-  sidebarMenuActionVariants,
-  sidebarMenuBadgeVariants,
-  sidebarMenuButtonVariants,
-  sidebarMenuItemVariants,
-  sidebarMenuSkeletonVariants,
-  sidebarMenuSubButtonVariants,
-  sidebarMenuSubItemVariants,
-  sidebarMenuSubVariants,
-  sidebarMenuVariants,
-  sidebarRailVariants,
-  sidebarSeparatorVariants,
-  sidebarTriggerVariants,
-  sidebarVariants,
-  sidebarWrapperVariants,
-} from "@pisagor/styles/ui/sidebar";
+import { sidebarVariants } from "@pisagor/styles/ui/sidebar";
 import { cn } from "@pisagor/utils";
 import { useHotkey } from "@tanstack/react-hotkeys";
 import { type ComponentProps, type CSSProperties, useCallback, useMemo, useState } from "react";
@@ -201,6 +165,7 @@ export function SidebarProvider({
   });
 
   const state = open ? "expanded" : "collapsed";
+  const slots = useMemo(() => sidebarVariants(), []);
 
   const contextValue = useMemo<SidebarContextProps>(
     () => ({
@@ -209,17 +174,18 @@ export function SidebarProvider({
       openMobile,
       setOpen,
       setOpenMobile,
+      slots,
       state,
       toggleSidebar,
     }),
-    [state, open, setOpen, isMobile, openMobile, toggleSidebar],
+    [state, open, setOpen, isMobile, openMobile, slots, toggleSidebar],
   );
 
   return (
     <SidebarContext value={contextValue}>
       <ark.div
         {...rest}
-        className={sidebarWrapperVariants({ className })}
+        className={slots.wrapper({ className })}
         data-part="wrapper"
         data-scope="sidebar"
         style={
@@ -244,13 +210,14 @@ export function SidebarRoot(props: SidebarProps) {
     testId,
     ...rest
   } = props;
-  const { isMobile, state, openMobile, setOpenMobile } = useSidebar();
+  const { isMobile, openMobile, setOpenMobile, slots, state } = useSidebar();
+  const padded = variant === "floating" || variant === "inset";
 
   if (collapsible === "none") {
     return (
       <ark.div
         {...rest}
-        className={sidebarVariants({ className })}
+        className={slots.base({ className })}
         data-part="root"
         data-scope="sidebar"
         data-testid={testId}
@@ -265,7 +232,7 @@ export function SidebarRoot(props: SidebarProps) {
       <Sheet onOpenChange={({ open }) => setOpenMobile(open)} open={openMobile} testId={testId}>
         <Sheet.Content
           {...rest}
-          className={sidebar2Variants()}
+          className={slots.mobile()}
           data-mobile="true"
           data-sidebar="sidebar"
           data-testid={testId}
@@ -277,11 +244,11 @@ export function SidebarRoot(props: SidebarProps) {
           }
         >
           <Sheet.Header
-            className={sidebarInlineVariants()}
+            className={slots.mobileHeader()}
             description="Displays the mobile sidebar."
             title="Sidebar"
           />
-          <ark.div className={sidebarInline2Variants()}>{children}</ark.div>
+          <ark.div className={slots.mobileBody()}>{children}</ark.div>
         </Sheet.Content>
       </Sheet>
     );
@@ -290,7 +257,7 @@ export function SidebarRoot(props: SidebarProps) {
   return (
     <ark.div
       {...rest}
-      className={sidebar3Variants()}
+      className={slots.peer({ className })}
       data-collapsible={state === "collapsed" ? collapsible : ""}
       data-part="root"
       data-placement={placement}
@@ -299,22 +266,14 @@ export function SidebarRoot(props: SidebarProps) {
       data-testid={testId}
       data-variant={variant}
     >
+      <ark.div className={slots.gap({ padded, placement })} data-part="gap" data-scope="sidebar" />
       <ark.div
-        className={sidebarGapVariants({ padded: variant === "floating" || variant === "inset" })}
-        data-part="gap"
-        data-scope="sidebar"
-      />
-      <ark.div
-        className={sidebarContainerVariants({
-          className,
-          padded: variant === "floating" || variant === "inset",
-          placement,
-        })}
+        className={slots.container({ className, padded, placement })}
         data-part="container"
         data-scope="sidebar"
       >
         <ark.div
-          className={sidebarInnerVariants()}
+          className={slots.inner()}
           data-part="inner"
           data-scope="sidebar"
           data-sidebar="sidebar"
@@ -327,12 +286,12 @@ export function SidebarRoot(props: SidebarProps) {
 }
 
 export function SidebarTrigger({ className, onClick, ...rest }: ButtonProps) {
-  const { toggleSidebar } = useSidebar();
+  const { slots, toggleSidebar } = useSidebar();
 
   return (
     <Button
       {...rest}
-      className={sidebarTriggerVariants({ className })}
+      className={slots.trigger({ className })}
       data-part="trigger"
       data-scope="sidebar"
       data-sidebar="trigger"
@@ -343,20 +302,20 @@ export function SidebarTrigger({ className, onClick, ...rest }: ButtonProps) {
       size="icon-md"
       variant="ghost"
     >
-      <SidebarSimpleIcon className={sidebarInline3Variants()} />
-      <ark.span className={sidebarInline4Variants()}>Toggle sidebar</ark.span>
+      <SidebarSimpleIcon className={slots.triggerIcon()} />
+      <ark.span className={slots.triggerLabel()}>Toggle sidebar</ark.span>
     </Button>
   );
 }
 
 export function SidebarRail({ className, ...rest }: SidebarRailProps) {
-  const { toggleSidebar } = useSidebar();
+  const { slots, toggleSidebar } = useSidebar();
 
   return (
     <ark.button
       {...rest}
       aria-label="Toggle sidebar"
-      className={sidebarRailVariants({ className })}
+      className={slots.rail({ className })}
       data-part="rail"
       data-scope="sidebar"
       data-sidebar="rail"
@@ -369,10 +328,12 @@ export function SidebarRail({ className, ...rest }: SidebarRailProps) {
 }
 
 export function SidebarInset({ className, ...rest }: SidebarInsetProps) {
+  const { slots } = useSidebar();
+
   return (
     <ark.main
       {...rest}
-      className={sidebarInsetVariants({ className })}
+      className={slots.inset({ className })}
       data-part="inset"
       data-scope="sidebar"
     />
@@ -380,10 +341,12 @@ export function SidebarInset({ className, ...rest }: SidebarInsetProps) {
 }
 
 export function SidebarInput({ className, classNames, ...rest }: InputProps) {
+  const { slots } = useSidebar();
+
   return (
     <Input
       {...rest}
-      className={sidebarInputVariants({ className })}
+      className={slots.input({ className })}
       classNames={classNames}
       data-sidebar="input"
     />
@@ -391,10 +354,12 @@ export function SidebarInput({ className, classNames, ...rest }: InputProps) {
 }
 
 export function SidebarHeader({ className, ...rest }: SidebarHeaderProps) {
+  const { slots } = useSidebar();
+
   return (
     <ark.div
       {...rest}
-      className={sidebarHeaderVariants({ className })}
+      className={slots.header({ className })}
       data-part="header"
       data-scope="sidebar"
       data-sidebar="header"
@@ -403,10 +368,12 @@ export function SidebarHeader({ className, ...rest }: SidebarHeaderProps) {
 }
 
 export function SidebarFooter({ className, ...rest }: SidebarFooterProps) {
+  const { slots } = useSidebar();
+
   return (
     <ark.div
       {...rest}
-      className={sidebarFooterVariants({ className })}
+      className={slots.footer({ className })}
       data-part="footer"
       data-scope="sidebar"
       data-sidebar="footer"
@@ -415,10 +382,12 @@ export function SidebarFooter({ className, ...rest }: SidebarFooterProps) {
 }
 
 export function SidebarSeparator({ className, ...rest }: SeparatorProps) {
+  const { slots } = useSidebar();
+
   return (
     <Separator
       {...rest}
-      className={sidebarSeparatorVariants({ className })}
+      className={slots.separator({ className })}
       data-sidebar="separator"
       dataPart="separator"
       dataScope="sidebar"
@@ -427,11 +396,13 @@ export function SidebarSeparator({ className, ...rest }: SeparatorProps) {
 }
 
 export function SidebarContent({ scrollFade = false, className, ...rest }: SidebarContentProps) {
+  const { slots } = useSidebar();
+
   return (
-    <ScrollArea className={sidebarInline5Variants()} scrollFade={scrollFade}>
+    <ScrollArea className={slots.scrollArea()} scrollFade={scrollFade}>
       <ark.div
         {...rest}
-        className={sidebarContentVariants({ className })}
+        className={slots.content({ className })}
         data-part="content"
         data-scope="sidebar"
         data-sidebar="content"
@@ -441,10 +412,12 @@ export function SidebarContent({ scrollFade = false, className, ...rest }: Sideb
 }
 
 export function SidebarGroup({ className, ...rest }: SidebarGroupProps) {
+  const { slots } = useSidebar();
+
   return (
     <ark.div
       {...rest}
-      className={sidebarGroupVariants({ className })}
+      className={slots.group({ className })}
       data-part="group"
       data-scope="sidebar"
       data-sidebar="group"
@@ -453,10 +426,12 @@ export function SidebarGroup({ className, ...rest }: SidebarGroupProps) {
 }
 
 export function SidebarGroupLabel({ className, ...rest }: SidebarGroupLabelProps) {
+  const { slots } = useSidebar();
+
   return (
     <ark.div
       {...rest}
-      className={sidebarGroupLabelVariants({ className })}
+      className={slots.groupLabel({ className })}
       data-part="group-label"
       data-scope="sidebar"
       data-sidebar="group-label"
@@ -465,6 +440,8 @@ export function SidebarGroupLabel({ className, ...rest }: SidebarGroupLabelProps
 }
 
 export function SidebarGroupAction({ className, ...rest }: SidebarGroupActionProps) {
+  const { slots } = useSidebar();
+
   return (
     <ark.button
       {...rest}
@@ -474,7 +451,7 @@ export function SidebarGroupAction({ className, ...rest }: SidebarGroupActionPro
           size: "icon-xs",
           variant: "ghost",
         }),
-        sidebarGroupActionVariants(),
+        slots.groupAction(),
         className,
       )}
       data-part="group-action"
@@ -486,10 +463,12 @@ export function SidebarGroupAction({ className, ...rest }: SidebarGroupActionPro
 }
 
 export function SidebarGroupContent({ className, ...rest }: SidebarGroupContentProps) {
+  const { slots } = useSidebar();
+
   return (
     <ark.div
       {...rest}
-      className={sidebarGroupContentVariants({ className })}
+      className={slots.groupContent({ className })}
       data-part="group-content"
       data-scope="sidebar"
       data-sidebar="group-content"
@@ -498,10 +477,12 @@ export function SidebarGroupContent({ className, ...rest }: SidebarGroupContentP
 }
 
 export function SidebarMenu({ className, ...rest }: SidebarMenuProps) {
+  const { slots } = useSidebar();
+
   return (
     <ark.ul
       {...rest}
-      className={sidebarMenuVariants({ className })}
+      className={slots.menu({ className })}
       data-part="menu"
       data-scope="sidebar"
       data-sidebar="menu"
@@ -510,10 +491,12 @@ export function SidebarMenu({ className, ...rest }: SidebarMenuProps) {
 }
 
 export function SidebarMenuItem({ className, ...rest }: SidebarMenuItemProps) {
+  const { slots } = useSidebar();
+
   return (
     <ark.li
       {...rest}
-      className={sidebarMenuItemVariants({ className })}
+      className={slots.menuItem({ className })}
       data-part="menu-item"
       data-scope="sidebar"
       data-sidebar="menu-item"
@@ -529,12 +512,12 @@ export function SidebarMenuButton({
   className,
   ...rest
 }: SidebarMenuButtonProps) {
-  const { isMobile, state } = useSidebar();
+  const { isMobile, slots, state } = useSidebar();
 
   const button = (
     <Button
       {...rest}
-      className={sidebarMenuButtonVariants({ className })}
+      className={slots.menuButton({ className })}
       clickEffect={false}
       data-active={isActive}
       data-part="menu-button"
@@ -573,6 +556,8 @@ export function SidebarMenuAction({
   showOnHover = false,
   ...rest
 }: SidebarMenuActionProps) {
+  const { slots } = useSidebar();
+
   return (
     <ark.button
       {...rest}
@@ -582,7 +567,7 @@ export function SidebarMenuAction({
           size: "icon-xs",
           variant: "ghost",
         }),
-        sidebarMenuActionVariants(),
+        slots.menuAction(),
         !showOnHover &&
           "group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 peer-data-[active=true]/menu-button:text-accent-foreground md:opacity-0",
         className,
@@ -596,10 +581,12 @@ export function SidebarMenuAction({
 }
 
 export function SidebarMenuBadge({ className, ...rest }: SidebarMenuBadgeProps) {
+  const { slots } = useSidebar();
+
   return (
     <ark.div
       {...rest}
-      className={sidebarMenuBadgeVariants({ className })}
+      className={slots.menuBadge({ className })}
       data-part="menu-badge"
       data-scope="sidebar"
       data-sidebar="menu-badge"
@@ -612,21 +599,22 @@ export function SidebarMenuSkeleton({
   showIcon = false,
   ...rest
 }: SidebarMenuSkeletonProps) {
+  const { slots } = useSidebar();
   const width = useMemo(() => `${Math.floor(Math.random() * 40) + 50}%`, []);
 
   return (
     <ark.div
       {...rest}
-      className={sidebarMenuSkeletonVariants({ className })}
+      className={slots.menuSkeleton({ className })}
       data-part="menu-skeleton"
       data-scope="sidebar"
       data-sidebar="menu-skeleton"
     >
       {!!showIcon && (
-        <Skeleton className={sidebarInline6Variants()} data-sidebar="menu-skeleton-icon" />
+        <Skeleton className={slots.menuSkeletonIcon()} data-sidebar="menu-skeleton-icon" />
       )}
       <Skeleton
-        className={sidebarInline7Variants()}
+        className={slots.menuSkeletonText()}
         data-sidebar="menu-skeleton-text"
         style={
           {
@@ -639,10 +627,12 @@ export function SidebarMenuSkeleton({
 }
 
 export function SidebarMenuSub({ className, ...rest }: SidebarMenuSubProps) {
+  const { slots } = useSidebar();
+
   return (
     <ark.ul
       {...rest}
-      className={sidebarMenuSubVariants({ className })}
+      className={slots.menuSub({ className })}
       data-part="menu-sub"
       data-scope="sidebar"
       data-sidebar="menu-sub"
@@ -651,9 +641,11 @@ export function SidebarMenuSub({ className, ...rest }: SidebarMenuSubProps) {
 }
 
 export function SidebarMenuSubItem({ className, ...props }: SidebarMenuSubItemProps) {
+  const { slots } = useSidebar();
+
   return (
     <ark.li
-      className={sidebarMenuSubItemVariants({ className })}
+      className={slots.menuSubItem({ className })}
       data-part="menu-sub-item"
       data-scope="sidebar"
       data-sidebar="menu-sub-item"
@@ -668,12 +660,14 @@ export function SidebarMenuSubButton({
   className,
   ...rest
 }: SidebarMenuSubButtonProps) {
+  const { slots } = useSidebar();
+
   return (
     <ark.a
       {...rest}
       className={cn(
         buttonVariants({ clickEffect: false, size, variant: "ghost" }),
-        sidebarMenuSubButtonVariants(),
+        slots.menuSubButton(),
         className,
       )}
       data-active={isActive}

@@ -1,14 +1,9 @@
 import { ark } from "@ark-ui/react/factory";
-import {
-  framePanelDescriptionVariants,
-  framePanelFooterVariants,
-  framePanelHeaderVariants,
-  framePanelTitleVariants,
-  framePanelVariants,
-  frameVariants,
-} from "@pisagor/styles/ui/frame";
+import { frameVariants } from "@pisagor/styles/ui/frame";
 import type { ComponentProps } from "react";
+import { useMemo } from "react";
 import type { WithTestId } from "../../internal/types";
+import { FrameContext, useFrame } from "./frame.context";
 
 // #region Types
 export interface FrameHeaderProps extends ComponentProps<typeof ark.header> {
@@ -30,23 +25,31 @@ export interface FrameFooterProps extends ComponentProps<typeof ark.footer> {}
 // #endregion
 
 // #region Parts
-export function FrameRoot({ className, testId, ...rest }: FrameRootProps) {
+export function FrameRoot({ className, children, testId, ...rest }: FrameRootProps) {
+  const slots = useMemo(() => frameVariants(), []);
+
   return (
-    <ark.div
-      {...rest}
-      className={frameVariants({ className })}
-      data-part="root"
-      data-scope="frame"
-      data-testid={testId}
-    />
+    <FrameContext value={{ slots }}>
+      <ark.div
+        {...rest}
+        className={slots.base({ className })}
+        data-part="root"
+        data-scope="frame"
+        data-testid={testId}
+      >
+        {children}
+      </ark.div>
+    </FrameContext>
   );
 }
 
 export function FramePanel({ className, ...rest }: FramePanelProps) {
+  const { slots } = useFrame();
+
   return (
     <ark.div
       {...rest}
-      className={framePanelVariants({ className })}
+      className={slots.panel({ className })}
       data-part="panel"
       data-scope="frame"
     />
@@ -60,10 +63,12 @@ export function FrameHeader({
   children,
   ...rest
 }: FrameHeaderProps) {
+  const { slots } = useFrame();
+
   return (
     <ark.header
       {...rest}
-      className={framePanelHeaderVariants({ className })}
+      className={slots.panelHeader({ className })}
       data-part="panel-header"
       data-scope="frame"
     >
@@ -77,10 +82,12 @@ export function FrameHeader({
 }
 
 export function FrameTitle({ className, ...rest }: FrameTitleProps) {
+  const { slots } = useFrame();
+
   return (
     <ark.div
       {...rest}
-      className={framePanelTitleVariants({ className })}
+      className={slots.panelTitle({ className })}
       data-part="panel-title"
       data-scope="frame"
     />
@@ -88,10 +95,12 @@ export function FrameTitle({ className, ...rest }: FrameTitleProps) {
 }
 
 export function FrameDescription({ className, ...rest }: FrameDescriptionProps) {
+  const { slots } = useFrame();
+
   return (
     <ark.div
       {...rest}
-      className={framePanelDescriptionVariants({ className })}
+      className={slots.panelDescription({ className })}
       data-part="panel-description"
       data-scope="frame"
     />
@@ -99,10 +108,12 @@ export function FrameDescription({ className, ...rest }: FrameDescriptionProps) 
 }
 
 export function FrameFooter({ className, ...rest }: FrameFooterProps) {
+  const { slots } = useFrame();
+
   return (
     <ark.footer
       {...rest}
-      className={framePanelFooterVariants({ className })}
+      className={slots.panelFooter({ className })}
       data-part="panel-footer"
       data-scope="frame"
     />

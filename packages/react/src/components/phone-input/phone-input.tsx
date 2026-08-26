@@ -3,17 +3,6 @@ import { CaretUpDownIcon, GlobeIcon } from "@phosphor-icons/react";
 import {
   type PhoneInputSlots,
   type PhoneInputVariantProps,
-  phoneInputCountryTriggerVariants,
-  phoneInputInline2Variants,
-  phoneInputInline3Variants,
-  phoneInputInline4Variants,
-  phoneInputInline5Variants,
-  phoneInputInline6Variants,
-  phoneInputInline7Variants,
-  phoneInputInline8Variants,
-  phoneInputInline9Variants,
-  phoneInputInline10Variants,
-  phoneInputInlineVariants,
   phoneInputVariants,
 } from "@pisagor/styles/ui/phone-input";
 import { cn } from "@pisagor/utils";
@@ -107,15 +96,11 @@ function PhoneInputFlag({ country, countryName }: FlagProps) {
   const emoji = country ? phoneInputFlags[country] : undefined;
 
   if (!emoji) {
-    return <GlobeIcon aria-hidden className={cn(phoneInputInlineVariants(), flagClassName)} />;
+    return <GlobeIcon aria-hidden className={cn(slots.flagIcon(), flagClassName)} />;
   }
 
   return (
-    <span
-      aria-label={countryName}
-      className={cn(phoneInputInline2Variants(), flagClassName)}
-      role="img"
-    >
+    <span aria-label={countryName} className={cn(slots.flagEmoji(), flagClassName)} role="img">
       {emoji}
     </span>
   );
@@ -177,7 +162,7 @@ function PhoneInputCountrySelect({
 
   return (
     <Combobox.Root
-      className={phoneInputInline4Variants()}
+      className={slots.countryRoot()}
       collection={collection}
       disabled={isDisabled}
       onValueChange={(nextValue) => {
@@ -188,23 +173,20 @@ function PhoneInputCountrySelect({
     >
       <InputGroup.Addon
         align="inline-start"
-        className={cn(
-          phoneInputCountryTriggerVariants(),
-          slots.countryTrigger({ className: classNames?.countryTrigger }),
-        )}
+        className={slots.countryTrigger({ className: classNames?.countryTrigger })}
         data-part="country-trigger"
         data-scope="phone-input"
       >
-        <Combobox.Control className={phoneInputInline5Variants()}>
+        <Combobox.Control className={slots.countryControl()}>
           <Combobox.Trigger
             aria-label="Select country"
-            className={phoneInputInline6Variants()}
+            className={slots.countrySelect()}
             disabled={isDisabled}
             onBlur={onBlur}
             onFocus={onFocus}
           >
             <InputGroup.Button
-              className={phoneInputInline3Variants()}
+              className={slots.countryButton()}
               disabled={isDisabled}
               size="sm"
               type="button"
@@ -212,13 +194,13 @@ function PhoneInputCountrySelect({
             >
               {value ? <PhoneInputFlag country={value} countryName={value} /> : null}
               {callingCode ? <span>+{callingCode}</span> : null}
-              <CaretUpDownIcon aria-hidden className={phoneInputInline7Variants()} />
+              <CaretUpDownIcon aria-hidden className={slots.countryCaret()} />
             </InputGroup.Button>
           </Combobox.Trigger>
         </Combobox.Control>
       </InputGroup.Addon>
       <Combobox.Content {...popupProps} className={slots.popup({ className: classNames?.popup })}>
-        <div className={phoneInputInline8Variants()}>
+        <div className={slots.searchGroup()}>
           <InputGroup size={size}>
             <Combobox.FieldInput asChild>
               <InputGroup.Input
@@ -232,10 +214,8 @@ function PhoneInputCountrySelect({
           {items.map((item) => (
             <Combobox.Item item={item} key={item.value}>
               <PhoneInputFlag country={item.value} countryName={item.label} />
-              <span className={phoneInputInline9Variants()}>{item.label}</span>
-              <span className={phoneInputInline10Variants()}>
-                +{getCountryCallingCode(item.value)}
-              </span>
+              <span className={slots.itemLabel()}>{item.label}</span>
+              <span className={slots.itemCode()}>+{getCountryCallingCode(item.value)}</span>
             </Combobox.Item>
           ))}
         </Combobox.List>
@@ -262,7 +242,7 @@ export function PhoneInput({
   testId,
   ...rest
 }: PhoneInputProps) {
-  const slots = phoneInputVariants({ size });
+  const slots = useMemo(() => phoneInputVariants({ size }), [size]);
 
   const contextValue = useMemo(
     () => ({

@@ -2,20 +2,18 @@ import { ark } from "@ark-ui/react/factory";
 import { Popover as PopoverPrimitive } from "@ark-ui/react/popover";
 import { Portal } from "@ark-ui/react/portal";
 import { XIcon } from "@phosphor-icons/react";
-import {
-  popoverBodyVariants,
-  popoverContentVariants,
-  popoverDescriptionVariants,
-  popoverFooterVariants,
-  popoverHeaderVariants,
-  popoverInline2Variants,
-  popoverTitleVariants,
-} from "@pisagor/styles/ui/popover";
+import { popoverContentVariants } from "@pisagor/styles/ui/popover";
 import type { ComponentProps } from "react";
+import { useMemo } from "react";
 import type { WithTestId } from "../../internal/types";
 import { Button } from "../button";
 import { ScrollArea } from "../scroll-area";
-import { PopoverRootContext, usePopoverRoot } from "./popover.context";
+import {
+  PopoverContentContext,
+  PopoverRootContext,
+  usePopoverContent,
+  usePopoverRoot,
+} from "./popover.context";
 
 // #region Types
 export interface PopoverContentProps extends ComponentProps<typeof PopoverPrimitive.Content> {
@@ -97,22 +95,24 @@ export function PopoverContent({
   children,
   ...rest
 }: PopoverContentProps) {
-  const slots = popoverContentVariants();
+  const slots = useMemo(() => popoverContentVariants(), []);
 
   return (
     <Portal>
       <PopoverPositioner>
-        <PopoverPrimitive.Content {...rest} className={slots.base({ className })}>
-          {children}
+        <PopoverContentContext value={{ slots }}>
+          <PopoverPrimitive.Content {...rest} className={slots.base({ className })}>
+            {children}
 
-          {!!showCloseButton && (
-            <PopoverCloseTrigger asChild>
-              <Button aria-label="Close" className={slots.close()} size="icon-sm" variant="ghost">
-                <XIcon />
-              </Button>
-            </PopoverCloseTrigger>
-          )}
-        </PopoverPrimitive.Content>
+            {!!showCloseButton && (
+              <PopoverCloseTrigger asChild>
+                <Button aria-label="Close" className={slots.close()} size="icon-sm" variant="ghost">
+                  <XIcon />
+                </Button>
+              </PopoverCloseTrigger>
+            )}
+          </PopoverPrimitive.Content>
+        </PopoverContentContext>
       </PopoverPositioner>
     </Portal>
   );
@@ -125,10 +125,12 @@ export function PopoverHeader({
   className,
   ...rest
 }: PopoverHeaderProps) {
+  const { slots } = usePopoverContent();
+
   return (
     <ark.div
       {...rest}
-      className={popoverHeaderVariants({ className })}
+      className={slots.header({ className })}
       data-part="header"
       data-scope="popover"
     >
@@ -142,21 +144,25 @@ export function PopoverHeader({
 }
 
 export function PopoverTitle({ className, ...rest }: PopoverTitleProps) {
-  return <PopoverPrimitive.Title {...rest} className={popoverTitleVariants({ className })} />;
+  const { slots } = usePopoverContent();
+
+  return <PopoverPrimitive.Title {...rest} className={slots.title({ className })} />;
 }
 
 export function PopoverDescription({ className, ...rest }: PopoverDescriptionProps) {
-  return (
-    <PopoverPrimitive.Description {...rest} className={popoverDescriptionVariants({ className })} />
-  );
+  const { slots } = usePopoverContent();
+
+  return <PopoverPrimitive.Description {...rest} className={slots.description({ className })} />;
 }
 
 export function PopoverBody({ className, ...rest }: PopoverBodyProps) {
+  const { slots } = usePopoverContent();
+
   return (
     <ScrollArea>
       <ark.div
         {...rest}
-        className={popoverBodyVariants({ className })}
+        className={slots.body({ className })}
         data-part="body"
         data-scope="popover"
       />
@@ -165,10 +171,12 @@ export function PopoverBody({ className, ...rest }: PopoverBodyProps) {
 }
 
 export function PopoverFooter({ className, ...rest }: PopoverFooterProps) {
+  const { slots } = usePopoverContent();
+
   return (
     <ark.div
       {...rest}
-      className={popoverFooterVariants({ className })}
+      className={slots.footer({ className })}
       data-part="footer"
       data-scope="popover"
     />
@@ -180,6 +188,8 @@ export function PopoverCloseTrigger(props: PopoverCloseTriggerProps) {
 }
 
 export function PopoverArrow({ style, ...rest }: PopoverArrowProps) {
+  const { slots } = usePopoverContent();
+
   return (
     <PopoverPrimitive.Arrow
       {...rest}
@@ -189,7 +199,7 @@ export function PopoverArrow({ style, ...rest }: PopoverArrowProps) {
         ...style,
       }}
     >
-      <PopoverPrimitive.ArrowTip className={popoverInline2Variants()} />
+      <PopoverPrimitive.ArrowTip className={slots.arrowTip()} />
     </PopoverPrimitive.Arrow>
   );
 }

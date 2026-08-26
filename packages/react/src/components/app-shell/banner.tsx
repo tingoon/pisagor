@@ -1,8 +1,8 @@
-import { appShellBannerVariants } from "@pisagor/styles/ui/app-shell";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { useRef } from "react";
 import type { AppShellRegionPosition } from "./app-shell.context";
+import { useAppShell } from "./app-shell.context";
 import { APP_SHELL_BANNER_HEIGHT_VAR } from "./constants";
 import { regionPositionClasses, useSyncFixedRegionHeight } from "./region";
 
@@ -25,14 +25,15 @@ export function AppShellBanner({
   ...rest
 }: AppShellBannerProps) {
   const bannerRef = useRef<HTMLDivElement>(null);
+  const { slots } = useAppShell();
   useSyncFixedRegionHeight(bannerRef, position, APP_SHELL_BANNER_HEIGHT_VAR);
 
   return (
     <div
       {...rest}
       className={cn(
-        appShellBannerVariants(),
-        regionPositionClasses(position, "row", "banner"),
+        slots.banner(),
+        regionPositionClasses(slots, position, "row", "banner"),
         className,
       )}
       data-part="banner"

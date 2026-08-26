@@ -2,22 +2,13 @@ import { ark } from "@ark-ui/react/factory";
 import { FloatingPanel as FloatingPanelPrimitive } from "@ark-ui/react/floating-panel";
 import { Portal } from "@ark-ui/react/portal";
 import { ArrowsOutIcon, CornersInIcon, MinusIcon } from "@phosphor-icons/react";
-import {
-  floatingPanelBodyVariants,
-  floatingPanelContentVariants,
-  floatingPanelFooterVariants,
-  floatingPanelInline2Variants,
-  floatingPanelInline3Variants,
-  floatingPanelInline4Variants,
-  floatingPanelInlineVariants,
-  floatingPanelPositionerVariants,
-  floatingPanelTitleVariants,
-} from "@pisagor/styles/ui/floating-panel";
+import { floatingPanelVariants } from "@pisagor/styles/ui/floating-panel";
 import type { ComponentProps } from "react";
+import { useMemo } from "react";
 import type { WithTestId } from "../../internal/types";
 import { Button, type ButtonProps } from "../button";
 import { ScrollArea } from "../scroll-area";
-import { FloatingPanelRootContext, useFloatingPanelRoot } from "./floating-panel.context";
+import { FloatingPanelContext, useFloatingPanel } from "./floating-panel.context";
 
 // #region Types
 export interface FloatingPanelRootProps
@@ -91,10 +82,12 @@ export function FloatingPanelRoot({
   testId,
   ...rest
 }: FloatingPanelRootProps) {
+  const slots = useMemo(() => floatingPanelVariants(), []);
+
   return (
-    <FloatingPanelRootContext value={{ testId }}>
+    <FloatingPanelContext value={{ slots, testId }}>
       <FloatingPanelPrimitive.Root lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...rest} />
-    </FloatingPanelRootContext>
+    </FloatingPanelContext>
   );
 }
 
@@ -108,14 +101,14 @@ export function FloatingPanelContent({
   children,
   ...rest
 }: FloatingPanelContentProps) {
-  const { testId } = useFloatingPanelRoot() ?? {};
+  const { slots = floatingPanelVariants(), testId } = useFloatingPanel() ?? {};
 
   return (
     <Portal>
-      <FloatingPanelPrimitive.Positioner className={floatingPanelPositionerVariants()}>
+      <FloatingPanelPrimitive.Positioner className={slots.positioner()}>
         <FloatingPanelPrimitive.Content
           {...rest}
-          className={floatingPanelContentVariants({ className })}
+          className={slots.content({ className })}
           data-testid={testId}
         >
           {children}
@@ -148,12 +141,11 @@ export function FloatingPanelHeader({
   children,
   ...rest
 }: FloatingPanelHeaderProps) {
+  const { slots = floatingPanelVariants() } = useFloatingPanel() ?? {};
+
   return (
     <FloatingPanelDragTrigger>
-      <FloatingPanelPrimitive.Header
-        {...rest}
-        className={floatingPanelInlineVariants({ className })}
-      >
+      <FloatingPanelPrimitive.Header {...rest} className={slots.header({ className })}>
         {title && <FloatingPanelTitle>{title}</FloatingPanelTitle>}
 
         {children}
@@ -163,12 +155,9 @@ export function FloatingPanelHeader({
 }
 
 export function FloatingPanelControl({ className, ...rest }: FloatingPanelControlProps) {
-  return (
-    <FloatingPanelPrimitive.Control
-      {...rest}
-      className={floatingPanelInline2Variants({ className })}
-    />
-  );
+  const { slots = floatingPanelVariants() } = useFloatingPanel() ?? {};
+
+  return <FloatingPanelPrimitive.Control {...rest} className={slots.control({ className })} />;
 }
 
 export function FloatingPanelMinimize({
@@ -204,20 +193,22 @@ export function FloatingPanelRestore({
   variant = "outline",
   ...rest
 }: FloatingPanelRestoreProps) {
+  const { slots = floatingPanelVariants() } = useFloatingPanel() ?? {};
+
   return (
     <FloatingPanelPrimitive.StageTrigger {...rest} asChild stage="default">
       <Button aria-label="Restore" size={size} variant={variant}>
-        <CornersInIcon className={floatingPanelInline3Variants()} />
-        <ArrowsOutIcon className={floatingPanelInline4Variants()} />
+        <CornersInIcon className={slots.maximizedIcon()} />
+        <ArrowsOutIcon className={slots.minimizedIcon()} />
       </Button>
     </FloatingPanelPrimitive.StageTrigger>
   );
 }
 
 export function FloatingPanelTitle({ className, ...rest }: FloatingPanelTitleProps) {
-  return (
-    <FloatingPanelPrimitive.Title {...rest} className={floatingPanelTitleVariants({ className })} />
-  );
+  const { slots = floatingPanelVariants() } = useFloatingPanel() ?? {};
+
+  return <FloatingPanelPrimitive.Title {...rest} className={slots.title({ className })} />;
 }
 
 export function FloatingPanelResizeTrigger(props: FloatingPanelResizeTriggerProps) {
@@ -238,9 +229,11 @@ export function FloatingPanelBody({
   children,
   ...rest
 }: FloatingPanelBodyProps) {
+  const { slots = floatingPanelVariants() } = useFloatingPanel() ?? {};
+
   return (
     <ScrollArea scrollFade={scrollFade}>
-      <FloatingPanelPrimitive.Body {...rest} className={floatingPanelBodyVariants({ className })}>
+      <FloatingPanelPrimitive.Body {...rest} className={slots.body({ className })}>
         {children}
       </FloatingPanelPrimitive.Body>
     </ScrollArea>
@@ -248,10 +241,12 @@ export function FloatingPanelBody({
 }
 
 export function FloatingPanelFooter({ className, ...rest }: FloatingPanelFooterProps) {
+  const { slots = floatingPanelVariants() } = useFloatingPanel() ?? {};
+
   return (
     <ark.div
       {...rest}
-      className={floatingPanelFooterVariants({ className })}
+      className={slots.footer({ className })}
       data-part="footer"
       data-scope="floating-panel"
     />

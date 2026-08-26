@@ -56,9 +56,9 @@ function buildGridRows(hasBanner: boolean, hasNavigation: boolean) {
 
 export interface AppShellRootProps extends ComponentProps<"div">, WithTestId {}
 
-function useShellGridStyle(slots: AppShellSlots) {
-  const hasBanner = Boolean(slots.banner);
-  const hasNavigation = Boolean(slots.navigation);
+function useShellGridStyle(childSlots: AppShellSlots) {
+  const hasBanner = Boolean(childSlots.banner);
+  const hasNavigation = Boolean(childSlots.navigation);
 
   return useMemo(
     () => ({
@@ -71,7 +71,8 @@ function useShellGridStyle(slots: AppShellSlots) {
 }
 
 export function AppShellRoot({ className, style, testId, children, ...rest }: AppShellRootProps) {
-  const slots = useMemo(() => partitionAppShellChildren(children), [children]);
+  const childSlots = useMemo(() => partitionAppShellChildren(children), [children]);
+  const slots = useMemo(() => appShellVariants(), []);
   const [regionRevision, setRegionRevision] = useState(0);
   const [regionVars, setRegionVars] = useState(ZERO_REGION_VARS);
   const [fixedStackVars, setFixedStackVars] = useState(ZERO_FIXED_STACK_VARS);
@@ -80,7 +81,7 @@ export function AppShellRoot({ className, style, testId, children, ...rest }: Ap
   const railStates = useRef<Partial<Record<AppShellPlacement, AppShellRailState>>>({});
   const shellRef = useRef<HTMLDivElement>(null);
   const [regionResizing, setRegionResizing] = useState(false);
-  const gridStyle = useShellGridStyle(slots);
+  const gridStyle = useShellGridStyle(childSlots);
 
   const setRegionVar = useCallback((name: AppShellRegionVar, value: string) => {
     setRegionVars((current) => {
@@ -124,6 +125,7 @@ export function AppShellRoot({ className, style, testId, children, ...rest }: Ap
       setRegionResizing,
       setRegionVar,
       shellRef,
+      slots,
     }),
     [
       fixedStackVars,
@@ -133,6 +135,7 @@ export function AppShellRoot({ className, style, testId, children, ...rest }: Ap
       regionVars,
       setFixedStackVar,
       setRegionVar,
+      slots,
     ],
   );
 
@@ -148,7 +151,7 @@ export function AppShellRoot({ className, style, testId, children, ...rest }: Ap
     <AppShellContext value={contextValue}>
       <div
         {...rest}
-        className={appShellVariants({ className })}
+        className={slots.base({ className })}
         data-part="root"
         data-resizing={regionResizing ? "" : undefined}
         data-scope="app-shell"
@@ -156,15 +159,15 @@ export function AppShellRoot({ className, style, testId, children, ...rest }: Ap
         ref={shellRef}
         style={{ ...shellStyle, ...gridStyle, ...style }}
       >
-        {slots.banner}
-        {slots.inspectors.start}
-        {slots.navigation}
-        {slots.inspectors.end}
-        {slots.rails.start}
-        {slots.panels.start}
-        {slots.main}
-        {slots.panels.end}
-        {slots.rails.end}
+        {childSlots.banner}
+        {childSlots.inspectors.start}
+        {childSlots.navigation}
+        {childSlots.inspectors.end}
+        {childSlots.rails.start}
+        {childSlots.panels.start}
+        {childSlots.main}
+        {childSlots.panels.end}
+        {childSlots.rails.end}
       </div>
     </AppShellContext>
   );

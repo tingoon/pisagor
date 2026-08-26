@@ -28,10 +28,12 @@ export const Default = meta.story({
   },
   render: (args) => (
     <div className="flex flex-col gap-2">
-      <Item variant="outline">
-        <FileTextIcon />
-        <Item.Title>{sampleText()}</Item.Title>
-      </Item>
+      <Item.Group>
+        <Item variant="outline">
+          <FileTextIcon />
+          <Item.Title>{sampleText()}</Item.Title>
+        </Item>
+      </Item.Group>
       <DownloadTrigger {...args}>
         <Button size="lg" variant="outline">
           <DownloadIcon />

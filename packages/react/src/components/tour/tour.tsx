@@ -2,19 +2,8 @@ import { Portal } from "@ark-ui/react";
 import { ark } from "@ark-ui/react/factory";
 import { Tour as TourPrimitive, type TourStepDetails, useTour } from "@ark-ui/react/tour";
 import { CaretLeftIcon, CaretRightIcon, XIcon } from "@phosphor-icons/react";
-import {
-  tourActionsVariants,
-  tourBackdropVariants,
-  tourContentVariants,
-  tourDescriptionVariants,
-  tourInline2Variants,
-  tourInline3Variants,
-  tourInlineVariants,
-  tourPositionerVariants,
-  tourProgressTextVariants,
-  tourSpotlightVariants,
-  tourTitleVariants,
-} from "@pisagor/styles/ui/tour";
+import { dialogBackdropVariants } from "@pisagor/styles/ui/dialog";
+import { tourVariants } from "@pisagor/styles/ui/tour";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, MouseEvent } from "react";
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -26,7 +15,6 @@ import {
   type DialogBodyProps,
   type DialogFooterProps,
   type DialogHeaderProps,
-  dialogBackdropVariants,
 } from "../dialog";
 import { TourContext, useTourContext } from "./tour.context";
 
@@ -88,6 +76,8 @@ export function TourRoot({
 
   const tour = useTour({ steps });
 
+  const slots = useMemo(() => tourVariants(), []);
+
   useEffect(() => {
     if (isStarted) {
       document.body.classList.add("relative");
@@ -106,7 +96,7 @@ export function TourRoot({
   }, [tour]);
 
   return (
-    <TourContext value={{ handleStart, testId, tour }}>
+    <TourContext value={{ handleStart, slots, testId, tour }}>
       <TourPrimitive.Root
         lazyMount={lazyMount}
         tour={tour}
@@ -141,16 +131,20 @@ export function TourActionTrigger(props: TourActionTriggerProps) {
 }
 
 export function TourBackdrop({ className, ...rest }: DialogBackdropProps) {
+  const { slots } = useTourContext();
+
   return (
     <TourPrimitive.Backdrop
       {...rest}
-      className={cn(dialogBackdropVariants(), tourBackdropVariants(), className)}
+      className={cn(dialogBackdropVariants(), slots.backdrop(), className)}
     />
   );
 }
 
 export function TourPositioner(props: TourPositionerProps) {
-  return <TourPrimitive.Positioner className={tourPositionerVariants()} {...props} />;
+  const { slots } = useTourContext();
+
+  return <TourPrimitive.Positioner className={slots.positioner()} {...props} />;
 }
 
 export function TourContent({
@@ -159,7 +153,7 @@ export function TourContent({
   children,
   ...rest
 }: TourContentProps) {
-  const { testId } = useTourContext();
+  const { slots, testId } = useTourContext();
 
   return (
     <Portal>
@@ -167,7 +161,7 @@ export function TourContent({
       <TourPositioner>
         <TourPrimitive.Content
           {...rest}
-          className={tourContentVariants({ className })}
+          className={slots.content({ className })}
           data-testid={testId}
         >
           {children ?? (
@@ -187,11 +181,11 @@ export function TourContent({
           )}
 
           {!!showCloseButton && (
-            <TourCloseTrigger asChild className={tourInlineVariants()}>
-              <Button className={tourInline2Variants()} size="icon-md" variant="ghost">
+            <TourCloseTrigger asChild className={slots.close()}>
+              <Button className={slots.closeButton()} size="icon-md" variant="ghost">
                 <XIcon />
 
-                <span className={tourInline3Variants()}>Close</span>
+                <span className={slots.closeLabel()}>Close</span>
               </Button>
             </TourCloseTrigger>
           )}
@@ -208,7 +202,9 @@ export function TourBody(props: DialogBodyProps) {
 }
 
 export function TourSpotlight(props: TourSpotlightProps) {
-  return <TourPrimitive.Spotlight className={tourSpotlightVariants()} {...props} />;
+  const { slots } = useTourContext();
+
+  return <TourPrimitive.Spotlight className={slots.spotlight()} {...props} />;
 }
 
 export function TourHeader(props: DialogHeaderProps) {
@@ -216,30 +212,30 @@ export function TourHeader(props: DialogHeaderProps) {
 }
 
 export function TourTitle({ className, ...rest }: TourTitleProps) {
-  const { tour } = useTourContext();
+  const { slots, tour } = useTourContext();
 
   return (
-    <TourPrimitive.Title {...rest} className={tourTitleVariants({ className })}>
+    <TourPrimitive.Title {...rest} className={slots.title({ className })}>
       {tour.step?.title}
     </TourPrimitive.Title>
   );
 }
 
 export function TourDescription({ className, ...rest }: TourDescriptionProps) {
-  const { tour } = useTourContext();
+  const { slots, tour } = useTourContext();
 
   return (
-    <TourPrimitive.Description {...rest} className={tourDescriptionVariants({ className })}>
+    <TourPrimitive.Description {...rest} className={slots.description({ className })}>
       {tour.step?.description}
     </TourPrimitive.Description>
   );
 }
 
 export function TourProgressText({ className, ...rest }: TourProgressTextProps) {
-  const { tour } = useTourContext();
+  const { slots, tour } = useTourContext();
 
   return (
-    <TourPrimitive.ProgressText {...rest} className={tourProgressTextVariants({ className })}>
+    <TourPrimitive.ProgressText {...rest} className={slots.progressText({ className })}>
       {tour.getProgressText()}
     </TourPrimitive.ProgressText>
   );
@@ -260,7 +256,7 @@ export function TourFooter({ children, ...rest }: DialogFooterProps) {
 }
 
 export function TourActions({ className, ...rest }: DialogFooterProps) {
-  const { tour } = useTourContext();
+  const { slots, tour } = useTourContext();
 
   const actions = tour.step?.actions ?? [];
 
@@ -270,11 +266,7 @@ export function TourActions({ className, ...rest }: DialogFooterProps) {
 
   return (
     <TourPrimitive.Control {...rest} asChild>
-      <Dialog.Footer
-        className={tourActionsVariants({ className })}
-        dataPart="actions"
-        dataScope="tour"
-      >
+      <Dialog.Footer className={slots.actions({ className })} dataPart="actions" dataScope="tour">
         {actions.map((action) => (
           <TourActionTrigger action={action} asChild key={action.label}>
             <Button

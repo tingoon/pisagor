@@ -12,19 +12,10 @@ import {
 } from "@ark-ui/react/select";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
 import type { InputRootVariantProps } from "@pisagor/styles/ui/input";
-import {
-  selectClearTriggerVariants,
-  selectContentVariants,
-  selectInline2Variants,
-  selectInline3Variants,
-  selectInlineVariants,
-  selectItemGroupLabelVariants,
-  selectItemVariants,
-  selectSeparatorVariants,
-  selectTriggerVariants,
-} from "@pisagor/styles/ui/select";
+import { selectVariants } from "@pisagor/styles/ui/select";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
+import { useMemo } from "react";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import {
@@ -110,8 +101,10 @@ export function SelectRoot<T extends CollectionItem = CollectionItem>({
   testId,
   ...rest
 }: SelectRootProps<T>) {
+  const slots = useMemo(() => selectVariants(), []);
+
   return (
-    <SelectRootContext value={{ testId }}>
+    <SelectRootContext value={{ slots, testId }}>
       <FormControlVariantProvider value={variant}>
         <SelectPrimitive.Root
           lazyMount={lazyMount}
@@ -137,7 +130,7 @@ export function SelectTrigger({
   className,
   ...rest
 }: SelectTriggerProps) {
-  const { testId } = useSelectRoot() ?? {};
+  const { slots = selectVariants(), testId } = useSelectRoot() ?? {};
   const resolved = useFormControlVariant(variantProp);
   const shellArgs = shellVariantArgs(resolved);
   const controlProps = formControlShellProps(resolved);
@@ -147,16 +140,12 @@ export function SelectTrigger({
       <SelectPrimitive.Trigger
         {...rest}
         {...controlProps}
-        className={cn(
-          formControlShellVariants({ size, ...shellArgs }),
-          selectTriggerVariants(),
-          className,
-        )}
+        className={cn(formControlShellVariants({ size, ...shellArgs }), slots.trigger(), className)}
         data-testid={testId}
       >
         {children}
 
-        <div className={selectInline3Variants()}>
+        <div className={slots.triggerActions()}>
           {clearable && (
             <SelectClearTrigger>
               <XIcon />
@@ -172,10 +161,12 @@ export function SelectTrigger({
 }
 
 export function SelectSeparator({ className, ...rest }: SeparatorProps) {
+  const { slots = selectVariants() } = useSelectRoot() ?? {};
+
   return (
     <Separator
       {...rest}
-      className={selectSeparatorVariants({ className })}
+      className={slots.separator({ className })}
       dataPart="separator"
       dataScope="select"
     />
@@ -183,14 +174,18 @@ export function SelectSeparator({ className, ...rest }: SeparatorProps) {
 }
 
 export function SelectValueText({ className, ...rest }: SelectValueTextProps) {
-  return <SelectPrimitive.ValueText {...rest} className={selectInlineVariants({ className })} />;
+  const { slots = selectVariants() } = useSelectRoot() ?? {};
+
+  return <SelectPrimitive.ValueText {...rest} className={slots.valueText({ className })} />;
 }
 
 export function SelectContent({ className, ...rest }: SelectContentProps) {
+  const { slots = selectVariants() } = useSelectRoot() ?? {};
+
   return (
     <Portal>
       <SelectPrimitive.Positioner>
-        <SelectPrimitive.Content {...rest} className={selectContentVariants({ className })} />
+        <SelectPrimitive.Content {...rest} className={slots.content({ className })} />
       </SelectPrimitive.Positioner>
     </Portal>
   );
@@ -207,22 +202,21 @@ export function SelectItemGroup({ heading, children, ...rest }: SelectItemGroupP
 }
 
 export function SelectItemGroupLabel({ className, ...rest }: SelectItemGroupLabelProps) {
+  const { slots = selectVariants() } = useSelectRoot() ?? {};
+
   return (
-    <SelectPrimitive.ItemGroupLabel
-      {...rest}
-      className={selectItemGroupLabelVariants({ className })}
-    />
+    <SelectPrimitive.ItemGroupLabel {...rest} className={slots.itemGroupLabel({ className })} />
   );
 }
 
 export function SelectItem({ className, children, ...rest }: SelectItemProps) {
-  const slots = selectItemVariants();
+  const { slots = selectVariants() } = useSelectRoot() ?? {};
 
   return (
-    <SelectPrimitive.Item {...rest} className={slots.base({ className })}>
-      <SelectPrimitive.ItemText className={slots.text()}>{children}</SelectPrimitive.ItemText>
+    <SelectPrimitive.Item {...rest} className={slots.item({ className })}>
+      <SelectPrimitive.ItemText className={slots.itemText()}>{children}</SelectPrimitive.ItemText>
 
-      <span className={slots.indicator()}>
+      <span className={slots.itemIndicator()}>
         <SelectPrimitive.ItemIndicator>
           <CheckIcon />
         </SelectPrimitive.ItemIndicator>
@@ -232,22 +226,23 @@ export function SelectItem({ className, children, ...rest }: SelectItemProps) {
 }
 
 export function SelectClearTrigger({ className, ...rest }: SelectClearTriggerProps) {
+  const { slots = selectVariants() } = useSelectRoot() ?? {};
+
   return (
     <SelectPrimitive.ClearTrigger
       {...rest}
       aria-label="Clear selected value(s)"
-      className={selectClearTriggerVariants({ className })}
+      className={slots.clearTrigger({ className })}
     />
   );
 }
 
 export function SelectEmpty({ className, ...rest }: SelectEmptyProps) {
   const { empty } = useSelectContext();
+  const { slots = selectVariants() } = useSelectRoot() ?? {};
 
   if (empty) {
-    return (
-      <ark.div {...rest} className={selectInline2Variants({ className })} role="presentation" />
-    );
+    return <ark.div {...rest} className={slots.empty({ className })} role="presentation" />;
   }
 
   return null;

@@ -1,28 +1,10 @@
 import { ark } from "@ark-ui/react/factory";
 import { FileUpload as FileUploadPrimitive, useFileUploadContext } from "@ark-ui/react/file-upload";
 import { UploadIcon, XIcon } from "@phosphor-icons/react";
-import {
-  fileUploadDropzoneHelperVariants,
-  fileUploadDropzoneIconVariants,
-  fileUploadDropzoneVariants,
-  fileUploadInline2Variants,
-  fileUploadInline3Variants,
-  fileUploadInline4Variants,
-  fileUploadInline5Variants,
-  fileUploadInline6Variants,
-  fileUploadInline7Variants,
-  fileUploadInlineVariants,
-  fileUploadItemNameVariants,
-  fileUploadItemPreviewImageVariants,
-  fileUploadItemPreviewVariants,
-  fileUploadItemSizeVariants,
-  fileUploadItemVariants,
-  fileUploadTitle2Variants,
-  fileUploadTitleVariants,
-  fileUploadVariants,
-} from "@pisagor/styles/ui/file-upload";
+import { fileUploadVariants } from "@pisagor/styles/ui/file-upload";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
+import { useMemo } from "react";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import {
   formControlShellProps,
@@ -32,6 +14,7 @@ import {
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
 import type { WithTestId } from "../../internal/types";
 import { Button } from "../button";
+import { FileUploadContext, useFileUpload } from "./file-upload.context";
 
 // #region Types
 export interface FileUploadListProps
@@ -89,20 +72,24 @@ export function FileUploadRoot({
   testId,
   ...rest
 }: FileUploadRootProps) {
-  return (
-    <FileUploadPrimitive.Root
-      {...rest}
-      className={fileUploadVariants({ className })}
-      data-testid={testId}
-      onFileChange={(details) => {
-        onFileChange?.(details);
-        onValueChange?.(details.acceptedFiles);
-      }}
-    >
-      {children}
+  const slots = useMemo(() => fileUploadVariants(), []);
 
-      <FileUploadPrimitive.HiddenInput />
-    </FileUploadPrimitive.Root>
+  return (
+    <FileUploadContext value={{ slots }}>
+      <FileUploadPrimitive.Root
+        {...rest}
+        className={slots.base({ className })}
+        data-testid={testId}
+        onFileChange={(details) => {
+          onFileChange?.(details);
+          onValueChange?.(details.acceptedFiles);
+        }}
+      >
+        {children}
+
+        <FileUploadPrimitive.HiddenInput />
+      </FileUploadPrimitive.Root>
+    </FileUploadContext>
   );
 }
 
@@ -118,16 +105,13 @@ export function FileUploadDropzone({
   const resolved = useFormControlVariant(variantProp);
   const shellArgs = shellVariantArgs(resolved);
   const controlProps = formControlShellProps(resolved);
+  const { slots } = useFileUpload();
 
   return (
     <FileUploadPrimitive.Dropzone
       {...rest}
       {...controlProps}
-      className={cn(
-        formControlZoneVariants({ ...shellArgs }),
-        fileUploadDropzoneVariants(),
-        className,
-      )}
+      className={cn(formControlZoneVariants({ ...shellArgs }), slots.dropzone(), className)}
     />
   );
 }
@@ -137,10 +121,12 @@ export function FileUploadDropzoneIcon({
   children,
   ...rest
 }: FileUploadDropzoneIconProps) {
+  const { slots } = useFileUpload();
+
   return (
     <ark.div
       {...rest}
-      className={fileUploadDropzoneIconVariants({ className })}
+      className={slots.dropzoneIcon({ className })}
       data-part="dropzone-icon"
       data-scope="file-upload"
     >
@@ -150,10 +136,12 @@ export function FileUploadDropzoneIcon({
 }
 
 export function FileUploadTitle({ className, ...rest }: FileUploadTitleProps) {
+  const { slots } = useFileUpload();
+
   return (
     <ark.div
       {...rest}
-      className={fileUploadTitleVariants({ className })}
+      className={slots.title({ className })}
       data-part="title"
       data-scope="file-upload"
     />
@@ -161,10 +149,12 @@ export function FileUploadTitle({ className, ...rest }: FileUploadTitleProps) {
 }
 
 export function FileUploadDescription({ className, ...rest }: FileUploadDescriptionProps) {
+  const { slots } = useFileUpload();
+
   return (
     <ark.div
       {...rest}
-      className={fileUploadTitle2Variants({ className })}
+      className={slots.description({ className })}
       data-part="title"
       data-scope="file-upload"
     />
@@ -172,10 +162,12 @@ export function FileUploadDescription({ className, ...rest }: FileUploadDescript
 }
 
 export function FileUploadHelper({ className, ...rest }: FileUploadHelperProps) {
+  const { slots } = useFileUpload();
+
   return (
     <ark.div
       {...rest}
-      className={fileUploadDropzoneHelperVariants({ className })}
+      className={slots.helper({ className })}
       data-part="dropzone-helper"
       data-scope="file-upload"
     />
@@ -188,6 +180,7 @@ export function FileUploadItemGroup(props: FileUploadItemGroupProps) {
 
 export function FileUploadList({ className, ...rest }: FileUploadListProps) {
   const fileUpload = useFileUploadContext();
+  const { slots } = useFileUpload();
 
   const files = fileUpload.acceptedFiles;
 
@@ -196,7 +189,7 @@ export function FileUploadList({ className, ...rest }: FileUploadListProps) {
   }
 
   return (
-    <FileUploadItemGroup className={fileUploadInline3Variants()}>
+    <FileUploadItemGroup className={slots.itemGroup()}>
       {files.map((file, index) => {
         const isImage = file.type.startsWith("image/");
 
@@ -205,30 +198,25 @@ export function FileUploadList({ className, ...rest }: FileUploadListProps) {
         const extension = file.name.split(".").pop();
 
         return (
-          <FileUploadItem
-            {...rest}
-            className={fileUploadInlineVariants({ className })}
-            file={file}
-            key={key}
-          >
+          <FileUploadItem {...rest} className={slots.listItem({ className })} file={file} key={key}>
             <FileUploadItemPreview
-              className={fileUploadInline4Variants()}
+              className={slots.listPreview()}
               {...(isImage ? { type: "image/*" } : { type: ".*" })}
             >
               {isImage ? (
                 <FileUploadItemPreviewImage />
               ) : (
-                <span className={fileUploadInline5Variants()}>{extension}</span>
+                <span className={slots.extension()}>{extension}</span>
               )}
             </FileUploadItemPreview>
 
-            <div className={fileUploadInline6Variants()}>
+            <div className={slots.itemContent()}>
               <FileUploadItemName />
               <FileUploadItemSize />
             </div>
 
-            <FileUploadItemDeleteTrigger asChild className={fileUploadInline7Variants()}>
-              <Button className={fileUploadInline2Variants()} size="icon-xs" variant="ghost">
+            <FileUploadItemDeleteTrigger asChild className={slots.deleteTrigger()}>
+              <Button className={slots.deleteButton()} size="icon-xs" variant="ghost">
                 <XIcon />
               </Button>
             </FileUploadItemDeleteTrigger>
@@ -240,43 +228,41 @@ export function FileUploadList({ className, ...rest }: FileUploadListProps) {
 }
 
 export function FileUploadItem({ className, ...rest }: FileUploadItemProps) {
-  return <FileUploadPrimitive.Item {...rest} className={fileUploadItemVariants({ className })} />;
+  const { slots } = useFileUpload();
+
+  return <FileUploadPrimitive.Item {...rest} className={slots.item({ className })} />;
 }
 
 export function FileUploadItemPreview({ className, ...rest }: FileUploadItemPreviewProps) {
-  return (
-    <FileUploadPrimitive.ItemPreview
-      {...rest}
-      className={fileUploadItemPreviewVariants({ className })}
-    />
-  );
+  const { slots } = useFileUpload();
+
+  return <FileUploadPrimitive.ItemPreview {...rest} className={slots.itemPreview({ className })} />;
 }
 
 export function FileUploadItemPreviewImage({
   className,
   ...rest
 }: FileUploadItemPreviewImageProps) {
+  const { slots } = useFileUpload();
+
   return (
     <FileUploadPrimitive.ItemPreviewImage
       {...rest}
-      className={fileUploadItemPreviewImageVariants({ className })}
+      className={slots.itemPreviewImage({ className })}
     />
   );
 }
 
 export function FileUploadItemName({ className, ...rest }: FileUploadItemNameProps) {
-  return (
-    <FileUploadPrimitive.ItemName {...rest} className={fileUploadItemNameVariants({ className })} />
-  );
+  const { slots } = useFileUpload();
+
+  return <FileUploadPrimitive.ItemName {...rest} className={slots.itemName({ className })} />;
 }
 
 export function FileUploadItemSize({ className, ...rest }: FileUploadItemSizeProps) {
-  return (
-    <FileUploadPrimitive.ItemSizeText
-      {...rest}
-      className={fileUploadItemSizeVariants({ className })}
-    />
-  );
+  const { slots } = useFileUpload();
+
+  return <FileUploadPrimitive.ItemSizeText {...rest} className={slots.itemSize({ className })} />;
 }
 
 export function FileUploadItemDeleteTrigger(props: FileUploadItemDeleteTriggerProps) {

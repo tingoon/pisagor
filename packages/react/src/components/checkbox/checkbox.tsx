@@ -96,9 +96,6 @@ function CheckboxIndicator({ className, ...rest }: CheckboxIndicatorProps) {
 
   return <CheckboxPrimitive.Indicator {...rest} className={slots.indicator({ className })} />;
 }
-
-// Keep export for backwards compatibility
-export const checkboxVariants = formControlToggleVariants;
 // #endregion
 
 // #region Display Names

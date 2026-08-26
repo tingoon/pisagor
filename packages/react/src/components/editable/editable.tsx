@@ -1,18 +1,15 @@
 import { Editable as EditablePrimitive } from "@ark-ui/react/editable";
 import { buttonVariants } from "@pisagor/styles/ui/button";
-import {
-  editableAreaVariants,
-  editableControlVariants,
-  editablePreviewVariants,
-  editableVariants,
-} from "@pisagor/styles/ui/editable";
+import { editableVariants } from "@pisagor/styles/ui/editable";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
+import { useMemo } from "react";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import { formControlShellProps } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
 import type { WithTestId } from "../../internal/types";
 import type { ButtonProps } from "../button";
+import { EditableContext, useEditable } from "./editable.context";
 
 // #region Types
 export type EditableRootProps = Omit<
@@ -96,21 +93,27 @@ export function EditableRoot({
       ) => onValueChange(details.value)
     : undefined;
 
+  const slots = useMemo(() => editableVariants(), []);
+
   return (
-    <EditablePrimitive.Root
-      {...rest}
-      className={editableVariants({ className })}
-      data-orientation={orientation}
-      data-testid={testId}
-      defaultValue={defaultValue}
-      onValueChange={handleValueChange}
-      value={value}
-    />
+    <EditableContext value={{ slots }}>
+      <EditablePrimitive.Root
+        {...rest}
+        className={slots.base({ className })}
+        data-orientation={orientation}
+        data-testid={testId}
+        defaultValue={defaultValue}
+        onValueChange={handleValueChange}
+        value={value}
+      />
+    </EditableContext>
   );
 }
 
 export function EditableArea({ className, ...rest }: EditableAreaProps) {
-  return <EditablePrimitive.Area {...rest} className={editableAreaVariants({ className })} />;
+  const { slots } = useEditable();
+
+  return <EditablePrimitive.Area {...rest} className={slots.area({ className })} />;
 }
 
 export function EditableInput(props: EditableInputProps) {
@@ -124,6 +127,7 @@ export function EditablePreview({
   className,
   ...rest
 }: EditablePreviewProps) {
+  const { slots } = useEditable();
   const resolved = useFormControlVariant(controlVariant);
   const controlProps = formControlShellProps(resolved);
   const previewShellClass =
@@ -142,7 +146,7 @@ export function EditablePreview({
       className={cn(
         buttonVariants({ clickEffect: false, size, variant }),
         previewShellClass,
-        editablePreviewVariants(),
+        slots.preview(),
         previewShellClass ? "dark:hover:bg-transparent" : undefined,
         className,
       )}
@@ -151,7 +155,9 @@ export function EditablePreview({
 }
 
 export function EditableControl({ className, ...rest }: EditableControlProps) {
-  return <EditablePrimitive.Control {...rest} className={editableControlVariants({ className })} />;
+  const { slots } = useEditable();
+
+  return <EditablePrimitive.Control {...rest} className={slots.control({ className })} />;
 }
 
 export function EditableEditTrigger(props: EditableEditTriggerProps) {

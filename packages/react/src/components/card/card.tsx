@@ -1,22 +1,14 @@
 import { ark } from "@ark-ui/react/factory";
-import {
-  type CardMediaVariantProps,
-  cardActionVariants,
-  cardContentVariants,
-  cardDescriptionVariants,
-  cardFooterVariants,
-  cardHeaderVariants,
-  cardMediaVariants,
-  cardTitleVariants,
-  cardVariants,
-} from "@pisagor/styles/ui/card";
+import { type CardVariantProps, cardVariants } from "@pisagor/styles/ui/card";
 import type { ComponentProps } from "react";
+import { useMemo } from "react";
 import type { WithTestId } from "../../internal/types";
+import { CardContext, useCard } from "./card.context";
 
 // #region Types
 export interface CardRootProps extends ComponentProps<typeof ark.div>, WithTestId {}
 
-export interface CardMediaProps extends ComponentProps<typeof ark.div>, CardMediaVariantProps {}
+export interface CardMediaProps extends ComponentProps<typeof ark.div>, CardVariantProps {}
 
 export interface CardHeaderProps extends ComponentProps<typeof ark.div> {
   /** The description of the card */
@@ -38,24 +30,30 @@ export interface CardFooterProps extends ComponentProps<typeof ark.div> {}
 
 // #region Parts
 export function CardRoot({ className, children, testId, ...rest }: CardRootProps) {
+  const slots = useMemo(() => cardVariants(), []);
+
   return (
-    <ark.div
-      {...rest}
-      className={cardVariants({ className })}
-      data-part="root"
-      data-scope="card"
-      data-testid={testId}
-    >
-      {children}
-    </ark.div>
+    <CardContext value={{ slots }}>
+      <ark.div
+        {...rest}
+        className={slots.base({ className })}
+        data-part="root"
+        data-scope="card"
+        data-testid={testId}
+      >
+        {children}
+      </ark.div>
+    </CardContext>
   );
 }
 
 export function CardMedia({ variant = "default", className, ...rest }: CardMediaProps) {
+  const { slots } = useCard();
+
   return (
     <ark.div
       {...rest}
-      className={cardMediaVariants({ className, variant })}
+      className={slots.media({ className, variant })}
       data-part="media"
       data-scope="card"
       data-variant={variant}
@@ -64,13 +62,10 @@ export function CardMedia({ variant = "default", className, ...rest }: CardMedia
 }
 
 export function CardHeader({ title, description, className, children, ...rest }: CardHeaderProps) {
+  const { slots } = useCard();
+
   return (
-    <ark.div
-      {...rest}
-      className={cardHeaderVariants({ className })}
-      data-part="header"
-      data-scope="card"
-    >
+    <ark.div {...rest} className={slots.header({ className })} data-part="header" data-scope="card">
       {!!title && <CardTitle>{title}</CardTitle>}
 
       {!!description && <CardDescription>{description}</CardDescription>}
@@ -81,21 +76,20 @@ export function CardHeader({ title, description, className, children, ...rest }:
 }
 
 export function CardTitle({ className, ...rest }: CardTitleProps) {
+  const { slots } = useCard();
+
   return (
-    <ark.div
-      {...rest}
-      className={cardTitleVariants({ className })}
-      data-part="title"
-      data-scope="card"
-    />
+    <ark.div {...rest} className={slots.title({ className })} data-part="title" data-scope="card" />
   );
 }
 
 export function CardDescription({ className, ...rest }: CardDescriptionProps) {
+  const { slots } = useCard();
+
   return (
     <ark.div
       {...rest}
-      className={cardDescriptionVariants({ className })}
+      className={slots.description({ className })}
       data-part="description"
       data-scope="card"
     />
@@ -103,10 +97,12 @@ export function CardDescription({ className, ...rest }: CardDescriptionProps) {
 }
 
 export function CardAction({ className, ...rest }: CardActionProps) {
+  const { slots } = useCard();
+
   return (
     <ark.div
       {...rest}
-      className={cardActionVariants({ className })}
+      className={slots.action({ className })}
       data-part="action"
       data-scope="card"
     />
@@ -114,10 +110,12 @@ export function CardAction({ className, ...rest }: CardActionProps) {
 }
 
 export function CardContent({ className, ...rest }: CardContentProps) {
+  const { slots } = useCard();
+
   return (
     <ark.div
       {...rest}
-      className={cardContentVariants({ className })}
+      className={slots.content({ className })}
       data-part="content"
       data-scope="card"
     />
@@ -125,10 +123,12 @@ export function CardContent({ className, ...rest }: CardContentProps) {
 }
 
 export function CardFooter({ className, ...rest }: CardFooterProps) {
+  const { slots } = useCard();
+
   return (
     <ark.div
       {...rest}
-      className={cardFooterVariants({ className })}
+      className={slots.footer({ className })}
       data-part="footer"
       data-scope="card"
     />

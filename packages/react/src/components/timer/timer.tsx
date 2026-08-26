@@ -1,17 +1,10 @@
 import { ark } from "@ark-ui/react/factory";
 import { Timer as TimerPrimitive, useTimerContext } from "@ark-ui/react/timer";
-import {
-  timerAreaVariants,
-  timerControlVariants,
-  timerItemGroupVariants,
-  timerItemLabelVariants,
-  timerItemVariants,
-  timerSeparatorVariants,
-  timerVariants,
-} from "@pisagor/styles/ui/timer";
+import { timerVariants } from "@pisagor/styles/ui/timer";
 import type { ComponentProps } from "react";
-import { Fragment } from "react";
+import { Fragment, useMemo } from "react";
 import type { WithTestId } from "../../internal/types";
+import { TimerContext, useTimer } from "./timer.context";
 
 // #region Types
 type TimerUnit = "hours" | "minutes" | "seconds";
@@ -57,34 +50,40 @@ export function TimerRoot({
   testId,
   ...rest
 }: TimerRootProps) {
+  const slots = useMemo(() => timerVariants(), []);
+
   return (
-    <TimerPrimitive.Root {...rest} className={timerVariants({ className })} data-testid={testId}>
-      {units && (
-        <TimerArea>
-          {units.map((unit, index) => (
-            <Fragment key={unit}>
-              {index > 0 && <TimerSeparator />}
-              <TimerItemGroup>
-                <TimerItem type={unit} />
-                <TimerItemLabel>{unit}</TimerItemLabel>
-              </TimerItemGroup>
-            </Fragment>
-          ))}
-        </TimerArea>
-      )}
-      {isControlsVisible && (
-        <TimerControl>
-          <TimerPlay />
-          <TimerReset />
-        </TimerControl>
-      )}
-      {children}
-    </TimerPrimitive.Root>
+    <TimerContext value={{ slots }}>
+      <TimerPrimitive.Root {...rest} className={slots.base({ className })} data-testid={testId}>
+        {units && (
+          <TimerArea>
+            {units.map((unit, index) => (
+              <Fragment key={unit}>
+                {index > 0 && <TimerSeparator />}
+                <TimerItemGroup>
+                  <TimerItem type={unit} />
+                  <TimerItemLabel>{unit}</TimerItemLabel>
+                </TimerItemGroup>
+              </Fragment>
+            ))}
+          </TimerArea>
+        )}
+        {isControlsVisible && (
+          <TimerControl>
+            <TimerPlay />
+            <TimerReset />
+          </TimerControl>
+        )}
+        {children}
+      </TimerPrimitive.Root>
+    </TimerContext>
   );
 }
 
 export function TimerArea({ className, ...rest }: TimerAreaProps) {
-  return <TimerPrimitive.Area {...rest} className={timerAreaVariants({ className })} />;
+  const { slots } = useTimer();
+
+  return <TimerPrimitive.Area {...rest} className={slots.area({ className })} />;
 }
 
 export function TimerItemGroup({
@@ -92,10 +91,12 @@ export function TimerItemGroup({
   className,
   ...rest
 }: TimerItemGroupProps) {
+  const { slots } = useTimer();
+
   return (
     <ark.div
       {...rest}
-      className={timerItemGroupVariants({ className })}
+      className={slots.itemGroup({ className })}
       data-orientation={orientation}
       data-part="item-group"
       data-scope="timer"
@@ -104,14 +105,18 @@ export function TimerItemGroup({
 }
 
 export function TimerItem({ className, ...rest }: TimerItemProps) {
-  return <TimerPrimitive.Item {...rest} className={timerItemVariants({ className })} />;
+  const { slots } = useTimer();
+
+  return <TimerPrimitive.Item {...rest} className={slots.item({ className })} />;
 }
 
 export function TimerItemLabel({ className, ...rest }: TimerItemLabelProps) {
+  const { slots } = useTimer();
+
   return (
     <ark.div
       {...rest}
-      className={timerItemLabelVariants({ className })}
+      className={slots.itemLabel({ className })}
       data-part="item-label"
       data-scope="timer"
     />
@@ -119,15 +124,19 @@ export function TimerItemLabel({ className, ...rest }: TimerItemLabelProps) {
 }
 
 export function TimerSeparator({ className, children, ...rest }: TimerSeparatorProps) {
+  const { slots } = useTimer();
+
   return (
-    <TimerPrimitive.Separator {...rest} className={timerSeparatorVariants({ className })}>
+    <TimerPrimitive.Separator {...rest} className={slots.separator({ className })}>
       {children ?? ":"}
     </TimerPrimitive.Separator>
   );
 }
 
 export function TimerControl({ className, ...rest }: TimerControlProps) {
-  return <TimerPrimitive.Control {...rest} className={timerControlVariants({ className })} />;
+  const { slots } = useTimer();
+
+  return <TimerPrimitive.Control {...rest} className={slots.control({ className })} />;
 }
 
 export function TimerActionTrigger(props: TimerActionTriggerProps) {

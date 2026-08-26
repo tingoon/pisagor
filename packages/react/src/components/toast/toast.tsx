@@ -12,16 +12,13 @@ import {
   WarningIcon,
   XIcon,
 } from "@phosphor-icons/react";
-import {
-  type ToastItemSlots,
-  toasterVariants,
-  toastInlineVariants,
-  toastItemVariants,
-} from "@pisagor/styles/ui/toast";
+import { type ToastItemSlots, toasterVariants, toastItemVariants } from "@pisagor/styles/ui/toast";
 import type { ComponentProps, CSSProperties, ReactNode } from "react";
+import { useMemo } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { Button } from "../button";
 import { Spinner } from "../spinner";
+import { ToastItemContext, useToastItem } from "./toast.context";
 
 // #region Types
 export type ToastTitleProps = ComponentProps<typeof ToastPrimitive.Title>;
@@ -101,9 +98,20 @@ const TOAST_ICONS = {
   warning: <WarningIcon />,
 } as const;
 
-export function ToastItem({
+function ToastItemRoot({ className, children, ...rest }: ToastItemRootProps) {
+  const slots = useMemo(() => toastItemVariants(), []);
+
+  return (
+    <ToastItemContext value={{ slots }}>
+      <ToastPrimitive.Root {...rest} className={slots.base({ className })}>
+        {children}
+      </ToastPrimitive.Root>
+    </ToastItemContext>
+  );
+}
+
+function ToastItemContent({
   toast: toastData,
-  className,
   classNames,
   iconProps,
   titleProps,
@@ -111,14 +119,13 @@ export function ToastItem({
   actionsProps,
   actionTriggerProps,
   closeTriggerProps,
-  ...rest
-}: ToastItemProps) {
-  const slots = toastItemVariants();
+}: Omit<ToastItemProps, keyof ToastItemRootProps> & Pick<ToastItemProps, "toast">) {
+  const { slots } = useToastItem();
   const ToastIcon = toastData.type ? TOAST_ICONS[toastData.type as keyof typeof TOAST_ICONS] : null;
   const isExplicitClosable = toastData.closable === false;
 
   return (
-    <ToastPrimitive.Root {...rest} className={slots.base({ className: className })}>
+    <>
       <div className={slots.content({ className: classNames?.content })}>
         <div
           {...iconProps}
@@ -165,7 +172,7 @@ export function ToastItem({
           <ToastPrimitive.CloseTrigger {...closeTriggerProps} asChild>
             <Button
               aria-label="Close"
-              className={toastInlineVariants()}
+              className={slots.close({ className: classNames?.close })}
               size="icon-xs"
               variant="ghost"
             >
@@ -174,7 +181,35 @@ export function ToastItem({
           </ToastPrimitive.CloseTrigger>
         )}
       </div>
-    </ToastPrimitive.Root>
+    </>
+  );
+}
+
+export function ToastItem({
+  toast: toastData,
+  className,
+  classNames,
+  iconProps,
+  titleProps,
+  descriptionProps,
+  actionsProps,
+  actionTriggerProps,
+  closeTriggerProps,
+  ...rest
+}: ToastItemProps) {
+  return (
+    <ToastItemRoot {...rest} className={className}>
+      <ToastItemContent
+        actionsProps={actionsProps}
+        actionTriggerProps={actionTriggerProps}
+        classNames={classNames}
+        closeTriggerProps={closeTriggerProps}
+        descriptionProps={descriptionProps}
+        iconProps={iconProps}
+        titleProps={titleProps}
+        toast={toastData}
+      />
+    </ToastItemRoot>
   );
 }
 // #endregion

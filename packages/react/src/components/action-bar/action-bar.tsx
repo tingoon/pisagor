@@ -3,14 +3,7 @@ import { ark } from "@ark-ui/react/factory";
 import { Presence } from "@ark-ui/react/presence";
 import { useUncontrolled } from "@mantine/hooks";
 import { XIcon } from "@phosphor-icons/react";
-import {
-  actionBarCloseVariants,
-  actionBarContentVariants,
-  actionBarInlineVariants,
-  actionBarPositionerVariants,
-  actionBarSeparatorVariants,
-  actionBarValueVariants,
-} from "@pisagor/styles/ui/action-bar";
+import { actionBarVariants } from "@pisagor/styles/ui/action-bar";
 import { useHotkey } from "@tanstack/react-hotkeys";
 import type { ComponentProps, MouseEvent, PropsWithChildren, ReactNode } from "react";
 import { useCallback, useMemo } from "react";
@@ -92,7 +85,7 @@ export function ActionBarRoot({
   open,
   defaultOpen = false,
   closeOnEscape = true,
-  positioning,
+  positioning: propPositioning,
   lazyMount = true,
   unmountOnExit = true,
   onOpenChange,
@@ -128,17 +121,34 @@ export function ActionBarRoot({
     { enabled: isOpen && closeOnEscape },
   );
 
+  const positioning = useMemo(
+    () => ({
+      ...defaultPositioning,
+      ...propPositioning,
+    }),
+    [propPositioning],
+  );
+
+  const slots = useMemo(
+    () =>
+      actionBarVariants({
+        placement: positioning.placement,
+      }),
+    [positioning.placement],
+  );
+
   const context = useMemo(
     () => ({
       isOpen,
       lazyMount,
       onClose: handleClose,
       onOpen: handleOpen,
-      positioning: { ...defaultPositioning, ...positioning },
+      positioning,
+      slots,
       testId,
       unmountOnExit,
     }),
-    [handleClose, handleOpen, isOpen, lazyMount, testId, unmountOnExit, positioning],
+    [handleClose, handleOpen, isOpen, lazyMount, positioning, slots, testId, unmountOnExit],
   );
 
   const hasPreset = count !== undefined || (actions && actions.length > 0);
@@ -202,7 +212,7 @@ export function ActionBarContent({
   className,
   ...rest
 }: ActionBarContentProps) {
-  const { isOpen, lazyMount, unmountOnExit, positioning, testId } = useActionBar();
+  const { isOpen, lazyMount, unmountOnExit, positioning, slots, testId } = useActionBar();
 
   const placement = positioning.placement;
   const gutter = positioning.gutter;
@@ -211,7 +221,7 @@ export function ActionBarContent({
     <Portal>
       <Presence asChild lazyMount={lazyMount} present={isOpen} unmountOnExit={unmountOnExit}>
         <ark.div
-          className={actionBarPositionerVariants({ placement })}
+          className={slots.positioner({ placement })}
           data-part="positioner"
           data-placement={placement}
           data-scope="action-bar"
@@ -220,7 +230,7 @@ export function ActionBarContent({
           <ark.div
             {...rest}
             aria-labelledby={ariaLabelledby}
-            className={actionBarContentVariants({ className })}
+            className={slots.content({ className })}
             data-part="content"
             data-scope="action-bar"
             data-testid={testId}
@@ -233,10 +243,12 @@ export function ActionBarContent({
 }
 
 export function ActionBarSeparator({ className, ...rest }: ActionBarSeparatorProps) {
+  const { slots } = useActionBar();
+
   return (
     <Separator
       {...rest}
-      className={actionBarSeparatorVariants({ className })}
+      className={slots.separator({ className })}
       dataPart="separator"
       dataScope="action-bar"
       orientation="vertical"
@@ -245,7 +257,7 @@ export function ActionBarSeparator({ className, ...rest }: ActionBarSeparatorPro
 }
 
 export function ActionBarClose({ className, onClick, ...rest }: ActionBarCloseProps) {
-  const { onClose, isOpen } = useActionBar();
+  const { onClose, isOpen, slots } = useActionBar();
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
     onClose?.();
@@ -256,7 +268,7 @@ export function ActionBarClose({ className, onClick, ...rest }: ActionBarClosePr
     <ark.button
       {...rest}
       aria-label="Close"
-      className={actionBarCloseVariants({ className })}
+      className={slots.close({ className })}
       data-part="close"
       data-scope="action-bar"
       data-state={isOpen ? "open" : "closed"}
@@ -273,10 +285,12 @@ export function ActionBarValue({
   children,
   ...rest
 }: ActionBarValueProps) {
+  const { slots } = useActionBar();
+
   return (
     <Badge
       {...rest}
-      className={actionBarValueVariants({ className })}
+      className={slots.value({ className })}
       data-part="value"
       data-scope="action-bar"
       variant="secondary"
@@ -287,7 +301,9 @@ export function ActionBarValue({
 }
 
 export function ActionBarBody({ className, ...rest }: ActionBarBodyProps) {
-  return <ark.div {...rest} className={actionBarInlineVariants({ className })} />;
+  const { slots } = useActionBar();
+
+  return <ark.div {...rest} className={slots.body({ className })} />;
 }
 // #endregion
 

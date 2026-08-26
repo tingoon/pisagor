@@ -1,21 +1,12 @@
 import { TagsInput as TagsInputPrimitive, useTagsInputContext } from "@ark-ui/react/tags-input";
 import { XIcon } from "@phosphor-icons/react";
-import {
-  tagsInputInline2Variants,
-  tagsInputInline3Variants,
-  tagsInputInline4Variants,
-  tagsInputInline5Variants,
-  tagsInputInlineVariants,
-  tagsInputItemPreviewVariants,
-  tagsInputItemTextVariants,
-  tagsInputItemVariants,
-  tagsInputRootProviderVariants,
-  tagsInputVariants,
-} from "@pisagor/styles/ui/tags-input";
+import { tagsInputVariants } from "@pisagor/styles/ui/tags-input";
 import type { ComponentProps } from "react";
+import { useMemo } from "react";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { WithTestId } from "../../internal/types";
 import { InputGroup, type InputGroupProps } from "../input-group";
+import { TagsInputSlotsContext, useTagsInput } from "./tags-input.context";
 
 // #region Types
 export type TagsInputRootProps = Omit<
@@ -99,31 +90,35 @@ export function TagsInputRoot({
   testId,
   ...rest
 }: TagsInputProps) {
-  return (
-    <FormControlVariantProvider value={variant}>
-      <TagsInputPrimitive.Root
-        {...rest}
-        className={tagsInputVariants({ className })}
-        data-size={size}
-        data-testid={testId}
-        editable={editable}
-        onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
-      >
-        <TagsInputControl clearable={clearable} variant={variant}>
-          <TagsInputPrimitive.Context>
-            {(api) =>
-              api.value.map((value, index) => (
-                <TagsInputItem index={index} key={value} value={value} />
-              ))
-            }
-          </TagsInputPrimitive.Context>
-          {children}
-          <TagsInputInput placeholder={placeholder} />
-        </TagsInputControl>
+  const slots = useMemo(() => tagsInputVariants(), []);
 
-        <TagsInputPrimitive.HiddenInput tabIndex={tabIndex} />
-      </TagsInputPrimitive.Root>
-    </FormControlVariantProvider>
+  return (
+    <TagsInputSlotsContext value={{ slots }}>
+      <FormControlVariantProvider value={variant}>
+        <TagsInputPrimitive.Root
+          {...rest}
+          className={slots.base({ className })}
+          data-size={size}
+          data-testid={testId}
+          editable={editable}
+          onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
+        >
+          <TagsInputControl clearable={clearable} variant={variant}>
+            <TagsInputPrimitive.Context>
+              {(api) =>
+                api.value.map((value, index) => (
+                  <TagsInputItem index={index} key={value} value={value} />
+                ))
+              }
+            </TagsInputPrimitive.Context>
+            {children}
+            <TagsInputInput placeholder={placeholder} />
+          </TagsInputControl>
+
+          <TagsInputPrimitive.HiddenInput tabIndex={tabIndex} />
+        </TagsInputPrimitive.Root>
+      </FormControlVariantProvider>
+    </TagsInputSlotsContext>
   );
 }
 
@@ -136,15 +131,11 @@ export function TagsInputControl({
   ...rest
 }: TagsInputControlProps) {
   const api = useTagsInputContext();
+  const { slots } = useTagsInput();
 
   return (
     <TagsInputPrimitive.Control asChild>
-      <InputGroup
-        {...rest}
-        className={tagsInputInlineVariants({ className })}
-        size={size}
-        variant={variant}
-      >
+      <InputGroup {...rest} className={slots.control({ className })} size={size} variant={variant}>
         {children}
         {clearable && api.value.length > 0 && <TagsInputClearTrigger aria-label="Clear all tags" />}
       </InputGroup>
@@ -158,8 +149,10 @@ export function TagsInputItem({
   children,
   ...rest
 }: TagsInputItemProps) {
+  const { slots } = useTagsInput();
+
   return (
-    <TagsInputPrimitive.Item {...rest} className={tagsInputItemVariants({ className })}>
+    <TagsInputPrimitive.Item {...rest} className={slots.item({ className })}>
       <TagsInputItemPreview>
         <TagsInputItemText>{children}</TagsInputItemText>
         {showDelete && <TagsInputItemDeleteTrigger />}
@@ -170,18 +163,15 @@ export function TagsInputItem({
 }
 
 export function TagsInputItemPreview({ className, ...rest }: TagsInputItemPreviewProps) {
-  return (
-    <TagsInputPrimitive.ItemPreview
-      {...rest}
-      className={tagsInputItemPreviewVariants({ className })}
-    />
-  );
+  const { slots } = useTagsInput();
+
+  return <TagsInputPrimitive.ItemPreview {...rest} className={slots.itemPreview({ className })} />;
 }
 
 export function TagsInputItemText({ className, ...rest }: TagsInputItemTextProps) {
-  return (
-    <TagsInputPrimitive.ItemText {...rest} className={tagsInputItemTextVariants({ className })} />
-  );
+  const { slots } = useTagsInput();
+
+  return <TagsInputPrimitive.ItemText {...rest} className={slots.itemText({ className })} />;
 }
 
 export function TagsInputItemDeleteTrigger({
@@ -189,11 +179,13 @@ export function TagsInputItemDeleteTrigger({
   children,
   ...rest
 }: TagsInputItemDeleteTriggerProps) {
+  const { slots } = useTagsInput();
+
   return (
     <TagsInputPrimitive.ItemDeleteTrigger {...rest} asChild>
       <InputGroup.Button
         aria-label="Remove tag"
-        className={tagsInputInline2Variants({ className })}
+        className={slots.itemDelete({ className })}
         size="icon-xs"
         variant="ghost"
       >
@@ -204,17 +196,21 @@ export function TagsInputItemDeleteTrigger({
 }
 
 export function TagsInputItemInput(props: TagsInputItemInputProps) {
+  const { slots } = useTagsInput();
+
   return (
     <TagsInputPrimitive.ItemInput asChild {...props}>
-      <InputGroup.Input className={tagsInputInline3Variants()} />
+      <InputGroup.Input className={slots.itemInput()} />
     </TagsInputPrimitive.ItemInput>
   );
 }
 
 export function TagsInputInput(props: TagsInputInputProps) {
+  const { slots } = useTagsInput();
+
   return (
     <TagsInputPrimitive.Input asChild {...props}>
-      <InputGroup.Input className={tagsInputInline4Variants()} />
+      <InputGroup.Input className={slots.input()} />
     </TagsInputPrimitive.Input>
   );
 }
@@ -224,10 +220,12 @@ export function TagsInputClearTrigger({
   children,
   ...rest
 }: TagsInputClearTriggerProps) {
+  const { slots } = useTagsInput();
+
   return (
     <TagsInputPrimitive.ClearTrigger {...rest} asChild>
       <InputGroup.Button
-        className={tagsInputInline5Variants({ className })}
+        className={slots.clearTrigger({ className })}
         size="icon-xs"
         variant="ghost"
       >
@@ -245,16 +243,20 @@ export function TagsInputRootProvider({
   children,
   ...rest
 }: TagsInputRootProviderProps) {
+  const slots = useMemo(() => tagsInputVariants(), []);
+
   return (
-    <TagsInputPrimitive.RootProvider
-      {...rest}
-      className={tagsInputRootProviderVariants({ className })}
-      data-size={size}
-      data-testid={testId}
-    >
-      <TagsInputControl clearable={clearable}>{children}</TagsInputControl>
-      <TagsInputPrimitive.HiddenInput />
-    </TagsInputPrimitive.RootProvider>
+    <TagsInputSlotsContext value={{ slots }}>
+      <TagsInputPrimitive.RootProvider
+        {...rest}
+        className={slots.base({ className })}
+        data-size={size}
+        data-testid={testId}
+      >
+        <TagsInputControl clearable={clearable}>{children}</TagsInputControl>
+        <TagsInputPrimitive.HiddenInput />
+      </TagsInputPrimitive.RootProvider>
+    </TagsInputSlotsContext>
   );
 }
 // #endregion

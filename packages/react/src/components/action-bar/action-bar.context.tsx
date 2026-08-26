@@ -1,3 +1,4 @@
+import type { ActionBarVariants } from "@pisagor/styles/ui/action-bar";
 import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils";
 
@@ -27,6 +28,8 @@ export interface ActionBarContextValue extends WithTestId {
   onOpen?: () => void;
   /** The positioning of the action bar. */
   positioning: ActionBarPositioning;
+  /** Slot class recipes from `actionBarVariants`. */
+  slots: ActionBarVariants;
   /** The function to call when the action bar is mounted */
   unmountOnExit?: boolean;
 }

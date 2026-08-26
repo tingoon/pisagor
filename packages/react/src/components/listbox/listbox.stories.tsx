@@ -70,18 +70,20 @@ export const DisabledItem = meta.story({
       ],
     });
     return (
-      <Item className="p-1" variant="outline">
-        <Listbox.Root collection={collection}>
-          <Listbox.Content>
-            {collection.items.map((item) => (
-              <Listbox.Item item={item} key={item.value}>
-                <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                <Listbox.ItemIndicator />
-              </Listbox.Item>
-            ))}
-          </Listbox.Content>
-        </Listbox.Root>
-      </Item>
+      <Item.Group>
+        <Item className="p-1" variant="outline">
+          <Listbox.Root collection={collection}>
+            <Listbox.Content>
+              {collection.items.map((item) => (
+                <Listbox.Item item={item} key={item.value}>
+                  <Listbox.ItemText>{item.label}</Listbox.ItemText>
+                  <Listbox.ItemIndicator />
+                </Listbox.Item>
+              ))}
+            </Listbox.Content>
+          </Listbox.Root>
+        </Item>
+      </Item.Group>
     );
   },
 });
@@ -114,20 +116,22 @@ export const Grid = meta.story({
       ],
     });
     return (
-      <Item className="p-1" variant="outline">
-        <Listbox.Root collection={collection}>
-          <Listbox.Content
-            className="grid grid-cols-[repeat(var(--column-count),1fr)] gap-1"
-            style={{ "--column-count": collection.columnCount } as CSSProperties}
-          >
-            {collection.items.map((item) => (
-              <Listbox.Item item={item} key={item.value}>
-                <Listbox.ItemText className="text-center text-xl">{item.label}</Listbox.ItemText>
-              </Listbox.Item>
-            ))}
-          </Listbox.Content>
-        </Listbox.Root>
-      </Item>
+      <Item.Group>
+        <Item className="p-1" variant="outline">
+          <Listbox.Root collection={collection}>
+            <Listbox.Content
+              className="grid grid-cols-[repeat(var(--column-count),1fr)] gap-1"
+              style={{ "--column-count": collection.columnCount } as CSSProperties}
+            >
+              {collection.items.map((item) => (
+                <Listbox.Item item={item} key={item.value}>
+                  <Listbox.ItemText className="text-center text-xl">{item.label}</Listbox.ItemText>
+                </Listbox.Item>
+              ))}
+            </Listbox.Content>
+          </Listbox.Root>
+        </Item>
+      </Item.Group>
     );
   },
 });
@@ -144,23 +148,25 @@ export const Grouping = meta.story({
       ],
     });
     return (
-      <Item className="p-1" variant="outline">
-        <Listbox.Root collection={collection}>
-          <Listbox.Content>
-            {collection.group().map(([region, items]) => (
-              <Listbox.ItemGroup key={region}>
-                <Listbox.ItemGroupLabel>{region}</Listbox.ItemGroupLabel>
-                {items.map((item) => (
-                  <Listbox.Item item={item} key={item.value}>
-                    <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                    <Listbox.ItemIndicator />
-                  </Listbox.Item>
-                ))}
-              </Listbox.ItemGroup>
-            ))}
-          </Listbox.Content>
-        </Listbox.Root>
-      </Item>
+      <Item.Group>
+        <Item className="p-1" variant="outline">
+          <Listbox.Root collection={collection}>
+            <Listbox.Content>
+              {collection.group().map(([region, items]) => (
+                <Listbox.ItemGroup key={region}>
+                  <Listbox.ItemGroupLabel>{region}</Listbox.ItemGroupLabel>
+                  {items.map((item) => (
+                    <Listbox.Item item={item} key={item.value}>
+                      <Listbox.ItemText>{item.label}</Listbox.ItemText>
+                      <Listbox.ItemIndicator />
+                    </Listbox.Item>
+                  ))}
+                </Listbox.ItemGroup>
+              ))}
+            </Listbox.Content>
+          </Listbox.Root>
+        </Item>
+      </Item.Group>
     );
   },
 });
@@ -209,18 +215,20 @@ export const Disabled = meta.story({
       ],
     });
     return (
-      <Item className="p-1" variant="outline">
-        <Listbox.Root collection={collection} disabled>
-          <Listbox.Content>
-            {collection.items.map((item) => (
-              <Listbox.Item item={item} key={item.value}>
-                <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                <Listbox.ItemIndicator />
-              </Listbox.Item>
-            ))}
-          </Listbox.Content>
-        </Listbox.Root>
-      </Item>
+      <Item.Group>
+        <Item className="p-1" variant="outline">
+          <Listbox.Root collection={collection} disabled>
+            <Listbox.Content>
+              {collection.items.map((item) => (
+                <Listbox.Item item={item} key={item.value}>
+                  <Listbox.ItemText>{item.label}</Listbox.ItemText>
+                  <Listbox.ItemIndicator />
+                </Listbox.Item>
+              ))}
+            </Listbox.Content>
+          </Listbox.Root>
+        </Item>
+      </Item.Group>
     );
   },
 });
@@ -301,18 +309,20 @@ export const SelectionExtended = meta.story({
         <p className="text-center text-muted-foreground text-sm">
           Hold <Kbd>⌘</Kbd> or <Kbd>Ctrl</Kbd> to select multiple
         </p>
-        <Item className="w-full p-1" variant="outline">
-          <Listbox.Root collection={collection} selectionMode="extended">
-            <Listbox.Content>
-              {collection.items.map((item) => (
-                <Listbox.Item item={item} key={item.value}>
-                  <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                  <Listbox.ItemIndicator />
-                </Listbox.Item>
-              ))}
-            </Listbox.Content>
-          </Listbox.Root>
-        </Item>
+        <Item.Group>
+          <Item className="w-full p-1" variant="outline">
+            <Listbox.Root collection={collection} selectionMode="extended">
+              <Listbox.Content>
+                {collection.items.map((item) => (
+                  <Listbox.Item item={item} key={item.value}>
+                    <Listbox.ItemText>{item.label}</Listbox.ItemText>
+                    <Listbox.ItemIndicator />
+                  </Listbox.Item>
+                ))}
+              </Listbox.Content>
+            </Listbox.Root>
+          </Item>
+        </Item.Group>
       </div>
     );
   },
@@ -328,18 +338,20 @@ export const SelectionMultiple = meta.story({
       ],
     });
     return (
-      <Item className="p-1" variant="outline">
-        <Listbox.Root collection={collection} selectionMode="multiple">
-          <Listbox.Content>
-            {collection.items.map((item) => (
-              <Listbox.Item item={item} key={item.value}>
-                <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                <Listbox.ItemIndicator />
-              </Listbox.Item>
-            ))}
-          </Listbox.Content>
-        </Listbox.Root>
-      </Item>
+      <Item.Group>
+        <Item className="p-1" variant="outline">
+          <Listbox.Root collection={collection} selectionMode="multiple">
+            <Listbox.Content>
+              {collection.items.map((item) => (
+                <Listbox.Item item={item} key={item.value}>
+                  <Listbox.ItemText>{item.label}</Listbox.ItemText>
+                  <Listbox.ItemIndicator />
+                </Listbox.Item>
+              ))}
+            </Listbox.Content>
+          </Listbox.Root>
+        </Item>
+      </Item.Group>
     );
   },
 });
@@ -358,52 +370,54 @@ export const SelectionNone = meta.story({
       ],
     });
     return (
-      <Item className="p-1" variant="outline">
-        <Listbox.Root
-          aria-label="File actions"
-          className="w-full"
-          collection={collection}
-          selectionMode="none"
-        >
-          <Listbox.Content>
-            <Listbox.ItemGroup heading="Actions">
-              <Listbox.Item item={collection.items[0]}>
-                <div className="flex h-8 items-start justify-start">
-                  <PlusSquareIcon />
-                </div>
-                <div className="flex min-w-0 flex-1 flex-col">
-                  <Listbox.ItemText>New file</Listbox.ItemText>
-                  <span className="text-muted-foreground text-xs">Create a new file</span>
-                </div>
-                <Listbox.Shortcut>⌘N</Listbox.Shortcut>
-              </Listbox.Item>
-              <Listbox.Item item={collection.items[1]}>
-                <div className="flex h-8 items-start justify-start">
-                  <PencilSimpleIcon />
-                </div>
-                <div className="flex min-w-0 flex-1 flex-col">
-                  <Listbox.ItemText>Edit file</Listbox.ItemText>
-                  <span className="text-muted-foreground text-xs">Make changes</span>
-                </div>
-                <Listbox.Shortcut>⌘E</Listbox.Shortcut>
-              </Listbox.Item>
-            </Listbox.ItemGroup>
-            <Separator />
-            <Listbox.ItemGroup heading="Danger zone">
-              <Listbox.Item item={collection.items[2]} variant="destructive">
-                <div className="flex h-8 items-start justify-start">
-                  <TrashIcon />
-                </div>
-                <div className="flex min-w-0 flex-1 flex-col">
-                  <Listbox.ItemText>Delete file</Listbox.ItemText>
-                  <span className="text-muted-foreground text-xs">Move to trash</span>
-                </div>
-                <Listbox.Shortcut>⌘D</Listbox.Shortcut>
-              </Listbox.Item>
-            </Listbox.ItemGroup>
-          </Listbox.Content>
-        </Listbox.Root>
-      </Item>
+      <Item.Group>
+        <Item className="p-1" variant="outline">
+          <Listbox.Root
+            aria-label="File actions"
+            className="w-full"
+            collection={collection}
+            selectionMode="none"
+          >
+            <Listbox.Content>
+              <Listbox.ItemGroup heading="Actions">
+                <Listbox.Item item={collection.items[0]}>
+                  <div className="flex h-8 items-start justify-start">
+                    <PlusSquareIcon />
+                  </div>
+                  <div className="flex min-w-0 flex-1 flex-col">
+                    <Listbox.ItemText>New file</Listbox.ItemText>
+                    <span className="text-muted-foreground text-xs">Create a new file</span>
+                  </div>
+                  <Listbox.Shortcut>⌘N</Listbox.Shortcut>
+                </Listbox.Item>
+                <Listbox.Item item={collection.items[1]}>
+                  <div className="flex h-8 items-start justify-start">
+                    <PencilSimpleIcon />
+                  </div>
+                  <div className="flex min-w-0 flex-1 flex-col">
+                    <Listbox.ItemText>Edit file</Listbox.ItemText>
+                    <span className="text-muted-foreground text-xs">Make changes</span>
+                  </div>
+                  <Listbox.Shortcut>⌘E</Listbox.Shortcut>
+                </Listbox.Item>
+              </Listbox.ItemGroup>
+              <Separator />
+              <Listbox.ItemGroup heading="Danger zone">
+                <Listbox.Item item={collection.items[2]} variant="destructive">
+                  <div className="flex h-8 items-start justify-start">
+                    <TrashIcon />
+                  </div>
+                  <div className="flex min-w-0 flex-1 flex-col">
+                    <Listbox.ItemText>Delete file</Listbox.ItemText>
+                    <span className="text-muted-foreground text-xs">Move to trash</span>
+                  </div>
+                  <Listbox.Shortcut>⌘D</Listbox.Shortcut>
+                </Listbox.Item>
+              </Listbox.ItemGroup>
+            </Listbox.Content>
+          </Listbox.Root>
+        </Item>
+      </Item.Group>
     );
   },
 });
@@ -437,26 +451,28 @@ export const TransferList = meta.story({
 
     return (
       <div className="flex gap-2 max-sm:flex-col">
-        <Item className="w-full p-1" variant="outline">
-          <Listbox.Root
-            className="min-h-40"
-            collection={availableCollection}
-            onValueChange={(value) => setAvailableValue(Array.isArray(value) ? value : [value])}
-            selectionMode="multiple"
-            value={availableValue}
-          >
-            <Listbox.Content>
-              <Listbox.ItemGroup heading="Available">
-                {availableCollection.items.map((item) => (
-                  <Listbox.Item item={item} key={item.value}>
-                    <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                    <Listbox.ItemIndicator />
-                  </Listbox.Item>
-                ))}
-              </Listbox.ItemGroup>
-            </Listbox.Content>
-          </Listbox.Root>
-        </Item>
+        <Item.Group>
+          <Item className="w-full p-1" variant="outline">
+            <Listbox.Root
+              className="min-h-40"
+              collection={availableCollection}
+              onValueChange={(value) => setAvailableValue(Array.isArray(value) ? value : [value])}
+              selectionMode="multiple"
+              value={availableValue}
+            >
+              <Listbox.Content>
+                <Listbox.ItemGroup heading="Available">
+                  {availableCollection.items.map((item) => (
+                    <Listbox.Item item={item} key={item.value}>
+                      <Listbox.ItemText>{item.label}</Listbox.ItemText>
+                      <Listbox.ItemIndicator />
+                    </Listbox.Item>
+                  ))}
+                </Listbox.ItemGroup>
+              </Listbox.Content>
+            </Listbox.Root>
+          </Item>
+        </Item.Group>
         <div className="flex flex-row-reverse justify-center gap-2 sm:flex-col">
           <Button
             disabled={availableValue.length === 0}
@@ -475,26 +491,28 @@ export const TransferList = meta.story({
             <CaretLeftIcon />
           </Button>
         </div>
-        <Item className="w-full p-1" variant="outline">
-          <Listbox.Root
-            className="min-h-40"
-            collection={selectedCollection}
-            onValueChange={(value) => setSelectedValue(Array.isArray(value) ? value : [value])}
-            selectionMode="multiple"
-            value={selectedValue}
-          >
-            <Listbox.Content className="max-h-48 min-h-40">
-              <Listbox.ItemGroup heading="Selected">
-                {selectedCollection.items.map((item) => (
-                  <Listbox.Item item={item} key={item.value}>
-                    <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                    <Listbox.ItemIndicator />
-                  </Listbox.Item>
-                ))}
-              </Listbox.ItemGroup>
-            </Listbox.Content>
-          </Listbox.Root>
-        </Item>
+        <Item.Group>
+          <Item className="w-full p-1" variant="outline">
+            <Listbox.Root
+              className="min-h-40"
+              collection={selectedCollection}
+              onValueChange={(value) => setSelectedValue(Array.isArray(value) ? value : [value])}
+              selectionMode="multiple"
+              value={selectedValue}
+            >
+              <Listbox.Content className="max-h-48 min-h-40">
+                <Listbox.ItemGroup heading="Selected">
+                  {selectedCollection.items.map((item) => (
+                    <Listbox.Item item={item} key={item.value}>
+                      <Listbox.ItemText>{item.label}</Listbox.ItemText>
+                      <Listbox.ItemIndicator />
+                    </Listbox.Item>
+                  ))}
+                </Listbox.ItemGroup>
+              </Listbox.Content>
+            </Listbox.Root>
+          </Item>
+        </Item.Group>
       </div>
     );
   },
@@ -522,21 +540,23 @@ export const WithDescription = meta.story({
       ],
     });
     return (
-      <Item className="p-1" variant="outline">
-        <Listbox.Root collection={collection}>
-          <Listbox.Content>
-            {collection.items.map((item) => (
-              <Listbox.Item item={item} key={item.value}>
-                <div className="flex min-w-0 flex-1 flex-col gap-0.5">
-                  <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                  <span className="text-muted-foreground text-xs">{item.description}</span>
-                </div>
-                <Listbox.ItemIndicator />
-              </Listbox.Item>
-            ))}
-          </Listbox.Content>
-        </Listbox.Root>
-      </Item>
+      <Item.Group>
+        <Item className="p-1" variant="outline">
+          <Listbox.Root collection={collection}>
+            <Listbox.Content>
+              {collection.items.map((item) => (
+                <Listbox.Item item={item} key={item.value}>
+                  <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+                    <Listbox.ItemText>{item.label}</Listbox.ItemText>
+                    <span className="text-muted-foreground text-xs">{item.description}</span>
+                  </div>
+                  <Listbox.ItemIndicator />
+                </Listbox.Item>
+              ))}
+            </Listbox.Content>
+          </Listbox.Root>
+        </Item>
+      </Item.Group>
     );
   },
 });
@@ -559,29 +579,31 @@ export const WithFilter = meta.story({
     const isEmpty = collection.items.length === 0 && search;
 
     return (
-      <Item className="flex flex-col gap-2 p-1" variant="outline">
-        <Input
-          onChange={(e) => {
-            const value = e.target.value;
-            setSearch(value);
-            filter(value);
-          }}
-          placeholder="Search..."
-          value={search}
-        />
-        <Listbox.Root collection={collection}>
-          <Listbox.Content>
-            {collection.items.map((item) => (
-              <Listbox.Item item={item} key={item.value}>
-                <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                <Listbox.ItemIndicator />
-              </Listbox.Item>
-            ))}
+      <Item.Group>
+        <Item className="flex flex-col gap-2 p-1" variant="outline">
+          <Input
+            onChange={(e) => {
+              const value = e.target.value;
+              setSearch(value);
+              filter(value);
+            }}
+            placeholder="Search..."
+            value={search}
+          />
+          <Listbox.Root collection={collection}>
+            <Listbox.Content>
+              {collection.items.map((item) => (
+                <Listbox.Item item={item} key={item.value}>
+                  <Listbox.ItemText>{item.label}</Listbox.ItemText>
+                  <Listbox.ItemIndicator />
+                </Listbox.Item>
+              ))}
 
-            {isEmpty && <Listbox.Empty>No results found. Try a different search.</Listbox.Empty>}
-          </Listbox.Content>
-        </Listbox.Root>
-      </Item>
+              {isEmpty && <Listbox.Empty>No results found. Try a different search.</Listbox.Empty>}
+            </Listbox.Content>
+          </Listbox.Root>
+        </Item>
+      </Item.Group>
     );
   },
 });
@@ -596,19 +618,21 @@ export const WithIcon = meta.story({
       ],
     });
     return (
-      <Item className="p-1" variant="outline">
-        <Listbox.Root collection={collection}>
-          <Listbox.Content>
-            {collection.items.map((item) => (
-              <Listbox.Item item={item} key={item.value}>
-                {item.icon}
-                <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                <Listbox.ItemIndicator />
-              </Listbox.Item>
-            ))}
-          </Listbox.Content>
-        </Listbox.Root>
-      </Item>
+      <Item.Group>
+        <Item className="p-1" variant="outline">
+          <Listbox.Root collection={collection}>
+            <Listbox.Content>
+              {collection.items.map((item) => (
+                <Listbox.Item item={item} key={item.value}>
+                  {item.icon}
+                  <Listbox.ItemText>{item.label}</Listbox.ItemText>
+                  <Listbox.ItemIndicator />
+                </Listbox.Item>
+              ))}
+            </Listbox.Content>
+          </Listbox.Root>
+        </Item>
+      </Item.Group>
     );
   },
 });
@@ -690,22 +714,24 @@ export const Controlled = meta.story({
     return (
       <div className="flex flex-col gap-2">
         <p className="text-center text-muted-foreground text-sm">Selected the Large size</p>
-        <Item className="p-1" variant="outline">
-          <Listbox.Root
-            collection={collection}
-            onValueChange={(value) => setValue(Array.isArray(value) ? value : [value])}
-            value={value}
-          >
-            <Listbox.Content>
-              {collection.items.map((item) => (
-                <Listbox.Item item={item} key={item.value}>
-                  <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                  <Listbox.ItemIndicator />
-                </Listbox.Item>
-              ))}
-            </Listbox.Content>
-          </Listbox.Root>
-        </Item>
+        <Item.Group>
+          <Item className="p-1" variant="outline">
+            <Listbox.Root
+              collection={collection}
+              onValueChange={(value) => setValue(Array.isArray(value) ? value : [value])}
+              value={value}
+            >
+              <Listbox.Content>
+                {collection.items.map((item) => (
+                  <Listbox.Item item={item} key={item.value}>
+                    <Listbox.ItemText>{item.label}</Listbox.ItemText>
+                    <Listbox.ItemIndicator />
+                  </Listbox.Item>
+                ))}
+              </Listbox.Content>
+            </Listbox.Root>
+          </Item>
+        </Item.Group>
         <p className="text-center text-muted-foreground text-sm">{isLarge ? "✅" : "❌"}</p>
       </div>
     );

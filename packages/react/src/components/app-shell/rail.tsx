@@ -1,4 +1,3 @@
-import { appShellRailItemVariants, appShellRailVariants } from "@pisagor/styles/ui/app-shell";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { WithTestId } from "../../internal/types";
@@ -68,7 +67,7 @@ export function AppShellRail({
   style,
   ...rest
 }: AppShellRailProps) {
-  const { railStates } = useAppShell();
+  const { railStates, slots } = useAppShell();
   const regionVar = regionVarFor(placement, "rail");
   const railState = useRegisteredRailState({
     activeRailId: activeRailIdProp,
@@ -85,9 +84,9 @@ export function AppShellRail({
       <aside
         {...rest}
         className={cn(
-          appShellRailVariants(),
+          slots.rail(),
           placement === "start" ? "border-e" : "border-s",
-          regionPositionClasses(position, "column"),
+          regionPositionClasses(slots, position, "column"),
           className,
         )}
         data-part="rail"
@@ -117,14 +116,14 @@ export function AppShellRailItem({
 }: AppShellRailItemProps) {
   const { activeRailId, placement: railPlacement, setActiveRailId } = useAppShellRail();
   const panelPlacement = panelPlacementProp ?? railPlacement;
-  const { panelStates } = useAppShell();
+  const { panelStates, slots } = useAppShell();
   const active = isActive ?? (railId !== undefined && activeRailId === railId);
 
   const button = (
     <Button
       {...rest}
       aria-current={active ? "page" : undefined}
-      className={appShellRailItemVariants({ className })}
+      className={slots.railItem({ className })}
       clickEffect={false}
       data-active={active}
       data-part="rail-item"

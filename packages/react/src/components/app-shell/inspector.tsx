@@ -1,12 +1,4 @@
 import { ArrowsInLineHorizontalIcon, ArrowsOutLineHorizontalIcon } from "@phosphor-icons/react";
-import {
-  appShellInline2Variants,
-  appShellInlineVariants,
-  appShellInspectorContentVariants,
-  appShellInspectorFooterVariants,
-  appShellInspectorHeaderVariants,
-  appShellInspectorVariants,
-} from "@pisagor/styles/ui/app-shell";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { useState } from "react";
@@ -101,7 +93,7 @@ export function AppShellInspector({
   style,
   ...rest
 }: AppShellInspectorProps) {
-  const { defaultInspectorResizableProps, inspectorStates } = useAppShell();
+  const { defaultInspectorResizableProps, inspectorStates, slots } = useAppShell();
   const resizableProps = mergeResizableProps(defaultInspectorResizableProps, resizablePropsProp);
   const side = useRegisteredSideState({
     controlledOpen: openProp,
@@ -121,9 +113,9 @@ export function AppShellInspector({
     <aside
       {...rest}
       className={cn(
-        appShellInspectorVariants(),
+        slots.inspector(),
         placement === "start" ? "border-e" : "border-s",
-        regionPositionClasses(position, "column", undefined, "inspector"),
+        regionPositionClasses(slots, position, "column", undefined, "inspector"),
         side.open ? "opacity-100" : "pointer-events-none opacity-0",
         className,
       )}
@@ -145,16 +137,18 @@ export function AppShellInspector({
           {...regionResizeCallbacks}
         />
       ) : null}
-      <div className={appShellInlineVariants()}>{children}</div>
+      <div className={slots.inline()}>{children}</div>
     </aside>
   );
 }
 
 export function AppShellInspectorHeader({ className, ...rest }: AppShellInspectorHeaderProps) {
+  const { slots } = useAppShell();
+
   return (
     <div
       {...rest}
-      className={appShellInspectorHeaderVariants({ className })}
+      className={slots.inspectorHeader({ className })}
       data-part="inspector-header"
       data-scope="app-shell"
     />
@@ -162,11 +156,13 @@ export function AppShellInspectorHeader({ className, ...rest }: AppShellInspecto
 }
 
 export function AppShellInspectorContent({ className, ...rest }: AppShellInspectorContentProps) {
+  const { slots } = useAppShell();
+
   return (
-    <ScrollArea className={appShellInline2Variants()}>
+    <ScrollArea className={slots.scrollArea()}>
       <div
         {...rest}
-        className={appShellInspectorContentVariants({ className })}
+        className={slots.inspectorContent({ className })}
         data-part="inspector-content"
         data-scope="app-shell"
       />
@@ -175,10 +171,12 @@ export function AppShellInspectorContent({ className, ...rest }: AppShellInspect
 }
 
 export function AppShellInspectorFooter({ className, ...rest }: AppShellInspectorFooterProps) {
+  const { slots } = useAppShell();
+
   return (
     <div
       {...rest}
-      className={appShellInspectorFooterVariants({ className })}
+      className={slots.inspectorFooter({ className })}
       data-part="inspector-footer"
       data-scope="app-shell"
     />

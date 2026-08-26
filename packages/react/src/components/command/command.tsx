@@ -3,22 +3,12 @@ import type { CollectionItem } from "@ark-ui/react/collection";
 import { Combobox as ComboboxPrimitive } from "@ark-ui/react/combobox";
 import { Dialog as DialogPrimitive } from "@ark-ui/react/dialog";
 import { MagnifyingGlassIcon } from "@phosphor-icons/react";
-import {
-  comboboxControlVariants,
-  commandContentVariants,
-  commandDialogContentVariants,
-  commandEmptyVariants,
-  commandFooterVariants,
-  commandInline2Variants,
-  commandInline3Variants,
-  commandInline4Variants,
-  commandInline5Variants,
-  commandInlineVariants,
-  commandListVariants,
-  commandSeparatorVariants,
-} from "@pisagor/styles/ui/command";
+import { comboboxVariants } from "@pisagor/styles/ui/combobox";
+import { commandVariants } from "@pisagor/styles/ui/command";
+import { dialogContentVariants } from "@pisagor/styles/ui/dialog";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
+import { useMemo } from "react";
 import {
   Combobox,
   type ComboboxEmptyProps,
@@ -27,19 +17,14 @@ import {
   type ComboboxItemProps,
   type ComboboxListProps,
   type ComboboxRootProps,
-  comboboxItemVariants,
   useComboboxRoot,
 } from "../combobox";
-import {
-  Dialog,
-  type DialogContentProps,
-  type DialogTriggerProps,
-  dialogContentVariants,
-} from "../dialog";
+import { Dialog, type DialogContentProps, type DialogTriggerProps } from "../dialog";
 import { DropdownMenu, type DropdownMenuShortcutProps } from "../dropdown-menu";
 import type { InputProps } from "../input";
 import { InputGroup } from "../input-group";
 import { Separator } from "../separator";
+import { CommandContext, useCommand } from "./command.context";
 
 // #region Types
 export interface CommandDialogContentProps extends DialogContentProps {
@@ -96,25 +81,29 @@ export function CommandDialogContent({
   children,
   ...rest
 }: CommandDialogContentProps) {
+  const slots = useMemo(() => commandVariants(), []);
+
   return (
-    <Portal>
-      <Dialog.Backdrop />
+    <CommandContext value={{ slots }}>
+      <Portal>
+        <Dialog.Backdrop />
 
-      <Dialog.Positioner>
-        <DialogPrimitive.Content
-          {...rest}
-          className={cn(commandDialogContentVariants(), dialogContentVariants({ size }), className)}
-        >
-          <Dialog.Header
-            className={commandInline3Variants()}
-            description={description}
-            title={title}
-          />
+        <Dialog.Positioner>
+          <DialogPrimitive.Content
+            {...rest}
+            className={cn(slots.dialogContent(), dialogContentVariants({ size }), className)}
+          >
+            <Dialog.Header
+              className={slots.dialogHeader()}
+              description={description}
+              title={title}
+            />
 
-          {children}
-        </DialogPrimitive.Content>
-      </Dialog.Positioner>
-    </Portal>
+            {children}
+          </DialogPrimitive.Content>
+        </Dialog.Positioner>
+      </Portal>
+    </CommandContext>
   );
 }
 
@@ -125,35 +114,42 @@ export function CommandRoot<T extends CollectionItem = CollectionItem>({
   testId,
   ...rest
 }: CommandProps<T>) {
+  const slots = useMemo(() => commandVariants(), []);
+
   return (
-    <Combobox.Root
-      {...rest}
-      className={commandInlineVariants({ className })}
-      closeOnSelect={false}
-      disableLayer
-      inputBehavior="autohighlight"
-      lazyMount={lazyMount}
-      loopFocus={false}
-      open
-      selectionBehavior="clear"
-      testId={testId}
-      unmountOnExit={unmountOnExit}
-    />
+    <CommandContext value={{ slots }}>
+      <Combobox.Root
+        {...rest}
+        className={slots.base({ className })}
+        closeOnSelect={false}
+        disableLayer
+        inputBehavior="autohighlight"
+        lazyMount={lazyMount}
+        loopFocus={false}
+        open
+        selectionBehavior="clear"
+        testId={testId}
+        unmountOnExit={unmountOnExit}
+      />
+    </CommandContext>
   );
 }
 
 export function CommandContent({ className, ...rest }: CommandContentProps) {
-  return <ComboboxPrimitive.Content {...rest} className={commandContentVariants({ className })} />;
+  const { slots } = useCommand();
+
+  return <ComboboxPrimitive.Content {...rest} className={slots.content({ className })} />;
 }
 
 export function CommandInput({ size, className, ...rest }: CommandInputProps) {
   const { testId } = useComboboxRoot() ?? {};
+  const { slots } = useCommand();
 
   return (
-    <ComboboxPrimitive.Control className={comboboxControlVariants()}>
-      <InputGroup {...rest} className={commandInline2Variants({ className })} size={size}>
+    <ComboboxPrimitive.Control className={slots.control()}>
+      <InputGroup {...rest} className={slots.input({ className })} size={size}>
         <InputGroup.Addon>
-          <MagnifyingGlassIcon aria-hidden className={commandInline4Variants()} />
+          <MagnifyingGlassIcon aria-hidden className={slots.inputIcon()} />
         </InputGroup.Addon>
         <ComboboxPrimitive.Input asChild>
           <InputGroup.Input autoFocus data-testid={testId} />
@@ -164,16 +160,20 @@ export function CommandInput({ size, className, ...rest }: CommandInputProps) {
 }
 
 export function CommandList({ className, ...rest }: CommandListProps) {
+  const { slots } = useCommand();
+
   return (
-    <div className={commandInline5Variants()}>
-      <Combobox.List {...rest} className={commandListVariants({ className })} />
+    <div className={slots.listWrapper()}>
+      <Combobox.List {...rest} className={slots.list({ className })} />
     </div>
   );
 }
 
 export function CommandEmpty({ className, children, ...rest }: ComboboxEmptyProps) {
+  const { slots } = useCommand();
+
   return (
-    <Combobox.Empty {...rest} className={commandEmptyVariants({ className })}>
+    <Combobox.Empty {...rest} className={slots.empty({ className })}>
       {children || "No results found. Try a different search."}
     </Combobox.Empty>
   );
@@ -191,17 +191,19 @@ export function CommandItem({ className, ...rest }: ComboboxItemProps) {
   return (
     <ComboboxPrimitive.Item
       {...rest}
-      className={comboboxItemVariants({ showIndicator: false }).base({ className })}
+      className={comboboxVariants({ showIndicator: false }).item({ className })}
       persistFocus
     />
   );
 }
 
 export function CommandSeparator({ className, ...rest }: CommandSeparatorProps) {
+  const { slots } = useCommand();
+
   return (
     <Separator
       {...rest}
-      className={commandSeparatorVariants({ className })}
+      className={slots.separator({ className })}
       dataPart="separator"
       dataScope="command"
     />
@@ -213,10 +215,12 @@ export function CommandShortcut(props: DropdownMenuShortcutProps) {
 }
 
 export function CommandFooter({ className, ...rest }: CommandFooterProps) {
+  const { slots } = useCommand();
+
   return (
     <div
       {...rest}
-      className={commandFooterVariants({ className })}
+      className={slots.footer({ className })}
       data-part="footer"
       data-scope="command"
     />

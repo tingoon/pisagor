@@ -1,23 +1,9 @@
 import { ark } from "@ark-ui/react/factory";
 import { Field as FieldPrimitive } from "@ark-ui/react/field";
 import { Fieldset as FieldsetPrimitive } from "@ark-ui/react/fieldset";
-import {
-  type FieldVariantProps,
-  fieldContentVariants,
-  fieldDescriptionVariants,
-  fieldErrorVariants,
-  fieldGroupVariants,
-  fieldHelperVariants,
-  fieldInlineVariants,
-  fieldLabelVariants,
-  fieldLegendVariants,
-  fieldRequiredIndicatorVariants,
-  fieldSeparatorVariants,
-  fieldSetVariants,
-  fieldTitleVariants,
-  fieldVariants,
-} from "@pisagor/styles/ui/field";
+import { type FieldVariantProps, fieldVariants } from "@pisagor/styles/ui/field";
 import type { ComponentProps } from "react";
+import { useMemo } from "react";
 import {
   formControlSeparatorVariants,
   shellVariantArgs,
@@ -25,6 +11,7 @@ import {
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
 import type { WithTestId } from "../../internal/types";
 import { Separator } from "../separator";
+import { FieldContext, useField } from "./field.context";
 
 // #region Types
 export type FieldRootProps = ComponentProps<typeof FieldPrimitive.Root> &
@@ -64,49 +51,74 @@ export function FieldRoot({
   orientation = "vertical",
   reverse = false,
   className,
+  children,
   testId,
   ...rest
 }: FieldRootProps) {
+  const slots = useMemo(() => fieldVariants({ orientation, reverse }), [orientation, reverse]);
+
   return (
-    <FieldPrimitive.Root
-      {...rest}
-      className={fieldVariants({ className, orientation, reverse })}
-      data-orientation={orientation}
-      data-testid={testId}
-    />
+    <FieldContext value={{ slots }}>
+      <FieldPrimitive.Root
+        {...rest}
+        className={slots.base({ className })}
+        data-orientation={orientation}
+        data-testid={testId}
+      >
+        {children}
+      </FieldPrimitive.Root>
+    </FieldContext>
   );
 }
 
-export function FieldSet({ className, ...rest }: FieldSetProps) {
-  return <FieldsetPrimitive.Root {...rest} className={fieldSetVariants({ className })} />;
+export function FieldSet({ className, children, ...rest }: FieldSetProps) {
+  const slots = useMemo(() => fieldVariants(), []);
+
+  return (
+    <FieldContext value={{ slots }}>
+      <FieldsetPrimitive.Root {...rest} className={slots.set({ className })}>
+        {children}
+      </FieldsetPrimitive.Root>
+    </FieldContext>
+  );
 }
 
 export function FieldLegend({ variant = "legend", className, ...rest }: FieldLegendProps) {
+  const { slots } = useField();
+
   return (
     <FieldsetPrimitive.Legend
       {...rest}
-      className={fieldLegendVariants({ className })}
+      className={slots.legend({ className })}
       data-variant={variant}
     />
   );
 }
 
-export function FieldGroup({ className, ...rest }: FieldGroupProps) {
+export function FieldGroup({ className, children, ...rest }: FieldGroupProps) {
+  const slots = useMemo(() => fieldVariants(), []);
+
   return (
-    <ark.div
-      {...rest}
-      className={fieldGroupVariants({ className })}
-      data-part="group"
-      data-scope="field"
-    />
+    <FieldContext value={{ slots }}>
+      <ark.div
+        {...rest}
+        className={slots.group({ className })}
+        data-part="group"
+        data-scope="field"
+      >
+        {children}
+      </ark.div>
+    </FieldContext>
   );
 }
 
 export function FieldContent({ className, ...rest }: FieldContentProps) {
+  const { slots } = useField();
+
   return (
     <ark.div
       {...rest}
-      className={fieldContentVariants({ className })}
+      className={slots.content({ className })}
       data-part="content"
       data-scope="field"
     />
@@ -114,7 +126,9 @@ export function FieldContent({ className, ...rest }: FieldContentProps) {
 }
 
 export function FieldLabel({ className, ...rest }: FieldLabelProps) {
-  return <FieldPrimitive.Label {...rest} className={fieldLabelVariants({ className })} />;
+  const { slots } = useField();
+
+  return <FieldPrimitive.Label {...rest} className={slots.label({ className })} />;
 }
 
 export function FieldRequiredIndicator({
@@ -122,11 +136,13 @@ export function FieldRequiredIndicator({
   children,
   ...rest
 }: FieldRequiredIndicatorProps) {
+  const { slots } = useField();
+
   return (
     <FieldPrimitive.RequiredIndicator
       {...rest}
       aria-hidden
-      className={fieldRequiredIndicatorVariants({ className })}
+      className={slots.requiredIndicator({ className })}
     >
       {children ?? "*"}
     </FieldPrimitive.RequiredIndicator>
@@ -134,10 +150,12 @@ export function FieldRequiredIndicator({
 }
 
 export function FieldTitle({ className, ...rest }: FieldTitleProps) {
+  const { slots } = useField();
+
   return (
     <ark.div
       {...rest}
-      className={fieldTitleVariants({ className })}
+      className={slots.title({ className })}
       data-part="title"
       data-scope="field"
     />
@@ -145,10 +163,12 @@ export function FieldTitle({ className, ...rest }: FieldTitleProps) {
 }
 
 export function FieldDescription({ className, ...rest }: FieldDescriptionProps) {
+  const { slots } = useField();
+
   return (
     <ark.p
       {...rest}
-      className={fieldDescriptionVariants({ className })}
+      className={slots.description({ className })}
       data-part="description"
       data-scope="field"
     />
@@ -156,18 +176,19 @@ export function FieldDescription({ className, ...rest }: FieldDescriptionProps) 
 }
 
 export function FieldSeparator({ children, className, ...rest }: FieldSeparatorProps) {
+  const { slots } = useField();
   const resolved = useFormControlVariant();
   const shellArgs = shellVariantArgs(resolved);
 
   return (
     <ark.div
       {...rest}
-      className={fieldSeparatorVariants({ className })}
+      className={slots.separator({ className })}
       data-content={!!children}
       data-part="separator"
       data-scope="field"
     >
-      <Separator className={fieldInlineVariants()} />
+      <Separator className={slots.inline()} />
 
       {!!children && (
         <span className={formControlSeparatorVariants({ ...shellArgs })}>{children}</span>
@@ -177,11 +198,15 @@ export function FieldSeparator({ children, className, ...rest }: FieldSeparatorP
 }
 
 export function FieldHelper({ className, ...rest }: FieldHelperProps) {
-  return <FieldPrimitive.HelperText {...rest} className={fieldHelperVariants({ className })} />;
+  const { slots } = useField();
+
+  return <FieldPrimitive.HelperText {...rest} className={slots.helper({ className })} />;
 }
 
 export function FieldError({ className, ...rest }: FieldErrorProps) {
-  return <FieldPrimitive.ErrorText {...rest} className={fieldErrorVariants({ className })} />;
+  const { slots } = useField();
+
+  return <FieldPrimitive.ErrorText {...rest} className={slots.error({ className })} />;
 }
 // #endregion
 

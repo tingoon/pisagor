@@ -1,8 +1,8 @@
-import { appShellInlineVariants } from "@pisagor/styles/ui/app-shell";
 import type { ReactNode } from "react";
 import { Button, type ButtonProps } from "../button";
 import { Swap } from "../swap";
 import type { AppShellPlacement } from "./app-shell.context";
+import { useAppShell } from "./app-shell.context";
 
 export function AppShellSideTrigger({
   "aria-label": ariaLabel,
@@ -31,6 +31,7 @@ export function AppShellSideTrigger({
   on?: ReactNode;
   off?: ReactNode;
 } & Omit<ButtonProps, "aria-label" | "children" | "onClick">) {
+  const { slots } = useAppShell();
   const resolvedOff = offContent ?? defaultOff;
   const resolvedOn = onContent ?? defaultOn;
 
@@ -39,7 +40,7 @@ export function AppShellSideTrigger({
       {...rest}
       aria-label={ariaLabel ?? `Toggle ${placement} region`}
       aria-pressed={open}
-      className={appShellInlineVariants({ className })}
+      className={slots.inline({ className })}
       data-part={dataPart}
       data-placement={placement}
       data-scope="app-shell"

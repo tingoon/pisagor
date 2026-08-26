@@ -12,7 +12,6 @@ import {
   DialogTrigger,
 } from "./dialog";
 
-export { dialogBackdropVariants, dialogContentVariants } from "@pisagor/styles/ui/dialog";
 export type {
   DialogBackdropProps,
   DialogBodyProps,

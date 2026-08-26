@@ -11,21 +11,11 @@ import {
 } from "@ark-ui/react/combobox";
 import { Portal } from "@ark-ui/react/portal";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
-import {
-  type ComboboxItemVariantProps,
-  comboboxContentVariants,
-  comboboxControlVariants,
-  comboboxEmptyVariants,
-  comboboxInline2Variants,
-  comboboxInlineVariants,
-  comboboxItemGroupLabelVariants,
-  comboboxItemVariants,
-  comboboxListVariants,
-  comboboxTriggerVariants,
-} from "@pisagor/styles/ui/combobox";
+import { type ComboboxVariantProps, comboboxVariants } from "@pisagor/styles/ui/combobox";
 import type { InputRootVariantProps } from "@pisagor/styles/ui/input";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
+import { useMemo } from "react";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import type { WithTestId } from "../../internal/types";
@@ -92,7 +82,7 @@ export interface ComboboxItemGroupProps extends ComponentProps<typeof ComboboxPr
 
 export interface ComboboxItemProps
   extends ComponentProps<typeof ComboboxPrimitive.Item>,
-    ComboboxItemVariantProps {}
+    ComboboxVariantProps {}
 
 export type ComboboxControlProps = ComponentProps<typeof ComboboxPrimitive.Control>;
 
@@ -125,8 +115,10 @@ export function ComboboxRoot<T extends CollectionItem = CollectionItem>({
   testId,
   ...rest
 }: ComboboxRootProps<T>) {
+  const slots = useMemo(() => comboboxVariants(), []);
+
   return (
-    <ComboboxRootContext value={{ testId }}>
+    <ComboboxRootContext value={{ slots, testId }}>
       <FormControlVariantProvider value={variant}>
         <ComboboxPrimitive.Root
           lazyMount={lazyMount}
@@ -146,12 +138,12 @@ export function ComboboxRoot<T extends CollectionItem = CollectionItem>({
 export const ComboboxContext = ComboboxPrimitive.Context;
 
 export function ComboboxControl({ className, ...rest }: ComboboxControlProps) {
-  const { testId } = useComboboxRoot() ?? {};
+  const { slots = comboboxVariants(), testId } = useComboboxRoot() ?? {};
 
   return (
     <ComboboxPrimitive.Control
       {...rest}
-      className={comboboxControlVariants({ className })}
+      className={slots.control({ className })}
       data-testid={testId}
     />
   );
@@ -167,6 +159,7 @@ export function ComboboxInput({
   ...rest
 }: ComboboxInputProps) {
   const { inputValue } = useComboboxContext();
+  const { slots = comboboxVariants() } = useComboboxRoot() ?? {};
 
   return (
     <ComboboxControl data-size={size}>
@@ -179,7 +172,7 @@ export function ComboboxInput({
           {showTrigger && (
             <InputGroup.Button
               asChild
-              className={comboboxInlineVariants()}
+              className={slots.triggerHidden()}
               size="icon-xs"
               variant="ghost"
             >
@@ -200,10 +193,12 @@ export function ComboboxInput({
 }
 
 export function ComboboxTrigger({ className, children, ...rest }: ComboboxTriggerProps) {
+  const { slots = comboboxVariants() } = useComboboxRoot() ?? {};
+
   return (
-    <ComboboxPrimitive.Trigger {...rest} asChild className={comboboxTriggerVariants({ className })}>
+    <ComboboxPrimitive.Trigger {...rest} asChild className={slots.trigger({ className })}>
       {children ?? (
-        <Button className={comboboxInline2Variants()} variant="ghost">
+        <Button className={slots.triggerButton()} variant="ghost">
           <CaretUpDownIcon />
         </Button>
       )}
@@ -228,10 +223,12 @@ export function ComboboxPositioner(props: ComboboxPositionerProps) {
 }
 
 export function ComboboxContent({ className, children, ...rest }: ComboboxContentProps) {
+  const { slots = comboboxVariants() } = useComboboxRoot() ?? {};
+
   return (
     <Portal>
       <ComboboxPositioner>
-        <ComboboxPrimitive.Content {...rest} className={comboboxContentVariants({ className })}>
+        <ComboboxPrimitive.Content {...rest} className={slots.content({ className })}>
           {children}
         </ComboboxPrimitive.Content>
       </ComboboxPositioner>
@@ -250,11 +247,10 @@ export function ComboboxItemGroup({ heading, children, ...rest }: ComboboxItemGr
 }
 
 export function ComboboxItemGroupLabel({ className, ...rest }: ComboboxItemGroupLabelProps) {
+  const { slots = comboboxVariants() } = useComboboxRoot() ?? {};
+
   return (
-    <ComboboxPrimitive.ItemGroupLabel
-      {...rest}
-      className={comboboxItemGroupLabelVariants({ className })}
-    />
+    <ComboboxPrimitive.ItemGroupLabel {...rest} className={slots.itemGroupLabel({ className })} />
   );
 }
 
@@ -264,14 +260,18 @@ export function ComboboxItem({
   children,
   ...rest
 }: ComboboxItemProps) {
-  const slots = comboboxItemVariants({ showIndicator });
+  const { slots = comboboxVariants() } = useComboboxRoot() ?? {};
 
   return (
-    <ComboboxPrimitive.Item {...rest} className={slots.base({ className })} persistFocus>
+    <ComboboxPrimitive.Item
+      {...rest}
+      className={slots.item({ className, showIndicator })}
+      persistFocus
+    >
       {children}
 
       {showIndicator ? (
-        <span className={slots.indicator()}>
+        <span className={slots.itemIndicator()}>
           <ComboboxPrimitive.ItemIndicator>
             <CheckIcon />
           </ComboboxPrimitive.ItemIndicator>
@@ -282,15 +282,19 @@ export function ComboboxItem({
 }
 
 export function ComboboxEmpty({ className, children, ...rest }: ComboboxEmptyProps) {
+  const { slots = comboboxVariants() } = useComboboxRoot() ?? {};
+
   return (
-    <ComboboxPrimitive.Empty {...rest} className={comboboxEmptyVariants({ className })}>
+    <ComboboxPrimitive.Empty {...rest} className={slots.empty({ className })}>
       {children || "No results found. Try a different search."}
     </ComboboxPrimitive.Empty>
   );
 }
 
 export function ComboboxList({ className, ...rest }: ComboboxListProps) {
-  return <ComboboxPrimitive.List {...rest} className={comboboxListVariants({ className })} />;
+  const { slots = comboboxVariants() } = useComboboxRoot() ?? {};
+
+  return <ComboboxPrimitive.List {...rest} className={slots.list({ className })} />;
 }
 // #endregion
 

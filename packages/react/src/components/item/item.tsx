@@ -1,27 +1,15 @@
 import { ark } from "@ark-ui/react/factory";
-import {
-  type ItemMediaVariantProps,
-  type ItemVariantProps,
-  itemActionsVariants,
-  itemContentVariants,
-  itemDescriptionVariants,
-  itemFooterVariants,
-  itemGroupVariants,
-  itemHeaderVariants,
-  itemInlineVariants,
-  itemMediaVariants,
-  itemSeparatorVariants,
-  itemTitleVariants,
-  itemVariants,
-} from "@pisagor/styles/ui/item";
+import { type ItemVariantProps, itemVariants } from "@pisagor/styles/ui/item";
 import type { ComponentProps, ReactNode } from "react";
+import { useMemo } from "react";
 import type { WithTestId } from "../../internal/types";
 import { Separator, type SeparatorProps } from "../separator";
+import { ItemContext, useItem } from "./item.context";
 
 // #region Types
 export interface ItemProps extends ComponentProps<typeof ark.div>, ItemVariantProps, WithTestId {}
 
-export interface ItemMediaProps extends ComponentProps<typeof ark.div>, ItemMediaVariantProps {}
+export interface ItemMediaProps extends ComponentProps<typeof ark.div>, ItemVariantProps {}
 
 export interface ItemHeaderProps extends Omit<ComponentProps<typeof ark.div>, "title"> {
   /** Shorthand: renders an ItemTitle inside the header. */
@@ -44,23 +32,31 @@ export interface ItemFooterProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Parts
-export function ItemGroup({ className, ...rest }: ItemGroupProps) {
+export function ItemGroup({ className, children, ...rest }: ItemGroupProps) {
+  const slots = useMemo(() => itemVariants(), []);
+
   return (
-    <ark.div
-      {...rest}
-      className={itemGroupVariants({ className })}
-      data-part="group"
-      data-scope="item"
-      role="list"
-    />
+    <ItemContext value={{ slots }}>
+      <ark.div
+        {...rest}
+        className={slots.group({ className })}
+        data-part="group"
+        data-scope="item"
+        role="list"
+      >
+        {children}
+      </ark.div>
+    </ItemContext>
   );
 }
 
 export function ItemSeparator({ className, ...rest }: SeparatorProps) {
+  const { slots } = useItem();
+
   return (
     <Separator
       {...rest}
-      className={itemSeparatorVariants({ className })}
+      className={slots.separator({ className })}
       dataPart="separator"
       dataScope="item"
       orientation="horizontal"
@@ -69,10 +65,12 @@ export function ItemSeparator({ className, ...rest }: SeparatorProps) {
 }
 
 export function ItemRoot({ variant = "default", className, testId, ...rest }: ItemProps) {
+  const { slots } = useItem();
+
   return (
     <ark.div
       {...rest}
-      className={itemVariants({ className, variant })}
+      className={slots.base({ className, variant })}
       data-part="root"
       data-scope="item"
       data-testid={testId}
@@ -82,10 +80,12 @@ export function ItemRoot({ variant = "default", className, testId, ...rest }: It
 }
 
 export function ItemMedia({ variant = "default", className, ...rest }: ItemMediaProps) {
+  const { slots } = useItem();
+
   return (
     <ark.div
       {...rest}
-      className={itemMediaVariants({ className, variant })}
+      className={slots.media({ className, variant })}
       data-part="media"
       data-scope="item"
       data-variant={variant}
@@ -94,10 +94,12 @@ export function ItemMedia({ variant = "default", className, ...rest }: ItemMedia
 }
 
 export function ItemContent({ className, ...rest }: ItemContentProps) {
+  const { slots } = useItem();
+
   return (
     <ark.div
       {...rest}
-      className={itemContentVariants({ className })}
+      className={slots.content({ className })}
       data-part="content"
       data-scope="item"
     />
@@ -105,21 +107,20 @@ export function ItemContent({ className, ...rest }: ItemContentProps) {
 }
 
 export function ItemTitle({ className, ...rest }: ItemTitleProps) {
+  const { slots } = useItem();
+
   return (
-    <ark.div
-      {...rest}
-      className={itemTitleVariants({ className })}
-      data-part="title"
-      data-scope="item"
-    />
+    <ark.div {...rest} className={slots.title({ className })} data-part="title" data-scope="item" />
   );
 }
 
 export function ItemDescription({ className, ...rest }: ItemDescriptionProps) {
+  const { slots } = useItem();
+
   return (
     <ark.p
       {...rest}
-      className={itemDescriptionVariants({ className })}
+      className={slots.description({ className })}
       data-part="description"
       data-scope="item"
     />
@@ -127,10 +128,12 @@ export function ItemDescription({ className, ...rest }: ItemDescriptionProps) {
 }
 
 export function ItemActions({ className, ...rest }: ItemActionsProps) {
+  const { slots } = useItem();
+
   return (
     <ark.div
       {...rest}
-      className={itemActionsVariants({ className })}
+      className={slots.actions({ className })}
       data-part="actions"
       data-scope="item"
     />
@@ -138,15 +141,12 @@ export function ItemActions({ className, ...rest }: ItemActionsProps) {
 }
 
 export function ItemHeader({ title, description, className, children, ...rest }: ItemHeaderProps) {
+  const { slots } = useItem();
+
   return (
-    <ark.div
-      {...rest}
-      className={itemHeaderVariants({ className })}
-      data-part="header"
-      data-scope="item"
-    >
+    <ark.div {...rest} className={slots.header({ className })} data-part="header" data-scope="item">
       {(title || description) && (
-        <div className={itemInlineVariants()}>
+        <div className={slots.inline()}>
           {title && <ItemTitle>{title}</ItemTitle>}
 
           {description && <ItemDescription>{description}</ItemDescription>}
@@ -159,10 +159,12 @@ export function ItemHeader({ title, description, className, children, ...rest }:
 }
 
 export function ItemFooter({ className, ...rest }: ItemFooterProps) {
+  const { slots } = useItem();
+
   return (
     <ark.div
       {...rest}
-      className={itemFooterVariants({ className })}
+      className={slots.footer({ className })}
       data-part="footer"
       data-scope="item"
     />

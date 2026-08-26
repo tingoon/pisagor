@@ -1,14 +1,10 @@
 import { ark } from "@ark-ui/react/factory";
 import { Tabs as TabsPrimitive } from "@ark-ui/react/tabs";
-import {
-  bottomNavigationItemIconVariants,
-  bottomNavigationItemLabelVariants,
-  bottomNavigationItemVariants,
-  bottomNavigationListVariants,
-  bottomNavigationVariants,
-} from "@pisagor/styles/ui/bottom-navigation";
+import { bottomNavigationVariants } from "@pisagor/styles/ui/bottom-navigation";
 import type { ComponentProps } from "react";
+import { useMemo } from "react";
 import type { WithTestId } from "../../internal/types";
+import { BottomNavigationContext, useBottomNavigation } from "./bottom-navigation.context";
 
 // #region Types
 export type BottomNavigationRootProps = ComponentProps<typeof TabsPrimitive.Root> & WithTestId;
@@ -26,35 +22,35 @@ export interface BottomNavigationItemLabelProps extends ComponentProps<typeof ar
 
 // #region Parts
 export function BottomNavigationRoot({ className, testId, ...rest }: BottomNavigationRootProps) {
+  const slots = useMemo(() => bottomNavigationVariants(), []);
+
   return (
-    <TabsPrimitive.Root
-      {...rest}
-      className={bottomNavigationVariants({ className })}
-      data-testid={testId}
-    />
+    <BottomNavigationContext value={{ slots }}>
+      <TabsPrimitive.Root {...rest} className={slots.base({ className })} data-testid={testId} />
+    </BottomNavigationContext>
   );
 }
 
-export function BottomNavigationList({
-  "aria-label": ariaLabel,
-  className,
-  ...rest
-}: BottomNavigationListProps) {
-  return <TabsPrimitive.List {...rest} className={bottomNavigationListVariants({ className })} />;
+export function BottomNavigationList({ className, ...rest }: BottomNavigationListProps) {
+  const { slots } = useBottomNavigation();
+
+  return <TabsPrimitive.List {...rest} className={slots.list({ className })} />;
 }
 
 export function BottomNavigationItem({ className, ...rest }: BottomNavigationItemProps) {
-  return (
-    <TabsPrimitive.Trigger {...rest} className={bottomNavigationItemVariants({ className })} />
-  );
+  const { slots } = useBottomNavigation();
+
+  return <TabsPrimitive.Trigger {...rest} className={slots.item({ className })} />;
 }
 
 export function BottomNavigationItemIcon({ className, ...rest }: BottomNavigationItemIconProps) {
+  const { slots } = useBottomNavigation();
+
   return (
     <ark.span
       {...rest}
       aria-hidden
-      className={bottomNavigationItemIconVariants({ className })}
+      className={slots.itemIcon({ className })}
       data-part="item-icon"
       data-scope="bottom-navigation"
     />
@@ -62,10 +58,12 @@ export function BottomNavigationItemIcon({ className, ...rest }: BottomNavigatio
 }
 
 export function BottomNavigationItemLabel({ className, ...rest }: BottomNavigationItemLabelProps) {
+  const { slots } = useBottomNavigation();
+
   return (
     <ark.span
       {...rest}
-      className={bottomNavigationItemLabelVariants({ className })}
+      className={slots.itemLabel({ className })}
       data-part="item-label"
       data-scope="bottom-navigation"
     />

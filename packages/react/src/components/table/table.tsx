@@ -1,17 +1,9 @@
 import { ark } from "@ark-ui/react/factory";
-import {
-  tableBodyVariants,
-  tableCaptionVariants,
-  tableCellVariants,
-  tableFooterVariants,
-  tableHeaderVariants,
-  tableHeadVariants,
-  tableRowVariants,
-  tableVariants,
-  tableWrapperVariants,
-} from "@pisagor/styles/ui/table";
+import { tableVariants } from "@pisagor/styles/ui/table";
 import type { ComponentProps } from "react";
+import { useMemo } from "react";
 import type { WithTestId } from "../../internal/types";
+import { TableContext, useTable } from "./table.context";
 
 // #region Types
 export interface TableProps extends ComponentProps<typeof ark.table>, WithTestId {
@@ -46,26 +38,32 @@ export function TableRoot({
   testId,
   ...rest
 }: TableProps) {
+  const slots = useMemo(() => tableVariants(), []);
+
   return (
-    <div className={tableWrapperVariants()} data-part="wrapper" data-scope="table">
-      <ark.table
-        {...rest}
-        className={tableVariants({ className })}
-        data-hoverable={isHoverable}
-        data-part="root"
-        data-scope="table"
-        data-testid={testId}
-        data-variant={variant}
-      />
-    </div>
+    <TableContext value={{ slots }}>
+      <div className={slots.wrapper()} data-part="wrapper" data-scope="table">
+        <ark.table
+          {...rest}
+          className={slots.base({ className })}
+          data-hoverable={isHoverable}
+          data-part="root"
+          data-scope="table"
+          data-testid={testId}
+          data-variant={variant}
+        />
+      </div>
+    </TableContext>
   );
 }
 
 export function TableHeader({ className, ...rest }: TableHeaderProps) {
+  const { slots } = useTable();
+
   return (
     <ark.thead
       {...rest}
-      className={tableHeaderVariants({ className })}
+      className={slots.header({ className })}
       data-part="header"
       data-scope="table"
     />
@@ -73,10 +71,12 @@ export function TableHeader({ className, ...rest }: TableHeaderProps) {
 }
 
 export function TableBody({ className, ...rest }: TableBodyProps) {
+  const { slots } = useTable();
+
   return (
     <ark.tbody
       {...rest}
-      className={tableBodyVariants({ className })}
+      className={slots.body({ className })}
       data-part="body"
       data-scope="table"
     />
@@ -84,10 +84,12 @@ export function TableBody({ className, ...rest }: TableBodyProps) {
 }
 
 export function TableFooter({ className, ...rest }: TableFooterProps) {
+  const { slots } = useTable();
+
   return (
     <ark.tfoot
       {...rest}
-      className={tableFooterVariants({ className })}
+      className={slots.footer({ className })}
       data-part="footer"
       data-scope="table"
     />
@@ -95,43 +97,36 @@ export function TableFooter({ className, ...rest }: TableFooterProps) {
 }
 
 export function TableRow({ className, ...rest }: TableRowProps) {
+  const { slots } = useTable();
+
   return (
-    <ark.tr
-      {...rest}
-      className={tableRowVariants({ className })}
-      data-part="row"
-      data-scope="table"
-    />
+    <ark.tr {...rest} className={slots.row({ className })} data-part="row" data-scope="table" />
   );
 }
 
 export function TableHead({ className, ...rest }: TableHeadProps) {
+  const { slots } = useTable();
+
   return (
-    <ark.th
-      {...rest}
-      className={tableHeadVariants({ className })}
-      data-part="head"
-      data-scope="table"
-    />
+    <ark.th {...rest} className={slots.head({ className })} data-part="head" data-scope="table" />
   );
 }
 
 export function TableCell({ className, ...rest }: TableCellProps) {
+  const { slots } = useTable();
+
   return (
-    <ark.td
-      {...rest}
-      className={tableCellVariants({ className })}
-      data-part="cell"
-      data-scope="table"
-    />
+    <ark.td {...rest} className={slots.cell({ className })} data-part="cell" data-scope="table" />
   );
 }
 
 export function TableCaption({ className, ...rest }: TableCaptionProps) {
+  const { slots } = useTable();
+
   return (
     <ark.caption
       {...rest}
-      className={tableCaptionVariants({ className })}
+      className={slots.caption({ className })}
       data-part="caption"
       data-scope="table"
     />

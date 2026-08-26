@@ -28,8 +28,8 @@ import {
 } from "@pisagor/styles/ui/tree-view";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "react";
+import { formControlToggleVariants } from "../../internal/form-control/form-control-variants";
 import type { WithTestId } from "../../internal/types";
-import { checkboxVariants } from "../checkbox";
 import { TreeViewContext, type TreeViewContextProps, useTreeView } from "./tree-view.context";
 
 // #region Types
@@ -301,7 +301,7 @@ export function TreeViewNodeCheckbox({ className, ...rest }: TreeViewNodeCheckbo
   return (
     <TreeViewPrimitive.NodeCheckbox
       {...rest}
-      className={cn(checkboxVariants(), treeViewCheckboxVariants(), className)}
+      className={cn(formControlToggleVariants(), treeViewCheckboxVariants(), className)}
     >
       <TreeViewPrimitive.NodeCheckboxIndicator indeterminate={<MinusIcon />}>
         <CheckIcon />

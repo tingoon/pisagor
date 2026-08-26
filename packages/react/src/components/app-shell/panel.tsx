@@ -1,12 +1,4 @@
 import { ArrowsInLineHorizontalIcon, ArrowsOutLineHorizontalIcon } from "@phosphor-icons/react";
-import {
-  appShellInline2Variants,
-  appShellInlineVariants,
-  appShellPanelContentVariants,
-  appShellPanelFooterVariants,
-  appShellPanelHeaderVariants,
-  appShellPanelVariants,
-} from "@pisagor/styles/ui/app-shell";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { useState } from "react";
@@ -101,7 +93,7 @@ export function AppShellPanel({
   style,
   ...rest
 }: AppShellPanelProps) {
-  const { defaultPanelResizableProps, panelStates } = useAppShell();
+  const { defaultPanelResizableProps, panelStates, slots } = useAppShell();
   const resizableProps = mergeResizableProps(defaultPanelResizableProps, resizablePropsProp);
   const side = useRegisteredSideState({
     controlledOpen: openProp,
@@ -121,9 +113,9 @@ export function AppShellPanel({
     <aside
       {...rest}
       className={cn(
-        appShellPanelVariants(),
+        slots.panel(),
         placement === "start" ? "border-e border-border" : "border-s border-border",
-        regionPositionClasses(position, "column"),
+        regionPositionClasses(slots, position, "column"),
         side.open ? "opacity-100" : "pointer-events-none opacity-0",
         className,
       )}
@@ -145,16 +137,18 @@ export function AppShellPanel({
           {...regionResizeCallbacks}
         />
       ) : null}
-      <div className={appShellInlineVariants()}>{children}</div>
+      <div className={slots.inline()}>{children}</div>
     </aside>
   );
 }
 
 export function AppShellPanelHeader({ className, ...rest }: AppShellPanelHeaderProps) {
+  const { slots } = useAppShell();
+
   return (
     <div
       {...rest}
-      className={appShellPanelHeaderVariants({ className })}
+      className={slots.panelHeader({ className })}
       data-part="panel-header"
       data-scope="app-shell"
     />
@@ -162,11 +156,13 @@ export function AppShellPanelHeader({ className, ...rest }: AppShellPanelHeaderP
 }
 
 export function AppShellPanelContent({ className, ...rest }: AppShellPanelContentProps) {
+  const { slots } = useAppShell();
+
   return (
-    <ScrollArea className={appShellInline2Variants()}>
+    <ScrollArea className={slots.scrollArea()}>
       <div
         {...rest}
-        className={appShellPanelContentVariants({ className })}
+        className={slots.panelContent({ className })}
         data-part="panel-content"
         data-scope="app-shell"
       />
@@ -175,10 +171,12 @@ export function AppShellPanelContent({ className, ...rest }: AppShellPanelConten
 }
 
 export function AppShellPanelFooter({ className, ...rest }: AppShellPanelFooterProps) {
+  const { slots } = useAppShell();
+
   return (
     <div
       {...rest}
-      className={appShellPanelFooterVariants({ className })}
+      className={slots.panelFooter({ className })}
       data-part="panel-footer"
       data-scope="app-shell"
     />

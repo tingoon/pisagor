@@ -16,7 +16,6 @@ import {
   ComboboxTrigger,
 } from "./combobox";
 
-export { comboboxItemVariants } from "@pisagor/styles/ui/combobox";
 export type {
   ComboboxClearTriggerProps,
   ComboboxContentProps,
