@@ -1,10 +1,12 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const tabsListVariants = tv({
+export const tabsVariants = tv({
   defaultVariants: {
     variant: "default",
   },
   slots: {
+    base: ["flex flex-col gap-2", "data-[orientation=vertical]:flex-row"],
+    content: ["flex-1 outline-hidden"],
     indicator: [
       "absolute inset-s-0 bottom-0",
       "h-(--height) w-(--width)",
@@ -17,6 +19,23 @@ export const tabsListVariants = tv({
       "text-muted-foreground",
       "flex items-center justify-center gap-x-0.5",
       "data-[orientation=vertical]:flex-col",
+    ],
+    trigger: [
+      "relative",
+      "h-9 sm:h-8",
+      "flex shrink-0 grow items-center justify-center gap-1.5",
+      "px-[calc(--spacing(2.5)-1px)]",
+      "whitespace-nowrap font-medium text-sm",
+      "rounded-lg border border-transparent",
+      "cursor-pointer",
+      "transition-[color,background-color,box-shadow]",
+      "data-[orientation=vertical]:w-full data-[orientation=vertical]:justify-start",
+      "hover:text-foreground/72",
+      "aria-selected:text-foreground",
+      "outline-hidden focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
+      "data-disabled:pointer-events-none data-disabled:opacity-64",
+      "[&_svg:not([class*='size-'])]:size-4.5 sm:[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:-mx-0.5 [&_svg]:shrink-0",
+      "motion-reduce:transition-none!",
     ],
   },
   variants: {
@@ -43,43 +62,6 @@ export const tabsListVariants = tv({
   },
 });
 
-export const tabsVariants = tv({
-  base: ["flex flex-col gap-2", "data-[orientation=vertical]:flex-row"],
-});
-
-export const tabsTriggerVariants = tv({
-  base: [
-    "relative",
-    "h-9 sm:h-8",
-    "flex shrink-0 grow items-center justify-center gap-1.5",
-    "px-[calc(--spacing(2.5)-1px)]",
-    "whitespace-nowrap font-medium text-sm",
-    "rounded-lg border border-transparent",
-    "cursor-pointer",
-    "transition-[color,background-color,box-shadow]",
-    "data-[orientation=vertical]:w-full data-[orientation=vertical]:justify-start",
-    "hover:text-foreground/72",
-    "aria-selected:text-foreground",
-    "outline-hidden focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
-    "data-disabled:pointer-events-none data-disabled:opacity-64",
-    "[&_svg:not([class*='size-'])]:size-4.5 sm:[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:-mx-0.5 [&_svg]:shrink-0",
-    "motion-reduce:transition-none!",
-  ],
-});
-
-export const tabsContentVariants = tv({
-  base: ["flex-1 outline-hidden"],
-});
-
-export type TabsListVariantProps = VariantProps<typeof tabsListVariants>;
-export type TabsListVariants = ReturnType<typeof tabsListVariants>;
-export type TabsListSlots = keyof TabsListVariants;
-
 export type TabsVariantProps = VariantProps<typeof tabsVariants>;
 export type TabsVariants = ReturnType<typeof tabsVariants>;
-
-export type TabsTriggerVariantProps = VariantProps<typeof tabsTriggerVariants>;
-export type TabsTriggerVariants = ReturnType<typeof tabsTriggerVariants>;
-
-export type TabsContentVariantProps = VariantProps<typeof tabsContentVariants>;
-export type TabsContentVariants = ReturnType<typeof tabsContentVariants>;
+export type TabsSlots = keyof TabsVariants;

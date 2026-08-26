@@ -11,7 +11,7 @@ src/
 ```ts
 import { accordionItemVariants } from "@pisagor/styles/accordion";
 
-cn(accordionItemVariants(), className);
+cn(accordionItemVariants().base(), className);
 ```
 
 There is no root barrel — import each recipe path.

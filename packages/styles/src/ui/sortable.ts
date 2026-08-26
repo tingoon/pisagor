@@ -14,27 +14,23 @@ export const sortableVariants = tv({
 });
 
 export const sortableItemVariants = tv({
-  base: [
-    "relative",
-    "rounded-xl border bg-card",
-    "outline-hidden focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
-    "data-[dragging=true]:opacity-50",
-    "data-[drop-target=true]:border-primary data-[drop-target=true]:ring-2 data-[drop-target=true]:ring-primary/24",
-  ],
-});
-
-export const sortableHandleVariants = tv({
-  base: [
-    "inline-flex size-8 shrink-0 items-center justify-center",
-    "cursor-grab touch-none text-muted-foreground",
-    "rounded-lg",
-    "hover:bg-muted hover:text-foreground",
-    "active:cursor-grabbing",
-  ],
-});
-
-export const sortableItemContentVariants = tv({
-  base: ["flex min-w-0 flex-1 items-center gap-3 p-3"],
+  slots: {
+    base: [
+      "relative",
+      "rounded-xl border bg-card",
+      "outline-hidden focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
+      "data-[dragging=true]:opacity-50",
+      "data-[drop-target=true]:border-primary data-[drop-target=true]:ring-2 data-[drop-target=true]:ring-primary/24",
+    ],
+    content: ["flex min-w-0 flex-1 items-center gap-3 p-3"],
+    handle: [
+      "inline-flex size-8 shrink-0 items-center justify-center",
+      "cursor-grab touch-none text-muted-foreground",
+      "rounded-lg",
+      "hover:bg-muted hover:text-foreground",
+      "active:cursor-grabbing",
+    ],
+  },
 });
 
 export type SortableVariantProps = VariantProps<typeof sortableVariants>;
@@ -42,9 +38,4 @@ export type SortableVariants = ReturnType<typeof sortableVariants>;
 
 export type SortableItemVariantProps = VariantProps<typeof sortableItemVariants>;
 export type SortableItemVariants = ReturnType<typeof sortableItemVariants>;
-
-export type SortableHandleVariantProps = VariantProps<typeof sortableHandleVariants>;
-export type SortableHandleVariants = ReturnType<typeof sortableHandleVariants>;
-
-export type SortableItemContentVariantProps = VariantProps<typeof sortableItemContentVariants>;
-export type SortableItemContentVariants = ReturnType<typeof sortableItemContentVariants>;
+export type SortableItemSlots = keyof SortableItemVariants;

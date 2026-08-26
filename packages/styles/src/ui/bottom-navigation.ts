@@ -3,7 +3,19 @@ import { tv, type VariantProps } from "tailwind-variants";
 export const bottomNavigationVariants = tv({
   slots: {
     base: ["w-full", "min-h-[calc(var(--spacing)*14+env(safe-area-inset-bottom,0))]"],
-    item: [
+    list: [
+      "fixed inset-x-0 bottom-0 z-10",
+      "flex w-full items-center justify-around",
+      "min-h-14 shrink-0",
+      "border-t bg-background/60 backdrop-blur-xs",
+      "pb-[env(safe-area-inset-bottom,0px)]",
+    ],
+  },
+});
+
+export const bottomNavigationItemVariants = tv({
+  slots: {
+    base: [
       "relative",
       "min-w-0",
       "flex flex-1 flex-col items-center justify-center gap-0.5",
@@ -20,18 +32,15 @@ export const bottomNavigationVariants = tv({
       "pointer-coarse:after:absolute pointer-coarse:after:size-full pointer-coarse:after:min-h-11 pointer-coarse:after:min-w-11",
       "motion-reduce:transition-none!",
     ],
-    itemIcon: ["flex items-center justify-center"],
-    itemLabel: ["truncate font-medium text-xs"],
-    list: [
-      "fixed inset-x-0 bottom-0 z-10",
-      "flex w-full items-center justify-around",
-      "min-h-14 shrink-0",
-      "border-t bg-background/60 backdrop-blur-xs",
-      "pb-[env(safe-area-inset-bottom,0px)]",
-    ],
+    icon: ["flex items-center justify-center"],
+    label: ["truncate font-medium text-xs"],
   },
 });
 
 export type BottomNavigationVariantProps = VariantProps<typeof bottomNavigationVariants>;
 export type BottomNavigationVariants = ReturnType<typeof bottomNavigationVariants>;
 export type BottomNavigationSlots = keyof BottomNavigationVariants;
+
+export type BottomNavigationItemVariantProps = VariantProps<typeof bottomNavigationItemVariants>;
+export type BottomNavigationItemVariants = ReturnType<typeof bottomNavigationItemVariants>;
+export type BottomNavigationItemSlots = keyof BottomNavigationItemVariants;

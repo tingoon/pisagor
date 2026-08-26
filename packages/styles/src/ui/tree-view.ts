@@ -1,69 +1,41 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const treeViewControlVariants = tv({
-  base: [
-    "peer",
-    "relative my-px",
-    "flex items-center gap-(--item-gap)",
-    "min-h-8 w-full",
-    "py-(--padding-block) ps-[calc(var(--padding-inline)+var(--indentation)*(var(--depth)-1)+var(--icon-size)*(var(--depth)-1)*0.5)] pe-(--padding-inline)",
-    "bg-transparent",
-    "select-none text-start font-inherit text-muted-foreground",
-    "rounded-md border-none",
-    "cursor-pointer",
-    "hover:bg-muted hover:text-foreground",
-    "outline-hidden focus-visible:outline-2 focus-visible:outline-ring focus-visible:-outline-offset-2",
-    "data-selected:bg-accent data-selected:text-accent-foreground",
-    "data-focus:bg-muted data-focus:text-foreground",
-    "data-disabled:opacity-64 data-disabled:grayscale",
-    "[&_svg]:size-4 [&_svg]:shrink-0",
-  ],
-});
-
 export const treeViewVariants = tv({
-  base: [
-    "[--indentation:--spacing(4)] [--item-gap:--spacing(2)]",
-    "[--padding-block:--spacing(1.5)] [--padding-inline:--spacing(3)]",
-    "[--icon-size:--spacing(4)]",
-    "w-full",
-    "flex flex-col gap-2",
-    "text-foreground",
-  ],
-});
-
-export const treeViewLabelVariants = tv({
-  base: ["select-none font-medium text-foreground text-sm"],
-});
-
-export const treeViewTreeVariants = tv({
-  base: ["flex flex-col text-sm", "[&_svg]:size-(--icon-size) [&_svg]:shrink-0"],
+  slots: {
+    base: [
+      "[--indentation:--spacing(4)] [--item-gap:--spacing(2)]",
+      "[--padding-block:--spacing(1.5)] [--padding-inline:--spacing(3)]",
+      "[--icon-size:--spacing(4)]",
+      "w-full",
+      "flex flex-col gap-2",
+      "text-foreground",
+    ],
+    control: [
+      "peer",
+      "relative my-px",
+      "flex items-center gap-(--item-gap)",
+      "min-h-8 w-full",
+      "py-(--padding-block) ps-[calc(var(--padding-inline)+var(--indentation)*(var(--depth)-1)+var(--icon-size)*(var(--depth)-1)*0.5)] pe-(--padding-inline)",
+      "bg-transparent",
+      "select-none text-start font-inherit text-muted-foreground",
+      "rounded-md border-none",
+      "cursor-pointer",
+      "hover:bg-muted hover:text-foreground",
+      "outline-hidden focus-visible:outline-2 focus-visible:outline-ring focus-visible:-outline-offset-2",
+      "data-selected:bg-accent data-selected:text-accent-foreground",
+      "data-focus:bg-muted data-focus:text-foreground",
+      "data-disabled:opacity-64 data-disabled:grayscale",
+      "[&_svg]:size-4 [&_svg]:shrink-0",
+    ],
+    label: ["select-none font-medium text-foreground text-sm"],
+    tree: ["flex flex-col text-sm", "[&_svg]:size-(--icon-size) [&_svg]:shrink-0"],
+  },
 });
 
 export const treeViewBranchVariants = tv({
-  base: "relative",
-});
-
-export const treeViewBranchTitleVariants = tv({
-  base: [
-    "flex flex-1 items-center gap-(--item-gap)",
-    "overflow-hidden text-ellipsis whitespace-nowrap",
-  ],
-});
-
-export const treeViewBranchIndicatorVariants = tv({
-  base: [
-    "inline-flex shrink-0 items-center justify-center",
-    "text-muted-foreground",
-    "origin-center transition-transform duration-150",
-    "data-[state=open]:rotate-90",
-    "[&_svg]:size-3.5 [&_svg]:shrink-0",
-    "motion-reduce:transition-none!",
-  ],
-});
-
-export const treeViewBranchContentVariants = tv({
   slots: {
-    base: [
+    base: "relative",
+    content: [
       "relative overflow-hidden",
       "data-[state=open]:animate-[expand_150ms_ease-out]",
       "data-[state=closed]:animate-[collapse_150ms_ease-out]",
@@ -76,75 +48,51 @@ export const treeViewBranchContentVariants = tv({
       "inset-s-[calc(var(--padding-inline)+var(--indentation)*(var(--depth)-1)+var(--icon-size)*0.5*var(--depth))]",
       "pointer-events-none",
     ],
+    indicator: [
+      "inline-flex shrink-0 items-center justify-center",
+      "text-muted-foreground",
+      "origin-center transition-transform duration-150",
+      "data-[state=open]:rotate-90",
+      "[&_svg]:size-3.5 [&_svg]:shrink-0",
+      "motion-reduce:transition-none!",
+    ],
+    title: [
+      "flex flex-1 items-center gap-(--item-gap)",
+      "overflow-hidden text-ellipsis whitespace-nowrap",
+    ],
   },
 });
 
-export const treeViewItemIconVariants = tv({
-  base: "in-[[data-scope=tree-view][data-part=item]:has([data-scope=tree-view][data-part=node-checkbox])]:hidden",
+export const treeViewItemVariants = tv({
+  slots: {
+    checkbox: "[&_svg]:size-3!",
+    icon: "in-[[data-scope=tree-view][data-part=item]:has([data-scope=tree-view][data-part=node-checkbox])]:hidden",
+    renameInput: [
+      "h-full min-w-0",
+      "flex-1",
+      "-my-px px-2 py-0",
+      "text-sm",
+      "border-primary bg-popover text-foreground",
+      "rounded-md border",
+      "selection:bg-primary/20 selection:text-foreground",
+      "outline-hidden focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
+    ],
+    title: [
+      "flex flex-1 items-center gap-(--item-gap)",
+      "text-ellipsis whitespace-nowrap",
+      "overflow-hidden",
+    ],
+  },
 });
-
-export const treeViewItemTitleVariants = tv({
-  base: [
-    "flex flex-1 items-center gap-(--item-gap)",
-    "text-ellipsis whitespace-nowrap",
-    "overflow-hidden",
-  ],
-});
-
-export const treeViewCheckboxVariants = tv({
-  base: "[&_svg]:size-3!",
-});
-
-export const treeViewNodeRenameInputVariants = tv({
-  base: [
-    "h-full min-w-0",
-    "flex-1",
-    "-my-px px-2 py-0",
-    "text-sm",
-    "border-primary bg-popover text-foreground",
-    "rounded-md border",
-    "selection:bg-primary/20 selection:text-foreground",
-    "outline-hidden focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
-  ],
-});
-
-export type TreeViewControlVariantProps = VariantProps<typeof treeViewControlVariants>;
-export type TreeViewControlVariants = ReturnType<typeof treeViewControlVariants>;
 
 export type TreeViewVariantProps = VariantProps<typeof treeViewVariants>;
 export type TreeViewVariants = ReturnType<typeof treeViewVariants>;
-
-export type TreeViewLabelVariantProps = VariantProps<typeof treeViewLabelVariants>;
-export type TreeViewLabelVariants = ReturnType<typeof treeViewLabelVariants>;
-
-export type TreeViewTreeVariantProps = VariantProps<typeof treeViewTreeVariants>;
-export type TreeViewTreeVariants = ReturnType<typeof treeViewTreeVariants>;
+export type TreeViewSlots = keyof TreeViewVariants;
 
 export type TreeViewBranchVariantProps = VariantProps<typeof treeViewBranchVariants>;
 export type TreeViewBranchVariants = ReturnType<typeof treeViewBranchVariants>;
+export type TreeViewBranchSlots = keyof TreeViewBranchVariants;
 
-export type TreeViewBranchTitleVariantProps = VariantProps<typeof treeViewBranchTitleVariants>;
-export type TreeViewBranchTitleVariants = ReturnType<typeof treeViewBranchTitleVariants>;
-
-export type TreeViewBranchIndicatorVariantProps = VariantProps<
-  typeof treeViewBranchIndicatorVariants
->;
-export type TreeViewBranchIndicatorVariants = ReturnType<typeof treeViewBranchIndicatorVariants>;
-
-export type TreeViewBranchContentVariantProps = VariantProps<typeof treeViewBranchContentVariants>;
-export type TreeViewBranchContentVariants = ReturnType<typeof treeViewBranchContentVariants>;
-export type TreeViewBranchContentSlots = keyof TreeViewBranchContentVariants;
-
-export type TreeViewItemIconVariantProps = VariantProps<typeof treeViewItemIconVariants>;
-export type TreeViewItemIconVariants = ReturnType<typeof treeViewItemIconVariants>;
-
-export type TreeViewItemTitleVariantProps = VariantProps<typeof treeViewItemTitleVariants>;
-export type TreeViewItemTitleVariants = ReturnType<typeof treeViewItemTitleVariants>;
-
-export type TreeViewCheckboxVariantProps = VariantProps<typeof treeViewCheckboxVariants>;
-export type TreeViewCheckboxVariants = ReturnType<typeof treeViewCheckboxVariants>;
-
-export type TreeViewNodeRenameInputVariantProps = VariantProps<
-  typeof treeViewNodeRenameInputVariants
->;
-export type TreeViewNodeRenameInputVariants = ReturnType<typeof treeViewNodeRenameInputVariants>;
+export type TreeViewItemVariantProps = VariantProps<typeof treeViewItemVariants>;
+export type TreeViewItemVariants = ReturnType<typeof treeViewItemVariants>;
+export type TreeViewItemSlots = keyof TreeViewItemVariants;

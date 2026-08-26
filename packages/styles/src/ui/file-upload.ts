@@ -3,12 +3,6 @@ import { tv, type VariantProps } from "tailwind-variants";
 export const fileUploadVariants = tv({
   slots: {
     base: ["group/file-upload", "relative", "flex flex-col justify-center gap-4"],
-    deleteButton: [
-      "rounded-lg",
-      "hover:bg-destructive/10 hover:text-destructive",
-      "dark:hover:bg-destructive-foreground/10 dark:hover:text-destructive-foreground",
-    ],
-    deleteTrigger: ["me-auto rtl:ms-auto"],
     description: ["font-medium text-muted-foreground text-sm"],
     dropzone: [
       "[--space:--spacing(6)]",
@@ -28,21 +22,23 @@ export const fileUploadVariants = tv({
       "group-data-dragging/file-upload:border-primary/24 group-data-dragging/file-upload:bg-primary/5 group-data-dragging/file-upload:text-primary",
       "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
     ],
-    extension: "uppercase",
     helper: ["text-muted-foreground text-xs"],
-    item: ["relative inline-flex"],
-    itemContent: ["min-w-0 flex-1 overflow-hidden"],
     itemGroup: ["flex flex-col gap-2"],
-    itemName: ["truncate font-medium text-xs", "min-w-0", "overflow-hidden"],
-    itemPreview: [
-      "flex shrink-0 items-center justify-center",
-      "font-semibold text-[0.5rem] text-primary",
-      "bg-primary/10",
-      "select-none",
-      "rounded-full",
+    title: ["font-medium text-foreground text-sm"],
+  },
+});
+
+export const fileUploadItemVariants = tv({
+  slots: {
+    base: ["relative inline-flex"],
+    content: ["min-w-0 flex-1 overflow-hidden"],
+    deleteButton: [
+      "rounded-lg",
+      "hover:bg-destructive/10 hover:text-destructive",
+      "dark:hover:bg-destructive-foreground/10 dark:hover:text-destructive-foreground",
     ],
-    itemPreviewImage: ["aspect-square size-full", "object-cover", "rounded-lg"],
-    itemSize: ["text-muted-foreground text-xs"],
+    deleteTrigger: ["me-auto rtl:ms-auto"],
+    extension: "uppercase",
     listItem: [
       "flex-1 items-start justify-start gap-4",
       "bg-card",
@@ -52,10 +48,23 @@ export const fileUploadVariants = tv({
       "motion-reduce:animate-none!",
     ],
     listPreview: "size-8",
-    title: ["font-medium text-foreground text-sm"],
+    name: ["truncate font-medium text-xs", "min-w-0", "overflow-hidden"],
+    preview: [
+      "flex shrink-0 items-center justify-center",
+      "font-semibold text-[0.5rem] text-primary",
+      "bg-primary/10",
+      "select-none",
+      "rounded-full",
+    ],
+    previewImage: ["aspect-square size-full", "object-cover", "rounded-lg"],
+    size: ["text-muted-foreground text-xs"],
   },
 });
 
 export type FileUploadVariantProps = VariantProps<typeof fileUploadVariants>;
 export type FileUploadVariants = ReturnType<typeof fileUploadVariants>;
 export type FileUploadSlots = keyof FileUploadVariants;
+
+export type FileUploadItemVariantProps = VariantProps<typeof fileUploadItemVariants>;
+export type FileUploadItemVariants = ReturnType<typeof fileUploadItemVariants>;
+export type FileUploadItemSlots = keyof FileUploadItemVariants;

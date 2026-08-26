@@ -14,7 +14,12 @@ export const tagsInputVariants = tv({
       "w-auto min-w-18 max-w-full flex-auto shrink basis-auto",
       "h-7 in-data-[size=lg]:h-8 in-data-[size=sm]:h-6",
     ],
-    item: [
+  },
+});
+
+export const tagsInputItemVariants = tv({
+  slots: {
+    base: [
       "h-6 in-data-[size=lg]:h-7 in-data-[size=sm]:h-5 max-w-full",
       "pe-0.5 in-data-[size=lg]:ps-2 in-data-[size=sm]:ps-1 ps-1.5",
       "inline-flex shrink-0 items-center gap-1",
@@ -23,7 +28,7 @@ export const tagsInputVariants = tv({
       "rounded-md border outline-hidden",
       "data-highlighted:border-primary/30 data-highlighted:bg-primary/10",
     ],
-    itemDelete: [
+    delete: [
       "in-data-[size=lg]:size-6 in-data-[size=sm]:size-4 size-5",
       "shrink-0",
       "text-muted-foreground",
@@ -31,12 +36,16 @@ export const tagsInputVariants = tv({
       "[&_svg:not([class*='size-'])]:size-3",
       "hover:text-foreground",
     ],
-    itemInput: ["px-1 text-xs", "h-6 in-data-[size=lg]:h-7 in-data-[size=sm]:h-5"],
-    itemPreview: ["inline-flex max-w-full items-center gap-1"],
-    itemText: "truncate",
+    input: ["px-1 text-xs", "h-6 in-data-[size=lg]:h-7 in-data-[size=sm]:h-5"],
+    preview: ["inline-flex max-w-full items-center gap-1"],
+    text: "truncate",
   },
 });
 
 export type TagsInputVariantProps = VariantProps<typeof tagsInputVariants>;
 export type TagsInputVariants = ReturnType<typeof tagsInputVariants>;
 export type TagsInputSlots = keyof TagsInputVariants;
+
+export type TagsInputItemVariantProps = VariantProps<typeof tagsInputItemVariants>;
+export type TagsInputItemVariants = ReturnType<typeof tagsInputItemVariants>;
+export type TagsInputItemSlots = keyof TagsInputItemVariants;

@@ -1,26 +1,42 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const dropdownMenuContentVariants = tv({
-  base: [
-    "z-[calc(50+var(--nested-layer-count,0))]",
-    "max-h-(--available-height) not-[class*='w-']:min-w-32",
-    "p-1",
-    "bg-popover",
-    "text-popover-foreground",
-    "rounded-xl border shadow-lg/5",
-    "origin-(--transform-origin)",
-    "outline-hidden",
-    "overflow-y-auto",
-    "duration-100",
-    "data-[state=open]:animate-in",
-    "data-[state=open]:fade-in-0",
-    "data-[state=open]:zoom-in-[98%]",
-    "data-[placement=bottom]:slide-in-from-top-2",
-    "data-[placement=left]:slide-in-from-end-2",
-    "data-[placement=right]:slide-in-from-start-2",
-    "data-[placement=top]:slide-in-from-bottom-2",
-    "motion-reduce:animate-none!",
-  ],
+export const dropdownMenuVariants = tv({
+  slots: {
+    arrowTip: ["border-s border-t"],
+    content: [
+      "z-[calc(50+var(--nested-layer-count,0))]",
+      "max-h-(--available-height) not-[class*='w-']:min-w-32",
+      "p-1",
+      "bg-popover",
+      "text-popover-foreground",
+      "rounded-xl border shadow-lg/5",
+      "origin-(--transform-origin)",
+      "outline-hidden",
+      "overflow-y-auto",
+      "duration-100",
+      "data-[state=open]:animate-in",
+      "data-[state=open]:fade-in-0",
+      "data-[state=open]:zoom-in-[98%]",
+      "data-[placement=bottom]:slide-in-from-top-2",
+      "data-[placement=left]:slide-in-from-end-2",
+      "data-[placement=right]:slide-in-from-start-2",
+      "data-[placement=top]:slide-in-from-bottom-2",
+      "motion-reduce:animate-none!",
+    ],
+    itemGroupLabel: [
+      "px-2 py-1.5",
+      "font-medium text-muted-foreground text-sm",
+      "pointer-events-none",
+    ],
+    positioner: "outline-hidden",
+    quickItem: ["flex-col gap-1", "[&_svg:not([class*='size-'])]:size-4.5"],
+    separator: ["my-1 h-px bg-border"],
+    shortcut: [
+      "ms-auto rtl:me-auto",
+      "text-muted-foreground text-xs tracking-widest",
+      "group-data-highlighted/menu-item:group-data-[variant=destructive]/menu-item:text-destructive dark:group-data-highlighted/menu-item:group-data-[variant=destructive]/menu-item:text-destructive-foreground",
+    ],
+  },
 });
 
 export const dropdownMenuItemVariants = tv({
@@ -62,61 +78,10 @@ export const dropdownMenuItemVariants = tv({
   },
 });
 
-export const dropdownMenuPositionerVariants = tv({
-  base: "outline-hidden",
-});
-
-export const dropdownMenuSeparatorVariants = tv({
-  base: ["my-1 h-px bg-border"],
-});
-
-export const dropdownMenuQuickItemVariants = tv({
-  base: ["flex-col gap-1", "[&_svg:not([class*='size-'])]:size-4.5"],
-});
-
-export const dropdownMenuItemGroupLabelVariants = tv({
-  base: ["px-2 py-1.5", "font-medium text-muted-foreground text-sm", "pointer-events-none"],
-});
-
-export const dropdownMenuShortcutVariants = tv({
-  base: [
-    "ms-auto rtl:me-auto",
-    "text-muted-foreground text-xs tracking-widest",
-    "group-data-highlighted/menu-item:group-data-[variant=destructive]/menu-item:text-destructive dark:group-data-highlighted/menu-item:group-data-[variant=destructive]/menu-item:text-destructive-foreground",
-  ],
-});
-
-export const dropdownMenuInline5Variants = tv({
-  base: ["border-s border-t"],
-});
-
-export type DropdownMenuContentVariantProps = VariantProps<typeof dropdownMenuContentVariants>;
-export type DropdownMenuContentVariants = ReturnType<typeof dropdownMenuContentVariants>;
+export type DropdownMenuVariantProps = VariantProps<typeof dropdownMenuVariants>;
+export type DropdownMenuVariants = ReturnType<typeof dropdownMenuVariants>;
+export type DropdownMenuSlots = keyof DropdownMenuVariants;
 
 export type DropdownMenuItemVariantProps = VariantProps<typeof dropdownMenuItemVariants>;
 export type DropdownMenuItemVariants = ReturnType<typeof dropdownMenuItemVariants>;
 export type DropdownMenuItemSlots = keyof DropdownMenuItemVariants;
-
-export type DropdownMenuPositionerVariantProps = VariantProps<
-  typeof dropdownMenuPositionerVariants
->;
-export type DropdownMenuPositionerVariants = ReturnType<typeof dropdownMenuPositionerVariants>;
-
-export type DropdownMenuSeparatorVariantProps = VariantProps<typeof dropdownMenuSeparatorVariants>;
-export type DropdownMenuSeparatorVariants = ReturnType<typeof dropdownMenuSeparatorVariants>;
-
-export type DropdownMenuQuickItemVariantProps = VariantProps<typeof dropdownMenuQuickItemVariants>;
-export type DropdownMenuQuickItemVariants = ReturnType<typeof dropdownMenuQuickItemVariants>;
-
-export type DropdownMenuItemGroupLabelVariantProps = VariantProps<
-  typeof dropdownMenuItemGroupLabelVariants
->;
-export type DropdownMenuItemGroupLabelVariants = ReturnType<
-  typeof dropdownMenuItemGroupLabelVariants
->;
-
-export type DropdownMenuShortcutVariantProps = VariantProps<typeof dropdownMenuShortcutVariants>;
-export type DropdownMenuShortcutVariants = ReturnType<typeof dropdownMenuShortcutVariants>;
-
-export type DropdownMenuInline5VariantProps = VariantProps<typeof dropdownMenuInline5Variants>;
-export type DropdownMenuInline5Variants = ReturnType<typeof dropdownMenuInline5Variants>;
