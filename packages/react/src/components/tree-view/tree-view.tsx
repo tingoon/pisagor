@@ -29,7 +29,6 @@ import {
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "react";
 import { formControlToggleVariants } from "../../internal/form-control/form-control-variants";
-import type { WithTestId } from "../../internal/types";
 import { TreeViewContext, type TreeViewContextProps, useTreeView } from "./tree-view.context";
 
 // #region Types
@@ -43,10 +42,7 @@ export interface TreeNodeType<T = unknown> {
 
 export type TreeCollection = arkTreeCollection;
 
-export interface TreeViewProps
-  extends TreeViewPrimitive.RootComponentProps,
-    TreeViewContextProps,
-    WithTestId {}
+export interface TreeViewProps extends TreeViewPrimitive.RootComponentProps, TreeViewContextProps {}
 
 export interface NodeProviderProps<T extends TreeNodeType = TreeNodeType>
   extends TreeViewPrimitive.NodeProviderProps<T> {}
@@ -120,7 +116,6 @@ export function TreeViewRoot({
   lazyMount = true,
   unmountOnExit = true,
   className,
-  testId,
   ...rest
 }: TreeViewProps) {
   return (
@@ -128,7 +123,6 @@ export function TreeViewRoot({
       <TreeViewPrimitive.Root
         {...rest}
         className={treeViewVariants({ className })}
-        data-testid={testId}
         lazyMount={lazyMount}
         unmountOnExit={unmountOnExit}
       />

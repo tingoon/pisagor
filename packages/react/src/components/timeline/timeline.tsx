@@ -9,10 +9,8 @@ import {
   timelineVariants,
 } from "@pisagor/styles/ui/timeline";
 import type { ComponentProps, ReactNode } from "react";
-import type { WithTestId } from "../../internal/types";
-
 // #region Types
-export interface TimelineRootProps extends ComponentProps<typeof ark.ol>, WithTestId {
+export interface TimelineRootProps extends ComponentProps<typeof ark.ol> {
   /**
    * Timeline layout.
    *
@@ -47,12 +45,7 @@ export interface TimelineProps extends Omit<TimelineRootProps, "children"> {
 // #endregion
 
 // #region Parts
-export function TimelineRoot({
-  orientation = "vertical",
-  className,
-  testId,
-  ...rest
-}: TimelineRootProps) {
+export function TimelineRoot({ orientation = "vertical", className, ...rest }: TimelineRootProps) {
   return (
     <ark.ol
       {...rest}
@@ -60,7 +53,6 @@ export function TimelineRoot({
       data-orientation={orientation}
       data-part="root"
       data-scope="timeline"
-      data-testid={testId}
     />
   );
 }

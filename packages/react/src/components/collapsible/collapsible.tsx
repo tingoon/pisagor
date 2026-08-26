@@ -7,12 +7,8 @@ import {
   collapsibleVariants,
 } from "@pisagor/styles/ui/collapsible";
 import type { ComponentProps } from "react";
-import type { WithTestId } from "../../internal/types";
-
 // #region Types
-export interface CollapsibleRootProps
-  extends ComponentProps<typeof CollapsiblePrimitive.Root>,
-    WithTestId {}
+export interface CollapsibleRootProps extends ComponentProps<typeof CollapsiblePrimitive.Root> {}
 
 export type CollapsibleTriggerProps = ComponentProps<typeof CollapsiblePrimitive.Trigger>;
 
@@ -27,7 +23,6 @@ export function CollapsibleRoot({
   lazyMount = true,
   unmountOnExit = true,
   className,
-  testId,
   ...rest
 }: CollapsibleRootProps) {
   return (
@@ -36,7 +31,6 @@ export function CollapsibleRoot({
       className={collapsibleVariants({ className })}
       collapsedHeight={collapsedHeight}
       data-partial-collapse={collapsedHeight ? "" : undefined}
-      data-testid={testId}
       lazyMount={collapsedHeight ? false : lazyMount}
       unmountOnExit={collapsedHeight ? false : unmountOnExit}
     />

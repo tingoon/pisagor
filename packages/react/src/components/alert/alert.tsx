@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/react/factory";
 import { type AlertSlots, type AlertVariantProps, alertVariants } from "@pisagor/styles/ui/alert";
 import type { ComponentProps, ReactNode } from "react";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 import { AlertContext, useAlert } from "./alert.context";
 
 // #region Types
@@ -13,9 +13,7 @@ type AlertActionProps = ComponentProps<typeof ark.div>;
 
 type AlertClassNames = VariantClassNames<AlertSlots>;
 
-type AlertRootProps = Omit<ComponentProps<typeof ark.div>, "title"> &
-  AlertVariantProps &
-  WithTestId;
+type AlertRootProps = Omit<ComponentProps<typeof ark.div>, "title"> & AlertVariantProps;
 
 export interface AlertProps extends Omit<AlertRootProps, "children"> {
   /** Leading icon, rendered as a direct child so the grid layout aligns. */
@@ -38,18 +36,12 @@ export interface AlertProps extends Omit<AlertRootProps, "children"> {
 // #endregion
 
 // #region Parts
-export function AlertRoot({ variant, className, children, testId, ...rest }: AlertRootProps) {
+export function AlertRoot({ variant, className, children, ...rest }: AlertRootProps) {
   const slots = alertVariants({ variant });
 
   return (
     <AlertContext value={{ slots }}>
-      <ark.div
-        {...rest}
-        className={slots.base({ className })}
-        data-part="root"
-        data-scope="alert"
-        data-testid={testId}
-      >
+      <ark.div {...rest} className={slots.base({ className })} data-part="root" data-scope="alert">
         {children}
       </ark.div>
     </AlertContext>

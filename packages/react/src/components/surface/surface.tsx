@@ -2,7 +2,6 @@ import { ark } from "@ark-ui/react/factory";
 import { type SurfaceVariantProps, surfaceVariants } from "@pisagor/styles/ui/surface";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
-import type { WithTestId } from "../../internal/types";
 import { SurfaceContext, type SurfaceVariant, useSurface } from "./surface.context";
 
 // #region Types
@@ -15,8 +14,7 @@ const AUTO_VARIANTS = [
 
 export interface SurfaceProps
   extends ComponentProps<typeof ark.div>,
-    Omit<SurfaceVariantProps, "variant">,
-    WithTestId {
+    Omit<SurfaceVariantProps, "variant"> {
   /**
    * Surface elevation level.
    *
@@ -35,7 +33,6 @@ export function Surface({
   bordered = false,
   className,
   children,
-  testId,
   ...rest
 }: SurfaceProps) {
   const parent = useSurface();
@@ -62,7 +59,6 @@ export function Surface({
         data-depth={surface.depth}
         data-part="root"
         data-scope="surface"
-        data-testid={testId}
         data-variant={surface.variant}
       >
         {children}

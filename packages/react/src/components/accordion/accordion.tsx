@@ -6,7 +6,6 @@ import {
   accordionItemVariants,
 } from "@pisagor/styles/accordion";
 import type { ComponentProps, ReactNode } from "react";
-import type { WithTestId } from "../../internal/types";
 
 // #region Types
 interface AccordionPresetItem {
@@ -16,7 +15,7 @@ interface AccordionPresetItem {
   disabled?: boolean;
 }
 
-export type AccordionRootProps = ComponentProps<typeof AccordionPrimitive.Root> & WithTestId;
+export type AccordionRootProps = ComponentProps<typeof AccordionPrimitive.Root>;
 
 export type AccordionItemProps = ComponentProps<typeof AccordionPrimitive.Item>;
 
@@ -35,14 +34,12 @@ export function AccordionRoot({
   lazyMount = true,
   unmountOnExit = true,
   children,
-  testId,
   ...rest
 }: AccordionRootProps) {
   return (
     <AccordionPrimitive.Root
       {...rest}
       collapsible={collapsible}
-      data-testid={testId}
       lazyMount={lazyMount}
       unmountOnExit={unmountOnExit}
     >

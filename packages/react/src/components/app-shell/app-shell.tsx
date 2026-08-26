@@ -1,7 +1,6 @@
 import { appShellVariants } from "@pisagor/styles/ui/app-shell";
 import { useHotkey } from "@tanstack/react-hotkeys";
 import { type ComponentProps, useCallback, useMemo, useRef, useState } from "react";
-import type { WithTestId } from "../../internal/types";
 import {
   APP_SHELL_DEFAULT_INSPECTOR_RESIZABLE_PROPS,
   APP_SHELL_DEFAULT_PANEL_RESIZABLE_PROPS,
@@ -54,7 +53,7 @@ function buildGridRows(hasBanner: boolean, hasNavigation: boolean) {
   return [...(hasBanner ? ["auto"] : []), ...(hasNavigation ? ["auto"] : []), "auto"].join(" ");
 }
 
-export interface AppShellRootProps extends ComponentProps<"div">, WithTestId {}
+export interface AppShellRootProps extends ComponentProps<"div"> {}
 
 function useShellGridStyle(childSlots: AppShellSlots) {
   const hasBanner = Boolean(childSlots.banner);
@@ -70,7 +69,7 @@ function useShellGridStyle(childSlots: AppShellSlots) {
   );
 }
 
-export function AppShellRoot({ className, style, testId, children, ...rest }: AppShellRootProps) {
+export function AppShellRoot({ className, style, children, ...rest }: AppShellRootProps) {
   const childSlots = useMemo(() => partitionAppShellChildren(children), [children]);
   const slots = useMemo(() => appShellVariants(), []);
   const [regionRevision, setRegionRevision] = useState(0);
@@ -155,7 +154,6 @@ export function AppShellRoot({ className, style, testId, children, ...rest }: Ap
         data-part="root"
         data-resizing={regionResizing ? "" : undefined}
         data-scope="app-shell"
-        data-testid={testId}
         ref={shellRef}
         style={{ ...shellStyle, ...gridStyle, ...style }}
       >

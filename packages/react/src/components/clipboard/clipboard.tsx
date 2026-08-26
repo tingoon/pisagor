@@ -14,7 +14,7 @@ import {
   shellVariantArgs,
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 import { Button, type ButtonProps } from "../button";
 import { ClipboardContext, useClipboard } from "./clipboard.context";
 
@@ -23,7 +23,7 @@ type ClipboardClassNames = VariantClassNames<ClipboardSlots>;
 
 type ClipboardValueSize = ClipboardVariantProps["valueSize"];
 
-type ClipboardRootProps = ComponentProps<typeof ClipboardPrimitive.Root> & WithTestId;
+type ClipboardRootProps = ComponentProps<typeof ClipboardPrimitive.Root>;
 
 export interface ClipboardProps extends Omit<ClipboardRootProps, "children"> {
   /**
@@ -91,9 +91,9 @@ function ClipboardProvider({
   return <ClipboardContext value={{ slots }}>{children}</ClipboardContext>;
 }
 
-function ClipboardRoot({ children, className, testId, ...rest }: ClipboardRootProps) {
+function ClipboardRoot({ children, className, ...rest }: ClipboardRootProps) {
   return (
-    <ClipboardPrimitive.Root {...rest} className={className} data-testid={testId}>
+    <ClipboardPrimitive.Root {...rest} className={className}>
       {children}
     </ClipboardPrimitive.Root>
   );
@@ -160,7 +160,6 @@ export function Clipboard({
   copyIcon = <ClipboardIcon />,
   label,
   labelProps,
-  testId,
   valueSize = "md",
   variant = "input",
   ...rest
@@ -171,7 +170,7 @@ export function Clipboard({
   const shellClassName = formControlShellVariants({ size: "md", ...shellArgs });
 
   const control = (
-    <ClipboardRoot {...rest} className={className} testId={testId}>
+    <ClipboardRoot {...rest} className={className}>
       <ClipboardControl className={classNames?.control}>
         {variant === "input" && (
           <ClipboardInput

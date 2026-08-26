@@ -5,15 +5,9 @@ import { XIcon } from "@phosphor-icons/react";
 import { popoverContentVariants } from "@pisagor/styles/ui/popover";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
-import type { WithTestId } from "../../internal/types";
 import { Button } from "../button";
 import { ScrollArea } from "../scroll-area";
-import {
-  PopoverContentContext,
-  PopoverRootContext,
-  usePopoverContent,
-  usePopoverRoot,
-} from "./popover.context";
+import { PopoverContentContext, usePopoverContent } from "./popover.context";
 
 // #region Types
 export interface PopoverContentProps extends ComponentProps<typeof PopoverPrimitive.Content> {
@@ -32,9 +26,7 @@ export interface PopoverHeaderProps extends ComponentProps<typeof ark.div> {
   title?: string;
 }
 
-export interface PopoverRootProps
-  extends ComponentProps<typeof PopoverPrimitive.Root>,
-    WithTestId {}
+export interface PopoverRootProps extends ComponentProps<typeof PopoverPrimitive.Root> {}
 
 export type PopoverTriggerProps = ComponentProps<typeof PopoverPrimitive.Trigger>;
 
@@ -60,25 +52,20 @@ export function PopoverRoot({
   lazyMount = true,
   unmountOnExit = true,
   modal = false,
-  testId,
   ...rest
 }: PopoverRootProps) {
   return (
-    <PopoverRootContext value={{ testId }}>
-      <PopoverPrimitive.Root
-        lazyMount={lazyMount}
-        modal={modal}
-        unmountOnExit={unmountOnExit}
-        {...rest}
-      />
-    </PopoverRootContext>
+    <PopoverPrimitive.Root
+      lazyMount={lazyMount}
+      modal={modal}
+      unmountOnExit={unmountOnExit}
+      {...rest}
+    />
   );
 }
 
 export function PopoverTrigger(props: PopoverTriggerProps) {
-  const { testId } = usePopoverRoot() ?? {};
-
-  return <PopoverPrimitive.Trigger data-testid={testId} {...props} />;
+  return <PopoverPrimitive.Trigger {...props} />;
 }
 
 export function PopoverAnchor(props: PopoverAnchorProps) {

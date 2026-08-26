@@ -1,14 +1,12 @@
 import { ark } from "@ark-ui/react/factory";
 import { type BadgeVariantProps, badgeVariants } from "@pisagor/styles/ui/badge";
 import type { ComponentProps } from "react";
-import type { WithTestId } from "../../internal/types";
-
 // #region Types
 export type BadgeVariant = BadgeVariantProps["variant"];
 
 type BadgeRootProps = ComponentProps<typeof ark.span>;
 
-export interface BadgeProps extends BadgeRootProps, BadgeVariantProps, WithTestId {}
+export interface BadgeProps extends BadgeRootProps, BadgeVariantProps {}
 // #endregion
 
 // #region Part
@@ -17,7 +15,6 @@ export function Badge({
   size = "md",
   pill = false,
   className,
-  testId,
   ...rest
 }: BadgeProps) {
   return (
@@ -27,7 +24,6 @@ export function Badge({
       data-part="root"
       data-scope="badge"
       data-size={size}
-      data-testid={testId}
       data-variant={variant}
     />
   );

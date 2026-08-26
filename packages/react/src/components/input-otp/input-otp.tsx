@@ -8,7 +8,6 @@ import {
 } from "@pisagor/styles/ui/input-otp";
 import type { ComponentProps } from "react";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
-import type { WithTestId } from "../../internal/types";
 import { Input, type InputProps } from "../input/input";
 
 // #region Types
@@ -16,8 +15,7 @@ export type InputOTPRootProps = Omit<
   ComponentProps<typeof PinInputPrimitive.Root>,
   "onValueChange"
 > &
-  Pick<InputProps, "size" | "variant"> &
-  WithTestId;
+  Pick<InputProps, "size" | "variant">;
 
 export interface InputOTPProps extends InputOTPRootProps {
   onValueChange?: (value: string[]) => void;
@@ -37,7 +35,6 @@ export function InputOTPRoot({
   className,
   children,
   onValueChange,
-  testId,
   ...rest
 }: InputOTPProps) {
   return (
@@ -45,7 +42,6 @@ export function InputOTPRoot({
       <PinInputPrimitive.Root
         {...rest}
         className={inputOtpVariants()}
-        data-testid={testId}
         onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
         otp={otp}
         placeholder={placeholder ?? ""}

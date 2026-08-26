@@ -9,14 +9,11 @@ import {
   shellVariantArgs,
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { WithTestId } from "../../internal/types";
 import { Separator } from "../separator";
 import { FieldContext, useField } from "./field.context";
 
 // #region Types
-export type FieldRootProps = ComponentProps<typeof FieldPrimitive.Root> &
-  FieldVariantProps &
-  WithTestId;
+export type FieldRootProps = ComponentProps<typeof FieldPrimitive.Root> & FieldVariantProps;
 
 export type FieldProps = FieldRootProps;
 
@@ -52,7 +49,6 @@ export function FieldRoot({
   reverse = false,
   className,
   children,
-  testId,
   ...rest
 }: FieldRootProps) {
   const slots = useMemo(() => fieldVariants({ orientation, reverse }), [orientation, reverse]);
@@ -63,7 +59,6 @@ export function FieldRoot({
         {...rest}
         className={slots.base({ className })}
         data-orientation={orientation}
-        data-testid={testId}
       >
         {children}
       </FieldPrimitive.Root>

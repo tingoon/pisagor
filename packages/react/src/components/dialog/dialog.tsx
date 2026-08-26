@@ -15,7 +15,6 @@ import {
   dialogTitleVariants,
 } from "@pisagor/styles/ui/dialog";
 import type { ComponentProps } from "react";
-import type { WithTestId } from "../../internal/types";
 import { Button } from "../button";
 import { ScrollArea } from "../scroll-area";
 import { DialogContext, useDialog } from "./dialog.context";
@@ -77,7 +76,7 @@ export type DialogFooterProps = ComponentProps<typeof ark.div> & {
   dataScope?: string;
 };
 
-export type DialogRootProps = ComponentProps<typeof DialogPrimitive.Root> & WithTestId;
+export type DialogRootProps = ComponentProps<typeof DialogPrimitive.Root>;
 
 export type DialogProps = DialogRootProps;
 // #endregion
@@ -87,11 +86,10 @@ export function DialogRoot({
   modal = true,
   lazyMount = true,
   unmountOnExit = true,
-  testId,
   ...rest
 }: DialogRootProps) {
   return (
-    <DialogContext value={{ modal, testId }}>
+    <DialogContext value={{ modal }}>
       <DialogPrimitive.Root
         lazyMount={lazyMount}
         modal={modal}
@@ -140,8 +138,6 @@ export function DialogContent({
   children,
   ...rest
 }: DialogContentProps) {
-  const { testId } = useDialog();
-
   return (
     <Portal>
       <DialogBackdrop />
@@ -150,7 +146,6 @@ export function DialogContent({
         <DialogPrimitive.Content
           {...rest}
           className={dialogContentVariants({ bottomStickOnMobile, className, size })}
-          data-testid={testId}
         >
           {children}
 

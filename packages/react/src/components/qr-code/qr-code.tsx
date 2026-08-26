@@ -5,10 +5,8 @@ import {
   qrCodeVariants,
 } from "@pisagor/styles/ui/qr-code";
 import type { ComponentProps } from "react";
-import type { WithTestId } from "../../internal/types";
-
 // #region Types
-export type QrCodeRootProps = ComponentProps<typeof QrCodePrimitive.Root> & WithTestId;
+export type QrCodeRootProps = ComponentProps<typeof QrCodePrimitive.Root>;
 
 export type QrCodeFrameProps = ComponentProps<typeof QrCodePrimitive.Frame>;
 
@@ -18,9 +16,9 @@ export type QrCodeDownloadProps = ComponentProps<typeof QrCodePrimitive.Download
 // #endregion
 
 // #region Parts
-export function QrCodeRoot({ className, children, testId, ...rest }: QrCodeRootProps) {
+export function QrCodeRoot({ className, children, ...rest }: QrCodeRootProps) {
   return (
-    <QrCodePrimitive.Root {...rest} className={qrCodeVariants({ className })} data-testid={testId}>
+    <QrCodePrimitive.Root {...rest} className={qrCodeVariants({ className })}>
       {children ?? <QrCodeFrame />}
     </QrCodePrimitive.Root>
   );

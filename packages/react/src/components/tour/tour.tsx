@@ -7,7 +7,6 @@ import { tourVariants } from "@pisagor/styles/ui/tour";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, MouseEvent } from "react";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import type { WithTestId } from "../../internal/types";
 import { Button } from "../button";
 import {
   Dialog,
@@ -21,7 +20,7 @@ import { TourContext, useTourContext } from "./tour.context";
 // #region Types
 export type TourStepType = TourStepDetails;
 
-export type TourRootProps = Omit<ComponentProps<typeof TourPrimitive.Root>, "tour"> & WithTestId;
+export type TourRootProps = Omit<ComponentProps<typeof TourPrimitive.Root>, "tour">;
 
 export interface TourProps extends TourRootProps {
   /** Whether to enable arrow key navigation between steps */
@@ -69,7 +68,6 @@ export function TourRoot({
   steps = [],
   lazyMount = true,
   unmountOnExit = true,
-  testId,
   ...rest
 }: TourProps) {
   const [isStarted, setIsStarted] = useState(false);
@@ -96,7 +94,7 @@ export function TourRoot({
   }, [tour]);
 
   return (
-    <TourContext value={{ handleStart, slots, testId, tour }}>
+    <TourContext value={{ handleStart, slots, tour }}>
       <TourPrimitive.Root
         lazyMount={lazyMount}
         tour={tour}
@@ -153,17 +151,13 @@ export function TourContent({
   children,
   ...rest
 }: TourContentProps) {
-  const { slots, testId } = useTourContext();
+  const { slots } = useTourContext();
 
   return (
     <Portal>
       <TourBackdrop />
       <TourPositioner>
-        <TourPrimitive.Content
-          {...rest}
-          className={slots.content({ className })}
-          data-testid={testId}
-        >
+        <TourPrimitive.Content {...rest} className={slots.content({ className })}>
           {children ?? (
             <>
               <TourHeader>

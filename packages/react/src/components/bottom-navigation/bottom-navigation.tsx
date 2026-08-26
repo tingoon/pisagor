@@ -3,11 +3,10 @@ import { Tabs as TabsPrimitive } from "@ark-ui/react/tabs";
 import { bottomNavigationVariants } from "@pisagor/styles/ui/bottom-navigation";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
-import type { WithTestId } from "../../internal/types";
 import { BottomNavigationContext, useBottomNavigation } from "./bottom-navigation.context";
 
 // #region Types
-export type BottomNavigationRootProps = ComponentProps<typeof TabsPrimitive.Root> & WithTestId;
+export type BottomNavigationRootProps = ComponentProps<typeof TabsPrimitive.Root>;
 
 export type BottomNavigationProps = BottomNavigationRootProps;
 
@@ -21,12 +20,12 @@ export interface BottomNavigationItemLabelProps extends ComponentProps<typeof ar
 // #endregion
 
 // #region Parts
-export function BottomNavigationRoot({ className, testId, ...rest }: BottomNavigationRootProps) {
+export function BottomNavigationRoot({ className, ...rest }: BottomNavigationRootProps) {
   const slots = useMemo(() => bottomNavigationVariants(), []);
 
   return (
     <BottomNavigationContext value={{ slots }}>
-      <TabsPrimitive.Root {...rest} className={slots.base({ className })} data-testid={testId} />
+      <TabsPrimitive.Root {...rest} className={slots.base({ className })} />
     </BottomNavigationContext>
   );
 }

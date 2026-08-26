@@ -23,15 +23,13 @@ import {
   shellVariantArgs,
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { WithTestId } from "../../internal/types";
 import { Toggle } from "../toggle";
 import { VisuallyHidden } from "../visually-hidden";
 import { RichTextEditorContext, useRichTextEditor } from "./rich-text-editor.context";
 
 // #region Types
 export interface RichTextEditorRootProps
-  extends Omit<ComponentProps<typeof ark.div>, "defaultValue" | "onChange">,
-    WithTestId {
+  extends Omit<ComponentProps<typeof ark.div>, "defaultValue" | "onChange"> {
   /**
    * Visual shell variant. When omitted, resolves from the nearest `Surface` context.
    */
@@ -92,7 +90,6 @@ export function RichTextEditorRoot({
   id,
   className,
   children,
-  testId,
   "aria-label": ariaLabel,
   ...rest
 }: RichTextEditorRootProps) {
@@ -174,7 +171,6 @@ export function RichTextEditorRoot({
         data-part="root"
         data-readonly={readOnly ? "true" : undefined}
         data-scope="rich-text-editor"
-        data-testid={testId}
         role="group"
       >
         {name ? (

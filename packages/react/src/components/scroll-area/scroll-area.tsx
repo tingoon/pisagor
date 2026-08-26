@@ -5,7 +5,7 @@ import {
   scrollAreaVariants,
 } from "@pisagor/styles/ui/scroll-area";
 import type { ComponentProps } from "react";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 import { ScrollAreaContext, useScrollArea } from "./scroll-area.context";
 
 // #region Types
@@ -17,9 +17,7 @@ type ScrollAreaThumbProps = ComponentProps<typeof ScrollAreaPrimitive.Thumb>;
 
 type ScrollAreaClassNames = VariantClassNames<ScrollAreaSlots>;
 
-type ScrollAreaRootProps = ComponentProps<typeof ScrollAreaPrimitive.Root> &
-  ScrollAreaVariantProps &
-  WithTestId;
+type ScrollAreaRootProps = ComponentProps<typeof ScrollAreaPrimitive.Root> & ScrollAreaVariantProps;
 
 export interface ScrollAreaProps extends Omit<ScrollAreaRootProps, "children"> {
   /** Slot class names */
@@ -35,22 +33,12 @@ export interface ScrollAreaProps extends Omit<ScrollAreaRootProps, "children"> {
 // #endregion
 
 // #region Parts
-function ScrollAreaRoot({
-  children,
-  className,
-  scrollFade = false,
-  testId,
-  ...rest
-}: ScrollAreaRootProps) {
+function ScrollAreaRoot({ children, className, scrollFade = false, ...rest }: ScrollAreaRootProps) {
   const slots = scrollAreaVariants({ scrollFade });
 
   return (
     <ScrollAreaContext value={{ slots }}>
-      <ScrollAreaPrimitive.Root
-        {...rest}
-        className={slots.base({ className })}
-        data-testid={testId}
-      >
+      <ScrollAreaPrimitive.Root {...rest} className={slots.base({ className })}>
         {children}
       </ScrollAreaPrimitive.Root>
     </ScrollAreaContext>
@@ -100,13 +88,12 @@ export function ScrollArea({
   classNames,
   scrollbarProps,
   scrollFade,
-  testId,
   thumbProps,
   viewportProps,
   ...rest
 }: ScrollAreaProps) {
   return (
-    <ScrollAreaRoot {...rest} className={className} scrollFade={scrollFade} testId={testId}>
+    <ScrollAreaRoot {...rest} className={className} scrollFade={scrollFade}>
       <ScrollAreaViewport {...viewportProps} className={classNames?.viewport}>
         {children}
       </ScrollAreaViewport>

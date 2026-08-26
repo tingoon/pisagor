@@ -5,12 +5,12 @@ import {
 } from "@pisagor/styles/ui/navigation-menu";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 
 // #region Types
 type NavigationMenuClassNames = VariantClassNames<NavigationMenuSlots>;
 
-export interface NavigationMenuProps extends ComponentProps<typeof ark.nav>, WithTestId {
+export interface NavigationMenuProps extends ComponentProps<typeof ark.nav> {
   /** Slot class names */
   classNames?: NavigationMenuClassNames;
 }
@@ -34,12 +34,7 @@ export interface NavigationMenuLinkProps extends ComponentProps<typeof ark.a> {
 // #endregion
 
 // #region Parts
-export function NavigationMenuRoot({
-  className,
-  classNames,
-  testId,
-  ...rest
-}: NavigationMenuProps) {
+export function NavigationMenuRoot({ className, classNames, ...rest }: NavigationMenuProps) {
   const slots = navigationMenuVariants();
 
   return (
@@ -48,7 +43,6 @@ export function NavigationMenuRoot({
       className={slots.base({ className: className })}
       data-part="root"
       data-scope="navigation-menu"
-      data-testid={testId}
     />
   );
 }

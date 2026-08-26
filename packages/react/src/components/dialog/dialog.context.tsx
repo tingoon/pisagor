@@ -10,7 +10,6 @@ interface DialogContextProps {
    * When `false`, the overlay is not rendered and content outside the dialog stays interactable.
    */
   modal?: boolean;
-  testId?: string;
 }
 
 export const { DialogContext, useDialog } = createContext<DialogContextProps>()({

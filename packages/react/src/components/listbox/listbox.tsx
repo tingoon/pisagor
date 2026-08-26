@@ -21,7 +21,6 @@ import {
   listboxVariants,
 } from "@pisagor/styles/ui/listbox";
 import type { ComponentProps } from "react";
-import type { WithTestId } from "../../internal/types";
 import { DropdownMenu, type DropdownMenuShortcutProps } from "../dropdown-menu";
 
 // #region Types
@@ -32,8 +31,7 @@ interface ListboxPresetItem {
 }
 
 export interface ListboxRootProps<T extends CollectionItem = CollectionItem>
-  extends Omit<ListboxRootPropsPrimitive<T>, "collection" | "onValueChange">,
-    WithTestId {
+  extends Omit<ListboxRootPropsPrimitive<T>, "collection" | "onValueChange"> {
   collection?: ListCollection<T>;
   onValueChange?: (value: string | string[]) => void;
 }
@@ -70,7 +68,6 @@ export function ListboxRoot<T extends CollectionItem = CollectionItem>({
   collection: collectionProp,
   children,
   onValueChange,
-  testId,
   ...rest
 }: ListboxRootProps<T>) {
   return (
@@ -78,7 +75,6 @@ export function ListboxRoot<T extends CollectionItem = CollectionItem>({
       {...rest}
       className={listboxVariants({ className })}
       collection={collectionProp as ListCollection<T>}
-      data-testid={testId}
       onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
     >
       {children}

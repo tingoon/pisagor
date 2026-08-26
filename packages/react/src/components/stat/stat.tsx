@@ -8,7 +8,7 @@ import {
 } from "@pisagor/styles/ui/stat";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 
 // #region Types
 type StatLabelProps = ComponentProps<typeof ark.div>;
@@ -20,8 +20,7 @@ type StatTrendProps = ComponentProps<typeof ark.div> & StatTrendVariantProps;
 type StatClassNames = VariantClassNames<StatSlots>;
 
 type StatRootProps = ComponentProps<typeof ark.div> &
-  StatVariantProps &
-  WithTestId & {
+  StatVariantProps & {
     /** Slot class names */
     classNames?: StatClassNames;
   };
@@ -52,7 +51,7 @@ interface StatPartProps extends ComponentProps<typeof ark.div> {
 // #endregion
 
 // #region Parts
-export function StatRoot({ variant, className, classNames, testId, ...rest }: StatRootProps) {
+export function StatRoot({ variant, className, classNames, ...rest }: StatRootProps) {
   const slots = statVariants({ variant });
 
   return (
@@ -61,7 +60,6 @@ export function StatRoot({ variant, className, classNames, testId, ...rest }: St
       className={slots.base({ className: className })}
       data-part="root"
       data-scope="stat"
-      data-testid={testId}
       data-variant={variant}
     />
   );

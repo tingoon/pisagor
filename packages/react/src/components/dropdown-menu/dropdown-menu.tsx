@@ -14,8 +14,6 @@ import {
   dropdownMenuShortcutVariants,
 } from "@pisagor/styles/ui/dropdown-menu";
 import type { ComponentProps } from "react";
-import type { WithTestId } from "../../internal/types";
-import { DropdownMenuRootContext, useDropdownMenuRoot } from "./dropdown-menu.context";
 
 // #region Types
 export interface DropdownMenuItemGroupProps extends ComponentProps<typeof MenuPrimitive.ItemGroup> {
@@ -33,9 +31,7 @@ export interface DropdownMenuRadioItemGroupProps
   heading?: string;
 }
 
-export interface DropdownMenuRootProps
-  extends ComponentProps<typeof MenuPrimitive.Root>,
-    WithTestId {}
+export interface DropdownMenuRootProps extends ComponentProps<typeof MenuPrimitive.Root> {}
 
 export type DropdownMenuTriggerProps = ComponentProps<typeof MenuPrimitive.Trigger>;
 
@@ -68,25 +64,20 @@ export function DropdownMenuRoot({
   lazyMount = true,
   positioning = { placement: "bottom-end" },
   unmountOnExit = true,
-  testId,
   ...rest
 }: DropdownMenuRootProps) {
   return (
-    <DropdownMenuRootContext value={{ testId }}>
-      <MenuPrimitive.Root
-        lazyMount={lazyMount}
-        positioning={positioning}
-        unmountOnExit={unmountOnExit}
-        {...rest}
-      />
-    </DropdownMenuRootContext>
+    <MenuPrimitive.Root
+      lazyMount={lazyMount}
+      positioning={positioning}
+      unmountOnExit={unmountOnExit}
+      {...rest}
+    />
   );
 }
 
 export function DropdownMenuTrigger(props: DropdownMenuTriggerProps) {
-  const { testId } = useDropdownMenuRoot() ?? {};
-
-  return <MenuPrimitive.Trigger data-testid={testId} {...props} />;
+  return <MenuPrimitive.Trigger {...props} />;
 }
 
 export function DropdownMenuPositioner({ className, ...rest }: DropdownMenuPositionerProps) {

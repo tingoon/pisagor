@@ -14,7 +14,7 @@ import {
   shellVariantArgs,
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 import { InputGroupRoot } from "../input-group/input-group-core";
 import { InputClearAddon } from "./input-clear-button";
 
@@ -25,7 +25,7 @@ type InputVariantProps = InputRootVariantProps;
 
 type InputRootProps = Omit<ComponentProps<typeof InputPrimitive>, "size">;
 
-export interface InputProps extends InputRootProps, InputVariantProps, WithTestId {
+export interface InputProps extends InputRootProps, InputVariantProps {
   /**
    * Visual shell variant. When omitted, resolves from the nearest `Surface` context.
    *
@@ -64,7 +64,6 @@ export function Input({
   className,
   classNames,
   ref,
-  testId,
   ...rest
 }: InputProps) {
   const resolved = useFormControlVariant(variantProp);
@@ -103,7 +102,6 @@ export function Input({
         {...controlProps}
         className={inputRootVariants({ className, size, ...shellArgs })}
         data-size={size}
-        data-testid={testId}
         defaultValue={defaultValue}
         disabled={disabled}
         onChange={changeHandler}
@@ -120,7 +118,6 @@ export function Input({
         {...rest}
         className={slots.clearableRoot({ className: cn(className, classNames?.clearableRoot) })}
         data-size={size}
-        data-testid={testId}
         defaultValue={defaultValue}
         disabled={disabled}
         onChange={handleChange}

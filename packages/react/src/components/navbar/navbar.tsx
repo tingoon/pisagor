@@ -2,12 +2,12 @@ import { ark } from "@ark-ui/react/factory";
 import { type NavbarSlots, navbarVariants } from "@pisagor/styles/ui/navbar";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 
 // #region Types
 type NavbarClassNames = VariantClassNames<NavbarSlots>;
 
-export interface NavbarRootProps extends ComponentProps<typeof ark.header>, WithTestId {
+export interface NavbarRootProps extends ComponentProps<typeof ark.header> {
   /** Slot class names */
   classNames?: NavbarClassNames;
 }
@@ -24,7 +24,7 @@ export interface NavbarNavProps extends ComponentProps<typeof ark.nav> {
 // #endregion
 
 // #region Parts
-export function NavbarRoot({ className, classNames, testId, ...rest }: NavbarRootProps) {
+export function NavbarRoot({ className, classNames, ...rest }: NavbarRootProps) {
   const slots = navbarVariants();
 
   return (
@@ -33,7 +33,6 @@ export function NavbarRoot({ className, classNames, testId, ...rest }: NavbarRoo
       className={slots.base({ className: className })}
       data-part="root"
       data-scope="navbar"
-      data-testid={testId}
     />
   );
 }

@@ -2,12 +2,11 @@ import { ark } from "@ark-ui/react/factory";
 import { type ItemVariantProps, itemVariants } from "@pisagor/styles/ui/item";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";
-import type { WithTestId } from "../../internal/types";
 import { ItemContext, useItem } from "./item.context";
 import { useItemGroup } from "./item-group.context";
 
 // #region Types
-export interface ItemProps extends ComponentProps<typeof ark.div>, ItemVariantProps, WithTestId {}
+export interface ItemProps extends ComponentProps<typeof ark.div>, ItemVariantProps {}
 
 export interface ItemMediaProps extends ComponentProps<typeof ark.div>, ItemVariantProps {}
 
@@ -30,13 +29,7 @@ export interface ItemFooterProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Parts
-export function ItemRoot({
-  variant: variantProp,
-  className,
-  testId,
-  children,
-  ...rest
-}: ItemProps) {
+export function ItemRoot({ variant: variantProp, className, children, ...rest }: ItemProps) {
   const group = useItemGroup();
   const variant = variantProp ?? group?.variant ?? "default";
   const slots = useMemo(() => itemVariants(), []);
@@ -48,7 +41,6 @@ export function ItemRoot({
         className={slots.base({ className, variant })}
         data-part="root"
         data-scope="item"
-        data-testid={testId}
         data-variant={variant}
       >
         {children}

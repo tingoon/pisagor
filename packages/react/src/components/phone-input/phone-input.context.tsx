@@ -20,7 +20,6 @@ interface PhoneInputContextValue {
   popupProps?: Omit<ComboboxContentProps, "className" | "children">;
   size: PhoneInputSize;
   slots: PhoneInputVariants;
-  testId?: string;
   variant?: FormControlVariant;
 }
 

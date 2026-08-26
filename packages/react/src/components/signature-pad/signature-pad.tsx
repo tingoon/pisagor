@@ -11,20 +11,19 @@ import {
   shellVariantArgs,
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 import { Button } from "../button";
 import { SignaturePadContext, useSignaturePad } from "./signature-pad.context";
 
 // #region Types
 type SignaturePadClassNames = VariantClassNames<SignaturePadSlots>;
 
-type SignaturePadRootProps = ComponentProps<typeof SignaturePadPrimitive.Root> &
-  WithTestId & {
-    /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
-    variant?: FormControlVariant;
-    /** Marks the control as invalid for styling and assistive tech. */
-    invalid?: boolean;
-  };
+type SignaturePadRootProps = ComponentProps<typeof SignaturePadPrimitive.Root> & {
+  /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
+  variant?: FormControlVariant;
+  /** Marks the control as invalid for styling and assistive tech. */
+  invalid?: boolean;
+};
 
 export interface SignaturePadProps extends Omit<SignaturePadRootProps, "children"> {
   /** Slot class names */
@@ -45,7 +44,6 @@ function SignaturePadRoot({
   children,
   className,
   invalid = false,
-  testId,
   variant,
   ...rest
 }: SignaturePadRootProps) {
@@ -59,7 +57,6 @@ function SignaturePadRoot({
           aria-invalid={invalid || undefined}
           className={slots.base({ className })}
           data-invalid={invalid || undefined}
-          data-testid={testId}
         >
           {children}
         </SignaturePadPrimitive.Root>
@@ -126,18 +123,11 @@ export function SignaturePad({
   className,
   classNames,
   invalid = false,
-  testId,
   variant,
   ...rest
 }: SignaturePadProps) {
   return (
-    <SignaturePadRoot
-      {...rest}
-      className={className}
-      invalid={invalid}
-      testId={testId}
-      variant={variant}
-    >
+    <SignaturePadRoot {...rest} className={className} invalid={invalid} variant={variant}>
       <SignaturePadControl className={classNames?.control} invalid={invalid}>
         <SignaturePadSegment className={classNames?.segment} />
         <SignaturePadClear className={classNames?.clear} />

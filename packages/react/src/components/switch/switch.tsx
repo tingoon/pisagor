@@ -7,7 +7,7 @@ import {
   shellVariantArgs,
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 import { SwitchContext, useSwitch } from "./switch.context";
 
 // #region Types
@@ -19,11 +19,10 @@ type SwitchHiddenInputProps = ComponentProps<typeof SwitchPrimitive.HiddenInput>
 
 type SwitchClassNames = VariantClassNames<SwitchSlots>;
 
-type SwitchRootProps = ComponentProps<typeof SwitchPrimitive.Root> &
-  WithTestId & {
-    /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
-    variant?: FormControlVariant;
-  };
+type SwitchRootProps = ComponentProps<typeof SwitchPrimitive.Root> & {
+  /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
+  variant?: FormControlVariant;
+};
 
 export interface SwitchProps extends Omit<SwitchRootProps, "children"> {
   onValueChange?: (value: boolean) => void;
@@ -39,13 +38,7 @@ export interface SwitchProps extends Omit<SwitchRootProps, "children"> {
 // #endregion
 
 // #region Parts
-function SwitchRoot({
-  children,
-  className,
-  testId,
-  variant: variantProp,
-  ...rest
-}: SwitchRootProps) {
+function SwitchRoot({ children, className, variant: variantProp, ...rest }: SwitchRootProps) {
   const resolved = useFormControlVariant(variantProp);
   const shellArgs = shellVariantArgs(resolved);
   const controlShellProps = formControlShellProps(resolved);
@@ -53,12 +46,7 @@ function SwitchRoot({
 
   return (
     <SwitchContext value={{ slots }}>
-      <SwitchPrimitive.Root
-        {...rest}
-        {...controlShellProps}
-        className={slots.base({ className })}
-        data-testid={testId}
-      >
+      <SwitchPrimitive.Root {...rest} {...controlShellProps} className={slots.base({ className })}>
         {children}
       </SwitchPrimitive.Root>
     </SwitchContext>
@@ -94,7 +82,6 @@ export function Switch({
   hiddenInputProps,
   onCheckedChange,
   onValueChange,
-  testId,
   thumbProps,
   variant,
   ...rest
@@ -112,7 +99,6 @@ export function Switch({
       {...rest}
       className={className}
       onCheckedChange={handleCheckedChange}
-      testId={testId}
       variant={variant}
     >
       <SwitchControl {...controlProps} className={classNames?.control}>

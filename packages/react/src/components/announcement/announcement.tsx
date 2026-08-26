@@ -5,14 +5,12 @@ import {
   announcementVariants,
 } from "@pisagor/styles/ui/announcement";
 import type { ComponentProps, ReactNode } from "react";
-import type { WithTestId } from "../../internal/types";
 
 // #region Types
 type AnnouncementTitleProps = ComponentProps<typeof ark.span>;
 
 type AnnouncementRootProps = Omit<ComponentProps<typeof ark.div>, "title"> &
-  AnnouncementVariantProps &
-  WithTestId & {
+  AnnouncementVariantProps & {
     /**
      * The ARIA role of the announcement.
      *
@@ -32,19 +30,13 @@ export interface AnnouncementProps extends Omit<AnnouncementRootProps, "children
 // #endregion
 
 // #region Parts
-export function AnnouncementRoot({
-  className,
-  role = "status",
-  testId,
-  ...rest
-}: AnnouncementRootProps) {
+export function AnnouncementRoot({ className, role = "status", ...rest }: AnnouncementRootProps) {
   return (
     <ark.div
       {...rest}
       className={announcementVariants({ className })}
       data-part="root"
       data-scope="announcement"
-      data-testid={testId}
       role={role}
     />
   );

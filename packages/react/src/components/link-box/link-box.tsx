@@ -1,23 +1,20 @@
 import { ark } from "@ark-ui/react/factory";
 import { linkBoxOverlayVariants, linkBoxVariants } from "@pisagor/styles/ui/link-box";
 import type { ComponentProps } from "react";
-import type { WithTestId } from "../../internal/types";
-
 // #region Types
-export interface LinkBoxRootProps extends ComponentProps<typeof ark.div>, WithTestId {}
+export interface LinkBoxRootProps extends ComponentProps<typeof ark.div> {}
 
 export interface LinkOverlayLinkProps extends ComponentProps<typeof ark.a> {}
 // #endregion
 
 // #region Parts
-export function LinkBoxRoot({ className, testId, ...rest }: LinkBoxRootProps) {
+export function LinkBoxRoot({ className, ...rest }: LinkBoxRootProps) {
   return (
     <ark.div
       {...rest}
       className={linkBoxVariants({ className })}
       data-part="root"
       data-scope="link-box"
-      data-testid={testId}
     />
   );
 }

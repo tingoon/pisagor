@@ -2,7 +2,6 @@ import { ark } from "@ark-ui/react/factory";
 import { frameVariants } from "@pisagor/styles/ui/frame";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
-import type { WithTestId } from "../../internal/types";
 import { FrameContext, useFrame } from "./frame.context";
 
 // #region Types
@@ -13,7 +12,7 @@ export interface FrameHeaderProps extends ComponentProps<typeof ark.header> {
   title?: string;
 }
 
-export interface FrameRootProps extends ComponentProps<typeof ark.div>, WithTestId {}
+export interface FrameRootProps extends ComponentProps<typeof ark.div> {}
 
 export interface FramePanelProps extends ComponentProps<typeof ark.div> {}
 
@@ -25,18 +24,12 @@ export interface FrameFooterProps extends ComponentProps<typeof ark.footer> {}
 // #endregion
 
 // #region Parts
-export function FrameRoot({ className, children, testId, ...rest }: FrameRootProps) {
+export function FrameRoot({ className, children, ...rest }: FrameRootProps) {
   const slots = useMemo(() => frameVariants(), []);
 
   return (
     <FrameContext value={{ slots }}>
-      <ark.div
-        {...rest}
-        className={slots.base({ className })}
-        data-part="root"
-        data-scope="frame"
-        data-testid={testId}
-      >
+      <ark.div {...rest} className={slots.base({ className })} data-part="root" data-scope="frame">
         {children}
       </ark.div>
     </FrameContext>

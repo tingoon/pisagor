@@ -2,11 +2,10 @@ import { ark } from "@ark-ui/react/factory";
 import { tableVariants } from "@pisagor/styles/ui/table";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
-import type { WithTestId } from "../../internal/types";
 import { TableContext, useTable } from "./table.context";
 
 // #region Types
-export interface TableProps extends ComponentProps<typeof ark.table>, WithTestId {
+export interface TableProps extends ComponentProps<typeof ark.table> {
   /**
    * Whether the table rows are hoverable.
    *
@@ -35,7 +34,6 @@ export function TableRoot({
   variant = "plain",
   isHoverable = true,
   className,
-  testId,
   ...rest
 }: TableProps) {
   const slots = useMemo(() => tableVariants(), []);
@@ -49,7 +47,6 @@ export function TableRoot({
           data-hoverable={isHoverable}
           data-part="root"
           data-scope="table"
-          data-testid={testId}
           data-variant={variant}
         />
       </div>

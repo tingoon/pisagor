@@ -7,7 +7,6 @@ import {
   resizableVariants,
 } from "@pisagor/styles/ui/resizable";
 import { type ComponentProps, useCallback, useRef } from "react";
-import type { WithTestId } from "../../internal/types";
 
 export type {
   SplitterExpandCollapseDetails as ExpandCollapseDetails,
@@ -31,7 +30,7 @@ const resizeTrigger = resizableResizeTriggerVariants();
 export type ResizableHandlePosition = "bottom" | "center" | "top";
 export type ResizableEdgePlacement = "end" | "start";
 
-export interface ResizableEdgeHandleProps extends ComponentProps<"button">, WithTestId {
+export interface ResizableEdgeHandleProps extends ComponentProps<"button"> {
   /** Vertical placement of the visible grip. @defaultValue `"center"` */
   handlePosition?: ResizableHandlePosition;
   /** Accessible label for the resize control. */
@@ -62,7 +61,7 @@ export interface ResizableResizeTriggerProps
   withHandle?: boolean;
 }
 
-export type ResizableRootProps = ComponentProps<typeof SplitterPrimitive.Root> & WithTestId;
+export type ResizableRootProps = ComponentProps<typeof SplitterPrimitive.Root>;
 
 export type ResizablePanelProps = ComponentProps<typeof SplitterPrimitive.Panel>;
 
@@ -86,7 +85,6 @@ export function ResizableEdgeHandle({
   onResizeStart,
   onWidthChange,
   placement,
-  testId,
   width,
   ...rest
 }: ResizableEdgeHandleProps) {
@@ -115,7 +113,6 @@ export function ResizableEdgeHandle({
       data-handle-position={handlePosition}
       data-part="edge-handle"
       data-scope="resizable"
-      data-testid={testId}
       onDoubleClick={(event) => {
         event.preventDefault();
         onResizeEnd?.();
@@ -160,14 +157,8 @@ export function ResizableEdgeHandle({
   );
 }
 
-export function ResizableRoot({ className, testId, ...rest }: ResizableRootProps) {
-  return (
-    <SplitterPrimitive.Root
-      {...rest}
-      className={resizableVariants({ className })}
-      data-testid={testId}
-    />
-  );
+export function ResizableRoot({ className, ...rest }: ResizableRootProps) {
+  return <SplitterPrimitive.Root {...rest} className={resizableVariants({ className })} />;
 }
 
 export function ResizablePanel(props: ResizablePanelProps) {

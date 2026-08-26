@@ -36,8 +36,6 @@ import {
   DropdownMenuTriggerItem,
 } from "./dropdown-menu";
 
-export { useDropdownMenuRoot } from "./dropdown-menu.context";
-
 export const DropdownMenu = Object.assign(DropdownMenuRoot, {
   Arrow: DropdownMenuArrow,
   CheckboxItem: DropdownMenuCheckboxItem,

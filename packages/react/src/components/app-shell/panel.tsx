@@ -2,7 +2,6 @@ import { ArrowsInLineHorizontalIcon, ArrowsOutLineHorizontalIcon } from "@phosph
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { useState } from "react";
-import type { WithTestId } from "../../internal/types";
 import type { ButtonProps } from "../button";
 import { Resizable } from "../resizable";
 import { ScrollArea } from "../scroll-area";
@@ -24,7 +23,7 @@ import {
 } from "./region";
 import { AppShellSideTrigger } from "./side-trigger";
 
-export interface AppShellPanelProps extends ComponentProps<"aside">, WithTestId {
+export interface AppShellPanelProps extends ComponentProps<"aside"> {
   /**
    * Initial panel width in pixels.
    *
@@ -89,7 +88,6 @@ export function AppShellPanel({
   resizableProps: resizablePropsProp,
   children,
   className,
-  testId,
   style,
   ...rest
 }: AppShellPanelProps) {
@@ -124,7 +122,6 @@ export function AppShellPanel({
       data-position={position}
       data-scope="app-shell"
       data-state={side.open ? "open" : "closed"}
-      data-testid={testId}
       style={{ gridArea: gridAreaFor(placement, "panel"), ...style }}
     >
       {side.open && resizableProps.enabled ? (

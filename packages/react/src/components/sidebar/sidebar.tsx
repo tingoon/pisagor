@@ -6,7 +6,6 @@ import { cn } from "@pisagor/utils";
 import { useHotkey } from "@tanstack/react-hotkeys";
 import { type ComponentProps, type CSSProperties, useCallback, useMemo, useState } from "react";
 import { useIsMobile } from "../../hooks";
-import type { WithTestId } from "../../internal/types";
 import { Button, type ButtonProps } from "../button";
 import { Input, type InputProps } from "../input";
 import { ScrollArea } from "../scroll-area";
@@ -43,7 +42,7 @@ export interface SidebarProviderProps extends ComponentProps<"div"> {
   open?: boolean;
 }
 
-export interface SidebarProps extends SheetProps, WithTestId {
+export interface SidebarProps extends SheetProps {
   className?: string;
   collapsible?: "offcanvas" | "icon" | "none";
   placement?: "left" | "right";
@@ -207,7 +206,6 @@ export function SidebarRoot(props: SidebarProps) {
     variant = "sidebar",
     className,
     children,
-    testId,
     ...rest
   } = props;
   const { isMobile, openMobile, setOpenMobile, slots, state } = useSidebar();
@@ -220,7 +218,6 @@ export function SidebarRoot(props: SidebarProps) {
         className={slots.base({ className })}
         data-part="root"
         data-scope="sidebar"
-        data-testid={testId}
       >
         {children}
       </ark.div>
@@ -229,13 +226,12 @@ export function SidebarRoot(props: SidebarProps) {
 
   if (isMobile) {
     return (
-      <Sheet onOpenChange={({ open }) => setOpenMobile(open)} open={openMobile} testId={testId}>
+      <Sheet onOpenChange={({ open }) => setOpenMobile(open)} open={openMobile}>
         <Sheet.Content
           {...rest}
           className={slots.mobile()}
           data-mobile="true"
           data-sidebar="sidebar"
-          data-testid={testId}
           placement={placement === "left" ? "left" : "right"}
           style={
             {
@@ -263,7 +259,6 @@ export function SidebarRoot(props: SidebarProps) {
       data-placement={placement}
       data-scope="sidebar"
       data-state={state}
-      data-testid={testId}
       data-variant={variant}
     >
       <ark.div className={slots.gap({ padded, placement })} data-part="gap" data-scope="sidebar" />

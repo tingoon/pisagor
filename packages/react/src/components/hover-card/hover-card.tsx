@@ -2,11 +2,9 @@ import { Portal } from "@ark-ui/react";
 import { HoverCard as HoverCardPrimitive } from "@ark-ui/react/hover-card";
 import { hoverCardContentVariants, hoverCardInlineVariants } from "@pisagor/styles/ui/hover-card";
 import type { ComponentProps } from "react";
-import type { WithTestId } from "../../internal/types";
-import { HoverCardRootContext, useHoverCardRoot } from "./hover-card.context";
 
 // #region Types
-export type HoverCardRootProps = ComponentProps<typeof HoverCardPrimitive.Root> & WithTestId;
+export type HoverCardRootProps = ComponentProps<typeof HoverCardPrimitive.Root>;
 
 export type HoverCardProps = HoverCardRootProps;
 
@@ -24,27 +22,22 @@ export function HoverCardRoot({
   closeDelay = 300,
   openDelay = 600,
   positioning = { placement: "top" },
-  testId,
   ...rest
 }: HoverCardRootProps) {
   return (
-    <HoverCardRootContext value={{ testId }}>
-      <HoverCardPrimitive.Root
-        closeDelay={closeDelay}
-        lazyMount={lazyMount}
-        openDelay={openDelay}
-        positioning={positioning}
-        unmountOnExit={unmountOnExit}
-        {...rest}
-      />
-    </HoverCardRootContext>
+    <HoverCardPrimitive.Root
+      closeDelay={closeDelay}
+      lazyMount={lazyMount}
+      openDelay={openDelay}
+      positioning={positioning}
+      unmountOnExit={unmountOnExit}
+      {...rest}
+    />
   );
 }
 
 export function HoverCardTrigger(props: HoverCardTriggerProps) {
-  const { testId } = useHoverCardRoot() ?? {};
-
-  return <HoverCardPrimitive.Trigger data-testid={testId} {...props} />;
+  return <HoverCardPrimitive.Trigger {...props} />;
 }
 
 export function HoverCardArrow({ style, ...rest }: HoverCardArrowProps) {

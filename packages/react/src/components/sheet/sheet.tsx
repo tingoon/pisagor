@@ -22,7 +22,6 @@ import {
   type DialogProps,
   type DialogTitleProps,
 } from "../dialog";
-import { useDialog } from "../dialog/dialog.context";
 
 // #region Types
 export interface SheetPositionerProps
@@ -82,8 +81,6 @@ export function SheetContent({
   children,
   ...rest
 }: SheetContentProps) {
-  const { testId } = useDialog();
-
   return (
     <Portal>
       <SheetBackdrop />
@@ -92,7 +89,6 @@ export function SheetContent({
         <DialogPrimitive.Content
           {...rest}
           className={sheetContentVariants({ className, placement, variant })}
-          data-testid={testId}
         >
           {children}
 

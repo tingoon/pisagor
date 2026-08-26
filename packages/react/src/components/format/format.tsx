@@ -1,26 +1,23 @@
 import { Format as FormatPrimitive } from "@ark-ui/react/format";
 import type { ComponentProps } from "react";
-import type { WithTestId } from "../../internal/types";
-
 // #region Types
-export type FormatByteProps = ComponentProps<typeof FormatPrimitive.Byte> & WithTestId;
+export type FormatByteProps = ComponentProps<typeof FormatPrimitive.Byte>;
 
-export type FormatNumberProps = ComponentProps<typeof FormatPrimitive.Number> & WithTestId;
+export type FormatNumberProps = ComponentProps<typeof FormatPrimitive.Number>;
 
-export type FormatRelativeTimeProps = ComponentProps<typeof FormatPrimitive.RelativeTime> &
-  WithTestId;
+export type FormatRelativeTimeProps = ComponentProps<typeof FormatPrimitive.RelativeTime>;
 // #endregion
 
 // #region Parts
-export function FormatByte({ testId, ...rest }: FormatByteProps) {
-  return <FormatPrimitive.Byte {...rest} data-testid={testId} />;
+export function FormatByte({ ...rest }: FormatByteProps) {
+  return <FormatPrimitive.Byte {...rest} />;
 }
 
-export function FormatNumber({ testId, ...rest }: FormatNumberProps) {
-  return <FormatPrimitive.Number {...rest} data-testid={testId} />;
+export function FormatNumber({ ...rest }: FormatNumberProps) {
+  return <FormatPrimitive.Number {...rest} />;
 }
 
-export function FormatRelativeTime({ testId, ...rest }: FormatRelativeTimeProps) {
-  return <FormatPrimitive.RelativeTime {...rest} data-testid={testId} />;
+export function FormatRelativeTime({ ...rest }: FormatRelativeTimeProps) {
+  return <FormatPrimitive.RelativeTime {...rest} />;
 }
 // #endregion

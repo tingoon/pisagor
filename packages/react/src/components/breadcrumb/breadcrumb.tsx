@@ -10,7 +10,6 @@ import {
 } from "@pisagor/styles/ui/breadcrumb";
 import type { ComponentProps, ReactNode } from "react";
 import { Fragment } from "react";
-import type { WithTestId } from "../../internal/types";
 
 // #region Types
 interface BreadcrumbPresetItem {
@@ -26,7 +25,7 @@ export interface BreadcrumbPageProps extends ComponentProps<typeof ark.span> {}
 export interface BreadcrumbSeparatorProps extends ComponentProps<typeof ark.li> {}
 export interface BreadcrumbEllipsisProps extends ComponentProps<typeof ark.span> {}
 
-export interface BreadcrumbRootProps extends ComponentProps<typeof ark.nav>, WithTestId {
+export interface BreadcrumbRootProps extends ComponentProps<typeof ark.nav> {
   /**
    * Accessible label for the breadcrumb navigation landmark.
    *
@@ -44,17 +43,10 @@ export interface BreadcrumbProps extends Omit<BreadcrumbRootProps, "children"> {
 export function BreadcrumbRoot({
   "aria-label": ariaLabel = "Breadcrumb",
   children,
-  testId,
   ...rest
 }: BreadcrumbRootProps) {
   return (
-    <ark.nav
-      {...rest}
-      aria-label={ariaLabel}
-      data-part="root"
-      data-scope="breadcrumb"
-      data-testid={testId}
-    >
+    <ark.nav {...rest} aria-label={ariaLabel} data-part="root" data-scope="breadcrumb">
       {children}
     </ark.nav>
   );

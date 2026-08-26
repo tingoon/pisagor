@@ -14,12 +14,10 @@ import {
   stepsVariants,
 } from "@pisagor/styles/ui/steps";
 import type { ComponentProps } from "react";
-import type { WithTestId } from "../../internal/types";
-
 // #region Types
 export type StepsTriggerProps = ComponentProps<typeof StepsPrimitive.Trigger>;
 
-export type StepsRootProps = ComponentProps<typeof StepsPrimitive.Root> & WithTestId;
+export type StepsRootProps = ComponentProps<typeof StepsPrimitive.Root>;
 
 export type StepsListProps = ComponentProps<typeof StepsPrimitive.List>;
 
@@ -43,10 +41,8 @@ export interface StepsDescriptionProps extends ComponentProps<typeof ark.span> {
 // #endregion
 
 // #region Parts
-export function StepsRoot({ className, testId, ...rest }: StepsRootProps) {
-  return (
-    <StepsPrimitive.Root {...rest} className={stepsVariants({ className })} data-testid={testId} />
-  );
+export function StepsRoot({ className, ...rest }: StepsRootProps) {
+  return <StepsPrimitive.Root {...rest} className={stepsVariants({ className })} />;
 }
 
 export function StepsList({ className, ...rest }: StepsListProps) {

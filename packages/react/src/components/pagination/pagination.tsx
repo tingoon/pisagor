@@ -6,11 +6,10 @@ import {
   paginationVariants,
 } from "@pisagor/styles/ui/pagination";
 import type { ComponentProps } from "react";
-import type { WithTestId } from "../../internal/types";
 import { Button, type ButtonProps } from "../button";
 
 // #region Types
-export type PaginationRootProps = ComponentProps<typeof PaginationPrimitive.Root> & WithTestId;
+export type PaginationRootProps = ComponentProps<typeof PaginationPrimitive.Root>;
 
 export type PaginationPrevTriggerProps = ComponentProps<typeof PaginationPrimitive.PrevTrigger>;
 
@@ -32,13 +31,9 @@ export interface PaginationItemLinkProps extends ButtonProps {
 // #endregion
 
 // #region Parts
-export function PaginationRoot({ className, children, testId, ...rest }: PaginationRootProps) {
+export function PaginationRoot({ className, children, ...rest }: PaginationRootProps) {
   return (
-    <PaginationPrimitive.Root
-      {...rest}
-      className={paginationVariants({ className })}
-      data-testid={testId}
-    >
+    <PaginationPrimitive.Root {...rest} className={paginationVariants({ className })}>
       {children ?? (
         <>
           <PaginationPrevTrigger />

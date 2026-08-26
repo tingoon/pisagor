@@ -5,7 +5,6 @@ import {
 import { circularSliderVariants } from "@pisagor/styles/ui/circular-slider";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";
-import type { WithTestId } from "../../internal/types";
 import { Field } from "../field";
 import {
   CircularSliderContext,
@@ -25,8 +24,7 @@ export type CircularSliderRootProps = Omit<
 
 export interface CircularSliderProps
   extends CircularSliderRootProps,
-    Partial<Pick<CircularSliderContextValue, "thickness" | "size">>,
-    WithTestId {
+    Partial<Pick<CircularSliderContextValue, "thickness" | "size">> {
   markers?: boolean | number[];
   markersAtSteps?: boolean;
   onValueChange?: (value: number) => void;
@@ -67,7 +65,6 @@ export function CircularSliderRoot({
   step = 1,
   onValueChange,
   hiddenInputProps,
-  testId,
   ...rest
 }: CircularSliderProps) {
   const slots = circularSliderVariants();
@@ -88,7 +85,6 @@ export function CircularSliderRoot({
       <AngleSliderPrimitive.Root
         {...rest}
         className={slots.base({ className })}
-        data-testid={testId}
         onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
         step={step}
         style={{

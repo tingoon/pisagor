@@ -1,14 +1,12 @@
 import { CircleNotchIcon } from "@phosphor-icons/react";
 import { spinnerVariants } from "@pisagor/styles/ui/spinner";
 import type { ComponentProps } from "react";
-import type { WithTestId } from "../../internal/types";
-
 // #region Types
-export interface SpinnerProps extends ComponentProps<"svg">, WithTestId {}
+export interface SpinnerProps extends ComponentProps<"svg"> {}
 // #endregion
 
 // #region Part
-export function Spinner({ "aria-label": ariaLabel, className, testId, ...rest }: SpinnerProps) {
+export function Spinner({ "aria-label": ariaLabel, className, ...rest }: SpinnerProps) {
   return (
     <CircleNotchIcon
       {...rest}
@@ -16,7 +14,6 @@ export function Spinner({ "aria-label": ariaLabel, className, testId, ...rest }:
       className={spinnerVariants({ className })}
       data-part="root"
       data-scope="spinner"
-      data-testid={testId}
       role="status"
     />
   );

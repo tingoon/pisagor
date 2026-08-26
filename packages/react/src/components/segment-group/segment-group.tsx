@@ -6,7 +6,6 @@ import {
   segmentGroupVariants,
 } from "@pisagor/styles/ui/segment-group";
 import type { ComponentProps, ReactNode } from "react";
-import type { WithTestId } from "../../internal/types";
 
 // #region Types
 type SegmentGroupVariant = "default" | "underline";
@@ -18,8 +17,7 @@ interface SegmentGroupPresetItem {
 }
 
 export interface SegmentGroupRootProps
-  extends Omit<ComponentProps<typeof SegmentGroupPrimitive.Root>, "onValueChange">,
-    WithTestId {
+  extends Omit<ComponentProps<typeof SegmentGroupPrimitive.Root>, "onValueChange"> {
   /**
    * The visual variant of the segment group.
    *
@@ -49,14 +47,12 @@ export function SegmentGroupRoot({
   className,
   children,
   onValueChange,
-  testId,
   ...rest
 }: SegmentGroupRootProps) {
   return (
     <SegmentGroupPrimitive.Root
       {...rest}
       className={segmentGroupVariants({ className })}
-      data-testid={testId}
       data-variant={variant}
       onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
       orientation={orientation}

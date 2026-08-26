@@ -18,7 +18,6 @@ import {
   useRef,
   useState,
 } from "react";
-import type { WithTestId } from "../../internal/types";
 import {
   SortableContext,
   SortableItemContext,
@@ -29,9 +28,7 @@ import {
 // #region Types
 type SortableOrientation = "vertical" | "horizontal";
 
-export interface SortableRootProps
-  extends Omit<ComponentProps<typeof ark.div>, "onDragStart">,
-    WithTestId {
+export interface SortableRootProps extends Omit<ComponentProps<typeof ark.div>, "onDragStart"> {
   /**
    * Ordered item ids. Reorder callbacks receive a new array of the same ids.
    */
@@ -92,7 +89,6 @@ export function SortableRoot({
   disabled = false,
   className,
   children,
-  testId,
   ...rest
 }: SortableRootProps) {
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -307,7 +303,6 @@ export function SortableRoot({
         data-orientation={orientation}
         data-part="root"
         data-scope="sortable"
-        data-testid={testId}
         role="list"
       >
         {children}

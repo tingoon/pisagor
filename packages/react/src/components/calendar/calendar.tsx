@@ -31,7 +31,6 @@ import {
   shellVariantArgs,
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { WithTestId } from "../../internal/types";
 import { Button, type ButtonProps } from "../button";
 
 // #region Types
@@ -91,7 +90,7 @@ export interface CalendarTableNextMonthProps extends CalendarTableBodyProps {
   months?: number;
 }
 
-export type CalendarRootProps = ComponentProps<typeof CalendarPrimitive.Root> & WithTestId;
+export type CalendarRootProps = ComponentProps<typeof CalendarPrimitive.Root>;
 
 export interface CalendarProps extends CalendarRootProps {
   /** Visual shell variant for embedded selects. When omitted, resolves from the nearest `Surface` context. */
@@ -131,7 +130,6 @@ export function CalendarRoot({
   lazyMount = true,
   unmountOnExit = true,
   className,
-  testId,
   variant,
   ...rest
 }: CalendarProps) {
@@ -140,7 +138,6 @@ export function CalendarRoot({
       <CalendarPrimitive.Root
         {...rest}
         className={calendarVariants({ className })}
-        data-testid={testId}
         inline
         lazyMount={lazyMount}
         unmountOnExit={unmountOnExit}

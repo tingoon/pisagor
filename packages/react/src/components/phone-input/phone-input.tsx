@@ -11,7 +11,7 @@ import { useMemo } from "react";
 import type { DefaultInputComponentProps, FlagProps } from "react-phone-number-input";
 import RPNPhoneInput, { type Country, getCountryCallingCode } from "react-phone-number-input";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 import { Combobox, type ComboboxContentProps } from "../combobox";
 import type { InputProps } from "../input";
 import { InputGroup } from "../input-group";
@@ -43,10 +43,9 @@ interface PhoneInputCountrySelectProps {
 
 export interface PhoneInputProps
   extends Omit<
-      ComponentProps<typeof RPNPhoneInput>,
-      "onChange" | "value" | "flagComponent" | "countrySelectComponent" | "inputComponent"
-    >,
-    WithTestId {
+    ComponentProps<typeof RPNPhoneInput>,
+    "onChange" | "value" | "flagComponent" | "countrySelectComponent" | "inputComponent"
+  > {
   /** Vertical size of the input and country selector */
   size?: PhoneInputSize;
   /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
@@ -72,7 +71,7 @@ interface PhoneInputContainerProps extends ComponentProps<"div"> {}
 
 // #region Parts
 function PhoneInputContainer({ className, children, ...rest }: PhoneInputContainerProps) {
-  const { size, testId, variant } = usePhoneInput();
+  const { size, variant } = usePhoneInput();
 
   return (
     <InputGroup
@@ -81,7 +80,6 @@ function PhoneInputContainer({ className, children, ...rest }: PhoneInputContain
       data-part="root"
       data-scope="phone-input"
       data-size={size}
-      data-testid={testId}
       size={size}
       variant={variant}
     >
@@ -239,7 +237,6 @@ export function PhoneInput({
   size = "md",
   variant,
   value,
-  testId,
   ...rest
 }: PhoneInputProps) {
   const slots = useMemo(() => phoneInputVariants({ size }), [size]);
@@ -252,10 +249,9 @@ export function PhoneInput({
       popupProps,
       size,
       slots,
-      testId,
       variant,
     }),
-    [classNames, inputProps, invalid, popupProps, size, slots, testId, variant],
+    [classNames, inputProps, invalid, popupProps, size, slots, variant],
   );
 
   return (

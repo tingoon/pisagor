@@ -7,7 +7,6 @@ import {
   tabsVariants,
 } from "@pisagor/styles/ui/tabs";
 import type { ComponentProps, ReactNode } from "react";
-import type { WithTestId } from "../../internal/types";
 
 // #region Types
 interface TabsPresetItem {
@@ -21,7 +20,7 @@ export interface TabsListProps
   extends ComponentProps<typeof TabsPrimitive.List>,
     TabsListVariantProps {}
 
-export type TabsRootProps = ComponentProps<typeof TabsPrimitive.Root> & WithTestId;
+export type TabsRootProps = ComponentProps<typeof TabsPrimitive.Root>;
 
 export type TabsTriggerProps = ComponentProps<typeof TabsPrimitive.Trigger>;
 
@@ -44,14 +43,12 @@ export function TabsRoot({
   unmountOnExit = true,
   className,
   children,
-  testId,
   ...rest
 }: TabsRootProps) {
   return (
     <TabsPrimitive.Root
       {...rest}
       className={tabsVariants({ className })}
-      data-testid={testId}
       lazyMount={lazyMount}
       unmountOnExit={unmountOnExit}
     >

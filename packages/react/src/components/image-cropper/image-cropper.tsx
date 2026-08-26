@@ -9,26 +9,23 @@ import {
 } from "@pisagor/styles/ui/image-cropper";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import type { WithTestId } from "../../internal/types";
-
 // #region Types
 export type ImageCropperRootProps = Omit<
   ComponentProps<typeof ImageCropperPrimitive.Root>,
   "src" | "cropShape"
-> &
-  WithTestId & {
-    /**
-     * Image URL for the auto-rendered cropper layout.
-     *
-     * @remarks
-     * When provided, renders `ImageCropperImage` and `ImageCropperSelection` automatically and `children` is ignored.
-     */
-    src?: string;
-    /** Alt text for the auto-rendered image. */
-    alt?: string;
-    /** Shape of the crop selection area. */
-    cropShape?: "rectangle" | "circle";
-  };
+> & {
+  /**
+   * Image URL for the auto-rendered cropper layout.
+   *
+   * @remarks
+   * When provided, renders `ImageCropperImage` and `ImageCropperSelection` automatically and `children` is ignored.
+   */
+  src?: string;
+  /** Alt text for the auto-rendered image. */
+  alt?: string;
+  /** Shape of the crop selection area. */
+  cropShape?: "rectangle" | "circle";
+};
 
 export type ImageCropperImageProps = ComponentProps<typeof ImageCropperPrimitive.Image>;
 
@@ -54,14 +51,12 @@ export function ImageCropperRoot({
   src,
   alt,
   cropShape,
-  testId,
   ...rest
 }: ImageCropperRootProps) {
   return (
     <ImageCropperPrimitive.Root
       className={cn(imageCropperVariants(), className, { ...rest })}
       cropShape={cropShape}
-      data-testid={testId}
     >
       <ImageCropperPrimitive.Viewport className={imageCropperViewportVariants()}>
         {src ? (

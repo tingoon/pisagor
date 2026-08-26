@@ -24,7 +24,6 @@ import {
   shellVariantArgs,
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { WithTestId } from "../../internal/types";
 import { Separator, type SeparatorProps } from "../separator";
 import { SelectRootContext, useSelectRoot } from "./select.context";
 
@@ -44,7 +43,7 @@ export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
   variant?: FormControlVariant;
   collection?: ListCollection<T>;
   onValueChange?: (value: string | string[]) => void;
-} & WithTestId;
+};
 
 export interface SelectProps extends Omit<SelectRootProps, "children"> {
   items?: Array<SelectPresetItem | string>;
@@ -98,13 +97,12 @@ export function SelectRoot<T extends CollectionItem = CollectionItem>({
   collection: collectionProp,
   onValueChange,
   variant,
-  testId,
   ...rest
 }: SelectRootProps<T>) {
   const slots = useMemo(() => selectVariants(), []);
 
   return (
-    <SelectRootContext value={{ slots, testId }}>
+    <SelectRootContext value={{ slots }}>
       <FormControlVariantProvider value={variant}>
         <SelectPrimitive.Root
           lazyMount={lazyMount}
@@ -130,7 +128,7 @@ export function SelectTrigger({
   className,
   ...rest
 }: SelectTriggerProps) {
-  const { slots = selectVariants(), testId } = useSelectRoot() ?? {};
+  const { slots = selectVariants() } = useSelectRoot() ?? {};
   const resolved = useFormControlVariant(variantProp);
   const shellArgs = shellVariantArgs(resolved);
   const controlProps = formControlShellProps(resolved);
@@ -141,7 +139,6 @@ export function SelectTrigger({
         {...rest}
         {...controlProps}
         className={cn(formControlShellVariants({ size, ...shellArgs }), slots.trigger(), className)}
-        data-testid={testId}
       >
         {children}
 

@@ -1,7 +1,6 @@
 import type { CollectionItem, ListCollection } from "@ark-ui/react/collection";
 import type { ComboboxRootProps as ComboboxRootPropsPrimitive } from "@ark-ui/react/combobox";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
-import type { WithTestId } from "../../internal/types";
 import {
   Combobox,
   type ComboboxClearTriggerProps,
@@ -31,7 +30,7 @@ type AutocompleteRootProps<T extends CollectionItem = CollectionItem> = Omit<
   variant?: FormControlVariant;
   collection?: ListCollection<T>;
   onValueChange?: (value: string[]) => void;
-} & WithTestId;
+};
 
 export interface AutocompleteProps extends Omit<AutocompleteRootProps, "children"> {
   items?: Array<AutocompletePresetItem | string>;

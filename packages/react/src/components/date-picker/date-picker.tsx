@@ -13,12 +13,10 @@ import type { ComponentProps } from "react";
 import { useClearableInput } from "../../hooks";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
-import type { WithTestId } from "../../internal/types";
 import { Button } from "../button";
 import { Calendar } from "../calendar";
 import { Input, type InputProps } from "../input";
 import { InputGroup } from "../input-group";
-import { DatePickerRootContext, useDatePickerRoot } from "./date-picker.context";
 
 // #region Types
 export interface DatePickerTriggerProps extends ComponentProps<typeof DatePickerPrimitive.Trigger> {
@@ -59,8 +57,7 @@ export interface DatePickerContentProps extends ComponentProps<typeof DatePicker
 }
 
 export interface DatePickerRootProps
-  extends Omit<ComponentProps<typeof DatePickerPrimitive.Root>, "onValueChange">,
-    WithTestId {
+  extends Omit<ComponentProps<typeof DatePickerPrimitive.Root>, "onValueChange"> {
   /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
   variant?: FormControlVariant;
   onValueChange?: (value: ComponentProps<typeof DatePickerPrimitive.Root>["value"]) => void;
@@ -76,20 +73,17 @@ export function DatePickerRoot({
   positioning = { placement: "top" },
   onValueChange,
   variant,
-  testId,
   ...rest
 }: DatePickerRootProps) {
   return (
-    <DatePickerRootContext value={{ testId }}>
-      <FormControlVariantProvider value={variant}>
-        <DatePickerPrimitive.Root
-          inline={false}
-          onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
-          positioning={positioning}
-          {...rest}
-        />
-      </FormControlVariantProvider>
-    </DatePickerRootContext>
+    <FormControlVariantProvider value={variant}>
+      <DatePickerPrimitive.Root
+        inline={false}
+        onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
+        positioning={positioning}
+        {...rest}
+      />
+    </FormControlVariantProvider>
   );
 }
 
@@ -99,10 +93,8 @@ export function DatePickerTrigger({
   clearable = false,
   ...rest
 }: DatePickerTriggerProps) {
-  const { testId } = useDatePickerRoot() ?? {};
-
   return (
-    <DatePickerPrimitive.Control className={datePickerControlVariants()} data-testid={testId}>
+    <DatePickerPrimitive.Control className={datePickerControlVariants()}>
       <DatePickerPrimitive.Trigger {...rest} className={datePickerTriggerVariants({ className })}>
         {children}
       </DatePickerPrimitive.Trigger>
@@ -117,10 +109,8 @@ export function DatePickerInput({
   clearable = false,
   ...rest
 }: DatePickerInputProps) {
-  const { testId } = useDatePickerRoot() ?? {};
-
   return (
-    <DatePickerPrimitive.Control data-testid={testId}>
+    <DatePickerPrimitive.Control>
       <InputGroup className={className} size={size}>
         <DatePickerPrimitive.Input {...rest} asChild>
           <InputGroup.Input clearable={false} />

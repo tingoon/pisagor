@@ -9,7 +9,6 @@ import {
   shellVariantArgs,
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { WithTestId } from "../../internal/types";
 import {
   InputGroupAddon,
   InputGroupButton,
@@ -27,8 +26,7 @@ type NativeFileInputProps = Omit<
 >;
 
 type FileInputRootProps = ComponentProps<typeof ark.div> &
-  FileInputVariantProps &
-  WithTestId & {
+  FileInputVariantProps & {
     /** Disables the control and sets `data-disabled` on the root. */
     disabled?: boolean;
     /**
@@ -37,7 +35,7 @@ type FileInputRootProps = ComponentProps<typeof ark.div> &
     variant?: FormControlVariant;
   };
 
-export interface FileInputProps extends NativeFileInputProps, FileInputVariantProps, WithTestId {
+export interface FileInputProps extends NativeFileInputProps, FileInputVariantProps {
   /**
    * Visual shell variant. When omitted, resolves from the nearest `Surface` context.
    */
@@ -84,7 +82,6 @@ function FileInputRoot({
   className,
   disabled,
   size = "md",
-  testId,
   variant: variantProp,
   ...rest
 }: FileInputRootProps) {
@@ -103,7 +100,6 @@ function FileInputRoot({
         data-part="root"
         data-scope="file-input"
         data-size={size}
-        data-testid={testId}
         role="group"
       >
         {children}
@@ -155,7 +151,6 @@ export function FileInput({
   ref,
   required,
   size = "md",
-  testId,
   variant,
   ...rest
 }: FileInputProps) {
@@ -188,13 +183,7 @@ export function FileInput({
   };
 
   return (
-    <FileInputRoot
-      className={className}
-      disabled={disabled}
-      size={size}
-      testId={testId}
-      variant={variant}
-    >
+    <FileInputRoot className={className} disabled={disabled} size={size} variant={variant}>
       <FileInputControl
         {...rest}
         accept={accept}

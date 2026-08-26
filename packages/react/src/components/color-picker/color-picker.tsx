@@ -31,17 +31,13 @@ import { cn } from "@pisagor/utils";
 import { type ComponentProps, useMemo } from "react";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
-import type { WithTestId } from "../../internal/types";
 import { Button, type ButtonProps } from "../button";
 import { InputGroup, type InputGroupButtonProps } from "../input-group";
-import { ColorPickerRootContext, useColorPickerRoot } from "./color-picker.context";
-
 // #region Types
 export type ColorPickerRootProps = Omit<
   ComponentProps<typeof ColorPickerPrimitive.Root>,
   "defaultValue" | "value" | "onValueChange"
-> &
-  WithTestId;
+>;
 
 export interface ColorPickerProps extends ColorPickerRootProps {
   /** Visual shell variant for preset field input. When omitted, resolves from `Surface`. */
@@ -159,7 +155,6 @@ export function ColorPickerRoot({
   variant,
   className,
   children,
-  testId,
   ...rest
 }: ColorPickerProps) {
   const [color, setColor, isControlled] = useUncontrolled({
@@ -177,24 +172,22 @@ export function ColorPickerRoot({
   };
 
   return (
-    <ColorPickerRootContext value={{ testId }}>
-      <FormControlVariantProvider value={variant}>
-        <ColorPickerPrimitive.Root
-          className={colorPickerVariants({ className })}
-          defaultValue={!isControlled ? parsedColor : undefined}
-          lazyMount={lazyMount}
-          onValueChange={handleValueChange}
-          positioning={positioning}
-          unmountOnExit={unmountOnExit}
-          value={isControlled ? parsedColor : undefined}
-          {...rest}
-        >
-          {children}
+    <FormControlVariantProvider value={variant}>
+      <ColorPickerPrimitive.Root
+        className={colorPickerVariants({ className })}
+        defaultValue={!isControlled ? parsedColor : undefined}
+        lazyMount={lazyMount}
+        onValueChange={handleValueChange}
+        positioning={positioning}
+        unmountOnExit={unmountOnExit}
+        value={isControlled ? parsedColor : undefined}
+        {...rest}
+      >
+        {children}
 
-          <ColorPickerPrimitive.HiddenInput />
-        </ColorPickerPrimitive.Root>
-      </FormControlVariantProvider>
-    </ColorPickerRootContext>
+        <ColorPickerPrimitive.HiddenInput />
+      </ColorPickerPrimitive.Root>
+    </FormControlVariantProvider>
   );
 }
 
@@ -248,14 +241,8 @@ export function ColorPickerControl({
   children,
   ...rest
 }: ColorPickerControlProps) {
-  const { testId } = useColorPickerRoot() ?? {};
-
   return (
-    <ColorPickerPrimitive.Control
-      {...rest}
-      className={colorPickerControlVariants({ className })}
-      data-testid={testId}
-    >
+    <ColorPickerPrimitive.Control {...rest} className={colorPickerControlVariants({ className })}>
       {children}
       {clearable ? <ColorPickerClearTrigger /> : null}
     </ColorPickerPrimitive.Control>

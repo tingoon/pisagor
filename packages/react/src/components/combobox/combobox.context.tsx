@@ -1,8 +1,7 @@
 import type { ComboboxVariants } from "@pisagor/styles/ui/combobox";
-import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils";
 
-export interface ComboboxRootContextValue extends WithTestId {
+export interface ComboboxRootContextValue {
   /** Slot class recipes from `comboboxVariants`. */
   slots: ComboboxVariants;
 }

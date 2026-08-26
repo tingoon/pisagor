@@ -9,7 +9,6 @@ import {
   shellVariantArgs,
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { WithTestId } from "../../internal/types";
 import { Field } from "../field";
 
 // #region Types
@@ -20,8 +19,7 @@ interface RadioGroupPresetItem {
 }
 
 export interface RadioGroupRootProps
-  extends Omit<ComponentProps<typeof RadioGroupPrimitive.Root>, "onValueChange">,
-    WithTestId {
+  extends Omit<ComponentProps<typeof RadioGroupPrimitive.Root>, "onValueChange"> {
   onValueChange?: (value: string | null) => void;
 }
 
@@ -44,14 +42,12 @@ export function RadioGroupRoot({
   className,
   children,
   onValueChange,
-  testId,
   ...rest
 }: RadioGroupRootProps) {
   return (
     <RadioGroupPrimitive.Root
       {...rest}
       className={radioGroupVariants({ className })}
-      data-testid={testId}
       onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
     >
       {children}

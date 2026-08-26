@@ -2,7 +2,7 @@ import { ark } from "@ark-ui/react/factory";
 import { type ToolbarSlots, toolbarVariants } from "@pisagor/styles/ui/toolbar";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 
 // #region Types
 type ToolbarTitleProps = ComponentProps<typeof ark.h2>;
@@ -13,11 +13,10 @@ type ToolbarActionsProps = ComponentProps<typeof ark.div>;
 
 type ToolbarClassNames = VariantClassNames<ToolbarSlots>;
 
-type ToolbarRootProps = Omit<ComponentProps<typeof ark.div>, "title"> &
-  WithTestId & {
-    /** Slot class names */
-    classNames?: ToolbarClassNames;
-  };
+type ToolbarRootProps = Omit<ComponentProps<typeof ark.div>, "title"> & {
+  /** Slot class names */
+  classNames?: ToolbarClassNames;
+};
 
 export interface ToolbarProps extends Omit<ToolbarRootProps, "children"> {
   /** Section heading. */
@@ -41,7 +40,7 @@ interface ToolbarPartProps extends ComponentProps<typeof ark.div> {
 // #endregion
 
 // #region Parts
-export function ToolbarRoot({ className, classNames, testId, ...rest }: ToolbarRootProps) {
+export function ToolbarRoot({ className, classNames, ...rest }: ToolbarRootProps) {
   const slots = toolbarVariants();
 
   return (
@@ -50,7 +49,6 @@ export function ToolbarRoot({ className, classNames, testId, ...rest }: ToolbarR
       className={slots.base({ className: className })}
       data-part="root"
       data-scope="toolbar"
-      data-testid={testId}
     />
   );
 }

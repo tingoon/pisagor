@@ -15,14 +15,12 @@ import {
   shellVariantArgs,
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { WithTestId } from "../../internal/types";
 import { Button, type ButtonProps } from "../button";
 
 // #region Types
 export interface InputGroupProps
   extends ComponentProps<typeof ark.div>,
-    FormControlGroupShellVariantProps,
-    WithTestId {
+    FormControlGroupShellVariantProps {
   /**
    * Visual shell variant. When omitted, resolves from the nearest `Surface` context.
    */
@@ -45,7 +43,6 @@ export function InputGroupRoot({
   size = "md",
   variant: variantProp,
   className,
-  testId,
   ...rest
 }: InputGroupProps) {
   const resolved = useFormControlVariant(variantProp);
@@ -60,7 +57,6 @@ export function InputGroupRoot({
       data-part="root"
       data-scope="input-group"
       data-size={size}
-      data-testid={testId}
       role="group"
     />
   );

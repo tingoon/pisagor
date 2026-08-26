@@ -2,11 +2,10 @@ import { ark } from "@ark-ui/react/factory";
 import { type CardVariantProps, cardVariants } from "@pisagor/styles/ui/card";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
-import type { WithTestId } from "../../internal/types";
 import { CardContext, useCard } from "./card.context";
 
 // #region Types
-export interface CardRootProps extends ComponentProps<typeof ark.div>, WithTestId {}
+export interface CardRootProps extends ComponentProps<typeof ark.div> {}
 
 export interface CardMediaProps extends ComponentProps<typeof ark.div>, CardVariantProps {}
 
@@ -29,18 +28,12 @@ export interface CardFooterProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Parts
-export function CardRoot({ className, children, testId, ...rest }: CardRootProps) {
+export function CardRoot({ className, children, ...rest }: CardRootProps) {
   const slots = useMemo(() => cardVariants(), []);
 
   return (
     <CardContext value={{ slots }}>
-      <ark.div
-        {...rest}
-        className={slots.base({ className })}
-        data-part="root"
-        data-scope="card"
-        data-testid={testId}
-      >
+      <ark.div {...rest} className={slots.base({ className })} data-part="root" data-scope="card">
         {children}
       </ark.div>
     </CardContext>

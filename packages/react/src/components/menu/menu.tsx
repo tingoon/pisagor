@@ -7,12 +7,12 @@ import {
 } from "@pisagor/styles/ui/menu";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 
 // #region Types
 type MenuClassNames = VariantClassNames<MenuSlots>;
 
-export interface MenuRootProps extends ComponentProps<typeof ark.nav>, WithTestId {
+export interface MenuRootProps extends ComponentProps<typeof ark.nav> {
   /** Slot class names */
   classNames?: MenuClassNames;
 }
@@ -60,7 +60,6 @@ export function MenuRoot({
   "aria-label": ariaLabel = "Menu",
   className,
   classNames,
-  testId,
   ...rest
 }: MenuRootProps) {
   const slots = menuVariants();
@@ -72,7 +71,6 @@ export function MenuRoot({
       className={slots.base({ className: className })}
       data-part="root"
       data-scope="menu"
-      data-testid={testId}
     />
   );
 }

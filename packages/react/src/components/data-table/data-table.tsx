@@ -13,7 +13,6 @@ import {
   useLegacyTable,
 } from "@tanstack/react-table/legacy";
 import { type ComponentProps, type ReactNode, useMemo } from "react";
-import type { WithTestId } from "../../internal/types";
 import { Table, type TableCellProps, type TableHeadProps, type TableRowProps } from "../table";
 import {
   DataTableContext,
@@ -35,8 +34,7 @@ export type DataTableProps<TData extends RowData> = {
   children: ReactNode;
   className?: string;
   getCoreRowModel?: TableOptions<TData>["getCoreRowModel"];
-} & Omit<TableOptions<TData>, "getCoreRowModel"> &
-  WithTestId;
+} & Omit<TableOptions<TData>, "getCoreRowModel">;
 
 interface DataTableHeaderProps {
   children: ReactNode;
@@ -295,7 +293,6 @@ function DataTableRoot<TData extends RowData>({
   children,
   className,
   getCoreRowModel: getCoreRowModelOption,
-  testId,
   ...rest
 }: DataTableProps<TData>) {
   const table = useLegacyTable<TData>({
@@ -307,12 +304,7 @@ function DataTableRoot<TData extends RowData>({
 
   return (
     <DataTableContext value={contextValue as DataTableContextValue<RowData>}>
-      <div
-        className={dataTableVariants({ className })}
-        data-part="root"
-        data-scope="data-table"
-        data-testid={testId}
-      >
+      <div className={dataTableVariants({ className })} data-part="root" data-scope="data-table">
         {children}
       </div>
     </DataTableContext>

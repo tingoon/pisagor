@@ -1,10 +1,8 @@
 import { ark } from "@ark-ui/react/factory";
 import { skipNavContentVariants, skipNavLinkVariants } from "@pisagor/styles/ui/skip-nav";
 import type { ComponentProps } from "react";
-import type { WithTestId } from "../../internal/types";
-
 // #region Types
-export interface SkipNavLinkProps extends ComponentProps<typeof ark.a>, WithTestId {
+export interface SkipNavLinkProps extends ComponentProps<typeof ark.a> {
   /**
    * The id of the element to skip to.
    *
@@ -16,7 +14,7 @@ export interface SkipNavLinkProps extends ComponentProps<typeof ark.a>, WithTest
   id?: string;
 }
 
-export interface SkipNavContentProps extends ComponentProps<typeof ark.div>, WithTestId {
+export interface SkipNavContentProps extends ComponentProps<typeof ark.div> {
   /**
    * The id that SkipNavLink links to.
    *
@@ -32,20 +30,13 @@ export interface SkipNavContentProps extends ComponentProps<typeof ark.div>, Wit
 // #region Parts
 const SKIP_NAV_ID = "skip-nav-content";
 
-export function SkipNavLink({
-  id = SKIP_NAV_ID,
-  className,
-  children,
-  testId,
-  ...rest
-}: SkipNavLinkProps) {
+export function SkipNavLink({ id = SKIP_NAV_ID, className, children, ...rest }: SkipNavLinkProps) {
   return (
     <ark.a
       {...rest}
       className={skipNavLinkVariants({ className })}
       data-part="link"
       data-scope="skip-nav"
-      data-testid={testId}
       href={`#${id}`}
     >
       {children ?? "Skip to content"}

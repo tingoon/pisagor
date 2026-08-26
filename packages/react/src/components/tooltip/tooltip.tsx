@@ -2,7 +2,7 @@ import { Portal } from "@ark-ui/react/portal";
 import { Tooltip as TooltipPrimitive } from "@ark-ui/react/tooltip";
 import { type TooltipSlots, tooltipVariants } from "@pisagor/styles/ui/tooltip";
 import type { ComponentProps, ReactElement, ReactNode } from "react";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 import { TooltipContext, useTooltip } from "./tooltip.context";
 
 // #region Types
@@ -22,7 +22,7 @@ type TooltipArrowProps = ComponentProps<typeof TooltipPrimitive.Arrow>;
 
 type TooltipClassNames = VariantClassNames<TooltipSlots>;
 
-type TooltipRootProps = ComponentProps<typeof TooltipPrimitive.Root> & WithTestId;
+type TooltipRootProps = ComponentProps<typeof TooltipPrimitive.Root>;
 
 export interface TooltipProps extends Omit<TooltipRootProps, "children"> {
   /** Slot class names */
@@ -70,14 +70,9 @@ function TooltipRoot({
   );
 }
 
-function TooltipTrigger({
-  asChild = true,
-  children,
-  testId,
-  ...rest
-}: TooltipTriggerProps & WithTestId) {
+function TooltipTrigger({ asChild = true, children, ...rest }: TooltipTriggerProps) {
   return (
-    <TooltipPrimitive.Trigger {...rest} asChild={asChild} data-testid={testId}>
+    <TooltipPrimitive.Trigger {...rest} asChild={asChild}>
       {children}
     </TooltipPrimitive.Trigger>
   );
@@ -116,7 +111,6 @@ export function Tooltip({
   content,
   contentProps,
   positionerProps,
-  testId,
   triggerProps,
   ...rest
 }: TooltipProps) {
@@ -126,9 +120,7 @@ export function Tooltip({
         {(api) => children(api.getTriggerProps())}
       </TooltipPrimitive.Context>
     ) : (
-      <TooltipTrigger {...triggerProps} testId={testId}>
-        {children}
-      </TooltipTrigger>
+      <TooltipTrigger {...triggerProps}>{children}</TooltipTrigger>
     );
 
   return (

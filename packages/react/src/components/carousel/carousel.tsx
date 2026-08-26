@@ -3,7 +3,6 @@ import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
 import { carouselVariants } from "@pisagor/styles/ui/carousel";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";
-import type { WithTestId } from "../../internal/types";
 import { Button } from "../button";
 import { CarouselContext, useCarousel } from "./carousel.context";
 
@@ -27,7 +26,7 @@ export type CarouselItemGroupProps = ComponentProps<typeof CarouselPrimitive.Ite
 
 export type CarouselItemProps = ComponentProps<typeof CarouselPrimitive.Item>;
 
-export type CarouselRootProps = ComponentProps<typeof CarouselPrimitive.Root> & WithTestId;
+export type CarouselRootProps = ComponentProps<typeof CarouselPrimitive.Root>;
 
 export interface CarouselProps extends Omit<CarouselRootProps, "children" | "slideCount"> {
   slides?: CarouselPresetItem[];
@@ -39,19 +38,13 @@ export function CarouselRoot({
   spacing = "16px",
   className,
   children,
-  testId,
   ...rest
 }: CarouselRootProps) {
   const slots = useMemo(() => carouselVariants(), []);
 
   return (
     <CarouselContext value={{ slots }}>
-      <CarouselPrimitive.Root
-        {...rest}
-        className={slots.base({ className })}
-        data-testid={testId}
-        spacing={spacing}
-      >
+      <CarouselPrimitive.Root {...rest} className={slots.base({ className })} spacing={spacing}>
         {children}
       </CarouselPrimitive.Root>
     </CarouselContext>

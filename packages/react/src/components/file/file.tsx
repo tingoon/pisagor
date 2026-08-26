@@ -11,14 +11,10 @@ import {
   fileVariants,
 } from "@pisagor/styles/ui/file";
 import type { ComponentProps, ReactNode } from "react";
-import type { WithTestId } from "../../internal/types";
 import { Format } from "../format";
 
 // #region Types
-export interface FileRootProps
-  extends ComponentProps<typeof ark.div>,
-    FileVariantProps,
-    WithTestId {}
+export interface FileRootProps extends ComponentProps<typeof ark.div>, FileVariantProps {}
 
 export interface FileMediaProps extends ComponentProps<typeof ark.div> {
   /**
@@ -57,15 +53,9 @@ export interface FileProps extends Omit<FileRootProps, "children" | "title"> {
 // #endregion
 
 // #region Parts
-export function FileRoot({ className, testId, ...rest }: FileRootProps) {
+export function FileRoot({ className, ...rest }: FileRootProps) {
   return (
-    <ark.div
-      {...rest}
-      className={fileVariants({ className })}
-      data-part="root"
-      data-scope="file"
-      data-testid={testId}
-    />
+    <ark.div {...rest} className={fileVariants({ className })} data-part="root" data-scope="file" />
   );
 }
 

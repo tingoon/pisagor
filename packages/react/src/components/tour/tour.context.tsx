@@ -9,7 +9,6 @@ export interface TourProviderProps {
   slots: TourVariants;
   /** The tour instance */
   tour: UseTourReturn;
-  testId?: string;
 }
 
 /** Returns the nearest tour context. */

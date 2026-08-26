@@ -1,5 +1,4 @@
 import type { ActionBarVariants } from "@pisagor/styles/ui/action-bar";
-import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils";
 
 interface ActionBarPositioning {
@@ -17,7 +16,7 @@ interface ActionBarPositioning {
   placement?: "bottom" | "bottom-start" | "bottom-end";
 }
 
-export interface ActionBarContextValue extends WithTestId {
+export interface ActionBarContextValue {
   /** The open state of the action bar */
   isOpen?: boolean;
   /** Whether to lazy mount the action bar */

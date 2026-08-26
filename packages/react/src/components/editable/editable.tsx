@@ -7,7 +7,6 @@ import { useMemo } from "react";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import { formControlShellProps } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { WithTestId } from "../../internal/types";
 import type { ButtonProps } from "../button";
 import { EditableContext, useEditable } from "./editable.context";
 
@@ -15,8 +14,7 @@ import { EditableContext, useEditable } from "./editable.context";
 export type EditableRootProps = Omit<
   ComponentProps<typeof EditablePrimitive.Root>,
   "onValueChange" | "value" | "defaultValue"
-> &
-  WithTestId;
+>;
 
 export interface EditableProps extends EditableRootProps {
   /** The orientation of the editable */
@@ -82,7 +80,6 @@ export function EditableRoot({
   defaultValue,
   onValueChange,
   className,
-  testId,
   ...rest
 }: EditableProps) {
   const handleValueChange = onValueChange
@@ -101,7 +98,6 @@ export function EditableRoot({
         {...rest}
         className={slots.base({ className })}
         data-orientation={orientation}
-        data-testid={testId}
         defaultValue={defaultValue}
         onValueChange={handleValueChange}
         value={value}

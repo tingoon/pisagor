@@ -14,7 +14,7 @@ import {
   shellVariantArgs,
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 import { Input } from "../input";
 import { InputGroupAddon, InputGroupRoot } from "../input-group/input-group-core";
 import { TextareaContext, useTextarea } from "./textarea.context";
@@ -22,13 +22,12 @@ import { TextareaContext, useTextarea } from "./textarea.context";
 // #region Types
 type TextareaClassNames = VariantClassNames<TextareaSlots>;
 
-type TextareaRootProps = ComponentProps<typeof FieldPrimitive.Textarea> &
-  WithTestId & {
-    /**
-     * Visual shell variant. When omitted, resolves from the nearest `Surface` context.
-     */
-    variant?: FormControlVariant;
-  };
+type TextareaRootProps = ComponentProps<typeof FieldPrimitive.Textarea> & {
+  /**
+   * Visual shell variant. When omitted, resolves from the nearest `Surface` context.
+   */
+  variant?: FormControlVariant;
+};
 
 export interface TextareaProps extends TextareaRootProps {
   /**
@@ -54,7 +53,6 @@ function TextareaProvider({ children }: { children: ReactNode }) {
 function TextareaField({
   className,
   classNames,
-  testId,
   variant: variantProp,
   ...rest
 }: TextareaRootProps & { classNames?: TextareaClassNames }) {
@@ -71,7 +69,6 @@ function TextareaField({
         formControlShellVariants({ size: "md", ...shellArgs }),
         slots.rootLayout({ className: cn(className, classNames?.rootLayout) }),
       )}
-      data-testid={testId}
     />
   );
 }
@@ -98,7 +95,6 @@ function TextareaClearableField({
   canClear,
   className,
   classNames,
-  testId,
   ...rest
 }: TextareaRootProps & { canClear?: boolean; classNames?: TextareaClassNames }) {
   const { slots } = useTextarea();
@@ -109,7 +105,6 @@ function TextareaClearableField({
       className={slots.clearableRoot({
         className: cn(canClear && "pe-9", className, classNames?.clearableRoot),
       })}
-      data-testid={testId}
     />
   );
 }
@@ -126,7 +121,6 @@ export function Textarea({
   onValueChange,
   readOnly,
   ref,
-  testId,
   value,
   variant: variantProp,
   ...rest
@@ -165,7 +159,6 @@ export function Textarea({
           onChange={changeHandler}
           readOnly={readOnly}
           ref={ref}
-          testId={testId}
           value={value}
           variant={variantProp}
         />
@@ -181,7 +174,6 @@ export function Textarea({
             onChange={handleChange}
             readOnly={readOnly}
             ref={mergedRef}
-            testId={testId}
             value={value}
           />
           {canClear ? (

@@ -3,12 +3,10 @@ import { type ButtonVariantProps, buttonVariants } from "@pisagor/styles/ui/butt
 import { type ToggleVariantProps, toggleVariants } from "@pisagor/styles/ui/toggle";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import type { WithTestId } from "../../internal/types";
-
 // #region Types
 export type ToggleRootProps = ComponentProps<typeof TogglePrimitive.Root>;
 
-export interface ToggleProps extends ToggleRootProps, ToggleVariantProps, WithTestId {
+export interface ToggleProps extends ToggleRootProps, ToggleVariantProps {
   /**
    * The variant of the toggle
    *
@@ -27,7 +25,6 @@ export function Toggle({
   className,
   onPressedChange,
   onValueChange,
-  testId,
   ...rest
 }: ToggleProps) {
   return (
@@ -38,7 +35,6 @@ export function Toggle({
         toggleVariants({ size }),
         className,
       )}
-      data-testid={testId}
       onPressedChange={
         onPressedChange || onValueChange
           ? (pressed) => {

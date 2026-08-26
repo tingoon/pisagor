@@ -18,7 +18,6 @@ import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
-import type { WithTestId } from "../../internal/types";
 import { Button } from "../button";
 import { InputGroup } from "../input-group";
 import { ComboboxRootContext, useComboboxRoot } from "./combobox.context";
@@ -37,7 +36,7 @@ export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   variant?: FormControlVariant;
   collection?: ListCollection<T>;
   onValueChange?: (value: string[]) => void;
-} & WithTestId;
+};
 
 export interface ComboboxProps extends Omit<ComboboxRootProps, "children"> {
   items?: Array<ComboboxPresetItem | string>;
@@ -112,13 +111,12 @@ export function ComboboxRoot<T extends CollectionItem = CollectionItem>({
   children,
   onValueChange,
   variant,
-  testId,
   ...rest
 }: ComboboxRootProps<T>) {
   const slots = useMemo(() => comboboxVariants(), []);
 
   return (
-    <ComboboxRootContext value={{ slots, testId }}>
+    <ComboboxRootContext value={{ slots }}>
       <FormControlVariantProvider value={variant}>
         <ComboboxPrimitive.Root
           lazyMount={lazyMount}
@@ -138,15 +136,9 @@ export function ComboboxRoot<T extends CollectionItem = CollectionItem>({
 export const ComboboxContext = ComboboxPrimitive.Context;
 
 export function ComboboxControl({ className, ...rest }: ComboboxControlProps) {
-  const { slots = comboboxVariants(), testId } = useComboboxRoot() ?? {};
+  const { slots = comboboxVariants() } = useComboboxRoot() ?? {};
 
-  return (
-    <ComboboxPrimitive.Control
-      {...rest}
-      className={slots.control({ className })}
-      data-testid={testId}
-    />
-  );
+  return <ComboboxPrimitive.Control {...rest} className={slots.control({ className })} />;
 }
 
 export function ComboboxInput({

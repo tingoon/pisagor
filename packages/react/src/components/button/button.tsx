@@ -5,13 +5,12 @@ import {
   buttonVariants,
 } from "@pisagor/styles/ui/button";
 import type { ComponentProps } from "react";
-import type { WithTestId } from "../../internal/types";
 import { Spinner } from "../spinner";
 
 // #region Types
 type ButtonRootProps = ComponentProps<typeof ark.button>;
 
-export interface ButtonProps extends ButtonRootProps, ButtonVariantProps, WithTestId {
+export interface ButtonProps extends ButtonRootProps, ButtonVariantProps {
   /**
    * Whether to apply a click effect to the button.
    *
@@ -37,7 +36,6 @@ export function Button({
   className,
   children,
   type = "button",
-  testId,
   disabled,
   ...rest
 }: ButtonProps) {
@@ -52,7 +50,6 @@ export function Button({
       data-scope="button"
       data-size={size}
       data-state={isLoading ? "loading" : "idle"}
-      data-testid={testId}
       data-variant={variant}
       disabled={disabled || isLoading}
       type={type}

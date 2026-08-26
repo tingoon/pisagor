@@ -16,9 +16,7 @@ import {
   drawerTitleVariants,
 } from "@pisagor/styles/ui/drawer";
 import type { ComponentProps } from "react";
-import type { WithTestId } from "../../internal/types";
 import { ScrollArea } from "../scroll-area";
-import { DrawerContext, useDrawer } from "./drawer.context";
 
 // #region Types
 export interface DrawerPositionerProps
@@ -45,7 +43,7 @@ export interface DrawerBodyProps extends ComponentProps<typeof ark.div> {
   scrollFade?: boolean;
 }
 
-export interface DrawerRootProps extends ComponentProps<typeof DrawerPrimitive.Root>, WithTestId {}
+export interface DrawerRootProps extends ComponentProps<typeof DrawerPrimitive.Root> {}
 
 export type DrawerTriggerProps = ComponentProps<typeof DrawerPrimitive.Trigger>;
 
@@ -69,17 +67,8 @@ export interface DrawerFooterProps extends ComponentProps<typeof ark.div> {}
  * Drawer root. `lazyMount` and `unmountOnExit` default to `false` because enabling
  * either option currently breaks swipe-to-dismiss in Ark Drawer.
  */
-export function DrawerRoot({
-  lazyMount = false,
-  unmountOnExit = false,
-  testId,
-  ...rest
-}: DrawerRootProps) {
-  return (
-    <DrawerContext value={{ testId }}>
-      <DrawerPrimitive.Root lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...rest} />
-    </DrawerContext>
-  );
+export function DrawerRoot({ lazyMount = false, unmountOnExit = false, ...rest }: DrawerRootProps) {
+  return <DrawerPrimitive.Root lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...rest} />;
 }
 
 export function DrawerTrigger(props: DrawerTriggerProps) {
@@ -116,8 +105,6 @@ export function DrawerContent({
   children,
   ...rest
 }: DrawerContentProps) {
-  const { testId } = useDrawer() ?? {};
-
   return (
     <Portal>
       <DrawerBackdrop />
@@ -131,7 +118,6 @@ export function DrawerContent({
                 placement: SWIPE_DIRECTION_TO_PLACEMENT[swipeDirection],
                 variant,
               })}
-              data-testid={testId}
             >
               <DrawerGrabber />
 

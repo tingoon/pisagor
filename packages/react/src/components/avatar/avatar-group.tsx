@@ -1,12 +1,11 @@
 import { ark } from "@ark-ui/react/factory";
 import { avatarGroupVariants } from "@pisagor/styles/ui/avatar";
 import type { ComponentProps } from "react";
-import type { WithTestId } from "../../internal/types";
 import { Avatar } from "./avatar";
 import { AvatarGroupContext, useAvatarGroup } from "./avatar-group.context";
 
 // #region Types
-export interface AvatarGroupRootProps extends ComponentProps<typeof ark.div>, WithTestId {}
+export interface AvatarGroupRootProps extends ComponentProps<typeof ark.div> {}
 
 export interface AvatarGroupProps extends Omit<AvatarGroupRootProps, "children"> {
   /** User list rendered as avatars. */
@@ -19,7 +18,7 @@ export interface AvatarGroupCountProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Parts
-export function AvatarGroupRoot({ className, children, testId, ...rest }: AvatarGroupRootProps) {
+export function AvatarGroupRoot({ className, children, ...rest }: AvatarGroupRootProps) {
   const slots = avatarGroupVariants();
 
   return (
@@ -29,7 +28,6 @@ export function AvatarGroupRoot({ className, children, testId, ...rest }: Avatar
         className={slots.base({ className })}
         data-part="group"
         data-scope="avatar"
-        data-testid={testId}
       >
         {children}
       </ark.div>

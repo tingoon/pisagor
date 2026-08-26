@@ -7,12 +7,9 @@ import {
 } from "@pisagor/styles/ui/marquee";
 import type { ComponentProps, ReactNode } from "react";
 import { Children, isValidElement } from "react";
-import type { WithTestId } from "../../internal/types";
-
 // #region Types
 export interface MarqueeRootProps
-  extends Omit<ComponentProps<typeof MarqueePrimitive.Root>, "side">,
-    WithTestId {
+  extends Omit<ComponentProps<typeof MarqueePrimitive.Root>, "side"> {
   /**
    *
    * @defaultValue "horizontal"
@@ -46,7 +43,6 @@ export function MarqueeRoot({
   orientation = "horizontal",
   className,
   children,
-  testId,
   ...rest
 }: MarqueeRootProps) {
   const side = orientation === "horizontal" ? "start" : "bottom";
@@ -56,7 +52,6 @@ export function MarqueeRoot({
       {...rest}
       className={marqueeVariants({ className })}
       data-orientation={orientation}
-      data-testid={testId}
       side={side}
       spacing={spacing}
       speed={speed}

@@ -6,8 +6,6 @@ import {
   skeletonVariants,
 } from "@pisagor/styles/ui/skeleton";
 import type { ComponentProps } from "react";
-import type { WithTestId } from "../../internal/types";
-
 // #region Types
 export interface SkeletonTextProps extends ComponentProps<typeof ark.div> {
   /**
@@ -18,20 +16,19 @@ export interface SkeletonTextProps extends ComponentProps<typeof ark.div> {
   lines?: number;
 }
 
-export interface SkeletonRootProps extends ComponentProps<typeof ark.div>, WithTestId {}
+export interface SkeletonRootProps extends ComponentProps<typeof ark.div> {}
 
 export interface SkeletonCircleProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Parts
-export function SkeletonRoot({ className, testId, ...rest }: SkeletonRootProps) {
+export function SkeletonRoot({ className, ...rest }: SkeletonRootProps) {
   return (
     <ark.div
       {...rest}
       className={skeletonVariants({ className })}
       data-part="root"
       data-scope="skeleton"
-      data-testid={testId}
     />
   );
 }

@@ -1,12 +1,9 @@
 import { ark } from "@ark-ui/react/factory";
 import { proseVariants } from "@pisagor/styles/ui/prose";
 import type { ComponentProps } from "react";
-import type { WithTestId } from "../../internal/types";
-
 // #region Types
 export interface ProseProps
-  extends Omit<ComponentProps<typeof ark.div>, "dangerouslySetInnerHTML">,
-    WithTestId {
+  extends Omit<ComponentProps<typeof ark.div>, "dangerouslySetInnerHTML"> {
   /**
    * Trusted HTML content rendered via `dangerouslySetInnerHTML`.
    *
@@ -19,14 +16,13 @@ export interface ProseProps
 // #endregion
 
 // #region Part
-export function Prose({ className, html, children, testId, ...rest }: ProseProps) {
+export function Prose({ className, html, children, ...rest }: ProseProps) {
   return (
     <ark.div
       {...rest}
       className={proseVariants({ className })}
       data-part="root"
       data-scope="prose"
-      data-testid={testId}
       {...(html ? { dangerouslySetInnerHTML: { __html: html } } : { children })}
     />
   );

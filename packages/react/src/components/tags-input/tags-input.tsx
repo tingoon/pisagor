@@ -4,7 +4,6 @@ import { tagsInputVariants } from "@pisagor/styles/ui/tags-input";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
-import type { WithTestId } from "../../internal/types";
 import { InputGroup, type InputGroupProps } from "../input-group";
 import { TagsInputSlotsContext, useTagsInput } from "./tags-input.context";
 
@@ -13,8 +12,7 @@ export type TagsInputRootProps = Omit<
   ComponentProps<typeof TagsInputPrimitive.Root>,
   "onValueChange"
 > &
-  Pick<InputGroupProps, "size" | "variant"> &
-  WithTestId;
+  Pick<InputGroupProps, "size" | "variant">;
 
 export interface TagsInputProps extends TagsInputRootProps {
   /**
@@ -49,8 +47,7 @@ export type TagsInputItemProps = ComponentProps<typeof TagsInputPrimitive.Item> 
   };
 
 export type TagsInputRootProviderProps = ComponentProps<typeof TagsInputPrimitive.RootProvider> &
-  Pick<InputGroupProps, "size"> &
-  WithTestId & {
+  Pick<InputGroupProps, "size"> & {
     /**
      * Whether to show the clear button.
      *
@@ -87,7 +84,6 @@ export function TagsInputRoot({
   children,
   onValueChange,
   placeholder,
-  testId,
   ...rest
 }: TagsInputProps) {
   const slots = useMemo(() => tagsInputVariants(), []);
@@ -99,7 +95,6 @@ export function TagsInputRoot({
           {...rest}
           className={slots.base({ className })}
           data-size={size}
-          data-testid={testId}
           editable={editable}
           onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
         >
@@ -239,7 +234,6 @@ export function TagsInputRootProvider({
   size = "md",
   clearable,
   className,
-  testId,
   children,
   ...rest
 }: TagsInputRootProviderProps) {
@@ -251,7 +245,6 @@ export function TagsInputRootProvider({
         {...rest}
         className={slots.base({ className })}
         data-size={size}
-        data-testid={testId}
       >
         <TagsInputControl clearable={clearable}>{children}</TagsInputControl>
         <TagsInputPrimitive.HiddenInput />

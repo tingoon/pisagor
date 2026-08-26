@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import { cn } from "@pisagor/utils";
 import { type ComponentProps, type RefObject, useCallback, useEffect, useRef } from "react";
-import type { WithTestId } from "../../internal/types";
 
 // #region Types
 type ScrollTarget = HTMLElement | Document | null | undefined;
@@ -10,7 +9,7 @@ const SCROLLSPY_ANCHOR = "data-scrollspy-anchor";
 const SCROLLSPY_OFFSET = "data-scrollspy-offset";
 const SCROLLSPY_ANCHOR_SELECTOR = `[${SCROLLSPY_ANCHOR}]`;
 
-export interface ScrollspyProps extends ComponentProps<typeof ark.div>, WithTestId {
+export interface ScrollspyProps extends ComponentProps<typeof ark.div> {
   /**
    * Whether to update the URL hash when the active section changes.
    *
@@ -99,7 +98,6 @@ export function Scrollspy({
   onUpdate,
   smooth = true,
   targetRef,
-  testId,
   ...rest
 }: ScrollspyProps) {
   const selfRef = useRef<HTMLDivElement>(null);
@@ -289,7 +287,6 @@ export function Scrollspy({
       className={cn(className)}
       data-part="root"
       data-scope="scrollspy"
-      data-testid={testId}
       ref={selfRef}
     >
       {children}

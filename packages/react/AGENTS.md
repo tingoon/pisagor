@@ -101,48 +101,20 @@ Canonical rules: [React Component Patterns → Public API](../../.cursor/rules/i
 - **Direction:** pass `dir` to `Provider`, or omit and let locale infer RTL for `ar` / `he` / `fa` / `ur`. Icon mirroring follows resolved direction.
 - Consumers own localization; `@pisagor/react` does not ship locale catalogs.
 
-## Test hooks (`testId` vs `data-scope` / `data-part`)
-
-Two layers:
+## Structural attributes (`data-scope` / `data-part`)
 
 | Layer | Attribute | Owner | Purpose |
 | ----- | --------- | ----- | ------- |
 | Structural | `data-scope` + `data-part` | Library (fixed) | Compound part targeting, CSS overrides |
-| E2E / app | `testId` → `data-testid` | App (optional) | Page/instance-stable selectors |
-
-Rules:
 
 - `data-scope` / `data-part` are not public API; they are an internal contract. Machine-backed parts inherit them from Zag; plain parts set them inline (`data-scope="{name}"`, root `data-part="root"`).
-- `testId` is optional and app-owned. Prefer `getByRole` / `getByLabelText` first.
-- Use `testId` when multiple instances share the same role/label, or for Playwright/Cypress anchors.
-- Do not use `testId` for styling; use `data-scope` / `data-part` for CSS.
-- Prefer `testId` over passing `data-testid` directly.
+- Components do **not** expose a `testId` prop. Consumers who need `data-testid` can pass it via native HTML attributes (e.g. `data-testid="save-settings"` on a root element that forwards attrs).
 
 Query priority:
 
 1. `getByRole` / `getByLabelText` — accessibility + behavior (preferred)
 2. `within(root).querySelector('[data-scope=...][data-part=...]')` — structural parts
-3. `getByTestId(testId)` — multiple instances / E2E
-
-Scope:
-
-- Root and shorthand components accept `testId?: string` via `WithTestId`.
-- Sub-parts (`Dialog.Title`, `Select.Trigger`, …) do not expose `testId`; use role/label or `data-scope` / `data-part` within the root.
-- Headless roots (e.g. `Dialog`, `Select`, `Popover`) forward `testId` to the primary visible element (`Dialog.Content`, `Select.Trigger`, …) via that component’s own context value.
-- `Provider`, `ClientOnly`, and `Presence` do not accept `testId`.
-
-Example:
-
-```tsx
-<Button testId="save-settings">Save</Button>
-// DOM: data-scope="button" data-part="root" data-testid="save-settings"
-
-<Select.Root testId="country-select">
-  <Select.Trigger>...</Select.Trigger>
-  <Select.Content>...</Select.Content>
-</Select.Root>
-// DOM (trigger): data-scope="select" data-part="trigger" data-testid="country-select"
-```
+3. `getByTestId(...)` — only when the consumer set `data-testid` themselves
 
 ## Surface + form controls
 

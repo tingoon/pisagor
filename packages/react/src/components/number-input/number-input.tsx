@@ -19,7 +19,6 @@ import {
   shellVariantArgs,
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { WithTestId } from "../../internal/types";
 import { Button } from "../button";
 import { Field } from "../field";
 import { Input, type InputProps } from "../input";
@@ -29,8 +28,7 @@ export type NumberInputRootProps = Omit<
   ComponentProps<typeof NumberInputPrimitive.Root>,
   "onValueChange"
 > &
-  Pick<InputProps, "size" | "variant"> &
-  WithTestId;
+  Pick<InputProps, "size" | "variant">;
 
 export interface NumberInputProps extends NumberInputRootProps {
   /**
@@ -70,7 +68,6 @@ export function NumberInputRoot({
   children,
   onValueChange,
   className,
-  testId,
   ...rest
 }: NumberInputProps) {
   return (
@@ -79,7 +76,6 @@ export function NumberInputRoot({
         {...rest}
         className={numberFieldVariants({ className })}
         data-size={size}
-        data-testid={testId}
         onValueChange={
           onValueChange ? (details) => onValueChange(Number(details.value)) : undefined
         }

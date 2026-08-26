@@ -3,7 +3,6 @@ import { Timer as TimerPrimitive, useTimerContext } from "@ark-ui/react/timer";
 import { timerVariants } from "@pisagor/styles/ui/timer";
 import type { ComponentProps } from "react";
 import { Fragment, useMemo } from "react";
-import type { WithTestId } from "../../internal/types";
 import { TimerContext, useTimer } from "./timer.context";
 
 // #region Types
@@ -21,12 +20,11 @@ export interface TimerItemGroupProps extends ComponentProps<typeof ark.div> {
 export interface TimerActionProps
   extends Omit<ComponentProps<typeof TimerPrimitive.ActionTrigger>, "action"> {}
 
-export type TimerRootProps = ComponentProps<typeof TimerPrimitive.Root> &
-  WithTestId & {
-    units?: TimerUnit[];
-    /** Auto-render Timer.Control with play and reset buttons */
-    isControlsVisible?: boolean;
-  };
+export type TimerRootProps = ComponentProps<typeof TimerPrimitive.Root> & {
+  units?: TimerUnit[];
+  /** Auto-render Timer.Control with play and reset buttons */
+  isControlsVisible?: boolean;
+};
 
 export type TimerAreaProps = ComponentProps<typeof TimerPrimitive.Area>;
 
@@ -47,14 +45,13 @@ export function TimerRoot({
   units,
   isControlsVisible,
   children,
-  testId,
   ...rest
 }: TimerRootProps) {
   const slots = useMemo(() => timerVariants(), []);
 
   return (
     <TimerContext value={{ slots }}>
-      <TimerPrimitive.Root {...rest} className={slots.base({ className })} data-testid={testId}>
+      <TimerPrimitive.Root {...rest} className={slots.base({ className })}>
         {units && (
           <TimerArea>
             {units.map((unit, index) => (

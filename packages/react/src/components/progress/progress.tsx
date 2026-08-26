@@ -1,7 +1,7 @@
 import { Progress as ProgressPrimitive } from "@ark-ui/react/progress";
 import { type ProgressSlots, progressVariants } from "@pisagor/styles/ui/progress";
 import type { ComponentProps, ReactNode } from "react";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 import { Field } from "../field";
 import { ProgressContext, useProgress } from "./progress.context";
 
@@ -16,7 +16,7 @@ type ProgressHeaderProps = ComponentProps<"div">;
 
 type ProgressClassNames = VariantClassNames<ProgressSlots>;
 
-type ProgressRootProps = Omit<ComponentProps<typeof ProgressPrimitive.Root>, "value"> & WithTestId;
+type ProgressRootProps = Omit<ComponentProps<typeof ProgressPrimitive.Root>, "value">;
 
 export interface ProgressProps extends Omit<ProgressRootProps, "children"> {
   /** Slot class names */
@@ -52,7 +52,6 @@ function ProgressRoot({
   children,
   className,
   orientation = "horizontal",
-  testId,
   ...rest
 }: ProgressRootProps & { value?: number | null }) {
   const slots = progressVariants();
@@ -62,7 +61,6 @@ function ProgressRoot({
       <ProgressPrimitive.Root
         {...rest}
         className={slots.base({ className })}
-        data-testid={testId}
         orientation={orientation}
       >
         {children}
@@ -114,7 +112,6 @@ export function Progress({
   label,
   orientation = "horizontal",
   rangeProps,
-  testId,
   trackProps,
   value,
   valueProps,
@@ -127,7 +124,6 @@ export function Progress({
       {...rest}
       className={className}
       orientation={orientation}
-      testId={testId}
       value={indeterminate ? null : value}
     >
       {showHeader && (

@@ -1,6 +1,5 @@
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import type { WithTestId } from "../../internal/types";
 import { Button, type ButtonProps } from "../button";
 import { Tooltip, type TooltipProps } from "../tooltip";
 import type { AppShellPlacement, AppShellRegionPosition } from "./app-shell.context";
@@ -15,7 +14,7 @@ import {
   useRegisteredRailState,
 } from "./region";
 
-export interface AppShellRailProps extends ComponentProps<"aside">, WithTestId {
+export interface AppShellRailProps extends ComponentProps<"aside"> {
   activeRailId?: string;
   defaultActiveRailId?: string;
   onActiveRailIdChange?: (id: string) => void;
@@ -63,7 +62,6 @@ export function AppShellRail({
   position = "fixed",
   children,
   className,
-  testId,
   style,
   ...rest
 }: AppShellRailProps) {
@@ -93,7 +91,6 @@ export function AppShellRail({
         data-placement={placement}
         data-position={position}
         data-scope="app-shell"
-        data-testid={testId}
         style={{ gridArea: gridAreaFor(placement, "rail"), ...style }}
       >
         {children}

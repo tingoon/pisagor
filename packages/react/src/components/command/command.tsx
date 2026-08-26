@@ -17,7 +17,6 @@ import {
   type ComboboxItemProps,
   type ComboboxListProps,
   type ComboboxRootProps,
-  useComboboxRoot,
 } from "../combobox";
 import { Dialog, type DialogContentProps, type DialogTriggerProps } from "../dialog";
 import { DropdownMenu, type DropdownMenuShortcutProps } from "../dropdown-menu";
@@ -111,7 +110,6 @@ export function CommandRoot<T extends CollectionItem = CollectionItem>({
   lazyMount = true,
   unmountOnExit = true,
   className,
-  testId,
   ...rest
 }: CommandProps<T>) {
   const slots = useMemo(() => commandVariants(), []);
@@ -128,7 +126,6 @@ export function CommandRoot<T extends CollectionItem = CollectionItem>({
         loopFocus={false}
         open
         selectionBehavior="clear"
-        testId={testId}
         unmountOnExit={unmountOnExit}
       />
     </CommandContext>
@@ -142,7 +139,6 @@ export function CommandContent({ className, ...rest }: CommandContentProps) {
 }
 
 export function CommandInput({ size, className, ...rest }: CommandInputProps) {
-  const { testId } = useComboboxRoot() ?? {};
   const { slots } = useCommand();
 
   return (
@@ -152,7 +148,7 @@ export function CommandInput({ size, className, ...rest }: CommandInputProps) {
           <MagnifyingGlassIcon aria-hidden className={slots.inputIcon()} />
         </InputGroup.Addon>
         <ComboboxPrimitive.Input asChild>
-          <InputGroup.Input autoFocus data-testid={testId} />
+          <InputGroup.Input autoFocus />
         </ComboboxPrimitive.Input>
       </InputGroup>
     </ComboboxPrimitive.Control>

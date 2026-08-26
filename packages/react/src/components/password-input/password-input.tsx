@@ -8,7 +8,6 @@ import {
 import type { ComponentProps } from "react";
 import { useClearableInput } from "../../hooks";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
-import type { WithTestId } from "../../internal/types";
 import { InputGroup, type InputGroupButtonProps, type InputGroupProps } from "../input-group";
 
 // #region Types
@@ -26,8 +25,7 @@ export type PasswordInputIndicatorProps = ComponentProps<typeof PasswordInputPri
 
 export interface PasswordInputProps
   extends PasswordInputRootProps,
-    Omit<ComponentProps<typeof PasswordInputPrimitive.Input>, "className" | "size">,
-    WithTestId {
+    Omit<ComponentProps<typeof PasswordInputPrimitive.Input>, "className" | "size"> {
   size?: InputGroupProps["size"];
   /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
   variant?: FormControlVariant;
@@ -68,7 +66,6 @@ export function PasswordInput({
   disabled,
   readOnly,
   ref,
-  testId,
   ...inputProps
 }: PasswordInputProps) {
   const { fallback, children, ...restIndicatorProps } = indicatorProps ?? {};
@@ -93,7 +90,6 @@ export function PasswordInput({
     <PasswordInputPrimitive.Root
       className={passwordInputVariants({ className })}
       data-size={size}
-      data-testid={testId}
       defaultVisible={defaultVisible}
       invalid={invalid}
       onVisibilityChange={onVisibilityChange}

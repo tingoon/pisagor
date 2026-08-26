@@ -6,20 +6,18 @@ import {
   buttonGroupVariants,
 } from "@pisagor/styles/ui/button-group";
 import type { ComponentProps } from "react";
-import type { WithTestId } from "../../internal/types";
 import { Separator, type SeparatorProps } from "../separator";
 
 // #region Types
 export interface ButtonGroupProps
   extends ComponentProps<typeof ark.fieldset>,
-    ButtonGroupVariantProps,
-    WithTestId {}
+    ButtonGroupVariantProps {}
 
 export interface ButtonGroupTextProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Parts
-export function ButtonGroupRoot({ className, orientation, testId, ...rest }: ButtonGroupProps) {
+export function ButtonGroupRoot({ className, orientation, ...rest }: ButtonGroupProps) {
   return (
     <ark.fieldset
       {...rest}
@@ -27,7 +25,6 @@ export function ButtonGroupRoot({ className, orientation, testId, ...rest }: But
       data-orientation={orientation}
       data-part="root"
       data-scope="button-group"
-      data-testid={testId}
     />
   );
 }

@@ -12,7 +12,6 @@ import {
   shellVariantArgs,
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { WithTestId } from "../../internal/types";
 import { Button } from "../button";
 import { FileUploadContext, useFileUpload } from "./file-upload.context";
 
@@ -20,9 +19,7 @@ import { FileUploadContext, useFileUpload } from "./file-upload.context";
 export interface FileUploadListProps
   extends Omit<ComponentProps<typeof FileUploadPrimitive.Item>, "file"> {}
 
-export interface FileUploadRootProps
-  extends ComponentProps<typeof FileUploadPrimitive.Root>,
-    WithTestId {
+export interface FileUploadRootProps extends ComponentProps<typeof FileUploadPrimitive.Root> {
   onValueChange?: (value: File[]) => void;
 }
 
@@ -69,7 +66,6 @@ export function FileUploadRoot({
   children,
   onFileChange,
   onValueChange,
-  testId,
   ...rest
 }: FileUploadRootProps) {
   const slots = useMemo(() => fileUploadVariants(), []);
@@ -79,7 +75,6 @@ export function FileUploadRoot({
       <FileUploadPrimitive.Root
         {...rest}
         className={slots.base({ className })}
-        data-testid={testId}
         onFileChange={(details) => {
           onFileChange?.(details);
           onValueChange?.(details.acceptedFiles);

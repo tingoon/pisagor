@@ -2,7 +2,7 @@ import { ark } from "@ark-ui/react/factory";
 import { type DataListSlots, dataListVariants } from "@pisagor/styles/ui/data-list";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 
 // #region Types
 type DataListClassNames = VariantClassNames<DataListSlots>;
@@ -12,7 +12,7 @@ interface DataListPresetItem {
   value: ReactNode;
 }
 
-export interface DataListRootProps extends ComponentProps<typeof ark.dl>, WithTestId {
+export interface DataListRootProps extends ComponentProps<typeof ark.dl> {
   /**
    * The orientation of the data list.
    *
@@ -44,7 +44,6 @@ export function DataListRoot({
   className,
   classNames,
   children,
-  testId,
   ...rest
 }: DataListRootProps) {
   const slots = dataListVariants();
@@ -56,7 +55,6 @@ export function DataListRoot({
       data-orientation={orientation}
       data-part="root"
       data-scope="data-list"
-      data-testid={testId}
     >
       {children}
     </ark.dl>

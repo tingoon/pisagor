@@ -30,7 +30,6 @@ import {
   useRef,
   useState,
 } from "react";
-import type { WithTestId } from "../../internal/types";
 import { Table, type TableCellProps, type TableHeadProps, type TableRowProps } from "../table";
 import {
   DataGridContext,
@@ -55,8 +54,7 @@ export type DataGridProps<TData extends RowData> = {
   children: ReactNode;
   className?: string;
   getCoreRowModel?: TableOptions<TData>["getCoreRowModel"];
-} & Omit<TableOptions<TData>, "getCoreRowModel"> &
-  WithTestId;
+} & Omit<TableOptions<TData>, "getCoreRowModel">;
 
 interface DataGridHeaderProps {
   children: ReactNode;
@@ -558,7 +556,6 @@ function DataGridRoot<TData extends RowData>({
   children,
   className,
   getCoreRowModel: getCoreRowModelOption,
-  testId,
   ...rest
 }: DataGridProps<TData>) {
   const table = useLegacyTable<TData>({
@@ -571,12 +568,7 @@ function DataGridRoot<TData extends RowData>({
 
   return (
     <DataGridContext value={contextValue as DataGridContextValue<RowData>}>
-      <div
-        className={dataGridVariants({ className })}
-        data-part="root"
-        data-scope="data-grid"
-        data-testid={testId}
-      >
+      <div className={dataGridVariants({ className })} data-part="root" data-scope="data-grid">
         {children}
       </div>
     </DataGridContext>

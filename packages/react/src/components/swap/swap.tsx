@@ -1,8 +1,6 @@
 import { Swap as SwapPrimitive } from "@ark-ui/react/swap";
 import { type SwapVariantProps, swapVariants } from "@pisagor/styles/ui/swap";
 import type { ComponentProps, ReactNode } from "react";
-import type { WithTestId } from "../../internal/types";
-
 // #region Types
 export type SwapOnIndicatorProps = ComponentProps<typeof SwapPrimitive.Indicator>;
 
@@ -10,7 +8,7 @@ export type SwapOffIndicatorProps = ComponentProps<typeof SwapPrimitive.Indicato
 
 export type SwapRootProps = ComponentProps<typeof SwapPrimitive.Root>;
 
-export interface SwapProps extends SwapRootProps, SwapVariantProps, WithTestId {
+export interface SwapProps extends SwapRootProps, SwapVariantProps {
   /** Content shown when swapped on. */
   on?: ReactNode;
   /** Content shown when swapped off. */
@@ -33,14 +31,12 @@ export function Swap({
   onIndicatorProps,
   offIndicatorProps,
   children,
-  testId,
   ...rest
 }: SwapProps) {
   return (
     <SwapPrimitive.Root
       {...rest}
       className={swapVariants({ className, variant })}
-      data-testid={testId}
       lazyMount={lazyMount}
       unmountOnExit={unmountOnExit}
     >

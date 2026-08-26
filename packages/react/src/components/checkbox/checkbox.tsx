@@ -10,8 +10,6 @@ import {
   shellVariantArgs,
 } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { WithTestId } from "../../internal/types";
-
 // #region Types
 export type CheckboxGroupProps = Omit<
   ComponentProps<typeof CheckboxPrimitive.Group>,
@@ -20,7 +18,7 @@ export type CheckboxGroupProps = Omit<
   onValueChange?: (value: string[]) => void;
 };
 
-export type CheckboxRootProps = ComponentProps<typeof CheckboxPrimitive.Root> & WithTestId;
+export type CheckboxRootProps = ComponentProps<typeof CheckboxPrimitive.Root>;
 
 export interface CheckboxProps extends CheckboxRootProps {
   /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
@@ -48,7 +46,6 @@ export function CheckboxRoot({
   onCheckedChange,
   onValueChange,
   className,
-  testId,
   ...rest
 }: CheckboxProps) {
   const resolved = useFormControlVariant(variantProp);
@@ -72,7 +69,6 @@ export function CheckboxRoot({
         formControlToggleVariants({ size: "md", ...shellArgs }),
         slots.base({ className }),
       )}
-      data-testid={testId}
       onCheckedChange={handleCheckedChange}
       role="checkbox"
     >

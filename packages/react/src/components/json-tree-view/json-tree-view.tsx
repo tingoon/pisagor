@@ -2,7 +2,7 @@ import { JsonTreeView as JsonTreeViewPrimitive } from "@ark-ui/react/json-tree-v
 import { CaretRightIcon } from "@phosphor-icons/react";
 import { type JsonTreeViewSlots, jsonTreeViewVariants } from "@pisagor/styles/ui/json-tree-view";
 import type { ComponentProps } from "react";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 import { JsonTreeViewContext, useJsonTreeView } from "./json-tree-view.context";
 
 // #region Types
@@ -10,7 +10,7 @@ type JsonTreeViewTreeProps = ComponentProps<typeof JsonTreeViewPrimitive.Tree>;
 
 type JsonTreeViewClassNames = VariantClassNames<JsonTreeViewSlots>;
 
-type JsonTreeViewRootProps = ComponentProps<typeof JsonTreeViewPrimitive.Root> & WithTestId;
+type JsonTreeViewRootProps = ComponentProps<typeof JsonTreeViewPrimitive.Root>;
 
 export interface JsonTreeViewProps extends Omit<JsonTreeViewRootProps, "children"> {
   /** Slot class names */
@@ -26,7 +26,6 @@ function JsonTreeViewRoot({
   children,
   className,
   lazyMount = true,
-  testId,
   unmountOnExit = true,
   ...rest
 }: JsonTreeViewRootProps) {
@@ -37,7 +36,6 @@ function JsonTreeViewRoot({
       <JsonTreeViewPrimitive.Root
         {...rest}
         className={slots.base({ className })}
-        data-testid={testId}
         lazyMount={lazyMount}
         unmountOnExit={unmountOnExit}
       >
@@ -59,12 +57,11 @@ export function JsonTreeView({
   className,
   classNames,
   renderValue,
-  testId,
   treeProps,
   ...rest
 }: JsonTreeViewProps) {
   return (
-    <JsonTreeViewRoot {...rest} className={className} testId={testId}>
+    <JsonTreeViewRoot {...rest} className={className}>
       <JsonTreeViewTree
         {...treeProps}
         arrow={<CaretRightIcon />}

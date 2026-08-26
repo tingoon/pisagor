@@ -1,12 +1,11 @@
 import { ark } from "@ark-ui/react/factory";
 import { separatorVariants } from "@pisagor/styles/ui/separator";
 import type { ComponentProps } from "react";
-import type { WithTestId } from "../../internal/types";
 
 // #region Types
 type SeparatorRootProps = ComponentProps<typeof ark.div>;
 
-export interface SeparatorProps extends SeparatorRootProps, WithTestId {
+export interface SeparatorProps extends SeparatorRootProps {
   /**
    * The orientation of the separator.
    *
@@ -22,7 +21,6 @@ export interface SeparatorProps extends SeparatorRootProps, WithTestId {
 export function Separator({
   orientation = "horizontal",
   className,
-  testId,
   dataPart = "root",
   dataScope = "separator",
   ...rest
@@ -35,7 +33,6 @@ export function Separator({
       data-orientation={orientation}
       data-part={dataPart}
       data-scope={dataScope}
-      data-testid={testId}
       role="separator"
     />
   );

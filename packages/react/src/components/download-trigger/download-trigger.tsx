@@ -1,15 +1,11 @@
 import { DownloadTrigger as DownloadTriggerPrimitive } from "@ark-ui/react/download-trigger";
 import type { ComponentProps } from "react";
-import type { WithTestId } from "../../internal/types";
-
 // #region Types
-export interface DownloadTriggerProps
-  extends ComponentProps<typeof DownloadTriggerPrimitive>,
-    WithTestId {}
+export interface DownloadTriggerProps extends ComponentProps<typeof DownloadTriggerPrimitive> {}
 // #endregion
 
 // #region Part
-export function DownloadTrigger({ testId, ...rest }: DownloadTriggerProps) {
-  return <DownloadTriggerPrimitive {...rest} data-testid={testId} />;
+export function DownloadTrigger({ ...rest }: DownloadTriggerProps) {
+  return <DownloadTriggerPrimitive {...rest} />;
 }
 // #endregion

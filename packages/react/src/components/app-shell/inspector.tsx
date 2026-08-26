@@ -2,7 +2,6 @@ import { ArrowsInLineHorizontalIcon, ArrowsOutLineHorizontalIcon } from "@phosph
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { useState } from "react";
-import type { WithTestId } from "../../internal/types";
 import type { ButtonProps } from "../button";
 import { Resizable } from "../resizable";
 import { ScrollArea } from "../scroll-area";
@@ -24,7 +23,7 @@ import {
 } from "./region";
 import { AppShellSideTrigger } from "./side-trigger";
 
-export interface AppShellInspectorProps extends ComponentProps<"aside">, WithTestId {
+export interface AppShellInspectorProps extends ComponentProps<"aside"> {
   /**
    * Initial inspector width in pixels.
    *
@@ -89,7 +88,6 @@ export function AppShellInspector({
   resizableProps: resizablePropsProp,
   children,
   className,
-  testId,
   style,
   ...rest
 }: AppShellInspectorProps) {
@@ -124,7 +122,6 @@ export function AppShellInspector({
       data-position={position}
       data-scope="app-shell"
       data-state={side.open ? "open" : "closed"}
-      data-testid={testId}
       style={{ gridArea: gridAreaFor(placement, "inspector"), ...style }}
     >
       {side.open && resizableProps.enabled ? (

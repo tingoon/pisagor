@@ -2,7 +2,7 @@ import { ark } from "@ark-ui/react/factory";
 import { type EmptyStateSlots, emptyStateVariants } from "@pisagor/styles/ui/empty-state";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 
 // #region Types
 type EmptyStateTitleProps = ComponentProps<typeof ark.h3>;
@@ -15,11 +15,10 @@ type EmptyStateMediaProps = ComponentProps<typeof ark.div>;
 
 type EmptyStateClassNames = VariantClassNames<EmptyStateSlots>;
 
-type EmptyStateRootProps = Omit<ComponentProps<typeof ark.div>, "title"> &
-  WithTestId & {
-    /** Slot class names */
-    classNames?: EmptyStateClassNames;
-  };
+type EmptyStateRootProps = Omit<ComponentProps<typeof ark.div>, "title"> & {
+  /** Slot class names */
+  classNames?: EmptyStateClassNames;
+};
 
 export interface EmptyStateProps extends Omit<EmptyStateRootProps, "children"> {
   /** Icon or illustration shown above the title. */
@@ -47,7 +46,7 @@ interface EmptyStatePartProps extends ComponentProps<typeof ark.div> {
 // #endregion
 
 // #region Parts
-export function EmptyStateRoot({ className, classNames, testId, ...rest }: EmptyStateRootProps) {
+export function EmptyStateRoot({ className, classNames, ...rest }: EmptyStateRootProps) {
   const slots = emptyStateVariants();
 
   return (
@@ -56,7 +55,6 @@ export function EmptyStateRoot({ className, classNames, testId, ...rest }: Empty
       className={slots.base({ className: className })}
       data-part="root"
       data-scope="empty-state"
-      data-testid={testId}
     />
   );
 }

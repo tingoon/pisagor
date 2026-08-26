@@ -6,7 +6,7 @@ import { useMemo } from "react";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import { formControlShellProps } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 import { Field } from "../field";
 import { SliderContext, useSlider } from "./slider.context";
 
@@ -23,11 +23,10 @@ type SliderValueProps = ComponentProps<typeof SliderPrimitive.ValueText>;
 
 type SliderClassNames = VariantClassNames<SliderSlots>;
 
-type SliderRootProps = ComponentProps<typeof SliderPrimitive.Root> &
-  WithTestId & {
-    /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
-    variant?: FormControlVariant;
-  };
+type SliderRootProps = ComponentProps<typeof SliderPrimitive.Root> & {
+  /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
+  variant?: FormControlVariant;
+};
 
 export interface SliderProps extends Omit<SliderRootProps, "children" | "onValueChange"> {
   /**
@@ -90,13 +89,7 @@ interface SliderMarkerLabelProps extends ComponentProps<"span"> {}
 // #endregion
 
 // #region Parts
-function SliderRoot({
-  children,
-  className,
-  testId,
-  variant: variantProp,
-  ...rest
-}: SliderRootProps) {
+function SliderRoot({ children, className, variant: variantProp, ...rest }: SliderRootProps) {
   const resolved = useFormControlVariant(variantProp);
   const shellControlProps = formControlShellProps(resolved);
   const slots = sliderVariants();
@@ -105,12 +98,7 @@ function SliderRoot({
 
   return (
     <SliderContext value={{ slots, thumbShadowClass, trackVariantClass }}>
-      <SliderPrimitive.Root
-        {...rest}
-        {...shellControlProps}
-        className={slots.base({ className })}
-        data-testid={testId}
-      >
+      <SliderPrimitive.Root {...rest} {...shellControlProps} className={slots.base({ className })}>
         {children}
       </SliderPrimitive.Root>
     </SliderContext>
@@ -227,7 +215,6 @@ export function Slider({
   showMarkers = false,
   showValue = false,
   tabIndex,
-  testId,
   thumbProps,
   trackProps,
   value,
@@ -261,7 +248,6 @@ export function Slider({
       max={max}
       min={min}
       onValueChange={handleValueChange}
-      testId={testId}
       value={value}
       variant={variant}
     >

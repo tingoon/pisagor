@@ -7,7 +7,6 @@ import { actionBarVariants } from "@pisagor/styles/ui/action-bar";
 import { useHotkey } from "@tanstack/react-hotkeys";
 import type { ComponentProps, MouseEvent, PropsWithChildren, ReactNode } from "react";
 import { useCallback, useMemo } from "react";
-import type { WithTestId } from "../../internal/types";
 import { Badge, type BadgeProps } from "../badge";
 import { Button } from "../button";
 import { Separator, type SeparatorProps } from "../separator";
@@ -25,9 +24,7 @@ interface ActionBarActionItem {
   disabled?: boolean;
 }
 
-export interface ActionBarProps
-  extends Pick<ActionBarContextValue, "lazyMount" | "unmountOnExit">,
-    WithTestId {
+export interface ActionBarProps extends Pick<ActionBarContextValue, "lazyMount" | "unmountOnExit"> {
   /**
    * Whether to close the action bar when the Escape key is pressed.
    *
@@ -92,7 +89,6 @@ export function ActionBarRoot({
   count,
   actions,
   children,
-  testId,
 }: PropsWithChildren<ActionBarProps>) {
   const [isOpen, setOpen] = useUncontrolled({
     defaultValue: defaultOpen,
@@ -145,10 +141,9 @@ export function ActionBarRoot({
       onOpen: handleOpen,
       positioning,
       slots,
-      testId,
       unmountOnExit,
     }),
-    [handleClose, handleOpen, isOpen, lazyMount, positioning, slots, testId, unmountOnExit],
+    [handleClose, handleOpen, isOpen, lazyMount, positioning, slots, unmountOnExit],
   );
 
   const hasPreset = count !== undefined || (actions && actions.length > 0);
@@ -212,7 +207,7 @@ export function ActionBarContent({
   className,
   ...rest
 }: ActionBarContentProps) {
-  const { isOpen, lazyMount, unmountOnExit, positioning, slots, testId } = useActionBar();
+  const { isOpen, lazyMount, unmountOnExit, positioning, slots } = useActionBar();
 
   const placement = positioning.placement;
   const gutter = positioning.gutter;
@@ -233,7 +228,6 @@ export function ActionBarContent({
             className={slots.content({ className })}
             data-part="content"
             data-scope="action-bar"
-            data-testid={testId}
             role="toolbar"
           />
         </ark.div>

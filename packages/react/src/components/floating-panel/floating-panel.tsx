@@ -5,15 +5,13 @@ import { ArrowsOutIcon, CornersInIcon, MinusIcon } from "@phosphor-icons/react";
 import { floatingPanelVariants } from "@pisagor/styles/ui/floating-panel";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
-import type { WithTestId } from "../../internal/types";
 import { Button, type ButtonProps } from "../button";
 import { ScrollArea } from "../scroll-area";
 import { FloatingPanelContext, useFloatingPanel } from "./floating-panel.context";
 
 // #region Types
 export interface FloatingPanelRootProps
-  extends ComponentProps<typeof FloatingPanelPrimitive.Root>,
-    WithTestId {}
+  extends ComponentProps<typeof FloatingPanelPrimitive.Root> {}
 
 export interface FloatingPanelContentProps
   extends ComponentProps<typeof FloatingPanelPrimitive.Content> {
@@ -79,13 +77,12 @@ export interface FloatingPanelFooterProps extends ComponentProps<typeof ark.div>
 export function FloatingPanelRoot({
   lazyMount = true,
   unmountOnExit = true,
-  testId,
   ...rest
 }: FloatingPanelRootProps) {
   const slots = useMemo(() => floatingPanelVariants(), []);
 
   return (
-    <FloatingPanelContext value={{ slots, testId }}>
+    <FloatingPanelContext value={{ slots }}>
       <FloatingPanelPrimitive.Root lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...rest} />
     </FloatingPanelContext>
   );
@@ -101,16 +98,12 @@ export function FloatingPanelContent({
   children,
   ...rest
 }: FloatingPanelContentProps) {
-  const { slots = floatingPanelVariants(), testId } = useFloatingPanel() ?? {};
+  const { slots = floatingPanelVariants() } = useFloatingPanel() ?? {};
 
   return (
     <Portal>
       <FloatingPanelPrimitive.Positioner className={slots.positioner()}>
-        <FloatingPanelPrimitive.Content
-          {...rest}
-          className={slots.content({ className })}
-          data-testid={testId}
-        >
+        <FloatingPanelPrimitive.Content {...rest} className={slots.content({ className })}>
           {children}
 
           {resizable && (

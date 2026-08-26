@@ -7,7 +7,7 @@ import { cloneElement } from "react";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 import { RatingContext, useRating } from "./rating.context";
 
 // #region Types
@@ -19,11 +19,10 @@ type RatingIndicatorProps = ComponentProps<"span">;
 
 type RatingClassNames = VariantClassNames<RatingSlots>;
 
-type RatingRootProps = ComponentProps<typeof RatingGroupPrimitive.Root> &
-  WithTestId & {
-    /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
-    variant?: FormControlVariant;
-  };
+type RatingRootProps = ComponentProps<typeof RatingGroupPrimitive.Root> & {
+  /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
+  variant?: FormControlVariant;
+};
 
 export interface RatingProps extends Omit<RatingRootProps, "children" | "onValueChange"> {
   /** Slot class names */
@@ -70,7 +69,6 @@ function RatingRoot({
   children,
   className,
   count = 5,
-  testId,
   variant: variantProp,
   ...rest
 }: RatingRootProps) {
@@ -86,7 +84,6 @@ function RatingRoot({
           allowHalf={allowHalf}
           className={slots.base({ className: cn(surfaceTone, className) })}
           count={count}
-          data-testid={testId}
           data-variant={resolved.variant}
         >
           {children}
@@ -137,7 +134,6 @@ export function Rating({
   indicatorProps,
   itemProps,
   onValueChange,
-  testId,
   variant,
   ...rest
 }: RatingProps) {
@@ -146,7 +142,6 @@ export function Rating({
       {...rest}
       className={className}
       onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
-      testId={testId}
       variant={variant}
     >
       <RatingControl {...controlProps} className={classNames?.control}>

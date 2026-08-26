@@ -1,8 +1,7 @@
 import type { SelectVariants } from "@pisagor/styles/ui/select";
-import type { WithTestId } from "../../internal/types";
 import { createContext } from "../../utils";
 
-export interface SelectRootContextValue extends WithTestId {
+export interface SelectRootContextValue {
   /** Slot class recipes from `selectVariants`. */
   slots: SelectVariants;
 }

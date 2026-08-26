@@ -1,7 +1,6 @@
 import { Menu as MenuPrimitive } from "@ark-ui/react/menu";
 import { contextMenuTriggerVariants } from "@pisagor/styles/ui/context-menu";
 import type { ComponentProps } from "react";
-import type { WithTestId } from "../../internal/types";
 import {
   DropdownMenu,
   type DropdownMenuContentProps,
@@ -12,28 +11,21 @@ import {
   type DropdownMenuShortcutProps,
   type DropdownMenuTriggerItemProps,
 } from "../dropdown-menu";
-import { useDropdownMenuRoot } from "../dropdown-menu/dropdown-menu.context";
 
 // #region Types
-export interface ContextMenuRootProps extends DropdownMenuRootProps, WithTestId {}
+export interface ContextMenuRootProps extends DropdownMenuRootProps {}
 
 export type ContextMenuContextTriggerProps = ComponentProps<typeof MenuPrimitive.ContextTrigger>;
 // #endregion
 
 // #region Parts
-export function ContextMenuRoot({ testId, ...rest }: ContextMenuRootProps) {
-  return <DropdownMenu {...rest} testId={testId} />;
+export function ContextMenuRoot({ ...rest }: ContextMenuRootProps) {
+  return <DropdownMenu {...rest} />;
 }
 
 export function ContextMenuContextTrigger({ className, ...rest }: ContextMenuContextTriggerProps) {
-  const { testId } = useDropdownMenuRoot() ?? {};
-
   return (
-    <MenuPrimitive.ContextTrigger
-      {...rest}
-      className={contextMenuTriggerVariants({ className })}
-      data-testid={testId}
-    />
+    <MenuPrimitive.ContextTrigger {...rest} className={contextMenuTriggerVariants({ className })} />
   );
 }
 

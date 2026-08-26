@@ -27,7 +27,6 @@ import {
   type TooltipPayloadEntry,
   type TooltipValueType,
 } from "recharts";
-import type { WithTestId } from "../internal/types";
 import { ChartContext, useChart } from "./chart.context";
 import "./chart-series.css";
 
@@ -82,7 +81,7 @@ export type NameType = number | string;
 
 export type TooltipType = "none";
 
-interface ChartContainerProps extends ComponentProps<"div">, WithTestId {
+interface ChartContainerProps extends ComponentProps<"div"> {
   children: ComponentProps<typeof ResponsiveContainer>["children"];
   config: ChartConfig;
   id?: string;
@@ -124,14 +123,7 @@ const getPayload = (config: ChartConfig, payload: unknown, key: string) => {
 // #endregion
 
 // #region Parts
-export function ChartContainer({
-  children,
-  className,
-  config,
-  id,
-  testId,
-  ...rest
-}: ChartContainerProps) {
+export function ChartContainer({ children, className, config, id, ...rest }: ChartContainerProps) {
   const uniqueId = useId();
   const chartId = `chart-${id || uniqueId.replace(/:/g, "")}`;
 
@@ -143,7 +135,6 @@ export function ChartContainer({
         data-chart={chartId}
         data-part="root"
         data-scope="chart"
-        data-testid={testId}
       >
         <ChartStyle config={config} id={chartId} />
         <ResponsiveContainer>{children}</ResponsiveContainer>

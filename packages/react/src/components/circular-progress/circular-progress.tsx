@@ -5,7 +5,7 @@ import {
   circularProgressVariants,
 } from "@pisagor/styles/ui/circular-progress";
 import type { ComponentProps, ReactNode } from "react";
-import type { VariantClassNames, WithTestId } from "../../internal/types";
+import type { VariantClassNames } from "../../internal/types";
 import {
   CircularProgressSlotsContext,
   useCircularProgressSlots,
@@ -18,7 +18,7 @@ type CircularProgressValueProps = ComponentProps<typeof ProgressPrimitive.ValueT
 
 type CircularProgressClassNames = VariantClassNames<CircularProgressSlots>;
 
-type CircularProgressRootProps = ComponentProps<typeof ProgressPrimitive.Root> & WithTestId;
+type CircularProgressRootProps = ComponentProps<typeof ProgressPrimitive.Root>;
 
 export interface CircularProgressProps extends Omit<CircularProgressRootProps, "children"> {
   /** Slot class names */
@@ -60,12 +60,12 @@ interface CircularProgressTrackPartProps {
 // #endregion
 
 // #region Parts
-function CircularProgressRoot({ children, className, testId, ...rest }: CircularProgressRootProps) {
+function CircularProgressRoot({ children, className, ...rest }: CircularProgressRootProps) {
   const slots = circularProgressVariants();
 
   return (
     <CircularProgressSlotsContext value={{ slots }}>
-      <ProgressPrimitive.Root {...rest} className={slots.base({ className })} data-testid={testId}>
+      <ProgressPrimitive.Root {...rest} className={slots.base({ className })}>
         {children}
       </ProgressPrimitive.Root>
     </CircularProgressSlotsContext>
@@ -151,7 +151,6 @@ export function CircularProgress({
   indeterminate = false,
   isValueVisible,
   size = 32,
-  testId,
   thickness = 4,
   trackProps,
   value,
@@ -159,12 +158,7 @@ export function CircularProgress({
   ...rest
 }: CircularProgressProps) {
   return (
-    <CircularProgressRoot
-      {...rest}
-      className={className}
-      testId={testId}
-      value={indeterminate ? null : value}
-    >
+    <CircularProgressRoot {...rest} className={className} value={indeterminate ? null : value}>
       {isValueVisible && (
         <CircularProgressValueWrapper className={classNames?.valueWrapper}>
           <CircularProgressValue {...valueProps} className={classNames?.value} />
