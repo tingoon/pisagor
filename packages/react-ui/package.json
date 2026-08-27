@@ -4,7 +4,6 @@
   },
   "dependencies": {
     "@ark-ui/react": "^5.39.0",
-    "@mantine/hooks": "^9.5.2",
     "@pisagor/recipes": "workspace:*",
     "@pisagor/tokens": "workspace:*",
     "@pisagor/utils": "workspace:*",
@@ -39,6 +38,7 @@
   "license": "MIT",
   "name": "@pisagor/react",
   "peerDependencies": {
+    "@mantine/hooks": "^9",
     "@phosphor-icons/react": "^2",
     "@tanstack/react-table": "^9",
     "@tanstack/react-virtual": "^3",
