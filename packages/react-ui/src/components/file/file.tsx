@@ -32,21 +32,21 @@ export interface FileActionsProps extends ComponentProps<typeof ark.div> {}
 export interface FileContentProps extends ComponentProps<typeof ark.div> {}
 
 export interface FileProps extends Omit<FileRootProps, "children" | "title"> {
-  /** Display name for the file. */
-  name: ReactNode;
-  /** Optional subtitle (type, modified date, etc.). */
-  meta?: ReactNode;
   /** Size in bytes; rendered with `Format.Byte` when set. */
   size?: number;
-  /** Leading media; defaults to a file icon. */
-  media?: ReactNode;
+  /** Optional subtitle (type, modified date, etc.). */
+  meta?: ReactNode;
+  /** Display name for the file. */
+  name: ReactNode;
   /** Trailing actions (download, remove, …). */
   actions?: ReactNode;
+  /** Leading media; defaults to a file icon. */
+  media?: ReactNode;
 }
 // #endregion
 
 // #region Parts
-export function FileRoot({ className, children, ...rest }: FileRootProps) {
+export function FileRoot({ children, className, ...rest }: FileRootProps) {
   const slots = useMemo(() => fileVariants(), []);
 
   return (
@@ -58,7 +58,7 @@ export function FileRoot({ className, children, ...rest }: FileRootProps) {
   );
 }
 
-export function FileMedia({ variant = "icon", className, children, ...rest }: FileMediaProps) {
+export function FileMedia({ variant = "icon", children, className, ...rest }: FileMediaProps) {
   const { slots } = useFile();
 
   return (
@@ -128,7 +128,7 @@ export function FileActions({ className, ...rest }: FileActionsProps) {
 // #endregion
 
 // #region Shorthand
-export function FileShorthand({ name, meta, size, media, actions, ...rest }: FileProps) {
+export function FileShorthand({ size, name, actions, media, meta, ...rest }: FileProps) {
   return (
     <FileRoot {...rest}>
       <FileMedia>{media}</FileMedia>

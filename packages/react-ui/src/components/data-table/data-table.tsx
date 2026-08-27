@@ -127,7 +127,7 @@ function DataTableHeader<TData extends RowData>({ children }: DataTableHeaderPro
 }
 
 function DataTableHeaderRow(props: DataTableHeaderRowProps) {
-  return <Table.Row data-part="header-row" data-scope="data-table" {...props} />;
+  return <Table.Row {...props} data-part="header-row" data-scope="data-table" />;
 }
 
 function DataTableHead<TData extends RowData>({

@@ -25,20 +25,6 @@ import { AppShellSideTrigger } from "./side-trigger";
 
 export interface AppShellInspectorProps extends ComponentProps<"aside"> {
   /**
-   * Initial inspector width in pixels.
-   *
-   * @defaultValue 320
-   */
-  defaultWidth?: number;
-  /**
-   * Initial open state when uncontrolled.
-   *
-   * @defaultValue false
-   */
-  defaultOpen?: boolean;
-  onOpenChange?: (open: boolean) => void;
-  open?: boolean;
-  /**
    * Grid column side for the inspector.
    *
    * @defaultValue "end"
@@ -53,23 +39,37 @@ export interface AppShellInspectorProps extends ComponentProps<"aside"> {
    * @defaultValue "fixed"
    */
   position?: AppShellRegionPosition;
+  /**
+   * Initial open state when uncontrolled.
+   *
+   * @defaultValue false
+   */
+  defaultOpen?: boolean;
+  /**
+   * Initial inspector width in pixels.
+   *
+   * @defaultValue 320
+   */
+  defaultWidth?: number;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
   /** Resizable edge-handle options. Defaults come from `useAppShell()`. */
   resizableProps?: AppShellResizableProps;
 }
 
 export interface AppShellInspectorTriggerProps extends Omit<ButtonProps, "children"> {
-  /** Custom content when no `on` / `off` icons are provided. */
-  children?: ReactNode;
-  /** Content shown when the region is open. */
-  on?: ReactNode;
-  /** Content shown when the region is closed. */
-  off?: ReactNode;
   /**
    * Inspector side to toggle.
    *
    * @defaultValue "end"
    */
   placement?: AppShellPlacement;
+  /** Custom content when no `on` / `off` icons are provided. */
+  children?: ReactNode;
+  /** Content shown when the region is closed. */
+  off?: ReactNode;
+  /** Content shown when the region is open. */
+  on?: ReactNode;
 }
 
 export interface AppShellInspectorHeaderProps extends ComponentProps<"div"> {}
@@ -80,15 +80,15 @@ export interface AppShellInspectorFooterProps extends ComponentProps<"div"> {}
 
 export function AppShellInspector({
   placement = "end",
-  defaultOpen = false,
-  open: openProp,
-  onOpenChange,
   position = "fixed",
+  defaultOpen = false,
   defaultWidth = 320,
-  resizableProps: resizablePropsProp,
+  open: openProp,
   children,
+  onOpenChange,
   className,
   style,
+  resizableProps: resizablePropsProp,
   ...rest
 }: AppShellInspectorProps) {
   const { defaultInspectorResizableProps, inspectorStates, slots } = useAppShell();
@@ -126,12 +126,12 @@ export function AppShellInspector({
     >
       {side.open && resizableProps.enabled ? (
         <Resizable.EdgeHandle
+          {...regionResizeCallbacks}
           handlePosition={resizableProps.handlePosition}
           label={`Resize ${placement} inspector`}
           onWidthChange={setWidthPx}
           placement={placement}
           width={widthPx}
-          {...regionResizeCallbacks}
         />
       ) : null}
       <div className={slots.inline()}>{children}</div>
@@ -183,10 +183,10 @@ export function AppShellInspectorFooter({ className, ...rest }: AppShellInspecto
 export function AppShellInspectorTrigger({
   placement = "end",
   children,
-  className,
-  on,
   off,
+  on,
   onClick,
+  className,
   ...rest
 }: AppShellInspectorTriggerProps) {
   const { inspectorStates } = useAppShell();

@@ -34,12 +34,12 @@ export type MarqueeEdgeProps = ComponentProps<typeof MarqueePrimitive.Edge>;
 
 // #region Parts
 export function MarqueeRoot({
-  speed = 50,
-  showEdges = true,
-  spacing = "16px",
   orientation = "horizontal",
-  className,
+  showEdges = true,
   children,
+  spacing = "16px",
+  speed = 50,
+  className,
   ...rest
 }: MarqueeRootProps) {
   const slots = useMemo(() => marqueeVariants(), []);

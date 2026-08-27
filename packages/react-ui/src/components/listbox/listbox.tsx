@@ -27,8 +27,8 @@ export interface ListboxRootProps<T extends CollectionItem = CollectionItem>
 }
 
 export interface ListboxProps extends Omit<ListboxRootProps, "children" | "collection"> {
-  items?: ListboxPresetItem[];
   collection?: ListboxRootProps["collection"];
+  items?: ListboxPresetItem[];
 }
 
 export interface ListboxItemProps
@@ -83,8 +83,8 @@ export function ListboxContent({ className, ...rest }: ListboxContentProps) {
 
 export function ListboxItem({
   variant = "default",
-  className,
   children,
+  className,
   ...rest
 }: ListboxItemProps) {
   const slots = useMemo(() => listboxItemVariants({ variant }), [variant]);
@@ -104,7 +104,7 @@ export function ListboxItemText({ className, ...rest }: ListboxItemTextProps) {
   return <ListboxPrimitive.ItemText {...rest} className={slots.text({ className })} />;
 }
 
-export function ListboxItemGroup({ heading, className, children, ...rest }: ListboxItemGroupProps) {
+export function ListboxItemGroup({ children, heading, className, ...rest }: ListboxItemGroupProps) {
   const { slots } = useListbox();
 
   return (
@@ -129,7 +129,7 @@ export function ListboxValueText({ className, ...rest }: ListboxValueTextProps) 
   return <ListboxPrimitive.ValueText {...rest} className={slots.valueText({ className })} />;
 }
 
-export function ListboxItemIndicator({ className, children, ...rest }: ListboxItemIndicatorProps) {
+export function ListboxItemIndicator({ children, className, ...rest }: ListboxItemIndicatorProps) {
   const { slots } = useListboxItem();
 
   return (
@@ -146,14 +146,14 @@ export function ListboxEmpty({ className, ...rest }: ListboxEmptyProps) {
 }
 
 export function ListboxShortcut(props: DropdownMenuShortcutProps) {
-  return <DropdownMenu.Shortcut data-part="shortcut" data-scope="listbox" {...props} />;
+  return <DropdownMenu.Shortcut {...props} data-part="shortcut" data-scope="listbox" />;
 }
 // #endregion
 
 // #region Shorthand
 export function ListboxShorthand({
-  items = [],
   collection: collectionProp,
+  items = [],
   ...rest
 }: ListboxProps) {
   const collection =

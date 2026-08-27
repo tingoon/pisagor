@@ -35,7 +35,7 @@ export function AccordionRoot({ collapsible = true, children, ...rest }: Accordi
   );
 }
 
-export function AccordionItem({ className, children, ...rest }: AccordionItemProps) {
+export function AccordionItem({ children, className, ...rest }: AccordionItemProps) {
   const slots = useMemo(() => accordionItemVariants(), []);
 
   return (
@@ -47,7 +47,7 @@ export function AccordionItem({ className, children, ...rest }: AccordionItemPro
   );
 }
 
-export function AccordionItemTrigger({ className, children, ...rest }: AccordionItemTriggerProps) {
+export function AccordionItemTrigger({ children, className, ...rest }: AccordionItemTriggerProps) {
   const { slots } = useAccordionItem();
 
   return (
@@ -61,7 +61,7 @@ export function AccordionItemTrigger({ className, children, ...rest }: Accordion
   );
 }
 
-export function AccordionItemContent({ className, children, ...rest }: AccordionItemContentProps) {
+export function AccordionItemContent({ children, className, ...rest }: AccordionItemContentProps) {
   const { slots } = useAccordionItem();
 
   return (

@@ -43,14 +43,6 @@ export type ToastItemRootProps = ComponentProps<typeof ToastPrimitive.Root>;
 export interface ToastItemProps extends ToastItemRootProps {
   /** Slot class names */
   classNames?: ToastItemClassNames;
-  /** The toast item data */
-  toast: ToastPrimitive.Options;
-  /** Extra props forwarded to the toast icon wrapper element */
-  iconProps?: Omit<ComponentProps<"div">, "className">;
-  /** Extra props forwarded to the toast title element */
-  titleProps?: Omit<ToastTitleProps, "children" | "className">;
-  /** Extra props forwarded to the toast description element */
-  descriptionProps?: Omit<ToastDescriptionProps, "children" | "className">;
   /** Extra props forwarded to the toast actions container element */
   actionsProps?: Omit<ComponentProps<"div">, "className">;
   /** Extra props forwarded to the toast action trigger element */
@@ -60,6 +52,14 @@ export interface ToastItemProps extends ToastItemRootProps {
   >;
   /** Extra props forwarded to the toast close trigger element */
   closeTriggerProps?: Omit<ToastCloseTriggerProps, "asChild" | "children" | "className">;
+  /** Extra props forwarded to the toast description element */
+  descriptionProps?: Omit<ToastDescriptionProps, "children" | "className">;
+  /** Extra props forwarded to the toast icon wrapper element */
+  iconProps?: Omit<ComponentProps<"div">, "className">;
+  /** Extra props forwarded to the toast title element */
+  titleProps?: Omit<ToastTitleProps, "children" | "className">;
+  /** The toast item data */
+  toast: ToastPrimitive.Options;
 }
 // #endregion
 
@@ -98,7 +98,7 @@ const TOAST_ICONS = {
   warning: <WarningIcon />,
 } as const;
 
-function ToastItemRoot({ className, children, ...rest }: ToastItemRootProps) {
+function ToastItemRoot({ children, className, ...rest }: ToastItemRootProps) {
   const slots = useMemo(() => toastItemVariants(), []);
 
   return (
@@ -111,14 +111,14 @@ function ToastItemRoot({ className, children, ...rest }: ToastItemRootProps) {
 }
 
 function ToastItemContent({
-  toast: toastData,
-  classNames,
-  iconProps,
-  titleProps,
-  descriptionProps,
   actionsProps,
   actionTriggerProps,
   closeTriggerProps,
+  descriptionProps,
+  iconProps,
+  titleProps,
+  toast: toastData,
+  classNames,
 }: Omit<ToastItemProps, keyof ToastItemRootProps> & Pick<ToastItemProps, "toast">) {
   const { slots } = useToastItem();
   const ToastIcon = toastData.type ? TOAST_ICONS[toastData.type as keyof typeof TOAST_ICONS] : null;
@@ -186,15 +186,15 @@ function ToastItemContent({
 }
 
 export function ToastItem({
-  toast: toastData,
-  className,
-  classNames,
-  iconProps,
-  titleProps,
-  descriptionProps,
   actionsProps,
   actionTriggerProps,
   closeTriggerProps,
+  descriptionProps,
+  iconProps,
+  titleProps,
+  toast: toastData,
+  className,
+  classNames,
   ...rest
 }: ToastItemProps) {
   return (

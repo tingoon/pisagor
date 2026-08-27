@@ -25,16 +25,16 @@ export type TourRootProps = Omit<ComponentProps<typeof TourPrimitive.Root>, "tou
 export interface TourProps extends TourRootProps {
   /** Whether to enable arrow key navigation between steps */
   keyboardNavigation?: boolean;
-  /** Called when the tour status changes */
-  onStatusChange?: (details: { status: string }) => void;
-  /** Called when the current step changes */
-  onStepChange?: (details: { stepId: string | null }) => void;
   /**
    * The steps to display in the tour
    *
    * @defaultValue []
    */
   steps: TourStepDetails[];
+  /** Called when the tour status changes */
+  onStatusChange?: (details: { status: string }) => void;
+  /** Called when the current step changes */
+  onStepChange?: (details: { stepId: string | null }) => void;
 }
 
 export interface TourTriggerProps extends ComponentProps<typeof ark.button> {}
@@ -90,7 +90,7 @@ export function TourRoot({ steps = [], ...rest }: TourProps) {
 
   return (
     <TourContext value={{ handleStart, slots, tour }}>
-      <TourPrimitive.Root tour={tour} {...rest} />
+      <TourPrimitive.Root {...rest} tour={tour} />
     </TourContext>
   );
 }
@@ -133,13 +133,13 @@ export function TourBackdrop({ className, ...rest }: DialogBackdropProps) {
 export function TourPositioner(props: TourPositionerProps) {
   const { slots } = useTourContext();
 
-  return <TourPrimitive.Positioner className={slots.positioner()} {...props} />;
+  return <TourPrimitive.Positioner {...props} className={slots.positioner()} />;
 }
 
 export function TourContent({
   showCloseButton = true,
-  className,
   children,
+  className,
   ...rest
 }: TourContentProps) {
   const { slots } = useTourContext();
@@ -183,17 +183,17 @@ export function TourContent({
 }
 
 export function TourBody(props: DialogBodyProps) {
-  return <Dialog.Body data-part="body" data-scope="tour" {...props} />;
+  return <Dialog.Body {...props} data-part="body" data-scope="tour" />;
 }
 
 export function TourSpotlight(props: TourSpotlightProps) {
   const { slots } = useTourContext();
 
-  return <TourPrimitive.Spotlight className={slots.spotlight()} {...props} />;
+  return <TourPrimitive.Spotlight {...props} className={slots.spotlight()} />;
 }
 
 export function TourHeader(props: DialogHeaderProps) {
-  return <Dialog.Header data-part="header" data-scope="tour" {...props} />;
+  return <Dialog.Header {...props} data-part="header" data-scope="tour" />;
 }
 
 export function TourTitle({ className, ...rest }: TourTitleProps) {

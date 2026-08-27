@@ -30,7 +30,7 @@ type CheckboxIndicatorProps = ComponentProps<typeof CheckboxPrimitive.Indicator>
 // #endregion
 
 // #region Parts
-export function CheckboxGroup({ className, onValueChange, ...rest }: CheckboxGroupProps) {
+export function CheckboxGroup({ onValueChange, className, ...rest }: CheckboxGroupProps) {
   return (
     <CheckboxPrimitive.Group
       {...rest}

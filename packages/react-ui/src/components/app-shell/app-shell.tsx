@@ -69,7 +69,7 @@ function useShellGridStyle(childSlots: AppShellSlots) {
   );
 }
 
-export function AppShellRoot({ className, style, children, ...rest }: AppShellRootProps) {
+export function AppShellRoot({ children, className, style, ...rest }: AppShellRootProps) {
   const childSlots = useMemo(() => partitionAppShellChildren(children), [children]);
   const slots = useMemo(() => appShellVariants(), []);
   const [regionRevision, setRegionRevision] = useState(0);

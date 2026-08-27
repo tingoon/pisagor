@@ -191,7 +191,7 @@ function DataGridHeader<TData extends RowData>({ children }: DataGridHeaderProps
 }
 
 function DataGridHeaderRow(props: DataGridHeaderRowProps) {
-  return <Table.Row data-part="header-row" data-scope="data-grid" {...props} />;
+  return <Table.Row {...props} data-part="header-row" data-scope="data-grid" />;
 }
 
 function DataGridColumnResizer({ className, ...rest }: DataGridColumnResizerProps) {

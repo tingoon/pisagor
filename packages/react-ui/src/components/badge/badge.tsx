@@ -11,9 +11,9 @@ export interface BadgeProps extends BadgeRootProps, BadgeVariantProps {}
 
 // #region Part
 export function Badge({
-  variant = "default",
-  size = "md",
   pill = false,
+  size = "md",
+  variant = "default",
   className,
   ...rest
 }: BadgeProps) {

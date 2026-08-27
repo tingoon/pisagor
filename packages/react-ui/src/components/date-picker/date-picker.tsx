@@ -67,10 +67,10 @@ export type DatePickerPresetTriggerProps = ComponentProps<typeof DatePickerPrimi
 
 // #region Parts
 export function DatePickerRoot({
-  positioning = { placement: "top" },
-  onValueChange,
   variant,
+  positioning = { placement: "top" },
   children,
+  onValueChange,
   ...rest
 }: DatePickerRootProps) {
   const slots = useMemo(() => datePickerVariants(), []);
@@ -81,10 +81,10 @@ export function DatePickerRoot({
       <DatePickerSlotsContext value={{ slots }}>
         <CalendarSlotsContext value={{ slots: calendarSlots }}>
           <DatePickerPrimitive.Root
+            {...rest}
             inline={false}
             onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
             positioning={positioning}
-            {...rest}
           >
             {children}
           </DatePickerPrimitive.Root>
@@ -95,9 +95,9 @@ export function DatePickerRoot({
 }
 
 export function DatePickerTrigger({
-  className,
-  children,
   clearable = false,
+  children,
+  className,
   ...rest
 }: DatePickerTriggerProps) {
   const { slots } = useDatePicker();
@@ -114,8 +114,8 @@ export function DatePickerTrigger({
 
 export function DatePickerInput({
   size,
-  className,
   clearable = false,
+  className,
   ...rest
 }: DatePickerInputProps) {
   const { slots } = useDatePicker();
@@ -165,16 +165,16 @@ export function DatePickerClearTrigger() {
 }
 
 export function DatePickerTimer({
-  id,
-  value,
-  defaultValue,
-  className,
-  classNames,
   clearable = false,
-  onChange,
+  defaultValue,
   disabled,
   readOnly,
+  value,
+  id,
   ref,
+  onChange,
+  className,
+  classNames,
   ...rest
 }: DatePickerTimerProps) {
   const { slots } = useDatePicker();
@@ -217,9 +217,9 @@ export function DatePickerTimer({
 }
 
 export function DatePickerContent({
-  className,
   showCalendar = true,
   children,
+  className,
   ...rest
 }: DatePickerContentProps) {
   const { slots } = useDatePicker();

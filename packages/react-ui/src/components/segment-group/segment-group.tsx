@@ -41,9 +41,9 @@ export type SegmentGroupIndicatorProps = ComponentProps<typeof SegmentGroupPrimi
 export function SegmentGroupRoot({
   orientation = "horizontal",
   variant = "default",
-  className,
   children,
   onValueChange,
+  className,
   ...rest
 }: SegmentGroupRootProps) {
   const slots = useMemo(() => segmentGroupVariants(), []);
@@ -65,7 +65,7 @@ export function SegmentGroupRoot({
   );
 }
 
-export function SegmentGroupItem({ className, children, text, ...rest }: SegmentGroupItemProps) {
+export function SegmentGroupItem({ children, text, className, ...rest }: SegmentGroupItemProps) {
   const { slots } = useSegmentGroup();
   const content = children ?? text;
 

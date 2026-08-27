@@ -78,11 +78,11 @@ function formatFileLabel(files: File[]): string | undefined {
 
 // #region Parts
 function FileInputRoot({
-  children,
-  className,
-  disabled,
   size = "md",
   variant: variantProp,
+  disabled,
+  children,
+  className,
   ...rest
 }: FileInputRootProps) {
   const resolved = useFormControlVariant(variantProp);
@@ -135,23 +135,23 @@ function FileInputLabel({ children, className, ...rest }: FileInputLabelProps) {
 
 // #region Closed
 export function FileInput({
+  size = "md",
+  variant,
   accept,
-  browseLabel = "Choose file",
-  capture,
-  className,
   disabled,
-  id,
   invalid,
   multiple,
   name,
+  required,
+  browseLabel = "Choose file",
+  capture,
+  id,
+  placeholder = "No file chosen",
+  ref,
   onChange,
   onFilesChange,
   onValueChange,
-  placeholder = "No file chosen",
-  ref,
-  required,
-  size = "md",
-  variant,
+  className,
   ...rest
 }: FileInputProps) {
   const inputRef = useRef<HTMLInputElement>(null);

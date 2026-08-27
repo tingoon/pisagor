@@ -25,20 +25,6 @@ import { AppShellSideTrigger } from "./side-trigger";
 
 export interface AppShellPanelProps extends ComponentProps<"aside"> {
   /**
-   * Initial panel width in pixels.
-   *
-   * @defaultValue 256
-   */
-  defaultWidth?: number;
-  /**
-   * Initial open state when uncontrolled.
-   *
-   * @defaultValue false
-   */
-  defaultOpen?: boolean;
-  onOpenChange?: (open: boolean) => void;
-  open?: boolean;
-  /**
    * Grid column side for the panel.
    *
    * @defaultValue "start"
@@ -53,23 +39,37 @@ export interface AppShellPanelProps extends ComponentProps<"aside"> {
    * @defaultValue "fixed"
    */
   position?: AppShellRegionPosition;
+  /**
+   * Initial open state when uncontrolled.
+   *
+   * @defaultValue false
+   */
+  defaultOpen?: boolean;
+  /**
+   * Initial panel width in pixels.
+   *
+   * @defaultValue 256
+   */
+  defaultWidth?: number;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
   /** Resizable edge-handle options. Defaults come from `useAppShell()`. */
   resizableProps?: AppShellResizableProps;
 }
 
 export interface AppShellPanelTriggerProps extends Omit<ButtonProps, "children"> {
-  /** Custom content when no `on` / `off` icons are provided. */
-  children?: ReactNode;
-  /** Content shown when the region is open. */
-  on?: ReactNode;
-  /** Content shown when the region is closed. */
-  off?: ReactNode;
   /**
    * Panel side to toggle.
    *
    * @defaultValue "start"
    */
   placement?: AppShellPlacement;
+  /** Custom content when no `on` / `off` icons are provided. */
+  children?: ReactNode;
+  /** Content shown when the region is closed. */
+  off?: ReactNode;
+  /** Content shown when the region is open. */
+  on?: ReactNode;
 }
 
 export interface AppShellPanelHeaderProps extends ComponentProps<"div"> {}
@@ -80,15 +80,15 @@ export interface AppShellPanelFooterProps extends ComponentProps<"div"> {}
 
 export function AppShellPanel({
   placement = "start",
-  defaultOpen = false,
-  open: openProp,
-  onOpenChange,
   position = "fixed",
+  defaultOpen = false,
   defaultWidth = 256,
-  resizableProps: resizablePropsProp,
+  open: openProp,
   children,
+  onOpenChange,
   className,
   style,
+  resizableProps: resizablePropsProp,
   ...rest
 }: AppShellPanelProps) {
   const { defaultPanelResizableProps, panelStates, slots } = useAppShell();
@@ -126,12 +126,12 @@ export function AppShellPanel({
     >
       {side.open && resizableProps.enabled ? (
         <Resizable.EdgeHandle
+          {...regionResizeCallbacks}
           handlePosition={resizableProps.handlePosition}
           label={`Resize ${placement} panel`}
           onWidthChange={setWidthPx}
           placement={placement}
           width={widthPx}
-          {...regionResizeCallbacks}
         />
       ) : null}
       <div className={slots.inline()}>{children}</div>
@@ -183,10 +183,10 @@ export function AppShellPanelFooter({ className, ...rest }: AppShellPanelFooterP
 export function AppShellPanelTrigger({
   placement = "start",
   children,
-  className,
-  on,
   off,
+  on,
   onClick,
+  className,
   ...rest
 }: AppShellPanelTriggerProps) {
   const { panelStates } = useAppShell();

@@ -33,15 +33,15 @@ export interface ToggleGroupItemProps extends ComponentProps<typeof ToggleGroupP
 
 // #region Parts
 export function ToggleGroupRoot({
-  multiple = true,
   orientation = "horizontal",
-  variant = "ghost",
   size = "md",
+  variant = "ghost",
+  multiple = true,
+  children,
   spacing = 0,
+  onValueChange,
   className,
   style,
-  children,
-  onValueChange,
   ...rest
 }: ToggleGroupRootProps) {
   const slots = useMemo(() => toggleGroupVariants({ orientation }), [orientation]);

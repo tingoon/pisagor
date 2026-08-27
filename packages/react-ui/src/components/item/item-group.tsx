@@ -10,7 +10,7 @@ export interface ItemGroupProps extends ComponentProps<typeof ark.div>, ItemVari
 // #endregion
 
 // #region Parts
-export function ItemGroup({ className, children, variant = "default", ...rest }: ItemGroupProps) {
+export function ItemGroup({ variant = "default", children, className, ...rest }: ItemGroupProps) {
   const slots = useMemo(() => itemVariants(), []);
 
   return (

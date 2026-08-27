@@ -58,8 +58,8 @@ export function NumberInputRoot({
   size = "md",
   variant,
   clearable = false,
-  placeholder,
   children,
+  placeholder,
   onValueChange,
   className,
   ...rest
@@ -193,7 +193,7 @@ export function NumberInputInput({ size, variant, className, classNames, ...rest
   );
 }
 
-export function NumberInputScrubber({ className, children, ...rest }: NumberInputScrubberProps) {
+export function NumberInputScrubber({ children, className, ...rest }: NumberInputScrubberProps) {
   const { slots } = useNumberInput();
 
   return (

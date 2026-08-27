@@ -35,34 +35,34 @@ export interface PasswordInputProps
    * In controlled mode, pass `value` and update it via `onChange` or `onValueChange` when clearing.
    */
   clearable?: boolean;
-  clearButtonProps?: InputGroupButtonProps;
-  visibilityTriggerProps?: PasswordInputVisibilityTriggerProps;
-  indicatorProps?: PasswordInputIndicatorProps;
   /** Called with the string value when the input changes. */
   onValueChange?: (value: string) => void;
+  clearButtonProps?: InputGroupButtonProps;
+  indicatorProps?: PasswordInputIndicatorProps;
+  visibilityTriggerProps?: PasswordInputVisibilityTriggerProps;
 }
 // #endregion
 
 // #region Part
 export function PasswordInput({
-  className,
   size = "md",
   variant,
-  visible,
-  defaultVisible,
-  onVisibilityChange,
-  invalid,
   clearable = false,
-  clearButtonProps,
-  visibilityTriggerProps,
-  indicatorProps,
-  onValueChange,
-  onChange,
-  value,
   defaultValue,
+  defaultVisible,
   disabled,
+  invalid,
   readOnly,
+  value,
+  clearButtonProps,
+  indicatorProps,
   ref,
+  visibilityTriggerProps,
+  visible,
+  onChange,
+  onValueChange,
+  onVisibilityChange,
+  className,
   ...inputProps
 }: PasswordInputProps) {
   const { fallback, children, ...restIndicatorProps } = indicatorProps ?? {};
@@ -101,6 +101,7 @@ export function PasswordInput({
           variant={variant}
         >
           <PasswordInputPrimitive.Input
+            {...inputProps}
             asChild
             defaultValue={defaultValue}
             disabled={disabled}
@@ -108,39 +109,38 @@ export function PasswordInput({
             readOnly={readOnly}
             ref={mergedRef}
             value={value}
-            {...inputProps}
           >
             <InputGroup.Input clearable={false} />
           </PasswordInputPrimitive.Input>
           {canClear ? (
             <InputGroup.Addon align="inline-end" className={slots.clearAddon()}>
               <InputGroup.Button
+                {...restClearButtonProps}
                 aria-label="Clear"
                 data-part="clear-trigger"
                 data-scope="password-input"
-                size="icon-xs"
-                type="button"
-                variant="ghost"
-                {...restClearButtonProps}
                 onClick={(event) => {
                   handleClear();
                   onClearClick?.(event);
                 }}
+                size="icon-xs"
+                type="button"
+                variant="ghost"
               >
                 {clearButtonChildren ?? <XIcon />}
               </InputGroup.Button>
             </InputGroup.Addon>
           ) : null}
           <InputGroup.Addon align="inline-end">
-            <PasswordInputPrimitive.VisibilityTrigger asChild {...visibilityTriggerProps}>
+            <PasswordInputPrimitive.VisibilityTrigger {...visibilityTriggerProps} asChild>
               <InputGroup.Button
                 aria-label="Toggle password visibility"
                 size="icon-xs"
                 variant="ghost"
               >
                 <PasswordInputPrimitive.Indicator
-                  fallback={fallback ?? <EyeSlashIcon />}
                   {...restIndicatorProps}
+                  fallback={fallback ?? <EyeSlashIcon />}
                 >
                   {children ?? <EyeIcon />}
                 </PasswordInputPrimitive.Indicator>

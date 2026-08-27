@@ -30,31 +30,32 @@ type SliderRootProps = ComponentProps<typeof SliderPrimitive.Root> & {
 
 export interface SliderProps extends Omit<SliderRootProps, "children" | "onValueChange"> {
   /**
-   * Whether to show the current value text next to the label.
-   *
-   * @defaultValue false
-   */
-  showValue?: boolean;
-  /**
    * The interval between markers.
    *
    * @defaultValue 1
    */
   markerInterval?: number;
   /**
-   * Whether to show markers.
-   *
-   * @defaultValue false
-   */
-  showMarkers?: boolean;
-  /** Label rendered above the slider track. */
-  label?: ReactNode;
-  /**
    * The labels to show on the markers.
    *
    * @defaultValue []
    */
   markerLabels?: string[];
+  /**
+   * Whether to show markers.
+   *
+   * @defaultValue false
+   */
+  showMarkers?: boolean;
+  /**
+   * Whether to show the current value text next to the label.
+   *
+   * @defaultValue false
+   */
+  showValue?: boolean;
+  children?: ReactNode;
+  /** Label rendered above the slider track. */
+  label?: ReactNode;
   /**
    * Called when the slider value changes.
    *
@@ -66,15 +67,14 @@ export interface SliderProps extends Omit<SliderRootProps, "children" | "onValue
   classNames?: SliderClassNames;
   /** Extra props forwarded to the slider control element */
   controlProps?: Omit<SliderControlProps, "children" | "className">;
-  /** Extra props forwarded to the slider track element */
-  trackProps?: Omit<SliderTrackProps, "children" | "className">;
   /** Extra props forwarded to the slider range element */
   rangeProps?: Omit<SliderRangeProps, "children" | "className">;
   /** Extra props forwarded to each slider thumb element */
   thumbProps?: Omit<SliderThumbProps, "children" | "index" | "className">;
+  /** Extra props forwarded to the slider track element */
+  trackProps?: Omit<SliderTrackProps, "children" | "className">;
   /** Extra props forwarded to the slider value text element */
   valueProps?: Omit<SliderValueProps, "children" | "className">;
-  children?: ReactNode;
 }
 
 interface SliderHeaderProps extends ComponentProps<"div"> {}
@@ -89,7 +89,7 @@ interface SliderMarkerLabelProps extends ComponentProps<"span"> {}
 // #endregion
 
 // #region Parts
-function SliderRoot({ children, className, variant: variantProp, ...rest }: SliderRootProps) {
+function SliderRoot({ variant: variantProp, children, className, ...rest }: SliderRootProps) {
   const resolved = useFormControlVariant(variantProp);
   const shellControlProps = formControlShellProps(resolved);
   const slots = sliderVariants();
@@ -105,7 +105,7 @@ function SliderRoot({ children, className, variant: variantProp, ...rest }: Slid
   );
 }
 
-function SliderHeader({ className, children, ...rest }: SliderHeaderProps) {
+function SliderHeader({ children, className, ...rest }: SliderHeaderProps) {
   const { slots } = useSlider();
 
   return (
@@ -121,7 +121,7 @@ function SliderValue({ className, ...rest }: SliderValueProps) {
   return <SliderPrimitive.ValueText {...rest} className={slots.value({ className })} />;
 }
 
-function SliderControl({ className, children, ...rest }: SliderControlProps) {
+function SliderControl({ children, className, ...rest }: SliderControlProps) {
   const { slots } = useSlider();
 
   return (
@@ -131,7 +131,7 @@ function SliderControl({ className, children, ...rest }: SliderControlProps) {
   );
 }
 
-function SliderTrack({ className, children, ...rest }: SliderTrackProps) {
+function SliderTrack({ children, className, ...rest }: SliderTrackProps) {
   const { slots, trackVariantClass } = useSlider();
 
   return (
@@ -161,7 +161,7 @@ function SliderThumb({ className, ...rest }: SliderThumbProps) {
   );
 }
 
-function SliderMarkerGroup({ className, children, ...rest }: SliderMarkerGroupProps) {
+function SliderMarkerGroup({ children, className, ...rest }: SliderMarkerGroupProps) {
   const { slots } = useSlider();
 
   return (
@@ -171,7 +171,7 @@ function SliderMarkerGroup({ className, children, ...rest }: SliderMarkerGroupPr
   );
 }
 
-function SliderMarker({ className, children, ...rest }: SliderMarkerProps) {
+function SliderMarker({ children, className, ...rest }: SliderMarkerProps) {
   const { slots } = useSlider();
 
   return (
@@ -187,7 +187,7 @@ function SliderMarkerTick({ className, ...rest }: SliderMarkerTickProps) {
   return <span {...rest} className={slots.markerTick({ className })} />;
 }
 
-function SliderMarkerLabel({ className, children, ...rest }: SliderMarkerLabelProps) {
+function SliderMarkerLabel({ children, className, ...rest }: SliderMarkerLabelProps) {
   const { slots } = useSlider();
 
   return (
@@ -200,26 +200,26 @@ function SliderMarkerLabel({ className, children, ...rest }: SliderMarkerLabelPr
 
 // #region Closed
 export function Slider({
-  children,
-  className,
-  classNames,
-  controlProps,
+  variant,
   defaultValue,
-  label,
-  markerInterval = 1,
-  markerLabels = [],
   max = 100,
   min = 0,
-  onValueChange,
-  rangeProps,
   showMarkers = false,
   showValue = false,
   tabIndex,
+  value,
+  children,
+  controlProps,
+  label,
+  markerInterval = 1,
+  markerLabels = [],
+  rangeProps,
   thumbProps,
   trackProps,
-  value,
   valueProps,
-  variant,
+  onValueChange,
+  className,
+  classNames,
   ...rest
 }: SliderProps) {
   const _values = useMemo(() => {

@@ -69,11 +69,11 @@ export function CommandDialogTrigger(props: DialogTriggerProps) {
 }
 
 export function CommandDialogContent({
-  children,
-  className,
-  description = "Search for a command to run...",
   size = "lg",
+  children,
+  description = "Search for a command to run...",
   title = "Command Palette",
+  className,
   ...rest
 }: CommandDialogContentProps) {
   const slots = useMemo(() => commandVariants(), []);
@@ -158,7 +158,7 @@ export function CommandList({ className, ...rest }: CommandListProps) {
   );
 }
 
-export function CommandEmpty({ className, children, ...rest }: ComboboxEmptyProps) {
+export function CommandEmpty({ children, className, ...rest }: ComboboxEmptyProps) {
   const { slots } = useCommand();
 
   return (
@@ -194,7 +194,7 @@ export function CommandSeparator({ className, ...rest }: CommandSeparatorProps) 
 }
 
 export function CommandShortcut(props: DropdownMenuShortcutProps) {
-  return <DropdownMenu.Shortcut data-part="shortcut" data-scope="command" {...props} />;
+  return <DropdownMenu.Shortcut {...props} data-part="shortcut" data-scope="command" />;
 }
 
 export function CommandFooter({ className, ...rest }: CommandFooterProps) {

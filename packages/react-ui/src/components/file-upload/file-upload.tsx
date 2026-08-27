@@ -67,10 +67,10 @@ export interface FileUploadHelperProps extends ComponentProps<typeof ark.div> {}
 
 // #region Parts
 export function FileUploadRoot({
-  className,
   children,
   onFileChange,
   onValueChange,
+  className,
   ...rest
 }: FileUploadRootProps) {
   const slots = useMemo(() => fileUploadVariants(), []);
@@ -117,8 +117,8 @@ export function FileUploadDropzone({
 }
 
 export function FileUploadDropzoneIcon({
-  className,
   children,
+  className,
   ...rest
 }: FileUploadDropzoneIconProps) {
   const { slots } = useFileUpload();
@@ -206,8 +206,8 @@ export function FileUploadList({ className, ...rest }: FileUploadListProps) {
             key={key}
           >
             <FileUploadItemPreview
-              className={itemSlots.listPreview()}
               {...(isImage ? { type: "image/*" } : { type: ".*" })}
+              className={itemSlots.listPreview()}
             >
               {isImage ? (
                 <FileUploadItemPreviewImage />
@@ -238,7 +238,7 @@ export function FileUploadList({ className, ...rest }: FileUploadListProps) {
   );
 }
 
-export function FileUploadItem({ className, children, ...rest }: FileUploadItemProps) {
+export function FileUploadItem({ children, className, ...rest }: FileUploadItemProps) {
   const slots = useMemo(() => fileUploadItemVariants(), []);
 
   return (

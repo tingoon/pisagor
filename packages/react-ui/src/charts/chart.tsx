@@ -28,11 +28,11 @@ export type ChartConfig = Record<
 >;
 
 export interface ChartLegendContentProps {
-  className?: string;
   hideIcon?: boolean;
   nameKey?: string;
   payload?: LegendPayload[];
   verticalAlign?: LegendProps["verticalAlign"];
+  className?: string;
 }
 
 export type CustomTooltipProps = Partial<TooltipContentProps<TooltipValueType, NameType>> & {
@@ -108,7 +108,7 @@ const getPayload = (config: ChartConfig, payload: unknown, key: string) => {
 // #endregion
 
 // #region Parts
-export function ChartContainer({ children, className, config, id, ...rest }: ChartContainerProps) {
+export function ChartContainer({ children, config, id, className, ...rest }: ChartContainerProps) {
   const uniqueId = useId();
   const chartId = `chart-${id || uniqueId.replace(/:/g, "")}`;
   const slots = useMemo(() => chartVariants(), []);
@@ -158,9 +158,8 @@ export function ChartStyle({ config, id }: ChartStyleProps) {
 export const ChartTooltip = Tooltip;
 
 export function ChartTooltipContent({
-  active,
-  className,
   color,
+  active,
   formatter,
   hideIndicator = false,
   hideLabel = false,
@@ -171,6 +170,7 @@ export function ChartTooltipContent({
   labelKey,
   nameKey,
   payload,
+  className,
 }: CustomTooltipProps) {
   const { config, slots } = useChart();
 
@@ -270,11 +270,11 @@ export function ChartTooltipContent({
 export const ChartLegend = Legend;
 
 export function ChartLegendContent({
-  className,
   hideIcon = false,
   nameKey,
   payload,
   verticalAlign = "bottom",
+  className,
 }: ChartLegendContentProps) {
   const { config, slots } = useChart();
 

@@ -27,26 +27,26 @@ export interface SidebarProviderProps extends ComponentProps<"div"> {
    */
   defaultOpen?: boolean;
   /**
-   * Called when the open state of the sidebar changes.
-   *
-   * @remarks
-   * Each update also persists the expanded/collapsed state in `localStorage` under the `sidebar_state` key.
-   */
-  onOpenChange?: (open: boolean) => void;
-  /**
    * The open state of the sidebar.
    *
    * @remarks
    * When set, `defaultOpen` is ignored. Pair with `onOpenChange` to handle updates.
    */
   open?: boolean;
+  /**
+   * Called when the open state of the sidebar changes.
+   *
+   * @remarks
+   * Each update also persists the expanded/collapsed state in `localStorage` under the `sidebar_state` key.
+   */
+  onOpenChange?: (open: boolean) => void;
 }
 
 export interface SidebarProps extends SheetProps {
-  className?: string;
-  collapsible?: "offcanvas" | "icon" | "none";
   placement?: "left" | "right";
   variant?: "sidebar" | "floating" | "inset";
+  collapsible?: "offcanvas" | "icon" | "none";
+  className?: string;
 }
 
 export interface SidebarContentProps extends ComponentProps<"div"> {
@@ -279,7 +279,7 @@ export function SidebarRoot(props: SidebarProps) {
   );
 }
 
-export function SidebarTrigger({ className, onClick, ...rest }: ButtonProps) {
+export function SidebarTrigger({ onClick, className, ...rest }: ButtonProps) {
   const { slots, toggleSidebar } = useSidebar();
 
   return (
@@ -499,10 +499,10 @@ export function SidebarMenuItem({ className, ...rest }: SidebarMenuItemProps) {
 }
 
 export function SidebarMenuButton({
-  tooltip,
-  isActive = false,
   size = "md",
   variant = "ghost",
+  isActive = false,
+  tooltip,
   className,
   ...rest
 }: SidebarMenuButtonProps) {
@@ -546,8 +546,8 @@ export function SidebarMenuButton({
 }
 
 export function SidebarMenuAction({
-  className,
   showOnHover = false,
+  className,
   ...rest
 }: SidebarMenuActionProps) {
   const { slots } = useSidebar();
@@ -589,8 +589,8 @@ export function SidebarMenuBadge({ className, ...rest }: SidebarMenuBadgeProps) 
 }
 
 export function SidebarMenuSkeleton({
-  className,
   showIcon = false,
+  className,
   ...rest
 }: SidebarMenuSkeletonProps) {
   const { slots } = useSidebar();
@@ -639,11 +639,11 @@ export function SidebarMenuSubItem({ className, ...props }: SidebarMenuSubItemPr
 
   return (
     <ark.li
+      {...props}
       className={slots.menuSubItem({ className })}
       data-part="menu-sub-item"
       data-scope="sidebar"
       data-sidebar="menu-sub-item"
-      {...props}
     />
   );
 }

@@ -25,29 +25,29 @@ type TooltipClassNames = VariantClassNames<TooltipSlots>;
 type TooltipRootProps = ComponentProps<typeof TooltipPrimitive.Root>;
 
 export interface TooltipProps extends Omit<TooltipRootProps, "children"> {
-  /** Slot class names */
-  classNames?: TooltipClassNames;
-  /** Tooltip text or content */
-  content: ReactNode;
   /** Trigger element or render function that receives trigger props from the handle API */
   children: ReactElement | TooltipTriggerHandle;
-  /** Extra props forwarded to the tooltip content element */
-  contentProps?: Omit<TooltipContentProps, "children" | "className">;
-  /** Extra props forwarded to the tooltip trigger element */
-  triggerProps?: Omit<TooltipTriggerProps, "asChild" | "children" | "className">;
-  /** Extra props forwarded to the tooltip positioner element */
-  positionerProps?: Omit<TooltipPositionerProps, "children" | "className">;
+  /** Tooltip text or content */
+  content: ReactNode;
+  /** Slot class names */
+  classNames?: TooltipClassNames;
   /** Extra props forwarded to the tooltip arrow element */
   arrowProps?: Omit<TooltipArrowProps, "children" | "className">;
+  /** Extra props forwarded to the tooltip content element */
+  contentProps?: Omit<TooltipContentProps, "children" | "className">;
+  /** Extra props forwarded to the tooltip positioner element */
+  positionerProps?: Omit<TooltipPositionerProps, "children" | "className">;
+  /** Extra props forwarded to the tooltip trigger element */
+  triggerProps?: Omit<TooltipTriggerProps, "asChild" | "children" | "className">;
 }
 // #endregion
 
 // #region Parts
 function TooltipRoot({
-  children,
   closeDelay = 150,
   openDelay = 400,
   positioning = { placement: "top" },
+  children,
   ...rest
 }: TooltipRootProps) {
   const slots = tooltipVariants();
@@ -78,7 +78,7 @@ function TooltipPositioner({ children, ...rest }: TooltipPositionerProps) {
   return <TooltipPrimitive.Positioner {...rest}>{children}</TooltipPrimitive.Positioner>;
 }
 
-function TooltipContent({ className, children, ...rest }: TooltipContentProps) {
+function TooltipContent({ children, className, ...rest }: TooltipContentProps) {
   const { slots } = useTooltip();
 
   return (
@@ -88,7 +88,7 @@ function TooltipContent({ className, children, ...rest }: TooltipContentProps) {
   );
 }
 
-function TooltipArrow({ className, children, ...rest }: TooltipArrowProps) {
+function TooltipArrow({ children, className, ...rest }: TooltipArrowProps) {
   const { slots } = useTooltip();
 
   return (
@@ -103,11 +103,11 @@ function TooltipArrow({ className, children, ...rest }: TooltipArrowProps) {
 export function Tooltip({
   arrowProps,
   children,
-  classNames,
   content,
   contentProps,
   positionerProps,
   triggerProps,
+  classNames,
   ...rest
 }: TooltipProps) {
   const trigger =

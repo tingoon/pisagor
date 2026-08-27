@@ -13,9 +13,9 @@ type JsonTreeViewClassNames = VariantClassNames<JsonTreeViewSlots>;
 type JsonTreeViewRootProps = ComponentProps<typeof JsonTreeViewPrimitive.Root>;
 
 export interface JsonTreeViewProps extends Omit<JsonTreeViewRootProps, "children"> {
+  renderValue?: JsonTreeViewTreeProps["renderValue"];
   /** Slot class names */
   classNames?: JsonTreeViewClassNames;
-  renderValue?: JsonTreeViewTreeProps["renderValue"];
   /** Extra props forwarded to the json tree view tree element */
   treeProps?: Omit<JsonTreeViewTreeProps, "arrow" | "className" | "renderValue">;
 }
@@ -43,10 +43,10 @@ function JsonTreeViewTree({ className, ...rest }: JsonTreeViewTreeProps) {
 
 // #region Closed
 export function JsonTreeView({
-  className,
-  classNames,
   renderValue,
   treeProps,
+  className,
+  classNames,
   ...rest
 }: JsonTreeViewProps) {
   return (

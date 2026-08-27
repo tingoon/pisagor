@@ -41,11 +41,11 @@ export interface ImageCropperSelectionProps
 
 // #region Parts
 export function ImageCropperRoot({
-  className,
-  children,
-  src,
   alt,
+  children,
   cropShape,
+  src,
+  className,
   ...rest
 }: ImageCropperRootProps) {
   const slots = useMemo(() => imageCropperVariants(), []);
@@ -80,8 +80,8 @@ export function ImageCropperImage({ className, ...rest }: ImageCropperImageProps
 
 export function ImageCropperSelection({
   axis = "both",
-  className,
   children,
+  className,
   ...rest
 }: ImageCropperSelectionProps) {
   const { slots } = useImageCropper();

@@ -14,7 +14,7 @@ export interface ButtonGroupTextProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Parts
-export function ButtonGroupRoot({ className, orientation, children, ...rest }: ButtonGroupProps) {
+export function ButtonGroupRoot({ orientation, children, className, ...rest }: ButtonGroupProps) {
   const slots = useMemo(() => buttonGroupVariants({ orientation }), [orientation]);
 
   return (

@@ -640,8 +640,8 @@ export const Paginated = meta.story({
 });
 
 function PageSizeSelect({
-  onChange,
   value,
+  onChange,
 }: {
   onChange: (pageSize: number) => void;
   value: number;

@@ -17,11 +17,11 @@ export type CollapsibleIndicatorProps = ComponentProps<typeof CollapsiblePrimiti
 
 // #region Parts
 export function CollapsibleRoot({
-  collapsedHeight,
   lazyMount,
   unmountOnExit,
-  className,
   children,
+  collapsedHeight,
+  className,
   ...rest
 }: CollapsibleRootProps) {
   const slots = useMemo(() => collapsibleVariants(), []);
@@ -48,7 +48,7 @@ export function CollapsibleTrigger({ className, ...rest }: CollapsibleTriggerPro
   return <CollapsiblePrimitive.Trigger {...rest} className={slots.trigger({ className })} />;
 }
 
-export function CollapsibleContent({ className, children, ...rest }: CollapsibleContentProps) {
+export function CollapsibleContent({ children, className, ...rest }: CollapsibleContentProps) {
   const { slots } = useCollapsible();
 
   return (

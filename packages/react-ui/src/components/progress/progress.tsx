@@ -19,39 +19,39 @@ type ProgressClassNames = VariantClassNames<ProgressSlots>;
 type ProgressRootProps = Omit<ComponentProps<typeof ProgressPrimitive.Root>, "value">;
 
 export interface ProgressProps extends Omit<ProgressRootProps, "children"> {
-  /** Slot class names */
-  classNames?: ProgressClassNames;
   /**
    * Whether to show indeterminate progress.
    *
    * @defaultValue false
    */
   indeterminate?: boolean;
+  /** When true, renders the numeric value text beside the label. */
+  isValueVisible?: boolean;
   /**
    * The value of the progress bar
    *
    * @defaultValue 0
    */
   value?: number;
+  children?: ReactNode;
   /** Optional label rendered above the progress bar. */
   label?: string;
-  /** When true, renders the numeric value text beside the label. */
-  isValueVisible?: boolean;
-  /** Extra props forwarded to the progress track element */
-  trackProps?: Omit<ProgressTrackProps, "children" | "className">;
+  /** Slot class names */
+  classNames?: ProgressClassNames;
   /** Extra props forwarded to the progress range element */
   rangeProps?: Omit<ProgressRangeProps, "children" | "className">;
+  /** Extra props forwarded to the progress track element */
+  trackProps?: Omit<ProgressTrackProps, "children" | "className">;
   /** Extra props forwarded to the progress value text element */
   valueProps?: Omit<ProgressValueProps, "children" | "className">;
-  children?: ReactNode;
 }
 // #endregion
 
 // #region Parts
 function ProgressRoot({
+  orientation = "horizontal",
   children,
   className,
-  orientation = "horizontal",
   ...rest
 }: ProgressRootProps & { value?: number | null }) {
   const slots = progressVariants();
@@ -69,7 +69,7 @@ function ProgressRoot({
   );
 }
 
-function ProgressHeader({ className, children, ...rest }: ProgressHeaderProps) {
+function ProgressHeader({ children, className, ...rest }: ProgressHeaderProps) {
   const { slots } = useProgress();
 
   return (
@@ -85,7 +85,7 @@ function ProgressValue({ className, ...rest }: ProgressValueProps) {
   return <ProgressPrimitive.ValueText {...rest} className={slots.value({ className })} />;
 }
 
-function ProgressTrack({ className, children, ...rest }: ProgressTrackProps) {
+function ProgressTrack({ children, className, ...rest }: ProgressTrackProps) {
   const { slots } = useProgress();
 
   return (
@@ -104,17 +104,17 @@ function ProgressRange({ className, ...rest }: ProgressRangeProps) {
 
 // #region Closed
 export function Progress({
-  children,
-  className,
-  classNames,
+  orientation = "horizontal",
   indeterminate = false,
   isValueVisible,
+  value,
+  children,
   label,
-  orientation = "horizontal",
   rangeProps,
   trackProps,
-  value,
   valueProps,
+  className,
+  classNames,
   ...rest
 }: ProgressProps) {
   const showHeader = label || isValueVisible;

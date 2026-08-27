@@ -19,20 +19,20 @@ type ToolbarClassNames = VariantClassNames<ToolbarSlots>;
 type ToolbarRootProps = Omit<ComponentProps<typeof ark.div>, "title">;
 
 export interface ToolbarProps extends Omit<ToolbarRootProps, "children"> {
-  /** Section heading. */
-  title?: ReactNode;
-  /** Supporting copy below the title. */
-  description?: ReactNode;
   /** Trailing action buttons or controls. */
   actions?: ReactNode;
+  /** Supporting copy below the title. */
+  description?: ReactNode;
+  /** Section heading. */
+  title?: ReactNode;
   /** Slot class names */
   classNames?: ToolbarClassNames;
-  /** Extra props forwarded to the title element */
-  titleProps?: Omit<ToolbarTitleProps, "children" | "className">;
-  /** Extra props forwarded to the description element */
-  descriptionProps?: Omit<ToolbarDescriptionProps, "children" | "className">;
   /** Extra props forwarded to the actions element */
   actionsProps?: Omit<ToolbarActionsProps, "children" | "className">;
+  /** Extra props forwarded to the description element */
+  descriptionProps?: Omit<ToolbarDescriptionProps, "children" | "className">;
+  /** Extra props forwarded to the title element */
+  titleProps?: Omit<ToolbarTitleProps, "children" | "className">;
 }
 // #endregion
 
@@ -109,14 +109,14 @@ export function ToolbarActions({ className, ...rest }: ToolbarActionsProps) {
 
 // #region Shorthand
 export function ToolbarShorthand({
+  actions,
+  actionsProps,
+  description,
+  descriptionProps,
+  title,
+  titleProps,
   className,
   classNames,
-  title,
-  description,
-  actions,
-  titleProps,
-  descriptionProps,
-  actionsProps,
   ...rest
 }: ToolbarProps) {
   const hasHeading = title !== undefined || description !== undefined;

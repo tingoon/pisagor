@@ -49,7 +49,7 @@ export interface PopoverFooterProps extends ComponentProps<typeof ark.div> {}
 
 // #region Parts
 export function PopoverRoot({ modal = false, ...rest }: PopoverRootProps) {
-  return <PopoverPrimitive.Root modal={modal} {...rest} />;
+  return <PopoverPrimitive.Root {...rest} modal={modal} />;
 }
 
 export function PopoverTrigger(props: PopoverTriggerProps) {
@@ -66,8 +66,8 @@ export function PopoverPositioner(props: PopoverPositionerProps) {
 
 export function PopoverContent({
   showCloseButton = false,
-  className,
   children,
+  className,
   ...rest
 }: PopoverContentProps) {
   const slots = useMemo(() => popoverContentVariants(), []);
@@ -94,9 +94,9 @@ export function PopoverContent({
 }
 
 export function PopoverHeader({
-  title,
-  description,
   children,
+  description,
+  title,
   className,
   ...rest
 }: PopoverHeaderProps) {

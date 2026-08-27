@@ -34,13 +34,13 @@ export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
 };
 
 export interface ComboboxProps extends Omit<ComboboxRootProps, "children" | "collection"> {
-  items?: Array<ComboboxPresetItem | string>;
   /**
    * Whether to show a clear button when the input has a value.
    *
    * @defaultValue false
    */
   clearable?: boolean;
+  items?: Array<ComboboxPresetItem | string>;
 }
 
 export interface ComboboxInputProps
@@ -49,18 +49,17 @@ export interface ComboboxInputProps
   /** Visual shell variant override for this input. */
   variant?: FormControlVariant;
   /**
-   * Whether the control is disabled.
-   *
-   * @defaultValue false
-   */
-  disabled?: boolean;
-
-  /**
    * Whether to show a clear button when the input has a value.
    *
    * @defaultValue false
    */
   clearable?: boolean;
+  /**
+   * Whether the control is disabled.
+   *
+   * @defaultValue false
+   */
+  disabled?: boolean;
   /**
    * Whether to show the trigger button.
    *
@@ -118,9 +117,9 @@ export function ComboboxRoot<T extends CollectionItem = CollectionItem>({
     <ComboboxRootContext value={{ slots }}>
       <FormControlVariantProvider value={variant}>
         <ComboboxPrimitive.Root
+          {...rest}
           onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
           openOnClick={openOnClick}
-          {...rest}
         >
           {children}
         </ComboboxPrimitive.Root>
@@ -140,8 +139,8 @@ export function ComboboxControl({ className, ...rest }: ComboboxControlProps) {
 export function ComboboxInput({
   size = "md",
   variant: variantProp,
-  showTrigger = true,
   clearable = false,
+  showTrigger = true,
   children,
   className,
   ...rest
@@ -180,7 +179,7 @@ export function ComboboxInput({
   );
 }
 
-export function ComboboxTrigger({ className, children, ...rest }: ComboboxTriggerProps) {
+export function ComboboxTrigger({ children, className, ...rest }: ComboboxTriggerProps) {
   const { slots = comboboxVariants() } = useComboboxRoot() ?? {};
 
   return (
@@ -198,7 +197,7 @@ export function ComboboxClearTrigger({
   "aria-label": ariaLabel = "Clear selected value(s)",
   ...rest
 }: ComboboxClearTriggerProps) {
-  return <ComboboxPrimitive.ClearTrigger aria-label={ariaLabel} {...rest} />;
+  return <ComboboxPrimitive.ClearTrigger {...rest} aria-label={ariaLabel} />;
 }
 
 /** Composable combobox input for custom controls (e.g. Tags Input). */
@@ -211,9 +210,9 @@ export function ComboboxPositioner(props: ComboboxPositionerProps) {
 }
 
 export function ComboboxContent({
-  className,
-  children,
   portalled = true,
+  children,
+  className,
   ...rest
 }: ComboboxContentProps) {
   const { slots = comboboxVariants() } = useComboboxRoot() ?? {};
@@ -235,7 +234,7 @@ export function ComboboxContent({
   );
 }
 
-export function ComboboxItemGroup({ heading, children, ...rest }: ComboboxItemGroupProps) {
+export function ComboboxItemGroup({ children, heading, ...rest }: ComboboxItemGroupProps) {
   return (
     <ComboboxPrimitive.ItemGroup {...rest}>
       {!!heading && <ComboboxItemGroupLabel>{heading}</ComboboxItemGroupLabel>}
@@ -255,8 +254,8 @@ export function ComboboxItemGroupLabel({ className, ...rest }: ComboboxItemGroup
 
 export function ComboboxItem({
   showIndicator = true,
-  className,
   children,
+  className,
   ...rest
 }: ComboboxItemProps) {
   const { slots = comboboxVariants() } = useComboboxRoot() ?? {};
@@ -280,7 +279,7 @@ export function ComboboxItem({
   );
 }
 
-export function ComboboxEmpty({ className, children, ...rest }: ComboboxEmptyProps) {
+export function ComboboxEmpty({ children, className, ...rest }: ComboboxEmptyProps) {
   const { slots = comboboxVariants() } = useComboboxRoot() ?? {};
 
   return (
@@ -298,7 +297,7 @@ export function ComboboxList({ className, ...rest }: ComboboxListProps) {
 // #endregion
 
 // #region Shorthand
-export function ComboboxShorthand({ items = [], clearable = false, id, ...rest }: ComboboxProps) {
+export function ComboboxShorthand({ clearable = false, items = [], id, ...rest }: ComboboxProps) {
   const normalized = items.map((item) =>
     typeof item === "string" ? { label: item, value: item } : item,
   );

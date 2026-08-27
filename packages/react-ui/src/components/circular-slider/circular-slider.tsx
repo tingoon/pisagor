@@ -56,15 +56,15 @@ export type CircularSliderMarkerProps = ComponentProps<typeof AngleSliderPrimiti
 
 // #region Parts
 export function CircularSliderRoot({
-  className,
-  children,
   size = 100,
-  thickness = 6,
+  step = 1,
+  children,
+  hiddenInputProps,
   markers,
   markersAtSteps = false,
-  step = 1,
+  thickness = 6,
   onValueChange,
-  hiddenInputProps,
+  className,
   ...rest
 }: CircularSliderProps) {
   const slots = useMemo(() => circularSliderVariants(), []);
@@ -105,10 +105,10 @@ export function CircularSliderRoot({
 }
 
 export function CircularSliderControl({
-  className,
+  step = 1,
   markers,
   markersAtSteps = false,
-  step = 1,
+  className,
   ...rest
 }: CircularSliderControlProps) {
   const { slots } = _useCircularSlider();

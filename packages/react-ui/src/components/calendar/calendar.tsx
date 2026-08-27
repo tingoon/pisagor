@@ -112,7 +112,7 @@ const getWeekRowKey = (
   }>,
 ) => week.map((day) => `${day.year}-${day.month}-${day.day}`).join("/");
 
-export function CalendarRoot({ className, variant, children, ...rest }: CalendarProps) {
+export function CalendarRoot({ variant, children, className, ...rest }: CalendarProps) {
   const slots = useMemo(() => calendarVariants(), []);
 
   return (
@@ -152,7 +152,7 @@ export function CalendarViewDate({ className, ...rest }: CalendarViewDateProps) 
   return <CalendarPrimitive.RangeText {...rest} className={slots.rangeText({ className })} />;
 }
 
-export function CalendarTodayTrigger({ variant = "outline", size = "lg", ...rest }: ButtonProps) {
+export function CalendarTodayTrigger({ size = "lg", variant = "outline", ...rest }: ButtonProps) {
   return (
     <CalendarContext>
       {(calendar) => (
@@ -227,7 +227,7 @@ export function CalendarPrevTrigger(props: CalendarPrevTriggerProps) {
   const { slots } = useCalendar();
 
   return (
-    <CalendarPrimitive.PrevTrigger asChild {...props}>
+    <CalendarPrimitive.PrevTrigger {...props} asChild>
       <Button
         aria-label="Previous month"
         className={slots.prevTrigger()}
@@ -244,7 +244,7 @@ export function CalendarNextTrigger(props: CalendarNextTriggerProps) {
   const { slots } = useCalendar();
 
   return (
-    <CalendarPrimitive.NextTrigger asChild {...props}>
+    <CalendarPrimitive.NextTrigger {...props} asChild>
       <Button
         aria-label="Next month"
         className={slots.nextTrigger()}
@@ -300,8 +300,8 @@ export function CalendarTableDays({ tabIndex, ...rest }: CalendarTableBodyProps)
 }
 
 export function CalendarTableNextMonth({
-  months = 1,
   tabIndex,
+  months = 1,
   ...rest
 }: CalendarTableNextMonthProps) {
   return (

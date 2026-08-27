@@ -46,9 +46,9 @@ export interface FieldSeparatorProps extends ComponentProps<typeof ark.div> {}
 // #region Parts
 export function FieldRoot({
   orientation = "vertical",
+  children,
   reverse = false,
   className,
-  children,
   ...rest
 }: FieldRootProps) {
   const slots = useMemo(() => fieldVariants({ orientation, reverse }), [orientation, reverse]);
@@ -66,7 +66,7 @@ export function FieldRoot({
   );
 }
 
-export function FieldSet({ className, children, ...rest }: FieldSetProps) {
+export function FieldSet({ children, className, ...rest }: FieldSetProps) {
   const slots = useMemo(() => fieldVariants(), []);
 
   return (
@@ -90,7 +90,7 @@ export function FieldLegend({ variant = "legend", className, ...rest }: FieldLeg
   );
 }
 
-export function FieldGroup({ className, children, ...rest }: FieldGroupProps) {
+export function FieldGroup({ children, className, ...rest }: FieldGroupProps) {
   const slots = useMemo(() => fieldVariants(), []);
 
   return (
@@ -127,8 +127,8 @@ export function FieldLabel({ className, ...rest }: FieldLabelProps) {
 }
 
 export function FieldRequiredIndicator({
-  className,
   children,
+  className,
   ...rest
 }: FieldRequiredIndicatorProps) {
   const { slots } = useField();

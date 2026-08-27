@@ -27,6 +27,12 @@ export interface ColorPickerProps extends ColorPickerRootProps {
   /** Visual shell variant for preset field input. When omitted, resolves from `Surface`. */
   variant?: FormControlVariant;
   /**
+   * Whether to show a clear button when a color is selected.
+   *
+   * @defaultValue false
+   */
+  clearable?: boolean;
+  /**
    * The default value of the color picker when uncontrolled.
    *
    * @remarks
@@ -40,12 +46,6 @@ export interface ColorPickerProps extends ColorPickerRootProps {
    * When set, `defaultValue` is ignored. Pair with `onValueChange` to handle updates.
    */
   value?: string;
-  /**
-   * Whether to show a clear button when a color is selected.
-   *
-   * @defaultValue false
-   */
-  clearable?: boolean;
   /** Called with the hex color string when the value changes. */
   onValueChange?: (value: string) => void;
 }
@@ -128,15 +128,15 @@ export interface ColorPickerSwatchPreviewProps extends ComponentProps<typeof ark
 export const parseColor = parseColorArk;
 
 export function ColorPickerRoot({
-  value,
+  variant,
   defaultValue,
   positioning = {
     placement: "top-start",
   },
-  onValueChange,
-  variant,
-  className,
+  value,
   children,
+  onValueChange,
+  className,
   ...rest
 }: ColorPickerProps) {
   const slots = useMemo(() => colorPickerVariants(), []);
@@ -158,12 +158,12 @@ export function ColorPickerRoot({
     <FormControlVariantProvider value={variant}>
       <ColorPickerSlotsContext value={{ slots }}>
         <ColorPickerPrimitive.Root
+          {...rest}
           className={slots.base({ className })}
           defaultValue={!isControlled ? parsedColor : undefined}
           onValueChange={handleValueChange}
           positioning={positioning}
           value={isControlled ? parsedColor : undefined}
-          {...rest}
         >
           {children}
 
@@ -176,8 +176,8 @@ export function ColorPickerRoot({
 
 export function ColorPickerClearTrigger({
   clearable = false,
-  className,
   onClick,
+  className,
   ...rest
 }: ColorPickerClearTriggerProps) {
   const api = useColorPickerContext();
@@ -220,8 +220,8 @@ export function ColorPickerClearTrigger({
 
 export function ColorPickerControl({
   clearable = false,
-  className,
   children,
+  className,
   ...rest
 }: ColorPickerControlProps) {
   const { slots } = useColorPicker();
@@ -271,8 +271,8 @@ export function ColorPickerView({ className, ...rest }: ColorPickerViewProps) {
 }
 
 export function ColorPickerChannelSlider({
-  className,
   children,
+  className,
   ...rest
 }: ColorPickerChannelSliderProps) {
   const { slots } = useColorPicker();
@@ -288,8 +288,8 @@ export function ColorPickerChannelSlider({
 }
 
 export function ColorPickerEyeDropperTrigger({
-  variant = "outline",
   size = "icon-md",
+  variant = "outline",
   children,
   ...rest
 }: ColorPickerEyeDropperTriggerProps) {
@@ -325,8 +325,8 @@ export function ColorPickerSwatch({ className, ...rest }: ColorPickerSwatchProps
 }
 
 export function ColorPickerSwatchIndicator({
-  className,
   children,
+  className,
   ...rest
 }: ColorPickerSwatchIndicatorProps) {
   const { slots } = useColorPicker();
@@ -356,9 +356,9 @@ export function ColorPickerValueSwatch({ className, ...rest }: ColorPickerValueS
 }
 
 export function ColorPickerArea({
-  className,
   showDots = false,
   children,
+  className,
   ...rest
 }: ColorPickerAreaProps) {
   const { slots } = useColorPicker();

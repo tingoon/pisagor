@@ -44,8 +44,8 @@ interface DataListItemValueProps extends ComponentProps<typeof ark.dd> {}
 // #region Parts
 export function DataListRoot({
   orientation = "horizontal",
-  className,
   children,
+  className,
   ...rest
 }: DataListRootProps) {
   return (
@@ -89,9 +89,9 @@ function DataListItemValue({ className, ...rest }: DataListItemValueProps) {
 
 export function DataListItem({
   value,
+  children,
   className,
   classNames,
-  children,
   ...rest
 }: DataListItemProps) {
   const slots = useMemo(() => dataListItemVariants(), []);

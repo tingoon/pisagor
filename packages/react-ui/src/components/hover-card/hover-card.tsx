@@ -30,10 +30,10 @@ export function HoverCardRoot({
   return (
     <HoverCardContext value={{ slots }}>
       <HoverCardPrimitive.Root
+        {...rest}
         closeDelay={closeDelay}
         openDelay={openDelay}
         positioning={positioning}
-        {...rest}
       >
         {children}
       </HoverCardPrimitive.Root>
@@ -62,7 +62,7 @@ export function HoverCardArrow({ style, ...rest }: HoverCardArrowProps) {
   );
 }
 
-export function HoverCardContent({ className, children, ...rest }: HoverCardContentProps) {
+export function HoverCardContent({ children, className, ...rest }: HoverCardContentProps) {
   const { slots } = useHoverCard();
 
   return (

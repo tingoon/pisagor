@@ -19,8 +19,8 @@ export interface AppShellBannerProps extends ComponentProps<"div"> {
 }
 
 export function AppShellBanner({
-  className,
   position = "fixed",
+  className,
   style,
   ...rest
 }: AppShellBannerProps) {

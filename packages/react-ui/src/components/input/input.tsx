@@ -53,17 +53,17 @@ export interface InputProps extends InputRootProps, InputVariantProps {
 export function Input({
   size = "md",
   variant: variantProp,
-  type = "text",
   clearable = false,
-  value,
   defaultValue,
   disabled,
   readOnly,
+  type = "text",
+  value,
+  ref,
   onChange,
   onValueChange,
   className,
   classNames,
-  ref,
   ...rest
 }: InputProps) {
   const resolved = useFormControlVariant(variantProp);
@@ -98,7 +98,6 @@ export function Input({
     return (
       <InputPrimitive
         {...rest}
-        ref={ref}
         {...controlProps}
         className={inputRootVariants({ className, size, ...shellArgs })}
         data-size={size}
@@ -106,6 +105,7 @@ export function Input({
         disabled={disabled}
         onChange={changeHandler}
         readOnly={readOnly}
+        ref={ref}
         type={type}
         value={value}
       />

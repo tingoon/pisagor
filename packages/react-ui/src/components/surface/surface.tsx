@@ -27,12 +27,12 @@ export interface SurfaceProps
 
 // #region Part
 export function Surface({
-  variant: variantProp,
-  padding,
-  rounded = true,
   bordered = false,
-  className,
+  rounded = true,
+  variant: variantProp,
   children,
+  padding,
+  className,
   ...rest
 }: SurfaceProps) {
   const parent = useSurface();

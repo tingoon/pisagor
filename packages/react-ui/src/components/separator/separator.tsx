@@ -19,12 +19,12 @@ export interface SeparatorProps extends SeparatorRootProps {
 export function Separator({ orientation = "horizontal", className, ...rest }: SeparatorProps) {
   return (
     <ark.div
-      data-part="root"
-      data-scope="separator"
       {...rest}
       aria-orientation={orientation}
       className={separatorVariants({ className })}
       data-orientation={orientation}
+      data-part="root"
+      data-scope="separator"
       role="separator"
     />
   );

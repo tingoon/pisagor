@@ -20,10 +20,6 @@ export interface ScrollspyProps extends ComponentProps<typeof ark.div> {
    */
   history?: boolean;
   /**
-   * Called when the active section changes.
-   */
-  onUpdate?: (id: string) => void;
-  /**
    * Global pixel offset from the top when calculating active sections.
    *
    * @defaultValue 0
@@ -39,6 +35,10 @@ export interface ScrollspyProps extends ComponentProps<typeof ark.div> {
    * The scrollable container to monitor. Omit to spy on the window.
    */
   targetRef?: RefObject<ScrollTarget>;
+  /**
+   * Called when the active section changes.
+   */
+  onUpdate?: (id: string) => void;
 }
 // #endregion
 
@@ -92,12 +92,12 @@ function getSectionScrollOffset(sectionElement: HTMLElement, scrollElement: HTML
 // #region Part
 export function Scrollspy({
   children,
-  className,
   history = true,
   offset = 0,
-  onUpdate,
   smooth = true,
   targetRef,
+  onUpdate,
+  className,
   ...rest
 }: ScrollspyProps) {
   const selfRef = useRef<HTMLDivElement>(null);

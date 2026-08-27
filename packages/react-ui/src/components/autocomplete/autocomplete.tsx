@@ -24,13 +24,13 @@ interface AutocompletePresetItem {
 export type AutocompleteRootProps<T extends CollectionItem = CollectionItem> = ComboboxRootProps<T>;
 
 export interface AutocompleteProps extends Omit<AutocompleteRootProps, "children" | "collection"> {
-  items?: Array<AutocompletePresetItem | string>;
   /**
    * Whether to show a clear button when the input has a value.
    *
    * @defaultValue false
    */
   clearable?: boolean;
+  items?: Array<AutocompletePresetItem | string>;
 }
 // #endregion
 
@@ -38,7 +38,7 @@ export interface AutocompleteProps extends Omit<AutocompleteRootProps, "children
 export function AutocompleteRoot<T extends CollectionItem = CollectionItem>(
   props: AutocompleteRootProps<T>,
 ) {
-  return <Combobox.Root allowCustomValue inputBehavior="autocomplete" {...props} />;
+  return <Combobox.Root {...props} allowCustomValue inputBehavior="autocomplete" />;
 }
 
 export function AutocompleteControl(props: ComboboxControlProps) {
@@ -90,12 +90,12 @@ export function AutocompleteCollection(props: ComboboxListProps) {
 }
 
 export function AutocompleteSeparator(props: SeparatorProps) {
-  return <Separator data-part="separator" data-scope="autocomplete" {...props} />;
+  return <Separator {...props} data-part="separator" data-scope="autocomplete" />;
 }
 // #endregion
 
 // #region Shorthand
-export function AutocompleteShorthand({ items, clearable, ...rest }: AutocompleteProps) {
+export function AutocompleteShorthand({ clearable, items, ...rest }: AutocompleteProps) {
   return (
     <Combobox
       {...rest}

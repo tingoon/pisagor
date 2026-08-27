@@ -15,7 +15,7 @@ export type QrCodeDownloadProps = ComponentProps<typeof QrCodePrimitive.Download
 // #endregion
 
 // #region Parts
-export function QrCodeRoot({ className, children, ...rest }: QrCodeRootProps) {
+export function QrCodeRoot({ children, className, ...rest }: QrCodeRootProps) {
   const slots = useMemo(() => qrCodeVariants(), []);
 
   return (

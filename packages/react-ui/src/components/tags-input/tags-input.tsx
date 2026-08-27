@@ -26,9 +26,9 @@ export interface TagsInputProps extends TagsInputRootProps {
    * @defaultValue false
    */
   clearable?: boolean;
-  onValueChange?: (value: string[]) => void;
   /** Placeholder for the shorthand input. Defaults to empty. */
   placeholder?: string;
+  onValueChange?: (value: string[]) => void;
 }
 
 export type TagsInputControlProps = ComponentProps<typeof TagsInputPrimitive.Control> &
@@ -83,12 +83,12 @@ export function TagsInputRoot({
   size = "md",
   variant,
   clearable,
-  editable = false,
   tabIndex,
-  className,
   children,
-  onValueChange,
+  editable = false,
   placeholder,
+  onValueChange,
+  className,
   ...rest
 }: TagsInputProps) {
   const slots = useMemo(() => tagsInputVariants(), []);
@@ -126,8 +126,8 @@ export function TagsInputControl({
   size,
   variant,
   clearable = false,
-  className,
   children,
+  className,
   ...rest
 }: TagsInputControlProps) {
   const api = useTagsInputContext();
@@ -145,8 +145,8 @@ export function TagsInputControl({
 
 export function TagsInputItem({
   showDelete = true,
-  className,
   children,
+  className,
   ...rest
 }: TagsInputItemProps) {
   const slots = useMemo(() => tagsInputItemVariants(), []);
@@ -177,8 +177,8 @@ export function TagsInputItemText({ className, ...rest }: TagsInputItemTextProps
 }
 
 export function TagsInputItemDeleteTrigger({
-  className,
   children,
+  className,
   ...rest
 }: TagsInputItemDeleteTriggerProps) {
   const { slots } = useTagsInputItem();
@@ -201,7 +201,7 @@ export function TagsInputItemInput(props: TagsInputItemInputProps) {
   const { slots } = useTagsInputItem();
 
   return (
-    <TagsInputPrimitive.ItemInput asChild {...props}>
+    <TagsInputPrimitive.ItemInput {...props} asChild>
       <InputGroup.Input className={slots.input()} />
     </TagsInputPrimitive.ItemInput>
   );
@@ -211,15 +211,15 @@ export function TagsInputInput(props: TagsInputInputProps) {
   const { slots } = useTagsInput();
 
   return (
-    <TagsInputPrimitive.Input asChild {...props}>
+    <TagsInputPrimitive.Input {...props} asChild>
       <InputGroup.Input className={slots.input()} />
     </TagsInputPrimitive.Input>
   );
 }
 
 export function TagsInputClearTrigger({
-  className,
   children,
+  className,
   ...rest
 }: TagsInputClearTriggerProps) {
   const { slots } = useTagsInput();
@@ -241,8 +241,8 @@ export function TagsInputClearTrigger({
 export function TagsInputRootProvider({
   size = "md",
   clearable,
-  className,
   children,
+  className,
   ...rest
 }: TagsInputRootProviderProps) {
   const slots = useMemo(() => tagsInputVariants(), []);

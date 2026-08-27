@@ -26,12 +26,12 @@ export interface InputOTPSeparatorProps extends ComponentProps<typeof ark.hr> {}
 
 // #region Parts
 export function InputOTPRoot({
-  placeholder,
-  otp = true,
   variant,
-  className,
   children,
+  otp = true,
+  placeholder,
   onValueChange,
+  className,
   ...rest
 }: InputOTPProps) {
   const slots = useMemo(() => inputOtpVariants(), []);
@@ -57,7 +57,7 @@ export function InputOTPRoot({
   );
 }
 
-export function InputOTPSlot({ className, variant, ...rest }: InputOTPSlotProps) {
+export function InputOTPSlot({ variant, className, ...rest }: InputOTPSlotProps) {
   const { slots } = useInputOTP();
 
   return (

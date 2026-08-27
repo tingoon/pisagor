@@ -20,20 +20,20 @@ type ScrollAreaClassNames = VariantClassNames<ScrollAreaSlots>;
 type ScrollAreaRootProps = ComponentProps<typeof ScrollAreaPrimitive.Root> & ScrollAreaVariantProps;
 
 export interface ScrollAreaProps extends Omit<ScrollAreaRootProps, "children"> {
+  children?: React.ReactNode;
   /** Slot class names */
   classNames?: ScrollAreaClassNames;
-  /** Extra props forwarded to the scroll area viewport element */
-  viewportProps?: Omit<ScrollAreaViewportProps, "children" | "className">;
   /** Extra props forwarded to each scroll area scrollbar element */
   scrollbarProps?: Omit<ScrollAreaScrollbarProps, "children" | "className" | "orientation">;
   /** Extra props forwarded to each scroll area thumb element */
   thumbProps?: Omit<ScrollAreaThumbProps, "children" | "className">;
-  children?: React.ReactNode;
+  /** Extra props forwarded to the scroll area viewport element */
+  viewportProps?: Omit<ScrollAreaViewportProps, "children" | "className">;
 }
 // #endregion
 
 // #region Parts
-function ScrollAreaRoot({ children, className, scrollFade = false, ...rest }: ScrollAreaRootProps) {
+function ScrollAreaRoot({ scrollFade = false, children, className, ...rest }: ScrollAreaRootProps) {
   const slots = scrollAreaVariants({ scrollFade });
 
   return (
@@ -45,7 +45,7 @@ function ScrollAreaRoot({ children, className, scrollFade = false, ...rest }: Sc
   );
 }
 
-function ScrollAreaViewport({ className, children, ...rest }: ScrollAreaViewportProps) {
+function ScrollAreaViewport({ children, className, ...rest }: ScrollAreaViewportProps) {
   const { slots } = useScrollArea();
 
   return (
@@ -56,9 +56,9 @@ function ScrollAreaViewport({ className, children, ...rest }: ScrollAreaViewport
 }
 
 function ScrollAreaScrollbar({
-  className,
   orientation,
   children,
+  className,
   ...rest
 }: ScrollAreaScrollbarProps) {
   const { slots } = useScrollArea();
@@ -83,13 +83,13 @@ function ScrollAreaThumb({ className, ...rest }: ScrollAreaThumbProps) {
 
 // #region Closed
 export function ScrollArea({
-  children,
-  className,
-  classNames,
-  scrollbarProps,
   scrollFade,
+  children,
+  scrollbarProps,
   thumbProps,
   viewportProps,
+  className,
+  classNames,
   ...rest
 }: ScrollAreaProps) {
   return (

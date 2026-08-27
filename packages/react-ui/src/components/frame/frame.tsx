@@ -19,7 +19,7 @@ export interface FrameFooterProps extends ComponentProps<typeof ark.footer> {}
 // #endregion
 
 // #region Parts
-export function FrameRoot({ className, children, ...rest }: FrameRootProps) {
+export function FrameRoot({ children, className, ...rest }: FrameRootProps) {
   const slots = useMemo(() => frameVariants(), []);
 
   return (
@@ -31,7 +31,7 @@ export function FrameRoot({ className, children, ...rest }: FrameRootProps) {
   );
 }
 
-export function FramePanel({ className, children, ...rest }: FramePanelProps) {
+export function FramePanel({ children, className, ...rest }: FramePanelProps) {
   const { slots } = useFrame();
 
   return (
@@ -41,7 +41,7 @@ export function FramePanel({ className, children, ...rest }: FramePanelProps) {
   );
 }
 
-export function FrameHeader({ className, children, ...rest }: FrameHeaderProps) {
+export function FrameHeader({ children, className, ...rest }: FrameHeaderProps) {
   const { slots } = useFrame();
 
   return (
@@ -56,7 +56,7 @@ export function FrameHeader({ className, children, ...rest }: FrameHeaderProps) 
   );
 }
 
-export function FrameTitle({ className, children, ...rest }: FrameTitleProps) {
+export function FrameTitle({ children, className, ...rest }: FrameTitleProps) {
   const { slots } = useFrame();
 
   return (
@@ -71,7 +71,7 @@ export function FrameTitle({ className, children, ...rest }: FrameTitleProps) {
   );
 }
 
-export function FrameDescription({ className, children, ...rest }: FrameDescriptionProps) {
+export function FrameDescription({ children, className, ...rest }: FrameDescriptionProps) {
   const { slots } = useFrame();
 
   return (
@@ -86,7 +86,7 @@ export function FrameDescription({ className, children, ...rest }: FrameDescript
   );
 }
 
-export function FrameFooter({ className, children, ...rest }: FrameFooterProps) {
+export function FrameFooter({ children, className, ...rest }: FrameFooterProps) {
   const { slots } = useFrame();
 
   return (

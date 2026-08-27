@@ -21,16 +21,6 @@ type CircularProgressClassNames = VariantClassNames<CircularProgressSlots>;
 type CircularProgressRootProps = ComponentProps<typeof ProgressPrimitive.Root>;
 
 export interface CircularProgressProps extends Omit<CircularProgressRootProps, "children"> {
-  /** Slot class names */
-  classNames?: CircularProgressClassNames;
-  /**
-   * Whether to show indeterminate progress.
-   *
-   * @defaultValue false
-   */
-  indeterminate?: boolean;
-  /** When true, renders the numeric value text centered inside the circle. */
-  isValueVisible?: boolean;
   /**
    * Visual size preset for the progress circle.
    *
@@ -43,11 +33,21 @@ export interface CircularProgressProps extends Omit<CircularProgressRootProps, "
    * @defaultValue 4
    */
   thickness?: number;
+  /**
+   * Whether to show indeterminate progress.
+   *
+   * @defaultValue false
+   */
+  indeterminate?: boolean;
+  /** When true, renders the numeric value text centered inside the circle. */
+  isValueVisible?: boolean;
+  children?: ReactNode;
+  /** Slot class names */
+  classNames?: CircularProgressClassNames;
   /** Extra props forwarded to the circular progress track element */
   trackProps?: Omit<CircularProgressTrackProps, "className" | "height" | "viewBox" | "width">;
   /** Extra props forwarded to the circular progress value element */
   valueProps?: Omit<CircularProgressValueProps, "children" | "className">;
-  children?: ReactNode;
 }
 
 interface CircularProgressTrackPartProps {
@@ -73,8 +73,8 @@ function CircularProgressRoot({ children, className, ...rest }: CircularProgress
 }
 
 function CircularProgressValueWrapper({
-  className,
   children,
+  className,
 }: {
   className?: string;
   children?: ReactNode;
@@ -91,11 +91,11 @@ function CircularProgressValue({ className, ...rest }: CircularProgressValueProp
 }
 
 function CircularProgressTrack({
-  className,
-  rangeClassName,
   size = 32,
+  rangeClassName,
   thickness = 4,
   trackProps,
+  className,
 }: CircularProgressTrackPartProps) {
   const { slots } = useCircularProgressSlots();
   const { max, min, value } = useProgressContext();
@@ -145,16 +145,16 @@ function CircularProgressTrack({
 
 // #region Closed
 export function CircularProgress({
-  children,
-  className,
-  classNames,
+  size = 32,
   indeterminate = false,
   isValueVisible,
-  size = 32,
+  value,
+  children,
   thickness = 4,
   trackProps,
-  value,
   valueProps,
+  className,
+  classNames,
   ...rest
 }: CircularProgressProps) {
   return (

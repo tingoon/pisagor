@@ -11,7 +11,7 @@ export interface LinkOverlayLinkProps extends ComponentProps<typeof ark.a> {}
 // #endregion
 
 // #region Parts
-export function LinkBoxRoot({ className, children, ...rest }: LinkBoxRootProps) {
+export function LinkBoxRoot({ children, className, ...rest }: LinkBoxRootProps) {
   const slots = useMemo(() => linkBoxVariants(), []);
 
   return (

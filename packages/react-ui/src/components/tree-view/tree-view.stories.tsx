@@ -75,7 +75,7 @@ export const Default = meta.story({
       },
     });
 
-    const TreeNode = ({ node, indexPath, ...rest }: NodeProviderProps) => {
+    const TreeNode = ({ indexPath, node, ...rest }: NodeProviderProps) => {
       return (
         <TreeView.NodeProvider {...rest} indexPath={indexPath} node={node}>
           {node.children ? (
@@ -152,7 +152,7 @@ export const Links = meta.story({
       },
     });
 
-    const TreeNode = ({ node, indexPath }: NodeProviderProps<TreeNodeWithLinks>) => {
+    const TreeNode = ({ indexPath, node }: NodeProviderProps<TreeNodeWithLinks>) => {
       return (
         <TreeView.NodeProvider indexPath={indexPath} node={node}>
           {node.children ? (
@@ -225,7 +225,7 @@ export const CheckboxTree = meta.story({
       },
     });
 
-    const TreeNode = ({ node, indexPath }: { node: TreeNodeType; indexPath: number[] }) => {
+    const TreeNode = ({ indexPath, node }: { node: TreeNodeType; indexPath: number[] }) => {
       return (
         <TreeView.NodeProvider indexPath={indexPath} node={node}>
           {node.children ? (
@@ -303,7 +303,7 @@ export const WithContextMenu = meta.story({
       },
     });
 
-    const TreeNode = ({ node, indexPath, ...rest }: NodeProviderProps) => {
+    const TreeNode = ({ indexPath, node, ...rest }: NodeProviderProps) => {
       return (
         <TreeView.NodeProvider {...rest} indexPath={indexPath} node={node}>
           {node.children ? (
@@ -409,7 +409,7 @@ export const CustomIconsFolder = meta.story({
       },
     });
 
-    const TreeNode = ({ node, indexPath, ...rest }: NodeProviderProps) => {
+    const TreeNode = ({ indexPath, node, ...rest }: NodeProviderProps) => {
       return (
         <TreeView.NodeProvider {...rest} indexPath={indexPath} node={node}>
           {node.children ? (
@@ -474,7 +474,7 @@ export const CustomIconsItem = meta.story({
       },
     });
 
-    const TreeNode = ({ node, indexPath, ...rest }: NodeProviderProps) => {
+    const TreeNode = ({ indexPath, node, ...rest }: NodeProviderProps) => {
       return (
         <TreeView.NodeProvider {...rest} indexPath={indexPath} node={node}>
           {node.children ? (
@@ -543,7 +543,7 @@ export const CustomIcons = meta.story({
       },
     });
 
-    const TreeNode = ({ node, indexPath, ...rest }: NodeProviderProps) => {
+    const TreeNode = ({ indexPath, node, ...rest }: NodeProviderProps) => {
       return (
         <TreeView.NodeProvider {...rest} indexPath={indexPath} node={node}>
           {node.children ? (
@@ -607,7 +607,7 @@ export const MultipleSelection = meta.story({
       },
     });
 
-    const TreeNode = ({ node, indexPath, ...rest }: NodeProviderProps) => {
+    const TreeNode = ({ indexPath, node, ...rest }: NodeProviderProps) => {
       return (
         <TreeView.NodeProvider {...rest} indexPath={indexPath} node={node}>
           {node.children ? (
@@ -671,7 +671,7 @@ export const Rename = meta.story({
       },
     });
 
-    const TreeNode = ({ node, indexPath, ...rest }: NodeProviderProps) => {
+    const TreeNode = ({ indexPath, node, ...rest }: NodeProviderProps) => {
       return (
         <TreeView.NodeProvider {...rest} indexPath={indexPath} node={node}>
           {node.children ? (
@@ -743,7 +743,7 @@ export const Controlled = meta.story({
       },
     });
 
-    const TreeNode = ({ node, indexPath }: NodeProviderProps) => {
+    const TreeNode = ({ indexPath, node }: NodeProviderProps) => {
       return (
         <TreeView.NodeProvider indexPath={indexPath} key={node.id} node={node}>
           {node.children ? (

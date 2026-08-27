@@ -29,9 +29,9 @@ export interface AnnouncementProps extends Omit<AnnouncementRootProps, "children
 
 // #region Parts
 export function AnnouncementRoot({
-  className,
   role = "status",
   children,
+  className,
   ...rest
 }: AnnouncementRootProps) {
   const slots = useMemo(() => announcementVariants(), []);

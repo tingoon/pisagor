@@ -57,7 +57,7 @@ export function DropdownMenuRoot({
   positioning = { placement: "bottom-end" },
   ...rest
 }: DropdownMenuRootProps) {
-  return <MenuPrimitive.Root positioning={positioning} {...rest} />;
+  return <MenuPrimitive.Root {...rest} positioning={positioning} />;
 }
 
 export function DropdownMenuTrigger(props: DropdownMenuTriggerProps) {
@@ -71,7 +71,7 @@ export function DropdownMenuPositioner({ className, ...rest }: DropdownMenuPosit
   return <MenuPrimitive.Positioner {...rest} className={slots.positioner({ className })} />;
 }
 
-export function DropdownMenuContent({ className, children, ...rest }: DropdownMenuContentProps) {
+export function DropdownMenuContent({ children, className, ...rest }: DropdownMenuContentProps) {
   const slots = useMemo(() => dropdownMenuVariants(), []);
 
   return (
@@ -87,7 +87,7 @@ export function DropdownMenuContent({ className, children, ...rest }: DropdownMe
   );
 }
 
-export function DropdownMenuItemGroup({ heading, children, ...rest }: DropdownMenuItemGroupProps) {
+export function DropdownMenuItemGroup({ children, heading, ...rest }: DropdownMenuItemGroupProps) {
   return (
     <MenuPrimitive.ItemGroup {...rest}>
       {!!heading && <DropdownMenuItemGroupLabel>{heading}</DropdownMenuItemGroupLabel>}
@@ -137,8 +137,8 @@ export function DropdownMenuQuickItem({
 }
 
 export function DropdownMenuCheckboxItem({
-  className,
   children,
+  className,
   ...rest
 }: DropdownMenuCheckboxItemProps) {
   const slots = dropdownMenuItemVariants({ inset: true, variant: "default" });
@@ -155,8 +155,8 @@ export function DropdownMenuCheckboxItem({
 }
 
 export function DropdownMenuRadioItemGroup({
-  heading,
   children,
+  heading,
   ...rest
 }: DropdownMenuRadioItemGroupProps) {
   return (
@@ -179,8 +179,8 @@ export function DropdownMenuItemGroupLabel({
 }
 
 export function DropdownMenuRadioItem({
-  className,
   children,
+  className,
   ...rest
 }: DropdownMenuRadioItemProps) {
   const slots = dropdownMenuItemVariants({ inset: true, variant: "default" });
@@ -215,8 +215,8 @@ export function DropdownMenuSubContent({ className, ...rest }: DropdownMenuSubCo
 }
 
 export function DropdownMenuTriggerItem({
-  className,
   children,
+  className,
   ...rest
 }: DropdownMenuTriggerItemProps) {
   return (
@@ -239,10 +239,10 @@ export function DropdownMenuShortcut({ className, ...rest }: DropdownMenuShortcu
 
   return (
     <ark.span
-      data-part="shortcut"
-      data-scope="dropdown-menu"
       {...rest}
       className={slots.shortcut({ className })}
+      data-part="shortcut"
+      data-scope="dropdown-menu"
     />
   );
 }

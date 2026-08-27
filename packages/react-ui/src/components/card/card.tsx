@@ -28,7 +28,7 @@ export interface CardFooterProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Parts
-export function CardRoot({ className, children, ...rest }: CardRootProps) {
+export function CardRoot({ children, className, ...rest }: CardRootProps) {
   const slots = useMemo(() => cardVariants(), []);
 
   return (
@@ -54,7 +54,7 @@ export function CardMedia({ variant = "default", className, ...rest }: CardMedia
   );
 }
 
-export function CardHeader({ title, description, className, children, ...rest }: CardHeaderProps) {
+export function CardHeader({ children, description, title, className, ...rest }: CardHeaderProps) {
   const { slots } = useCard();
 
   return (

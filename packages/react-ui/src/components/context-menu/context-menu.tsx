@@ -58,7 +58,7 @@ export function ContextMenuTriggerItem(props: DropdownMenuTriggerItemProps) {
 }
 
 export function ContextMenuShortcut(props: DropdownMenuShortcutProps) {
-  return <DropdownMenu.Shortcut data-part="shortcut" data-scope="context-menu" {...props} />;
+  return <DropdownMenu.Shortcut {...props} data-part="shortcut" data-scope="context-menu" />;
 }
 // #endregion
 

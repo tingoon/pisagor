@@ -60,8 +60,8 @@ export function SheetBackdrop(props: DialogBackdropProps) {
 }
 
 export function SheetPositioner({
-  variant = "default",
   placement,
+  variant = "default",
   className,
   ...rest
 }: SheetPositionerProps) {
@@ -76,11 +76,11 @@ export function SheetPositioner({
 }
 
 export function SheetContent({
-  showCloseButton = true,
   placement = "right",
   variant = "default",
-  className,
+  showCloseButton = true,
   children,
+  className,
   ...rest
 }: SheetContentProps) {
   const { slots } = useSheet();
@@ -110,7 +110,7 @@ export function SheetContent({
 }
 
 export function SheetHeader(props: DialogHeaderProps) {
-  return <Dialog.Header data-part="header" data-scope="sheet" {...props} />;
+  return <Dialog.Header {...props} data-part="header" data-scope="sheet" />;
 }
 
 export function SheetTitle(props: DialogTitleProps) {

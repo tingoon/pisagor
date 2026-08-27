@@ -34,7 +34,7 @@ export interface TabsProps extends Omit<TabsRootProps, "children"> {
 // #endregion
 
 // #region Parts
-export function TabsRoot({ className, children, ...rest }: TabsRootProps) {
+export function TabsRoot({ children, className, ...rest }: TabsRootProps) {
   const slots = useMemo(() => tabsVariants(), []);
 
   return (
@@ -46,7 +46,7 @@ export function TabsRoot({ className, children, ...rest }: TabsRootProps) {
   );
 }
 
-export function TabsList({ variant = "default", className, children, ...rest }: TabsListProps) {
+export function TabsList({ variant = "default", children, className, ...rest }: TabsListProps) {
   const { slots } = useTabs();
 
   return (
@@ -72,7 +72,7 @@ export function TabsContent({ className, ...rest }: TabsContentProps) {
 // #endregion
 
 // #region Shorthand
-export function TabsShorthand({ items, variant, ...rest }: TabsProps) {
+export function TabsShorthand({ variant, items, ...rest }: TabsProps) {
   return (
     <TabsRoot {...rest}>
       <TabsList variant={variant}>

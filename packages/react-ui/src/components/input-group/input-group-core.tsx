@@ -88,9 +88,9 @@ export function InputGroupAddon({
 }
 
 export function InputGroupButton({
-  className,
-  variant = "ghost",
   size = "xs",
+  variant = "ghost",
+  className,
   ...rest
 }: InputGroupButtonProps) {
   return (

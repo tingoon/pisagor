@@ -44,7 +44,7 @@ export function BottomNavigationList({ className, ...rest }: BottomNavigationLis
   return <TabsPrimitive.List {...rest} className={slots.list({ className })} />;
 }
 
-export function BottomNavigationItem({ className, children, ...rest }: BottomNavigationItemProps) {
+export function BottomNavigationItem({ children, className, ...rest }: BottomNavigationItemProps) {
   const slots = useMemo(() => bottomNavigationItemVariants(), []);
 
   return (

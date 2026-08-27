@@ -19,24 +19,24 @@ type EmptyStateClassNames = VariantClassNames<EmptyStateSlots>;
 type EmptyStateRootProps = Omit<ComponentProps<typeof ark.div>, "title">;
 
 export interface EmptyStateProps extends Omit<EmptyStateRootProps, "children"> {
+  /** Action buttons or links. */
+  actions?: ReactNode;
+  /** Supporting copy. */
+  description?: ReactNode;
   /** Icon or illustration shown above the title. */
   media?: ReactNode;
   /** Primary heading. */
   title?: ReactNode;
-  /** Supporting copy. */
-  description?: ReactNode;
-  /** Action buttons or links. */
-  actions?: ReactNode;
   /** Slot class names */
   classNames?: EmptyStateClassNames;
+  /** Extra props forwarded to the actions element */
+  actionsProps?: Omit<EmptyStateActionsProps, "children" | "className">;
+  /** Extra props forwarded to the description element */
+  descriptionProps?: Omit<EmptyStateDescriptionProps, "children" | "className">;
   /** Extra props forwarded to the media element */
   mediaProps?: Omit<EmptyStateMediaProps, "children" | "className">;
   /** Extra props forwarded to the title element */
   titleProps?: Omit<EmptyStateTitleProps, "children" | "className">;
-  /** Extra props forwarded to the description element */
-  descriptionProps?: Omit<EmptyStateDescriptionProps, "children" | "className">;
-  /** Extra props forwarded to the actions element */
-  actionsProps?: Omit<EmptyStateActionsProps, "children" | "className">;
 }
 // #endregion
 
@@ -113,16 +113,16 @@ export function EmptyStateActions({ className, ...rest }: EmptyStateActionsProps
 
 // #region Shorthand
 export function EmptyStateShorthand({
+  actions,
+  actionsProps,
+  description,
+  descriptionProps,
+  media,
+  mediaProps,
+  title,
+  titleProps,
   className,
   classNames,
-  media,
-  title,
-  description,
-  actions,
-  mediaProps,
-  titleProps,
-  descriptionProps,
-  actionsProps,
   ...rest
 }: EmptyStateProps) {
   return (

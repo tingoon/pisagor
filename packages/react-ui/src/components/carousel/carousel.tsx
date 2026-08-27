@@ -35,9 +35,9 @@ export interface CarouselProps extends Omit<CarouselRootProps, "children" | "sli
 
 // #region Parts
 export function CarouselRoot({
+  children,
   spacing = "16px",
   className,
-  children,
   ...rest
 }: CarouselRootProps) {
   const slots = useMemo(() => carouselVariants(), []);

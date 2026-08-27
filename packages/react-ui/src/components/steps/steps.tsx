@@ -33,7 +33,7 @@ export interface StepsDescriptionProps extends ComponentProps<typeof ark.span> {
 // #endregion
 
 // #region Parts
-export function StepsRoot({ className, children, ...rest }: StepsRootProps) {
+export function StepsRoot({ children, className, ...rest }: StepsRootProps) {
   const slots = useMemo(() => stepsVariants(), []);
 
   return (
@@ -51,7 +51,7 @@ export function StepsList({ className, ...rest }: StepsListProps) {
   return <StepsPrimitive.List {...rest} className={slots.list({ className })} />;
 }
 
-export function StepsItem({ className, children, ...rest }: StepsItemProps) {
+export function StepsItem({ children, className, ...rest }: StepsItemProps) {
   const slots = useMemo(() => stepsItemVariants(), []);
 
   return (
@@ -69,7 +69,7 @@ export function StepsTrigger({ className, ...rest }: StepsTriggerProps) {
   return <StepsPrimitive.Trigger {...rest} className={slots.trigger({ className })} />;
 }
 
-export function StepsIndicator({ className, children, ...rest }: StepsIndicatorProps) {
+export function StepsIndicator({ children, className, ...rest }: StepsIndicatorProps) {
   const { slots } = useStepsItem();
 
   return (

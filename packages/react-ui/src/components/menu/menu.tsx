@@ -92,9 +92,9 @@ export function MenuGroupLabel({ className, ...rest }: MenuGroupLabelProps) {
 }
 
 export function MenuItem({
-  className,
-  type = "button",
   variant = "default",
+  type = "button",
+  className,
   ...rest
 }: MenuItemProps) {
   const { slots } = useMenu();

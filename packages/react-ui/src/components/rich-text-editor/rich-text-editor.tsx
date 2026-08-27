@@ -75,17 +75,17 @@ export interface RichTextEditorContentProps extends ComponentProps<typeof ark.di
 export function RichTextEditorRoot({
   variant: variantProp,
   defaultValue,
-  value,
-  onValueChange,
-  onBlur,
-  name,
-  readOnly = false,
   disabled = false,
   invalid = false,
-  id,
-  className,
-  children,
+  name,
+  readOnly = false,
+  value,
   "aria-label": ariaLabel,
+  children,
+  id,
+  onBlur,
+  onValueChange,
+  className,
   ...rest
 }: RichTextEditorRootProps) {
   const resolved = useFormControlVariant(variantProp);
@@ -186,8 +186,8 @@ export function RichTextEditorRoot({
 }
 
 export function RichTextEditorToolbar({
-  className,
   children,
+  className,
   ...rest
 }: RichTextEditorToolbarProps) {
   const { editor, slots } = useRichTextEditorState();

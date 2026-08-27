@@ -16,14 +16,14 @@ export interface ProseProps
 // #endregion
 
 // #region Part
-export function Prose({ className, html, children, ...rest }: ProseProps) {
+export function Prose({ children, html, className, ...rest }: ProseProps) {
   return (
     <ark.div
       {...rest}
+      {...(html ? { dangerouslySetInnerHTML: { __html: html } } : { children })}
       className={proseVariants({ className })}
       data-part="root"
       data-scope="prose"
-      {...(html ? { dangerouslySetInnerHTML: { __html: html } } : { children })}
     />
   );
 }

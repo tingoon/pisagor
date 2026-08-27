@@ -30,15 +30,15 @@ export interface SwitchProps extends Omit<SwitchRootProps, "children"> {
   classNames?: SwitchClassNames;
   /** Extra props forwarded to the switch control element */
   controlProps?: Omit<SwitchControlProps, "children" | "className">;
-  /** Extra props forwarded to the switch thumb element */
-  thumbProps?: Omit<SwitchThumbProps, "children" | "className">;
   /** Extra props forwarded to the hidden input element (e.g. tabIndex) */
   hiddenInputProps?: Omit<SwitchHiddenInputProps, "className">;
+  /** Extra props forwarded to the switch thumb element */
+  thumbProps?: Omit<SwitchThumbProps, "children" | "className">;
 }
 // #endregion
 
 // #region Parts
-function SwitchRoot({ children, className, variant: variantProp, ...rest }: SwitchRootProps) {
+function SwitchRoot({ variant: variantProp, children, className, ...rest }: SwitchRootProps) {
   const resolved = useFormControlVariant(variantProp);
   const shellArgs = shellVariantArgs(resolved);
   const controlShellProps = formControlShellProps(resolved);
@@ -53,7 +53,7 @@ function SwitchRoot({ children, className, variant: variantProp, ...rest }: Swit
   );
 }
 
-function SwitchControl({ className, children, ...rest }: SwitchControlProps) {
+function SwitchControl({ children, className, ...rest }: SwitchControlProps) {
   const { slots } = useSwitch();
 
   return (
@@ -76,14 +76,14 @@ function SwitchHiddenInput(props: SwitchHiddenInputProps) {
 
 // #region Closed
 export function Switch({
-  className,
-  classNames,
+  variant,
   controlProps,
   hiddenInputProps,
+  thumbProps,
   onCheckedChange,
   onValueChange,
-  thumbProps,
-  variant,
+  className,
+  classNames,
   ...rest
 }: SwitchProps) {
   const handleCheckedChange =

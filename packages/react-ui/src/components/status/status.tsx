@@ -9,7 +9,7 @@ export interface StatusProps extends StatusRootProps, StatusVariantProps {}
 // #endregion
 
 // #region Part
-export function Status({ variant, size, className, ...rest }: StatusProps) {
+export function Status({ size, variant, className, ...rest }: StatusProps) {
   return (
     <ark.span
       {...rest}

@@ -126,11 +126,11 @@ export function useAppShellSideOpen(
 }
 
 export function useRegisteredSideState({
-  controlledOpen,
-  defaultOpen,
-  onOpenChange,
   placement,
+  defaultOpen,
+  controlledOpen,
   statesRef,
+  onOpenChange,
 }: {
   controlledOpen?: boolean;
   defaultOpen?: boolean;
@@ -179,11 +179,11 @@ export function useRegisteredSideState({
 }
 
 export function useRegisteredRailState({
-  activeRailId: activeRailIdProp,
-  defaultActiveRailId,
-  onActiveRailIdChange,
   placement,
+  defaultActiveRailId,
+  activeRailId: activeRailIdProp,
   statesRef,
+  onActiveRailIdChange,
 }: {
   activeRailId?: string;
   defaultActiveRailId?: string;

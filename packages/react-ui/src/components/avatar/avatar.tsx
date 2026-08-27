@@ -14,27 +14,27 @@ type AvatarClassNames = VariantClassNames<AvatarSlots>;
 type AvatarRootProps = ComponentProps<typeof AvatarPrimitive.Root> & AvatarVariantProps;
 
 export interface AvatarProps extends Omit<AvatarRootProps, "children"> {
-  /** Renders the avatar image with the provided src */
-  src?: string;
   /** Alt text for the avatar image */
   alt?: string;
   /** Renders the fallback content shown until the image loads */
   fallback?: ReactNode;
+  /** Renders the avatar image with the provided src */
+  src?: string;
   /** Slot class names */
   classNames?: AvatarClassNames;
-  /** Extra props forwarded to the avatar image element */
-  imageProps?: Omit<AvatarImageProps, "alt" | "className" | "src">;
   /** Extra props forwarded to the avatar fallback element */
   fallbackProps?: Omit<AvatarFallbackProps, "children" | "className">;
+  /** Extra props forwarded to the avatar image element */
+  imageProps?: Omit<AvatarImageProps, "alt" | "className" | "src">;
 }
 // #endregion
 
 // #region Parts
 function AvatarRoot({
-  children,
-  className,
   shape = "circle",
   size = "md",
+  children,
+  className,
   ...rest
 }: AvatarRootProps) {
   const slots = avatarVariants({ shape, size });
@@ -68,14 +68,14 @@ function AvatarFallback({ className, ...rest }: AvatarFallbackProps) {
 
 // #region Closed
 export function Avatar({
+  shape,
+  size,
   alt,
-  classNames,
   fallback,
   fallbackProps,
   imageProps,
-  shape,
-  size,
   src,
+  classNames,
   ...rest
 }: AvatarProps) {
   return (

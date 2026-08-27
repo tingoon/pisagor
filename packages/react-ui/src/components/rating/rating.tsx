@@ -25,21 +25,6 @@ type RatingRootProps = ComponentProps<typeof RatingGroupPrimitive.Root> & {
 };
 
 export interface RatingProps extends Omit<RatingRootProps, "children" | "onValueChange"> {
-  /** Slot class names */
-  classNames?: RatingClassNames;
-  /**
-   * The icon to use for the rating.
-   *
-   * @defaultValue <StarIcon />
-   */
-  icon?: ReactNode;
-  /**
-   * Controlled rating value.
-   *
-   * @remarks
-   * When set, `defaultValue` is ignored. Pair with `onValueChange` to handle updates.
-   */
-  value?: number;
   /**
    * Initial rating value when uncontrolled.
    *
@@ -48,28 +33,43 @@ export interface RatingProps extends Omit<RatingRootProps, "children" | "onValue
    */
   defaultValue?: number;
   /**
+   * Controlled rating value.
+   *
+   * @remarks
+   * When set, `defaultValue` is ignored. Pair with `onValueChange` to handle updates.
+   */
+  value?: number;
+  /**
+   * The icon to use for the rating.
+   *
+   * @defaultValue <StarIcon />
+   */
+  icon?: ReactNode;
+  /**
    * Called when the rating value changes.
    *
    * @remarks
    * Receives the numeric value directly, not Ark UI event details.
    */
   onValueChange?: (value: number) => void;
+  /** Slot class names */
+  classNames?: RatingClassNames;
   /** Extra props forwarded to the rating control element */
   controlProps?: Omit<RatingControlProps, "children" | "className">;
-  /** Extra props forwarded to each rating item element */
-  itemProps?: Omit<RatingItemProps, "children" | "index" | "className">;
   /** Extra props forwarded to each rating item indicator element */
   indicatorProps?: Omit<RatingIndicatorProps, "children" | "className">;
+  /** Extra props forwarded to each rating item element */
+  itemProps?: Omit<RatingItemProps, "children" | "index" | "className">;
 }
 // #endregion
 
 // #region Parts
 function RatingRoot({
+  variant: variantProp,
   allowHalf = false,
+  count = 5,
   children,
   className,
-  count = 5,
-  variant: variantProp,
   ...rest
 }: RatingRootProps) {
   const resolved = useFormControlVariant(variantProp);
@@ -93,7 +93,7 @@ function RatingRoot({
   );
 }
 
-function RatingControl({ className, children, ...rest }: RatingControlProps) {
+function RatingControl({ children, className, ...rest }: RatingControlProps) {
   const { slots } = useRating();
 
   return (
@@ -109,7 +109,7 @@ function RatingItem({ className, ...rest }: RatingItemProps) {
   return <RatingGroupPrimitive.Item {...rest} className={slots.item({ className })} />;
 }
 
-function RatingIndicator({ className, children, ...rest }: RatingIndicatorProps) {
+function RatingIndicator({ children, className, ...rest }: RatingIndicatorProps) {
   const { slots } = useRating();
 
   return (
@@ -127,14 +127,14 @@ function RatingIndicator({ className, children, ...rest }: RatingIndicatorProps)
 
 // #region Closed
 export function Rating({
-  className,
-  classNames,
+  variant,
   controlProps,
   icon = <StarIcon />,
   indicatorProps,
   itemProps,
   onValueChange,
-  variant,
+  className,
+  classNames,
   ...rest
 }: RatingProps) {
   return (

@@ -16,27 +16,27 @@ type AlertClassNames = VariantClassNames<AlertSlots>;
 type AlertRootProps = Omit<ComponentProps<typeof ark.div>, "title"> & AlertVariantProps;
 
 export interface AlertProps extends Omit<AlertRootProps, "children"> {
+  /** Trailing action area. */
+  action?: ReactNode;
+  /** Description content. */
+  description?: ReactNode;
   /** Leading icon, rendered as a direct child so the grid layout aligns. */
   icon?: ReactNode;
   /** Bold title line. */
   title?: ReactNode;
-  /** Description content. */
-  description?: ReactNode;
-  /** Trailing action area. */
-  action?: ReactNode;
   /** Slot class names */
   classNames?: AlertClassNames;
-  /** Extra props forwarded to the alert title element */
-  titleProps?: Omit<AlertTitleProps, "children" | "className">;
-  /** Extra props forwarded to the alert description element */
-  descriptionProps?: Omit<AlertDescriptionProps, "children" | "className">;
   /** Extra props forwarded to the alert action element */
   actionProps?: Omit<AlertActionProps, "children" | "className">;
+  /** Extra props forwarded to the alert description element */
+  descriptionProps?: Omit<AlertDescriptionProps, "children" | "className">;
+  /** Extra props forwarded to the alert title element */
+  titleProps?: Omit<AlertTitleProps, "children" | "className">;
 }
 // #endregion
 
 // #region Parts
-export function AlertRoot({ variant, className, children, ...rest }: AlertRootProps) {
+export function AlertRoot({ variant, children, className, ...rest }: AlertRootProps) {
   const slots = alertVariants({ variant });
 
   return (
@@ -48,7 +48,7 @@ export function AlertRoot({ variant, className, children, ...rest }: AlertRootPr
   );
 }
 
-export function AlertTitle({ className, children, ...rest }: AlertTitleProps) {
+export function AlertTitle({ children, className, ...rest }: AlertTitleProps) {
   const { slots } = useAlert();
 
   return (
@@ -58,7 +58,7 @@ export function AlertTitle({ className, children, ...rest }: AlertTitleProps) {
   );
 }
 
-export function AlertDescription({ className, children, ...rest }: AlertDescriptionProps) {
+export function AlertDescription({ children, className, ...rest }: AlertDescriptionProps) {
   const { slots } = useAlert();
 
   return (
@@ -73,7 +73,7 @@ export function AlertDescription({ className, children, ...rest }: AlertDescript
   );
 }
 
-export function AlertAction({ className, children, ...rest }: AlertActionProps) {
+export function AlertAction({ children, className, ...rest }: AlertActionProps) {
   const { slots } = useAlert();
 
   return (
@@ -92,15 +92,15 @@ export function AlertAction({ className, children, ...rest }: AlertActionProps) 
 // #region Shorthand
 export function AlertShorthand({
   variant,
-  className,
-  classNames,
+  action,
+  actionProps,
+  description,
+  descriptionProps,
   icon,
   title,
-  description,
-  action,
   titleProps,
-  descriptionProps,
-  actionProps,
+  className,
+  classNames,
   ...rest
 }: AlertProps) {
   return (

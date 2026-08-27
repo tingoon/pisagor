@@ -86,9 +86,9 @@ export function FloatingPanelTrigger(props: FloatingPanelTriggerProps) {
 }
 
 export function FloatingPanelContent({
+  children,
   resizable = true,
   className,
-  children,
   ...rest
 }: FloatingPanelContentProps) {
   const { slots = floatingPanelVariants() } = useFloatingPanel() ?? {};
@@ -121,7 +121,7 @@ export function FloatingPanelDragTrigger(props: FloatingPanelDragTriggerProps) {
   return <FloatingPanelPrimitive.DragTrigger {...props} />;
 }
 
-export function FloatingPanelHeader({ className, children, ...rest }: FloatingPanelHeaderProps) {
+export function FloatingPanelHeader({ children, className, ...rest }: FloatingPanelHeaderProps) {
   const { slots = floatingPanelVariants() } = useFloatingPanel() ?? {};
 
   return (
@@ -133,7 +133,7 @@ export function FloatingPanelHeader({ className, children, ...rest }: FloatingPa
   );
 }
 
-export function FloatingPanelControl({ className, children, ...rest }: FloatingPanelControlProps) {
+export function FloatingPanelControl({ children, className, ...rest }: FloatingPanelControlProps) {
   const { slots = floatingPanelVariants() } = useFloatingPanel() ?? {};
 
   return (
@@ -188,7 +188,7 @@ export function FloatingPanelRestore({
   );
 }
 
-export function FloatingPanelTitle({ className, children, ...rest }: FloatingPanelTitleProps) {
+export function FloatingPanelTitle({ children, className, ...rest }: FloatingPanelTitleProps) {
   const { slots = floatingPanelVariants() } = useFloatingPanel() ?? {};
 
   return (
@@ -212,8 +212,8 @@ export function FloatingPanelCloseTrigger(props: FloatingPanelCloseTriggerProps)
 
 export function FloatingPanelBody({
   scrollFade = false,
-  className,
   children,
+  className,
   ...rest
 }: FloatingPanelBodyProps) {
   const { slots = floatingPanelVariants() } = useFloatingPanel() ?? {};
@@ -227,7 +227,7 @@ export function FloatingPanelBody({
   );
 }
 
-export function FloatingPanelFooter({ className, children, ...rest }: FloatingPanelFooterProps) {
+export function FloatingPanelFooter({ children, className, ...rest }: FloatingPanelFooterProps) {
   const { slots = floatingPanelVariants() } = useFloatingPanel() ?? {};
 
   return (

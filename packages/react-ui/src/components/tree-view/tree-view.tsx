@@ -111,7 +111,7 @@ export const createTreeCollection = <T extends TreeNodeType>(
     ...options,
   });
 
-export function TreeViewRoot({ fileIcons, className, children, ...rest }: TreeViewProps) {
+export function TreeViewRoot({ children, fileIcons, className, ...rest }: TreeViewProps) {
   const slots = useMemo(() => treeViewVariants(), []);
 
   return (
@@ -139,7 +139,7 @@ export const TreeViewNodeProvider = <T extends TreeNodeType>(props: NodeProvider
   <TreeViewPrimitive.NodeProvider {...props} />
 );
 
-export function TreeViewBranch({ className, children, ...rest }: TreeViewBranchProps) {
+export function TreeViewBranch({ children, className, ...rest }: TreeViewBranchProps) {
   const slots = useMemo(() => treeViewBranchVariants(), []);
 
   return (
@@ -152,10 +152,10 @@ export function TreeViewBranch({ className, children, ...rest }: TreeViewBranchP
 }
 
 export function TreeViewBranchControl({
-  icon,
-  expandedIcon,
-  className,
   children,
+  expandedIcon,
+  icon,
+  className,
   ...rest
 }: TreeViewBranchControlProps) {
   const { slots } = useTreeView();
@@ -171,10 +171,10 @@ export function TreeViewBranchControl({
 }
 
 function TreeViewBranchTitle({
-  icon: Icon,
-  expandedIcon: ExpandedIcon,
-  className,
   children,
+  expandedIcon: ExpandedIcon,
+  icon: Icon,
+  className,
   ...rest
 }: TreeViewBranchTitleProps) {
   const { slots } = useTreeViewBranch();
@@ -215,8 +215,8 @@ export function TreeViewBranchIndicator({ className, ...rest }: TreeViewBranchIn
 }
 
 export function TreeViewBranchContent({
-  className,
   children,
+  className,
   ...rest
 }: TreeViewBranchContentProps) {
   const { slots } = useTreeViewBranch();
@@ -238,7 +238,7 @@ function TreeViewBranchIndentGuide({ className, ...rest }: TreeViewBranchIndentG
   );
 }
 
-export function TreeViewItem({ className, children, ...rest }: TreeViewItemProps) {
+export function TreeViewItem({ children, className, ...rest }: TreeViewItemProps) {
   const { slots } = useTreeView();
   const itemSlots = useMemo(() => treeViewItemVariants(), []);
 
@@ -252,9 +252,9 @@ export function TreeViewItem({ className, children, ...rest }: TreeViewItemProps
 }
 
 export function TreeViewItemText({
+  children,
   icon: Icon = FileIcon,
   className,
-  children,
   ...rest
 }: TreeViewItemTextProps) {
   const { fileIcons } = useTreeView();

@@ -103,8 +103,8 @@ export const { AppShellContext, useAppShell } = createContext<AppShellContextVal
 });
 
 export function useSideState({
-  controlledOpen,
   defaultOpen = false,
+  controlledOpen,
   onOpenChange,
 }: UseSideStateOptions): AppShellSideState {
   const [open, setOpenValue] = useUncontrolled({

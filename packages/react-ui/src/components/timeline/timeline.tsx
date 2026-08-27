@@ -52,7 +52,7 @@ export function TimelineRoot({ orientation = "vertical", className, ...rest }: T
   );
 }
 
-export function TimelineItem({ className, children, ...rest }: TimelineItemProps) {
+export function TimelineItem({ children, className, ...rest }: TimelineItemProps) {
   const slots = useMemo(() => timelineItemVariants(), []);
 
   return (
@@ -69,7 +69,7 @@ export function TimelineItem({ className, children, ...rest }: TimelineItemProps
   );
 }
 
-export function TimelineIndicator({ className, children, ...rest }: TimelineIndicatorProps) {
+export function TimelineIndicator({ children, className, ...rest }: TimelineIndicatorProps) {
   const { slots } = useTimelineItem();
 
   return (

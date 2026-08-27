@@ -47,9 +47,9 @@ function TextareaProvider({ children }: { children: ReactNode }) {
 }
 
 function TextareaField({
+  variant: variantProp,
   className,
   classNames,
-  variant: variantProp,
   ...rest
 }: TextareaRootProps & { classNames?: TextareaClassNames }) {
   const { slots } = useTextarea();
@@ -70,9 +70,9 @@ function TextareaField({
 }
 
 function TextareaGroup({
+  variant,
   children,
   className,
-  variant,
 }: {
   children: ReactNode;
   className?: string;
@@ -118,17 +118,17 @@ function TextareaClearAddon({ onClear }: { onClear: () => void }) {
 
 // #region Closed
 export function Textarea({
-  className,
-  classNames,
+  variant: variantProp,
   clearable = false,
   defaultValue,
   disabled,
+  readOnly,
+  value,
+  ref,
   onChange,
   onValueChange,
-  readOnly,
-  ref,
-  value,
-  variant: variantProp,
+  className,
+  classNames,
   ...rest
 }: TextareaProps) {
   const { canClear, handleChange, handleClear, mergedRef } = useClearableInput({

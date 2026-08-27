@@ -19,8 +19,8 @@ export interface AppShellNavigationProps extends ComponentProps<"nav"> {
 }
 
 export function AppShellNavigation({
-  className,
   position = "fixed",
+  className,
   style,
   ...rest
 }: AppShellNavigationProps) {

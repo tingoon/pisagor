@@ -34,12 +34,12 @@ export interface AlertDialogCancelProps
     Omit<ButtonProps, "variant"> {}
 
 export interface AlertDialogProps extends Omit<AlertDialogRootProps, "children" | "title"> {
-  /** Header title content. */
-  title?: ReactNode;
-  /** Header description content. */
-  description?: ReactNode;
   /** Footer actions (typically Cancel / Action). */
   actions?: ReactNode;
+  /** Header description content. */
+  description?: ReactNode;
+  /** Header title content. */
+  title?: ReactNode;
   /** Control that opens the dialog. */
   trigger?: ReactNode;
 }
@@ -90,7 +90,7 @@ export function AlertDialogBody({ className, ...rest }: DialogBodyProps) {
 }
 
 export function AlertDialogHeader(props: DialogHeaderProps) {
-  return <Dialog.Header data-part="header" data-scope="alert-dialog" {...props} />;
+  return <Dialog.Header {...props} data-part="header" data-scope="alert-dialog" />;
 }
 
 export function AlertDialogTitle(props: DialogTitleProps) {
@@ -106,7 +106,7 @@ export function AlertDialogCloseTrigger(props: DialogCloseTriggerProps) {
 }
 
 export function AlertDialogFooter(props: DialogFooterProps) {
-  return <Dialog.Footer data-part="footer" data-scope="alert-dialog" {...props} />;
+  return <Dialog.Footer {...props} data-part="footer" data-scope="alert-dialog" />;
 }
 
 export function AlertDialogAction({ variant = "default", ...rest }: AlertDialogActionProps) {
@@ -116,7 +116,7 @@ export function AlertDialogAction({ variant = "default", ...rest }: AlertDialogA
 export function AlertDialogCancel(props: AlertDialogCancelProps) {
   return (
     <AlertDialogCloseTrigger asChild>
-      <Button variant="outline" {...props} />
+      <Button {...props} variant="outline" />
     </AlertDialogCloseTrigger>
   );
 }

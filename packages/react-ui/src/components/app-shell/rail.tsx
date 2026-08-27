@@ -15,9 +15,6 @@ import {
 } from "./region";
 
 export interface AppShellRailProps extends ComponentProps<"aside"> {
-  activeRailId?: string;
-  defaultActiveRailId?: string;
-  onActiveRailIdChange?: (id: string) => void;
   /**
    * Grid column side for the rail.
    *
@@ -33,6 +30,9 @@ export interface AppShellRailProps extends ComponentProps<"aside"> {
    * @defaultValue "fixed"
    */
   position?: AppShellRegionPosition;
+  activeRailId?: string;
+  defaultActiveRailId?: string;
+  onActiveRailIdChange?: (id: string) => void;
 }
 
 export interface AppShellRailItemProps extends ButtonProps {
@@ -56,11 +56,11 @@ export interface AppShellRailItemProps extends ButtonProps {
 
 export function AppShellRail({
   placement = "start",
-  activeRailId: activeRailIdProp,
-  defaultActiveRailId,
-  onActiveRailIdChange,
   position = "fixed",
+  defaultActiveRailId,
+  activeRailId: activeRailIdProp,
   children,
+  onActiveRailIdChange,
   className,
   style,
   ...rest
@@ -100,15 +100,15 @@ export function AppShellRail({
 }
 
 export function AppShellRailItem({
-  isActive,
-  opensPanel = false,
   panelPlacement: panelPlacementProp,
-  railId,
-  tooltip,
-  className,
-  onClick,
   size = "icon-md",
   variant = "ghost",
+  isActive,
+  opensPanel = false,
+  railId,
+  tooltip,
+  onClick,
+  className,
   ...rest
 }: AppShellRailItemProps) {
   const { activeRailId, placement: railPlacement, setActiveRailId } = useAppShellRail();
@@ -148,11 +148,11 @@ export function AppShellRailItem({
 
   return (
     <Tooltip
+      {...tooltipProps}
       positioning={{
         placement: railPlacement === "end" ? "left" : "right",
         ...tooltipProps.positioning,
       }}
-      {...tooltipProps}
     >
       {button}
     </Tooltip>

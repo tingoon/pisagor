@@ -45,7 +45,7 @@ export function SkeletonCircle({ className, ...rest }: SkeletonCircleProps) {
   );
 }
 
-export function SkeletonText({ className, lines = 2, ...rest }: SkeletonTextProps) {
+export function SkeletonText({ lines = 2, className, ...rest }: SkeletonTextProps) {
   const slots = useMemo(() => skeletonVariants(), []);
 
   return (

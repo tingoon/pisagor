@@ -5,17 +5,17 @@ import type { AppShellPlacement } from "./app-shell.context";
 import { useAppShell } from "./app-shell.context";
 
 export function AppShellSideTrigger({
-  "aria-label": ariaLabel,
-  className,
-  children,
+  placement,
   defaultOff,
   defaultOn,
-  onClick,
   open,
-  placement,
-  toggle,
-  on: onContent,
+  "aria-label": ariaLabel,
+  children,
   off: offContent,
+  on: onContent,
+  toggle,
+  onClick,
+  className,
   ...rest
 }: {
   "aria-label"?: string;
@@ -35,12 +35,12 @@ export function AppShellSideTrigger({
 
   return (
     <Button
-      data-scope="app-shell"
       {...rest}
       aria-label={ariaLabel ?? `Toggle ${placement} region`}
       aria-pressed={open}
       className={slots.inline({ className })}
       data-placement={placement}
+      data-scope="app-shell"
       data-state={open ? "open" : "closed"}
       onClick={(event) => {
         onClick?.(event);

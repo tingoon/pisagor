@@ -23,12 +23,16 @@ export type ResizableHandlePosition = "bottom" | "center" | "top";
 export type ResizableEdgePlacement = "end" | "start";
 
 export interface ResizableEdgeHandleProps extends ComponentProps<"button"> {
+  /** Which edge of the resizable region the handle sits on. */
+  placement: ResizableEdgePlacement;
   /** Vertical placement of the visible grip. @defaultValue `"center"` */
   handlePosition?: ResizableHandlePosition;
-  /** Accessible label for the resize control. */
-  label: string;
   /** Minimum width in pixels. @defaultValue 1 */
   minWidth?: number;
+  /** Current width in pixels. */
+  width: number;
+  /** Accessible label for the resize control. */
+  label: string;
   /** Called during drag for live width updates. */
   onResizeChange?: (width: number) => void;
   /** Called when a resize interaction ends. */
@@ -37,10 +41,6 @@ export interface ResizableEdgeHandleProps extends ComponentProps<"button"> {
   onResizeStart?: () => void;
   /** Called when the width settles after drag or double-click reset. */
   onWidthChange: (width: number) => void;
-  /** Which edge of the resizable region the handle sits on. */
-  placement: ResizableEdgePlacement;
-  /** Current width in pixels. */
-  width: number;
 }
 
 export interface ResizableResizeTriggerProps
@@ -68,16 +68,16 @@ export type ResizableRootProviderProps = ComponentProps<typeof SplitterPrimitive
 
 // #region Parts
 export function ResizableEdgeHandle({
-  className,
+  placement,
   handlePosition = "center",
   label,
   minWidth = 1,
+  width,
   onResizeChange,
   onResizeEnd,
   onResizeStart,
   onWidthChange,
-  placement,
-  width,
+  className,
   ...rest
 }: ResizableEdgeHandleProps) {
   const initialWidthRef = useRef(width);
@@ -149,7 +149,7 @@ export function ResizableEdgeHandle({
   );
 }
 
-export function ResizableRoot({ className, children, ...rest }: ResizableRootProps) {
+export function ResizableRoot({ children, className, ...rest }: ResizableRootProps) {
   const slots = useMemo(() => resizableVariants(), []);
 
   return (
@@ -180,9 +180,9 @@ export function ResizableResizeTriggerIndicator({
 }
 
 export function ResizableResizeTrigger({
+  children,
   withHandle = false,
   className,
-  children,
   ...rest
 }: ResizableResizeTriggerProps) {
   const { slots } = useResizable();
@@ -209,8 +209,8 @@ export function ResizableContext(props: ResizableContextProps) {
 }
 
 export function ResizableRootProvider({
-  className,
   children,
+  className,
   ...rest
 }: ResizableRootProviderProps) {
   const slots = useMemo(() => resizableVariants(), []);

@@ -39,9 +39,9 @@ export type RadioGroupLabelProps = ComponentProps<typeof RadioGroupPrimitive.Lab
 
 // #region Parts
 export function RadioGroupRoot({
-  className,
   children,
   onValueChange,
+  className,
   ...rest
 }: RadioGroupRootProps) {
   return (
@@ -81,7 +81,7 @@ export function RadioGroupItem({
   );
 }
 
-export function RadioGroupItemText({ className, children, ...rest }: RadioGroupItemTextProps) {
+export function RadioGroupItemText({ children, className, ...rest }: RadioGroupItemTextProps) {
   return (
     <Field.Label asChild>
       <RadioGroupPrimitive.ItemText {...rest} className={className}>

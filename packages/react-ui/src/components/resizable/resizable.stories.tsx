@@ -29,8 +29,8 @@ const meta = preview.meta({
 
 function ResizableFrame({
   children,
-  className,
   heightClassName = "h-96",
+  className,
 }: {
   children: ReactNode;
   className?: string;

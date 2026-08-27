@@ -20,11 +20,11 @@ export interface ToggleProps extends ToggleRootProps, ToggleVariantProps {
 
 // #region Part
 export function Toggle({
-  variant = "ghost",
   size = "md",
-  className,
+  variant = "ghost",
   onPressedChange,
   onValueChange,
+  className,
   ...rest
 }: ToggleProps) {
   return (

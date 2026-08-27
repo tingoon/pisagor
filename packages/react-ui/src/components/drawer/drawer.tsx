@@ -93,8 +93,8 @@ const SWIPE_DIRECTION_TO_PLACEMENT = {
 
 export function DrawerContent({
   variant = "default",
-  className,
   children,
+  className,
   ...rest
 }: DrawerContentProps) {
   const { slots } = useDrawer();
@@ -150,10 +150,10 @@ export function DrawerGrabber({ className, ...rest }: DrawerGrabberProps) {
 }
 
 export function DrawerHeader({
-  className,
-  title,
-  description,
   children,
+  description,
+  title,
+  className,
   ...rest
 }: DrawerHeaderProps) {
   const { slots } = useDrawer();

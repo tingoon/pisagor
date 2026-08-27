@@ -29,7 +29,7 @@ export interface PaginationItemLinkProps extends ButtonProps {
 // #endregion
 
 // #region Parts
-export function PaginationRoot({ className, children, ...rest }: PaginationRootProps) {
+export function PaginationRoot({ children, className, ...rest }: PaginationRootProps) {
   const slots = useMemo(() => paginationVariants(), []);
 
   return (
@@ -49,7 +49,7 @@ export function PaginationRoot({ className, children, ...rest }: PaginationRootP
 
 export function PaginationPrevTrigger(props: PaginationPrevTriggerProps) {
   return (
-    <PaginationPrimitive.PrevTrigger asChild {...props}>
+    <PaginationPrimitive.PrevTrigger {...props} asChild>
       <Button variant="ghost">
         <CaretLeftIcon />
         Previous
@@ -60,7 +60,7 @@ export function PaginationPrevTrigger(props: PaginationPrevTriggerProps) {
 
 export function PaginationNextTrigger(props: PaginationNextTriggerProps) {
   return (
-    <PaginationPrimitive.NextTrigger asChild {...props}>
+    <PaginationPrimitive.NextTrigger {...props} asChild>
       <Button variant="ghost">
         Next
         <CaretRightIcon />
@@ -69,7 +69,7 @@ export function PaginationNextTrigger(props: PaginationNextTriggerProps) {
   );
 }
 
-export function PaginationItem({ className, children, ...rest }: PaginationItemProps) {
+export function PaginationItem({ children, className, ...rest }: PaginationItemProps) {
   const { slots } = usePagination();
 
   return (

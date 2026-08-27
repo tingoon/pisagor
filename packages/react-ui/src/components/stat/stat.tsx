@@ -25,29 +25,29 @@ type StatClassNames = VariantClassNames<StatSlots>;
 type StatRootProps = ComponentProps<typeof ark.div> & StatVariantProps;
 
 export interface StatProps extends Omit<StatRootProps, "children"> {
-  /** Metric label. */
-  label?: ReactNode;
-  /** Primary metric value. */
-  value?: ReactNode;
   /** Supporting copy below the value. */
   description?: ReactNode;
+  /** Metric label. */
+  label?: ReactNode;
   /** Trend indicator content. */
   trend?: ReactNode;
+  /** Primary metric value (display copy — not a controlled input). */
+  value?: ReactNode;
   /** Slot class names */
   classNames?: StatClassNames;
-  /** Extra props forwarded to the label element */
-  labelProps?: Omit<StatLabelProps, "children" | "className">;
-  /** Extra props forwarded to the value element */
-  valueProps?: Omit<StatValueProps, "children" | "className">;
   /** Extra props forwarded to the description element */
   descriptionProps?: Omit<StatDescriptionProps, "children" | "className">;
+  /** Extra props forwarded to the label element */
+  labelProps?: Omit<StatLabelProps, "children" | "className">;
   /** Extra props forwarded to the trend element */
   trendProps?: Omit<StatTrendProps, "children" | "className">;
+  /** Extra props forwarded to the value element */
+  valueProps?: Omit<StatValueProps, "children" | "className">;
 }
 // #endregion
 
 // #region Parts
-export function StatRoot({ children, className, variant, ...rest }: StatRootProps) {
+export function StatRoot({ variant, children, className, ...rest }: StatRootProps) {
   const slots = useMemo(() => statVariants(), []);
 
   return (
@@ -110,16 +110,16 @@ export function StatTrend({ trend = "neutral", className, ...rest }: StatTrendPr
 // #region Shorthand
 export function StatShorthand({
   variant,
-  className,
-  classNames,
-  label,
   value,
   description,
-  trend,
-  labelProps,
-  valueProps,
   descriptionProps,
+  label,
+  labelProps,
+  trend,
   trendProps,
+  valueProps,
+  className,
+  classNames,
   ...rest
 }: StatProps) {
   return (

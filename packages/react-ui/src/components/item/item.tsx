@@ -24,7 +24,7 @@ export interface ItemFooterProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Parts
-export function ItemRoot({ variant: variantProp, className, children, ...rest }: ItemProps) {
+export function ItemRoot({ variant: variantProp, children, className, ...rest }: ItemProps) {
   const group = useItemGroup();
   const variant = variantProp ?? group?.variant ?? "default";
   const slots = useMemo(() => itemVariants(), []);
@@ -44,7 +44,7 @@ export function ItemRoot({ variant: variantProp, className, children, ...rest }:
   );
 }
 
-export function ItemMedia({ variant = "default", className, children, ...rest }: ItemMediaProps) {
+export function ItemMedia({ variant = "default", children, className, ...rest }: ItemMediaProps) {
   const { slots } = useItem();
 
   return (
@@ -60,7 +60,7 @@ export function ItemMedia({ variant = "default", className, children, ...rest }:
   );
 }
 
-export function ItemContent({ className, children, ...rest }: ItemContentProps) {
+export function ItemContent({ children, className, ...rest }: ItemContentProps) {
   const { slots } = useItem();
 
   return (
@@ -75,7 +75,7 @@ export function ItemContent({ className, children, ...rest }: ItemContentProps) 
   );
 }
 
-export function ItemTitle({ className, children, ...rest }: ItemTitleProps) {
+export function ItemTitle({ children, className, ...rest }: ItemTitleProps) {
   const { slots } = useItem();
 
   return (
@@ -85,7 +85,7 @@ export function ItemTitle({ className, children, ...rest }: ItemTitleProps) {
   );
 }
 
-export function ItemDescription({ className, children, ...rest }: ItemDescriptionProps) {
+export function ItemDescription({ children, className, ...rest }: ItemDescriptionProps) {
   const { slots } = useItem();
 
   return (
@@ -100,7 +100,7 @@ export function ItemDescription({ className, children, ...rest }: ItemDescriptio
   );
 }
 
-export function ItemActions({ className, children, ...rest }: ItemActionsProps) {
+export function ItemActions({ children, className, ...rest }: ItemActionsProps) {
   const { slots } = useItem();
 
   return (
@@ -115,7 +115,7 @@ export function ItemActions({ className, children, ...rest }: ItemActionsProps) 
   );
 }
 
-export function ItemHeader({ className, children, ...rest }: ItemHeaderProps) {
+export function ItemHeader({ children, className, ...rest }: ItemHeaderProps) {
   const { slots } = useItem();
 
   return (
@@ -125,7 +125,7 @@ export function ItemHeader({ className, children, ...rest }: ItemHeaderProps) {
   );
 }
 
-export function ItemFooter({ className, children, ...rest }: ItemFooterProps) {
+export function ItemFooter({ children, className, ...rest }: ItemFooterProps) {
   const { slots } = useItem();
 
   return (

@@ -69,7 +69,7 @@ export function BreadcrumbList({ className, ...rest }: BreadcrumbListProps) {
   );
 }
 
-export function BreadcrumbItem({ className, children, ...rest }: BreadcrumbItemProps) {
+export function BreadcrumbItem({ children, className, ...rest }: BreadcrumbItemProps) {
   const slots = useMemo(() => breadcrumbItemVariants(), []);
 
   return (
@@ -135,11 +135,11 @@ export function BreadcrumbEllipsis(props: BreadcrumbEllipsisProps) {
 
   return (
     <ark.span
+      {...props}
       aria-hidden="true"
       data-part="ellipsis"
       data-scope="breadcrumb"
       role="presentation"
-      {...props}
     >
       <DotsThreeIcon className={slots.ellipsis()} />
     </ark.span>

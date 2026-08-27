@@ -25,14 +25,6 @@ type SortableOrientation = "vertical" | "horizontal";
 
 export interface SortableRootProps extends Omit<ComponentProps<typeof ark.div>, "onDragStart"> {
   /**
-   * Ordered item ids. Reorder callbacks receive a new array of the same ids.
-   */
-  items: string[];
-  /**
-   * Called with the reordered ids after a successful drop or keyboard move.
-   */
-  onValueChange?: (items: string[]) => void;
-  /**
    * Layout axis for drop indicators and keyboard moves.
    *
    * @defaultValue "vertical"
@@ -45,6 +37,14 @@ export interface SortableRootProps extends Omit<ComponentProps<typeof ark.div>, 
    */
   disabled?: boolean;
   children?: ReactNode;
+  /**
+   * Ordered item ids. Reorder callbacks receive a new array of the same ids.
+   */
+  items: string[];
+  /**
+   * Called with the reordered ids after a successful drop or keyboard move.
+   */
+  onValueChange?: (items: string[]) => void;
 }
 
 export interface SortableItemProps extends ComponentProps<typeof ark.div> {
@@ -78,12 +78,12 @@ function reorder(list: string[], from: number, to: number) {
 
 // #region Parts
 export function SortableRoot({
-  items,
-  onValueChange,
   orientation = "vertical",
   disabled = false,
-  className,
+  items,
   children,
+  onValueChange,
+  className,
   ...rest
 }: SortableRootProps) {
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -306,7 +306,7 @@ export function SortableRoot({
   );
 }
 
-export function SortableItem({ value, className, children, ...rest }: SortableItemProps) {
+export function SortableItem({ value, children, className, ...rest }: SortableItemProps) {
   const { getItemProps, activeId } = useSortable();
   const itemProps = getItemProps(value);
   const isDragging = activeId === value;
@@ -328,7 +328,7 @@ export function SortableItem({ value, className, children, ...rest }: SortableIt
   );
 }
 
-export function SortableHandle({ className, children, ...rest }: SortableHandleProps) {
+export function SortableHandle({ children, className, ...rest }: SortableHandleProps) {
   const { id, slots } = useSortableItem();
   const { disabled, endDrag, moveItem, orientation, registerHandle, startDrag, unregisterHandle } =
     useSortable();

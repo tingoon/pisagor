@@ -41,10 +41,10 @@ type SignaturePadGuideProps = ComponentProps<typeof SignaturePadPrimitive.Guide>
 
 // #region Parts
 function SignaturePadRoot({
+  variant,
+  invalid = false,
   children,
   className,
-  invalid = false,
-  variant,
   ...rest
 }: SignaturePadRootProps) {
   const slots = signaturePadVariants();
@@ -66,9 +66,9 @@ function SignaturePadRoot({
 }
 
 function SignaturePadControl({
+  invalid,
   children,
   className,
-  invalid,
   ...rest
 }: SignaturePadControlProps & { invalid?: boolean }) {
   const { slots } = useSignaturePad();
@@ -120,10 +120,10 @@ function SignaturePadGuide({ className, ...rest }: SignaturePadGuideProps) {
 
 // #region Closed
 export function SignaturePad({
+  variant,
+  invalid = false,
   className,
   classNames,
-  invalid = false,
-  variant,
   ...rest
 }: SignaturePadProps) {
   return (

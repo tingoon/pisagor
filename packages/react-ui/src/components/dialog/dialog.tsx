@@ -57,12 +57,12 @@ export type DialogFooterProps = ComponentProps<typeof ark.div>;
 export type DialogRootProps = ComponentProps<typeof DialogPrimitive.Root>;
 
 export interface DialogProps extends Omit<DialogRootProps, "title"> {
-  /** Header title content. */
-  title?: ReactNode;
-  /** Header description content. */
-  description?: ReactNode;
   /** Footer actions. */
   actions?: ReactNode;
+  /** Header description content. */
+  description?: ReactNode;
+  /** Header title content. */
+  title?: ReactNode;
   /** Control that opens the dialog. */
   trigger?: ReactNode;
 }
@@ -74,7 +74,7 @@ export function DialogRoot({ modal = true, ...rest }: DialogRootProps) {
 
   return (
     <DialogContext value={{ modal, slots }}>
-      <DialogPrimitive.Root modal={modal} {...rest} />
+      <DialogPrimitive.Root {...rest} modal={modal} />
     </DialogContext>
   );
 }
@@ -109,11 +109,11 @@ export function DialogPositioner({
 }
 
 export function DialogContent({
-  showCloseButton = true,
-  bottomStickOnMobile = true,
   size = "md",
-  className,
+  bottomStickOnMobile = true,
+  showCloseButton = true,
   children,
+  className,
   ...rest
 }: DialogContentProps) {
   const { slots } = useDialog();
@@ -142,24 +142,24 @@ export function DialogBody({ scrollFade = false, className, ...rest }: DialogBod
   return (
     <ScrollArea scrollFade={scrollFade}>
       <ark.div
-        data-part="body"
-        data-scope="dialog"
         {...rest}
         className={slots.body({ className })}
+        data-part="body"
+        data-scope="dialog"
       />
     </ScrollArea>
   );
 }
 
-export function DialogHeader({ className, children, ...rest }: DialogHeaderProps) {
+export function DialogHeader({ children, className, ...rest }: DialogHeaderProps) {
   const { slots } = useDialog();
 
   return (
     <ark.div
-      data-part="header"
-      data-scope="dialog"
       {...rest}
       className={slots.header({ className })}
+      data-part="header"
+      data-scope="dialog"
     >
       {children}
     </ark.div>
@@ -187,10 +187,10 @@ export function DialogFooter({ className, ...rest }: DialogFooterProps) {
 
   return (
     <ark.div
-      data-part="footer"
-      data-scope="dialog"
       {...rest}
       className={slots.footer({ className })}
+      data-part="footer"
+      data-scope="dialog"
     />
   );
 }

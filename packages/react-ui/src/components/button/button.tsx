@@ -28,15 +28,15 @@ export interface ButtonProps extends ButtonRootProps, ButtonVariantProps {
 
 // #region Part
 export function Button({
-  variant = "default",
-  size = "md",
   clickEffect = true,
   pill = false,
-  isLoading = false,
-  className,
-  children,
-  type = "button",
+  size = "md",
+  variant = "default",
   disabled,
+  isLoading = false,
+  type = "button",
+  children,
+  className,
   ...rest
 }: ButtonProps) {
   const loading = buttonLoadingVariants();

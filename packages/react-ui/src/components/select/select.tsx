@@ -41,13 +41,13 @@ export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
 };
 
 export interface SelectProps extends Omit<SelectRootProps, "children" | "collection"> {
-  items?: Array<SelectPresetItem | string>;
   /**
    * Whether to show a clear button when a value is selected.
    *
    * @defaultValue false
    */
   clearable?: boolean;
+  items?: Array<SelectPresetItem | string>;
   placeholder?: string;
 }
 
@@ -97,8 +97,8 @@ export function SelectRoot<T extends CollectionItem = CollectionItem>({
     <SelectRootContext value={{ slots }}>
       <FormControlVariantProvider value={variant}>
         <SelectPrimitive.Root
-          onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
           {...rest}
+          onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
         >
           {children}
 
@@ -177,7 +177,7 @@ export function SelectContent({ className, ...rest }: SelectContentProps) {
   );
 }
 
-export function SelectItemGroup({ heading, children, ...rest }: SelectItemGroupProps) {
+export function SelectItemGroup({ children, heading, ...rest }: SelectItemGroupProps) {
   return (
     <SelectPrimitive.ItemGroup {...rest}>
       {!heading && <SelectItemGroupLabel>{heading}</SelectItemGroupLabel>}
@@ -195,7 +195,7 @@ export function SelectItemGroupLabel({ className, ...rest }: SelectItemGroupLabe
   );
 }
 
-export function SelectItem({ className, children, ...rest }: SelectItemProps) {
+export function SelectItem({ children, className, ...rest }: SelectItemProps) {
   const { slots = selectVariants() } = useSelectRoot() ?? {};
 
   return (
@@ -237,8 +237,8 @@ export function SelectEmpty({ className, ...rest }: SelectEmptyProps) {
 
 // #region Shorthand
 export function SelectShorthand({
-  items = [],
   clearable = false,
+  items = [],
   placeholder,
   ...rest
 }: SelectProps) {

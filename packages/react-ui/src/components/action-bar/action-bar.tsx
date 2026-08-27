@@ -38,8 +38,6 @@ export interface ActionBarProps extends Pick<ActionBarContextValue, "lazyMount" 
    * Ignored when `open` is set.
    */
   defaultOpen?: boolean;
-  /** The function to call when the open state of the action bar changes. */
-  onOpenChange?: (open: boolean) => void;
   /**
    * The open state of the action bar.
    *
@@ -49,10 +47,12 @@ export interface ActionBarProps extends Pick<ActionBarContextValue, "lazyMount" 
   open?: boolean;
   /** Placement and gutter of the action bar. */
   positioning?: ActionBarContextValue["positioning"];
-  /** Number of selected items rendered via ActionBar.Value */
-  count?: number;
   /** Action buttons rendered inside the auto-generated ActionBar.Content */
   actions?: ActionBarActionItem[];
+  /** Number of selected items rendered via ActionBar.Value */
+  count?: number;
+  /** The function to call when the open state of the action bar changes. */
+  onOpenChange?: (open: boolean) => void;
 }
 
 export interface ActionBarTriggerProps extends ComponentProps<typeof ark.button> {}
@@ -79,16 +79,16 @@ const defaultPositioning = { gutter: "16px", placement: "bottom" } as const;
 
 // #region Parts
 export function ActionBarRoot({
-  open,
-  defaultOpen = false,
   closeOnEscape = true,
-  positioning: propPositioning,
-  lazyMount,
-  unmountOnExit,
-  onOpenChange,
   count,
+  defaultOpen = false,
+  lazyMount,
+  open,
+  positioning: propPositioning,
+  unmountOnExit,
   actions,
   children,
+  onOpenChange,
 }: PropsWithChildren<ActionBarProps>) {
   const [isOpen, setOpen] = useUncontrolled({
     defaultValue: defaultOpen,
@@ -250,7 +250,7 @@ export function ActionBarSeparator({ className, ...rest }: ActionBarSeparatorPro
   );
 }
 
-export function ActionBarClose({ className, onClick, ...rest }: ActionBarCloseProps) {
+export function ActionBarClose({ onClick, className, ...rest }: ActionBarCloseProps) {
   const { onClose, isOpen, slots } = useActionBar();
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
@@ -273,10 +273,10 @@ export function ActionBarClose({ className, onClick, ...rest }: ActionBarClosePr
 }
 
 export function ActionBarValue({
-  label,
   count = 0,
-  className,
   children,
+  label,
+  className,
   ...rest
 }: ActionBarValueProps) {
   const { slots } = useActionBar();

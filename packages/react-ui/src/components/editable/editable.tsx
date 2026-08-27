@@ -20,19 +20,19 @@ export interface EditableProps extends EditableRootProps {
   /** The orientation of the editable */
   orientation?: "horizontal" | "vertical";
   /**
-   * Controlled text value.
-   *
-   * @remarks
-   * When set, `defaultValue` is ignored. Pair with `onValueChange` to handle updates.
-   */
-  value?: string;
-  /**
    * Initial text value when uncontrolled.
    *
    * @remarks
    * Ignored when `value` is set.
    */
   defaultValue?: string;
+  /**
+   * Controlled text value.
+   *
+   * @remarks
+   * When set, `defaultValue` is ignored. Pair with `onValueChange` to handle updates.
+   */
+  value?: string;
   /**
    * Called when the text value changes.
    *
@@ -46,6 +46,8 @@ export interface EditableInputProps
   extends Omit<ComponentProps<typeof EditablePrimitive.Input>, "size"> {}
 
 export interface EditablePreviewProps extends ComponentProps<typeof EditablePrimitive.Preview> {
+  /** Form shell variant. When omitted, resolves from the nearest `Surface` context. */
+  controlVariant?: FormControlVariant;
   /**
    * The size of the preview
    *
@@ -58,8 +60,6 @@ export interface EditablePreviewProps extends ComponentProps<typeof EditablePrim
    * @defaultValue "outline"
    */
   variant?: ButtonProps["variant"];
-  /** Form shell variant. When omitted, resolves from the nearest `Surface` context. */
-  controlVariant?: FormControlVariant;
 }
 
 export type EditableAreaProps = ComponentProps<typeof EditablePrimitive.Area>;
@@ -76,8 +76,8 @@ export type EditableSubmitTriggerProps = ComponentProps<typeof EditablePrimitive
 // #region Parts
 export function EditableRoot({
   orientation = "horizontal",
-  value,
   defaultValue,
+  value,
   onValueChange,
   className,
   ...rest
@@ -117,9 +117,9 @@ export function EditableInput(props: EditableInputProps) {
 }
 
 export function EditablePreview({
+  controlVariant,
   size = "md",
   variant = "outline",
-  controlVariant,
   className,
   ...rest
 }: EditablePreviewProps) {

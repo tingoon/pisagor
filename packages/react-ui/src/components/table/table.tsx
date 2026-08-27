@@ -7,17 +7,17 @@ import { TableContext, useTable } from "./table.context";
 // #region Types
 export interface TableProps extends ComponentProps<typeof ark.table> {
   /**
-   * Whether the table rows are hoverable.
-   *
-   * @defaultValue true
-   */
-  isHoverable?: boolean;
-  /**
    * The variant of the table.
    *
    * @defaultValue "plain"
    */
   variant?: "plain" | "striped";
+  /**
+   * Whether the table rows are hoverable.
+   *
+   * @defaultValue true
+   */
+  isHoverable?: boolean;
 }
 
 export interface TableHeaderProps extends ComponentProps<typeof ark.thead> {}

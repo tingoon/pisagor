@@ -27,11 +27,13 @@ type ClipboardRootProps = ComponentProps<typeof ClipboardPrimitive.Root>;
 
 export interface ClipboardProps extends Omit<ClipboardRootProps, "children"> {
   /**
-   * Display mode for the copy control.
+   * Size of the copy button.
    *
-   * @defaultValue "input"
+   * @defaultValue "icon-md"
    */
-  variant?: "button" | "input" | "value";
+  buttonSize?: ButtonProps["size"];
+  /** Variant of the copy button */
+  buttonVariant?: ButtonProps["variant"];
   /**
    * Visual shell variant for input/value display modes.
    * When omitted, resolves from the nearest `Surface` context.
@@ -44,21 +46,19 @@ export interface ClipboardProps extends Omit<ClipboardRootProps, "children"> {
    */
   valueSize?: ClipboardValueSize;
   /**
-   * Size of the copy button.
+   * Display mode for the copy control.
    *
-   * @defaultValue "icon-md"
+   * @defaultValue "input"
    */
-  buttonSize?: ButtonProps["size"];
-  /** Variant of the copy button */
-  buttonVariant?: ButtonProps["variant"];
-  /** Optional label rendered above the control. */
-  label?: string;
+  variant?: "button" | "input" | "value";
+  /** Accessible label for icon-only copy buttons */
+  buttonAriaLabel?: string;
   /** Icon shown after a successful copy */
   copiedIcon?: ReactNode;
   /** Icon shown before copying */
   copyIcon?: ReactNode;
-  /** Accessible label for icon-only copy buttons */
-  buttonAriaLabel?: string;
+  /** Optional label rendered above the control. */
+  label?: string;
   /** Slot class names */
   classNames?: ClipboardClassNames;
   /** Extra props forwarded to the label element */
@@ -80,8 +80,8 @@ interface ClipboardLabelProps extends ComponentProps<"span"> {}
 
 // #region Parts
 function ClipboardProvider({
-  children,
   valueSize = "md",
+  children,
 }: {
   children: ReactNode;
   valueSize?: ClipboardValueSize;
@@ -99,7 +99,7 @@ function ClipboardRoot({ children, className, ...rest }: ClipboardRootProps) {
   );
 }
 
-function ClipboardControl({ className, children, ...rest }: ClipboardControlProps) {
+function ClipboardControl({ children, className, ...rest }: ClipboardControlProps) {
   const { slots } = useClipboard();
 
   return (
@@ -127,7 +127,7 @@ function ClipboardIndicator({ className, ...rest }: ClipboardIndicatorProps) {
   return <ClipboardPrimitive.Indicator {...rest} className={slots.indicator({ className })} />;
 }
 
-function ClipboardField({ className, children, ...rest }: ClipboardFieldProps) {
+function ClipboardField({ children, className, ...rest }: ClipboardFieldProps) {
   const { slots } = useClipboard();
 
   return (
@@ -137,7 +137,7 @@ function ClipboardField({ className, children, ...rest }: ClipboardFieldProps) {
   );
 }
 
-function ClipboardLabel({ className, children, ...rest }: ClipboardLabelProps) {
+function ClipboardLabel({ children, className, ...rest }: ClipboardLabelProps) {
   const { slots } = useClipboard();
 
   return (
@@ -150,18 +150,18 @@ function ClipboardLabel({ className, children, ...rest }: ClipboardLabelProps) {
 
 // #region Closed
 export function Clipboard({
-  buttonAriaLabel = "Copy to clipboard",
   buttonSize = "icon-md",
   buttonVariant,
-  className,
-  classNames,
   controlVariant: controlVariantProp,
+  valueSize = "md",
+  variant = "input",
+  buttonAriaLabel = "Copy to clipboard",
   copiedIcon = <CheckIcon />,
   copyIcon = <ClipboardIcon />,
   label,
   labelProps,
-  valueSize = "md",
-  variant = "input",
+  className,
+  classNames,
   ...rest
 }: ClipboardProps) {
   const resolved = useFormControlVariant(controlVariantProp);

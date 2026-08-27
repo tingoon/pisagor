@@ -275,7 +275,7 @@ export const Disabled = meta.story({
     disabled: true,
   },
   render: (args) => (
-    <TagsInput className="w-full" {...args}>
+    <TagsInput {...args} className="w-full">
       <TagsInput.Context>
         {({ value }) =>
           value.map((tag, index) => (
@@ -295,7 +295,7 @@ export const Invalid = meta.story({
     invalid: true,
   },
   render: (args) => (
-    <TagsInput className="w-full" {...args}>
+    <TagsInput {...args} className="w-full">
       <TagsInput.Context>
         {({ value }) =>
           value.map((tag, index) => (

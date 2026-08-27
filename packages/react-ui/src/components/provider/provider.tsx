@@ -9,13 +9,13 @@ import { type ProviderMessages, ProviderMessagesContext } from "./provider.conte
 export type { ProviderMessages } from "./provider.context";
 
 export interface ProviderProps {
-  children: ReactNode;
-  locale?: string;
   /**
    * Document / layout direction. When omitted, inferred from `locale`
    * (`ar`, `he`, `fa`, `ur` → `rtl`).
    */
   dir?: "ltr" | "rtl";
+  locale?: string;
+  children: ReactNode;
   /**
    * Optional message map for library default strings. Consumers own localization;
    * components may look up keys via `useProviderMessages`.
@@ -36,9 +36,9 @@ function resolveDir(locale: string, dir?: "ltr" | "rtl"): "ltr" | "rtl" {
 
 // #region Part
 export function Provider({
-  children,
-  locale = "en-US",
   dir: dirProp,
+  locale = "en-US",
+  children,
   messages = {},
 }: ProviderProps) {
   const dir = resolveDir(locale, dirProp);

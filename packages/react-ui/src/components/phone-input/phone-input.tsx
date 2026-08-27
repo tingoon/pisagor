@@ -50,12 +50,12 @@ export interface PhoneInputProps
   size?: PhoneInputSize;
   /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
   variant?: FormControlVariant;
+  /** Default country when no value is provided */
+  defaultCountry?: Country;
   /** Whether the input is in an invalid state */
   invalid?: boolean;
   /** Current phone number in E.164 format */
   value?: string;
-  /** Default country when no value is provided */
-  defaultCountry?: Country;
   /** Called with the E.164 phone number when the value changes */
   onChange?: (value: string) => void;
   /** Slot class names */
@@ -70,7 +70,7 @@ interface PhoneInputContainerProps extends ComponentProps<"div"> {}
 // #endregion
 
 // #region Parts
-function PhoneInputContainer({ className, children, ...rest }: PhoneInputContainerProps) {
+function PhoneInputContainer({ children, className, ...rest }: PhoneInputContainerProps) {
   const { size, variant } = usePhoneInput();
 
   return (
@@ -105,12 +105,12 @@ function PhoneInputFlag({ country, countryName }: FlagProps) {
 }
 
 function PhoneInputField({
-  className,
+  value,
+  ref,
   onBlur,
   onChange,
   onFocus,
-  ref,
-  value,
+  className,
   ...rest
 }: DefaultInputComponentProps) {
   const { classNames, inputProps, invalid, size, slots } = usePhoneInput();
@@ -136,12 +136,12 @@ function PhoneInputField({
 
 function PhoneInputCountrySelect({
   disabled,
+  readOnly,
+  value,
+  options,
   onBlur,
   onChange,
   onFocus,
-  options,
-  readOnly,
-  value,
 }: PhoneInputCountrySelectProps) {
   const { classNames, popupProps, size, slots } = usePhoneInput();
 
@@ -226,17 +226,17 @@ function PhoneInputCountrySelect({
 
 // #region Closed
 export function PhoneInput({
-  className,
-  classNames,
-  defaultCountry,
-  disabled,
-  inputProps,
-  invalid,
-  onChange,
-  popupProps,
   size = "md",
   variant,
+  defaultCountry,
+  disabled,
+  invalid,
   value,
+  inputProps,
+  popupProps,
+  onChange,
+  className,
+  classNames,
   ...rest
 }: PhoneInputProps) {
   const slots = useMemo(() => phoneInputVariants({ size }), [size]);
