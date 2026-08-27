@@ -1,12 +1,11 @@
 import { CaretDownIcon, CaretUpIcon } from "@phosphor-icons/react";
+import { Badge, Table } from "@pisagor/react";
 import {
-  Badge,
   type ColumnDef,
   DataTable,
   type SortingState,
-  Table,
   useDataTable,
-} from "@pisagor/react";
+} from "@pisagor/react/data-table";
 import { flexRender } from "@tanstack/react-table";
 import { useMemo, useState } from "react";
 import preview from "#/storybook/preview";
