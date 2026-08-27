@@ -15,9 +15,9 @@ Light components: prefer the root barrel (`import { Button } from "@pisagor/reac
 
 ## Design tokens (`styles.css`)
 
-Global theme tokens live in [`src/styles.css`](./src/styles.css): fonts, type scale, core surfaces (`background` / `card` / `popover`), brand/interactive (`primary` / `secondary` / `muted` / `accent`), status (`destructive` / `info` / `success` / `warning`), chrome (`border` / `input` / `ring` / `radius`), elevation, motion, z-index, and `--breakpoint-md`.
+Global theme tokens are owned by [`@pisagor/tokens`](../tokens) (`@pisagor/tokens/styles`). This package’s [`src/styles.css`](./src/styles.css) is the React Tailwind entry only: `tw-animate-css`, `@import "@pisagor/tokens/styles"`, typography plugin, and `@source` globs for this package and recipes.
 
-Do **not** add component-only palettes to `:root` (e.g. sidebar chrome, chart series). Scope those on the component (semantic utilities, or CSS under `[data-scope=…][data-part=…]` such as Chart’s `chart-series.css`).
+Add or change global theme tokens in `@pisagor/tokens` — not here. Do **not** add component-only palettes to the theme (e.g. sidebar chrome, chart series). Scope those on the component (semantic utilities, or CSS under `[data-scope=…][data-part=…]` such as Chart’s `chart-series.css`).
 
 ## Internal imports
 
@@ -26,13 +26,10 @@ Within this package, import sibling components with **relative paths** (`../butt
 Package-private helpers live under [`src/internal/`](./src/internal/) (e.g. [`internal/form-control/`](./src/internal/form-control/) for Surface shell resolution). Do not re-export them from component barrels or `@pisagor/react/hooks`.
 
 Compound shared React context lives in `<name>.context.tsx` beside the main file — see [React Component Patterns → Context file](../../.cursor/rules/integrations/react-component.mdc#context-file-namecontexttsx).
+
 ## Component Taxonomy
 
-- **Primitive**: low-level wrappers over Ark UI or DOM primitives; narrowly scoped behavior and styling surface.
-- **Standard**: reusable product-facing building blocks composed from primitives (inputs, buttons, cards, navigational controls).
-- **Pattern**: higher-level composed UX patterns that coordinate multiple components and interactions.
-
-Prefer placing new work in the lowest taxonomy level that still solves the use case.
+Prefer placing new work in the lowest [Storybook taxonomy](../../.cursor/rules/integrations/storybook.mdc#meta) level (`primitive` → `standard` → `pattern`) that still solves the use case.
 
 ## Overlay vs Modal
 
@@ -51,7 +48,7 @@ Prefer placing new work in the lowest taxonomy level that still solves the use c
 ## Feedback Components
 
 - `alert`: block-level feedback for status, warning, error, or actionable callouts within page flow.
-- `announcement`: compact promotional or informational surface; Storybook `parameters.metadata.aliases`: `banner`, `callout`.
+- `announcement`: compact promotional or informational surface; aliases `banner`, `callout` (see [Storybook → Meta](../../.cursor/rules/integrations/storybook.mdc#meta)).
 
 ## Naming
 
@@ -66,20 +63,11 @@ Prefer placing new work in the lowest taxonomy level that still solves the use c
 | Popup actions from a trigger | `dropdown-menu` | `@pisagor/react/dropdown-menu` |
 | Mobile bottom tab bar | `bottom-navigation` | `@pisagor/react/bottom-navigation` |
 
-### Storybook metadata
-
-- Canonical sidebar name → `title` only (no aliases in title).
-- API model → `parameters.metadata.api` (`closed` | `compound` | `compound-shorthand`) — hidden metadata; not shown in Docs UI.
-- Taxonomy → `parameters.metadata.taxonomy` (`primitive` | `standard` | `pattern`) — hidden metadata; not shown in Docs UI.
-- Alternative names → `parameters.metadata.aliases` (optional); not repeated in `description` — hidden metadata; not shown in Docs UI.
-
 ### New component checklist
 
 1. kebab-case folder and export path (`dropdown-menu`)
 2. PascalCase component export (`DropdownMenu`)
-3. Storybook `title`: `Components/<Category>/<Component Name>`
-4. `parameters.metadata.api` + `parameters.metadata.taxonomy` + `parameters.docs.description.component`
-5. `parameters.metadata.aliases` when common alternative names exist
+3. Story meta (`title`, `parameters.metadata`, docs description) — [Storybook → Meta](../../.cursor/rules/integrations/storybook.mdc#meta)
 
 ## Select Stack
 

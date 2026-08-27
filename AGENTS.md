@@ -30,7 +30,7 @@ Instruction priority: [Core Boundaries](./.cursor/rules/core.mdc).
 └── .cursor/                    rules and commands
 ```
 
-`@pisagor/tokens` = CSS theme; `@pisagor/recipes` = shared `tv()` recipes. `@pisagor/vue` imports tokens via `styles.css`; `@pisagor/react` still duplicates tokens in its own `styles.css` until wired.
+`@pisagor/tokens` = CSS theme; `@pisagor/recipes` = shared `tv()` recipes. Both `@pisagor/react` and `@pisagor/vue` import tokens via their `styles.css` entries.
 
 | Path | Notes |
 | ---- | ----- |

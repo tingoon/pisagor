@@ -25,7 +25,7 @@
     },
     "packages/react-ui": {
       "entry": ["src/**/*", "src/styles.css"],
-      "ignoreDependencies": ["@tailwindcss/typography", "tw-animate-css"],
+      "ignoreDependencies": ["@pisagor/tokens", "@tailwindcss/typography", "tw-animate-css"],
       "ignoreIssues": {
         "src/**/*.stories.tsx": ["unresolved", "dependencies", "unlisted"]
       }

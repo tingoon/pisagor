@@ -7,4 +7,4 @@ Framework-agnostic design tokens and Tailwind theme (`@theme`, `:root` / `.dark`
 @import "@pisagor/tokens/styles";
 ```
 
-Framework packages keep their own entry for plugins and `@source` (e.g. `@pisagor/react/styles`). Until that entry imports this package, tokens are duplicated in `packages/react-ui/src/styles.css`.
+Framework packages keep their own entry for plugins and `@source` (e.g. `@pisagor/react/styles`, `@pisagor/vue/styles`) and `@import "@pisagor/tokens/styles"`.
