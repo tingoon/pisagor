@@ -8,13 +8,13 @@ interface SubmitButtonProps extends Omit<ButtonProps, "type"> {
   isLoading?: boolean;
 }
 
-export function SubmitButton({ children, isLoading, ...buttonProps }: SubmitButtonProps) {
+export function SubmitButton({ isLoading, children, ...buttonProps }: SubmitButtonProps) {
   const form = useFormContext();
 
   return (
     <form.Subscribe selector={(state) => state.isSubmitting}>
       {(isSubmitting) => (
-        <Button isLoading={isLoading ?? isSubmitting} type="submit" {...buttonProps}>
+        <Button {...buttonProps} isLoading={isLoading ?? isSubmitting} type="submit">
           {children}
         </Button>
       )}

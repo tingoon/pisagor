@@ -10,28 +10,28 @@ type SwitchControlProps = SetRequired<
 >;
 
 export interface SwitchFieldProps extends FieldPresentationProps, SwitchControlProps {
+  orientation?: "horizontal" | "vertical" | "responsive";
   checked?: boolean;
   name?: string;
   onBlur?: () => void;
-  orientation?: "horizontal" | "vertical" | "responsive";
 }
 // #endregion
 
 // #region Part
 export function SwitchField({
+  orientation = "horizontal",
   checked,
-  className,
+  invalid,
+  name,
   description,
   error,
   id,
-  invalid,
   label,
   labelAccessory,
   labelProps,
-  name,
   onBlur,
   onValueChange,
-  orientation = "horizontal",
+  className,
   ...switchProps
 }: SwitchFieldProps) {
   const hasLabel = Boolean(label ?? labelAccessory);

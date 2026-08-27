@@ -11,28 +11,28 @@ type NumberInputControlProps = SetRequired<
 
 export interface NumberFieldProps extends FieldPresentationProps, NumberInputControlProps {
   name?: string;
-  onBlur?: () => void;
-  placeholder?: string;
   value?: number;
+  placeholder?: string;
+  onBlur?: () => void;
 }
 // #endregion
 
 // #region Part
 export function NumberField({
-  className,
   clearable = false,
+  invalid,
+  name,
+  value,
   description,
   error,
   id,
-  invalid,
   label,
   labelAccessory,
   labelProps,
-  name,
+  placeholder,
   onBlur,
   onValueChange,
-  placeholder,
-  value,
+  className,
   ...numberInputProps
 }: NumberFieldProps) {
   return (
@@ -48,13 +48,13 @@ export function NumberField({
     >
       <NumberInput
         {...numberInputProps}
+        {...(value !== undefined ? { value: Number.isFinite(value) ? String(value) : "" } : {})}
         clearable={clearable}
         id={id}
         invalid={invalid}
         name={name}
         onBlur={onBlur}
         onValueChange={onValueChange}
-        {...(value !== undefined ? { value: Number.isFinite(value) ? String(value) : "" } : {})}
       >
         <NumberInput.Control clearable={clearable}>
           <NumberInput.DecrementTrigger />

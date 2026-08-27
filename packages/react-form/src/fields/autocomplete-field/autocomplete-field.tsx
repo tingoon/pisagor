@@ -11,29 +11,29 @@ interface AutocompleteOption {
 export interface AutocompleteFieldProps
   extends FieldPresentationProps,
     Omit<AutocompleteProps, "invalid" | "name" | "onValueChange" | "value"> {
-  items: Array<AutocompleteOption | string>;
   name?: string;
+  value?: string;
+  items: Array<AutocompleteOption | string>;
   onBlur?: () => void;
   onValueChange: (value: string) => void;
-  value?: string;
 }
 // #endregion
 
 // #region Part
 export function AutocompleteField({
-  className,
+  invalid,
+  items,
+  name,
+  value,
   description,
   error,
   id,
-  invalid,
-  items,
   label,
   labelAccessory,
   labelProps,
-  name,
   onBlur,
   onValueChange,
-  value,
+  className,
   ...autocompleteProps
 }: AutocompleteFieldProps) {
   return (
@@ -49,13 +49,13 @@ export function AutocompleteField({
     >
       <Autocomplete
         {...autocompleteProps}
+        {...(value !== undefined ? { value: value ? [value] : [] } : {})}
         id={id}
         invalid={invalid}
         items={items}
         name={name}
         onFocusOutside={onBlur}
         onValueChange={(nextValue) => onValueChange(nextValue.at(0) ?? "")}
-        {...(value !== undefined ? { value: value ? [value] : [] } : {})}
       />
     </FieldShell>
   );

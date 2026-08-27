@@ -12,26 +12,26 @@ export interface RichTextEditorFieldProps
   extends FieldPresentationProps,
     RichTextEditorControlProps {
   name?: string;
-  onBlur?: () => void;
   value?: string;
+  onBlur?: () => void;
 }
 // #endregion
 
 // #region Part
 export function RichTextEditorField({
-  className,
+  invalid,
+  name,
+  value,
+  "aria-label": ariaLabel,
   description,
   error,
   id,
-  invalid,
   label,
   labelAccessory,
   labelProps,
-  name,
   onBlur,
   onValueChange,
-  value,
-  "aria-label": ariaLabel,
+  className,
   ...editorProps
 }: RichTextEditorFieldProps) {
   const hasVisibleLabel = Boolean(label || labelAccessory);
@@ -49,13 +49,13 @@ export function RichTextEditorField({
     >
       <RichTextEditor
         {...editorProps}
+        {...(value !== undefined ? { value } : {})}
         aria-label={hasVisibleLabel ? ariaLabel : (ariaLabel ?? "Rich text editor")}
         id={id}
         invalid={invalid}
         name={name}
         onBlur={onBlur}
         onValueChange={onValueChange}
-        {...(value !== undefined ? { value } : {})}
       />
     </FieldShell>
   );

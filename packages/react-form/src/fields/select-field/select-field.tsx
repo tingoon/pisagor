@@ -13,31 +13,32 @@ export interface SelectFieldProps
       SelectRootProps,
       "children" | "collection" | "invalid" | "name" | "onValueChange" | "value"
     > {
-  items: Array<SelectOption | string>;
   name?: string;
+  value?: string;
+  items: Array<SelectOption | string>;
+  placeholder?: string;
   onBlur?: () => void;
   onValueChange: (value: string) => void;
-  placeholder?: string;
-  value?: string;
 }
 // #endregion
 
 // #region Part
 export function SelectField({
-  className,
-  description,
-  error,
+  orientation,
   id,
   invalid,
+  name,
+  value,
+  description,
+  error,
   items,
   label,
   labelAccessory,
-  labelProps,
-  name,
+  placeholder = "Select an option",
   onBlur,
   onValueChange,
-  placeholder = "Select an option",
-  value,
+  className,
+  labelProps,
   ...selectProps
 }: SelectFieldProps) {
   const normalizedItems = items.map((item) =>
@@ -58,6 +59,7 @@ export function SelectField({
     >
       <Select.Root
         {...selectProps}
+        {...(value !== undefined ? { value: value ? [value] : [] } : {})}
         collection={collection}
         invalid={invalid}
         name={name}
@@ -65,7 +67,6 @@ export function SelectField({
         onValueChange={(nextValue) => {
           onValueChange(Array.isArray(nextValue) ? (nextValue.at(0) ?? "") : nextValue);
         }}
-        {...(value !== undefined ? { value: value ? [value] : [] } : {})}
       >
         <Select.Trigger className="w-full" id={id}>
           <Select.ValueText placeholder={placeholder} />

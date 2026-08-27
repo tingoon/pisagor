@@ -3,15 +3,15 @@ import { Field } from "@pisagor/react";
 import type { ReactNode } from "react";
 
 export interface FieldPresentationProps {
-  className?: string;
-  description?: ReactNode;
-  error?: ReactNode;
+  orientation?: FieldProps["orientation"];
   id?: string;
   invalid?: boolean;
+  description?: ReactNode;
+  error?: ReactNode;
   label?: ReactNode;
   labelAccessory?: ReactNode;
+  className?: string;
   labelProps?: Omit<FieldLabelProps, "htmlFor" | "children">;
-  orientation?: FieldProps["orientation"];
 }
 
 interface FieldShellProps extends FieldPresentationProps {
@@ -19,16 +19,16 @@ interface FieldShellProps extends FieldPresentationProps {
 }
 
 export function FieldShell({
-  children,
-  className,
-  description,
-  error,
+  orientation,
   id,
   invalid,
+  children,
+  description,
+  error,
   label,
   labelAccessory,
+  className,
   labelProps,
-  orientation,
 }: FieldShellProps) {
   const hasLabel = label || labelAccessory;
 

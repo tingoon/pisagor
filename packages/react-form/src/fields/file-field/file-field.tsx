@@ -17,17 +17,17 @@ export interface FileFieldProps extends FieldPresentationProps, FileInputControl
 
 // #region Part
 export function FileField({
-  className,
+  invalid,
+  name,
   description,
   error,
   id,
-  invalid,
   label,
   labelAccessory,
   labelProps,
-  name,
   onBlur,
   onValueChange,
+  className,
   ...fileInputProps
 }: FileFieldProps) {
   return (

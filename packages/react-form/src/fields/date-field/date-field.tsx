@@ -11,27 +11,27 @@ type DatePickerControlProps = SetRequired<
 
 export interface DateFieldProps extends FieldPresentationProps, DatePickerControlProps {
   name?: string;
-  onBlur?: () => void;
-  placeholder?: string;
   value?: DatePickerProps["value"];
+  placeholder?: string;
+  onBlur?: () => void;
 }
 // #endregion
 
 // #region Part
 export function DateField({
-  className,
+  invalid,
+  name,
+  value,
   description,
   error,
   id,
-  invalid,
   label,
   labelAccessory,
   labelProps,
-  name,
+  placeholder = "Pick a date",
   onBlur,
   onValueChange,
-  placeholder = "Pick a date",
-  value,
+  className,
   ...datePickerProps
 }: DateFieldProps) {
   return (
@@ -47,6 +47,7 @@ export function DateField({
     >
       <DatePicker
         {...datePickerProps}
+        {...(value !== undefined ? { value: value ?? [] } : {})}
         invalid={invalid}
         name={name}
         onOpenChange={(details) => {
@@ -55,7 +56,6 @@ export function DateField({
           }
         }}
         onValueChange={(nextValue) => onValueChange(nextValue ?? [])}
-        {...(value !== undefined ? { value: value ?? [] } : {})}
       >
         <DatePicker.Input id={id} placeholder={placeholder} />
         <DatePicker.Content />

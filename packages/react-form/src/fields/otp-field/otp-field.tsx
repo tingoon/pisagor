@@ -7,34 +7,34 @@ import { type FieldPresentationProps, FieldShell } from "../../internal/field-sh
 export interface OtpFieldProps
   extends FieldPresentationProps,
     Omit<InputOTPProps, "children" | "invalid" | "onValueChange" | "value" | "name" | "onBlur"> {
-  name?: string;
-  onBlur?: () => void;
-  onValueChange: (value: string) => void;
-  value?: string;
   /**
    * Number of OTP digits.
    *
    * @defaultValue 6
    */
   length?: number;
+  name?: string;
+  value?: string;
+  onBlur?: () => void;
+  onValueChange: (value: string) => void;
 }
 // #endregion
 
 // #region Part
 export function OtpField({
-  className,
+  invalid,
+  name,
+  value,
   description,
   error,
   id,
-  invalid,
   label,
   labelAccessory,
   labelProps,
   length = 6,
-  name,
   onBlur,
   onValueChange,
-  value,
+  className,
   ...inputOtpProps
 }: OtpFieldProps) {
   const separatorAt = length > 1 ? Math.floor(length / 2) : -1;
@@ -60,12 +60,12 @@ export function OtpField({
     >
       <InputOTP
         {...inputOtpProps}
+        {...(value !== undefined ? { value: value ? value.split("") : [] } : {})}
         id={id}
         invalid={invalid}
         name={name}
         onBlur={onBlur}
         onValueChange={(nextValue) => onValueChange(nextValue.join(""))}
-        {...(value !== undefined ? { value: value ? value.split("") : [] } : {})}
       >
         {slots}
       </InputOTP>

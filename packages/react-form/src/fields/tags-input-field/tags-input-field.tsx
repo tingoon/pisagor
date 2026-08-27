@@ -14,18 +14,18 @@ export interface TagsInputFieldProps extends FieldPresentationProps, TagsInputCo
 
 // #region Part
 export function TagsInputField({
-  className,
+  invalid,
+  name,
+  value,
   description,
   error,
   id,
-  invalid,
   label,
   labelAccessory,
   labelProps,
-  name,
   onBlur,
   onValueChange,
-  value,
+  className,
   ...tagsInputProps
 }: TagsInputFieldProps) {
   return (
@@ -41,12 +41,12 @@ export function TagsInputField({
     >
       <TagsInput
         {...tagsInputProps}
+        {...(value !== undefined ? { value } : {})}
         id={id}
         invalid={invalid}
         name={name}
         onBlur={onBlur}
         onValueChange={onValueChange}
-        {...(value !== undefined ? { value } : {})}
       />
     </FieldShell>
   );

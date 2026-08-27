@@ -11,25 +11,25 @@ type InputControlProps = SetRequired<
 
 export interface TextFieldProps extends FieldPresentationProps, InputControlProps {
   name?: string;
-  onBlur?: () => void;
   value?: string;
+  onBlur?: () => void;
 }
 // #endregion
 
 // #region Part
 export function TextField({
-  className,
+  invalid,
+  name,
+  value,
   description,
   error,
   id,
-  invalid,
   label,
   labelAccessory,
   labelProps,
-  name,
   onBlur,
   onValueChange,
-  value,
+  className,
   ...inputProps
 }: TextFieldProps) {
   return (
@@ -45,11 +45,11 @@ export function TextField({
     >
       <Input
         {...inputProps}
+        {...(value !== undefined ? { value } : {})}
         id={id}
         name={name}
         onBlur={onBlur}
         onChange={(event) => onValueChange(event.target.value)}
-        {...(value !== undefined ? { value } : {})}
       />
     </FieldShell>
   );

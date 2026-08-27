@@ -11,25 +11,25 @@ type PasswordInputControlProps = SetRequired<
 
 export interface PasswordFieldProps extends FieldPresentationProps, PasswordInputControlProps {
   name?: string;
-  onBlur?: () => void;
   value?: string;
+  onBlur?: () => void;
 }
 // #endregion
 
 // #region Part
 export function PasswordField({
-  className,
+  invalid,
+  name,
+  value,
   description,
   error,
   id,
-  invalid,
   label,
   labelAccessory,
   labelProps,
-  name,
   onBlur,
   onValueChange,
-  value,
+  className,
   ...passwordInputProps
 }: PasswordFieldProps) {
   return (
@@ -45,12 +45,12 @@ export function PasswordField({
     >
       <PasswordInput
         {...passwordInputProps}
+        {...(value !== undefined ? { value } : {})}
         id={id}
         invalid={invalid}
         name={name}
         onBlur={onBlur}
         onValueChange={onValueChange}
-        {...(value !== undefined ? { value } : {})}
       />
     </FieldShell>
   );

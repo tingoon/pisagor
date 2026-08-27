@@ -19,17 +19,17 @@ export interface SliderFieldProps
 
 // #region Part
 export function SliderField({
-  className,
+  invalid,
+  name,
   description,
   error,
   id,
-  invalid,
   label,
   labelAccessory,
   labelProps,
-  name,
   onBlur,
   onValueChange,
+  className,
   ...sliderProps
 }: SliderFieldProps) {
   return (

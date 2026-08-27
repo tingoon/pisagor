@@ -6,29 +6,29 @@ import type { FieldPresentationProps } from "../../internal/field-shell";
 export interface CheckboxFieldProps
   extends FieldPresentationProps,
     Omit<CheckboxProps, "checked" | "invalid" | "name" | "onCheckedChange" | "onValueChange"> {
+  orientation?: "horizontal" | "vertical" | "responsive";
   checked?: boolean;
   name?: string;
   onBlur?: () => void;
   onCheckedChange: (checked: boolean) => void;
-  orientation?: "horizontal" | "vertical" | "responsive";
 }
 // #endregion
 
 // #region Part
 export function CheckboxField({
+  orientation = "horizontal",
   checked,
-  className,
+  invalid,
+  name,
   description,
   error,
   id,
-  invalid,
   label,
   labelAccessory,
   labelProps,
-  name,
   onBlur,
   onCheckedChange,
-  orientation = "horizontal",
+  className,
   ...checkboxProps
 }: CheckboxFieldProps) {
   const hasLabel = Boolean(label ?? labelAccessory);

@@ -14,29 +14,29 @@ export interface RadioGroupFieldProps
   extends Omit<FieldPresentationProps, "orientation">,
     Omit<RadioGroupRootProps, "invalid" | "name" | "onValueChange" | "value"> {
   name?: string;
+  value?: string;
+  options: Array<RadioGroupOption | string>;
   onBlur?: () => void;
   onValueChange: (value: string) => void;
-  options: Array<RadioGroupOption | string>;
-  value?: string;
 }
 // #endregion
 
 // #region Part
 export function RadioGroupField({
-  className,
+  orientation,
+  invalid,
+  name,
+  value,
   description,
   error,
   id,
-  invalid,
   label,
   labelAccessory,
   labelProps,
-  name,
+  options,
   onBlur,
   onValueChange,
-  options,
-  orientation,
-  value,
+  className,
   ...radioGroupProps
 }: RadioGroupFieldProps) {
   const normalizedOptions = options.map((option) =>
@@ -55,13 +55,13 @@ export function RadioGroupField({
       {description ? <Field.Description>{description}</Field.Description> : null}
       <RadioGroup.Root
         {...radioGroupProps}
+        {...(value !== undefined ? { value: value || null } : {})}
         aria-labelledby={hasLabel && id ? id : undefined}
         invalid={invalid}
         name={name}
         onBlur={onBlur}
         onValueChange={(nextValue) => onValueChange(nextValue ?? "")}
         orientation={orientation}
-        {...(value !== undefined ? { value: value || null } : {})}
       >
         {normalizedOptions.map((option) => {
           const optionId = id ? `${id}-${option.value}` : undefined;
