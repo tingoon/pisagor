@@ -58,7 +58,7 @@ Applies to published workspace component packages (`@pisagor/react`, `@pisagor/r
 ### Cross-component imports
 
 - Within a shared package's source (`.tsx` / `.ts`, excluding stories), prefer **relative** imports between sibling components (e.g. `../button`, `../input-group/input-group-core`).
-- **Stories** (`.stories.tsx`) may use the public export map (e.g. `import { Button } from "@pisagor/react"`) — same as apps. Heavy components use dedicated subpaths (`@pisagor/react/data-grid`, …).
+- **Stories** (`.stories.tsx`) may use the public export map (e.g. `import { Button } from "@pisagor/react"`) — same as apps. Heavy components use dedicated subpaths (`@pisagor/react/data-grid`, `@pisagor/react/data-table`, …).
 - Apps and other packages use the public export map for that package (light barrel or heavy subpath).
 - For cyclic pairs (e.g. `input` ↔ `input-group` ↔ `textarea`), import the concrete module file, not the barrel `index.ts`.
 - Import `{name}Variants` / `{Name}VariantProps` from `@pisagor/recipes/<name>` (or a sibling recipe path) — see [Styling](#styling). Do not define `tv()` in component packages.

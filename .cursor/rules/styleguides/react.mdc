@@ -21,6 +21,7 @@ alwaysApply: false
 - **Component names:** PascalCase (e.g. `Button`, `DataTable`).
 - **Event handlers:** `onX` for props (e.g. `onSubmit`), `handleX` for local handlers (e.g. `handleClick`).
 - **Boolean props:** Match Ark/DOM/HTML names for primitives (`disabled`, `open`, `checked`, `clearable`, `defaultOpen`, …). Do not rename headless or native booleans to `is`/`can`/`should`/`has`. Convenience flags that are not a primitive mirror may use those prefixes (e.g. `isLoading`).
+- **Prop aliases in destructuring:** When renaming a prop for a local name clash, use `{name}Prop` (e.g. `open: openProp`, `positioning: positioningProp`). Do not use a `prop{Name}` prefix.
 
 ## Component implementation
 

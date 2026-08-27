@@ -33,7 +33,7 @@ Storybook **10**, CSF. React uses `@storybook/react-vite` (`.stories.tsx`); Vue 
 | Global decorator | `apps/react/.storybook/decorators/app-decorator.tsx` |
 | Recipes | `apps/react/src/recipes/<group>/` — one `<variant>.tsx` per recipe, one `<group>.stories.tsx` |
 
-Prefer `@pisagor/react` for light UI imports in stories (including the component under test). Heavy components (`data-grid`, `charts`, `rich-text-editor`, `phone-input`) stay on dedicated subpaths.
+Prefer `@pisagor/react` for light UI imports in stories (including the component under test). Heavy components (`data-grid`, `data-table`, `charts`, `rich-text-editor`, `phone-input`) stay on dedicated subpaths.
 
 `@pisagor/react` and `@pisagor/utils` resolve via workspace package exports (same as apps). Runner-only alias `#/storybook/*` lives in each runner’s `tsconfig.json` and each package’s `tsconfig.json`; Vite reads it via `resolve.tsconfigPaths`. Story files are type-checked by the runner and the owning package `tsconfig.json`:
 
