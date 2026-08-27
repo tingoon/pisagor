@@ -124,7 +124,7 @@ Choose **closed**, **compound**, or **compound + shorthand** per component.
 - Do not use `<Foo>` as a composition root when `FooShorthand` is the default export — use `<Foo.Root>`.
 - Do not pass `children` to shorthand exports for manual subpart layout.
 - Do not fall back to `children` in shorthand (`description ?? children`, `title ?? children`).
-- Do not keep placeholder `tv()` slots (`""`, `[]`) in `@pisagor/recipes` to generate `classNames` keys.
+- Do not keep placeholder `tv()` slots (`""`, `[]`) in `@pisagor/recipes` to generate `classNames` keys. Empty strings in `variants` / `compoundVariants` are fine (no extra classes for that option).
 - Do not type wrappers with `ComponentProps<typeof Foo.Part>` when that part exports `FooPartProps` / `FooCloseProps` (owner props).
 - Do not re-export flat `FooPart` siblings from the barrel beside the `Foo.Root` / `Foo.Part` namespace.
 - Do not leave a detached flat `FooField` export beside `Foo.Field`.
@@ -279,8 +279,9 @@ When adding or editing a recipe module (not in the component file):
 
 - Export `{name}Variants` via `tv()`; use `slots:` for multi-part DOM, top-level `base:` for a single element; set `defaultVariants`.
 - **`base:`** — tv default key. Single-element recipes use top-level `base:`; multi-slot recipes name the primary element slot `base` (not `root`). Dedicated shared shells may still use names like `inputRootVariants`.
-- **`slots:`** — only parts with real default styles; every slot key must have non-empty class strings.
+- **`slots:`** — only parts with real default styles; every slot key must have non-empty **default** class strings.
 - **Do not** add placeholder slots (`""`, `[]`) to generate `classNames` keys — remove the slot and override per [Override without a slot](#override-without-a-slot).
+- **Empty variant entries are fine** — `variants.*.*: ""` / `[]` and empty class strings in `compoundVariants` mean “no extra classes for this option.” That is not a placeholder slot.
 - When a multi-export file names list chrome, use part names (`list`, not `base`) — e.g. `tabsListVariants` uses `slots.list`.
 - Split `tv()` when reuse needs a shared root shell (`inputRootVariants`) separate from optional slots (`inputVariants.clearableRoot`).
 - Export `{Name}VariantProps` (and slot/`Variants` return types as needed) beside the recipe.

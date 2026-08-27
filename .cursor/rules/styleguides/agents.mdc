@@ -43,11 +43,13 @@ Use only sections that apply. Omit empty ones.
 | ------- | :--: | :----: | ------- |
 | Overview | ✓ | ✓ | One short paragraph |
 | Workspace map | ✓ | — | Links to nested `AGENTS.md` |
-| Commands | — | ✓ | Filtered `turbo` / local commands |
+| Commands | — | optional | Filtered `turbo` / local commands when non-obvious |
 | Layout | — | ✓ | Directory structure |
 | Environment | optional | optional | Point to `.env.example` when present |
 | Conventions | optional | ✓ | Local patterns, import aliases |
 | Agent workflow | ✓ | — | Link [Core Boundaries](../core.mdc) |
+
+**Commands** is optional. Include it when the workspace has non-obvious scripts, ports, or filters; omit when default `turbo --filter=…` (or root docs) is enough. CSS-only / tokens-style packages may skip `AGENTS.md` entirely when Layout + Conventions add nothing beyond the package README.
 
 Do **not** add canonical rules tables or IDE adapter pointer tables. Slash commands live in [`.cursor/commands/`](../../commands/). Dev setup lives in [`/onboarding`](../../commands/onboarding.md) — do not duplicate steps here.
 
@@ -84,10 +86,6 @@ Target length: ~70–90 lines unless the repo is large.
 
 <Role in one or two paragraphs.>
 
-## Commands
-
-<Filtered turbo from repo root.>
-
 ## Layout
 
 <Directory structure.>
@@ -100,6 +98,8 @@ Target length: ~70–90 lines unless the repo is large.
 
 <Local patterns, import aliases.>
 ```
+
+Add a **Commands** section only when needed (see [Section catalog](#section-catalog)).
 
 Target length: ~50–90 lines unless the workspace is large.
 
