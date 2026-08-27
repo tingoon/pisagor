@@ -24,8 +24,7 @@
       }
     },
     "packages/react-ui": {
-      "entry": ["src/**/*", "src/styles.css"],
-      "ignoreDependencies": ["@pisagor/tokens", "@tailwindcss/typography", "tw-animate-css"],
+      "entry": ["src/**/*"],
       "ignoreIssues": {
         "src/**/*.stories.tsx": ["unresolved", "dependencies", "unlisted"]
       }
