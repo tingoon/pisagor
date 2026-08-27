@@ -7,7 +7,7 @@
   "extends": "//",
   "overrides": [
     {
-      "includes": ["**/*.stories.ts", "../../../packages/vue/src/**/*.stories.ts"],
+      "includes": ["**/*.stories.ts", "../../../packages/vue-ui/src/**/*.stories.ts"],
       "linter": {
         "rules": {
           "suspicious": {

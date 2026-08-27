@@ -55,7 +55,7 @@
     "access": "public"
   },
   "repository": {
-    "directory": "packages/vue",
+    "directory": "packages/vue-ui",
     "type": "git",
     "url": "git+https://github.com/tingoon/pisagor.git"
   },

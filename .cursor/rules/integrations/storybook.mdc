@@ -1,6 +1,6 @@
 ---
 description: Storybook story conventions for package components
-globs: packages/react/**/*.stories.tsx,packages/react-form/**/*.stories.tsx,packages/react-blocks/**/*.stories.tsx,packages/vue/**/*.stories.ts,apps/react/**/*.stories.tsx,apps/vue/**/*.stories.ts
+globs: packages/react-ui/**/*.stories.tsx,packages/react-form/**/*.stories.tsx,packages/react-blocks/**/*.stories.tsx,packages/vue-ui/**/*.stories.ts,apps/react/**/*.stories.tsx,apps/vue/**/*.stories.ts
 alwaysApply: false
 ---
 
@@ -39,9 +39,9 @@ Prefer `@pisagor/react` for light UI imports in stories (including the component
 
 | Consumer | Extends |
 | -------- | ------- |
-| `packages/react`, `packages/react-form`, `packages/react-blocks` | [`@pisagor/tsconfig/react-stories`](../../../packages/tsconfig/react-stories/tsconfig.json) |
+| `packages/react-ui`, `packages/react-form`, `packages/react-blocks` | [`@pisagor/tsconfig/react-stories`](../../../packages/tsconfig/react-stories/tsconfig.json) |
 | `apps/react` | [`@pisagor/tsconfig/react-vite`](../../../packages/tsconfig/react-vite/tsconfig.json) |
-| `packages/vue` | [`@pisagor/tsconfig/vue-stories`](../../../packages/tsconfig/vue-stories/tsconfig.json) |
+| `packages/vue-ui` | [`@pisagor/tsconfig/vue-stories`](../../../packages/tsconfig/vue-stories/tsconfig.json) |
 | `apps/vue` | [`@pisagor/tsconfig/vue-vite`](../../../packages/tsconfig/vue-vite/tsconfig.json) |
 
 ## Vue setup

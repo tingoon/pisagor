@@ -6,26 +6,26 @@
         ".storybook/**/*",
         "src/**/*",
         "../../packages/react-form/**/*.stories.@(ts|tsx)",
-        "../../packages/react/**/*.stories.@(ts|tsx)"
+        "../../packages/react-ui/**/*.stories.@(ts|tsx)"
       ]
     },
     "apps/vue": {
       "entry": [
         ".storybook/**/*",
         "src/**/*",
-        "../../packages/vue/**/*.stories.@(ts|tsx)",
+        "../../packages/vue-ui/**/*.stories.@(ts|tsx)",
         "../../packages/vue-form/**/*.stories.@(ts|tsx)"
       ],
       "ignoreDependencies": ["@pisagor/vue-form", "@tanstack/vue-form"]
     },
-    "packages/react": {
-      "entry": ["src/**/*", "src/styles.css"],
-      "ignoreDependencies": ["@tailwindcss/typography", "tw-animate-css"],
+    "packages/react-form": {
       "ignoreIssues": {
         "src/**/*.stories.tsx": ["unresolved", "dependencies", "unlisted"]
       }
     },
-    "packages/react-form": {
+    "packages/react-ui": {
+      "entry": ["src/**/*", "src/styles.css"],
+      "ignoreDependencies": ["@tailwindcss/typography", "tw-animate-css"],
       "ignoreIssues": {
         "src/**/*.stories.tsx": ["unresolved", "dependencies", "unlisted"]
       }
@@ -36,18 +36,18 @@
     "packages/tsconfig": {
       "ignoreDependencies": ["@types/react"]
     },
-    "packages/vue": {
+    "packages/vue-form": {
+      "ignoreIssues": {
+        "src/**/*.stories.ts": ["unresolved", "dependencies", "unlisted"]
+      }
+    },
+    "packages/vue-ui": {
       "entry": ["src/components/*/index.ts"],
       "ignoreIssues": {
         "src/**/*.stories.ts": ["unresolved", "dependencies", "unlisted"],
         "src/components/**": ["exports", "types", "duplicates"],
         "src/hooks/index.ts": ["files"],
         "src/internal/**": ["exports", "types", "duplicates"]
-      }
-    },
-    "packages/vue-form": {
-      "ignoreIssues": {
-        "src/**/*.stories.ts": ["unresolved", "dependencies", "unlisted"]
       }
     }
   }

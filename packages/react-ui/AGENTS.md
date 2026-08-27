@@ -1,6 +1,6 @@
 # UI Components
 
-Package-local guidance for component work in `packages/react` (`@pisagor/react`). See [React Component Patterns](../../.cursor/rules/integrations/react-component.mdc) and [Storybook](../../.cursor/rules/integrations/storybook.mdc) for the canonical rules — this file only covers package-specific policy.
+Package-local guidance for component work in `packages/react-ui` (`@pisagor/react`). See [React Component Patterns](../../.cursor/rules/integrations/react-component.mdc) and [Storybook](../../.cursor/rules/integrations/storybook.mdc) for the canonical rules — this file only covers package-specific policy.
 
 ## Heavy imports
 
@@ -21,7 +21,7 @@ Do **not** add component-only palettes to `:root` (e.g. sidebar chrome, chart se
 
 ## Internal imports
 
-Within this package, import sibling components with **relative paths** (`../button`, `../scroll-area`) in component source files. **Stories** may use `@pisagor/react` (light barrel) or `@pisagor/react/<heavy>` like apps. Do not use `@pisagor/react` / `@pisagor/react/*` in non-story `.tsx` / `.ts` under `packages/react/src`. For cyclic dependencies (`input`, `input-group`, `textarea`), import the concrete `.tsx` module instead of the folder barrel.
+Within this package, import sibling components with **relative paths** (`../button`, `../scroll-area`) in component source files. **Stories** may use `@pisagor/react` (light barrel) or `@pisagor/react/<heavy>` like apps. Do not use `@pisagor/react` / `@pisagor/react/*` in non-story `.tsx` / `.ts` under `packages/react-ui/src`. For cyclic dependencies (`input`, `input-group`, `textarea`), import the concrete `.tsx` module instead of the folder barrel.
 
 Package-private helpers live under [`src/internal/`](./src/internal/) (e.g. [`internal/form-control/`](./src/internal/form-control/) for Surface shell resolution). Do not re-export them from component barrels or `@pisagor/react/hooks`.
 

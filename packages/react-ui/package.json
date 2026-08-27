@@ -72,7 +72,7 @@
     "access": "public"
   },
   "repository": {
-    "directory": "packages/react",
+    "directory": "packages/react-ui",
     "type": "git",
     "url": "git+https://github.com/tingoon/pisagor.git"
   },

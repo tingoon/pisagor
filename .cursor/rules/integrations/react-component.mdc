@@ -1,14 +1,14 @@
 ---
 description: Shared component patterns — package layout, compound API, styling, a11y
-globs: packages/react/src/**/*.tsx,packages/react-form/src/**/*.tsx,packages/react-blocks/src/**/*.tsx,apps/react/src/**/*.tsx
+globs: packages/react-ui/src/**/*.tsx,packages/react-form/src/**/*.tsx,packages/react-blocks/src/**/*.tsx,apps/react/src/**/*.tsx
 alwaysApply: false
 ---
 
 # React Component Patterns
 
-How to build shared UI components in public packages (`packages/react`, `packages/react-form`, `packages/react-blocks`). General React rules — [React Style Guide](../styleguides/react.mdc).
+How to build shared UI components in public packages (`packages/react-ui`, `packages/react-form`, `packages/react-blocks`). General React rules — [React Style Guide](../styleguides/react.mdc).
 
-**References:** [React Style Guide](../styleguides/react.mdc), [Storybook](storybook.mdc), [TypeScript Style Guide](../styleguides/typescript.mdc). Package-specific policy notes may live in that package's `AGENTS.md` (e.g. [`packages/react/AGENTS.md`](../../../packages/react/AGENTS.md)).
+**References:** [React Style Guide](../styleguides/react.mdc), [Storybook](storybook.mdc), [TypeScript Style Guide](../styleguides/typescript.mdc). Package-specific policy notes may live in that package's `AGENTS.md` (e.g. [`packages/react-ui/AGENTS.md`](../../../packages/react-ui/AGENTS.md)).
 
 **Out of scope:** design tokens, brand palette, spacing taste, theme authoring. General React naming, props order, hooks, body order — [React Style Guide](../styleguides/react.mdc).
 

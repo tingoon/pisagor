@@ -1,6 +1,6 @@
 ---
 description: React conventions — naming, props order, hooks, body order, JSX, legacy patterns
-globs: packages/react/src/**/*.tsx,packages/react-form/src/**/*.tsx,packages/react-blocks/src/**/*.tsx,apps/**/*.tsx
+globs: packages/react-ui/src/**/*.tsx,packages/react-form/src/**/*.tsx,packages/react-blocks/src/**/*.tsx,apps/**/*.tsx
 alwaysApply: false
 ---
 

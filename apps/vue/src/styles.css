@@ -1,4 +1,4 @@
 @import "tailwindcss";
 @import "@pisagor/vue/styles";
 @source "./**/*.{ts}";
-@source "../../../packages/vue/src/**/*.{ts}";
+@source "../../../packages/vue-ui/src/**/*.{ts}";
