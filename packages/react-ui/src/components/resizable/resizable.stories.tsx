@@ -36,9 +36,7 @@ function ResizableFrame({
   className?: string;
   heightClassName?: string;
 }) {
-  return (
-    <div className={cn("mx-auto w-full max-w-4xl", heightClassName, className)}>{children}</div>
-  );
+  return <div className={cn("w-full", heightClassName, className)}>{children}</div>;
 }
 
 function panelClassName(orientation: "horizontal" | "vertical" = "horizontal") {

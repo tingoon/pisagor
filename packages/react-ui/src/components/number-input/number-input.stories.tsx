@@ -176,7 +176,7 @@ export const Scrub = meta.story({
 
 export const Step = meta.story({
   render: () => (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-2">
       <NumberInput defaultValue="0" step={5}>
         <Field.Label>Step 5</Field.Label>
         <NumberInput.Control>

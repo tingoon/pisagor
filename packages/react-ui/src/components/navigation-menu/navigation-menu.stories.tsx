@@ -48,7 +48,7 @@ export const Default = meta.story({
 
 export const Wrapping = meta.story({
   render: () => (
-    <div className="max-w-xs">
+    <div className="w-72">
       <NavigationMenu aria-label="Section">
         <NavigationMenu.List>
           <NavigationMenu.Item>

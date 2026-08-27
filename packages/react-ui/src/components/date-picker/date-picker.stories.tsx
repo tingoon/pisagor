@@ -218,7 +218,7 @@ export const Clearable = meta.story({
     const [value, setValue] = useState([parseDate("2025-06-15")]);
 
     return (
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-2">
         <Field>
           <Field.Label>Input variant</Field.Label>
           <DatePicker onValueChange={(value) => setValue(value ?? [])} value={value}>

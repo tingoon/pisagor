@@ -23,7 +23,7 @@ export const Default = meta.story({});
 
 export const Sizes = meta.story({
   render: () => (
-    <div className="flex flex-wrap items-center gap-6">
+    <div className="flex flex-wrap items-center gap-2">
       <Spinner className="size-4" />
       <Spinner className="size-6" />
       <Spinner className="size-8" />

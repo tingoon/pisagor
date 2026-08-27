@@ -39,7 +39,7 @@ export const Default = meta.story({
 
 export const Sizes = meta.story({
   render: () => (
-    <div className="flex flex-wrap items-end justify-center gap-6">
+    <div className="flex flex-wrap items-end justify-center gap-2">
       <QrCode className="[--qr-code-size:6rem]">
         <QrCode.Frame className="rounded-md border" />
       </QrCode>
@@ -54,7 +54,7 @@ export const ErrorCorrection = meta.story({
   render: () => {
     const eccLevels = ["L", "M", "Q", "H"] as const;
     return (
-      <div className="flex flex-wrap items-center gap-6">
+      <div className="flex flex-wrap items-center gap-2">
         {eccLevels.map((ecc) => (
           <div className="flex flex-col items-center gap-2" key={ecc}>
             <QrCode
@@ -114,7 +114,7 @@ export const Download = meta.story({
     return (
       <QrCode encoding={{ ecc: qualityLabel }} value={value}>
         <Card className="[--space:--spacing(6)]">
-          <Card.Content className="flex flex-col justify-center gap-6">
+          <Card.Content className="flex flex-col justify-center gap-2">
             <Input
               onChange={(e) => setValue(e.target.value)}
               placeholder="Generate a QR code"

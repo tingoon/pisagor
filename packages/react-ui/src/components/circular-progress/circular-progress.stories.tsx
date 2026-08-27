@@ -35,7 +35,7 @@ export const Default = meta.story({
 
 export const Sizes = meta.story({
   render: () => (
-    <div className="flex flex-wrap items-center gap-6">
+    <div className="flex flex-wrap items-center gap-2">
       <CircularProgress size={24} value={35} />
       <CircularProgress size={32} value={62} />
       <CircularProgress size={40} value={84} />
@@ -45,7 +45,7 @@ export const Sizes = meta.story({
 
 export const Thickness = meta.story({
   render: () => (
-    <div className="flex flex-wrap items-center gap-6">
+    <div className="flex flex-wrap items-center gap-2">
       <CircularProgress size={24} thickness={2} value={35} />
       <CircularProgress size={66} thickness={6} value={62} />
       <CircularProgress size={100} thickness={8} value={84} />

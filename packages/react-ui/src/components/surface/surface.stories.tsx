@@ -8,7 +8,7 @@ const selectCollection = createListCollection({
 
 function FormControlsDemo({ showOverride }: { showOverride?: boolean }) {
   return (
-    <Field.Group className="max-w-md">
+    <Field.Group>
       <Field>
         <Field.Label htmlFor="surface-email">Email</Field.Label>
         <Input
@@ -92,7 +92,7 @@ export const Default = meta.story({
 
 export const Variants = meta.story({
   render: () => (
-    <div className="grid w-full max-w-3xl gap-2 md:grid-cols-2">
+    <div className="grid w-full gap-2 md:grid-cols-2">
       <Surface bordered className="flex flex-col gap-2" padding="md" variant="default">
         <h3 className="font-semibold text-sm">Default</h3>
         <p className="text-muted-foreground text-sm">Uses the page background token.</p>
@@ -131,7 +131,7 @@ export const Padding = meta.story({
 
 export const Nested = meta.story({
   render: () => (
-    <Surface bordered className="flex flex-col gap-4" padding="lg">
+    <Surface bordered className="flex flex-col gap-2" padding="lg">
       <div>
         <h3 className="font-semibold text-sm">Outer surface</h3>
         <p className="text-muted-foreground text-sm">Explicit default variant at depth 0.</p>
@@ -182,7 +182,7 @@ export const OnMutedSurface = meta.story({
     },
   },
   render: () => (
-    <div className="grid w-full max-w-3xl gap-6 md:grid-cols-2">
+    <div className="grid w-full gap-2 md:grid-cols-2">
       <Surface bordered padding="md" variant="secondary">
         <h3 className="mb-4 font-semibold text-sm">Secondary surface</h3>
         <FormControlsDemo />
@@ -200,7 +200,7 @@ export const NestedSurfaces = meta.story({
     <Surface bordered padding="lg" variant="default">
       <h3 className="mb-2 font-semibold text-sm">Outer (default → inset controls)</h3>
       <Input className="mb-4" placeholder="Outer input" />
-      <Surface bordered className="flex flex-col gap-4" padding="md">
+      <Surface bordered className="flex flex-col gap-2" padding="md">
         <div>
           <h4 className="font-medium text-sm">Nested (secondary → elevated controls)</h4>
           <Input placeholder="Nested input" />
@@ -246,7 +246,7 @@ export const OverridePrimary = meta.story({
 
 export const OutsideSurface = meta.story({
   render: () => (
-    <div className="grid w-full max-w-3xl gap-8 lg:grid-cols-2">
+    <div className="grid w-full gap-2 lg:grid-cols-2">
       <div>
         <h3 className="mb-4 font-semibold text-sm">Outside Surface (primary)</h3>
         <FormControlsDemo />

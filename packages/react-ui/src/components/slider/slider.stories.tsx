@@ -78,7 +78,7 @@ export const Step = meta.story({
 
 export const Vertical = meta.story({
   render: () => (
-    <div className="flex items-center justify-center gap-6">
+    <div className="flex items-center justify-center gap-2">
       <Slider className="h-40" defaultValue={[75]} max={100} orientation="vertical" step={1} />
       <Slider className="h-40" defaultValue={[25]} max={100} orientation="vertical" step={1} />
     </div>

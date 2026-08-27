@@ -12,9 +12,13 @@ const meta = preview.meta({
       },
     },
     metadata: {
-      api: "closed",
+      api: "compound",
       taxonomy: "primitive",
     },
+  },
+  subcomponents: {
+    ClearAddon: Input.ClearAddon,
+    ClearButton: Input.ClearButton,
   },
   title: "Components/Forms/Input",
 });

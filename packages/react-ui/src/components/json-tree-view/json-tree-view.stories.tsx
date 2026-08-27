@@ -34,7 +34,7 @@ export const DataTypes = meta.story({
 
 export const ExpandDepth = meta.story({
   render: () => (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-2">
       <div>
         <p className="mb-2 font-medium text-foreground text-sm">
           defaultExpandedDepth={0} (all collapsed)

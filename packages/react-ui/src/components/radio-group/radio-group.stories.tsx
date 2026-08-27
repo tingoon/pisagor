@@ -59,7 +59,7 @@ export const OnSurface = Variants.extend({
 
 export const Disabled = meta.story({
   render: () => (
-    <div className="flex flex-wrap gap-8">
+    <div className="flex flex-wrap gap-2">
       <RadioGroup
         defaultValue="1"
         items={[

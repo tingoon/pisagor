@@ -829,7 +829,7 @@ export const Clearable = meta.story({
     const [value, setValue] = useState("#eb5e41");
 
     return (
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-2">
         <Field>
           <Field.Label>Compact field</Field.Label>
           <ColorPicker.Field onValueChange={setValue} value={value} />

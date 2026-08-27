@@ -169,7 +169,7 @@ export const CustomSpeed = meta.story({
 
 export const Fade = meta.story({
   render: () => (
-    <div className="flex w-full flex-col gap-6 overflow-hidden">
+    <div className="flex w-full flex-col gap-2 overflow-hidden">
       <Marquee.Root pauseOnInteraction showEdges={false}>
         <MarqueeIconRow />
       </Marquee.Root>
