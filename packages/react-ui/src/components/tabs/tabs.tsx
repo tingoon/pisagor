@@ -34,23 +34,12 @@ export interface TabsProps extends Omit<TabsRootProps, "children"> {
 // #endregion
 
 // #region Parts
-export function TabsRoot({
-  lazyMount = true,
-  unmountOnExit = true,
-  className,
-  children,
-  ...rest
-}: TabsRootProps) {
+export function TabsRoot({ className, children, ...rest }: TabsRootProps) {
   const slots = useMemo(() => tabsVariants(), []);
 
   return (
     <TabsContext value={{ slots }}>
-      <TabsPrimitive.Root
-        {...rest}
-        className={slots.base({ className })}
-        lazyMount={lazyMount}
-        unmountOnExit={unmountOnExit}
-      >
+      <TabsPrimitive.Root {...rest} className={slots.base({ className })}>
         {children}
       </TabsPrimitive.Root>
     </TabsContext>

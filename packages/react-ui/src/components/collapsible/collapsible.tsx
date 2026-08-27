@@ -18,8 +18,8 @@ export type CollapsibleIndicatorProps = ComponentProps<typeof CollapsiblePrimiti
 // #region Parts
 export function CollapsibleRoot({
   collapsedHeight,
-  lazyMount = true,
-  unmountOnExit = true,
+  lazyMount,
+  unmountOnExit,
   className,
   children,
   ...rest

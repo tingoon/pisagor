@@ -24,8 +24,6 @@ export interface SwapProps extends SwapRootProps, SwapVariantProps {
 export function Swap({
   variant = "fade",
   className,
-  lazyMount = true,
-  unmountOnExit = true,
   on,
   off,
   onIndicatorProps,
@@ -34,12 +32,7 @@ export function Swap({
   ...rest
 }: SwapProps) {
   return (
-    <SwapPrimitive.Root
-      {...rest}
-      className={swapVariants({ className, variant })}
-      lazyMount={lazyMount}
-      unmountOnExit={unmountOnExit}
-    >
+    <SwapPrimitive.Root {...rest} className={swapVariants({ className, variant })}>
       {on !== undefined && (
         <SwapPrimitive.Indicator {...onIndicatorProps} type="on">
           {on}

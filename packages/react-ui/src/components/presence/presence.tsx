@@ -6,7 +6,7 @@ export interface PresenceProps extends ComponentProps<typeof PresencePrimitive> 
 // #endregion
 
 // #region Part
-export function Presence({ lazyMount = true, unmountOnExit = true, ...rest }: PresenceProps) {
-  return <PresencePrimitive {...rest} lazyMount={lazyMount} unmountOnExit={unmountOnExit} />;
+export function Presence(props: PresenceProps) {
+  return <PresencePrimitive {...props} />;
 }
 // #endregion

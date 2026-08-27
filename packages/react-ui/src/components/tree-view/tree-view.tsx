@@ -111,24 +111,12 @@ export const createTreeCollection = <T extends TreeNodeType>(
     ...options,
   });
 
-export function TreeViewRoot({
-  fileIcons,
-  lazyMount = true,
-  unmountOnExit = true,
-  className,
-  children,
-  ...rest
-}: TreeViewProps) {
+export function TreeViewRoot({ fileIcons, className, children, ...rest }: TreeViewProps) {
   const slots = useMemo(() => treeViewVariants(), []);
 
   return (
     <TreeViewContext value={{ fileIcons, slots }}>
-      <TreeViewPrimitive.Root
-        {...rest}
-        className={slots.base({ className })}
-        lazyMount={lazyMount}
-        unmountOnExit={unmountOnExit}
-      >
+      <TreeViewPrimitive.Root {...rest} className={slots.base({ className })}>
         {children}
       </TreeViewPrimitive.Root>
     </TreeViewContext>

@@ -52,16 +52,12 @@ export interface DrawerFooterProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Parts
-/**
- * Drawer root. `lazyMount` and `unmountOnExit` default to `false` because enabling
- * either option currently breaks swipe-to-dismiss in Ark Drawer.
- */
-export function DrawerRoot({ lazyMount = false, unmountOnExit = false, ...rest }: DrawerRootProps) {
+export function DrawerRoot(props: DrawerRootProps) {
   const slots = useMemo(() => drawerVariants(), []);
 
   return (
     <DrawerContext value={{ slots }}>
-      <DrawerPrimitive.Root lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...rest} />
+      <DrawerPrimitive.Root {...props} />
     </DrawerContext>
   );
 }

@@ -108,8 +108,6 @@ export function CommandDialogContent({
 }
 
 export function CommandRoot<T extends CollectionItem = CollectionItem>({
-  lazyMount = true,
-  unmountOnExit = true,
   className,
   ...rest
 }: CommandProps<T>) {
@@ -123,11 +121,9 @@ export function CommandRoot<T extends CollectionItem = CollectionItem>({
         closeOnSelect={false}
         disableLayer
         inputBehavior="autohighlight"
-        lazyMount={lazyMount}
         loopFocus={false}
         open
         selectionBehavior="clear"
-        unmountOnExit={unmountOnExit}
       />
     </CommandContext>
   );

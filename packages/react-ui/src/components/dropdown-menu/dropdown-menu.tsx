@@ -57,19 +57,10 @@ export type DropdownMenuShortcutProps = ComponentProps<typeof ark.span> & {
 
 // #region Parts
 export function DropdownMenuRoot({
-  lazyMount = true,
   positioning = { placement: "bottom-end" },
-  unmountOnExit = true,
   ...rest
 }: DropdownMenuRootProps) {
-  return (
-    <MenuPrimitive.Root
-      lazyMount={lazyMount}
-      positioning={positioning}
-      unmountOnExit={unmountOnExit}
-      {...rest}
-    />
-  );
+  return <MenuPrimitive.Root positioning={positioning} {...rest} />;
 }
 
 export function DropdownMenuTrigger(props: DropdownMenuTriggerProps) {

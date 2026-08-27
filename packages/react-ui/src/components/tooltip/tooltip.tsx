@@ -46,10 +46,8 @@ export interface TooltipProps extends Omit<TooltipRootProps, "children"> {
 function TooltipRoot({
   children,
   closeDelay = 150,
-  lazyMount = true,
   openDelay = 400,
   positioning = { placement: "top" },
-  unmountOnExit = true,
   ...rest
 }: TooltipRootProps) {
   const slots = tooltipVariants();
@@ -59,10 +57,8 @@ function TooltipRoot({
       <TooltipPrimitive.Root
         {...rest}
         closeDelay={closeDelay}
-        lazyMount={lazyMount}
         openDelay={openDelay}
         positioning={positioning}
-        unmountOnExit={unmountOnExit}
       >
         {children}
       </TooltipPrimitive.Root>

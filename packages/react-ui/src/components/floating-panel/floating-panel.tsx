@@ -71,19 +71,12 @@ export interface FloatingPanelFooterProps extends ComponentProps<typeof ark.div>
 // #endregion
 
 // #region Parts
-export function FloatingPanelRoot({
-  lazyMount = true,
-  unmountOnExit = true,
-  children,
-  ...rest
-}: FloatingPanelRootProps) {
+export function FloatingPanelRoot({ children, ...rest }: FloatingPanelRootProps) {
   const slots = useMemo(() => floatingPanelVariants(), []);
 
   return (
     <FloatingPanelContext value={{ slots }}>
-      <FloatingPanelPrimitive.Root lazyMount={lazyMount} unmountOnExit={unmountOnExit} {...rest}>
-        {children}
-      </FloatingPanelPrimitive.Root>
+      <FloatingPanelPrimitive.Root {...rest}>{children}</FloatingPanelPrimitive.Root>
     </FloatingPanelContext>
   );
 }

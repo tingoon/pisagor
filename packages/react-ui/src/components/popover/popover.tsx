@@ -48,20 +48,8 @@ export interface PopoverFooterProps extends ComponentProps<typeof ark.div> {}
 // #endregion
 
 // #region Parts
-export function PopoverRoot({
-  lazyMount = true,
-  unmountOnExit = true,
-  modal = false,
-  ...rest
-}: PopoverRootProps) {
-  return (
-    <PopoverPrimitive.Root
-      lazyMount={lazyMount}
-      modal={modal}
-      unmountOnExit={unmountOnExit}
-      {...rest}
-    />
-  );
+export function PopoverRoot({ modal = false, ...rest }: PopoverRootProps) {
+  return <PopoverPrimitive.Root modal={modal} {...rest} />;
 }
 
 export function PopoverTrigger(props: PopoverTriggerProps) {

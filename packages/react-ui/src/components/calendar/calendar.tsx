@@ -112,26 +112,13 @@ const getWeekRowKey = (
   }>,
 ) => week.map((day) => `${day.year}-${day.month}-${day.day}`).join("/");
 
-export function CalendarRoot({
-  lazyMount = true,
-  unmountOnExit = true,
-  className,
-  variant,
-  children,
-  ...rest
-}: CalendarProps) {
+export function CalendarRoot({ className, variant, children, ...rest }: CalendarProps) {
   const slots = useMemo(() => calendarVariants(), []);
 
   return (
     <FormControlVariantProvider value={variant}>
       <CalendarSlotsContext value={{ slots }}>
-        <CalendarPrimitive.Root
-          {...rest}
-          className={slots.base({ className })}
-          inline
-          lazyMount={lazyMount}
-          unmountOnExit={unmountOnExit}
-        >
+        <CalendarPrimitive.Root {...rest} className={slots.base({ className })} inline>
           {children}
         </CalendarPrimitive.Root>
       </CalendarSlotsContext>

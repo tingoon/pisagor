@@ -64,12 +64,7 @@ export type TourCloseTriggerProps = ComponentProps<typeof TourPrimitive.CloseTri
 // #endregion
 
 // #region Parts
-export function TourRoot({
-  steps = [],
-  lazyMount = true,
-  unmountOnExit = true,
-  ...rest
-}: TourProps) {
+export function TourRoot({ steps = [], ...rest }: TourProps) {
   const [isStarted, setIsStarted] = useState(false);
 
   const tour = useTour({ steps });
@@ -95,12 +90,7 @@ export function TourRoot({
 
   return (
     <TourContext value={{ handleStart, slots, tour }}>
-      <TourPrimitive.Root
-        lazyMount={lazyMount}
-        tour={tour}
-        unmountOnExit={unmountOnExit}
-        {...rest}
-      />
+      <TourPrimitive.Root tour={tour} {...rest} />
     </TourContext>
   );
 }

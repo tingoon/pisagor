@@ -19,8 +19,6 @@ export type HoverCardContentProps = ComponentProps<typeof HoverCardPrimitive.Con
 
 // #region Parts
 export function HoverCardRoot({
-  lazyMount = true,
-  unmountOnExit = true,
   closeDelay = 300,
   openDelay = 600,
   positioning = { placement: "top" },
@@ -33,10 +31,8 @@ export function HoverCardRoot({
     <HoverCardContext value={{ slots }}>
       <HoverCardPrimitive.Root
         closeDelay={closeDelay}
-        lazyMount={lazyMount}
         openDelay={openDelay}
         positioning={positioning}
-        unmountOnExit={unmountOnExit}
         {...rest}
       >
         {children}

@@ -27,20 +27,9 @@ export interface AccordionProps extends Omit<AccordionRootProps, "children"> {
 // #endregion
 
 // #region Parts
-export function AccordionRoot({
-  collapsible = true,
-  lazyMount = true,
-  unmountOnExit = true,
-  children,
-  ...rest
-}: AccordionRootProps) {
+export function AccordionRoot({ collapsible = true, children, ...rest }: AccordionRootProps) {
   return (
-    <AccordionPrimitive.Root
-      {...rest}
-      collapsible={collapsible}
-      lazyMount={lazyMount}
-      unmountOnExit={unmountOnExit}
-    >
+    <AccordionPrimitive.Root {...rest} collapsible={collapsible}>
       {children}
     </AccordionPrimitive.Root>
   );

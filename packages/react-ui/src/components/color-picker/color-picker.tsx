@@ -133,8 +133,6 @@ export function ColorPickerRoot({
   positioning = {
     placement: "top-start",
   },
-  lazyMount = true,
-  unmountOnExit = true,
   onValueChange,
   variant,
   className,
@@ -162,10 +160,8 @@ export function ColorPickerRoot({
         <ColorPickerPrimitive.Root
           className={slots.base({ className })}
           defaultValue={!isControlled ? parsedColor : undefined}
-          lazyMount={lazyMount}
           onValueChange={handleValueChange}
           positioning={positioning}
-          unmountOnExit={unmountOnExit}
           value={isControlled ? parsedColor : undefined}
           {...rest}
         >

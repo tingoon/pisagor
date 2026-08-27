@@ -72,22 +72,12 @@ export type DialogProps = DialogRootProps;
 // #endregion
 
 // #region Parts
-export function DialogRoot({
-  modal = true,
-  lazyMount = true,
-  unmountOnExit = true,
-  ...rest
-}: DialogRootProps) {
+export function DialogRoot({ modal = true, ...rest }: DialogRootProps) {
   const slots = useMemo(() => dialogVariants(), []);
 
   return (
     <DialogContext value={{ modal, slots }}>
-      <DialogPrimitive.Root
-        lazyMount={lazyMount}
-        modal={modal}
-        unmountOnExit={unmountOnExit}
-        {...rest}
-      />
+      <DialogPrimitive.Root modal={modal} {...rest} />
     </DialogContext>
   );
 }

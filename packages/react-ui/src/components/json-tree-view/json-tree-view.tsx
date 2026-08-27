@@ -22,23 +22,12 @@ export interface JsonTreeViewProps extends Omit<JsonTreeViewRootProps, "children
 // #endregion
 
 // #region Parts
-function JsonTreeViewRoot({
-  children,
-  className,
-  lazyMount = true,
-  unmountOnExit = true,
-  ...rest
-}: JsonTreeViewRootProps) {
+function JsonTreeViewRoot({ children, className, ...rest }: JsonTreeViewRootProps) {
   const slots = jsonTreeViewVariants();
 
   return (
     <JsonTreeViewContext value={{ slots }}>
-      <JsonTreeViewPrimitive.Root
-        {...rest}
-        className={slots.base({ className })}
-        lazyMount={lazyMount}
-        unmountOnExit={unmountOnExit}
-      >
+      <JsonTreeViewPrimitive.Root {...rest} className={slots.base({ className })}>
         {children}
       </JsonTreeViewPrimitive.Root>
     </JsonTreeViewContext>
