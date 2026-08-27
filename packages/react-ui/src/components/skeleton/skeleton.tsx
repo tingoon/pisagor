@@ -13,9 +13,9 @@ export interface SkeletonTextProps extends ComponentProps<typeof ark.div> {
   lines?: number;
 }
 
-export interface SkeletonRootProps extends ComponentProps<typeof ark.div> {}
+export type SkeletonRootProps = ComponentProps<typeof ark.div>;
 
-export interface SkeletonCircleProps extends ComponentProps<typeof ark.div> {}
+export type SkeletonCircleProps = ComponentProps<typeof ark.div>;
 // #endregion
 
 // #region Parts

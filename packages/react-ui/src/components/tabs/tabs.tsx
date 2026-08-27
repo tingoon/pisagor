@@ -12,9 +12,8 @@ interface TabsPresetItem {
   disabled?: boolean;
 }
 
-export interface TabsListProps
-  extends ComponentProps<typeof TabsPrimitive.List>,
-    Pick<TabsVariantProps, "variant"> {}
+export type TabsListProps = ComponentProps<typeof TabsPrimitive.List> &
+  Pick<TabsVariantProps, "variant">;
 
 export type TabsRootProps = ComponentProps<typeof TabsPrimitive.Root>;
 

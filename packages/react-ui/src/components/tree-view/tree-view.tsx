@@ -42,14 +42,13 @@ export interface TreeNodeType<T = unknown> {
 
 export type TreeCollection = arkTreeCollection;
 
-export interface TreeViewProps extends TreeViewPrimitive.RootComponentProps, TreeViewContextProps {}
+export type TreeViewProps = TreeViewPrimitive.RootComponentProps & TreeViewContextProps;
 
-export interface NodeProviderProps<T extends TreeNodeType = TreeNodeType>
-  extends TreeViewPrimitive.NodeProviderProps<T> {}
+export type NodeProviderProps<T extends TreeNodeType = TreeNodeType> =
+  TreeViewPrimitive.NodeProviderProps<T>;
 
-export interface TreeViewBranchControlProps
-  extends ComponentProps<typeof TreeViewPrimitive.BranchControl>,
-    Pick<TreeViewBranchTitleProps, "icon" | "expandedIcon"> {}
+export type TreeViewBranchControlProps = ComponentProps<typeof TreeViewPrimitive.BranchControl> &
+  Pick<TreeViewBranchTitleProps, "icon" | "expandedIcon">;
 
 export interface TreeViewBranchTitleProps
   extends ComponentProps<typeof TreeViewPrimitive.BranchText> {
@@ -67,7 +66,7 @@ export interface TreeViewBranchTitleProps
   icon?: JSX.ElementType | null;
 }
 
-export interface TreeViewItemTitleProps extends ComponentProps<typeof TreeViewPrimitive.ItemText> {}
+export type TreeViewItemTitleProps = ComponentProps<typeof TreeViewPrimitive.ItemText>;
 
 export interface TreeViewItemTextProps extends TreeViewItemTitleProps {
   /**

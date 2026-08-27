@@ -21,7 +21,7 @@ export interface InputOTPProps extends InputOTPRootProps {
 export type InputOTPSlotProps = ComponentProps<typeof PinInputPrimitive.Input> &
   Pick<InputProps, "variant">;
 
-export interface InputOTPSeparatorProps extends ComponentProps<typeof ark.hr> {}
+export type InputOTPSeparatorProps = ComponentProps<typeof ark.hr>;
 // #endregion
 
 // #region Parts

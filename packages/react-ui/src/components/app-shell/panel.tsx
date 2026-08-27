@@ -72,11 +72,11 @@ export interface AppShellPanelTriggerProps extends Omit<ButtonProps, "children">
   on?: ReactNode;
 }
 
-export interface AppShellPanelHeaderProps extends ComponentProps<"div"> {}
+export type AppShellPanelHeaderProps = ComponentProps<"div">;
 
-export interface AppShellPanelContentProps extends ComponentProps<"div"> {}
+export type AppShellPanelContentProps = ComponentProps<"div">;
 
-export interface AppShellPanelFooterProps extends ComponentProps<"div"> {}
+export type AppShellPanelFooterProps = ComponentProps<"div">;
 
 export function AppShellPanel({
   placement = "start",

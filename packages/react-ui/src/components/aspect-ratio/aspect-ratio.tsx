@@ -5,7 +5,7 @@ import type { ComponentProps } from "react";
 // #region Types
 type AspectRatioRootProps = ComponentProps<typeof ark.div>;
 
-export interface AspectRatioProps extends AspectRatioRootProps {}
+export type AspectRatioProps = AspectRatioRootProps;
 // #endregion
 
 // #region Part
@@ -19,4 +19,8 @@ export function AspectRatio({ className, ...rest }: AspectRatioProps) {
     />
   );
 }
+// #endregion
+
+// #region Display Names
+AspectRatio.displayName = "AspectRatio";
 // #endregion

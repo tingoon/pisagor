@@ -2,7 +2,7 @@ import { ark } from "@ark-ui/react/factory";
 import { visuallyHiddenVariants } from "@pisagor/recipes/visually-hidden";
 import type { ComponentProps } from "react";
 // #region Types
-export interface VisuallyHiddenProps extends ComponentProps<typeof ark.span> {}
+export type VisuallyHiddenProps = ComponentProps<typeof ark.span>;
 // #endregion
 
 // #region Part

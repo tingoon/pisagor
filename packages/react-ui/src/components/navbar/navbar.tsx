@@ -5,11 +5,11 @@ import { useMemo } from "react";
 import { NavbarContext, useNavbar } from "./navbar.context";
 
 // #region Types
-export interface NavbarRootProps extends ComponentProps<typeof ark.header> {}
+export type NavbarRootProps = ComponentProps<typeof ark.header>;
 
-export interface NavbarPartProps extends ComponentProps<typeof ark.div> {}
+export type NavbarPartProps = ComponentProps<typeof ark.div>;
 
-export interface NavbarNavProps extends ComponentProps<typeof ark.nav> {}
+export type NavbarNavProps = ComponentProps<typeof ark.nav>;
 // #endregion
 
 // #region Parts

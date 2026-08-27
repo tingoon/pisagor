@@ -6,24 +6,24 @@ import { useMemo } from "react";
 import { MenuContext, useMenu } from "./menu.context";
 
 // #region Types
-export interface MenuRootProps extends ComponentProps<typeof ark.nav> {}
+export type MenuRootProps = ComponentProps<typeof ark.nav>;
 
-export interface MenuPartProps extends ComponentProps<typeof ark.div> {}
+export type MenuPartProps = ComponentProps<typeof ark.div>;
 
-export interface MenuListProps extends ComponentProps<typeof ark.ul> {}
+export type MenuListProps = ComponentProps<typeof ark.ul>;
 
-export interface MenuItemProps extends ComponentProps<typeof ark.button>, MenuItemVariantProps {}
+export type MenuItemProps = ComponentProps<typeof ark.button> & MenuItemVariantProps;
 
 export interface MenuLinkProps extends ComponentProps<typeof ark.a> {
   /** Whether the link represents the current page */
   active?: boolean;
 }
 
-export interface MenuGroupLabelProps extends ComponentProps<typeof ark.div> {}
+export type MenuGroupLabelProps = ComponentProps<typeof ark.div>;
 
-export interface MenuSeparatorProps extends ComponentProps<typeof ark.div> {}
+export type MenuSeparatorProps = ComponentProps<typeof ark.div>;
 
-export interface MenuShortcutProps extends ComponentProps<typeof ark.span> {}
+export type MenuShortcutProps = ComponentProps<typeof ark.span>;
 // #endregion
 
 // #region Parts

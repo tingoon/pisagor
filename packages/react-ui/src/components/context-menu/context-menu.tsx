@@ -13,7 +13,7 @@ import {
 } from "../dropdown-menu";
 
 // #region Types
-export interface ContextMenuRootProps extends DropdownMenuRootProps {}
+export type ContextMenuRootProps = DropdownMenuRootProps;
 
 export type ContextMenuContextTriggerProps = ComponentProps<typeof MenuPrimitive.ContextTrigger>;
 // #endregion

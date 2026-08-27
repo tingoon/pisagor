@@ -5,9 +5,9 @@ import { useMemo } from "react";
 import { CardContext, useCard } from "./card.context";
 
 // #region Types
-export interface CardRootProps extends ComponentProps<typeof ark.div> {}
+export type CardRootProps = ComponentProps<typeof ark.div>;
 
-export interface CardMediaProps extends ComponentProps<typeof ark.div>, CardVariantProps {}
+export type CardMediaProps = ComponentProps<typeof ark.div> & CardVariantProps;
 
 export interface CardHeaderProps extends ComponentProps<typeof ark.div> {
   /** The description of the card */
@@ -16,15 +16,15 @@ export interface CardHeaderProps extends ComponentProps<typeof ark.div> {
   title?: string;
 }
 
-export interface CardTitleProps extends ComponentProps<typeof ark.div> {}
+export type CardTitleProps = ComponentProps<typeof ark.div>;
 
-export interface CardDescriptionProps extends ComponentProps<typeof ark.div> {}
+export type CardDescriptionProps = ComponentProps<typeof ark.div>;
 
-export interface CardActionProps extends ComponentProps<typeof ark.div> {}
+export type CardActionProps = ComponentProps<typeof ark.div>;
 
-export interface CardContentProps extends ComponentProps<typeof ark.div> {}
+export type CardContentProps = ComponentProps<typeof ark.div>;
 
-export interface CardFooterProps extends ComponentProps<typeof ark.div> {}
+export type CardFooterProps = ComponentProps<typeof ark.div>;
 // #endregion
 
 // #region Parts

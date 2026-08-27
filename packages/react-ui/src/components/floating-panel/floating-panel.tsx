@@ -10,8 +10,7 @@ import { ScrollArea } from "../scroll-area";
 import { FloatingPanelContext, useFloatingPanel } from "./floating-panel.context";
 
 // #region Types
-export interface FloatingPanelRootProps
-  extends ComponentProps<typeof FloatingPanelPrimitive.Root> {}
+export type FloatingPanelRootProps = ComponentProps<typeof FloatingPanelPrimitive.Root>;
 
 export interface FloatingPanelContentProps
   extends ComponentProps<typeof FloatingPanelPrimitive.Content> {
@@ -67,7 +66,7 @@ export type FloatingPanelCloseTriggerProps = ComponentProps<
   typeof FloatingPanelPrimitive.CloseTrigger
 >;
 
-export interface FloatingPanelFooterProps extends ComponentProps<typeof ark.div> {}
+export type FloatingPanelFooterProps = ComponentProps<typeof ark.div>;
 // #endregion
 
 // #region Parts

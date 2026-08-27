@@ -27,9 +27,9 @@ export type StepsPrevTriggerProps = ComponentProps<typeof StepsPrimitive.PrevTri
 
 export type StepsNextTriggerProps = ComponentProps<typeof StepsPrimitive.NextTrigger>;
 
-export interface StepsTitleProps extends ComponentProps<typeof ark.span> {}
+export type StepsTitleProps = ComponentProps<typeof ark.span>;
 
-export interface StepsDescriptionProps extends ComponentProps<typeof ark.span> {}
+export type StepsDescriptionProps = ComponentProps<typeof ark.span>;
 // #endregion
 
 // #region Parts

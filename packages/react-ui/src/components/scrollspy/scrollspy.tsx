@@ -294,3 +294,7 @@ export function Scrollspy({
   );
 }
 // #endregion
+
+// #region Display Names
+Scrollspy.displayName = "Scrollspy";
+// #endregion

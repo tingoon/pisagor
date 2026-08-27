@@ -52,9 +52,9 @@ export interface SortableItemProps extends ComponentProps<typeof ark.div> {
   value: string;
 }
 
-export interface SortableHandleProps extends ComponentProps<typeof ark.div> {}
+export type SortableHandleProps = ComponentProps<typeof ark.div>;
 
-export interface SortableItemContentProps extends ComponentProps<typeof ark.div> {}
+export type SortableItemContentProps = ComponentProps<typeof ark.div>;
 // #endregion
 
 // #region Hooks

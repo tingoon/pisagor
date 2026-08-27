@@ -47,7 +47,7 @@ export interface CommandInputProps extends Omit<ComboboxFieldInputProps, "size">
   size?: InputProps["size"];
 }
 
-export interface CommandListProps extends ComboboxListProps {}
+export type CommandListProps = ComboboxListProps;
 
 export type CommandContentProps = ComboboxContentProps;
 
@@ -56,9 +56,9 @@ export interface CommandProps<T extends CollectionItem = CollectionItem>
   className?: string;
 }
 
-export interface CommandSeparatorProps extends ComponentProps<"div"> {}
+export type CommandSeparatorProps = ComponentProps<"div">;
 
-export interface CommandFooterProps extends ComponentProps<"div"> {}
+export type CommandFooterProps = ComponentProps<"div">;
 // #endregion
 
 // #region Parts

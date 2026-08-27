@@ -15,16 +15,18 @@ import { DropdownMenu, type DropdownMenuShortcutProps } from "../dropdown-menu";
 import { ListboxContext, ListboxItemContext, useListbox, useListboxItem } from "./listbox.context";
 
 // #region Types
-interface ListboxPresetItem {
+interface ListboxPresetItem extends CollectionItem {
   label: string;
   value: string;
   disabled?: boolean;
 }
 
-export interface ListboxRootProps<T extends CollectionItem = CollectionItem>
-  extends Omit<ListboxRootPropsPrimitive<T>, "onValueChange"> {
+export type ListboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
+  ListboxRootPropsPrimitive<T>,
+  "onValueChange"
+> & {
   onValueChange?: (value: string | string[]) => void;
-}
+};
 
 export interface ListboxProps extends Omit<ListboxRootProps, "children" | "collection"> {
   collection?: ListboxRootProps["collection"];

@@ -116,7 +116,7 @@ export type ColorPickerInputProps = Partial<
   ComponentProps<typeof ColorPickerPrimitive.ChannelInput>
 >;
 
-export interface ColorPickerSwatchPreviewProps extends ComponentProps<typeof ark.div> {}
+export type ColorPickerSwatchPreviewProps = ComponentProps<typeof ark.div>;
 // #endregion
 
 // #region Parts

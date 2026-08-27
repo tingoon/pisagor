@@ -27,7 +27,7 @@ export interface DropdownMenuRadioItemGroupProps
   heading?: string;
 }
 
-export interface DropdownMenuRootProps extends ComponentProps<typeof MenuPrimitive.Root> {}
+export type DropdownMenuRootProps = ComponentProps<typeof MenuPrimitive.Root>;
 
 export type DropdownMenuTriggerProps = ComponentProps<typeof MenuPrimitive.Trigger>;
 

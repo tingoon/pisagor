@@ -8,13 +8,11 @@ import { ScrollArea } from "../scroll-area";
 import { DrawerContext, useDrawer } from "./drawer.context";
 
 // #region Types
-export interface DrawerPositionerProps
-  extends ComponentProps<typeof DrawerPrimitive.Positioner>,
-    Pick<DrawerVariantProps, "variant"> {}
+export type DrawerPositionerProps = ComponentProps<typeof DrawerPrimitive.Positioner> &
+  Pick<DrawerVariantProps, "variant">;
 
-export interface DrawerContentProps
-  extends ComponentProps<typeof DrawerPrimitive.Content>,
-    Pick<DrawerVariantProps, "variant"> {}
+export type DrawerContentProps = ComponentProps<typeof DrawerPrimitive.Content> &
+  Pick<DrawerVariantProps, "variant">;
 
 export interface DrawerHeaderProps extends ComponentProps<typeof ark.div> {
   /** The description of the drawer */
@@ -32,7 +30,7 @@ export interface DrawerBodyProps extends ComponentProps<typeof ark.div> {
   scrollFade?: boolean;
 }
 
-export interface DrawerRootProps extends ComponentProps<typeof DrawerPrimitive.Root> {}
+export type DrawerRootProps = ComponentProps<typeof DrawerPrimitive.Root>;
 
 export type DrawerTriggerProps = ComponentProps<typeof DrawerPrimitive.Trigger>;
 
@@ -44,11 +42,11 @@ export type DrawerTitleProps = ComponentProps<typeof DrawerPrimitive.Title>;
 
 export type DrawerCloseTriggerProps = ComponentProps<typeof DrawerPrimitive.CloseTrigger>;
 
-export interface DrawerContentInnerProps extends ComponentProps<typeof ark.div> {}
+export type DrawerContentInnerProps = ComponentProps<typeof ark.div>;
 
-export interface DrawerDescriptionProps extends ComponentProps<typeof ark.div> {}
+export type DrawerDescriptionProps = ComponentProps<typeof ark.div>;
 
-export interface DrawerFooterProps extends ComponentProps<typeof ark.div> {}
+export type DrawerFooterProps = ComponentProps<typeof ark.div>;
 // #endregion
 
 // #region Parts

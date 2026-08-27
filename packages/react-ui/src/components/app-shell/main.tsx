@@ -16,9 +16,9 @@ export interface AppShellHeaderProps extends ComponentProps<"header"> {
   position?: AppShellRegionPosition;
 }
 
-export interface AppShellMainProps extends ComponentProps<"div"> {}
+export type AppShellMainProps = ComponentProps<"div">;
 
-export interface AppShellContentProps extends ComponentProps<"main"> {}
+export type AppShellContentProps = ComponentProps<"main">;
 
 export function AppShellMain({ className, style, ...rest }: AppShellMainProps) {
   const { slots } = useAppShell();

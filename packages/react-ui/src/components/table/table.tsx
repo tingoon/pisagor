@@ -20,13 +20,13 @@ export interface TableProps extends ComponentProps<typeof ark.table> {
   isHoverable?: boolean;
 }
 
-export interface TableHeaderProps extends ComponentProps<typeof ark.thead> {}
-export interface TableBodyProps extends ComponentProps<typeof ark.tbody> {}
-export interface TableFooterProps extends ComponentProps<typeof ark.tfoot> {}
-export interface TableRowProps extends ComponentProps<typeof ark.tr> {}
-export interface TableHeadProps extends ComponentProps<typeof ark.th> {}
-export interface TableCellProps extends ComponentProps<typeof ark.td> {}
-export interface TableCaptionProps extends ComponentProps<typeof ark.caption> {}
+export type TableHeaderProps = ComponentProps<typeof ark.thead>;
+export type TableBodyProps = ComponentProps<typeof ark.tbody>;
+export type TableFooterProps = ComponentProps<typeof ark.tfoot>;
+export type TableRowProps = ComponentProps<typeof ark.tr>;
+export type TableHeadProps = ComponentProps<typeof ark.th>;
+export type TableCellProps = ComponentProps<typeof ark.td>;
+export type TableCaptionProps = ComponentProps<typeof ark.caption>;
 // #endregion
 
 // #region Parts

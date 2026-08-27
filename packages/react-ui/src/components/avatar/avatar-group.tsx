@@ -5,7 +5,7 @@ import { Avatar } from "./avatar";
 import { AvatarGroupContext, useAvatarGroup } from "./avatar-group.context";
 
 // #region Types
-export interface AvatarGroupRootProps extends ComponentProps<typeof ark.div> {}
+export type AvatarGroupRootProps = ComponentProps<typeof ark.div>;
 
 export interface AvatarGroupProps extends Omit<AvatarGroupRootProps, "children"> {
   /** Maximum number of avatars to show; excess shown as "+N". */
@@ -14,7 +14,7 @@ export interface AvatarGroupProps extends Omit<AvatarGroupRootProps, "children">
   users: Array<{ src?: string; fallback?: string; name?: string }>;
 }
 
-export interface AvatarGroupCountProps extends ComponentProps<typeof ark.div> {}
+export type AvatarGroupCountProps = ComponentProps<typeof ark.div>;
 // #endregion
 
 // #region Parts

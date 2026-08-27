@@ -16,7 +16,7 @@ import {
 import { useDialog } from "../dialog/dialog.context";
 
 // #region Types
-export interface AlertDialogRootProps extends DialogRootProps {}
+export type AlertDialogRootProps = DialogRootProps;
 
 export interface AlertDialogActionProps
   extends DialogCloseTriggerProps,

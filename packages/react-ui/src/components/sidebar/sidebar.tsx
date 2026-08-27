@@ -86,31 +86,31 @@ export interface SidebarMenuSubButtonProps
   isActive?: boolean;
 }
 
-export interface SidebarRailProps extends ComponentProps<typeof ark.button> {}
+export type SidebarRailProps = ComponentProps<typeof ark.button>;
 
-export interface SidebarInsetProps extends ComponentProps<typeof ark.main> {}
+export type SidebarInsetProps = ComponentProps<typeof ark.main>;
 
-export interface SidebarHeaderProps extends ComponentProps<typeof ark.div> {}
+export type SidebarHeaderProps = ComponentProps<typeof ark.div>;
 
-export interface SidebarFooterProps extends ComponentProps<typeof ark.div> {}
+export type SidebarFooterProps = ComponentProps<typeof ark.div>;
 
-export interface SidebarGroupProps extends ComponentProps<typeof ark.div> {}
+export type SidebarGroupProps = ComponentProps<typeof ark.div>;
 
-export interface SidebarGroupLabelProps extends ComponentProps<typeof ark.div> {}
+export type SidebarGroupLabelProps = ComponentProps<typeof ark.div>;
 
-export interface SidebarGroupActionProps extends ComponentProps<typeof ark.button> {}
+export type SidebarGroupActionProps = ComponentProps<typeof ark.button>;
 
-export interface SidebarGroupContentProps extends ComponentProps<typeof ark.div> {}
+export type SidebarGroupContentProps = ComponentProps<typeof ark.div>;
 
-export interface SidebarMenuProps extends ComponentProps<typeof ark.ul> {}
+export type SidebarMenuProps = ComponentProps<typeof ark.ul>;
 
-export interface SidebarMenuItemProps extends ComponentProps<typeof ark.li> {}
+export type SidebarMenuItemProps = ComponentProps<typeof ark.li>;
 
-export interface SidebarMenuBadgeProps extends ComponentProps<typeof ark.div> {}
+export type SidebarMenuBadgeProps = ComponentProps<typeof ark.div>;
 
-export interface SidebarMenuSubProps extends ComponentProps<typeof ark.ul> {}
+export type SidebarMenuSubProps = ComponentProps<typeof ark.ul>;
 
-export interface SidebarMenuSubItemProps extends ComponentProps<typeof ark.li> {}
+export type SidebarMenuSubItemProps = ComponentProps<typeof ark.li>;
 // #endregion
 
 // #region Constants

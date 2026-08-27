@@ -6,11 +6,9 @@ import { Separator, type SeparatorProps } from "../separator";
 import { ButtonGroupContext, useButtonGroup } from "./button-group.context";
 
 // #region Types
-export interface ButtonGroupProps
-  extends ComponentProps<typeof ark.fieldset>,
-    ButtonGroupVariantProps {}
+export type ButtonGroupProps = ComponentProps<typeof ark.fieldset> & ButtonGroupVariantProps;
 
-export interface ButtonGroupTextProps extends ComponentProps<typeof ark.div> {}
+export type ButtonGroupTextProps = ComponentProps<typeof ark.div>;
 // #endregion
 
 // #region Parts

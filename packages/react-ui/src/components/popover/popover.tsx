@@ -26,7 +26,7 @@ export interface PopoverHeaderProps extends ComponentProps<typeof ark.div> {
   title?: string;
 }
 
-export interface PopoverRootProps extends ComponentProps<typeof PopoverPrimitive.Root> {}
+export type PopoverRootProps = ComponentProps<typeof PopoverPrimitive.Root>;
 
 export type PopoverTriggerProps = ComponentProps<typeof PopoverPrimitive.Trigger>;
 
@@ -42,9 +42,9 @@ export type PopoverCloseTriggerProps = ComponentProps<typeof PopoverPrimitive.Cl
 
 export type PopoverArrowProps = ComponentProps<typeof PopoverPrimitive.Arrow>;
 
-export interface PopoverBodyProps extends ComponentProps<typeof ark.div> {}
+export type PopoverBodyProps = ComponentProps<typeof ark.div>;
 
-export interface PopoverFooterProps extends ComponentProps<typeof ark.div> {}
+export type PopoverFooterProps = ComponentProps<typeof ark.div>;
 // #endregion
 
 // #region Parts

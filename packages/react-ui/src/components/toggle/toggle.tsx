@@ -47,3 +47,7 @@ export function Toggle({
   );
 }
 // #endregion
+
+// #region Display Names
+Toggle.displayName = "Toggle";
+// #endregion

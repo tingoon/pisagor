@@ -36,7 +36,7 @@ export type TimerControlProps = ComponentProps<typeof TimerPrimitive.Control>;
 
 export type TimerActionTriggerProps = ComponentProps<typeof TimerPrimitive.ActionTrigger>;
 
-export interface TimerItemLabelProps extends ComponentProps<typeof ark.div> {}
+export type TimerItemLabelProps = ComponentProps<typeof ark.div>;
 // #endregion
 
 // #region Parts

@@ -5,11 +5,15 @@ import type { ComponentProps } from "react";
 // #region Types
 type HighlightRootProps = ComponentProps<typeof HighlightPrimitive>;
 
-export interface HighlightProps extends HighlightRootProps {}
+export type HighlightProps = HighlightRootProps;
 // #endregion
 
 // #region Part
 export function Highlight({ className, ...rest }: HighlightProps) {
   return <HighlightPrimitive {...rest} className={highlightVariants({ className })} />;
 }
+// #endregion
+
+// #region Display Names
+Highlight.displayName = "Highlight";
 // #endregion

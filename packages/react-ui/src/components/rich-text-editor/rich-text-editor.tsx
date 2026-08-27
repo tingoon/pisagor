@@ -66,9 +66,9 @@ export interface RichTextEditorRootProps
   children?: ReactNode;
 }
 
-export interface RichTextEditorToolbarProps extends ComponentProps<typeof ark.div> {}
+export type RichTextEditorToolbarProps = ComponentProps<typeof ark.div>;
 
-export interface RichTextEditorContentProps extends ComponentProps<typeof ark.div> {}
+export type RichTextEditorContentProps = ComponentProps<typeof ark.div>;
 // #endregion
 
 // #region Parts

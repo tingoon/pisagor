@@ -30,3 +30,7 @@ export function Separator({ orientation = "horizontal", className, ...rest }: Se
   );
 }
 // #endregion
+
+// #region Display Names
+Separator.displayName = "Separator";
+// #endregion

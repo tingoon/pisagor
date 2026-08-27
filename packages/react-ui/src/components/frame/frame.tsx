@@ -5,17 +5,17 @@ import { useMemo } from "react";
 import { FrameContext, useFrame } from "./frame.context";
 
 // #region Types
-export interface FrameHeaderProps extends ComponentProps<typeof ark.header> {}
+export type FrameHeaderProps = ComponentProps<typeof ark.header>;
 
-export interface FrameRootProps extends ComponentProps<typeof ark.div> {}
+export type FrameRootProps = ComponentProps<typeof ark.div>;
 
-export interface FramePanelProps extends ComponentProps<typeof ark.div> {}
+export type FramePanelProps = ComponentProps<typeof ark.div>;
 
-export interface FrameTitleProps extends ComponentProps<typeof ark.div> {}
+export type FrameTitleProps = ComponentProps<typeof ark.div>;
 
-export interface FrameDescriptionProps extends ComponentProps<typeof ark.div> {}
+export type FrameDescriptionProps = ComponentProps<typeof ark.div>;
 
-export interface FrameFooterProps extends ComponentProps<typeof ark.footer> {}
+export type FrameFooterProps = ComponentProps<typeof ark.footer>;
 // #endregion
 
 // #region Parts

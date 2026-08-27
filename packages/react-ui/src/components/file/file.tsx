@@ -7,7 +7,7 @@ import { Format } from "../format";
 import { FileContext, useFile } from "./file.context";
 
 // #region Types
-export interface FileRootProps extends ComponentProps<typeof ark.div> {}
+export type FileRootProps = ComponentProps<typeof ark.div>;
 
 export interface FileMediaProps extends ComponentProps<typeof ark.div> {
   /**
@@ -18,18 +18,18 @@ export interface FileMediaProps extends ComponentProps<typeof ark.div> {
   variant?: NonNullable<FileVariantProps["variant"]>;
 }
 
-export interface FileNameProps extends ComponentProps<typeof ark.div> {}
+export type FileNameProps = ComponentProps<typeof ark.div>;
 
-export interface FileMetaProps extends ComponentProps<typeof ark.div> {}
+export type FileMetaProps = ComponentProps<typeof ark.div>;
 
 export interface FileSizeProps extends Omit<ComponentProps<typeof ark.div>, "children"> {
   /** File size in bytes. */
   value: number;
 }
 
-export interface FileActionsProps extends ComponentProps<typeof ark.div> {}
+export type FileActionsProps = ComponentProps<typeof ark.div>;
 
-export interface FileContentProps extends ComponentProps<typeof ark.div> {}
+export type FileContentProps = ComponentProps<typeof ark.div>;
 
 export interface FileProps extends Omit<FileRootProps, "children" | "title"> {
   /** Size in bytes; rendered with `Format.Byte` when set. */

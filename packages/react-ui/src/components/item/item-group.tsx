@@ -6,7 +6,7 @@ import { Separator, type SeparatorProps } from "../separator";
 import { ItemGroupContext } from "./item-group.context";
 
 // #region Types
-export interface ItemGroupProps extends ComponentProps<typeof ark.div>, ItemVariantProps {}
+export type ItemGroupProps = ComponentProps<typeof ark.div> & ItemVariantProps;
 // #endregion
 
 // #region Parts

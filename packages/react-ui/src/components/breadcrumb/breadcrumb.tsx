@@ -17,12 +17,12 @@ interface BreadcrumbPresetItem {
   isCurrentPage?: boolean;
 }
 
-export interface BreadcrumbListProps extends ComponentProps<typeof ark.ol> {}
-export interface BreadcrumbItemProps extends ComponentProps<typeof ark.li> {}
-export interface BreadcrumbLinkProps extends ComponentProps<typeof ark.a> {}
-export interface BreadcrumbPageProps extends ComponentProps<typeof ark.span> {}
-export interface BreadcrumbSeparatorProps extends ComponentProps<typeof ark.li> {}
-export interface BreadcrumbEllipsisProps extends ComponentProps<typeof ark.span> {}
+export type BreadcrumbListProps = ComponentProps<typeof ark.ol>;
+export type BreadcrumbItemProps = ComponentProps<typeof ark.li>;
+export type BreadcrumbLinkProps = ComponentProps<typeof ark.a>;
+export type BreadcrumbPageProps = ComponentProps<typeof ark.span>;
+export type BreadcrumbSeparatorProps = ComponentProps<typeof ark.li>;
+export type BreadcrumbEllipsisProps = ComponentProps<typeof ark.span>;
 
 export interface BreadcrumbRootProps extends ComponentProps<typeof ark.nav> {
   /**

@@ -37,7 +37,7 @@ export interface TourProps extends TourRootProps {
   onStepChange?: (details: { stepId: string | null }) => void;
 }
 
-export interface TourTriggerProps extends ComponentProps<typeof ark.button> {}
+export type TourTriggerProps = ComponentProps<typeof ark.button>;
 
 export interface TourContentProps extends ComponentProps<typeof TourPrimitive.Content> {
   /**

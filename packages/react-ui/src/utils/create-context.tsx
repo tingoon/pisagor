@@ -1,4 +1,8 @@
-import React from "react";
+import {
+  type Context,
+  createContext as createReactContext,
+  useContext as useReactContext,
+} from "react";
 
 export interface CreateContextOptions<T, Name extends string = string> {
   name: Name;
@@ -7,13 +11,13 @@ export interface CreateContextOptions<T, Name extends string = string> {
 }
 
 type CreateContextResult<Name extends string, T> = {
-  [K in `${Name}Context`]: React.Context<T | undefined>;
+  [K in `${Name}Context`]: Context<T | undefined>;
 } & {
   [K in `use${Name}`]: () => T;
 };
 
 type CreateContextResultOptional<Name extends string, T> = {
-  [K in `${Name}Context`]: React.Context<T | undefined>;
+  [K in `${Name}Context`]: Context<T | undefined>;
 } & {
   [K in `use${Name}`]: () => T | undefined;
 };
@@ -33,11 +37,11 @@ export function createContext<T>() {
     const contextName = `${name}Context`;
     const hookName = `use${name}`;
 
-    const Context = React.createContext<T | undefined>(defaultValue);
+    const Context = createReactContext<T | undefined>(defaultValue);
     Context.displayName = contextName;
 
     function useContext() {
-      const context = React.useContext(Context);
+      const context = useReactContext(Context);
 
       if (context === undefined && strict) {
         const error = new Error(`${hookName} must be used within ${contextName}.`);

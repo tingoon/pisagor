@@ -2,9 +2,9 @@ import { ark } from "@ark-ui/react/factory";
 import { type KbdVariantProps, kbdGroupVariants, kbdVariants } from "@pisagor/recipes/kbd";
 import type { ComponentProps } from "react";
 // #region Types
-export interface KbdProps extends ComponentProps<typeof ark.kbd>, KbdVariantProps {}
+export type KbdProps = ComponentProps<typeof ark.kbd> & KbdVariantProps;
 
-export interface KbdGroupProps extends ComponentProps<typeof ark.div> {}
+export type KbdGroupProps = ComponentProps<typeof ark.div>;
 // #endregion
 
 // #region Parts

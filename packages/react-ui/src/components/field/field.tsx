@@ -30,17 +30,17 @@ export type FieldHelperProps = ComponentProps<typeof FieldPrimitive.HelperText>;
 
 export type FieldErrorProps = ComponentProps<typeof FieldPrimitive.ErrorText>;
 
-export interface FieldGroupProps extends ComponentProps<typeof ark.div> {}
+export type FieldGroupProps = ComponentProps<typeof ark.div>;
 
-export interface FieldContentProps extends ComponentProps<typeof ark.div> {}
+export type FieldContentProps = ComponentProps<typeof ark.div>;
 
-export interface FieldRequiredIndicatorProps extends ComponentProps<typeof ark.span> {}
+export type FieldRequiredIndicatorProps = ComponentProps<typeof ark.span>;
 
-export interface FieldTitleProps extends ComponentProps<typeof ark.div> {}
+export type FieldTitleProps = ComponentProps<typeof ark.div>;
 
-export interface FieldDescriptionProps extends ComponentProps<typeof ark.p> {}
+export type FieldDescriptionProps = ComponentProps<typeof ark.p>;
 
-export interface FieldSeparatorProps extends ComponentProps<typeof ark.div> {}
+export type FieldSeparatorProps = ComponentProps<typeof ark.div>;
 // #endregion
 
 // #region Parts

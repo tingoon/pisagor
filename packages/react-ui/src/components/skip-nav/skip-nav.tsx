@@ -61,3 +61,8 @@ export function SkipNavContent({ id = SKIP_NAV_ID, className, ...rest }: SkipNav
   );
 }
 // #endregion
+
+// #region Display Names
+SkipNavLink.displayName = "SkipNav.Link";
+SkipNavContent.displayName = "SkipNav.Content";
+// #endregion

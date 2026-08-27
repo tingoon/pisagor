@@ -5,7 +5,7 @@ import type { ComponentProps } from "react";
 // #region Types
 type StatusRootProps = ComponentProps<typeof ark.span>;
 
-export interface StatusProps extends StatusRootProps, StatusVariantProps {}
+export type StatusProps = StatusRootProps & StatusVariantProps;
 // #endregion
 
 // #region Part
@@ -20,4 +20,8 @@ export function Status({ size, variant, className, ...rest }: StatusProps) {
     />
   );
 }
+// #endregion
+
+// #region Display Names
+Status.displayName = "Status";
 // #endregion

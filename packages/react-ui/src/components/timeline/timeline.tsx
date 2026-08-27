@@ -14,17 +14,17 @@ export interface TimelineRootProps extends ComponentProps<typeof ark.ol> {
   orientation?: "vertical" | "horizontal";
 }
 
-export interface TimelineItemProps extends ComponentProps<typeof ark.li> {}
+export type TimelineItemProps = ComponentProps<typeof ark.li>;
 
-export interface TimelineIndicatorProps extends ComponentProps<typeof ark.div> {}
+export type TimelineIndicatorProps = ComponentProps<typeof ark.div>;
 
-export interface TimelineContentProps extends ComponentProps<typeof ark.div> {}
+export type TimelineContentProps = ComponentProps<typeof ark.div>;
 
-export interface TimelineTitleProps extends ComponentProps<typeof ark.div> {}
+export type TimelineTitleProps = ComponentProps<typeof ark.div>;
 
-export interface TimelineDescriptionProps extends ComponentProps<typeof ark.div> {}
+export type TimelineDescriptionProps = ComponentProps<typeof ark.div>;
 
-export interface TimelineSeparatorProps extends ComponentProps<typeof ark.div> {}
+export type TimelineSeparatorProps = ComponentProps<typeof ark.div>;
 
 export interface TimelinePresetItem {
   /** Stable key for the item when title is not a string. */

@@ -6,7 +6,7 @@ export type BadgeVariant = BadgeVariantProps["variant"];
 
 type BadgeRootProps = ComponentProps<typeof ark.span>;
 
-export interface BadgeProps extends BadgeRootProps, BadgeVariantProps {}
+export type BadgeProps = BadgeRootProps & BadgeVariantProps;
 // #endregion
 
 // #region Part
@@ -28,4 +28,8 @@ export function Badge({
     />
   );
 }
+// #endregion
+
+// #region Display Names
+Badge.displayName = "Badge";
 // #endregion

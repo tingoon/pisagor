@@ -6,7 +6,7 @@ import { useMemo } from "react";
 import { CollapsibleContext, useCollapsible } from "./collapsible.context";
 
 // #region Types
-export interface CollapsibleRootProps extends ComponentProps<typeof CollapsiblePrimitive.Root> {}
+export type CollapsibleRootProps = ComponentProps<typeof CollapsiblePrimitive.Root>;
 
 export type CollapsibleTriggerProps = ComponentProps<typeof CollapsiblePrimitive.Trigger>;
 

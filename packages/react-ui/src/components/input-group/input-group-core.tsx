@@ -31,11 +31,9 @@ export interface InputGroupAddonProps
   extends ComponentProps<typeof ark.div>,
     InputGroupAddonVariantProps {}
 
-export interface InputGroupButtonProps
-  extends Omit<ButtonProps, "size">,
-    InputGroupButtonVariantProps {}
+export type InputGroupButtonProps = Omit<ButtonProps, "size"> & InputGroupButtonVariantProps;
 
-export interface InputGroupTextProps extends ComponentProps<typeof ark.span> {}
+export type InputGroupTextProps = ComponentProps<typeof ark.span>;
 // #endregion
 
 // #region Parts

@@ -72,11 +72,11 @@ export interface AppShellInspectorTriggerProps extends Omit<ButtonProps, "childr
   on?: ReactNode;
 }
 
-export interface AppShellInspectorHeaderProps extends ComponentProps<"div"> {}
+export type AppShellInspectorHeaderProps = ComponentProps<"div">;
 
-export interface AppShellInspectorContentProps extends ComponentProps<"div"> {}
+export type AppShellInspectorContentProps = ComponentProps<"div">;
 
-export interface AppShellInspectorFooterProps extends ComponentProps<"div"> {}
+export type AppShellInspectorFooterProps = ComponentProps<"div">;
 
 export function AppShellInspector({
   placement = "end",

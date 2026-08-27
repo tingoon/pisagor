@@ -5,9 +5,9 @@ import { useMemo } from "react";
 import { LinkBoxContext, useLinkBox } from "./link-box.context";
 
 // #region Types
-export interface LinkBoxRootProps extends ComponentProps<typeof ark.div> {}
+export type LinkBoxRootProps = ComponentProps<typeof ark.div>;
 
-export interface LinkOverlayLinkProps extends ComponentProps<typeof ark.a> {}
+export type LinkOverlayLinkProps = ComponentProps<typeof ark.a>;
 // #endregion
 
 // #region Parts

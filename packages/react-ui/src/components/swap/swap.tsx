@@ -50,3 +50,7 @@ export function Swap({
   );
 }
 // #endregion
+
+// #region Display Names
+Swap.displayName = "Swap";
+// #endregion

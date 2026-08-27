@@ -55,13 +55,13 @@ export interface ActionBarProps extends Pick<ActionBarContextValue, "lazyMount" 
   onOpenChange?: (open: boolean) => void;
 }
 
-export interface ActionBarTriggerProps extends ComponentProps<typeof ark.button> {}
+export type ActionBarTriggerProps = ComponentProps<typeof ark.button>;
 
-export interface ActionBarContentProps extends ComponentProps<typeof ark.div> {}
+export type ActionBarContentProps = ComponentProps<typeof ark.div>;
 
-export interface ActionBarSeparatorProps extends SeparatorProps {}
+export type ActionBarSeparatorProps = SeparatorProps;
 
-export interface ActionBarCloseProps extends ComponentProps<typeof ark.button> {}
+export type ActionBarCloseProps = ComponentProps<typeof ark.button>;
 
 export interface ActionBarValueProps extends BadgeProps {
   /** The number of items selected */
@@ -70,7 +70,7 @@ export interface ActionBarValueProps extends BadgeProps {
   label?: string;
 }
 
-export interface ActionBarBodyProps extends ComponentProps<typeof ark.div> {}
+export type ActionBarBodyProps = ComponentProps<typeof ark.div>;
 // #endregion
 
 // #region Constants
@@ -84,7 +84,7 @@ export function ActionBarRoot({
   defaultOpen = false,
   lazyMount,
   open,
-  positioning: propPositioning,
+  positioning: positioningProp,
   unmountOnExit,
   actions,
   children,
@@ -120,9 +120,9 @@ export function ActionBarRoot({
   const positioning = useMemo(
     () => ({
       ...defaultPositioning,
-      ...propPositioning,
+      ...positioningProp,
     }),
-    [propPositioning],
+    [positioningProp],
   );
 
   const slots = useMemo(

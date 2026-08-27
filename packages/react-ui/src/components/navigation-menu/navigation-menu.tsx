@@ -5,11 +5,11 @@ import { useMemo } from "react";
 import { NavigationMenuContext, useNavigationMenu } from "./navigation-menu.context";
 
 // #region Types
-export interface NavigationMenuProps extends ComponentProps<typeof ark.nav> {}
+export type NavigationMenuProps = ComponentProps<typeof ark.nav>;
 
-export interface NavigationMenuPartProps extends ComponentProps<typeof ark.ul> {}
+export type NavigationMenuPartProps = ComponentProps<typeof ark.ul>;
 
-export interface NavigationMenuItemProps extends ComponentProps<typeof ark.li> {}
+export type NavigationMenuItemProps = ComponentProps<typeof ark.li>;
 
 export interface NavigationMenuLinkProps extends ComponentProps<typeof ark.a> {
   /** Whether the link represents the current page */

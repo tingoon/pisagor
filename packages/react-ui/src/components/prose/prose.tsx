@@ -28,3 +28,7 @@ export function Prose({ children, html, className, ...rest }: ProseProps) {
   );
 }
 // #endregion
+
+// #region Display Names
+Prose.displayName = "Prose";
+// #endregion

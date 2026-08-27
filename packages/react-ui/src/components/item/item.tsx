@@ -6,21 +6,21 @@ import { ItemContext, useItem } from "./item.context";
 import { useItemGroup } from "./item-group.context";
 
 // #region Types
-export interface ItemProps extends ComponentProps<typeof ark.div>, ItemVariantProps {}
+export type ItemProps = ComponentProps<typeof ark.div> & ItemVariantProps;
 
-export interface ItemMediaProps extends ComponentProps<typeof ark.div>, ItemVariantProps {}
+export type ItemMediaProps = ComponentProps<typeof ark.div> & ItemVariantProps;
 
-export interface ItemHeaderProps extends ComponentProps<typeof ark.div> {}
+export type ItemHeaderProps = ComponentProps<typeof ark.div>;
 
-export interface ItemContentProps extends ComponentProps<typeof ark.div> {}
+export type ItemContentProps = ComponentProps<typeof ark.div>;
 
-export interface ItemTitleProps extends ComponentProps<typeof ark.div> {}
+export type ItemTitleProps = ComponentProps<typeof ark.div>;
 
-export interface ItemDescriptionProps extends ComponentProps<typeof ark.p> {}
+export type ItemDescriptionProps = ComponentProps<typeof ark.p>;
 
-export interface ItemActionsProps extends ComponentProps<typeof ark.div> {}
+export type ItemActionsProps = ComponentProps<typeof ark.div>;
 
-export interface ItemFooterProps extends ComponentProps<typeof ark.div> {}
+export type ItemFooterProps = ComponentProps<typeof ark.div>;
 // #endregion
 
 // #region Parts

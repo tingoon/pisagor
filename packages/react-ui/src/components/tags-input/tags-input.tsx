@@ -272,4 +272,5 @@ TagsInputItemDeleteTrigger.displayName = "TagsInput.ItemDeleteTrigger";
 TagsInputItemInput.displayName = "TagsInput.ItemInput";
 TagsInputInput.displayName = "TagsInput.Input";
 TagsInputClearTrigger.displayName = "TagsInput.ClearTrigger";
+TagsInputRootProvider.displayName = "TagsInput.RootProvider";
 // #endregion

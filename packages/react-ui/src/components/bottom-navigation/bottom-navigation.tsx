@@ -22,9 +22,9 @@ export type BottomNavigationListProps = ComponentProps<typeof TabsPrimitive.List
 
 export type BottomNavigationItemProps = ComponentProps<typeof TabsPrimitive.Trigger>;
 
-export interface BottomNavigationItemIconProps extends ComponentProps<typeof ark.span> {}
+export type BottomNavigationItemIconProps = ComponentProps<typeof ark.span>;
 
-export interface BottomNavigationItemLabelProps extends ComponentProps<typeof ark.span> {}
+export type BottomNavigationItemLabelProps = ComponentProps<typeof ark.span>;
 // #endregion
 
 // #region Parts

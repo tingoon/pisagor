@@ -18,9 +18,8 @@ import {
 import { SheetContext, useSheet } from "./sheet.context";
 
 // #region Types
-export interface SheetPositionerProps
-  extends ComponentProps<typeof DialogPrimitive.Positioner>,
-    SheetVariantProps {}
+export type SheetPositionerProps = ComponentProps<typeof DialogPrimitive.Positioner> &
+  SheetVariantProps;
 
 export interface SheetContentProps
   extends ComponentProps<typeof DialogPrimitive.Content>,

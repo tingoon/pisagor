@@ -53,7 +53,7 @@ function buildGridRows(hasBanner: boolean, hasNavigation: boolean) {
   return [...(hasBanner ? ["auto"] : []), ...(hasNavigation ? ["auto"] : []), "auto"].join(" ");
 }
 
-export interface AppShellRootProps extends ComponentProps<"div"> {}
+export type AppShellRootProps = ComponentProps<"div">;
 
 function useShellGridStyle(childSlots: AppShellSlots) {
   const hasBanner = Boolean(childSlots.banner);

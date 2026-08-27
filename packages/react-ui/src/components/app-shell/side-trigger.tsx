@@ -53,3 +53,7 @@ export function AppShellSideTrigger({
     </Button>
   );
 }
+
+// #region Display Names
+AppShellSideTrigger.displayName = "AppShell.SideTrigger";
+// #endregion

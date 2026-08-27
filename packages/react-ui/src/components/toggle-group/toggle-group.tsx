@@ -28,7 +28,7 @@ export interface ToggleGroupProps extends Omit<ToggleGroupRootProps, "children">
   items?: ToggleGroupPresetItem[];
 }
 
-export interface ToggleGroupItemProps extends ComponentProps<typeof ToggleGroupPrimitive.Item> {}
+export type ToggleGroupItemProps = ComponentProps<typeof ToggleGroupPrimitive.Item>;
 // #endregion
 
 // #region Parts

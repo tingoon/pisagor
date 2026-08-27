@@ -79,7 +79,7 @@ export type SelectItemProps = ComponentProps<typeof SelectPrimitive.Item>;
 
 export type SelectClearTriggerProps = ComponentProps<typeof SelectPrimitive.ClearTrigger>;
 
-export interface SelectEmptyProps extends ComponentProps<typeof ark.div> {}
+export type SelectEmptyProps = ComponentProps<typeof ark.div>;
 // #endregion
 
 // #region Parts

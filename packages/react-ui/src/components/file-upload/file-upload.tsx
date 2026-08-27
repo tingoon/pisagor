@@ -21,8 +21,7 @@ import {
 } from "./file-upload.context";
 
 // #region Types
-export interface FileUploadListProps
-  extends Omit<ComponentProps<typeof FileUploadPrimitive.Item>, "file"> {}
+export type FileUploadListProps = Omit<ComponentProps<typeof FileUploadPrimitive.Item>, "file">;
 
 export interface FileUploadRootProps extends ComponentProps<typeof FileUploadPrimitive.Root> {
   onValueChange?: (value: File[]) => void;
@@ -56,13 +55,13 @@ export type FileUploadItemDeleteTriggerProps = ComponentProps<
 
 export type FileUploadClearTriggerProps = ComponentProps<typeof FileUploadPrimitive.ClearTrigger>;
 
-export interface FileUploadDropzoneIconProps extends ComponentProps<typeof ark.div> {}
+export type FileUploadDropzoneIconProps = ComponentProps<typeof ark.div>;
 
-export interface FileUploadTitleProps extends ComponentProps<typeof ark.div> {}
+export type FileUploadTitleProps = ComponentProps<typeof ark.div>;
 
-export interface FileUploadDescriptionProps extends ComponentProps<typeof ark.div> {}
+export type FileUploadDescriptionProps = ComponentProps<typeof ark.div>;
 
-export interface FileUploadHelperProps extends ComponentProps<typeof ark.div> {}
+export type FileUploadHelperProps = ComponentProps<typeof ark.div>;
 // #endregion
 
 // #region Parts
