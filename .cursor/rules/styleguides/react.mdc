@@ -34,33 +34,34 @@ Three surfaces — different rules:
 
 ### Interface / type
 
-Declare props in this **group order**. Skip groups that do not apply; do not reorder groups.
+Declare **added** props in this **group order** (what `extends` already provides need not be re-listed). Skip empty groups; do not reorder groups. Within each group, sort **A–Z** (same as destructuring).
 
-| Order | Group | Examples |
-| ----- | ----- | -------- |
-| 1 | **Variants & appearance** | `variant`, `size`, `shape`, `pill` |
-| 2 | **Behavior & state** | `isLoading`, `disabled`, `open`, `defaultOpen`, `clearable` |
-| 3 | **Content** | `title`, `description`, `icon`, `label`, `fallback`, `children` |
-| 4 | **Event handlers** | `onClick`, `onSubmit`, `onOpenChange` |
+| Order | Group | What belongs here |
+| ----- | ----- | ----------------- |
+| 1 | **Variants & appearance** | Recipe tokens and layout chrome — visual `variant` / `size`, placement on screen, orientation, shape |
+| 2 | **Behavior & state** | How the control behaves — disabled / read-only, open / closed, controlled values, feature toggles, form & DOM identity (`name`, `id`, `asChild`), headless engines (`collection`) |
+| 3 | **Content** | What is shown or supplied — labels, copy, icons, placeholders, option lists (`items`), `children`, slot content |
+| 4 | **Event handlers** | `on*` callbacks. Keep controlled pairs together (`defaultOpen` then `open`, then handlers) — do not interleave handlers between them |
 | 5 | **Styling** | `className`, `classNames` |
-| 6 | **Rest** | index/signature or documented catch-alls last |
+| 6 | **Rest** | Sub-element `*Props` bags, runtime instances, i18n / config objects, index signatures |
+
+**Placement edge cases:**
+
+- **`value`** — Behavior when it is control state; Content when it is display copy (e.g. a metric), not an input.
+- **`items` / `options`** — Content. **`collection`** — Behavior (Ark data engine).
+- **`positioning`** (floating-ui options object) — Behavior; single-axis **`placement` / `position` / `side`** — Variants.
+- **`*Props` bags** — Rest, after styling.
 
 ### Destructuring parameter list
 
-Sort destructured props **A–Z**. Put `...rest` last. When both `children` and `...rest` are destructured, put **`children` before `...rest`**. Do not mirror interface group order in the parameter list.
+Use the **same group order** as the interface (variants → behavior → content → events → styling). Within each group, sort **A–Z**. Put `...rest` last. When `children` is destructured, keep it in the **content** group (not after styling). Do not use a flat A–Z list across all props.
 
 ### JSX attributes
 
-| Order | Attribute |
-| ----- | --------- |
-| 1 | `{...rest}` |
-| 2 | `key`, `ref`, `id` |
-| 3 | `data-*`, `aria-*` |
-| 4 | `className` |
-| 5 | Event handlers |
-| 6 | Other explicit props |
+Biome **`useSortedAttributes`** sorts JSX attributes **A–Z** on save/format — this applies only to JSX, not interface or destructuring order.
 
-Put **`{...rest}` first** in JSX — explicit props after override spread values. When you render child nodes, use nested JSX (`>{children}</>`), not a `children={…}` attribute.
+- Put **`{...rest}` first** (and other override spreads) so explicit props after the spread win.
+- Do not pass `children` as a JSX attribute (`children={…}`). When you compose children yourself, use nested JSX (`>{children}</>`).
 
 ### Do not
 
