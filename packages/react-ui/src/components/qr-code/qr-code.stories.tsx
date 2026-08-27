@@ -126,13 +126,18 @@ export const Download = meta.story({
             </div>
             <div className="flex items-center gap-2">
               <QrCode.Download asChild fileName="qr-code" mimeType="image/png">
-                <Button className="w-1/2" size="icon-md" variant="outline">
+                <Button
+                  aria-label="Download PNG"
+                  className="w-1/2"
+                  size="icon-md"
+                  variant="outline"
+                >
                   <DownloadIcon />
                   PNG
                 </Button>
               </QrCode.Download>
               <QrCode.Download asChild fileName="qr-code" mimeType="image/svg+xml">
-                <Button className="w-1/2" size="icon-md">
+                <Button aria-label="Download SVG" className="w-1/2" size="icon-md">
                   <DownloadIcon />
                   SVG
                 </Button>

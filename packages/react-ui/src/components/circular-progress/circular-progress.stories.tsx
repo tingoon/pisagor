@@ -82,6 +82,7 @@ export const Controlled = meta.story({
       <div className="flex flex-col items-center gap-2">
         <ButtonGroup>
           <Button
+            aria-label="Decrease"
             onClick={() => setValue(Math.max(0, value - 10))}
             size="icon-sm"
             variant="outline"
@@ -89,6 +90,7 @@ export const Controlled = meta.story({
             <MinusIcon />
           </Button>
           <Button
+            aria-label="Increase"
             onClick={() => setValue(Math.min(100, value + 10))}
             size="icon-sm"
             variant="outline"

@@ -9,7 +9,7 @@ export function AvatarGroupOverflow() {
       <Popover positioning={{ placement: "bottom-end" }}>
         <AvatarGroup.Count asChild>
           <Popover.Trigger asChild>
-            <Button pill size="icon-md" variant="ghost">
+            <Button aria-label="Show more members" pill size="icon-md" variant="ghost">
               +5
             </Button>
           </Popover.Trigger>

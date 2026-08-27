@@ -128,7 +128,7 @@ export const Actions = meta.story({
               <Table.Cell className="text-right">
                 <DropdownMenu positioning={{ placement: "left-end" }}>
                   <DropdownMenu.Trigger asChild>
-                    <Button size="icon-sm" variant="outline">
+                    <Button aria-label="More options" size="icon-sm" variant="outline">
                       <DotsThreeVerticalIcon />
                     </Button>
                   </DropdownMenu.Trigger>

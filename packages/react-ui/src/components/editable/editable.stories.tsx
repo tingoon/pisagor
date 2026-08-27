@@ -43,12 +43,12 @@ export const Default = meta.story({
       </Editable.Area>
       <Editable.Control>
         <Editable.CancelTrigger asChild>
-          <Button size="icon-md" variant="outline">
+          <Button aria-label="Cancel" size="icon-md" variant="outline">
             <XIcon />
           </Button>
         </Editable.CancelTrigger>
         <Editable.SubmitTrigger asChild>
-          <Button size="icon-md" variant="outline">
+          <Button aria-label="Save" size="icon-md" variant="outline">
             <CheckIcon />
           </Button>
         </Editable.SubmitTrigger>
@@ -72,12 +72,12 @@ export const Invalid = meta.story({
       </Editable.Area>
       <Editable.Control>
         <Editable.CancelTrigger asChild>
-          <Button size="icon-md" variant="outline">
+          <Button aria-label="Cancel" size="icon-md" variant="outline">
             <XIcon />
           </Button>
         </Editable.CancelTrigger>
         <Editable.SubmitTrigger asChild>
-          <Button size="icon-md" variant="outline">
+          <Button aria-label="Save" size="icon-md" variant="outline">
             <CheckIcon />
           </Button>
         </Editable.SubmitTrigger>
@@ -101,12 +101,12 @@ export const Disabled = meta.story({
       </Editable.Area>
       <Editable.Control>
         <Editable.CancelTrigger asChild>
-          <Button size="icon-md" variant="outline">
+          <Button aria-label="Cancel" size="icon-md" variant="outline">
             <XIcon />
           </Button>
         </Editable.CancelTrigger>
         <Editable.SubmitTrigger asChild>
-          <Button size="icon-md" variant="outline">
+          <Button aria-label="Save" size="icon-md" variant="outline">
             <CheckIcon />
           </Button>
         </Editable.SubmitTrigger>
@@ -127,12 +127,12 @@ export const Sizes = meta.story({
         </Editable.Area>
         <Editable.Control>
           <Editable.CancelTrigger asChild>
-            <Button size="icon-sm" variant="outline">
+            <Button aria-label="Cancel" size="icon-sm" variant="outline">
               <XIcon />
             </Button>
           </Editable.CancelTrigger>
           <Editable.SubmitTrigger asChild>
-            <Button size="icon-sm" variant="outline">
+            <Button aria-label="Save" size="icon-sm" variant="outline">
               <CheckIcon />
             </Button>
           </Editable.SubmitTrigger>
@@ -147,12 +147,12 @@ export const Sizes = meta.story({
         </Editable.Area>
         <Editable.Control>
           <Editable.CancelTrigger asChild>
-            <Button size="icon-md" variant="outline">
+            <Button aria-label="Cancel" size="icon-md" variant="outline">
               <XIcon />
             </Button>
           </Editable.CancelTrigger>
           <Editable.SubmitTrigger asChild>
-            <Button size="icon-md" variant="outline">
+            <Button aria-label="Save" size="icon-md" variant="outline">
               <CheckIcon />
             </Button>
           </Editable.SubmitTrigger>
@@ -167,12 +167,12 @@ export const Sizes = meta.story({
         </Editable.Area>
         <Editable.Control>
           <Editable.CancelTrigger asChild>
-            <Button size="icon-lg" variant="outline">
+            <Button aria-label="Cancel" size="icon-lg" variant="outline">
               <XIcon />
             </Button>
           </Editable.CancelTrigger>
           <Editable.SubmitTrigger asChild>
-            <Button size="icon-lg" variant="outline">
+            <Button aria-label="Save" size="icon-lg" variant="outline">
               <CheckIcon />
             </Button>
           </Editable.SubmitTrigger>
@@ -286,12 +286,12 @@ export const OrientationHorizontal = meta.story({
       </Editable.Area>
       <Editable.Control>
         <Editable.CancelTrigger asChild>
-          <Button size="icon-md" variant="outline">
+          <Button aria-label="Cancel" size="icon-md" variant="outline">
             <XIcon />
           </Button>
         </Editable.CancelTrigger>
         <Editable.SubmitTrigger asChild>
-          <Button size="icon-md" variant="outline">
+          <Button aria-label="Save" size="icon-md" variant="outline">
             <CheckIcon />
           </Button>
         </Editable.SubmitTrigger>
@@ -315,12 +315,12 @@ export const OrientationVertical = meta.story({
       </Editable.Area>
       <Editable.Control>
         <Editable.CancelTrigger asChild>
-          <Button size="icon-md" variant="outline">
+          <Button aria-label="Cancel" size="icon-md" variant="outline">
             <XIcon />
           </Button>
         </Editable.CancelTrigger>
         <Editable.SubmitTrigger asChild>
-          <Button size="icon-md" variant="outline">
+          <Button aria-label="Save" size="icon-md" variant="outline">
             <CheckIcon />
           </Button>
         </Editable.SubmitTrigger>

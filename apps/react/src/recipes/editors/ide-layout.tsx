@@ -46,6 +46,7 @@ export function IdeLayout({ className }: IdeLayoutProps) {
               <Tabs.Trigger value={activeItem}>
                 {activeItem}
                 <Button
+                  aria-label="Close"
                   onClick={() => setActiveItem("")}
                   size="icon-xs"
                   type="button"

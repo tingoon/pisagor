@@ -46,7 +46,7 @@ export const Default = meta.story({
         <Item.Description>An item with title and description.</Item.Description>
       </Item.Content>
       <Item.Actions>
-        <Button size="icon-sm" variant="outline">
+        <Button aria-label="More options" size="icon-sm" variant="outline">
           <DotsThreeIcon />
         </Button>
       </Item.Actions>
@@ -240,7 +240,7 @@ export const Group = meta.story({
             <Item.Description>{person.email}</Item.Description>
           </Item.Content>
           <Item.Actions>
-            <Button className="rounded-full" size="icon-md" variant="ghost">
+            <Button aria-label="Add" className="rounded-full" size="icon-md" variant="ghost">
               <PlusIcon />
             </Button>
           </Item.Actions>

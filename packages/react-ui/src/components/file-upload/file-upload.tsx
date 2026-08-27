@@ -222,8 +222,13 @@ export function FileUploadList({ className, ...rest }: FileUploadListProps) {
             </div>
 
             <FileUploadItemDeleteTrigger asChild>
-              <Button className={itemSlots.deleteButton()} size="icon-xs" variant="ghost">
-                <XIcon />
+              <Button
+                aria-label="Remove file"
+                className={itemSlots.deleteButton()}
+                size="icon-xs"
+                variant="ghost"
+              >
+                <XIcon aria-hidden />
               </Button>
             </FileUploadItemDeleteTrigger>
           </FileUploadItem>

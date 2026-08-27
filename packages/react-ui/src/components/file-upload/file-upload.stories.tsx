@@ -181,7 +181,12 @@ export const CustomPreview = meta.story({
                 <FileUpload.ItemPreviewImage />
               </FileUpload.ItemPreview>
               <FileUpload.ItemDeleteTrigger asChild>
-                <Button className="absolute -top-2 -right-2" pill size="icon-xs">
+                <Button
+                  aria-label="Remove file"
+                  className="absolute -top-2 -right-2"
+                  pill
+                  size="icon-xs"
+                >
                   <XIcon />
                 </Button>
               </FileUpload.ItemDeleteTrigger>

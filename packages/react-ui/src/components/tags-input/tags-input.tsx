@@ -227,6 +227,7 @@ export function TagsInputClearTrigger({
   return (
     <TagsInputPrimitive.ClearTrigger {...rest} asChild>
       <InputGroup.Button
+        aria-label="Clear"
         className={slots.clearTrigger({ className })}
         size="icon-xs"
         variant="ghost"

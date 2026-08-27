@@ -162,7 +162,7 @@ export const AlignBlockStart = meta.story({
         <InputGroup.Addon align="block-start">
           <FileCodeIcon className="text-muted-foreground" />
           <InputGroup.Text className="font-mono">script.js</InputGroup.Text>
-          <InputGroup.Button className="ml-auto" size="icon-xs">
+          <InputGroup.Button aria-label="Copy" className="ml-auto" size="icon-xs">
             <CopyIcon />
             <span className="sr-only">Copy</span>
           </InputGroup.Button>

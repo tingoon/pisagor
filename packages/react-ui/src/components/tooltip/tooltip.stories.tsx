@@ -22,7 +22,7 @@ const meta = preview.meta({
 export const Default = meta.story({
   args: {
     children: (
-      <Button size="icon-md" variant="outline">
+      <Button aria-label="Bold" size="icon-md" variant="outline">
         <TextBIcon />
       </Button>
     ),

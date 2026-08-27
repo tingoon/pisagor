@@ -61,13 +61,13 @@ export const Default = meta.story({
 export const OrientationHorizontal = meta.story({
   render: () => (
     <ButtonGroup>
-      <Button size="icon-md" variant="outline">
+      <Button aria-label="Skip back" size="icon-md" variant="outline">
         <SkipBackIcon />
       </Button>
-      <Button size="icon-md" variant="outline">
+      <Button aria-label="Play" size="icon-md" variant="outline">
         <PlayIcon />
       </Button>
-      <Button size="icon-md" variant="outline">
+      <Button aria-label="Skip forward" size="icon-md" variant="outline">
         <SkipForwardIcon />
       </Button>
     </ButtonGroup>
@@ -80,10 +80,10 @@ export const OrientationVertical = meta.story({
   },
   render: (args) => (
     <ButtonGroup {...args}>
-      <Button size="icon-md" variant="outline">
+      <Button aria-label="Add" size="icon-md" variant="outline">
         <PlusIcon />
       </Button>
-      <Button size="icon-md" variant="outline">
+      <Button aria-label="Remove" size="icon-md" variant="outline">
         <MinusIcon />
       </Button>
     </ButtonGroup>
@@ -94,21 +94,21 @@ export const Nested = meta.story({
   render: () => (
     <ButtonGroup>
       <ButtonGroup>
-        <Button size="icon-md" variant="outline">
+        <Button aria-label="Italic" size="icon-md" variant="outline">
           <TextItalicIcon />
         </Button>
-        <Button size="icon-md" variant="outline">
+        <Button aria-label="Bold" size="icon-md" variant="outline">
           <TextBIcon />
         </Button>
-        <Button size="icon-md" variant="outline">
+        <Button aria-label="Underline" size="icon-md" variant="outline">
           <TextUnderlineIcon />
         </Button>
       </ButtonGroup>
       <ButtonGroup>
-        <Button size="icon-md" variant="outline">
+        <Button aria-label="Image" size="icon-md" variant="outline">
           <ImageSquareIcon />
         </Button>
-        <Button size="icon-md" variant="outline">
+        <Button aria-label="Code" size="icon-md" variant="outline">
           <BracketsCurlyIcon />
         </Button>
       </ButtonGroup>
@@ -119,11 +119,11 @@ export const Nested = meta.story({
 export const WithSeparator = meta.story({
   render: () => (
     <ButtonGroup>
-      <Button size="icon-md" variant="secondary">
+      <Button aria-label="Remove" size="icon-md" variant="secondary">
         <MinusIcon />
       </Button>
       <ButtonGroup.Separator />
-      <Button size="icon-md" variant="secondary">
+      <Button aria-label="Add" size="icon-md" variant="secondary">
         <PlusIcon />
       </Button>
     </ButtonGroup>

@@ -26,12 +26,12 @@ export function EditableUserCard({ className }: EditableUserCardProps) {
               </Editable.Area>
               <Editable.Control>
                 <Editable.CancelTrigger asChild>
-                  <Button size="icon-md" variant="outline">
+                  <Button aria-label="Cancel" size="icon-md" variant="outline">
                     <XIcon />
                   </Button>
                 </Editable.CancelTrigger>
                 <Editable.SubmitTrigger asChild>
-                  <Button size="icon-md" variant="outline">
+                  <Button aria-label="Save" size="icon-md" variant="outline">
                     <CheckIcon />
                   </Button>
                 </Editable.SubmitTrigger>
@@ -49,12 +49,12 @@ export function EditableUserCard({ className }: EditableUserCardProps) {
               </Editable.Area>
               <Editable.Control>
                 <Editable.CancelTrigger asChild>
-                  <Button size="icon-md" variant="outline">
+                  <Button aria-label="Cancel" size="icon-md" variant="outline">
                     <XIcon />
                   </Button>
                 </Editable.CancelTrigger>
                 <Editable.SubmitTrigger asChild>
-                  <Button size="icon-md" variant="outline">
+                  <Button aria-label="Save" size="icon-md" variant="outline">
                     <CheckIcon />
                   </Button>
                 </Editable.SubmitTrigger>

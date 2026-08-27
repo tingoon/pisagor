@@ -21,7 +21,7 @@ const meta = preview.meta({
 
 export const Default = meta.story({
   render: () => (
-    <Button size="icon-md" variant="outline">
+    <Button aria-label="Close" size="icon-md" variant="outline">
       <span aria-hidden="true">×</span>
       <VisuallyHidden>Close</VisuallyHidden>
     </Button>

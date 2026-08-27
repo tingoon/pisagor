@@ -83,6 +83,7 @@ export const Controlled = meta.story({
           Controlled progress
           <ButtonGroup className="ml-auto">
             <Button
+              aria-label="Decrease"
               onClick={() => setValue(Math.max(0, value - 10))}
               size="icon-sm"
               variant="outline"
@@ -90,6 +91,7 @@ export const Controlled = meta.story({
               <MinusIcon />
             </Button>
             <Button
+              aria-label="Increase"
               onClick={() => setValue(Math.min(100, value + 10))}
               size="icon-sm"
               variant="outline"

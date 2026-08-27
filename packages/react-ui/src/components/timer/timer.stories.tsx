@@ -209,12 +209,12 @@ export const Interval = meta.story({
           </Timer.Area>
           <Timer.Control className="w-full justify-center">
             <Timer.Play asChild>
-              <Button size="icon-sm" variant="ghost">
+              <Button aria-label="Play" size="icon-sm" variant="ghost">
                 <PlayIcon />
               </Button>
             </Timer.Play>
             <Timer.Pause asChild>
-              <Button size="icon-sm" variant="ghost">
+              <Button aria-label="Pause" size="icon-sm" variant="ghost">
                 <PauseIcon />
               </Button>
             </Timer.Pause>

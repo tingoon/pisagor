@@ -25,7 +25,12 @@ export const Default = meta.story({
     const [swap, setSwap] = useState(false);
 
     return (
-      <Button onClick={() => setSwap(!swap)} size="icon-lg" variant="outline">
+      <Button
+        aria-label="Toggle theme"
+        onClick={() => setSwap(!swap)}
+        size="icon-lg"
+        variant="outline"
+      >
         <Swap off={<SunIcon />} on={<MoonIcon />} swap={swap} />
       </Button>
     );
@@ -42,19 +47,44 @@ export const Variants = meta.story({
 
     return (
       <div className="flex flex-wrap items-center gap-2">
-        <Button onClick={() => setFade(!fade)} size="icon-lg" variant="outline">
+        <Button
+          aria-label="Toggle theme"
+          onClick={() => setFade(!fade)}
+          size="icon-lg"
+          variant="outline"
+        >
           <Swap off={<SunIcon />} on={<MoonIcon />} swap={fade} variant="fade" />
         </Button>
-        <Button onClick={() => setBlur(!blur)} size="icon-lg" variant="outline">
+        <Button
+          aria-label="Toggle theme"
+          onClick={() => setBlur(!blur)}
+          size="icon-lg"
+          variant="outline"
+        >
           <Swap off={<SunIcon />} on={<MoonIcon />} swap={blur} variant="blur" />
         </Button>
-        <Button onClick={() => setFlip(!flip)} size="icon-lg" variant="outline">
+        <Button
+          aria-label="Toggle theme"
+          onClick={() => setFlip(!flip)}
+          size="icon-lg"
+          variant="outline"
+        >
           <Swap off={<SunIcon />} on={<MoonIcon />} swap={flip} variant="flip" />
         </Button>
-        <Button onClick={() => setRotate(!rotate)} size="icon-lg" variant="outline">
+        <Button
+          aria-label="Toggle theme"
+          onClick={() => setRotate(!rotate)}
+          size="icon-lg"
+          variant="outline"
+        >
           <Swap off={<SunIcon />} on={<MoonIcon />} swap={rotate} variant="rotate" />
         </Button>
-        <Button onClick={() => setScale(!scale)} size="icon-lg" variant="outline">
+        <Button
+          aria-label="Toggle theme"
+          onClick={() => setScale(!scale)}
+          size="icon-lg"
+          variant="outline"
+        >
           <Swap off={<SunIcon />} on={<MoonIcon />} swap={scale} variant="scale" />
         </Button>
       </div>
