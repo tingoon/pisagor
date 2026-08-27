@@ -66,7 +66,7 @@ export function IdeLayout({ className }: IdeLayoutProps) {
   );
 }
 
-function TreeNode({ node, indexPath, ...rest }: NodeProviderProps) {
+function TreeNode({ indexPath, node, ...rest }: NodeProviderProps) {
   return (
     <TreeView.NodeProvider {...rest} indexPath={indexPath} node={node}>
       {node.children ? (

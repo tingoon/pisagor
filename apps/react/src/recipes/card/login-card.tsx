@@ -8,8 +8,8 @@ export interface LoginCardProps {
 }
 
 export function LoginCard({
-  className,
   primaryActionLabel = "Send one-time code",
+  className,
 }: LoginCardProps) {
   return (
     <Card className={cn("w-full", className)}>

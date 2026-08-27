@@ -33,12 +33,12 @@ export interface StandardAppShellProps extends ComponentProps<"div"> {
 
 export function StandardAppShell({
   children,
-  className,
   title = "Dashboard",
+  className,
   ...rest
 }: StandardAppShellProps) {
   return (
-    <AppShell className={cn("min-h-svh", className)} {...rest}>
+    <AppShell {...rest} className={cn("min-h-svh", className)}>
       <StandardAppShellNavigation />
 
       <AppShell.Rail defaultActiveRailId="home" placement="start">
