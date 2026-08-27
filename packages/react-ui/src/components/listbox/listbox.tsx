@@ -1,8 +1,4 @@
-import {
-  type CollectionItem,
-  createListCollection,
-  type ListCollection,
-} from "@ark-ui/react/collection";
+import { type CollectionItem, createListCollection } from "@ark-ui/react/collection";
 import {
   Listbox as ListboxPrimitive,
   type ListboxRootProps as ListboxRootPropsPrimitive,
@@ -26,13 +22,13 @@ interface ListboxPresetItem {
 }
 
 export interface ListboxRootProps<T extends CollectionItem = CollectionItem>
-  extends Omit<ListboxRootPropsPrimitive<T>, "collection" | "onValueChange"> {
-  collection?: ListCollection<T>;
+  extends Omit<ListboxRootPropsPrimitive<T>, "onValueChange"> {
   onValueChange?: (value: string | string[]) => void;
 }
 
-export interface ListboxProps extends Omit<ListboxRootProps, "children"> {
+export interface ListboxProps extends Omit<ListboxRootProps, "children" | "collection"> {
   items?: ListboxPresetItem[];
+  collection?: ListboxRootProps["collection"];
 }
 
 export interface ListboxItemProps
@@ -60,7 +56,6 @@ export type ListboxEmptyProps = ComponentProps<typeof ListboxPrimitive.Empty>;
 // #region Parts
 export function ListboxRoot<T extends CollectionItem = CollectionItem>({
   className,
-  collection: collectionProp,
   children,
   onValueChange,
   ...rest
@@ -72,7 +67,6 @@ export function ListboxRoot<T extends CollectionItem = CollectionItem>({
       <ListboxPrimitive.Root
         {...rest}
         className={slots.base({ className })}
-        collection={collectionProp as ListCollection<T>}
         onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
       >
         {children}
@@ -157,21 +151,25 @@ export function ListboxShortcut(props: DropdownMenuShortcutProps) {
 // #endregion
 
 // #region Shorthand
-export function ListboxShorthand({ items, collection: collectionProp, ...rest }: ListboxProps) {
-  const collection = items
-    ? createListCollection({
-        items,
-        itemToString: (item) => item.value,
-        itemToValue: (item) => item.value,
-      })
-    : collectionProp;
+export function ListboxShorthand({
+  items = [],
+  collection: collectionProp,
+  ...rest
+}: ListboxProps) {
+  const collection =
+    collectionProp ??
+    createListCollection({
+      items,
+      itemToString: (item) => item.value,
+      itemToValue: (item) => item.value,
+    });
 
   return (
     <ListboxRoot {...rest} collection={collection}>
-      {items && (
+      {items.length > 0 && (
         <ListboxContent>
           {items.map((item) => (
-            <ListboxItem item={item as unknown as CollectionItem} key={item.value}>
+            <ListboxItem item={item} key={item.value}>
               <ListboxItemText>{item.label}</ListboxItemText>
             </ListboxItem>
           ))}

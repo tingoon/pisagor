@@ -1,5 +1,4 @@
-import type { SelectRootProps } from "@pisagor/react";
-import { Select } from "@pisagor/react";
+import { createListCollection, Select, type SelectRootProps } from "@pisagor/react";
 import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
 
 // #region Types
@@ -10,7 +9,10 @@ interface SelectOption {
 
 export interface SelectFieldProps
   extends FieldPresentationProps,
-    Omit<SelectRootProps, "children" | "invalid" | "name" | "onValueChange" | "value"> {
+    Omit<
+      SelectRootProps,
+      "children" | "collection" | "invalid" | "name" | "onValueChange" | "value"
+    > {
   items: Array<SelectOption | string>;
   name?: string;
   onBlur?: () => void;
@@ -41,6 +43,7 @@ export function SelectField({
   const normalizedItems = items.map((item) =>
     typeof item === "string" ? { label: item, value: item } : item,
   );
+  const collection = createListCollection({ items: normalizedItems });
 
   return (
     <FieldShell
@@ -55,6 +58,7 @@ export function SelectField({
     >
       <Select.Root
         {...selectProps}
+        collection={collection}
         invalid={invalid}
         name={name}
         onFocusOutside={onBlur}

@@ -1,8 +1,4 @@
-import {
-  type CollectionItem,
-  createListCollection,
-  type ListCollection,
-} from "@ark-ui/react/collection";
+import { type CollectionItem, createListCollection } from "@ark-ui/react/collection";
 import {
   type ComboboxList as ComboboxListPrimitive,
   Combobox as ComboboxPrimitive,
@@ -30,15 +26,14 @@ interface ComboboxPresetItem {
 
 export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   ComboboxRootPropsPrimitive<T>,
-  "collection" | "onValueChange"
+  "onValueChange"
 > & {
   /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
   variant?: FormControlVariant;
-  collection?: ListCollection<T>;
   onValueChange?: (value: string[]) => void;
 };
 
-export interface ComboboxProps extends Omit<ComboboxRootProps, "children"> {
+export interface ComboboxProps extends Omit<ComboboxRootProps, "children" | "collection"> {
   items?: Array<ComboboxPresetItem | string>;
   /**
    * Whether to show a clear button when the input has a value.
@@ -105,9 +100,6 @@ export type ComboboxListProps = ComponentProps<typeof ComboboxListPrimitive>;
 // #region Parts
 export function ComboboxRoot<T extends CollectionItem = CollectionItem>({
   openOnClick = true,
-  lazyMount = true,
-  unmountOnExit = true,
-  collection: collectionProp,
   children,
   onValueChange,
   variant,
@@ -119,12 +111,9 @@ export function ComboboxRoot<T extends CollectionItem = CollectionItem>({
     <ComboboxRootContext value={{ slots }}>
       <FormControlVariantProvider value={variant}>
         <ComboboxPrimitive.Root
-          lazyMount={lazyMount}
           onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
           openOnClick={openOnClick}
-          unmountOnExit={unmountOnExit}
           {...rest}
-          collection={collectionProp as ListCollection<T>}
         >
           {children}
         </ComboboxPrimitive.Root>

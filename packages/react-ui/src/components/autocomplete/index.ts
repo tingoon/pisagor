@@ -15,7 +15,7 @@ import {
   AutocompleteTrigger,
 } from "./autocomplete";
 
-export type { AutocompleteProps } from "./autocomplete";
+export type { AutocompleteProps, AutocompleteRootProps } from "./autocomplete";
 
 export const Autocomplete = Object.assign(AutocompleteShorthand, {
   ClearTrigger: AutocompleteClearTrigger,

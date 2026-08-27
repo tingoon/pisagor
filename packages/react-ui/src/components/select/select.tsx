@@ -1,9 +1,5 @@
 import { Portal } from "@ark-ui/react";
-import {
-  type CollectionItem,
-  createListCollection,
-  type ListCollection,
-} from "@ark-ui/react/collection";
+import { type CollectionItem, createListCollection } from "@ark-ui/react/collection";
 import { ark } from "@ark-ui/react/factory";
 import {
   Select as SelectPrimitive,
@@ -35,17 +31,16 @@ interface SelectPresetItem {
 
 export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
   SelectRootPropsPrimitive<T>,
-  "collection" | "onValueChange"
+  "onValueChange"
 > & {
   /**
    * Visual shell variant. When omitted, resolves from the nearest `Surface` context.
    */
   variant?: FormControlVariant;
-  collection?: ListCollection<T>;
   onValueChange?: (value: string | string[]) => void;
 };
 
-export interface SelectProps extends Omit<SelectRootProps, "children"> {
+export interface SelectProps extends Omit<SelectRootProps, "children" | "collection"> {
   items?: Array<SelectPresetItem | string>;
   /**
    * Whether to show a clear button when a value is selected.
@@ -91,10 +86,7 @@ export interface SelectEmptyProps extends ComponentProps<typeof ark.div> {}
 export const SelectContext = SelectPrimitive.Context;
 
 export function SelectRoot<T extends CollectionItem = CollectionItem>({
-  lazyMount = true,
-  unmountOnExit = true,
   children,
-  collection: collectionProp,
   onValueChange,
   variant,
   ...rest
@@ -105,11 +97,8 @@ export function SelectRoot<T extends CollectionItem = CollectionItem>({
     <SelectRootContext value={{ slots }}>
       <FormControlVariantProvider value={variant}>
         <SelectPrimitive.Root
-          lazyMount={lazyMount}
           onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
-          unmountOnExit={unmountOnExit}
           {...rest}
-          collection={collectionProp as ListCollection<T>}
         >
           {children}
 

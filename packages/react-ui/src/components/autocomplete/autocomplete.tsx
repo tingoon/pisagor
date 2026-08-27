@@ -1,6 +1,4 @@
-import type { CollectionItem, ListCollection } from "@ark-ui/react/collection";
-import type { ComboboxRootProps as ComboboxRootPropsPrimitive } from "@ark-ui/react/combobox";
-import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
+import type { CollectionItem } from "@ark-ui/react/collection";
 import {
   Combobox,
   type ComboboxClearTriggerProps,
@@ -12,6 +10,7 @@ import {
   type ComboboxItemGroupProps,
   type ComboboxItemProps,
   type ComboboxListProps,
+  type ComboboxRootProps,
   type ComboboxTriggerProps,
 } from "../combobox";
 import { Separator, type SeparatorProps } from "../separator";
@@ -22,17 +21,9 @@ interface AutocompletePresetItem {
   value: string;
 }
 
-type AutocompleteRootProps<T extends CollectionItem = CollectionItem> = Omit<
-  ComboboxRootPropsPrimitive<T>,
-  "collection" | "onValueChange"
-> & {
-  /** Visual shell variant. When omitted, resolves from the nearest `Surface` context. */
-  variant?: FormControlVariant;
-  collection?: ListCollection<T>;
-  onValueChange?: (value: string[]) => void;
-};
+export type AutocompleteRootProps<T extends CollectionItem = CollectionItem> = ComboboxRootProps<T>;
 
-export interface AutocompleteProps extends Omit<AutocompleteRootProps, "children"> {
+export interface AutocompleteProps extends Omit<AutocompleteRootProps, "children" | "collection"> {
   items?: Array<AutocompletePresetItem | string>;
   /**
    * Whether to show a clear button when the input has a value.
