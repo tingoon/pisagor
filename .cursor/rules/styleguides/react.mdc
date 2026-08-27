@@ -20,7 +20,7 @@ alwaysApply: false
 
 - **Component names:** PascalCase (e.g. `Button`, `DataTable`).
 - **Event handlers:** `onX` for props (e.g. `onSubmit`), `handleX` for local handlers (e.g. `handleClick`).
-- **Boolean props:** `is` for state, `can` for capability, `should` for intent, `has` for existence (e.g. `isOpen`, `canClose`, `shouldTruncate`, `hasError`).
+- **Boolean props:** Match Ark/DOM/HTML names for primitives (`disabled`, `open`, `checked`, `clearable`, `defaultOpen`, …). Do not rename headless or native booleans to `is`/`can`/`should`/`has`. Convenience flags that are not a primitive mirror may use those prefixes (e.g. `isLoading`).
 
 ## Component implementation
 
@@ -39,7 +39,7 @@ Declare props in this **group order**. Skip groups that do not apply; do not reo
 | Order | Group | Examples |
 | ----- | ----- | -------- |
 | 1 | **Variants & appearance** | `variant`, `size`, `shape`, `pill` |
-| 2 | **Behavior & state** | `isLoading`, `isDisabled`, `open`, `defaultOpen` |
+| 2 | **Behavior & state** | `isLoading`, `disabled`, `open`, `defaultOpen`, `clearable` |
 | 3 | **Content** | `title`, `description`, `icon`, `label`, `fallback`, `children` |
 | 4 | **Event handlers** | `onClick`, `onSubmit`, `onOpenChange` |
 | 5 | **Styling** | `className`, `classNames` |
@@ -59,16 +59,15 @@ Sort destructured props **A–Z**. Put `...rest` last. When both `children` and 
 | 4 | `className` |
 | 5 | Event handlers |
 | 6 | Other explicit props |
-| 7 | `children` |
 
-Put **`{...rest}` first** in JSX — explicit props after override spread values.
+Put **`{...rest}` first** in JSX — explicit props after override spread values. When you render child nodes, use nested JSX (`>{children}</>`), not a `children={…}` attribute.
 
 ### Do not
 
 - Do not list on the interface what `extends ComponentProps<…>` already provides.
 - Do not use `rootClassName` — root styling is always `className` (see [React Component Patterns → Styling](../integrations/react-component.mdc#styling)).
 - Do not put visual styling on sub-element `*Props` bags — those are for content/behavior only; use `className` on the part or `classNames` on multi-slot roots.
-- Do not leave `children` in `...rest` or pass it as a JSX attribute (`children={…}` / `{...rest}` on a self-closing tag). Destructure `children` and render it as nested JSX (`>{children}</>`).
+- Do not pass `children` as a JSX attribute (`children={…}`). Leaving `children` in `...rest` for passthrough (including self-closing `{...rest}`) is fine. When you compose children yourself, destructure and render nested JSX (`>{children}</>`).
 
 ## Component body order
 
@@ -105,8 +104,11 @@ Inside a component function, declare logic top-to-bottom in this order. Skip ste
 
 ### Performance
 
-- Use **useMemo / useCallback / `React.memo`** when profiling or when passing stable references to memoized children or effect deps.
+React Compiler is **not** enabled in this repo yet — keep manual memoization where it matters.
+
+- Use **useMemo / useCallback / `React.memo`** when profiling or when passing stable references to memoized children or effect deps (including habit cases like stable `tv()` slot objects on roots).
 - Do not apply **useMemo / useCallback / `React.memo`** by default everywhere.
+- When the Compiler is adopted, revisit and prune redundant memoization.
 
 ## JSX
 
@@ -119,3 +121,4 @@ Ecosystem defaults not covered above:
 
 - Do not use **`forwardRef`** — accept `ref` as a regular prop (React 19).
 - Do not use **`defaultProps`** on function components — use destructuring defaults.
+- Prefer **Context as provider** — render `<FooContext value={…}>`, not `<FooContext.Provider value={…}>` (React 19).

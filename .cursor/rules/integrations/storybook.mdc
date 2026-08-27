@@ -60,7 +60,17 @@ Prefer `@pisagor/react` for light UI imports in stories (including the component
 
 **Compound components:** declare `subcomponents` on meta — map each exported part (`Trigger`, `Content`, `Item`, …).
 
-**Title:** `Components/<Category>/<Component Name>` — use an existing category when possible:
+**Title:** package top-level prefix, then path:
+
+| Prefix | Package / surface |
+| ------ | ----------------- |
+| `Components/<Category>/<Name>` | `@pisagor/react` / `@pisagor/vue` UI components |
+| `Forms/…` | `@pisagor/react-form` / `@pisagor/vue-form` |
+| `Blocks/…` | blocks packages |
+| `Recipes/…` | recipe stories in the runner |
+| `Charts/…` | `@pisagor/react/charts` (e.g. `Charts/Bar`) |
+
+For `Components/…`, use an existing category when possible:
 
 `Actions`, `Data Display`, `Feedback`, `Forms`, `Layout`, `Media`, `Marketing`, `Navigation`, `Overlay`, `Utilities`
 
@@ -95,7 +105,7 @@ parameters: {
 
 ## Tags
 
-Use `tags` only for **status** — not for taxonomy, aliases, or package scope. Category and package live in `title` only (`Components/…`, `Forms/…`, `Recipes/…`).
+Use `tags` only for **status** — not for taxonomy, aliases, or package scope. Category and package live in `title` only (`Components/…`, `Forms/…`, `Blocks/…`, `Recipes/…`, `Charts/…`).
 
 ```tsx
 const meta = preview.meta({
@@ -138,7 +148,7 @@ const meta = preview.meta({
 
 **Autodocs:** enabled globally in each runner’s `preview` — do not set per story.
 
-New `@pisagor/react` / `@pisagor/vue` component stories: set `title`, `parameters.metadata.api`, `parameters.metadata.taxonomy`, and `parameters.docs.description.component`; add `aliases` when helpful. `@pisagor/react-form` / `@pisagor/vue-form` stories use `Forms/…` titles; blocks packages use `Blocks/…` titles; recipes use `Recipes/…` titles. Copy a sibling story when unsure.
+New `@pisagor/react` / `@pisagor/vue` component stories: set `title`, `parameters.metadata.api`, `parameters.metadata.taxonomy`, and `parameters.docs.description.component`; add `aliases` when helpful. `@pisagor/react-form` / `@pisagor/vue-form` stories use `Forms/…` titles; blocks packages use `Blocks/…` titles; recipes use `Recipes/…` titles; chart stories use `Charts/…` titles. Copy a sibling story when unsure.
 
 ## File layout
 

@@ -2,12 +2,19 @@
 
 ## Setup
 
-1. Install [Bun](https://bun.sh) 1.3.14.
-2. `bun install` from the repo root.
-3. `turbo dev --filter=react` — React at http://127.0.0.1:3001.
-   Optional: `turbo dev --filter=vue` — Vue at http://127.0.0.1:3002.
+Recommended: open the repo in a [Dev Container](https://containers.dev/) (Docker + VS Code/Cursor Dev Containers extension → **Open in Container**). Bun and tooling are already in the image.
 
-Dev Containers are optional.
+Then from the repo root:
+
+```bash
+bun install
+turbo dev --filter=react
+# optional: turbo dev --filter=vue
+```
+
+React Storybook: http://127.0.0.1:3001. Vue: http://127.0.0.1:3002.
+
+Without a container, install [Bun](https://bun.sh) locally and run the same commands.
 
 ## Checks
 

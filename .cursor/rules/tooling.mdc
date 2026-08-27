@@ -50,7 +50,12 @@ Skip Knip for narrow one-line or config-only fixes unless the user asks or the c
 
 ## Bun
 
-- Bun only — no npm/yarn/pnpm. Version pinned in [`.devcontainer/Dockerfile`](../../.devcontainer/Dockerfile) and [CI](../../.github/workflows/ci.yml).
+- Bun only — no npm/yarn/pnpm.
+- **SSOT:** root [`package.json`](../../package.json) `packageManager`. Keep machine pins in lockstep with that field — do not hardcode a different Bun release in:
+  - [`.devcontainer/Dockerfile`](../../.devcontainer/Dockerfile) (`oven/bun:<version>-slim`)
+  - [CI](../../.github/workflows/ci.yml) (`bun-version`)
+  - Root `@types/bun` (same major.minor.patch when published)
+- Human docs (`README`, `CONTRIBUTING`, onboarding, …) say install Bun — **do not** repeat the version number there.
 
 ## Verify
 

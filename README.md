@@ -48,7 +48,7 @@ Import styles once in the app CSS (Tailwind v4). Point `@source` at the package 
 
 ## Development
 
-Requires [Bun](https://bun.sh) 1.3.14 (see `packageManager` in `package.json`).
+Requires [Bun](https://bun.sh).
 
 ```bash
 bun install

@@ -2,7 +2,7 @@
 
 Set up the UI library monorepo.
 
-**Getting started:** install [Bun](https://bun.sh) 1.3.14, then `bun install` from the repo root. Dev Containers are optional ([README](../../README.md)).
+**Getting started:** install [Bun](https://bun.sh), then `bun install` from the repo root. Dev Containers are optional ([README](../../README.md)).
 
 ## Conversation flow
 
