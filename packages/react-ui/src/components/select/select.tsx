@@ -153,8 +153,8 @@ export function SelectSeparator({ className, ...rest }: SeparatorProps) {
     <Separator
       {...rest}
       className={slots.separator({ className })}
-      dataPart="separator"
-      dataScope="select"
+      data-part="separator"
+      data-scope="select"
     />
   );
 }

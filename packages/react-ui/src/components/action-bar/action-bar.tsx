@@ -243,8 +243,8 @@ export function ActionBarSeparator({ className, ...rest }: ActionBarSeparatorPro
     <Separator
       {...rest}
       className={slots.separator({ className })}
-      dataPart="separator"
-      dataScope="action-bar"
+      data-part="separator"
+      data-scope="action-bar"
       orientation="vertical"
     />
   );

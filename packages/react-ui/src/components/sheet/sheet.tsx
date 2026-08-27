@@ -12,7 +12,7 @@ import {
   type DialogDescriptionProps,
   type DialogFooterProps,
   type DialogHeaderProps,
-  type DialogProps,
+  type DialogRootProps,
   type DialogTitleProps,
 } from "../dialog";
 import { SheetContext, useSheet } from "./sheet.context";
@@ -33,7 +33,7 @@ export interface SheetContentProps
   showCloseButton?: boolean;
 }
 
-export type SheetProps = DialogProps;
+export type SheetProps = DialogRootProps;
 
 export type SheetTriggerProps = ComponentProps<typeof DialogPrimitive.Trigger>;
 
@@ -46,7 +46,7 @@ export function SheetRoot(props: SheetProps) {
 
   return (
     <SheetContext value={{ slots }}>
-      <Dialog {...props} />
+      <Dialog.Root {...props} />
     </SheetContext>
   );
 }
@@ -110,7 +110,7 @@ export function SheetContent({
 }
 
 export function SheetHeader(props: DialogHeaderProps) {
-  return <Dialog.Header dataPart="header" dataScope="sheet" {...props} />;
+  return <Dialog.Header data-part="header" data-scope="sheet" {...props} />;
 }
 
 export function SheetTitle(props: DialogTitleProps) {
@@ -128,8 +128,8 @@ export function SheetBody({ className, ...rest }: DialogBodyProps) {
     <Dialog.Body
       {...rest}
       className={slots.body({ className })}
-      dataPart="body"
-      dataScope="sheet"
+      data-part="body"
+      data-scope="sheet"
     />
   );
 }
@@ -145,8 +145,8 @@ export function SheetFooter({ className, ...rest }: DialogFooterProps) {
     <Dialog.Footer
       {...rest}
       className={slots.footer({ className })}
-      dataPart="footer"
-      dataScope="sheet"
+      data-part="footer"
+      data-scope="sheet"
     />
   );
 }

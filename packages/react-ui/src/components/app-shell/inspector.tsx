@@ -196,7 +196,7 @@ export function AppShellInspectorTrigger({
     <AppShellSideTrigger
       {...rest}
       className={className}
-      dataPart="inspector-trigger"
+      data-part="inspector-trigger"
       defaultOff={<ArrowsOutLineHorizontalIcon />}
       defaultOn={<ArrowsInLineHorizontalIcon />}
       off={off}

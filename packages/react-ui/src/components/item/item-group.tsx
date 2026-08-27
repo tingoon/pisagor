@@ -36,8 +36,8 @@ export function ItemSeparator({ className, ...rest }: SeparatorProps) {
     <Separator
       {...rest}
       className={slots.separator({ className })}
-      dataPart="separator"
-      dataScope="item"
+      data-part="separator"
+      data-scope="item"
       orientation="horizontal"
     />
   );

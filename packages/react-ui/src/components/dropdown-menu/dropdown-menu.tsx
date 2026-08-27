@@ -49,10 +49,7 @@ export type DropdownMenuTriggerItemProps = ComponentProps<typeof MenuPrimitive.T
 
 export type DropdownMenuContentProps = MenuContentProps;
 
-export type DropdownMenuShortcutProps = ComponentProps<typeof ark.span> & {
-  dataPart?: string;
-  dataScope?: string;
-};
+export type DropdownMenuShortcutProps = ComponentProps<typeof ark.span>;
 // #endregion
 
 // #region Parts
@@ -236,21 +233,16 @@ export function DropdownMenuTriggerItem({
   );
 }
 
-export function DropdownMenuShortcut({
-  className,
-  dataPart = "shortcut",
-  dataScope = "dropdown-menu",
-  ...rest
-}: DropdownMenuShortcutProps) {
+export function DropdownMenuShortcut({ className, ...rest }: DropdownMenuShortcutProps) {
   const context = useDropdownMenu();
   const slots = context?.slots ?? dropdownMenuVariants();
 
   return (
     <ark.span
+      data-part="shortcut"
+      data-scope="dropdown-menu"
       {...rest}
       className={slots.shortcut({ className })}
-      data-part={dataPart}
-      data-scope={dataScope}
     />
   );
 }

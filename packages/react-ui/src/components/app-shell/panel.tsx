@@ -196,7 +196,7 @@ export function AppShellPanelTrigger({
     <AppShellSideTrigger
       {...rest}
       className={className}
-      dataPart="panel-trigger"
+      data-part="panel-trigger"
       defaultOff={<ArrowsOutLineHorizontalIcon />}
       defaultOn={<ArrowsInLineHorizontalIcon />}
       off={off}

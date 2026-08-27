@@ -3,7 +3,7 @@ import { ark } from "@ark-ui/react/factory";
 import { Portal } from "@ark-ui/react/portal";
 import { XIcon } from "@phosphor-icons/react";
 import { type DialogVariantProps, dialogVariants } from "@pisagor/recipes/dialog";
-import type { ComponentProps } from "react";
+import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";
 import { Button } from "../button";
 import { ScrollArea } from "../scroll-area";
@@ -34,18 +34,9 @@ export interface DialogBodyProps extends ComponentProps<typeof ark.div> {
    * @defaultValue false
    */
   scrollFade?: boolean;
-  dataPart?: string;
-  dataScope?: string;
 }
 
-export interface DialogHeaderProps extends ComponentProps<typeof ark.div> {
-  /** The description of the dialog */
-  description?: string;
-  /** The title of the dialog */
-  title?: string;
-  dataPart?: string;
-  dataScope?: string;
-}
+export type DialogHeaderProps = ComponentProps<typeof ark.div>;
 
 export type DialogTriggerProps = ComponentProps<typeof DialogPrimitive.Trigger>;
 
@@ -61,14 +52,20 @@ export type DialogDescriptionProps = ComponentProps<typeof DialogPrimitive.Descr
 
 export type DialogCloseTriggerProps = ComponentProps<typeof DialogPrimitive.CloseTrigger>;
 
-export type DialogFooterProps = ComponentProps<typeof ark.div> & {
-  dataPart?: string;
-  dataScope?: string;
-};
+export type DialogFooterProps = ComponentProps<typeof ark.div>;
 
 export type DialogRootProps = ComponentProps<typeof DialogPrimitive.Root>;
 
-export type DialogProps = DialogRootProps;
+export interface DialogProps extends Omit<DialogRootProps, "title"> {
+  /** Header title content. */
+  title?: ReactNode;
+  /** Header description content. */
+  description?: ReactNode;
+  /** Footer actions. */
+  actions?: ReactNode;
+  /** Control that opens the dialog. */
+  trigger?: ReactNode;
+}
 // #endregion
 
 // #region Parts
@@ -122,72 +119,48 @@ export function DialogContent({
   const { slots } = useDialog();
 
   return (
-    <Portal>
-      <DialogBackdrop />
+    <DialogPrimitive.Content
+      {...rest}
+      className={slots.content({ bottomStickOnMobile, className, size })}
+    >
+      {children}
 
-      <DialogPositioner bottomStickOnMobile={bottomStickOnMobile}>
-        <DialogPrimitive.Content
-          {...rest}
-          className={slots.content({ bottomStickOnMobile, className, size })}
-        >
-          {children}
-
-          {!!showCloseButton && (
-            <DialogCloseTrigger asChild>
-              <Button aria-label="Close" className={slots.inline()} size="icon-sm" variant="ghost">
-                <XIcon />
-              </Button>
-            </DialogCloseTrigger>
-          )}
-        </DialogPrimitive.Content>
-      </DialogPositioner>
-    </Portal>
+      {!!showCloseButton && (
+        <DialogCloseTrigger asChild>
+          <Button aria-label="Close" className={slots.inline()} size="icon-sm" variant="ghost">
+            <XIcon />
+          </Button>
+        </DialogCloseTrigger>
+      )}
+    </DialogPrimitive.Content>
   );
 }
 
-export function DialogBody({
-  scrollFade = false,
-  className,
-  dataPart = "body",
-  dataScope = "dialog",
-  ...rest
-}: DialogBodyProps) {
+export function DialogBody({ scrollFade = false, className, ...rest }: DialogBodyProps) {
   const { slots } = useDialog();
 
   return (
     <ScrollArea scrollFade={scrollFade}>
       <ark.div
+        data-part="body"
+        data-scope="dialog"
         {...rest}
         className={slots.body({ className })}
-        data-part={dataPart}
-        data-scope={dataScope}
       />
     </ScrollArea>
   );
 }
 
-export function DialogHeader({
-  className,
-  title,
-  description,
-  children,
-  dataPart = "header",
-  dataScope = "dialog",
-  ...rest
-}: DialogHeaderProps) {
+export function DialogHeader({ className, children, ...rest }: DialogHeaderProps) {
   const { slots } = useDialog();
 
   return (
     <ark.div
+      data-part="header"
+      data-scope="dialog"
       {...rest}
       className={slots.header({ className })}
-      data-part={dataPart}
-      data-scope={dataScope}
     >
-      {!!title && <DialogTitle>{title}</DialogTitle>}
-
-      {!!description && <DialogDescription>{description}</DialogDescription>}
-
       {children}
     </ark.div>
   );
@@ -209,27 +182,59 @@ export function DialogCloseTrigger(props: DialogCloseTriggerProps) {
   return <DialogPrimitive.CloseTrigger {...props} />;
 }
 
-export function DialogFooter({
-  className,
-  dataPart = "footer",
-  dataScope = "dialog",
-  ...rest
-}: DialogFooterProps) {
+export function DialogFooter({ className, ...rest }: DialogFooterProps) {
   const { slots } = useDialog();
 
   return (
     <ark.div
+      data-part="footer"
+      data-scope="dialog"
       {...rest}
       className={slots.footer({ className })}
-      data-part={dataPart}
-      data-scope={dataScope}
     />
   );
 }
 // #endregion
 
+// #region Shorthand
+export function DialogShorthand({
+  actions,
+  children,
+  description,
+  title,
+  trigger,
+  ...rest
+}: DialogProps) {
+  return (
+    <DialogRoot {...rest}>
+      {trigger !== undefined && <DialogTrigger asChild>{trigger}</DialogTrigger>}
+
+      <Portal>
+        <DialogBackdrop />
+
+        <DialogPositioner>
+          <DialogContent>
+            {(title !== undefined || description !== undefined) && (
+              <DialogHeader>
+                {title !== undefined && <DialogTitle>{title}</DialogTitle>}
+
+                {description !== undefined && <DialogDescription>{description}</DialogDescription>}
+              </DialogHeader>
+            )}
+
+            {children !== undefined && <DialogBody>{children}</DialogBody>}
+
+            {actions !== undefined && <DialogFooter>{actions}</DialogFooter>}
+          </DialogContent>
+        </DialogPositioner>
+      </Portal>
+    </DialogRoot>
+  );
+}
+// #endregion
+
 // #region Display Names
-DialogRoot.displayName = "Dialog";
+DialogRoot.displayName = "Dialog.Root";
 DialogTrigger.displayName = "Dialog.Trigger";
 DialogBackdrop.displayName = "Dialog.Backdrop";
 DialogPositioner.displayName = "Dialog.Positioner";
@@ -240,4 +245,5 @@ DialogTitle.displayName = "Dialog.Title";
 DialogDescription.displayName = "Dialog.Description";
 DialogCloseTrigger.displayName = "Dialog.CloseTrigger";
 DialogFooter.displayName = "Dialog.Footer";
+DialogShorthand.displayName = "Dialog";
 // #endregion

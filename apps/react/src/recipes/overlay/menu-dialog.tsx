@@ -1,3 +1,4 @@
+import { Portal } from "@ark-ui/react/portal";
 import { GearIcon, InfoIcon, UserIcon } from "@phosphor-icons/react";
 import { Button, Dialog, DropdownMenu } from "@pisagor/react";
 import { useState } from "react";
@@ -26,24 +27,33 @@ export function MenuDialog() {
           </DropdownMenu.Item>
         </DropdownMenu.Content>
       </DropdownMenu>
-      <Dialog onOpenChange={({ open }) => setIsOpen(open)} open={isOpen}>
-        <Dialog.Content>
-          <Dialog.Header description="This dialog was opened from a menu item" title="Settings" />
-          <Dialog.Body>
-            <p className="text-muted-foreground text-sm">
-              You can open dialogs imperatively from menu items using the onSelect handler.
-            </p>
-          </Dialog.Body>
-          <Dialog.Footer>
-            <Dialog.CloseTrigger asChild>
-              <Button variant="outline">Cancel</Button>
-            </Dialog.CloseTrigger>
-            <Dialog.CloseTrigger asChild>
-              <Button>Save</Button>
-            </Dialog.CloseTrigger>
-          </Dialog.Footer>
-        </Dialog.Content>
-      </Dialog>
+      <Dialog.Root onOpenChange={({ open }) => setIsOpen(open)} open={isOpen}>
+        <Portal>
+          <Dialog.Backdrop />
+
+          <Dialog.Positioner>
+            <Dialog.Content>
+              <Dialog.Header>
+                <Dialog.Title>Settings</Dialog.Title>
+                <Dialog.Description>This dialog was opened from a menu item</Dialog.Description>
+              </Dialog.Header>
+              <Dialog.Body>
+                <p className="text-muted-foreground text-sm">
+                  You can open dialogs imperatively from menu items using the onSelect handler.
+                </p>
+              </Dialog.Body>
+              <Dialog.Footer>
+                <Dialog.CloseTrigger asChild>
+                  <Button variant="outline">Cancel</Button>
+                </Dialog.CloseTrigger>
+                <Dialog.CloseTrigger asChild>
+                  <Button>Save</Button>
+                </Dialog.CloseTrigger>
+              </Dialog.Footer>
+            </Dialog.Content>
+          </Dialog.Positioner>
+        </Portal>
+      </Dialog.Root>
     </>
   );
 }

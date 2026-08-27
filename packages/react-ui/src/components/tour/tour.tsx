@@ -183,7 +183,7 @@ export function TourContent({
 }
 
 export function TourBody(props: DialogBodyProps) {
-  return <Dialog.Body dataPart="body" dataScope="tour" {...props} />;
+  return <Dialog.Body data-part="body" data-scope="tour" {...props} />;
 }
 
 export function TourSpotlight(props: TourSpotlightProps) {
@@ -193,7 +193,7 @@ export function TourSpotlight(props: TourSpotlightProps) {
 }
 
 export function TourHeader(props: DialogHeaderProps) {
-  return <Dialog.Header dataPart="header" dataScope="tour" {...props} />;
+  return <Dialog.Header data-part="header" data-scope="tour" {...props} />;
 }
 
 export function TourTitle({ className, ...rest }: TourTitleProps) {
@@ -233,7 +233,7 @@ export function TourCloseTrigger(props: TourCloseTriggerProps) {
 export function TourFooter({ children, ...rest }: DialogFooterProps) {
   return (
     <TourPrimitive.Control {...rest} asChild>
-      <Dialog.Footer dataPart="control" dataScope="tour">
+      <Dialog.Footer data-part="control" data-scope="tour">
         {children}
       </Dialog.Footer>
     </TourPrimitive.Control>
@@ -251,7 +251,7 @@ export function TourActions({ className, ...rest }: DialogFooterProps) {
 
   return (
     <TourPrimitive.Control {...rest} asChild>
-      <Dialog.Footer className={slots.actions({ className })} dataPart="actions" dataScope="tour">
+      <Dialog.Footer className={slots.actions({ className })} data-part="actions" data-scope="tour">
         {actions.map((action) => (
           <TourActionTrigger action={action} asChild key={action.label}>
             <Button

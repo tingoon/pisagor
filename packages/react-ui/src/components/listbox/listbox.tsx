@@ -146,7 +146,7 @@ export function ListboxEmpty({ className, ...rest }: ListboxEmptyProps) {
 }
 
 export function ListboxShortcut(props: DropdownMenuShortcutProps) {
-  return <DropdownMenu.Shortcut dataPart="shortcut" dataScope="listbox" {...props} />;
+  return <DropdownMenu.Shortcut data-part="shortcut" data-scope="listbox" {...props} />;
 }
 // #endregion
 

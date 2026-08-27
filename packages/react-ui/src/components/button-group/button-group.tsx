@@ -56,8 +56,8 @@ export function ButtonGroupSeparator({
     <Separator
       {...rest}
       className={slots.separator({ className })}
-      dataPart="separator"
-      dataScope="button-group"
+      data-part="separator"
+      data-scope="button-group"
       orientation={orientation}
     />
   );

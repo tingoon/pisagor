@@ -8,6 +8,7 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogRoot,
+  AlertDialogShorthand,
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "./alert-dialog";
@@ -15,10 +16,11 @@ import {
 export type {
   AlertDialogActionProps,
   AlertDialogCancelProps,
+  AlertDialogProps,
   AlertDialogRootProps,
 } from "./alert-dialog";
 
-export const AlertDialog = Object.assign(AlertDialogRoot, {
+export const AlertDialog = Object.assign(AlertDialogShorthand, {
   Action: AlertDialogAction,
   Body: AlertDialogBody,
   Cancel: AlertDialogCancel,
@@ -27,6 +29,7 @@ export const AlertDialog = Object.assign(AlertDialogRoot, {
   Description: AlertDialogDescription,
   Footer: AlertDialogFooter,
   Header: AlertDialogHeader,
+  Root: AlertDialogRoot,
   Title: AlertDialogTitle,
   Trigger: AlertDialogTrigger,
 });

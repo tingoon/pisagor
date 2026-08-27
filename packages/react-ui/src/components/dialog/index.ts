@@ -8,6 +8,7 @@ import {
   DialogHeader,
   DialogPositioner,
   DialogRoot,
+  DialogShorthand,
   DialogTitle,
   DialogTrigger,
 } from "./dialog";
@@ -27,7 +28,7 @@ export type {
   DialogTriggerProps,
 } from "./dialog";
 
-export const Dialog = Object.assign(DialogRoot, {
+export const Dialog = Object.assign(DialogShorthand, {
   Backdrop: DialogBackdrop,
   Body: DialogBody,
   CloseTrigger: DialogCloseTrigger,
@@ -36,6 +37,7 @@ export const Dialog = Object.assign(DialogRoot, {
   Footer: DialogFooter,
   Header: DialogHeader,
   Positioner: DialogPositioner,
+  Root: DialogRoot,
   Title: DialogTitle,
   Trigger: DialogTrigger,
 });

@@ -88,7 +88,14 @@ export type ComboboxFieldInputProps = ComponentProps<typeof ComboboxPrimitive.In
 
 export type ComboboxPositionerProps = ComponentProps<typeof ComboboxPrimitive.Positioner>;
 
-export type ComboboxContentProps = ComponentProps<typeof ComboboxPrimitive.Content>;
+export interface ComboboxContentProps extends ComponentProps<typeof ComboboxPrimitive.Content> {
+  /**
+   * Whether to render the content in a portal with a positioner.
+   *
+   * @defaultValue true
+   */
+  portalled?: boolean;
+}
 
 export type ComboboxItemGroupLabelProps = ComponentProps<typeof ComboboxPrimitive.ItemGroupLabel>;
 
@@ -162,8 +169,8 @@ export function ComboboxInput({
           )}
           {clearable && inputValue && (
             <ComboboxClearTrigger asChild>
-              <InputGroup.Button size="icon-xs" variant="ghost">
-                <XIcon />
+              <InputGroup.Button aria-label="Clear" size="icon-xs" variant="ghost">
+                <XIcon aria-hidden />
               </InputGroup.Button>
             </ComboboxClearTrigger>
           )}
@@ -179,8 +186,8 @@ export function ComboboxTrigger({ className, children, ...rest }: ComboboxTrigge
   return (
     <ComboboxPrimitive.Trigger {...rest} asChild className={slots.trigger({ className })}>
       {children ?? (
-        <Button className={slots.triggerButton()} variant="ghost">
-          <CaretUpDownIcon />
+        <Button aria-label="Toggle" className={slots.triggerButton()} variant="ghost">
+          <CaretUpDownIcon aria-hidden />
         </Button>
       )}
     </ComboboxPrimitive.Trigger>
@@ -203,16 +210,27 @@ export function ComboboxPositioner(props: ComboboxPositionerProps) {
   return <ComboboxPrimitive.Positioner {...props} />;
 }
 
-export function ComboboxContent({ className, children, ...rest }: ComboboxContentProps) {
+export function ComboboxContent({
+  className,
+  children,
+  portalled = true,
+  ...rest
+}: ComboboxContentProps) {
   const { slots = comboboxVariants() } = useComboboxRoot() ?? {};
+
+  const content = (
+    <ComboboxPrimitive.Content {...rest} className={slots.content({ className })}>
+      {children}
+    </ComboboxPrimitive.Content>
+  );
+
+  if (!portalled) {
+    return content;
+  }
 
   return (
     <Portal>
-      <ComboboxPositioner>
-        <ComboboxPrimitive.Content {...rest} className={slots.content({ className })}>
-          {children}
-        </ComboboxPrimitive.Content>
-      </ComboboxPositioner>
+      <ComboboxPositioner>{content}</ComboboxPositioner>
     </Portal>
   );
 }

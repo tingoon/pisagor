@@ -125,7 +125,7 @@ export function TableBulkActions({ className }: TableBulkActionsProps) {
                 </DropdownMenu.Item>
               </DropdownMenu.Content>
             </DropdownMenu>
-            <AlertDialog>
+            <AlertDialog.Root>
               <AlertDialog.Trigger asChild>
                 <Button size="sm" variant="destructive">
                   <TrashIcon />
@@ -133,10 +133,10 @@ export function TableBulkActions({ className }: TableBulkActionsProps) {
                 </Button>
               </AlertDialog.Trigger>
               <AlertDialog.Content>
-                <AlertDialog.Header
-                  description="This action cannot be undone."
-                  title="Delete selected orders?"
-                />
+                <AlertDialog.Header>
+                  <AlertDialog.Title>Delete selected orders?</AlertDialog.Title>
+                  <AlertDialog.Description>This action cannot be undone.</AlertDialog.Description>
+                </AlertDialog.Header>
                 <AlertDialog.Body>
                   <ul>
                     {selectedIds.map((id) => {
@@ -161,7 +161,7 @@ export function TableBulkActions({ className }: TableBulkActionsProps) {
                   </AlertDialog.CloseTrigger>
                 </AlertDialog.Footer>
               </AlertDialog.Content>
-            </AlertDialog>
+            </AlertDialog.Root>
           </div>
         </ActionBar.Content>
       </ActionBar>

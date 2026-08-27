@@ -90,7 +90,7 @@ export function AutocompleteCollection(props: ComboboxListProps) {
 }
 
 export function AutocompleteSeparator(props: SeparatorProps) {
-  return <Separator dataPart="separator" dataScope="autocomplete" {...props} />;
+  return <Separator data-part="separator" data-scope="autocomplete" {...props} />;
 }
 // #endregion
 

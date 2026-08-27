@@ -239,11 +239,10 @@ export function SidebarRoot(props: SidebarProps) {
             } as CSSProperties
           }
         >
-          <Sheet.Header
-            className={slots.mobileHeader()}
-            description="Displays the mobile sidebar."
-            title="Sidebar"
-          />
+          <Sheet.Header className={slots.mobileHeader()}>
+            <Sheet.Title>Sidebar</Sheet.Title>
+            <Sheet.Description>Displays the mobile sidebar.</Sheet.Description>
+          </Sheet.Header>
           <ark.div className={slots.mobileBody()}>{children}</ark.div>
         </Sheet.Content>
       </Sheet>
@@ -383,9 +382,9 @@ export function SidebarSeparator({ className, ...rest }: SeparatorProps) {
     <Separator
       {...rest}
       className={slots.separator({ className })}
+      data-part="separator"
+      data-scope="sidebar"
       data-sidebar="separator"
-      dataPart="separator"
-      dataScope="sidebar"
     />
   );
 }

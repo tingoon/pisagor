@@ -1,3 +1,5 @@
+import { Portal } from "@ark-ui/react/portal";
+import type { ReactNode } from "react";
 import { Button, type ButtonProps } from "../button";
 import {
   Dialog,
@@ -30,14 +32,25 @@ export interface AlertDialogActionProps
 export interface AlertDialogCancelProps
   extends DialogCloseTriggerProps,
     Omit<ButtonProps, "variant"> {}
+
+export interface AlertDialogProps extends Omit<AlertDialogRootProps, "children" | "title"> {
+  /** Header title content. */
+  title?: ReactNode;
+  /** Header description content. */
+  description?: ReactNode;
+  /** Footer actions (typically Cancel / Action). */
+  actions?: ReactNode;
+  /** Control that opens the dialog. */
+  trigger?: ReactNode;
+}
 // #endregion
 
 // #region Parts
 export function AlertDialogRoot({ children, ...rest }: AlertDialogRootProps) {
   return (
-    <Dialog {...rest} role="alertdialog">
+    <Dialog.Root {...rest} role="alertdialog">
       {children}
-    </Dialog>
+    </Dialog.Root>
   );
 }
 
@@ -45,8 +58,22 @@ export function AlertDialogTrigger(props: DialogTriggerProps) {
   return <Dialog.Trigger {...props} />;
 }
 
-export function AlertDialogContent(props: DialogContentProps) {
-  return <Dialog.Content showCloseButton={false} {...props} />;
+export function AlertDialogContent({
+  bottomStickOnMobile = true,
+  children,
+  ...rest
+}: DialogContentProps) {
+  return (
+    <Portal>
+      <Dialog.Backdrop />
+
+      <Dialog.Positioner bottomStickOnMobile={bottomStickOnMobile}>
+        <Dialog.Content {...rest} bottomStickOnMobile={bottomStickOnMobile} showCloseButton={false}>
+          {children}
+        </Dialog.Content>
+      </Dialog.Positioner>
+    </Portal>
+  );
 }
 
 export function AlertDialogBody({ className, ...rest }: DialogBodyProps) {
@@ -56,14 +83,14 @@ export function AlertDialogBody({ className, ...rest }: DialogBodyProps) {
     <Dialog.Body
       {...rest}
       className={slots.alertBody({ className })}
-      dataPart="body"
-      dataScope="alert-dialog"
+      data-part="body"
+      data-scope="alert-dialog"
     />
   );
 }
 
 export function AlertDialogHeader(props: DialogHeaderProps) {
-  return <Dialog.Header dataPart="header" dataScope="alert-dialog" {...props} />;
+  return <Dialog.Header data-part="header" data-scope="alert-dialog" {...props} />;
 }
 
 export function AlertDialogTitle(props: DialogTitleProps) {
@@ -79,7 +106,7 @@ export function AlertDialogCloseTrigger(props: DialogCloseTriggerProps) {
 }
 
 export function AlertDialogFooter(props: DialogFooterProps) {
-  return <Dialog.Footer dataPart="footer" dataScope="alert-dialog" {...props} />;
+  return <Dialog.Footer data-part="footer" data-scope="alert-dialog" {...props} />;
 }
 
 export function AlertDialogAction({ variant = "default", ...rest }: AlertDialogActionProps) {
@@ -95,8 +122,38 @@ export function AlertDialogCancel(props: AlertDialogCancelProps) {
 }
 // #endregion
 
+// #region Shorthand
+export function AlertDialogShorthand({
+  actions,
+  description,
+  title,
+  trigger,
+  ...rest
+}: AlertDialogProps) {
+  return (
+    <AlertDialogRoot {...rest}>
+      {trigger !== undefined && <AlertDialogTrigger asChild>{trigger}</AlertDialogTrigger>}
+
+      <AlertDialogContent>
+        {(title !== undefined || description !== undefined) && (
+          <AlertDialogHeader>
+            {title !== undefined && <AlertDialogTitle>{title}</AlertDialogTitle>}
+
+            {description !== undefined && (
+              <AlertDialogDescription>{description}</AlertDialogDescription>
+            )}
+          </AlertDialogHeader>
+        )}
+
+        {actions !== undefined && <AlertDialogFooter>{actions}</AlertDialogFooter>}
+      </AlertDialogContent>
+    </AlertDialogRoot>
+  );
+}
+// #endregion
+
 // #region Display Names
-AlertDialogRoot.displayName = "AlertDialog";
+AlertDialogRoot.displayName = "AlertDialog.Root";
 AlertDialogTrigger.displayName = "AlertDialog.Trigger";
 AlertDialogContent.displayName = "AlertDialog.Content";
 AlertDialogBody.displayName = "AlertDialog.Body";
@@ -107,4 +164,5 @@ AlertDialogCloseTrigger.displayName = "AlertDialog.CloseTrigger";
 AlertDialogFooter.displayName = "AlertDialog.Footer";
 AlertDialogAction.displayName = "AlertDialog.Action";
 AlertDialogCancel.displayName = "AlertDialog.Cancel";
+AlertDialogShorthand.displayName = "AlertDialog";
 // #endregion

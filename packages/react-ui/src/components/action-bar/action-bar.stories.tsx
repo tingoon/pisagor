@@ -67,7 +67,7 @@ export const Default = meta.story({
         </ActionBar.Body>
         <ActionBar.Separator />
         <ActionBar.Close asChild>
-          <Button size="icon-md" variant="ghost">
+          <Button aria-label="Close" size="icon-md" variant="ghost">
             <XIcon />
           </Button>
         </ActionBar.Close>
@@ -101,7 +101,7 @@ export const CustomSpacing = meta.story({
           </ActionBar.Body>
           <ActionBar.Separator />
           <ActionBar.Close asChild>
-            <Button size="icon-md" variant="ghost">
+            <Button aria-label="Close" size="icon-md" variant="ghost">
               <XIcon />
             </Button>
           </ActionBar.Close>
@@ -162,7 +162,7 @@ export const Gutter = meta.story({
             </ActionBar.Body>
             <ActionBar.Separator />
             <ActionBar.Close asChild>
-              <Button size="icon-md" variant="ghost">
+              <Button aria-label="Close" size="icon-md" variant="ghost">
                 <XIcon />
               </Button>
             </ActionBar.Close>
@@ -206,7 +206,7 @@ export const CloseTrigger = meta.story({
           </ActionBar.Body>
           <ActionBar.Separator />
           <ActionBar.Close asChild>
-            <Button size="icon-md" variant="ghost">
+            <Button aria-label="Close" size="icon-md" variant="ghost">
               <XIcon />
             </Button>
           </ActionBar.Close>
@@ -226,30 +226,28 @@ export const WithDialog = meta.story({
         <ActionBar.Value count={3} />
         <ActionBar.Separator />
         <ActionBar.Body>
-          <AlertDialog>
-            <AlertDialog.Trigger asChild>
-              <Button variant="destructive">
-                <TrashIcon />
-                <span className="max-sm:sr-only">Delete</span>
-              </Button>
-            </AlertDialog.Trigger>
-            <AlertDialog.Content>
-              <AlertDialog.Header
-                description="This action cannot be undone."
-                title="Delete selected orders?"
-              />
-              <AlertDialog.Footer>
+          <AlertDialog
+            actions={
+              <>
                 <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
                 <AlertDialog.CloseTrigger asChild>
                   <AlertDialog.Action variant="destructive">Delete</AlertDialog.Action>
                 </AlertDialog.CloseTrigger>
-              </AlertDialog.Footer>
-            </AlertDialog.Content>
-          </AlertDialog>
+              </>
+            }
+            description="This action cannot be undone."
+            title="Delete selected orders?"
+            trigger={
+              <Button variant="destructive">
+                <TrashIcon />
+                <span className="max-sm:sr-only">Delete</span>
+              </Button>
+            }
+          />
         </ActionBar.Body>
         <ActionBar.Separator />
         <ActionBar.Close asChild>
-          <Button size="icon-md" variant="ghost">
+          <Button aria-label="Close" size="icon-md" variant="ghost">
             <XIcon />
           </Button>
         </ActionBar.Close>
@@ -293,7 +291,7 @@ export const WithMenu = meta.story({
         </ActionBar.Body>
         <ActionBar.Separator />
         <ActionBar.Close asChild>
-          <Button size="icon-md" variant="ghost">
+          <Button aria-label="Close" size="icon-md" variant="ghost">
             <XIcon />
           </Button>
         </ActionBar.Close>
@@ -335,7 +333,7 @@ export const Controlled = meta.story({
           </ActionBar.Body>
           <ActionBar.Separator />
           <ActionBar.Close asChild>
-            <Button size="icon-md" variant="ghost">
+            <Button aria-label="Close" size="icon-md" variant="ghost">
               <XIcon />
             </Button>
           </ActionBar.Close>
@@ -394,7 +392,7 @@ export const Placements = meta.story({
             </ActionBar.Body>
             <ActionBar.Separator />
             <ActionBar.Close asChild>
-              <Button size="icon-md" variant="ghost">
+              <Button aria-label="Close" size="icon-md" variant="ghost">
                 <XIcon />
               </Button>
             </ActionBar.Close>

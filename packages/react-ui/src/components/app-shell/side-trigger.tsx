@@ -8,7 +8,6 @@ export function AppShellSideTrigger({
   "aria-label": ariaLabel,
   className,
   children,
-  dataPart,
   defaultOff,
   defaultOn,
   onClick,
@@ -21,7 +20,6 @@ export function AppShellSideTrigger({
 }: {
   "aria-label"?: string;
   children?: ReactNode;
-  dataPart: string;
   defaultOff: ReactNode;
   defaultOn: ReactNode;
   onClick?: ButtonProps["onClick"];
@@ -37,13 +35,12 @@ export function AppShellSideTrigger({
 
   return (
     <Button
+      data-scope="app-shell"
       {...rest}
       aria-label={ariaLabel ?? `Toggle ${placement} region`}
       aria-pressed={open}
       className={slots.inline({ className })}
-      data-part={dataPart}
       data-placement={placement}
-      data-scope="app-shell"
       data-state={open ? "open" : "closed"}
       onClick={(event) => {
         onClick?.(event);

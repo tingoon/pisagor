@@ -38,10 +38,12 @@ export const Default = meta.story({
         <Button variant="outline">Open</Button>
       </Sheet.Trigger>
       <Sheet.Content>
-        <Sheet.Header
-          description="Make changes to your account here. Click save when you're done."
-          title="Edit user"
-        />
+        <Sheet.Header>
+          <Sheet.Title>Edit user</Sheet.Title>
+          <Sheet.Description>
+            Make changes to your account here. Click save when you're done.
+          </Sheet.Description>
+        </Sheet.Header>
         <Sheet.Body>
           <Field.Group>
             <Field>
@@ -74,10 +76,12 @@ export const CustomSpacing = meta.story({
         <Button variant="outline">Open</Button>
       </Sheet.Trigger>
       <Sheet.Content className="[--space:--spacing(4)] sm:[--space:--spacing(8)]">
-        <Sheet.Header
-          description="Make changes to your account here. Click save when you're done."
-          title="Edit user"
-        />
+        <Sheet.Header>
+          <Sheet.Title>Edit user</Sheet.Title>
+          <Sheet.Description>
+            Make changes to your account here. Click save when you're done.
+          </Sheet.Description>
+        </Sheet.Header>
         <Sheet.Body>
           <Field.Group>
             <Field>
@@ -110,10 +114,12 @@ export const Inset = meta.story({
         <Button variant="outline">Open</Button>
       </Sheet.Trigger>
       <Sheet.Content variant="inset">
-        <Sheet.Header
-          description="This sheet uses the inset variant with rounded corners and padding."
-          title="Inset sheet"
-        />
+        <Sheet.Header>
+          <Sheet.Title>Inset sheet</Sheet.Title>
+          <Sheet.Description>
+            This sheet uses the inset variant with rounded corners and padding.
+          </Sheet.Description>
+        </Sheet.Header>
         <Sheet.Body>
           <Field.Group>
             <Field>
@@ -146,10 +152,13 @@ export const NoCloseButton = meta.story({
         <Button variant="outline">Open</Button>
       </Sheet.Trigger>
       <Sheet.Content showCloseButton={false}>
-        <Sheet.Header
-          description="You can only close this sheet using the buttons in the footer, by pressing Escape or by clicking the backdrop."
-          title="No close button"
-        />
+        <Sheet.Header>
+          <Sheet.Title>No close button</Sheet.Title>
+          <Sheet.Description>
+            You can only close this sheet using the buttons in the footer, by pressing Escape or by
+            clicking the backdrop.
+          </Sheet.Description>
+        </Sheet.Header>
         <Sheet.Body>
           <p className="text-muted-foreground text-sm">
             The close button in the top right corner is hidden. Use the footer buttons or press
@@ -176,10 +185,12 @@ export const NonModal = meta.story({
         <Button variant="outline">Open</Button>
       </Sheet.Trigger>
       <Sheet.Content>
-        <Sheet.Header
-          description="This is a non-modal sheet. You can interact with elements outside the sheet."
-          title="Non-modal sheet"
-        />
+        <Sheet.Header>
+          <Sheet.Title>Non-modal sheet</Sheet.Title>
+          <Sheet.Description>
+            This is a non-modal sheet. You can interact with elements outside the sheet.
+          </Sheet.Description>
+        </Sheet.Header>
         <Sheet.Body>
           <p className="text-muted-foreground text-sm">
             Non-modal sheets allow interaction with elements outside. Focus trapping and scroll
@@ -203,7 +214,9 @@ export const ScrollArea = meta.story({
         <Button variant="outline">Open</Button>
       </Sheet.Trigger>
       <Sheet.Content>
-        <Sheet.Header title="Terms and conditions" />
+        <Sheet.Header>
+          <Sheet.Title>Terms and conditions</Sheet.Title>
+        </Sheet.Header>
         <Sheet.Body scrollFade>
           <div className="space-y-2 **:[h3]:font-semibold **:[p]:text-muted-foreground **:[p]:text-sm">
             <h3>What is Lorem Ipsum?</h3>
@@ -269,7 +282,9 @@ export const Sides = meta.story({
           <Button variant="outline">Right</Button>
         </Sheet.Trigger>
         <Sheet.Content placement="right">
-          <Sheet.Header title="Right placement sheet" />
+          <Sheet.Header>
+            <Sheet.Title>Right placement sheet</Sheet.Title>
+          </Sheet.Header>
           <Sheet.Body>
             <p className="text-muted-foreground text-sm">
               This sheet slides in from the right placement.
@@ -282,7 +297,9 @@ export const Sides = meta.story({
           <Button variant="outline">Left</Button>
         </Sheet.Trigger>
         <Sheet.Content placement="left">
-          <Sheet.Header title="Left placement sheet" />
+          <Sheet.Header>
+            <Sheet.Title>Left placement sheet</Sheet.Title>
+          </Sheet.Header>
           <Sheet.Body>
             <p className="text-muted-foreground text-sm">
               This sheet slides in from the left placement.
@@ -295,7 +312,9 @@ export const Sides = meta.story({
           <Button variant="outline">Top</Button>
         </Sheet.Trigger>
         <Sheet.Content placement="top">
-          <Sheet.Header title="Top placement sheet" />
+          <Sheet.Header>
+            <Sheet.Title>Top placement sheet</Sheet.Title>
+          </Sheet.Header>
           <Sheet.Body>
             <p className="text-muted-foreground text-sm">
               This sheet slides in from the top placement.
@@ -308,7 +327,9 @@ export const Sides = meta.story({
           <Button variant="outline">Bottom</Button>
         </Sheet.Trigger>
         <Sheet.Content placement="bottom">
-          <Sheet.Header title="Bottom placement sheet" />
+          <Sheet.Header>
+            <Sheet.Title>Bottom placement sheet</Sheet.Title>
+          </Sheet.Header>
           <Sheet.Body>
             <p className="text-muted-foreground text-sm">This sheet slides in from the bottom.</p>
           </Sheet.Body>
@@ -326,10 +347,12 @@ export const CloseBehavior = meta.story({
           <Button variant="outline">No close on outside click</Button>
         </Sheet.Trigger>
         <Sheet.Content>
-          <Sheet.Header
-            description="Clicking outside does not close this sheet. Press ESC or use the close button."
-            title="Stays on outside click"
-          />
+          <Sheet.Header>
+            <Sheet.Title>Stays on outside click</Sheet.Title>
+            <Sheet.Description>
+              Clicking outside does not close this sheet. Press ESC or use the close button.
+            </Sheet.Description>
+          </Sheet.Header>
         </Sheet.Content>
       </Sheet>
       <Sheet closeOnEscape={false}>
@@ -337,10 +360,12 @@ export const CloseBehavior = meta.story({
           <Button variant="outline">No close on Escape</Button>
         </Sheet.Trigger>
         <Sheet.Content>
-          <Sheet.Header
-            description="Pressing Escape does not close this sheet. Click outside or use the close button."
-            title="Escape key unavailable"
-          />
+          <Sheet.Header>
+            <Sheet.Title>Escape key unavailable</Sheet.Title>
+            <Sheet.Description>
+              Pressing Escape does not close this sheet. Click outside or use the close button.
+            </Sheet.Description>
+          </Sheet.Header>
         </Sheet.Content>
       </Sheet>
     </div>

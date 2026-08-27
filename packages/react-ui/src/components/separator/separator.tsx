@@ -12,27 +12,19 @@ export interface SeparatorProps extends SeparatorRootProps {
    * @defaultValue "horizontal"
    */
   orientation?: "horizontal" | "vertical";
-  dataPart?: string;
-  dataScope?: string;
 }
 // #endregion
 
 // #region Part
-export function Separator({
-  orientation = "horizontal",
-  className,
-  dataPart = "root",
-  dataScope = "separator",
-  ...rest
-}: SeparatorProps) {
+export function Separator({ orientation = "horizontal", className, ...rest }: SeparatorProps) {
   return (
     <ark.div
+      data-part="root"
+      data-scope="separator"
       {...rest}
       aria-orientation={orientation}
       className={separatorVariants({ className })}
       data-orientation={orientation}
-      data-part={dataPart}
-      data-scope={dataScope}
       role="separator"
     />
   );
