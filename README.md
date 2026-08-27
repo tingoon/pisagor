@@ -52,8 +52,8 @@ Requires [Bun](https://bun.sh).
 
 ```bash
 bun install
-turbo dev --filter=react
-# optional: turbo dev --filter=vue
+turbo dev --filter=react-storybook
+# optional: turbo dev --filter=vue-storybook
 ```
 
 React Storybook: [http://127.0.0.1:3001](http://127.0.0.1:3001).  

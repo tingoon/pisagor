@@ -8,8 +8,8 @@ Then from the repo root:
 
 ```bash
 bun install
-turbo dev --filter=react
-# optional: turbo dev --filter=vue
+turbo dev --filter=react-storybook
+# optional: turbo dev --filter=vue-storybook
 ```
 
 React Storybook: http://127.0.0.1:3001. Vue: http://127.0.0.1:3002.
@@ -25,7 +25,7 @@ turbo test
 bun run knip
 ```
 
-Commits: [Conventional Commits](https://www.conventionalcommits.org/). Scope with the workspace when the change is local (`feat(react):`, `fix(storybook):`).
+Commits: [Conventional Commits](https://www.conventionalcommits.org/). Scope with the workspace when the change is local (`feat(react-storybook):`, `fix(react-ui):`).
 
 ## Pull requests
 

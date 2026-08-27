@@ -13,6 +13,7 @@ Workspaces: `apps/*`, `packages/*` (Bun + Turborepo).
 
 - Import workspace packages by package name (`@pisagor/react`, `@pisagor/react-form`), not relative paths across roots.
 - Run tasks: `turbo <task> --filter=<workspace>` from repo root; CI uses `bun turbo` ([CI](#verify)).
+- Private apps must not use bare package names that shadow npm packages (`react`, `vue`). Prefer `react-storybook` / `vue-storybook` (or `@pisagor/…`). Folder paths (`apps/react`) may stay short.
 - Workspace map: root [`AGENTS.md`](../../AGENTS.md). New workspaces: [AGENTS.md Style Guide](styleguides/agents.mdc).
 
 ## Biome
@@ -29,7 +30,7 @@ Workspaces: `apps/*`, `packages/*` (Bun + Turborepo).
 ## Commits
 
 - [Conventional Commits](https://www.conventionalcommits.org/); config: [`commitlint.config.ts`](../../commitlint.config.ts).
-- **Scope:** workspace name when scoped (`feat(storybook):`, `fix(react):`); omit for cross-cutting changes.
+- **Scope:** workspace name when scoped (`feat(react-storybook):`, `fix(react-ui):`); omit for cross-cutting changes.
 - No `Co-authored-by:` / `Signed-off-by:` footers.
 
 ## Knip

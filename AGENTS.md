@@ -34,8 +34,8 @@ Instruction priority: [Core Boundaries](./.cursor/rules/core.mdc).
 
 | Path | Notes |
 | ---- | ----- |
-| `apps/react` | React Storybook |
-| `apps/vue` | Vue Storybook |
+| `apps/react` (`react-storybook`) | React Storybook |
+| `apps/vue` (`vue-storybook`) | Vue Storybook |
 | `packages/react-blocks` | [AGENTS.md](./packages/react-blocks/AGENTS.md) |
 | `packages/react-form` | [AGENTS.md](./packages/react-form/AGENTS.md) |
 | `packages/react-ui` | [AGENTS.md](./packages/react-ui/AGENTS.md) |
@@ -54,8 +54,8 @@ Install Bun, then `bun install`. Human steps: [README.md](./README.md). Optional
 From the repository root:
 
 ```bash
-turbo dev --filter=react
-turbo dev --filter=vue
+turbo dev --filter=react-storybook
+turbo dev --filter=vue-storybook
 ```
 
 React Storybook: `http://127.0.0.1:3001`. Vue Storybook: `http://127.0.0.1:3002`.
