@@ -38,7 +38,7 @@
     "url": "git+https://github.com/tingoon/pisagor.git"
   },
   "scripts": {
-    "check": "biome ci && turbo type-check --output-logs=errors-only && knip",
+    "check": "bunx biome ci && turbo type-check --output-logs=errors-only && knip",
     "format": "biome check --write .",
     "knip": "knip",
     "prepare": "lefthook install",
