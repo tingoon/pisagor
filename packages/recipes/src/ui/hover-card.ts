@@ -4,7 +4,7 @@ export const hoverCardVariants = tv({
   slots: {
     arrowTip: ["border-s border-t"],
     content: [
-      "z-50",
+      "z-popover",
       "w-64",
       "p-4",
       "bg-popover",

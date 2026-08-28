@@ -6,7 +6,7 @@ export const comboboxVariants = tv({
   },
   slots: {
     content: [
-      "relative z-50",
+      "relative z-popover",
       "max-h-96 min-w-48",
       "origin-(--transform-origin)",
       "p-1",

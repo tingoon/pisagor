@@ -4,7 +4,7 @@ export const datePickerVariants = tv({
   slots: {
     content: [
       "[--cell-size:--spacing(8)]",
-      "z-[calc(50+var(--layer-index,0))]",
+      "z-[calc(var(--z-popover)+var(--layer-index,0))]",
       "w-fit min-w-72",
       "p-3",
       "bg-popover",

@@ -22,7 +22,7 @@ export const sheetVariants = tv({
     ],
     footer: "sm:rounded-none",
     inline: ["absolute inset-e-2 top-2 opacity-64 hover:opacity-100"],
-    positioner: ["fixed inset-0 z-50 grid h-svh w-screen"],
+    positioner: ["fixed inset-0 z-modal grid h-svh w-screen"],
   },
   variants: {
     placement: {

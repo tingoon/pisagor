@@ -8,7 +8,7 @@ export const dialogVariants = tv({
     alertBody:
       "in-[[data-scope=dialog][data-part=content]:has([data-scope=alert-dialog][data-part=header])]:pt-0",
     backdrop: [
-      "fixed inset-0 z-50",
+      "fixed inset-0 z-modal",
       "bg-black/32 backdrop-blur-xs",
       "duration-200",
       "peer peer-[[data-scope=dialog][data-part=backdrop]]:hidden",
@@ -25,7 +25,7 @@ export const dialogVariants = tv({
     ],
     content: [
       "[--space:--spacing(6)]",
-      "z-[calc(50+var(--layer-index,0))]",
+      "z-[calc(var(--z-modal)+var(--layer-index,0))]",
       "relative",
       "row-start-2",
       "max-h-full min-h-0 w-full min-w-0",
@@ -57,7 +57,7 @@ export const dialogVariants = tv({
     ],
     inline: ["absolute inset-e-2 top-2 opacity-64 hover:opacity-100"],
     positioner: [
-      "fixed inset-0 z-50",
+      "fixed inset-0 z-modal",
       "h-svh w-screen",
       "grid grid-rows-[1fr_auto_3fr] justify-items-center",
       "p-4",

@@ -17,7 +17,7 @@ export const actionBarVariants = tv({
       "pointer-events-auto",
     ],
     positioner: [
-      "fixed inset-x-0 bottom-0 z-50",
+      "fixed inset-x-0 bottom-0 z-modal",
       "flex",
       "px-4 pb-[calc(var(--gutter)+env(safe-area-inset-bottom,0))]",
       "pointer-events-none",

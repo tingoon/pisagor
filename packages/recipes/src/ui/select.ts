@@ -11,7 +11,7 @@ export const selectVariants = tv({
       "motion-reduce:transition-none!",
     ],
     content: [
-      "z-50",
+      "z-popover",
       "relative",
       "max-h-96 min-w-(--reference-width)",
       "p-1",

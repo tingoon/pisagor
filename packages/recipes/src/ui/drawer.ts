@@ -8,7 +8,7 @@ export const drawerVariants = tv({
   slots: {
     backdrop: [
       "[--overlay-alpha:calc(32%*(1-var(--drawer-swipe-progress)))] [--blur:calc(4px*(1-var(--drawer-swipe-progress)))]",
-      "fixed inset-0 z-50",
+      "fixed inset-0 z-modal",
       "bg-black/(--overlay-alpha) backdrop-blur-(--blur)",
       "data-[state=open]:fade-in-0 data-[state=open]:animate-in",
       "data-[state=closed]:fade-out-0 data-[state=closed]:animate-out",
@@ -25,7 +25,7 @@ export const drawerVariants = tv({
       "[--bleed:3rem] [--space:--spacing(6)]",
       "group/drawer",
       "relative",
-      "z-[calc(50+var(--layer-index,0))]",
+      "z-[calc(var(--z-modal)+var(--layer-index,0))]",
       "max-h-[calc(80vh+var(--bleed))] w-full",
       "-mb-(--bleed) pb-[calc(1.5rem+env(safe-area-inset-bottom,0)+var(--bleed))]",
       "bg-popover",
@@ -72,7 +72,7 @@ export const drawerVariants = tv({
       "in-[[data-scope=drawer][data-part=content]:has([data-scope=drawer][data-part=body])]:pb-3",
     ],
     positioner: [
-      "fixed inset-0 z-50",
+      "fixed inset-0 z-modal",
       "flex items-end justify-center",
       "w-screen",
       "has-data-[swipe-direction=up]:items-start",

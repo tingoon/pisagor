@@ -9,7 +9,7 @@ export const tourVariants = tv({
     closeLabel: "sr-only",
     content: [
       "[--space:--spacing(4)]",
-      "z-[calc(50+var(--layer-index,0))]",
+      "z-[calc(var(--z-modal)+var(--layer-index,0))]",
       "relative",
       "w-full max-w-md",
       "flex flex-col gap-4",
@@ -23,13 +23,13 @@ export const tourVariants = tv({
     ],
     description: ["text-muted-foreground text-sm"],
     positioner: [
-      "z-50",
+      "z-modal",
       "flex items-center justify-center",
       "data-[type=dialog]:fixed data-[type=dialog]:inset-0",
       "data-[type=tooltip]:absolute",
     ],
     progressText: ["text-muted-foreground text-sm"],
-    spotlight: ["z-50 border-2 border-primary"],
+    spotlight: ["z-modal border-2 border-primary"],
     title: ["font-semibold text-base leading-none tracking-tight"],
   },
 });

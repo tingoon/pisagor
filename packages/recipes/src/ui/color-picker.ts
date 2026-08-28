@@ -39,7 +39,7 @@ export const colorPickerVariants = tv({
     channelStack: ["flex flex-1 flex-col gap-2.5"],
     content: [
       "[--space:--spacing(3)]",
-      "z-50",
+      "z-popover",
       "relative",
       "w-full min-w-56",
       "flex flex-col gap-4",
@@ -84,7 +84,7 @@ export const colorPickerVariants = tv({
     swatchIndicator: [
       "absolute inset-0 z-10",
       "flex items-center justify-center",
-      "text-white",
+      "text-primary-foreground",
       "pointer-events-none",
       "zoom-in-5 animate-in blur-in-md",
       "[&_svg]:size-1/2",

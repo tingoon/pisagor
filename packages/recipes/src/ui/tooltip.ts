@@ -4,7 +4,7 @@ export const tooltipVariants = tv({
   slots: {
     arrow: ["[--arrow-background:var(--foreground)]", "[--arrow-size:calc(1.5*var(--spacing))]"],
     content: [
-      "z-50 w-fit",
+      "z-popover w-fit",
       "px-3 py-1.5",
       "bg-foreground",
       "text-background text-xs",

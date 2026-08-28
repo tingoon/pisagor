@@ -21,7 +21,7 @@ export const qrCodeVariants = tv({
       "p-2",
       "flex items-center justify-center",
       "bg-black",
-      "text-white",
+      "text-background",
       "rounded-full",
       "[&_svg,img]:size-full [&_svg,img]:object-contain",
     ],

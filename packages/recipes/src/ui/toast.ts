@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const toasterVariants = tv({
+export const toastVariants = tv({
   base: [
     "w-[calc(100%-var(--viewport-offset-left))] sm:w-(--width)",
     "data-[align=center]:left-[calc(var(--viewport-offset-right)/2)]!",
@@ -21,11 +21,11 @@ export const toastItemVariants = tv({
       "select-none text-card-foreground text-sm",
       "rounded-lg border shadow-lg/5",
       "scale-(--scale) opacity-(--opacity)",
-      "transition-all duration-250 will-change-[translate,opacity,scale]",
-      "ease-[cubic-bezier(0.21,1.02,0.73,1)]",
+      "transition-all duration-normal will-change-[translate,opacity,scale]",
+      "ease-emphasized",
       "data-[state=closed]:transition-[translate,scale,opacity]",
       "data-[state=closed]:duration-[300ms,300ms,150ms]",
-      "data-[state=closed]:ease-[cubic-bezier(0.06,0.71,0.55,1)]",
+      "data-[state=closed]:ease-out",
       "motion-reduce:transition-none!",
     ],
     body: ["flex flex-col gap-0.5"],
@@ -43,8 +43,8 @@ export const toastItemVariants = tv({
   },
 });
 
-export type ToasterVariantProps = VariantProps<typeof toasterVariants>;
-export type ToasterVariants = ReturnType<typeof toasterVariants>;
+export type ToastVariantProps = VariantProps<typeof toastVariants>;
+export type ToastVariants = ReturnType<typeof toastVariants>;
 
 export type ToastItemVariantProps = VariantProps<typeof toastItemVariants>;
 export type ToastItemVariants = ReturnType<typeof toastItemVariants>;

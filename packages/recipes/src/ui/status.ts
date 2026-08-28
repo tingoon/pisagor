@@ -19,10 +19,10 @@ export const statusVariants = tv({
     },
     variant: {
       default: "bg-foreground text-background",
-      destructive: "bg-destructive text-white dark:bg-destructive-foreground",
-      info: "bg-info text-white",
-      success: "bg-success text-white",
-      warning: "bg-warning text-white",
+      destructive: "bg-destructive text-destructive-foreground dark:bg-destructive-foreground",
+      info: "bg-info text-info-foreground",
+      success: "bg-success text-success-foreground",
+      warning: "bg-warning text-warning-foreground",
     },
   },
 });

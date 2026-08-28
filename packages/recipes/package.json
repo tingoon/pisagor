@@ -16,6 +16,14 @@
   "homepage": "https://github.com/tingoon/pisagor#readme",
   "license": "MIT",
   "name": "@pisagor/recipes",
+  "peerDependencies": {
+    "tailwind-merge": ">=3.0.0"
+  },
+  "peerDependenciesMeta": {
+    "tailwind-merge": {
+      "optional": true
+    }
+  },
   "publishConfig": {
     "access": "public"
   },

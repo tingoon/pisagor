@@ -4,7 +4,7 @@ export const dropdownMenuVariants = tv({
   slots: {
     arrowTip: ["border-s border-t"],
     content: [
-      "z-[calc(50+var(--nested-layer-count,0))]",
+      "z-[calc(var(--z-popover)+var(--nested-layer-count,0))]",
       "max-h-(--available-height) not-[class*='w-']:min-w-32",
       "p-1",
       "bg-popover",

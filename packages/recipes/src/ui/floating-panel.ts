@@ -41,7 +41,7 @@ export const floatingPanelVariants = tv({
     ],
     maximizedIcon: ["hidden group-data-maximized/floating-panel:block"],
     minimizedIcon: ["hidden group-data-minimized/floating-panel:block"],
-    positioner: ["inset-s-(--x) top-(--y) z-50"],
+    positioner: ["inset-s-(--x) top-(--y) z-popover"],
     title: [
       "min-w-0 flex-1",
       "flex items-center gap-2",
