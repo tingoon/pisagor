@@ -4,7 +4,6 @@
     "@phosphor-icons/vue": "^2.2.1",
     "@pisagor/utils": "workspace:*",
     "@pisagor/vue": "workspace:*",
-    "@pisagor/vue-form": "workspace:*",
     "@tanstack/vue-form": "^1.33.5",
     "vue": "catalog:"
   },

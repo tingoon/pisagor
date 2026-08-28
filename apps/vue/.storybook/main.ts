@@ -21,9 +21,7 @@ export default defineMain({
   framework: getAbsolutePath("@storybook/vue3-vite"),
   stories: [
     path.join(workspaceRoot, "apps/vue/src/**/*.stories.ts"),
-    path.join(workspaceRoot, "packages/vue-ui/src/**/*.stories.ts"),
-    path.join(workspaceRoot, "packages/vue-form/src/**/*.stories.ts"),
-    path.join(workspaceRoot, "packages/vue-blocks/src/**/*.stories.ts"),
+    path.join(workspaceRoot, "packages/vue/src/**/*.stories.ts"),
   ],
 });
 

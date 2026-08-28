@@ -1,4 +1,0 @@
-{
-  "extends": "@pisagor/tsconfig/vue",
-  "include": ["src"]
-}
