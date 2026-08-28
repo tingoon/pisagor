@@ -4,8 +4,8 @@
     "@types/react": "catalog:"
   },
   "exports": {
+    "./base": "./tsconfig.json",
     "./bun": "./bun/tsconfig.json",
-    "./node": "./node/tsconfig.json",
     "./react": "./react/tsconfig.json",
     "./react-stories": "./react-stories/tsconfig.json",
     "./react-vite": "./react-vite/tsconfig.json",
@@ -14,8 +14,8 @@
     "./vue-vite": "./vue-vite/tsconfig.json"
   },
   "files": [
+    "tsconfig.json",
     "bun",
-    "node",
     "react",
     "react-vite",
     "react-stories",

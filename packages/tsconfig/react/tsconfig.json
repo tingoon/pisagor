@@ -3,5 +3,5 @@
     "jsx": "react-jsx"
   },
   "extends": "../tsconfig.json",
-  "files": ["./global.d.ts"]
+  "files": ["../css-modules.d.ts", "./global.d.ts"]
 }

@@ -1,4 +1,4 @@
 {
-  "extends": "@pisagor/tsconfig/node",
+  "extends": "@pisagor/tsconfig/base",
   "include": ["src"]
 }
