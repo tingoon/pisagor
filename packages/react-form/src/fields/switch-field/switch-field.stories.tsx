@@ -7,7 +7,7 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Combines Field and Switch with label, helper text, and optional error message.",
+        component: "Toggles a setting on or off with a label and optional validation message.",
       },
     },
   },

@@ -8,7 +8,7 @@ const meta = preview.meta({
     docs: {
       description: {
         component:
-          "Combines Field and InputOTP with separate digit slots and optional error message.",
+          "Collects a one-time code across separate digit slots with optional validation message.",
       },
     },
   },

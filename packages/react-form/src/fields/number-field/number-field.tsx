@@ -19,6 +19,7 @@ export interface NumberFieldProps extends FieldPresentationProps, NumberInputCon
 
 // #region Part
 export function NumberField({
+  orientation,
   clearable = false,
   invalid,
   name,
@@ -45,6 +46,7 @@ export function NumberField({
       label={label}
       labelAccessory={labelAccessory}
       labelProps={labelProps}
+      orientation={orientation}
     >
       <NumberInput
         {...numberInputProps}

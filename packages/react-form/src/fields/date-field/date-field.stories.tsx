@@ -7,8 +7,7 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component:
-          "Combines Field and DatePicker with inline input, calendar popover, and optional error message.",
+        component: "Picks a date from a calendar with label and optional validation message.",
       },
     },
   },

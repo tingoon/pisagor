@@ -18,6 +18,7 @@ export interface PasswordFieldProps extends FieldPresentationProps, PasswordInpu
 
 // #region Part
 export function PasswordField({
+  orientation,
   invalid,
   name,
   value,
@@ -42,6 +43,7 @@ export function PasswordField({
       label={label}
       labelAccessory={labelAccessory}
       labelProps={labelProps}
+      orientation={orientation}
     >
       <PasswordInput
         {...passwordInputProps}

@@ -19,6 +19,7 @@ export interface DateFieldProps extends FieldPresentationProps, DatePickerContro
 
 // #region Part
 export function DateField({
+  orientation,
   invalid,
   name,
   value,
@@ -44,6 +45,7 @@ export function DateField({
       label={label}
       labelAccessory={labelAccessory}
       labelProps={labelProps}
+      orientation={orientation}
     >
       <DatePicker
         {...datePickerProps}

@@ -17,6 +17,7 @@ export interface FileFieldProps extends FieldPresentationProps, FileInputControl
 
 // #region Part
 export function FileField({
+  orientation,
   invalid,
   name,
   description,
@@ -40,6 +41,7 @@ export function FileField({
       label={label}
       labelAccessory={labelAccessory}
       labelProps={labelProps}
+      orientation={orientation}
     >
       <FileInput
         {...fileInputProps}

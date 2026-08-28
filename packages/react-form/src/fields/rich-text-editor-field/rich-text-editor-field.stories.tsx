@@ -7,8 +7,7 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component:
-          "Combines Field and RichTextEditor with label, description, and optional error message.",
+        component: "Edits formatted text with a toolbar, label, and optional validation message.",
       },
     },
   },

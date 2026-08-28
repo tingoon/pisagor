@@ -21,6 +21,7 @@ export interface AutocompleteFieldProps
 
 // #region Part
 export function AutocompleteField({
+  orientation,
   invalid,
   items,
   name,
@@ -46,6 +47,7 @@ export function AutocompleteField({
       label={label}
       labelAccessory={labelAccessory}
       labelProps={labelProps}
+      orientation={orientation}
     >
       <Autocomplete
         {...autocompleteProps}

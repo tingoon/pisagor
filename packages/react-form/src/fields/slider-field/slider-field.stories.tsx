@@ -7,7 +7,7 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Combines Field and Slider for numeric range input with validation.",
+        component: "Sets a value along a range with a label and optional validation message.",
       },
     },
   },

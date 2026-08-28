@@ -14,6 +14,7 @@ export interface TagsInputFieldProps extends FieldPresentationProps, TagsInputCo
 
 // #region Part
 export function TagsInputField({
+  orientation,
   invalid,
   name,
   value,
@@ -38,6 +39,7 @@ export function TagsInputField({
       label={label}
       labelAccessory={labelAccessory}
       labelProps={labelProps}
+      orientation={orientation}
     >
       <TagsInput
         {...tagsInputProps}

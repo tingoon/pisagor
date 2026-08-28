@@ -18,6 +18,7 @@ export interface TextareaFieldProps extends FieldPresentationProps, TextareaCont
 
 // #region Part
 export function TextareaField({
+  orientation,
   invalid,
   name,
   value,
@@ -42,6 +43,7 @@ export function TextareaField({
       label={label}
       labelAccessory={labelAccessory}
       labelProps={labelProps}
+      orientation={orientation}
     >
       <Textarea
         {...textareaProps}

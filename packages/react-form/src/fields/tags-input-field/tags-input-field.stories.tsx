@@ -7,7 +7,7 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Combines Field and TagsInput for multi-value tag entry with validation.",
+        component: "Adds and removes multiple tags with a label and optional validation message.",
       },
     },
   },

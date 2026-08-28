@@ -7,7 +7,7 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Combines Field and FileInput for uploading one or more files with validation.",
+        component: "Uploads one or more files with a label and optional validation message.",
       },
     },
   },

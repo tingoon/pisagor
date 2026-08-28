@@ -22,6 +22,7 @@ export interface OtpFieldProps
 
 // #region Part
 export function OtpField({
+  orientation,
   invalid,
   name,
   value,
@@ -57,6 +58,7 @@ export function OtpField({
       label={label}
       labelAccessory={labelAccessory}
       labelProps={labelProps}
+      orientation={orientation}
     >
       <InputOTP
         {...inputOtpProps}

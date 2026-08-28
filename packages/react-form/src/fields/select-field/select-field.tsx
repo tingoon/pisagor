@@ -56,6 +56,7 @@ export function SelectField({
       label={label}
       labelAccessory={labelAccessory}
       labelProps={labelProps}
+      orientation={orientation}
     >
       <Select.Root
         {...selectProps}

@@ -8,7 +8,7 @@ const meta = preview.meta({
     docs: {
       description: {
         component:
-          "Combines Field and PhoneInput with country selection and optional error message.",
+          "Collects a phone number with country selection and optional validation message.",
       },
     },
   },

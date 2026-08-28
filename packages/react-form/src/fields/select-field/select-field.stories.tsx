@@ -7,7 +7,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Combines Field and Select with label, helper text, and optional error message.",
+        component:
+          "Lets the user pick one option from a dropdown with label and optional validation message.",
       },
     },
   },

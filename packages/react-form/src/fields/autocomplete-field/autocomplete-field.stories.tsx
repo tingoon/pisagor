@@ -8,7 +8,7 @@ const meta = preview.meta({
     docs: {
       description: {
         component:
-          "Combines Field and Autocomplete with label, description, and optional error message.",
+          "Collects text with typeahead suggestions, label, and optional validation message.",
       },
     },
   },

@@ -8,7 +8,7 @@ const meta = preview.meta({
     docs: {
       description: {
         component:
-          "Combines Field and PasswordInput with show-hide control, label, and optional error message.",
+          "Captures a password with show-hide control, label, and optional validation message.",
       },
     },
   },
@@ -20,27 +20,6 @@ export const Default = meta.story({
     autoComplete: "current-password",
     id: "password-field",
     label: "Password",
-    onValueChange: fn(),
-    placeholder: "Enter your password",
-  },
-});
-
-export const WithLabelAccessory = meta.story({
-  args: {
-    autoComplete: "current-password",
-    id: "password-field-accessory",
-    label: "Password",
-    labelAccessory: (
-      <a
-        className="ml-auto text-sm underline-offset-4 hover:underline"
-        href="https://example.com/forgot-password"
-      >
-        Forgot password?
-      </a>
-    ),
-    labelProps: {
-      className: "w-full",
-    },
     onValueChange: fn(),
     placeholder: "Enter your password",
   },
@@ -65,6 +44,27 @@ export const Disabled = meta.story({
     disabled: true,
     id: "password-field-disabled",
     label: "Password",
+    onValueChange: fn(),
+    placeholder: "Enter your password",
+  },
+});
+
+export const WithLabelAccessory = meta.story({
+  args: {
+    autoComplete: "current-password",
+    id: "password-field-accessory",
+    label: "Password",
+    labelAccessory: (
+      <a
+        className="ml-auto text-sm underline-offset-4 hover:underline"
+        href="https://example.com/forgot-password"
+      >
+        Forgot password?
+      </a>
+    ),
+    labelProps: {
+      className: "w-full",
+    },
     onValueChange: fn(),
     placeholder: "Enter your password",
   },

@@ -14,6 +14,7 @@ export interface PhoneFieldProps
 
 // #region Part
 export function PhoneField({
+  orientation,
   defaultCountry,
   invalid,
   name,
@@ -39,6 +40,7 @@ export function PhoneField({
       label={label}
       labelAccessory={labelAccessory}
       labelProps={labelProps}
+      orientation={orientation}
     >
       <PhoneInput
         {...phoneInputProps}

@@ -8,7 +8,7 @@ const meta = preview.meta({
     docs: {
       description: {
         component:
-          "Combines Field and Checkbox with label, description, and optional error message.",
+          "Lets the user confirm a choice with a checkbox, label, and optional validation message.",
       },
     },
   },
@@ -19,7 +19,7 @@ export const Default = meta.story({
   args: {
     id: "checkbox-field-terms",
     label: "I accept the terms and conditions",
-    onCheckedChange: fn(),
+    onValueChange: fn(),
   },
 });
 
@@ -29,7 +29,7 @@ export const Invalid = meta.story({
     id: "checkbox-field-terms-invalid",
     invalid: true,
     label: "I accept the terms and conditions",
-    onCheckedChange: fn(),
+    onValueChange: fn(),
   },
 });
 
@@ -38,6 +38,6 @@ export const Disabled = meta.story({
     disabled: true,
     id: "checkbox-field-terms-disabled",
     label: "I accept the terms and conditions",
-    onCheckedChange: fn(),
+    onValueChange: fn(),
   },
 });

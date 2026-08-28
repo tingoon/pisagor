@@ -8,7 +8,7 @@ const meta = preview.meta({
     docs: {
       description: {
         component:
-          "Combines Field and RadioGroup for selecting one option with optional error message.",
+          "Lets the user pick one option from a short list with an optional validation message.",
       },
     },
   },

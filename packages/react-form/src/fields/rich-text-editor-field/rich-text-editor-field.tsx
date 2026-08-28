@@ -19,6 +19,7 @@ export interface RichTextEditorFieldProps
 
 // #region Part
 export function RichTextEditorField({
+  orientation,
   invalid,
   name,
   value,
@@ -46,6 +47,7 @@ export function RichTextEditorField({
       label={label}
       labelAccessory={labelAccessory}
       labelProps={labelProps}
+      orientation={orientation}
     >
       <RichTextEditor
         {...editorProps}

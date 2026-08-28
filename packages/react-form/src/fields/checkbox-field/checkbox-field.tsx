@@ -10,7 +10,7 @@ export interface CheckboxFieldProps
   checked?: boolean;
   name?: string;
   onBlur?: () => void;
-  onCheckedChange: (checked: boolean) => void;
+  onValueChange: (checked: boolean) => void;
 }
 // #endregion
 
@@ -27,7 +27,7 @@ export function CheckboxField({
   labelAccessory,
   labelProps,
   onBlur,
-  onCheckedChange,
+  onValueChange,
   className,
   ...checkboxProps
 }: CheckboxFieldProps) {
@@ -42,7 +42,7 @@ export function CheckboxField({
         invalid={invalid}
         name={name}
         onBlur={onBlur}
-        onCheckedChange={(details) => onCheckedChange(details.checked === true)}
+        onValueChange={onValueChange}
       />
       {hasLabel || description ? (
         <Field.Content>

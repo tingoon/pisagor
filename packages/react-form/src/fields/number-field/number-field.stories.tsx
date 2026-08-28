@@ -7,8 +7,7 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component:
-          "Combines Field and NumberInput with steppers, label, and optional error message.",
+        component: "Adjusts a numeric value with steppers, label, and optional validation message.",
       },
     },
   },

@@ -7,8 +7,7 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component:
-          "Combines Field and Textarea with label, description, and optional error message.",
+        component: "Collects multiple lines of text with a label and optional validation message.",
       },
     },
   },
