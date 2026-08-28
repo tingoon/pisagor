@@ -12,6 +12,7 @@ Multi-framework UI library: React and Vue components on Ark UI, Tailwind CSS v4,
 | [`@pisagor/utils`](./packages/utils) | `cn` |
 | [`@pisagor/tokens`](./packages/tokens) | Design tokens / Tailwind theme |
 | [`@pisagor/recipes`](./packages/recipes) | Shared `tv()` class recipes |
+| [`@pisagor/tsconfig`](./packages/tsconfig) | Shared TypeScript presets |
 | [`@pisagor/react-blocks`](./packages/react-blocks) | Composed blocks (empty until filled) |
 
 Packages export TypeScript source. Use a bundler that compiles TS (Vite, etc.).
