@@ -83,7 +83,7 @@ export function StandardAppShell({
 export function StandardAppShellNavigation() {
   return (
     <AppShell.Navigation>
-      <div className="flex w-full items-center gap-4">
+      <div className="flex w-full items-center gap-2">
         <span className="font-semibold">Acme</span>
 
         <nav aria-label="Primary" className="flex flex-1 items-center gap-1">
@@ -129,7 +129,7 @@ function ActiveRailTitle() {
 
 function StandardAppShellPlaceholder() {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-2">
       <p className="text-muted-foreground text-sm">
         Main content area. Replace this block with your page layout.
       </p>

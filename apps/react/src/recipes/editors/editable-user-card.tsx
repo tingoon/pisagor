@@ -8,7 +8,7 @@ export interface EditableUserCardProps {
 
 export function EditableUserCard({ className }: EditableUserCardProps) {
   return (
-    <Card className={cn("w-full max-w-sm", className)}>
+    <Card className={cn("w-full", className)}>
       <Card.Header
         description="Click in the field or edit button to start editing"
         title="Edit user"

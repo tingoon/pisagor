@@ -1,9 +1,8 @@
-import { Fragment } from "react";
 import preview from "#/storybook/preview";
 import { PasswordStrength } from "./password-strength";
 
 const meta = preview.meta({
-  component: Fragment,
+  component: PasswordStrength,
   parameters: {
     docs: {
       description: {
@@ -15,6 +14,4 @@ const meta = preview.meta({
   title: "Recipes/Forms/Password Input",
 });
 
-export const Strength = meta.story({
-  render: () => <PasswordStrength />,
-});
+export const Strength = meta.story({});

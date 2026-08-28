@@ -1,7 +1,7 @@
 import { CheckIcon, XIcon } from "@phosphor-icons/react";
 import { Field, PasswordInput } from "@pisagor/react";
 import { cn } from "@pisagor/utils";
-import { useId, useMemo, useState } from "react";
+import { useId, useState } from "react";
 
 const PASSWORD_REQUIREMENTS = [
   { regex: /.{8,}/, text: "At least 8 characters" },
@@ -42,13 +42,10 @@ export function PasswordStrength({ className }: PasswordStrengthProps) {
   const id = useId();
   const [password, setPassword] = useState("");
   const requirements = checkPasswordRequirements(password);
-  const strengthScore = useMemo(
-    () => requirements.filter((requirement) => requirement.met).length,
-    [requirements],
-  );
+  const strengthScore = requirements.filter((requirement) => requirement.met).length;
 
   return (
-    <div className={cn("w-full max-w-xs", className)}>
+    <div className={cn("w-full", className)}>
       <Field>
         <Field.Label htmlFor={id}>Secure password</Field.Label>
         <PasswordInput
