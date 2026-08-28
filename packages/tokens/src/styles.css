@@ -152,8 +152,8 @@
   --motion-ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
   --layer-dropdown: 40;
   --layer-popover: 50;
-  --layer-modal: 50;
-  --layer-toast: 60;
+  --layer-modal: 60;
+  --layer-toast: 70;
   --background: var(--color-white);
   --foreground: var(--color-neutral-800);
   --card: var(--color-white);

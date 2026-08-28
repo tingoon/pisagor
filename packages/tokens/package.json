@@ -9,6 +9,9 @@
   "homepage": "https://github.com/tingoon/pisagor#readme",
   "license": "MIT",
   "name": "@pisagor/tokens",
+  "peerDependencies": {
+    "tailwindcss": "^4"
+  },
   "publishConfig": {
     "access": "public"
   },
