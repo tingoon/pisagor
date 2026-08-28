@@ -2,31 +2,19 @@
   "$schema": "./node_modules/knip/schema.json",
   "workspaces": {
     "apps/react": {
-      "entry": [
-        ".storybook/**/*",
-        "src/**/*",
-        "../../packages/react-form/**/*.stories.@(ts|tsx)",
-        "../../packages/react-ui/**/*.stories.@(ts|tsx)"
-      ]
+      "entry": [".storybook/**/*", "src/**/*", "../../packages/react/**/*.stories.@(ts|tsx)"]
     },
     "apps/vue": {
-      "entry": [
-        ".storybook/**/*",
-        "src/**/*",
-        "../../packages/vue-ui/**/*.stories.@(ts|tsx)",
-        "../../packages/vue-form/**/*.stories.@(ts|tsx)"
-      ],
-      "ignoreDependencies": ["@pisagor/vue-form", "@tanstack/vue-form"]
+      "entry": [".storybook/**/*", "src/**/*", "../../packages/vue/**/*.stories.@(ts|tsx)"]
     },
-    "packages/react-form": {
-      "ignoreIssues": {
-        "src/**/*.stories.tsx": ["unresolved", "dependencies", "unlisted"]
-      }
-    },
-    "packages/react-ui": {
+    "packages/react": {
       "entry": ["src/**/*"],
       "ignoreIssues": {
-        "src/**/*.stories.tsx": ["unresolved", "dependencies", "unlisted"]
+        "src/**/*.stories.tsx": ["unresolved", "dependencies", "unlisted"],
+        "src/blocks/**": ["exports", "types", "files"],
+        "src/charts/**/*.recipe.ts": ["exports", "types", "duplicates"],
+        "src/components/**/*.recipe.ts": ["exports", "types", "duplicates"],
+        "src/internal/**": ["exports", "types"]
       }
     },
     "packages/recipes": {
@@ -35,17 +23,12 @@
     "packages/tsconfig": {
       "ignoreDependencies": ["@types/react"]
     },
-    "packages/vue-form": {
-      "ignoreIssues": {
-        "src/**/*.stories.ts": ["unresolved", "dependencies", "unlisted"]
-      }
-    },
-    "packages/vue-ui": {
-      "entry": ["src/components/*/index.ts"],
+    "packages/vue": {
+      "entry": ["src/**/*"],
       "ignoreIssues": {
         "src/**/*.stories.ts": ["unresolved", "dependencies", "unlisted"],
+        "src/blocks/**": ["exports", "types", "files"],
         "src/components/**": ["exports", "types", "duplicates"],
-        "src/hooks/index.ts": ["files"],
         "src/internal/**": ["exports", "types", "duplicates"]
       }
     }

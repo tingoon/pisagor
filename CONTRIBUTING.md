@@ -25,7 +25,7 @@ turbo test
 bun run knip
 ```
 
-Commits: [Conventional Commits](https://www.conventionalcommits.org/). Scope with the workspace when the change is local (`feat(react-storybook):`, `fix(react-ui):`).
+Commits: [Conventional Commits](https://www.conventionalcommits.org/). Scope with the workspace when the change is local (`feat(react-storybook):`, `fix(react):`).
 
 ## Pull requests
 

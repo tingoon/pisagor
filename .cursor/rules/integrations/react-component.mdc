@@ -1,14 +1,14 @@
 ---
 description: Shared component patterns — package layout, compound API, styling, a11y
-globs: packages/react-ui/src/**/*.tsx,packages/react-form/src/**/*.tsx,packages/react-blocks/src/**/*.tsx,apps/react/src/**/*.tsx
+globs: packages/react/src/**/*.tsx,apps/react/src/**/*.tsx
 alwaysApply: false
 ---
 
 # React Component Patterns
 
-How to build shared UI components in public packages (`packages/react-ui`, `packages/react-form`, `packages/react-blocks`). General React rules — [React Style Guide](../styleguides/react.mdc).
+How to build shared UI components in `packages/react` (`@pisagor/react`). General React rules — [React Style Guide](../styleguides/react.mdc).
 
-**References:** [React Style Guide](../styleguides/react.mdc), [Storybook](storybook.mdc), [TypeScript Style Guide](../styleguides/typescript.mdc). Package-specific policy notes may live in that package's `AGENTS.md` (e.g. [`packages/react-ui/AGENTS.md`](../../../packages/react-ui/AGENTS.md)).
+**References:** [React Style Guide](../styleguides/react.mdc), [Storybook](storybook.mdc), [TypeScript Style Guide](../styleguides/typescript.mdc). Package-specific policy notes may live in that package's `AGENTS.md` (e.g. [`packages/react/AGENTS.md`](../../../packages/react/AGENTS.md)).
 
 **Out of scope:** design tokens, brand palette, spacing taste, theme authoring (`@pisagor/tokens`). `tv()` recipe authoring lives in [`@pisagor/recipes`](../../../packages/recipes) — this file covers how components **consume** recipes. General React naming, props order, hooks, body order — [React Style Guide](../styleguides/react.mdc).
 
@@ -29,7 +29,7 @@ Folder name, main file, and component export name align: **kebab-case folder** �
 
 ### Context file (`<name>.context.tsx`)
 
-When a compound component uses package-local React context (`createContext` from `../../utils`):
+When a compound component uses package-local React context (`createContext` from `../../internal/utils`):
 
 - Put context value types, `createContext(...)`, and consumer hooks in `<name>.context.tsx`.
 - Export the Context and `useX` hook from that file; keep Root/Part JSX in `<name>.tsx`.
@@ -45,7 +45,7 @@ File-level React rules: [React Style Guide](../styleguides/react.mdc).
 
 ### Public shared packages
 
-Applies to published workspace component packages (`@pisagor/react`, `@pisagor/react-form`, `@pisagor/react-blocks`, and future `@pisagor/react-widgets`-style packages):
+Applies to the published workspace component package (`@pisagor/react`):
 
 - One folder per public component — layout above is required.
 - Require `index.ts` barrel (package export map, e.g. `@pisagor/react/*`).
@@ -61,8 +61,8 @@ Applies to published workspace component packages (`@pisagor/react`, `@pisagor/r
 - **Stories** (`.stories.tsx`) may use the public export map (e.g. `import { Button } from "@pisagor/react"`) — same as apps. Heavy components use dedicated subpaths (`@pisagor/react/data-grid`, `@pisagor/react/data-table`, …).
 - Apps and other packages use the public export map for that package (light barrel or heavy subpath).
 - For cyclic pairs (e.g. `input` ↔ `input-group` ↔ `textarea`), import the concrete module file, not the barrel `index.ts`.
-- Import `{name}Variants` / `{Name}VariantProps` from `@pisagor/recipes/<name>` (or a sibling recipe path) — see [Styling](#styling). Do not define `tv()` in component packages.
-- Use relative imports (`../../utils`, siblings) within the same component folder.
+- Import `{name}Variants` / `{Name}VariantProps` from `@pisagor/recipes/<name>` — see [Styling](#styling). Do not define `tv()` in component packages. Do not add `<name>.recipe.ts` shims.
+- Use relative imports (`../../internal/utils`, siblings) within the same component folder.
 - Import icons from `@phosphor-icons/react` (e.g. `CaretDownIcon`).
 
 ---
@@ -259,6 +259,7 @@ Recipes (`tv()`) are owned by **`@pisagor/recipes`**. Component packages import 
 ### Consuming recipes
 
 - Import from the recipe subpath: `import { buttonVariants, type ButtonVariantProps } from "@pisagor/recipes/button"`. Prefer `@pisagor/recipes/<name>` over the root barrel for a tight import graph.
+- Shared form-control shells: `import { formControlShellVariants, … } from "@pisagor/recipes/form-control"`.
 - Prefer recipe-exported `{Name}VariantProps` / slot types over re-deriving `VariantProps<typeof …>` in the component when the recipe already exports them.
 - Mirror recipe `defaultVariants` in destructuring defaults; document those props with TSDoc `@defaultValue`.
 - **`cn()`:** one logical concern per string; `className` last.

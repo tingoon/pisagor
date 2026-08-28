@@ -4,16 +4,12 @@ Multi-framework UI library: React and Vue components on Ark UI, Tailwind CSS v4,
 
 | Package | Description |
 | --- | --- |
-| [`@pisagor/react`](./packages/react-ui) | Components (`@pisagor/react`, heavy via subpath) |
-| [`@pisagor/vue`](./packages/vue-ui) | Vue components (`@pisagor/vue`, heavy via subpath) |
-| [`@pisagor/react-form`](./packages/react-form) | Fields and TanStack Form helpers |
-| [`@pisagor/react-hooks`](./packages/react-hooks) | Shared React hooks |
-| [`@pisagor/vue-composables`](./packages/vue-composables) | Shared Vue composables |
+| [`@pisagor/react`](./packages/react) | Components, form fields, blocks (`@pisagor/react`, heavy via subpath) |
+| [`@pisagor/vue`](./packages/vue) | Vue components, form fields, blocks (`@pisagor/vue`, heavy via subpath) |
 | [`@pisagor/utils`](./packages/utils) | `cn` |
 | [`@pisagor/tokens`](./packages/tokens) | Design tokens / Tailwind theme |
 | [`@pisagor/recipes`](./packages/recipes) | Shared `tv()` class recipes |
 | [`@pisagor/tsconfig`](./packages/tsconfig) | Shared TypeScript presets |
-| [`@pisagor/react-blocks`](./packages/react-blocks) | Composed blocks (empty until filled) |
 
 Packages export TypeScript source. Use a bundler that compiles TS (Vite, etc.).
 

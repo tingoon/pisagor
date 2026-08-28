@@ -15,14 +15,8 @@ Instruction priority: [Core Boundaries](./.cursor/rules/core.mdc).
 │   ├── react/                React Storybook (port 3001)
 │   └── vue/                  Vue Storybook (port 3002)
 ├── packages/
-│   ├── react-blocks/           composed UI blocks (`@pisagor/react-blocks`)
-│   ├── react-form/             form fields (`@pisagor/react-form`)
-│   ├── react-hooks/            React hooks (`@pisagor/react-hooks`)
-│   ├── react-ui/               React UI components (`@pisagor/react`)
-│   ├── vue-blocks/             composed Vue blocks (`@pisagor/vue-blocks`)
-│   ├── vue-composables/        Vue composables (`@pisagor/vue-composables`)
-│   ├── vue-form/               Vue form fields (`@pisagor/vue-form`)
-│   ├── vue-ui/                 Vue UI components (`@pisagor/vue`)
+│   ├── react/                  React UI, form fields, blocks (`@pisagor/react`)
+│   ├── vue/                    Vue UI, form fields, blocks (`@pisagor/vue`)
 │   ├── recipes/                tv() class recipes (`@pisagor/recipes`)
 │   ├── tokens/                 design tokens / Tailwind theme (`@pisagor/tokens`)
 │   ├── utils/                  class-name helpers (`@pisagor/utils`)
@@ -36,16 +30,12 @@ Instruction priority: [Core Boundaries](./.cursor/rules/core.mdc).
 | ---- | ----- |
 | `apps/react` (`react-storybook`) | React Storybook |
 | `apps/vue` (`vue-storybook`) | Vue Storybook |
+| `packages/react` | [AGENTS.md](./packages/react/AGENTS.md) |
+| `packages/vue` | [AGENTS.md](./packages/vue/AGENTS.md) |
 | `packages/recipes` | [AGENTS.md](./packages/recipes/AGENTS.md) |
 | `packages/tokens` | [AGENTS.md](./packages/tokens/AGENTS.md) |
 | `packages/utils` | [README.md](./packages/utils/README.md) |
 | `packages/tsconfig` | [README.md](./packages/tsconfig/README.md) |
-| `packages/react-blocks` | [AGENTS.md](./packages/react-blocks/AGENTS.md) |
-| `packages/react-form` | [AGENTS.md](./packages/react-form/AGENTS.md) |
-| `packages/react-ui` | [AGENTS.md](./packages/react-ui/AGENTS.md) |
-| `packages/vue-blocks` | [AGENTS.md](./packages/vue-blocks/AGENTS.md) |
-| `packages/vue-form` | [AGENTS.md](./packages/vue-form/AGENTS.md) |
-| `packages/vue-ui` | [AGENTS.md](./packages/vue-ui/AGENTS.md) |
 
 Slash commands: [`.cursor/commands/`](./.cursor/commands/).
 

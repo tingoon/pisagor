@@ -7,7 +7,7 @@ assignees: ""
 ---
 
 **Package**
-Which package? (`@pisagor/react`, `@pisagor/react-form`, …)
+Which package? (`@pisagor/react`, `@pisagor/vue`, …)
 
 **Describe the bug**
 A clear and concise description of what the bug is.
