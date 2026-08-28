@@ -1,6 +1,6 @@
 import { NumberInput as NumberInputPrimitive } from "@ark-ui/react/number-input";
 import { MinusIcon, PlusIcon } from "@phosphor-icons/react";
-import { numberFieldVariants } from "@pisagor/recipes/number-input";
+import { numberInputVariants } from "@pisagor/recipes/number-input";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
@@ -64,7 +64,7 @@ export function NumberInputRoot({
   className,
   ...rest
 }: NumberInputProps) {
-  const slots = useMemo(() => numberFieldVariants(), []);
+  const slots = useMemo(() => numberInputVariants(), []);
 
   return (
     <FormControlVariantProvider value={variant}>

@@ -1,8 +1,8 @@
-import type { NumberFieldVariants } from "@pisagor/recipes/number-input";
+import type { NumberInputVariants } from "@pisagor/recipes/number-input";
 import { createContext } from "../../utils";
 
 interface NumberInputContextValue {
-  slots: NumberFieldVariants;
+  slots: NumberInputVariants;
 }
 
 export const { NumberInputContext, useNumberInput } = createContext<NumberInputContextValue>()({

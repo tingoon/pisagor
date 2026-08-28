@@ -1,6 +1,6 @@
 import { Checkbox as CheckboxPrimitive } from "@ark-ui/react/checkbox";
 import { CheckIcon, MinusIcon } from "@phosphor-icons/react";
-import { checkbox2Variants, checkboxGroupVariants } from "@pisagor/recipes/checkbox";
+import { checkboxGroupVariants, checkboxVariants } from "@pisagor/recipes/checkbox";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
@@ -51,7 +51,7 @@ export function CheckboxRoot({
   const resolved = useFormControlVariant(variantProp);
   const shellArgs = shellVariantArgs(resolved);
   const controlProps = formControlShellProps(resolved);
-  const slots = checkbox2Variants();
+  const slots = checkboxVariants();
 
   const handleCheckedChange =
     onCheckedChange || onValueChange
@@ -88,7 +88,7 @@ export function CheckboxRoot({
 }
 
 function CheckboxIndicator({ className, ...rest }: CheckboxIndicatorProps) {
-  const slots = checkbox2Variants();
+  const slots = checkboxVariants();
 
   return <CheckboxPrimitive.Indicator {...rest} className={slots.indicator({ className })} />;
 }

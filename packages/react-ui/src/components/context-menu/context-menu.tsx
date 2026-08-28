@@ -1,5 +1,5 @@
 import { Menu as MenuPrimitive } from "@ark-ui/react/menu";
-import { contextMenuTriggerVariants } from "@pisagor/recipes/context-menu";
+import { contextMenuVariants } from "@pisagor/recipes/context-menu";
 import type { ComponentProps } from "react";
 import {
   DropdownMenu,
@@ -24,9 +24,7 @@ export function ContextMenuRoot({ ...rest }: ContextMenuRootProps) {
 }
 
 export function ContextMenuContextTrigger({ className, ...rest }: ContextMenuContextTriggerProps) {
-  return (
-    <MenuPrimitive.ContextTrigger {...rest} className={contextMenuTriggerVariants({ className })} />
-  );
+  return <MenuPrimitive.ContextTrigger {...rest} className={contextMenuVariants({ className })} />;
 }
 
 export function ContextMenuContent(props: DropdownMenuContentProps) {

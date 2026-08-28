@@ -1,8 +1,8 @@
-import type { PopoverContentVariants } from "@pisagor/recipes/popover";
+import type { PopoverVariants } from "@pisagor/recipes/popover";
 import { createContext } from "../../utils";
 
 interface PopoverContentContextValue {
-  slots: PopoverContentVariants;
+  slots: PopoverVariants;
 }
 
 export const { PopoverContentContext, usePopoverContent } =
