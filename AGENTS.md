@@ -36,6 +36,10 @@ Instruction priority: [Core Boundaries](./.cursor/rules/core.mdc).
 | ---- | ----- |
 | `apps/react` (`react-storybook`) | React Storybook |
 | `apps/vue` (`vue-storybook`) | Vue Storybook |
+| `packages/recipes` | [AGENTS.md](./packages/recipes/AGENTS.md) |
+| `packages/tokens` | [AGENTS.md](./packages/tokens/AGENTS.md) |
+| `packages/utils` | [README.md](./packages/utils/README.md) |
+| `packages/tsconfig` | [README.md](./packages/tsconfig/README.md) |
 | `packages/react-blocks` | [AGENTS.md](./packages/react-blocks/AGENTS.md) |
 | `packages/react-form` | [AGENTS.md](./packages/react-form/AGENTS.md) |
 | `packages/react-ui` | [AGENTS.md](./packages/react-ui/AGENTS.md) |
