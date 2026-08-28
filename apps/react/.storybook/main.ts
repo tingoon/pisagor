@@ -21,9 +21,7 @@ export default defineMain({
   framework: getAbsolutePath("@storybook/react-vite"),
   stories: [
     path.join(workspaceRoot, "apps/react/src/**/*.stories.tsx"),
-    path.join(workspaceRoot, "packages/react-ui/src/**/*.stories.tsx"),
-    path.join(workspaceRoot, "packages/react-form/src/**/*.stories.tsx"),
-    path.join(workspaceRoot, "packages/react-blocks/src/**/*.stories.tsx"),
+    path.join(workspaceRoot, "packages/react/src/**/*.stories.tsx"),
   ],
 });
 

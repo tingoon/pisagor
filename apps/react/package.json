@@ -4,7 +4,6 @@
     "@mantine/hooks": "^9.5.2",
     "@phosphor-icons/react": "^2.1.10",
     "@pisagor/react": "workspace:*",
-    "@pisagor/react-form": "workspace:*",
     "@pisagor/utils": "workspace:*",
     "@tanstack/react-form": "^1.33.5",
     "react": "catalog:",

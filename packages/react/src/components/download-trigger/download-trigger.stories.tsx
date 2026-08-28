@@ -1,0 +1,92 @@
+import { DownloadIcon, FileTextIcon } from "@phosphor-icons/react";
+import preview from "#/storybook/preview";
+import { Button, DownloadTrigger, Item } from "..";
+
+const meta = preview.meta({
+  component: DownloadTrigger,
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "Starts a file download when activated so users can save content without navigating away.",
+      },
+    },
+    metadata: {
+      api: "closed",
+      taxonomy: "primitive",
+    },
+  },
+  title: "Components/Actions/Download Trigger",
+});
+
+export const Default = meta.story({
+  args: {
+    asChild: true,
+    data: sampleText(),
+    fileName: "hello.txt",
+    mimeType: "text/plain",
+  },
+  render: (args) => (
+    <div className="flex flex-col gap-2">
+      <Item.Group variant="outline">
+        <Item>
+          <FileTextIcon />
+          <Item.Title>{sampleText()}</Item.Title>
+        </Item>
+      </Item.Group>
+      <DownloadTrigger {...args}>
+        <Button size="lg" variant="outline">
+          <DownloadIcon />
+          Download
+        </Button>
+      </DownloadTrigger>
+    </div>
+  ),
+});
+
+export const DownloadSvg = meta.story({
+  args: {
+    asChild: true,
+    children: (
+      <Button size="lg" variant="outline">
+        <DownloadIcon />
+        Download SVG
+      </Button>
+    ),
+    data: sampleSvg(),
+    fileName: "icon.svg",
+    mimeType: "image/svg+xml",
+  },
+});
+
+export const WithPromise = meta.story({
+  args: {
+    asChild: true,
+    children: (
+      <Button size="lg" variant="outline">
+        <DownloadIcon />
+        Download
+      </Button>
+    ),
+    data: () =>
+      new Promise<Blob>((resolve) => {
+        setTimeout(() => {
+          resolve(
+            new Blob(['{"message": "Loaded asynchronously"}'], {
+              type: "application/json",
+            }),
+          );
+        }, 500);
+      }),
+    fileName: "data.json",
+    mimeType: "application/json",
+  },
+});
+
+function sampleText() {
+  return "Hello, World! This is a sample text file.";
+}
+
+function sampleSvg() {
+  return `<svg fill="none" height="512" viewBox="0 0 512 512" width="512" xmlns="http://www.w3.org/2000/svg"><path d="M149.978 73.374c12.889 6.02 17.7 19.947 10.746 31.105l-6.43 10.317c-57.065 91.56-54.802 202.263 5.97 292.018 7.406 10.938 3.167 25.002-9.467 31.414-12.635 6.411-28.882 2.742-36.288-8.196-70.14-103.592-72.753-231.363-6.89-337.039l6.43-10.316c6.954-11.158 23.04-15.323 35.929-9.303M294.024 73.374c12.888 6.02 17.7 19.947 10.746 31.105l-6.431 10.317c-57.065 91.56-54.801 202.263 5.97 292.018 7.406 10.938 3.168 25.002-9.467 31.414-12.634 6.411-28.881 2.742-36.287-8.196-70.142-103.592-72.754-231.363-6.891-337.039l6.43-10.316c6.955-11.158 23.041-15.323 35.93-9.303M438.069 73.374c12.889 6.02 17.7 19.947 10.746 31.105l-6.43 10.317c-57.066 91.56-54.802 202.263 5.97 292.018 7.405 10.938 3.167 25.002-9.467 31.414-12.635 6.411-28.882 2.742-36.288-8.196-70.141-103.592-72.754-231.363-6.891-337.039l6.431-10.316c6.954-11.158 23.04-15.323 35.929-9.303" fill="currentColor"/></svg>`;
+}

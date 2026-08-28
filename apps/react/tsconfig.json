@@ -6,12 +6,5 @@
     }
   },
   "extends": "@pisagor/tsconfig/react-vite",
-  "include": [
-    "src",
-    ".storybook",
-    "vite.config.ts",
-    "../../packages/react-ui/src/**/*.stories.tsx",
-    "../../packages/react-form/src/**/*.stories.tsx",
-    "../../packages/react-blocks/src/**/*.stories.tsx"
-  ]
+  "include": ["src", ".storybook", "vite.config.ts", "../../packages/react/src/**/*.stories.tsx"]
 }
