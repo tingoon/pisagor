@@ -18,6 +18,6 @@ export const OtpField = createFieldComponent<string, OtpFieldControlProps, Conne
     name: field.name,
     onBlur: field.handleBlur,
     onValueChange: (value: string) => field.handleChange(value),
-    value: field.state.value as string,
+    value: field.state.value,
   }),
 );

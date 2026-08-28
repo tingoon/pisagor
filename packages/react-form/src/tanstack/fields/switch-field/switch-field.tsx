@@ -15,7 +15,7 @@ export const SwitchField = createFieldComponent<
   SwitchFieldControlProps,
   ConnectedSwitchFieldProps
 >(SwitchFieldControl, ({ error, field, invalid }) => ({
-  checked: field.state.value as boolean,
+  checked: field.state.value,
   error,
   invalid,
   name: field.name,

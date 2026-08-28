@@ -24,6 +24,7 @@ export const Default = meta.story({
     const form = useAppForm({
       defaultValues: {
         acceptedTerms: false,
+        attachments: [] as File[],
         bio: "",
         body: "<p></p>",
         city: "",
@@ -34,7 +35,9 @@ export const Default = meta.story({
         password: "",
         phone: "",
         plan: "pro",
+        priority: [40],
         quantity: 1,
+        skills: [] as string[],
         startDate: [parseDate("2026-07-16")] as DatePickerValue,
       },
       onSubmit: () => {},
@@ -134,6 +137,26 @@ export const Default = meta.story({
               id="tanstack-form-plan"
               label="Plan"
               options={planOptions}
+            />
+          )}
+        </form.AppField>
+
+        <form.AppField name="attachments">
+          {(field) => (
+            <field.FileField accept="image/*" id="tanstack-form-attachments" label="Avatar" />
+          )}
+        </form.AppField>
+
+        <form.AppField name="priority">
+          {(field) => <field.SliderField id="tanstack-form-priority" label="Priority" showValue />}
+        </form.AppField>
+
+        <form.AppField name="skills">
+          {(field) => (
+            <field.TagsInputField
+              id="tanstack-form-skills"
+              label="Skills"
+              placeholder="Add a skill"
             />
           )}
         </form.AppField>

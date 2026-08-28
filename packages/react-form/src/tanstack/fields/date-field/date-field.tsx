@@ -22,5 +22,5 @@ export const DateField = createFieldComponent<
   name: field.name,
   onBlur: field.handleBlur,
   onValueChange: (value: DatePickerValue) => field.handleChange(value),
-  value: field.state.value as DatePickerValue,
+  value: field.state.value,
 }));

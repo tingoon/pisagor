@@ -20,5 +20,5 @@ export const SliderField = createFieldComponent<
   name: field.name,
   onBlur: field.handleBlur,
   onValueChange: (value: number[]) => field.handleChange(value),
-  value: field.state.value as number[],
+  value: field.state.value,
 }));

@@ -18,10 +18,12 @@ export function createFieldComponent<
   Component: ComponentType<TControlProps>,
   mapFieldToProps: (connection: FieldConnection) => TConnectedProps,
 ) {
-  return function ConnectedField(props: Omit<TControlProps, keyof TConnectedProps>) {
+  type OuterProps = Omit<TControlProps, keyof TConnectedProps>;
+
+  return function ConnectedField(props: OuterProps) {
     const field = useFieldContext<TValue>();
     const invalid = useFieldInvalid(field);
-    const fieldProps = mapFieldToProps({
+    const connectedProps = mapFieldToProps({
       error: invalid ? getFieldErrorMessage(field) : undefined,
       field,
       invalid,
@@ -30,9 +32,9 @@ export function createFieldComponent<
     return (
       <Component
         {...({
-          id: field.name,
-          ...fieldProps,
           ...props,
+          ...connectedProps,
+          id: field.name,
         } as unknown as TControlProps)}
       />
     );

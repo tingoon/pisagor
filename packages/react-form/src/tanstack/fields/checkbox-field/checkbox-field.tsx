@@ -7,7 +7,7 @@ import { createFieldComponent } from "../../create-field-component";
 type CheckboxFieldControlProps = CheckboxFieldProps;
 type ConnectedCheckboxFieldProps = Pick<
   CheckboxFieldControlProps,
-  "checked" | "error" | "invalid" | "name" | "onBlur" | "onCheckedChange"
+  "checked" | "error" | "invalid" | "name" | "onBlur" | "onValueChange"
 >;
 
 export const CheckboxField = createFieldComponent<
@@ -15,10 +15,10 @@ export const CheckboxField = createFieldComponent<
   CheckboxFieldControlProps,
   ConnectedCheckboxFieldProps
 >(CheckboxFieldControl, ({ error, field, invalid }) => ({
-  checked: field.state.value as boolean,
+  checked: field.state.value,
   error,
   invalid,
   name: field.name,
   onBlur: field.handleBlur,
-  onCheckedChange: (checked: boolean) => field.handleChange(checked),
+  onValueChange: (checked: boolean) => field.handleChange(checked),
 }));
