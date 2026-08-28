@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import { type ItemVariantProps, itemVariants } from "@pisagor/recipes/item";
 import type { ComponentProps } from "react";
-import { useMemo } from "react";
 import { ItemContext, useItem } from "./item.context";
 import { useItemGroup } from "./item-group.context";
 
@@ -27,7 +26,7 @@ export type ItemFooterProps = ComponentProps<typeof ark.div>;
 export function ItemRoot({ variant: variantProp, children, className, ...rest }: ItemProps) {
   const group = useItemGroup();
   const variant = variantProp ?? group?.variant ?? "default";
-  const slots = useMemo(() => itemVariants(), []);
+  const slots = itemVariants();
 
   return (
     <ItemContext value={{ slots, variant }}>

@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import { tableVariants } from "@pisagor/recipes/table";
 import type { ComponentProps } from "react";
-import { useMemo } from "react";
 import { TableContext, useTable } from "./table.context";
 
 // #region Types
@@ -36,7 +35,7 @@ export function TableRoot({
   className,
   ...rest
 }: TableProps) {
-  const slots = useMemo(() => tableVariants(), []);
+  const slots = tableVariants();
 
   return (
     <TableContext value={{ slots }}>

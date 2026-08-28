@@ -2,7 +2,6 @@ import { Portal } from "@ark-ui/react";
 import { HoverCard as HoverCardPrimitive } from "@ark-ui/react/hover-card";
 import { hoverCardVariants } from "@pisagor/recipes/hover-card";
 import type { ComponentProps } from "react";
-import { useMemo } from "react";
 import { HoverCardContext, useHoverCard } from "./hover-card.context";
 
 // #region Types
@@ -25,7 +24,7 @@ export function HoverCardRoot({
   children,
   ...rest
 }: HoverCardRootProps) {
-  const slots = useMemo(() => hoverCardVariants(), []);
+  const slots = hoverCardVariants();
 
   return (
     <HoverCardContext value={{ slots }}>

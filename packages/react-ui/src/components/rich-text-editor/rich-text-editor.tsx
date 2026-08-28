@@ -92,7 +92,7 @@ export function RichTextEditorRoot({
   const shellArgs = shellVariantArgs(resolved);
   const controlProps = formControlShellProps(resolved);
   const resolvedAriaLabel = ariaLabel ?? (id ? undefined : "Rich text editor");
-  const slots = useMemo(() => richTextEditorVariants(), []);
+  const slots = richTextEditorVariants();
 
   const editor = useEditor({
     content: value ?? defaultValue ?? "<p></p>",

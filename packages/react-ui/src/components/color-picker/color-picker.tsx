@@ -139,7 +139,7 @@ export function ColorPickerRoot({
   className,
   ...rest
 }: ColorPickerProps) {
-  const slots = useMemo(() => colorPickerVariants(), []);
+  const slots = colorPickerVariants();
   const [color, setColor, isControlled] = useUncontrolled({
     defaultValue,
     onChange: onValueChange,

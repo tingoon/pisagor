@@ -2,7 +2,6 @@ import { Collapsible as CollapsiblePrimitive } from "@ark-ui/react/collapsible";
 import { CaretDownIcon } from "@phosphor-icons/react";
 import { collapsibleVariants } from "@pisagor/recipes/collapsible";
 import type { ComponentProps } from "react";
-import { useMemo } from "react";
 import { CollapsibleContext, useCollapsible } from "./collapsible.context";
 
 // #region Types
@@ -24,7 +23,7 @@ export function CollapsibleRoot({
   className,
   ...rest
 }: CollapsibleRootProps) {
-  const slots = useMemo(() => collapsibleVariants(), []);
+  const slots = collapsibleVariants();
 
   return (
     <CollapsibleContext value={{ slots }}>

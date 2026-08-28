@@ -6,7 +6,6 @@ import { CaretDownIcon, CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/re
 import { calendarTableCellVariants, calendarVariants } from "@pisagor/recipes/calendar";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import { useMemo } from "react";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import {
@@ -113,7 +112,7 @@ const getWeekRowKey = (
 ) => week.map((day) => `${day.year}-${day.month}-${day.day}`).join("/");
 
 export function CalendarRoot({ variant, children, className, ...rest }: CalendarProps) {
-  const slots = useMemo(() => calendarVariants(), []);
+  const slots = calendarVariants();
 
   return (
     <FormControlVariantProvider value={variant}>

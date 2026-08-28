@@ -4,7 +4,6 @@ import { CalendarIcon, ClockIcon, XIcon } from "@phosphor-icons/react";
 import { calendarVariants } from "@pisagor/recipes/calendar";
 import { datePickerVariants } from "@pisagor/recipes/date-picker";
 import type { ComponentProps } from "react";
-import { useMemo } from "react";
 import { useClearableInput } from "../../hooks";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
@@ -73,8 +72,8 @@ export function DatePickerRoot({
   onValueChange,
   ...rest
 }: DatePickerRootProps) {
-  const slots = useMemo(() => datePickerVariants(), []);
-  const calendarSlots = useMemo(() => calendarVariants(), []);
+  const slots = datePickerVariants();
+  const calendarSlots = calendarVariants();
 
   return (
     <FormControlVariantProvider value={variant}>

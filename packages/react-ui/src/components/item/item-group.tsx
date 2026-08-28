@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import { type ItemVariantProps, itemVariants } from "@pisagor/recipes/item";
 import type { ComponentProps } from "react";
-import { useMemo } from "react";
 import { Separator, type SeparatorProps } from "../separator";
 import { ItemGroupContext } from "./item-group.context";
 
@@ -11,7 +10,7 @@ export type ItemGroupProps = ComponentProps<typeof ark.div> & ItemVariantProps;
 
 // #region Parts
 export function ItemGroup({ variant = "default", children, className, ...rest }: ItemGroupProps) {
-  const slots = useMemo(() => itemVariants(), []);
+  const slots = itemVariants();
 
   return (
     <ItemGroupContext value={{ variant }}>
@@ -30,7 +29,7 @@ export function ItemGroup({ variant = "default", children, className, ...rest }:
 }
 
 export function ItemSeparator({ className, ...rest }: SeparatorProps) {
-  const slots = useMemo(() => itemVariants(), []);
+  const slots = itemVariants();
 
   return (
     <Separator

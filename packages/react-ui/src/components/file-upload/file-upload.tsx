@@ -4,7 +4,6 @@ import { UploadIcon, XIcon } from "@phosphor-icons/react";
 import { fileUploadItemVariants, fileUploadVariants } from "@pisagor/recipes/file-upload";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import { useMemo } from "react";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import {
   formControlShellProps,
@@ -72,7 +71,7 @@ export function FileUploadRoot({
   className,
   ...rest
 }: FileUploadRootProps) {
-  const slots = useMemo(() => fileUploadVariants(), []);
+  const slots = fileUploadVariants();
 
   return (
     <FileUploadContext value={{ slots }}>
@@ -238,7 +237,7 @@ export function FileUploadList({ className, ...rest }: FileUploadListProps) {
 }
 
 export function FileUploadItem({ children, className, ...rest }: FileUploadItemProps) {
-  const slots = useMemo(() => fileUploadItemVariants(), []);
+  const slots = fileUploadItemVariants();
 
   return (
     <FileUploadItemContext value={{ slots }}>

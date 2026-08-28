@@ -3,7 +3,6 @@ import { buttonVariants } from "@pisagor/recipes/button";
 import { editableVariants } from "@pisagor/recipes/editable";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import { useMemo } from "react";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import { formControlShellProps } from "../../internal/form-control/form-control-variants";
 import { useFormControlVariant } from "../../internal/form-control/use-form-control-variant";
@@ -90,7 +89,7 @@ export function EditableRoot({
       ) => onValueChange(details.value)
     : undefined;
 
-  const slots = useMemo(() => editableVariants(), []);
+  const slots = editableVariants();
 
   return (
     <EditableContext value={{ slots }}>

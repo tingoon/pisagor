@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import { navigationMenuVariants } from "@pisagor/recipes/navigation-menu";
 import type { ComponentProps } from "react";
-import { useMemo } from "react";
 import { NavigationMenuContext, useNavigationMenu } from "./navigation-menu.context";
 
 // #region Types
@@ -19,7 +18,7 @@ export interface NavigationMenuLinkProps extends ComponentProps<typeof ark.a> {
 
 // #region Parts
 export function NavigationMenuRoot({ children, className, ...rest }: NavigationMenuProps) {
-  const slots = useMemo(() => navigationMenuVariants(), []);
+  const slots = navigationMenuVariants();
 
   return (
     <NavigationMenuContext value={{ slots }}>

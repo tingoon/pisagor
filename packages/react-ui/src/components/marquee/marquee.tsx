@@ -1,7 +1,7 @@
 import { Marquee as MarqueePrimitive } from "@ark-ui/react/marquee";
 import { marqueeVariants } from "@pisagor/recipes/marquee";
 import type { ComponentProps, ReactNode } from "react";
-import { Children, isValidElement, useMemo } from "react";
+import { Children, isValidElement } from "react";
 import { MarqueeContext, useMarquee } from "./marquee.context";
 
 // #region Types
@@ -42,7 +42,7 @@ export function MarqueeRoot({
   className,
   ...rest
 }: MarqueeRootProps) {
-  const slots = useMemo(() => marqueeVariants(), []);
+  const slots = marqueeVariants();
   const side = orientation === "horizontal" ? "start" : "bottom";
 
   return (

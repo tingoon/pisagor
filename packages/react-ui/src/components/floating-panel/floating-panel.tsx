@@ -4,7 +4,6 @@ import { Portal } from "@ark-ui/react/portal";
 import { ArrowsOutIcon, CornersInIcon, MinusIcon } from "@phosphor-icons/react";
 import { floatingPanelVariants } from "@pisagor/recipes/floating-panel";
 import type { ComponentProps } from "react";
-import { useMemo } from "react";
 import { Button, type ButtonProps } from "../button";
 import { ScrollArea } from "../scroll-area";
 import { FloatingPanelContext, useFloatingPanel } from "./floating-panel.context";
@@ -71,7 +70,7 @@ export type FloatingPanelFooterProps = ComponentProps<typeof ark.div>;
 
 // #region Parts
 export function FloatingPanelRoot({ children, ...rest }: FloatingPanelRootProps) {
-  const slots = useMemo(() => floatingPanelVariants(), []);
+  const slots = floatingPanelVariants();
 
   return (
     <FloatingPanelContext value={{ slots }}>

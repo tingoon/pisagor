@@ -4,7 +4,6 @@ import { Portal } from "@ark-ui/react/portal";
 import { XIcon } from "@phosphor-icons/react";
 import { type DialogVariantProps, dialogVariants } from "@pisagor/recipes/dialog";
 import type { ComponentProps, ReactNode } from "react";
-import { useMemo } from "react";
 import { Button } from "../button";
 import { ScrollArea } from "../scroll-area";
 import { DialogContext, useDialog } from "./dialog.context";
@@ -70,7 +69,7 @@ export interface DialogProps extends Omit<DialogRootProps, "title"> {
 
 // #region Parts
 export function DialogRoot({ modal = true, ...rest }: DialogRootProps) {
-  const slots = useMemo(() => dialogVariants(), []);
+  const slots = dialogVariants();
 
   return (
     <DialogContext value={{ modal, slots }}>

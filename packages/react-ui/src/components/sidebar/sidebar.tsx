@@ -164,7 +164,7 @@ export function SidebarProvider({
   });
 
   const state = open ? "expanded" : "collapsed";
-  const slots = useMemo(() => sidebarVariants(), []);
+  const slots = sidebarVariants();
 
   const contextValue = useMemo<SidebarContextProps>(
     () => ({
@@ -594,7 +594,6 @@ export function SidebarMenuSkeleton({
   ...rest
 }: SidebarMenuSkeletonProps) {
   const { slots } = useSidebar();
-  const width = useMemo(() => `${Math.floor(Math.random() * 40) + 50}%`, []);
 
   return (
     <ark.div
@@ -612,7 +611,7 @@ export function SidebarMenuSkeleton({
         data-sidebar="menu-skeleton-text"
         style={
           {
-            "--skeleton-width": width,
+            "--skeleton-width": "70%",
           } as CSSProperties
         }
       />

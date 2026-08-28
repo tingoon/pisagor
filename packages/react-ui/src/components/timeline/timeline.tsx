@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import { timelineItemVariants, timelineVariants } from "@pisagor/recipes/timeline";
 import type { ComponentProps, ReactNode } from "react";
-import { useMemo } from "react";
 import { TimelineItemContext, useTimelineItem } from "./timeline.context";
 
 // #region Types
@@ -53,7 +52,7 @@ export function TimelineRoot({ orientation = "vertical", className, ...rest }: T
 }
 
 export function TimelineItem({ children, className, ...rest }: TimelineItemProps) {
-  const slots = useMemo(() => timelineItemVariants(), []);
+  const slots = timelineItemVariants();
 
   return (
     <TimelineItemContext value={{ slots }}>

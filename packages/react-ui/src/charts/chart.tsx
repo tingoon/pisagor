@@ -111,7 +111,7 @@ const getPayload = (config: ChartConfig, payload: unknown, key: string) => {
 export function ChartContainer({ children, config, id, className, ...rest }: ChartContainerProps) {
   const uniqueId = useId();
   const chartId = `chart-${id || uniqueId.replace(/:/g, "")}`;
-  const slots = useMemo(() => chartVariants(), []);
+  const slots = chartVariants();
 
   return (
     <ChartContext value={{ config, slots }}>

@@ -62,7 +62,7 @@ export function ListboxRoot<T extends CollectionItem = CollectionItem>({
   onValueChange,
   ...rest
 }: ListboxRootProps<T>) {
-  const slots = useMemo(() => listboxVariants(), []);
+  const slots = listboxVariants();
 
   return (
     <ListboxContext value={{ slots }}>

@@ -4,7 +4,6 @@ import { Portal } from "@ark-ui/react/portal";
 import { XIcon } from "@phosphor-icons/react";
 import { popoverVariants } from "@pisagor/recipes/popover";
 import type { ComponentProps } from "react";
-import { useMemo } from "react";
 import { Button } from "../button";
 import { ScrollArea } from "../scroll-area";
 import { PopoverContentContext, usePopoverContent } from "./popover.context";
@@ -70,7 +69,7 @@ export function PopoverContent({
   className,
   ...rest
 }: PopoverContentProps) {
-  const slots = useMemo(() => popoverVariants(), []);
+  const slots = popoverVariants();
 
   return (
     <Portal>

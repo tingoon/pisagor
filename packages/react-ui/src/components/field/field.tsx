@@ -67,7 +67,7 @@ export function FieldRoot({
 }
 
 export function FieldSet({ children, className, ...rest }: FieldSetProps) {
-  const slots = useMemo(() => fieldVariants(), []);
+  const slots = fieldVariants();
 
   return (
     <FieldContext value={{ slots }}>
@@ -91,7 +91,7 @@ export function FieldLegend({ variant = "legend", className, ...rest }: FieldLeg
 }
 
 export function FieldGroup({ children, className, ...rest }: FieldGroupProps) {
-  const slots = useMemo(() => fieldVariants(), []);
+  const slots = fieldVariants();
 
   return (
     <FieldContext value={{ slots }}>

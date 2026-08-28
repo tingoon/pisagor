@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import { type EmptyStateSlots, emptyStateVariants } from "@pisagor/recipes/empty-state";
 import type { ComponentProps, ReactNode } from "react";
-import { useMemo } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { EmptyStateContext, useEmptyState } from "./empty-state.context";
 
@@ -42,7 +41,7 @@ export interface EmptyStateProps extends Omit<EmptyStateRootProps, "children"> {
 
 // #region Parts
 export function EmptyStateRoot({ children, className, ...rest }: EmptyStateRootProps) {
-  const slots = useMemo(() => emptyStateVariants(), []);
+  const slots = emptyStateVariants();
 
   return (
     <EmptyStateContext value={{ slots }}>

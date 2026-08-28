@@ -11,7 +11,6 @@ import { type ComboboxVariantProps, comboboxVariants } from "@pisagor/recipes/co
 import type { InputRootVariantProps } from "@pisagor/recipes/input";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
-import { useMemo } from "react";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import { Button } from "../button";
@@ -111,7 +110,7 @@ export function ComboboxRoot<T extends CollectionItem = CollectionItem>({
   variant,
   ...rest
 }: ComboboxRootProps<T>) {
-  const slots = useMemo(() => comboboxVariants(), []);
+  const slots = comboboxVariants();
 
   return (
     <ComboboxRootContext value={{ slots }}>

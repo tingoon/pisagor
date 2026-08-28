@@ -564,7 +564,7 @@ function DataGridRoot<TData extends RowData>({
     columnResizeMode,
     features,
   });
-  const slots = useMemo(() => dataGridVariants(), []);
+  const slots = dataGridVariants();
 
   const contextValue = useMemo(() => ({ slots, table }), [slots, table]);
 

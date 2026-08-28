@@ -69,7 +69,7 @@ export function TourRoot({ steps = [], ...rest }: TourProps) {
 
   const tour = useTour({ steps });
 
-  const slots = useMemo(() => tourVariants(), []);
+  const slots = tourVariants();
 
   useEffect(() => {
     if (isStarted) {
@@ -120,7 +120,7 @@ export function TourActionTrigger(props: TourActionTriggerProps) {
 
 export function TourBackdrop({ className, ...rest }: DialogBackdropProps) {
   const { slots } = useTourContext();
-  const dialogSlots = useMemo(() => dialogVariants(), []);
+  const dialogSlots = dialogVariants();
 
   return (
     <TourPrimitive.Backdrop

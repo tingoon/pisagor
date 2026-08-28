@@ -2,7 +2,6 @@ import { ark } from "@ark-ui/react/factory";
 import { type MenuItemVariantProps, menuItemVariants, menuVariants } from "@pisagor/recipes/menu";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import { useMemo } from "react";
 import { MenuContext, useMenu } from "./menu.context";
 
 // #region Types
@@ -33,7 +32,7 @@ export function MenuRoot({
   className,
   ...rest
 }: MenuRootProps) {
-  const slots = useMemo(() => menuVariants(), []);
+  const slots = menuVariants();
 
   return (
     <MenuContext value={{ slots }}>

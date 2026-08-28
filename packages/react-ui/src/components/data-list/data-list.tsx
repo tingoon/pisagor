@@ -5,7 +5,6 @@ import {
   dataListVariants,
 } from "@pisagor/recipes/data-list";
 import type { ComponentProps, ReactNode } from "react";
-import { useMemo } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { DataListItemContext, useDataListItem } from "./data-list.context";
 
@@ -94,7 +93,7 @@ export function DataListItem({
   classNames,
   ...rest
 }: DataListItemProps) {
-  const slots = useMemo(() => dataListItemVariants(), []);
+  const slots = dataListItemVariants();
 
   return (
     <DataListItemContext value={{ slots }}>
@@ -121,8 +120,10 @@ export function DataListShorthand({ items, ...rest }: DataListProps) {
   return (
     <DataListRoot {...rest}>
       {items?.map((item, index) => (
-        // biome-ignore lint/suspicious/noArrayIndexKey: preset items may not have stable keys
-        <DataListItem key={index} value={item.value}>
+        <DataListItem
+          key={typeof item.label === "string" ? item.label : `item-${index}`}
+          value={item.value}
+        >
           {item.label}
         </DataListItem>
       ))}

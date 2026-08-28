@@ -301,7 +301,7 @@ function DataTableRoot<TData extends RowData>({
     ...rest,
     features,
   });
-  const slots = useMemo(() => dataTableVariants(), []);
+  const slots = dataTableVariants();
 
   const contextValue = useMemo(() => ({ slots, table }), [slots, table]);
 

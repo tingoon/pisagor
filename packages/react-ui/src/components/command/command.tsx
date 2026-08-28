@@ -3,7 +3,6 @@ import { Portal } from "@ark-ui/react/portal";
 import { MagnifyingGlassIcon } from "@phosphor-icons/react";
 import { commandVariants } from "@pisagor/recipes/command";
 import type { ComponentProps } from "react";
-import { useMemo } from "react";
 import {
   Combobox,
   type ComboboxContentProps,
@@ -76,7 +75,7 @@ export function CommandDialogContent({
   className,
   ...rest
 }: CommandDialogContentProps) {
-  const slots = useMemo(() => commandVariants(), []);
+  const slots = commandVariants();
 
   return (
     <CommandContext value={{ slots }}>
@@ -107,7 +106,7 @@ export function CommandRoot<T extends CollectionItem = CollectionItem>({
   className,
   ...rest
 }: CommandProps<T>) {
-  const slots = useMemo(() => commandVariants(), []);
+  const slots = commandVariants();
 
   return (
     <CommandContext value={{ slots }}>

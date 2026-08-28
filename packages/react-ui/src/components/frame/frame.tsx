@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import { frameVariants } from "@pisagor/recipes/frame";
 import type { ComponentProps } from "react";
-import { useMemo } from "react";
 import { FrameContext, useFrame } from "./frame.context";
 
 // #region Types
@@ -20,7 +19,7 @@ export type FrameFooterProps = ComponentProps<typeof ark.footer>;
 
 // #region Parts
 export function FrameRoot({ children, className, ...rest }: FrameRootProps) {
-  const slots = useMemo(() => frameVariants(), []);
+  const slots = frameVariants();
 
   return (
     <FrameContext value={{ slots }}>

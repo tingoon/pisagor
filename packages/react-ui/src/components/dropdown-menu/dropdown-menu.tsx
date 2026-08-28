@@ -8,7 +8,6 @@ import {
   dropdownMenuVariants,
 } from "@pisagor/recipes/dropdown-menu";
 import type { ComponentProps } from "react";
-import { useMemo } from "react";
 import { DropdownMenuContext, useDropdownMenu } from "./dropdown-menu.context";
 
 // #region Types
@@ -72,7 +71,7 @@ export function DropdownMenuPositioner({ className, ...rest }: DropdownMenuPosit
 }
 
 export function DropdownMenuContent({ children, className, ...rest }: DropdownMenuContentProps) {
-  const slots = useMemo(() => dropdownMenuVariants(), []);
+  const slots = dropdownMenuVariants();
 
   return (
     <DropdownMenuContext value={{ slots }}>
@@ -201,7 +200,7 @@ export function DropdownMenuSub(props: DropdownMenuRootProps) {
 }
 
 export function DropdownMenuSubContent({ className, ...rest }: DropdownMenuSubContentProps) {
-  const slots = useMemo(() => dropdownMenuVariants(), []);
+  const slots = dropdownMenuVariants();
 
   return (
     <DropdownMenuContext value={{ slots }}>

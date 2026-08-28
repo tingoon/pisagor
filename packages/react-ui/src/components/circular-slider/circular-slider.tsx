@@ -67,7 +67,7 @@ export function CircularSliderRoot({
   className,
   ...rest
 }: CircularSliderProps) {
-  const slots = useMemo(() => circularSliderVariants(), []);
+  const slots = circularSliderVariants();
 
   const values = useMemo(
     () => ({

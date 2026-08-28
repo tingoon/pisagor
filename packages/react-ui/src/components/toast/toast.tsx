@@ -14,7 +14,6 @@ import {
 } from "@phosphor-icons/react";
 import { type ToastItemSlots, toastItemVariants, toastVariants } from "@pisagor/recipes/toast";
 import type { ComponentProps, CSSProperties, ReactNode } from "react";
-import { useMemo } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { Button } from "../button";
 import { Spinner } from "../spinner";
@@ -99,7 +98,7 @@ const TOAST_ICONS = {
 } as const;
 
 function ToastItemRoot({ children, className, ...rest }: ToastItemRootProps) {
-  const slots = useMemo(() => toastItemVariants(), []);
+  const slots = toastItemVariants();
 
   return (
     <ToastItemContext value={{ slots }}>

@@ -3,7 +3,6 @@ import { Steps as StepsPrimitive } from "@ark-ui/react/steps";
 import { CheckIcon } from "@phosphor-icons/react";
 import { stepsItemVariants, stepsVariants } from "@pisagor/recipes/steps";
 import type { ComponentProps } from "react";
-import { useMemo } from "react";
 import { StepsContext, StepsItemContext, useSteps, useStepsItem } from "./steps.context";
 
 // #region Types
@@ -34,7 +33,7 @@ export type StepsDescriptionProps = ComponentProps<typeof ark.span>;
 
 // #region Parts
 export function StepsRoot({ children, className, ...rest }: StepsRootProps) {
-  const slots = useMemo(() => stepsVariants(), []);
+  const slots = stepsVariants();
 
   return (
     <StepsContext value={{ slots }}>
@@ -52,7 +51,7 @@ export function StepsList({ className, ...rest }: StepsListProps) {
 }
 
 export function StepsItem({ children, className, ...rest }: StepsItemProps) {
-  const slots = useMemo(() => stepsItemVariants(), []);
+  const slots = stepsItemVariants();
 
   return (
     <StepsItemContext value={{ slots }}>

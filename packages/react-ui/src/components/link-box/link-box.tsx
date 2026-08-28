@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import { linkBoxVariants } from "@pisagor/recipes/link-box";
 import type { ComponentProps } from "react";
-import { useMemo } from "react";
 import { LinkBoxContext, useLinkBox } from "./link-box.context";
 
 // #region Types
@@ -12,7 +11,7 @@ export type LinkOverlayLinkProps = ComponentProps<typeof ark.a>;
 
 // #region Parts
 export function LinkBoxRoot({ children, className, ...rest }: LinkBoxRootProps) {
-  const slots = useMemo(() => linkBoxVariants(), []);
+  const slots = linkBoxVariants();
 
   return (
     <LinkBoxContext value={{ slots }}>

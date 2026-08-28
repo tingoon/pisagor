@@ -310,7 +310,7 @@ export function SortableItem({ value, children, className, ...rest }: SortableIt
   const { getItemProps, activeId } = useSortable();
   const itemProps = getItemProps(value);
   const isDragging = activeId === value;
-  const slots = useMemo(() => sortableItemVariants(), []);
+  const slots = sortableItemVariants();
 
   return (
     <SortableItemContext value={{ id: value, isDragging, slots }}>

@@ -11,7 +11,6 @@ import type { InputRootVariantProps } from "@pisagor/recipes/input";
 import { selectVariants } from "@pisagor/recipes/select";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
-import { useMemo } from "react";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import {
@@ -91,7 +90,7 @@ export function SelectRoot<T extends CollectionItem = CollectionItem>({
   variant,
   ...rest
 }: SelectRootProps<T>) {
-  const slots = useMemo(() => selectVariants(), []);
+  const slots = selectVariants();
 
   return (
     <SelectRootContext value={{ slots }}>

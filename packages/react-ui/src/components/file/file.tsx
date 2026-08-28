@@ -2,7 +2,6 @@ import { ark } from "@ark-ui/react/factory";
 import { FileIcon } from "@phosphor-icons/react";
 import { type FileVariantProps, fileVariants } from "@pisagor/recipes/file";
 import type { ComponentProps, ReactNode } from "react";
-import { useMemo } from "react";
 import { Format } from "../format";
 import { FileContext, useFile } from "./file.context";
 
@@ -47,7 +46,7 @@ export interface FileProps extends Omit<FileRootProps, "children" | "title"> {
 
 // #region Parts
 export function FileRoot({ children, className, ...rest }: FileRootProps) {
-  const slots = useMemo(() => fileVariants(), []);
+  const slots = fileVariants();
 
   return (
     <FileContext value={{ slots }}>

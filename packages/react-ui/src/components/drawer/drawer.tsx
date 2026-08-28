@@ -3,7 +3,6 @@ import { ark } from "@ark-ui/react/factory";
 import { Portal } from "@ark-ui/react/portal";
 import { type DrawerVariantProps, drawerVariants } from "@pisagor/recipes/drawer";
 import type { ComponentProps } from "react";
-import { useMemo } from "react";
 import { ScrollArea } from "../scroll-area";
 import { DrawerContext, useDrawer } from "./drawer.context";
 
@@ -51,7 +50,7 @@ export type DrawerFooterProps = ComponentProps<typeof ark.div>;
 
 // #region Parts
 export function DrawerRoot(props: DrawerRootProps) {
-  const slots = useMemo(() => drawerVariants(), []);
+  const slots = drawerVariants();
 
   return (
     <DrawerContext value={{ slots }}>

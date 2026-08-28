@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import { skeletonVariants } from "@pisagor/recipes/skeleton";
 import type { ComponentProps } from "react";
-import { useMemo } from "react";
 
 // #region Types
 export interface SkeletonTextProps extends ComponentProps<typeof ark.div> {
@@ -20,7 +19,7 @@ export type SkeletonCircleProps = ComponentProps<typeof ark.div>;
 
 // #region Parts
 export function SkeletonRoot({ className, ...rest }: SkeletonRootProps) {
-  const slots = useMemo(() => skeletonVariants(), []);
+  const slots = skeletonVariants();
 
   return (
     <ark.div
@@ -33,7 +32,7 @@ export function SkeletonRoot({ className, ...rest }: SkeletonRootProps) {
 }
 
 export function SkeletonCircle({ className, ...rest }: SkeletonCircleProps) {
-  const slots = useMemo(() => skeletonVariants(), []);
+  const slots = skeletonVariants();
 
   return (
     <ark.div
@@ -46,7 +45,7 @@ export function SkeletonCircle({ className, ...rest }: SkeletonCircleProps) {
 }
 
 export function SkeletonText({ lines = 2, className, ...rest }: SkeletonTextProps) {
-  const slots = useMemo(() => skeletonVariants(), []);
+  const slots = skeletonVariants();
 
   return (
     <ark.div {...rest} className={slots.text({ className })} data-part="text" data-scope="skeleton">

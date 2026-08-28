@@ -19,7 +19,6 @@ import {
 } from "@pisagor/recipes/tree-view";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "react";
-import { useMemo } from "react";
 import { formControlToggleVariants } from "../../internal/form-control/form-control-variants";
 import {
   TreeViewBranchContext,
@@ -111,7 +110,7 @@ export const createTreeCollection = <T extends TreeNodeType>(
   });
 
 export function TreeViewRoot({ children, fileIcons, className, ...rest }: TreeViewProps) {
-  const slots = useMemo(() => treeViewVariants(), []);
+  const slots = treeViewVariants();
 
   return (
     <TreeViewContext value={{ fileIcons, slots }}>
@@ -139,7 +138,7 @@ export const TreeViewNodeProvider = <T extends TreeNodeType>(props: NodeProvider
 );
 
 export function TreeViewBranch({ children, className, ...rest }: TreeViewBranchProps) {
-  const slots = useMemo(() => treeViewBranchVariants(), []);
+  const slots = treeViewBranchVariants();
 
   return (
     <TreeViewBranchContext value={{ slots }}>
@@ -239,7 +238,7 @@ function TreeViewBranchIndentGuide({ className, ...rest }: TreeViewBranchIndentG
 
 export function TreeViewItem({ children, className, ...rest }: TreeViewItemProps) {
   const { slots } = useTreeView();
-  const itemSlots = useMemo(() => treeViewItemVariants(), []);
+  const itemSlots = treeViewItemVariants();
 
   return (
     <TreeViewItemContext value={{ slots: itemSlots }}>

@@ -1,7 +1,6 @@
 import { QrCode as QrCodePrimitive } from "@ark-ui/react/qr-code";
 import { qrCodeVariants } from "@pisagor/recipes/qr-code";
 import type { ComponentProps } from "react";
-import { useMemo } from "react";
 import { QrCodeContext, useQrCode } from "./qr-code.context";
 
 // #region Types
@@ -16,7 +15,7 @@ export type QrCodeDownloadProps = ComponentProps<typeof QrCodePrimitive.Download
 
 // #region Parts
 export function QrCodeRoot({ children, className, ...rest }: QrCodeRootProps) {
-  const slots = useMemo(() => qrCodeVariants(), []);
+  const slots = qrCodeVariants();
 
   return (
     <QrCodeContext value={{ slots }}>

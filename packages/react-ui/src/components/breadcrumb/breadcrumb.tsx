@@ -2,7 +2,7 @@ import { ark } from "@ark-ui/react/factory";
 import { CaretRightIcon, DotsThreeIcon } from "@phosphor-icons/react";
 import { breadcrumbItemVariants, breadcrumbVariants } from "@pisagor/recipes/breadcrumb";
 import type { ComponentProps, ReactNode } from "react";
-import { Fragment, useMemo } from "react";
+import { Fragment } from "react";
 import {
   BreadcrumbContext,
   BreadcrumbItemContext,
@@ -44,7 +44,7 @@ export function BreadcrumbRoot({
   children,
   ...rest
 }: BreadcrumbRootProps) {
-  const slots = useMemo(() => breadcrumbVariants(), []);
+  const slots = breadcrumbVariants();
 
   return (
     <BreadcrumbContext value={{ slots }}>
@@ -70,7 +70,7 @@ export function BreadcrumbList({ className, ...rest }: BreadcrumbListProps) {
 }
 
 export function BreadcrumbItem({ children, className, ...rest }: BreadcrumbItemProps) {
-  const slots = useMemo(() => breadcrumbItemVariants(), []);
+  const slots = breadcrumbItemVariants();
 
   return (
     <BreadcrumbItemContext value={{ slots }}>

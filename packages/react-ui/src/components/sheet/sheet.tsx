@@ -3,7 +3,6 @@ import { Portal } from "@ark-ui/react/portal";
 import { XIcon } from "@phosphor-icons/react";
 import { type SheetVariantProps, sheetVariants } from "@pisagor/recipes/sheet";
 import type { ComponentProps } from "react";
-import { useMemo } from "react";
 import { Button } from "../button";
 import {
   Dialog,
@@ -41,7 +40,7 @@ export type SheetCloseTriggerProps = ComponentProps<typeof DialogPrimitive.Close
 
 // #region Parts
 export function SheetRoot(props: SheetProps) {
-  const slots = useMemo(() => sheetVariants(), []);
+  const slots = sheetVariants();
 
   return (
     <SheetContext value={{ slots }}>

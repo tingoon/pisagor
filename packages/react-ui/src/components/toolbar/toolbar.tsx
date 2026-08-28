@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import { type ToolbarSlots, toolbarVariants } from "@pisagor/recipes/toolbar";
 import type { ComponentProps, ReactNode } from "react";
-import { useMemo } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { ToolbarContext, useToolbar } from "./toolbar.context";
 
@@ -38,7 +37,7 @@ export interface ToolbarProps extends Omit<ToolbarRootProps, "children"> {
 
 // #region Parts
 export function ToolbarRoot({ children, className, ...rest }: ToolbarRootProps) {
-  const slots = useMemo(() => toolbarVariants(), []);
+  const slots = toolbarVariants();
 
   return (
     <ToolbarContext value={{ slots }}>

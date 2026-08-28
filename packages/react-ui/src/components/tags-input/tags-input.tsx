@@ -2,7 +2,6 @@ import { TagsInput as TagsInputPrimitive, useTagsInputContext } from "@ark-ui/re
 import { XIcon } from "@phosphor-icons/react";
 import { tagsInputItemVariants, tagsInputVariants } from "@pisagor/recipes/tags-input";
 import type { ComponentProps } from "react";
-import { useMemo } from "react";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import { InputGroup, type InputGroupProps } from "../input-group";
 import {
@@ -91,7 +90,7 @@ export function TagsInputRoot({
   className,
   ...rest
 }: TagsInputProps) {
-  const slots = useMemo(() => tagsInputVariants(), []);
+  const slots = tagsInputVariants();
 
   return (
     <TagsInputSlotsContext value={{ slots }}>
@@ -149,7 +148,7 @@ export function TagsInputItem({
   className,
   ...rest
 }: TagsInputItemProps) {
-  const slots = useMemo(() => tagsInputItemVariants(), []);
+  const slots = tagsInputItemVariants();
 
   return (
     <TagsInputItemContext value={{ slots }}>
@@ -245,7 +244,7 @@ export function TagsInputRootProvider({
   className,
   ...rest
 }: TagsInputRootProviderProps) {
-  const slots = useMemo(() => tagsInputVariants(), []);
+  const slots = tagsInputVariants();
 
   return (
     <TagsInputSlotsContext value={{ slots }}>

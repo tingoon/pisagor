@@ -3,7 +3,6 @@ import { MinusIcon, PlusIcon } from "@phosphor-icons/react";
 import { numberInputVariants } from "@pisagor/recipes/number-input";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import { useMemo } from "react";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import type { FormControlVariant } from "../../internal/form-control/form-control-variants";
 import {
@@ -64,7 +63,7 @@ export function NumberInputRoot({
   className,
   ...rest
 }: NumberInputProps) {
-  const slots = useMemo(() => numberInputVariants(), []);
+  const slots = numberInputVariants();
 
   return (
     <FormControlVariantProvider value={variant}>

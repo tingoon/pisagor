@@ -2,7 +2,6 @@ import { ark } from "@ark-ui/react/factory";
 import { PinInput as PinInputPrimitive } from "@ark-ui/react/pin-input";
 import { inputOtpVariants } from "@pisagor/recipes/input-otp";
 import type { ComponentProps } from "react";
-import { useMemo } from "react";
 import { FormControlVariantProvider } from "../../internal/form-control/form-control-variant-context";
 import { Input, type InputProps } from "../input/input";
 import { InputOTPContext, useInputOTP } from "./input-otp.context";
@@ -34,7 +33,7 @@ export function InputOTPRoot({
   className,
   ...rest
 }: InputOTPProps) {
-  const slots = useMemo(() => inputOtpVariants(), []);
+  const slots = inputOtpVariants();
 
   return (
     <FormControlVariantProvider value={variant}>

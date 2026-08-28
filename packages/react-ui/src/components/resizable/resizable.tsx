@@ -1,7 +1,7 @@
 import { Splitter as SplitterPrimitive } from "@ark-ui/react/splitter";
 import { DotsSixVerticalIcon } from "@phosphor-icons/react";
 import { resizableEdgeHandleVariants, resizableVariants } from "@pisagor/recipes/resizable";
-import { type ComponentProps, useCallback, useMemo, useRef } from "react";
+import { type ComponentProps, useCallback, useRef } from "react";
 import { ResizableSlotsContext, useResizable } from "./resizable.context";
 
 export type {
@@ -150,7 +150,7 @@ export function ResizableEdgeHandle({
 }
 
 export function ResizableRoot({ children, className, ...rest }: ResizableRootProps) {
-  const slots = useMemo(() => resizableVariants(), []);
+  const slots = resizableVariants();
 
   return (
     <ResizableSlotsContext value={{ slots }}>
@@ -213,7 +213,7 @@ export function ResizableRootProvider({
   className,
   ...rest
 }: ResizableRootProviderProps) {
-  const slots = useMemo(() => resizableVariants(), []);
+  const slots = resizableVariants();
 
   return (
     <ResizableSlotsContext value={{ slots }}>

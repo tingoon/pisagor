@@ -5,7 +5,6 @@ import {
   bottomNavigationVariants,
 } from "@pisagor/recipes/bottom-navigation";
 import type { ComponentProps } from "react";
-import { useMemo } from "react";
 import {
   BottomNavigationContext,
   BottomNavigationItemContext,
@@ -29,7 +28,7 @@ export type BottomNavigationItemLabelProps = ComponentProps<typeof ark.span>;
 
 // #region Parts
 export function BottomNavigationRoot({ className, ...rest }: BottomNavigationRootProps) {
-  const slots = useMemo(() => bottomNavigationVariants(), []);
+  const slots = bottomNavigationVariants();
 
   return (
     <BottomNavigationContext value={{ slots }}>
@@ -45,7 +44,7 @@ export function BottomNavigationList({ className, ...rest }: BottomNavigationLis
 }
 
 export function BottomNavigationItem({ children, className, ...rest }: BottomNavigationItemProps) {
-  const slots = useMemo(() => bottomNavigationItemVariants(), []);
+  const slots = bottomNavigationItemVariants();
 
   return (
     <BottomNavigationItemContext value={{ slots }}>

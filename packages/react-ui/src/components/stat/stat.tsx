@@ -7,7 +7,6 @@ import {
   statVariants,
 } from "@pisagor/recipes/stat";
 import type { ComponentProps, ReactNode } from "react";
-import { useMemo } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { StatContext, useStat } from "./stat.context";
 
@@ -48,7 +47,7 @@ export interface StatProps extends Omit<StatRootProps, "children"> {
 
 // #region Parts
 export function StatRoot({ variant, children, className, ...rest }: StatRootProps) {
-  const slots = useMemo(() => statVariants(), []);
+  const slots = statVariants();
 
   return (
     <StatContext value={{ slots }}>

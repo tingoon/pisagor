@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import { navbarVariants } from "@pisagor/recipes/navbar";
 import type { ComponentProps } from "react";
-import { useMemo } from "react";
 import { NavbarContext, useNavbar } from "./navbar.context";
 
 // #region Types
@@ -14,7 +13,7 @@ export type NavbarNavProps = ComponentProps<typeof ark.nav>;
 
 // #region Parts
 export function NavbarRoot({ children, className, ...rest }: NavbarRootProps) {
-  const slots = useMemo(() => navbarVariants(), []);
+  const slots = navbarVariants();
 
   return (
     <NavbarContext value={{ slots }}>
