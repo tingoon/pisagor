@@ -28,6 +28,7 @@
     "test": "bun test",
     "type-check": "tsc"
   },
+  "sideEffects": false,
   "type": "module",
   "version": "0.0.0"
 }
