@@ -1,5 +1,5 @@
 import { Menu as MenuPrimitive } from "@ark-ui/vue/menu";
-import { contextMenuTriggerVariants } from "@pisagor/recipes/context-menu";
+import { contextMenuVariants } from "@pisagor/recipes/context-menu";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNode } from "vue";
 import type { DropdownMenuRootProps } from "../dropdown-menu/dropdown-menu";
@@ -54,7 +54,7 @@ export const ContextMenuContextTrigger = defineComponent({
         MenuPrimitive.ContextTrigger as ArkPart,
         {
           ...attrs,
-          class: cn(contextMenuTriggerVariants(), props.class, attrs.class),
+          class: cn(contextMenuVariants(), props.class, attrs.class),
         },
         slots,
       );

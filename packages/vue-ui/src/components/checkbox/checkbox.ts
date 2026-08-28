@@ -1,6 +1,6 @@
 import { Checkbox as CheckboxPrimitive } from "@ark-ui/vue/checkbox";
 import { PhCheck, PhMinus } from "@phosphor-icons/vue";
-import { checkbox2Variants, checkboxGroupVariants } from "@pisagor/recipes/checkbox";
+import { checkboxGroupVariants, checkboxVariants } from "@pisagor/recipes/checkbox";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import {
@@ -59,7 +59,7 @@ export const CheckboxRoot = defineComponent({
       const resolved = useFormControlVariant(props.variant);
       const shellArgs = shellVariantArgs(resolved);
       const controlProps = formControlShellProps(resolved);
-      const slots = checkbox2Variants();
+      const slots = checkboxVariants();
 
       return h(
         CheckboxPrimitive.Root as ArkPart,

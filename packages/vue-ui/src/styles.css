@@ -2,5 +2,4 @@
 @import "@pisagor/tokens/styles";
 @plugin "@tailwindcss/typography";
 @source "./**/*.ts";
-@source "../../recipes/src/ui/**/*.ts";
-@source "../../recipes/src/blocks/**/*.ts";
+@source "../../../node_modules/@pisagor/recipes/src/ui/**/*.ts";
