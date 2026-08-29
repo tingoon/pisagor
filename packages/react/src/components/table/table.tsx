@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { tableVariants } from "@pisagor/recipes/table";
+import { tableRecipe } from "@pisagor/recipes/table";
 import type { ComponentProps } from "react";
 import { TableContext, useTable } from "./table.context";
 
@@ -35,7 +35,7 @@ export function TableRoot({
   className,
   ...rest
 }: TableProps) {
-  const slots = tableVariants();
+  const slots = tableRecipe();
 
   return (
     <TableContext value={{ slots }}>

@@ -1,8 +1,8 @@
 import { ark } from "@ark-ui/react/factory";
 import { FileUpload as FileUploadPrimitive, useFileUploadContext } from "@ark-ui/react/file-upload";
 import { UploadIcon, XIcon } from "@phosphor-icons/react";
-import { fileUploadItemVariants, fileUploadVariants } from "@pisagor/recipes/file-upload";
-import { formControlZoneVariants } from "@pisagor/recipes/form-control";
+import { fileUploadItemRecipe, fileUploadRecipe } from "@pisagor/recipes/file-upload";
+import { formControlZoneRecipe } from "@pisagor/recipes/form-control";
 import type { ComponentProps } from "react";
 import { cn } from "../../internal/utils";
 import { Button } from "../button";
@@ -67,7 +67,7 @@ export function FileUploadRoot({
   className,
   ...rest
 }: FileUploadRootProps) {
-  const slots = fileUploadVariants();
+  const slots = fileUploadRecipe();
 
   return (
     <FileUploadContext value={{ slots }}>
@@ -108,7 +108,7 @@ export function FileUploadDropzone({
     <FileUploadPrimitive.Dropzone
       {...rest}
       {...controlProps}
-      className={cn(formControlZoneVariants({ ...shellArgs }), slots.dropzone(), className)}
+      className={cn(formControlZoneRecipe({ ...shellArgs }), slots.dropzone(), className)}
     />
   );
 }
@@ -178,7 +178,7 @@ export function FileUploadItemGroup(props: FileUploadItemGroupProps) {
 export function FileUploadList({ className, ...rest }: FileUploadListProps) {
   const fileUpload = useFileUploadContext();
   const { slots } = useFileUpload();
-  const itemSlots = fileUploadItemVariants();
+  const itemSlots = fileUploadItemRecipe();
 
   const files = fileUpload.acceptedFiles;
 
@@ -236,7 +236,7 @@ export function FileUploadList({ className, ...rest }: FileUploadListProps) {
 }
 
 export function FileUploadItem({ children, className, ...rest }: FileUploadItemProps) {
-  const slots = fileUploadItemVariants();
+  const slots = fileUploadItemRecipe();
 
   return (
     <FileUploadItemContext value={{ slots }}>

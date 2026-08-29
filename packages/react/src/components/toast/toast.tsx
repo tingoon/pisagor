@@ -12,7 +12,7 @@ import {
   WarningIcon,
   XIcon,
 } from "@phosphor-icons/react";
-import { type ToastItemSlots, toastItemVariants, toastVariants } from "@pisagor/recipes/toast";
+import { type ToastItemSlots, toastItemRecipe, toastRecipe } from "@pisagor/recipes/toast";
 import type { ComponentProps, CSSProperties, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { Button } from "../button";
@@ -79,7 +79,7 @@ export function ToasterRoot({
     <Portal>
       <ToasterPrimitive
         {...rest}
-        className={toastVariants({ className })}
+        className={toastRecipe({ className })}
         style={{ "--width": "356px", ...style } as CSSProperties}
         toaster={toasterInstance}
       >
@@ -98,7 +98,7 @@ const TOAST_ICONS = {
 } as const;
 
 function ToastItemRoot({ children, className, ...rest }: ToastItemRootProps) {
-  const slots = toastItemVariants();
+  const slots = toastItemRecipe();
 
   return (
     <ToastItemContext value={{ slots }}>

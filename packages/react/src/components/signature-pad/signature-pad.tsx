@@ -1,7 +1,7 @@
 import { SignaturePad as SignaturePadPrimitive } from "@ark-ui/react/signature-pad";
 import { ArrowCounterClockwiseIcon } from "@phosphor-icons/react";
-import { formControlZoneVariants } from "@pisagor/recipes/form-control";
-import { type SignaturePadSlots, signaturePadVariants } from "@pisagor/recipes/signature-pad";
+import { formControlZoneRecipe } from "@pisagor/recipes/form-control";
+import { type SignaturePadSlots, signaturePadRecipe } from "@pisagor/recipes/signature-pad";
 import type { ComponentProps } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { cn } from "../../internal/utils";
@@ -42,7 +42,7 @@ function SignaturePadRoot({
   className,
   ...rest
 }: SignaturePadRootProps) {
-  const slots = signaturePadVariants();
+  const slots = signaturePadRecipe();
 
   return (
     <SignaturePadContext value={{ slots }}>
@@ -74,7 +74,7 @@ function SignaturePadControl({
       {...rest}
       {...controlProps}
       className={cn(
-        formControlZoneVariants({ ...shellArgs }),
+        formControlZoneRecipe({ ...shellArgs }),
         slots.control({
           className: cn(resolved.variant === "primary" && "shadow-xs/5", className),
         }),

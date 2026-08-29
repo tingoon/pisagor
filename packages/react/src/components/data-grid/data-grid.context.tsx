@@ -1,4 +1,4 @@
-import type { DataGridVariants } from "@pisagor/recipes/data-grid";
+import type { DataGridSlots } from "@pisagor/recipes/data-grid";
 import type {
   Cell,
   Column,
@@ -12,7 +12,7 @@ import { createContext } from "../../internal/utils";
 import type { DataGridFeatures } from "./data-grid.features";
 
 interface DataGridContextValue<TData extends RowData> {
-  slots: DataGridVariants;
+  slots: DataGridSlots;
   table: TableType<DataGridFeatures, TData>;
 }
 

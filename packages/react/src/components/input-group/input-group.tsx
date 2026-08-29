@@ -1,6 +1,6 @@
 import {
-  inputGroupControlVariants,
-  inputGroupTextareaControlVariants,
+  inputGroupControlRecipe,
+  inputGroupTextareaControlRecipe,
 } from "@pisagor/recipes/input-group";
 import { cn } from "../../internal/utils";
 import { Input, type InputProps } from "../input/input";
@@ -11,10 +11,10 @@ export function InputGroupInput({ className, classNames, ...rest }: InputProps) 
   return (
     <Input
       {...rest}
-      className={inputGroupControlVariants({ className })}
+      className={inputGroupControlRecipe({ className })}
       classNames={{
         ...classNames,
-        clearableRoot: cn(inputGroupControlVariants(), classNames?.clearableRoot),
+        clearableRoot: cn(inputGroupControlRecipe(), classNames?.clearableRoot),
       }}
     />
   );
@@ -26,7 +26,7 @@ export function InputGroupTextarea({ classNames, ...rest }: TextareaProps) {
       {...rest}
       classNames={{
         ...classNames,
-        rootLayout: cn(inputGroupTextareaControlVariants(), classNames?.rootLayout),
+        rootLayout: cn(inputGroupTextareaControlRecipe(), classNames?.rootLayout),
       }}
     />
   );

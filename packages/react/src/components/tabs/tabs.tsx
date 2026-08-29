@@ -1,5 +1,5 @@
 import { Tabs as TabsPrimitive } from "@ark-ui/react/tabs";
-import { type TabsVariantProps, tabsVariants } from "@pisagor/recipes/tabs";
+import { type TabsVariantProps, tabsRecipe } from "@pisagor/recipes/tabs";
 import type { ComponentProps, ReactNode } from "react";
 import { TabsContext, useTabs } from "./tabs.context";
 
@@ -20,20 +20,16 @@ export type TabsTriggerProps = ComponentProps<typeof TabsPrimitive.Trigger>;
 
 export type TabsContentProps = ComponentProps<typeof TabsPrimitive.Content>;
 
-export interface TabsProps extends Omit<TabsRootProps, "children"> {
-  /**
-   * The visual variant of the tab list.
-   *
-   * @defaultValue "default"
-   */
-  variant?: TabsListProps["variant"];
+export interface TabsProps
+  extends Omit<TabsRootProps, "children">,
+    Pick<TabsVariantProps, "variant"> {
   items?: TabsPresetItem[];
 }
 // #endregion
 
 // #region Parts
 export function TabsRoot({ children, className, ...rest }: TabsRootProps) {
-  const slots = tabsVariants();
+  const slots = tabsRecipe();
 
   return (
     <TabsContext value={{ slots }}>

@@ -1,5 +1,5 @@
 import { Progress as ProgressPrimitive } from "@ark-ui/react/progress";
-import { type ProgressSlots, progressVariants } from "@pisagor/recipes/progress";
+import { type ProgressSlots, progressRecipe } from "@pisagor/recipes/progress";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { Field } from "../field";
@@ -54,7 +54,7 @@ function ProgressRoot({
   className,
   ...rest
 }: ProgressRootProps & { value?: number | null }) {
-  const slots = progressVariants();
+  const slots = progressRecipe();
 
   return (
     <ProgressContext value={{ slots }}>

@@ -1,4 +1,4 @@
-import type { SidebarVariants } from "@pisagor/recipes/sidebar";
+import type { SidebarSlots } from "@pisagor/recipes/sidebar";
 import { createContext } from "../../internal/utils";
 
 interface SidebarContextProps {
@@ -7,8 +7,8 @@ interface SidebarContextProps {
   openMobile: boolean;
   setOpen: (open: boolean) => void;
   setOpenMobile: (open: boolean) => void;
-  /** Slot class recipes from `sidebarVariants`. */
-  slots: SidebarVariants;
+  /** Slot class recipes from `sidebarRecipe`. */
+  slots: SidebarSlots;
   state: "expanded" | "collapsed";
   toggleSidebar: () => void;
 }

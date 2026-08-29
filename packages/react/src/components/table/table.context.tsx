@@ -1,8 +1,8 @@
-import type { TableVariants } from "@pisagor/recipes/table";
+import type { TableSlots } from "@pisagor/recipes/table";
 import { createContext } from "../../internal/utils";
 
 interface TableContextValue {
-  slots: TableVariants;
+  slots: TableSlots;
 }
 
 export const { TableContext, useTable } = createContext<TableContextValue>()({

@@ -1,4 +1,4 @@
-import type { ToggleGroupVariants } from "@pisagor/recipes/toggle-group";
+import type { ToggleGroupSlots } from "@pisagor/recipes/toggle-group";
 import { createContext } from "../../internal/utils";
 import type { ToggleProps } from "../toggle";
 
@@ -9,7 +9,7 @@ export type ToggleGroupContextProps = Pick<ToggleProps, "variant" | "size"> & {
    * @defaultValue 0
    */
   spacing?: number;
-  slots: ToggleGroupVariants;
+  slots: ToggleGroupSlots;
 };
 
 export const { ToggleGroupContext, useToggleGroup } = createContext<ToggleGroupContextProps>()({

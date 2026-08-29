@@ -1,12 +1,12 @@
-import type { TagsInputItemVariants, TagsInputVariants } from "@pisagor/recipes/tags-input";
+import type { TagsInputItemSlots, TagsInputSlots } from "@pisagor/recipes/tags-input";
 import { createContext } from "../../internal/utils";
 
 interface TagsInputContextValue {
-  slots: TagsInputVariants;
+  slots: TagsInputSlots;
 }
 
 interface TagsInputItemContextValue {
-  slots: TagsInputItemVariants;
+  slots: TagsInputItemSlots;
 }
 
 export const { TagsInputContext: TagsInputSlotsContext, useTagsInput } =

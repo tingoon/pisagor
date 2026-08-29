@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { frameVariants } from "@pisagor/recipes/frame";
+import { frameRecipe } from "@pisagor/recipes/frame";
 import type { ComponentProps } from "react";
 import { FrameContext, useFrame } from "./frame.context";
 
@@ -19,7 +19,7 @@ export type FrameFooterProps = ComponentProps<typeof ark.footer>;
 
 // #region Parts
 export function FrameRoot({ children, className, ...rest }: FrameRootProps) {
-  const slots = frameVariants();
+  const slots = frameRecipe();
 
   return (
     <FrameContext value={{ slots }}>

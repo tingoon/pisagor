@@ -1,8 +1,8 @@
-import type { HoverCardVariants } from "@pisagor/recipes/hover-card";
+import type { HoverCardSlots } from "@pisagor/recipes/hover-card";
 import { createContext } from "../../internal/utils";
 
 interface HoverCardContextValue {
-  slots: HoverCardVariants;
+  slots: HoverCardSlots;
 }
 
 export const { HoverCardContext, useHoverCard } = createContext<HoverCardContextValue>()({

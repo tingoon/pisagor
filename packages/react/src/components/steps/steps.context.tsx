@@ -1,12 +1,12 @@
-import type { StepsItemVariants, StepsVariants } from "@pisagor/recipes/steps";
+import type { StepsItemSlots, StepsSlots } from "@pisagor/recipes/steps";
 import { createContext } from "../../internal/utils";
 
 interface StepsContextValue {
-  slots: StepsVariants;
+  slots: StepsSlots;
 }
 
 interface StepsItemContextValue {
-  slots: StepsItemVariants;
+  slots: StepsItemSlots;
 }
 
 export const { StepsContext, useSteps } = createContext<StepsContextValue>()({

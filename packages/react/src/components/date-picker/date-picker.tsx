@@ -1,8 +1,8 @@
 import { DatePicker as DatePickerPrimitive, useDatePickerContext } from "@ark-ui/react/date-picker";
 import { Portal } from "@ark-ui/react/portal";
 import { CalendarIcon, ClockIcon, XIcon } from "@phosphor-icons/react";
-import { calendarVariants } from "@pisagor/recipes/calendar";
-import { datePickerVariants } from "@pisagor/recipes/date-picker";
+import { calendarRecipe } from "@pisagor/recipes/calendar";
+import { datePickerRecipe } from "@pisagor/recipes/date-picker";
 import type { ComponentProps } from "react";
 import { useClearableInput } from "../../internal/hooks";
 import { Button } from "../button";
@@ -72,8 +72,8 @@ export function DatePickerRoot({
   onValueChange,
   ...rest
 }: DatePickerRootProps) {
-  const slots = datePickerVariants();
-  const calendarSlots = calendarVariants();
+  const slots = datePickerRecipe();
+  const calendarSlots = calendarRecipe();
 
   return (
     <DatePickerSlotsContext value={{ slots }}>

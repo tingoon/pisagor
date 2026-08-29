@@ -2,7 +2,7 @@ import {
   AngleSlider as AngleSliderPrimitive,
   useAngleSliderContext,
 } from "@ark-ui/react/angle-slider";
-import { circularSliderVariants } from "@pisagor/recipes/circular-slider";
+import { circularSliderRecipe } from "@pisagor/recipes/circular-slider";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";
 import { Field } from "../field";
@@ -67,7 +67,7 @@ export function CircularSliderRoot({
   className,
   ...rest
 }: CircularSliderProps) {
-  const slots = circularSliderVariants();
+  const slots = circularSliderRecipe();
 
   const values = useMemo(
     () => ({

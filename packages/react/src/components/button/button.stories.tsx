@@ -130,7 +130,7 @@ export const Disabled = meta.story({
 export const Loading = meta.story({
   args: {
     children: "Loading",
-    isLoading: true,
+    loading: true,
   },
 });
 

@@ -1,6 +1,6 @@
 import { Field as FieldPrimitive } from "@ark-ui/react/field";
-import { formControlShellVariants } from "@pisagor/recipes/form-control";
-import { type TextareaSlots, textareaVariants } from "@pisagor/recipes/textarea";
+import { formControlShellRecipe } from "@pisagor/recipes/form-control";
+import { type TextareaSlots, textareaRecipe } from "@pisagor/recipes/textarea";
 import type { ChangeEventHandler, ComponentProps, ReactNode } from "react";
 import { useClearableInput } from "../../internal/hooks";
 import type { VariantClassNames } from "../../internal/types";
@@ -37,7 +37,7 @@ export interface TextareaProps extends TextareaRootProps {
 
 // #region Parts
 function TextareaProvider({ children }: { children: ReactNode }) {
-  const slots = textareaVariants();
+  const slots = textareaRecipe();
 
   return <TextareaContext value={{ slots }}>{children}</TextareaContext>;
 }
@@ -61,7 +61,7 @@ function TextareaField({
       {...rest}
       {...controlProps}
       className={cn(
-        formControlShellVariants({ size: "md", ...shellArgs }),
+        formControlShellRecipe({ size: "md", ...shellArgs }),
         slots.rootLayout({ className: cn(className, classNames?.rootLayout) }),
       )}
     />

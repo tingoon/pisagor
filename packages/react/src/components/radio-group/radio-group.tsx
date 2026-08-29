@@ -1,6 +1,6 @@
 import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/react/radio-group";
-import { formControlRadioToggleVariants } from "@pisagor/recipes/form-control";
-import { radioGroupItemVariants, radioGroupVariants } from "@pisagor/recipes/radio-group";
+import { formControlRadioToggleRecipe } from "@pisagor/recipes/form-control";
+import { radioGroupItemRecipe, radioGroupRecipe } from "@pisagor/recipes/radio-group";
 import type { ComponentProps, ReactNode } from "react";
 import { cn } from "../../internal/utils";
 import { Field } from "../field";
@@ -43,7 +43,7 @@ export function RadioGroupRoot({
   return (
     <RadioGroupPrimitive.Root
       {...rest}
-      className={radioGroupVariants({ className })}
+      className={radioGroupRecipe({ className })}
       onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
     >
       {children}
@@ -64,13 +64,13 @@ export function RadioGroupItem({
   };
   const shellArgs = { variant: resolved.variant };
   const controlProps = { "data-variant": resolved.variant };
-  const slots = radioGroupItemVariants();
+  const slots = radioGroupItemRecipe();
 
   return (
     <RadioGroupPrimitive.Item {...rest} className={slots.base({ className })}>
       <RadioGroupPrimitive.ItemControl
         {...controlProps}
-        className={cn(formControlRadioToggleVariants({ ...shellArgs }), slots.control())}
+        className={cn(formControlRadioToggleRecipe({ ...shellArgs }), slots.control())}
       />
 
       <RadioGroupItemText>{children}</RadioGroupItemText>

@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import { FileIcon } from "@phosphor-icons/react";
-import { type FileVariantProps, fileVariants } from "@pisagor/recipes/file";
+import { type FileVariantProps, fileRecipe } from "@pisagor/recipes/file";
 import type { ComponentProps, ReactNode } from "react";
 import { Format } from "../format";
 import { FileContext, useFile } from "./file.context";
@@ -8,14 +8,7 @@ import { FileContext, useFile } from "./file.context";
 // #region Types
 export type FileRootProps = ComponentProps<typeof ark.div>;
 
-export interface FileMediaProps extends ComponentProps<typeof ark.div> {
-  /**
-   * Media presentation.
-   *
-   * @defaultValue "icon"
-   */
-  variant?: NonNullable<FileVariantProps["variant"]>;
-}
+export interface FileMediaProps extends ComponentProps<typeof ark.div>, FileVariantProps {}
 
 export type FileNameProps = ComponentProps<typeof ark.div>;
 
@@ -46,7 +39,7 @@ export interface FileProps extends Omit<FileRootProps, "children" | "title"> {
 
 // #region Parts
 export function FileRoot({ children, className, ...rest }: FileRootProps) {
-  const slots = fileVariants();
+  const slots = fileRecipe();
 
   return (
     <FileContext value={{ slots }}>

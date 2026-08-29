@@ -1,5 +1,5 @@
 import { ToggleGroup as ToggleGroupPrimitive } from "@ark-ui/react/toggle-group";
-import { toggleGroupVariants } from "@pisagor/recipes/toggle-group";
+import { toggleGroupRecipe } from "@pisagor/recipes/toggle-group";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";
 import { Toggle } from "../toggle";
@@ -44,7 +44,7 @@ export function ToggleGroupRoot({
   style,
   ...rest
 }: ToggleGroupRootProps) {
-  const slots = useMemo(() => toggleGroupVariants({ orientation }), [orientation]);
+  const slots = useMemo(() => toggleGroupRecipe({ orientation }), [orientation]);
 
   return (
     <ToggleGroupContext value={{ size, slots, spacing, variant }}>

@@ -7,9 +7,9 @@ import {
   useSelectContext,
 } from "@ark-ui/react/select";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
-import { formControlShellVariants } from "@pisagor/recipes/form-control";
+import { formControlShellRecipe } from "@pisagor/recipes/form-control";
 import type { InputRootVariantProps } from "@pisagor/recipes/input";
-import { selectVariants } from "@pisagor/recipes/select";
+import { selectRecipe } from "@pisagor/recipes/select";
 import type { ComponentProps, ReactNode } from "react";
 import { cn } from "../../internal/utils";
 import { Separator, type SeparatorProps } from "../separator";
@@ -48,8 +48,6 @@ export interface SelectProps extends Omit<SelectRootProps, "children" | "collect
 export interface SelectTriggerProps
   extends ComponentProps<typeof SelectPrimitive.Trigger>,
     InputRootVariantProps {
-  /** Visual shell variant override for this trigger. */
-  variant?: FormControlVariant;
   /**
    * Whether to show a clear button when a value is selected.
    *
@@ -85,7 +83,7 @@ export function SelectRoot<T extends CollectionItem = CollectionItem>({
   variant,
   ...rest
 }: SelectRootProps<T>) {
-  const slots = selectVariants();
+  const slots = selectRecipe();
 
   return (
     <SelectRootContext value={{ slots }}>
@@ -109,7 +107,7 @@ export function SelectTrigger({
   className,
   ...rest
 }: SelectTriggerProps) {
-  const { slots = selectVariants() } = useSelectRoot() ?? {};
+  const { slots = selectRecipe() } = useSelectRoot() ?? {};
   const resolved = {
     surfaceVariant: undefined,
     variant: variantProp ?? ("primary" as FormControlVariant),
@@ -122,7 +120,7 @@ export function SelectTrigger({
       <SelectPrimitive.Trigger
         {...rest}
         {...controlProps}
-        className={cn(formControlShellVariants({ size, ...shellArgs }), slots.trigger(), className)}
+        className={cn(formControlShellRecipe({ size, ...shellArgs }), slots.trigger(), className)}
       >
         {children}
 
@@ -142,7 +140,7 @@ export function SelectTrigger({
 }
 
 export function SelectSeparator({ className, ...rest }: SeparatorProps) {
-  const { slots = selectVariants() } = useSelectRoot() ?? {};
+  const { slots = selectRecipe() } = useSelectRoot() ?? {};
 
   return (
     <Separator
@@ -155,13 +153,13 @@ export function SelectSeparator({ className, ...rest }: SeparatorProps) {
 }
 
 export function SelectValueText({ className, ...rest }: SelectValueTextProps) {
-  const { slots = selectVariants() } = useSelectRoot() ?? {};
+  const { slots = selectRecipe() } = useSelectRoot() ?? {};
 
   return <SelectPrimitive.ValueText {...rest} className={slots.valueText({ className })} />;
 }
 
 export function SelectContent({ className, ...rest }: SelectContentProps) {
-  const { slots = selectVariants() } = useSelectRoot() ?? {};
+  const { slots = selectRecipe() } = useSelectRoot() ?? {};
 
   return (
     <Portal>
@@ -183,7 +181,7 @@ export function SelectItemGroup({ children, heading, ...rest }: SelectItemGroupP
 }
 
 export function SelectItemGroupLabel({ className, ...rest }: SelectItemGroupLabelProps) {
-  const { slots = selectVariants() } = useSelectRoot() ?? {};
+  const { slots = selectRecipe() } = useSelectRoot() ?? {};
 
   return (
     <SelectPrimitive.ItemGroupLabel {...rest} className={slots.itemGroupLabel({ className })} />
@@ -191,7 +189,7 @@ export function SelectItemGroupLabel({ className, ...rest }: SelectItemGroupLabe
 }
 
 export function SelectItem({ children, className, ...rest }: SelectItemProps) {
-  const { slots = selectVariants() } = useSelectRoot() ?? {};
+  const { slots = selectRecipe() } = useSelectRoot() ?? {};
 
   return (
     <SelectPrimitive.Item {...rest} className={slots.item({ className })}>
@@ -207,7 +205,7 @@ export function SelectItem({ children, className, ...rest }: SelectItemProps) {
 }
 
 export function SelectClearTrigger({ className, ...rest }: SelectClearTriggerProps) {
-  const { slots = selectVariants() } = useSelectRoot() ?? {};
+  const { slots = selectRecipe() } = useSelectRoot() ?? {};
 
   return (
     <SelectPrimitive.ClearTrigger
@@ -220,7 +218,7 @@ export function SelectClearTrigger({ className, ...rest }: SelectClearTriggerPro
 
 export function SelectEmpty({ className, ...rest }: SelectEmptyProps) {
   const { empty } = useSelectContext();
-  const { slots = selectVariants() } = useSelectRoot() ?? {};
+  const { slots = selectRecipe() } = useSelectRoot() ?? {};
 
   if (empty) {
     return <ark.div {...rest} className={slots.empty({ className })} role="presentation" />;

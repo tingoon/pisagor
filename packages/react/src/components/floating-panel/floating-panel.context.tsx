@@ -1,9 +1,9 @@
-import type { FloatingPanelVariants } from "@pisagor/recipes/floating-panel";
+import type { FloatingPanelSlots } from "@pisagor/recipes/floating-panel";
 import { createContext } from "../../internal/utils";
 
 export interface FloatingPanelContextValue {
-  /** Slot class recipes from `floatingPanelVariants`. */
-  slots: FloatingPanelVariants;
+  /** Slot class recipes from `floatingPanelRecipe`. */
+  slots: FloatingPanelSlots;
 }
 
 export const { FloatingPanelContext, useFloatingPanel } =

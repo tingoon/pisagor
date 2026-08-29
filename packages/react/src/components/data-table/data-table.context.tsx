@@ -1,4 +1,4 @@
-import type { DataTableVariants } from "@pisagor/recipes/data-table";
+import type { DataTableSlots } from "@pisagor/recipes/data-table";
 import type {
   Cell,
   Column,
@@ -12,7 +12,7 @@ import { createContext } from "../../internal/utils";
 import type { DataTableFeatures } from "./data-table.features";
 
 interface DataTableContextValue<TData extends RowData> {
-  slots: DataTableVariants;
+  slots: DataTableSlots;
   table: TableType<DataTableFeatures, TData>;
 }
 

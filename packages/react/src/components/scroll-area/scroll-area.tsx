@@ -2,7 +2,7 @@ import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/react/scroll-area";
 import {
   type ScrollAreaSlots,
   type ScrollAreaVariantProps,
-  scrollAreaVariants,
+  scrollAreaRecipe,
 } from "@pisagor/recipes/scroll-area";
 import type { ComponentProps } from "react";
 import type { VariantClassNames } from "../../internal/types";
@@ -34,7 +34,7 @@ export interface ScrollAreaProps extends Omit<ScrollAreaRootProps, "children"> {
 
 // #region Parts
 function ScrollAreaRoot({ scrollFade = false, children, className, ...rest }: ScrollAreaRootProps) {
-  const slots = scrollAreaVariants({ scrollFade });
+  const slots = scrollAreaRecipe({ scrollFade });
 
   return (
     <ScrollAreaContext value={{ slots }}>

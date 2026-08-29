@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { type BadgeVariantProps, badgeVariants } from "@pisagor/recipes/badge";
+import { type BadgeVariantProps, badgeRecipe } from "@pisagor/recipes/badge";
 import type { ComponentProps } from "react";
 
 // #region Types
@@ -21,7 +21,7 @@ export function Badge({
   return (
     <ark.span
       {...rest}
-      className={badgeVariants({ className, pill, size, variant })}
+      className={badgeRecipe({ className, pill, size, variant })}
       data-part="root"
       data-scope="badge"
       data-size={size}

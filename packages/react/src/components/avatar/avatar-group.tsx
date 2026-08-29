@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { avatarGroupVariants } from "@pisagor/recipes/avatar";
+import { avatarGroupRecipe } from "@pisagor/recipes/avatar";
 import type { ComponentProps } from "react";
 import { Avatar } from "./avatar";
 import { AvatarGroupContext, useAvatarGroup } from "./avatar-group.context";
@@ -19,7 +19,7 @@ export type AvatarGroupCountProps = ComponentProps<typeof ark.div>;
 
 // #region Parts
 export function AvatarGroupRoot({ children, className, ...rest }: AvatarGroupRootProps) {
-  const slots = avatarGroupVariants();
+  const slots = avatarGroupRecipe();
 
   return (
     <AvatarGroupContext value={{ slots }}>

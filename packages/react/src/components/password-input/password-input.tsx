@@ -1,6 +1,6 @@
 import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/react/password-input";
 import { EyeIcon, EyeSlashIcon, XIcon } from "@phosphor-icons/react";
-import { passwordInputVariants } from "@pisagor/recipes/password-input";
+import { passwordInputRecipe } from "@pisagor/recipes/password-input";
 import type { ComponentProps } from "react";
 import { useClearableInput } from "../../internal/hooks";
 import { InputGroup, type InputGroupButtonProps, type InputGroupProps } from "../input-group";
@@ -72,7 +72,7 @@ export function PasswordInput({
     ...restClearButtonProps
   } = clearButtonProps ?? {};
 
-  const slots = passwordInputVariants();
+  const slots = passwordInputRecipe();
 
   const { canClear, handleChange, handleClear, mergedRef } = useClearableInput({
     clearable,

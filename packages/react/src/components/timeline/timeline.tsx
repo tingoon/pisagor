@@ -1,17 +1,14 @@
 import { ark } from "@ark-ui/react/factory";
-import { timelineItemVariants, timelineVariants } from "@pisagor/recipes/timeline";
+import {
+  type TimelineVariantProps,
+  timelineItemRecipe,
+  timelineRecipe,
+} from "@pisagor/recipes/timeline";
 import type { ComponentProps, ReactNode } from "react";
 import { TimelineItemContext, useTimelineItem } from "./timeline.context";
 
 // #region Types
-export interface TimelineRootProps extends ComponentProps<typeof ark.ol> {
-  /**
-   * Timeline layout.
-   *
-   * @defaultValue "vertical"
-   */
-  orientation?: "vertical" | "horizontal";
-}
+export interface TimelineRootProps extends ComponentProps<typeof ark.ol>, TimelineVariantProps {}
 
 export type TimelineItemProps = ComponentProps<typeof ark.li>;
 
@@ -43,7 +40,7 @@ export function TimelineRoot({ orientation = "vertical", className, ...rest }: T
   return (
     <ark.ol
       {...rest}
-      className={timelineVariants({ className, orientation })}
+      className={timelineRecipe({ className, orientation })}
       data-orientation={orientation}
       data-part="root"
       data-scope="timeline"
@@ -52,7 +49,7 @@ export function TimelineRoot({ orientation = "vertical", className, ...rest }: T
 }
 
 export function TimelineItem({ children, className, ...rest }: TimelineItemProps) {
-  const slots = timelineItemVariants();
+  const slots = timelineItemRecipe();
 
   return (
     <TimelineItemContext value={{ slots }}>

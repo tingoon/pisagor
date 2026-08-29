@@ -12,11 +12,11 @@ import {
   FolderOpenIcon,
   MinusIcon,
 } from "@phosphor-icons/react";
-import { formControlToggleVariants } from "@pisagor/recipes/form-control";
+import { formControlToggleRecipe } from "@pisagor/recipes/form-control";
 import {
-  treeViewBranchVariants,
-  treeViewItemVariants,
-  treeViewVariants,
+  treeViewBranchRecipe,
+  treeViewItemRecipe,
+  treeViewRecipe,
 } from "@pisagor/recipes/tree-view";
 import type { ComponentProps, JSX } from "react";
 import { cn } from "../../internal/utils";
@@ -110,7 +110,7 @@ export const createTreeCollection = <T extends TreeNodeType>(
   });
 
 export function TreeViewRoot({ children, fileIcons, className, ...rest }: TreeViewProps) {
-  const slots = treeViewVariants();
+  const slots = treeViewRecipe();
 
   return (
     <TreeViewContext value={{ fileIcons, slots }}>
@@ -138,7 +138,7 @@ export const TreeViewNodeProvider = <T extends TreeNodeType>(props: NodeProvider
 );
 
 export function TreeViewBranch({ children, className, ...rest }: TreeViewBranchProps) {
-  const slots = treeViewBranchVariants();
+  const slots = treeViewBranchRecipe();
 
   return (
     <TreeViewBranchContext value={{ slots }}>
@@ -238,7 +238,7 @@ function TreeViewBranchIndentGuide({ className, ...rest }: TreeViewBranchIndentG
 
 export function TreeViewItem({ children, className, ...rest }: TreeViewItemProps) {
   const { slots } = useTreeView();
-  const itemSlots = treeViewItemVariants();
+  const itemSlots = treeViewItemRecipe();
 
   return (
     <TreeViewItemContext value={{ slots: itemSlots }}>
@@ -290,7 +290,7 @@ export function TreeViewItemText({
 
 function TreeViewItemIcon({ className, ...rest }: TreeViewItemIconProps) {
   const item = useTreeViewItem();
-  const slots = item?.slots ?? treeViewItemVariants();
+  const slots = item?.slots ?? treeViewItemRecipe();
 
   return (
     <ark.span
@@ -304,19 +304,19 @@ function TreeViewItemIcon({ className, ...rest }: TreeViewItemIconProps) {
 
 function TreeViewItemTitle({ className, ...rest }: TreeViewItemTitleProps) {
   const item = useTreeViewItem();
-  const slots = item?.slots ?? treeViewItemVariants();
+  const slots = item?.slots ?? treeViewItemRecipe();
 
   return <TreeViewPrimitive.ItemText {...rest} className={slots.title({ className })} />;
 }
 
 export function TreeViewNodeCheckbox({ className, ...rest }: TreeViewNodeCheckboxProps) {
   const item = useTreeViewItem();
-  const slots = item?.slots ?? treeViewItemVariants();
+  const slots = item?.slots ?? treeViewItemRecipe();
 
   return (
     <TreeViewPrimitive.NodeCheckbox
       {...rest}
-      className={cn(formControlToggleVariants(), slots.checkbox(), className)}
+      className={cn(formControlToggleRecipe(), slots.checkbox(), className)}
     >
       <TreeViewPrimitive.NodeCheckboxIndicator indeterminate={<MinusIcon />}>
         <CheckIcon />
@@ -327,7 +327,7 @@ export function TreeViewNodeCheckbox({ className, ...rest }: TreeViewNodeCheckbo
 
 function TreeViewNodeInput({ className, ...rest }: TreeViewNodeInputProps) {
   const item = useTreeViewItem();
-  const slots = item?.slots ?? treeViewItemVariants();
+  const slots = item?.slots ?? treeViewItemRecipe();
 
   return (
     <TreeViewPrimitive.NodeRenameInput {...rest} className={slots.renameInput({ className })} />

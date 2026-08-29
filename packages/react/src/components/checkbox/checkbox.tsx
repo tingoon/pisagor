@@ -1,7 +1,7 @@
 import { Checkbox as CheckboxPrimitive } from "@ark-ui/react/checkbox";
 import { CheckIcon, MinusIcon } from "@phosphor-icons/react";
-import { checkboxGroupVariants, checkboxVariants } from "@pisagor/recipes/checkbox";
-import { formControlToggleVariants } from "@pisagor/recipes/form-control";
+import { checkboxGroupRecipe, checkboxRecipe } from "@pisagor/recipes/checkbox";
+import { formControlToggleRecipe } from "@pisagor/recipes/form-control";
 import type { ComponentProps } from "react";
 import { cn } from "../../internal/utils";
 
@@ -31,7 +31,7 @@ export function CheckboxGroup({ onValueChange, className, ...rest }: CheckboxGro
   return (
     <CheckboxPrimitive.Group
       {...rest}
-      className={checkboxGroupVariants({ className })}
+      className={checkboxGroupRecipe({ className })}
       onValueChange={onValueChange}
     />
   );
@@ -51,7 +51,7 @@ export function CheckboxRoot({
   };
   const shellArgs = { variant: resolved.variant };
   const controlProps = { "data-variant": resolved.variant };
-  const slots = checkboxVariants();
+  const slots = checkboxRecipe();
 
   const handleCheckedChange =
     onCheckedChange || onValueChange
@@ -66,7 +66,7 @@ export function CheckboxRoot({
       {...rest}
       {...controlProps}
       className={cn(
-        formControlToggleVariants({ size: "md", ...shellArgs }),
+        formControlToggleRecipe({ size: "md", ...shellArgs }),
         slots.base({ className }),
       )}
       onCheckedChange={handleCheckedChange}
@@ -88,7 +88,7 @@ export function CheckboxRoot({
 }
 
 function CheckboxIndicator({ className, ...rest }: CheckboxIndicatorProps) {
-  const slots = checkboxVariants();
+  const slots = checkboxRecipe();
 
   return <CheckboxPrimitive.Indicator {...rest} className={slots.indicator({ className })} />;
 }

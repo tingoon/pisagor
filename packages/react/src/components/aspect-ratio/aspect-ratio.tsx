@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { aspectRatioVariants } from "@pisagor/recipes/aspect-ratio";
+import { aspectRatioRecipe } from "@pisagor/recipes/aspect-ratio";
 import type { ComponentProps } from "react";
 
 // #region Types
@@ -13,7 +13,7 @@ export function AspectRatio({ className, ...rest }: AspectRatioProps) {
   return (
     <ark.div
       {...rest}
-      className={aspectRatioVariants({ className })}
+      className={aspectRatioRecipe({ className })}
       data-part="root"
       data-scope="aspect-ratio"
     />

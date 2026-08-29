@@ -1,4 +1,4 @@
-import { dataGridVariants } from "@pisagor/recipes/data-grid";
+import { dataGridRecipe } from "@pisagor/recipes/data-grid";
 import type { RowData, TableOptions } from "@tanstack/react-table";
 import { flexRender, useTable } from "@tanstack/react-table";
 import { useVirtualizer } from "@tanstack/react-virtual";
@@ -564,7 +564,7 @@ function DataGridRoot<TData extends RowData>({
     columnResizeMode,
     features,
   });
-  const slots = dataGridVariants();
+  const slots = dataGridRecipe();
 
   const contextValue = useMemo(() => ({ slots, table }), [slots, table]);
 

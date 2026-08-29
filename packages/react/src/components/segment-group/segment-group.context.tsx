@@ -1,8 +1,8 @@
-import type { SegmentGroupVariants } from "@pisagor/recipes/segment-group";
+import type { SegmentGroupSlots } from "@pisagor/recipes/segment-group";
 import { createContext } from "../../internal/utils";
 
 interface SegmentGroupContextValue {
-  slots: SegmentGroupVariants;
+  slots: SegmentGroupSlots;
 }
 
 export const { SegmentGroupContext, useSegmentGroup } = createContext<SegmentGroupContextValue>()({

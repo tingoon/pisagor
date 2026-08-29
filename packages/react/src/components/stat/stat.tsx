@@ -3,8 +3,8 @@ import {
   type StatSlots,
   type StatTrendVariantProps,
   type StatVariantProps,
-  statTrendVariants,
-  statVariants,
+  statRecipe,
+  statTrendRecipe,
 } from "@pisagor/recipes/stat";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
@@ -47,7 +47,7 @@ export interface StatProps extends Omit<StatRootProps, "children"> {
 
 // #region Parts
 export function StatRoot({ variant, children, className, ...rest }: StatRootProps) {
-  const slots = statVariants();
+  const slots = statRecipe();
 
   return (
     <StatContext value={{ slots }}>
@@ -97,7 +97,7 @@ export function StatTrend({ trend = "neutral", className, ...rest }: StatTrendPr
   return (
     <ark.div
       {...rest}
-      className={statTrendVariants({ className, trend })}
+      className={statTrendRecipe({ className, trend })}
       data-part="trend"
       data-scope="stat"
       data-trend={trend}

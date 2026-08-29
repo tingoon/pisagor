@@ -2,7 +2,7 @@ import { ark } from "@ark-ui/react/factory";
 import { Progress as ProgressPrimitive, useProgressContext } from "@ark-ui/react/progress";
 import {
   type CircularProgressSlots,
-  circularProgressVariants,
+  circularProgressRecipe,
 } from "@pisagor/recipes/circular-progress";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
@@ -61,7 +61,7 @@ interface CircularProgressTrackPartProps {
 
 // #region Parts
 function CircularProgressRoot({ children, className, ...rest }: CircularProgressRootProps) {
-  const slots = circularProgressVariants();
+  const slots = circularProgressRecipe();
 
   return (
     <CircularProgressSlotsContext value={{ slots }}>

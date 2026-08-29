@@ -1,5 +1,5 @@
 import { Switch as SwitchPrimitive } from "@ark-ui/react/switch";
-import { type SwitchSlots, switchVariants } from "@pisagor/recipes/switch";
+import { type SwitchSlots, switchRecipe } from "@pisagor/recipes/switch";
 import type { ComponentProps } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { SwitchContext, useSwitch } from "./switch.context";
@@ -41,7 +41,7 @@ function SwitchRoot({ variant: variantProp, children, className, ...rest }: Swit
   };
   const shellArgs = { variant: resolved.variant };
   const controlShellProps = { "data-variant": resolved.variant };
-  const slots = switchVariants({ ...shellArgs });
+  const slots = switchRecipe({ ...shellArgs });
 
   return (
     <SwitchContext value={{ slots }}>

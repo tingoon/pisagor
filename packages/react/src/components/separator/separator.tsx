@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { separatorVariants } from "@pisagor/recipes/separator";
+import { separatorRecipe } from "@pisagor/recipes/separator";
 import type { ComponentProps } from "react";
 
 // #region Types
@@ -21,7 +21,7 @@ export function Separator({ orientation = "horizontal", className, ...rest }: Se
     <ark.div
       {...rest}
       aria-orientation={orientation}
-      className={separatorVariants({ className })}
+      className={separatorRecipe({ className })}
       data-orientation={orientation}
       data-part="root"
       data-scope="separator"

@@ -4,8 +4,8 @@ import { type MenuContentProps, Menu as MenuPrimitive } from "@ark-ui/react/menu
 import { CaretRightIcon, CheckIcon } from "@phosphor-icons/react";
 import {
   type DropdownMenuItemVariantProps,
-  dropdownMenuItemVariants,
-  dropdownMenuVariants,
+  dropdownMenuItemRecipe,
+  dropdownMenuRecipe,
 } from "@pisagor/recipes/dropdown-menu";
 import type { ComponentProps } from "react";
 import { DropdownMenuContext, useDropdownMenu } from "./dropdown-menu.context";
@@ -65,13 +65,13 @@ export function DropdownMenuTrigger(props: DropdownMenuTriggerProps) {
 
 export function DropdownMenuPositioner({ className, ...rest }: DropdownMenuPositionerProps) {
   const context = useDropdownMenu();
-  const slots = context?.slots ?? dropdownMenuVariants();
+  const slots = context?.slots ?? dropdownMenuRecipe();
 
   return <MenuPrimitive.Positioner {...rest} className={slots.positioner({ className })} />;
 }
 
 export function DropdownMenuContent({ children, className, ...rest }: DropdownMenuContentProps) {
-  const slots = dropdownMenuVariants();
+  const slots = dropdownMenuRecipe();
 
   return (
     <DropdownMenuContext value={{ slots }}>
@@ -98,7 +98,7 @@ export function DropdownMenuItemGroup({ children, heading, ...rest }: DropdownMe
 
 export function DropdownMenuSeparator({ className, ...rest }: DropdownMenuSeparatorProps) {
   const context = useDropdownMenu();
-  const slots = context?.slots ?? dropdownMenuVariants();
+  const slots = context?.slots ?? dropdownMenuRecipe();
 
   return <MenuPrimitive.Separator {...rest} className={slots.separator({ className })} />;
 }
@@ -111,7 +111,7 @@ export function DropdownMenuItem({
   return (
     <MenuPrimitive.Item
       {...rest}
-      className={dropdownMenuItemVariants({ variant }).base({ className })}
+      className={dropdownMenuItemRecipe({ variant }).base({ className })}
       data-variant={variant}
     />
   );
@@ -123,12 +123,12 @@ export function DropdownMenuQuickItem({
   ...rest
 }: DropdownMenuItemProps) {
   const context = useDropdownMenu();
-  const slots = context?.slots ?? dropdownMenuVariants();
+  const slots = context?.slots ?? dropdownMenuRecipe();
 
   return (
     <MenuPrimitive.Item
       {...rest}
-      className={dropdownMenuItemVariants({ variant }).base({
+      className={dropdownMenuItemRecipe({ variant }).base({
         className: slots.quickItem({ className }),
       })}
     />
@@ -140,7 +140,7 @@ export function DropdownMenuCheckboxItem({
   className,
   ...rest
 }: DropdownMenuCheckboxItemProps) {
-  const slots = dropdownMenuItemVariants({ inset: true, variant: "default" });
+  const slots = dropdownMenuItemRecipe({ inset: true, variant: "default" });
 
   return (
     <MenuPrimitive.CheckboxItem {...rest} className={slots.base({ className })}>
@@ -172,7 +172,7 @@ export function DropdownMenuItemGroupLabel({
   ...rest
 }: DropdownMenuItemGroupLabelProps) {
   const context = useDropdownMenu();
-  const slots = context?.slots ?? dropdownMenuVariants();
+  const slots = context?.slots ?? dropdownMenuRecipe();
 
   return <MenuPrimitive.ItemGroupLabel {...rest} className={slots.itemGroupLabel({ className })} />;
 }
@@ -182,7 +182,7 @@ export function DropdownMenuRadioItem({
   className,
   ...rest
 }: DropdownMenuRadioItemProps) {
-  const slots = dropdownMenuItemVariants({ inset: true, variant: "default" });
+  const slots = dropdownMenuItemRecipe({ inset: true, variant: "default" });
 
   return (
     <MenuPrimitive.RadioItem {...rest} className={slots.base({ className })}>
@@ -200,7 +200,7 @@ export function DropdownMenuSub(props: DropdownMenuRootProps) {
 }
 
 export function DropdownMenuSubContent({ className, ...rest }: DropdownMenuSubContentProps) {
-  const slots = dropdownMenuVariants();
+  const slots = dropdownMenuRecipe();
 
   return (
     <DropdownMenuContext value={{ slots }}>
@@ -221,7 +221,7 @@ export function DropdownMenuTriggerItem({
   return (
     <MenuPrimitive.TriggerItem
       {...rest}
-      className={dropdownMenuItemVariants({ variant: "default" }).base({ className })}
+      className={dropdownMenuItemRecipe({ variant: "default" }).base({ className })}
     >
       {children}
 
@@ -234,7 +234,7 @@ export function DropdownMenuTriggerItem({
 
 export function DropdownMenuShortcut({ className, ...rest }: DropdownMenuShortcutProps) {
   const context = useDropdownMenu();
-  const slots = context?.slots ?? dropdownMenuVariants();
+  const slots = context?.slots ?? dropdownMenuRecipe();
 
   return (
     <ark.span
@@ -248,7 +248,7 @@ export function DropdownMenuShortcut({ className, ...rest }: DropdownMenuShortcu
 
 export function DropdownMenuArrow({ style, ...rest }: DropdownMenuArrowProps) {
   const context = useDropdownMenu();
-  const slots = context?.slots ?? dropdownMenuVariants();
+  const slots = context?.slots ?? dropdownMenuRecipe();
 
   return (
     <MenuPrimitive.Arrow

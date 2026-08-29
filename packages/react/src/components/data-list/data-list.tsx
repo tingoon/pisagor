@@ -1,8 +1,8 @@
 import { ark } from "@ark-ui/react/factory";
 import {
   type DataListItemSlots,
-  dataListItemVariants,
-  dataListVariants,
+  dataListItemRecipe,
+  dataListRecipe,
 } from "@pisagor/recipes/data-list";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
@@ -50,7 +50,7 @@ export function DataListRoot({
   return (
     <ark.dl
       {...rest}
-      className={dataListVariants({ className })}
+      className={dataListRecipe({ className })}
       data-orientation={orientation}
       data-part="root"
       data-scope="data-list"
@@ -93,7 +93,7 @@ export function DataListItem({
   classNames,
   ...rest
 }: DataListItemProps) {
-  const slots = dataListItemVariants();
+  const slots = dataListItemRecipe();
 
   return (
     <DataListItemContext value={{ slots }}>

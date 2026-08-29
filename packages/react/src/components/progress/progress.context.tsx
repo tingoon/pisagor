@@ -1,8 +1,8 @@
-import type { ProgressVariants } from "@pisagor/recipes/progress";
+import type { ProgressSlots } from "@pisagor/recipes/progress";
 import { createContext } from "../../internal/utils";
 
 interface ProgressContextValue {
-  slots: ProgressVariants;
+  slots: ProgressSlots;
 }
 
 export const { ProgressContext, useProgress } = createContext<ProgressContextValue>()({

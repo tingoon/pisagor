@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import { PinInput as PinInputPrimitive } from "@ark-ui/react/pin-input";
-import { inputOtpVariants } from "@pisagor/recipes/input-otp";
+import { inputOtpRecipe } from "@pisagor/recipes/input-otp";
 import type { ComponentProps } from "react";
 import { Input, type InputProps } from "../input/input";
 import { InputOTPContext, useInputOTP } from "./input-otp.context";
@@ -32,7 +32,7 @@ export function InputOTPRoot({
   className,
   ...rest
 }: InputOTPProps) {
-  const slots = inputOtpVariants();
+  const slots = inputOtpRecipe();
 
   return (
     <InputOTPContext value={{ slots }}>

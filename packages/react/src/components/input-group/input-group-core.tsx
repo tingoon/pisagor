@@ -1,14 +1,14 @@
 import { ark } from "@ark-ui/react/factory";
 import {
   type FormControlGroupShellVariantProps,
-  formControlGroupShellVariants,
+  formControlGroupShellRecipe,
 } from "@pisagor/recipes/form-control";
 import {
   type InputGroupAddonVariantProps,
   type InputGroupButtonVariantProps,
-  inputGroupAddonVariants,
-  inputGroupButtonVariants,
-  inputGroupTextVariants,
+  inputGroupAddonRecipe,
+  inputGroupButtonRecipe,
+  inputGroupTextRecipe,
 } from "@pisagor/recipes/input-group";
 import type { ComponentProps, MouseEvent } from "react";
 import { Button, type ButtonProps } from "../button";
@@ -18,12 +18,7 @@ type FormControlVariant = "primary" | "secondary";
 
 export interface InputGroupProps
   extends ComponentProps<typeof ark.div>,
-    FormControlGroupShellVariantProps {
-  /**
-   * Visual shell variant. Defaults to `primary`.
-   */
-  variant?: FormControlVariant;
-}
+    FormControlGroupShellVariantProps {}
 
 export interface InputGroupAddonProps
   extends ComponentProps<typeof ark.div>,
@@ -52,7 +47,7 @@ export function InputGroupRoot({
     <ark.div
       {...rest}
       {...controlProps}
-      className={formControlGroupShellVariants({ className, size, ...shellArgs })}
+      className={formControlGroupShellRecipe({ className, size, ...shellArgs })}
       data-part="root"
       data-scope="input-group"
       data-size={size}
@@ -76,7 +71,7 @@ export function InputGroupAddon({
   return (
     <ark.div
       {...rest}
-      className={inputGroupAddonVariants({ align, className })}
+      className={inputGroupAddonRecipe({ align, className })}
       data-align={align}
       data-part="addon"
       data-scope="input-group"
@@ -95,7 +90,7 @@ export function InputGroupButton({
   return (
     <Button
       {...rest}
-      className={inputGroupButtonVariants({ className, size })}
+      className={inputGroupButtonRecipe({ className, size })}
       data-part="button"
       data-scope="input-group"
       data-size={size}
@@ -108,7 +103,7 @@ export function InputGroupText({ className, ...rest }: InputGroupTextProps) {
   return (
     <ark.span
       {...rest}
-      className={inputGroupTextVariants({ className })}
+      className={inputGroupTextRecipe({ className })}
       data-part="text"
       data-scope="input-group"
     />

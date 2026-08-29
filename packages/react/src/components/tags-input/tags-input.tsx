@@ -1,6 +1,6 @@
 import { TagsInput as TagsInputPrimitive, useTagsInputContext } from "@ark-ui/react/tags-input";
 import { XIcon } from "@phosphor-icons/react";
-import { tagsInputItemVariants, tagsInputVariants } from "@pisagor/recipes/tags-input";
+import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes/tags-input";
 import type { ComponentProps } from "react";
 import { InputGroup, type InputGroupProps } from "../input-group";
 import {
@@ -89,7 +89,7 @@ export function TagsInputRoot({
   className,
   ...rest
 }: TagsInputProps) {
-  const slots = tagsInputVariants();
+  const slots = tagsInputRecipe();
 
   return (
     <TagsInputSlotsContext value={{ slots }}>
@@ -145,7 +145,7 @@ export function TagsInputItem({
   className,
   ...rest
 }: TagsInputItemProps) {
-  const slots = tagsInputItemVariants();
+  const slots = tagsInputItemRecipe();
 
   return (
     <TagsInputItemContext value={{ slots }}>
@@ -241,7 +241,7 @@ export function TagsInputRootProvider({
   className,
   ...rest
 }: TagsInputRootProviderProps) {
-  const slots = tagsInputVariants();
+  const slots = tagsInputRecipe();
 
   return (
     <TagsInputSlotsContext value={{ slots }}>

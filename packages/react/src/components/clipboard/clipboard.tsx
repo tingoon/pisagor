@@ -3,9 +3,9 @@ import { CheckIcon, ClipboardIcon } from "@phosphor-icons/react";
 import {
   type ClipboardSlots,
   type ClipboardVariantProps,
-  clipboardVariants,
+  clipboardRecipe,
 } from "@pisagor/recipes/clipboard";
-import { formControlShellVariants } from "@pisagor/recipes/form-control";
+import { formControlShellRecipe } from "@pisagor/recipes/form-control";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { cn } from "../../internal/utils";
@@ -17,11 +17,11 @@ type FormControlVariant = "primary" | "secondary";
 
 type ClipboardClassNames = VariantClassNames<ClipboardSlots>;
 
-type ClipboardValueSize = ClipboardVariantProps["valueSize"];
-
 type ClipboardRootProps = ComponentProps<typeof ClipboardPrimitive.Root>;
 
-export interface ClipboardProps extends Omit<ClipboardRootProps, "children"> {
+export interface ClipboardProps
+  extends Omit<ClipboardRootProps, "children">,
+    ClipboardVariantProps {
   /**
    * Size of the copy button.
    *
@@ -35,12 +35,6 @@ export interface ClipboardProps extends Omit<ClipboardRootProps, "children"> {
    * Defaults to `primary`.
    */
   controlVariant?: FormControlVariant;
-  /**
-   * Size of the value text when `variant` is `"value"`.
-   *
-   * @defaultValue "md"
-   */
-  valueSize?: ClipboardValueSize;
   /**
    * Display mode for the copy control.
    *
@@ -80,9 +74,9 @@ function ClipboardProvider({
   children,
 }: {
   children: ReactNode;
-  valueSize?: ClipboardValueSize;
+  valueSize?: ClipboardVariantProps["valueSize"];
 }) {
-  const slots = clipboardVariants({ valueSize });
+  const slots = clipboardRecipe({ valueSize });
 
   return <ClipboardContext value={{ slots }}>{children}</ClipboardContext>;
 }
@@ -166,7 +160,7 @@ export function Clipboard({
   };
   const shellArgs = { variant: resolved.variant };
   const controlProps = { "data-variant": resolved.variant };
-  const shellClassName = formControlShellVariants({ size: "md", ...shellArgs });
+  const shellClassName = formControlShellRecipe({ size: "md", ...shellArgs });
 
   const control = (
     <ClipboardRoot {...rest} className={className}>

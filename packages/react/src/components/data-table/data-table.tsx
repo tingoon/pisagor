@@ -1,4 +1,4 @@
-import { dataTableVariants } from "@pisagor/recipes/data-table";
+import { dataTableRecipe } from "@pisagor/recipes/data-table";
 import type { RowData, TableOptions } from "@tanstack/react-table";
 import { flexRender, useTable } from "@tanstack/react-table";
 import { type ComponentProps, type ReactNode, useMemo } from "react";
@@ -301,7 +301,7 @@ function DataTableRoot<TData extends RowData>({
     ...rest,
     features,
   });
-  const slots = dataTableVariants();
+  const slots = dataTableRecipe();
 
   const contextValue = useMemo(() => ({ slots, table }), [slots, table]);
 

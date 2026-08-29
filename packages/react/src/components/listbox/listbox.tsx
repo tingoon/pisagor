@@ -6,8 +6,8 @@ import {
 import { CheckIcon } from "@phosphor-icons/react";
 import {
   type ListboxItemVariantProps,
-  listboxItemVariants,
-  listboxVariants,
+  listboxItemRecipe,
+  listboxRecipe,
 } from "@pisagor/recipes/listbox";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
@@ -62,7 +62,7 @@ export function ListboxRoot<T extends CollectionItem = CollectionItem>({
   onValueChange,
   ...rest
 }: ListboxRootProps<T>) {
-  const slots = listboxVariants();
+  const slots = listboxRecipe();
 
   return (
     <ListboxContext value={{ slots }}>
@@ -89,7 +89,7 @@ export function ListboxItem({
   className,
   ...rest
 }: ListboxItemProps) {
-  const slots = useMemo(() => listboxItemVariants({ variant }), [variant]);
+  const slots = useMemo(() => listboxItemRecipe({ variant }), [variant]);
 
   return (
     <ListboxItemContext value={{ slots }}>

@@ -2,7 +2,7 @@ import { ark } from "@ark-ui/react/factory";
 import { Popover as PopoverPrimitive } from "@ark-ui/react/popover";
 import { Portal } from "@ark-ui/react/portal";
 import { XIcon } from "@phosphor-icons/react";
-import { popoverVariants } from "@pisagor/recipes/popover";
+import { popoverRecipe } from "@pisagor/recipes/popover";
 import type { ComponentProps } from "react";
 import { Button } from "../button";
 import { ScrollArea } from "../scroll-area";
@@ -69,7 +69,7 @@ export function PopoverContent({
   className,
   ...rest
 }: PopoverContentProps) {
-  const slots = popoverVariants();
+  const slots = popoverRecipe();
 
   return (
     <Portal>

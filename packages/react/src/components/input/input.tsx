@@ -2,8 +2,8 @@ import { FieldInput as InputPrimitive } from "@ark-ui/react/field";
 import {
   type InputRootVariantProps,
   type InputSlots,
-  inputRootVariants,
-  inputVariants,
+  inputRecipe,
+  inputRootRecipe,
 } from "@pisagor/recipes/input";
 import type { ChangeEventHandler, ComponentProps } from "react";
 import { useClearableInput } from "../../internal/hooks";
@@ -22,10 +22,6 @@ type InputVariantProps = InputRootVariantProps;
 type InputRootProps = Omit<ComponentProps<typeof InputPrimitive>, "size">;
 
 export interface InputProps extends InputRootProps, InputVariantProps {
-  /**
-   * Visual shell variant. Defaults to `primary`.
-   */
-  variant?: FormControlVariant;
   /**
    * Whether to show a clear button when the input has a value.
    *
@@ -79,7 +75,7 @@ export function Input({
   const skipClearable = !clearable || type === "file" || type === "password";
   const shellArgs = { variant: resolved.variant };
   const controlProps = { "data-variant": resolved.variant };
-  const slots = inputVariants();
+  const slots = inputRecipe();
 
   const changeHandler: ChangeEventHandler<HTMLInputElement> | undefined = skipClearable
     ? onChange || onValueChange
@@ -95,7 +91,7 @@ export function Input({
       <InputPrimitive
         {...rest}
         {...controlProps}
-        className={inputRootVariants({ className, size, ...shellArgs })}
+        className={inputRootRecipe({ className, size, ...shellArgs })}
         data-size={size}
         defaultValue={defaultValue}
         disabled={disabled}

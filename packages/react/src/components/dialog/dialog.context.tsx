@@ -1,4 +1,4 @@
-import type { DialogVariants } from "@pisagor/recipes/dialog";
+import type { DialogSlots } from "@pisagor/recipes/dialog";
 import { createContext } from "../../internal/utils";
 
 interface DialogContextValue {
@@ -11,8 +11,8 @@ interface DialogContextValue {
    * When `false`, the overlay is not rendered and content outside the dialog stays interactable.
    */
   modal?: boolean;
-  /** Slot class recipes from `dialogVariants`. */
-  slots: DialogVariants;
+  /** Slot class recipes from `dialogRecipe`. */
+  slots: DialogSlots;
 }
 
 export const { DialogContext, useDialog } = createContext<DialogContextValue>()({

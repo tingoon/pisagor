@@ -3,8 +3,8 @@ import {
   DatePicker as CalendarPrimitive,
 } from "@ark-ui/react/date-picker";
 import { CaretDownIcon, CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
-import { calendarTableCellVariants, calendarVariants } from "@pisagor/recipes/calendar";
-import { formControlShellVariants } from "@pisagor/recipes/form-control";
+import { calendarRecipe, calendarTableCellRecipe } from "@pisagor/recipes/calendar";
+import { formControlShellRecipe } from "@pisagor/recipes/form-control";
 import type { ComponentProps } from "react";
 import { cn } from "../../internal/utils";
 import { Button, type ButtonProps } from "../button";
@@ -85,11 +85,7 @@ function useCalendarSelectShell(className?: string) {
   const controlProps = { "data-variant": resolved.variant };
 
   return {
-    className: cn(
-      formControlShellVariants({ size: "md", ...shellArgs }),
-      slots.select(),
-      className,
-    ),
+    className: cn(formControlShellRecipe({ size: "md", ...shellArgs }), slots.select(), className),
     controlProps,
   };
 }
@@ -107,7 +103,7 @@ const getWeekRowKey = (
 ) => week.map((day) => `${day.year}-${day.month}-${day.day}`).join("/");
 
 export function CalendarRoot({ variant, children, className, ...rest }: CalendarProps) {
-  const slots = calendarVariants();
+  const slots = calendarRecipe();
 
   return (
     <CalendarSlotsContext value={{ slots }}>
@@ -350,7 +346,7 @@ export function CalendarTableCell({
   className,
   ...rest
 }: CalendarTableCellProps) {
-  const slots = calendarTableCellVariants();
+  const slots = calendarTableCellRecipe();
 
   return (
     <CalendarPrimitive.TableCell className={slots.base()} value={value} visibleRange={visibleRange}>

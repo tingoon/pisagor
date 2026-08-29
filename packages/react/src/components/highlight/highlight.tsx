@@ -1,5 +1,5 @@
 import { Highlight as HighlightPrimitive } from "@ark-ui/react/highlight";
-import { highlightVariants } from "@pisagor/recipes/highlight";
+import { highlightRecipe } from "@pisagor/recipes/highlight";
 import type { ComponentProps } from "react";
 
 // #region Types
@@ -10,7 +10,7 @@ export type HighlightProps = HighlightRootProps;
 
 // #region Part
 export function Highlight({ className, ...rest }: HighlightProps) {
-  return <HighlightPrimitive {...rest} className={highlightVariants({ className })} />;
+  return <HighlightPrimitive {...rest} className={highlightRecipe({ className })} />;
 }
 // #endregion
 

@@ -1,7 +1,7 @@
 import type {
-  TreeViewBranchVariants,
-  TreeViewItemVariants,
-  TreeViewVariants,
+  TreeViewBranchSlots,
+  TreeViewItemSlots,
+  TreeViewSlots,
 } from "@pisagor/recipes/tree-view";
 import type { JSX } from "react";
 import { createContext } from "../../internal/utils";
@@ -12,15 +12,15 @@ export interface TreeViewContextProps {
 }
 
 interface TreeViewContextValue extends TreeViewContextProps {
-  slots: TreeViewVariants;
+  slots: TreeViewSlots;
 }
 
 interface TreeViewBranchContextValue {
-  slots: TreeViewBranchVariants;
+  slots: TreeViewBranchSlots;
 }
 
 interface TreeViewItemContextValue {
-  slots: TreeViewItemVariants;
+  slots: TreeViewItemSlots;
 }
 
 export const { TreeViewContext, useTreeView } = createContext<TreeViewContextValue>()({

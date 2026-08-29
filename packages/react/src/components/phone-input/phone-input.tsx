@@ -3,7 +3,7 @@ import { CaretUpDownIcon, GlobeIcon } from "@phosphor-icons/react";
 import {
   type PhoneInputSlots,
   type PhoneInputVariantProps,
-  phoneInputVariants,
+  phoneInputRecipe,
 } from "@pisagor/recipes/phone-input";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
@@ -21,8 +21,6 @@ import { phoneInputFlags } from "./phone-input-flags";
 type FormControlVariant = "primary" | "secondary";
 
 type PhoneInputClassNames = VariantClassNames<PhoneInputSlots>;
-
-type PhoneInputSize = NonNullable<PhoneInputVariantProps["size"]>;
 
 interface CountrySelectOption {
   label: string;
@@ -44,11 +42,10 @@ interface PhoneInputCountrySelectProps {
 
 export interface PhoneInputProps
   extends Omit<
-    ComponentProps<typeof RPNPhoneInput>,
-    "onChange" | "value" | "flagComponent" | "countrySelectComponent" | "inputComponent"
-  > {
-  /** Vertical size of the input and country selector */
-  size?: PhoneInputSize;
+      ComponentProps<typeof RPNPhoneInput>,
+      "onChange" | "value" | "flagComponent" | "countrySelectComponent" | "inputComponent"
+    >,
+    PhoneInputVariantProps {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
   /** Default country when no value is provided */
@@ -240,7 +237,7 @@ export function PhoneInput({
   classNames,
   ...rest
 }: PhoneInputProps) {
-  const slots = useMemo(() => phoneInputVariants({ size }), [size]);
+  const slots = useMemo(() => phoneInputRecipe({ size }), [size]);
 
   const contextValue = useMemo(
     () => ({

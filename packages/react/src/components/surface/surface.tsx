@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { type SurfaceVariantProps, surfaceVariants } from "@pisagor/recipes/surface";
+import { type SurfaceVariantProps, surfaceRecipe } from "@pisagor/recipes/surface";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { SurfaceContext, type SurfaceVariant, useSurface } from "./surface.context";
@@ -49,7 +49,7 @@ export function Surface({
     <SurfaceContext value={surface}>
       <ark.div
         {...rest}
-        className={surfaceVariants({
+        className={surfaceRecipe({
           bordered,
           className,
           padding,

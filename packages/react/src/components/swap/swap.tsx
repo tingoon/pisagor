@@ -1,5 +1,5 @@
 import { Swap as SwapPrimitive } from "@ark-ui/react/swap";
-import { type SwapVariantProps, swapVariants } from "@pisagor/recipes/swap";
+import { type SwapVariantProps, swapRecipe } from "@pisagor/recipes/swap";
 import type { ComponentProps, ReactNode } from "react";
 
 // #region Types
@@ -33,7 +33,7 @@ export function Swap({
   ...rest
 }: SwapProps) {
   return (
-    <SwapPrimitive.Root {...rest} className={swapVariants({ className, variant })}>
+    <SwapPrimitive.Root {...rest} className={swapRecipe({ className, variant })}>
       {on !== undefined && (
         <SwapPrimitive.Indicator {...onIndicatorProps} type="on">
           {on}

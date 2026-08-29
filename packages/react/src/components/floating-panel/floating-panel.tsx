@@ -2,7 +2,7 @@ import { ark } from "@ark-ui/react/factory";
 import { FloatingPanel as FloatingPanelPrimitive } from "@ark-ui/react/floating-panel";
 import { Portal } from "@ark-ui/react/portal";
 import { ArrowsOutIcon, CornersInIcon, MinusIcon } from "@phosphor-icons/react";
-import { floatingPanelVariants } from "@pisagor/recipes/floating-panel";
+import { floatingPanelRecipe } from "@pisagor/recipes/floating-panel";
 import type { ComponentProps } from "react";
 import { Button, type ButtonProps } from "../button";
 import { ScrollArea } from "../scroll-area";
@@ -70,7 +70,7 @@ export type FloatingPanelFooterProps = ComponentProps<typeof ark.div>;
 
 // #region Parts
 export function FloatingPanelRoot({ children, ...rest }: FloatingPanelRootProps) {
-  const slots = floatingPanelVariants();
+  const slots = floatingPanelRecipe();
 
   return (
     <FloatingPanelContext value={{ slots }}>
@@ -89,7 +89,7 @@ export function FloatingPanelContent({
   className,
   ...rest
 }: FloatingPanelContentProps) {
-  const { slots = floatingPanelVariants() } = useFloatingPanel() ?? {};
+  const { slots = floatingPanelRecipe() } = useFloatingPanel() ?? {};
 
   return (
     <Portal>
@@ -120,7 +120,7 @@ export function FloatingPanelDragTrigger(props: FloatingPanelDragTriggerProps) {
 }
 
 export function FloatingPanelHeader({ children, className, ...rest }: FloatingPanelHeaderProps) {
-  const { slots = floatingPanelVariants() } = useFloatingPanel() ?? {};
+  const { slots = floatingPanelRecipe() } = useFloatingPanel() ?? {};
 
   return (
     <FloatingPanelDragTrigger>
@@ -132,7 +132,7 @@ export function FloatingPanelHeader({ children, className, ...rest }: FloatingPa
 }
 
 export function FloatingPanelControl({ children, className, ...rest }: FloatingPanelControlProps) {
-  const { slots = floatingPanelVariants() } = useFloatingPanel() ?? {};
+  const { slots = floatingPanelRecipe() } = useFloatingPanel() ?? {};
 
   return (
     <FloatingPanelPrimitive.Control {...rest} className={slots.control({ className })}>
@@ -174,7 +174,7 @@ export function FloatingPanelRestore({
   variant = "outline",
   ...rest
 }: FloatingPanelRestoreProps) {
-  const { slots = floatingPanelVariants() } = useFloatingPanel() ?? {};
+  const { slots = floatingPanelRecipe() } = useFloatingPanel() ?? {};
 
   return (
     <FloatingPanelPrimitive.StageTrigger {...rest} asChild stage="default">
@@ -187,7 +187,7 @@ export function FloatingPanelRestore({
 }
 
 export function FloatingPanelTitle({ children, className, ...rest }: FloatingPanelTitleProps) {
-  const { slots = floatingPanelVariants() } = useFloatingPanel() ?? {};
+  const { slots = floatingPanelRecipe() } = useFloatingPanel() ?? {};
 
   return (
     <FloatingPanelPrimitive.Title {...rest} className={slots.title({ className })}>
@@ -214,7 +214,7 @@ export function FloatingPanelBody({
   className,
   ...rest
 }: FloatingPanelBodyProps) {
-  const { slots = floatingPanelVariants() } = useFloatingPanel() ?? {};
+  const { slots = floatingPanelRecipe() } = useFloatingPanel() ?? {};
 
   return (
     <ScrollArea scrollFade={scrollFade}>
@@ -226,7 +226,7 @@ export function FloatingPanelBody({
 }
 
 export function FloatingPanelFooter({ children, className, ...rest }: FloatingPanelFooterProps) {
-  const { slots = floatingPanelVariants() } = useFloatingPanel() ?? {};
+  const { slots = floatingPanelRecipe() } = useFloatingPanel() ?? {};
 
   return (
     <ark.div

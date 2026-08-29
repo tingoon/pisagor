@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/react/factory";
 import { SidebarSimpleIcon } from "@phosphor-icons/react";
-import { type ButtonVariantProps, buttonVariants } from "@pisagor/recipes/button";
-import { sidebarVariants } from "@pisagor/recipes/sidebar";
+import { type ButtonVariantProps, buttonRecipe } from "@pisagor/recipes/button";
+import { sidebarRecipe } from "@pisagor/recipes/sidebar";
 import { useHotkey } from "@tanstack/react-hotkeys";
 import { type ComponentProps, type CSSProperties, useCallback, useMemo, useState } from "react";
 import { useIsMobile } from "../../internal/hooks";
@@ -164,7 +164,7 @@ export function SidebarProvider({
   });
 
   const state = open ? "expanded" : "collapsed";
-  const slots = sidebarVariants();
+  const slots = sidebarRecipe();
 
   const contextValue = useMemo<SidebarContextProps>(
     () => ({
@@ -440,11 +440,11 @@ export function SidebarGroupAction({ className, ...rest }: SidebarGroupActionPro
     <ark.button
       {...rest}
       className={cn(
-        buttonVariants({
+        buttonRecipe({
           clickEffect: false,
           size: "icon-xs",
           variant: "ghost",
-        }),
+        }).base(),
         slots.groupAction(),
         className,
       )}
@@ -556,11 +556,11 @@ export function SidebarMenuAction({
     <ark.button
       {...rest}
       className={cn(
-        buttonVariants({
+        buttonRecipe({
           clickEffect: false,
           size: "icon-xs",
           variant: "ghost",
-        }),
+        }).base(),
         slots.menuAction(),
         !showOnHover &&
           "group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 peer-data-[active=true]/menu-button:text-accent-foreground md:opacity-0",
@@ -659,7 +659,7 @@ export function SidebarMenuSubButton({
     <ark.a
       {...rest}
       className={cn(
-        buttonVariants({ clickEffect: false, size, variant: "ghost" }),
+        buttonRecipe({ clickEffect: false, size, variant: "ghost" }).base(),
         slots.menuSubButton(),
         className,
       )}

@@ -1,8 +1,8 @@
-import type { NumberInputVariants } from "@pisagor/recipes/number-input";
+import type { NumberInputSlots } from "@pisagor/recipes/number-input";
 import { createContext } from "../../internal/utils";
 
 interface NumberInputContextValue {
-  slots: NumberInputVariants;
+  slots: NumberInputSlots;
 }
 
 export const { NumberInputContext, useNumberInput } = createContext<NumberInputContextValue>()({

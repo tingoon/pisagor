@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import { Timer as TimerPrimitive, useTimerContext } from "@ark-ui/react/timer";
-import { timerItemGroupVariants, timerVariants } from "@pisagor/recipes/timer";
+import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes/timer";
 import type { ComponentProps } from "react";
 import { Fragment } from "react";
 import { TimerContext, TimerItemGroupContext, useTimer, useTimerItemGroup } from "./timer.context";
@@ -47,7 +47,7 @@ export function TimerRoot({
   className,
   ...rest
 }: TimerRootProps) {
-  const slots = timerVariants();
+  const slots = timerRecipe();
 
   return (
     <TimerContext value={{ slots }}>
@@ -89,7 +89,7 @@ export function TimerItemGroup({
   className,
   ...rest
 }: TimerItemGroupProps) {
-  const slots = timerItemGroupVariants();
+  const slots = timerItemGroupRecipe();
 
   return (
     <TimerItemGroupContext value={{ slots }}>

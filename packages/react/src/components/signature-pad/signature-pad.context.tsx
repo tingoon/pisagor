@@ -1,8 +1,8 @@
-import type { SignaturePadVariants } from "@pisagor/recipes/signature-pad";
+import type { SignaturePadSlots } from "@pisagor/recipes/signature-pad";
 import { createContext } from "../../internal/utils";
 
 interface SignaturePadContextValue {
-  slots: SignaturePadVariants;
+  slots: SignaturePadSlots;
 }
 
 export const { SignaturePadContext, useSignaturePad } = createContext<SignaturePadContextValue>()({

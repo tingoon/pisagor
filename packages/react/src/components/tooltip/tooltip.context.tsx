@@ -1,8 +1,8 @@
-import type { TooltipVariants } from "@pisagor/recipes/tooltip";
+import type { TooltipSlots } from "@pisagor/recipes/tooltip";
 import { createContext } from "../../internal/utils";
 
 interface TooltipContextValue {
-  slots: TooltipVariants;
+  slots: TooltipSlots;
 }
 
 export const { TooltipContext, useTooltip } = createContext<TooltipContextValue>()({

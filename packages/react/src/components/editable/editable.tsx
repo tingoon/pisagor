@@ -1,6 +1,6 @@
 import { Editable as EditablePrimitive } from "@ark-ui/react/editable";
-import { buttonVariants } from "@pisagor/recipes/button";
-import { editableVariants } from "@pisagor/recipes/editable";
+import { buttonRecipe } from "@pisagor/recipes/button";
+import { editableRecipe } from "@pisagor/recipes/editable";
 import type { ComponentProps } from "react";
 import { cn } from "../../internal/utils";
 import type { ButtonProps } from "../button";
@@ -88,7 +88,7 @@ export function EditableRoot({
       ) => onValueChange(details.value)
     : undefined;
 
-  const slots = editableVariants();
+  const slots = editableRecipe();
 
   return (
     <EditableContext value={{ slots }}>
@@ -141,7 +141,7 @@ export function EditablePreview({
       {...rest}
       {...controlProps}
       className={cn(
-        buttonVariants({ clickEffect: false, size, variant }),
+        buttonRecipe({ clickEffect: false, size, variant }).base(),
         previewShellClass,
         slots.preview(),
         previewShellClass ? "dark:hover:bg-transparent" : undefined,

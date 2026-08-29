@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/react/factory";
 import { Steps as StepsPrimitive } from "@ark-ui/react/steps";
 import { CheckIcon } from "@phosphor-icons/react";
-import { stepsItemVariants, stepsVariants } from "@pisagor/recipes/steps";
+import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes/steps";
 import type { ComponentProps } from "react";
 import { StepsContext, StepsItemContext, useSteps, useStepsItem } from "./steps.context";
 
@@ -33,7 +33,7 @@ export type StepsDescriptionProps = ComponentProps<typeof ark.span>;
 
 // #region Parts
 export function StepsRoot({ children, className, ...rest }: StepsRootProps) {
-  const slots = stepsVariants();
+  const slots = stepsRecipe();
 
   return (
     <StepsContext value={{ slots }}>
@@ -51,7 +51,7 @@ export function StepsList({ className, ...rest }: StepsListProps) {
 }
 
 export function StepsItem({ children, className, ...rest }: StepsItemProps) {
-  const slots = stepsItemVariants();
+  const slots = stepsItemRecipe();
 
   return (
     <StepsItemContext value={{ slots }}>

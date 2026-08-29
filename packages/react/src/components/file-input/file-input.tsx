@@ -1,8 +1,8 @@
 import { ark } from "@ark-ui/react/factory";
-import { fileInputVariants } from "@pisagor/recipes/file-input";
+import { fileInputRecipe } from "@pisagor/recipes/file-input";
 import {
   type FormControlGroupShellVariantProps,
-  formControlGroupShellVariants,
+  formControlGroupShellRecipe,
 } from "@pisagor/recipes/form-control";
 import { type ChangeEventHandler, type ComponentProps, useRef, useState } from "react";
 import {
@@ -27,17 +27,9 @@ type FileInputRootProps = ComponentProps<typeof ark.div> &
   FileInputVariantProps & {
     /** Disables the control and sets `data-disabled` on the root. */
     disabled?: boolean;
-    /**
-     * Visual shell variant. Defaults to `primary`.
-     */
-    variant?: FormControlVariant;
   };
 
 export interface FileInputProps extends NativeFileInputProps, FileInputVariantProps {
-  /**
-   * Visual shell variant. Defaults to `primary`.
-   */
-  variant?: FormControlVariant;
   /** Marks the control invalid for styling and assistive tech. */
   invalid?: boolean;
   /** Label for the browse button. */
@@ -89,14 +81,14 @@ function FileInputRoot({
   };
   const shellArgs = { variant: resolved.variant };
   const controlProps = { "data-variant": resolved.variant };
-  const slots = fileInputVariants();
+  const slots = fileInputRecipe();
 
   return (
     <FileInputContext value={{ slots }}>
       <ark.div
         {...rest}
         {...controlProps}
-        className={formControlGroupShellVariants({ className, size, ...shellArgs })}
+        className={formControlGroupShellRecipe({ className, size, ...shellArgs })}
         data-disabled={disabled ? true : undefined}
         data-part="root"
         data-scope="file-input"

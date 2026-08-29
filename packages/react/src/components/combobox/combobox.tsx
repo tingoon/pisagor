@@ -7,7 +7,7 @@ import {
 } from "@ark-ui/react/combobox";
 import { Portal } from "@ark-ui/react/portal";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
-import { type ComboboxVariantProps, comboboxVariants } from "@pisagor/recipes/combobox";
+import { type ComboboxVariantProps, comboboxRecipe } from "@pisagor/recipes/combobox";
 import type { InputRootVariantProps } from "@pisagor/recipes/input";
 import type { ComponentProps, ReactNode } from "react";
 import { cn } from "../../internal/utils";
@@ -45,8 +45,6 @@ export interface ComboboxProps extends Omit<ComboboxRootProps, "children" | "col
 export interface ComboboxInputProps
   extends Omit<ComponentProps<typeof ComboboxPrimitive.Input>, "size">,
     InputRootVariantProps {
-  /** Visual shell variant override for this input. */
-  variant?: FormControlVariant;
   /**
    * Whether to show a clear button when the input has a value.
    *
@@ -110,7 +108,7 @@ export function ComboboxRoot<T extends CollectionItem = CollectionItem>({
   variant,
   ...rest
 }: ComboboxRootProps<T>) {
-  const slots = comboboxVariants();
+  const slots = comboboxRecipe();
 
   return (
     <ComboboxRootContext value={{ slots }}>
@@ -128,7 +126,7 @@ export function ComboboxRoot<T extends CollectionItem = CollectionItem>({
 export const ComboboxContext = ComboboxPrimitive.Context;
 
 export function ComboboxControl({ className, ...rest }: ComboboxControlProps) {
-  const { slots = comboboxVariants() } = useComboboxRoot() ?? {};
+  const { slots = comboboxRecipe() } = useComboboxRoot() ?? {};
 
   return <ComboboxPrimitive.Control {...rest} className={slots.control({ className })} />;
 }
@@ -143,7 +141,7 @@ export function ComboboxInput({
   ...rest
 }: ComboboxInputProps) {
   const { inputValue } = useComboboxContext();
-  const { slots = comboboxVariants() } = useComboboxRoot() ?? {};
+  const { slots = comboboxRecipe() } = useComboboxRoot() ?? {};
 
   return (
     <ComboboxControl data-size={size}>
@@ -177,7 +175,7 @@ export function ComboboxInput({
 }
 
 export function ComboboxTrigger({ children, className, ...rest }: ComboboxTriggerProps) {
-  const { slots = comboboxVariants() } = useComboboxRoot() ?? {};
+  const { slots = comboboxRecipe() } = useComboboxRoot() ?? {};
 
   return (
     <ComboboxPrimitive.Trigger {...rest} asChild className={slots.trigger({ className })}>
@@ -212,7 +210,7 @@ export function ComboboxContent({
   className,
   ...rest
 }: ComboboxContentProps) {
-  const { slots = comboboxVariants() } = useComboboxRoot() ?? {};
+  const { slots = comboboxRecipe() } = useComboboxRoot() ?? {};
 
   const content = (
     <ComboboxPrimitive.Content {...rest} className={slots.content({ className })}>
@@ -242,7 +240,7 @@ export function ComboboxItemGroup({ children, heading, ...rest }: ComboboxItemGr
 }
 
 export function ComboboxItemGroupLabel({ className, ...rest }: ComboboxItemGroupLabelProps) {
-  const { slots = comboboxVariants() } = useComboboxRoot() ?? {};
+  const { slots = comboboxRecipe() } = useComboboxRoot() ?? {};
 
   return (
     <ComboboxPrimitive.ItemGroupLabel {...rest} className={slots.itemGroupLabel({ className })} />
@@ -255,7 +253,7 @@ export function ComboboxItem({
   className,
   ...rest
 }: ComboboxItemProps) {
-  const { slots = comboboxVariants() } = useComboboxRoot() ?? {};
+  const { slots = comboboxRecipe() } = useComboboxRoot() ?? {};
 
   return (
     <ComboboxPrimitive.Item
@@ -277,7 +275,7 @@ export function ComboboxItem({
 }
 
 export function ComboboxEmpty({ children, className, ...rest }: ComboboxEmptyProps) {
-  const { slots = comboboxVariants() } = useComboboxRoot() ?? {};
+  const { slots = comboboxRecipe() } = useComboboxRoot() ?? {};
 
   return (
     <ComboboxPrimitive.Empty {...rest} className={slots.empty({ className })}>
@@ -287,7 +285,7 @@ export function ComboboxEmpty({ children, className, ...rest }: ComboboxEmptyPro
 }
 
 export function ComboboxList({ className, ...rest }: ComboboxListProps) {
-  const { slots = comboboxVariants() } = useComboboxRoot() ?? {};
+  const { slots = comboboxRecipe() } = useComboboxRoot() ?? {};
 
   return <ComboboxPrimitive.List {...rest} className={slots.list({ className })} />;
 }

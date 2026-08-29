@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import { DotsSixVerticalIcon } from "@phosphor-icons/react";
-import { sortableItemVariants, sortableVariants } from "@pisagor/recipes/sortable";
+import { sortableItemRecipe, sortableRecipe } from "@pisagor/recipes/sortable";
 import {
   type ComponentProps,
   type DragEvent,
@@ -294,7 +294,7 @@ export function SortableRoot({
     <SortableContext value={contextValue}>
       <ark.div
         {...rest}
-        className={sortableVariants({ className, orientation })}
+        className={sortableRecipe({ className, orientation })}
         data-orientation={orientation}
         data-part="root"
         data-scope="sortable"
@@ -310,7 +310,7 @@ export function SortableItem({ value, children, className, ...rest }: SortableIt
   const { getItemProps, activeId } = useSortable();
   const itemProps = getItemProps(value);
   const isDragging = activeId === value;
-  const slots = sortableItemVariants();
+  const slots = sortableItemRecipe();
 
   return (
     <SortableItemContext value={{ id: value, isDragging, slots }}>

@@ -1,8 +1,8 @@
 import { ark } from "@ark-ui/react/factory";
 import { Tabs as TabsPrimitive } from "@ark-ui/react/tabs";
 import {
-  bottomNavigationItemVariants,
-  bottomNavigationVariants,
+  bottomNavigationItemRecipe,
+  bottomNavigationRecipe,
 } from "@pisagor/recipes/bottom-navigation";
 import type { ComponentProps } from "react";
 import {
@@ -28,7 +28,7 @@ export type BottomNavigationItemLabelProps = ComponentProps<typeof ark.span>;
 
 // #region Parts
 export function BottomNavigationRoot({ className, ...rest }: BottomNavigationRootProps) {
-  const slots = bottomNavigationVariants();
+  const slots = bottomNavigationRecipe();
 
   return (
     <BottomNavigationContext value={{ slots }}>
@@ -44,7 +44,7 @@ export function BottomNavigationList({ className, ...rest }: BottomNavigationLis
 }
 
 export function BottomNavigationItem({ children, className, ...rest }: BottomNavigationItemProps) {
-  const slots = bottomNavigationItemVariants();
+  const slots = bottomNavigationItemRecipe();
 
   return (
     <BottomNavigationItemContext value={{ slots }}>

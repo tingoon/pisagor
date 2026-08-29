@@ -1,8 +1,8 @@
-import type { FileInputVariants } from "@pisagor/recipes/file-input";
+import type { FileInputSlots } from "@pisagor/recipes/file-input";
 import { createContext } from "../../internal/utils";
 
 interface FileInputContextValue {
-  slots: FileInputVariants;
+  slots: FileInputSlots;
 }
 
 export const { FileInputContext, useFileInput } = createContext<FileInputContextValue>()({

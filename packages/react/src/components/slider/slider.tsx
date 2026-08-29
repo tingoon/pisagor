@@ -1,5 +1,5 @@
 import { Slider as SliderPrimitive } from "@ark-ui/react/slider";
-import { type SliderSlots, sliderVariants } from "@pisagor/recipes/slider";
+import { type SliderSlots, sliderRecipe } from "@pisagor/recipes/slider";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";
 import type { VariantClassNames } from "../../internal/types";
@@ -94,7 +94,7 @@ function SliderRoot({ variant: variantProp, children, className, ...rest }: Slid
     variant: variantProp ?? ("primary" as FormControlVariant),
   };
   const shellControlProps = { "data-variant": resolved.variant };
-  const slots = sliderVariants();
+  const slots = sliderRecipe();
   const thumbShadowClass = resolved.variant === "secondary" ? "shadow-none" : undefined;
   const trackVariantClass = resolved.variant === "secondary" ? "bg-muted/40" : "bg-input/64";
 

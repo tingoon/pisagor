@@ -1,5 +1,5 @@
 import { SegmentGroup as SegmentGroupPrimitive } from "@ark-ui/react/segment-group";
-import { segmentGroupVariants } from "@pisagor/recipes/segment-group";
+import { segmentGroupRecipe } from "@pisagor/recipes/segment-group";
 import type { ComponentProps, ReactNode } from "react";
 import { SegmentGroupContext, useSegmentGroup } from "./segment-group.context";
 
@@ -45,7 +45,7 @@ export function SegmentGroupRoot({
   className,
   ...rest
 }: SegmentGroupRootProps) {
-  const slots = segmentGroupVariants();
+  const slots = segmentGroupRecipe();
 
   return (
     <SegmentGroupContext value={{ slots }}>

@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { type AlertSlots, type AlertVariantProps, alertVariants } from "@pisagor/recipes/alert";
+import { type AlertSlots, type AlertVariantProps, alertRecipe } from "@pisagor/recipes/alert";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { AlertContext, useAlert } from "./alert.context";
@@ -37,7 +37,7 @@ export interface AlertProps extends Omit<AlertRootProps, "children"> {
 
 // #region Parts
 export function AlertRoot({ variant, children, className, ...rest }: AlertRootProps) {
-  const slots = alertVariants({ variant });
+  const slots = alertRecipe({ variant });
 
   return (
     <AlertContext value={{ slots }}>

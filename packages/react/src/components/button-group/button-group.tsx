@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { type ButtonGroupVariantProps, buttonGroupVariants } from "@pisagor/recipes/button-group";
+import { type ButtonGroupVariantProps, buttonGroupRecipe } from "@pisagor/recipes/button-group";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { Separator, type SeparatorProps } from "../separator";
@@ -13,7 +13,7 @@ export type ButtonGroupTextProps = ComponentProps<typeof ark.div>;
 
 // #region Parts
 export function ButtonGroupRoot({ orientation, children, className, ...rest }: ButtonGroupProps) {
-  const slots = useMemo(() => buttonGroupVariants({ orientation }), [orientation]);
+  const slots = useMemo(() => buttonGroupRecipe({ orientation }), [orientation]);
 
   return (
     <ButtonGroupContext value={{ slots }}>

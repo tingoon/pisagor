@@ -1,8 +1,8 @@
-import type { NavigationMenuVariants } from "@pisagor/recipes/navigation-menu";
+import type { NavigationMenuSlots } from "@pisagor/recipes/navigation-menu";
 import { createContext } from "../../internal/utils";
 
 interface NavigationMenuContextValue {
-  slots: NavigationMenuVariants;
+  slots: NavigationMenuSlots;
 }
 
 export const { NavigationMenuContext, useNavigationMenu } =

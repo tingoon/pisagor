@@ -1,8 +1,8 @@
-import type { CarouselVariants } from "@pisagor/recipes/carousel";
+import type { CarouselSlots } from "@pisagor/recipes/carousel";
 import { createContext } from "../../internal/utils";
 
 interface CarouselContextValue {
-  slots: CarouselVariants;
+  slots: CarouselSlots;
 }
 
 export const { CarouselContext, useCarousel } = createContext<CarouselContextValue>()({

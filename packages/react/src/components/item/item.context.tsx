@@ -1,8 +1,8 @@
-import type { ItemVariantProps, ItemVariants } from "@pisagor/recipes/item";
+import type { ItemSlots, ItemVariantProps } from "@pisagor/recipes/item";
 import { createContext } from "../../internal/utils";
 
 export interface ItemContextValue extends ItemVariantProps {
-  slots: ItemVariants;
+  slots: ItemSlots;
 }
 
 export const { ItemContext, useItem } = createContext<ItemContextValue>()({

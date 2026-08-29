@@ -1,7 +1,7 @@
 import { Dialog as DialogPrimitive } from "@ark-ui/react/dialog";
 import { Portal } from "@ark-ui/react/portal";
 import { XIcon } from "@phosphor-icons/react";
-import { type SheetVariantProps, sheetVariants } from "@pisagor/recipes/sheet";
+import { type SheetVariantProps, sheetRecipe } from "@pisagor/recipes/sheet";
 import type { ComponentProps } from "react";
 import { Button } from "../button";
 import {
@@ -40,7 +40,7 @@ export type SheetCloseTriggerProps = ComponentProps<typeof DialogPrimitive.Close
 
 // #region Parts
 export function SheetRoot(props: SheetProps) {
-  const slots = sheetVariants();
+  const slots = sheetRecipe();
 
   return (
     <SheetContext value={{ slots }}>

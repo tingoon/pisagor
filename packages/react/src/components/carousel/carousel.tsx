@@ -1,6 +1,6 @@
 import { Carousel as CarouselPrimitive } from "@ark-ui/react/carousel";
 import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
-import { carouselVariants } from "@pisagor/recipes/carousel";
+import { carouselRecipe } from "@pisagor/recipes/carousel";
 import type { ComponentProps, ReactNode } from "react";
 import { Button } from "../button";
 import { CarouselContext, useCarousel } from "./carousel.context";
@@ -39,7 +39,7 @@ export function CarouselRoot({
   className,
   ...rest
 }: CarouselRootProps) {
-  const slots = carouselVariants();
+  const slots = carouselRecipe();
 
   return (
     <CarouselContext value={{ slots }}>

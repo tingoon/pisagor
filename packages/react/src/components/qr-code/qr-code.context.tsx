@@ -1,8 +1,8 @@
-import type { QrCodeVariants } from "@pisagor/recipes/qr-code";
+import type { QrCodeSlots } from "@pisagor/recipes/qr-code";
 import { createContext } from "../../internal/utils";
 
 interface QrCodeContextValue {
-  slots: QrCodeVariants;
+  slots: QrCodeSlots;
 }
 
 export const { QrCodeContext, useQrCode } = createContext<QrCodeContextValue>()({

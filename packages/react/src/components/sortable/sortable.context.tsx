@@ -1,4 +1,4 @@
-import type { SortableItemVariants } from "@pisagor/recipes/sortable";
+import type { SortableItemSlots } from "@pisagor/recipes/sortable";
 import type { DragEvent, KeyboardEvent } from "react";
 import { createContext } from "../../internal/utils";
 
@@ -33,7 +33,7 @@ interface SortableContextValue {
 interface SortableItemContextValue {
   id: string;
   isDragging: boolean;
-  slots: SortableItemVariants;
+  slots: SortableItemSlots;
 }
 
 export const { SortableContext, useSortable } = createContext<SortableContextValue>()({

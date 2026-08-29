@@ -1,8 +1,8 @@
-import type { NavbarVariants } from "@pisagor/recipes/navbar";
+import type { NavbarSlots } from "@pisagor/recipes/navbar";
 import { createContext } from "../../internal/utils";
 
 interface NavbarContextValue {
-  slots: NavbarVariants;
+  slots: NavbarSlots;
 }
 
 export const { NavbarContext, useNavbar } = createContext<NavbarContextValue>()({

@@ -1,4 +1,4 @@
-import { chartVariants } from "@pisagor/recipes/chart";
+import { chartRecipe } from "@pisagor/recipes/chart";
 import type { ComponentProps, ComponentType, ReactNode } from "react";
 import { useId, useMemo } from "react";
 import {
@@ -111,7 +111,7 @@ const getPayload = (config: ChartConfig, payload: unknown, key: string) => {
 export function ChartContainer({ children, config, id, className, ...rest }: ChartContainerProps) {
   const uniqueId = useId();
   const chartId = `chart-${id || uniqueId.replace(/:/g, "")}`;
-  const slots = chartVariants();
+  const slots = chartRecipe();
 
   return (
     <ChartContext value={{ config, slots }}>

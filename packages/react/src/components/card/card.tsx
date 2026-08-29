@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { type CardVariantProps, cardVariants } from "@pisagor/recipes/card";
+import { type CardVariantProps, cardRecipe } from "@pisagor/recipes/card";
 import type { ComponentProps } from "react";
 import { CardContext, useCard } from "./card.context";
 
@@ -28,7 +28,7 @@ export type CardFooterProps = ComponentProps<typeof ark.div>;
 
 // #region Parts
 export function CardRoot({ children, className, ...rest }: CardRootProps) {
-  const slots = cardVariants();
+  const slots = cardRecipe();
 
   return (
     <CardContext value={{ slots }}>

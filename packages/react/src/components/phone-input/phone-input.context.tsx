@@ -1,8 +1,4 @@
-import type {
-  PhoneInputSlots,
-  PhoneInputVariantProps,
-  PhoneInputVariants,
-} from "@pisagor/recipes/phone-input";
+import type { PhoneInputSlots, PhoneInputVariantProps } from "@pisagor/recipes/phone-input";
 import type { VariantClassNames } from "../../internal/types";
 import { createContext } from "../../internal/utils";
 import type { ComboboxContentProps } from "../combobox";
@@ -20,7 +16,7 @@ interface PhoneInputContextValue {
   invalid?: boolean;
   popupProps?: Omit<ComboboxContentProps, "className" | "children">;
   size: PhoneInputSize;
-  slots: PhoneInputVariants;
+  slots: PhoneInputSlots;
   variant?: FormControlVariant;
 }
 

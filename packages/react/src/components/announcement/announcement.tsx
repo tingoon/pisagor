@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { type AnnouncementVariantProps, announcementVariants } from "@pisagor/recipes/announcement";
+import { type AnnouncementVariantProps, announcementRecipe } from "@pisagor/recipes/announcement";
 import type { ComponentProps, ReactNode } from "react";
 import { AnnouncementContext, useAnnouncement } from "./announcement.context";
 
@@ -33,7 +33,7 @@ export function AnnouncementRoot({
   className,
   ...rest
 }: AnnouncementRootProps) {
-  const slots = announcementVariants();
+  const slots = announcementRecipe();
 
   return (
     <AnnouncementContext value={{ slots }}>

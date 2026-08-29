@@ -1,6 +1,6 @@
 import { Accordion as AccordionPrimitive } from "@ark-ui/react/accordion";
 import { CaretDownIcon } from "@phosphor-icons/react";
-import { accordionItemVariants } from "@pisagor/recipes/accordion";
+import { accordionItemRecipe } from "@pisagor/recipes/accordion";
 import type { ComponentProps, ReactNode } from "react";
 import { AccordionItemContext, useAccordionItem } from "./accordion.context";
 
@@ -35,7 +35,7 @@ export function AccordionRoot({ collapsible = true, children, ...rest }: Accordi
 }
 
 export function AccordionItem({ children, className, ...rest }: AccordionItemProps) {
-  const slots = accordionItemVariants();
+  const slots = accordionItemRecipe();
 
   return (
     <AccordionItemContext value={{ slots }}>

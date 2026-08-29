@@ -1,7 +1,7 @@
 import { NumberInput as NumberInputPrimitive } from "@ark-ui/react/number-input";
 import { MinusIcon, PlusIcon } from "@phosphor-icons/react";
-import { formControlGroupShellVariants } from "@pisagor/recipes/form-control";
-import { numberInputVariants } from "@pisagor/recipes/number-input";
+import { formControlGroupShellRecipe } from "@pisagor/recipes/form-control";
+import { numberInputRecipe } from "@pisagor/recipes/number-input";
 import type { ComponentProps } from "react";
 import { cn } from "../../internal/utils";
 import { Button } from "../button";
@@ -58,7 +58,7 @@ export function NumberInputRoot({
   className,
   ...rest
 }: NumberInputProps) {
-  const slots = numberInputVariants();
+  const slots = numberInputRecipe();
 
   return (
     <NumberInputContext value={{ slots }}>
@@ -103,7 +103,7 @@ export function NumberInputControl({
       {...controlProps}
       className={cn(
         slots.control(),
-        formControlGroupShellVariants({ size: "md", ...shellArgs }),
+        formControlGroupShellRecipe({ size: "md", ...shellArgs }),
         className,
       )}
       data-clearable={clearable || undefined}

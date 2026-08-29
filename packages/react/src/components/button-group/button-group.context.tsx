@@ -1,8 +1,8 @@
-import type { ButtonGroupVariants } from "@pisagor/recipes/button-group";
+import type { ButtonGroupSlots } from "@pisagor/recipes/button-group";
 import { createContext } from "../../internal/utils";
 
 interface ButtonGroupContextValue {
-  slots: ButtonGroupVariants;
+  slots: ButtonGroupSlots;
 }
 
 export const { ButtonGroupContext, useButtonGroup } = createContext<ButtonGroupContextValue>()({

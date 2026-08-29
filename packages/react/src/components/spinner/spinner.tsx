@@ -1,5 +1,5 @@
 import { CircleNotchIcon } from "@phosphor-icons/react";
-import { spinnerVariants } from "@pisagor/recipes/spinner";
+import { spinnerRecipe } from "@pisagor/recipes/spinner";
 import type { ComponentProps } from "react";
 
 // #region Types
@@ -12,7 +12,7 @@ export function Spinner({ "aria-label": ariaLabel, className, ...rest }: Spinner
     <CircleNotchIcon
       {...rest}
       aria-label={ariaLabel ?? "Loading"}
-      className={spinnerVariants({ className })}
+      className={spinnerRecipe({ className })}
       data-part="root"
       data-scope="spinner"
       role="status"

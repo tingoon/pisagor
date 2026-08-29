@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { visuallyHiddenVariants } from "@pisagor/recipes/visually-hidden";
+import { visuallyHiddenRecipe } from "@pisagor/recipes/visually-hidden";
 import type { ComponentProps } from "react";
 
 // #region Types
@@ -14,7 +14,7 @@ export function VisuallyHidden({ className, ...rest }: VisuallyHiddenProps) {
   return (
     <ark.span
       {...rest}
-      className={visuallyHiddenVariants({ className })}
+      className={visuallyHiddenRecipe({ className })}
       data-part="root"
       data-scope="visually-hidden"
     />

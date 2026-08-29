@@ -2,8 +2,8 @@ import { Portal } from "@ark-ui/react";
 import { ark } from "@ark-ui/react/factory";
 import { Tour as TourPrimitive, type TourStepDetails, useTour } from "@ark-ui/react/tour";
 import { CaretLeftIcon, CaretRightIcon, XIcon } from "@phosphor-icons/react";
-import { dialogVariants } from "@pisagor/recipes/dialog";
-import { tourVariants } from "@pisagor/recipes/tour";
+import { dialogRecipe } from "@pisagor/recipes/dialog";
+import { tourRecipe } from "@pisagor/recipes/tour";
 import type { ComponentProps, MouseEvent } from "react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { cn } from "../../internal/utils";
@@ -69,7 +69,7 @@ export function TourRoot({ steps = [], ...rest }: TourProps) {
 
   const tour = useTour({ steps });
 
-  const slots = tourVariants();
+  const slots = tourRecipe();
 
   useEffect(() => {
     if (isStarted) {
@@ -120,7 +120,7 @@ export function TourActionTrigger(props: TourActionTriggerProps) {
 
 export function TourBackdrop({ className, ...rest }: DialogBackdropProps) {
   const { slots } = useTourContext();
-  const dialogSlots = dialogVariants();
+  const dialogSlots = dialogRecipe();
 
   return (
     <TourPrimitive.Backdrop

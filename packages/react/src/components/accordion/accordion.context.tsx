@@ -1,8 +1,8 @@
-import type { AccordionItemVariants } from "@pisagor/recipes/accordion";
+import type { AccordionItemSlots } from "@pisagor/recipes/accordion";
 import { createContext } from "../../internal/utils";
 
 interface AccordionItemContextValue {
-  slots: AccordionItemVariants;
+  slots: AccordionItemSlots;
 }
 
 export const { AccordionItemContext, useAccordionItem } =

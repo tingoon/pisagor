@@ -1,8 +1,8 @@
 import { ark } from "@ark-ui/react/factory";
 import { Field as FieldPrimitive } from "@ark-ui/react/field";
 import { Fieldset as FieldsetPrimitive } from "@ark-ui/react/fieldset";
-import { type FieldVariantProps, fieldVariants } from "@pisagor/recipes/field";
-import { formControlSeparatorVariants } from "@pisagor/recipes/form-control";
+import { type FieldVariantProps, fieldRecipe } from "@pisagor/recipes/field";
+import { formControlSeparatorRecipe } from "@pisagor/recipes/form-control";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { Separator } from "../separator";
@@ -47,7 +47,7 @@ export function FieldRoot({
   className,
   ...rest
 }: FieldRootProps) {
-  const slots = useMemo(() => fieldVariants({ orientation, reverse }), [orientation, reverse]);
+  const slots = useMemo(() => fieldRecipe({ orientation, reverse }), [orientation, reverse]);
 
   return (
     <FieldContext value={{ slots }}>
@@ -63,7 +63,7 @@ export function FieldRoot({
 }
 
 export function FieldSet({ children, className, ...rest }: FieldSetProps) {
-  const slots = fieldVariants();
+  const slots = fieldRecipe();
 
   return (
     <FieldContext value={{ slots }}>
@@ -87,7 +87,7 @@ export function FieldLegend({ variant = "legend", className, ...rest }: FieldLeg
 }
 
 export function FieldGroup({ children, className, ...rest }: FieldGroupProps) {
-  const slots = fieldVariants();
+  const slots = fieldRecipe();
 
   return (
     <FieldContext value={{ slots }}>
@@ -180,7 +180,7 @@ export function FieldSeparator({ children, className, ...rest }: FieldSeparatorP
       <Separator className={slots.inline()} />
 
       {!!children && (
-        <span className={formControlSeparatorVariants({ variant: "primary" })}>{children}</span>
+        <span className={formControlSeparatorRecipe({ variant: "primary" })}>{children}</span>
       )}
     </ark.div>
   );

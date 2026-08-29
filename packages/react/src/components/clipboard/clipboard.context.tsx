@@ -1,8 +1,8 @@
-import type { ClipboardVariants } from "@pisagor/recipes/clipboard";
+import type { ClipboardSlots } from "@pisagor/recipes/clipboard";
 import { createContext } from "../../internal/utils";
 
 interface ClipboardContextValue {
-  slots: ClipboardVariants;
+  slots: ClipboardSlots;
 }
 
 export const { ClipboardContext, useClipboard } = createContext<ClipboardContextValue>()({

@@ -1,6 +1,6 @@
 import { Toggle as TogglePrimitive } from "@ark-ui/react/toggle";
-import { type ButtonVariantProps, buttonVariants } from "@pisagor/recipes/button";
-import { type ToggleVariantProps, toggleVariants } from "@pisagor/recipes/toggle";
+import { type ButtonVariantProps, buttonRecipe } from "@pisagor/recipes/button";
+import { type ToggleVariantProps, toggleRecipe } from "@pisagor/recipes/toggle";
 import type { ComponentProps } from "react";
 import { cn } from "../../internal/utils";
 
@@ -32,8 +32,8 @@ export function Toggle({
     <TogglePrimitive.Root
       {...rest}
       className={cn(
-        buttonVariants({ clickEffect: false, variant }),
-        toggleVariants({ size }),
+        buttonRecipe({ clickEffect: false, variant }).base(),
+        toggleRecipe({ size }),
         className,
       )}
       onPressedChange={

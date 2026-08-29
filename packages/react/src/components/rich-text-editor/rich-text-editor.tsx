@@ -6,8 +6,8 @@ import {
   TextItalicIcon,
   TextStrikethroughIcon,
 } from "@phosphor-icons/react";
-import { formControlShellVariants } from "@pisagor/recipes/form-control";
-import { richTextEditorVariants } from "@pisagor/recipes/rich-text-editor";
+import { formControlShellRecipe } from "@pisagor/recipes/form-control";
+import { richTextEditorRecipe } from "@pisagor/recipes/rich-text-editor";
 import { EditorContent, useEditor, useEditorState } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { type ComponentProps, type ReactNode, useEffect, useMemo } from "react";
@@ -91,7 +91,7 @@ export function RichTextEditorRoot({
   const shellArgs = { variant: resolved.variant };
   const controlProps = { "data-variant": resolved.variant };
   const resolvedAriaLabel = ariaLabel ?? (id ? undefined : "Rich text editor");
-  const slots = richTextEditorVariants();
+  const slots = richTextEditorRecipe();
 
   const editor = useEditor({
     content: value ?? defaultValue ?? "<p></p>",
@@ -156,7 +156,7 @@ export function RichTextEditorRoot({
         aria-label={resolvedAriaLabel}
         aria-readonly={readOnly || undefined}
         className={cn(
-          formControlShellVariants({ ...shellArgs }),
+          formControlShellRecipe({ ...shellArgs }),
           slots.base({ className }),
           disabled && "pointer-events-none opacity-64",
         )}

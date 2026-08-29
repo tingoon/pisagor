@@ -1,5 +1,5 @@
 import { ImageCropper as ImageCropperPrimitive } from "@ark-ui/react/image-cropper";
-import { imageCropperVariants } from "@pisagor/recipes/image-cropper";
+import { imageCropperRecipe } from "@pisagor/recipes/image-cropper";
 import type { ComponentProps } from "react";
 import { ImageCropperContext, useImageCropper } from "./image-cropper.context";
 
@@ -47,7 +47,7 @@ export function ImageCropperRoot({
   className,
   ...rest
 }: ImageCropperRootProps) {
-  const slots = imageCropperVariants();
+  const slots = imageCropperRecipe();
 
   return (
     <ImageCropperContext value={{ slots }}>

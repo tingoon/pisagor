@@ -1,8 +1,8 @@
-import type { EmptyStateVariants } from "@pisagor/recipes/empty-state";
+import type { EmptyStateSlots } from "@pisagor/recipes/empty-state";
 import { createContext } from "../../internal/utils";
 
 interface EmptyStateContextValue {
-  slots: EmptyStateVariants;
+  slots: EmptyStateSlots;
 }
 
 export const { EmptyStateContext, useEmptyState } = createContext<EmptyStateContextValue>()({

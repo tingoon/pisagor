@@ -1,9 +1,9 @@
-import type { SelectVariants } from "@pisagor/recipes/select";
+import type { SelectSlots } from "@pisagor/recipes/select";
 import { createContext } from "../../internal/utils";
 
 export interface SelectRootContextValue {
-  /** Slot class recipes from `selectVariants`. */
-  slots: SelectVariants;
+  /** Slot class recipes from `selectRecipe`. */
+  slots: SelectSlots;
 }
 
 export const { SelectRootContext, useSelectRoot } = createContext<SelectRootContextValue>()({

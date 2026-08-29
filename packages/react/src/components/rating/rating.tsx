@@ -1,6 +1,6 @@
 import { RatingGroup as RatingGroupPrimitive } from "@ark-ui/react/rating-group";
 import { StarIcon } from "@phosphor-icons/react";
-import { type RatingSlots, ratingVariants } from "@pisagor/recipes/rating";
+import { type RatingSlots, ratingRecipe } from "@pisagor/recipes/rating";
 import type { ComponentProps, ReactElement, ReactNode } from "react";
 import { cloneElement } from "react";
 import type { VariantClassNames } from "../../internal/types";
@@ -75,7 +75,7 @@ function RatingRoot({
     surfaceVariant: undefined,
     variant: variantProp ?? ("primary" as FormControlVariant),
   };
-  const slots = ratingVariants();
+  const slots = ratingRecipe();
   const surfaceTone = resolved.variant === "secondary" ? "opacity-90" : undefined;
 
   return (

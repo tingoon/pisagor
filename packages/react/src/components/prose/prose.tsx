@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { proseVariants } from "@pisagor/recipes/prose";
+import { proseRecipe } from "@pisagor/recipes/prose";
 import type { ComponentProps } from "react";
 
 // #region Types
@@ -22,7 +22,7 @@ export function Prose({ children, html, className, ...rest }: ProseProps) {
     <ark.div
       {...rest}
       {...(html ? { dangerouslySetInnerHTML: { __html: html } } : { children })}
-      className={proseVariants({ className })}
+      className={proseRecipe({ className })}
       data-part="root"
       data-scope="prose"
     />

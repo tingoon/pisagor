@@ -1,66 +1,49 @@
 import { ark } from "@ark-ui/react/factory";
-import {
-  type ButtonVariantProps,
-  buttonLoadingVariants,
-  buttonVariants,
-} from "@pisagor/recipes/button";
+import { type ButtonVariantProps, buttonRecipe } from "@pisagor/recipes/button";
 import type { ComponentProps } from "react";
 import { Spinner } from "../spinner";
 
 // #region Types
 type ButtonRootProps = ComponentProps<typeof ark.button>;
 
-export interface ButtonProps extends ButtonRootProps, ButtonVariantProps {
-  /**
-   * Whether to apply a click effect to the button.
-   *
-   * @defaultValue true
-   */
-  clickEffect?: boolean;
-  /**
-   * Whether to show a loading indicator.
-   *
-   * @defaultValue false
-   */
-  isLoading?: boolean;
-}
+export interface ButtonProps extends ButtonRootProps, ButtonVariantProps {}
 // #endregion
 
 // #region Part
 export function Button({
   clickEffect = true,
+  loading = false,
   pill = false,
   size = "md",
   variant = "default",
   disabled,
-  isLoading = false,
   type = "button",
   children,
   className,
   ...rest
 }: ButtonProps) {
-  const loading = buttonLoadingVariants();
+  const slots = buttonRecipe({ clickEffect, loading, pill, size, variant });
 
   return (
     <ark.button
       {...rest}
-      aria-busy={isLoading || undefined}
-      className={buttonVariants({ className, clickEffect, pill, size, variant })}
+      aria-busy={loading || undefined}
+      className={slots.base({ className })}
       data-part="root"
       data-scope="button"
       data-size={size}
-      data-state={isLoading ? "loading" : "idle"}
+      data-state={loading ? "loading" : "idle"}
       data-variant={variant}
-      disabled={disabled || isLoading}
+      disabled={disabled || loading}
       type={type}
     >
-      {isLoading ? (
+      {loading ? (
         <>
-          <span aria-hidden className={loading.hidden()}>
+          <span aria-hidden className={slots.hidden()}>
             {children}
           </span>
-          <span className={loading.srOnly()}>{children}</span>
-          <span className={loading.spinner()}>
+          <span className={slots.srOnly()}>{children}</span>
+          <span className={slots.spinner()}>
             <Spinner aria-hidden />
           </span>
         </>

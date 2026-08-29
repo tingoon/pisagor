@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { type MenuItemVariantProps, menuItemVariants, menuVariants } from "@pisagor/recipes/menu";
+import { type MenuItemVariantProps, menuItemRecipe, menuRecipe } from "@pisagor/recipes/menu";
 import type { ComponentProps } from "react";
 import { cn } from "../../internal/utils";
 import { MenuContext, useMenu } from "./menu.context";
@@ -32,7 +32,7 @@ export function MenuRoot({
   className,
   ...rest
 }: MenuRootProps) {
-  const slots = menuVariants();
+  const slots = menuRecipe();
 
   return (
     <MenuContext value={{ slots }}>
@@ -102,7 +102,7 @@ export function MenuItem({
     <ark.li className={slots.wrapper()} data-part="item-wrapper" data-scope="menu" role="none">
       <ark.button
         {...rest}
-        className={cn(menuItemVariants({ variant }), className)}
+        className={cn(menuItemRecipe({ variant }), className)}
         data-part="item"
         data-scope="menu"
         data-variant={variant}

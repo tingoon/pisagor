@@ -1,12 +1,12 @@
-import type { ListboxItemVariants, ListboxVariants } from "@pisagor/recipes/listbox";
+import type { ListboxItemSlots, ListboxSlots } from "@pisagor/recipes/listbox";
 import { createContext } from "../../internal/utils";
 
 interface ListboxContextValue {
-  slots: ListboxVariants;
+  slots: ListboxSlots;
 }
 
 interface ListboxItemContextValue {
-  slots: ListboxItemVariants;
+  slots: ListboxItemSlots;
 }
 
 export const { ListboxContext, useListbox } = createContext<ListboxContextValue>()({

@@ -1,8 +1,8 @@
-import type { DatePickerVariants } from "@pisagor/recipes/date-picker";
+import type { DatePickerSlots } from "@pisagor/recipes/date-picker";
 import { createContext } from "../../internal/utils";
 
 interface DatePickerContextValue {
-  slots: DatePickerVariants;
+  slots: DatePickerSlots;
 }
 
 export const { DatePickerContext: DatePickerSlotsContext, useDatePicker } =

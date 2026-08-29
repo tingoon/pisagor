@@ -1,4 +1,4 @@
-import { appShellVariants } from "@pisagor/recipes/app-shell";
+import { appShellRecipe } from "@pisagor/recipes/app-shell";
 import { useHotkey } from "@tanstack/react-hotkeys";
 import { type ComponentProps, useCallback, useMemo, useRef, useState } from "react";
 import {
@@ -71,7 +71,7 @@ function useShellGridStyle(childSlots: AppShellSlots) {
 
 export function AppShellRoot({ children, className, style, ...rest }: AppShellRootProps) {
   const childSlots = useMemo(() => partitionAppShellChildren(children), [children]);
-  const slots = appShellVariants();
+  const slots = appShellRecipe();
   const [regionRevision, setRegionRevision] = useState(0);
   const [regionVars, setRegionVars] = useState(ZERO_REGION_VARS);
   const [fixedStackVars, setFixedStackVars] = useState(ZERO_FIXED_STACK_VARS);

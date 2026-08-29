@@ -1,8 +1,8 @@
-import type { AvatarVariants } from "@pisagor/recipes/avatar";
+import type { AvatarSlots } from "@pisagor/recipes/avatar";
 import { createContext } from "../../internal/utils";
 
 interface AvatarContextValue {
-  slots: AvatarVariants;
+  slots: AvatarSlots;
 }
 
 export const { AvatarContext, useAvatar } = createContext<AvatarContextValue>()({

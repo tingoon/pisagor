@@ -8,7 +8,7 @@ import { ark } from "@ark-ui/react/factory";
 import { Portal } from "@ark-ui/react/portal";
 import { useUncontrolled } from "@mantine/hooks";
 import { CheckIcon, EyedropperIcon, XIcon } from "@phosphor-icons/react";
-import { colorPickerVariants } from "@pisagor/recipes/color-picker";
+import { colorPickerRecipe } from "@pisagor/recipes/color-picker";
 import { type ComponentProps, useMemo } from "react";
 import { cn } from "../../internal/utils";
 import { Button, type ButtonProps } from "../button";
@@ -139,7 +139,7 @@ export function ColorPickerRoot({
   className,
   ...rest
 }: ColorPickerProps) {
-  const slots = colorPickerVariants();
+  const slots = colorPickerRecipe();
   const [color, setColor, isControlled] = useUncontrolled({
     defaultValue,
     onChange: onValueChange,

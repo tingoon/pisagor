@@ -1,12 +1,12 @@
-import type { TimerItemGroupVariants, TimerVariants } from "@pisagor/recipes/timer";
+import type { TimerItemGroupSlots, TimerSlots } from "@pisagor/recipes/timer";
 import { createContext } from "../../internal/utils";
 
 interface TimerContextValue {
-  slots: TimerVariants;
+  slots: TimerSlots;
 }
 
 interface TimerItemGroupContextValue {
-  slots: TimerItemGroupVariants;
+  slots: TimerItemGroupSlots;
 }
 
 export const { TimerContext, useTimer } = createContext<TimerContextValue>()({

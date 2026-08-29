@@ -1,5 +1,5 @@
 import { useUncontrolled } from "@mantine/hooks";
-import type { AppShellVariants } from "@pisagor/recipes/app-shell";
+import type { AppShellSlots } from "@pisagor/recipes/app-shell";
 import { type RefObject, useCallback, useLayoutEffect, useMemo } from "react";
 import type {
   AppShellFixedStackVar,
@@ -56,7 +56,7 @@ export function useShellRegionResizeCallbacks(regionVar: AppShellRegionVar) {
 }
 
 export function regionPositionClasses(
-  slots: AppShellVariants,
+  slots: AppShellSlots,
   position: AppShellRegionPosition = "fixed",
   orientation: "column" | "row" = "column",
   rowLayer?: "banner" | "header" | "navigation",
