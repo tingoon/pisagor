@@ -1,6 +1,6 @@
 import { Toggle as TogglePrimitive } from "@ark-ui/vue/toggle";
-import { type ButtonVariantProps, buttonVariants } from "@pisagor/recipes/button";
-import { type ToggleVariantProps, toggleVariants } from "@pisagor/recipes/toggle";
+import { type ButtonVariantProps, buttonRecipe } from "@pisagor/recipes/button";
+import { type ToggleVariantProps, toggleRecipe } from "@pisagor/recipes/toggle";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 
@@ -30,8 +30,8 @@ export const Toggle = defineComponent({
         {
           ...attrs,
           class: cn(
-            buttonVariants({ clickEffect: false, variant: props.variant }),
-            toggleVariants({ size: props.size }),
+            buttonRecipe({ clickEffect: false, variant: props.variant }).base(),
+            toggleRecipe({ size: props.size }),
             props.class,
           ),
           disabled: props.disabled,

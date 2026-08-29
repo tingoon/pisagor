@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { skipNavVariants } from "@pisagor/recipes/skip-nav";
+import { skipNavRecipe } from "@pisagor/recipes/skip-nav";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 
@@ -44,7 +44,7 @@ export const SkipNavLink = defineComponent({
     id: { default: SKIP_NAV_ID, type: String },
   },
   setup(props, { attrs, slots }) {
-    const variantSlots = skipNavVariants();
+    const variantSlots = skipNavRecipe();
 
     return () =>
       h(
@@ -69,7 +69,7 @@ export const SkipNavContent = defineComponent({
     id: { default: SKIP_NAV_ID, type: String },
   },
   setup(props, { attrs, slots }) {
-    const variantSlots = skipNavVariants();
+    const variantSlots = skipNavRecipe();
 
     return () =>
       h(

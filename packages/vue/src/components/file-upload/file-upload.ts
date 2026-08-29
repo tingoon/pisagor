@@ -4,8 +4,8 @@ import {
   useFileUploadContext,
 } from "@ark-ui/vue/file-upload";
 import { PhUpload, PhX } from "@phosphor-icons/vue";
-import { fileUploadItemVariants, fileUploadVariants } from "@pisagor/recipes/file-upload";
-import { formControlZoneVariants } from "@pisagor/recipes/form-control";
+import { fileUploadItemRecipe, fileUploadRecipe } from "@pisagor/recipes/file-upload";
+import { formControlZoneRecipe } from "@pisagor/recipes/form-control";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { Button } from "../button";
@@ -43,7 +43,7 @@ export const FileUploadRoot = defineComponent({
       const onFileChange = attrs.onFileChange as
         | ((details: FileUploadFileChangeDetails) => void)
         | undefined;
-      const variantSlots = fileUploadVariants();
+      const variantSlots = fileUploadRecipe();
 
       return h(
         FileUploadPrimitive.Root as ArkPart,
@@ -84,18 +84,14 @@ export const FileUploadDropzone = defineComponent({
       };
       const shellArgs = { variant: resolved.variant };
       const controlProps = { "data-variant": resolved.variant };
-      const variantSlots = fileUploadVariants();
+      const variantSlots = fileUploadRecipe();
 
       return h(
         FileUploadPrimitive.Dropzone as ArkPart,
         {
           ...attrs,
           ...controlProps,
-          class: cn(
-            formControlZoneVariants({ ...shellArgs }),
-            variantSlots.dropzone(),
-            props.class,
-          ),
+          class: cn(formControlZoneRecipe({ ...shellArgs }), variantSlots.dropzone(), props.class),
         },
         slots,
       );
@@ -111,7 +107,7 @@ export const FileUploadDropzoneIcon = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fileUploadVariants();
+      const variantSlots = fileUploadRecipe();
 
       return h(
         "div",
@@ -135,7 +131,7 @@ export const FileUploadTitle = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fileUploadVariants();
+      const variantSlots = fileUploadRecipe();
 
       return h(
         "div",
@@ -159,7 +155,7 @@ export const FileUploadDescription = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fileUploadVariants();
+      const variantSlots = fileUploadRecipe();
 
       return h(
         "div",
@@ -183,7 +179,7 @@ export const FileUploadHelper = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fileUploadVariants();
+      const variantSlots = fileUploadRecipe();
 
       return h(
         "div",
@@ -216,7 +212,7 @@ export const FileUploadItem = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fileUploadItemVariants();
+      const variantSlots = fileUploadItemRecipe();
 
       return h(
         FileUploadPrimitive.Item as ArkPart,
@@ -240,7 +236,7 @@ export const FileUploadItemPreview = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fileUploadItemVariants();
+      const variantSlots = fileUploadItemRecipe();
 
       return h(
         FileUploadPrimitive.ItemPreview as ArkPart,
@@ -263,7 +259,7 @@ export const FileUploadItemPreviewImage = defineComponent({
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = fileUploadItemVariants();
+      const variantSlots = fileUploadItemRecipe();
 
       return h(FileUploadPrimitive.ItemPreviewImage as ArkPart, {
         ...attrs,
@@ -281,7 +277,7 @@ export const FileUploadItemName = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fileUploadItemVariants();
+      const variantSlots = fileUploadItemRecipe();
 
       return h(
         FileUploadPrimitive.ItemName as ArkPart,
@@ -303,7 +299,7 @@ export const FileUploadItemSize = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fileUploadItemVariants();
+      const variantSlots = fileUploadItemRecipe();
 
       return h(
         FileUploadPrimitive.ItemSizeText as ArkPart,
@@ -325,7 +321,7 @@ export const FileUploadItemDeleteTrigger = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fileUploadItemVariants();
+      const variantSlots = fileUploadItemRecipe();
 
       return h(
         FileUploadPrimitive.ItemDeleteTrigger as ArkPart,
@@ -358,8 +354,8 @@ export const FileUploadList = defineComponent({
 
     return () => {
       const files = fileUpload.value.acceptedFiles;
-      const rootSlots = fileUploadVariants();
-      const itemSlots = fileUploadItemVariants();
+      const rootSlots = fileUploadRecipe();
+      const itemSlots = fileUploadItemRecipe();
 
       if (files.length === 0) {
         return null;

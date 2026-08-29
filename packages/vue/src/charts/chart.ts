@@ -1,4 +1,4 @@
-import { type ChartVariants, chartVariants } from "@pisagor/recipes/chart";
+import { type ChartSlots, chartRecipe } from "@pisagor/recipes/chart";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { createContext } from "../internal/utils/create-context";
@@ -50,7 +50,7 @@ export interface ChartTooltipContentProps {
 // #region Context
 interface ChartContextValue {
   config: ChartConfig;
-  slots: ChartVariants;
+  slots: ChartSlots;
 }
 
 const [provideChartContext, useChartContext] = createContext<ChartContextValue>({
@@ -154,7 +154,7 @@ export const ChartContainer = defineComponent({
   },
   setup(props, { attrs, slots }) {
     const uniqueId = computed(() => props.id ?? `chart-${Math.random().toString(36).slice(2)}`);
-    const variantSlots = chartVariants();
+    const variantSlots = chartRecipe();
     provideChartContext(computed(() => ({ config: props.config, slots: variantSlots })));
 
     return () =>

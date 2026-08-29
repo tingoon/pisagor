@@ -9,7 +9,7 @@ export const SubmitButton = defineComponent({
   inheritAttrs: false,
   name: "SubmitButton",
   props: {
-    isLoading: { default: undefined, type: Boolean },
+    loading: { default: undefined, type: Boolean },
   },
   setup(props, { attrs, slots }) {
     const form = useFormContext();
@@ -24,7 +24,7 @@ export const SubmitButton = defineComponent({
               Button as ArkPart,
               {
                 ...(attrs as ButtonProps),
-                isLoading: props.isLoading ?? isSubmitting,
+                loading: props.loading ?? isSubmitting,
                 type: "submit",
               },
               () => slots.default?.() as VNodeChild,

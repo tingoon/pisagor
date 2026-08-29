@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type ItemVariantProps, itemVariants } from "@pisagor/recipes/item";
+import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes/item";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
 import { Separator } from "../separator";
@@ -8,9 +8,8 @@ import { provideItemGroupContext } from "./item-group.context";
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface ItemGroupProps {
+export interface ItemGroupProps extends ItemVariantProps {
   class?: unknown;
-  variant?: ItemVariantProps["variant"];
 }
 // #endregion
 
@@ -26,7 +25,7 @@ export const ItemGroup = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const itemSlots = itemVariants();
+    const itemSlots = itemRecipe();
 
     provideItemGroupContext(
       computed(() => ({
@@ -57,7 +56,7 @@ export const ItemSeparator = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs }) {
-    const itemSlots = itemVariants();
+    const itemSlots = itemRecipe();
 
     return () =>
       h(Separator as ArkPart, {

@@ -1,4 +1,4 @@
-import { buttonVariants } from "@pisagor/recipes/button";
+import { buttonRecipe } from "@pisagor/recipes/button";
 import { cn } from "@pisagor/utils";
 import { Dialog, Field, Input, Select } from "@pisagor/vue";
 import { h } from "vue";
@@ -36,11 +36,11 @@ const meta = preview.meta({
 });
 
 function ghostButtonClass(className?: string) {
-  return cn(buttonVariants({ variant: "ghost" }), className);
+  return cn(buttonRecipe({ variant: "ghost" }).base(), className);
 }
 
 function defaultButtonClass(className?: string) {
-  return cn(buttonVariants(), className);
+  return cn(buttonRecipe().base(), className);
 }
 
 export const Default = meta.story({

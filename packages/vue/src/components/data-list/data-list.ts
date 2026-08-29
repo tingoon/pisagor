@@ -1,8 +1,8 @@
 import { ark } from "@ark-ui/vue/factory";
 import {
   type DataListItemSlots,
-  dataListItemVariants,
-  dataListVariants,
+  dataListItemRecipe,
+  dataListRecipe,
 } from "@pisagor/recipes/data-list";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";
@@ -49,7 +49,7 @@ export const DataListRoot = defineComponent({
         ark.dl,
         {
           ...attrs,
-          class: dataListVariants({ class: props.class }),
+          class: dataListRecipe({ class: props.class }),
           "data-orientation": props.orientation,
           "data-part": "root",
           "data-scope": "data-list",
@@ -67,7 +67,7 @@ export const DataListItemLabel = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots_ = dataListItemVariants();
+      const slots_ = dataListItemRecipe();
 
       return h(
         ark.dt,
@@ -91,7 +91,7 @@ export const DataListItemValue = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots_ = dataListItemVariants();
+      const slots_ = dataListItemRecipe();
 
       return h(
         ark.dd,
@@ -120,7 +120,7 @@ export const DataListItem = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots_ = dataListItemVariants();
+      const slots_ = dataListItemRecipe();
 
       const label = slots.default?.();
 

@@ -1,5 +1,5 @@
 import { PhArrowsInLineHorizontal, PhArrowsOutLineHorizontal } from "@phosphor-icons/vue";
-import { appShellVariants } from "@pisagor/recipes/app-shell";
+import { appShellRecipe } from "@pisagor/recipes/app-shell";
 import { cn } from "@pisagor/utils";
 import type { Component, VNode, VNodeChild } from "vue";
 import {
@@ -27,7 +27,7 @@ type AttrsWithClassStyle = {
   variant?: string;
 } & Record<string, unknown>;
 
-const styles = appShellVariants();
+const styles = appShellRecipe();
 
 // #region Types
 export type AppShellPlacement = "start" | "end";

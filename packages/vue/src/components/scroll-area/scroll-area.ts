@@ -1,5 +1,5 @@
 import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/vue/scroll-area";
-import { type ScrollAreaSlots, scrollAreaVariants } from "@pisagor/recipes/scroll-area";
+import { type ScrollAreaSlots, scrollAreaRecipe } from "@pisagor/recipes/scroll-area";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 
@@ -42,7 +42,7 @@ export const ScrollArea = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slotsClasses = scrollAreaVariants({ scrollFade: props.scrollFade });
+      const slotsClasses = scrollAreaRecipe({ scrollFade: props.scrollFade });
 
       return h(
         ScrollAreaPrimitive.Root as ArkPart,

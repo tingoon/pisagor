@@ -2,8 +2,8 @@ import {
   Editable as EditablePrimitive,
   type EditableValueChangeDetails,
 } from "@ark-ui/vue/editable";
-import { buttonVariants } from "@pisagor/recipes/button";
-import { editableVariants } from "@pisagor/recipes/editable";
+import { buttonRecipe } from "@pisagor/recipes/button";
+import { editableRecipe } from "@pisagor/recipes/editable";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { ButtonProps } from "../button";
@@ -117,7 +117,7 @@ export const EditableRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = editableVariants();
+      const variantSlots = editableRecipe();
 
       return h(
         EditablePrimitive.Root as ArkPart,
@@ -157,7 +157,7 @@ export const EditableArea = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = editableVariants();
+      const variantSlots = editableRecipe();
 
       return h(
         EditablePrimitive.Area as ArkPart,
@@ -193,7 +193,7 @@ export const EditablePreview = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = editableVariants();
+      const variantSlots = editableRecipe();
       const resolved = {
         surfaceVariant: undefined,
         variant: props.controlVariant ?? ("primary" as FormControlVariant),
@@ -214,7 +214,7 @@ export const EditablePreview = defineComponent({
           ...attrs,
           ...controlProps,
           class: cn(
-            buttonVariants({ clickEffect: false, size: props.size, variant: props.variant }),
+            buttonRecipe({ clickEffect: false, size: props.size, variant: props.variant }).base(),
             previewShellClass,
             variantSlots.preview(),
             previewShellClass ? "dark:hover:bg-transparent" : undefined,
@@ -235,7 +235,7 @@ export const EditableControl = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = editableVariants();
+      const variantSlots = editableRecipe();
 
       return h(
         EditablePrimitive.Control as ArkPart,

@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { visuallyHiddenVariants } from "@pisagor/recipes/visually-hidden";
+import { visuallyHiddenRecipe } from "@pisagor/recipes/visually-hidden";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 
@@ -27,7 +27,7 @@ export const VisuallyHidden = defineComponent({
         ark.span as ArkPart,
         {
           ...attrs,
-          class: cn(visuallyHiddenVariants(), props.class),
+          class: cn(visuallyHiddenRecipe(), props.class),
           "data-part": "root",
           "data-scope": "visually-hidden",
         },

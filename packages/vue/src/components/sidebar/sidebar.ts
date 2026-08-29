@@ -1,5 +1,5 @@
 import { PhSidebarSimple } from "@phosphor-icons/vue";
-import { sidebarVariants } from "@pisagor/recipes/sidebar";
+import { sidebarRecipe } from "@pisagor/recipes/sidebar";
 import { cn } from "@pisagor/utils";
 
 type ClassValue = Parameters<typeof cn>[0];
@@ -141,7 +141,7 @@ export const SidebarProvider = defineComponent({
     provideSidebarContext(contextValue);
 
     return () => {
-      const variantSlots = sidebarVariants();
+      const variantSlots = sidebarRecipe();
 
       return h(
         "div",
@@ -182,9 +182,9 @@ export const SidebarRoot = defineComponent({
     return () => {
       if (!ctx) return null;
 
-      const variantSlots = sidebarVariants();
+      const variantSlots = sidebarRecipe();
       const padded = props.variant === "floating" || props.variant === "inset";
-      const layoutSlots = sidebarVariants({ padded, placement: props.placement });
+      const layoutSlots = sidebarRecipe({ padded, placement: props.placement });
 
       if (props.collapsible === "none") {
         return h(
@@ -284,7 +284,7 @@ export const SidebarContent = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarVariants();
+      const variantSlots = sidebarRecipe();
 
       return h(
         "div",
@@ -310,7 +310,7 @@ export const SidebarHeader = defineComponent({
   props: { className: { default: undefined, type: String } },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarVariants();
+      const variantSlots = sidebarRecipe();
 
       return h(
         "div",
@@ -336,7 +336,7 @@ export const SidebarFooter = defineComponent({
   props: { className: { default: undefined, type: String } },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarVariants();
+      const variantSlots = sidebarRecipe();
 
       return h(
         "div",
@@ -362,7 +362,7 @@ export const SidebarGap = defineComponent({
   props: { padded: { default: false, type: Boolean } },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = sidebarVariants({ padded: props.padded });
+      const variantSlots = sidebarRecipe({ padded: props.padded });
 
       return h("div", {
         ...attrs,
@@ -382,7 +382,7 @@ export const SidebarSeparator = defineComponent({
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = sidebarVariants();
+      const variantSlots = sidebarRecipe();
 
       return h("div", {
         ...attrs,
@@ -407,7 +407,7 @@ export const SidebarRail = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarVariants();
+      const variantSlots = sidebarRecipe();
 
       return h(
         "div",
@@ -433,7 +433,7 @@ export const SidebarTrigger = defineComponent({
   setup(props, { attrs }) {
     const ctx = useSidebarContext();
     return () => {
-      const variantSlots = sidebarVariants();
+      const variantSlots = sidebarRecipe();
 
       return h(
         Button as ArkPart,
@@ -463,7 +463,7 @@ export const SidebarInset = defineComponent({
   name: "SidebarInset",
   setup(_, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarVariants();
+      const variantSlots = sidebarRecipe();
 
       return h(
         "div",
@@ -487,7 +487,7 @@ export const SidebarInput = defineComponent({
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = sidebarVariants();
+      const variantSlots = sidebarRecipe();
 
       return h("input", {
         ...attrs,
@@ -507,7 +507,7 @@ export const SidebarGroup = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarVariants();
+      const variantSlots = sidebarRecipe();
 
       return h(
         "div",
@@ -528,7 +528,7 @@ export const SidebarGroupLabel = defineComponent({
   name: "SidebarGroupLabel",
   setup(_, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarVariants();
+      const variantSlots = sidebarRecipe();
 
       return h(
         "div",
@@ -549,7 +549,7 @@ export const SidebarGroupAction = defineComponent({
   name: "SidebarGroupAction",
   setup(_, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarVariants();
+      const variantSlots = sidebarRecipe();
 
       return h(
         "div",
@@ -570,7 +570,7 @@ export const SidebarGroupContent = defineComponent({
   name: "SidebarGroupContent",
   setup(_, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarVariants();
+      const variantSlots = sidebarRecipe();
 
       return h(
         "div",
@@ -591,7 +591,7 @@ export const SidebarMenu = defineComponent({
   name: "SidebarMenu",
   setup(_, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarVariants();
+      const variantSlots = sidebarRecipe();
 
       return h(
         "div",
@@ -621,7 +621,7 @@ export const SidebarMenuButton = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarVariants();
+      const variantSlots = sidebarRecipe();
 
       const button = h(
         Button as ArkPart,
@@ -663,7 +663,7 @@ export const SidebarMenuItem = defineComponent({
   name: "SidebarMenuItem",
   setup(_, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarVariants();
+      const variantSlots = sidebarRecipe();
 
       return h(
         "div",
@@ -685,7 +685,7 @@ export const SidebarMenuSkeleton = defineComponent({
   props: { className: { default: undefined, type: [String, Object, Array] as PropType<unknown> } },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarVariants();
+      const variantSlots = sidebarRecipe();
 
       return h(
         "div",
@@ -710,7 +710,7 @@ export const SidebarMenuSub = defineComponent({
   name: "SidebarMenuSub",
   setup(_, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarVariants();
+      const variantSlots = sidebarRecipe();
 
       return h(
         "div",
@@ -734,7 +734,7 @@ export const SidebarMenuAction = defineComponent({
   name: "SidebarMenuAction",
   setup(_, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarVariants();
+      const variantSlots = sidebarRecipe();
 
       return h(
         "div",
@@ -755,7 +755,7 @@ export const SidebarMenuBadge = defineComponent({
   name: "SidebarMenuBadge",
   setup(_, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarVariants();
+      const variantSlots = sidebarRecipe();
 
       return h(
         "div",

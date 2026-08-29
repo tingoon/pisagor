@@ -1,8 +1,8 @@
 import { ark } from "@ark-ui/vue/factory";
 import { Tabs as TabsPrimitive } from "@ark-ui/vue/tabs";
 import {
-  bottomNavigationItemVariants,
-  bottomNavigationVariants,
+  bottomNavigationItemRecipe,
+  bottomNavigationRecipe,
 } from "@pisagor/recipes/bottom-navigation";
 import { defineComponent, h, type PropType } from "vue";
 
@@ -17,7 +17,7 @@ export const BottomNavigationRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = bottomNavigationVariants();
+      const variantSlots = bottomNavigationRecipe();
 
       return h(
         TabsPrimitive.Root as ArkPart,
@@ -40,7 +40,7 @@ export const BottomNavigationList = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = bottomNavigationVariants();
+      const variantSlots = bottomNavigationRecipe();
 
       return h(
         TabsPrimitive.List as ArkPart,
@@ -63,7 +63,7 @@ export const BottomNavigationItem = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = bottomNavigationItemVariants();
+      const variantSlots = bottomNavigationItemRecipe();
 
       return h(
         TabsPrimitive.Trigger as ArkPart,
@@ -85,7 +85,7 @@ export const BottomNavigationItemIcon = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = bottomNavigationItemVariants();
+      const variantSlots = bottomNavigationItemRecipe();
 
       return h(
         ark.span as ArkPart,
@@ -110,7 +110,7 @@ export const BottomNavigationItemLabel = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = bottomNavigationItemVariants();
+      const variantSlots = bottomNavigationItemRecipe();
 
       return h(
         ark.span as ArkPart,

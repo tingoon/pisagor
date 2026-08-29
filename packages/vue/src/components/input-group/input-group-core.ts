@@ -1,8 +1,11 @@
-import { formControlGroupShellVariants } from "@pisagor/recipes/form-control";
 import {
-  inputGroupAddonVariants,
-  inputGroupButtonVariants,
-  inputGroupTextVariants,
+  type FormControlGroupShellVariantProps,
+  formControlGroupShellRecipe,
+} from "@pisagor/recipes/form-control";
+import {
+  inputGroupAddonRecipe,
+  inputGroupButtonRecipe,
+  inputGroupTextRecipe,
 } from "@pisagor/recipes/input-group";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
@@ -11,14 +14,11 @@ import { Button, type ButtonProps } from "../button/button";
 type FormControlVariant = "primary" | "secondary";
 
 type ArkPart = Parameters<typeof h>[0];
-type InputGroupSize = "lg" | "md" | "sm";
 type InputGroupButtonSize = "icon-sm" | "icon-xs" | "sm" | "xs";
 
 // #region Types
-export interface InputGroupProps {
+export interface InputGroupProps extends FormControlGroupShellVariantProps {
   class?: unknown;
-  size?: InputGroupSize;
-  variant?: FormControlVariant;
 }
 
 export interface InputGroupAddonProps {
@@ -38,7 +38,7 @@ export const InputGroupRoot = defineComponent({
   name: "InputGroupRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    size: { default: "md", type: String as PropType<InputGroupSize> },
+    size: { default: "md", type: String as PropType<InputGroupProps["size"]> },
     variant: { default: undefined, type: String as PropType<FormControlVariant> },
   },
   setup(props, { attrs, slots }) {
@@ -55,7 +55,7 @@ export const InputGroupRoot = defineComponent({
         {
           ...attrs,
           ...controlProps,
-          class: cn(formControlGroupShellVariants({ size: props.size, ...shellArgs }), props.class),
+          class: cn(formControlGroupShellRecipe({ size: props.size, ...shellArgs }), props.class),
           "data-part": "root",
           "data-scope": "input-group",
           "data-size": props.size,
@@ -83,7 +83,7 @@ export const InputGroupAddon = defineComponent({
         "div",
         {
           ...attrs,
-          class: cn(inputGroupAddonVariants({ align: props.align }), props.class),
+          class: cn(inputGroupAddonRecipe({ align: props.align }), props.class),
           "data-align": props.align,
           "data-part": "addon",
           "data-scope": "input-group",
@@ -116,7 +116,7 @@ export const InputGroupButton = defineComponent({
         Button as ArkPart,
         {
           ...attrs,
-          class: cn(inputGroupButtonVariants({ size: props.size }), props.class),
+          class: cn(inputGroupButtonRecipe({ size: props.size }), props.class),
           "data-part": "button",
           "data-scope": "input-group",
           "data-size": props.size,
@@ -140,7 +140,7 @@ export const InputGroupText = defineComponent({
         "span",
         {
           ...attrs,
-          class: cn(inputGroupTextVariants(), props.class),
+          class: cn(inputGroupTextRecipe(), props.class),
           "data-part": "text",
           "data-scope": "input-group",
         },

@@ -2,7 +2,7 @@ import { ark } from "@ark-ui/vue/factory";
 import { ProgressRoot, ProgressValueText, useProgressContext } from "@ark-ui/vue/progress";
 import {
   type CircularProgressSlots,
-  circularProgressVariants,
+  circularProgressRecipe,
 } from "@pisagor/recipes/circular-progress";
 import { computed, defineComponent, h, type PropType, type VNode } from "vue";
 import type { VariantClassNames } from "../../internal/types";
@@ -37,7 +37,7 @@ const CircularProgressTrack = defineComponent({
   },
   setup(props) {
     const progress = useProgressContext();
-    const slots = circularProgressVariants();
+    const slots = circularProgressRecipe();
 
     return () => {
       const { max, min, value } = progress.value;
@@ -117,7 +117,7 @@ export const CircularProgress = defineComponent({
     valueProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
   },
   setup(props, { attrs, slots }) {
-    const slotsVariants = computed(() => circularProgressVariants());
+    const slotsVariants = computed(() => circularProgressRecipe());
 
     return () => {
       const variantSlots = slotsVariants.value;

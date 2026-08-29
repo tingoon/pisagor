@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { skeletonVariants } from "@pisagor/recipes/skeleton";
+import { skeletonRecipe } from "@pisagor/recipes/skeleton";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
@@ -24,7 +24,7 @@ export const SkeletonRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = skeletonVariants();
+      const variantSlots = skeletonRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -48,7 +48,7 @@ export const SkeletonCircle = defineComponent({
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = skeletonVariants();
+      const variantSlots = skeletonRecipe();
 
       return h(ark.div as ArkPart, {
         ...attrs,
@@ -69,7 +69,7 @@ export const SkeletonText = defineComponent({
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = skeletonVariants();
+      const variantSlots = skeletonRecipe();
 
       return h(
         ark.div as ArkPart,

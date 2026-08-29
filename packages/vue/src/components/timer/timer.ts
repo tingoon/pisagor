@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
 import { Timer as TimerPrimitive, useTimerContext as useTimer } from "@ark-ui/vue/timer";
-import { timerItemGroupVariants, timerVariants } from "@pisagor/recipes/timer";
+import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes/timer";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
@@ -27,7 +27,7 @@ export const TimerRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timerVariants();
+      const variantSlots = timerRecipe();
 
       return h(
         TimerPrimitive.Root as ArkPart,
@@ -65,7 +65,7 @@ export const TimerArea = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timerVariants();
+      const variantSlots = timerRecipe();
 
       return h(
         TimerPrimitive.Area as ArkPart,
@@ -91,7 +91,7 @@ export const TimerItemGroup = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timerItemGroupVariants();
+      const variantSlots = timerItemGroupRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -116,7 +116,7 @@ export const TimerItem = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timerItemGroupVariants();
+      const variantSlots = timerItemGroupRecipe();
 
       return h(
         TimerPrimitive.Item as ArkPart,
@@ -138,7 +138,7 @@ export const TimerItemLabel = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timerItemGroupVariants();
+      const variantSlots = timerItemGroupRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -162,7 +162,7 @@ export const TimerSeparator = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timerVariants();
+      const variantSlots = timerRecipe();
 
       return h(
         TimerPrimitive.Separator as ArkPart,
@@ -184,7 +184,7 @@ export const TimerControl = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timerVariants();
+      const variantSlots = timerRecipe();
 
       return h(
         TimerPrimitive.Control as ArkPart,

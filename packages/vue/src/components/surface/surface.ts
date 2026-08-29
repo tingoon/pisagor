@@ -1,4 +1,4 @@
-import { type SurfaceVariantProps, surfaceVariants } from "@pisagor/recipes/surface";
+import { type SurfaceVariantProps, surfaceRecipe } from "@pisagor/recipes/surface";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
 import { createContext } from "../../internal/utils/create-context";
@@ -26,12 +26,8 @@ export function useSurface() {
   return useSurfaceContext();
 }
 
-export interface SurfaceProps {
-  bordered?: boolean;
+export interface SurfaceProps extends SurfaceVariantProps {
   class?: unknown;
-  padding?: SurfaceVariantProps["padding"];
-  rounded?: boolean;
-  variant?: SurfaceVariant;
 }
 
 type ArkPart = Parameters<typeof h>[0];
@@ -65,7 +61,7 @@ export const Surface = defineComponent({
         {
           ...attrs,
           class: cn(
-            surfaceVariants({
+            surfaceRecipe({
               bordered: props.bordered,
               padding: props.padding,
               rounded: props.rounded,

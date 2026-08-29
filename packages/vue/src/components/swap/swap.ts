@@ -1,12 +1,12 @@
 import { Swap as SwapPrimitive } from "@ark-ui/vue/swap";
-import { type SwapVariantProps, swapVariants } from "@pisagor/recipes/swap";
+import { type SwapVariantProps, swapRecipe } from "@pisagor/recipes/swap";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
 // #region Types
 export type SwapVariant = NonNullable<SwapVariantProps["variant"]>;
 
-export interface SwapProps {
+export interface SwapProps extends SwapVariantProps {
   class?: unknown;
   lazyMount?: boolean;
   /**
@@ -17,7 +17,6 @@ export interface SwapProps {
    */
   swap?: boolean;
   unmountOnExit?: boolean;
-  variant?: SwapVariant;
   /** Content shown when swapped on. */
   on?: VNodeChild;
   /** Content shown when swapped off. */
@@ -51,7 +50,7 @@ export const Swap = defineComponent({
         SwapPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(swapVariants({ variant: props.variant }), props.class),
+          class: cn(swapRecipe({ variant: props.variant }), props.class),
           lazyMount: props.lazyMount,
           swap: props.swap,
           unmountOnExit: props.unmountOnExit,

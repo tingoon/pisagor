@@ -1,5 +1,5 @@
 import { QrCode as QrCodePrimitive } from "@ark-ui/vue/qr-code";
-import { qrCodeVariants } from "@pisagor/recipes/qr-code";
+import { qrCodeRecipe } from "@pisagor/recipes/qr-code";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
@@ -19,7 +19,7 @@ export const QrCodeRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = qrCodeVariants();
+      const variantSlots = qrCodeRecipe();
 
       return h(
         QrCodePrimitive.Root as ArkPart,
@@ -41,7 +41,7 @@ export const QrCodeFrame = defineComponent({
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = qrCodeVariants();
+      const variantSlots = qrCodeRecipe();
 
       return h(
         QrCodePrimitive.Frame as ArkPart,
@@ -66,7 +66,7 @@ export const QrCodeOverlay = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = qrCodeVariants();
+      const variantSlots = qrCodeRecipe();
 
       return h(
         QrCodePrimitive.Overlay as ArkPart,

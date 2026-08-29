@@ -1,5 +1,5 @@
 import { HoverCard as HoverCardPrimitive } from "@ark-ui/vue/hover-card";
-import { hoverCardVariants } from "@pisagor/recipes/hover-card";
+import { hoverCardRecipe } from "@pisagor/recipes/hover-card";
 import { type CSSProperties, defineComponent, h, type PropType, Teleport } from "vue";
 
 // #region Types
@@ -72,7 +72,7 @@ export const HoverCardArrow = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = hoverCardVariants();
+      const variantSlots = hoverCardRecipe();
 
       return h(
         HoverCardPrimitive.Arrow as ArkPart,
@@ -101,7 +101,7 @@ export const HoverCardContent = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = hoverCardVariants();
+      const variantSlots = hoverCardRecipe();
 
       return hoverCardTeleport(
         h(HoverCardPrimitive.Positioner as ArkPart, {}, () =>

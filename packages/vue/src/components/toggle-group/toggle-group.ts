@@ -1,5 +1,5 @@
 import { ToggleGroup as ToggleGroupPrimitive } from "@ark-ui/vue/toggle-group";
-import { type ToggleGroupVariants, toggleGroupVariants } from "@pisagor/recipes/toggle-group";
+import { type ToggleGroupSlots, toggleGroupRecipe } from "@pisagor/recipes/toggle-group";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { createContext } from "../../internal/utils/create-context";
@@ -10,7 +10,7 @@ export type ToggleGroupSize = "lg" | "md" | "sm";
 
 interface ToggleGroupContextValue {
   size: ToggleGroupSize;
-  slots: ToggleGroupVariants;
+  slots: ToggleGroupSlots;
   spacing: number;
   variant: ToggleGroupVariant;
 }
@@ -70,7 +70,7 @@ export const ToggleGroupRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = toggleGroupVariants({ orientation: props.orientation });
+      const variantSlots = toggleGroupRecipe({ orientation: props.orientation });
 
       ToggleGroupContextProvider({
         size: props.size,
@@ -133,7 +133,7 @@ export const ToggleGroupItem = defineComponent({
             Toggle as ArkPart,
             {
               ...attrs,
-              class: cn(ctx?.slots.item() ?? toggleGroupVariants().item(), props.class),
+              class: cn(ctx?.slots.item() ?? toggleGroupRecipe().item(), props.class),
               "data-spacing": ctx?.spacing ?? 0,
               "data-variant": ctx?.variant ?? "ghost",
               disabled: props.disabled,

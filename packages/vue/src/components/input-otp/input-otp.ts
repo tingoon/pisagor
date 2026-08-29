@@ -3,7 +3,7 @@ import {
   PinInput as PinInputPrimitive,
   type PinInputValueChangeDetails,
 } from "@ark-ui/vue/pin-input";
-import { inputOtpVariants } from "@pisagor/recipes/input-otp";
+import { inputOtpRecipe } from "@pisagor/recipes/input-otp";
 import { cn } from "@pisagor/utils";
 
 type FormControlVariant = "primary" | "secondary";
@@ -55,7 +55,7 @@ export const InputOTPRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = inputOtpVariants();
+      const variantSlots = inputOtpRecipe();
       const attrClass = (attrs as { class?: ClassValue }).class;
 
       return h(
@@ -100,7 +100,7 @@ export const InputOTPSlot = defineComponent({
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = inputOtpVariants();
+      const variantSlots = inputOtpRecipe();
 
       return h(
         PinInputPrimitive.Input as ArkPart,
@@ -129,7 +129,7 @@ export const InputOTPSeparator = defineComponent({
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = inputOtpVariants();
+      const variantSlots = inputOtpRecipe();
 
       return h(ark.hr as ArkPart, {
         ...attrs,

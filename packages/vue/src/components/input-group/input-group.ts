@@ -1,6 +1,6 @@
 import {
-  inputGroupControlVariants,
-  inputGroupTextareaControlVariants,
+  inputGroupControlRecipe,
+  inputGroupTextareaControlRecipe,
 } from "@pisagor/recipes/input-group";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
@@ -20,10 +20,10 @@ export const InputGroupInput = defineComponent({
     return () =>
       h(Input as ArkPart, {
         ...(attrs as object),
-        class: cn(inputGroupControlVariants(), props.class),
+        class: cn(inputGroupControlRecipe(), props.class),
         classNames: {
           ...props.classNames,
-          clearableRoot: cn(inputGroupControlVariants(), props.classNames?.clearableRoot),
+          clearableRoot: cn(inputGroupControlRecipe(), props.classNames?.clearableRoot),
         },
       });
   },
@@ -41,7 +41,7 @@ export const InputGroupTextarea = defineComponent({
         ...(attrs as object),
         classNames: {
           ...props.classNames,
-          rootLayout: cn(inputGroupTextareaControlVariants(), props.classNames?.rootLayout),
+          rootLayout: cn(inputGroupTextareaControlRecipe(), props.classNames?.rootLayout),
         },
       });
   },

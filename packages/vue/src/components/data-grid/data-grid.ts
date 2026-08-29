@@ -1,4 +1,4 @@
-import { type DataGridVariants, dataGridVariants } from "@pisagor/recipes/data-grid";
+import { type DataGridSlots, dataGridRecipe } from "@pisagor/recipes/data-grid";
 import { cn } from "@pisagor/utils";
 import {
   type Cell,
@@ -34,7 +34,7 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 interface DataGridContextValue<TData extends RowData> {
-  slots: DataGridVariants;
+  slots: DataGridSlots;
   table: TableType<DataGridFeatures, TData>;
 }
 
@@ -225,7 +225,7 @@ export const DataGridRoot = defineComponent({
     ) as TableOptions<DataGridFeatures, RowData>;
 
     const table = useTable(options);
-    const variantSlots = dataGridVariants();
+    const variantSlots = dataGridRecipe();
     const contextValue = computed<DataGridContextValue<RowData>>(() => ({
       slots: variantSlots,
       table,
@@ -358,7 +358,7 @@ function renderHeadCell(
   attrs: Record<string, unknown>,
   slots: { default?: () => VNodeChild },
   table: TableType<DataGridFeatures, RowData>,
-  variantSlots: DataGridVariants,
+  variantSlots: DataGridSlots,
 ) {
   const sizingEnabled = Boolean(table.options.enableColumnResizing);
   const headClass = cn(

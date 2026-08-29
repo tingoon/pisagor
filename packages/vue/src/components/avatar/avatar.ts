@@ -1,5 +1,5 @@
 import { AvatarFallback, AvatarImage, AvatarRoot } from "@ark-ui/vue/avatar";
-import { type AvatarSlots, type AvatarVariantProps, avatarVariants } from "@pisagor/recipes/avatar";
+import { type AvatarSlots, type AvatarVariantProps, avatarRecipe } from "@pisagor/recipes/avatar";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 
@@ -11,7 +11,7 @@ export type AvatarSize = NonNullable<AvatarVariantProps["size"]>;
 
 export type AvatarClassNames = VariantClassNames<AvatarSlots>;
 
-export interface AvatarProps {
+export interface AvatarProps extends AvatarVariantProps {
   /** Slot class names */
   classNames?: AvatarClassNames;
   /** Renders the avatar image with the provided src */
@@ -24,10 +24,6 @@ export interface AvatarProps {
   imageProps?: Record<string, unknown>;
   /** Extra props forwarded to the avatar fallback element */
   fallbackProps?: Record<string, unknown>;
-  /** The size of the avatar */
-  size?: AvatarSize;
-  /** The shape of the avatar */
-  shape?: AvatarShape;
   class?: unknown;
 }
 // #endregion
@@ -58,7 +54,7 @@ export const Avatar = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots_ = avatarVariants({ shape: props.shape, size: props.size });
+      const slots_ = avatarRecipe({ shape: props.shape, size: props.size });
 
       return h(
         AvatarRoot as ArkPart,

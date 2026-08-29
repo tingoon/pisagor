@@ -1,5 +1,5 @@
 import { Highlight as HighlightPrimitive } from "@ark-ui/vue/highlight";
-import { highlightVariants } from "@pisagor/recipes/highlight";
+import { highlightRecipe } from "@pisagor/recipes/highlight";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 
@@ -24,7 +24,7 @@ export const Highlight = defineComponent({
         HighlightPrimitive as ArkPart,
         {
           ...attrs,
-          class: cn(highlightVariants(), props.class),
+          class: cn(highlightRecipe(), props.class),
         },
         slots.default?.(),
       );

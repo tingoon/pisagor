@@ -1,10 +1,10 @@
 import { ark } from "@ark-ui/vue/factory";
 import { PhCaretRight, PhDotsThree } from "@phosphor-icons/vue";
 import {
-  type BreadcrumbItemVariants,
-  type BreadcrumbVariants,
-  breadcrumbItemVariants,
-  breadcrumbVariants,
+  type BreadcrumbItemSlots,
+  type BreadcrumbSlots,
+  breadcrumbItemRecipe,
+  breadcrumbRecipe,
 } from "@pisagor/recipes/breadcrumb";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { createContext } from "../../internal/utils/create-context";
@@ -30,11 +30,11 @@ export interface BreadcrumbProps extends BreadcrumbRootProps {
 }
 
 interface BreadcrumbContextValue {
-  slots: BreadcrumbVariants;
+  slots: BreadcrumbSlots;
 }
 
 interface BreadcrumbItemContextValue {
-  slots: BreadcrumbItemVariants;
+  slots: BreadcrumbItemSlots;
 }
 // #endregion
 
@@ -59,7 +59,7 @@ export const BreadcrumbRoot = defineComponent({
     ariaLabel: { default: "Breadcrumb", type: String },
   },
   setup(props, { attrs, slots }) {
-    const recipeSlots = breadcrumbVariants();
+    const recipeSlots = breadcrumbRecipe();
 
     provideBreadcrumbContext({ slots: recipeSlots });
 
@@ -108,7 +108,7 @@ export const BreadcrumbItem = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
-    const recipeSlots = breadcrumbItemVariants();
+    const recipeSlots = breadcrumbItemRecipe();
 
     provideBreadcrumbItemContext({ slots: recipeSlots });
 

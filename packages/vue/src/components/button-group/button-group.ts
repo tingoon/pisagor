@@ -1,14 +1,13 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type ButtonGroupVariantProps, buttonGroupVariants } from "@pisagor/recipes/button-group";
+import { type ButtonGroupVariantProps, buttonGroupRecipe } from "@pisagor/recipes/button-group";
 import { defineComponent, h, type PropType } from "vue";
 import { Separator, type SeparatorProps } from "../separator";
 
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface ButtonGroupProps {
+export interface ButtonGroupProps extends ButtonGroupVariantProps {
   class?: unknown;
-  orientation?: ButtonGroupVariantProps["orientation"];
 }
 // #endregion
 
@@ -25,7 +24,7 @@ export const ButtonGroupRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = buttonGroupVariants({ orientation: props.orientation });
+      const variantSlots = buttonGroupRecipe({ orientation: props.orientation });
 
       return h(
         ark.fieldset as ArkPart,
@@ -50,7 +49,7 @@ export const ButtonGroupText = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = buttonGroupVariants();
+      const variantSlots = buttonGroupRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -75,7 +74,7 @@ export const ButtonGroupSeparator = defineComponent({
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = buttonGroupVariants();
+      const variantSlots = buttonGroupRecipe();
 
       return h(Separator as ArkPart, {
         ...attrs,

@@ -1,5 +1,5 @@
 import { SegmentGroup as SegmentGroupPrimitive } from "@ark-ui/vue/segment-group";
-import { segmentGroupVariants } from "@pisagor/recipes/segment-group";
+import { segmentGroupRecipe } from "@pisagor/recipes/segment-group";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
@@ -54,7 +54,7 @@ export const SegmentGroupRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = segmentGroupVariants();
+      const variantSlots = segmentGroupRecipe();
 
       return h(
         SegmentGroupPrimitive.Root as ArkPart,
@@ -89,7 +89,7 @@ export const SegmentGroupItem = defineComponent({
   setup(props, { attrs, slots }) {
     return () => {
       const content = slots.default?.() ?? props.text;
-      const variantSlots = segmentGroupVariants();
+      const variantSlots = segmentGroupRecipe();
 
       return h(
         SegmentGroupPrimitive.Item as ArkPart,
@@ -119,7 +119,7 @@ export const SegmentGroupItemText = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = segmentGroupVariants();
+      const variantSlots = segmentGroupRecipe();
 
       return h(
         SegmentGroupPrimitive.ItemText as ArkPart,
@@ -141,7 +141,7 @@ export const SegmentGroupIndicator = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = segmentGroupVariants();
+      const variantSlots = segmentGroupRecipe();
 
       return h(
         SegmentGroupPrimitive.Indicator as ArkPart,

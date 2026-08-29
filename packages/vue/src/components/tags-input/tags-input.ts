@@ -4,7 +4,7 @@ import {
   useTagsInputContext,
 } from "@ark-ui/vue/tags-input";
 import { PhX } from "@phosphor-icons/vue";
-import { tagsInputItemVariants, tagsInputVariants } from "@pisagor/recipes/tags-input";
+import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes/tags-input";
 import { cn } from "@pisagor/utils";
 
 type FormControlVariant = "primary" | "secondary";
@@ -53,7 +53,7 @@ export const TagsInputInput = defineComponent({
   },
   setup(props, { attrs }) {
     return () => {
-      const slots = tagsInputVariants();
+      const slots = tagsInputRecipe();
 
       return h(
         TagsInputPrimitive.Input as ArkPart,
@@ -77,7 +77,7 @@ export const TagsInputItemDeleteTrigger = defineComponent({
   },
   setup(props, { attrs, slots: vueSlots }) {
     return () => {
-      const slots = tagsInputItemVariants();
+      const slots = tagsInputItemRecipe();
 
       return h(
         TagsInputPrimitive.ItemDeleteTrigger as ArkPart,
@@ -113,7 +113,7 @@ export const TagsInputItemText = defineComponent({
   },
   setup(props, { attrs, slots: vueSlots }) {
     return () => {
-      const slots = tagsInputItemVariants();
+      const slots = tagsInputItemRecipe();
 
       return h(
         TagsInputPrimitive.ItemText as ArkPart,
@@ -137,7 +137,7 @@ export const TagsInputItemPreview = defineComponent({
   },
   setup(props, { attrs, slots: vueSlots }) {
     return () => {
-      const slots = tagsInputItemVariants();
+      const slots = tagsInputItemRecipe();
 
       return h(
         TagsInputPrimitive.ItemPreview as ArkPart,
@@ -158,7 +158,7 @@ export const TagsInputItemInput = defineComponent({
   name: "TagsInput.ItemInput",
   setup(_, { attrs }) {
     return () => {
-      const slots = tagsInputItemVariants();
+      const slots = tagsInputItemRecipe();
 
       return h(
         TagsInputPrimitive.ItemInput as ArkPart,
@@ -187,7 +187,7 @@ export const TagsInputItem = defineComponent({
   },
   setup(props, { attrs, slots: vueSlots }) {
     return () => {
-      const slots = tagsInputItemVariants();
+      const slots = tagsInputItemRecipe();
 
       return h(
         TagsInputPrimitive.Item as ArkPart,
@@ -221,7 +221,7 @@ export const TagsInputClearTrigger = defineComponent({
   },
   setup(props, { attrs, slots: vueSlots }) {
     return () => {
-      const slots = tagsInputVariants();
+      const slots = tagsInputRecipe();
 
       return h(
         TagsInputPrimitive.ClearTrigger as ArkPart,
@@ -261,7 +261,7 @@ export const TagsInputControl = defineComponent({
     const api = useTagsInputContext();
 
     return () => {
-      const slots = tagsInputVariants();
+      const slots = tagsInputRecipe();
 
       return h(
         TagsInputPrimitive.Control as ArkPart,
@@ -310,7 +310,7 @@ export const TagsInputRoot = defineComponent({
   },
   setup(props, { attrs, slots: vueSlots }) {
     return () => {
-      const slots = tagsInputVariants();
+      const slots = tagsInputRecipe();
 
       return h(
         TagsInputPrimitive.Root as ArkPart,
@@ -362,7 +362,7 @@ export const TagsInputRootProvider = defineComponent({
   },
   setup(props, { attrs, slots: vueSlots }) {
     return () => {
-      const slots = tagsInputVariants();
+      const slots = tagsInputRecipe();
 
       return h(
         TagsInputPrimitive.RootProvider as ArkPart,

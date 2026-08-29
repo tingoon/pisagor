@@ -1,6 +1,6 @@
 import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/vue/radio-group";
-import { formControlRadioToggleVariants } from "@pisagor/recipes/form-control";
-import { radioGroupItemVariants, radioGroupVariants } from "@pisagor/recipes/radio-group";
+import { formControlRadioToggleRecipe } from "@pisagor/recipes/form-control";
+import { radioGroupItemRecipe, radioGroupRecipe } from "@pisagor/recipes/radio-group";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { FieldLabel } from "../field/field";
@@ -61,7 +61,7 @@ export const RadioGroupRoot = defineComponent({
         RadioGroupPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(radioGroupVariants(), props.class),
+          class: cn(radioGroupRecipe(), props.class),
           defaultValue: props.defaultValue,
           disabled: props.disabled,
           modelValue: props.value,
@@ -94,7 +94,7 @@ export const RadioGroupItem = defineComponent({
       };
       const shellArgs = { variant: resolved.variant };
       const controlProps = { "data-variant": resolved.variant };
-      const slots = radioGroupItemVariants();
+      const slots = radioGroupItemRecipe();
 
       return h(
         RadioGroupPrimitive.Item as ArkPart,
@@ -107,7 +107,7 @@ export const RadioGroupItem = defineComponent({
         () => [
           h(RadioGroupPrimitive.ItemControl as ArkPart, {
             ...controlProps,
-            class: cn(formControlRadioToggleVariants({ ...shellArgs }), slots.control()),
+            class: cn(formControlRadioToggleRecipe({ ...shellArgs }), slots.control()),
           }),
           h(RadioGroupItemText as ArkPart, null, children.default),
           h(RadioGroupPrimitive.ItemHiddenInput as ArkPart, { tabIndex: props.tabIndex }),

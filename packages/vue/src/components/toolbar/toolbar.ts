@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type ToolbarSlots, toolbarVariants } from "@pisagor/recipes/toolbar";
+import { type ToolbarSlots, toolbarRecipe } from "@pisagor/recipes/toolbar";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";
@@ -34,7 +34,7 @@ export const ToolbarRoot = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: toolbarVariants().base({ class: props.class }),
+          class: toolbarRecipe().base({ class: props.class }),
           "data-part": "root",
           "data-scope": "toolbar",
         },
@@ -51,7 +51,7 @@ export const ToolbarHeading = defineComponent({
     classNames: { default: undefined, type: Object as PropType<ToolbarClassNames> },
   },
   setup(props, { attrs, slots }) {
-    const slotsClasses = toolbarVariants();
+    const slotsClasses = toolbarRecipe();
 
     return () =>
       h(
@@ -75,7 +75,7 @@ export const ToolbarTitle = defineComponent({
     classNames: { default: undefined, type: Object as PropType<ToolbarClassNames> },
   },
   setup(props, { attrs, slots }) {
-    const slotsClasses = toolbarVariants();
+    const slotsClasses = toolbarRecipe();
 
     return () =>
       h(
@@ -99,7 +99,7 @@ export const ToolbarDescription = defineComponent({
     classNames: { default: undefined, type: Object as PropType<ToolbarClassNames> },
   },
   setup(props, { attrs, slots }) {
-    const slotsClasses = toolbarVariants();
+    const slotsClasses = toolbarRecipe();
 
     return () =>
       h(
@@ -125,7 +125,7 @@ export const ToolbarActions = defineComponent({
     classNames: { default: undefined, type: Object as PropType<ToolbarClassNames> },
   },
   setup(props, { attrs, slots }) {
-    const slotsClasses = toolbarVariants();
+    const slotsClasses = toolbarRecipe();
 
     return () =>
       h(

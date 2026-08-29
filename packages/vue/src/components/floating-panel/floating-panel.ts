@@ -1,6 +1,6 @@
 import { FloatingPanel as FloatingPanelPrimitive } from "@ark-ui/vue/floating-panel";
 import { PhArrowsOut, PhCornersIn, PhMinus } from "@phosphor-icons/vue";
-import { type FloatingPanelVariants, floatingPanelVariants } from "@pisagor/recipes/floating-panel";
+import { type FloatingPanelSlots, floatingPanelRecipe } from "@pisagor/recipes/floating-panel";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, reactive, Teleport, type VNodeChild } from "vue";
 import { createContext } from "../../internal/utils/create-context";
@@ -9,7 +9,7 @@ import { ScrollArea } from "../scroll-area";
 
 // #region Types
 interface FloatingPanelContextProps {
-  slots: FloatingPanelVariants;
+  slots: FloatingPanelSlots;
 }
 
 interface FloatingPanelContentProps {
@@ -56,7 +56,7 @@ function floatingPanelTeleport(content: VNodeChild) {
 }
 
 function useFloatingPanelSlots() {
-  return useFloatingPanel()?.slots ?? floatingPanelVariants();
+  return useFloatingPanel()?.slots ?? floatingPanelRecipe();
 }
 
 // #region Parts
@@ -69,7 +69,7 @@ export const FloatingPanelRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     const context = reactive<FloatingPanelContextProps>({
-      slots: floatingPanelVariants(),
+      slots: floatingPanelRecipe(),
     });
     provideFloatingPanelContext(context);
 
@@ -120,7 +120,7 @@ export const FloatingPanelContent = defineComponent({
     const floatingPanelContext = useFloatingPanel();
 
     return () => {
-      const panelSlots = floatingPanelContext?.slots ?? floatingPanelVariants();
+      const panelSlots = floatingPanelContext?.slots ?? floatingPanelRecipe();
 
       return floatingPanelTeleport(
         h(FloatingPanelPrimitive.Positioner as ArkPart, { class: panelSlots.positioner() }, () =>

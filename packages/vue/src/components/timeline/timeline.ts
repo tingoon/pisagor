@@ -1,5 +1,9 @@
 import { ark } from "@ark-ui/vue/factory";
-import { timelineItemVariants, timelineVariants } from "@pisagor/recipes/timeline";
+import {
+  type TimelineVariantProps,
+  timelineItemRecipe,
+  timelineRecipe,
+} from "@pisagor/recipes/timeline";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -13,13 +17,7 @@ export interface TimelinePresetItem {
   indicator?: VNodeChild;
 }
 
-export interface TimelineProps {
-  /**
-   * Timeline layout.
-   *
-   * @defaultValue "vertical"
-   */
-  orientation?: "vertical" | "horizontal";
+export interface TimelineProps extends TimelineVariantProps {
   class?: unknown;
   items?: TimelinePresetItem[];
 }
@@ -39,7 +37,7 @@ export const TimelineRoot = defineComponent({
         ark.ol as ArkPart,
         {
           ...attrs,
-          class: timelineVariants({ class: props.class, orientation: props.orientation }),
+          class: timelineRecipe({ class: props.class, orientation: props.orientation }),
           "data-orientation": props.orientation,
           "data-part": "root",
           "data-scope": "timeline",
@@ -57,7 +55,7 @@ export const TimelineItem = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timelineItemVariants();
+      const variantSlots = timelineItemRecipe();
 
       return h(
         ark.li as ArkPart,
@@ -81,7 +79,7 @@ export const TimelineIndicator = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timelineItemVariants();
+      const variantSlots = timelineItemRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -105,7 +103,7 @@ export const TimelineSeparator = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timelineItemVariants();
+      const variantSlots = timelineItemRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -130,7 +128,7 @@ export const TimelineContent = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timelineItemVariants();
+      const variantSlots = timelineItemRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -154,7 +152,7 @@ export const TimelineTitle = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timelineItemVariants();
+      const variantSlots = timelineItemRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -178,7 +176,7 @@ export const TimelineDescription = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timelineItemVariants();
+      const variantSlots = timelineItemRecipe();
 
       return h(
         ark.div as ArkPart,

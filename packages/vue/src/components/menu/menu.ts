@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type MenuSlots, menuItemVariants, menuVariants } from "@pisagor/recipes/menu";
+import { type MenuSlots, menuItemRecipe, menuRecipe } from "@pisagor/recipes/menu";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { VariantClassNames } from "../../internal/types";
@@ -24,7 +24,7 @@ export const MenuRoot = defineComponent({
   },
   setup(_props, { attrs, slots }) {
     return () => {
-      const slots$ = menuVariants();
+      const slots$ = menuRecipe();
       const ariaLabel = (attrs["aria-label"] as string | undefined) ?? "Menu";
 
       return h(
@@ -50,7 +50,7 @@ export const MenuList = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = menuVariants();
+      const slots$ = menuRecipe();
 
       return h(
         ark.ul as ArkPart,
@@ -75,7 +75,7 @@ export const MenuGroup = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = menuVariants();
+      const slots$ = menuRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -100,7 +100,7 @@ export const MenuGroupLabel = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = menuVariants();
+      const slots$ = menuRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -127,7 +127,7 @@ export const MenuItem = defineComponent({
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const slots = menuVariants();
+      const slots = menuRecipe();
 
       return h(
         ark.li as ArkPart,
@@ -143,7 +143,7 @@ export const MenuItem = defineComponent({
             {
               ...attrs,
               class: cn(
-                menuItemVariants({ variant: props.variant }),
+                menuItemRecipe({ variant: props.variant }),
                 props.class,
                 props.classNames?.item,
               ),
@@ -169,7 +169,7 @@ export const MenuLink = defineComponent({
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const slots = menuVariants();
+      const slots = menuRecipe();
 
       return h(
         ark.li as ArkPart,
@@ -205,7 +205,7 @@ export const MenuSeparator = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = menuVariants();
+      const slots$ = menuRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -231,7 +231,7 @@ export const MenuShortcut = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = menuVariants();
+      const slots$ = menuRecipe();
 
       return h(
         ark.span as ArkPart,

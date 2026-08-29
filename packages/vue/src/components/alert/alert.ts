@@ -1,10 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import {
-  type AlertSlots,
-  type AlertVariantProps,
-  type AlertVariants,
-  alertVariants,
-} from "@pisagor/recipes/alert";
+import { type AlertSlots, type AlertVariantProps, alertRecipe } from "@pisagor/recipes/alert";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType, toValue, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";
@@ -13,7 +8,7 @@ import { createContext } from "../../internal/utils/create-context";
 // #region Types
 type AlertClassNames = VariantClassNames<AlertSlots>;
 
-export interface AlertProps {
+export interface AlertProps extends AlertVariantProps {
   action?: VNodeChild;
   actionProps?: Record<string, unknown>;
   class?: unknown;
@@ -23,12 +18,11 @@ export interface AlertProps {
   icon?: VNodeChild;
   title?: VNodeChild;
   titleProps?: Record<string, unknown>;
-  variant?: AlertVariantProps["variant"];
 }
 
 interface AlertContextValue {
   classNames?: AlertClassNames;
-  slots: AlertVariants;
+  slots: AlertSlots;
 }
 // #endregion
 
@@ -52,7 +46,7 @@ export const AlertRoot = defineComponent({
   setup(props, { attrs, slots }) {
     const contextValue = computed(() => ({
       classNames: props.classNames,
-      slots: alertVariants({ variant: props.variant }),
+      slots: alertRecipe({ variant: props.variant }),
     }));
 
     provideAlertContext(contextValue);

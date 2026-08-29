@@ -1,9 +1,9 @@
 import { ark } from "@ark-ui/vue/factory";
 import { PhDotsSixVertical } from "@phosphor-icons/vue";
 import {
-  type SortableItemVariants,
-  sortableItemVariants,
-  sortableVariants,
+  type SortableItemSlots,
+  sortableItemRecipe,
+  sortableRecipe,
 } from "@pisagor/recipes/sortable";
 import { cn } from "@pisagor/utils";
 import {
@@ -37,7 +37,7 @@ interface SortableContextValue {
 interface SortableItemContextValue {
   id: string;
   isDragging: boolean;
-  slots: SortableItemVariants;
+  slots: SortableItemSlots;
 }
 
 export interface SortableRootProps {
@@ -247,7 +247,7 @@ export const SortableRoot = defineComponent({
         ark.div as unknown as ArkPart,
         {
           ...attrs,
-          class: cn(sortableVariants({ orientation: props.orientation }), props.class, attrs.class),
+          class: cn(sortableRecipe({ orientation: props.orientation }), props.class, attrs.class),
           "data-orientation": props.orientation,
           "data-part": "root",
           "data-scope": "sortable",
@@ -271,7 +271,7 @@ export const SortableItem = defineComponent({
       return () => null;
     }
 
-    const itemSlots = sortableItemVariants();
+    const itemSlots = sortableItemRecipe();
     const itemContext = reactive<SortableItemContextValue>({
       id: props.value,
       isDragging: false,

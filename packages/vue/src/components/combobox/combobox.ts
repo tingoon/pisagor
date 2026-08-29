@@ -6,7 +6,7 @@ import {
   useComboboxContext as useCombobox,
 } from "@ark-ui/vue/combobox";
 import { PhCaretUpDown, PhCheck, PhX } from "@phosphor-icons/vue";
-import { comboboxVariants } from "@pisagor/recipes/combobox";
+import { comboboxRecipe } from "@pisagor/recipes/combobox";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, Teleport, type VNodeChild } from "vue";
 import { Button } from "../button";
@@ -112,7 +112,7 @@ export const ComboboxControl = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const styleSlots = comboboxVariants();
+      const styleSlots = comboboxRecipe();
 
       return h(
         ComboboxPrimitive.Control as ArkPart,
@@ -141,7 +141,7 @@ export const ComboboxInput = defineComponent({
     const api = useCombobox();
 
     return () => {
-      const styleSlots = comboboxVariants();
+      const styleSlots = comboboxRecipe();
 
       return h(ComboboxControl as ArkPart, { "data-size": props.size }, () =>
         h(
@@ -191,7 +191,7 @@ export const ComboboxTrigger = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const styleSlots = comboboxVariants();
+      const styleSlots = comboboxRecipe();
 
       return h(
         ComboboxPrimitive.Trigger as ArkPart,
@@ -268,7 +268,7 @@ export const ComboboxContent = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const styleSlots = comboboxVariants();
+      const styleSlots = comboboxRecipe();
 
       return comboboxTeleport(
         h(ComboboxPositioner as ArkPart, null, () =>
@@ -313,7 +313,7 @@ export const ComboboxItemGroupLabel = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const styleSlots = comboboxVariants();
+      const styleSlots = comboboxRecipe();
 
       return h(
         ComboboxPrimitive.ItemGroupLabel as ArkPart,
@@ -337,7 +337,7 @@ export const ComboboxItem = defineComponent({
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const styleSlots = comboboxVariants({ showIndicator: props.showIndicator });
+      const styleSlots = comboboxRecipe({ showIndicator: props.showIndicator });
 
       return h(
         ComboboxPrimitive.Item as ArkPart,
@@ -370,7 +370,7 @@ export const ComboboxEmpty = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const styleSlots = comboboxVariants();
+      const styleSlots = comboboxRecipe();
 
       return h(
         ComboboxPrimitive.Empty as ArkPart,
@@ -392,7 +392,7 @@ export const ComboboxList = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const styleSlots = comboboxVariants();
+      const styleSlots = comboboxRecipe();
 
       return h(
         ComboboxPrimitive.List as ArkPart,

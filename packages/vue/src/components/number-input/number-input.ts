@@ -1,7 +1,10 @@
 import { NumberInput as NumberInputPrimitive } from "@ark-ui/vue/number-input";
 import { PhMinus, PhPlus } from "@phosphor-icons/vue";
-import { formControlGroupShellVariants } from "@pisagor/recipes/form-control";
-import { numberInputVariants } from "@pisagor/recipes/number-input";
+import {
+  type FormControlGroupShellVariantProps,
+  formControlGroupShellRecipe,
+} from "@pisagor/recipes/form-control";
+import { numberInputRecipe } from "@pisagor/recipes/number-input";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { Button } from "../button/button";
@@ -12,10 +15,9 @@ import { InputClearButton } from "../input/input-clear-button";
 type FormControlVariant = "primary" | "secondary";
 
 type ArkPart = Parameters<typeof h>[0];
-type InputSize = InputProps["size"];
 
 // #region Types
-export interface NumberInputProps {
+export interface NumberInputProps extends FormControlGroupShellVariantProps {
   class?: unknown;
   clearable?: boolean;
   defaultValue?: string;
@@ -25,16 +27,14 @@ export interface NumberInputProps {
   onValueChange?: (value: number) => void;
   placeholder?: string;
   readOnly?: boolean;
-  size?: InputSize;
   step?: number;
   value?: string;
-  variant?: FormControlVariant;
 }
 
-export interface NumberInputControlProps {
+export interface NumberInputControlProps
+  extends Pick<FormControlGroupShellVariantProps, "variant"> {
   class?: unknown;
   clearable?: boolean;
-  variant?: FormControlVariant;
 }
 // #endregion
 
@@ -55,7 +55,7 @@ export const NumberInputRoot = defineComponent({
     },
     placeholder: { default: undefined, type: String },
     readOnly: { default: undefined, type: Boolean },
-    size: { default: "md", type: String as PropType<InputSize> },
+    size: { default: "md", type: String as PropType<NumberInputProps["size"]> },
     step: { default: undefined, type: Number },
     value: { default: undefined, type: String },
     variant: { default: undefined, type: String as PropType<FormControlVariant> },
@@ -66,7 +66,7 @@ export const NumberInputRoot = defineComponent({
         NumberInputPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(numberInputVariants().base(), props.class),
+          class: cn(numberInputRecipe().base(), props.class),
           "data-size": props.size,
           defaultValue: props.defaultValue,
           disabled: props.disabled,
@@ -123,8 +123,8 @@ export const NumberInputControl = defineComponent({
           ...attrs,
           ...controlProps,
           class: cn(
-            numberInputVariants().control(),
-            formControlGroupShellVariants({ size: "md", ...shellArgs }),
+            numberInputRecipe().control(),
+            formControlGroupShellRecipe({ size: "md", ...shellArgs }),
             props.class,
           ),
           "data-clearable": props.clearable || undefined,
@@ -149,7 +149,7 @@ export const NumberInputClearTrigger = defineComponent({
           }
 
           return h(InputClearButton as ArkPart, {
-            class: numberInputVariants().clearTrigger(),
+            class: numberInputRecipe().clearTrigger(),
             onClear: () => api.setValue(Number.NaN),
           });
         },
@@ -170,7 +170,7 @@ export const NumberInputDecrementTrigger = defineComponent({
         {
           ...attrs,
           asChild: true,
-          class: cn(numberInputVariants().decrementTrigger(), props.class),
+          class: cn(numberInputRecipe().decrementTrigger(), props.class),
         },
         () =>
           h(Button as ArkPart, { "aria-label": "Decrement", variant: "ghost" }, () =>
@@ -193,7 +193,7 @@ export const NumberInputIncrementTrigger = defineComponent({
         {
           ...attrs,
           asChild: true,
-          class: cn(numberInputVariants().incrementTrigger(), props.class),
+          class: cn(numberInputRecipe().incrementTrigger(), props.class),
         },
         () =>
           h(Button as ArkPart, { "aria-label": "Increment", variant: "ghost" }, () =>
@@ -210,7 +210,7 @@ export const NumberInputInput = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<InputProps["classNames"]> },
     placeholder: { default: undefined, type: String },
-    size: { default: undefined, type: String as PropType<InputSize> },
+    size: { default: undefined, type: String as PropType<NumberInputProps["size"]> },
     variant: { default: undefined, type: String as PropType<FormControlVariant> },
   },
   setup(props, { attrs }) {
@@ -218,7 +218,7 @@ export const NumberInputInput = defineComponent({
       h(NumberInputPrimitive.Input as ArkPart, { asChild: true, ...attrs }, () =>
         h(Input as ArkPart, {
           ...(attrs as object),
-          class: cn(numberInputVariants().input(), props.class),
+          class: cn(numberInputRecipe().input(), props.class),
           classNames: props.classNames,
           placeholder: props.placeholder,
           size: props.size,
@@ -241,7 +241,7 @@ export const NumberInputScrubber = defineComponent({
         {
           ...attrs,
           asChild: true,
-          class: cn(numberInputVariants().scrubber(), props.class),
+          class: cn(numberInputRecipe().scrubber(), props.class),
         },
         () =>
           h(NumberInputPrimitive.Label as ArkPart, { asChild: true }, () =>

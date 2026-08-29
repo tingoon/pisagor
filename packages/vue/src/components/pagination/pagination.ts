@@ -1,8 +1,8 @@
 import { ark } from "@ark-ui/vue/factory";
 import { Pagination as PaginationPrimitive, usePaginationContext } from "@ark-ui/vue/pagination";
 import { PhCaretLeft, PhCaretRight, PhDotsThree } from "@phosphor-icons/vue";
-import { buttonVariants } from "@pisagor/recipes/button";
-import { paginationVariants } from "@pisagor/recipes/pagination";
+import { buttonRecipe } from "@pisagor/recipes/button";
+import { paginationRecipe } from "@pisagor/recipes/pagination";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { Button, type ButtonProps } from "../button";
@@ -24,7 +24,7 @@ export const PaginationRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = paginationVariants();
+      const variantSlots = paginationRecipe();
 
       return h(
         PaginationPrimitive.Root as ArkPart,
@@ -75,7 +75,7 @@ export const PaginationItem = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = paginationVariants();
+      const variantSlots = paginationRecipe();
 
       return h(PaginationPrimitive.Item as ArkPart, { ...attrs, asChild: true }, () =>
         h(
@@ -157,7 +157,7 @@ export const PaginationItemLink = defineComponent({
         ark.a as ArkPart,
         {
           ...attrs,
-          class: cn(buttonVariants({ size: props.size, variant }), props.class, attrs.class),
+          class: cn(buttonRecipe({ size: props.size, variant }).base(), props.class, attrs.class),
           href: `?page=${pageValue()}`,
         },
         slots,
@@ -174,7 +174,7 @@ export const PaginationEllipsis = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = paginationVariants();
+      const variantSlots = paginationRecipe();
 
       return h(
         PaginationPrimitive.Ellipsis as ArkPart,

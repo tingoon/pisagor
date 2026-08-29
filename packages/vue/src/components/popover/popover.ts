@@ -1,5 +1,5 @@
 import { Popover as PopoverPrimitive } from "@ark-ui/vue/popover";
-import { popoverVariants } from "@pisagor/recipes/popover";
+import { popoverRecipe } from "@pisagor/recipes/popover";
 import { type CSSProperties, defineComponent, h, type PropType, Teleport } from "vue";
 import { renderIconCloseButton } from "../../internal/close-button";
 
@@ -90,7 +90,7 @@ export const PopoverContent = defineComponent({
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const slots = popoverVariants();
+      const slots = popoverRecipe();
 
       return popoverTeleport(
         h(PopoverPositioner, null, () =>
@@ -125,7 +125,7 @@ export const PopoverHeader = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const recipe = popoverVariants();
+      const recipe = popoverRecipe();
 
       return h(
         "div",
@@ -153,7 +153,7 @@ export const PopoverTitle = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const recipe = popoverVariants();
+      const recipe = popoverRecipe();
 
       return h(
         PopoverPrimitive.Title as ArkPart,
@@ -175,7 +175,7 @@ export const PopoverDescription = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const recipe = popoverVariants();
+      const recipe = popoverRecipe();
 
       return h(
         PopoverPrimitive.Description as ArkPart,
@@ -197,7 +197,7 @@ export const PopoverBody = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const recipe = popoverVariants();
+      const recipe = popoverRecipe();
 
       return h(
         "div",
@@ -221,7 +221,7 @@ export const PopoverFooter = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const recipe = popoverVariants();
+      const recipe = popoverRecipe();
 
       return h(
         "div",
@@ -253,7 +253,7 @@ export const PopoverArrow = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const recipe = popoverVariants();
+      const recipe = popoverRecipe();
 
       return h(
         PopoverPrimitive.Arrow as ArkPart,

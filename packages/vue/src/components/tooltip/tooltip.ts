@@ -1,5 +1,5 @@
 import { Tooltip as TooltipPrimitive } from "@ark-ui/vue/tooltip";
-import { type TooltipSlots, tooltipVariants } from "@pisagor/recipes/tooltip";
+import { type TooltipSlots, tooltipRecipe } from "@pisagor/recipes/tooltip";
 import { defineComponent, h, type PropType, Teleport, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 
@@ -58,7 +58,7 @@ export const Tooltip = defineComponent({
   },
   setup(props, { attrs }) {
     return () => {
-      const slots = tooltipVariants();
+      const slots = tooltipRecipe();
       const trigger = isTriggerHandle(props.children)
         ? h(TooltipPrimitive.Context as ArkPart, null, {
             default: (api: { getTriggerProps: () => Record<string, unknown> }) =>

@@ -1,13 +1,11 @@
 import { ark } from "@ark-ui/vue/factory";
-import { statusVariants } from "@pisagor/recipes/status";
+import { type StatusVariantProps, statusRecipe } from "@pisagor/recipes/status";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
-export interface StatusProps {
+export interface StatusProps extends StatusVariantProps {
   class?: unknown;
-  size?: "sm" | "md" | "lg";
-  variant?: "default" | "success" | "info" | "warning" | "destructive";
 }
 // #endregion
 
@@ -28,7 +26,7 @@ export const Status = defineComponent({
         ark.span as ArkPart,
         {
           ...attrs,
-          class: cn(statusVariants({ size: props.size, variant: props.variant }), props.class),
+          class: cn(statusRecipe({ size: props.size, variant: props.variant }), props.class),
           "data-part": "indicator",
           "data-scope": "status",
           "data-size": props.size,

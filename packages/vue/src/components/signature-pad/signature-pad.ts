@@ -5,8 +5,8 @@ import {
   SignaturePad as SignaturePadPrimitive,
 } from "@ark-ui/vue/signature-pad";
 import { PhArrowCounterClockwise } from "@phosphor-icons/vue";
-import { formControlZoneVariants } from "@pisagor/recipes/form-control";
-import { type SignaturePadSlots, signaturePadVariants } from "@pisagor/recipes/signature-pad";
+import { formControlZoneRecipe } from "@pisagor/recipes/form-control";
+import { type SignaturePadSlots, signaturePadRecipe } from "@pisagor/recipes/signature-pad";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { VariantClassNames } from "../../internal/types";
@@ -79,7 +79,7 @@ export const SignaturePad = defineComponent({
   },
   setup(props, { attrs }) {
     return () => {
-      const slots_ = signaturePadVariants();
+      const slots_ = signaturePadRecipe();
       const resolved = {
         surfaceVariant: undefined,
         variant: props.variant ?? ("primary" as FormControlVariant),
@@ -110,7 +110,7 @@ export const SignaturePad = defineComponent({
             {
               ...controlProps,
               class: cn(
-                formControlZoneVariants({ ...shellArgs }),
+                formControlZoneRecipe({ ...shellArgs }),
                 slots_.control({
                   class: cn(
                     resolved.variant === "primary" && "shadow-xs/5",

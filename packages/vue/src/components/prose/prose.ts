@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { proseVariants } from "@pisagor/recipes/prose";
+import { proseRecipe } from "@pisagor/recipes/prose";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 
@@ -32,7 +32,7 @@ export const Prose = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(proseVariants(), props.class),
+          class: cn(proseRecipe(), props.class),
           "data-part": "root",
           "data-scope": "prose",
           ...(props.html ? { innerHTML: props.html } : null),

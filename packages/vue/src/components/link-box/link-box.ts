@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { linkBoxVariants } from "@pisagor/recipes/link-box";
+import { linkBoxRecipe } from "@pisagor/recipes/link-box";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
@@ -19,7 +19,7 @@ export const LinkBoxRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = linkBoxVariants();
+      const variantSlots = linkBoxRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -43,7 +43,7 @@ export const LinkOverlayLink = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = linkBoxVariants();
+      const variantSlots = linkBoxRecipe();
 
       return h(
         ark.a as ArkPart,

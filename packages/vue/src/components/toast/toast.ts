@@ -4,7 +4,7 @@ import {
   Toast as ToastPrimitive,
 } from "@ark-ui/vue/toast";
 import { PhCheckCircle, PhInfo, PhWarning, PhWarningCircle, PhX } from "@phosphor-icons/vue";
-import { type ToastItemSlots, toastItemVariants, toastVariants } from "@pisagor/recipes/toast";
+import { type ToastItemSlots, toastItemRecipe, toastRecipe } from "@pisagor/recipes/toast";
 import { cn } from "@pisagor/utils";
 
 type ClassValue = Parameters<typeof cn>[0];
@@ -85,7 +85,7 @@ export const ToasterRoot = defineComponent({
           ToasterPrimitive as ArkPart,
           {
             ...attrs,
-            class: cn(toastVariants(), props.class),
+            class: cn(toastRecipe(), props.class),
             style: { "--width": "356px", ...(props.style ?? {}) } as Record<string, unknown>,
             toaster: props.toaster ?? toast,
           },
@@ -114,7 +114,7 @@ export const ToastItem = defineComponent({
   },
   setup(props, { attrs }) {
     return () => {
-      const slots = toastItemVariants();
+      const slots = toastItemRecipe();
 
       const toastData = props.toast;
       const toastAction = toastData.action;

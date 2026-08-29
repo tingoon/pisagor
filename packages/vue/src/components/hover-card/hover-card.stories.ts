@@ -1,5 +1,5 @@
 import { PhMapPin } from "@phosphor-icons/vue";
-import { buttonVariants } from "@pisagor/recipes/button";
+import { buttonRecipe } from "@pisagor/recipes/button";
 import { cn } from "@pisagor/utils";
 import { Avatar, Button, HoverCard } from "@pisagor/vue";
 import { h, ref } from "vue";
@@ -36,7 +36,10 @@ export const Default = meta.story({
           h(HoverCard.Trigger, { asChild: true }, () =>
             h(
               "button",
-              { class: cn(buttonVariants({ variant: "link" }), "underline"), type: "button" },
+              {
+                class: cn(buttonRecipe({ variant: "link" }).base(), "underline"),
+                type: "button",
+              },
               "Hover here",
             ),
           ),

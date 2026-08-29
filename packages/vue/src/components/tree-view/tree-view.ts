@@ -12,11 +12,11 @@ import {
   PhFolderOpen,
   PhMinus,
 } from "@phosphor-icons/vue";
-import { formControlToggleVariants } from "@pisagor/recipes/form-control";
+import { formControlToggleRecipe } from "@pisagor/recipes/form-control";
 import {
-  treeViewBranchVariants,
-  treeViewItemVariants,
-  treeViewVariants,
+  treeViewBranchRecipe,
+  treeViewItemRecipe,
+  treeViewRecipe,
 } from "@pisagor/recipes/tree-view";
 import { cn } from "@pisagor/utils";
 import { defineComponent, Fragment, h, type PropType } from "vue";
@@ -91,7 +91,7 @@ export const TreeViewRoot = defineComponent({
     provideTreeViewContext({ fileIcons: props.fileIcons });
 
     return () => {
-      const variantSlots = treeViewVariants();
+      const variantSlots = treeViewRecipe();
 
       return h(
         TreeViewPrimitive.Root as ArkPart,
@@ -115,7 +115,7 @@ export const TreeViewLabel = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = treeViewVariants();
+      const variantSlots = treeViewRecipe();
 
       return h(
         TreeViewPrimitive.Label as ArkPart,
@@ -137,7 +137,7 @@ export const TreeViewTree = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = treeViewVariants();
+      const variantSlots = treeViewRecipe();
 
       return h(
         TreeViewPrimitive.Tree as ArkPart,
@@ -165,7 +165,7 @@ export const TreeViewBranch = defineComponent({
   name: "TreeViewBranch",
   setup(_, { attrs, slots }) {
     return () => {
-      const variantSlots = treeViewBranchVariants();
+      const variantSlots = treeViewBranchRecipe();
 
       return h(
         TreeViewPrimitive.Branch as ArkPart,
@@ -181,7 +181,7 @@ export const TreeViewBranchIndicator = defineComponent({
   name: "TreeViewBranchIndicator",
   setup(_, { attrs, slots }) {
     return () => {
-      const variantSlots = treeViewBranchVariants();
+      const variantSlots = treeViewBranchRecipe();
 
       return h(
         TreeViewPrimitive.BranchIndicator as ArkPart,
@@ -203,7 +203,7 @@ export const TreeViewBranchContent = defineComponent({
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const variantSlots = treeViewBranchVariants();
+      const variantSlots = treeViewBranchRecipe();
 
       return h(
         TreeViewPrimitive.BranchContent as ArkPart,
@@ -222,7 +222,7 @@ const TreeViewBranchIndentGuide = defineComponent({
   name: "TreeViewBranchIndentGuide",
   setup(_, { attrs, slots: children }) {
     return () => {
-      const variantSlots = treeViewBranchVariants();
+      const variantSlots = treeViewBranchRecipe();
 
       return h(
         TreeViewPrimitive.BranchIndentGuide as ArkPart,
@@ -246,7 +246,7 @@ export const TreeViewBranchControl = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = treeViewVariants();
+      const variantSlots = treeViewRecipe();
 
       return h(
         TreeViewPrimitive.BranchControl as ArkPart,
@@ -291,7 +291,7 @@ const TreeViewBranchTitle = defineComponent({
 
           const showCollapsedIcon = IconComponent !== null && !expanded;
           const showExpandedIcon = ExpandedIconComponent !== null && expanded;
-          const variantSlots = treeViewBranchVariants();
+          const variantSlots = treeViewBranchRecipe();
 
           return h(
             TreeViewPrimitive.BranchText as ArkPart,
@@ -321,7 +321,7 @@ export const TreeViewItem = defineComponent({
   name: "TreeViewItem",
   setup(_, { attrs, slots }) {
     return () => {
-      const variantSlots = treeViewVariants();
+      const variantSlots = treeViewRecipe();
 
       return h(
         TreeViewPrimitive.Item as ArkPart,
@@ -340,7 +340,7 @@ export const TreeViewItemTitle = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = treeViewItemVariants();
+      const variantSlots = treeViewItemRecipe();
 
       return h(
         TreeViewPrimitive.ItemText as ArkPart,
@@ -359,7 +359,7 @@ const TreeViewItemIcon = defineComponent({
   name: "TreeViewItemIcon",
   setup(_, { attrs, slots }) {
     return () => {
-      const variantSlots = treeViewItemVariants();
+      const variantSlots = treeViewItemRecipe();
 
       return h(
         ark.span as ArkPart,
@@ -383,7 +383,7 @@ export const TreeViewNodeInput = defineComponent({
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = treeViewItemVariants();
+      const variantSlots = treeViewItemRecipe();
 
       return h(
         TreeViewPrimitive.NodeRenameInput as ArkPart,
@@ -438,13 +438,13 @@ export const TreeViewNodeCheckbox = defineComponent({
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = treeViewItemVariants();
+      const variantSlots = treeViewItemRecipe();
 
       return h(
         TreeViewPrimitive.NodeCheckbox as ArkPart,
         {
           ...attrs,
-          class: cn(formControlToggleVariants(), variantSlots.checkbox(), props.class, attrs.class),
+          class: cn(formControlToggleRecipe(), variantSlots.checkbox(), props.class, attrs.class),
         },
         () =>
           h(

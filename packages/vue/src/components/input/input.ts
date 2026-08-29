@@ -1,5 +1,10 @@
 import { Field as FieldPrimitive } from "@ark-ui/vue/field";
-import { type InputSlots, inputRootVariants, inputVariants } from "@pisagor/recipes/input";
+import {
+  type InputRootVariantProps,
+  type InputSlots,
+  inputRecipe,
+  inputRootRecipe,
+} from "@pisagor/recipes/input";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
 import {
@@ -13,13 +18,12 @@ import { InputClearAddon } from "./input-clear-button";
 type FormControlVariant = "primary" | "secondary";
 
 type ArkPart = Parameters<typeof h>[0];
-type InputSize = "lg" | "md" | "sm";
 type InputClassNames = VariantClassNames<InputSlots>;
 
 type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
 
 // #region Types
-export interface InputProps {
+export interface InputProps extends InputRootVariantProps {
   class?: unknown;
   classNames?: InputClassNames;
   clearable?: boolean;
@@ -28,10 +32,8 @@ export interface InputProps {
   onChange?: ClearableInputChangeHandler;
   onValueChange?: (value: string) => void;
   readOnly?: boolean;
-  size?: InputSize;
   type?: string;
   value?: string | number | readonly string[];
-  variant?: FormControlVariant;
 }
 // #endregion
 
@@ -51,7 +53,7 @@ export const Input = defineComponent({
     onChange: { default: undefined, type: Function as PropType<InputProps["onChange"]> },
     onValueChange: { default: undefined, type: Function as PropType<InputProps["onValueChange"]> },
     readOnly: { default: undefined, type: Boolean },
-    size: { default: "md", type: String as PropType<InputSize> },
+    size: { default: "md", type: String as PropType<InputProps["size"]> },
     type: { default: "text", type: String },
     value: { default: undefined, type: [String, Number, Array] as PropType<InputProps["value"]> },
     variant: { default: undefined, type: String as PropType<FormControlVariant> },
@@ -82,7 +84,7 @@ export const Input = defineComponent({
       const skipClearable = !props.clearable || props.type === "file" || props.type === "password";
       const shellArgs = { variant: resolved.variant };
       const controlProps = { "data-variant": resolved.variant };
-      const slots = inputVariants();
+      const slots = inputRecipe();
 
       const changeHandler = skipClearable
         ? props.onChange || props.onValueChange
@@ -98,7 +100,7 @@ export const Input = defineComponent({
         return h(FieldPrimitive.Input as ArkPart, {
           ...attrs,
           ...controlProps,
-          class: cn(inputRootVariants({ size: props.size, ...shellArgs }), props.class),
+          class: cn(inputRootRecipe({ size: props.size, ...shellArgs }), props.class),
           "data-size": props.size,
           defaultValue: props.defaultValue,
           disabled: props.disabled,

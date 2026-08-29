@@ -1,6 +1,6 @@
 import { RatingGroup as RatingGroupPrimitive } from "@ark-ui/vue/rating-group";
 import { PhStar } from "@phosphor-icons/vue";
-import { ratingVariants } from "@pisagor/recipes/rating";
+import { ratingRecipe } from "@pisagor/recipes/rating";
 import { cn } from "@pisagor/utils";
 
 type FormControlVariant = "primary" | "secondary";
@@ -46,7 +46,7 @@ export const Rating = defineComponent({
         surfaceVariant: undefined,
         variant: props.variant ?? ("primary" as FormControlVariant),
       };
-      const slots = ratingVariants();
+      const slots = ratingRecipe();
       const surfaceTone = resolved.variant === "secondary" ? "opacity-90" : undefined;
 
       const icon = props.icon ?? PhStar;

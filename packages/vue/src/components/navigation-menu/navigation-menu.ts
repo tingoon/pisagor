@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type NavigationMenuSlots, navigationMenuVariants } from "@pisagor/recipes/navigation-menu";
+import { type NavigationMenuSlots, navigationMenuRecipe } from "@pisagor/recipes/navigation-menu";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { VariantClassNames } from "../../internal/types";
@@ -20,7 +20,7 @@ export const NavigationMenuRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = navigationMenuVariants();
+      const slots$ = navigationMenuRecipe();
 
       return h(
         ark.nav as ArkPart,
@@ -45,7 +45,7 @@ export const NavigationMenuList = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = navigationMenuVariants();
+      const slots$ = navigationMenuRecipe();
 
       return h(
         ark.ul as ArkPart,
@@ -70,7 +70,7 @@ export const NavigationMenuItem = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = navigationMenuVariants();
+      const slots$ = navigationMenuRecipe();
 
       return h(
         ark.li as ArkPart,
@@ -96,7 +96,7 @@ export const NavigationMenuLink = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = navigationMenuVariants();
+      const slots$ = navigationMenuRecipe();
 
       return h(
         ark.a as ArkPart,

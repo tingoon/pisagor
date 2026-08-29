@@ -1,7 +1,7 @@
 import { Field as FieldPrimitive } from "@ark-ui/vue/field";
 import { Fieldset as FieldsetPrimitive } from "@ark-ui/vue/fieldset";
-import { fieldVariants } from "@pisagor/recipes/field";
-import { formControlSeparatorVariants } from "@pisagor/recipes/form-control";
+import { fieldRecipe } from "@pisagor/recipes/field";
+import { formControlSeparatorRecipe } from "@pisagor/recipes/form-control";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { Separator } from "../separator/separator";
@@ -34,7 +34,7 @@ export const FieldRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fieldVariants({
+      const variantSlots = fieldRecipe({
         orientation: props.orientation,
         reverse: props.reverse,
       });
@@ -60,7 +60,7 @@ export const FieldSet = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fieldVariants();
+      const variantSlots = fieldRecipe();
 
       return h(
         FieldsetPrimitive.Root as ArkPart,
@@ -83,7 +83,7 @@ export const FieldLegend = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fieldVariants();
+      const variantSlots = fieldRecipe();
 
       return h(
         FieldsetPrimitive.Legend as ArkPart,
@@ -106,7 +106,7 @@ export const FieldGroup = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fieldVariants();
+      const variantSlots = fieldRecipe();
 
       return h(
         "div",
@@ -130,7 +130,7 @@ export const FieldContent = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fieldVariants();
+      const variantSlots = fieldRecipe();
 
       return h(
         "div",
@@ -155,7 +155,7 @@ export const FieldLabel = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fieldVariants();
+      const variantSlots = fieldRecipe();
 
       return h(
         FieldPrimitive.Label as ArkPart,
@@ -178,7 +178,7 @@ export const FieldRequiredIndicator = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fieldVariants();
+      const variantSlots = fieldRecipe();
 
       return h(
         FieldPrimitive.RequiredIndicator as ArkPart,
@@ -201,7 +201,7 @@ export const FieldTitle = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fieldVariants();
+      const variantSlots = fieldRecipe();
 
       return h(
         "div",
@@ -225,7 +225,7 @@ export const FieldDescription = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fieldVariants();
+      const variantSlots = fieldRecipe();
 
       return h(
         "p",
@@ -252,7 +252,7 @@ export const FieldSeparator = defineComponent({
       const resolved = { surfaceVariant: undefined, variant: "primary" as FormControlVariant };
       const shellArgs = { variant: resolved.variant };
       const children = slots.default?.();
-      const variantSlots = fieldVariants();
+      const variantSlots = fieldRecipe();
 
       return h(
         "div",
@@ -266,7 +266,7 @@ export const FieldSeparator = defineComponent({
         [
           h(Separator as ArkPart, { class: variantSlots.inline() }),
           children
-            ? h("span", { class: cn(formControlSeparatorVariants({ ...shellArgs })) }, children)
+            ? h("span", { class: cn(formControlSeparatorRecipe({ ...shellArgs })) }, children)
             : null,
         ],
       );
@@ -282,7 +282,7 @@ export const FieldHelper = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fieldVariants();
+      const variantSlots = fieldRecipe();
 
       return h(
         FieldPrimitive.HelperText as ArkPart,
@@ -304,7 +304,7 @@ export const FieldError = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fieldVariants();
+      const variantSlots = fieldRecipe();
 
       return h(
         FieldPrimitive.ErrorText as ArkPart,

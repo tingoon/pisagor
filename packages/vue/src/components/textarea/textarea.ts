@@ -1,6 +1,9 @@
 import { Field as FieldPrimitive } from "@ark-ui/vue/field";
-import { formControlShellVariants } from "@pisagor/recipes/form-control";
-import { type TextareaSlots, textareaVariants } from "@pisagor/recipes/textarea";
+import {
+  type FormControlShellVariantProps,
+  formControlShellRecipe,
+} from "@pisagor/recipes/form-control";
+import { type TextareaSlots, textareaRecipe } from "@pisagor/recipes/textarea";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
 import {
@@ -19,7 +22,7 @@ type TextareaClassNames = VariantClassNames<TextareaSlots>;
 type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
 
 // #region Types
-export interface TextareaProps {
+export interface TextareaProps extends FormControlShellVariantProps {
   class?: unknown;
   classNames?: TextareaClassNames;
   clearable?: boolean;
@@ -29,7 +32,6 @@ export interface TextareaProps {
   onValueChange?: (value: string) => void;
   readOnly?: boolean;
   value?: string | number | readonly string[];
-  variant?: FormControlVariant;
 }
 // #endregion
 
@@ -79,7 +81,7 @@ export const Textarea = defineComponent({
       const skipClearable = !props.clearable;
       const shellArgs = { variant: resolved.variant };
       const controlProps = { "data-variant": resolved.variant };
-      const slots = textareaVariants();
+      const slots = textareaRecipe();
 
       const changeHandler = skipClearable
         ? props.onChange || props.onValueChange
@@ -96,7 +98,7 @@ export const Textarea = defineComponent({
           ...attrs,
           ...controlProps,
           class: cn(
-            formControlShellVariants({ size: "md", ...shellArgs }),
+            formControlShellRecipe({ size: "md", ...shellArgs }),
             slots.rootLayout({
               class: cn(props.class, props.classNames?.rootLayout),
             }),

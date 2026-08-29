@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { announcementVariants } from "@pisagor/recipes/announcement";
+import { announcementRecipe } from "@pisagor/recipes/announcement";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
 // #region Types
@@ -32,7 +32,7 @@ export const AnnouncementRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = announcementVariants();
+      const variantSlots = announcementRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -57,7 +57,7 @@ export const AnnouncementTitle = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = announcementVariants();
+      const variantSlots = announcementRecipe();
 
       return h(
         ark.span as ArkPart,

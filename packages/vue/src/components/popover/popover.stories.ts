@@ -1,4 +1,4 @@
-import { buttonVariants } from "@pisagor/recipes/button";
+import { buttonRecipe } from "@pisagor/recipes/button";
 import { cn } from "@pisagor/utils";
 import { Field, Input, Popover } from "@pisagor/vue";
 import { h } from "vue";
@@ -158,7 +158,7 @@ export const Nested = meta.story({
                   h(
                     "button",
                     {
-                      class: cn(buttonVariants({ size: "sm", variant: "outline" })),
+                      class: cn(buttonRecipe({ size: "sm", variant: "outline" }).base()),
                       type: "button",
                     },
                     "Open nested",

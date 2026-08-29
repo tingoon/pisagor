@@ -5,9 +5,9 @@ import { Select as SelectPrimitive, useSelectContext as useSelect } from "@ark-u
 import { PhCaretUpDown, PhCheck, PhX } from "@phosphor-icons/vue";
 import {
   type FormControlShellVariantProps,
-  formControlShellVariants,
+  formControlShellRecipe,
 } from "@pisagor/recipes/form-control";
-import { selectVariants } from "@pisagor/recipes/select";
+import { selectRecipe } from "@pisagor/recipes/select";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, Teleport, type VNodeChild } from "vue";
 import { Separator } from "../separator/separator";
@@ -103,7 +103,7 @@ export const SelectTrigger = defineComponent({
       };
       const shellArgs = { variant: resolved.variant };
       const controlProps = { "data-variant": resolved.variant };
-      const styleSlots = selectVariants();
+      const styleSlots = selectRecipe();
 
       return h(SelectPrimitive.Control as ArkPart, {}, () =>
         h(
@@ -112,7 +112,7 @@ export const SelectTrigger = defineComponent({
             ...attrs,
             ...controlProps,
             class: cn(
-              formControlShellVariants({ size: props.size, ...shellArgs }),
+              formControlShellRecipe({ size: props.size, ...shellArgs }),
               styleSlots.trigger(),
               props.class,
               attrs.class,
@@ -144,7 +144,7 @@ export const SelectSeparator = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const styleSlots = selectVariants();
+      const styleSlots = selectRecipe();
 
       return h(
         Separator as ArkPart,
@@ -170,7 +170,7 @@ export const SelectValueText = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const styleSlots = selectVariants();
+      const styleSlots = selectRecipe();
 
       return h(
         SelectPrimitive.ValueText as ArkPart,
@@ -197,7 +197,7 @@ export const SelectContent = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const styleSlots = selectVariants();
+      const styleSlots = selectRecipe();
 
       return selectTeleport(
         h(SelectPrimitive.Positioner as ArkPart, {}, () =>
@@ -244,7 +244,7 @@ export const SelectItemGroupLabel = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const styleSlots = selectVariants();
+      const styleSlots = selectRecipe();
 
       return h(
         SelectPrimitive.ItemGroupLabel as ArkPart,
@@ -268,7 +268,7 @@ export const SelectItem = defineComponent({
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const styleSlots = selectVariants();
+      const styleSlots = selectRecipe();
 
       return h(
         SelectPrimitive.Item as ArkPart,
@@ -305,7 +305,7 @@ export const SelectClearTrigger = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const styleSlots = selectVariants();
+      const styleSlots = selectRecipe();
 
       return h(
         SelectPrimitive.ClearTrigger as ArkPart,
@@ -329,7 +329,7 @@ export const SelectEmpty = defineComponent({
   setup(props, { attrs, slots }) {
     return () => {
       const api = useSelect();
-      const styleSlots = selectVariants();
+      const styleSlots = selectRecipe();
 
       if (api.value.empty) {
         return h(

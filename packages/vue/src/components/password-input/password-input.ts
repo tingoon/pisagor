@@ -1,6 +1,6 @@
 import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/vue/password-input";
 import { PhEye, PhEyeSlash, PhX } from "@phosphor-icons/vue";
-import { passwordInputVariants } from "@pisagor/recipes/password-input";
+import { passwordInputRecipe } from "@pisagor/recipes/password-input";
 import { defineComponent, h, type PropType } from "vue";
 import {
   type ClearableChangeEvent,
@@ -9,15 +9,12 @@ import {
 import { InputGroup } from "../input-group";
 import type { InputGroupButtonProps, InputGroupProps } from "../input-group/input-group-core";
 
-type FormControlVariant = "primary" | "secondary";
-
 type ArkPart = Parameters<typeof h>[0];
-type InputGroupSize = InputGroupProps["size"];
 
 type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
 
 // #region Types
-export interface PasswordInputProps {
+export interface PasswordInputProps extends Pick<InputGroupProps, "size" | "variant"> {
   class?: unknown;
   clearButtonProps?: InputGroupButtonProps;
   clearable?: boolean;
@@ -31,9 +28,7 @@ export interface PasswordInputProps {
   onVisibilityChange?: (details: { visible: boolean }) => void;
   placeholder?: string;
   readOnly?: boolean;
-  size?: InputGroupSize;
   value?: string;
-  variant?: FormControlVariant;
   visibilityTriggerProps?: Record<string, unknown>;
   visible?: boolean;
 }
@@ -63,9 +58,9 @@ export const PasswordInput = defineComponent({
     },
     placeholder: { default: undefined, type: String },
     readOnly: { default: undefined, type: Boolean },
-    size: { default: "md", type: String as PropType<InputGroupSize> },
+    size: { default: "md", type: String as PropType<PasswordInputProps["size"]> },
     value: { default: undefined, type: String },
-    variant: { default: undefined, type: String as PropType<FormControlVariant> },
+    variant: { default: undefined, type: String as PropType<PasswordInputProps["variant"]> },
     visibilityTriggerProps: {
       default: undefined,
       type: Object as PropType<Record<string, unknown>>,
@@ -86,7 +81,7 @@ export const PasswordInput = defineComponent({
     return () => {
       const { onClick: onClearClick, ...restClearButtonProps } = props.clearButtonProps ?? {};
       const { fallback, ...restIndicatorProps } = props.indicatorProps ?? {};
-      const variantSlots = passwordInputVariants();
+      const variantSlots = passwordInputRecipe();
 
       return h(
         PasswordInputPrimitive.Root as ArkPart,

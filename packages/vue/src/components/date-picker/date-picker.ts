@@ -4,7 +4,7 @@ import {
   useDatePickerContext as useDatePicker,
 } from "@ark-ui/vue/date-picker";
 import { PhCalendar, PhClock, PhX } from "@phosphor-icons/vue";
-import { datePickerVariants } from "@pisagor/recipes/date-picker";
+import { datePickerRecipe } from "@pisagor/recipes/date-picker";
 import { cn } from "@pisagor/utils";
 
 type FormControlVariant = "primary" | "secondary";
@@ -90,14 +90,14 @@ export const DatePickerTrigger = defineComponent({
         DatePickerPrimitive.Control as ArkPart,
         {
           ...attrs,
-          class: datePickerVariants().control(),
+          class: datePickerRecipe().control(),
         },
         () => [
           h(
             DatePickerPrimitive.Trigger as ArkPart,
             {
               ...attrs,
-              class: datePickerVariants().trigger(),
+              class: datePickerRecipe().trigger(),
             },
             () => slots.default?.(),
           ),
@@ -227,7 +227,7 @@ export const DatePickerTimer = defineComponent({
           {
             ...attrs,
             class: cn(
-              datePickerVariants().timer(),
+              datePickerRecipe().timer(),
               props.class,
               (attrs as { class?: ClassValue }).class,
             ),
@@ -265,7 +265,7 @@ export const DatePickerContent = defineComponent({
           {
             ...attrs,
             class: cn(
-              datePickerVariants().content(),
+              datePickerRecipe().content(),
               props.class,
               (attrs as { class?: ClassValue }).class,
             ),
@@ -299,7 +299,7 @@ export const DatePickerValueText = defineComponent({
     return () =>
       h(DatePickerPrimitive.ValueText as ArkPart, {
         ...attrs,
-        class: cn(datePickerVariants().valueText(), (attrs as { class?: ClassValue }).class),
+        class: cn(datePickerRecipe().valueText(), (attrs as { class?: ClassValue }).class),
       });
   },
 });

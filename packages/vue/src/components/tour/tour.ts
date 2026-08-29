@@ -6,8 +6,8 @@ import {
   useTour,
 } from "@ark-ui/vue/tour";
 import { PhCaretLeft, PhCaretRight, PhX } from "@phosphor-icons/vue";
-import { dialogVariants } from "@pisagor/recipes/dialog";
-import { type TourVariants, tourVariants } from "@pisagor/recipes/tour";
+import { dialogRecipe } from "@pisagor/recipes/dialog";
+import { type TourSlots, tourRecipe } from "@pisagor/recipes/tour";
 import { cn } from "@pisagor/utils";
 import {
   computed,
@@ -34,8 +34,8 @@ export type TourStepType = TourStepDetails;
 interface TourContextProps {
   /** The function to start the tour */
   handleStart: () => void;
-  /** Slot class recipes from `tourVariants`. */
-  slots: TourVariants;
+  /** Slot class recipes from `tourRecipe`. */
+  slots: TourSlots;
   /** The tour instance */
   tour: UnwrapRef<UseTourReturn>;
 }
@@ -118,7 +118,7 @@ export const TourRoot = defineComponent({
 
     const context = reactive({
       handleStart,
-      slots: tourVariants(),
+      slots: tourRecipe(),
       tour,
     });
 
@@ -189,7 +189,7 @@ export const TourBackdrop = defineComponent({
 
       return h(TourPrimitive.Backdrop as ArkPart, {
         ...attrs,
-        class: cn(dialogVariants().backdrop(), ctx.slots.backdrop(), props.class),
+        class: cn(dialogRecipe().backdrop(), ctx.slots.backdrop(), props.class),
       });
     };
   },

@@ -1,5 +1,5 @@
 import { PhGlobe } from "@phosphor-icons/vue";
-import { phoneInputVariants } from "@pisagor/recipes/phone-input";
+import { phoneInputRecipe } from "@pisagor/recipes/phone-input";
 import { cn } from "@pisagor/utils";
 
 type FormControlVariant = "primary" | "secondary";
@@ -52,7 +52,7 @@ export const PhoneInput = defineComponent({
   },
   setup(props, { attrs }) {
     return () => {
-      const slots = phoneInputVariants({ size: props.size ?? "md" });
+      const slots = phoneInputRecipe({ size: props.size ?? "md" });
       const isControlled = props.value !== undefined;
       const internalValue = ref(props.defaultValue ?? "");
       const value = isControlled ? (props.value ?? "") : internalValue.value;

@@ -1,22 +1,12 @@
 import { ark } from "@ark-ui/vue/factory";
-import { badgeVariants } from "@pisagor/recipes/badge";
+import { type BadgeVariantProps, badgeRecipe } from "@pisagor/recipes/badge";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
-export type BadgeVariant =
-  | "default"
-  | "secondary"
-  | "outline"
-  | "destructive"
-  | "info"
-  | "success"
-  | "warning";
+export type BadgeVariant = NonNullable<BadgeVariantProps["variant"]>;
 
-export interface BadgeProps {
+export interface BadgeProps extends BadgeVariantProps {
   class?: unknown;
-  pill?: boolean;
-  size: "sm" | "md" | "lg";
-  variant: BadgeVariant;
 }
 // #endregion
 
@@ -38,7 +28,7 @@ export const Badge = defineComponent({
         ark.span as ArkPart,
         {
           ...attrs,
-          class: badgeVariants({
+          class: badgeRecipe({
             class: props.class as string | undefined,
             pill: props.pill,
             size: props.size,

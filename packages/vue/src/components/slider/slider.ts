@@ -1,5 +1,5 @@
 import { Slider as SliderPrimitive } from "@ark-ui/vue/slider";
-import { sliderVariants } from "@pisagor/recipes/slider";
+import { sliderRecipe } from "@pisagor/recipes/slider";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
 type FormControlVariant = "primary" | "secondary";
@@ -52,7 +52,7 @@ export const Slider = defineComponent({
       };
       const trackShellProps = { "data-variant": resolved.variant };
 
-      const variantSlots = sliderVariants();
+      const variantSlots = sliderRecipe();
 
       const thumbShadowClass = resolved.variant === "secondary" ? "shadow-none" : undefined;
       const trackVariantClass = resolved.variant === "secondary" ? "bg-muted/40" : "bg-input/64";

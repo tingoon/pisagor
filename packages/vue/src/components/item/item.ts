@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type ItemVariantProps, itemVariants } from "@pisagor/recipes/item";
+import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes/item";
 import { computed, defineComponent, h, type PropType, unref } from "vue";
 import { provideItemContext, resolveItemVariant, useItemSlots } from "./item.context";
 import { useItemGroupContextRef } from "./item-group.context";
@@ -7,14 +7,12 @@ import { useItemGroupContextRef } from "./item-group.context";
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface ItemProps {
+export interface ItemProps extends ItemVariantProps {
   class?: unknown;
-  variant?: ItemVariantProps["variant"];
 }
 
-export interface ItemMediaProps {
+export interface ItemMediaProps extends ItemVariantProps {
   class?: unknown;
-  variant?: ItemVariantProps["variant"];
 }
 
 export interface ItemHeaderProps {
@@ -35,7 +33,7 @@ export const ItemRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     const groupRef = useItemGroupContextRef();
-    const itemSlots = itemVariants();
+    const itemSlots = itemRecipe();
 
     provideItemContext(
       computed(() => {

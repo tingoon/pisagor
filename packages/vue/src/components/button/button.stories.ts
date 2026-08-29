@@ -137,7 +137,7 @@ export const Disabled = meta.story({
 export const Loading = meta.story({
   render: () => ({
     components: { Button },
-    template: "<Button is-loading>Loading</Button>",
+    template: "<Button loading>Loading</Button>",
   }),
 });
 

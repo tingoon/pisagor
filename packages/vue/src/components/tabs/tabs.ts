@@ -1,5 +1,5 @@
 import { Tabs as TabsPrimitive } from "@ark-ui/vue/tabs";
-import { tabsVariants } from "@pisagor/recipes/tabs";
+import { tabsRecipe } from "@pisagor/recipes/tabs";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
@@ -25,7 +25,7 @@ export const TabsRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = tabsVariants();
+      const variantSlots = tabsRecipe();
 
       return h(
         TabsPrimitive.Root as ArkPart,
@@ -50,7 +50,7 @@ export const TabsList = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = tabsVariants();
+      const variantSlots = tabsRecipe();
 
       return h(
         TabsPrimitive.List as ArkPart,
@@ -77,7 +77,7 @@ export const TabsTrigger = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = tabsVariants();
+      const variantSlots = tabsRecipe();
 
       return h(
         TabsPrimitive.Trigger as ArkPart,
@@ -99,7 +99,7 @@ export const TabsContent = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = tabsVariants();
+      const variantSlots = tabsRecipe();
 
       return h(
         TabsPrimitive.Content as ArkPart,

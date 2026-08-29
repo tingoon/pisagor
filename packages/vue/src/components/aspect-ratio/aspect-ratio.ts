@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { aspectRatioVariants } from "@pisagor/recipes/aspect-ratio";
+import { aspectRatioRecipe } from "@pisagor/recipes/aspect-ratio";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 
@@ -18,7 +18,7 @@ export const AspectRatio = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(aspectRatioVariants(), props.class),
+          class: cn(aspectRatioRecipe(), props.class),
           "data-part": "root",
           "data-scope": "aspect-ratio",
         },

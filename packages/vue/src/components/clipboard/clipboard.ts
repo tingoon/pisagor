@@ -3,9 +3,9 @@ import { PhCheck, PhClipboard } from "@phosphor-icons/vue";
 import {
   type ClipboardSlots,
   type ClipboardVariantProps,
-  clipboardVariants,
+  clipboardRecipe,
 } from "@pisagor/recipes/clipboard";
-import { formControlShellVariants } from "@pisagor/recipes/form-control";
+import { formControlShellRecipe } from "@pisagor/recipes/form-control";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";
@@ -18,7 +18,7 @@ type ClipboardClassNames = VariantClassNames<ClipboardSlots>;
 
 type ClipboardValueSize = ClipboardVariantProps["valueSize"];
 
-export interface ClipboardProps {
+export interface ClipboardProps extends ClipboardVariantProps {
   /** Accessible label for icon-only copy buttons */
   buttonAriaLabel?: string;
   /**
@@ -68,12 +68,6 @@ export interface ClipboardProps {
    * The controlled value of the clipboard.
    */
   value?: string;
-  /**
-   * Size of the value text when `variant` is `"value"`.
-   *
-   * @defaultValue "md"
-   */
-  valueSize?: ClipboardValueSize;
   /**
    * Display mode for the copy control.
    *
@@ -127,8 +121,8 @@ export const Clipboard = defineComponent({
       };
       const shellArgs = { variant: resolved.variant };
       const controlProps = { "data-variant": resolved.variant };
-      const shellClassName = formControlShellVariants({ size: "md", ...shellArgs });
-      const slots_ = clipboardVariants({ valueSize: props.valueSize });
+      const shellClassName = formControlShellRecipe({ size: "md", ...shellArgs });
+      const slots_ = clipboardRecipe({ valueSize: props.valueSize });
 
       const copiedIcon = props.copiedIcon ?? h(PhCheck);
       const copyIcon = props.copyIcon ?? h(PhClipboard);

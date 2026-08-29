@@ -6,11 +6,8 @@ import {
   PhTextItalic,
   PhTextStrikethrough,
 } from "@phosphor-icons/vue";
-import { formControlShellVariants } from "@pisagor/recipes/form-control";
-import {
-  type RichTextEditorVariants,
-  richTextEditorVariants,
-} from "@pisagor/recipes/rich-text-editor";
+import { formControlShellRecipe } from "@pisagor/recipes/form-control";
+import { type RichTextEditorSlots, richTextEditorRecipe } from "@pisagor/recipes/rich-text-editor";
 import { cn } from "@pisagor/utils";
 import StarterKit from "@tiptap/starter-kit";
 import { type Editor, EditorContent, useEditor } from "@tiptap/vue-3";
@@ -26,7 +23,7 @@ type ArkPart = Parameters<typeof h>[0];
 // #region Types
 interface RichTextEditorContextValue {
   editor: Editor | null;
-  slots: RichTextEditorVariants;
+  slots: RichTextEditorSlots;
 }
 
 export interface RichTextEditorRootProps {
@@ -100,7 +97,7 @@ export const RichTextEditorRoot = defineComponent({
   name: "RichTextEditorRoot",
   props: richTextEditorRootProps,
   setup(props, { attrs, slots }) {
-    const recipeSlots = richTextEditorVariants();
+    const recipeSlots = richTextEditorRecipe();
 
     const editor = useEditor({
       content: props.value ?? props.defaultValue ?? "<p></p>",
@@ -187,7 +184,7 @@ export const RichTextEditorRoot = defineComponent({
           "aria-label": resolvedAriaLabel,
           "aria-readonly": props.readOnly || undefined,
           class: cn(
-            formControlShellVariants({ ...shellArgs }),
+            formControlShellRecipe({ ...shellArgs }),
             recipeSlots.base({ class: props.class }),
             props.disabled && "pointer-events-none opacity-64",
           ),

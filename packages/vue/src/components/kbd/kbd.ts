@@ -1,12 +1,11 @@
 import { ark } from "@ark-ui/vue/factory";
-import { kbdGroupVariants, kbdVariants } from "@pisagor/recipes/kbd";
+import { type KbdVariantProps, kbdGroupRecipe, kbdRecipe } from "@pisagor/recipes/kbd";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
-export interface KbdProps {
+export interface KbdProps extends KbdVariantProps {
   class?: unknown;
-  variant?: "default" | "outline";
 }
 // #endregion
 
@@ -26,7 +25,7 @@ export const KbdRoot = defineComponent({
         ark.kbd as ArkPart,
         {
           ...attrs,
-          class: cn(kbdVariants({ variant: props.variant }), props.class),
+          class: cn(kbdRecipe({ variant: props.variant }), props.class),
           "data-part": "root",
           "data-scope": "kbd",
         },
@@ -47,7 +46,7 @@ export const KbdGroup = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(kbdGroupVariants(), props.class),
+          class: cn(kbdGroupRecipe(), props.class),
           "data-part": "group",
           "data-scope": "kbd",
         },

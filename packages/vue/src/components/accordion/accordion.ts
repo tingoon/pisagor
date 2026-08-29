@@ -1,6 +1,6 @@
 import { Accordion as AccordionPrimitive } from "@ark-ui/vue/accordion";
 import { PhCaretDown } from "@phosphor-icons/vue";
-import { accordionItemVariants } from "@pisagor/recipes/accordion";
+import { accordionItemRecipe } from "@pisagor/recipes/accordion";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
 // #region Types
@@ -54,7 +54,7 @@ export const AccordionItem = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = accordionItemVariants();
+      const variantSlots = accordionItemRecipe();
 
       return h(
         AccordionPrimitive.Item as ArkPart,
@@ -76,7 +76,7 @@ export const AccordionItemTrigger = defineComponent({
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const variantSlots = accordionItemVariants();
+      const variantSlots = accordionItemRecipe();
 
       return h(
         AccordionPrimitive.ItemTrigger as ArkPart,
@@ -103,7 +103,7 @@ export const AccordionItemContent = defineComponent({
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const variantSlots = accordionItemVariants();
+      const variantSlots = accordionItemRecipe();
 
       return h(
         AccordionPrimitive.ItemContent as ArkPart,

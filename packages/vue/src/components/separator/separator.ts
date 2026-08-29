@@ -1,4 +1,4 @@
-import { separatorVariants } from "@pisagor/recipes/separator";
+import { separatorRecipe } from "@pisagor/recipes/separator";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 
@@ -23,7 +23,7 @@ export const Separator = defineComponent({
       h("div", {
         ...attrs,
         "aria-orientation": props.orientation,
-        class: cn(separatorVariants(), props.class),
+        class: cn(separatorRecipe(), props.class),
         "data-orientation": props.orientation,
         "data-part": props.dataPart,
         "data-scope": props.dataScope,

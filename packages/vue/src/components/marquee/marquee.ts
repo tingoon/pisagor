@@ -1,5 +1,5 @@
 import { Marquee as MarqueePrimitive } from "@ark-ui/vue/marquee";
-import { marqueeVariants } from "@pisagor/recipes/marquee";
+import { marqueeRecipe } from "@pisagor/recipes/marquee";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
@@ -34,7 +34,7 @@ export const MarqueeRoot = defineComponent({
     return () => {
       const side = props.orientation === "horizontal" ? "start" : "bottom";
       const items = props.items;
-      const variantSlots = marqueeVariants();
+      const variantSlots = marqueeRecipe();
 
       return h(
         MarqueePrimitive.Root as ArkPart,
@@ -76,7 +76,7 @@ export const MarqueeContent = defineComponent({
   name: "MarqueeContent",
   setup(_, { attrs, slots: children }) {
     return () => {
-      const variantSlots = marqueeVariants();
+      const variantSlots = marqueeRecipe();
 
       return h(MarqueePrimitive.Viewport as ArkPart, { class: variantSlots.viewport() }, () =>
         h(
@@ -97,7 +97,7 @@ export const MarqueeItem = defineComponent({
   name: "MarqueeItem",
   setup(_, { attrs, slots }) {
     return () => {
-      const variantSlots = marqueeVariants();
+      const variantSlots = marqueeRecipe();
 
       return h(
         MarqueePrimitive.Item as ArkPart,
@@ -116,7 +116,7 @@ export const MarqueeEdge = defineComponent({
   name: "MarqueeEdge",
   setup(_, { attrs, slots }) {
     return () => {
-      const variantSlots = marqueeVariants();
+      const variantSlots = marqueeRecipe();
 
       return h(
         MarqueePrimitive.Edge as ArkPart,

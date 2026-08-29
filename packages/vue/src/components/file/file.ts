@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
 import { PhFile } from "@phosphor-icons/vue";
-import { type FileVariantProps, fileVariants } from "@pisagor/recipes/file";
+import { type FileVariantProps, fileRecipe } from "@pisagor/recipes/file";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { Format } from "../format";
 
@@ -33,7 +33,7 @@ export const FileRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fileVariants();
+      const variantSlots = fileRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -58,7 +58,7 @@ export const FileMedia = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fileVariants();
+      const variantSlots = fileRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -83,7 +83,7 @@ export const FileContent = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fileVariants();
+      const variantSlots = fileRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -107,7 +107,7 @@ export const FileName = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fileVariants();
+      const variantSlots = fileRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -131,7 +131,7 @@ export const FileMeta = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fileVariants();
+      const variantSlots = fileRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -156,7 +156,7 @@ export const FileSize = defineComponent({
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = fileVariants();
+      const variantSlots = fileRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -180,7 +180,7 @@ export const FileActions = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fileVariants();
+      const variantSlots = fileRecipe();
 
       return h(
         ark.div as ArkPart,

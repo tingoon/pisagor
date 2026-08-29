@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
 import { PhX } from "@phosphor-icons/vue";
-import { type ActionBarVariants, actionBarVariants } from "@pisagor/recipes/action-bar";
+import { type ActionBarSlots, actionBarRecipe } from "@pisagor/recipes/action-bar";
 import { cn } from "@pisagor/utils";
 import {
   defineComponent,
@@ -75,7 +75,7 @@ interface ActionBarContextValue {
   onClose?: () => void;
   onOpen?: () => void;
   positioning: Required<ActionBarPositioning>;
-  slots: ActionBarVariants;
+  slots: ActionBarSlots;
 }
 // #endregion
 
@@ -150,7 +150,7 @@ export const ActionBarRoot = defineComponent({
       onClose: handleClose,
       onOpen: handleOpen,
       positioning: { ...defaultPositioning, ...(props.positioning ?? {}) },
-      slots: actionBarVariants(),
+      slots: actionBarRecipe(),
       unmountOnExit: props.unmountOnExit,
     });
 
@@ -299,7 +299,7 @@ export const ActionBarSeparator = defineComponent({
         Separator as ArkPart,
         {
           ...attrs,
-          class: cn((context?.slots ?? actionBarVariants()).separator(), props.class, attrs.class),
+          class: cn((context?.slots ?? actionBarRecipe()).separator(), props.class, attrs.class),
           dataPart: "separator",
           dataScope: "action-bar",
           orientation: "vertical",
@@ -324,7 +324,7 @@ export const ActionBarClose = defineComponent({
         ark.button as unknown as ArkPart,
         {
           ...attrs,
-          class: cn((context?.slots ?? actionBarVariants()).close(), props.class, attrs.class),
+          class: cn((context?.slots ?? actionBarRecipe()).close(), props.class, attrs.class),
           "data-part": "close",
           "data-scope": "action-bar",
           "data-state": context?.isOpen ? "open" : "closed",
@@ -356,7 +356,7 @@ export const ActionBarValue = defineComponent({
         Badge as ArkPart,
         {
           ...attrs,
-          class: cn((context?.slots ?? actionBarVariants()).value(), props.class, attrs.class),
+          class: cn((context?.slots ?? actionBarRecipe()).value(), props.class, attrs.class),
           "data-part": "value",
           "data-scope": "action-bar",
           variant: "secondary",
@@ -380,7 +380,7 @@ export const ActionBarBody = defineComponent({
         ark.div as unknown as ArkPart,
         {
           ...attrs,
-          class: cn((context?.slots ?? actionBarVariants()).body(), props.class, attrs.class),
+          class: cn((context?.slots ?? actionBarRecipe()).body(), props.class, attrs.class),
         },
         slots.default?.(),
       );

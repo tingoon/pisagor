@@ -1,4 +1,4 @@
-import { buttonVariants } from "@pisagor/recipes/button";
+import { buttonRecipe } from "@pisagor/recipes/button";
 import { cn } from "@pisagor/utils";
 import { Drawer, Field, Input } from "@pisagor/vue";
 import { h } from "vue";
@@ -6,7 +6,7 @@ import preview from "#/storybook/preview";
 import { outlineButtonClass } from "../../internal/story-button";
 
 function defaultButtonClass(className?: string) {
-  return cn(buttonVariants(), className);
+  return cn(buttonRecipe().base(), className);
 }
 
 const meta = preview.meta({

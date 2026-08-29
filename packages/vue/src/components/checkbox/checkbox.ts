@@ -1,7 +1,7 @@
 import { Checkbox as CheckboxPrimitive } from "@ark-ui/vue/checkbox";
 import { PhCheck, PhMinus } from "@phosphor-icons/vue";
-import { checkboxGroupVariants, checkboxVariants } from "@pisagor/recipes/checkbox";
-import { formControlToggleVariants } from "@pisagor/recipes/form-control";
+import { checkboxGroupRecipe, checkboxRecipe } from "@pisagor/recipes/checkbox";
+import { formControlToggleRecipe } from "@pisagor/recipes/form-control";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 
@@ -30,7 +30,7 @@ export const CheckboxGroup = defineComponent({
         CheckboxPrimitive.Group as ArkPart,
         {
           ...attrs,
-          class: cn(checkboxGroupVariants(), props.class),
+          class: cn(checkboxGroupRecipe(), props.class),
           onValueChange: (value: string[]) => emit("valueChange", value),
         },
         slots,
@@ -58,7 +58,7 @@ export const CheckboxRoot = defineComponent({
       };
       const shellArgs = { variant: resolved.variant };
       const controlProps = { "data-variant": resolved.variant };
-      const slots = checkboxVariants();
+      const slots = checkboxRecipe();
 
       return h(
         CheckboxPrimitive.Root as ArkPart,
@@ -66,7 +66,7 @@ export const CheckboxRoot = defineComponent({
           ...attrs,
           ...controlProps,
           class: cn(
-            formControlToggleVariants({ size: "md", ...shellArgs }),
+            formControlToggleRecipe({ size: "md", ...shellArgs }),
             slots.base({ class: props.class }),
           ),
           onCheckedChange: (details: { checked: boolean | "indeterminate" }) => {

@@ -2,7 +2,7 @@ import {
   AngleSlider as AngleSliderPrimitive,
   useAngleSliderContext,
 } from "@ark-ui/vue/angle-slider";
-import { circularSliderVariants } from "@pisagor/recipes/circular-slider";
+import { circularSliderRecipe } from "@pisagor/recipes/circular-slider";
 import {
   defineComponent,
   h,
@@ -23,7 +23,7 @@ interface CircularSliderContextValue {
   ringCircumference: number;
   ringRadius: number;
   size: number;
-  slots: ReturnType<typeof circularSliderVariants>;
+  slots: ReturnType<typeof circularSliderRecipe>;
   thickness: number;
   thumbSize: number;
 }
@@ -77,7 +77,7 @@ export const CircularSliderRoot = defineComponent({
     value: { default: undefined, type: Number },
   },
   setup(props, { attrs, slots }) {
-    const variantSlots = circularSliderVariants();
+    const variantSlots = circularSliderRecipe();
     const context = reactive<CircularSliderContextValue>({
       ringCircumference: 2 * Math.PI * (props.size / 2 - props.thickness / 2),
       ringRadius: props.size / 2 - props.thickness / 2,

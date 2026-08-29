@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type NavbarSlots, navbarVariants } from "@pisagor/recipes/navbar";
+import { type NavbarSlots, navbarRecipe } from "@pisagor/recipes/navbar";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { VariantClassNames } from "../../internal/types";
@@ -20,7 +20,7 @@ export const NavbarRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = navbarVariants();
+      const slots$ = navbarRecipe();
 
       return h(
         ark.header as ArkPart,
@@ -45,7 +45,7 @@ export const NavbarBrand = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = navbarVariants();
+      const slots$ = navbarRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -70,7 +70,7 @@ export const NavbarContent = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = navbarVariants();
+      const slots$ = navbarRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -96,7 +96,7 @@ export const NavbarNav = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = navbarVariants();
+      const slots$ = navbarRecipe();
 
       return h(
         ark.nav as ArkPart,
@@ -122,7 +122,7 @@ export const NavbarActions = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = navbarVariants();
+      const slots$ = navbarRecipe();
 
       return h(
         ark.div as ArkPart,

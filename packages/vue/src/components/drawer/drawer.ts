@@ -1,11 +1,11 @@
 import { Drawer as DrawerPrimitive } from "@ark-ui/vue/drawer";
-import { type DrawerVariants, drawerVariants } from "@pisagor/recipes/drawer";
+import { type DrawerSlots, drawerRecipe } from "@pisagor/recipes/drawer";
 import { defineComponent, h, type PropType, reactive, Teleport } from "vue";
 import { createContext } from "../../internal/utils/create-context";
 
 // #region Types
 interface DrawerContextValue {
-  slots: DrawerVariants;
+  slots: DrawerSlots;
 }
 
 export interface DrawerHeaderProps {
@@ -32,7 +32,7 @@ const [provideDrawerContext, useDrawerLocal] = createContext<DrawerContextValue>
 });
 
 function useDrawerSlots() {
-  return useDrawerLocal()?.slots ?? drawerVariants();
+  return useDrawerLocal()?.slots ?? drawerRecipe();
 }
 // #endregion
 
@@ -55,7 +55,7 @@ export const DrawerRoot = defineComponent({
   name: "DrawerRoot",
   setup(_, { attrs, slots }) {
     const context = reactive<DrawerContextValue>({
-      slots: drawerVariants(),
+      slots: drawerRecipe(),
     });
     provideDrawerContext(context);
 

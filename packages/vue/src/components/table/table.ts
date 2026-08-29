@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { tableVariants } from "@pisagor/recipes/table";
+import { tableRecipe } from "@pisagor/recipes/table";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
@@ -33,7 +33,7 @@ export const TableRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = tableVariants();
+      const variantSlots = tableRecipe();
 
       return h(
         "div" as ArkPart,
@@ -68,7 +68,7 @@ export const TableHeader = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = tableVariants();
+      const variantSlots = tableRecipe();
 
       return h(
         ark.thead as ArkPart,
@@ -92,7 +92,7 @@ export const TableBody = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = tableVariants();
+      const variantSlots = tableRecipe();
 
       return h(
         ark.tbody as ArkPart,
@@ -116,7 +116,7 @@ export const TableFooter = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = tableVariants();
+      const variantSlots = tableRecipe();
 
       return h(
         ark.tfoot as ArkPart,
@@ -140,7 +140,7 @@ export const TableRow = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = tableVariants();
+      const variantSlots = tableRecipe();
 
       return h(
         ark.tr as ArkPart,
@@ -164,7 +164,7 @@ export const TableHead = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = tableVariants();
+      const variantSlots = tableRecipe();
 
       return h(
         ark.th as ArkPart,
@@ -188,7 +188,7 @@ export const TableCell = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = tableVariants();
+      const variantSlots = tableRecipe();
 
       return h(
         ark.td as ArkPart,
@@ -212,7 +212,7 @@ export const TableCaption = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = tableVariants();
+      const variantSlots = tableRecipe();
 
       return h(
         ark.caption as ArkPart,

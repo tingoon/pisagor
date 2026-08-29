@@ -5,8 +5,8 @@ import {
   ProgressTrack,
   ProgressValueText,
 } from "@ark-ui/vue/progress";
-import { fieldVariants } from "@pisagor/recipes/field";
-import { type ProgressSlots, progressVariants } from "@pisagor/recipes/progress";
+import { fieldRecipe } from "@pisagor/recipes/field";
+import { type ProgressSlots, progressRecipe } from "@pisagor/recipes/progress";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNode } from "vue";
 import type { VariantClassNames } from "../../internal/types";
@@ -48,7 +48,7 @@ export const Progress = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = progressVariants();
+      const variantSlots = progressRecipe();
       const showHeader = props.label || props.isValueVisible;
 
       return h(
@@ -76,7 +76,7 @@ export const Progress = defineComponent({
                         h(
                           FieldLabel as ArkPart,
                           {
-                            class: cn(fieldVariants().label()),
+                            class: cn(fieldRecipe().label()),
                           },
                           () => props.label,
                         ),

@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type CardVariantProps, cardVariants } from "@pisagor/recipes/card";
+import { type CardVariantProps, cardRecipe } from "@pisagor/recipes/card";
 import { defineComponent, h, type PropType } from "vue";
 
 export type CardMediaVariant = NonNullable<CardVariantProps["variant"]>;
@@ -21,7 +21,7 @@ export const CardRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = cardVariants();
+      const variantSlots = cardRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -46,7 +46,7 @@ export const CardMedia = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = cardVariants({ variant: props.variant });
+      const variantSlots = cardRecipe({ variant: props.variant });
 
       return h(
         ark.div as ArkPart,
@@ -73,7 +73,7 @@ export const CardHeader = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = cardVariants();
+      const variantSlots = cardRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -101,7 +101,7 @@ export const CardTitle = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = cardVariants();
+      const variantSlots = cardRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -125,7 +125,7 @@ export const CardDescription = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = cardVariants();
+      const variantSlots = cardRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -149,7 +149,7 @@ export const CardAction = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = cardVariants();
+      const variantSlots = cardRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -173,7 +173,7 @@ export const CardContent = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = cardVariants();
+      const variantSlots = cardRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -197,7 +197,7 @@ export const CardFooter = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = cardVariants();
+      const variantSlots = cardRecipe();
 
       return h(
         ark.div as ArkPart,

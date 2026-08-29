@@ -1,5 +1,5 @@
 import { Switch as SwitchPrimitive } from "@ark-ui/vue/switch";
-import { type SwitchSlots, switchVariants } from "@pisagor/recipes/switch";
+import { type SwitchSlots, switchRecipe } from "@pisagor/recipes/switch";
 import { defineComponent, h, type PropType } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 
@@ -30,7 +30,7 @@ export const Switch = defineComponent({
       };
       const shellArgs = { variant: resolved.variant };
       const controlShellProps = { "data-variant": resolved.variant };
-      const slots_ = switchVariants({ ...shellArgs });
+      const slots_ = switchRecipe({ ...shellArgs });
 
       return h(
         SwitchPrimitive.Root as ArkPart,

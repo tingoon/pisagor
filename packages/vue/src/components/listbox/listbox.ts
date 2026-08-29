@@ -5,8 +5,8 @@ import { Listbox as ListboxPrimitive } from "@ark-ui/vue/listbox";
 import { PhCheck } from "@phosphor-icons/vue";
 import {
   type ListboxItemVariantProps,
-  listboxItemVariants,
-  listboxVariants,
+  listboxItemRecipe,
+  listboxRecipe,
 } from "@pisagor/recipes/listbox";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
@@ -51,7 +51,7 @@ export const ListboxRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = listboxVariants();
+      const variantSlots = listboxRecipe();
 
       return h(
         ListboxPrimitive.Root as ArkPart,
@@ -78,7 +78,7 @@ export const ListboxContent = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = listboxVariants();
+      const variantSlots = listboxRecipe();
 
       return h(
         ListboxPrimitive.Content as ArkPart,
@@ -106,7 +106,7 @@ export const ListboxItem = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = listboxItemVariants({ variant: props.variant });
+      const variantSlots = listboxItemRecipe({ variant: props.variant });
 
       return h(
         ListboxPrimitive.Item as ArkPart,
@@ -131,7 +131,7 @@ export const ListboxItemText = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = listboxItemVariants();
+      const variantSlots = listboxItemRecipe();
 
       return h(
         ListboxPrimitive.ItemText as ArkPart,
@@ -155,7 +155,7 @@ export const ListboxItemGroup = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = listboxVariants();
+      const variantSlots = listboxRecipe();
 
       return h(
         ListboxPrimitive.ItemGroup as ArkPart,
@@ -181,7 +181,7 @@ export const ListboxItemGroupLabel = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = listboxVariants();
+      const variantSlots = listboxRecipe();
 
       return h(
         ListboxPrimitive.ItemGroupLabel as ArkPart,
@@ -204,7 +204,7 @@ export const ListboxValueText = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = listboxVariants();
+      const variantSlots = listboxRecipe();
 
       return h(
         ListboxPrimitive.ValueText as ArkPart,
@@ -227,7 +227,7 @@ export const ListboxItemIndicator = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = listboxItemVariants();
+      const variantSlots = listboxItemRecipe();
 
       return h(
         ListboxPrimitive.ItemIndicator as ArkPart,
@@ -250,7 +250,7 @@ export const ListboxEmpty = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = listboxVariants();
+      const variantSlots = listboxRecipe();
 
       return h(
         ListboxPrimitive.Empty as ArkPart,

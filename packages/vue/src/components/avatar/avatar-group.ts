@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { avatarGroupVariants } from "@pisagor/recipes/avatar";
+import { avatarGroupRecipe } from "@pisagor/recipes/avatar";
 import { defineComponent, h, type PropType } from "vue";
 import { Avatar } from "./avatar";
 
@@ -30,7 +30,7 @@ export const AvatarGroupRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = avatarGroupVariants();
+      const variantSlots = avatarGroupRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -54,7 +54,7 @@ export const AvatarGroupCount = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = avatarGroupVariants();
+      const variantSlots = avatarGroupRecipe();
 
       return h(
         ark.div as ArkPart,

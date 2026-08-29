@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/vue/factory";
 import { Steps as StepsPrimitive } from "@ark-ui/vue/steps";
 import { PhCheck } from "@phosphor-icons/vue";
-import { stepsItemVariants, stepsVariants } from "@pisagor/recipes/steps";
+import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes/steps";
 import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -15,7 +15,7 @@ export const StepsRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = stepsVariants();
+      const variantSlots = stepsRecipe();
 
       return h(
         StepsPrimitive.Root as ArkPart,
@@ -37,7 +37,7 @@ export const StepsList = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = stepsVariants();
+      const variantSlots = stepsRecipe();
 
       return h(
         StepsPrimitive.List as ArkPart,
@@ -59,7 +59,7 @@ export const StepsItem = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = stepsItemVariants();
+      const variantSlots = stepsItemRecipe();
 
       return h(
         StepsPrimitive.Item as ArkPart,
@@ -81,7 +81,7 @@ export const StepsTrigger = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = stepsItemVariants();
+      const variantSlots = stepsItemRecipe();
 
       return h(
         StepsPrimitive.Trigger as ArkPart,
@@ -103,7 +103,7 @@ export const StepsIndicator = defineComponent({
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const variantSlots = stepsItemVariants();
+      const variantSlots = stepsItemRecipe();
 
       return h(
         StepsPrimitive.Indicator as ArkPart,
@@ -128,7 +128,7 @@ export const StepsSeparator = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = stepsItemVariants();
+      const variantSlots = stepsItemRecipe();
 
       return h(
         StepsPrimitive.Separator as ArkPart,
@@ -150,7 +150,7 @@ export const StepsTitle = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = stepsItemVariants();
+      const variantSlots = stepsItemRecipe();
 
       return h(
         ark.span as ArkPart,
@@ -174,7 +174,7 @@ export const StepsDescription = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = stepsItemVariants();
+      const variantSlots = stepsItemRecipe();
 
       return h(
         ark.span as ArkPart,
@@ -198,7 +198,7 @@ export const StepsContent = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = stepsVariants();
+      const variantSlots = stepsRecipe();
 
       return h(
         StepsPrimitive.Content as ArkPart,
@@ -220,7 +220,7 @@ export const StepsCompletedContent = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = stepsVariants();
+      const variantSlots = stepsRecipe();
 
       return h(
         StepsPrimitive.CompletedContent as ArkPart,

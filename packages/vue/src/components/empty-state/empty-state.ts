@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type EmptyStateSlots, emptyStateVariants } from "@pisagor/recipes/empty-state";
+import { type EmptyStateSlots, emptyStateRecipe } from "@pisagor/recipes/empty-state";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";
@@ -29,7 +29,7 @@ export const EmptyStateRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots_ = emptyStateVariants();
+      const slots_ = emptyStateRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -45,7 +45,7 @@ export const EmptyStateRoot = defineComponent({
   },
 });
 
-function createEmptyStatePart(slot: Exclude<EmptyStateSlots, "base">, part: string) {
+function createEmptyStatePart(slot: Exclude<keyof EmptyStateSlots, "base">, part: string) {
   return defineComponent({
     inheritAttrs: false,
     name: `EmptyState${slot.charAt(0).toUpperCase()}${slot.slice(1)}`,
@@ -57,7 +57,7 @@ function createEmptyStatePart(slot: Exclude<EmptyStateSlots, "base">, part: stri
       const element = slot === "title" ? ark.h3 : slot === "description" ? ark.p : ark.div;
 
       return () => {
-        const slots_ = emptyStateVariants();
+        const slots_ = emptyStateRecipe();
 
         return h(
           element as ArkPart,

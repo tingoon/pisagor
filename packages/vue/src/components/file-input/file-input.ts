@@ -1,5 +1,5 @@
-import { fileInputVariants } from "@pisagor/recipes/file-input";
-import { formControlGroupShellVariants } from "@pisagor/recipes/form-control";
+import { fileInputRecipe } from "@pisagor/recipes/file-input";
+import { formControlGroupShellRecipe } from "@pisagor/recipes/form-control";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, ref } from "vue";
 import { InputGroupAddon, InputGroupButton, InputGroupText } from "../input-group/input-group-core";
@@ -106,14 +106,14 @@ export const FileInput = defineComponent({
       };
       const shellArgs = { variant: resolved.variant };
       const controlProps = { "data-variant": resolved.variant };
-      const slots = fileInputVariants();
+      const slots = fileInputRecipe();
 
       return h(
         "div",
         {
           ...attrs,
           ...controlProps,
-          class: cn(formControlGroupShellVariants({ size: props.size, ...shellArgs }), props.class),
+          class: cn(formControlGroupShellRecipe({ size: props.size, ...shellArgs }), props.class),
           "data-disabled": props.disabled || undefined,
           "data-part": "root",
           "data-scope": "file-input",

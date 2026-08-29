@@ -1,5 +1,5 @@
 import { Dialog as DialogPrimitive } from "@ark-ui/vue/dialog";
-import { type SheetVariants, sheetVariants } from "@pisagor/recipes/sheet";
+import { type SheetSlots, sheetRecipe } from "@pisagor/recipes/sheet";
 import { defineComponent, h, type PropType, reactive, Teleport } from "vue";
 import { renderIconCloseButton } from "../../internal/close-button";
 import { createContext } from "../../internal/utils/create-context";
@@ -19,7 +19,7 @@ import {
 
 // #region Types
 interface SheetContextValue {
-  slots: SheetVariants;
+  slots: SheetSlots;
 }
 
 export type SheetProps = DialogProps;
@@ -32,7 +32,7 @@ const [provideSheetContext, useSheetLocal] = createContext<SheetContextValue>({
 });
 
 function useSheetSlots() {
-  return useSheetLocal()?.slots ?? sheetVariants();
+  return useSheetLocal()?.slots ?? sheetRecipe();
 }
 // #endregion
 
@@ -48,7 +48,7 @@ export const SheetRoot = defineComponent({
   name: "SheetRoot",
   setup(_, { attrs, slots }) {
     const context = reactive<SheetContextValue>({
-      slots: sheetVariants(),
+      slots: sheetRecipe(),
     });
     provideSheetContext(context);
 

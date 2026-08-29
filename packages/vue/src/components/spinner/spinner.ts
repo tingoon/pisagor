@@ -1,5 +1,5 @@
 import { PhCircleNotch } from "@phosphor-icons/vue";
-import { spinnerVariants } from "@pisagor/recipes/spinner";
+import { spinnerRecipe } from "@pisagor/recipes/spinner";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 
@@ -23,7 +23,7 @@ export const Spinner = defineComponent({
       h(PhCircleNotch as ArkPart, {
         ...attrs,
         "aria-label": attrs["aria-label"] ?? "Loading",
-        class: cn(spinnerVariants(), props.class),
+        class: cn(spinnerRecipe(), props.class),
         "data-part": "root",
         "data-scope": "spinner",
         role: "status",

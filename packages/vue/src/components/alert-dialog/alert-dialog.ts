@@ -1,5 +1,5 @@
-import { buttonVariants } from "@pisagor/recipes/button";
-import { dialogVariants } from "@pisagor/recipes/dialog";
+import { buttonRecipe } from "@pisagor/recipes/button";
+import { dialogRecipe } from "@pisagor/recipes/dialog";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import {
@@ -61,7 +61,7 @@ export const AlertDialogBody = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = useDialog()?.slots ?? dialogVariants();
+      const variantSlots = useDialog()?.slots ?? dialogRecipe();
 
       return h(
         DialogBody as ArkPart,
@@ -144,7 +144,7 @@ export const AlertDialogAction = defineComponent({
         "button",
         {
           ...attrs,
-          class: cn(buttonVariants({ variant: props.variant }), props.class),
+          class: cn(buttonRecipe({ variant: props.variant }).base(), props.class),
           type: "button",
         },
         slots,
@@ -165,7 +165,7 @@ export const AlertDialogCancel = defineComponent({
           "button",
           {
             ...attrs,
-            class: cn(buttonVariants({ variant: "outline" }), props.class),
+            class: cn(buttonRecipe({ variant: "outline" }).base(), props.class),
             type: "button",
           },
           slots,

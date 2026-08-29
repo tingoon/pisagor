@@ -1,6 +1,6 @@
 import { Collapsible as CollapsiblePrimitive } from "@ark-ui/vue/collapsible";
 import { PhCaretDown } from "@phosphor-icons/vue";
-import { collapsibleVariants } from "@pisagor/recipes/collapsible";
+import { collapsibleRecipe } from "@pisagor/recipes/collapsible";
 import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -19,7 +19,7 @@ export const CollapsibleRoot = defineComponent({
     const partialCollapse = props.collapsedHeight !== undefined;
 
     return () => {
-      const variantSlots = collapsibleVariants();
+      const variantSlots = collapsibleRecipe();
 
       return h(
         CollapsiblePrimitive.Root as ArkPart,
@@ -45,7 +45,7 @@ export const CollapsibleTrigger = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = collapsibleVariants();
+      const variantSlots = collapsibleRecipe();
 
       return h(
         CollapsiblePrimitive.Trigger as ArkPart,
@@ -67,7 +67,7 @@ export const CollapsibleContent = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = collapsibleVariants();
+      const variantSlots = collapsibleRecipe();
 
       return h(
         CollapsiblePrimitive.Content as ArkPart,
@@ -89,7 +89,7 @@ export const CollapsibleIndicator = defineComponent({
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const variantSlots = collapsibleVariants();
+      const variantSlots = collapsibleRecipe();
 
       return h(
         CollapsiblePrimitive.Indicator as ArkPart,

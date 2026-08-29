@@ -4,8 +4,8 @@ import {
   type UseDatePickerContext,
 } from "@ark-ui/vue/date-picker";
 import { PhCaretDown, PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
-import { calendarTableCellVariants, calendarVariants } from "@pisagor/recipes/calendar";
-import { formControlShellVariants } from "@pisagor/recipes/form-control";
+import { calendarRecipe, calendarTableCellRecipe } from "@pisagor/recipes/calendar";
+import { formControlShellRecipe } from "@pisagor/recipes/form-control";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type UnwrapRef } from "vue";
 import { Button, type ButtonProps } from "../button";
@@ -52,8 +52,8 @@ function useCalendarSelectShell(className?: ClassValue) {
 
   return {
     className: cn(
-      formControlShellVariants({ size: "md", ...shellArgs }),
-      calendarVariants().select(),
+      formControlShellRecipe({ size: "md", ...shellArgs }),
+      calendarRecipe().select(),
       className,
     ),
     controlProps,
@@ -80,7 +80,7 @@ export const CalendarRoot = defineComponent({
         DatePickerPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(calendarVariants().base(), props.class),
+          class: cn(calendarRecipe().base(), props.class),
           inline: true,
           lazyMount: props.lazyMount,
           unmountOnExit: props.unmountOnExit,
@@ -97,7 +97,7 @@ export const CalendarControl = defineComponent({
     return () =>
       h(
         DatePickerPrimitive.Control as ArkPart,
-        { ...attrs, class: calendarVariants().control() },
+        { ...attrs, class: calendarRecipe().control() },
         slots,
       );
   },
@@ -108,11 +108,7 @@ export const CalendarLabel = defineComponent({
   name: "Calendar.Label",
   setup(_, { attrs, slots }) {
     return () =>
-      h(
-        DatePickerPrimitive.Label as ArkPart,
-        { ...attrs, class: calendarVariants().label() },
-        slots,
-      );
+      h(DatePickerPrimitive.Label as ArkPart, { ...attrs, class: calendarRecipe().label() }, slots);
   },
 });
 
@@ -142,7 +138,7 @@ export const CalendarViewDate = defineComponent({
     return () =>
       h(DatePickerPrimitive.RangeText as ArkPart, {
         ...attrs,
-        class: cn(calendarVariants().rangeText(), props.class),
+        class: cn(calendarRecipe().rangeText(), props.class),
       });
   },
 });
@@ -191,7 +187,7 @@ export const CalendarYearSelect = defineComponent({
   setup(props, { attrs }) {
     return () => {
       const { className: selectClassName, controlProps } = useCalendarSelectShell(props.class);
-      const slots = calendarVariants();
+      const slots = calendarRecipe();
 
       return h(
         "div",
@@ -227,7 +223,7 @@ export const CalendarMonthSelect = defineComponent({
   setup(props, { attrs }) {
     return () => {
       const { className: selectClassName, controlProps } = useCalendarSelectShell(props.class);
-      const slots = calendarVariants();
+      const slots = calendarRecipe();
 
       return h(
         "div",
@@ -264,7 +260,7 @@ export const CalendarView = defineComponent({
     return () =>
       h(
         DatePickerPrimitive.View as ArkPart,
-        { ...attrs, class: cn(calendarVariants().view(), props.class) },
+        { ...attrs, class: cn(calendarRecipe().view(), props.class) },
         slots,
       );
   },
@@ -291,7 +287,7 @@ export const CalendarViewControl = defineComponent({
         DatePickerPrimitive.ViewControl as ArkPart,
         {
           ...attrs,
-          class: cn(calendarVariants().viewControl(), props.class),
+          class: cn(calendarRecipe().viewControl(), props.class),
         },
         slots,
       );
@@ -308,11 +304,11 @@ export const CalendarPrevTrigger = defineComponent({
           Button as ArkPart,
           {
             "aria-label": "Previous month",
-            class: calendarVariants().prevTrigger(),
+            class: calendarRecipe().prevTrigger(),
             size: "icon-md",
             variant: "ghost",
           },
-          () => h(PhCaretLeft, { "aria-hidden": true, class: calendarVariants().prevIcon() }),
+          () => h(PhCaretLeft, { "aria-hidden": true, class: calendarRecipe().prevIcon() }),
         ),
       );
   },
@@ -328,11 +324,11 @@ export const CalendarNextTrigger = defineComponent({
           Button as ArkPart,
           {
             "aria-label": "Next month",
-            class: calendarVariants().nextTrigger(),
+            class: calendarRecipe().nextTrigger(),
             size: "icon-md",
             variant: "ghost",
           },
-          () => h(PhCaretRight, { "aria-hidden": true, class: calendarVariants().nextIcon() }),
+          () => h(PhCaretRight, { "aria-hidden": true, class: calendarRecipe().nextIcon() }),
         ),
       );
   },
@@ -350,7 +346,7 @@ export const CalendarTable = defineComponent({
         DatePickerPrimitive.Table as ArkPart,
         {
           ...attrs,
-          class: cn(calendarVariants().table(), props.class),
+          class: cn(calendarRecipe().table(), props.class),
         },
         slots,
       );
@@ -471,7 +467,7 @@ export const CalendarTableRow = defineComponent({
         DatePickerPrimitive.TableRow as ArkPart,
         {
           ...attrs,
-          class: cn(calendarVariants().tableRow(), props.class),
+          class: cn(calendarRecipe().tableRow(), props.class),
         },
         slots,
       );
@@ -490,7 +486,7 @@ export const CalendarTableHeader = defineComponent({
         DatePickerPrimitive.TableHeader as ArkPart,
         {
           ...attrs,
-          class: cn(calendarVariants().tableHeader(), props.class),
+          class: cn(calendarRecipe().tableHeader(), props.class),
         },
         slots,
       );
@@ -518,7 +514,7 @@ export const CalendarTableCell = defineComponent({
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const slots = calendarTableCellVariants();
+      const slots = calendarTableCellRecipe();
 
       return h(
         DatePickerPrimitive.TableCell as ArkPart,

@@ -1,4 +1,4 @@
-import { type DataTableVariants, dataTableVariants } from "@pisagor/recipes/data-table";
+import { type DataTableSlots, dataTableRecipe } from "@pisagor/recipes/data-table";
 import { cn } from "@pisagor/utils";
 import {
   type Cell,
@@ -18,7 +18,7 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 interface DataTableContextValue<TData extends RowData> {
-  slots: DataTableVariants;
+  slots: DataTableSlots;
   table: TableType<DataTableFeatures, TData>;
 }
 
@@ -152,7 +152,7 @@ export const DataTableRoot = defineComponent({
     ) as TableOptions<DataTableFeatures, RowData>;
 
     const table = useTable(options);
-    const variantSlots = dataTableVariants();
+    const variantSlots = dataTableRecipe();
     const contextValue = computed<DataTableContextValue<RowData>>(() => ({
       slots: variantSlots,
       table,

@@ -1,6 +1,6 @@
 import { Carousel as CarouselPrimitive } from "@ark-ui/vue/carousel";
 import { PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
-import { carouselVariants } from "@pisagor/recipes/carousel";
+import { carouselRecipe } from "@pisagor/recipes/carousel";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { Button } from "../button";
@@ -31,7 +31,7 @@ export const CarouselRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = carouselVariants();
+      const variantSlots = carouselRecipe();
 
       return h(
         CarouselPrimitive.Root as ArkPart,
@@ -52,7 +52,7 @@ export const CarouselControl = defineComponent({
   name: "CarouselControl",
   setup(_, { attrs, slots }) {
     return () => {
-      const variantSlots = carouselVariants();
+      const variantSlots = carouselRecipe();
 
       return h(
         CarouselPrimitive.Control as ArkPart,
@@ -71,7 +71,7 @@ export const CarouselPrevTrigger = defineComponent({
   name: "CarouselPrevTrigger",
   setup(_, { attrs }) {
     return () => {
-      const variantSlots = carouselVariants();
+      const variantSlots = carouselRecipe();
 
       return h(
         CarouselPrimitive.PrevTrigger as ArkPart,
@@ -102,7 +102,7 @@ export const CarouselNextTrigger = defineComponent({
   name: "CarouselNextTrigger",
   setup(_, { attrs }) {
     return () => {
-      const variantSlots = carouselVariants();
+      const variantSlots = carouselRecipe();
 
       return h(
         CarouselPrimitive.NextTrigger as ArkPart,
@@ -133,7 +133,7 @@ export const CarouselIndicatorGroup = defineComponent({
   name: "CarouselIndicatorGroup",
   setup(_, { attrs, slots }) {
     return () => {
-      const variantSlots = carouselVariants();
+      const variantSlots = carouselRecipe();
 
       return h(
         CarouselPrimitive.IndicatorGroup as ArkPart,
@@ -152,7 +152,7 @@ export const CarouselIndicator = defineComponent({
   name: "CarouselIndicator",
   setup(_, { attrs, slots }) {
     return () => {
-      const variantSlots = carouselVariants();
+      const variantSlots = carouselRecipe();
 
       return h(
         CarouselPrimitive.Indicator as ArkPart,
@@ -171,7 +171,7 @@ export const CarouselItemGroup = defineComponent({
   name: "CarouselItemGroup",
   setup(_, { attrs, slots }) {
     return () => {
-      const variantSlots = carouselVariants();
+      const variantSlots = carouselRecipe();
 
       return h(
         CarouselPrimitive.ItemGroup as ArkPart,
@@ -190,7 +190,7 @@ export const CarouselItem = defineComponent({
   name: "CarouselItem",
   setup(_, { attrs, slots }) {
     return () => {
-      const variantSlots = carouselVariants();
+      const variantSlots = carouselRecipe();
 
       return h(
         CarouselPrimitive.Item as ArkPart,

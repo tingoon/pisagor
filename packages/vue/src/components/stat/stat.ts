@@ -3,8 +3,8 @@ import {
   type StatSlots,
   type StatTrendVariantProps,
   type StatVariantProps,
-  statTrendVariants,
-  statVariants,
+  statRecipe,
+  statTrendRecipe,
 } from "@pisagor/recipes/stat";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
@@ -18,10 +18,9 @@ type StatTrendVariant = NonNullable<StatTrendVariantProps["trend"]>;
 
 type StatClassNames = VariantClassNames<StatSlots>;
 
-export interface StatProps {
+export interface StatProps extends StatVariantProps {
   class?: unknown;
   classNames?: StatClassNames;
-  variant?: StatVariant;
 
   label?: VNodeChild;
   value?: VNodeChild;
@@ -46,7 +45,7 @@ export const StatRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots_ = statVariants({ variant: props.variant });
+      const slots_ = statRecipe({ variant: props.variant });
 
       return h(
         ark.div as ArkPart,
@@ -72,7 +71,7 @@ export const StatLabel = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots_ = statVariants();
+      const slots_ = statRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -97,7 +96,7 @@ export const StatValue = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots_ = statVariants();
+      const slots_ = statRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -122,7 +121,7 @@ export const StatDescription = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots_ = statVariants();
+      const slots_ = statRecipe();
 
       return h(
         ark.p as ArkPart,
@@ -151,7 +150,7 @@ export const StatTrend = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(statTrendVariants({ trend: props.trend }), props.class),
+          class: cn(statTrendRecipe({ trend: props.trend }), props.class),
           "data-part": "trend",
           "data-scope": "stat",
           "data-trend": props.trend,

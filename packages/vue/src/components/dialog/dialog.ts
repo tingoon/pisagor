@@ -1,5 +1,5 @@
 import { Dialog as DialogPrimitive } from "@ark-ui/vue/dialog";
-import { type DialogVariants, dialogVariants } from "@pisagor/recipes/dialog";
+import { type DialogSlots, type DialogVariantProps, dialogRecipe } from "@pisagor/recipes/dialog";
 import {
   defineComponent,
   h,
@@ -15,14 +15,12 @@ import { createContext } from "../../internal/utils/create-context";
 // #region Types
 interface DialogContextValue {
   modal?: boolean;
-  slots: DialogVariants;
+  slots: DialogSlots;
 }
 
-export interface DialogContentProps {
-  bottomStickOnMobile?: boolean;
+export interface DialogContentProps extends DialogVariantProps {
   class?: unknown;
   showCloseButton?: boolean;
-  size?: "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "fullscreen" | "lg" | "md" | "sm" | "xl";
 }
 
 export interface DialogBodyProps {
@@ -64,7 +62,7 @@ function dialogTeleport(content: VNodeChild) {
 }
 
 function useDialogSlots() {
-  return useDialogLocal()?.slots ?? dialogVariants();
+  return useDialogLocal()?.slots ?? dialogRecipe();
 }
 
 // #region Parts
@@ -79,7 +77,7 @@ export const DialogRoot = defineComponent({
   setup(props, { attrs, slots }) {
     const context = reactive<DialogContextValue>({
       modal: props.modal,
-      slots: dialogVariants(),
+      slots: dialogRecipe(),
     });
 
     watchEffect(() => {

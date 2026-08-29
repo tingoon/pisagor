@@ -2,9 +2,9 @@ import type { CollectionItem, ListCollection } from "@ark-ui/vue/collection";
 import { Combobox as ComboboxPrimitive } from "@ark-ui/vue/combobox";
 import { Dialog as DialogPrimitive } from "@ark-ui/vue/dialog";
 import { PhMagnifyingGlass } from "@phosphor-icons/vue";
-import { comboboxVariants } from "@pisagor/recipes/combobox";
-import { commandVariants } from "@pisagor/recipes/command";
-import { dialogVariants } from "@pisagor/recipes/dialog";
+import { comboboxRecipe } from "@pisagor/recipes/combobox";
+import { commandRecipe } from "@pisagor/recipes/command";
+import { dialogRecipe } from "@pisagor/recipes/dialog";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, Teleport, type VNodeChild } from "vue";
 import { Combobox, type ComboboxRootProps } from "../combobox";
@@ -83,8 +83,8 @@ export const CommandDialogContent = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = commandVariants();
-      const dialogSlots = dialogVariants();
+      const variantSlots = commandRecipe();
+      const dialogSlots = dialogRecipe();
 
       return commandTeleport([
         h(Dialog.Backdrop),
@@ -133,7 +133,7 @@ export const CommandRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = commandVariants();
+      const variantSlots = commandRecipe();
 
       return h(
         Combobox.Root as ArkPart,
@@ -166,7 +166,7 @@ export const CommandContent = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = commandVariants();
+      const variantSlots = commandRecipe();
 
       return h(
         ComboboxPrimitive.Content as ArkPart,
@@ -190,7 +190,7 @@ export const CommandInput = defineComponent({
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = commandVariants();
+      const variantSlots = commandRecipe();
 
       return h(ComboboxPrimitive.Control as ArkPart, { class: variantSlots.control() }, () =>
         h(
@@ -222,7 +222,7 @@ export const CommandList = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = commandVariants();
+      const variantSlots = commandRecipe();
 
       return h("div", { class: variantSlots.listWrapper() }, () =>
         h(
@@ -247,7 +247,7 @@ export const CommandEmpty = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = commandVariants();
+      const variantSlots = commandRecipe();
 
       return h(
         Combobox.Empty as ArkPart,
@@ -309,7 +309,7 @@ export const CommandItem = defineComponent({
         ComboboxPrimitive.Item as ArkPart,
         {
           ...attrs,
-          class: comboboxVariants({ showIndicator: false }).item({ class: props.class }),
+          class: comboboxRecipe({ showIndicator: false }).item({ class: props.class }),
           item: props.item,
           persistFocus: true,
         },
@@ -327,7 +327,7 @@ export const CommandSeparator = defineComponent({
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = commandVariants();
+      const variantSlots = commandRecipe();
 
       return h(Separator as ArkPart, {
         ...attrs,
@@ -365,7 +365,7 @@ export const CommandFooter = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = commandVariants();
+      const variantSlots = commandRecipe();
 
       return h(
         "div",

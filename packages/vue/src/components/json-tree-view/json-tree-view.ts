@@ -1,6 +1,6 @@
 import { JsonTreeView as JsonTreeViewPrimitive } from "@ark-ui/vue/json-tree-view";
 import { PhCaretRight } from "@phosphor-icons/vue";
-import { type JsonTreeViewSlots, jsonTreeViewVariants } from "@pisagor/recipes/json-tree-view";
+import { type JsonTreeViewSlots, jsonTreeViewRecipe } from "@pisagor/recipes/json-tree-view";
 import { defineComponent, h, type PropType } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 
@@ -41,7 +41,7 @@ export const JsonTreeView = defineComponent({
   },
   setup(props, { attrs }) {
     return () => {
-      const slots_ = jsonTreeViewVariants();
+      const slots_ = jsonTreeViewRecipe();
 
       return h(
         JsonTreeViewPrimitive.Root as ArkPart,

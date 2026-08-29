@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import { frameVariants } from "@pisagor/recipes/frame";
+import { frameRecipe } from "@pisagor/recipes/frame";
 import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -13,7 +13,7 @@ export const FrameRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = frameVariants();
+      const variantSlots = frameRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -37,7 +37,7 @@ export const FramePanel = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = frameVariants();
+      const variantSlots = frameRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -61,7 +61,7 @@ export const FrameTitle = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = frameVariants();
+      const variantSlots = frameRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -85,7 +85,7 @@ export const FrameDescription = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = frameVariants();
+      const variantSlots = frameRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -109,7 +109,7 @@ export const FrameHeader = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = frameVariants();
+      const variantSlots = frameRecipe();
 
       return h(
         ark.header as ArkPart,
@@ -133,7 +133,7 @@ export const FrameFooter = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = frameVariants();
+      const variantSlots = frameRecipe();
 
       return h(
         ark.footer as ArkPart,

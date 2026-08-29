@@ -1,6 +1,6 @@
 import { Splitter as SplitterPrimitive } from "@ark-ui/vue/splitter";
 import { PhDotsSixVertical } from "@phosphor-icons/vue";
-import { resizableEdgeHandleVariants, resizableVariants } from "@pisagor/recipes/resizable";
+import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes/resizable";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, ref } from "vue";
 
@@ -62,7 +62,7 @@ export const ResizableEdgeHandle = defineComponent({
     const isStart = ref(props.placement === "start");
 
     return () => {
-      const edgeHandle = resizableEdgeHandleVariants({
+      const edgeHandle = resizableEdgeHandleRecipe({
         handlePosition: props.handlePosition,
         placement: props.placement,
       });
@@ -145,7 +145,7 @@ export const ResizableRoot = defineComponent({
         SplitterPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(resizableVariants().base(), props.class),
+          class: cn(resizableRecipe().base(), props.class),
         },
         slots,
       );
@@ -179,7 +179,7 @@ export const ResizableResizeTriggerIndicator = defineComponent({
         SplitterPrimitive.ResizeTriggerIndicator as ArkPart,
         {
           ...attrs,
-          class: cn(resizableVariants().resizeTriggerIndicator(), props.class),
+          class: cn(resizableRecipe().resizeTriggerIndicator(), props.class),
         },
         slots,
       );
@@ -200,12 +200,12 @@ export const ResizableResizeTrigger = defineComponent({
         {
           ...attrs,
           "aria-label": "Resize",
-          class: resizableVariants().resizeTrigger({ class: props.class }),
+          class: resizableRecipe().resizeTrigger({ class: props.class }),
         },
         () =>
           props.withHandle
-            ? h("div", { class: resizableVariants().resizeTriggerHandle() }, () =>
-                h(PhDotsSixVertical, { class: resizableVariants().resizeTriggerIcon() }),
+            ? h("div", { class: resizableRecipe().resizeTriggerHandle() }, () =>
+                h(PhDotsSixVertical, { class: resizableRecipe().resizeTriggerIcon() }),
               )
             : (slots.default?.() ?? h(ResizableResizeTriggerIndicator)),
       );
