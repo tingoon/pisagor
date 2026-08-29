@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const calendarVariants = tv({
+export const calendarRecipe = tv({
   slots: {
     base: ["[--cell-size:--spacing(9)]", "w-fit"],
     control: ["inline-flex items-center gap-2"],
@@ -44,7 +44,7 @@ export const calendarVariants = tv({
   },
 });
 
-export const calendarTableCellVariants = tv({
+export const calendarTableCellRecipe = tv({
   slots: {
     base: [
       "relative",
@@ -73,10 +73,8 @@ export const calendarTableCellVariants = tv({
   },
 });
 
-export type CalendarVariantProps = VariantProps<typeof calendarVariants>;
-export type CalendarVariants = ReturnType<typeof calendarVariants>;
-export type CalendarSlots = keyof CalendarVariants;
+export type CalendarVariantProps = VariantProps<typeof calendarRecipe>;
+export type CalendarSlots = ReturnType<typeof calendarRecipe>;
 
-export type CalendarTableCellVariantProps = VariantProps<typeof calendarTableCellVariants>;
-export type CalendarTableCellVariants = ReturnType<typeof calendarTableCellVariants>;
-export type CalendarTableCellSlots = keyof CalendarTableCellVariants;
+export type CalendarTableCellVariantProps = VariantProps<typeof calendarTableCellRecipe>;
+export type CalendarTableCellSlots = ReturnType<typeof calendarTableCellRecipe>;

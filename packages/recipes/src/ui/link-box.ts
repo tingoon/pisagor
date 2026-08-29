@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const linkBoxVariants = tv({
+export const linkBoxRecipe = tv({
   slots: {
     base: [
       "relative",
@@ -16,6 +16,5 @@ export const linkBoxVariants = tv({
   },
 });
 
-export type LinkBoxVariantProps = VariantProps<typeof linkBoxVariants>;
-export type LinkBoxVariants = ReturnType<typeof linkBoxVariants>;
-export type LinkBoxSlots = keyof LinkBoxVariants;
+export type LinkBoxVariantProps = VariantProps<typeof linkBoxRecipe>;
+export type LinkBoxSlots = ReturnType<typeof linkBoxRecipe>;

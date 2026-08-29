@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const hoverCardVariants = tv({
+export const hoverCardRecipe = tv({
   slots: {
     arrowTip: ["border-s border-t"],
     content: [
@@ -24,6 +24,5 @@ export const hoverCardVariants = tv({
   },
 });
 
-export type HoverCardVariantProps = VariantProps<typeof hoverCardVariants>;
-export type HoverCardVariants = ReturnType<typeof hoverCardVariants>;
-export type HoverCardSlots = keyof HoverCardVariants;
+export type HoverCardVariantProps = VariantProps<typeof hoverCardRecipe>;
+export type HoverCardSlots = ReturnType<typeof hoverCardRecipe>;

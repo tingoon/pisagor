@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const stepsVariants = tv({
+export const stepsRecipe = tv({
   slots: {
     base: [
       "flex flex-col gap-4",
@@ -17,7 +17,7 @@ export const stepsVariants = tv({
   },
 });
 
-export const stepsItemVariants = tv({
+export const stepsItemRecipe = tv({
   slots: {
     base: [
       "group/step",
@@ -61,10 +61,8 @@ export const stepsItemVariants = tv({
   },
 });
 
-export type StepsVariantProps = VariantProps<typeof stepsVariants>;
-export type StepsVariants = ReturnType<typeof stepsVariants>;
-export type StepsSlots = keyof StepsVariants;
+export type StepsVariantProps = VariantProps<typeof stepsRecipe>;
+export type StepsSlots = ReturnType<typeof stepsRecipe>;
 
-export type StepsItemVariantProps = VariantProps<typeof stepsItemVariants>;
-export type StepsItemVariants = ReturnType<typeof stepsItemVariants>;
-export type StepsItemSlots = keyof StepsItemVariants;
+export type StepsItemVariantProps = VariantProps<typeof stepsItemRecipe>;
+export type StepsItemSlots = ReturnType<typeof stepsItemRecipe>;

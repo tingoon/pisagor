@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const toastVariants = tv({
+export const toastRecipe = tv({
   base: [
     "w-[calc(100%-var(--viewport-offset-left))] sm:w-(--width)",
     "data-[align=center]:left-[calc(var(--viewport-offset-right)/2)]!",
@@ -8,7 +8,7 @@ export const toastVariants = tv({
   ],
 });
 
-export const toastItemVariants = tv({
+export const toastItemRecipe = tv({
   slots: {
     actions: ["flex items-center gap-2"],
     base: [
@@ -43,9 +43,8 @@ export const toastItemVariants = tv({
   },
 });
 
-export type ToastVariantProps = VariantProps<typeof toastVariants>;
-export type ToastVariants = ReturnType<typeof toastVariants>;
+export type ToastVariantProps = VariantProps<typeof toastRecipe>;
+export type ToastSlots = ReturnType<typeof toastRecipe>;
 
-export type ToastItemVariantProps = VariantProps<typeof toastItemVariants>;
-export type ToastItemVariants = ReturnType<typeof toastItemVariants>;
-export type ToastItemSlots = keyof ToastItemVariants;
+export type ToastItemVariantProps = VariantProps<typeof toastItemRecipe>;
+export type ToastItemSlots = ReturnType<typeof toastItemRecipe>;

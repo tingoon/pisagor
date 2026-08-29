@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const richTextEditorVariants = tv({
+export const richTextEditorRecipe = tv({
   slots: {
     base: [
       "flex h-auto min-h-32 flex-col gap-0 overflow-hidden p-0",
@@ -19,6 +19,5 @@ export const richTextEditorVariants = tv({
   },
 });
 
-export type RichTextEditorVariantProps = VariantProps<typeof richTextEditorVariants>;
-export type RichTextEditorVariants = ReturnType<typeof richTextEditorVariants>;
-export type RichTextEditorSlots = keyof RichTextEditorVariants;
+export type RichTextEditorVariantProps = VariantProps<typeof richTextEditorRecipe>;
+export type RichTextEditorSlots = ReturnType<typeof richTextEditorRecipe>;

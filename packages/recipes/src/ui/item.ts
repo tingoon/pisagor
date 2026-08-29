@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const itemVariants = tv({
+export const itemRecipe = tv({
   defaultVariants: {
     variant: "default",
   },
@@ -71,6 +71,5 @@ export const itemVariants = tv({
   },
 });
 
-export type ItemVariantProps = VariantProps<typeof itemVariants>;
-export type ItemVariants = ReturnType<typeof itemVariants>;
-export type ItemSlots = keyof ItemVariants;
+export type ItemVariantProps = VariantProps<typeof itemRecipe>;
+export type ItemSlots = ReturnType<typeof itemRecipe>;

@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const menuVariants = tv({
+export const menuRecipe = tv({
   slots: {
     base: ["group/menu", "w-full"],
     group: ["flex flex-col gap-1"],
@@ -48,8 +48,8 @@ export const menuVariants = tv({
   },
 });
 
-export const menuItemVariants = tv({
-  base: menuVariants().item(),
+export const menuItemRecipe = tv({
+  base: menuRecipe().item(),
   defaultVariants: {
     variant: "default",
   },
@@ -66,9 +66,8 @@ export const menuItemVariants = tv({
   },
 });
 
-export type MenuVariantProps = VariantProps<typeof menuVariants>;
-export type MenuVariants = ReturnType<typeof menuVariants>;
-export type MenuSlots = keyof MenuVariants;
+export type MenuVariantProps = VariantProps<typeof menuRecipe>;
+export type MenuSlots = ReturnType<typeof menuRecipe>;
 
-export type MenuItemVariantProps = VariantProps<typeof menuItemVariants>;
-export type MenuItemVariants = ReturnType<typeof menuItemVariants>;
+export type MenuItemVariantProps = VariantProps<typeof menuItemRecipe>;
+export type MenuItemSlots = ReturnType<typeof menuItemRecipe>;

@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const dataTableVariants = tv({
+export const dataTableRecipe = tv({
   slots: {
     base: ["flex w-full flex-col gap-3"],
     empty: ["py-6 text-center text-muted-foreground"],
@@ -9,6 +9,5 @@ export const dataTableVariants = tv({
   },
 });
 
-export type DataTableVariantProps = VariantProps<typeof dataTableVariants>;
-export type DataTableVariants = ReturnType<typeof dataTableVariants>;
-export type DataTableSlots = keyof DataTableVariants;
+export type DataTableVariantProps = VariantProps<typeof dataTableRecipe>;
+export type DataTableSlots = ReturnType<typeof dataTableRecipe>;

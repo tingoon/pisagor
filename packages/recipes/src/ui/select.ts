@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const selectVariants = tv({
+export const selectRecipe = tv({
   slots: {
     clearTrigger: [
       "[&_svg]:pointer-events-none [&_svg]:size-3.5 [&_svg]:shrink-0 [&_svg]:text-muted-foreground",
@@ -64,6 +64,5 @@ export const selectVariants = tv({
   },
 });
 
-export type SelectVariantProps = VariantProps<typeof selectVariants>;
-export type SelectVariants = ReturnType<typeof selectVariants>;
-export type SelectSlots = keyof SelectVariants;
+export type SelectVariantProps = VariantProps<typeof selectRecipe>;
+export type SelectSlots = ReturnType<typeof selectRecipe>;

@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const treeViewVariants = tv({
+export const treeViewRecipe = tv({
   slots: {
     base: [
       "[--indentation:--spacing(4)] [--item-gap:--spacing(2)]",
@@ -32,7 +32,7 @@ export const treeViewVariants = tv({
   },
 });
 
-export const treeViewBranchVariants = tv({
+export const treeViewBranchRecipe = tv({
   slots: {
     base: "relative",
     content: [
@@ -63,7 +63,7 @@ export const treeViewBranchVariants = tv({
   },
 });
 
-export const treeViewItemVariants = tv({
+export const treeViewItemRecipe = tv({
   slots: {
     checkbox: "[&_svg]:size-3!",
     icon: "in-[[data-scope=tree-view][data-part=item]:has([data-scope=tree-view][data-part=node-checkbox])]:hidden",
@@ -85,14 +85,11 @@ export const treeViewItemVariants = tv({
   },
 });
 
-export type TreeViewVariantProps = VariantProps<typeof treeViewVariants>;
-export type TreeViewVariants = ReturnType<typeof treeViewVariants>;
-export type TreeViewSlots = keyof TreeViewVariants;
+export type TreeViewVariantProps = VariantProps<typeof treeViewRecipe>;
+export type TreeViewSlots = ReturnType<typeof treeViewRecipe>;
 
-export type TreeViewBranchVariantProps = VariantProps<typeof treeViewBranchVariants>;
-export type TreeViewBranchVariants = ReturnType<typeof treeViewBranchVariants>;
-export type TreeViewBranchSlots = keyof TreeViewBranchVariants;
+export type TreeViewBranchVariantProps = VariantProps<typeof treeViewBranchRecipe>;
+export type TreeViewBranchSlots = ReturnType<typeof treeViewBranchRecipe>;
 
-export type TreeViewItemVariantProps = VariantProps<typeof treeViewItemVariants>;
-export type TreeViewItemVariants = ReturnType<typeof treeViewItemVariants>;
-export type TreeViewItemSlots = keyof TreeViewItemVariants;
+export type TreeViewItemVariantProps = VariantProps<typeof treeViewItemRecipe>;
+export type TreeViewItemSlots = ReturnType<typeof treeViewItemRecipe>;

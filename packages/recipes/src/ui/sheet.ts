@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const sheetVariants = tv({
+export const sheetRecipe = tv({
   defaultVariants: {
     placement: "right",
     variant: "default",
@@ -72,6 +72,5 @@ export const sheetVariants = tv({
   },
 });
 
-export type SheetVariantProps = VariantProps<typeof sheetVariants>;
-export type SheetVariants = ReturnType<typeof sheetVariants>;
-export type SheetSlots = keyof SheetVariants;
+export type SheetVariantProps = VariantProps<typeof sheetRecipe>;
+export type SheetSlots = ReturnType<typeof sheetRecipe>;

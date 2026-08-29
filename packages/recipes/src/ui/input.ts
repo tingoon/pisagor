@@ -1,10 +1,10 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-import { formControlShellVariants } from "./form-control";
+import { formControlShellRecipe } from "./form-control";
 
-export const inputRootVariants = formControlShellVariants;
+export const inputRootRecipe = formControlShellRecipe;
 
-export const inputVariants = tv({
+export const inputRecipe = tv({
   slots: {
     clearableRoot: [
       "flex-1",
@@ -17,9 +17,8 @@ export const inputVariants = tv({
   },
 });
 
-export type InputRootVariantProps = VariantProps<typeof inputRootVariants>;
-export type InputRootVariants = ReturnType<typeof inputRootVariants>;
+export type InputRootVariantProps = VariantProps<typeof inputRootRecipe>;
+export type InputRootSlots = ReturnType<typeof inputRootRecipe>;
 
-export type InputVariantProps = VariantProps<typeof inputVariants>;
-export type InputVariants = ReturnType<typeof inputVariants>;
-export type InputSlots = keyof InputVariants;
+export type InputVariantProps = VariantProps<typeof inputRecipe>;
+export type InputSlots = ReturnType<typeof inputRecipe>;

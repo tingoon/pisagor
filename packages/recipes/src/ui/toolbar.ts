@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const toolbarVariants = tv({
+export const toolbarRecipe = tv({
   slots: {
     actions: ["flex shrink-0 flex-wrap items-center justify-end gap-2"],
     base: ["group/toolbar", "flex w-full flex-wrap items-start justify-between gap-3"],
@@ -10,6 +10,5 @@ export const toolbarVariants = tv({
   },
 });
 
-export type ToolbarVariantProps = VariantProps<typeof toolbarVariants>;
-export type ToolbarVariants = ReturnType<typeof toolbarVariants>;
-export type ToolbarSlots = keyof ToolbarVariants;
+export type ToolbarVariantProps = VariantProps<typeof toolbarRecipe>;
+export type ToolbarSlots = ReturnType<typeof toolbarRecipe>;

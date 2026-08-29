@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const jsonTreeViewVariants = tv({
+export const jsonTreeViewRecipe = tv({
   slots: {
     base: [
       "w-full min-w-0",
@@ -36,6 +36,5 @@ export const jsonTreeViewVariants = tv({
   },
 });
 
-export type JsonTreeViewVariantProps = VariantProps<typeof jsonTreeViewVariants>;
-export type JsonTreeViewVariants = ReturnType<typeof jsonTreeViewVariants>;
-export type JsonTreeViewSlots = keyof JsonTreeViewVariants;
+export type JsonTreeViewVariantProps = VariantProps<typeof jsonTreeViewRecipe>;
+export type JsonTreeViewSlots = ReturnType<typeof jsonTreeViewRecipe>;

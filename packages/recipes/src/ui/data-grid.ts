@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const dataGridVariants = tv({
+export const dataGridRecipe = tv({
   slots: {
     anchor: "hidden",
     base: ["flex w-full flex-col gap-3"],
@@ -19,6 +19,5 @@ export const dataGridVariants = tv({
   },
 });
 
-export type DataGridVariantProps = VariantProps<typeof dataGridVariants>;
-export type DataGridVariants = ReturnType<typeof dataGridVariants>;
-export type DataGridSlots = keyof DataGridVariants;
+export type DataGridVariantProps = VariantProps<typeof dataGridRecipe>;
+export type DataGridSlots = ReturnType<typeof dataGridRecipe>;

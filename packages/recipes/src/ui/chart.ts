@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const chartVariants = tv({
+export const chartRecipe = tv({
   slots: {
     base: [
       "flex justify-center",
@@ -43,6 +43,5 @@ export const chartVariants = tv({
   },
 });
 
-export type ChartVariantProps = VariantProps<typeof chartVariants>;
-export type ChartVariants = ReturnType<typeof chartVariants>;
-export type ChartSlots = keyof ChartVariants;
+export type ChartVariantProps = VariantProps<typeof chartRecipe>;
+export type ChartSlots = ReturnType<typeof chartRecipe>;

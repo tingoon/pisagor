@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const drawerVariants = tv({
+export const drawerRecipe = tv({
   defaultVariants: {
     placement: "down",
     variant: "default",
@@ -129,6 +129,5 @@ export const drawerVariants = tv({
   },
 });
 
-export type DrawerVariantProps = VariantProps<typeof drawerVariants>;
-export type DrawerVariants = ReturnType<typeof drawerVariants>;
-export type DrawerSlots = keyof DrawerVariants;
+export type DrawerVariantProps = VariantProps<typeof drawerRecipe>;
+export type DrawerSlots = ReturnType<typeof drawerRecipe>;

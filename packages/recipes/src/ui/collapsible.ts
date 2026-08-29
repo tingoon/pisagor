@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const collapsibleVariants = tv({
+export const collapsibleRecipe = tv({
   slots: {
     base: "group/collapsible",
     content: [
@@ -22,6 +22,5 @@ export const collapsibleVariants = tv({
   },
 });
 
-export type CollapsibleVariantProps = VariantProps<typeof collapsibleVariants>;
-export type CollapsibleVariants = ReturnType<typeof collapsibleVariants>;
-export type CollapsibleSlots = keyof CollapsibleVariants;
+export type CollapsibleVariantProps = VariantProps<typeof collapsibleRecipe>;
+export type CollapsibleSlots = ReturnType<typeof collapsibleRecipe>;

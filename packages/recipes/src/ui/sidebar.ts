@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const sidebarVariants = tv({
+export const sidebarRecipe = tv({
   slots: {
     base: ["h-full w-(--sidebar-width)", "flex flex-col", "bg-muted", "text-muted-foreground"],
     container: [
@@ -197,6 +197,5 @@ export const sidebarVariants = tv({
   },
 });
 
-export type SidebarVariantProps = VariantProps<typeof sidebarVariants>;
-export type SidebarVariants = ReturnType<typeof sidebarVariants>;
-export type SidebarSlots = keyof SidebarVariants;
+export type SidebarVariantProps = VariantProps<typeof sidebarRecipe>;
+export type SidebarSlots = ReturnType<typeof sidebarRecipe>;

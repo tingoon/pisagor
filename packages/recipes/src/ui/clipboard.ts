@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const clipboardVariants = tv({
+export const clipboardRecipe = tv({
   defaultVariants: {
     valueSize: "md",
   },
@@ -23,6 +23,5 @@ export const clipboardVariants = tv({
   },
 });
 
-export type ClipboardVariantProps = VariantProps<typeof clipboardVariants>;
-export type ClipboardVariants = ReturnType<typeof clipboardVariants>;
-export type ClipboardSlots = keyof ClipboardVariants;
+export type ClipboardVariantProps = VariantProps<typeof clipboardRecipe>;
+export type ClipboardSlots = ReturnType<typeof clipboardRecipe>;

@@ -1,8 +1,8 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const aspectRatioVariants = tv({
+export const aspectRatioRecipe = tv({
   base: ["[--ratio:1]", "relative", "w-full", "aspect-(--ratio)"],
 });
 
-export type AspectRatioVariantProps = VariantProps<typeof aspectRatioVariants>;
-export type AspectRatioVariants = ReturnType<typeof aspectRatioVariants>;
+export type AspectRatioVariantProps = VariantProps<typeof aspectRatioRecipe>;
+export type AspectRatioSlots = ReturnType<typeof aspectRatioRecipe>;

@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const sortableVariants = tv({
+export const sortableRecipe = tv({
   base: ["flex gap-2"],
   defaultVariants: {
     orientation: "vertical",
@@ -13,7 +13,7 @@ export const sortableVariants = tv({
   },
 });
 
-export const sortableItemVariants = tv({
+export const sortableItemRecipe = tv({
   slots: {
     base: [
       "relative",
@@ -33,9 +33,8 @@ export const sortableItemVariants = tv({
   },
 });
 
-export type SortableVariantProps = VariantProps<typeof sortableVariants>;
-export type SortableVariants = ReturnType<typeof sortableVariants>;
+export type SortableVariantProps = VariantProps<typeof sortableRecipe>;
+export type SortableSlots = ReturnType<typeof sortableRecipe>;
 
-export type SortableItemVariantProps = VariantProps<typeof sortableItemVariants>;
-export type SortableItemVariants = ReturnType<typeof sortableItemVariants>;
-export type SortableItemSlots = keyof SortableItemVariants;
+export type SortableItemVariantProps = VariantProps<typeof sortableItemRecipe>;
+export type SortableItemSlots = ReturnType<typeof sortableItemRecipe>;

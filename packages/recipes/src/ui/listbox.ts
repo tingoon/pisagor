@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const listboxVariants = tv({
+export const listboxRecipe = tv({
   slots: {
     base: ["w-full", "flex flex-col gap-1.5", "text-foreground"],
     content: [
@@ -17,7 +17,7 @@ export const listboxVariants = tv({
   },
 });
 
-export const listboxItemVariants = tv({
+export const listboxItemRecipe = tv({
   defaultVariants: {
     variant: "default",
   },
@@ -64,10 +64,8 @@ export const listboxItemVariants = tv({
   },
 });
 
-export type ListboxVariantProps = VariantProps<typeof listboxVariants>;
-export type ListboxVariants = ReturnType<typeof listboxVariants>;
-export type ListboxSlots = keyof ListboxVariants;
+export type ListboxVariantProps = VariantProps<typeof listboxRecipe>;
+export type ListboxSlots = ReturnType<typeof listboxRecipe>;
 
-export type ListboxItemVariantProps = VariantProps<typeof listboxItemVariants>;
-export type ListboxItemVariants = ReturnType<typeof listboxItemVariants>;
-export type ListboxItemSlots = keyof ListboxItemVariants;
+export type ListboxItemVariantProps = VariantProps<typeof listboxItemRecipe>;
+export type ListboxItemSlots = ReturnType<typeof listboxItemRecipe>;

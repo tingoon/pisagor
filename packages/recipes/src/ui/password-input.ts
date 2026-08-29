@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const passwordInputVariants = tv({
+export const passwordInputRecipe = tv({
   slots: {
     base: ["group/password-input w-full flex flex-col items-start gap-2"],
     clearAddon: [
@@ -13,6 +13,5 @@ export const passwordInputVariants = tv({
   },
 });
 
-export type PasswordInputVariantProps = VariantProps<typeof passwordInputVariants>;
-export type PasswordInputVariants = ReturnType<typeof passwordInputVariants>;
-export type PasswordInputSlots = keyof PasswordInputVariants;
+export type PasswordInputVariantProps = VariantProps<typeof passwordInputRecipe>;
+export type PasswordInputSlots = ReturnType<typeof passwordInputRecipe>;

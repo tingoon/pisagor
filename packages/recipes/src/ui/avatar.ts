@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const avatarVariants = tv({
+export const avatarRecipe = tv({
   defaultVariants: {
     shape: "circle",
     size: "md",
@@ -38,7 +38,7 @@ export const avatarVariants = tv({
   },
 });
 
-export const avatarGroupVariants = tv({
+export const avatarGroupRecipe = tv({
   slots: {
     base: [
       "flex -space-x-2",
@@ -57,10 +57,8 @@ export const avatarGroupVariants = tv({
   },
 });
 
-export type AvatarVariantProps = VariantProps<typeof avatarVariants>;
-export type AvatarVariants = ReturnType<typeof avatarVariants>;
-export type AvatarSlots = keyof AvatarVariants;
+export type AvatarVariantProps = VariantProps<typeof avatarRecipe>;
+export type AvatarSlots = ReturnType<typeof avatarRecipe>;
 
-export type AvatarGroupVariantProps = VariantProps<typeof avatarGroupVariants>;
-export type AvatarGroupVariants = ReturnType<typeof avatarGroupVariants>;
-export type AvatarGroupSlots = keyof AvatarGroupVariants;
+export type AvatarGroupVariantProps = VariantProps<typeof avatarGroupRecipe>;
+export type AvatarGroupSlots = ReturnType<typeof avatarGroupRecipe>;

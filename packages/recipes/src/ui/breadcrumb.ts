@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const breadcrumbVariants = tv({
+export const breadcrumbRecipe = tv({
   slots: {
     ellipsis: "size-4",
     list: [
@@ -11,7 +11,7 @@ export const breadcrumbVariants = tv({
   },
 });
 
-export const breadcrumbItemVariants = tv({
+export const breadcrumbItemRecipe = tv({
   slots: {
     base: ["inline-flex items-center gap-1.5"],
     link: [
@@ -26,10 +26,8 @@ export const breadcrumbItemVariants = tv({
   },
 });
 
-export type BreadcrumbVariantProps = VariantProps<typeof breadcrumbVariants>;
-export type BreadcrumbVariants = ReturnType<typeof breadcrumbVariants>;
-export type BreadcrumbSlots = keyof BreadcrumbVariants;
+export type BreadcrumbVariantProps = VariantProps<typeof breadcrumbRecipe>;
+export type BreadcrumbSlots = ReturnType<typeof breadcrumbRecipe>;
 
-export type BreadcrumbItemVariantProps = VariantProps<typeof breadcrumbItemVariants>;
-export type BreadcrumbItemVariants = ReturnType<typeof breadcrumbItemVariants>;
-export type BreadcrumbItemSlots = keyof BreadcrumbItemVariants;
+export type BreadcrumbItemVariantProps = VariantProps<typeof breadcrumbItemRecipe>;
+export type BreadcrumbItemSlots = ReturnType<typeof breadcrumbItemRecipe>;

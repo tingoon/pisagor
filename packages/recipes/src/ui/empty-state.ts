@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const emptyStateVariants = tv({
+export const emptyStateRecipe = tv({
   slots: {
     actions: ["mt-2", "flex flex-wrap items-center justify-center gap-2"],
     base: [
@@ -20,6 +20,5 @@ export const emptyStateVariants = tv({
   },
 });
 
-export type EmptyStateVariantProps = VariantProps<typeof emptyStateVariants>;
-export type EmptyStateVariants = ReturnType<typeof emptyStateVariants>;
-export type EmptyStateSlots = keyof EmptyStateVariants;
+export type EmptyStateVariantProps = VariantProps<typeof emptyStateRecipe>;
+export type EmptyStateSlots = ReturnType<typeof emptyStateRecipe>;

@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const carouselVariants = tv({
+export const carouselRecipe = tv({
   slots: {
     base: [
       "relative",
@@ -37,6 +37,5 @@ export const carouselVariants = tv({
   },
 });
 
-export type CarouselVariantProps = VariantProps<typeof carouselVariants>;
-export type CarouselVariants = ReturnType<typeof carouselVariants>;
-export type CarouselSlots = keyof CarouselVariants;
+export type CarouselVariantProps = VariantProps<typeof carouselRecipe>;
+export type CarouselSlots = ReturnType<typeof carouselRecipe>;

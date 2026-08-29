@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const numberInputVariants = tv({
+export const numberInputRecipe = tv({
   slots: {
     base: [
       "group/number-field flex w-full flex-col items-start gap-2",
@@ -49,6 +49,5 @@ export const numberInputVariants = tv({
   },
 });
 
-export type NumberInputVariantProps = VariantProps<typeof numberInputVariants>;
-export type NumberInputVariants = ReturnType<typeof numberInputVariants>;
-export type NumberInputSlots = keyof NumberInputVariants;
+export type NumberInputVariantProps = VariantProps<typeof numberInputRecipe>;
+export type NumberInputSlots = ReturnType<typeof numberInputRecipe>;

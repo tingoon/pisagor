@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const resizableVariants = tv({
+export const resizableRecipe = tv({
   slots: {
     base: ["flex size-full min-h-0 min-w-0 data-[orientation=vertical]:flex-col"],
     resizeTrigger: [
@@ -30,7 +30,7 @@ export const resizableVariants = tv({
   },
 });
 
-export const resizableEdgeHandleVariants = tv({
+export const resizableEdgeHandleRecipe = tv({
   defaultVariants: {
     handlePosition: "center",
     placement: "start",
@@ -64,10 +64,8 @@ export const resizableEdgeHandleVariants = tv({
   },
 });
 
-export type ResizableVariantProps = VariantProps<typeof resizableVariants>;
-export type ResizableVariants = ReturnType<typeof resizableVariants>;
-export type ResizableSlots = keyof ResizableVariants;
+export type ResizableVariantProps = VariantProps<typeof resizableRecipe>;
+export type ResizableSlots = ReturnType<typeof resizableRecipe>;
 
-export type ResizableEdgeHandleVariantProps = VariantProps<typeof resizableEdgeHandleVariants>;
-export type ResizableEdgeHandleVariants = ReturnType<typeof resizableEdgeHandleVariants>;
-export type ResizableEdgeHandleSlots = keyof ResizableEdgeHandleVariants;
+export type ResizableEdgeHandleVariantProps = VariantProps<typeof resizableEdgeHandleRecipe>;
+export type ResizableEdgeHandleSlots = ReturnType<typeof resizableEdgeHandleRecipe>;

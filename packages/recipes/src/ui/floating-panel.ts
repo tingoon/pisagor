@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const floatingPanelVariants = tv({
+export const floatingPanelRecipe = tv({
   slots: {
     body: [
       "flex flex-col gap-4",
@@ -50,6 +50,5 @@ export const floatingPanelVariants = tv({
   },
 });
 
-export type FloatingPanelVariantProps = VariantProps<typeof floatingPanelVariants>;
-export type FloatingPanelVariants = ReturnType<typeof floatingPanelVariants>;
-export type FloatingPanelSlots = keyof FloatingPanelVariants;
+export type FloatingPanelVariantProps = VariantProps<typeof floatingPanelRecipe>;
+export type FloatingPanelSlots = ReturnType<typeof floatingPanelRecipe>;

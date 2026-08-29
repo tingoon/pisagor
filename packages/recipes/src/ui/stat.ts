@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const statVariants = tv({
+export const statRecipe = tv({
   defaultVariants: {
     variant: "outline",
   },
@@ -31,7 +31,7 @@ export const statVariants = tv({
   },
 });
 
-export const statTrendVariants = tv({
+export const statTrendRecipe = tv({
   base: [
     "inline-flex w-fit items-center gap-1 rounded-md px-2 py-0.5",
     "font-medium text-xs",
@@ -49,9 +49,8 @@ export const statTrendVariants = tv({
   },
 });
 
-export type StatVariantProps = VariantProps<typeof statVariants>;
-export type StatVariants = ReturnType<typeof statVariants>;
-export type StatSlots = keyof StatVariants;
+export type StatVariantProps = VariantProps<typeof statRecipe>;
+export type StatSlots = ReturnType<typeof statRecipe>;
 
-export type StatTrendVariantProps = VariantProps<typeof statTrendVariants>;
-export type StatTrendVariants = ReturnType<typeof statTrendVariants>;
+export type StatTrendVariantProps = VariantProps<typeof statTrendRecipe>;
+export type StatTrendSlots = ReturnType<typeof statTrendRecipe>;

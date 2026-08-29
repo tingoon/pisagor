@@ -7,11 +7,11 @@ src/ui/   component recipes — `@pisagor/recipes` / `@pisagor/recipes/<name>`
 ```
 
 ```ts
-import { buttonVariants } from "@pisagor/recipes";
+import { buttonRecipe } from "@pisagor/recipes";
 // or a tight import:
-import { buttonVariants } from "@pisagor/recipes/button";
+import { buttonRecipe } from "@pisagor/recipes/button";
 
-cn(buttonVariants({ variant: "outline", size: "sm" }), className);
+cn(buttonRecipe({ variant: "outline", size: "sm" }).base(), className);
 ```
 
 Prefer `@pisagor/recipes/<name>` when you need a tight import graph; use `@pisagor/recipes` when importing several recipes.
@@ -24,6 +24,6 @@ Prefer `@pisagor/recipes/<name>` when you need a tight import graph; use `@pisag
 
 **Z-index:** use theme utilities (`z-popover`, `z-modal`, `z-toast`) — not hardcoded `z-50`.
 
-**Naming:** export `{component}Variants` (e.g. `checkboxVariants`, `numberInputVariants`).
+**Naming:** export `{component}Recipe` (e.g. `checkboxRecipe`, `numberInputRecipe`), plus `{Name}VariantProps` and `{Name}Slots` as needed.
 
 Optional peer: `tailwind-merge` >=3 (Tailwind Variants v3 merge support).

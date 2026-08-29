@@ -1,8 +1,8 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const spinnerVariants = tv({
+export const spinnerRecipe = tv({
   base: ["size-4 animate-spin"],
 });
 
-export type SpinnerVariantProps = VariantProps<typeof spinnerVariants>;
-export type SpinnerVariants = ReturnType<typeof spinnerVariants>;
+export type SpinnerVariantProps = VariantProps<typeof spinnerRecipe>;
+export type SpinnerSlots = ReturnType<typeof spinnerRecipe>;

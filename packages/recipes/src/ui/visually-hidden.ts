@@ -1,8 +1,8 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const visuallyHiddenVariants = tv({
+export const visuallyHiddenRecipe = tv({
   base: "sr-only",
 });
 
-export type VisuallyHiddenVariantProps = VariantProps<typeof visuallyHiddenVariants>;
-export type VisuallyHiddenVariants = ReturnType<typeof visuallyHiddenVariants>;
+export type VisuallyHiddenVariantProps = VariantProps<typeof visuallyHiddenRecipe>;
+export type VisuallyHiddenSlots = ReturnType<typeof visuallyHiddenRecipe>;

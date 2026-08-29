@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const actionBarVariants = tv({
+export const actionBarRecipe = tv({
   defaultVariants: {
     placement: "bottom",
   },
@@ -44,6 +44,5 @@ export const actionBarVariants = tv({
   },
 });
 
-export type ActionBarVariantProps = VariantProps<typeof actionBarVariants>;
-export type ActionBarVariants = ReturnType<typeof actionBarVariants>;
-export type ActionBarSlots = keyof ActionBarVariants;
+export type ActionBarVariantProps = VariantProps<typeof actionBarRecipe>;
+export type ActionBarSlots = ReturnType<typeof actionBarRecipe>;

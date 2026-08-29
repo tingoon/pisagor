@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const progressVariants = tv({
+export const progressRecipe = tv({
   slots: {
     base: [
       "flex flex-wrap gap-3",
@@ -27,6 +27,5 @@ export const progressVariants = tv({
   },
 });
 
-export type ProgressVariantProps = VariantProps<typeof progressVariants>;
-export type ProgressVariants = ReturnType<typeof progressVariants>;
-export type ProgressSlots = keyof ProgressVariants;
+export type ProgressVariantProps = VariantProps<typeof progressRecipe>;
+export type ProgressSlots = ReturnType<typeof progressRecipe>;

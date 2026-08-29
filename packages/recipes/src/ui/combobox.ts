@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const comboboxVariants = tv({
+export const comboboxRecipe = tv({
   defaultVariants: {
     showIndicator: true,
   },
@@ -55,6 +55,5 @@ export const comboboxVariants = tv({
   },
 });
 
-export type ComboboxVariantProps = VariantProps<typeof comboboxVariants>;
-export type ComboboxVariants = ReturnType<typeof comboboxVariants>;
-export type ComboboxSlots = keyof ComboboxVariants;
+export type ComboboxVariantProps = VariantProps<typeof comboboxRecipe>;
+export type ComboboxSlots = ReturnType<typeof comboboxRecipe>;

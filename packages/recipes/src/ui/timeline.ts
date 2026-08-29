@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const timelineVariants = tv({
+export const timelineRecipe = tv({
   base: ["group/timeline", "relative flex"],
   defaultVariants: {
     orientation: "vertical",
@@ -13,7 +13,7 @@ export const timelineVariants = tv({
   },
 });
 
-export const timelineItemVariants = tv({
+export const timelineItemRecipe = tv({
   slots: {
     base: [
       "group/timeline-item",
@@ -39,9 +39,8 @@ export const timelineItemVariants = tv({
   },
 });
 
-export type TimelineVariantProps = VariantProps<typeof timelineVariants>;
-export type TimelineVariants = ReturnType<typeof timelineVariants>;
+export type TimelineVariantProps = VariantProps<typeof timelineRecipe>;
+export type TimelineSlots = ReturnType<typeof timelineRecipe>;
 
-export type TimelineItemVariantProps = VariantProps<typeof timelineItemVariants>;
-export type TimelineItemVariants = ReturnType<typeof timelineItemVariants>;
-export type TimelineItemSlots = keyof TimelineItemVariants;
+export type TimelineItemVariantProps = VariantProps<typeof timelineItemRecipe>;
+export type TimelineItemSlots = ReturnType<typeof timelineItemRecipe>;

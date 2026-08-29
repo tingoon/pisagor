@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const circularSliderVariants = tv({
+export const circularSliderRecipe = tv({
   slots: {
     base: [
       "relative",
@@ -39,6 +39,5 @@ export const circularSliderVariants = tv({
   },
 });
 
-export type CircularSliderVariantProps = VariantProps<typeof circularSliderVariants>;
-export type CircularSliderVariants = ReturnType<typeof circularSliderVariants>;
-export type CircularSliderSlots = keyof CircularSliderVariants;
+export type CircularSliderVariantProps = VariantProps<typeof circularSliderRecipe>;
+export type CircularSliderSlots = ReturnType<typeof circularSliderRecipe>;

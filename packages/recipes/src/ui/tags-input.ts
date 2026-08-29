@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const tagsInputVariants = tv({
+export const tagsInputRecipe = tv({
   slots: {
     base: ["group/tags-input", "flex w-full flex-col gap-2"],
     clearTrigger: ["ms-auto shrink-0 self-center text-muted-foreground hover:text-foreground"],
@@ -17,7 +17,7 @@ export const tagsInputVariants = tv({
   },
 });
 
-export const tagsInputItemVariants = tv({
+export const tagsInputItemRecipe = tv({
   slots: {
     base: [
       "h-6 in-data-[size=lg]:h-7 in-data-[size=sm]:h-5 max-w-full",
@@ -42,10 +42,8 @@ export const tagsInputItemVariants = tv({
   },
 });
 
-export type TagsInputVariantProps = VariantProps<typeof tagsInputVariants>;
-export type TagsInputVariants = ReturnType<typeof tagsInputVariants>;
-export type TagsInputSlots = keyof TagsInputVariants;
+export type TagsInputVariantProps = VariantProps<typeof tagsInputRecipe>;
+export type TagsInputSlots = ReturnType<typeof tagsInputRecipe>;
 
-export type TagsInputItemVariantProps = VariantProps<typeof tagsInputItemVariants>;
-export type TagsInputItemVariants = ReturnType<typeof tagsInputItemVariants>;
-export type TagsInputItemSlots = keyof TagsInputItemVariants;
+export type TagsInputItemVariantProps = VariantProps<typeof tagsInputItemRecipe>;
+export type TagsInputItemSlots = ReturnType<typeof tagsInputItemRecipe>;

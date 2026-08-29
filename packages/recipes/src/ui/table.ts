@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const tableVariants = tv({
+export const tableRecipe = tv({
   slots: {
     base: ["group/table", "w-full", "caption-bottom", "text-foreground text-sm"],
     body: "[&_tr:last-child]:border-0",
@@ -29,6 +29,5 @@ export const tableVariants = tv({
   },
 });
 
-export type TableVariantProps = VariantProps<typeof tableVariants>;
-export type TableVariants = ReturnType<typeof tableVariants>;
-export type TableSlots = keyof TableVariants;
+export type TableVariantProps = VariantProps<typeof tableRecipe>;
+export type TableSlots = ReturnType<typeof tableRecipe>;

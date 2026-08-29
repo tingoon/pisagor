@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const skipNavVariants = tv({
+export const skipNavRecipe = tv({
   slots: {
     content: "outline-hidden",
     link: [
@@ -15,6 +15,5 @@ export const skipNavVariants = tv({
   },
 });
 
-export type SkipNavVariantProps = VariantProps<typeof skipNavVariants>;
-export type SkipNavVariants = ReturnType<typeof skipNavVariants>;
-export type SkipNavSlots = keyof SkipNavVariants;
+export type SkipNavVariantProps = VariantProps<typeof skipNavRecipe>;
+export type SkipNavSlots = ReturnType<typeof skipNavRecipe>;

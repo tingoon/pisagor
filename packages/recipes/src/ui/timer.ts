@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const timerVariants = tv({
+export const timerRecipe = tv({
   slots: {
     area: ["flex items-center gap-2", "has-[[data-scope=timer][data-part=item-label]]:items-start"],
     base: ["min-w-0", "flex flex-col items-start gap-4", "text-foreground"],
@@ -9,7 +9,7 @@ export const timerVariants = tv({
   },
 });
 
-export const timerItemGroupVariants = tv({
+export const timerItemGroupRecipe = tv({
   slots: {
     base: [
       "flex items-center",
@@ -24,10 +24,8 @@ export const timerItemGroupVariants = tv({
   },
 });
 
-export type TimerVariantProps = VariantProps<typeof timerVariants>;
-export type TimerVariants = ReturnType<typeof timerVariants>;
-export type TimerSlots = keyof TimerVariants;
+export type TimerVariantProps = VariantProps<typeof timerRecipe>;
+export type TimerSlots = ReturnType<typeof timerRecipe>;
 
-export type TimerItemGroupVariantProps = VariantProps<typeof timerItemGroupVariants>;
-export type TimerItemGroupVariants = ReturnType<typeof timerItemGroupVariants>;
-export type TimerItemGroupSlots = keyof TimerItemGroupVariants;
+export type TimerItemGroupVariantProps = VariantProps<typeof timerItemGroupRecipe>;
+export type TimerItemGroupSlots = ReturnType<typeof timerItemGroupRecipe>;

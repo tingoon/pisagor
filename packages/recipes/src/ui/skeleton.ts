@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const skeletonVariants = tv({
+export const skeletonRecipe = tv({
   slots: {
     base: ["rounded-md bg-muted", "animate-pulse", "motion-reduce:animate-none!"],
     circle: [
@@ -22,6 +22,5 @@ export const skeletonVariants = tv({
   },
 });
 
-export type SkeletonVariantProps = VariantProps<typeof skeletonVariants>;
-export type SkeletonVariants = ReturnType<typeof skeletonVariants>;
-export type SkeletonSlots = keyof SkeletonVariants;
+export type SkeletonVariantProps = VariantProps<typeof skeletonRecipe>;
+export type SkeletonSlots = ReturnType<typeof skeletonRecipe>;

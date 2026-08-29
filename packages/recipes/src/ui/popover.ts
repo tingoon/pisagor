@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const popoverVariants = tv({
+export const popoverRecipe = tv({
   slots: {
     arrowTip: ["border-s border-t"],
     base: [
@@ -47,6 +47,5 @@ export const popoverVariants = tv({
   },
 });
 
-export type PopoverVariantProps = VariantProps<typeof popoverVariants>;
-export type PopoverVariants = ReturnType<typeof popoverVariants>;
-export type PopoverSlots = keyof PopoverVariants;
+export type PopoverVariantProps = VariantProps<typeof popoverRecipe>;
+export type PopoverSlots = ReturnType<typeof popoverRecipe>;

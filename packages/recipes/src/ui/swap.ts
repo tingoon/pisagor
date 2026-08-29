@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const swapVariants = tv({
+export const swapRecipe = tv({
   base: ["[&>span]:motion-reduce:animate-none!"],
   defaultVariants: {
     variant: "fade",
@@ -32,5 +32,5 @@ export const swapVariants = tv({
   },
 });
 
-export type SwapVariantProps = VariantProps<typeof swapVariants>;
-export type SwapVariants = ReturnType<typeof swapVariants>;
+export type SwapVariantProps = VariantProps<typeof swapRecipe>;
+export type SwapSlots = ReturnType<typeof swapRecipe>;

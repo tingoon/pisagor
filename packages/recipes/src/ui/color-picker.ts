@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const colorPickerVariants = tv({
+export const colorPickerRecipe = tv({
   slots: {
     area: ["relative", "aspect-square size-full", "rounded-xl border", "touch-none"],
     areaBackground: ["size-full rounded-[inherit]"],
@@ -112,6 +112,5 @@ export const colorPickerVariants = tv({
   },
 });
 
-export type ColorPickerVariantProps = VariantProps<typeof colorPickerVariants>;
-export type ColorPickerVariants = ReturnType<typeof colorPickerVariants>;
-export type ColorPickerSlots = keyof ColorPickerVariants;
+export type ColorPickerVariantProps = VariantProps<typeof colorPickerRecipe>;
+export type ColorPickerSlots = ReturnType<typeof colorPickerRecipe>;

@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const tabsVariants = tv({
+export const tabsRecipe = tv({
   defaultVariants: {
     variant: "default",
   },
@@ -62,6 +62,5 @@ export const tabsVariants = tv({
   },
 });
 
-export type TabsVariantProps = VariantProps<typeof tabsVariants>;
-export type TabsVariants = ReturnType<typeof tabsVariants>;
-export type TabsSlots = keyof TabsVariants;
+export type TabsVariantProps = VariantProps<typeof tabsRecipe>;
+export type TabsSlots = ReturnType<typeof tabsRecipe>;

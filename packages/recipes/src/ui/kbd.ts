@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const kbdVariants = tv({
+export const kbdRecipe = tv({
   base: [
     "h-5 min-w-5",
     "px-1",
@@ -22,12 +22,12 @@ export const kbdVariants = tv({
   },
 });
 
-export const kbdGroupVariants = tv({
+export const kbdGroupRecipe = tv({
   base: ["inline-flex items-center gap-1"],
 });
 
-export type KbdVariantProps = VariantProps<typeof kbdVariants>;
-export type KbdVariants = ReturnType<typeof kbdVariants>;
+export type KbdVariantProps = VariantProps<typeof kbdRecipe>;
+export type KbdSlots = ReturnType<typeof kbdRecipe>;
 
-export type KbdGroupVariantProps = VariantProps<typeof kbdGroupVariants>;
-export type KbdGroupVariants = ReturnType<typeof kbdGroupVariants>;
+export type KbdGroupVariantProps = VariantProps<typeof kbdGroupRecipe>;
+export type KbdGroupSlots = ReturnType<typeof kbdGroupRecipe>;

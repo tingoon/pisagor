@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const separatorVariants = tv({
+export const separatorRecipe = tv({
   base: [
     "shrink-0",
     "bg-input",
@@ -9,5 +9,5 @@ export const separatorVariants = tv({
   ],
 });
 
-export type SeparatorVariantProps = VariantProps<typeof separatorVariants>;
-export type SeparatorVariants = ReturnType<typeof separatorVariants>;
+export type SeparatorVariantProps = VariantProps<typeof separatorRecipe>;
+export type SeparatorSlots = ReturnType<typeof separatorRecipe>;

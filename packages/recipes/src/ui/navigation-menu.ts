@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const navigationMenuVariants = tv({
+export const navigationMenuRecipe = tv({
   slots: {
     base: ["group/navigation-menu", "w-full"],
     item: ["shrink-0"],
@@ -19,6 +19,5 @@ export const navigationMenuVariants = tv({
   },
 });
 
-export type NavigationMenuVariantProps = VariantProps<typeof navigationMenuVariants>;
-export type NavigationMenuVariants = ReturnType<typeof navigationMenuVariants>;
-export type NavigationMenuSlots = keyof NavigationMenuVariants;
+export type NavigationMenuVariantProps = VariantProps<typeof navigationMenuRecipe>;
+export type NavigationMenuSlots = ReturnType<typeof navigationMenuRecipe>;

@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const segmentGroupVariants = tv({
+export const segmentGroupRecipe = tv({
   slots: {
     base: [
       "group/segment-group relative",
@@ -39,6 +39,5 @@ export const segmentGroupVariants = tv({
   },
 });
 
-export type SegmentGroupVariantProps = VariantProps<typeof segmentGroupVariants>;
-export type SegmentGroupVariants = ReturnType<typeof segmentGroupVariants>;
-export type SegmentGroupSlots = keyof SegmentGroupVariants;
+export type SegmentGroupVariantProps = VariantProps<typeof segmentGroupRecipe>;
+export type SegmentGroupSlots = ReturnType<typeof segmentGroupRecipe>;

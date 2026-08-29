@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const buttonGroupVariants = tv({
+export const buttonGroupRecipe = tv({
   defaultVariants: {
     orientation: "horizontal",
   },
@@ -48,6 +48,5 @@ export const buttonGroupVariants = tv({
   },
 });
 
-export type ButtonGroupVariantProps = VariantProps<typeof buttonGroupVariants>;
-export type ButtonGroupVariants = ReturnType<typeof buttonGroupVariants>;
-export type ButtonGroupSlots = keyof ButtonGroupVariants;
+export type ButtonGroupVariantProps = VariantProps<typeof buttonGroupRecipe>;
+export type ButtonGroupSlots = ReturnType<typeof buttonGroupRecipe>;

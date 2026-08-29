@@ -1,8 +1,8 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const contextMenuVariants = tv({
+export const contextMenuRecipe = tv({
   base: "cursor-default",
 });
 
-export type ContextMenuVariantProps = VariantProps<typeof contextMenuVariants>;
-export type ContextMenuVariants = ReturnType<typeof contextMenuVariants>;
+export type ContextMenuVariantProps = VariantProps<typeof contextMenuRecipe>;
+export type ContextMenuSlots = ReturnType<typeof contextMenuRecipe>;

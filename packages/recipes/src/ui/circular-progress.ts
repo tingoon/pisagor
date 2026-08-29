@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const circularProgressVariants = tv({
+export const circularProgressRecipe = tv({
   slots: {
     base: ["group/circular-progress", "relative", "inline-flex items-center justify-center"],
     range: [
@@ -20,6 +20,5 @@ export const circularProgressVariants = tv({
   },
 });
 
-export type CircularProgressVariantProps = VariantProps<typeof circularProgressVariants>;
-export type CircularProgressVariants = ReturnType<typeof circularProgressVariants>;
-export type CircularProgressSlots = keyof CircularProgressVariants;
+export type CircularProgressVariantProps = VariantProps<typeof circularProgressRecipe>;
+export type CircularProgressSlots = ReturnType<typeof circularProgressRecipe>;

@@ -1,10 +1,10 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const checkboxGroupVariants = tv({
+export const checkboxGroupRecipe = tv({
   base: ["flex flex-col gap-2"],
 });
 
-export const checkboxVariants = tv({
+export const checkboxRecipe = tv({
   slots: {
     base: [
       "data-focus-visible:border-primary data-focus-visible:ring-[3px] data-focus-visible:ring-ring/32 data-focus-visible:ring-offset-1 data-focus-visible:ring-offset-background",
@@ -27,9 +27,8 @@ export const checkboxVariants = tv({
   },
 });
 
-export type CheckboxGroupVariantProps = VariantProps<typeof checkboxGroupVariants>;
-export type CheckboxGroupVariants = ReturnType<typeof checkboxGroupVariants>;
+export type CheckboxGroupVariantProps = VariantProps<typeof checkboxGroupRecipe>;
+export type CheckboxGroupSlots = ReturnType<typeof checkboxGroupRecipe>;
 
-export type CheckboxVariantProps = VariantProps<typeof checkboxVariants>;
-export type CheckboxVariants = ReturnType<typeof checkboxVariants>;
-export type CheckboxSlots = keyof CheckboxVariants;
+export type CheckboxVariantProps = VariantProps<typeof checkboxRecipe>;
+export type CheckboxSlots = ReturnType<typeof checkboxRecipe>;

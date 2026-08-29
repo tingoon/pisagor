@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const fileUploadVariants = tv({
+export const fileUploadRecipe = tv({
   slots: {
     base: ["group/file-upload", "relative", "flex flex-col justify-center gap-4"],
     description: ["font-medium text-muted-foreground text-sm"],
@@ -28,7 +28,7 @@ export const fileUploadVariants = tv({
   },
 });
 
-export const fileUploadItemVariants = tv({
+export const fileUploadItemRecipe = tv({
   slots: {
     base: ["relative inline-flex"],
     content: ["min-w-0 flex-1 overflow-hidden"],
@@ -61,10 +61,8 @@ export const fileUploadItemVariants = tv({
   },
 });
 
-export type FileUploadVariantProps = VariantProps<typeof fileUploadVariants>;
-export type FileUploadVariants = ReturnType<typeof fileUploadVariants>;
-export type FileUploadSlots = keyof FileUploadVariants;
+export type FileUploadVariantProps = VariantProps<typeof fileUploadRecipe>;
+export type FileUploadSlots = ReturnType<typeof fileUploadRecipe>;
 
-export type FileUploadItemVariantProps = VariantProps<typeof fileUploadItemVariants>;
-export type FileUploadItemVariants = ReturnType<typeof fileUploadItemVariants>;
-export type FileUploadItemSlots = keyof FileUploadItemVariants;
+export type FileUploadItemVariantProps = VariantProps<typeof fileUploadItemRecipe>;
+export type FileUploadItemSlots = ReturnType<typeof fileUploadItemRecipe>;

@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const alertVariants = tv({
+export const alertRecipe = tv({
   defaultVariants: {
     variant: "default",
   },
@@ -73,6 +73,5 @@ export const alertVariants = tv({
   },
 });
 
-export type AlertVariantProps = VariantProps<typeof alertVariants>;
-export type AlertVariants = ReturnType<typeof alertVariants>;
-export type AlertSlots = keyof AlertVariants;
+export type AlertVariantProps = VariantProps<typeof alertRecipe>;
+export type AlertSlots = ReturnType<typeof alertRecipe>;

@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const datePickerVariants = tv({
+export const datePickerRecipe = tv({
   slots: {
     content: [
       "[--cell-size:--spacing(8)]",
@@ -32,6 +32,5 @@ export const datePickerVariants = tv({
   },
 });
 
-export type DatePickerVariantProps = VariantProps<typeof datePickerVariants>;
-export type DatePickerVariants = ReturnType<typeof datePickerVariants>;
-export type DatePickerSlots = keyof DatePickerVariants;
+export type DatePickerVariantProps = VariantProps<typeof datePickerRecipe>;
+export type DatePickerSlots = ReturnType<typeof datePickerRecipe>;

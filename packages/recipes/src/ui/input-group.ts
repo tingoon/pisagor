@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const inputGroupAddonVariants = tv({
+export const inputGroupAddonRecipe = tv({
   base: [
     "h-auto",
     "flex items-center justify-center gap-2",
@@ -36,7 +36,7 @@ export const inputGroupAddonVariants = tv({
   },
 });
 
-export const inputGroupButtonVariants = tv({
+export const inputGroupButtonRecipe = tv({
   base: [
     "relative",
     "flex items-center gap-2",
@@ -64,7 +64,7 @@ export const inputGroupButtonVariants = tv({
   },
 });
 
-export const inputGroupTextVariants = tv({
+export const inputGroupTextRecipe = tv({
   base: [
     "flex items-center gap-2",
     "text-muted-foreground text-sm",
@@ -72,7 +72,7 @@ export const inputGroupTextVariants = tv({
   ],
 });
 
-export const inputGroupControlVariants = tv({
+export const inputGroupControlRecipe = tv({
   base: [
     "flex-1",
     "bg-transparent",
@@ -83,7 +83,7 @@ export const inputGroupControlVariants = tv({
   ],
 });
 
-export const inputGroupTextareaControlVariants = tv({
+export const inputGroupTextareaControlRecipe = tv({
   base: [
     "flex-1",
     "py-3",
@@ -95,21 +95,19 @@ export const inputGroupTextareaControlVariants = tv({
   ],
 });
 
-export type InputGroupAddonVariantProps = VariantProps<typeof inputGroupAddonVariants>;
-export type InputGroupAddonVariants = ReturnType<typeof inputGroupAddonVariants>;
+export type InputGroupAddonVariantProps = VariantProps<typeof inputGroupAddonRecipe>;
+export type InputGroupAddonSlots = ReturnType<typeof inputGroupAddonRecipe>;
 
-export type InputGroupButtonVariantProps = VariantProps<typeof inputGroupButtonVariants>;
-export type InputGroupButtonVariants = ReturnType<typeof inputGroupButtonVariants>;
+export type InputGroupButtonVariantProps = VariantProps<typeof inputGroupButtonRecipe>;
+export type InputGroupButtonSlots = ReturnType<typeof inputGroupButtonRecipe>;
 
-export type InputGroupTextVariantProps = VariantProps<typeof inputGroupTextVariants>;
-export type InputGroupTextVariants = ReturnType<typeof inputGroupTextVariants>;
+export type InputGroupTextVariantProps = VariantProps<typeof inputGroupTextRecipe>;
+export type InputGroupTextSlots = ReturnType<typeof inputGroupTextRecipe>;
 
-export type InputGroupControlVariantProps = VariantProps<typeof inputGroupControlVariants>;
-export type InputGroupControlVariants = ReturnType<typeof inputGroupControlVariants>;
+export type InputGroupControlVariantProps = VariantProps<typeof inputGroupControlRecipe>;
+export type InputGroupControlSlots = ReturnType<typeof inputGroupControlRecipe>;
 
 export type InputGroupTextareaControlVariantProps = VariantProps<
-  typeof inputGroupTextareaControlVariants
+  typeof inputGroupTextareaControlRecipe
 >;
-export type InputGroupTextareaControlVariants = ReturnType<
-  typeof inputGroupTextareaControlVariants
->;
+export type InputGroupTextareaControlSlots = ReturnType<typeof inputGroupTextareaControlRecipe>;

@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const badgeVariants = tv({
+export const badgeRecipe = tv({
   base: [
     "relative",
     "inline-flex items-center justify-center gap-1",
@@ -87,5 +87,5 @@ export const badgeVariants = tv({
   },
 });
 
-export type BadgeVariantProps = VariantProps<typeof badgeVariants>;
-export type BadgeVariants = ReturnType<typeof badgeVariants>;
+export type BadgeVariantProps = VariantProps<typeof badgeRecipe>;
+export type BadgeSlots = ReturnType<typeof badgeRecipe>;

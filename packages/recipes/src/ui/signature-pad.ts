@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const signaturePadVariants = tv({
+export const signaturePadRecipe = tv({
   slots: {
     base: [
       "h-40 min-h-40 w-full",
@@ -26,6 +26,5 @@ export const signaturePadVariants = tv({
   },
 });
 
-export type SignaturePadVariantProps = VariantProps<typeof signaturePadVariants>;
-export type SignaturePadVariants = ReturnType<typeof signaturePadVariants>;
-export type SignaturePadSlots = keyof SignaturePadVariants;
+export type SignaturePadVariantProps = VariantProps<typeof signaturePadRecipe>;
+export type SignaturePadSlots = ReturnType<typeof signaturePadRecipe>;

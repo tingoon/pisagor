@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const textareaVariants = tv({
+export const textareaRecipe = tv({
   slots: {
     clearAddon: ["absolute top-1.5 right-1.5 self-start p-0"],
     clearableRoot: [
@@ -22,6 +22,5 @@ export const textareaVariants = tv({
   },
 });
 
-export type TextareaVariantProps = VariantProps<typeof textareaVariants>;
-export type TextareaVariants = ReturnType<typeof textareaVariants>;
-export type TextareaSlots = keyof TextareaVariants;
+export type TextareaVariantProps = VariantProps<typeof textareaRecipe>;
+export type TextareaSlots = ReturnType<typeof textareaRecipe>;

@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const surfaceVariants = tv({
+export const surfaceRecipe = tv({
   base: "text-foreground",
   defaultVariants: {
     bordered: false,
@@ -31,5 +31,5 @@ export const surfaceVariants = tv({
   },
 });
 
-export type SurfaceVariantProps = VariantProps<typeof surfaceVariants>;
-export type SurfaceVariants = ReturnType<typeof surfaceVariants>;
+export type SurfaceVariantProps = VariantProps<typeof surfaceRecipe>;
+export type SurfaceSlots = ReturnType<typeof surfaceRecipe>;

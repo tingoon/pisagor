@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const tooltipVariants = tv({
+export const tooltipRecipe = tv({
   slots: {
     arrow: ["[--arrow-background:var(--foreground)]", "[--arrow-size:calc(1.5*var(--spacing))]"],
     content: [
@@ -22,6 +22,5 @@ export const tooltipVariants = tv({
   },
 });
 
-export type TooltipVariantProps = VariantProps<typeof tooltipVariants>;
-export type TooltipVariants = ReturnType<typeof tooltipVariants>;
-export type TooltipSlots = keyof TooltipVariants;
+export type TooltipVariantProps = VariantProps<typeof tooltipRecipe>;
+export type TooltipSlots = ReturnType<typeof tooltipRecipe>;

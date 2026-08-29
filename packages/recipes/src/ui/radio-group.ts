@@ -1,13 +1,13 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const radioGroupVariants = tv({
+export const radioGroupRecipe = tv({
   base: [
     "flex flex-col gap-3",
     "data-invalid:text-destructive dark:data-invalid:text-destructive-foreground",
   ],
 });
 
-export const radioGroupItemVariants = tv({
+export const radioGroupItemRecipe = tv({
   slots: {
     base: ["inline-flex items-center gap-2", "data-disabled:opacity-64"],
     control: [
@@ -17,9 +17,8 @@ export const radioGroupItemVariants = tv({
   },
 });
 
-export type RadioGroupVariantProps = VariantProps<typeof radioGroupVariants>;
-export type RadioGroupVariants = ReturnType<typeof radioGroupVariants>;
+export type RadioGroupVariantProps = VariantProps<typeof radioGroupRecipe>;
+export type RadioGroupSlots = ReturnType<typeof radioGroupRecipe>;
 
-export type RadioGroupItemVariantProps = VariantProps<typeof radioGroupItemVariants>;
-export type RadioGroupItemVariants = ReturnType<typeof radioGroupItemVariants>;
-export type RadioGroupItemSlots = keyof RadioGroupItemVariants;
+export type RadioGroupItemVariantProps = VariantProps<typeof radioGroupItemRecipe>;
+export type RadioGroupItemSlots = ReturnType<typeof radioGroupItemRecipe>;

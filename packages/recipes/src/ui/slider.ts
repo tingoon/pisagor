@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const sliderVariants = tv({
+export const sliderRecipe = tv({
   slots: {
     base: [
       "flex flex-col gap-3",
@@ -67,6 +67,5 @@ export const sliderVariants = tv({
   },
 });
 
-export type SliderVariantProps = VariantProps<typeof sliderVariants>;
-export type SliderVariants = ReturnType<typeof sliderVariants>;
-export type SliderSlots = keyof SliderVariants;
+export type SliderVariantProps = VariantProps<typeof sliderRecipe>;
+export type SliderSlots = ReturnType<typeof sliderRecipe>;

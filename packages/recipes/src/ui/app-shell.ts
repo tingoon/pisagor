@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const appShellVariants = tv({
+export const appShellRecipe = tv({
   slots: {
     banner: ["w-full border-b bg-background"],
     base: [
@@ -62,6 +62,5 @@ export const appShellVariants = tv({
   },
 });
 
-export type AppShellVariantProps = VariantProps<typeof appShellVariants>;
-export type AppShellVariants = ReturnType<typeof appShellVariants>;
-export type AppShellSlots = keyof AppShellVariants;
+export type AppShellVariantProps = VariantProps<typeof appShellRecipe>;
+export type AppShellSlots = ReturnType<typeof appShellRecipe>;

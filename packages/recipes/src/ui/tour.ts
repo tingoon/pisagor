@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const tourVariants = tv({
+export const tourRecipe = tv({
   slots: {
     actions: ["flex flex-wrap gap-2"],
     backdrop: "duration-initial",
@@ -34,6 +34,5 @@ export const tourVariants = tv({
   },
 });
 
-export type TourVariantProps = VariantProps<typeof tourVariants>;
-export type TourVariants = ReturnType<typeof tourVariants>;
-export type TourSlots = keyof TourVariants;
+export type TourVariantProps = VariantProps<typeof tourRecipe>;
+export type TourSlots = ReturnType<typeof tourRecipe>;

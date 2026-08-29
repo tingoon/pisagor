@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const navbarVariants = tv({
+export const navbarRecipe = tv({
   slots: {
     actions: ["flex shrink-0 items-center gap-2"],
     base: [
@@ -15,6 +15,5 @@ export const navbarVariants = tv({
   },
 });
 
-export type NavbarVariantProps = VariantProps<typeof navbarVariants>;
-export type NavbarVariants = ReturnType<typeof navbarVariants>;
-export type NavbarSlots = keyof NavbarVariants;
+export type NavbarVariantProps = VariantProps<typeof navbarRecipe>;
+export type NavbarSlots = ReturnType<typeof navbarRecipe>;

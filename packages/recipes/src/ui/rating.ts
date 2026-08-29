@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const ratingVariants = tv({
+export const ratingRecipe = tv({
   slots: {
     base: [
       "**:data-[scope=rating]:data-[part=item-indicator]:size-6",
@@ -25,6 +25,5 @@ export const ratingVariants = tv({
   },
 });
 
-export type RatingVariantProps = VariantProps<typeof ratingVariants>;
-export type RatingVariants = ReturnType<typeof ratingVariants>;
-export type RatingSlots = keyof RatingVariants;
+export type RatingVariantProps = VariantProps<typeof ratingRecipe>;
+export type RatingSlots = ReturnType<typeof ratingRecipe>;

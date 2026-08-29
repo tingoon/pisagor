@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const fileVariants = tv({
+export const fileRecipe = tv({
   defaultVariants: {
     variant: "icon",
   },
@@ -33,6 +33,5 @@ export const fileVariants = tv({
   },
 });
 
-export type FileVariantProps = VariantProps<typeof fileVariants>;
-export type FileVariants = ReturnType<typeof fileVariants>;
-export type FileSlots = keyof FileVariants;
+export type FileVariantProps = VariantProps<typeof fileRecipe>;
+export type FileSlots = ReturnType<typeof fileRecipe>;

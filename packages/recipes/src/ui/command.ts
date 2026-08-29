@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const commandVariants = tv({
+export const commandRecipe = tv({
   slots: {
     base: [
       "isolate",
@@ -38,6 +38,5 @@ export const commandVariants = tv({
   },
 });
 
-export type CommandVariantProps = VariantProps<typeof commandVariants>;
-export type CommandVariants = ReturnType<typeof commandVariants>;
-export type CommandSlots = keyof CommandVariants;
+export type CommandVariantProps = VariantProps<typeof commandRecipe>;
+export type CommandSlots = ReturnType<typeof commandRecipe>;

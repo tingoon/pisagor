@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const bottomNavigationVariants = tv({
+export const bottomNavigationRecipe = tv({
   slots: {
     base: ["w-full", "min-h-[calc(var(--spacing)*14+env(safe-area-inset-bottom,0))]"],
     list: [
@@ -13,7 +13,7 @@ export const bottomNavigationVariants = tv({
   },
 });
 
-export const bottomNavigationItemVariants = tv({
+export const bottomNavigationItemRecipe = tv({
   slots: {
     base: [
       "relative",
@@ -37,10 +37,8 @@ export const bottomNavigationItemVariants = tv({
   },
 });
 
-export type BottomNavigationVariantProps = VariantProps<typeof bottomNavigationVariants>;
-export type BottomNavigationVariants = ReturnType<typeof bottomNavigationVariants>;
-export type BottomNavigationSlots = keyof BottomNavigationVariants;
+export type BottomNavigationVariantProps = VariantProps<typeof bottomNavigationRecipe>;
+export type BottomNavigationSlots = ReturnType<typeof bottomNavigationRecipe>;
 
-export type BottomNavigationItemVariantProps = VariantProps<typeof bottomNavigationItemVariants>;
-export type BottomNavigationItemVariants = ReturnType<typeof bottomNavigationItemVariants>;
-export type BottomNavigationItemSlots = keyof BottomNavigationItemVariants;
+export type BottomNavigationItemVariantProps = VariantProps<typeof bottomNavigationItemRecipe>;
+export type BottomNavigationItemSlots = ReturnType<typeof bottomNavigationItemRecipe>;

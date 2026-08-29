@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const frameVariants = tv({
+export const frameRecipe = tv({
   slots: {
     base: [
       "relative",
@@ -18,6 +18,5 @@ export const frameVariants = tv({
   },
 });
 
-export type FrameVariantProps = VariantProps<typeof frameVariants>;
-export type FrameVariants = ReturnType<typeof frameVariants>;
-export type FrameSlots = keyof FrameVariants;
+export type FrameVariantProps = VariantProps<typeof frameRecipe>;
+export type FrameSlots = ReturnType<typeof frameRecipe>;

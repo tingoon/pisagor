@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const phoneInputVariants = tv({
+export const phoneInputRecipe = tv({
   defaultVariants: {
     size: "md",
   },
@@ -55,6 +55,5 @@ export const phoneInputVariants = tv({
   },
 });
 
-export type PhoneInputVariantProps = VariantProps<typeof phoneInputVariants>;
-export type PhoneInputVariants = ReturnType<typeof phoneInputVariants>;
-export type PhoneInputSlots = keyof PhoneInputVariants;
+export type PhoneInputVariantProps = VariantProps<typeof phoneInputRecipe>;
+export type PhoneInputSlots = ReturnType<typeof phoneInputRecipe>;

@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const qrCodeVariants = tv({
+export const qrCodeRecipe = tv({
   slots: {
     base: [
       "[--qr-code-overlay-size:calc(var(--qr-code-size)/4)] [--qr-code-size:--spacing(32)]",
@@ -29,6 +29,5 @@ export const qrCodeVariants = tv({
   },
 });
 
-export type QrCodeVariantProps = VariantProps<typeof qrCodeVariants>;
-export type QrCodeVariants = ReturnType<typeof qrCodeVariants>;
-export type QrCodeSlots = keyof QrCodeVariants;
+export type QrCodeVariantProps = VariantProps<typeof qrCodeRecipe>;
+export type QrCodeSlots = ReturnType<typeof qrCodeRecipe>;

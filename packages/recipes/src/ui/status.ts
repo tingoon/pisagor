@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const statusVariants = tv({
+export const statusRecipe = tv({
   base: [
     "shrink-0 rounded-full",
     "flex items-center justify-center",
@@ -27,5 +27,5 @@ export const statusVariants = tv({
   },
 });
 
-export type StatusVariantProps = VariantProps<typeof statusVariants>;
-export type StatusVariants = ReturnType<typeof statusVariants>;
+export type StatusVariantProps = VariantProps<typeof statusRecipe>;
+export type StatusSlots = ReturnType<typeof statusRecipe>;

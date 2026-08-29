@@ -1,10 +1,10 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const dataListVariants = tv({
+export const dataListRecipe = tv({
   base: ["group/data-list", "flex flex-col gap-1", "text-sm"],
 });
 
-export const dataListItemVariants = tv({
+export const dataListItemRecipe = tv({
   slots: {
     base: [
       "flex gap-4 py-2",
@@ -20,9 +20,8 @@ export const dataListItemVariants = tv({
   },
 });
 
-export type DataListVariantProps = VariantProps<typeof dataListVariants>;
-export type DataListVariants = ReturnType<typeof dataListVariants>;
+export type DataListVariantProps = VariantProps<typeof dataListRecipe>;
+export type DataListSlots = ReturnType<typeof dataListRecipe>;
 
-export type DataListItemVariantProps = VariantProps<typeof dataListItemVariants>;
-export type DataListItemVariants = ReturnType<typeof dataListItemVariants>;
-export type DataListItemSlots = keyof DataListItemVariants;
+export type DataListItemVariantProps = VariantProps<typeof dataListItemRecipe>;
+export type DataListItemSlots = ReturnType<typeof dataListItemRecipe>;

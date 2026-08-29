@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const dialogVariants = tv({
+export const dialogRecipe = tv({
   defaultVariants: {
     size: "md",
   },
@@ -112,6 +112,5 @@ export const dialogVariants = tv({
   },
 });
 
-export type DialogVariantProps = VariantProps<typeof dialogVariants>;
-export type DialogVariants = ReturnType<typeof dialogVariants>;
-export type DialogSlots = keyof DialogVariants;
+export type DialogVariantProps = VariantProps<typeof dialogRecipe>;
+export type DialogSlots = ReturnType<typeof dialogRecipe>;

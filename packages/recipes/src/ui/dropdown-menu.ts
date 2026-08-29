@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const dropdownMenuVariants = tv({
+export const dropdownMenuRecipe = tv({
   slots: {
     arrowTip: ["border-s border-t"],
     content: [
@@ -39,7 +39,7 @@ export const dropdownMenuVariants = tv({
   },
 });
 
-export const dropdownMenuItemVariants = tv({
+export const dropdownMenuItemRecipe = tv({
   defaultVariants: {
     inset: false,
     variant: "default",
@@ -78,10 +78,8 @@ export const dropdownMenuItemVariants = tv({
   },
 });
 
-export type DropdownMenuVariantProps = VariantProps<typeof dropdownMenuVariants>;
-export type DropdownMenuVariants = ReturnType<typeof dropdownMenuVariants>;
-export type DropdownMenuSlots = keyof DropdownMenuVariants;
+export type DropdownMenuVariantProps = VariantProps<typeof dropdownMenuRecipe>;
+export type DropdownMenuSlots = ReturnType<typeof dropdownMenuRecipe>;
 
-export type DropdownMenuItemVariantProps = VariantProps<typeof dropdownMenuItemVariants>;
-export type DropdownMenuItemVariants = ReturnType<typeof dropdownMenuItemVariants>;
-export type DropdownMenuItemSlots = keyof DropdownMenuItemVariants;
+export type DropdownMenuItemVariantProps = VariantProps<typeof dropdownMenuItemRecipe>;
+export type DropdownMenuItemSlots = ReturnType<typeof dropdownMenuItemRecipe>;

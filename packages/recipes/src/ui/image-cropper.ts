@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const imageCropperVariants = tv({
+export const imageCropperRecipe = tv({
   slots: {
     base: [
       "[--cropper-accent:var(--color-white)] [--cropper-handler-size:--spacing(2)] [--cropper-handler-width:--spacing(1)]",
@@ -61,6 +61,5 @@ export const imageCropperVariants = tv({
   },
 });
 
-export type ImageCropperVariantProps = VariantProps<typeof imageCropperVariants>;
-export type ImageCropperVariants = ReturnType<typeof imageCropperVariants>;
-export type ImageCropperSlots = keyof ImageCropperVariants;
+export type ImageCropperVariantProps = VariantProps<typeof imageCropperRecipe>;
+export type ImageCropperSlots = ReturnType<typeof imageCropperRecipe>;

@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const formControlShellVariants = tv({
+export const formControlShellRecipe = tv({
   base: [
     "peer",
     "w-full min-w-0",
@@ -65,7 +65,7 @@ export const formControlShellVariants = tv({
   },
 });
 
-export const formControlGroupShellVariants = tv({
+export const formControlGroupShellRecipe = tv({
   base: [
     "group/input-group",
     "relative",
@@ -129,7 +129,7 @@ export const formControlGroupShellVariants = tv({
   },
 });
 
-export const formControlToggleVariants = tv({
+export const formControlToggleRecipe = tv({
   base: [
     "relative",
     "inline-flex shrink-0 items-center justify-center",
@@ -183,7 +183,7 @@ export const formControlToggleVariants = tv({
   },
 });
 
-export const formControlRadioToggleVariants = tv({
+export const formControlRadioToggleRecipe = tv({
   base: [
     "relative",
     "inline-flex shrink-0 items-center justify-center",
@@ -237,7 +237,7 @@ export const formControlRadioToggleVariants = tv({
   },
 });
 
-export const formControlSeparatorVariants = tv({
+export const formControlSeparatorRecipe = tv({
   base: "relative block w-fit mx-auto px-2 text-muted-foreground text-sm",
   compoundVariants: [
     {
@@ -279,7 +279,7 @@ export const formControlSeparatorVariants = tv({
   },
 });
 
-export const formControlZoneVariants = tv({
+export const formControlZoneRecipe = tv({
   base: ["rounded-2xl border-2 border-input border-dashed"],
   compoundVariants: [
     {
@@ -321,22 +321,20 @@ export const formControlZoneVariants = tv({
   },
 });
 
-export type FormControlShellVariantProps = VariantProps<typeof formControlShellVariants>;
-export type FormControlShellVariants = ReturnType<typeof formControlShellVariants>;
+export type FormControlShellVariantProps = VariantProps<typeof formControlShellRecipe>;
+export type FormControlShellSlots = ReturnType<typeof formControlShellRecipe>;
 
-export type FormControlGroupShellVariantProps = VariantProps<typeof formControlGroupShellVariants>;
-export type FormControlGroupShellVariants = ReturnType<typeof formControlGroupShellVariants>;
+export type FormControlGroupShellVariantProps = VariantProps<typeof formControlGroupShellRecipe>;
+export type FormControlGroupShellSlots = ReturnType<typeof formControlGroupShellRecipe>;
 
-export type FormControlToggleVariantProps = VariantProps<typeof formControlToggleVariants>;
-export type FormControlToggleVariants = ReturnType<typeof formControlToggleVariants>;
+export type FormControlToggleVariantProps = VariantProps<typeof formControlToggleRecipe>;
+export type FormControlToggleSlots = ReturnType<typeof formControlToggleRecipe>;
 
-export type FormControlRadioToggleVariantProps = VariantProps<
-  typeof formControlRadioToggleVariants
->;
-export type FormControlRadioToggleVariants = ReturnType<typeof formControlRadioToggleVariants>;
+export type FormControlRadioToggleVariantProps = VariantProps<typeof formControlRadioToggleRecipe>;
+export type FormControlRadioToggleSlots = ReturnType<typeof formControlRadioToggleRecipe>;
 
-export type FormControlSeparatorVariantProps = VariantProps<typeof formControlSeparatorVariants>;
-export type FormControlSeparatorVariants = ReturnType<typeof formControlSeparatorVariants>;
+export type FormControlSeparatorVariantProps = VariantProps<typeof formControlSeparatorRecipe>;
+export type FormControlSeparatorSlots = ReturnType<typeof formControlSeparatorRecipe>;
 
-export type FormControlZoneVariantProps = VariantProps<typeof formControlZoneVariants>;
-export type FormControlZoneVariants = ReturnType<typeof formControlZoneVariants>;
+export type FormControlZoneVariantProps = VariantProps<typeof formControlZoneRecipe>;
+export type FormControlZoneSlots = ReturnType<typeof formControlZoneRecipe>;

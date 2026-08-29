@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const paginationVariants = tv({
+export const paginationRecipe = tv({
   slots: {
     base: ["mx-auto", "w-full", "flex justify-center gap-1"],
     ellipsis: [
@@ -19,6 +19,5 @@ export const paginationVariants = tv({
   },
 });
 
-export type PaginationVariantProps = VariantProps<typeof paginationVariants>;
-export type PaginationVariants = ReturnType<typeof paginationVariants>;
-export type PaginationSlots = keyof PaginationVariants;
+export type PaginationVariantProps = VariantProps<typeof paginationRecipe>;
+export type PaginationSlots = ReturnType<typeof paginationRecipe>;

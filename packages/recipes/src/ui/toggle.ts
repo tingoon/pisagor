@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const toggleVariants = tv({
+export const toggleRecipe = tv({
   base: [
     "relative",
     "data-[state=on]:bg-input/64 dark:data-[state=on]:bg-input/64",
@@ -18,5 +18,5 @@ export const toggleVariants = tv({
   },
 });
 
-export type ToggleVariantProps = VariantProps<typeof toggleVariants>;
-export type ToggleVariants = ReturnType<typeof toggleVariants>;
+export type ToggleVariantProps = VariantProps<typeof toggleRecipe>;
+export type ToggleSlots = ReturnType<typeof toggleRecipe>;

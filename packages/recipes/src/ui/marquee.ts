@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const marqueeVariants = tv({
+export const marqueeRecipe = tv({
   slots: {
     base: ["group/marquee", "relative", "w-full max-w-full", "isolate"],
     content: [
@@ -28,6 +28,5 @@ export const marqueeVariants = tv({
   },
 });
 
-export type MarqueeVariantProps = VariantProps<typeof marqueeVariants>;
-export type MarqueeVariants = ReturnType<typeof marqueeVariants>;
-export type MarqueeSlots = keyof MarqueeVariants;
+export type MarqueeVariantProps = VariantProps<typeof marqueeRecipe>;
+export type MarqueeSlots = ReturnType<typeof marqueeRecipe>;

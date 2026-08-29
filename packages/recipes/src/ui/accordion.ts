@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const accordionItemVariants = tv({
+export const accordionItemRecipe = tv({
   slots: {
     base: "flex flex-col border-b last:border-b-0",
     body: "pt-0 pb-4",
@@ -34,6 +34,5 @@ export const accordionItemVariants = tv({
   },
 });
 
-export type AccordionItemVariantProps = VariantProps<typeof accordionItemVariants>;
-export type AccordionItemVariants = ReturnType<typeof accordionItemVariants>;
-export type AccordionItemSlots = keyof AccordionItemVariants;
+export type AccordionItemVariantProps = VariantProps<typeof accordionItemRecipe>;
+export type AccordionItemSlots = ReturnType<typeof accordionItemRecipe>;

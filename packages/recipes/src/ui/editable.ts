@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const editableVariants = tv({
+export const editableRecipe = tv({
   slots: {
     area: "w-full",
     base: [
@@ -25,6 +25,5 @@ export const editableVariants = tv({
   },
 });
 
-export type EditableVariantProps = VariantProps<typeof editableVariants>;
-export type EditableVariants = ReturnType<typeof editableVariants>;
-export type EditableSlots = keyof EditableVariants;
+export type EditableVariantProps = VariantProps<typeof editableRecipe>;
+export type EditableSlots = ReturnType<typeof editableRecipe>;

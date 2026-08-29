@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const toggleGroupVariants = tv({
+export const toggleGroupRecipe = tv({
   defaultVariants: {
     orientation: "horizontal",
   },
@@ -31,6 +31,5 @@ export const toggleGroupVariants = tv({
   },
 });
 
-export type ToggleGroupVariantProps = VariantProps<typeof toggleGroupVariants>;
-export type ToggleGroupVariants = ReturnType<typeof toggleGroupVariants>;
-export type ToggleGroupSlots = keyof ToggleGroupVariants;
+export type ToggleGroupVariantProps = VariantProps<typeof toggleGroupRecipe>;
+export type ToggleGroupSlots = ReturnType<typeof toggleGroupRecipe>;

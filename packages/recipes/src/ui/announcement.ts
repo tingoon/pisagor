@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const announcementVariants = tv({
+export const announcementRecipe = tv({
   slots: {
     base: [
       "group/announcement",
@@ -28,6 +28,5 @@ export const announcementVariants = tv({
   },
 });
 
-export type AnnouncementVariantProps = VariantProps<typeof announcementVariants>;
-export type AnnouncementVariants = ReturnType<typeof announcementVariants>;
-export type AnnouncementSlots = keyof AnnouncementVariants;
+export type AnnouncementVariantProps = VariantProps<typeof announcementRecipe>;
+export type AnnouncementSlots = ReturnType<typeof announcementRecipe>;

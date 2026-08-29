@@ -1,6 +1,6 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
-export const fieldVariants = tv({
+export const fieldRecipe = tv({
   defaultVariants: {
     orientation: "vertical",
     reverse: false,
@@ -97,6 +97,5 @@ export const fieldVariants = tv({
   },
 });
 
-export type FieldVariantProps = VariantProps<typeof fieldVariants>;
-export type FieldVariants = ReturnType<typeof fieldVariants>;
-export type FieldSlots = keyof FieldVariants;
+export type FieldVariantProps = VariantProps<typeof fieldRecipe>;
+export type FieldSlots = ReturnType<typeof fieldRecipe>;
