@@ -1,6 +1,6 @@
 # React Components
 
-Package-local guidance for component work in `packages/react` (`@pisagor/react`). Canonical rules: [React Component Patterns](../../.cursor/rules/integrations/react-component.mdc) and [Storybook](../../.cursor/rules/integrations/storybook.mdc).
+Package-local guidance for component work in `packages/react` (`@pisagor/react`). Canonical rules: [React Component Patterns](../../.cursor/rules/integrations/react-component.mdc), [Component](../../.cursor/rules/integrations/component.mdc), and [Storybook](../../.cursor/rules/integrations/storybook.mdc).
 
 ## Package layout
 
@@ -41,82 +41,13 @@ Form fields live under [`src/form/`](./src/form/) (`@pisagor/react/form`, `@pisa
 
 Compound shared React context lives in `<name>.context.tsx` beside the main file — see [React Component Patterns → Context file](../../.cursor/rules/integrations/react-component.mdc#context-file-namecontexttsx).
 
-## Component Taxonomy
+## Component taxonomy
 
 Prefer placing new work in the lowest [Storybook taxonomy](../../.cursor/rules/integrations/storybook.mdc#meta) level (`primitive` → `standard` → `pattern`) that still solves the use case.
 
-## Overlay vs Modal
+## Product naming
 
-- Use **overlay** patterns for lightweight anchored content (popover, hover card, dropdown-like surfaces) that should not fully block page flow.
-- Use **modal** patterns (dialog, sheet when modal behavior is required) for interruptive tasks requiring explicit user resolution.
-- If escape hatch and background interaction are required, choose an overlay. If focus trapping and decision gating are required, choose a modal.
-
-## Toolbar Family
-
-- `action-bar`: bulk/action overlay pattern for table or selection workflows.
-- `toolbar`: section-level control bar for page/area actions and filters.
-- `button-group`: grouped control primitive for related actions or selections.
-- `DataGrid.Toolbar`: grid-scoped toolbar composition for data grid controls and actions.
-- `DataTable.Toolbar`: simple table-scoped toolbar for basic data tables.
-
-## Feedback Components
-
-- `alert`: block-level feedback for status, warning, error, or actionable callouts within page flow.
-- `announcement`: compact promotional or informational surface; aliases `banner`, `callout` (see [Storybook → Meta](../../.cursor/rules/integrations/storybook.mdc#meta)).
-
-## Naming
-
-### Navigation decision tree
-
-| Need | Component | Import |
-| ---- | --------- | ------ |
-| Top app bar with brand, nav, actions | `navbar` | `@pisagor/react/navbar` |
-| Collapsible app sidebar | `sidebar` | `@pisagor/react/sidebar` |
-| Site-wide horizontal nav with dropdowns | `navigation-menu` | `@pisagor/react/navigation-menu` |
-| Always-visible nav link list | `menu` | `@pisagor/react/menu` |
-| Popup actions from a trigger | `dropdown-menu` | `@pisagor/react/dropdown-menu` |
-| Mobile bottom tab bar | `bottom-navigation` | `@pisagor/react/bottom-navigation` |
-
-### New component checklist
-
-1. kebab-case folder and export path (`dropdown-menu`)
-2. PascalCase component export (`DropdownMenu`)
-3. Story meta (`title`, `parameters.metadata`, docs description) — [Storybook → Meta](../../.cursor/rules/integrations/storybook.mdc#meta)
-
-## Select Stack
-
-- `combobox`: internal base primitive/engine.
-- Public selection surfaces:
-  - `autocomplete`
-  - `select`
-  - `listbox`
-
-Prefer public components in app code; only extend `combobox` when building package-level abstractions.
-
-## Compound + Closed Shorthand Policy
-
-Canonical rules: [React Component Patterns → Public API](../../.cursor/rules/integrations/react-component.mdc#public-api).
-
-## i18n and direction
-
-- **Library defaults** (aria-labels, placeholders) ship in English. Consumers override via `Provider` `messages` (`useProviderMessage`) or by passing props.
-- **Direction:** pass `dir` to `Provider`, or omit and let locale infer RTL for `ar` / `he` / `fa` / `ur`. Icon mirroring follows resolved direction.
-- Consumers own localization; `@pisagor/react` does not ship locale catalogs.
-
-## Structural attributes (`data-scope` / `data-part`)
-
-| Layer | Attribute | Owner | Purpose |
-| ----- | --------- | ----- | ------- |
-| Structural | `data-scope` + `data-part` | Library (fixed) | Compound part targeting, CSS overrides |
-
-- `data-scope` / `data-part` are not public API; they are an internal contract. Machine-backed parts inherit them from Zag; plain parts set them inline (`data-scope="{name}"`, root `data-part="root"`).
-- Components do **not** expose a `testId` prop. Consumers who need `data-testid` can pass it via native HTML attributes (e.g. `data-testid="save-settings"` on a root element that forwards attrs).
-
-Query priority:
-
-1. `getByRole` / `getByLabelText` — accessibility + behavior (preferred)
-2. `within(root).querySelector('[data-scope=...][data-part=...]')` — structural parts
-3. `getByTestId(...)` — only when the consumer set `data-testid` themselves
+Nav, toolbar, select, overlay/modal, feedback, i18n, and `data-scope` query policy: [Component](../../.cursor/rules/integrations/component.mdc). Public API models: [React Component Patterns → Public API](../../.cursor/rules/integrations/react-component.mdc#public-api).
 
 ## Surface + form controls
 

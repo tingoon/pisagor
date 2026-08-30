@@ -38,7 +38,7 @@ Three surfaces — different rules:
 
 ### Interface / type
 
-Declare **added** props in this **group order** (what `extends` already provides need not be re-listed). Skip empty groups; do not reorder groups. Within each group, sort **A–Z** (same as runtime `props` keys).
+Declare **added** props in this **group order** (what `extends` already provides need not be re-listed). Skip empty groups; do not reorder groups. Within a group, keep a stable author / meaning order — **do not** sort A–Z inside the group.
 
 | Order | Group | What belongs here |
 | ----- | ----- | ----------------- |
@@ -58,7 +58,7 @@ Declare **added** props in this **group order** (what `extends` already provides
 
 ### Runtime `props` object (`defineComponent`)
 
-Use the **same group order** as the interface (variants → behavior → content → events → styling → rest). Within each group, sort **A–Z**. Mirror defaults with `default` on each key; use `PropType<…>` for non-trivial types.
+Use the **same group order** as the interface (variants → behavior → content → events → styling → rest). Within a group, match the interface field order — **do not** sort A–Z inside the group. Mirror defaults with `default` on each key; use `PropType<…>` for non-trivial types.
 
 ### `h()` / template attributes
 

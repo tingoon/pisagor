@@ -8,7 +8,7 @@ alwaysApply: false
 
 How to build shared UI components in `packages/react` (`@pisagor/react`). General React rules — [React Style Guide](../styleguides/react.mdc).
 
-**References:** [React Style Guide](../styleguides/react.mdc), [Storybook](storybook.mdc), [TypeScript Style Guide](../styleguides/typescript.mdc). Package-specific policy notes may live in that package's `AGENTS.md` (e.g. [`packages/react/AGENTS.md`](../../../packages/react/AGENTS.md)).
+**References:** [React Style Guide](../styleguides/react.mdc), [Storybook](storybook.mdc), [Component](component.mdc), [TypeScript Style Guide](../styleguides/typescript.mdc). Package-specific policy notes may live in that package's `AGENTS.md` (e.g. [`packages/react/AGENTS.md`](../../../packages/react/AGENTS.md)).
 
 **Out of scope:** design tokens, brand palette, spacing taste, theme authoring (`@pisagor/tokens`). `tv()` recipe authoring lives in [`@pisagor/recipes`](../../../packages/recipes) — this file covers how components **consume** recipes. General React naming, props order, hooks, body order — [React Style Guide](../styleguides/react.mdc).
 
@@ -247,7 +247,7 @@ Follow [React Style Guide](../styleguides/react.mdc) for naming and [props field
 
 - Do not type Ark wrappers with `ComponentProps<typeof Primitive.Part>` when Ark exports `*Props` for that part.
 - Do not route styling through `*Props` bags — use `classNames` on multi-slot components only; single-element components use `className`.
-- Do not type `classNames` as `VariantClassNames<FooSlots> & { … }` — use `VariantClassNames` only.
+- Do not type `classNames` as `VariantClassNames<FooRecipeSlot> & { … }` — use `VariantClassNames` only.
 - `titleProps` / `contentProps` on shorthand APIs: behavior escape-hatches only (`Omit<…, "children" | "className">`).
 
 ---
@@ -285,7 +285,7 @@ Recipes (`tv()`) are owned by **`@pisagor/recipes`**. Component packages import 
 - Use **semantic tokens** (`bg-muted`, `text-muted-foreground`).
 - **Root** always accepts **`className`** — never `rootClassName`.
 - **Single-element recipes** (top-level `base:`): merge with `cn(fooRecipe({ … }), className)` or `fooRecipe({ …, className })` — no `classNames` prop. The call returns a **string**, not `{ base() }`.
-- **Multi-slot recipes** (`slots:`): `const slots = fooRecipe()` (or `fooRecipe({ … })`); merge via `slots.part({ className: classNames?.part })`; type **`classNames`** as `VariantClassNames<{Name}Slots>` (`base` is omitted — root styling is always `className`).
+- **Multi-slot recipes** (`slots:`): `const slots = fooRecipe()` (or `fooRecipe({ … })`); merge via `slots.part({ className: classNames?.part })`; type **`classNames`** as `VariantClassNames<{Name}RecipeSlot>` (`base` is omitted — root styling is always `className`).
 - **Root slot:** `slots.base({ className })` — never `classNames?.base`.
 - **Shell + slot:** keep outer `cn` only for a separate shell recipe — `cn(shellRecipe(…), slots.part({ className: classNames?.part }))`.
 - Prefer `slots.part({ className })` over `cn(slots.part(), className)`.
@@ -304,7 +304,7 @@ When adding or editing a recipe module (not in the component file):
 - **Empty variant entries are fine** — `variants.*.*: ""` / `[]` and empty class strings in `compoundVariants` mean “no extra classes for this option.” That is not a placeholder slot.
 - When a multi-export file names list chrome, use part names (`list`, not `base`) — e.g. `tabsListRecipe` uses `slots.list`.
 - Split `tv()` when reuse needs a shared root shell (`inputRootRecipe`) separate from optional slots (`inputRecipe.clearableRoot`).
-- Export `{Name}VariantProps` (and `{Name}Slots` return types as needed) beside the recipe.
+- Export `{Name}VariantProps`, `{Name}Recipe`, and `{Name}RecipeSlot` beside the recipe. Type context `slots` as `{Name}Recipe`.
 
 ### Override without a slot
 

@@ -45,6 +45,7 @@ Each topic has **one owner** file. Other files do not restate the rule — they 
 | ---- | ----- |
 | [React Component Patterns](integrations/react-component.mdc) | Shared component package (`@pisagor/react`) |
 | [Vue Component Patterns](integrations/vue-component.mdc) | Shared component package (`@pisagor/vue`) |
+| [Component](integrations/component.mdc) | Product naming (nav, toolbar, select, overlay, feedback, i18n) |
 | [Storybook](integrations/storybook.mdc) | Stories; runners in `apps/react` and `apps/vue` |
 
 ## Boundaries

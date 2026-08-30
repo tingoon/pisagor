@@ -1,6 +1,6 @@
 # Vue Components
 
-Package-local guidance for component work in `packages/vue` (`@pisagor/vue`). Canonical rules: [Vue Component Patterns](../../.cursor/rules/integrations/vue-component.mdc) and [Storybook](../../.cursor/rules/integrations/storybook.mdc).
+Package-local guidance for component work in `packages/vue` (`@pisagor/vue`). Canonical rules: [Vue Component Patterns](../../.cursor/rules/integrations/vue-component.mdc), [Component](../../.cursor/rules/integrations/component.mdc), and [Storybook](../../.cursor/rules/integrations/storybook.mdc).
 
 ## Package layout
 
@@ -45,9 +45,9 @@ Compound shared provide/inject lives in `<name>.context.ts` beside the main file
 
 Prefer placing new work in the lowest [Storybook taxonomy](../../.cursor/rules/integrations/storybook.mdc#meta) level (`primitive` → `standard` → `pattern`) that still solves the use case.
 
-## Product naming (nav / toolbar / select / feedback)
+## Product naming
 
-Same public names and decision trees as React — see [`packages/react/AGENTS.md`](../react/AGENTS.md) (Overlay vs Modal, Toolbar Family, Feedback, Naming, Select Stack) until those sections move to shared rules. Import paths use `@pisagor/vue/…` instead of `@pisagor/react/…`.
+Nav, toolbar, select, overlay/modal, feedback, i18n, and `data-scope` query policy: [Component](../../.cursor/rules/integrations/component.mdc) (`@pisagor/vue/…` imports). Public API models: [Vue Component Patterns → Public API](../../.cursor/rules/integrations/vue-component.mdc#public-api).
 
 ## Storybook metadata
 
@@ -58,10 +58,6 @@ Same catalog fields as React — [Storybook](../../.cursor/rules/integrations/st
 - `parameters.metadata.aliases` — optional; hidden metadata
 
 Mirror the React sibling story when porting. Do not put `api` / `taxonomy` / `aliases` under `docs`.
-
-## Compound + closed shorthand
-
-Canonical rules: [Vue Component Patterns → Public API](../../.cursor/rules/integrations/vue-component.mdc#public-api).
 
 ## Surface + form controls
 

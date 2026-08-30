@@ -8,7 +8,7 @@ alwaysApply: false
 
 How to build shared UI components in `packages/vue` (`@pisagor/vue`). General Vue rules — [Vue Style Guide](../styleguides/vue.mdc).
 
-**References:** [Vue Style Guide](../styleguides/vue.mdc), [Storybook](storybook.mdc), [TypeScript Style Guide](../styleguides/typescript.mdc). Package-specific notes: [`packages/vue/AGENTS.md`](../../../packages/vue/AGENTS.md). Mirror the React sibling when porting — [React Component Patterns](react-component.mdc) — but implement with Vue idioms below (do not copy JSX/`displayName`/`className`).
+**References:** [Vue Style Guide](../styleguides/vue.mdc), [Storybook](storybook.mdc), [Component](component.mdc), [TypeScript Style Guide](../styleguides/typescript.mdc). Package-specific notes: [`packages/vue/AGENTS.md`](../../../packages/vue/AGENTS.md). Mirror the React sibling when porting — [React Component Patterns](react-component.mdc) — but implement with Vue idioms below (do not copy JSX/`displayName`/`className`).
 
 **Out of scope:** design tokens / theme authoring (`@pisagor/tokens`). `tv()` recipe authoring lives in [`@pisagor/recipes`](../../../packages/recipes) — this file covers how components **consume** recipes. General Vue naming, props order, setup body, composables — [Vue Style Guide](../styleguides/vue.mdc). Story catalog fields — [Storybook](storybook.mdc).
 
@@ -234,7 +234,7 @@ Public props are a **dual surface**: a TypeScript `interface` (consumer types / 
 - Extend recipe `{Name}VariantProps` from `@pisagor/recipes/<name>`. Document library-owned defaults with TSDoc **`@defaultValue`** matching the recipe `defaultVariants` — [TypeScript Style Guide](../styleguides/typescript.mdc) (TSDoc only; do not use JSDoc-only `@default`).
 - Runtime props: declare every public prop with `PropType<…>`, defaults via `default`, and `type: Boolean` / `Number` / `String` / `Object` / `Array` / `Function` as appropriate.
 - Styling entry: use **`class`** (Vue), not `className`. Type as `class?: unknown` (or `ClassValue` when already imported) so object/array class bindings work.
-- Multi-slot overrides: `classNames?: VariantClassNames<{Name}Slots>` from `../../internal/types`.
+- Multi-slot overrides: `classNames?: VariantClassNames<{Name}RecipeSlot>` from `../../internal/types`.
 - Sub-element bags on shorthand: behavior escape-hatches only — omit ownership of render/styling (`Omit<…, "class">` / no default-slot takeover).
 
 | `Omit` usage | Valid | Invalid |
@@ -246,7 +246,7 @@ Public props are a **dual surface**: a TypeScript `interface` (consumer types / 
 ### Do not
 
 - Do not route styling through `*Props` bags — use `classNames` on multi-slot components only; single-element components use `class`.
-- Do not type `classNames` as `VariantClassNames<FooSlots> & { … }` — use `VariantClassNames` only.
+- Do not type `classNames` as `VariantClassNames<FooRecipeSlot> & { … }` — use `VariantClassNames` only.
 - Do not declare runtime `props` keys that are missing from the public interface (or the reverse) for exported components.
 - Boolean / presence props: match Ark/DOM names (`disabled`, `open`, `checked`, `clearable`, …). Do not rename headless booleans to `is`/`can`/`should`/`has`. Convenience flags that are not a primitive mirror may use those prefixes (e.g. `isLoading`).
 
@@ -302,7 +302,7 @@ Recipes (`tv()`) are owned by **`@pisagor/recipes`**. Component packages import 
 - Use **semantic tokens** (`bg-muted`, `text-muted-foreground`).
 - **Root** always accepts **`class`** — never `rootClass` / `rootClassName`.
 - **Single-element recipes** (top-level `base:`): merge with `cn(fooRecipe({ … }), props.class)` or `fooRecipe({ …, class: props.class })` — no `classNames` prop. The call returns a **string**, not `{ base() }`.
-- **Multi-slot recipes** (`slots:`): `const slots = fooRecipe()` (or `fooRecipe({ … })`); merge via `slots.part({ class: classNames?.part })`; type **`classNames`** as `VariantClassNames<{Name}Slots>` (`base` is omitted — root styling is always `class`).
+- **Multi-slot recipes** (`slots:`): `const slots = fooRecipe()` (or `fooRecipe({ … })`); merge via `slots.part({ class: classNames?.part })`; type **`classNames`** as `VariantClassNames<{Name}RecipeSlot>` (`base` is omitted — root styling is always `class`).
 - **Root slot:** `slots.base({ class: props.class })` — never `classNames?.base`.
 - **Shell + slot:** keep outer `cn` only for a separate shell recipe — `cn(shellRecipe(…), slots.part({ class: classNames?.part }))`.
 - Prefer `slots.part({ class })` over `cn(slots.part(), class)`.
