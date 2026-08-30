@@ -1,6 +1,6 @@
 import { DownloadSimpleIcon, TrashIcon } from "@phosphor-icons/react";
+import { Button, File } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import { Button, File } from "..";
 
 const meta = preview.meta({
   component: File,

@@ -1,6 +1,6 @@
+import { Field, SignaturePad } from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/storybook/preview";
-import { Field, SignaturePad } from "..";
 
 const meta = preview.meta({
   component: SignaturePad,

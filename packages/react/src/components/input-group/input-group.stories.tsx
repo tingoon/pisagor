@@ -8,8 +8,8 @@ import {
   MagnifyingGlassIcon,
   PlusIcon,
 } from "@phosphor-icons/react";
+import { Badge, Button, InputGroup, Kbd, Spinner } from "@pisagor/react";
 import preview, { SurfaceDecorator } from "#/storybook/preview";
-import { Badge, Button, InputGroup, Kbd, Spinner } from "..";
 
 const meta = preview.meta({
   component: InputGroup,

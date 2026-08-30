@@ -7,9 +7,9 @@ import {
   TrashIcon,
   XIcon,
 } from "@phosphor-icons/react";
+import { ActionBar, AlertDialog, Button, DropdownMenu } from "@pisagor/react";
 import { useState } from "react";
 import preview from "#/storybook/preview";
-import { ActionBar, AlertDialog, Button, DropdownMenu } from "..";
 
 const meta = preview.meta({
   component: ActionBar,

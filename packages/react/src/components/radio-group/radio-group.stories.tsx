@@ -1,6 +1,6 @@
+import { Field, RadioGroup } from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/storybook/preview";
-import { Field, RadioGroup } from "..";
 
 const meta = preview.meta({
   component: RadioGroup,

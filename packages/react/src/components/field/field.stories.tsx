@@ -1,6 +1,5 @@
 import { createListCollection, useFilter, useListCollection } from "@ark-ui/react";
 import { ArrowRightIcon } from "@phosphor-icons/react";
-import preview, { SurfaceDecorator } from "#/storybook/preview";
 import {
   Autocomplete,
   Checkbox,
@@ -14,7 +13,8 @@ import {
   Slider,
   Switch,
   Textarea,
-} from "..";
+} from "@pisagor/react";
+import preview, { SurfaceDecorator } from "#/storybook/preview";
 
 const meta = preview.meta({
   component: Field,

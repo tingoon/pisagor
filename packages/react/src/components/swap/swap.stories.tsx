@@ -1,7 +1,7 @@
 import { MoonIcon, SunIcon } from "@phosphor-icons/react";
+import { Button, Swap } from "@pisagor/react";
 import { useState } from "react";
 import preview from "#/storybook/preview";
-import { Button, Swap } from "..";
 
 const meta = preview.meta({
   component: Swap,

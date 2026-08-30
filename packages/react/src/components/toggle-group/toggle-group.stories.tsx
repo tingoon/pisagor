@@ -1,8 +1,8 @@
 import { TextBIcon, TextItalicIcon, TextUnderlineIcon } from "@phosphor-icons/react";
+import { ToggleGroup } from "@pisagor/react";
 import { cn } from "@pisagor/utils";
 import { useState } from "react";
 import preview from "#/storybook/preview";
-import { ToggleGroup } from "..";
 
 const meta = preview.meta({
   component: ToggleGroup,

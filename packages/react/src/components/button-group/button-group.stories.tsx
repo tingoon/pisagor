@@ -12,8 +12,8 @@ import {
   TextItalicIcon,
   TextUnderlineIcon,
 } from "@phosphor-icons/react";
+import { Button, ButtonGroup } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import { Button, ButtonGroup } from "..";
 
 const meta = preview.meta({
   component: ButtonGroup,

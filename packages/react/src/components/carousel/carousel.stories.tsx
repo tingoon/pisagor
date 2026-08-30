@@ -1,6 +1,6 @@
+import { Card, Carousel } from "@pisagor/react";
 import { useState } from "react";
 import preview from "#/storybook/preview";
-import { Card, Carousel } from "..";
 
 const meta = preview.meta({
   component: Carousel,

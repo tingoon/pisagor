@@ -1,6 +1,6 @@
+import { Field, Textarea } from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/storybook/preview";
-import { Field, Textarea } from "..";
 
 const meta = preview.meta({
   component: Textarea,

@@ -1,7 +1,7 @@
 import { CalendarIcon } from "@phosphor-icons/react";
+import { Button, Calendar, DatePicker, Field, parseDate } from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/storybook/preview";
-import { Button, Calendar, DatePicker, Field, parseDate } from "..";
 
 const meta = preview.meta({
   component: DatePicker,

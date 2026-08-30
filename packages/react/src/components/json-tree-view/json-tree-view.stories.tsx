@@ -1,5 +1,5 @@
+import { JsonTreeView } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import { JsonTreeView } from "..";
 
 const meta = preview.meta({
   component: JsonTreeView,

@@ -1,5 +1,5 @@
+import { Button, VisuallyHidden } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import { Button, VisuallyHidden } from "..";
 
 const meta = preview.meta({
   component: VisuallyHidden,

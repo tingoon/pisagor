@@ -1,8 +1,8 @@
 import { useFilter, useListCollection } from "@ark-ui/react";
 import { ArrowBendDownLeftIcon, ArrowDownIcon, ArrowUpIcon } from "@phosphor-icons/react";
+import { Button, Command, Kbd } from "@pisagor/react";
 import { useState } from "react";
 import preview from "#/storybook/preview";
-import { Button, Command, Kbd } from "..";
 
 const meta = preview.meta({
   component: Command,

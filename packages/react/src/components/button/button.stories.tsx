@@ -7,8 +7,8 @@ import {
   PlusIcon,
   StarIcon,
 } from "@phosphor-icons/react";
+import { Button } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import { Button } from "..";
 
 const meta = preview.meta({
   component: Button,

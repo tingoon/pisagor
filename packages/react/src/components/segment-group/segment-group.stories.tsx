@@ -1,6 +1,6 @@
+import { SegmentGroup } from "@pisagor/react";
 import { useState } from "react";
 import preview from "#/storybook/preview";
-import { SegmentGroup } from "..";
 
 const meta = preview.meta({
   component: SegmentGroup,

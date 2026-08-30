@@ -1,5 +1,5 @@
+import { Breadcrumb, Button, DropdownMenu } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import { Breadcrumb, Button, DropdownMenu } from "..";
 
 const meta = preview.meta({
   component: Breadcrumb,

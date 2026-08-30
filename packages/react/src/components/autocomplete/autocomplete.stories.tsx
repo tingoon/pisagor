@@ -1,8 +1,8 @@
 import { useFilter, useListCollection } from "@ark-ui/react";
 import { AppleLogoIcon } from "@phosphor-icons/react";
+import { Autocomplete, InputGroup } from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/storybook/preview";
-import { Autocomplete, InputGroup } from "..";
 
 const meta = preview.meta({
   component: Autocomplete,

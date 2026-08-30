@@ -9,10 +9,10 @@ import {
   PlusSquareIcon,
   TrashIcon,
 } from "@phosphor-icons/react";
+import { Button, Field, Input, Item, Kbd, Listbox, Popover, Separator } from "@pisagor/react";
 import type { CSSProperties } from "react";
 import { useCallback, useState } from "react";
 import preview from "#/storybook/preview";
-import { Button, Field, Input, Item, Kbd, Listbox, Popover, Separator } from "..";
 
 const meta = preview.meta({
   component: Listbox,

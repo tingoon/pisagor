@@ -1,5 +1,5 @@
+import { SkipNav } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import { SkipNav } from "..";
 
 const meta = preview.meta({
   component: SkipNav.Link,

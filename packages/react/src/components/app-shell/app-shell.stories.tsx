@@ -1,8 +1,8 @@
 import { faker } from "@faker-js/faker";
 import { useDisclosure } from "@mantine/hooks";
 import { WarningIcon } from "@phosphor-icons/react";
+import { Announcement, AppShell, Badge, Button, useAppShell } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import { Announcement, AppShell, Badge, Button, useAppShell } from "..";
 
 const meta = preview.meta({
   component: AppShell,

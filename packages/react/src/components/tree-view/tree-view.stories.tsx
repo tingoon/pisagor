@@ -11,10 +11,10 @@ import {
   StarIcon,
   TrashIcon,
 } from "@phosphor-icons/react";
+import type { NodeProviderProps, TreeNodeType } from "@pisagor/react";
+import { ContextMenu, createFileIcons, createTreeCollection, TreeView } from "@pisagor/react";
 import { useState } from "react";
 import preview from "#/storybook/preview";
-import type { NodeProviderProps, TreeNodeType } from "..";
-import { ContextMenu, createFileIcons, createTreeCollection, TreeView } from "..";
 
 const meta = preview.meta({
   component: TreeView,

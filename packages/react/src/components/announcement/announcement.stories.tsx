@@ -1,6 +1,6 @@
 import { ArrowUpRightIcon, CheckCircleIcon, SparkleIcon, WarningIcon } from "@phosphor-icons/react";
+import { Announcement, Badge } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import { Announcement, Badge } from "..";
 
 const meta = preview.meta({
   component: Announcement,

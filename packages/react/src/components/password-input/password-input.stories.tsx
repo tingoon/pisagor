@@ -1,6 +1,6 @@
+import { PasswordInput } from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/storybook/preview";
-import { PasswordInput } from "..";
 
 const meta = preview.meta({
   component: PasswordInput,

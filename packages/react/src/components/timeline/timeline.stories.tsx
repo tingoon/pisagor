@@ -1,6 +1,6 @@
 import { CheckCircleIcon, CircleIcon, RocketIcon } from "@phosphor-icons/react";
+import { Timeline } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import { Timeline } from "..";
 
 const meta = preview.meta({
   component: Timeline,

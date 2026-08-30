@@ -1,6 +1,6 @@
+import { InputOTP } from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/storybook/preview";
-import { InputOTP } from "..";
 
 const meta = preview.meta({
   component: InputOTP,

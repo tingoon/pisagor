@@ -1,7 +1,7 @@
 import { ArrowCounterClockwiseIcon, GearIcon, PauseIcon, PlayIcon } from "@phosphor-icons/react";
+import { Button, Card, Timer } from "@pisagor/react";
 import { useState } from "react";
 import preview from "#/storybook/preview";
-import { Button, Card, Timer } from "..";
 
 const meta = preview.meta({
   component: Timer,

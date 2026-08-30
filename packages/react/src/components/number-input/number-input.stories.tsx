@@ -1,6 +1,6 @@
+import { Field, NumberInput } from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/storybook/preview";
-import { Field, NumberInput } from "..";
 
 const meta = preview.meta({
   component: NumberInput,

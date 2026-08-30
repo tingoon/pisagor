@@ -1,8 +1,8 @@
 import { useFilter, useListCollection } from "@ark-ui/react";
 import { useTagsInput } from "@ark-ui/react/tags-input";
+import { Button, Combobox, Field, TagsInput } from "@pisagor/react";
 import { useId, useState } from "react";
 import preview, { SurfaceDecorator } from "#/storybook/preview";
-import { Button, Combobox, Field, TagsInput } from "..";
 
 const meta = preview.meta({
   component: TagsInput,

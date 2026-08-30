@@ -1,6 +1,6 @@
+import { Field, Slider } from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/storybook/preview";
-import { Field, Slider } from "..";
 
 const meta = preview.meta({
   component: Slider,

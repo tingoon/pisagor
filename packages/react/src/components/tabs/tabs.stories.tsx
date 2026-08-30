@@ -1,7 +1,7 @@
 import { GearIcon, ShieldIcon, UserIcon } from "@phosphor-icons/react";
+import { Button, Tabs } from "@pisagor/react";
 import { useState } from "react";
 import preview from "#/storybook/preview";
-import { Button, Tabs } from "..";
 
 const meta = preview.meta({
   component: Tabs,

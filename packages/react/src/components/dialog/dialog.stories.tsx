@@ -1,7 +1,7 @@
 import { Portal } from "@ark-ui/react/portal";
+import { Button, Dialog, Field, Input, Select } from "@pisagor/react";
 import { useRef } from "react";
 import preview from "#/storybook/preview";
-import { Button, Dialog, Field, Input, Select } from "..";
 
 const meta = preview.meta({
   component: Dialog,

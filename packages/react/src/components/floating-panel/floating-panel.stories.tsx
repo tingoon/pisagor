@@ -7,9 +7,9 @@ import {
   GearSixIcon,
   XIcon,
 } from "@phosphor-icons/react";
+import { Button, Field, FloatingPanel, NumberInput, Select } from "@pisagor/react";
 import { useState } from "react";
 import preview from "#/storybook/preview";
-import { Button, Field, FloatingPanel, NumberInput, Select } from "..";
 
 const meta = preview.meta({
   component: FloatingPanel,

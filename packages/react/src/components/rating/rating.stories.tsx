@@ -1,7 +1,7 @@
 import { HeartIcon } from "@phosphor-icons/react";
+import { Avatar, Card, Rating } from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/storybook/preview";
-import { Avatar, Card, Rating } from "..";
 
 const meta = preview.meta({
   component: Rating,

@@ -1,6 +1,6 @@
+import { Input } from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/storybook/preview";
-import { Input } from "..";
 
 const meta = preview.meta({
   component: Input,

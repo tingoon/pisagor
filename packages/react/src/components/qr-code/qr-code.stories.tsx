@@ -1,7 +1,7 @@
 import { DownloadIcon, FishIcon } from "@phosphor-icons/react";
+import { Button, Card, Input, QrCode } from "@pisagor/react";
 import { useState } from "react";
 import preview from "#/storybook/preview";
-import { Button, Card, Input, QrCode } from "..";
 
 const meta = preview.meta({
   component: QrCode,

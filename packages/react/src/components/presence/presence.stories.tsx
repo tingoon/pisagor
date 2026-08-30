@@ -1,7 +1,7 @@
+import { Button, Presence } from "@pisagor/react";
 import { cn } from "@pisagor/utils";
 import { useState } from "react";
 import preview from "#/storybook/preview";
-import { Button, Presence } from "..";
 
 const meta = preview.meta({
   component: Presence,

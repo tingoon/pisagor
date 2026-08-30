@@ -1,7 +1,7 @@
 import { CheckIcon, PencilSimpleIcon, XIcon } from "@phosphor-icons/react";
+import { Button, Card, Editable, Field, Input, Textarea } from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/storybook/preview";
-import { Button, Card, Editable, Field, Input, Textarea } from "..";
 
 const meta = preview.meta({
   component: Editable,

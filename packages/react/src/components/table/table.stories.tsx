@@ -1,7 +1,7 @@
 import { DotsThreeVerticalIcon, EyeIcon, PencilSimpleIcon, TrashIcon } from "@phosphor-icons/react";
+import type { BadgeVariant } from "@pisagor/react";
+import { Badge, Button, DropdownMenu, Table } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import type { BadgeVariant } from "..";
-import { Badge, Button, DropdownMenu, Table } from "..";
 
 const meta = preview.meta({
   component: Table,

@@ -1,8 +1,8 @@
+import { Resizable } from "@pisagor/react";
 import { cn } from "@pisagor/utils";
 import type { ReactNode } from "react";
 import { useState } from "react";
 import preview from "#/storybook/preview";
-import { Resizable } from "..";
 
 const meta = preview.meta({
   component: Resizable,

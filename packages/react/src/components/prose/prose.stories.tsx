@@ -1,5 +1,5 @@
+import { Prose, ScrollArea } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import { Prose, ScrollArea } from "..";
 
 const meta = preview.meta({
   component: Prose,

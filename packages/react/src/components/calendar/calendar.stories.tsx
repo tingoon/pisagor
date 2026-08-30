@@ -1,6 +1,6 @@
+import { Button, Calendar, Card, parseDate } from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/storybook/preview";
-import { Button, Calendar, Card, parseDate } from "..";
 
 const meta = preview.meta({
   component: Calendar,

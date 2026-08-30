@@ -6,9 +6,9 @@ import {
   HardDriveIcon,
   UserIcon,
 } from "@phosphor-icons/react";
+import { Button, Steps } from "@pisagor/react";
 import { useState } from "react";
 import preview from "#/storybook/preview";
-import { Button, Steps } from "..";
 
 const meta = preview.meta({
   component: Steps,

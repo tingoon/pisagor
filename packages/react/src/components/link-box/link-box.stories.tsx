@@ -1,5 +1,5 @@
+import { LinkBox } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import { LinkBox } from "..";
 
 const meta = preview.meta({
   component: LinkBox,

@@ -1,9 +1,9 @@
 import { waitForElement, waitForEvent } from "@ark-ui/react/tour";
 import { KeyboardIcon, PlusIcon } from "@phosphor-icons/react";
+import type { TourStepType } from "@pisagor/react";
+import { Button, Checkbox, Field, Input, Tour, useTourContext } from "@pisagor/react";
 import { useRef, useState } from "react";
 import preview from "#/storybook/preview";
-import type { TourStepType } from "..";
-import { Button, Checkbox, Field, Input, Tour, useTourContext } from "..";
 
 const meta = preview.meta({
   component: Tour,

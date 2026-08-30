@@ -1,5 +1,5 @@
+import { Card, Skeleton } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import { Card, Skeleton } from "..";
 
 const meta = preview.meta({
   component: Skeleton,

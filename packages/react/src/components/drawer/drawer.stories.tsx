@@ -1,5 +1,5 @@
+import { Button, Drawer, Field, Input } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import { Button, Drawer, Field, Input } from "..";
 
 const meta = preview.meta({
   component: Drawer,

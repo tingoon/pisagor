@@ -10,8 +10,8 @@ import {
   PlusCircleIcon,
   TrashIcon,
 } from "@phosphor-icons/react";
+import { ContextMenu } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import { ContextMenu } from "..";
 
 const meta = preview.meta({
   component: ContextMenu,

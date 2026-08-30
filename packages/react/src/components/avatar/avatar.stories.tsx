@@ -1,6 +1,6 @@
 import { UserIcon } from "@phosphor-icons/react";
+import { Avatar, AvatarGroup } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import { Avatar, AvatarGroup } from "..";
 
 const meta = preview.meta({
   component: Avatar,

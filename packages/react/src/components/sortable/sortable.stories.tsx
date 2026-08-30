@@ -1,6 +1,6 @@
+import { Sortable } from "@pisagor/react";
 import { useState } from "react";
 import preview from "#/storybook/preview";
-import { Sortable } from "..";
 
 const meta = preview.meta({
   component: Sortable,

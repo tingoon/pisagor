@@ -1,6 +1,6 @@
+import { Field, Switch } from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/storybook/preview";
-import { Field, Switch } from "..";
 
 const meta = preview.meta({
   component: Switch,

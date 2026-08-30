@@ -19,8 +19,8 @@ import {
   TrashIcon,
   UserIcon,
 } from "@phosphor-icons/react";
+import { Button, DropdownMenu } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import { Button, DropdownMenu } from "..";
 
 const meta = preview.meta({
   component: DropdownMenu,

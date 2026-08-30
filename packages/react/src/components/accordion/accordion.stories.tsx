@@ -1,6 +1,6 @@
+import { Accordion, Card } from "@pisagor/react";
 import { useState } from "react";
 import preview from "#/storybook/preview";
-import { Accordion, Card } from "..";
 
 const meta = preview.meta({
   component: Accordion,

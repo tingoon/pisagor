@@ -1,6 +1,6 @@
 import { InfoIcon } from "@phosphor-icons/react";
+import { Button, DataList, Popover } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import { Button, DataList, Popover } from "..";
 
 const meta = preview.meta({
   component: DataList,

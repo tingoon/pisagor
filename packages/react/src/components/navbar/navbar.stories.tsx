@@ -5,8 +5,8 @@ import {
   MagnifyingGlassIcon,
   UserIcon,
 } from "@phosphor-icons/react";
+import { Avatar, Button, Navbar, NavigationMenu, Sidebar } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import { Avatar, Button, Navbar, NavigationMenu, Sidebar } from "..";
 
 const meta = preview.meta({
   component: Navbar,

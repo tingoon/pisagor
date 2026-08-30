@@ -1,7 +1,15 @@
 import { PercentIcon, SparkleIcon } from "@phosphor-icons/react";
+import {
+  Button,
+  ColorPicker,
+  Field,
+  Input,
+  InputGroup,
+  parseColor,
+  Separator,
+} from "@pisagor/react";
 import { useState } from "react";
 import preview, { SurfaceDecorator } from "#/storybook/preview";
-import { Button, ColorPicker, Field, Input, InputGroup, parseColor, Separator } from "..";
 
 const meta = preview.meta({
   component: ColorPicker,

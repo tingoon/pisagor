@@ -1,5 +1,5 @@
+import { Separator } from "@pisagor/react";
 import preview from "#/storybook/preview";
-import { Separator } from "..";
 
 const meta = preview.meta({
   component: Separator,
