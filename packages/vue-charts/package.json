@@ -3,8 +3,8 @@
     "url": "https://github.com/tingoon/pisagor/issues"
   },
   "dependencies": {
-    "@pisagor/recipes": "workspace:*",
-    "@pisagor/utils": "workspace:*"
+    "@pisagor/recipes": "^0.1.0",
+    "@pisagor/utils": "^0.1.0"
   },
   "description": "Chart primitives for Pisagor Vue.",
   "devDependencies": {
@@ -18,8 +18,7 @@
   "files": [
     "src",
     "!**/*.stories.*",
-    "!**/*.test.*",
-    "!**/AGENTS.md"
+    "!**/*.test.*"
   ],
   "homepage": "https://github.com/tingoon/pisagor#readme",
   "license": "MIT",
@@ -27,9 +26,6 @@
   "peerDependencies": {
     "tailwindcss": "^4",
     "vue": "^3.5"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "repository": {
     "directory": "packages/vue-charts",
@@ -43,5 +39,5 @@
     "**/*.css"
   ],
   "type": "module",
-  "version": "0.0.1"
+  "version": "0.1.0"
 }

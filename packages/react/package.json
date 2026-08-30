@@ -6,9 +6,9 @@
     "@ark-ui/react": "^5.39.1",
     "@mantine/hooks": "^9.5.2",
     "@phosphor-icons/react": "^2.1.10",
-    "@pisagor/recipes": "workspace:*",
-    "@pisagor/tokens": "workspace:*",
-    "@pisagor/utils": "workspace:*",
+    "@pisagor/recipes": "^0.1.0",
+    "@pisagor/tokens": "^0.1.0",
+    "@pisagor/utils": "^0.1.0",
     "@tailwindcss/typography": "^0.5.20",
     "@tanstack/react-table": "^9.2.4",
     "@tanstack/react-virtual": "^3.14.10",
@@ -38,6 +38,11 @@
     "./utils": "./src/utils/index.ts",
     "./utils/*": "./src/utils/*.ts"
   },
+  "files": [
+    "src",
+    "!**/*.stories.*",
+    "!**/*.test.*"
+  ],
   "homepage": "https://github.com/tingoon/pisagor#readme",
   "license": "MIT",
   "name": "@pisagor/react",
@@ -45,9 +50,6 @@
     "react": "^19",
     "react-dom": "^19",
     "tailwindcss": "^4"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "repository": {
     "directory": "packages/react",
@@ -62,5 +64,5 @@
     "**/*.css"
   ],
   "type": "module",
-  "version": "0.0.0"
+  "version": "0.1.0"
 }

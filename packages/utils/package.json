@@ -13,12 +13,13 @@
   "exports": {
     ".": "./src/index.ts"
   },
+  "files": [
+    "src/index.ts",
+    "src/cn.ts"
+  ],
   "homepage": "https://github.com/tingoon/pisagor#readme",
   "license": "MIT",
   "name": "@pisagor/utils",
-  "publishConfig": {
-    "access": "public"
-  },
   "repository": {
     "directory": "packages/utils",
     "type": "git",
@@ -30,5 +31,5 @@
   },
   "sideEffects": false,
   "type": "module",
-  "version": "0.0.0"
+  "version": "0.1.0"
 }

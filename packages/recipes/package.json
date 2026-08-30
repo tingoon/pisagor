@@ -13,12 +13,12 @@
     ".": "./src/ui/index.ts",
     "./*": "./src/ui/*.ts"
   },
+  "files": [
+    "src/ui"
+  ],
   "homepage": "https://github.com/tingoon/pisagor#readme",
   "license": "MIT",
   "name": "@pisagor/recipes",
-  "publishConfig": {
-    "access": "public"
-  },
   "repository": {
     "directory": "packages/recipes",
     "type": "git",
@@ -28,5 +28,5 @@
     "type-check": "tsc"
   },
   "type": "module",
-  "version": "0.0.0"
+  "version": "0.1.0"
 }

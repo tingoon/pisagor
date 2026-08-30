@@ -3,7 +3,7 @@
     "url": "https://github.com/tingoon/pisagor/issues"
   },
   "dependencies": {
-    "@pisagor/react": "workspace:*",
+    "@pisagor/react": "^0.1.0",
     "@tanstack/react-form": "^1.33.5"
   },
   "description": "Form fields and TanStack Form integration for Pisagor React.",
@@ -23,8 +23,7 @@
   "files": [
     "src",
     "!**/*.stories.*",
-    "!**/*.test.*",
-    "!**/AGENTS.md"
+    "!**/*.test.*"
   ],
   "homepage": "https://github.com/tingoon/pisagor#readme",
   "license": "MIT",
@@ -33,9 +32,6 @@
     "react": "^19",
     "react-dom": "^19",
     "tailwindcss": "^4"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "repository": {
     "directory": "packages/react-form",
@@ -49,5 +45,5 @@
     "**/*.css"
   ],
   "type": "module",
-  "version": "0.0.1"
+  "version": "0.1.0"
 }

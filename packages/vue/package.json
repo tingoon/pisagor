@@ -5,9 +5,9 @@
   "dependencies": {
     "@ark-ui/vue": "^5.39.1",
     "@phosphor-icons/vue": "^2.2.1",
-    "@pisagor/recipes": "workspace:*",
-    "@pisagor/tokens": "workspace:*",
-    "@pisagor/utils": "workspace:*",
+    "@pisagor/recipes": "^0.1.0",
+    "@pisagor/tokens": "^0.1.0",
+    "@pisagor/utils": "^0.1.0",
     "@tailwindcss/typography": "^0.5.20",
     "@tanstack/vue-table": "^9.2.4",
     "@tanstack/vue-virtual": "^3.13.36",
@@ -31,15 +31,17 @@
     "./rich-text-editor": "./src/rich-text-editor/index.ts",
     "./styles": "./src/styles.css"
   },
+  "files": [
+    "src",
+    "!**/*.stories.*",
+    "!**/*.test.*"
+  ],
   "homepage": "https://github.com/tingoon/pisagor#readme",
   "license": "MIT",
   "name": "@pisagor/vue",
   "peerDependencies": {
     "tailwindcss": "^4",
     "vue": "^3.5"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "repository": {
     "directory": "packages/vue",
@@ -53,5 +55,5 @@
     "**/*.css"
   ],
   "type": "module",
-  "version": "0.0.0"
+  "version": "0.1.0"
 }
