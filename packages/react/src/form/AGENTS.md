@@ -24,9 +24,9 @@ Fields under [`fields/`](./fields/) and [`tanstack/fields/`](./tanstack/fields/)
 | `@pisagor/react/form` | Standalone fields (`fields/index.ts`) |
 | `@pisagor/react/form/tanstack` | `useAppForm`, connected fields, helpers |
 
-## Heavy field peers
+## Heavy fields
 
-`PhoneField` and `RichTextEditorField` depend on heavy `@pisagor/react` subpaths. Consumers must install the optional peers listed in [README](./README.md#peer-dependencies).
+`PhoneField` and `RichTextEditorField` depend on heavy `@pisagor/react` subpaths (`phone-input`, `rich-text-editor`).
 
 ## Internal imports
 

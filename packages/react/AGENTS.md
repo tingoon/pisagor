@@ -11,13 +11,13 @@ Package-local guidance for component work in `packages/react` (`@pisagor/react`)
 
 ## Heavy imports
 
-Heavy components are **not** on the root `@pisagor/react` barrel. Import them only from dedicated subpaths; install optional peers when you use these:
+Heavy components are **not** on the root `@pisagor/react` barrel. Import them only from dedicated subpaths:
 
-- `@pisagor/react/data-grid` — `@tanstack/react-table`, `@tanstack/react-virtual`
-- `@pisagor/react/data-table` — `@tanstack/react-table`
-- `@pisagor/react/charts` — `recharts`
-- `@pisagor/react/rich-text-editor` — `@tiptap/react`, `@tiptap/starter-kit`
-- `@pisagor/react/phone-input` — `react-phone-number-input`
+- `@pisagor/react/data-grid`
+- `@pisagor/react/data-table`
+- `@pisagor/react/charts`
+- `@pisagor/react/rich-text-editor`
+- `@pisagor/react/phone-input`
 
 Light components: prefer the root barrel (`import { Button } from "@pisagor/react"`). Use a subpath (`@pisagor/react/button`) only when you need a tight import graph.
 
