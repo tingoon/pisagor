@@ -1,7 +1,7 @@
-import type { Meta, StoryObj } from "@storybook/vue3-vite";
+import preview from "#/storybook/preview";
 import { PasswordStrength } from "./password-strength";
 
-const meta = {
+const meta = preview.meta({
   component: PasswordStrength,
   parameters: {
     docs: {
@@ -12,9 +12,11 @@ const meta = {
     },
   },
   title: "Recipes/Forms/Password Input",
-} satisfies Meta<typeof PasswordStrength>;
+});
 
-export default meta;
-type Story = StoryObj<typeof meta>;
-
-export const Strength: Story = {};
+export const Strength = meta.story({
+  render: () => ({
+    components: { PasswordStrength },
+    template: `<PasswordStrength />`,
+  }),
+});
