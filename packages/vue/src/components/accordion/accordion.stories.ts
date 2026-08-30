@@ -1,4 +1,4 @@
-import { Accordion, Card } from "@pisagor/vue";
+import { Accordion } from "@pisagor/vue";
 import { h, ref } from "vue";
 import preview from "#/storybook/preview";
 
@@ -66,26 +66,6 @@ export const Disabled = meta.story({
       return { items };
     },
     template: '<Accordion :default-value="[\'item-1\']" :items="items" />',
-  }),
-});
-
-export const WithCard = meta.story({
-  render: () => ({
-    components: { Accordion, Card },
-    setup() {
-      return { items: faqItems() };
-    },
-    template: `
-      <Card>
-        <Card.Header
-          description="Common questions about our products, shipping, and returns."
-          title="Product information"
-        />
-        <Card.Content>
-          <Accordion :default-value="['item-1']" :items="items" />
-        </Card.Content>
-      </Card>
-    `,
   }),
 });
 

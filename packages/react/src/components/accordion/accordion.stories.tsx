@@ -1,4 +1,4 @@
-import { Accordion, Card } from "@pisagor/react";
+import { Accordion } from "@pisagor/react";
 import { useState } from "react";
 import preview from "#/storybook/preview";
 
@@ -55,24 +55,6 @@ export const Disabled = meta.story({
       item.value === "item-2" ? { ...item, disabled: true } : item,
     ),
   },
-});
-
-export const WithCard = meta.story({
-  args: {
-    defaultValue: ["item-1"],
-    items: faqItems(),
-  },
-  render: (args) => (
-    <Card>
-      <Card.Header
-        description="Common questions about our products, shipping, and returns."
-        title="Product information"
-      />
-      <Card.Content>
-        <Accordion {...args} />
-      </Card.Content>
-    </Card>
-  ),
 });
 
 export const Controlled = meta.story({

@@ -1,4 +1,4 @@
-import { Card, Skeleton } from "@pisagor/vue";
+import { Skeleton } from "@pisagor/vue";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({
@@ -31,27 +31,6 @@ export const Default = meta.story({
         <Skeleton.Circle class="size-16" />
         <Skeleton.Text :lines="3" />
       </div>
-    `,
-  }),
-});
-
-export const InCard = meta.story({
-  render: () => ({
-    components: { Card, Skeleton },
-    template: `
-      <Card>
-        <Card.Header class="flex flex-row items-center gap-2">
-          <Skeleton.Circle class="size-12" />
-          <Skeleton.Text :lines="2" />
-        </Card.Header>
-        <Card.Content>
-          <Skeleton.Text :lines="3" />
-        </Card.Content>
-        <Card.Footer class="flex items-center gap-2">
-          <Skeleton.Circle class="size-12" />
-          <Skeleton.Text :lines="2" />
-        </Card.Footer>
-      </Card>
     `,
   }),
 });
