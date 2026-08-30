@@ -11,7 +11,7 @@ export interface HighlightProps {
 }
 // #endregion
 
-// #region Part
+// #region Component
 export const Highlight = defineComponent({
   inheritAttrs: false,
   name: "PisagorHighlight",

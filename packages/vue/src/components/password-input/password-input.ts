@@ -34,7 +34,7 @@ export interface PasswordInputProps extends Pick<InputGroupProps, "size" | "vari
 }
 // #endregion
 
-// #region Part
+// #region Component
 export const PasswordInput = defineComponent({
   inheritAttrs: false,
   name: "PasswordInput",

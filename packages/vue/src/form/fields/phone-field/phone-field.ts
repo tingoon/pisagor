@@ -15,7 +15,7 @@ export interface PhoneFieldProps
 }
 // #endregion
 
-// #region Part
+// #region Component
 export const PhoneField = defineComponent({
   inheritAttrs: false,
   name: "PhoneField",

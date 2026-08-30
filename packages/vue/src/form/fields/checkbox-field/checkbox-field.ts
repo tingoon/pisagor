@@ -17,7 +17,7 @@ export interface CheckboxFieldProps
 }
 // #endregion
 
-// #region Part
+// #region Component
 export const CheckboxField = defineComponent({
   inheritAttrs: false,
   name: "CheckboxField",

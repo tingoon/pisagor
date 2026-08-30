@@ -94,7 +94,7 @@ function getSectionScrollOffset(sectionElement: HTMLElement, scrollElement: HTML
 }
 // #endregion
 
-// #region Part
+// #region Component
 export const Scrollspy = defineComponent({
   inheritAttrs: false,
   name: "PisagorScrollspy",

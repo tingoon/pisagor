@@ -3,7 +3,7 @@ import { defineComponent, h } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Part
+// #region Component
 export const ClientOnly = defineComponent({
   inheritAttrs: false,
   name: "ClientOnly",

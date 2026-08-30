@@ -6,7 +6,7 @@ import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Part
+// #region Component
 export const Toggle = defineComponent({
   emits: {
     pressedChange: (_pressed: boolean) => true,

@@ -20,7 +20,7 @@ export interface NumberFieldProps extends FieldPresentationProps, NumberInputCon
 }
 // #endregion
 
-// #region Part
+// #region Component
 export const NumberField = defineComponent({
   inheritAttrs: false,
   name: "NumberField",

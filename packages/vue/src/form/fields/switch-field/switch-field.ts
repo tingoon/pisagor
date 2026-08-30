@@ -22,7 +22,7 @@ export interface SwitchFieldProps extends FieldPresentationProps, SwitchControlP
 }
 // #endregion
 
-// #region Part
+// #region Component
 export const SwitchField = defineComponent({
   inheritAttrs: false,
   name: "SwitchField",

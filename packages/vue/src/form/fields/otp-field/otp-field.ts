@@ -22,7 +22,7 @@ export interface OtpFieldProps
 }
 // #endregion
 
-// #region Part
+// #region Component
 export const OtpField = defineComponent({
   inheritAttrs: false,
   name: "OtpField",

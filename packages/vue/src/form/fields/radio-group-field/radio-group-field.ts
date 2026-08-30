@@ -24,7 +24,7 @@ export interface RadioGroupFieldProps
 }
 // #endregion
 
-// #region Part
+// #region Component
 export const RadioGroupField = defineComponent({
   inheritAttrs: false,
   name: "RadioGroupField",

@@ -55,7 +55,7 @@ export interface SignaturePadProps {
 }
 // #endregion
 
-// #region Part
+// #region Component
 export const SignaturePad = defineComponent({
   inheritAttrs: false,
   name: "SignaturePad",

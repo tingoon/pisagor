@@ -18,7 +18,7 @@ export interface TagsInputFieldProps extends FieldPresentationProps, TagsInputCo
 }
 // #endregion
 
-// #region Part
+// #region Component
 export const TagsInputField = defineComponent({
   inheritAttrs: false,
   name: "TagsInputField",

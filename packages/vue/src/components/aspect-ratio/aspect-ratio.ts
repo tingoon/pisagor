@@ -5,7 +5,7 @@ import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Part
+// #region Component
 export const AspectRatio = defineComponent({
   inheritAttrs: false,
   name: "AspectRatio",

@@ -12,7 +12,7 @@ export interface BadgeProps extends BadgeVariantProps {
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Part
+// #region Component
 export const Badge = defineComponent({
   inheritAttrs: false,
   name: "PisagorBadge",

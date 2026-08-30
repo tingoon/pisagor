@@ -18,7 +18,7 @@ export interface FieldPresentationProps {
 }
 // #endregion
 
-// #region Part
+// #region Component
 export const FieldShell = defineComponent({
   inheritAttrs: false,
   name: "FieldShell",

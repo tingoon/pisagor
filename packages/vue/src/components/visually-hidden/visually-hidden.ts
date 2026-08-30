@@ -11,7 +11,7 @@ export interface VisuallyHiddenProps {
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Part
+// #region Component
 /**
  * Hides content visually while keeping it available to assistive technology.
  */

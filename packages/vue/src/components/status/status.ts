@@ -11,7 +11,7 @@ export interface StatusProps extends StatusVariantProps {
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Part
+// #region Component
 export const Status = defineComponent({
   inheritAttrs: false,
   name: "PisagorStatus",

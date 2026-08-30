@@ -20,7 +20,7 @@ export interface SliderFieldProps
 }
 // #endregion
 
-// #region Part
+// #region Component
 export const SliderField = defineComponent({
   inheritAttrs: false,
   name: "SliderField",

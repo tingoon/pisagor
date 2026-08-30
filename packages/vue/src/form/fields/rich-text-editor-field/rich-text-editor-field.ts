@@ -20,7 +20,7 @@ export interface RichTextEditorFieldProps
 }
 // #endregion
 
-// #region Part
+// #region Component
 export const RichTextEditorField = defineComponent({
   inheritAttrs: false,
   name: "RichTextEditorField",

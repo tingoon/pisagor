@@ -30,7 +30,7 @@ export interface ProgressProps {
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Part
+// #region Component
 export const Progress = defineComponent({
   inheritAttrs: false,
   name: "PisagorProgress",

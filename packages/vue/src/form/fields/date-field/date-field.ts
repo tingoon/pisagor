@@ -20,7 +20,7 @@ export interface DateFieldProps extends FieldPresentationProps, DatePickerContro
 }
 // #endregion
 
-// #region Part
+// #region Component
 export const DateField = defineComponent({
   inheritAttrs: false,
   name: "DateField",

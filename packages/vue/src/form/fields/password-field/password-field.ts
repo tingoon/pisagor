@@ -19,7 +19,7 @@ export interface PasswordFieldProps extends FieldPresentationProps, PasswordInpu
 }
 // #endregion
 
-// #region Part
+// #region Component
 export const PasswordField = defineComponent({
   inheritAttrs: false,
   name: "PasswordField",

@@ -37,7 +37,7 @@ export interface InputProps extends InputRootVariantProps {
 }
 // #endregion
 
-// #region Part
+// #region Component
 export const Input = defineComponent({
   inheritAttrs: false,
   name: "PisagorInput",

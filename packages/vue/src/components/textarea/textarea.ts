@@ -35,7 +35,7 @@ export interface TextareaProps extends FormControlShellVariantProps {
 }
 // #endregion
 
-// #region Part
+// #region Component
 export const Textarea = defineComponent({
   inheritAttrs: false,
   name: "PisagorTextarea",

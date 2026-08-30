@@ -19,7 +19,7 @@ export interface TextareaFieldProps extends FieldPresentationProps, TextareaCont
 }
 // #endregion
 
-// #region Part
+// #region Component
 export const TextareaField = defineComponent({
   inheritAttrs: false,
   name: "TextareaField",

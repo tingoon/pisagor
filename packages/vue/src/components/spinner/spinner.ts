@@ -11,7 +11,7 @@ export interface SpinnerProps {
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Part
+// #region Component
 export const Spinner = defineComponent({
   inheritAttrs: false,
   name: "PisagorSpinner",

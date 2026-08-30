@@ -28,7 +28,7 @@ export interface AvatarProps extends AvatarVariantProps {
 }
 // #endregion
 
-// #region Part
+// #region Component
 export const Avatar = defineComponent({
   inheritAttrs: false,
   name: "PisagorAvatar",

@@ -19,7 +19,7 @@ export interface TextFieldProps extends FieldPresentationProps, InputControlProp
 }
 // #endregion
 
-// #region Part
+// #region Component
 export const TextField = defineComponent({
   inheritAttrs: false,
   name: "TextField",

@@ -22,7 +22,7 @@ export interface AutocompleteFieldProps
 }
 // #endregion
 
-// #region Part
+// #region Component
 export const AutocompleteField = defineComponent({
   inheritAttrs: false,
   name: "AutocompleteField",

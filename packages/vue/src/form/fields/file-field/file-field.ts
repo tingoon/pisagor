@@ -18,7 +18,7 @@ export interface FileFieldProps extends FieldPresentationProps, FileInputControl
 }
 // #endregion
 
-// #region Part
+// #region Component
 export const FileField = defineComponent({
   inheritAttrs: false,
   name: "FileField",

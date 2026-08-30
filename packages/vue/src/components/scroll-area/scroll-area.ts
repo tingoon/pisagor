@@ -25,7 +25,7 @@ export interface ScrollAreaProps {
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Part
+// #region Component
 export const ScrollArea = defineComponent({
   inheritAttrs: false,
   name: "ScrollArea",

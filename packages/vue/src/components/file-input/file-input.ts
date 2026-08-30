@@ -55,7 +55,7 @@ function formatFileLabel(files: File[]): string | undefined {
 }
 // #endregion
 
-// #region Part
+// #region Component
 export const FileInput = defineComponent({
   inheritAttrs: false,
   name: "FileInput",

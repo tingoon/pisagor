@@ -48,7 +48,7 @@ function resolveDir(locale: string, dir?: "ltr" | "rtl"): "ltr" | "rtl" {
 
 type ArkPart = Parameters<typeof h>[0];
 
-// #region Part
+// #region Component
 export const Provider = defineComponent({
   inheritAttrs: false,
   name: "PisagorProvider",

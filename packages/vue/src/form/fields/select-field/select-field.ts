@@ -23,7 +23,7 @@ export interface SelectFieldProps
 }
 // #endregion
 
-// #region Part
+// #region Component
 export const SelectField = defineComponent({
   inheritAttrs: false,
   name: "SelectField",

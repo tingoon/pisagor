@@ -18,7 +18,7 @@ export interface ProseProps {
 }
 // #endregion
 
-// #region Part
+// #region Component
 export const Prose = defineComponent({
   inheritAttrs: false,
   name: "PisagorProse",
