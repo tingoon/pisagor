@@ -1,0 +1,11 @@
+{
+  "$schema": "../node_modules/@changesets/config/schema.json",
+  "access": "public",
+  "baseBranch": "main",
+  "changelog": "@changesets/cli/changelog",
+  "commit": false,
+  "fixed": [],
+  "ignore": ["@pisagor/tsconfig", "react-storybook", "vue-storybook"],
+  "linked": [],
+  "updateInternalDependencies": "patch"
+}

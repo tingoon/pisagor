@@ -2,7 +2,7 @@
   "$schema": "./node_modules/knip/schema.json",
   "workspaces": {
     ".": {
-      "entry": ["scripts/**/*.ts"]
+      "entry": []
     },
     "apps/react": {
       "entry": [

@@ -32,3 +32,17 @@ Commits: [Conventional Commits](https://www.conventionalcommits.org/). Scope wit
 - Describe the change and how you tested it (Storybook story if UI).
 - Do not commit `.env`, secrets, or `mcp.json` with credentials.
 - If you add env vars for an app, document them in that app’s `.env.example`.
+
+## Releases
+
+1. In a feature PR, run `bunx changeset` (packages + `patch` / `minor` / `major`). Commit `.changeset/*`.
+2. Merge to `main`. CI (**Changesets** workflow) opens a version PR (changelog + bumps).
+3. Merge that PR. The same workflow runs `changeset publish` (OIDC Trusted Publishing, no `NPM_TOKEN`) and creates git tags.
+
+Local publish (after `npm login` / OTP), from a clean tree with bumped versions:
+
+```bash
+bunx changeset publish
+```
+
+Trusted Publisher (once per package): GitHub Actions → org/user `tingoon`, repository `pisagor`, workflow filename `changesets.yml`.

@@ -1,0 +1,43 @@
+name: Changesets
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  id-token: write
+  pull-requests: write
+
+concurrency:
+  group: changesets
+  cancel-in-progress: true
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.0
+
+      - run: bun install --frozen-lockfile
+
+      - name: Ensure npm supports OIDC
+        run: npm install -g npm@latest
+
+      - name: Create version PR or publish
+        uses: changesets/action@v1.9.0
+        with:
+          version: bunx changeset version
+          publish: bunx changeset publish
+          title: "chore: apply changesets"
+          commit: "chore: apply changesets"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_CONFIG_PROVENANCE: "true"
