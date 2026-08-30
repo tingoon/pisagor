@@ -20,4 +20,5 @@ export const richTextEditorRecipe = tv({
 });
 
 export type RichTextEditorVariantProps = VariantProps<typeof richTextEditorRecipe>;
-export type RichTextEditorSlots = ReturnType<typeof richTextEditorRecipe>;
+export type RichTextEditorRecipe = ReturnType<typeof richTextEditorRecipe>;
+export type RichTextEditorRecipeSlot = keyof RichTextEditorRecipe;

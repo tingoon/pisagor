@@ -29,4 +29,5 @@ export const announcementRecipe = tv({
 });
 
 export type AnnouncementVariantProps = VariantProps<typeof announcementRecipe>;
-export type AnnouncementSlots = ReturnType<typeof announcementRecipe>;
+export type AnnouncementRecipe = ReturnType<typeof announcementRecipe>;
+export type AnnouncementRecipeSlot = keyof AnnouncementRecipe;

@@ -35,4 +35,5 @@ export const tourRecipe = tv({
 });
 
 export type TourVariantProps = VariantProps<typeof tourRecipe>;
-export type TourSlots = ReturnType<typeof tourRecipe>;
+export type TourRecipe = ReturnType<typeof tourRecipe>;
+export type TourRecipeSlot = keyof TourRecipe;

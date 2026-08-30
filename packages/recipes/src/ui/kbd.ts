@@ -27,7 +27,9 @@ export const kbdGroupRecipe = tv({
 });
 
 export type KbdVariantProps = VariantProps<typeof kbdRecipe>;
-export type KbdSlots = ReturnType<typeof kbdRecipe>;
+export type KbdRecipe = ReturnType<typeof kbdRecipe>;
+export type KbdRecipeSlot = keyof KbdRecipe;
 
 export type KbdGroupVariantProps = VariantProps<typeof kbdGroupRecipe>;
-export type KbdGroupSlots = ReturnType<typeof kbdGroupRecipe>;
+export type KbdGroupRecipe = ReturnType<typeof kbdGroupRecipe>;
+export type KbdGroupRecipeSlot = keyof KbdGroupRecipe;

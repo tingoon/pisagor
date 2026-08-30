@@ -38,7 +38,9 @@ export const bottomNavigationItemRecipe = tv({
 });
 
 export type BottomNavigationVariantProps = VariantProps<typeof bottomNavigationRecipe>;
-export type BottomNavigationSlots = ReturnType<typeof bottomNavigationRecipe>;
+export type BottomNavigationRecipe = ReturnType<typeof bottomNavigationRecipe>;
+export type BottomNavigationRecipeSlot = keyof BottomNavigationRecipe;
 
 export type BottomNavigationItemVariantProps = VariantProps<typeof bottomNavigationItemRecipe>;
-export type BottomNavigationItemSlots = ReturnType<typeof bottomNavigationItemRecipe>;
+export type BottomNavigationItemRecipe = ReturnType<typeof bottomNavigationItemRecipe>;
+export type BottomNavigationItemRecipeSlot = keyof BottomNavigationItemRecipe;

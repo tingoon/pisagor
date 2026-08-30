@@ -65,4 +65,5 @@ export const selectRecipe = tv({
 });
 
 export type SelectVariantProps = VariantProps<typeof selectRecipe>;
-export type SelectSlots = ReturnType<typeof selectRecipe>;
+export type SelectRecipe = ReturnType<typeof selectRecipe>;
+export type SelectRecipeSlot = keyof SelectRecipe;

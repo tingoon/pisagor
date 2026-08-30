@@ -51,4 +51,5 @@ export const floatingPanelRecipe = tv({
 });
 
 export type FloatingPanelVariantProps = VariantProps<typeof floatingPanelRecipe>;
-export type FloatingPanelSlots = ReturnType<typeof floatingPanelRecipe>;
+export type FloatingPanelRecipe = ReturnType<typeof floatingPanelRecipe>;
+export type FloatingPanelRecipeSlot = keyof FloatingPanelRecipe;

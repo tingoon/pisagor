@@ -10,4 +10,5 @@ export const dataTableRecipe = tv({
 });
 
 export type DataTableVariantProps = VariantProps<typeof dataTableRecipe>;
-export type DataTableSlots = ReturnType<typeof dataTableRecipe>;
+export type DataTableRecipe = ReturnType<typeof dataTableRecipe>;
+export type DataTableRecipeSlot = keyof DataTableRecipe;

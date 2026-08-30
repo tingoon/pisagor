@@ -24,6 +24,6 @@ Prefer `@pisagor/recipes/<name>` when you need a tight import graph; use `@pisag
 
 **Z-index:** use theme utilities (`z-popover`, `z-modal`, `z-toast`) — not hardcoded `z-50`.
 
-**Naming:** export `{component}Recipe` (e.g. `checkboxRecipe`, `numberInputRecipe`), plus `{Name}VariantProps` and `{Name}Slots` as needed.
+**Naming:** export `{component}Recipe` (e.g. `checkboxRecipe`, `numberInputRecipe`), plus `{Name}VariantProps`, `{Name}Recipe`, and `{Name}RecipeSlot` as needed.
 
 Optional peer: `tailwind-merge` >=3 (Tailwind Variants v3 merge support).

@@ -23,4 +23,5 @@ export const textareaRecipe = tv({
 });
 
 export type TextareaVariantProps = VariantProps<typeof textareaRecipe>;
-export type TextareaSlots = ReturnType<typeof textareaRecipe>;
+export type TextareaRecipe = ReturnType<typeof textareaRecipe>;
+export type TextareaRecipeSlot = keyof TextareaRecipe;

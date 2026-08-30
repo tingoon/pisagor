@@ -130,4 +130,5 @@ export const drawerRecipe = tv({
 });
 
 export type DrawerVariantProps = VariantProps<typeof drawerRecipe>;
-export type DrawerSlots = ReturnType<typeof drawerRecipe>;
+export type DrawerRecipe = ReturnType<typeof drawerRecipe>;
+export type DrawerRecipeSlot = keyof DrawerRecipe;

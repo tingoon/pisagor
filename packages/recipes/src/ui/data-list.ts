@@ -21,7 +21,9 @@ export const dataListItemRecipe = tv({
 });
 
 export type DataListVariantProps = VariantProps<typeof dataListRecipe>;
-export type DataListSlots = ReturnType<typeof dataListRecipe>;
+export type DataListRecipe = ReturnType<typeof dataListRecipe>;
+export type DataListRecipeSlot = keyof DataListRecipe;
 
 export type DataListItemVariantProps = VariantProps<typeof dataListItemRecipe>;
-export type DataListItemSlots = ReturnType<typeof dataListItemRecipe>;
+export type DataListItemRecipe = ReturnType<typeof dataListItemRecipe>;
+export type DataListItemRecipeSlot = keyof DataListItemRecipe;

@@ -73,4 +73,5 @@ export const sheetRecipe = tv({
 });
 
 export type SheetVariantProps = VariantProps<typeof sheetRecipe>;
-export type SheetSlots = ReturnType<typeof sheetRecipe>;
+export type SheetRecipe = ReturnType<typeof sheetRecipe>;
+export type SheetRecipeSlot = keyof SheetRecipe;

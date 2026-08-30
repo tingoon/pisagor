@@ -5,4 +5,5 @@ export const visuallyHiddenRecipe = tv({
 });
 
 export type VisuallyHiddenVariantProps = VariantProps<typeof visuallyHiddenRecipe>;
-export type VisuallyHiddenSlots = ReturnType<typeof visuallyHiddenRecipe>;
+export type VisuallyHiddenRecipe = ReturnType<typeof visuallyHiddenRecipe>;
+export type VisuallyHiddenRecipeSlot = keyof VisuallyHiddenRecipe;

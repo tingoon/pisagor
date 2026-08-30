@@ -29,4 +29,5 @@ export const marqueeRecipe = tv({
 });
 
 export type MarqueeVariantProps = VariantProps<typeof marqueeRecipe>;
-export type MarqueeSlots = ReturnType<typeof marqueeRecipe>;
+export type MarqueeRecipe = ReturnType<typeof marqueeRecipe>;
+export type MarqueeRecipeSlot = keyof MarqueeRecipe;

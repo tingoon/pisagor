@@ -65,7 +65,9 @@ export const resizableEdgeHandleRecipe = tv({
 });
 
 export type ResizableVariantProps = VariantProps<typeof resizableRecipe>;
-export type ResizableSlots = ReturnType<typeof resizableRecipe>;
+export type ResizableRecipe = ReturnType<typeof resizableRecipe>;
+export type ResizableRecipeSlot = keyof ResizableRecipe;
 
 export type ResizableEdgeHandleVariantProps = VariantProps<typeof resizableEdgeHandleRecipe>;
-export type ResizableEdgeHandleSlots = ReturnType<typeof resizableEdgeHandleRecipe>;
+export type ResizableEdgeHandleRecipe = ReturnType<typeof resizableEdgeHandleRecipe>;
+export type ResizableEdgeHandleRecipeSlot = keyof ResizableEdgeHandleRecipe;

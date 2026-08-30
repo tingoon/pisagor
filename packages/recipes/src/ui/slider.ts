@@ -68,4 +68,5 @@ export const sliderRecipe = tv({
 });
 
 export type SliderVariantProps = VariantProps<typeof sliderRecipe>;
-export type SliderSlots = ReturnType<typeof sliderRecipe>;
+export type SliderRecipe = ReturnType<typeof sliderRecipe>;
+export type SliderRecipeSlot = keyof SliderRecipe;

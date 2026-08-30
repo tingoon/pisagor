@@ -88,4 +88,5 @@ export const badgeRecipe = tv({
 });
 
 export type BadgeVariantProps = VariantProps<typeof badgeRecipe>;
-export type BadgeSlots = ReturnType<typeof badgeRecipe>;
+export type BadgeRecipe = ReturnType<typeof badgeRecipe>;
+export type BadgeRecipeSlot = keyof BadgeRecipe;

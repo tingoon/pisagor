@@ -74,4 +74,5 @@ export const alertRecipe = tv({
 });
 
 export type AlertVariantProps = VariantProps<typeof alertRecipe>;
-export type AlertSlots = ReturnType<typeof alertRecipe>;
+export type AlertRecipe = ReturnType<typeof alertRecipe>;
+export type AlertRecipeSlot = keyof AlertRecipe;

@@ -48,4 +48,5 @@ export const popoverRecipe = tv({
 });
 
 export type PopoverVariantProps = VariantProps<typeof popoverRecipe>;
-export type PopoverSlots = ReturnType<typeof popoverRecipe>;
+export type PopoverRecipe = ReturnType<typeof popoverRecipe>;
+export type PopoverRecipeSlot = keyof PopoverRecipe;

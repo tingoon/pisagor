@@ -21,4 +21,5 @@ export const emptyStateRecipe = tv({
 });
 
 export type EmptyStateVariantProps = VariantProps<typeof emptyStateRecipe>;
-export type EmptyStateSlots = ReturnType<typeof emptyStateRecipe>;
+export type EmptyStateRecipe = ReturnType<typeof emptyStateRecipe>;
+export type EmptyStateRecipeSlot = keyof EmptyStateRecipe;

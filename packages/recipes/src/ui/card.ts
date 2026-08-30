@@ -50,4 +50,5 @@ export const cardRecipe = tv({
 });
 
 export type CardVariantProps = VariantProps<typeof cardRecipe>;
-export type CardSlots = ReturnType<typeof cardRecipe>;
+export type CardRecipe = ReturnType<typeof cardRecipe>;
+export type CardRecipeSlot = keyof CardRecipe;

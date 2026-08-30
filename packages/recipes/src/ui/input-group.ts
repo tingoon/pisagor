@@ -96,18 +96,23 @@ export const inputGroupTextareaControlRecipe = tv({
 });
 
 export type InputGroupAddonVariantProps = VariantProps<typeof inputGroupAddonRecipe>;
-export type InputGroupAddonSlots = ReturnType<typeof inputGroupAddonRecipe>;
+export type InputGroupAddonRecipe = ReturnType<typeof inputGroupAddonRecipe>;
+export type InputGroupAddonRecipeSlot = keyof InputGroupAddonRecipe;
 
 export type InputGroupButtonVariantProps = VariantProps<typeof inputGroupButtonRecipe>;
-export type InputGroupButtonSlots = ReturnType<typeof inputGroupButtonRecipe>;
+export type InputGroupButtonRecipe = ReturnType<typeof inputGroupButtonRecipe>;
+export type InputGroupButtonRecipeSlot = keyof InputGroupButtonRecipe;
 
 export type InputGroupTextVariantProps = VariantProps<typeof inputGroupTextRecipe>;
-export type InputGroupTextSlots = ReturnType<typeof inputGroupTextRecipe>;
+export type InputGroupTextRecipe = ReturnType<typeof inputGroupTextRecipe>;
+export type InputGroupTextRecipeSlot = keyof InputGroupTextRecipe;
 
 export type InputGroupControlVariantProps = VariantProps<typeof inputGroupControlRecipe>;
-export type InputGroupControlSlots = ReturnType<typeof inputGroupControlRecipe>;
+export type InputGroupControlRecipe = ReturnType<typeof inputGroupControlRecipe>;
+export type InputGroupControlRecipeSlot = keyof InputGroupControlRecipe;
 
 export type InputGroupTextareaControlVariantProps = VariantProps<
   typeof inputGroupTextareaControlRecipe
 >;
-export type InputGroupTextareaControlSlots = ReturnType<typeof inputGroupTextareaControlRecipe>;
+export type InputGroupTextareaControlRecipe = ReturnType<typeof inputGroupTextareaControlRecipe>;
+export type InputGroupTextareaControlRecipeSlot = keyof InputGroupTextareaControlRecipe;

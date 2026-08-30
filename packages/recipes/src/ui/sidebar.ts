@@ -198,4 +198,5 @@ export const sidebarRecipe = tv({
 });
 
 export type SidebarVariantProps = VariantProps<typeof sidebarRecipe>;
-export type SidebarSlots = ReturnType<typeof sidebarRecipe>;
+export type SidebarRecipe = ReturnType<typeof sidebarRecipe>;
+export type SidebarRecipeSlot = keyof SidebarRecipe;

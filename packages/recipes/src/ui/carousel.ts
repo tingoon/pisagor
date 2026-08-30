@@ -38,4 +38,5 @@ export const carouselRecipe = tv({
 });
 
 export type CarouselVariantProps = VariantProps<typeof carouselRecipe>;
-export type CarouselSlots = ReturnType<typeof carouselRecipe>;
+export type CarouselRecipe = ReturnType<typeof carouselRecipe>;
+export type CarouselRecipeSlot = keyof CarouselRecipe;

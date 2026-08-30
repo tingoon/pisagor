@@ -24,4 +24,5 @@ export const clipboardRecipe = tv({
 });
 
 export type ClipboardVariantProps = VariantProps<typeof clipboardRecipe>;
-export type ClipboardSlots = ReturnType<typeof clipboardRecipe>;
+export type ClipboardRecipe = ReturnType<typeof clipboardRecipe>;
+export type ClipboardRecipeSlot = keyof ClipboardRecipe;

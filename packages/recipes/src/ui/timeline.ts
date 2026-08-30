@@ -40,7 +40,9 @@ export const timelineItemRecipe = tv({
 });
 
 export type TimelineVariantProps = VariantProps<typeof timelineRecipe>;
-export type TimelineSlots = ReturnType<typeof timelineRecipe>;
+export type TimelineRecipe = ReturnType<typeof timelineRecipe>;
+export type TimelineRecipeSlot = keyof TimelineRecipe;
 
 export type TimelineItemVariantProps = VariantProps<typeof timelineItemRecipe>;
-export type TimelineItemSlots = ReturnType<typeof timelineItemRecipe>;
+export type TimelineItemRecipe = ReturnType<typeof timelineItemRecipe>;
+export type TimelineItemRecipeSlot = keyof TimelineItemRecipe;

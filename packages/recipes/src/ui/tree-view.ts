@@ -86,10 +86,13 @@ export const treeViewItemRecipe = tv({
 });
 
 export type TreeViewVariantProps = VariantProps<typeof treeViewRecipe>;
-export type TreeViewSlots = ReturnType<typeof treeViewRecipe>;
+export type TreeViewRecipe = ReturnType<typeof treeViewRecipe>;
+export type TreeViewRecipeSlot = keyof TreeViewRecipe;
 
 export type TreeViewBranchVariantProps = VariantProps<typeof treeViewBranchRecipe>;
-export type TreeViewBranchSlots = ReturnType<typeof treeViewBranchRecipe>;
+export type TreeViewBranchRecipe = ReturnType<typeof treeViewBranchRecipe>;
+export type TreeViewBranchRecipeSlot = keyof TreeViewBranchRecipe;
 
 export type TreeViewItemVariantProps = VariantProps<typeof treeViewItemRecipe>;
-export type TreeViewItemSlots = ReturnType<typeof treeViewItemRecipe>;
+export type TreeViewItemRecipe = ReturnType<typeof treeViewItemRecipe>;
+export type TreeViewItemRecipeSlot = keyof TreeViewItemRecipe;

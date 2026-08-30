@@ -49,4 +49,5 @@ export const buttonGroupRecipe = tv({
 });
 
 export type ButtonGroupVariantProps = VariantProps<typeof buttonGroupRecipe>;
-export type ButtonGroupSlots = ReturnType<typeof buttonGroupRecipe>;
+export type ButtonGroupRecipe = ReturnType<typeof buttonGroupRecipe>;
+export type ButtonGroupRecipeSlot = keyof ButtonGroupRecipe;

@@ -18,7 +18,9 @@ export const inputRecipe = tv({
 });
 
 export type InputRootVariantProps = VariantProps<typeof inputRootRecipe>;
-export type InputRootSlots = ReturnType<typeof inputRootRecipe>;
+export type InputRootRecipe = ReturnType<typeof inputRootRecipe>;
+export type InputRootRecipeSlot = keyof InputRootRecipe;
 
 export type InputVariantProps = VariantProps<typeof inputRecipe>;
-export type InputSlots = ReturnType<typeof inputRecipe>;
+export type InputRecipe = ReturnType<typeof inputRecipe>;
+export type InputRecipeSlot = keyof InputRecipe;

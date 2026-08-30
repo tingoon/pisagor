@@ -44,7 +44,9 @@ export const toastItemRecipe = tv({
 });
 
 export type ToastVariantProps = VariantProps<typeof toastRecipe>;
-export type ToastSlots = ReturnType<typeof toastRecipe>;
+export type ToastRecipe = ReturnType<typeof toastRecipe>;
+export type ToastRecipeSlot = keyof ToastRecipe;
 
 export type ToastItemVariantProps = VariantProps<typeof toastItemRecipe>;
-export type ToastItemSlots = ReturnType<typeof toastItemRecipe>;
+export type ToastItemRecipe = ReturnType<typeof toastItemRecipe>;
+export type ToastItemRecipeSlot = keyof ToastItemRecipe;

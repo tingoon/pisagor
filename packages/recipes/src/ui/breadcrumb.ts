@@ -27,7 +27,9 @@ export const breadcrumbItemRecipe = tv({
 });
 
 export type BreadcrumbVariantProps = VariantProps<typeof breadcrumbRecipe>;
-export type BreadcrumbSlots = ReturnType<typeof breadcrumbRecipe>;
+export type BreadcrumbRecipe = ReturnType<typeof breadcrumbRecipe>;
+export type BreadcrumbRecipeSlot = keyof BreadcrumbRecipe;
 
 export type BreadcrumbItemVariantProps = VariantProps<typeof breadcrumbItemRecipe>;
-export type BreadcrumbItemSlots = ReturnType<typeof breadcrumbItemRecipe>;
+export type BreadcrumbItemRecipe = ReturnType<typeof breadcrumbItemRecipe>;
+export type BreadcrumbItemRecipeSlot = keyof BreadcrumbItemRecipe;

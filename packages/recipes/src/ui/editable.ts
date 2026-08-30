@@ -26,4 +26,5 @@ export const editableRecipe = tv({
 });
 
 export type EditableVariantProps = VariantProps<typeof editableRecipe>;
-export type EditableSlots = ReturnType<typeof editableRecipe>;
+export type EditableRecipe = ReturnType<typeof editableRecipe>;
+export type EditableRecipeSlot = keyof EditableRecipe;

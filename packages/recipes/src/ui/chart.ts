@@ -44,4 +44,5 @@ export const chartRecipe = tv({
 });
 
 export type ChartVariantProps = VariantProps<typeof chartRecipe>;
-export type ChartSlots = ReturnType<typeof chartRecipe>;
+export type ChartRecipe = ReturnType<typeof chartRecipe>;
+export type ChartRecipeSlot = keyof ChartRecipe;

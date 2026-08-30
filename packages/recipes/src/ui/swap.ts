@@ -33,4 +33,5 @@ export const swapRecipe = tv({
 });
 
 export type SwapVariantProps = VariantProps<typeof swapRecipe>;
-export type SwapSlots = ReturnType<typeof swapRecipe>;
+export type SwapRecipe = ReturnType<typeof swapRecipe>;
+export type SwapRecipeSlot = keyof SwapRecipe;

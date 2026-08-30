@@ -50,4 +50,5 @@ export const numberInputRecipe = tv({
 });
 
 export type NumberInputVariantProps = VariantProps<typeof numberInputRecipe>;
-export type NumberInputSlots = ReturnType<typeof numberInputRecipe>;
+export type NumberInputRecipe = ReturnType<typeof numberInputRecipe>;
+export type NumberInputRecipeSlot = keyof NumberInputRecipe;

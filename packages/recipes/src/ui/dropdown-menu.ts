@@ -79,7 +79,9 @@ export const dropdownMenuItemRecipe = tv({
 });
 
 export type DropdownMenuVariantProps = VariantProps<typeof dropdownMenuRecipe>;
-export type DropdownMenuSlots = ReturnType<typeof dropdownMenuRecipe>;
+export type DropdownMenuRecipe = ReturnType<typeof dropdownMenuRecipe>;
+export type DropdownMenuRecipeSlot = keyof DropdownMenuRecipe;
 
 export type DropdownMenuItemVariantProps = VariantProps<typeof dropdownMenuItemRecipe>;
-export type DropdownMenuItemSlots = ReturnType<typeof dropdownMenuItemRecipe>;
+export type DropdownMenuItemRecipe = ReturnType<typeof dropdownMenuItemRecipe>;
+export type DropdownMenuItemRecipeSlot = keyof DropdownMenuItemRecipe;

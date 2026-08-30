@@ -26,4 +26,5 @@ export const ratingRecipe = tv({
 });
 
 export type RatingVariantProps = VariantProps<typeof ratingRecipe>;
-export type RatingSlots = ReturnType<typeof ratingRecipe>;
+export type RatingRecipe = ReturnType<typeof ratingRecipe>;
+export type RatingRecipeSlot = keyof RatingRecipe;

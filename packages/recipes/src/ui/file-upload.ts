@@ -62,7 +62,9 @@ export const fileUploadItemRecipe = tv({
 });
 
 export type FileUploadVariantProps = VariantProps<typeof fileUploadRecipe>;
-export type FileUploadSlots = ReturnType<typeof fileUploadRecipe>;
+export type FileUploadRecipe = ReturnType<typeof fileUploadRecipe>;
+export type FileUploadRecipeSlot = keyof FileUploadRecipe;
 
 export type FileUploadItemVariantProps = VariantProps<typeof fileUploadItemRecipe>;
-export type FileUploadItemSlots = ReturnType<typeof fileUploadItemRecipe>;
+export type FileUploadItemRecipe = ReturnType<typeof fileUploadItemRecipe>;
+export type FileUploadItemRecipeSlot = keyof FileUploadItemRecipe;

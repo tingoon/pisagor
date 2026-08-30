@@ -16,4 +16,5 @@ export const navbarRecipe = tv({
 });
 
 export type NavbarVariantProps = VariantProps<typeof navbarRecipe>;
-export type NavbarSlots = ReturnType<typeof navbarRecipe>;
+export type NavbarRecipe = ReturnType<typeof navbarRecipe>;
+export type NavbarRecipeSlot = keyof NavbarRecipe;

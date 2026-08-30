@@ -20,4 +20,5 @@ export const paginationRecipe = tv({
 });
 
 export type PaginationVariantProps = VariantProps<typeof paginationRecipe>;
-export type PaginationSlots = ReturnType<typeof paginationRecipe>;
+export type PaginationRecipe = ReturnType<typeof paginationRecipe>;
+export type PaginationRecipeSlot = keyof PaginationRecipe;

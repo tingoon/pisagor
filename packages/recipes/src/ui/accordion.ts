@@ -35,4 +35,5 @@ export const accordionItemRecipe = tv({
 });
 
 export type AccordionItemVariantProps = VariantProps<typeof accordionItemRecipe>;
-export type AccordionItemSlots = ReturnType<typeof accordionItemRecipe>;
+export type AccordionItemRecipe = ReturnType<typeof accordionItemRecipe>;
+export type AccordionItemRecipeSlot = keyof AccordionItemRecipe;

@@ -23,4 +23,5 @@ export const skeletonRecipe = tv({
 });
 
 export type SkeletonVariantProps = VariantProps<typeof skeletonRecipe>;
-export type SkeletonSlots = ReturnType<typeof skeletonRecipe>;
+export type SkeletonRecipe = ReturnType<typeof skeletonRecipe>;
+export type SkeletonRecipeSlot = keyof SkeletonRecipe;

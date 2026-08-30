@@ -18,7 +18,9 @@ export const radioGroupItemRecipe = tv({
 });
 
 export type RadioGroupVariantProps = VariantProps<typeof radioGroupRecipe>;
-export type RadioGroupSlots = ReturnType<typeof radioGroupRecipe>;
+export type RadioGroupRecipe = ReturnType<typeof radioGroupRecipe>;
+export type RadioGroupRecipeSlot = keyof RadioGroupRecipe;
 
 export type RadioGroupItemVariantProps = VariantProps<typeof radioGroupItemRecipe>;
-export type RadioGroupItemSlots = ReturnType<typeof radioGroupItemRecipe>;
+export type RadioGroupItemRecipe = ReturnType<typeof radioGroupItemRecipe>;
+export type RadioGroupItemRecipeSlot = keyof RadioGroupItemRecipe;

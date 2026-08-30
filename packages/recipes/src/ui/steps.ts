@@ -62,7 +62,9 @@ export const stepsItemRecipe = tv({
 });
 
 export type StepsVariantProps = VariantProps<typeof stepsRecipe>;
-export type StepsSlots = ReturnType<typeof stepsRecipe>;
+export type StepsRecipe = ReturnType<typeof stepsRecipe>;
+export type StepsRecipeSlot = keyof StepsRecipe;
 
 export type StepsItemVariantProps = VariantProps<typeof stepsItemRecipe>;
-export type StepsItemSlots = ReturnType<typeof stepsItemRecipe>;
+export type StepsItemRecipe = ReturnType<typeof stepsItemRecipe>;
+export type StepsItemRecipeSlot = keyof StepsItemRecipe;

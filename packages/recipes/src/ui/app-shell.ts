@@ -63,4 +63,5 @@ export const appShellRecipe = tv({
 });
 
 export type AppShellVariantProps = VariantProps<typeof appShellRecipe>;
-export type AppShellSlots = ReturnType<typeof appShellRecipe>;
+export type AppShellRecipe = ReturnType<typeof appShellRecipe>;
+export type AppShellRecipeSlot = keyof AppShellRecipe;

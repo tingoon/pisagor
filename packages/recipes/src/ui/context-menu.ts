@@ -5,4 +5,5 @@ export const contextMenuRecipe = tv({
 });
 
 export type ContextMenuVariantProps = VariantProps<typeof contextMenuRecipe>;
-export type ContextMenuSlots = ReturnType<typeof contextMenuRecipe>;
+export type ContextMenuRecipe = ReturnType<typeof contextMenuRecipe>;
+export type ContextMenuRecipeSlot = keyof ContextMenuRecipe;

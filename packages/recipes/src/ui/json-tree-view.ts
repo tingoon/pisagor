@@ -37,4 +37,5 @@ export const jsonTreeViewRecipe = tv({
 });
 
 export type JsonTreeViewVariantProps = VariantProps<typeof jsonTreeViewRecipe>;
-export type JsonTreeViewSlots = ReturnType<typeof jsonTreeViewRecipe>;
+export type JsonTreeViewRecipe = ReturnType<typeof jsonTreeViewRecipe>;
+export type JsonTreeViewRecipeSlot = keyof JsonTreeViewRecipe;

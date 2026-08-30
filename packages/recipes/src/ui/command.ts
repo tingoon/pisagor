@@ -39,4 +39,5 @@ export const commandRecipe = tv({
 });
 
 export type CommandVariantProps = VariantProps<typeof commandRecipe>;
-export type CommandSlots = ReturnType<typeof commandRecipe>;
+export type CommandRecipe = ReturnType<typeof commandRecipe>;
+export type CommandRecipeSlot = keyof CommandRecipe;

@@ -39,4 +39,5 @@ export const scrollAreaRecipe = tv({
 });
 
 export type ScrollAreaVariantProps = VariantProps<typeof scrollAreaRecipe>;
-export type ScrollAreaSlots = ReturnType<typeof scrollAreaRecipe>;
+export type ScrollAreaRecipe = ReturnType<typeof scrollAreaRecipe>;
+export type ScrollAreaRecipeSlot = keyof ScrollAreaRecipe;

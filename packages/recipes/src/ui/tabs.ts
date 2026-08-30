@@ -63,4 +63,5 @@ export const tabsRecipe = tv({
 });
 
 export type TabsVariantProps = VariantProps<typeof tabsRecipe>;
-export type TabsSlots = ReturnType<typeof tabsRecipe>;
+export type TabsRecipe = ReturnType<typeof tabsRecipe>;
+export type TabsRecipeSlot = keyof TabsRecipe;

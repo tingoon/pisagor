@@ -10,4 +10,5 @@ export const inputOtpRecipe = tv({
 });
 
 export type InputOtpVariantProps = VariantProps<typeof inputOtpRecipe>;
-export type InputOtpSlots = ReturnType<typeof inputOtpRecipe>;
+export type InputOtpRecipe = ReturnType<typeof inputOtpRecipe>;
+export type InputOtpRecipeSlot = keyof InputOtpRecipe;

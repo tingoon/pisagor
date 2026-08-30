@@ -40,4 +40,5 @@ export const segmentGroupRecipe = tv({
 });
 
 export type SegmentGroupVariantProps = VariantProps<typeof segmentGroupRecipe>;
-export type SegmentGroupSlots = ReturnType<typeof segmentGroupRecipe>;
+export type SegmentGroupRecipe = ReturnType<typeof segmentGroupRecipe>;
+export type SegmentGroupRecipeSlot = keyof SegmentGroupRecipe;

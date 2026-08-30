@@ -23,4 +23,5 @@ export const collapsibleRecipe = tv({
 });
 
 export type CollapsibleVariantProps = VariantProps<typeof collapsibleRecipe>;
-export type CollapsibleSlots = ReturnType<typeof collapsibleRecipe>;
+export type CollapsibleRecipe = ReturnType<typeof collapsibleRecipe>;
+export type CollapsibleRecipeSlot = keyof CollapsibleRecipe;

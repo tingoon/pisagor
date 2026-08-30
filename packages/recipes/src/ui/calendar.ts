@@ -74,7 +74,9 @@ export const calendarTableCellRecipe = tv({
 });
 
 export type CalendarVariantProps = VariantProps<typeof calendarRecipe>;
-export type CalendarSlots = ReturnType<typeof calendarRecipe>;
+export type CalendarRecipe = ReturnType<typeof calendarRecipe>;
+export type CalendarRecipeSlot = keyof CalendarRecipe;
 
 export type CalendarTableCellVariantProps = VariantProps<typeof calendarTableCellRecipe>;
-export type CalendarTableCellSlots = ReturnType<typeof calendarTableCellRecipe>;
+export type CalendarTableCellRecipe = ReturnType<typeof calendarTableCellRecipe>;
+export type CalendarTableCellRecipeSlot = keyof CalendarTableCellRecipe;

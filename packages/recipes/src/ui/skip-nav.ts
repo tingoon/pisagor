@@ -16,4 +16,5 @@ export const skipNavRecipe = tv({
 });
 
 export type SkipNavVariantProps = VariantProps<typeof skipNavRecipe>;
-export type SkipNavSlots = ReturnType<typeof skipNavRecipe>;
+export type SkipNavRecipe = ReturnType<typeof skipNavRecipe>;
+export type SkipNavRecipeSlot = keyof SkipNavRecipe;

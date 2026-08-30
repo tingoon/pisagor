@@ -322,19 +322,25 @@ export const formControlZoneRecipe = tv({
 });
 
 export type FormControlShellVariantProps = VariantProps<typeof formControlShellRecipe>;
-export type FormControlShellSlots = ReturnType<typeof formControlShellRecipe>;
+export type FormControlShellRecipe = ReturnType<typeof formControlShellRecipe>;
+export type FormControlShellRecipeSlot = keyof FormControlShellRecipe;
 
 export type FormControlGroupShellVariantProps = VariantProps<typeof formControlGroupShellRecipe>;
-export type FormControlGroupShellSlots = ReturnType<typeof formControlGroupShellRecipe>;
+export type FormControlGroupShellRecipe = ReturnType<typeof formControlGroupShellRecipe>;
+export type FormControlGroupShellRecipeSlot = keyof FormControlGroupShellRecipe;
 
 export type FormControlToggleVariantProps = VariantProps<typeof formControlToggleRecipe>;
-export type FormControlToggleSlots = ReturnType<typeof formControlToggleRecipe>;
+export type FormControlToggleRecipe = ReturnType<typeof formControlToggleRecipe>;
+export type FormControlToggleRecipeSlot = keyof FormControlToggleRecipe;
 
 export type FormControlRadioToggleVariantProps = VariantProps<typeof formControlRadioToggleRecipe>;
-export type FormControlRadioToggleSlots = ReturnType<typeof formControlRadioToggleRecipe>;
+export type FormControlRadioToggleRecipe = ReturnType<typeof formControlRadioToggleRecipe>;
+export type FormControlRadioToggleRecipeSlot = keyof FormControlRadioToggleRecipe;
 
 export type FormControlSeparatorVariantProps = VariantProps<typeof formControlSeparatorRecipe>;
-export type FormControlSeparatorSlots = ReturnType<typeof formControlSeparatorRecipe>;
+export type FormControlSeparatorRecipe = ReturnType<typeof formControlSeparatorRecipe>;
+export type FormControlSeparatorRecipeSlot = keyof FormControlSeparatorRecipe;
 
 export type FormControlZoneVariantProps = VariantProps<typeof formControlZoneRecipe>;
-export type FormControlZoneSlots = ReturnType<typeof formControlZoneRecipe>;
+export type FormControlZoneRecipe = ReturnType<typeof formControlZoneRecipe>;
+export type FormControlZoneRecipeSlot = keyof FormControlZoneRecipe;

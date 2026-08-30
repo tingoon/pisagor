@@ -130,4 +130,5 @@ export const buttonRecipe = tv({
 });
 
 export type ButtonVariantProps = VariantProps<typeof buttonRecipe>;
-export type ButtonSlots = ReturnType<typeof buttonRecipe>;
+export type ButtonRecipe = ReturnType<typeof buttonRecipe>;
+export type ButtonRecipeSlot = keyof ButtonRecipe;

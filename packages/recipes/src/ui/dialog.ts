@@ -113,4 +113,5 @@ export const dialogRecipe = tv({
 });
 
 export type DialogVariantProps = VariantProps<typeof dialogRecipe>;
-export type DialogSlots = ReturnType<typeof dialogRecipe>;
+export type DialogRecipe = ReturnType<typeof dialogRecipe>;
+export type DialogRecipeSlot = keyof DialogRecipe;

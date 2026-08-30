@@ -28,4 +28,5 @@ export const statusRecipe = tv({
 });
 
 export type StatusVariantProps = VariantProps<typeof statusRecipe>;
-export type StatusSlots = ReturnType<typeof statusRecipe>;
+export type StatusRecipe = ReturnType<typeof statusRecipe>;
+export type StatusRecipeSlot = keyof StatusRecipe;

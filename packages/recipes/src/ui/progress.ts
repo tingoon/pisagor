@@ -28,4 +28,5 @@ export const progressRecipe = tv({
 });
 
 export type ProgressVariantProps = VariantProps<typeof progressRecipe>;
-export type ProgressSlots = ReturnType<typeof progressRecipe>;
+export type ProgressRecipe = ReturnType<typeof progressRecipe>;
+export type ProgressRecipeSlot = keyof ProgressRecipe;

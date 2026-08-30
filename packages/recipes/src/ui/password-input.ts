@@ -14,4 +14,5 @@ export const passwordInputRecipe = tv({
 });
 
 export type PasswordInputVariantProps = VariantProps<typeof passwordInputRecipe>;
-export type PasswordInputSlots = ReturnType<typeof passwordInputRecipe>;
+export type PasswordInputRecipe = ReturnType<typeof passwordInputRecipe>;
+export type PasswordInputRecipeSlot = keyof PasswordInputRecipe;

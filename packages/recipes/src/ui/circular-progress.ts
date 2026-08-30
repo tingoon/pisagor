@@ -21,4 +21,5 @@ export const circularProgressRecipe = tv({
 });
 
 export type CircularProgressVariantProps = VariantProps<typeof circularProgressRecipe>;
-export type CircularProgressSlots = ReturnType<typeof circularProgressRecipe>;
+export type CircularProgressRecipe = ReturnType<typeof circularProgressRecipe>;
+export type CircularProgressRecipeSlot = keyof CircularProgressRecipe;

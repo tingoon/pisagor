@@ -32,4 +32,5 @@ export const toggleGroupRecipe = tv({
 });
 
 export type ToggleGroupVariantProps = VariantProps<typeof toggleGroupRecipe>;
-export type ToggleGroupSlots = ReturnType<typeof toggleGroupRecipe>;
+export type ToggleGroupRecipe = ReturnType<typeof toggleGroupRecipe>;
+export type ToggleGroupRecipeSlot = keyof ToggleGroupRecipe;

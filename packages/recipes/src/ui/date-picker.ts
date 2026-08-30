@@ -33,4 +33,5 @@ export const datePickerRecipe = tv({
 });
 
 export type DatePickerVariantProps = VariantProps<typeof datePickerRecipe>;
-export type DatePickerSlots = ReturnType<typeof datePickerRecipe>;
+export type DatePickerRecipe = ReturnType<typeof datePickerRecipe>;
+export type DatePickerRecipeSlot = keyof DatePickerRecipe;

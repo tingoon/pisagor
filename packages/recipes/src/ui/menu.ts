@@ -67,7 +67,9 @@ export const menuItemRecipe = tv({
 });
 
 export type MenuVariantProps = VariantProps<typeof menuRecipe>;
-export type MenuSlots = ReturnType<typeof menuRecipe>;
+export type MenuRecipe = ReturnType<typeof menuRecipe>;
+export type MenuRecipeSlot = keyof MenuRecipe;
 
 export type MenuItemVariantProps = VariantProps<typeof menuItemRecipe>;
-export type MenuItemSlots = ReturnType<typeof menuItemRecipe>;
+export type MenuItemRecipe = ReturnType<typeof menuItemRecipe>;
+export type MenuItemRecipeSlot = keyof MenuItemRecipe;

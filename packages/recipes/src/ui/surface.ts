@@ -32,4 +32,5 @@ export const surfaceRecipe = tv({
 });
 
 export type SurfaceVariantProps = VariantProps<typeof surfaceRecipe>;
-export type SurfaceSlots = ReturnType<typeof surfaceRecipe>;
+export type SurfaceRecipe = ReturnType<typeof surfaceRecipe>;
+export type SurfaceRecipeSlot = keyof SurfaceRecipe;

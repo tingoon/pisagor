@@ -45,4 +45,5 @@ export const actionBarRecipe = tv({
 });
 
 export type ActionBarVariantProps = VariantProps<typeof actionBarRecipe>;
-export type ActionBarSlots = ReturnType<typeof actionBarRecipe>;
+export type ActionBarRecipe = ReturnType<typeof actionBarRecipe>;
+export type ActionBarRecipeSlot = keyof ActionBarRecipe;

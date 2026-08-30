@@ -5,4 +5,5 @@ export const proseRecipe = tv({
 });
 
 export type ProseVariantProps = VariantProps<typeof proseRecipe>;
-export type ProseSlots = ReturnType<typeof proseRecipe>;
+export type ProseRecipe = ReturnType<typeof proseRecipe>;
+export type ProseRecipeSlot = keyof ProseRecipe;

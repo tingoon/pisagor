@@ -5,4 +5,5 @@ export const spinnerRecipe = tv({
 });
 
 export type SpinnerVariantProps = VariantProps<typeof spinnerRecipe>;
-export type SpinnerSlots = ReturnType<typeof spinnerRecipe>;
+export type SpinnerRecipe = ReturnType<typeof spinnerRecipe>;
+export type SpinnerRecipeSlot = keyof SpinnerRecipe;

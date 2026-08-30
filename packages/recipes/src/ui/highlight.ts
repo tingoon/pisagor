@@ -5,4 +5,5 @@ export const highlightRecipe = tv({
 });
 
 export type HighlightVariantProps = VariantProps<typeof highlightRecipe>;
-export type HighlightSlots = ReturnType<typeof highlightRecipe>;
+export type HighlightRecipe = ReturnType<typeof highlightRecipe>;
+export type HighlightRecipeSlot = keyof HighlightRecipe;

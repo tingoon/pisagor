@@ -34,7 +34,9 @@ export const sortableItemRecipe = tv({
 });
 
 export type SortableVariantProps = VariantProps<typeof sortableRecipe>;
-export type SortableSlots = ReturnType<typeof sortableRecipe>;
+export type SortableRecipe = ReturnType<typeof sortableRecipe>;
+export type SortableRecipeSlot = keyof SortableRecipe;
 
 export type SortableItemVariantProps = VariantProps<typeof sortableItemRecipe>;
-export type SortableItemSlots = ReturnType<typeof sortableItemRecipe>;
+export type SortableItemRecipe = ReturnType<typeof sortableItemRecipe>;
+export type SortableItemRecipeSlot = keyof SortableItemRecipe;

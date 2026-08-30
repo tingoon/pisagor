@@ -27,4 +27,5 @@ export const signaturePadRecipe = tv({
 });
 
 export type SignaturePadVariantProps = VariantProps<typeof signaturePadRecipe>;
-export type SignaturePadSlots = ReturnType<typeof signaturePadRecipe>;
+export type SignaturePadRecipe = ReturnType<typeof signaturePadRecipe>;
+export type SignaturePadRecipeSlot = keyof SignaturePadRecipe;

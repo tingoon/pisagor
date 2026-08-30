@@ -56,4 +56,5 @@ export const phoneInputRecipe = tv({
 });
 
 export type PhoneInputVariantProps = VariantProps<typeof phoneInputRecipe>;
-export type PhoneInputSlots = ReturnType<typeof phoneInputRecipe>;
+export type PhoneInputRecipe = ReturnType<typeof phoneInputRecipe>;
+export type PhoneInputRecipeSlot = keyof PhoneInputRecipe;

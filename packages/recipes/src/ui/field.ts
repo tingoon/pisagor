@@ -98,4 +98,5 @@ export const fieldRecipe = tv({
 });
 
 export type FieldVariantProps = VariantProps<typeof fieldRecipe>;
-export type FieldSlots = ReturnType<typeof fieldRecipe>;
+export type FieldRecipe = ReturnType<typeof fieldRecipe>;
+export type FieldRecipeSlot = keyof FieldRecipe;

@@ -28,7 +28,9 @@ export const checkboxRecipe = tv({
 });
 
 export type CheckboxGroupVariantProps = VariantProps<typeof checkboxGroupRecipe>;
-export type CheckboxGroupSlots = ReturnType<typeof checkboxGroupRecipe>;
+export type CheckboxGroupRecipe = ReturnType<typeof checkboxGroupRecipe>;
+export type CheckboxGroupRecipeSlot = keyof CheckboxGroupRecipe;
 
 export type CheckboxVariantProps = VariantProps<typeof checkboxRecipe>;
-export type CheckboxSlots = ReturnType<typeof checkboxRecipe>;
+export type CheckboxRecipe = ReturnType<typeof checkboxRecipe>;
+export type CheckboxRecipeSlot = keyof CheckboxRecipe;

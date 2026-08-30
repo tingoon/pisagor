@@ -20,7 +20,7 @@ turbo type-check --filter=@pisagor/recipes
 
 ## Conventions
 
-- Export `{name}Recipe`, `{Name}VariantProps`, and `{Name}Slots` (`ReturnType` of the recipe) when needed.
+- Export `{name}Recipe`, `{Name}VariantProps`, `{Name}Recipe`, and `{Name}RecipeSlot` (`keyof` of the return — for `classNames`) when needed.
 - Use semantic tokens from `@pisagor/tokens` (`z-popover`, `z-modal`, `duration-normal`, `*-foreground`) — avoid raw `z-50`, `text-white`, custom cubic-bezier literals.
 - Overlay/modal recipes: `z-modal`; anchored popovers: `z-popover`.
 - Empty variant option classes (`""` / `[]`) are allowed when an axis has no extra utilities for that value.

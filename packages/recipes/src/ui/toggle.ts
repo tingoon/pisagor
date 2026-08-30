@@ -19,4 +19,5 @@ export const toggleRecipe = tv({
 });
 
 export type ToggleVariantProps = VariantProps<typeof toggleRecipe>;
-export type ToggleSlots = ReturnType<typeof toggleRecipe>;
+export type ToggleRecipe = ReturnType<typeof toggleRecipe>;
+export type ToggleRecipeSlot = keyof ToggleRecipe;

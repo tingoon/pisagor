@@ -25,7 +25,9 @@ export const timerItemGroupRecipe = tv({
 });
 
 export type TimerVariantProps = VariantProps<typeof timerRecipe>;
-export type TimerSlots = ReturnType<typeof timerRecipe>;
+export type TimerRecipe = ReturnType<typeof timerRecipe>;
+export type TimerRecipeSlot = keyof TimerRecipe;
 
 export type TimerItemGroupVariantProps = VariantProps<typeof timerItemGroupRecipe>;
-export type TimerItemGroupSlots = ReturnType<typeof timerItemGroupRecipe>;
+export type TimerItemGroupRecipe = ReturnType<typeof timerItemGroupRecipe>;
+export type TimerItemGroupRecipeSlot = keyof TimerItemGroupRecipe;

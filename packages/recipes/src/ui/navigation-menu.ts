@@ -20,4 +20,5 @@ export const navigationMenuRecipe = tv({
 });
 
 export type NavigationMenuVariantProps = VariantProps<typeof navigationMenuRecipe>;
-export type NavigationMenuSlots = ReturnType<typeof navigationMenuRecipe>;
+export type NavigationMenuRecipe = ReturnType<typeof navigationMenuRecipe>;
+export type NavigationMenuRecipeSlot = keyof NavigationMenuRecipe;

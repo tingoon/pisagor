@@ -72,4 +72,5 @@ export const itemRecipe = tv({
 });
 
 export type ItemVariantProps = VariantProps<typeof itemRecipe>;
-export type ItemSlots = ReturnType<typeof itemRecipe>;
+export type ItemRecipe = ReturnType<typeof itemRecipe>;
+export type ItemRecipeSlot = keyof ItemRecipe;

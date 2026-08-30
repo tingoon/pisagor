@@ -56,4 +56,5 @@ export const comboboxRecipe = tv({
 });
 
 export type ComboboxVariantProps = VariantProps<typeof comboboxRecipe>;
-export type ComboboxSlots = ReturnType<typeof comboboxRecipe>;
+export type ComboboxRecipe = ReturnType<typeof comboboxRecipe>;
+export type ComboboxRecipeSlot = keyof ComboboxRecipe;

@@ -19,4 +19,5 @@ export const frameRecipe = tv({
 });
 
 export type FrameVariantProps = VariantProps<typeof frameRecipe>;
-export type FrameSlots = ReturnType<typeof frameRecipe>;
+export type FrameRecipe = ReturnType<typeof frameRecipe>;
+export type FrameRecipeSlot = keyof FrameRecipe;

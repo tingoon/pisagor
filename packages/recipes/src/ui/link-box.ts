@@ -17,4 +17,5 @@ export const linkBoxRecipe = tv({
 });
 
 export type LinkBoxVariantProps = VariantProps<typeof linkBoxRecipe>;
-export type LinkBoxSlots = ReturnType<typeof linkBoxRecipe>;
+export type LinkBoxRecipe = ReturnType<typeof linkBoxRecipe>;
+export type LinkBoxRecipeSlot = keyof LinkBoxRecipe;

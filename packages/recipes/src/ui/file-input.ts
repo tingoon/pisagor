@@ -8,4 +8,5 @@ export const fileInputRecipe = tv({
 });
 
 export type FileInputVariantProps = VariantProps<typeof fileInputRecipe>;
-export type FileInputSlots = ReturnType<typeof fileInputRecipe>;
+export type FileInputRecipe = ReturnType<typeof fileInputRecipe>;
+export type FileInputRecipeSlot = keyof FileInputRecipe;

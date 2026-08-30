@@ -30,4 +30,5 @@ export const tableRecipe = tv({
 });
 
 export type TableVariantProps = VariantProps<typeof tableRecipe>;
-export type TableSlots = ReturnType<typeof tableRecipe>;
+export type TableRecipe = ReturnType<typeof tableRecipe>;
+export type TableRecipeSlot = keyof TableRecipe;

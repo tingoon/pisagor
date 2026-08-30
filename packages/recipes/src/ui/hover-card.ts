@@ -25,4 +25,5 @@ export const hoverCardRecipe = tv({
 });
 
 export type HoverCardVariantProps = VariantProps<typeof hoverCardRecipe>;
-export type HoverCardSlots = ReturnType<typeof hoverCardRecipe>;
+export type HoverCardRecipe = ReturnType<typeof hoverCardRecipe>;
+export type HoverCardRecipeSlot = keyof HoverCardRecipe;

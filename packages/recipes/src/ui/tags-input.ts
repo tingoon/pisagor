@@ -43,7 +43,9 @@ export const tagsInputItemRecipe = tv({
 });
 
 export type TagsInputVariantProps = VariantProps<typeof tagsInputRecipe>;
-export type TagsInputSlots = ReturnType<typeof tagsInputRecipe>;
+export type TagsInputRecipe = ReturnType<typeof tagsInputRecipe>;
+export type TagsInputRecipeSlot = keyof TagsInputRecipe;
 
 export type TagsInputItemVariantProps = VariantProps<typeof tagsInputItemRecipe>;
-export type TagsInputItemSlots = ReturnType<typeof tagsInputItemRecipe>;
+export type TagsInputItemRecipe = ReturnType<typeof tagsInputItemRecipe>;
+export type TagsInputItemRecipeSlot = keyof TagsInputItemRecipe;

@@ -10,4 +10,5 @@ export const separatorRecipe = tv({
 });
 
 export type SeparatorVariantProps = VariantProps<typeof separatorRecipe>;
-export type SeparatorSlots = ReturnType<typeof separatorRecipe>;
+export type SeparatorRecipe = ReturnType<typeof separatorRecipe>;
+export type SeparatorRecipeSlot = keyof SeparatorRecipe;

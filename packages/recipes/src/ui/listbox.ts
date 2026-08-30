@@ -65,7 +65,9 @@ export const listboxItemRecipe = tv({
 });
 
 export type ListboxVariantProps = VariantProps<typeof listboxRecipe>;
-export type ListboxSlots = ReturnType<typeof listboxRecipe>;
+export type ListboxRecipe = ReturnType<typeof listboxRecipe>;
+export type ListboxRecipeSlot = keyof ListboxRecipe;
 
 export type ListboxItemVariantProps = VariantProps<typeof listboxItemRecipe>;
-export type ListboxItemSlots = ReturnType<typeof listboxItemRecipe>;
+export type ListboxItemRecipe = ReturnType<typeof listboxItemRecipe>;
+export type ListboxItemRecipeSlot = keyof ListboxItemRecipe;

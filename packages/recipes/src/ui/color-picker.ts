@@ -113,4 +113,5 @@ export const colorPickerRecipe = tv({
 });
 
 export type ColorPickerVariantProps = VariantProps<typeof colorPickerRecipe>;
-export type ColorPickerSlots = ReturnType<typeof colorPickerRecipe>;
+export type ColorPickerRecipe = ReturnType<typeof colorPickerRecipe>;
+export type ColorPickerRecipeSlot = keyof ColorPickerRecipe;

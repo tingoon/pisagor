@@ -11,4 +11,5 @@ export const toolbarRecipe = tv({
 });
 
 export type ToolbarVariantProps = VariantProps<typeof toolbarRecipe>;
-export type ToolbarSlots = ReturnType<typeof toolbarRecipe>;
+export type ToolbarRecipe = ReturnType<typeof toolbarRecipe>;
+export type ToolbarRecipeSlot = keyof ToolbarRecipe;

@@ -23,4 +23,5 @@ export const tooltipRecipe = tv({
 });
 
 export type TooltipVariantProps = VariantProps<typeof tooltipRecipe>;
-export type TooltipSlots = ReturnType<typeof tooltipRecipe>;
+export type TooltipRecipe = ReturnType<typeof tooltipRecipe>;
+export type TooltipRecipeSlot = keyof TooltipRecipe;

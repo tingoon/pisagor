@@ -84,4 +84,5 @@ export const switchRecipe = tv({
 });
 
 export type SwitchVariantProps = VariantProps<typeof switchRecipe>;
-export type SwitchSlots = ReturnType<typeof switchRecipe>;
+export type SwitchRecipe = ReturnType<typeof switchRecipe>;
+export type SwitchRecipeSlot = keyof SwitchRecipe;

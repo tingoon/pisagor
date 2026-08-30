@@ -50,7 +50,9 @@ export const statTrendRecipe = tv({
 });
 
 export type StatVariantProps = VariantProps<typeof statRecipe>;
-export type StatSlots = ReturnType<typeof statRecipe>;
+export type StatRecipe = ReturnType<typeof statRecipe>;
+export type StatRecipeSlot = keyof StatRecipe;
 
 export type StatTrendVariantProps = VariantProps<typeof statTrendRecipe>;
-export type StatTrendSlots = ReturnType<typeof statTrendRecipe>;
+export type StatTrendRecipe = ReturnType<typeof statTrendRecipe>;
+export type StatTrendRecipeSlot = keyof StatTrendRecipe;

@@ -20,4 +20,5 @@ export const dataGridRecipe = tv({
 });
 
 export type DataGridVariantProps = VariantProps<typeof dataGridRecipe>;
-export type DataGridSlots = ReturnType<typeof dataGridRecipe>;
+export type DataGridRecipe = ReturnType<typeof dataGridRecipe>;
+export type DataGridRecipeSlot = keyof DataGridRecipe;

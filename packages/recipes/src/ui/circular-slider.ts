@@ -40,4 +40,5 @@ export const circularSliderRecipe = tv({
 });
 
 export type CircularSliderVariantProps = VariantProps<typeof circularSliderRecipe>;
-export type CircularSliderSlots = ReturnType<typeof circularSliderRecipe>;
+export type CircularSliderRecipe = ReturnType<typeof circularSliderRecipe>;
+export type CircularSliderRecipeSlot = keyof CircularSliderRecipe;

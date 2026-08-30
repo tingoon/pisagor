@@ -5,4 +5,5 @@ export const aspectRatioRecipe = tv({
 });
 
 export type AspectRatioVariantProps = VariantProps<typeof aspectRatioRecipe>;
-export type AspectRatioSlots = ReturnType<typeof aspectRatioRecipe>;
+export type AspectRatioRecipe = ReturnType<typeof aspectRatioRecipe>;
+export type AspectRatioRecipeSlot = keyof AspectRatioRecipe;

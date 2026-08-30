@@ -34,4 +34,5 @@ export const fileRecipe = tv({
 });
 
 export type FileVariantProps = VariantProps<typeof fileRecipe>;
-export type FileSlots = ReturnType<typeof fileRecipe>;
+export type FileRecipe = ReturnType<typeof fileRecipe>;
+export type FileRecipeSlot = keyof FileRecipe;

@@ -62,4 +62,5 @@ export const imageCropperRecipe = tv({
 });
 
 export type ImageCropperVariantProps = VariantProps<typeof imageCropperRecipe>;
-export type ImageCropperSlots = ReturnType<typeof imageCropperRecipe>;
+export type ImageCropperRecipe = ReturnType<typeof imageCropperRecipe>;
+export type ImageCropperRecipeSlot = keyof ImageCropperRecipe;

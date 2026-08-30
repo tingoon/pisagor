@@ -30,4 +30,5 @@ export const qrCodeRecipe = tv({
 });
 
 export type QrCodeVariantProps = VariantProps<typeof qrCodeRecipe>;
-export type QrCodeSlots = ReturnType<typeof qrCodeRecipe>;
+export type QrCodeRecipe = ReturnType<typeof qrCodeRecipe>;
+export type QrCodeRecipeSlot = keyof QrCodeRecipe;

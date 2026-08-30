@@ -58,7 +58,9 @@ export const avatarGroupRecipe = tv({
 });
 
 export type AvatarVariantProps = VariantProps<typeof avatarRecipe>;
-export type AvatarSlots = ReturnType<typeof avatarRecipe>;
+export type AvatarRecipe = ReturnType<typeof avatarRecipe>;
+export type AvatarRecipeSlot = keyof AvatarRecipe;
 
 export type AvatarGroupVariantProps = VariantProps<typeof avatarGroupRecipe>;
-export type AvatarGroupSlots = ReturnType<typeof avatarGroupRecipe>;
+export type AvatarGroupRecipe = ReturnType<typeof avatarGroupRecipe>;
+export type AvatarGroupRecipeSlot = keyof AvatarGroupRecipe;
