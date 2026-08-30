@@ -6,7 +6,6 @@
     "@ark-ui/react": "^5.39.0",
     "@pisagor/recipes": "workspace:*",
     "@pisagor/tokens": "workspace:*",
-    "@tanstack/react-hotkeys": "^0.10.0",
     "clsx": "^2.1.1",
     "tailwind-merge": "^3.6.0"
   },

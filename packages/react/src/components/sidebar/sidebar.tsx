@@ -1,8 +1,8 @@
+import { useHotkey } from "@ark-ui/react";
 import { ark } from "@ark-ui/react/factory";
 import { SidebarSimpleIcon } from "@phosphor-icons/react";
 import { type ButtonVariantProps, buttonRecipe } from "@pisagor/recipes/button";
 import { sidebarRecipe } from "@pisagor/recipes/sidebar";
-import { useHotkey } from "@tanstack/react-hotkeys";
 import { type ComponentProps, type CSSProperties, useCallback, useMemo, useState } from "react";
 import { useIsMobile } from "../../internal/hooks";
 import { cn } from "../../internal/utils";
@@ -159,8 +159,11 @@ export function SidebarProvider({
     }
   }, [isMobile, setOpen]);
 
-  useHotkey("Mod+B", () => {
-    toggleSidebar();
+  useHotkey({
+    action: () => {
+      toggleSidebar();
+    },
+    hotkey: "mod+B",
   });
 
   const state = open ? "expanded" : "collapsed";

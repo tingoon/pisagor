@@ -1,6 +1,5 @@
 import { LocaleProvider } from "@ark-ui/react";
 import { IconContext } from "@phosphor-icons/react";
-import { HotkeysProvider } from "@tanstack/react-hotkeys";
 import type { ReactNode } from "react";
 import { Toaster } from "../toast";
 import { type ProviderMessages, ProviderMessagesContext } from "./provider.context";
@@ -55,7 +54,7 @@ export function Provider({
             weight: "regular",
           }}
         >
-          <HotkeysProvider>{children}</HotkeysProvider>
+          {children}
         </IconContext>
       </ProviderMessagesContext>
     </LocaleProvider>

@@ -1,10 +1,9 @@
-import { Portal } from "@ark-ui/react";
+import { Portal, useHotkey } from "@ark-ui/react";
 import { ark } from "@ark-ui/react/factory";
 import { Presence } from "@ark-ui/react/presence";
 import { useUncontrolled } from "@mantine/hooks";
 import { XIcon } from "@phosphor-icons/react";
 import { actionBarRecipe } from "@pisagor/recipes/action-bar";
-import { useHotkey } from "@tanstack/react-hotkeys";
 import type { ComponentProps, MouseEvent, PropsWithChildren, ReactNode } from "react";
 import { useCallback, useMemo } from "react";
 import { Badge, type BadgeProps } from "../badge";
@@ -105,17 +104,17 @@ export function ActionBarRoot({
     setOpen(true);
   }, [setOpen]);
 
-  useHotkey(
-    "Escape",
-    (event) => {
+  useHotkey({
+    action: (event) => {
       if (event.defaultPrevented) {
         return;
       }
 
       handleClose();
     },
-    { enabled: isOpen && closeOnEscape },
-  );
+    enabled: isOpen && closeOnEscape,
+    hotkey: "Escape",
+  });
 
   const positioning = useMemo(
     () => ({

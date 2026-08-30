@@ -6,7 +6,7 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Wraps the app with locale, icons, hotkeys, and toasts.",
+        component: "Wraps the app with locale, icons, and toasts.",
       },
     },
     metadata: {

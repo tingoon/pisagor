@@ -1,5 +1,5 @@
+import { useHotkey } from "@ark-ui/react";
 import { appShellRecipe } from "@pisagor/recipes/app-shell";
-import { useHotkey } from "@tanstack/react-hotkeys";
 import { type ComponentProps, useCallback, useMemo, useRef, useState } from "react";
 import type {
   AppShellFixedStackVar,
@@ -102,8 +102,11 @@ export function AppShellRoot({ children, className, style, ...rest }: AppShellRo
     });
   }, []);
 
-  useHotkey("Mod+\\", () => {
-    panelStates.current.start?.toggle();
+  useHotkey({
+    action: () => {
+      panelStates.current.start?.toggle();
+    },
+    hotkey: "mod+\\",
   });
 
   const notifyRegionChange = useCallback(() => {
