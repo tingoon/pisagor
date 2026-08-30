@@ -26,9 +26,9 @@ Fields under [`fields/`](./fields/) and [`tanstack/fields/`](./tanstack/fields/)
 | `@pisagor/vue/form` | Standalone fields (`fields/index.ts`) |
 | `@pisagor/vue/form/tanstack` | `useAppForm`, connected fields, helpers |
 
-## Heavy field peers
+## Heavy fields
 
-`PhoneField` and `RichTextEditorField` depend on heavy `@pisagor/vue` subpaths. `RichTextEditorField` needs the optional TipTap peers listed in [README](./README.md#peer-dependencies). `PhoneField` has no extra optional peer.
+`PhoneField` and `RichTextEditorField` depend on heavy `@pisagor/vue` subpaths (`phone-input`, `rich-text-editor`).
 
 ## Internal imports
 

@@ -11,13 +11,13 @@ Package-local guidance for component work in `packages/vue` (`@pisagor/vue`). Ca
 
 ## Heavy imports
 
-Heavy components are **not** on the root `@pisagor/vue` barrel. Import them only from dedicated subpaths; install optional peers when you use these:
+Heavy components are **not** on the root `@pisagor/vue` barrel. Import them only from dedicated subpaths:
 
-- `@pisagor/vue/data-grid` — `@tanstack/vue-table`, `@tanstack/vue-virtual`
-- `@pisagor/vue/data-table` — `@tanstack/vue-table`
-- `@pisagor/vue/charts` — no optional peer (chart chrome; compose with your chart library)
-- `@pisagor/vue/rich-text-editor` — `@tiptap/vue-3`, `@tiptap/starter-kit`
-- `@pisagor/vue/phone-input` — no optional peer (package-owned control; unlike React’s `react-phone-number-input`)
+- `@pisagor/vue/data-grid`
+- `@pisagor/vue/data-table`
+- `@pisagor/vue/charts`
+- `@pisagor/vue/rich-text-editor`
+- `@pisagor/vue/phone-input`
 
 Light components: prefer the root barrel (`import { Accordion } from "@pisagor/vue"`). Use a subpath (`@pisagor/vue/accordion`) only when you need a tight import graph.
 
