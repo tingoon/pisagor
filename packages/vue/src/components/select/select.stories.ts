@@ -81,31 +81,12 @@ export const Variants = meta.story({
   render: () => ({
     components: { Select },
     setup() {
-      const collection = createListCollection({ items: ["Apple", "Banana", "Orange"] });
-      return { collection };
+      return { items: ["Apple", "Banana", "Orange"] };
     },
     template: `
       <div class="flex flex-col gap-2">
-        <Select.Root :collection="collection" variant="primary">
-          <Select.Trigger>
-            <Select.ValueText placeholder="Primary" />
-          </Select.Trigger>
-          <Select.Content>
-            <Select.Item v-for="item in collection.items" :key="item" :item="item">
-              {{ item }}
-            </Select.Item>
-          </Select.Content>
-        </Select.Root>
-        <Select.Root :collection="collection" variant="secondary">
-          <Select.Trigger>
-            <Select.ValueText placeholder="Secondary" />
-          </Select.Trigger>
-          <Select.Content>
-            <Select.Item v-for="item in collection.items" :key="item" :item="item">
-              {{ item }}
-            </Select.Item>
-          </Select.Content>
-        </Select.Root>
+        <Select :items="items" placeholder="Primary" variant="primary" />
+        <Select :items="items" placeholder="Secondary" variant="secondary" />
       </div>
     `,
   }),
@@ -115,32 +96,13 @@ export const OnSurface = meta.story({
   render: () => ({
     components: { Select, Surface },
     setup() {
-      const collection = createListCollection({ items: ["Apple", "Banana", "Orange"] });
-      return { collection };
+      return { items: ["Apple", "Banana", "Orange"] };
     },
     template: `
       <Surface bordered padding="md" variant="default">
         <div class="flex flex-col gap-2">
-          <Select.Root :collection="collection" variant="primary">
-            <Select.Trigger>
-              <Select.ValueText placeholder="Primary" />
-            </Select.Trigger>
-            <Select.Content>
-              <Select.Item v-for="item in collection.items" :key="item" :item="item">
-                {{ item }}
-              </Select.Item>
-            </Select.Content>
-          </Select.Root>
-          <Select.Root :collection="collection" variant="secondary">
-            <Select.Trigger>
-              <Select.ValueText placeholder="Secondary" />
-            </Select.Trigger>
-            <Select.Content>
-              <Select.Item v-for="item in collection.items" :key="item" :item="item">
-                {{ item }}
-              </Select.Item>
-            </Select.Content>
-          </Select.Root>
+          <Select :items="items" placeholder="Primary" variant="primary" />
+          <Select :items="items" placeholder="Secondary" variant="secondary" />
         </div>
       </Surface>
     `,
@@ -301,26 +263,16 @@ export const Disabled = meta.story({
   render: () => ({
     components: { Select },
     setup() {
-      const collection = createListCollection({
+      return {
         items: [
           { label: "Next.js", value: "next" },
           { label: "Vite", value: "vite" },
           { label: "Astro", value: "astro" },
         ],
-      });
-      return { collection };
+      };
     },
     template: `
-      <Select.Root :collection="collection" disabled>
-        <Select.Trigger>
-          <Select.ValueText placeholder="Select framework" />
-        </Select.Trigger>
-        <Select.Content>
-          <Select.Item v-for="item in collection.items" :key="item.value" :item="item">
-            {{ item.label }}
-          </Select.Item>
-        </Select.Content>
-      </Select.Root>
+      <Select disabled :items="items" placeholder="Select framework" />
     `,
   }),
 });
@@ -329,26 +281,16 @@ export const Invalid = meta.story({
   render: () => ({
     components: { Select },
     setup() {
-      const collection = createListCollection({
+      return {
         items: [
           { label: "Next.js", value: "next" },
           { label: "Vite", value: "vite" },
           { label: "Astro", value: "astro" },
         ],
-      });
-      return { collection };
+      };
     },
     template: `
-      <Select.Root :collection="collection" invalid>
-        <Select.Trigger>
-          <Select.ValueText placeholder="Select framework" />
-        </Select.Trigger>
-        <Select.Content>
-          <Select.Item v-for="item in collection.items" :key="item.value" :item="item">
-            {{ item.label }}
-          </Select.Item>
-        </Select.Content>
-      </Select.Root>
+      <Select invalid :items="items" placeholder="Select framework" />
     `,
   }),
 });
@@ -385,31 +327,28 @@ export const Controlled = meta.story({
   render: () => ({
     components: { Select },
     setup() {
-      const collection = createListCollection({
-        items: [
-          { label: "React", value: "react" },
-          { label: "Vue", value: "vue" },
-          { label: "Svelte", value: "svelte" },
-        ],
-      });
       const value = ref<string[]>(["react"]);
       const onValueChange = (newValue: string | string[]) => {
         value.value = Array.isArray(newValue) ? newValue : [newValue];
       };
 
-      return { collection, onValueChange, value };
+      return {
+        items: [
+          { label: "React", value: "react" },
+          { label: "Vue", value: "vue" },
+          { label: "Svelte", value: "svelte" },
+        ],
+        onValueChange,
+        value,
+      };
     },
     template: `
-      <Select.Root :collection="collection" :onValueChange="onValueChange" :value="value">
-        <Select.Trigger>
-          <Select.ValueText placeholder="Select a framework" />
-        </Select.Trigger>
-        <Select.Content>
-          <Select.Item v-for="item in collection.items" :key="item.value" :item="item">
-            {{ item.label }}
-          </Select.Item>
-        </Select.Content>
-      </Select.Root>
+      <Select
+        :items="items"
+        :onValueChange="onValueChange"
+        placeholder="Select a framework"
+        :value="value"
+      />
     `,
   }),
 });

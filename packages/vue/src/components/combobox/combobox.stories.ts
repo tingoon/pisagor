@@ -117,48 +117,12 @@ export const Variants = meta.story({
   render: () => ({
     components: { Combobox },
     setup() {
-      const filterUtils = useFilter({ sensitivity: "base" });
-      const { collection, filter } = useListCollection({
-        filter: filterUtils.value.contains,
-        initialItems: [
-          { label: "Apple", value: "apple" },
-          { label: "Banana", value: "banana" },
-          { label: "Cherry", value: "cherry" },
-        ],
-      });
-
-      return { collection, filter };
+      return { items: ["Apple", "Banana", "Cherry"] };
     },
     template: `
       <div class="flex flex-col gap-2">
-        <Combobox.Root
-          :collection="collection"
-          variant="primary"
-          @input-value-change="({ inputValue }) => filter(inputValue)"
-        >
-          <Combobox.Input placeholder="Primary" />
-          <Combobox.Content>
-            <Combobox.List>
-              <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item">
-                {{ item.label }}
-              </Combobox.Item>
-            </Combobox.List>
-          </Combobox.Content>
-        </Combobox.Root>
-        <Combobox.Root
-          :collection="collection"
-          variant="secondary"
-          @input-value-change="({ inputValue }) => filter(inputValue)"
-        >
-          <Combobox.Input placeholder="Secondary" />
-          <Combobox.Content>
-            <Combobox.List>
-              <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item">
-                {{ item.label }}
-              </Combobox.Item>
-            </Combobox.List>
-          </Combobox.Content>
-        </Combobox.Root>
+        <Combobox :items="items" variant="primary" />
+        <Combobox :items="items" variant="secondary" />
       </div>
     `,
   }),
@@ -169,49 +133,13 @@ export const OnSurface = meta.story({
   render: () => ({
     components: { Combobox, Surface },
     setup() {
-      const filterUtils = useFilter({ sensitivity: "base" });
-      const { collection, filter } = useListCollection({
-        filter: filterUtils.value.contains,
-        initialItems: [
-          { label: "Apple", value: "apple" },
-          { label: "Banana", value: "banana" },
-          { label: "Cherry", value: "cherry" },
-        ],
-      });
-
-      return { collection, filter };
+      return { items: ["Apple", "Banana", "Cherry"] };
     },
     template: `
       <Surface bordered padding="md" variant="default">
         <div class="flex flex-col gap-2">
-          <Combobox.Root
-            :collection="collection"
-            variant="primary"
-            @input-value-change="({ inputValue }) => filter(inputValue)"
-          >
-            <Combobox.Input placeholder="Primary" />
-            <Combobox.Content>
-              <Combobox.List>
-                <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item">
-                  {{ item.label }}
-                </Combobox.Item>
-              </Combobox.List>
-            </Combobox.Content>
-          </Combobox.Root>
-          <Combobox.Root
-            :collection="collection"
-            variant="secondary"
-            @input-value-change="({ inputValue }) => filter(inputValue)"
-          >
-            <Combobox.Input placeholder="Secondary" />
-            <Combobox.Content>
-              <Combobox.List>
-                <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item">
-                  {{ item.label }}
-                </Combobox.Item>
-              </Combobox.List>
-            </Combobox.Content>
-          </Combobox.Root>
+          <Combobox :items="items" variant="primary" />
+          <Combobox :items="items" variant="secondary" />
         </div>
       </Surface>
     `,
@@ -222,36 +150,17 @@ export const Autohighlight = meta.story({
   render: () => ({
     components: { Combobox },
     setup() {
-      const filterUtils = useFilter({ sensitivity: "base" });
-      const { collection, filter } = useListCollection({
-        filter: filterUtils.value.contains,
-        initialItems: [
+      return {
+        items: [
           { label: "Apple", value: "apple" },
           { label: "Banana", value: "banana" },
           { label: "Cherry", value: "cherry" },
           { label: "Date", value: "date" },
           { label: "Elderberry", value: "elderberry" },
         ],
-      });
-
-      return { collection, filter };
+      };
     },
-    template: `
-      <Combobox.Root
-        :collection="collection"
-        input-behavior="autohighlight"
-        @input-value-change="({ inputValue }) => filter(inputValue)"
-      >
-        <Combobox.Input placeholder="Type to highlight..." />
-        <Combobox.Content>
-          <Combobox.List>
-            <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item">
-              {{ item.label }}
-            </Combobox.Item>
-          </Combobox.List>
-        </Combobox.Content>
-      </Combobox.Root>
-    `,
+    template: '<Combobox input-behavior="autohighlight" :items="items" />',
   }),
 });
 
@@ -259,35 +168,16 @@ export const Multiple = meta.story({
   render: () => ({
     components: { Combobox },
     setup() {
-      const filterUtils = useFilter({ sensitivity: "base" });
-      const { collection, filter } = useListCollection({
-        filter: filterUtils.value.contains,
-        initialItems: [
+      return {
+        items: [
           { label: "React", value: "react" },
           { label: "Vue", value: "vue" },
           { label: "Svelte", value: "svelte" },
           { label: "Solid", value: "solid" },
         ],
-      });
-
-      return { collection, filter };
+      };
     },
-    template: `
-      <Combobox.Root
-        :collection="collection"
-        multiple
-        @input-value-change="({ inputValue }) => filter(inputValue)"
-      >
-        <Combobox.Input placeholder="Select frameworks..." />
-        <Combobox.Content>
-          <Combobox.List>
-            <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item">
-              {{ item.label }}
-            </Combobox.Item>
-          </Combobox.List>
-        </Combobox.Content>
-      </Combobox.Root>
-    `,
+    template: '<Combobox :items="items" multiple />',
   }),
 });
 
@@ -295,34 +185,15 @@ export const Disabled = meta.story({
   render: () => ({
     components: { Combobox },
     setup() {
-      const filterUtils = useFilter({ sensitivity: "base" });
-      const { collection, filter } = useListCollection({
-        filter: filterUtils.value.contains,
-        initialItems: [
+      return {
+        items: [
           { label: "Apple", value: "apple" },
           { label: "Banana", value: "banana" },
           { label: "Cherry", value: "cherry" },
         ],
-      });
-
-      return { collection, filter };
+      };
     },
-    template: `
-      <Combobox.Root
-        :collection="collection"
-        disabled
-        @input-value-change="({ inputValue }) => filter(inputValue)"
-      >
-        <Combobox.Input placeholder="Select a fruit..." />
-        <Combobox.Content>
-          <Combobox.List>
-            <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item">
-              {{ item.label }}
-            </Combobox.Item>
-          </Combobox.List>
-        </Combobox.Content>
-      </Combobox.Root>
-    `,
+    template: '<Combobox disabled :items="items" />',
   }),
 });
 
@@ -330,34 +201,15 @@ export const Invalid = meta.story({
   render: () => ({
     components: { Combobox },
     setup() {
-      const filterUtils = useFilter({ sensitivity: "base" });
-      const { collection, filter } = useListCollection({
-        filter: filterUtils.value.contains,
-        initialItems: [
+      return {
+        items: [
           { label: "Apple", value: "apple" },
           { label: "Banana", value: "banana" },
           { label: "Cherry", value: "cherry" },
         ],
-      });
-
-      return { collection, filter };
+      };
     },
-    template: `
-      <Combobox.Root
-        :collection="collection"
-        invalid
-        @input-value-change="({ inputValue }) => filter(inputValue)"
-      >
-        <Combobox.Input placeholder="Select a fruit..." />
-        <Combobox.Content>
-          <Combobox.List>
-            <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item">
-              {{ item.label }}
-            </Combobox.Item>
-          </Combobox.List>
-        </Combobox.Content>
-      </Combobox.Root>
-    `,
+    template: '<Combobox invalid :items="items" />',
   }),
 });
 
@@ -413,33 +265,15 @@ export const WithClearButton = meta.story({
   render: () => ({
     components: { Combobox },
     setup() {
-      const filterUtils = useFilter({ sensitivity: "base" });
-      const { collection, filter } = useListCollection({
-        filter: filterUtils.value.contains,
-        initialItems: [
+      return {
+        items: [
           { label: "Apple", value: "apple" },
           { label: "Banana", value: "banana" },
           { label: "Cherry", value: "cherry" },
         ],
-      });
-
-      return { collection, filter };
+      };
     },
-    template: `
-      <Combobox.Root
-        :collection="collection"
-        @input-value-change="({ inputValue }) => filter(inputValue)"
-      >
-        <Combobox.Input clearable placeholder="Select a fruit..." />
-        <Combobox.Content>
-          <Combobox.List>
-            <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item">
-              {{ item.label }}
-            </Combobox.Item>
-          </Combobox.List>
-        </Combobox.Content>
-      </Combobox.Root>
-    `,
+    template: '<Combobox clearable :items="items" />',
   }),
 });
 
@@ -518,42 +352,26 @@ export const Controlled = meta.story({
   render: () => ({
     components: { Combobox },
     setup() {
-      const value = ref<string | undefined>("banana");
-      const filterUtils = useFilter({ sensitivity: "base" });
-      const { collection, filter } = useListCollection({
-        filter: filterUtils.value.contains,
-        initialItems: [
+      const value = ref<string[]>(["banana"]);
+      const onValueChange = (next: string[]) => {
+        value.value = next;
+      };
+
+      return {
+        items: [
           { label: "Apple", value: "apple" },
           { label: "Banana", value: "banana" },
           { label: "Cherry", value: "cherry" },
           { label: "Date", value: "date" },
         ],
-      });
-      const handleValueChange = (next: string[]) => {
-        value.value = next[0];
+        onValueChange,
+        value,
       };
-
-      return { collection, filter, handleValueChange, value };
     },
     template: `
       <div class="flex flex-col gap-2">
-        <Combobox.Root
-          class="w-full"
-          :collection="collection"
-          :input-value="value"
-          @input-value-change="({ inputValue }) => filter(inputValue)"
-          :onValueChange="handleValueChange"
-        >
-          <Combobox.Input placeholder="Select a fruit..." />
-          <Combobox.Content>
-            <Combobox.List>
-              <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item">
-                {{ item.label }}
-              </Combobox.Item>
-            </Combobox.List>
-          </Combobox.Content>
-        </Combobox.Root>
-        <p class="text-center text-muted-foreground text-sm">Selected: {{ value ?? "(none)" }}</p>
+        <Combobox :items="items" :onValueChange="onValueChange" :value="value" />
+        <p class="text-center text-muted-foreground text-sm">Selected: {{ value[0] ?? "(none)" }}</p>
       </div>
     `,
   }),

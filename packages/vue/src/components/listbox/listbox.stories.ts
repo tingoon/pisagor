@@ -67,27 +67,19 @@ export const DisabledItem = meta.story({
   render: () => ({
     components: { Item, Listbox },
     setup() {
-      const collection = createListCollection({
+      return {
         items: [
           { label: "Free", value: "free" },
           { label: "Pro", value: "pro" },
           { disabled: true, label: "Enterprise", value: "enterprise" },
           { label: "Custom", value: "custom" },
         ],
-      });
-      return { collection };
+      };
     },
     template: `
       <Item.Group variant="outline">
       <Item class="p-1">
-        <Listbox.Root :collection="collection">
-          <Listbox.Content>
-            <Listbox.Item v-for="item in collection.items" :key="item.value" :item="item">
-              <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>
-              <Listbox.ItemIndicator />
-            </Listbox.Item>
-          </Listbox.Content>
-        </Listbox.Root>
+        <Listbox :items="items" />
       </Item>
       </Item.Group>
     `,
@@ -227,26 +219,18 @@ export const Disabled = meta.story({
   render: () => ({
     components: { Item, Listbox },
     setup() {
-      const collection = createListCollection({
+      return {
         items: [
           { label: "Brazil", value: "br" },
           { label: "Mexico", value: "mx" },
           { label: "Ireland", value: "ie" },
         ],
-      });
-      return { collection };
+      };
     },
     template: `
       <Item.Group variant="outline">
       <Item class="p-1">
-        <Listbox.Root :collection="collection" disabled>
-          <Listbox.Content>
-            <Listbox.Item v-for="item in collection.items" :key="item.value" :item="item">
-              <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>
-              <Listbox.ItemIndicator />
-            </Listbox.Item>
-          </Listbox.Content>
-        </Listbox.Root>
+        <Listbox :items="items" disabled />
       </Item>
       </Item.Group>
     `,
@@ -303,14 +287,13 @@ export const SelectionExtended = meta.story({
   render: () => ({
     components: { Item, Kbd, Listbox },
     setup() {
-      const collection = createListCollection({
+      return {
         items: [
           { label: "Brazil", value: "br" },
           { label: "Mexico", value: "mx" },
           { label: "Ireland", value: "ie" },
         ],
-      });
-      return { collection };
+      };
     },
     template: `
       <div class="flex flex-col gap-2">
@@ -319,14 +302,7 @@ export const SelectionExtended = meta.story({
         </p>
         <Item.Group variant="outline">
         <Item class="w-full p-1">
-          <Listbox.Root :collection="collection" selectionMode="extended">
-            <Listbox.Content>
-              <Listbox.Item v-for="item in collection.items" :key="item.value" :item="item">
-                <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>
-                <Listbox.ItemIndicator />
-              </Listbox.Item>
-            </Listbox.Content>
-          </Listbox.Root>
+          <Listbox :items="items" selectionMode="extended" />
         </Item>
         </Item.Group>
       </div>
@@ -338,26 +314,18 @@ export const SelectionMultiple = meta.story({
   render: () => ({
     components: { Item, Listbox },
     setup() {
-      const collection = createListCollection({
+      return {
         items: [
           { label: "Brazil", value: "br" },
           { label: "Mexico", value: "mx" },
           { label: "Ireland", value: "ie" },
         ],
-      });
-      return { collection };
+      };
     },
     template: `
       <Item.Group variant="outline">
       <Item class="p-1">
-        <Listbox.Root :collection="collection" selectionMode="multiple">
-          <Listbox.Content>
-            <Listbox.Item v-for="item in collection.items" :key="item.value" :item="item">
-              <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>
-              <Listbox.ItemIndicator />
-            </Listbox.Item>
-          </Listbox.Content>
-        </Listbox.Root>
+        <Listbox :items="items" selectionMode="multiple" />
       </Item>
       </Item.Group>
     `,
@@ -732,34 +700,25 @@ export const Controlled = meta.story({
   render: () => ({
     components: { Item, Listbox },
     setup() {
-      const collection = createListCollection({
-        items: [
-          { label: "Small", value: "sm" },
-          { label: "Medium", value: "md" },
-          { label: "Large", value: "lg" },
-          { label: "Extra Large", value: "xl" },
-        ],
-      });
+      const items = [
+        { label: "Small", value: "sm" },
+        { label: "Medium", value: "md" },
+        { label: "Large", value: "lg" },
+        { label: "Extra Large", value: "xl" },
+      ];
       const value = ref(["md"]);
       const onValueChange = (next: string | string[]) => {
         value.value = Array.isArray(next) ? next : [next];
       };
       const isLarge = computed(() => value.value.includes("lg"));
-      return { collection, isLarge, onValueChange, value };
+      return { isLarge, items, onValueChange, value };
     },
     template: `
       <div class="flex flex-col gap-2">
         <p class="text-center text-muted-foreground text-sm">Selected the Large size</p>
         <Item.Group variant="outline">
         <Item class="p-1">
-          <Listbox.Root :collection="collection" :onValueChange="onValueChange" :value="value">
-            <Listbox.Content>
-              <Listbox.Item v-for="item in collection.items" :key="item.value" :item="item">
-                <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>
-                <Listbox.ItemIndicator />
-              </Listbox.Item>
-            </Listbox.Content>
-          </Listbox.Root>
+          <Listbox :items="items" :onValueChange="onValueChange" :value="value" />
         </Item>
         </Item.Group>
         <p class="text-center text-muted-foreground text-sm">{{ isLarge ? "✅" : "❌" }}</p>

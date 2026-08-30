@@ -25,6 +25,14 @@ const marqueeIcons: Component[] = [
   PhAtom,
 ];
 
+function marqueeItems() {
+  return marqueeIcons.map((IconComponent, index) =>
+    h(Card as ArkPart, { class: "[--space:--spacing(8)]", key: index }, () =>
+      h(Card.Content as ArkPart, null, () => h(IconComponent as ArkPart, { class: "size-10" })),
+    ),
+  );
+}
+
 const meta = preview.meta({
   component: Marquee,
   parameters: {
@@ -63,16 +71,7 @@ function marqueeIconRow() {
 export const Default = meta.story({
   render: () => ({
     setup() {
-      return () =>
-        h(Marquee as ArkPart, {
-          items: marqueeIcons.map((IconComponent, index) =>
-            h(Card as ArkPart, { class: "[--space:--spacing(8)]", key: index }, () =>
-              h(Card.Content as ArkPart, null, () =>
-                h(IconComponent as ArkPart, { class: "size-10" }),
-              ),
-            ),
-          ),
-        });
+      return () => h(Marquee as ArkPart, { items: marqueeItems() });
     },
   }),
 });
@@ -80,8 +79,7 @@ export const Default = meta.story({
 export const OrientationHorizontal = meta.story({
   render: () => ({
     setup() {
-      return () =>
-        h(Marquee.Root as ArkPart, { orientation: "horizontal" }, () => marqueeIconRow());
+      return () => h(Marquee as ArkPart, { items: marqueeItems(), orientation: "horizontal" });
     },
   }),
 });
@@ -90,19 +88,17 @@ export const OrientationVertical = meta.story({
   render: () => ({
     setup() {
       return () =>
-        h(Marquee.Root as ArkPart, { class: "max-h-80", orientation: "vertical" }, () =>
-          h(Marquee.Content as ArkPart, null, () =>
-            marqueeIcons.map((IconComponent, index) =>
-              h(Marquee.Item as ArkPart, { key: index }, () =>
-                h(Card as ArkPart, null, () =>
-                  h(Card.Content as ArkPart, { class: "flex justify-center" }, () =>
-                    h(IconComponent as ArkPart, { class: "size-10" }),
-                  ),
-                ),
+        h(Marquee as ArkPart, {
+          class: "max-h-80",
+          items: marqueeIcons.map((IconComponent, index) =>
+            h(Card as ArkPart, { key: index }, () =>
+              h(Card.Content as ArkPart, { class: "flex justify-center" }, () =>
+                h(IconComponent as ArkPart, { class: "size-10" }),
               ),
             ),
           ),
-        );
+          orientation: "vertical",
+        });
     },
   }),
 });
@@ -110,7 +106,7 @@ export const OrientationVertical = meta.story({
 export const PauseOnHover = meta.story({
   render: () => ({
     setup() {
-      return () => h(Marquee.Root as ArkPart, { pauseOnInteraction: true }, () => marqueeIconRow());
+      return () => h(Marquee as ArkPart, { items: marqueeItems(), pauseOnInteraction: true });
     },
   }),
 });
@@ -118,7 +114,7 @@ export const PauseOnHover = meta.story({
 export const Reverse = meta.story({
   render: () => ({
     setup() {
-      return () => h(Marquee.Root as ArkPart, { reverse: true }, () => marqueeIconRow());
+      return () => h(Marquee as ArkPart, { items: marqueeItems(), reverse: true });
     },
   }),
 });
@@ -127,9 +123,11 @@ export const Spacing = meta.story({
   render: () => ({
     setup() {
       return () =>
-        h(Marquee.Root as ArkPart, { pauseOnInteraction: true, spacing: "40px" }, () =>
-          marqueeIconRow(),
-        );
+        h(Marquee as ArkPart, {
+          items: marqueeItems(),
+          pauseOnInteraction: true,
+          spacing: "40px",
+        });
     },
   }),
 });
@@ -137,8 +135,7 @@ export const Spacing = meta.story({
 export const Autofill = meta.story({
   render: () => ({
     setup() {
-      return () =>
-        h(Marquee.Root as ArkPart, { autoFill: true, speed: 100 }, () => marqueeIconRow());
+      return () => h(Marquee as ArkPart, { autoFill: true, items: marqueeItems(), speed: 100 });
     },
   }),
 });
@@ -146,7 +143,7 @@ export const Autofill = meta.story({
 export const CustomSpeed = meta.story({
   render: () => ({
     setup() {
-      return () => h(Marquee.Root as ArkPart, { speed: 10 }, () => marqueeIconRow());
+      return () => h(Marquee as ArkPart, { items: marqueeItems(), speed: 10 });
     },
   }),
 });
@@ -156,12 +153,12 @@ export const Fade = meta.story({
     setup() {
       return () =>
         h("div", { class: "flex w-full flex-col gap-6 overflow-hidden" }, [
-          h(Marquee.Root as ArkPart, { pauseOnInteraction: true, showEdges: false }, () =>
-            marqueeIconRow(),
-          ),
-          h(Marquee.Root as ArkPart, { pauseOnInteraction: true, reverse: true }, () =>
-            marqueeIconRow(),
-          ),
+          h(Marquee as ArkPart, {
+            items: marqueeItems(),
+            pauseOnInteraction: true,
+            showEdges: false,
+          }),
+          h(Marquee as ArkPart, { items: marqueeItems(), pauseOnInteraction: true, reverse: true }),
         ]);
     },
   }),

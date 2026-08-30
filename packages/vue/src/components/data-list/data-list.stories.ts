@@ -46,13 +46,18 @@ export const Default = meta.story({
 export const OrientationHorizontal = meta.story({
   render: () => ({
     components: { DataList },
+    setup() {
+      return {
+        items: [
+          { label: "First name", value: "Jane" },
+          { label: "Last name", value: "Doe" },
+          { label: "Email", value: "jane.doe@example.com" },
+        ],
+      };
+    },
     template: `
       <div class="w-96 rounded-xl border bg-card p-4">
-        <DataList.Root orientation="horizontal">
-          <DataList.Item value="Jane">First name</DataList.Item>
-          <DataList.Item value="Doe">Last name</DataList.Item>
-          <DataList.Item value="jane.doe@example.com">Email</DataList.Item>
-        </DataList.Root>
+        <DataList :items="items" orientation="horizontal" />
       </div>
     `,
   }),
@@ -61,13 +66,18 @@ export const OrientationHorizontal = meta.story({
 export const OrientationVertical = meta.story({
   render: () => ({
     components: { DataList },
+    setup() {
+      return {
+        items: [
+          { label: "First name", value: "Jane" },
+          { label: "Last name", value: "Doe" },
+          { label: "Email", value: "jane.doe@example.com" },
+        ],
+      };
+    },
     template: `
       <div class="w-96 rounded-xl border bg-card p-4">
-        <DataList.Root orientation="vertical">
-          <DataList.Item value="Jane">First name</DataList.Item>
-          <DataList.Item value="Doe">Last name</DataList.Item>
-          <DataList.Item value="jane.doe@example.com">Email</DataList.Item>
-        </DataList.Root>
+        <DataList :items="items" orientation="vertical" />
       </div>
     `,
   }),
@@ -77,23 +87,19 @@ export const Separator = meta.story({
   render: () => ({
     components: { DataList },
     setup() {
-      const data = [
-        { label: "First name", value: "Jane" },
-        { label: "Last name", value: "Doe" },
-        { label: "Email", value: "jane.doe@example.com" },
-        { label: "Phone", value: "1234567890" },
-        { label: "Address", value: "1234 Main St, Anytown, USA" },
-      ];
-
-      return { data };
+      return {
+        items: [
+          { label: "First name", value: "Jane" },
+          { label: "Last name", value: "Doe" },
+          { label: "Email", value: "jane.doe@example.com" },
+          { label: "Phone", value: "1234567890" },
+          { label: "Address", value: "1234 Main St, Anytown, USA" },
+        ],
+      };
     },
     template: `
       <div class="w-96 rounded-xl border bg-card p-4">
-        <DataList.Root class="divide-y" >
-          <DataList.Item v-for="item in data" :key="item.label" :value="item.value">
-            {{ item.label }}
-          </DataList.Item>
-        </DataList.Root>
+        <DataList class="divide-y" :items="items" />
       </div>
     `,
   }),

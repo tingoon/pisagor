@@ -224,35 +224,15 @@ export const Disabled = meta.story({
   render: () => ({
     components: { Autocomplete },
     setup() {
-      const filterUtils = useFilter({ sensitivity: "base" });
-      const { collection, filter } = useListCollection({
-        filter: filterUtils.value.contains,
-        initialItems: [
+      return {
+        items: [
           { label: "Apple", value: "apple" },
           { label: "Banana", value: "banana" },
           { label: "Cherry", value: "cherry" },
         ],
-      });
-
-      return { collection, filter };
+      };
     },
-    template: `
-      <Autocomplete.Root
-        :collection="collection"
-        disabled
-        @input-value-change="({ inputValue }) => filter(inputValue)"
-      >
-        <Autocomplete.Input placeholder="Select a fruit..." />
-        <Autocomplete.Content>
-          <Autocomplete.Empty>No items found.</Autocomplete.Empty>
-          <Autocomplete.List>
-            <Autocomplete.Item v-for="item in collection.items" :key="item.value" :item="item">
-              {{ item.label }}
-            </Autocomplete.Item>
-          </Autocomplete.List>
-        </Autocomplete.Content>
-      </Autocomplete.Root>
-    `,
+    template: '<Autocomplete disabled :items="items" />',
   }),
 });
 
@@ -260,35 +240,15 @@ export const Invalid = meta.story({
   render: () => ({
     components: { Autocomplete },
     setup() {
-      const filterUtils = useFilter({ sensitivity: "base" });
-      const { collection, filter } = useListCollection({
-        filter: filterUtils.value.contains,
-        initialItems: [
+      return {
+        items: [
           { label: "Apple", value: "apple" },
           { label: "Banana", value: "banana" },
           { label: "Cherry", value: "cherry" },
         ],
-      });
-
-      return { collection, filter };
+      };
     },
-    template: `
-      <Autocomplete.Root
-        :collection="collection"
-        invalid
-        @input-value-change="({ inputValue }) => filter(inputValue)"
-      >
-        <Autocomplete.Input placeholder="Select a fruit..." />
-        <Autocomplete.Content>
-          <Autocomplete.Empty />
-          <Autocomplete.List>
-            <Autocomplete.Item v-for="item in collection.items" :key="item.value" :item="item">
-              {{ item.label }}
-            </Autocomplete.Item>
-          </Autocomplete.List>
-        </Autocomplete.Content>
-      </Autocomplete.Root>
-    `,
+    template: '<Autocomplete invalid :items="items" />',
   }),
 });
 
@@ -345,35 +305,15 @@ export const WithClearButton = meta.story({
   render: () => ({
     components: { Autocomplete },
     setup() {
-      const filterUtils = useFilter({ sensitivity: "base" });
-      const { collection, filter } = useListCollection({
-        filter: filterUtils.value.contains,
-        initialItems: [
+      return {
+        items: [
           { label: "Apple", value: "apple" },
           { label: "Banana", value: "banana" },
           { label: "Cherry", value: "cherry" },
         ],
-      });
-
-      return { collection, filter };
+      };
     },
-    template: `
-      <Autocomplete.Root
-        :collection="collection"
-        :default-value="['apple']"
-        @input-value-change="({ inputValue }) => filter(inputValue)"
-      >
-        <Autocomplete.Input clearable placeholder="Select a fruit..." />
-        <Autocomplete.Content>
-          <Autocomplete.Empty>No items found.</Autocomplete.Empty>
-          <Autocomplete.List>
-            <Autocomplete.Item v-for="item in collection.items" :key="item.value" :item="item">
-              {{ item.label }}
-            </Autocomplete.Item>
-          </Autocomplete.List>
-        </Autocomplete.Content>
-      </Autocomplete.Root>
-    `,
+    template: `<Autocomplete clearable :default-value="['apple']" :items="items" />`,
   }),
 });
 
@@ -455,43 +395,26 @@ export const Controlled = meta.story({
   render: () => ({
     components: { Autocomplete },
     setup() {
-      const value = ref<string | undefined>("banana");
-      const filterUtils = useFilter({ sensitivity: "base" });
-      const { collection, filter } = useListCollection({
-        filter: filterUtils.value.contains,
-        initialItems: [
+      const value = ref<string[]>(["banana"]);
+      const onValueChange = (next: string[]) => {
+        value.value = next;
+      };
+
+      return {
+        items: [
           { label: "Apple", value: "apple" },
           { label: "Banana", value: "banana" },
           { label: "Cherry", value: "cherry" },
           { label: "Date", value: "date" },
         ],
-      });
-      const handleValueChange = (next: string[]) => {
-        value.value = next.at(0);
+        onValueChange,
+        value,
       };
-
-      return { collection, filter, handleValueChange, value };
     },
     template: `
       <div class="flex flex-col gap-2">
-        <Autocomplete.Root
-          class="w-full"
-          :collection="collection"
-          :value="value ? [value] : []"
-          @input-value-change="({ inputValue }) => filter(inputValue)"
-          :onValueChange="handleValueChange"
-        >
-          <Autocomplete.Input placeholder="Select a fruit..." />
-          <Autocomplete.Content>
-            <Autocomplete.Empty />
-            <Autocomplete.List>
-              <Autocomplete.Item v-for="item in collection.items" :key="item.value" :item="item">
-                {{ item.label }}
-              </Autocomplete.Item>
-            </Autocomplete.List>
-          </Autocomplete.Content>
-        </Autocomplete.Root>
-        <p class="text-center text-muted-foreground text-sm">Selected: {{ value ?? "(none)" }}</p>
+        <Autocomplete :items="items" :onValueChange="onValueChange" :value="value" />
+        <p class="text-center text-muted-foreground text-sm">Selected: {{ value[0] ?? "(none)" }}</p>
       </div>
     `,
   }),

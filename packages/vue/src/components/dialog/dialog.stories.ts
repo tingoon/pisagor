@@ -197,10 +197,10 @@ export const Nested = meta.story({
                   h("button", { class: outlineButtonClass(), type: "button" }, "Edit details"),
                 ),
                 h(Dialog.Content, { showCloseButton: false }, () => [
-                  h(Dialog.Header, null, () => [
-                    h(Dialog.Title, null, () => "Edit details"),
-                    h(Dialog.Description, null, () => "Make changes to the member's information."),
-                  ]),
+                  h(Dialog.Header, {
+                    description: "Make changes to the member's information.",
+                    title: "Edit details",
+                  }),
                   h(Dialog.Body, null, () =>
                     h(Field.Group, null, () => [
                       h(Field, null, () => [

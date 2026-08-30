@@ -25,6 +25,13 @@ const meta = preview.meta({
   title: "Components/Forms/Segment Group",
 });
 
+const segmentItems = [
+  { label: "Profile", value: "Profile" },
+  { label: "Account", value: "Account" },
+  { label: "Security", value: "Security" },
+  { label: "Notifications", value: "Notifications" },
+];
+
 export const Default = meta.story({
   render: () => ({
     components: { SegmentGroup },
@@ -45,41 +52,18 @@ export const Variants = meta.story({
   render: () => ({
     components: { SegmentGroup },
     setup() {
-      const items = ["Profile", "Account", "Security", "Notifications"];
-      return { items };
+      return { items: segmentItems };
     },
     template: `
       <div class="flex flex-col gap-2">
-        <SegmentGroup.Root class="rounded-lg" defaultValue="Profile" variant="default">
-          <SegmentGroup.Item
-            v-for="item in items"
-            :key="item"
-            class="px-2 py-1.5 text-sm"
-            :value="item"
-          >
-            {{ item }}
-          </SegmentGroup.Item>
-        </SegmentGroup.Root>
-        <SegmentGroup.Root defaultValue="Profile" variant="underline">
-          <SegmentGroup.Item
-            v-for="item in items"
-            :key="item"
-            class="px-2 py-1.5 text-sm"
-            :value="item"
-          >
-            {{ item }}
-          </SegmentGroup.Item>
-        </SegmentGroup.Root>
-        <SegmentGroup.Root defaultValue="Profile" orientation="vertical" variant="underline">
-          <SegmentGroup.Item
-            v-for="item in items"
-            :key="item"
-            class="px-2 py-1.5 text-sm"
-            :value="item"
-          >
-            {{ item }}
-          </SegmentGroup.Item>
-        </SegmentGroup.Root>
+        <SegmentGroup class="rounded-lg" defaultValue="Profile" :items="items" variant="default" />
+        <SegmentGroup defaultValue="Profile" :items="items" variant="underline" />
+        <SegmentGroup
+          defaultValue="Profile"
+          :items="items"
+          orientation="vertical"
+          variant="underline"
+        />
       </div>
     `,
   }),
@@ -89,20 +73,15 @@ export const OrientationHorizontal = meta.story({
   render: () => ({
     components: { SegmentGroup },
     setup() {
-      const items = ["Profile", "Account", "Security", "Notifications"];
-      return { items };
+      return { items: segmentItems };
     },
     template: `
-      <SegmentGroup.Root class="rounded-lg" defaultValue="Profile" orientation="horizontal">
-        <SegmentGroup.Item
-          v-for="item in items"
-          :key="item"
-          class="px-2 py-1.5 text-sm"
-          :value="item"
-        >
-          {{ item }}
-        </SegmentGroup.Item>
-      </SegmentGroup.Root>
+      <SegmentGroup
+        class="rounded-lg"
+        defaultValue="Profile"
+        :items="items"
+        orientation="horizontal"
+      />
     `,
   }),
 });
@@ -111,20 +90,15 @@ export const OrientationVertical = meta.story({
   render: () => ({
     components: { SegmentGroup },
     setup() {
-      const items = ["Profile", "Account", "Security", "Notifications"];
-      return { items };
+      return { items: segmentItems };
     },
     template: `
-      <SegmentGroup.Root class="rounded-lg" defaultValue="Profile" orientation="vertical">
-        <SegmentGroup.Item
-          v-for="item in items"
-          :key="item"
-          class="px-2 py-1.5 text-sm"
-          :value="item"
-        >
-          {{ item }}
-        </SegmentGroup.Item>
-      </SegmentGroup.Root>
+      <SegmentGroup
+        class="rounded-lg"
+        defaultValue="Profile"
+        :items="items"
+        orientation="vertical"
+      />
     `,
   }),
 });
@@ -133,21 +107,14 @@ export const DisabledItem = meta.story({
   render: () => ({
     components: { SegmentGroup },
     setup() {
-      const items = ["Profile", "Account", "Security", "Notifications"];
-      return { items };
+      return {
+        items: segmentItems.map((item) =>
+          item.value === "Security" ? { ...item, disabled: true } : item,
+        ),
+      };
     },
     template: `
-      <SegmentGroup.Root class="rounded-lg" defaultValue="Profile">
-        <SegmentGroup.Item
-          v-for="item in items"
-          :key="item"
-          class="px-2 py-1.5 text-sm"
-          :disabled="item === 'Security'"
-          :value="item"
-        >
-          {{ item }}
-        </SegmentGroup.Item>
-      </SegmentGroup.Root>
+      <SegmentGroup class="rounded-lg" defaultValue="Profile" :items="items" />
     `,
   }),
 });
@@ -213,20 +180,10 @@ export const Disabled = meta.story({
   render: () => ({
     components: { SegmentGroup },
     setup() {
-      const items = ["Profile", "Account", "Security", "Notifications"];
-      return { items };
+      return { items: segmentItems };
     },
     template: `
-      <SegmentGroup.Root class="rounded-lg" defaultValue="Profile" disabled>
-        <SegmentGroup.Item
-          v-for="item in items"
-          :key="item"
-          class="px-2 py-1.5 text-sm"
-          :value="item"
-        >
-          {{ item }}
-        </SegmentGroup.Item>
-      </SegmentGroup.Root>
+      <SegmentGroup class="rounded-lg" defaultValue="Profile" disabled :items="items" />
     `,
   }),
 });
@@ -235,24 +192,14 @@ export const Controlled = meta.story({
   render: () => ({
     components: { SegmentGroup },
     setup() {
-      const items = ["Profile", "Account", "Security", "Notifications"];
       const value = ref<string | null>("Profile");
       const onValueChange = (next: string | null) => {
         value.value = next;
       };
-      return { items, onValueChange, value };
+      return { items: segmentItems, onValueChange, value };
     },
     template: `
-      <SegmentGroup.Root class="rounded-lg" :value="value" :onValueChange="onValueChange">
-        <SegmentGroup.Item
-          v-for="item in items"
-          :key="item"
-          class="px-2 py-1.5 text-sm"
-          :value="item"
-        >
-          {{ item }}
-        </SegmentGroup.Item>
-      </SegmentGroup.Root>
+      <SegmentGroup class="rounded-lg" :items="items" :value="value" :onValueChange="onValueChange" />
     `,
   }),
 });
