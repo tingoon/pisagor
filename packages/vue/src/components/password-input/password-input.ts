@@ -2,10 +2,7 @@ import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/vue/password-in
 import { PhEye, PhEyeSlash, PhX } from "@phosphor-icons/vue";
 import { passwordInputRecipe } from "@pisagor/recipes/password-input";
 import { defineComponent, h, type PropType } from "vue";
-import {
-  type ClearableChangeEvent,
-  useClearableInput,
-} from "../../internal/hooks/use-clearable-input";
+import { type ClearableChangeEvent, useClearableInput } from "../../hooks/use-clearable-input";
 import { InputGroup } from "../input-group";
 import type { InputGroupButtonProps, InputGroupProps } from "../input-group/input-group-core";
 

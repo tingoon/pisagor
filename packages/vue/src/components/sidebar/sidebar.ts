@@ -5,7 +5,7 @@ import { cn } from "@pisagor/utils";
 type ClassValue = Parameters<typeof cn>[0];
 
 import { defineComponent, h, type PropType, reactive, ref, watchEffect } from "vue";
-import { useIsMobile } from "../../internal/hooks/use-is-mobile";
+import { useIsMobile } from "../../hooks/use-is-mobile";
 import { createContext } from "../../internal/utils/create-context";
 import { Button } from "../button";
 import { Sheet } from "../sheet";

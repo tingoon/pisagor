@@ -6,10 +6,7 @@ import {
 import { type TextareaSlots, textareaRecipe } from "@pisagor/recipes/textarea";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
-import {
-  type ClearableChangeEvent,
-  useClearableInput,
-} from "../../internal/hooks/use-clearable-input";
+import { type ClearableChangeEvent, useClearableInput } from "../../hooks/use-clearable-input";
 import type { VariantClassNames } from "../../internal/types";
 import { InputClearButton } from "../input/input-clear-button";
 import { InputGroupAddon, InputGroupRoot } from "../input-group/input-group-core";

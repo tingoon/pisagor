@@ -7,10 +7,7 @@ import {
 } from "@pisagor/recipes/input";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
-import {
-  type ClearableChangeEvent,
-  useClearableInput,
-} from "../../internal/hooks/use-clearable-input";
+import { type ClearableChangeEvent, useClearableInput } from "../../hooks/use-clearable-input";
 import type { VariantClassNames } from "../../internal/types";
 import { InputGroupRoot } from "../input-group/input-group-core";
 import { InputClearAddon } from "./input-clear-button";

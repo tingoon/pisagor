@@ -26,8 +26,8 @@ import {
   type VNodeChild,
   watch,
 } from "vue";
-import { createContext } from "../../internal/utils/create-context";
-import { Table } from "../table";
+import { Table } from "../components/table";
+import { createContext } from "../internal/utils/create-context";
 import { type DataGridFeatures, dataGridFeatures } from "./data-grid.features";
 
 type ArkPart = Parameters<typeof h>[0];

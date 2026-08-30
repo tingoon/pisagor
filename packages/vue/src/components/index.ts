@@ -26,7 +26,6 @@ export * from "./combobox";
 export * from "./command";
 export * from "./context-menu";
 export * from "./data-list";
-export * from "./data-table";
 export * from "./date-picker";
 export * from "./dialog";
 export * from "./download-trigger";

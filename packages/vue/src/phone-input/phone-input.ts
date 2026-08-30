@@ -7,9 +7,9 @@ type FormControlVariant = "primary" | "secondary";
 type ClassValue = Parameters<typeof cn>[0];
 
 import { defineComponent, h, type PropType, ref } from "vue";
-import type { InputProps } from "../input";
-import { InputGroup } from "../input-group";
-import { InputGroupRoot } from "../input-group/input-group-core";
+import type { InputProps } from "../components/input";
+import { InputGroup } from "../components/input-group";
+import { InputGroupRoot } from "../components/input-group/input-group-core";
 
 type ArkPart = Parameters<typeof h>[0];
 

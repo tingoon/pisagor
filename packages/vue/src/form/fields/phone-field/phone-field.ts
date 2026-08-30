@@ -1,5 +1,5 @@
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { PhoneInput, type PhoneInputProps } from "../../../components/phone-input";
+import { PhoneInput, type PhoneInputProps } from "../../../phone-input";
 import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
 
 type ArkPart = Parameters<typeof h>[0];

@@ -10,8 +10,8 @@ import type {
 } from "@tanstack/vue-table";
 import { useTable } from "@tanstack/vue-table";
 import { computed, defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { createContext } from "../../internal/utils/create-context";
-import { Table } from "../table";
+import { Table } from "../components/table";
+import { createContext } from "../internal/utils/create-context";
 import { type DataTableFeatures, dataTableFeatures } from "./data-table.features";
 
 type ArkPart = Parameters<typeof h>[0];

@@ -12,9 +12,9 @@ import { cn } from "@pisagor/utils";
 import StarterKit from "@tiptap/starter-kit";
 import { type Editor, EditorContent, useEditor } from "@tiptap/vue-3";
 import { defineComponent, h, type PropType, shallowReactive, watch, watchEffect } from "vue";
-import { createContext } from "../../internal/utils/create-context";
-import { Toggle } from "../toggle/toggle";
-import { VisuallyHidden } from "../visually-hidden/visually-hidden";
+import { Toggle } from "../components/toggle/toggle";
+import { VisuallyHidden } from "../components/visually-hidden/visually-hidden";
+import { createContext } from "../internal/utils/create-context";
 
 type FormControlVariant = "primary" | "secondary";
 

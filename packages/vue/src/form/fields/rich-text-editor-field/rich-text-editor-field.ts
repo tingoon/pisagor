@@ -1,5 +1,5 @@
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { RichTextEditor, type RichTextEditorRootProps } from "../../../components/rich-text-editor";
+import { RichTextEditor, type RichTextEditorRootProps } from "../../../rich-text-editor";
 import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
 import type { SetRequired } from "../../internal/types";
 

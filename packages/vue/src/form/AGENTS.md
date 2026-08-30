@@ -26,6 +26,10 @@ Fields under [`fields/`](./fields/) and [`tanstack/fields/`](./tanstack/fields/)
 | `@pisagor/vue/form` | Standalone fields (`fields/index.ts`) |
 | `@pisagor/vue/form/tanstack` | `useAppForm`, connected fields, helpers |
 
+## Heavy field peers
+
+`PhoneField` and `RichTextEditorField` depend on heavy `@pisagor/vue` subpaths. `RichTextEditorField` needs the optional TipTap peers listed in [README](./README.md#peer-dependencies). `PhoneField` has no extra optional peer.
+
 ## Internal imports
 
 Import sibling fields with **relative paths** to the concrete module file, not the folder barrel. **Stories** may use `@pisagor/vue/form` / `@pisagor/vue/form/tanstack` like apps — see [Storybook](../../../.cursor/rules/integrations/storybook.mdc).

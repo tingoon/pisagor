@@ -1,6 +1,11 @@
 import { PhCaretDown, PhCaretUp } from "@phosphor-icons/vue";
-import { Badge, DataTable, Table, useDataTable } from "@pisagor/vue";
-import type { ColumnDef, SortingState } from "@pisagor/vue/data-table";
+import { Badge, Table } from "@pisagor/vue";
+import {
+  type ColumnDef,
+  DataTable,
+  type SortingState,
+  useDataTable,
+} from "@pisagor/vue/data-table";
 import { computed, defineComponent, h, ref } from "vue";
 import preview from "#/storybook/preview";
 
