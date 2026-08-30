@@ -16,8 +16,8 @@ import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
 import { formControlShellRecipe } from "@pisagor/recipes/form-control";
 import type { InputRootVariantProps } from "@pisagor/recipes/input";
 import { selectRecipe } from "@pisagor/recipes/select";
+import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
-import { cn } from "../../internal/utils";
 import { Separator, type SeparatorProps } from "../separator";
 import { SelectRootContext, useSelectRoot } from "./select.context";
 

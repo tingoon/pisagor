@@ -1,9 +1,9 @@
 import { ark } from "@ark-ui/react/factory";
 import { DotsSixVerticalIcon } from "@phosphor-icons/react";
 import { sortableItemRecipe, sortableRecipe } from "@pisagor/recipes/sortable";
+import { cn } from "@pisagor/utils";
 import type { ComponentProps, DragEvent, KeyboardEvent, ReactNode } from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { cn } from "../../internal/utils";
 import {
   SortableContext,
   SortableItemContext,

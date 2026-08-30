@@ -1,5 +1,5 @@
+import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import { cn } from "../../internal/utils";
 import { Button, type ButtonProps } from "../button";
 import { Tooltip, type TooltipProps } from "../tooltip";
 import type { AppShellPlacement, AppShellRegionPosition } from "./app-shell.context";

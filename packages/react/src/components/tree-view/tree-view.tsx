@@ -32,8 +32,8 @@ import {
   treeViewItemRecipe,
   treeViewRecipe,
 } from "@pisagor/recipes/tree-view";
+import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "react";
-import { cn } from "../../internal/utils";
 import {
   TreeViewBranchContext,
   TreeViewContext,

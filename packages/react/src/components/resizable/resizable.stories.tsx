@@ -1,7 +1,7 @@
+import { cn } from "@pisagor/utils";
 import type { ReactNode } from "react";
 import { useState } from "react";
 import preview from "#/storybook/preview";
-import { cn } from "../../internal/utils";
 import { Resizable } from "..";
 
 const meta = preview.meta({

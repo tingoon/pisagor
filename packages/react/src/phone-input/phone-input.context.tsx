@@ -1,8 +1,8 @@
 import type { PhoneInputSlots, PhoneInputVariantProps } from "@pisagor/recipes/phone-input";
-import type { VariantClassNames } from "../../internal/types";
-import { createContext } from "../../internal/utils";
-import type { ComboboxContentProps } from "../combobox";
-import type { InputProps } from "../input";
+import type { ComboboxContentProps } from "../components/combobox";
+import type { InputProps } from "../components/input";
+import type { VariantClassNames } from "../internal/types";
+import { createContext } from "../internal/utils";
 
 type FormControlVariant = "primary" | "secondary";
 

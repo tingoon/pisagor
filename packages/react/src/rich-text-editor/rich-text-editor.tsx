@@ -8,12 +8,12 @@ import {
 } from "@phosphor-icons/react";
 import { formControlShellRecipe } from "@pisagor/recipes/form-control";
 import { richTextEditorRecipe } from "@pisagor/recipes/rich-text-editor";
+import { cn } from "@pisagor/utils";
 import { EditorContent, useEditor, useEditorState } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { type ComponentProps, type ReactNode, useEffect, useMemo } from "react";
-import { cn } from "../../internal/utils";
-import { Toggle } from "../toggle";
-import { VisuallyHidden } from "../visually-hidden";
+import { Toggle } from "../components/toggle";
+import { VisuallyHidden } from "../components/visually-hidden";
 import { RichTextEditorContext, useRichTextEditorState } from "./rich-text-editor.context";
 
 // #region Types

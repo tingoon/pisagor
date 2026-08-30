@@ -8,16 +8,7 @@ import {
   MagnifyingGlassIcon,
   XIcon,
 } from "@phosphor-icons/react";
-import type {
-  ColumnFiltersState,
-  ColumnPinningState,
-  ExpandedState,
-  GroupingState,
-  RowData,
-} from "@tanstack/react-table";
-import { Fragment, type ReactNode, useEffect, useMemo, useState } from "react";
-import preview from "#/storybook/preview";
-import type { BadgeVariant } from "..";
+import type { BadgeVariant } from "@pisagor/react";
 import {
   Avatar,
   Badge,
@@ -32,7 +23,16 @@ import {
   Sortable,
   Spinner,
   Table,
-} from "..";
+} from "@pisagor/react";
+import type {
+  ColumnFiltersState,
+  ColumnPinningState,
+  ExpandedState,
+  GroupingState,
+  RowData,
+} from "@tanstack/react-table";
+import { Fragment, type ReactNode, useEffect, useMemo, useState } from "react";
+import preview from "#/storybook/preview";
 import {
   type ColumnDef,
   DataGrid,

@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
+import { cn } from "@pisagor/utils";
 import { type ComponentProps, type RefObject, useCallback, useEffect, useRef } from "react";
-import { cn } from "../../internal/utils";
 
 // #region Types
 type ScrollTarget = HTMLElement | Document | null | undefined;

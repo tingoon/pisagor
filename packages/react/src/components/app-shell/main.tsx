@@ -1,5 +1,5 @@
+import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import { cn } from "../../internal/utils";
 import type { AppShellRegionPosition } from "./app-shell.context";
 import { useAppShell } from "./app-shell.context";
 import { regionPositionClasses } from "./region";

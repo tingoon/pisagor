@@ -8,7 +8,7 @@ import { CheckIcon, MinusIcon } from "@phosphor-icons/react";
 import { checkboxGroupRecipe, checkboxRecipe } from "@pisagor/recipes/checkbox";
 import { formControlToggleRecipe } from "@pisagor/recipes/form-control";
 
-import { cn } from "../../internal/utils";
+import { cn } from "@pisagor/utils";
 
 // #region Types
 type FormControlVariant = "primary" | "secondary";

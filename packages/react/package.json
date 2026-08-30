@@ -3,11 +3,11 @@
     "url": "https://github.com/tingoon/pisagor/issues"
   },
   "dependencies": {
-    "@ark-ui/react": "^5.39.0",
+    "@ark-ui/react": "^5.39.1",
+    "@mantine/hooks": "^9.5.2",
     "@pisagor/recipes": "workspace:*",
     "@pisagor/tokens": "workspace:*",
-    "clsx": "^2.1.1",
-    "tailwind-merge": "^3.6.0"
+    "@pisagor/utils": "workspace:*"
   },
   "description": "Accessible React UI components built on Ark UI and Tailwind CSS.",
   "devDependencies": {
@@ -16,7 +16,7 @@
     "@pisagor/tsconfig": "workspace:*",
     "@tailwindcss/typography": "^0.5.20",
     "@tanstack/react-form": "^1.33.5",
-    "@tanstack/react-table": "^9.2.3",
+    "@tanstack/react-table": "^9.2.4",
     "@tanstack/react-virtual": "^3.14.10",
     "@tiptap/react": "^3.30.5",
     "@tiptap/starter-kit": "^3.30.5",
@@ -34,16 +34,19 @@
     "./*": "./src/components/*/index.ts",
     "./blocks": "./src/blocks/index.ts",
     "./charts": "./src/charts/index.ts",
+    "./data-grid": "./src/data-grid/index.ts",
+    "./data-table": "./src/data-table/index.ts",
     "./form": "./src/form/fields/index.ts",
     "./form/tanstack": "./src/form/tanstack/index.ts",
-    "./hooks": "./src/internal/hooks/index.ts",
+    "./hooks": "./src/hooks/index.ts",
+    "./phone-input": "./src/phone-input/index.ts",
+    "./rich-text-editor": "./src/rich-text-editor/index.ts",
     "./styles": "./src/styles.css"
   },
   "homepage": "https://github.com/tingoon/pisagor#readme",
   "license": "MIT",
   "name": "@pisagor/react",
   "peerDependencies": {
-    "@mantine/hooks": "^9",
     "@phosphor-icons/react": "^2",
     "@tanstack/react-form": "^1",
     "@tanstack/react-table": "^9",

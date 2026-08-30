@@ -12,7 +12,7 @@ import { Editable as EditablePrimitive } from "@ark-ui/react/editable";
 import { buttonRecipe } from "@pisagor/recipes/button";
 import { editableRecipe } from "@pisagor/recipes/editable";
 
-import { cn } from "../../internal/utils";
+import { cn } from "@pisagor/utils";
 import type { ButtonProps } from "../button";
 import { EditableContext, useEditable } from "./editable.context";
 

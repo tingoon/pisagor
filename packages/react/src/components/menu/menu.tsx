@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/react/factory";
 import { type MenuItemVariantProps, menuItemRecipe, menuRecipe } from "@pisagor/recipes/menu";
+import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import { cn } from "../../internal/utils";
 import { MenuContext, useMenu } from "./menu.context";
 
 // #region Types

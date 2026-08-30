@@ -9,9 +9,8 @@ import { SignaturePad as SignaturePadPrimitive } from "@ark-ui/react/signature-p
 import { ArrowCounterClockwiseIcon } from "@phosphor-icons/react";
 import { formControlZoneRecipe } from "@pisagor/recipes/form-control";
 import { type SignaturePadSlots, signaturePadRecipe } from "@pisagor/recipes/signature-pad";
-
+import { cn } from "@pisagor/utils";
 import type { VariantClassNames } from "../../internal/types";
-import { cn } from "../../internal/utils";
 import { Button } from "../button";
 import { SignaturePadContext, useSignaturePad } from "./signature-pad.context";
 

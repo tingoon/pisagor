@@ -2,7 +2,12 @@ import { dataTableRecipe } from "@pisagor/recipes/data-table";
 import type { RowData, TableOptions } from "@tanstack/react-table";
 import { flexRender, useTable } from "@tanstack/react-table";
 import { type ComponentProps, type ReactNode, useMemo } from "react";
-import { Table, type TableCellProps, type TableHeadProps, type TableRowProps } from "../table";
+import {
+  Table,
+  type TableCellProps,
+  type TableHeadProps,
+  type TableRowProps,
+} from "../components/table";
 import type {
   Cell,
   DataTableContextValue,

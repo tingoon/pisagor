@@ -7,8 +7,8 @@ import {
 import { MinusIcon, PlusIcon } from "@phosphor-icons/react";
 import { formControlGroupShellRecipe } from "@pisagor/recipes/form-control";
 import { numberInputRecipe } from "@pisagor/recipes/number-input";
+import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import { cn } from "../../internal/utils";
 import { Button } from "../button";
 import { Field } from "../field";
 import { Input, type InputProps } from "../input";

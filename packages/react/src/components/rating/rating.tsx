@@ -6,10 +6,10 @@ import {
 } from "@ark-ui/react/rating-group";
 import { StarIcon } from "@phosphor-icons/react";
 import { type RatingSlots, ratingRecipe } from "@pisagor/recipes/rating";
+import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactElement, ReactNode } from "react";
 import { cloneElement } from "react";
 import type { VariantClassNames } from "../../internal/types";
-import { cn } from "../../internal/utils";
 import { RatingContext, useRating } from "./rating.context";
 
 // #region Types

@@ -1,10 +1,10 @@
 import { Field as FieldPrimitive, type FieldTextareaProps } from "@ark-ui/react/field";
 import { formControlShellRecipe } from "@pisagor/recipes/form-control";
 import { type TextareaSlots, textareaRecipe } from "@pisagor/recipes/textarea";
+import { cn } from "@pisagor/utils";
 import type { ChangeEventHandler, ReactNode, RefAttributes } from "react";
-import { useClearableInput } from "../../internal/hooks";
+import { useClearableInput } from "../../hooks";
 import type { VariantClassNames } from "../../internal/types";
-import { cn } from "../../internal/utils";
 import { Input } from "../input";
 import { InputGroupAddon, InputGroupRoot } from "../input-group/input-group-core";
 import { TextareaContext, useTextarea } from "./textarea.context";

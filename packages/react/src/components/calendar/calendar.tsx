@@ -28,7 +28,7 @@ import { CaretDownIcon, CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/re
 import { calendarRecipe, calendarTableCellRecipe } from "@pisagor/recipes/calendar";
 import { formControlShellRecipe } from "@pisagor/recipes/form-control";
 
-import { cn } from "../../internal/utils";
+import { cn } from "@pisagor/utils";
 import { Button, type ButtonProps } from "../button";
 import { CalendarSlotsContext, useCalendar } from "./calendar.context";
 

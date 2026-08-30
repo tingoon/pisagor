@@ -10,10 +10,10 @@ import type {
 } from "@ark-ui/react/slider";
 import { Slider as SliderPrimitive } from "@ark-ui/react/slider";
 import { type SliderSlots, sliderRecipe } from "@pisagor/recipes/slider";
+import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";
 import type { VariantClassNames } from "../../internal/types";
-import { cn } from "../../internal/utils";
 import { Field } from "../field";
 import { SliderContext, useSlider } from "./slider.context";
 

@@ -13,9 +13,9 @@ import {
   clipboardRecipe,
 } from "@pisagor/recipes/clipboard";
 import { formControlShellRecipe } from "@pisagor/recipes/form-control";
+import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
-import { cn } from "../../internal/utils";
 import { Button, type ButtonProps } from "../button";
 import { ClipboardContext, useClipboard } from "./clipboard.context";
 

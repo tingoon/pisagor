@@ -1,7 +1,7 @@
 import { ArrowsInLineHorizontalIcon, ArrowsOutLineHorizontalIcon } from "@phosphor-icons/react";
+import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { useState } from "react";
-import { cn } from "../../internal/utils";
 import type { ButtonProps } from "../button";
 import { Resizable } from "../resizable";
 import { ScrollArea } from "../scroll-area";

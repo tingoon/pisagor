@@ -12,7 +12,7 @@ import { CalendarIcon, ClockIcon, XIcon } from "@phosphor-icons/react";
 import { calendarRecipe } from "@pisagor/recipes/calendar";
 import { datePickerRecipe } from "@pisagor/recipes/date-picker";
 
-import { useClearableInput } from "../../internal/hooks";
+import { useClearableInput } from "../../hooks";
 import { Button } from "../button";
 import { Calendar } from "../calendar";
 import { CalendarSlotsContext } from "../calendar/calendar.context";

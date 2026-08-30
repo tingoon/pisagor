@@ -7,8 +7,8 @@ import type {
 import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/react/radio-group";
 import { formControlRadioToggleRecipe } from "@pisagor/recipes/form-control";
 import { radioGroupItemRecipe, radioGroupRecipe } from "@pisagor/recipes/radio-group";
+import { cn } from "@pisagor/utils";
 import type { ReactNode } from "react";
-import { cn } from "../../internal/utils";
 import { Field } from "../field";
 
 // #region Types

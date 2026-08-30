@@ -1,4 +1,5 @@
 import { chartRecipe } from "@pisagor/recipes/chart";
+import { cn } from "@pisagor/utils";
 import type { ComponentProps, ComponentType, ReactNode } from "react";
 import { useId, useMemo } from "react";
 import type {
@@ -9,7 +10,6 @@ import type {
   TooltipValueType,
 } from "recharts";
 import { Legend, ResponsiveContainer, Tooltip } from "recharts";
-import { cn } from "../internal/utils";
 import { ChartContext, useChart } from "./chart.context";
 import "./chart-series.css";
 

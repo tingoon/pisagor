@@ -1,6 +1,6 @@
+import { cn } from "@pisagor/utils";
 import { useState } from "react";
 import preview from "#/storybook/preview";
-import { cn } from "../../internal/utils";
 import { Button, Presence } from "..";
 
 const meta = preview.meta({

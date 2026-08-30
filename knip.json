@@ -14,7 +14,11 @@
         "src/blocks/**": ["exports", "types", "files"],
         "src/charts/**/*.recipe.ts": ["exports", "types", "duplicates"],
         "src/components/**/*.recipe.ts": ["exports", "types", "duplicates"],
-        "src/internal/**": ["exports", "types"]
+        "src/data-grid/**/*.recipe.ts": ["exports", "types", "duplicates"],
+        "src/data-table/**/*.recipe.ts": ["exports", "types", "duplicates"],
+        "src/internal/**": ["exports", "types"],
+        "src/phone-input/**/*.recipe.ts": ["exports", "types", "duplicates"],
+        "src/rich-text-editor/**/*.recipe.ts": ["exports", "types", "duplicates"]
       }
     },
     "packages/recipes": {

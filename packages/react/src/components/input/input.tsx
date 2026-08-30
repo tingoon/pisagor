@@ -5,10 +5,10 @@ import {
   inputRecipe,
   inputRootRecipe,
 } from "@pisagor/recipes/input";
+import { cn } from "@pisagor/utils";
 import type { ChangeEventHandler, RefAttributes } from "react";
-import { useClearableInput } from "../../internal/hooks";
+import { useClearableInput } from "../../hooks";
 import type { VariantClassNames } from "../../internal/types";
-import { cn } from "../../internal/utils";
 import { InputGroupRoot } from "../input-group/input-group-core";
 import { InputClearAddon } from "./input-clear-button";
 

@@ -1,4 +1,4 @@
-import { PhoneInput, type PhoneInputProps } from "../../../components/phone-input";
+import { PhoneInput, type PhoneInputProps } from "../../../phone-input";
 import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
 
 // #region Types

@@ -5,15 +5,15 @@ import {
   type PhoneInputVariantProps,
   phoneInputRecipe,
 } from "@pisagor/recipes/phone-input";
+import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import type { DefaultInputComponentProps, FlagProps } from "react-phone-number-input";
 import RPNPhoneInput, { type Country, getCountryCallingCode } from "react-phone-number-input";
-import type { VariantClassNames } from "../../internal/types";
-import { cn } from "../../internal/utils";
-import { Combobox, type ComboboxContentProps } from "../combobox";
-import type { InputProps } from "../input";
-import { InputGroup } from "../input-group";
+import { Combobox, type ComboboxContentProps } from "../components/combobox";
+import type { InputProps } from "../components/input";
+import { InputGroup } from "../components/input-group";
+import type { VariantClassNames } from "../internal/types";
 import { PhoneInputContext, usePhoneInput } from "./phone-input.context";
 import { phoneInputFlags } from "./phone-input-flags";
 

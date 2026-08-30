@@ -1,4 +1,5 @@
 import { dataGridRecipe } from "@pisagor/recipes/data-grid";
+import { cn } from "@pisagor/utils";
 import type { RowData, TableOptions } from "@tanstack/react-table";
 import { flexRender, useTable } from "@tanstack/react-table";
 import { useVirtualizer } from "@tanstack/react-virtual";
@@ -11,8 +12,12 @@ import {
   useRef,
   useState,
 } from "react";
-import { cn } from "../../internal/utils";
-import { Table, type TableCellProps, type TableHeadProps, type TableRowProps } from "../table";
+import {
+  Table,
+  type TableCellProps,
+  type TableHeadProps,
+  type TableRowProps,
+} from "../components/table";
 import type {
   Cell,
   Column,

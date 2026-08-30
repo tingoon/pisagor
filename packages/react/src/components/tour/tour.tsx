@@ -16,9 +16,9 @@ import { Tour as TourPrimitive, useTour } from "@ark-ui/react/tour";
 import { CaretLeftIcon, CaretRightIcon, XIcon } from "@phosphor-icons/react";
 import { dialogRecipe } from "@pisagor/recipes/dialog";
 import { tourRecipe } from "@pisagor/recipes/tour";
+import { cn } from "@pisagor/utils";
 import type { ComponentProps, MouseEvent } from "react";
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { cn } from "../../internal/utils";
 import { Button } from "../button";
 import type {
   DialogBackdropProps,

@@ -14,8 +14,8 @@ import { FileUpload as FileUploadPrimitive, useFileUploadContext } from "@ark-ui
 import { UploadIcon, XIcon } from "@phosphor-icons/react";
 import { fileUploadItemRecipe, fileUploadRecipe } from "@pisagor/recipes/file-upload";
 import { formControlZoneRecipe } from "@pisagor/recipes/form-control";
+import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
-import { cn } from "../../internal/utils";
 import { Button } from "../button";
 import {
   FileUploadContext,
