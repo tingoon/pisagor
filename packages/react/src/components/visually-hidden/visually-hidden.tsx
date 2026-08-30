@@ -6,7 +6,7 @@ import type { ComponentProps } from "react";
 export type VisuallyHiddenProps = ComponentProps<typeof ark.span>;
 // #endregion
 
-// #region Part
+// #region Component
 /**
  * Hides content visually while keeping it available to assistive technology.
  */
@@ -20,8 +20,4 @@ export function VisuallyHidden({ className, ...rest }: VisuallyHiddenProps) {
     />
   );
 }
-// #endregion
-
-// #region Display Names
-VisuallyHidden.displayName = "VisuallyHidden";
 // #endregion

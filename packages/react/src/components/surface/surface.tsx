@@ -25,7 +25,7 @@ export interface SurfaceProps
 }
 // #endregion
 
-// #region Part
+// #region Component
 export function Surface({
   bordered = false,
   rounded = true,
@@ -66,8 +66,4 @@ export function Surface({
     </SurfaceContext>
   );
 }
-// #endregion
-
-// #region Display Names
-Surface.displayName = "Surface";
 // #endregion

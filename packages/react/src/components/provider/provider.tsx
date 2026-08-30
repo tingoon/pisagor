@@ -34,7 +34,7 @@ function resolveDir(locale: string, dir?: "ltr" | "rtl"): "ltr" | "rtl" {
   return RTL_LANGS.has(language) ? "rtl" : "ltr";
 }
 
-// #region Part
+// #region Component
 export function Provider({
   dir: dirProp,
   locale = "en-US",
@@ -61,8 +61,4 @@ export function Provider({
     </LocaleProvider>
   );
 }
-// #endregion
-
-// #region Display Names
-Provider.displayName = "Provider";
 // #endregion

@@ -6,7 +6,7 @@ import type { ComponentProps } from "react";
 export type SpinnerProps = ComponentProps<"svg">;
 // #endregion
 
-// #region Part
+// #region Component
 export function Spinner({ "aria-label": ariaLabel, className, ...rest }: SpinnerProps) {
   return (
     <CircleNotchIcon
@@ -19,8 +19,4 @@ export function Spinner({ "aria-label": ariaLabel, className, ...rest }: Spinner
     />
   );
 }
-// #endregion
-
-// #region Display Names
-Spinner.displayName = "Spinner";
 // #endregion

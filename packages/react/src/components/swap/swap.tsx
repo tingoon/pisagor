@@ -7,9 +7,7 @@ export type SwapOnIndicatorProps = ComponentProps<typeof SwapPrimitive.Indicator
 
 export type SwapOffIndicatorProps = ComponentProps<typeof SwapPrimitive.Indicator>;
 
-export type SwapRootProps = ComponentProps<typeof SwapPrimitive.Root>;
-
-export interface SwapProps extends SwapRootProps, SwapVariantProps {
+export interface SwapProps extends ComponentProps<typeof SwapPrimitive.Root>, SwapVariantProps {
   /** Content shown when swapped off. */
   off?: ReactNode;
   /** Content shown when swapped on. */
@@ -21,7 +19,7 @@ export interface SwapProps extends SwapRootProps, SwapVariantProps {
 }
 // #endregion
 
-// #region Part
+// #region Component
 export function Swap({
   variant = "fade",
   children,
@@ -50,8 +48,4 @@ export function Swap({
     </SwapPrimitive.Root>
   );
 }
-// #endregion
-
-// #region Display Names
-Swap.displayName = "Swap";
 // #endregion

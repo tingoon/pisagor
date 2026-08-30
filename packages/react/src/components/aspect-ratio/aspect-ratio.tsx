@@ -3,12 +3,10 @@ import { aspectRatioRecipe } from "@pisagor/recipes/aspect-ratio";
 import type { ComponentProps } from "react";
 
 // #region Types
-type AspectRatioRootProps = ComponentProps<typeof ark.div>;
-
-export type AspectRatioProps = AspectRatioRootProps;
+export type AspectRatioProps = ComponentProps<typeof ark.div>;
 // #endregion
 
-// #region Part
+// #region Component
 export function AspectRatio({ className, ...rest }: AspectRatioProps) {
   return (
     <ark.div
@@ -19,8 +17,4 @@ export function AspectRatio({ className, ...rest }: AspectRatioProps) {
     />
   );
 }
-// #endregion
-
-// #region Display Names
-AspectRatio.displayName = "AspectRatio";
 // #endregion

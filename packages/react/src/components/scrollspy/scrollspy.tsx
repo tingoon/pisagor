@@ -89,7 +89,7 @@ function getSectionScrollOffset(sectionElement: HTMLElement, scrollElement: HTML
 }
 // #endregion
 
-// #region Part
+// #region Component
 export function Scrollspy({
   children,
   history = true,
@@ -293,8 +293,4 @@ export function Scrollspy({
     </ark.div>
   );
 }
-// #endregion
-
-// #region Display Names
-Scrollspy.displayName = "Scrollspy";
 // #endregion

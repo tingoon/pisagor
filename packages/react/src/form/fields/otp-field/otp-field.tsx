@@ -20,7 +20,7 @@ export interface OtpFieldProps
 }
 // #endregion
 
-// #region Part
+// #region Component
 export function OtpField({
   orientation,
   invalid,

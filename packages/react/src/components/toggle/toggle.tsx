@@ -5,9 +5,9 @@ import type { ComponentProps } from "react";
 import { cn } from "../../internal/utils";
 
 // #region Types
-export type ToggleRootProps = ComponentProps<typeof TogglePrimitive.Root>;
-
-export interface ToggleProps extends ToggleRootProps, ToggleVariantProps {
+export interface ToggleProps
+  extends ComponentProps<typeof TogglePrimitive.Root>,
+    ToggleVariantProps {
   /**
    * The variant of the toggle
    *
@@ -19,7 +19,7 @@ export interface ToggleProps extends ToggleRootProps, ToggleVariantProps {
 }
 // #endregion
 
-// #region Part
+// #region Component
 export function Toggle({
   size = "md",
   variant = "ghost",
@@ -47,8 +47,4 @@ export function Toggle({
     />
   );
 }
-// #endregion
-
-// #region Display Names
-Toggle.displayName = "Toggle";
 // #endregion

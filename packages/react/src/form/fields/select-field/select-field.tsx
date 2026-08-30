@@ -22,7 +22,7 @@ export interface SelectFieldProps
 }
 // #endregion
 
-// #region Part
+// #region Component
 export function SelectField({
   orientation,
   id,

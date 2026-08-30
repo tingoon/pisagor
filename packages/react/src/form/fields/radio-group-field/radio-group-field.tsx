@@ -21,7 +21,7 @@ export interface RadioGroupFieldProps
 }
 // #endregion
 
-// #region Part
+// #region Component
 export function RadioGroupField({
   orientation,
   invalid,

@@ -19,9 +19,9 @@ type InputClassNames = VariantClassNames<InputSlots>;
 
 type InputVariantProps = InputRootVariantProps;
 
-type InputRootProps = Omit<ComponentProps<typeof InputPrimitive>, "size">;
-
-export interface InputProps extends InputRootProps, InputVariantProps {
+export interface InputProps
+  extends Omit<ComponentProps<typeof InputPrimitive>, "size">,
+    InputVariantProps {
   /**
    * Whether to show a clear button when the input has a value.
    *
@@ -38,7 +38,7 @@ export interface InputProps extends InputRootProps, InputVariantProps {
 }
 // #endregion
 
-// #region Part
+// #region Component
 export function Input({
   size = "md",
   variant: variantProp,
@@ -122,8 +122,4 @@ export function Input({
     </InputGroupRoot>
   );
 }
-// #endregion
-
-// #region Display Names
-Input.displayName = "Input";
 // #endregion

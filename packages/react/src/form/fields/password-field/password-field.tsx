@@ -16,7 +16,7 @@ export interface PasswordFieldProps extends FieldPresentationProps, PasswordInpu
 }
 // #endregion
 
-// #region Part
+// #region Component
 export function PasswordField({
   orientation,
   invalid,

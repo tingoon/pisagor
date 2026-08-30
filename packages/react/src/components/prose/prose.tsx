@@ -16,7 +16,7 @@ export interface ProseProps
 }
 // #endregion
 
-// #region Part
+// #region Component
 export function Prose({ children, html, className, ...rest }: ProseProps) {
   return (
     <ark.div
@@ -28,8 +28,4 @@ export function Prose({ children, html, className, ...rest }: ProseProps) {
     />
   );
 }
-// #endregion
-
-// #region Display Names
-Prose.displayName = "Prose";
 // #endregion

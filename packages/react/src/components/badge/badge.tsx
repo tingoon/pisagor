@@ -5,12 +5,10 @@ import type { ComponentProps } from "react";
 // #region Types
 export type BadgeVariant = BadgeVariantProps["variant"];
 
-type BadgeRootProps = ComponentProps<typeof ark.span>;
-
-export type BadgeProps = BadgeRootProps & BadgeVariantProps;
+export type BadgeProps = ComponentProps<typeof ark.span> & BadgeVariantProps;
 // #endregion
 
-// #region Part
+// #region Component
 export function Badge({
   pill = false,
   size = "md",
@@ -29,8 +27,4 @@ export function Badge({
     />
   );
 }
-// #endregion
-
-// #region Display Names
-Badge.displayName = "Badge";
 // #endregion

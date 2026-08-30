@@ -19,7 +19,7 @@ export interface AutocompleteFieldProps
 }
 // #endregion
 
-// #region Part
+// #region Component
 export function AutocompleteField({
   orientation,
   invalid,

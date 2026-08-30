@@ -17,7 +17,7 @@ export interface SliderFieldProps
 }
 // #endregion
 
-// #region Part
+// #region Component
 export function SliderField({
   invalid,
   name,

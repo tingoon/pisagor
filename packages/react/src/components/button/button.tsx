@@ -4,12 +4,10 @@ import type { ComponentProps } from "react";
 import { Spinner } from "../spinner";
 
 // #region Types
-type ButtonRootProps = ComponentProps<typeof ark.button>;
-
-export interface ButtonProps extends ButtonRootProps, ButtonVariantProps {}
+export interface ButtonProps extends ComponentProps<typeof ark.button>, ButtonVariantProps {}
 // #endregion
 
-// #region Part
+// #region Component
 export function Button({
   clickEffect = true,
   loading = false,
@@ -53,8 +51,4 @@ export function Button({
     </ark.button>
   );
 }
-// #endregion
-
-// #region Display Names
-Button.displayName = "Button";
 // #endregion

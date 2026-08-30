@@ -272,7 +272,3 @@ export function PhoneInput({
   );
 }
 // #endregion
-
-// #region Display Names
-PhoneInput.displayName = "PhoneInput";
-// #endregion

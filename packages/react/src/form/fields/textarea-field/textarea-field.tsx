@@ -16,7 +16,7 @@ export interface TextareaFieldProps extends FieldPresentationProps, TextareaCont
 }
 // #endregion
 
-// #region Part
+// #region Component
 export function TextareaField({
   orientation,
   invalid,

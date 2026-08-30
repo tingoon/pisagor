@@ -14,7 +14,7 @@ export interface CheckboxFieldProps
 }
 // #endregion
 
-// #region Part
+// #region Component
 export function CheckboxField({
   orientation = "horizontal",
   checked,

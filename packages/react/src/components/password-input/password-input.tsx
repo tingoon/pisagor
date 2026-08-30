@@ -43,7 +43,7 @@ export interface PasswordInputProps
 }
 // #endregion
 
-// #region Part
+// #region Component
 export function PasswordInput({
   size = "md",
   variant,
@@ -152,8 +152,4 @@ export function PasswordInput({
     </PasswordInputPrimitive.Root>
   );
 }
-// #endregion
-
-// #region Display Names
-PasswordInput.displayName = "PasswordInput";
 // #endregion

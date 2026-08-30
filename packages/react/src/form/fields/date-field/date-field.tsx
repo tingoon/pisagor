@@ -17,7 +17,7 @@ export interface DateFieldProps extends FieldPresentationProps, DatePickerContro
 }
 // #endregion
 
-// #region Part
+// #region Component
 export function DateField({
   orientation,
   invalid,

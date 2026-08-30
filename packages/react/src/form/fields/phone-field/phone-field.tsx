@@ -12,7 +12,7 @@ export interface PhoneFieldProps
 }
 // #endregion
 
-// #region Part
+// #region Component
 export function PhoneField({
   orientation,
   defaultCountry,

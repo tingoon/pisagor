@@ -3,9 +3,7 @@ import { separatorRecipe } from "@pisagor/recipes/separator";
 import type { ComponentProps } from "react";
 
 // #region Types
-type SeparatorRootProps = ComponentProps<typeof ark.div>;
-
-export interface SeparatorProps extends SeparatorRootProps {
+export interface SeparatorProps extends ComponentProps<typeof ark.div> {
   /**
    * The orientation of the separator.
    *
@@ -15,7 +13,7 @@ export interface SeparatorProps extends SeparatorRootProps {
 }
 // #endregion
 
-// #region Part
+// #region Component
 export function Separator({ orientation = "horizontal", className, ...rest }: SeparatorProps) {
   return (
     <ark.div
@@ -29,8 +27,4 @@ export function Separator({ orientation = "horizontal", className, ...rest }: Se
     />
   );
 }
-// #endregion
-
-// #region Display Names
-Separator.displayName = "Separator";
 // #endregion

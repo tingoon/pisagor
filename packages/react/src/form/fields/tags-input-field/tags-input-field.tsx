@@ -12,7 +12,7 @@ export interface TagsInputFieldProps extends FieldPresentationProps, TagsInputCo
 }
 // #endregion
 
-// #region Part
+// #region Component
 export function TagsInputField({
   orientation,
   invalid,

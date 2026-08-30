@@ -3,12 +3,10 @@ import { type StatusVariantProps, statusRecipe } from "@pisagor/recipes/status";
 import type { ComponentProps } from "react";
 
 // #region Types
-type StatusRootProps = ComponentProps<typeof ark.span>;
-
-export type StatusProps = StatusRootProps & StatusVariantProps;
+export type StatusProps = ComponentProps<typeof ark.span> & StatusVariantProps;
 // #endregion
 
-// #region Part
+// #region Component
 export function Status({ size, variant, className, ...rest }: StatusProps) {
   return (
     <ark.span
@@ -20,8 +18,4 @@ export function Status({ size, variant, className, ...rest }: StatusProps) {
     />
   );
 }
-// #endregion
-
-// #region Display Names
-Status.displayName = "Status";
 // #endregion

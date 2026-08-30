@@ -15,7 +15,7 @@ export interface FileFieldProps extends FieldPresentationProps, FileInputControl
 }
 // #endregion
 
-// #region Part
+// #region Component
 export function FileField({
   orientation,
   invalid,

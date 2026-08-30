@@ -17,7 +17,7 @@ export interface RichTextEditorFieldProps
 }
 // #endregion
 
-// #region Part
+// #region Component
 export function RichTextEditorField({
   orientation,
   invalid,
