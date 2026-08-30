@@ -1,5 +1,5 @@
 import type { InputOtpRecipe } from "@pisagor/recipes/input-otp";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface InputOTPContextValue {
   slots: InputOtpRecipe;

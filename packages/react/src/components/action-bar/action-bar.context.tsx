@@ -1,5 +1,5 @@
 import type { ActionBarRecipe } from "@pisagor/recipes/action-bar";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface ActionBarPositioning {
   /**

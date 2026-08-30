@@ -1,5 +1,5 @@
 import type { ToolbarRecipe } from "@pisagor/recipes/toolbar";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface ToolbarContextValue {
   slots: ToolbarRecipe;

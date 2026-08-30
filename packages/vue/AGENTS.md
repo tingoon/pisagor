@@ -5,7 +5,7 @@ Package-local guidance for component work in `packages/vue` (`@pisagor/vue`). Ca
 ## Package layout
 
 - **Light:** `src/components/<name>/` — root barrel (`@pisagor/vue`) and `./*`
-- **Heavy:** `src/<name>/` — dedicated exports only (not on the root barrel): `charts`, `data-grid`, `data-table`, `phone-input`, `rich-text-editor`
+- **Heavy:** `src/<name>/` — dedicated exports only (not on the root barrel): `data-grid`, `data-table`, `phone-input`, `rich-text-editor`
 - **Public hooks:** `src/hooks/` → `@pisagor/vue/hooks`
 - **Private:** `src/internal/` — never on the package export map
 
@@ -15,9 +15,10 @@ Heavy components are **not** on the root `@pisagor/vue` barrel. Import them only
 
 - `@pisagor/vue/data-grid`
 - `@pisagor/vue/data-table`
-- `@pisagor/vue/charts`
 - `@pisagor/vue/rich-text-editor`
 - `@pisagor/vue/phone-input`
+
+Charts and form fields live in separate packages: [`@pisagor/vue-charts`](../vue-charts), [`@pisagor/vue-form`](../vue-form) (and `/tanstack`).
 
 Light components: prefer the root barrel (`import { Accordion } from "@pisagor/vue"`). Use a subpath (`@pisagor/vue/accordion`) only when you need a tight import graph.
 
@@ -36,8 +37,6 @@ Do not author `tv()` in this package. Import from `@pisagor/recipes/<name>` (and
 Within this package, import sibling components with **relative paths** in component source files. **Stories** may use `@pisagor/vue` (light barrel) or `@pisagor/vue/<heavy>` like apps. Do not use `@pisagor/vue` / `@pisagor/vue/*` in non-story `.ts` under `packages/vue/src`. For cyclic dependencies (`input`, `input-group`, `textarea`), import the concrete `.ts` module instead of the folder barrel.
 
 Package-private helpers live under [`src/internal/`](./src/internal/) — never on the package export map. Public composables live under [`src/hooks/`](./src/hooks/) (`@pisagor/vue/hooks`). Do not re-export internal helpers from component barrels.
-
-Form fields live under [`src/form/`](./src/form/) (`@pisagor/vue/form`, `@pisagor/vue/form/tanstack`). [`src/blocks/`](./src/blocks/) (`@pisagor/vue/blocks`) is an empty scaffold (`.gitkeep` + barrel); add the first block folder when needed — [Vue Component Patterns](../../.cursor/rules/integrations/vue-component.mdc), [Storybook](../../.cursor/rules/integrations/storybook.mdc).
 
 Compound shared provide/inject lives in `<name>.context.ts` beside the main file — see [Vue Component Patterns → Context file](../../.cursor/rules/integrations/vue-component.mdc#context-file-namecontextts).
 

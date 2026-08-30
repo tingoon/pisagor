@@ -1,5 +1,5 @@
 import type { TimerItemGroupRecipe, TimerRecipe } from "@pisagor/recipes/timer";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface TimerContextValue {
   slots: TimerRecipe;

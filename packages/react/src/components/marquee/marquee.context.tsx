@@ -1,5 +1,5 @@
 import type { MarqueeRecipe } from "@pisagor/recipes/marquee";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface MarqueeContextValue {
   slots: MarqueeRecipe;

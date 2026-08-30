@@ -4,7 +4,7 @@ import type {
   TreeViewRecipe,
 } from "@pisagor/recipes/tree-view";
 import type { JSX } from "react";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 export interface TreeViewContextProps {
   /** Custom extension icons */

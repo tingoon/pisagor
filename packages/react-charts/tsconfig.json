@@ -1,0 +1,10 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "#/storybook/*": ["../../apps/react/.storybook/*"]
+    },
+    "types": ["bun", "node"]
+  },
+  "extends": "@pisagor/tsconfig/react-stories",
+  "include": ["src"]
+}

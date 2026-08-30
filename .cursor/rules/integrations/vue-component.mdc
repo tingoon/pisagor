@@ -18,7 +18,7 @@ How to build shared UI components in `packages/vue` (`@pisagor/vue`). General Vu
 
 Folder name, main file, and component export name align: **kebab-case folder** → **`<name>.ts`** → **PascalCase** component (e.g. `accordion/` → `accordion.ts` → `Accordion`).
 
-**Light** components live under `src/components/<name>/` (root barrel + `./*`). **Heavy** modules live under `src/<name>/` with dedicated exports only — not on the root barrel: `charts`, `data-grid`, `data-table`, `phone-input`, `rich-text-editor`.
+**Light** components live under `src/components/<name>/` (root barrel + `./*`). **Heavy** modules live under `src/<name>/` with dedicated exports only — not on the root barrel: `data-grid`, `data-table`, `phone-input`, `rich-text-editor`. Charts: `@pisagor/vue-charts`. Forms: `@pisagor/vue-form`.
 
 ```text
 <kebab-name>/

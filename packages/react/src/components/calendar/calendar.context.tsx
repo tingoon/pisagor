@@ -1,5 +1,5 @@
 import type { CalendarRecipe } from "@pisagor/recipes/calendar";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface CalendarContextValue {
   slots: CalendarRecipe;

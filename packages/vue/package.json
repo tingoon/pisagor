@@ -9,7 +9,6 @@
     "@pisagor/tokens": "workspace:*",
     "@pisagor/utils": "workspace:*",
     "@tailwindcss/typography": "^0.5.20",
-    "@tanstack/vue-form": "^1.33.5",
     "@tanstack/vue-table": "^9.2.4",
     "@tanstack/vue-virtual": "^3.13.36",
     "@tiptap/starter-kit": "^3.30.5",
@@ -20,18 +19,13 @@
   "description": "Accessible Vue UI components built on Ark UI and Tailwind CSS.",
   "devDependencies": {
     "@pisagor/tsconfig": "workspace:*",
-    "storybook": "^10.5.10",
     "vue": "catalog:"
   },
   "exports": {
     ".": "./src/components/index.ts",
     "./*": "./src/components/*/index.ts",
-    "./blocks": "./src/blocks/index.ts",
-    "./charts": "./src/charts/index.ts",
     "./data-grid": "./src/data-grid/index.ts",
     "./data-table": "./src/data-table/index.ts",
-    "./form": "./src/form/fields/index.ts",
-    "./form/tanstack": "./src/form/tanstack/index.ts",
     "./hooks": "./src/hooks/index.ts",
     "./phone-input": "./src/phone-input/index.ts",
     "./rich-text-editor": "./src/rich-text-editor/index.ts",

@@ -1,7 +1,7 @@
 import { useUncontrolled } from "@mantine/hooks";
 import type { AppShellRecipe } from "@pisagor/recipes/app-shell";
 import { type RefObject, useCallback } from "react";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 export type AppShellPlacement = "start" | "end";
 

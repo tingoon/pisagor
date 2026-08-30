@@ -1,5 +1,5 @@
 import type { FrameRecipe } from "@pisagor/recipes/frame";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface FrameContextValue {
   slots: FrameRecipe;

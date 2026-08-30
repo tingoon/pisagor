@@ -1,5 +1,5 @@
 import type { DialogRecipe } from "@pisagor/recipes/dialog";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface DialogContextValue {
   /**

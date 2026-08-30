@@ -1,5 +1,5 @@
 import type { LinkBoxRecipe } from "@pisagor/recipes/link-box";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface LinkBoxContextValue {
   slots: LinkBoxRecipe;

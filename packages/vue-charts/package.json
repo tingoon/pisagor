@@ -1,0 +1,47 @@
+{
+  "bugs": {
+    "url": "https://github.com/tingoon/pisagor/issues"
+  },
+  "dependencies": {
+    "@pisagor/recipes": "workspace:*",
+    "@pisagor/utils": "workspace:*"
+  },
+  "description": "Chart primitives for Pisagor Vue.",
+  "devDependencies": {
+    "@pisagor/tsconfig": "workspace:*",
+    "vue": "catalog:"
+  },
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles": "./src/styles.css"
+  },
+  "files": [
+    "src",
+    "!**/*.stories.*",
+    "!**/*.test.*",
+    "!**/AGENTS.md"
+  ],
+  "homepage": "https://github.com/tingoon/pisagor#readme",
+  "license": "MIT",
+  "name": "@pisagor/vue-charts",
+  "peerDependencies": {
+    "tailwindcss": "^4",
+    "vue": "^3.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "directory": "packages/vue-charts",
+    "type": "git",
+    "url": "git+https://github.com/tingoon/pisagor.git"
+  },
+  "scripts": {
+    "type-check": "tsc"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "type": "module",
+  "version": "0.0.1"
+}

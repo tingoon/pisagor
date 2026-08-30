@@ -1,5 +1,5 @@
 import type { SliderRecipe } from "@pisagor/recipes/slider";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface SliderContextValue {
   slots: SliderRecipe;

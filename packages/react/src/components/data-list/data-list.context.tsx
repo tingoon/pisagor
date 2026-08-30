@@ -1,5 +1,5 @@
 import type { DataListItemRecipe } from "@pisagor/recipes/data-list";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface DataListItemContextValue {
   slots: DataListItemRecipe;

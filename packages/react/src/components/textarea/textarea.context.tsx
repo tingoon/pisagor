@@ -1,5 +1,5 @@
 import type { TextareaRecipe } from "@pisagor/recipes/textarea";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface TextareaContextValue {
   slots: TextareaRecipe;

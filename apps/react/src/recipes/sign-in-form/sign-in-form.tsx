@@ -1,5 +1,5 @@
 import { Field } from "@pisagor/react";
-import { useAppForm } from "@pisagor/react/form/tanstack";
+import { useAppForm } from "@pisagor/react-form/tanstack";
 import { z } from "zod";
 
 const signInFormSchema = z.object({

@@ -1,5 +1,5 @@
 import type { SelectRecipe } from "@pisagor/recipes/select";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 export interface SelectRootContextValue {
   /** Slot class recipes from `selectRecipe`. */

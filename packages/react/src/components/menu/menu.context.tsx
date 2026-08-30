@@ -1,5 +1,5 @@
 import type { MenuRecipe } from "@pisagor/recipes/menu";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface MenuContextValue {
   slots: MenuRecipe;

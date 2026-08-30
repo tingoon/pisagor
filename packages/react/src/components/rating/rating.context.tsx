@@ -1,5 +1,5 @@
 import type { RatingRecipe } from "@pisagor/recipes/rating";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface RatingContextValue {
   slots: RatingRecipe;

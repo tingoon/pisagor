@@ -1,5 +1,5 @@
 import type { ButtonGroupRecipe } from "@pisagor/recipes/button-group";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface ButtonGroupContextValue {
   slots: ButtonGroupRecipe;

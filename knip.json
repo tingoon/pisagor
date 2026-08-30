@@ -1,24 +1,50 @@
 {
   "$schema": "./node_modules/knip/schema.json",
   "workspaces": {
+    ".": {
+      "entry": ["scripts/**/*.ts"]
+    },
     "apps/react": {
-      "entry": [".storybook/**/*", "src/**/*", "../../packages/react/**/*.stories.@(ts|tsx)"]
+      "entry": [
+        ".storybook/**/*",
+        "src/**/*",
+        "../../packages/react/**/*.stories.@(ts|tsx)",
+        "../../packages/react-charts/**/*.stories.@(ts|tsx)",
+        "../../packages/react-form/**/*.stories.@(ts|tsx)"
+      ]
     },
     "apps/vue": {
-      "entry": [".storybook/**/*", "src/**/*", "../../packages/vue/**/*.stories.@(ts|tsx)"]
+      "entry": [
+        ".storybook/**/*",
+        "src/**/*",
+        "../../packages/vue/**/*.stories.@(ts|tsx)",
+        "../../packages/vue-charts/**/*.stories.@(ts|tsx)",
+        "../../packages/vue-form/**/*.stories.@(ts|tsx)"
+      ]
     },
     "packages/react": {
       "entry": ["src/**/*"],
       "ignoreIssues": {
         "src/**/*.stories.tsx": ["unresolved", "dependencies", "unlisted"],
-        "src/blocks/**": ["exports", "types", "files"],
-        "src/charts/**/*.recipe.ts": ["exports", "types", "duplicates"],
         "src/components/**/*.recipe.ts": ["exports", "types", "duplicates"],
         "src/data-grid/**/*.recipe.ts": ["exports", "types", "duplicates"],
         "src/data-table/**/*.recipe.ts": ["exports", "types", "duplicates"],
         "src/internal/**": ["exports", "types"],
         "src/phone-input/**/*.recipe.ts": ["exports", "types", "duplicates"],
         "src/rich-text-editor/**/*.recipe.ts": ["exports", "types", "duplicates"]
+      }
+    },
+    "packages/react-charts": {
+      "entry": ["src/**/*"],
+      "ignoreIssues": {
+        "src/**/*.stories.tsx": ["unresolved", "dependencies", "unlisted"]
+      }
+    },
+    "packages/react-form": {
+      "entry": ["src/**/*"],
+      "ignoreIssues": {
+        "src/**/*.stories.tsx": ["unresolved", "dependencies", "unlisted"],
+        "src/internal/**": ["exports", "types"]
       }
     },
     "packages/recipes": {
@@ -31,9 +57,22 @@
       "entry": ["src/**/*"],
       "ignoreIssues": {
         "src/**/*.stories.ts": ["unresolved", "dependencies", "unlisted"],
-        "src/blocks/**": ["exports", "types", "files"],
         "src/components/**": ["exports", "types", "duplicates"],
         "src/internal/**": ["exports", "types", "duplicates"]
+      }
+    },
+    "packages/vue-charts": {
+      "entry": ["src/**/*"],
+      "ignoreIssues": {
+        "src/**/*.stories.ts": ["unresolved", "dependencies", "unlisted"],
+        "src/internal/**": ["exports", "types"]
+      }
+    },
+    "packages/vue-form": {
+      "entry": ["src/**/*"],
+      "ignoreIssues": {
+        "src/**/*.stories.ts": ["unresolved", "dependencies", "unlisted"],
+        "src/internal/**": ["exports", "types"]
       }
     }
   }

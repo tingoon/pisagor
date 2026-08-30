@@ -1,5 +1,5 @@
 import type { NavigationMenuRecipe } from "@pisagor/recipes/navigation-menu";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface NavigationMenuContextValue {
   slots: NavigationMenuRecipe;

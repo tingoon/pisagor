@@ -1,5 +1,5 @@
 import type { AnnouncementRecipe } from "@pisagor/recipes/announcement";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface AnnouncementContextValue {
   slots: AnnouncementRecipe;

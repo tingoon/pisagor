@@ -1,5 +1,5 @@
 import type { TabsRecipe } from "@pisagor/recipes/tabs";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface TabsContextValue {
   slots: TabsRecipe;

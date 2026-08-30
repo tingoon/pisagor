@@ -1,5 +1,5 @@
 import type { ImageCropperRecipe } from "@pisagor/recipes/image-cropper";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface ImageCropperContextValue {
   slots: ImageCropperRecipe;

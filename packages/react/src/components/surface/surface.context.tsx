@@ -1,5 +1,5 @@
 import type { SurfaceVariantProps } from "@pisagor/recipes/surface";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 export type SurfaceVariant = NonNullable<SurfaceVariantProps["variant"]>;
 

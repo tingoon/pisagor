@@ -1,5 +1,5 @@
 import type { JsonTreeViewRecipe } from "@pisagor/recipes/json-tree-view";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface JsonTreeViewContextValue {
   slots: JsonTreeViewRecipe;

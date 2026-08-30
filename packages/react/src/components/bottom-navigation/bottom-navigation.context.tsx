@@ -2,7 +2,7 @@ import type {
   BottomNavigationItemRecipe,
   BottomNavigationRecipe,
 } from "@pisagor/recipes/bottom-navigation";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface BottomNavigationContextValue {
   slots: BottomNavigationRecipe;

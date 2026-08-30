@@ -1,5 +1,5 @@
 import type { ResizableRecipe } from "@pisagor/recipes/resizable";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface ResizableContextValue {
   slots: ResizableRecipe;

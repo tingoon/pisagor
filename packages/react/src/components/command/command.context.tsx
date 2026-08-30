@@ -1,5 +1,5 @@
 import type { CommandRecipe } from "@pisagor/recipes/command";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface CommandContextValue {
   slots: CommandRecipe;

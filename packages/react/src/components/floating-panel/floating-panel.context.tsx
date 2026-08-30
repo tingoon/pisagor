@@ -1,5 +1,5 @@
 import type { FloatingPanelRecipe } from "@pisagor/recipes/floating-panel";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 export interface FloatingPanelContextValue {
   /** Slot class recipes from `floatingPanelRecipe`. */

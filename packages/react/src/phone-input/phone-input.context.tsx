@@ -6,7 +6,7 @@ import type {
 import type { ComboboxContentProps } from "../components/combobox";
 import type { InputProps } from "../components/input";
 import type { VariantClassNames } from "../internal/types";
-import { createContext } from "../internal/utils";
+import { createContext } from "../utils";
 
 type FormControlVariant = "primary" | "secondary";
 

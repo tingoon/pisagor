@@ -22,6 +22,8 @@ export default defineMain({
   stories: [
     path.join(workspaceRoot, "apps/vue/src/**/*.stories.ts"),
     path.join(workspaceRoot, "packages/vue/src/**/*.stories.ts"),
+    path.join(workspaceRoot, "packages/vue-charts/src/**/*.stories.ts"),
+    path.join(workspaceRoot, "packages/vue-form/src/**/*.stories.ts"),
   ],
 });
 

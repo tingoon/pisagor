@@ -1,5 +1,5 @@
 import type { FieldRecipe } from "@pisagor/recipes/field";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface FieldContextValue {
   slots: FieldRecipe;

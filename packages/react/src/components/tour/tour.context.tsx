@@ -1,6 +1,6 @@
 import type { UseTourReturn } from "@ark-ui/react/tour";
 import type { TourRecipe } from "@pisagor/recipes/tour";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 export interface TourProviderProps {
   /** The function to start the tour */

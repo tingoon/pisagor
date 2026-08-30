@@ -1,5 +1,5 @@
 import type { SidebarRecipe } from "@pisagor/recipes/sidebar";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface SidebarContextProps {
   isMobile: boolean;

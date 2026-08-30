@@ -1,5 +1,5 @@
 import type { AvatarRecipe } from "@pisagor/recipes/avatar";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface AvatarContextValue {
   slots: AvatarRecipe;

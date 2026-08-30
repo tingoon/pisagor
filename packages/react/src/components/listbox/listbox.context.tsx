@@ -1,5 +1,5 @@
 import type { ListboxItemRecipe, ListboxRecipe } from "@pisagor/recipes/listbox";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface ListboxContextValue {
   slots: ListboxRecipe;

@@ -1,5 +1,5 @@
 import type { QrCodeRecipe } from "@pisagor/recipes/qr-code";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface QrCodeContextValue {
   slots: QrCodeRecipe;

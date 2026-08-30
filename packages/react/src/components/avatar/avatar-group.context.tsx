@@ -1,5 +1,5 @@
 import type { AvatarGroupRecipe } from "@pisagor/recipes/avatar";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface AvatarGroupContextValue {
   slots: AvatarGroupRecipe;

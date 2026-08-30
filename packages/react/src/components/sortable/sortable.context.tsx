@@ -1,6 +1,6 @@
 import type { SortableItemRecipe } from "@pisagor/recipes/sortable";
 import type { DragEvent, KeyboardEvent } from "react";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 type SortableOrientation = "vertical" | "horizontal";
 

@@ -1,5 +1,5 @@
 import type { CarouselRecipe } from "@pisagor/recipes/carousel";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface CarouselContextValue {
   slots: CarouselRecipe;

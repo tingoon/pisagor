@@ -1,5 +1,5 @@
 import type { CircularSliderRecipe } from "@pisagor/recipes/circular-slider";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 export interface CircularSliderContextValue {
   ringCircumference: number;

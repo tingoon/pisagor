@@ -1,5 +1,5 @@
 import type { SheetRecipe } from "@pisagor/recipes/sheet";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface SheetContextValue {
   /** Slot class recipes from `sheetRecipe`. */

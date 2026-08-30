@@ -1,5 +1,5 @@
 import type { ProgressRecipe } from "@pisagor/recipes/progress";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface ProgressContextValue {
   slots: ProgressRecipe;

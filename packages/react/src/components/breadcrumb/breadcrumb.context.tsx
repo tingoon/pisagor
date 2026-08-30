@@ -1,5 +1,5 @@
 import type { BreadcrumbItemRecipe, BreadcrumbRecipe } from "@pisagor/recipes/breadcrumb";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface BreadcrumbContextValue {
   slots: BreadcrumbRecipe;

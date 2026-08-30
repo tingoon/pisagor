@@ -4,8 +4,12 @@ Multi-framework UI library: React and Vue components on Ark UI, Tailwind CSS v4,
 
 | Package | Description |
 | --- | --- |
-| [`@pisagor/react`](./packages/react) | Components, form fields, blocks (`@pisagor/react`, heavy via subpath) |
-| [`@pisagor/vue`](./packages/vue) | Vue components, form fields, blocks (`@pisagor/vue`, heavy via subpath) |
+| [`@pisagor/react`](./packages/react) | React UI (heavy via subpath) |
+| [`@pisagor/react-charts`](./packages/react-charts) | React charts (Recharts) |
+| [`@pisagor/react-form`](./packages/react-form) | React form fields + TanStack |
+| [`@pisagor/vue`](./packages/vue) | Vue UI (heavy via subpath) |
+| [`@pisagor/vue-charts`](./packages/vue-charts) | Vue charts |
+| [`@pisagor/vue-form`](./packages/vue-form) | Vue form fields + TanStack |
 | [`@pisagor/utils`](./packages/utils) | `cn` |
 | [`@pisagor/tokens`](./packages/tokens) | Design tokens / Tailwind theme |
 | [`@pisagor/recipes`](./packages/recipes) | Shared `tv()` class recipes |
@@ -19,9 +23,9 @@ Packages export TypeScript source. Use a bundler that compiles TS (Vite, etc.).
 bun add @pisagor/react @pisagor/utils
 ```
 
-Peer dependencies: `react` ^19, `react-dom` ^19, Tailwind CSS v4 (Vue: `vue` ^3.5 + Tailwind CSS v4). Heavy subpath deps (TanStack, TipTap, recharts, Phosphor, …) ship with the package.
+Peer dependencies: `react` ^19, `react-dom` ^19, Tailwind CSS v4 (Vue: `vue` ^3.5 + Tailwind CSS v4). Optional packages: `@pisagor/react-charts` / `@pisagor/vue-charts`, `@pisagor/react-form` / `@pisagor/vue-form`. Remaining heavy subpath deps (TipTap, table, phone, …) ship with the UI package.
 
-The root `@pisagor/react` / `@pisagor/vue` barrels export **light** components only. Heavy components are subpath-only: `data-grid`, `data-table`, `charts`, `rich-text-editor`, `phone-input`.
+The root `@pisagor/react` / `@pisagor/vue` barrels export **light** components only. Heavy components are subpath-only: `data-grid`, `data-table`, `rich-text-editor`, `phone-input`.
 
 ```tsx
 import { Button, Provider } from "@pisagor/react";
@@ -66,7 +70,7 @@ bun run knip
 
 ## License
 
-[MIT](./LICENSE) — Copyright (c) 2026 Tingoon contributors.
+[MIT](./LICENSE) — Copyright (c) 2026 Pisagor contributors.
 
 ## Contributing
 

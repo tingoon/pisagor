@@ -1,5 +1,5 @@
 import type { FileUploadItemRecipe, FileUploadRecipe } from "@pisagor/recipes/file-upload";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface FileUploadContextValue {
   slots: FileUploadRecipe;

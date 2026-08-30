@@ -1,5 +1,5 @@
 import type { EmptyStateRecipe } from "@pisagor/recipes/empty-state";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface EmptyStateContextValue {
   slots: EmptyStateRecipe;

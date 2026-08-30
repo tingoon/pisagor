@@ -4,6 +4,8 @@
     "@phosphor-icons/vue": "^2.2.1",
     "@pisagor/utils": "workspace:*",
     "@pisagor/vue": "workspace:*",
+    "@pisagor/vue-charts": "workspace:*",
+    "@pisagor/vue-form": "workspace:*",
     "vue": "catalog:"
   },
   "description": "Vue Storybook for @pisagor/vue package stories.",

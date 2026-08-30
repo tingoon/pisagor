@@ -1,5 +1,5 @@
 import type { CardRecipe } from "@pisagor/recipes/card";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface CardContextValue {
   slots: CardRecipe;

@@ -1,0 +1,53 @@
+{
+  "bugs": {
+    "url": "https://github.com/tingoon/pisagor/issues"
+  },
+  "dependencies": {
+    "@pisagor/react": "workspace:*",
+    "@pisagor/recipes": "workspace:*",
+    "@pisagor/utils": "workspace:*",
+    "recharts": "^3.10.1"
+  },
+  "description": "Chart primitives for Pisagor React (Recharts wrappers).",
+  "devDependencies": {
+    "@pisagor/tsconfig": "workspace:*",
+    "@types/react": "catalog:",
+    "@types/react-dom": "catalog:",
+    "react": "catalog:",
+    "react-dom": "catalog:"
+  },
+  "exports": {
+    ".": "./src/index.ts",
+    "./styles": "./src/styles.css"
+  },
+  "files": [
+    "src",
+    "!**/*.stories.*",
+    "!**/*.test.*",
+    "!**/AGENTS.md"
+  ],
+  "homepage": "https://github.com/tingoon/pisagor#readme",
+  "license": "MIT",
+  "name": "@pisagor/react-charts",
+  "peerDependencies": {
+    "react": "^19",
+    "react-dom": "^19",
+    "tailwindcss": "^4"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "directory": "packages/react-charts",
+    "type": "git",
+    "url": "git+https://github.com/tingoon/pisagor.git"
+  },
+  "scripts": {
+    "type-check": "tsc"
+  },
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "type": "module",
+  "version": "0.0.1"
+}

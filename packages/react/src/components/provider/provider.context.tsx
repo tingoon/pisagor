@@ -1,4 +1,4 @@
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 export type ProviderMessages = Record<string, string>;
 

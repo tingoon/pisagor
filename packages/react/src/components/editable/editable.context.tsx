@@ -1,5 +1,5 @@
 import type { EditableRecipe } from "@pisagor/recipes/editable";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface EditableContextValue {
   slots: EditableRecipe;

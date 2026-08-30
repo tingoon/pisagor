@@ -15,8 +15,12 @@ Instruction priority: [Core Boundaries](./.cursor/rules/core.mdc).
 │   ├── react/                React Storybook (port 3001)
 │   └── vue/                  Vue Storybook (port 3002)
 ├── packages/
-│   ├── react/                  React UI, form fields, blocks (`@pisagor/react`)
-│   ├── vue/                    Vue UI, form fields, blocks (`@pisagor/vue`)
+│   ├── react/                  React UI (`@pisagor/react`)
+│   ├── react-charts/           React charts (`@pisagor/react-charts`)
+│   ├── react-form/             React form fields (`@pisagor/react-form`)
+│   ├── vue/                    Vue UI (`@pisagor/vue`)
+│   ├── vue-charts/             Vue charts (`@pisagor/vue-charts`)
+│   ├── vue-form/               Vue form fields (`@pisagor/vue-form`)
 │   ├── recipes/                tv() class recipes (`@pisagor/recipes`)
 │   ├── tokens/                 design tokens / Tailwind theme (`@pisagor/tokens`)
 │   ├── utils/                  class-name helpers (`@pisagor/utils`)
@@ -24,14 +28,18 @@ Instruction priority: [Core Boundaries](./.cursor/rules/core.mdc).
 └── .cursor/                    rules and commands
 ```
 
-`@pisagor/tokens` = CSS theme; `@pisagor/recipes` = shared `tv()` recipes. Both `@pisagor/react` and `@pisagor/vue` import tokens via their `styles.css` entries.
+`@pisagor/tokens` = CSS theme; `@pisagor/recipes` = shared `tv()` recipes. UI packages import tokens via their `styles.css` entries.
 
 | Path | Notes |
 | ---- | ----- |
 | `apps/react` (`react-storybook`) | React Storybook |
 | `apps/vue` (`vue-storybook`) | Vue Storybook |
 | `packages/react` | [AGENTS.md](./packages/react/AGENTS.md) |
+| `packages/react-charts` | [AGENTS.md](./packages/react-charts/AGENTS.md) |
+| `packages/react-form` | [AGENTS.md](./packages/react-form/AGENTS.md) |
 | `packages/vue` | [AGENTS.md](./packages/vue/AGENTS.md) |
+| `packages/vue-charts` | [AGENTS.md](./packages/vue-charts/AGENTS.md) |
+| `packages/vue-form` | [AGENTS.md](./packages/vue-form/AGENTS.md) |
 | `packages/recipes` | [AGENTS.md](./packages/recipes/AGENTS.md) |
 | `packages/tokens` | [AGENTS.md](./packages/tokens/AGENTS.md) |
 | `packages/utils` | [README.md](./packages/utils/README.md) |

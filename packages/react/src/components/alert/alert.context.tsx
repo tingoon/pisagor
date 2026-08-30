@@ -1,5 +1,5 @@
 import type { AlertRecipe } from "@pisagor/recipes/alert";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface AlertContextValue {
   slots: AlertRecipe;

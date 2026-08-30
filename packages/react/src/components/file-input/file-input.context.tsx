@@ -1,5 +1,5 @@
 import type { FileInputRecipe } from "@pisagor/recipes/file-input";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface FileInputContextValue {
   slots: FileInputRecipe;

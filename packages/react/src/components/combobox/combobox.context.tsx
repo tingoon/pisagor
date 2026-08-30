@@ -1,5 +1,5 @@
 import type { ComboboxRecipe } from "@pisagor/recipes/combobox";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 export interface ComboboxRootContextValue {
   /** Slot class recipes from `comboboxRecipe`. */

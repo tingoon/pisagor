@@ -1,5 +1,5 @@
 import type { DropdownMenuRecipe } from "@pisagor/recipes/dropdown-menu";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface DropdownMenuContextValue {
   slots: DropdownMenuRecipe;

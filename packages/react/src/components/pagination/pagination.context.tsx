@@ -1,5 +1,5 @@
 import type { PaginationRecipe } from "@pisagor/recipes/pagination";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface PaginationContextValue {
   slots: PaginationRecipe;

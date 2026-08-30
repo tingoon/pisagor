@@ -1,5 +1,5 @@
 import type { CircularProgressRecipe } from "@pisagor/recipes/circular-progress";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface CircularProgressContextValue {
   slots: CircularProgressRecipe;

@@ -1,5 +1,5 @@
 import type { TimelineItemRecipe } from "@pisagor/recipes/timeline";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface TimelineItemContextValue {
   slots: TimelineItemRecipe;

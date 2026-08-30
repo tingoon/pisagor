@@ -1,5 +1,5 @@
 import type { NumberInputRecipe } from "@pisagor/recipes/number-input";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface NumberInputContextValue {
   slots: NumberInputRecipe;

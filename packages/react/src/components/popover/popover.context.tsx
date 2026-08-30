@@ -1,5 +1,5 @@
 import type { PopoverRecipe } from "@pisagor/recipes/popover";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface PopoverContentContextValue {
   slots: PopoverRecipe;

@@ -8,7 +8,7 @@ import type {
   RowData,
   Table as TableType,
 } from "@tanstack/react-table";
-import { createContext } from "../internal/utils";
+import { createContext } from "../utils";
 import type { DataTableFeatures } from "./data-table.features";
 
 interface DataTableContextValue<TData extends RowData> {

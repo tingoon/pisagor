@@ -1,5 +1,5 @@
 import type { DatePickerRecipe } from "@pisagor/recipes/date-picker";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface DatePickerContextValue {
   slots: DatePickerRecipe;

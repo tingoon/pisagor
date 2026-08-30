@@ -1,5 +1,5 @@
 import type { ClipboardRecipe } from "@pisagor/recipes/clipboard";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface ClipboardContextValue {
   slots: ClipboardRecipe;

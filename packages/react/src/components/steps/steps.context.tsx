@@ -1,5 +1,5 @@
 import type { StepsItemRecipe, StepsRecipe } from "@pisagor/recipes/steps";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface StepsContextValue {
   slots: StepsRecipe;

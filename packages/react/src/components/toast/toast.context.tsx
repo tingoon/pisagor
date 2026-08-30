@@ -1,5 +1,5 @@
 import type { ToastItemRecipe } from "@pisagor/recipes/toast";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface ToastItemContextValue {
   slots: ToastItemRecipe;

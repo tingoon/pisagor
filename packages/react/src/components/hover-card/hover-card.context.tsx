@@ -1,5 +1,5 @@
 import type { HoverCardRecipe } from "@pisagor/recipes/hover-card";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface HoverCardContextValue {
   slots: HoverCardRecipe;

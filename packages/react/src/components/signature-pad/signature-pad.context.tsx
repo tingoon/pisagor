@@ -1,5 +1,5 @@
 import type { SignaturePadRecipe } from "@pisagor/recipes/signature-pad";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface SignaturePadContextValue {
   slots: SignaturePadRecipe;

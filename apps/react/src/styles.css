@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @import "@pisagor/react/styles";
+@import "@pisagor/react-charts/styles";
+@import "@pisagor/react-form/styles";
 @source "./**/*.{ts,tsx}";
 
 /* Docs chrome follows AppDecorator's `.dark` on <html> (design tokens). */

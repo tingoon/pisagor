@@ -1,6 +1,6 @@
 ---
 description: Storybook story conventions for package components
-globs: packages/react/**/*.stories.tsx,packages/vue/**/*.stories.ts,apps/react/**/*.stories.tsx,apps/vue/**/*.stories.ts
+globs: packages/react/**/*.stories.tsx,packages/react-charts/**/*.stories.tsx,packages/react-form/**/*.stories.tsx,packages/vue/**/*.stories.ts,packages/vue-charts/**/*.stories.ts,packages/vue-form/**/*.stories.ts,apps/react/**/*.stories.tsx,apps/vue/**/*.stories.ts
 alwaysApply: false
 ---
 
@@ -27,13 +27,13 @@ Storybook **10**, CSF. React uses `@storybook/react-vite` (`.stories.tsx`); Vue 
 | UI components | `@pisagor/react` (light) or `@pisagor/react/<heavy>` |
 | Hooks | `@pisagor/react/hooks` or `@mantine/hooks` |
 | Utils | `@pisagor/utils` |
-| Form module under test | `@pisagor/react/form/tanstack` or `@pisagor/vue/form/tanstack` (hook) or `@pisagor/react/form` / `@pisagor/vue/form` / relative `./<name>` (field under test) |
+| Form module under test | `@pisagor/react-form/tanstack` or `@pisagor/vue-form/tanstack` (hook) or `@pisagor/react-form` / `@pisagor/vue-form` / relative `./<name>` (field under test) |
 | Block under test | `@pisagor/react/blocks/<name>` or `@pisagor/vue/blocks/<name>` |
 | Storybook config | `apps/react/.storybook/` |
 | Global decorator | `apps/react/.storybook/decorators/app-decorator.tsx` |
 | Recipes | `apps/react/src/recipes/<group>/` — one `<variant>.tsx` per recipe, one `<group>.stories.tsx` |
 
-Prefer `@pisagor/react` for light UI imports in stories (including the component under test). Heavy components (`data-grid`, `data-table`, `charts`, `rich-text-editor`, `phone-input`) stay on dedicated subpaths.
+Prefer `@pisagor/react` for light UI imports in stories (including the component under test). Heavy components (`data-grid`, `data-table`, `rich-text-editor`, `phone-input`) stay on dedicated subpaths; charts use `@pisagor/react-charts` / `@pisagor/vue-charts`.
 
 `@pisagor/react` and `@pisagor/utils` resolve via workspace package exports (same as apps). Runner-only alias `#/storybook/*` lives in each runner’s `tsconfig.json` and each package’s `tsconfig.json`; Vite reads it via `resolve.tsconfigPaths`. Story files are type-checked by the runner and the owning package `tsconfig.json`:
 
@@ -65,10 +65,10 @@ Prefer `@pisagor/react` for light UI imports in stories (including the component
 | Prefix | Package / surface |
 | ------ | ----------------- |
 | `Components/<Category>/<Name>` | `@pisagor/react` / `@pisagor/vue` UI components |
-| `Forms/…` | `@pisagor/react/form` / `@pisagor/vue/form` |
+| `Forms/…` | `@pisagor/react-form` / `@pisagor/vue-form` |
 | `Blocks/…` | blocks packages |
 | `Recipes/…` | recipe stories in the runner |
-| `Charts/…` | `@pisagor/react/charts` (e.g. `Charts/Bar`) |
+| `Charts/…` | `@pisagor/react-charts` / `@pisagor/vue-charts` (e.g. `Charts/Bar`) |
 
 For `Components/…`, use an existing category when possible:
 
@@ -148,7 +148,7 @@ const meta = preview.meta({
 
 **Autodocs:** enabled globally in each runner’s `preview` — do not set per story.
 
-New `@pisagor/react` / `@pisagor/vue` component stories: set `title`, `parameters.metadata.api`, `parameters.metadata.taxonomy`, and `parameters.docs.description.component`; add `aliases` when helpful. `@pisagor/react/form` / `@pisagor/vue/form` stories use `Forms/…` titles; blocks use `Blocks/…` titles; recipes use `Recipes/…` titles; chart stories use `Charts/…` titles. Copy a sibling story when unsure.
+New `@pisagor/react` / `@pisagor/vue` component stories: set `title`, `parameters.metadata.api`, `parameters.metadata.taxonomy`, and `parameters.docs.description.component`; add `aliases` when helpful. `@pisagor/react-form` / `@pisagor/vue-form` stories use `Forms/…` titles; blocks use `Blocks/…` titles; recipes use `Recipes/…` titles; chart stories use `Charts/…` titles. Copy a sibling story when unsure.
 
 ## File layout
 

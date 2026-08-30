@@ -22,6 +22,8 @@ export default defineMain({
   stories: [
     path.join(workspaceRoot, "apps/react/src/**/*.stories.tsx"),
     path.join(workspaceRoot, "packages/react/src/**/*.stories.tsx"),
+    path.join(workspaceRoot, "packages/react-charts/src/**/*.stories.tsx"),
+    path.join(workspaceRoot, "packages/react-form/src/**/*.stories.tsx"),
   ],
 });
 

@@ -1,5 +1,5 @@
 import type { SegmentGroupRecipe } from "@pisagor/recipes/segment-group";
-import { createContext } from "../../internal/utils";
+import { createContext } from "../../utils";
 
 interface SegmentGroupContextValue {
   slots: SegmentGroupRecipe;
