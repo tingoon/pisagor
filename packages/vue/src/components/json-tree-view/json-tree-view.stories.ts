@@ -18,12 +18,35 @@ const meta = preview.meta({
   title: "Components/Data Display/JSON Tree View",
 });
 
+const expandDepthData = {
+  user: {
+    profile: {
+      name: "Jane Doe",
+      settings: {
+        notifications: true,
+        theme: "dark",
+      },
+    },
+  },
+};
+
 export const Default = meta.story({
   render: () => ({
     components: { JsonTreeView },
     setup() {
-      const data = defaultData();
-      return { data };
+      return {
+        data: {
+          address: {
+            city: "Anytown",
+            state: "CA",
+            street: "123 Main St",
+            zip: "12345",
+          },
+          age: 30,
+          email: "john.doe@example.com",
+          name: "John Doe",
+        },
+      };
     },
     template: '<JsonTreeView :data="data" :default-expanded-depth="1" />',
   }),
@@ -33,8 +56,30 @@ export const DataTypes = meta.story({
   render: () => ({
     components: { JsonTreeView },
     setup() {
-      const data = dataTypesData();
-      return { data };
+      return {
+        data: {
+          address: {
+            city: "Anytown",
+            coordinates: { lat: 37.7749, lng: -122.4194 },
+            state: "CA",
+            street: "123 Main St",
+            zip: 12_345,
+          },
+          age: 30,
+          avatar: null,
+          balance: 1234.56,
+          createdAt: new Date("2024-01-15T14:22:00.000Z"),
+          description: undefined,
+          email: "john.doe@example.com",
+          isActive: true,
+          isVerified: false,
+          lastLogin: new Date("2024-01-12T00:00:00.000Z"),
+          name: "John Doe",
+          score: -42,
+          scores: [95, 87, 92, 78, 100],
+          tags: ["pattern", "data-display"],
+        },
+      };
     },
     template: '<JsonTreeView :data="data" :default-expanded-depth="2" />',
   }),
@@ -44,12 +89,10 @@ export const ExpandDepth = meta.story({
   render: () => ({
     components: { JsonTreeView },
     setup() {
-      const collapsedData = expandDepthData();
-      const expandedData = expandDepthData();
-      return { collapsedData, expandedData };
+      return { collapsedData: expandDepthData, expandedData: expandDepthData };
     },
     template: `
-      <div class="flex flex-col gap-6">
+      <div class="flex flex-col gap-2">
         <div>
           <p class="mb-2 font-medium text-foreground text-sm">
             defaultExpandedDepth=0 (all collapsed)
@@ -69,73 +112,17 @@ export const MapSet = meta.story({
   render: () => ({
     components: { JsonTreeView },
     setup() {
-      const data = mapSetData();
-      return { data };
+      return {
+        data: {
+          preferences: new Map([
+            ["theme", "dark"],
+            ["language", "en"],
+            ["notifications", "enabled"],
+          ]),
+          visitedPages: new Set(["/home", "/profile", "/settings"]),
+        },
+      };
     },
     template: '<JsonTreeView :data="data" :default-expanded-depth="1" />',
   }),
 });
-
-function defaultData() {
-  return {
-    address: {
-      city: "Anytown",
-      state: "CA",
-      street: "123 Main St",
-      zip: "12345",
-    },
-    age: 30,
-    email: "john.doe@example.com",
-    name: "John Doe",
-  };
-}
-
-function dataTypesData() {
-  return {
-    address: {
-      city: "Anytown",
-      coordinates: { lat: 37.7749, lng: -122.4194 },
-      state: "CA",
-      street: "123 Main St",
-      zip: 12_345,
-    },
-    age: 30,
-    avatar: null,
-    balance: 1234.56,
-    createdAt: new Date("2024-01-15T14:22:00.000Z"),
-    description: undefined,
-    email: "john.doe@example.com",
-    isActive: true,
-    isVerified: false,
-    lastLogin: new Date("2024-01-12T00:00:00.000Z"),
-    name: "John Doe",
-    score: -42,
-    scores: [95, 87, 92, 78, 100],
-    tags: ["pattern", "data-display"],
-  };
-}
-
-function mapSetData() {
-  return {
-    preferences: new Map([
-      ["theme", "dark"],
-      ["language", "en"],
-      ["notifications", "enabled"],
-    ]),
-    visitedPages: new Set(["/home", "/profile", "/settings"]),
-  };
-}
-
-function expandDepthData() {
-  return {
-    user: {
-      profile: {
-        name: "Jane Doe",
-        settings: {
-          notifications: true,
-          theme: "dark",
-        },
-      },
-    },
-  };
-}

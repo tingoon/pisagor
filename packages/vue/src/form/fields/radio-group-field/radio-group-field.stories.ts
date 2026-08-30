@@ -15,13 +15,31 @@ const meta = preview.meta({
   title: "Forms/Fields/Radio Group Field",
 });
 
+const planOptions = [
+  {
+    description: "For individuals and hobby projects.",
+    label: "Starter",
+    value: "starter",
+  },
+  {
+    description: "For teams collaborating across projects.",
+    label: "Pro",
+    value: "pro",
+  },
+  {
+    description: "For enterprise-grade scale and governance.",
+    label: "Enterprise",
+    value: "enterprise",
+  },
+];
+
 export const Default = meta.story({
   args: {
     description: "You can change this anytime in billing settings.",
     id: "radio-group-field-plan",
     label: "Plan",
     onValueChange: fn(),
-    options: planOptions(),
+    options: planOptions,
   },
   render: (args) => ({
     components: { RadioGroupField },
@@ -37,7 +55,7 @@ export const Invalid = meta.story({
     invalid: true,
     label: "Plan",
     onValueChange: fn(),
-    options: planOptions(),
+    options: planOptions,
   },
   render: (args) => ({
     components: { RadioGroupField },
@@ -53,7 +71,7 @@ export const Disabled = meta.story({
     id: "radio-group-field-plan-disabled",
     label: "Plan",
     onValueChange: fn(),
-    options: planOptions(),
+    options: planOptions,
   },
   render: (args) => ({
     components: { RadioGroupField },
@@ -61,23 +79,3 @@ export const Disabled = meta.story({
     template: `<RadioGroupField v-bind="args" />`,
   }),
 });
-
-function planOptions() {
-  return [
-    {
-      description: "For individuals and hobby projects.",
-      label: "Starter",
-      value: "starter",
-    },
-    {
-      description: "For teams collaborating across projects.",
-      label: "Pro",
-      value: "pro",
-    },
-    {
-      description: "For enterprise-grade scale and governance.",
-      label: "Enterprise",
-      value: "enterprise",
-    },
-  ];
-}

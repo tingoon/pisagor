@@ -14,11 +14,17 @@ const meta = preview.meta({
   title: "Forms/Fields/Select Field",
 });
 
+const countryOptions = [
+  { label: "Brazil", value: "br" },
+  { label: "Ireland", value: "ie" },
+  { label: "Mexico", value: "mx" },
+];
+
 export const Default = meta.story({
   args: {
     description: "Used for shipping estimates.",
     id: "select-field-country",
-    items: countryOptions(),
+    items: countryOptions,
     label: "Country",
     onValueChange: fn(),
     placeholder: "Select a country",
@@ -35,7 +41,7 @@ export const Invalid = meta.story({
     error: "Please select a country.",
     id: "select-field-country-invalid",
     invalid: true,
-    items: countryOptions(),
+    items: countryOptions,
     label: "Country",
     onValueChange: fn(),
     placeholder: "Select a country",
@@ -52,7 +58,7 @@ export const Disabled = meta.story({
     description: "Used for shipping estimates.",
     disabled: true,
     id: "select-field-country-disabled",
-    items: countryOptions(),
+    items: countryOptions,
     label: "Country",
     onValueChange: fn(),
     placeholder: "Select a country",
@@ -63,11 +69,3 @@ export const Disabled = meta.story({
     template: `<SelectField v-bind="args" />`,
   }),
 });
-
-function countryOptions() {
-  return [
-    { label: "Brazil", value: "br" },
-    { label: "Ireland", value: "ie" },
-    { label: "Mexico", value: "mx" },
-  ];
-}

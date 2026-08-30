@@ -78,7 +78,18 @@ export const CustomSpacing = meta.story({
                 description: "Make changes to your account here. Click save when you're done.",
                 title: "Edit user",
               }),
-              h(Sheet.Body, null, () => editUserFields()),
+              h(Sheet.Body, null, () =>
+                h(Field.Group, null, () => [
+                  h(Field, null, () => [
+                    h(Field.Label, null, () => "Name"),
+                    h(Input, { defaultValue: "Jane Doe" }),
+                  ]),
+                  h(Field, null, () => [
+                    h(Field.Label, null, () => "Username"),
+                    h(Input, { defaultValue: "@jane.doe" }),
+                  ]),
+                ]),
+              ),
               h(Sheet.Footer, null, () => [
                 h(Sheet.CloseTrigger, { asChild: true }, () =>
                   h("button", { class: outlineButtonClass(), type: "button" }, "Cancel"),
@@ -299,19 +310,6 @@ export const CloseBehavior = meta.story({
     },
   }),
 });
-
-function editUserFields() {
-  return h(Field.Group, null, () => [
-    h(Field, null, () => [
-      h(Field.Label, null, () => "Name"),
-      h(Input, { defaultValue: "Jane Doe" }),
-    ]),
-    h(Field, null, () => [
-      h(Field.Label, null, () => "Username"),
-      h(Input, { defaultValue: "@jane.doe" }),
-    ]),
-  ]);
-}
 
 const sidePlacements = [
   {

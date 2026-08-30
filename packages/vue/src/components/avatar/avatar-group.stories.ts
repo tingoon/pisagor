@@ -23,11 +23,34 @@ const meta = preview.meta({
   title: "Components/Data Display/Avatar/Avatar Group",
 });
 
+const users = [
+  {
+    fallback: "JD",
+    name: "Jane Doe",
+    src: "https://randomuser.me/api/portraits/women/5.jpg",
+  },
+  {
+    fallback: "JD",
+    name: "John Doe",
+    src: "https://randomuser.me/api/portraits/men/12.jpg",
+  },
+  {
+    fallback: "JD",
+    name: "Jane Doe",
+    src: "https://randomuser.me/api/portraits/women/44.jpg",
+  },
+  {
+    fallback: "JD",
+    name: "John Doe",
+    src: "https://randomuser.me/api/portraits/men/32.jpg",
+  },
+];
+
 export const Default = meta.story({
   render: () => ({
     components: { AvatarGroup },
     setup() {
-      return { users: users() };
+      return { users };
     },
     template: `<AvatarGroup :max="4" :users="users" />`,
   }),
@@ -37,7 +60,7 @@ export const Compound = meta.story({
   render: () => ({
     components: { Avatar, AvatarGroup },
     setup() {
-      return { users: users() };
+      return { users };
     },
     template: `
       <AvatarGroup.Root>
@@ -57,7 +80,7 @@ export const Count = meta.story({
   render: () => ({
     components: { Avatar, AvatarGroup },
     setup() {
-      return { users: users() };
+      return { users };
     },
     template: `
       <AvatarGroup.Root>
@@ -73,28 +96,3 @@ export const Count = meta.story({
     `,
   }),
 });
-
-function users() {
-  return [
-    {
-      fallback: "JD",
-      name: "Jane Doe",
-      src: "https://randomuser.me/api/portraits/women/5.jpg",
-    },
-    {
-      fallback: "JD",
-      name: "John Doe",
-      src: "https://randomuser.me/api/portraits/men/12.jpg",
-    },
-    {
-      fallback: "JD",
-      name: "Jane Doe",
-      src: "https://randomuser.me/api/portraits/women/44.jpg",
-    },
-    {
-      fallback: "JD",
-      name: "John Doe",
-      src: "https://randomuser.me/api/portraits/men/32.jpg",
-    },
-  ];
-}

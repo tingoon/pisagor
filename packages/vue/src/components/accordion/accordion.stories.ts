@@ -30,7 +30,44 @@ export const Default = meta.story({
   render: () => ({
     components: { Accordion },
     setup() {
-      return { items: faqItems() };
+      return {
+        items: [
+          {
+            content: h("div", { class: "flex flex-col gap-2 text-muted-foreground" }, [
+              h(
+                "p",
+                "Our flagship product combines cutting-edge technology with sleek design. Built with premium materials, it offers unparalleled performance and reliability.",
+              ),
+              h(
+                "p",
+                "Key features include advanced processing capabilities, and an intuitive user interface designed for both beginners and experts.",
+              ),
+            ]),
+            title: "Product information",
+            value: "item-1",
+          },
+          {
+            content: h("div", { class: "flex flex-col gap-2 text-muted-foreground" }, [
+              h(
+                "p",
+                "We offer worldwide shipping through trusted courier partners. Standard delivery takes 3 to 5 business days, while express shipping ensures delivery within 1 to 2 business days.",
+              ),
+            ]),
+            title: "Shipping details",
+            value: "item-2",
+          },
+          {
+            content: h("div", { class: "flex flex-col gap-2 text-muted-foreground" }, [
+              h(
+                "p",
+                "We stand behind our products with a comprehensive 30-day return policy. If you're not completely satisfied, return the item in its original condition.",
+              ),
+            ]),
+            title: "Return policy",
+            value: "item-3",
+          },
+        ],
+      };
     },
     template: '<Accordion :default-value="[\'item-1\']" :items="items" />',
   }),
@@ -40,7 +77,7 @@ export const Multiple = meta.story({
   render: () => ({
     components: { Accordion },
     setup() {
-      return { items: shortFaqItems() };
+      return { items: shortFaqItems };
     },
     template: '<Accordion multiple :items="items" />',
   }),
@@ -50,7 +87,7 @@ export const NonCollapsible = meta.story({
   render: () => ({
     components: { Accordion },
     setup() {
-      return { items: shortFaqItems() };
+      return { items: shortFaqItems };
     },
     template: '<Accordion :collapsible="false" :default-value="[\'item-1\']" :items="items" />',
   }),
@@ -60,7 +97,7 @@ export const Disabled = meta.story({
   render: () => ({
     components: { Accordion },
     setup() {
-      const items = shortFaqItems().map((item) =>
+      const items = shortFaqItems.map((item) =>
         item.value === "item-2" ? { ...item, disabled: true } : item,
       );
       return { items };
@@ -73,7 +110,7 @@ export const Controlled = meta.story({
   render: () => ({
     components: { Accordion },
     setup() {
-      const items = shortFaqItems();
+      const items = shortFaqItems;
       const value = ref(["item-1"]);
       const onValueChange = (details: { value: string[] }) => {
         value.value = details.value;
@@ -138,73 +175,32 @@ export const Compound = meta.story({
   }),
 });
 
-function faqItems() {
-  return [
-    {
-      content: h("div", { class: "flex flex-col gap-2 text-muted-foreground" }, [
-        h(
-          "p",
-          "Our flagship product combines cutting-edge technology with sleek design. Built with premium materials, it offers unparalleled performance and reliability.",
-        ),
-        h(
-          "p",
-          "Key features include advanced processing capabilities, and an intuitive user interface designed for both beginners and experts.",
-        ),
-      ]),
-      title: "Product information",
-      value: "item-1",
-    },
-    {
-      content: h("div", { class: "flex flex-col gap-2 text-muted-foreground" }, [
-        h(
-          "p",
-          "We offer worldwide shipping through trusted courier partners. Standard delivery takes 3 to 5 business days, while express shipping ensures delivery within 1 to 2 business days.",
-        ),
-      ]),
-      title: "Shipping details",
-      value: "item-2",
-    },
-    {
-      content: h("div", { class: "flex flex-col gap-2 text-muted-foreground" }, [
-        h(
-          "p",
-          "We stand behind our products with a comprehensive 30-day return policy. If you're not completely satisfied, return the item in its original condition.",
-        ),
-      ]),
-      title: "Return policy",
-      value: "item-3",
-    },
-  ];
-}
-
-function shortFaqItems() {
-  return [
-    {
-      content: h(
-        "p",
-        { class: "text-muted-foreground" },
-        "Our flagship product combines cutting-edge technology with sleek design.",
-      ),
-      title: "Product information",
-      value: "item-1",
-    },
-    {
-      content: h(
-        "p",
-        { class: "text-muted-foreground" },
-        "We offer worldwide shipping through trusted courier partners.",
-      ),
-      title: "Shipping details",
-      value: "item-2",
-    },
-    {
-      content: h(
-        "p",
-        { class: "text-muted-foreground" },
-        "We stand behind our products with a comprehensive 30-day return policy.",
-      ),
-      title: "Return policy",
-      value: "item-3",
-    },
-  ];
-}
+const shortFaqItems = [
+  {
+    content: h(
+      "p",
+      { class: "text-muted-foreground" },
+      "Our flagship product combines cutting-edge technology with sleek design.",
+    ),
+    title: "Product information",
+    value: "item-1",
+  },
+  {
+    content: h(
+      "p",
+      { class: "text-muted-foreground" },
+      "We offer worldwide shipping through trusted courier partners.",
+    ),
+    title: "Shipping details",
+    value: "item-2",
+  },
+  {
+    content: h(
+      "p",
+      { class: "text-muted-foreground" },
+      "We stand behind our products with a comprehensive 30-day return policy.",
+    ),
+    title: "Return policy",
+    value: "item-3",
+  },
+];
