@@ -154,8 +154,8 @@ New `@pisagor/react` / `@pisagor/vue` component stories: set `title`, `parameter
 
 1. **Imports** — `preview`, component(s), icons/helpers.
 2. **Meta** — single `preview.meta({ … })` block.
-3. **Stories** — exported in [story order](#story-order) below.
-4. **Fixtures** — shared sample data at the **bottom** (lowercase const names, e.g. `users`).
+3. **Fixtures** — shared sample data as lowercase `const` when referenced from `args` (must be declared before stories). Otherwise place at the **bottom**. Prefer `const` over `function` that only returns data.
+4. **Stories** — exported in [story order](#story-order) below.
 
 ## Story order
 
@@ -197,7 +197,9 @@ export const Default = meta.story({
 - **Do not** duplicate `Default` or mirror an existing story.
 - **Names:** PascalCase.
 - **Layout:** side-by-side demos use `gap-2` in flex wrappers (not `gap-4`). Do not add `max-w-*`, `mx-auto w-*`, or similar width constraints on the component under test — stories show components at their natural width (`w-full` where the component defines it).
-- **Fixtures:** inline when used once; shared const at file bottom when reused. No trivial render wrappers — use `render: () => …` directly.
+- **Fixtures:** inline in the story when used once — do **not** extract a top-level `const` / `function` for single-use data either. Shared `const` only when reused (≥2 call sites). Prefer `const` over a `function` that only returns data.
+- **No single-use helpers** — do not extract a demo component, render wrapper, or fixture used in only one story. Put the JSX / data in that story’s `render` or `args`. Exception: a child component required for hooks under a provider (e.g. `useAppShell` inside `AppShell`).
+- **No trivial wrappers** — use `render: () => …` directly; do not wrap children in a one-off `Demo()` / `Shell()`.
 
 ## Sample data
 
