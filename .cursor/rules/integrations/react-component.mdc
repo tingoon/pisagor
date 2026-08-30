@@ -61,7 +61,7 @@ Applies to the published workspace component package (`@pisagor/react`):
 - **Stories** (`.stories.tsx`) may use the public export map (e.g. `import { Button } from "@pisagor/react"`) — same as apps. Heavy components use dedicated subpaths (`@pisagor/react/data-grid`, `@pisagor/react/data-table`, …).
 - Apps and other packages use the public export map for that package (light barrel or heavy subpath).
 - For cyclic pairs (e.g. `input` ↔ `input-group` ↔ `textarea`), import the concrete module file, not the barrel `index.ts`.
-- Import `{name}Variants` / `{Name}VariantProps` from `@pisagor/recipes/<name>` — see [Styling](#styling). Do not define `tv()` in component packages. Do not add `<name>.recipe.ts` shims.
+- Import `{name}Recipe` / `{Name}VariantProps` from `@pisagor/recipes/<name>` — see [Styling](#styling). Do not define `tv()` in component packages. Do not add `<name>.recipe.ts` shims.
 - Use relative imports (`../../internal/utils`, siblings) within the same component folder.
 - Import icons from `@phosphor-icons/react` (e.g. `CaretDownIcon`).
 
@@ -94,7 +94,7 @@ Choose **closed**, **compound**, or **compound + shorthand** per component.
 - Export via `Object.assign(FooShorthand, { Root, Item, Trigger, … })` when shorthand exists; otherwise `Object.assign(FooRoot, { … })`.
 - Public surface is `Foo.Root` / `Foo.Part` only. Flat `FooPart` barrel re-exports are forbidden; do not ship a dual compound + flat surface.
 - Detached presets (flat `FooField`) must attach on the namespace as `Foo.Field` (via `Object.assign` on the compound / shorthand object). No parallel flat compat export.
-- Utils and hooks may remain named exports outside the namespace. Do not re-export `{name}Variants` from the component barrel — consumers import recipes from `@pisagor/recipes/<name>`.
+- Utils and hooks may remain named exports outside the namespace. Do not re-export `{name}Recipe` from the component barrel — consumers import recipes from `@pisagor/recipes/<name>`.
 - `parameters.metadata.api` must match the real barrel surface (`compound` / `compound-shorthand` only when the barrel is a true `Foo.Root` / `Foo.Part` namespace).
 
 **Shorthand:**
@@ -109,7 +109,7 @@ Choose **closed**, **compound**, or **compound + shorthand** per component.
 **Closed:**
 
 - Export a single function with convenience props and DOM sub-element `*Props` bags (content/behavior — not styling).
-- **Closed multi-slot:** implement private Parts + `<name>.context.tsx` (`slots` from `@pisagor/recipes` `{name}Variants`); compose in `#region Closed`. Do not export parts or part prop types from the barrel — only `Foo` / `FooProps`.
+- **Closed multi-slot:** implement private Parts + `<name>.context.tsx` (`slots` from `@pisagor/recipes` `{name}Recipe`); compose in `#region Closed`. Do not export parts or part prop types from the barrel — only `Foo` / `FooProps`.
 - Export via `export * from "./foo"` (shared package barrel only).
 
 **Barrel (both):**
@@ -136,7 +136,7 @@ Choose **closed**, **compound**, or **compound + shorthand** per component.
 | **Compound + headless** | `{Name}Root` + subparts; headless primitive; `Object.assign` barrel |
 | **Compound + shorthand** | Compound = source of truth; `FooShorthand` or root preset for common cases |
 | **Compound barrel** | `Object.assign(FooRoot, { Item, Trigger, … })` in `index.ts` |
-| **Closed + multi-slot recipe** | Single export; import multi-slot `{name}Variants` from `@pisagor/recipes`; sub-element `classNames` bags |
+| **Closed + multi-slot recipe** | Single export; import multi-slot `{name}Recipe` from `@pisagor/recipes`; sub-element `classNames` bags |
 | **Closed + behavior** | Single export; convenience props; single-element or thin recipe from `@pisagor/recipes` |
 | **Closed + primitive wrapper** | Thin styled layer over one headless part |
 | **Composition layer** | Composes other package exports (e.g. `@pisagor/react/*`); no new primitive |
@@ -217,7 +217,7 @@ Follow [React Style Guide](../styleguides/react.mdc) for naming and [props field
 - Use `export interface FooProps` when props are part of the public API.
 - Combine with `interface FooProps extends FooRootProps, FooVariantProps`.
 - Use `Omit<…>` when a convenience prop conflicts with DOM attributes.
-- Extend recipe `{Name}VariantProps` from `@pisagor/recipes/<name>` (or `VariantProps<typeof fooVariants>` when composing locally). Document library-owned defaults with TSDoc **`@defaultValue`** matching the recipe `defaultVariants` — see [TypeScript Style Guide](../styleguides/typescript.mdc) (TSDoc only; do not use JSDoc-only `@default`).
+- Extend recipe `{Name}VariantProps` from `@pisagor/recipes/<name>` (or `VariantProps<typeof fooRecipe>` when composing locally). Document library-owned defaults with TSDoc **`@defaultValue`** matching the recipe `defaultVariants` — see [TypeScript Style Guide](../styleguides/typescript.mdc) (TSDoc only; do not use JSDoc-only `@default`).
 - Type sub-element bags as `titleProps?: Omit<TitleProps, "children" | "className">`.
 
 | `Omit` usage | Valid | Invalid |
@@ -258,17 +258,17 @@ Recipes (`tv()`) are owned by **`@pisagor/recipes`**. Component packages import 
 
 ### Consuming recipes
 
-- Import from the recipe subpath: `import { buttonVariants, type ButtonVariantProps } from "@pisagor/recipes/button"`. Prefer `@pisagor/recipes/<name>` over the root barrel for a tight import graph.
-- Shared form-control shells: `import { formControlShellVariants, … } from "@pisagor/recipes/form-control"`.
+- Import from the recipe subpath: `import { buttonRecipe, type ButtonVariantProps } from "@pisagor/recipes/button"`. Prefer `@pisagor/recipes/<name>` over the root barrel for a tight import graph.
+- Shared form-control shells: `import { formControlShellRecipe, … } from "@pisagor/recipes/form-control"`.
 - Prefer recipe-exported `{Name}VariantProps` / slot types over re-deriving `VariantProps<typeof …>` in the component when the recipe already exports them.
 - Mirror recipe `defaultVariants` in destructuring defaults; document those props with TSDoc `@defaultValue`.
 - **`cn()`:** one logical concern per string; `className` last.
 - Use **semantic tokens** (`bg-muted`, `text-muted-foreground`).
 - **Root** always accepts **`className`** — never `rootClassName`.
-- **Single-element recipes** (top-level `base:`): merge with `cn(fooVariants({ … }), className)` or `fooVariants({ …, className })` — no `classNames` prop. The call returns a **string**, not `{ base() }`.
-- **Multi-slot recipes** (`slots:`): `const slots = fooVariants()` (or `fooVariants({ … })`); merge via `slots.part({ className: classNames?.part })`; type **`classNames`** as `VariantClassNames<{Name}Slots>` (`base` is omitted — root styling is always `className`).
+- **Single-element recipes** (top-level `base:`): merge with `cn(fooRecipe({ … }), className)` or `fooRecipe({ …, className })` — no `classNames` prop. The call returns a **string**, not `{ base() }`.
+- **Multi-slot recipes** (`slots:`): `const slots = fooRecipe()` (or `fooRecipe({ … })`); merge via `slots.part({ className: classNames?.part })`; type **`classNames`** as `VariantClassNames<{Name}Slots>` (`base` is omitted — root styling is always `className`).
 - **Root slot:** `slots.base({ className })` — never `classNames?.base`.
-- **Shell + slot:** keep outer `cn` only for a separate shell recipe — `cn(shellVariants(…), slots.part({ className: classNames?.part }))`.
+- **Shell + slot:** keep outer `cn` only for a separate shell recipe — `cn(shellRecipe(…), slots.part({ className: classNames?.part }))`.
 - Prefer `slots.part({ className })` over `cn(slots.part(), className)`.
 - Apply **motion & focus:** `motion-reduce:transition-none!`; `outline-hidden` + `focus-visible:ring-[3px] focus-visible:ring-ring/32`; style `disabled:`, `data-disabled:`, `aria-disabled:` consistently.
 - On **plain** styled nodes, set **`data-scope="{name}"`** and **`data-part="{part}"`** (root uses `data-part="root"`). On machine-backed parts, omit both — Ark/Zag already emit `data-scope` / `data-part`. Never override those attributes on a primitive part (Zag queries the DOM through them).
@@ -278,14 +278,14 @@ Recipes (`tv()`) are owned by **`@pisagor/recipes`**. Component packages import 
 
 When adding or editing a recipe module (not in the component file):
 
-- Export `{name}Variants` via `tv()`; use `slots:` for multi-part DOM, top-level `base:` for a single element; set `defaultVariants`.
-- **`base:`** — tv default key. Single-element recipes use top-level `base:`; multi-slot recipes name the primary element slot `base` (not `root`). Dedicated shared shells may still use names like `inputRootVariants`.
+- Export `{name}Recipe` via `tv()`; use `slots:` for multi-part DOM, top-level `base:` for a single element; set `defaultVariants`.
+- **`base:`** — tv default key. Single-element recipes use top-level `base:`; multi-slot recipes name the primary element slot `base` (not `root`). Dedicated shared shells may still use names like `inputRootRecipe`.
 - **`slots:`** — only parts with real default styles; every slot key must have non-empty **default** class strings.
 - **Do not** add placeholder slots (`""`, `[]`) to generate `classNames` keys — remove the slot and override per [Override without a slot](#override-without-a-slot).
 - **Empty variant entries are fine** — `variants.*.*: ""` / `[]` and empty class strings in `compoundVariants` mean “no extra classes for this option.” That is not a placeholder slot.
-- When a multi-export file names list chrome, use part names (`list`, not `base`) — e.g. `tabsListVariants` uses `slots.list`.
-- Split `tv()` when reuse needs a shared root shell (`inputRootVariants`) separate from optional slots (`inputVariants.clearableRoot`).
-- Export `{Name}VariantProps` (and slot/`Variants` return types as needed) beside the recipe.
+- When a multi-export file names list chrome, use part names (`list`, not `base`) — e.g. `tabsListRecipe` uses `slots.list`.
+- Split `tv()` when reuse needs a shared root shell (`inputRootRecipe`) separate from optional slots (`inputRecipe.clearableRoot`).
+- Export `{Name}VariantProps` (and `{Name}Slots` return types as needed) beside the recipe.
 
 ### Override without a slot
 

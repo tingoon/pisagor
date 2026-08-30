@@ -120,7 +120,7 @@ Do not call composables after a conditional `return` from `setup`. Early UI guar
 
 - Prefer **`h()` fragments** (`[…]` children) over extra wrapper `div`s when you only need a container.
 - Use a **stable, unique key** for list items (id from data, not array index) when the list can reorder or change — pass `key` on the VNode data / `h(…, { key })`.
-- When recipe `slots` and Vue `slots` collide in `setup`, rename: `slots: children` or `const variantSlots = fooVariants()`.
+- When recipe `slots` and Vue `slots` collide in `setup`, rename: `slots: children` or `const variantSlots = fooRecipe()`.
 - Apps SFCs: use `<script setup lang="ts">`; keep templates lean — move non-trivial logic into composables.
 
 ## Legacy patterns
