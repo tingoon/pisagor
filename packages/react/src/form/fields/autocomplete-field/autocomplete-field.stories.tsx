@@ -15,11 +15,17 @@ const meta = preview.meta({
   title: "Forms/Fields/Autocomplete Field",
 });
 
+const cityOptions = [
+  { label: "Dublin", value: "dublin" },
+  { label: "Mexico City", value: "mexico-city" },
+  { label: "Sao Paulo", value: "sao-paulo" },
+];
+
 export const Default = meta.story({
   args: {
     description: "Start typing to filter options.",
     id: "autocomplete-field-city",
-    items: cityOptions(),
+    items: cityOptions,
     label: "City",
     onValueChange: fn(),
   },
@@ -30,7 +36,7 @@ export const Invalid = meta.story({
     error: "Please select a city.",
     id: "autocomplete-field-city-invalid",
     invalid: true,
-    items: cityOptions(),
+    items: cityOptions,
     label: "City",
     onValueChange: fn(),
   },
@@ -41,16 +47,8 @@ export const Disabled = meta.story({
     description: "Start typing to filter options.",
     disabled: true,
     id: "autocomplete-field-city-disabled",
-    items: cityOptions(),
+    items: cityOptions,
     label: "City",
     onValueChange: fn(),
   },
 });
-
-function cityOptions() {
-  return [
-    { label: "Dublin", value: "dublin" },
-    { label: "Mexico City", value: "mexico-city" },
-    { label: "Sao Paulo", value: "sao-paulo" },
-  ];
-}

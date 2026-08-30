@@ -26,16 +26,99 @@ const meta = preview.meta({
   title: "Components/Layout/Accordion",
 });
 
+const shortFaqItems = [
+  {
+    content: (
+      <p className="text-muted-foreground">
+        Our flagship product combines cutting-edge technology with sleek design. Built with premium
+        materials, it offers unparalleled performance and reliability.
+      </p>
+    ),
+    title: "Product information",
+    value: "item-1",
+  },
+  {
+    content: (
+      <p className="text-muted-foreground">
+        We offer worldwide shipping through trusted courier partners. Standard delivery takes 3 to 5
+        business days.
+      </p>
+    ),
+    title: "Shipping details",
+    value: "item-2",
+  },
+  {
+    content: (
+      <p className="text-muted-foreground">
+        We stand behind our products with a comprehensive 30-day return policy. If you&apos;re not
+        completely satisfied, return the item in its original condition.
+      </p>
+    ),
+    title: "Return policy",
+    value: "item-3",
+  },
+];
+
 export const Default = meta.story({
   args: {
     defaultValue: ["item-1"],
-    items: faqItems(),
+    items: [
+      {
+        content: (
+          <div className="flex flex-col gap-2 text-muted-foreground">
+            <p>
+              Our flagship product combines cutting-edge technology with sleek design. Built with
+              premium materials, it offers unparalleled performance and reliability.
+            </p>
+            <p>
+              Key features include advanced processing capabilities, and an intuitive user interface
+              designed for both beginners and experts.
+            </p>
+          </div>
+        ),
+        title: "Product information",
+        value: "item-1",
+      },
+      {
+        content: (
+          <div className="flex flex-col gap-2 text-muted-foreground">
+            <p>
+              We offer worldwide shipping through trusted courier partners. Standard delivery takes
+              3 to 5 business days, while express shipping ensures delivery within 1 to 2 business
+              days.
+            </p>
+            <p>
+              All orders are carefully packaged and fully insured. Track your shipment in real-time
+              through our dedicated tracking portal.
+            </p>
+          </div>
+        ),
+        title: "Shipping details",
+        value: "item-2",
+      },
+      {
+        content: (
+          <div className="flex flex-col gap-2 text-muted-foreground">
+            <p>
+              We stand behind our products with a comprehensive 30-day return policy. If you&apos;re
+              not completely satisfied, return the item in its original condition.
+            </p>
+            <p>
+              Our hassle-free return process includes free return shipping and full refunds
+              processed within 48 hours of receiving the returned item.
+            </p>
+          </div>
+        ),
+        title: "Return policy",
+        value: "item-3",
+      },
+    ],
   },
 });
 
 export const Multiple = meta.story({
   args: {
-    items: shortFaqItems(),
+    items: shortFaqItems,
     multiple: true,
   },
 });
@@ -44,14 +127,14 @@ export const NonCollapsible = meta.story({
   args: {
     collapsible: false,
     defaultValue: ["item-1"],
-    items: shortFaqItems(),
+    items: shortFaqItems,
   },
 });
 
 export const Disabled = meta.story({
   args: {
     defaultValue: ["item-1"],
-    items: shortFaqItems().map((item) =>
+    items: shortFaqItems.map((item) =>
       item.value === "item-2" ? { ...item, disabled: true } : item,
     ),
   },
@@ -64,7 +147,7 @@ export const Controlled = meta.story({
     return (
       <div>
         <Accordion
-          items={shortFaqItems()}
+          items={shortFaqItems}
           onValueChange={({ value }) => setValue(value)}
           value={value}
         />
@@ -118,91 +201,3 @@ export const Compound = meta.story({
     </Accordion.Root>
   ),
 });
-
-function faqItems() {
-  return [
-    {
-      content: (
-        <div className="flex flex-col gap-2 text-muted-foreground">
-          <p>
-            Our flagship product combines cutting-edge technology with sleek design. Built with
-            premium materials, it offers unparalleled performance and reliability.
-          </p>
-          <p>
-            Key features include advanced processing capabilities, and an intuitive user interface
-            designed for both beginners and experts.
-          </p>
-        </div>
-      ),
-      title: "Product information",
-      value: "item-1",
-    },
-    {
-      content: (
-        <div className="flex flex-col gap-2 text-muted-foreground">
-          <p>
-            We offer worldwide shipping through trusted courier partners. Standard delivery takes 3
-            to 5 business days, while express shipping ensures delivery within 1 to 2 business days.
-          </p>
-          <p>
-            All orders are carefully packaged and fully insured. Track your shipment in real-time
-            through our dedicated tracking portal.
-          </p>
-        </div>
-      ),
-      title: "Shipping details",
-      value: "item-2",
-    },
-    {
-      content: (
-        <div className="flex flex-col gap-2 text-muted-foreground">
-          <p>
-            We stand behind our products with a comprehensive 30-day return policy. If you&apos;re
-            not completely satisfied, return the item in its original condition.
-          </p>
-          <p>
-            Our hassle-free return process includes free return shipping and full refunds processed
-            within 48 hours of receiving the returned item.
-          </p>
-        </div>
-      ),
-      title: "Return policy",
-      value: "item-3",
-    },
-  ];
-}
-
-function shortFaqItems() {
-  return [
-    {
-      content: (
-        <p className="text-muted-foreground">
-          Our flagship product combines cutting-edge technology with sleek design. Built with
-          premium materials, it offers unparalleled performance and reliability.
-        </p>
-      ),
-      title: "Product information",
-      value: "item-1",
-    },
-    {
-      content: (
-        <p className="text-muted-foreground">
-          We offer worldwide shipping through trusted courier partners. Standard delivery takes 3 to
-          5 business days.
-        </p>
-      ),
-      title: "Shipping details",
-      value: "item-2",
-    },
-    {
-      content: (
-        <p className="text-muted-foreground">
-          We stand behind our products with a comprehensive 30-day return policy. If you&apos;re not
-          completely satisfied, return the item in its original condition.
-        </p>
-      ),
-      title: "Return policy",
-      value: "item-3",
-    },
-  ];
-}

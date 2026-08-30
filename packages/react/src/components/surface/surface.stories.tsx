@@ -1,45 +1,6 @@
 import { Checkbox, Field, Input, Select, Surface, Switch, Textarea } from "@pisagor/react";
 import preview from "#/storybook/preview";
 
-function FormControlsDemo() {
-  return (
-    <Field.Group>
-      <Field>
-        <Field.Label htmlFor="surface-email">Email</Field.Label>
-        <Input clearable id="surface-email" placeholder="you@example.com" />
-      </Field>
-
-      <Field>
-        <Field.Label htmlFor="surface-notes">Notes</Field.Label>
-        <Textarea id="surface-notes" placeholder="Add context…" rows={3} />
-      </Field>
-
-      <Field>
-        <Field.Label htmlFor="surface-team">Team</Field.Label>
-        <Select
-          id="surface-team"
-          items={["Design", "Engineering", "Marketing"]}
-          placeholder="Choose a team"
-        />
-      </Field>
-
-      <Field orientation="horizontal">
-        <Switch id="surface-notify" />
-        <Field.Content>
-          <Field.Label htmlFor="surface-notify">Email notifications</Field.Label>
-        </Field.Content>
-      </Field>
-
-      <Field orientation="horizontal">
-        <Checkbox id="surface-terms" />
-        <Field.Content>
-          <Field.Label htmlFor="surface-terms">Accept terms</Field.Label>
-        </Field.Content>
-      </Field>
-    </Field.Group>
-  );
-}
-
 const meta = preview.meta({
   component: Surface,
   parameters: {
@@ -147,7 +108,40 @@ export const WithFormControls = meta.story({
         <h3 className="font-semibold text-sm">Settings</h3>
         <p className="text-muted-foreground text-sm">Grouped controls on a surface background.</p>
       </div>
-      <FormControlsDemo />
+      <Field.Group>
+        <Field>
+          <Field.Label htmlFor="surface-email">Email</Field.Label>
+          <Input clearable id="surface-email" placeholder="you@example.com" />
+        </Field>
+
+        <Field>
+          <Field.Label htmlFor="surface-notes">Notes</Field.Label>
+          <Textarea id="surface-notes" placeholder="Add context…" rows={3} />
+        </Field>
+
+        <Field>
+          <Field.Label htmlFor="surface-team">Team</Field.Label>
+          <Select
+            id="surface-team"
+            items={["Design", "Engineering", "Marketing"]}
+            placeholder="Choose a team"
+          />
+        </Field>
+
+        <Field orientation="horizontal">
+          <Switch id="surface-notify" />
+          <Field.Content>
+            <Field.Label htmlFor="surface-notify">Email notifications</Field.Label>
+          </Field.Content>
+        </Field>
+
+        <Field orientation="horizontal">
+          <Checkbox id="surface-terms" />
+          <Field.Content>
+            <Field.Label htmlFor="surface-terms">Accept terms</Field.Label>
+          </Field.Content>
+        </Field>
+      </Field.Group>
     </Surface>
   ),
 });

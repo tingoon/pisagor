@@ -18,16 +18,59 @@ const meta = preview.meta({
   title: "Components/Data Display/JSON Tree View",
 });
 
+const expandDepthData = {
+  user: {
+    profile: {
+      name: "Jane Doe",
+      settings: {
+        notifications: true,
+        theme: "dark",
+      },
+    },
+  },
+};
+
 export const Default = meta.story({
   args: {
-    data: defaultData(),
+    data: {
+      address: {
+        city: "Anytown",
+        state: "CA",
+        street: "123 Main St",
+        zip: "12345",
+      },
+      age: 30,
+      email: "john.doe@example.com",
+      name: "John Doe",
+    },
     defaultExpandedDepth: 1,
   },
 });
 
 export const DataTypes = meta.story({
   args: {
-    data: dataTypesData(),
+    data: {
+      address: {
+        city: "Anytown",
+        coordinates: { lat: 37.7749, lng: -122.4194 },
+        state: "CA",
+        street: "123 Main St",
+        zip: 12_345,
+      },
+      age: 30,
+      avatar: null,
+      balance: 1234.56,
+      createdAt: new Date("2024-01-15T14:22:00.000Z"),
+      description: undefined,
+      email: "john.doe@example.com",
+      isActive: true,
+      isVerified: false,
+      lastLogin: new Date("2024-01-12T00:00:00.000Z"),
+      name: "John Doe",
+      score: -42,
+      scores: [95, 87, 92, 78, 100],
+      tags: ["pattern", "data-display"],
+    },
     defaultExpandedDepth: 2,
   },
 });
@@ -39,11 +82,11 @@ export const ExpandDepth = meta.story({
         <p className="mb-2 font-medium text-foreground text-sm">
           defaultExpandedDepth={0} (all collapsed)
         </p>
-        <JsonTreeView data={expandDepthData()} defaultExpandedDepth={0} />
+        <JsonTreeView data={expandDepthData} defaultExpandedDepth={0} />
       </div>
       <div>
         <p className="mb-2 font-medium text-foreground text-sm">defaultExpandedDepth={2}</p>
-        <JsonTreeView data={expandDepthData()} defaultExpandedDepth={2} />
+        <JsonTreeView data={expandDepthData} defaultExpandedDepth={2} />
       </div>
     </div>
   ),
@@ -51,71 +94,14 @@ export const ExpandDepth = meta.story({
 
 export const MapSet = meta.story({
   args: {
-    data: mapSetData(),
+    data: {
+      preferences: new Map([
+        ["theme", "dark"],
+        ["language", "en"],
+        ["notifications", "enabled"],
+      ]),
+      visitedPages: new Set(["/home", "/profile", "/settings"]),
+    },
     defaultExpandedDepth: 1,
   },
 });
-
-function defaultData() {
-  return {
-    address: {
-      city: "Anytown",
-      state: "CA",
-      street: "123 Main St",
-      zip: "12345",
-    },
-    age: 30,
-    email: "john.doe@example.com",
-    name: "John Doe",
-  };
-}
-
-function dataTypesData() {
-  return {
-    address: {
-      city: "Anytown",
-      coordinates: { lat: 37.7749, lng: -122.4194 },
-      state: "CA",
-      street: "123 Main St",
-      zip: 12_345,
-    },
-    age: 30,
-    avatar: null,
-    balance: 1234.56,
-    createdAt: new Date("2024-01-15T14:22:00.000Z"),
-    description: undefined,
-    email: "john.doe@example.com",
-    isActive: true,
-    isVerified: false,
-    lastLogin: new Date("2024-01-12T00:00:00.000Z"),
-    name: "John Doe",
-    score: -42,
-    scores: [95, 87, 92, 78, 100],
-    tags: ["pattern", "data-display"],
-  };
-}
-
-function mapSetData() {
-  return {
-    preferences: new Map([
-      ["theme", "dark"],
-      ["language", "en"],
-      ["notifications", "enabled"],
-    ]),
-    visitedPages: new Set(["/home", "/profile", "/settings"]),
-  };
-}
-
-function expandDepthData() {
-  return {
-    user: {
-      profile: {
-        name: "Jane Doe",
-        settings: {
-          notifications: true,
-          theme: "dark",
-        },
-      },
-    },
-  };
-}

@@ -23,17 +23,44 @@ const meta = preview.meta({
   title: "Components/Data Display/Avatar/Avatar Group",
 });
 
+const users = [
+  {
+    fallback: "JD",
+    handle: "jane.doe@example.com",
+    name: "Jane Doe",
+    src: "https://randomuser.me/api/portraits/women/5.jpg",
+  },
+  {
+    fallback: "JD",
+    handle: "john.doe@example.com",
+    name: "John Doe",
+    src: "https://randomuser.me/api/portraits/men/12.jpg",
+  },
+  {
+    fallback: "JD",
+    handle: "jane.doe@example.com",
+    name: "Jane Doe",
+    src: "https://randomuser.me/api/portraits/women/44.jpg",
+  },
+  {
+    fallback: "JD",
+    handle: "john.doe@example.com",
+    name: "John Doe",
+    src: "https://randomuser.me/api/portraits/men/32.jpg",
+  },
+];
+
 export const Default = meta.story({
   args: {
     max: 4,
-    users: users(),
+    users,
   },
 });
 
 export const Compound = meta.story({
   render: () => (
     <AvatarGroup.Root>
-      {users().map((user) => (
+      {users.map((user) => (
         <Avatar alt={user.name} fallback={user.fallback} key={user.src} src={user.src} />
       ))}
     </AvatarGroup.Root>
@@ -43,39 +70,10 @@ export const Compound = meta.story({
 export const Count = meta.story({
   render: () => (
     <AvatarGroup.Root>
-      {users().map((user) => (
+      {users.map((user) => (
         <Avatar alt={user.name} fallback={user.fallback} key={user.src} src={user.src} />
       ))}
       <AvatarGroup.Count>+5</AvatarGroup.Count>
     </AvatarGroup.Root>
   ),
 });
-
-function users() {
-  return [
-    {
-      fallback: "JD",
-      handle: "jane.doe@example.com",
-      name: "Jane Doe",
-      src: "https://randomuser.me/api/portraits/women/5.jpg",
-    },
-    {
-      fallback: "JD",
-      handle: "john.doe@example.com",
-      name: "John Doe",
-      src: "https://randomuser.me/api/portraits/men/12.jpg",
-    },
-    {
-      fallback: "JD",
-      handle: "jane.doe@example.com",
-      name: "Jane Doe",
-      src: "https://randomuser.me/api/portraits/women/44.jpg",
-    },
-    {
-      fallback: "JD",
-      handle: "john.doe@example.com",
-      name: "John Doe",
-      src: "https://randomuser.me/api/portraits/men/32.jpg",
-    },
-  ];
-}
