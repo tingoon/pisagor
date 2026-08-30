@@ -28,7 +28,7 @@ export const Default = meta.story({
       return { src };
     },
     template: `
-      <div class="flex flex-wrap items-center gap-4">
+      <div class="flex flex-wrap items-center gap-2">
         <Avatar :src="src" alt="John Doe" fallback="JD" />
         <Avatar :src="src" alt="John Doe" fallback="JD" size="sm" />
         <Avatar :src="src" alt="John Doe" fallback="JD" size="lg" />
@@ -119,7 +119,7 @@ export const FallbackOnly = meta.story({
   render: () => ({
     components: { Avatar },
     template: `
-      <div class="flex flex-wrap items-center gap-4">
+      <div class="flex flex-wrap items-center gap-2">
         <Avatar fallback="JD" />
         <Avatar fallback="JD" shape="rounded" />
         <Avatar fallback="JD" shape="square" />

@@ -6,7 +6,7 @@ const FormControlsDemo = defineComponent({
   components: { Checkbox, Field, Input, Select, Switch, Textarea },
   name: "FormControlsDemo",
   template: `
-    <Field.Group class="max-w-md">
+    <Field.Group>
       <Field>
         <Field.Label>Email</Field.Label>
         <Input clearable placeholder="you@example.com" />
@@ -74,7 +74,7 @@ export const Variants = meta.story({
   render: () => ({
     components: { Surface },
     template: `
-      <div class="grid w-full max-w-3xl gap-2 md:grid-cols-2">
+      <div class="grid w-full gap-2 md:grid-cols-2">
         <Surface bordered padding="md" variant="default" class="flex flex-col gap-2">
           <h3 class="font-semibold text-sm">Default</h3>
           <p class="text-muted-foreground text-sm">Uses the page background token.</p>
@@ -119,7 +119,7 @@ export const Nested = meta.story({
   render: () => ({
     components: { Surface },
     template: `
-      <Surface bordered padding="lg" class="flex flex-col gap-4">
+      <Surface bordered padding="lg" class="flex flex-col gap-2">
         <div>
           <h3 class="font-semibold text-sm">Outer surface</h3>
           <p class="text-muted-foreground text-sm">Explicit default variant at depth 0.</p>

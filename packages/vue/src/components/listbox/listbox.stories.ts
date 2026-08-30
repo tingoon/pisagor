@@ -188,10 +188,10 @@ export const Horizontal = meta.story({
     setup() {
       const collection = createListCollection({
         items: [
-          { artist: "O Rappa", title: "Rappa Mundi" },
-          { artist: "The Night Owls", title: "Acústico MTV" },
-          { artist: "Neon Pulse", title: "Thriller" },
-          { artist: "Eminem", title: "The Eminem Show" },
+          { artist: "Harbor Lights", title: "Midnight Pier" },
+          { artist: "The Night Owls", title: "Quiet Hours" },
+          { artist: "Neon Pulse", title: "Glass Orchard" },
+          { artist: "Copper Vein", title: "Northbound" },
         ],
         itemToString: (item) => item.title,
         itemToValue: (item) => item.title,

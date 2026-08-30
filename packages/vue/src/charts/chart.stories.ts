@@ -55,7 +55,7 @@ export const Default = meta.story({
       return { chartConfig, legendPayload, tooltipPayload };
     },
     template: `
-      <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-2">
         <Chart :config="chartConfig" class="min-h-[200px]">
           <svg
             class="h-full w-full"

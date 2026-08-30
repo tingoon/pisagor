@@ -1,7 +1,7 @@
+import type { DatePickerProps } from "@pisagor/vue";
+import { parseDate } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 import preview from "#/storybook/preview";
-import type { DatePickerProps } from "../../components";
-import { parseDate } from "../../components";
 import { useAppForm } from "./";
 
 type DatePickerValue = NonNullable<DatePickerProps["value"]>;

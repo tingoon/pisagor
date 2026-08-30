@@ -27,7 +27,7 @@ export const Default = meta.story({
       };
     },
     template: `
-      <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-2">
         <p class="text-sm">
           <Format.Byte :value="2048" unit="byte" /> bytes
         </p>

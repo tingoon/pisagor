@@ -49,7 +49,7 @@ export const Wrapping = meta.story({
   render: () => ({
     setup() {
       return () =>
-        h("div", { class: "max-w-xs" }, () =>
+        h("div", { class: "w-72" }, () =>
           h(NavigationMenu, { "aria-label": "Section" }, () =>
             h(NavigationMenu.List, null, () => [
               h(NavigationMenu.Item, null, () =>

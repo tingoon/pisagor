@@ -27,7 +27,7 @@ const meta = preview.meta({
 });
 
 function frameClass(heightClass = "h-96") {
-  return cn("mx-auto w-full max-w-4xl", heightClass);
+  return cn("w-full", heightClass);
 }
 
 function panelClassName(orientation: "horizontal" | "vertical" = "horizontal") {
