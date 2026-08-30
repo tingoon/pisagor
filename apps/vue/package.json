@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "@ark-ui/vue": "^5.39.0",
+    "@ark-ui/vue": "^5.39.1",
     "@phosphor-icons/vue": "^2.2.1",
     "@pisagor/utils": "workspace:*",
     "@pisagor/vue": "workspace:*",
