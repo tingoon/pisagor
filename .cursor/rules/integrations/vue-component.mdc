@@ -18,6 +18,8 @@ How to build shared UI components in `packages/vue` (`@pisagor/vue`). General Vu
 
 Folder name, main file, and component export name align: **kebab-case folder** → **`<name>.ts`** → **PascalCase** component (e.g. `accordion/` → `accordion.ts` → `Accordion`).
 
+**Light** components live under `src/components/<name>/` (root barrel + `./*`). **Heavy** modules live under `src/<name>/` with dedicated exports only — not on the root barrel: `charts`, `data-grid`, `data-table`, `phone-input`, `rich-text-editor`.
+
 ```text
 <kebab-name>/
 ├── <name>.ts
@@ -42,7 +44,7 @@ File-level Vue rules: [Vue Style Guide](../styleguides/vue.mdc).
 
 ### Context file (`<name>.context.ts`)
 
-When a compound component uses package-local provide/inject (`createContext` from `../../internal/utils`):
+When a compound component uses package-local provide/inject (`createContext` from package `internal/utils`, relative path by depth):
 
 - Put context value types, `createContext(...)`, and consumer helpers in `<name>.context.ts`.
 - Export `provideX` / `useX` (and `useXContextRef` when needed) from that file; keep Root/Part `h()` trees in `<name>.ts`.
@@ -74,7 +76,7 @@ Applies to the published workspace component package (`@pisagor/vue`):
 - Apps and other packages use the public export map for that package (light barrel or heavy subpath).
 - For cyclic pairs (e.g. `input` ↔ `input-group` ↔ `textarea`), import the concrete module file, not the barrel `index.ts`.
 - Import `{name}Recipe` / `{Name}VariantProps` from `@pisagor/recipes/<name>` — see [Styling](#styling). Do not define `tv()` in component packages. Do not add `<name>.recipe.ts` shims.
-- Use relative imports (`../../internal/utils`, `../../internal/hooks`, siblings) within the package.
+- Use relative imports (`../internal/utils` or `../../internal/utils` by depth, `../hooks` / `../../hooks`, siblings) within the package.
 - Import icons from `@phosphor-icons/vue` (e.g. `PhCaretDown`).
 - Class merging: `cn` from `@pisagor/utils`.
 

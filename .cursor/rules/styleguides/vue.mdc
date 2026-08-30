@@ -98,7 +98,7 @@ Do not call composables after a conditional `return` from `setup`. Early UI guar
 
 - **Naming:** camelCase with `use` prefix (e.g. `useClearableInput`, `useIsMobile`).
 - Extract reusable or non-trivial logic into composables; keep plain functions for one-off helpers with no Vue state.
-- Package-shared composables live under `packages/vue/src/internal/hooks` and export via `@pisagor/vue/hooks` when public — [Vue Component Patterns](../integrations/vue-component.mdc) / [`AGENTS.md`](../../../packages/vue/AGENTS.md).
+- Package-shared composables live under `packages/vue/src/hooks` and export via `@pisagor/vue/hooks` — [Vue Component Patterns](../integrations/vue-component.mdc) / [`AGENTS.md`](../../../packages/vue/AGENTS.md).
 
 ### Rules of composables
 

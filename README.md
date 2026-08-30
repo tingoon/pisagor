@@ -21,7 +21,15 @@ bun add @pisagor/react @pisagor/utils
 
 Peer dependencies: `react` ^19, `react-dom` ^19, `@phosphor-icons/react` ^2, Tailwind CSS v4.
 
-The root `@pisagor/react` / `@pisagor/vue` barrels export **light** components only. Heavy components are subpath-only and need extra optional peers: `charts` → `recharts`; `data-grid` → `@tanstack/react-table` + `@tanstack/react-virtual` (Vue: `@tanstack/vue-table` + `@tanstack/vue-virtual`); `rich-text-editor` → `@tiptap/react` + `@tiptap/starter-kit` (Vue: `@tiptap/vue-3`); `phone-input` → `react-phone-number-input` (React).
+The root `@pisagor/react` / `@pisagor/vue` barrels export **light** components only. Heavy components are subpath-only:
+
+| Subpath | React optional peers | Vue optional peers |
+| --- | --- | --- |
+| `data-grid` | `@tanstack/react-table`, `@tanstack/react-virtual` | `@tanstack/vue-table`, `@tanstack/vue-virtual` |
+| `data-table` | `@tanstack/react-table` | `@tanstack/vue-table` |
+| `charts` | `recharts` | none |
+| `rich-text-editor` | `@tiptap/react`, `@tiptap/starter-kit` | `@tiptap/vue-3`, `@tiptap/starter-kit` |
+| `phone-input` | `react-phone-number-input` | none |
 
 ```tsx
 import { Button, Provider } from "@pisagor/react";
