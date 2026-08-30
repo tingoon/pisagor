@@ -19,17 +19,9 @@ Packages export TypeScript source. Use a bundler that compiles TS (Vite, etc.).
 bun add @pisagor/react @pisagor/utils
 ```
 
-Peer dependencies: `react` ^19, `react-dom` ^19, `@phosphor-icons/react` ^2, Tailwind CSS v4.
+Peer dependencies: `react` ^19, `react-dom` ^19, Tailwind CSS v4 (Vue: `vue` ^3.5 + Tailwind CSS v4). Heavy subpath deps (TanStack, TipTap, recharts, Phosphor, …) ship with the package.
 
-The root `@pisagor/react` / `@pisagor/vue` barrels export **light** components only. Heavy components are subpath-only:
-
-| Subpath | React optional peers | Vue optional peers |
-| --- | --- | --- |
-| `data-grid` | `@tanstack/react-table`, `@tanstack/react-virtual` | `@tanstack/vue-table`, `@tanstack/vue-virtual` |
-| `data-table` | `@tanstack/react-table` | `@tanstack/vue-table` |
-| `charts` | `recharts` | none |
-| `rich-text-editor` | `@tiptap/react`, `@tiptap/starter-kit` | `@tiptap/vue-3`, `@tiptap/starter-kit` |
-| `phone-input` | `react-phone-number-input` | none |
+The root `@pisagor/react` / `@pisagor/vue` barrels export **light** components only. Heavy components are subpath-only: `data-grid`, `data-table`, `charts`, `rich-text-editor`, `phone-input`.
 
 ```tsx
 import { Button, Provider } from "@pisagor/react";
