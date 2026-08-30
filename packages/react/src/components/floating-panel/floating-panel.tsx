@@ -1,4 +1,17 @@
 import { ark } from "@ark-ui/react/factory";
+import type {
+  FloatingPanelCloseTriggerProps,
+  FloatingPanelControlProps,
+  FloatingPanelDragTriggerProps,
+  FloatingPanelHeaderProps,
+  FloatingPanelBodyProps as FloatingPanelPrimitiveBodyProps,
+  FloatingPanelContentProps as FloatingPanelPrimitiveContentProps,
+  FloatingPanelResizeTriggerProps,
+  FloatingPanelRootProps,
+  FloatingPanelStageTriggerProps,
+  FloatingPanelTitleProps,
+  FloatingPanelTriggerProps,
+} from "@ark-ui/react/floating-panel";
 import { FloatingPanel as FloatingPanelPrimitive } from "@ark-ui/react/floating-panel";
 import { Portal } from "@ark-ui/react/portal";
 import { ArrowsOutIcon, CornersInIcon, MinusIcon } from "@phosphor-icons/react";
@@ -9,10 +22,7 @@ import { ScrollArea } from "../scroll-area";
 import { FloatingPanelContext, useFloatingPanel } from "./floating-panel.context";
 
 // #region Types
-export type FloatingPanelRootProps = ComponentProps<typeof FloatingPanelPrimitive.Root>;
-
-export interface FloatingPanelContentProps
-  extends ComponentProps<typeof FloatingPanelPrimitive.Content> {
+export interface FloatingPanelContentProps extends FloatingPanelPrimitiveContentProps {
   /**
    * Whether to enable a resizable panel.
    *
@@ -21,20 +31,14 @@ export interface FloatingPanelContentProps
   resizable?: boolean;
 }
 
-export interface FloatingPanelHeaderProps
-  extends ComponentProps<typeof FloatingPanelPrimitive.Header> {}
-
-export type FloatingPanelMinimizeProps = Omit<
-  ComponentProps<typeof FloatingPanelPrimitive.StageTrigger>,
-  "stage"
-> &
+export type FloatingPanelMinimizeProps = Omit<FloatingPanelStageTriggerProps, "stage"> &
   ButtonProps;
 
 export type FloatingPanelMaximizeProps = FloatingPanelMinimizeProps;
 
 export type FloatingPanelRestoreProps = FloatingPanelMinimizeProps;
 
-export interface FloatingPanelBodyProps extends ComponentProps<typeof FloatingPanelPrimitive.Body> {
+export interface FloatingPanelBodyProps extends FloatingPanelPrimitiveBodyProps {
   /**
    * Whether to add a fade effect to the scroll area.
    *
@@ -42,28 +46,6 @@ export interface FloatingPanelBodyProps extends ComponentProps<typeof FloatingPa
    */
   scrollFade?: boolean;
 }
-
-export type FloatingPanelTriggerProps = ComponentProps<typeof FloatingPanelPrimitive.Trigger>;
-
-export type FloatingPanelDragTriggerProps = ComponentProps<
-  typeof FloatingPanelPrimitive.DragTrigger
->;
-
-export type FloatingPanelControlProps = ComponentProps<typeof FloatingPanelPrimitive.Control>;
-
-export type FloatingPanelTitleProps = ComponentProps<typeof FloatingPanelPrimitive.Title>;
-
-export type FloatingPanelResizeTriggerProps = ComponentProps<
-  typeof FloatingPanelPrimitive.ResizeTrigger
->;
-
-export type FloatingPanelStageTriggerProps = ComponentProps<
-  typeof FloatingPanelPrimitive.StageTrigger
->;
-
-export type FloatingPanelCloseTriggerProps = ComponentProps<
-  typeof FloatingPanelPrimitive.CloseTrigger
->;
 
 export type FloatingPanelFooterProps = ComponentProps<typeof ark.div>;
 // #endregion

@@ -16,14 +16,17 @@ import {
 export type {
   SelectClearTriggerProps,
   SelectContentProps,
-  SelectEmptyProps,
   SelectItemGroupLabelProps,
-  SelectItemGroupProps,
   SelectItemProps,
+  SelectValueTextProps,
+} from "@ark-ui/react/select";
+
+export type {
+  SelectEmptyProps,
+  SelectItemGroupProps,
   SelectProps,
   SelectRootProps,
   SelectTriggerProps,
-  SelectValueTextProps,
 } from "./select";
 
 export const Select = Object.assign(SelectShorthand, {

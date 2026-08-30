@@ -10,9 +10,9 @@ export type {
   ImageCropperGridProps,
   ImageCropperHandleProps,
   ImageCropperImageProps,
-  ImageCropperRootProps,
-  ImageCropperSelectionProps,
-} from "./image-cropper";
+} from "@ark-ui/react/image-cropper";
+
+export type { ImageCropperRootProps, ImageCropperSelectionProps } from "./image-cropper";
 
 export const ImageCropper = Object.assign(ImageCropperRoot, {
   Grid: ImageCropperGrid,

@@ -1,12 +1,9 @@
-import { Format as FormatPrimitive } from "@ark-ui/react/format";
-import type { ComponentProps } from "react";
-// #region Types
-export type FormatByteProps = ComponentProps<typeof FormatPrimitive.Byte>;
-
-export type FormatNumberProps = ComponentProps<typeof FormatPrimitive.Number>;
-
-export type FormatRelativeTimeProps = ComponentProps<typeof FormatPrimitive.RelativeTime>;
-// #endregion
+import {
+  type FormatByteProps,
+  type FormatNumberProps,
+  Format as FormatPrimitive,
+  type FormatRelativeTimeProps,
+} from "@ark-ui/react/format";
 
 // #region Parts
 export function FormatByte({ ...rest }: FormatByteProps) {

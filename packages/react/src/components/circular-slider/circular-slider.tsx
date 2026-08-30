@@ -1,9 +1,18 @@
+import type {
+  AngleSliderControlProps,
+  AngleSliderHiddenInputProps,
+  AngleSliderMarkerGroupProps,
+  AngleSliderMarkerProps,
+  AngleSliderRootProps,
+  AngleSliderThumbProps,
+  AngleSliderValueTextProps,
+} from "@ark-ui/react/angle-slider";
 import {
   AngleSlider as AngleSliderPrimitive,
   useAngleSliderContext,
 } from "@ark-ui/react/angle-slider";
 import { circularSliderRecipe } from "@pisagor/recipes/circular-slider";
-import type { ComponentProps, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { useMemo } from "react";
 import { Field } from "../field";
 import {
@@ -13,14 +22,9 @@ import {
 } from "./circular-slider.context";
 
 // #region Types
-export type CircularSliderHiddenInputProps = ComponentProps<
-  typeof AngleSliderPrimitive.HiddenInput
->;
+export type CircularSliderHiddenInputProps = AngleSliderHiddenInputProps;
 
-export type CircularSliderRootProps = Omit<
-  ComponentProps<typeof AngleSliderPrimitive.Root>,
-  "onValueChange"
->;
+export type CircularSliderRootProps = Omit<AngleSliderRootProps, "onValueChange">;
 
 export interface CircularSliderProps
   extends CircularSliderRootProps,
@@ -32,26 +36,22 @@ export interface CircularSliderProps
   hiddenInputProps?: Omit<CircularSliderHiddenInputProps, "className">;
 }
 
-export interface CircularSliderControlProps
-  extends ComponentProps<typeof AngleSliderPrimitive.Control> {
+export interface CircularSliderControlProps extends AngleSliderControlProps {
   markers?: boolean | number[];
   markersAtSteps?: boolean;
   step?: number;
 }
 
-export interface CircularSliderValueTextProps
-  extends Omit<ComponentProps<typeof AngleSliderPrimitive.ValueText>, "prefix"> {
+export interface CircularSliderValueTextProps extends Omit<AngleSliderValueTextProps, "prefix"> {
   prefix?: ReactNode | string;
   suffix?: ReactNode | string;
 }
 
-export type CircularSliderThumbProps = ComponentProps<typeof AngleSliderPrimitive.Thumb>;
+export type CircularSliderThumbProps = AngleSliderThumbProps;
 
-export type CircularSliderMarkerGroupProps = ComponentProps<
-  typeof AngleSliderPrimitive.MarkerGroup
->;
+export type CircularSliderMarkerGroupProps = AngleSliderMarkerGroupProps;
 
-export type CircularSliderMarkerProps = ComponentProps<typeof AngleSliderPrimitive.Marker>;
+export type CircularSliderMarkerProps = AngleSliderMarkerProps;
 // #endregion
 
 // #region Parts

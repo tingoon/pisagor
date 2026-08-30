@@ -18,9 +18,10 @@ export type {
   CarouselItemProps,
   CarouselNextTriggerProps,
   CarouselPrevTriggerProps,
-  CarouselProps,
   CarouselRootProps,
-} from "./carousel";
+} from "@ark-ui/react/carousel";
+
+export type { CarouselProps } from "./carousel";
 
 export const Carousel = Object.assign(CarouselShorthand, {
   Control: CarouselControl,

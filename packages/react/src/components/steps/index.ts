@@ -16,7 +16,6 @@ import {
 export type {
   StepsCompletedContentProps,
   StepsContentProps,
-  StepsDescriptionProps,
   StepsIndicatorProps,
   StepsItemProps,
   StepsListProps,
@@ -24,9 +23,10 @@ export type {
   StepsPrevTriggerProps,
   StepsRootProps,
   StepsSeparatorProps,
-  StepsTitleProps,
   StepsTriggerProps,
-} from "./steps";
+} from "@ark-ui/react/steps";
+
+export type { StepsDescriptionProps, StepsTitleProps } from "./steps";
 
 export const Steps = Object.assign(StepsRoot, {
   CompletedContent: StepsCompletedContent,

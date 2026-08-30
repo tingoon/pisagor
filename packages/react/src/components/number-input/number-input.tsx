@@ -1,4 +1,9 @@
-import { NumberInput as NumberInputPrimitive } from "@ark-ui/react/number-input";
+import {
+  NumberInput as NumberInputPrimitive,
+  type NumberInputControlProps as NumberInputPrimitiveControlProps,
+  type NumberInputRootProps as NumberInputPrimitiveRootProps,
+  type NumberInputScrubberProps,
+} from "@ark-ui/react/number-input";
 import { MinusIcon, PlusIcon } from "@phosphor-icons/react";
 import { formControlGroupShellRecipe } from "@pisagor/recipes/form-control";
 import { numberInputRecipe } from "@pisagor/recipes/number-input";
@@ -12,10 +17,7 @@ import { NumberInputContext, useNumberInput } from "./number-input.context";
 // #region Types
 type FormControlVariant = "primary" | "secondary";
 
-export type NumberInputRootProps = Omit<
-  ComponentProps<typeof NumberInputPrimitive.Root>,
-  "onValueChange"
-> &
+export type NumberInputRootProps = Omit<NumberInputPrimitiveRootProps, "onValueChange"> &
   Pick<InputProps, "size" | "variant">;
 
 export interface NumberInputProps extends NumberInputRootProps {
@@ -31,7 +33,7 @@ export interface NumberInputProps extends NumberInputRootProps {
   onValueChange?: (value: number) => void;
 }
 
-export type NumberInputControlProps = ComponentProps<typeof NumberInputPrimitive.Control> & {
+export type NumberInputControlProps = NumberInputPrimitiveControlProps & {
   variant?: FormControlVariant;
   clearable?: boolean;
 };
@@ -44,7 +46,6 @@ export type NumberInputIncrementTriggerProps = ComponentProps<
   typeof NumberInputPrimitive.IncrementTrigger
 >;
 
-export type NumberInputScrubberProps = ComponentProps<typeof NumberInputPrimitive.Scrubber>;
 // #endregion
 
 // #region Parts

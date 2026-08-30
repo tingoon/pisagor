@@ -1,15 +1,23 @@
 import { type CollectionItem, createListCollection } from "@ark-ui/react/collection";
-import {
-  Listbox as ListboxPrimitive,
-  type ListboxRootProps as ListboxRootPropsPrimitive,
+import type {
+  ListboxContentProps,
+  ListboxEmptyProps,
+  ListboxItemGroupLabelProps,
+  ListboxItemIndicatorProps,
+  ListboxItemTextProps,
+  ListboxItemGroupProps as ListboxPrimitiveItemGroupProps,
+  ListboxItemProps as ListboxPrimitiveItemProps,
+  ListboxRootProps as ListboxPrimitiveRootProps,
+  ListboxValueTextProps,
 } from "@ark-ui/react/listbox";
+import { Listbox as ListboxPrimitive } from "@ark-ui/react/listbox";
 import { CheckIcon } from "@phosphor-icons/react";
 import {
   type ListboxItemVariantProps,
   listboxItemRecipe,
   listboxRecipe,
 } from "@pisagor/recipes/listbox";
-import type { ComponentProps } from "react";
+
 import { useMemo } from "react";
 import { DropdownMenu, type DropdownMenuShortcutProps } from "../dropdown-menu";
 import { ListboxContext, ListboxItemContext, useListbox, useListboxItem } from "./listbox.context";
@@ -22,7 +30,7 @@ interface ListboxPresetItem extends CollectionItem {
 }
 
 export type ListboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
-  ListboxRootPropsPrimitive<T>,
+  ListboxPrimitiveRootProps<T>,
   "onValueChange"
 > & {
   onValueChange?: (value: string | string[]) => void;
@@ -33,26 +41,13 @@ export interface ListboxProps extends Omit<ListboxRootProps, "children" | "colle
   items?: ListboxPresetItem[];
 }
 
-export interface ListboxItemProps
-  extends ComponentProps<typeof ListboxPrimitive.Item>,
-    ListboxItemVariantProps {}
+export interface ListboxItemProps extends ListboxPrimitiveItemProps, ListboxItemVariantProps {}
 
-export interface ListboxItemGroupProps extends ComponentProps<typeof ListboxPrimitive.ItemGroup> {
+export interface ListboxItemGroupProps extends ListboxPrimitiveItemGroupProps {
   /** The heading of the listbox item group. */
   heading?: string;
 }
 
-export type ListboxContentProps = ComponentProps<typeof ListboxPrimitive.Content>;
-
-export type ListboxItemTextProps = ComponentProps<typeof ListboxPrimitive.ItemText>;
-
-export type ListboxItemGroupLabelProps = ComponentProps<typeof ListboxPrimitive.ItemGroupLabel>;
-
-export type ListboxValueTextProps = ComponentProps<typeof ListboxPrimitive.ValueText>;
-
-export type ListboxItemIndicatorProps = ComponentProps<typeof ListboxPrimitive.ItemIndicator>;
-
-export type ListboxEmptyProps = ComponentProps<typeof ListboxPrimitive.Empty>;
 // #endregion
 
 // #region Parts

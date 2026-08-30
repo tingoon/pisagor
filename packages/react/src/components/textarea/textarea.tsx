@@ -1,7 +1,7 @@
-import { Field as FieldPrimitive } from "@ark-ui/react/field";
+import { Field as FieldPrimitive, type FieldTextareaProps } from "@ark-ui/react/field";
 import { formControlShellRecipe } from "@pisagor/recipes/form-control";
 import { type TextareaSlots, textareaRecipe } from "@pisagor/recipes/textarea";
-import type { ChangeEventHandler, ComponentProps, ReactNode } from "react";
+import type { ChangeEventHandler, ReactNode, RefAttributes } from "react";
 import { useClearableInput } from "../../internal/hooks";
 import type { VariantClassNames } from "../../internal/types";
 import { cn } from "../../internal/utils";
@@ -14,12 +14,13 @@ type FormControlVariant = "primary" | "secondary";
 
 type TextareaClassNames = VariantClassNames<TextareaSlots>;
 
-type TextareaRootProps = ComponentProps<typeof FieldPrimitive.Textarea> & {
-  /**
-   * Visual shell variant. Defaults to `primary`.
-   */
-  variant?: FormControlVariant;
-};
+type TextareaRootProps = FieldTextareaProps &
+  RefAttributes<HTMLTextAreaElement> & {
+    /**
+     * Visual shell variant. Defaults to `primary`.
+     */
+    variant?: FormControlVariant;
+  };
 
 export interface TextareaProps extends TextareaRootProps {
   /**

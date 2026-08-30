@@ -1,3 +1,13 @@
+import type {
+  DrawerBackdropProps,
+  DrawerCloseTriggerProps,
+  DrawerGrabberProps,
+  DrawerContentProps as DrawerPrimitiveContentProps,
+  DrawerPositionerProps as DrawerPrimitivePositionerProps,
+  DrawerRootProps,
+  DrawerTitleProps,
+  DrawerTriggerProps,
+} from "@ark-ui/react/drawer";
 import { Drawer as DrawerPrimitive } from "@ark-ui/react/drawer";
 import { ark } from "@ark-ui/react/factory";
 import { Portal } from "@ark-ui/react/portal";
@@ -7,11 +17,10 @@ import { ScrollArea } from "../scroll-area";
 import { DrawerContext, useDrawer } from "./drawer.context";
 
 // #region Types
-export type DrawerPositionerProps = ComponentProps<typeof DrawerPrimitive.Positioner> &
+export type DrawerPositionerProps = DrawerPrimitivePositionerProps &
   Pick<DrawerVariantProps, "variant">;
 
-export type DrawerContentProps = ComponentProps<typeof DrawerPrimitive.Content> &
-  Pick<DrawerVariantProps, "variant">;
+export type DrawerContentProps = DrawerPrimitiveContentProps & Pick<DrawerVariantProps, "variant">;
 
 export interface DrawerHeaderProps extends ComponentProps<typeof ark.div> {
   /** The description of the drawer */
@@ -28,18 +37,6 @@ export interface DrawerBodyProps extends ComponentProps<typeof ark.div> {
    */
   scrollFade?: boolean;
 }
-
-export type DrawerRootProps = ComponentProps<typeof DrawerPrimitive.Root>;
-
-export type DrawerTriggerProps = ComponentProps<typeof DrawerPrimitive.Trigger>;
-
-export type DrawerBackdropProps = ComponentProps<typeof DrawerPrimitive.Backdrop>;
-
-export type DrawerGrabberProps = ComponentProps<typeof DrawerPrimitive.Grabber>;
-
-export type DrawerTitleProps = ComponentProps<typeof DrawerPrimitive.Title>;
-
-export type DrawerCloseTriggerProps = ComponentProps<typeof DrawerPrimitive.CloseTrigger>;
 
 export type DrawerContentInnerProps = ComponentProps<typeof ark.div>;
 

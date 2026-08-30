@@ -1,3 +1,11 @@
+import type {
+  SplitterContextProps,
+  SplitterPanelProps,
+  SplitterResizeTriggerIndicatorProps,
+  SplitterResizeTriggerProps,
+  SplitterRootProps,
+  SplitterRootProviderProps,
+} from "@ark-ui/react/splitter";
 import { Splitter as SplitterPrimitive } from "@ark-ui/react/splitter";
 import { DotsSixVerticalIcon } from "@phosphor-icons/react";
 import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes/resizable";
@@ -43,8 +51,7 @@ export interface ResizableEdgeHandleProps extends ComponentProps<"button"> {
   onWidthChange: (width: number) => void;
 }
 
-export interface ResizableResizeTriggerProps
-  extends ComponentProps<typeof SplitterPrimitive.ResizeTrigger> {
+export interface ResizableResizeTriggerProps extends SplitterResizeTriggerProps {
   /**
    * Whether to show the handle.
    *
@@ -53,17 +60,15 @@ export interface ResizableResizeTriggerProps
   withHandle?: boolean;
 }
 
-export type ResizableRootProps = ComponentProps<typeof SplitterPrimitive.Root>;
+export type ResizableRootProps = SplitterRootProps;
 
-export type ResizablePanelProps = ComponentProps<typeof SplitterPrimitive.Panel>;
+export type ResizablePanelProps = SplitterPanelProps;
 
-export type ResizableResizeTriggerIndicatorProps = ComponentProps<
-  typeof SplitterPrimitive.ResizeTriggerIndicator
->;
+export type ResizableResizeTriggerIndicatorProps = SplitterResizeTriggerIndicatorProps;
 
-export type ResizableContextProps = ComponentProps<typeof SplitterPrimitive.Context>;
+export type ResizableContextProps = SplitterContextProps;
 
-export type ResizableRootProviderProps = ComponentProps<typeof SplitterPrimitive.RootProvider>;
+export type ResizableRootProviderProps = SplitterRootProviderProps;
 // #endregion
 
 // #region Parts

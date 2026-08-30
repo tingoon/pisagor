@@ -1,17 +1,18 @@
-import { Avatar as AvatarPrimitive } from "@ark-ui/react/avatar";
+import {
+  type AvatarFallbackProps,
+  type AvatarImageProps,
+  Avatar as AvatarPrimitive,
+  type AvatarRootProps as AvatarPrimitiveRootProps,
+} from "@ark-ui/react/avatar";
 import { type AvatarSlots, type AvatarVariantProps, avatarRecipe } from "@pisagor/recipes/avatar";
-import type { ComponentProps, ReactNode } from "react";
+import type { ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { AvatarContext, useAvatar } from "./avatar.context";
 
 // #region Types
-type AvatarImageProps = ComponentProps<typeof AvatarPrimitive.Image>;
-
-type AvatarFallbackProps = ComponentProps<typeof AvatarPrimitive.Fallback>;
-
 type AvatarClassNames = VariantClassNames<AvatarSlots>;
 
-type AvatarRootProps = ComponentProps<typeof AvatarPrimitive.Root> & AvatarVariantProps;
+type AvatarRootProps = AvatarPrimitiveRootProps & AvatarVariantProps;
 
 export interface AvatarProps extends Omit<AvatarRootProps, "children"> {
   /** Alt text for the avatar image */

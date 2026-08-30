@@ -1,6 +1,10 @@
-import { ToggleGroup as ToggleGroupPrimitive } from "@ark-ui/react/toggle-group";
+import {
+  type ToggleGroupItemProps,
+  ToggleGroup as ToggleGroupPrimitive,
+  type ToggleGroupRootProps as ToggleGroupPrimitiveRootProps,
+} from "@ark-ui/react/toggle-group";
 import { toggleGroupRecipe } from "@pisagor/recipes/toggle-group";
-import type { ComponentProps, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { useMemo } from "react";
 import { Toggle } from "../toggle";
 import {
@@ -16,10 +20,7 @@ interface ToggleGroupPresetItem {
   disabled?: boolean;
 }
 
-export type ToggleGroupRootProps = Omit<
-  ComponentProps<typeof ToggleGroupPrimitive.Root>,
-  "onValueChange"
-> &
+export type ToggleGroupRootProps = Omit<ToggleGroupPrimitiveRootProps, "onValueChange"> &
   Omit<ToggleGroupContextProps, "slots"> & {
     onValueChange?: (value: string | string[]) => void;
   };
@@ -28,7 +29,6 @@ export interface ToggleGroupProps extends Omit<ToggleGroupRootProps, "children">
   items?: ToggleGroupPresetItem[];
 }
 
-export type ToggleGroupItemProps = ComponentProps<typeof ToggleGroupPrimitive.Item>;
 // #endregion
 
 // #region Parts

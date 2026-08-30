@@ -1,15 +1,17 @@
 import { appShellRecipe } from "@pisagor/recipes/app-shell";
 import { useHotkey } from "@tanstack/react-hotkeys";
 import { type ComponentProps, useCallback, useMemo, useRef, useState } from "react";
+import type {
+  AppShellFixedStackVar,
+  AppShellPlacement,
+  AppShellRailState,
+  AppShellRegionVar,
+  AppShellSideState,
+} from "./app-shell.context";
 import {
   APP_SHELL_DEFAULT_INSPECTOR_RESIZABLE_PROPS,
   APP_SHELL_DEFAULT_PANEL_RESIZABLE_PROPS,
   AppShellContext,
-  type AppShellFixedStackVar,
-  type AppShellPlacement,
-  type AppShellRailState,
-  type AppShellRegionVar,
-  type AppShellSideState,
   ZERO_FIXED_STACK_VARS,
   ZERO_REGION_VARS,
 } from "./app-shell.context";

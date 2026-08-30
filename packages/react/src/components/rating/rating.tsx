@@ -1,4 +1,9 @@
-import { RatingGroup as RatingGroupPrimitive } from "@ark-ui/react/rating-group";
+import {
+  type RatingGroupControlProps,
+  type RatingGroupItemProps,
+  RatingGroup as RatingGroupPrimitive,
+  type RatingGroupRootProps,
+} from "@ark-ui/react/rating-group";
 import { StarIcon } from "@phosphor-icons/react";
 import { type RatingSlots, ratingRecipe } from "@pisagor/recipes/rating";
 import type { ComponentProps, ReactElement, ReactNode } from "react";
@@ -10,15 +15,15 @@ import { RatingContext, useRating } from "./rating.context";
 // #region Types
 type FormControlVariant = "primary" | "secondary";
 
-type RatingControlProps = ComponentProps<typeof RatingGroupPrimitive.Control>;
+type RatingControlProps = RatingGroupControlProps;
 
-type RatingItemProps = ComponentProps<typeof RatingGroupPrimitive.Item>;
+type RatingItemProps = RatingGroupItemProps;
 
 type RatingIndicatorProps = ComponentProps<"span">;
 
 type RatingClassNames = VariantClassNames<RatingSlots>;
 
-type RatingRootProps = ComponentProps<typeof RatingGroupPrimitive.Root> & {
+type RatingRootProps = RatingGroupRootProps & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
 };

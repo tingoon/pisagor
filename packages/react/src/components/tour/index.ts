@@ -21,15 +21,18 @@ import {
 export type {
   TourActionTriggerProps,
   TourCloseTriggerProps,
-  TourContentProps,
   TourDescriptionProps,
   TourPositionerProps,
   TourProgressTextProps,
+  TourSpotlightProps,
+  TourTitleProps,
+} from "@ark-ui/react/tour";
+
+export type {
+  TourContentProps,
   TourProps,
   TourRootProps,
-  TourSpotlightProps,
   TourStepType,
-  TourTitleProps,
   TourTriggerProps,
 } from "./tour";
 

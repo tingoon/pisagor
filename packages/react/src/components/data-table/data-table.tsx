@@ -3,14 +3,16 @@ import type { RowData, TableOptions } from "@tanstack/react-table";
 import { flexRender, useTable } from "@tanstack/react-table";
 import { type ComponentProps, type ReactNode, useMemo } from "react";
 import { Table, type TableCellProps, type TableHeadProps, type TableRowProps } from "../table";
+import type {
+  Cell,
+  DataTableContextValue,
+  DataTableHeaderGroupContextValue,
+  DataTableRowContextValue,
+} from "./data-table.context";
 import {
-  type Cell,
   DataTableContext,
-  type DataTableContextValue,
   DataTableHeaderGroupContext,
-  type DataTableHeaderGroupContextValue,
   DataTableRowContext,
-  type DataTableRowContextValue,
   useDataTableContext,
   useDataTableHeaderGroupContext,
   useDataTableRowContext,

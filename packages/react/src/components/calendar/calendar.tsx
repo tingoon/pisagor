@@ -1,3 +1,25 @@
+import type {
+  DatePickerClearTriggerProps,
+  DatePickerContextProps,
+  DatePickerControlProps,
+  DatePickerLabelProps,
+  DatePickerMonthSelectProps,
+  DatePickerNextTriggerProps,
+  DatePickerPresetTriggerProps,
+  DatePickerPrevTriggerProps,
+  DatePickerRangeTextProps,
+  DatePickerRootProps,
+  DatePickerTableBodyProps,
+  DatePickerTableCellProps,
+  DatePickerTableHeaderProps,
+  DatePickerTableHeadProps,
+  DatePickerTableProps,
+  DatePickerTableRowProps,
+  DatePickerTriggerProps,
+  DatePickerViewControlProps,
+  DatePickerViewProps,
+  DatePickerYearSelectProps,
+} from "@ark-ui/react/date-picker";
 import {
   parseDate as arkParseDate,
   DatePicker as CalendarPrimitive,
@@ -5,7 +27,7 @@ import {
 import { CaretDownIcon, CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
 import { calendarRecipe, calendarTableCellRecipe } from "@pisagor/recipes/calendar";
 import { formControlShellRecipe } from "@pisagor/recipes/form-control";
-import type { ComponentProps } from "react";
+
 import { cn } from "../../internal/utils";
 import { Button, type ButtonProps } from "../button";
 import { CalendarSlotsContext, useCalendar } from "./calendar.context";
@@ -13,41 +35,41 @@ import { CalendarSlotsContext, useCalendar } from "./calendar.context";
 // #region Types
 type FormControlVariant = "primary" | "secondary";
 
-export type CalendarControlProps = ComponentProps<typeof CalendarPrimitive.Control>;
+export type CalendarControlProps = DatePickerControlProps;
 
-export type CalendarLabelProps = ComponentProps<typeof CalendarPrimitive.Label>;
+export type CalendarLabelProps = DatePickerLabelProps;
 
-export type CalendarTriggerProps = ComponentProps<typeof CalendarPrimitive.Trigger>;
+export type CalendarTriggerProps = DatePickerTriggerProps;
 
-export type CalendarPresetTriggerProps = ComponentProps<typeof CalendarPrimitive.PresetTrigger>;
+export type CalendarPresetTriggerProps = DatePickerPresetTriggerProps;
 
-export type CalendarViewDateProps = ComponentProps<typeof CalendarPrimitive.RangeText>;
+export type CalendarViewDateProps = DatePickerRangeTextProps;
 
-export type CalendarClearTriggerProps = ComponentProps<typeof CalendarPrimitive.ClearTrigger>;
+export type CalendarClearTriggerProps = DatePickerClearTriggerProps;
 
-export type CalendarYearSelectProps = ComponentProps<typeof CalendarPrimitive.YearSelect>;
+export type CalendarYearSelectProps = DatePickerYearSelectProps;
 
-export type CalendarMonthSelectProps = ComponentProps<typeof CalendarPrimitive.MonthSelect>;
+export type CalendarMonthSelectProps = DatePickerMonthSelectProps;
 
-export type CalendarViewProps = ComponentProps<typeof CalendarPrimitive.View>;
+export type CalendarViewProps = DatePickerViewProps;
 
-export type CalendarContextProps = ComponentProps<typeof CalendarPrimitive.Context>;
+export type CalendarContextProps = DatePickerContextProps;
 
-export type CalendarViewControlProps = ComponentProps<typeof CalendarPrimitive.ViewControl>;
+export type CalendarViewControlProps = DatePickerViewControlProps;
 
-export type CalendarPrevTriggerProps = ComponentProps<typeof CalendarPrimitive.PrevTrigger>;
+export type CalendarPrevTriggerProps = DatePickerPrevTriggerProps;
 
-export type CalendarNextTriggerProps = ComponentProps<typeof CalendarPrimitive.NextTrigger>;
+export type CalendarNextTriggerProps = DatePickerNextTriggerProps;
 
-export type CalendarTableProps = ComponentProps<typeof CalendarPrimitive.Table>;
+export type CalendarTableProps = DatePickerTableProps;
 
-export type CalendarTableHeadProps = ComponentProps<typeof CalendarPrimitive.TableHead>;
+export type CalendarTableHeadProps = DatePickerTableHeadProps;
 
-export type CalendarTableRowProps = ComponentProps<typeof CalendarPrimitive.TableRow>;
+export type CalendarTableRowProps = DatePickerTableRowProps;
 
-export type CalendarTableHeaderProps = ComponentProps<typeof CalendarPrimitive.TableHeader>;
+export type CalendarTableHeaderProps = DatePickerTableHeaderProps;
 
-export type CalendarTableCellProps = ComponentProps<typeof CalendarPrimitive.TableCell>;
+export type CalendarTableCellProps = DatePickerTableCellProps;
 
 export interface CalendarWeekDaysProps extends CalendarTableHeadProps {
   /**
@@ -58,7 +80,7 @@ export interface CalendarWeekDaysProps extends CalendarTableHeadProps {
   format?: "narrow" | "short" | "long";
 }
 
-export type CalendarTableBodyProps = ComponentProps<typeof CalendarPrimitive.TableBody>;
+export type CalendarTableBodyProps = DatePickerTableBodyProps;
 
 export interface CalendarTableNextMonthProps extends CalendarTableBodyProps {
   /**
@@ -69,7 +91,7 @@ export interface CalendarTableNextMonthProps extends CalendarTableBodyProps {
   months?: number;
 }
 
-export type CalendarRootProps = ComponentProps<typeof CalendarPrimitive.Root>;
+export type CalendarRootProps = DatePickerRootProps;
 
 export interface CalendarProps extends CalendarRootProps {
   /** Visual shell variant for embedded selects. Defaults to `primary`. */

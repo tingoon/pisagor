@@ -1,7 +1,13 @@
+import type {
+  PasswordInputIndicatorProps,
+  PasswordInputInputProps,
+  PasswordInputRootProps as PasswordInputPrimitiveRootProps,
+  PasswordInputVisibilityTriggerProps as PasswordInputPrimitiveVisibilityTriggerProps,
+} from "@ark-ui/react/password-input";
 import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/react/password-input";
 import { EyeIcon, EyeSlashIcon, XIcon } from "@phosphor-icons/react";
 import { passwordInputRecipe } from "@pisagor/recipes/password-input";
-import type { ComponentProps } from "react";
+import type { RefAttributes } from "react";
 import { useClearableInput } from "../../internal/hooks";
 import { InputGroup, type InputGroupButtonProps, type InputGroupProps } from "../input-group";
 
@@ -9,20 +15,19 @@ import { InputGroup, type InputGroupButtonProps, type InputGroupProps } from "..
 type FormControlVariant = "primary" | "secondary";
 
 export type PasswordInputRootProps = Pick<
-  ComponentProps<typeof PasswordInputPrimitive.Root>,
+  PasswordInputPrimitiveRootProps,
   "className" | "defaultVisible" | "invalid" | "onVisibilityChange" | "visible"
 >;
 
 export type PasswordInputVisibilityTriggerProps = Omit<
-  ComponentProps<typeof PasswordInputPrimitive.VisibilityTrigger>,
+  PasswordInputPrimitiveVisibilityTriggerProps,
   "asChild"
 >;
 
-export type PasswordInputIndicatorProps = ComponentProps<typeof PasswordInputPrimitive.Indicator>;
-
 export interface PasswordInputProps
   extends PasswordInputRootProps,
-    Omit<ComponentProps<typeof PasswordInputPrimitive.Input>, "className" | "size"> {
+    Omit<PasswordInputInputProps, "className" | "size">,
+    RefAttributes<HTMLInputElement> {
   size?: InputGroupProps["size"];
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;

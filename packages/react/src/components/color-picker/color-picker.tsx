@@ -1,6 +1,20 @@
+import type {
+  ColorPickerAreaThumbProps,
+  ColorPickerChannelInputProps,
+  ColorPickerContentProps,
+  ColorPickerAreaProps as ColorPickerPrimitiveAreaProps,
+  ColorPickerControlProps as ColorPickerPrimitiveControlProps,
+  ColorPickerRootProps as ColorPickerPrimitiveRootProps,
+  ColorPickerSwatchGroupProps,
+  ColorPickerSwatchProps,
+  ColorPickerTriggerProps,
+  ColorPickerValueChangeDetails,
+  ColorPickerValueSwatchProps,
+  ColorPickerValueTextProps,
+  ColorPickerViewProps,
+} from "@ark-ui/react/color-picker";
 import {
   ColorPicker as ColorPickerPrimitive,
-  type ColorPickerValueChangeDetails,
   parseColor as parseColorArk,
   useColorPickerContext,
 } from "@ark-ui/react/color-picker";
@@ -19,7 +33,7 @@ import { ColorPickerSlotsContext, useColorPicker } from "./color-picker.context"
 type FormControlVariant = "primary" | "secondary";
 
 export type ColorPickerRootProps = Omit<
-  ComponentProps<typeof ColorPickerPrimitive.Root>,
+  ColorPickerPrimitiveRootProps,
   "defaultValue" | "value" | "onValueChange"
 >;
 
@@ -59,7 +73,7 @@ export interface ColorPickerClearTriggerProps extends InputGroupButtonProps {
   clearable?: boolean;
 }
 
-export type ColorPickerControlProps = ComponentProps<typeof ColorPickerPrimitive.Control> & {
+export type ColorPickerControlProps = ColorPickerPrimitiveControlProps & {
   /**
    * Whether to show a clear button when a color is selected.
    *
@@ -73,48 +87,30 @@ export type ColorPickerEyeDropperTriggerProps = ComponentProps<
 > &
   ButtonProps;
 
-export type ColorPickerAreaProps = ComponentProps<typeof ColorPickerPrimitive.Area> & {
+export type ColorPickerAreaProps = ColorPickerPrimitiveAreaProps & {
   /**
    *
    */
   showDots?: boolean;
 };
 
-export type ColorPickerTriggerProps = ComponentProps<typeof ColorPickerPrimitive.Trigger>;
-
 export type ColorPickerTransparencyGridProps = ComponentProps<
   typeof ColorPickerPrimitive.TransparencyGrid
 >;
-
-export type ColorPickerContentProps = ComponentProps<typeof ColorPickerPrimitive.Content>;
-
-export type ColorPickerViewProps = ComponentProps<typeof ColorPickerPrimitive.View>;
 
 export type ColorPickerChannelSliderProps = ComponentProps<
   typeof ColorPickerPrimitive.ChannelSlider
 >;
 
-export type ColorPickerSwatchGroupProps = ComponentProps<typeof ColorPickerPrimitive.SwatchGroup>;
-
 export type ColorPickerSwatchTriggerProps = ComponentProps<
   typeof ColorPickerPrimitive.SwatchTrigger
 >;
-
-export type ColorPickerSwatchProps = ComponentProps<typeof ColorPickerPrimitive.Swatch>;
 
 export type ColorPickerSwatchIndicatorProps = ComponentProps<
   typeof ColorPickerPrimitive.SwatchIndicator
 >;
 
-export type ColorPickerValueTextProps = ComponentProps<typeof ColorPickerPrimitive.ValueText>;
-
-export type ColorPickerValueSwatchProps = ComponentProps<typeof ColorPickerPrimitive.ValueSwatch>;
-
-export type ColorPickerAreaThumbProps = ComponentProps<typeof ColorPickerPrimitive.AreaThumb>;
-
-export type ColorPickerInputProps = Partial<
-  ComponentProps<typeof ColorPickerPrimitive.ChannelInput>
->;
+export type ColorPickerInputProps = Partial<ColorPickerChannelInputProps>;
 
 export type ColorPickerSwatchPreviewProps = ComponentProps<typeof ark.div>;
 // #endregion

@@ -1,11 +1,11 @@
-import { FieldInput as InputPrimitive } from "@ark-ui/react/field";
+import { type FieldInputProps, FieldInput as InputPrimitive } from "@ark-ui/react/field";
 import {
   type InputRootVariantProps,
   type InputSlots,
   inputRecipe,
   inputRootRecipe,
 } from "@pisagor/recipes/input";
-import type { ChangeEventHandler, ComponentProps } from "react";
+import type { ChangeEventHandler, RefAttributes } from "react";
 import { useClearableInput } from "../../internal/hooks";
 import type { VariantClassNames } from "../../internal/types";
 import { cn } from "../../internal/utils";
@@ -20,8 +20,9 @@ type InputClassNames = VariantClassNames<InputSlots>;
 type InputVariantProps = InputRootVariantProps;
 
 export interface InputProps
-  extends Omit<ComponentProps<typeof InputPrimitive>, "size">,
-    InputVariantProps {
+  extends Omit<FieldInputProps, "size">,
+    InputVariantProps,
+    RefAttributes<HTMLInputElement> {
   /**
    * Whether to show a clear button when the input has a value.
    *

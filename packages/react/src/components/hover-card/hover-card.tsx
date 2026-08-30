@@ -1,19 +1,18 @@
 import { Portal } from "@ark-ui/react";
+import type {
+  HoverCardArrowProps,
+  HoverCardContentProps,
+  HoverCardRootProps,
+  HoverCardTriggerProps,
+} from "@ark-ui/react/hover-card";
 import { HoverCard as HoverCardPrimitive } from "@ark-ui/react/hover-card";
 import { hoverCardRecipe } from "@pisagor/recipes/hover-card";
-import type { ComponentProps } from "react";
+
 import { HoverCardContext, useHoverCard } from "./hover-card.context";
 
 // #region Types
-export type HoverCardRootProps = ComponentProps<typeof HoverCardPrimitive.Root>;
-
 export type HoverCardProps = HoverCardRootProps;
 
-export type HoverCardTriggerProps = ComponentProps<typeof HoverCardPrimitive.Trigger>;
-
-export type HoverCardArrowProps = ComponentProps<typeof HoverCardPrimitive.Arrow>;
-
-export type HoverCardContentProps = ComponentProps<typeof HoverCardPrimitive.Content>;
 // #endregion
 
 // #region Parts

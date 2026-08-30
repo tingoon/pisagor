@@ -1,3 +1,5 @@
+export type { SwapIndicatorProps } from "@ark-ui/react/swap";
+
 export type {
   SwapOffIndicatorProps,
   SwapOnIndicatorProps,

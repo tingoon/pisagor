@@ -16,18 +16,21 @@ import {
 
 export type {
   DrawerBackdropProps,
-  DrawerBodyProps,
   DrawerCloseTriggerProps,
+  DrawerGrabberProps,
+  DrawerRootProps,
+  DrawerTitleProps,
+  DrawerTriggerProps,
+} from "@ark-ui/react/drawer";
+
+export type {
+  DrawerBodyProps,
   DrawerContentInnerProps,
   DrawerContentProps,
   DrawerDescriptionProps,
   DrawerFooterProps,
-  DrawerGrabberProps,
   DrawerHeaderProps,
   DrawerPositionerProps,
-  DrawerRootProps,
-  DrawerTitleProps,
-  DrawerTriggerProps,
 } from "./drawer";
 
 export const Drawer = Object.assign(DrawerRoot, {

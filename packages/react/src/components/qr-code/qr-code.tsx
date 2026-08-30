@@ -1,16 +1,16 @@
+import type {
+  QrCodeDownloadTriggerProps,
+  QrCodeFrameProps,
+  QrCodeOverlayProps,
+  QrCodeRootProps,
+} from "@ark-ui/react/qr-code";
 import { QrCode as QrCodePrimitive } from "@ark-ui/react/qr-code";
 import { qrCodeRecipe } from "@pisagor/recipes/qr-code";
-import type { ComponentProps } from "react";
+
 import { QrCodeContext, useQrCode } from "./qr-code.context";
 
 // #region Types
-export type QrCodeRootProps = ComponentProps<typeof QrCodePrimitive.Root>;
-
-export type QrCodeFrameProps = ComponentProps<typeof QrCodePrimitive.Frame>;
-
-export type QrCodeOverlayProps = ComponentProps<typeof QrCodePrimitive.Overlay>;
-
-export type QrCodeDownloadProps = ComponentProps<typeof QrCodePrimitive.DownloadTrigger>;
+export type QrCodeDownloadProps = QrCodeDownloadTriggerProps;
 // #endregion
 
 // #region Parts

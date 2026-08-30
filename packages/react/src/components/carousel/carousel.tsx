@@ -1,7 +1,17 @@
+import type {
+  CarouselControlProps,
+  CarouselIndicatorGroupProps,
+  CarouselIndicatorProps,
+  CarouselItemGroupProps,
+  CarouselItemProps,
+  CarouselNextTriggerProps,
+  CarouselPrevTriggerProps,
+  CarouselRootProps,
+} from "@ark-ui/react/carousel";
 import { Carousel as CarouselPrimitive } from "@ark-ui/react/carousel";
 import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
 import { carouselRecipe } from "@pisagor/recipes/carousel";
-import type { ComponentProps, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { Button } from "../button";
 import { CarouselContext, useCarousel } from "./carousel.context";
 
@@ -10,22 +20,6 @@ interface CarouselPresetItem {
   content: ReactNode;
   key?: string;
 }
-
-export type CarouselControlProps = ComponentProps<typeof CarouselPrimitive.Control>;
-
-export type CarouselPrevTriggerProps = ComponentProps<typeof CarouselPrimitive.PrevTrigger>;
-
-export type CarouselNextTriggerProps = ComponentProps<typeof CarouselPrimitive.NextTrigger>;
-
-export type CarouselIndicatorGroupProps = ComponentProps<typeof CarouselPrimitive.IndicatorGroup>;
-
-export type CarouselIndicatorProps = ComponentProps<typeof CarouselPrimitive.Indicator>;
-
-export type CarouselItemGroupProps = ComponentProps<typeof CarouselPrimitive.ItemGroup>;
-
-export type CarouselItemProps = ComponentProps<typeof CarouselPrimitive.Item>;
-
-export type CarouselRootProps = ComponentProps<typeof CarouselPrimitive.Root>;
 
 export interface CarouselProps extends Omit<CarouselRootProps, "children" | "slideCount"> {
   slides?: CarouselPresetItem[];

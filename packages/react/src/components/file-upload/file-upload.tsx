@@ -1,4 +1,15 @@
 import { ark } from "@ark-ui/react/factory";
+import type {
+  FileUploadClearTriggerProps,
+  FileUploadItemGroupProps,
+  FileUploadItemNameProps,
+  FileUploadItemPreviewProps,
+  FileUploadItemProps,
+  FileUploadItemSizeTextProps,
+  FileUploadDropzoneProps as FileUploadPrimitiveDropzoneProps,
+  FileUploadRootProps as FileUploadPrimitiveRootProps,
+  FileUploadTriggerProps,
+} from "@ark-ui/react/file-upload";
 import { FileUpload as FileUploadPrimitive, useFileUploadContext } from "@ark-ui/react/file-upload";
 import { UploadIcon, XIcon } from "@phosphor-icons/react";
 import { fileUploadItemRecipe, fileUploadRecipe } from "@pisagor/recipes/file-upload";
@@ -16,39 +27,26 @@ import {
 // #region Types
 type FormControlVariant = "primary" | "secondary";
 
-export type FileUploadListProps = Omit<ComponentProps<typeof FileUploadPrimitive.Item>, "file">;
+export type FileUploadListProps = Omit<FileUploadItemProps, "file">;
 
-export interface FileUploadRootProps extends ComponentProps<typeof FileUploadPrimitive.Root> {
+export interface FileUploadRootProps extends FileUploadPrimitiveRootProps {
   onValueChange?: (value: File[]) => void;
 }
 
-export interface FileUploadDropzoneProps
-  extends ComponentProps<typeof FileUploadPrimitive.Dropzone> {
+export interface FileUploadDropzoneProps extends FileUploadPrimitiveDropzoneProps {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
 }
-
-export type FileUploadTriggerProps = ComponentProps<typeof FileUploadPrimitive.Trigger>;
-
-export type FileUploadItemGroupProps = ComponentProps<typeof FileUploadPrimitive.ItemGroup>;
-
-export type FileUploadItemProps = ComponentProps<typeof FileUploadPrimitive.Item>;
-
-export type FileUploadItemPreviewProps = ComponentProps<typeof FileUploadPrimitive.ItemPreview>;
 
 export type FileUploadItemPreviewImageProps = ComponentProps<
   typeof FileUploadPrimitive.ItemPreviewImage
 >;
 
-export type FileUploadItemNameProps = ComponentProps<typeof FileUploadPrimitive.ItemName>;
-
-export type FileUploadItemSizeProps = ComponentProps<typeof FileUploadPrimitive.ItemSizeText>;
+export type FileUploadItemSizeProps = FileUploadItemSizeTextProps;
 
 export type FileUploadItemDeleteTriggerProps = ComponentProps<
   typeof FileUploadPrimitive.ItemDeleteTrigger
 >;
-
-export type FileUploadClearTriggerProps = ComponentProps<typeof FileUploadPrimitive.ClearTrigger>;
 
 export type FileUploadDropzoneIconProps = ComponentProps<typeof ark.div>;
 

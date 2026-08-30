@@ -1,5 +1,10 @@
 import { ark } from "@ark-ui/react/factory";
-import { Tabs as TabsPrimitive } from "@ark-ui/react/tabs";
+import {
+  type TabListProps,
+  Tabs as TabsPrimitive,
+  type TabsRootProps,
+  type TabTriggerProps,
+} from "@ark-ui/react/tabs";
 import {
   bottomNavigationItemRecipe,
   bottomNavigationRecipe,
@@ -13,13 +18,13 @@ import {
 } from "./bottom-navigation.context";
 
 // #region Types
-export type BottomNavigationRootProps = ComponentProps<typeof TabsPrimitive.Root>;
+export type BottomNavigationRootProps = TabsRootProps;
 
 export type BottomNavigationProps = BottomNavigationRootProps;
 
-export type BottomNavigationListProps = ComponentProps<typeof TabsPrimitive.List>;
+export type BottomNavigationListProps = TabListProps;
 
-export type BottomNavigationItemProps = ComponentProps<typeof TabsPrimitive.Trigger>;
+export type BottomNavigationItemProps = TabTriggerProps;
 
 export type BottomNavigationItemIconProps = ComponentProps<typeof ark.span>;
 

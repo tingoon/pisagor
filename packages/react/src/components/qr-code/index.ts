@@ -1,11 +1,13 @@
 import { QrCodeDownload, QrCodeFrame, QrCodeOverlay, QrCodeRoot } from "./qr-code";
 
 export type {
-  QrCodeDownloadProps,
+  QrCodeDownloadTriggerProps,
   QrCodeFrameProps,
   QrCodeOverlayProps,
   QrCodeRootProps,
-} from "./qr-code";
+} from "@ark-ui/react/qr-code";
+
+export type { QrCodeDownloadProps } from "./qr-code";
 
 export const QrCode = Object.assign(QrCodeRoot, {
   Download: QrCodeDownload,

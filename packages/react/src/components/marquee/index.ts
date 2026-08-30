@@ -4,9 +4,9 @@ export type {
   MarqueeContentProps,
   MarqueeEdgeProps,
   MarqueeItemProps,
-  MarqueeProps,
-  MarqueeRootProps,
-} from "./marquee";
+} from "@ark-ui/react/marquee";
+
+export type { MarqueeProps, MarqueeRootProps } from "./marquee";
 
 export const Marquee = Object.assign(MarqueeShorthand, {
   Content: MarqueeContent,

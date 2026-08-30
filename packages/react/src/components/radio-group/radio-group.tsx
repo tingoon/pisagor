@@ -1,7 +1,13 @@
+import type {
+  RadioGroupItemTextProps,
+  RadioGroupLabelProps,
+  RadioGroupItemProps as RadioGroupPrimitiveItemProps,
+  RadioGroupRootProps as RadioGroupPrimitiveRootProps,
+} from "@ark-ui/react/radio-group";
 import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/react/radio-group";
 import { formControlRadioToggleRecipe } from "@pisagor/recipes/form-control";
 import { radioGroupItemRecipe, radioGroupRecipe } from "@pisagor/recipes/radio-group";
-import type { ComponentProps, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { cn } from "../../internal/utils";
 import { Field } from "../field";
 
@@ -14,8 +20,7 @@ interface RadioGroupPresetItem {
   value: string;
 }
 
-export interface RadioGroupRootProps
-  extends Omit<ComponentProps<typeof RadioGroupPrimitive.Root>, "onValueChange"> {
+export interface RadioGroupRootProps extends Omit<RadioGroupPrimitiveRootProps, "onValueChange"> {
   onValueChange?: (value: string | null) => void;
 }
 
@@ -23,14 +28,11 @@ export interface RadioGroupProps extends Omit<RadioGroupRootProps, "children"> {
   items?: RadioGroupPresetItem[];
 }
 
-export interface RadioGroupItemProps extends ComponentProps<typeof RadioGroupPrimitive.Item> {
+export interface RadioGroupItemProps extends RadioGroupPrimitiveItemProps {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
 }
 
-export type RadioGroupItemTextProps = ComponentProps<typeof RadioGroupPrimitive.ItemText>;
-
-export type RadioGroupLabelProps = ComponentProps<typeof RadioGroupPrimitive.Label>;
 // #endregion
 
 // #region Parts

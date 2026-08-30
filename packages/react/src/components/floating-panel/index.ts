@@ -17,21 +17,24 @@ import {
 } from "./floating-panel";
 
 export type {
-  FloatingPanelBodyProps,
   FloatingPanelCloseTriggerProps,
-  FloatingPanelContentProps,
   FloatingPanelControlProps,
   FloatingPanelDragTriggerProps,
-  FloatingPanelFooterProps,
   FloatingPanelHeaderProps,
-  FloatingPanelMaximizeProps,
-  FloatingPanelMinimizeProps,
   FloatingPanelResizeTriggerProps,
-  FloatingPanelRestoreProps,
   FloatingPanelRootProps,
   FloatingPanelStageTriggerProps,
   FloatingPanelTitleProps,
   FloatingPanelTriggerProps,
+} from "@ark-ui/react/floating-panel";
+
+export type {
+  FloatingPanelBodyProps,
+  FloatingPanelContentProps,
+  FloatingPanelFooterProps,
+  FloatingPanelMaximizeProps,
+  FloatingPanelMinimizeProps,
+  FloatingPanelRestoreProps,
 } from "./floating-panel";
 
 export const FloatingPanel = Object.assign(FloatingPanelRoot, {

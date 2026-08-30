@@ -7,8 +7,11 @@ import {
 
 export type {
   SegmentGroupIndicatorProps,
-  SegmentGroupItemProps,
   SegmentGroupItemTextProps,
+} from "@ark-ui/react/segment-group";
+
+export type {
+  SegmentGroupItemProps,
   SegmentGroupProps,
   SegmentGroupRootProps,
 } from "./segment-group";

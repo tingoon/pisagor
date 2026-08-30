@@ -1,8 +1,15 @@
+import type {
+  SignaturePadClearTriggerProps,
+  SignaturePadControlProps,
+  SignaturePadGuideProps,
+  SignaturePadRootProps as SignaturePadPrimitiveRootProps,
+  SignaturePadSegmentProps,
+} from "@ark-ui/react/signature-pad";
 import { SignaturePad as SignaturePadPrimitive } from "@ark-ui/react/signature-pad";
 import { ArrowCounterClockwiseIcon } from "@phosphor-icons/react";
 import { formControlZoneRecipe } from "@pisagor/recipes/form-control";
 import { type SignaturePadSlots, signaturePadRecipe } from "@pisagor/recipes/signature-pad";
-import type { ComponentProps } from "react";
+
 import type { VariantClassNames } from "../../internal/types";
 import { cn } from "../../internal/utils";
 import { Button } from "../button";
@@ -13,7 +20,7 @@ type FormControlVariant = "primary" | "secondary";
 
 type SignaturePadClassNames = VariantClassNames<SignaturePadSlots>;
 
-type SignaturePadRootProps = ComponentProps<typeof SignaturePadPrimitive.Root> & {
+type SignaturePadRootProps = SignaturePadPrimitiveRootProps & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
   /** Marks the control as invalid for styling and assistive tech. */
@@ -25,13 +32,8 @@ export interface SignaturePadProps extends Omit<SignaturePadRootProps, "children
   classNames?: SignaturePadClassNames;
 }
 
-type SignaturePadControlProps = ComponentProps<typeof SignaturePadPrimitive.Control>;
+type SignaturePadClearProps = SignaturePadClearTriggerProps;
 
-type SignaturePadSegmentProps = ComponentProps<typeof SignaturePadPrimitive.Segment>;
-
-type SignaturePadClearProps = ComponentProps<typeof SignaturePadPrimitive.ClearTrigger>;
-
-type SignaturePadGuideProps = ComponentProps<typeof SignaturePadPrimitive.Guide>;
 // #endregion
 
 // #region Parts

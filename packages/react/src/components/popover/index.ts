@@ -16,16 +16,19 @@ import {
 export type {
   PopoverAnchorProps,
   PopoverArrowProps,
-  PopoverBodyProps,
   PopoverCloseTriggerProps,
-  PopoverContentProps,
   PopoverDescriptionProps,
-  PopoverFooterProps,
-  PopoverHeaderProps,
   PopoverPositionerProps,
   PopoverRootProps,
   PopoverTitleProps,
   PopoverTriggerProps,
+} from "@ark-ui/react/popover";
+
+export type {
+  PopoverBodyProps,
+  PopoverContentProps,
+  PopoverFooterProps,
+  PopoverHeaderProps,
 } from "./popover";
 
 export const Popover = Object.assign(PopoverRoot, {

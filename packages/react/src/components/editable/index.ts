@@ -14,11 +14,14 @@ export type {
   EditableCancelTriggerProps,
   EditableControlProps,
   EditableEditTriggerProps,
+  EditableSubmitTriggerProps,
+} from "@ark-ui/react/editable";
+
+export type {
   EditableInputProps,
   EditablePreviewProps,
   EditableProps,
   EditableRootProps,
-  EditableSubmitTriggerProps,
 } from "./editable";
 
 export const Editable = Object.assign(EditableRoot, {

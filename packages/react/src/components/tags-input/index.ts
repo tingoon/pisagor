@@ -14,13 +14,16 @@ import {
 
 export type {
   TagsInputClearTriggerProps,
-  TagsInputControlProps,
   TagsInputInputProps,
-  TagsInputItemDeleteTriggerProps,
   TagsInputItemInputProps,
   TagsInputItemPreviewProps,
-  TagsInputItemProps,
   TagsInputItemTextProps,
+} from "@ark-ui/react/tags-input";
+
+export type {
+  TagsInputControlProps,
+  TagsInputItemDeleteTriggerProps,
+  TagsInputItemProps,
   TagsInputProps,
   TagsInputRootProps,
   TagsInputRootProviderProps,

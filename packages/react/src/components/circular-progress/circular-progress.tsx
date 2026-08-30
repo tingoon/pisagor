@@ -1,5 +1,10 @@
 import { ark } from "@ark-ui/react/factory";
-import { Progress as ProgressPrimitive, useProgressContext } from "@ark-ui/react/progress";
+import {
+  Progress as ProgressPrimitive,
+  type ProgressRootProps,
+  type ProgressValueTextProps,
+  useProgressContext,
+} from "@ark-ui/react/progress";
 import {
   type CircularProgressSlots,
   circularProgressRecipe,
@@ -14,11 +19,11 @@ import {
 // #region Types
 type CircularProgressTrackProps = ComponentProps<typeof ark.svg>;
 
-type CircularProgressValueProps = ComponentProps<typeof ProgressPrimitive.ValueText>;
+type CircularProgressValueProps = ProgressValueTextProps;
 
 type CircularProgressClassNames = VariantClassNames<CircularProgressSlots>;
 
-type CircularProgressRootProps = ComponentProps<typeof ProgressPrimitive.Root>;
+type CircularProgressRootProps = ProgressRootProps;
 
 export interface CircularProgressProps extends Omit<CircularProgressRootProps, "children"> {
   /**

@@ -9,14 +9,15 @@ import {
 } from "./pagination";
 
 export type {
+  PaginationContextProps,
   PaginationEllipsisProps,
-  PaginationItemLinkProps,
   PaginationItemProps,
-  PaginationItemsProps,
   PaginationNextTriggerProps,
   PaginationPrevTriggerProps,
   PaginationRootProps,
-} from "./pagination";
+} from "@ark-ui/react/pagination";
+
+export type { PaginationItemLinkProps, PaginationItemsProps } from "./pagination";
 
 export const Pagination = Object.assign(PaginationRoot, {
   Ellipsis: PaginationEllipsis,

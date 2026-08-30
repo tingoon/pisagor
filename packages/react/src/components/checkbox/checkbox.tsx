@@ -1,21 +1,21 @@
-import { Checkbox as CheckboxPrimitive } from "@ark-ui/react/checkbox";
+import {
+  type CheckboxIndicatorProps,
+  Checkbox as CheckboxPrimitive,
+  type CheckboxGroupProps as CheckboxPrimitiveGroupProps,
+  type CheckboxRootProps,
+} from "@ark-ui/react/checkbox";
 import { CheckIcon, MinusIcon } from "@phosphor-icons/react";
 import { checkboxGroupRecipe, checkboxRecipe } from "@pisagor/recipes/checkbox";
 import { formControlToggleRecipe } from "@pisagor/recipes/form-control";
-import type { ComponentProps } from "react";
+
 import { cn } from "../../internal/utils";
 
 // #region Types
 type FormControlVariant = "primary" | "secondary";
 
-export type CheckboxGroupProps = Omit<
-  ComponentProps<typeof CheckboxPrimitive.Group>,
-  "onValueChange"
-> & {
+export type CheckboxGroupProps = Omit<CheckboxPrimitiveGroupProps, "onValueChange"> & {
   onValueChange?: (value: string[]) => void;
 };
-
-export type CheckboxRootProps = ComponentProps<typeof CheckboxPrimitive.Root>;
 
 export interface CheckboxProps extends CheckboxRootProps {
   /** Visual shell variant. Defaults to `primary`. */
@@ -23,7 +23,6 @@ export interface CheckboxProps extends CheckboxRootProps {
   onValueChange?: (value: boolean) => void;
 }
 
-type CheckboxIndicatorProps = ComponentProps<typeof CheckboxPrimitive.Indicator>;
 // #endregion
 
 // #region Parts

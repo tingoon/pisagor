@@ -10,7 +10,7 @@ export type {
   CollapsibleIndicatorProps,
   CollapsibleRootProps,
   CollapsibleTriggerProps,
-} from "./collapsible";
+} from "@ark-ui/react/collapsible";
 
 export const Collapsible = Object.assign(CollapsibleRoot, {
   Content: CollapsibleContent,

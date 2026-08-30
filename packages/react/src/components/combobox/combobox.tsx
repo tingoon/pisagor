@@ -1,15 +1,24 @@
 import { type CollectionItem, createListCollection } from "@ark-ui/react/collection";
-import {
-  type ComboboxList as ComboboxListPrimitive,
-  Combobox as ComboboxPrimitive,
-  type ComboboxRootProps as ComboboxRootPropsPrimitive,
-  useComboboxContext,
+import type {
+  ComboboxClearTriggerProps,
+  ComboboxControlProps,
+  ComboboxEmptyProps,
+  ComboboxItemGroupLabelProps,
+  ComboboxListProps,
+  ComboboxPositionerProps,
+  ComboboxContentProps as ComboboxPrimitiveContentProps,
+  ComboboxInputProps as ComboboxPrimitiveInputProps,
+  ComboboxItemGroupProps as ComboboxPrimitiveItemGroupProps,
+  ComboboxItemProps as ComboboxPrimitiveItemProps,
+  ComboboxRootProps as ComboboxPrimitiveRootProps,
+  ComboboxTriggerProps,
 } from "@ark-ui/react/combobox";
+import { Combobox as ComboboxPrimitive, useComboboxContext } from "@ark-ui/react/combobox";
 import { Portal } from "@ark-ui/react/portal";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
 import { type ComboboxVariantProps, comboboxRecipe } from "@pisagor/recipes/combobox";
 import type { InputRootVariantProps } from "@pisagor/recipes/input";
-import type { ComponentProps, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { cn } from "../../internal/utils";
 import { Button } from "../button";
 import { InputGroup } from "../input-group";
@@ -24,7 +33,7 @@ interface ComboboxPresetItem {
 }
 
 export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
-  ComboboxRootPropsPrimitive<T>,
+  ComboboxPrimitiveRootProps<T>,
   "onValueChange"
 > & {
   /** Visual shell variant. Defaults to `primary`. */
@@ -43,7 +52,7 @@ export interface ComboboxProps extends Omit<ComboboxRootProps, "children" | "col
 }
 
 export interface ComboboxInputProps
-  extends Omit<ComponentProps<typeof ComboboxPrimitive.Input>, "size">,
+  extends Omit<ComboboxPrimitiveInputProps, "size">,
     InputRootVariantProps {
   /**
    * Whether to show a clear button when the input has a value.
@@ -65,26 +74,16 @@ export interface ComboboxInputProps
   showTrigger?: boolean;
 }
 
-export interface ComboboxItemGroupProps extends ComponentProps<typeof ComboboxPrimitive.ItemGroup> {
+export interface ComboboxItemGroupProps extends ComboboxPrimitiveItemGroupProps {
   /** The heading of the group */
   heading?: string | ReactNode;
 }
 
-export interface ComboboxItemProps
-  extends ComponentProps<typeof ComboboxPrimitive.Item>,
-    ComboboxVariantProps {}
+export interface ComboboxItemProps extends ComboboxPrimitiveItemProps, ComboboxVariantProps {}
 
-export type ComboboxControlProps = ComponentProps<typeof ComboboxPrimitive.Control>;
+export type ComboboxFieldInputProps = ComboboxPrimitiveInputProps;
 
-export type ComboboxTriggerProps = ComponentProps<typeof ComboboxPrimitive.Trigger>;
-
-export type ComboboxClearTriggerProps = ComponentProps<typeof ComboboxPrimitive.ClearTrigger>;
-
-export type ComboboxFieldInputProps = ComponentProps<typeof ComboboxPrimitive.Input>;
-
-export type ComboboxPositionerProps = ComponentProps<typeof ComboboxPrimitive.Positioner>;
-
-export interface ComboboxContentProps extends ComponentProps<typeof ComboboxPrimitive.Content> {
+export interface ComboboxContentProps extends ComboboxPrimitiveContentProps {
   /**
    * Whether to render the content in a portal with a positioner.
    *
@@ -93,11 +92,6 @@ export interface ComboboxContentProps extends ComponentProps<typeof ComboboxPrim
   portalled?: boolean;
 }
 
-export type ComboboxItemGroupLabelProps = ComponentProps<typeof ComboboxPrimitive.ItemGroupLabel>;
-
-export type ComboboxEmptyProps = ComponentProps<typeof ComboboxPrimitive.Empty>;
-
-export type ComboboxListProps = ComponentProps<typeof ComboboxListPrimitive>;
 // #endregion
 
 // #region Parts

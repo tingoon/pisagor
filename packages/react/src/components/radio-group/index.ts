@@ -6,10 +6,10 @@ import {
   RadioGroupShorthand,
 } from "./radio-group";
 
+export type { RadioGroupItemTextProps, RadioGroupLabelProps } from "@ark-ui/react/radio-group";
+
 export type {
   RadioGroupItemProps,
-  RadioGroupItemTextProps,
-  RadioGroupLabelProps,
   RadioGroupProps,
   RadioGroupRootProps,
 } from "./radio-group";

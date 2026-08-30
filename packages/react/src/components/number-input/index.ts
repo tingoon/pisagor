@@ -8,13 +8,14 @@ import {
   NumberInputScrubber,
 } from "./number-input";
 
+export type { NumberInputScrubberProps } from "@ark-ui/react/number-input";
+
 export type {
   NumberInputControlProps,
   NumberInputDecrementTriggerProps,
   NumberInputIncrementTriggerProps,
   NumberInputProps,
   NumberInputRootProps,
-  NumberInputScrubberProps,
 } from "./number-input";
 
 export const NumberInput = Object.assign(NumberInputRoot, {

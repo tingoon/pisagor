@@ -1,7 +1,13 @@
+import type {
+  AccordionItemContentProps,
+  AccordionItemProps,
+  AccordionItemTriggerProps,
+  AccordionRootProps,
+} from "@ark-ui/react/accordion";
 import { Accordion as AccordionPrimitive } from "@ark-ui/react/accordion";
 import { CaretDownIcon } from "@phosphor-icons/react";
 import { accordionItemRecipe } from "@pisagor/recipes/accordion";
-import type { ComponentProps, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { AccordionItemContext, useAccordionItem } from "./accordion.context";
 
 // #region Types
@@ -11,14 +17,6 @@ interface AccordionPresetItem {
   content: ReactNode;
   disabled?: boolean;
 }
-
-export type AccordionRootProps = ComponentProps<typeof AccordionPrimitive.Root>;
-
-export type AccordionItemProps = ComponentProps<typeof AccordionPrimitive.Item>;
-
-export type AccordionItemTriggerProps = ComponentProps<typeof AccordionPrimitive.ItemTrigger>;
-
-export type AccordionItemContentProps = ComponentProps<typeof AccordionPrimitive.ItemContent>;
 
 export interface AccordionProps extends Omit<AccordionRootProps, "children"> {
   items?: AccordionPresetItem[];

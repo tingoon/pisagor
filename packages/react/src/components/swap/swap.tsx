@@ -1,13 +1,17 @@
-import { Swap as SwapPrimitive } from "@ark-ui/react/swap";
+import {
+  type SwapIndicatorProps,
+  Swap as SwapPrimitive,
+  type SwapRootProps,
+} from "@ark-ui/react/swap";
 import { type SwapVariantProps, swapRecipe } from "@pisagor/recipes/swap";
-import type { ComponentProps, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 // #region Types
-export type SwapOnIndicatorProps = ComponentProps<typeof SwapPrimitive.Indicator>;
+export type SwapOnIndicatorProps = SwapIndicatorProps;
 
-export type SwapOffIndicatorProps = ComponentProps<typeof SwapPrimitive.Indicator>;
+export type SwapOffIndicatorProps = SwapIndicatorProps;
 
-export interface SwapProps extends ComponentProps<typeof SwapPrimitive.Root>, SwapVariantProps {
+export interface SwapProps extends SwapRootProps, SwapVariantProps {
   /** Content shown when swapped off. */
   off?: ReactNode;
   /** Content shown when swapped on. */

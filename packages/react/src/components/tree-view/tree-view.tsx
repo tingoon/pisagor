@@ -1,7 +1,21 @@
 import { ark } from "@ark-ui/react/factory";
+import type {
+  TreeCollection as arkTreeCollection,
+  TreeViewBranchContentProps,
+  TreeViewBranchIndentGuideProps,
+  TreeViewBranchIndicatorProps,
+  TreeViewBranchProps,
+  TreeViewBranchTextProps,
+  TreeViewItemProps,
+  TreeViewLabelProps,
+  TreeViewNodeCheckboxProps,
+  TreeViewNodeRenameInputProps,
+  TreeViewBranchControlProps as TreeViewPrimitiveBranchControlProps,
+  TreeViewItemTextProps as TreeViewPrimitiveItemTextProps,
+  TreeViewTreeProps,
+} from "@ark-ui/react/tree-view";
 import {
   createTreeCollection as arkCreateTreeCollection,
-  type TreeCollection as arkTreeCollection,
   TreeView as TreeViewPrimitive,
 } from "@ark-ui/react/tree-view";
 import {
@@ -46,11 +60,10 @@ export type TreeViewProps = TreeViewPrimitive.RootComponentProps & TreeViewConte
 export type NodeProviderProps<T extends TreeNodeType = TreeNodeType> =
   TreeViewPrimitive.NodeProviderProps<T>;
 
-export type TreeViewBranchControlProps = ComponentProps<typeof TreeViewPrimitive.BranchControl> &
+export type TreeViewBranchControlProps = TreeViewPrimitiveBranchControlProps &
   Pick<TreeViewBranchTitleProps, "icon" | "expandedIcon">;
 
-export interface TreeViewBranchTitleProps
-  extends ComponentProps<typeof TreeViewPrimitive.BranchText> {
+export interface TreeViewBranchTitleProps extends TreeViewBranchTextProps {
   /**
    * Custom expanded icon
    *
@@ -65,7 +78,7 @@ export interface TreeViewBranchTitleProps
   icon?: JSX.ElementType | null;
 }
 
-export type TreeViewItemTitleProps = ComponentProps<typeof TreeViewPrimitive.ItemText>;
+export type TreeViewItemTitleProps = TreeViewPrimitiveItemTextProps;
 
 export interface TreeViewItemTextProps extends TreeViewItemTitleProps {
   /**
@@ -76,25 +89,7 @@ export interface TreeViewItemTextProps extends TreeViewItemTitleProps {
   icon?: JSX.ElementType;
 }
 
-export type TreeViewLabelProps = ComponentProps<typeof TreeViewPrimitive.Label>;
-
-export type TreeViewTreeProps = ComponentProps<typeof TreeViewPrimitive.Tree>;
-
-export type TreeViewBranchProps = ComponentProps<typeof TreeViewPrimitive.Branch>;
-
-export type TreeViewBranchIndicatorProps = ComponentProps<typeof TreeViewPrimitive.BranchIndicator>;
-
-export type TreeViewBranchContentProps = ComponentProps<typeof TreeViewPrimitive.BranchContent>;
-
-export type TreeViewBranchIndentGuideProps = ComponentProps<
-  typeof TreeViewPrimitive.BranchIndentGuide
->;
-
-export type TreeViewItemProps = ComponentProps<typeof TreeViewPrimitive.Item>;
-
-export type TreeViewNodeCheckboxProps = ComponentProps<typeof TreeViewPrimitive.NodeCheckbox>;
-
-export type TreeViewNodeInputProps = ComponentProps<typeof TreeViewPrimitive.NodeRenameInput>;
+export type TreeViewNodeInputProps = TreeViewNodeRenameInputProps;
 
 interface TreeViewItemIconProps extends ComponentProps<typeof ark.span> {}
 // #endregion

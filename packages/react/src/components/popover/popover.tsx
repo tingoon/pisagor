@@ -1,4 +1,15 @@
 import { ark } from "@ark-ui/react/factory";
+import type {
+  PopoverAnchorProps,
+  PopoverArrowProps,
+  PopoverCloseTriggerProps,
+  PopoverDescriptionProps,
+  PopoverPositionerProps,
+  PopoverContentProps as PopoverPrimitiveContentProps,
+  PopoverRootProps,
+  PopoverTitleProps,
+  PopoverTriggerProps,
+} from "@ark-ui/react/popover";
 import { Popover as PopoverPrimitive } from "@ark-ui/react/popover";
 import { Portal } from "@ark-ui/react/portal";
 import { XIcon } from "@phosphor-icons/react";
@@ -9,7 +20,7 @@ import { ScrollArea } from "../scroll-area";
 import { PopoverContentContext, usePopoverContent } from "./popover.context";
 
 // #region Types
-export interface PopoverContentProps extends ComponentProps<typeof PopoverPrimitive.Content> {
+export interface PopoverContentProps extends PopoverPrimitiveContentProps {
   /**
    * Whether to show a close button at the top right corner.
    *
@@ -24,22 +35,6 @@ export interface PopoverHeaderProps extends ComponentProps<typeof ark.div> {
   /** The title of the popover header */
   title?: string;
 }
-
-export type PopoverRootProps = ComponentProps<typeof PopoverPrimitive.Root>;
-
-export type PopoverTriggerProps = ComponentProps<typeof PopoverPrimitive.Trigger>;
-
-export type PopoverAnchorProps = ComponentProps<typeof PopoverPrimitive.Anchor>;
-
-export type PopoverPositionerProps = ComponentProps<typeof PopoverPrimitive.Positioner>;
-
-export type PopoverTitleProps = ComponentProps<typeof PopoverPrimitive.Title>;
-
-export type PopoverDescriptionProps = ComponentProps<typeof PopoverPrimitive.Description>;
-
-export type PopoverCloseTriggerProps = ComponentProps<typeof PopoverPrimitive.CloseTrigger>;
-
-export type PopoverArrowProps = ComponentProps<typeof PopoverPrimitive.Arrow>;
 
 export type PopoverBodyProps = ComponentProps<typeof ark.div>;
 

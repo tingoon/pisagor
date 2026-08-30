@@ -1,9 +1,17 @@
+import type {
+  DatePickerPresetTriggerProps,
+  DatePickerContentProps as DatePickerPrimitiveContentProps,
+  DatePickerInputProps as DatePickerPrimitiveInputProps,
+  DatePickerRootProps as DatePickerPrimitiveRootProps,
+  DatePickerTriggerProps as DatePickerPrimitiveTriggerProps,
+  DatePickerValueTextProps,
+} from "@ark-ui/react/date-picker";
 import { DatePicker as DatePickerPrimitive, useDatePickerContext } from "@ark-ui/react/date-picker";
 import { Portal } from "@ark-ui/react/portal";
 import { CalendarIcon, ClockIcon, XIcon } from "@phosphor-icons/react";
 import { calendarRecipe } from "@pisagor/recipes/calendar";
 import { datePickerRecipe } from "@pisagor/recipes/date-picker";
-import type { ComponentProps } from "react";
+
 import { useClearableInput } from "../../internal/hooks";
 import { Button } from "../button";
 import { Calendar } from "../calendar";
@@ -15,7 +23,7 @@ import { DatePickerSlotsContext, useDatePicker } from "./date-picker.context";
 // #region Types
 type FormControlVariant = "primary" | "secondary";
 
-export interface DatePickerTriggerProps extends ComponentProps<typeof DatePickerPrimitive.Trigger> {
+export interface DatePickerTriggerProps extends DatePickerPrimitiveTriggerProps {
   /**
    * Whether to show a clear button when a date is selected.
    *
@@ -25,7 +33,7 @@ export interface DatePickerTriggerProps extends ComponentProps<typeof DatePicker
 }
 
 export interface DatePickerInputProps
-  extends Omit<ComponentProps<typeof DatePickerPrimitive.Input>, "size">,
+  extends Omit<DatePickerPrimitiveInputProps, "size">,
     InputProps {
   /**
    * Whether to show a clear button when the input has a value.
@@ -44,7 +52,7 @@ export interface DatePickerTimerProps extends InputProps {
   clearable?: boolean;
 }
 
-export interface DatePickerContentProps extends ComponentProps<typeof DatePickerPrimitive.Content> {
+export interface DatePickerContentProps extends DatePickerPrimitiveContentProps {
   /**
    * When `true` (default), auto-renders the standard month/year navigation and
    * day grid inside the content — no need to add calendar sub-components manually.
@@ -52,16 +60,12 @@ export interface DatePickerContentProps extends ComponentProps<typeof DatePicker
   showCalendar?: boolean;
 }
 
-export interface DatePickerRootProps
-  extends Omit<ComponentProps<typeof DatePickerPrimitive.Root>, "onValueChange"> {
+export interface DatePickerRootProps extends Omit<DatePickerPrimitiveRootProps, "onValueChange"> {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
-  onValueChange?: (value: ComponentProps<typeof DatePickerPrimitive.Root>["value"]) => void;
+  onValueChange?: (value: DatePickerRootProps["value"]) => void;
 }
 
-export type DatePickerValueTextProps = ComponentProps<typeof DatePickerPrimitive.ValueText>;
-
-export type DatePickerPresetTriggerProps = ComponentProps<typeof DatePickerPrimitive.PresetTrigger>;
 // #endregion
 
 // #region Parts

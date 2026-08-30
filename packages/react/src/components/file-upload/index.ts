@@ -19,21 +19,25 @@ import {
 
 export type {
   FileUploadClearTriggerProps,
+  FileUploadItemGroupProps,
+  FileUploadItemNameProps,
+  FileUploadItemPreviewProps,
+  FileUploadItemProps,
+  FileUploadItemSizeTextProps,
+  FileUploadTriggerProps,
+} from "@ark-ui/react/file-upload";
+
+export type {
   FileUploadDescriptionProps,
   FileUploadDropzoneIconProps,
   FileUploadDropzoneProps,
   FileUploadHelperProps,
   FileUploadItemDeleteTriggerProps,
-  FileUploadItemGroupProps,
-  FileUploadItemNameProps,
   FileUploadItemPreviewImageProps,
-  FileUploadItemPreviewProps,
-  FileUploadItemProps,
   FileUploadItemSizeProps,
   FileUploadListProps,
   FileUploadRootProps,
   FileUploadTitleProps,
-  FileUploadTriggerProps,
 } from "./file-upload";
 
 export const FileUpload = Object.assign(FileUploadRoot, {

@@ -1,3 +1,9 @@
+import type {
+  ProgressRootProps as ProgressPrimitiveRootProps,
+  ProgressRangeProps,
+  ProgressTrackProps,
+  ProgressValueTextProps,
+} from "@ark-ui/react/progress";
 import { Progress as ProgressPrimitive } from "@ark-ui/react/progress";
 import { type ProgressSlots, progressRecipe } from "@pisagor/recipes/progress";
 import type { ComponentProps, ReactNode } from "react";
@@ -6,17 +12,11 @@ import { Field } from "../field";
 import { ProgressContext, useProgress } from "./progress.context";
 
 // #region Types
-type ProgressTrackProps = ComponentProps<typeof ProgressPrimitive.Track>;
-
-type ProgressRangeProps = ComponentProps<typeof ProgressPrimitive.Range>;
-
-type ProgressValueProps = ComponentProps<typeof ProgressPrimitive.ValueText>;
-
 type ProgressHeaderProps = ComponentProps<"div">;
 
 type ProgressClassNames = VariantClassNames<ProgressSlots>;
 
-type ProgressRootProps = Omit<ComponentProps<typeof ProgressPrimitive.Root>, "value">;
+type ProgressRootProps = Omit<ProgressPrimitiveRootProps, "value">;
 
 export interface ProgressProps extends Omit<ProgressRootProps, "children"> {
   /**
@@ -43,7 +43,7 @@ export interface ProgressProps extends Omit<ProgressRootProps, "children"> {
   /** Extra props forwarded to the progress track element */
   trackProps?: Omit<ProgressTrackProps, "children" | "className">;
   /** Extra props forwarded to the progress value text element */
-  valueProps?: Omit<ProgressValueProps, "children" | "className">;
+  valueProps?: Omit<ProgressValueTextProps, "children" | "className">;
 }
 // #endregion
 
@@ -79,7 +79,7 @@ function ProgressHeader({ children, className, ...rest }: ProgressHeaderProps) {
   );
 }
 
-function ProgressValue({ className, ...rest }: ProgressValueProps) {
+function ProgressValue({ className, ...rest }: ProgressValueTextProps) {
   const { slots } = useProgress();
 
   return <ProgressPrimitive.ValueText {...rest} className={slots.value({ className })} />;

@@ -10,9 +10,10 @@ export type {
   AccordionItemContentProps,
   AccordionItemProps,
   AccordionItemTriggerProps,
-  AccordionProps,
   AccordionRootProps,
-} from "./accordion";
+} from "@ark-ui/react/accordion";
+
+export type { AccordionProps } from "./accordion";
 
 export const Accordion = Object.assign(AccordionShorthand, {
   Item: AccordionItem,

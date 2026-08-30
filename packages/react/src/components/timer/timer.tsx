@@ -1,4 +1,12 @@
 import { ark } from "@ark-ui/react/factory";
+import type {
+  TimerActionTriggerProps,
+  TimerAreaProps,
+  TimerControlProps,
+  TimerItemProps,
+  TimerRootProps as TimerPrimitiveRootProps,
+  TimerSeparatorProps,
+} from "@ark-ui/react/timer";
 import { Timer as TimerPrimitive, useTimerContext } from "@ark-ui/react/timer";
 import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes/timer";
 import type { ComponentProps } from "react";
@@ -17,24 +25,13 @@ export interface TimerItemGroupProps extends ComponentProps<typeof ark.div> {
   orientation?: "horizontal" | "vertical";
 }
 
-export interface TimerActionProps
-  extends Omit<ComponentProps<typeof TimerPrimitive.ActionTrigger>, "action"> {}
+export interface TimerActionProps extends Omit<TimerActionTriggerProps, "action"> {}
 
-export type TimerRootProps = ComponentProps<typeof TimerPrimitive.Root> & {
+export type TimerRootProps = TimerPrimitiveRootProps & {
   units?: TimerUnit[];
   /** Auto-render Timer.Control with play and reset buttons */
   isControlsVisible?: boolean;
 };
-
-export type TimerAreaProps = ComponentProps<typeof TimerPrimitive.Area>;
-
-export type TimerItemProps = ComponentProps<typeof TimerPrimitive.Item>;
-
-export type TimerSeparatorProps = ComponentProps<typeof TimerPrimitive.Separator>;
-
-export type TimerControlProps = ComponentProps<typeof TimerPrimitive.Control>;
-
-export type TimerActionTriggerProps = ComponentProps<typeof TimerPrimitive.ActionTrigger>;
 
 export type TimerItemLabelProps = ComponentProps<typeof ark.div>;
 // #endregion

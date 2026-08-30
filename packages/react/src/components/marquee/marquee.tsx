@@ -1,12 +1,17 @@
+import type {
+  MarqueeContentProps,
+  MarqueeEdgeProps,
+  MarqueeItemProps,
+  MarqueeRootProps as MarqueePrimitiveRootProps,
+} from "@ark-ui/react/marquee";
 import { Marquee as MarqueePrimitive } from "@ark-ui/react/marquee";
 import { marqueeRecipe } from "@pisagor/recipes/marquee";
-import type { ComponentProps, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { Children, isValidElement } from "react";
 import { MarqueeContext, useMarquee } from "./marquee.context";
 
 // #region Types
-export interface MarqueeRootProps
-  extends Omit<ComponentProps<typeof MarqueePrimitive.Root>, "side"> {
+export interface MarqueeRootProps extends Omit<MarqueePrimitiveRootProps, "side"> {
   /**
    *
    * @defaultValue "horizontal"
@@ -25,11 +30,6 @@ export interface MarqueeProps extends Omit<MarqueeRootProps, "children"> {
   items?: ReactNode[];
 }
 
-export type MarqueeContentProps = ComponentProps<typeof MarqueePrimitive.Content>;
-
-export type MarqueeItemProps = ComponentProps<typeof MarqueePrimitive.Item>;
-
-export type MarqueeEdgeProps = ComponentProps<typeof MarqueePrimitive.Edge>;
 // #endregion
 
 // #region Parts

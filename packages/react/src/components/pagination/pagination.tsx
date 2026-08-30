@@ -1,25 +1,20 @@
+import type {
+  PaginationContextProps,
+  PaginationEllipsisProps,
+  PaginationItemProps,
+  PaginationNextTriggerProps,
+  PaginationPrevTriggerProps,
+  PaginationRootProps,
+} from "@ark-ui/react/pagination";
 import { Pagination as PaginationPrimitive, usePaginationContext } from "@ark-ui/react/pagination";
 import { CaretLeftIcon, CaretRightIcon, DotsThreeIcon } from "@phosphor-icons/react";
 import { paginationRecipe } from "@pisagor/recipes/pagination";
-import type { ComponentProps } from "react";
+
 import { Button, type ButtonProps } from "../button";
 import { PaginationContext, usePagination } from "./pagination.context";
 
 // #region Types
-export type PaginationRootProps = ComponentProps<typeof PaginationPrimitive.Root>;
-
-export type PaginationPrevTriggerProps = ComponentProps<typeof PaginationPrimitive.PrevTrigger>;
-
-export type PaginationNextTriggerProps = ComponentProps<typeof PaginationPrimitive.NextTrigger>;
-
-export type PaginationItemProps = ComponentProps<typeof PaginationPrimitive.Item>;
-
-export type PaginationItemsProps = Omit<
-  ComponentProps<typeof PaginationPrimitive.Context>,
-  "children"
->;
-
-export type PaginationEllipsisProps = ComponentProps<typeof PaginationPrimitive.Ellipsis>;
+export type PaginationItemsProps = Omit<PaginationContextProps, "children">;
 
 export interface PaginationItemLinkProps extends ButtonProps {
   /** The page number to link to. */

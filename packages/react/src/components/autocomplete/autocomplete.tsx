@@ -1,18 +1,18 @@
 import type { CollectionItem } from "@ark-ui/react/collection";
-import {
-  Combobox,
-  type ComboboxClearTriggerProps,
-  type ComboboxContentProps,
-  type ComboboxControlProps,
-  type ComboboxEmptyProps,
-  type ComboboxInputProps,
-  type ComboboxItemGroupLabelProps,
-  type ComboboxItemGroupProps,
-  type ComboboxItemProps,
-  type ComboboxListProps,
-  type ComboboxRootProps,
-  type ComboboxTriggerProps,
+import type {
+  ComboboxClearTriggerProps,
+  ComboboxContentProps,
+  ComboboxControlProps,
+  ComboboxEmptyProps,
+  ComboboxInputProps,
+  ComboboxItemGroupLabelProps,
+  ComboboxItemGroupProps,
+  ComboboxItemProps,
+  ComboboxListProps,
+  ComboboxRootProps,
+  ComboboxTriggerProps,
 } from "../combobox";
+import { Combobox } from "../combobox";
 import { Separator, type SeparatorProps } from "../separator";
 
 // #region Types

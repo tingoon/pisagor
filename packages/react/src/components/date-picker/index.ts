@@ -10,13 +10,16 @@ import {
 } from "./date-picker";
 
 export type {
+  DatePickerPresetTriggerProps,
+  DatePickerValueTextProps,
+} from "@ark-ui/react/date-picker";
+
+export type {
   DatePickerContentProps,
   DatePickerInputProps,
-  DatePickerPresetTriggerProps,
   DatePickerRootProps as DatePickerProps,
   DatePickerTimerProps,
   DatePickerTriggerProps,
-  DatePickerValueTextProps,
 } from "./date-picker";
 
 export const DatePicker = Object.assign(DatePickerRoot, {

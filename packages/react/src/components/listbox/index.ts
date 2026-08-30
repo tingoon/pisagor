@@ -18,13 +18,16 @@ export type {
   ListboxContentProps,
   ListboxEmptyProps,
   ListboxItemGroupLabelProps,
-  ListboxItemGroupProps,
   ListboxItemIndicatorProps,
-  ListboxItemProps,
   ListboxItemTextProps,
+  ListboxValueTextProps,
+} from "@ark-ui/react/listbox";
+
+export type {
+  ListboxItemGroupProps,
+  ListboxItemProps,
   ListboxProps,
   ListboxRootProps,
-  ListboxValueTextProps,
 } from "./listbox";
 
 export const Listbox = Object.assign(ListboxShorthand, {

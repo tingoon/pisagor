@@ -1,10 +1,5 @@
-import { Highlight as HighlightPrimitive } from "@ark-ui/react/highlight";
+import { Highlight as HighlightPrimitive, type HighlightProps } from "@ark-ui/react/highlight";
 import { highlightRecipe } from "@pisagor/recipes/highlight";
-import type { ComponentProps } from "react";
-
-// #region Types
-export type HighlightProps = ComponentProps<typeof HighlightPrimitive>;
-// #endregion
 
 // #region Component
 export function Highlight({ className, ...rest }: HighlightProps) {

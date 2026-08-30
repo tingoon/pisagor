@@ -1,16 +1,14 @@
 import { chartRecipe } from "@pisagor/recipes/chart";
 import type { ComponentProps, ComponentType, ReactNode } from "react";
 import { useId, useMemo } from "react";
-import {
-  Legend,
-  type LegendPayload,
-  type LegendProps,
-  ResponsiveContainer,
-  Tooltip,
-  type TooltipContentProps,
-  type TooltipPayloadEntry,
-  type TooltipValueType,
+import type {
+  LegendPayload,
+  LegendProps,
+  TooltipContentProps,
+  TooltipPayloadEntry,
+  TooltipValueType,
 } from "recharts";
+import { Legend, ResponsiveContainer, Tooltip } from "recharts";
 import { cn } from "../internal/utils";
 import { ChartContext, useChart } from "./chart.context";
 import "./chart-series.css";

@@ -1,6 +1,14 @@
 import { Portal } from "@ark-ui/react/portal";
+import type {
+  CreateToasterReturn,
+  ToastActionTriggerProps,
+  ToastCloseTriggerProps,
+  ToastDescriptionProps,
+  ToasterProps as ToasterPrimitiveProps,
+  ToastRootProps,
+  ToastTitleProps,
+} from "@ark-ui/react/toast";
 import {
-  type CreateToasterReturn,
   createToaster,
   Toaster as ToasterPrimitive,
   Toast as ToastPrimitive,
@@ -20,24 +28,16 @@ import { Spinner } from "../spinner";
 import { ToastItemContext, useToastItem } from "./toast.context";
 
 // #region Types
-export type ToastTitleProps = ComponentProps<typeof ToastPrimitive.Title>;
-export type ToastDescriptionProps = ComponentProps<typeof ToastPrimitive.Description>;
-export type ToastActionTriggerProps = ComponentProps<typeof ToastPrimitive.ActionTrigger>;
-export type ToastCloseTriggerProps = ComponentProps<typeof ToastPrimitive.CloseTrigger>;
-
 type ToastItemClassNames = VariantClassNames<ToastItemSlots>;
 
-export type ToasterRootProps = Omit<
-  ComponentProps<typeof ToasterPrimitive>,
-  "toaster" | "children"
->;
+export type ToasterRootProps = Omit<ToasterPrimitiveProps, "toaster" | "children">;
 
 export interface ToasterProps extends ToasterRootProps {
   /** Toaster instance */
   toaster?: CreateToasterReturn<ReactNode>;
 }
 
-export type ToastItemRootProps = ComponentProps<typeof ToastPrimitive.Root>;
+export type ToastItemRootProps = ToastRootProps;
 
 export interface ToastItemProps extends ToastItemRootProps {
   /** Slot class names */

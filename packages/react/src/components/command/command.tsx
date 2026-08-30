@@ -3,17 +3,17 @@ import { Portal } from "@ark-ui/react/portal";
 import { MagnifyingGlassIcon } from "@phosphor-icons/react";
 import { commandRecipe } from "@pisagor/recipes/command";
 import type { ComponentProps } from "react";
-import {
-  Combobox,
-  type ComboboxContentProps,
-  type ComboboxEmptyProps,
-  type ComboboxFieldInputProps,
-  type ComboboxItemGroupLabelProps,
-  type ComboboxItemGroupProps,
-  type ComboboxItemProps,
-  type ComboboxListProps,
-  type ComboboxRootProps,
+import type {
+  ComboboxContentProps,
+  ComboboxEmptyProps,
+  ComboboxFieldInputProps,
+  ComboboxItemGroupLabelProps,
+  ComboboxItemGroupProps,
+  ComboboxItemProps,
+  ComboboxListProps,
+  ComboboxRootProps,
 } from "../combobox";
+import { Combobox } from "../combobox";
 import { Dialog, type DialogContentProps, type DialogTriggerProps } from "../dialog";
 import { DropdownMenu, type DropdownMenuShortcutProps } from "../dropdown-menu";
 import type { InputProps } from "../input";

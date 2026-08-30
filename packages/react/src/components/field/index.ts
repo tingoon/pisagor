@@ -13,13 +13,14 @@ import {
   FieldTitle,
 } from "./field";
 
+export type { FieldLabelProps } from "@ark-ui/react/field";
+
 export type {
   FieldContentProps,
   FieldDescriptionProps,
   FieldErrorProps,
   FieldGroupProps,
   FieldHelperProps,
-  FieldLabelProps,
   FieldLegendProps,
   FieldProps,
   FieldRequiredIndicatorProps,

@@ -1,28 +1,26 @@
 import { Portal } from "@ark-ui/react/portal";
+import type {
+  TooltipArrowProps,
+  TooltipContentProps,
+  TooltipContextProps,
+  TooltipPositionerProps,
+  TooltipRootProps,
+  TooltipTriggerProps,
+} from "@ark-ui/react/tooltip";
 import { Tooltip as TooltipPrimitive } from "@ark-ui/react/tooltip";
 import { type TooltipSlots, tooltipRecipe } from "@pisagor/recipes/tooltip";
-import type { ComponentProps, ReactElement, ReactNode } from "react";
+import type { ReactElement, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { TooltipContext, useTooltip } from "./tooltip.context";
 
 // #region Types
-type TooltipContentProps = ComponentProps<typeof TooltipPrimitive.Content>;
-
-type TooltipContextApi = Parameters<ComponentProps<typeof TooltipPrimitive.Context>["children"]>[0];
+type TooltipContextApi = Parameters<TooltipContextProps["children"]>[0];
 
 export type TooltipTriggerHandleProps = ReturnType<TooltipContextApi["getTriggerProps"]>;
 
 export type TooltipTriggerHandle = (props: TooltipTriggerHandleProps) => ReactElement;
 
-type TooltipTriggerProps = ComponentProps<typeof TooltipPrimitive.Trigger>;
-
-type TooltipPositionerProps = ComponentProps<typeof TooltipPrimitive.Positioner>;
-
-type TooltipArrowProps = ComponentProps<typeof TooltipPrimitive.Arrow>;
-
 type TooltipClassNames = VariantClassNames<TooltipSlots>;
-
-type TooltipRootProps = ComponentProps<typeof TooltipPrimitive.Root>;
 
 export interface TooltipProps extends Omit<TooltipRootProps, "children"> {
   /** Trigger element or render function that receives trigger props from the handle API */

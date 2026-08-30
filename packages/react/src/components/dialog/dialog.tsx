@@ -1,3 +1,13 @@
+import type {
+  DialogBackdropProps,
+  DialogCloseTriggerProps,
+  DialogDescriptionProps,
+  DialogContentProps as DialogPrimitiveContentProps,
+  DialogPositionerProps as DialogPrimitivePositionerProps,
+  DialogRootProps,
+  DialogTitleProps,
+  DialogTriggerProps,
+} from "@ark-ui/react/dialog";
 import { Dialog as DialogPrimitive } from "@ark-ui/react/dialog";
 import { ark } from "@ark-ui/react/factory";
 import { Portal } from "@ark-ui/react/portal";
@@ -9,9 +19,7 @@ import { ScrollArea } from "../scroll-area";
 import { DialogContext, useDialog } from "./dialog.context";
 
 // #region Types
-export interface DialogContentProps
-  extends ComponentProps<typeof DialogPrimitive.Content>,
-    DialogVariantProps {
+export interface DialogContentProps extends DialogPrimitiveContentProps, DialogVariantProps {
   /**
    * Whether to stick the dialog to the bottom of the screen on mobile.
    *
@@ -37,23 +45,11 @@ export interface DialogBodyProps extends ComponentProps<typeof ark.div> {
 
 export type DialogHeaderProps = ComponentProps<typeof ark.div>;
 
-export type DialogTriggerProps = ComponentProps<typeof DialogPrimitive.Trigger>;
-
-export type DialogBackdropProps = ComponentProps<typeof DialogPrimitive.Backdrop>;
-
-export type DialogPositionerProps = ComponentProps<typeof DialogPrimitive.Positioner> & {
+export type DialogPositionerProps = DialogPrimitivePositionerProps & {
   bottomStickOnMobile?: boolean;
 };
 
-export type DialogTitleProps = ComponentProps<typeof DialogPrimitive.Title>;
-
-export type DialogDescriptionProps = ComponentProps<typeof DialogPrimitive.Description>;
-
-export type DialogCloseTriggerProps = ComponentProps<typeof DialogPrimitive.CloseTrigger>;
-
 export type DialogFooterProps = ComponentProps<typeof ark.div>;
-
-export type DialogRootProps = ComponentProps<typeof DialogPrimitive.Root>;
 
 export interface DialogProps extends Omit<DialogRootProps, "title"> {
   /** Footer actions. */

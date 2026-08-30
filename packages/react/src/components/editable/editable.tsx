@@ -1,7 +1,17 @@
+import type {
+  EditableAreaProps,
+  EditableCancelTriggerProps,
+  EditableControlProps,
+  EditableEditTriggerProps,
+  EditableInputProps as EditablePrimitiveInputProps,
+  EditablePreviewProps as EditablePrimitivePreviewProps,
+  EditableRootProps as EditablePrimitiveRootProps,
+  EditableSubmitTriggerProps,
+} from "@ark-ui/react/editable";
 import { Editable as EditablePrimitive } from "@ark-ui/react/editable";
 import { buttonRecipe } from "@pisagor/recipes/button";
 import { editableRecipe } from "@pisagor/recipes/editable";
-import type { ComponentProps } from "react";
+
 import { cn } from "../../internal/utils";
 import type { ButtonProps } from "../button";
 import { EditableContext, useEditable } from "./editable.context";
@@ -10,7 +20,7 @@ import { EditableContext, useEditable } from "./editable.context";
 type FormControlVariant = "primary" | "secondary";
 
 export type EditableRootProps = Omit<
-  ComponentProps<typeof EditablePrimitive.Root>,
+  EditablePrimitiveRootProps,
   "onValueChange" | "value" | "defaultValue"
 >;
 
@@ -40,10 +50,9 @@ export interface EditableProps extends EditableRootProps {
   onValueChange?: (value: string) => void;
 }
 
-export interface EditableInputProps
-  extends Omit<ComponentProps<typeof EditablePrimitive.Input>, "size"> {}
+export interface EditableInputProps extends Omit<EditablePrimitiveInputProps, "size"> {}
 
-export interface EditablePreviewProps extends ComponentProps<typeof EditablePrimitive.Preview> {
+export interface EditablePreviewProps extends EditablePrimitivePreviewProps {
   /** Form shell variant. Defaults to `primary`. */
   controlVariant?: FormControlVariant;
   /**
@@ -60,15 +69,6 @@ export interface EditablePreviewProps extends ComponentProps<typeof EditablePrim
   variant?: ButtonProps["variant"];
 }
 
-export type EditableAreaProps = ComponentProps<typeof EditablePrimitive.Area>;
-
-export type EditableControlProps = ComponentProps<typeof EditablePrimitive.Control>;
-
-export type EditableEditTriggerProps = ComponentProps<typeof EditablePrimitive.EditTrigger>;
-
-export type EditableCancelTriggerProps = ComponentProps<typeof EditablePrimitive.CancelTrigger>;
-
-export type EditableSubmitTriggerProps = ComponentProps<typeof EditablePrimitive.SubmitTrigger>;
 // #endregion
 
 // #region Parts
@@ -81,11 +81,8 @@ export function EditableRoot({
   ...rest
 }: EditableProps) {
   const handleValueChange = onValueChange
-    ? (
-        details: Parameters<
-          NonNullable<ComponentProps<typeof EditablePrimitive.Root>["onValueChange"]>
-        >[0],
-      ) => onValueChange(details.value)
+    ? (details: Parameters<NonNullable<EditablePrimitiveRootProps["onValueChange"]>>[0]) =>
+        onValueChange(details.value)
     : undefined;
 
   const slots = editableRecipe();

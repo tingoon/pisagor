@@ -1,3 +1,14 @@
+import type {
+  TagsInputClearTriggerProps,
+  TagsInputInputProps,
+  TagsInputItemInputProps,
+  TagsInputItemPreviewProps,
+  TagsInputItemTextProps,
+  TagsInputControlProps as TagsInputPrimitiveControlProps,
+  TagsInputItemProps as TagsInputPrimitiveItemProps,
+  TagsInputRootProps as TagsInputPrimitiveRootProps,
+  TagsInputRootProviderProps as TagsInputPrimitiveRootProviderProps,
+} from "@ark-ui/react/tags-input";
 import { TagsInput as TagsInputPrimitive, useTagsInputContext } from "@ark-ui/react/tags-input";
 import { XIcon } from "@phosphor-icons/react";
 import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes/tags-input";
@@ -11,10 +22,7 @@ import {
 } from "./tags-input.context";
 
 // #region Types
-export type TagsInputRootProps = Omit<
-  ComponentProps<typeof TagsInputPrimitive.Root>,
-  "onValueChange"
-> &
+export type TagsInputRootProps = Omit<TagsInputPrimitiveRootProps, "onValueChange"> &
   Pick<InputGroupProps, "size" | "variant">;
 
 export interface TagsInputProps extends TagsInputRootProps {
@@ -29,7 +37,7 @@ export interface TagsInputProps extends TagsInputRootProps {
   onValueChange?: (value: string[]) => void;
 }
 
-export type TagsInputControlProps = ComponentProps<typeof TagsInputPrimitive.Control> &
+export type TagsInputControlProps = TagsInputPrimitiveControlProps &
   Pick<InputGroupProps, "size" | "variant"> & {
     /**
      * Whether to show the clear button.
@@ -39,7 +47,7 @@ export type TagsInputControlProps = ComponentProps<typeof TagsInputPrimitive.Con
     clearable?: boolean;
   };
 
-export type TagsInputItemProps = ComponentProps<typeof TagsInputPrimitive.Item> &
+export type TagsInputItemProps = TagsInputPrimitiveItemProps &
   Pick<InputGroupProps, "size"> & {
     /**
      * Whether to show the clear trigger.
@@ -49,7 +57,7 @@ export type TagsInputItemProps = ComponentProps<typeof TagsInputPrimitive.Item> 
     showDelete?: boolean;
   };
 
-export type TagsInputRootProviderProps = ComponentProps<typeof TagsInputPrimitive.RootProvider> &
+export type TagsInputRootProviderProps = TagsInputPrimitiveRootProviderProps &
   Pick<InputGroupProps, "size"> & {
     /**
      * Whether to show the clear button.
@@ -59,19 +67,10 @@ export type TagsInputRootProviderProps = ComponentProps<typeof TagsInputPrimitiv
     clearable?: boolean;
   };
 
-export type TagsInputItemPreviewProps = ComponentProps<typeof TagsInputPrimitive.ItemPreview>;
-
-export type TagsInputItemTextProps = ComponentProps<typeof TagsInputPrimitive.ItemText>;
-
 export type TagsInputItemDeleteTriggerProps = ComponentProps<
   typeof TagsInputPrimitive.ItemDeleteTrigger
 >;
 
-export type TagsInputItemInputProps = ComponentProps<typeof TagsInputPrimitive.ItemInput>;
-
-export type TagsInputInputProps = ComponentProps<typeof TagsInputPrimitive.Input>;
-
-export type TagsInputClearTriggerProps = ComponentProps<typeof TagsInputPrimitive.ClearTrigger>;
 // #endregion
 
 // #region Parts

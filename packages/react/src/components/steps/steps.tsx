@@ -1,4 +1,16 @@
 import { ark } from "@ark-ui/react/factory";
+import type {
+  StepsCompletedContentProps,
+  StepsContentProps,
+  StepsIndicatorProps,
+  StepsItemProps,
+  StepsListProps,
+  StepsNextTriggerProps,
+  StepsPrevTriggerProps,
+  StepsRootProps,
+  StepsSeparatorProps,
+  StepsTriggerProps,
+} from "@ark-ui/react/steps";
 import { Steps as StepsPrimitive } from "@ark-ui/react/steps";
 import { CheckIcon } from "@phosphor-icons/react";
 import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes/steps";
@@ -6,26 +18,6 @@ import type { ComponentProps } from "react";
 import { StepsContext, StepsItemContext, useSteps, useStepsItem } from "./steps.context";
 
 // #region Types
-export type StepsTriggerProps = ComponentProps<typeof StepsPrimitive.Trigger>;
-
-export type StepsRootProps = ComponentProps<typeof StepsPrimitive.Root>;
-
-export type StepsListProps = ComponentProps<typeof StepsPrimitive.List>;
-
-export type StepsItemProps = ComponentProps<typeof StepsPrimitive.Item>;
-
-export type StepsIndicatorProps = ComponentProps<typeof StepsPrimitive.Indicator>;
-
-export type StepsSeparatorProps = ComponentProps<typeof StepsPrimitive.Separator>;
-
-export type StepsContentProps = ComponentProps<typeof StepsPrimitive.Content>;
-
-export type StepsCompletedContentProps = ComponentProps<typeof StepsPrimitive.CompletedContent>;
-
-export type StepsPrevTriggerProps = ComponentProps<typeof StepsPrimitive.PrevTrigger>;
-
-export type StepsNextTriggerProps = ComponentProps<typeof StepsPrimitive.NextTrigger>;
-
 export type StepsTitleProps = ComponentProps<typeof ark.span>;
 
 export type StepsDescriptionProps = ComponentProps<typeof ark.span>;

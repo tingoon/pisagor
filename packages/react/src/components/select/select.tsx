@@ -1,11 +1,17 @@
 import { Portal } from "@ark-ui/react";
 import { type CollectionItem, createListCollection } from "@ark-ui/react/collection";
 import { ark } from "@ark-ui/react/factory";
-import {
-  Select as SelectPrimitive,
-  type SelectRootProps as SelectRootPropsPrimitive,
-  useSelectContext,
+import type {
+  SelectClearTriggerProps,
+  SelectContentProps,
+  SelectItemGroupLabelProps,
+  SelectItemProps,
+  SelectItemGroupProps as SelectPrimitiveItemGroupProps,
+  SelectRootProps as SelectPrimitiveRootProps,
+  SelectTriggerProps as SelectPrimitiveTriggerProps,
+  SelectValueTextProps,
 } from "@ark-ui/react/select";
+import { Select as SelectPrimitive, useSelectContext } from "@ark-ui/react/select";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
 import { formControlShellRecipe } from "@pisagor/recipes/form-control";
 import type { InputRootVariantProps } from "@pisagor/recipes/input";
@@ -24,7 +30,7 @@ interface SelectPresetItem {
 }
 
 export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
-  SelectRootPropsPrimitive<T>,
+  SelectPrimitiveRootProps<T>,
   "onValueChange"
 > & {
   /**
@@ -45,9 +51,7 @@ export interface SelectProps extends Omit<SelectRootProps, "children" | "collect
   placeholder?: string;
 }
 
-export interface SelectTriggerProps
-  extends ComponentProps<typeof SelectPrimitive.Trigger>,
-    InputRootVariantProps {
+export interface SelectTriggerProps extends SelectPrimitiveTriggerProps, InputRootVariantProps {
   /**
    * Whether to show a clear button when a value is selected.
    *
@@ -56,20 +60,10 @@ export interface SelectTriggerProps
   clearable?: boolean;
 }
 
-export interface SelectItemGroupProps extends ComponentProps<typeof SelectPrimitive.ItemGroup> {
+export interface SelectItemGroupProps extends SelectPrimitiveItemGroupProps {
   /** The heading of the group */
   heading?: string | ReactNode;
 }
-
-export type SelectValueTextProps = ComponentProps<typeof SelectPrimitive.ValueText>;
-
-export type SelectContentProps = ComponentProps<typeof SelectPrimitive.Content>;
-
-export type SelectItemGroupLabelProps = ComponentProps<typeof SelectPrimitive.ItemGroupLabel>;
-
-export type SelectItemProps = ComponentProps<typeof SelectPrimitive.Item>;
-
-export type SelectClearTriggerProps = ComponentProps<typeof SelectPrimitive.ClearTrigger>;
 
 export type SelectEmptyProps = ComponentProps<typeof ark.div>;
 // #endregion

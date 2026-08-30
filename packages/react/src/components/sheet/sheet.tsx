@@ -1,28 +1,31 @@
+import type {
+  DialogCloseTriggerProps,
+  DialogContentProps,
+  DialogPositionerProps,
+  DialogTriggerProps,
+} from "@ark-ui/react/dialog";
 import { Dialog as DialogPrimitive } from "@ark-ui/react/dialog";
 import { Portal } from "@ark-ui/react/portal";
 import { XIcon } from "@phosphor-icons/react";
 import { type SheetVariantProps, sheetRecipe } from "@pisagor/recipes/sheet";
-import type { ComponentProps } from "react";
+
 import { Button } from "../button";
-import {
-  Dialog,
-  type DialogBackdropProps,
-  type DialogBodyProps,
-  type DialogDescriptionProps,
-  type DialogFooterProps,
-  type DialogHeaderProps,
-  type DialogRootProps,
-  type DialogTitleProps,
+import type {
+  DialogBackdropProps,
+  DialogBodyProps,
+  DialogDescriptionProps,
+  DialogFooterProps,
+  DialogHeaderProps,
+  DialogRootProps,
+  DialogTitleProps,
 } from "../dialog";
+import { Dialog } from "../dialog";
 import { SheetContext, useSheet } from "./sheet.context";
 
 // #region Types
-export type SheetPositionerProps = ComponentProps<typeof DialogPrimitive.Positioner> &
-  SheetVariantProps;
+export type SheetPositionerProps = DialogPositionerProps & SheetVariantProps;
 
-export interface SheetContentProps
-  extends ComponentProps<typeof DialogPrimitive.Content>,
-    SheetVariantProps {
+export interface SheetContentProps extends DialogContentProps, SheetVariantProps {
   /**
    * Whether to show a close button at the top right corner.
    *
@@ -33,9 +36,9 @@ export interface SheetContentProps
 
 export type SheetProps = DialogRootProps;
 
-export type SheetTriggerProps = ComponentProps<typeof DialogPrimitive.Trigger>;
+export type SheetTriggerProps = DialogTriggerProps;
 
-export type SheetCloseTriggerProps = ComponentProps<typeof DialogPrimitive.CloseTrigger>;
+export type SheetCloseTriggerProps = DialogCloseTriggerProps;
 // #endregion
 
 // #region Parts

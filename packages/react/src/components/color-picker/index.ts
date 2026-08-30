@@ -22,26 +22,30 @@ import {
 } from "./color-picker";
 
 export type {
-  ColorPickerAreaProps,
   ColorPickerAreaThumbProps,
+  ColorPickerChannelInputProps,
+  ColorPickerContentProps,
+  ColorPickerSwatchGroupProps,
+  ColorPickerSwatchProps,
+  ColorPickerTriggerProps,
+  ColorPickerValueSwatchProps,
+  ColorPickerValueTextProps,
+  ColorPickerViewProps,
+} from "@ark-ui/react/color-picker";
+
+export type {
+  ColorPickerAreaProps,
   ColorPickerChannelSliderProps,
   ColorPickerClearTriggerProps,
-  ColorPickerContentProps,
   ColorPickerControlProps,
   ColorPickerEyeDropperTriggerProps,
   ColorPickerInputProps,
   ColorPickerProps,
   ColorPickerRootProps,
-  ColorPickerSwatchGroupProps,
   ColorPickerSwatchIndicatorProps,
   ColorPickerSwatchPreviewProps,
-  ColorPickerSwatchProps,
   ColorPickerSwatchTriggerProps,
   ColorPickerTransparencyGridProps,
-  ColorPickerTriggerProps,
-  ColorPickerValueSwatchProps,
-  ColorPickerValueTextProps,
-  ColorPickerViewProps,
 } from "./color-picker";
 export { parseColor } from "./color-picker";
 

@@ -1,6 +1,21 @@
 import { Portal } from "@ark-ui/react";
 import { ark } from "@ark-ui/react/factory";
-import { type MenuContentProps, Menu as MenuPrimitive } from "@ark-ui/react/menu";
+import type {
+  MenuArrowProps,
+  MenuCheckboxItemProps,
+  MenuContentProps,
+  MenuItemGroupLabelProps,
+  MenuItemGroupProps,
+  MenuItemProps,
+  MenuPositionerProps,
+  MenuRadioItemGroupProps,
+  MenuRadioItemProps,
+  MenuRootProps,
+  MenuSeparatorProps,
+  MenuTriggerItemProps,
+  MenuTriggerProps,
+} from "@ark-ui/react/menu";
+import { Menu as MenuPrimitive } from "@ark-ui/react/menu";
 import { CaretRightIcon, CheckIcon } from "@phosphor-icons/react";
 import {
   type DropdownMenuItemVariantProps,
@@ -11,40 +26,37 @@ import type { ComponentProps } from "react";
 import { DropdownMenuContext, useDropdownMenu } from "./dropdown-menu.context";
 
 // #region Types
-export interface DropdownMenuItemGroupProps extends ComponentProps<typeof MenuPrimitive.ItemGroup> {
+export interface DropdownMenuItemGroupProps extends MenuItemGroupProps {
   /** The heading of the menu item group. */
   heading?: string;
 }
 
-export interface DropdownMenuItemProps
-  extends ComponentProps<typeof MenuPrimitive.Item>,
-    DropdownMenuItemVariantProps {}
+export interface DropdownMenuItemProps extends MenuItemProps, DropdownMenuItemVariantProps {}
 
-export interface DropdownMenuRadioItemGroupProps
-  extends ComponentProps<typeof MenuPrimitive.RadioItemGroup> {
+export interface DropdownMenuRadioItemGroupProps extends MenuRadioItemGroupProps {
   /** The heading of the menu radio item group. */
   heading?: string;
 }
 
-export type DropdownMenuRootProps = ComponentProps<typeof MenuPrimitive.Root>;
+export type DropdownMenuRootProps = MenuRootProps;
 
-export type DropdownMenuTriggerProps = ComponentProps<typeof MenuPrimitive.Trigger>;
+export type DropdownMenuTriggerProps = MenuTriggerProps;
 
-export type DropdownMenuPositionerProps = ComponentProps<typeof MenuPrimitive.Positioner>;
+export type DropdownMenuPositionerProps = MenuPositionerProps;
 
-export type DropdownMenuCheckboxItemProps = ComponentProps<typeof MenuPrimitive.CheckboxItem>;
+export type DropdownMenuCheckboxItemProps = MenuCheckboxItemProps;
 
-export type DropdownMenuItemGroupLabelProps = ComponentProps<typeof MenuPrimitive.ItemGroupLabel>;
+export type DropdownMenuItemGroupLabelProps = MenuItemGroupLabelProps;
 
-export type DropdownMenuRadioItemProps = ComponentProps<typeof MenuPrimitive.RadioItem>;
+export type DropdownMenuRadioItemProps = MenuRadioItemProps;
 
-export type DropdownMenuSubContentProps = ComponentProps<typeof MenuPrimitive.Content>;
+export type DropdownMenuSubContentProps = MenuContentProps;
 
-export type DropdownMenuArrowProps = ComponentProps<typeof MenuPrimitive.Arrow>;
+export type DropdownMenuArrowProps = MenuArrowProps;
 
-export type DropdownMenuSeparatorProps = ComponentProps<typeof MenuPrimitive.Separator>;
+export type DropdownMenuSeparatorProps = MenuSeparatorProps;
 
-export type DropdownMenuTriggerItemProps = ComponentProps<typeof MenuPrimitive.TriggerItem>;
+export type DropdownMenuTriggerItemProps = MenuTriggerItemProps;
 
 export type DropdownMenuContentProps = MenuContentProps;
 

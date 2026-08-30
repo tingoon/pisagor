@@ -1,13 +1,11 @@
-import { Toggle as TogglePrimitive } from "@ark-ui/react/toggle";
+import { Toggle as TogglePrimitive, type ToggleRootProps } from "@ark-ui/react/toggle";
 import { type ButtonVariantProps, buttonRecipe } from "@pisagor/recipes/button";
 import { type ToggleVariantProps, toggleRecipe } from "@pisagor/recipes/toggle";
-import type { ComponentProps } from "react";
+
 import { cn } from "../../internal/utils";
 
 // #region Types
-export interface ToggleProps
-  extends ComponentProps<typeof TogglePrimitive.Root>,
-    ToggleVariantProps {
+export interface ToggleProps extends ToggleRootProps, ToggleVariantProps {
   /**
    * The variant of the toggle
    *

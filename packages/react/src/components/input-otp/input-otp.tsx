@@ -1,23 +1,23 @@
 import { ark } from "@ark-ui/react/factory";
-import { PinInput as PinInputPrimitive } from "@ark-ui/react/pin-input";
+import {
+  type PinInputInputProps,
+  PinInput as PinInputPrimitive,
+  type PinInputRootProps,
+} from "@ark-ui/react/pin-input";
 import { inputOtpRecipe } from "@pisagor/recipes/input-otp";
 import type { ComponentProps } from "react";
 import { Input, type InputProps } from "../input/input";
 import { InputOTPContext, useInputOTP } from "./input-otp.context";
 
 // #region Types
-export type InputOTPRootProps = Omit<
-  ComponentProps<typeof PinInputPrimitive.Root>,
-  "onValueChange"
-> &
+export type InputOTPRootProps = Omit<PinInputRootProps, "onValueChange"> &
   Pick<InputProps, "size" | "variant">;
 
 export interface InputOTPProps extends InputOTPRootProps {
   onValueChange?: (value: string[]) => void;
 }
 
-export type InputOTPSlotProps = ComponentProps<typeof PinInputPrimitive.Input> &
-  Pick<InputProps, "variant">;
+export type InputOTPSlotProps = PinInputInputProps & Pick<InputProps, "variant">;
 
 export type InputOTPSeparatorProps = ComponentProps<typeof ark.hr>;
 // #endregion

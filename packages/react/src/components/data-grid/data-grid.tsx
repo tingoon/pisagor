@@ -13,19 +13,21 @@ import {
 } from "react";
 import { cn } from "../../internal/utils";
 import { Table, type TableCellProps, type TableHeadProps, type TableRowProps } from "../table";
+import type {
+  Cell,
+  Column,
+  DataGridContextValue,
+  DataGridHeaderCellContextValue,
+  DataGridHeaderGroupContextValue,
+  DataGridRowContextValue,
+  Header,
+  Row,
+} from "./data-grid.context";
 import {
-  type Cell,
-  type Column,
   DataGridContext,
-  type DataGridContextValue,
   DataGridHeaderCellContext,
-  type DataGridHeaderCellContextValue,
   DataGridHeaderGroupContext,
-  type DataGridHeaderGroupContextValue,
   DataGridRowContext,
-  type DataGridRowContextValue,
-  type Header,
-  type Row,
   useDataGridContext,
   useDataGridHeaderCellContext,
   useDataGridHeaderGroupContext,

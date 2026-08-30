@@ -1,6 +1,16 @@
 import { ark } from "@ark-ui/react/factory";
+import type {
+  FieldErrorTextProps,
+  FieldHelperTextProps,
+  FieldLabelProps,
+  FieldRootProps as FieldPrimitiveRootProps,
+} from "@ark-ui/react/field";
 import { Field as FieldPrimitive } from "@ark-ui/react/field";
-import { Fieldset as FieldsetPrimitive } from "@ark-ui/react/fieldset";
+import {
+  type FieldsetLegendProps,
+  Fieldset as FieldsetPrimitive,
+  type FieldsetRootProps,
+} from "@ark-ui/react/fieldset";
 import { type FieldVariantProps, fieldRecipe } from "@pisagor/recipes/field";
 import { formControlSeparatorRecipe } from "@pisagor/recipes/form-control";
 import type { ComponentProps } from "react";
@@ -9,22 +19,20 @@ import { Separator } from "../separator";
 import { FieldContext, useField } from "./field.context";
 
 // #region Types
-export type FieldRootProps = ComponentProps<typeof FieldPrimitive.Root> & FieldVariantProps;
+export type FieldRootProps = FieldPrimitiveRootProps & FieldVariantProps;
 
 export type FieldProps = FieldRootProps;
 
-export interface FieldLegendProps extends ComponentProps<typeof FieldsetPrimitive.Legend> {
+export interface FieldLegendProps extends FieldsetLegendProps {
   /** The variant of the legend. */
   variant?: "legend" | "label";
 }
 
-export type FieldSetProps = ComponentProps<typeof FieldsetPrimitive.Root>;
+export type FieldSetProps = FieldsetRootProps;
 
-export type FieldLabelProps = ComponentProps<typeof FieldPrimitive.Label>;
+export type FieldHelperProps = FieldHelperTextProps;
 
-export type FieldHelperProps = ComponentProps<typeof FieldPrimitive.HelperText>;
-
-export type FieldErrorProps = ComponentProps<typeof FieldPrimitive.ErrorText>;
+export type FieldErrorProps = FieldErrorTextProps;
 
 export type FieldGroupProps = ComponentProps<typeof ark.div>;
 

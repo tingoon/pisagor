@@ -1,18 +1,18 @@
 import { Portal } from "@ark-ui/react/portal";
 import type { ReactNode } from "react";
 import { Button, type ButtonProps } from "../button";
-import {
-  Dialog,
-  type DialogBodyProps,
-  type DialogCloseTriggerProps,
-  type DialogContentProps,
-  type DialogDescriptionProps,
-  type DialogFooterProps,
-  type DialogHeaderProps,
-  type DialogRootProps,
-  type DialogTitleProps,
-  type DialogTriggerProps,
+import type {
+  DialogBodyProps,
+  DialogCloseTriggerProps,
+  DialogContentProps,
+  DialogDescriptionProps,
+  DialogFooterProps,
+  DialogHeaderProps,
+  DialogRootProps,
+  DialogTitleProps,
+  DialogTriggerProps,
 } from "../dialog";
+import { Dialog } from "../dialog";
 import { useDialog } from "../dialog/dialog.context";
 
 // #region Types

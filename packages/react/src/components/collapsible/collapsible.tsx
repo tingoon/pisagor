@@ -1,18 +1,14 @@
+import type {
+  CollapsibleContentProps,
+  CollapsibleIndicatorProps,
+  CollapsibleRootProps,
+  CollapsibleTriggerProps,
+} from "@ark-ui/react/collapsible";
 import { Collapsible as CollapsiblePrimitive } from "@ark-ui/react/collapsible";
 import { CaretDownIcon } from "@phosphor-icons/react";
 import { collapsibleRecipe } from "@pisagor/recipes/collapsible";
-import type { ComponentProps } from "react";
+
 import { CollapsibleContext, useCollapsible } from "./collapsible.context";
-
-// #region Types
-export type CollapsibleRootProps = ComponentProps<typeof CollapsiblePrimitive.Root>;
-
-export type CollapsibleTriggerProps = ComponentProps<typeof CollapsiblePrimitive.Trigger>;
-
-export type CollapsibleContentProps = ComponentProps<typeof CollapsiblePrimitive.Content>;
-
-export type CollapsibleIndicatorProps = ComponentProps<typeof CollapsiblePrimitive.Indicator>;
-// #endregion
 
 // #region Parts
 export function CollapsibleRoot({

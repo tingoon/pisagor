@@ -1,6 +1,12 @@
+import type {
+  SegmentGroupIndicatorProps,
+  SegmentGroupItemTextProps,
+  SegmentGroupItemProps as SegmentGroupPrimitiveItemProps,
+  SegmentGroupRootProps as SegmentGroupPrimitiveRootProps,
+} from "@ark-ui/react/segment-group";
 import { SegmentGroup as SegmentGroupPrimitive } from "@ark-ui/react/segment-group";
 import { segmentGroupRecipe } from "@pisagor/recipes/segment-group";
-import type { ComponentProps, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { SegmentGroupContext, useSegmentGroup } from "./segment-group.context";
 
 // #region Types
@@ -13,7 +19,7 @@ interface SegmentGroupPresetItem {
 }
 
 export interface SegmentGroupRootProps
-  extends Omit<ComponentProps<typeof SegmentGroupPrimitive.Root>, "onValueChange"> {
+  extends Omit<SegmentGroupPrimitiveRootProps, "onValueChange"> {
   /**
    * The visual variant of the segment group.
    *
@@ -27,13 +33,10 @@ export interface SegmentGroupProps extends Omit<SegmentGroupRootProps, "children
   items?: SegmentGroupPresetItem[];
 }
 
-export interface SegmentGroupItemProps extends ComponentProps<typeof SegmentGroupPrimitive.Item> {
+export interface SegmentGroupItemProps extends SegmentGroupPrimitiveItemProps {
   text?: ReactNode;
 }
 
-export type SegmentGroupItemTextProps = ComponentProps<typeof SegmentGroupPrimitive.ItemText>;
-
-export type SegmentGroupIndicatorProps = ComponentProps<typeof SegmentGroupPrimitive.Indicator>;
 // #endregion
 
 // #region Parts

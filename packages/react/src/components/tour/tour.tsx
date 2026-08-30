@@ -1,6 +1,18 @@
 import { Portal } from "@ark-ui/react";
 import { ark } from "@ark-ui/react/factory";
-import { Tour as TourPrimitive, type TourStepDetails, useTour } from "@ark-ui/react/tour";
+import type {
+  TourActionTriggerProps,
+  TourCloseTriggerProps,
+  TourDescriptionProps,
+  TourPositionerProps,
+  TourContentProps as TourPrimitiveContentProps,
+  TourRootProps as TourPrimitiveRootProps,
+  TourProgressTextProps,
+  TourSpotlightProps,
+  TourStepDetails,
+  TourTitleProps,
+} from "@ark-ui/react/tour";
+import { Tour as TourPrimitive, useTour } from "@ark-ui/react/tour";
 import { CaretLeftIcon, CaretRightIcon, XIcon } from "@phosphor-icons/react";
 import { dialogRecipe } from "@pisagor/recipes/dialog";
 import { tourRecipe } from "@pisagor/recipes/tour";
@@ -8,19 +20,19 @@ import type { ComponentProps, MouseEvent } from "react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { cn } from "../../internal/utils";
 import { Button } from "../button";
-import {
-  Dialog,
-  type DialogBackdropProps,
-  type DialogBodyProps,
-  type DialogFooterProps,
-  type DialogHeaderProps,
+import type {
+  DialogBackdropProps,
+  DialogBodyProps,
+  DialogFooterProps,
+  DialogHeaderProps,
 } from "../dialog";
+import { Dialog } from "../dialog";
 import { TourContext, useTourContext } from "./tour.context";
 
 // #region Types
 export type TourStepType = TourStepDetails;
 
-export type TourRootProps = Omit<ComponentProps<typeof TourPrimitive.Root>, "tour">;
+export type TourRootProps = Omit<TourPrimitiveRootProps, "tour">;
 
 export interface TourProps extends TourRootProps {
   /** Whether to enable arrow key navigation between steps */
@@ -39,7 +51,7 @@ export interface TourProps extends TourRootProps {
 
 export type TourTriggerProps = ComponentProps<typeof ark.button>;
 
-export interface TourContentProps extends ComponentProps<typeof TourPrimitive.Content> {
+export interface TourContentProps extends TourPrimitiveContentProps {
   /**
    * Whether to show a close button at the top right corner.
    *
@@ -48,19 +60,6 @@ export interface TourContentProps extends ComponentProps<typeof TourPrimitive.Co
   showCloseButton?: boolean;
 }
 
-export type TourActionTriggerProps = ComponentProps<typeof TourPrimitive.ActionTrigger>;
-
-export type TourPositionerProps = ComponentProps<typeof TourPrimitive.Positioner>;
-
-export type TourSpotlightProps = ComponentProps<typeof TourPrimitive.Spotlight>;
-
-export type TourTitleProps = ComponentProps<typeof TourPrimitive.Title>;
-
-export type TourDescriptionProps = ComponentProps<typeof TourPrimitive.Description>;
-
-export type TourProgressTextProps = ComponentProps<typeof TourPrimitive.ProgressText>;
-
-export type TourCloseTriggerProps = ComponentProps<typeof TourPrimitive.CloseTrigger>;
 // #endregion
 
 // #region Parts

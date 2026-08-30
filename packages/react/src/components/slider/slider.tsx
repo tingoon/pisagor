@@ -1,3 +1,13 @@
+import type {
+  SliderControlProps,
+  SliderMarkerGroupProps,
+  SliderMarkerProps,
+  SliderRootProps as SliderPrimitiveRootProps,
+  SliderRangeProps,
+  SliderThumbProps,
+  SliderTrackProps,
+  SliderValueTextProps,
+} from "@ark-ui/react/slider";
 import { Slider as SliderPrimitive } from "@ark-ui/react/slider";
 import { type SliderSlots, sliderRecipe } from "@pisagor/recipes/slider";
 import type { ComponentProps, ReactNode } from "react";
@@ -10,19 +20,11 @@ import { SliderContext, useSlider } from "./slider.context";
 // #region Types
 type FormControlVariant = "primary" | "secondary";
 
-type SliderControlProps = ComponentProps<typeof SliderPrimitive.Control>;
-
-type SliderTrackProps = ComponentProps<typeof SliderPrimitive.Track>;
-
-type SliderRangeProps = ComponentProps<typeof SliderPrimitive.Range>;
-
-type SliderThumbProps = ComponentProps<typeof SliderPrimitive.Thumb>;
-
-type SliderValueProps = ComponentProps<typeof SliderPrimitive.ValueText>;
+type SliderValueProps = SliderValueTextProps;
 
 type SliderClassNames = VariantClassNames<SliderSlots>;
 
-type SliderRootProps = ComponentProps<typeof SliderPrimitive.Root> & {
+type SliderRootProps = SliderPrimitiveRootProps & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
 };
@@ -77,10 +79,6 @@ export interface SliderProps extends Omit<SliderRootProps, "children" | "onValue
 }
 
 interface SliderHeaderProps extends ComponentProps<"div"> {}
-
-interface SliderMarkerGroupProps extends ComponentProps<typeof SliderPrimitive.MarkerGroup> {}
-
-interface SliderMarkerProps extends ComponentProps<typeof SliderPrimitive.Marker> {}
 
 interface SliderMarkerTickProps extends ComponentProps<"span"> {}
 
@@ -235,11 +233,8 @@ export function Slider({
   }, [value, defaultValue, min, max]);
 
   const handleValueChange = onValueChange
-    ? (
-        details: Parameters<
-          NonNullable<ComponentProps<typeof SliderPrimitive.Root>["onValueChange"]>
-        >[0],
-      ) => onValueChange(details.value)
+    ? (details: Parameters<NonNullable<SliderRootProps["onValueChange"]>>[0]) =>
+        onValueChange(details.value)
     : undefined;
 
   return (

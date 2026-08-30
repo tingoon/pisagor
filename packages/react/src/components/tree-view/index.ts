@@ -15,23 +15,27 @@ import {
 } from "./tree-view";
 
 export type {
-  NodeProviderProps,
-  TreeCollection,
-  TreeNodeType,
   TreeViewBranchContentProps,
-  TreeViewBranchControlProps,
   TreeViewBranchIndentGuideProps,
   TreeViewBranchIndicatorProps,
   TreeViewBranchProps,
-  TreeViewBranchTitleProps,
   TreeViewItemProps,
-  TreeViewItemTextProps,
-  TreeViewItemTitleProps,
   TreeViewLabelProps,
   TreeViewNodeCheckboxProps,
+  TreeViewNodeRenameInputProps,
+  TreeViewTreeProps,
+} from "@ark-ui/react/tree-view";
+
+export type {
+  NodeProviderProps,
+  TreeCollection,
+  TreeNodeType,
+  TreeViewBranchControlProps,
+  TreeViewBranchTitleProps,
+  TreeViewItemTextProps,
+  TreeViewItemTitleProps,
   TreeViewNodeInputProps,
   TreeViewProps,
-  TreeViewTreeProps,
 } from "./tree-view";
 export {
   createFileIcons,

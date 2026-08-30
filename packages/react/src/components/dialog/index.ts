@@ -15,17 +15,20 @@ import {
 
 export type {
   DialogBackdropProps,
-  DialogBodyProps,
   DialogCloseTriggerProps,
-  DialogContentProps,
   DialogDescriptionProps,
+  DialogRootProps,
+  DialogTitleProps,
+  DialogTriggerProps,
+} from "@ark-ui/react/dialog";
+
+export type {
+  DialogBodyProps,
+  DialogContentProps,
   DialogFooterProps,
   DialogHeaderProps,
   DialogPositionerProps,
   DialogProps,
-  DialogRootProps,
-  DialogTitleProps,
-  DialogTriggerProps,
 } from "./dialog";
 
 export const Dialog = Object.assign(DialogShorthand, {

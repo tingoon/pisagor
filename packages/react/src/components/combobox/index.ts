@@ -18,19 +18,22 @@ import {
 
 export type {
   ComboboxClearTriggerProps,
-  ComboboxContentProps,
   ComboboxControlProps,
   ComboboxEmptyProps,
-  ComboboxFieldInputProps,
-  ComboboxInputProps,
   ComboboxItemGroupLabelProps,
-  ComboboxItemGroupProps,
-  ComboboxItemProps,
   ComboboxListProps,
   ComboboxPositionerProps,
+  ComboboxTriggerProps,
+} from "@ark-ui/react/combobox";
+
+export type {
+  ComboboxContentProps,
+  ComboboxFieldInputProps,
+  ComboboxInputProps,
+  ComboboxItemGroupProps,
+  ComboboxItemProps,
   ComboboxProps,
   ComboboxRootProps,
-  ComboboxTriggerProps,
 } from "./combobox";
 
 export { useComboboxRoot } from "./combobox.context";

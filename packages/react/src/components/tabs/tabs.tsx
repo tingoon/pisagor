@@ -1,6 +1,12 @@
+import type {
+  TabContentProps,
+  TabListProps,
+  TabsRootProps,
+  TabTriggerProps,
+} from "@ark-ui/react/tabs";
 import { Tabs as TabsPrimitive } from "@ark-ui/react/tabs";
 import { type TabsVariantProps, tabsRecipe } from "@pisagor/recipes/tabs";
-import type { ComponentProps, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { TabsContext, useTabs } from "./tabs.context";
 
 // #region Types
@@ -11,14 +17,11 @@ interface TabsPresetItem {
   disabled?: boolean;
 }
 
-export type TabsListProps = ComponentProps<typeof TabsPrimitive.List> &
-  Pick<TabsVariantProps, "variant">;
+export type TabsListProps = TabListProps & Pick<TabsVariantProps, "variant">;
 
-export type TabsRootProps = ComponentProps<typeof TabsPrimitive.Root>;
+export type TabsTriggerProps = TabTriggerProps;
 
-export type TabsTriggerProps = ComponentProps<typeof TabsPrimitive.Trigger>;
-
-export type TabsContentProps = ComponentProps<typeof TabsPrimitive.Content>;
+export type TabsContentProps = TabContentProps;
 
 export interface TabsProps
   extends Omit<TabsRootProps, "children">,

@@ -1,21 +1,20 @@
-import { Menu as MenuPrimitive } from "@ark-ui/react/menu";
+import { type MenuContextTriggerProps, Menu as MenuPrimitive } from "@ark-ui/react/menu";
 import { contextMenuRecipe } from "@pisagor/recipes/context-menu";
-import type { ComponentProps } from "react";
-import {
-  DropdownMenu,
-  type DropdownMenuContentProps,
-  type DropdownMenuItemGroupProps,
-  type DropdownMenuItemProps,
-  type DropdownMenuRootProps,
-  type DropdownMenuSeparatorProps,
-  type DropdownMenuShortcutProps,
-  type DropdownMenuTriggerItemProps,
+import type {
+  DropdownMenuContentProps,
+  DropdownMenuItemGroupProps,
+  DropdownMenuItemProps,
+  DropdownMenuRootProps,
+  DropdownMenuSeparatorProps,
+  DropdownMenuShortcutProps,
+  DropdownMenuTriggerItemProps,
 } from "../dropdown-menu";
+import { DropdownMenu } from "../dropdown-menu";
 
 // #region Types
 export type ContextMenuRootProps = DropdownMenuRootProps;
 
-export type ContextMenuContextTriggerProps = ComponentProps<typeof MenuPrimitive.ContextTrigger>;
+export type ContextMenuContextTriggerProps = MenuContextTriggerProps;
 // #endregion
 
 // #region Parts

@@ -16,15 +16,18 @@ import {
 } from "./timer";
 
 export type {
-  TimerActionProps,
   TimerActionTriggerProps,
   TimerAreaProps,
   TimerControlProps,
+  TimerItemProps,
+  TimerSeparatorProps,
+} from "@ark-ui/react/timer";
+
+export type {
+  TimerActionProps,
   TimerItemGroupProps,
   TimerItemLabelProps,
-  TimerItemProps,
   TimerRootProps,
-  TimerSeparatorProps,
 } from "./timer";
 
 export const Timer = Object.assign(TimerRoot, {

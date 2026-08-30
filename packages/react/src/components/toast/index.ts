@@ -4,11 +4,14 @@ export type {
   ToastActionTriggerProps,
   ToastCloseTriggerProps,
   ToastDescriptionProps,
+  ToastTitleProps,
+} from "@ark-ui/react/toast";
+
+export type {
   ToasterProps,
   ToasterRootProps,
   ToastItemProps,
   ToastItemRootProps,
-  ToastTitleProps,
 } from "./toast";
 export { toast };
 
