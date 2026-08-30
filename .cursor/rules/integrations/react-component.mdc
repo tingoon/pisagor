@@ -89,7 +89,7 @@ Choose **closed**, **compound**, or **compound + shorthand** per component.
 
 **Compound:**
 
-- Name internally `{Name}Root`, `{Name}Item`, …; set `displayName`: root `"Foo.Root"` when a dedicated shorthand export exists, otherwise `"Foo"`; subparts `"Foo.Part"`. Put **every** `displayName` assignment in a single `#region Display Names` at the **end of the file** (after Parts / Shorthand / Closed) — one contiguous list so names can be reviewed together. Do not set `displayName` under each function or at the end of Parts / Shorthand / Closed.
+- Name internally `{Name}Root`, `{Name}Item`, …; set `displayName`: root `"Foo.Root"` when a dedicated shorthand export exists, otherwise `"Foo"`; subparts `"Foo.Part"`. Put **every** `displayName` assignment in a single `#region Display Names` at the **end of the file** (after Parts / Shorthand / Closed) — one contiguous list so names can be reviewed together. Do not set `displayName` under each function or at the end of Parts / Shorthand / Closed. Closed single-export files skip Display Names — see [Closed](#do).
 - Implement compound parts first; shorthand composes them — never the reverse.
 - Export via `Object.assign(FooShorthand, { Root, Item, Trigger, … })` when shorthand exists; otherwise `Object.assign(FooRoot, { … })`.
 - Public surface is `Foo.Root` / `Foo.Part` only. Flat `FooPart` barrel re-exports are forbidden; do not ship a dual compound + flat surface.
@@ -111,6 +111,9 @@ Choose **closed**, **compound**, or **compound + shorthand** per component.
 - Export a single function with convenience props and DOM sub-element `*Props` bags (content/behavior — not styling).
 - **Closed multi-slot:** implement private Parts + `<name>.context.tsx` (`slots` from `@pisagor/recipes` `{name}Recipe`); compose in `#region Closed`. Do not export parts or part prop types from the barrel — only `Foo` / `FooProps`.
 - Export via `export * from "./foo"` (shared package barrel only).
+- Do **not** set `displayName` / `#region Display Names` for a single closed `export function Foo` — the function name is enough. Use Display Names only for compounds / shorthand / private parts that need `"Foo.Root"` / `"Foo.Part"` labels.
+- Do **not** introduce a private `FooRootProps` alias when there is no `FooRoot` / compound part — put the primitive type on `FooProps` directly (`extends ComponentProps<typeof …>, FooVariantProps` or `= ComponentProps<typeof …>`).
+- When the component adds **no** recipe, `data-*`, or behavior beyond Ark — re-export the Ark export directly (`export { Foo, type FooProps } from "@ark-ui/react/foo"`). Do not wrap in a passthrough function.
 
 **Barrel (both):**
 
@@ -139,6 +142,7 @@ Choose **closed**, **compound**, or **compound + shorthand** per component.
 | **Closed + multi-slot recipe** | Single export; import multi-slot `{name}Recipe` from `@pisagor/recipes`; sub-element `classNames` bags |
 | **Closed + behavior** | Single export; convenience props; single-element or thin recipe from `@pisagor/recipes` |
 | **Closed + primitive wrapper** | Thin styled layer over one headless part |
+| **Closed + Ark passthrough** | No styling/behavior — `export { Foo, type FooProps } from "@ark-ui/react/foo"` (no wrapper component) |
 | **Composition layer** | Composes other package exports (e.g. `@pisagor/react/*`); no new primitive |
 
 **Example:**
@@ -175,20 +179,20 @@ Every `<name>.tsx` file uses `#region` blocks in this order. Skip regions that d
 | ----- | ------ | ---- |
 | 1 | `Types` | Props, variant prop types (imported from recipes), item interfaces (not context value types) |
 | 2 | `Hooks` | File-local hooks not exported from `index.ts` |
-| 3 | `Part` / `Parts` | Compound / closed component functions (not shorthand/closed compose) |
+| 3 | `Component` / `Parts` | Single export (`Component`) or two+ parts (`Parts`) — not shorthand/closed compose |
 | 4 | `Shorthand` / `Closed` | Preset compose — after all parts (`FooShorthand` or closed `Foo`) |
-| 5 | `Display Names` | All `displayName` assignments for the file — always last when any part sets `displayName` |
+| 5 | `Display Names` | All `displayName` assignments — last when needed (compounds / shorthand / labeled parts). Skip for a single closed `Foo`. |
 
 Context factory + value types live in [`<name>.context.tsx`](#context-file-namecontexttsx) — not a region in `<name>.tsx`. Do **not** add a `#region Variants` — `tv()` recipes live in `@pisagor/recipes`, not in component files.
 
 ### Do
 
-- Use **`#region Part`** (singular) when the file exports **one** component function.
+- Use **`#region Component`** (singular) when the file exports **one** component function.
 - Use **`#region Parts`** (plural) when the file exports **two or more** component functions.
 - Use **`#region Shorthand`** when the file exports `FooShorthand` — place it **after** `#region Parts`, not inside it.
 - Use **`#region Closed`** for closed multi-slot compose (`Foo` that wires private parts) — place it **after** `#region Parts`, not inside it. Parts stay file-private; do not barrel-export them.
-- Use **`#region Display Names`** when any export sets `displayName` — place it **last**, after Parts / Shorthand / Closed. Include every assignment in declaration order (parts first, then shorthand/closed). Spell the region exactly `Display Names` (with a space) — not `DisplayNames`.
-- Start at `Types` → `Part(s)` (skip Hooks when none).
+- Use **`#region Display Names`** when any export sets `displayName` — place it **last**, after Parts / Shorthand / Closed. Include every assignment in declaration order (parts first, then shorthand/closed). Spell the region exactly `Display Names` (with a space) — not `DisplayNames`. Skip the region for a single closed `export function Foo` (no `Foo.displayName = "Foo"`).
+- Start at `Types` → `Component` / `Parts` (skip Hooks when none).
 - Put **`// #endregion` on the line immediately after** the region's last statement — no blank line before it.
 - Put **one blank line between region blocks** — after `// #endregion`, before the next `// #region`.
 - Follow [react.mdc → Component body order](../styleguides/react.mdc#component-body-order) inside each component function.
@@ -215,7 +219,7 @@ Follow [React Style Guide](../styleguides/react.mdc) for naming and [props field
 
 - Extend `ComponentProps<typeof Primitive.Part>` or `ComponentProps<typeof ark.div>`.
 - Use `export interface FooProps` when props are part of the public API.
-- Combine with `interface FooProps extends FooRootProps, FooVariantProps`.
+- Combine with `interface FooProps extends FooRootProps, FooVariantProps` for compounds. For closed single exports without a Root part, extend the primitive on `FooProps` directly (no `FooRootProps` alias).
 - Use `Omit<…>` when a convenience prop conflicts with DOM attributes.
 - Extend recipe `{Name}VariantProps` from `@pisagor/recipes/<name>` (or `VariantProps<typeof fooRecipe>` when composing locally). Document library-owned defaults with TSDoc **`@defaultValue`** matching the recipe `defaultVariants` — see [TypeScript Style Guide](../styleguides/typescript.mdc) (TSDoc only; do not use JSDoc-only `@default`).
 - Type sub-element bags as `titleProps?: Omit<TitleProps, "children" | "className">`.
