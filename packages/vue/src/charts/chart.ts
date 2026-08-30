@@ -1,4 +1,4 @@
-import { type ChartSlots, chartRecipe } from "@pisagor/recipes/chart";
+import { type ChartRecipe, chartRecipe } from "@pisagor/recipes/chart";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { createContext } from "../internal/utils/create-context";
@@ -50,7 +50,7 @@ export interface ChartTooltipContentProps {
 // #region Context
 interface ChartContextValue {
   config: ChartConfig;
-  slots: ChartSlots;
+  slots: ChartRecipe;
 }
 
 const [provideChartContext, useChartContext] = createContext<ChartContextValue>({

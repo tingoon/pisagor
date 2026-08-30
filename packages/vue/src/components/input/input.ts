@@ -1,7 +1,7 @@
 import { Field as FieldPrimitive } from "@ark-ui/vue/field";
 import {
+  type InputRecipeSlot,
   type InputRootVariantProps,
-  type InputSlots,
   inputRecipe,
   inputRootRecipe,
 } from "@pisagor/recipes/input";
@@ -15,7 +15,7 @@ import { InputClearAddon } from "./input-clear-button";
 type FormControlVariant = "primary" | "secondary";
 
 type ArkPart = Parameters<typeof h>[0];
-type InputClassNames = VariantClassNames<InputSlots>;
+type InputClassNames = VariantClassNames<InputRecipeSlot>;
 
 type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
 

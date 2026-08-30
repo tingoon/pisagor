@@ -1,11 +1,14 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type NavigationMenuSlots, navigationMenuRecipe } from "@pisagor/recipes/navigation-menu";
+import {
+  type NavigationMenuRecipeSlot,
+  navigationMenuRecipe,
+} from "@pisagor/recipes/navigation-menu";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 
 // #region Types
-type NavigationMenuClassNames = VariantClassNames<NavigationMenuSlots>;
+type NavigationMenuClassNames = VariantClassNames<NavigationMenuRecipeSlot>;
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];

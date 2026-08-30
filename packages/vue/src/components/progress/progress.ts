@@ -6,13 +6,13 @@ import {
   ProgressValueText,
 } from "@ark-ui/vue/progress";
 import { fieldRecipe } from "@pisagor/recipes/field";
-import { type ProgressSlots, progressRecipe } from "@pisagor/recipes/progress";
+import { type ProgressRecipeSlot, progressRecipe } from "@pisagor/recipes/progress";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNode } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 
 // #region Types
-type ProgressClassNames = VariantClassNames<ProgressSlots>;
+type ProgressClassNames = VariantClassNames<ProgressRecipeSlot>;
 
 export interface ProgressProps {
   class?: unknown;

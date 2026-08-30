@@ -4,7 +4,7 @@ import {
   Toast as ToastPrimitive,
 } from "@ark-ui/vue/toast";
 import { PhCheckCircle, PhInfo, PhWarning, PhWarningCircle, PhX } from "@phosphor-icons/vue";
-import { type ToastItemSlots, toastItemRecipe, toastRecipe } from "@pisagor/recipes/toast";
+import { type ToastItemRecipeSlot, toastItemRecipe, toastRecipe } from "@pisagor/recipes/toast";
 import { cn } from "@pisagor/utils";
 
 type ClassValue = Parameters<typeof cn>[0];
@@ -15,7 +15,7 @@ import { Button } from "../button";
 import { Spinner } from "../spinner";
 
 // #region Types
-type ToastItemClassNames = VariantClassNames<ToastItemSlots>;
+type ToastItemClassNames = VariantClassNames<ToastItemRecipeSlot>;
 
 type ToastType = "error" | "info" | "loading" | "success" | "warning";
 

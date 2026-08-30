@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
 import {
-  type DataListItemSlots,
+  type DataListItemRecipeSlot,
   dataListItemRecipe,
   dataListRecipe,
 } from "@pisagor/recipes/data-list";
@@ -13,7 +13,7 @@ interface DataListPresetItem {
   value: VNodeChild;
 }
 
-type DataListClassNames = VariantClassNames<DataListItemSlots>;
+type DataListClassNames = VariantClassNames<DataListItemRecipeSlot>;
 
 type ArkPart = Parameters<typeof h>[0];
 

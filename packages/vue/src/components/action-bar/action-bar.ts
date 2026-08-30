@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
 import { PhX } from "@phosphor-icons/vue";
-import { type ActionBarSlots, actionBarRecipe } from "@pisagor/recipes/action-bar";
+import { type ActionBarRecipe, actionBarRecipe } from "@pisagor/recipes/action-bar";
 import { cn } from "@pisagor/utils";
 import {
   defineComponent,
@@ -75,7 +75,7 @@ interface ActionBarContextValue {
   onClose?: () => void;
   onOpen?: () => void;
   positioning: Required<ActionBarPositioning>;
-  slots: ActionBarSlots;
+  slots: ActionBarRecipe;
 }
 // #endregion
 

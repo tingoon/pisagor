@@ -1,12 +1,12 @@
 import { Tooltip as TooltipPrimitive } from "@ark-ui/vue/tooltip";
-import { type TooltipSlots, tooltipRecipe } from "@pisagor/recipes/tooltip";
+import { type TooltipRecipeSlot, tooltipRecipe } from "@pisagor/recipes/tooltip";
 import { defineComponent, h, type PropType, Teleport, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 
 // #region Types
 export type TooltipTriggerHandle = (props: Record<string, unknown>) => VNodeChild;
 
-type TooltipClassNames = VariantClassNames<TooltipSlots>;
+type TooltipClassNames = VariantClassNames<TooltipRecipeSlot>;
 
 export interface TooltipProps {
   arrowProps?: Record<string, unknown>;

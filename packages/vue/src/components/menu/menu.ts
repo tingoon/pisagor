@@ -1,11 +1,11 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type MenuSlots, menuItemRecipe, menuRecipe } from "@pisagor/recipes/menu";
+import { type MenuRecipeSlot, menuItemRecipe, menuRecipe } from "@pisagor/recipes/menu";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 
 // #region Types
-type MenuClassNames = VariantClassNames<MenuSlots>;
+type MenuClassNames = VariantClassNames<MenuRecipeSlot>;
 
 export interface MenuRootProps {
   /** Slot class names */

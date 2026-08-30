@@ -7,7 +7,7 @@ import {
   PhTextStrikethrough,
 } from "@phosphor-icons/vue";
 import { formControlShellRecipe } from "@pisagor/recipes/form-control";
-import { type RichTextEditorSlots, richTextEditorRecipe } from "@pisagor/recipes/rich-text-editor";
+import { type RichTextEditorRecipe, richTextEditorRecipe } from "@pisagor/recipes/rich-text-editor";
 import { cn } from "@pisagor/utils";
 import StarterKit from "@tiptap/starter-kit";
 import { type Editor, EditorContent, useEditor } from "@tiptap/vue-3";
@@ -23,7 +23,7 @@ type ArkPart = Parameters<typeof h>[0];
 // #region Types
 interface RichTextEditorContextValue {
   editor: Editor | null;
-  slots: RichTextEditorSlots;
+  slots: RichTextEditorRecipe;
 }
 
 export interface RichTextEditorRootProps {

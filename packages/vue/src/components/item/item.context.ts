@@ -1,9 +1,9 @@
-import type { ItemSlots, ItemVariantProps } from "@pisagor/recipes/item";
+import type { ItemRecipe, ItemVariantProps } from "@pisagor/recipes/item";
 import { type MaybeRef, unref } from "vue";
 import { createContext } from "../../internal/utils/create-context";
 
 export interface ItemContextValue extends ItemVariantProps {
-  slots: ItemSlots;
+  slots: ItemRecipe;
 }
 
 export const [provideItemContext, , useItemContextRef] = createContext<ItemContextValue>({

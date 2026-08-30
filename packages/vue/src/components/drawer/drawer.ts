@@ -1,11 +1,11 @@
 import { Drawer as DrawerPrimitive } from "@ark-ui/vue/drawer";
-import { type DrawerSlots, drawerRecipe } from "@pisagor/recipes/drawer";
+import { type DrawerRecipe, drawerRecipe } from "@pisagor/recipes/drawer";
 import { defineComponent, h, type PropType, reactive, Teleport } from "vue";
 import { createContext } from "../../internal/utils/create-context";
 
 // #region Types
 interface DrawerContextValue {
-  slots: DrawerSlots;
+  slots: DrawerRecipe;
 }
 
 export interface DrawerHeaderProps {

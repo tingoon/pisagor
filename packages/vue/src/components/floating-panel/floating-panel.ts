@@ -1,6 +1,6 @@
 import { FloatingPanel as FloatingPanelPrimitive } from "@ark-ui/vue/floating-panel";
 import { PhArrowsOut, PhCornersIn, PhMinus } from "@phosphor-icons/vue";
-import { type FloatingPanelSlots, floatingPanelRecipe } from "@pisagor/recipes/floating-panel";
+import { type FloatingPanelRecipe, floatingPanelRecipe } from "@pisagor/recipes/floating-panel";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, reactive, Teleport, type VNodeChild } from "vue";
 import { createContext } from "../../internal/utils/create-context";
@@ -9,7 +9,7 @@ import { ScrollArea } from "../scroll-area";
 
 // #region Types
 interface FloatingPanelContextProps {
-  slots: FloatingPanelSlots;
+  slots: FloatingPanelRecipe;
 }
 
 interface FloatingPanelContentProps {

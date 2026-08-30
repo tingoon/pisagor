@@ -1,8 +1,8 @@
 import { ark } from "@ark-ui/vue/factory";
 import { PhCaretRight, PhDotsThree } from "@phosphor-icons/vue";
 import {
-  type BreadcrumbItemSlots,
-  type BreadcrumbSlots,
+  type BreadcrumbItemRecipe,
+  type BreadcrumbRecipe,
   breadcrumbItemRecipe,
   breadcrumbRecipe,
 } from "@pisagor/recipes/breadcrumb";
@@ -30,11 +30,11 @@ export interface BreadcrumbProps extends BreadcrumbRootProps {
 }
 
 interface BreadcrumbContextValue {
-  slots: BreadcrumbSlots;
+  slots: BreadcrumbRecipe;
 }
 
 interface BreadcrumbItemContextValue {
-  slots: BreadcrumbItemSlots;
+  slots: BreadcrumbItemRecipe;
 }
 // #endregion
 

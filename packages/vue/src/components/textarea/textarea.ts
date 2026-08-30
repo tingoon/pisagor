@@ -3,7 +3,7 @@ import {
   type FormControlShellVariantProps,
   formControlShellRecipe,
 } from "@pisagor/recipes/form-control";
-import { type TextareaSlots, textareaRecipe } from "@pisagor/recipes/textarea";
+import { type TextareaRecipeSlot, textareaRecipe } from "@pisagor/recipes/textarea";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
 import { type ClearableChangeEvent, useClearableInput } from "../../hooks/use-clearable-input";
@@ -14,7 +14,7 @@ import { InputGroupAddon, InputGroupRoot } from "../input-group/input-group-core
 type FormControlVariant = "primary" | "secondary";
 
 type ArkPart = Parameters<typeof h>[0];
-type TextareaClassNames = VariantClassNames<TextareaSlots>;
+type TextareaClassNames = VariantClassNames<TextareaRecipeSlot>;
 
 type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
 

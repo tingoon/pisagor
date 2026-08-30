@@ -1,11 +1,11 @@
 import { Switch as SwitchPrimitive } from "@ark-ui/vue/switch";
-import { type SwitchSlots, switchRecipe } from "@pisagor/recipes/switch";
+import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes/switch";
 import { defineComponent, h, type PropType } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 
 type FormControlVariant = "primary" | "secondary";
 
-type SwitchClassNames = VariantClassNames<SwitchSlots>;
+type SwitchClassNames = VariantClassNames<SwitchRecipeSlot>;
 
 type ArkPart = Parameters<typeof h>[0];
 

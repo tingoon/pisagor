@@ -1,10 +1,10 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type ToolbarSlots, toolbarRecipe } from "@pisagor/recipes/toolbar";
+import { type ToolbarRecipeSlot, toolbarRecipe } from "@pisagor/recipes/toolbar";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 
-type ToolbarClassNames = VariantClassNames<ToolbarSlots>;
+type ToolbarClassNames = VariantClassNames<ToolbarRecipeSlot>;
 
 // #region Types
 export interface ToolbarProps {

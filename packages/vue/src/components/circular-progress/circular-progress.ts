@@ -1,14 +1,14 @@
 import { ark } from "@ark-ui/vue/factory";
 import { ProgressRoot, ProgressValueText, useProgressContext } from "@ark-ui/vue/progress";
 import {
-  type CircularProgressSlots,
+  type CircularProgressRecipeSlot,
   circularProgressRecipe,
 } from "@pisagor/recipes/circular-progress";
 import { computed, defineComponent, h, type PropType, type VNode } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 
 // #region Types
-type CircularProgressClassNames = VariantClassNames<CircularProgressSlots>;
+type CircularProgressClassNames = VariantClassNames<CircularProgressRecipeSlot>;
 
 export interface CircularProgressProps {
   class?: unknown;

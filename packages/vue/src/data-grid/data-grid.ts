@@ -1,4 +1,4 @@
-import { type DataGridSlots, dataGridRecipe } from "@pisagor/recipes/data-grid";
+import { type DataGridRecipe, dataGridRecipe } from "@pisagor/recipes/data-grid";
 import { cn } from "@pisagor/utils";
 import type {
   Cell,
@@ -34,7 +34,7 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 interface DataGridContextValue<TData extends RowData> {
-  slots: DataGridSlots;
+  slots: DataGridRecipe;
   table: TableType<DataGridFeatures, TData>;
 }
 
@@ -358,7 +358,7 @@ function renderHeadCell(
   attrs: Record<string, unknown>,
   slots: { default?: () => VNodeChild },
   table: TableType<DataGridFeatures, RowData>,
-  variantSlots: DataGridSlots,
+  variantSlots: DataGridRecipe,
 ) {
   const sizingEnabled = Boolean(table.options.enableColumnResizing);
   const headClass = cn(

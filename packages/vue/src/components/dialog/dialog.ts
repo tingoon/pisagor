@@ -1,5 +1,5 @@
 import { Dialog as DialogPrimitive } from "@ark-ui/vue/dialog";
-import { type DialogSlots, type DialogVariantProps, dialogRecipe } from "@pisagor/recipes/dialog";
+import { type DialogRecipe, type DialogVariantProps, dialogRecipe } from "@pisagor/recipes/dialog";
 import {
   defineComponent,
   h,
@@ -15,7 +15,7 @@ import { createContext } from "../../internal/utils/create-context";
 // #region Types
 interface DialogContextValue {
   modal?: boolean;
-  slots: DialogSlots;
+  slots: DialogRecipe;
 }
 
 export interface DialogContentProps extends DialogVariantProps {

@@ -1,7 +1,7 @@
 import { Clipboard as ClipboardPrimitive } from "@ark-ui/vue/clipboard";
 import { PhCheck, PhClipboard } from "@phosphor-icons/vue";
 import {
-  type ClipboardSlots,
+  type ClipboardRecipeSlot,
   type ClipboardVariantProps,
   clipboardRecipe,
 } from "@pisagor/recipes/clipboard";
@@ -14,7 +14,7 @@ import { Button, type ButtonProps } from "../button";
 type FormControlVariant = "primary" | "secondary";
 
 // #region Types
-type ClipboardClassNames = VariantClassNames<ClipboardSlots>;
+type ClipboardClassNames = VariantClassNames<ClipboardRecipeSlot>;
 
 type ClipboardValueSize = ClipboardVariantProps["valueSize"];
 

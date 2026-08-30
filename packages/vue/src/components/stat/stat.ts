@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
 import {
-  type StatSlots,
+  type StatRecipeSlot,
   type StatTrendVariantProps,
   type StatVariantProps,
   statRecipe,
@@ -16,7 +16,7 @@ type ArkPart = Parameters<typeof h>[0];
 type StatVariant = NonNullable<StatVariantProps["variant"]>;
 type StatTrendVariant = NonNullable<StatTrendVariantProps["trend"]>;
 
-type StatClassNames = VariantClassNames<StatSlots>;
+type StatClassNames = VariantClassNames<StatRecipeSlot>;
 
 export interface StatProps extends StatVariantProps {
   class?: unknown;

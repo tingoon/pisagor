@@ -1,4 +1,4 @@
-import { type DataTableSlots, dataTableRecipe } from "@pisagor/recipes/data-table";
+import { type DataTableRecipe, dataTableRecipe } from "@pisagor/recipes/data-table";
 import { cn } from "@pisagor/utils";
 import type {
   Cell,
@@ -18,7 +18,7 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 interface DataTableContextValue<TData extends RowData> {
-  slots: DataTableSlots;
+  slots: DataTableRecipe;
   table: TableType<DataTableFeatures, TData>;
 }
 

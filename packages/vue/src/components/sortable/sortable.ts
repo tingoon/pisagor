@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/vue/factory";
 import { PhDotsSixVertical } from "@phosphor-icons/vue";
 import {
-  type SortableItemSlots,
+  type SortableItemRecipe,
   sortableItemRecipe,
   sortableRecipe,
 } from "@pisagor/recipes/sortable";
@@ -37,7 +37,7 @@ interface SortableContextValue {
 interface SortableItemContextValue {
   id: string;
   isDragging: boolean;
-  slots: SortableItemSlots;
+  slots: SortableItemRecipe;
 }
 
 export interface SortableRootProps {

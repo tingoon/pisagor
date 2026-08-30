@@ -1,12 +1,17 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type AlertSlots, type AlertVariantProps, alertRecipe } from "@pisagor/recipes/alert";
+import {
+  type AlertRecipe,
+  type AlertRecipeSlot,
+  type AlertVariantProps,
+  alertRecipe,
+} from "@pisagor/recipes/alert";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType, toValue, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 import { createContext } from "../../internal/utils/create-context";
 
 // #region Types
-type AlertClassNames = VariantClassNames<AlertSlots>;
+type AlertClassNames = VariantClassNames<AlertRecipeSlot>;
 
 export interface AlertProps extends AlertVariantProps {
   action?: VNodeChild;
@@ -22,7 +27,7 @@ export interface AlertProps extends AlertVariantProps {
 
 interface AlertContextValue {
   classNames?: AlertClassNames;
-  slots: AlertSlots;
+  slots: AlertRecipe;
 }
 // #endregion
 

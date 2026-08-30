@@ -7,7 +7,7 @@ import {
 } from "@ark-ui/vue/tour";
 import { PhCaretLeft, PhCaretRight, PhX } from "@phosphor-icons/vue";
 import { dialogRecipe } from "@pisagor/recipes/dialog";
-import { type TourSlots, tourRecipe } from "@pisagor/recipes/tour";
+import { type TourRecipe, tourRecipe } from "@pisagor/recipes/tour";
 import { cn } from "@pisagor/utils";
 import {
   computed,
@@ -35,7 +35,7 @@ interface TourContextProps {
   /** The function to start the tour */
   handleStart: () => void;
   /** Slot class recipes from `tourRecipe`. */
-  slots: TourSlots;
+  slots: TourRecipe;
   /** The tour instance */
   tour: UnwrapRef<UseTourReturn>;
 }

@@ -1,11 +1,11 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type NavbarSlots, navbarRecipe } from "@pisagor/recipes/navbar";
+import { type NavbarRecipeSlot, navbarRecipe } from "@pisagor/recipes/navbar";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 
 // #region Types
-type NavbarClassNames = VariantClassNames<NavbarSlots>;
+type NavbarClassNames = VariantClassNames<NavbarRecipeSlot>;
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];
