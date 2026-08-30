@@ -2,17 +2,19 @@ import { buttonRecipe } from "@pisagor/recipes/button";
 import { dialogRecipe } from "@pisagor/recipes/dialog";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
+import type {
+  DialogBodyProps,
+  DialogContentProps,
+  DialogHeaderProps,
+  DialogProps,
+} from "../dialog/dialog";
 import {
   DialogBody,
-  type DialogBodyProps,
   DialogCloseTrigger,
   DialogContent,
-  type DialogContentProps,
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  type DialogHeaderProps,
-  type DialogProps,
   DialogRoot,
   DialogTitle,
   DialogTrigger,

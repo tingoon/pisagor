@@ -1,11 +1,11 @@
-import {
-  type ImageCropperCropChangeDetails,
-  type ImageCropperFlipChangeDetails,
-  type ImageCropperHandlePosition,
-  ImageCropper as ImageCropperPrimitive,
-  type ImageCropperRotationChangeDetails,
-  type ImageCropperZoomChangeDetails,
+import type {
+  ImageCropperCropChangeDetails,
+  ImageCropperFlipChangeDetails,
+  ImageCropperHandlePosition,
+  ImageCropperRotationChangeDetails,
+  ImageCropperZoomChangeDetails,
 } from "@ark-ui/vue/image-cropper";
+import { ImageCropper as ImageCropperPrimitive } from "@ark-ui/vue/image-cropper";
 import { imageCropperRecipe } from "@pisagor/recipes/image-cropper";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";

@@ -1,14 +1,14 @@
 import { type DataTableSlots, dataTableRecipe } from "@pisagor/recipes/data-table";
 import { cn } from "@pisagor/utils";
-import {
-  type Cell,
-  type HeaderGroup,
-  type Row,
-  type RowData,
-  type TableOptions,
-  type Table as TableType,
-  useTable,
+import type {
+  Cell,
+  HeaderGroup,
+  Row,
+  RowData,
+  TableOptions,
+  Table as TableType,
 } from "@tanstack/vue-table";
+import { useTable } from "@tanstack/vue-table";
 import { computed, defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { createContext } from "../../internal/utils/create-context";
 import { Table } from "../table";

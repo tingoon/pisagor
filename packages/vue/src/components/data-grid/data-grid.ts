@@ -1,17 +1,17 @@
 import { type DataGridSlots, dataGridRecipe } from "@pisagor/recipes/data-grid";
 import { cn } from "@pisagor/utils";
-import {
-  type Cell,
-  type Column,
-  type ColumnResizeMode,
-  type Header,
-  type HeaderGroup,
-  type Row,
-  type RowData,
-  type TableOptions,
-  type Table as TableType,
-  useTable,
+import type {
+  Cell,
+  Column,
+  ColumnResizeMode,
+  Header,
+  HeaderGroup,
+  Row,
+  RowData,
+  TableOptions,
+  Table as TableType,
 } from "@tanstack/vue-table";
+import { useTable } from "@tanstack/vue-table";
 import { useVirtualizer } from "@tanstack/vue-virtual";
 import {
   type CSSProperties,
