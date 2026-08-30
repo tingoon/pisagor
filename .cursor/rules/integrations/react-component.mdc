@@ -109,16 +109,20 @@ Choose **closed**, **compound**, or **compound + shorthand** per component.
 **Closed:**
 
 - Export a single function with convenience props and DOM sub-element `*Props` bags (content/behavior — not styling).
-- **Closed multi-slot:** implement private Parts + `<name>.context.tsx` (`slots` from `@pisagor/recipes` `{name}Recipe`); compose in `#region Closed`. Do not export parts or part prop types from the barrel — only `Foo` / `FooProps`.
+- **Closed multi-slot:** implement private Parts + `<name>.context.tsx` (`slots` from `@pisagor/recipes` `{name}Recipe`); compose in `#region Closed`. Do not export private parts from the barrel — only `Foo` / `FooProps`. Ark types used in public sub-element bags (`imageProps?: Omit<AvatarImageProps, …>`) **are** re-exported from the barrel (`export type { AvatarImageProps, AvatarFallbackProps } from "@ark-ui/react/avatar"`).
 - Export via `export * from "./foo"` (shared package barrel only).
 - Do **not** set `displayName` / `#region Display Names` for a single closed `export function Foo` — the function name is enough. Use Display Names only for compounds / shorthand / private parts that need `"Foo.Root"` / `"Foo.Part"` labels.
-- Do **not** introduce a private `FooRootProps` alias when there is no `FooRoot` / compound part — put the primitive type on `FooProps` directly (`extends ComponentProps<typeof …>, FooVariantProps` or `= ComponentProps<typeof …>`).
+- Do **not** introduce a private `FooRootProps` alias when there is no `FooRoot` / compound part — put the primitive type on `FooProps` directly (`extends FooProps from Ark` / `ark.div` via `ComponentProps`, plus `FooVariantProps`).
 - When the component adds **no** recipe, `data-*`, or behavior beyond Ark — re-export the Ark export directly (`export { Foo, type FooProps } from "@ark-ui/react/foo"`). Do not wrap in a passthrough function.
 
 **Barrel (both):**
 
 - Re-export types, hooks, or `RootProvider` only when part of the public API.
-- Prefer owner `*Props` (`FooRootProps`, `FooCloseProps`) when wrapping or typing workspace components. Do not use `ComponentProps<typeof Foo>` / `ComponentProps<typeof Foo.Part>` for that — reserve `ComponentProps` for Ark/DOM primitives and third-party components that do not export props.
+- Prefer owner `*Props` (`FooRootProps`, `FooCloseProps`) when wrapping or typing workspace components. Do not use `ComponentProps<typeof Foo>` / `ComponentProps<typeof Foo.Part>` for that.
+- For Ark parts, prefer Ark’s exported `*Props` over `ComponentProps<typeof Primitive.Part>`. Reserve `ComponentProps` for `ark.*` / DOM and third-party components that do not export props.
+- Pure Ark props: re-export from the **barrel** (`export type { FooRootProps } from "@ark-ui/react/foo"`). Component modules import for signatures only — do not `export type { FooRootProps }` there. When the local name must extend/omit the Ark type of the same name, import as `FooRootProps as FooPrimitiveRootProps` (mirror `Foo as FooPrimitive`).
+- Do **not** add identity aliases (`type FooProps = FooPrimitiveRootProps` or empty `interface FooProps extends FooPrimitiveRootProps {}`). Import and use the Ark type directly. Rename aliases only when the public name differs (`ComboboxFieldInputProps = ComboboxPrimitiveInputProps`, `TreeViewItemTitleProps = TreeViewPrimitiveItemTextProps`).
+- Barrel may alias for public names (`DatePickerRootProps as DatePickerProps`).
 
 ### Do not
 
@@ -193,6 +197,7 @@ Context factory + value types live in [`<name>.context.tsx`](#context-file-namec
 - Use **`#region Closed`** for closed multi-slot compose (`Foo` that wires private parts) — place it **after** `#region Parts`, not inside it. Parts stay file-private; do not barrel-export them.
 - Use **`#region Display Names`** when any export sets `displayName` — place it **last**, after Parts / Shorthand / Closed. Include every assignment in declaration order (parts first, then shorthand/closed). Spell the region exactly `Display Names` (with a space) — not `DisplayNames`. Skip the region for a single closed `export function Foo` (no `Foo.displayName = "Foo"`).
 - Start at `Types` → `Component` / `Parts` (skip Hooks when none).
+- Put content on the line **immediately after** `// #region …` — no blank line after the region marker.
 - Put **`// #endregion` on the line immediately after** the region's last statement — no blank line before it.
 - Put **one blank line between region blocks** — after `// #endregion`, before the next `// #region`.
 - Follow [react.mdc → Component body order](../styleguides/react.mdc#component-body-order) inside each component function.
@@ -217,21 +222,28 @@ Follow [React Style Guide](../styleguides/react.mdc) for naming and [props field
 
 ### Do
 
-- Extend `ComponentProps<typeof Primitive.Part>` or `ComponentProps<typeof ark.div>`.
+- Prefer Ark-exported part props (`AccordionRootProps`, `DialogContentProps`, `HighlightProps`) over `ComponentProps<typeof Primitive.Part>`. Use `ComponentProps<typeof ark.div>` (and native tags) when Ark does not export props.
+- Re-export **unchanged** Ark props from the component **barrel** (`index.ts`): `export type { AccordionRootProps } from "@ark-ui/react/accordion"`. Do not `export type { AccordionRootProps }` from the component module — import there only for local signatures / `extends`.
+- Library-owned props (`Omit` / `extends` with extra fields / `RefAttributes` / renamed aliases) stay in the component module and are re-exported from the barrel via `export type { FooProps } from "./foo"`.
+- Do not invent passthrough aliases — if nothing is added, use the imported Ark `*Props` name as-is.
+- When a local `FooRootProps` extends/omits Ark’s same-named type, import as `type FooRootProps as FooPrimitiveRootProps` (same `Primitive` placement as `Foo as FooPrimitive`).
+- Ark `*Props` are typically `ComponentPropsWithoutRef` — when the wrapper destructures `ref`, intersect `RefAttributes<Element>` (what `ComponentProps<typeof Primitive>` used to provide).
+- Note Ark naming quirks (e.g. tabs compound uses `TabListProps` / `TabTriggerProps` / `TabContentProps`, not `TabsListProps`).
 - Use `export interface FooProps` when props are part of the public API.
-- Combine with `interface FooProps extends FooRootProps, FooVariantProps` for compounds. For closed single exports without a Root part, extend the primitive on `FooProps` directly (no `FooRootProps` alias).
+- Combine with `interface FooProps extends FooRootProps, FooVariantProps` for compounds. For closed single exports without a Root part, extend the Ark/`ark.*` props on `FooProps` directly (no `FooRootProps` alias).
 - Use `Omit<…>` when a convenience prop conflicts with DOM attributes.
 - Extend recipe `{Name}VariantProps` from `@pisagor/recipes/<name>` (or `VariantProps<typeof fooRecipe>` when composing locally). Document library-owned defaults with TSDoc **`@defaultValue`** matching the recipe `defaultVariants` — see [TypeScript Style Guide](../styleguides/typescript.mdc) (TSDoc only; do not use JSDoc-only `@default`).
 - Type sub-element bags as `titleProps?: Omit<TitleProps, "children" | "className">`.
 
 | `Omit` usage | Valid | Invalid |
 | --- | --- | --- |
-| Convenience prop conflicts with primitive prop | `type SelectRootProps = Omit<ArkSelectRootProps<Item>, "collection" \| "onValueChange">;` | `type SelectRootProps = ArkSelectRootProps<Item>;` + re-declare `onValueChange` with a different signature |
+| Convenience prop conflicts with primitive prop | `type SelectRootProps = Omit<SelectPrimitiveRootProps<Item>, "collection" \| "onValueChange">;` | `type SelectRootProps = SelectPrimitiveRootProps<Item>;` + re-declare `onValueChange` with a different signature |
 | Sub-element prop bags keep ownership of render/styling | `contentProps?: Omit<TooltipContentProps, "children" \| "className">` | `contentProps?: TooltipContentProps` (allows overriding `children`/`className`) |
 | Preserve primitive contracts by default | `interface DialogBodyProps extends ComponentProps<typeof ark.div> {}` (no `Omit` needed) | `type DialogBodyProps = Omit<ComponentProps<typeof ark.div>, "role">` without an explicit conflict |
 
 ### Do not
 
+- Do not type Ark wrappers with `ComponentProps<typeof Primitive.Part>` when Ark exports `*Props` for that part.
 - Do not route styling through `*Props` bags — use `classNames` on multi-slot components only; single-element components use `className`.
 - Do not type `classNames` as `VariantClassNames<FooSlots> & { … }` — use `VariantClassNames` only.
 - `titleProps` / `contentProps` on shorthand APIs: behavior escape-hatches only (`Omit<…, "children" | "className">`).
@@ -247,6 +259,7 @@ Behavior lives in the headless primitive — the styled layer adds visuals only.
 - Type each part per [Types](#types).
 - Follow [react.mdc → Props order](../styleguides/react.mdc#props-order) for JSX attribute order on each element. On **plain** nodes (`ark.div`, native tags) add `data-scope` / `data-part`; do **not** set them on machine-backed `<XPrimitive.Part>` nodes — Zag already emits them.
 - Alias imports to avoid name clashes (`Accordion as AccordionPrimitive`).
+- When a module import mixes **values and many types** (≥4 type specifiers), use a separate `import type { … }` from the same module instead of repeating inline `type` on each name. Keep inline `type` for small mixes (1–3 types), e.g. avatar.
 - Use a factory element (`ark.div`) only when there is no headless part for that DOM node.
 - Forward `asChild`, portal, `lazyMount`, and `unmountOnExit` unchanged — keep Ark/Zag defaults; do not set library defaults for those presence props.
 
