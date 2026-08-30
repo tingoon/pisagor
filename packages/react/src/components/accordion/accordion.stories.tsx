@@ -64,12 +64,10 @@ export const WithCard = meta.story({
   },
   render: (args) => (
     <Card>
-      <Card.Header>
-        <Card.Title>Product information</Card.Title>
-        <Card.Description>
-          Common questions about our products, shipping, and returns.
-        </Card.Description>
-      </Card.Header>
+      <Card.Header
+        description="Common questions about our products, shipping, and returns."
+        title="Product information"
+      />
       <Card.Content>
         <Accordion {...args} />
       </Card.Content>

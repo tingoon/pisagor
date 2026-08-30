@@ -72,40 +72,12 @@ export const Sizes = meta.story({
 });
 
 export const Variants = meta.story({
-  render: () => {
-    const collection = createListCollection({
-      items: ["Apple", "Banana", "Orange"],
-    });
-
-    return (
-      <div className="flex flex-col gap-2">
-        <Select.Root collection={collection} variant="primary">
-          <Select.Trigger>
-            <Select.ValueText placeholder="Primary" />
-          </Select.Trigger>
-          <Select.Content>
-            {collection.items.map((item) => (
-              <Select.Item item={item} key={item}>
-                {item}
-              </Select.Item>
-            ))}
-          </Select.Content>
-        </Select.Root>
-        <Select.Root collection={collection} variant="secondary">
-          <Select.Trigger>
-            <Select.ValueText placeholder="Secondary" />
-          </Select.Trigger>
-          <Select.Content>
-            {collection.items.map((item) => (
-              <Select.Item item={item} key={item}>
-                {item}
-              </Select.Item>
-            ))}
-          </Select.Content>
-        </Select.Root>
-      </div>
-    );
-  },
+  render: () => (
+    <div className="flex flex-col gap-2">
+      <Select items={["Apple", "Banana", "Orange"]} placeholder="Primary" variant="primary" />
+      <Select items={["Apple", "Banana", "Orange"]} placeholder="Secondary" variant="secondary" />
+    </div>
+  ),
 });
 
 export const OnSurface = Variants.extend({
@@ -254,55 +226,31 @@ export const Multiple = meta.story({
 });
 
 export const Disabled = meta.story({
-  render: () => {
-    const collection = createListCollection({
-      items: [
+  render: () => (
+    <Select
+      disabled
+      items={[
         { label: "Next.js", value: "next" },
         { label: "Vite", value: "vite" },
         { label: "Astro", value: "astro" },
-      ],
-    });
-    return (
-      <Select.Root collection={collection} disabled>
-        <Select.Trigger>
-          <Select.ValueText placeholder="Select framework" />
-        </Select.Trigger>
-        <Select.Content>
-          {collection.items.map((item) => (
-            <Select.Item item={item} key={item.value}>
-              {item.label}
-            </Select.Item>
-          ))}
-        </Select.Content>
-      </Select.Root>
-    );
-  },
+      ]}
+      placeholder="Select framework"
+    />
+  ),
 });
 
 export const Invalid = meta.story({
-  render: () => {
-    const collection = createListCollection({
-      items: [
+  render: () => (
+    <Select
+      invalid
+      items={[
         { label: "Next.js", value: "next" },
         { label: "Vite", value: "vite" },
         { label: "Astro", value: "astro" },
-      ],
-    });
-    return (
-      <Select.Root collection={collection} invalid>
-        <Select.Trigger>
-          <Select.ValueText placeholder="Select framework" />
-        </Select.Trigger>
-        <Select.Content>
-          {collection.items.map((item) => (
-            <Select.Item item={item} key={item.value}>
-              {item.label}
-            </Select.Item>
-          ))}
-        </Select.Content>
-      </Select.Root>
-    );
-  },
+      ]}
+      placeholder="Select framework"
+    />
+  ),
 });
 
 export const WithScroll = meta.story({
@@ -332,32 +280,19 @@ export const WithScroll = meta.story({
 
 export const Controlled = meta.story({
   render: () => {
-    const collection = createListCollection({
-      items: [
-        { label: "React", value: "react" },
-        { label: "Vue", value: "vue" },
-        { label: "Svelte", value: "svelte" },
-      ],
-    });
     const [value, setValue] = useState<string[]>(["react"]);
 
     return (
-      <Select.Root
-        collection={collection}
+      <Select
+        items={[
+          { label: "React", value: "react" },
+          { label: "Vue", value: "vue" },
+          { label: "Svelte", value: "svelte" },
+        ]}
         onValueChange={(value) => setValue(Array.isArray(value) ? value : [value])}
+        placeholder="Select a framework"
         value={value}
-      >
-        <Select.Trigger>
-          <Select.ValueText placeholder="Select a framework" />
-        </Select.Trigger>
-        <Select.Content>
-          {collection.items.map((item) => (
-            <Select.Item item={item} key={item.value}>
-              {item.label}
-            </Select.Item>
-          ))}
-        </Select.Content>
-      </Select.Root>
+      />
     );
   },
 });

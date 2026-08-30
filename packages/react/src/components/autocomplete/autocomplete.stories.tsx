@@ -115,74 +115,24 @@ export const OnSurface = Variants.extend({
 });
 
 export const Disabled = meta.story({
-  render: () => {
-    const initialItems = [
+  args: {
+    disabled: true,
+    items: [
       { label: "Apple", value: "apple" },
       { label: "Banana", value: "banana" },
       { label: "Cherry", value: "cherry" },
-    ];
-    const { contains } = useFilter({ sensitivity: "base" });
-
-    const { collection, filter } = useListCollection({
-      filter: contains,
-      initialItems,
-    });
-
-    return (
-      <Autocomplete.Root
-        collection={collection}
-        disabled
-        onInputValueChange={({ inputValue }) => filter(inputValue)}
-      >
-        <Autocomplete.Input placeholder="Select a fruit..." />
-        <Autocomplete.Content>
-          <Autocomplete.Empty>No items found.</Autocomplete.Empty>
-          <Autocomplete.List>
-            {collection.items.map((item) => (
-              <Autocomplete.Item item={item} key={item.value}>
-                {item.label}
-              </Autocomplete.Item>
-            ))}
-          </Autocomplete.List>
-        </Autocomplete.Content>
-      </Autocomplete.Root>
-    );
+    ],
   },
 });
 
 export const Invalid = meta.story({
-  render: () => {
-    const initialItems = [
+  args: {
+    invalid: true,
+    items: [
       { label: "Apple", value: "apple" },
       { label: "Banana", value: "banana" },
       { label: "Cherry", value: "cherry" },
-    ];
-    const { contains } = useFilter({ sensitivity: "base" });
-
-    const { collection, filter } = useListCollection({
-      filter: contains,
-      initialItems,
-    });
-
-    return (
-      <Autocomplete.Root
-        collection={collection}
-        invalid
-        onInputValueChange={({ inputValue }) => filter(inputValue)}
-      >
-        <Autocomplete.Input placeholder="Select a fruit..." />
-        <Autocomplete.Content>
-          <Autocomplete.Empty />
-          <Autocomplete.List>
-            {collection.items.map((item) => (
-              <Autocomplete.Item item={item} key={item.value}>
-                {item.label}
-              </Autocomplete.Item>
-            ))}
-          </Autocomplete.List>
-        </Autocomplete.Content>
-      </Autocomplete.Root>
-    );
+    ],
   },
 });
 
@@ -267,38 +217,14 @@ export const Group = meta.story({
 });
 
 export const WithClearButton = meta.story({
-  render: () => {
-    const initialItems = [
+  args: {
+    clearable: true,
+    defaultValue: ["apple"],
+    items: [
       { label: "Apple", value: "apple" },
       { label: "Banana", value: "banana" },
       { label: "Cherry", value: "cherry" },
-    ];
-    const { contains } = useFilter({ sensitivity: "base" });
-
-    const { collection, filter } = useListCollection({
-      filter: contains,
-      initialItems,
-    });
-
-    return (
-      <Autocomplete.Root
-        collection={collection}
-        defaultValue={["apple"]}
-        onInputValueChange={({ inputValue }) => filter(inputValue)}
-      >
-        <Autocomplete.Input clearable placeholder="Select a fruit..." />
-        <Autocomplete.Content>
-          <Autocomplete.Empty>No items found.</Autocomplete.Empty>
-          <Autocomplete.List>
-            {collection.items.map((item) => (
-              <Autocomplete.Item item={item} key={item.value}>
-                {item.label}
-              </Autocomplete.Item>
-            ))}
-          </Autocomplete.List>
-        </Autocomplete.Content>
-      </Autocomplete.Root>
-    );
+    ],
   },
 });
 
@@ -378,43 +304,23 @@ export const WithTrigger = meta.story({
 
 export const Controlled = meta.story({
   render: () => {
-    const initialItems = [
-      { label: "Apple", value: "apple" },
-      { label: "Banana", value: "banana" },
-      { label: "Cherry", value: "cherry" },
-      { label: "Date", value: "date" },
-    ];
-    const [value, setValue] = useState<string | undefined>("banana");
-
-    const { contains } = useFilter({ sensitivity: "base" });
-
-    const { collection, filter } = useListCollection({
-      filter: contains,
-      initialItems,
-    });
+    const [value, setValue] = useState<string[]>(["banana"]);
 
     return (
       <div className="flex flex-col gap-2">
-        <Autocomplete.Root
-          className="w-full"
-          collection={collection}
-          onInputValueChange={({ inputValue }) => filter(inputValue)}
-          onValueChange={(value) => setValue(value.at(0))}
-          value={value ? [value] : []}
-        >
-          <Autocomplete.Input placeholder="Select a fruit..." />
-          <Autocomplete.Content>
-            <Autocomplete.Empty />
-            <Autocomplete.List>
-              {collection.items.map((item) => (
-                <Autocomplete.Item item={item} key={item.value}>
-                  {item.label}
-                </Autocomplete.Item>
-              ))}
-            </Autocomplete.List>
-          </Autocomplete.Content>
-        </Autocomplete.Root>
-        <p className="text-center text-muted-foreground text-sm">Selected: {value ?? "(none)"}</p>
+        <Autocomplete
+          items={[
+            { label: "Apple", value: "apple" },
+            { label: "Banana", value: "banana" },
+            { label: "Cherry", value: "cherry" },
+            { label: "Date", value: "date" },
+          ]}
+          onValueChange={setValue}
+          value={value}
+        />
+        <p className="text-center text-muted-foreground text-sm">
+          Selected: {value[0] ?? "(none)"}
+        </p>
       </div>
     );
   },

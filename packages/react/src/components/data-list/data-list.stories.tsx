@@ -34,43 +34,37 @@ export const Default = meta.story({
 });
 
 export const OrientationHorizontal = meta.story({
-  render: () => (
-    <DataList.Root orientation="horizontal">
-      <DataList.Item value="Jane">First name</DataList.Item>
-      <DataList.Item value="Doe">Last name</DataList.Item>
-      <DataList.Item value="jane.doe@example.com">Email</DataList.Item>
-    </DataList.Root>
-  ),
+  args: {
+    items: [
+      { label: "First name", value: "Jane" },
+      { label: "Last name", value: "Doe" },
+      { label: "Email", value: "jane.doe@example.com" },
+    ],
+    orientation: "horizontal",
+  },
 });
 
 export const OrientationVertical = meta.story({
-  render: () => (
-    <DataList.Root orientation="vertical">
-      <DataList.Item value="Jane">First name</DataList.Item>
-      <DataList.Item value="Doe">Last name</DataList.Item>
-      <DataList.Item value="jane.doe@example.com">Email</DataList.Item>
-    </DataList.Root>
-  ),
+  args: {
+    items: [
+      { label: "First name", value: "Jane" },
+      { label: "Last name", value: "Doe" },
+      { label: "Email", value: "jane.doe@example.com" },
+    ],
+    orientation: "vertical",
+  },
 });
 
 export const Separator = meta.story({
-  render: () => {
-    const data = [
+  args: {
+    className: "divide-y",
+    items: [
       { label: "First name", value: "Jane" },
       { label: "Last name", value: "Doe" },
       { label: "Email", value: "jane.doe@example.com" },
       { label: "Phone", value: "1234567890" },
       { label: "Address", value: "1234 Main St, Anytown, USA" },
-    ];
-    return (
-      <DataList.Root className="divide-y">
-        {data.map((item) => (
-          <DataList.Item key={item.label} value={item.value}>
-            {item.label}
-          </DataList.Item>
-        ))}
-      </DataList.Root>
-    );
+    ],
   },
 });
 

@@ -23,6 +23,14 @@ const marqueeIcons: Icon[] = [
   AtomIcon,
 ];
 
+const marqueeItems = marqueeIcons.map((IconComponent) => (
+  <Card className="[--space:--spacing(8)]" key={IconComponent.displayName ?? IconComponent.name}>
+    <Card.Content>
+      <IconComponent className="size-10" />
+    </Card.Content>
+  </Card>
+));
+
 const meta = preview.meta({
   component: Marquee,
   parameters: {
@@ -64,118 +72,73 @@ function MarqueeIconRow() {
 
 export const Default = meta.story({
   args: {
-    items: marqueeIcons.map((IconComponent) => (
-      <Card
-        className="[--space:--spacing(8)]"
-        key={IconComponent.displayName ?? IconComponent.name}
-      >
-        <Card.Content>
-          <IconComponent className="size-10" />
-        </Card.Content>
-      </Card>
-    )),
+    items: marqueeItems,
   },
 });
 
 export const OrientationHorizontal = meta.story({
   args: {
+    items: marqueeItems,
     orientation: "horizontal",
   },
-  render: (args) => (
-    <Marquee.Root {...args}>
-      <MarqueeIconRow />
-    </Marquee.Root>
-  ),
 });
 
 export const OrientationVertical = meta.story({
   args: {
     className: "max-h-80",
+    items: marqueeIcons.map((IconComponent) => (
+      <Card key={IconComponent.displayName ?? IconComponent.name}>
+        <Card.Content className="flex justify-center">
+          <IconComponent className="size-10" />
+        </Card.Content>
+      </Card>
+    )),
     orientation: "vertical",
   },
-  render: (args) => (
-    <Marquee.Root {...args}>
-      <Marquee.Content>
-        {marqueeIcons.map((IconComponent) => (
-          <Marquee.Item key={IconComponent.displayName ?? IconComponent.name}>
-            <Card>
-              <Card.Content className="flex justify-center">
-                <IconComponent className="size-10" />
-              </Card.Content>
-            </Card>
-          </Marquee.Item>
-        ))}
-      </Marquee.Content>
-    </Marquee.Root>
-  ),
 });
 
 export const PauseOnHover = meta.story({
   args: {
+    items: marqueeItems,
     pauseOnInteraction: true,
   },
-  render: (args) => (
-    <Marquee.Root {...args}>
-      <MarqueeIconRow />
-    </Marquee.Root>
-  ),
 });
 
 export const Reverse = meta.story({
   args: {
+    items: marqueeItems,
     reverse: true,
   },
-  render: (args) => (
-    <Marquee.Root {...args}>
-      <MarqueeIconRow />
-    </Marquee.Root>
-  ),
 });
 
 export const Spacing = meta.story({
   args: {
+    items: marqueeItems,
     pauseOnInteraction: true,
     spacing: "40px",
   },
-  render: (args) => (
-    <Marquee.Root {...args}>
-      <MarqueeIconRow />
-    </Marquee.Root>
-  ),
 });
 
 export const Autofill = meta.story({
   args: {
     autoFill: true,
+    items: marqueeItems,
     speed: 100,
   },
-  render: (args) => (
-    <Marquee.Root {...args}>
-      <MarqueeIconRow />
-    </Marquee.Root>
-  ),
 });
 
 export const CustomSpeed = meta.story({
   args: {
+    items: marqueeItems,
     speed: 10,
   },
-  render: (args) => (
-    <Marquee.Root {...args}>
-      <MarqueeIconRow />
-    </Marquee.Root>
-  ),
 });
 
 export const Fade = meta.story({
   render: () => (
     <div className="flex w-full flex-col gap-2 overflow-hidden">
-      <Marquee.Root pauseOnInteraction showEdges={false}>
-        <MarqueeIconRow />
-      </Marquee.Root>
-      <Marquee.Root pauseOnInteraction reverse>
-        <MarqueeIconRow />
-      </Marquee.Root>
+      <Marquee items={marqueeItems} pauseOnInteraction showEdges={false} />
+      <Marquee items={marqueeItems} pauseOnInteraction reverse />
     </div>
   ),
 });

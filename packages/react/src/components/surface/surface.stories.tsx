@@ -1,10 +1,5 @@
-import { createListCollection } from "@ark-ui/react";
 import { Checkbox, Field, Input, Select, Surface, Switch, Textarea } from "@pisagor/react";
 import preview from "#/storybook/preview";
-
-const selectCollection = createListCollection({
-  items: ["Design", "Engineering", "Marketing"],
-});
 
 function FormControlsDemo() {
   return (
@@ -21,18 +16,11 @@ function FormControlsDemo() {
 
       <Field>
         <Field.Label htmlFor="surface-team">Team</Field.Label>
-        <Select.Root collection={selectCollection} id="surface-team">
-          <Select.Trigger>
-            <Select.ValueText placeholder="Choose a team" />
-          </Select.Trigger>
-          <Select.Content>
-            {selectCollection.items.map((item) => (
-              <Select.Item item={item} key={item}>
-                {item}
-              </Select.Item>
-            ))}
-          </Select.Content>
-        </Select.Root>
+        <Select
+          id="surface-team"
+          items={["Design", "Engineering", "Marketing"]}
+          placeholder="Choose a team"
+        />
       </Field>
 
       <Field orientation="horizontal">

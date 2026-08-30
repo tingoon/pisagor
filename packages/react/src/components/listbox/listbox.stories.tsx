@@ -56,36 +56,20 @@ export const Default = meta.story({
 });
 
 export const DisabledItem = meta.story({
-  render: () => {
-    const collection = createListCollection({
-      items: [
-        { label: "Free", value: "free" },
-        { label: "Pro", value: "pro" },
-        {
-          disabled: true,
-          label: "Enterprise",
-          value: "enterprise",
-        },
-        { label: "Custom", value: "custom" },
-      ],
-    });
-    return (
-      <Item.Group variant="outline">
-        <Item className="p-1">
-          <Listbox.Root collection={collection}>
-            <Listbox.Content>
-              {collection.items.map((item) => (
-                <Listbox.Item item={item} key={item.value}>
-                  <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                  <Listbox.ItemIndicator />
-                </Listbox.Item>
-              ))}
-            </Listbox.Content>
-          </Listbox.Root>
-        </Item>
-      </Item.Group>
-    );
-  },
+  render: () => (
+    <Item.Group variant="outline">
+      <Item className="p-1">
+        <Listbox
+          items={[
+            { label: "Free", value: "free" },
+            { label: "Pro", value: "pro" },
+            { disabled: true, label: "Enterprise", value: "enterprise" },
+            { label: "Custom", value: "custom" },
+          ]}
+        />
+      </Item>
+    </Item.Group>
+  ),
 });
 
 export const Grid = meta.story({
@@ -206,31 +190,20 @@ export const Horizontal = meta.story({
 });
 
 export const Disabled = meta.story({
-  render: () => {
-    const collection = createListCollection({
-      items: [
-        { label: "Brazil", value: "br" },
-        { label: "Mexico", value: "mx" },
-        { label: "Ireland", value: "ie" },
-      ],
-    });
-    return (
-      <Item.Group variant="outline">
-        <Item className="p-1">
-          <Listbox.Root collection={collection} disabled>
-            <Listbox.Content>
-              {collection.items.map((item) => (
-                <Listbox.Item item={item} key={item.value}>
-                  <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                  <Listbox.ItemIndicator />
-                </Listbox.Item>
-              ))}
-            </Listbox.Content>
-          </Listbox.Root>
-        </Item>
-      </Item.Group>
-    );
-  },
+  render: () => (
+    <Item.Group variant="outline">
+      <Item className="p-1">
+        <Listbox
+          disabled
+          items={[
+            { label: "Brazil", value: "br" },
+            { label: "Mexico", value: "mx" },
+            { label: "Ireland", value: "ie" },
+          ]}
+        />
+      </Item>
+    </Item.Group>
+  ),
 });
 
 export const ImageExplorer = meta.story({
@@ -296,64 +269,42 @@ export const ImageExplorer = meta.story({
 });
 
 export const SelectionExtended = meta.story({
-  render: () => {
-    const collection = createListCollection({
-      items: [
-        { label: "Brazil", value: "br" },
-        { label: "Mexico", value: "mx" },
-        { label: "Ireland", value: "ie" },
-      ],
-    });
-    return (
-      <div className="flex flex-col gap-2">
-        <p className="text-center text-muted-foreground text-sm">
-          Hold <Kbd>⌘</Kbd> or <Kbd>Ctrl</Kbd> to select multiple
-        </p>
-        <Item.Group variant="outline">
-          <Item className="w-full p-1">
-            <Listbox.Root collection={collection} selectionMode="extended">
-              <Listbox.Content>
-                {collection.items.map((item) => (
-                  <Listbox.Item item={item} key={item.value}>
-                    <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                    <Listbox.ItemIndicator />
-                  </Listbox.Item>
-                ))}
-              </Listbox.Content>
-            </Listbox.Root>
-          </Item>
-        </Item.Group>
-      </div>
-    );
-  },
+  render: () => (
+    <div className="flex flex-col gap-2">
+      <p className="text-center text-muted-foreground text-sm">
+        Hold <Kbd>⌘</Kbd> or <Kbd>Ctrl</Kbd> to select multiple
+      </p>
+      <Item.Group variant="outline">
+        <Item className="w-full p-1">
+          <Listbox
+            items={[
+              { label: "Brazil", value: "br" },
+              { label: "Mexico", value: "mx" },
+              { label: "Ireland", value: "ie" },
+            ]}
+            selectionMode="extended"
+          />
+        </Item>
+      </Item.Group>
+    </div>
+  ),
 });
 
 export const SelectionMultiple = meta.story({
-  render: () => {
-    const collection = createListCollection({
-      items: [
-        { label: "Brazil", value: "br" },
-        { label: "Mexico", value: "mx" },
-        { label: "Ireland", value: "ie" },
-      ],
-    });
-    return (
-      <Item.Group variant="outline">
-        <Item className="p-1">
-          <Listbox.Root collection={collection} selectionMode="multiple">
-            <Listbox.Content>
-              {collection.items.map((item) => (
-                <Listbox.Item item={item} key={item.value}>
-                  <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                  <Listbox.ItemIndicator />
-                </Listbox.Item>
-              ))}
-            </Listbox.Content>
-          </Listbox.Root>
-        </Item>
-      </Item.Group>
-    );
-  },
+  render: () => (
+    <Item.Group variant="outline">
+      <Item className="p-1">
+        <Listbox
+          items={[
+            { label: "Brazil", value: "br" },
+            { label: "Mexico", value: "mx" },
+            { label: "Ireland", value: "ie" },
+          ]}
+          selectionMode="multiple"
+        />
+      </Item>
+    </Item.Group>
+  ),
 });
 
 export const SelectionNone = meta.story({
@@ -701,14 +652,6 @@ export const WithPopover = meta.story({
 
 export const Controlled = meta.story({
   render: () => {
-    const collection = createListCollection({
-      items: [
-        { label: "Small", value: "sm" },
-        { label: "Medium", value: "md" },
-        { label: "Large", value: "lg" },
-        { label: "Extra Large", value: "xl" },
-      ],
-    });
     const [value, setValue] = useState(["md"]);
 
     const isLarge = value.includes("lg");
@@ -718,20 +661,16 @@ export const Controlled = meta.story({
         <p className="text-center text-muted-foreground text-sm">Selected the Large size</p>
         <Item.Group variant="outline">
           <Item className="p-1">
-            <Listbox.Root
-              collection={collection}
-              onValueChange={(value) => setValue(Array.isArray(value) ? value : [value])}
+            <Listbox
+              items={[
+                { label: "Small", value: "sm" },
+                { label: "Medium", value: "md" },
+                { label: "Large", value: "lg" },
+                { label: "Extra Large", value: "xl" },
+              ]}
+              onValueChange={(next) => setValue(Array.isArray(next) ? next : [next])}
               value={value}
-            >
-              <Listbox.Content>
-                {collection.items.map((item) => (
-                  <Listbox.Item item={item} key={item.value}>
-                    <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                    <Listbox.ItemIndicator />
-                  </Listbox.Item>
-                ))}
-              </Listbox.Content>
-            </Listbox.Root>
+            />
           </Item>
         </Item.Group>
         <p className="text-center text-muted-foreground text-sm">{isLarge ? "✅" : "❌"}</p>

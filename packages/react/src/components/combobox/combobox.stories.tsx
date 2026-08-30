@@ -59,55 +59,12 @@ export const Sizes = meta.story({
 });
 
 export const Variants = meta.story({
-  render: () => {
-    const initialItems = [
-      { label: "Apple", value: "apple" },
-      { label: "Banana", value: "banana" },
-      { label: "Cherry", value: "cherry" },
-    ];
-    const { contains } = useFilter({ sensitivity: "base" });
-    const { collection, filter } = useListCollection({
-      filter: contains,
-      initialItems,
-    });
-
-    return (
-      <div className="flex flex-col gap-2">
-        <Combobox.Root
-          collection={collection}
-          onInputValueChange={({ inputValue }) => filter(inputValue)}
-          variant="primary"
-        >
-          <Combobox.Input placeholder="Primary" />
-          <Combobox.Content>
-            <Combobox.List>
-              {collection.items.map((item) => (
-                <Combobox.Item item={item} key={item.value}>
-                  {item.label}
-                </Combobox.Item>
-              ))}
-            </Combobox.List>
-          </Combobox.Content>
-        </Combobox.Root>
-        <Combobox.Root
-          collection={collection}
-          onInputValueChange={({ inputValue }) => filter(inputValue)}
-          variant="secondary"
-        >
-          <Combobox.Input placeholder="Secondary" />
-          <Combobox.Content>
-            <Combobox.List>
-              {collection.items.map((item) => (
-                <Combobox.Item item={item} key={item.value}>
-                  {item.label}
-                </Combobox.Item>
-              ))}
-            </Combobox.List>
-          </Combobox.Content>
-        </Combobox.Root>
-      </div>
-    );
-  },
+  render: () => (
+    <div className="flex flex-col gap-2">
+      <Combobox items={["Apple", "Banana", "Cherry"]} variant="primary" />
+      <Combobox items={["Apple", "Banana", "Cherry"]} variant="secondary" />
+    </div>
+  ),
 });
 
 export const OnSurface = Variants.extend({
@@ -116,75 +73,27 @@ export const OnSurface = Variants.extend({
 });
 
 export const Autohighlight = meta.story({
-  render: () => {
-    const initialItems = [
+  args: {
+    inputBehavior: "autohighlight",
+    items: [
       { label: "Apple", value: "apple" },
       { label: "Banana", value: "banana" },
       { label: "Cherry", value: "cherry" },
       { label: "Date", value: "date" },
       { label: "Elderberry", value: "elderberry" },
-    ];
-    const { contains } = useFilter({ sensitivity: "base" });
-
-    const { collection, filter } = useListCollection({
-      filter: contains,
-      initialItems,
-    });
-
-    return (
-      <Combobox.Root
-        collection={collection}
-        inputBehavior="autohighlight"
-        onInputValueChange={({ inputValue }) => filter(inputValue)}
-      >
-        <Combobox.Input placeholder="Type to highlight..." />
-        <Combobox.Content>
-          <Combobox.List>
-            {collection.items.map((item) => (
-              <Combobox.Item item={item} key={item.value}>
-                {item.label}
-              </Combobox.Item>
-            ))}
-          </Combobox.List>
-        </Combobox.Content>
-      </Combobox.Root>
-    );
+    ],
   },
 });
 
 export const Multiple = meta.story({
-  render: () => {
-    const initialItems = [
+  args: {
+    items: [
       { label: "React", value: "react" },
       { label: "Vue", value: "vue" },
       { label: "Svelte", value: "svelte" },
       { label: "Solid", value: "solid" },
-    ];
-    const { contains } = useFilter({ sensitivity: "base" });
-
-    const { collection, filter } = useListCollection({
-      filter: contains,
-      initialItems,
-    });
-
-    return (
-      <Combobox.Root
-        collection={collection}
-        multiple
-        onInputValueChange={({ inputValue }) => filter(inputValue)}
-      >
-        <Combobox.Input placeholder="Select frameworks..." />
-        <Combobox.Content>
-          <Combobox.List>
-            {collection.items.map((item) => (
-              <Combobox.Item item={item} key={item.value}>
-                {item.label}
-              </Combobox.Item>
-            ))}
-          </Combobox.List>
-        </Combobox.Content>
-      </Combobox.Root>
-    );
+    ],
+    multiple: true,
   },
 });
 
@@ -222,72 +131,24 @@ function ComboboxSize({ size }: { size: "sm" | "md" | "lg" }) {
 }
 
 export const Disabled = meta.story({
-  render: () => {
-    const initialItems = [
+  args: {
+    disabled: true,
+    items: [
       { label: "Apple", value: "apple" },
       { label: "Banana", value: "banana" },
       { label: "Cherry", value: "cherry" },
-    ];
-    const { contains } = useFilter({ sensitivity: "base" });
-
-    const { collection, filter } = useListCollection({
-      filter: contains,
-      initialItems,
-    });
-
-    return (
-      <Combobox.Root
-        collection={collection}
-        disabled
-        onInputValueChange={({ inputValue }) => filter(inputValue)}
-      >
-        <Combobox.Input placeholder="Select a fruit..." />
-        <Combobox.Content>
-          <Combobox.List>
-            {collection.items.map((item) => (
-              <Combobox.Item item={item} key={item.value}>
-                {item.label}
-              </Combobox.Item>
-            ))}
-          </Combobox.List>
-        </Combobox.Content>
-      </Combobox.Root>
-    );
+    ],
   },
 });
 
 export const Invalid = meta.story({
-  render: () => {
-    const initialItems = [
+  args: {
+    invalid: true,
+    items: [
       { label: "Apple", value: "apple" },
       { label: "Banana", value: "banana" },
       { label: "Cherry", value: "cherry" },
-    ];
-    const { contains } = useFilter({ sensitivity: "base" });
-
-    const { collection, filter } = useListCollection({
-      filter: contains,
-      initialItems,
-    });
-
-    return (
-      <Combobox.Root
-        collection={collection}
-        invalid
-        onInputValueChange={({ inputValue }) => filter(inputValue)}
-      >
-        <Combobox.Input placeholder="Select a fruit..." />
-        <Combobox.Content>
-          <Combobox.List>
-            {collection.items.map((item) => (
-              <Combobox.Item item={item} key={item.value}>
-                {item.label}
-              </Combobox.Item>
-            ))}
-          </Combobox.List>
-        </Combobox.Content>
-      </Combobox.Root>
-    );
+    ],
   },
 });
 
@@ -337,36 +198,13 @@ export const Group = meta.story({
 });
 
 export const WithClearButton = meta.story({
-  render: () => {
-    const initialItems = [
+  args: {
+    clearable: true,
+    items: [
       { label: "Apple", value: "apple" },
       { label: "Banana", value: "banana" },
       { label: "Cherry", value: "cherry" },
-    ];
-    const { contains } = useFilter({ sensitivity: "base" });
-
-    const { collection, filter } = useListCollection({
-      filter: contains,
-      initialItems,
-    });
-
-    return (
-      <Combobox.Root
-        collection={collection}
-        onInputValueChange={({ inputValue }) => filter(inputValue)}
-      >
-        <Combobox.Input clearable placeholder="Select a fruit..." />
-        <Combobox.Content>
-          <Combobox.List>
-            {collection.items.map((item) => (
-              <Combobox.Item item={item} key={item.value}>
-                {item.label}
-              </Combobox.Item>
-            ))}
-          </Combobox.List>
-        </Combobox.Content>
-      </Combobox.Root>
-    );
+    ],
   },
 });
 
@@ -443,42 +281,23 @@ export const WithStartIcon = meta.story({
 
 export const Controlled = meta.story({
   render: () => {
-    const initialItems = [
-      { label: "Apple", value: "apple" },
-      { label: "Banana", value: "banana" },
-      { label: "Cherry", value: "cherry" },
-      { label: "Date", value: "date" },
-    ];
-    const [value, setValue] = useState<string | undefined>("banana");
-
-    const { contains } = useFilter({ sensitivity: "base" });
-
-    const { collection, filter } = useListCollection({
-      filter: contains,
-      initialItems,
-    });
+    const [value, setValue] = useState<string[]>(["banana"]);
 
     return (
       <div className="flex flex-col gap-2">
-        <Combobox.Root
-          className="w-full"
-          collection={collection}
-          inputValue={value}
-          onInputValueChange={({ inputValue }) => filter(inputValue)}
-          onValueChange={(value) => setValue(value[0])}
-        >
-          <Combobox.Input placeholder="Select a fruit..." />
-          <Combobox.Content>
-            <Combobox.List>
-              {collection.items.map((item) => (
-                <Combobox.Item item={item} key={item.value}>
-                  {item.label}
-                </Combobox.Item>
-              ))}
-            </Combobox.List>
-          </Combobox.Content>
-        </Combobox.Root>
-        <p className="text-center text-muted-foreground text-sm">Selected: {value ?? "(none)"}</p>
+        <Combobox
+          items={[
+            { label: "Apple", value: "apple" },
+            { label: "Banana", value: "banana" },
+            { label: "Cherry", value: "cherry" },
+            { label: "Date", value: "date" },
+          ]}
+          onValueChange={setValue}
+          value={value}
+        />
+        <p className="text-center text-muted-foreground text-sm">
+          Selected: {value[0] ?? "(none)"}
+        </p>
       </div>
     );
   },
