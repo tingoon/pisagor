@@ -1,7 +1,7 @@
 import { createListCollection } from "@ark-ui/react/collection";
 import { CaretUpDownIcon, GlobeIcon } from "@phosphor-icons/react";
 import {
-  type PhoneInputSlots,
+  type PhoneInputRecipeSlot,
   type PhoneInputVariantProps,
   phoneInputRecipe,
 } from "@pisagor/recipes/phone-input";
@@ -20,7 +20,7 @@ import { phoneInputFlags } from "./phone-input-flags";
 // #region Types
 type FormControlVariant = "primary" | "secondary";
 
-type PhoneInputClassNames = VariantClassNames<PhoneInputSlots>;
+type PhoneInputClassNames = VariantClassNames<PhoneInputRecipeSlot>;
 
 interface CountrySelectOption {
   label: string;

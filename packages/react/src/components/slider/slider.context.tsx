@@ -1,8 +1,8 @@
-import type { SliderSlots } from "@pisagor/recipes/slider";
+import type { SliderRecipe } from "@pisagor/recipes/slider";
 import { createContext } from "../../internal/utils";
 
 interface SliderContextValue {
-  slots: SliderSlots;
+  slots: SliderRecipe;
   thumbShadowClass?: string;
   trackVariantClass: string;
 }

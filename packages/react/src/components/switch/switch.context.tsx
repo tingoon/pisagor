@@ -1,8 +1,8 @@
-import type { SwitchSlots } from "@pisagor/recipes/switch";
+import type { SwitchRecipe } from "@pisagor/recipes/switch";
 import { createContext } from "../../internal/utils";
 
 interface SwitchContextValue {
-  slots: SwitchSlots;
+  slots: SwitchRecipe;
 }
 
 export const { SwitchContext, useSwitch } = createContext<SwitchContextValue>()({

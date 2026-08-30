@@ -1,8 +1,8 @@
-import type { CircularProgressSlots } from "@pisagor/recipes/circular-progress";
+import type { CircularProgressRecipe } from "@pisagor/recipes/circular-progress";
 import { createContext } from "../../internal/utils";
 
 interface CircularProgressContextValue {
-  slots: CircularProgressSlots;
+  slots: CircularProgressRecipe;
 }
 
 export const { CircularProgressSlotsContext, useCircularProgressSlots } =

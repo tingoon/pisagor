@@ -1,8 +1,8 @@
-import type { AlertSlots } from "@pisagor/recipes/alert";
+import type { AlertRecipe } from "@pisagor/recipes/alert";
 import { createContext } from "../../internal/utils";
 
 interface AlertContextValue {
-  slots: AlertSlots;
+  slots: AlertRecipe;
 }
 
 export const { AlertContext, useAlert } = createContext<AlertContextValue>()({

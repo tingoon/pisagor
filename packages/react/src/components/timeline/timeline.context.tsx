@@ -1,8 +1,8 @@
-import type { TimelineItemSlots } from "@pisagor/recipes/timeline";
+import type { TimelineItemRecipe } from "@pisagor/recipes/timeline";
 import { createContext } from "../../internal/utils";
 
 interface TimelineItemContextValue {
-  slots: TimelineItemSlots;
+  slots: TimelineItemRecipe;
 }
 
 export const { TimelineItemContext, useTimelineItem } = createContext<TimelineItemContextValue>()({

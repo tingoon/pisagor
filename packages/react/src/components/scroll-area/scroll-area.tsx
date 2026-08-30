@@ -6,7 +6,7 @@ import type {
 } from "@ark-ui/react/scroll-area";
 import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/react/scroll-area";
 import {
-  type ScrollAreaSlots,
+  type ScrollAreaRecipeSlot,
   type ScrollAreaVariantProps,
   scrollAreaRecipe,
 } from "@pisagor/recipes/scroll-area";
@@ -15,7 +15,7 @@ import type { VariantClassNames } from "../../internal/types";
 import { ScrollAreaContext, useScrollArea } from "./scroll-area.context";
 
 // #region Types
-type ScrollAreaClassNames = VariantClassNames<ScrollAreaSlots>;
+type ScrollAreaClassNames = VariantClassNames<ScrollAreaRecipeSlot>;
 
 type ScrollAreaRootProps = ScrollAreaPrimitiveRootProps & ScrollAreaVariantProps;
 

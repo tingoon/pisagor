@@ -1,8 +1,8 @@
-import type { FieldSlots } from "@pisagor/recipes/field";
+import type { FieldRecipe } from "@pisagor/recipes/field";
 import { createContext } from "../../internal/utils";
 
 interface FieldContextValue {
-  slots: FieldSlots;
+  slots: FieldRecipe;
 }
 
 export const { FieldContext, useField } = createContext<FieldContextValue>()({

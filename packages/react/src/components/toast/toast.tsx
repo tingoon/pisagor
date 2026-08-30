@@ -20,7 +20,7 @@ import {
   WarningIcon,
   XIcon,
 } from "@phosphor-icons/react";
-import { type ToastItemSlots, toastItemRecipe, toastRecipe } from "@pisagor/recipes/toast";
+import { type ToastItemRecipeSlot, toastItemRecipe, toastRecipe } from "@pisagor/recipes/toast";
 import type { ComponentProps, CSSProperties, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { Button } from "../button";
@@ -28,7 +28,7 @@ import { Spinner } from "../spinner";
 import { ToastItemContext, useToastItem } from "./toast.context";
 
 // #region Types
-type ToastItemClassNames = VariantClassNames<ToastItemSlots>;
+type ToastItemClassNames = VariantClassNames<ToastItemRecipeSlot>;
 
 export type ToasterRootProps = Omit<ToasterPrimitiveProps, "toaster" | "children">;
 

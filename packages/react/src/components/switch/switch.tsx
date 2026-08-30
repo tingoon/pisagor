@@ -5,7 +5,7 @@ import type {
   SwitchThumbProps,
 } from "@ark-ui/react/switch";
 import { Switch as SwitchPrimitive } from "@ark-ui/react/switch";
-import { type SwitchSlots, switchRecipe } from "@pisagor/recipes/switch";
+import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes/switch";
 
 import type { VariantClassNames } from "../../internal/types";
 import { SwitchContext, useSwitch } from "./switch.context";
@@ -13,7 +13,7 @@ import { SwitchContext, useSwitch } from "./switch.context";
 // #region Types
 type FormControlVariant = "primary" | "secondary";
 
-type SwitchClassNames = VariantClassNames<SwitchSlots>;
+type SwitchClassNames = VariantClassNames<SwitchRecipeSlot>;
 
 type SwitchRootProps = SwitchPrimitiveRootProps & {
   /** Visual shell variant. Defaults to `primary`. */

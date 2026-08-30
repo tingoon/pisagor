@@ -1,8 +1,8 @@
-import type { RatingSlots } from "@pisagor/recipes/rating";
+import type { RatingRecipe } from "@pisagor/recipes/rating";
 import { createContext } from "../../internal/utils";
 
 interface RatingContextValue {
-  slots: RatingSlots;
+  slots: RatingRecipe;
 }
 
 export const { RatingContext, useRating } = createContext<RatingContextValue>()({

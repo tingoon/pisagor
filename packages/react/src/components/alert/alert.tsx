@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { type AlertSlots, type AlertVariantProps, alertRecipe } from "@pisagor/recipes/alert";
+import { type AlertRecipeSlot, type AlertVariantProps, alertRecipe } from "@pisagor/recipes/alert";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { AlertContext, useAlert } from "./alert.context";
@@ -11,7 +11,7 @@ type AlertDescriptionProps = ComponentProps<typeof ark.div>;
 
 type AlertActionProps = ComponentProps<typeof ark.div>;
 
-type AlertClassNames = VariantClassNames<AlertSlots>;
+type AlertClassNames = VariantClassNames<AlertRecipeSlot>;
 
 type AlertRootProps = Omit<ComponentProps<typeof ark.div>, "title"> & AlertVariantProps;
 

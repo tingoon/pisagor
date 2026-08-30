@@ -1,8 +1,8 @@
-import type { ImageCropperSlots } from "@pisagor/recipes/image-cropper";
+import type { ImageCropperRecipe } from "@pisagor/recipes/image-cropper";
 import { createContext } from "../../internal/utils";
 
 interface ImageCropperContextValue {
-  slots: ImageCropperSlots;
+  slots: ImageCropperRecipe;
 }
 
 export const { ImageCropperContext, useImageCropper } = createContext<ImageCropperContextValue>()({

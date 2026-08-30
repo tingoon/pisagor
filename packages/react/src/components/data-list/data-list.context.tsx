@@ -1,8 +1,8 @@
-import type { DataListItemSlots } from "@pisagor/recipes/data-list";
+import type { DataListItemRecipe } from "@pisagor/recipes/data-list";
 import { createContext } from "../../internal/utils";
 
 interface DataListItemContextValue {
-  slots: DataListItemSlots;
+  slots: DataListItemRecipe;
 }
 
 export const { DataListItemContext, useDataListItem } = createContext<DataListItemContextValue>()({

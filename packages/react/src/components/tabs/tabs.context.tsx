@@ -1,8 +1,8 @@
-import type { TabsSlots } from "@pisagor/recipes/tabs";
+import type { TabsRecipe } from "@pisagor/recipes/tabs";
 import { createContext } from "../../internal/utils";
 
 interface TabsContextValue {
-  slots: TabsSlots;
+  slots: TabsRecipe;
 }
 
 export const { TabsContext, useTabs } = createContext<TabsContextValue>()({

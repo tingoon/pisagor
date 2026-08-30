@@ -1,8 +1,8 @@
-import type { CommandSlots } from "@pisagor/recipes/command";
+import type { CommandRecipe } from "@pisagor/recipes/command";
 import { createContext } from "../../internal/utils";
 
 interface CommandContextValue {
-  slots: CommandSlots;
+  slots: CommandRecipe;
 }
 
 export const { CommandContext, useCommand } = createContext<CommandContextValue>()({

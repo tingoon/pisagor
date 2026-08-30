@@ -1,4 +1,4 @@
-import type { ActionBarSlots } from "@pisagor/recipes/action-bar";
+import type { ActionBarRecipe } from "@pisagor/recipes/action-bar";
 import { createContext } from "../../internal/utils";
 
 interface ActionBarPositioning {
@@ -28,7 +28,7 @@ export interface ActionBarContextValue {
   /** The positioning of the action bar. */
   positioning: ActionBarPositioning;
   /** Slot class recipes from `actionBarRecipe`. */
-  slots: ActionBarSlots;
+  slots: ActionBarRecipe;
   /** The function to call when the action bar is mounted */
   unmountOnExit?: boolean;
 }

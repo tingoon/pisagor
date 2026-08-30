@@ -8,7 +8,7 @@ import type {
 import { SignaturePad as SignaturePadPrimitive } from "@ark-ui/react/signature-pad";
 import { ArrowCounterClockwiseIcon } from "@phosphor-icons/react";
 import { formControlZoneRecipe } from "@pisagor/recipes/form-control";
-import { type SignaturePadSlots, signaturePadRecipe } from "@pisagor/recipes/signature-pad";
+import { type SignaturePadRecipeSlot, signaturePadRecipe } from "@pisagor/recipes/signature-pad";
 import { cn } from "@pisagor/utils";
 import type { VariantClassNames } from "../../internal/types";
 import { Button } from "../button";
@@ -17,7 +17,7 @@ import { SignaturePadContext, useSignaturePad } from "./signature-pad.context";
 // #region Types
 type FormControlVariant = "primary" | "secondary";
 
-type SignaturePadClassNames = VariantClassNames<SignaturePadSlots>;
+type SignaturePadClassNames = VariantClassNames<SignaturePadRecipeSlot>;
 
 type SignaturePadRootProps = SignaturePadPrimitiveRootProps & {
   /** Visual shell variant. Defaults to `primary`. */

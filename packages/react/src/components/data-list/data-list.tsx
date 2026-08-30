@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import {
-  type DataListItemSlots,
+  type DataListItemRecipeSlot,
   dataListItemRecipe,
   dataListRecipe,
 } from "@pisagor/recipes/data-list";
@@ -9,7 +9,7 @@ import type { VariantClassNames } from "../../internal/types";
 import { DataListItemContext, useDataListItem } from "./data-list.context";
 
 // #region Types
-type DataListClassNames = VariantClassNames<DataListItemSlots>;
+type DataListClassNames = VariantClassNames<DataListItemRecipeSlot>;
 
 interface DataListPresetItem {
   label: ReactNode;

@@ -1,8 +1,8 @@
-import type { FileSlots } from "@pisagor/recipes/file";
+import type { FileRecipe } from "@pisagor/recipes/file";
 import { createContext } from "../../internal/utils";
 
 interface FileContextValue {
-  slots: FileSlots;
+  slots: FileRecipe;
 }
 
 export const { FileContext, useFile } = createContext<FileContextValue>()({

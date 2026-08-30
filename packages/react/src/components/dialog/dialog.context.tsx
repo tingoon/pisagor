@@ -1,4 +1,4 @@
-import type { DialogSlots } from "@pisagor/recipes/dialog";
+import type { DialogRecipe } from "@pisagor/recipes/dialog";
 import { createContext } from "../../internal/utils";
 
 interface DialogContextValue {
@@ -12,7 +12,7 @@ interface DialogContextValue {
    */
   modal?: boolean;
   /** Slot class recipes from `dialogRecipe`. */
-  slots: DialogSlots;
+  slots: DialogRecipe;
 }
 
 export const { DialogContext, useDialog } = createContext<DialogContextValue>()({

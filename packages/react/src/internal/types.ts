@@ -1,1 +1,1 @@
-export type VariantClassNames<S> = Partial<Record<Exclude<keyof S & string, "base">, string>>;
+export type VariantClassNames<S extends string> = Partial<Record<Exclude<S, "base">, string>>;

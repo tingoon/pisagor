@@ -1,8 +1,8 @@
-import type { CardSlots } from "@pisagor/recipes/card";
+import type { CardRecipe } from "@pisagor/recipes/card";
 import { createContext } from "../../internal/utils";
 
 interface CardContextValue {
-  slots: CardSlots;
+  slots: CardRecipe;
 }
 
 export const { CardContext, useCard } = createContext<CardContextValue>()({

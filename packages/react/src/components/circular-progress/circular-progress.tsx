@@ -6,7 +6,7 @@ import {
   useProgressContext,
 } from "@ark-ui/react/progress";
 import {
-  type CircularProgressSlots,
+  type CircularProgressRecipeSlot,
   circularProgressRecipe,
 } from "@pisagor/recipes/circular-progress";
 import type { ComponentProps, ReactNode } from "react";
@@ -21,7 +21,7 @@ type CircularProgressTrackProps = ComponentProps<typeof ark.svg>;
 
 type CircularProgressValueProps = ProgressValueTextProps;
 
-type CircularProgressClassNames = VariantClassNames<CircularProgressSlots>;
+type CircularProgressClassNames = VariantClassNames<CircularProgressRecipeSlot>;
 
 type CircularProgressRootProps = ProgressRootProps;
 

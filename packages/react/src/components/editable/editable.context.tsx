@@ -1,8 +1,8 @@
-import type { EditableSlots } from "@pisagor/recipes/editable";
+import type { EditableRecipe } from "@pisagor/recipes/editable";
 import { createContext } from "../../internal/utils";
 
 interface EditableContextValue {
-  slots: EditableSlots;
+  slots: EditableRecipe;
 }
 
 export const { EditableContext, useEditable } = createContext<EditableContextValue>()({

@@ -1,15 +1,15 @@
 import type {
-  BottomNavigationItemSlots,
-  BottomNavigationSlots,
+  BottomNavigationItemRecipe,
+  BottomNavigationRecipe,
 } from "@pisagor/recipes/bottom-navigation";
 import { createContext } from "../../internal/utils";
 
 interface BottomNavigationContextValue {
-  slots: BottomNavigationSlots;
+  slots: BottomNavigationRecipe;
 }
 
 interface BottomNavigationItemContextValue {
-  slots: BottomNavigationItemSlots;
+  slots: BottomNavigationItemRecipe;
 }
 
 export const { BottomNavigationContext, useBottomNavigation } =

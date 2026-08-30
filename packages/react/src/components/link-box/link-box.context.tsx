@@ -1,8 +1,8 @@
-import type { LinkBoxSlots } from "@pisagor/recipes/link-box";
+import type { LinkBoxRecipe } from "@pisagor/recipes/link-box";
 import { createContext } from "../../internal/utils";
 
 interface LinkBoxContextValue {
-  slots: LinkBoxSlots;
+  slots: LinkBoxRecipe;
 }
 
 export const { LinkBoxContext, useLinkBox } = createContext<LinkBoxContextValue>()({

@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { type EmptyStateSlots, emptyStateRecipe } from "@pisagor/recipes/empty-state";
+import { type EmptyStateRecipeSlot, emptyStateRecipe } from "@pisagor/recipes/empty-state";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { EmptyStateContext, useEmptyState } from "./empty-state.context";
@@ -13,7 +13,7 @@ type EmptyStateActionsProps = ComponentProps<typeof ark.div>;
 
 type EmptyStateMediaProps = ComponentProps<typeof ark.div>;
 
-type EmptyStateClassNames = VariantClassNames<EmptyStateSlots>;
+type EmptyStateClassNames = VariantClassNames<EmptyStateRecipeSlot>;
 
 type EmptyStateRootProps = Omit<ComponentProps<typeof ark.div>, "title">;
 

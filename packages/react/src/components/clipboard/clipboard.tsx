@@ -8,7 +8,7 @@ import type {
 import { Clipboard as ClipboardPrimitive } from "@ark-ui/react/clipboard";
 import { CheckIcon, ClipboardIcon } from "@phosphor-icons/react";
 import {
-  type ClipboardSlots,
+  type ClipboardRecipeSlot,
   type ClipboardVariantProps,
   clipboardRecipe,
 } from "@pisagor/recipes/clipboard";
@@ -22,7 +22,7 @@ import { ClipboardContext, useClipboard } from "./clipboard.context";
 // #region Types
 type FormControlVariant = "primary" | "secondary";
 
-type ClipboardClassNames = VariantClassNames<ClipboardSlots>;
+type ClipboardClassNames = VariantClassNames<ClipboardRecipeSlot>;
 
 export interface ClipboardProps
   extends Omit<ClipboardRootProps, "children">,

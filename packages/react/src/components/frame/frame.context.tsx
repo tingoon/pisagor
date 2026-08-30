@@ -1,8 +1,8 @@
-import type { FrameSlots } from "@pisagor/recipes/frame";
+import type { FrameRecipe } from "@pisagor/recipes/frame";
 import { createContext } from "../../internal/utils";
 
 interface FrameContextValue {
-  slots: FrameSlots;
+  slots: FrameRecipe;
 }
 
 export const { FrameContext, useFrame } = createContext<FrameContextValue>()({

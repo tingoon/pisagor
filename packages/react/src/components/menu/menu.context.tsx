@@ -1,8 +1,8 @@
-import type { MenuSlots } from "@pisagor/recipes/menu";
+import type { MenuRecipe } from "@pisagor/recipes/menu";
 import { createContext } from "../../internal/utils";
 
 interface MenuContextValue {
-  slots: MenuSlots;
+  slots: MenuRecipe;
 }
 
 export const { MenuContext, useMenu } = createContext<MenuContextValue>()({

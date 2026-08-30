@@ -1,8 +1,8 @@
-import type { StatSlots } from "@pisagor/recipes/stat";
+import type { StatRecipe } from "@pisagor/recipes/stat";
 import { createContext } from "../../internal/utils";
 
 interface StatContextValue {
-  slots: StatSlots;
+  slots: StatRecipe;
 }
 
 export const { StatContext, useStat } = createContext<StatContextValue>()({

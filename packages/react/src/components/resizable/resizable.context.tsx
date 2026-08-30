@@ -1,8 +1,8 @@
-import type { ResizableSlots } from "@pisagor/recipes/resizable";
+import type { ResizableRecipe } from "@pisagor/recipes/resizable";
 import { createContext } from "../../internal/utils";
 
 interface ResizableContextValue {
-  slots: ResizableSlots;
+  slots: ResizableRecipe;
 }
 
 export const { ResizableContext: ResizableSlotsContext, useResizable } =

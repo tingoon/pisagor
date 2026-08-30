@@ -1,5 +1,5 @@
 import type { UseTourReturn } from "@ark-ui/react/tour";
-import type { TourSlots } from "@pisagor/recipes/tour";
+import type { TourRecipe } from "@pisagor/recipes/tour";
 import { createContext } from "../../internal/utils";
 
 export interface TourProviderProps {
@@ -8,7 +8,7 @@ export interface TourProviderProps {
   /** The tour instance */
   tour: UseTourReturn;
   /** Slot class recipes from `tourRecipe`. */
-  slots: TourSlots;
+  slots: TourRecipe;
 }
 
 /** Returns the nearest tour context. */

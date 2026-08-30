@@ -5,7 +5,7 @@ import {
   type RatingGroupRootProps,
 } from "@ark-ui/react/rating-group";
 import { StarIcon } from "@phosphor-icons/react";
-import { type RatingSlots, ratingRecipe } from "@pisagor/recipes/rating";
+import { type RatingRecipeSlot, ratingRecipe } from "@pisagor/recipes/rating";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactElement, ReactNode } from "react";
 import { cloneElement } from "react";
@@ -21,7 +21,7 @@ type RatingItemProps = RatingGroupItemProps;
 
 type RatingIndicatorProps = ComponentProps<"span">;
 
-type RatingClassNames = VariantClassNames<RatingSlots>;
+type RatingClassNames = VariantClassNames<RatingRecipeSlot>;
 
 type RatingRootProps = RatingGroupRootProps & {
   /** Visual shell variant. Defaults to `primary`. */

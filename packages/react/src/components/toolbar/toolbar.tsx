@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { type ToolbarSlots, toolbarRecipe } from "@pisagor/recipes/toolbar";
+import { type ToolbarRecipeSlot, toolbarRecipe } from "@pisagor/recipes/toolbar";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { ToolbarContext, useToolbar } from "./toolbar.context";
@@ -13,7 +13,7 @@ type ToolbarActionsProps = ComponentProps<typeof ark.div>;
 
 type ToolbarHeadingProps = ComponentProps<typeof ark.div>;
 
-type ToolbarClassNames = VariantClassNames<ToolbarSlots>;
+type ToolbarClassNames = VariantClassNames<ToolbarRecipeSlot>;
 
 type ToolbarRootProps = Omit<ComponentProps<typeof ark.div>, "title">;
 

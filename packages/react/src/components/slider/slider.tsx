@@ -9,7 +9,7 @@ import type {
   SliderValueTextProps,
 } from "@ark-ui/react/slider";
 import { Slider as SliderPrimitive } from "@ark-ui/react/slider";
-import { type SliderSlots, sliderRecipe } from "@pisagor/recipes/slider";
+import { type SliderRecipeSlot, sliderRecipe } from "@pisagor/recipes/slider";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { useMemo } from "react";
@@ -22,7 +22,7 @@ type FormControlVariant = "primary" | "secondary";
 
 type SliderValueProps = SliderValueTextProps;
 
-type SliderClassNames = VariantClassNames<SliderSlots>;
+type SliderClassNames = VariantClassNames<SliderRecipeSlot>;
 
 type SliderRootProps = SliderPrimitiveRootProps & {
   /** Visual shell variant. Defaults to `primary`. */

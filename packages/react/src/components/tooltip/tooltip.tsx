@@ -8,7 +8,7 @@ import type {
   TooltipTriggerProps,
 } from "@ark-ui/react/tooltip";
 import { Tooltip as TooltipPrimitive } from "@ark-ui/react/tooltip";
-import { type TooltipSlots, tooltipRecipe } from "@pisagor/recipes/tooltip";
+import { type TooltipRecipeSlot, tooltipRecipe } from "@pisagor/recipes/tooltip";
 import type { ReactElement, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { TooltipContext, useTooltip } from "./tooltip.context";
@@ -20,7 +20,7 @@ export type TooltipTriggerHandleProps = ReturnType<TooltipContextApi["getTrigger
 
 export type TooltipTriggerHandle = (props: TooltipTriggerHandleProps) => ReactElement;
 
-type TooltipClassNames = VariantClassNames<TooltipSlots>;
+type TooltipClassNames = VariantClassNames<TooltipRecipeSlot>;
 
 export interface TooltipProps extends Omit<TooltipRootProps, "children"> {
   /** Trigger element or render function that receives trigger props from the handle API */

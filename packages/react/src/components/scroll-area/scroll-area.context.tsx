@@ -1,8 +1,8 @@
-import type { ScrollAreaSlots } from "@pisagor/recipes/scroll-area";
+import type { ScrollAreaRecipe } from "@pisagor/recipes/scroll-area";
 import { createContext } from "../../internal/utils";
 
 interface ScrollAreaContextValue {
-  slots: ScrollAreaSlots;
+  slots: ScrollAreaRecipe;
 }
 
 export const { ScrollAreaContext, useScrollArea } = createContext<ScrollAreaContextValue>()({

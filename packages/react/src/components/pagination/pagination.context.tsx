@@ -1,8 +1,8 @@
-import type { PaginationSlots } from "@pisagor/recipes/pagination";
+import type { PaginationRecipe } from "@pisagor/recipes/pagination";
 import { createContext } from "../../internal/utils";
 
 interface PaginationContextValue {
-  slots: PaginationSlots;
+  slots: PaginationRecipe;
 }
 
 export const { PaginationContext, usePagination } = createContext<PaginationContextValue>()({

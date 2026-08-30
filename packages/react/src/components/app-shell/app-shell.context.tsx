@@ -1,5 +1,5 @@
 import { useUncontrolled } from "@mantine/hooks";
-import type { AppShellSlots } from "@pisagor/recipes/app-shell";
+import type { AppShellRecipe } from "@pisagor/recipes/app-shell";
 import { type RefObject, useCallback } from "react";
 import { createContext } from "../../internal/utils";
 
@@ -75,7 +75,7 @@ interface AppShellContextValue {
   setRegionVar: (name: AppShellRegionVar, value: string) => void;
   shellRef: RefObject<HTMLDivElement | null>;
   /** Slot class recipes from `appShellRecipe`. */
-  slots: AppShellSlots;
+  slots: AppShellRecipe;
 }
 
 interface UseSideStateOptions {

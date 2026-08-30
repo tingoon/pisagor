@@ -5,7 +5,7 @@ import type {
   ProgressValueTextProps,
 } from "@ark-ui/react/progress";
 import { Progress as ProgressPrimitive } from "@ark-ui/react/progress";
-import { type ProgressSlots, progressRecipe } from "@pisagor/recipes/progress";
+import { type ProgressRecipeSlot, progressRecipe } from "@pisagor/recipes/progress";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { Field } from "../field";
@@ -14,7 +14,7 @@ import { ProgressContext, useProgress } from "./progress.context";
 // #region Types
 type ProgressHeaderProps = ComponentProps<"div">;
 
-type ProgressClassNames = VariantClassNames<ProgressSlots>;
+type ProgressClassNames = VariantClassNames<ProgressRecipeSlot>;
 
 type ProgressRootProps = Omit<ProgressPrimitiveRootProps, "value">;
 

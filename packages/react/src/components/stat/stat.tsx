@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import {
-  type StatSlots,
+  type StatRecipeSlot,
   type StatTrendVariantProps,
   type StatVariantProps,
   statRecipe,
@@ -19,7 +19,7 @@ type StatDescriptionProps = ComponentProps<typeof ark.p>;
 
 type StatTrendProps = ComponentProps<typeof ark.div> & StatTrendVariantProps;
 
-type StatClassNames = VariantClassNames<StatSlots>;
+type StatClassNames = VariantClassNames<StatRecipeSlot>;
 
 type StatRootProps = ComponentProps<typeof ark.div> & StatVariantProps;
 

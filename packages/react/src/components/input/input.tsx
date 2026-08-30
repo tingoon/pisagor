@@ -1,7 +1,7 @@
 import { type FieldInputProps, FieldInput as InputPrimitive } from "@ark-ui/react/field";
 import {
+  type InputRecipeSlot,
   type InputRootVariantProps,
-  type InputSlots,
   inputRecipe,
   inputRootRecipe,
 } from "@pisagor/recipes/input";
@@ -15,7 +15,7 @@ import { InputClearAddon } from "./input-clear-button";
 // #region Types
 type FormControlVariant = "primary" | "secondary";
 
-type InputClassNames = VariantClassNames<InputSlots>;
+type InputClassNames = VariantClassNames<InputRecipeSlot>;
 
 type InputVariantProps = InputRootVariantProps;
 

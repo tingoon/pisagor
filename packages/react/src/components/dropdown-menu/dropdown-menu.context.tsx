@@ -1,8 +1,8 @@
-import type { DropdownMenuSlots } from "@pisagor/recipes/dropdown-menu";
+import type { DropdownMenuRecipe } from "@pisagor/recipes/dropdown-menu";
 import { createContext } from "../../internal/utils";
 
 interface DropdownMenuContextValue {
-  slots: DropdownMenuSlots;
+  slots: DropdownMenuRecipe;
 }
 
 export const { DropdownMenuContext, useDropdownMenu } = createContext<DropdownMenuContextValue>()({

@@ -1,8 +1,8 @@
-import type { AnnouncementSlots } from "@pisagor/recipes/announcement";
+import type { AnnouncementRecipe } from "@pisagor/recipes/announcement";
 import { createContext } from "../../internal/utils";
 
 interface AnnouncementContextValue {
-  slots: AnnouncementSlots;
+  slots: AnnouncementRecipe;
 }
 
 export const { AnnouncementContext, useAnnouncement } = createContext<AnnouncementContextValue>()({

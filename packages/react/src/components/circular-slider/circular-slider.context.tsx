@@ -1,11 +1,11 @@
-import type { CircularSliderSlots } from "@pisagor/recipes/circular-slider";
+import type { CircularSliderRecipe } from "@pisagor/recipes/circular-slider";
 import { createContext } from "../../internal/utils";
 
 export interface CircularSliderContextValue {
   ringCircumference: number;
   ringRadius: number;
   size: number;
-  slots: CircularSliderSlots;
+  slots: CircularSliderRecipe;
   thickness: number;
   thumbSize: number;
 }
