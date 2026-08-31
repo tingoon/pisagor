@@ -16,13 +16,13 @@
     },
     "ghcr.io/devcontainers/features/github-cli:1": {}
   },
-  "forwardPorts": [3001, 3002],
+  "forwardPorts": [4001, 4002],
   "portsAttributes": {
-    "3001": {
+    "4001": {
       "label": "react",
       "onAutoForward": "notify"
     },
-    "3002": {
+    "4002": {
       "label": "vue",
       "onAutoForward": "notify"
     }

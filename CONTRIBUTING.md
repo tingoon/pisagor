@@ -12,7 +12,7 @@ turbo dev --filter=react-storybook
 # optional: turbo dev --filter=vue-storybook
 ```
 
-React Storybook: http://127.0.0.1:3001. Vue: http://127.0.0.1:3002.
+React Storybook: http://127.0.0.1:4001. Vue: http://127.0.0.1:4002.
 
 Without a container, install [Bun](https://bun.sh) locally and run the same commands.
 

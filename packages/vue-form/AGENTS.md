@@ -9,7 +9,7 @@ turbo type-check --filter=@pisagor/vue-form
 turbo dev --filter=vue-storybook
 ```
 
-Field stories run in Vue Storybook (`http://127.0.0.1:3002`) under `Forms/Fields/…`. The TanStack integration demo is `Forms/TanStack Form`.
+Field stories run in Vue Storybook (`http://127.0.0.1:4002`) under `Forms/Fields/…`. The TanStack integration demo is `Forms/TanStack Form`.
 
 ## Layout
 

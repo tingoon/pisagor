@@ -12,8 +12,8 @@ Instruction priority: [Core Boundaries](./.cursor/rules/core.mdc).
 
 ```text
 ├── apps/
-│   ├── react/                React Storybook (port 3001)
-│   └── vue/                  Vue Storybook (port 3002)
+│   ├── react/                React Storybook (port 4001)
+│   └── vue/                  Vue Storybook (port 4002)
 ├── packages/
 │   ├── react/                  React UI (`@pisagor/react`)
 │   ├── react-charts/           React charts (`@pisagor/react-charts`)
@@ -60,4 +60,4 @@ turbo dev --filter=react-storybook
 turbo dev --filter=vue-storybook
 ```
 
-React Storybook: `http://127.0.0.1:3001`. Vue Storybook: `http://127.0.0.1:3002`.
+React Storybook: `http://127.0.0.1:4001`. Vue Storybook: `http://127.0.0.1:4002`.

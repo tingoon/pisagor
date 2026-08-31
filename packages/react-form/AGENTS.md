@@ -9,7 +9,7 @@ turbo type-check --filter=@pisagor/react-form
 turbo dev --filter=react-storybook
 ```
 
-Field stories run in React Storybook (`http://127.0.0.1:3001`) under `Forms/Fields/…`. The TanStack integration demo is `Forms/TanStack Form`.
+Field stories run in React Storybook (`http://127.0.0.1:4001`) under `Forms/Fields/…`. The TanStack integration demo is `Forms/TanStack Form`.
 
 ## Layout
 

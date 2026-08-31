@@ -25,7 +25,7 @@
   "private": true,
   "scripts": {
     "build": "storybook build",
-    "dev": "storybook dev -p 3002",
+    "dev": "storybook dev -p 4002",
     "type-check": "tsc"
   },
   "type": "module",

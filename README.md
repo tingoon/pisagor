@@ -57,8 +57,8 @@ turbo dev --filter=react-storybook
 # optional: turbo dev --filter=vue-storybook
 ```
 
-React Storybook: [http://127.0.0.1:3001](http://127.0.0.1:3001).  
-Vue Storybook: [http://127.0.0.1:3002](http://127.0.0.1:3002).
+React Storybook: [http://127.0.0.1:4001](http://127.0.0.1:4001).
+Vue Storybook: [http://127.0.0.1:4002](http://127.0.0.1:4002).
 
 Optional: [Docker](https://www.docker.com) + VS Code [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) — **Open in Container**, then `/onboarding`.
 

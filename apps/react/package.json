@@ -30,7 +30,7 @@
   "private": true,
   "scripts": {
     "build": "storybook build",
-    "dev": "storybook dev -p 3001",
+    "dev": "storybook dev -p 4001",
     "type-check": "tsc"
   },
   "type": "module",
