@@ -77,7 +77,7 @@
     },
     "packages/react": {
       "name": "@pisagor/react",
-      "version": "0.0.1",
+      "version": "0.1.0",
       "dependencies": {
         "@ark-ui/react": "^5.39.1",
         "@mantine/hooks": "^9.5.2",
@@ -109,7 +109,7 @@
     },
     "packages/react-charts": {
       "name": "@pisagor/react-charts",
-      "version": "0.0.1",
+      "version": "0.1.0",
       "dependencies": {
         "@pisagor/react": "workspace:*",
         "@pisagor/recipes": "workspace:*",
@@ -131,7 +131,7 @@
     },
     "packages/react-form": {
       "name": "@pisagor/react-form",
-      "version": "0.0.1",
+      "version": "0.1.0",
       "dependencies": {
         "@pisagor/react": "workspace:*",
         "@tanstack/react-form": "^1.33.5",
@@ -152,7 +152,7 @@
     },
     "packages/recipes": {
       "name": "@pisagor/recipes",
-      "version": "0.0.1",
+      "version": "0.1.0",
       "dependencies": {
         "tailwind-variants": "^3.3.1",
       },
@@ -162,7 +162,7 @@
     },
     "packages/tokens": {
       "name": "@pisagor/tokens",
-      "version": "0.0.1",
+      "version": "0.1.0",
       "peerDependencies": {
         "tailwindcss": "^4",
       },
@@ -176,7 +176,7 @@
     },
     "packages/utils": {
       "name": "@pisagor/utils",
-      "version": "0.0.1",
+      "version": "0.1.0",
       "dependencies": {
         "clsx": "^2.1.1",
         "tailwind-merge": "^3.6.0",
@@ -187,7 +187,7 @@
     },
     "packages/vue": {
       "name": "@pisagor/vue",
-      "version": "0.0.1",
+      "version": "0.1.0",
       "dependencies": {
         "@ark-ui/vue": "^5.39.1",
         "@phosphor-icons/vue": "^2.2.1",
@@ -213,7 +213,7 @@
     },
     "packages/vue-charts": {
       "name": "@pisagor/vue-charts",
-      "version": "0.0.1",
+      "version": "0.1.0",
       "dependencies": {
         "@pisagor/recipes": "workspace:*",
         "@pisagor/utils": "workspace:*",
@@ -229,7 +229,7 @@
     },
     "packages/vue-form": {
       "name": "@pisagor/vue-form",
-      "version": "0.0.1",
+      "version": "0.1.0",
       "dependencies": {
         "@pisagor/vue": "workspace:*",
         "@tanstack/vue-form": "^1.33.5",
