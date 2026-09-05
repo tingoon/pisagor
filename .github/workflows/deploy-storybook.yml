@@ -1,0 +1,69 @@
+name: Deploy Storybook
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages-storybook
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.0
+      - run: bun install --frozen-lockfile
+      - name: Build React Storybook
+        run: bun turbo build --filter=react-storybook
+        env:
+          STORYBOOK_BASE_PATH: /${{ github.event.repository.name }}/react/
+      - name: Build Vue Storybook
+        run: bun turbo build --filter=vue-storybook
+        env:
+          STORYBOOK_BASE_PATH: /${{ github.event.repository.name }}/vue/
+      - name: Assemble site
+        run: |
+          mkdir -p site/react site/vue
+          cp -R apps/react/storybook-static/. site/react/
+          cp -R apps/vue/storybook-static/. site/vue/
+          cat > site/index.html <<'EOF'
+          <!DOCTYPE html>
+          <html lang="en">
+            <head>
+              <meta charset="utf-8" />
+              <meta name="viewport" content="width=device-width, initial-scale=1" />
+              <title>Pisagor Storybook</title>
+            </head>
+            <body>
+              <h1>Pisagor</h1>
+              <p>
+                <a href="./react/">React</a>
+                ·
+                <a href="./vue/">Vue</a>
+              </p>
+            </body>
+          </html>
+          EOF
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

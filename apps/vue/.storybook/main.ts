@@ -25,6 +25,12 @@ export default defineMain({
     path.join(workspaceRoot, "packages/vue-charts/src/**/*.stories.ts"),
     path.join(workspaceRoot, "packages/vue-form/src/**/*.stories.ts"),
   ],
+  async viteFinal(config) {
+    const { mergeConfig } = await import("vite");
+    return mergeConfig(config, {
+      base: process.env.STORYBOOK_BASE_PATH ?? "/",
+    });
+  },
 });
 
 function getAbsolutePath(value: string) {
