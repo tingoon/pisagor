@@ -34,6 +34,12 @@ export interface CircularSliderProps
   onValueChange?: (value: number) => void;
   /** Extra props forwarded to the hidden input element */
   hiddenInputProps?: Omit<CircularSliderHiddenInputProps, "className">;
+  /**
+   * Style recipe. Defaults to `circularSliderRecipe` from `@pisagor/recipes/circular-slider`.
+   *
+   * @defaultValue circularSliderRecipe
+   */
+  recipe?: typeof circularSliderRecipe;
 }
 
 export interface CircularSliderControlProps extends AngleSliderControlProps {
@@ -64,10 +70,11 @@ export function CircularSliderRoot({
   markersAtSteps = false,
   thickness = 6,
   onValueChange,
+  recipe = circularSliderRecipe,
   className,
   ...rest
 }: CircularSliderProps) {
-  const slots = circularSliderRecipe();
+  const slots = recipe();
 
   const values = useMemo(
     () => ({

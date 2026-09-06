@@ -40,6 +40,12 @@ export interface SidebarProviderProps extends ComponentProps<"div"> {
    * Each update also persists the expanded/collapsed state in `localStorage` under the `sidebar_state` key.
    */
   onOpenChange?: (open: boolean) => void;
+  /**
+   * Style recipe. Defaults to `sidebarRecipe` from `@pisagor/recipes/sidebar`.
+   *
+   * @defaultValue sidebarRecipe
+   */
+  recipe?: typeof sidebarRecipe;
 }
 
 export interface SidebarProps extends SheetProps {
@@ -74,6 +80,12 @@ export interface SidebarMenuButtonProps extends ButtonProps {
 
 export interface SidebarMenuActionProps extends ComponentProps<typeof ark.button> {
   showOnHover?: boolean;
+  /**
+   * Button style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
+   *
+   * @defaultValue buttonRecipe
+   */
+  buttonRecipe?: typeof buttonRecipe;
 }
 
 export interface SidebarMenuSkeletonProps extends ComponentProps<typeof ark.div> {
@@ -84,6 +96,12 @@ export interface SidebarMenuSubButtonProps
   extends ComponentProps<typeof ark.a>,
     ButtonVariantProps {
   isActive?: boolean;
+  /**
+   * Button style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
+   *
+   * @defaultValue buttonRecipe
+   */
+  buttonRecipe?: typeof buttonRecipe;
 }
 
 export type SidebarRailProps = ComponentProps<typeof ark.button>;
@@ -98,7 +116,14 @@ export type SidebarGroupProps = ComponentProps<typeof ark.div>;
 
 export type SidebarGroupLabelProps = ComponentProps<typeof ark.div>;
 
-export type SidebarGroupActionProps = ComponentProps<typeof ark.button>;
+export interface SidebarGroupActionProps extends ComponentProps<typeof ark.button> {
+  /**
+   * Button style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
+   *
+   * @defaultValue buttonRecipe
+   */
+  buttonRecipe?: typeof buttonRecipe;
+}
 
 export type SidebarGroupContentProps = ComponentProps<typeof ark.div>;
 
@@ -128,6 +153,7 @@ export function SidebarProvider({
   defaultOpen = true,
   open: openProp,
   onOpenChange: setOpenProp,
+  recipe = sidebarRecipe,
   className,
   style,
   ...rest
@@ -167,7 +193,7 @@ export function SidebarProvider({
   });
 
   const state = open ? "expanded" : "collapsed";
-  const slots = sidebarRecipe();
+  const slots = recipe();
 
   const contextValue = useMemo<SidebarContextProps>(
     () => ({
@@ -436,14 +462,18 @@ export function SidebarGroupLabel({ className, ...rest }: SidebarGroupLabelProps
   );
 }
 
-export function SidebarGroupAction({ className, ...rest }: SidebarGroupActionProps) {
+export function SidebarGroupAction({
+  buttonRecipe: buttonRecipeProp = buttonRecipe,
+  className,
+  ...rest
+}: SidebarGroupActionProps) {
   const { slots } = useSidebar();
 
   return (
     <ark.button
       {...rest}
       className={cn(
-        buttonRecipe({
+        buttonRecipeProp({
           clickEffect: false,
           size: "icon-xs",
           variant: "ghost",
@@ -550,6 +580,7 @@ export function SidebarMenuButton({
 
 export function SidebarMenuAction({
   showOnHover = false,
+  buttonRecipe: buttonRecipeProp = buttonRecipe,
   className,
   ...rest
 }: SidebarMenuActionProps) {
@@ -559,7 +590,7 @@ export function SidebarMenuAction({
     <ark.button
       {...rest}
       className={cn(
-        buttonRecipe({
+        buttonRecipeProp({
           clickEffect: false,
           size: "icon-xs",
           variant: "ghost",
@@ -653,6 +684,7 @@ export function SidebarMenuSubItem({ className, ...props }: SidebarMenuSubItemPr
 export function SidebarMenuSubButton({
   size = "md",
   isActive = false,
+  buttonRecipe: buttonRecipeProp = buttonRecipe,
   className,
   ...rest
 }: SidebarMenuSubButtonProps) {
@@ -662,7 +694,7 @@ export function SidebarMenuSubButton({
     <ark.a
       {...rest}
       className={cn(
-        buttonRecipe({ clickEffect: false, size, variant: "ghost" }).base(),
+        buttonRecipeProp({ clickEffect: false, size, variant: "ghost" }).base(),
         slots.menuSubButton(),
         className,
       )}

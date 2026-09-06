@@ -27,6 +27,12 @@ export interface SegmentGroupRootProps
    */
   variant?: SegmentGroupVariant;
   onValueChange?: (value: string | null) => void;
+  /**
+   * Style recipe. Defaults to `segmentGroupRecipe` from `@pisagor/recipes/segment-group`.
+   *
+   * @defaultValue segmentGroupRecipe
+   */
+  recipe?: typeof segmentGroupRecipe;
 }
 
 export interface SegmentGroupProps extends Omit<SegmentGroupRootProps, "children"> {
@@ -45,10 +51,11 @@ export function SegmentGroupRoot({
   variant = "default",
   children,
   onValueChange,
+  recipe = segmentGroupRecipe,
   className,
   ...rest
 }: SegmentGroupRootProps) {
-  const slots = segmentGroupRecipe();
+  const slots = recipe();
 
   return (
     <SegmentGroupContext value={{ slots }}>

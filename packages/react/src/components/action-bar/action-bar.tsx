@@ -25,6 +25,13 @@ interface ActionBarActionItem {
 
 export interface ActionBarProps extends Pick<ActionBarContextValue, "lazyMount" | "unmountOnExit"> {
   /**
+   * Style recipe. Defaults to `actionBarRecipe` from `@pisagor/recipes/action-bar`.
+   *
+   * @defaultValue actionBarRecipe
+   */
+  recipe?: typeof actionBarRecipe;
+
+  /**
    * Whether to close the action bar when the Escape key is pressed.
    *
    * @defaultValue true
@@ -88,6 +95,7 @@ export function ActionBarRoot({
   actions,
   children,
   onOpenChange,
+  recipe = actionBarRecipe,
 }: PropsWithChildren<ActionBarProps>) {
   const [isOpen, setOpen] = useUncontrolled({
     defaultValue: defaultOpen,
@@ -126,10 +134,10 @@ export function ActionBarRoot({
 
   const slots = useMemo(
     () =>
-      actionBarRecipe({
+      recipe({
         placement: positioning.placement,
       }),
-    [positioning.placement],
+    [positioning.placement, recipe],
   );
 
   const context = useMemo(

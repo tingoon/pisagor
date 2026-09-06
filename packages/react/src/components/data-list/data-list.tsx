@@ -23,6 +23,12 @@ export interface DataListRootProps extends ComponentProps<typeof ark.dl> {
    * @defaultValue "horizontal"
    */
   orientation?: "horizontal" | "vertical";
+  /**
+   * Style recipe. Defaults to `dataListRecipe` from `@pisagor/recipes/data-list`.
+   *
+   * @defaultValue dataListRecipe
+   */
+  recipe?: typeof dataListRecipe;
 }
 
 export interface DataListProps extends Omit<DataListRootProps, "children"> {
@@ -31,6 +37,12 @@ export interface DataListProps extends Omit<DataListRootProps, "children"> {
 
 export interface DataListItemProps extends ComponentProps<typeof ark.div> {
   value?: ReactNode;
+  /**
+   * Style recipe. Defaults to `dataListItemRecipe` from `@pisagor/recipes/data-list`.
+   *
+   * @defaultValue dataListItemRecipe
+   */
+  itemRecipe?: typeof dataListItemRecipe;
   /** Slot class names */
   classNames?: DataListClassNames;
 }
@@ -44,13 +56,14 @@ interface DataListItemValueProps extends ComponentProps<typeof ark.dd> {}
 export function DataListRoot({
   orientation = "horizontal",
   children,
+  recipe = dataListRecipe,
   className,
   ...rest
 }: DataListRootProps) {
   return (
     <ark.dl
       {...rest}
-      className={dataListRecipe({ className })}
+      className={recipe({ className })}
       data-orientation={orientation}
       data-part="root"
       data-scope="data-list"
@@ -89,11 +102,12 @@ function DataListItemValue({ className, ...rest }: DataListItemValueProps) {
 export function DataListItem({
   value,
   children,
+  itemRecipe = dataListItemRecipe,
   className,
   classNames,
   ...rest
 }: DataListItemProps) {
-  const slots = dataListItemRecipe();
+  const slots = itemRecipe();
 
   return (
     <DataListItemContext value={{ slots }}>

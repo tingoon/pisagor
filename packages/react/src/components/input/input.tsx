@@ -34,6 +34,18 @@ export interface InputProps
   clearable?: boolean;
   /** Called with the string value when the input changes. */
   onValueChange?: (value: string) => void;
+  /**
+   * Style recipe. Defaults to `inputRecipe` from `@pisagor/recipes/input`.
+   *
+   * @defaultValue inputRecipe
+   */
+  recipe?: typeof inputRecipe;
+  /**
+   * Root style recipe. Defaults to `inputRootRecipe` from `@pisagor/recipes/input`.
+   *
+   * @defaultValue inputRootRecipe
+   */
+  rootRecipe?: typeof inputRootRecipe;
   /** Slot class names */
   classNames?: InputClassNames;
 }
@@ -52,6 +64,8 @@ export function Input({
   ref,
   onChange,
   onValueChange,
+  recipe = inputRecipe,
+  rootRecipe = inputRootRecipe,
   className,
   classNames,
   ...rest
@@ -76,7 +90,7 @@ export function Input({
   const skipClearable = !clearable || type === "file" || type === "password";
   const shellArgs = { variant: resolved.variant };
   const controlProps = { "data-variant": resolved.variant };
-  const slots = inputRecipe();
+  const slots = recipe();
 
   const changeHandler: ChangeEventHandler<HTMLInputElement> | undefined = skipClearable
     ? onChange || onValueChange
@@ -92,7 +106,7 @@ export function Input({
       <InputPrimitive
         {...rest}
         {...controlProps}
-        className={inputRootRecipe({ className, size, ...shellArgs })}
+        className={rootRecipe({ className, size, ...shellArgs })}
         data-size={size}
         defaultValue={defaultValue}
         disabled={disabled}

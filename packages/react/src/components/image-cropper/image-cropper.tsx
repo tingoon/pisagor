@@ -11,7 +11,8 @@ import { imageCropperRecipe } from "@pisagor/recipes/image-cropper";
 import { ImageCropperContext, useImageCropper } from "./image-cropper.context";
 
 // #region Types
-export type ImageCropperRootProps = Omit<ImageCropperPrimitiveRootProps, "src" | "cropShape"> & {
+export interface ImageCropperRootProps
+  extends Omit<ImageCropperPrimitiveRootProps, "src" | "cropShape"> {
   /**
    * Image URL for the auto-rendered cropper layout.
    *
@@ -23,7 +24,13 @@ export type ImageCropperRootProps = Omit<ImageCropperPrimitiveRootProps, "src" |
   alt?: string;
   /** Shape of the crop selection area. */
   cropShape?: "rectangle" | "circle";
-};
+  /**
+   * Style recipe. Defaults to `imageCropperRecipe` from `@pisagor/recipes/image-cropper`.
+   *
+   * @defaultValue imageCropperRecipe
+   */
+  recipe?: typeof imageCropperRecipe;
+}
 
 export interface ImageCropperSelectionProps extends ImageCropperPrimitiveSelectionProps {
   /**
@@ -41,10 +48,11 @@ export function ImageCropperRoot({
   children,
   cropShape,
   src,
+  recipe = imageCropperRecipe,
   className,
   ...rest
 }: ImageCropperRootProps) {
-  const slots = imageCropperRecipe();
+  const slots = recipe();
 
   return (
     <ImageCropperContext value={{ slots }}>

@@ -49,6 +49,12 @@ export interface ResizableEdgeHandleProps extends ComponentProps<"button"> {
   onResizeStart?: () => void;
   /** Called when the width settles after drag or double-click reset. */
   onWidthChange: (width: number) => void;
+  /**
+   * Style recipe. Defaults to `resizableEdgeHandleRecipe` from `@pisagor/recipes/resizable`.
+   *
+   * @defaultValue resizableEdgeHandleRecipe
+   */
+  recipe?: typeof resizableEdgeHandleRecipe;
 }
 
 export interface ResizableResizeTriggerProps extends SplitterResizeTriggerProps {
@@ -60,7 +66,14 @@ export interface ResizableResizeTriggerProps extends SplitterResizeTriggerProps 
   withHandle?: boolean;
 }
 
-export type ResizableRootProps = SplitterRootProps;
+export interface ResizableRootProps extends SplitterRootProps {
+  /**
+   * Style recipe. Defaults to `resizableRecipe` from `@pisagor/recipes/resizable`.
+   *
+   * @defaultValue resizableRecipe
+   */
+  recipe?: typeof resizableRecipe;
+}
 
 export type ResizablePanelProps = SplitterPanelProps;
 
@@ -68,7 +81,14 @@ export type ResizableResizeTriggerIndicatorProps = SplitterResizeTriggerIndicato
 
 export type ResizableContextProps = SplitterContextProps;
 
-export type ResizableRootProviderProps = SplitterRootProviderProps;
+export interface ResizableRootProviderProps extends SplitterRootProviderProps {
+  /**
+   * Style recipe. Defaults to `resizableRecipe` from `@pisagor/recipes/resizable`.
+   *
+   * @defaultValue resizableRecipe
+   */
+  recipe?: typeof resizableRecipe;
+}
 // #endregion
 
 // #region Parts
@@ -82,6 +102,7 @@ export function ResizableEdgeHandle({
   onResizeEnd,
   onResizeStart,
   onWidthChange,
+  recipe = resizableEdgeHandleRecipe,
   className,
   ...rest
 }: ResizableEdgeHandleProps) {
@@ -90,7 +111,7 @@ export function ResizableEdgeHandle({
   const startWidthRef = useRef(width);
   const liveWidthRef = useRef(width);
   const isStart = placement === "start";
-  const edgeHandle = resizableEdgeHandleRecipe({ handlePosition, placement });
+  const edgeHandle = recipe({ handlePosition, placement });
 
   const applyWidth = useCallback(
     (nextWidth: number) => {
@@ -154,8 +175,13 @@ export function ResizableEdgeHandle({
   );
 }
 
-export function ResizableRoot({ children, className, ...rest }: ResizableRootProps) {
-  const slots = resizableRecipe();
+export function ResizableRoot({
+  children,
+  recipe = resizableRecipe,
+  className,
+  ...rest
+}: ResizableRootProps) {
+  const slots = recipe();
 
   return (
     <ResizableSlotsContext value={{ slots }}>
@@ -215,10 +241,11 @@ export function ResizableContext(props: ResizableContextProps) {
 
 export function ResizableRootProvider({
   children,
+  recipe = resizableRecipe,
   className,
   ...rest
 }: ResizableRootProviderProps) {
-  const slots = resizableRecipe();
+  const slots = recipe();
 
   return (
     <ResizableSlotsContext value={{ slots }}>

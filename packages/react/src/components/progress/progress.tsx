@@ -16,7 +16,14 @@ type ProgressHeaderProps = ComponentProps<"div">;
 
 type ProgressClassNames = VariantClassNames<ProgressRecipeSlot>;
 
-type ProgressRootProps = Omit<ProgressPrimitiveRootProps, "value">;
+type ProgressRootProps = Omit<ProgressPrimitiveRootProps, "value"> & {
+  /**
+   * Style recipe. Defaults to `progressRecipe` from `@pisagor/recipes/progress`.
+   *
+   * @defaultValue progressRecipe
+   */
+  recipe?: typeof progressRecipe;
+};
 
 export interface ProgressProps extends Omit<ProgressRootProps, "children"> {
   /**
@@ -51,10 +58,11 @@ export interface ProgressProps extends Omit<ProgressRootProps, "children"> {
 function ProgressRoot({
   orientation = "horizontal",
   children,
+  recipe = progressRecipe,
   className,
   ...rest
 }: ProgressRootProps & { value?: number | null }) {
-  const slots = progressRecipe();
+  const slots = recipe();
 
   return (
     <ProgressContext value={{ slots }}>

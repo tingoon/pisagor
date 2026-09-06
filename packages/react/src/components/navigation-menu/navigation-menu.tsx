@@ -4,7 +4,14 @@ import type { ComponentProps } from "react";
 import { NavigationMenuContext, useNavigationMenu } from "./navigation-menu.context";
 
 // #region Types
-export type NavigationMenuProps = ComponentProps<typeof ark.nav>;
+export interface NavigationMenuProps extends ComponentProps<typeof ark.nav> {
+  /**
+   * Style recipe. Defaults to `navigationMenuRecipe` from `@pisagor/recipes/navigation-menu`.
+   *
+   * @defaultValue navigationMenuRecipe
+   */
+  recipe?: typeof navigationMenuRecipe;
+}
 
 export type NavigationMenuPartProps = ComponentProps<typeof ark.ul>;
 
@@ -17,8 +24,13 @@ export interface NavigationMenuLinkProps extends ComponentProps<typeof ark.a> {
 // #endregion
 
 // #region Parts
-export function NavigationMenuRoot({ children, className, ...rest }: NavigationMenuProps) {
-  const slots = navigationMenuRecipe();
+export function NavigationMenuRoot({
+  children,
+  recipe = navigationMenuRecipe,
+  className,
+  ...rest
+}: NavigationMenuProps) {
+  const slots = recipe();
 
   return (
     <NavigationMenuContext value={{ slots }}>

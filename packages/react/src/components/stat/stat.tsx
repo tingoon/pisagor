@@ -17,11 +17,27 @@ type StatValueProps = ComponentProps<typeof ark.div>;
 
 type StatDescriptionProps = ComponentProps<typeof ark.p>;
 
-type StatTrendProps = ComponentProps<typeof ark.div> & StatTrendVariantProps;
+type StatTrendProps = ComponentProps<typeof ark.div> &
+  StatTrendVariantProps & {
+    /**
+     * Style recipe. Defaults to `statTrendRecipe` from `@pisagor/recipes/stat`.
+     *
+     * @defaultValue statTrendRecipe
+     */
+    recipe?: typeof statTrendRecipe;
+  };
 
 type StatClassNames = VariantClassNames<StatRecipeSlot>;
 
-type StatRootProps = ComponentProps<typeof ark.div> & StatVariantProps;
+type StatRootProps = ComponentProps<typeof ark.div> &
+  StatVariantProps & {
+    /**
+     * Style recipe. Defaults to `statRecipe` from `@pisagor/recipes/stat`.
+     *
+     * @defaultValue statRecipe
+     */
+    recipe?: typeof statRecipe;
+  };
 
 export interface StatProps extends Omit<StatRootProps, "children"> {
   /** Supporting copy below the value. */
@@ -46,8 +62,14 @@ export interface StatProps extends Omit<StatRootProps, "children"> {
 // #endregion
 
 // #region Parts
-export function StatRoot({ variant, children, className, ...rest }: StatRootProps) {
-  const slots = statRecipe();
+export function StatRoot({
+  variant,
+  children,
+  recipe = statRecipe,
+  className,
+  ...rest
+}: StatRootProps) {
+  const slots = recipe();
 
   return (
     <StatContext value={{ slots }}>
@@ -93,11 +115,16 @@ export function StatDescription({ className, ...rest }: StatDescriptionProps) {
   );
 }
 
-export function StatTrend({ trend = "neutral", className, ...rest }: StatTrendProps) {
+export function StatTrend({
+  trend = "neutral",
+  recipe = statTrendRecipe,
+  className,
+  ...rest
+}: StatTrendProps) {
   return (
     <ark.div
       {...rest}
-      className={statTrendRecipe({ className, trend })}
+      className={recipe({ className, trend })}
       data-part="trend"
       data-scope="stat"
       data-trend={trend}

@@ -17,6 +17,12 @@ export interface TableProps extends ComponentProps<typeof ark.table> {
    * @defaultValue true
    */
   isHoverable?: boolean;
+  /**
+   * Style recipe. Defaults to `tableRecipe` from `@pisagor/recipes/table`.
+   *
+   * @defaultValue tableRecipe
+   */
+  recipe?: typeof tableRecipe;
 }
 
 export type TableHeaderProps = ComponentProps<typeof ark.thead>;
@@ -32,10 +38,11 @@ export type TableCaptionProps = ComponentProps<typeof ark.caption>;
 export function TableRoot({
   variant = "plain",
   isHoverable = true,
+  recipe = tableRecipe,
   className,
   ...rest
 }: TableProps) {
-  const slots = tableRecipe();
+  const slots = recipe();
 
   return (
     <TableContext value={{ slots }}>

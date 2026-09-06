@@ -4,7 +4,7 @@ import type {
   DrawerGrabberProps,
   DrawerContentProps as DrawerPrimitiveContentProps,
   DrawerPositionerProps as DrawerPrimitivePositionerProps,
-  DrawerRootProps,
+  DrawerRootProps as DrawerPrimitiveRootProps,
   DrawerTitleProps,
   DrawerTriggerProps,
 } from "@ark-ui/react/drawer";
@@ -17,6 +17,15 @@ import { ScrollArea } from "../scroll-area";
 import { DrawerContext, useDrawer } from "./drawer.context";
 
 // #region Types
+export interface DrawerRootProps extends DrawerPrimitiveRootProps {
+  /**
+   * Style recipe. Defaults to `drawerRecipe` from `@pisagor/recipes/drawer`.
+   *
+   * @defaultValue drawerRecipe
+   */
+  recipe?: typeof drawerRecipe;
+}
+
 export type DrawerPositionerProps = DrawerPrimitivePositionerProps &
   Pick<DrawerVariantProps, "variant">;
 
@@ -46,12 +55,12 @@ export type DrawerFooterProps = ComponentProps<typeof ark.div>;
 // #endregion
 
 // #region Parts
-export function DrawerRoot(props: DrawerRootProps) {
-  const slots = drawerRecipe();
+export function DrawerRoot({ recipe = drawerRecipe, ...rest }: DrawerRootProps) {
+  const slots = recipe();
 
   return (
     <DrawerContext value={{ slots }}>
-      <DrawerPrimitive.Root {...props} />
+      <DrawerPrimitive.Root {...rest} />
     </DrawerContext>
   );
 }

@@ -30,14 +30,28 @@ import { ToastItemContext, useToastItem } from "./toast.context";
 // #region Types
 type ToastItemClassNames = VariantClassNames<ToastItemRecipeSlot>;
 
-export type ToasterRootProps = Omit<ToasterPrimitiveProps, "toaster" | "children">;
+export interface ToasterRootProps extends Omit<ToasterPrimitiveProps, "toaster" | "children"> {
+  /**
+   * Style recipe. Defaults to `toastRecipe` from `@pisagor/recipes/toast`.
+   *
+   * @defaultValue toastRecipe
+   */
+  recipe?: typeof toastRecipe;
+}
 
 export interface ToasterProps extends ToasterRootProps {
   /** Toaster instance */
   toaster?: CreateToasterReturn<ReactNode>;
 }
 
-export type ToastItemRootProps = ToastRootProps;
+export interface ToastItemRootProps extends ToastRootProps {
+  /**
+   * Style recipe. Defaults to `toastItemRecipe` from `@pisagor/recipes/toast`.
+   *
+   * @defaultValue toastItemRecipe
+   */
+  itemRecipe?: typeof toastItemRecipe;
+}
 
 export interface ToastItemProps extends ToastItemRootProps {
   /** Slot class names */
@@ -71,6 +85,7 @@ export const toast = createToaster({
 
 export function ToasterRoot({
   toaster: toasterInstance = toast,
+  recipe = toastRecipe,
   className,
   style,
   ...rest
@@ -79,7 +94,7 @@ export function ToasterRoot({
     <Portal>
       <ToasterPrimitive
         {...rest}
-        className={toastRecipe({ className })}
+        className={recipe({ className })}
         style={{ "--width": "356px", ...style } as CSSProperties}
         toaster={toasterInstance}
       >
@@ -97,8 +112,13 @@ const TOAST_ICONS = {
   warning: <WarningIcon />,
 } as const;
 
-function ToastItemRoot({ children, className, ...rest }: ToastItemRootProps) {
-  const slots = toastItemRecipe();
+function ToastItemRoot({
+  children,
+  itemRecipe = toastItemRecipe,
+  className,
+  ...rest
+}: ToastItemRootProps) {
+  const slots = itemRecipe();
 
   return (
     <ToastItemContext value={{ slots }}>

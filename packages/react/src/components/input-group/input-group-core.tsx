@@ -22,11 +22,34 @@ export interface InputGroupProps
 
 export interface InputGroupAddonProps
   extends ComponentProps<typeof ark.div>,
-    InputGroupAddonVariantProps {}
+    InputGroupAddonVariantProps {
+  /**
+   * Style recipe. Defaults to `inputGroupAddonRecipe` from `@pisagor/recipes/input-group`.
+   *
+   * @defaultValue inputGroupAddonRecipe
+   */
+  recipe?: typeof inputGroupAddonRecipe;
+}
 
-export type InputGroupButtonProps = Omit<ButtonProps, "size"> & InputGroupButtonVariantProps;
+export interface InputGroupButtonProps
+  extends Omit<ButtonProps, "size" | "recipe">,
+    InputGroupButtonVariantProps {
+  /**
+   * Style recipe. Defaults to `inputGroupButtonRecipe` from `@pisagor/recipes/input-group`.
+   *
+   * @defaultValue inputGroupButtonRecipe
+   */
+  recipe?: typeof inputGroupButtonRecipe;
+}
 
-export type InputGroupTextProps = ComponentProps<typeof ark.span>;
+export interface InputGroupTextProps extends ComponentProps<typeof ark.span> {
+  /**
+   * Style recipe. Defaults to `inputGroupTextRecipe` from `@pisagor/recipes/input-group`.
+   *
+   * @defaultValue inputGroupTextRecipe
+   */
+  recipe?: typeof inputGroupTextRecipe;
+}
 // #endregion
 
 // #region Parts
@@ -58,6 +81,7 @@ export function InputGroupRoot({
 
 export function InputGroupAddon({
   align = "inline-start",
+  recipe = inputGroupAddonRecipe,
   className,
   ...rest
 }: InputGroupAddonProps) {
@@ -71,7 +95,7 @@ export function InputGroupAddon({
   return (
     <ark.div
       {...rest}
-      className={inputGroupAddonRecipe({ align, className })}
+      className={recipe({ align, className })}
       data-align={align}
       data-part="addon"
       data-scope="input-group"
@@ -84,13 +108,14 @@ export function InputGroupAddon({
 export function InputGroupButton({
   size = "xs",
   variant = "ghost",
+  recipe = inputGroupButtonRecipe,
   className,
   ...rest
 }: InputGroupButtonProps) {
   return (
     <Button
       {...rest}
-      className={inputGroupButtonRecipe({ className, size })}
+      className={recipe({ className, size })}
       data-part="button"
       data-scope="input-group"
       data-size={size}
@@ -99,11 +124,15 @@ export function InputGroupButton({
   );
 }
 
-export function InputGroupText({ className, ...rest }: InputGroupTextProps) {
+export function InputGroupText({
+  recipe = inputGroupTextRecipe,
+  className,
+  ...rest
+}: InputGroupTextProps) {
   return (
     <ark.span
       {...rest}
-      className={inputGroupTextRecipe({ className })}
+      className={recipe({ className })}
       data-part="text"
       data-scope="input-group"
     />

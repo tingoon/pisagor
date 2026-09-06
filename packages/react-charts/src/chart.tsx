@@ -33,6 +33,7 @@ export interface ChartLegendContentProps {
   className?: string;
 }
 
+// Interface cannot extend: labelFormatter override is incompatible with Partial<TooltipContentProps>.
 export type CustomTooltipProps = Partial<TooltipContentProps<TooltipValueType, NameType>> & {
   className?: string;
   color?: string;
@@ -68,6 +69,12 @@ interface ChartContainerProps extends ComponentProps<"div"> {
   children: ComponentProps<typeof ResponsiveContainer>["children"];
   config: ChartConfig;
   id?: string;
+  /**
+   * Style recipe. Defaults to `chartRecipe` from `@pisagor/recipes/chart`.
+   *
+   * @defaultValue chartRecipe
+   */
+  recipe?: typeof chartRecipe;
 }
 
 interface ChartStyleProps {
@@ -106,10 +113,17 @@ const getPayload = (config: ChartConfig, payload: unknown, key: string) => {
 // #endregion
 
 // #region Parts
-export function ChartContainer({ children, config, id, className, ...rest }: ChartContainerProps) {
+export function ChartContainer({
+  children,
+  config,
+  id,
+  recipe = chartRecipe,
+  className,
+  ...rest
+}: ChartContainerProps) {
   const uniqueId = useId();
   const chartId = `chart-${id || uniqueId.replace(/:/g, "")}`;
-  const slots = chartRecipe();
+  const slots = recipe();
 
   return (
     <ChartContext value={{ config, slots }}>

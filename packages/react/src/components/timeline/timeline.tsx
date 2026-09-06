@@ -8,9 +8,23 @@ import type { ComponentProps, ReactNode } from "react";
 import { TimelineItemContext, useTimelineItem } from "./timeline.context";
 
 // #region Types
-export interface TimelineRootProps extends ComponentProps<typeof ark.ol>, TimelineVariantProps {}
+export interface TimelineRootProps extends ComponentProps<typeof ark.ol>, TimelineVariantProps {
+  /**
+   * Style recipe. Defaults to `timelineRecipe` from `@pisagor/recipes/timeline`.
+   *
+   * @defaultValue timelineRecipe
+   */
+  recipe?: typeof timelineRecipe;
+}
 
-export type TimelineItemProps = ComponentProps<typeof ark.li>;
+export interface TimelineItemProps extends ComponentProps<typeof ark.li> {
+  /**
+   * Style recipe. Defaults to `timelineItemRecipe` from `@pisagor/recipes/timeline`.
+   *
+   * @defaultValue timelineItemRecipe
+   */
+  itemRecipe?: typeof timelineItemRecipe;
+}
 
 export type TimelineIndicatorProps = ComponentProps<typeof ark.div>;
 
@@ -36,11 +50,16 @@ export interface TimelineProps extends Omit<TimelineRootProps, "children"> {
 // #endregion
 
 // #region Parts
-export function TimelineRoot({ orientation = "vertical", className, ...rest }: TimelineRootProps) {
+export function TimelineRoot({
+  orientation = "vertical",
+  recipe = timelineRecipe,
+  className,
+  ...rest
+}: TimelineRootProps) {
   return (
     <ark.ol
       {...rest}
-      className={timelineRecipe({ className, orientation })}
+      className={recipe({ className, orientation })}
       data-orientation={orientation}
       data-part="root"
       data-scope="timeline"
@@ -48,8 +67,13 @@ export function TimelineRoot({ orientation = "vertical", className, ...rest }: T
   );
 }
 
-export function TimelineItem({ children, className, ...rest }: TimelineItemProps) {
-  const slots = timelineItemRecipe();
+export function TimelineItem({
+  children,
+  itemRecipe = timelineItemRecipe,
+  className,
+  ...rest
+}: TimelineItemProps) {
+  const slots = itemRecipe();
 
   return (
     <TimelineItemContext value={{ slots }}>

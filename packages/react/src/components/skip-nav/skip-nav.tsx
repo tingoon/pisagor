@@ -13,6 +13,12 @@ export interface SkipNavLinkProps extends ComponentProps<typeof ark.a> {
    * Must match the `id` on the paired `SkipNavContent`.
    */
   id?: string;
+  /**
+   * Style recipe. Defaults to `skipNavRecipe` from `@pisagor/recipes/skip-nav`.
+   *
+   * @defaultValue skipNavRecipe
+   */
+  recipe?: typeof skipNavRecipe;
 }
 
 export interface SkipNavContentProps extends ComponentProps<typeof ark.div> {
@@ -25,14 +31,26 @@ export interface SkipNavContentProps extends ComponentProps<typeof ark.div> {
    * Must match the `id` passed to the paired `SkipNavLink`.
    */
   id?: string;
+  /**
+   * Style recipe. Defaults to `skipNavRecipe` from `@pisagor/recipes/skip-nav`.
+   *
+   * @defaultValue skipNavRecipe
+   */
+  recipe?: typeof skipNavRecipe;
 }
 // #endregion
 
 // #region Parts
 const SKIP_NAV_ID = "skip-nav-content";
 
-export function SkipNavLink({ children, id = SKIP_NAV_ID, className, ...rest }: SkipNavLinkProps) {
-  const slots = skipNavRecipe();
+export function SkipNavLink({
+  children,
+  id = SKIP_NAV_ID,
+  recipe = skipNavRecipe,
+  className,
+  ...rest
+}: SkipNavLinkProps) {
+  const slots = recipe();
 
   return (
     <ark.a
@@ -47,8 +65,13 @@ export function SkipNavLink({ children, id = SKIP_NAV_ID, className, ...rest }: 
   );
 }
 
-export function SkipNavContent({ id = SKIP_NAV_ID, className, ...rest }: SkipNavContentProps) {
-  const slots = skipNavRecipe();
+export function SkipNavContent({
+  id = SKIP_NAV_ID,
+  recipe = skipNavRecipe,
+  className,
+  ...rest
+}: SkipNavContentProps) {
+  const slots = recipe();
 
   return (
     <ark.div

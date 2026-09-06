@@ -27,6 +27,12 @@ type FileInputRootProps = ComponentProps<typeof ark.div> &
   FileInputVariantProps & {
     /** Disables the control and sets `data-disabled` on the root. */
     disabled?: boolean;
+    /**
+     * Style recipe. Defaults to `fileInputRecipe` from `@pisagor/recipes/file-input`.
+     *
+     * @defaultValue fileInputRecipe
+     */
+    recipe?: typeof fileInputRecipe;
   };
 
 export interface FileInputProps extends NativeFileInputProps, FileInputVariantProps {
@@ -41,6 +47,12 @@ export interface FileInputProps extends NativeFileInputProps, FileInputVariantPr
   onFilesChange?: (files: File[]) => void;
   /** Alias for `onFilesChange`; matches `FileUpload` callback naming. */
   onValueChange?: (files: File[]) => void;
+  /**
+   * Style recipe. Defaults to `fileInputRecipe` from `@pisagor/recipes/file-input`.
+   *
+   * @defaultValue fileInputRecipe
+   */
+  recipe?: typeof fileInputRecipe;
 }
 
 interface FileInputControlProps extends ComponentProps<"input"> {}
@@ -72,6 +84,7 @@ function FileInputRoot({
   variant: variantProp,
   disabled,
   children,
+  recipe = fileInputRecipe,
   className,
   ...rest
 }: FileInputRootProps) {
@@ -81,7 +94,7 @@ function FileInputRoot({
   };
   const shellArgs = { variant: resolved.variant };
   const controlProps = { "data-variant": resolved.variant };
-  const slots = fileInputRecipe();
+  const slots = recipe();
 
   return (
     <FileInputContext value={{ slots }}>
@@ -144,6 +157,7 @@ export function FileInput({
   onChange,
   onFilesChange,
   onValueChange,
+  recipe,
   className,
   ...rest
 }: FileInputProps) {
@@ -176,7 +190,13 @@ export function FileInput({
   };
 
   return (
-    <FileInputRoot className={className} disabled={disabled} size={size} variant={variant}>
+    <FileInputRoot
+      className={className}
+      disabled={disabled}
+      recipe={recipe}
+      size={size}
+      variant={variant}
+    >
       <FileInputControl
         {...rest}
         accept={accept}

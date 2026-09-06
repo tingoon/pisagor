@@ -29,6 +29,7 @@ export type {
 } from "@ark-ui/react/tour";
 
 export type {
+  TourBackdropProps,
   TourContentProps,
   TourProps,
   TourRootProps,

@@ -3,11 +3,11 @@ import type {
   StepsCompletedContentProps,
   StepsContentProps,
   StepsIndicatorProps,
-  StepsItemProps,
   StepsListProps,
   StepsNextTriggerProps,
   StepsPrevTriggerProps,
-  StepsRootProps,
+  StepsItemProps as StepsPrimitiveItemProps,
+  StepsRootProps as StepsPrimitiveRootProps,
   StepsSeparatorProps,
   StepsTriggerProps,
 } from "@ark-ui/react/steps";
@@ -18,14 +18,32 @@ import type { ComponentProps } from "react";
 import { StepsContext, StepsItemContext, useSteps, useStepsItem } from "./steps.context";
 
 // #region Types
+export interface StepsRootProps extends StepsPrimitiveRootProps {
+  /**
+   * Style recipe. Defaults to `stepsRecipe` from `@pisagor/recipes/steps`.
+   *
+   * @defaultValue stepsRecipe
+   */
+  recipe?: typeof stepsRecipe;
+}
+
+export interface StepsItemProps extends StepsPrimitiveItemProps {
+  /**
+   * Style recipe. Defaults to `stepsItemRecipe` from `@pisagor/recipes/steps`.
+   *
+   * @defaultValue stepsItemRecipe
+   */
+  itemRecipe?: typeof stepsItemRecipe;
+}
+
 export type StepsTitleProps = ComponentProps<typeof ark.span>;
 
 export type StepsDescriptionProps = ComponentProps<typeof ark.span>;
 // #endregion
 
 // #region Parts
-export function StepsRoot({ children, className, ...rest }: StepsRootProps) {
-  const slots = stepsRecipe();
+export function StepsRoot({ children, recipe = stepsRecipe, className, ...rest }: StepsRootProps) {
+  const slots = recipe();
 
   return (
     <StepsContext value={{ slots }}>
@@ -42,8 +60,13 @@ export function StepsList({ className, ...rest }: StepsListProps) {
   return <StepsPrimitive.List {...rest} className={slots.list({ className })} />;
 }
 
-export function StepsItem({ children, className, ...rest }: StepsItemProps) {
-  const slots = stepsItemRecipe();
+export function StepsItem({
+  children,
+  itemRecipe = stepsItemRecipe,
+  className,
+  ...rest
+}: StepsItemProps) {
+  const slots = itemRecipe();
 
   return (
     <StepsItemContext value={{ slots }}>

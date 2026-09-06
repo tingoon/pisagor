@@ -12,16 +12,13 @@ const AUTO_VARIANTS = [
   "tertiary",
 ] as const satisfies readonly SurfaceVariant[];
 
-export interface SurfaceProps
-  extends ComponentProps<typeof ark.div>,
-    Omit<SurfaceVariantProps, "variant"> {
+export interface SurfaceProps extends ComponentProps<typeof ark.div>, SurfaceVariantProps {
   /**
-   * Surface elevation level.
+   * Style recipe. Defaults to `surfaceRecipe` from `@pisagor/recipes/surface`.
    *
-   * @remarks
-   * When omitted, nested surfaces auto-increment (`default` → `secondary` → `tertiary`).
+   * @defaultValue surfaceRecipe
    */
-  variant?: SurfaceVariant;
+  recipe?: typeof surfaceRecipe;
 }
 // #endregion
 
@@ -32,6 +29,7 @@ export function Surface({
   variant: variantProp,
   children,
   padding,
+  recipe = surfaceRecipe,
   className,
   ...rest
 }: SurfaceProps) {
@@ -49,7 +47,7 @@ export function Surface({
     <SurfaceContext value={surface}>
       <ark.div
         {...rest}
-        className={surfaceRecipe({
+        className={recipe({
           bordered,
           className,
           padding,

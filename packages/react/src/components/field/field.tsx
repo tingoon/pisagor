@@ -19,7 +19,14 @@ import { Separator } from "../separator";
 import { FieldContext, useField } from "./field.context";
 
 // #region Types
-export type FieldRootProps = FieldPrimitiveRootProps & FieldVariantProps;
+export interface FieldRootProps extends FieldPrimitiveRootProps, FieldVariantProps {
+  /**
+   * Style recipe. Defaults to `fieldRecipe` from `@pisagor/recipes/field`.
+   *
+   * @defaultValue fieldRecipe
+   */
+  recipe?: typeof fieldRecipe;
+}
 
 export type FieldProps = FieldRootProps;
 
@@ -28,13 +35,27 @@ export interface FieldLegendProps extends FieldsetLegendProps {
   variant?: "legend" | "label";
 }
 
-export type FieldSetProps = FieldsetRootProps;
+export interface FieldSetProps extends FieldsetRootProps {
+  /**
+   * Style recipe. Defaults to `fieldRecipe` from `@pisagor/recipes/field`.
+   *
+   * @defaultValue fieldRecipe
+   */
+  recipe?: typeof fieldRecipe;
+}
 
 export type FieldHelperProps = FieldHelperTextProps;
 
 export type FieldErrorProps = FieldErrorTextProps;
 
-export type FieldGroupProps = ComponentProps<typeof ark.div>;
+export interface FieldGroupProps extends ComponentProps<typeof ark.div> {
+  /**
+   * Style recipe. Defaults to `fieldRecipe` from `@pisagor/recipes/field`.
+   *
+   * @defaultValue fieldRecipe
+   */
+  recipe?: typeof fieldRecipe;
+}
 
 export type FieldContentProps = ComponentProps<typeof ark.div>;
 
@@ -52,10 +73,11 @@ export function FieldRoot({
   orientation = "vertical",
   children,
   reverse = false,
+  recipe = fieldRecipe,
   className,
   ...rest
 }: FieldRootProps) {
-  const slots = useMemo(() => fieldRecipe({ orientation, reverse }), [orientation, reverse]);
+  const slots = useMemo(() => recipe({ orientation, reverse }), [orientation, reverse, recipe]);
 
   return (
     <FieldContext value={{ slots }}>
@@ -70,8 +92,8 @@ export function FieldRoot({
   );
 }
 
-export function FieldSet({ children, className, ...rest }: FieldSetProps) {
-  const slots = fieldRecipe();
+export function FieldSet({ children, recipe = fieldRecipe, className, ...rest }: FieldSetProps) {
+  const slots = recipe();
 
   return (
     <FieldContext value={{ slots }}>
@@ -94,8 +116,13 @@ export function FieldLegend({ variant = "legend", className, ...rest }: FieldLeg
   );
 }
 
-export function FieldGroup({ children, className, ...rest }: FieldGroupProps) {
-  const slots = fieldRecipe();
+export function FieldGroup({
+  children,
+  recipe = fieldRecipe,
+  className,
+  ...rest
+}: FieldGroupProps) {
+  const slots = recipe();
 
   return (
     <FieldContext value={{ slots }}>

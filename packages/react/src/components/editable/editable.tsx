@@ -48,6 +48,12 @@ export interface EditableProps extends EditableRootProps {
    * Receives the string value directly, not Ark UI event details.
    */
   onValueChange?: (value: string) => void;
+  /**
+   * Style recipe. Defaults to `editableRecipe` from `@pisagor/recipes/editable`.
+   *
+   * @defaultValue editableRecipe
+   */
+  recipe?: typeof editableRecipe;
 }
 
 export interface EditableInputProps extends Omit<EditablePrimitiveInputProps, "size"> {}
@@ -67,6 +73,12 @@ export interface EditablePreviewProps extends EditablePrimitivePreviewProps {
    * @defaultValue "outline"
    */
   variant?: ButtonProps["variant"];
+  /**
+   * Button style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
+   *
+   * @defaultValue buttonRecipe
+   */
+  buttonRecipe?: typeof buttonRecipe;
 }
 
 // #endregion
@@ -77,6 +89,7 @@ export function EditableRoot({
   defaultValue,
   value,
   onValueChange,
+  recipe = editableRecipe,
   className,
   ...rest
 }: EditableProps) {
@@ -85,7 +98,7 @@ export function EditableRoot({
         onValueChange(details.value)
     : undefined;
 
-  const slots = editableRecipe();
+  const slots = recipe();
 
   return (
     <EditableContext value={{ slots }}>
@@ -115,6 +128,7 @@ export function EditablePreview({
   controlVariant,
   size = "md",
   variant = "outline",
+  buttonRecipe: buttonRecipeProp = buttonRecipe,
   className,
   ...rest
 }: EditablePreviewProps) {
@@ -138,7 +152,7 @@ export function EditablePreview({
       {...rest}
       {...controlProps}
       className={cn(
-        buttonRecipe({ clickEffect: false, size, variant }).base(),
+        buttonRecipeProp({ clickEffect: false, size, variant }).base(),
         previewShellClass,
         slots.preview(),
         previewShellClass ? "dark:hover:bg-transparent" : undefined,

@@ -64,6 +64,18 @@ export interface DatePickerRootProps extends Omit<DatePickerPrimitiveRootProps, 
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
   onValueChange?: (value: DatePickerRootProps["value"]) => void;
+  /**
+   * Style recipe. Defaults to `datePickerRecipe` from `@pisagor/recipes/date-picker`.
+   *
+   * @defaultValue datePickerRecipe
+   */
+  recipe?: typeof datePickerRecipe;
+  /**
+   * Calendar style recipe. Defaults to `calendarRecipe` from `@pisagor/recipes/calendar`.
+   *
+   * @defaultValue calendarRecipe
+   */
+  calendarRecipe?: typeof calendarRecipe;
 }
 
 // #endregion
@@ -74,10 +86,12 @@ export function DatePickerRoot({
   positioning = { placement: "top" },
   children,
   onValueChange,
+  recipe = datePickerRecipe,
+  calendarRecipe: calendarRecipeProp = calendarRecipe,
   ...rest
 }: DatePickerRootProps) {
-  const slots = datePickerRecipe();
-  const calendarSlots = calendarRecipe();
+  const slots = recipe();
+  const calendarSlots = calendarRecipeProp();
 
   return (
     <DatePickerSlotsContext value={{ slots }}>

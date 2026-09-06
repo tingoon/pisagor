@@ -17,7 +17,15 @@ import { ScrollAreaContext, useScrollArea } from "./scroll-area.context";
 // #region Types
 type ScrollAreaClassNames = VariantClassNames<ScrollAreaRecipeSlot>;
 
-type ScrollAreaRootProps = ScrollAreaPrimitiveRootProps & ScrollAreaVariantProps;
+type ScrollAreaRootProps = ScrollAreaPrimitiveRootProps &
+  ScrollAreaVariantProps & {
+    /**
+     * Style recipe. Defaults to `scrollAreaRecipe` from `@pisagor/recipes/scroll-area`.
+     *
+     * @defaultValue scrollAreaRecipe
+     */
+    recipe?: typeof scrollAreaRecipe;
+  };
 
 export interface ScrollAreaProps extends Omit<ScrollAreaRootProps, "children"> {
   children?: React.ReactNode;
@@ -33,8 +41,14 @@ export interface ScrollAreaProps extends Omit<ScrollAreaRootProps, "children"> {
 // #endregion
 
 // #region Parts
-function ScrollAreaRoot({ scrollFade = false, children, className, ...rest }: ScrollAreaRootProps) {
-  const slots = scrollAreaRecipe({ scrollFade });
+function ScrollAreaRoot({
+  scrollFade = false,
+  children,
+  recipe = scrollAreaRecipe,
+  className,
+  ...rest
+}: ScrollAreaRootProps) {
+  const slots = recipe({ scrollFade });
 
   return (
     <ScrollAreaContext value={{ slots }}>

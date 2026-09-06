@@ -23,15 +23,27 @@ export interface TimerItemGroupProps extends ComponentProps<typeof ark.div> {
    * @defaultValue "vertical"
    */
   orientation?: "horizontal" | "vertical";
+  /**
+   * Style recipe. Defaults to `timerItemGroupRecipe` from `@pisagor/recipes/timer`.
+   *
+   * @defaultValue timerItemGroupRecipe
+   */
+  itemGroupRecipe?: typeof timerItemGroupRecipe;
 }
 
 export interface TimerActionProps extends Omit<TimerActionTriggerProps, "action"> {}
 
-export type TimerRootProps = TimerPrimitiveRootProps & {
+export interface TimerRootProps extends TimerPrimitiveRootProps {
   units?: TimerUnit[];
   /** Auto-render Timer.Control with play and reset buttons */
   isControlsVisible?: boolean;
-};
+  /**
+   * Style recipe. Defaults to `timerRecipe` from `@pisagor/recipes/timer`.
+   *
+   * @defaultValue timerRecipe
+   */
+  recipe?: typeof timerRecipe;
+}
 
 export type TimerItemLabelProps = ComponentProps<typeof ark.div>;
 // #endregion
@@ -41,10 +53,11 @@ export function TimerRoot({
   isControlsVisible,
   children,
   units,
+  recipe = timerRecipe,
   className,
   ...rest
 }: TimerRootProps) {
-  const slots = timerRecipe();
+  const slots = recipe();
 
   return (
     <TimerContext value={{ slots }}>
@@ -83,10 +96,11 @@ export function TimerArea({ className, ...rest }: TimerAreaProps) {
 export function TimerItemGroup({
   orientation = "vertical",
   children,
+  itemGroupRecipe = timerItemGroupRecipe,
   className,
   ...rest
 }: TimerItemGroupProps) {
-  const slots = timerItemGroupRecipe();
+  const slots = itemGroupRecipe();
 
   return (
     <TimerItemGroupContext value={{ slots }}>

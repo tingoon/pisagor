@@ -22,6 +22,12 @@ type SignaturePadClassNames = VariantClassNames<SignaturePadRecipeSlot>;
 type SignaturePadRootProps = SignaturePadPrimitiveRootProps & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
+  /**
+   * Style recipe. Defaults to `signaturePadRecipe` from `@pisagor/recipes/signature-pad`.
+   *
+   * @defaultValue signaturePadRecipe
+   */
+  recipe?: typeof signaturePadRecipe;
   /** Marks the control as invalid for styling and assistive tech. */
   invalid?: boolean;
 };
@@ -40,10 +46,11 @@ function SignaturePadRoot({
   variant,
   invalid = false,
   children,
+  recipe = signaturePadRecipe,
   className,
   ...rest
 }: SignaturePadRootProps) {
-  const slots = signaturePadRecipe();
+  const slots = recipe();
 
   return (
     <SignaturePadContext value={{ slots }}>

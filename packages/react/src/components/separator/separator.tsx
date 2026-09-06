@@ -10,16 +10,27 @@ export interface SeparatorProps extends ComponentProps<typeof ark.div> {
    * @defaultValue "horizontal"
    */
   orientation?: "horizontal" | "vertical";
+  /**
+   * Style recipe. Defaults to `separatorRecipe` from `@pisagor/recipes/separator`.
+   *
+   * @defaultValue separatorRecipe
+   */
+  recipe?: typeof separatorRecipe;
 }
 // #endregion
 
 // #region Component
-export function Separator({ orientation = "horizontal", className, ...rest }: SeparatorProps) {
+export function Separator({
+  orientation = "horizontal",
+  recipe = separatorRecipe,
+  className,
+  ...rest
+}: SeparatorProps) {
   return (
     <ark.div
       {...rest}
       aria-orientation={orientation}
-      className={separatorRecipe({ className })}
+      className={recipe({ className })}
       data-orientation={orientation}
       data-part="root"
       data-scope="separator"

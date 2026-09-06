@@ -6,7 +6,14 @@ import { FrameContext, useFrame } from "./frame.context";
 // #region Types
 export type FrameHeaderProps = ComponentProps<typeof ark.header>;
 
-export type FrameRootProps = ComponentProps<typeof ark.div>;
+export interface FrameRootProps extends ComponentProps<typeof ark.div> {
+  /**
+   * Style recipe. Defaults to `frameRecipe` from `@pisagor/recipes/frame`.
+   *
+   * @defaultValue frameRecipe
+   */
+  recipe?: typeof frameRecipe;
+}
 
 export type FramePanelProps = ComponentProps<typeof ark.div>;
 
@@ -18,8 +25,8 @@ export type FrameFooterProps = ComponentProps<typeof ark.footer>;
 // #endregion
 
 // #region Parts
-export function FrameRoot({ children, className, ...rest }: FrameRootProps) {
-  const slots = frameRecipe();
+export function FrameRoot({ children, recipe = frameRecipe, className, ...rest }: FrameRootProps) {
+  const slots = recipe();
 
   return (
     <FrameContext value={{ slots }}>

@@ -53,6 +53,12 @@ export type DataGridProps<TData extends RowData> = {
    * @defaultValue dataGridFeatures
    */
   features?: DataGridFeatures;
+  /**
+   * Style recipe. Defaults to `dataGridRecipe` from `@pisagor/recipes/data-grid`.
+   *
+   * @defaultValue dataGridRecipe
+   */
+  recipe?: typeof dataGridRecipe;
 } & Omit<TableOptions<DataGridFeatures, TData>, "features">;
 
 interface DataGridHeaderProps {
@@ -561,6 +567,7 @@ function DataGridFooter({ className, ...rest }: DataGridFooterProps) {
 
 function DataGridRoot<TData extends RowData>({
   children,
+  recipe = dataGridRecipe,
   className,
   columnResizeMode = "onChange",
   features = dataGridFeatures,
@@ -571,7 +578,7 @@ function DataGridRoot<TData extends RowData>({
     columnResizeMode,
     features,
   });
-  const slots = dataGridRecipe();
+  const slots = recipe();
 
   const contextValue = useMemo(() => ({ slots, table }), [slots, table]);
 

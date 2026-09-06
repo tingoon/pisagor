@@ -16,6 +16,12 @@ export interface SwapProps extends SwapRootProps, SwapVariantProps {
   off?: ReactNode;
   /** Content shown when swapped on. */
   on?: ReactNode;
+  /**
+   * Style recipe. Defaults to `swapRecipe` from `@pisagor/recipes/swap`.
+   *
+   * @defaultValue swapRecipe
+   */
+  recipe?: typeof swapRecipe;
   /** Extra props forwarded to the off indicator element */
   offIndicatorProps?: Omit<SwapOffIndicatorProps, "children" | "type" | "className">;
   /** Extra props forwarded to the on indicator element */
@@ -31,11 +37,12 @@ export function Swap({
   offIndicatorProps,
   on,
   onIndicatorProps,
+  recipe = swapRecipe,
   className,
   ...rest
 }: SwapProps) {
   return (
-    <SwapPrimitive.Root {...rest} className={swapRecipe({ className, variant })}>
+    <SwapPrimitive.Root {...rest} className={recipe({ className, variant })}>
       {on !== undefined && (
         <SwapPrimitive.Indicator {...onIndicatorProps} type="on">
           {on}

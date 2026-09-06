@@ -26,6 +26,12 @@ type RatingClassNames = VariantClassNames<RatingRecipeSlot>;
 type RatingRootProps = RatingGroupRootProps & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
+  /**
+   * Style recipe. Defaults to `ratingRecipe` from `@pisagor/recipes/rating`.
+   *
+   * @defaultValue ratingRecipe
+   */
+  recipe?: typeof ratingRecipe;
 };
 
 export interface RatingProps extends Omit<RatingRootProps, "children" | "onValueChange"> {
@@ -73,6 +79,7 @@ function RatingRoot({
   allowHalf = false,
   count = 5,
   children,
+  recipe = ratingRecipe,
   className,
   ...rest
 }: RatingRootProps) {
@@ -80,7 +87,7 @@ function RatingRoot({
     surfaceVariant: undefined,
     variant: variantProp ?? ("primary" as FormControlVariant),
   };
-  const slots = ratingRecipe();
+  const slots = recipe();
   const surfaceTone = resolved.variant === "secondary" ? "opacity-90" : undefined;
 
   return (

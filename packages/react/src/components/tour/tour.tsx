@@ -47,9 +47,24 @@ export interface TourProps extends TourRootProps {
   onStatusChange?: (details: { status: string }) => void;
   /** Called when the current step changes */
   onStepChange?: (details: { stepId: string | null }) => void;
+  /**
+   * Style recipe. Defaults to `tourRecipe` from `@pisagor/recipes/tour`.
+   *
+   * @defaultValue tourRecipe
+   */
+  recipe?: typeof tourRecipe;
 }
 
 export type TourTriggerProps = ComponentProps<typeof ark.button>;
+
+export interface TourBackdropProps extends DialogBackdropProps {
+  /**
+   * Dialog style recipe. Defaults to `dialogRecipe` from `@pisagor/recipes/dialog`.
+   *
+   * @defaultValue dialogRecipe
+   */
+  dialogRecipe?: typeof dialogRecipe;
+}
 
 export interface TourContentProps extends TourPrimitiveContentProps {
   /**
@@ -63,12 +78,12 @@ export interface TourContentProps extends TourPrimitiveContentProps {
 // #endregion
 
 // #region Parts
-export function TourRoot({ steps = [], ...rest }: TourProps) {
+export function TourRoot({ steps = [], recipe = tourRecipe, ...rest }: TourProps) {
   const [isStarted, setIsStarted] = useState(false);
 
   const tour = useTour({ steps });
 
-  const slots = tourRecipe();
+  const slots = recipe();
 
   useEffect(() => {
     if (isStarted) {
@@ -117,9 +132,13 @@ export function TourActionTrigger(props: TourActionTriggerProps) {
   return <TourPrimitive.ActionTrigger {...props} />;
 }
 
-export function TourBackdrop({ className, ...rest }: DialogBackdropProps) {
+export function TourBackdrop({
+  className,
+  dialogRecipe: dialogRecipeProp = dialogRecipe,
+  ...rest
+}: TourBackdropProps) {
   const { slots } = useTourContext();
-  const dialogSlots = dialogRecipe();
+  const dialogSlots = dialogRecipeProp();
 
   return (
     <TourPrimitive.Backdrop

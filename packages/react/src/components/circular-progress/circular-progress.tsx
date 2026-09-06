@@ -23,7 +23,14 @@ type CircularProgressValueProps = ProgressValueTextProps;
 
 type CircularProgressClassNames = VariantClassNames<CircularProgressRecipeSlot>;
 
-type CircularProgressRootProps = ProgressRootProps;
+type CircularProgressRootProps = ProgressRootProps & {
+  /**
+   * Style recipe. Defaults to `circularProgressRecipe` from `@pisagor/recipes/circular-progress`.
+   *
+   * @defaultValue circularProgressRecipe
+   */
+  recipe?: typeof circularProgressRecipe;
+};
 
 export interface CircularProgressProps extends Omit<CircularProgressRootProps, "children"> {
   /**
@@ -65,8 +72,13 @@ interface CircularProgressTrackPartProps {
 // #endregion
 
 // #region Parts
-function CircularProgressRoot({ children, className, ...rest }: CircularProgressRootProps) {
-  const slots = circularProgressRecipe();
+function CircularProgressRoot({
+  children,
+  recipe = circularProgressRecipe,
+  className,
+  ...rest
+}: CircularProgressRootProps) {
+  const slots = recipe();
 
   return (
     <CircularProgressSlotsContext value={{ slots }}>

@@ -13,7 +13,15 @@ type AlertActionProps = ComponentProps<typeof ark.div>;
 
 type AlertClassNames = VariantClassNames<AlertRecipeSlot>;
 
-type AlertRootProps = Omit<ComponentProps<typeof ark.div>, "title"> & AlertVariantProps;
+type AlertRootProps = Omit<ComponentProps<typeof ark.div>, "title"> &
+  AlertVariantProps & {
+    /**
+     * Style recipe. Defaults to `alertRecipe` from `@pisagor/recipes/alert`.
+     *
+     * @defaultValue alertRecipe
+     */
+    recipe?: typeof alertRecipe;
+  };
 
 export interface AlertProps extends Omit<AlertRootProps, "children"> {
   /** Trailing action area. */
@@ -36,8 +44,14 @@ export interface AlertProps extends Omit<AlertRootProps, "children"> {
 // #endregion
 
 // #region Parts
-export function AlertRoot({ variant, children, className, ...rest }: AlertRootProps) {
-  const slots = alertRecipe({ variant });
+export function AlertRoot({
+  variant,
+  children,
+  recipe = alertRecipe,
+  className,
+  ...rest
+}: AlertRootProps) {
+  const slots = recipe({ variant });
 
   return (
     <AlertContext value={{ slots }}>

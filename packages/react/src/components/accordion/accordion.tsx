@@ -1,7 +1,7 @@
 import type {
   AccordionItemContentProps,
-  AccordionItemProps,
   AccordionItemTriggerProps,
+  AccordionItemProps as AccordionPrimitiveItemProps,
   AccordionRootProps,
 } from "@ark-ui/react/accordion";
 import { Accordion as AccordionPrimitive } from "@ark-ui/react/accordion";
@@ -11,6 +11,15 @@ import type { ReactNode } from "react";
 import { AccordionItemContext, useAccordionItem } from "./accordion.context";
 
 // #region Types
+export interface AccordionItemProps extends AccordionPrimitiveItemProps {
+  /**
+   * Style recipe. Defaults to `accordionItemRecipe` from `@pisagor/recipes/accordion`.
+   *
+   * @defaultValue accordionItemRecipe
+   */
+  itemRecipe?: typeof accordionItemRecipe;
+}
+
 interface AccordionPresetItem {
   value: string;
   title: ReactNode;
@@ -32,8 +41,13 @@ export function AccordionRoot({ collapsible = true, children, ...rest }: Accordi
   );
 }
 
-export function AccordionItem({ children, className, ...rest }: AccordionItemProps) {
-  const slots = accordionItemRecipe();
+export function AccordionItem({
+  children,
+  itemRecipe = accordionItemRecipe,
+  className,
+  ...rest
+}: AccordionItemProps) {
+  const slots = itemRecipe();
 
   return (
     <AccordionItemContext value={{ slots }}>

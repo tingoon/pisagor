@@ -35,6 +35,12 @@ export interface CommandDialogContentProps extends DialogContentProps {
    * @defaultValue "Command Palette"
    */
   title?: string;
+  /**
+   * Style recipe. Defaults to `commandRecipe` from `@pisagor/recipes/command`.
+   *
+   * @defaultValue commandRecipe
+   */
+  recipe?: typeof commandRecipe;
 }
 
 export interface CommandInputProps extends Omit<ComboboxFieldInputProps, "size"> {
@@ -51,8 +57,14 @@ export type CommandListProps = ComboboxListProps;
 export type CommandContentProps = ComboboxContentProps;
 
 export interface CommandProps<T extends CollectionItem = CollectionItem>
-  extends ComboboxRootProps<T> {
+  extends Omit<ComboboxRootProps<T>, "recipe"> {
   className?: string;
+  /**
+   * Style recipe. Defaults to `commandRecipe` from `@pisagor/recipes/command`.
+   *
+   * @defaultValue commandRecipe
+   */
+  recipe?: typeof commandRecipe;
 }
 
 export type CommandSeparatorProps = ComponentProps<"div">;
@@ -72,10 +84,11 @@ export function CommandDialogContent({
   children,
   description = "Search for a command to run...",
   title = "Command Palette",
+  recipe = commandRecipe,
   className,
   ...rest
 }: CommandDialogContentProps) {
-  const slots = commandRecipe();
+  const slots = recipe();
 
   return (
     <CommandContext value={{ slots }}>
@@ -103,10 +116,11 @@ export function CommandDialogContent({
 }
 
 export function CommandRoot<T extends CollectionItem = CollectionItem>({
+  recipe = commandRecipe,
   className,
   ...rest
 }: CommandProps<T>) {
-  const slots = commandRecipe();
+  const slots = recipe();
 
   return (
     <CommandContext value={{ slots }}>

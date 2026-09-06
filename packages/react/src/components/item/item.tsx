@@ -5,7 +5,14 @@ import { ItemContext, useItem } from "./item.context";
 import { useItemGroup } from "./item-group.context";
 
 // #region Types
-export type ItemProps = ComponentProps<typeof ark.div> & ItemVariantProps;
+export interface ItemProps extends ComponentProps<typeof ark.div>, ItemVariantProps {
+  /**
+   * Style recipe. Defaults to `itemRecipe` from `@pisagor/recipes/item`.
+   *
+   * @defaultValue itemRecipe
+   */
+  recipe?: typeof itemRecipe;
+}
 
 export type ItemMediaProps = ComponentProps<typeof ark.div> & ItemVariantProps;
 
@@ -23,10 +30,16 @@ export type ItemFooterProps = ComponentProps<typeof ark.div>;
 // #endregion
 
 // #region Parts
-export function ItemRoot({ variant: variantProp, children, className, ...rest }: ItemProps) {
+export function ItemRoot({
+  variant: variantProp,
+  children,
+  recipe = itemRecipe,
+  className,
+  ...rest
+}: ItemProps) {
   const group = useItemGroup();
   const variant = variantProp ?? group?.variant ?? "default";
-  const slots = itemRecipe();
+  const slots = recipe();
 
   return (
     <ItemContext value={{ slots, variant }}>

@@ -13,24 +13,45 @@ import { cn } from "@pisagor/utils";
 // #region Types
 type FormControlVariant = "primary" | "secondary";
 
-export type CheckboxGroupProps = Omit<CheckboxPrimitiveGroupProps, "onValueChange"> & {
+export interface CheckboxGroupProps extends Omit<CheckboxPrimitiveGroupProps, "onValueChange"> {
   onValueChange?: (value: string[]) => void;
-};
+  /**
+   * Style recipe. Defaults to `checkboxGroupRecipe` from `@pisagor/recipes/checkbox`.
+   *
+   * @defaultValue checkboxGroupRecipe
+   */
+  recipe?: typeof checkboxGroupRecipe;
+}
 
 export interface CheckboxProps extends CheckboxRootProps {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
   onValueChange?: (value: boolean) => void;
+  /**
+   * Style recipe. Defaults to `checkboxRecipe` from `@pisagor/recipes/checkbox`.
+   *
+   * @defaultValue checkboxRecipe
+   */
+  recipe?: typeof checkboxRecipe;
 }
+
+type CheckboxIndicatorPartProps = CheckboxIndicatorProps & {
+  recipe?: typeof checkboxRecipe;
+};
 
 // #endregion
 
 // #region Parts
-export function CheckboxGroup({ onValueChange, className, ...rest }: CheckboxGroupProps) {
+export function CheckboxGroup({
+  onValueChange,
+  recipe = checkboxGroupRecipe,
+  className,
+  ...rest
+}: CheckboxGroupProps) {
   return (
     <CheckboxPrimitive.Group
       {...rest}
-      className={checkboxGroupRecipe({ className })}
+      className={recipe({ className })}
       onValueChange={onValueChange}
     />
   );
@@ -41,6 +62,7 @@ export function CheckboxRoot({
   tabIndex,
   onCheckedChange,
   onValueChange,
+  recipe = checkboxRecipe,
   className,
   ...rest
 }: CheckboxProps) {
@@ -50,7 +72,7 @@ export function CheckboxRoot({
   };
   const shellArgs = { variant: resolved.variant };
   const controlProps = { "data-variant": resolved.variant };
-  const slots = checkboxRecipe();
+  const slots = recipe();
 
   const handleCheckedChange =
     onCheckedChange || onValueChange
@@ -72,11 +94,11 @@ export function CheckboxRoot({
       role="checkbox"
     >
       <CheckboxPrimitive.Control>
-        <CheckboxIndicator>
+        <CheckboxIndicator recipe={recipe}>
           <CheckIcon />
         </CheckboxIndicator>
 
-        <CheckboxIndicator indeterminate>
+        <CheckboxIndicator indeterminate recipe={recipe}>
           <MinusIcon />
         </CheckboxIndicator>
       </CheckboxPrimitive.Control>
@@ -86,8 +108,12 @@ export function CheckboxRoot({
   );
 }
 
-function CheckboxIndicator({ className, ...rest }: CheckboxIndicatorProps) {
-  const slots = checkboxRecipe();
+function CheckboxIndicator({
+  className,
+  recipe = checkboxRecipe,
+  ...rest
+}: CheckboxIndicatorPartProps) {
+  const slots = recipe();
 
   return <CheckboxPrimitive.Indicator {...rest} className={slots.indicator({ className })} />;
 }

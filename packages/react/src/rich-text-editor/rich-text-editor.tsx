@@ -60,6 +60,12 @@ export interface RichTextEditorRootProps
    */
   "aria-label"?: string;
   children?: ReactNode;
+  /**
+   * Style recipe. Defaults to `richTextEditorRecipe` from `@pisagor/recipes/rich-text-editor`.
+   *
+   * @defaultValue richTextEditorRecipe
+   */
+  recipe?: typeof richTextEditorRecipe;
 }
 
 export type RichTextEditorToolbarProps = ComponentProps<typeof ark.div>;
@@ -81,6 +87,7 @@ export function RichTextEditorRoot({
   id,
   onBlur,
   onValueChange,
+  recipe = richTextEditorRecipe,
   className,
   ...rest
 }: RichTextEditorRootProps) {
@@ -91,7 +98,7 @@ export function RichTextEditorRoot({
   const shellArgs = { variant: resolved.variant };
   const controlProps = { "data-variant": resolved.variant };
   const resolvedAriaLabel = ariaLabel ?? (id ? undefined : "Rich text editor");
-  const slots = richTextEditorRecipe();
+  const slots = recipe();
 
   const editor = useEditor({
     content: value ?? defaultValue ?? "<p></p>",

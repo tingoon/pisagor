@@ -1,7 +1,7 @@
 import type {
   TabContentProps,
   TabListProps,
-  TabsRootProps,
+  TabsRootProps as TabsPrimitiveRootProps,
   TabTriggerProps,
 } from "@ark-ui/react/tabs";
 import { Tabs as TabsPrimitive } from "@ark-ui/react/tabs";
@@ -10,6 +10,15 @@ import type { ReactNode } from "react";
 import { TabsContext, useTabs } from "./tabs.context";
 
 // #region Types
+export interface TabsRootProps extends TabsPrimitiveRootProps {
+  /**
+   * Style recipe. Defaults to `tabsRecipe` from `@pisagor/recipes/tabs`.
+   *
+   * @defaultValue tabsRecipe
+   */
+  recipe?: typeof tabsRecipe;
+}
+
 interface TabsPresetItem {
   value: string;
   label: ReactNode;
@@ -31,8 +40,8 @@ export interface TabsProps
 // #endregion
 
 // #region Parts
-export function TabsRoot({ children, className, ...rest }: TabsRootProps) {
-  const slots = tabsRecipe();
+export function TabsRoot({ children, recipe = tabsRecipe, className, ...rest }: TabsRootProps) {
+  const slots = recipe();
 
   return (
     <TabsContext value={{ slots }}>

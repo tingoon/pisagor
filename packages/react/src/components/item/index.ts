@@ -20,7 +20,7 @@ export type {
   ItemProps,
   ItemTitleProps,
 } from "./item";
-export type { ItemGroupProps } from "./item-group";
+export type { ItemGroupProps, ItemSeparatorProps } from "./item-group";
 
 export const Item = Object.assign(ItemRoot, {
   Actions: ItemActions,

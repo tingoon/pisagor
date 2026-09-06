@@ -5,7 +5,14 @@ import { Avatar } from "./avatar";
 import { AvatarGroupContext, useAvatarGroup } from "./avatar-group.context";
 
 // #region Types
-export type AvatarGroupRootProps = ComponentProps<typeof ark.div>;
+export interface AvatarGroupRootProps extends ComponentProps<typeof ark.div> {
+  /**
+   * Style recipe. Defaults to `avatarGroupRecipe` from `@pisagor/recipes/avatar`.
+   *
+   * @defaultValue avatarGroupRecipe
+   */
+  recipe?: typeof avatarGroupRecipe;
+}
 
 export interface AvatarGroupProps extends Omit<AvatarGroupRootProps, "children"> {
   /** Maximum number of avatars to show; excess shown as "+N". */
@@ -18,8 +25,13 @@ export type AvatarGroupCountProps = ComponentProps<typeof ark.div>;
 // #endregion
 
 // #region Parts
-export function AvatarGroupRoot({ children, className, ...rest }: AvatarGroupRootProps) {
-  const slots = avatarGroupRecipe();
+export function AvatarGroupRoot({
+  children,
+  recipe = avatarGroupRecipe,
+  className,
+  ...rest
+}: AvatarGroupRootProps) {
+  const slots = recipe();
 
   return (
     <AvatarGroupContext value={{ slots }}>

@@ -3,32 +3,39 @@ import { type KbdVariantProps, kbdGroupRecipe, kbdRecipe } from "@pisagor/recipe
 import type { ComponentProps } from "react";
 
 // #region Types
-export type KbdProps = ComponentProps<typeof ark.kbd> & KbdVariantProps;
+export interface KbdProps extends ComponentProps<typeof ark.kbd>, KbdVariantProps {
+  /**
+   * Style recipe. Defaults to `kbdRecipe` from `@pisagor/recipes/kbd`.
+   *
+   * @defaultValue kbdRecipe
+   */
+  recipe?: typeof kbdRecipe;
+}
 
-export type KbdGroupProps = ComponentProps<typeof ark.div>;
+export interface KbdGroupProps extends ComponentProps<typeof ark.div> {
+  /**
+   * Style recipe. Defaults to `kbdGroupRecipe` from `@pisagor/recipes/kbd`.
+   *
+   * @defaultValue kbdGroupRecipe
+   */
+  recipe?: typeof kbdGroupRecipe;
+}
 // #endregion
 
 // #region Parts
-export function KbdRoot({ variant = "default", className, ...rest }: KbdProps) {
+export function KbdRoot({ variant = "default", recipe = kbdRecipe, className, ...rest }: KbdProps) {
   return (
     <ark.kbd
       {...rest}
-      className={kbdRecipe({ className, variant })}
+      className={recipe({ className, variant })}
       data-part="root"
       data-scope="kbd"
     />
   );
 }
 
-export function KbdGroup({ className, ...rest }: KbdGroupProps) {
-  return (
-    <ark.div
-      {...rest}
-      className={kbdGroupRecipe({ className })}
-      data-part="group"
-      data-scope="kbd"
-    />
-  );
+export function KbdGroup({ recipe = kbdGroupRecipe, className, ...rest }: KbdGroupProps) {
+  return <ark.div {...rest} className={recipe({ className })} data-part="group" data-scope="kbd" />;
 }
 // #endregion
 

@@ -4,7 +4,14 @@ import type { ComponentProps } from "react";
 import { NavbarContext, useNavbar } from "./navbar.context";
 
 // #region Types
-export type NavbarRootProps = ComponentProps<typeof ark.header>;
+export interface NavbarRootProps extends ComponentProps<typeof ark.header> {
+  /**
+   * Style recipe. Defaults to `navbarRecipe` from `@pisagor/recipes/navbar`.
+   *
+   * @defaultValue navbarRecipe
+   */
+  recipe?: typeof navbarRecipe;
+}
 
 export type NavbarPartProps = ComponentProps<typeof ark.div>;
 
@@ -12,8 +19,13 @@ export type NavbarNavProps = ComponentProps<typeof ark.nav>;
 // #endregion
 
 // #region Parts
-export function NavbarRoot({ children, className, ...rest }: NavbarRootProps) {
-  const slots = navbarRecipe();
+export function NavbarRoot({
+  children,
+  recipe = navbarRecipe,
+  className,
+  ...rest
+}: NavbarRootProps) {
+  const slots = recipe();
 
   return (
     <NavbarContext value={{ slots }}>

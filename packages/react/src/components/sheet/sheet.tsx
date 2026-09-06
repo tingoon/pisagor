@@ -34,7 +34,14 @@ export interface SheetContentProps extends DialogContentProps, SheetVariantProps
   showCloseButton?: boolean;
 }
 
-export type SheetProps = DialogRootProps;
+export interface SheetProps extends DialogRootProps {
+  /**
+   * Style recipe. Defaults to `sheetRecipe` from `@pisagor/recipes/sheet`.
+   *
+   * @defaultValue sheetRecipe
+   */
+  recipe?: typeof sheetRecipe;
+}
 
 export type SheetTriggerProps = DialogTriggerProps;
 
@@ -42,12 +49,12 @@ export type SheetCloseTriggerProps = DialogCloseTriggerProps;
 // #endregion
 
 // #region Parts
-export function SheetRoot(props: SheetProps) {
-  const slots = sheetRecipe();
+export function SheetRoot({ recipe = sheetRecipe, ...rest }: SheetProps) {
+  const slots = recipe();
 
   return (
     <SheetContext value={{ slots }}>
-      <Dialog.Root {...props} />
+      <Dialog.Root {...rest} />
     </SheetContext>
   );
 }

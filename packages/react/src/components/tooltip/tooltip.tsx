@@ -4,7 +4,7 @@ import type {
   TooltipContentProps,
   TooltipContextProps,
   TooltipPositionerProps,
-  TooltipRootProps,
+  TooltipRootProps as TooltipPrimitiveRootProps,
   TooltipTriggerProps,
 } from "@ark-ui/react/tooltip";
 import { Tooltip as TooltipPrimitive } from "@ark-ui/react/tooltip";
@@ -14,6 +14,15 @@ import type { VariantClassNames } from "../../internal/types";
 import { TooltipContext, useTooltip } from "./tooltip.context";
 
 // #region Types
+export interface TooltipRootProps extends TooltipPrimitiveRootProps {
+  /**
+   * Style recipe. Defaults to `tooltipRecipe` from `@pisagor/recipes/tooltip`.
+   *
+   * @defaultValue tooltipRecipe
+   */
+  recipe?: typeof tooltipRecipe;
+}
+
 type TooltipContextApi = Parameters<TooltipContextProps["children"]>[0];
 
 export type TooltipTriggerHandleProps = ReturnType<TooltipContextApi["getTriggerProps"]>;
@@ -46,9 +55,10 @@ function TooltipRoot({
   openDelay = 400,
   positioning = { placement: "top" },
   children,
+  recipe = tooltipRecipe,
   ...rest
 }: TooltipRootProps) {
-  const slots = tooltipRecipe();
+  const slots = recipe();
 
   return (
     <TooltipContext value={{ slots }}>

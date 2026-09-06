@@ -1,3 +1,2 @@
-export type { HighlightProps } from "@ark-ui/react/highlight";
-
-export * from "./highlight";
+export type { HighlightProps } from "./highlight";
+export { Highlight } from "./highlight";

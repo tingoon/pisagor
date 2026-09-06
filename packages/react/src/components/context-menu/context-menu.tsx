@@ -14,7 +14,14 @@ import { DropdownMenu } from "../dropdown-menu";
 // #region Types
 export type ContextMenuRootProps = DropdownMenuRootProps;
 
-export type ContextMenuContextTriggerProps = MenuContextTriggerProps;
+export interface ContextMenuContextTriggerProps extends MenuContextTriggerProps {
+  /**
+   * Style recipe. Defaults to `contextMenuRecipe` from `@pisagor/recipes/context-menu`.
+   *
+   * @defaultValue contextMenuRecipe
+   */
+  recipe?: typeof contextMenuRecipe;
+}
 // #endregion
 
 // #region Parts
@@ -22,8 +29,12 @@ export function ContextMenuRoot({ ...rest }: ContextMenuRootProps) {
   return <DropdownMenu {...rest} />;
 }
 
-export function ContextMenuContextTrigger({ className, ...rest }: ContextMenuContextTriggerProps) {
-  return <MenuPrimitive.ContextTrigger {...rest} className={contextMenuRecipe({ className })} />;
+export function ContextMenuContextTrigger({
+  recipe = contextMenuRecipe,
+  className,
+  ...rest
+}: ContextMenuContextTriggerProps) {
+  return <MenuPrimitive.ContextTrigger {...rest} className={recipe({ className })} />;
 }
 
 export function ContextMenuContent(props: DropdownMenuContentProps) {

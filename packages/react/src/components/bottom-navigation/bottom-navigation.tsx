@@ -18,13 +18,27 @@ import {
 } from "./bottom-navigation.context";
 
 // #region Types
-export type BottomNavigationRootProps = TabsRootProps;
+export interface BottomNavigationRootProps extends TabsRootProps {
+  /**
+   * Style recipe. Defaults to `bottomNavigationRecipe` from `@pisagor/recipes/bottom-navigation`.
+   *
+   * @defaultValue bottomNavigationRecipe
+   */
+  recipe?: typeof bottomNavigationRecipe;
+}
 
 export type BottomNavigationProps = BottomNavigationRootProps;
 
 export type BottomNavigationListProps = TabListProps;
 
-export type BottomNavigationItemProps = TabTriggerProps;
+export interface BottomNavigationItemProps extends TabTriggerProps {
+  /**
+   * Style recipe. Defaults to `bottomNavigationItemRecipe` from `@pisagor/recipes/bottom-navigation`.
+   *
+   * @defaultValue bottomNavigationItemRecipe
+   */
+  itemRecipe?: typeof bottomNavigationItemRecipe;
+}
 
 export type BottomNavigationItemIconProps = ComponentProps<typeof ark.span>;
 
@@ -32,8 +46,12 @@ export type BottomNavigationItemLabelProps = ComponentProps<typeof ark.span>;
 // #endregion
 
 // #region Parts
-export function BottomNavigationRoot({ className, ...rest }: BottomNavigationRootProps) {
-  const slots = bottomNavigationRecipe();
+export function BottomNavigationRoot({
+  recipe = bottomNavigationRecipe,
+  className,
+  ...rest
+}: BottomNavigationRootProps) {
+  const slots = recipe();
 
   return (
     <BottomNavigationContext value={{ slots }}>
@@ -48,8 +66,13 @@ export function BottomNavigationList({ className, ...rest }: BottomNavigationLis
   return <TabsPrimitive.List {...rest} className={slots.list({ className })} />;
 }
 
-export function BottomNavigationItem({ children, className, ...rest }: BottomNavigationItemProps) {
-  const slots = bottomNavigationItemRecipe();
+export function BottomNavigationItem({
+  children,
+  itemRecipe = bottomNavigationItemRecipe,
+  className,
+  ...rest
+}: BottomNavigationItemProps) {
+  const slots = itemRecipe();
 
   return (
     <BottomNavigationItemContext value={{ slots }}>

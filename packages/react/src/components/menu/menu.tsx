@@ -5,13 +5,27 @@ import type { ComponentProps } from "react";
 import { MenuContext, useMenu } from "./menu.context";
 
 // #region Types
-export type MenuRootProps = ComponentProps<typeof ark.nav>;
+export interface MenuRootProps extends ComponentProps<typeof ark.nav> {
+  /**
+   * Style recipe. Defaults to `menuRecipe` from `@pisagor/recipes/menu`.
+   *
+   * @defaultValue menuRecipe
+   */
+  recipe?: typeof menuRecipe;
+}
 
 export type MenuPartProps = ComponentProps<typeof ark.div>;
 
 export type MenuListProps = ComponentProps<typeof ark.ul>;
 
-export type MenuItemProps = ComponentProps<typeof ark.button> & MenuItemVariantProps;
+export interface MenuItemProps extends ComponentProps<typeof ark.button>, MenuItemVariantProps {
+  /**
+   * Style recipe. Defaults to `menuItemRecipe` from `@pisagor/recipes/menu`.
+   *
+   * @defaultValue menuItemRecipe
+   */
+  recipe?: typeof menuItemRecipe;
+}
 
 export interface MenuLinkProps extends ComponentProps<typeof ark.a> {
   /** Whether the link represents the current page */
@@ -29,10 +43,11 @@ export type MenuShortcutProps = ComponentProps<typeof ark.span>;
 export function MenuRoot({
   "aria-label": ariaLabel = "Menu",
   children,
+  recipe = menuRecipe,
   className,
   ...rest
 }: MenuRootProps) {
-  const slots = menuRecipe();
+  const slots = recipe();
 
   return (
     <MenuContext value={{ slots }}>
@@ -93,6 +108,7 @@ export function MenuGroupLabel({ className, ...rest }: MenuGroupLabelProps) {
 export function MenuItem({
   variant = "default",
   type = "button",
+  recipe = menuItemRecipe,
   className,
   ...rest
 }: MenuItemProps) {
@@ -102,7 +118,7 @@ export function MenuItem({
     <ark.li className={slots.wrapper()} data-part="item-wrapper" data-scope="menu" role="none">
       <ark.button
         {...rest}
-        className={cn(menuItemRecipe({ variant }), className)}
+        className={cn(recipe({ variant }), className)}
         data-part="item"
         data-scope="menu"
         data-variant={variant}

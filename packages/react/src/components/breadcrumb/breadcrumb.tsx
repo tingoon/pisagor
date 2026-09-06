@@ -18,7 +18,14 @@ interface BreadcrumbPresetItem {
 }
 
 export type BreadcrumbListProps = ComponentProps<typeof ark.ol>;
-export type BreadcrumbItemProps = ComponentProps<typeof ark.li>;
+export interface BreadcrumbItemProps extends ComponentProps<typeof ark.li> {
+  /**
+   * Style recipe. Defaults to `breadcrumbItemRecipe` from `@pisagor/recipes/breadcrumb`.
+   *
+   * @defaultValue breadcrumbItemRecipe
+   */
+  itemRecipe?: typeof breadcrumbItemRecipe;
+}
 export type BreadcrumbLinkProps = ComponentProps<typeof ark.a>;
 export type BreadcrumbPageProps = ComponentProps<typeof ark.span>;
 export type BreadcrumbSeparatorProps = ComponentProps<typeof ark.li>;
@@ -31,6 +38,12 @@ export interface BreadcrumbRootProps extends ComponentProps<typeof ark.nav> {
    * @defaultValue "Breadcrumb"
    */
   "aria-label"?: string;
+  /**
+   * Style recipe. Defaults to `breadcrumbRecipe` from `@pisagor/recipes/breadcrumb`.
+   *
+   * @defaultValue breadcrumbRecipe
+   */
+  recipe?: typeof breadcrumbRecipe;
 }
 
 export interface BreadcrumbProps extends Omit<BreadcrumbRootProps, "children"> {
@@ -42,9 +55,10 @@ export interface BreadcrumbProps extends Omit<BreadcrumbRootProps, "children"> {
 export function BreadcrumbRoot({
   "aria-label": ariaLabel = "Breadcrumb",
   children,
+  recipe = breadcrumbRecipe,
   ...rest
 }: BreadcrumbRootProps) {
-  const slots = breadcrumbRecipe();
+  const slots = recipe();
 
   return (
     <BreadcrumbContext value={{ slots }}>
@@ -69,8 +83,13 @@ export function BreadcrumbList({ className, ...rest }: BreadcrumbListProps) {
   );
 }
 
-export function BreadcrumbItem({ children, className, ...rest }: BreadcrumbItemProps) {
-  const slots = breadcrumbItemRecipe();
+export function BreadcrumbItem({
+  children,
+  itemRecipe = breadcrumbItemRecipe,
+  className,
+  ...rest
+}: BreadcrumbItemProps) {
+  const slots = itemRecipe();
 
   return (
     <BreadcrumbItemContext value={{ slots }}>

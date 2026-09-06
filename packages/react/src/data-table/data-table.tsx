@@ -37,6 +37,12 @@ export type DataTableProps<TData extends RowData> = {
    * @defaultValue dataTableFeatures
    */
   features?: DataTableFeatures;
+  /**
+   * Style recipe. Defaults to `dataTableRecipe` from `@pisagor/recipes/data-table`.
+   *
+   * @defaultValue dataTableRecipe
+   */
+  recipe?: typeof dataTableRecipe;
 } & Omit<TableOptions<DataTableFeatures, TData>, "features">;
 
 interface DataTableHeaderProps {
@@ -300,6 +306,7 @@ function DataTableFooter({ className, ...rest }: DataTableFooterProps) {
 
 function DataTableRoot<TData extends RowData>({
   children,
+  recipe = dataTableRecipe,
   className,
   features = dataTableFeatures,
   ...rest
@@ -308,7 +315,7 @@ function DataTableRoot<TData extends RowData>({
     ...rest,
     features,
   });
-  const slots = dataTableRecipe();
+  const slots = recipe();
 
   const contextValue = useMemo(() => ({ slots, table }), [slots, table]);
 

@@ -15,6 +15,12 @@ export type InputOTPRootProps = Omit<PinInputRootProps, "onValueChange"> &
 
 export interface InputOTPProps extends InputOTPRootProps {
   onValueChange?: (value: string[]) => void;
+  /**
+   * Style recipe. Defaults to `inputOtpRecipe` from `@pisagor/recipes/input-otp`.
+   *
+   * @defaultValue inputOtpRecipe
+   */
+  recipe?: typeof inputOtpRecipe;
 }
 
 export type InputOTPSlotProps = PinInputInputProps & Pick<InputProps, "variant">;
@@ -29,10 +35,11 @@ export function InputOTPRoot({
   otp = true,
   placeholder,
   onValueChange,
+  recipe = inputOtpRecipe,
   className,
   ...rest
 }: InputOTPProps) {
-  const slots = inputOtpRecipe();
+  const slots = recipe();
 
   return (
     <InputOTPContext value={{ slots }}>

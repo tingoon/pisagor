@@ -1,6 +1,6 @@
 import {
   JsonTreeView as JsonTreeViewPrimitive,
-  type JsonTreeViewRootProps,
+  type JsonTreeViewRootProps as JsonTreeViewPrimitiveRootProps,
   type JsonTreeViewTreeProps,
 } from "@ark-ui/react/json-tree-view";
 import { CaretRightIcon } from "@phosphor-icons/react";
@@ -10,6 +10,15 @@ import type { VariantClassNames } from "../../internal/types";
 import { JsonTreeViewContext, useJsonTreeView } from "./json-tree-view.context";
 
 // #region Types
+export interface JsonTreeViewRootProps extends JsonTreeViewPrimitiveRootProps {
+  /**
+   * Style recipe. Defaults to `jsonTreeViewRecipe` from `@pisagor/recipes/json-tree-view`.
+   *
+   * @defaultValue jsonTreeViewRecipe
+   */
+  recipe?: typeof jsonTreeViewRecipe;
+}
+
 type JsonTreeViewClassNames = VariantClassNames<JsonTreeViewRecipeSlot>;
 
 export interface JsonTreeViewProps extends Omit<JsonTreeViewRootProps, "children"> {
@@ -22,8 +31,13 @@ export interface JsonTreeViewProps extends Omit<JsonTreeViewRootProps, "children
 // #endregion
 
 // #region Parts
-function JsonTreeViewRoot({ children, className, ...rest }: JsonTreeViewRootProps) {
-  const slots = jsonTreeViewRecipe();
+function JsonTreeViewRoot({
+  children,
+  recipe = jsonTreeViewRecipe,
+  className,
+  ...rest
+}: JsonTreeViewRootProps) {
+  const slots = recipe();
 
   return (
     <JsonTreeViewContext value={{ slots }}>

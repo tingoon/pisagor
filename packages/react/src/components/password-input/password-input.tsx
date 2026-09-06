@@ -42,6 +42,12 @@ export interface PasswordInputProps
   clearable?: boolean;
   /** Called with the string value when the input changes. */
   onValueChange?: (value: string) => void;
+  /**
+   * Style recipe. Defaults to `passwordInputRecipe` from `@pisagor/recipes/password-input`.
+   *
+   * @defaultValue passwordInputRecipe
+   */
+  recipe?: typeof passwordInputRecipe;
   clearButtonProps?: InputGroupButtonProps;
   indicatorProps?: PasswordInputIndicatorProps;
   visibilityTriggerProps?: PasswordInputVisibilityTriggerProps;
@@ -67,6 +73,7 @@ export function PasswordInput({
   onChange,
   onValueChange,
   onVisibilityChange,
+  recipe = passwordInputRecipe,
   className,
   ...inputProps
 }: PasswordInputProps) {
@@ -77,7 +84,7 @@ export function PasswordInput({
     ...restClearButtonProps
   } = clearButtonProps ?? {};
 
-  const slots = passwordInputRecipe();
+  const slots = recipe();
 
   const { canClear, handleChange, handleClear, mergedRef } = useClearableInput({
     clearable,

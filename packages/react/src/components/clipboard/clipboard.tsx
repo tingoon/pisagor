@@ -54,6 +54,12 @@ export interface ClipboardProps
   copyIcon?: ReactNode;
   /** Optional label rendered above the control. */
   label?: string;
+  /**
+   * Style recipe. Defaults to `clipboardRecipe` from `@pisagor/recipes/clipboard`.
+   *
+   * @defaultValue clipboardRecipe
+   */
+  recipe?: typeof clipboardRecipe;
   /** Slot class names */
   classNames?: ClipboardClassNames;
   /** Extra props forwarded to the label element */
@@ -65,11 +71,18 @@ export interface ClipboardProps
 function ClipboardProvider({
   valueSize = "md",
   children,
+  recipe = clipboardRecipe,
 }: {
   children: ReactNode;
   valueSize?: ClipboardVariantProps["valueSize"];
+  /**
+   * Style recipe. Defaults to `clipboardRecipe` from `@pisagor/recipes/clipboard`.
+   *
+   * @defaultValue clipboardRecipe
+   */
+  recipe?: typeof clipboardRecipe;
 }) {
-  const slots = clipboardRecipe({ valueSize });
+  const slots = recipe({ valueSize });
 
   return <ClipboardContext value={{ slots }}>{children}</ClipboardContext>;
 }
@@ -143,6 +156,7 @@ export function Clipboard({
   copyIcon = <ClipboardIcon />,
   label,
   labelProps,
+  recipe,
   className,
   classNames,
   ...rest
@@ -187,7 +201,7 @@ export function Clipboard({
   );
 
   return (
-    <ClipboardProvider valueSize={valueSize}>
+    <ClipboardProvider recipe={recipe} valueSize={valueSize}>
       {label ? (
         <ClipboardField className={classNames?.field}>
           <ClipboardLabel {...labelProps} className={classNames?.label}>
