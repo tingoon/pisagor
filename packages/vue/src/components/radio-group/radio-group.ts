@@ -17,6 +17,12 @@ export interface RadioGroupPresetItem {
 }
 
 export interface RadioGroupRootProps {
+  /**
+   * Style recipe. Defaults to `radioGroupRecipe` from `@pisagor/recipes/radio-group`.
+   *
+   * @defaultValue radioGroupRecipe
+   */
+  recipe?: typeof radioGroupRecipe;
   class?: unknown;
   defaultValue?: string | null;
   disabled?: boolean;
@@ -31,6 +37,12 @@ export interface RadioGroupProps extends Omit<RadioGroupRootProps, "class"> {
 }
 
 export interface RadioGroupItemProps {
+  /**
+   * Style recipe. Defaults to `radioGroupItemRecipe` from `@pisagor/recipes/radio-group-item`.
+   *
+   * @defaultValue radioGroupItemRecipe
+   */
+  itemRecipe?: typeof radioGroupItemRecipe;
   class?: unknown;
   disabled?: boolean;
   tabIndex?: number;
@@ -53,6 +65,10 @@ export const RadioGroupRoot = defineComponent({
       type: Function as PropType<RadioGroupRootProps["onValueChange"]>,
     },
     orientation: { default: undefined, type: String as PropType<"horizontal" | "vertical"> },
+    recipe: {
+      default: radioGroupRecipe,
+      type: Function as PropType<typeof radioGroupRecipe>,
+    },
     value: { default: undefined, type: [String, null] as PropType<string | null> },
   },
   setup(props, { attrs, slots }) {
@@ -61,7 +77,7 @@ export const RadioGroupRoot = defineComponent({
         RadioGroupPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(radioGroupRecipe(), props.class),
+          class: cn(props.recipe(), props.class),
           defaultValue: props.defaultValue,
           disabled: props.disabled,
           modelValue: props.value,
@@ -82,6 +98,10 @@ export const RadioGroupItem = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     disabled: { default: undefined, type: Boolean },
+    itemRecipe: {
+      default: radioGroupItemRecipe,
+      type: Function as PropType<typeof radioGroupItemRecipe>,
+    },
     tabIndex: { default: undefined, type: Number },
     value: { required: true, type: String },
     variant: { default: undefined, type: String as PropType<FormControlVariant> },
@@ -94,7 +114,7 @@ export const RadioGroupItem = defineComponent({
       };
       const shellArgs = { variant: resolved.variant };
       const controlProps = { "data-variant": resolved.variant };
-      const slots = radioGroupItemRecipe();
+      const slots = props.itemRecipe();
 
       return h(
         RadioGroupPrimitive.Item as ArkPart,

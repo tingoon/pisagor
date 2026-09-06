@@ -7,6 +7,12 @@ type FormControlVariant = "primary" | "secondary";
 type ArkPart = Parameters<typeof h>[0];
 
 export interface SliderProps {
+  /**
+   * Style recipe. Defaults to `sliderRecipe` from `@pisagor/recipes/slider`.
+   *
+   * @defaultValue sliderRecipe
+   */
+  recipe?: typeof sliderRecipe;
   class?: unknown;
   defaultValue?: number[];
   disabled?: boolean;
@@ -37,6 +43,10 @@ export const Slider = defineComponent({
     max: { default: 100, type: Number },
     min: { default: 0, type: Number },
     onValueChange: { default: undefined, type: Function as PropType<SliderProps["onValueChange"]> },
+    recipe: {
+      default: sliderRecipe,
+      type: Function as PropType<typeof sliderRecipe>,
+    },
     showMarkers: { default: false, type: Boolean },
     showValue: { default: false, type: Boolean },
     step: { default: undefined, type: Number },
@@ -52,7 +62,7 @@ export const Slider = defineComponent({
       };
       const trackShellProps = { "data-variant": resolved.variant };
 
-      const variantSlots = sliderRecipe();
+      const variantSlots = props.recipe();
 
       const thumbShadowClass = resolved.variant === "secondary" ? "shadow-none" : undefined;
       const trackVariantClass = resolved.variant === "secondary" ? "bg-muted/40" : "bg-input/64";

@@ -7,6 +7,12 @@ import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 export type SwapVariant = NonNullable<SwapVariantProps["variant"]>;
 
 export interface SwapProps extends SwapVariantProps {
+  /**
+   * Style recipe. Defaults to `swapRecipe` from `@pisagor/recipes/swap`.
+   *
+   * @defaultValue swapRecipe
+   */
+  recipe?: typeof swapRecipe;
   class?: unknown;
   lazyMount?: boolean;
   /**
@@ -40,6 +46,10 @@ export const Swap = defineComponent({
     offIndicatorProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
     on: { default: undefined, type: [String, Object, Array, Function] as PropType<VNodeChild> },
     onIndicatorProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
+    recipe: {
+      default: swapRecipe,
+      type: Function as PropType<typeof swapRecipe>,
+    },
     swap: { default: false, type: Boolean },
     unmountOnExit: { default: true, type: Boolean },
     variant: { default: "fade", type: String as PropType<SwapVariant> },
@@ -50,7 +60,7 @@ export const Swap = defineComponent({
         SwapPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(swapRecipe({ variant: props.variant }), props.class),
+          class: cn(props.recipe({ variant: props.variant }), props.class),
           lazyMount: props.lazyMount,
           swap: props.swap,
           unmountOnExit: props.unmountOnExit,

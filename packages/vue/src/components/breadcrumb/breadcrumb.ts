@@ -36,6 +36,22 @@ interface BreadcrumbContextValue {
 interface BreadcrumbItemContextValue {
   slots: BreadcrumbItemRecipe;
 }
+
+export interface BreadcrumbItemProps {
+  /**
+   * Style recipe. Defaults to `breadcrumbItemRecipe` from `@pisagor/recipes/breadcrumb-item`.
+   *
+   * @defaultValue breadcrumbItemRecipe
+   */
+  itemRecipe?: typeof breadcrumbItemRecipe;
+  /**
+   * Style recipe. Defaults to `breadcrumbRecipe` from `@pisagor/recipes/breadcrumb`.
+   *
+   * @defaultValue breadcrumbRecipe
+   */
+  recipe?: typeof breadcrumbRecipe;
+  class?: unknown;
+}
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];
@@ -57,9 +73,13 @@ export const BreadcrumbRoot = defineComponent({
   name: "BreadcrumbRoot",
   props: {
     ariaLabel: { default: "Breadcrumb", type: String },
+    recipe: {
+      default: breadcrumbRecipe,
+      type: Function as PropType<typeof breadcrumbRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
-    const recipeSlots = breadcrumbRecipe();
+    const recipeSlots = props.recipe();
 
     provideBreadcrumbContext({ slots: recipeSlots });
 
@@ -106,9 +126,13 @@ export const BreadcrumbItem = defineComponent({
   name: "BreadcrumbItem",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    itemRecipe: {
+      default: breadcrumbItemRecipe,
+      type: Function as PropType<typeof breadcrumbItemRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
-    const recipeSlots = breadcrumbItemRecipe();
+    const recipeSlots = props.itemRecipe();
 
     provideBreadcrumbItemContext({ slots: recipeSlots });
 

@@ -10,6 +10,12 @@ type JsonTreeViewClassNames = VariantClassNames<JsonTreeViewRecipeSlot>;
 type JsonTreeViewRenderValue = (props: { node: unknown }) => unknown;
 
 export interface JsonTreeViewProps {
+  /**
+   * Style recipe. Defaults to `jsonTreeViewRecipe` from `@pisagor/recipes/json-tree-view`.
+   *
+   * @defaultValue jsonTreeViewRecipe
+   */
+  recipe?: typeof jsonTreeViewRecipe;
   class?: unknown;
   /** Slot class names */
   classNames?: JsonTreeViewClassNames;
@@ -35,13 +41,17 @@ export const JsonTreeView = defineComponent({
     data: { required: true, type: Object as PropType<object> },
     defaultExpandedDepth: { default: undefined, type: Number },
     lazyMount: { default: true, type: Boolean },
+    recipe: {
+      default: jsonTreeViewRecipe,
+      type: Function as PropType<typeof jsonTreeViewRecipe>,
+    },
     renderValue: { default: undefined, type: Function as PropType<JsonTreeViewRenderValue> },
     treeProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs }) {
     return () => {
-      const slots_ = jsonTreeViewRecipe();
+      const slots_ = props.recipe();
 
       return h(
         JsonTreeViewPrimitive.Root as ArkPart,

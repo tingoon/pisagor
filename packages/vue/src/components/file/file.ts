@@ -12,6 +12,12 @@ type ArkPart = Parameters<typeof h>[0];
 export interface FileProps {
   /** Trailing actions (download, remove, …). */
   actions?: VNodeChild;
+  /**
+   * Style recipe. Defaults to `fileRecipe` from `@pisagor/recipes/file`.
+   *
+   * @defaultValue fileRecipe
+   */
+  recipe?: typeof fileRecipe;
   class?: unknown;
   /** Leading media; defaults to a file icon. */
   media?: VNodeChild;
@@ -30,10 +36,14 @@ export const FileRoot = defineComponent({
   name: "FileRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: fileRecipe,
+      type: Function as PropType<typeof fileRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fileRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -54,11 +64,15 @@ export const FileMedia = defineComponent({
   name: "FileMedia",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: fileRecipe,
+      type: Function as PropType<typeof fileRecipe>,
+    },
     variant: { default: "icon", type: String as PropType<FileVariantProps["variant"]> },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fileRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -80,10 +94,14 @@ export const FileContent = defineComponent({
   name: "FileContent",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: fileRecipe,
+      type: Function as PropType<typeof fileRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fileRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -104,10 +122,14 @@ export const FileName = defineComponent({
   name: "FileName",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: fileRecipe,
+      type: Function as PropType<typeof fileRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fileRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -128,10 +150,14 @@ export const FileMeta = defineComponent({
   name: "FileMeta",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: fileRecipe,
+      type: Function as PropType<typeof fileRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fileRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -152,11 +178,15 @@ export const FileSize = defineComponent({
   name: "FileSize",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: fileRecipe,
+      type: Function as PropType<typeof fileRecipe>,
+    },
     value: { required: true, type: Number },
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = fileRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -177,10 +207,14 @@ export const FileActions = defineComponent({
   name: "FileActions",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: fileRecipe,
+      type: Function as PropType<typeof fileRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fileRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.div as ArkPart,

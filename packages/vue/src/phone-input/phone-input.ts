@@ -14,6 +14,12 @@ import { InputGroupRoot } from "../components/input-group/input-group-core";
 type ArkPart = Parameters<typeof h>[0];
 
 export interface PhoneInputProps {
+  /**
+   * Style recipe. Defaults to `phoneInputRecipe` from `@pisagor/recipes/phone-input`.
+   *
+   * @defaultValue phoneInputRecipe
+   */
+  recipe?: typeof phoneInputRecipe;
   class?: ClassValue;
   size?: InputProps["size"];
   variant?: FormControlVariant;
@@ -46,13 +52,17 @@ export const PhoneInput = defineComponent({
     invalid: { default: undefined, type: Boolean },
     onChange: { default: undefined, type: Function as PropType<PhoneInputProps["onChange"]> },
     readOnly: { default: undefined, type: Boolean },
+    recipe: {
+      default: phoneInputRecipe,
+      type: Function as PropType<typeof phoneInputRecipe>,
+    },
     size: { default: undefined, type: String as PropType<PhoneInputProps["size"]> },
     value: { default: undefined, type: String as PropType<string | undefined> },
     variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
   },
   setup(props, { attrs }) {
     return () => {
-      const slots = phoneInputRecipe({ size: props.size ?? "md" });
+      const slots = props.recipe({ size: props.size ?? "md" });
       const isControlled = props.value !== undefined;
       const internalValue = ref(props.defaultValue ?? "");
       const value = isControlled ? (props.value ?? "") : internalValue.value;

@@ -20,6 +20,12 @@ import { InputGroup } from "../input-group";
 type ArkPart = Parameters<typeof h>[0];
 
 export interface ColorPickerProps {
+  /**
+   * Style recipe. Defaults to `colorPickerRecipe` from `@pisagor/recipes/color-picker`.
+   *
+   * @defaultValue colorPickerRecipe
+   */
+  recipe?: typeof colorPickerRecipe;
   class?: ClassValue;
   variant?: FormControlVariant;
   positioning?: unknown;
@@ -50,6 +56,10 @@ export const ColorPickerRoot = defineComponent({
       type: Function as PropType<ColorPickerProps["onValueChange"]>,
     },
     positioning: { default: { placement: "top-start" }, type: Object as PropType<unknown> },
+    recipe: {
+      default: colorPickerRecipe,
+      type: Function as PropType<typeof colorPickerRecipe>,
+    },
     unmountOnExit: { default: true, type: Boolean },
     value: { default: undefined, type: String as PropType<string | undefined> },
     variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
@@ -73,11 +83,7 @@ export const ColorPickerRoot = defineComponent({
         ColorPickerPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(
-            colorPickerRecipe().base(),
-            props.class,
-            (attrs as { class?: ClassValue }).class,
-          ),
+          class: cn(props.recipe().base(), props.class, (attrs as { class?: ClassValue }).class),
           defaultValue: internalValue ? parseColorArk(internalValue) : undefined,
           lazyMount: props.lazyMount,
           onValueChange: props.onValueChange ? handleValueChange : undefined,
@@ -158,6 +164,10 @@ export const ColorPickerControl = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
     clearable: { default: false, type: Boolean },
+    recipe: {
+      default: colorPickerRecipe,
+      type: Function as PropType<typeof colorPickerRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -165,11 +175,7 @@ export const ColorPickerControl = defineComponent({
         ColorPickerPrimitive.Control as ArkPart,
         {
           ...attrs,
-          class: cn(
-            colorPickerRecipe().control(),
-            props.class,
-            (attrs as { class?: ClassValue }).class,
-          ),
+          class: cn(props.recipe().control(), props.class, (attrs as { class?: ClassValue }).class),
         },
         () => [
           slots.default?.(),
@@ -193,13 +199,17 @@ export const ColorPickerTransparencyGrid = defineComponent({
   name: "ColorPicker.TransparencyGrid",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    recipe: {
+      default: colorPickerRecipe,
+      type: Function as PropType<typeof colorPickerRecipe>,
+    },
   },
   setup(props, { attrs }) {
     return () =>
       h(ColorPickerPrimitive.TransparencyGrid as ArkPart, {
         ...attrs,
         class: cn(
-          colorPickerRecipe().transparencyGrid(),
+          props.recipe().transparencyGrid(),
           props.class,
           (attrs as { class?: ClassValue }).class,
         ),
@@ -212,6 +222,10 @@ export const ColorPickerContent = defineComponent({
   name: "ColorPicker.Content",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    recipe: {
+      default: colorPickerRecipe,
+      type: Function as PropType<typeof colorPickerRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -222,7 +236,7 @@ export const ColorPickerContent = defineComponent({
             {
               ...attrs,
               class: cn(
-                colorPickerRecipe().content(),
+                props.recipe().content(),
                 props.class,
                 (attrs as { class?: ClassValue }).class,
               ),
@@ -237,18 +251,20 @@ export const ColorPickerContent = defineComponent({
 export const ColorPickerView = defineComponent({
   inheritAttrs: false,
   name: "ColorPicker.View",
-  props: { class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> } },
+  props: {
+    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    recipe: {
+      default: colorPickerRecipe,
+      type: Function as PropType<typeof colorPickerRecipe>,
+    },
+  },
   setup(props, { attrs, slots }) {
     return () =>
       h(
         ColorPickerPrimitive.View as ArkPart,
         {
           ...attrs,
-          class: cn(
-            colorPickerRecipe().view(),
-            props.class,
-            (attrs as { class?: ClassValue }).class,
-          ),
+          class: cn(props.recipe().view(), props.class, (attrs as { class?: ClassValue }).class),
         },
         () => slots.default?.(),
       );
@@ -258,10 +274,16 @@ export const ColorPickerView = defineComponent({
 export const ColorPickerChannelSlider = defineComponent({
   inheritAttrs: false,
   name: "ColorPicker.ChannelSlider",
-  props: { class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> } },
+  props: {
+    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    recipe: {
+      default: colorPickerRecipe,
+      type: Function as PropType<typeof colorPickerRecipe>,
+    },
+  },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const slots = colorPickerRecipe();
+      const slots = props.recipe();
 
       return h(
         ColorPickerPrimitive.ChannelSlider as ArkPart,
@@ -318,7 +340,13 @@ export const ColorPickerEyeDropperTrigger = defineComponent({
 export const ColorPickerSwatchGroup = defineComponent({
   inheritAttrs: false,
   name: "ColorPicker.SwatchGroup",
-  props: { class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> } },
+  props: {
+    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    recipe: {
+      default: colorPickerRecipe,
+      type: Function as PropType<typeof colorPickerRecipe>,
+    },
+  },
   setup(props, { attrs, slots }) {
     return () =>
       h(
@@ -326,7 +354,7 @@ export const ColorPickerSwatchGroup = defineComponent({
         {
           ...attrs,
           class: cn(
-            colorPickerRecipe().swatchGroup(),
+            props.recipe().swatchGroup(),
             props.class,
             (attrs as { class?: ClassValue }).class,
           ),
@@ -339,7 +367,13 @@ export const ColorPickerSwatchGroup = defineComponent({
 export const ColorPickerSwatchTrigger = defineComponent({
   inheritAttrs: false,
   name: "ColorPicker.SwatchTrigger",
-  props: { class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> } },
+  props: {
+    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    recipe: {
+      default: colorPickerRecipe,
+      type: Function as PropType<typeof colorPickerRecipe>,
+    },
+  },
   setup(props, { attrs, slots }) {
     return () =>
       h(
@@ -347,7 +381,7 @@ export const ColorPickerSwatchTrigger = defineComponent({
         {
           ...attrs,
           class: cn(
-            colorPickerRecipe().swatchTrigger(),
+            props.recipe().swatchTrigger(),
             props.class,
             (attrs as { class?: ClassValue }).class,
           ),
@@ -360,18 +394,20 @@ export const ColorPickerSwatchTrigger = defineComponent({
 export const ColorPickerSwatch = defineComponent({
   inheritAttrs: false,
   name: "ColorPicker.Swatch",
-  props: { class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> } },
+  props: {
+    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    recipe: {
+      default: colorPickerRecipe,
+      type: Function as PropType<typeof colorPickerRecipe>,
+    },
+  },
   setup(props, { attrs, slots }) {
     return () =>
       h(
         ColorPickerPrimitive.Swatch as ArkPart,
         {
           ...attrs,
-          class: cn(
-            colorPickerRecipe().swatch(),
-            props.class,
-            (attrs as { class?: ClassValue }).class,
-          ),
+          class: cn(props.recipe().swatch(), props.class, (attrs as { class?: ClassValue }).class),
         },
         () => slots.default?.(),
       );
@@ -381,7 +417,13 @@ export const ColorPickerSwatch = defineComponent({
 export const ColorPickerSwatchIndicator = defineComponent({
   inheritAttrs: false,
   name: "ColorPicker.SwatchIndicator",
-  props: { class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> } },
+  props: {
+    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    recipe: {
+      default: colorPickerRecipe,
+      type: Function as PropType<typeof colorPickerRecipe>,
+    },
+  },
   setup(props, { attrs, slots }) {
     return () =>
       h(
@@ -389,7 +431,7 @@ export const ColorPickerSwatchIndicator = defineComponent({
         {
           ...attrs,
           class: cn(
-            colorPickerRecipe().swatchIndicator(),
+            props.recipe().swatchIndicator(),
             props.class,
             (attrs as { class?: ClassValue }).class,
           ),
@@ -402,7 +444,13 @@ export const ColorPickerSwatchIndicator = defineComponent({
 export const ColorPickerValueText = defineComponent({
   inheritAttrs: false,
   name: "ColorPicker.ValueText",
-  props: { class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> } },
+  props: {
+    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    recipe: {
+      default: colorPickerRecipe,
+      type: Function as PropType<typeof colorPickerRecipe>,
+    },
+  },
   setup(props, { attrs, slots }) {
     return () =>
       h(
@@ -410,7 +458,7 @@ export const ColorPickerValueText = defineComponent({
         {
           ...attrs,
           class: cn(
-            colorPickerRecipe().valueText(),
+            props.recipe().valueText(),
             props.class,
             (attrs as { class?: ClassValue }).class,
           ),
@@ -423,7 +471,13 @@ export const ColorPickerValueText = defineComponent({
 export const ColorPickerValueSwatch = defineComponent({
   inheritAttrs: false,
   name: "ColorPicker.ValueSwatch",
-  props: { class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> } },
+  props: {
+    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    recipe: {
+      default: colorPickerRecipe,
+      type: Function as PropType<typeof colorPickerRecipe>,
+    },
+  },
   setup(props, { attrs, slots }) {
     return () =>
       h(
@@ -431,7 +485,7 @@ export const ColorPickerValueSwatch = defineComponent({
         {
           ...attrs,
           class: cn(
-            colorPickerRecipe().valueSwatch(),
+            props.recipe().valueSwatch(),
             props.class,
             (attrs as { class?: ClassValue }).class,
           ),
@@ -446,11 +500,15 @@ export const ColorPickerArea = defineComponent({
   name: "ColorPicker.Area",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    recipe: {
+      default: colorPickerRecipe,
+      type: Function as PropType<typeof colorPickerRecipe>,
+    },
     showDots: { default: false, type: Boolean },
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const slots = colorPickerRecipe();
+      const slots = props.recipe();
 
       return h(
         ColorPickerPrimitive.Area as ArkPart,
@@ -481,16 +539,18 @@ export const ColorPickerArea = defineComponent({
 export const ColorPickerAreaThumb = defineComponent({
   inheritAttrs: false,
   name: "ColorPicker.AreaThumb",
-  props: { class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> } },
+  props: {
+    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    recipe: {
+      default: colorPickerRecipe,
+      type: Function as PropType<typeof colorPickerRecipe>,
+    },
+  },
   setup(props, { attrs }) {
     return () =>
       h(ColorPickerPrimitive.AreaThumb as ArkPart, {
         ...attrs,
-        class: cn(
-          colorPickerRecipe().areaThumb(),
-          props.class,
-          (attrs as { class?: ClassValue }).class,
-        ),
+        class: cn(props.recipe().areaThumb(), props.class, (attrs as { class?: ClassValue }).class),
       });
   },
 });
@@ -517,10 +577,16 @@ export const ColorPickerInput = defineComponent({
 export const ColorPickerSwatchPreview = defineComponent({
   inheritAttrs: false,
   name: "ColorPicker.SwatchPreview",
-  props: { class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> } },
+  props: {
+    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    recipe: {
+      default: colorPickerRecipe,
+      type: Function as PropType<typeof colorPickerRecipe>,
+    },
+  },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const slots = colorPickerRecipe();
+      const slots = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -551,6 +617,10 @@ export const ColorPickerField = defineComponent({
   name: "ColorPicker.Field",
   props: {
     clearable: { default: false, type: Boolean },
+    recipe: {
+      default: colorPickerRecipe,
+      type: Function as PropType<typeof colorPickerRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -572,9 +642,9 @@ export const ColorPickerField = defineComponent({
             ColorPickerView as ArkPart,
             { format: "hsla" } as unknown as Parameters<typeof h>[1],
             () => [
-              h("div", { class: colorPickerRecipe().channelRow() }, () => [
+              h("div", { class: props.recipe().channelRow() }, () => [
                 h(ColorPickerEyeDropperTrigger as ArkPart),
-                h("div", { class: colorPickerRecipe().channelStack() }, () => [
+                h("div", { class: props.recipe().channelStack() }, () => [
                   h(
                     ColorPickerChannelSlider as ArkPart,
                     { channel: "hue" } as unknown as Parameters<typeof h>[1],

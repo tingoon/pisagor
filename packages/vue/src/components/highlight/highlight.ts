@@ -7,6 +7,12 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 export interface HighlightProps {
+  /**
+   * Style recipe. Defaults to `highlightRecipe` from `@pisagor/recipes/highlight`.
+   *
+   * @defaultValue highlightRecipe
+   */
+  recipe?: typeof highlightRecipe;
   class?: unknown;
 }
 // #endregion
@@ -17,6 +23,10 @@ export const Highlight = defineComponent({
   name: "PisagorHighlight",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: highlightRecipe,
+      type: Function as PropType<typeof highlightRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -24,7 +34,7 @@ export const Highlight = defineComponent({
         HighlightPrimitive as ArkPart,
         {
           ...attrs,
-          class: cn(highlightRecipe(), props.class),
+          class: cn(props.recipe(), props.class),
         },
         slots.default?.(),
       );

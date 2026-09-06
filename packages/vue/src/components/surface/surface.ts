@@ -27,6 +27,12 @@ export function useSurface() {
 }
 
 export interface SurfaceProps extends SurfaceVariantProps {
+  /**
+   * Style recipe. Defaults to `surfaceRecipe` from `@pisagor/recipes/surface`.
+   *
+   * @defaultValue surfaceRecipe
+   */
+  recipe?: typeof surfaceRecipe;
   class?: unknown;
 }
 
@@ -39,6 +45,10 @@ export const Surface = defineComponent({
     bordered: { default: false, type: Boolean },
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     padding: { default: undefined, type: String as PropType<SurfaceVariantProps["padding"]> },
+    recipe: {
+      default: surfaceRecipe,
+      type: Function as PropType<typeof surfaceRecipe>,
+    },
     rounded: { default: true, type: Boolean },
     variant: { default: undefined, type: String as PropType<SurfaceVariant> },
   },
@@ -61,7 +71,7 @@ export const Surface = defineComponent({
         {
           ...attrs,
           class: cn(
-            surfaceRecipe({
+            props.recipe({
               bordered: props.bordered,
               padding: props.padding,
               rounded: props.rounded,

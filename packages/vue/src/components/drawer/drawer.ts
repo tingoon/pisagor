@@ -22,6 +22,12 @@ export interface DrawerBodyProps {
 export interface DrawerProps {
   lazyMount?: boolean;
   unmountOnExit?: boolean;
+  /**
+   * Style recipe. Defaults to `drawerRecipe` from `@pisagor/recipes/drawer`.
+   *
+   * @defaultValue drawerRecipe
+   */
+  recipe?: typeof drawerRecipe;
 }
 // #endregion
 
@@ -53,9 +59,15 @@ function drawerTeleport(content: ReturnType<typeof h> | ReturnType<typeof h>[]) 
 export const DrawerRoot = defineComponent({
   inheritAttrs: false,
   name: "DrawerRoot",
-  setup(_, { attrs, slots }) {
+  props: {
+    recipe: {
+      default: drawerRecipe,
+      type: Function as PropType<typeof drawerRecipe>,
+    },
+  },
+  setup(props, { attrs, slots }) {
     const context = reactive<DrawerContextValue>({
-      slots: drawerRecipe(),
+      slots: props.recipe(),
     });
     provideDrawerContext(context);
 

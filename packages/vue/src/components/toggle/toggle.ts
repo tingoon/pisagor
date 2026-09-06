@@ -6,6 +6,24 @@ import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
 
+// #region Types
+export interface ToggleProps {
+  /**
+   * Style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
+   *
+   * @defaultValue buttonRecipe
+   */
+  buttonRecipe?: typeof buttonRecipe;
+  /**
+   * Style recipe. Defaults to `toggleRecipe` from `@pisagor/recipes/toggle`.
+   *
+   * @defaultValue toggleRecipe
+   */
+  recipe?: typeof toggleRecipe;
+  class?: unknown;
+}
+// #endregion
+
 // #region Component
 export const Toggle = defineComponent({
   emits: {
@@ -15,8 +33,16 @@ export const Toggle = defineComponent({
   inheritAttrs: false,
   name: "PisagorToggle",
   props: {
+    buttonRecipe: {
+      default: buttonRecipe,
+      type: Function as PropType<typeof buttonRecipe>,
+    },
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     disabled: { default: false, type: Boolean },
+    recipe: {
+      default: toggleRecipe,
+      type: Function as PropType<typeof toggleRecipe>,
+    },
     size: { default: "md", type: String as PropType<ToggleVariantProps["size"]> },
     variant: {
       default: "ghost",
@@ -30,8 +56,8 @@ export const Toggle = defineComponent({
         {
           ...attrs,
           class: cn(
-            buttonRecipe({ clickEffect: false, variant: props.variant }).base(),
-            toggleRecipe({ size: props.size }),
+            props.buttonRecipe({ clickEffect: false, variant: props.variant }).base(),
+            props.recipe({ size: props.size }),
             props.class,
           ),
           disabled: props.disabled,

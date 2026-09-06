@@ -43,6 +43,12 @@ export interface DialogProps {
   lazyMount?: boolean;
   modal?: boolean;
   unmountOnExit?: boolean;
+  /**
+   * Style recipe. Defaults to `dialogRecipe` from `@pisagor/recipes/dialog`.
+   *
+   * @defaultValue dialogRecipe
+   */
+  recipe?: typeof dialogRecipe;
 }
 // #endregion
 
@@ -72,12 +78,16 @@ export const DialogRoot = defineComponent({
   props: {
     lazyMount: { default: true, type: Boolean },
     modal: { default: true, type: Boolean },
+    recipe: {
+      default: dialogRecipe,
+      type: Function as PropType<typeof dialogRecipe>,
+    },
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
     const context = reactive<DialogContextValue>({
       modal: props.modal,
-      slots: dialogRecipe(),
+      slots: props.recipe(),
     });
 
     watchEffect(() => {

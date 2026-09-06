@@ -9,6 +9,18 @@ type SwitchClassNames = VariantClassNames<SwitchRecipeSlot>;
 
 type ArkPart = Parameters<typeof h>[0];
 
+// #region Types
+export interface SwitchProps {
+  /**
+   * Style recipe. Defaults to `switchRecipe` from `@pisagor/recipes/switch`.
+   *
+   * @defaultValue switchRecipe
+   */
+  recipe?: typeof switchRecipe;
+  class?: unknown;
+}
+// #endregion
+
 // #region Component
 export const Switch = defineComponent({
   emits: {
@@ -20,6 +32,10 @@ export const Switch = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<SwitchClassNames> },
+    recipe: {
+      default: switchRecipe,
+      type: Function as PropType<typeof switchRecipe>,
+    },
     variant: { default: undefined, type: String as PropType<FormControlVariant> },
   },
   setup(props, { attrs, emit }) {
@@ -30,7 +46,7 @@ export const Switch = defineComponent({
       };
       const shellArgs = { variant: resolved.variant };
       const controlShellProps = { "data-variant": resolved.variant };
-      const slots_ = switchRecipe({ ...shellArgs });
+      const slots_ = props.recipe({ ...shellArgs });
 
       return h(
         SwitchPrimitive.Root as ArkPart,

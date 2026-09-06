@@ -5,6 +5,18 @@ import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
 
+// #region Types
+export interface CollapsibleRootProps {
+  /**
+   * Style recipe. Defaults to `collapsibleRecipe` from `@pisagor/recipes/collapsible`.
+   *
+   * @defaultValue collapsibleRecipe
+   */
+  recipe?: typeof collapsibleRecipe;
+  class?: unknown;
+}
+// #endregion
+
 // #region Parts
 export const CollapsibleRoot = defineComponent({
   inheritAttrs: false,
@@ -13,13 +25,17 @@ export const CollapsibleRoot = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     collapsedHeight: { default: undefined, type: [Number, String] as PropType<number | string> },
     lazyMount: { default: true, type: Boolean },
+    recipe: {
+      default: collapsibleRecipe,
+      type: Function as PropType<typeof collapsibleRecipe>,
+    },
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
     const partialCollapse = props.collapsedHeight !== undefined;
 
     return () => {
-      const variantSlots = collapsibleRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         CollapsiblePrimitive.Root as ArkPart,
@@ -42,10 +58,14 @@ export const CollapsibleTrigger = defineComponent({
   name: "CollapsibleTrigger",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: collapsibleRecipe,
+      type: Function as PropType<typeof collapsibleRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = collapsibleRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         CollapsiblePrimitive.Trigger as ArkPart,
@@ -64,10 +84,14 @@ export const CollapsibleContent = defineComponent({
   name: "CollapsibleContent",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: collapsibleRecipe,
+      type: Function as PropType<typeof collapsibleRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = collapsibleRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         CollapsiblePrimitive.Content as ArkPart,
@@ -86,10 +110,14 @@ export const CollapsibleIndicator = defineComponent({
   name: "CollapsibleIndicator",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: collapsibleRecipe,
+      type: Function as PropType<typeof collapsibleRecipe>,
+    },
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const variantSlots = collapsibleRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         CollapsiblePrimitive.Indicator as ArkPart,

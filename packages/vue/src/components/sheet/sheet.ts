@@ -22,7 +22,14 @@ interface SheetContextValue {
   slots: SheetRecipe;
 }
 
-export type SheetProps = DialogProps;
+export interface SheetProps extends Omit<DialogProps, "recipe"> {
+  /**
+   * Style recipe. Defaults to `sheetRecipe` from `@pisagor/recipes/sheet`.
+   *
+   * @defaultValue sheetRecipe
+   */
+  recipe?: typeof sheetRecipe;
+}
 // #endregion
 
 // #region Context
@@ -46,9 +53,15 @@ function sheetTeleport(content: ReturnType<typeof h> | ReturnType<typeof h>[]) {
 export const SheetRoot = defineComponent({
   inheritAttrs: false,
   name: "SheetRoot",
-  setup(_, { attrs, slots }) {
+  props: {
+    recipe: {
+      default: sheetRecipe,
+      type: Function as PropType<typeof sheetRecipe>,
+    },
+  },
+  setup(props, { attrs, slots }) {
     const context = reactive<SheetContextValue>({
-      slots: sheetRecipe(),
+      slots: props.recipe(),
     });
     provideSheetContext(context);
 

@@ -10,10 +10,26 @@ export interface TimerRootProps {
   units?: TimerUnit[];
   /** Auto-render Timer.Control with play and reset buttons */
   isControlsVisible?: boolean;
+  /**
+   * Style recipe. Defaults to `timerRecipe` from `@pisagor/recipes/timer`.
+   *
+   * @defaultValue timerRecipe
+   */
+  recipe?: typeof timerRecipe;
   class?: unknown;
 }
 
 type ArkPart = Parameters<typeof h>[0];
+
+export interface TimerItemGroupProps {
+  /**
+   * Style recipe. Defaults to `timerItemGroupRecipe` from `@pisagor/recipes/timer-item-group`.
+   *
+   * @defaultValue timerItemGroupRecipe
+   */
+  itemGroupRecipe?: typeof timerItemGroupRecipe;
+  class?: unknown;
+}
 // #endregion
 
 // #region Parts
@@ -23,11 +39,15 @@ export const TimerRoot = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     isControlsVisible: { default: undefined, type: Boolean },
+    recipe: {
+      default: timerRecipe,
+      type: Function as PropType<typeof timerRecipe>,
+    },
     units: { default: undefined, type: Array as PropType<TimerUnit[]> },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timerRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         TimerPrimitive.Root as ArkPart,
@@ -62,10 +82,14 @@ export const TimerArea = defineComponent({
   name: "TimerArea",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: timerRecipe,
+      type: Function as PropType<typeof timerRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timerRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         TimerPrimitive.Area as ArkPart,
@@ -84,6 +108,10 @@ export const TimerItemGroup = defineComponent({
   name: "TimerItemGroup",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    itemGroupRecipe: {
+      default: timerItemGroupRecipe,
+      type: Function as PropType<typeof timerItemGroupRecipe>,
+    },
     orientation: {
       default: "vertical",
       type: String as PropType<"horizontal" | "vertical">,
@@ -91,7 +119,7 @@ export const TimerItemGroup = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timerItemGroupRecipe();
+      const variantSlots = props.itemGroupRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -113,10 +141,14 @@ export const TimerItem = defineComponent({
   name: "TimerItem",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    itemGroupRecipe: {
+      default: timerItemGroupRecipe,
+      type: Function as PropType<typeof timerItemGroupRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timerItemGroupRecipe();
+      const variantSlots = props.itemGroupRecipe();
 
       return h(
         TimerPrimitive.Item as ArkPart,
@@ -135,10 +167,14 @@ export const TimerItemLabel = defineComponent({
   name: "TimerItemLabel",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    itemGroupRecipe: {
+      default: timerItemGroupRecipe,
+      type: Function as PropType<typeof timerItemGroupRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timerItemGroupRecipe();
+      const variantSlots = props.itemGroupRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -159,10 +195,14 @@ export const TimerSeparator = defineComponent({
   name: "TimerSeparator",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: timerRecipe,
+      type: Function as PropType<typeof timerRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timerRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         TimerPrimitive.Separator as ArkPart,
@@ -181,10 +221,14 @@ export const TimerControl = defineComponent({
   name: "TimerControl",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: timerRecipe,
+      type: Function as PropType<typeof timerRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timerRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         TimerPrimitive.Control as ArkPart,

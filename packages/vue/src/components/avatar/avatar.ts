@@ -17,6 +17,12 @@ export type AvatarClassNames = VariantClassNames<AvatarRecipeSlot>;
 
 export interface AvatarProps extends AvatarVariantProps {
   /** Slot class names */
+  /**
+   * Style recipe. Defaults to `avatarRecipe` from `@pisagor/recipes/avatar`.
+   *
+   * @defaultValue avatarRecipe
+   */
+  recipe?: typeof avatarRecipe;
   classNames?: AvatarClassNames;
   /** Renders the avatar image with the provided src */
   src?: string;
@@ -52,13 +58,17 @@ export const Avatar = defineComponent({
       default: undefined,
       type: Object as PropType<Record<string, unknown> | undefined>,
     },
+    recipe: {
+      default: avatarRecipe,
+      type: Function as PropType<typeof avatarRecipe>,
+    },
     shape: { default: "circle", type: String as PropType<AvatarShape> },
     size: { default: "md", type: String as PropType<AvatarSize> },
     src: { default: undefined, type: String },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots_ = avatarRecipe({ shape: props.shape, size: props.size });
+      const slots_ = props.recipe({ shape: props.shape, size: props.size });
 
       return h(
         AvatarRoot as ArkPart,

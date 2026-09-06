@@ -19,6 +19,12 @@ type StatTrendVariant = NonNullable<StatTrendVariantProps["trend"]>;
 type StatClassNames = VariantClassNames<StatRecipeSlot>;
 
 export interface StatProps extends StatVariantProps {
+  /**
+   * Style recipe. Defaults to `statRecipe` from `@pisagor/recipes/stat`.
+   *
+   * @defaultValue statRecipe
+   */
+  recipe?: typeof statRecipe;
   class?: unknown;
   classNames?: StatClassNames;
 
@@ -32,6 +38,16 @@ export interface StatProps extends StatVariantProps {
   descriptionProps?: Record<string, unknown>;
   trendProps?: Record<string, unknown>;
 }
+
+export interface StatTrendProps {
+  /**
+   * Style recipe. Defaults to `statTrendRecipe` from `@pisagor/recipes/stat-trend`.
+   *
+   * @defaultValue statTrendRecipe
+   */
+  trendRecipe?: typeof statTrendRecipe;
+  class?: unknown;
+}
 // #endregion
 
 // #region Parts
@@ -41,11 +57,15 @@ export const StatRoot = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<StatClassNames> },
+    recipe: {
+      default: statRecipe,
+      type: Function as PropType<typeof statRecipe>,
+    },
     variant: { default: "outline", type: String as PropType<StatVariant> },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots_ = statRecipe({ variant: props.variant });
+      const slots_ = props.recipe({ variant: props.variant });
 
       return h(
         ark.div as ArkPart,
@@ -68,10 +88,14 @@ export const StatLabel = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<StatClassNames> },
+    recipe: {
+      default: statRecipe,
+      type: Function as PropType<typeof statRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots_ = statRecipe();
+      const slots_ = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -93,10 +117,14 @@ export const StatValue = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<StatClassNames> },
+    recipe: {
+      default: statRecipe,
+      type: Function as PropType<typeof statRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots_ = statRecipe();
+      const slots_ = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -118,10 +146,14 @@ export const StatDescription = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<StatClassNames> },
+    recipe: {
+      default: statRecipe,
+      type: Function as PropType<typeof statRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots_ = statRecipe();
+      const slots_ = props.recipe();
 
       return h(
         ark.p as ArkPart,
@@ -143,6 +175,10 @@ export const StatTrend = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     trend: { default: "neutral", type: String as PropType<StatTrendVariant> },
+    trendRecipe: {
+      default: statTrendRecipe,
+      type: Function as PropType<typeof statTrendRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -150,7 +186,7 @@ export const StatTrend = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(statTrendRecipe({ trend: props.trend }), props.class),
+          class: cn(props.trendRecipe({ trend: props.trend }), props.class),
           "data-part": "trend",
           "data-scope": "stat",
           "data-trend": props.trend,

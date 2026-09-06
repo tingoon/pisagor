@@ -6,6 +6,12 @@ import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 export interface AnnouncementProps {
   /** Optional badge or label rendered before the title. */
   badge?: VNodeChild;
+  /**
+   * Style recipe. Defaults to `announcementRecipe` from `@pisagor/recipes/announcement`.
+   *
+   * @defaultValue announcementRecipe
+   */
+  recipe?: typeof announcementRecipe;
   class?: unknown;
   /**
    * The ARIA role of the announcement.
@@ -28,11 +34,15 @@ export const AnnouncementRoot = defineComponent({
   name: "AnnouncementRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: announcementRecipe,
+      type: Function as PropType<typeof announcementRecipe>,
+    },
     role: { default: "status", type: String as PropType<AnnouncementProps["role"]> },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = announcementRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -54,10 +64,14 @@ export const AnnouncementTitle = defineComponent({
   name: "AnnouncementTitle",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: announcementRecipe,
+      type: Function as PropType<typeof announcementRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = announcementRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.span as ArkPart,

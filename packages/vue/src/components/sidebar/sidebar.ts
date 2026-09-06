@@ -37,6 +37,12 @@ export interface SidebarProviderProps extends Omit<SidebarProps, "className"> {
    */
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
+  /**
+   * Style recipe. Defaults to `sidebarRecipe` from `@pisagor/recipes/sidebar`.
+   *
+   * @defaultValue sidebarRecipe
+   */
+  recipe?: typeof sidebarRecipe;
 }
 
 interface SidebarContextValue {
@@ -78,6 +84,10 @@ export const SidebarProvider = defineComponent({
     onOpenChange: { default: undefined, type: Function as PropType<(open: boolean) => void> },
     open: { default: undefined, type: Boolean },
     placement: { default: "left", type: String as PropType<SidebarPlacement> },
+    recipe: {
+      default: sidebarRecipe,
+      type: Function as PropType<typeof sidebarRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     const isMobileRef = useIsMobile();
@@ -141,7 +151,7 @@ export const SidebarProvider = defineComponent({
     provideSidebarContext(contextValue);
 
     return () => {
-      const variantSlots = sidebarRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         "div",
@@ -174,6 +184,10 @@ export const SidebarRoot = defineComponent({
     className: { default: undefined, type: String },
     collapsible: { default: "offcanvas", type: String as PropType<SidebarCollapsible> },
     placement: { default: "left", type: String as PropType<SidebarPlacement> },
+    recipe: {
+      default: sidebarRecipe,
+      type: Function as PropType<typeof sidebarRecipe>,
+    },
     variant: { default: "sidebar", type: String as PropType<SidebarVariant> },
   },
   setup(props, { attrs, slots }) {
@@ -182,9 +196,9 @@ export const SidebarRoot = defineComponent({
     return () => {
       if (!ctx) return null;
 
-      const variantSlots = sidebarRecipe();
+      const variantSlots = props.recipe();
       const padded = props.variant === "floating" || props.variant === "inset";
-      const layoutSlots = sidebarRecipe({ padded, placement: props.placement });
+      const layoutSlots = props.recipe({ padded, placement: props.placement });
 
       if (props.collapsible === "none") {
         return h(
@@ -280,11 +294,15 @@ export const SidebarContent = defineComponent({
   name: "SidebarContent",
   props: {
     className: { default: undefined, type: String },
+    recipe: {
+      default: sidebarRecipe,
+      type: Function as PropType<typeof sidebarRecipe>,
+    },
     scrollFade: { default: false, type: Boolean },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         "div",
@@ -307,10 +325,16 @@ export const SidebarContent = defineComponent({
 export const SidebarHeader = defineComponent({
   inheritAttrs: false,
   name: "SidebarHeader",
-  props: { className: { default: undefined, type: String } },
+  props: {
+    className: { default: undefined, type: String },
+    recipe: {
+      default: sidebarRecipe,
+      type: Function as PropType<typeof sidebarRecipe>,
+    },
+  },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         "div",
@@ -333,10 +357,16 @@ export const SidebarHeader = defineComponent({
 export const SidebarFooter = defineComponent({
   inheritAttrs: false,
   name: "SidebarFooter",
-  props: { className: { default: undefined, type: String } },
+  props: {
+    className: { default: undefined, type: String },
+    recipe: {
+      default: sidebarRecipe,
+      type: Function as PropType<typeof sidebarRecipe>,
+    },
+  },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         "div",
@@ -359,10 +389,16 @@ export const SidebarFooter = defineComponent({
 export const SidebarGap = defineComponent({
   inheritAttrs: false,
   name: "SidebarGap",
-  props: { padded: { default: false, type: Boolean } },
+  props: {
+    padded: { default: false, type: Boolean },
+    recipe: {
+      default: sidebarRecipe,
+      type: Function as PropType<typeof sidebarRecipe>,
+    },
+  },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = sidebarRecipe({ padded: props.padded });
+      const variantSlots = props.recipe({ padded: props.padded });
 
       return h("div", {
         ...attrs,
@@ -379,10 +415,14 @@ export const SidebarSeparator = defineComponent({
   name: "SidebarSeparator",
   props: {
     className: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    recipe: {
+      default: sidebarRecipe,
+      type: Function as PropType<typeof sidebarRecipe>,
+    },
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = sidebarRecipe();
+      const variantSlots = props.recipe();
 
       return h("div", {
         ...attrs,
@@ -404,10 +444,14 @@ export const SidebarRail = defineComponent({
   props: {
     className: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
     placement: { default: "left", type: String as PropType<SidebarPlacement> },
+    recipe: {
+      default: sidebarRecipe,
+      type: Function as PropType<typeof sidebarRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         "div",
@@ -429,11 +473,15 @@ export const SidebarTrigger = defineComponent({
   name: "SidebarTrigger",
   props: {
     className: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    recipe: {
+      default: sidebarRecipe,
+      type: Function as PropType<typeof sidebarRecipe>,
+    },
   },
   setup(props, { attrs }) {
     const ctx = useSidebarContext();
     return () => {
-      const variantSlots = sidebarRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         Button as ArkPart,
@@ -461,9 +509,15 @@ export const SidebarTrigger = defineComponent({
 export const SidebarInset = defineComponent({
   inheritAttrs: false,
   name: "SidebarInset",
-  setup(_, { attrs, slots }) {
+  props: {
+    recipe: {
+      default: sidebarRecipe,
+      type: Function as PropType<typeof sidebarRecipe>,
+    },
+  },
+  setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         "div",
@@ -484,10 +538,14 @@ export const SidebarInput = defineComponent({
   name: "SidebarInput",
   props: {
     className: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    recipe: {
+      default: sidebarRecipe,
+      type: Function as PropType<typeof sidebarRecipe>,
+    },
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = sidebarRecipe();
+      const variantSlots = props.recipe();
 
       return h("input", {
         ...attrs,
@@ -504,10 +562,14 @@ export const SidebarGroup = defineComponent({
   name: "SidebarGroup",
   props: {
     className: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    recipe: {
+      default: sidebarRecipe,
+      type: Function as PropType<typeof sidebarRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         "div",
@@ -526,9 +588,15 @@ export const SidebarGroup = defineComponent({
 export const SidebarGroupLabel = defineComponent({
   inheritAttrs: false,
   name: "SidebarGroupLabel",
-  setup(_, { attrs, slots }) {
+  props: {
+    recipe: {
+      default: sidebarRecipe,
+      type: Function as PropType<typeof sidebarRecipe>,
+    },
+  },
+  setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         "div",
@@ -547,9 +615,15 @@ export const SidebarGroupLabel = defineComponent({
 export const SidebarGroupAction = defineComponent({
   inheritAttrs: false,
   name: "SidebarGroupAction",
-  setup(_, { attrs, slots }) {
+  props: {
+    recipe: {
+      default: sidebarRecipe,
+      type: Function as PropType<typeof sidebarRecipe>,
+    },
+  },
+  setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         "div",
@@ -568,9 +642,15 @@ export const SidebarGroupAction = defineComponent({
 export const SidebarGroupContent = defineComponent({
   inheritAttrs: false,
   name: "SidebarGroupContent",
-  setup(_, { attrs, slots }) {
+  props: {
+    recipe: {
+      default: sidebarRecipe,
+      type: Function as PropType<typeof sidebarRecipe>,
+    },
+  },
+  setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         "div",
@@ -589,9 +669,15 @@ export const SidebarGroupContent = defineComponent({
 export const SidebarMenu = defineComponent({
   inheritAttrs: false,
   name: "SidebarMenu",
-  setup(_, { attrs, slots }) {
+  props: {
+    recipe: {
+      default: sidebarRecipe,
+      type: Function as PropType<typeof sidebarRecipe>,
+    },
+  },
+  setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         "div",
@@ -613,6 +699,10 @@ export const SidebarMenuButton = defineComponent({
   props: {
     className: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     isActive: { default: false, type: Boolean },
+    recipe: {
+      default: sidebarRecipe,
+      type: Function as PropType<typeof sidebarRecipe>,
+    },
     size: { default: undefined, type: String },
     tooltip: {
       default: undefined,
@@ -621,7 +711,7 @@ export const SidebarMenuButton = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarRecipe();
+      const variantSlots = props.recipe();
 
       const button = h(
         Button as ArkPart,
@@ -661,9 +751,15 @@ export const SidebarMenuButton = defineComponent({
 export const SidebarMenuItem = defineComponent({
   inheritAttrs: false,
   name: "SidebarMenuItem",
-  setup(_, { attrs, slots }) {
+  props: {
+    recipe: {
+      default: sidebarRecipe,
+      type: Function as PropType<typeof sidebarRecipe>,
+    },
+  },
+  setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         "div",
@@ -682,10 +778,16 @@ export const SidebarMenuItem = defineComponent({
 export const SidebarMenuSkeleton = defineComponent({
   inheritAttrs: false,
   name: "SidebarMenuSkeleton",
-  props: { className: { default: undefined, type: [String, Object, Array] as PropType<unknown> } },
+  props: {
+    className: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: sidebarRecipe,
+      type: Function as PropType<typeof sidebarRecipe>,
+    },
+  },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         "div",
@@ -708,9 +810,15 @@ export const SidebarMenuSkeleton = defineComponent({
 export const SidebarMenuSub = defineComponent({
   inheritAttrs: false,
   name: "SidebarMenuSub",
-  setup(_, { attrs, slots }) {
+  props: {
+    recipe: {
+      default: sidebarRecipe,
+      type: Function as PropType<typeof sidebarRecipe>,
+    },
+  },
+  setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         "div",
@@ -732,9 +840,15 @@ export const SidebarMenuSubItem = SidebarMenuItem;
 export const SidebarMenuAction = defineComponent({
   inheritAttrs: false,
   name: "SidebarMenuAction",
-  setup(_, { attrs, slots }) {
+  props: {
+    recipe: {
+      default: sidebarRecipe,
+      type: Function as PropType<typeof sidebarRecipe>,
+    },
+  },
+  setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         "div",
@@ -753,9 +867,15 @@ export const SidebarMenuAction = defineComponent({
 export const SidebarMenuBadge = defineComponent({
   inheritAttrs: false,
   name: "SidebarMenuBadge",
-  setup(_, { attrs, slots }) {
+  props: {
+    recipe: {
+      default: sidebarRecipe,
+      type: Function as PropType<typeof sidebarRecipe>,
+    },
+  },
+  setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = sidebarRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         "div",

@@ -10,6 +10,16 @@ export interface TabsPresetItem {
   label: VNodeChild;
   value: string;
 }
+
+export interface TabsRootProps {
+  /**
+   * Style recipe. Defaults to `tabsRecipe` from `@pisagor/recipes/tabs`.
+   *
+   * @defaultValue tabsRecipe
+   */
+  recipe?: typeof tabsRecipe;
+  class?: unknown;
+}
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];
@@ -21,11 +31,15 @@ export const TabsRoot = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     lazyMount: { default: true, type: Boolean },
+    recipe: {
+      default: tabsRecipe,
+      type: Function as PropType<typeof tabsRecipe>,
+    },
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = tabsRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         TabsPrimitive.Root as ArkPart,
@@ -46,11 +60,15 @@ export const TabsList = defineComponent({
   name: "TabsList",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: tabsRecipe,
+      type: Function as PropType<typeof tabsRecipe>,
+    },
     variant: { default: "default", type: String as PropType<"default" | "underline"> },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = tabsRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         TabsPrimitive.List as ArkPart,
@@ -74,10 +92,14 @@ export const TabsTrigger = defineComponent({
   name: "TabsTrigger",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: tabsRecipe,
+      type: Function as PropType<typeof tabsRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = tabsRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         TabsPrimitive.Trigger as ArkPart,
@@ -96,10 +118,14 @@ export const TabsContent = defineComponent({
   name: "TabsContent",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: tabsRecipe,
+      type: Function as PropType<typeof tabsRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = tabsRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         TabsPrimitive.Content as ArkPart,

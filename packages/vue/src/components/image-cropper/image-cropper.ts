@@ -28,6 +28,12 @@ export interface ImageCropperProps {
    * If not provided, the crop area can be freely resized.
    */
   aspectRatio?: number;
+  /**
+   * Style recipe. Defaults to `imageCropperRecipe` from `@pisagor/recipes/image-cropper`.
+   *
+   * @defaultValue imageCropperRecipe
+   */
+  recipe?: typeof imageCropperRecipe;
   class?: unknown;
   /** Shape of the crop selection area. */
   cropShape?: "rectangle" | "circle";
@@ -116,6 +122,10 @@ export const ImageCropperRoot = defineComponent({
       default: undefined,
       type: Function as PropType<ImageCropperProps["onZoomChange"]>,
     },
+    recipe: {
+      default: imageCropperRecipe,
+      type: Function as PropType<typeof imageCropperRecipe>,
+    },
     rotation: { default: undefined, type: Number },
     src: { default: undefined, type: String },
     zoom: { default: undefined, type: Number },
@@ -127,7 +137,7 @@ export const ImageCropperRoot = defineComponent({
         {
           ...attrs,
           aspectRatio: props.aspectRatio,
-          class: cn(imageCropperRecipe().base(), props.class),
+          class: cn(props.recipe().base(), props.class),
           cropShape: props.cropShape,
           fixedCropArea: props.fixedCropArea,
           initialCrop: props.initialCrop,
@@ -148,7 +158,7 @@ export const ImageCropperRoot = defineComponent({
           h(
             ImageCropperPrimitive.Viewport as ArkPart,
             {
-              class: cn(imageCropperRecipe().viewport()),
+              class: cn(props.recipe().viewport()),
             },
             () =>
               props.src
@@ -167,12 +177,16 @@ export const ImageCropperImage = defineComponent({
   name: "ImageCropper.Image",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: imageCropperRecipe,
+      type: Function as PropType<typeof imageCropperRecipe>,
+    },
   },
   setup(props, { attrs }) {
     return () =>
       h(ImageCropperPrimitive.Image as ArkPart, {
         ...attrs,
-        class: cn(imageCropperRecipe().image(), props.class),
+        class: cn(props.recipe().image(), props.class),
       });
   },
 });
@@ -183,13 +197,17 @@ export const ImageCropperGrid = defineComponent({
   props: {
     axis: { required: true, type: String as PropType<"horizontal" | "vertical"> },
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: imageCropperRecipe,
+      type: Function as PropType<typeof imageCropperRecipe>,
+    },
   },
   setup(props, { attrs }) {
     return () =>
       h(ImageCropperPrimitive.Grid as ArkPart, {
         ...attrs,
         axis: props.axis,
-        class: cn(imageCropperRecipe().grid(), props.class),
+        class: cn(props.recipe().grid(), props.class),
       });
   },
 });
@@ -200,10 +218,14 @@ export const ImageCropperHandle = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     position: { required: true, type: String as PropType<ImageCropperHandlePosition> },
+    recipe: {
+      default: imageCropperRecipe,
+      type: Function as PropType<typeof imageCropperRecipe>,
+    },
   },
   setup(props, { attrs }) {
     return () => {
-      const slots = imageCropperRecipe();
+      const slots = props.recipe();
 
       return h(
         ImageCropperPrimitive.Handle as ArkPart,
@@ -224,6 +246,10 @@ export const ImageCropperSelection = defineComponent({
   props: {
     axis: { default: "both", type: String as PropType<ImageCropperSelectionProps["axis"]> },
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: imageCropperRecipe,
+      type: Function as PropType<typeof imageCropperRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -231,7 +257,7 @@ export const ImageCropperSelection = defineComponent({
         ImageCropperPrimitive.Selection as ArkPart,
         {
           ...attrs,
-          class: cn(imageCropperRecipe().selection(), props.class),
+          class: cn(props.recipe().selection(), props.class),
         },
         () => [
           slots.default?.(),

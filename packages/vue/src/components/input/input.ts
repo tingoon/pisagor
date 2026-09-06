@@ -21,6 +21,18 @@ type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
 
 // #region Types
 export interface InputProps extends InputRootVariantProps {
+  /**
+   * Style recipe. Defaults to `inputRecipe` from `@pisagor/recipes/input`.
+   *
+   * @defaultValue inputRecipe
+   */
+  recipe?: typeof inputRecipe;
+  /**
+   * Style recipe. Defaults to `inputRootRecipe` from `@pisagor/recipes/input-root`.
+   *
+   * @defaultValue inputRootRecipe
+   */
+  rootRecipe?: typeof inputRootRecipe;
   class?: unknown;
   classNames?: InputClassNames;
   clearable?: boolean;
@@ -50,6 +62,14 @@ export const Input = defineComponent({
     onChange: { default: undefined, type: Function as PropType<InputProps["onChange"]> },
     onValueChange: { default: undefined, type: Function as PropType<InputProps["onValueChange"]> },
     readOnly: { default: undefined, type: Boolean },
+    recipe: {
+      default: inputRecipe,
+      type: Function as PropType<typeof inputRecipe>,
+    },
+    rootRecipe: {
+      default: inputRootRecipe,
+      type: Function as PropType<typeof inputRootRecipe>,
+    },
     size: { default: "md", type: String as PropType<InputProps["size"]> },
     type: { default: "text", type: String },
     value: { default: undefined, type: [String, Number, Array] as PropType<InputProps["value"]> },
@@ -81,7 +101,7 @@ export const Input = defineComponent({
       const skipClearable = !props.clearable || props.type === "file" || props.type === "password";
       const shellArgs = { variant: resolved.variant };
       const controlProps = { "data-variant": resolved.variant };
-      const slots = inputRecipe();
+      const slots = props.recipe();
 
       const changeHandler = skipClearable
         ? props.onChange || props.onValueChange
@@ -97,7 +117,7 @@ export const Input = defineComponent({
         return h(FieldPrimitive.Input as ArkPart, {
           ...attrs,
           ...controlProps,
-          class: cn(inputRootRecipe({ size: props.size, ...shellArgs }), props.class),
+          class: cn(props.rootRecipe({ size: props.size, ...shellArgs }), props.class),
           "data-size": props.size,
           defaultValue: props.defaultValue,
           disabled: props.disabled,

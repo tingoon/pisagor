@@ -8,6 +8,12 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 export interface ItemProps extends ItemVariantProps {
+  /**
+   * Style recipe. Defaults to `itemRecipe` from `@pisagor/recipes/item`.
+   *
+   * @defaultValue itemRecipe
+   */
+  recipe?: typeof itemRecipe;
   class?: unknown;
 }
 
@@ -26,6 +32,10 @@ export const ItemRoot = defineComponent({
   name: "ItemRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: itemRecipe,
+      type: Function as PropType<typeof itemRecipe>,
+    },
     variant: {
       default: undefined,
       type: String as PropType<ItemVariantProps["variant"]>,
@@ -33,7 +43,7 @@ export const ItemRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     const groupRef = useItemGroupContextRef();
-    const itemSlots = itemRecipe();
+    const itemSlots = props.recipe();
 
     provideItemContext(
       computed(() => {

@@ -13,6 +13,16 @@ type ArkPart = Parameters<typeof h>[0];
 export interface PaginationItemLinkProps extends ButtonProps {
   page?: "previous" | "next" | number;
 }
+
+export interface PaginationRootProps {
+  /**
+   * Style recipe. Defaults to `paginationRecipe` from `@pisagor/recipes/pagination`.
+   *
+   * @defaultValue paginationRecipe
+   */
+  recipe?: typeof paginationRecipe;
+  class?: unknown;
+}
 // #endregion
 
 // #region Parts
@@ -21,10 +31,14 @@ export const PaginationRoot = defineComponent({
   name: "PaginationRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: paginationRecipe,
+      type: Function as PropType<typeof paginationRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = paginationRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         PaginationPrimitive.Root as ArkPart,
@@ -72,10 +86,14 @@ export const PaginationItem = defineComponent({
   name: "PaginationItem",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: paginationRecipe,
+      type: Function as PropType<typeof paginationRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = paginationRecipe();
+      const variantSlots = props.recipe();
 
       return h(PaginationPrimitive.Item as ArkPart, { ...attrs, asChild: true }, () =>
         h(
@@ -171,10 +189,14 @@ export const PaginationEllipsis = defineComponent({
   name: "PaginationEllipsis",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: paginationRecipe,
+      type: Function as PropType<typeof paginationRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = paginationRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         PaginationPrimitive.Ellipsis as ArkPart,

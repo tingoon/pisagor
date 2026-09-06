@@ -7,6 +7,12 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 export interface ProseProps {
+  /**
+   * Style recipe. Defaults to `proseRecipe` from `@pisagor/recipes/prose`.
+   *
+   * @defaultValue proseRecipe
+   */
+  recipe?: typeof proseRecipe;
   class?: unknown;
   /**
    * Trusted HTML content rendered as-is.
@@ -25,6 +31,10 @@ export const Prose = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     html: { default: undefined, type: String },
+    recipe: {
+      default: proseRecipe,
+      type: Function as PropType<typeof proseRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -32,7 +42,7 @@ export const Prose = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: cn(proseRecipe(), props.class),
+          class: cn(props.recipe(), props.class),
           "data-part": "root",
           "data-scope": "prose",
           ...(props.html ? { innerHTML: props.html } : null),

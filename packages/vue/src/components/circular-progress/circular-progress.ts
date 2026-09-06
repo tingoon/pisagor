@@ -11,6 +11,12 @@ import type { VariantClassNames } from "../../internal/types";
 type CircularProgressClassNames = VariantClassNames<CircularProgressRecipeSlot>;
 
 export interface CircularProgressProps {
+  /**
+   * Style recipe. Defaults to `circularProgressRecipe` from `@pisagor/recipes/circular-progress`.
+   *
+   * @defaultValue circularProgressRecipe
+   */
+  recipe?: typeof circularProgressRecipe;
   class?: unknown;
   classNames?: CircularProgressClassNames;
   indeterminate?: boolean;
@@ -31,15 +37,19 @@ const CircularProgressTrack = defineComponent({
   name: "CircularProgressTrack",
   props: {
     classNames: { default: undefined, type: Object as PropType<CircularProgressClassNames> },
+    recipe: {
+      default: circularProgressRecipe,
+      type: Function as PropType<typeof circularProgressRecipe>,
+    },
     size: { default: 32, type: Number },
     thickness: { default: 4, type: Number },
     trackProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
   },
   setup(props) {
     const progress = useProgressContext();
-    const slots = circularProgressRecipe();
 
     return () => {
+      const slots = props.recipe();
       const { max, min, value } = progress.value;
       const radius = props.size / 2 - props.thickness / 2;
       const circumference = 2 * Math.PI * radius;
@@ -110,6 +120,10 @@ export const CircularProgress = defineComponent({
     classNames: { default: undefined, type: Object as PropType<CircularProgressClassNames> },
     indeterminate: { default: false, type: Boolean },
     isValueVisible: { default: undefined, type: Boolean },
+    recipe: {
+      default: circularProgressRecipe,
+      type: Function as PropType<typeof circularProgressRecipe>,
+    },
     size: { default: 32, type: Number },
     thickness: { default: 4, type: Number },
     trackProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
@@ -117,7 +131,7 @@ export const CircularProgress = defineComponent({
     valueProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
   },
   setup(props, { attrs, slots }) {
-    const slotsVariants = computed(() => circularProgressRecipe());
+    const slotsVariants = computed(() => props.recipe());
 
     return () => {
       const variantSlots = slotsVariants.value;
@@ -145,6 +159,7 @@ export const CircularProgress = defineComponent({
       children.push(
         h(CircularProgressTrack, {
           classNames: props.classNames,
+          recipe: props.recipe,
           size: props.size,
           thickness: props.thickness,
           trackProps: props.trackProps,

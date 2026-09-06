@@ -23,12 +23,34 @@ export interface InputGroupProps extends FormControlGroupShellVariantProps {
 
 export interface InputGroupAddonProps {
   align?: "block-end" | "block-start" | "inline-end" | "inline-start";
+  /**
+   * Style recipe. Defaults to `inputGroupAddonRecipe` from `@pisagor/recipes/input-group`.
+   *
+   * @defaultValue inputGroupAddonRecipe
+   */
+  recipe?: typeof inputGroupAddonRecipe;
   class?: unknown;
 }
 
-export interface InputGroupButtonProps extends Omit<ButtonProps, "size"> {
+export interface InputGroupButtonProps extends Omit<ButtonProps, "size" | "recipe"> {
   onClick?: (event: MouseEvent) => void;
   size?: InputGroupButtonSize;
+  /**
+   * Style recipe. Defaults to `inputGroupButtonRecipe` from `@pisagor/recipes/input-group`.
+   *
+   * @defaultValue inputGroupButtonRecipe
+   */
+  recipe?: typeof inputGroupButtonRecipe;
+}
+
+export interface InputGroupTextProps {
+  /**
+   * Style recipe. Defaults to `inputGroupTextRecipe` from `@pisagor/recipes/input-group`.
+   *
+   * @defaultValue inputGroupTextRecipe
+   */
+  recipe?: typeof inputGroupTextRecipe;
+  class?: unknown;
 }
 // #endregion
 
@@ -76,6 +98,10 @@ export const InputGroupAddon = defineComponent({
       type: String as PropType<InputGroupAddonProps["align"]>,
     },
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: inputGroupAddonRecipe,
+      type: Function as PropType<typeof inputGroupAddonRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -83,7 +109,7 @@ export const InputGroupAddon = defineComponent({
         "div",
         {
           ...attrs,
-          class: cn(inputGroupAddonRecipe({ align: props.align }), props.class),
+          class: cn(props.recipe({ align: props.align }), props.class),
           "data-align": props.align,
           "data-part": "addon",
           "data-scope": "input-group",
@@ -107,6 +133,10 @@ export const InputGroupButton = defineComponent({
   name: "InputGroupButton",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: inputGroupButtonRecipe,
+      type: Function as PropType<typeof inputGroupButtonRecipe>,
+    },
     size: { default: "xs", type: String as PropType<InputGroupButtonSize> },
     variant: { default: "ghost", type: String as PropType<ButtonProps["variant"]> },
   },
@@ -116,7 +146,7 @@ export const InputGroupButton = defineComponent({
         Button as ArkPart,
         {
           ...attrs,
-          class: cn(inputGroupButtonRecipe({ size: props.size }), props.class),
+          class: cn(props.recipe({ size: props.size }), props.class),
           "data-part": "button",
           "data-scope": "input-group",
           "data-size": props.size,
@@ -133,6 +163,10 @@ export const InputGroupText = defineComponent({
   name: "InputGroupText",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: inputGroupTextRecipe,
+      type: Function as PropType<typeof inputGroupTextRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -140,7 +174,7 @@ export const InputGroupText = defineComponent({
         "span",
         {
           ...attrs,
-          class: cn(inputGroupTextRecipe(), props.class),
+          class: cn(props.recipe(), props.class),
           "data-part": "text",
           "data-scope": "input-group",
         },

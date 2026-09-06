@@ -33,6 +33,12 @@ interface CommandDialogContentProps extends DialogContentProps {
    * @defaultValue "Command Palette"
    */
   title?: string;
+  /**
+   * Style recipe. Defaults to `commandRecipe` from `@pisagor/recipes/command`.
+   *
+   * @defaultValue commandRecipe
+   */
+  recipe?: typeof commandRecipe;
 }
 
 interface CommandInputProps {
@@ -72,6 +78,10 @@ export const CommandDialogContent = defineComponent({
       default: "Search for a command to run...",
       type: String as PropType<CommandDialogContentProps["description"]>,
     },
+    recipe: {
+      default: commandRecipe,
+      type: Function as PropType<typeof commandRecipe>,
+    },
     size: {
       default: "lg",
       type: String as PropType<DialogContentProps["size"]>,
@@ -83,7 +93,7 @@ export const CommandDialogContent = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = commandRecipe();
+      const variantSlots = props.recipe();
       const dialogSlots = dialogRecipe();
 
       return commandTeleport([
@@ -129,11 +139,15 @@ export const CommandRoot = defineComponent({
       default: undefined,
       type: Function as PropType<CommandProps["onValueChange"]>,
     },
+    recipe: {
+      default: commandRecipe,
+      type: Function as PropType<typeof commandRecipe>,
+    },
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = commandRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         Combobox.Root as ArkPart,
@@ -163,10 +177,14 @@ export const CommandContent = defineComponent({
   name: "CommandContent",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: commandRecipe,
+      type: Function as PropType<typeof commandRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = commandRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ComboboxPrimitive.Content as ArkPart,
@@ -186,11 +204,15 @@ export const CommandInput = defineComponent({
   name: "CommandInput",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: commandRecipe,
+      type: Function as PropType<typeof commandRecipe>,
+    },
     size: { default: undefined, type: String as PropType<CommandInputProps["size"]> },
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = commandRecipe();
+      const variantSlots = props.recipe();
 
       return h(ComboboxPrimitive.Control as ArkPart, { class: variantSlots.control() }, () =>
         h(
@@ -219,10 +241,14 @@ export const CommandList = defineComponent({
   name: "CommandList",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: commandRecipe,
+      type: Function as PropType<typeof commandRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = commandRecipe();
+      const variantSlots = props.recipe();
 
       return h("div", { class: variantSlots.listWrapper() }, () =>
         h(
@@ -244,10 +270,14 @@ export const CommandEmpty = defineComponent({
   name: "CommandEmpty",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: commandRecipe,
+      type: Function as PropType<typeof commandRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = commandRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         Combobox.Empty as ArkPart,
@@ -324,10 +354,14 @@ export const CommandSeparator = defineComponent({
   name: "CommandSeparator",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: commandRecipe,
+      type: Function as PropType<typeof commandRecipe>,
+    },
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = commandRecipe();
+      const variantSlots = props.recipe();
 
       return h(Separator as ArkPart, {
         ...attrs,
@@ -362,10 +396,14 @@ export const CommandFooter = defineComponent({
   name: "CommandFooter",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: commandRecipe,
+      type: Function as PropType<typeof commandRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = commandRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         "div",

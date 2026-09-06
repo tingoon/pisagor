@@ -6,16 +6,42 @@ import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
 
+// #region Types
+export interface StepsItemProps {
+  /**
+   * Style recipe. Defaults to `stepsItemRecipe` from `@pisagor/recipes/steps-item`.
+   *
+   * @defaultValue stepsItemRecipe
+   */
+  itemRecipe?: typeof stepsItemRecipe;
+  class?: unknown;
+}
+
+export interface StepsRootProps {
+  /**
+   * Style recipe. Defaults to `stepsRecipe` from `@pisagor/recipes/steps`.
+   *
+   * @defaultValue stepsRecipe
+   */
+  recipe?: typeof stepsRecipe;
+  class?: unknown;
+}
+// #endregion
+
 // #region Parts
 export const StepsRoot = defineComponent({
   inheritAttrs: false,
   name: "StepsRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: stepsRecipe,
+      type: Function as PropType<typeof stepsRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = stepsRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         StepsPrimitive.Root as ArkPart,
@@ -34,10 +60,14 @@ export const StepsList = defineComponent({
   name: "StepsList",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: stepsRecipe,
+      type: Function as PropType<typeof stepsRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = stepsRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         StepsPrimitive.List as ArkPart,
@@ -56,10 +86,14 @@ export const StepsItem = defineComponent({
   name: "StepsItem",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    itemRecipe: {
+      default: stepsItemRecipe,
+      type: Function as PropType<typeof stepsItemRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = stepsItemRecipe();
+      const variantSlots = props.itemRecipe();
 
       return h(
         StepsPrimitive.Item as ArkPart,
@@ -78,10 +112,14 @@ export const StepsTrigger = defineComponent({
   name: "StepsTrigger",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    itemRecipe: {
+      default: stepsItemRecipe,
+      type: Function as PropType<typeof stepsItemRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = stepsItemRecipe();
+      const variantSlots = props.itemRecipe();
 
       return h(
         StepsPrimitive.Trigger as ArkPart,
@@ -100,10 +138,14 @@ export const StepsIndicator = defineComponent({
   name: "StepsIndicator",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    itemRecipe: {
+      default: stepsItemRecipe,
+      type: Function as PropType<typeof stepsItemRecipe>,
+    },
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const variantSlots = stepsItemRecipe();
+      const variantSlots = props.itemRecipe();
 
       return h(
         StepsPrimitive.Indicator as ArkPart,
@@ -125,10 +167,14 @@ export const StepsSeparator = defineComponent({
   name: "StepsSeparator",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    itemRecipe: {
+      default: stepsItemRecipe,
+      type: Function as PropType<typeof stepsItemRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = stepsItemRecipe();
+      const variantSlots = props.itemRecipe();
 
       return h(
         StepsPrimitive.Separator as ArkPart,
@@ -147,10 +193,14 @@ export const StepsTitle = defineComponent({
   name: "StepsTitle",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    itemRecipe: {
+      default: stepsItemRecipe,
+      type: Function as PropType<typeof stepsItemRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = stepsItemRecipe();
+      const variantSlots = props.itemRecipe();
 
       return h(
         ark.span as ArkPart,
@@ -171,10 +221,14 @@ export const StepsDescription = defineComponent({
   name: "StepsDescription",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    itemRecipe: {
+      default: stepsItemRecipe,
+      type: Function as PropType<typeof stepsItemRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = stepsItemRecipe();
+      const variantSlots = props.itemRecipe();
 
       return h(
         ark.span as ArkPart,
@@ -195,10 +249,14 @@ export const StepsContent = defineComponent({
   name: "StepsContent",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: stepsRecipe,
+      type: Function as PropType<typeof stepsRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = stepsRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         StepsPrimitive.Content as ArkPart,
@@ -217,10 +275,14 @@ export const StepsCompletedContent = defineComponent({
   name: "StepsCompletedContent",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: stepsRecipe,
+      type: Function as PropType<typeof stepsRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = stepsRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         StepsPrimitive.CompletedContent as ArkPart,

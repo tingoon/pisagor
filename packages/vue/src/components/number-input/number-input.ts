@@ -18,6 +18,12 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 export interface NumberInputProps extends FormControlGroupShellVariantProps {
+  /**
+   * Style recipe. Defaults to `numberInputRecipe` from `@pisagor/recipes/number-input`.
+   *
+   * @defaultValue numberInputRecipe
+   */
+  recipe?: typeof numberInputRecipe;
   class?: unknown;
   clearable?: boolean;
   defaultValue?: string;
@@ -55,6 +61,10 @@ export const NumberInputRoot = defineComponent({
     },
     placeholder: { default: undefined, type: String },
     readOnly: { default: undefined, type: Boolean },
+    recipe: {
+      default: numberInputRecipe,
+      type: Function as PropType<typeof numberInputRecipe>,
+    },
     size: { default: "md", type: String as PropType<NumberInputProps["size"]> },
     step: { default: undefined, type: Number },
     value: { default: undefined, type: String },
@@ -66,7 +76,7 @@ export const NumberInputRoot = defineComponent({
         NumberInputPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(numberInputRecipe().base(), props.class),
+          class: cn(props.recipe().base(), props.class),
           "data-size": props.size,
           defaultValue: props.defaultValue,
           disabled: props.disabled,
@@ -106,6 +116,10 @@ export const NumberInputControl = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     clearable: { default: false, type: Boolean },
+    recipe: {
+      default: numberInputRecipe,
+      type: Function as PropType<typeof numberInputRecipe>,
+    },
     variant: { default: undefined, type: String as PropType<FormControlVariant> },
   },
   setup(props, { attrs, slots }) {
@@ -123,7 +137,7 @@ export const NumberInputControl = defineComponent({
           ...attrs,
           ...controlProps,
           class: cn(
-            numberInputRecipe().control(),
+            props.recipe().control(),
             formControlGroupShellRecipe({ size: "md", ...shellArgs }),
             props.class,
           ),
@@ -137,7 +151,13 @@ export const NumberInputControl = defineComponent({
 
 export const NumberInputClearTrigger = defineComponent({
   name: "NumberInputClearTrigger",
-  setup() {
+  props: {
+    recipe: {
+      default: numberInputRecipe,
+      type: Function as PropType<typeof numberInputRecipe>,
+    },
+  },
+  setup(props) {
     return () =>
       h(NumberInputPrimitive.Context as ArkPart, null, {
         default: (api: { setValue: (value: number) => void; value: string | undefined }) => {
@@ -149,7 +169,7 @@ export const NumberInputClearTrigger = defineComponent({
           }
 
           return h(InputClearButton as ArkPart, {
-            class: numberInputRecipe().clearTrigger(),
+            class: props.recipe().clearTrigger(),
             onClear: () => api.setValue(Number.NaN),
           });
         },
@@ -162,6 +182,10 @@ export const NumberInputDecrementTrigger = defineComponent({
   name: "NumberInputDecrementTrigger",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: numberInputRecipe,
+      type: Function as PropType<typeof numberInputRecipe>,
+    },
   },
   setup(props, { attrs }) {
     return () =>
@@ -170,7 +194,7 @@ export const NumberInputDecrementTrigger = defineComponent({
         {
           ...attrs,
           asChild: true,
-          class: cn(numberInputRecipe().decrementTrigger(), props.class),
+          class: cn(props.recipe().decrementTrigger(), props.class),
         },
         () =>
           h(Button as ArkPart, { "aria-label": "Decrement", variant: "ghost" }, () =>
@@ -185,6 +209,10 @@ export const NumberInputIncrementTrigger = defineComponent({
   name: "NumberInputIncrementTrigger",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: numberInputRecipe,
+      type: Function as PropType<typeof numberInputRecipe>,
+    },
   },
   setup(props, { attrs }) {
     return () =>
@@ -193,7 +221,7 @@ export const NumberInputIncrementTrigger = defineComponent({
         {
           ...attrs,
           asChild: true,
-          class: cn(numberInputRecipe().incrementTrigger(), props.class),
+          class: cn(props.recipe().incrementTrigger(), props.class),
         },
         () =>
           h(Button as ArkPart, { "aria-label": "Increment", variant: "ghost" }, () =>
@@ -210,6 +238,10 @@ export const NumberInputInput = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<InputProps["classNames"]> },
     placeholder: { default: undefined, type: String },
+    recipe: {
+      default: numberInputRecipe,
+      type: Function as PropType<typeof numberInputRecipe>,
+    },
     size: { default: undefined, type: String as PropType<NumberInputProps["size"]> },
     variant: { default: undefined, type: String as PropType<FormControlVariant> },
   },
@@ -218,7 +250,7 @@ export const NumberInputInput = defineComponent({
       h(NumberInputPrimitive.Input as ArkPart, { asChild: true, ...attrs }, () =>
         h(Input as ArkPart, {
           ...(attrs as object),
-          class: cn(numberInputRecipe().input(), props.class),
+          class: cn(props.recipe().input(), props.class),
           classNames: props.classNames,
           placeholder: props.placeholder,
           size: props.size,
@@ -233,6 +265,10 @@ export const NumberInputScrubber = defineComponent({
   name: "NumberInputScrubber",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: numberInputRecipe,
+      type: Function as PropType<typeof numberInputRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -241,7 +277,7 @@ export const NumberInputScrubber = defineComponent({
         {
           ...attrs,
           asChild: true,
-          class: cn(numberInputRecipe().scrubber(), props.class),
+          class: cn(props.recipe().scrubber(), props.class),
         },
         () =>
           h(NumberInputPrimitive.Label as ArkPart, { asChild: true }, () =>

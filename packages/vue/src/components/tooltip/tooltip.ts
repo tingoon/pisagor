@@ -11,6 +11,12 @@ type TooltipClassNames = VariantClassNames<TooltipRecipeSlot>;
 export interface TooltipProps {
   arrowProps?: Record<string, unknown>;
   children: VNodeChild | TooltipTriggerHandle;
+  /**
+   * Style recipe. Defaults to `tooltipRecipe` from `@pisagor/recipes/tooltip`.
+   *
+   * @defaultValue tooltipRecipe
+   */
+  recipe?: typeof tooltipRecipe;
   classNames?: TooltipClassNames;
   closeDelay?: number;
   content: VNodeChild;
@@ -53,12 +59,16 @@ export const Tooltip = defineComponent({
       default: () => ({ placement: "top" }),
       type: Object as PropType<Record<string, unknown>>,
     },
+    recipe: {
+      default: tooltipRecipe,
+      type: Function as PropType<typeof tooltipRecipe>,
+    },
     triggerProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs }) {
     return () => {
-      const slots = tooltipRecipe();
+      const slots = props.recipe();
       const trigger = isTriggerHandle(props.children)
         ? h(TooltipPrimitive.Context as ArkPart, null, {
             default: (api: { getTriggerProps: () => Record<string, unknown> }) =>

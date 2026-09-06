@@ -28,7 +28,6 @@ interface RichTextEditorContextValue {
 
 export interface RichTextEditorRootProps {
   "aria-label"?: string;
-  class?: unknown;
   /** Initial HTML content for uncontrolled usage. */
   defaultValue?: string;
   /** Whether the editor is disabled. */
@@ -48,6 +47,13 @@ export interface RichTextEditorRootProps {
   value?: string;
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
+  /**
+   * Style recipe. Defaults to `richTextEditorRecipe` from `@pisagor/recipes/rich-text-editor`.
+   *
+   * @defaultValue richTextEditorRecipe
+   */
+  recipe?: typeof richTextEditorRecipe;
+  class?: unknown;
 }
 
 export interface RichTextEditorToolbarProps {
@@ -87,6 +93,10 @@ const richTextEditorRootProps = {
     type: Function as PropType<RichTextEditorRootProps["onValueChange"]>,
   },
   readOnly: { default: false, type: Boolean },
+  recipe: {
+    default: richTextEditorRecipe,
+    type: Function as PropType<typeof richTextEditorRecipe>,
+  },
   value: { default: undefined, type: String },
   variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
 };
@@ -97,7 +107,7 @@ export const RichTextEditorRoot = defineComponent({
   name: "RichTextEditorRoot",
   props: richTextEditorRootProps,
   setup(props, { attrs, slots }) {
-    const recipeSlots = richTextEditorRecipe();
+    const recipeSlots = props.recipe();
 
     const editor = useEditor({
       content: props.value ?? props.defaultValue ?? "<p></p>",

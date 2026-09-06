@@ -9,10 +9,29 @@ type FormControlVariant = "primary" | "secondary";
 
 type ArkPart = Parameters<typeof h>[0];
 
+// #region Types
+export interface CheckboxGroupProps {
+  /**
+   * Style recipe. Defaults to `checkboxGroupRecipe` from `@pisagor/recipes/checkbox`.
+   *
+   * @defaultValue checkboxGroupRecipe
+   */
+  recipe?: typeof checkboxGroupRecipe;
+  class?: unknown;
+}
+
 export interface CheckboxProps {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
+  /**
+   * Style recipe. Defaults to `checkboxRecipe` from `@pisagor/recipes/checkbox`.
+   *
+   * @defaultValue checkboxRecipe
+   */
+  recipe?: typeof checkboxRecipe;
+  class?: unknown;
 }
+// #endregion
 
 // #region Parts
 export const CheckboxGroup = defineComponent({
@@ -23,6 +42,10 @@ export const CheckboxGroup = defineComponent({
   name: "CheckboxGroup",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: checkboxGroupRecipe,
+      type: Function as PropType<typeof checkboxGroupRecipe>,
+    },
   },
   setup(props, { attrs, emit, slots }) {
     return () =>
@@ -30,7 +53,7 @@ export const CheckboxGroup = defineComponent({
         CheckboxPrimitive.Group as ArkPart,
         {
           ...attrs,
-          class: cn(checkboxGroupRecipe(), props.class),
+          class: cn(props.recipe(), props.class),
           onValueChange: (value: string[]) => emit("valueChange", value),
         },
         slots,
@@ -47,6 +70,10 @@ export const CheckboxRoot = defineComponent({
   name: "CheckboxRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: checkboxRecipe,
+      type: Function as PropType<typeof checkboxRecipe>,
+    },
     tabIndex: { default: undefined, type: Number },
     variant: { default: undefined, type: String as PropType<FormControlVariant> },
   },
@@ -58,7 +85,7 @@ export const CheckboxRoot = defineComponent({
       };
       const shellArgs = { variant: resolved.variant };
       const controlProps = { "data-variant": resolved.variant };
-      const slots = checkboxRecipe();
+      const slots = props.recipe();
 
       return h(
         CheckboxPrimitive.Root as ArkPart,
