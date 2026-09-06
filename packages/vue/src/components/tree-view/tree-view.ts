@@ -41,11 +41,47 @@ export interface TreeViewProps {
   fileIcons?: Record<string, unknown | null>;
   lazyMount?: boolean;
   unmountOnExit?: boolean;
+  /**
+   * Style recipe. Defaults to `treeViewRecipe` from `@pisagor/recipes/tree-view`.
+   *
+   * @defaultValue treeViewRecipe
+   */
+  recipe?: typeof treeViewRecipe;
   class?: unknown;
 }
 
 export interface NodeProviderProps<T extends TreeNodeType = TreeNodeType> {
   value: T;
+}
+
+export interface TreeViewBranchProps {
+  /**
+   * Style recipe. Defaults to `treeViewBranchRecipe` from `@pisagor/recipes/tree-view`.
+   *
+   * @defaultValue treeViewBranchRecipe
+   */
+  branchRecipe?: typeof treeViewBranchRecipe;
+  class?: unknown;
+}
+
+export interface TreeViewItemProps {
+  /**
+   * Style recipe. Defaults to `treeViewItemRecipe` from `@pisagor/recipes/tree-view`.
+   *
+   * @defaultValue treeViewItemRecipe
+   */
+  itemRecipe?: typeof treeViewItemRecipe;
+  class?: unknown;
+}
+
+export interface TreeViewItemTitleProps {
+  /**
+   * Style recipe. Defaults to `treeViewItemRecipe` from `@pisagor/recipes/tree-view`.
+   *
+   * @defaultValue treeViewItemRecipe
+   */
+  itemRecipe?: typeof treeViewItemRecipe;
+  class?: unknown;
 }
 // #endregion
 
@@ -85,13 +121,17 @@ export const TreeViewRoot = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     fileIcons: { default: undefined, type: Object as PropType<Record<string, unknown | null>> },
     lazyMount: { default: true, type: Boolean },
+    recipe: {
+      default: treeViewRecipe,
+      type: Function as PropType<typeof treeViewRecipe>,
+    },
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
     provideTreeViewContext({ fileIcons: props.fileIcons });
 
     return () => {
-      const variantSlots = treeViewRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         TreeViewPrimitive.Root as ArkPart,
@@ -112,10 +152,14 @@ export const TreeViewLabel = defineComponent({
   name: "TreeViewLabel",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: treeViewRecipe,
+      type: Function as PropType<typeof treeViewRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = treeViewRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         TreeViewPrimitive.Label as ArkPart,
@@ -134,10 +178,14 @@ export const TreeViewTree = defineComponent({
   name: "TreeViewTree",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: treeViewRecipe,
+      type: Function as PropType<typeof treeViewRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = treeViewRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         TreeViewPrimitive.Tree as ArkPart,
@@ -163,9 +211,15 @@ export const TreeViewNodeProvider = defineComponent({
 export const TreeViewBranch = defineComponent({
   inheritAttrs: false,
   name: "TreeViewBranch",
-  setup(_, { attrs, slots }) {
+  props: {
+    branchRecipe: {
+      default: treeViewBranchRecipe,
+      type: Function as PropType<typeof treeViewBranchRecipe>,
+    },
+  },
+  setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = treeViewBranchRecipe();
+      const variantSlots = props.branchRecipe();
 
       return h(
         TreeViewPrimitive.Branch as ArkPart,
@@ -179,9 +233,15 @@ export const TreeViewBranch = defineComponent({
 export const TreeViewBranchIndicator = defineComponent({
   inheritAttrs: false,
   name: "TreeViewBranchIndicator",
-  setup(_, { attrs, slots }) {
+  props: {
+    branchRecipe: {
+      default: treeViewBranchRecipe,
+      type: Function as PropType<typeof treeViewBranchRecipe>,
+    },
+  },
+  setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = treeViewBranchRecipe();
+      const variantSlots = props.branchRecipe();
 
       return h(
         TreeViewPrimitive.BranchIndicator as ArkPart,
@@ -199,11 +259,15 @@ export const TreeViewBranchContent = defineComponent({
   inheritAttrs: false,
   name: "TreeViewBranchContent",
   props: {
+    branchRecipe: {
+      default: treeViewBranchRecipe,
+      type: Function as PropType<typeof treeViewBranchRecipe>,
+    },
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const variantSlots = treeViewBranchRecipe();
+      const variantSlots = props.branchRecipe();
 
       return h(
         TreeViewPrimitive.BranchContent as ArkPart,
@@ -211,7 +275,10 @@ export const TreeViewBranchContent = defineComponent({
           ...attrs,
           class: variantSlots.content({ class: props.class }),
         },
-        () => [h(TreeViewBranchIndentGuide), children.default?.()],
+        () => [
+          h(TreeViewBranchIndentGuide, { branchRecipe: props.branchRecipe }),
+          children.default?.(),
+        ],
       );
     };
   },
@@ -220,9 +287,15 @@ export const TreeViewBranchContent = defineComponent({
 const TreeViewBranchIndentGuide = defineComponent({
   inheritAttrs: false,
   name: "TreeViewBranchIndentGuide",
-  setup(_, { attrs, slots: children }) {
+  props: {
+    branchRecipe: {
+      default: treeViewBranchRecipe,
+      type: Function as PropType<typeof treeViewBranchRecipe>,
+    },
+  },
+  setup(props, { attrs, slots: children }) {
     return () => {
-      const variantSlots = treeViewBranchRecipe();
+      const variantSlots = props.branchRecipe();
 
       return h(
         TreeViewPrimitive.BranchIndentGuide as ArkPart,
@@ -243,10 +316,14 @@ export const TreeViewBranchControl = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     expandedIcon: { default: undefined, type: Object as PropType<ArkPart | null> },
     icon: { default: undefined, type: Object as PropType<ArkPart | null> },
+    recipe: {
+      default: treeViewRecipe,
+      type: Function as PropType<typeof treeViewRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = treeViewRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         TreeViewPrimitive.BranchControl as ArkPart,
@@ -269,6 +346,10 @@ const TreeViewBranchTitle = defineComponent({
   inheritAttrs: false,
   name: "TreeViewBranchTitle",
   props: {
+    branchRecipe: {
+      default: treeViewBranchRecipe,
+      type: Function as PropType<typeof treeViewBranchRecipe>,
+    },
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     expandedIcon: { default: undefined, type: Object as PropType<ArkPart | null> },
     icon: { default: undefined, type: Object as PropType<ArkPart | null> },
@@ -291,7 +372,7 @@ const TreeViewBranchTitle = defineComponent({
 
           const showCollapsedIcon = IconComponent !== null && !expanded;
           const showExpandedIcon = ExpandedIconComponent !== null && expanded;
-          const variantSlots = treeViewBranchRecipe();
+          const variantSlots = props.branchRecipe();
 
           return h(
             TreeViewPrimitive.BranchText as ArkPart,
@@ -319,9 +400,15 @@ const TreeViewBranchTitle = defineComponent({
 export const TreeViewItem = defineComponent({
   inheritAttrs: false,
   name: "TreeViewItem",
-  setup(_, { attrs, slots }) {
+  props: {
+    recipe: {
+      default: treeViewRecipe,
+      type: Function as PropType<typeof treeViewRecipe>,
+    },
+  },
+  setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = treeViewRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         TreeViewPrimitive.Item as ArkPart,
@@ -337,10 +424,14 @@ export const TreeViewItemTitle = defineComponent({
   name: "TreeViewItemTitle",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    itemRecipe: {
+      default: treeViewItemRecipe,
+      type: Function as PropType<typeof treeViewItemRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = treeViewItemRecipe();
+      const variantSlots = props.itemRecipe();
 
       return h(
         TreeViewPrimitive.ItemText as ArkPart,
@@ -357,9 +448,15 @@ export const TreeViewItemTitle = defineComponent({
 const TreeViewItemIcon = defineComponent({
   inheritAttrs: false,
   name: "TreeViewItemIcon",
-  setup(_, { attrs, slots }) {
+  props: {
+    itemRecipe: {
+      default: treeViewItemRecipe,
+      type: Function as PropType<typeof treeViewItemRecipe>,
+    },
+  },
+  setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = treeViewItemRecipe();
+      const variantSlots = props.itemRecipe();
 
       return h(
         ark.span as ArkPart,
@@ -380,10 +477,14 @@ export const TreeViewNodeInput = defineComponent({
   name: "TreeViewNodeInput",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    itemRecipe: {
+      default: treeViewItemRecipe,
+      type: Function as PropType<typeof treeViewItemRecipe>,
+    },
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = treeViewItemRecipe();
+      const variantSlots = props.itemRecipe();
 
       return h(
         TreeViewPrimitive.NodeRenameInput as ArkPart,
@@ -403,6 +504,10 @@ export const TreeViewItemText = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     icon: { default: PhFile, type: Object as PropType<ArkPart> },
+    itemRecipe: {
+      default: treeViewItemRecipe,
+      type: Function as PropType<typeof treeViewItemRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     const treeViewContext = useTreeViewContext();
@@ -420,7 +525,7 @@ export const TreeViewItemText = defineComponent({
           const ResolvedIcon = getFileIcon(value);
 
           return h(Fragment, null, [
-            h(TreeViewItemIcon, null, () => h(ResolvedIcon)),
+            h(TreeViewItemIcon, { itemRecipe: props.itemRecipe }, () => h(ResolvedIcon)),
             renaming
               ? h(TreeViewNodeInput)
               : h(TreeViewItemTitle, { ...attrs, class: props.class }, () => slots.default?.()),
@@ -435,10 +540,14 @@ export const TreeViewNodeCheckbox = defineComponent({
   name: "TreeViewNodeCheckbox",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    itemRecipe: {
+      default: treeViewItemRecipe,
+      type: Function as PropType<typeof treeViewItemRecipe>,
+    },
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = treeViewItemRecipe();
+      const variantSlots = props.itemRecipe();
 
       return h(
         TreeViewPrimitive.NodeCheckbox as ArkPart,

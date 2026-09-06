@@ -34,6 +34,12 @@ export type ListboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   "onValueChange"
 > & {
   onValueChange?: (value: string | string[]) => void;
+  /**
+   * Style recipe. Defaults to `listboxRecipe` from `@pisagor/recipes/listbox`.
+   *
+   * @defaultValue listboxRecipe
+   */
+  recipe?: typeof listboxRecipe;
 };
 
 export interface ListboxProps extends Omit<ListboxRootProps, "children" | "collection"> {
@@ -41,7 +47,14 @@ export interface ListboxProps extends Omit<ListboxRootProps, "children" | "colle
   items?: ListboxPresetItem[];
 }
 
-export interface ListboxItemProps extends ListboxPrimitiveItemProps, ListboxItemVariantProps {}
+export interface ListboxItemProps extends ListboxPrimitiveItemProps, ListboxItemVariantProps {
+  /**
+   * Style recipe. Defaults to `listboxItemRecipe` from `@pisagor/recipes/listbox`.
+   *
+   * @defaultValue listboxItemRecipe
+   */
+  itemRecipe?: typeof listboxItemRecipe;
+}
 
 export interface ListboxItemGroupProps extends ListboxPrimitiveItemGroupProps {
   /** The heading of the listbox item group. */
@@ -52,12 +65,13 @@ export interface ListboxItemGroupProps extends ListboxPrimitiveItemGroupProps {
 
 // #region Parts
 export function ListboxRoot<T extends CollectionItem = CollectionItem>({
+  recipe = listboxRecipe,
   className,
   children,
   onValueChange,
   ...rest
 }: ListboxRootProps<T>) {
-  const slots = listboxRecipe();
+  const slots = recipe();
 
   return (
     <ListboxContext value={{ slots }}>
@@ -81,10 +95,11 @@ export function ListboxContent({ className, ...rest }: ListboxContentProps) {
 export function ListboxItem({
   variant = "default",
   children,
+  itemRecipe = listboxItemRecipe,
   className,
   ...rest
 }: ListboxItemProps) {
-  const slots = useMemo(() => listboxItemRecipe({ variant }), [variant]);
+  const slots = useMemo(() => itemRecipe({ variant }), [variant, itemRecipe]);
 
   return (
     <ListboxItemContext value={{ slots }}>

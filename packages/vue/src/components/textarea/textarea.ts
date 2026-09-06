@@ -20,6 +20,12 @@ type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
 
 // #region Types
 export interface TextareaProps extends FormControlShellVariantProps {
+  /**
+   * Style recipe. Defaults to `textareaRecipe` from `@pisagor/recipes/textarea`.
+   *
+   * @defaultValue textareaRecipe
+   */
+  recipe?: typeof textareaRecipe;
   class?: unknown;
   classNames?: TextareaClassNames;
   clearable?: boolean;
@@ -51,6 +57,10 @@ export const Textarea = defineComponent({
       type: Function as PropType<TextareaProps["onValueChange"]>,
     },
     readOnly: { default: undefined, type: Boolean },
+    recipe: {
+      default: textareaRecipe,
+      type: Function as PropType<typeof textareaRecipe>,
+    },
     value: {
       default: undefined,
       type: [String, Number, Array] as PropType<TextareaProps["value"]>,
@@ -78,7 +88,7 @@ export const Textarea = defineComponent({
       const skipClearable = !props.clearable;
       const shellArgs = { variant: resolved.variant };
       const controlProps = { "data-variant": resolved.variant };
-      const slots = textareaRecipe();
+      const slots = props.recipe();
 
       const changeHandler = skipClearable
         ? props.onChange || props.onValueChange

@@ -15,6 +15,12 @@ import type { VariantClassNames } from "../../internal/types";
 type ProgressClassNames = VariantClassNames<ProgressRecipeSlot>;
 
 export interface ProgressProps {
+  /**
+   * Style recipe. Defaults to `progressRecipe` from `@pisagor/recipes/progress`.
+   *
+   * @defaultValue progressRecipe
+   */
+  recipe?: typeof progressRecipe;
   class?: unknown;
   classNames?: ProgressClassNames;
   indeterminate?: boolean;
@@ -42,13 +48,17 @@ export const Progress = defineComponent({
     label: { default: undefined, type: String },
     orientation: { default: "horizontal", type: String as PropType<ProgressProps["orientation"]> },
     rangeProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
+    recipe: {
+      default: progressRecipe,
+      type: Function as PropType<typeof progressRecipe>,
+    },
     trackProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
     value: { default: undefined, type: Number },
     valueProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = progressRecipe();
+      const variantSlots = props.recipe();
       const showHeader = props.label || props.isValueVisible;
 
       return h(

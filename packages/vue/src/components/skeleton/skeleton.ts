@@ -9,6 +9,12 @@ export interface SkeletonTextProps {
 }
 
 export interface SkeletonProps {
+  /**
+   * Style recipe. Defaults to `skeletonRecipe` from `@pisagor/recipes/skeleton`.
+   *
+   * @defaultValue skeletonRecipe
+   */
+  recipe?: typeof skeletonRecipe;
   class?: unknown;
 }
 // #endregion
@@ -21,10 +27,14 @@ export const SkeletonRoot = defineComponent({
   name: "SkeletonRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: skeletonRecipe,
+      type: Function as PropType<typeof skeletonRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = skeletonRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -45,10 +55,14 @@ export const SkeletonCircle = defineComponent({
   name: "SkeletonCircle",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: skeletonRecipe,
+      type: Function as PropType<typeof skeletonRecipe>,
+    },
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = skeletonRecipe();
+      const variantSlots = props.recipe();
 
       return h(ark.div as ArkPart, {
         ...attrs,
@@ -66,10 +80,14 @@ export const SkeletonText = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     lines: { default: 2, type: Number },
+    recipe: {
+      default: skeletonRecipe,
+      type: Function as PropType<typeof skeletonRecipe>,
+    },
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = skeletonRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.div as ArkPart,

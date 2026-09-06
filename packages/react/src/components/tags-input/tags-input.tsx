@@ -35,37 +35,58 @@ export interface TagsInputProps extends TagsInputRootProps {
   /** Placeholder for the shorthand input. Defaults to empty. */
   placeholder?: string;
   onValueChange?: (value: string[]) => void;
+  /**
+   * Style recipe. Defaults to `tagsInputRecipe` from `@pisagor/recipes/tags-input`.
+   *
+   * @defaultValue tagsInputRecipe
+   */
+  recipe?: typeof tagsInputRecipe;
 }
 
-export type TagsInputControlProps = TagsInputPrimitiveControlProps &
-  Pick<InputGroupProps, "size" | "variant"> & {
-    /**
-     * Whether to show the clear button.
-     *
-     * @defaultValue false
-     */
-    clearable?: boolean;
-  };
+export interface TagsInputControlProps
+  extends TagsInputPrimitiveControlProps,
+    Pick<InputGroupProps, "size" | "variant"> {
+  /**
+   * Whether to show the clear button.
+   *
+   * @defaultValue false
+   */
+  clearable?: boolean;
+}
 
-export type TagsInputItemProps = TagsInputPrimitiveItemProps &
-  Pick<InputGroupProps, "size"> & {
-    /**
-     * Whether to show the clear trigger.
-     *
-     * @defaultValue false
-     */
-    showDelete?: boolean;
-  };
+export interface TagsInputItemProps
+  extends TagsInputPrimitiveItemProps,
+    Pick<InputGroupProps, "size"> {
+  /**
+   * Whether to show the clear trigger.
+   *
+   * @defaultValue false
+   */
+  showDelete?: boolean;
+  /**
+   * Style recipe. Defaults to `tagsInputItemRecipe` from `@pisagor/recipes/tags-input`.
+   *
+   * @defaultValue tagsInputItemRecipe
+   */
+  itemRecipe?: typeof tagsInputItemRecipe;
+}
 
-export type TagsInputRootProviderProps = TagsInputPrimitiveRootProviderProps &
-  Pick<InputGroupProps, "size"> & {
-    /**
-     * Whether to show the clear button.
-     *
-     * @defaultValue false
-     */
-    clearable?: boolean;
-  };
+export interface TagsInputRootProviderProps
+  extends TagsInputPrimitiveRootProviderProps,
+    Pick<InputGroupProps, "size"> {
+  /**
+   * Whether to show the clear button.
+   *
+   * @defaultValue false
+   */
+  clearable?: boolean;
+  /**
+   * Style recipe. Defaults to `tagsInputRecipe` from `@pisagor/recipes/tags-input`.
+   *
+   * @defaultValue tagsInputRecipe
+   */
+  recipe?: typeof tagsInputRecipe;
+}
 
 export type TagsInputItemDeleteTriggerProps = ComponentProps<
   typeof TagsInputPrimitive.ItemDeleteTrigger
@@ -85,10 +106,11 @@ export function TagsInputRoot({
   editable = false,
   placeholder,
   onValueChange,
+  recipe = tagsInputRecipe,
   className,
   ...rest
 }: TagsInputProps) {
-  const slots = tagsInputRecipe();
+  const slots = recipe();
 
   return (
     <TagsInputSlotsContext value={{ slots }}>
@@ -141,10 +163,11 @@ export function TagsInputControl({
 export function TagsInputItem({
   showDelete = true,
   children,
+  itemRecipe = tagsInputItemRecipe,
   className,
   ...rest
 }: TagsInputItemProps) {
-  const slots = tagsInputItemRecipe();
+  const slots = itemRecipe();
 
   return (
     <TagsInputItemContext value={{ slots }}>
@@ -237,10 +260,11 @@ export function TagsInputRootProvider({
   size = "md",
   clearable,
   children,
+  recipe = tagsInputRecipe,
   className,
   ...rest
 }: TagsInputRootProviderProps) {
-  const slots = tagsInputRecipe();
+  const slots = recipe();
 
   return (
     <TagsInputSlotsContext value={{ slots }}>

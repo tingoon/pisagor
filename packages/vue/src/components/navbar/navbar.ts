@@ -6,6 +6,16 @@ import type { VariantClassNames } from "../../internal/types";
 
 // #region Types
 type NavbarClassNames = VariantClassNames<NavbarRecipeSlot>;
+
+export interface NavbarRootProps {
+  /**
+   * Style recipe. Defaults to `navbarRecipe` from `@pisagor/recipes/navbar`.
+   *
+   * @defaultValue navbarRecipe
+   */
+  recipe?: typeof navbarRecipe;
+  class?: unknown;
+}
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];
@@ -17,10 +27,14 @@ export const NavbarRoot = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<NavbarClassNames> },
+    recipe: {
+      default: navbarRecipe,
+      type: Function as PropType<typeof navbarRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = navbarRecipe();
+      const slots$ = props.recipe();
 
       return h(
         ark.header as ArkPart,
@@ -42,10 +56,14 @@ export const NavbarBrand = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<NavbarClassNames> },
+    recipe: {
+      default: navbarRecipe,
+      type: Function as PropType<typeof navbarRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = navbarRecipe();
+      const slots$ = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -67,10 +85,14 @@ export const NavbarContent = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<NavbarClassNames> },
+    recipe: {
+      default: navbarRecipe,
+      type: Function as PropType<typeof navbarRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = navbarRecipe();
+      const slots$ = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -93,10 +115,14 @@ export const NavbarNav = defineComponent({
     ariaLabel: { default: "Main", type: String },
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<NavbarClassNames> },
+    recipe: {
+      default: navbarRecipe,
+      type: Function as PropType<typeof navbarRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = navbarRecipe();
+      const slots$ = props.recipe();
 
       return h(
         ark.nav as ArkPart,
@@ -119,10 +145,14 @@ export const NavbarActions = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<NavbarClassNames> },
+    recipe: {
+      default: navbarRecipe,
+      type: Function as PropType<typeof navbarRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = navbarRecipe();
+      const slots$ = props.recipe();
 
       return h(
         ark.div as ArkPart,

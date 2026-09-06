@@ -9,6 +9,12 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 export interface ItemGroupProps extends ItemVariantProps {
+  /**
+   * Style recipe. Defaults to `itemRecipe` from `@pisagor/recipes/item`.
+   *
+   * @defaultValue itemRecipe
+   */
+  recipe?: typeof itemRecipe;
   class?: unknown;
 }
 // #endregion
@@ -19,13 +25,17 @@ export const ItemGroup = defineComponent({
   name: "ItemGroup",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: itemRecipe,
+      type: Function as PropType<typeof itemRecipe>,
+    },
     variant: {
       default: "default",
       type: String as PropType<ItemVariantProps["variant"]>,
     },
   },
   setup(props, { attrs, slots }) {
-    const itemSlots = itemRecipe();
+    const itemSlots = props.recipe();
 
     provideItemGroupContext(
       computed(() => ({
@@ -54,9 +64,13 @@ export const ItemSeparator = defineComponent({
   name: "ItemSeparator",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: itemRecipe,
+      type: Function as PropType<typeof itemRecipe>,
+    },
   },
   setup(props, { attrs }) {
-    const itemSlots = itemRecipe();
+    const itemSlots = props.recipe();
 
     return () =>
       h(Separator as ArkPart, {

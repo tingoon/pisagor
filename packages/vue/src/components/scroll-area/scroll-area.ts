@@ -5,6 +5,12 @@ import type { VariantClassNames } from "../../internal/types";
 
 // #region Types
 export interface ScrollAreaProps {
+  /**
+   * Style recipe. Defaults to `scrollAreaRecipe` from `@pisagor/recipes/scroll-area`.
+   *
+   * @defaultValue scrollAreaRecipe
+   */
+  recipe?: typeof scrollAreaRecipe;
   class?: unknown;
   scrollFade?: boolean;
   /**
@@ -35,6 +41,10 @@ export const ScrollArea = defineComponent({
       default: undefined,
       type: Object as PropType<VariantClassNames<ScrollAreaRecipeSlot>>,
     },
+    recipe: {
+      default: scrollAreaRecipe,
+      type: Function as PropType<typeof scrollAreaRecipe>,
+    },
     scrollbarProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
     scrollFade: { default: false, type: Boolean },
     thumbProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
@@ -42,7 +52,7 @@ export const ScrollArea = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slotsClasses = scrollAreaRecipe({ scrollFade: props.scrollFade });
+      const slotsClasses = props.recipe({ scrollFade: props.scrollFade });
 
       return h(
         ScrollAreaPrimitive.Root as ArkPart,

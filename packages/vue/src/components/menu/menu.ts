@@ -9,7 +9,23 @@ type MenuClassNames = VariantClassNames<MenuRecipeSlot>;
 
 export interface MenuRootProps {
   /** Slot class names */
+  /**
+   * Style recipe. Defaults to `menuRecipe` from `@pisagor/recipes/menu`.
+   *
+   * @defaultValue menuRecipe
+   */
+  recipe?: typeof menuRecipe;
   classNames?: MenuClassNames;
+}
+
+export interface MenuItemProps {
+  /**
+   * Style recipe. Defaults to `menuItemRecipe` from `@pisagor/recipes/menu-item`.
+   *
+   * @defaultValue menuItemRecipe
+   */
+  itemRecipe?: typeof menuItemRecipe;
+  class?: unknown;
 }
 // #endregion
 
@@ -21,10 +37,14 @@ export const MenuRoot = defineComponent({
   name: "MenuRoot",
   props: {
     classNames: { default: undefined, type: Object as PropType<MenuClassNames> },
+    recipe: {
+      default: menuRecipe,
+      type: Function as PropType<typeof menuRecipe>,
+    },
   },
-  setup(_props, { attrs, slots }) {
+  setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = menuRecipe();
+      const slots$ = props.recipe();
       const ariaLabel = (attrs["aria-label"] as string | undefined) ?? "Menu";
 
       return h(
@@ -47,10 +67,14 @@ export const MenuList = defineComponent({
   name: "MenuList",
   props: {
     classNames: { default: undefined, type: Object as PropType<MenuClassNames> },
+    recipe: {
+      default: menuRecipe,
+      type: Function as PropType<typeof menuRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = menuRecipe();
+      const slots$ = props.recipe();
 
       return h(
         ark.ul as ArkPart,
@@ -72,10 +96,14 @@ export const MenuGroup = defineComponent({
   name: "MenuGroup",
   props: {
     classNames: { default: undefined, type: Object as PropType<MenuClassNames> },
+    recipe: {
+      default: menuRecipe,
+      type: Function as PropType<typeof menuRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = menuRecipe();
+      const slots$ = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -97,10 +125,14 @@ export const MenuGroupLabel = defineComponent({
   name: "MenuGroupLabel",
   props: {
     classNames: { default: undefined, type: Object as PropType<MenuClassNames> },
+    recipe: {
+      default: menuRecipe,
+      type: Function as PropType<typeof menuRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = menuRecipe();
+      const slots$ = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -122,12 +154,20 @@ export const MenuItem = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<MenuClassNames> },
+    itemRecipe: {
+      default: menuItemRecipe,
+      type: Function as PropType<typeof menuItemRecipe>,
+    },
+    recipe: {
+      default: menuRecipe,
+      type: Function as PropType<typeof menuRecipe>,
+    },
     type: { default: "button", type: String },
     variant: { default: "default", type: String as PropType<"default" | "destructive"> },
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const slots = menuRecipe();
+      const slots = props.recipe();
 
       return h(
         ark.li as ArkPart,
@@ -143,7 +183,7 @@ export const MenuItem = defineComponent({
             {
               ...attrs,
               class: cn(
-                menuItemRecipe({ variant: props.variant }),
+                props.itemRecipe({ variant: props.variant }),
                 props.class,
                 props.classNames?.item,
               ),
@@ -166,10 +206,14 @@ export const MenuLink = defineComponent({
     active: { default: false, type: Boolean },
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<MenuClassNames> },
+    recipe: {
+      default: menuRecipe,
+      type: Function as PropType<typeof menuRecipe>,
+    },
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const slots = menuRecipe();
+      const slots = props.recipe();
 
       return h(
         ark.li as ArkPart,
@@ -202,10 +246,14 @@ export const MenuSeparator = defineComponent({
   name: "MenuSeparator",
   props: {
     classNames: { default: undefined, type: Object as PropType<MenuClassNames> },
+    recipe: {
+      default: menuRecipe,
+      type: Function as PropType<typeof menuRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = menuRecipe();
+      const slots$ = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -228,10 +276,14 @@ export const MenuShortcut = defineComponent({
   name: "MenuShortcut",
   props: {
     classNames: { default: undefined, type: Object as PropType<MenuClassNames> },
+    recipe: {
+      default: menuRecipe,
+      type: Function as PropType<typeof menuRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = menuRecipe();
+      const slots$ = props.recipe();
 
       return h(
         ark.span as ArkPart,

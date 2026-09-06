@@ -4,6 +4,12 @@ import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
 export interface QrCodeRootProps {
+  /**
+   * Style recipe. Defaults to `qrCodeRecipe` from `@pisagor/recipes/qr-code`.
+   *
+   * @defaultValue qrCodeRecipe
+   */
+  recipe?: typeof qrCodeRecipe;
   class?: unknown;
 }
 // #endregion
@@ -16,10 +22,14 @@ export const QrCodeRoot = defineComponent({
   name: "QrCodeRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: qrCodeRecipe,
+      type: Function as PropType<typeof qrCodeRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = qrCodeRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         QrCodePrimitive.Root as ArkPart,
@@ -38,10 +48,14 @@ export const QrCodeFrame = defineComponent({
   name: "QrCodeFrame",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: qrCodeRecipe,
+      type: Function as PropType<typeof qrCodeRecipe>,
+    },
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = qrCodeRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         QrCodePrimitive.Frame as ArkPart,
@@ -63,10 +77,14 @@ export const QrCodeOverlay = defineComponent({
   name: "QrCodeOverlay",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: qrCodeRecipe,
+      type: Function as PropType<typeof qrCodeRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = qrCodeRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         QrCodePrimitive.Overlay as ArkPart,

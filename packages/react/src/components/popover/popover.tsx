@@ -27,6 +27,12 @@ export interface PopoverContentProps extends PopoverPrimitiveContentProps {
    * @defaultValue false
    */
   showCloseButton?: boolean;
+  /**
+   * Style recipe. Defaults to `popoverRecipe` from `@pisagor/recipes/popover`.
+   *
+   * @defaultValue popoverRecipe
+   */
+  recipe?: typeof popoverRecipe;
 }
 
 export interface PopoverHeaderProps extends ComponentProps<typeof ark.div> {
@@ -61,10 +67,11 @@ export function PopoverPositioner(props: PopoverPositionerProps) {
 export function PopoverContent({
   showCloseButton = false,
   children,
+  recipe = popoverRecipe,
   className,
   ...rest
 }: PopoverContentProps) {
-  const slots = popoverRecipe();
+  const slots = recipe();
 
   return (
     <Portal>

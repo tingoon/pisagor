@@ -10,6 +10,16 @@ export interface HoverCardProps {
   positioning?: Record<string, unknown>;
   unmountOnExit?: boolean;
 }
+
+export interface HoverCardArrowProps {
+  /**
+   * Style recipe. Defaults to `hoverCardRecipe` from `@pisagor/recipes/hover-card`.
+   *
+   * @defaultValue hoverCardRecipe
+   */
+  recipe?: typeof hoverCardRecipe;
+  class?: unknown;
+}
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];
@@ -68,11 +78,15 @@ export const HoverCardArrow = defineComponent({
   inheritAttrs: false,
   name: "HoverCardArrow",
   props: {
+    recipe: {
+      default: hoverCardRecipe,
+      type: Function as PropType<typeof hoverCardRecipe>,
+    },
     style: { default: undefined, type: Object as PropType<CSSProperties> },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = hoverCardRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         HoverCardPrimitive.Arrow as ArkPart,
@@ -98,10 +112,14 @@ export const HoverCardContent = defineComponent({
   name: "HoverCardContent",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: hoverCardRecipe,
+      type: Function as PropType<typeof hoverCardRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = hoverCardRecipe();
+      const variantSlots = props.recipe();
 
       return hoverCardTeleport(
         h(HoverCardPrimitive.Positioner as ArkPart, {}, () =>

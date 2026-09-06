@@ -39,6 +39,12 @@ export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
   onValueChange?: (value: string[]) => void;
+  /**
+   * Style recipe. Defaults to `comboboxRecipe` from `@pisagor/recipes/combobox`.
+   *
+   * @defaultValue comboboxRecipe
+   */
+  recipe?: typeof comboboxRecipe;
 };
 
 export interface ComboboxProps extends Omit<ComboboxRootProps, "children" | "collection"> {
@@ -100,9 +106,10 @@ export function ComboboxRoot<T extends CollectionItem = CollectionItem>({
   children,
   onValueChange,
   variant,
+  recipe = comboboxRecipe,
   ...rest
 }: ComboboxRootProps<T>) {
-  const slots = comboboxRecipe();
+  const slots = recipe();
 
   return (
     <ComboboxRootContext value={{ slots }}>

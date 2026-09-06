@@ -62,6 +62,12 @@ export interface ColorPickerProps extends ColorPickerRootProps {
   value?: string;
   /** Called with the hex color string when the value changes. */
   onValueChange?: (value: string) => void;
+  /**
+   * Style recipe. Defaults to `colorPickerRecipe` from `@pisagor/recipes/color-picker`.
+   *
+   * @defaultValue colorPickerRecipe
+   */
+  recipe?: typeof colorPickerRecipe;
 }
 
 export interface ColorPickerClearTriggerProps extends InputGroupButtonProps {
@@ -73,26 +79,26 @@ export interface ColorPickerClearTriggerProps extends InputGroupButtonProps {
   clearable?: boolean;
 }
 
-export type ColorPickerControlProps = ColorPickerPrimitiveControlProps & {
+export interface ColorPickerControlProps extends ColorPickerPrimitiveControlProps {
   /**
    * Whether to show a clear button when a color is selected.
    *
    * @defaultValue false
    */
   clearable?: boolean;
-};
+}
 
 export type ColorPickerEyeDropperTriggerProps = ComponentProps<
   typeof ColorPickerPrimitive.EyeDropperTrigger
 > &
   ButtonProps;
 
-export type ColorPickerAreaProps = ColorPickerPrimitiveAreaProps & {
+export interface ColorPickerAreaProps extends ColorPickerPrimitiveAreaProps {
   /**
    *
    */
   showDots?: boolean;
-};
+}
 
 export type ColorPickerTransparencyGridProps = ComponentProps<
   typeof ColorPickerPrimitive.TransparencyGrid
@@ -132,10 +138,11 @@ export function ColorPickerRoot({
   value,
   children,
   onValueChange,
+  recipe = colorPickerRecipe,
   className,
   ...rest
 }: ColorPickerProps) {
-  const slots = colorPickerRecipe();
+  const slots = recipe();
   const [color, setColor, isControlled] = useUncontrolled({
     defaultValue,
     onChange: onValueChange,

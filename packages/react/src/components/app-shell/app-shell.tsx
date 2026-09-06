@@ -55,7 +55,14 @@ function buildGridRows(hasBanner: boolean, hasNavigation: boolean) {
   return [...(hasBanner ? ["auto"] : []), ...(hasNavigation ? ["auto"] : []), "auto"].join(" ");
 }
 
-export type AppShellRootProps = ComponentProps<"div">;
+export interface AppShellRootProps extends ComponentProps<"div"> {
+  /**
+   * Style recipe. Defaults to `appShellRecipe` from `@pisagor/recipes/app-shell`.
+   *
+   * @defaultValue appShellRecipe
+   */
+  recipe?: typeof appShellRecipe;
+}
 
 function useShellGridStyle(childSlots: AppShellSlots) {
   const hasBanner = Boolean(childSlots.banner);
@@ -71,9 +78,15 @@ function useShellGridStyle(childSlots: AppShellSlots) {
   );
 }
 
-export function AppShellRoot({ children, className, style, ...rest }: AppShellRootProps) {
+export function AppShellRoot({
+  children,
+  recipe = appShellRecipe,
+  className,
+  style,
+  ...rest
+}: AppShellRootProps) {
   const childSlots = useMemo(() => partitionAppShellChildren(children), [children]);
-  const slots = appShellRecipe();
+  const slots = recipe();
   const [regionRevision, setRegionRevision] = useState(0);
   const [regionVars, setRegionVars] = useState(ZERO_REGION_VARS);
   const [fixedStackVars, setFixedStackVars] = useState(ZERO_FIXED_STACK_VARS);

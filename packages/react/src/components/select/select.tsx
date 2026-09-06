@@ -38,6 +38,12 @@ export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
    */
   variant?: FormControlVariant;
   onValueChange?: (value: string | string[]) => void;
+  /**
+   * Style recipe. Defaults to `selectRecipe` from `@pisagor/recipes/select`.
+   *
+   * @defaultValue selectRecipe
+   */
+  recipe?: typeof selectRecipe;
 };
 
 export interface SelectProps extends Omit<SelectRootProps, "children" | "collection"> {
@@ -75,9 +81,10 @@ export function SelectRoot<T extends CollectionItem = CollectionItem>({
   children,
   onValueChange,
   variant,
+  recipe = selectRecipe,
   ...rest
 }: SelectRootProps<T>) {
-  const slots = selectRecipe();
+  const slots = recipe();
 
   return (
     <SelectRootContext value={{ slots }}>

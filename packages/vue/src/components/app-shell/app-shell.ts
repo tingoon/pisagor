@@ -27,7 +27,7 @@ type AttrsWithClassStyle = {
   variant?: string;
 } & Record<string, unknown>;
 
-const styles = appShellRecipe();
+const defaultStyles = appShellRecipe();
 
 // #region Types
 export type AppShellPlacement = "start" | "end";
@@ -148,6 +148,7 @@ function mergeResizableProps(
 }
 
 function regionPositionClasses(
+  styles: ReturnType<typeof appShellRecipe>,
   position: AppShellRegionPosition = "fixed",
   orientation: "column" | "row" = "column",
   rowLayer?: "banner" | "header" | "navigation",
@@ -201,6 +202,8 @@ interface AppShellContextValue {
   regionResizing: boolean;
   regionVars: Record<AppShellRegionVar, string>;
   shellRef: { value: HTMLDivElement | null };
+  /** Slot classes from the active style recipe. */
+  styles: ReturnType<typeof appShellRecipe>;
   setFixedStackVar: (name: AppShellFixedStackVar, value: string) => void;
   setRegionResizing: (resizing: boolean) => void;
   setRegionVar: (name: AppShellRegionVar, value: string) => void;
@@ -219,6 +222,9 @@ const [provideAppShellRailContext, useAppShellRail] = createContext<AppShellRail
 
 export { useAppShell, useAppShellRail };
 
+function useAppShellStyles() {
+  return (useAppShell() as AppShellContextValue | undefined)?.styles ?? defaultStyles;
+}
 // #endregion
 
 // #region Slot partitioning
@@ -428,12 +434,28 @@ function useRegisteredRailState({
 }
 // #endregion
 
+// #region Types (Root)
+export interface AppShellRootProps {
+  /**
+   * Style recipe. Defaults to `appShellRecipe` from `@pisagor/recipes/app-shell`.
+   *
+   * @defaultValue appShellRecipe
+   */
+  recipe?: typeof appShellRecipe;
+  class?: unknown;
+}
+// #endregion
+
 // #region Parts
 export const AppShellRoot = defineComponent({
   inheritAttrs: false,
   name: "AppShell",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: appShellRecipe,
+      type: Function as PropType<typeof appShellRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     const regionRevision = ref(0);
@@ -481,6 +503,11 @@ export const AppShellRoot = defineComponent({
       setRegionResizing,
       setRegionVar,
       shellRef: shellRef,
+      styles: props.recipe(),
+    });
+
+    watchEffect(() => {
+      contextValue.styles = props.recipe();
     });
 
     watchEffect(() => {
@@ -511,7 +538,7 @@ export const AppShellRoot = defineComponent({
         "div",
         {
           ...attrs,
-          class: cn(styles.base(), props.class, (attrs as AttrsWithClassStyle).class),
+          class: cn(contextValue.styles.base(), props.class, (attrs as AttrsWithClassStyle).class),
           "data-part": "root",
           "data-resizing": regionResizing.value ? "" : undefined,
           "data-scope": "app-shell",
@@ -555,8 +582,8 @@ export const AppShellBanner = defineComponent({
         {
           ...attrs,
           class: cn(
-            styles.banner(),
-            regionPositionClasses(props.position, "row", "banner"),
+            useAppShellStyles().banner(),
+            regionPositionClasses(useAppShellStyles(), props.position, "row", "banner"),
             (attrs as AttrsWithClassStyle).class,
           ),
           "data-part": "banner",
@@ -586,8 +613,8 @@ export const AppShellNavigation = defineComponent({
         {
           ...attrs,
           class: cn(
-            styles.navigation(),
-            regionPositionClasses(props.position, "row", "navigation"),
+            useAppShellStyles().navigation(),
+            regionPositionClasses(useAppShellStyles(), props.position, "row", "navigation"),
             (attrs as AttrsWithClassStyle).class,
           ),
           "data-part": "navigation",
@@ -610,7 +637,7 @@ export const AppShellMain = defineComponent({
         "div",
         {
           ...attrs,
-          class: cn(styles.main(), (attrs as AttrsWithClassStyle).class),
+          class: cn(useAppShellStyles().main(), (attrs as AttrsWithClassStyle).class),
           "data-part": "main",
           "data-scope": "app-shell",
           style: { gridArea: "main", ...(attrs as AttrsWithClassStyle).style },
@@ -633,8 +660,8 @@ export const AppShellHeader = defineComponent({
         {
           ...attrs,
           class: cn(
-            styles.header(),
-            regionPositionClasses(props.position, "row", "header"),
+            useAppShellStyles().header(),
+            regionPositionClasses(useAppShellStyles(), props.position, "row", "header"),
             (attrs as AttrsWithClassStyle).class,
           ),
           "data-part": "header",
@@ -655,7 +682,7 @@ export const AppShellContent = defineComponent({
         "main",
         {
           ...attrs,
-          class: cn(styles.content(), (attrs as AttrsWithClassStyle).class),
+          class: cn(useAppShellStyles().content(), (attrs as AttrsWithClassStyle).class),
           "data-part": "content",
           "data-scope": "app-shell",
         },
@@ -710,9 +737,9 @@ export const AppShellPanel = defineComponent({
         {
           ...attrs,
           class: cn(
-            styles.panel(),
+            useAppShellStyles().panel(),
             props.placement === "start" ? "border-e border-border" : "border-s border-border",
-            regionPositionClasses(props.position, "column"),
+            regionPositionClasses(useAppShellStyles(), props.position, "column"),
             side.open ? "opacity-100" : "pointer-events-none opacity-0",
             props.class,
             (attrs as AttrsWithClassStyle).class,
@@ -740,7 +767,7 @@ export const AppShellPanel = defineComponent({
                 ...regionResizeCallbacks,
               })
             : null,
-          h("div", { class: styles.inline() }, () => slots.default?.()),
+          h("div", { class: useAppShellStyles().inline() }, () => slots.default?.()),
         ],
       );
   },
@@ -755,7 +782,7 @@ export const AppShellPanelHeader = defineComponent({
         "div",
         {
           ...attrs,
-          class: cn(styles.panelHeader(), (attrs as AttrsWithClassStyle).class),
+          class: cn(useAppShellStyles().panelHeader(), (attrs as AttrsWithClassStyle).class),
           "data-part": "panel-header",
           "data-scope": "app-shell",
         },
@@ -769,12 +796,12 @@ export const AppShellPanelContent = defineComponent({
   name: "AppShell.PanelContent",
   setup(_, { attrs, slots }) {
     return () =>
-      h(ScrollArea as Component, { class: styles.scrollArea(), ...attrs }, () =>
+      h(ScrollArea as Component, { class: useAppShellStyles().scrollArea(), ...attrs }, () =>
         h(
           "div",
           {
             ...attrs,
-            class: cn(styles.panelContent(), (attrs as AttrsWithClassStyle).class),
+            class: cn(useAppShellStyles().panelContent(), (attrs as AttrsWithClassStyle).class),
             "data-part": "panel-content",
             "data-scope": "app-shell",
           },
@@ -793,7 +820,7 @@ export const AppShellPanelFooter = defineComponent({
         "div",
         {
           ...attrs,
-          class: cn(styles.panelFooter(), (attrs as AttrsWithClassStyle).class),
+          class: cn(useAppShellStyles().panelFooter(), (attrs as AttrsWithClassStyle).class),
           "data-part": "panel-footer",
           "data-scope": "app-shell",
         },
@@ -890,9 +917,15 @@ export const AppShellInspector = defineComponent({
         {
           ...attrs,
           class: cn(
-            styles.inspector(),
+            useAppShellStyles().inspector(),
             props.placement === "start" ? "border-e" : "border-s",
-            regionPositionClasses(props.position, "column", undefined, "inspector"),
+            regionPositionClasses(
+              useAppShellStyles(),
+              props.position,
+              "column",
+              undefined,
+              "inspector",
+            ),
             side.open ? "opacity-100" : "pointer-events-none opacity-0",
             props.class,
             (attrs as AttrsWithClassStyle).class,
@@ -920,7 +953,7 @@ export const AppShellInspector = defineComponent({
                 ...regionResizeCallbacks,
               })
             : null,
-          h("div", { class: styles.inline() }, () => slots.default?.()),
+          h("div", { class: useAppShellStyles().inline() }, () => slots.default?.()),
         ],
       );
   },
@@ -935,7 +968,7 @@ export const AppShellInspectorHeader = defineComponent({
         "div",
         {
           ...attrs,
-          class: cn(styles.inspectorHeader(), (attrs as AttrsWithClassStyle).class),
+          class: cn(useAppShellStyles().inspectorHeader(), (attrs as AttrsWithClassStyle).class),
           "data-part": "inspector-header",
           "data-scope": "app-shell",
         },
@@ -949,12 +982,12 @@ export const AppShellInspectorContent = defineComponent({
   name: "AppShell.InspectorContent",
   setup(_, { attrs, slots }) {
     return () =>
-      h(ScrollArea as Component, { class: styles.scrollArea(), ...attrs }, () =>
+      h(ScrollArea as Component, { class: useAppShellStyles().scrollArea(), ...attrs }, () =>
         h(
           "div",
           {
             ...attrs,
-            class: cn(styles.inspectorContent(), (attrs as AttrsWithClassStyle).class),
+            class: cn(useAppShellStyles().inspectorContent(), (attrs as AttrsWithClassStyle).class),
             "data-part": "inspector-content",
             "data-scope": "app-shell",
           },
@@ -973,7 +1006,7 @@ export const AppShellInspectorFooter = defineComponent({
         "div",
         {
           ...attrs,
-          class: cn(styles.inspectorFooter(), (attrs as AttrsWithClassStyle).class),
+          class: cn(useAppShellStyles().inspectorFooter(), (attrs as AttrsWithClassStyle).class),
           "data-part": "inspector-footer",
           "data-scope": "app-shell",
         },
@@ -1060,9 +1093,9 @@ export const AppShellRail = defineComponent({
         {
           ...attrs,
           class: cn(
-            styles.rail(),
+            useAppShellStyles().rail(),
             props.placement === "start" ? "border-e" : "border-s",
-            regionPositionClasses(props.position, "column"),
+            regionPositionClasses(useAppShellStyles(), props.position, "column"),
             (attrs as AttrsWithClassStyle).class,
           ),
           "data-part": "rail",
@@ -1107,7 +1140,7 @@ export const AppShellRailItem = defineComponent({
       {
         ...(attrs as AttrsWithClassStyle),
         "aria-current": active ? "page" : undefined,
-        class: cn(styles.railItem(), (attrs as AttrsWithClassStyle).class),
+        class: cn(useAppShellStyles().railItem(), (attrs as AttrsWithClassStyle).class),
         clickEffect: false,
         "data-active": active,
         "data-part": "rail-item",
@@ -1163,7 +1196,7 @@ export const AppShellSideTrigger = defineComponent({
           ...(attrs as AttrsWithClassStyle),
           "aria-label": attrs["aria-label"] ?? `Toggle ${props.placement} region`,
           "aria-pressed": props.open,
-          class: cn(styles.inline(), (attrs as AttrsWithClassStyle).class),
+          class: cn(useAppShellStyles().inline(), (attrs as AttrsWithClassStyle).class),
           "data-part": props.dataPart,
           "data-placement": props.placement,
           "data-scope": "app-shell",

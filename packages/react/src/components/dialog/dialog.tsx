@@ -4,7 +4,7 @@ import type {
   DialogDescriptionProps,
   DialogContentProps as DialogPrimitiveContentProps,
   DialogPositionerProps as DialogPrimitivePositionerProps,
-  DialogRootProps,
+  DialogRootProps as DialogPrimitiveRootProps,
   DialogTitleProps,
   DialogTriggerProps,
 } from "@ark-ui/react/dialog";
@@ -19,6 +19,15 @@ import { ScrollArea } from "../scroll-area";
 import { DialogContext, useDialog } from "./dialog.context";
 
 // #region Types
+export interface DialogRootProps extends DialogPrimitiveRootProps {
+  /**
+   * Style recipe. Defaults to `dialogRecipe` from `@pisagor/recipes/dialog`.
+   *
+   * @defaultValue dialogRecipe
+   */
+  recipe?: typeof dialogRecipe;
+}
+
 export interface DialogContentProps extends DialogPrimitiveContentProps, DialogVariantProps {
   /**
    * Whether to stick the dialog to the bottom of the screen on mobile.
@@ -45,9 +54,9 @@ export interface DialogBodyProps extends ComponentProps<typeof ark.div> {
 
 export type DialogHeaderProps = ComponentProps<typeof ark.div>;
 
-export type DialogPositionerProps = DialogPrimitivePositionerProps & {
+export interface DialogPositionerProps extends DialogPrimitivePositionerProps {
   bottomStickOnMobile?: boolean;
-};
+}
 
 export type DialogFooterProps = ComponentProps<typeof ark.div>;
 
@@ -64,8 +73,8 @@ export interface DialogProps extends Omit<DialogRootProps, "title"> {
 // #endregion
 
 // #region Parts
-export function DialogRoot({ modal = true, ...rest }: DialogRootProps) {
-  const slots = dialogRecipe();
+export function DialogRoot({ modal = true, recipe = dialogRecipe, ...rest }: DialogRootProps) {
+  const slots = recipe();
 
   return (
     <DialogContext value={{ modal, slots }}>

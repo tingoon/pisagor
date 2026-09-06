@@ -13,6 +13,12 @@ export interface SegmentGroupPresetItem {
 }
 
 export interface SegmentGroupRootProps {
+  /**
+   * Style recipe. Defaults to `segmentGroupRecipe` from `@pisagor/recipes/segment-group`.
+   *
+   * @defaultValue segmentGroupRecipe
+   */
+  recipe?: typeof segmentGroupRecipe;
   class?: unknown;
   defaultValue?: string | null;
   disabled?: boolean;
@@ -49,12 +55,16 @@ export const SegmentGroupRoot = defineComponent({
       type: Function as PropType<SegmentGroupRootProps["onValueChange"]>,
     },
     orientation: { default: "horizontal", type: String as PropType<"horizontal" | "vertical"> },
+    recipe: {
+      default: segmentGroupRecipe,
+      type: Function as PropType<typeof segmentGroupRecipe>,
+    },
     value: { default: undefined, type: [String, null] as PropType<string | null> },
     variant: { default: "default", type: String as PropType<SegmentGroupVariant> },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = segmentGroupRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         SegmentGroupPrimitive.Root as ArkPart,
@@ -83,13 +93,17 @@ export const SegmentGroupItem = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     disabled: { default: undefined, type: Boolean },
+    recipe: {
+      default: segmentGroupRecipe,
+      type: Function as PropType<typeof segmentGroupRecipe>,
+    },
     text: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
     value: { required: true, type: String },
   },
   setup(props, { attrs, slots }) {
     return () => {
       const content = slots.default?.() ?? props.text;
-      const variantSlots = segmentGroupRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         SegmentGroupPrimitive.Item as ArkPart,
@@ -116,10 +130,14 @@ export const SegmentGroupItemText = defineComponent({
   name: "SegmentGroupItemText",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: segmentGroupRecipe,
+      type: Function as PropType<typeof segmentGroupRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = segmentGroupRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         SegmentGroupPrimitive.ItemText as ArkPart,
@@ -138,10 +156,14 @@ export const SegmentGroupIndicator = defineComponent({
   name: "SegmentGroupIndicator",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: segmentGroupRecipe,
+      type: Function as PropType<typeof segmentGroupRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = segmentGroupRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         SegmentGroupPrimitive.Indicator as ArkPart,

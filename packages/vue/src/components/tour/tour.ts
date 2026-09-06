@@ -66,6 +66,22 @@ export interface TourRootProps {
    */
   unmountOnExit?: boolean;
 }
+
+export interface TourBackdropProps {
+  /**
+   * Style recipe. Defaults to `dialogRecipe` from `@pisagor/recipes/dialog`.
+   *
+   * @defaultValue dialogRecipe
+   */
+  dialogRecipe?: typeof dialogRecipe;
+  /**
+   * Style recipe. Defaults to `tourRecipe` from `@pisagor/recipes/tour`.
+   *
+   * @defaultValue tourRecipe
+   */
+  recipe?: typeof tourRecipe;
+  class?: unknown;
+}
 // #endregion
 
 // #region Context
@@ -90,6 +106,10 @@ export const TourRoot = defineComponent({
     onStepChange: {
       default: undefined,
       type: Function as PropType<TourRootProps["onStepChange"]>,
+    },
+    recipe: {
+      default: tourRecipe,
+      type: Function as PropType<typeof tourRecipe>,
     },
     steps: { default: () => [], type: Array as PropType<TourStepDetails[]> },
     unmountOnExit: { default: true, type: Boolean },
@@ -118,7 +138,7 @@ export const TourRoot = defineComponent({
 
     const context = reactive({
       handleStart,
-      slots: tourRecipe(),
+      slots: props.recipe(),
       tour,
     });
 
@@ -181,6 +201,10 @@ export const TourBackdrop = defineComponent({
   name: "Tour.Backdrop",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    dialogRecipe: {
+      default: dialogRecipe,
+      type: Function as PropType<typeof dialogRecipe>,
+    },
   },
   setup(props, { attrs }) {
     return () => {
@@ -189,7 +213,7 @@ export const TourBackdrop = defineComponent({
 
       return h(TourPrimitive.Backdrop as ArkPart, {
         ...attrs,
-        class: cn(dialogRecipe().backdrop(), ctx.slots.backdrop(), props.class),
+        class: cn(props.dialogRecipe().backdrop(), ctx.slots.backdrop(), props.class),
       });
     };
   },

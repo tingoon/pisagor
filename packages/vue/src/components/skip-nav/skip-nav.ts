@@ -14,6 +14,12 @@ export interface SkipNavLinkProps {
    * Must match the `id` on the paired `SkipNavContent`.
    */
   id?: string;
+  /**
+   * Style recipe. Defaults to `skipNavRecipe` from `@pisagor/recipes/skip-nav`.
+   *
+   * @defaultValue skipNavRecipe
+   */
+  recipe?: typeof skipNavRecipe;
   class?: unknown;
 }
 
@@ -42,9 +48,13 @@ export const SkipNavLink = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     id: { default: SKIP_NAV_ID, type: String },
+    recipe: {
+      default: skipNavRecipe,
+      type: Function as PropType<typeof skipNavRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
-    const variantSlots = skipNavRecipe();
+    const variantSlots = props.recipe();
 
     return () =>
       h(
@@ -67,9 +77,13 @@ export const SkipNavContent = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     id: { default: SKIP_NAV_ID, type: String },
+    recipe: {
+      default: skipNavRecipe,
+      type: Function as PropType<typeof skipNavRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
-    const variantSlots = skipNavRecipe();
+    const variantSlots = props.recipe();
 
     return () =>
       h(

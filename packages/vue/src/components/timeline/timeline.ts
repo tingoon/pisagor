@@ -18,8 +18,24 @@ export interface TimelinePresetItem {
 }
 
 export interface TimelineProps extends TimelineVariantProps {
+  /**
+   * Style recipe. Defaults to `timelineRecipe` from `@pisagor/recipes/timeline`.
+   *
+   * @defaultValue timelineRecipe
+   */
+  recipe?: typeof timelineRecipe;
   class?: unknown;
   items?: TimelinePresetItem[];
+}
+
+export interface TimelineItemProps {
+  /**
+   * Style recipe. Defaults to `timelineItemRecipe` from `@pisagor/recipes/timeline-item`.
+   *
+   * @defaultValue timelineItemRecipe
+   */
+  itemRecipe?: typeof timelineItemRecipe;
+  class?: unknown;
 }
 // #endregion
 
@@ -30,6 +46,10 @@ export const TimelineRoot = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     orientation: { default: "vertical", type: String as PropType<TimelineProps["orientation"]> },
+    recipe: {
+      default: timelineRecipe,
+      type: Function as PropType<typeof timelineRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -37,7 +57,7 @@ export const TimelineRoot = defineComponent({
         ark.ol as ArkPart,
         {
           ...attrs,
-          class: timelineRecipe({ class: props.class, orientation: props.orientation }),
+          class: props.recipe({ class: props.class, orientation: props.orientation }),
           "data-orientation": props.orientation,
           "data-part": "root",
           "data-scope": "timeline",
@@ -52,10 +72,14 @@ export const TimelineItem = defineComponent({
   name: "TimelineItem",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    itemRecipe: {
+      default: timelineItemRecipe,
+      type: Function as PropType<typeof timelineItemRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timelineItemRecipe();
+      const variantSlots = props.itemRecipe();
 
       return h(
         ark.li as ArkPart,
@@ -76,10 +100,14 @@ export const TimelineIndicator = defineComponent({
   name: "TimelineIndicator",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    itemRecipe: {
+      default: timelineItemRecipe,
+      type: Function as PropType<typeof timelineItemRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timelineItemRecipe();
+      const variantSlots = props.itemRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -100,10 +128,14 @@ export const TimelineSeparator = defineComponent({
   name: "TimelineSeparator",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    itemRecipe: {
+      default: timelineItemRecipe,
+      type: Function as PropType<typeof timelineItemRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timelineItemRecipe();
+      const variantSlots = props.itemRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -125,10 +157,14 @@ export const TimelineContent = defineComponent({
   name: "TimelineContent",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    itemRecipe: {
+      default: timelineItemRecipe,
+      type: Function as PropType<typeof timelineItemRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timelineItemRecipe();
+      const variantSlots = props.itemRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -149,10 +185,14 @@ export const TimelineTitle = defineComponent({
   name: "TimelineTitle",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    itemRecipe: {
+      default: timelineItemRecipe,
+      type: Function as PropType<typeof timelineItemRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timelineItemRecipe();
+      const variantSlots = props.itemRecipe();
 
       return h(
         ark.div as ArkPart,
@@ -173,10 +213,14 @@ export const TimelineDescription = defineComponent({
   name: "TimelineDescription",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    itemRecipe: {
+      default: timelineItemRecipe,
+      type: Function as PropType<typeof timelineItemRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = timelineItemRecipe();
+      const variantSlots = props.itemRecipe();
 
       return h(
         ark.div as ArkPart,

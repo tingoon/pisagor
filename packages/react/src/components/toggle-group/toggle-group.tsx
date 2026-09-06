@@ -20,10 +20,17 @@ interface ToggleGroupPresetItem {
   disabled?: boolean;
 }
 
-export type ToggleGroupRootProps = Omit<ToggleGroupPrimitiveRootProps, "onValueChange"> &
-  Omit<ToggleGroupContextProps, "slots"> & {
-    onValueChange?: (value: string | string[]) => void;
-  };
+export interface ToggleGroupRootProps
+  extends Omit<ToggleGroupPrimitiveRootProps, "onValueChange">,
+    Omit<ToggleGroupContextProps, "slots"> {
+  onValueChange?: (value: string | string[]) => void;
+  /**
+   * Style recipe. Defaults to `toggleGroupRecipe` from `@pisagor/recipes/toggle-group`.
+   *
+   * @defaultValue toggleGroupRecipe
+   */
+  recipe?: typeof toggleGroupRecipe;
+}
 
 export interface ToggleGroupProps extends Omit<ToggleGroupRootProps, "children"> {
   items?: ToggleGroupPresetItem[];
@@ -40,11 +47,12 @@ export function ToggleGroupRoot({
   children,
   spacing = 0,
   onValueChange,
+  recipe = toggleGroupRecipe,
   className,
   style,
   ...rest
 }: ToggleGroupRootProps) {
-  const slots = useMemo(() => toggleGroupRecipe({ orientation }), [orientation]);
+  const slots = useMemo(() => recipe({ orientation }), [orientation, recipe]);
 
   return (
     <ToggleGroupContext value={{ size, slots, spacing, variant }}>

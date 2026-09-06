@@ -4,13 +4,13 @@ import type {
   TreeViewBranchContentProps,
   TreeViewBranchIndentGuideProps,
   TreeViewBranchIndicatorProps,
-  TreeViewBranchProps,
   TreeViewBranchTextProps,
-  TreeViewItemProps,
   TreeViewLabelProps,
   TreeViewNodeCheckboxProps,
   TreeViewNodeRenameInputProps,
   TreeViewBranchControlProps as TreeViewPrimitiveBranchControlProps,
+  TreeViewBranchProps as TreeViewPrimitiveBranchProps,
+  TreeViewItemProps as TreeViewPrimitiveItemProps,
   TreeViewItemTextProps as TreeViewPrimitiveItemTextProps,
   TreeViewTreeProps,
 } from "@ark-ui/react/tree-view";
@@ -55,7 +55,32 @@ export interface TreeNodeType<T = unknown> {
 
 export type TreeCollection = arkTreeCollection;
 
-export type TreeViewProps = TreeViewPrimitive.RootComponentProps & TreeViewContextProps;
+export interface TreeViewProps extends TreeViewPrimitive.RootComponentProps, TreeViewContextProps {
+  /**
+   * Style recipe. Defaults to `treeViewRecipe` from `@pisagor/recipes/tree-view`.
+   *
+   * @defaultValue treeViewRecipe
+   */
+  recipe?: typeof treeViewRecipe;
+}
+
+export interface TreeViewBranchProps extends TreeViewPrimitiveBranchProps {
+  /**
+   * Style recipe. Defaults to `treeViewBranchRecipe` from `@pisagor/recipes/tree-view`.
+   *
+   * @defaultValue treeViewBranchRecipe
+   */
+  branchRecipe?: typeof treeViewBranchRecipe;
+}
+
+export interface TreeViewItemProps extends TreeViewPrimitiveItemProps {
+  /**
+   * Style recipe. Defaults to `treeViewItemRecipe` from `@pisagor/recipes/tree-view`.
+   *
+   * @defaultValue treeViewItemRecipe
+   */
+  itemRecipe?: typeof treeViewItemRecipe;
+}
 
 export type NodeProviderProps<T extends TreeNodeType = TreeNodeType> =
   TreeViewPrimitive.NodeProviderProps<T>;
@@ -104,8 +129,14 @@ export const createTreeCollection = <T extends TreeNodeType>(
     ...options,
   });
 
-export function TreeViewRoot({ children, fileIcons, className, ...rest }: TreeViewProps) {
-  const slots = treeViewRecipe();
+export function TreeViewRoot({
+  children,
+  fileIcons,
+  recipe = treeViewRecipe,
+  className,
+  ...rest
+}: TreeViewProps) {
+  const slots = recipe();
 
   return (
     <TreeViewContext value={{ fileIcons, slots }}>
@@ -132,8 +163,13 @@ export const TreeViewNodeProvider = <T extends TreeNodeType>(props: NodeProvider
   <TreeViewPrimitive.NodeProvider {...props} />
 );
 
-export function TreeViewBranch({ children, className, ...rest }: TreeViewBranchProps) {
-  const slots = treeViewBranchRecipe();
+export function TreeViewBranch({
+  children,
+  branchRecipe = treeViewBranchRecipe,
+  className,
+  ...rest
+}: TreeViewBranchProps) {
+  const slots = branchRecipe();
 
   return (
     <TreeViewBranchContext value={{ slots }}>
@@ -231,9 +267,14 @@ function TreeViewBranchIndentGuide({ className, ...rest }: TreeViewBranchIndentG
   );
 }
 
-export function TreeViewItem({ children, className, ...rest }: TreeViewItemProps) {
+export function TreeViewItem({
+  children,
+  itemRecipe = treeViewItemRecipe,
+  className,
+  ...rest
+}: TreeViewItemProps) {
   const { slots } = useTreeView();
-  const itemSlots = treeViewItemRecipe();
+  const itemSlots = itemRecipe();
 
   return (
     <TreeViewItemContext value={{ slots: itemSlots }}>

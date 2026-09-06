@@ -17,6 +17,12 @@ import { Input } from "../input";
 type ArkPart = Parameters<typeof h>[0];
 
 export interface InputOTPProps {
+  /**
+   * Style recipe. Defaults to `inputOtpRecipe` from `@pisagor/recipes/input-otp`.
+   *
+   * @defaultValue inputOtpRecipe
+   */
+  recipe?: typeof inputOtpRecipe;
   class?: ClassValue;
   otp?: boolean;
   placeholder?: string;
@@ -49,13 +55,17 @@ export const InputOTPRoot = defineComponent({
     },
     otp: { default: true, type: Boolean },
     placeholder: { default: undefined, type: String },
+    recipe: {
+      default: inputOtpRecipe,
+      type: Function as PropType<typeof inputOtpRecipe>,
+    },
     size: { default: undefined, type: String as PropType<InputOTPProps["size"]> },
     value: { default: undefined, type: Array as PropType<string[] | undefined> },
     variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = inputOtpRecipe();
+      const variantSlots = props.recipe();
       const attrClass = (attrs as { class?: ClassValue }).class;
 
       return h(
@@ -96,11 +106,15 @@ export const InputOTPSlot = defineComponent({
   name: "InputOTP.Slot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    recipe: {
+      default: inputOtpRecipe,
+      type: Function as PropType<typeof inputOtpRecipe>,
+    },
     variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = inputOtpRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         PinInputPrimitive.Input as ArkPart,
@@ -126,10 +140,14 @@ export const InputOTPSeparator = defineComponent({
   name: "InputOTP.Separator",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    recipe: {
+      default: inputOtpRecipe,
+      type: Function as PropType<typeof inputOtpRecipe>,
+    },
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = inputOtpRecipe();
+      const variantSlots = props.recipe();
 
       return h(ark.hr as ArkPart, {
         ...attrs,

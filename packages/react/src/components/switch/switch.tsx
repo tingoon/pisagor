@@ -18,6 +18,12 @@ type SwitchClassNames = VariantClassNames<SwitchRecipeSlot>;
 type SwitchRootProps = SwitchPrimitiveRootProps & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
+  /**
+   * Style recipe. Defaults to `switchRecipe` from `@pisagor/recipes/switch`.
+   *
+   * @defaultValue switchRecipe
+   */
+  recipe?: typeof switchRecipe;
 };
 
 export interface SwitchProps extends Omit<SwitchRootProps, "children"> {
@@ -34,14 +40,20 @@ export interface SwitchProps extends Omit<SwitchRootProps, "children"> {
 // #endregion
 
 // #region Parts
-function SwitchRoot({ variant: variantProp, children, className, ...rest }: SwitchRootProps) {
+function SwitchRoot({
+  variant: variantProp,
+  children,
+  recipe = switchRecipe,
+  className,
+  ...rest
+}: SwitchRootProps) {
   const resolved = {
     surfaceVariant: undefined,
     variant: variantProp ?? ("primary" as FormControlVariant),
   };
   const shellArgs = { variant: resolved.variant };
   const controlShellProps = { "data-variant": resolved.variant };
-  const slots = switchRecipe({ ...shellArgs });
+  const slots = recipe({ ...shellArgs });
 
   return (
     <SwitchContext value={{ slots }}>

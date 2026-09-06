@@ -29,6 +29,12 @@ interface CircularSliderContextValue {
 }
 
 export interface CircularSliderProps {
+  /**
+   * Style recipe. Defaults to `circularSliderRecipe` from `@pisagor/recipes/circular-slider`.
+   *
+   * @defaultValue circularSliderRecipe
+   */
+  recipe?: typeof circularSliderRecipe;
   class?: unknown;
   defaultValue?: number;
   disabled?: boolean;
@@ -71,13 +77,17 @@ export const CircularSliderRoot = defineComponent({
       default: undefined,
       type: Function as PropType<CircularSliderProps["onValueChange"]>,
     },
+    recipe: {
+      default: circularSliderRecipe,
+      type: Function as PropType<typeof circularSliderRecipe>,
+    },
     size: { default: 100, type: Number },
     step: { default: 1, type: Number },
     thickness: { default: 6, type: Number },
     value: { default: undefined, type: Number },
   },
   setup(props, { attrs, slots }) {
-    const variantSlots = circularSliderRecipe();
+    const variantSlots = props.recipe();
     const context = reactive<CircularSliderContextValue>({
       ringCircumference: 2 * Math.PI * (props.size / 2 - props.thickness / 2),
       ringRadius: props.size / 2 - props.thickness / 2,

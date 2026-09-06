@@ -6,7 +6,14 @@ import { Format } from "../format";
 import { FileContext, useFile } from "./file.context";
 
 // #region Types
-export type FileRootProps = ComponentProps<typeof ark.div>;
+export interface FileRootProps extends ComponentProps<typeof ark.div> {
+  /**
+   * Style recipe. Defaults to `fileRecipe` from `@pisagor/recipes/file`.
+   *
+   * @defaultValue fileRecipe
+   */
+  recipe?: typeof fileRecipe;
+}
 
 export interface FileMediaProps extends ComponentProps<typeof ark.div>, FileVariantProps {}
 
@@ -38,8 +45,8 @@ export interface FileProps extends Omit<FileRootProps, "children" | "title"> {
 // #endregion
 
 // #region Parts
-export function FileRoot({ children, className, ...rest }: FileRootProps) {
-  const slots = fileRecipe();
+export function FileRoot({ children, recipe = fileRecipe, className, ...rest }: FileRootProps) {
+  const slots = recipe();
 
   return (
     <FileContext value={{ slots }}>

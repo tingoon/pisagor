@@ -15,7 +15,14 @@ type EmptyStateMediaProps = ComponentProps<typeof ark.div>;
 
 type EmptyStateClassNames = VariantClassNames<EmptyStateRecipeSlot>;
 
-type EmptyStateRootProps = Omit<ComponentProps<typeof ark.div>, "title">;
+type EmptyStateRootProps = Omit<ComponentProps<typeof ark.div>, "title"> & {
+  /**
+   * Style recipe. Defaults to `emptyStateRecipe` from `@pisagor/recipes/empty-state`.
+   *
+   * @defaultValue emptyStateRecipe
+   */
+  recipe?: typeof emptyStateRecipe;
+};
 
 export interface EmptyStateProps extends Omit<EmptyStateRootProps, "children"> {
   /** Action buttons or links. */
@@ -40,8 +47,13 @@ export interface EmptyStateProps extends Omit<EmptyStateRootProps, "children"> {
 // #endregion
 
 // #region Parts
-export function EmptyStateRoot({ children, className, ...rest }: EmptyStateRootProps) {
-  const slots = emptyStateRecipe();
+export function EmptyStateRoot({
+  children,
+  recipe = emptyStateRecipe,
+  className,
+  ...rest
+}: EmptyStateRootProps) {
+  const slots = recipe();
 
   return (
     <EmptyStateContext value={{ slots }}>

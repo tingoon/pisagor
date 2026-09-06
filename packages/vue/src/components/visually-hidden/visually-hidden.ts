@@ -5,6 +5,12 @@ import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
 export interface VisuallyHiddenProps {
+  /**
+   * Style recipe. Defaults to `visuallyHiddenRecipe` from `@pisagor/recipes/visually-hidden`.
+   *
+   * @defaultValue visuallyHiddenRecipe
+   */
+  recipe?: typeof visuallyHiddenRecipe;
   class?: unknown;
 }
 // #endregion
@@ -20,6 +26,10 @@ export const VisuallyHidden = defineComponent({
   name: "VisuallyHidden",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: visuallyHiddenRecipe,
+      type: Function as PropType<typeof visuallyHiddenRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -27,7 +37,7 @@ export const VisuallyHidden = defineComponent({
         ark.span as ArkPart,
         {
           ...attrs,
-          class: cn(visuallyHiddenRecipe(), props.class),
+          class: cn(props.recipe(), props.class),
           "data-part": "root",
           "data-scope": "visually-hidden",
         },

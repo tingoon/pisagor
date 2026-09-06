@@ -13,6 +13,12 @@ export interface AvatarGroupUser {
 }
 
 export interface AvatarGroupProps {
+  /**
+   * Style recipe. Defaults to `avatarGroupRecipe` from `@pisagor/recipes/avatar-group`.
+   *
+   * @defaultValue avatarGroupRecipe
+   */
+  recipe?: typeof avatarGroupRecipe;
   class?: unknown;
   /** Maximum number of avatars to show; excess shown as "+N". */
   max?: number;
@@ -27,10 +33,14 @@ export const AvatarGroupRoot = defineComponent({
   name: "AvatarGroupRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: avatarGroupRecipe,
+      type: Function as PropType<typeof avatarGroupRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = avatarGroupRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -51,10 +61,14 @@ export const AvatarGroupCount = defineComponent({
   name: "AvatarGroupCount",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: avatarGroupRecipe,
+      type: Function as PropType<typeof avatarGroupRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = avatarGroupRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.div as ArkPart,

@@ -4,7 +4,14 @@ import type { ComponentProps } from "react";
 import { Spinner } from "../spinner";
 
 // #region Types
-export interface ButtonProps extends ComponentProps<typeof ark.button>, ButtonVariantProps {}
+export interface ButtonProps extends ComponentProps<typeof ark.button>, ButtonVariantProps {
+  /**
+   * Style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
+   *
+   * @defaultValue buttonRecipe
+   */
+  recipe?: typeof buttonRecipe;
+}
 // #endregion
 
 // #region Component
@@ -17,10 +24,11 @@ export function Button({
   disabled,
   type = "button",
   children,
+  recipe = buttonRecipe,
   className,
   ...rest
 }: ButtonProps) {
-  const slots = buttonRecipe({ clickEffect, loading, pill, size, variant });
+  const slots = recipe({ clickEffect, loading, pill, size, variant });
 
   return (
     <ark.button

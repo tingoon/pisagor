@@ -4,7 +4,7 @@ import type {
   PaginationItemProps,
   PaginationNextTriggerProps,
   PaginationPrevTriggerProps,
-  PaginationRootProps,
+  PaginationRootProps as PaginationPrimitiveRootProps,
 } from "@ark-ui/react/pagination";
 import { Pagination as PaginationPrimitive, usePaginationContext } from "@ark-ui/react/pagination";
 import { CaretLeftIcon, CaretRightIcon, DotsThreeIcon } from "@phosphor-icons/react";
@@ -14,6 +14,15 @@ import { Button, type ButtonProps } from "../button";
 import { PaginationContext, usePagination } from "./pagination.context";
 
 // #region Types
+export interface PaginationRootProps extends PaginationPrimitiveRootProps {
+  /**
+   * Style recipe. Defaults to `paginationRecipe` from `@pisagor/recipes/pagination`.
+   *
+   * @defaultValue paginationRecipe
+   */
+  recipe?: typeof paginationRecipe;
+}
+
 export type PaginationItemsProps = Omit<PaginationContextProps, "children">;
 
 export interface PaginationItemLinkProps extends ButtonProps {
@@ -23,8 +32,13 @@ export interface PaginationItemLinkProps extends ButtonProps {
 // #endregion
 
 // #region Parts
-export function PaginationRoot({ children, className, ...rest }: PaginationRootProps) {
-  const slots = paginationRecipe();
+export function PaginationRoot({
+  children,
+  recipe = paginationRecipe,
+  className,
+  ...rest
+}: PaginationRootProps) {
+  const slots = recipe();
 
   return (
     <PaginationContext value={{ slots }}>

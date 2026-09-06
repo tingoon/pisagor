@@ -16,6 +16,12 @@ type AlertClassNames = VariantClassNames<AlertRecipeSlot>;
 export interface AlertProps extends AlertVariantProps {
   action?: VNodeChild;
   actionProps?: Record<string, unknown>;
+  /**
+   * Style recipe. Defaults to `alertRecipe` from `@pisagor/recipes/alert`.
+   *
+   * @defaultValue alertRecipe
+   */
+  recipe?: typeof alertRecipe;
   class?: unknown;
   classNames?: AlertClassNames;
   description?: VNodeChild;
@@ -46,12 +52,16 @@ export const AlertRoot = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<AlertClassNames> },
+    recipe: {
+      default: alertRecipe,
+      type: Function as PropType<typeof alertRecipe>,
+    },
     variant: { default: undefined, type: String as PropType<AlertVariantProps["variant"]> },
   },
   setup(props, { attrs, slots }) {
     const contextValue = computed(() => ({
       classNames: props.classNames,
-      slots: alertRecipe({ variant: props.variant }),
+      slots: props.recipe({ variant: props.variant }),
     }));
 
     provideAlertContext(contextValue);

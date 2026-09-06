@@ -4,14 +4,26 @@ import type { ComponentProps } from "react";
 import { LinkBoxContext, useLinkBox } from "./link-box.context";
 
 // #region Types
-export type LinkBoxRootProps = ComponentProps<typeof ark.div>;
+export interface LinkBoxRootProps extends ComponentProps<typeof ark.div> {
+  /**
+   * Style recipe. Defaults to `linkBoxRecipe` from `@pisagor/recipes/link-box`.
+   *
+   * @defaultValue linkBoxRecipe
+   */
+  recipe?: typeof linkBoxRecipe;
+}
 
 export type LinkOverlayLinkProps = ComponentProps<typeof ark.a>;
 // #endregion
 
 // #region Parts
-export function LinkBoxRoot({ children, className, ...rest }: LinkBoxRootProps) {
-  const slots = linkBoxRecipe();
+export function LinkBoxRoot({
+  children,
+  recipe = linkBoxRecipe,
+  className,
+  ...rest
+}: LinkBoxRootProps) {
+  const slots = recipe();
 
   return (
     <LinkBoxContext value={{ slots }}>

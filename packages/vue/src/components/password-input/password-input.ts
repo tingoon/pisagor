@@ -12,6 +12,12 @@ type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
 
 // #region Types
 export interface PasswordInputProps extends Pick<InputGroupProps, "size" | "variant"> {
+  /**
+   * Style recipe. Defaults to `passwordInputRecipe` from `@pisagor/recipes/password-input`.
+   *
+   * @defaultValue passwordInputRecipe
+   */
+  recipe?: typeof passwordInputRecipe;
   class?: unknown;
   clearButtonProps?: InputGroupButtonProps;
   clearable?: boolean;
@@ -55,6 +61,10 @@ export const PasswordInput = defineComponent({
     },
     placeholder: { default: undefined, type: String },
     readOnly: { default: undefined, type: Boolean },
+    recipe: {
+      default: passwordInputRecipe,
+      type: Function as PropType<typeof passwordInputRecipe>,
+    },
     size: { default: "md", type: String as PropType<PasswordInputProps["size"]> },
     value: { default: undefined, type: String },
     variant: { default: undefined, type: String as PropType<PasswordInputProps["variant"]> },
@@ -78,7 +88,7 @@ export const PasswordInput = defineComponent({
     return () => {
       const { onClick: onClearClick, ...restClearButtonProps } = props.clearButtonProps ?? {};
       const { fallback, ...restIndicatorProps } = props.indicatorProps ?? {};
-      const variantSlots = passwordInputRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         PasswordInputPrimitive.Root as ArkPart,

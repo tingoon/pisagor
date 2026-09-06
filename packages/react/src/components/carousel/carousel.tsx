@@ -6,7 +6,7 @@ import type {
   CarouselItemProps,
   CarouselNextTriggerProps,
   CarouselPrevTriggerProps,
-  CarouselRootProps,
+  CarouselRootProps as CarouselPrimitiveRootProps,
 } from "@ark-ui/react/carousel";
 import { Carousel as CarouselPrimitive } from "@ark-ui/react/carousel";
 import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
@@ -16,6 +16,15 @@ import { Button } from "../button";
 import { CarouselContext, useCarousel } from "./carousel.context";
 
 // #region Types
+export interface CarouselRootProps extends CarouselPrimitiveRootProps {
+  /**
+   * Style recipe. Defaults to `carouselRecipe` from `@pisagor/recipes/carousel`.
+   *
+   * @defaultValue carouselRecipe
+   */
+  recipe?: typeof carouselRecipe;
+}
+
 interface CarouselPresetItem {
   content: ReactNode;
   key?: string;
@@ -30,10 +39,11 @@ export interface CarouselProps extends Omit<CarouselRootProps, "children" | "sli
 export function CarouselRoot({
   children,
   spacing = "16px",
+  recipe = carouselRecipe,
   className,
   ...rest
 }: CarouselRootProps) {
-  const slots = carouselRecipe();
+  const slots = recipe();
 
   return (
     <CarouselContext value={{ slots }}>

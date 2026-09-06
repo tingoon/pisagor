@@ -31,7 +31,14 @@ export interface DropdownMenuItemGroupProps extends MenuItemGroupProps {
   heading?: string;
 }
 
-export interface DropdownMenuItemProps extends MenuItemProps, DropdownMenuItemVariantProps {}
+export interface DropdownMenuItemProps extends MenuItemProps, DropdownMenuItemVariantProps {
+  /**
+   * Style recipe. Defaults to `dropdownMenuItemRecipe` from `@pisagor/recipes/dropdown-menu`.
+   *
+   * @defaultValue dropdownMenuItemRecipe
+   */
+  recipe?: typeof dropdownMenuItemRecipe;
+}
 
 export interface DropdownMenuRadioItemGroupProps extends MenuRadioItemGroupProps {
   /** The heading of the menu radio item group. */
@@ -44,21 +51,56 @@ export type DropdownMenuTriggerProps = MenuTriggerProps;
 
 export type DropdownMenuPositionerProps = MenuPositionerProps;
 
-export type DropdownMenuCheckboxItemProps = MenuCheckboxItemProps;
+export interface DropdownMenuCheckboxItemProps extends MenuCheckboxItemProps {
+  /**
+   * Style recipe. Defaults to `dropdownMenuItemRecipe` from `@pisagor/recipes/dropdown-menu`.
+   *
+   * @defaultValue dropdownMenuItemRecipe
+   */
+  recipe?: typeof dropdownMenuItemRecipe;
+}
 
 export type DropdownMenuItemGroupLabelProps = MenuItemGroupLabelProps;
 
-export type DropdownMenuRadioItemProps = MenuRadioItemProps;
+export interface DropdownMenuRadioItemProps extends MenuRadioItemProps {
+  /**
+   * Style recipe. Defaults to `dropdownMenuItemRecipe` from `@pisagor/recipes/dropdown-menu`.
+   *
+   * @defaultValue dropdownMenuItemRecipe
+   */
+  recipe?: typeof dropdownMenuItemRecipe;
+}
 
-export type DropdownMenuSubContentProps = MenuContentProps;
+export interface DropdownMenuSubContentProps extends MenuContentProps {
+  /**
+   * Style recipe. Defaults to `dropdownMenuRecipe` from `@pisagor/recipes/dropdown-menu`.
+   *
+   * @defaultValue dropdownMenuRecipe
+   */
+  recipe?: typeof dropdownMenuRecipe;
+}
 
 export type DropdownMenuArrowProps = MenuArrowProps;
 
 export type DropdownMenuSeparatorProps = MenuSeparatorProps;
 
-export type DropdownMenuTriggerItemProps = MenuTriggerItemProps;
+export interface DropdownMenuTriggerItemProps extends MenuTriggerItemProps {
+  /**
+   * Style recipe. Defaults to `dropdownMenuItemRecipe` from `@pisagor/recipes/dropdown-menu`.
+   *
+   * @defaultValue dropdownMenuItemRecipe
+   */
+  recipe?: typeof dropdownMenuItemRecipe;
+}
 
-export type DropdownMenuContentProps = MenuContentProps;
+export interface DropdownMenuContentProps extends MenuContentProps {
+  /**
+   * Style recipe. Defaults to `dropdownMenuRecipe` from `@pisagor/recipes/dropdown-menu`.
+   *
+   * @defaultValue dropdownMenuRecipe
+   */
+  recipe?: typeof dropdownMenuRecipe;
+}
 
 export type DropdownMenuShortcutProps = ComponentProps<typeof ark.span>;
 // #endregion
@@ -82,8 +124,13 @@ export function DropdownMenuPositioner({ className, ...rest }: DropdownMenuPosit
   return <MenuPrimitive.Positioner {...rest} className={slots.positioner({ className })} />;
 }
 
-export function DropdownMenuContent({ children, className, ...rest }: DropdownMenuContentProps) {
-  const slots = dropdownMenuRecipe();
+export function DropdownMenuContent({
+  children,
+  recipe = dropdownMenuRecipe,
+  className,
+  ...rest
+}: DropdownMenuContentProps) {
+  const slots = recipe();
 
   return (
     <DropdownMenuContext value={{ slots }}>
@@ -117,13 +164,14 @@ export function DropdownMenuSeparator({ className, ...rest }: DropdownMenuSepara
 
 export function DropdownMenuItem({
   variant = "default",
+  recipe = dropdownMenuItemRecipe,
   className,
   ...rest
 }: DropdownMenuItemProps) {
   return (
     <MenuPrimitive.Item
       {...rest}
-      className={dropdownMenuItemRecipe({ variant }).base({ className })}
+      className={recipe({ variant }).base({ className })}
       data-variant={variant}
     />
   );
@@ -131,6 +179,7 @@ export function DropdownMenuItem({
 
 export function DropdownMenuQuickItem({
   variant = "default",
+  recipe = dropdownMenuItemRecipe,
   className,
   ...rest
 }: DropdownMenuItemProps) {
@@ -140,7 +189,7 @@ export function DropdownMenuQuickItem({
   return (
     <MenuPrimitive.Item
       {...rest}
-      className={dropdownMenuItemRecipe({ variant }).base({
+      className={recipe({ variant }).base({
         className: slots.quickItem({ className }),
       })}
     />
@@ -149,10 +198,11 @@ export function DropdownMenuQuickItem({
 
 export function DropdownMenuCheckboxItem({
   children,
+  recipe = dropdownMenuItemRecipe,
   className,
   ...rest
 }: DropdownMenuCheckboxItemProps) {
-  const slots = dropdownMenuItemRecipe({ inset: true, variant: "default" });
+  const slots = recipe({ inset: true, variant: "default" });
 
   return (
     <MenuPrimitive.CheckboxItem {...rest} className={slots.base({ className })}>
@@ -191,10 +241,11 @@ export function DropdownMenuItemGroupLabel({
 
 export function DropdownMenuRadioItem({
   children,
+  recipe = dropdownMenuItemRecipe,
   className,
   ...rest
 }: DropdownMenuRadioItemProps) {
-  const slots = dropdownMenuItemRecipe({ inset: true, variant: "default" });
+  const slots = recipe({ inset: true, variant: "default" });
 
   return (
     <MenuPrimitive.RadioItem {...rest} className={slots.base({ className })}>
@@ -211,8 +262,12 @@ export function DropdownMenuSub(props: DropdownMenuRootProps) {
   return <DropdownMenuRoot {...props} />;
 }
 
-export function DropdownMenuSubContent({ className, ...rest }: DropdownMenuSubContentProps) {
-  const slots = dropdownMenuRecipe();
+export function DropdownMenuSubContent({
+  recipe = dropdownMenuRecipe,
+  className,
+  ...rest
+}: DropdownMenuSubContentProps) {
+  const slots = recipe();
 
   return (
     <DropdownMenuContext value={{ slots }}>
@@ -227,13 +282,14 @@ export function DropdownMenuSubContent({ className, ...rest }: DropdownMenuSubCo
 
 export function DropdownMenuTriggerItem({
   children,
+  recipe = dropdownMenuItemRecipe,
   className,
   ...rest
 }: DropdownMenuTriggerItemProps) {
   return (
     <MenuPrimitive.TriggerItem
       {...rest}
-      className={dropdownMenuItemRecipe({ variant: "default" }).base({ className })}
+      className={recipe({ variant: "default" }).base({ className })}
     >
       {children}
 

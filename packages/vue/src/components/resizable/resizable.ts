@@ -23,6 +23,12 @@ export interface ResizableEdgeHandleProps {
 
 // We keep the primitive wrapper types intentionally loose; `h()` polymorphic casts.
 export interface ResizableRootProps {
+  /**
+   * Style recipe. Defaults to `resizableRecipe` from `@pisagor/recipes/resizable`.
+   *
+   * @defaultValue resizableRecipe
+   */
+  recipe?: typeof resizableRecipe;
   class?: unknown;
 }
 
@@ -138,6 +144,10 @@ export const ResizableRoot = defineComponent({
   name: "ResizableRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: resizableRecipe,
+      type: Function as PropType<typeof resizableRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -145,7 +155,7 @@ export const ResizableRoot = defineComponent({
         SplitterPrimitive.Root as ArkPart,
         {
           ...attrs,
-          class: cn(resizableRecipe().base(), props.class),
+          class: cn(props.recipe().base(), props.class),
         },
         slots,
       );
@@ -172,6 +182,10 @@ export const ResizableResizeTriggerIndicator = defineComponent({
   name: "ResizableResizeTriggerIndicator",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: resizableRecipe,
+      type: Function as PropType<typeof resizableRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -179,7 +193,7 @@ export const ResizableResizeTriggerIndicator = defineComponent({
         SplitterPrimitive.ResizeTriggerIndicator as ArkPart,
         {
           ...attrs,
-          class: cn(resizableRecipe().resizeTriggerIndicator(), props.class),
+          class: cn(props.recipe().resizeTriggerIndicator(), props.class),
         },
         slots,
       );
@@ -191,6 +205,10 @@ export const ResizableResizeTrigger = defineComponent({
   name: "ResizableResizeTrigger",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: resizableRecipe,
+      type: Function as PropType<typeof resizableRecipe>,
+    },
     withHandle: { default: false, type: Boolean },
   },
   setup(props, { attrs, slots }) {
@@ -200,12 +218,12 @@ export const ResizableResizeTrigger = defineComponent({
         {
           ...attrs,
           "aria-label": "Resize",
-          class: resizableRecipe().resizeTrigger({ class: props.class }),
+          class: props.recipe().resizeTrigger({ class: props.class }),
         },
         () =>
           props.withHandle
-            ? h("div", { class: resizableRecipe().resizeTriggerHandle() }, () =>
-                h(PhDotsSixVertical, { class: resizableRecipe().resizeTriggerIcon() }),
+            ? h("div", { class: props.recipe().resizeTriggerHandle() }, () =>
+                h(PhDotsSixVertical, { class: props.recipe().resizeTriggerIcon() }),
               )
             : (slots.default?.() ?? h(ResizableResizeTriggerIndicator)),
       );

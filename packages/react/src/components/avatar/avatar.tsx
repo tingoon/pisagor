@@ -16,7 +16,15 @@ import { AvatarContext, useAvatar } from "./avatar.context";
 // #region Types
 type AvatarClassNames = VariantClassNames<AvatarRecipeSlot>;
 
-type AvatarRootProps = AvatarPrimitiveRootProps & AvatarVariantProps;
+type AvatarRootProps = AvatarPrimitiveRootProps &
+  AvatarVariantProps & {
+    /**
+     * Style recipe. Defaults to `avatarRecipe` from `@pisagor/recipes/avatar`.
+     *
+     * @defaultValue avatarRecipe
+     */
+    recipe?: typeof avatarRecipe;
+  };
 
 export interface AvatarProps extends Omit<AvatarRootProps, "children"> {
   /** Alt text for the avatar image */
@@ -39,10 +47,11 @@ function AvatarRoot({
   shape = "circle",
   size = "md",
   children,
+  recipe = avatarRecipe,
   className,
   ...rest
 }: AvatarRootProps) {
-  const slots = avatarRecipe({ shape, size });
+  const slots = recipe({ shape, size });
 
   return (
     <AvatarContext value={{ slots }}>

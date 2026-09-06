@@ -8,16 +8,42 @@ import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
 
+// #region Types
+export interface BottomNavigationItemProps {
+  /**
+   * Style recipe. Defaults to `bottomNavigationItemRecipe` from `@pisagor/recipes/bottom-navigation-item`.
+   *
+   * @defaultValue bottomNavigationItemRecipe
+   */
+  itemRecipe?: typeof bottomNavigationItemRecipe;
+  class?: unknown;
+}
+
+export interface BottomNavigationRootProps {
+  /**
+   * Style recipe. Defaults to `bottomNavigationRecipe` from `@pisagor/recipes/bottom-navigation`.
+   *
+   * @defaultValue bottomNavigationRecipe
+   */
+  recipe?: typeof bottomNavigationRecipe;
+  class?: unknown;
+}
+// #endregion
+
 // #region Parts
 export const BottomNavigationRoot = defineComponent({
   inheritAttrs: false,
   name: "BottomNavigationRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: bottomNavigationRecipe,
+      type: Function as PropType<typeof bottomNavigationRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = bottomNavigationRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         TabsPrimitive.Root as ArkPart,
@@ -37,10 +63,14 @@ export const BottomNavigationList = defineComponent({
   props: {
     ariaLabel: { default: undefined, type: String },
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: bottomNavigationRecipe,
+      type: Function as PropType<typeof bottomNavigationRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = bottomNavigationRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         TabsPrimitive.List as ArkPart,
@@ -60,10 +90,14 @@ export const BottomNavigationItem = defineComponent({
   name: "BottomNavigationItem",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    itemRecipe: {
+      default: bottomNavigationItemRecipe,
+      type: Function as PropType<typeof bottomNavigationItemRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = bottomNavigationItemRecipe();
+      const variantSlots = props.itemRecipe();
 
       return h(
         TabsPrimitive.Trigger as ArkPart,
@@ -82,10 +116,14 @@ export const BottomNavigationItemIcon = defineComponent({
   name: "BottomNavigationItemIcon",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    itemRecipe: {
+      default: bottomNavigationItemRecipe,
+      type: Function as PropType<typeof bottomNavigationItemRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = bottomNavigationItemRecipe();
+      const variantSlots = props.itemRecipe();
 
       return h(
         ark.span as ArkPart,
@@ -107,10 +145,14 @@ export const BottomNavigationItemLabel = defineComponent({
   name: "BottomNavigationItemLabel",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    itemRecipe: {
+      default: bottomNavigationItemRecipe,
+      type: Function as PropType<typeof bottomNavigationItemRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = bottomNavigationItemRecipe();
+      const variantSlots = props.itemRecipe();
 
       return h(
         ark.span as ArkPart,

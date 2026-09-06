@@ -10,6 +10,12 @@ export interface MarqueeProps {
   spacing?: string;
   speed?: number;
   items?: VNodeChild[];
+  /**
+   * Style recipe. Defaults to `marqueeRecipe` from `@pisagor/recipes/marquee`.
+   *
+   * @defaultValue marqueeRecipe
+   */
+  recipe?: typeof marqueeRecipe;
   class?: unknown;
 }
 
@@ -26,6 +32,10 @@ export const MarqueeRoot = defineComponent({
       default: "horizontal",
       type: String as PropType<"horizontal" | "vertical">,
     },
+    recipe: {
+      default: marqueeRecipe,
+      type: Function as PropType<typeof marqueeRecipe>,
+    },
     showEdges: { default: true, type: Boolean },
     spacing: { default: "16px", type: String },
     speed: { default: 50, type: Number },
@@ -34,7 +44,7 @@ export const MarqueeRoot = defineComponent({
     return () => {
       const side = props.orientation === "horizontal" ? "start" : "bottom";
       const items = props.items;
-      const variantSlots = marqueeRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         MarqueePrimitive.Root as ArkPart,
@@ -74,9 +84,15 @@ export const MarqueeRoot = defineComponent({
 export const MarqueeContent = defineComponent({
   inheritAttrs: false,
   name: "MarqueeContent",
-  setup(_, { attrs, slots: children }) {
+  props: {
+    recipe: {
+      default: marqueeRecipe,
+      type: Function as PropType<typeof marqueeRecipe>,
+    },
+  },
+  setup(props, { attrs, slots: children }) {
     return () => {
-      const variantSlots = marqueeRecipe();
+      const variantSlots = props.recipe();
 
       return h(MarqueePrimitive.Viewport as ArkPart, { class: variantSlots.viewport() }, () =>
         h(
@@ -95,9 +111,15 @@ export const MarqueeContent = defineComponent({
 export const MarqueeItem = defineComponent({
   inheritAttrs: false,
   name: "MarqueeItem",
-  setup(_, { attrs, slots }) {
+  props: {
+    recipe: {
+      default: marqueeRecipe,
+      type: Function as PropType<typeof marqueeRecipe>,
+    },
+  },
+  setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = marqueeRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         MarqueePrimitive.Item as ArkPart,
@@ -114,9 +136,15 @@ export const MarqueeItem = defineComponent({
 export const MarqueeEdge = defineComponent({
   inheritAttrs: false,
   name: "MarqueeEdge",
-  setup(_, { attrs, slots }) {
+  props: {
+    recipe: {
+      default: marqueeRecipe,
+      type: Function as PropType<typeof marqueeRecipe>,
+    },
+  },
+  setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = marqueeRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         MarqueePrimitive.Edge as ArkPart,

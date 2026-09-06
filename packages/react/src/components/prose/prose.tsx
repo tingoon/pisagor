@@ -13,16 +13,22 @@ export interface ProseProps
    * (for example CMS content from your own database).
    */
   html?: string;
+  /**
+   * Style recipe. Defaults to `proseRecipe` from `@pisagor/recipes/prose`.
+   *
+   * @defaultValue proseRecipe
+   */
+  recipe?: typeof proseRecipe;
 }
 // #endregion
 
 // #region Component
-export function Prose({ children, html, className, ...rest }: ProseProps) {
+export function Prose({ children, html, recipe = proseRecipe, className, ...rest }: ProseProps) {
   return (
     <ark.div
       {...rest}
       {...(html ? { dangerouslySetInnerHTML: { __html: html } } : { children })}
-      className={proseRecipe({ className })}
+      className={recipe({ className })}
       data-part="root"
       data-scope="prose"
     />

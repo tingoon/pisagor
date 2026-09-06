@@ -9,6 +9,16 @@ import type { VariantClassNames } from "../../internal/types";
 
 // #region Types
 type NavigationMenuClassNames = VariantClassNames<NavigationMenuRecipeSlot>;
+
+export interface NavigationMenuRootProps {
+  /**
+   * Style recipe. Defaults to `navigationMenuRecipe` from `@pisagor/recipes/navigation-menu`.
+   *
+   * @defaultValue navigationMenuRecipe
+   */
+  recipe?: typeof navigationMenuRecipe;
+  class?: unknown;
+}
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];
@@ -20,10 +30,14 @@ export const NavigationMenuRoot = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<NavigationMenuClassNames> },
+    recipe: {
+      default: navigationMenuRecipe,
+      type: Function as PropType<typeof navigationMenuRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = navigationMenuRecipe();
+      const slots$ = props.recipe();
 
       return h(
         ark.nav as ArkPart,
@@ -45,10 +59,14 @@ export const NavigationMenuList = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<NavigationMenuClassNames> },
+    recipe: {
+      default: navigationMenuRecipe,
+      type: Function as PropType<typeof navigationMenuRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = navigationMenuRecipe();
+      const slots$ = props.recipe();
 
       return h(
         ark.ul as ArkPart,
@@ -70,10 +88,14 @@ export const NavigationMenuItem = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<NavigationMenuClassNames> },
+    recipe: {
+      default: navigationMenuRecipe,
+      type: Function as PropType<typeof navigationMenuRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = navigationMenuRecipe();
+      const slots$ = props.recipe();
 
       return h(
         ark.li as ArkPart,
@@ -96,10 +118,14 @@ export const NavigationMenuLink = defineComponent({
     active: { default: false, type: Boolean },
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<NavigationMenuClassNames> },
+    recipe: {
+      default: navigationMenuRecipe,
+      type: Function as PropType<typeof navigationMenuRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots$ = navigationMenuRecipe();
+      const slots$ = props.recipe();
 
       return h(
         ark.a as ArkPart,

@@ -4,16 +4,32 @@ import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
 
+// #region Types
+export interface FrameRootProps {
+  /**
+   * Style recipe. Defaults to `frameRecipe` from `@pisagor/recipes/frame`.
+   *
+   * @defaultValue frameRecipe
+   */
+  recipe?: typeof frameRecipe;
+  class?: unknown;
+}
+// #endregion
+
 // #region Parts
 export const FrameRoot = defineComponent({
   inheritAttrs: false,
   name: "FrameRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: frameRecipe,
+      type: Function as PropType<typeof frameRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = frameRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -34,10 +50,14 @@ export const FramePanel = defineComponent({
   name: "FramePanel",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: frameRecipe,
+      type: Function as PropType<typeof frameRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = frameRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -58,10 +78,14 @@ export const FrameTitle = defineComponent({
   name: "FrameTitle",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: frameRecipe,
+      type: Function as PropType<typeof frameRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = frameRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -82,10 +106,14 @@ export const FrameDescription = defineComponent({
   name: "FrameDescription",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: frameRecipe,
+      type: Function as PropType<typeof frameRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = frameRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -106,10 +134,14 @@ export const FrameHeader = defineComponent({
   name: "FrameHeader",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: frameRecipe,
+      type: Function as PropType<typeof frameRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = frameRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.header as ArkPart,
@@ -130,10 +162,14 @@ export const FrameFooter = defineComponent({
   name: "FrameFooter",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: frameRecipe,
+      type: Function as PropType<typeof frameRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = frameRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.footer as ArkPart,

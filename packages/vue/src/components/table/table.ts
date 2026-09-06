@@ -16,6 +16,12 @@ export interface TableProps {
    * @defaultValue "plain"
    */
   variant?: "plain" | "striped";
+  /**
+   * Style recipe. Defaults to `tableRecipe` from `@pisagor/recipes/table`.
+   *
+   * @defaultValue tableRecipe
+   */
+  recipe?: typeof tableRecipe;
   class?: unknown;
 }
 
@@ -29,11 +35,15 @@ export const TableRoot = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     isHoverable: { default: true, type: Boolean },
+    recipe: {
+      default: tableRecipe,
+      type: Function as PropType<typeof tableRecipe>,
+    },
     variant: { default: "plain", type: String as PropType<TableProps["variant"]> },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = tableRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         "div" as ArkPart,
@@ -65,10 +75,14 @@ export const TableHeader = defineComponent({
   name: "TableHeader",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: tableRecipe,
+      type: Function as PropType<typeof tableRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = tableRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.thead as ArkPart,
@@ -89,10 +103,14 @@ export const TableBody = defineComponent({
   name: "TableBody",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: tableRecipe,
+      type: Function as PropType<typeof tableRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = tableRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.tbody as ArkPart,
@@ -113,10 +131,14 @@ export const TableFooter = defineComponent({
   name: "TableFooter",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: tableRecipe,
+      type: Function as PropType<typeof tableRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = tableRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.tfoot as ArkPart,
@@ -137,10 +159,14 @@ export const TableRow = defineComponent({
   name: "TableRow",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: tableRecipe,
+      type: Function as PropType<typeof tableRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = tableRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.tr as ArkPart,
@@ -161,10 +187,14 @@ export const TableHead = defineComponent({
   name: "TableHead",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: tableRecipe,
+      type: Function as PropType<typeof tableRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = tableRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.th as ArkPart,
@@ -185,10 +215,14 @@ export const TableCell = defineComponent({
   name: "TableCell",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: tableRecipe,
+      type: Function as PropType<typeof tableRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = tableRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.td as ArkPart,
@@ -209,10 +243,14 @@ export const TableCaption = defineComponent({
   name: "TableCaption",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: tableRecipe,
+      type: Function as PropType<typeof tableRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = tableRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.caption as ArkPart,

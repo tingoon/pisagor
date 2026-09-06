@@ -17,6 +17,16 @@ export interface AccordionProps {
   lazyMount?: boolean;
   unmountOnExit?: boolean;
 }
+
+export interface AccordionItemProps {
+  /**
+   * Style recipe. Defaults to `accordionItemRecipe` from `@pisagor/recipes/accordion-item`.
+   *
+   * @defaultValue accordionItemRecipe
+   */
+  itemRecipe?: typeof accordionItemRecipe;
+  class?: unknown;
+}
 // #endregion
 
 // Ark Vue parts are polymorphic; `h()` overloads reject attr spreads without a cast.
@@ -51,10 +61,14 @@ export const AccordionItem = defineComponent({
   name: "AccordionItem",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    itemRecipe: {
+      default: accordionItemRecipe,
+      type: Function as PropType<typeof accordionItemRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = accordionItemRecipe();
+      const variantSlots = props.itemRecipe();
 
       return h(
         AccordionPrimitive.Item as ArkPart,
@@ -73,10 +87,14 @@ export const AccordionItemTrigger = defineComponent({
   name: "AccordionItemTrigger",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    itemRecipe: {
+      default: accordionItemRecipe,
+      type: Function as PropType<typeof accordionItemRecipe>,
+    },
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const variantSlots = accordionItemRecipe();
+      const variantSlots = props.itemRecipe();
 
       return h(
         AccordionPrimitive.ItemTrigger as ArkPart,
@@ -100,10 +118,14 @@ export const AccordionItemContent = defineComponent({
   name: "AccordionItemContent",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    itemRecipe: {
+      default: accordionItemRecipe,
+      type: Function as PropType<typeof accordionItemRecipe>,
+    },
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const variantSlots = accordionItemRecipe();
+      const variantSlots = props.itemRecipe();
 
       return h(
         AccordionPrimitive.ItemContent as ArkPart,

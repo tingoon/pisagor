@@ -11,6 +11,12 @@ type EmptyStateClassNames = VariantClassNames<EmptyStateRecipeSlot>;
 
 export interface EmptyStateProps {
   actions?: VNodeChild;
+  /**
+   * Style recipe. Defaults to `emptyStateRecipe` from `@pisagor/recipes/empty-state`.
+   *
+   * @defaultValue emptyStateRecipe
+   */
+  recipe?: typeof emptyStateRecipe;
   class?: unknown;
   classNames?: EmptyStateClassNames;
   description?: VNodeChild;
@@ -26,10 +32,14 @@ export const EmptyStateRoot = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<EmptyStateClassNames> },
+    recipe: {
+      default: emptyStateRecipe,
+      type: Function as PropType<typeof emptyStateRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots_ = emptyStateRecipe();
+      const slots_ = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -52,12 +62,16 @@ function createEmptyStatePart(slot: Exclude<EmptyStateRecipeSlot, "base">, part:
     props: {
       class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
       classNames: { default: undefined, type: Object as PropType<EmptyStateClassNames> },
+      recipe: {
+        default: emptyStateRecipe,
+        type: Function as PropType<NonNullable<EmptyStateProps["recipe"]>>,
+      },
     },
     setup(props, { attrs, slots }) {
       const element = slot === "title" ? ark.h3 : slot === "description" ? ark.p : ark.div;
 
       return () => {
-        const slots_ = emptyStateRecipe();
+        const slots_ = props.recipe();
 
         return h(
           element as ArkPart,
@@ -88,6 +102,10 @@ export const EmptyStateShorthand = defineComponent({
     classNames: { default: undefined, type: Object as PropType<EmptyStateClassNames> },
     description: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
     media: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
+    recipe: {
+      default: emptyStateRecipe,
+      type: Function as PropType<typeof emptyStateRecipe>,
+    },
     title: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
   },
   setup(props, { attrs }) {
@@ -98,6 +116,7 @@ export const EmptyStateShorthand = defineComponent({
           ...attrs,
           class: props.class,
           classNames: props.classNames,
+          recipe: props.recipe,
         },
         () => [
           props.media !== undefined && h(EmptyStateMedia, null, () => props.media),

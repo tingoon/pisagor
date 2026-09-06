@@ -27,10 +27,25 @@ import {
 // #region Types
 type FormControlVariant = "primary" | "secondary";
 
-export type FileUploadListProps = Omit<FileUploadItemProps, "file">;
+export interface FileUploadItemRootProps extends FileUploadItemProps {
+  /**
+   * Style recipe. Defaults to `fileUploadItemRecipe` from `@pisagor/recipes/file-upload`.
+   *
+   * @defaultValue fileUploadItemRecipe
+   */
+  itemRecipe?: typeof fileUploadItemRecipe;
+}
+
+export type FileUploadListProps = Omit<FileUploadItemRootProps, "file">;
 
 export interface FileUploadRootProps extends FileUploadPrimitiveRootProps {
   onValueChange?: (value: File[]) => void;
+  /**
+   * Style recipe. Defaults to `fileUploadRecipe` from `@pisagor/recipes/file-upload`.
+   *
+   * @defaultValue fileUploadRecipe
+   */
+  recipe?: typeof fileUploadRecipe;
 }
 
 export interface FileUploadDropzoneProps extends FileUploadPrimitiveDropzoneProps {
@@ -62,10 +77,11 @@ export function FileUploadRoot({
   children,
   onFileChange,
   onValueChange,
+  recipe = fileUploadRecipe,
   className,
   ...rest
 }: FileUploadRootProps) {
-  const slots = fileUploadRecipe();
+  const slots = recipe();
 
   return (
     <FileUploadContext value={{ slots }}>
@@ -173,10 +189,14 @@ export function FileUploadItemGroup(props: FileUploadItemGroupProps) {
   return <FileUploadPrimitive.ItemGroup {...props} />;
 }
 
-export function FileUploadList({ className, ...rest }: FileUploadListProps) {
+export function FileUploadList({
+  className,
+  itemRecipe = fileUploadItemRecipe,
+  ...rest
+}: FileUploadListProps) {
   const fileUpload = useFileUploadContext();
   const { slots } = useFileUpload();
-  const itemSlots = fileUploadItemRecipe();
+  const itemSlots = itemRecipe();
 
   const files = fileUpload.acceptedFiles;
 
@@ -198,6 +218,7 @@ export function FileUploadList({ className, ...rest }: FileUploadListProps) {
             {...rest}
             className={itemSlots.listItem({ className })}
             file={file}
+            itemRecipe={itemRecipe}
             key={key}
           >
             <FileUploadItemPreview
@@ -233,8 +254,13 @@ export function FileUploadList({ className, ...rest }: FileUploadListProps) {
   );
 }
 
-export function FileUploadItem({ children, className, ...rest }: FileUploadItemProps) {
-  const slots = fileUploadItemRecipe();
+export function FileUploadItem({
+  children,
+  itemRecipe = fileUploadItemRecipe,
+  className,
+  ...rest
+}: FileUploadItemRootProps) {
+  const slots = itemRecipe();
 
   return (
     <FileUploadItemContext value={{ slots }}>

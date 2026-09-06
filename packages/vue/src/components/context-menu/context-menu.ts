@@ -25,6 +25,18 @@ function wrapDropdownMenuPart(
   return h(component, attrs as object, slots);
 }
 
+// #region Types
+export interface ContextMenuContextTriggerProps {
+  /**
+   * Style recipe. Defaults to `contextMenuRecipe` from `@pisagor/recipes/context-menu`.
+   *
+   * @defaultValue contextMenuRecipe
+   */
+  recipe?: typeof contextMenuRecipe;
+  class?: unknown;
+}
+// #endregion
+
 // #region Parts
 export const ContextMenuRoot = defineComponent({
   inheritAttrs: false,
@@ -47,6 +59,10 @@ export const ContextMenuContextTrigger = defineComponent({
   name: "ContextMenuContextTrigger",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: contextMenuRecipe,
+      type: Function as PropType<typeof contextMenuRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -54,7 +70,7 @@ export const ContextMenuContextTrigger = defineComponent({
         MenuPrimitive.ContextTrigger as ArkPart,
         {
           ...attrs,
-          class: cn(contextMenuRecipe(), props.class, attrs.class),
+          class: cn(props.recipe(), props.class, attrs.class),
         },
         slots,
       );

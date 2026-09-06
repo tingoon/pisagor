@@ -34,6 +34,12 @@ interface DataTableRowContextValue<TData extends RowData> {
  * @typeParam TData - Row shape passed to `columns` and `data`.
  */
 export type DataTableProps<TData extends RowData = RowData> = {
+  /**
+   * Style recipe. Defaults to `dataTableRecipe` from `@pisagor/recipes/data-table`.
+   *
+   * @defaultValue dataTableRecipe
+   */
+  recipe?: typeof dataTableRecipe;
   class?: unknown;
   /**
    * TanStack Table features. Defaults to the DataTable feature preset.
@@ -124,6 +130,10 @@ export const DataTableRoot = defineComponent({
   name: "DataTableRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: dataTableRecipe,
+      type: Function as PropType<typeof dataTableRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     const options = new Proxy(
@@ -152,7 +162,7 @@ export const DataTableRoot = defineComponent({
     ) as TableOptions<DataTableFeatures, RowData>;
 
     const table = useTable(options);
-    const variantSlots = dataTableRecipe();
+    const variantSlots = props.recipe();
     const contextValue = computed<DataTableContextValue<RowData>>(() => ({
       slots: variantSlots,
       table,

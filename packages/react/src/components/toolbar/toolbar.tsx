@@ -15,7 +15,14 @@ type ToolbarHeadingProps = ComponentProps<typeof ark.div>;
 
 type ToolbarClassNames = VariantClassNames<ToolbarRecipeSlot>;
 
-type ToolbarRootProps = Omit<ComponentProps<typeof ark.div>, "title">;
+type ToolbarRootProps = Omit<ComponentProps<typeof ark.div>, "title"> & {
+  /**
+   * Style recipe. Defaults to `toolbarRecipe` from `@pisagor/recipes/toolbar`.
+   *
+   * @defaultValue toolbarRecipe
+   */
+  recipe?: typeof toolbarRecipe;
+};
 
 export interface ToolbarProps extends Omit<ToolbarRootProps, "children"> {
   /** Trailing action buttons or controls. */
@@ -36,8 +43,13 @@ export interface ToolbarProps extends Omit<ToolbarRootProps, "children"> {
 // #endregion
 
 // #region Parts
-export function ToolbarRoot({ children, className, ...rest }: ToolbarRootProps) {
-  const slots = toolbarRecipe();
+export function ToolbarRoot({
+  children,
+  recipe = toolbarRecipe,
+  className,
+  ...rest
+}: ToolbarRootProps) {
+  const slots = recipe();
 
   return (
     <ToolbarContext value={{ slots }}>

@@ -54,6 +54,12 @@ interface DataGridRowContextValue<TData extends RowData> {
  * @typeParam TData - Row shape passed to `columns` and `data`.
  */
 export type DataGridProps<TData extends RowData = RowData> = {
+  /**
+   * Style recipe. Defaults to `dataGridRecipe` from `@pisagor/recipes/data-grid`.
+   *
+   * @defaultValue dataGridRecipe
+   */
+  recipe?: typeof dataGridRecipe;
   class?: unknown;
   /**
    * TanStack Table features. Defaults to the DataGrid kitchen-sink preset.
@@ -193,6 +199,10 @@ export const DataGridRoot = defineComponent({
   name: "DataGridRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: dataGridRecipe,
+      type: Function as PropType<typeof dataGridRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     const options = new Proxy(
@@ -225,7 +235,7 @@ export const DataGridRoot = defineComponent({
     ) as TableOptions<DataGridFeatures, RowData>;
 
     const table = useTable(options);
-    const variantSlots = dataGridRecipe();
+    const variantSlots = props.recipe();
     const contextValue = computed<DataGridContextValue<RowData>>(() => ({
       slots: variantSlots,
       table,

@@ -16,6 +16,12 @@ interface ToggleGroupContextValue {
 }
 
 export interface ToggleGroupRootProps {
+  /**
+   * Style recipe. Defaults to `toggleGroupRecipe` from `@pisagor/recipes/toggle-group`.
+   *
+   * @defaultValue toggleGroupRecipe
+   */
+  recipe?: typeof toggleGroupRecipe;
   class?: unknown;
   defaultValue?: string[];
   disabled?: boolean;
@@ -63,6 +69,10 @@ export const ToggleGroupRoot = defineComponent({
       default: "horizontal",
       type: String as PropType<"horizontal" | "vertical">,
     },
+    recipe: {
+      default: toggleGroupRecipe,
+      type: Function as PropType<typeof toggleGroupRecipe>,
+    },
     size: { default: "md", type: String as PropType<ToggleGroupSize> },
     spacing: { default: 0, type: Number },
     value: { default: undefined, type: Array as PropType<string[] | undefined> },
@@ -70,7 +80,7 @@ export const ToggleGroupRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = toggleGroupRecipe({ orientation: props.orientation });
+      const variantSlots = props.recipe({ orientation: props.orientation });
 
       ToggleGroupContextProvider({
         size: props.size,
@@ -114,6 +124,10 @@ export const ToggleGroupItem = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     disabled: { default: undefined, type: Boolean },
+    recipe: {
+      default: toggleGroupRecipe,
+      type: Function as PropType<typeof toggleGroupRecipe>,
+    },
     value: { required: true, type: String },
   },
   setup(props, { attrs, slots }) {
@@ -133,7 +147,7 @@ export const ToggleGroupItem = defineComponent({
             Toggle as ArkPart,
             {
               ...attrs,
-              class: cn(ctx?.slots.item() ?? toggleGroupRecipe().item(), props.class),
+              class: cn(ctx?.slots.item() ?? props.recipe().item(), props.class),
               "data-spacing": ctx?.spacing ?? 0,
               "data-variant": ctx?.variant ?? "ghost",
               disabled: props.disabled,

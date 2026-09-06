@@ -14,6 +14,12 @@ export interface FileInputProps {
   /** Label for the browse button. */
   browseLabel?: string;
   capture?: "environment" | "user";
+  /**
+   * Style recipe. Defaults to `fileInputRecipe` from `@pisagor/recipes/file-input`.
+   *
+   * @defaultValue fileInputRecipe
+   */
+  recipe?: typeof fileInputRecipe;
   class?: unknown;
   disabled?: boolean;
   id?: string;
@@ -79,6 +85,10 @@ export const FileInput = defineComponent({
       type: Function as PropType<FileInputProps["onValueChange"]>,
     },
     placeholder: { default: "No file chosen", type: String },
+    recipe: {
+      default: fileInputRecipe,
+      type: Function as PropType<typeof fileInputRecipe>,
+    },
     required: { default: undefined, type: Boolean },
     size: { default: "md", type: String as PropType<FileInputProps["size"]> },
     variant: { default: undefined, type: String as PropType<FormControlVariant> },
@@ -106,7 +116,7 @@ export const FileInput = defineComponent({
       };
       const shellArgs = { variant: resolved.variant };
       const controlProps = { "data-variant": resolved.variant };
-      const slots = fileInputRecipe();
+      const slots = props.recipe();
 
       return h(
         "div",

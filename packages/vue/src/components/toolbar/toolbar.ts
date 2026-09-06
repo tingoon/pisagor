@@ -8,6 +8,12 @@ type ToolbarClassNames = VariantClassNames<ToolbarRecipeSlot>;
 
 // #region Types
 export interface ToolbarProps {
+  /**
+   * Style recipe. Defaults to `toolbarRecipe` from `@pisagor/recipes/toolbar`.
+   *
+   * @defaultValue toolbarRecipe
+   */
+  recipe?: typeof toolbarRecipe;
   class?: unknown;
   classNames?: ToolbarClassNames;
   title?: VNodeChild;
@@ -27,6 +33,10 @@ export const ToolbarRoot = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<ToolbarClassNames> },
+    recipe: {
+      default: toolbarRecipe,
+      type: Function as PropType<typeof toolbarRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -34,7 +44,7 @@ export const ToolbarRoot = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: toolbarRecipe().base({ class: props.class }),
+          class: props.recipe().base({ class: props.class }),
           "data-part": "root",
           "data-scope": "toolbar",
         },
@@ -49,9 +59,13 @@ export const ToolbarHeading = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<ToolbarClassNames> },
+    recipe: {
+      default: toolbarRecipe,
+      type: Function as PropType<typeof toolbarRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
-    const slotsClasses = toolbarRecipe();
+    const slotsClasses = props.recipe();
 
     return () =>
       h(
@@ -73,9 +87,13 @@ export const ToolbarTitle = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<ToolbarClassNames> },
+    recipe: {
+      default: toolbarRecipe,
+      type: Function as PropType<typeof toolbarRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
-    const slotsClasses = toolbarRecipe();
+    const slotsClasses = props.recipe();
 
     return () =>
       h(
@@ -97,9 +115,13 @@ export const ToolbarDescription = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<ToolbarClassNames> },
+    recipe: {
+      default: toolbarRecipe,
+      type: Function as PropType<typeof toolbarRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
-    const slotsClasses = toolbarRecipe();
+    const slotsClasses = props.recipe();
 
     return () =>
       h(
@@ -123,9 +145,13 @@ export const ToolbarActions = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     classNames: { default: undefined, type: Object as PropType<ToolbarClassNames> },
+    recipe: {
+      default: toolbarRecipe,
+      type: Function as PropType<typeof toolbarRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
-    const slotsClasses = toolbarRecipe();
+    const slotsClasses = props.recipe();
 
     return () =>
       h(

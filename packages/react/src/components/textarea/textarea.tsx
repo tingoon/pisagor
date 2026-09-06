@@ -31,14 +31,31 @@ export interface TextareaProps extends TextareaRootProps {
   clearable?: boolean;
   /** Called with the string value when the textarea changes. */
   onValueChange?: (value: string) => void;
+  /**
+   * Style recipe. Defaults to `textareaRecipe` from `@pisagor/recipes/textarea`.
+   *
+   * @defaultValue textareaRecipe
+   */
+  recipe?: typeof textareaRecipe;
   /** Slot class names */
   classNames?: TextareaClassNames;
 }
 // #endregion
 
 // #region Parts
-function TextareaProvider({ children }: { children: ReactNode }) {
-  const slots = textareaRecipe();
+function TextareaProvider({
+  children,
+  recipe = textareaRecipe,
+}: {
+  children: ReactNode;
+  /**
+   * Style recipe. Defaults to `textareaRecipe` from `@pisagor/recipes/textarea`.
+   *
+   * @defaultValue textareaRecipe
+   */
+  recipe?: typeof textareaRecipe;
+}) {
+  const slots = recipe();
 
   return <TextareaContext value={{ slots }}>{children}</TextareaContext>;
 }
@@ -127,6 +144,7 @@ export function Textarea({
   ref,
   onChange,
   onValueChange,
+  recipe,
   className,
   classNames,
   ...rest
@@ -154,7 +172,7 @@ export function Textarea({
     : handleChange;
 
   return (
-    <TextareaProvider>
+    <TextareaProvider recipe={recipe}>
       {skipClearable ? (
         <TextareaField
           {...rest}

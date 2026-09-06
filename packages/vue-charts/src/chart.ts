@@ -45,6 +45,16 @@ export interface ChartTooltipContentProps {
   nameKey?: string;
   payload?: unknown[];
 }
+
+export interface ChartContainerProps {
+  /**
+   * Style recipe. Defaults to `chartRecipe` from `@pisagor/recipes/chart`.
+   *
+   * @defaultValue chartRecipe
+   */
+  recipe?: typeof chartRecipe;
+  class?: unknown;
+}
 // #endregion
 
 // #region Context
@@ -151,10 +161,14 @@ export const ChartContainer = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     config: { required: true, type: Object as PropType<ChartConfig> },
     id: { default: undefined, type: String },
+    recipe: {
+      default: chartRecipe,
+      type: Function as PropType<typeof chartRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     const uniqueId = computed(() => props.id ?? `chart-${Math.random().toString(36).slice(2)}`);
-    const variantSlots = chartRecipe();
+    const variantSlots = props.recipe();
     provideChartContext(computed(() => ({ config: props.config, slots: variantSlots })));
 
     return () =>

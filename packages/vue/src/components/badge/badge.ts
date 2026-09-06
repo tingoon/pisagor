@@ -6,6 +6,12 @@ import { defineComponent, h, type PropType } from "vue";
 export type BadgeVariant = NonNullable<BadgeVariantProps["variant"]>;
 
 export interface BadgeProps extends BadgeVariantProps {
+  /**
+   * Style recipe. Defaults to `badgeRecipe` from `@pisagor/recipes/badge`.
+   *
+   * @defaultValue badgeRecipe
+   */
+  recipe?: typeof badgeRecipe;
   class?: unknown;
 }
 // #endregion
@@ -19,6 +25,10 @@ export const Badge = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     pill: { default: false, type: Boolean },
+    recipe: {
+      default: badgeRecipe,
+      type: Function as PropType<typeof badgeRecipe>,
+    },
     size: { default: "md", type: String as PropType<BadgeProps["size"]> },
     variant: { default: "default", type: String as PropType<BadgeProps["variant"]> },
   },
@@ -28,7 +38,7 @@ export const Badge = defineComponent({
         ark.span as ArkPart,
         {
           ...attrs,
-          class: badgeRecipe({
+          class: props.recipe({
             class: props.class as string | undefined,
             pill: props.pill,
             size: props.size,

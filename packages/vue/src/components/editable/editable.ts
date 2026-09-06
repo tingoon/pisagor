@@ -16,6 +16,12 @@ export interface EditableProps {
   activationMode?: "focus" | "dblclick" | "click" | "none";
   /** Whether the editable should auto-resize to fit the content. */
   autoResize?: boolean;
+  /**
+   * Style recipe. Defaults to `editableRecipe` from `@pisagor/recipes/editable`.
+   *
+   * @defaultValue editableRecipe
+   */
+  recipe?: typeof editableRecipe;
   class?: unknown;
   /** Whether the editable is in edit mode by default. */
   defaultEdit?: boolean;
@@ -110,6 +116,10 @@ export const EditableRoot = defineComponent({
       type: [String, Object] as PropType<EditableProps["placeholder"]>,
     },
     readOnly: { default: undefined, type: Boolean },
+    recipe: {
+      default: editableRecipe,
+      type: Function as PropType<typeof editableRecipe>,
+    },
     required: { default: undefined, type: Boolean },
     selectOnFocus: { default: undefined, type: Boolean },
     submitMode: { default: undefined, type: String as PropType<EditableProps["submitMode"]> },
@@ -117,7 +127,7 @@ export const EditableRoot = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = editableRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         EditablePrimitive.Root as ArkPart,
@@ -154,10 +164,14 @@ export const EditableArea = defineComponent({
   name: "Editable.Area",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: editableRecipe,
+      type: Function as PropType<typeof editableRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = editableRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         EditablePrimitive.Area as ArkPart,
@@ -188,12 +202,16 @@ export const EditablePreview = defineComponent({
       default: undefined,
       type: String as PropType<EditablePreviewProps["controlVariant"]>,
     },
+    recipe: {
+      default: editableRecipe,
+      type: Function as PropType<typeof editableRecipe>,
+    },
     size: { default: "md", type: String as PropType<EditablePreviewProps["size"]> },
     variant: { default: "outline", type: String as PropType<EditablePreviewProps["variant"]> },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = editableRecipe();
+      const variantSlots = props.recipe();
       const resolved = {
         surfaceVariant: undefined,
         variant: props.controlVariant ?? ("primary" as FormControlVariant),
@@ -232,10 +250,14 @@ export const EditableControl = defineComponent({
   name: "Editable.Control",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: editableRecipe,
+      type: Function as PropType<typeof editableRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = editableRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         EditablePrimitive.Control as ArkPart,

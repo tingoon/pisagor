@@ -29,6 +29,12 @@ export interface ClipboardProps extends ClipboardVariantProps {
   buttonSize?: ButtonProps["size"];
   /** Variant of the copy button */
   buttonVariant?: ButtonProps["variant"];
+  /**
+   * Style recipe. Defaults to `clipboardRecipe` from `@pisagor/recipes/clipboard`.
+   *
+   * @defaultValue clipboardRecipe
+   */
+  recipe?: typeof clipboardRecipe;
   class?: unknown;
   /** Slot class names */
   classNames?: ClipboardClassNames;
@@ -104,6 +110,10 @@ export const Clipboard = defineComponent({
       default: undefined,
       type: Function as PropType<ClipboardProps["onValueChange"]>,
     },
+    recipe: {
+      default: clipboardRecipe,
+      type: Function as PropType<typeof clipboardRecipe>,
+    },
     timeout: { default: undefined, type: Number },
     translations: {
       default: undefined,
@@ -122,7 +132,7 @@ export const Clipboard = defineComponent({
       const shellArgs = { variant: resolved.variant };
       const controlProps = { "data-variant": resolved.variant };
       const shellClassName = formControlShellRecipe({ size: "md", ...shellArgs });
-      const slots_ = clipboardRecipe({ valueSize: props.valueSize });
+      const slots_ = props.recipe({ valueSize: props.valueSize });
 
       const copiedIcon = props.copiedIcon ?? h(PhCheck);
       const copyIcon = props.copyIcon ?? h(PhClipboard);

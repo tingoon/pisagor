@@ -23,6 +23,12 @@ export interface MarqueeRootProps extends Omit<MarqueePrimitiveRootProps, "side"
    * @defaultValue true
    */
   showEdges?: boolean;
+  /**
+   * Style recipe. Defaults to `marqueeRecipe` from `@pisagor/recipes/marquee`.
+   *
+   * @defaultValue marqueeRecipe
+   */
+  recipe?: typeof marqueeRecipe;
 }
 
 export interface MarqueeProps extends Omit<MarqueeRootProps, "children"> {
@@ -39,10 +45,11 @@ export function MarqueeRoot({
   children,
   spacing = "16px",
   speed = 50,
+  recipe = marqueeRecipe,
   className,
   ...rest
 }: MarqueeRootProps) {
-  const slots = marqueeRecipe();
+  const slots = recipe();
   const side = orientation === "horizontal" ? "start" : "bottom";
 
   return (

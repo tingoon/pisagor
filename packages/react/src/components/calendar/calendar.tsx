@@ -69,7 +69,14 @@ export type CalendarTableRowProps = DatePickerTableRowProps;
 
 export type CalendarTableHeaderProps = DatePickerTableHeaderProps;
 
-export type CalendarTableCellProps = DatePickerTableCellProps;
+export interface CalendarTableCellProps extends DatePickerTableCellProps {
+  /**
+   * Style recipe. Defaults to `calendarTableCellRecipe` from `@pisagor/recipes/calendar`.
+   *
+   * @defaultValue calendarTableCellRecipe
+   */
+  recipe?: typeof calendarTableCellRecipe;
+}
 
 export interface CalendarWeekDaysProps extends CalendarTableHeadProps {
   /**
@@ -96,6 +103,12 @@ export type CalendarRootProps = DatePickerRootProps;
 export interface CalendarProps extends CalendarRootProps {
   /** Visual shell variant for embedded selects. Defaults to `primary`. */
   variant?: FormControlVariant;
+  /**
+   * Style recipe. Defaults to `calendarRecipe` from `@pisagor/recipes/calendar`.
+   *
+   * @defaultValue calendarRecipe
+   */
+  recipe?: typeof calendarRecipe;
 }
 // #endregion
 
@@ -124,8 +137,14 @@ const getWeekRowKey = (
   }>,
 ) => week.map((day) => `${day.year}-${day.month}-${day.day}`).join("/");
 
-export function CalendarRoot({ variant, children, className, ...rest }: CalendarProps) {
-  const slots = calendarRecipe();
+export function CalendarRoot({
+  variant,
+  children,
+  recipe = calendarRecipe,
+  className,
+  ...rest
+}: CalendarProps) {
+  const slots = recipe();
 
   return (
     <CalendarSlotsContext value={{ slots }}>
@@ -365,10 +384,11 @@ export function CalendarTableBody(props: CalendarTableBodyProps) {
 export function CalendarTableCell({
   value,
   visibleRange,
+  recipe = calendarTableCellRecipe,
   className,
   ...rest
 }: CalendarTableCellProps) {
-  const slots = calendarTableCellRecipe();
+  const slots = recipe();
 
   return (
     <CalendarPrimitive.TableCell className={slots.base()} value={value} visibleRange={visibleRange}>

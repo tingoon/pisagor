@@ -12,6 +12,12 @@ export interface CarouselPresetItem {
 }
 
 export interface CarouselProps {
+  /**
+   * Style recipe. Defaults to `carouselRecipe` from `@pisagor/recipes/carousel`.
+   *
+   * @defaultValue carouselRecipe
+   */
+  recipe?: typeof carouselRecipe;
   class?: unknown;
   slides?: CarouselPresetItem[];
   spacing?: string;
@@ -26,12 +32,16 @@ export const CarouselRoot = defineComponent({
   name: "CarouselRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: carouselRecipe,
+      type: Function as PropType<typeof carouselRecipe>,
+    },
     slideCount: { required: true, type: Number },
     spacing: { default: "16px", type: String },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = carouselRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         CarouselPrimitive.Root as ArkPart,
@@ -50,9 +60,15 @@ export const CarouselRoot = defineComponent({
 export const CarouselControl = defineComponent({
   inheritAttrs: false,
   name: "CarouselControl",
-  setup(_, { attrs, slots }) {
+  props: {
+    recipe: {
+      default: carouselRecipe,
+      type: Function as PropType<typeof carouselRecipe>,
+    },
+  },
+  setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = carouselRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         CarouselPrimitive.Control as ArkPart,
@@ -69,9 +85,15 @@ export const CarouselControl = defineComponent({
 export const CarouselPrevTrigger = defineComponent({
   inheritAttrs: false,
   name: "CarouselPrevTrigger",
-  setup(_, { attrs }) {
+  props: {
+    recipe: {
+      default: carouselRecipe,
+      type: Function as PropType<typeof carouselRecipe>,
+    },
+  },
+  setup(props, { attrs }) {
     return () => {
-      const variantSlots = carouselRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         CarouselPrimitive.PrevTrigger as ArkPart,
@@ -100,9 +122,15 @@ export const CarouselPrevTrigger = defineComponent({
 export const CarouselNextTrigger = defineComponent({
   inheritAttrs: false,
   name: "CarouselNextTrigger",
-  setup(_, { attrs }) {
+  props: {
+    recipe: {
+      default: carouselRecipe,
+      type: Function as PropType<typeof carouselRecipe>,
+    },
+  },
+  setup(props, { attrs }) {
     return () => {
-      const variantSlots = carouselRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         CarouselPrimitive.NextTrigger as ArkPart,
@@ -131,9 +159,15 @@ export const CarouselNextTrigger = defineComponent({
 export const CarouselIndicatorGroup = defineComponent({
   inheritAttrs: false,
   name: "CarouselIndicatorGroup",
-  setup(_, { attrs, slots }) {
+  props: {
+    recipe: {
+      default: carouselRecipe,
+      type: Function as PropType<typeof carouselRecipe>,
+    },
+  },
+  setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = carouselRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         CarouselPrimitive.IndicatorGroup as ArkPart,
@@ -150,9 +184,15 @@ export const CarouselIndicatorGroup = defineComponent({
 export const CarouselIndicator = defineComponent({
   inheritAttrs: false,
   name: "CarouselIndicator",
-  setup(_, { attrs, slots }) {
+  props: {
+    recipe: {
+      default: carouselRecipe,
+      type: Function as PropType<typeof carouselRecipe>,
+    },
+  },
+  setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = carouselRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         CarouselPrimitive.Indicator as ArkPart,
@@ -169,9 +209,15 @@ export const CarouselIndicator = defineComponent({
 export const CarouselItemGroup = defineComponent({
   inheritAttrs: false,
   name: "CarouselItemGroup",
-  setup(_, { attrs, slots }) {
+  props: {
+    recipe: {
+      default: carouselRecipe,
+      type: Function as PropType<typeof carouselRecipe>,
+    },
+  },
+  setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = carouselRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         CarouselPrimitive.ItemGroup as ArkPart,
@@ -188,9 +234,15 @@ export const CarouselItemGroup = defineComponent({
 export const CarouselItem = defineComponent({
   inheritAttrs: false,
   name: "CarouselItem",
-  setup(_, { attrs, slots }) {
+  props: {
+    recipe: {
+      default: carouselRecipe,
+      type: Function as PropType<typeof carouselRecipe>,
+    },
+  },
+  setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = carouselRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         CarouselPrimitive.Item as ArkPart,

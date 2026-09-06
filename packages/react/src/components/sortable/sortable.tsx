@@ -36,11 +36,23 @@ export interface SortableRootProps extends Omit<ComponentProps<typeof ark.div>, 
    * Called with the reordered ids after a successful drop or keyboard move.
    */
   onValueChange?: (items: string[]) => void;
+  /**
+   * Style recipe. Defaults to `sortableRecipe` from `@pisagor/recipes/sortable`.
+   *
+   * @defaultValue sortableRecipe
+   */
+  recipe?: typeof sortableRecipe;
 }
 
 export interface SortableItemProps extends ComponentProps<typeof ark.div> {
   /** Stable id matching an entry in `Sortable.Root` `items`. */
   value: string;
+  /**
+   * Style recipe. Defaults to `sortableItemRecipe` from `@pisagor/recipes/sortable`.
+   *
+   * @defaultValue sortableItemRecipe
+   */
+  itemRecipe?: typeof sortableItemRecipe;
 }
 
 export type SortableHandleProps = ComponentProps<typeof ark.div>;
@@ -71,6 +83,7 @@ function reorder(list: string[], from: number, to: number) {
 export function SortableRoot({
   orientation = "vertical",
   disabled = false,
+  recipe = sortableRecipe,
   items,
   children,
   onValueChange,
@@ -285,7 +298,7 @@ export function SortableRoot({
     <SortableContext value={contextValue}>
       <ark.div
         {...rest}
-        className={sortableRecipe({ className, orientation })}
+        className={recipe({ className, orientation })}
         data-orientation={orientation}
         data-part="root"
         data-scope="sortable"
@@ -297,11 +310,17 @@ export function SortableRoot({
   );
 }
 
-export function SortableItem({ value, children, className, ...rest }: SortableItemProps) {
+export function SortableItem({
+  value,
+  children,
+  itemRecipe = sortableItemRecipe,
+  className,
+  ...rest
+}: SortableItemProps) {
   const { getItemProps, activeId } = useSortable();
   const itemProps = getItemProps(value);
   const isDragging = activeId === value;
-  const slots = sortableItemRecipe();
+  const slots = itemRecipe();
 
   return (
     <SortableItemContext value={{ id: value, isDragging, slots }}>

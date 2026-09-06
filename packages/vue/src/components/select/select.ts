@@ -44,6 +44,16 @@ export interface SelectProps extends Omit<SelectRootProps, "children"> {
 }
 
 export type SelectTriggerSize = FormControlShellVariantProps["size"];
+
+export interface SelectTriggerProps {
+  /**
+   * Style recipe. Defaults to `selectRecipe` from `@pisagor/recipes/select`.
+   *
+   * @defaultValue selectRecipe
+   */
+  recipe?: typeof selectRecipe;
+  class?: unknown;
+}
 // #endregion
 
 // #region Parts
@@ -92,6 +102,10 @@ export const SelectTrigger = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     clearable: { default: false, type: Boolean },
+    recipe: {
+      default: selectRecipe,
+      type: Function as PropType<typeof selectRecipe>,
+    },
     size: { default: "md", type: String as PropType<SelectTriggerSize> },
     variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
   },
@@ -103,7 +117,7 @@ export const SelectTrigger = defineComponent({
       };
       const shellArgs = { variant: resolved.variant };
       const controlProps = { "data-variant": resolved.variant };
-      const styleSlots = selectRecipe();
+      const styleSlots = props.recipe();
 
       return h(SelectPrimitive.Control as ArkPart, {}, () =>
         h(
@@ -141,10 +155,14 @@ export const SelectSeparator = defineComponent({
   name: "SelectSeparator",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: selectRecipe,
+      type: Function as PropType<typeof selectRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const styleSlots = selectRecipe();
+      const styleSlots = props.recipe();
 
       return h(
         Separator as ArkPart,
@@ -167,10 +185,14 @@ export const SelectValueText = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     placeholder: { default: undefined, type: String as PropType<string | undefined> },
+    recipe: {
+      default: selectRecipe,
+      type: Function as PropType<typeof selectRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const styleSlots = selectRecipe();
+      const styleSlots = props.recipe();
 
       return h(
         SelectPrimitive.ValueText as ArkPart,
@@ -194,10 +216,14 @@ export const SelectContent = defineComponent({
   name: "SelectContent",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: selectRecipe,
+      type: Function as PropType<typeof selectRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const styleSlots = selectRecipe();
+      const styleSlots = props.recipe();
 
       return selectTeleport(
         h(SelectPrimitive.Positioner as ArkPart, {}, () =>
@@ -241,10 +267,14 @@ export const SelectItemGroupLabel = defineComponent({
   name: "SelectItemGroupLabel",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: selectRecipe,
+      type: Function as PropType<typeof selectRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const styleSlots = selectRecipe();
+      const styleSlots = props.recipe();
 
       return h(
         SelectPrimitive.ItemGroupLabel as ArkPart,
@@ -265,10 +295,14 @@ export const SelectItem = defineComponent({
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     // Ark uses `item` for collection items.
     item: { default: undefined, type: Object as PropType<unknown> },
+    recipe: {
+      default: selectRecipe,
+      type: Function as PropType<typeof selectRecipe>,
+    },
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const styleSlots = selectRecipe();
+      const styleSlots = props.recipe();
 
       return h(
         SelectPrimitive.Item as ArkPart,
@@ -302,10 +336,14 @@ export const SelectClearTrigger = defineComponent({
   props: {
     "aria-label": { default: "Clear selected value(s)", type: String },
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: selectRecipe,
+      type: Function as PropType<typeof selectRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const styleSlots = selectRecipe();
+      const styleSlots = props.recipe();
 
       return h(
         SelectPrimitive.ClearTrigger as ArkPart,
@@ -325,11 +363,15 @@ export const SelectEmpty = defineComponent({
   name: "SelectEmpty",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: selectRecipe,
+      type: Function as PropType<typeof selectRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
       const api = useSelect();
-      const styleSlots = selectRecipe();
+      const styleSlots = props.recipe();
 
       if (api.value.empty) {
         return h(

@@ -5,7 +5,14 @@ import type { ComponentProps } from "react";
 // #region Types
 export type BadgeVariant = BadgeVariantProps["variant"];
 
-export type BadgeProps = ComponentProps<typeof ark.span> & BadgeVariantProps;
+export interface BadgeProps extends ComponentProps<typeof ark.span>, BadgeVariantProps {
+  /**
+   * Style recipe. Defaults to `badgeRecipe` from `@pisagor/recipes/badge`.
+   *
+   * @defaultValue badgeRecipe
+   */
+  recipe?: typeof badgeRecipe;
+}
 // #endregion
 
 // #region Component
@@ -13,13 +20,14 @@ export function Badge({
   pill = false,
   size = "md",
   variant = "default",
+  recipe = badgeRecipe,
   className,
   ...rest
 }: BadgeProps) {
   return (
     <ark.span
       {...rest}
-      className={badgeRecipe({ className, pill, size, variant })}
+      className={recipe({ className, pill, size, variant })}
       data-part="root"
       data-scope="badge"
       data-size={size}

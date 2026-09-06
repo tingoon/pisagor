@@ -31,12 +31,18 @@ export interface NumberInputProps extends NumberInputRootProps {
   placeholder?: string;
   /** Called with the numeric value when the input changes. */
   onValueChange?: (value: number) => void;
+  /**
+   * Style recipe. Defaults to `numberInputRecipe` from `@pisagor/recipes/number-input`.
+   *
+   * @defaultValue numberInputRecipe
+   */
+  recipe?: typeof numberInputRecipe;
 }
 
-export type NumberInputControlProps = NumberInputPrimitiveControlProps & {
+export interface NumberInputControlProps extends NumberInputPrimitiveControlProps {
   variant?: FormControlVariant;
   clearable?: boolean;
-};
+}
 
 export type NumberInputDecrementTriggerProps = ComponentProps<
   typeof NumberInputPrimitive.DecrementTrigger
@@ -56,10 +62,11 @@ export function NumberInputRoot({
   children,
   placeholder,
   onValueChange,
+  recipe = numberInputRecipe,
   className,
   ...rest
 }: NumberInputProps) {
-  const slots = numberInputRecipe();
+  const slots = recipe();
 
   return (
     <NumberInputContext value={{ slots }}>

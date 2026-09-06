@@ -23,12 +23,28 @@ export type ListboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   ArkListboxRootProps<T>,
   "collection" | "onValueChange"
 > & {
+  /**
+   * Style recipe. Defaults to `listboxRecipe` from `@pisagor/recipes/listbox`.
+   *
+   * @defaultValue listboxRecipe
+   */
+  recipe?: typeof listboxRecipe;
   collection?: ListCollection<T>;
   onValueChange?: (value: string | string[]) => void;
 };
 
 export interface ListboxProps extends Omit<ListboxRootProps, "children"> {
   items?: ListboxPresetItem[];
+}
+
+export interface ListboxItemProps {
+  /**
+   * Style recipe. Defaults to `listboxItemRecipe` from `@pisagor/recipes/listbox-item`.
+   *
+   * @defaultValue listboxItemRecipe
+   */
+  itemRecipe?: typeof listboxItemRecipe;
+  class?: unknown;
 }
 // #endregion
 
@@ -48,10 +64,14 @@ export const ListboxRoot = defineComponent({
       default: undefined,
       type: Function as PropType<ListboxRootProps["onValueChange"]>,
     },
+    recipe: {
+      default: listboxRecipe,
+      type: Function as PropType<typeof listboxRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = listboxRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ListboxPrimitive.Root as ArkPart,
@@ -75,10 +95,14 @@ export const ListboxContent = defineComponent({
   name: "ListboxContent",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: listboxRecipe,
+      type: Function as PropType<typeof listboxRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = listboxRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ListboxPrimitive.Content as ArkPart,
@@ -99,6 +123,10 @@ export const ListboxItem = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     item: { default: undefined, type: Object as PropType<unknown> },
+    itemRecipe: {
+      default: listboxItemRecipe,
+      type: Function as PropType<typeof listboxItemRecipe>,
+    },
     variant: {
       default: "default",
       type: String as PropType<ListboxItemVariantProps["variant"]>,
@@ -106,7 +134,7 @@ export const ListboxItem = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = listboxItemRecipe({ variant: props.variant });
+      const variantSlots = props.itemRecipe({ variant: props.variant });
 
       return h(
         ListboxPrimitive.Item as ArkPart,
@@ -128,10 +156,14 @@ export const ListboxItemText = defineComponent({
   name: "ListboxItemText",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    itemRecipe: {
+      default: listboxItemRecipe,
+      type: Function as PropType<typeof listboxItemRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = listboxItemRecipe();
+      const variantSlots = props.itemRecipe();
 
       return h(
         ListboxPrimitive.ItemText as ArkPart,
@@ -152,10 +184,14 @@ export const ListboxItemGroup = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     heading: { default: undefined, type: String as PropType<string | undefined> },
+    recipe: {
+      default: listboxRecipe,
+      type: Function as PropType<typeof listboxRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = listboxRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ListboxPrimitive.ItemGroup as ArkPart,
@@ -178,10 +214,14 @@ export const ListboxItemGroupLabel = defineComponent({
   name: "ListboxItemGroupLabel",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: listboxRecipe,
+      type: Function as PropType<typeof listboxRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = listboxRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ListboxPrimitive.ItemGroupLabel as ArkPart,
@@ -201,10 +241,14 @@ export const ListboxValueText = defineComponent({
   name: "ListboxValueText",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: listboxRecipe,
+      type: Function as PropType<typeof listboxRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = listboxRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ListboxPrimitive.ValueText as ArkPart,
@@ -224,10 +268,14 @@ export const ListboxItemIndicator = defineComponent({
   name: "ListboxItemIndicator",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    itemRecipe: {
+      default: listboxItemRecipe,
+      type: Function as PropType<typeof listboxItemRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = listboxItemRecipe();
+      const variantSlots = props.itemRecipe();
 
       return h(
         ListboxPrimitive.ItemIndicator as ArkPart,
@@ -247,10 +295,14 @@ export const ListboxEmpty = defineComponent({
   name: "ListboxEmpty",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: listboxRecipe,
+      type: Function as PropType<typeof listboxRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = listboxRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ListboxPrimitive.Empty as ArkPart,

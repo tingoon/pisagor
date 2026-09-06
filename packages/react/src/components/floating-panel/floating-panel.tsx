@@ -6,8 +6,8 @@ import type {
   FloatingPanelHeaderProps,
   FloatingPanelBodyProps as FloatingPanelPrimitiveBodyProps,
   FloatingPanelContentProps as FloatingPanelPrimitiveContentProps,
+  FloatingPanelRootProps as FloatingPanelPrimitiveRootProps,
   FloatingPanelResizeTriggerProps,
-  FloatingPanelRootProps,
   FloatingPanelStageTriggerProps,
   FloatingPanelTitleProps,
   FloatingPanelTriggerProps,
@@ -22,6 +22,15 @@ import { ScrollArea } from "../scroll-area";
 import { FloatingPanelContext, useFloatingPanel } from "./floating-panel.context";
 
 // #region Types
+export interface FloatingPanelRootProps extends FloatingPanelPrimitiveRootProps {
+  /**
+   * Style recipe. Defaults to `floatingPanelRecipe` from `@pisagor/recipes/floating-panel`.
+   *
+   * @defaultValue floatingPanelRecipe
+   */
+  recipe?: typeof floatingPanelRecipe;
+}
+
 export interface FloatingPanelContentProps extends FloatingPanelPrimitiveContentProps {
   /**
    * Whether to enable a resizable panel.
@@ -51,8 +60,12 @@ export type FloatingPanelFooterProps = ComponentProps<typeof ark.div>;
 // #endregion
 
 // #region Parts
-export function FloatingPanelRoot({ children, ...rest }: FloatingPanelRootProps) {
-  const slots = floatingPanelRecipe();
+export function FloatingPanelRoot({
+  children,
+  recipe = floatingPanelRecipe,
+  ...rest
+}: FloatingPanelRootProps) {
+  const slots = recipe();
 
   return (
     <FloatingPanelContext value={{ slots }}>

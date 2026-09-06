@@ -45,11 +45,23 @@ export interface SortableRootProps {
   onValueChange?: (items: string[]) => void;
   orientation?: SortableOrientation;
   disabled?: boolean;
+  /**
+   * Style recipe. Defaults to `sortableRecipe` from `@pisagor/recipes/sortable`.
+   *
+   * @defaultValue sortableRecipe
+   */
+  recipe?: typeof sortableRecipe;
   class?: unknown;
 }
 
 export interface SortableItemProps {
   value: string;
+  /**
+   * Style recipe. Defaults to `sortableItemRecipe` from `@pisagor/recipes/sortable-item`.
+   *
+   * @defaultValue sortableItemRecipe
+   */
+  itemRecipe?: typeof sortableItemRecipe;
   class?: unknown;
 }
 
@@ -99,6 +111,10 @@ export const SortableRoot = defineComponent({
     orientation: {
       default: "vertical",
       type: String as PropType<SortableOrientation>,
+    },
+    recipe: {
+      default: sortableRecipe,
+      type: Function as PropType<typeof sortableRecipe>,
     },
   },
   setup(props, { attrs, slots }) {
@@ -247,7 +263,7 @@ export const SortableRoot = defineComponent({
         ark.div as unknown as ArkPart,
         {
           ...attrs,
-          class: cn(sortableRecipe({ orientation: props.orientation }), props.class, attrs.class),
+          class: cn(props.recipe({ orientation: props.orientation }), props.class, attrs.class),
           "data-orientation": props.orientation,
           "data-part": "root",
           "data-scope": "sortable",
@@ -263,6 +279,10 @@ export const SortableItem = defineComponent({
   name: "SortableItem",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    itemRecipe: {
+      default: sortableItemRecipe,
+      type: Function as PropType<typeof sortableItemRecipe>,
+    },
     value: { required: true, type: String },
   },
   setup(props, { attrs, slots }) {
@@ -271,7 +291,7 @@ export const SortableItem = defineComponent({
       return () => null;
     }
 
-    const itemSlots = sortableItemRecipe();
+    const itemSlots = props.itemRecipe();
     const itemContext = reactive<SortableItemContextValue>({
       id: props.value,
       isDragging: false,

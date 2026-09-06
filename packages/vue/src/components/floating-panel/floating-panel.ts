@@ -37,6 +37,16 @@ interface FloatingPanelBodyProps {
    */
   scrollFade?: boolean;
 }
+
+export interface FloatingPanelRootProps {
+  /**
+   * Style recipe. Defaults to `floatingPanelRecipe` from `@pisagor/recipes/floating-panel`.
+   *
+   * @defaultValue floatingPanelRecipe
+   */
+  recipe?: typeof floatingPanelRecipe;
+  class?: unknown;
+}
 // #endregion
 
 // #region Context
@@ -65,11 +75,15 @@ export const FloatingPanelRoot = defineComponent({
   name: "FloatingPanel",
   props: {
     lazyMount: { default: true, type: Boolean },
+    recipe: {
+      default: floatingPanelRecipe,
+      type: Function as PropType<typeof floatingPanelRecipe>,
+    },
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
     const context = reactive<FloatingPanelContextProps>({
-      slots: floatingPanelRecipe(),
+      slots: props.recipe(),
     });
     provideFloatingPanelContext(context);
 
@@ -114,13 +128,17 @@ export const FloatingPanelContent = defineComponent({
   name: "FloatingPanel.Content",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: floatingPanelRecipe,
+      type: Function as PropType<typeof floatingPanelRecipe>,
+    },
     resizable: { default: true, type: Boolean as PropType<FloatingPanelContentProps["resizable"]> },
   },
   setup(props, { attrs, slots }) {
     const floatingPanelContext = useFloatingPanel();
 
     return () => {
-      const panelSlots = floatingPanelContext?.slots ?? floatingPanelRecipe();
+      const panelSlots = floatingPanelContext?.slots ?? props.recipe();
 
       return floatingPanelTeleport(
         h(FloatingPanelPrimitive.Positioner as ArkPart, { class: panelSlots.positioner() }, () =>

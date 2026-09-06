@@ -4,7 +4,14 @@ import type { ComponentProps } from "react";
 import { CardContext, useCard } from "./card.context";
 
 // #region Types
-export type CardRootProps = ComponentProps<typeof ark.div>;
+export interface CardRootProps extends ComponentProps<typeof ark.div> {
+  /**
+   * Style recipe. Defaults to `cardRecipe` from `@pisagor/recipes/card`.
+   *
+   * @defaultValue cardRecipe
+   */
+  recipe?: typeof cardRecipe;
+}
 
 export type CardMediaProps = ComponentProps<typeof ark.div> & CardVariantProps;
 
@@ -27,8 +34,8 @@ export type CardFooterProps = ComponentProps<typeof ark.div>;
 // #endregion
 
 // #region Parts
-export function CardRoot({ children, className, ...rest }: CardRootProps) {
-  const slots = cardRecipe();
+export function CardRoot({ children, recipe = cardRecipe, className, ...rest }: CardRootProps) {
+  const slots = recipe();
 
   return (
     <CardContext value={{ slots }}>

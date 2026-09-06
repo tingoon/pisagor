@@ -7,6 +7,12 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 export interface ButtonGroupProps extends ButtonGroupVariantProps {
+  /**
+   * Style recipe. Defaults to `buttonGroupRecipe` from `@pisagor/recipes/button-group`.
+   *
+   * @defaultValue buttonGroupRecipe
+   */
+  recipe?: typeof buttonGroupRecipe;
   class?: unknown;
 }
 // #endregion
@@ -21,10 +27,14 @@ export const ButtonGroupRoot = defineComponent({
       default: "horizontal",
       type: String as PropType<ButtonGroupVariantProps["orientation"]>,
     },
+    recipe: {
+      default: buttonGroupRecipe,
+      type: Function as PropType<typeof buttonGroupRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = buttonGroupRecipe({ orientation: props.orientation });
+      const variantSlots = props.recipe({ orientation: props.orientation });
 
       return h(
         ark.fieldset as ArkPart,
@@ -46,10 +56,14 @@ export const ButtonGroupText = defineComponent({
   name: "ButtonGroupText",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: buttonGroupRecipe,
+      type: Function as PropType<typeof buttonGroupRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = buttonGroupRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -71,10 +85,14 @@ export const ButtonGroupSeparator = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     orientation: { default: "vertical", type: String as PropType<SeparatorProps["orientation"]> },
+    recipe: {
+      default: buttonGroupRecipe,
+      type: Function as PropType<typeof buttonGroupRecipe>,
+    },
   },
   setup(props, { attrs }) {
     return () => {
-      const variantSlots = buttonGroupRecipe();
+      const variantSlots = props.recipe();
 
       return h(Separator as ArkPart, {
         ...attrs,

@@ -13,6 +13,12 @@ type ArkPart = Parameters<typeof h>[0];
 
 export interface RatingProps {
   allowHalf?: boolean;
+  /**
+   * Style recipe. Defaults to `ratingRecipe` from `@pisagor/recipes/rating`.
+   *
+   * @defaultValue ratingRecipe
+   */
+  recipe?: typeof ratingRecipe;
   class?: ClassValue;
   count?: number;
   defaultValue?: number;
@@ -37,6 +43,10 @@ export const Rating = defineComponent({
     icon: { default: undefined, type: [Object, Function, String] as PropType<VNodeChild> },
     onValueChange: { default: undefined, type: Function as PropType<RatingProps["onValueChange"]> },
     readOnly: { default: undefined, type: Boolean },
+    recipe: {
+      default: ratingRecipe,
+      type: Function as PropType<typeof ratingRecipe>,
+    },
     value: { default: undefined, type: Number },
     variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
   },
@@ -46,7 +56,7 @@ export const Rating = defineComponent({
         surfaceVariant: undefined,
         variant: props.variant ?? ("primary" as FormControlVariant),
       };
-      const slots = ratingRecipe();
+      const slots = props.recipe();
       const surfaceTone = resolved.variant === "secondary" ? "opacity-90" : undefined;
 
       const icon = props.icon ?? PhStar;

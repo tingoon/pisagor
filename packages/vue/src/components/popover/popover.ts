@@ -5,6 +5,12 @@ import { renderIconCloseButton } from "../../internal/close-button";
 
 // #region Types
 export interface PopoverContentProps {
+  /**
+   * Style recipe. Defaults to `popoverRecipe` from `@pisagor/recipes/popover`.
+   *
+   * @defaultValue popoverRecipe
+   */
+  recipe?: typeof popoverRecipe;
   class?: unknown;
   showCloseButton?: boolean;
 }
@@ -86,11 +92,15 @@ export const PopoverContent = defineComponent({
   name: "PopoverContent",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: popoverRecipe,
+      type: Function as PropType<typeof popoverRecipe>,
+    },
     showCloseButton: { default: false, type: Boolean },
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const slots = popoverRecipe();
+      const slots = props.recipe();
 
       return popoverTeleport(
         h(PopoverPositioner, null, () =>
@@ -121,11 +131,15 @@ export const PopoverHeader = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     description: String,
+    recipe: {
+      default: popoverRecipe,
+      type: Function as PropType<typeof popoverRecipe>,
+    },
     title: String,
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const recipe = popoverRecipe();
+      const recipe = props.recipe();
 
       return h(
         "div",
@@ -150,10 +164,14 @@ export const PopoverTitle = defineComponent({
   name: "PopoverTitle",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: popoverRecipe,
+      type: Function as PropType<typeof popoverRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const recipe = popoverRecipe();
+      const recipe = props.recipe();
 
       return h(
         PopoverPrimitive.Title as ArkPart,
@@ -172,10 +190,14 @@ export const PopoverDescription = defineComponent({
   name: "PopoverDescription",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: popoverRecipe,
+      type: Function as PropType<typeof popoverRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const recipe = popoverRecipe();
+      const recipe = props.recipe();
 
       return h(
         PopoverPrimitive.Description as ArkPart,
@@ -194,10 +216,14 @@ export const PopoverBody = defineComponent({
   name: "PopoverBody",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: popoverRecipe,
+      type: Function as PropType<typeof popoverRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const recipe = popoverRecipe();
+      const recipe = props.recipe();
 
       return h(
         "div",
@@ -218,10 +244,14 @@ export const PopoverFooter = defineComponent({
   name: "PopoverFooter",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: popoverRecipe,
+      type: Function as PropType<typeof popoverRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const recipe = popoverRecipe();
+      const recipe = props.recipe();
 
       return h(
         "div",
@@ -249,11 +279,15 @@ export const PopoverArrow = defineComponent({
   inheritAttrs: false,
   name: "PopoverArrow",
   props: {
+    recipe: {
+      default: popoverRecipe,
+      type: Function as PropType<typeof popoverRecipe>,
+    },
     style: { default: undefined, type: Object as PropType<CSSProperties> },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const recipe = popoverRecipe();
+      const recipe = props.recipe();
 
       return h(
         PopoverPrimitive.Arrow as ArkPart,

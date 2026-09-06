@@ -14,6 +14,12 @@ type AnnouncementRootProps = Omit<ComponentProps<typeof ark.div>, "title"> &
      * @defaultValue "status"
      */
     role?: "status" | "alert";
+    /**
+     * Style recipe. Defaults to `announcementRecipe` from `@pisagor/recipes/announcement`.
+     *
+     * @defaultValue announcementRecipe
+     */
+    recipe?: typeof announcementRecipe;
   };
 
 export interface AnnouncementProps extends Omit<AnnouncementRootProps, "children"> {
@@ -30,10 +36,11 @@ export interface AnnouncementProps extends Omit<AnnouncementRootProps, "children
 export function AnnouncementRoot({
   role = "status",
   children,
+  recipe = announcementRecipe,
   className,
   ...rest
 }: AnnouncementRootProps) {
-  const slots = announcementRecipe();
+  const slots = recipe();
 
   return (
     <AnnouncementContext value={{ slots }}>

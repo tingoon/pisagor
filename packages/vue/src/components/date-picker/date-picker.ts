@@ -29,6 +29,12 @@ export interface DatePickerRootProps {
 
 export interface DatePickerTriggerProps {
   clearable?: boolean;
+  /**
+   * Style recipe. Defaults to `datePickerRecipe` from `@pisagor/recipes/date-picker`.
+   *
+   * @defaultValue datePickerRecipe
+   */
+  recipe?: typeof datePickerRecipe;
 }
 
 export interface DatePickerInputProps extends Omit<InputProps, "size"> {
@@ -83,6 +89,10 @@ export const DatePickerTrigger = defineComponent({
   name: "DatePicker.Trigger",
   props: {
     clearable: { default: false, type: Boolean },
+    recipe: {
+      default: datePickerRecipe,
+      type: Function as PropType<typeof datePickerRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -90,14 +100,14 @@ export const DatePickerTrigger = defineComponent({
         DatePickerPrimitive.Control as ArkPart,
         {
           ...attrs,
-          class: datePickerRecipe().control(),
+          class: props.recipe().control(),
         },
         () => [
           h(
             DatePickerPrimitive.Trigger as ArkPart,
             {
               ...attrs,
-              class: datePickerRecipe().trigger(),
+              class: props.recipe().trigger(),
             },
             () => slots.default?.(),
           ),
@@ -198,6 +208,10 @@ export const DatePickerTimer = defineComponent({
       type: Function as PropType<((value: string) => void) | undefined>,
     },
     readOnly: { default: undefined, type: Boolean },
+    recipe: {
+      default: datePickerRecipe,
+      type: Function as PropType<typeof datePickerRecipe>,
+    },
     value: { default: undefined, type: [String, Number, Array] as PropType<unknown> },
   },
   setup(props, { attrs }) {
@@ -226,11 +240,7 @@ export const DatePickerTimer = defineComponent({
           InputGroup.Input as ArkPart,
           {
             ...attrs,
-            class: cn(
-              datePickerRecipe().timer(),
-              props.class,
-              (attrs as { class?: ClassValue }).class,
-            ),
+            class: cn(props.recipe().timer(), props.class, (attrs as { class?: ClassValue }).class),
             clearable: false,
             disabled: props.disabled,
             onValueChange: handleValueChange,
@@ -255,6 +265,10 @@ export const DatePickerContent = defineComponent({
   name: "DatePicker.Content",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    recipe: {
+      default: datePickerRecipe,
+      type: Function as PropType<typeof datePickerRecipe>,
+    },
     showCalendar: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
@@ -265,7 +279,7 @@ export const DatePickerContent = defineComponent({
           {
             ...attrs,
             class: cn(
-              datePickerRecipe().content(),
+              props.recipe().content(),
               props.class,
               (attrs as { class?: ClassValue }).class,
             ),
@@ -295,11 +309,17 @@ export const DatePickerContent = defineComponent({
 export const DatePickerValueText = defineComponent({
   inheritAttrs: false,
   name: "DatePicker.ValueText",
-  setup(_, { attrs }) {
+  props: {
+    recipe: {
+      default: datePickerRecipe,
+      type: Function as PropType<typeof datePickerRecipe>,
+    },
+  },
+  setup(props, { attrs }) {
     return () =>
       h(DatePickerPrimitive.ValueText as ArkPart, {
         ...attrs,
-        class: cn(datePickerRecipe().valueText(), (attrs as { class?: ClassValue }).class),
+        class: cn(props.recipe().valueText(), (attrs as { class?: ClassValue }).class),
       });
   },
 });

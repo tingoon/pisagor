@@ -6,14 +6,29 @@ import { Separator, type SeparatorProps } from "../separator";
 import { ButtonGroupContext, useButtonGroup } from "./button-group.context";
 
 // #region Types
-export type ButtonGroupProps = ComponentProps<typeof ark.fieldset> & ButtonGroupVariantProps;
+export interface ButtonGroupProps
+  extends ComponentProps<typeof ark.fieldset>,
+    ButtonGroupVariantProps {
+  /**
+   * Style recipe. Defaults to `buttonGroupRecipe` from `@pisagor/recipes/button-group`.
+   *
+   * @defaultValue buttonGroupRecipe
+   */
+  recipe?: typeof buttonGroupRecipe;
+}
 
 export type ButtonGroupTextProps = ComponentProps<typeof ark.div>;
 // #endregion
 
 // #region Parts
-export function ButtonGroupRoot({ orientation, children, className, ...rest }: ButtonGroupProps) {
-  const slots = useMemo(() => buttonGroupRecipe({ orientation }), [orientation]);
+export function ButtonGroupRoot({
+  orientation,
+  children,
+  recipe = buttonGroupRecipe,
+  className,
+  ...rest
+}: ButtonGroupProps) {
+  const slots = useMemo(() => recipe({ orientation }), [orientation, recipe]);
 
   return (
     <ButtonGroupContext value={{ slots }}>

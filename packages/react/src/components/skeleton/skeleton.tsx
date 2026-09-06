@@ -10,16 +10,36 @@ export interface SkeletonTextProps extends ComponentProps<typeof ark.div> {
    * @defaultValue 1
    */
   lines?: number;
+  /**
+   * Style recipe. Defaults to `skeletonRecipe` from `@pisagor/recipes/skeleton`.
+   *
+   * @defaultValue skeletonRecipe
+   */
+  recipe?: typeof skeletonRecipe;
 }
 
-export type SkeletonRootProps = ComponentProps<typeof ark.div>;
+export interface SkeletonRootProps extends ComponentProps<typeof ark.div> {
+  /**
+   * Style recipe. Defaults to `skeletonRecipe` from `@pisagor/recipes/skeleton`.
+   *
+   * @defaultValue skeletonRecipe
+   */
+  recipe?: typeof skeletonRecipe;
+}
 
-export type SkeletonCircleProps = ComponentProps<typeof ark.div>;
+export interface SkeletonCircleProps extends ComponentProps<typeof ark.div> {
+  /**
+   * Style recipe. Defaults to `skeletonRecipe` from `@pisagor/recipes/skeleton`.
+   *
+   * @defaultValue skeletonRecipe
+   */
+  recipe?: typeof skeletonRecipe;
+}
 // #endregion
 
 // #region Parts
-export function SkeletonRoot({ className, ...rest }: SkeletonRootProps) {
-  const slots = skeletonRecipe();
+export function SkeletonRoot({ recipe = skeletonRecipe, className, ...rest }: SkeletonRootProps) {
+  const slots = recipe();
 
   return (
     <ark.div
@@ -31,8 +51,12 @@ export function SkeletonRoot({ className, ...rest }: SkeletonRootProps) {
   );
 }
 
-export function SkeletonCircle({ className, ...rest }: SkeletonCircleProps) {
-  const slots = skeletonRecipe();
+export function SkeletonCircle({
+  recipe = skeletonRecipe,
+  className,
+  ...rest
+}: SkeletonCircleProps) {
+  const slots = recipe();
 
   return (
     <ark.div
@@ -44,8 +68,13 @@ export function SkeletonCircle({ className, ...rest }: SkeletonCircleProps) {
   );
 }
 
-export function SkeletonText({ lines = 2, className, ...rest }: SkeletonTextProps) {
-  const slots = skeletonRecipe();
+export function SkeletonText({
+  lines = 2,
+  recipe = skeletonRecipe,
+  className,
+  ...rest
+}: SkeletonTextProps) {
+  const slots = recipe();
 
   return (
     <ark.div {...rest} className={slots.text({ className })} data-part="text" data-scope="skeleton">

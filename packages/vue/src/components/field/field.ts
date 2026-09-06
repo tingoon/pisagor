@@ -12,6 +12,12 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 export interface FieldProps {
+  /**
+   * Style recipe. Defaults to `fieldRecipe` from `@pisagor/recipes/field`.
+   *
+   * @defaultValue fieldRecipe
+   */
+  recipe?: typeof fieldRecipe;
   class?: unknown;
   orientation?: "horizontal" | "responsive" | "vertical";
   reverse?: boolean;
@@ -30,11 +36,15 @@ export const FieldRoot = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     orientation: { default: "vertical", type: String as PropType<FieldProps["orientation"]> },
+    recipe: {
+      default: fieldRecipe,
+      type: Function as PropType<typeof fieldRecipe>,
+    },
     reverse: { default: false, type: Boolean },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fieldRecipe({
+      const variantSlots = props.recipe({
         orientation: props.orientation,
         reverse: props.reverse,
       });
@@ -57,10 +67,14 @@ export const FieldSet = defineComponent({
   name: "FieldSet",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: fieldRecipe,
+      type: Function as PropType<typeof fieldRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fieldRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         FieldsetPrimitive.Root as ArkPart,
@@ -79,11 +93,15 @@ export const FieldLegend = defineComponent({
   name: "FieldLegend",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: fieldRecipe,
+      type: Function as PropType<typeof fieldRecipe>,
+    },
     variant: { default: "legend", type: String as PropType<"label" | "legend"> },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fieldRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         FieldsetPrimitive.Legend as ArkPart,
@@ -103,10 +121,14 @@ export const FieldGroup = defineComponent({
   name: "FieldGroup",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: fieldRecipe,
+      type: Function as PropType<typeof fieldRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fieldRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         "div",
@@ -127,10 +149,14 @@ export const FieldContent = defineComponent({
   name: "FieldContent",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: fieldRecipe,
+      type: Function as PropType<typeof fieldRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fieldRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         "div",
@@ -152,10 +178,14 @@ export const FieldLabel = defineComponent({
   props: {
     asChild: Boolean,
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: fieldRecipe,
+      type: Function as PropType<typeof fieldRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fieldRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         FieldPrimitive.Label as ArkPart,
@@ -175,10 +205,14 @@ export const FieldRequiredIndicator = defineComponent({
   name: "FieldRequiredIndicator",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: fieldRecipe,
+      type: Function as PropType<typeof fieldRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fieldRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         FieldPrimitive.RequiredIndicator as ArkPart,
@@ -198,10 +232,14 @@ export const FieldTitle = defineComponent({
   name: "FieldTitle",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: fieldRecipe,
+      type: Function as PropType<typeof fieldRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fieldRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         "div",
@@ -222,10 +260,14 @@ export const FieldDescription = defineComponent({
   name: "FieldDescription",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: fieldRecipe,
+      type: Function as PropType<typeof fieldRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fieldRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         "p",
@@ -246,13 +288,17 @@ export const FieldSeparator = defineComponent({
   name: "FieldSeparator",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: fieldRecipe,
+      type: Function as PropType<typeof fieldRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
       const resolved = { surfaceVariant: undefined, variant: "primary" as FormControlVariant };
       const shellArgs = { variant: resolved.variant };
       const children = slots.default?.();
-      const variantSlots = fieldRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         "div",
@@ -279,10 +325,14 @@ export const FieldHelper = defineComponent({
   name: "FieldHelper",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: fieldRecipe,
+      type: Function as PropType<typeof fieldRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fieldRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         FieldPrimitive.HelperText as ArkPart,
@@ -301,10 +351,14 @@ export const FieldError = defineComponent({
   name: "FieldError",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: fieldRecipe,
+      type: Function as PropType<typeof fieldRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = fieldRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         FieldPrimitive.ErrorText as ArkPart,

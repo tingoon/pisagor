@@ -1,7 +1,7 @@
 import type {
   CollapsibleContentProps,
   CollapsibleIndicatorProps,
-  CollapsibleRootProps,
+  CollapsibleRootProps as CollapsiblePrimitiveRootProps,
   CollapsibleTriggerProps,
 } from "@ark-ui/react/collapsible";
 import { Collapsible as CollapsiblePrimitive } from "@ark-ui/react/collapsible";
@@ -10,16 +10,28 @@ import { collapsibleRecipe } from "@pisagor/recipes/collapsible";
 
 import { CollapsibleContext, useCollapsible } from "./collapsible.context";
 
+// #region Types
+export interface CollapsibleRootProps extends CollapsiblePrimitiveRootProps {
+  /**
+   * Style recipe. Defaults to `collapsibleRecipe` from `@pisagor/recipes/collapsible`.
+   *
+   * @defaultValue collapsibleRecipe
+   */
+  recipe?: typeof collapsibleRecipe;
+}
+// #endregion
+
 // #region Parts
 export function CollapsibleRoot({
   lazyMount,
   unmountOnExit,
   children,
   collapsedHeight,
+  recipe = collapsibleRecipe,
   className,
   ...rest
 }: CollapsibleRootProps) {
-  const slots = collapsibleRecipe();
+  const slots = recipe();
 
   return (
     <CollapsibleContext value={{ slots }}>

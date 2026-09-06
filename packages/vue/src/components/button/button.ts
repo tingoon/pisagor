@@ -5,9 +5,15 @@ import { Spinner } from "../spinner";
 
 // #region Types
 export interface ButtonProps extends ButtonVariantProps {
-  class?: unknown;
   disabled?: boolean;
   type?: "button" | "reset" | "submit";
+  /**
+   * Style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
+   *
+   * @defaultValue buttonRecipe
+   */
+  recipe?: typeof buttonRecipe;
+  class?: unknown;
 }
 // #endregion
 
@@ -23,6 +29,10 @@ export const Button = defineComponent({
     disabled: { default: undefined, type: Boolean },
     loading: { default: false, type: Boolean },
     pill: { default: false, type: Boolean },
+    recipe: {
+      default: buttonRecipe,
+      type: Function as PropType<typeof buttonRecipe>,
+    },
     size: {
       default: "md",
       type: String as PropType<NonNullable<ButtonVariantProps["size"]>>,
@@ -35,7 +45,7 @@ export const Button = defineComponent({
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const slots = buttonRecipe({
+      const slots = props.recipe({
         clickEffect: props.clickEffect,
         loading: props.loading,
         pill: props.pill,

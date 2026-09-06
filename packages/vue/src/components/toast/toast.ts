@@ -34,12 +34,24 @@ type ToastData = {
 
 export interface ToasterProps {
   toaster?: unknown;
+  /**
+   * Style recipe. Defaults to `toastRecipe` from `@pisagor/recipes/toast`.
+   *
+   * @defaultValue toastRecipe
+   */
+  recipe?: typeof toastRecipe;
   class?: ClassValue;
   style?: Record<string, unknown>;
 }
 
 export interface ToastItemProps {
   toast: ToastData;
+  /**
+   * Style recipe. Defaults to `toastItemRecipe` from `@pisagor/recipes/toast-item`.
+   *
+   * @defaultValue toastItemRecipe
+   */
+  itemRecipe?: typeof toastItemRecipe;
   class?: ClassValue;
   classNames?: ToastItemClassNames;
   iconProps?: Record<string, unknown>;
@@ -75,6 +87,10 @@ export const ToasterRoot = defineComponent({
   name: "ToasterRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    recipe: {
+      default: toastRecipe,
+      type: Function as PropType<typeof toastRecipe>,
+    },
     style: { default: undefined, type: Object as PropType<Record<string, unknown>> },
     toaster: { default: undefined, type: Object as PropType<unknown> },
   },
@@ -85,7 +101,7 @@ export const ToasterRoot = defineComponent({
           ToasterPrimitive as ArkPart,
           {
             ...attrs,
-            class: cn(toastRecipe(), props.class),
+            class: cn(props.recipe(), props.class),
             style: { "--width": "356px", ...(props.style ?? {}) } as Record<string, unknown>,
             toaster: props.toaster ?? toast,
           },
@@ -109,12 +125,16 @@ export const ToastItem = defineComponent({
     closeTriggerProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
     descriptionProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
     iconProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
+    itemRecipe: {
+      default: toastItemRecipe,
+      type: Function as PropType<typeof toastItemRecipe>,
+    },
     titleProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
     toast: { required: true, type: Object as PropType<ToastData> },
   },
   setup(props, { attrs }) {
     return () => {
-      const slots = toastItemRecipe();
+      const slots = props.itemRecipe();
 
       const toastData = props.toast;
       const toastAction = toastData.action;

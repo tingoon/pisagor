@@ -8,6 +8,12 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 export interface CardRootProps {
+  /**
+   * Style recipe. Defaults to `cardRecipe` from `@pisagor/recipes/card`.
+   *
+   * @defaultValue cardRecipe
+   */
+  recipe?: typeof cardRecipe;
   class?: unknown;
 }
 // #endregion
@@ -18,10 +24,14 @@ export const CardRoot = defineComponent({
   name: "CardRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: cardRecipe,
+      type: Function as PropType<typeof cardRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = cardRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -42,11 +52,15 @@ export const CardMedia = defineComponent({
   name: "CardMedia",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: cardRecipe,
+      type: Function as PropType<typeof cardRecipe>,
+    },
     variant: { default: "default", type: String as PropType<CardVariantProps["variant"]> },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = cardRecipe({ variant: props.variant });
+      const variantSlots = props.recipe({ variant: props.variant });
 
       return h(
         ark.div as ArkPart,
@@ -69,11 +83,15 @@ export const CardHeader = defineComponent({
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
     description: { default: undefined, type: String },
+    recipe: {
+      default: cardRecipe,
+      type: Function as PropType<typeof cardRecipe>,
+    },
     title: { default: undefined, type: String },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = cardRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -98,10 +116,14 @@ export const CardTitle = defineComponent({
   name: "CardTitle",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: cardRecipe,
+      type: Function as PropType<typeof cardRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = cardRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -122,10 +144,14 @@ export const CardDescription = defineComponent({
   name: "CardDescription",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: cardRecipe,
+      type: Function as PropType<typeof cardRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = cardRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -146,10 +172,14 @@ export const CardAction = defineComponent({
   name: "CardAction",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: cardRecipe,
+      type: Function as PropType<typeof cardRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = cardRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -170,10 +200,14 @@ export const CardContent = defineComponent({
   name: "CardContent",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: cardRecipe,
+      type: Function as PropType<typeof cardRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = cardRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -194,10 +228,14 @@ export const CardFooter = defineComponent({
   name: "CardFooter",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: cardRecipe,
+      type: Function as PropType<typeof cardRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = cardRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.div as ArkPart,

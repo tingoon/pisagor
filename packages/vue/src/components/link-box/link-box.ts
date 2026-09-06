@@ -4,6 +4,12 @@ import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
 export interface LinkBoxRootProps {
+  /**
+   * Style recipe. Defaults to `linkBoxRecipe` from `@pisagor/recipes/link-box`.
+   *
+   * @defaultValue linkBoxRecipe
+   */
+  recipe?: typeof linkBoxRecipe;
   class?: unknown;
 }
 // #endregion
@@ -16,10 +22,14 @@ export const LinkBoxRoot = defineComponent({
   name: "LinkBoxRoot",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: linkBoxRecipe,
+      type: Function as PropType<typeof linkBoxRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = linkBoxRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.div as ArkPart,
@@ -40,10 +50,14 @@ export const LinkOverlayLink = defineComponent({
   name: "LinkOverlayLink",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: linkBoxRecipe,
+      type: Function as PropType<typeof linkBoxRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = linkBoxRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         ark.a as ArkPart,

@@ -20,6 +20,12 @@ type SignaturePadClassNames = VariantClassNames<SignaturePadRecipeSlot>;
 
 // #region Types
 export interface SignaturePadProps {
+  /**
+   * Style recipe. Defaults to `signaturePadRecipe` from `@pisagor/recipes/signature-pad`.
+   *
+   * @defaultValue signaturePadRecipe
+   */
+  recipe?: typeof signaturePadRecipe;
   class?: unknown;
   /** Slot class names */
   classNames?: SignaturePadClassNames;
@@ -74,12 +80,16 @@ export const SignaturePad = defineComponent({
     onDrawEnd: { default: undefined, type: Function as PropType<SignaturePadProps["onDrawEnd"]> },
     paths: { default: undefined, type: Array as PropType<string[] | undefined> },
     readOnly: { default: undefined, type: Boolean },
+    recipe: {
+      default: signaturePadRecipe,
+      type: Function as PropType<typeof signaturePadRecipe>,
+    },
     required: { default: undefined, type: Boolean },
     variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
   },
   setup(props, { attrs }) {
     return () => {
-      const slots_ = signaturePadRecipe();
+      const slots_ = props.recipe();
       const resolved = {
         surfaceVariant: undefined,
         variant: props.variant ?? ("primary" as FormControlVariant),

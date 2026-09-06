@@ -57,6 +57,12 @@ export interface PhoneInputProps
   /** Called with the E.164 phone number when the value changes */
   onChange?: (value: string) => void;
   /** Slot class names */
+  /**
+   * Style recipe. Defaults to `phoneInputRecipe` from `@pisagor/recipes/phone-input`.
+   *
+   * @defaultValue phoneInputRecipe
+   */
+  recipe?: typeof phoneInputRecipe;
   classNames?: PhoneInputClassNames;
   /** Tel input props (except `className`). */
   inputProps?: Omit<InputProps, "className" | "onChange" | "onBlur" | "size" | "type" | "value">;
@@ -233,11 +239,12 @@ export function PhoneInput({
   inputProps,
   popupProps,
   onChange,
+  recipe = phoneInputRecipe,
   className,
   classNames,
   ...rest
 }: PhoneInputProps) {
-  const slots = useMemo(() => phoneInputRecipe({ size }), [size]);
+  const slots = useMemo(() => recipe({ size }), [size, recipe]);
 
   const contextValue = useMemo(
     () => ({

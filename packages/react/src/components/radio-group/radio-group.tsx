@@ -22,6 +22,12 @@ interface RadioGroupPresetItem {
 
 export interface RadioGroupRootProps extends Omit<RadioGroupPrimitiveRootProps, "onValueChange"> {
   onValueChange?: (value: string | null) => void;
+  /**
+   * Style recipe. Defaults to `radioGroupRecipe` from `@pisagor/recipes/radio-group`.
+   *
+   * @defaultValue radioGroupRecipe
+   */
+  recipe?: typeof radioGroupRecipe;
 }
 
 export interface RadioGroupProps extends Omit<RadioGroupRootProps, "children"> {
@@ -31,6 +37,12 @@ export interface RadioGroupProps extends Omit<RadioGroupRootProps, "children"> {
 export interface RadioGroupItemProps extends RadioGroupPrimitiveItemProps {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
+  /**
+   * Style recipe. Defaults to `radioGroupItemRecipe` from `@pisagor/recipes/radio-group`.
+   *
+   * @defaultValue radioGroupItemRecipe
+   */
+  recipe?: typeof radioGroupItemRecipe;
 }
 
 // #endregion
@@ -39,13 +51,14 @@ export interface RadioGroupItemProps extends RadioGroupPrimitiveItemProps {
 export function RadioGroupRoot({
   children,
   onValueChange,
+  recipe = radioGroupRecipe,
   className,
   ...rest
 }: RadioGroupRootProps) {
   return (
     <RadioGroupPrimitive.Root
       {...rest}
-      className={radioGroupRecipe({ className })}
+      className={recipe({ className })}
       onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
     >
       {children}
@@ -57,6 +70,7 @@ export function RadioGroupItem({
   variant: variantProp,
   tabIndex,
   children,
+  recipe = radioGroupItemRecipe,
   className,
   ...rest
 }: RadioGroupItemProps) {
@@ -66,7 +80,7 @@ export function RadioGroupItem({
   };
   const shellArgs = { variant: resolved.variant };
   const controlProps = { "data-variant": resolved.variant };
-  const slots = radioGroupItemRecipe();
+  const slots = recipe();
 
   return (
     <RadioGroupPrimitive.Item {...rest} className={slots.base({ className })}>

@@ -27,6 +27,12 @@ type SliderClassNames = VariantClassNames<SliderRecipeSlot>;
 type SliderRootProps = SliderPrimitiveRootProps & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
+  /**
+   * Style recipe. Defaults to `sliderRecipe` from `@pisagor/recipes/slider`.
+   *
+   * @defaultValue sliderRecipe
+   */
+  recipe?: typeof sliderRecipe;
 };
 
 export interface SliderProps extends Omit<SliderRootProps, "children" | "onValueChange"> {
@@ -86,13 +92,19 @@ interface SliderMarkerLabelProps extends ComponentProps<"span"> {}
 // #endregion
 
 // #region Parts
-function SliderRoot({ variant: variantProp, children, className, ...rest }: SliderRootProps) {
+function SliderRoot({
+  variant: variantProp,
+  children,
+  recipe = sliderRecipe,
+  className,
+  ...rest
+}: SliderRootProps) {
   const resolved = {
     surfaceVariant: undefined,
     variant: variantProp ?? ("primary" as FormControlVariant),
   };
   const shellControlProps = { "data-variant": resolved.variant };
-  const slots = sliderRecipe();
+  const slots = recipe();
   const thumbShadowClass = resolved.variant === "secondary" ? "shadow-none" : undefined;
   const trackVariantClass = resolved.variant === "secondary" ? "bg-muted/40" : "bg-input/64";
 

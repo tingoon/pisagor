@@ -2,7 +2,7 @@ import { Portal } from "@ark-ui/react";
 import type {
   HoverCardArrowProps,
   HoverCardContentProps,
-  HoverCardRootProps,
+  HoverCardRootProps as HoverCardPrimitiveRootProps,
   HoverCardTriggerProps,
 } from "@ark-ui/react/hover-card";
 import { HoverCard as HoverCardPrimitive } from "@ark-ui/react/hover-card";
@@ -11,6 +11,15 @@ import { hoverCardRecipe } from "@pisagor/recipes/hover-card";
 import { HoverCardContext, useHoverCard } from "./hover-card.context";
 
 // #region Types
+export interface HoverCardRootProps extends HoverCardPrimitiveRootProps {
+  /**
+   * Style recipe. Defaults to `hoverCardRecipe` from `@pisagor/recipes/hover-card`.
+   *
+   * @defaultValue hoverCardRecipe
+   */
+  recipe?: typeof hoverCardRecipe;
+}
+
 export type HoverCardProps = HoverCardRootProps;
 
 // #endregion
@@ -21,9 +30,10 @@ export function HoverCardRoot({
   openDelay = 600,
   positioning = { placement: "top" },
   children,
+  recipe = hoverCardRecipe,
   ...rest
 }: HoverCardRootProps) {
-  const slots = hoverCardRecipe();
+  const slots = recipe();
 
   return (
     <HoverCardContext value={{ slots }}>
