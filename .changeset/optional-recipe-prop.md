@@ -1,8 +1,8 @@
 ---
-"@pisagor/react": minor
-"@pisagor/vue": minor
-"@pisagor/react-charts": minor
-"@pisagor/vue-charts": minor
+"@pisagor/react": patch
+"@pisagor/vue": patch
+"@pisagor/react-charts": patch
+"@pisagor/vue-charts": patch
 ---
 
 Add optional `recipe` prop for style overrides on components.
