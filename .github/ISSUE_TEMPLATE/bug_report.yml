@@ -1,0 +1,42 @@
+name: Bug report
+description: Something is broken or behaving unexpectedly
+title: "fix: "
+labels: [bug]
+body:
+  - type: input
+    id: package
+    attributes:
+      label: Package
+      description: Which package? (`@pisagor/react`, `@pisagor/vue`, …)
+      placeholder: "@pisagor/react"
+    validations:
+      required: true
+  - type: textarea
+    id: describe
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: To reproduce
+      description: Storybook story or code snippet, steps, and expected vs actual.
+      placeholder: |
+        1. Storybook story or code snippet
+        2. Steps
+        3. Expected vs actual
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS / browser, package version, React / Tailwind versions.
+      placeholder: |
+        - OS / browser
+        - Package version
+        - React / Tailwind versions
+    validations:
+      required: false
