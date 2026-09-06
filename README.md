@@ -47,6 +47,10 @@ Import styles once in the app CSS (Tailwind v4). Point `@source` at the package 
 @import "@pisagor/react/styles";
 ```
 
+## Docs
+
+Storybook (GitHub Pages): [https://tingoon.github.io/pisagor/](https://tingoon.github.io/pisagor/) — [React](https://tingoon.github.io/pisagor/react/) · [Vue](https://tingoon.github.io/pisagor/vue/).
+
 ## Development
 
 Requires [Bun](https://bun.sh).
@@ -57,8 +61,7 @@ turbo dev --filter=react-storybook
 # optional: turbo dev --filter=vue-storybook
 ```
 
-React Storybook: [http://127.0.0.1:4001](http://127.0.0.1:4001).
-Vue Storybook: [http://127.0.0.1:4002](http://127.0.0.1:4002).
+Local Storybook: React [http://127.0.0.1:4001](http://127.0.0.1:4001), Vue [http://127.0.0.1:4002](http://127.0.0.1:4002).
 
 Optional: [Docker](https://www.docker.com) + VS Code [Dev Containers](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers) — **Open in Container**, then `/onboarding`.
 
