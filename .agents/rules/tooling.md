@@ -69,4 +69,4 @@ Skip Knip for narrow one-line or config-only fixes unless the user asks or the c
 
 **Local / agent:** `bun run biome ci`, `bun run type-check`; after substantial edits, also `bun run knip` (see [Knip → Agent workflow](#agent-workflow)).
 
-**CI** ([`.github/workflows/ci.yml`](../../.github/workflows/ci.yml)): `bun install --frozen-lockfile` → `bun run biome ci` → `bun run type-check` → `bun run test` → `bun run knip` → Storybook build. Add new steps at the end unless order matters. Secrets: [SECURITY.md](../../.github/SECURITY.md).
+**CI** ([`.github/workflows/ci.yml`](../../.github/workflows/ci.yml)): `bun install --frozen-lockfile` → `bun run biome ci` → `bun run type-check` → `bun run test` → `bun run knip` → Storybook build. Add new steps at the end unless order matters. Secrets: [SECURITY.md](../../SECURITY.md).

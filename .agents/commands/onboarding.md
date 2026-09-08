@@ -14,7 +14,7 @@ Idempotent — re-run skips completed steps. All steps are **Auto** — no user 
 
 ## Rules
 
-- [SECURITY.md](../../.github/SECURITY.md)
+- [SECURITY.md](../../SECURITY.md)
 - [`.cursor/rules/tooling.mdc`](../rules/tooling.mdc)
 
 Never commit, log, or paste full secret values.

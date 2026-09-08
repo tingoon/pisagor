@@ -6,4 +6,4 @@ Add a changeset in PRs that affect publishable packages:
 bunx changeset
 ```
 
-See [CONTRIBUTING.md](../.github/CONTRIBUTING.md#releases).
+See [CONTRIBUTING.md](../CONTRIBUTING.md#releases).
