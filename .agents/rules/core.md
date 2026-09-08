@@ -71,4 +71,4 @@ Each topic has **one owner** file under `.agents/`. Other files do not restate t
 - Do not create git commits unless explicitly asked.
 - Do not push to remote unless explicitly asked.
 - Prefer action over preamble; state the outcome or next step without filler or sign-offs.
-- Security: [SECURITY.md](../../.github/SECURITY.md).
+- Security: [SECURITY.md](../../SECURITY.md).
