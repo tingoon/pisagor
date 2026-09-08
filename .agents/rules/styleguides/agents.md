@@ -10,7 +10,7 @@ cursor:
 ---
 # AGENTS.md Style Guide
 
-Reference: [AGENTS.md open format](https://agents.md). Prose: [Google Markdown style](https://google.github.io/styleguide/docguide/style.html) — declare language on fenced blocks; use `bash` for Bun/Turborepo commands; no secrets in Markdown ([SECURITY.md](../../../SECURITY.md)).
+Reference: [AGENTS.md open format](https://agents.md). Prose: [Google Markdown style](https://google.github.io/styleguide/docguide/style.html) — declare language on fenced blocks; use `bash` for Bun/Turborepo commands; no secrets in Markdown ([SECURITY.md](../../../.github/SECURITY.md)).
 
 **Nearest `AGENTS.md` wins** for workspace operational steps; user chat overrides. Instruction priority: [Core Boundaries](../core.mdc).
 
@@ -31,7 +31,7 @@ When adding a nested file, update the root [workspace map](../../../AGENTS.md).
 
 - **Do not duplicate** bodies from [`.agents/rules/`](../) or [`.agents/commands/`](../../commands/) — link instead.
 - **Workflow tips**, not a `package.json` scripts dump.
-- **No secrets** in AGENTS files. Point to [SECURITY.md](../../../SECURITY.md).
+- **No secrets** in AGENTS files. Point to [SECURITY.md](../../../.github/SECURITY.md).
 - Prefer **Turborepo** in filtered task examples (`bunx turbo --filter=…` from repo root).
 
 ### Titles
