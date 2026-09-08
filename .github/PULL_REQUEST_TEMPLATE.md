@@ -15,9 +15,8 @@
 
 ## Testing
 
-- [ ] `bunx biome ci` passes
-- [ ] `turbo type-check` passes
-- [ ] `turbo test` passes
+- [ ] `bun run check` passes
+- [ ] `bun run test` passes
 - [ ] Storybook story checked (if UI)
 
 ## Related Issues

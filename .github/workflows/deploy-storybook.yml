@@ -24,11 +24,11 @@ jobs:
           bun-version: 1.4.0
       - run: bun install --frozen-lockfile
       - name: Build React Storybook
-        run: bun turbo build --filter=react-storybook
+        run: bunx turbo build --filter=react-storybook
         env:
           STORYBOOK_BASE_PATH: /${{ github.event.repository.name }}/react/
       - name: Build Vue Storybook
-        run: bun turbo build --filter=vue-storybook
+        run: bunx turbo build --filter=vue-storybook
         env:
           STORYBOOK_BASE_PATH: /${{ github.event.repository.name }}/vue/
       - name: Assemble site

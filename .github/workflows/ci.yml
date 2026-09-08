@@ -21,8 +21,8 @@ jobs:
         with:
           bun-version: 1.4.0
       - run: bun install --frozen-lockfile
-      - run: bunx biome ci
-      - run: bun turbo type-check
-      - run: bun turbo test
+      - run: bun run biome ci
       - run: bun run knip
-      - run: bun turbo build --filter=react-storybook --filter=vue-storybook
+      - run: bun run type-check
+      - run: bun run test
+      - run: bun run build

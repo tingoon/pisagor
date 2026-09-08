@@ -5,8 +5,8 @@ Form fields and TanStack Form integration for `@pisagor/react-form`.
 ## Commands
 
 ```bash
-turbo type-check --filter=@pisagor/react-form
-turbo dev --filter=react-storybook
+bunx turbo type-check --filter=@pisagor/react-form
+bunx turbo dev --filter=react-storybook
 ```
 
 Field stories run in React Storybook (`http://127.0.0.1:4001`) under `Forms/Fields/…`. The TanStack integration demo is `Forms/TanStack Form`.

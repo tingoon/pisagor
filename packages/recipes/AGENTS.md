@@ -15,7 +15,7 @@ Do not author `tv()` recipes in `@pisagor/react` or `@pisagor/vue` — recipes l
 From the repository root:
 
 ```bash
-turbo type-check --filter=@pisagor/recipes
+bunx turbo type-check --filter=@pisagor/recipes
 ```
 
 ## Conventions
