@@ -1,9 +1,15 @@
 ---
+root: false
+targets:
+  - '*'
 description: Shared Vue component patterns — package layout, compound API, h()/defineComponent, styling, a11y
-globs: packages/vue/src/**/*.ts,apps/vue/src/**/*.ts,apps/vue/src/**/*.vue
-alwaysApply: false
+globs:
+  - packages/vue/src/**/*.ts
+  - apps/vue/src/**/*.ts
+  - apps/vue/src/**/*.vue
+cursor:
+  alwaysApply: false
 ---
-
 # Vue Component Patterns
 
 How to build shared UI components in `packages/vue` (`@pisagor/vue`). General Vue rules — [Vue Style Guide](../styleguides/vue.mdc).

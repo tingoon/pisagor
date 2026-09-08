@@ -1,9 +1,14 @@
 ---
+root: false
+targets:
+  - '*'
 description: Shared product naming — overlay/modal, toolbar, nav, select, feedback, i18n, data-scope
-globs: packages/react/src/**,packages/vue/src/**
-alwaysApply: false
+globs:
+  - packages/react/src/**
+  - packages/vue/src/**
+cursor:
+  alwaysApply: false
 ---
-
 # Component
 
 Framework-agnostic product naming and catalog policy for `@pisagor/react` and `@pisagor/vue`. Implementation patterns: [React Component Patterns](react-component.mdc), [Vue Component Patterns](vue-component.mdc). Stories: [Storybook](storybook.mdc).

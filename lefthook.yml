@@ -13,7 +13,7 @@ commit-msg:
 pre-push:
   commands:
     type-check:
-      run: turbo type-check
+      run: bun run type-check
 
 post-merge:
   commands:

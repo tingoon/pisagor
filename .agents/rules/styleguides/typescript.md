@@ -1,9 +1,14 @@
 ---
-description: TypeScript typing, style, and TSDoc patterns for .ts and .tsx files
-globs: **/*.ts,**/*.tsx
-alwaysApply: false
+root: false
+targets:
+  - '*'
+description: 'TypeScript typing, style, and TSDoc patterns for .ts and .tsx files'
+globs:
+  - '**/*.ts'
+  - '**/*.tsx'
+cursor:
+  alwaysApply: false
 ---
-
 # TypeScript Style Guide
 
 Reference: [Google TypeScript Style Guide](https://google.github.io/styleguide/tsguide.html), [TSDoc](https://tsdoc.org/) ([standard tags](https://tsdoc.org/pages/spec/tag_kinds/)). Linting and formatting: [Tooling](../tooling.mdc).

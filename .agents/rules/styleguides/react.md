@@ -1,9 +1,14 @@
 ---
+root: false
+targets:
+  - '*'
 description: React conventions — naming, props order, hooks, body order, JSX, legacy patterns
-globs: packages/react/src/**/*.tsx,apps/**/*.tsx
-alwaysApply: false
+globs:
+  - packages/react/src/**/*.tsx
+  - apps/**/*.tsx
+cursor:
+  alwaysApply: false
 ---
-
 # React Style Guide
 
 **Out of scope:** UI component folder layout, compound API, headless wrappers, Tailwind/`tv()`/`data-scope`/`data-part` — [React Component Patterns](../integrations/react-component.mdc). Typing — [TypeScript Style Guide](typescript.mdc).

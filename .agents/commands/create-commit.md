@@ -1,3 +1,7 @@
+---
+targets:
+  - '*'
+---
 # Create commit
 
 Group changed files, commit each group with a Conventional Commits message.
@@ -24,8 +28,7 @@ Restrict to a path when given (e.g. `create-commit apps/react`): use `git status
 
 2. **Pre-check** — run before staging to surface issues early:
    ```bash
-   bunx biome ci
-   turbo type-check
+   bun run check
    ```
    If checks fail, fix issues first before proceeding to grouping.
 

@@ -8,6 +8,7 @@ dist
 build
 *.tgz
 storybook-static/
+artifacts/
 
 # environment & secrets
 .env
@@ -26,3 +27,10 @@ logs
 # OS
 .DS_Store
 Thumbs.db
+
+# agents related files
+.agents.local/
+rulesync.local.jsonc
+.mcp.json
+AGENTS.md
+!.agents/rules/styleguides/agents.md

@@ -4,5 +4,5 @@ contact_links:
     url: https://github.com/tingoon/pisagor/security/advisories/new
     about: Report a vulnerability privately
   - name: Contributing
-    url: https://github.com/tingoon/pisagor/blob/main/CONTRIBUTING.md
+    url: https://github.com/tingoon/pisagor/blob/main/.github/CONTRIBUTING.md
     about: How to set up and open a pull request

@@ -1,9 +1,15 @@
 ---
+root: false
+targets:
+  - '*'
 description: Vue conventions — naming, props order, setup body order, composables, h()/SFC, legacy patterns
-globs: packages/vue/src/**/*.ts,apps/vue/src/**/*.ts,apps/vue/src/**/*.vue
-alwaysApply: false
+globs:
+  - packages/vue/src/**/*.ts
+  - apps/vue/src/**/*.ts
+  - apps/vue/src/**/*.vue
+cursor:
+  alwaysApply: false
 ---
-
 # Vue Style Guide
 
 **Out of scope:** UI component folder layout, compound API, headless wrappers, Tailwind/`tv()`/`data-scope`/`data-part` — [Vue Component Patterns](../integrations/vue-component.mdc). Typing — [TypeScript Style Guide](typescript.mdc).

@@ -1,9 +1,14 @@
 ---
-description: Shared component patterns — package layout, compound API, styling, a11y
-globs: packages/react/src/**/*.tsx,apps/react/src/**/*.tsx
-alwaysApply: false
+root: false
+targets:
+  - '*'
+description: 'Shared component patterns — package layout, compound API, styling, a11y'
+globs:
+  - packages/react/src/**/*.tsx
+  - apps/react/src/**/*.tsx
+cursor:
+  alwaysApply: false
 ---
-
 # React Component Patterns
 
 How to build shared UI components in `packages/react` (`@pisagor/react`). General React rules — [React Style Guide](../styleguides/react.mdc).

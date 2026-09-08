@@ -1,9 +1,20 @@
 ---
+root: false
+targets:
+  - '*'
 description: Storybook story conventions for package components
-globs: packages/react/**/*.stories.tsx,packages/react-charts/**/*.stories.tsx,packages/react-form/**/*.stories.tsx,packages/vue/**/*.stories.ts,packages/vue-charts/**/*.stories.ts,packages/vue-form/**/*.stories.ts,apps/react/**/*.stories.tsx,apps/vue/**/*.stories.ts
-alwaysApply: false
+globs:
+  - packages/react/**/*.stories.tsx
+  - packages/react-charts/**/*.stories.tsx
+  - packages/react-form/**/*.stories.tsx
+  - packages/vue/**/*.stories.ts
+  - packages/vue-charts/**/*.stories.ts
+  - packages/vue-form/**/*.stories.ts
+  - apps/react/**/*.stories.tsx
+  - apps/vue/**/*.stories.ts
+cursor:
+  alwaysApply: false
 ---
-
 # Storybook
 
 **Scope:** React stories run in `apps/react`; Vue stories in `apps/vue`. Co-locate `<name>.stories.tsx` (React) or `<name>.stories.ts` (Vue) in public shared package source. React component rules: [React Component Patterns](react-component.mdc).

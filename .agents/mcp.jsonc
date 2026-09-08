@@ -1,0 +1,21 @@
+{
+  "$schema": "https://github.com/dyoshikawa/rulesync/releases/latest/download/mcp-schema.json",
+  "mcpServers": {
+    "ark-ui": {
+      "args": ["@ark-ui/mcp"],
+      "command": "bunx"
+    },
+    "github": {
+      "headers": {
+        "Authorization": "Bearer ${env:GITHUB_PAT}"
+      },
+      "url": "https://api.githubcopilot.com/mcp/"
+    },
+    "react": {
+      "url": "http://127.0.0.1:4001/mcp"
+    },
+    "vue": {
+      "url": "http://127.0.0.1:4002/mcp"
+    }
+  }
+}

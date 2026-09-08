@@ -4,25 +4,42 @@
 
 Recommended: open the repo in a [Dev Container](https://containers.dev/) (Docker + VS Code/Cursor Dev Containers extension → **Open in Container**). Bun and tooling are already in the image.
 
+Without a container, install [Bun](https://bun.sh) locally first.
+
 Then from the repo root:
 
 ```bash
 bun install
-turbo dev --filter=react-storybook
-# optional: turbo dev --filter=vue-storybook
+bun run setup
+bun run dev
+# optional: bunx turbo dev --filter=vue-storybook
 ```
 
-React Storybook: http://127.0.0.1:4001. Vue: http://127.0.0.1:4002.
-
-Without a container, install [Bun](https://bun.sh) locally and run the same commands.
+React Storybook: http://localhost:4001. Vue: http://localhost:4002.
 
 ## Checks
 
 ```bash
-bunx biome ci
-turbo type-check
-turbo test
-bun run knip
+bun run check
+bun run test
+```
+
+```bash
+# Report unused exports, files, and deps after substantial edits (see knip.config.ts)
+# --fix applies safe removals
+# --allow-remove-files deletes unused files
+# --fix-type exports,types|dependencies|files|catalog limits scope
+bunx knip
+
+# Regenerate artifacts/repomix pack only (see repomix.config.ts)
+# --compress keeps structure, drops implementation detail
+# --include "apps/react/**,packages/react/**" packs a subset
+bunx repomix
+
+# List outdated deps across workspaces (dry run; see taze.config.ts)
+# -w writes package.json bumps
+# -w -i also runs bun install
+bunx taze
 ```
 
 Commits: [Conventional Commits](https://www.conventionalcommits.org/). Scope with the workspace when the change is local (`feat(react-storybook):`, `fix(react):`).

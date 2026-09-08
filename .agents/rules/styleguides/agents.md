@@ -1,16 +1,20 @@
 ---
+root: false
+targets:
+  - '*'
 description: AGENTS.md structure and content when creating or editing agent guide files
-globs: **/AGENTS.md
-alwaysApply: false
+globs:
+  - '**/AGENTS.md'
+cursor:
+  alwaysApply: false
 ---
-
 # AGENTS.md Style Guide
 
-Reference: [AGENTS.md open format](https://agents.md). Prose: [Google Markdown style](https://google.github.io/styleguide/docguide/style.html) — declare language on fenced blocks; use `bash` for Bun/Turborepo commands; no secrets in Markdown ([SECURITY.md](../../../SECURITY.md)).
+Reference: [AGENTS.md open format](https://agents.md). Prose: [Google Markdown style](https://google.github.io/styleguide/docguide/style.html) — declare language on fenced blocks; use `bash` for Bun/Turborepo commands; no secrets in Markdown ([SECURITY.md](../../../.github/SECURITY.md)).
 
 **Nearest `AGENTS.md` wins** for workspace operational steps; user chat overrides. Instruction priority: [Core Boundaries](../core.mdc).
 
-`AGENTS.md` never overrides [`.cursor/rules/`](../) bodies — **link only**. Nearest `AGENTS.md` resolves workspace-specific **operational** steps (commands, paths), not rule policy.
+`AGENTS.md` never overrides [`.agents/rules/`](../) bodies (Cursor: [`.cursor/rules/`](../../../.cursor/rules/)) — **link only**. Nearest `AGENTS.md` resolves workspace-specific **operational** steps (commands, paths), not rule policy.
 
 ## Purpose
 
@@ -25,10 +29,10 @@ When adding a nested file, update the root [workspace map](../../../AGENTS.md).
 
 ## Rules
 
-- **Do not duplicate** bodies from [`.cursor/rules/`](../) or [`.cursor/commands/`](../../commands/) — link instead.
+- **Do not duplicate** bodies from [`.agents/rules/`](../) or [`.agents/commands/`](../../commands/) — link instead.
 - **Workflow tips**, not a `package.json` scripts dump.
-- **No secrets** in AGENTS files. Point to [SECURITY.md](../../../SECURITY.md).
-- Prefer **Turborepo** in filtered task examples (`turbo --filter=…` from repo root).
+- **No secrets** in AGENTS files. Point to [SECURITY.md](../../../.github/SECURITY.md).
+- Prefer **Turborepo** in filtered task examples (`bunx turbo --filter=…` from repo root).
 
 ### Titles
 
@@ -43,15 +47,15 @@ Use only sections that apply. Omit empty ones.
 | ------- | :--: | :----: | ------- |
 | Overview | ✓ | ✓ | One short paragraph |
 | Workspace map | ✓ | — | Links to nested `AGENTS.md` |
-| Commands | — | optional | Filtered `turbo` / local commands when non-obvious |
+| Commands | — | optional | Filtered `bunx turbo` / local commands when non-obvious |
 | Layout | — | ✓ | Directory structure |
 | Environment | optional | optional | Point to `.env.example` when present |
 | Conventions | optional | ✓ | Local patterns, import aliases |
 | Agent workflow | ✓ | — | Link [Core Boundaries](../core.mdc) |
 
-**Commands** is optional. Include it when the workspace has non-obvious scripts, ports, or filters; omit when default `turbo --filter=…` (or root docs) is enough. CSS-only / tokens-style packages may skip `AGENTS.md` entirely when Layout + Conventions add nothing beyond the package README.
+**Commands** is optional. Include it when the workspace has non-obvious scripts, ports, or filters; omit when default `bunx turbo --filter=…` (or root docs) is enough. CSS-only / tokens-style packages may skip `AGENTS.md` entirely when Layout + Conventions add nothing beyond the package README.
 
-Do **not** add canonical rules tables or IDE adapter pointer tables. Slash commands live in [`.cursor/commands/`](../../commands/). Dev setup lives in [`/onboarding`](../../commands/onboarding.md) — do not duplicate steps here.
+Do **not** add canonical rules tables or IDE adapter pointer tables. Slash commands live in [`.agents/commands/`](../../commands/). Dev setup lives in [`/onboarding`](../../commands/onboarding.md) — do not duplicate steps here.
 
 ## Root skeleton
 
@@ -60,21 +64,21 @@ Do **not** add canonical rules tables or IDE adapter pointer tables. Slash comma
 
 <Short overview.>
 
-Before making changes, read [`.cursor/rules/`](./.cursor/rules/). Do not duplicate rule text here.
+Before making changes, read [`.agents/rules/`](./.agents/rules/). Do not duplicate rule text here.
 
 ## Agent workflow
 
-<Link [Core Boundaries](./.cursor/rules/core.mdc).>
+<Link [Core Boundaries](./.agents/rules/core.md).>
 
 ## Workspace map
 
 <Tree + nested AGENTS.md links.>
 
-Slash commands: `.cursor/commands/`.
+Slash commands: author in `.agents/commands/`; Cursor loads `.cursor/commands/`.
 
 ## Getting started
 
-<Open in Container → Onboarding — link README and commands.>
+<Open in Container → Onboarding — link CONTRIBUTING and commands.>
 ```
 
 Target length: ~70–90 lines unless the repo is large.

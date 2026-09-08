@@ -1,3 +1,7 @@
+---
+targets:
+  - '*'
+---
 # Onboarding
 
 Set up the UI library monorepo.
@@ -10,7 +14,7 @@ Idempotent — re-run skips completed steps. All steps are **Auto** — no user 
 
 ## Rules
 
-- [SECURITY.md](../../SECURITY.md)
+- [SECURITY.md](../../.github/SECURITY.md)
 - [`.cursor/rules/tooling.mdc`](../rules/tooling.mdc)
 
 Never commit, log, or paste full secret values.
@@ -24,8 +28,7 @@ Do not run `bun install` during onboarding if dependencies are already installed
 ### 1. Verify — **Auto**
 
 ```bash
-bunx biome ci
-turbo type-check
+bun run check
 ```
 
 Smoke failures must be explained before marking onboarding complete.
