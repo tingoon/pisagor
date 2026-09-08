@@ -1,8 +1,14 @@
 ---
-alwaysApply: true
+root: false
+targets:
+  - '*'
 description: Monorepo ops, Biome, Lefthook, Commitlint, Conventional Commits, Knip, and Bun standards
+globs:
+  - '**/*'
+cursor:
+  alwaysApply: true
+  globs: []
 ---
-
 # Tooling
 
 Monorepo operations and project tools. Do not add parallel tooling without alignment.

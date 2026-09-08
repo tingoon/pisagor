@@ -1,8 +1,14 @@
 ---
-alwaysApply: true
+root: true
+targets:
+  - '*'
 description: Core agent boundaries for the repository
+globs:
+  - '**/*'
+cursor:
+  alwaysApply: true
+  globs: []
 ---
-
 # Core Boundaries
 
 ## Instruction priority

@@ -26,6 +26,8 @@
     "@types/node": "^26.4.0",
     "knip": "^6.33.0",
     "lefthook": "^2.1.12",
+    "repomix": "^1.18.0",
+    "rulesync": "^16.26.0",
     "taze": "^21.1.0",
     "turbo": "^2.10.12",
     "typescript": "^7.0.2"
@@ -40,11 +42,16 @@
     "url": "git+https://github.com/tingoon/pisagor.git"
   },
   "scripts": {
-    "check": "bunx biome ci && turbo type-check --output-logs=errors-only && knip",
+    "build": "turbo build",
+    "check": "biome check . && turbo type-check --output-logs=errors-only && knip",
+    "dev": "turbo dev",
     "format": "biome check --write .",
-    "knip": "knip",
+    "lint": "biome lint .",
     "prepare": "lefthook install",
-    "taze": "taze -r -w"
+    "rulesync": "rulesync generate",
+    "setup": "bun run rulesync && bun run repomix",
+    "test": "turbo test",
+    "type-check": "turbo type-check"
   },
   "type": "module",
   "workspaces": [

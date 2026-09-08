@@ -1,9 +1,13 @@
 ---
-alwaysApply: false
+root: false
+targets:
+  - '*'
 description: AGENTS.md structure and content when creating or editing agent guide files
-globs: **/AGENTS.md
+globs:
+  - '**/AGENTS.md'
+cursor:
+  alwaysApply: false
 ---
-
 # AGENTS.md Style Guide
 
 Reference: [AGENTS.md open format](https://agents.md). Prose: [Google Markdown style](https://google.github.io/styleguide/docguide/style.html) — declare language on fenced blocks; use `bash` for Bun/Turborepo commands; no secrets in Markdown ([SECURITY.md](../../../SECURITY.md)).

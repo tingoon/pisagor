@@ -1,0 +1,131 @@
+---
+root: false
+targets:
+  - '*'
+description: React conventions — naming, props order, hooks, body order, JSX, legacy patterns
+globs:
+  - packages/react/src/**/*.tsx
+  - apps/**/*.tsx
+cursor:
+  alwaysApply: false
+---
+# React Style Guide
+
+**Out of scope:** UI component folder layout, compound API, headless wrappers, Tailwind/`tv()`/`data-scope`/`data-part` — [React Component Patterns](../integrations/react-component.mdc). Typing — [TypeScript Style Guide](typescript.mdc).
+
+---
+
+## File layout
+
+- **File names:** kebab-case (e.g. `sign-in-form.tsx`, `button.tsx`).
+- Use **named exports** only.
+- **One primary component per file** when it is the main export. Group small private components or hooks in the same file only when they are not used elsewhere in the package.
+
+## Naming
+
+- **Component names:** PascalCase (e.g. `Button`, `DataTable`).
+- **Event handlers:** `onX` for props (e.g. `onSubmit`), `handleX` for local handlers (e.g. `handleClick`).
+- **Boolean props:** Match Ark/DOM/HTML names for primitives (`disabled`, `open`, `checked`, `clearable`, `defaultOpen`, …). Do not rename headless or native booleans to `is`/`can`/`should`/`has`. Convenience flags that are not a primitive mirror may use those prefixes (e.g. `isLoading`).
+- **Prop aliases in destructuring:** When renaming a prop for a local name clash, use `{name}Prop` (e.g. `open: openProp`, `positioning: positioningProp`). Do not use a `prop{Name}` prefix.
+
+## Component implementation
+
+- Use **functional components** only.
+- Keep components focused on rendering — see [Hooks](#hooks) for extracting logic.
+- Define props with `ComponentNameProps` (or `Props` when colocated) via `interface` or `type`, and receive them via destructuring in the parameter list.
+
+## Props order
+
+Three surfaces — different rules:
+
+### Interface / type
+
+Declare **added** props in this **group order** (what `extends` already provides need not be re-listed). Skip empty groups; do not reorder groups. Within a group, keep a stable author / meaning order — **do not** sort A–Z inside the group.
+
+| Order | Group | What belongs here |
+| ----- | ----- | ----------------- |
+| 1 | **Variants & appearance** | Recipe tokens and layout chrome — visual `variant` / `size`, placement on screen, orientation, shape |
+| 2 | **Behavior & state** | How the control behaves — disabled / read-only, open / closed, controlled values, feature toggles, form & DOM identity (`name`, `id`, `asChild`), headless engines (`collection`) |
+| 3 | **Content** | What is shown or supplied — labels, copy, icons, placeholders, option lists (`items`), `children`, slot content |
+| 4 | **Event handlers** | `on*` callbacks. Keep controlled pairs together (`defaultOpen` then `open`, then handlers) — do not interleave handlers between them |
+| 5 | **Styling** | `className`, `classNames` |
+| 6 | **Rest** | Sub-element `*Props` bags, runtime instances, i18n / config objects, index signatures |
+
+**Placement edge cases:**
+
+- **`value`** — Behavior when it is control state; Content when it is display copy (e.g. a metric), not an input.
+- **`items` / `options`** — Content. **`collection`** — Behavior (Ark data engine).
+- **`positioning`** (floating-ui options object) — Behavior; single-axis **`placement` / `position` / `side`** — Variants.
+- **`*Props` bags** — Rest, after styling.
+
+### Destructuring parameter list
+
+Use the **same group order** as the interface (variants → behavior → content → events → styling). Within a group, match the interface field order — **do not** sort A–Z inside the group. Put `...rest` last. When `children` is destructured, keep it in the **content** group (not after styling). Do not use a flat A–Z list across all props.
+
+### JSX attributes
+
+Biome **`useSortedAttributes`** sorts JSX attributes **A–Z** on save/format — this applies only to JSX, not interface or destructuring order.
+
+- Put **`{...rest}` first** (and other override spreads) so explicit props after the spread win.
+- Do not pass `children` as a JSX attribute (`children={…}`). When you compose children yourself, use nested JSX (`>{children}</>`).
+
+### Do not
+
+- Do not list on the interface what `extends ComponentProps<…>` already provides.
+- Do not use `rootClassName` — root styling is always `className` (see [React Component Patterns → Styling](../integrations/react-component.mdc#styling)).
+- Do not put visual styling on sub-element `*Props` bags — those are for content/behavior only; use `className` on the part or `classNames` on multi-slot roots.
+- Do not pass `children` as a JSX attribute (`children={…}`). Leaving `children` in `...rest` for passthrough (including self-closing `{...rest}`) is fine. When you compose children yourself, destructure and render nested JSX (`>{children}</>`).
+
+## Component body order
+
+Inside a component function, declare logic top-to-bottom in this order. Skip steps that do not apply; do not reorder. Hook rules: [Hooks](#hooks).
+
+| Order | What | Examples |
+| ----- | ---- | -------- |
+| 1 | **Refs** | `useRef` |
+| 2 | **Context & external hooks** | `useContext`, router/query hooks, `useFormContext`, custom `useX` |
+| 3 | **Local state** | `useState`, `useReducer`, `useDisclosure` — group related state together |
+| 4 | **Async / server state** | `useQuery`, `useMutation`, `useSuspenseQuery` |
+| 5 | **Derived values** | Sync `const` from props/state |
+| 6 | **Event handlers** | `handleX` |
+| 7 | **Effects** | `useEffect`, `useLayoutEffect`, effect-like hooks (`useDidUpdate`) |
+| 8 | **Subscriptions & side-effect hooks** | `useHotkey`, listeners |
+| 9 | **Early returns** | Loading, error, or empty guards — after all hooks |
+| 10 | **`return` JSX** | |
+
+## Hooks
+
+### Custom hooks
+
+- **Naming:** camelCase with `use` prefix (e.g. `useAuth`, `usePagination`).
+- Extract reusable or non-trivial logic into custom hooks; keep plain functions for one-off helpers with no React state.
+
+### Rules of hooks
+
+- Run every hook on every render — follow [Component body order](#component-body-order); no hooks after a conditional `return`.
+- Do not insert hooks out of order (e.g. no `useState` after `useEffect`).
+
+### Effects
+
+- Specify the **useEffect** dependency array completely.
+
+### Performance
+
+React Compiler is **not** enabled in this repo yet — keep manual memoization where it matters.
+
+- Use **useMemo / useCallback / `React.memo`** when profiling or when passing stable references to memoized children or effect deps (including habit cases like stable `tv()` slot objects on roots).
+- Do not apply **useMemo / useCallback / `React.memo`** by default everywhere.
+- When the Compiler is adopted, revisit and prune redundant memoization.
+
+## JSX
+
+- Use `<> </>` (or `<Fragment>`) instead of extra wrapper `div`s when you only need a container.
+- Use a **stable, unique key** for list items (id from data, not array index) when the list can reorder or change.
+
+## Legacy patterns
+
+Ecosystem defaults not covered above:
+
+- Do not use **`forwardRef`** — accept `ref` as a regular prop (React 19).
+- Do not use **`defaultProps`** on function components — use destructuring defaults.
+- Prefer **Context as provider** — render `<FooContext value={…}>`, not `<FooContext.Provider value={…}>` (React 19).

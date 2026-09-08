@@ -1,3 +1,7 @@
+---
+targets:
+  - '*'
+---
 # Create commit
 
 Group changed files, commit each group with a Conventional Commits message.
