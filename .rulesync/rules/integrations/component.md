@@ -11,7 +11,7 @@ cursor:
 ---
 # Component
 
-Framework-agnostic product naming and catalog policy for `@pisagor/react` and `@pisagor/vue`. Implementation patterns: [React Component Patterns](react-component.mdc), [Vue Component Patterns](vue-component.mdc). Stories: [Storybook](storybook.mdc).
+Framework-agnostic product naming and catalog policy for `@pisagor/react` and `@pisagor/vue`. Implementation patterns: [React Component Patterns](react-component.mdc), [Vue Component Patterns](vue-component.mdc). Stories: [Storybook](stories.mdc).
 
 Import paths below use `@pisagor/{pkg}/…` — substitute `react` or `vue`.
 
@@ -34,7 +34,7 @@ Import paths below use `@pisagor/{pkg}/…` — substitute `react` or `vue`.
 ## Feedback
 
 - `alert`: block-level feedback for status, warning, error, or actionable callouts within page flow.
-- `announcement`: compact promotional or informational surface; aliases `banner`, `callout` (see [Storybook → Meta](storybook.mdc#meta)).
+- `announcement`: compact promotional or informational surface; aliases `banner`, `callout` (see [Storybook → Meta](stories.mdc)).
 
 ## Navigation decision tree
 
@@ -51,7 +51,7 @@ Import paths below use `@pisagor/{pkg}/…` — substitute `react` or `vue`.
 
 1. kebab-case folder and export path (`dropdown-menu`)
 2. PascalCase component export (`DropdownMenu`)
-3. Story meta (`title`, `parameters.metadata`, docs description) — [Storybook → Meta](storybook.mdc#meta)
+3. Story meta (`title`, `parameters.metadata`, docs description) — [Storybook → Meta](stories.mdc)
 
 ## Select stack
 

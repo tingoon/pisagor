@@ -11,11 +11,11 @@ cursor:
 ---
 # React Component Patterns
 
-How to build shared UI components in `packages/react` (`@pisagor/react`). General React rules — [React Style Guide](../styleguides/react.mdc).
+How to build shared UI components in `packages/react` (`@pisagor/react`). General React rules — [React Style Guide](../react.mdc).
 
-**References:** [React Style Guide](../styleguides/react.mdc), [Storybook](storybook.mdc), [Component](component.mdc), [TypeScript Style Guide](../styleguides/typescript.mdc). Package-specific policy notes may live in that package's `AGENTS.md` (e.g. [`packages/react/AGENTS.md`](../../../packages/react/AGENTS.md)).
+**References:** [React Style Guide](../react.mdc), [Storybook](stories.mdc), [Component](component.mdc), [TypeScript Style Guide](../typescript.mdc). Package-specific policy notes may live in that package's `AGENTS.md` (e.g. [`packages/react/AGENTS.md`](../../../packages/react/AGENTS.md)).
 
-**Out of scope:** design tokens, brand palette, spacing taste, theme authoring (`@pisagor/tokens`). `tv()` recipe authoring lives in [`@pisagor/recipes`](../../../packages/recipes) — this file covers how components **consume** recipes. General React naming, props order, hooks, body order — [React Style Guide](../styleguides/react.mdc).
+**Out of scope:** design tokens, brand palette, spacing taste, theme authoring (`@pisagor/tokens`). `tv()` recipe authoring lives in [`@pisagor/recipes`](../../../packages/recipes) — this file covers how components **consume** recipes. General React naming, props order, hooks, body order — [React Style Guide](../react.mdc).
 
 ---
 
@@ -40,7 +40,7 @@ When a compound component uses package-local React context (`createContext` from
 
 - Put context value types, `createContext(...)`, and consumer hooks in `<name>.context.tsx`.
 - Export the Context and `useX` hook from that file; keep Root/Part JSX in `<name>.tsx`.
-- Provide values with `<FooContext value={…}>` — not `<FooContext.Provider>` ([React Style Guide → Legacy patterns](../styleguides/react.mdc#legacy-patterns)).
+- Provide values with `<FooContext value={…}>` — not `<FooContext.Provider>` ([React Style Guide → Legacy patterns](../react.mdc)).
 - Do not keep a `#region Context` in `<name>.tsx` — import from `./<name>.context` instead.
 - Public props / part props stay in `<name>.tsx`. Context value types that public props reference (`Pick<FooContextValue, …>`) live in the context file and are imported with `import type`.
 - One `<name>.context.tsx` per component folder even when there are multiple nested contexts (e.g. data-grid).
@@ -48,7 +48,7 @@ When a compound component uses package-local React context (`createContext` from
 - Barrel hooks (`useTourContext`, `useSidebar`, …) re-export from `./<name>.context`, not from `<name>.tsx`.
 - In `index.ts`, put a blank line between type re-exports and context hook re-exports.
 
-File-level React rules: [React Style Guide](../styleguides/react.mdc).
+File-level React rules: [React Style Guide](../react.mdc).
 
 ### Public shared packages
 
@@ -56,7 +56,7 @@ Applies to the published workspace component package (`@pisagor/react`):
 
 - One folder per public component — layout above is required.
 - Require `index.ts` barrel (package export map, e.g. `@pisagor/react/*`).
-- Require `<name>.stories.tsx` per component — [Storybook](storybook.mdc).
+- Require `<name>.stories.tsx` per component — [Storybook](stories.mdc).
 
 ### Storybook-local components
 
@@ -207,7 +207,7 @@ Context factory + value types live in [`<name>.context.tsx`](#context-file-namec
 - Put content on the line **immediately after** `// #region …` — no blank line after the region marker.
 - Put **`// #endregion` on the line immediately after** the region's last statement — no blank line before it.
 - Put **one blank line between region blocks** — after `// #endregion`, before the next `// #region`.
-- Follow [react.mdc → Component body order](../styleguides/react.mdc#component-body-order) inside each component function.
+- Follow [react.mdc → Component body order](../react.mdc) inside each component function.
 
 ### Do not
 
@@ -217,7 +217,7 @@ Context factory + value types live in [`<name>.context.tsx`](#context-file-namec
 - Do not keep a `#region Context` in `<name>.tsx` — use `<name>.context.tsx` instead.
 - Do not declare `export type` / `export interface` props outside `#region Types` — keep every part props type in Types; Parts only contain component functions.
 
-**Note:** Types region order is file-level type declaration order — not the same as [react.mdc → Props order](../styleguides/react.mdc#props-order) field groups.
+**Note:** Types region order is file-level type declaration order — not the same as [react.mdc → Props order](../react.mdc) field groups.
 
 Inside `Types`, when all apply: sub-element prop types → `{Name}ClassNames` → `{Name}VariantProps` → root props → public interface → preset interfaces (`AccordionItem`, …).
 
@@ -225,7 +225,7 @@ Inside `Types`, when all apply: sub-element prop types → `{Name}ClassNames` �
 
 ## Types
 
-Follow [React Style Guide](../styleguides/react.mdc) for naming and [props field order](../styleguides/react.mdc#props-order). On the public props interface, add **sub-element bags** after styling props.
+Follow [React Style Guide](../react.mdc) for naming and [props field order](../react.mdc). On the public props interface, add **sub-element bags** after styling props.
 
 ### Do
 
@@ -239,7 +239,7 @@ Follow [React Style Guide](../styleguides/react.mdc) for naming and [props field
 - Use `export interface FooProps` when props are part of the public API.
 - Combine with `interface FooProps extends FooRootProps, FooVariantProps` for compounds. For closed single exports without a Root part, extend the Ark/`ark.*` props on `FooProps` directly (no `FooRootProps` alias).
 - Use `Omit<…>` when a convenience prop conflicts with DOM attributes.
-- Extend recipe `{Name}VariantProps` from `@pisagor/recipes/<name>` (or `VariantProps<typeof fooRecipe>` when composing locally). Document library-owned defaults with TSDoc **`@defaultValue`** matching the recipe `defaultVariants` — see [TypeScript Style Guide](../styleguides/typescript.mdc) (TSDoc only; do not use JSDoc-only `@default`).
+- Extend recipe `{Name}VariantProps` from `@pisagor/recipes/<name>` (or `VariantProps<typeof fooRecipe>` when composing locally). Document library-owned defaults with TSDoc **`@defaultValue`** matching the recipe `defaultVariants` — see [TypeScript Style Guide](../typescript.mdc) (TSDoc only; do not use JSDoc-only `@default`).
 - Type sub-element bags as `titleProps?: Omit<TitleProps, "children" | "className">`.
 
 | `Omit` usage | Valid | Invalid |
@@ -264,7 +264,7 @@ Behavior lives in the headless primitive — the styled layer adds visuals only.
 ### Do
 
 - Type each part per [Types](#types).
-- Follow [react.mdc → Props order](../styleguides/react.mdc#props-order) for JSX attribute order on each element. On **plain** nodes (`ark.div`, native tags) add `data-scope` / `data-part`; do **not** set them on machine-backed `<XPrimitive.Part>` nodes — Zag already emits them.
+- Follow [react.mdc → Props order](../react.mdc) for JSX attribute order on each element. On **plain** nodes (`ark.div`, native tags) add `data-scope` / `data-part`; do **not** set them on machine-backed `<XPrimitive.Part>` nodes — Zag already emits them.
 - Alias imports to avoid name clashes (`Accordion as AccordionPrimitive`).
 - When a module import mixes **values and many types** (≥4 type specifiers), use a separate `import type { … }` from the same module instead of repeating inline `type` on each name. Keep inline `type` for small mixes (1–3 types), e.g. avatar.
 - Use a factory element (`ark.div`) only when there is no headless part for that DOM node.
@@ -333,5 +333,5 @@ When a part has no recipe slot by design:
 
 ## Storybook
 
-- Follow [Storybook](storybook.mdc) for `*.stories.tsx` (story order, escape-hatch props, sample data).
+- Follow [Storybook](stories.mdc) for `*.stories.tsx` (story order, escape-hatch props, sample data).
 - Declare `subcomponents` on meta for compound components.

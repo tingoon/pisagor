@@ -12,11 +12,11 @@ cursor:
 ---
 # Vue Component Patterns
 
-How to build shared UI components in `packages/vue` (`@pisagor/vue`). General Vue rules — [Vue Style Guide](../styleguides/vue.mdc).
+How to build shared UI components in `packages/vue` (`@pisagor/vue`). General Vue rules — [Vue Style Guide](../vue.mdc).
 
-**References:** [Vue Style Guide](../styleguides/vue.mdc), [Storybook](storybook.mdc), [Component](component.mdc), [TypeScript Style Guide](../styleguides/typescript.mdc). Package-specific notes: [`packages/vue/AGENTS.md`](../../../packages/vue/AGENTS.md). Mirror the React sibling when porting — [React Component Patterns](react-component.mdc) — but implement with Vue idioms below (do not copy JSX/`displayName`/`className`).
+**References:** [Vue Style Guide](../vue.mdc), [Storybook](stories.mdc), [Component](component.mdc), [TypeScript Style Guide](../typescript.mdc). Package-specific notes: [`packages/vue/AGENTS.md`](../../../packages/vue/AGENTS.md). Mirror the React sibling when porting — [React Component Patterns](react-component.mdc) — but implement with Vue idioms below (do not copy JSX/`displayName`/`className`).
 
-**Out of scope:** design tokens / theme authoring (`@pisagor/tokens`). `tv()` recipe authoring lives in [`@pisagor/recipes`](../../../packages/recipes) — this file covers how components **consume** recipes. General Vue naming, props order, setup body, composables — [Vue Style Guide](../styleguides/vue.mdc). Story catalog fields — [Storybook](storybook.mdc).
+**Out of scope:** design tokens / theme authoring (`@pisagor/tokens`). `tv()` recipe authoring lives in [`@pisagor/recipes`](../../../packages/recipes) — this file covers how components **consume** recipes. General Vue naming, props order, setup body, composables — [Vue Style Guide](../vue.mdc). Story catalog fields — [Storybook](stories.mdc).
 
 ---
 
@@ -46,7 +46,7 @@ Package UI is **`defineComponent` + `h()` render functions** in `.ts` files — 
 - Cast polymorphic Ark parts when spreading attrs: `type ArkPart = Parameters<typeof h>[0]` then `h(X as ArkPart, { … })`.
 - Prefer renaming shadowed slot bags: `setup(props, { attrs, slots: children })` when `slots` is used for recipe slots.
 
-File-level Vue rules: [Vue Style Guide](../styleguides/vue.mdc).
+File-level Vue rules: [Vue Style Guide](../vue.mdc).
 
 ### Context file (`<name>.context.ts`)
 
@@ -68,7 +68,7 @@ Applies to the published workspace component package (`@pisagor/vue`):
 
 - One folder per public component — layout above is required.
 - Require `index.ts` barrel (package export map, e.g. `@pisagor/vue/*`).
-- Require `<name>.stories.ts` per component — [Storybook](storybook.mdc).
+- Require `<name>.stories.ts` per component — [Storybook](stories.mdc).
 - Import recipes from `@pisagor/recipes/<name>` — do not add local `*.recipe.ts` shims or call `tv()`.
 
 ### Storybook-local components
@@ -215,7 +215,7 @@ There is **no** `#region Display Names` — Vue uses the `name` option on each `
 - Put **`// #endregion` on the line immediately after** the region's last statement — no blank line before it.
 - Put **one blank line between region blocks** — after `// #endregion`, before the next `// #region`.
 - Keep `ArkPart` / small file-private aliases **outside** regions (between Types and Parts), same as existing accordion/alert files.
-- Follow [vue.mdc → Setup body order](../styleguides/vue.mdc#setup-body-order) inside each `setup`.
+- Follow [vue.mdc → Setup body order](../vue.mdc) inside each `setup`.
 
 ### Do not
 
@@ -237,7 +237,7 @@ Public props are a **dual surface**: a TypeScript `interface` (consumer types / 
 - Export `interface FooProps` when props are part of the public API.
 - Combine with recipe types: `export interface ButtonProps extends ButtonVariantProps { … }`.
 - Use `Omit<…>` when a convenience prop conflicts with an Ark prop signature.
-- Extend recipe `{Name}VariantProps` from `@pisagor/recipes/<name>`. Document library-owned defaults with TSDoc **`@defaultValue`** matching the recipe `defaultVariants` — [TypeScript Style Guide](../styleguides/typescript.mdc) (TSDoc only; do not use JSDoc-only `@default`).
+- Extend recipe `{Name}VariantProps` from `@pisagor/recipes/<name>`. Document library-owned defaults with TSDoc **`@defaultValue`** matching the recipe `defaultVariants` — [TypeScript Style Guide](../typescript.mdc) (TSDoc only; do not use JSDoc-only `@default`).
 - Runtime props: declare every public prop with `PropType<…>`, defaults via `default`, and `type: Boolean` / `Number` / `String` / `Object` / `Array` / `Function` as appropriate.
 - Styling entry: use **`class`** (Vue), not `className`. Type as `class?: unknown` (or `ClassValue` when already imported) so object/array class bindings work.
 - Multi-slot overrides: `classNames?: VariantClassNames<{Name}RecipeSlot>` from `../../internal/types`.
@@ -341,7 +341,7 @@ When a part has no recipe slot by design:
 
 ## Storybook
 
-- Follow [Storybook](storybook.mdc) for `*.stories.ts` (story order, escape-hatch props, sample data).
+- Follow [Storybook](stories.mdc) for `*.stories.ts` (story order, escape-hatch props, sample data).
 - Declare `subcomponents` on meta for compound components (`Root`, `Item`, …).
 - Prefer `render: () => ({ components: { … }, template: \`…\` })` or `h()` render factories — match sibling stories in the folder.
 - Mirror the React sibling story (title, `parameters.metadata`, docs copy) when porting.

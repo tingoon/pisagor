@@ -1,0 +1,28 @@
+{
+  "lockfileVersion": 1,
+  "sources": {
+    "vercel/turborepo": {
+      "requestedRef": "main",
+      "resolvedRef": "895337ef6ef989470914e4461b01815a19e2d6a7",
+      "resolvedAt": "2026-09-11T09:58:15.096Z",
+      "skills": {
+        "turborepo": {
+          "integrity": "sha256-623867566bc273610247d779101c230decdfaa79599bbb75324fa85e8bfc76f8"
+        }
+      }
+    },
+    "tingoon/agent-skills": {
+      "requestedRef": "main",
+      "resolvedRef": "d4a525912c556b60b5c4e2823a54b2894c5d5c2e",
+      "resolvedAt": "2026-09-11T09:58:01.688Z",
+      "skills": {
+        "create-commit": {
+          "integrity": "sha256-1d5e12d91284fc7e4792665a66f3fc3a7c4840aac59c9f55b74b27f6a0e0274a"
+        },
+        "ux-writing": {
+          "integrity": "sha256-e43f6c1ad372a1695488d92394c3189aab5c0ccdfecfda10c8ccf451c890403f"
+        }
+      }
+    }
+  }
+}

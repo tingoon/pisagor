@@ -47,7 +47,7 @@
     "dev": "turbo dev",
     "format": "biome check --write .",
     "lint": "biome lint .",
-    "prepare": "lefthook install",
+    "prepare": "lefthook install && rulesync install",
     "rulesync": "rulesync generate",
     "setup": "bun run rulesync && bun run repomix",
     "test": "turbo test",
