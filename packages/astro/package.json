@@ -11,7 +11,7 @@
   "description": "Static Astro UI components built on Tailwind CSS recipes.",
   "devDependencies": {
     "@pisagor/tsconfig": "workspace:*",
-    "astro": "^5.18.2"
+    "astro": "catalog:"
   },
   "exports": {
     ".": "./src/components/index.ts",
@@ -27,7 +27,7 @@
   "license": "MIT",
   "name": "@pisagor/astro",
   "peerDependencies": {
-    "astro": "^5",
+    "astro": "^7",
     "tailwindcss": "^4"
   },
   "repository": {
