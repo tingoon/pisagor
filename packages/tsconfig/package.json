@@ -4,6 +4,7 @@
     "@types/react": "catalog:"
   },
   "exports": {
+    "./astro": "./astro/tsconfig.json",
     "./base": "./tsconfig.json",
     "./bun": "./bun/tsconfig.json",
     "./react": "./react/tsconfig.json",
@@ -15,6 +16,7 @@
   },
   "files": [
     "tsconfig.json",
+    "astro",
     "bun",
     "react",
     "react-vite",

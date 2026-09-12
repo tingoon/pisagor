@@ -1,0 +1,35 @@
+---
+import { tableRecipe } from "@pisagor/recipes/table";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"table"> {
+  /**
+   * The variant of the table.
+   *
+   * @defaultValue "plain"
+   */
+  variant?: "plain" | "striped";
+  /**
+   * Whether the table rows are hoverable.
+   *
+   * @defaultValue true
+   */
+  isHoverable?: boolean;
+}
+
+const { variant = "plain", isHoverable = true, class: className, ...rest } = Astro.props;
+const slots = tableRecipe();
+---
+
+<div class={slots.wrapper()} data-part="wrapper" data-scope="table">
+  <table
+    {...rest}
+    class={slots.base({ className })}
+    data-hoverable={isHoverable}
+    data-part="root"
+    data-scope="table"
+    data-variant={variant}
+  >
+    <slot />
+  </table>
+</div>

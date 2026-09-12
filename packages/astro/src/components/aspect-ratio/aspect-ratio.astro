@@ -1,0 +1,30 @@
+---
+import { aspectRatioRecipe } from "@pisagor/recipes/aspect-ratio";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
+  /**
+   * CSS aspect-ratio value applied via `--ratio`.
+   *
+   * @example "16/9"
+   */
+  ratio?: string | number;
+}
+
+const { ratio, style, class: className, ...rest } = Astro.props;
+
+const mergedStyle =
+  ratio === undefined
+    ? style
+    : [typeof style === "string" ? style : "", `--ratio:${ratio}`].filter(Boolean).join(";");
+---
+
+<div
+  {...rest}
+  class={aspectRatioRecipe({ className })}
+  data-part="root"
+  data-scope="aspect-ratio"
+  style={mergedStyle}
+>
+  <slot />
+</div>

@@ -1,0 +1,32 @@
+---
+interface Props {
+  /**
+   * Document direction.
+   *
+   * @defaultValue "ltr"
+   */
+  direction?: string;
+  /**
+   * Color theme.
+   *
+   * @defaultValue "system"
+   */
+  theme?: string;
+}
+
+const { direction = "ltr", theme = "system" } = Astro.props;
+const className =
+  theme === "dark" ? "dark bg-background p-4 text-foreground" : "bg-background p-4 text-foreground";
+---
+
+<div class={className} data-theme={theme} dir={direction}>
+  <slot />
+</div>
+
+<script>
+  const root = document.currentScript?.previousElementSibling as HTMLElement | null;
+  if (root?.dataset.theme === "system") {
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    root.classList.toggle("dark", prefersDark);
+  }
+</script>

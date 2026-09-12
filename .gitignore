@@ -15,6 +15,7 @@ artifacts/
 .env.*
 *.pem
 !*.example
+*.local.*
 
 # logs
 logs
@@ -23,14 +24,20 @@ logs
 # caches & tooling
 *.tsbuildinfo
 .turbo/
+.astro/
 
 # OS
 .DS_Store
 Thumbs.db
 
-# agents related files
-.agents.local/
-rulesync.local.jsonc
+# agents
+.rulesync.local/
+.rulesync/**/.curated/
 .mcp.json
-AGENTS.md
-!.agents/rules/styleguides/agents.md
+
+.claude/*
+CLAUDE.md
+
+.cursor/*
+!.cursor/settings.json
+.cursorignore

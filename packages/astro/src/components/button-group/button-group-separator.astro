@@ -1,0 +1,25 @@
+---
+import { buttonGroupRecipe } from "@pisagor/recipes/button-group";
+import type { HTMLAttributes } from "astro/types";
+import Separator from "../separator/separator.astro";
+
+interface Props extends HTMLAttributes<"div"> {
+  /**
+   * The orientation of the separator.
+   *
+   * @defaultValue "vertical"
+   */
+  orientation?: "horizontal" | "vertical";
+}
+
+const { orientation = "vertical", class: className, ...rest } = Astro.props;
+const slots = buttonGroupRecipe();
+---
+
+<Separator
+  {...rest}
+  class={slots.separator({ className })}
+  data-part="separator"
+  data-scope="button-group"
+  orientation={orientation}
+/>

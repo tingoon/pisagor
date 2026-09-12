@@ -1,0 +1,31 @@
+{
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
+  "extends": "//",
+  "overrides": [
+    {
+      "includes": ["**/*.astro"],
+      "linter": {
+        "rules": {
+          "correctness": {
+            "noUnusedImports": "off",
+            "noUnusedVariables": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["**/*.stories.ts", "../../../packages/astro/src/**/*.stories.ts"],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noArrayIndexKey": "off"
+          }
+        }
+      }
+    }
+  ]
+}

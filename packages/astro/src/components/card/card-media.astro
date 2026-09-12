@@ -1,0 +1,19 @@
+---
+import { type CardVariantProps, cardRecipe } from "@pisagor/recipes/card";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"div"> & CardVariantProps;
+
+const { variant = "default", class: className, ...rest } = Astro.props;
+const slots = cardRecipe();
+---
+
+<div
+  {...rest}
+  class={slots.media({ className, variant })}
+  data-part="media"
+  data-scope="card"
+  data-variant={variant}
+>
+  <slot />
+</div>

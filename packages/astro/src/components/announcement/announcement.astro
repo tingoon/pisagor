@@ -1,0 +1,32 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import AnnouncementRoot from "./announcement-root.astro";
+import AnnouncementTitle from "./announcement-title.astro";
+
+interface Props extends Omit<HTMLAttributes<"div">, "title"> {
+  /**
+   * The ARIA role of the announcement.
+   *
+   * @defaultValue "status"
+   */
+  role?: "status" | "alert";
+  /** Title content rendered inside `Announcement.Title`. */
+  title?: string;
+}
+
+const { role = "status", title, ...rest } = Astro.props;
+const hasBadge = Astro.slots.has("badge");
+const hasTitle = Astro.slots.has("title") || title !== undefined;
+---
+
+<AnnouncementRoot {...rest} role={role}>
+  {hasBadge && <slot name="badge" />}
+  {
+    hasTitle && (
+      <AnnouncementTitle>
+        {title ?? <slot name="title" />}
+      </AnnouncementTitle>
+    )
+  }
+  <slot />
+</AnnouncementRoot>

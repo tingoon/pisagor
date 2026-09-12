@@ -1,0 +1,13 @@
+---
+import { timelineItemRecipe } from "@pisagor/recipes/timeline";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"li">;
+
+const { class: className, ...rest } = Astro.props;
+const slots = timelineItemRecipe();
+---
+
+<li {...rest} class={slots.base({ className })} data-part="item" data-scope="timeline">
+  <slot />
+</li>

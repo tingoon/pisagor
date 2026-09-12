@@ -1,0 +1,19 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"span"> {
+  /** Number value to format. */
+  value: number;
+  /** BCP 47 locale. Defaults to the runtime default locale. */
+  locale?: string;
+  /** Extra options forwarded to `Intl.NumberFormat`. */
+  options?: Intl.NumberFormatOptions;
+}
+
+const { value, locale, options, class: className, ...rest } = Astro.props;
+const formatted = new Intl.NumberFormat(locale, options).format(value);
+---
+
+<span {...rest} class={className} data-part="root" data-scope="format">
+  {formatted}
+</span>

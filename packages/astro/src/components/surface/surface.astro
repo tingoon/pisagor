@@ -1,0 +1,52 @@
+---
+import { type SurfaceVariantProps, surfaceRecipe } from "@pisagor/recipes/surface";
+import type { HTMLAttributes } from "astro/types";
+
+type SurfaceVariant = NonNullable<SurfaceVariantProps["variant"]>;
+
+const AUTO_VARIANTS = [
+  "default",
+  "secondary",
+  "tertiary",
+  "tertiary",
+] as const satisfies readonly SurfaceVariant[];
+
+interface Props extends HTMLAttributes<"div">, SurfaceVariantProps {
+  /**
+   * Nesting depth used when `variant` is omitted.
+   *
+   * @defaultValue 0
+   */
+  depth?: number;
+}
+
+const {
+  bordered = false,
+  rounded = true,
+  variant: variantProp,
+  depth = 0,
+  padding,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const variant =
+  variantProp ?? AUTO_VARIANTS[Math.min(depth, AUTO_VARIANTS.length - 1)] ?? "default";
+---
+
+<div
+  {...rest}
+  class={surfaceRecipe({
+    bordered,
+    className,
+    padding,
+    rounded,
+    variant,
+  })}
+  data-depth={depth}
+  data-part="root"
+  data-scope="surface"
+  data-variant={variant}
+>
+  <slot />
+</div>

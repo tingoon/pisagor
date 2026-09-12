@@ -1,0 +1,19 @@
+---
+import { breadcrumbRecipe } from "@pisagor/recipes/breadcrumb";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"ol">;
+
+const { class: className, ...rest } = Astro.props;
+const slots = breadcrumbRecipe();
+---
+
+<ol
+  {...rest}
+  class={slots.list({ className })}
+  data-part="list"
+  data-scope="breadcrumb"
+  role="list"
+>
+  <slot />
+</ol>

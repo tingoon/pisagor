@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "#/storybook/*": ["../../apps/astro/.storybook/*"]
+    }
+  },
+  "extends": "@pisagor/tsconfig/astro",
+  "include": ["src"]
+}

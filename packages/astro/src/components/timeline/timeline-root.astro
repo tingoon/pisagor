@@ -1,0 +1,18 @@
+---
+import { type TimelineVariantProps, timelineRecipe } from "@pisagor/recipes/timeline";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"ol"> & TimelineVariantProps;
+
+const { orientation = "vertical", class: className, ...rest } = Astro.props;
+---
+
+<ol
+  {...rest}
+  class={timelineRecipe({ className, orientation })}
+  data-orientation={orientation}
+  data-part="root"
+  data-scope="timeline"
+>
+  <slot />
+</ol>

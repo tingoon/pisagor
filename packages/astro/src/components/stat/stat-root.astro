@@ -1,0 +1,19 @@
+---
+import { type StatVariantProps, statRecipe } from "@pisagor/recipes/stat";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"div"> & StatVariantProps;
+
+const { variant = "outline", class: className, ...rest } = Astro.props;
+const slots = statRecipe();
+---
+
+<div
+  {...rest}
+  class={slots.base({ className, variant })}
+  data-part="root"
+  data-scope="stat"
+  data-variant={variant}
+>
+  <slot />
+</div>

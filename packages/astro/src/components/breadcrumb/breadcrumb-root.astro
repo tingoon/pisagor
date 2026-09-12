@@ -1,0 +1,18 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"nav"> {
+  /**
+   * Accessible label for the breadcrumb navigation landmark.
+   *
+   * @defaultValue "Breadcrumb"
+   */
+  "aria-label"?: string;
+}
+
+const { "aria-label": ariaLabel = "Breadcrumb", ...rest } = Astro.props;
+---
+
+<nav {...rest} aria-label={ariaLabel} data-part="root" data-scope="breadcrumb">
+  <slot />
+</nav>

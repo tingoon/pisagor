@@ -1,0 +1,124 @@
+---
+import { circularProgressRecipe } from "@pisagor/recipes/circular-progress";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
+  /**
+   * Diameter of the circular progress in pixels.
+   *
+   * @defaultValue 32
+   */
+  size?: number;
+  /**
+   * Stroke width of the track and range.
+   *
+   * @defaultValue 4
+   */
+  thickness?: number;
+  /**
+   * Whether to show indeterminate progress.
+   *
+   * @defaultValue false
+   */
+  indeterminate?: boolean;
+  /**
+   * When true, renders the numeric value text in the center.
+   */
+  isValueVisible?: boolean;
+  /**
+   * The value of the progress.
+   *
+   * @defaultValue 0
+   */
+  value?: number;
+  /**
+   * The minimum value.
+   *
+   * @defaultValue 0
+   */
+  min?: number;
+  /**
+   * The maximum value.
+   *
+   * @defaultValue 100
+   */
+  max?: number;
+}
+
+const {
+  size = 32,
+  thickness = 4,
+  indeterminate = false,
+  isValueVisible = false,
+  value = 0,
+  min = 0,
+  max = 100,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const slots = circularProgressRecipe();
+const radius = size / 2 - thickness / 2;
+const circumference = 2 * Math.PI * radius;
+const range = Math.max(max - min, 1);
+const normalizedValue = Math.min(Math.max(value, min), max);
+const percent = (normalizedValue - min) / range;
+const dashOffset = circumference * (1 - percent);
+const state = indeterminate ? "indeterminate" : "loading";
+const strokeDashoffset = indeterminate ? circumference * 0.7 : dashOffset;
+---
+
+<div
+  {...rest}
+  aria-valuemax={indeterminate ? undefined : max}
+  aria-valuemin={indeterminate ? undefined : min}
+  aria-valuenow={indeterminate ? undefined : normalizedValue}
+  class={slots.base({ className })}
+  data-part="root"
+  data-scope="circular-progress"
+  data-state={state}
+  role="progressbar"
+>
+  {
+    isValueVisible && !indeterminate && (
+      <span class={slots.valueWrapper()} data-part="value-wrapper" data-scope="circular-progress">
+        <span class={slots.value()} data-part="value" data-scope="circular-progress">
+          {Math.round(percent * 100)}%
+        </span>
+      </span>
+    )
+  }
+  <slot />
+  <svg
+    aria-hidden="true"
+    class={slots.track()}
+    data-part="circle"
+    data-scope="circular-progress"
+    height={size}
+    viewBox={`0 0 ${size} ${size}`}
+    width={size}
+  >
+    <circle
+      cx={size / 2}
+      cy={size / 2}
+      data-part="track-bg"
+      data-scope="circular-progress"
+      r={radius}
+      stroke-width={thickness}
+    >
+    </circle>
+    <circle
+      class={slots.range()}
+      cx={size / 2}
+      cy={size / 2}
+      data-part="range"
+      data-scope="circular-progress"
+      r={radius}
+      stroke-dasharray={circumference}
+      stroke-dashoffset={strokeDashoffset}
+      stroke-linecap="round"
+      stroke-width={thickness}
+    >
+    </circle>
+  </svg>
+</div>

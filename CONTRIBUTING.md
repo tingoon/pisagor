@@ -12,10 +12,11 @@ Then from the repo root:
 bun install
 bun run setup
 bun run dev
-# optional: bunx turbo dev --filter=vue-storybook
+# optional: bunx turbo dev --filter=vue-stories
+# optional: bunx turbo dev --filter=astro-stories
 ```
 
-React Storybook: http://localhost:4001. Vue: http://localhost:4002.
+React Storybook: http://localhost:4001. Vue: http://localhost:4002. Astro: http://localhost:4003.
 
 ## Checks
 
@@ -42,7 +43,7 @@ bunx repomix
 bunx taze
 ```
 
-Commits: [Conventional Commits](https://www.conventionalcommits.org/). Scope with the workspace when the change is local (`feat(react-storybook):`, `fix(react):`).
+Commits: [Conventional Commits](https://www.conventionalcommits.org/). Scope with the workspace when the change is local (`feat(react-stories):`, `fix(react):`).
 
 ## Pull requests
 

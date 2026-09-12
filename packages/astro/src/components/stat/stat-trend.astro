@@ -1,0 +1,18 @@
+---
+import { type StatTrendVariantProps, statTrendRecipe } from "@pisagor/recipes/stat";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"div"> & StatTrendVariantProps;
+
+const { trend = "neutral", class: className, ...rest } = Astro.props;
+---
+
+<div
+  {...rest}
+  class={statTrendRecipe({ className, trend })}
+  data-part="trend"
+  data-scope="stat"
+  data-trend={trend}
+>
+  <slot />
+</div>

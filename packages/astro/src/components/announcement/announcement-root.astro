@@ -1,0 +1,26 @@
+---
+import { announcementRecipe } from "@pisagor/recipes/announcement";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends Omit<HTMLAttributes<"div">, "title"> {
+  /**
+   * The ARIA role of the announcement.
+   *
+   * @defaultValue "status"
+   */
+  role?: "status" | "alert";
+}
+
+const { role = "status", class: className, ...rest } = Astro.props;
+const slots = announcementRecipe();
+---
+
+<div
+  {...rest}
+  class={slots.base({ className })}
+  data-part="root"
+  data-scope="announcement"
+  role={role}
+>
+  <slot />
+</div>

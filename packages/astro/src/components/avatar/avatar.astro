@@ -1,0 +1,45 @@
+---
+import { type AvatarVariantProps, avatarRecipe } from "@pisagor/recipes/avatar";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"span">, AvatarVariantProps {
+  /** Alt text for the avatar image */
+  alt?: string;
+  /** Fallback text shown when `src` is omitted */
+  fallback?: string;
+  /** Image source URL */
+  src?: string;
+}
+
+const {
+  shape = "circle",
+  size = "md",
+  alt,
+  fallback,
+  src,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const slots = avatarRecipe({ shape, size });
+const hasFallbackSlot = Astro.slots.has("fallback");
+---
+
+<span
+  {...rest}
+  class={slots.base({ className })}
+  data-part="root"
+  data-scope="avatar"
+  data-shape={shape}
+  data-size={size}
+>
+  {
+    src ? (
+      <img alt={alt ?? ""} class={slots.image()} data-part="image" data-scope="avatar" src={src} />
+    ) : (fallback !== undefined || hasFallbackSlot) ? (
+      <span class={slots.fallback()} data-part="fallback" data-scope="avatar">
+        {fallback ?? <slot name="fallback" />}
+      </span>
+    ) : null
+  }
+</span>

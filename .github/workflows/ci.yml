@@ -21,8 +21,8 @@ jobs:
         with:
           bun-version: 1.4.0
       - run: bun install --frozen-lockfile
-      - run: bun run biome ci
-      - run: bun run knip
+      - run: bunx biome ci
+      - run: bunx knip
       - run: bun run type-check
       - run: bun run test
       - run: bun run build

@@ -1,0 +1,40 @@
+---
+import type { TimelineVariantProps } from "@pisagor/recipes/timeline";
+import type { HTMLAttributes } from "astro/types";
+import TimelineContent from "./timeline-content.astro";
+import TimelineDescription from "./timeline-description.astro";
+import TimelineIndicator from "./timeline-indicator.astro";
+import TimelineItem from "./timeline-item.astro";
+import TimelineRoot from "./timeline-root.astro";
+import TimelineSeparator from "./timeline-separator.astro";
+import TimelineTitle from "./timeline-title.astro";
+
+interface TimelinePresetItem {
+  id?: string;
+  title: string;
+  description?: string;
+  indicator?: string;
+}
+
+interface Props extends HTMLAttributes<"ol">, TimelineVariantProps {
+  items?: TimelinePresetItem[];
+}
+
+const { orientation = "vertical", items = [], ...rest } = Astro.props;
+---
+
+<TimelineRoot {...rest} orientation={orientation}>
+  {
+    items.map((item) => (
+      <TimelineItem>
+        <TimelineSeparator />
+        <TimelineIndicator>{item.indicator}</TimelineIndicator>
+        <TimelineContent>
+          <TimelineTitle>{item.title}</TimelineTitle>
+          {item.description ? <TimelineDescription>{item.description}</TimelineDescription> : null}
+        </TimelineContent>
+      </TimelineItem>
+    ))
+  }
+  <slot />
+</TimelineRoot>

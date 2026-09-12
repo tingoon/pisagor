@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "@pisagor/astro": "workspace:*"
+  },
+  "description": "Astro Storybook for @pisagor/astro package stories.",
+  "devDependencies": {
+    "@pisagor/tsconfig": "workspace:*",
+    "@storybook-astro/framework": "^1.12.0",
+    "@storybook/addon-a11y": "^10.6.0",
+    "@storybook/addon-docs": "^10.6.0",
+    "@storybook/addon-mcp": "^0.7.0",
+    "@tailwindcss/vite": "catalog:",
+    "astro": "^5.18.2",
+    "storybook": "^10.6.0",
+    "tailwindcss": "catalog:",
+    "vite": "catalog:"
+  },
+  "name": "astro-stories",
+  "private": true,
+  "scripts": {
+    "build": "storybook build",
+    "dev": "storybook dev -p 4003",
+    "type-check": "tsc --noEmit"
+  },
+  "type": "module",
+  "version": "0.0.0"
+}

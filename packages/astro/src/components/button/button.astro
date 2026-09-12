@@ -1,0 +1,49 @@
+---
+import { type ButtonVariantProps, buttonRecipe } from "@pisagor/recipes/button";
+import type { HTMLAttributes } from "astro/types";
+import Spinner from "../spinner/spinner.astro";
+
+type Props = HTMLAttributes<"button"> & ButtonVariantProps;
+
+const {
+  clickEffect = true,
+  loading = false,
+  pill = false,
+  size = "md",
+  variant = "default",
+  disabled,
+  type = "button",
+  class: className,
+  ...rest
+} = Astro.props;
+
+const slots = buttonRecipe({ clickEffect, loading, pill, size, variant });
+const content = loading ? await Astro.slots.render("default") : null;
+---
+
+<button
+  {...rest}
+  aria-busy={loading || undefined}
+  class={slots.base({ className })}
+  data-part="root"
+  data-scope="button"
+  data-size={size}
+  data-state={loading ? "loading" : "idle"}
+  data-variant={variant}
+  disabled={disabled || loading}
+  type={type}
+>
+  {
+    loading ? (
+      <>
+        <span aria-hidden class={slots.hidden()} set:html={content!} />
+        <span class={slots.srOnly()} set:html={content!} />
+        <span class={slots.spinner()}>
+          <Spinner aria-hidden />
+        </span>
+      </>
+    ) : (
+      <slot />
+    )
+  }
+</button>

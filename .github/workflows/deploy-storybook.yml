@@ -24,36 +24,23 @@ jobs:
           bun-version: 1.4.0
       - run: bun install --frozen-lockfile
       - name: Build React Storybook
-        run: bunx turbo build --filter=react-storybook
+        run: bunx turbo build --filter=react-stories
         env:
           STORYBOOK_BASE_PATH: /${{ github.event.repository.name }}/react/
       - name: Build Vue Storybook
-        run: bunx turbo build --filter=vue-storybook
+        run: bunx turbo build --filter=vue-stories
         env:
           STORYBOOK_BASE_PATH: /${{ github.event.repository.name }}/vue/
+      - name: Build Astro Storybook
+        run: bunx turbo build --filter=astro-stories
+        env:
+          STORYBOOK_BASE_PATH: /${{ github.event.repository.name }}/astro/
       - name: Assemble site
         run: |
-          mkdir -p site/react site/vue
+          mkdir -p site/react site/vue site/astro
           cp -R apps/react/storybook-static/. site/react/
           cp -R apps/vue/storybook-static/. site/vue/
-          cat > site/index.html <<'EOF'
-          <!DOCTYPE html>
-          <html lang="en">
-            <head>
-              <meta charset="utf-8" />
-              <meta name="viewport" content="width=device-width, initial-scale=1" />
-              <title>Pisagor Storybook</title>
-            </head>
-            <body>
-              <h1>Pisagor</h1>
-              <p>
-                <a href="./react/">React</a>
-                ·
-                <a href="./vue/">Vue</a>
-              </p>
-            </body>
-          </html>
-          EOF
+          cp -R apps/astro/storybook-static/. site/astro/
       - uses: actions/upload-pages-artifact@v4
         with:
           path: site

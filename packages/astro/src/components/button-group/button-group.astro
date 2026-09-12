@@ -1,0 +1,19 @@
+---
+import { type ButtonGroupVariantProps, buttonGroupRecipe } from "@pisagor/recipes/button-group";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"fieldset"> & ButtonGroupVariantProps;
+
+const { orientation = "horizontal", class: className, ...rest } = Astro.props;
+const slots = buttonGroupRecipe({ orientation });
+---
+
+<fieldset
+  {...rest}
+  class={slots.base({ className })}
+  data-orientation={orientation}
+  data-part="root"
+  data-scope="button-group"
+>
+  <slot />
+</fieldset>
