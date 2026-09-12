@@ -1,0 +1,27 @@
+---
+import { skipNavRecipe } from "@pisagor/recipes/skip-nav";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"a"> {
+  /**
+   * The id of the element to skip to.
+   *
+   * @defaultValue "skip-nav-content"
+   */
+  id?: string;
+}
+
+const SKIP_NAV_ID = "skip-nav-content";
+const { id = SKIP_NAV_ID, class: className, ...rest } = Astro.props;
+const slots = skipNavRecipe();
+---
+
+<a
+  {...rest}
+  class={slots.link({ className })}
+  data-part="link"
+  data-scope="skip-nav"
+  href={`#${id}`}
+>
+  <slot>Skip to content</slot>
+</a>

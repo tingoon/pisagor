@@ -1,0 +1,55 @@
+---
+import type { StatVariantProps } from "@pisagor/recipes/stat";
+import type { HTMLAttributes } from "astro/types";
+import StatDescription from "./stat-description.astro";
+import StatLabel from "./stat-label.astro";
+import StatRoot from "./stat-root.astro";
+import StatTrend from "./stat-trend.astro";
+import StatValue from "./stat-value.astro";
+
+interface Props extends HTMLAttributes<"div">, StatVariantProps {
+  /** Metric label. */
+  label?: string;
+  /** Primary metric value. */
+  value?: string;
+  /** Supporting copy below the value. */
+  description?: string;
+}
+
+const { variant = "outline", label, value, description, ...rest } = Astro.props;
+const hasLabel = Astro.slots.has("label") || label !== undefined;
+const hasValue = Astro.slots.has("value") || value !== undefined;
+const hasDescription = Astro.slots.has("description") || description !== undefined;
+const hasTrend = Astro.slots.has("trend");
+---
+
+<StatRoot {...rest} variant={variant}>
+  {
+    hasLabel && (
+      <StatLabel>
+        {label ?? <slot name="label" />}
+      </StatLabel>
+    )
+  }
+  {
+    hasValue && (
+      <StatValue>
+        {value ?? <slot name="value" />}
+      </StatValue>
+    )
+  }
+  {
+    hasDescription && (
+      <StatDescription>
+        {description ?? <slot name="description" />}
+      </StatDescription>
+    )
+  }
+  {
+    hasTrend && (
+      <StatTrend>
+        <slot name="trend" />
+      </StatTrend>
+    )
+  }
+</StatRoot>

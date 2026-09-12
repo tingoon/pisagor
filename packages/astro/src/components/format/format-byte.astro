@@ -1,0 +1,42 @@
+---
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"span"> {
+  /** Byte value to format. */
+  value: number;
+  /** BCP 47 locale. Defaults to the runtime default locale. */
+  locale?: string;
+  /** Unit display style for `Intl.NumberFormat`. */
+  unitDisplay?: Intl.NumberFormatOptions["unitDisplay"];
+}
+
+const UNITS = ["byte", "kilobyte", "megabyte", "gigabyte", "terabyte", "petabyte"] as const;
+
+function formatBytes(
+  value: number,
+  locale: string | undefined,
+  unitDisplay: Intl.NumberFormatOptions["unitDisplay"],
+): string {
+  let amount = value;
+  let unitIndex = 0;
+
+  while (Math.abs(amount) >= 1000 && unitIndex < UNITS.length - 1) {
+    amount /= 1000;
+    unitIndex += 1;
+  }
+
+  return new Intl.NumberFormat(locale, {
+    maximumFractionDigits: 2,
+    style: "unit",
+    unit: UNITS[unitIndex],
+    unitDisplay,
+  }).format(amount);
+}
+
+const { value, locale, unitDisplay = "short", class: className, ...rest } = Astro.props;
+const formatted = formatBytes(value, locale, unitDisplay);
+---
+
+<span {...rest} class={className} data-part="root" data-scope="format">
+  {formatted}
+</span>

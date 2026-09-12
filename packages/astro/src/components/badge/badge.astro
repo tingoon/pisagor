@@ -1,0 +1,19 @@
+---
+import { type BadgeVariantProps, badgeRecipe } from "@pisagor/recipes/badge";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"span"> & BadgeVariantProps;
+
+const { pill = false, size = "md", variant = "default", class: className, ...rest } = Astro.props;
+---
+
+<span
+  {...rest}
+  class={badgeRecipe({ className, pill, size, variant })}
+  data-part="root"
+  data-scope="badge"
+  data-size={size}
+  data-variant={variant}
+>
+  <slot />
+</span>

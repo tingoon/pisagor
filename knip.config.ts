@@ -5,6 +5,9 @@ export default defineConfig({
     ".": {
       entry: ["repomix.config.ts", "taze.config.ts"],
     },
+    "apps/astro": {
+      entry: [".storybook/**/*", "src/**/*", "../../packages/astro/**/*.stories.@(ts|tsx)"],
+    },
     "apps/react": {
       entry: [
         ".storybook/**/*",
@@ -22,6 +25,12 @@ export default defineConfig({
         "../../packages/vue-charts/**/*.stories.@(ts|tsx)",
         "../../packages/vue-form/**/*.stories.@(ts|tsx)",
       ],
+    },
+    "packages/astro": {
+      entry: ["src/**/*"],
+      ignoreIssues: {
+        "src/**/*.stories.ts": ["unresolved", "dependencies", "unlisted"],
+      },
     },
     "packages/react": {
       entry: ["src/**/*"],

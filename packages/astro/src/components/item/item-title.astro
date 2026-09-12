@@ -1,0 +1,13 @@
+---
+import { itemRecipe } from "@pisagor/recipes/item";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"div">;
+
+const { class: className, ...rest } = Astro.props;
+const slots = itemRecipe();
+---
+
+<div {...rest} class={slots.title({ className })} data-part="title" data-scope="item">
+  <slot />
+</div>

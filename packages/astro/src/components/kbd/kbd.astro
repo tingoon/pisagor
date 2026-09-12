@@ -1,0 +1,17 @@
+---
+import { type KbdVariantProps, kbdRecipe } from "@pisagor/recipes/kbd";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"kbd"> & KbdVariantProps;
+
+const { variant = "default", class: className, ...rest } = Astro.props;
+---
+
+<kbd
+  {...rest}
+  class={kbdRecipe({ className, variant })}
+  data-part="root"
+  data-scope="kbd"
+>
+  <slot />
+</kbd>

@@ -1,0 +1,22 @@
+---
+import { cardRecipe } from "@pisagor/recipes/card";
+import type { HTMLAttributes } from "astro/types";
+import CardDescription from "./card-description.astro";
+import CardTitle from "./card-title.astro";
+
+interface Props extends HTMLAttributes<"div"> {
+  /** The description of the card */
+  description?: string;
+  /** The title of the card */
+  title?: string;
+}
+
+const { description, title, class: className, ...rest } = Astro.props;
+const slots = cardRecipe();
+---
+
+<div {...rest} class={slots.header({ className })} data-part="header" data-scope="card">
+  {title && <CardTitle>{title}</CardTitle>}
+  {description && <CardDescription>{description}</CardDescription>}
+  <slot />
+</div>

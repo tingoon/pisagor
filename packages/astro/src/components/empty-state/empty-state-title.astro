@@ -1,0 +1,13 @@
+---
+import { emptyStateRecipe } from "@pisagor/recipes/empty-state";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"h3">;
+
+const { class: className, ...rest } = Astro.props;
+const slots = emptyStateRecipe();
+---
+
+<h3 {...rest} class={slots.title({ className })} data-part="title" data-scope="empty-state">
+  <slot />
+</h3>

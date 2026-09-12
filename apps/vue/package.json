@@ -11,17 +11,17 @@
   "description": "Vue Storybook for @pisagor/vue package stories.",
   "devDependencies": {
     "@pisagor/tsconfig": "workspace:*",
-    "@storybook/addon-a11y": "^10.5.10",
-    "@storybook/addon-docs": "^10.5.10",
+    "@storybook/addon-a11y": "^10.6.0",
+    "@storybook/addon-docs": "^10.6.0",
     "@storybook/addon-mcp": "^0.7.0",
-    "@storybook/vue3-vite": "^10.5.10",
+    "@storybook/vue3-vite": "^10.6.0",
     "@tailwindcss/vite": "catalog:",
     "@vitejs/plugin-vue": "catalog:",
-    "storybook": "^10.5.10",
+    "storybook": "^10.6.0",
     "tailwindcss": "catalog:",
     "vite": "catalog:"
   },
-  "name": "vue-storybook",
+  "name": "vue-stories",
   "private": true,
   "scripts": {
     "build": "storybook build",

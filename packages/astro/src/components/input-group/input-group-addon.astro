@@ -1,0 +1,22 @@
+---
+import {
+  type InputGroupAddonVariantProps,
+  inputGroupAddonRecipe,
+} from "@pisagor/recipes/input-group";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"div"> & InputGroupAddonVariantProps;
+
+const { align = "inline-start", class: className, ...rest } = Astro.props;
+---
+
+<div
+  {...rest}
+  class={inputGroupAddonRecipe({ align, className })}
+  data-align={align}
+  data-part="addon"
+  data-scope="input-group"
+  role="group"
+>
+  <slot />
+</div>

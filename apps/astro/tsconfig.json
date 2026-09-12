@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "#/storybook/*": ["./.storybook/*"]
+    },
+    "types": ["astro/client", "vite/client", "node"]
+  },
+  "extends": "@pisagor/tsconfig/astro",
+  "include": [
+    "src",
+    ".storybook",
+    "vite.config.ts",
+    "astro.config.ts",
+    "env.d.ts",
+    "../../packages/astro/src/**/*.stories.ts"
+  ]
+}

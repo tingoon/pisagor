@@ -1,0 +1,17 @@
+---
+import { visuallyHiddenRecipe } from "@pisagor/recipes/visually-hidden";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"span">;
+
+const { class: className, ...rest } = Astro.props;
+---
+
+<span
+  {...rest}
+  class={visuallyHiddenRecipe({ className })}
+  data-part="root"
+  data-scope="visually-hidden"
+>
+  <slot />
+</span>

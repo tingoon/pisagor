@@ -1,0 +1,52 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import EmptyStateActions from "./empty-state-actions.astro";
+import EmptyStateDescription from "./empty-state-description.astro";
+import EmptyStateMedia from "./empty-state-media.astro";
+import EmptyStateRoot from "./empty-state-root.astro";
+import EmptyStateTitle from "./empty-state-title.astro";
+
+interface Props extends Omit<HTMLAttributes<"div">, "title"> {
+  /** Primary heading. */
+  title?: string;
+  /** Supporting copy. */
+  description?: string;
+}
+
+const { title, description, ...rest } = Astro.props;
+const hasMedia = Astro.slots.has("media");
+const hasActions = Astro.slots.has("actions");
+const hasTitle = Astro.slots.has("title") || title !== undefined;
+const hasDescription = Astro.slots.has("description") || description !== undefined;
+---
+
+<EmptyStateRoot {...rest}>
+  {
+    hasMedia && (
+      <EmptyStateMedia>
+        <slot name="media" />
+      </EmptyStateMedia>
+    )
+  }
+  {
+    hasTitle && (
+      <EmptyStateTitle>
+        {title ?? <slot name="title" />}
+      </EmptyStateTitle>
+    )
+  }
+  {
+    hasDescription && (
+      <EmptyStateDescription>
+        {description ?? <slot name="description" />}
+      </EmptyStateDescription>
+    )
+  }
+  {
+    hasActions && (
+      <EmptyStateActions>
+        <slot name="actions" />
+      </EmptyStateActions>
+    )
+  }
+</EmptyStateRoot>

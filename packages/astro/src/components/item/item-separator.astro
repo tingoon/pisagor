@@ -1,0 +1,18 @@
+---
+import { itemRecipe } from "@pisagor/recipes/item";
+import type { HTMLAttributes } from "astro/types";
+import Separator from "../separator/separator.astro";
+
+type Props = HTMLAttributes<"div">;
+
+const { class: className, ...rest } = Astro.props;
+const slots = itemRecipe();
+---
+
+<Separator
+  {...rest}
+  class={slots.separator({ className })}
+  data-part="separator"
+  data-scope="item"
+  orientation="horizontal"
+/>

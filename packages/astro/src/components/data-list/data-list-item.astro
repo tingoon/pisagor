@@ -1,0 +1,37 @@
+---
+import { dataListItemRecipe } from "@pisagor/recipes/data-list";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
+  /** Value rendered as `dd`. */
+  value?: string;
+}
+
+const { value, class: className, ...rest } = Astro.props;
+const slots = dataListItemRecipe();
+const hasLabel = Astro.slots.has("default");
+---
+
+<div {...rest} class={slots.base({ className })} data-part="item" data-scope="data-list">
+  {
+    hasLabel && (
+      <dt class={slots.label()} data-part="item-label" data-scope="data-list">
+        <slot />
+      </dt>
+    )
+  }
+  {
+    value !== undefined && (
+      <dd class={slots.value()} data-part="item-value" data-scope="data-list">
+        {value}
+      </dd>
+    )
+  }
+  {
+    Astro.slots.has("value") && (
+      <dd class={slots.value()} data-part="item-value" data-scope="data-list">
+        <slot name="value" />
+      </dd>
+    )
+  }
+</div>

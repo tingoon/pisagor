@@ -1,0 +1,105 @@
+---
+import { progressRecipe } from "@pisagor/recipes/progress";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
+  /**
+   * The orientation of the progress bar.
+   *
+   * @defaultValue "horizontal"
+   */
+  orientation?: "horizontal" | "vertical";
+  /**
+   * Whether to show indeterminate progress.
+   *
+   * @defaultValue false
+   */
+  indeterminate?: boolean;
+  /**
+   * When true, renders the numeric value text beside the label.
+   */
+  isValueVisible?: boolean;
+  /**
+   * The value of the progress bar.
+   *
+   * @defaultValue 0
+   */
+  value?: number;
+  /**
+   * The minimum value.
+   *
+   * @defaultValue 0
+   */
+  min?: number;
+  /**
+   * The maximum value.
+   *
+   * @defaultValue 100
+   */
+  max?: number;
+  /** Optional label rendered above the progress bar. */
+  label?: string;
+}
+
+const {
+  orientation = "horizontal",
+  indeterminate = false,
+  isValueVisible = false,
+  value = 0,
+  min = 0,
+  max = 100,
+  label,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const slots = progressRecipe();
+const showHeader = Boolean(label) || isValueVisible;
+const clamped = Math.min(Math.max(value, min), max);
+const percent = max === min ? 0 : ((clamped - min) / (max - min)) * 100;
+const state = indeterminate ? "indeterminate" : "loading";
+const rangeStyle = orientation === "horizontal" ? `width: ${percent}%` : `height: ${percent}%`;
+---
+
+<div
+  {...rest}
+  aria-valuemax={indeterminate ? undefined : max}
+  aria-valuemin={indeterminate ? undefined : min}
+  aria-valuenow={indeterminate ? undefined : clamped}
+  class={slots.base({ className })}
+  data-orientation={orientation}
+  data-part="root"
+  data-scope="progress"
+  data-state={state}
+  role="progressbar"
+>
+  {
+    showHeader && (
+      <div class={slots.header()} data-part="header" data-scope="progress">
+        {label ? <span>{label}</span> : null}
+        {isValueVisible && !indeterminate ? (
+          <span class={slots.value()} data-part="value" data-scope="progress">
+            {Math.round(percent)}%
+          </span>
+        ) : null}
+      </div>
+    )
+  }
+  <slot />
+  <div
+    class={slots.track()}
+    data-orientation={orientation}
+    data-part="track"
+    data-scope="progress"
+  >
+    <div
+      class={slots.range()}
+      data-orientation={orientation}
+      data-part="range"
+      data-scope="progress"
+      data-state={state}
+      style={indeterminate ? undefined : rangeStyle}
+    >
+    </div>
+  </div>
+</div>

@@ -1,0 +1,13 @@
+---
+import { frameRecipe } from "@pisagor/recipes/frame";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"div">;
+
+const { class: className, ...rest } = Astro.props;
+const slots = frameRecipe();
+---
+
+<div {...rest} class={slots.base({ className })} data-part="root" data-scope="frame">
+  <slot />
+</div>

@@ -1,0 +1,13 @@
+---
+import { breadcrumbItemRecipe } from "@pisagor/recipes/breadcrumb";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"a">;
+
+const { class: className, ...rest } = Astro.props;
+const slots = breadcrumbItemRecipe();
+---
+
+<a {...rest} class={slots.link({ className })} data-part="link" data-scope="breadcrumb">
+  <slot />
+</a>

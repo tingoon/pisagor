@@ -1,0 +1,13 @@
+---
+import { alertRecipe } from "@pisagor/recipes/alert";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"div">;
+
+const { class: className, ...rest } = Astro.props;
+const slots = alertRecipe();
+---
+
+<div {...rest} class={slots.title({ className })} data-part="title" data-scope="alert">
+  <slot />
+</div>

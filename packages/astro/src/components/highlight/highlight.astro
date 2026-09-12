@@ -1,0 +1,95 @@
+---
+import { highlightRecipe } from "@pisagor/recipes/highlight";
+import type { HTMLAttributes } from "astro/types";
+
+interface HighlightChunk {
+  match: boolean;
+  text: string;
+}
+
+interface Props extends HTMLAttributes<"mark"> {
+  /** Text to search within. */
+  text: string;
+  /** Query string or list of query strings to highlight. */
+  query: string | string[];
+  /**
+   * Whether matching is case-insensitive.
+   *
+   * @defaultValue true
+   */
+  ignoreCase?: boolean;
+  /**
+   * Whether to highlight every match or only the first.
+   *
+   * @defaultValue true
+   */
+  matchAll?: boolean;
+}
+
+function escapeRegExp(value: string): string {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function getChunks(
+  text: string,
+  query: string | string[],
+  ignoreCase: boolean,
+  matchAll: boolean,
+): HighlightChunk[] {
+  const queries = (Array.isArray(query) ? query : [query])
+    .map((item) => item.trim())
+    .filter(Boolean);
+
+  if (queries.length === 0 || text.length === 0) {
+    return [{ match: false, text }];
+  }
+
+  const flags = ignoreCase ? "gi" : "g";
+  const pattern = new RegExp(queries.map(escapeRegExp).join("|"), flags);
+  const chunks: HighlightChunk[] = [];
+  let lastIndex = 0;
+  let match = pattern.exec(text);
+
+  while (match) {
+    if (match.index > lastIndex) {
+      chunks.push({ match: false, text: text.slice(lastIndex, match.index) });
+    }
+
+    chunks.push({ match: true, text: match[0] });
+    lastIndex = match.index + match[0].length;
+
+    if (!matchAll) {
+      break;
+    }
+
+    if (match[0].length === 0) {
+      pattern.lastIndex += 1;
+    }
+
+    match = pattern.exec(text);
+  }
+
+  if (lastIndex < text.length) {
+    chunks.push({ match: false, text: text.slice(lastIndex) });
+  }
+
+  return chunks;
+}
+
+const { text, query, ignoreCase = true, matchAll = true, class: className, ...rest } = Astro.props;
+
+const chunks = getChunks(text, query, ignoreCase, matchAll);
+const markClass = highlightRecipe({ className });
+---
+
+{
+  chunks.map((chunk) =>
+    chunk.match ? (
+      <mark {...rest} class={markClass} data-part="root" data-scope="highlight">
+        {chunk.text}
+      </mark>
+    ) : (
+      chunk.text
+    ),
+  )
+}

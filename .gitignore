@@ -24,6 +24,7 @@ logs
 # caches & tooling
 *.tsbuildinfo
 .turbo/
+.astro/
 
 # OS
 .DS_Store

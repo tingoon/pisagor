@@ -1,0 +1,31 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import DataListItem from "./data-list-item.astro";
+import DataListRoot from "./data-list-root.astro";
+
+interface DataListPresetItem {
+  label: string;
+  value: string;
+}
+
+interface Props extends HTMLAttributes<"dl"> {
+  /**
+   * The orientation of the data list.
+   *
+   * @defaultValue "horizontal"
+   */
+  orientation?: "horizontal" | "vertical";
+  items?: DataListPresetItem[];
+}
+
+const { orientation = "horizontal", items = [], ...rest } = Astro.props;
+---
+
+<DataListRoot {...rest} orientation={orientation}>
+  {
+    items.map((item) => (
+      <DataListItem value={item.value}>{item.label}</DataListItem>
+    ))
+  }
+  <slot />
+</DataListRoot>

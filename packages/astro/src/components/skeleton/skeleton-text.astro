@@ -1,0 +1,22 @@
+---
+import { skeletonRecipe } from "@pisagor/recipes/skeleton";
+import type { HTMLAttributes } from "astro/types";
+
+interface Props extends HTMLAttributes<"div"> {
+  /**
+   * The number of lines of the skeleton text.
+   *
+   * @defaultValue 2
+   */
+  lines?: number;
+}
+
+const { lines = 2, class: className, ...rest } = Astro.props;
+const slots = skeletonRecipe();
+---
+
+<div {...rest} class={slots.text({ className })} data-part="text" data-scope="skeleton">
+  {Array.from({ length: lines }).map(() => (
+    <div class={slots.line()} />
+  ))}
+</div>

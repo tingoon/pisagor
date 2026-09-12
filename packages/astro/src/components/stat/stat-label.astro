@@ -1,0 +1,13 @@
+---
+import { statRecipe } from "@pisagor/recipes/stat";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"div">;
+
+const { class: className, ...rest } = Astro.props;
+const slots = statRecipe();
+---
+
+<div {...rest} class={slots.label({ className })} data-part="label" data-scope="stat">
+  <slot />
+</div>

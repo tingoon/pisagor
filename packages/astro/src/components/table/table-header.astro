@@ -1,0 +1,13 @@
+---
+import { tableRecipe } from "@pisagor/recipes/table";
+import type { HTMLAttributes } from "astro/types";
+
+type Props = HTMLAttributes<"thead">;
+
+const { class: className, ...rest } = Astro.props;
+const slots = tableRecipe();
+---
+
+<thead {...rest} class={slots.header({ className })} data-part="header" data-scope="table">
+  <slot />
+</thead>

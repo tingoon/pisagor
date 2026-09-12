@@ -1,0 +1,26 @@
+---
+import type { ButtonVariantProps } from "@pisagor/recipes/button";
+import {
+  type InputGroupButtonVariantProps,
+  inputGroupButtonRecipe,
+} from "@pisagor/recipes/input-group";
+import type { HTMLAttributes } from "astro/types";
+import Button from "../button/button.astro";
+
+type Props = Omit<HTMLAttributes<"button"> & ButtonVariantProps, "size"> &
+  InputGroupButtonVariantProps;
+
+const { size = "xs", variant = "ghost", class: className, ...rest } = Astro.props;
+---
+
+<Button
+  {...rest}
+  class={inputGroupButtonRecipe({ className, size })}
+  data-part="button"
+  data-scope="input-group"
+  data-size={size}
+  size={size}
+  variant={variant}
+>
+  <slot />
+</Button>
