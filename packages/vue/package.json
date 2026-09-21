@@ -5,8 +5,8 @@
   "dependencies": {
     "@ark-ui/vue": "^5.39.2",
     "@phosphor-icons/vue": "^2.2.1",
-    "@pisagor/recipes": "^0.1.0",
-    "@pisagor/tokens": "^0.1.0",
+    "@pisagor/recipes": "^0.2.0",
+    "@pisagor/tokens": "^0.2.0",
     "@pisagor/utils": "^0.1.0",
     "@tailwindcss/typography": "^0.5.20",
     "@tanstack/vue-table": "^9.2.4",
@@ -55,5 +55,5 @@
     "**/*.css"
   ],
   "type": "module",
-  "version": "0.1.1"
+  "version": "0.2.0"
 }

@@ -3,7 +3,7 @@
     "url": "https://github.com/tingoon/pisagor/issues"
   },
   "dependencies": {
-    "@pisagor/react": "^0.1.1",
+    "@pisagor/react": "^0.2.0",
     "@tanstack/react-form": "^1.33.5"
   },
   "description": "Form fields and TanStack Form integration for Pisagor React.",
@@ -45,5 +45,5 @@
     "**/*.css"
   ],
   "type": "module",
-  "version": "0.1.0"
+  "version": "0.1.1"
 }

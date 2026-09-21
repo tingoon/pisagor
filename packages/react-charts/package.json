@@ -3,8 +3,8 @@
     "url": "https://github.com/tingoon/pisagor/issues"
   },
   "dependencies": {
-    "@pisagor/react": "^0.1.1",
-    "@pisagor/recipes": "^0.1.0",
+    "@pisagor/react": "^0.2.0",
+    "@pisagor/recipes": "^0.2.0",
     "@pisagor/utils": "^0.1.0",
     "recharts": "^3.10.1"
   },
@@ -45,5 +45,5 @@
     "**/*.css"
   ],
   "type": "module",
-  "version": "0.1.1"
+  "version": "0.1.2"
 }
