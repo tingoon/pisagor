@@ -284,6 +284,7 @@ Recipes (`tv()`) are owned by **`@pisagor/recipes`**. Component packages import 
 
 - Import from the recipe subpath: `import { buttonRecipe, type ButtonVariantProps } from "@pisagor/recipes/button"`. Prefer `@pisagor/recipes/<name>` over the root barrel for a tight import graph.
 - Shared form-control shells: `import { formControlShellRecipe, … } from "@pisagor/recipes/form-control"`.
+- Pass `surfaceVariant: useFormControlSurface()` into shell recipes so soft fills stay visible on muted Surface / Frame chrome. Do **not** auto-resolve primary/secondary shell `variant` from Surface.
 - Prefer recipe-exported `{Name}VariantProps` / slot types over re-deriving `VariantProps<typeof …>` in the component when the recipe already exports them.
 - Mirror recipe `defaultVariants` in destructuring defaults; document those props with TSDoc `@defaultValue`.
 - **`cn()`:** one logical concern per string; `className` last.

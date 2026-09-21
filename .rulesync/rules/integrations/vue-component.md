@@ -262,17 +262,20 @@ Form-control shells default to **`variant: "primary"`**. Resolve as:
 
 ```ts
 const resolved = {
-  surfaceVariant: undefined,
+  surfaceVariant: useFormControlSurface(),
   variant: (variantProp) ?? ("primary" as FormControlVariant),
 };
-const shellArgs = { variant: resolved.variant };
+const shellArgs = {
+  surfaceVariant: resolved.surfaceVariant,
+  variant: resolved.variant,
+};
 const controlProps = { "data-variant": resolved.variant };
 ```
 
 - Local `type FormControlVariant = "primary" | "secondary"` — do not import a shared form-control module.
 - Import shell recipes from `@pisagor/recipes/form-control` (`formControlShellRecipe`, `formControlToggleRecipe`, …).
-- Pass `variant="secondary"` (or `controlVariant` on Clipboard) when the control sits on a muted surface.
-- Do **not** auto-resolve shell variant from `Surface` context.
+- Resolve **`surfaceVariant`** from `useFormControlSurface()` (nearest Surface / Frame) so soft fills stay visible on muted chrome.
+- Do **not** auto-resolve primary/secondary shell `variant` from Surface context — pass `variant="secondary"` (or `controlVariant` on Clipboard) only when intentionally opting into the quieter shell.
 
 ---
 
