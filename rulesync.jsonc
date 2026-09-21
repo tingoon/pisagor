@@ -8,6 +8,10 @@
       "source": "tingoon/agent-skills"
     },
     {
+      "skills": ["apple-design"],
+      "source": "emilkowalski/skills"
+    },
+    {
       "skills": ["turborepo"],
       "source": "vercel/turborepo"
     }
