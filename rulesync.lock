@@ -29,6 +29,19 @@
       "skillSelection": [
         "turborepo"
       ]
+    },
+    "emilkowalski/skills": {
+      "requestedRef": "main",
+      "resolvedRef": "85e8e2363b713506e1d5b6e07a0eb2da66be1bc3",
+      "resolvedAt": "2026-09-21T07:36:59.601Z",
+      "skills": {
+        "apple-design": {
+          "integrity": "sha256-79b75afd2538d394256f38f54b6b3815bb8e26bd5e3b33dbef8e858fd8ecbebf"
+        }
+      },
+      "skillSelection": [
+        "apple-design"
+      ]
     }
   }
 }
