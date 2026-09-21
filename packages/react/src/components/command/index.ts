@@ -23,6 +23,7 @@ export type {
   CommandListProps,
   CommandProps,
   CommandSeparatorProps,
+  CommandShortcutProps,
 } from "./command";
 
 export const Command = Object.assign(CommandRoot, {

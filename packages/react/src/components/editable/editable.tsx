@@ -14,6 +14,7 @@ import { editableRecipe } from "@pisagor/recipes/editable";
 
 import { cn } from "@pisagor/utils";
 import type { ButtonProps } from "../button";
+import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { EditableContext, useEditable } from "./editable.context";
 
 // #region Types
@@ -134,7 +135,7 @@ export function EditablePreview({
 }: EditablePreviewProps) {
   const { slots } = useEditable();
   const resolved = {
-    surfaceVariant: undefined,
+    surfaceVariant: useFormControlSurface(),
     variant: controlVariant ?? ("primary" as FormControlVariant),
   };
   const controlProps = { "data-variant": resolved.variant };

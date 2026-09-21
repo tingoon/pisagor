@@ -12,6 +12,7 @@ import { cn } from "@pisagor/utils";
 import { EditorContent, useEditor, useEditorState } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import { type ComponentProps, type ReactNode, useEffect, useMemo } from "react";
+import { useFormControlSurface } from "../components/surface/use-form-control-surface";
 import { Toggle } from "../components/toggle";
 import { VisuallyHidden } from "../components/visually-hidden";
 import { RichTextEditorContext, useRichTextEditorState } from "./rich-text-editor.context";
@@ -92,10 +93,13 @@ export function RichTextEditorRoot({
   ...rest
 }: RichTextEditorRootProps) {
   const resolved = {
-    surfaceVariant: undefined,
+    surfaceVariant: useFormControlSurface(),
     variant: variantProp ?? ("primary" as FormControlVariant),
   };
-  const shellArgs = { variant: resolved.variant };
+  const shellArgs = {
+    surfaceVariant: resolved.surfaceVariant,
+    variant: resolved.variant,
+  };
   const controlProps = { "data-variant": resolved.variant };
   const resolvedAriaLabel = ariaLabel ?? (id ? undefined : "Rich text editor");
   const slots = recipe();

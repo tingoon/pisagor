@@ -1,6 +1,7 @@
 import { ark } from "@ark-ui/react/factory";
 import { frameRecipe } from "@pisagor/recipes/frame";
 import type { ComponentProps } from "react";
+import { SurfaceContext } from "../surface/surface.context";
 import { FrameContext, useFrame } from "./frame.context";
 
 // #region Types
@@ -29,11 +30,18 @@ export function FrameRoot({ children, recipe = frameRecipe, className, ...rest }
   const slots = recipe();
 
   return (
-    <FrameContext value={{ slots }}>
-      <ark.div {...rest} className={slots.base({ className })} data-part="root" data-scope="frame">
-        {children}
-      </ark.div>
-    </FrameContext>
+    <SurfaceContext value={{ depth: 0, variant: "secondary" }}>
+      <FrameContext value={{ slots }}>
+        <ark.div
+          {...rest}
+          className={slots.base({ className })}
+          data-part="root"
+          data-scope="frame"
+        >
+          {children}
+        </ark.div>
+      </FrameContext>
+    </SurfaceContext>
   );
 }
 
@@ -42,7 +50,7 @@ export function FramePanel({ children, className, ...rest }: FramePanelProps) {
 
   return (
     <ark.div {...rest} className={slots.panel({ className })} data-part="panel" data-scope="frame">
-      {children}
+      <SurfaceContext value={{ depth: 1, variant: "default" }}>{children}</SurfaceContext>
     </ark.div>
   );
 }

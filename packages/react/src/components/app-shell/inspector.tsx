@@ -134,7 +134,7 @@ export function AppShellInspector({
           width={widthPx}
         />
       ) : null}
-      <div className={slots.inline()}>{children}</div>
+      <div className={slots.sideBody()}>{children}</div>
     </aside>
   );
 }

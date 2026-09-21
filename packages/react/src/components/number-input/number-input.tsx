@@ -12,6 +12,7 @@ import type { ComponentProps } from "react";
 import { Button } from "../button";
 import { Field } from "../field";
 import { Input, type InputProps } from "../input";
+import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { NumberInputContext, useNumberInput } from "./number-input.context";
 
 // #region Types
@@ -99,10 +100,13 @@ export function NumberInputControl({
 }: NumberInputControlProps) {
   const { slots } = useNumberInput();
   const resolved = {
-    surfaceVariant: undefined,
+    surfaceVariant: useFormControlSurface(),
     variant: variantProp ?? ("primary" as FormControlVariant),
   };
-  const shellArgs = { variant: resolved.variant };
+  const shellArgs = {
+    surfaceVariant: resolved.surfaceVariant,
+    variant: resolved.variant,
+  };
   const controlProps = { "data-variant": resolved.variant };
 
   return (

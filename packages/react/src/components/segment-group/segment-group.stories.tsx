@@ -34,7 +34,6 @@ const segmentItems = [
 
 export const Default = meta.story({
   args: {
-    className: "rounded-lg",
     defaultValue: "Profile",
     items: segmentItems,
   },
@@ -43,12 +42,7 @@ export const Default = meta.story({
 export const Variants = meta.story({
   render: () => (
     <div className="flex flex-col gap-2">
-      <SegmentGroup
-        className="rounded-lg"
-        defaultValue="Profile"
-        items={segmentItems}
-        variant="default"
-      />
+      <SegmentGroup defaultValue="Profile" items={segmentItems} variant="default" />
       <SegmentGroup defaultValue="Profile" items={segmentItems} variant="underline" />
       <SegmentGroup
         defaultValue="Profile"
@@ -62,7 +56,6 @@ export const Variants = meta.story({
 
 export const OrientationHorizontal = meta.story({
   args: {
-    className: "rounded-lg",
     defaultValue: "Profile",
     items: segmentItems,
     orientation: "horizontal",
@@ -71,7 +64,6 @@ export const OrientationHorizontal = meta.story({
 
 export const OrientationVertical = meta.story({
   args: {
-    className: "rounded-lg",
     defaultValue: "Profile",
     items: segmentItems,
     orientation: "vertical",
@@ -80,7 +72,6 @@ export const OrientationVertical = meta.story({
 
 export const DisabledItem = meta.story({
   args: {
-    className: "rounded-lg",
     defaultValue: "Profile",
     items: segmentItems.map((item) =>
       item.value === "Security" ? { ...item, disabled: true } : item,
@@ -93,16 +84,11 @@ export const CustomIndicator = meta.story({
     const items = ["Profile", "Account", "Security", "Notifications"];
     return (
       <SegmentGroup.Root
-        className="rounded-lg *:data-[slot=segment-group-indicator]:bg-primary/40"
+        className="*:data-[part=indicator]:bg-primary/40 *:data-[part=indicator]:shadow-none"
         defaultValue="Profile"
       >
         {items.map((item) => (
-          <SegmentGroup.Item
-            className="px-2 py-1.5 text-sm"
-            disabled={item === "Security"}
-            key={item}
-            value={item}
-          >
+          <SegmentGroup.Item disabled={item === "Security"} key={item} value={item}>
             {item}
           </SegmentGroup.Item>
         ))}
@@ -119,13 +105,11 @@ export const IndicatorOnHover = meta.story({
 
     return (
       <SegmentGroup.Root
-        className="rounded-lg"
         onValueChange={(value) => setValue(value ?? "Profile")}
         value={hoverValue ?? value}
       >
         {pages.map((page) => (
           <SegmentGroup.Item
-            className="px-2 py-1.5 text-sm"
             key={page}
             onClick={() => setValue(page)}
             onMouseEnter={() => setHoverValue(page)}
@@ -142,7 +126,6 @@ export const IndicatorOnHover = meta.story({
 
 export const Disabled = meta.story({
   args: {
-    className: "rounded-lg",
     defaultValue: "Profile",
     disabled: true,
     items: segmentItems,
@@ -153,14 +136,7 @@ export const Controlled = meta.story({
   render: () => {
     const [value, setValue] = useState<string | null>("Profile");
 
-    return (
-      <SegmentGroup
-        className="rounded-lg"
-        items={segmentItems}
-        onValueChange={setValue}
-        value={value}
-      />
-    );
+    return <SegmentGroup items={segmentItems} onValueChange={setValue} value={value} />;
   },
 });
 
@@ -175,9 +151,9 @@ export const Compound = meta.story({
   render: () => {
     const items = ["Profile", "Account", "Security", "Notifications"];
     return (
-      <SegmentGroup.Root className="rounded-lg" defaultValue="Profile">
+      <SegmentGroup.Root defaultValue="Profile">
         {items.map((item) => (
-          <SegmentGroup.Item className="px-2 py-1.5 text-sm" key={item} value={item}>
+          <SegmentGroup.Item key={item} value={item}>
             {item}
           </SegmentGroup.Item>
         ))}

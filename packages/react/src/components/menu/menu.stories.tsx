@@ -39,7 +39,7 @@ const meta = preview.meta({
 
 export const Default = meta.story({
   render: () => (
-    <div className="w-56 rounded-xl border bg-background p-1 shadow-xs/5">
+    <div className="w-56 rounded-xl border p-1 shadow-xs/5">
       <Menu aria-label="Account">
         <Menu.List>
           <Menu.Link active href="#profile">
@@ -64,7 +64,7 @@ export const Default = meta.story({
 
 export const WithGroups = meta.story({
   render: () => (
-    <div className="w-56 rounded-xl border bg-background p-1 shadow-xs/5">
+    <div className="w-56 rounded-xl border p-1 shadow-xs/5">
       <Menu aria-label="Application">
         <Menu.Group>
           <Menu.GroupLabel>Navigation</Menu.GroupLabel>

@@ -8,6 +8,7 @@ import { Switch as SwitchPrimitive } from "@ark-ui/react/switch";
 import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes/switch";
 
 import type { VariantClassNames } from "../../internal/types";
+import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { SwitchContext, useSwitch } from "./switch.context";
 
 // #region Types
@@ -48,10 +49,13 @@ function SwitchRoot({
   ...rest
 }: SwitchRootProps) {
   const resolved = {
-    surfaceVariant: undefined,
+    surfaceVariant: useFormControlSurface(),
     variant: variantProp ?? ("primary" as FormControlVariant),
   };
-  const shellArgs = { variant: resolved.variant };
+  const shellArgs = {
+    surfaceVariant: resolved.surfaceVariant,
+    variant: resolved.variant,
+  };
   const controlShellProps = { "data-variant": resolved.variant };
   const slots = recipe({ ...shellArgs });
 

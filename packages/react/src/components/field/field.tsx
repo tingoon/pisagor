@@ -16,7 +16,8 @@ import { formControlSeparatorRecipe } from "@pisagor/recipes/form-control";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
 import { Separator } from "../separator";
-import { FieldContext, useField } from "./field.context";
+import { useFormControlSurface } from "../surface/use-form-control-surface";
+import { FieldContext, useFieldSlots } from "./field.context";
 
 // #region Types
 export interface FieldRootProps extends FieldPrimitiveRootProps, FieldVariantProps {
@@ -105,7 +106,7 @@ export function FieldSet({ children, recipe = fieldRecipe, className, ...rest }:
 }
 
 export function FieldLegend({ variant = "legend", className, ...rest }: FieldLegendProps) {
-  const { slots } = useField();
+  const slots = useFieldSlots();
 
   return (
     <FieldsetPrimitive.Legend
@@ -139,7 +140,7 @@ export function FieldGroup({
 }
 
 export function FieldContent({ className, ...rest }: FieldContentProps) {
-  const { slots } = useField();
+  const slots = useFieldSlots();
 
   return (
     <ark.div
@@ -152,7 +153,7 @@ export function FieldContent({ className, ...rest }: FieldContentProps) {
 }
 
 export function FieldLabel({ className, ...rest }: FieldLabelProps) {
-  const { slots } = useField();
+  const slots = useFieldSlots();
 
   return <FieldPrimitive.Label {...rest} className={slots.label({ className })} />;
 }
@@ -162,7 +163,7 @@ export function FieldRequiredIndicator({
   className,
   ...rest
 }: FieldRequiredIndicatorProps) {
-  const { slots } = useField();
+  const slots = useFieldSlots();
 
   return (
     <FieldPrimitive.RequiredIndicator
@@ -176,7 +177,7 @@ export function FieldRequiredIndicator({
 }
 
 export function FieldTitle({ className, ...rest }: FieldTitleProps) {
-  const { slots } = useField();
+  const slots = useFieldSlots();
 
   return (
     <ark.div
@@ -189,7 +190,7 @@ export function FieldTitle({ className, ...rest }: FieldTitleProps) {
 }
 
 export function FieldDescription({ className, ...rest }: FieldDescriptionProps) {
-  const { slots } = useField();
+  const slots = useFieldSlots();
 
   return (
     <ark.p
@@ -202,7 +203,8 @@ export function FieldDescription({ className, ...rest }: FieldDescriptionProps) 
 }
 
 export function FieldSeparator({ children, className, ...rest }: FieldSeparatorProps) {
-  const { slots } = useField();
+  const slots = useFieldSlots();
+  const surfaceVariant = useFormControlSurface();
 
   return (
     <ark.div
@@ -215,20 +217,22 @@ export function FieldSeparator({ children, className, ...rest }: FieldSeparatorP
       <Separator className={slots.inline()} />
 
       {!!children && (
-        <span className={formControlSeparatorRecipe({ variant: "primary" })}>{children}</span>
+        <span className={formControlSeparatorRecipe({ surfaceVariant, variant: "primary" })}>
+          {children}
+        </span>
       )}
     </ark.div>
   );
 }
 
 export function FieldHelper({ className, ...rest }: FieldHelperProps) {
-  const { slots } = useField();
+  const slots = useFieldSlots();
 
   return <FieldPrimitive.HelperText {...rest} className={slots.helper({ className })} />;
 }
 
 export function FieldError({ className, ...rest }: FieldErrorProps) {
-  const { slots } = useField();
+  const slots = useFieldSlots();
 
   return <FieldPrimitive.ErrorText {...rest} className={slots.error({ className })} />;
 }

@@ -17,6 +17,7 @@ import { formControlZoneRecipe } from "@pisagor/recipes/form-control";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { Button } from "../button";
+import { useFormControlSurface } from "../surface/use-form-control-surface";
 import {
   FileUploadContext,
   FileUploadItemContext,
@@ -111,10 +112,13 @@ export function FileUploadDropzone({
   ...rest
 }: FileUploadDropzoneProps) {
   const resolved = {
-    surfaceVariant: undefined,
+    surfaceVariant: useFormControlSurface(),
     variant: variantProp ?? ("primary" as FormControlVariant),
   };
-  const shellArgs = { variant: resolved.variant };
+  const shellArgs = {
+    surfaceVariant: resolved.surfaceVariant,
+    variant: resolved.variant,
+  };
   const controlProps = { "data-variant": resolved.variant };
   const { slots } = useFileUpload();
 
