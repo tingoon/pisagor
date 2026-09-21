@@ -9,7 +9,6 @@ import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, Teleport, type VNodeChild } from "vue";
 import { Combobox, type ComboboxRootProps } from "../combobox";
 import { Dialog, type DialogContentProps } from "../dialog";
-import { DropdownMenu } from "../dropdown-menu";
 import type { InputProps } from "../input/input";
 import { InputGroup } from "../input-group";
 import { Separator } from "../separator";
@@ -379,14 +378,26 @@ export const CommandShortcut = defineComponent({
   name: "CommandShortcut",
   props: {
     class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    recipe: {
+      default: commandRecipe,
+      type: Function as PropType<typeof commandRecipe>,
+    },
   },
   setup(props, { attrs, slots }) {
-    return () =>
-      h(
-        DropdownMenu.Shortcut as ArkPart,
-        { ...attrs, class: props.class, dataPart: "shortcut", dataScope: "command" },
+    return () => {
+      const variantSlots = props.recipe();
+
+      return h(
+        "span",
+        {
+          ...attrs,
+          class: variantSlots.shortcut({ class: props.class }),
+          "data-part": "shortcut",
+          "data-scope": "command",
+        },
         slots.default?.(),
       );
+    };
   },
 });
 CommandShortcut.displayName = "Command.Shortcut";

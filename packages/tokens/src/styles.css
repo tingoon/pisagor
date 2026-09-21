@@ -1,4 +1,5 @@
 @custom-variant dark (&:is(.dark *));
+@custom-variant transparency-reduce (@media (prefers-reduced-transparency: reduce));
 
 @theme inline {
   --font-sans: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
@@ -19,10 +20,10 @@
   --duration-slow: var(--motion-duration-slow);
   --ease-out: var(--motion-ease-out);
   --ease-emphasized: var(--motion-ease-emphasized);
-  --z-dropdown: var(--layer-dropdown);
-  --z-popover: var(--layer-popover);
-  --z-modal: var(--layer-modal);
-  --z-toast: var(--layer-toast);
+  --z-index-dropdown: var(--layer-dropdown);
+  --z-index-popover: var(--layer-popover);
+  --z-index-modal: var(--layer-modal);
+  --z-index-toast: var(--layer-toast);
   --breakpoint-md: 48rem;
   --color-ring: var(--ring);
   --color-input: var(--input);
@@ -140,12 +141,12 @@
 }
 
 :root {
-  --radius: 0.5rem;
-  --elevation-1: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --elevation-2: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --elevation-3: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --elevation-4: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --motion-duration-fast: 150ms;
+  --radius: 0.75rem;
+  --elevation-1: 0 0.5px 1px 0 rgb(0 0 0 / 0.04), 0 1px 2px 0 rgb(0 0 0 / 0.04);
+  --elevation-2: 0 1px 2px 0 rgb(0 0 0 / 0.04), 0 2px 8px -2px rgb(0 0 0 / 0.08);
+  --elevation-3: 0 2px 4px 0 rgb(0 0 0 / 0.04), 0 8px 24px -4px rgb(0 0 0 / 0.1);
+  --elevation-4: 0 4px 8px 0 rgb(0 0 0 / 0.04), 0 16px 40px -8px rgb(0 0 0 / 0.14);
+  --motion-duration-fast: 100ms;
   --motion-duration-normal: 200ms;
   --motion-duration-slow: 300ms;
   --motion-ease-out: cubic-bezier(0, 0, 0.2, 1);
@@ -154,7 +155,7 @@
   --layer-popover: 50;
   --layer-modal: 60;
   --layer-toast: 70;
-  --background: var(--color-white);
+  --background: var(--color-neutral-100);
   --foreground: var(--color-neutral-800);
   --card: var(--color-white);
   --card-foreground: var(--color-neutral-800);
@@ -162,30 +163,31 @@
   --popover-foreground: var(--color-neutral-800);
   --primary: var(--color-neutral-800);
   --primary-foreground: var(--color-neutral-50);
-  --secondary: var(--color-neutral-100);
+  /* Keep accent / muted / secondary a step darker than page chrome so selected & hover fills stay visible. */
+  --secondary: var(--color-neutral-200);
   --secondary-foreground: var(--color-neutral-800);
-  --muted: var(--color-neutral-100);
+  --muted: var(--color-neutral-200);
   --muted-foreground: var(--color-neutral-600);
-  --accent: var(--color-neutral-100);
+  --accent: var(--color-neutral-200);
   --accent-foreground: var(--color-neutral-800);
-  --destructive: var(--color-red-500);
-  --destructive-foreground: var(--color-red-700);
-  --info: var(--color-blue-500);
-  --info-foreground: var(--color-blue-700);
-  --success: var(--color-emerald-500);
-  --success-foreground: var(--color-emerald-700);
+  --destructive: var(--color-red-600);
+  --destructive-foreground: var(--color-white);
+  --info: var(--color-blue-600);
+  --info-foreground: var(--color-white);
+  --success: var(--color-emerald-600);
+  --success-foreground: var(--color-white);
   --warning: var(--color-amber-500);
-  --warning-foreground: var(--color-amber-700);
+  --warning-foreground: var(--color-neutral-950);
   --border: var(--color-neutral-200);
   --input: var(--color-neutral-200);
   --ring: var(--color-neutral-400);
 }
 
 .dark {
-  --elevation-1: 0 1px 2px 0 rgb(0 0 0 / 0.4);
-  --elevation-2: 0 1px 3px 0 rgb(0 0 0 / 0.45), 0 1px 2px -1px rgb(0 0 0 / 0.4);
-  --elevation-3: 0 4px 6px -1px rgb(0 0 0 / 0.45), 0 2px 4px -2px rgb(0 0 0 / 0.4);
-  --elevation-4: 0 10px 15px -3px rgb(0 0 0 / 0.5), 0 4px 6px -4px rgb(0 0 0 / 0.45);
+  --elevation-1: 0 0.5px 1px 0 rgb(0 0 0 / 0.4), 0 1px 2px 0 rgb(0 0 0 / 0.32);
+  --elevation-2: 0 1px 2px 0 rgb(0 0 0 / 0.36), 0 2px 8px -2px rgb(0 0 0 / 0.48);
+  --elevation-3: 0 2px 4px 0 rgb(0 0 0 / 0.36), 0 8px 24px -4px rgb(0 0 0 / 0.56);
+  --elevation-4: 0 4px 8px 0 rgb(0 0 0 / 0.4), 0 16px 40px -8px rgb(0 0 0 / 0.64);
   --background: var(--color-neutral-950);
   --foreground: var(--color-neutral-100);
   --card: var(--color-neutral-900);
@@ -201,13 +203,13 @@
   --accent: var(--color-neutral-800);
   --accent-foreground: var(--color-neutral-100);
   --destructive: var(--color-red-500);
-  --destructive-foreground: var(--color-red-400);
+  --destructive-foreground: var(--color-white);
   --info: var(--color-blue-500);
-  --info-foreground: var(--color-blue-400);
+  --info-foreground: var(--color-white);
   --success: var(--color-emerald-500);
-  --success-foreground: var(--color-emerald-400);
+  --success-foreground: var(--color-white);
   --warning: var(--color-amber-500);
-  --warning-foreground: var(--color-amber-400);
+  --warning-foreground: var(--color-neutral-950);
   --border: var(--color-neutral-800);
   --input: var(--color-neutral-800);
   --ring: var(--color-neutral-500);
@@ -222,9 +224,10 @@
   }
   html {
     @apply antialiased;
+    font-optical-sizing: auto;
   }
   body {
-    @apply bg-background text-foreground flex min-h-svh flex-col font-sans;
+    @apply bg-background text-foreground flex min-h-svh flex-col font-sans leading-relaxed tracking-normal;
   }
   main {
     @apply flex-1 flex flex-col;

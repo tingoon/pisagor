@@ -1,5 +1,15 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
+const surfaceVariantOptions = {
+  default: "",
+  glass: "",
+  secondary: "",
+  tertiary: "",
+  transparent: "",
+} as const;
+
+const mutedSurfaces: Array<"secondary" | "tertiary" | "glass"> = ["secondary", "tertiary", "glass"];
+
 export const switchRecipe = tv({
   compoundVariants: [
     {
@@ -11,23 +21,37 @@ export const switchRecipe = tv({
     },
     {
       class: {
-        base: "data-[state=unchecked]:bg-muted/64",
-      },
-      surfaceVariant: "default",
-      variant: "secondary",
-    },
-    {
-      class: {
         base: "data-[state=unchecked]:bg-input dark:data-[state=unchecked]:bg-input",
       },
-      surfaceVariant: ["secondary", "tertiary"],
+      surfaceVariant: ["default", "transparent"],
+      variant: "primary",
+    },
+    {
+      class: {
+        base: "data-[state=unchecked]:bg-card dark:data-[state=unchecked]:bg-input",
+      },
+      surfaceVariant: mutedSurfaces,
+      variant: "primary",
+    },
+    {
+      class: {
+        base: "data-[state=unchecked]:bg-muted",
+      },
+      surfaceVariant: undefined,
       variant: "secondary",
     },
     {
       class: {
-        base: "data-[state=unchecked]:bg-muted/64",
+        base: "data-[state=unchecked]:bg-muted",
       },
-      surfaceVariant: undefined,
+      surfaceVariant: ["default", "transparent"],
+      variant: "secondary",
+    },
+    {
+      class: {
+        base: "data-[state=unchecked]:bg-card dark:data-[state=unchecked]:bg-input",
+      },
+      surfaceVariant: mutedSurfaces,
       variant: "secondary",
     },
   ],
@@ -43,11 +67,10 @@ export const switchRecipe = tv({
       "p-px",
       "inline-flex shrink-0 items-center",
       "rounded-full border border-transparent",
-      "transition-all",
+      "transition-all duration-slow ease-emphasized",
       "outline-hidden [[data-focus-visible],[data-invalid]]:ring-[3px]",
       "data-focus-visible:border-primary data-focus-visible:ring-ring/32",
       "data-invalid:border-destructive data-invalid:ring-destructive/24",
-      "dark:data-invalid:border-destructive-foreground dark:data-invalid:ring-destructive-foreground/20",
       "data-[state=checked]:bg-primary",
       "data-disabled:pointer-events-none data-disabled:opacity-64",
       "motion-reduce:transition-none!",
@@ -59,7 +82,7 @@ export const switchRecipe = tv({
       "bg-background",
       "rounded-full ring-0",
       "pointer-events-none",
-      "transition-transform",
+      "transition-transform duration-slow ease-emphasized",
       "data-[state=checked]:translate-x-[calc(var(--thumb-size)-4px)]",
       "rtl:data-[state=checked]:-translate-x-[calc(var(--thumb-size)-4px)]",
       "dark:data-[state=checked]:bg-primary-foreground",
@@ -70,12 +93,7 @@ export const switchRecipe = tv({
     ],
   },
   variants: {
-    surfaceVariant: {
-      default: "",
-      secondary: "",
-      tertiary: "",
-      transparent: "",
-    },
+    surfaceVariant: surfaceVariantOptions,
     variant: {
       primary: "",
       secondary: "",

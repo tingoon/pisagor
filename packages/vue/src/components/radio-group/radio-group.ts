@@ -4,6 +4,7 @@ import { radioGroupItemRecipe, radioGroupRecipe } from "@pisagor/recipes/radio-g
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { FieldLabel } from "../field/field";
+import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -107,12 +108,17 @@ export const RadioGroupItem = defineComponent({
     variant: { default: undefined, type: String as PropType<FormControlVariant> },
   },
   setup(props, { attrs, slots: children }) {
+    const surfaceVariant = useFormControlSurface();
+
     return () => {
       const resolved = {
-        surfaceVariant: undefined,
+        surfaceVariant,
         variant: props.variant ?? ("primary" as FormControlVariant),
       };
-      const shellArgs = { variant: resolved.variant };
+      const shellArgs = {
+        surfaceVariant: resolved.surfaceVariant,
+        variant: resolved.variant,
+      };
       const controlProps = { "data-variant": resolved.variant };
       const slots = props.itemRecipe();
 

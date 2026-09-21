@@ -19,12 +19,12 @@ export const LoginCard = defineComponent({
   },
   setup(props) {
     return () =>
-      h(Card as ArkPart, { class: cn("w-full", props.class) }, () => [
+      h(Card as ArkPart, { class: cn("mx-auto w-full max-w-md", props.class) }, () => [
         h(
           Card.Header as ArkPart,
           {
-            description: "Enter your email and check your inbox",
-            title: "Sign in to your account",
+            description: "Enter your email and we'll send a one-time code to sign you in.",
+            title: "Sign in",
           },
           () =>
             h(Card.Action as ArkPart, null, () =>
@@ -35,11 +35,11 @@ export const LoginCard = defineComponent({
           h(Field.Set as ArkPart, null, () =>
             h(Field as ArkPart, null, () => [
               h(Field.Label as ArkPart, null, () => "Email"),
-              h(Input as ArkPart, { placeholder: "john.doe@example.com" }),
+              h(Input as ArkPart, { placeholder: "you@example.com", type: "email" }),
             ]),
           ),
         ]),
-        h(Card.Footer as ArkPart, { class: "flex-col" }, () => [
+        h(Card.Footer as ArkPart, { class: "flex-col gap-2" }, () => [
           h(
             Button as ArkPart,
             { class: "w-full", size: "lg", type: "button" },
@@ -48,7 +48,7 @@ export const LoginCard = defineComponent({
           h(
             Button as ArkPart,
             { class: "w-full", size: "lg", type: "button", variant: "outline" },
-            () => [h(PhGlobe as ArkPart, { "aria-hidden": true }), "Sign in with Google"],
+            () => [h(PhGlobe as ArkPart, { "aria-hidden": true }), "Continue with Google"],
           ),
         ]),
       ]);

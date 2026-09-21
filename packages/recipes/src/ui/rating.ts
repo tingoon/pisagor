@@ -18,9 +18,12 @@ export const ratingRecipe = tv({
     item: [
       "inline-flex items-center justify-center",
       "rounded-md",
+      "transition-transform duration-fast ease-out",
+      "active:scale-[0.97]",
       "not-[[data-disabled],[data-readonly]]:cursor-pointer",
       "data-disabled:opacity-64 data-disabled:grayscale",
       "outline-hidden focus-visible:ring-current not-data-readonly:focus-visible:ring-[3px] focus-visible:ring-offset-1 focus-visible:ring-offset-background",
+      "motion-reduce:transition-none! motion-reduce:active:scale-100",
     ],
   },
 });

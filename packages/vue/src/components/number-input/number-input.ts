@@ -11,6 +11,7 @@ import { Button } from "../button/button";
 import { FieldLabel } from "../field/field";
 import { Input, type InputProps } from "../input/input";
 import { InputClearButton } from "../input/input-clear-button";
+import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -123,12 +124,17 @@ export const NumberInputControl = defineComponent({
     variant: { default: undefined, type: String as PropType<FormControlVariant> },
   },
   setup(props, { attrs, slots }) {
+    const surfaceVariant = useFormControlSurface();
+
     return () => {
       const resolved = {
-        surfaceVariant: undefined,
+        surfaceVariant,
         variant: props.variant ?? ("primary" as FormControlVariant),
       };
-      const shellArgs = { variant: resolved.variant };
+      const shellArgs = {
+        surfaceVariant: resolved.surfaceVariant,
+        variant: resolved.variant,
+      };
       const controlProps = { "data-variant": resolved.variant };
 
       return h(

@@ -9,6 +9,7 @@ import { formControlZoneRecipe } from "@pisagor/recipes/form-control";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { Button } from "../button";
+import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -101,12 +102,17 @@ export const FileUploadDropzone = defineComponent({
     variant: { default: undefined, type: String as PropType<FileUploadDropzoneProps["variant"]> },
   },
   setup(props, { attrs, slots }) {
+    const surfaceVariant = useFormControlSurface();
+
     return () => {
       const resolved = {
-        surfaceVariant: undefined,
+        surfaceVariant,
         variant: props.variant ?? ("primary" as FormControlVariant),
       };
-      const shellArgs = { variant: resolved.variant };
+      const shellArgs = {
+        surfaceVariant: resolved.surfaceVariant,
+        variant: resolved.variant,
+      };
       const controlProps = { "data-variant": resolved.variant };
       const variantSlots = props.recipe();
 

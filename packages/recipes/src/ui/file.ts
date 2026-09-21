@@ -9,13 +9,13 @@ export const fileRecipe = tv({
     base: [
       "group/file",
       "inline-flex w-full min-w-0 items-center gap-3",
-      "rounded-xl border bg-card p-2",
+      "rounded-2xl border border-border/50 bg-card p-2",
       "text-sm",
     ],
     content: ["min-w-0 flex-1 overflow-hidden"],
     media: [
       "flex shrink-0 items-center justify-center overflow-hidden",
-      "rounded-lg bg-muted text-muted-foreground",
+      "rounded-[calc(var(--radius-2xl)-(--spacing(2)))] bg-muted text-muted-foreground",
     ],
     meta: ["truncate text-muted-foreground text-xs"],
     name: ["truncate font-medium text-foreground"],

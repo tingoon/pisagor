@@ -8,6 +8,7 @@ type FormControlVariant = "primary" | "secondary";
 type ClassValue = Parameters<typeof cn>[0];
 
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
+import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 type ArkPart = Parameters<typeof h>[0];
 
@@ -51,9 +52,11 @@ export const Rating = defineComponent({
     variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
   },
   setup(props, { attrs }) {
+    const surfaceVariant = useFormControlSurface();
+
     return () => {
       const resolved = {
-        surfaceVariant: undefined,
+        surfaceVariant,
         variant: props.variant ?? ("primary" as FormControlVariant),
       };
       const slots = props.recipe();

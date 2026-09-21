@@ -21,6 +21,7 @@ import {
 import { cn } from "@pisagor/utils";
 import { defineComponent, Fragment, h, type PropType } from "vue";
 import { createContext } from "../../internal/utils/create-context";
+import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 // #region Types
 export interface TreeNodeType<T = unknown> {
@@ -546,6 +547,8 @@ export const TreeViewNodeCheckbox = defineComponent({
     },
   },
   setup(props, { attrs }) {
+    const surfaceVariant = useFormControlSurface();
+
     return () => {
       const variantSlots = props.itemRecipe();
 
@@ -553,7 +556,12 @@ export const TreeViewNodeCheckbox = defineComponent({
         TreeViewPrimitive.NodeCheckbox as ArkPart,
         {
           ...attrs,
-          class: cn(formControlToggleRecipe(), variantSlots.checkbox(), props.class, attrs.class),
+          class: cn(
+            formControlToggleRecipe({ surfaceVariant }),
+            variantSlots.checkbox(),
+            props.class,
+            attrs.class,
+          ),
         },
         () =>
           h(

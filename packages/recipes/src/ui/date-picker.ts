@@ -4,12 +4,12 @@ export const datePickerRecipe = tv({
   slots: {
     content: [
       "[--cell-size:--spacing(8)]",
-      "z-[calc(var(--z-popover)+var(--layer-index,0))]",
+      "z-[calc(var(--z-index-popover)+var(--layer-index,0))]",
       "w-fit min-w-72",
       "p-3",
       "bg-popover",
       "text-popover-foreground",
-      "rounded-xl border shadow-lg/5",
+      "rounded-2xl border border-border/50 shadow-md",
       "outline-hidden",
       "origin-(--transform-origin)",
       "data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
@@ -25,7 +25,6 @@ export const datePickerRecipe = tv({
     trigger: [
       "justify-start",
       "text-left data-placeholder-shown:[&>span]:text-muted-foreground",
-      "active:scale-100",
       "[&_svg:not([class*='text-'])]:opacity-64",
     ],
     valueText: ["font-medium text-sm"],

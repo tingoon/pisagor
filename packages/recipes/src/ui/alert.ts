@@ -20,13 +20,13 @@ export const alertRecipe = tv({
       "px-3.5 py-3",
       "grid w-full items-start gap-x-2 gap-y-0.5",
       "text-card-foreground text-sm",
-      "rounded-xl border",
+      "rounded-2xl border border-border/50",
       "has-[>svg]:has-[[data-scope=alert][data-part=action]]:grid-cols-[--spacing(4)_1fr_auto] has-[>svg]:grid-cols-[--spacing(4)_1fr]",
       "has-[>svg]:gap-x-2 [&_svg]:h-lh [&_svg]:w-4",
       "has-[[data-scope=alert][data-part=action]]:grid-cols-[1fr_auto]",
     ],
     description: ["flex flex-col gap-2.5", "text-muted-foreground", "[svg~&]:col-start-2"],
-    title: ["font-heading font-medium", "[svg~&]:col-start-2"],
+    title: ["font-heading font-medium tracking-tight", "[svg~&]:col-start-2"],
   },
   variants: {
     variant: {

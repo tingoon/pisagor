@@ -19,6 +19,7 @@ import { selectRecipe } from "@pisagor/recipes/select";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { Separator, type SeparatorProps } from "../separator";
+import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { SelectRootContext, useSelectRoot } from "./select.context";
 
 // #region Types
@@ -110,10 +111,13 @@ export function SelectTrigger({
 }: SelectTriggerProps) {
   const { slots = selectRecipe() } = useSelectRoot() ?? {};
   const resolved = {
-    surfaceVariant: undefined,
+    surfaceVariant: useFormControlSurface(),
     variant: variantProp ?? ("primary" as FormControlVariant),
   };
-  const shellArgs = { variant: resolved.variant };
+  const shellArgs = {
+    surfaceVariant: resolved.surfaceVariant,
+    variant: resolved.variant,
+  };
   const controlProps = { "data-variant": resolved.variant };
 
   return (

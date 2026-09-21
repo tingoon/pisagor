@@ -5,6 +5,7 @@ import { formControlSeparatorRecipe } from "@pisagor/recipes/form-control";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { Separator } from "../separator/separator";
+import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -294,9 +295,14 @@ export const FieldSeparator = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const surfaceVariant = useFormControlSurface();
+
     return () => {
-      const resolved = { surfaceVariant: undefined, variant: "primary" as FormControlVariant };
-      const shellArgs = { variant: resolved.variant };
+      const resolved = { surfaceVariant, variant: "primary" as FormControlVariant };
+      const shellArgs = {
+        surfaceVariant: resolved.surfaceVariant,
+        variant: resolved.variant,
+      };
       const children = slots.default?.();
       const variantSlots = props.recipe();
 

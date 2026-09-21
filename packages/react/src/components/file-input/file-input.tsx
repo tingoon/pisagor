@@ -11,6 +11,7 @@ import {
   InputGroupText,
   type InputGroupTextProps,
 } from "../input-group/input-group-core";
+import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { FileInputContext, useFileInput } from "./file-input.context";
 
 // #region Types
@@ -89,10 +90,13 @@ function FileInputRoot({
   ...rest
 }: FileInputRootProps) {
   const resolved = {
-    surfaceVariant: undefined,
+    surfaceVariant: useFormControlSurface(),
     variant: variantProp ?? ("primary" as FormControlVariant),
   };
-  const shellArgs = { variant: resolved.variant };
+  const shellArgs = {
+    surfaceVariant: resolved.surfaceVariant,
+    variant: resolved.variant,
+  };
   const controlProps = { "data-variant": resolved.variant };
   const slots = recipe();
 

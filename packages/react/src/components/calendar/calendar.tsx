@@ -30,6 +30,7 @@ import { formControlShellRecipe } from "@pisagor/recipes/form-control";
 
 import { cn } from "@pisagor/utils";
 import { Button, type ButtonProps } from "../button";
+import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { CalendarSlotsContext, useCalendar } from "./calendar.context";
 
 // #region Types
@@ -115,8 +116,14 @@ export interface CalendarProps extends CalendarRootProps {
 // #region Parts
 function useCalendarSelectShell(className?: string) {
   const { slots } = useCalendar();
-  const resolved = { surfaceVariant: undefined, variant: "primary" as FormControlVariant };
-  const shellArgs = { variant: resolved.variant };
+  const resolved = {
+    surfaceVariant: useFormControlSurface(),
+    variant: "primary" as FormControlVariant,
+  };
+  const shellArgs = {
+    surfaceVariant: resolved.surfaceVariant,
+    variant: resolved.variant,
+  };
   const controlProps = { "data-variant": resolved.variant };
 
   return {

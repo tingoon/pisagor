@@ -10,11 +10,11 @@ export const progressRecipe = tv({
     header: ["flex w-full items-center justify-between"],
     range: [
       "bg-primary",
-      "transition-all duration-300 ease-out",
+      "transition-all duration-slow ease-out",
       "data-[orientation=horizontal]:h-full",
       "data-[orientation=vertical]:h-full",
       "motion-reduce:animate-none! motion-reduce:transition-none!",
-      "data-[state=indeterminate]:w-1/3 data-[state=indeterminate]:animate-indeterminate! data-[state=indeterminate]:duration-100",
+      "data-[state=indeterminate]:w-1/3 data-[state=indeterminate]:animate-indeterminate! data-[state=indeterminate]:duration-fast",
     ],
     track: [
       "bg-input",

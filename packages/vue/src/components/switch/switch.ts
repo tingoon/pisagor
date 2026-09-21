@@ -2,6 +2,7 @@ import { Switch as SwitchPrimitive } from "@ark-ui/vue/switch";
 import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes/switch";
 import { defineComponent, h, type PropType } from "vue";
 import type { VariantClassNames } from "../../internal/types";
+import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -39,12 +40,17 @@ export const Switch = defineComponent({
     variant: { default: undefined, type: String as PropType<FormControlVariant> },
   },
   setup(props, { attrs, emit }) {
+    const surfaceVariant = useFormControlSurface();
+
     return () => {
       const resolved = {
-        surfaceVariant: undefined,
+        surfaceVariant,
         variant: props.variant ?? ("primary" as FormControlVariant),
       };
-      const shellArgs = { variant: resolved.variant };
+      const shellArgs = {
+        surfaceVariant: resolved.surfaceVariant,
+        variant: resolved.variant,
+      };
       const controlShellProps = { "data-variant": resolved.variant };
       const slots_ = props.recipe({ ...shellArgs });
 

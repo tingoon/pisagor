@@ -4,6 +4,7 @@ import { checkboxGroupRecipe, checkboxRecipe } from "@pisagor/recipes/checkbox";
 import { formControlToggleRecipe } from "@pisagor/recipes/form-control";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
+import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -78,12 +79,17 @@ export const CheckboxRoot = defineComponent({
     variant: { default: undefined, type: String as PropType<FormControlVariant> },
   },
   setup(props, { attrs, emit }) {
+    const surfaceVariant = useFormControlSurface();
+
     return () => {
       const resolved = {
-        surfaceVariant: undefined,
+        surfaceVariant,
         variant: props.variant ?? ("primary" as FormControlVariant),
       };
-      const shellArgs = { variant: resolved.variant };
+      const shellArgs = {
+        surfaceVariant: resolved.surfaceVariant,
+        variant: resolved.variant,
+      };
       const controlProps = { "data-variant": resolved.variant };
       const slots = props.recipe();
 

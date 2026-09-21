@@ -15,7 +15,6 @@ import type {
 } from "../combobox";
 import { Combobox } from "../combobox";
 import { Dialog, type DialogContentProps, type DialogTriggerProps } from "../dialog";
-import { DropdownMenu, type DropdownMenuShortcutProps } from "../dropdown-menu";
 import type { InputProps } from "../input";
 import { InputGroup } from "../input-group";
 import { Separator } from "../separator";
@@ -68,6 +67,8 @@ export interface CommandProps<T extends CollectionItem = CollectionItem>
 }
 
 export type CommandSeparatorProps = ComponentProps<"div">;
+
+export type CommandShortcutProps = ComponentProps<"span">;
 
 export type CommandFooterProps = ComponentProps<"div">;
 // #endregion
@@ -206,8 +207,17 @@ export function CommandSeparator({ className, ...rest }: CommandSeparatorProps) 
   );
 }
 
-export function CommandShortcut(props: DropdownMenuShortcutProps) {
-  return <DropdownMenu.Shortcut {...props} data-part="shortcut" data-scope="command" />;
+export function CommandShortcut({ className, ...rest }: CommandShortcutProps) {
+  const { slots } = useCommand();
+
+  return (
+    <span
+      {...rest}
+      className={slots.shortcut({ className })}
+      data-part="shortcut"
+      data-scope="command"
+    />
+  );
 }
 
 export function CommandFooter({ className, ...rest }: CommandFooterProps) {

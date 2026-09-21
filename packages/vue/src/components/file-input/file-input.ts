@@ -3,6 +3,7 @@ import { formControlGroupShellRecipe } from "@pisagor/recipes/form-control";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, ref } from "vue";
 import { InputGroupAddon, InputGroupButton, InputGroupText } from "../input-group/input-group-core";
+import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -94,6 +95,8 @@ export const FileInput = defineComponent({
     variant: { default: undefined, type: String as PropType<FormControlVariant> },
   },
   setup(props, { attrs }) {
+    const surfaceVariant = useFormControlSurface();
+
     const inputRef = ref<HTMLInputElement | null>(null);
     const fileLabel = ref<string>();
 
@@ -111,10 +114,13 @@ export const FileInput = defineComponent({
 
     return () => {
       const resolved = {
-        surfaceVariant: undefined,
+        surfaceVariant,
         variant: props.variant ?? ("primary" as FormControlVariant),
       };
-      const shellArgs = { variant: resolved.variant };
+      const shellArgs = {
+        surfaceVariant: resolved.surfaceVariant,
+        variant: resolved.variant,
+      };
       const controlProps = { "data-variant": resolved.variant };
       const slots = props.recipe();
 

@@ -10,6 +10,7 @@ import type { ChangeEventHandler, RefAttributes } from "react";
 import { useClearableInput } from "../../hooks";
 import type { VariantClassNames } from "../../internal/types";
 import { InputGroupRoot } from "../input-group/input-group-core";
+import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { InputClearAddon } from "./input-clear-button";
 
 // #region Types
@@ -71,7 +72,7 @@ export function Input({
   ...rest
 }: InputProps) {
   const resolved = {
-    surfaceVariant: undefined,
+    surfaceVariant: useFormControlSurface(),
     variant: variantProp ?? ("primary" as FormControlVariant),
   };
 
@@ -88,7 +89,10 @@ export function Input({
   });
 
   const skipClearable = !clearable || type === "file" || type === "password";
-  const shellArgs = { variant: resolved.variant };
+  const shellArgs = {
+    surfaceVariant: resolved.surfaceVariant,
+    variant: resolved.variant,
+  };
   const controlProps = { "data-variant": resolved.variant };
   const slots = recipe();
 

@@ -5,7 +5,7 @@ export function PopoverDialog() {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
-        <Button variant="outline">Open</Button>
+        <Button variant="outline">Open dialog</Button>
       </Dialog.Trigger>
       <Portal>
         <Dialog.Backdrop />
@@ -13,27 +13,28 @@ export function PopoverDialog() {
         <Dialog.Positioner>
           <Dialog.Content>
             <Dialog.Header>
-              <Dialog.Title>Popover inside dialog</Dialog.Title>
+              <Dialog.Title>Nested layers</Dialog.Title>
               <Dialog.Description>
-                Open the popover from the button below to see it layered above the dialog.
+                Open the popover from the button below — it stays anchored to its trigger above the
+                dialog.
               </Dialog.Description>
             </Dialog.Header>
             <Dialog.Body>
               <Popover>
                 <Popover.Trigger asChild>
-                  <Button variant="outline">Open</Button>
+                  <Button variant="outline">Open popover</Button>
                 </Popover.Trigger>
                 <Popover.Content>
                   <Popover.Header
                     description="You're all caught up. Check back later for new notifications."
-                    title="Nested popover"
+                    title="Notifications"
                   />
                 </Popover.Content>
               </Popover>
             </Dialog.Body>
             <Dialog.Footer>
               <Dialog.CloseTrigger asChild>
-                <Button variant="outline">Close</Button>
+                <Button variant="outline">Done</Button>
               </Dialog.CloseTrigger>
             </Dialog.Footer>
           </Dialog.Content>

@@ -27,7 +27,7 @@ export const listboxItemRecipe = tv({
       "relative",
       "flex items-center gap-2",
       "px-2.5 py-2",
-      "rounded-xl",
+      "rounded-lg",
       "select-none text-sm",
       "cursor-pointer",
       "outline-hidden",
@@ -54,10 +54,10 @@ export const listboxItemRecipe = tv({
       },
       destructive: {
         base: [
-          "text-destructive dark:text-destructive-foreground",
-          "hover:bg-destructive/10 dark:hover:bg-destructive-foreground/10",
-          "data-highlighted:bg-destructive/10 dark:data-highlighted:bg-destructive-foreground/10",
-          "**:[svg]:text-destructive! dark:**:[svg]:text-destructive-foreground!",
+          "text-destructive",
+          "hover:bg-destructive/10",
+          "data-highlighted:bg-destructive/10",
+          "**:[svg]:text-destructive!",
         ],
       },
     },

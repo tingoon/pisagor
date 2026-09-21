@@ -10,6 +10,7 @@ import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 import { Button, type ButtonProps } from "../button";
+import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -124,12 +125,17 @@ export const Clipboard = defineComponent({
     variant: { default: "input", type: String as PropType<ClipboardProps["variant"]> },
   },
   setup(props, { attrs }) {
+    const surfaceVariant = useFormControlSurface();
+
     return () => {
       const resolved = {
-        surfaceVariant: undefined,
+        surfaceVariant,
         variant: props.controlVariant ?? ("primary" as FormControlVariant),
       };
-      const shellArgs = { variant: resolved.variant };
+      const shellArgs = {
+        surfaceVariant: resolved.surfaceVariant,
+        variant: resolved.variant,
+      };
       const controlProps = { "data-variant": resolved.variant };
       const shellClassName = formControlShellRecipe({ size: "md", ...shellArgs });
       const slots_ = props.recipe({ valueSize: props.valueSize });

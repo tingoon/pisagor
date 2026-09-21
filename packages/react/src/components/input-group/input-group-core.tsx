@@ -12,6 +12,7 @@ import {
 } from "@pisagor/recipes/input-group";
 import type { ComponentProps, MouseEvent } from "react";
 import { Button, type ButtonProps } from "../button";
+import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 // #region Types
 type FormControlVariant = "primary" | "secondary";
@@ -60,10 +61,13 @@ export function InputGroupRoot({
   ...rest
 }: InputGroupProps) {
   const resolved = {
-    surfaceVariant: undefined,
+    surfaceVariant: useFormControlSurface(),
     variant: variantProp ?? ("primary" as FormControlVariant),
   };
-  const shellArgs = { variant: resolved.variant };
+  const shellArgs = {
+    surfaceVariant: resolved.surfaceVariant,
+    variant: resolved.variant,
+  };
   const controlProps = { "data-variant": resolved.variant };
 
   return (

@@ -56,7 +56,7 @@ export const Variants = meta.story({
     },
     template: `
       <div class="flex flex-col gap-2">
-        <SegmentGroup class="rounded-lg" defaultValue="Profile" :items="items" variant="default" />
+        <SegmentGroup defaultValue="Profile" :items="items" variant="default" />
         <SegmentGroup defaultValue="Profile" :items="items" variant="underline" />
         <SegmentGroup
           defaultValue="Profile"
@@ -77,7 +77,6 @@ export const OrientationHorizontal = meta.story({
     },
     template: `
       <SegmentGroup
-        class="rounded-lg"
         defaultValue="Profile"
         :items="items"
         orientation="horizontal"
@@ -94,7 +93,6 @@ export const OrientationVertical = meta.story({
     },
     template: `
       <SegmentGroup
-        class="rounded-lg"
         defaultValue="Profile"
         :items="items"
         orientation="vertical"
@@ -114,7 +112,7 @@ export const DisabledItem = meta.story({
       };
     },
     template: `
-      <SegmentGroup class="rounded-lg" defaultValue="Profile" :items="items" />
+      <SegmentGroup defaultValue="Profile" :items="items" />
     `,
   }),
 });
@@ -128,13 +126,12 @@ export const CustomIndicator = meta.story({
     },
     template: `
       <SegmentGroup.Root
-        class="rounded-lg *:data-[slot=segment-group-indicator]:bg-primary/40"
+        class="*:data-[part=indicator]:bg-primary/40 *:data-[part=indicator]:shadow-none"
         defaultValue="Profile"
       >
         <SegmentGroup.Item
           v-for="item in items"
           :key="item"
-          class="px-2 py-1.5 text-sm"
           :disabled="item === 'Security'"
           :value="item"
         >
@@ -159,11 +156,10 @@ export const IndicatorOnHover = meta.story({
       return { activeValue, hoverValue, onValueChange, pages, value };
     },
     template: `
-      <SegmentGroup.Root class="rounded-lg" :value="activeValue" :onValueChange="onValueChange">
+      <SegmentGroup.Root :value="activeValue" :onValueChange="onValueChange">
         <SegmentGroup.Item
           v-for="page in pages"
           :key="page"
-          class="px-2 py-1.5 text-sm"
           :value="page"
           @click="value = page"
           @mouseenter="hoverValue = page"
@@ -183,7 +179,7 @@ export const Disabled = meta.story({
       return { items: segmentItems };
     },
     template: `
-      <SegmentGroup class="rounded-lg" defaultValue="Profile" disabled :items="items" />
+      <SegmentGroup defaultValue="Profile" disabled :items="items" />
     `,
   }),
 });
@@ -199,7 +195,7 @@ export const Controlled = meta.story({
       return { items: segmentItems, onValueChange, value };
     },
     template: `
-      <SegmentGroup class="rounded-lg" :items="items" :value="value" :onValueChange="onValueChange" />
+      <SegmentGroup :items="items" :value="value" :onValueChange="onValueChange" />
     `,
   }),
 });
@@ -219,11 +215,10 @@ export const Compound = meta.story({
       return { items };
     },
     template: `
-      <SegmentGroup.Root class="rounded-lg" defaultValue="Profile">
+      <SegmentGroup.Root defaultValue="Profile">
         <SegmentGroup.Item
           v-for="item in items"
           :key="item"
-          class="px-2 py-1.5 text-sm"
           :value="item"
         >
           {{ item }}

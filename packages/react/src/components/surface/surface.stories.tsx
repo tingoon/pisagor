@@ -98,50 +98,57 @@ export const WithFormControls = meta.story({
   parameters: {
     docs: {
       description: {
-        story: "Form controls inside a Surface use their own `variant` prop (default `primary`).",
+        story:
+          "Form controls raise their fill on muted Surface variants so soft shells stay visible.",
       },
     },
   },
   render: () => (
-    <Surface bordered padding="md" variant="default">
-      <div className="mb-4">
-        <h3 className="font-semibold text-sm">Settings</h3>
-        <p className="text-muted-foreground text-sm">Grouped controls on a surface background.</p>
-      </div>
-      <Field.Group>
-        <Field>
-          <Field.Label htmlFor="surface-email">Email</Field.Label>
-          <Input clearable id="surface-email" placeholder="you@example.com" />
-        </Field>
+    <div className="flex flex-col gap-4">
+      {(["default", "secondary", "tertiary"] as const).map((variant) => (
+        <Surface bordered key={variant} padding="md" variant={variant}>
+          <div className="mb-4">
+            <h3 className="font-semibold text-sm">Settings · {variant}</h3>
+            <p className="text-muted-foreground text-sm">
+              Controls should remain visible on this surface.
+            </p>
+          </div>
+          <Field.Group>
+            <Field>
+              <Field.Label htmlFor={`surface-email-${variant}`}>Email</Field.Label>
+              <Input clearable id={`surface-email-${variant}`} placeholder="you@example.com" />
+            </Field>
 
-        <Field>
-          <Field.Label htmlFor="surface-notes">Notes</Field.Label>
-          <Textarea id="surface-notes" placeholder="Add context…" rows={3} />
-        </Field>
+            <Field>
+              <Field.Label htmlFor={`surface-notes-${variant}`}>Notes</Field.Label>
+              <Textarea id={`surface-notes-${variant}`} placeholder="Add context…" rows={3} />
+            </Field>
 
-        <Field>
-          <Field.Label htmlFor="surface-team">Team</Field.Label>
-          <Select
-            id="surface-team"
-            items={["Design", "Engineering", "Marketing"]}
-            placeholder="Choose a team"
-          />
-        </Field>
+            <Field>
+              <Field.Label htmlFor={`surface-team-${variant}`}>Team</Field.Label>
+              <Select
+                id={`surface-team-${variant}`}
+                items={["Design", "Engineering", "Marketing"]}
+                placeholder="Choose a team"
+              />
+            </Field>
 
-        <Field orientation="horizontal">
-          <Switch id="surface-notify" />
-          <Field.Content>
-            <Field.Label htmlFor="surface-notify">Email notifications</Field.Label>
-          </Field.Content>
-        </Field>
+            <Field orientation="horizontal">
+              <Switch id={`surface-notify-${variant}`} />
+              <Field.Content>
+                <Field.Label htmlFor={`surface-notify-${variant}`}>Email notifications</Field.Label>
+              </Field.Content>
+            </Field>
 
-        <Field orientation="horizontal">
-          <Checkbox id="surface-terms" />
-          <Field.Content>
-            <Field.Label htmlFor="surface-terms">Accept terms</Field.Label>
-          </Field.Content>
-        </Field>
-      </Field.Group>
-    </Surface>
+            <Field orientation="horizontal">
+              <Checkbox id={`surface-terms-${variant}`} />
+              <Field.Content>
+                <Field.Label htmlFor={`surface-terms-${variant}`}>Accept terms</Field.Label>
+              </Field.Content>
+            </Field>
+          </Field.Group>
+        </Surface>
+      ))}
+    </div>
   ),
 });

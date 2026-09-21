@@ -17,6 +17,7 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { Button, type ButtonProps } from "../button";
+import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { ClipboardContext, useClipboard } from "./clipboard.context";
 
 // #region Types
@@ -162,10 +163,13 @@ export function Clipboard({
   ...rest
 }: ClipboardProps) {
   const resolved = {
-    surfaceVariant: undefined,
+    surfaceVariant: useFormControlSurface(),
     variant: controlVariantProp ?? ("primary" as FormControlVariant),
   };
-  const shellArgs = { variant: resolved.variant };
+  const shellArgs = {
+    surfaceVariant: resolved.surfaceVariant,
+    variant: resolved.variant,
+  };
   const controlProps = { "data-variant": resolved.variant };
   const shellClassName = formControlShellRecipe({ size: "md", ...shellArgs });
 

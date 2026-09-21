@@ -12,6 +12,7 @@ import { cn } from "@pisagor/utils";
 import StarterKit from "@tiptap/starter-kit";
 import { type Editor, EditorContent, useEditor } from "@tiptap/vue-3";
 import { defineComponent, h, type PropType, shallowReactive, watch, watchEffect } from "vue";
+import { useFormControlSurface } from "../components/surface/use-form-control-surface";
 import { Toggle } from "../components/toggle/toggle";
 import { VisuallyHidden } from "../components/visually-hidden/visually-hidden";
 import { createContext } from "../internal/utils/create-context";
@@ -107,6 +108,8 @@ export const RichTextEditorRoot = defineComponent({
   name: "RichTextEditorRoot",
   props: richTextEditorRootProps,
   setup(props, { attrs, slots }) {
+    const surfaceVariant = useFormControlSurface();
+
     const recipeSlots = props.recipe();
 
     const editor = useEditor({
@@ -177,10 +180,13 @@ export const RichTextEditorRoot = defineComponent({
 
     return () => {
       const resolved = {
-        surfaceVariant: undefined,
+        surfaceVariant,
         variant: props.variant ?? ("primary" as FormControlVariant),
       };
-      const shellArgs = { variant: resolved.variant };
+      const shellArgs = {
+        surfaceVariant: resolved.surfaceVariant,
+        variant: resolved.variant,
+      };
       const controlProps = { "data-variant": resolved.variant };
       const resolvedAriaLabel = props["aria-label"] ?? (props.id ? undefined : "Rich text editor");
 

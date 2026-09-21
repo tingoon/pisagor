@@ -10,6 +10,7 @@ import { radioGroupItemRecipe, radioGroupRecipe } from "@pisagor/recipes/radio-g
 import { cn } from "@pisagor/utils";
 import type { ReactNode } from "react";
 import { Field } from "../field";
+import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 // #region Types
 type FormControlVariant = "primary" | "secondary";
@@ -75,10 +76,13 @@ export function RadioGroupItem({
   ...rest
 }: RadioGroupItemProps) {
   const resolved = {
-    surfaceVariant: undefined,
+    surfaceVariant: useFormControlSurface(),
     variant: variantProp ?? ("primary" as FormControlVariant),
   };
-  const shellArgs = { variant: resolved.variant };
+  const shellArgs = {
+    surfaceVariant: resolved.surfaceVariant,
+    variant: resolved.variant,
+  };
   const controlProps = { "data-variant": resolved.variant };
   const slots = recipe();
 

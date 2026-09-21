@@ -34,6 +34,7 @@ import {
 } from "@pisagor/recipes/tree-view";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "react";
+import { useFormControlSurface } from "../surface/use-form-control-surface";
 import {
   TreeViewBranchContext,
   TreeViewContext,
@@ -348,11 +349,12 @@ function TreeViewItemTitle({ className, ...rest }: TreeViewItemTitleProps) {
 export function TreeViewNodeCheckbox({ className, ...rest }: TreeViewNodeCheckboxProps) {
   const item = useTreeViewItem();
   const slots = item?.slots ?? treeViewItemRecipe();
+  const surfaceVariant = useFormControlSurface();
 
   return (
     <TreeViewPrimitive.NodeCheckbox
       {...rest}
-      className={cn(formControlToggleRecipe(), slots.checkbox(), className)}
+      className={cn(formControlToggleRecipe({ surfaceVariant }), slots.checkbox(), className)}
     >
       <TreeViewPrimitive.NodeCheckboxIndicator indeterminate={<MinusIcon />}>
         <CheckIcon />

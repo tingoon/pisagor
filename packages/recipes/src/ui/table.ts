@@ -19,11 +19,12 @@ export const tableRecipe = tv({
     ],
     header: "[&_tr]:border-b",
     row: [
-      "border-b transition-colors",
+      "border-b transition-colors duration-fast ease-out",
       "group-data-[variant=striped]/table:even:bg-muted/30",
       "data-[state=selected]:bg-muted",
       "data-[active=true]:bg-primary/10 data-[active=true]:shadow-[inset_3px_0_0_0_var(--primary)]",
       "group-data-[hoverable=true]/table:[&:has(td):hover:not([data-state=selected]):not([data-active=true])]:bg-muted/48",
+      "motion-reduce:transition-none!",
     ],
     wrapper: ["relative w-full overflow-auto"],
   },

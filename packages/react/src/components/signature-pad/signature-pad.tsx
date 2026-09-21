@@ -12,6 +12,7 @@ import { type SignaturePadRecipeSlot, signaturePadRecipe } from "@pisagor/recipe
 import { cn } from "@pisagor/utils";
 import type { VariantClassNames } from "../../internal/types";
 import { Button } from "../button";
+import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { SignaturePadContext, useSignaturePad } from "./signature-pad.context";
 
 // #region Types
@@ -73,8 +74,14 @@ function SignaturePadControl({
   ...rest
 }: SignaturePadControlProps & { invalid?: boolean }) {
   const { slots } = useSignaturePad();
-  const resolved = { surfaceVariant: undefined, variant: "primary" as FormControlVariant };
-  const shellArgs = { variant: resolved.variant };
+  const resolved = {
+    surfaceVariant: useFormControlSurface(),
+    variant: "primary" as FormControlVariant,
+  };
+  const shellArgs = {
+    surfaceVariant: resolved.surfaceVariant,
+    variant: resolved.variant,
+  };
   const controlProps = { "data-variant": resolved.variant };
 
   return (

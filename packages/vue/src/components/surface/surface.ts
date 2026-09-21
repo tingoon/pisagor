@@ -17,7 +17,7 @@ const AUTO_VARIANTS = [
   "tertiary",
 ] as const satisfies readonly SurfaceVariant[];
 
-const [provideSurfaceContext, useSurfaceContext] = createContext<SurfaceContextValue>({
+export const [provideSurfaceContext, useSurfaceContext] = createContext<SurfaceContextValue>({
   name: "PisagorSurface",
   strict: false,
 });

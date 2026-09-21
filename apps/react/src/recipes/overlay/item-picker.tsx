@@ -4,9 +4,9 @@ export function ItemPicker() {
   return (
     <DropdownMenu>
       <DropdownMenu.Trigger asChild>
-        <Button variant="outline">Open</Button>
+        <Button variant="outline">Choose person</Button>
       </DropdownMenu.Trigger>
-      <DropdownMenu.Content className="w-72">
+      <DropdownMenu.Content className="w-72 p-1.5">
         {people.map((person) => (
           <DropdownMenu.Item key={person.id} value={person.username}>
             <Item className="[--space:--spacing(2)]">
