@@ -6,8 +6,8 @@
     "@ark-ui/react": "^5.39.2",
     "@mantine/hooks": "^9.6.2",
     "@phosphor-icons/react": "^2.1.10",
-    "@pisagor/recipes": "^0.1.0",
-    "@pisagor/tokens": "^0.1.0",
+    "@pisagor/recipes": "^0.2.0",
+    "@pisagor/tokens": "^0.2.0",
     "@pisagor/utils": "^0.1.0",
     "@tailwindcss/typography": "^0.5.20",
     "@tanstack/react-table": "^9.2.4",
@@ -64,5 +64,5 @@
     "**/*.css"
   ],
   "type": "module",
-  "version": "0.1.1"
+  "version": "0.2.0"
 }
