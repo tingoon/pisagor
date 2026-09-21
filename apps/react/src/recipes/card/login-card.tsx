@@ -12,10 +12,10 @@ export function LoginCard({
   className,
 }: LoginCardProps) {
   return (
-    <Card className={cn("w-full", className)}>
+    <Card className={cn("mx-auto w-full max-w-md", className)}>
       <Card.Header
-        description="Enter your email and check your inbox"
-        title="Sign in to your account"
+        description="Enter your email and we'll send a one-time code to sign you in."
+        title="Sign in"
       >
         <Card.Action>
           <Button variant="link">Sign up</Button>
@@ -25,17 +25,17 @@ export function LoginCard({
         <Field.Set>
           <Field>
             <Field.Label>Email</Field.Label>
-            <Input placeholder="john.doe@example.com" />
+            <Input placeholder="you@example.com" type="email" />
           </Field>
         </Field.Set>
       </Card.Content>
-      <Card.Footer className="flex-col">
+      <Card.Footer className="flex-col gap-2">
         <Button className="w-full" size="lg">
           {primaryActionLabel}
         </Button>
         <Button className="w-full" size="lg" variant="outline">
           <GlobeIcon />
-          Sign in with Google
+          Continue with Google
         </Button>
       </Card.Footer>
     </Card>

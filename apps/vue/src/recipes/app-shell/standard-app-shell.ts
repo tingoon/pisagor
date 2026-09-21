@@ -72,7 +72,7 @@ export const StandardAppShell = defineComponent({
                 "aria-label": "Toggle navigation panel",
                 placement: "start",
               }),
-              h("h1", { class: "font-medium text-sm" }, props.title),
+              h("h1", { class: "font-semibold text-sm tracking-tight" }, props.title),
             ]),
             h(
               AppShell.Content as ArkPart,
@@ -82,7 +82,7 @@ export const StandardAppShell = defineComponent({
           ]),
           h(AppShell.Inspector as ArkPart, { placement: "end" }, () => [
             h(AppShell.InspectorHeader as ArkPart, null, () =>
-              h("h2", { class: "font-medium text-sm" }, "Inspector"),
+              h("h2", { class: "font-semibold text-sm tracking-tight" }, "Inspector"),
             ),
             h(AppShell.InspectorContent as ArkPart, null, () =>
               h(
@@ -100,8 +100,8 @@ export const StandardAppShell = defineComponent({
 /** Top navigation row — extend with primary links, search, and account menus. */
 export function StandardAppShellNavigation() {
   return h(AppShell.Navigation as ArkPart, null, () =>
-    h("div", { class: "flex w-full items-center gap-4" }, () => [
-      h("span", { class: "font-semibold" }, "Acme"),
+    h("div", { class: "flex w-full items-center gap-2" }, () => [
+      h("span", { class: "font-semibold text-base tracking-tight" }, "Acme"),
       h(
         "nav",
         { "aria-label": "Primary", class: "flex flex-1 items-center gap-1" },
@@ -120,12 +120,12 @@ export function StandardAppShellNavigation() {
 /** Side panel navigation — replace items or wire up routing. */
 export function StandardAppShellPanelNav({ class: className }: { class?: unknown } = {}) {
   return h(AppShell.PanelContent as ArkPart, { class: className }, () =>
-    h("nav", { "aria-label": "Section", class: "flex flex-col gap-1" }, () =>
+    h("nav", { "aria-label": "Section", class: "flex flex-col gap-0.5 p-1" }, () =>
       PANEL_NAV_ITEMS.map((item) =>
         h(
           Button as ArkPart,
           {
-            class: "justify-start",
+            class: "justify-start rounded-xl",
             key: item.id,
             type: "button",
             variant: item.id === "overview" ? "secondary" : "ghost",
@@ -154,7 +154,7 @@ const ActiveRailTitle = defineComponent({
       return h(
         "h2",
         {
-          class: "font-medium text-sm",
+          class: "px-1 font-semibold text-sm tracking-tight",
         },
         activeItem?.label ?? "Navigation",
       );
@@ -163,12 +163,15 @@ const ActiveRailTitle = defineComponent({
 });
 
 function StandardAppShellPlaceholder() {
-  return h("div", { class: "flex flex-col gap-4" }, () => [
-    h(
-      "p",
-      { class: "text-muted-foreground text-sm" },
-      "Main content area. Replace this block with your page layout.",
-    ),
+  return h("div", { class: "flex max-w-prose flex-col gap-4" }, () => [
+    h("div", { class: "flex flex-col gap-1.5" }, () => [
+      h("h2", { class: "font-semibold text-xl leading-tight tracking-tight" }, "Welcome back"),
+      h(
+        "p",
+        { class: "text-muted-foreground text-sm leading-relaxed" },
+        "Main content area. Replace this block with your page layout.",
+      ),
+    ]),
     h(Button as ArkPart, { class: "w-fit", variant: "outline" }, () => "Example action"),
   ]);
 }

@@ -60,14 +60,14 @@ export function StandardAppShell({
       <AppShell.Main>
         <AppShell.Header>
           <AppShell.PanelTrigger aria-label="Toggle navigation panel" placement="start" />
-          <h1 className="font-medium text-sm">{title}</h1>
+          <h1 className="font-semibold text-sm tracking-tight">{title}</h1>
         </AppShell.Header>
         <AppShell.Content>{children ?? <StandardAppShellPlaceholder />}</AppShell.Content>
       </AppShell.Main>
 
       <AppShell.Inspector placement="end">
         <AppShell.InspectorHeader>
-          <h2 className="font-medium text-sm">Inspector</h2>
+          <h2 className="font-semibold text-sm tracking-tight">Inspector</h2>
         </AppShell.InspectorHeader>
         <AppShell.InspectorContent>
           <p className="text-muted-foreground text-sm">
@@ -84,7 +84,7 @@ export function StandardAppShellNavigation() {
   return (
     <AppShell.Navigation>
       <div className="flex w-full items-center gap-2">
-        <span className="font-semibold">Acme</span>
+        <span className="font-semibold text-base tracking-tight">Acme</span>
 
         <nav aria-label="Primary" className="flex flex-1 items-center gap-1">
           {/* Add primary navigation links or dropdown menus here. */}
@@ -103,10 +103,10 @@ export function StandardAppShellNavigation() {
 export function StandardAppShellPanelNav({ className }: { className?: string }) {
   return (
     <AppShell.PanelContent className={className}>
-      <nav aria-label="Section" className="flex flex-col gap-1">
+      <nav aria-label="Section" className="flex flex-col gap-0.5 p-1">
         {PANEL_NAV_ITEMS.map((item) => (
           <Button
-            className="justify-start"
+            className="justify-start rounded-xl"
             key={item.id}
             type="button"
             variant={item.id === "overview" ? "secondary" : "ghost"}
@@ -124,15 +124,22 @@ function ActiveRailTitle() {
   const activeRailId = railStates.current.start?.activeRailId;
   const activeItem = RAIL_ITEMS.find((item) => item.id === activeRailId);
 
-  return <h2 className="font-medium text-sm">{activeItem?.label ?? "Navigation"}</h2>;
+  return (
+    <h2 className="px-1 font-semibold text-sm tracking-tight">
+      {activeItem?.label ?? "Navigation"}
+    </h2>
+  );
 }
 
 function StandardAppShellPlaceholder() {
   return (
-    <div className="flex flex-col gap-2">
-      <p className="text-muted-foreground text-sm">
-        Main content area. Replace this block with your page layout.
-      </p>
+    <div className="flex max-w-prose flex-col gap-4">
+      <div className="flex flex-col gap-1.5">
+        <h2 className="font-semibold text-xl leading-tight tracking-tight">Welcome back</h2>
+        <p className="text-muted-foreground text-sm leading-relaxed">
+          Main content area. Replace this block with your page layout.
+        </p>
+      </div>
       <Button className="w-fit" variant="outline">
         Example action
       </Button>

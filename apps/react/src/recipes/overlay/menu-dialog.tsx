@@ -10,7 +10,7 @@ export function MenuDialog() {
     <>
       <DropdownMenu>
         <DropdownMenu.Trigger asChild>
-          <Button variant="outline">Open</Button>
+          <Button variant="outline">Open menu</Button>
         </DropdownMenu.Trigger>
         <DropdownMenu.Content>
           <DropdownMenu.Item onSelect={() => setIsOpen(true)} value="settings">
@@ -35,11 +35,14 @@ export function MenuDialog() {
             <Dialog.Content>
               <Dialog.Header>
                 <Dialog.Title>Settings</Dialog.Title>
-                <Dialog.Description>This dialog was opened from a menu item</Dialog.Description>
+                <Dialog.Description>
+                  Adjust preferences without leaving your current context.
+                </Dialog.Description>
               </Dialog.Header>
               <Dialog.Body>
-                <p className="text-muted-foreground text-sm">
-                  You can open dialogs imperatively from menu items using the onSelect handler.
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  You can open dialogs from menu items using the onSelect handler — the menu closes,
+                  then the dialog opens above the page.
                 </p>
               </Dialog.Body>
               <Dialog.Footer>

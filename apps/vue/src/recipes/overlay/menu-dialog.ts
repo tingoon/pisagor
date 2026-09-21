@@ -30,7 +30,7 @@ export const MenuDialog = defineComponent({
       h("div", null, () => [
         h(DropdownMenu as ArkPart, null, () => [
           h(dropdownMenuParts.Trigger, { asChild: true }, () =>
-            h(Button as ArkPart, { type: "button", variant: "outline" }, () => "Open"),
+            h(Button as ArkPart, { type: "button", variant: "outline" }, () => "Open menu"),
           ),
           h(dropdownMenuParts.Content, null, () => [
             h(
@@ -62,14 +62,17 @@ export const MenuDialog = defineComponent({
             h(dialogParts.Content, null, () => [
               h(
                 dialogParts.Header,
-                { description: "This dialog was opened from a menu item", title: "Settings" },
+                {
+                  description: "Adjust preferences without leaving your current context.",
+                  title: "Settings",
+                },
                 () => undefined,
               ),
               h(dialogParts.Body, null, () =>
                 h(
                   "p",
-                  { class: "text-muted-foreground text-sm" },
-                  "You can open dialogs imperatively from menu items using the onSelect handler.",
+                  { class: "text-muted-foreground text-sm leading-relaxed" },
+                  "You can open dialogs from menu items using the onSelect handler — the menu closes, then the dialog opens above the page.",
                 ),
               ),
               h(dialogParts.Footer, null, () => [

@@ -26,29 +26,29 @@ export const PopoverDialog = defineComponent({
     return () =>
       h(Dialog as ArkPart, null, () => [
         h(dialogParts.Trigger, { asChild: true }, () =>
-          h(Button as ArkPart, { type: "button", variant: "outline" }, () => "Open"),
+          h(Button as ArkPart, { type: "button", variant: "outline" }, () => "Open dialog"),
         ),
         h(dialogParts.Content, null, () => [
           h(
             dialogParts.Header,
             {
               description:
-                "Open the popover from the button below to see it layered above the dialog.",
-              title: "Popover inside dialog",
+                "Open the popover from the button below — it stays anchored to its trigger above the dialog.",
+              title: "Nested layers",
             },
             () => undefined,
           ),
           h(dialogParts.Body, null, () =>
             h(Popover as ArkPart, null, () => [
               h(popoverParts.Trigger, { asChild: true }, () =>
-                h(Button as ArkPart, { type: "button", variant: "outline" }, () => "Open"),
+                h(Button as ArkPart, { type: "button", variant: "outline" }, () => "Open popover"),
               ),
               h(popoverParts.Content, null, () => [
                 h(
                   popoverParts.Header,
                   {
                     description: "You're all caught up. Check back later for new notifications.",
-                    title: "Nested popover",
+                    title: "Notifications",
                   },
                   () => undefined,
                 ),
@@ -57,7 +57,7 @@ export const PopoverDialog = defineComponent({
           ),
           h(dialogParts.Footer, null, () =>
             h(dialogParts.CloseTrigger, { asChild: true }, () =>
-              h(Button as ArkPart, { type: "button", variant: "outline" }, () => "Close"),
+              h(Button as ArkPart, { type: "button", variant: "outline" }, () => "Done"),
             ),
           ),
         ]),
