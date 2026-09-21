@@ -31,7 +31,7 @@ export const circularSliderRecipe = tv({
       "bg-white",
       "size-(--size)",
       "rounded-full shadow-xs/5 ring-2 ring-border",
-      "transition-all",
+      "transition-[box-shadow,transform] duration-fast ease-out",
       "hover:cursor-grab hover:ring-[3px]",
       "motion-reduce:transition-none!",
     ],

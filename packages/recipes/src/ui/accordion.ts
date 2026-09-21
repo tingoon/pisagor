@@ -16,7 +16,7 @@ export const accordionItemRecipe = tv({
       "shrink-0",
       "text-muted-foreground",
       "pointer-events-none",
-      "transition-transform duration-300",
+      "transition-transform duration-slow ease-out",
       "motion-reduce:transition-none!",
     ],
     trigger: [
@@ -25,7 +25,7 @@ export const accordionItemRecipe = tv({
       "text-left font-medium text-sm",
       "rounded-md border border-transparent",
       "outline-hidden",
-      "transition-all",
+      "transition-[color,background-color,border-color,box-shadow] duration-fast ease-out",
       "disabled:pointer-events-none disabled:opacity-64 disabled:grayscale",
       "focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
       "[&_[data-state=open]>svg]:rotate-180",

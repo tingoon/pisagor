@@ -17,7 +17,7 @@ export const sortableItemRecipe = tv({
   slots: {
     base: [
       "relative",
-      "rounded-xl border bg-card",
+      "rounded-2xl border border-border/50 bg-card",
       "outline-hidden focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
       "data-[dragging=true]:opacity-50",
       "data-[drop-target=true]:border-primary data-[drop-target=true]:ring-2 data-[drop-target=true]:ring-primary/24",
@@ -27,8 +27,10 @@ export const sortableItemRecipe = tv({
       "inline-flex size-8 shrink-0 items-center justify-center",
       "cursor-grab touch-none text-muted-foreground",
       "rounded-lg",
+      "transition-[color,background-color,transform] duration-fast ease-out",
       "hover:bg-muted hover:text-foreground",
-      "active:cursor-grabbing",
+      "active:scale-[0.97] active:cursor-grabbing",
+      "motion-reduce:transition-none! motion-reduce:active:scale-100",
     ],
   },
 });

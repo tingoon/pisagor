@@ -10,7 +10,7 @@ export const tabsRecipe = tv({
     indicator: [
       "absolute inset-s-0 bottom-0",
       "h-(--height) w-(--width)",
-      "transition-[width,translate] duration-200 ease-in-out",
+      "transition-[width,translate] duration-normal ease-emphasized",
       "motion-reduce:transition-none!",
     ],
     list: [
@@ -28,11 +28,11 @@ export const tabsRecipe = tv({
       "whitespace-nowrap font-medium text-sm",
       "rounded-lg border border-transparent",
       "cursor-pointer",
-      "transition-[color,background-color,box-shadow]",
+      "transition-[color,background-color,box-shadow] duration-fast ease-out",
       "data-[orientation=vertical]:w-full data-[orientation=vertical]:justify-start",
       "hover:text-foreground/72",
       "aria-selected:text-foreground",
-      "outline-hidden focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
+      "outline-hidden focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/24",
       "data-disabled:pointer-events-none data-disabled:opacity-64",
       "[&_svg:not([class*='size-'])]:size-4.5 sm:[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:-mx-0.5 [&_svg]:shrink-0",
       "motion-reduce:transition-none!",
@@ -41,7 +41,7 @@ export const tabsRecipe = tv({
   variants: {
     variant: {
       default: {
-        indicator: ["-z-1 rounded-lg bg-accent"],
+        indicator: ["-z-1 rounded-lg bg-card shadow-sm"],
         list: ["rounded-lg"],
       },
       underline: {
@@ -55,7 +55,7 @@ export const tabsRecipe = tv({
         list: [
           "data-[orientation=vertical]:px-1",
           "data-[orientation=horizontal]:py-1",
-          "*:data-[scope=tabs]:data-[part=trigger]:hover:bg-accent",
+          "*:data-[scope=tabs]:data-[part=trigger]:hover:bg-muted",
         ],
       },
     },

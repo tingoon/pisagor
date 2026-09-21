@@ -3,7 +3,12 @@ import { tv, type VariantProps } from "tailwind-variants";
 export const tagsInputRecipe = tv({
   slots: {
     base: ["group/tags-input", "flex w-full flex-col gap-2"],
-    clearTrigger: ["ms-auto shrink-0 self-center text-muted-foreground hover:text-foreground"],
+    clearTrigger: [
+      "ms-auto shrink-0 self-center text-muted-foreground hover:text-foreground",
+      "transition-[color,transform] duration-fast ease-out",
+      "active:scale-[0.97]",
+      "motion-reduce:transition-none! motion-reduce:active:scale-100",
+    ],
     control: [
       "h-auto in-data-[size=lg]:min-h-9 in-data-[size=sm]:min-h-7 min-h-8",
       "p-1",
@@ -25,7 +30,7 @@ export const tagsInputItemRecipe = tv({
       "inline-flex shrink-0 items-center gap-1",
       "bg-secondary",
       "in-data-[size=lg]:text-sm text-secondary-foreground text-xs",
-      "rounded-md border outline-hidden",
+      "rounded-[calc(var(--radius-lg)-(--spacing(1)))] border outline-hidden",
       "data-highlighted:border-primary/30 data-highlighted:bg-primary/10",
     ],
     delete: [
@@ -34,7 +39,10 @@ export const tagsInputItemRecipe = tv({
       "text-muted-foreground",
       "rounded-[calc(var(--radius)-5px)]",
       "[&_svg:not([class*='size-'])]:size-3",
+      "transition-[color,transform] duration-fast ease-out",
       "hover:text-foreground",
+      "active:scale-[0.97]",
+      "motion-reduce:transition-none! motion-reduce:active:scale-100",
     ],
     input: ["px-1 text-xs", "h-6 in-data-[size=lg]:h-7 in-data-[size=sm]:h-5"],
     preview: ["inline-flex max-w-full items-center gap-1"],

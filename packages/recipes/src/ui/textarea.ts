@@ -10,7 +10,7 @@ export const textareaRecipe = tv({
       "text-base md:text-sm",
       "resize-none rounded-none border-0 shadow-none",
       "placeholder:text-muted-foreground/64",
-      "transition-[color,box-shadow]",
+      "transition-[color,box-shadow] duration-fast ease-out",
       "outline-hidden focus-visible:ring-0",
       "disabled:bg-transparent aria-invalid:ring-0 data-invalid:ring-0",
       "dark:bg-transparent dark:disabled:bg-transparent",

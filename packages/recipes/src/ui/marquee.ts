@@ -11,6 +11,7 @@ export const marqueeRecipe = tv({
       "data-[orientation=horizontal]:animate-marquee-x data-[orientation=horizontal]:flex-row",
       "data-reverse:direction-[reverse]!",
       "group-data-paused/marquee:paused!",
+      "motion-reduce:animate-none!",
     ],
     edge: [
       "absolute z-10",

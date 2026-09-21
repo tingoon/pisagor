@@ -19,7 +19,7 @@ export const statusRecipe = tv({
     },
     variant: {
       default: "bg-foreground text-background",
-      destructive: "bg-destructive text-destructive-foreground dark:bg-destructive-foreground",
+      destructive: "bg-destructive text-destructive-foreground",
       info: "bg-info text-info-foreground",
       success: "bg-success text-success-foreground",
       warning: "bg-warning text-warning-foreground",

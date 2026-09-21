@@ -14,7 +14,7 @@ export const buttonRecipe = tv({
       "inline-flex shrink-0 items-center justify-center gap-2",
       "whitespace-nowrap font-medium text-sm",
       "rounded-lg",
-      "transition-all",
+      "transition-[color,background-color,border-color,box-shadow,opacity,transform] duration-fast ease-out",
       "outline-hidden focus-visible:ring-[3px] focus-visible:ring-ring/32",
       "disabled:pointer-events-none disabled:opacity-64",
       "data-disabled:pointer-events-none data-disabled:opacity-64",
@@ -30,7 +30,7 @@ export const buttonRecipe = tv({
   variants: {
     clickEffect: {
       true: {
-        base: "active:not-aria-[haspopup]:scale-[0.98]",
+        base: "active:not-aria-[haspopup]:scale-[0.97] motion-reduce:active:scale-100",
       },
     },
     loading: {
@@ -75,7 +75,7 @@ export const buttonRecipe = tv({
       default: {
         base: [
           "bg-primary",
-          "border border-transparent shadow-primary/24 shadow-xs",
+          "border border-transparent shadow-xs",
           "text-primary-foreground",
           "hover:bg-primary/90",
           "focus-visible:border-background",
@@ -85,9 +85,9 @@ export const buttonRecipe = tv({
         base: [
           "bg-destructive",
           "text-destructive-foreground",
-          "border border-transparent shadow-destructive/24 shadow-xs",
+          "border border-transparent shadow-xs",
           "hover:bg-destructive/90",
-          "focus-visible:border-background focus-visible:ring-destructive-foreground/32",
+          "focus-visible:border-background focus-visible:ring-white/40",
         ],
       },
       ghost: {
@@ -110,9 +110,9 @@ export const buttonRecipe = tv({
         base: [
           "bg-transparent",
           "text-foreground",
-          "border border-input shadow-xs/5",
+          "border border-border/60 shadow-none",
           "hover:bg-accent hover:text-accent-foreground",
-          "dark:bg-input/32 dark:hover:bg-input/64",
+          "dark:bg-input/24 dark:hover:bg-input/48",
           "focus-visible:border-primary",
         ],
       },
@@ -120,7 +120,7 @@ export const buttonRecipe = tv({
         base: [
           "bg-secondary",
           "text-secondary-foreground",
-          "border border-transparent",
+          "border border-transparent shadow-none",
           "focus-visible:border-primary",
           "hover:bg-secondary/80",
         ],

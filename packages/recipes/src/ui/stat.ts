@@ -8,7 +8,7 @@ export const statRecipe = tv({
     base: [
       "group/stat",
       "flex w-full flex-col gap-1.5",
-      "rounded-xl border p-4",
+      "rounded-2xl border border-border/50 p-4",
       "bg-card text-card-foreground",
       "shadow-xs/5",
     ],
@@ -42,7 +42,7 @@ export const statTrendRecipe = tv({
   },
   variants: {
     trend: {
-      down: "bg-destructive/10 text-destructive dark:text-destructive-foreground",
+      down: "bg-destructive/10 text-destructive",
       neutral: "bg-muted text-muted-foreground",
       up: "bg-success/12 text-success",
     },

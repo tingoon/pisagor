@@ -2,7 +2,12 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const colorPickerRecipe = tv({
   slots: {
-    area: ["relative", "aspect-square size-full", "rounded-xl border", "touch-none"],
+    area: [
+      "relative",
+      "aspect-square size-full",
+      "rounded-[calc(var(--radius-2xl)-(--spacing(3)))] border border-border/50",
+      "touch-none",
+    ],
     areaBackground: ["size-full rounded-[inherit]"],
     areaThumb: [
       "size-4.5",
@@ -45,7 +50,7 @@ export const colorPickerRecipe = tv({
       "flex flex-col gap-4",
       "p-(--space)",
       "bg-popover",
-      "rounded-xl border shadow-lg/5",
+      "rounded-2xl border border-border/50 shadow-md",
       "outline-hidden",
       "origin-(--transform-origin)",
       "data-[state=open]:fade-in-0 data-[state=open]:zoom-in-[98%] data-[state=open]:animate-in",
@@ -75,7 +80,7 @@ export const colorPickerRecipe = tv({
       "shrink-0",
       "overflow-hidden",
       "rounded-[inherit]",
-      "transition-transform duration-100 ease-out will-change-transform",
+      "transition-transform duration-fast ease-out will-change-transform",
       "not-[data-state=checked]:hover:scale-110",
       "data-[state=checked]:scale-[0.8]",
       "motion-reduce:transition-none!",
@@ -95,7 +100,7 @@ export const colorPickerRecipe = tv({
       "size-8",
       "flex items-center justify-center",
       "rounded-full",
-      "transition-[border-color,box-shadow] duration-100 ease-out will-change-transform",
+      "transition-[border-color,box-shadow] duration-fast ease-out will-change-transform",
       "outline-hidden focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
       "data-disabled:pointer-events-none data-disabled:opacity-64",
       "data-[state=checked]:shadow-xs/5 data-[state=checked]:ring-(--color) data-[state=checked]:ring-2",

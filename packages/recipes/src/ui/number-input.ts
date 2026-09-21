@@ -15,8 +15,7 @@ export const numberInputRecipe = tv({
       "transition-shadow",
       "focus-within:border-primary focus-within:ring-[3px] focus-within:ring-ring/32",
       "data-disabled:pointer-events-none data-disabled:opacity-64",
-      "aria-invalid:border-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/24",
-      "dark:aria-invalid:border-destructive-foreground dark:aria-invalid:text-destructive-foreground dark:aria-invalid:ring-destructive-foreground/20",
+      "aria-invalid:border-destructive aria-invalid:text-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/24",
       "motion-reduce:transition-none!",
     ],
     decrementTrigger: [
@@ -26,7 +25,10 @@ export const numberInputRecipe = tv({
       "text-foreground",
       "rounded-none rounded-s-[calc(var(--radius-lg)+1px)]",
       "cursor-pointer",
+      "transition-transform duration-fast ease-out",
+      "active:scale-[0.97]",
       "pointer-coarse:after:absolute pointer-coarse:after:size-full pointer-coarse:after:min-h-11 pointer-coarse:after:min-w-11",
+      "motion-reduce:transition-none! motion-reduce:active:scale-100",
     ],
     incrementTrigger: [
       "relative",
@@ -35,7 +37,10 @@ export const numberInputRecipe = tv({
       "text-foreground",
       "rounded-none rounded-e-[calc(var(--radius-lg)+1px)]",
       "cursor-pointer",
+      "transition-transform duration-fast ease-out",
+      "active:scale-[0.97]",
       "pointer-coarse:after:absolute pointer-coarse:after:size-full pointer-coarse:after:min-h-11 pointer-coarse:after:min-w-11",
+      "motion-reduce:transition-none! motion-reduce:active:scale-100",
     ],
     input: [
       "grow",

@@ -30,11 +30,12 @@ export const commandRecipe = tv({
       "text-muted-foreground text-xs",
       "rounded-b-[calc(var(--radius-2xl,1rem)-1px)] border-t",
     ],
-    input: ["rounded-xl bg-input/32"],
+    input: ["rounded-[calc(var(--radius-2xl)-(--spacing(2)))] bg-input/32"],
     inputIcon: "opacity-64",
     list: ["flex-1 pe-2.5"],
     listWrapper: ["max-h-72 min-h-0 flex-1"],
     separator: "my-2",
+    shortcut: ["ms-auto rtl:me-auto", "text-muted-foreground text-xs tracking-widest"],
   },
 });
 

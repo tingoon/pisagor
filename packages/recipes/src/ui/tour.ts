@@ -9,7 +9,7 @@ export const tourRecipe = tv({
     closeLabel: "sr-only",
     content: [
       "[--space:--spacing(4)]",
-      "z-[calc(var(--z-modal)+var(--layer-index,0))]",
+      "z-[calc(var(--z-index-modal)+var(--layer-index,0))]",
       "relative",
       "w-full max-w-md",
       "flex flex-col gap-4",
@@ -18,7 +18,7 @@ export const tourRecipe = tv({
       "focus:outline-hidden focus:ring-0",
       "data-[state=closed]:animate-out data-[state=open]:animate-in",
       "data-[state=open]:fade-in-0 data-[state=closed]:fade-out-0",
-      "data-[state=open]:zoom-in-95 data-[state=closed]:zoom-out-95",
+      "data-[state=open]:zoom-in-[98%] data-[state=closed]:zoom-out-[98%]",
       "motion-reduce:animate-none!",
     ],
     description: ["text-muted-foreground text-sm"],

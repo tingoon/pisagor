@@ -10,7 +10,7 @@ export const navigationMenuRecipe = tv({
       "font-medium text-sm",
       "text-muted-foreground",
       "outline-hidden",
-      "transition-colors duration-100 motion-reduce:transition-none!",
+      "transition-[color,background-color] duration-fast ease-out motion-reduce:transition-none!",
       "hover:text-foreground",
       "focus-visible:ring-[3px] focus-visible:ring-ring/32",
       "data-[active=true]:bg-accent data-[active=true]:text-accent-foreground",

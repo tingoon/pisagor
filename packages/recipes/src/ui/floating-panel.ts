@@ -16,9 +16,10 @@ export const floatingPanelRecipe = tv({
       "h-(--height) min-h-0 w-(--width)",
       "bg-popover",
       "text-popover-foreground",
-      "rounded-2xl border shadow-lg/5",
-      "transition-[scale,opacity,translate] duration-200 ease-in-out will-change-transform",
+      "rounded-2xl border border-border/50 shadow-md",
+      "transition-[scale,opacity,translate] duration-slow ease-emphasized will-change-transform",
       "data-[state=open]:fade-in-0 data-[state=open]:zoom-in-[98%] data-[state=open]:animate-in",
+      "data-[state=closed]:fade-out-0 data-[state=closed]:zoom-out-[98%] data-[state=closed]:animate-out",
       "motion-reduce:animate-none! motion-reduce:transition-none!",
     ],
     control: ["ms-auto flex items-center gap-2 rtl:me-auto"],
@@ -45,7 +46,7 @@ export const floatingPanelRecipe = tv({
     title: [
       "min-w-0 flex-1",
       "flex items-center gap-2",
-      "truncate whitespace-nowrap font-medium text-sm leading-none",
+      "truncate whitespace-nowrap font-medium text-sm leading-none tracking-tight",
     ],
   },
 });
