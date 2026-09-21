@@ -17,6 +17,7 @@ export default defineMain({
   },
   features: {
     componentsManifest: true,
+    experimentalDocgenServer: true,
   },
   framework: getAbsolutePath("@storybook/vue3-vite"),
   stories: [

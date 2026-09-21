@@ -36,6 +36,7 @@
         "@storybook/addon-mcp": "^10.6.0",
         "@tailwindcss/vite": "catalog:",
         "astro": "catalog:",
+        "chromatic": "^18.9.4",
         "storybook": "^10.6.0",
         "tailwindcss": "catalog:",
         "vite": "catalog:",
@@ -66,6 +67,7 @@
         "@types/react": "catalog:",
         "@types/react-dom": "catalog:",
         "@vitejs/plugin-react": "catalog:",
+        "chromatic": "^18.9.4",
         "storybook": "^10.6.0",
         "tailwindcss": "catalog:",
         "vite": "catalog:",
@@ -91,6 +93,7 @@
         "@storybook/vue3-vite": "^10.6.0",
         "@tailwindcss/vite": "catalog:",
         "@vitejs/plugin-vue": "catalog:",
+        "chromatic": "^18.9.4",
         "storybook": "^10.6.0",
         "tailwindcss": "catalog:",
         "vite": "catalog:",
@@ -98,10 +101,10 @@
     },
     "packages/astro": {
       "name": "@pisagor/astro",
-      "version": "0.1.0",
+      "version": "0.2.1",
       "dependencies": {
-        "@pisagor/recipes": "^0.1.0",
-        "@pisagor/tokens": "^0.1.0",
+        "@pisagor/recipes": "^0.2.0",
+        "@pisagor/tokens": "^0.2.0",
         "@tailwindcss/typography": "^0.5.20",
         "tw-animate-css": "^1.4.0",
       },
@@ -116,13 +119,13 @@
     },
     "packages/react": {
       "name": "@pisagor/react",
-      "version": "0.1.1",
+      "version": "0.2.0",
       "dependencies": {
         "@ark-ui/react": "^5.39.2",
         "@mantine/hooks": "^9.6.2",
         "@phosphor-icons/react": "^2.1.10",
-        "@pisagor/recipes": "^0.1.0",
-        "@pisagor/tokens": "^0.1.0",
+        "@pisagor/recipes": "^0.2.0",
+        "@pisagor/tokens": "^0.2.0",
         "@pisagor/utils": "^0.1.0",
         "@tailwindcss/typography": "^0.5.20",
         "@tanstack/react-table": "^9.2.4",
@@ -148,10 +151,10 @@
     },
     "packages/react-charts": {
       "name": "@pisagor/react-charts",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "dependencies": {
-        "@pisagor/react": "^0.1.1",
-        "@pisagor/recipes": "^0.1.0",
+        "@pisagor/react": "^0.2.0",
+        "@pisagor/recipes": "^0.2.0",
         "@pisagor/utils": "^0.1.0",
         "recharts": "^3.10.1",
       },
@@ -170,9 +173,9 @@
     },
     "packages/react-form": {
       "name": "@pisagor/react-form",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "dependencies": {
-        "@pisagor/react": "^0.1.1",
+        "@pisagor/react": "^0.2.0",
         "@tanstack/react-form": "^1.33.5",
       },
       "devDependencies": {
@@ -191,7 +194,7 @@
     },
     "packages/recipes": {
       "name": "@pisagor/recipes",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "dependencies": {
         "tailwind-variants": "^3.3.1",
       },
@@ -201,7 +204,7 @@
     },
     "packages/tokens": {
       "name": "@pisagor/tokens",
-      "version": "0.1.0",
+      "version": "0.2.0",
       "peerDependencies": {
         "tailwindcss": "^4",
       },
@@ -226,12 +229,12 @@
     },
     "packages/vue": {
       "name": "@pisagor/vue",
-      "version": "0.1.1",
+      "version": "0.2.0",
       "dependencies": {
         "@ark-ui/vue": "^5.39.2",
         "@phosphor-icons/vue": "^2.2.1",
-        "@pisagor/recipes": "^0.1.0",
-        "@pisagor/tokens": "^0.1.0",
+        "@pisagor/recipes": "^0.2.0",
+        "@pisagor/tokens": "^0.2.0",
         "@pisagor/utils": "^0.1.0",
         "@tailwindcss/typography": "^0.5.20",
         "@tanstack/vue-table": "^9.2.4",
@@ -252,9 +255,9 @@
     },
     "packages/vue-charts": {
       "name": "@pisagor/vue-charts",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "dependencies": {
-        "@pisagor/recipes": "^0.1.0",
+        "@pisagor/recipes": "^0.2.0",
         "@pisagor/utils": "^0.1.0",
       },
       "devDependencies": {
@@ -268,9 +271,9 @@
     },
     "packages/vue-form": {
       "name": "@pisagor/vue-form",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "dependencies": {
-        "@pisagor/vue": "^0.1.1",
+        "@pisagor/vue": "^0.2.0",
         "@tanstack/vue-form": "^1.33.5",
       },
       "devDependencies": {
@@ -1477,6 +1480,8 @@
     "chokidar": ["chokidar@5.0.0", "", { "dependencies": { "readdirp": "^5.0.0" } }, "sha512-TQMmc3w+5AxjpL8iIiwebF73dRDF4fBIieAqGn9RGCWaEVwQ6Fb2cGe31Yns0RRIzii5goJ1Y7xbMwo1TxMplw=="],
 
     "chownr": ["chownr@3.0.0", "", {}, "sha512-+IxzY9BZOQd/XuYPRmrvEVjF/nqj5kgT4kEq7VofrDoM1MxoRjEWkrCC3EtLi59TVawxTAn+orJwFQcrqEN1+g=="],
+
+    "chromatic": ["chromatic@18.9.4", "", { "dependencies": { "semver": "^7.3.5" }, "peerDependencies": { "@chromatic-com/cypress": "^0.*.* || ^1.0.0", "@chromatic-com/playwright": "^0.*.* || ^1.0.0", "@chromatic-com/vitest": "^0.*.* || ^1.0.0" }, "optionalPeers": ["@chromatic-com/cypress", "@chromatic-com/playwright", "@chromatic-com/vitest"], "bin": { "chroma": "dist/bin.cjs", "chromatic": "dist/bin.cjs", "chromatic-cli": "dist/bin.cjs" } }, "sha512-+/socRBceUAk19XwvnnJTgkgw6YJ5Fh58HoWM5ipiLwTnZS82r/cCM164ROKYVajeuCeo3ROsH+6nVHAylin5g=="],
 
     "ci-info": ["ci-info@4.4.0", "", {}, "sha512-77PSwercCZU2Fc4sX94eF8k8Pxte6JAwL4/ICZLFjJLqegs7kCuAsqqj/70NQF6TvDpgFjkubQB2FW2ZZddvQg=="],
 

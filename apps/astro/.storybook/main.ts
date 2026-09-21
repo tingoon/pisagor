@@ -12,6 +12,9 @@ const config: StorybookConfig = {
     disableTelemetry: true,
     enableCrashReports: false,
   },
+  features: {
+    componentsManifest: true,
+  },
   framework: {
     name: "@storybook-astro/framework",
     options: {

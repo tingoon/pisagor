@@ -22,6 +22,7 @@
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "@vitejs/plugin-react": "catalog:",
+    "chromatic": "^18.9.4",
     "storybook": "^10.6.0",
     "tailwindcss": "catalog:",
     "vite": "catalog:"
@@ -30,6 +31,7 @@
   "private": true,
   "scripts": {
     "build": "storybook build",
+    "build-storybook": "bun run build",
     "dev": "storybook dev -p 4001",
     "type-check": "tsc"
   },
