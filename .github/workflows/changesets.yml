@@ -34,10 +34,10 @@ jobs:
       - name: Create version PR or publish
         uses: changesets/action@v2.1.2
         with:
-          version: bunx changeset version
-          publish: bunx changeset publish
-          title: "chore: apply changesets"
-          commit: "chore: apply changesets"
+          version-script: bunx changeset version
+          publish-script: bunx changeset publish
+          pr-title: "chore: apply changesets"
+          commit-message: "chore: apply changesets"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_CONFIG_PROVENANCE: "true"
