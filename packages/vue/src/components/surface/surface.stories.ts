@@ -105,49 +105,63 @@ export const WithFormControls = meta.story({
   parameters: {
     docs: {
       description: {
-        story: "Form controls inside a Surface use their own `variant` prop (default `primary`).",
+        story:
+          "Form controls raise their fill on muted Surface variants so soft shells stay visible.",
       },
     },
   },
   render: () => ({
     components: { Checkbox, Field, Input, Select, Surface, Switch, Textarea },
+    setup() {
+      return { variants: ["default", "secondary", "tertiary"] as const };
+    },
     template: `
-      <Surface bordered padding="md" variant="default">
-        <div class="mb-4">
-          <h3 class="font-semibold text-sm">Settings</h3>
-          <p class="text-muted-foreground text-sm">Grouped controls on a surface background.</p>
-        </div>
-        <Field.Group>
-          <Field>
-            <Field.Label>Email</Field.Label>
-            <Input clearable placeholder="you@example.com" />
-          </Field>
+      <div class="flex flex-col gap-4">
+        <Surface
+          v-for="variant in variants"
+          :key="variant"
+          bordered
+          padding="md"
+          :variant="variant"
+        >
+          <div class="mb-4">
+            <h3 class="font-semibold text-sm">Settings · {{ variant }}</h3>
+            <p class="text-muted-foreground text-sm">
+              Controls should remain visible on this surface.
+            </p>
+          </div>
+          <Field.Group>
+            <Field>
+              <Field.Label>Email</Field.Label>
+              <Input clearable placeholder="you@example.com" />
+            </Field>
 
-          <Field>
-            <Field.Label>Notes</Field.Label>
-            <Textarea placeholder="Add context…" :rows="3" />
-          </Field>
+            <Field>
+              <Field.Label>Notes</Field.Label>
+              <Textarea placeholder="Add context…" :rows="3" />
+            </Field>
 
-          <Field>
-            <Field.Label>Team</Field.Label>
-            <Select :items="['Design', 'Engineering', 'Marketing']" placeholder="Choose a team" />
-          </Field>
+            <Field>
+              <Field.Label>Team</Field.Label>
+              <Select :items="['Design', 'Engineering', 'Marketing']" placeholder="Choose a team" />
+            </Field>
 
-          <Field orientation="horizontal">
-            <Switch />
-            <Field.Content>
-              <Field.Label>Email notifications</Field.Label>
-            </Field.Content>
-          </Field>
+            <Field orientation="horizontal">
+              <Switch />
+              <Field.Content>
+                <Field.Label>Email notifications</Field.Label>
+              </Field.Content>
+            </Field>
 
-          <Field orientation="horizontal">
-            <Checkbox />
-            <Field.Content>
-              <Field.Label>Accept terms</Field.Label>
-            </Field.Content>
-          </Field>
-        </Field.Group>
-      </Surface>
+            <Field orientation="horizontal">
+              <Checkbox />
+              <Field.Content>
+                <Field.Label>Accept terms</Field.Label>
+              </Field.Content>
+            </Field>
+          </Field.Group>
+        </Surface>
+      </div>
     `,
   }),
 });

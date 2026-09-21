@@ -9,6 +9,7 @@ import { formControlShellRecipe } from "@pisagor/recipes/form-control";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type UnwrapRef } from "vue";
 import { Button, type ButtonProps } from "../button";
+import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -51,12 +52,16 @@ export interface CalendarProps {
 // #endregion
 
 // #region Parts
-function useCalendarSelectShell(
-  className?: ClassValue,
-  recipe: NonNullable<CalendarProps["recipe"]> = calendarRecipe,
+function getCalendarSelectShell(
+  className: ClassValue | undefined,
+  recipe: NonNullable<CalendarProps["recipe"]>,
+  surfaceVariant: ReturnType<typeof useFormControlSurface>,
 ) {
-  const resolved = { surfaceVariant: undefined, variant: "primary" as FormControlVariant };
-  const shellArgs = { variant: resolved.variant };
+  const resolved = { surfaceVariant, variant: "primary" as FormControlVariant };
+  const shellArgs = {
+    surfaceVariant: resolved.surfaceVariant,
+    variant: resolved.variant,
+  };
   const controlProps = { "data-variant": resolved.variant };
 
   return {
@@ -218,10 +223,13 @@ export const CalendarYearSelect = defineComponent({
     },
   },
   setup(props, { attrs }) {
+    const surfaceVariant = useFormControlSurface();
+
     return () => {
-      const { className: selectClassName, controlProps } = useCalendarSelectShell(
+      const { className: selectClassName, controlProps } = getCalendarSelectShell(
         props.class,
         props.recipe,
+        surfaceVariant,
       );
       const slots = props.recipe();
 
@@ -261,10 +269,13 @@ export const CalendarMonthSelect = defineComponent({
     },
   },
   setup(props, { attrs }) {
+    const surfaceVariant = useFormControlSurface();
+
     return () => {
-      const { className: selectClassName, controlProps } = useCalendarSelectShell(
+      const { className: selectClassName, controlProps } = getCalendarSelectShell(
         props.class,
         props.recipe,
+        surfaceVariant,
       );
       const slots = props.recipe();
 

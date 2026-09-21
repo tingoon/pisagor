@@ -42,7 +42,7 @@ export const Default = meta.story({
   render: () => ({
     setup() {
       return () =>
-        h("div", { class: "w-56 rounded-xl border bg-background p-1 shadow-xs/5" }, [
+        h("div", { class: "w-56 rounded-xl border p-1 shadow-xs/5" }, [
           h(Menu, { "aria-label": "Account" }, () =>
             h(Menu.List, null, () => [
               h(Menu.Link, { active: true, href: "#profile" }, () => [h(PhUser), "Profile"]),
@@ -64,7 +64,7 @@ export const WithGroups = meta.story({
   render: () => ({
     setup() {
       return () =>
-        h("div", { class: "w-56 rounded-xl border bg-background p-1 shadow-xs/5" }, [
+        h("div", { class: "w-56 rounded-xl border p-1 shadow-xs/5" }, [
           h(Menu, { "aria-label": "Application" }, () => [
             h(Menu.Group, null, () => [
               h(Menu.GroupLabel, null, () => "Navigation"),

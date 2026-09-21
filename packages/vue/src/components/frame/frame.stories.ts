@@ -1,4 +1,4 @@
-import { Frame } from "@pisagor/vue";
+import { Field, Frame, Input, Switch } from "@pisagor/vue";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({
@@ -62,6 +62,42 @@ export const SeparatedPanels = meta.story({
         <Frame.Panel>
           <h2 class="font-semibold text-sm">Separated panel</h2>
           <p class="text-muted-foreground text-sm">Section description</p>
+        </Frame.Panel>
+      </Frame>
+    `,
+  }),
+});
+
+export const WithFormControls = meta.story({
+  parameters: {
+    docs: {
+      description: {
+        story:
+          "Root chrome is a secondary Surface; panels reset to default so nested controls keep contrast.",
+      },
+    },
+  },
+  render: () => ({
+    components: { Field, Frame, Input, Switch },
+    template: `
+      <Frame>
+        <Frame.Header>
+          <Frame.Title>Account</Frame.Title>
+          <Frame.Description>Controls on muted Frame chrome and raised panels.</Frame.Description>
+        </Frame.Header>
+        <Frame.Panel>
+          <Field.Group>
+            <Field>
+              <Field.Label>Email</Field.Label>
+              <Input clearable placeholder="you@example.com" />
+            </Field>
+            <Field orientation="horizontal">
+              <Switch />
+              <Field.Content>
+                <Field.Label>Email notifications</Field.Label>
+              </Field.Content>
+            </Field>
+          </Field.Group>
         </Frame.Panel>
       </Frame>
     `,

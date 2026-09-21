@@ -1,6 +1,7 @@
 import { ark } from "@ark-ui/vue/factory";
 import { frameRecipe } from "@pisagor/recipes/frame";
-import { defineComponent, h, type PropType } from "vue";
+import { computed, defineComponent, h, type PropType } from "vue";
+import { provideSurfaceContext, type SurfaceVariant, useSurface } from "../surface/surface";
 
 type ArkPart = Parameters<typeof h>[0];
 
@@ -28,6 +29,15 @@ export const FrameRoot = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const parent = useSurface();
+
+    provideSurfaceContext(
+      computed(() => ({
+        depth: parent ? parent.depth + 1 : 0,
+        variant: "secondary" as SurfaceVariant,
+      })),
+    );
+
     return () => {
       const variantSlots = props.recipe();
 
@@ -56,6 +66,15 @@ export const FramePanel = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    const parent = useSurface();
+
+    provideSurfaceContext(
+      computed(() => ({
+        depth: parent ? parent.depth + 1 : 0,
+        variant: "default" as SurfaceVariant,
+      })),
+    );
+
     return () => {
       const variantSlots = props.recipe();
 

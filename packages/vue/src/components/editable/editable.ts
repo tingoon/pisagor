@@ -7,6 +7,7 @@ import { editableRecipe } from "@pisagor/recipes/editable";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { ButtonProps } from "../button";
+import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -210,10 +211,12 @@ export const EditablePreview = defineComponent({
     variant: { default: "outline", type: String as PropType<EditablePreviewProps["variant"]> },
   },
   setup(props, { attrs, slots }) {
+    const surfaceVariant = useFormControlSurface();
+
     return () => {
       const variantSlots = props.recipe();
       const resolved = {
-        surfaceVariant: undefined,
+        surfaceVariant,
         variant: props.controlVariant ?? ("primary" as FormControlVariant),
       };
       const controlProps = { "data-variant": resolved.variant };

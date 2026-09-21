@@ -10,6 +10,7 @@ import { computed, defineComponent, h, type PropType } from "vue";
 import { type ClearableChangeEvent, useClearableInput } from "../../hooks/use-clearable-input";
 import type { VariantClassNames } from "../../internal/types";
 import { InputGroupRoot } from "../input-group/input-group-core";
+import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { InputClearAddon } from "./input-clear-button";
 
 type FormControlVariant = "primary" | "secondary";
@@ -76,8 +77,9 @@ export const Input = defineComponent({
     variant: { default: undefined, type: String as PropType<FormControlVariant> },
   },
   setup(props, { attrs }) {
+    const surfaceVariant = useFormControlSurface();
     const resolvedVariant = computed(() => ({
-      surfaceVariant: undefined,
+      surfaceVariant,
       variant: props.variant ?? ("primary" as FormControlVariant),
     }));
 
@@ -99,7 +101,10 @@ export const Input = defineComponent({
     return () => {
       const resolved = resolvedVariant.value;
       const skipClearable = !props.clearable || props.type === "file" || props.type === "password";
-      const shellArgs = { variant: resolved.variant };
+      const shellArgs = {
+        surfaceVariant: resolved.surfaceVariant,
+        variant: resolved.variant,
+      };
       const controlProps = { "data-variant": resolved.variant };
       const slots = props.recipe();
 

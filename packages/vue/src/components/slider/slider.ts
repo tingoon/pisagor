@@ -1,6 +1,7 @@
 import { Slider as SliderPrimitive } from "@ark-ui/vue/slider";
 import { sliderRecipe } from "@pisagor/recipes/slider";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
+import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -55,9 +56,11 @@ export const Slider = defineComponent({
     variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
   },
   setup(props, { attrs, slots }) {
+    const surfaceVariant = useFormControlSurface();
+
     return () => {
       const resolved = {
-        surfaceVariant: undefined,
+        surfaceVariant,
         variant: props.variant ?? ("primary" as FormControlVariant),
       };
       const trackShellProps = { "data-variant": resolved.variant };
