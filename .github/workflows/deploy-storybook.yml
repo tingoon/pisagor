@@ -2,7 +2,7 @@ name: Deploy Storybook
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
   workflow_dispatch:
 
 permissions:
@@ -41,7 +41,7 @@ jobs:
           cp -R apps/react/storybook-static/. site/react/
           cp -R apps/vue/storybook-static/. site/vue/
           cp -R apps/astro/storybook-static/. site/astro/
-      - uses: actions/upload-pages-artifact@v4
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: site
 
@@ -53,4 +53,4 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
