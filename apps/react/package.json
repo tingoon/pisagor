@@ -1,7 +1,7 @@
 {
   "dependencies": {
-    "@ark-ui/react": "^5.39.1",
-    "@mantine/hooks": "^9.6.1",
+    "@ark-ui/react": "^5.39.2",
+    "@mantine/hooks": "^9.6.2",
     "@phosphor-icons/react": "^2.1.10",
     "@pisagor/react": "workspace:*",
     "@pisagor/react-charts": "workspace:*",
@@ -9,14 +9,14 @@
     "@pisagor/utils": "workspace:*",
     "react": "catalog:",
     "react-dom": "catalog:",
-    "zod": "^4.6.2"
+    "zod": "^4.6.5"
   },
   "description": "React Storybook for @pisagor/react package stories.",
   "devDependencies": {
     "@pisagor/tsconfig": "workspace:*",
     "@storybook/addon-a11y": "^10.6.0",
     "@storybook/addon-docs": "^10.6.0",
-    "@storybook/addon-mcp": "^0.7.0",
+    "@storybook/addon-mcp": "^10.6.0",
     "@storybook/react-vite": "^10.6.0",
     "@tailwindcss/vite": "catalog:",
     "@types/react": "catalog:",

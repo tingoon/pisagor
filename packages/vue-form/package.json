@@ -3,7 +3,7 @@
     "url": "https://github.com/tingoon/pisagor/issues"
   },
   "dependencies": {
-    "@pisagor/vue": "^0.1.0",
+    "@pisagor/vue": "^0.1.1",
     "@tanstack/vue-form": "^1.33.5"
   },
   "description": "Form fields and TanStack Form integration for Pisagor Vue.",

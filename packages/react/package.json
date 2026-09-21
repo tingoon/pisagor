@@ -3,15 +3,15 @@
     "url": "https://github.com/tingoon/pisagor/issues"
   },
   "dependencies": {
-    "@ark-ui/react": "^5.39.1",
-    "@mantine/hooks": "^9.6.1",
+    "@ark-ui/react": "^5.39.2",
+    "@mantine/hooks": "^9.6.2",
     "@phosphor-icons/react": "^2.1.10",
     "@pisagor/recipes": "^0.1.0",
     "@pisagor/tokens": "^0.1.0",
     "@pisagor/utils": "^0.1.0",
     "@tailwindcss/typography": "^0.5.20",
     "@tanstack/react-table": "^9.2.4",
-    "@tanstack/react-virtual": "^3.14.12",
+    "@tanstack/react-virtual": "^3.14.13",
     "@tiptap/react": "^3.31.3",
     "@tiptap/starter-kit": "^3.31.3",
     "react-phone-number-input": "^3.4.18",
