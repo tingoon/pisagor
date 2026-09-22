@@ -19,3 +19,5 @@ The root `@pisagor/react` barrel exports **light** components only. Heavy compon
 Charts: [`@pisagor/react-charts`](../react-charts). Form fields: [`@pisagor/react-form`](../react-form) and `@pisagor/react-form/tanstack`. Hooks: `@pisagor/react/hooks`. Utils (`createContext`, …): `@pisagor/react/utils`.
 
 See the [root README](../../README.md) for Tailwind setup.
+
+Agents: prefer [`@pisagor/mcp`](../mcp) (`bunx @pisagor/mcp`). This package also ships Intent skills under `skills/`.
