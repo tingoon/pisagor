@@ -26,7 +26,7 @@ import type {
   DialogFooterProps,
   DialogHeaderProps,
 } from "../dialog";
-import { Dialog } from "../dialog";
+import { ScrollArea } from "../scroll-area";
 import { TourContext, useTourContext } from "./tour.context";
 
 // #region Types
@@ -200,8 +200,19 @@ export function TourContent({
   );
 }
 
-export function TourBody(props: DialogBodyProps) {
-  return <Dialog.Body {...props} data-part="body" data-scope="tour" />;
+export function TourBody({ scrollFade = false, className, ...rest }: DialogBodyProps) {
+  const dialogSlots = dialogRecipe();
+
+  return (
+    <ScrollArea scrollFade={scrollFade}>
+      <ark.div
+        {...rest}
+        className={dialogSlots.body({ className })}
+        data-part="body"
+        data-scope="tour"
+      />
+    </ScrollArea>
+  );
 }
 
 export function TourSpotlight(props: TourSpotlightProps) {
@@ -210,8 +221,19 @@ export function TourSpotlight(props: TourSpotlightProps) {
   return <TourPrimitive.Spotlight {...props} className={slots.spotlight()} />;
 }
 
-export function TourHeader(props: DialogHeaderProps) {
-  return <Dialog.Header {...props} data-part="header" data-scope="tour" />;
+export function TourHeader({ children, className, ...rest }: DialogHeaderProps) {
+  const dialogSlots = dialogRecipe();
+
+  return (
+    <ark.div
+      {...rest}
+      className={dialogSlots.header({ className })}
+      data-part="header"
+      data-scope="tour"
+    >
+      {children}
+    </ark.div>
+  );
 }
 
 export function TourTitle({ className, ...rest }: TourTitleProps) {
@@ -248,18 +270,21 @@ export function TourCloseTrigger(props: TourCloseTriggerProps) {
   return <TourPrimitive.CloseTrigger {...props} />;
 }
 
-export function TourFooter({ children, ...rest }: DialogFooterProps) {
+export function TourFooter({ children, className, ...rest }: DialogFooterProps) {
+  const dialogSlots = dialogRecipe();
+
   return (
     <TourPrimitive.Control {...rest} asChild>
-      <Dialog.Footer data-part="control" data-scope="tour">
+      <ark.div className={dialogSlots.footer({ className })} data-part="control" data-scope="tour">
         {children}
-      </Dialog.Footer>
+      </ark.div>
     </TourPrimitive.Control>
   );
 }
 
 export function TourActions({ className, ...rest }: DialogFooterProps) {
   const { slots, tour } = useTourContext();
+  const dialogSlots = dialogRecipe();
 
   const actions = tour.step?.actions ?? [];
 
@@ -269,7 +294,11 @@ export function TourActions({ className, ...rest }: DialogFooterProps) {
 
   return (
     <TourPrimitive.Control {...rest} asChild>
-      <Dialog.Footer className={slots.actions({ className })} data-part="actions" data-scope="tour">
+      <ark.div
+        className={cn(dialogSlots.footer(), slots.actions({ className }))}
+        data-part="actions"
+        data-scope="tour"
+      >
         {actions.map((action) => (
           <TourActionTrigger action={action} asChild key={action.label}>
             <Button
@@ -284,7 +313,7 @@ export function TourActions({ className, ...rest }: DialogFooterProps) {
             </Button>
           </TourActionTrigger>
         ))}
-      </Dialog.Footer>
+      </ark.div>
     </TourPrimitive.Control>
   );
 }

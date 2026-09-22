@@ -73,7 +73,7 @@ export const TagsWithCombobox = defineComponent({
           () => [
             h(
               TagsInput.RootProvider as ArkPart,
-              { class: "w-full", value: tagsInput } as unknown as ArkProps,
+              { class: "w-full", value: tagsInput.value } as unknown as ArkProps,
               {
                 default: () =>
                   h(TagsInput.Context as ArkPart, null, {

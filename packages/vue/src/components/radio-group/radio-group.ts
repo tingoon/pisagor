@@ -1,9 +1,9 @@
 import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/vue/radio-group";
+import { fieldRecipe } from "@pisagor/recipes/field";
 import { formControlRadioToggleRecipe } from "@pisagor/recipes/form-control";
 import { radioGroupItemRecipe, radioGroupRecipe } from "@pisagor/recipes/radio-group";
-import { cn } from "@pisagor/utils";
+import { type ClassValue, cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { FieldLabel } from "../field/field";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
@@ -151,15 +151,13 @@ export const RadioGroupItemText = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () =>
-      h(FieldLabel as ArkPart, { asChild: true }, () =>
-        h(
-          RadioGroupPrimitive.ItemText as ArkPart,
-          {
-            ...(attrs as object),
-            class: props.class,
-          },
-          slots,
-        ),
+      h(
+        RadioGroupPrimitive.ItemText as ArkPart,
+        {
+          ...(attrs as object),
+          class: cn(fieldRecipe().label(), props.class),
+        },
+        slots,
       );
   },
 });
@@ -169,14 +167,13 @@ export const RadioGroupLabel = defineComponent({
   name: "RadioGroupLabel",
   setup(_props, { attrs, slots }) {
     return () =>
-      h(FieldLabel as ArkPart, { asChild: true }, () =>
-        h(
-          RadioGroupPrimitive.Label as ArkPart,
-          {
-            ...(attrs as object),
-          },
-          slots,
-        ),
+      h(
+        RadioGroupPrimitive.Label as ArkPart,
+        {
+          ...(attrs as object),
+          class: cn(fieldRecipe().label(), (attrs as { class?: ClassValue }).class),
+        },
+        slots,
       );
   },
 });

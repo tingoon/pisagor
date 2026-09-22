@@ -270,14 +270,17 @@ export const WithCombobox = meta.story({
           @input-value-change="({ inputValue }) => filter(inputValue)"
         >
           <TagsInput.RootProvider class="w-full" :value="tagsInput">
-            <TagsInput.Context v-slot="{ value }">
-              <TagsInput.Item v-for="(tag, index) in value" :key="tag" :index="index" :value="tag">
-                {{ tag }}
-              </TagsInput.Item>
-              <Combobox.FieldInput as-child>
-                <TagsInput.Input placeholder="Search framework" />
-              </Combobox.FieldInput>
-            </TagsInput.Context>
+            <TagsInput.Item
+              v-for="(tag, index) in tagsInput.value"
+              :key="tag"
+              :index="index"
+              :value="tag"
+            >
+              {{ tag }}
+            </TagsInput.Item>
+            <Combobox.FieldInput as-child>
+              <TagsInput.Input placeholder="Search framework" />
+            </Combobox.FieldInput>
           </TagsInput.RootProvider>
           <Combobox.Content>
             <Combobox.List>

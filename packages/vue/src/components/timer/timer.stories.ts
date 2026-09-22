@@ -196,9 +196,13 @@ export const CustomSeparator = meta.story({
         <Card.Content>
           <Timer autoStart class="items-center gap-2" countdown :startMs="5 * 60 * 1000">
             <Timer.Area>
-              <Timer.Item type="minutes" />
+              <Timer.ItemGroup>
+                <Timer.Item type="minutes" />
+              </Timer.ItemGroup>
               <Timer.Separator>//</Timer.Separator>
-              <Timer.Item type="seconds" />
+              <Timer.ItemGroup>
+                <Timer.Item type="seconds" />
+              </Timer.ItemGroup>
             </Timer.Area>
           </Timer>
         </Card.Content>
@@ -253,9 +257,13 @@ export const Pomodoro = meta.story({
           <Timer class="items-center justify-center px-10" countdown :startMs="25 * 60 * 1000">
             <span>🍅</span>
             <Timer.Area>
-              <Timer.Item class="text-5xl" type="minutes" />
+              <Timer.ItemGroup>
+                <Timer.Item class="text-5xl" type="minutes" />
+              </Timer.ItemGroup>
               <Timer.Separator />
-              <Timer.Item class="text-5xl" type="seconds" />
+              <Timer.ItemGroup>
+                <Timer.Item class="text-5xl" type="seconds" />
+              </Timer.ItemGroup>
             </Timer.Area>
             <span class="mt-0.5 font-medium text-[10px] text-muted-foreground uppercase tracking-[0.22em]">
               Focus

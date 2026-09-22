@@ -11,6 +11,7 @@ import { Portal } from "@ark-ui/react/portal";
 import { CalendarIcon, ClockIcon, XIcon } from "@phosphor-icons/react";
 import { calendarRecipe } from "@pisagor/recipes/calendar";
 import { datePickerRecipe } from "@pisagor/recipes/date-picker";
+import { useContext } from "react";
 
 import { useClearableInput } from "../../hooks";
 import { Button } from "../button";
@@ -43,13 +44,20 @@ export interface DatePickerInputProps
   clearable?: boolean;
 }
 
-export interface DatePickerTimerProps extends InputProps {
+export interface DatePickerTimerProps extends Omit<InputProps, "recipe"> {
   /**
    * Whether to show a clear button when the input has a value.
    *
    * @defaultValue false
    */
   clearable?: boolean;
+  /**
+   * Style recipe. Defaults to `datePickerRecipe` from `@pisagor/recipes/date-picker`.
+   * Used when rendered outside `DatePicker` (standalone time field).
+   *
+   * @defaultValue datePickerRecipe
+   */
+  recipe?: typeof datePickerRecipe;
 }
 
 export interface DatePickerContentProps extends DatePickerPrimitiveContentProps {
@@ -190,9 +198,10 @@ export function DatePickerTimer({
   onChange,
   className,
   classNames,
+  recipe = datePickerRecipe,
   ...rest
 }: DatePickerTimerProps) {
-  const { slots } = useDatePicker();
+  const slots = useContext(DatePickerSlotsContext)?.slots ?? recipe();
   const { canClear, handleChange, handleClear, mergedRef } = useClearableInput({
     clearable,
     defaultValue,
