@@ -7,6 +7,7 @@ export default defineConfig({
     },
     "apps/astro": {
       entry: [".storybook/**/*", "src/**/*", "../../packages/astro/**/*.stories.@(ts|tsx)"],
+      ignoreDependencies: ["chromatic"],
     },
     "apps/react": {
       entry: [
@@ -16,6 +17,7 @@ export default defineConfig({
         "../../packages/react-charts/**/*.stories.@(ts|tsx)",
         "../../packages/react-form/**/*.stories.@(ts|tsx)",
       ],
+      ignoreDependencies: ["chromatic"],
     },
     "apps/vue": {
       entry: [
@@ -25,6 +27,7 @@ export default defineConfig({
         "../../packages/vue-charts/**/*.stories.@(ts|tsx)",
         "../../packages/vue-form/**/*.stories.@(ts|tsx)",
       ],
+      ignoreDependencies: ["chromatic"],
     },
     "packages/astro": {
       entry: ["src/**/*"],
