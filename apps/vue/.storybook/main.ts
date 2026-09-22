@@ -16,8 +16,8 @@ export default defineMain({
     enableCrashReports: false,
   },
   features: {
+    // experimentalDocgenServer needs typescript.sys (removed in TypeScript 7).
     componentsManifest: true,
-    experimentalDocgenServer: true,
   },
   framework: getAbsolutePath("@storybook/vue3-vite"),
   stories: [

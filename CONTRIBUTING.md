@@ -30,7 +30,7 @@ Manual run: Actions → **Chromatic** → **Run workflow**.
 
 Published remote MCP (`https://main--<app-id>.chromatic.com/mcp`) is currently reliable for **React**. Vue/Astro Storybooks still publish for UI review; their Chromatic `/mcp` route may 404. Cursor OAuth for Chromatic MCP uses client id `cdf3737dff9d485485968e50b63fd8b4` under `auth.client_id`.
 
-Vue Storybook needs `componentsManifest` + `experimentalDocgenServer` for local docs MCP tools. Astro has no components-manifest generator yet.
+Vue Storybook keeps `componentsManifest` on; `experimentalDocgenServer` stays off until Storybook supports TypeScript 7 (no `typescript.sys`). Astro has no components-manifest generator yet.
 
 ## Checks
 
