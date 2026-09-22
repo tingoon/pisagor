@@ -1,0 +1,14 @@
+{
+  "description": "Monorepo maintenance scripts (catalog generate, …).",
+  "devDependencies": {
+    "@pisagor/tsconfig": "workspace:*"
+  },
+  "name": "@pisagor/scripts",
+  "private": true,
+  "scripts": {
+    "generate": "bun ./src/generate-catalog.ts",
+    "type-check": "tsc"
+  },
+  "type": "module",
+  "version": "0.0.0"
+}
