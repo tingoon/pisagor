@@ -35,6 +35,7 @@ export default defineConfig({
         "src/**/*.stories.ts": ["unresolved", "dependencies", "unlisted"],
       },
     },
+    "packages/mcp": {},
     "packages/react": {
       entry: ["src/**/*"],
       ignoreIssues: {
@@ -82,6 +83,9 @@ export default defineConfig({
         "src/**/*.stories.ts": ["unresolved", "dependencies", "unlisted"],
         "src/internal/**": ["exports", "types"],
       },
+    },
+    scripts: {
+      entry: ["src/**/*"],
     },
   },
 });
