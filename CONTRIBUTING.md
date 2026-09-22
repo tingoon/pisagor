@@ -16,7 +16,9 @@ bun run dev
 # optional: bunx turbo dev --filter=astro-stories
 ```
 
-React Storybook: http://localhost:4001. Vue: http://localhost:4002. Astro: http://localhost:4003.
+- React Storybook: http://localhost:4001.
+- Vue: http://localhost:4002.
+- Astro: http://localhost:4003.
 
 ## Chromatic
 
@@ -38,6 +40,8 @@ Vue Storybook keeps `componentsManifest` on; `experimentalDocgenServer` stays of
 bun run check
 bun run test
 ```
+
+## Tooling
 
 ```bash
 # Report unused exports, files, and deps after substantial edits (see knip.config.ts)
