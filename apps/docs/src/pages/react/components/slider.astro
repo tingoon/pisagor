@@ -1,0 +1,136 @@
+---
+import {
+  Controlled,
+  Default,
+  Disabled,
+  sources as examples,
+  Invalid,
+  imports,
+  Marks,
+  MinMax,
+  Range,
+  Step,
+  Variants,
+  Vertical,
+  WithLabel,
+} from "@pisagor/react/slider/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { sliderProps } from "../../../lib/props/slider";
+
+export const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "variants", text: "Variants" },
+  { depth: 3, slug: "marks", text: "Marks" },
+  { depth: 3, slug: "min-max", text: "Min Max" },
+  { depth: 3, slug: "range", text: "Range" },
+  { depth: 3, slug: "step", text: "Step" },
+  { depth: 3, slug: "vertical", text: "Vertical" },
+  { depth: 3, slug: "with-label", text: "With Label" },
+  { depth: 3, slug: "invalid", text: "Invalid" },
+  { depth: 3, slug: "disabled", text: "Disabled" },
+  { depth: 3, slug: "controlled", text: "Controlled" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+export {
+  CodeBlock,
+  ComponentHeader,
+  ComponentPreview,
+  Controlled,
+  Default,
+  Disabled,
+  DocsLayout,
+  examples,
+  Installation,
+  Invalid,
+  imports,
+  Marks,
+  MinMax,
+  PropsTable,
+  Range,
+  Step,
+  sliderProps,
+  Variants,
+  Vertical,
+  WithLabel,
+};
+---
+
+<DocsLayout
+  description="Lets users pick a value along a track by dragging a thumb, optionally with labeled steps."
+  framework="react"
+  headings={headings}
+  title="Slider"
+>
+
+  <ComponentHeader framework="react" id="slider" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <ComponentPreview code={examples.Variants} language="tsx" title="Variants">
+    <Variants client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="marks">Marks</h3>
+  <ComponentPreview code={examples.Marks} language="tsx" title="Marks">
+    <Marks client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="min-max">Min Max</h3>
+  <ComponentPreview code={examples.MinMax} language="tsx" title="Min Max">
+    <MinMax client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="range">Range</h3>
+  <ComponentPreview code={examples.Range} language="tsx" title="Range">
+    <Range client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="step">Step</h3>
+  <ComponentPreview code={examples.Step} language="tsx" title="Step">
+    <Step client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="vertical">Vertical</h3>
+  <ComponentPreview code={examples.Vertical} language="tsx" title="Vertical">
+    <Vertical client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-label">With Label</h3>
+  <ComponentPreview code={examples.WithLabel} language="tsx" title="With Label">
+    <WithLabel client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">Invalid</h3>
+  <ComponentPreview code={examples.Invalid} language="tsx" title="Invalid">
+    <Invalid client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <ComponentPreview code={examples.Disabled} language="tsx" title="Disabled">
+    <Disabled client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <ComponentPreview code={examples.Controlled} language="tsx" title="Controlled">
+    <Controlled client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="tsx" title="Default">
+    <Default client:only="react" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/react" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/slider</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={sliderProps} />
+</DocsLayout>

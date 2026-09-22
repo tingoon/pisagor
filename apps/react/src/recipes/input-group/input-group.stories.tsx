@@ -20,8 +20,9 @@ const meta = preview.meta({
   title: "Recipes/Forms/Input Group",
 });
 
-export const CodeEditor = meta.story({
+export const Playground = meta.story({
   render: () => <CodeEditorInput />,
+  tags: ["autodocs"],
 });
 
 export const WithMenu = meta.story({

@@ -1,13 +1,9 @@
 import type { NumberInputProps } from "@pisagor/react";
 import { NumberInput } from "@pisagor/react";
 import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
-import type { SetRequired } from "../../internal/types";
 
 // #region Types
-type NumberInputControlProps = SetRequired<
-  Omit<NumberInputProps, "invalid" | "name" | "value">,
-  "onValueChange"
->;
+type NumberInputControlProps = Omit<NumberInputProps, "invalid" | "name" | "value">;
 
 export interface NumberFieldProps extends FieldPresentationProps, NumberInputControlProps {
   name?: string;

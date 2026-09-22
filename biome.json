@@ -7,6 +7,11 @@
       }
     }
   },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
   "files": {
     "ignoreUnknown": true,
     "includes": ["**", "!**/*.gen.*", "!bun.lock"]
@@ -16,6 +21,9 @@
     "lineWidth": 100
   },
   "linter": {
+    "domains": {
+      "astro": "recommended"
+    },
     "rules": {
       "suspicious": {
         "noImportCycles": "error"

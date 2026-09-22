@@ -1,0 +1,150 @@
+---
+import {
+  Checkboxes,
+  Default,
+  Destructive,
+  sources as examples,
+  GroupLabel,
+  Icons,
+  imports,
+  Link,
+  Nested,
+  Placements,
+  QuickItem,
+  RadioGroup,
+  Shortcuts,
+  WithScroll,
+  WithSeparator,
+} from "@pisagor/vue/dropdown-menu/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { dropdownMenuProps } from "../../../lib/props/dropdown-menu";
+
+export const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "shortcuts", text: "Shortcuts" },
+  { depth: 3, slug: "checkboxes", text: "Checkboxes" },
+  { depth: 3, slug: "destructive", text: "Destructive" },
+  { depth: 3, slug: "group-label", text: "Group Label" },
+  { depth: 3, slug: "icons", text: "Icons" },
+  { depth: 3, slug: "link", text: "Link" },
+  { depth: 3, slug: "nested", text: "Nested" },
+  { depth: 3, slug: "quick-item", text: "Quick Item" },
+  { depth: 3, slug: "radio-group", text: "Radio Group" },
+  { depth: 3, slug: "with-scroll", text: "With Scroll" },
+  { depth: 3, slug: "with-separator", text: "With Separator" },
+  { depth: 3, slug: "placements", text: "Placements" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+export {
+  Checkboxes,
+  CodeBlock,
+  ComponentHeader,
+  ComponentPreview,
+  Default,
+  Destructive,
+  DocsLayout,
+  dropdownMenuProps,
+  examples,
+  GroupLabel,
+  Icons,
+  Installation,
+  imports,
+  Link,
+  Nested,
+  Placements,
+  PropsTable,
+  QuickItem,
+  RadioGroup,
+  Shortcuts,
+  WithScroll,
+  WithSeparator,
+};
+---
+
+<DocsLayout
+  description="Opens a dropdown list of actions or destinations from a trigger for navigation and contextual commands."
+  framework="vue"
+  headings={headings}
+  title="Dropdown Menu"
+>
+
+  <ComponentHeader framework="vue" id="dropdown-menu" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="shortcuts">Shortcuts</h3>
+  <ComponentPreview code={examples.Shortcuts} language="vue" title="Shortcuts">
+    <Shortcuts client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="checkboxes">Checkboxes</h3>
+  <ComponentPreview code={examples.Checkboxes} language="vue" title="Checkboxes">
+    <Checkboxes client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="destructive">Destructive</h3>
+  <ComponentPreview code={examples.Destructive} language="vue" title="Destructive">
+    <Destructive client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="group-label">Group Label</h3>
+  <ComponentPreview code={examples.GroupLabel} language="vue" title="Group Label">
+    <GroupLabel client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="icons">Icons</h3>
+  <ComponentPreview code={examples.Icons} language="vue" title="Icons">
+    <Icons client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="link">Link</h3>
+  <ComponentPreview code={examples.Link} language="vue" title="Link">
+    <Link client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="nested">Nested</h3>
+  <ComponentPreview code={examples.Nested} language="vue" title="Nested">
+    <Nested client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="quick-item">Quick Item</h3>
+  <ComponentPreview code={examples.QuickItem} language="vue" title="Quick Item">
+    <QuickItem client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="radio-group">Radio Group</h3>
+  <ComponentPreview code={examples.RadioGroup} language="vue" title="Radio Group">
+    <RadioGroup client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-scroll">With Scroll</h3>
+  <ComponentPreview code={examples.WithScroll} language="vue" title="With Scroll">
+    <WithScroll client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-separator">With Separator</h3>
+  <ComponentPreview code={examples.WithSeparator} language="vue" title="With Separator">
+    <WithSeparator client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="placements">Placements</h3>
+  <ComponentPreview code={examples.Placements} language="vue" title="Placements">
+    <Placements client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="vue" title="Default">
+    <Default client:only="vue" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/vue" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/dropdown-menu</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={dropdownMenuProps} />
+</DocsLayout>

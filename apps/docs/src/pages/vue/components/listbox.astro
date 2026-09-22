@@ -1,0 +1,178 @@
+---
+import {
+  Compound,
+  Controlled,
+  Default,
+  Disabled,
+  DisabledItem,
+  sources as examples,
+  Grid,
+  Grouping,
+  Horizontal,
+  ImageExplorer,
+  imports,
+  SelectionExtended,
+  SelectionMultiple,
+  SelectionNone,
+  TransferList,
+  WithDescription,
+  WithFilter,
+  WithIcon,
+  WithPopover,
+} from "@pisagor/vue/listbox/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { listboxProps } from "../../../lib/props/listbox";
+
+export const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "disabled-item", text: "Disabled Item" },
+  { depth: 3, slug: "grid", text: "Grid" },
+  { depth: 3, slug: "grouping", text: "Grouping" },
+  { depth: 3, slug: "horizontal", text: "Horizontal" },
+  { depth: 3, slug: "disabled", text: "Disabled" },
+  { depth: 3, slug: "image-explorer", text: "Image Explorer" },
+  { depth: 3, slug: "selection-extended", text: "Selection Extended" },
+  { depth: 3, slug: "selection-multiple", text: "Selection Multiple" },
+  { depth: 3, slug: "selection-none", text: "Selection None" },
+  { depth: 3, slug: "transfer-list", text: "Transfer List" },
+  { depth: 3, slug: "with-description", text: "With Description" },
+  { depth: 3, slug: "with-filter", text: "With Filter" },
+  { depth: 3, slug: "with-icon", text: "With Icon" },
+  { depth: 3, slug: "with-popover", text: "With Popover" },
+  { depth: 3, slug: "controlled", text: "Controlled" },
+  { depth: 3, slug: "compound", text: "Compound" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+export {
+  CodeBlock,
+  ComponentHeader,
+  ComponentPreview,
+  Compound,
+  Controlled,
+  Default,
+  Disabled,
+  DisabledItem,
+  DocsLayout,
+  examples,
+  Grid,
+  Grouping,
+  Horizontal,
+  ImageExplorer,
+  Installation,
+  imports,
+  listboxProps,
+  PropsTable,
+  SelectionExtended,
+  SelectionMultiple,
+  SelectionNone,
+  TransferList,
+  WithDescription,
+  WithFilter,
+  WithIcon,
+  WithPopover,
+};
+---
+
+<DocsLayout
+  description="Lets users choose an option from a static list."
+  framework="vue"
+  headings={headings}
+  title="Listbox"
+>
+
+  <ComponentHeader framework="vue" id="listbox" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled-item">Disabled Item</h3>
+  <ComponentPreview code={examples.DisabledItem} language="vue" title="Disabled Item">
+    <DisabledItem client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="grid">Grid</h3>
+  <ComponentPreview code={examples.Grid} language="vue" title="Grid">
+    <Grid client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="grouping">Grouping</h3>
+  <ComponentPreview code={examples.Grouping} language="vue" title="Grouping">
+    <Grouping client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="horizontal">Horizontal</h3>
+  <ComponentPreview code={examples.Horizontal} language="vue" title="Horizontal">
+    <Horizontal client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <ComponentPreview code={examples.Disabled} language="vue" title="Disabled">
+    <Disabled client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="image-explorer">Image Explorer</h3>
+  <ComponentPreview code={examples.ImageExplorer} language="vue" title="Image Explorer">
+    <ImageExplorer client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="selection-extended">Selection Extended</h3>
+  <ComponentPreview code={examples.SelectionExtended} language="vue" title="Selection Extended">
+    <SelectionExtended client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="selection-multiple">Selection Multiple</h3>
+  <ComponentPreview code={examples.SelectionMultiple} language="vue" title="Selection Multiple">
+    <SelectionMultiple client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="selection-none">Selection None</h3>
+  <ComponentPreview code={examples.SelectionNone} language="vue" title="Selection None">
+    <SelectionNone client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="transfer-list">Transfer List</h3>
+  <ComponentPreview code={examples.TransferList} language="vue" title="Transfer List">
+    <TransferList client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-description">With Description</h3>
+  <ComponentPreview code={examples.WithDescription} language="vue" title="With Description">
+    <WithDescription client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-filter">With Filter</h3>
+  <ComponentPreview code={examples.WithFilter} language="vue" title="With Filter">
+    <WithFilter client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-icon">With Icon</h3>
+  <ComponentPreview code={examples.WithIcon} language="vue" title="With Icon">
+    <WithIcon client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-popover">With Popover</h3>
+  <ComponentPreview code={examples.WithPopover} language="vue" title="With Popover">
+    <WithPopover client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <ComponentPreview code={examples.Controlled} language="vue" title="Controlled">
+    <Controlled client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="compound">Compound</h3>
+  <ComponentPreview code={examples.Compound} language="vue" title="Compound">
+    <Compound client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="vue" title="Default">
+    <Default client:only="vue" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/vue" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/listbox</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={listboxProps} />
+</DocsLayout>

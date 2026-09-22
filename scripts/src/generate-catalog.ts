@@ -157,7 +157,7 @@ function buildComponentsCatalog(target: ScanTarget): ComponentsCatalog {
 }
 
 function buildRecipesCatalog(): RecipesCatalog {
-  const recipesRoot = path.join(workspaceRoot, "packages/recipes/src/ui");
+  const recipesRoot = path.join(workspaceRoot, "packages/recipes/src");
   const recipes: Record<string, CatalogFile> = {};
   if (existsSync(recipesRoot)) {
     for (const file of readdirSync(recipesRoot)) {

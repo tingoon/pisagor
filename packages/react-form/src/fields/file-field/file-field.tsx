@@ -1,13 +1,9 @@
 import type { FileInputProps } from "@pisagor/react";
 import { FileInput } from "@pisagor/react";
 import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
-import type { SetRequired } from "../../internal/types";
 
 // #region Types
-type FileInputControlProps = SetRequired<
-  Omit<FileInputProps, "invalid" | "name" | "onFilesChange">,
-  "onValueChange"
->;
+type FileInputControlProps = Omit<FileInputProps, "invalid" | "name" | "onFilesChange">;
 
 export interface FileFieldProps extends FieldPresentationProps, FileInputControlProps {
   name?: string;

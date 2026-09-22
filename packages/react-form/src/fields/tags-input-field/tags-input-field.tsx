@@ -1,10 +1,9 @@
 import type { TagsInputProps } from "@pisagor/react";
 import { TagsInput } from "@pisagor/react";
 import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
-import type { SetRequired } from "../../internal/types";
 
 // #region Types
-type TagsInputControlProps = SetRequired<Omit<TagsInputProps, "invalid" | "name">, "onValueChange">;
+type TagsInputControlProps = Omit<TagsInputProps, "invalid" | "name">;
 
 export interface TagsInputFieldProps extends FieldPresentationProps, TagsInputControlProps {
   name?: string;

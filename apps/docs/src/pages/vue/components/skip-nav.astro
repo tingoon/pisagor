@@ -1,0 +1,62 @@
+---
+import { Default, sources as examples, imports } from "@pisagor/vue/skip-nav/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { skipNavProps } from "../../../lib/props/skip-nav";
+
+export const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+export {
+  CodeBlock,
+  ComponentHeader,
+  ComponentPreview,
+  Default,
+  DocsLayout,
+  examples,
+  Installation,
+  imports,
+  PropsTable,
+  skipNavProps,
+};
+---
+
+<DocsLayout
+  description="Lets keyboard users jump past repetitive navigation straight to the main content."
+  framework="vue"
+  headings={headings}
+  title="Skip Nav"
+>
+
+  <ComponentHeader framework="vue" id="skip-nav" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="vue" title="Default">
+    <Default client:only="vue" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/vue" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/skip-nav</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={skipNavProps} />
+</DocsLayout>

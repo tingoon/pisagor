@@ -1,0 +1,150 @@
+---
+import {
+  AlignBlockEnd,
+  AlignBlockStart,
+  AlignInlineEnd,
+  AlignInlineStart,
+  Default,
+  Disabled,
+  sources as examples,
+  Invalid,
+  imports,
+  Sizes,
+  Variants,
+  WithBadge,
+  WithKeyboardShortcut,
+  WithSpinner,
+  WithTextarea,
+} from "@pisagor/react/input-group/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { inputGroupProps } from "../../../lib/props/input-group";
+
+export const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 3, slug: "sizes", text: "Sizes" },
+  { depth: 3, slug: "variants", text: "Variants" },
+  { depth: 3, slug: "with-textarea", text: "With Textarea" },
+  { depth: 3, slug: "disabled", text: "Disabled" },
+  { depth: 3, slug: "invalid", text: "Invalid" },
+  { depth: 3, slug: "align-block-end", text: "Align Block End" },
+  { depth: 3, slug: "align-block-start", text: "Align Block Start" },
+  { depth: 3, slug: "align-inline-end", text: "Align Inline End" },
+  { depth: 3, slug: "align-inline-start", text: "Align Inline Start" },
+  { depth: 3, slug: "with-badge", text: "With Badge" },
+  { depth: 3, slug: "with-keyboard-shortcut", text: "With Keyboard Shortcut" },
+  { depth: 3, slug: "with-spinner", text: "With Spinner" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+export {
+  AlignBlockEnd,
+  AlignBlockStart,
+  AlignInlineEnd,
+  AlignInlineStart,
+  CodeBlock,
+  ComponentHeader,
+  ComponentPreview,
+  Default,
+  Disabled,
+  DocsLayout,
+  examples,
+  Installation,
+  Invalid,
+  imports,
+  inputGroupProps,
+  PropsTable,
+  Sizes,
+  Variants,
+  WithBadge,
+  WithKeyboardShortcut,
+  WithSpinner,
+  WithTextarea,
+};
+---
+
+<DocsLayout
+  description="Combines inputs with icons, buttons, or labels in one control so related actions stay together."
+  framework="react"
+  headings={headings}
+  title="Input Group"
+>
+
+  <ComponentHeader framework="react" id="input-group" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="tsx" title="Default">
+    <Default client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sizes">Sizes</h3>
+  <ComponentPreview code={examples.Sizes} language="tsx" title="Sizes">
+    <Sizes client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <ComponentPreview code={examples.Variants} language="tsx" title="Variants">
+    <Variants client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-textarea">With Textarea</h3>
+  <ComponentPreview code={examples.WithTextarea} language="tsx" title="With Textarea">
+    <WithTextarea client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <ComponentPreview code={examples.Disabled} language="tsx" title="Disabled">
+    <Disabled client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">Invalid</h3>
+  <ComponentPreview code={examples.Invalid} language="tsx" title="Invalid">
+    <Invalid client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="align-block-end">Align Block End</h3>
+  <ComponentPreview code={examples.AlignBlockEnd} language="tsx" title="Align Block End">
+    <AlignBlockEnd client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="align-block-start">Align Block Start</h3>
+  <ComponentPreview code={examples.AlignBlockStart} language="tsx" title="Align Block Start">
+    <AlignBlockStart client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="align-inline-end">Align Inline End</h3>
+  <ComponentPreview code={examples.AlignInlineEnd} language="tsx" title="Align Inline End">
+    <AlignInlineEnd client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="align-inline-start">Align Inline Start</h3>
+  <ComponentPreview code={examples.AlignInlineStart} language="tsx" title="Align Inline Start">
+    <AlignInlineStart client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-badge">With Badge</h3>
+  <ComponentPreview code={examples.WithBadge} language="tsx" title="With Badge">
+    <WithBadge client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-keyboard-shortcut">With Keyboard Shortcut</h3>
+  <ComponentPreview code={examples.WithKeyboardShortcut} language="tsx" title="With Keyboard Shortcut">
+    <WithKeyboardShortcut client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-spinner">With Spinner</h3>
+  <ComponentPreview code={examples.WithSpinner} language="tsx" title="With Spinner">
+    <WithSpinner client:only="react" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/react" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/input-group</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={inputGroupProps} />
+</DocsLayout>

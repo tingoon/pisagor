@@ -2,9 +2,6 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { defineMain } from "@storybook/react-vite/node";
 
-const configDir = path.dirname(fileURLToPath(import.meta.url));
-const workspaceRoot = path.resolve(configDir, "../../..");
-
 export default defineMain({
   addons: [getAbsolutePath("@storybook/addon-a11y"), getAbsolutePath("@storybook/addon-docs")],
   core: {
@@ -15,12 +12,7 @@ export default defineMain({
     componentsManifest: true,
   },
   framework: getAbsolutePath("@storybook/react-vite"),
-  stories: [
-    path.join(workspaceRoot, "apps/react/src/**/*.stories.tsx"),
-    path.join(workspaceRoot, "packages/react/src/**/*.stories.tsx"),
-    path.join(workspaceRoot, "packages/react-charts/src/**/*.stories.tsx"),
-    path.join(workspaceRoot, "packages/react-form/src/**/*.stories.tsx"),
-  ],
+  stories: ["../src/**/*.stories.@(js|ts|tsx)"],
 });
 
 function getAbsolutePath(value: string) {

@@ -1,18 +1,13 @@
 import { ark } from "@ark-ui/vue/factory";
+import type { ButtonProps as ButtonSharedProps } from "@pisagor/props/button";
 import { type ButtonVariantProps, buttonRecipe } from "@pisagor/recipes/button";
 import { defineComponent, h, type PropType } from "vue";
 import { Spinner } from "../spinner";
 
 // #region Types
-export interface ButtonProps extends ButtonVariantProps {
+export interface ButtonProps extends ButtonSharedProps {
   disabled?: boolean;
   type?: "button" | "reset" | "submit";
-  /**
-   * Style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
-   *
-   * @defaultValue buttonRecipe
-   */
-  recipe?: typeof buttonRecipe;
   class?: unknown;
 }
 // #endregion

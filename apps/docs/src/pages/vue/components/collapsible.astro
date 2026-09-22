@@ -1,0 +1,101 @@
+---
+import {
+  Compound,
+  Controlled,
+  Default,
+  Disabled,
+  sources as examples,
+  imports,
+  Nested,
+  PartialCollapse,
+} from "@pisagor/vue/collapsible/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { collapsibleProps } from "../../../lib/props/collapsible";
+
+export const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "partial-collapse", text: "Partial Collapse" },
+  { depth: 3, slug: "disabled", text: "Disabled" },
+  { depth: 3, slug: "nested", text: "Nested" },
+  { depth: 3, slug: "controlled", text: "Controlled" },
+  { depth: 3, slug: "compound", text: "Compound" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+export {
+  CodeBlock,
+  ComponentHeader,
+  ComponentPreview,
+  Compound,
+  Controlled,
+  collapsibleProps,
+  Default,
+  Disabled,
+  DocsLayout,
+  examples,
+  Installation,
+  imports,
+  Nested,
+  PartialCollapse,
+  PropsTable,
+};
+---
+
+<DocsLayout
+  description="Hides and reveals a section of content behind a trigger so users can keep dense pages manageable."
+  framework="vue"
+  headings={headings}
+  title="Collapsible"
+>
+
+  <ComponentHeader framework="vue" id="collapsible" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="partial-collapse">Partial Collapse</h3>
+  <ComponentPreview code={examples.PartialCollapse} language="vue" title="Partial Collapse">
+    <PartialCollapse client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <ComponentPreview code={examples.Disabled} language="vue" title="Disabled">
+    <Disabled client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="nested">Nested</h3>
+  <ComponentPreview code={examples.Nested} language="vue" title="Nested">
+    <Nested client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <ComponentPreview code={examples.Controlled} language="vue" title="Controlled">
+    <Controlled client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="compound">Compound</h3>
+  <ComponentPreview code={examples.Compound} language="vue" title="Compound">
+    <Compound client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="vue" title="Default">
+    <Default client:only="vue" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/vue" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/collapsible</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={collapsibleProps} />
+</DocsLayout>

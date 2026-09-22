@@ -36,7 +36,7 @@ type FileInputRootProps = ComponentProps<typeof ark.div> &
     recipe?: typeof fileInputRecipe;
   };
 
-export interface FileInputProps extends NativeFileInputProps, FileInputVariantProps {
+export interface FileInputProps extends NativeFileInputProps {
   /** Marks the control invalid for styling and assistive tech. */
   invalid?: boolean;
   /** Label for the browse button. */

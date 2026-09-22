@@ -1,0 +1,94 @@
+---
+import {
+  Controlled,
+  CustomComposition,
+  Default,
+  sources as examples,
+  imports,
+  Links,
+  PageRange,
+} from "@pisagor/react/pagination/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { paginationProps } from "../../../lib/props/pagination";
+
+export const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "links", text: "Links" },
+  { depth: 3, slug: "page-range", text: "Page Range" },
+  { depth: 3, slug: "custom-composition", text: "Custom Composition" },
+  { depth: 3, slug: "controlled", text: "Controlled" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+export {
+  CodeBlock,
+  ComponentHeader,
+  ComponentPreview,
+  Controlled,
+  CustomComposition,
+  Default,
+  DocsLayout,
+  examples,
+  Installation,
+  imports,
+  Links,
+  PageRange,
+  PropsTable,
+  paginationProps,
+};
+---
+
+<DocsLayout
+  description="Moves through long lists or result sets page by page with previous, next, and numbered links."
+  framework="react"
+  headings={headings}
+  title="Pagination"
+>
+
+  <ComponentHeader framework="react" id="pagination" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="links">Links</h3>
+  <ComponentPreview code={examples.Links} language="tsx" title="Links">
+    <Links client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="page-range">Page Range</h3>
+  <ComponentPreview code={examples.PageRange} language="tsx" title="Page Range">
+    <PageRange client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-composition">Custom Composition</h3>
+  <ComponentPreview code={examples.CustomComposition} language="tsx" title="Custom Composition">
+    <CustomComposition client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <ComponentPreview code={examples.Controlled} language="tsx" title="Controlled">
+    <Controlled client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="tsx" title="Default">
+    <Default client:only="react" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/react" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/pagination</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={paginationProps} />
+</DocsLayout>

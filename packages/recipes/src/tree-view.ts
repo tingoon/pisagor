@@ -1,0 +1,100 @@
+import { tv } from "tailwind-variants";
+
+export const treeViewRecipe = tv({
+  slots: {
+    base: [
+      "[--indentation:--spacing(4)] [--item-gap:--spacing(2)]",
+      "[--padding-block:--spacing(1.5)] [--padding-inline:--spacing(3)]",
+      "[--icon-size:--spacing(4)]",
+      "w-full",
+      "flex flex-col gap-2",
+      "text-foreground",
+    ],
+    control: [
+      "peer",
+      "relative my-px",
+      "flex items-center gap-(--item-gap)",
+      "min-h-8 w-full",
+      "py-(--padding-block) ps-[calc(var(--padding-inline)+var(--indentation)*(var(--depth)-1)+var(--icon-size)*(var(--depth)-1)*0.5)] pe-(--padding-inline)",
+      "bg-transparent",
+      "select-none text-start font-inherit text-muted-foreground",
+      "rounded-md border-none",
+      "cursor-pointer",
+      "transition-[color,background-color] duration-fast ease-out",
+      "hover:bg-muted hover:text-foreground",
+      "outline-hidden focus-visible:outline-2 focus-visible:outline-ring focus-visible:-outline-offset-2",
+      "data-selected:bg-accent data-selected:text-accent-foreground",
+      "data-focus:bg-muted data-focus:text-foreground",
+      "data-disabled:opacity-64 data-disabled:grayscale",
+      "[&_svg]:size-4 [&_svg]:shrink-0",
+      "motion-reduce:transition-none!",
+    ],
+    label: ["select-none font-medium text-foreground text-sm"],
+    tree: ["flex flex-col text-sm", "[&_svg]:size-(--icon-size) [&_svg]:shrink-0"],
+  },
+});
+
+export const treeViewBranchRecipe = tv({
+  slots: {
+    base: "relative",
+    content: [
+      "relative overflow-hidden",
+      "data-[state=open]:animate-[expand_var(--duration-fast)_ease-out]",
+      "data-[state=closed]:animate-[collapse_var(--duration-fast)_ease-out]",
+      "motion-reduce:animate-none!",
+    ],
+    indentGuide: [
+      "absolute z-1",
+      "h-full w-px",
+      "bg-border",
+      "inset-s-[calc(var(--padding-inline)+var(--indentation)*(var(--depth)-1)+var(--icon-size)*0.5*var(--depth))]",
+      "pointer-events-none",
+    ],
+    indicator: [
+      "inline-flex shrink-0 items-center justify-center",
+      "text-muted-foreground",
+      "origin-center transition-transform duration-fast ease-out",
+      "data-[state=open]:rotate-90",
+      "[&_svg]:size-3.5 [&_svg]:shrink-0",
+      "motion-reduce:transition-none!",
+    ],
+    title: [
+      "flex flex-1 items-center gap-(--item-gap)",
+      "overflow-hidden text-ellipsis whitespace-nowrap",
+    ],
+  },
+});
+
+export const treeViewItemRecipe = tv({
+  slots: {
+    checkbox: "[&_svg]:size-3!",
+    icon: "in-[[data-scope=tree-view][data-part=item]:has([data-scope=tree-view][data-part=node-checkbox])]:hidden",
+    renameInput: [
+      "h-full min-w-0",
+      "flex-1",
+      "-my-px px-2 py-0",
+      "text-sm",
+      "border-primary bg-popover text-foreground",
+      "rounded-md border",
+      "selection:bg-primary/20 selection:text-foreground",
+      "outline-hidden focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
+    ],
+    title: [
+      "flex flex-1 items-center gap-(--item-gap)",
+      "text-ellipsis whitespace-nowrap",
+      "overflow-hidden",
+    ],
+  },
+});
+
+export type TreeViewRecipeFn = typeof treeViewRecipe;
+export type TreeViewRecipe = ReturnType<TreeViewRecipeFn>;
+export type TreeViewRecipeSlot = keyof TreeViewRecipe;
+
+export type TreeViewBranchRecipeFn = typeof treeViewBranchRecipe;
+export type TreeViewBranchRecipe = ReturnType<TreeViewBranchRecipeFn>;
+export type TreeViewBranchRecipeSlot = keyof TreeViewBranchRecipe;
+
+export type TreeViewItemRecipeFn = typeof treeViewItemRecipe;
+export type TreeViewItemRecipe = ReturnType<TreeViewItemRecipeFn>;
+export type TreeViewItemRecipeSlot = keyof TreeViewItemRecipe;

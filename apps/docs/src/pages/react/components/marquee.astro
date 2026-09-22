@@ -1,0 +1,129 @@
+---
+import {
+  Autofill,
+  Compound,
+  CustomSpeed,
+  Default,
+  sources as examples,
+  Fade,
+  imports,
+  OrientationHorizontal,
+  OrientationVertical,
+  PauseOnHover,
+  Reverse,
+  Spacing,
+} from "@pisagor/react/marquee/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { marqueeProps } from "../../../lib/props/marquee";
+
+export const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "orientation-horizontal", text: "Orientation Horizontal" },
+  { depth: 3, slug: "orientation-vertical", text: "Orientation Vertical" },
+  { depth: 3, slug: "pause-on-hover", text: "Pause On Hover" },
+  { depth: 3, slug: "reverse", text: "Reverse" },
+  { depth: 3, slug: "spacing", text: "Spacing" },
+  { depth: 3, slug: "autofill", text: "Autofill" },
+  { depth: 3, slug: "custom-speed", text: "Custom Speed" },
+  { depth: 3, slug: "fade", text: "Fade" },
+  { depth: 3, slug: "compound", text: "Compound" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+export {
+  Autofill,
+  CodeBlock,
+  ComponentHeader,
+  ComponentPreview,
+  Compound,
+  CustomSpeed,
+  Default,
+  DocsLayout,
+  examples,
+  Fade,
+  Installation,
+  imports,
+  marqueeProps,
+  OrientationHorizontal,
+  OrientationVertical,
+  PauseOnHover,
+  PropsTable,
+  Reverse,
+  Spacing,
+};
+---
+
+<DocsLayout
+  description="Scrolls content horizontally in a continuous loop for logos, quotes, or promotional strips."
+  framework="react"
+  headings={headings}
+  title="Marquee"
+>
+
+  <ComponentHeader framework="react" id="marquee" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-horizontal">Orientation Horizontal</h3>
+  <ComponentPreview code={examples.OrientationHorizontal} language="tsx" title="Orientation Horizontal">
+    <OrientationHorizontal client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-vertical">Orientation Vertical</h3>
+  <ComponentPreview code={examples.OrientationVertical} language="tsx" title="Orientation Vertical">
+    <OrientationVertical client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="pause-on-hover">Pause On Hover</h3>
+  <ComponentPreview code={examples.PauseOnHover} language="tsx" title="Pause On Hover">
+    <PauseOnHover client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="reverse">Reverse</h3>
+  <ComponentPreview code={examples.Reverse} language="tsx" title="Reverse">
+    <Reverse client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="spacing">Spacing</h3>
+  <ComponentPreview code={examples.Spacing} language="tsx" title="Spacing">
+    <Spacing client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="autofill">Autofill</h3>
+  <ComponentPreview code={examples.Autofill} language="tsx" title="Autofill">
+    <Autofill client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-speed">Custom Speed</h3>
+  <ComponentPreview code={examples.CustomSpeed} language="tsx" title="Custom Speed">
+    <CustomSpeed client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="fade">Fade</h3>
+  <ComponentPreview code={examples.Fade} language="tsx" title="Fade">
+    <Fade client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="compound">Compound</h3>
+  <ComponentPreview code={examples.Compound} language="tsx" title="Compound">
+    <Compound client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="tsx" title="Default">
+    <Default client:only="react" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/react" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/marquee</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={marqueeProps} />
+</DocsLayout>

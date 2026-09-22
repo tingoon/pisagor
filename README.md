@@ -52,7 +52,11 @@ Import styles once in the app CSS (Tailwind v4). Point `@source` at the package 
 
 ## Docs
 
-Storybook: [https://tingoon.github.io/pisagor/](https://tingoon.github.io/pisagor/) — [React](https://tingoon.github.io/pisagor/react/) · [Vue](https://tingoon.github.io/pisagor/vue/).
+Documentation site: [https://tingoon.github.io/pisagor/](https://tingoon.github.io/pisagor/) (GitHub Pages).
+
+```bash
+bun --filter docs dev
+```
 
 ## License
 

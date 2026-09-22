@@ -1,12 +1,15 @@
 {
-  "description": "Monorepo maintenance scripts (catalog generate, …).",
+  "description": "Monorepo maintenance scripts (catalog generate, \u2026).",
   "devDependencies": {
-    "@pisagor/tsconfig": "workspace:*"
+    "@pisagor/tsconfig": "workspace:*",
+    "ts-morph": "^28.0.0"
   },
   "name": "@pisagor/scripts",
   "private": true,
   "scripts": {
-    "generate": "bun ./src/generate-catalog.ts",
+    "generate": "bun ./src/generate-catalog.ts && bun ./src/generate-props.ts",
+    "generate:catalog": "bun ./src/generate-catalog.ts",
+    "generate:props": "bun ./src/generate-props.ts",
     "type-check": "tsc"
   },
   "type": "module",

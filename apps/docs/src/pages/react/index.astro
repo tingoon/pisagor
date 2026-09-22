@@ -1,0 +1,42 @@
+---
+import PackageLinks from "../../components/docs/package-links.astro";
+import DocsLayout from "../../layouts/docs-layout.astro";
+
+export const headings = [
+  { depth: 2, slug: "overview", text: "Overview" },
+  { depth: 2, slug: "frameworks", text: "Framework routes" },
+  { depth: 2, slug: "next", text: "Next" },
+];
+
+export { DocsLayout, PackageLinks };
+
+import { withDocsBase } from "../../lib/nav";
+---
+
+<DocsLayout
+  description="Build with Pisagor React components and live docs demos."
+  framework="react"
+  headings={headings}
+  title="Introduction"
+>
+
+  <PackageLinks framework="react" />
+<h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">Overview</h2>
+  <p class="mb-6 text-muted-foreground">
+    Pisagor is a multi-framework UI library. This docs site ships live React and Vue examples under
+    separate URL trees, with a shared Astro shell.
+  </p>
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="frameworks">Framework routes</h2>
+  <ul class="mb-6 list-disc space-y-2 ps-5 text-muted-foreground">
+    <li><a class="text-foreground underline-offset-4 hover:underline" href={withDocsBase("/react")}>/react</a> — React packages and demos</li>
+    <li><a class="text-foreground underline-offset-4 hover:underline" href={withDocsBase("/vue")}>/vue</a> — Vue packages and demos</li>
+    <li><a class="text-foreground underline-offset-4 hover:underline" href={withDocsBase("/astro")}>/astro</a> — Astro packages and demos</li>
+  </ul>
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="next">Next</h2>
+  <p class="text-muted-foreground">
+    Start with the <a class="text-foreground underline-offset-4 hover:underline" href={withDocsBase("/react/components/button")}>Button</a>
+    or <a class="text-foreground underline-offset-4 hover:underline" href={withDocsBase("/react/components/accordion")}>Accordion</a> page.
+  </p>
+</DocsLayout>

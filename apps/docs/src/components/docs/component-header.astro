@@ -1,0 +1,20 @@
+---
+import { componentMeta } from "../../lib/component-meta";
+import type { Framework } from "../../lib/nav";
+import ComponentMeta from "./component-meta.astro";
+import PackageLinks from "./package-links.astro";
+
+export { ComponentMeta, PackageLinks };
+
+interface Props {
+  id: string;
+  framework: Framework;
+}
+
+const hasMeta = Boolean(componentMeta[Astro.props.id as keyof typeof componentMeta]);
+---
+
+<div class="mb-8 rounded-xl border border-border/60 bg-muted/15 px-4 py-3.5">
+  {hasMeta ? <ComponentMeta id={Astro.props.id} /> : null}
+  <PackageLinks embedded={hasMeta} framework={Astro.props.framework} inset />
+</div>

@@ -1,0 +1,35 @@
+---
+import { componentMeta } from "../../lib/component-meta";
+
+interface Props {
+  id: string;
+}
+
+const meta = componentMeta[Astro.props.id as keyof typeof componentMeta];
+
+const rows = meta
+  ? [
+      { label: "API", value: meta.api },
+      { label: "Taxonomy", value: meta.taxonomy },
+      ...(meta.aliases?.length ? [{ label: "Aliases", value: meta.aliases.join(", ") }] : []),
+    ]
+  : [];
+---
+
+{
+  rows.length > 0 ? (
+    <dl
+      class="flex flex-wrap items-baseline gap-x-6 gap-y-2 text-sm"
+      aria-label="Component metadata"
+    >
+      {rows.map((row) => (
+        <div class="flex min-w-0 items-baseline gap-2">
+          <dt class="shrink-0 text-[11px] font-medium uppercase tracking-[0.06em] text-muted-foreground/80">
+            {row.label}
+          </dt>
+          <dd class="font-mono text-[13px] text-foreground/90">{row.value}</dd>
+        </div>
+      ))}
+    </dl>
+  ) : null
+}

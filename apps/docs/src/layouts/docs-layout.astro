@@ -1,0 +1,63 @@
+---
+import BaseHead from "../components/base-head.astro";
+import Sidebar from "../components/docs/sidebar.astro";
+import TableOfContents from "../components/docs/table-of-contents.astro";
+import Header from "../components/header.astro";
+import type { Framework } from "../lib/nav";
+import { getDocsArea, getSidebarNav, mainNav, stripDocsBase } from "../lib/nav";
+import "../styles/global.css";
+
+export { BaseHead, Header, mainNav, Sidebar, TableOfContents };
+
+interface Props {
+  framework: Framework;
+  title: string;
+  description?: string;
+  /** Override the small label above the title (defaults from docs area). */
+  kicker?: string;
+  headings?: { depth: number; slug: string; text: string }[];
+}
+
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+const area = getDocsArea(currentPath);
+const framework = Astro.props.framework;
+const sidebarSections = getSidebarNav(framework, area);
+const pathParts = stripDocsBase(currentPath).split("/").filter(Boolean);
+const isIntro = pathParts.length === 1;
+const kicker =
+  Astro.props.kicker ??
+  (isIntro ? "Get started" : (mainNav.find((item) => item.id === area)?.label ?? "Docs"));
+const description = Astro.props.description ?? "Pisagor UI documentation";
+const title = Astro.props.title;
+const headings = Astro.props.headings ?? [];
+---
+
+<!doctype html>
+<html data-framework={framework} lang="en">
+  <head>
+    <BaseHead description={description} title={title} />
+  </head>
+  <body>
+    <div class="relative z-10 min-h-dvh">
+      <Header
+        area={area}
+        currentPath={currentPath}
+        framework={framework}
+        sections={sidebarSections}
+      />
+
+      <div class="mx-auto flex max-w-[96rem]">
+        <Sidebar area={area} currentPath={currentPath} framework={framework} />
+        <main class="min-w-0 max-w-3xl flex-1 px-4 py-10 sm:px-8 lg:max-w-[52rem] lg:px-10">
+          <header class="mb-8">
+            <p class="docs-kicker">{kicker}</p>
+            <h1 class="mb-3 tracking-tight">{title}</h1>
+            {description ? <p class="docs-lead">{description}</p> : null}
+          </header>
+          <slot />
+        </main>
+        <TableOfContents headings={headings} />
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+---
+import DocsLayout from "../../../layouts/docs-layout.astro";
+
+const headings = [{ depth: 2, slug: "overview", text: "Overview" }];
+
+export { DocsLayout, headings };
+
+import { withDocsBase } from "../../../lib/nav";
+---
+
+<DocsLayout
+  description="Astro recipe runners are not available yet. Use the React or Vue docs for the full recipe set."
+  framework="astro"
+  headings={headings}
+  title="Recipes"
+>
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">Overview</h2>
+  <p class="mb-8 text-muted-foreground">
+    Recipe demos currently ship for React and Vue. Open the
+    <a class="text-foreground underline-offset-4 hover:underline" href={withDocsBase("/react/recipes")}>React recipes</a>
+    or
+    <a class="text-foreground underline-offset-4 hover:underline" href={withDocsBase("/vue/recipes")}>Vue recipes</a>
+    to browse every Storybook variant.
+  </p>
+</DocsLayout>

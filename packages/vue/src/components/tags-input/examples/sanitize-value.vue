@@ -1,0 +1,14 @@
+<script setup lang="ts">
+import { Field } from "@pisagor/vue";
+import { TagsInput } from "..";
+
+const sanitizeValue = (value) => value.trim().toLowerCase();
+</script>
+
+<template>
+        <Field>
+          <Field.Label>Frameworks</Field.Label>
+          <TagsInput class="w-full" :defaultValue="['react']" :sanitizeValue="sanitizeValue" />
+        </Field>
+  
+</template>

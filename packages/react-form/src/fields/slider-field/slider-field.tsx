@@ -1,13 +1,9 @@
 import type { SliderProps } from "@pisagor/react";
 import { Slider } from "@pisagor/react";
 import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
-import type { SetRequired } from "../../internal/types";
 
 // #region Types
-type SliderControlProps = SetRequired<
-  Omit<SliderProps, "invalid" | "label" | "name">,
-  "onValueChange"
->;
+type SliderControlProps = Omit<SliderProps, "invalid" | "label" | "name">;
 
 export interface SliderFieldProps
   extends Omit<FieldPresentationProps, "orientation">,

@@ -1,0 +1,94 @@
+---
+import {
+  Default,
+  sources as examples,
+  imports,
+  Portrait,
+  Responsive,
+  Square,
+  Video,
+} from "@pisagor/vue/aspect-ratio/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { aspectRatioProps } from "../../../lib/props/aspect-ratio";
+
+export const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "video", text: "Video" },
+  { depth: 3, slug: "portrait", text: "Portrait" },
+  { depth: 3, slug: "responsive", text: "Responsive" },
+  { depth: 3, slug: "square", text: "Square" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+export {
+  aspectRatioProps,
+  CodeBlock,
+  ComponentHeader,
+  ComponentPreview,
+  Default,
+  DocsLayout,
+  examples,
+  Installation,
+  imports,
+  Portrait,
+  PropsTable,
+  Responsive,
+  Square,
+  Video,
+};
+---
+
+<DocsLayout
+  description="Keeps media and embedded content at a consistent width-to-height ratio as the layout changes."
+  framework="vue"
+  headings={headings}
+  title="Aspect Ratio"
+>
+
+  <ComponentHeader framework="vue" id="aspect-ratio" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="video">Video</h3>
+  <ComponentPreview code={examples.Video} language="vue" title="Video">
+    <Video client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="portrait">Portrait</h3>
+  <ComponentPreview code={examples.Portrait} language="vue" title="Portrait">
+    <Portrait client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="responsive">Responsive</h3>
+  <ComponentPreview code={examples.Responsive} language="vue" title="Responsive">
+    <Responsive client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="square">Square</h3>
+  <ComponentPreview code={examples.Square} language="vue" title="Square">
+    <Square client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="vue" title="Default">
+    <Default client:only="vue" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/vue" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/aspect-ratio</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={aspectRatioProps} />
+</DocsLayout>

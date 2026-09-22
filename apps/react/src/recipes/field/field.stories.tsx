@@ -19,8 +19,9 @@ const meta = preview.meta({
   title: "Recipes/Forms/Field",
 });
 
-export const FormGrid = meta.story({
+export const Playground = meta.story({
   render: () => <FormGridRecipe />,
+  tags: ["autodocs"],
 });
 
 export const FormSection = meta.story({

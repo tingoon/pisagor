@@ -1,0 +1,48 @@
+---
+import type { DocsArea, Framework, NavSection } from "../lib/nav";
+import { frameworkPath } from "../lib/nav";
+import FrameworkSwitcher from "./docs/framework-switcher";
+import MainNav from "./docs/main-nav.astro";
+import MobileNav from "./docs/mobile-nav";
+import ThemeToggle from "./docs/theme-toggle";
+
+export { FrameworkSwitcher, MainNav, MobileNav, ThemeToggle };
+
+interface Props {
+  framework: Framework;
+  area: DocsArea;
+  currentPath: string;
+  sections: NavSection[];
+}
+---
+
+<header
+  class="sticky top-0 z-40 border-b border-border/55 bg-card/80 shadow-sm backdrop-blur-xl backdrop-saturate-150"
+>
+  <div class="mx-auto flex h-14 max-w-[96rem] items-center gap-3 px-4 sm:px-6">
+    <MobileNav
+      client:load
+      currentPath={Astro.props.currentPath}
+      framework={Astro.props.framework}
+      sections={Astro.props.sections}
+    />
+    <a
+      class="group flex items-center gap-2.5 font-semibold tracking-tight"
+      href={frameworkPath(Astro.props.framework)}
+    >
+      <span
+        class="inline-flex size-8 items-center justify-center rounded-xl bg-primary text-sm font-bold text-primary-foreground shadow-[0_0_24px_-6px] shadow-primary/50 transition group-hover:scale-[1.03]"
+      >
+        π
+      </span>
+      <span class="hidden sm:inline">Pisagor</span>
+    </a>
+
+    <MainNav area={Astro.props.area} framework={Astro.props.framework} />
+
+    <div class="ms-auto flex items-center gap-2">
+      <FrameworkSwitcher client:load framework={Astro.props.framework} pathname={Astro.props.currentPath} />
+      <ThemeToggle client:load />
+    </div>
+  </div>
+</header>

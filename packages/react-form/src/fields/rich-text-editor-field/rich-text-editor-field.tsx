@@ -1,11 +1,10 @@
 import { RichTextEditor, type RichTextEditorRootProps } from "@pisagor/react/rich-text-editor";
 import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
-import type { SetRequired } from "../../internal/types";
 
 // #region Types
-type RichTextEditorControlProps = SetRequired<
-  Omit<RichTextEditorRootProps, "onBlur" | "onChange" | "value" | "children">,
-  "onValueChange"
+type RichTextEditorControlProps = Omit<
+  RichTextEditorRootProps,
+  "onBlur" | "onChange" | "value" | "children"
 >;
 
 export interface RichTextEditorFieldProps

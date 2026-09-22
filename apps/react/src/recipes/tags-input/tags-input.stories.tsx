@@ -15,6 +15,7 @@ const meta = preview.meta({
   title: "Recipes/Forms/Tags Input",
 });
 
-export const WithCombobox = meta.story({
+export const Playground = meta.story({
   render: () => <TagsWithCombobox />,
+  tags: ["autodocs"],
 });

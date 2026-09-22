@@ -1,0 +1,68 @@
+---
+import { Default, sources as examples, imports, Variants } from "@pisagor/react/swap/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { swapProps } from "../../../lib/props/swap";
+
+export const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "variants", text: "Variants" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+export {
+  CodeBlock,
+  ComponentHeader,
+  ComponentPreview,
+  Default,
+  DocsLayout,
+  examples,
+  Installation,
+  imports,
+  PropsTable,
+  swapProps,
+  Variants,
+};
+---
+
+<DocsLayout
+  description="Swaps between two pieces of content with a transition, such as play and pause icons."
+  framework="react"
+  headings={headings}
+  title="Swap"
+>
+
+  <ComponentHeader framework="react" id="swap" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <ComponentPreview code={examples.Variants} language="tsx" title="Variants">
+    <Variants client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="tsx" title="Default">
+    <Default client:only="react" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/react" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/swap</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={swapProps} />
+</DocsLayout>

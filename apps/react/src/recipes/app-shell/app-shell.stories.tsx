@@ -15,6 +15,7 @@ const meta = preview.meta({
   title: "Recipes/Layout/App Shell",
 });
 
-export const Standard = meta.story({
+export const Playground = meta.story({
   render: () => <StandardAppShell />,
+  tags: ["autodocs"],
 });

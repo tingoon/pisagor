@@ -1,0 +1,97 @@
+---
+import {
+  Controlled,
+  CustomPopup,
+  Disabled,
+  sources as examples,
+  Invalid,
+  imports,
+  Sizes,
+  Variants,
+} from "@pisagor/react/phone-input/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { phoneInputProps } from "../../../lib/props/phone-input";
+
+export const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "controlled", text: "Controlled" },
+  { depth: 3, slug: "custom-popup", text: "Custom Popup" },
+  { depth: 3, slug: "disabled", text: "Disabled" },
+  { depth: 3, slug: "invalid", text: "Invalid" },
+  { depth: 3, slug: "sizes", text: "Sizes" },
+  { depth: 3, slug: "variants", text: "Variants" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+export {
+  CodeBlock,
+  ComponentHeader,
+  ComponentPreview,
+  Controlled,
+  CustomPopup,
+  Disabled,
+  DocsLayout,
+  examples,
+  Installation,
+  Invalid,
+  imports,
+  PropsTable,
+  phoneInputProps,
+  Sizes,
+  Variants,
+};
+---
+
+<DocsLayout
+  description="Enter and format international phone numbers with country selection."
+  framework="react"
+  headings={headings}
+  title="Phone Input"
+>
+
+  <ComponentHeader framework="react" id="phone-input" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <ComponentPreview class="mb-8" code={examples.Controlled} title="Controlled">
+    <Controlled client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="custom-popup">Custom Popup</h3>
+  <ComponentPreview class="mb-8" code={examples.CustomPopup} title="Custom Popup">
+    <CustomPopup client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <ComponentPreview class="mb-8" code={examples.Disabled} title="Disabled">
+    <Disabled client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="invalid">Invalid</h3>
+  <ComponentPreview class="mb-8" code={examples.Invalid} title="Invalid">
+    <Invalid client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="sizes">Sizes</h3>
+  <ComponentPreview class="mb-8" code={examples.Sizes} title="Sizes">
+    <Sizes client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <ComponentPreview class="mb-8" code={examples.Variants} title="Variants">
+    <Variants client:only="react" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/react" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/phone-input</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={phoneInputProps} />
+</DocsLayout>

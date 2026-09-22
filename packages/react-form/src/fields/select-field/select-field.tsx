@@ -18,7 +18,7 @@ export interface SelectFieldProps
   items: Array<SelectOption | string>;
   placeholder?: string;
   onBlur?: () => void;
-  onValueChange: (value: string) => void;
+  onValueChange?: (value: string) => void;
 }
 // #endregion
 
@@ -66,7 +66,7 @@ export function SelectField({
         name={name}
         onFocusOutside={onBlur}
         onValueChange={(nextValue) => {
-          onValueChange(Array.isArray(nextValue) ? (nextValue.at(0) ?? "") : nextValue);
+          onValueChange?.(Array.isArray(nextValue) ? (nextValue.at(0) ?? "") : nextValue);
         }}
       >
         <Select.Trigger className="w-full" id={id}>

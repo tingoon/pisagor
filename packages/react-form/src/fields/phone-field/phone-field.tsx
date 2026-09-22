@@ -8,7 +8,7 @@ export interface PhoneFieldProps
   name?: string;
   value?: string;
   onBlur?: () => void;
-  onValueChange: (value: string) => void;
+  onValueChange?: (value: string) => void;
 }
 // #endregion
 

@@ -15,11 +15,12 @@ const meta = preview.meta({
   title: "Recipes/Data/Table",
 });
 
-export const BulkActions = meta.story({
+export const Playground = meta.story({
   render: () => ({
     components: { TableBulkActions },
     template: `<TableBulkActions />`,
   }),
+  tags: ["autodocs"],
 });
 
 export const RowMenu = meta.story({

@@ -15,7 +15,7 @@ export interface AutocompleteFieldProps
   value?: string;
   items: Array<AutocompleteOption | string>;
   onBlur?: () => void;
-  onValueChange: (value: string) => void;
+  onValueChange?: (value: string) => void;
 }
 // #endregion
 
@@ -57,7 +57,7 @@ export function AutocompleteField({
         items={items}
         name={name}
         onFocusOutside={onBlur}
-        onValueChange={(nextValue) => onValueChange(nextValue.at(0) ?? "")}
+        onValueChange={(nextValue) => onValueChange?.(nextValue.at(0) ?? "")}
       />
     </FieldShell>
   );

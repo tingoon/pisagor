@@ -1,0 +1,69 @@
+---
+import {
+  Default,
+  sources as examples,
+  imports,
+  Widescreen,
+} from "@pisagor/astro/aspect-ratio/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { aspectRatioProps } from "../../../lib/props/aspect-ratio";
+
+export const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 3, slug: "widescreen", text: "Widescreen" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+export {
+  aspectRatioProps,
+  CodeBlock,
+  ComponentHeader,
+  ComponentPreview,
+  Default,
+  DocsLayout,
+  examples,
+  Installation,
+  imports,
+  PropsTable,
+  Widescreen,
+};
+---
+
+<DocsLayout
+  description="Aspect Ratio for Astro applications."
+  framework="astro"
+  headings={headings}
+  title="Aspect Ratio"
+>
+
+  <ComponentHeader framework="astro" id="aspect-ratio" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <CodeBlock class="mb-8" code={imports} lang="astro" title="Import" />
+
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview class="mb-8" code={examples.Default} title="Default">
+    <Default />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="widescreen">Widescreen</h3>
+  <ComponentPreview class="mb-8" code={examples.Widescreen} title="Widescreen">
+    <Widescreen />
+  </ComponentPreview>
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/astro" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/aspect-ratio</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={aspectRatioProps} />
+</DocsLayout>

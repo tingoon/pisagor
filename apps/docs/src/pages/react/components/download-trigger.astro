@@ -1,0 +1,75 @@
+---
+import {
+  Default,
+  DownloadSvg,
+  sources as examples,
+  imports,
+  WithPromise,
+} from "@pisagor/react/download-trigger/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+
+export const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "download-svg", text: "Download Svg" },
+  { depth: 3, slug: "with-promise", text: "With Promise" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+export {
+  CodeBlock,
+  ComponentHeader,
+  ComponentPreview,
+  Default,
+  DocsLayout,
+  DownloadSvg,
+  examples,
+  Installation,
+  imports,
+  WithPromise,
+};
+---
+
+<DocsLayout
+  description="Starts a file download when activated so users can save content without navigating away."
+  framework="react"
+  headings={headings}
+  title="Download Trigger"
+>
+
+  <ComponentHeader framework="react" id="download-trigger" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="download-svg">Download Svg</h3>
+  <ComponentPreview code={examples.DownloadSvg} language="tsx" title="Download Svg">
+    <DownloadSvg client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-promise">With Promise</h3>
+  <ComponentPreview code={examples.WithPromise} language="tsx" title="With Promise">
+    <WithPromise client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="tsx" title="Default">
+    <Default client:only="react" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/react" />
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-8 text-muted-foreground">
+    This utility has no dedicated entries in <code>@pisagor/props</code> yet. Use the TypeScript types exported from the framework package.
+  </p>
+</DocsLayout>

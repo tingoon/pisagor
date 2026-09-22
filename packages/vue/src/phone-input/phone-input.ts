@@ -41,7 +41,7 @@ export const PhoneInput = defineComponent({
   inheritAttrs: false,
   name: "PhoneInput",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: { type: [String, Object, Array] as PropType<ClassValue> },
     defaultCountry: { default: undefined, type: String as PropType<string | undefined> },
     defaultValue: { default: undefined, type: String as PropType<string | undefined> },
     disabled: { default: undefined, type: Boolean },

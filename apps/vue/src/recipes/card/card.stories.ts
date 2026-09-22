@@ -15,11 +15,12 @@ const meta = preview.meta({
   title: "Recipes/Layout/Card",
 });
 
-export const Login = meta.story({
+export const Playground = meta.story({
   render: () => ({
     components: { LoginCard },
     template: `<LoginCard />`,
   }),
+  tags: ["autodocs"],
 });
 
 export const CustomSpacing = meta.story({

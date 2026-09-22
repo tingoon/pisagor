@@ -1,13 +1,9 @@
 import type { DatePickerProps } from "@pisagor/react";
 import { DatePicker } from "@pisagor/react";
 import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
-import type { SetRequired } from "../../internal/types";
 
 // #region Types
-type DatePickerControlProps = SetRequired<
-  Omit<DatePickerProps, "invalid" | "name" | "value">,
-  "onValueChange"
->;
+type DatePickerControlProps = Omit<DatePickerProps, "invalid" | "name" | "value">;
 
 export interface DateFieldProps extends FieldPresentationProps, DatePickerControlProps {
   name?: string;
@@ -57,7 +53,7 @@ export function DateField({
             onBlur?.();
           }
         }}
-        onValueChange={(nextValue) => onValueChange(nextValue ?? [])}
+        onValueChange={(nextValue) => onValueChange?.(nextValue ?? [])}
       >
         <DatePicker.Input id={id} placeholder={placeholder} />
         <DatePicker.Content />

@@ -17,7 +17,7 @@ export interface RadioGroupFieldProps
   value?: string;
   options: Array<RadioGroupOption | string>;
   onBlur?: () => void;
-  onValueChange: (value: string) => void;
+  onValueChange?: (value: string) => void;
 }
 // #endregion
 
@@ -60,7 +60,7 @@ export function RadioGroupField({
         invalid={invalid}
         name={name}
         onBlur={onBlur}
-        onValueChange={(nextValue) => onValueChange(nextValue ?? "")}
+        onValueChange={(nextValue) => onValueChange?.(nextValue ?? "")}
         orientation={orientation}
       >
         {normalizedOptions.map((option) => {

@@ -1,0 +1,94 @@
+---
+import {
+  Default,
+  Download,
+  ErrorCorrection,
+  sources as examples,
+  imports,
+  Overlay,
+  Sizes,
+} from "@pisagor/react/qr-code/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { qrCodeProps } from "../../../lib/props/qr-code";
+
+export const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "sizes", text: "Sizes" },
+  { depth: 3, slug: "error-correction", text: "Error Correction" },
+  { depth: 3, slug: "overlay", text: "Overlay" },
+  { depth: 3, slug: "download", text: "Download" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+export {
+  CodeBlock,
+  ComponentHeader,
+  ComponentPreview,
+  Default,
+  DocsLayout,
+  Download,
+  ErrorCorrection,
+  examples,
+  Installation,
+  imports,
+  Overlay,
+  PropsTable,
+  qrCodeProps,
+  Sizes,
+};
+---
+
+<DocsLayout
+  description="Displays a scannable QR code so users can open links or share data with a phone camera."
+  framework="react"
+  headings={headings}
+  title="Qr Code"
+>
+
+  <ComponentHeader framework="react" id="qr-code" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sizes">Sizes</h3>
+  <ComponentPreview code={examples.Sizes} language="tsx" title="Sizes">
+    <Sizes client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="error-correction">Error Correction</h3>
+  <ComponentPreview code={examples.ErrorCorrection} language="tsx" title="Error Correction">
+    <ErrorCorrection client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="overlay">Overlay</h3>
+  <ComponentPreview code={examples.Overlay} language="tsx" title="Overlay">
+    <Overlay client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="download">Download</h3>
+  <ComponentPreview code={examples.Download} language="tsx" title="Download">
+    <Download client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="tsx" title="Default">
+    <Default client:only="react" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/react" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/qr-code</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={qrCodeProps} />
+</DocsLayout>

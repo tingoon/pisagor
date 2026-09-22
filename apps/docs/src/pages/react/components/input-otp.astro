@@ -1,0 +1,136 @@
+---
+import {
+  BlurOnComplete,
+  Controlled,
+  CustomSize,
+  Default,
+  Disabled,
+  sources as examples,
+  FourDigits,
+  Invalid,
+  imports,
+  Mask,
+  Separator,
+  Variants,
+  WithPlaceholder,
+} from "@pisagor/react/input-otp/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { inputOtpProps } from "../../../lib/props/input-otp";
+
+export const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 3, slug: "variants", text: "Variants" },
+  { depth: 3, slug: "blur-on-complete", text: "Blur On Complete" },
+  { depth: 3, slug: "custom-size", text: "Custom Size" },
+  { depth: 3, slug: "four-digits", text: "Four Digits" },
+  { depth: 3, slug: "mask", text: "Mask" },
+  { depth: 3, slug: "separator", text: "Separator" },
+  { depth: 3, slug: "with-placeholder", text: "With Placeholder" },
+  { depth: 3, slug: "disabled", text: "Disabled" },
+  { depth: 3, slug: "invalid", text: "Invalid" },
+  { depth: 3, slug: "controlled", text: "Controlled" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+export {
+  BlurOnComplete,
+  CodeBlock,
+  ComponentHeader,
+  ComponentPreview,
+  Controlled,
+  CustomSize,
+  Default,
+  Disabled,
+  DocsLayout,
+  examples,
+  FourDigits,
+  Installation,
+  Invalid,
+  imports,
+  inputOtpProps,
+  Mask,
+  PropsTable,
+  Separator,
+  Variants,
+  WithPlaceholder,
+};
+---
+
+<DocsLayout
+  description="Collects one-time passcodes as separate digits so users can enter and review verification codes."
+  framework="react"
+  headings={headings}
+  title="Input Otp"
+>
+
+  <ComponentHeader framework="react" id="input-otp" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="tsx" title="Default">
+    <Default client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <ComponentPreview code={examples.Variants} language="tsx" title="Variants">
+    <Variants client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="blur-on-complete">Blur On Complete</h3>
+  <ComponentPreview code={examples.BlurOnComplete} language="tsx" title="Blur On Complete">
+    <BlurOnComplete client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-size">Custom Size</h3>
+  <ComponentPreview code={examples.CustomSize} language="tsx" title="Custom Size">
+    <CustomSize client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="four-digits">Four Digits</h3>
+  <ComponentPreview code={examples.FourDigits} language="tsx" title="Four Digits">
+    <FourDigits client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="mask">Mask</h3>
+  <ComponentPreview code={examples.Mask} language="tsx" title="Mask">
+    <Mask client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="separator">Separator</h3>
+  <ComponentPreview code={examples.Separator} language="tsx" title="Separator">
+    <Separator client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-placeholder">With Placeholder</h3>
+  <ComponentPreview code={examples.WithPlaceholder} language="tsx" title="With Placeholder">
+    <WithPlaceholder client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <ComponentPreview code={examples.Disabled} language="tsx" title="Disabled">
+    <Disabled client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">Invalid</h3>
+  <ComponentPreview code={examples.Invalid} language="tsx" title="Invalid">
+    <Invalid client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <ComponentPreview code={examples.Controlled} language="tsx" title="Controlled">
+    <Controlled client:only="react" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/react" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/input-otp</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={inputOtpProps} />
+</DocsLayout>

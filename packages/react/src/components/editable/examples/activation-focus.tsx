@@ -1,0 +1,63 @@
+import { CheckIcon, XIcon } from "@phosphor-icons/react";
+import { Button, Card, Field, Input } from "@pisagor/react";
+import { Editable } from "..";
+export function ActivationFocus() {
+  return (
+    <Card>
+      <Card.Header
+        description="Focus the field to start editing (default activation mode)"
+        title="Edit with focus"
+      />
+      <Card.Content>
+        <Field.Group>
+          <Field>
+            <Field.Label>Name</Field.Label>
+            <Editable activationMode="focus" defaultValue="Jane Doe">
+              <Editable.Area>
+                <Editable.Input asChild>
+                  <Input />
+                </Editable.Input>
+                <Editable.Preview />
+              </Editable.Area>
+              <Editable.Control>
+                <Editable.CancelTrigger asChild>
+                  <Button aria-label="Cancel" size="icon-md" variant="outline">
+                    <XIcon />
+                  </Button>
+                </Editable.CancelTrigger>
+                <Editable.SubmitTrigger asChild>
+                  <Button aria-label="Save" size="icon-md" variant="outline">
+                    <CheckIcon />
+                  </Button>
+                </Editable.SubmitTrigger>
+              </Editable.Control>
+            </Editable>
+          </Field>
+          <Field>
+            <Field.Label>Username</Field.Label>
+            <Editable activationMode="focus" defaultValue="@jane.doe">
+              <Editable.Area>
+                <Editable.Input asChild>
+                  <Input />
+                </Editable.Input>
+                <Editable.Preview />
+              </Editable.Area>
+              <Editable.Control>
+                <Editable.CancelTrigger asChild>
+                  <Button aria-label="Cancel" size="icon-md" variant="outline">
+                    <XIcon />
+                  </Button>
+                </Editable.CancelTrigger>
+                <Editable.SubmitTrigger asChild>
+                  <Button aria-label="Save" size="icon-md" variant="outline">
+                    <CheckIcon />
+                  </Button>
+                </Editable.SubmitTrigger>
+              </Editable.Control>
+            </Editable>
+          </Field>
+        </Field.Group>
+      </Card.Content>
+    </Card>
+  );
+}

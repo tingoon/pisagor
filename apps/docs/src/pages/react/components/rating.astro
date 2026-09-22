@@ -1,0 +1,129 @@
+---
+import {
+  Controlled,
+  Count,
+  CustomColor,
+  CustomIcon,
+  CustomSize,
+  Disabled,
+  sources as examples,
+  HalfStar,
+  Invalid,
+  imports,
+  Readonly,
+  Testimonial,
+} from "@pisagor/react/rating/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { ratingProps } from "../../../lib/props/rating";
+
+export const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "custom-color", text: "Custom Color" },
+  { depth: 3, slug: "count", text: "Count" },
+  { depth: 3, slug: "custom-icon", text: "Custom Icon" },
+  { depth: 3, slug: "custom-size", text: "Custom Size" },
+  { depth: 3, slug: "half-star", text: "Half Star" },
+  { depth: 3, slug: "testimonial", text: "Testimonial" },
+  { depth: 3, slug: "invalid", text: "Invalid" },
+  { depth: 3, slug: "disabled", text: "Disabled" },
+  { depth: 3, slug: "readonly", text: "Readonly" },
+  { depth: 3, slug: "controlled", text: "Controlled" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+export {
+  CodeBlock,
+  ComponentHeader,
+  ComponentPreview,
+  Controlled,
+  Count,
+  CustomColor,
+  CustomIcon,
+  CustomSize,
+  Disabled,
+  DocsLayout,
+  examples,
+  HalfStar,
+  Installation,
+  Invalid,
+  imports,
+  PropsTable,
+  Readonly,
+  ratingProps,
+  Testimonial,
+};
+---
+
+<DocsLayout
+  description="Collects or displays a star-style score so users can rate or review at a glance."
+  framework="react"
+  headings={headings}
+  title="Rating"
+>
+
+  <ComponentHeader framework="react" id="rating" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-color">Custom Color</h3>
+  <ComponentPreview code={examples.CustomColor} language="tsx" title="Custom Color">
+    <CustomColor client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="count">Count</h3>
+  <ComponentPreview code={examples.Count} language="tsx" title="Count">
+    <Count client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-icon">Custom Icon</h3>
+  <ComponentPreview code={examples.CustomIcon} language="tsx" title="Custom Icon">
+    <CustomIcon client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-size">Custom Size</h3>
+  <ComponentPreview code={examples.CustomSize} language="tsx" title="Custom Size">
+    <CustomSize client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="half-star">Half Star</h3>
+  <ComponentPreview code={examples.HalfStar} language="tsx" title="Half Star">
+    <HalfStar client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="testimonial">Testimonial</h3>
+  <ComponentPreview code={examples.Testimonial} language="tsx" title="Testimonial">
+    <Testimonial client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">Invalid</h3>
+  <ComponentPreview code={examples.Invalid} language="tsx" title="Invalid">
+    <Invalid client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <ComponentPreview code={examples.Disabled} language="tsx" title="Disabled">
+    <Disabled client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="readonly">Readonly</h3>
+  <ComponentPreview code={examples.Readonly} language="tsx" title="Readonly">
+    <Readonly client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <ComponentPreview code={examples.Controlled} language="tsx" title="Controlled">
+    <Controlled client:only="react" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/react" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/rating</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={ratingProps} />
+</DocsLayout>

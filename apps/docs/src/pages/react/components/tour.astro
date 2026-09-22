@@ -1,0 +1,136 @@
+---
+import {
+  Async,
+  CustomSpacing,
+  Default,
+  Events,
+  sources as examples,
+  imports,
+  KeyboardNavigation,
+  Progress,
+  Skip,
+  StepTypes,
+  WaitForClick,
+  WaitForElement,
+  WaitForInput,
+} from "@pisagor/react/tour/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { tourProps } from "../../../lib/props/tour";
+
+export const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "custom-spacing", text: "Custom Spacing" },
+  { depth: 3, slug: "async", text: "Async" },
+  { depth: 3, slug: "events", text: "Events" },
+  { depth: 3, slug: "keyboard-navigation", text: "Keyboard Navigation" },
+  { depth: 3, slug: "progress", text: "Progress" },
+  { depth: 3, slug: "skip", text: "Skip" },
+  { depth: 3, slug: "step-types", text: "Step Types" },
+  { depth: 3, slug: "wait-for-click", text: "Wait For Click" },
+  { depth: 3, slug: "wait-for-element", text: "Wait For Element" },
+  { depth: 3, slug: "wait-for-input", text: "Wait For Input" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+export {
+  Async,
+  CodeBlock,
+  ComponentHeader,
+  ComponentPreview,
+  CustomSpacing,
+  Default,
+  DocsLayout,
+  Events,
+  examples,
+  Installation,
+  imports,
+  KeyboardNavigation,
+  Progress,
+  PropsTable,
+  Skip,
+  StepTypes,
+  tourProps,
+  WaitForClick,
+  WaitForElement,
+  WaitForInput,
+};
+---
+
+<DocsLayout
+  description="Walks new users through key parts of the interface step by step with guided highlights."
+  framework="react"
+  headings={headings}
+  title="Tour"
+>
+
+  <ComponentHeader framework="react" id="tour" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-spacing">Custom Spacing</h3>
+  <ComponentPreview code={examples.CustomSpacing} language="tsx" title="Custom Spacing">
+    <CustomSpacing client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="async">Async</h3>
+  <ComponentPreview code={examples.Async} language="tsx" title="Async">
+    <Async client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="events">Events</h3>
+  <ComponentPreview code={examples.Events} language="tsx" title="Events">
+    <Events client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="keyboard-navigation">Keyboard Navigation</h3>
+  <ComponentPreview code={examples.KeyboardNavigation} language="tsx" title="Keyboard Navigation">
+    <KeyboardNavigation client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="progress">Progress</h3>
+  <ComponentPreview code={examples.Progress} language="tsx" title="Progress">
+    <Progress client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="skip">Skip</h3>
+  <ComponentPreview code={examples.Skip} language="tsx" title="Skip">
+    <Skip client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="step-types">Step Types</h3>
+  <ComponentPreview code={examples.StepTypes} language="tsx" title="Step Types">
+    <StepTypes client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="wait-for-click">Wait For Click</h3>
+  <ComponentPreview code={examples.WaitForClick} language="tsx" title="Wait For Click">
+    <WaitForClick client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="wait-for-element">Wait For Element</h3>
+  <ComponentPreview code={examples.WaitForElement} language="tsx" title="Wait For Element">
+    <WaitForElement client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="wait-for-input">Wait For Input</h3>
+  <ComponentPreview code={examples.WaitForInput} language="tsx" title="Wait For Input">
+    <WaitForInput client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="tsx" title="Default">
+    <Default client:only="react" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/react" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/tour</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={tourProps} />
+</DocsLayout>

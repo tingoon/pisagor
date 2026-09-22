@@ -15,6 +15,7 @@ import { defineComponent, h, type PropType, shallowReactive, watch, watchEffect 
 import { useFormControlSurface } from "../components/surface/use-form-control-surface";
 import { Toggle } from "../components/toggle/toggle";
 import { VisuallyHidden } from "../components/visually-hidden/visually-hidden";
+import type { ClassValue } from "../internal/types";
 import { createContext } from "../internal/utils/create-context";
 
 type FormControlVariant = "primary" | "secondary";
@@ -82,7 +83,7 @@ export function useRichTextEditor() {
 
 const richTextEditorRootProps = {
   "aria-label": String,
-  class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+  class: { type: [String, Object, Array] as PropType<ClassValue> },
   defaultValue: { default: undefined, type: String },
   disabled: { default: false, type: Boolean },
   id: String,
@@ -234,7 +235,7 @@ export const RichTextEditorToolbar = defineComponent({
   inheritAttrs: false,
   name: "RichTextEditorToolbar",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: { type: [String, Object, Array] as PropType<ClassValue> },
   },
   setup(props, { attrs, slots }) {
     const context = useRichTextEditorContext();
@@ -335,7 +336,7 @@ export const RichTextEditorContent = defineComponent({
   inheritAttrs: false,
   name: "RichTextEditorContent",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: { type: [String, Object, Array] as PropType<ClassValue> },
   },
   setup(props, { attrs }) {
     const context = useRichTextEditorContext();

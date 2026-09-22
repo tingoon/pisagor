@@ -1,0 +1,28 @@
+---
+import DocsLayout from "../../../layouts/docs-layout.astro";
+
+export const headings = [{ depth: 2, slug: "overview", text: "Overview" }];
+
+export { DocsLayout };
+
+import { withDocsBase } from "../../../lib/nav";
+---
+
+<DocsLayout
+  description="Browse Pisagor Vue components with live previews and copy-paste examples."
+  framework="vue"
+  headings={headings}
+  title="Components"
+>
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">Overview</h2>
+  <p class="mb-6 text-muted-foreground">
+    Pick a component from the sidebar. Each page mirrors Storybook stories with live demos and
+    source.
+  </p>
+  <p class="text-muted-foreground">
+    Start with
+    <a class="text-foreground underline-offset-4 hover:underline" href={withDocsBase("/vue/components/button")}>Button</a>
+    or
+    <a class="text-foreground underline-offset-4 hover:underline" href={withDocsBase("/vue/components/accordion")}>Accordion</a>.
+  </p>
+</DocsLayout>

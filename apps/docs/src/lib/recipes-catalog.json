@@ -1,0 +1,514 @@
+{
+  "react": [
+    {
+      "description": "Standard application shell with top navigation, icon rail, side panel, main content, and inspector regions ready for menus and page content.",
+      "framework": "react",
+      "id": "app-shell",
+      "stories": [
+        {
+          "export": "StandardAppShell",
+          "file": "standard-app-shell",
+          "name": "Playground"
+        }
+      ],
+      "storybookTitle": "Recipes/Layout/App Shell",
+      "title": "App Shell"
+    },
+    {
+      "description": "Card compositions for login flows, custom spacing, and product display.",
+      "framework": "react",
+      "id": "card",
+      "stories": [
+        {
+          "export": "LoginCard",
+          "file": "login-card",
+          "name": "Playground"
+        },
+        {
+          "export": "LoginCardCustomSpacing",
+          "file": "login-card-custom-spacing",
+          "name": "CustomSpacing"
+        },
+        {
+          "export": "ProductCard",
+          "file": "product-card",
+          "name": "Product"
+        }
+      ],
+      "storybookTitle": "Recipes/Layout/Card",
+      "title": "Card"
+    },
+    {
+      "description": "Editor compositions for IDE layouts, rich text toolbars, and editable user cards.",
+      "framework": "react",
+      "id": "editors",
+      "stories": [
+        {
+          "export": "IdeLayout",
+          "file": "ide-layout",
+          "name": "Playground"
+        },
+        {
+          "export": "RichTextToolbar",
+          "file": "rich-text-toolbar",
+          "name": "RichTextToolbar"
+        },
+        {
+          "export": "EditableUserCard",
+          "file": "editable-user-card",
+          "name": "EditableUserCard"
+        }
+      ],
+      "storybookTitle": "Recipes/Editors",
+      "title": "Editors"
+    },
+    {
+      "description": "Field layout compositions for grids, sections, labels, and settings rows.",
+      "framework": "react",
+      "id": "field",
+      "stories": [
+        {
+          "export": "FormGrid",
+          "file": "form-grid",
+          "name": "Playground"
+        },
+        {
+          "export": "FormSection",
+          "file": "form-section",
+          "name": "FormSection"
+        },
+        {
+          "export": "FormSectionTextarea",
+          "file": "form-section-textarea",
+          "name": "FormSectionTextarea"
+        },
+        {
+          "export": "LabelAccessory",
+          "file": "label-accessory",
+          "name": "LabelAccessory"
+        },
+        {
+          "export": "SettingsPanel",
+          "file": "settings-panel",
+          "name": "SettingsPanel"
+        },
+        {
+          "export": "SettingsRow",
+          "file": "settings-row",
+          "name": "SettingsRow"
+        }
+      ],
+      "storybookTitle": "Recipes/Forms/Field",
+      "title": "Field"
+    },
+    {
+      "description": "Input group compositions for code editing, menus, inline actions, labels, number inputs, and tooltips.",
+      "framework": "react",
+      "id": "input-group",
+      "stories": [
+        {
+          "export": "CodeEditorInput",
+          "file": "code-editor-input",
+          "name": "Playground"
+        },
+        {
+          "export": "InputGroupWithMenu",
+          "file": "input-group-with-menu",
+          "name": "WithMenu"
+        },
+        {
+          "export": "InputGroupWithButton",
+          "file": "input-group-with-button",
+          "name": "WithButton"
+        },
+        {
+          "export": "InputGroupWithInnerLabel",
+          "file": "input-group-with-inner-label",
+          "name": "WithInnerLabel"
+        },
+        {
+          "export": "InputGroupWithNumberInput",
+          "file": "input-group-with-number-input",
+          "name": "WithNumberInput"
+        },
+        {
+          "export": "InputGroupWithTooltip",
+          "file": "input-group-with-tooltip",
+          "name": "WithTooltip"
+        }
+      ],
+      "storybookTitle": "Recipes/Forms/Input Group",
+      "title": "Input Group"
+    },
+    {
+      "description": "Overlay compositions for menus, dialogs, popovers, item pickers, and avatar overflow.",
+      "framework": "react",
+      "id": "overlay",
+      "stories": [
+        {
+          "export": "MenuDialog",
+          "file": "menu-dialog",
+          "name": "Playground"
+        },
+        {
+          "export": "PopoverDialog",
+          "file": "popover-dialog",
+          "name": "PopoverDialog"
+        },
+        {
+          "export": "ItemPicker",
+          "file": "item-picker",
+          "name": "ItemPicker"
+        },
+        {
+          "export": "AvatarGroupOverflow",
+          "file": "avatar-group-overflow",
+          "name": "AvatarGroupOverflow"
+        }
+      ],
+      "storybookTitle": "Recipes/Overlay",
+      "title": "Overlay"
+    },
+    {
+      "description": "Compose PasswordInput with live strength feedback, a segmented progress bar, and a requirement checklist for password creation flows.",
+      "framework": "react",
+      "id": "password",
+      "stories": [
+        {
+          "export": "PasswordStrength",
+          "file": "password-strength",
+          "name": "Playground"
+        }
+      ],
+      "storybookTitle": "Recipes/Forms/Password Input",
+      "title": "Password Input"
+    },
+    {
+      "description": "Search input compositions with button group and inline field layouts.",
+      "framework": "react",
+      "id": "search-field",
+      "stories": [
+        {
+          "export": "SearchFieldButtonGroup",
+          "file": "search-field-button-group",
+          "name": "Playground"
+        },
+        {
+          "export": "SearchFieldInline",
+          "file": "search-field-inline",
+          "name": "Inline"
+        }
+      ],
+      "storybookTitle": "Recipes/Forms/Input/Search Field",
+      "title": "Search Field"
+    },
+    {
+      "description": "Complete sign-in flow with email, password, validation, and remember-me checkbox using form fields.",
+      "framework": "react",
+      "id": "sign-in-form",
+      "stories": [
+        {
+          "export": "SignInForm",
+          "file": "sign-in-form",
+          "name": "Playground"
+        }
+      ],
+      "storybookTitle": "Recipes/Forms/Form/Sign In",
+      "title": "Sign In"
+    },
+    {
+      "description": "Table compositions with bulk actions, row menus, and pagination controls.",
+      "framework": "react",
+      "id": "table",
+      "stories": [
+        {
+          "export": "TableBulkActions",
+          "file": "table-bulk-actions",
+          "name": "Playground"
+        },
+        {
+          "export": "TableRowMenu",
+          "file": "table-row-menu",
+          "name": "RowMenu"
+        },
+        {
+          "export": "TablePagination",
+          "file": "table-pagination",
+          "name": "Pagination"
+        }
+      ],
+      "storybookTitle": "Recipes/Data/Table",
+      "title": "Table"
+    },
+    {
+      "description": "Tags input paired with a combobox for searchable tag selection and custom value entry.",
+      "framework": "react",
+      "id": "tags-input",
+      "stories": [
+        {
+          "export": "TagsWithCombobox",
+          "file": "tags-with-combobox",
+          "name": "Playground"
+        }
+      ],
+      "storybookTitle": "Recipes/Forms/Tags Input",
+      "title": "Tags Input"
+    }
+  ],
+  "vue": [
+    {
+      "description": "Standard application shell with top navigation, icon rail, side panel, main content, and inspector regions ready for menus and page content.",
+      "framework": "vue",
+      "id": "app-shell",
+      "stories": [
+        {
+          "export": "StandardAppShell",
+          "file": "standard-app-shell",
+          "name": "Playground"
+        }
+      ],
+      "storybookTitle": "Recipes/Layout/App Shell",
+      "title": "App Shell"
+    },
+    {
+      "description": "Card compositions for login flows, custom spacing, and product display.",
+      "framework": "vue",
+      "id": "card",
+      "stories": [
+        {
+          "export": "LoginCard",
+          "file": "login-card",
+          "name": "Playground"
+        },
+        {
+          "export": "LoginCardCustomSpacing",
+          "file": "login-card-custom-spacing",
+          "name": "CustomSpacing"
+        },
+        {
+          "export": "ProductCard",
+          "file": "product-card",
+          "name": "Product"
+        }
+      ],
+      "storybookTitle": "Recipes/Layout/Card",
+      "title": "Card"
+    },
+    {
+      "description": "Editor compositions for IDE layouts, rich text toolbars, and editable user cards.",
+      "framework": "vue",
+      "id": "editors",
+      "stories": [
+        {
+          "export": "IdeLayout",
+          "file": "ide-layout",
+          "name": "Playground"
+        },
+        {
+          "export": "RichTextToolbar",
+          "file": "rich-text-toolbar",
+          "name": "RichTextToolbarStory"
+        },
+        {
+          "export": "EditableUserCard",
+          "file": "editable-user-card",
+          "name": "EditableUserCardStory"
+        }
+      ],
+      "storybookTitle": "Recipes/Editors",
+      "title": "Editors"
+    },
+    {
+      "description": "Field layout compositions for grids, sections, labels, and settings rows.",
+      "framework": "vue",
+      "id": "field",
+      "stories": [
+        {
+          "export": "FormGrid",
+          "file": "form-grid",
+          "name": "Playground"
+        },
+        {
+          "export": "FormSection",
+          "file": "form-section",
+          "name": "FormSectionStory"
+        },
+        {
+          "export": "FormSectionTextarea",
+          "file": "form-section-textarea",
+          "name": "FormSectionTextareaStory"
+        },
+        {
+          "export": "LabelAccessory",
+          "file": "label-accessory",
+          "name": "LabelAccessoryStory"
+        },
+        {
+          "export": "SettingsPanel",
+          "file": "settings-panel",
+          "name": "SettingsPanelStory"
+        },
+        {
+          "export": "SettingsRow",
+          "file": "settings-row",
+          "name": "SettingsRowStory"
+        }
+      ],
+      "storybookTitle": "Recipes/Forms/Field",
+      "title": "Field"
+    },
+    {
+      "description": "Input group compositions for code editing, menus, inline actions, labels, number inputs, and tooltips.",
+      "framework": "vue",
+      "id": "input-group",
+      "stories": [
+        {
+          "export": "CodeEditorInput",
+          "file": "code-editor-input",
+          "name": "Playground"
+        },
+        {
+          "export": "InputGroupWithMenu",
+          "file": "input-group-with-menu",
+          "name": "WithMenu"
+        },
+        {
+          "export": "InputGroupWithButton",
+          "file": "input-group-with-button",
+          "name": "WithButton"
+        },
+        {
+          "export": "InputGroupWithInnerLabel",
+          "file": "input-group-with-inner-label",
+          "name": "WithInnerLabel"
+        },
+        {
+          "export": "InputGroupWithNumberInput",
+          "file": "input-group-with-number-input",
+          "name": "WithNumberInput"
+        },
+        {
+          "export": "InputGroupWithTooltip",
+          "file": "input-group-with-tooltip",
+          "name": "WithTooltip"
+        }
+      ],
+      "storybookTitle": "Recipes/Forms/Input Group",
+      "title": "Input Group"
+    },
+    {
+      "description": "Overlay compositions for menus, dialogs, popovers, item pickers, and avatar overflow.",
+      "framework": "vue",
+      "id": "overlay",
+      "stories": [
+        {
+          "export": "MenuDialog",
+          "file": "menu-dialog",
+          "name": "Playground"
+        },
+        {
+          "export": "PopoverDialog",
+          "file": "popover-dialog",
+          "name": "PopoverDialogStory"
+        },
+        {
+          "export": "ItemPicker",
+          "file": "item-picker",
+          "name": "ItemPickerStory"
+        },
+        {
+          "export": "AvatarGroupOverflow",
+          "file": "avatar-group-overflow",
+          "name": "AvatarGroupOverflowStory"
+        }
+      ],
+      "storybookTitle": "Recipes/Overlay",
+      "title": "Overlay"
+    },
+    {
+      "description": "Compose a password field with live strength feedback, a segmented progress bar, and a requirement checklist for password creation flows.",
+      "framework": "vue",
+      "id": "password",
+      "stories": [
+        {
+          "export": "PasswordStrength",
+          "file": "password-strength",
+          "name": "Playground"
+        }
+      ],
+      "storybookTitle": "Recipes/Forms/Password Input",
+      "title": "Password Input"
+    },
+    {
+      "description": "Search input compositions with button group and inline field layouts.",
+      "framework": "vue",
+      "id": "search-field",
+      "stories": [
+        {
+          "export": "SearchFieldButtonGroup",
+          "file": "search-field-button-group",
+          "name": "Playground"
+        },
+        {
+          "export": "SearchFieldInline",
+          "file": "search-field-inline",
+          "name": "Inline"
+        }
+      ],
+      "storybookTitle": "Recipes/Forms/Input/Search Field",
+      "title": "Search Field"
+    },
+    {
+      "description": "Complete sign-in flow with email, password, validation, and remember-me checkbox using form fields.",
+      "framework": "vue",
+      "id": "sign-in-form",
+      "stories": [
+        {
+          "export": "SignInForm",
+          "file": "sign-in-form",
+          "name": "Playground"
+        }
+      ],
+      "storybookTitle": "Recipes/Forms/Form/Sign In",
+      "title": "Sign In"
+    },
+    {
+      "description": "Table compositions with bulk actions, row menus, and pagination controls.",
+      "framework": "vue",
+      "id": "table",
+      "stories": [
+        {
+          "export": "TableBulkActions",
+          "file": "table-bulk-actions",
+          "name": "Playground"
+        },
+        {
+          "export": "TableRowMenu",
+          "file": "table-row-menu",
+          "name": "RowMenu"
+        },
+        {
+          "export": "TablePagination",
+          "file": "table-pagination",
+          "name": "Pagination"
+        }
+      ],
+      "storybookTitle": "Recipes/Data/Table",
+      "title": "Table"
+    },
+    {
+      "description": "Tags input paired with a combobox for searchable tag selection and custom value entry.",
+      "framework": "vue",
+      "id": "tags-input",
+      "stories": [
+        {
+          "export": "TagsWithCombobox",
+          "file": "tags-with-combobox",
+          "name": "Playground"
+        }
+      ],
+      "storybookTitle": "Recipes/Forms/Tags Input",
+      "title": "Tags Input"
+    }
+  ]
+}

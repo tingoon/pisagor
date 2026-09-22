@@ -1,0 +1,57 @@
+---
+import { SearchFieldButtonGroup } from "@recipes-react/search-field/search-field-button-group";
+import SearchFieldButtonGroupSource from "@recipes-react/search-field/search-field-button-group.tsx?raw";
+import { SearchFieldInline } from "@recipes-react/search-field/search-field-inline";
+import SearchFieldInlineSource from "@recipes-react/search-field/search-field-inline.tsx?raw";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+
+const headings = [
+  {
+    depth: 2,
+    slug: "overview",
+    text: "Overview",
+  },
+  {
+    depth: 2,
+    slug: "search-field-button-group",
+    text: "Search Field Button Group",
+  },
+  {
+    depth: 2,
+    slug: "search-field-inline",
+    text: "Search Field Inline",
+  },
+];
+
+export {
+  ComponentPreview,
+  DocsLayout,
+  headings,
+  SearchFieldButtonGroup,
+  SearchFieldButtonGroupSource,
+  SearchFieldInline,
+  SearchFieldInlineSource,
+};
+---
+
+<DocsLayout
+  description="Search input compositions with button group and inline field layouts."
+  framework="react"
+  headings={headings}
+  title="Search Field"
+>
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">Overview</h2>
+  <p class="mb-8 text-muted-foreground">Search input compositions with button group and inline field layouts.</p>
+
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="search-field-button-group">Search Field Button Group</h2>
+  <ComponentPreview code={SearchFieldButtonGroupSource} language="tsx" title="Search Field Button Group">
+    <SearchFieldButtonGroup client:only="react" />
+  </ComponentPreview>
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="search-field-inline">Search Field Inline</h2>
+  <ComponentPreview code={SearchFieldInlineSource} language="tsx" title="Search Field Inline">
+    <SearchFieldInline client:only="react" />
+  </ComponentPreview>
+
+</DocsLayout>

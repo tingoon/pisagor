@@ -1,0 +1,129 @@
+---
+import {
+  Compound,
+  Controlled,
+  CustomIndicator,
+  Default,
+  Disabled,
+  DisabledItem,
+  sources as examples,
+  IndicatorOnHover,
+  imports,
+  OrientationHorizontal,
+  OrientationVertical,
+  Variants,
+} from "@pisagor/vue/segment-group/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { segmentGroupProps } from "../../../lib/props/segment-group";
+
+export const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "variants", text: "Variants" },
+  { depth: 3, slug: "orientation-horizontal", text: "Orientation Horizontal" },
+  { depth: 3, slug: "orientation-vertical", text: "Orientation Vertical" },
+  { depth: 3, slug: "disabled-item", text: "Disabled Item" },
+  { depth: 3, slug: "custom-indicator", text: "Custom Indicator" },
+  { depth: 3, slug: "indicator-on-hover", text: "Indicator On Hover" },
+  { depth: 3, slug: "disabled", text: "Disabled" },
+  { depth: 3, slug: "controlled", text: "Controlled" },
+  { depth: 3, slug: "compound", text: "Compound" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+export {
+  CodeBlock,
+  ComponentHeader,
+  ComponentPreview,
+  Compound,
+  Controlled,
+  CustomIndicator,
+  Default,
+  Disabled,
+  DisabledItem,
+  DocsLayout,
+  examples,
+  IndicatorOnHover,
+  Installation,
+  imports,
+  OrientationHorizontal,
+  OrientationVertical,
+  PropsTable,
+  segmentGroupProps,
+  Variants,
+};
+---
+
+<DocsLayout
+  description="Lets users switch between discrete options."
+  framework="vue"
+  headings={headings}
+  title="Segment Group"
+>
+
+  <ComponentHeader framework="vue" id="segment-group" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <ComponentPreview code={examples.Variants} language="vue" title="Variants">
+    <Variants client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-horizontal">Orientation Horizontal</h3>
+  <ComponentPreview code={examples.OrientationHorizontal} language="vue" title="Orientation Horizontal">
+    <OrientationHorizontal client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-vertical">Orientation Vertical</h3>
+  <ComponentPreview code={examples.OrientationVertical} language="vue" title="Orientation Vertical">
+    <OrientationVertical client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled-item">Disabled Item</h3>
+  <ComponentPreview code={examples.DisabledItem} language="vue" title="Disabled Item">
+    <DisabledItem client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-indicator">Custom Indicator</h3>
+  <ComponentPreview code={examples.CustomIndicator} language="vue" title="Custom Indicator">
+    <CustomIndicator client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="indicator-on-hover">Indicator On Hover</h3>
+  <ComponentPreview code={examples.IndicatorOnHover} language="vue" title="Indicator On Hover">
+    <IndicatorOnHover client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <ComponentPreview code={examples.Disabled} language="vue" title="Disabled">
+    <Disabled client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <ComponentPreview code={examples.Controlled} language="vue" title="Controlled">
+    <Controlled client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="compound">Compound</h3>
+  <ComponentPreview code={examples.Compound} language="vue" title="Compound">
+    <Compound client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="vue" title="Default">
+    <Default client:only="vue" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/vue" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/segment-group</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={segmentGroupProps} />
+</DocsLayout>

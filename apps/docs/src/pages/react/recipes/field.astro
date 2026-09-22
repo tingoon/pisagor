@@ -1,0 +1,109 @@
+---
+import { FormGrid } from "@recipes-react/field/form-grid";
+import FormGridSource from "@recipes-react/field/form-grid.tsx?raw";
+import { FormSection } from "@recipes-react/field/form-section";
+import FormSectionSource from "@recipes-react/field/form-section.tsx?raw";
+import { FormSectionTextarea } from "@recipes-react/field/form-section-textarea";
+import FormSectionTextareaSource from "@recipes-react/field/form-section-textarea.tsx?raw";
+import { LabelAccessory } from "@recipes-react/field/label-accessory";
+import LabelAccessorySource from "@recipes-react/field/label-accessory.tsx?raw";
+import { SettingsPanel } from "@recipes-react/field/settings-panel";
+import SettingsPanelSource from "@recipes-react/field/settings-panel.tsx?raw";
+import { SettingsRow } from "@recipes-react/field/settings-row";
+import SettingsRowSource from "@recipes-react/field/settings-row.tsx?raw";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+
+const headings = [
+  {
+    depth: 2,
+    slug: "overview",
+    text: "Overview",
+  },
+  {
+    depth: 2,
+    slug: "form-grid",
+    text: "Form Grid",
+  },
+  {
+    depth: 2,
+    slug: "form-section",
+    text: "Form Section",
+  },
+  {
+    depth: 2,
+    slug: "form-section-textarea",
+    text: "Form Section Textarea",
+  },
+  {
+    depth: 2,
+    slug: "label-accessory",
+    text: "Label Accessory",
+  },
+  {
+    depth: 2,
+    slug: "settings-panel",
+    text: "Settings Panel",
+  },
+  {
+    depth: 2,
+    slug: "settings-row",
+    text: "Settings Row",
+  },
+];
+
+export {
+  ComponentPreview,
+  DocsLayout,
+  FormGrid,
+  FormGridSource,
+  FormSection,
+  FormSectionSource,
+  FormSectionTextarea,
+  FormSectionTextareaSource,
+  headings,
+  LabelAccessory,
+  LabelAccessorySource,
+  SettingsPanel,
+  SettingsPanelSource,
+  SettingsRow,
+  SettingsRowSource,
+};
+---
+
+<DocsLayout
+  description="Field layout compositions for grids, sections, labels, and settings rows."
+  framework="react"
+  headings={headings}
+  title="Field"
+>
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">Overview</h2>
+  <p class="mb-8 text-muted-foreground">Field layout compositions for grids, sections, labels, and settings rows.</p>
+
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="form-grid">Form Grid</h2>
+  <ComponentPreview code={FormGridSource} language="tsx" title="Form Grid">
+    <FormGrid client:only="react" />
+  </ComponentPreview>
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="form-section">Form Section</h2>
+  <ComponentPreview code={FormSectionSource} language="tsx" title="Form Section">
+    <FormSection client:only="react" />
+  </ComponentPreview>
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="form-section-textarea">Form Section Textarea</h2>
+  <ComponentPreview code={FormSectionTextareaSource} language="tsx" title="Form Section Textarea">
+    <FormSectionTextarea client:only="react" />
+  </ComponentPreview>
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="label-accessory">Label Accessory</h2>
+  <ComponentPreview code={LabelAccessorySource} language="tsx" title="Label Accessory">
+    <LabelAccessory client:only="react" />
+  </ComponentPreview>
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="settings-panel">Settings Panel</h2>
+  <ComponentPreview code={SettingsPanelSource} language="tsx" title="Settings Panel">
+    <SettingsPanel client:only="react" />
+  </ComponentPreview>
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="settings-row">Settings Row</h2>
+  <ComponentPreview code={SettingsRowSource} language="tsx" title="Settings Row">
+    <SettingsRow client:only="react" />
+  </ComponentPreview>
+
+</DocsLayout>

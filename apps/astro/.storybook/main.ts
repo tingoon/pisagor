@@ -18,7 +18,7 @@ const config: StorybookConfig = {
       renderMode: "static",
     },
   },
-  stories: ["../../../packages/astro/src/**/*.stories.@(js|jsx|ts|tsx)"],
+  stories: ["../src/**/*.stories.@(js|ts|tsx)"],
 };
 
 export default config;

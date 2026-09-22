@@ -1,0 +1,87 @@
+---
+import {
+  Default,
+  sources as examples,
+  Fallbacks,
+  imports,
+  Shapes,
+  Sizes,
+} from "@pisagor/react/avatar/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { avatarProps } from "../../../lib/props/avatar";
+
+export const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "sizes", text: "Sizes" },
+  { depth: 3, slug: "shapes", text: "Shapes" },
+  { depth: 3, slug: "fallbacks", text: "Fallbacks" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+export {
+  avatarProps,
+  CodeBlock,
+  ComponentHeader,
+  ComponentPreview,
+  Default,
+  DocsLayout,
+  examples,
+  Fallbacks,
+  Installation,
+  imports,
+  PropsTable,
+  Shapes,
+  Sizes,
+};
+---
+
+<DocsLayout
+  description="Shows who a user is in the interface — usually a profile photo, or initials or an icon when there is no image or it has not loaded yet."
+  framework="react"
+  headings={headings}
+  title="Avatar"
+>
+
+  <ComponentHeader framework="react" id="avatar" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sizes">Sizes</h3>
+  <ComponentPreview code={examples.Sizes} language="tsx" title="Sizes">
+    <Sizes client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="shapes">Shapes</h3>
+  <ComponentPreview code={examples.Shapes} language="tsx" title="Shapes">
+    <Shapes client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="fallbacks">Fallbacks</h3>
+  <ComponentPreview code={examples.Fallbacks} language="tsx" title="Fallbacks">
+    <Fallbacks client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="tsx" title="Default">
+    <Default client:only="react" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/react" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/avatar</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={avatarProps} />
+</DocsLayout>

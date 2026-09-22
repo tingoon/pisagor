@@ -1,0 +1,87 @@
+---
+import {
+  Default,
+  sources as examples,
+  InlineNavigation,
+  imports,
+  List,
+  Vertical,
+} from "@pisagor/react/separator/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { separatorProps } from "../../../lib/props/separator";
+
+export const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 3, slug: "list", text: "List" },
+  { depth: 3, slug: "inline-navigation", text: "Inline Navigation" },
+  { depth: 3, slug: "vertical", text: "Vertical" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+export {
+  CodeBlock,
+  ComponentHeader,
+  ComponentPreview,
+  Default,
+  DocsLayout,
+  examples,
+  InlineNavigation,
+  Installation,
+  imports,
+  List,
+  PropsTable,
+  separatorProps,
+  Vertical,
+};
+---
+
+<DocsLayout
+  description="Visually divides sections of content so grouped information is easier to scan."
+  framework="react"
+  headings={headings}
+  title="Separator"
+>
+
+  <ComponentHeader framework="react" id="separator" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="tsx" title="Default">
+    <Default client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="list">List</h3>
+  <ComponentPreview code={examples.List} language="tsx" title="List">
+    <List client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="inline-navigation">Inline Navigation</h3>
+  <ComponentPreview code={examples.InlineNavigation} language="tsx" title="Inline Navigation">
+    <InlineNavigation client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="vertical">Vertical</h3>
+  <ComponentPreview code={examples.Vertical} language="tsx" title="Vertical">
+    <Vertical client:only="react" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/react" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/separator</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={separatorProps} />
+</DocsLayout>

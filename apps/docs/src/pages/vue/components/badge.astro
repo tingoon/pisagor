@@ -1,0 +1,108 @@
+---
+import {
+  CustomColor,
+  Default,
+  sources as examples,
+  imports,
+  Pill,
+  Sizes,
+  Variants,
+  WithLink,
+  WithSpinner,
+} from "@pisagor/vue/badge/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { badgeProps } from "../../../lib/props/badge";
+
+export const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 3, slug: "sizes", text: "Sizes" },
+  { depth: 3, slug: "variants", text: "Variants" },
+  { depth: 3, slug: "custom-color", text: "Custom Color" },
+  { depth: 3, slug: "pill", text: "Pill" },
+  { depth: 3, slug: "with-link", text: "With Link" },
+  { depth: 3, slug: "with-spinner", text: "With Spinner" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+export {
+  badgeProps,
+  CodeBlock,
+  ComponentHeader,
+  ComponentPreview,
+  CustomColor,
+  Default,
+  DocsLayout,
+  examples,
+  Installation,
+  imports,
+  Pill,
+  PropsTable,
+  Sizes,
+  Variants,
+  WithLink,
+  WithSpinner,
+};
+---
+
+<DocsLayout
+  description="Labels content with a compact status, category, or count so users can scan it quickly."
+  framework="vue"
+  headings={headings}
+  title="Badge"
+>
+
+  <ComponentHeader framework="vue" id="badge" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="vue" title="Default">
+    <Default client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sizes">Sizes</h3>
+  <ComponentPreview code={examples.Sizes} language="vue" title="Sizes">
+    <Sizes client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <ComponentPreview code={examples.Variants} language="vue" title="Variants">
+    <Variants client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-color">Custom Color</h3>
+  <ComponentPreview code={examples.CustomColor} language="vue" title="Custom Color">
+    <CustomColor client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="pill">Pill</h3>
+  <ComponentPreview code={examples.Pill} language="vue" title="Pill">
+    <Pill client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-link">With Link</h3>
+  <ComponentPreview code={examples.WithLink} language="vue" title="With Link">
+    <WithLink client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-spinner">With Spinner</h3>
+  <ComponentPreview code={examples.WithSpinner} language="vue" title="With Spinner">
+    <WithSpinner client:only="vue" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/vue" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/badge</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={badgeProps} />
+</DocsLayout>

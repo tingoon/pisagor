@@ -1,0 +1,33 @@
+{
+  "bugs": {
+    "url": "https://github.com/tingoon/pisagor/issues"
+  },
+  "dependencies": {
+    "@pisagor/recipes": "workspace:*"
+  },
+  "description": "Framework-agnostic component prop types (TSDoc) for Pisagor. Excludes native HTML attributes.",
+  "devDependencies": {
+    "@pisagor/tsconfig": "workspace:*"
+  },
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts"
+  },
+  "files": [
+    "src"
+  ],
+  "homepage": "https://github.com/tingoon/pisagor#readme",
+  "license": "MIT",
+  "name": "@pisagor/props",
+  "repository": {
+    "directory": "packages/props",
+    "type": "git",
+    "url": "git+https://github.com/tingoon/pisagor.git"
+  },
+  "scripts": {
+    "type-check": "tsc"
+  },
+  "sideEffects": false,
+  "type": "module",
+  "version": "0.1.0"
+}

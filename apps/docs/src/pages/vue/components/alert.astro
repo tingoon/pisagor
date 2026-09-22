@@ -1,0 +1,101 @@
+---
+import {
+  Compound,
+  CustomColor,
+  Default,
+  sources as examples,
+  imports,
+  Variants,
+  WithAction,
+  WithIcon,
+} from "@pisagor/vue/alert/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { alertProps } from "../../../lib/props/alert";
+
+export const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "variants", text: "Variants" },
+  { depth: 3, slug: "custom-color", text: "Custom Color" },
+  { depth: 3, slug: "with-action", text: "With Action" },
+  { depth: 3, slug: "with-icon", text: "With Icon" },
+  { depth: 3, slug: "compound", text: "Compound" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+export {
+  alertProps,
+  CodeBlock,
+  ComponentHeader,
+  ComponentPreview,
+  Compound,
+  CustomColor,
+  Default,
+  DocsLayout,
+  examples,
+  Installation,
+  imports,
+  PropsTable,
+  Variants,
+  WithAction,
+  WithIcon,
+};
+---
+
+<DocsLayout
+  description="Shows a brief message that helps users notice important information — such as updates, warnings, or errors — with an optional title, icon, and actions."
+  framework="vue"
+  headings={headings}
+  title="Alert"
+>
+
+  <ComponentHeader framework="vue" id="alert" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <ComponentPreview code={examples.Variants} language="vue" title="Variants">
+    <Variants client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-color">Custom Color</h3>
+  <ComponentPreview code={examples.CustomColor} language="vue" title="Custom Color">
+    <CustomColor client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-action">With Action</h3>
+  <ComponentPreview code={examples.WithAction} language="vue" title="With Action">
+    <WithAction client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-icon">With Icon</h3>
+  <ComponentPreview code={examples.WithIcon} language="vue" title="With Icon">
+    <WithIcon client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="compound">Compound</h3>
+  <ComponentPreview code={examples.Compound} language="vue" title="Compound">
+    <Compound client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="vue" title="Default">
+    <Default client:only="vue" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/vue" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/alert</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={alertProps} />
+</DocsLayout>

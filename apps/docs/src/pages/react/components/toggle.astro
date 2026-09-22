@@ -1,0 +1,108 @@
+---
+import {
+  Controlled,
+  Default,
+  Disabled,
+  sources as examples,
+  IconGroup,
+  imports,
+  Sizes,
+  Variants,
+  WithIcon,
+} from "@pisagor/react/toggle/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { toggleProps } from "../../../lib/props/toggle";
+
+export const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "sizes", text: "Sizes" },
+  { depth: 3, slug: "variants", text: "Variants" },
+  { depth: 3, slug: "disabled", text: "Disabled" },
+  { depth: 3, slug: "icon-group", text: "Icon Group" },
+  { depth: 3, slug: "with-icon", text: "With Icon" },
+  { depth: 3, slug: "controlled", text: "Controlled" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+export {
+  CodeBlock,
+  ComponentHeader,
+  ComponentPreview,
+  Controlled,
+  Default,
+  Disabled,
+  DocsLayout,
+  examples,
+  IconGroup,
+  Installation,
+  imports,
+  PropsTable,
+  Sizes,
+  toggleProps,
+  Variants,
+  WithIcon,
+};
+---
+
+<DocsLayout
+  description="Stays pressed or released to turn a single option on or off, similar to a checkbox styled as a button."
+  framework="react"
+  headings={headings}
+  title="Toggle"
+>
+
+  <ComponentHeader framework="react" id="toggle" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sizes">Sizes</h3>
+  <ComponentPreview code={examples.Sizes} language="tsx" title="Sizes">
+    <Sizes client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <ComponentPreview code={examples.Variants} language="tsx" title="Variants">
+    <Variants client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <ComponentPreview code={examples.Disabled} language="tsx" title="Disabled">
+    <Disabled client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="icon-group">Icon Group</h3>
+  <ComponentPreview code={examples.IconGroup} language="tsx" title="Icon Group">
+    <IconGroup client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-icon">With Icon</h3>
+  <ComponentPreview code={examples.WithIcon} language="tsx" title="With Icon">
+    <WithIcon client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <ComponentPreview code={examples.Controlled} language="tsx" title="Controlled">
+    <Controlled client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="tsx" title="Default">
+    <Default client:only="react" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/react" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/toggle</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={toggleProps} />
+</DocsLayout>

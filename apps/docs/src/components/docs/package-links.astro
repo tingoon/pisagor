@@ -1,0 +1,74 @@
+---
+import type { Framework } from "../../lib/nav";
+import { packages } from "../../lib/packages";
+
+interface Props {
+  framework: Framework;
+  /** Top rule under meta inside ComponentHeader. */
+  embedded?: boolean;
+  /** Inside ComponentHeader card — skip page bottom margin. */
+  inset?: boolean;
+  class?: string;
+}
+
+const pkg = packages[Astro.props.framework];
+const links = [
+  { href: pkg.github, label: "GitHub" },
+  { href: pkg.storybook, label: "Storybook" },
+  { href: pkg.npm, label: "npm" },
+] as const;
+---
+
+<div
+  class:list={[
+    "flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between",
+    Astro.props.embedded && "mt-3 border-t border-border/50 pt-3",
+    !Astro.props.inset && "mb-8",
+    Astro.props.class,
+  ]}
+>
+  <div
+    class="inline-flex w-fit overflow-hidden rounded-md border border-border/60 bg-background/40"
+    role="group"
+    aria-label="Package links"
+  >
+    {
+      links.map((link, index) => (
+        <a
+          class:list={[
+            "inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:bg-muted/60 hover:text-foreground",
+            index > 0 && "border-s border-border/60",
+          ]}
+          href={link.href}
+          rel="noreferrer"
+          target="_blank"
+        >
+          {link.label}
+          <svg
+            aria-hidden="true"
+            class="size-3 opacity-40"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M7 17L17 7M17 7H9M17 7V15"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </a>
+      ))
+    }
+  </div>
+
+  <a
+    class="w-fit font-mono text-[13px] text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
+    href={pkg.npm}
+    rel="noreferrer"
+    target="_blank"
+  >
+    {pkg.name}
+  </a>
+</div>

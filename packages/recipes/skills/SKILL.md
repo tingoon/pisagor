@@ -33,4 +33,4 @@ import { buttonRecipe } from "@pisagor/recipes/button";
 
 ## Source
 
-`@pisagor/recipes/<name>` → `src/ui/<name>.ts`
+`@pisagor/recipes/<name>` → `src/<name>.ts`

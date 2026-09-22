@@ -1,0 +1,115 @@
+---
+import {
+  Clearable,
+  Controlled,
+  Default,
+  Disabled,
+  sources as examples,
+  File,
+  Invalid,
+  imports,
+  Sizes,
+  Variants,
+} from "@pisagor/react/input/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { inputProps } from "../../../lib/props/input";
+
+export const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "sizes", text: "Sizes" },
+  { depth: 3, slug: "variants", text: "Variants" },
+  { depth: 3, slug: "clearable", text: "Clearable" },
+  { depth: 3, slug: "disabled", text: "Disabled" },
+  { depth: 3, slug: "invalid", text: "Invalid" },
+  { depth: 3, slug: "file", text: "File" },
+  { depth: 3, slug: "controlled", text: "Controlled" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+export {
+  Clearable,
+  CodeBlock,
+  ComponentHeader,
+  ComponentPreview,
+  Controlled,
+  Default,
+  Disabled,
+  DocsLayout,
+  examples,
+  File,
+  Installation,
+  Invalid,
+  imports,
+  inputProps,
+  PropsTable,
+  Sizes,
+  Variants,
+};
+---
+
+<DocsLayout
+  description="Captures a single line of text from the user for names, search terms, and other short values."
+  framework="react"
+  headings={headings}
+  title="Input"
+>
+
+  <ComponentHeader framework="react" id="input" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sizes">Sizes</h3>
+  <ComponentPreview code={examples.Sizes} language="tsx" title="Sizes">
+    <Sizes client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <ComponentPreview code={examples.Variants} language="tsx" title="Variants">
+    <Variants client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="clearable">Clearable</h3>
+  <ComponentPreview code={examples.Clearable} language="tsx" title="Clearable">
+    <Clearable client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <ComponentPreview code={examples.Disabled} language="tsx" title="Disabled">
+    <Disabled client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">Invalid</h3>
+  <ComponentPreview code={examples.Invalid} language="tsx" title="Invalid">
+    <Invalid client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="file">File</h3>
+  <ComponentPreview code={examples.File} language="tsx" title="File">
+    <File client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <ComponentPreview code={examples.Controlled} language="tsx" title="Controlled">
+    <Controlled client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="tsx" title="Default">
+    <Default client:only="react" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/react" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/input</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={inputProps} />
+</DocsLayout>

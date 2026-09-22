@@ -27,6 +27,7 @@ import {
   watch,
 } from "vue";
 import { Table } from "../components/table";
+import type { ClassValue } from "../internal/types";
 import { createContext } from "../internal/utils/create-context";
 import { type DataGridFeatures, dataGridFeatures } from "./data-grid.features";
 
@@ -198,7 +199,7 @@ export const DataGridRoot = defineComponent({
   inheritAttrs: false,
   name: "DataGridRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: { type: [String, Object, Array] as PropType<ClassValue> },
     recipe: {
       default: dataGridRecipe,
       type: Function as PropType<typeof dataGridRecipe>,
@@ -294,7 +295,7 @@ export const DataGridHeaderRow = defineComponent({
   inheritAttrs: false,
   name: "DataGridHeaderRow",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: { type: [String, Object, Array] as PropType<ClassValue> },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -326,7 +327,7 @@ export const DataGridColumnResizer = defineComponent({
   inheritAttrs: false,
   name: "DataGridColumnResizer",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: { type: [String, Object, Array] as PropType<ClassValue> },
   },
   setup(props, { attrs }) {
     return () => {
@@ -402,7 +403,7 @@ export const DataGridHead = defineComponent({
   inheritAttrs: false,
   name: "DataGridHead",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: { type: [String, Object, Array] as PropType<ClassValue> },
     columnId: { default: undefined, type: String as PropType<string | undefined> },
     filter: { default: false, type: Boolean },
   },
@@ -565,7 +566,7 @@ export const DataGridRow = defineComponent({
   inheritAttrs: false,
   name: "DataGridRow",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: { type: [String, Object, Array] as PropType<ClassValue> },
     style: { default: undefined, type: Object as PropType<CSSProperties | undefined> },
   },
   setup(props, { attrs, slots }) {
@@ -597,7 +598,7 @@ export const DataGridCell = defineComponent({
   inheritAttrs: false,
   name: "DataGridCell",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: { type: [String, Object, Array] as PropType<ClassValue> },
     columnId: { default: undefined, type: String as PropType<string | undefined> },
     style: { default: undefined, type: Object as PropType<CSSProperties | undefined> },
   },
@@ -655,7 +656,7 @@ export const DataGridEmpty = defineComponent({
   inheritAttrs: false,
   name: "DataGridEmpty",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: { type: [String, Object, Array] as PropType<ClassValue> },
     colSpan: { default: undefined, type: Number as PropType<number | undefined> },
   },
   setup(props, { attrs, slots }) {
@@ -682,7 +683,7 @@ export const DataGridToolbar = defineComponent({
   inheritAttrs: false,
   name: "DataGridToolbar",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: { type: [String, Object, Array] as PropType<ClassValue> },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -707,7 +708,7 @@ export const DataGridFooter = defineComponent({
   inheritAttrs: false,
   name: "DataGridFooter",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: { type: [String, Object, Array] as PropType<ClassValue> },
   },
   setup(props, { attrs, slots }) {
     return () => {
