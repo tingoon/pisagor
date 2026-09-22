@@ -27,8 +27,8 @@
     "@types/node": "^26.6.2",
     "knip": "^6.37.0",
     "lefthook": "^2.1.14",
-    "repomix": "^1.18.0",
-    "rulesync": "^16.39.1",
+    "repomix": "^1.18.1",
+    "rulesync": "^17.0.0",
     "taze": "^21.1.0",
     "turbo": "^2.11.2",
     "typescript": "^7.0.2"

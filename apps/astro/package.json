@@ -11,6 +11,7 @@
     "@storybook/addon-mcp": "^10.6.0",
     "@tailwindcss/vite": "catalog:",
     "astro": "catalog:",
+    "chromatic": "^18.9.4",
     "storybook": "^10.6.0",
     "tailwindcss": "catalog:",
     "vite": "catalog:"
@@ -19,6 +20,7 @@
   "private": true,
   "scripts": {
     "build": "storybook build",
+    "build-storybook": "bun run build",
     "dev": "storybook dev -p 4003",
     "type-check": "tsc --noEmit"
   },

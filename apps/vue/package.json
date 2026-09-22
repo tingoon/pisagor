@@ -17,6 +17,7 @@
     "@storybook/vue3-vite": "^10.6.0",
     "@tailwindcss/vite": "catalog:",
     "@vitejs/plugin-vue": "catalog:",
+    "chromatic": "^18.9.4",
     "storybook": "^10.6.0",
     "tailwindcss": "catalog:",
     "vite": "catalog:"
@@ -25,6 +26,7 @@
   "private": true,
   "scripts": {
     "build": "storybook build",
+    "build-storybook": "bun run build",
     "dev": "storybook dev -p 4002",
     "type-check": "tsc"
   },

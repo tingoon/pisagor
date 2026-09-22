@@ -18,6 +18,20 @@ bun run dev
 
 React Storybook: http://localhost:4001. Vue: http://localhost:4002. Astro: http://localhost:4003.
 
+## Chromatic
+
+CI publishes each Storybook to Chromatic when related packages, recipes, tokens, or Storybook apps change. Create three Chromatic projects linked to this monorepo, then add repository secrets:
+
+- `CHROMATIC_PROJECT_TOKEN_REACT`
+- `CHROMATIC_PROJECT_TOKEN_VUE`
+- `CHROMATIC_PROJECT_TOKEN_ASTRO`
+
+Manual run: Actions → **Chromatic** → **Run workflow**.
+
+Published remote MCP (`https://main--<app-id>.chromatic.com/mcp`) is currently reliable for **React**. Vue/Astro Storybooks still publish for UI review; their Chromatic `/mcp` route may 404. Cursor OAuth for Chromatic MCP uses client id `cdf3737dff9d485485968e50b63fd8b4` under `auth.client_id`.
+
+Vue Storybook keeps `componentsManifest` on; `experimentalDocgenServer` stays off until Storybook supports TypeScript 7 (no `typescript.sys`). Astro has no components-manifest generator yet.
+
 ## Checks
 
 ```bash

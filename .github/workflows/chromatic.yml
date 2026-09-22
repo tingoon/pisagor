@@ -1,0 +1,119 @@
+name: Chromatic
+
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: chromatic-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      react: ${{ steps.filter.outputs.react }}
+      vue: ${{ steps.filter.outputs.vue }}
+      astro: ${{ steps.filter.outputs.astro }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: dorny/paths-filter@v4
+        id: filter
+        with:
+          filters: |
+            react:
+              - '.github/workflows/chromatic.yml'
+              - 'apps/react/**'
+              - 'packages/react/**'
+              - 'packages/react-charts/**'
+              - 'packages/react-form/**'
+              - 'packages/recipes/**'
+              - 'packages/tokens/**'
+              - 'packages/utils/**'
+            vue:
+              - '.github/workflows/chromatic.yml'
+              - 'apps/vue/**'
+              - 'packages/vue/**'
+              - 'packages/vue-charts/**'
+              - 'packages/vue-form/**'
+              - 'packages/recipes/**'
+              - 'packages/tokens/**'
+              - 'packages/utils/**'
+            astro:
+              - '.github/workflows/chromatic.yml'
+              - 'apps/astro/**'
+              - 'packages/astro/**'
+              - 'packages/recipes/**'
+              - 'packages/tokens/**'
+              - 'packages/utils/**'
+
+  chromatic-react:
+    name: Chromatic React
+    needs: changes
+    if: >-
+      github.event_name == 'workflow_dispatch' || needs.changes.outputs.react ==
+      'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.0
+      - run: bun install --frozen-lockfile --ignore-scripts
+      - uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_REACT }}
+          workingDir: apps/react
+          onlyChanged: true
+          exitZeroOnChanges: true
+
+  chromatic-vue:
+    name: Chromatic Vue
+    needs: changes
+    if: >-
+      github.event_name == 'workflow_dispatch' || needs.changes.outputs.vue ==
+      'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.0
+      - run: bun install --frozen-lockfile --ignore-scripts
+      - uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_VUE }}
+          workingDir: apps/vue
+          onlyChanged: true
+          exitZeroOnChanges: true
+
+  chromatic-astro:
+    name: Chromatic Astro
+    needs: changes
+    if: >-
+      github.event_name == 'workflow_dispatch' || needs.changes.outputs.astro ==
+      'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.0
+      - run: bun install --frozen-lockfile --ignore-scripts
+      - uses: chromaui/action@latest
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN_ASTRO }}
+          workingDir: apps/astro
+          onlyChanged: true
+          exitZeroOnChanges: true
