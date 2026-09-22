@@ -336,8 +336,6 @@ const recipeSections: NavSection[] = [
   },
 ];
 
-const recipeItems: NavItem[] = recipeSections.flatMap((section) => section.items);
-
 /** Astro/Vite `base`; always ends with `/` (`/` or `/pisagor/`). */
 export function docsBase(): string {
   return import.meta.env.BASE_URL ?? "/";
