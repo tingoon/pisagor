@@ -1,0 +1,33 @@
+{
+  "bin": {
+    "pisagor-mcp": "./src/stdio.ts"
+  },
+  "bugs": {
+    "url": "https://github.com/tingoon/pisagor/issues"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "zod": "^4.6.5"
+  },
+  "description": "MCP server for Pisagor UI — reads catalogs from installed @pisagor/* packages.",
+  "devDependencies": {
+    "@pisagor/tsconfig": "workspace:*"
+  },
+  "files": [
+    "src"
+  ],
+  "homepage": "https://github.com/tingoon/pisagor#readme",
+  "license": "MIT",
+  "name": "@pisagor/mcp",
+  "repository": {
+    "directory": "packages/mcp",
+    "type": "git",
+    "url": "git+https://github.com/tingoon/pisagor.git"
+  },
+  "scripts": {
+    "start": "bun ./src/stdio.ts",
+    "type-check": "tsc"
+  },
+  "type": "module",
+  "version": "0.1.0"
+}

@@ -10,6 +10,10 @@
         "Authorization": "Bearer ${env:GITHUB_PAT}"
       },
       "url": "https://api.githubcopilot.com/mcp/"
+    },
+    "pisagor": {
+      "args": ["@pisagor/mcp"],
+      "command": "bunx"
     }
   }
 }
