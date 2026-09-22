@@ -1,5 +1,10 @@
 import { Field as FieldPrimitive } from "@ark-ui/vue/field";
-import { type InputRecipeSlot, inputRecipe, inputRootRecipe } from "@pisagor/recipes/input";
+import {
+  type InputRecipeSlot,
+  type InputRootVariantProps,
+  inputRecipe,
+  inputRootRecipe,
+} from "@pisagor/recipes/input";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
 import { type ClearableChangeEvent, useClearableInput } from "../../hooks/use-clearable-input";
@@ -16,7 +21,7 @@ type InputClassNames = VariantClassNames<InputRecipeSlot>;
 type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
 
 // #region Types
-export interface InputProps {
+export interface InputProps extends InputRootVariantProps {
   /**
    * Style recipe. Defaults to `inputRecipe` from `@pisagor/recipes/input`.
    *
