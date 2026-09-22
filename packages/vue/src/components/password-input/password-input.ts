@@ -170,10 +170,12 @@ export const PasswordInput = defineComponent({
                           h(
                             PasswordInputPrimitive.Indicator as ArkPart,
                             {
-                              fallback: fallback ?? h(PhEyeSlash),
                               ...restIndicatorProps,
                             },
-                            () => slots.indicator?.() ?? h(PhEye),
+                            {
+                              default: () => slots.indicator?.() ?? h(PhEye),
+                              fallback: () => fallback ?? h(PhEyeSlash),
+                            },
                           ),
                       ),
                   ),

@@ -18,19 +18,17 @@ export const SettingsRow = defineComponent({
           variant: "secondary",
         },
         () =>
-          h(Field.Label as ArkPart, null, () =>
-            h(Field as ArkPart, { orientation: "horizontal" }, () => [
-              h(Checkbox as ArkPart, null),
-              h(Field.Content as ArkPart, null, () => [
-                h(Field.Title as ArkPart, null, () => "Enable notifications"),
-                h(
-                  Field.Description as ArkPart,
-                  null,
-                  () => "You can enable or disable notifications at any time.",
-                ),
-              ]),
+          h(Field as ArkPart, { orientation: "horizontal" }, () => [
+            h(Checkbox as ArkPart, null),
+            h(Field.Content as ArkPart, null, () => [
+              h(Field.Title as ArkPart, null, () => "Enable notifications"),
+              h(
+                Field.Description as ArkPart,
+                null,
+                () => "You can enable or disable notifications at any time.",
+              ),
             ]),
-          ),
+          ]),
       );
   },
 });

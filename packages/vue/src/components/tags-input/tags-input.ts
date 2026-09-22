@@ -423,6 +423,8 @@ export const TagsInputRootProvider = defineComponent({
       type: Function as PropType<typeof tagsInputRecipe>,
     },
     size: { default: "md", type: String as PropType<TagsInputSize> },
+    /** Machine API from `useTagsInput` — must be a declared prop so Vue unwraps refs. */
+    value: { required: true, type: Object as PropType<object> },
   },
   setup(props, { attrs, slots: vueSlots }) {
     return () => {
@@ -436,6 +438,7 @@ export const TagsInputRootProvider = defineComponent({
             class: cn(props.class, (attrs as { class?: ClassValue }).class),
           }),
           "data-size": props.size,
+          value: props.value,
         },
         () => [
           h(

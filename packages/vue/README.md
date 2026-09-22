@@ -19,3 +19,5 @@ The root `@pisagor/vue` barrel exports **light** components only. Heavy componen
 Charts: [`@pisagor/vue-charts`](../vue-charts). Form fields: [`@pisagor/vue-form`](../vue-form) and `@pisagor/vue-form/tanstack`. Hooks: `@pisagor/vue/hooks`.
 
 See the [root README](../../README.md) for Tailwind setup.
+
+Agents: prefer [`@pisagor/mcp`](../mcp) (`bunx @pisagor/mcp`). This package also ships Intent skills under `skills/`.

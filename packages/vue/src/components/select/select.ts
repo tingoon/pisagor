@@ -207,7 +207,7 @@ export const SelectValueText = defineComponent({
           class: cn(styleSlots.valueText(), props.class, attrs.class),
           placeholder: props.placeholder,
         },
-        slots.default?.(),
+        () => slots.default?.(),
       );
     };
   },

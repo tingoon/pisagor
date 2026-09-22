@@ -39,6 +39,8 @@
     "./utils/*": "./src/utils/*.ts"
   },
   "files": [
+    "catalog.gen.json",
+    "skills",
     "src",
     "!**/*.stories.*",
     "!**/*.test.*"

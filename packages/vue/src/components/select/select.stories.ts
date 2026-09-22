@@ -202,9 +202,7 @@ export const MaxSelection = meta.story({
     template: `
       <Select.Root :collection="collection" multiple :onValueChange="onValueChange" :value="value">
         <Select.Trigger>
-          <Select.ValueText class="capitalize">
-            <Select.Context v-slot="{ value }">{{ renderValue(value) }}</Select.Context>
-          </Select.ValueText>
+          <Select.ValueText class="capitalize">{{ renderValue(value) }}</Select.ValueText>
         </Select.Trigger>
         <Select.Content>
           <Select.Item v-for="item in collection.items" :key="item.value" :item="item">
@@ -220,13 +218,13 @@ export const Multiple = meta.story({
   render: () => ({
     components: { Select },
     setup() {
-      const renderValue = (value: string[]) => {
-        if (value.length === 0) {
+      const renderValue = (selected: string[]) => {
+        if (selected.length === 0) {
           return "Select languages…";
         }
 
-        const firstValue = value?.at(0) ?? "";
-        const additionalValues = value.length > 1 ? ` (+${value.length - 1} more)` : "";
+        const firstValue = selected?.at(0) ?? "";
+        const additionalValues = selected.length > 1 ? ` (+${selected.length - 1} more)` : "";
 
         return firstValue + additionalValues;
       };
@@ -239,15 +237,18 @@ export const Multiple = meta.story({
           { label: "Rust", value: "rust" },
         ],
       });
+      const value = ref<string[]>(["javascript", "typescript"]);
 
-      return { collection, renderValue };
+      const onValueChange = (newValue: string | string[]) => {
+        value.value = Array.isArray(newValue) ? newValue : [newValue];
+      };
+
+      return { collection, onValueChange, renderValue, value };
     },
     template: `
-      <Select.Root :collection="collection" :defaultValue="['javascript', 'typescript']" multiple>
+      <Select.Root :collection="collection" multiple :onValueChange="onValueChange" :value="value">
         <Select.Trigger>
-          <Select.ValueText class="capitalize">
-            <Select.Context v-slot="{ value }">{{ renderValue(value) }}</Select.Context>
-          </Select.ValueText>
+          <Select.ValueText class="capitalize">{{ renderValue(value) }}</Select.ValueText>
         </Select.Trigger>
         <Select.Content>
           <Select.Item v-for="item in collection.items" :key="item.value" :item="item">

@@ -1,4 +1,3 @@
-import { FieldLabel } from "@ark-ui/vue/field";
 import {
   ProgressRange,
   ProgressRoot,
@@ -84,7 +83,7 @@ export const Progress = defineComponent({
                     if (props.label) {
                       headerNodes.push(
                         h(
-                          FieldLabel as ArkPart,
+                          "label",
                           {
                             class: cn(fieldRecipe().label()),
                           },
@@ -95,12 +94,10 @@ export const Progress = defineComponent({
 
                     if (props.isValueVisible) {
                       headerNodes.push(
-                        h(FieldLabel as ArkPart, { asChild: true }, () =>
-                          h(ProgressValueText as ArkPart, {
-                            ...props.valueProps,
-                            class: variantSlots.value({ class: props.classNames?.value }),
-                          }),
-                        ),
+                        h(ProgressValueText as ArkPart, {
+                          ...props.valueProps,
+                          class: variantSlots.value({ class: props.classNames?.value }),
+                        }),
                       );
                     }
 

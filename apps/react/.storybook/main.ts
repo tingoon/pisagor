@@ -6,11 +6,7 @@ const configDir = path.dirname(fileURLToPath(import.meta.url));
 const workspaceRoot = path.resolve(configDir, "../../..");
 
 export default defineMain({
-  addons: [
-    getAbsolutePath("@storybook/addon-a11y"),
-    getAbsolutePath("@storybook/addon-docs"),
-    getAbsolutePath("@storybook/addon-mcp"),
-  ],
+  addons: [getAbsolutePath("@storybook/addon-a11y"), getAbsolutePath("@storybook/addon-docs")],
   core: {
     disableTelemetry: true,
     enableCrashReports: false,

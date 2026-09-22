@@ -13,7 +13,6 @@
     "@pisagor/tsconfig": "workspace:*",
     "@storybook/addon-a11y": "^10.6.0",
     "@storybook/addon-docs": "^10.6.0",
-    "@storybook/addon-mcp": "^10.6.0",
     "@storybook/vue3-vite": "^10.6.0",
     "@tailwindcss/vite": "catalog:",
     "@vitejs/plugin-vue": "catalog:",
