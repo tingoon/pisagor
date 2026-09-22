@@ -3,7 +3,7 @@ name: Chromatic
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [ main ]
   workflow_dispatch:
 
 permissions:
@@ -22,7 +22,7 @@ jobs:
       astro: ${{ steps.filter.outputs.astro }}
     steps:
       - uses: actions/checkout@v7
-      - uses: dorny/paths-filter@v3
+      - uses: dorny/paths-filter@v4
         id: filter
         with:
           filters: |
@@ -56,8 +56,8 @@ jobs:
     name: Chromatic React
     needs: changes
     if: >-
-      github.event_name == 'workflow_dispatch' ||
-      needs.changes.outputs.react == 'true'
+      github.event_name == 'workflow_dispatch' || needs.changes.outputs.react ==
+      'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -78,8 +78,8 @@ jobs:
     name: Chromatic Vue
     needs: changes
     if: >-
-      github.event_name == 'workflow_dispatch' ||
-      needs.changes.outputs.vue == 'true'
+      github.event_name == 'workflow_dispatch' || needs.changes.outputs.vue ==
+      'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -100,8 +100,8 @@ jobs:
     name: Chromatic Astro
     needs: changes
     if: >-
-      github.event_name == 'workflow_dispatch' ||
-      needs.changes.outputs.astro == 'true'
+      github.event_name == 'workflow_dispatch' || needs.changes.outputs.astro ==
+      'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
