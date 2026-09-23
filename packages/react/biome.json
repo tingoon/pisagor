@@ -1,9 +1,4 @@
 {
-  "css": {
-    "parser": {
-      "tailwindDirectives": true
-    }
-  },
   "extends": "//",
   "linter": {
     "domains": {
