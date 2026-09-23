@@ -22,7 +22,7 @@ export const Default = meta.story({
   render: () => ({
     components: { Prose },
     template: `
-      <div class="w-[28rem] overflow-hidden rounded-xl border bg-card p-6">
+      <div class="w-112 overflow-hidden rounded-xl border bg-card p-6">
         <Prose>
           <h1>Readable typography, styled consistently</h1>
           <p>
@@ -360,7 +360,7 @@ export const HtmlTrusted = meta.story({
       };
     },
     template: `
-      <div class="w-[28rem] overflow-hidden rounded-xl border bg-card p-6">
+      <div class="w-112 overflow-hidden rounded-xl border bg-card p-6">
         <Prose :html="html" />
       </div>
     `,

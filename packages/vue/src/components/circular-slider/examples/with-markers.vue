@@ -1,7 +1,7 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { CircularSlider } from "..";
 </script>
 
 <template>
-  <CircularSlider aria-label="Angle" :default-value="45" markers />
+  <CircularSlider aria-label="Angle" markers :default-value="45" />
 </template>

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhCaretRight, PhSealCheck } from "@phosphor-icons/vue";
 import { Item } from "..";
 </script>

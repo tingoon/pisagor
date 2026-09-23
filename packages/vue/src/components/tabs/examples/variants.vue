@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Tabs } from "..";
 import { variantTabs } from "./helpers";
 
@@ -10,12 +10,12 @@ const verticalItems = variantTabs("Underline + vertical");
 <template>
   <div class="flex flex-col gap-2">
     <Tabs default-value="tab-1" :items="defaultItems" />
-    <Tabs default-value="tab-1" :items="underlineItems" variant="underline" />
+    <Tabs default-value="tab-1" variant="underline" :items="underlineItems" />
     <Tabs
       default-value="tab-1"
-      :items="verticalItems"
       orientation="vertical"
       variant="underline"
+      :items="verticalItems"
     />
   </div>
 </template>

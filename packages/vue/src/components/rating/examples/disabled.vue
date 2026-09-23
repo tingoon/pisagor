@@ -1,7 +1,7 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Rating } from "..";
 </script>
 
 <template>
-  <Rating :defaultValue="3" disabled />
+  <Rating disabled :defaultValue="3" />
 </template>

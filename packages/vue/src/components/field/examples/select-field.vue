@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { createListCollection } from "@ark-ui/vue/collection";
 import { Select } from "@pisagor/vue";
 import { Field } from "..";

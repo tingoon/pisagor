@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhAt } from "@phosphor-icons/vue";
 import { Badge } from "@pisagor/vue";
 import { InputGroup } from "..";

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Input } from "@pisagor/vue";
 import { ref } from "vue";
 import { ColorPicker } from "..";
@@ -9,7 +9,7 @@ const onValueChange = setValue;
 
 <template>
         <div class="flex flex-col gap-2">
-          <ColorPicker @value-change="onValueChange" :value="value">
+          <ColorPicker :value="value" @value-change="onValueChange" >
             <ColorPicker.Control>
               <ColorPicker.Input as-child>
                 <Input />

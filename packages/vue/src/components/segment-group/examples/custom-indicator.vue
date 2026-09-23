@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { SegmentGroup } from "..";
 
 const items = ["Profile", "Account", "Security", "Notifications"];
@@ -10,9 +10,9 @@ const items = ["Profile", "Account", "Security", "Notifications"];
           defaultValue="Profile"
         >
           <SegmentGroup.Item
+            class="px-2 py-1.5 text-sm"
             v-for="item in items"
             :key="item"
-            class="px-2 py-1.5 text-sm"
             :disabled="item === 'Security'"
             :value="item"
           >

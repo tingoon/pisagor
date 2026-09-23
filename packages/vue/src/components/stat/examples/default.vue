@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Stat } from "..";
 
 const description = "Updated 2 minutes ago";
@@ -7,5 +7,5 @@ const value = "$124,320";
 </script>
 
 <template>
-  <Stat :label="label" :value="value" :description="description" />
+  <Stat :description="description" :label="label" :value="value" />
 </template>

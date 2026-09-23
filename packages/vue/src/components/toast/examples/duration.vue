@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Button } from "@pisagor/vue";
 import { toast } from "..";
 
@@ -15,9 +15,9 @@ function handleShort() {
 
 <template>
         <div class="flex flex-wrap gap-2">
-          <Button @click="handleShort" variant="outline">2 seconds</Button>
-          <Button @click="handleLong" variant="outline">10 seconds</Button>
-          <Button @click="handlePersistent" variant="outline">Until dismissed</Button>
+          <Button variant="outline" @click="handleShort" >2 seconds</Button>
+          <Button variant="outline" @click="handleLong" >10 seconds</Button>
+          <Button variant="outline" @click="handlePersistent" >Until dismissed</Button>
         </div>
   
 </template>

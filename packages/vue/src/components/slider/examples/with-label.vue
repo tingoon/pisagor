@@ -1,11 +1,11 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Field } from "@pisagor/vue";
 import { Slider } from "..";
 </script>
 
 <template>
         <Field>
-          <Slider :default-value="[50]" label="Opacity" show-value />
+          <Slider label="Opacity" show-value :default-value="[50]" />
         </Field>
   
 </template>

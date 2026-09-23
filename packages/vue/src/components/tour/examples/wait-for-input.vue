@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Button, Checkbox, Field, Input } from "@pisagor/vue";
 import { Tour } from "..";
 

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Checkbox, Field, Input, Select, Switch, Textarea } from "@pisagor/vue";
 import { defineComponent } from "vue";
 import { Surface } from "..";

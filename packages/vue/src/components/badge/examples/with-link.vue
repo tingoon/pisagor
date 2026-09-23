@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhArrowUpRight, PhPlusCircle } from "@phosphor-icons/vue";
 import { Badge } from "..";
 </script>

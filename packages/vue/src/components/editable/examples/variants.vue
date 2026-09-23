@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Input } from "@pisagor/vue";
 import { Editable } from "..";
 </script>

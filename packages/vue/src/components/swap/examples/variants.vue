@@ -1,24 +1,24 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Button } from "@pisagor/vue";
 import { Swap } from "..";
 </script>
 
 <template>
         <div class="flex flex-wrap items-center gap-2">
-          <Button @click="toggle('fade')" size="icon-lg" variant="outline">
-            <Swap :off="renderOff()" :on="renderOn()" :swap="state.fade" variant="fade" />
+          <Button size="icon-lg" variant="outline" @click="toggle('fade')" >
+            <Swap variant="fade" :off="renderOff()" :on="renderOn()" :swap="state.fade" />
           </Button>
-          <Button @click="toggle('blur')" size="icon-lg" variant="outline">
-            <Swap :off="renderOff()" :on="renderOn()" :swap="state.blur" variant="blur" />
+          <Button size="icon-lg" variant="outline" @click="toggle('blur')" >
+            <Swap variant="blur" :off="renderOff()" :on="renderOn()" :swap="state.blur" />
           </Button>
-          <Button @click="toggle('flip')" size="icon-lg" variant="outline">
-            <Swap :off="renderOff()" :on="renderOn()" :swap="state.flip" variant="flip" />
+          <Button size="icon-lg" variant="outline" @click="toggle('flip')" >
+            <Swap variant="flip" :off="renderOff()" :on="renderOn()" :swap="state.flip" />
           </Button>
-          <Button @click="toggle('rotate')" size="icon-lg" variant="outline">
-            <Swap :off="renderOff()" :on="renderOn()" :swap="state.rotate" variant="rotate" />
+          <Button size="icon-lg" variant="outline" @click="toggle('rotate')" >
+            <Swap variant="rotate" :off="renderOff()" :on="renderOn()" :swap="state.rotate" />
           </Button>
-          <Button @click="toggle('scale')" size="icon-lg" variant="outline">
-            <Swap :off="renderOff()" :on="renderOn()" :swap="state.scale" variant="scale" />
+          <Button size="icon-lg" variant="outline" @click="toggle('scale')" >
+            <Swap variant="scale" :off="renderOff()" :on="renderOn()" :swap="state.scale" />
           </Button>
         </div>
   

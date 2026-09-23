@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Carousel } from "..";
 
 const slides = imageSources();
@@ -11,17 +11,17 @@ const slides = imageSources();
             <Carousel.NextTrigger>Next</Carousel.NextTrigger>
 
             <Carousel.ItemGroup>
-              <Carousel.Item v-for="(slide, index) in slides" :index="index" :key="slide.src">
+              <Carousel.Item v-for="(slide, index) in slides" :key="slide.src" :index="index" >
                 <img :alt="slide.alt" :height="300" :src="slide.src" :width="500" />
               </Carousel.Item>
             </Carousel.ItemGroup>
           </Carousel.Control>
           <Carousel.IndicatorGroup class="mt-4">
             <Carousel.Indicator
-              v-for="(slide, index) in slides"
               class="size-10 rounded-md"
-              :index="index"
+              v-for="(slide, index) in slides"
               :key="slide.src"
+              :index="index"
             >
               <img :alt="slide.alt" :height="40" :src="slide.src" :width="40" />
             </Carousel.Indicator>

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { createListCollection } from "@ark-ui/vue/collection";
 import { ref } from "vue";
 import { Listbox } from "..";
@@ -38,7 +38,7 @@ const onValueChange = (value) => setValue(Array.isArray(value) ? value : [value]
 
 <template>
         <div class="flex flex-col gap-2 sm:flex-row">
-          <Listbox.Root class="w-full" :collection="collection" @value-change="onValueChange" :value="value">
+          <Listbox.Root class="w-full" :collection="collection" :value="value" @value-change="onValueChange" >
             <Listbox.Content class="overflow-auto max-sm:flex-row">
               <Listbox.Item v-for="item in collection.items" :key="item.value" :item="item">
                 <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>

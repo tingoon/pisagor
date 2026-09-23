@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Format } from "..";
 
 const date = new Date(Date.now() - 1000 * 60 * 60 * 24 * 3);

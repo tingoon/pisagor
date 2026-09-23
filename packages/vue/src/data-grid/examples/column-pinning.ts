@@ -148,7 +148,7 @@ export function ColumnPinning() {
                 Name pinned start, actions pinned end — scroll horizontally to see pinning.
               </p>
             </DataGrid.Toolbar>
-            <Table class="min-w-[960px]">
+            <Table class="min-w-240">
               <Table.Header>
                 <DataGrid.Header>
                   <DataGrid.HeaderRow>

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { createListCollection } from "@ark-ui/vue/collection";
 import { PhGearSix, PhX } from "@phosphor-icons/vue";
 import { Button, Field, NumberInput, Select } from "@pisagor/vue";

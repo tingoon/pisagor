@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { cn } from "@pisagor/utils";
 import { ref } from "vue";
 import { Resizable } from "..";
@@ -25,9 +25,9 @@ const onWidthChange = setWidth;
           handle-position="top"
           label="Resize panel"
           placement="start"
-          :width="width"
           :on-resize-change="onWidthChange"
           :on-width-change="onWidthChange"
+          :width="width"
         />
         <div class="flex flex-1 items-center justify-center p-4 text-sm">Panel</div>
       </aside>

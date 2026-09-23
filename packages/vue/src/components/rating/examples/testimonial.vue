@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Avatar, Card } from "@pisagor/vue";
 import { Rating } from "..";
 </script>
@@ -6,7 +6,7 @@ import { Rating } from "..";
 <template>
         <Card>
           <Card.Content class="space-y-2">
-            <Rating class="**:data-[slot=rating-item-indicator]:size-4" :defaultValue="5" readOnly />
+            <Rating class="**:data-[slot=rating-item-indicator]:size-4" readOnly :defaultValue="5" />
             <blockquote class="text-muted-foreground">
               &ldquo;This completely changed our workflow. Fast, reliable, and the team loves it. Would
               recommend to anyone.&rdquo;

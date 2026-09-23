@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhGear, PhHouse, PhUser } from "@phosphor-icons/vue";
 import { BottomNavigation } from "..";
 </script>

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Button } from "@pisagor/vue";
 import { ref } from "vue";
 import { Swap } from "..";
@@ -10,7 +10,7 @@ function toggle() {
 </script>
 
 <template>
-        <Button @click="toggle" size="icon-lg" variant="outline">
+        <Button size="icon-lg" variant="outline" @click="toggle" >
           <Swap :off="renderOff()" :on="renderOn()" :swap="state.swap" />
         </Button>
   

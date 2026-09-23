@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhPercent } from "@phosphor-icons/vue";
 import { InputGroup, Separator } from "@pisagor/vue";
 import { ColorPicker } from "..";
@@ -7,7 +7,7 @@ const defaultValue = parseColor("#0485F7").toString("hsla");
 </script>
 
 <template>
-        <ColorPicker :default-value="defaultValue" format="hsla">
+        <ColorPicker format="hsla" :default-value="defaultValue" >
           <ColorPicker.Control>
             <InputGroup>
               <ColorPicker.Trigger as-child>

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhPause, PhPlay } from "@phosphor-icons/vue";
 import { Button, Card } from "@pisagor/vue";
 import { Timer } from "..";

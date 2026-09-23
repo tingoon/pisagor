@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { ref } from "vue";
 import { RadioGroup } from "..";
 
@@ -14,7 +14,7 @@ const onValueChange = setValue;
 <template>
         <div class="flex flex-col items-center gap-2 text-center text-sm">
           <p>Select the option comfortable</p>
-          <RadioGroup :items="items" @value-change="onValueChange" :value="value" />
+          <RadioGroup :items="items" :value="value" @value-change="onValueChange" />
           <p class="text-center">{{ value === "comfortable" ? "✅" : "❌" }}</p>
         </div>
   

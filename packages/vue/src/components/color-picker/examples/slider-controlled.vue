@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { ref } from "vue";
 import { ColorPicker } from "..";
 
@@ -8,7 +8,7 @@ const onValueChange = setColor;
 
 <template>
         <div class="flex flex-col gap-2">
-          <ColorPicker class="w-full" format="hsla" inline @value-change="onValueChange" :value="color">
+          <ColorPicker class="w-full" format="hsla" inline :value="color" @value-change="onValueChange" >
             <ColorPicker.View format="hsla">
               <ColorPicker.ChannelSlider channel="hue" />
             </ColorPicker.View>

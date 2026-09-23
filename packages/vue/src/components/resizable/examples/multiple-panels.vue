@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { cn } from "@pisagor/utils";
 import { Resizable } from "..";
 
@@ -20,11 +20,11 @@ function _panelClassName(orientation: "horizontal" | "vertical" = "horizontal") 
       :default-size="[20, 60, 20]"
       :panels="[{ id: '1', minSize: 20 }, { id: '2', minSize: 40 }, { id: '3', minSize: 20 }]"
     >
-      <Resizable.Panel :class="panelClassName()" id="1">Left</Resizable.Panel>
+      <Resizable.Panel id="1" :class="panelClassName()" >Left</Resizable.Panel>
       <Resizable.ResizeTrigger id="1:2" with-handle />
-      <Resizable.Panel :class="panelClassName()" id="2">Center</Resizable.Panel>
+      <Resizable.Panel id="2" :class="panelClassName()" >Center</Resizable.Panel>
       <Resizable.ResizeTrigger id="2:3" with-handle />
-      <Resizable.Panel :class="panelClassName()" id="3">Right</Resizable.Panel>
+      <Resizable.Panel id="3" :class="panelClassName()" >Right</Resizable.Panel>
     </Resizable>
   </div>
 </template>

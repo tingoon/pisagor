@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhArrowSquareOut } from "@phosphor-icons/vue";
 import { Item } from "..";
 </script>

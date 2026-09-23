@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Input, Surface } from "@pisagor/vue";
 import { Field } from "..";
 </script>

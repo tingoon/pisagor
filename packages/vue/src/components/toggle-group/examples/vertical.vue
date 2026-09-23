@@ -1,10 +1,10 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhTextB, PhTextItalic, PhTextUnderline } from "@phosphor-icons/vue";
 import { ToggleGroup } from "..";
 </script>
 
 <template>
-        <ToggleGroup.Root :default-value="['bold']" orientation="vertical" variant="outline">
+        <ToggleGroup.Root orientation="vertical" variant="outline" :default-value="['bold']" >
           <ToggleGroup.Item aria-label="Toggle bold" value="bold">
             <PhTextB />
           </ToggleGroup.Item>

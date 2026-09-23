@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Field } from "@pisagor/vue";
 import { ref } from "vue";
 import { TagsInput } from "..";
@@ -10,7 +10,7 @@ const onValueChange = setValue;
 <template>
         <Field>
           <Field.Label>Frameworks</Field.Label>
-          <TagsInput class="w-full" @value-change="onValueChange" :value="value" />
+          <TagsInput class="w-full" :value="value" @value-change="onValueChange" />
         </Field>
   
 </template>

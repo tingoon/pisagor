@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { createListCollection } from "@ark-ui/vue/collection";
 
 import { Combobox } from "@pisagor/vue";
@@ -26,8 +26,8 @@ function filter(_inputValue: string) {}
         <Field>
           <Field.Label>Fruits</Field.Label>
           <Combobox.Root
-            :collection="collection"
             multiple
+            :collection="collection"
             @input-value-change="({ inputValue }) => filter(inputValue)"
           >
             <Combobox.Input aria-label="Select items" placeholder="Select items…" />

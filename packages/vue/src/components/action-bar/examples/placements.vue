@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhArchive, PhDownload, PhPencilSimple, PhTrash, PhX } from "@phosphor-icons/vue";
 import { Button } from "@pisagor/vue";
 import { ref } from "vue";
@@ -10,20 +10,20 @@ const isOpen = ref(false);
 <template>
         <div>
           <div class="flex flex-wrap gap-2">
-            <Button @click="handleOpenChange('bottom-start')" variant="outline">
+            <Button variant="outline" @click="handleOpenChange('bottom-start')" >
               Bottom start
             </Button>
-            <Button @click="handleOpenChange('bottom')" variant="outline">
+            <Button variant="outline" @click="handleOpenChange('bottom')" >
               Bottom
             </Button>
-            <Button @click="handleOpenChange('bottom-end')" variant="outline">
+            <Button variant="outline" @click="handleOpenChange('bottom-end')" >
               Bottom end
             </Button>
           </div>
           <ActionBar
-            @open-change="(next) => (isOpen = next)"
             :open="isOpen"
             :positioning="{ placement }"
+            @open-change="(next) => (isOpen = next)"
           >
             <ActionBar.Content aria-label="Bulk actions">
               <ActionBar.Value :count="5" />

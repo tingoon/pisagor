@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Format } from "..";
 </script>
 
@@ -6,15 +6,15 @@ import { Format } from "..";
         <div class="flex flex-col gap-2">
           <div>
             <span class="text-muted-foreground text-sm">Long: </span>
-            <Format.Byte :value="1500000" unit-display="long" />
+            <Format.Byte unit-display="long" :value="1500000" />
           </div>
           <div>
             <span class="text-muted-foreground text-sm">Short: </span>
-            <Format.Byte :value="1500000" unit-display="short" />
+            <Format.Byte unit-display="short" :value="1500000" />
           </div>
           <div>
             <span class="text-muted-foreground text-sm">Narrow: </span>
-            <Format.Byte :value="1500000" unit-display="narrow" />
+            <Format.Byte unit-display="narrow" :value="1500000" />
           </div>
         </div>
   

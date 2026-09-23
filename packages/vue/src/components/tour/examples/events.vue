@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Button } from "@pisagor/vue";
 import { ref } from "vue";
 import { Tour } from "..";
@@ -42,7 +42,7 @@ const steps = [
 
 <template>
         <div class="flex flex-col gap-2">
-          <Tour @status-change="onStatusChange" @step-change="onStepChange" :steps="steps">
+          <Tour :steps="steps" @status-change="onStatusChange" @step-change="onStepChange" >
             <Tour.Trigger as-child>
               <Button variant="outline">Start tour</Button>
             </Tour.Trigger>

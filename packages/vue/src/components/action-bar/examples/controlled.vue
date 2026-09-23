@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhArchive, PhDownload, PhPencilSimple, PhTrash, PhX } from "@phosphor-icons/vue";
 import { Button } from "@pisagor/vue";
 import { ref } from "vue";
@@ -8,8 +8,8 @@ const isOpen = ref(false);
 </script>
 
 <template>
-        <ActionBar @open-change="(next) => (isOpen = next)" :open="isOpen">
-          <Button @click="isOpen = !isOpen" variant="outline">Toggle</Button>
+        <ActionBar :open="isOpen" @open-change="(next) => (isOpen = next)" >
+          <Button variant="outline" @click="isOpen = !isOpen" >Toggle</Button>
           <ActionBar.Content aria-label="Bulk actions">
             <ActionBar.Value :count="2" />
             <ActionBar.Separator />

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Select } from "..";
 
 const collection = createListCollection({
@@ -11,7 +11,7 @@ const collection = createListCollection({
 </script>
 
 <template>
-        <Select.Root :collection="collection" disabled>
+        <Select.Root disabled :collection="collection" >
           <Select.Trigger>
             <Select.ValueText placeholder="Select framework" />
           </Select.Trigger>

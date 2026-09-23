@@ -1,7 +1,7 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Input } from "..";
 </script>
 
 <template>
-  <Input :disabled="true" placeholder="you@example.com" />
+  <Input placeholder="you@example.com" :disabled="true" />
 </template>

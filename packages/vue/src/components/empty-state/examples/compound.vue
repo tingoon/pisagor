@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhMagnifyingGlass } from "@phosphor-icons/vue";
 import { EmptyState } from "..";
 </script>
@@ -13,7 +13,10 @@ import { EmptyState } from "..";
             No items match your current filters. Try clearing filters or creating a new project.
           </EmptyState.Description>
           <EmptyState.Actions>
-            <button class="inline-flex h-9 items-center rounded-lg bg-primary px-4 text-primary-foreground text-sm">
+            <button
+              class="inline-flex h-9 items-center rounded-lg bg-primary px-4 text-primary-foreground text-sm"
+              type="button"
+            >
               Create project
             </button>
           </EmptyState.Actions>

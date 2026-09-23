@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Combobox } from "..";
 
 const items = [
@@ -10,5 +10,5 @@ const items = [
 </script>
 
 <template>
-  <Combobox :items="items" :clearable="true" />
+  <Combobox :clearable="true" :items="items" />
 </template>

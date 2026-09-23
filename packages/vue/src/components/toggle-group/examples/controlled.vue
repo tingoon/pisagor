@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhTextB, PhTextItalic, PhTextUnderline } from "@phosphor-icons/vue";
 import { ref } from "vue";
 import { ToggleGroup } from "..";
@@ -12,7 +12,7 @@ function handleValueChange(details?: { value?: unknown; page?: unknown }) {
 
 <template>
         <div class="flex flex-col items-center gap-2">
-          <ToggleGroup.Root @value-change="handleValueChange" :value="value">
+          <ToggleGroup.Root :value="value" @value-change="handleValueChange" >
             <ToggleGroup.Item aria-label="Toggle bold" value="bold">
               <PhTextB />
             </ToggleGroup.Item>

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhBell, PhHouse, PhMagnifyingGlass, PhUser } from "@phosphor-icons/vue";
 import { ScrollArea } from "@pisagor/vue";
 import { BottomNavigation } from "..";

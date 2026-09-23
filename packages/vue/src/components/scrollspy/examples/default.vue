@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Button, ScrollArea } from "@pisagor/vue";
 import { ref } from "vue";
 import { Scrollspy } from "..";
@@ -15,26 +15,26 @@ const verticalSections = [
 
 <template>
   <div class="flex w-full grow gap-5">
-    <div class="flex w-[150px] flex-col gap-2">
+    <div class="flex w-37.5 flex-col gap-2">
       <Scrollspy class="flex flex-col gap-2.5" :offset="50" :target-ref="parentRef">
         <Button
+          class="data-[active=true]:bg-primary data-[active=true]:text-primary-foreground"
+          variant="outline"
           v-for="item in verticalSections"
           :key="item.id"
-          class="data-[active=true]:bg-primary data-[active=true]:text-primary-foreground"
           :data-scrollspy-anchor="item.id"
-          variant="outline"
         >
           {{ item.label }}
         </Button>
       </Scrollspy>
     </div>
 
-    <div ref="parentRef" class="grow">
-      <ScrollArea class="-me-5 h-[500px] grow pe-5">
+    <div class="grow" ref="parentRef" >
+      <ScrollArea class="-me-5 h-125 grow pe-5">
         <div class="space-y-8">
-          <div v-for="item in verticalSections" :id="item.id" :key="item.id" class="space-y-2.5">
+          <div class="space-y-2.5" v-for="item in verticalSections" :key="item.id" :id="item.id" >
             <h3 class="text-base text-foreground">{{ item.label }}</h3>
-            <div class="h-[350px] rounded-2xl bg-muted" />
+            <div class="h-87.5 rounded-2xl bg-muted" />
           </div>
         </div>
       </ScrollArea>

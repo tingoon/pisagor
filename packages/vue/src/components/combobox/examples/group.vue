@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { createListCollection } from "@ark-ui/vue/collection";
 
 import { computed } from "vue";

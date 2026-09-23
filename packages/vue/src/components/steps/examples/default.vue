@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
 import { Button } from "@pisagor/vue";
 import { Steps } from "..";
@@ -17,9 +17,9 @@ const steps = Array.from({ length: 3 }, (_, index) => index + 1);
             </Steps.Item>
           </Steps.List>
           <Steps.Content
+            class="flex h-full items-center justify-center rounded-md border"
             v-for="step in steps"
             :key="step"
-            class="flex h-full items-center justify-center rounded-md border"
             :index="step - 1"
           >
             <p class="text-muted-foreground text-sm">Step {{ step }}</p>

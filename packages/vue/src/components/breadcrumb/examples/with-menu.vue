@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Button, DropdownMenu } from "@pisagor/vue";
 import { Breadcrumb } from "..";
 </script>

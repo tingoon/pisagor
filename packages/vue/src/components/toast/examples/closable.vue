@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Button } from "@pisagor/vue";
 import { toast } from "..";
 
@@ -9,7 +9,7 @@ function handleClick() {
 
 <template>
         <div class="flex flex-wrap gap-2">
-          <Button @click="handleClick" variant="outline">Toast</Button>
+          <Button variant="outline" @click="handleClick" >Toast</Button>
         </div>
   
 </template>

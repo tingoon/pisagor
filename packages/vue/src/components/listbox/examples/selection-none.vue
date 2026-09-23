@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhPencilSimple, PhPlusSquare, PhTrash } from "@phosphor-icons/vue";
 import { Item, Separator } from "@pisagor/vue";
 import { Listbox } from "..";
@@ -19,7 +19,7 @@ const collection = createListCollection({
 <template>
         <Item.Group variant="outline">
         <Item class="p-1">
-          <Listbox.Root aria-label="File actions" class="w-full" :collection="collection" selectionMode="none">
+          <Listbox.Root aria-label="File actions" class="w-full" selectionMode="none" :collection="collection" >
             <Listbox.Content>
               <Listbox.ItemGroup heading="Actions">
                 <Listbox.Item :item="collection.items[0]">
@@ -45,7 +45,7 @@ const collection = createListCollection({
               </Listbox.ItemGroup>
               <Separator />
               <Listbox.ItemGroup heading="Danger zone">
-                <Listbox.Item :item="collection.items[2]" variant="destructive">
+                <Listbox.Item variant="destructive" :item="collection.items[2]" >
                   <div class="flex h-8 items-start justify-start">
                     <PhTrash />
                   </div>

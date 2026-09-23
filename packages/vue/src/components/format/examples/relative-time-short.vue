@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Format } from "..";
 
 const date = new Date(Date.now() - 1000 * 60 * 30);
@@ -8,15 +8,15 @@ const date = new Date(Date.now() - 1000 * 60 * 30);
         <div class="flex flex-col gap-2">
           <div>
             <span class="text-muted-foreground text-sm">Long: </span>
-            <Format.RelativeTime :value="date" style="long" />
+            <Format.RelativeTime style="long" :value="date" />
           </div>
           <div>
             <span class="text-muted-foreground text-sm">Short: </span>
-            <Format.RelativeTime :value="date" style="short" />
+            <Format.RelativeTime style="short" :value="date" />
           </div>
           <div>
             <span class="text-muted-foreground text-sm">Narrow: </span>
-            <Format.RelativeTime :value="date" style="narrow" />
+            <Format.RelativeTime style="narrow" :value="date" />
           </div>
         </div>
   

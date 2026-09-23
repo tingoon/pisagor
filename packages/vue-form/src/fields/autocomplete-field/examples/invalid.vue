@@ -1,7 +1,7 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { AutocompleteField } from "..";
 </script>
 
 <template>
-  <AutocompleteField error="Please select a city." id="autocomplete-field-city-invalid" invalid :items='cityOptions' label="City" />
+  <AutocompleteField error="Please select a city." id="autocomplete-field-city-invalid" invalid label="City" :items='cityOptions' />
 </template>

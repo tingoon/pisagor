@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 const chunks = useHighlight({
   query: "real humans",
   text: "Endless scale, powered by real humans.",
@@ -8,7 +8,7 @@ const chunks = useHighlight({
 <template>
         <p class="font-medium text-foreground text-lg leading-relaxed">
           <template v-for="(chunk, index) in chunks" :key="index">
-            <mark v-if="chunk.match" class="relative bg-transparent px-0 font-semibold text-primary">
+            <mark class="relative bg-transparent px-0 font-semibold text-primary" v-if="chunk.match" >
               {{ chunk.text }}
               <svg
                 aria-hidden="true"

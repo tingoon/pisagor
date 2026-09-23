@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { createListCollection } from "@ark-ui/vue/collection";
 
 import { Surface } from "@pisagor/vue";
@@ -17,7 +17,7 @@ const collection = createListCollection({ items: initialItems });
 <template>
         <Surface bordered padding="md" variant="default">
           <div class="flex flex-col gap-2">
-            <Select.Root :collection="collection" variant="primary">
+            <Select.Root variant="primary" :collection="collection" >
               <Select.Trigger>
                 <Select.ValueText placeholder="Primary" />
               </Select.Trigger>
@@ -27,7 +27,7 @@ const collection = createListCollection({ items: initialItems });
                 </Select.Item>
               </Select.Content>
             </Select.Root>
-            <Select.Root :collection="collection" variant="secondary">
+            <Select.Root variant="secondary" :collection="collection" >
               <Select.Trigger>
                 <Select.ValueText placeholder="Secondary" />
               </Select.Trigger>

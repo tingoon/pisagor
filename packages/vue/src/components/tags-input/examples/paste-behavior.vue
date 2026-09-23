@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Field } from "@pisagor/vue";
 import { TagsInput } from "..";
 </script>
@@ -6,7 +6,7 @@ import { TagsInput } from "..";
 <template>
         <Field>
           <Field.Label>Frameworks</Field.Label>
-          <TagsInput addOnPaste class="w-full" :defaultValue="[]" delimiter="," />
+          <TagsInput addOnPaste class="w-full" delimiter="," :defaultValue="[]" />
         </Field>
   
 </template>

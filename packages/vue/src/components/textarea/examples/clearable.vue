@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { ref } from "vue";
 
 import { Textarea } from "..";
@@ -7,5 +7,5 @@ const value = ref("");
 </script>
 
 <template>
-  <Textarea v-model:value="value" clearable placeholder="Type to clear" />
+  <Textarea clearable placeholder="Type to clear" v-model:value="value" />
 </template>

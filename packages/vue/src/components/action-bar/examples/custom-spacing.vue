@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhPencilSimple, PhTrash, PhX } from "@phosphor-icons/vue";
 import { Button } from "@pisagor/vue";
 import { ref } from "vue";
@@ -8,7 +8,7 @@ const isOpen = ref(false);
 </script>
 
 <template>
-        <ActionBar @open-change="(next) => (isOpen = next)" :open="isOpen">
+        <ActionBar :open="isOpen" @open-change="(next) => (isOpen = next)" >
           <ActionBar.Trigger as-child>
             <Button variant="outline">Open</Button>
           </ActionBar.Trigger>

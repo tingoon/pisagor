@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Field, Input } from "@pisagor/vue";
 import { ColorPicker, parseColor } from "..";
 
@@ -10,7 +10,7 @@ const hexValue = parseColor("#10B981").toString("hex");
 
 <template>
         <div class="flex flex-col gap-2">
-          <ColorPicker class="w-full" :default-value="rgbaValue" format="rgba">
+          <ColorPicker class="w-full" format="rgba" :default-value="rgbaValue" >
             <ColorPicker.View format="rgba">
               <Field orientation="horizontal">
                 <Field.Label>RGB</Field.Label>
@@ -27,7 +27,7 @@ const hexValue = parseColor("#10B981").toString("hex");
               </Field>
             </ColorPicker.View>
           </ColorPicker>
-          <ColorPicker class="w-full" :default-value="hsbaValue" format="hsba">
+          <ColorPicker class="w-full" format="hsba" :default-value="hsbaValue" >
             <ColorPicker.View format="hsba">
               <Field orientation="horizontal">
                 <Field.Label>HSB</Field.Label>
@@ -44,7 +44,7 @@ const hexValue = parseColor("#10B981").toString("hex");
               </Field>
             </ColorPicker.View>
           </ColorPicker>
-          <ColorPicker class="w-full" :default-value="hslaValue" format="hsla">
+          <ColorPicker class="w-full" format="hsla" :default-value="hslaValue" >
             <ColorPicker.View format="hsla">
               <Field orientation="horizontal">
                 <Field.Label>HSL</Field.Label>

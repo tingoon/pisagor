@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhCamera } from "@phosphor-icons/vue";
 import { Button } from "@pisagor/vue";
 import { FileUpload } from "..";

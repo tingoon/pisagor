@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { ref } from "vue";
 import { SegmentGroup } from "..";
 
@@ -10,9 +10,9 @@ const onValueChange = setValue;
 <template>
         <SegmentGroup.Root class="rounded-lg" :value="value" @value-change="onValueChange">
           <SegmentGroup.Item
+            class="px-2 py-1.5 text-sm"
             v-for="item in items"
             :key="item"
-            class="px-2 py-1.5 text-sm"
             :value="item"
           >
             {{ item }}

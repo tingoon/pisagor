@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { ref } from "vue";
 
 import { Accordion } from "..";
@@ -11,7 +11,7 @@ const onValueChange = ({ value }) => setValue(value);
 
 <template>
         <div>
-          <Accordion :items="items" @value-change="onValueChange" :value="value" />
+          <Accordion :items="items" :value="value" @value-change="onValueChange" />
           <div class="text-center text-muted-foreground text-sm">{{ value }}</div>
         </div>
   

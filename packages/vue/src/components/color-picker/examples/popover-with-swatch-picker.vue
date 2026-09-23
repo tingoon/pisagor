@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Button } from "@pisagor/vue";
 import { ColorPicker } from "..";
 
@@ -24,8 +24,8 @@ const swatchPalette = ["#eb5e41", "#f5a524", "#17c964", "#006FEE", "#7828c8", "#
             </ColorPicker.View>
             <ColorPicker.SwatchGroup>
               <ColorPicker.SwatchTrigger
-                v-for="color in swatchPalette"
                 class="size-4"
+                v-for="color in swatchPalette"
                 :key="color"
                 :value="color"
               >

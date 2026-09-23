@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Button, useTourContext } from "@pisagor/vue";
 import { defineComponent, h, toValue } from "vue";
 import { Tour } from "..";

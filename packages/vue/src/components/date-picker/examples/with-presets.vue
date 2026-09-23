@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhCalendar } from "@phosphor-icons/vue";
 import { Button, Calendar } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
@@ -63,8 +63,8 @@ const defaultValue = [parseDate(new Date())];
                 <div class="flex h-full flex-col sm:border-e sm:pe-3">
                   <DatePicker.PresetTrigger
                     v-for="preset in presets"
-                    :asChild="true"
                     :key="preset.label"
+                    :asChild="true"
                     :value="preset.value"
                   >
                     <Button class="w-full justify-start" size="sm" variant="ghost">

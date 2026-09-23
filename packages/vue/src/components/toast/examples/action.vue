@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Button } from "@pisagor/vue";
 
 const handleAction = () => {
@@ -23,5 +23,5 @@ const handleAction = () => {
 </script>
 
 <template>
-  <Button @click="handleAction" variant="outline">Toast</Button>
+  <Button variant="outline" @click="handleAction" >Toast</Button>
 </template>

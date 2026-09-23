@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Card } from "@pisagor/vue";
 import { ref } from "vue";
 import { Calendar, parseDate } from "..";
@@ -14,8 +14,8 @@ function onValueChange(details: { value: typeof value.value }) {
   <Card class="[--space:--spacing(2)]">
     <Card.Content>
       <Calendar
-        :num-of-months="2"
         selection-mode="range"
+        :num-of-months="2"
         :value="value"
         @value-change="onValueChange"
       >

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Badge } from "@pisagor/vue";
 import { Table } from "..";
 import { workspaceUsers } from "./helpers";

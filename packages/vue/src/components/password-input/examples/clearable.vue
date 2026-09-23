@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { ref } from "vue";
 
 import { PasswordInput } from "..";
@@ -7,5 +7,5 @@ const value = ref("");
 </script>
 
 <template>
-  <PasswordInput v-model:value="value" clearable placeholder="Enter password" />
+  <PasswordInput clearable placeholder="Enter password" v-model:value="value" />
 </template>

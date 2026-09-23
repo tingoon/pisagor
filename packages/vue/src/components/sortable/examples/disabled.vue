@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Sortable } from "..";
 
 const _labels: Record<string, string> = {

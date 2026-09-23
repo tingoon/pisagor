@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhGearSix, PhX } from "@phosphor-icons/vue";
 import { Button } from "@pisagor/vue";
 import { ref } from "vue";
@@ -43,8 +43,8 @@ function shrink() {
               <p>Size: {{ size.width }} × {{ size.height }}.</p>
               <p>Use the buttons above or drag the edges to resize.</p>
               <div class="flex gap-2">
-                <Button class="flex-1" @click="shrink" variant="outline">Shrink</Button>
-                <Button class="flex-1" @click="grow" variant="outline">Grow</Button>
+                <Button class="flex-1" variant="outline" @click="shrink" >Shrink</Button>
+                <Button class="flex-1" variant="outline" @click="grow" >Grow</Button>
               </div>
             </FloatingPanel.Body>
           </FloatingPanel.Content>

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Calendar } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 import { DatePicker } from "..";

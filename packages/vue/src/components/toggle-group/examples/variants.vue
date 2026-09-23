@@ -1,11 +1,11 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhTextB, PhTextItalic, PhTextUnderline } from "@phosphor-icons/vue";
 import { ToggleGroup } from "..";
 </script>
 
 <template>
         <div class="flex flex-wrap items-center gap-2">
-          <ToggleGroup.Root :default-value="['bold']" multiple variant="ghost">
+          <ToggleGroup.Root multiple variant="ghost" :default-value="['bold']" >
             <ToggleGroup.Item aria-label="Toggle bold" value="bold">
               <PhTextB />
             </ToggleGroup.Item>
@@ -16,7 +16,7 @@ import { ToggleGroup } from "..";
               <PhTextUnderline />
             </ToggleGroup.Item>
           </ToggleGroup.Root>
-          <ToggleGroup.Root :default-value="['bold']" multiple variant="outline">
+          <ToggleGroup.Root multiple variant="outline" :default-value="['bold']" >
             <ToggleGroup.Item aria-label="Toggle bold" value="bold">
               <PhTextB />
             </ToggleGroup.Item>

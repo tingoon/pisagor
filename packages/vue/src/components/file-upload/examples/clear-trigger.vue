@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { useFileUploadContext } from "@ark-ui/vue/file-upload";
 import { PhTrash, PhX } from "@phosphor-icons/vue";
 import { Button } from "@pisagor/vue";

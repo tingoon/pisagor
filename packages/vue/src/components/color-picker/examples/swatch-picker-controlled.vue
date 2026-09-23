@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { ref } from "vue";
 import { ColorPicker } from "..";
 
@@ -9,7 +9,7 @@ const onValueChange = setValue;
 
 <template>
         <div class="flex flex-col items-center gap-2">
-          <ColorPicker inline @value-change="onValueChange" :value="value">
+          <ColorPicker inline :value="value" @value-change="onValueChange" >
             <ColorPicker.SwatchGroup>
               <ColorPicker.SwatchTrigger v-for="color in swatches" :key="color" :value="color">
                 <ColorPicker.Swatch :value="color">

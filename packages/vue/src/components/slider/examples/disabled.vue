@@ -1,7 +1,7 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Slider } from "..";
 </script>
 
 <template>
-  <Slider :default-value="[50]" disabled />
+  <Slider disabled :default-value="[50]" />
 </template>

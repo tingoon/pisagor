@@ -1,7 +1,7 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { SliderField } from "..";
 </script>
 
 <template>
-  <SliderField :default-value='[10]' error="Value is too low." id="slider-field-opacity-invalid" invalid label="Opacity" show-value />
+  <SliderField error="Value is too low." id="slider-field-opacity-invalid" invalid label="Opacity" show-value :default-value='[10]' />
 </template>

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhDownload } from "@phosphor-icons/vue";
 import { Button, Card, Input } from "@pisagor/vue";
 import { ref } from "vue";
@@ -11,7 +11,7 @@ const value = ref("");
         <QrCode :encoding="{ ecc: qualityLabel }" :value="value">
           <Card class="[--space:--spacing(6)]">
             <Card.Content class="flex flex-col justify-center gap-6">
-              <Input v-model:value="value" placeholder="Generate a QR code" />
+              <Input placeholder="Generate a QR code" v-model:value="value" />
               <div class="flex flex-col items-center gap-2">
                 <p class="font-medium text-muted-foreground text-sm">Live preview</p>
                 <QrCode.Frame />

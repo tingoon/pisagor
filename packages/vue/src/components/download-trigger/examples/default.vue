@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhDownload, PhFileText } from "@phosphor-icons/vue";
 
 import { Button, Item } from "@pisagor/vue";
@@ -18,7 +18,7 @@ const text = sampleText();
               <Item.Title>{{ text }}</Item.Title>
             </Item>
           </Item.Group>
-          <DownloadTrigger as-child :data="text" file-name="hello.txt" mime-type="text/plain">
+          <DownloadTrigger as-child file-name="hello.txt" mime-type="text/plain" :data="text" >
             <Button size="lg" variant="outline">
               <PhDownload />
               Download

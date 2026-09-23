@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { ref } from "vue";
 import { SignaturePad } from "..";
 
@@ -9,5 +9,5 @@ function updatePaths(..._args: unknown[]) {
 </script>
 
 <template>
-  <SignaturePad @draw="updatePaths" @draw-end="updatePaths" :paths="paths" />
+  <SignaturePad :paths="paths" @draw="updatePaths" @draw-end="updatePaths" />
 </template>

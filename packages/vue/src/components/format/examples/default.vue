@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Format } from "..";
 
 const relativeDate = new Date(Date.now() - 1000 * 60 * 60 * 24);
@@ -7,10 +7,10 @@ const relativeDate = new Date(Date.now() - 1000 * 60 * 60 * 24);
 <template>
         <div class="flex flex-col gap-4">
           <p class="text-sm">
-            <Format.Byte :value="2048" unit="byte" /> bytes
+            <Format.Byte unit="byte" :value="2048" /> bytes
           </p>
           <p class="text-sm">
-            <Format.Number :value="12345.67" notation="compact" /> units
+            <Format.Number notation="compact" :value="12345.67" /> units
           </p>
           <p class="text-sm">
             <Format.RelativeTime :value="relativeDate" /> ago

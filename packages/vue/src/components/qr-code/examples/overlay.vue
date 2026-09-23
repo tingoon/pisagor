@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhFish } from "@phosphor-icons/vue";
 import { QrCode } from "..";
 </script>

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { createListCollection } from "@ark-ui/vue/collection";
 
 import { Item } from "@pisagor/vue";
@@ -22,7 +22,7 @@ const onValueChange = (value) => setValue(Array.isArray(value) ? value : [value]
           <p class="text-center text-muted-foreground text-sm">Selected the Large size</p>
           <Item.Group variant="outline">
           <Item class="p-1">
-            <Listbox.Root :collection="collection" @value-change="onValueChange" :value="value">
+            <Listbox.Root :collection="collection" :value="value" @value-change="onValueChange" >
               <Listbox.Content>
                 <Listbox.Item v-for="item in collection.items" :key="item.value" :item="item">
                   <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>

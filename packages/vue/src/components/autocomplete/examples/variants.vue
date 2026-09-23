@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { createListCollection } from "@ark-ui/vue/collection";
 
 import { Autocomplete } from "..";
@@ -17,8 +17,8 @@ function filter(_inputValue: string) {}
 <template>
         <div class="flex flex-col gap-2">
           <Autocomplete.Root
-            :collection="collection"
             variant="primary"
+            :collection="collection"
             @input-value-change="({ inputValue }) => filter(inputValue)"
           >
             <Autocomplete.Input placeholder="Primary" />
@@ -31,8 +31,8 @@ function filter(_inputValue: string) {}
             </Autocomplete.Content>
           </Autocomplete.Root>
           <Autocomplete.Root
-            :collection="collection"
             variant="secondary"
+            :collection="collection"
             @input-value-change="({ inputValue }) => filter(inputValue)"
           >
             <Autocomplete.Input placeholder="Secondary" />

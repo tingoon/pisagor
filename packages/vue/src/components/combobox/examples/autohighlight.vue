@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { createListCollection } from "@ark-ui/vue/collection";
 
 import { Combobox } from "..";
@@ -18,8 +18,8 @@ function filter(_inputValue: string) {}
 
 <template>
         <Combobox.Root
-          :collection="collection"
           input-behavior="autohighlight"
+          :collection="collection"
           @input-value-change="({ inputValue }) => filter(inputValue)"
         >
           <Combobox.Input placeholder="Type to highlight..." />

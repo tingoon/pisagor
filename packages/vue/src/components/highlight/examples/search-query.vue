@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Input } from "@pisagor/vue";
 import { ref } from "vue";
 import { Highlight } from "..";
@@ -17,8 +17,8 @@ function onValueChange(details: { value: string }) {
     <div class="space-y-2">
       <p class="text-muted-foreground text-sm">Search result for: {{ query || "(empty)" }}</p>
       <ul class="space-y-1">
-        <li v-for="item in searchResults" :key="item" class="text-base text-foreground">
-          <Highlight v-if="query" ignore-case :query="query" :text="item" />
+        <li class="text-base text-foreground" v-for="item in searchResults" :key="item" >
+          <Highlight ignore-case v-if="query" :query="query" :text="item" />
           <template v-else>{{ item }}</template>
         </li>
       </ul>

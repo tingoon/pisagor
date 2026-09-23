@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhArrowCounterClockwise, PhGear, PhPause, PhPlay } from "@phosphor-icons/vue";
 import { Button, Card } from "@pisagor/vue";
 import { Timer } from "..";
@@ -14,7 +14,7 @@ import { Timer } from "..";
                 <Timer.Separator />
                 <Timer.Item class="text-5xl" type="seconds" />
               </Timer.Area>
-              <span class="mt-0.5 font-medium text-[10px] text-muted-foreground uppercase tracking-[0.22em]">
+              <span class="mt-0.5 font-medium text-2.5 text-muted-foreground uppercase tracking-[0.22em]">
                 Focus
               </span>
               <Timer.Control class="w-full justify-center">

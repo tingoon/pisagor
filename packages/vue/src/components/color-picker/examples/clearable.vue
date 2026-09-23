@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Field, InputGroup } from "@pisagor/vue";
 import { ref } from "vue";
 import { ColorPicker } from "..";
@@ -11,11 +11,11 @@ const onValueChange = setValue;
         <div class="flex flex-col gap-6">
           <Field>
             <Field.Label>Compact field</Field.Label>
-            <ColorPicker.Field @value-change="onValueChange" :value="value" />
+            <ColorPicker.Field :value="value" @value-change="onValueChange" />
           </Field>
           <Field>
             <Field.Label>Input group</Field.Label>
-            <ColorPicker @value-change="onValueChange" :value="value">
+            <ColorPicker :value="value" @value-change="onValueChange" >
               <ColorPicker.Control :clearable="false">
                 <InputGroup>
                   <ColorPicker.Trigger as-child>

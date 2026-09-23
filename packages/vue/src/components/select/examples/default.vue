@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Select } from "..";
 
 const items = ["Banana", "Apple", "Orange", "Pineapple"];

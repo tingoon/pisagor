@@ -1,12 +1,12 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { EmptyState } from "..";
 </script>
 
 <template>
         <EmptyState
           class="p-6"
-          title="No notifications"
           description="You're all caught up. New notifications will appear here."
+          title="No notifications"
         />
   
 </template>

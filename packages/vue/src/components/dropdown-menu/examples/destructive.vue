@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhCopy, PhPencil, PhTrash } from "@phosphor-icons/vue";
 import { Button } from "@pisagor/vue";
 import { DropdownMenu } from "..";

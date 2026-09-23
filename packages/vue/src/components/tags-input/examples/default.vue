@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { ref } from "vue";
 import { TagsInput } from "..";
 
@@ -6,5 +6,5 @@ const value = ref(["React", "Solid", "Vue"]);
 </script>
 
 <template>
-  <TagsInput :defaultValue="value" clearable placeholder="Add a tag..." />
+  <TagsInput clearable placeholder="Add a tag..." :defaultValue="value" />
 </template>

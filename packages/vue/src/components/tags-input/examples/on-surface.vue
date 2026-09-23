@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Surface } from "@pisagor/vue";
 import { TagsInput } from "..";
 
@@ -8,8 +8,8 @@ const defaultValue = ["React", "Solid", "Vue"];
 <template>
         <Surface bordered padding="md" variant="default">
           <div class="flex flex-col gap-2">
-            <TagsInput class="w-full" :defaultValue="defaultValue" variant="primary" />
-            <TagsInput class="w-full" :defaultValue="defaultValue" variant="secondary" />
+            <TagsInput class="w-full" variant="primary" :defaultValue="defaultValue" />
+            <TagsInput class="w-full" variant="secondary" :defaultValue="defaultValue" />
           </div>
         </Surface>
   

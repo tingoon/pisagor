@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { createListCollection } from "@ark-ui/vue/collection";
 
 import { Input, Item } from "@pisagor/vue";
@@ -23,7 +23,7 @@ const collection = createListCollection({ items: initialItems });
 <template>
         <Item.Group variant="outline">
         <Item class="flex flex-col gap-2 p-1">
-          <Input @value-change="onValueChange" placeholder="Search..." :value="search" />
+          <Input placeholder="Search..." :value="search" @value-change="onValueChange" />
           <Listbox.Root :collection="collection">
             <Listbox.Content>
               <Listbox.Item v-for="item in collection.items" :key="item.value" :item="item">

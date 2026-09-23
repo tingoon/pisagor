@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Select } from "..";
 
 const collection = createListCollection({
@@ -8,7 +8,7 @@ const collection = createListCollection({
 
 <template>
         <div class="flex flex-col gap-2">
-          <Select.Root :collection="collection" variant="primary">
+          <Select.Root variant="primary" :collection="collection" >
             <Select.Trigger>
               <Select.ValueText placeholder="Primary" />
             </Select.Trigger>
@@ -18,7 +18,7 @@ const collection = createListCollection({
               </Select.Item>
             </Select.Content>
           </Select.Root>
-          <Select.Root :collection="collection" variant="secondary">
+          <Select.Root variant="secondary" :collection="collection" >
             <Select.Trigger>
               <Select.ValueText placeholder="Secondary" />
             </Select.Trigger>

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Sortable } from "..";
 
 const _labels: Record<string, string> = {
@@ -15,8 +15,8 @@ const onValueChange = setItems;
 </script>
 
 <template>
-        <Sortable :items="items" @value-change="onValueChange" orientation="horizontal">
-          <Sortable.Item v-for="id in items" :key="id" class="min-w-36" :value="id">
+        <Sortable orientation="horizontal" :items="items" @value-change="onValueChange" >
+          <Sortable.Item class="min-w-36" v-for="id in items" :key="id" :value="id">
             <Sortable.ItemContent>
               <Sortable.Handle />
               <span class="font-medium text-sm">{{ labels[id] }}</span>

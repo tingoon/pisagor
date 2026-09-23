@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { createListCollection } from "@ark-ui/vue/collection";
 
 import { Autocomplete } from "..";
@@ -16,8 +16,8 @@ function filter(_inputValue: string) {}
 
 <template>
         <Autocomplete.Root
-          :collection="collection"
           disabled
+          :collection="collection"
           @input-value-change="({ inputValue }) => filter(inputValue)"
         >
           <Autocomplete.Input placeholder="Select a fruit..." />

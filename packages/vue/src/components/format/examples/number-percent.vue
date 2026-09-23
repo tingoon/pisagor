@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Format } from "..";
 </script>
 
@@ -10,7 +10,7 @@ import { Format } from "..";
           </div>
           <div>
             <span class="text-muted-foreground text-sm">With decimals: </span>
-            <Format.Number :minimum-fraction-digits="2" style="percent" :value="0.7567" />
+            <Format.Number style="percent" :minimum-fraction-digits="2" :value="0.7567" />
           </div>
         </div>
   

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhPlus } from "@phosphor-icons/vue";
 import { Status } from "..";
 </script>

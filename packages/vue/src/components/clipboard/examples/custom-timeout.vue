@@ -1,7 +1,7 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Clipboard } from "..";
 </script>
 
 <template>
-  <Clipboard :timeout="5000" value="https://example.com/docs" />
+  <Clipboard value="https://example.com/docs" :timeout="5000" />
 </template>

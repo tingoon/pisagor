@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Spinner } from "@pisagor/vue";
 import { InputGroup } from "..";
 </script>

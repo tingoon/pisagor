@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhArchive, PhDownload, PhPencilSimple, PhTrash, PhX } from "@phosphor-icons/vue";
 import { Button } from "@pisagor/vue";
 import { ref } from "vue";
@@ -14,16 +14,16 @@ const gutters = ["24px", "32px"] as const;
             <Button
               v-for="value in gutters"
               :key="value"
-              @click="select(value)"
               :variant="gutter === value && isOpen ? 'secondary' : 'outline'"
+              @click="select(value)"
             >
               Gutter {{ value }}
             </Button>
           </div>
           <ActionBar
-            @open-change="(next) => (isOpen = next)"
             :open="isOpen"
             :positioning="{ gutter, placement: 'bottom' }"
+            @open-change="(next) => (isOpen = next)"
           >
             <ActionBar.Content aria-label="Bulk actions">
               <ActionBar.Value :count="3" />

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Kbd } from "@pisagor/vue";
 import { InputGroup } from "..";
 </script>

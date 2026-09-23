@@ -1,7 +1,7 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Slider } from "..";
 </script>
 
 <template>
-  <Slider :default-value="[50]" :max="200" :min="0" label="Volume" show-value />
+  <Slider label="Volume" show-value :default-value="[50]" :max="200" :min="0" />
 </template>

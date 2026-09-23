@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhArrowLeft, PhDotsThree } from "@phosphor-icons/vue";
 import { Button } from "@pisagor/vue";
 import { ButtonGroup } from "..";

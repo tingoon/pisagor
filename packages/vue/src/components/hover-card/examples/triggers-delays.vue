@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhMapPin } from "@phosphor-icons/vue";
 import { Avatar, Button } from "@pisagor/vue";
 import { HoverCard } from "..";

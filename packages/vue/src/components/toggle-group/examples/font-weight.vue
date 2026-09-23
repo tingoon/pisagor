@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { ref } from "vue";
 import { ToggleGroup } from "..";
 
@@ -17,18 +17,18 @@ const fontWeights = ["normal", "medium", "semibold", "bold"] as const;
             <span class="font-medium text-sm">Font weight</span>
             <ToggleGroup.Root
               class="flex-wrap"
-              :multiple="false"
-              @value-change="handleValueChange"
               size="lg"
+              variant="outline"
+              :multiple="false"
               :spacing="2"
               :value="value"
-              variant="outline"
+              @value-change="handleValueChange"
             >
               <ToggleGroup.Item
+                class="size-16 flex-col gap-1 py-2"
                 v-for="weight in fontWeights"
                 :key="weight.value"
                 :aria-label="'Set font weight to ' + weight.label"
-                class="size-16 flex-col gap-1 py-2"
                 :value="weight.value"
               >
                 <span class="text-lg" :class="weight.className">Aa</span>

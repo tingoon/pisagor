@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Surface } from "@pisagor/vue";
 import { Clipboard } from "..";
 </script>

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Field } from "@pisagor/vue";
 import { Listbox } from "..";
 
@@ -17,12 +17,12 @@ const collection = createListCollection({
 <template>
         <Field>
           <Field.Label>Favorite album</Field.Label>
-          <Listbox.Root :collection="collection" orientation="horizontal">
+          <Listbox.Root orientation="horizontal" :collection="collection" >
             <Listbox.Content class="overflow-x-auto">
               <Listbox.Item
+                class="w-full flex-col items-start"
                 v-for="item in collection.items"
                 :key="item.title"
-                class="w-full flex-col items-start"
                 :item="item"
               >
                 <div class="aspect-square size-20 w-full rounded-lg bg-foreground" />

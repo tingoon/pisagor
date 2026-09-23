@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Item } from "@pisagor/vue";
 import { Listbox } from "..";
 

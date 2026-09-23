@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhTrash, PhX } from "@phosphor-icons/vue";
 import { AlertDialog, Button } from "@pisagor/vue";
 import { ActionBar } from "..";

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhDownload } from "@phosphor-icons/vue";
 
 import { Button } from "@pisagor/vue";
@@ -11,7 +11,7 @@ const svg = sampleSvg();
 </script>
 
 <template>
-        <DownloadTrigger as-child :data="svg" file-name="icon.svg" mime-type="image/svg+xml">
+        <DownloadTrigger as-child file-name="icon.svg" mime-type="image/svg+xml" :data="svg" >
           <Button size="lg" variant="outline">
             <PhDownload />
             Download SVG

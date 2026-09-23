@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { ImageCropper } from "..";
 
 const initialCrop = { height: 0.5, width: 0.5, x: 0.25, y: 0.25 };

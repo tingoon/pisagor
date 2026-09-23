@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { createListCollection } from "@ark-ui/vue/collection";
 import { ref } from "vue";
 import { Select } from "..";
@@ -15,7 +15,7 @@ const onValueChange = (value) => setValue(Array.isArray(value) ? value : [value]
 </script>
 
 <template>
-        <Select.Root :collection="collection" @value-change="onValueChange" :value="value">
+        <Select.Root :collection="collection" :value="value" @value-change="onValueChange" >
           <Select.Trigger>
             <Select.ValueText placeholder="Select a framework" />
           </Select.Trigger>

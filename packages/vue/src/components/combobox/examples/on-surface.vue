@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { createListCollection } from "@ark-ui/vue/collection";
 
 import { Surface } from "@pisagor/vue";
@@ -20,8 +20,8 @@ function filter(_inputValue: string) {}
         <Surface bordered padding="md" variant="default">
           <div class="flex flex-col gap-2">
             <Combobox.Root
-              :collection="collection"
               variant="primary"
+              :collection="collection"
               @input-value-change="({ inputValue }) => filter(inputValue)"
             >
               <Combobox.Input placeholder="Primary" />
@@ -34,8 +34,8 @@ function filter(_inputValue: string) {}
               </Combobox.Content>
             </Combobox.Root>
             <Combobox.Root
-              :collection="collection"
               variant="secondary"
+              :collection="collection"
               @input-value-change="({ inputValue }) => filter(inputValue)"
             >
               <Combobox.Input placeholder="Secondary" />

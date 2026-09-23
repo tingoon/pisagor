@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { InputGroup, Surface } from "@pisagor/vue";
 import { ColorPicker } from "..";
 </script>

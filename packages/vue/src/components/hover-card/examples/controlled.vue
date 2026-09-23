@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Button } from "@pisagor/vue";
 import { ref } from "vue";
 import { HoverCard } from "..";
@@ -9,7 +9,7 @@ const onOpenChange = ({ open: isOpen }) => setOpen(isOpen);
 
 <template>
         <div class="flex flex-col gap-2">
-          <HoverCard @open-change="onOpenChange" :open="open">
+          <HoverCard :open="open" @open-change="onOpenChange" >
             <HoverCard.Trigger as-child>
               <Button variant="outline">Hover here</Button>
             </HoverCard.Trigger>

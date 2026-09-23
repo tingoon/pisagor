@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Item } from "..";
 
 const images = [
@@ -25,11 +25,11 @@ const images = [
           <Item v-for="image in images" :key="image.src">
             <Item.Media variant="image">
               <img
-                :alt="image.alt"
-                :src="image.src"
                 class="aspect-square w-full object-cover grayscale"
                 height="80"
                 width="80"
+                :alt="image.alt"
+                :src="image.src"
               />
             </Item.Media>
             <Item.Content>

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { SegmentGroup } from "..";
 
 const items = ["Profile", "Account", "Security", "Notifications"];
@@ -7,9 +7,9 @@ const items = ["Profile", "Account", "Security", "Notifications"];
 <template>
         <SegmentGroup.Root class="rounded-lg" defaultValue="Profile" orientation="horizontal">
           <SegmentGroup.Item
+            class="px-2 py-1.5 text-sm"
             v-for="item in items"
             :key="item"
-            class="px-2 py-1.5 text-sm"
             :value="item"
           >
             {{ item }}

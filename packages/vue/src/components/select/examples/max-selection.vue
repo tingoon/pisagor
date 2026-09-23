@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { createListCollection } from "@ark-ui/vue/collection";
 import { ref } from "vue";
 import { Select } from "..";
@@ -16,7 +16,7 @@ const onValueChange = handleValueChange;
 </script>
 
 <template>
-        <Select.Root :collection="collection" multiple @value-change="onValueChange" :value="value">
+        <Select.Root multiple :collection="collection" :value="value" @value-change="onValueChange" >
           <Select.Trigger>
             <Select.ValueText class="capitalize">
               <Select.Context v-slot="{ value }">{{ renderValue(value) }}</Select.Context>

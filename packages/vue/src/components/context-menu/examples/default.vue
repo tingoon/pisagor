@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhCopy, PhPencil, PhTrash } from "@phosphor-icons/vue";
 import { ContextMenu } from "..";
 </script>

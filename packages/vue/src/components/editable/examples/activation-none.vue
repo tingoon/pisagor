@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhCheck, PhPencilSimple, PhX } from "@phosphor-icons/vue";
 import { Button, Card, Field, Input } from "@pisagor/vue";
 import { Editable } from "..";

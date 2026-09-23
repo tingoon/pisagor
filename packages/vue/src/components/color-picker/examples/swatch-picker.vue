@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { ColorPicker } from "..";
 
 const swatches = ["#0485F7", "#EF4444", "#F59E0B", "#10B981"];

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Button } from "@pisagor/vue";
 import { DropdownMenu } from "..";
 </script>
@@ -13,10 +13,10 @@ import { DropdownMenu } from "..";
               <DropdownMenu.CheckboxItem checked value="save">
                 Status bar
               </DropdownMenu.CheckboxItem>
-              <DropdownMenu.CheckboxItem :checked="false" value="notifications">
+              <DropdownMenu.CheckboxItem value="notifications" :checked="false" >
                 Activity bar
               </DropdownMenu.CheckboxItem>
-              <DropdownMenu.CheckboxItem :checked="false" disabled value="dark-mode">
+              <DropdownMenu.CheckboxItem disabled value="dark-mode" :checked="false" >
                 Panel
               </DropdownMenu.CheckboxItem>
             </DropdownMenu.ItemGroup>

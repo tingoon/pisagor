@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { ref } from "vue";
 import { NumberInput } from "..";
 
@@ -9,7 +9,7 @@ const onValueChange = (value) => setValue(String(value));
 <template>
         <div class="flex flex-col gap-2 text-center text-sm">
           <p>Select the number 3</p>
-          <NumberInput @value-change="onValueChange" :value="value">
+          <NumberInput :value="value" @value-change="onValueChange" >
             <NumberInput.Control>
               <NumberInput.DecrementTrigger />
               <NumberInput.Input />

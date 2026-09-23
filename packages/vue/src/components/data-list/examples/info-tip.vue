@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhInfo } from "@phosphor-icons/vue";
 import { Button, Popover } from "@pisagor/vue";
 import { DataList } from "..";
@@ -23,14 +23,14 @@ const data = [
           <DataList.Root>
             <DataList.Item
               v-for="item in data"
-              :classNames="{ label: 'inline-flex items-center gap-1.5' }"
               :key="item.label"
+              :classNames="{ label: 'inline-flex items-center gap-1.5' }"
               :value="item.value"
             >
               {{ item.label }}
               <Popover :modal="false" :positioning="{ placement: 'top' }">
                 <Popover.Trigger :asChild="true">
-                  <Button :aria-label="'Info about ' + item.label" size="icon-sm" variant="ghost">
+                  <Button size="icon-sm" variant="ghost" :aria-label="'Info about ' + item.label" >
                     <PhInfo />
                   </Button>
                 </Popover.Trigger>

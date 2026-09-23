@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Avatar, Button } from "@pisagor/vue";
 import { Item } from "..";
 </script>

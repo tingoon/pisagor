@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { createListCollection } from "@ark-ui/vue/collection";
 import { PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
 import { Button, Item } from "@pisagor/vue";
@@ -47,10 +47,10 @@ function moveToAvailable() {
           <Item class="w-full p-1">
             <Listbox.Root
               class="min-h-40"
-              :collection="availableCollection"
-              @value-change="onAvailableValueChange"
               selectionMode="multiple"
+              :collection="availableCollection"
               :value="availableValue"
+              @value-change="onAvailableValueChange"
             >
               <Listbox.Content>
                 <Listbox.ItemGroup heading="Available">
@@ -64,10 +64,10 @@ function moveToAvailable() {
           </Item>
           </Item.Group>
           <div class="flex flex-row-reverse justify-center gap-2 sm:flex-col">
-            <Button :disabled="availableValue.length === 0" size="icon-md" variant="outline" @click="moveToSelected">
+            <Button size="icon-md" variant="outline" :disabled="availableValue.length === 0" @click="moveToSelected">
               <PhCaretRight />
             </Button>
-            <Button :disabled="selectedValue.length === 0" size="icon-md" variant="outline" @click="moveToAvailable">
+            <Button size="icon-md" variant="outline" :disabled="selectedValue.length === 0" @click="moveToAvailable">
               <PhCaretLeft />
             </Button>
           </div>
@@ -75,10 +75,10 @@ function moveToAvailable() {
           <Item class="w-full p-1">
             <Listbox.Root
               class="min-h-40"
-              :collection="selectedCollection"
-              @value-change="onSelectedValueChange"
               selectionMode="multiple"
+              :collection="selectedCollection"
               :value="selectedValue"
+              @value-change="onSelectedValueChange"
             >
               <Listbox.Content class="max-h-48 min-h-40">
                 <Listbox.ItemGroup heading="Selected">

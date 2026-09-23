@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { ref } from "vue";
 import { Input } from "..";
 
@@ -10,5 +10,5 @@ function onValueChange(details?: { value?: unknown; page?: unknown }) {
 </script>
 
 <template>
-  <Input @value-change="onValueChange" :value="value" placeholder="Enter your message" />
+  <Input placeholder="Enter your message" :value="value" @value-change="onValueChange" />
 </template>

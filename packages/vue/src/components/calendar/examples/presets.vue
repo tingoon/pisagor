@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Button, Card } from "@pisagor/vue";
 import { Calendar } from "..";
 
@@ -27,9 +27,9 @@ const presets = [
       </Card.Content>
       <Card.Footer class="flex flex-wrap">
         <Calendar.PresetTrigger
+          as-child
           v-for="preset in presets"
           :key="preset.value"
-          as-child
           :value="preset.value"
         >
           <Button class="flex-1" size="sm" variant="outline">{{ preset.label }}</Button>

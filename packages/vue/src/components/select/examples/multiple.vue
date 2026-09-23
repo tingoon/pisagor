@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Select } from "..";
 
 const collection = createListCollection({
@@ -12,7 +12,7 @@ const collection = createListCollection({
 </script>
 
 <template>
-        <Select.Root :collection="collection" :defaultValue="['javascript', 'typescript']" multiple>
+        <Select.Root multiple :collection="collection" :defaultValue="['javascript', 'typescript']" >
           <Select.Trigger>
             <Select.ValueText class="capitalize">
               <Select.Context v-slot="{ value }">{{ renderValue(value) }}</Select.Context>

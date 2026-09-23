@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Field, Input, Switch } from "@pisagor/vue";
 import { Frame } from "..";
 </script>

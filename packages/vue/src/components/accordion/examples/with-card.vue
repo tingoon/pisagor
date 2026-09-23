@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Card } from "@pisagor/vue";
 import { Accordion } from "..";
 import { faqItems } from "./helpers";

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Checkbox } from "@pisagor/vue";
 import { Field } from "..";
 </script>

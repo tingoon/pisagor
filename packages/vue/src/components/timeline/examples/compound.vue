@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhCheckCircle, PhCircle, PhRocket } from "@phosphor-icons/vue";
 import { Timeline } from "..";
 </script>

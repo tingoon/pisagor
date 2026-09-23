@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Button, Card, Clipboard } from "@pisagor/vue";
 import { Collapsible } from "..";
 </script>

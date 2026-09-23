@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Button } from "@pisagor/vue";
 import { Toaster, toast } from "..";
 
@@ -57,14 +57,14 @@ function handleTopStart() {
 
           <div class="flex flex-col items-center justify-center gap-2">
             <div class="flex flex-wrap gap-2">
-              <Button @click="handleTopStart" variant="outline">Top start</Button>
-              <Button @click="handleTop" variant="outline">Top center</Button>
-              <Button @click="handleTopEnd" variant="outline">Top end</Button>
+              <Button variant="outline" @click="handleTopStart" >Top start</Button>
+              <Button variant="outline" @click="handleTop" >Top center</Button>
+              <Button variant="outline" @click="handleTopEnd" >Top end</Button>
             </div>
             <div class="flex flex-wrap gap-2">
-              <Button @click="handleBottomStart" variant="outline">Bottom start</Button>
-              <Button @click="handleBottom" variant="outline">Bottom center</Button>
-              <Button @click="handleBottomEnd" variant="outline">Bottom end</Button>
+              <Button variant="outline" @click="handleBottomStart" >Bottom start</Button>
+              <Button variant="outline" @click="handleBottom" >Bottom center</Button>
+              <Button variant="outline" @click="handleBottomEnd" >Bottom end</Button>
             </div>
           </div>
         </div>

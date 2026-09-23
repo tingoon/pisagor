@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhCalendar } from "@phosphor-icons/vue";
 import { Button, Field } from "@pisagor/vue";
 import { ref } from "vue";
@@ -15,14 +15,14 @@ function handleValueChange(details?: { value?: unknown; page?: unknown }) {
         <div class="flex flex-col gap-6">
           <Field>
             <Field.Label>Input variant</Field.Label>
-            <DatePicker @value-change="handleValueChange" :value="value">
+            <DatePicker :value="value" @value-change="handleValueChange" >
               <DatePicker.Input placeholder="Select date" />
               <DatePicker.Content />
             </DatePicker>
           </Field>
           <Field>
             <Field.Label>Trigger variant</Field.Label>
-            <DatePicker @value-change="handleValueChange" :value="value">
+            <DatePicker :value="value" @value-change="handleValueChange" >
               <DatePicker.Trigger :asChild="true">
                 <Button variant="outline">
                   <PhCalendar />

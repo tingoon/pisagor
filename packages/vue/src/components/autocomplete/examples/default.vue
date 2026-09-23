@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Autocomplete } from "..";
 
 const items = [
@@ -10,5 +10,5 @@ const items = [
 </script>
 
 <template>
-  <Autocomplete :items="items" :clearable="true" />
+  <Autocomplete :clearable="true" :items="items" />
 </template>

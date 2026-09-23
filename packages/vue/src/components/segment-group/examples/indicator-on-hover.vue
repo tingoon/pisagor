@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { ref } from "vue";
 
 import { SegmentGroup } from "..";
@@ -12,9 +12,9 @@ const activeValue = ref("react");
 <template>
         <SegmentGroup.Root class="rounded-lg" :value="activeValue" @value-change="onValueChange">
           <SegmentGroup.Item
+            class="px-2 py-1.5 text-sm"
             v-for="page in pages"
             :key="page"
-            class="px-2 py-1.5 text-sm"
             :value="page"
             @click="value = page"
             @mouseenter="hoverValue = page"

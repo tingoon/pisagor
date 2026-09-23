@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { Item, Kbd } from "@pisagor/vue";
 import { Listbox } from "..";
 
@@ -18,7 +18,7 @@ const collection = createListCollection({
           </p>
           <Item.Group variant="outline">
           <Item class="w-full p-1">
-            <Listbox.Root :collection="collection" selectionMode="extended">
+            <Listbox.Root selectionMode="extended" :collection="collection" >
               <Listbox.Content>
                 <Listbox.Item v-for="item in collection.items" :key="item.value" :item="item">
                   <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>

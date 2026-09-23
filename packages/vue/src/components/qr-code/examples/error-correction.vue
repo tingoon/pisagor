@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { QrCode } from "..";
 
 const eccLevels = ["L", "M", "Q", "H"] as const;
@@ -9,8 +9,8 @@ const eccLevels = ["L", "M", "Q", "H"] as const;
           <div class="flex flex-col items-center gap-2" v-for="ecc in eccLevels" :key="ecc">
             <QrCode
               class="[--qr-code-size:6rem]"
-              :encoding="{ ecc }"
               value="https://example.com/docs"
+              :encoding="{ ecc }"
             >
               <QrCode.Frame />
             </QrCode>

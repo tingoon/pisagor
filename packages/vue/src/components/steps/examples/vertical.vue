@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
 import { Button } from "@pisagor/vue";
 import { Steps } from "..";
@@ -11,7 +11,7 @@ const items = [
 </script>
 
 <template>
-        <Steps class="h-64" :count="items.length" orientation="vertical">
+        <Steps class="h-64" orientation="vertical" :count="items.length" >
           <Steps.List>
             <Steps.Item v-for="(item, index) in items" :key="item.title" :index="index">
               <Steps.Trigger>
@@ -26,9 +26,9 @@ const items = [
           </Steps.List>
           <div class="flex flex-1 flex-col gap-2">
             <Steps.Content
+              class="flex h-full items-center justify-center rounded-md border"
               v-for="(item, index) in items"
               :key="item.title"
-              class="flex h-full items-center justify-center rounded-md border"
               :index="index"
             >
               <p class="text-muted-foreground">{{ item.description }}</p>

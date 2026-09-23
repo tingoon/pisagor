@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhEye } from "@phosphor-icons/vue";
 import { InputGroup } from "..";
 </script>

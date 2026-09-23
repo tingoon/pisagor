@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<script lang="ts" setup >
 import { PhCheck, PhPencilSimple } from "@phosphor-icons/vue";
 import { Button, Card, Field, Input } from "@pisagor/vue";
 import { Editable } from "..";
@@ -8,7 +8,7 @@ import { Editable } from "..";
         <Card>
           <Card.Header description="Click the edit button to start editing" title="Edit user">
             <Card.Action>
-              <Button @click="isEditing = !isEditing" :variant="isEditing ? 'outline' : 'ghost'">
+              <Button :variant="isEditing ? 'outline' : 'ghost'" @click="isEditing = !isEditing" >
                 <template v-if="isEditing">
                   <PhCheck /> Save
                 </template>
