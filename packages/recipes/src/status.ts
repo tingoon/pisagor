@@ -4,7 +4,7 @@ export const statusRecipe = tv({
   base: [
     "shrink-0 rounded-full",
     "flex items-center justify-center",
-    "font-medium text-[10px]",
+    "font-medium text-2.5",
     "ring-2 ring-background",
   ],
   defaultVariants: {

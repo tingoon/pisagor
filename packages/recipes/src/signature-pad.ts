@@ -21,7 +21,7 @@ export const signaturePadRecipe = tv({
       "flex flex-col",
       "rounded-xl border border-border/50",
       "data-disabled:cursor-not-allowed",
-      "data-invalid:border-destructive data-invalid:ring-[3px] data-invalid:ring-destructive/24",
+      "data-invalid:border-destructive data-invalid:ring-0.75 data-invalid:ring-destructive/24",
     ],
     guide: [
       "absolute inset-x-6 bottom-6",

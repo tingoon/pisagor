@@ -8,7 +8,7 @@ export const badgeRecipe = tv({
     "rounded-lg border border-transparent",
     "overflow-hidden",
     "transition-[color,background-color,border-color,transform] duration-fast ease-out",
-    "outline-hidden focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
+    "outline-hidden focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/32",
     "[&_svg]:pointer-events-none [&_svg]:size-3 [&_svg]:shrink-0",
     "[button&,a&]:cursor-pointer [button&,a&]:active:scale-[0.98]",
     "[button&,a&]:pointer-coarse:after:absolute [button&,a&]:pointer-coarse:after:size-full [button&,a&]:pointer-coarse:after:min-h-11 [button&,a&]:pointer-coarse:after:min-w-11",

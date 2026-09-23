@@ -11,7 +11,7 @@ export const linkBoxRecipe = tv({
       "-mx-1 -my-0.5 px-1 py-0.5",
       "rounded-md border border-transparent",
       "before:absolute before:inset-0 before:z-0 before:block before:h-full before:w-full before:cursor-inherit before:content-['']",
-      "outline-hidden focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
+      "outline-hidden focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/32",
     ],
   },
 });

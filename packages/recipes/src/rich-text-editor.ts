@@ -4,7 +4,7 @@ export const richTextEditorRecipe = tv({
   slots: {
     base: [
       "flex h-auto min-h-32 flex-col gap-0 overflow-hidden p-0",
-      "focus-within:border-primary focus-within:ring-[3px] focus-within:ring-ring/32",
+      "focus-within:border-primary focus-within:ring-0.75 focus-within:ring-ring/32",
     ],
     content: [
       "min-h-24 flex-1 px-3 py-2",

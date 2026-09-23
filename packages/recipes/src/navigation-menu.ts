@@ -12,7 +12,7 @@ export const navigationMenuRecipe = tv({
       "outline-hidden",
       "transition-[color,background-color] duration-fast ease-out motion-reduce:transition-none!",
       "hover:text-foreground",
-      "focus-visible:ring-[3px] focus-visible:ring-ring/32",
+      "focus-visible:ring-0.75 focus-visible:ring-ring/32",
       "data-[active=true]:bg-accent data-[active=true]:text-accent-foreground",
     ],
     list: ["flex flex-wrap items-center gap-1"],

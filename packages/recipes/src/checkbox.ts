@@ -7,11 +7,11 @@ export const checkboxGroupRecipe = tv({
 export const checkboxRecipe = tv({
   slots: {
     base: [
-      "data-focus-visible:border-primary data-focus-visible:ring-[3px] data-focus-visible:ring-ring/32 data-focus-visible:ring-offset-1 data-focus-visible:ring-offset-background",
+      "data-focus-visible:border-primary data-focus-visible:ring-0.75 data-focus-visible:ring-ring/32 data-focus-visible:ring-offset-1 data-focus-visible:ring-offset-background",
       "data-focus-visible:data-invalid:border-destructive/64 data-focus-visible:data-invalid:ring-destructive/48",
       "data-disabled:opacity-64",
       "[[data-disabled],[data-checked],[data-invalid]]:shadow-none",
-      "data-invalid:border-destructive data-invalid:text-destructive data-invalid:ring-[3px] data-invalid:ring-destructive/24",
+      "data-invalid:border-destructive data-invalid:text-destructive data-invalid:ring-0.75 data-invalid:ring-destructive/24",
       "dark:not-data-checked:bg-input/32",
     ],
     indicator: [

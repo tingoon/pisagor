@@ -19,7 +19,7 @@ export const itemRecipe = tv({
       "rounded-2xl border border-border/50",
       "transition-[color,background-color,border-color] duration-fast ease-out",
       "[a]:transition-[color,background-color] [a]:duration-fast [a]:ease-out [a]:hover:bg-muted",
-      "outline-hidden focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/24",
+      "outline-hidden focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/24",
       "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
       "motion-reduce:transition-none!",
     ],

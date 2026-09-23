@@ -10,7 +10,7 @@ export const announcementRecipe = tv({
       "bg-input/4",
       "rounded-2xl border border-input",
       "transition-[color,background-color,border-color,transform] duration-fast ease-out",
-      "outline-hidden focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
+      "outline-hidden focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/32",
       "[&_svg]:size-3.5 [&_svg]:shrink-0",
       "has-[[data-scope=badge][data-part=root]]:ps-0.5",
       "[button&,a&]:cursor-pointer [button&,a&]:active:scale-[0.98]",

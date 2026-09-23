@@ -21,7 +21,7 @@ export const sortableItemRecipe = tv({
     base: [
       "relative",
       "rounded-2xl border border-border/50 bg-card",
-      "outline-hidden focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
+      "outline-hidden focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/32",
       "data-[dragging=true]:opacity-50",
       "data-[drop-target=true]:border-primary data-[drop-target=true]:ring-2 data-[drop-target=true]:ring-primary/24",
     ],

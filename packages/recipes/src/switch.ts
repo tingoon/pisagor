@@ -74,7 +74,7 @@ export const switchRecipe = tv({
       "inline-flex shrink-0 items-center",
       "rounded-full border border-transparent",
       "transition-all duration-slow ease-emphasized",
-      "outline-hidden [[data-focus-visible],[data-invalid]]:ring-[3px]",
+      "outline-hidden [[data-focus-visible],[data-invalid]]:ring-0.75",
       "data-focus-visible:border-primary data-focus-visible:ring-ring/32",
       "data-invalid:border-destructive data-invalid:ring-destructive/24",
       "data-[state=checked]:bg-primary",

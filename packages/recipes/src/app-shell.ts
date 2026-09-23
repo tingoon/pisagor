@@ -51,7 +51,7 @@ export const appShellRecipe = tv({
       "text-muted-foreground transition-[color,background-color,box-shadow,transform] duration-fast ease-out",
       "hover:bg-accent hover:text-accent-foreground",
       "active:scale-[0.97]",
-      "focus-visible:outline-hidden focus-visible:ring-[3px] focus-visible:ring-ring/24",
+      "focus-visible:outline-hidden focus-visible:ring-0.75 focus-visible:ring-ring/24",
       "data-[active=true]:bg-card data-[active=true]:text-foreground data-[active=true]:shadow-xs",
       "[&_svg:not([class*='size-'])]:size-5 [&_svg]:shrink-0",
       "motion-reduce:transition-none! motion-reduce:active:scale-100",

@@ -27,7 +27,7 @@ export const accordionItemRecipe = tv({
       "outline-hidden",
       "transition-[color,background-color,border-color,box-shadow] duration-fast ease-out",
       "disabled:pointer-events-none disabled:opacity-64 disabled:grayscale",
-      "focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
+      "focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/32",
       "[&_[data-state=open]>svg]:rotate-180",
       "motion-reduce:transition-none!",
     ],

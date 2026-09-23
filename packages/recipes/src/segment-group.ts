@@ -40,7 +40,7 @@ export const segmentGroupRecipe = tv({
       "text-muted-foreground transition-[color,background-color] duration-fast ease-out",
       "hover:text-foreground/72",
       "data-[state=checked]:text-foreground",
-      "outline-hidden data-focus-visible:border-primary data-focus-visible:ring-[3px] data-focus-visible:ring-ring/24",
+      "outline-hidden data-focus-visible:border-primary data-focus-visible:ring-0.75 data-focus-visible:ring-ring/24",
       "data-disabled:pointer-events-none data-disabled:opacity-64",
       "[&_svg:not([class*='size-'])]:size-4 [&_svg]:shrink-0",
       "motion-reduce:transition-none!",

@@ -77,7 +77,7 @@ export const treeViewItemRecipe = tv({
       "border-primary bg-popover text-foreground",
       "rounded-md border",
       "selection:bg-primary/20 selection:text-foreground",
-      "outline-hidden focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
+      "outline-hidden focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/32",
     ],
     title: [
       "flex flex-1 items-center gap-(--item-gap)",

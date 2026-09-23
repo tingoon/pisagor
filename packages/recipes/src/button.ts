@@ -30,7 +30,7 @@ export const buttonRecipe = tv({
       "whitespace-nowrap font-medium text-sm",
       "rounded-lg",
       "transition-[color,background-color,border-color,box-shadow,opacity,transform] duration-fast ease-out",
-      "outline-hidden focus-visible:ring-[3px] focus-visible:ring-ring/32",
+      "outline-hidden focus-visible:ring-0.75 focus-visible:ring-ring/32",
       "disabled:pointer-events-none disabled:opacity-64",
       "data-disabled:pointer-events-none data-disabled:opacity-64",
       "aria-disabled:pointer-events-none aria-disabled:opacity-64",

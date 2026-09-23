@@ -35,7 +35,7 @@ export const tabsRecipe = tv({
       "data-[orientation=vertical]:w-full data-[orientation=vertical]:justify-start",
       "hover:text-foreground/72",
       "aria-selected:text-foreground",
-      "outline-hidden focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/24",
+      "outline-hidden focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/24",
       "data-disabled:pointer-events-none data-disabled:opacity-64",
       "[&_svg:not([class*='size-'])]:size-4.5 sm:[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:-mx-0.5 [&_svg]:shrink-0",
       "motion-reduce:transition-none!",

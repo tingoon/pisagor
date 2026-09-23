@@ -19,7 +19,7 @@ export const breadcrumbItemRecipe = tv({
       "rounded-md border border-transparent",
       "transition-colors duration-fast ease-out",
       "hover:text-foreground",
-      "outline-hidden focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+      "outline-hidden focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/32 focus-visible:ring-offset-2 focus-visible:ring-offset-background",
       "motion-reduce:transition-none!",
     ],
     page: ["font-normal text-foreground"],

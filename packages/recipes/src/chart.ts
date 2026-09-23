@@ -15,14 +15,14 @@ export const chartRecipe = tv({
       "[&_.recharts-radial-bar-background-sector]:fill-muted",
       "[&_.recharts-rectangle.recharts-tooltip-cursor]:fill-muted",
     ],
-    indicator: ["shrink-0 rounded-[2px] border-border bg-(--color-bg)"],
+    indicator: ["shrink-0 rounded-0.5 border-border bg-(--color-bg)"],
     label: "font-medium",
     legend: ["flex items-center justify-center gap-4"],
     legendItem: [
       "flex items-center gap-1.5",
       "[&>svg]:h-3 [&>svg]:w-3 [&>svg]:text-muted-foreground",
     ],
-    swatch: ["size-2 shrink-0 rounded-[2px]"],
+    swatch: ["size-2 shrink-0 rounded-0.5"],
     tooltip: [
       "min-w-32",
       "grid items-start gap-1.5",

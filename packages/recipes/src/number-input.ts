@@ -13,9 +13,9 @@ export const numberInputRecipe = tv({
       "text-base",
       "ring-ring/32",
       "transition-shadow",
-      "focus-within:border-primary focus-within:ring-[3px] focus-within:ring-ring/32",
+      "focus-within:border-primary focus-within:ring-0.75 focus-within:ring-ring/32",
       "data-disabled:pointer-events-none data-disabled:opacity-64",
-      "aria-invalid:border-destructive aria-invalid:text-destructive aria-invalid:ring-[3px] aria-invalid:ring-destructive/24",
+      "aria-invalid:border-destructive aria-invalid:text-destructive aria-invalid:ring-0.75 aria-invalid:ring-destructive/24",
       "motion-reduce:transition-none!",
     ],
     decrementTrigger: [

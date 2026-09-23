@@ -53,7 +53,7 @@ export const fileUploadItemRecipe = tv({
     name: ["truncate font-medium text-xs", "min-w-0", "overflow-hidden"],
     preview: [
       "flex shrink-0 items-center justify-center",
-      "font-semibold text-[0.5rem] text-primary",
+      "font-semibold text-2 text-primary",
       "bg-primary/10",
       "select-none",
       "rounded-full",

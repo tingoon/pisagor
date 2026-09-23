@@ -34,8 +34,8 @@ export const timelineItemRecipe = tv({
     ],
     separator: [
       "pointer-events-none absolute bg-border",
-      "group-data-[orientation=vertical]/timeline:inset-s-[5px] group-data-[orientation=vertical]/timeline:top-4 group-data-[orientation=vertical]/timeline:bottom-0 group-data-[orientation=vertical]/timeline:w-px",
-      "group-data-[orientation=horizontal]/timeline:inset-s-3 group-data-[orientation=horizontal]/timeline:top-[7px] group-data-[orientation=horizontal]/timeline:end-0 group-data-[orientation=horizontal]/timeline:h-px",
+      "group-data-[orientation=vertical]/timeline:inset-s-1.25 group-data-[orientation=vertical]/timeline:top-4 group-data-[orientation=vertical]/timeline:bottom-0 group-data-[orientation=vertical]/timeline:w-px",
+      "group-data-[orientation=horizontal]/timeline:inset-s-3 group-data-[orientation=horizontal]/timeline:top-1.75 group-data-[orientation=horizontal]/timeline:end-0 group-data-[orientation=horizontal]/timeline:h-px",
       "group-last/timeline-item:hidden",
     ],
     title: ["font-medium text-foreground text-sm"],
