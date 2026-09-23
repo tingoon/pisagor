@@ -1,6 +1,6 @@
 import { CheckboxGroup, CheckboxRoot } from "./checkbox";
 
-export type { CheckboxRootProps } from "@ark-ui/react/checkbox";
+export type { CheckboxCheckedState, CheckboxRootProps } from "@ark-ui/react/checkbox";
 
 export type { CheckboxGroupProps, CheckboxProps } from "./checkbox";
 

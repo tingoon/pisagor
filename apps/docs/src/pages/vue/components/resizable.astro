@@ -1,0 +1,96 @@
+---
+import {
+  Collapsible,
+  Default,
+  EdgeHandle,
+  sources as examples,
+  Handle,
+  imports,
+  MinMax,
+  MultiplePanels,
+  OrientationHorizontal,
+  OrientationVertical,
+} from "@pisagor/vue/resizable/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { resizableProps } from "../../../lib/props/resizable";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "min-max", text: "Min Max" },
+  { depth: 3, slug: "orientation-horizontal", text: "Orientation Horizontal" },
+  { depth: 3, slug: "orientation-vertical", text: "Orientation Vertical" },
+  { depth: 3, slug: "handle", text: "Handle" },
+  { depth: 3, slug: "edge-handle", text: "Edge Handle" },
+  { depth: 3, slug: "multiple-panels", text: "Multiple Panels" },
+  { depth: 3, slug: "collapsible", text: "Collapsible" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+---
+
+<DocsLayout
+  description="Splits space between panels with draggable handles so users can adjust layout to their needs."
+  framework="vue"
+  headings={headings}
+  title="Resizable"
+>
+
+  <ComponentHeader framework="vue" id="resizable" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="min-max">Min Max</h3>
+  <ComponentPreview code={examples.MinMax} language="vue" title="Min Max">
+    <MinMax client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-horizontal">Orientation Horizontal</h3>
+  <ComponentPreview code={examples.OrientationHorizontal} language="vue" title="Orientation Horizontal">
+    <OrientationHorizontal client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-vertical">Orientation Vertical</h3>
+  <ComponentPreview code={examples.OrientationVertical} language="vue" title="Orientation Vertical">
+    <OrientationVertical client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="handle">Handle</h3>
+  <ComponentPreview code={examples.Handle} language="vue" title="Handle">
+    <Handle client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="edge-handle">Edge Handle</h3>
+  <ComponentPreview code={examples.EdgeHandle} language="vue" title="Edge Handle">
+    <EdgeHandle client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="multiple-panels">Multiple Panels</h3>
+  <ComponentPreview code={examples.MultiplePanels} language="vue" title="Multiple Panels">
+    <MultiplePanels client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="collapsible">Collapsible</h3>
+  <ComponentPreview code={examples.Collapsible} language="vue" title="Collapsible">
+    <Collapsible client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="vue" title="Default">
+    <Default client:only="vue" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/vue" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/resizable</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={resizableProps} />
+</DocsLayout>

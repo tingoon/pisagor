@@ -13,8 +13,11 @@ import type {
 } from "@ark-ui/react/select";
 import { Select as SelectPrimitive, useSelectContext } from "@ark-ui/react/select";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
-import { formControlShellRecipe } from "@pisagor/recipes/form-control";
-import type { InputRootVariantProps } from "@pisagor/recipes/input";
+import {
+  type FormControlShellVariantProps,
+  formControlShellRecipe,
+} from "@pisagor/recipes/form-control";
+
 import { selectRecipe } from "@pisagor/recipes/select";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
@@ -58,7 +61,9 @@ export interface SelectProps extends Omit<SelectRootProps, "children" | "collect
   placeholder?: string;
 }
 
-export interface SelectTriggerProps extends SelectPrimitiveTriggerProps, InputRootVariantProps {
+export interface SelectTriggerProps
+  extends Omit<SelectPrimitiveTriggerProps, "size">,
+    FormControlShellVariantProps {
   /**
    * Whether to show a clear button when a value is selected.
    *

@@ -1,0 +1,445 @@
+---
+import CodeBlock from "./code-block.astro";
+
+interface Props {
+  title?: string;
+  code: string;
+  language?: string;
+  class?: string;
+  /** npm / package id shown in the dependencies popover */
+  packageName?: string;
+  /** Extra dependency names for the popover */
+  dependencies?: string[];
+  /** Override “Report an issue” URL */
+  reportUrl?: string;
+}
+
+const title = Astro.props.title;
+const language = Astro.props.language ?? "tsx";
+const packageName = Astro.props.packageName ?? "@pisagor/react";
+const dependencies = Astro.props.dependencies ?? ["@pisagor/recipes", "@pisagor/tokens"];
+const reportUrl =
+  Astro.props.reportUrl ??
+  "https://github.com/tingoon/pisagor/issues/new?labels=docs&title=" +
+    encodeURIComponent(title ? `Docs preview: ${title}` : "Docs preview issue");
+
+const iconBtn =
+  "docs-press relative inline-flex size-7 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 data-[active]:bg-muted data-[active]:text-foreground";
+---
+
+<section
+  data-component-preview
+  data-package={packageName}
+  class:list={[
+    "my-7 overflow-hidden rounded-xl border border-border/70 bg-card shadow-sm",
+    Astro.props.class,
+  ]}
+>
+  <!-- Toolbar -->
+  <div
+    class="flex flex-wrap items-center gap-1.5 border-b border-border/60 bg-muted/15 px-2 py-1.5 sm:gap-2 sm:px-2.5"
+  >
+    <!-- Preview / Code -->
+    <div
+      aria-label={title ? `${title} view` : "Component view"}
+      class="inline-flex rounded-md bg-muted/60 p-0.5"
+      role="tablist"
+    >
+      <button
+        aria-selected="true"
+        class="rounded-1.25 px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground data-[active]:bg-background data-[active]:text-foreground data-[active]:shadow-sm docs-press"
+        data-active
+        data-view="preview"
+        data-view-tab
+        role="tab"
+        type="button"
+      >
+        Preview
+      </button>
+      <button
+        aria-selected="false"
+        class="rounded-1.25 px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground data-[active]:bg-background data-[active]:text-foreground data-[active]:shadow-sm docs-press"
+        data-view="code"
+        data-view-tab
+        role="tab"
+        type="button"
+      >
+        Code
+      </button>
+    </div>
+
+    <div class="ms-auto flex flex-wrap items-center gap-1">
+      <!-- Toggle mode -->
+      <button
+        aria-label="Toggle light and dark mode"
+        class={iconBtn}
+        data-theme-toggle
+        data-tooltip="Toggle mode"
+        type="button"
+      >
+        <svg aria-hidden="true" class="size-3.5" data-icon-sun fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" >
+          <circle cx="12" cy="12" r="4"></circle>
+          <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"></path>
+        </svg>
+        <svg aria-hidden="true" class="size-3.5" data-icon-moon fill="none" hidden stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" >
+          <path d="M21 14.5A8.5 8.5 0 1 1 9.5 3 7 7 0 0 0 21 14.5z" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </button>
+
+      <!-- Open in new tab -->
+      <button
+        aria-label="Open preview in a new tab"
+        class={iconBtn}
+        data-open-tab
+        data-tooltip="Open in new tab"
+        type="button"
+      >
+        <svg aria-hidden="true" class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" >
+          <path d="M14 3h7v7" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M10 14L21 3" stroke-linecap="round"></path>
+          <path d="M21 14v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h6" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </button>
+
+      <!-- Dependencies -->
+      <div class="relative" data-deps>
+        <button
+          aria-expanded="false"
+          aria-haspopup="dialog"
+          aria-label="Show dependencies"
+          class={iconBtn}
+          data-deps-toggle
+          data-tooltip="Dependencies"
+          type="button"
+        >
+          <svg aria-hidden="true" class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" >
+            <circle cx="6" cy="6" r="2.5"></circle>
+            <circle cx="18" cy="6" r="2.5"></circle>
+            <circle cx="12" cy="18" r="2.5"></circle>
+            <path d="M8 7.5 10.5 15M16 7.5 13.5 15" stroke-linecap="round"></path>
+          </svg>
+        </button>
+        <div
+          aria-label="Dependencies"
+          class="absolute end-0 z-20 mt-1 hidden min-w-56 rounded-lg border border-border/70 bg-popover p-2 text-popover-foreground shadow-lg"
+          data-deps-panel
+          role="dialog"
+        >
+          <p class="mb-1.5 px-1 docs-label">
+            Dependencies
+          </p>
+          <ul class="space-y-0.5 font-mono text-xs">
+            <li class="rounded-md px-1.5 py-1 text-foreground">{packageName}</li>
+            {
+              dependencies.map((dep) => (
+                <li class="rounded-md px-1.5 py-1 text-muted-foreground">{dep}</li>
+              ))
+            }
+          </ul>
+        </div>
+      </div>
+
+      <!-- Report an issue -->
+      <a
+        aria-label="Report an issue"
+        class={iconBtn}
+        data-tooltip="Report an issue"
+        href={reportUrl}
+        rel="noreferrer"
+        target="_blank"
+      >
+        <svg aria-hidden="true" class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" >
+          <path d="M8 9V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v4" stroke-linecap="round"></path>
+          <path d="M6 9h12v4a6 6 0 0 1-6 6h0a6 6 0 0 1-6-6V9z" stroke-linejoin="round"></path>
+          <path d="M4 13h2M18 13h2M9 19v2M15 19v2" stroke-linecap="round"></path>
+        </svg>
+      </a>
+
+      <div aria-hidden="true" class="mx-0.5 hidden h-4 w-px bg-border/70 sm:block" ></div>
+
+      <!-- Desktop / Tablet / Mobile -->
+      <div
+        aria-label="Preview viewport"
+        class="inline-flex rounded-md border border-border/60 bg-background/60 p-0.5"
+        data-viewport-group
+        role="group"
+      >
+        <button
+          aria-label="Desktop viewport"
+          aria-pressed="true"
+          class={iconBtn}
+          data-active
+          data-tooltip="Desktop"
+          data-viewport="desktop"
+          type="button"
+        >
+          <svg aria-hidden="true" class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" >
+            <rect height="12" rx="1.5" width="18" x="3" y="4"></rect>
+            <path d="M8 20h8M12 16v4" stroke-linecap="round"></path>
+          </svg>
+        </button>
+        <button
+          aria-label="Tablet viewport"
+          aria-pressed="false"
+          class={iconBtn}
+          data-tooltip="Tablet"
+          data-viewport="tablet"
+          type="button"
+        >
+          <svg aria-hidden="true" class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" >
+            <rect height="18" rx="2" width="12" x="6" y="3"></rect>
+            <path d="M11 17h2" stroke-linecap="round"></path>
+          </svg>
+        </button>
+        <button
+          aria-label="Mobile viewport"
+          aria-pressed="false"
+          class={iconBtn}
+          data-tooltip="Mobile"
+          data-viewport="mobile"
+          type="button"
+        >
+          <svg aria-hidden="true" class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" >
+            <rect height="18" rx="2" width="10" x="7" y="3"></rect>
+            <path d="M11 17h2" stroke-linecap="round"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Preview canvas (theme scoped here — does not change the docs page).
+       Default matches docs; only set after bind. Toggle is in-memory only. -->
+  <div
+    class="flex min-h-48 items-center justify-center bg-background bg-[radial-gradient(ellipse_at_top,color-mix(in_oklab,var(--primary)_8%,transparent),transparent_60%)] px-4 py-8 text-foreground sm:px-6 sm:py-10"
+    data-panel="preview"
+  >
+    <div
+      class="w-full max-w-full transition-[max-width] duration-200 ease-out data-[viewport=tablet]:max-w-192 data-[viewport=mobile]:max-w-93.75"
+      data-preview-stage
+      data-viewport="desktop"
+    >
+      <slot />
+    </div>
+  </div>
+
+  <!-- Code panel -->
+  <div class="hidden" data-panel="code">
+    <CodeBlock
+      class="rounded-none border-0 border-t border-border/60"
+      code={Astro.props.code}
+      lang={language}
+    />
+  </div>
+
+  <span class="sr-only" data-code-source>{Astro.props.code}</span>
+</section>
+
+
+<style>
+  [data-component-preview] [data-tooltip] {
+    position: relative;
+  }
+
+  [data-component-preview] [data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 50%;
+    z-index: 30;
+    width: max-content;
+    max-width: 14rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    border: 1px solid color-mix(in oklab, var(--border) 80%, transparent);
+    background: var(--popover);
+    color: var(--popover-foreground);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    line-height: 1.25;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+    box-shadow: 0 4px 14px color-mix(in oklab, black 18%, transparent);
+    opacity: 0;
+    transform: translateX(-50%) translateY(-2px);
+    pointer-events: none;
+    transition: opacity 120ms ease, transform 120ms ease;
+  }
+
+  [data-component-preview] [data-tooltip]::before {
+    content: "";
+    position: absolute;
+    top: calc(100% + 2px);
+    left: 50%;
+    z-index: 31;
+    width: 6px;
+    height: 6px;
+    border-left: 1px solid color-mix(in oklab, var(--border) 80%, transparent);
+    border-top: 1px solid color-mix(in oklab, var(--border) 80%, transparent);
+    background: var(--popover);
+    opacity: 0;
+    transform: translateX(-50%) rotate(45deg);
+    pointer-events: none;
+    transition: opacity 120ms ease;
+  }
+
+  [data-component-preview] [data-tooltip]:hover::after,
+  [data-component-preview] [data-tooltip]:focus-visible::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  [data-component-preview] [data-tooltip]:hover::before,
+  [data-component-preview] [data-tooltip]:focus-visible::before {
+    opacity: 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-component-preview] [data-tooltip]::after,
+    [data-component-preview] [data-tooltip]::before {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  function bindPreview(root: HTMLElement) {
+    if (root.dataset.bound === "1") return;
+    root.dataset.bound = "1";
+
+    const tabs = [...root.querySelectorAll<HTMLElement>("[data-view-tab]")];
+    const previewPanel = root.querySelector<HTMLElement>('[data-panel="preview"]');
+    const codePanel = root.querySelector<HTMLElement>('[data-panel="code"]');
+    const stage = root.querySelector<HTMLElement>("[data-preview-stage]");
+    const themeBtn = root.querySelector<HTMLElement>("[data-theme-toggle]");
+    const openTabBtn = root.querySelector<HTMLElement>("[data-open-tab]");
+    const depsRoot = root.querySelector<HTMLElement>("[data-deps]");
+    const depsToggle = root.querySelector<HTMLElement>("[data-deps-toggle]");
+    const depsPanel = root.querySelector<HTMLElement>("[data-deps-panel]");
+    const sun = themeBtn?.querySelector<HTMLElement>("[data-icon-sun]");
+    const moon = themeBtn?.querySelector<HTMLElement>("[data-icon-moon]");
+
+    function setView(view: "preview" | "code") {
+      for (const tab of tabs) {
+        const active = tab.dataset.view === view;
+        tab.toggleAttribute("data-active", active);
+        tab.setAttribute("aria-selected", active ? "true" : "false");
+      }
+      previewPanel?.classList.toggle("hidden", view !== "preview");
+      codePanel?.classList.toggle("hidden", view !== "code");
+    }
+
+    for (const tab of tabs) {
+      tab.addEventListener("click", () => {
+        setView(tab.dataset.view === "code" ? "code" : "preview");
+      });
+    }
+
+    const previewThemeRoot = root.querySelector<HTMLElement>('[data-panel="preview"]');
+
+    function getDocsTheme(): "light" | "dark" {
+      return document.documentElement.classList.contains("dark") ? "dark" : "light";
+    }
+
+    function getPreviewTheme(): "light" | "dark" {
+      const stored = previewThemeRoot?.dataset.previewTheme;
+      if (stored === "dark" || stored === "light") return stored;
+      return getDocsTheme();
+    }
+
+    function setPreviewTheme(next: "light" | "dark") {
+      if (!previewThemeRoot) return;
+      // In-memory only for this preview — never localStorage / cookies.
+      previewThemeRoot.dataset.previewTheme = next;
+      previewThemeRoot.classList.toggle("dark", next === "dark");
+      previewThemeRoot.classList.toggle("light", next === "light");
+      syncThemeIcons();
+    }
+
+    function syncThemeIcons() {
+      const dark = getPreviewTheme() === "dark";
+      if (sun) sun.hidden = !dark; // show sun when dark (click to go light)
+      if (moon) moon.hidden = dark; // show moon when light (click to go dark)
+      themeBtn?.setAttribute(
+        "aria-label",
+        dark ? "Switch preview to light mode" : "Switch preview to dark mode",
+      );
+    }
+
+    // Default: same as docs page theme (no persisted preview preference).
+    setPreviewTheme(getDocsTheme());
+
+    themeBtn?.addEventListener("click", () => {
+      setPreviewTheme(getPreviewTheme() === "dark" ? "light" : "dark");
+    });
+
+    openTabBtn?.addEventListener("click", () => {
+      if (!stage) return;
+      const styles = [...document.querySelectorAll('link[rel="stylesheet"], style')]
+        .map((node) => node.outerHTML)
+        .join("\n");
+      const title = root.dataset.package || "Preview";
+      const previewDark = getPreviewTheme() === "dark";
+      const html = `<!doctype html>
+<html lang="en" class="${previewDark ? "dark" : ""}">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>${title}</title>
+${styles}
+</head>
+<body class="min-h-dvh bg-background p-8 text-foreground">
+<div class="mx-auto w-full max-w-5xl">${stage.innerHTML}</div>
+</body>
+</html>`;
+      const win = window.open("", "_blank", "noopener,noreferrer");
+      if (!win) return;
+      win.document.open();
+      win.document.write(html);
+      win.document.close();
+    });
+
+    function closeDeps() {
+      depsPanel?.classList.add("hidden");
+      depsToggle?.setAttribute("aria-expanded", "false");
+    }
+
+    depsToggle?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const willOpen = depsPanel?.classList.contains("hidden");
+      depsPanel?.classList.toggle("hidden", !willOpen);
+      depsToggle.setAttribute("aria-expanded", willOpen ? "true" : "false");
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!depsRoot) return;
+      if (!depsRoot.contains(event.target as Node)) closeDeps();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeDeps();
+    });
+
+    function setViewport(size: "desktop" | "tablet" | "mobile") {
+      if (stage) stage.dataset.viewport = size;
+      for (const btn of root.querySelectorAll<HTMLElement>("[data-viewport-group] [data-viewport]")) {
+        const active = btn.dataset.viewport === size;
+        btn.toggleAttribute("data-active", active);
+        btn.setAttribute("aria-pressed", active ? "true" : "false");
+      }
+    }
+
+    for (const btn of root.querySelectorAll<HTMLElement>("[data-viewport-group] [data-viewport]")) {
+      btn.addEventListener("click", () => {
+        const size = btn.dataset.viewport;
+        if (size === "tablet" || size === "mobile" || size === "desktop") setViewport(size);
+      });
+    }
+  }
+
+  function bindAll() {
+    document.querySelectorAll<HTMLElement>("[data-component-preview]").forEach(bindPreview);
+  }
+
+  bindAll();
+  document.addEventListener("astro:page-load", bindAll);
+</script>

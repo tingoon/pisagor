@@ -1,0 +1,234 @@
+---
+import {
+  AreaChannels,
+  AreaDots,
+  Clearable,
+  CustomSpacing,
+  Default,
+  Disabled,
+  sources as examples,
+  InputChannel,
+  InputCompact,
+  InputControlled,
+  InputWithPopover,
+  InputWithSwatchPreview,
+  Invalid,
+  imports,
+  OnSurface,
+  PopoverDisabled,
+  PopoverSlidersOnly,
+  PopoverWithChannelEditing,
+  PopoverWithSwatchPicker,
+  SliderAlphaChannel,
+  SliderControlled,
+  SliderDisabled,
+  SliderHsbaChannels,
+  SliderHslChannels,
+  SliderRgbChannels,
+  SliderVertical,
+  SwatchPicker,
+  SwatchPickerControlled,
+  SwatchPickerCustomIndicator,
+  SwatchPickerCustomRadius,
+  SwatchPickerCustomSize,
+  SwatchPickerDisabled,
+  Variants,
+} from "@pisagor/vue/color-picker/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { colorPickerProps } from "../../../lib/props/color-picker";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "variants", text: "Variants" },
+  { depth: 3, slug: "on-surface", text: "On Surface" },
+  { depth: 3, slug: "custom-spacing", text: "Custom Spacing" },
+  { depth: 3, slug: "area-channels", text: "Area Channels" },
+  { depth: 3, slug: "area-dots", text: "Area Dots" },
+  { depth: 3, slug: "input-channel", text: "Input Channel" },
+  { depth: 3, slug: "input-compact", text: "Input Compact" },
+  { depth: 3, slug: "input-controlled", text: "Input Controlled" },
+  { depth: 3, slug: "disabled", text: "Disabled" },
+  { depth: 3, slug: "invalid", text: "Invalid" },
+  { depth: 3, slug: "input-with-popover", text: "Input With Popover" },
+  { depth: 3, slug: "input-with-swatch-preview", text: "Input With Swatch Preview" },
+  { depth: 3, slug: "popover-disabled", text: "Popover Disabled" },
+  { depth: 3, slug: "popover-sliders-only", text: "Popover Sliders Only" },
+  { depth: 3, slug: "popover-with-channel-editing", text: "Popover With Channel Editing" },
+  { depth: 3, slug: "popover-with-swatch-picker", text: "Popover With Swatch Picker" },
+  { depth: 3, slug: "slider-alpha-channel", text: "Slider Alpha Channel" },
+  { depth: 3, slug: "slider-controlled", text: "Slider Controlled" },
+  { depth: 3, slug: "slider-disabled", text: "Slider Disabled" },
+  { depth: 3, slug: "slider-hsba-channels", text: "Slider Hsba Channels" },
+  { depth: 3, slug: "slider-hsl-channels", text: "Slider Hsl Channels" },
+  { depth: 3, slug: "slider-rgb-channels", text: "Slider Rgb Channels" },
+  { depth: 3, slug: "slider-vertical", text: "Slider Vertical" },
+  { depth: 3, slug: "swatch-picker-controlled", text: "Swatch Picker Controlled" },
+  { depth: 3, slug: "swatch-picker-custom-indicator", text: "Swatch Picker Custom Indicator" },
+  { depth: 3, slug: "swatch-picker-custom-radius", text: "Swatch Picker Custom Radius" },
+  { depth: 3, slug: "swatch-picker-custom-size", text: "Swatch Picker Custom Size" },
+  { depth: 3, slug: "swatch-picker-disabled", text: "Swatch Picker Disabled" },
+  { depth: 3, slug: "swatch-picker", text: "Swatch Picker" },
+  { depth: 3, slug: "clearable", text: "Clearable" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+---
+
+<DocsLayout
+  description="Lets users choose a color visually and fine-tune it with sliders or numeric inputs."
+  framework="vue"
+  headings={headings}
+  title="Color Picker"
+>
+
+  <ComponentHeader framework="vue" id="color-picker" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <ComponentPreview code={examples.Variants} language="vue" title="Variants">
+    <Variants client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="on-surface">On Surface</h3>
+  <ComponentPreview code={examples.OnSurface} language="vue" title="On Surface">
+    <OnSurface client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-spacing">Custom Spacing</h3>
+  <ComponentPreview code={examples.CustomSpacing} language="vue" title="Custom Spacing">
+    <CustomSpacing client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="area-channels">Area Channels</h3>
+  <ComponentPreview code={examples.AreaChannels} language="vue" title="Area Channels">
+    <AreaChannels client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="area-dots">Area Dots</h3>
+  <ComponentPreview code={examples.AreaDots} language="vue" title="Area Dots">
+    <AreaDots client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="input-channel">Input Channel</h3>
+  <ComponentPreview code={examples.InputChannel} language="vue" title="Input Channel">
+    <InputChannel client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="input-compact">Input Compact</h3>
+  <ComponentPreview code={examples.InputCompact} language="vue" title="Input Compact">
+    <InputCompact client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="input-controlled">Input Controlled</h3>
+  <ComponentPreview code={examples.InputControlled} language="vue" title="Input Controlled">
+    <InputControlled client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <ComponentPreview code={examples.Disabled} language="vue" title="Disabled">
+    <Disabled client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">Invalid</h3>
+  <ComponentPreview code={examples.Invalid} language="vue" title="Invalid">
+    <Invalid client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="input-with-popover">Input With Popover</h3>
+  <ComponentPreview code={examples.InputWithPopover} language="vue" title="Input With Popover">
+    <InputWithPopover client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="input-with-swatch-preview">Input With Swatch Preview</h3>
+  <ComponentPreview code={examples.InputWithSwatchPreview} language="vue" title="Input With Swatch Preview">
+    <InputWithSwatchPreview client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="popover-disabled">Popover Disabled</h3>
+  <ComponentPreview code={examples.PopoverDisabled} language="vue" title="Popover Disabled">
+    <PopoverDisabled client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="popover-sliders-only">Popover Sliders Only</h3>
+  <ComponentPreview code={examples.PopoverSlidersOnly} language="vue" title="Popover Sliders Only">
+    <PopoverSlidersOnly client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="popover-with-channel-editing">Popover With Channel Editing</h3>
+  <ComponentPreview code={examples.PopoverWithChannelEditing} language="vue" title="Popover With Channel Editing">
+    <PopoverWithChannelEditing client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="popover-with-swatch-picker">Popover With Swatch Picker</h3>
+  <ComponentPreview code={examples.PopoverWithSwatchPicker} language="vue" title="Popover With Swatch Picker">
+    <PopoverWithSwatchPicker client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="slider-alpha-channel">Slider Alpha Channel</h3>
+  <ComponentPreview code={examples.SliderAlphaChannel} language="vue" title="Slider Alpha Channel">
+    <SliderAlphaChannel client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="slider-controlled">Slider Controlled</h3>
+  <ComponentPreview code={examples.SliderControlled} language="vue" title="Slider Controlled">
+    <SliderControlled client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="slider-disabled">Slider Disabled</h3>
+  <ComponentPreview code={examples.SliderDisabled} language="vue" title="Slider Disabled">
+    <SliderDisabled client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="slider-hsba-channels">Slider Hsba Channels</h3>
+  <ComponentPreview code={examples.SliderHsbaChannels} language="vue" title="Slider Hsba Channels">
+    <SliderHsbaChannels client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="slider-hsl-channels">Slider Hsl Channels</h3>
+  <ComponentPreview code={examples.SliderHslChannels} language="vue" title="Slider Hsl Channels">
+    <SliderHslChannels client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="slider-rgb-channels">Slider Rgb Channels</h3>
+  <ComponentPreview code={examples.SliderRgbChannels} language="vue" title="Slider Rgb Channels">
+    <SliderRgbChannels client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="slider-vertical">Slider Vertical</h3>
+  <ComponentPreview code={examples.SliderVertical} language="vue" title="Slider Vertical">
+    <SliderVertical client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="swatch-picker-controlled">Swatch Picker Controlled</h3>
+  <ComponentPreview code={examples.SwatchPickerControlled} language="vue" title="Swatch Picker Controlled">
+    <SwatchPickerControlled client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="swatch-picker-custom-indicator">Swatch Picker Custom Indicator</h3>
+  <ComponentPreview code={examples.SwatchPickerCustomIndicator} language="vue" title="Swatch Picker Custom Indicator">
+    <SwatchPickerCustomIndicator client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="swatch-picker-custom-radius">Swatch Picker Custom Radius</h3>
+  <ComponentPreview code={examples.SwatchPickerCustomRadius} language="vue" title="Swatch Picker Custom Radius">
+    <SwatchPickerCustomRadius client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="swatch-picker-custom-size">Swatch Picker Custom Size</h3>
+  <ComponentPreview code={examples.SwatchPickerCustomSize} language="vue" title="Swatch Picker Custom Size">
+    <SwatchPickerCustomSize client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="swatch-picker-disabled">Swatch Picker Disabled</h3>
+  <ComponentPreview code={examples.SwatchPickerDisabled} language="vue" title="Swatch Picker Disabled">
+    <SwatchPickerDisabled client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="swatch-picker">Swatch Picker</h3>
+  <ComponentPreview code={examples.SwatchPicker} language="vue" title="Swatch Picker">
+    <SwatchPicker client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="clearable">Clearable</h3>
+  <ComponentPreview code={examples.Clearable} language="vue" title="Clearable">
+    <Clearable client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="vue" title="Default">
+    <Default client:only="vue" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/vue" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/color-picker</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={colorPickerProps} />
+</DocsLayout>

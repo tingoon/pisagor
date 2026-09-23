@@ -69,7 +69,7 @@ export const PasswordStrength = defineComponent({
               autocomplete: "new-password",
               class: cn(
                 "h-8 w-full rounded-lg border border-input bg-transparent px-3 pe-9 text-sm shadow-xs/5",
-                "outline-hidden focus-visible:border-primary focus-visible:ring-[3px] focus-visible:ring-ring/32",
+                "outline-hidden focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/32",
               ),
               id,
               onInput: (event: Event) => {

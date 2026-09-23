@@ -1,13 +1,9 @@
 import type { SwitchProps } from "@pisagor/react";
 import { Field, Switch } from "@pisagor/react";
 import type { FieldPresentationProps } from "../../internal/field-shell";
-import type { SetRequired } from "../../internal/types";
 
 // #region Types
-type SwitchControlProps = SetRequired<
-  Omit<SwitchProps, "checked" | "invalid" | "label" | "name">,
-  "onValueChange"
->;
+type SwitchControlProps = Omit<SwitchProps, "checked" | "invalid" | "label" | "name">;
 
 export interface SwitchFieldProps extends FieldPresentationProps, SwitchControlProps {
   orientation?: "horizontal" | "vertical" | "responsive";

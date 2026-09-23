@@ -1,0 +1,64 @@
+---
+import {
+  Default,
+  sources as examples,
+  imports,
+  NumberCompact,
+  RelativeTime,
+} from "@pisagor/astro/format/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 3, slug: "number-compact", text: "Number Compact" },
+  { depth: 3, slug: "relative-time", text: "Relative Time" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+---
+
+<DocsLayout
+  description="Format for Astro applications."
+  framework="astro"
+  headings={headings}
+  title="Format"
+>
+
+  <ComponentHeader framework="astro" id="format" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <CodeBlock class="mb-8" code={imports} lang="astro" title="Import" />
+
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview class="mb-8" code={examples.Default} title="Default">
+    <Default />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="number-compact">Number Compact</h3>
+  <ComponentPreview class="mb-8" code={examples.NumberCompact} title="Number Compact">
+    <NumberCompact />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="relative-time">Relative Time</h3>
+  <ComponentPreview class="mb-8" code={examples.RelativeTime} title="Relative Time">
+    <RelativeTime />
+  </ComponentPreview>
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/astro" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="text-muted-foreground">
+    See the TypeScript types exported from <code>@pisagor/astro/format</code>.
+  </p>
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-8 text-muted-foreground">
+    This utility has no dedicated entries in <code>@pisagor/props</code> yet.
+    Use the TypeScript types exported from the framework package.
+  </p>
+</DocsLayout>

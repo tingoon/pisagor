@@ -15,8 +15,9 @@
   },
   "files": [
     "skills",
+    "src/cn.ts",
     "src/index.ts",
-    "src/cn.ts"
+    "src/strip-example-source.ts"
   ],
   "homepage": "https://github.com/tingoon/pisagor#readme",
   "license": "MIT",

@@ -1,0 +1,78 @@
+---
+import {
+  CustomStyle,
+  Default,
+  sources as examples,
+  imports,
+  Multiple,
+  SearchQuery,
+  Squiggle,
+} from "@pisagor/react/highlight/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { highlightProps } from "../../../lib/props/highlight";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "multiple", text: "Multiple" },
+  { depth: 3, slug: "custom-style", text: "Custom Style" },
+  { depth: 3, slug: "search-query", text: "Search Query" },
+  { depth: 3, slug: "squiggle", text: "Squiggle" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+---
+
+<DocsLayout
+  description="Emphasizes matching words inside text so search results and queries are easier to spot."
+  framework="react"
+  headings={headings}
+  title="Highlight"
+>
+
+  <ComponentHeader framework="react" id="highlight" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="multiple">Multiple</h3>
+  <ComponentPreview code={examples.Multiple} language="tsx" title="Multiple">
+    <Multiple client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-style">Custom Style</h3>
+  <ComponentPreview code={examples.CustomStyle} language="tsx" title="Custom Style">
+    <CustomStyle client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="search-query">Search Query</h3>
+  <ComponentPreview code={examples.SearchQuery} language="tsx" title="Search Query">
+    <SearchQuery client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="squiggle">Squiggle</h3>
+  <ComponentPreview code={examples.Squiggle} language="tsx" title="Squiggle">
+    <Squiggle client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="tsx" title="Default">
+    <Default client:only="react" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/react" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/highlight</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={highlightProps} />
+</DocsLayout>

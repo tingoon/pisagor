@@ -1,0 +1,66 @@
+---
+import {
+  Compact,
+  Compound,
+  Default,
+  sources as examples,
+  imports,
+} from "@pisagor/react/empty-state/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { emptyStateProps } from "../../../lib/props/empty-state";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "compact", text: "Compact" },
+  { depth: 3, slug: "compound", text: "Compound" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+---
+
+<DocsLayout
+  description="Shows a centered placeholder when a view has no data and offers the next relevant actions."
+  framework="react"
+  headings={headings}
+  title="Empty State"
+>
+
+  <ComponentHeader framework="react" id="empty-state" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="compact">Compact</h3>
+  <ComponentPreview code={examples.Compact} language="tsx" title="Compact">
+    <Compact client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="compound">Compound</h3>
+  <ComponentPreview code={examples.Compound} language="tsx" title="Compound">
+    <Compound client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="tsx" title="Default">
+    <Default client:only="react" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/react" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/empty-state</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={emptyStateProps} />
+</DocsLayout>

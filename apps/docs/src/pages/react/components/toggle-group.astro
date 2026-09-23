@@ -1,0 +1,120 @@
+---
+import {
+  Compound,
+  Controlled,
+  Default,
+  Disabled,
+  DisabledItem,
+  sources as examples,
+  FontWeight,
+  Horizontal,
+  imports,
+  Single,
+  Sizes,
+  Spacing,
+  Variants,
+  Vertical,
+} from "@pisagor/react/toggle-group/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { toggleGroupProps } from "../../../lib/props/toggle-group";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "sizes", text: "Sizes" },
+  { depth: 3, slug: "variants", text: "Variants" },
+  { depth: 3, slug: "horizontal", text: "Horizontal" },
+  { depth: 3, slug: "vertical", text: "Vertical" },
+  { depth: 3, slug: "spacing", text: "Spacing" },
+  { depth: 3, slug: "disabled-item", text: "Disabled Item" },
+  { depth: 3, slug: "font-weight", text: "Font Weight" },
+  { depth: 3, slug: "disabled", text: "Disabled" },
+  { depth: 3, slug: "single", text: "Single" },
+  { depth: 3, slug: "controlled", text: "Controlled" },
+  { depth: 3, slug: "compound", text: "Compound" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+---
+
+<DocsLayout
+  description="Lets users choose one or more pressed states from a row of related toggle buttons."
+  framework="react"
+  headings={headings}
+  title="Toggle Group"
+>
+
+  <ComponentHeader framework="react" id="toggle-group" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sizes">Sizes</h3>
+  <ComponentPreview code={examples.Sizes} language="tsx" title="Sizes">
+    <Sizes client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <ComponentPreview code={examples.Variants} language="tsx" title="Variants">
+    <Variants client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="horizontal">Horizontal</h3>
+  <ComponentPreview code={examples.Horizontal} language="tsx" title="Horizontal">
+    <Horizontal client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="vertical">Vertical</h3>
+  <ComponentPreview code={examples.Vertical} language="tsx" title="Vertical">
+    <Vertical client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="spacing">Spacing</h3>
+  <ComponentPreview code={examples.Spacing} language="tsx" title="Spacing">
+    <Spacing client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled-item">Disabled Item</h3>
+  <ComponentPreview code={examples.DisabledItem} language="tsx" title="Disabled Item">
+    <DisabledItem client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="font-weight">Font Weight</h3>
+  <ComponentPreview code={examples.FontWeight} language="tsx" title="Font Weight">
+    <FontWeight client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <ComponentPreview code={examples.Disabled} language="tsx" title="Disabled">
+    <Disabled client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="single">Single</h3>
+  <ComponentPreview code={examples.Single} language="tsx" title="Single">
+    <Single client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <ComponentPreview code={examples.Controlled} language="tsx" title="Controlled">
+    <Controlled client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="compound">Compound</h3>
+  <ComponentPreview code={examples.Compound} language="tsx" title="Compound">
+    <Compound client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="tsx" title="Default">
+    <Default client:only="react" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/react" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/toggle-group</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={toggleGroupProps} />
+</DocsLayout>

@@ -1,0 +1,102 @@
+---
+import {
+  Accept,
+  Default,
+  Disabled,
+  sources as examples,
+  Invalid,
+  imports,
+  Multiple,
+  OnFilesChange,
+  OnSurface,
+  Sizes,
+  Variants,
+} from "@pisagor/vue/file-input/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { fileInputProps } from "../../../lib/props/file-input";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "sizes", text: "Sizes" },
+  { depth: 3, slug: "variants", text: "Variants" },
+  { depth: 3, slug: "on-surface", text: "On Surface" },
+  { depth: 3, slug: "multiple", text: "Multiple" },
+  { depth: 3, slug: "accept", text: "Accept" },
+  { depth: 3, slug: "disabled", text: "Disabled" },
+  { depth: 3, slug: "invalid", text: "Invalid" },
+  { depth: 3, slug: "on-files-change", text: "On Files Change" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+---
+
+<DocsLayout
+  description="Captures one or more files from the user with native file-picker styling aligned to Input."
+  framework="vue"
+  headings={headings}
+  title="File Input"
+>
+
+  <ComponentHeader framework="vue" id="file-input" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sizes">Sizes</h3>
+  <ComponentPreview code={examples.Sizes} language="vue" title="Sizes">
+    <Sizes client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <ComponentPreview code={examples.Variants} language="vue" title="Variants">
+    <Variants client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="on-surface">On Surface</h3>
+  <ComponentPreview code={examples.OnSurface} language="vue" title="On Surface">
+    <OnSurface client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="multiple">Multiple</h3>
+  <ComponentPreview code={examples.Multiple} language="vue" title="Multiple">
+    <Multiple client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="accept">Accept</h3>
+  <ComponentPreview code={examples.Accept} language="vue" title="Accept">
+    <Accept client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <ComponentPreview code={examples.Disabled} language="vue" title="Disabled">
+    <Disabled client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">Invalid</h3>
+  <ComponentPreview code={examples.Invalid} language="vue" title="Invalid">
+    <Invalid client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="on-files-change">On Files Change</h3>
+  <ComponentPreview code={examples.OnFilesChange} language="vue" title="On Files Change">
+    <OnFilesChange client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="vue" title="Default">
+    <Default client:only="vue" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/vue" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/file-input</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={fileInputProps} />
+</DocsLayout>

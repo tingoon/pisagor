@@ -1,17 +1,11 @@
 import { ark } from "@ark-ui/react/factory";
-import { type ButtonVariantProps, buttonRecipe } from "@pisagor/recipes/button";
+import type { ButtonProps as ButtonSharedProps } from "@pisagor/props/button";
+import { buttonRecipe } from "@pisagor/recipes/button";
 import type { ComponentProps } from "react";
 import { Spinner } from "../spinner";
 
 // #region Types
-export interface ButtonProps extends ComponentProps<typeof ark.button>, ButtonVariantProps {
-  /**
-   * Style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
-   *
-   * @defaultValue buttonRecipe
-   */
-  recipe?: typeof buttonRecipe;
-}
+export interface ButtonProps extends ComponentProps<typeof ark.button>, ButtonSharedProps {}
 // #endregion
 
 // #region Component

@@ -1,0 +1,186 @@
+---
+import {
+  A,
+  Blockquote,
+  Default,
+  Details,
+  Dl,
+  sources as examples,
+  H1,
+  H2,
+  H3,
+  H4,
+  H5,
+  H6,
+  Html,
+  HtmlTable,
+  InlineCode,
+  imports,
+  Kbd,
+  List,
+  Mark,
+  Media,
+  NotProse,
+  Ol,
+  P,
+  Separator,
+  Small,
+} from "@pisagor/react/prose/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { proseProps } from "../../../lib/props/prose";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 3, slug: "list", text: "List" },
+  { depth: 3, slug: "separator", text: "Separator" },
+  { depth: 3, slug: "a", text: "A" },
+  { depth: 3, slug: "blockquote", text: "Blockquote" },
+  { depth: 3, slug: "details", text: "Details" },
+  { depth: 3, slug: "dl", text: "Dl" },
+  { depth: 3, slug: "h1", text: "H1" },
+  { depth: 3, slug: "h2", text: "H2" },
+  { depth: 3, slug: "h3", text: "H3" },
+  { depth: 3, slug: "h4", text: "H4" },
+  { depth: 3, slug: "h5", text: "H5" },
+  { depth: 3, slug: "h6", text: "H6" },
+  { depth: 3, slug: "inline-code", text: "Inline Code" },
+  { depth: 3, slug: "kbd", text: "Kbd" },
+  { depth: 3, slug: "mark", text: "Mark" },
+  { depth: 3, slug: "media", text: "Media" },
+  { depth: 3, slug: "not-prose", text: "Not Prose" },
+  { depth: 3, slug: "ol", text: "Ol" },
+  { depth: 3, slug: "p", text: "P" },
+  { depth: 3, slug: "small", text: "Small" },
+  { depth: 3, slug: "html-table", text: "Html Table" },
+  { depth: 3, slug: "html", text: "Html" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+---
+
+<DocsLayout
+  description="Styles long-form written content with readable typography for articles, docs, and markdown."
+  framework="react"
+  headings={headings}
+  title="Prose"
+>
+
+  <ComponentHeader framework="react" id="prose" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="tsx" title="Default">
+    <Default client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="list">List</h3>
+  <ComponentPreview code={examples.List} language="tsx" title="List">
+    <List client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="separator">Separator</h3>
+  <ComponentPreview code={examples.Separator} language="tsx" title="Separator">
+    <Separator client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="a">A</h3>
+  <ComponentPreview code={examples.A} language="tsx" title="A">
+    <A client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="blockquote">Blockquote</h3>
+  <ComponentPreview code={examples.Blockquote} language="tsx" title="Blockquote">
+    <Blockquote client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="details">Details</h3>
+  <ComponentPreview code={examples.Details} language="tsx" title="Details">
+    <Details client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="dl">Dl</h3>
+  <ComponentPreview code={examples.Dl} language="tsx" title="Dl">
+    <Dl client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="h1">H1</h3>
+  <ComponentPreview code={examples.H1} language="tsx" title="H1">
+    <H1 client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="h2">H2</h3>
+  <ComponentPreview code={examples.H2} language="tsx" title="H2">
+    <H2 client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="h3">H3</h3>
+  <ComponentPreview code={examples.H3} language="tsx" title="H3">
+    <H3 client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="h4">H4</h3>
+  <ComponentPreview code={examples.H4} language="tsx" title="H4">
+    <H4 client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="h5">H5</h3>
+  <ComponentPreview code={examples.H5} language="tsx" title="H5">
+    <H5 client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="h6">H6</h3>
+  <ComponentPreview code={examples.H6} language="tsx" title="H6">
+    <H6 client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="inline-code">Inline Code</h3>
+  <ComponentPreview code={examples.InlineCode} language="tsx" title="Inline Code">
+    <InlineCode client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="kbd">Kbd</h3>
+  <ComponentPreview code={examples.Kbd} language="tsx" title="Kbd">
+    <Kbd client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="mark">Mark</h3>
+  <ComponentPreview code={examples.Mark} language="tsx" title="Mark">
+    <Mark client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="media">Media</h3>
+  <ComponentPreview code={examples.Media} language="tsx" title="Media">
+    <Media client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="not-prose">Not Prose</h3>
+  <ComponentPreview code={examples.NotProse} language="tsx" title="Not Prose">
+    <NotProse client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="ol">Ol</h3>
+  <ComponentPreview code={examples.Ol} language="tsx" title="Ol">
+    <Ol client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="p">P</h3>
+  <ComponentPreview code={examples.P} language="tsx" title="P">
+    <P client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="small">Small</h3>
+  <ComponentPreview code={examples.Small} language="tsx" title="Small">
+    <Small client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="html-table">Html Table</h3>
+  <ComponentPreview code={examples.HtmlTable} language="tsx" title="Html Table">
+    <HtmlTable client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="html">Html</h3>
+  <ComponentPreview code={examples.Html} language="tsx" title="Html">
+    <Html client:only="react" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/react" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/prose</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={proseProps} />
+</DocsLayout>

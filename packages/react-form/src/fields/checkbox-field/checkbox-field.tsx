@@ -10,7 +10,7 @@ export interface CheckboxFieldProps
   checked?: boolean;
   name?: string;
   onBlur?: () => void;
-  onValueChange: (checked: boolean) => void;
+  onValueChange?: (checked: boolean) => void;
 }
 // #endregion
 

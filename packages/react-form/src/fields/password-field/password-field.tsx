@@ -1,13 +1,9 @@
 import type { PasswordInputProps } from "@pisagor/react";
 import { PasswordInput } from "@pisagor/react";
 import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
-import type { SetRequired } from "../../internal/types";
 
 // #region Types
-type PasswordInputControlProps = SetRequired<
-  Omit<PasswordInputProps, "name" | "onBlur" | "onChange" | "value">,
-  "onValueChange"
->;
+type PasswordInputControlProps = Omit<PasswordInputProps, "name" | "onBlur" | "onChange" | "value">;
 
 export interface PasswordFieldProps extends FieldPresentationProps, PasswordInputControlProps {
   name?: string;

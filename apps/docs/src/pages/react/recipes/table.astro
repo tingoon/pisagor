@@ -1,0 +1,59 @@
+---
+import { TableBulkActions } from "@recipes-react/table/table-bulk-actions";
+import TableBulkActionsSource from "@recipes-react/table/table-bulk-actions.tsx?raw";
+import { TablePagination } from "@recipes-react/table/table-pagination";
+import TablePaginationSource from "@recipes-react/table/table-pagination.tsx?raw";
+import { TableRowMenu } from "@recipes-react/table/table-row-menu";
+import TableRowMenuSource from "@recipes-react/table/table-row-menu.tsx?raw";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+
+const headings = [
+  {
+    depth: 2,
+    slug: "overview",
+    text: "Overview",
+  },
+  {
+    depth: 2,
+    slug: "table-bulk-actions",
+    text: "Table Bulk Actions",
+  },
+  {
+    depth: 2,
+    slug: "table-row-menu",
+    text: "Table Row Menu",
+  },
+  {
+    depth: 2,
+    slug: "table-pagination",
+    text: "Table Pagination",
+  },
+];
+
+---
+
+<DocsLayout
+  description="Table compositions with bulk actions, row menus, and pagination controls."
+  framework="react"
+  headings={headings}
+  title="Table"
+>
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">Overview</h2>
+  <p class="mb-8 text-muted-foreground">Table compositions with bulk actions, row menus, and pagination controls.</p>
+
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="table-bulk-actions">Table Bulk Actions</h2>
+  <ComponentPreview code={TableBulkActionsSource} language="tsx" title="Table Bulk Actions">
+    <TableBulkActions client:only="react" />
+  </ComponentPreview>
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="table-row-menu">Table Row Menu</h2>
+  <ComponentPreview code={TableRowMenuSource} language="tsx" title="Table Row Menu">
+    <TableRowMenu client:only="react" />
+  </ComponentPreview>
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="table-pagination">Table Pagination</h2>
+  <ComponentPreview code={TablePaginationSource} language="tsx" title="Table Pagination">
+    <TablePagination client:only="react" />
+  </ComponentPreview>
+
+</DocsLayout>

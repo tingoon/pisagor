@@ -1,0 +1,95 @@
+---
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings?: Heading[];
+}
+
+const items = (Astro.props.headings ?? []).filter(
+  (heading) => heading.depth === 2 || heading.depth === 3,
+);
+---
+
+{
+  items.length > 0 ? (
+    <aside class="sticky top-14 hidden h-[calc(100dvh-3.5rem)] w-52 shrink-0 overflow-y-auto p-4 [scrollbar-color:color-mix(in_oklab,var(--border)_80%,transparent)_transparent] [scrollbar-width:thin] xl:block">
+      <p class="docs-label mb-3">On this page</p>
+      <nav aria-label="On this page" class="relative space-y-px border-s border-border/50" data-toc>
+        {items.map((item) => (
+          <a
+            class:list={[
+              "docs-press docs-nav-link relative block py-1.5 text-foreground/65 hover:text-foreground data-[active]:font-medium data-[active]:text-foreground",
+              item.depth === 2 ? "ps-3" : "ps-5",
+            ]}
+            data-toc-link
+            href={`#${item.slug}`}
+          >
+            <span
+              aria-hidden
+              class="absolute inset-y-1 -start-px w-0.5 rounded-full bg-primary opacity-0 transition-opacity duration-150 data-[active]:opacity-100"
+              data-toc-indicator
+            />
+            {item.text}
+          </a>
+        ))}
+      </nav>
+    </aside>
+  ) : (
+    <div class="hidden w-52 shrink-0 xl:block" />
+  )
+}
+
+<script>
+  function bindToc(nav: HTMLElement) {
+    if (nav.dataset.bound === "1") return;
+    nav.dataset.bound = "1";
+
+    const links = [...nav.querySelectorAll<HTMLAnchorElement>("[data-toc-link]")];
+    if (links.length === 0) return;
+
+    const ids = links
+      .map((link) => link.getAttribute("href")?.slice(1))
+      .filter((id): id is string => Boolean(id));
+
+    const headings = ids
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => Boolean(el));
+
+    function setActive(id: string | null) {
+      for (const link of links) {
+        const match = id !== null && link.getAttribute("href") === `#${id}`;
+        link.toggleAttribute("data-active", match);
+        const indicator = link.querySelector<HTMLElement>("[data-toc-indicator]");
+        indicator?.toggleAttribute("data-active", match);
+      }
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible[0]?.target.id) setActive(visible[0].target.id);
+      },
+      { rootMargin: "-20% 0px -65% 0px", threshold: [0, 1] },
+    );
+
+    for (const heading of headings) observer.observe(heading);
+
+    // Initial: first heading in view, or hash target
+    const hash = decodeURIComponent(location.hash.slice(1));
+    if (hash && ids.includes(hash)) setActive(hash);
+    else if (ids[0]) setActive(ids[0]);
+  }
+
+  function bindAll() {
+    document.querySelectorAll<HTMLElement>("[data-toc]").forEach(bindToc);
+  }
+
+  bindAll();
+  document.addEventListener("astro:page-load", bindAll);
+</script>

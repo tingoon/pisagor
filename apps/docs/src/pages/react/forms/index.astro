@@ -1,0 +1,26 @@
+---
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { withDocsBase } from "../../../lib/nav";
+
+const headings = [{ depth: 2, slug: "overview", text: "Overview" }];
+---
+
+<DocsLayout
+  description="Labeled form fields with validation, built on Pisagor primitives."
+  framework="react"
+  headings={headings}
+  title="Forms"
+>
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">Overview</h2>
+  <p class="mb-6 text-muted-foreground">
+    Form fields wrap inputs with labels, descriptions, and error messages. Pick a field from the
+    sidebar to see usage, installation, and live examples.
+  </p>
+  <p class="text-muted-foreground">
+    Start with
+    <a class="text-foreground underline-offset-4 hover:underline" href={withDocsBase("/react/forms/text-field")}>Text Field</a>
+    or
+    <a class="text-foreground underline-offset-4 hover:underline" href={withDocsBase("/react/forms/select-field")}>Select Field</a>.
+  </p>
+</DocsLayout>

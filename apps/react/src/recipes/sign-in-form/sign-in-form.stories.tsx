@@ -15,6 +15,7 @@ const meta = preview.meta({
   title: "Recipes/Forms/Form/Sign In",
 });
 
-export const Default = meta.story({
+export const Playground = meta.story({
   render: () => <SignInForm />,
+  tags: ["autodocs"],
 });

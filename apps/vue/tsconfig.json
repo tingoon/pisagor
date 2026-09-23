@@ -6,14 +6,5 @@
     }
   },
   "extends": "@pisagor/tsconfig/vue-vite",
-  "include": [
-    "src",
-    ".storybook",
-    "vite.config.ts",
-    "env.d.ts",
-    "src/**/*.stories.ts",
-    "../../packages/vue/src/**/*.stories.ts",
-    "../../packages/vue-charts/src/**/*.stories.ts",
-    "../../packages/vue-form/src/**/*.stories.ts"
-  ]
+  "include": ["src", ".storybook", "vite.config.ts", "env.d.ts", "src/**/*.stories.ts"]
 }

@@ -3,6 +3,7 @@
   "globalPassThroughEnv": ["TANSTACK_CLI_TELEMETRY_DISABLED", "TURBO_TELEMETRY_DISABLED"],
   "tasks": {
     "build": {
+      "env": ["DOCS_BASE_PATH", "DOCS_SITE"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"]
     },
     "dev": {

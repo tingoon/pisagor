@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "types": ["astro/client"]
+  },
+  "extends": "@pisagor/tsconfig/astro",
+  "include": [".astro/types.d.ts", "src", "astro.config.ts"]
+}

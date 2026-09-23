@@ -1,0 +1,113 @@
+---
+import {
+  AsChild,
+  CustomColor,
+  Default,
+  Disabled,
+  sources as examples,
+  Icon,
+  imports,
+  Loading,
+  NoClickEffect,
+  Pill,
+  Sizes,
+  Variants,
+  WithIcon,
+} from "@pisagor/react/button/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { buttonProps } from "../../../lib/props/button";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 3, slug: "sizes", text: "Sizes" },
+  { depth: 3, slug: "variants", text: "Variants" },
+  { depth: 3, slug: "custom-color", text: "Custom color" },
+  { depth: 3, slug: "pill", text: "Pill" },
+  { depth: 3, slug: "no-click-effect", text: "No click effect" },
+  { depth: 3, slug: "icon", text: "Icon" },
+  { depth: 3, slug: "as-child", text: "As child" },
+  { depth: 3, slug: "disabled", text: "Disabled" },
+  { depth: 3, slug: "loading", text: "Loading" },
+  { depth: 3, slug: "with-icon", text: "With icon" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+---
+
+<DocsLayout
+  description="Triggers actions with emphasis, size, and loading states."
+  framework="react"
+  headings={headings}
+  title="Button"
+>
+
+  <ComponentHeader framework="react" id="button" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+    <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="tsx" title="Default">
+    <Default client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sizes">Sizes</h3>
+  <ComponentPreview code={examples.Sizes} language="tsx" title="Sizes">
+    <Sizes client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <ComponentPreview code={examples.Variants} language="tsx" title="Variants">
+    <Variants client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-color">Custom color</h3>
+  <ComponentPreview code={examples.CustomColor} language="tsx" title="Custom color">
+    <CustomColor client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="pill">Pill</h3>
+  <ComponentPreview code={examples.Pill} language="tsx" title="Pill">
+    <Pill client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="no-click-effect">No click effect</h3>
+  <ComponentPreview code={examples.NoClickEffect} language="tsx" title="No click effect">
+    <NoClickEffect client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="icon">Icon</h3>
+  <ComponentPreview code={examples.Icon} language="tsx" title="Icon">
+    <Icon client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="as-child">As child</h3>
+  <ComponentPreview code={examples.AsChild} language="tsx" title="As child">
+    <AsChild client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <ComponentPreview code={examples.Disabled} language="tsx" title="Disabled">
+    <Disabled client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="loading">Loading</h3>
+  <ComponentPreview code={examples.Loading} language="tsx" title="Loading">
+    <Loading client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-icon">With icon</h3>
+  <ComponentPreview code={examples.WithIcon} language="tsx" title="With icon">
+    <WithIcon client:only="react" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/react" />
+
+    <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/button</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={buttonProps} />
+</DocsLayout>

@@ -1,0 +1,105 @@
+---
+import {
+  Byte,
+  ByteUnitDisplay,
+  ByteUnitSystem,
+  Default,
+  sources as examples,
+  imports,
+  NumberCompact,
+  NumberCurrency,
+  NumberPercent,
+  NumberStory,
+  RelativeTime,
+  RelativeTimeShort,
+} from "@pisagor/react/format/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 3, slug: "byte-unit-display", text: "Byte Unit Display" },
+  { depth: 3, slug: "byte-unit-system", text: "Byte Unit System" },
+  { depth: 3, slug: "byte", text: "Byte" },
+  { depth: 3, slug: "number-compact", text: "Number Compact" },
+  { depth: 3, slug: "number-currency", text: "Number Currency" },
+  { depth: 3, slug: "number-percent", text: "Number Percent" },
+  { depth: 3, slug: "number-story", text: "Number Story" },
+  { depth: 3, slug: "relative-time-short", text: "Relative Time Short" },
+  { depth: 3, slug: "relative-time", text: "Relative Time" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+---
+
+<DocsLayout
+  description="Formats numbers, bytes, and relative times for display so values read naturally in the user locale."
+  framework="react"
+  headings={headings}
+  title="Format"
+>
+
+  <ComponentHeader framework="react" id="format" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="tsx" title="Default">
+    <Default client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="byte-unit-display">Byte Unit Display</h3>
+  <ComponentPreview code={examples.ByteUnitDisplay} language="tsx" title="Byte Unit Display">
+    <ByteUnitDisplay client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="byte-unit-system">Byte Unit System</h3>
+  <ComponentPreview code={examples.ByteUnitSystem} language="tsx" title="Byte Unit System">
+    <ByteUnitSystem client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="byte">Byte</h3>
+  <ComponentPreview code={examples.Byte} language="tsx" title="Byte">
+    <Byte client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="number-compact">Number Compact</h3>
+  <ComponentPreview code={examples.NumberCompact} language="tsx" title="Number Compact">
+    <NumberCompact client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="number-currency">Number Currency</h3>
+  <ComponentPreview code={examples.NumberCurrency} language="tsx" title="Number Currency">
+    <NumberCurrency client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="number-percent">Number Percent</h3>
+  <ComponentPreview code={examples.NumberPercent} language="tsx" title="Number Percent">
+    <NumberPercent client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="number-story">Number Story</h3>
+  <ComponentPreview code={examples.NumberStory} language="tsx" title="Number Story">
+    <NumberStory client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="relative-time-short">Relative Time Short</h3>
+  <ComponentPreview code={examples.RelativeTimeShort} language="tsx" title="Relative Time Short">
+    <RelativeTimeShort client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="relative-time">Relative Time</h3>
+  <ComponentPreview code={examples.RelativeTime} language="tsx" title="Relative Time">
+    <RelativeTime client:only="react" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/react" />
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-8 text-muted-foreground">
+    This utility has no dedicated entries in <code>@pisagor/props</code> yet. Use the TypeScript types exported from the framework package.
+  </p>
+</DocsLayout>

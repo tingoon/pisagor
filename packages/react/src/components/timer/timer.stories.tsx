@@ -244,7 +244,7 @@ export const Pomodoro = meta.story({
               <Timer.Item className="text-5xl" type="seconds" />
             </Timer.ItemGroup>
           </Timer.Area>
-          <span className="mt-0.5 font-medium text-[10px] text-muted-foreground uppercase tracking-[0.22em]">
+          <span className="mt-0.5 font-medium text-2.5 text-muted-foreground uppercase tracking-[0.22em]">
             Focus
           </span>
           <Timer.Control className="w-full justify-center">

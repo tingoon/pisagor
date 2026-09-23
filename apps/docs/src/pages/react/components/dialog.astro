@@ -1,0 +1,96 @@
+---
+import {
+  CloseBehavior,
+  CustomSpacing,
+  Default,
+  sources as examples,
+  InitialFocus,
+  imports,
+  Nested,
+  NoCloseButton,
+  NonModal,
+  ScrollArea,
+} from "@pisagor/react/dialog/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { dialogProps } from "../../../lib/props/dialog";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 3, slug: "custom-spacing", text: "Custom Spacing" },
+  { depth: 3, slug: "initial-focus", text: "Initial Focus" },
+  { depth: 3, slug: "nested", text: "Nested" },
+  { depth: 3, slug: "no-close-button", text: "No Close Button" },
+  { depth: 3, slug: "non-modal", text: "Non Modal" },
+  { depth: 3, slug: "scroll-area", text: "Scroll Area" },
+  { depth: 3, slug: "close-behavior", text: "Close Behavior" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+---
+
+<DocsLayout
+  description="Focuses attention on a task or decision in a modal layer above the current page."
+  framework="react"
+  headings={headings}
+  title="Dialog"
+>
+
+  <ComponentHeader framework="react" id="dialog" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="tsx" title="Default">
+    <Default client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-spacing">Custom Spacing</h3>
+  <ComponentPreview code={examples.CustomSpacing} language="tsx" title="Custom Spacing">
+    <CustomSpacing client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="initial-focus">Initial Focus</h3>
+  <ComponentPreview code={examples.InitialFocus} language="tsx" title="Initial Focus">
+    <InitialFocus client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="nested">Nested</h3>
+  <ComponentPreview code={examples.Nested} language="tsx" title="Nested">
+    <Nested client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="no-close-button">No Close Button</h3>
+  <ComponentPreview code={examples.NoCloseButton} language="tsx" title="No Close Button">
+    <NoCloseButton client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="non-modal">Non Modal</h3>
+  <ComponentPreview code={examples.NonModal} language="tsx" title="Non Modal">
+    <NonModal client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="scroll-area">Scroll Area</h3>
+  <ComponentPreview code={examples.ScrollArea} language="tsx" title="Scroll Area">
+    <ScrollArea client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="close-behavior">Close Behavior</h3>
+  <ComponentPreview code={examples.CloseBehavior} language="tsx" title="Close Behavior">
+    <CloseBehavior client:only="react" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/react" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/dialog</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={dialogProps} />
+</DocsLayout>

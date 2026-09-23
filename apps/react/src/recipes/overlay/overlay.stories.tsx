@@ -18,8 +18,9 @@ const meta = preview.meta({
   title: "Recipes/Overlay",
 });
 
-export const MenuDialog = meta.story({
+export const Playground = meta.story({
   render: () => <MenuDialogRecipe />,
+  tags: ["autodocs"],
 });
 
 export const PopoverDialog = meta.story({

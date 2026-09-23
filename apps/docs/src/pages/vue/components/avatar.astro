@@ -1,0 +1,78 @@
+---
+import {
+  Default,
+  sources as examples,
+  FallbackOnly,
+  Fallbacks,
+  imports,
+  Shapes,
+  Sizes,
+} from "@pisagor/vue/avatar/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { avatarProps } from "../../../lib/props/avatar";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "sizes", text: "Sizes" },
+  { depth: 3, slug: "shapes", text: "Shapes" },
+  { depth: 3, slug: "fallbacks", text: "Fallbacks" },
+  { depth: 3, slug: "fallback-only", text: "Fallback Only" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+---
+
+<DocsLayout
+  description="Displays a user or entity image with a shaped fallback when the source is unavailable."
+  framework="vue"
+  headings={headings}
+  title="Avatar"
+>
+
+  <ComponentHeader framework="vue" id="avatar" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sizes">Sizes</h3>
+  <ComponentPreview code={examples.Sizes} language="vue" title="Sizes">
+    <Sizes client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="shapes">Shapes</h3>
+  <ComponentPreview code={examples.Shapes} language="vue" title="Shapes">
+    <Shapes client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="fallbacks">Fallbacks</h3>
+  <ComponentPreview code={examples.Fallbacks} language="vue" title="Fallbacks">
+    <Fallbacks client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="fallback-only">Fallback Only</h3>
+  <ComponentPreview code={examples.FallbackOnly} language="vue" title="Fallback Only">
+    <FallbackOnly client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="vue" title="Default">
+    <Default client:only="vue" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/vue" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/avatar</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={avatarProps} />
+</DocsLayout>

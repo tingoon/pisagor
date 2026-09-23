@@ -15,8 +15,9 @@ const meta = preview.meta({
   title: "Recipes/Forms/Input/Search Field",
 });
 
-export const ButtonGroup = meta.story({
+export const Playground = meta.story({
   render: () => <SearchFieldButtonGroup />,
+  tags: ["autodocs"],
 });
 
 export const Inline = meta.story({

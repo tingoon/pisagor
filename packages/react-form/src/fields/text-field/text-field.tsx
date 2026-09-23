@@ -1,13 +1,9 @@
 import type { InputProps } from "@pisagor/react";
 import { Input } from "@pisagor/react";
 import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
-import type { SetRequired } from "../../internal/types";
 
 // #region Types
-type InputControlProps = SetRequired<
-  Omit<InputProps, "name" | "onBlur" | "onChange" | "value">,
-  "onValueChange"
->;
+type InputControlProps = Omit<InputProps, "name" | "onBlur" | "onChange" | "value">;
 
 export interface TextFieldProps extends FieldPresentationProps, InputControlProps {
   name?: string;
@@ -51,7 +47,7 @@ export function TextField({
         id={id}
         name={name}
         onBlur={onBlur}
-        onChange={(event) => onValueChange(event.target.value)}
+        onChange={(event) => onValueChange?.(event.target.value)}
       />
     </FieldShell>
   );

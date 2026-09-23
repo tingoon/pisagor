@@ -1,0 +1,237 @@
+---
+import { highlightCode } from "../../lib/tanstack-highlight";
+
+interface Props {
+  code: string;
+  lang?: string;
+  title?: string;
+  class?: string;
+}
+
+const copyId = `copy-${Math.random().toString(36).slice(2, 10)}`;
+
+const code = Astro.props.code ?? "";
+const requestedLang = Astro.props.lang ?? "bash";
+/**
+ * Docs Vue snippets come in three shapes:
+ * 1) Full SFC (`<script>` / `<template>` / `<style>`) → `vue`
+ * 2) Stripped template body (see stripVueExample) → `vue` (was Shiki vue-html)
+ * 3) Import / script-only lines (no markup) → `ts`
+ */
+const hasVueSfcBlock = /<(?:script|template|style)\b/i.test(code);
+const hasMarkup = /<[A-Za-z]/.test(code);
+
+let lang = requestedLang;
+let badgeLang = requestedLang;
+
+if (requestedLang === "vue" || requestedLang === "vue-html") {
+  if (requestedLang === "vue-html" || (!hasVueSfcBlock && hasMarkup)) {
+    lang = "vue";
+    badgeLang = "vue";
+  } else if (hasVueSfcBlock) {
+    lang = "vue";
+    badgeLang = "vue";
+  } else {
+    lang = "ts";
+    badgeLang = "ts";
+  }
+}
+
+const highlightedHtml = highlightCode(code, lang);
+---
+<div
+  data-codeblock
+  data-highlighter="tanstack"
+  class:list={[
+    "relative overflow-hidden rounded-xl border border-border/70 bg-[#0d1117]",
+    Astro.props.class,
+  ]}
+>
+  <div
+    class="flex items-center justify-between gap-3 border-b border-white/10 bg-[#0d1117]/88% px-3.5 py-2"
+  >
+    <div class="flex min-w-0 items-center gap-2">
+      {
+        Astro.props.title ? (
+          <span class="truncate text-xs font-semibold text-white/80">{Astro.props.title}</span>
+        ) : null
+      }
+      <span
+        class="rounded border border-white/15 px-1.5 py-0.5 text-2.6 font-semibold uppercase tracking-wider text-white/55"
+      >
+        {badgeLang}
+      </span>
+    </div>
+    <button
+      aria-label="Copy code"
+      class="shrink-0 cursor-pointer rounded-md border border-white/15 bg-white/5 px-2.5 py-1 text-xs font-semibold text-white/80 transition-colors hover:border-white/25 hover:bg-white/10 data-[copied]:border-[#3fb950]/55 data-[copied]:text-[#3fb950]"
+      data-copy-btn
+      data-copy-for={copyId}
+      type="button"
+    >
+      <span data-copy-idle>Copy</span>
+      <span data-copy-done hidden>Copied</span>
+    </button>
+  </div>
+  <div
+    class="overflow-x-auto [&_pre]:m-0! [&_pre]:bg-transparent! [&_pre]:px-4! [&_pre]:py-4! [&_pre]:text-3.25! [&_pre]:leading-relaxed! [&_code]:font-mono"
+    data-copy-source={copyId}
+    set:html={highlightedHtml}
+  />
+</div>
+
+<script>
+  function bindCopyButtons() {
+    document.querySelectorAll<HTMLButtonElement>("[data-copy-btn]").forEach((btn) => {
+      if (btn.dataset.bound === "1") return;
+      btn.dataset.bound = "1";
+      btn.addEventListener("click", async () => {
+        const id = btn.dataset.copyFor;
+        const source = id
+          ? document.querySelector<HTMLElement>(`[data-copy-source="${id}"]`)
+          : null;
+        const text = source?.innerText?.trim() ?? "";
+        if (!text) return;
+        try {
+          await navigator.clipboard.writeText(text);
+        } catch {
+          const ta = document.createElement("textarea");
+          ta.value = text;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          ta.remove();
+        }
+        const idle = btn.querySelector<HTMLElement>("[data-copy-idle]");
+        const done = btn.querySelector<HTMLElement>("[data-copy-done]");
+        if (idle) idle.hidden = true;
+        if (done) done.hidden = false;
+        btn.dataset.copied = "";
+        window.setTimeout(() => {
+          if (idle) idle.hidden = false;
+          if (done) done.hidden = true;
+          delete btn.dataset.copied;
+        }, 1600);
+      });
+    });
+  }
+
+  bindCopyButtons();
+  document.addEventListener("astro:page-load", bindCopyButtons);
+</script>
+
+<!-- set:html tokens need global selectors; scoped to [data-codeblock] / .th-* -->
+<style is:global>
+  [data-codeblock][data-highlighter="tanstack"] {
+    --th-background: #0d1117;
+    --th-token: #c9d1d9;
+    --th-attr: #79c0ff;
+    --th-code-inline: #ffa657;
+    --th-command: #d2a8ff;
+    --th-comment: #8b949e;
+    --th-deleted: #ff7b72;
+    --th-function: #d2a8ff;
+    --th-heading: #79c0ff;
+    --th-inserted: #7ee787;
+    --th-keyword: #ff7b72;
+    --th-link: #58a6ff;
+    --th-literal: #79c0ff;
+    --th-meta: #8b949e;
+    --th-number: #79c0ff;
+    --th-operator: #d2a8ff;
+    --th-property: #79c0ff;
+    --th-selector: #7ee787;
+    --th-string: #a5d6ff;
+    --th-tag: #7ee787;
+    --th-type: #ffa657;
+    --th-variable: #ffa657;
+  }
+
+  [data-codeblock][data-highlighter="tanstack"] .th-code {
+    overflow-x: auto;
+    padding: 1rem;
+    background: var(--th-background);
+    color: var(--th-token);
+  }
+
+  .th-token {
+    color: var(--th-token);
+  }
+  .th-attr {
+    color: var(--th-attr);
+  }
+  .th-code-inline {
+    color: var(--th-code-inline);
+  }
+  .th-command {
+    color: var(--th-command);
+  }
+  .th-comment {
+    color: var(--th-comment);
+  }
+  .th-deleted {
+    color: var(--th-deleted);
+  }
+  .th-function {
+    color: var(--th-function);
+  }
+  .th-heading {
+    color: var(--th-heading);
+  }
+  .th-inserted {
+    color: var(--th-inserted);
+  }
+  .th-keyword {
+    color: var(--th-keyword);
+  }
+  .th-link {
+    color: var(--th-link);
+  }
+  .th-literal {
+    color: var(--th-literal);
+  }
+  .th-meta {
+    color: var(--th-meta);
+  }
+  .th-number {
+    color: var(--th-number);
+  }
+  .th-operator {
+    color: var(--th-operator);
+  }
+  .th-property {
+    color: var(--th-property);
+  }
+  .th-selector {
+    color: var(--th-selector);
+  }
+  .th-string {
+    color: var(--th-string);
+  }
+  .th-tag {
+    color: var(--th-tag);
+  }
+  .th-type {
+    color: var(--th-type);
+  }
+  .th-variable {
+    color: var(--th-variable);
+  }
+  .th-line {
+    display: inline-block;
+    min-width: 100%;
+    width: max-content;
+  }
+  .th-code--line-numbers code {
+    counter-reset: th-line;
+  }
+  .th-code--line-numbers .th-line::before {
+    display: inline-block;
+    width: 2.5em;
+    padding-right: 1em;
+    color: var(--th-comment);
+    content: attr(data-line);
+    text-align: right;
+    user-select: none;
+  }
+</style>

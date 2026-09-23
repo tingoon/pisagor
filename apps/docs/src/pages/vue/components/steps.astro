@@ -1,0 +1,90 @@
+---
+import {
+  Controlled,
+  Default,
+  Description,
+  sources as examples,
+  Icon,
+  imports,
+  Loading,
+  Title,
+  Vertical,
+} from "@pisagor/vue/steps/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { stepsProps } from "../../../lib/props/steps";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "icon", text: "Icon" },
+  { depth: 3, slug: "vertical", text: "Vertical" },
+  { depth: 3, slug: "loading", text: "Loading" },
+  { depth: 3, slug: "description", text: "Description" },
+  { depth: 3, slug: "title", text: "Title" },
+  { depth: 3, slug: "controlled", text: "Controlled" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+---
+
+<DocsLayout
+  description="Guides users through a multi-step flow and shows which stage they are on."
+  framework="vue"
+  headings={headings}
+  title="Steps"
+>
+
+  <ComponentHeader framework="vue" id="steps" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="icon">Icon</h3>
+  <ComponentPreview code={examples.Icon} language="vue" title="Icon">
+    <Icon client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="vertical">Vertical</h3>
+  <ComponentPreview code={examples.Vertical} language="vue" title="Vertical">
+    <Vertical client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="loading">Loading</h3>
+  <ComponentPreview code={examples.Loading} language="vue" title="Loading">
+    <Loading client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="description">Description</h3>
+  <ComponentPreview code={examples.Description} language="vue" title="Description">
+    <Description client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="title">Title</h3>
+  <ComponentPreview code={examples.Title} language="vue" title="Title">
+    <Title client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <ComponentPreview code={examples.Controlled} language="vue" title="Controlled">
+    <Controlled client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="vue" title="Default">
+    <Default client:only="vue" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/vue" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/steps</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={stepsProps} />
+</DocsLayout>

@@ -1,0 +1,89 @@
+---
+import {
+  Compound,
+  Controlled,
+  Default,
+  Disabled,
+  sources as examples,
+  imports,
+  Multiple,
+  NonCollapsible,
+  WithCard,
+} from "@pisagor/react/accordion/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { accordionProps } from "../../../lib/props/accordion";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 3, slug: "multiple", text: "Multiple" },
+  { depth: 3, slug: "non-collapsible", text: "Non-collapsible" },
+  { depth: 3, slug: "disabled", text: "Disabled" },
+  { depth: 3, slug: "controlled", text: "Controlled" },
+  { depth: 3, slug: "compound", text: "Compound" },
+  { depth: 3, slug: "default", text: "With Card" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+---
+
+<DocsLayout
+  description="Expand and collapse sections of related content."
+  framework="react"
+  headings={headings}
+  title="Accordion"
+>
+
+  <ComponentHeader framework="react" id="accordion" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+    <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="tsx" title="Default">
+    <Default client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="multiple">Multiple</h3>
+  <ComponentPreview code={examples.Multiple} language="tsx" title="Multiple">
+    <Multiple client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="non-collapsible">Non-collapsible</h3>
+  <ComponentPreview code={examples.NonCollapsible} language="tsx" title="Non-collapsible">
+    <NonCollapsible client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <ComponentPreview code={examples.Disabled} language="tsx" title="Disabled">
+    <Disabled client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <ComponentPreview code={examples.Controlled} language="tsx" title="Controlled">
+    <Controlled client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="compound">Compound</h3>
+  <ComponentPreview code={examples.Compound} language="tsx" title="Compound">
+    <Compound client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-card">With Card</h3>
+  <ComponentPreview code={examples.WithCard} language="tsx" title="With Card">
+    <WithCard client:only="react" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/react" />
+
+    <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/accordion</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={accordionProps} />
+</DocsLayout>

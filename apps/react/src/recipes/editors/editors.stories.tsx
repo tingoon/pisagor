@@ -16,10 +16,11 @@ const meta = preview.meta({
   title: "Recipes/Editors",
 });
 
-export const IdeLayout = meta.story({
+export const Playground = meta.story({
   args: {
     className: "h-64",
   },
+  tags: ["autodocs"],
 });
 
 export const RichTextToolbar = meta.story({

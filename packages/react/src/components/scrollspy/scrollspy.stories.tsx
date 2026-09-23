@@ -26,7 +26,7 @@ export const Default = meta.story({
 
     return (
       <div className="flex w-full grow gap-5">
-        <div className="flex w-[150px] flex-col gap-2">
+        <div className="flex w-37.5 flex-col gap-2">
           <Scrollspy className="flex flex-col gap-2.5" offset={50} targetRef={parentRef}>
             {verticalSections.map((item) => (
               <Button
@@ -42,12 +42,12 @@ export const Default = meta.story({
         </div>
 
         <div className="grow" ref={parentRef}>
-          <ScrollArea className="-me-5 h-[500px] grow pe-5">
+          <ScrollArea className="-me-5 h-125 grow pe-5">
             <div className="space-y-8">
               {verticalSections.map((item) => (
                 <div className="space-y-2.5" id={item.id} key={item.id}>
                   <h3 className="text-base text-foreground">{item.label}</h3>
-                  <div className="h-[350px] rounded-2xl bg-muted" />
+                  <div className="h-87.5 rounded-2xl bg-muted" />
                 </div>
               ))}
             </div>
@@ -80,12 +80,12 @@ export const Horizontal = meta.story({
         </div>
 
         <div className="w-full" ref={parentRef}>
-          <ScrollArea className="h-[400px] grow">
+          <ScrollArea className="h-100 grow">
             <div className="space-y-8">
               {horizontalSections.map((item) => (
                 <div className="space-y-2.5" id={item.id} key={item.id}>
                   <h3 className="text-base text-foreground">{item.label}</h3>
-                  <div className="h-[350px] rounded-2xl bg-muted" />
+                  <div className="h-87.5 rounded-2xl bg-muted" />
                 </div>
               ))}
             </div>

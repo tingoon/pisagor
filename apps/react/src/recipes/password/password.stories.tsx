@@ -14,4 +14,7 @@ const meta = preview.meta({
   title: "Recipes/Forms/Password Input",
 });
 
-export const Strength = meta.story({});
+export const Playground = meta.story({
+  render: () => <PasswordStrength />,
+  tags: ["autodocs"],
+});

@@ -1,26 +1,25 @@
 import { ark } from "@ark-ui/react/factory";
-import { type AnnouncementVariantProps, announcementRecipe } from "@pisagor/recipes/announcement";
+import { announcementRecipe } from "@pisagor/recipes/announcement";
 import type { ComponentProps, ReactNode } from "react";
 import { AnnouncementContext, useAnnouncement } from "./announcement.context";
 
 // #region Types
 type AnnouncementTitleProps = ComponentProps<typeof ark.span>;
 
-type AnnouncementRootProps = Omit<ComponentProps<typeof ark.div>, "title"> &
-  AnnouncementVariantProps & {
-    /**
-     * The ARIA role of the announcement.
-     *
-     * @defaultValue "status"
-     */
-    role?: "status" | "alert";
-    /**
-     * Style recipe. Defaults to `announcementRecipe` from `@pisagor/recipes/announcement`.
-     *
-     * @defaultValue announcementRecipe
-     */
-    recipe?: typeof announcementRecipe;
-  };
+type AnnouncementRootProps = Omit<ComponentProps<typeof ark.div>, "title"> & {
+  /**
+   * The ARIA role of the announcement.
+   *
+   * @defaultValue "status"
+   */
+  role?: "status" | "alert";
+  /**
+   * Style recipe. Defaults to `announcementRecipe` from `@pisagor/recipes/announcement`.
+   *
+   * @defaultValue announcementRecipe
+   */
+  recipe?: typeof announcementRecipe;
+};
 
 export interface AnnouncementProps extends Omit<AnnouncementRootProps, "children"> {
   /** Optional badge or label rendered before the title. */
@@ -51,6 +50,7 @@ export function AnnouncementRoot({
         data-scope="announcement"
         role={role}
       >
+        {" "}
         {children}
       </ark.div>
     </AnnouncementContext>
@@ -75,8 +75,8 @@ export function AnnouncementTitle({ className, ...rest }: AnnouncementTitleProps
 export function AnnouncementShorthand({ badge, title, titleProps, ...rest }: AnnouncementProps) {
   return (
     <AnnouncementRoot {...rest}>
+      {" "}
       {badge}
-
       {title !== undefined && <AnnouncementTitle {...titleProps}>{title}</AnnouncementTitle>}
     </AnnouncementRoot>
   );

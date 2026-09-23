@@ -1,0 +1,132 @@
+---
+import {
+  BookedDates,
+  Controlled,
+  CustomCellSize,
+  Default,
+  Disabled,
+  sources as examples,
+  FixedWeeks,
+  Invalid,
+  imports,
+  MinMax,
+  MonthYearSelector,
+  MultipleMonths,
+  OnSurface,
+  Presets,
+  Range,
+  SelectToday,
+} from "@pisagor/vue/calendar/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { calendarProps } from "../../../lib/props/calendar";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "on-surface", text: "On Surface" },
+  { depth: 3, slug: "invalid", text: "Invalid" },
+  { depth: 3, slug: "disabled", text: "Disabled" },
+  { depth: 3, slug: "booked-dates", text: "Booked Dates" },
+  { depth: 3, slug: "custom-cell-size", text: "Custom Cell Size" },
+  { depth: 3, slug: "min-max", text: "Min Max" },
+  { depth: 3, slug: "range", text: "Range" },
+  { depth: 3, slug: "fixed-weeks", text: "Fixed Weeks" },
+  { depth: 3, slug: "month-year-selector", text: "Month Year Selector" },
+  { depth: 3, slug: "multiple-months", text: "Multiple Months" },
+  { depth: 3, slug: "presets", text: "Presets" },
+  { depth: 3, slug: "select-today", text: "Select Today" },
+  { depth: 3, slug: "controlled", text: "Controlled" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+---
+
+<DocsLayout
+  description="Lets users browse dates and pick a day, month, or range on a familiar calendar grid."
+  framework="vue"
+  headings={headings}
+  title="Calendar"
+>
+
+  <ComponentHeader framework="vue" id="calendar" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="on-surface">On Surface</h3>
+  <ComponentPreview code={examples.OnSurface} language="vue" title="On Surface">
+    <OnSurface client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">Invalid</h3>
+  <ComponentPreview code={examples.Invalid} language="vue" title="Invalid">
+    <Invalid client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <ComponentPreview code={examples.Disabled} language="vue" title="Disabled">
+    <Disabled client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="booked-dates">Booked Dates</h3>
+  <ComponentPreview code={examples.BookedDates} language="vue" title="Booked Dates">
+    <BookedDates client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-cell-size">Custom Cell Size</h3>
+  <ComponentPreview code={examples.CustomCellSize} language="vue" title="Custom Cell Size">
+    <CustomCellSize client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="min-max">Min Max</h3>
+  <ComponentPreview code={examples.MinMax} language="vue" title="Min Max">
+    <MinMax client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="range">Range</h3>
+  <ComponentPreview code={examples.Range} language="vue" title="Range">
+    <Range client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="fixed-weeks">Fixed Weeks</h3>
+  <ComponentPreview code={examples.FixedWeeks} language="vue" title="Fixed Weeks">
+    <FixedWeeks client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="month-year-selector">Month Year Selector</h3>
+  <ComponentPreview code={examples.MonthYearSelector} language="vue" title="Month Year Selector">
+    <MonthYearSelector client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="multiple-months">Multiple Months</h3>
+  <ComponentPreview code={examples.MultipleMonths} language="vue" title="Multiple Months">
+    <MultipleMonths client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="presets">Presets</h3>
+  <ComponentPreview code={examples.Presets} language="vue" title="Presets">
+    <Presets client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="select-today">Select Today</h3>
+  <ComponentPreview code={examples.SelectToday} language="vue" title="Select Today">
+    <SelectToday client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <ComponentPreview code={examples.Controlled} language="vue" title="Controlled">
+    <Controlled client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="vue" title="Default">
+    <Default client:only="vue" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/vue" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/calendar</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={calendarProps} />
+</DocsLayout>

@@ -1,0 +1,138 @@
+---
+import {
+  AlignBlockEnd,
+  AlignBlockStart,
+  AlignInlineEnd,
+  AlignInlineStart,
+  Default,
+  Disabled,
+  sources as examples,
+  Invalid,
+  imports,
+  OnSurface,
+  Sizes,
+  Variants,
+  WithBadge,
+  WithKeyboardShortcut,
+  WithSpinner,
+  WithText,
+  WithTextarea,
+} from "@pisagor/vue/input-group/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { inputGroupProps } from "../../../lib/props/input-group";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "sizes", text: "Sizes" },
+  { depth: 3, slug: "variants", text: "Variants" },
+  { depth: 3, slug: "on-surface", text: "On Surface" },
+  { depth: 3, slug: "with-text", text: "With Text" },
+  { depth: 3, slug: "with-textarea", text: "With Textarea" },
+  { depth: 3, slug: "disabled", text: "Disabled" },
+  { depth: 3, slug: "invalid", text: "Invalid" },
+  { depth: 3, slug: "align-block-end", text: "Align Block End" },
+  { depth: 3, slug: "align-block-start", text: "Align Block Start" },
+  { depth: 3, slug: "align-inline-end", text: "Align Inline End" },
+  { depth: 3, slug: "align-inline-start", text: "Align Inline Start" },
+  { depth: 3, slug: "with-badge", text: "With Badge" },
+  { depth: 3, slug: "with-keyboard-shortcut", text: "With Keyboard Shortcut" },
+  { depth: 3, slug: "with-spinner", text: "With Spinner" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+---
+
+<DocsLayout
+  description="Combines inputs with icons, buttons, or labels in one control so related actions stay together."
+  framework="vue"
+  headings={headings}
+  title="Input Group"
+>
+
+  <ComponentHeader framework="vue" id="input-group" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sizes">Sizes</h3>
+  <ComponentPreview code={examples.Sizes} language="vue" title="Sizes">
+    <Sizes client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <ComponentPreview code={examples.Variants} language="vue" title="Variants">
+    <Variants client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="on-surface">On Surface</h3>
+  <ComponentPreview code={examples.OnSurface} language="vue" title="On Surface">
+    <OnSurface client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-text">With Text</h3>
+  <ComponentPreview code={examples.WithText} language="vue" title="With Text">
+    <WithText client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-textarea">With Textarea</h3>
+  <ComponentPreview code={examples.WithTextarea} language="vue" title="With Textarea">
+    <WithTextarea client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <ComponentPreview code={examples.Disabled} language="vue" title="Disabled">
+    <Disabled client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">Invalid</h3>
+  <ComponentPreview code={examples.Invalid} language="vue" title="Invalid">
+    <Invalid client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="align-block-end">Align Block End</h3>
+  <ComponentPreview code={examples.AlignBlockEnd} language="vue" title="Align Block End">
+    <AlignBlockEnd client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="align-block-start">Align Block Start</h3>
+  <ComponentPreview code={examples.AlignBlockStart} language="vue" title="Align Block Start">
+    <AlignBlockStart client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="align-inline-end">Align Inline End</h3>
+  <ComponentPreview code={examples.AlignInlineEnd} language="vue" title="Align Inline End">
+    <AlignInlineEnd client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="align-inline-start">Align Inline Start</h3>
+  <ComponentPreview code={examples.AlignInlineStart} language="vue" title="Align Inline Start">
+    <AlignInlineStart client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-badge">With Badge</h3>
+  <ComponentPreview code={examples.WithBadge} language="vue" title="With Badge">
+    <WithBadge client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-keyboard-shortcut">With Keyboard Shortcut</h3>
+  <ComponentPreview code={examples.WithKeyboardShortcut} language="vue" title="With Keyboard Shortcut">
+    <WithKeyboardShortcut client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-spinner">With Spinner</h3>
+  <ComponentPreview code={examples.WithSpinner} language="vue" title="With Spinner">
+    <WithSpinner client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="vue" title="Default">
+    <Default client:only="vue" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/vue" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/input-group</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={inputGroupProps} />
+</DocsLayout>

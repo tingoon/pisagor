@@ -42,6 +42,7 @@ export const Dialog = Object.assign(DialogRoot, {
   Footer: DialogFooter,
   Header: DialogHeader,
   Positioner: DialogPositioner,
+  Root: DialogRoot,
   Title: DialogTitle,
   Trigger: DialogTrigger,
 });

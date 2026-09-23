@@ -1,0 +1,156 @@
+---
+import {
+  BlurBehavior,
+  Controlled,
+  ControlledInputValue,
+  CustomDelimiter,
+  Default,
+  Disabled,
+  DisableEditing,
+  sources as examples,
+  Invalid,
+  imports,
+  MaxLength,
+  MaxTags,
+  MaxWithOverflow,
+  OnSurface,
+  PasteBehavior,
+  SanitizeValue,
+  Sizes,
+  Validation,
+  Variants,
+  WithCombobox,
+} from "@pisagor/vue/tags-input/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { tagsInputProps } from "../../../lib/props/tags-input";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "sizes", text: "Sizes" },
+  { depth: 3, slug: "variants", text: "Variants" },
+  { depth: 3, slug: "on-surface", text: "On Surface" },
+  { depth: 3, slug: "blur-behavior", text: "Blur Behavior" },
+  { depth: 3, slug: "custom-delimiter", text: "Custom Delimiter" },
+  { depth: 3, slug: "disable-editing", text: "Disable Editing" },
+  { depth: 3, slug: "max-tags", text: "Max Tags" },
+  { depth: 3, slug: "paste-behavior", text: "Paste Behavior" },
+  { depth: 3, slug: "sanitize-value", text: "Sanitize Value" },
+  { depth: 3, slug: "validation", text: "Validation" },
+  { depth: 3, slug: "disabled", text: "Disabled" },
+  { depth: 3, slug: "invalid", text: "Invalid" },
+  { depth: 3, slug: "with-combobox", text: "With Combobox" },
+  { depth: 3, slug: "max-length", text: "Max Length" },
+  { depth: 3, slug: "max-with-overflow", text: "Max With Overflow" },
+  { depth: 3, slug: "controlled-input-value", text: "Controlled Input Value" },
+  { depth: 3, slug: "controlled", text: "Controlled" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+---
+
+<DocsLayout
+  description="Lets users enter multiple values as tags."
+  framework="vue"
+  headings={headings}
+  title="Tags Input"
+>
+
+  <ComponentHeader framework="vue" id="tags-input" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sizes">Sizes</h3>
+  <ComponentPreview code={examples.Sizes} language="vue" title="Sizes">
+    <Sizes client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <ComponentPreview code={examples.Variants} language="vue" title="Variants">
+    <Variants client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="on-surface">On Surface</h3>
+  <ComponentPreview code={examples.OnSurface} language="vue" title="On Surface">
+    <OnSurface client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="blur-behavior">Blur Behavior</h3>
+  <ComponentPreview code={examples.BlurBehavior} language="vue" title="Blur Behavior">
+    <BlurBehavior client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-delimiter">Custom Delimiter</h3>
+  <ComponentPreview code={examples.CustomDelimiter} language="vue" title="Custom Delimiter">
+    <CustomDelimiter client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disable-editing">Disable Editing</h3>
+  <ComponentPreview code={examples.DisableEditing} language="vue" title="Disable Editing">
+    <DisableEditing client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="max-tags">Max Tags</h3>
+  <ComponentPreview code={examples.MaxTags} language="vue" title="Max Tags">
+    <MaxTags client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="paste-behavior">Paste Behavior</h3>
+  <ComponentPreview code={examples.PasteBehavior} language="vue" title="Paste Behavior">
+    <PasteBehavior client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sanitize-value">Sanitize Value</h3>
+  <ComponentPreview code={examples.SanitizeValue} language="vue" title="Sanitize Value">
+    <SanitizeValue client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="validation">Validation</h3>
+  <ComponentPreview code={examples.Validation} language="vue" title="Validation">
+    <Validation client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <ComponentPreview code={examples.Disabled} language="vue" title="Disabled">
+    <Disabled client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">Invalid</h3>
+  <ComponentPreview code={examples.Invalid} language="vue" title="Invalid">
+    <Invalid client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-combobox">With Combobox</h3>
+  <ComponentPreview code={examples.WithCombobox} language="vue" title="With Combobox">
+    <WithCombobox client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="max-length">Max Length</h3>
+  <ComponentPreview code={examples.MaxLength} language="vue" title="Max Length">
+    <MaxLength client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="max-with-overflow">Max With Overflow</h3>
+  <ComponentPreview code={examples.MaxWithOverflow} language="vue" title="Max With Overflow">
+    <MaxWithOverflow client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled-input-value">Controlled Input Value</h3>
+  <ComponentPreview code={examples.ControlledInputValue} language="vue" title="Controlled Input Value">
+    <ControlledInputValue client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <ComponentPreview code={examples.Controlled} language="vue" title="Controlled">
+    <Controlled client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="vue" title="Default">
+    <Default client:only="vue" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/vue" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/tags-input</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={tagsInputProps} />
+</DocsLayout>

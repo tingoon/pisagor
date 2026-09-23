@@ -1,0 +1,5 @@
+<svg fill="none" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" >
+  <title>Pisagor</title>
+  <rect fill="#171717" height="32" rx="8" width="32" />
+  <text fill="#fafafa" font-family="ui-sans-serif,system-ui,sans-serif" font-size="16" font-weight="700" text-anchor="middle" x="16" y="22" >π</text>
+</svg>

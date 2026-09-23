@@ -17,11 +17,12 @@ const meta = preview.meta({
   title: "Recipes/Overlay",
 });
 
-export const MenuDialogStory = meta.story({
+export const Playground = meta.story({
   render: () => ({
     components: { MenuDialog },
     template: `<MenuDialog />`,
   }),
+  tags: ["autodocs"],
 });
 
 export const PopoverDialogStory = meta.story({

@@ -16,7 +16,7 @@ export interface OtpFieldProps
   name?: string;
   value?: string;
   onBlur?: () => void;
-  onValueChange: (value: string) => void;
+  onValueChange?: (value: string) => void;
 }
 // #endregion
 
@@ -67,7 +67,7 @@ export function OtpField({
         invalid={invalid}
         name={name}
         onBlur={onBlur}
-        onValueChange={(nextValue) => onValueChange(nextValue.join(""))}
+        onValueChange={(nextValue) => onValueChange?.(nextValue.join(""))}
       >
         {slots}
       </InputOTP>

@@ -21,6 +21,7 @@ import {
   CalendarView,
   CalendarViewControl,
   CalendarViewDate,
+  CalendarWeekDays,
   CalendarYearSelect,
   parseDate,
 } from "./calendar";
@@ -49,6 +50,7 @@ export {
   CalendarView,
   CalendarViewControl,
   CalendarViewDate,
+  CalendarWeekDays,
   CalendarYearSelect,
   parseDate,
 };
@@ -75,5 +77,6 @@ export const Calendar = Object.assign(CalendarRoot, {
   View: CalendarView,
   ViewControl: CalendarViewControl,
   ViewDate: CalendarViewDate,
+  WeekDays: CalendarWeekDays,
   YearSelect: CalendarYearSelect,
 });

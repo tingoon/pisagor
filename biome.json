@@ -7,6 +7,11 @@
       }
     }
   },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
   "files": {
     "ignoreUnknown": true,
     "includes": ["**", "!**/*.gen.*", "!bun.lock"]
@@ -15,7 +20,13 @@
     "indentStyle": "space",
     "lineWidth": 100
   },
+  "html": {
+    "experimentalFullSupportEnabled": true
+  },
   "linter": {
+    "domains": {
+      "astro": "recommended"
+    },
     "rules": {
       "suspicious": {
         "noImportCycles": "error"
@@ -29,6 +40,21 @@
         "rules": {
           "suspicious": {
             "noExplicitAny": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["**/*.{astro,vue}"],
+      "linter": {
+        "rules": {
+          "a11y": {
+            "noLabelWithoutControl": "off",
+            "noRedundantRoles": "off",
+            "useAnchorContent": "off",
+            "useHeadingContent": "off",
+            "useSemanticElements": "off",
+            "useValidAnchor": "off"
           }
         }
       }

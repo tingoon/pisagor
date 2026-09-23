@@ -1,0 +1,78 @@
+---
+import {
+  Default,
+  sources as examples,
+  imports,
+  KbdGroupStory,
+  Variants,
+  WithButton,
+  WithTooltip,
+} from "@pisagor/vue/kbd/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { kbdProps } from "../../../lib/props/kbd";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "variants", text: "Variants" },
+  { depth: 3, slug: "with-button", text: "With Button" },
+  { depth: 3, slug: "kbd-group-story", text: "Kbd Group Story" },
+  { depth: 3, slug: "with-tooltip", text: "With Tooltip" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+---
+
+<DocsLayout
+  description="Displays keyboard shortcuts in a monospace badge so users know which keys to press."
+  framework="vue"
+  headings={headings}
+  title="Kbd"
+>
+
+  <ComponentHeader framework="vue" id="kbd" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <ComponentPreview code={examples.Variants} language="vue" title="Variants">
+    <Variants client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-button">With Button</h3>
+  <ComponentPreview code={examples.WithButton} language="vue" title="With Button">
+    <WithButton client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="kbd-group-story">Kbd Group Story</h3>
+  <ComponentPreview code={examples.KbdGroupStory} language="vue" title="Kbd Group Story">
+    <KbdGroupStory client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-tooltip">With Tooltip</h3>
+  <ComponentPreview code={examples.WithTooltip} language="vue" title="With Tooltip">
+    <WithTooltip client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="vue" title="Default">
+    <Default client:only="vue" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/vue" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/kbd</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={kbdProps} />
+</DocsLayout>

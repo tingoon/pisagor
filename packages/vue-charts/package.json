@@ -13,6 +13,8 @@
   },
   "exports": {
     ".": "./src/index.ts",
+    "./examples": "./src/examples/index.ts",
+    "./examples/*": "./src/examples/*",
     "./styles": "./src/styles.css"
   },
   "files": [

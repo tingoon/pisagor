@@ -1,0 +1,59 @@
+---
+import { LoginCard } from "@recipes-vue/card/login-card";
+import LoginCardSource from "@recipes-vue/card/login-card.ts?raw";
+import { LoginCardCustomSpacing } from "@recipes-vue/card/login-card-custom-spacing";
+import LoginCardCustomSpacingSource from "@recipes-vue/card/login-card-custom-spacing.ts?raw";
+import { ProductCard } from "@recipes-vue/card/product-card";
+import ProductCardSource from "@recipes-vue/card/product-card.ts?raw";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+
+const headings = [
+  {
+    depth: 2,
+    slug: "overview",
+    text: "Overview",
+  },
+  {
+    depth: 2,
+    slug: "login-card",
+    text: "Login Card",
+  },
+  {
+    depth: 2,
+    slug: "login-card-custom-spacing",
+    text: "Login Card Custom Spacing",
+  },
+  {
+    depth: 2,
+    slug: "product-card",
+    text: "Product Card",
+  },
+];
+
+---
+
+<DocsLayout
+  description="Card compositions for login flows, custom spacing, and product display."
+  framework="vue"
+  headings={headings}
+  title="Card"
+>
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">Overview</h2>
+  <p class="mb-8 text-muted-foreground">Card compositions for login flows, custom spacing, and product display.</p>
+
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="login-card">Login Card</h2>
+  <ComponentPreview code={LoginCardSource} language="ts" title="Login Card">
+    <LoginCard client:only="vue" />
+  </ComponentPreview>
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="login-card-custom-spacing">Login Card Custom Spacing</h2>
+  <ComponentPreview code={LoginCardCustomSpacingSource} language="ts" title="Login Card Custom Spacing">
+    <LoginCardCustomSpacing client:only="vue" />
+  </ComponentPreview>
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="product-card">Product Card</h2>
+  <ComponentPreview code={ProductCardSource} language="ts" title="Product Card">
+    <ProductCard client:only="vue" />
+  </ComponentPreview>
+
+</DocsLayout>

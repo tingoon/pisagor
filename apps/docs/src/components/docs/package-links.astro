@@ -1,0 +1,70 @@
+---
+import { ArrowSquareOut, GithubLogo } from "@phosphor-icons/react";
+import type { Framework } from "../../lib/nav";
+import { packages } from "../../lib/packages";
+import { NpmBrandIcon, StorybookBrandIcon } from "./brand-icons";
+
+interface Props {
+  framework: Framework;
+  /** Top rule under meta inside ComponentHeader. */
+  embedded?: boolean;
+  /** Inside ComponentHeader card — skip page bottom margin. */
+  inset?: boolean;
+  class?: string;
+}
+
+const pkg = packages[Astro.props.framework];
+const links = [
+  { href: pkg.github, label: "GitHub", icon: "github" as const },
+  { href: pkg.storybook, label: "Storybook", icon: "storybook" as const },
+  { href: pkg.npm, label: "npm", icon: "npm" as const },
+];
+---
+
+<div
+  class:list={[
+    "flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between",
+    Astro.props.embedded && "mt-3 border-t border-border/50 pt-3",
+    !Astro.props.inset && "mb-8",
+    Astro.props.class,
+  ]}
+>
+  <div
+    aria-label="Package links"
+    class="inline-flex w-fit overflow-hidden rounded-md border border-border/60 bg-background/40"
+    role="group"
+  >
+    {
+      links.map((link, index) => (
+        <a
+          class:list={[
+            "docs-press inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-muted-foreground hover:bg-muted/60 hover:text-foreground",
+            index > 0 && "border-s border-border/60",
+          ]}
+          href={link.href}
+          rel="noreferrer"
+          target="_blank"
+        >
+          {link.icon === "github" ? (
+            <GithubLogo aria-hidden size={13} weight="fill" />
+          ) : link.icon === "storybook" ? (
+            <StorybookBrandIcon size={13} />
+          ) : (
+            <NpmBrandIcon size={13} />
+          )}
+          {link.label}
+          <ArrowSquareOut aria-hidden className="opacity-40" size={11} weight="bold" />
+        </a>
+      ))
+    }
+  </div>
+
+  <a
+    class="w-fit font-mono text-3.25 text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
+    href={pkg.npm}
+    rel="noreferrer"
+    target="_blank"
+  >
+    {pkg.name}
+  </a>
+</div>

@@ -1,0 +1,176 @@
+---
+import {
+  ActiveFilterChips,
+  ColumnFilters,
+  ColumnLayout,
+  ColumnPinning,
+  ColumnResize,
+  ColumnVisibility,
+  ExpandingRows,
+  sources as examples,
+  FilterHead,
+  GlobalSelection,
+  GroupedRows,
+  imports,
+  LoadingState,
+  ManualPagination,
+  MultiGrouping,
+  OrdersWithFooter,
+  Paginated,
+  RichCells,
+  RowDetails,
+  RowSelection,
+  Sorting,
+  StripedVariant,
+  Virtualized,
+  WithSortableData,
+} from "@pisagor/vue/data-grid/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { dataGridProps } from "../../../lib/props/data-grid";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "active-filter-chips", text: "Active Filter Chips" },
+  { depth: 3, slug: "column-filters", text: "Column Filters" },
+  { depth: 3, slug: "column-layout", text: "Column Layout" },
+  { depth: 3, slug: "column-pinning", text: "Column Pinning" },
+  { depth: 3, slug: "column-resize", text: "Column Resize" },
+  { depth: 3, slug: "column-visibility", text: "Column Visibility" },
+  { depth: 3, slug: "expanding-rows", text: "Expanding Rows" },
+  { depth: 3, slug: "filter-head", text: "Filter Head" },
+  { depth: 3, slug: "global-selection", text: "Global Selection" },
+  { depth: 3, slug: "grouped-rows", text: "Grouped Rows" },
+  { depth: 3, slug: "loading-state", text: "Loading State" },
+  { depth: 3, slug: "manual-pagination", text: "Manual Pagination" },
+  { depth: 3, slug: "multi-grouping", text: "Multi Grouping" },
+  { depth: 3, slug: "orders-with-footer", text: "Orders With Footer" },
+  { depth: 3, slug: "paginated", text: "Paginated" },
+  { depth: 3, slug: "rich-cells", text: "Rich Cells" },
+  { depth: 3, slug: "row-details", text: "Row Details" },
+  { depth: 3, slug: "row-selection", text: "Row Selection" },
+  { depth: 3, slug: "sorting", text: "Sorting" },
+  { depth: 3, slug: "striped-variant", text: "Striped Variant" },
+  { depth: 3, slug: "virtualized", text: "Virtualized" },
+  { depth: 3, slug: "with-sortable-data", text: "With Sortable Data" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+---
+
+<DocsLayout
+  description="Display and edit tabular data with sorting, filtering, and virtualization."
+  framework="vue"
+  headings={headings}
+  title="Data Grid"
+>
+
+  <ComponentHeader framework="vue" id="data-grid" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
+
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="active-filter-chips">Active Filter Chips</h3>
+  <ComponentPreview class="mb-8" code={examples.ActiveFilterChips} title="Active Filter Chips">
+    <ActiveFilterChips client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="column-filters">Column Filters</h3>
+  <ComponentPreview class="mb-8" code={examples.ColumnFilters} title="Column Filters">
+    <ColumnFilters client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="column-layout">Column Layout</h3>
+  <ComponentPreview class="mb-8" code={examples.ColumnLayout} title="Column Layout">
+    <ColumnLayout client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="column-pinning">Column Pinning</h3>
+  <ComponentPreview class="mb-8" code={examples.ColumnPinning} title="Column Pinning">
+    <ColumnPinning client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="column-resize">Column Resize</h3>
+  <ComponentPreview class="mb-8" code={examples.ColumnResize} title="Column Resize">
+    <ColumnResize client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="column-visibility">Column Visibility</h3>
+  <ComponentPreview class="mb-8" code={examples.ColumnVisibility} title="Column Visibility">
+    <ColumnVisibility client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="expanding-rows">Expanding Rows</h3>
+  <ComponentPreview class="mb-8" code={examples.ExpandingRows} title="Expanding Rows">
+    <ExpandingRows client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="filter-head">Filter Head</h3>
+  <ComponentPreview class="mb-8" code={examples.FilterHead} title="Filter Head">
+    <FilterHead client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="global-selection">Global Selection</h3>
+  <ComponentPreview class="mb-8" code={examples.GlobalSelection} title="Global Selection">
+    <GlobalSelection client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="grouped-rows">Grouped Rows</h3>
+  <ComponentPreview class="mb-8" code={examples.GroupedRows} title="Grouped Rows">
+    <GroupedRows client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="loading-state">Loading State</h3>
+  <ComponentPreview class="mb-8" code={examples.LoadingState} title="Loading State">
+    <LoadingState client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="manual-pagination">Manual Pagination</h3>
+  <ComponentPreview class="mb-8" code={examples.ManualPagination} title="Manual Pagination">
+    <ManualPagination client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="multi-grouping">Multi Grouping</h3>
+  <ComponentPreview class="mb-8" code={examples.MultiGrouping} title="Multi Grouping">
+    <MultiGrouping client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="orders-with-footer">Orders With Footer</h3>
+  <ComponentPreview class="mb-8" code={examples.OrdersWithFooter} title="Orders With Footer">
+    <OrdersWithFooter client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="paginated">Paginated</h3>
+  <ComponentPreview class="mb-8" code={examples.Paginated} title="Paginated">
+    <Paginated client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="rich-cells">Rich Cells</h3>
+  <ComponentPreview class="mb-8" code={examples.RichCells} title="Rich Cells">
+    <RichCells client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="row-details">Row Details</h3>
+  <ComponentPreview class="mb-8" code={examples.RowDetails} title="Row Details">
+    <RowDetails client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="row-selection">Row Selection</h3>
+  <ComponentPreview class="mb-8" code={examples.RowSelection} title="Row Selection">
+    <RowSelection client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="sorting">Sorting</h3>
+  <ComponentPreview class="mb-8" code={examples.Sorting} title="Sorting">
+    <Sorting client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="striped-variant">Striped Variant</h3>
+  <ComponentPreview class="mb-8" code={examples.StripedVariant} title="Striped Variant">
+    <StripedVariant client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="virtualized">Virtualized</h3>
+  <ComponentPreview class="mb-8" code={examples.Virtualized} title="Virtualized">
+    <Virtualized client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="with-sortable-data">With Sortable Data</h3>
+  <ComponentPreview class="mb-8" code={examples.WithSortableData} title="With Sortable Data">
+    <WithSortableData client:only="vue" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/vue" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/data-grid</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={dataGridProps} />
+</DocsLayout>

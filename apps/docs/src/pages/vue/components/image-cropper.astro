@@ -1,0 +1,96 @@
+---
+import {
+  AspectRatio,
+  CircleCrop,
+  ControlledZoom,
+  Default,
+  sources as examples,
+  FixedCropArea,
+  InitialCrop,
+  imports,
+  MinMaxSize,
+  ZoomLimits,
+} from "@pisagor/vue/image-cropper/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { imageCropperProps } from "../../../lib/props/image-cropper";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "aspect-ratio", text: "Aspect Ratio" },
+  { depth: 3, slug: "circle-crop", text: "Circle Crop" },
+  { depth: 3, slug: "fixed-crop-area", text: "Fixed Crop Area" },
+  { depth: 3, slug: "initial-crop", text: "Initial Crop" },
+  { depth: 3, slug: "min-max-size", text: "Min Max Size" },
+  { depth: 3, slug: "zoom-limits", text: "Zoom Limits" },
+  { depth: 3, slug: "controlled-zoom", text: "Controlled Zoom" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+---
+
+<DocsLayout
+  description="Lets users crop and adjust an image selection before saving or uploading it."
+  framework="vue"
+  headings={headings}
+  title="Image Cropper"
+>
+
+  <ComponentHeader framework="vue" id="image-cropper" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="aspect-ratio">Aspect Ratio</h3>
+  <ComponentPreview code={examples.AspectRatio} language="vue" title="Aspect Ratio">
+    <AspectRatio client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="circle-crop">Circle Crop</h3>
+  <ComponentPreview code={examples.CircleCrop} language="vue" title="Circle Crop">
+    <CircleCrop client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="fixed-crop-area">Fixed Crop Area</h3>
+  <ComponentPreview code={examples.FixedCropArea} language="vue" title="Fixed Crop Area">
+    <FixedCropArea client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="initial-crop">Initial Crop</h3>
+  <ComponentPreview code={examples.InitialCrop} language="vue" title="Initial Crop">
+    <InitialCrop client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="min-max-size">Min Max Size</h3>
+  <ComponentPreview code={examples.MinMaxSize} language="vue" title="Min Max Size">
+    <MinMaxSize client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="zoom-limits">Zoom Limits</h3>
+  <ComponentPreview code={examples.ZoomLimits} language="vue" title="Zoom Limits">
+    <ZoomLimits client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled-zoom">Controlled Zoom</h3>
+  <ComponentPreview code={examples.ControlledZoom} language="vue" title="Controlled Zoom">
+    <ControlledZoom client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="vue" title="Default">
+    <Default client:only="vue" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/vue" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/image-cropper</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={imageCropperProps} />
+</DocsLayout>

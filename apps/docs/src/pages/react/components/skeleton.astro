@@ -1,0 +1,66 @@
+---
+import {
+  Default,
+  sources as examples,
+  InCard,
+  imports,
+  SkeletonText,
+} from "@pisagor/react/skeleton/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { skeletonProps } from "../../../lib/props/skeleton";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 3, slug: "skeleton-text", text: "Skeleton Text" },
+  { depth: 3, slug: "in-card", text: "In Card" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+---
+
+<DocsLayout
+  description="Placeholder shapes that pulse while content loads so layouts feel stable instead of empty."
+  framework="react"
+  headings={headings}
+  title="Skeleton"
+>
+
+  <ComponentHeader framework="react" id="skeleton" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="tsx" title="Default">
+    <Default client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="skeleton-text">Skeleton Text</h3>
+  <ComponentPreview code={examples.SkeletonText} language="tsx" title="Skeleton Text">
+    <SkeletonText client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="in-card">In Card</h3>
+  <ComponentPreview code={examples.InCard} language="tsx" title="In Card">
+    <InCard client:only="react" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/react" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/skeleton</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={skeletonProps} />
+</DocsLayout>

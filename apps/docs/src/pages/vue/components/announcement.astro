@@ -1,0 +1,84 @@
+---
+import {
+  Compound,
+  Default,
+  sources as examples,
+  imports,
+  Variants,
+  WithIcon,
+  WithLink,
+  WithoutBadge,
+} from "@pisagor/vue/announcement/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { announcementProps } from "../../../lib/props/announcement";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "variants", text: "Variants" },
+  { depth: 3, slug: "with-icon", text: "With Icon" },
+  { depth: 3, slug: "with-link", text: "With Link" },
+  { depth: 3, slug: "without-badge", text: "Without Badge" },
+  { depth: 3, slug: "compound", text: "Compound" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+---
+
+<DocsLayout
+  description="Draws attention to a short product or marketing message without blocking the rest of the interface."
+  framework="vue"
+  headings={headings}
+  title="Announcement"
+>
+
+  <ComponentHeader framework="vue" id="announcement" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <ComponentPreview code={examples.Variants} language="vue" title="Variants">
+    <Variants client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-icon">With Icon</h3>
+  <ComponentPreview code={examples.WithIcon} language="vue" title="With Icon">
+    <WithIcon client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-link">With Link</h3>
+  <ComponentPreview code={examples.WithLink} language="vue" title="With Link">
+    <WithLink client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="without-badge">Without Badge</h3>
+  <ComponentPreview code={examples.WithoutBadge} language="vue" title="Without Badge">
+    <WithoutBadge client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="compound">Compound</h3>
+  <ComponentPreview code={examples.Compound} language="vue" title="Compound">
+    <Compound client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="vue" title="Default">
+    <Default client:only="vue" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/vue" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/announcement</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={announcementProps} />
+</DocsLayout>

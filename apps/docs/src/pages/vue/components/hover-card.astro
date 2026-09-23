@@ -1,0 +1,78 @@
+---
+import {
+  Controlled,
+  Default,
+  Disabled,
+  sources as examples,
+  imports,
+  Placements,
+  TriggersDelays,
+} from "@pisagor/vue/hover-card/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { hoverCardProps } from "../../../lib/props/hover-card";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "disabled", text: "Disabled" },
+  { depth: 3, slug: "triggers-delays", text: "Triggers Delays" },
+  { depth: 3, slug: "controlled", text: "Controlled" },
+  { depth: 3, slug: "placements", text: "Placements" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+---
+
+<DocsLayout
+  description="Reveals richer preview content when the user pauses over a trigger, without opening a full overlay."
+  framework="vue"
+  headings={headings}
+  title="Hover Card"
+>
+
+  <ComponentHeader framework="vue" id="hover-card" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <ComponentPreview code={examples.Disabled} language="vue" title="Disabled">
+    <Disabled client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="triggers-delays">Triggers Delays</h3>
+  <ComponentPreview code={examples.TriggersDelays} language="vue" title="Triggers Delays">
+    <TriggersDelays client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <ComponentPreview code={examples.Controlled} language="vue" title="Controlled">
+    <Controlled client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="placements">Placements</h3>
+  <ComponentPreview code={examples.Placements} language="vue" title="Placements">
+    <Placements client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="vue" title="Default">
+    <Default client:only="vue" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/vue" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/hover-card</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={hoverCardProps} />
+</DocsLayout>

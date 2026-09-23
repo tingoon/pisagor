@@ -1,0 +1,84 @@
+---
+import {
+  Collapsed,
+  Compound,
+  CustomSeparator,
+  Default,
+  sources as examples,
+  imports,
+  WithLink,
+  WithMenu,
+} from "@pisagor/vue/breadcrumb/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { breadcrumbProps } from "../../../lib/props/breadcrumb";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "collapsed", text: "Collapsed" },
+  { depth: 3, slug: "custom-separator", text: "Custom Separator" },
+  { depth: 3, slug: "with-link", text: "With Link" },
+  { depth: 3, slug: "with-menu", text: "With Menu" },
+  { depth: 3, slug: "compound", text: "Compound" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+---
+
+<DocsLayout
+  description="Shows where the user is within a hierarchy and lets them jump back to earlier levels."
+  framework="vue"
+  headings={headings}
+  title="Breadcrumb"
+>
+
+  <ComponentHeader framework="vue" id="breadcrumb" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="collapsed">Collapsed</h3>
+  <ComponentPreview code={examples.Collapsed} language="vue" title="Collapsed">
+    <Collapsed client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-separator">Custom Separator</h3>
+  <ComponentPreview code={examples.CustomSeparator} language="vue" title="Custom Separator">
+    <CustomSeparator client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-link">With Link</h3>
+  <ComponentPreview code={examples.WithLink} language="vue" title="With Link">
+    <WithLink client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-menu">With Menu</h3>
+  <ComponentPreview code={examples.WithMenu} language="vue" title="With Menu">
+    <WithMenu client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="compound">Compound</h3>
+  <ComponentPreview code={examples.Compound} language="vue" title="Compound">
+    <Compound client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="vue" title="Default">
+    <Default client:only="vue" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/vue" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/breadcrumb</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={breadcrumbProps} />
+</DocsLayout>

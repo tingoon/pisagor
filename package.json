@@ -8,7 +8,7 @@
     "@types/react-dom": "^19.2.5",
     "@vitejs/plugin-react": "^6.1.0",
     "@vitejs/plugin-vue": "^6.0.8",
-    "astro": "^7.3.2",
+    "astro": "^7.3.3",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "tailwindcss": "^4.3.3",

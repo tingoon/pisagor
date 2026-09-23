@@ -1,0 +1,108 @@
+---
+import {
+  Clearable,
+  CustomFormat,
+  Default,
+  Disabled,
+  sources as examples,
+  Input,
+  Invalid,
+  imports,
+  Range,
+  Time,
+  Variants,
+  WithPresets,
+} from "@pisagor/react/date-picker/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { datePickerProps } from "../../../lib/props/date-picker";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 3, slug: "variants", text: "Variants" },
+  { depth: 3, slug: "range", text: "Range" },
+  { depth: 3, slug: "custom-format", text: "Custom Format" },
+  { depth: 3, slug: "input", text: "Input" },
+  { depth: 3, slug: "invalid", text: "Invalid" },
+  { depth: 3, slug: "disabled", text: "Disabled" },
+  { depth: 3, slug: "clearable", text: "Clearable" },
+  { depth: 3, slug: "time", text: "Time" },
+  { depth: 3, slug: "with-presets", text: "With Presets" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+---
+
+<DocsLayout
+  description="Lets users pick a date or range from a calendar inside a field or popover."
+  framework="react"
+  headings={headings}
+  title="Date Picker"
+>
+
+  <ComponentHeader framework="react" id="date-picker" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="tsx" title="Default">
+    <Default client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <ComponentPreview code={examples.Variants} language="tsx" title="Variants">
+    <Variants client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="range">Range</h3>
+  <ComponentPreview code={examples.Range} language="tsx" title="Range">
+    <Range client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-format">Custom Format</h3>
+  <ComponentPreview code={examples.CustomFormat} language="tsx" title="Custom Format">
+    <CustomFormat client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="input">Input</h3>
+  <ComponentPreview code={examples.Input} language="tsx" title="Input">
+    <Input client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">Invalid</h3>
+  <ComponentPreview code={examples.Invalid} language="tsx" title="Invalid">
+    <Invalid client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <ComponentPreview code={examples.Disabled} language="tsx" title="Disabled">
+    <Disabled client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="clearable">Clearable</h3>
+  <ComponentPreview code={examples.Clearable} language="tsx" title="Clearable">
+    <Clearable client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="time">Time</h3>
+  <ComponentPreview code={examples.Time} language="tsx" title="Time">
+    <Time client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-presets">With Presets</h3>
+  <ComponentPreview code={examples.WithPresets} language="tsx" title="With Presets">
+    <WithPresets client:only="react" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/react" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/date-picker</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={datePickerProps} />
+</DocsLayout>

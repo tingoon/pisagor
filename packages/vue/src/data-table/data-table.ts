@@ -11,6 +11,7 @@ import type {
 import { useTable } from "@tanstack/vue-table";
 import { computed, defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { Table } from "../components/table";
+import type { ClassValue } from "../internal/types";
 import { createContext } from "../internal/utils/create-context";
 import { type DataTableFeatures, dataTableFeatures } from "./data-table.features";
 
@@ -129,7 +130,7 @@ export const DataTableRoot = defineComponent({
   inheritAttrs: false,
   name: "DataTableRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: { type: [String, Object, Array] as PropType<ClassValue> },
     recipe: {
       default: dataTableRecipe,
       type: Function as PropType<typeof dataTableRecipe>,
@@ -221,7 +222,7 @@ export const DataTableHeaderRow = defineComponent({
   inheritAttrs: false,
   name: "DataTableHeaderRow",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: { type: [String, Object, Array] as PropType<ClassValue> },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -237,7 +238,7 @@ export const DataTableHead = defineComponent({
   inheritAttrs: false,
   name: "DataTableHead",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: { type: [String, Object, Array] as PropType<ClassValue> },
     columnId: { default: undefined, type: String as PropType<string | undefined> },
   },
   setup(props, { attrs, slots }) {
@@ -312,7 +313,7 @@ export const DataTableRow = defineComponent({
   inheritAttrs: false,
   name: "DataTableRow",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: { type: [String, Object, Array] as PropType<ClassValue> },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -338,7 +339,7 @@ export const DataTableCell = defineComponent({
   inheritAttrs: false,
   name: "DataTableCell",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: { type: [String, Object, Array] as PropType<ClassValue> },
     columnId: { default: undefined, type: String as PropType<string | undefined> },
   },
   setup(props, { attrs, slots }) {
@@ -380,7 +381,7 @@ export const DataTableEmpty = defineComponent({
   inheritAttrs: false,
   name: "DataTableEmpty",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: { type: [String, Object, Array] as PropType<ClassValue> },
     colSpan: { default: undefined, type: Number as PropType<number | undefined> },
   },
   setup(props, { attrs, slots }) {
@@ -407,7 +408,7 @@ export const DataTableToolbar = defineComponent({
   inheritAttrs: false,
   name: "DataTableToolbar",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: { type: [String, Object, Array] as PropType<ClassValue> },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -432,7 +433,7 @@ export const DataTableFooter = defineComponent({
   inheritAttrs: false,
   name: "DataTableFooter",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: { type: [String, Object, Array] as PropType<ClassValue> },
   },
   setup(props, { attrs, slots }) {
     return () => {

@@ -1,0 +1,292 @@
+---
+interface Props {
+  /** One or more packages, e.g. "@pisagor/react" */
+  packages: string | string[];
+  /** Optional import / setup snippet shown under Manual */
+  manual?: string;
+  class?: string;
+}
+
+const packagesProp = Astro.props.packages;
+const pkgs = (Array.isArray(packagesProp) ? packagesProp : [packagesProp])
+  .map((p) => p.trim())
+  .filter(Boolean);
+const pkgList = pkgs.join(" ");
+
+const managers = [
+  { command: `pnpm add ${pkgList}`, id: "pnpm", label: "pnpm" },
+  { command: `bun add ${pkgList}`, id: "bun", label: "bun" },
+  { command: `npm install ${pkgList}`, id: "npm", label: "npm" },
+  { command: `yarn add ${pkgList}`, id: "yarn", label: "yarn" },
+] as const;
+
+const defaultManual =
+  Astro.props.manual ??
+  (pkgs.length === 1
+    ? `import { /* … */ } from "${pkgs[0]}";`
+    : pkgs.map((p) => `import { /* … */ } from "${p}";`).join("\n"));
+---
+
+<div data-installation class:list={["installation not-prose", Astro.props.class]} >
+  <div
+    aria-label="Installation method"
+    class="mb-3 inline-flex rounded-lg border border-border/70 bg-muted/30 p-0.5"
+    role="tablist"
+  >
+    <button
+      aria-selected="true"
+      class="rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground data-[active]:bg-background data-[active]:text-foreground data-[active]:shadow-sm"
+      data-active
+      data-mode="cli"
+      data-mode-tab
+      role="tab"
+      type="button"
+    >
+      CLI
+    </button>
+    <button
+      aria-selected="false"
+      class="rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground data-[active]:bg-background data-[active]:text-foreground data-[active]:shadow-sm"
+      data-mode="manual"
+      data-mode-tab
+      role="tab"
+      type="button"
+    >
+      Manual
+    </button>
+  </div>
+
+  <div class="overflow-hidden rounded-xl border border-border/70 bg-card" data-panel="cli">
+    <div class="flex items-center gap-1 border-b border-border/60 px-2 py-1.5 sm:px-2.5">
+      <span
+        aria-hidden="true"
+        class="me-1 hidden size-7 items-center justify-center text-muted-foreground sm:inline-flex"
+      >
+        <svg
+          aria-hidden="true"
+          class="size-3.5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
+          <path d="M4 17l6-6-6-6M12 19h8" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </span>
+
+      <div
+        aria-label="Package manager"
+        class="flex min-w-0 flex-1 items-center gap-0.5 overflow-x-auto"
+        role="tablist"
+      >
+        {
+          
+          managers.map((manager) => (
+            <button
+              aria-selected={manager.id === "bun" ? "true" : "false"}
+              class="shrink-0 rounded-md px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground data-[active]:bg-muted data-[active]:text-foreground"
+              data-active={manager.id === "bun" ? "" : undefined}
+              data-command={manager.command}
+              data-pm={manager.id}
+              data-pm-tab
+              role="tab"
+              type="button"
+            >
+              {manager.label}
+            </button>
+          ))
+        }
+      </div>
+
+      <button
+        aria-label="Copy install command"
+        class="ms-auto inline-flex size-8 shrink-0 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground data-[copied]:text-emerald-500"
+        data-copy
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="size-3.5"
+          data-copy-idle
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
+          <rect height="13" rx="2" width="13" x="9" y="9"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+        <svg
+          aria-hidden="true"
+          class="size-3.5"
+          data-copy-done
+          fill="none"
+          hidden
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
+          <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </button>
+    </div>
+
+    <pre class="overflow-x-auto px-4 py-3.5 font-mono text-3.25 leading-relaxed text-foreground"><code data-command-text>{managers[1].command}</code></pre>
+  </div>
+
+  <div class="hidden overflow-hidden rounded-xl border border-border/70 bg-card" data-panel="manual">
+    <div class="flex items-center justify-between gap-3 border-b border-border/60 px-3 py-2">
+      <span class="text-xs font-medium text-muted-foreground">Import</span>
+      <button
+        aria-label="Copy import snippet"
+        class="inline-flex size-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground data-[copied]:text-emerald-500"
+        data-copy-manual
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="size-3.5"
+          data-copy-idle
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
+          <rect height="13" rx="2" width="13" x="9" y="9"></rect>
+          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+        </svg>
+        <svg
+          aria-hidden="true"
+          class="size-3.5"
+          data-copy-done
+          fill="none"
+          hidden
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
+          <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </button>
+    </div>
+    <pre
+      class="overflow-x-auto px-4 py-3.5 font-mono text-3.25 leading-relaxed text-foreground"
+      data-manual-source
+    ><code>{defaultManual}</code></pre>
+    <p class="border-t border-border/60 px-4 py-2.5 text-xs text-muted-foreground">
+      Install the package with your package manager (CLI tab), then import the components you need.
+    </p>
+  </div>
+</div>
+
+<script>
+  const STORAGE_KEY = "pisagor.docs.package-manager";
+
+  function markCopied(btn: HTMLElement) {
+    const idle = btn.querySelector<HTMLElement>("[data-copy-idle]");
+    const done = btn.querySelector<HTMLElement>("[data-copy-done]");
+    if (idle) idle.hidden = true;
+    if (done) done.hidden = false;
+    btn.dataset.copied = "";
+    window.setTimeout(() => {
+      if (idle) idle.hidden = false;
+      if (done) done.hidden = true;
+      delete btn.dataset.copied;
+    }, 1400);
+  }
+
+  async function copyText(text: string) {
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand("copy");
+      ta.remove();
+    }
+  }
+
+  function bindInstallation(root: HTMLElement) {
+    if (root.dataset.bound === "1") return;
+    root.dataset.bound = "1";
+
+    const modeTabs = [...root.querySelectorAll<HTMLElement>("[data-mode-tab]")];
+    const cliPanel = root.querySelector<HTMLElement>('[data-panel="cli"]');
+    const manualPanel = root.querySelector<HTMLElement>('[data-panel="manual"]');
+    const pmTabs = [...root.querySelectorAll<HTMLElement>("[data-pm-tab]")];
+    const commandEl = root.querySelector<HTMLElement>("[data-command-text]");
+    const copyBtn = root.querySelector<HTMLElement>("[data-copy]");
+    const copyManualBtn = root.querySelector<HTMLElement>("[data-copy-manual]");
+    const manualSource = root.querySelector<HTMLElement>("[data-manual-source]");
+
+    function setMode(mode: "cli" | "manual") {
+      for (const tab of modeTabs) {
+        const active = tab.dataset.mode === mode;
+        tab.toggleAttribute("data-active", active);
+        tab.setAttribute("aria-selected", active ? "true" : "false");
+      }
+      cliPanel?.classList.toggle("hidden", mode !== "cli");
+      manualPanel?.classList.toggle("hidden", mode !== "manual");
+    }
+
+    function setPm(id: string) {
+      let command = "";
+      for (const tab of pmTabs) {
+        const active = tab.dataset.pm === id;
+        tab.toggleAttribute("data-active", active);
+        tab.setAttribute("aria-selected", active ? "true" : "false");
+        if (active) command = tab.dataset.command ?? "";
+      }
+      if (commandEl && command) commandEl.textContent = command;
+      try {
+        localStorage.setItem(STORAGE_KEY, id);
+      } catch {
+        /* ignore */
+      }
+    }
+
+    for (const tab of modeTabs) {
+      tab.addEventListener("click", () => {
+        setMode(tab.dataset.mode === "manual" ? "manual" : "cli");
+      });
+    }
+
+    for (const tab of pmTabs) {
+      tab.addEventListener("click", () => {
+        if (tab.dataset.pm) setPm(tab.dataset.pm);
+      });
+    }
+
+    copyBtn?.addEventListener("click", async () => {
+      const text = commandEl?.textContent?.trim() ?? "";
+      if (!text) return;
+      await copyText(text);
+      markCopied(copyBtn);
+    });
+
+    copyManualBtn?.addEventListener("click", async () => {
+      const text = manualSource?.innerText?.trim() ?? "";
+      if (!text) return;
+      await copyText(text);
+      markCopied(copyManualBtn);
+    });
+
+    let preferred = "bun";
+    try {
+      preferred = localStorage.getItem(STORAGE_KEY) ?? "bun";
+    } catch {
+      /* ignore */
+    }
+    if (!pmTabs.some((t) => t.dataset.pm === preferred)) preferred = "bun";
+    setPm(preferred);
+  }
+
+  function bindAll() {
+    document.querySelectorAll<HTMLElement>("[data-installation]").forEach(bindInstallation);
+  }
+
+  bindAll();
+  document.addEventListener("astro:page-load", bindAll);
+</script>

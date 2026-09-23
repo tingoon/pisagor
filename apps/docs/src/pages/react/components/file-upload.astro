@@ -1,0 +1,126 @@
+---
+import {
+  AcceptedFileTypes,
+  ClearTrigger,
+  CustomPreview,
+  CustomSpacing,
+  Default,
+  DirectoryUpload,
+  Disabled,
+  Dropzone,
+  sources as examples,
+  Invalid,
+  imports,
+  MediaCapture,
+  MultipleFiles,
+  Trigger,
+  Variants,
+} from "@pisagor/react/file-upload/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { fileUploadProps } from "../../../lib/props/file-upload";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 3, slug: "variants", text: "Variants" },
+  { depth: 3, slug: "invalid", text: "Invalid" },
+  { depth: 3, slug: "disabled", text: "Disabled" },
+  { depth: 3, slug: "custom-spacing", text: "Custom Spacing" },
+  { depth: 3, slug: "accepted-file-types", text: "Accepted File Types" },
+  { depth: 3, slug: "clear-trigger", text: "Clear Trigger" },
+  { depth: 3, slug: "custom-preview", text: "Custom Preview" },
+  { depth: 3, slug: "directory-upload", text: "Directory Upload" },
+  { depth: 3, slug: "dropzone", text: "Dropzone" },
+  { depth: 3, slug: "media-capture", text: "Media Capture" },
+  { depth: 3, slug: "multiple-files", text: "Multiple Files" },
+  { depth: 3, slug: "trigger", text: "Trigger" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+---
+
+<DocsLayout
+  description="Lets users choose files to upload with drag-and-drop or a file picker and shows upload progress."
+  framework="react"
+  headings={headings}
+  title="File Upload"
+>
+
+  <ComponentHeader framework="react" id="file-upload" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="tsx" title="Default">
+    <Default client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <ComponentPreview code={examples.Variants} language="tsx" title="Variants">
+    <Variants client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">Invalid</h3>
+  <ComponentPreview code={examples.Invalid} language="tsx" title="Invalid">
+    <Invalid client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <ComponentPreview code={examples.Disabled} language="tsx" title="Disabled">
+    <Disabled client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-spacing">Custom Spacing</h3>
+  <ComponentPreview code={examples.CustomSpacing} language="tsx" title="Custom Spacing">
+    <CustomSpacing client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="accepted-file-types">Accepted File Types</h3>
+  <ComponentPreview code={examples.AcceptedFileTypes} language="tsx" title="Accepted File Types">
+    <AcceptedFileTypes client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="clear-trigger">Clear Trigger</h3>
+  <ComponentPreview code={examples.ClearTrigger} language="tsx" title="Clear Trigger">
+    <ClearTrigger client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-preview">Custom Preview</h3>
+  <ComponentPreview code={examples.CustomPreview} language="tsx" title="Custom Preview">
+    <CustomPreview client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="directory-upload">Directory Upload</h3>
+  <ComponentPreview code={examples.DirectoryUpload} language="tsx" title="Directory Upload">
+    <DirectoryUpload client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="dropzone">Dropzone</h3>
+  <ComponentPreview code={examples.Dropzone} language="tsx" title="Dropzone">
+    <Dropzone client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="media-capture">Media Capture</h3>
+  <ComponentPreview code={examples.MediaCapture} language="tsx" title="Media Capture">
+    <MediaCapture client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="multiple-files">Multiple Files</h3>
+  <ComponentPreview code={examples.MultipleFiles} language="tsx" title="Multiple Files">
+    <MultipleFiles client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="trigger">Trigger</h3>
+  <ComponentPreview code={examples.Trigger} language="tsx" title="Trigger">
+    <Trigger client:only="react" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/react" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/file-upload</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={fileUploadProps} />
+</DocsLayout>

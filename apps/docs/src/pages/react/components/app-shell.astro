@@ -1,0 +1,102 @@
+---
+import {
+  Banner,
+  Content,
+  Default,
+  sources as examples,
+  Header,
+  Inspectors,
+  imports,
+  Main,
+  Navigation,
+  Panels,
+  Rails,
+} from "@pisagor/react/app-shell/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { appShellProps } from "../../../lib/props/app-shell";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "default", text: "Default" },
+  { depth: 3, slug: "banner", text: "Banner" },
+  { depth: 3, slug: "navigation", text: "Navigation" },
+  { depth: 3, slug: "inspectors", text: "Inspectors" },
+  { depth: 3, slug: "panels", text: "Panels" },
+  { depth: 3, slug: "rails", text: "Rails" },
+  { depth: 3, slug: "header", text: "Header" },
+  { depth: 3, slug: "main", text: "Main" },
+  { depth: 3, slug: "content", text: "Content" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+---
+
+<DocsLayout
+  description="Multi-region application shell with draggable side panels and an optional inspector for dashboard layouts."
+  framework="react"
+  headings={headings}
+  title="App Shell"
+>
+
+  <ComponentHeader framework="react" id="app-shell" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <p class="mb-4 text-muted-foreground">
+    Each example matches a Storybook story, in the same order.
+  </p>
+
+  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <ComponentPreview code={examples.Default} language="tsx" title="Default">
+    <Default client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="banner">Banner</h3>
+  <ComponentPreview code={examples.Banner} language="tsx" title="Banner">
+    <Banner client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="navigation">Navigation</h3>
+  <ComponentPreview code={examples.Navigation} language="tsx" title="Navigation">
+    <Navigation client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="inspectors">Inspectors</h3>
+  <ComponentPreview code={examples.Inspectors} language="tsx" title="Inspectors">
+    <Inspectors client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="panels">Panels</h3>
+  <ComponentPreview code={examples.Panels} language="tsx" title="Panels">
+    <Panels client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="rails">Rails</h3>
+  <ComponentPreview code={examples.Rails} language="tsx" title="Rails">
+    <Rails client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="header">Header</h3>
+  <ComponentPreview code={examples.Header} language="tsx" title="Header">
+    <Header client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="main">Main</h3>
+  <ComponentPreview code={examples.Main} language="tsx" title="Main">
+    <Main client:only="react" />
+  </ComponentPreview>
+<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="content">Content</h3>
+  <ComponentPreview code={examples.Content} language="tsx" title="Content">
+    <Content client:only="react" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/react" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/app-shell</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={appShellProps} />
+</DocsLayout>

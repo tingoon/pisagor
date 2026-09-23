@@ -1,0 +1,68 @@
+---
+import {
+  Compound,
+  Controlled,
+  Disabled,
+  sources as examples,
+  Invalid,
+  imports,
+} from "@pisagor/vue/rich-text-editor/examples";
+import CodeBlock from "../../../components/docs/code-block.astro";
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { richTextEditorProps } from "../../../lib/props/rich-text-editor";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 3, slug: "compound", text: "Compound" },
+  { depth: 3, slug: "controlled", text: "Controlled" },
+  { depth: 3, slug: "disabled", text: "Disabled" },
+  { depth: 3, slug: "invalid", text: "Invalid" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+---
+
+<DocsLayout
+  description="Compose rich text with formatting controls for documents and messages."
+  framework="vue"
+  headings={headings}
+  title="Rich Text Editor"
+>
+
+  <ComponentHeader framework="vue" id="rich-text-editor" />
+
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
+
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="compound">Compound</h3>
+  <ComponentPreview class="mb-8" code={examples.Compound} title="Compound">
+    <Compound client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <ComponentPreview class="mb-8" code={examples.Controlled} title="Controlled">
+    <Controlled client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <ComponentPreview class="mb-8" code={examples.Disabled} title="Disabled">
+    <Disabled client:only="vue" />
+  </ComponentPreview>
+<h3 class="mb-3 text-xl font-semibold tracking-tight" id="invalid">Invalid</h3>
+  <ComponentPreview class="mb-8" code={examples.Invalid} title="Invalid">
+    <Invalid client:only="vue" />
+  </ComponentPreview>
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/vue" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <p class="mb-4 text-muted-foreground">
+    Own props from <code>@pisagor/props/rich-text-editor</code>. Native HTML attributes are also supported and omitted from this table.
+  </p>
+  <PropsTable rows={richTextEditorProps} />
+</DocsLayout>

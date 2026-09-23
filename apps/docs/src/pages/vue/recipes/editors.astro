@@ -1,0 +1,59 @@
+---
+import { EditableUserCard } from "@recipes-vue/editors/editable-user-card";
+import EditableUserCardSource from "@recipes-vue/editors/editable-user-card.ts?raw";
+import { IdeLayout } from "@recipes-vue/editors/ide-layout";
+import IdeLayoutSource from "@recipes-vue/editors/ide-layout.ts?raw";
+import { RichTextToolbar } from "@recipes-vue/editors/rich-text-toolbar";
+import RichTextToolbarSource from "@recipes-vue/editors/rich-text-toolbar.ts?raw";
+import ComponentPreview from "../../../components/docs/component-preview.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+
+const headings = [
+  {
+    depth: 2,
+    slug: "overview",
+    text: "Overview",
+  },
+  {
+    depth: 2,
+    slug: "ide-layout",
+    text: "Ide Layout",
+  },
+  {
+    depth: 2,
+    slug: "rich-text-toolbar",
+    text: "Rich Text Toolbar",
+  },
+  {
+    depth: 2,
+    slug: "editable-user-card",
+    text: "Editable User Card",
+  },
+];
+
+---
+
+<DocsLayout
+  description="Editor compositions for IDE layouts, rich text toolbars, and editable user cards."
+  framework="vue"
+  headings={headings}
+  title="Editors"
+>
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">Overview</h2>
+  <p class="mb-8 text-muted-foreground">Editor compositions for IDE layouts, rich text toolbars, and editable user cards.</p>
+
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="ide-layout">Ide Layout</h2>
+  <ComponentPreview code={IdeLayoutSource} language="ts" title="Ide Layout">
+    <IdeLayout client:only="vue" />
+  </ComponentPreview>
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="rich-text-toolbar">Rich Text Toolbar</h2>
+  <ComponentPreview code={RichTextToolbarSource} language="ts" title="Rich Text Toolbar">
+    <RichTextToolbar client:only="vue" />
+  </ComponentPreview>
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="editable-user-card">Editable User Card</h2>
+  <ComponentPreview code={EditableUserCardSource} language="ts" title="Editable User Card">
+    <EditableUserCard client:only="vue" />
+  </ComponentPreview>
+
+</DocsLayout>
