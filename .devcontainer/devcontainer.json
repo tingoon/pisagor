@@ -4,7 +4,13 @@
   },
   "customizations": {
     "vscode": {
-      "extensions": ["biomejs.biome", "oven.bun-vscode", "bradlc.vscode-tailwindcss"],
+      "extensions": [
+        "astro-build.astro-vscode",
+        "biomejs.biome",
+        "bradlc.vscode-tailwindcss",
+        "oven.bun-vscode",
+        "vue.volar"
+      ],
       "settings": {
         "remote.autoForwardPorts": true
       }
