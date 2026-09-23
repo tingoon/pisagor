@@ -19,12 +19,12 @@ interface Props {
 <header
   class="sticky top-0 z-40 border-b border-border/55 bg-card/80 shadow-sm backdrop-blur-xl backdrop-saturate-150"
 >
-  <div class="mx-auto flex h-14 max-w-[96rem] items-center gap-3 px-4 sm:px-6">
+  <div class="mx-auto flex h-14 max-w-384 items-center gap-3 px-4 sm:px-6">
     <MobileNav
-      client:load
       currentPath={Astro.props.currentPath}
       framework={Astro.props.framework}
       sections={Astro.props.sections}
+      client:load
     />
     <a
       class="group flex items-center gap-2.5 font-semibold tracking-tight"
@@ -41,7 +41,7 @@ interface Props {
     <MainNav area={Astro.props.area} framework={Astro.props.framework} />
 
     <div class="ms-auto flex items-center gap-2">
-      <FrameworkSwitcher client:load framework={Astro.props.framework} pathname={Astro.props.currentPath} />
+      <FrameworkSwitcher framework={Astro.props.framework} pathname={Astro.props.currentPath} client:load />
       <ThemeToggle client:load />
     </div>
   </div>

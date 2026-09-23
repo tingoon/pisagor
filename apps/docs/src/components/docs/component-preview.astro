@@ -30,12 +30,12 @@ const iconBtn =
 ---
 
 <section
+  data-component-preview
+  data-package={packageName}
   class:list={[
     "my-7 overflow-hidden rounded-xl border border-border/70 bg-card shadow-sm",
     Astro.props.class,
   ]}
-  data-component-preview
-  data-package={packageName}
 >
   <!-- Toolbar -->
   <div
@@ -43,28 +43,28 @@ const iconBtn =
   >
     <!-- Preview / Code -->
     <div
+      aria-label={title ? `${title} view` : "Component view"}
       class="inline-flex rounded-md bg-muted/60 p-0.5"
       role="tablist"
-      aria-label={title ? `${title} view` : "Component view"}
     >
       <button
-        type="button"
-        class="rounded-[5px] px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground data-[active]:bg-background data-[active]:text-foreground data-[active]:shadow-sm"
-        data-view-tab
-        data-view="preview"
-        data-active
-        role="tab"
         aria-selected="true"
+        class="rounded-1.25 px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground data-[active]:bg-background data-[active]:text-foreground data-[active]:shadow-sm"
+        data-active
+        data-view="preview"
+        data-view-tab
+        role="tab"
+        type="button"
       >
         Preview
       </button>
       <button
-        type="button"
-        class="rounded-[5px] px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground data-[active]:bg-background data-[active]:text-foreground data-[active]:shadow-sm"
-        data-view-tab
-        data-view="code"
-        role="tab"
         aria-selected="false"
+        class="rounded-1.25 px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground data-[active]:bg-background data-[active]:text-foreground data-[active]:shadow-sm"
+        data-view="code"
+        data-view-tab
+        role="tab"
+        type="button"
       >
         Code
       </button>
@@ -73,30 +73,30 @@ const iconBtn =
     <div class="ms-auto flex flex-wrap items-center gap-1">
       <!-- Toggle mode -->
       <button
-        type="button"
+        aria-label="Toggle light and dark mode"
         class={iconBtn}
         data-theme-toggle
-        aria-label="Toggle light and dark mode"
         data-tooltip="Toggle mode"
+        type="button"
       >
-        <svg data-icon-sun class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+        <svg aria-hidden="true" class="size-3.5" data-icon-sun fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" >
           <circle cx="12" cy="12" r="4"></circle>
           <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" stroke-linecap="round"></path>
         </svg>
-        <svg data-icon-moon class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true" hidden>
+        <svg aria-hidden="true" class="size-3.5" data-icon-moon fill="none" hidden stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" >
           <path d="M21 14.5A8.5 8.5 0 1 1 9.5 3 7 7 0 0 0 21 14.5z" stroke-linecap="round" stroke-linejoin="round"></path>
         </svg>
       </button>
 
       <!-- Open in new tab -->
       <button
-        type="button"
+        aria-label="Open preview in a new tab"
         class={iconBtn}
         data-open-tab
-        aria-label="Open preview in a new tab"
         data-tooltip="Open in new tab"
+        type="button"
       >
-        <svg class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+        <svg aria-hidden="true" class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" >
           <path d="M14 3h7v7" stroke-linecap="round" stroke-linejoin="round"></path>
           <path d="M10 14L21 3" stroke-linecap="round"></path>
           <path d="M21 14v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h6" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -106,15 +106,15 @@ const iconBtn =
       <!-- Dependencies -->
       <div class="relative" data-deps>
         <button
-          type="button"
-          class={iconBtn}
-          data-deps-toggle
-          aria-label="Show dependencies"
           aria-expanded="false"
           aria-haspopup="dialog"
+          aria-label="Show dependencies"
+          class={iconBtn}
+          data-deps-toggle
           data-tooltip="Dependencies"
+          type="button"
         >
-          <svg class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <svg aria-hidden="true" class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" >
             <circle cx="6" cy="6" r="2.5"></circle>
             <circle cx="18" cy="6" r="2.5"></circle>
             <circle cx="12" cy="18" r="2.5"></circle>
@@ -122,12 +122,12 @@ const iconBtn =
           </svg>
         </button>
         <div
+          aria-label="Dependencies"
           class="absolute end-0 z-20 mt-1 hidden min-w-56 rounded-lg border border-border/70 bg-popover p-2 text-popover-foreground shadow-lg"
           data-deps-panel
           role="dialog"
-          aria-label="Dependencies"
         >
-          <p class="mb-1.5 px-1 text-[0.65rem] font-semibold uppercase tracking-wide text-muted-foreground">
+          <p class="mb-1.5 px-1 text-2.6 font-semibold uppercase tracking-wide text-muted-foreground">
             Dependencies
           </p>
           <ul class="space-y-0.5 font-mono text-xs">
@@ -143,65 +143,65 @@ const iconBtn =
 
       <!-- Report an issue -->
       <a
-        class={iconBtn}
-        href={reportUrl}
-        target="_blank"
-        rel="noreferrer"
         aria-label="Report an issue"
+        class={iconBtn}
         data-tooltip="Report an issue"
+        href={reportUrl}
+        rel="noreferrer"
+        target="_blank"
       >
-        <svg class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+        <svg aria-hidden="true" class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" >
           <path d="M8 9V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v4" stroke-linecap="round"></path>
           <path d="M6 9h12v4a6 6 0 0 1-6 6h0a6 6 0 0 1-6-6V9z" stroke-linejoin="round"></path>
           <path d="M4 13h2M18 13h2M9 19v2M15 19v2" stroke-linecap="round"></path>
         </svg>
       </a>
 
-      <div class="mx-0.5 hidden h-4 w-px bg-border/70 sm:block" aria-hidden="true"></div>
+      <div aria-hidden="true" class="mx-0.5 hidden h-4 w-px bg-border/70 sm:block" ></div>
 
       <!-- Desktop / Tablet / Mobile -->
       <div
-        class="inline-flex rounded-md border border-border/60 bg-background/60 p-0.5"
-        role="group"
         aria-label="Preview viewport"
+        class="inline-flex rounded-md border border-border/60 bg-background/60 p-0.5"
         data-viewport-group
+        role="group"
       >
         <button
-          type="button"
-          class={iconBtn}
-          data-viewport="desktop"
-          data-active
           aria-label="Desktop viewport"
           aria-pressed="true"
+          class={iconBtn}
+          data-active
           data-tooltip="Desktop"
+          data-viewport="desktop"
+          type="button"
         >
-          <svg class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <svg aria-hidden="true" class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" >
             <rect height="12" rx="1.5" width="18" x="3" y="4"></rect>
             <path d="M8 20h8M12 16v4" stroke-linecap="round"></path>
           </svg>
         </button>
         <button
-          type="button"
-          class={iconBtn}
-          data-viewport="tablet"
           aria-label="Tablet viewport"
           aria-pressed="false"
+          class={iconBtn}
           data-tooltip="Tablet"
+          data-viewport="tablet"
+          type="button"
         >
-          <svg class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <svg aria-hidden="true" class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" >
             <rect height="18" rx="2" width="12" x="6" y="3"></rect>
             <path d="M11 17h2" stroke-linecap="round"></path>
           </svg>
         </button>
         <button
-          type="button"
-          class={iconBtn}
-          data-viewport="mobile"
           aria-label="Mobile viewport"
           aria-pressed="false"
+          class={iconBtn}
           data-tooltip="Mobile"
+          data-viewport="mobile"
+          type="button"
         >
-          <svg class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <svg aria-hidden="true" class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" >
             <rect height="18" rx="2" width="10" x="7" y="3"></rect>
             <path d="M11 17h2" stroke-linecap="round"></path>
           </svg>
@@ -217,7 +217,7 @@ const iconBtn =
     data-panel="preview"
   >
     <div
-      class="w-full max-w-full transition-[max-width] duration-200 ease-out data-[viewport=tablet]:max-w-[768px] data-[viewport=mobile]:max-w-[375px]"
+      class="w-full max-w-full transition-[max-width] duration-200 ease-out data-[viewport=tablet]:max-w-192 data-[viewport=mobile]:max-w-93.75"
       data-preview-stage
       data-viewport="desktop"
     >

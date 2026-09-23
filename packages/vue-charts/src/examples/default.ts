@@ -32,7 +32,7 @@ export default defineComponent({
       },
       template: `
           <div class="flex flex-col gap-2">
-            <Chart :config="chartConfig" class="min-h-[200px]">
+            <Chart :config="chartConfig" class="min-h-50">
               <svg
                 class="h-full w-full"
                 viewBox="0 0 200 100"

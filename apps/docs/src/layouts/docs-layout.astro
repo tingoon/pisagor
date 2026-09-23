@@ -46,9 +46,9 @@ const headings = Astro.props.headings ?? [];
         sections={sidebarSections}
       />
 
-      <div class="mx-auto flex max-w-[96rem]">
+      <div class="mx-auto flex max-w-384">
         <Sidebar area={area} currentPath={currentPath} framework={framework} />
-        <main class="min-w-0 max-w-3xl flex-1 px-4 py-10 sm:px-8 lg:max-w-[52rem] lg:px-10">
+        <main class="min-w-0 max-w-3xl flex-1 px-4 py-10 sm:px-8 lg:max-w-208 lg:px-10">
           <header class="mb-8">
             <p class="docs-kicker">{kicker}</p>
             <h1 class="mb-3 tracking-tight">{title}</h1>

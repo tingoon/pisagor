@@ -23,12 +23,12 @@ export function Horizontal() {
       </div>
 
       <div className="w-full" ref={parentRef}>
-        <ScrollArea className="h-[400px] grow">
+        <ScrollArea className="h-100 grow">
           <div className="space-y-8">
             {horizontalSections.map((item) => (
               <div className="space-y-2.5" id={item.id} key={item.id}>
                 <h3 className="text-base text-foreground">{item.label}</h3>
-                <div className="h-[350px] rounded-2xl bg-muted" />
+                <div className="h-87.5 rounded-2xl bg-muted" />
               </div>
             ))}
           </div>

@@ -28,9 +28,9 @@ const links = [
   ]}
 >
   <div
+    aria-label="Package links"
     class="inline-flex w-fit overflow-hidden rounded-md border border-border/60 bg-background/40"
     role="group"
-    aria-label="Package links"
   >
     {
       links.map((link, index) => (
@@ -64,7 +64,7 @@ const links = [
   </div>
 
   <a
-    class="w-fit font-mono text-[13px] text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
+    class="w-fit font-mono text-3.25 text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
     href={pkg.npm}
     rel="noreferrer"
     target="_blank"

@@ -23,7 +23,7 @@ export function Default() {
   } satisfies ChartConfig;
 
   return (
-    <Chart className="min-h-[200px]" config={chartConfig}>
+    <Chart className="min-h-50" config={chartConfig}>
       <BarChart accessibilityLayer data={chartData}>
         <CartesianGrid vertical={false} />
         <XAxis

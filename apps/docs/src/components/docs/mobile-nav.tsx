@@ -49,7 +49,7 @@ export default function MobileNav({
                         {disabled ? (
                           <span className="flex items-center justify-between rounded-lg px-2.5 py-1.5 text-sm text-muted-foreground/70">
                             {item.title}
-                            <span className="text-[10px] uppercase tracking-wide">Soon</span>
+                            <span className="text-2.5 uppercase tracking-wide">Soon</span>
                           </span>
                         ) : (
                           <a

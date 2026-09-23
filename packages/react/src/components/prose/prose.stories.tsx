@@ -21,7 +21,7 @@ const meta = preview.meta({
 export const Default = meta.story({
   render: () => (
     <div className="overflow-hidden">
-      <ScrollArea className="h-[350px] rounded-xl border">
+      <ScrollArea className="h-87.5 rounded-xl border">
         <Prose className="p-8">
           <h1>Taxing Laughter: The Joke Tax Chronicles</h1>
           <p>

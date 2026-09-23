@@ -27,30 +27,30 @@ const defaultManual =
     : pkgs.map((p) => `import { /* … */ } from "${p}";`).join("\n"));
 ---
 
-<div class:list={["installation not-prose", Astro.props.class]} data-installation>
+<div data-installation class:list={["installation not-prose", Astro.props.class]} >
   <div
+    aria-label="Installation method"
     class="mb-3 inline-flex rounded-lg border border-border/70 bg-muted/30 p-0.5"
     role="tablist"
-    aria-label="Installation method"
   >
     <button
-      type="button"
-      class="rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground data-[active]:bg-background data-[active]:text-foreground data-[active]:shadow-sm"
-      data-mode-tab
-      data-mode="cli"
-      data-active
-      role="tab"
       aria-selected="true"
+      class="rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground data-[active]:bg-background data-[active]:text-foreground data-[active]:shadow-sm"
+      data-active
+      data-mode="cli"
+      data-mode-tab
+      role="tab"
+      type="button"
     >
       CLI
     </button>
     <button
-      type="button"
-      class="rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground data-[active]:bg-background data-[active]:text-foreground data-[active]:shadow-sm"
-      data-mode-tab
-      data-mode="manual"
-      role="tab"
       aria-selected="false"
+      class="rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground data-[active]:bg-background data-[active]:text-foreground data-[active]:shadow-sm"
+      data-mode="manual"
+      data-mode-tab
+      role="tab"
+      type="button"
     >
       Manual
     </button>
@@ -59,30 +59,38 @@ const defaultManual =
   <div class="overflow-hidden rounded-xl border border-border/70 bg-card" data-panel="cli">
     <div class="flex items-center gap-1 border-b border-border/60 px-2 py-1.5 sm:px-2.5">
       <span
-        class="me-1 hidden size-7 items-center justify-center text-muted-foreground sm:inline-flex"
         aria-hidden="true"
+        class="me-1 hidden size-7 items-center justify-center text-muted-foreground sm:inline-flex"
       >
-        <svg class="size-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <svg
+          aria-hidden="true"
+          class="size-3.5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          viewBox="0 0 24 24"
+        >
           <path d="M4 17l6-6-6-6M12 19h8" stroke-linecap="round" stroke-linejoin="round"></path>
         </svg>
       </span>
 
       <div
+        aria-label="Package manager"
         class="flex min-w-0 flex-1 items-center gap-0.5 overflow-x-auto"
         role="tablist"
-        aria-label="Package manager"
       >
         {
+          
           managers.map((manager) => (
             <button
-              type="button"
-              class="shrink-0 rounded-md px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground data-[active]:bg-muted data-[active]:text-foreground"
-              data-pm-tab
-              data-pm={manager.id}
-              data-command={manager.command}
-              data-active={manager.id === "bun" ? "" : undefined}
-              role="tab"
               aria-selected={manager.id === "bun" ? "true" : "false"}
+              class="shrink-0 rounded-md px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground data-[active]:bg-muted data-[active]:text-foreground"
+              data-active={manager.id === "bun" ? "" : undefined}
+              data-command={manager.command}
+              data-pm={manager.id}
+              data-pm-tab
+              role="tab"
+              type="button"
             >
               {manager.label}
             </button>
@@ -91,78 +99,78 @@ const defaultManual =
       </div>
 
       <button
-        type="button"
+        aria-label="Copy install command"
         class="ms-auto inline-flex size-8 shrink-0 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground data-[copied]:text-emerald-500"
         data-copy
-        aria-label="Copy install command"
+        type="button"
       >
         <svg
-          data-copy-idle
+          aria-hidden="true"
           class="size-3.5"
+          data-copy-idle
           fill="none"
           stroke="currentColor"
           stroke-width="2"
           viewBox="0 0 24 24"
-          aria-hidden="true"
         >
           <rect height="13" rx="2" width="13" x="9" y="9"></rect>
           <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
         </svg>
         <svg
-          data-copy-done
+          aria-hidden="true"
           class="size-3.5"
+          data-copy-done
           fill="none"
+          hidden
           stroke="currentColor"
           stroke-width="2"
           viewBox="0 0 24 24"
-          hidden
-          aria-hidden="true"
         >
           <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path>
         </svg>
       </button>
     </div>
 
-    <pre class="overflow-x-auto px-4 py-3.5 font-mono text-[13px] leading-relaxed text-foreground"><code data-command-text>{managers[1].command}</code></pre>
+    <pre class="overflow-x-auto px-4 py-3.5 font-mono text-3.25 leading-relaxed text-foreground"><code data-command-text>{managers[1].command}</code></pre>
   </div>
 
   <div class="hidden overflow-hidden rounded-xl border border-border/70 bg-card" data-panel="manual">
     <div class="flex items-center justify-between gap-3 border-b border-border/60 px-3 py-2">
       <span class="text-xs font-medium text-muted-foreground">Import</span>
       <button
-        type="button"
+        aria-label="Copy import snippet"
         class="inline-flex size-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground data-[copied]:text-emerald-500"
         data-copy-manual
-        aria-label="Copy import snippet"
+        type="button"
       >
         <svg
-          data-copy-idle
+          aria-hidden="true"
           class="size-3.5"
+          data-copy-idle
           fill="none"
           stroke="currentColor"
           stroke-width="2"
           viewBox="0 0 24 24"
-          aria-hidden="true"
         >
           <rect height="13" rx="2" width="13" x="9" y="9"></rect>
           <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
         </svg>
         <svg
-          data-copy-done
+          aria-hidden="true"
           class="size-3.5"
+          data-copy-done
           fill="none"
+          hidden
           stroke="currentColor"
           stroke-width="2"
           viewBox="0 0 24 24"
-          hidden
-          aria-hidden="true"
         >
           <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path>
         </svg>
       </button>
     </div>
     <pre
-      class="overflow-x-auto px-4 py-3.5 font-mono text-[13px] leading-relaxed text-foreground"
+      class="overflow-x-auto px-4 py-3.5 font-mono text-3.25 leading-relaxed text-foreground"
       data-manual-source
     ><code>{defaultManual}</code></pre>
     <p class="border-t border-border/60 px-4 py-2.5 text-xs text-muted-foreground">
