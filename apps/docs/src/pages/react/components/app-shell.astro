@@ -20,7 +20,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { appShellProps } from "../../../lib/props/app-shell";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "default", text: "Default" },
   { depth: 3, slug: "banner", text: "Banner" },
@@ -35,26 +35,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  appShellProps,
-  Banner,
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  Content,
-  Default,
-  DocsLayout,
-  examples,
-  Header,
-  Inspectors,
-  Installation,
-  imports,
-  Main,
-  Navigation,
-  Panels,
-  PropsTable,
-  Rails,
-};
 ---
 
 <DocsLayout

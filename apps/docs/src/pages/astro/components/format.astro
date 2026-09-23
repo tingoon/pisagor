@@ -12,7 +12,7 @@ import ComponentPreview from "../../../components/docs/component-preview.astro";
 import Installation from "../../../components/docs/installation.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "default", text: "Default" },
   { depth: 3, slug: "number-compact", text: "Number Compact" },
@@ -21,18 +21,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  Default,
-  DocsLayout,
-  examples,
-  Installation,
-  imports,
-  NumberCompact,
-  RelativeTime,
-};
 ---
 
 <DocsLayout

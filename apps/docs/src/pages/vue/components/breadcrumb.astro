@@ -17,7 +17,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { breadcrumbProps } from "../../../lib/props/breadcrumb";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "collapsed", text: "Collapsed" },
   { depth: 3, slug: "custom-separator", text: "Custom Separator" },
@@ -29,23 +29,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  breadcrumbProps,
-  CodeBlock,
-  Collapsed,
-  ComponentHeader,
-  ComponentPreview,
-  Compound,
-  CustomSeparator,
-  Default,
-  DocsLayout,
-  examples,
-  Installation,
-  imports,
-  PropsTable,
-  WithLink,
-  WithMenu,
-};
 ---
 
 <DocsLayout

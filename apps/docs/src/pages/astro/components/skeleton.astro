@@ -15,7 +15,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { skeletonProps } from "../../../lib/props/skeleton";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "circle", text: "Circle" },
   { depth: 3, slug: "composition", text: "Composition" },
@@ -25,21 +25,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  Circle,
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  Composition,
-  Default,
-  DocsLayout,
-  examples,
-  Installation,
-  imports,
-  PropsTable,
-  skeletonProps,
-  Text,
-};
 ---
 
 <DocsLayout

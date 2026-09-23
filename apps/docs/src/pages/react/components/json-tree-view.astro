@@ -15,7 +15,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { jsonTreeViewProps } from "../../../lib/props/json-tree-view";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "data-types", text: "Data Types" },
   { depth: 3, slug: "expand-depth", text: "Expand Depth" },
@@ -25,21 +25,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  DataTypes,
-  Default,
-  DocsLayout,
-  ExpandDepth,
-  examples,
-  Installation,
-  imports,
-  jsonTreeViewProps,
-  MapSet,
-  PropsTable,
-};
 ---
 
 <DocsLayout

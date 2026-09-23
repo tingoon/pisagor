@@ -16,7 +16,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { collapsibleProps } from "../../../lib/props/collapsible";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "default", text: "Default" },
   { depth: 3, slug: "partial-collapse", text: "Partial Collapse" },
@@ -27,22 +27,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  Controlled,
-  collapsibleProps,
-  Default,
-  Disabled,
-  DocsLayout,
-  examples,
-  Installation,
-  imports,
-  Nested,
-  PartialCollapse,
-  PropsTable,
-};
 ---
 
 <DocsLayout

@@ -28,7 +28,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { tagsInputProps } from "../../../lib/props/tags-input";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "sizes", text: "Sizes" },
   { depth: 3, slug: "variants", text: "Variants" },
@@ -51,34 +51,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  BlurBehavior,
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  Controlled,
-  ControlledInputValue,
-  CustomDelimiter,
-  Default,
-  Disabled,
-  DisableEditing,
-  DocsLayout,
-  examples,
-  Installation,
-  Invalid,
-  imports,
-  MaxLength,
-  MaxTags,
-  MaxWithOverflow,
-  PasteBehavior,
-  PropsTable,
-  SanitizeValue,
-  Sizes,
-  tagsInputProps,
-  Validation,
-  Variants,
-  WithCombobox,
-};
 ---
 
 <DocsLayout

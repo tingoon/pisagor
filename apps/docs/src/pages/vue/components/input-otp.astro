@@ -23,7 +23,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { inputOtpProps } from "../../../lib/props/input-otp";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "variants", text: "Variants" },
   { depth: 3, slug: "on-surface", text: "On Surface" },
@@ -41,29 +41,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  BlurOnComplete,
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  Controlled,
-  CustomSize,
-  Default,
-  Disabled,
-  DocsLayout,
-  examples,
-  FourDigits,
-  Installation,
-  Invalid,
-  imports,
-  inputOtpProps,
-  Mask,
-  OnSurface,
-  PropsTable,
-  Separator,
-  Variants,
-  WithPlaceholder,
-};
 ---
 
 <DocsLayout

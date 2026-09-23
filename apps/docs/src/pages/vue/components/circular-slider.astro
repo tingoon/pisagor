@@ -21,7 +21,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { circularSliderProps } from "../../../lib/props/circular-slider";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "on-surface", text: "On Surface" },
   { depth: 3, slug: "sizes", text: "Sizes" },
@@ -37,27 +37,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  Controlled,
-  CustomMarkers,
-  circularSliderProps,
-  Default,
-  Disabled,
-  DocsLayout,
-  examples,
-  Installation,
-  imports,
-  OnSurface,
-  PropsTable,
-  Sizes,
-  Step,
-  Thickness,
-  WithMarkers,
-  WithValue,
-};
 ---
 
 <DocsLayout

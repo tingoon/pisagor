@@ -23,7 +23,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { carouselProps } from "../../../lib/props/carousel";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "autoplay", text: "Autoplay" },
   { depth: 3, slug: "loop", text: "Loop" },
@@ -41,29 +41,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  Autoplay,
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  Compound,
-  Controlled,
-  carouselProps,
-  Default,
-  DocsLayout,
-  examples,
-  Installation,
-  imports,
-  Loop,
-  MouseDrag,
-  OrientationHorizontal,
-  OrientationVertical,
-  PropsTable,
-  SlidesPerPage,
-  Spacing,
-  ThumbnailIndicator,
-  ThumbnailIndicatorVertical,
-};
 ---
 
 <DocsLayout

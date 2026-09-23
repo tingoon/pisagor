@@ -19,7 +19,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { fileInputProps } from "../../../lib/props/file-input";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "accept", text: "Default" },
   { depth: 3, slug: "variants", text: "Variants" },
@@ -33,25 +33,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  Accept,
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  Default,
-  Disabled,
-  DocsLayout,
-  examples,
-  fileInputProps,
-  Installation,
-  Invalid,
-  imports,
-  Multiple,
-  OnFilesChange,
-  PropsTable,
-  Sizes,
-  Variants,
-};
 ---
 
 <DocsLayout

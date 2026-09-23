@@ -1,16 +1,13 @@
 ---
 import PackageLinks from "../../components/docs/package-links.astro";
 import DocsLayout from "../../layouts/docs-layout.astro";
+import { withDocsBase } from "../../lib/nav";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "overview", text: "Overview" },
   { depth: 2, slug: "frameworks", text: "Framework routes" },
   { depth: 2, slug: "next", text: "Next" },
 ];
-
-export { DocsLayout, PackageLinks };
-
-import { withDocsBase } from "../../lib/nav";
 ---
 
 <DocsLayout

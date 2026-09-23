@@ -22,7 +22,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { tourProps } from "../../../lib/props/tour";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "custom-spacing", text: "Custom Spacing" },
   { depth: 3, slug: "async", text: "Async" },
@@ -39,28 +39,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  Async,
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  CustomSpacing,
-  Default,
-  DocsLayout,
-  Events,
-  examples,
-  Installation,
-  imports,
-  KeyboardNavigation,
-  Progress,
-  PropsTable,
-  Skip,
-  StepTypes,
-  tourProps,
-  WaitForClick,
-  WaitForElement,
-  WaitForInput,
-};
 ---
 
 <DocsLayout

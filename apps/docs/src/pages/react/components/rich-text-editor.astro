@@ -15,7 +15,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { richTextEditorProps } from "../../../lib/props/rich-text-editor";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "compound", text: "Compound" },
   { depth: 3, slug: "controlled", text: "Controlled" },
@@ -25,21 +25,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  Compound,
-  Controlled,
-  Disabled,
-  DocsLayout,
-  examples,
-  Installation,
-  Invalid,
-  imports,
-  PropsTable,
-  richTextEditorProps,
-};
 ---
 
 <DocsLayout

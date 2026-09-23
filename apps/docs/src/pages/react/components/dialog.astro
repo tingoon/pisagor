@@ -19,7 +19,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { dialogProps } from "../../../lib/props/dialog";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "default", text: "Default" },
   { depth: 3, slug: "custom-spacing", text: "Custom Spacing" },
@@ -33,25 +33,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  CloseBehavior,
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  CustomSpacing,
-  Default,
-  DocsLayout,
-  dialogProps,
-  examples,
-  InitialFocus,
-  Installation,
-  imports,
-  Nested,
-  NoCloseButton,
-  NonModal,
-  PropsTable,
-  ScrollArea,
-};
 ---
 
 <DocsLayout

@@ -15,7 +15,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { badgeProps } from "../../../lib/props/badge";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "default", text: "Default" },
   { depth: 3, slug: "sizes", text: "Sizes" },
@@ -25,21 +25,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  badgeProps,
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  Default,
-  DocsLayout,
-  examples,
-  Installation,
-  imports,
-  Pill,
-  PropsTable,
-  Sizes,
-  Variants,
-};
 ---
 
 <DocsLayout

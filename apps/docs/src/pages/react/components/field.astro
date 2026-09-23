@@ -30,7 +30,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { fieldProps } from "../../../lib/props/field";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "default", text: "Default" },
   { depth: 3, slug: "orientation-horizontal", text: "Orientation Horizontal" },
@@ -55,36 +55,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  AutocompleteField,
-  CheckboxField,
-  CheckboxGroupField,
-  CodeBlock,
-  ComboboxField,
-  ComboboxMultipleField,
-  ComponentHeader,
-  ComponentPreview,
-  Default,
-  DisabledField,
-  DocsLayout,
-  examples,
-  FieldGroup,
-  fieldProps,
-  Installation,
-  imports,
-  NumberInputStory,
-  OrientationHorizontal,
-  OrientationVertical,
-  PropsTable,
-  RadioGroupField,
-  RequiredField,
-  SelectField,
-  SliderField,
-  SwitchField,
-  TextareaField,
-  WithError,
-  WithInputGroup,
-};
 ---
 
 <DocsLayout

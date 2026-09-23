@@ -8,7 +8,7 @@ interface Props {
   class?: string;
 }
 
-export const copyId = `copy-${Math.random().toString(36).slice(2, 10)}`;
+const copyId = `copy-${Math.random().toString(36).slice(2, 10)}`;
 
 const code = Astro.props.code ?? "";
 const requestedLang = Astro.props.lang ?? "bash";

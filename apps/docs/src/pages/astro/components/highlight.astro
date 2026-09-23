@@ -8,7 +8,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { highlightProps } from "../../../lib/props/highlight";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "default", text: "Default" },
   { depth: 3, slug: "multiple", text: "Multiple" },
@@ -16,19 +16,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  Default,
-  DocsLayout,
-  examples,
-  highlightProps,
-  Installation,
-  imports,
-  Multiple,
-  PropsTable,
-};
 ---
 
 <DocsLayout

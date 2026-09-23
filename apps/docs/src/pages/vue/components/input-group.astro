@@ -26,7 +26,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { inputGroupProps } from "../../../lib/props/input-group";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "sizes", text: "Sizes" },
   { depth: 3, slug: "variants", text: "Variants" },
@@ -47,32 +47,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  AlignBlockEnd,
-  AlignBlockStart,
-  AlignInlineEnd,
-  AlignInlineStart,
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  Default,
-  Disabled,
-  DocsLayout,
-  examples,
-  Installation,
-  Invalid,
-  imports,
-  inputGroupProps,
-  OnSurface,
-  PropsTable,
-  Sizes,
-  Variants,
-  WithBadge,
-  WithKeyboardShortcut,
-  WithSpinner,
-  WithText,
-  WithTextarea,
-};
 ---
 
 <DocsLayout

@@ -28,7 +28,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { listboxProps } from "../../../lib/props/listbox";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "disabled-item", text: "Disabled Item" },
   { depth: 3, slug: "grid", text: "Grid" },
@@ -51,34 +51,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  Compound,
-  Controlled,
-  Default,
-  Disabled,
-  DisabledItem,
-  DocsLayout,
-  examples,
-  Grid,
-  Grouping,
-  Horizontal,
-  ImageExplorer,
-  Installation,
-  imports,
-  listboxProps,
-  PropsTable,
-  SelectionExtended,
-  SelectionMultiple,
-  SelectionNone,
-  TransferList,
-  WithDescription,
-  WithFilter,
-  WithIcon,
-  WithPopover,
-};
 ---
 
 <DocsLayout

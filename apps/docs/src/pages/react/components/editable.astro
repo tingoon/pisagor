@@ -25,7 +25,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { editableProps } from "../../../lib/props/editable";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "invalid", text: "Invalid" },
   { depth: 3, slug: "disabled", text: "Disabled" },
@@ -45,31 +45,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  ActivationClick,
-  ActivationFocus,
-  ActivationNone,
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  Controlled,
-  Dblclick,
-  Default,
-  Disabled,
-  DocsLayout,
-  editableProps,
-  examples,
-  Installation,
-  Invalid,
-  imports,
-  OrientationHorizontal,
-  OrientationVertical,
-  PropsTable,
-  Sizes,
-  Variants,
-  WithoutControls,
-  WithTextarea,
-};
 ---
 
 <DocsLayout

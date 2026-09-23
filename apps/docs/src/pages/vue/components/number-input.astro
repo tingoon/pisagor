@@ -26,7 +26,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { numberInputProps } from "../../../lib/props/number-input";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "sizes", text: "Sizes" },
   { depth: 3, slug: "variants", text: "Variants" },
@@ -47,32 +47,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  Compound,
-  Controlled,
-  Default,
-  Disabled,
-  DocsLayout,
-  examples,
-  FieldOnly,
-  Formatted,
-  Installation,
-  Invalid,
-  imports,
-  MouseWheel,
-  numberInputProps,
-  OnSurface,
-  PropsTable,
-  Range,
-  Sizes,
-  Step,
-  Variants,
-  WithField,
-  WithScrubber,
-};
 ---
 
 <DocsLayout

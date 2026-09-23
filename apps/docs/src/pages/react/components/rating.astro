@@ -21,7 +21,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { ratingProps } from "../../../lib/props/rating";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "custom-color", text: "Custom Color" },
   { depth: 3, slug: "count", text: "Count" },
@@ -37,27 +37,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  Controlled,
-  Count,
-  CustomColor,
-  CustomIcon,
-  CustomSize,
-  Disabled,
-  DocsLayout,
-  examples,
-  HalfStar,
-  Installation,
-  Invalid,
-  imports,
-  PropsTable,
-  Readonly,
-  ratingProps,
-  Testimonial,
-};
 ---
 
 <DocsLayout

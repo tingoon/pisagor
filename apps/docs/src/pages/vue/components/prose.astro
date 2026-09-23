@@ -34,7 +34,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { proseProps } from "../../../lib/props/prose";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "list", text: "List" },
   { depth: 3, slug: "separator", text: "Separator" },
@@ -63,40 +63,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  A,
-  Blockquote,
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  Default,
-  Details,
-  Dl,
-  DocsLayout,
-  examples,
-  H1,
-  H2,
-  H3,
-  H4,
-  H5,
-  H6,
-  HtmlTable,
-  HtmlTrusted,
-  InlineCode,
-  Installation,
-  imports,
-  Kbd,
-  List,
-  Mark,
-  Media,
-  NotProse,
-  Ol,
-  P,
-  PropsTable,
-  proseProps,
-  Separator,
-  Small,
-};
 ---
 
 <DocsLayout

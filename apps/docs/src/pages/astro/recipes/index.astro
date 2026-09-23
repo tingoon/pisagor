@@ -1,11 +1,8 @@
 ---
 import DocsLayout from "../../../layouts/docs-layout.astro";
+import { withDocsBase } from "../../../lib/nav";
 
 const headings = [{ depth: 2, slug: "overview", text: "Overview" }];
-
-export { DocsLayout, headings };
-
-import { withDocsBase } from "../../../lib/nav";
 ---
 
 <DocsLayout

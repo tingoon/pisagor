@@ -19,7 +19,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { imageCropperProps } from "../../../lib/props/image-cropper";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "aspect-ratio", text: "Aspect Ratio" },
   { depth: 3, slug: "circle-crop", text: "Circle Crop" },
@@ -33,25 +33,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  AspectRatio,
-  CircleCrop,
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  ControlledZoom,
-  Default,
-  DocsLayout,
-  examples,
-  FixedCropArea,
-  InitialCrop,
-  Installation,
-  imageCropperProps,
-  imports,
-  MinMaxSize,
-  PropsTable,
-  ZoomLimits,
-};
 ---
 
 <DocsLayout

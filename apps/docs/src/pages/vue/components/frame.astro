@@ -14,7 +14,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { frameProps } from "../../../lib/props/frame";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "separated-panels", text: "Separated Panels" },
   { depth: 3, slug: "with-form-controls", text: "With Form Controls" },
@@ -23,20 +23,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  Default,
-  DocsLayout,
-  examples,
-  frameProps,
-  Installation,
-  imports,
-  PropsTable,
-  SeparatedPanels,
-  WithFormControls,
-};
 ---
 
 <DocsLayout

@@ -33,7 +33,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { dataGridProps } from "../../../lib/props/data-grid";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "active-filter-chips", text: "Active Filter Chips" },
   { depth: 3, slug: "column-filters", text: "Column Filters" },
@@ -61,39 +61,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  ActiveFilterChips,
-  CodeBlock,
-  ColumnFilters,
-  ColumnLayout,
-  ColumnPinning,
-  ColumnResize,
-  ColumnVisibility,
-  ComponentHeader,
-  ComponentPreview,
-  DocsLayout,
-  dataGridProps,
-  ExpandingRows,
-  examples,
-  FilterHead,
-  GlobalSelection,
-  GroupedRows,
-  Installation,
-  imports,
-  LoadingState,
-  ManualPagination,
-  MultiGrouping,
-  OrdersWithFooter,
-  Paginated,
-  PropsTable,
-  RichCells,
-  RowDetails,
-  RowSelection,
-  Sorting,
-  StripedVariant,
-  Virtualized,
-  WithSortableData,
-};
 ---
 
 <DocsLayout

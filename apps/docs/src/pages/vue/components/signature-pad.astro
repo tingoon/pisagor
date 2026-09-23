@@ -17,7 +17,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { signaturePadProps } from "../../../lib/props/signature-pad";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "on-surface", text: "On Surface" },
   { depth: 3, slug: "invalid", text: "Invalid" },
@@ -29,23 +29,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  Controlled,
-  Default,
-  Disabled,
-  DocsLayout,
-  examples,
-  ImagePreview,
-  Installation,
-  Invalid,
-  imports,
-  OnSurface,
-  PropsTable,
-  signaturePadProps,
-};
 ---
 
 <DocsLayout

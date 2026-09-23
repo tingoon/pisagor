@@ -21,7 +21,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { itemProps } from "../../../lib/props/item";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "default", text: "Default" },
   { depth: 3, slug: "variants", text: "Variants" },
@@ -37,27 +37,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  CustomSpacing,
-  Default,
-  DocsLayout,
-  examples,
-  Group,
-  Header,
-  Icon,
-  Image,
-  Installation,
-  imports,
-  itemProps,
-  Link,
-  PropsTable,
-  Variants,
-  WithAvatar,
-  WithMedia,
-};
 ---
 
 <DocsLayout

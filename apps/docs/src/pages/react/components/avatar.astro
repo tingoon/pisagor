@@ -15,7 +15,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { avatarProps } from "../../../lib/props/avatar";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "sizes", text: "Sizes" },
   { depth: 3, slug: "shapes", text: "Shapes" },
@@ -25,21 +25,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  avatarProps,
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  Default,
-  DocsLayout,
-  examples,
-  Fallbacks,
-  Installation,
-  imports,
-  PropsTable,
-  Shapes,
-  Sizes,
-};
 ---
 
 <DocsLayout

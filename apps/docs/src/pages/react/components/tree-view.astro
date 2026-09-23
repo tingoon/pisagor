@@ -21,7 +21,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { treeViewProps } from "../../../lib/props/tree-view";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "links", text: "Links" },
   { depth: 3, slug: "checkbox-tree", text: "Checkbox Tree" },
@@ -37,27 +37,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  CheckboxTree,
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  Controlled,
-  CustomIcons,
-  CustomIconsFolder,
-  CustomIconsItem,
-  Default,
-  DocsLayout,
-  examples,
-  Installation,
-  imports,
-  Links,
-  MultipleSelection,
-  PropsTable,
-  Rename,
-  treeViewProps,
-  WithContextMenu,
-};
 ---
 
 <DocsLayout

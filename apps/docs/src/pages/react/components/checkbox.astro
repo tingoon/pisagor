@@ -18,7 +18,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { checkboxProps } from "../../../lib/props/checkbox";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "variants", text: "Variants" },
   { depth: 3, slug: "disabled", text: "Disabled" },
@@ -31,24 +31,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  CheckboxGroup,
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  Controlled,
-  checkboxProps,
-  Default,
-  Disabled,
-  DocsLayout,
-  examples,
-  Indeterminate,
-  Installation,
-  Invalid,
-  imports,
-  PropsTable,
-  Variants,
-};
 ---
 
 <DocsLayout

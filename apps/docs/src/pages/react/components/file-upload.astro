@@ -24,7 +24,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { fileUploadProps } from "../../../lib/props/file-upload";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "default", text: "Default" },
   { depth: 3, slug: "variants", text: "Variants" },
@@ -43,30 +43,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  AcceptedFileTypes,
-  ClearTrigger,
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  CustomPreview,
-  CustomSpacing,
-  Default,
-  DirectoryUpload,
-  Disabled,
-  DocsLayout,
-  Dropzone,
-  examples,
-  fileUploadProps,
-  Installation,
-  Invalid,
-  imports,
-  MediaCapture,
-  MultipleFiles,
-  PropsTable,
-  Trigger,
-  Variants,
-};
 ---
 
 <DocsLayout

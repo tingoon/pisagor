@@ -24,7 +24,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { dropdownMenuProps } from "../../../lib/props/dropdown-menu";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "default", text: "Default" },
   { depth: 3, slug: "shortcuts", text: "Shortcuts" },
@@ -43,30 +43,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  Checkboxes,
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  Default,
-  Destructive,
-  DocsLayout,
-  dropdownMenuProps,
-  examples,
-  GroupLabel,
-  Icons,
-  Installation,
-  imports,
-  Link,
-  Nested,
-  Placements,
-  PropsTable,
-  QuickItem,
-  RadioGroup,
-  Shortcuts,
-  WithScroll,
-  WithSeparator,
-};
 ---
 
 <DocsLayout

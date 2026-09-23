@@ -17,7 +17,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { commandProps } from "../../../lib/props/command";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "scrollable", text: "Scrollable" },
   { depth: 3, slug: "shortcuts", text: "Shortcuts" },
@@ -29,23 +29,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  commandProps,
-  Default,
-  DocsLayout,
-  examples,
-  Groups,
-  Installation,
-  imports,
-  PropsTable,
-  Scrollable,
-  Shortcuts,
-  WithDialog,
-  WithFooter,
-};
 ---
 
 <DocsLayout

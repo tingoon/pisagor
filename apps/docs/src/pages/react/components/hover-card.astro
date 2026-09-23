@@ -16,7 +16,7 @@ import PropsTable from "../../../components/docs/props-table.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 import { hoverCardProps } from "../../../lib/props/hover-card";
 
-export const headings = [
+const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 3, slug: "default", text: "Default" },
   { depth: 3, slug: "disabled", text: "Disabled" },
@@ -27,22 +27,6 @@ export const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-export {
-  CodeBlock,
-  ComponentHeader,
-  ComponentPreview,
-  Controlled,
-  Default,
-  Disabled,
-  DocsLayout,
-  examples,
-  hoverCardProps,
-  Installation,
-  imports,
-  Placements,
-  PropsTable,
-  TriggersDelays,
-};
 ---
 
 <DocsLayout
