@@ -1,5 +1,12 @@
 import type { Framework } from "../../lib/nav";
 import { frameworks, swapFrameworkPath } from "../../lib/nav";
+import { AstroBrandIcon, ReactBrandIcon, VueBrandIcon } from "./brand-icons";
+
+const frameworkIcons = {
+  react: ReactBrandIcon,
+  vue: VueBrandIcon,
+  astro: AstroBrandIcon,
+} as const;
 
 export default function FrameworkSwitcher({
   framework,
@@ -15,17 +22,19 @@ export default function FrameworkSwitcher({
     >
       {frameworks.map((item) => {
         const active = item.id === framework;
+        const Icon = frameworkIcons[item.id];
         return (
           <a
             aria-current={active ? "page" : undefined}
             className={
               active
-                ? "rounded-full bg-background px-2.5 py-1 text-xs font-semibold text-foreground shadow-xs"
-                : "rounded-full px-2.5 py-1 text-xs font-medium text-muted-foreground transition hover:text-foreground"
+                ? "docs-press inline-flex items-center gap-1.5 rounded-full bg-background px-2.5 py-1 text-xs font-semibold text-foreground shadow-xs"
+                : "docs-press inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium text-muted-foreground hover:text-foreground"
             }
             href={swapFrameworkPath(pathname, item.id)}
             key={item.id}
           >
+            <Icon className="opacity-90" size={13} />
             {item.label}
           </a>
         );

@@ -24,7 +24,7 @@ const reportUrl =
     encodeURIComponent(title ? `Docs preview: ${title}` : "Docs preview issue");
 
 const iconBtn =
-  "relative inline-flex size-7 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 data-[active]:bg-muted data-[active]:text-foreground";
+  "docs-press relative inline-flex size-7 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 data-[active]:bg-muted data-[active]:text-foreground";
 ---
 
 <section
@@ -47,7 +47,7 @@ const iconBtn =
     >
       <button
         aria-selected="true"
-        class="rounded-1.25 px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground data-[active]:bg-background data-[active]:text-foreground data-[active]:shadow-sm"
+        class="rounded-1.25 px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground data-[active]:bg-background data-[active]:text-foreground data-[active]:shadow-sm docs-press"
         data-active
         data-view="preview"
         data-view-tab
@@ -58,7 +58,7 @@ const iconBtn =
       </button>
       <button
         aria-selected="false"
-        class="rounded-1.25 px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground data-[active]:bg-background data-[active]:text-foreground data-[active]:shadow-sm"
+        class="rounded-1.25 px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground data-[active]:bg-background data-[active]:text-foreground data-[active]:shadow-sm docs-press"
         data-view="code"
         data-view-tab
         role="tab"
@@ -125,7 +125,7 @@ const iconBtn =
           data-deps-panel
           role="dialog"
         >
-          <p class="mb-1.5 px-1 text-2.6 font-semibold uppercase tracking-wide text-muted-foreground">
+          <p class="mb-1.5 px-1 docs-label">
             Dependencies
           </p>
           <ul class="space-y-0.5 font-mono text-xs">

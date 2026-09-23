@@ -25,9 +25,7 @@ const rows = meta
     >
       {rows.map((row) => (
         <div class="flex min-w-0 items-baseline gap-2">
-          <dt class="shrink-0 text-2.75 font-medium uppercase tracking-[0.06em] text-muted-foreground/80">
-            {row.label}
-          </dt>
+          <dt class="docs-label shrink-0">{row.label}</dt>
           <dd class="font-mono text-3.25 text-foreground/90">{row.value}</dd>
         </div>
       ))}

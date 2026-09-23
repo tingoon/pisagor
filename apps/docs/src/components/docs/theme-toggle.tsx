@@ -135,7 +135,7 @@ export default function ThemeToggle() {
         aria-expanded={open}
         aria-haspopup="menu"
         aria-label={`Theme: ${preference}. Resolved ${resolved}.`}
-        className="inline-flex size-8 items-center justify-center rounded-xl border border-border/70 bg-card/50 text-foreground shadow-xs backdrop-blur transition hover:bg-accent/60"
+        className="docs-press inline-flex size-8 items-center justify-center rounded-xl border border-border/70 bg-card/50 text-foreground shadow-xs backdrop-blur hover:bg-accent/60"
         onClick={() => setOpen((value) => !value)}
         type="button"
       >
@@ -144,7 +144,7 @@ export default function ThemeToggle() {
 
       {open ? (
         <div
-          className="absolute end-0 z-50 mt-2 min-w-36 overflow-hidden rounded-xl border border-border/70 bg-popover p-1 text-popover-foreground shadow-md"
+          className="docs-material-heavy docs-sheet-panel docs-sheet-panel-end absolute end-0 z-50 mt-2 min-w-36 overflow-hidden rounded-xl border border-white/20 p-1 text-popover-foreground shadow-md dark:border-white/10"
           id={menuId}
           role="menu"
         >
@@ -153,7 +153,7 @@ export default function ThemeToggle() {
             return (
               <button
                 aria-checked={active}
-                className="flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 text-left text-sm transition hover:bg-accent/60 data-[active]:bg-accent data-[active]:text-accent-foreground"
+                className="docs-press flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 text-left text-sm hover:bg-accent/60 data-[active]:bg-accent data-[active]:text-accent-foreground"
                 data-active={active || undefined}
                 key={option.id}
                 onClick={() => choose(option.id)}

@@ -1,4 +1,5 @@
 ---
+import { Pi } from "@phosphor-icons/react";
 import type { DocsArea, Framework, NavSection } from "../lib/nav";
 import { frameworkPath } from "../lib/nav";
 import FrameworkSwitcher from "./docs/framework-switcher";
@@ -14,10 +15,8 @@ interface Props {
 }
 ---
 
-<header
-  class="sticky top-0 z-40 border-b border-border/55 bg-card/80 shadow-sm backdrop-blur-xl backdrop-saturate-150"
->
-  <div class="mx-auto flex h-14 max-w-384 items-center gap-3 px-4 sm:px-6">
+<header class="docs-material docs-scroll-edge-b sticky top-0 z-40">
+  <div class="relative mx-auto flex h-14 max-w-384 items-center gap-3 px-4 sm:px-6">
     <MobileNav
       currentPath={Astro.props.currentPath}
       framework={Astro.props.framework}
@@ -25,13 +24,13 @@ interface Props {
       client:load
     />
     <a
-      class="group flex items-center gap-2.5 font-semibold tracking-tight"
+      class="docs-press group flex items-center gap-2.5 font-semibold tracking-tight"
       href={frameworkPath(Astro.props.framework)}
     >
       <span
-        class="inline-flex size-8 items-center justify-center rounded-xl bg-primary text-sm font-bold text-primary-foreground shadow-[0_0_24px_-6px] shadow-primary/50 transition group-hover:scale-[1.03]"
+        class="inline-flex size-8 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-[0_0_24px_-6px] shadow-primary/40 transition duration-100 group-hover:scale-[1.03] group-active:scale-[0.97]"
       >
-        π
+        <Pi aria-hidden size={18} weight="bold" />
       </span>
       <span class="hidden sm:inline">Pisagor</span>
     </a>
