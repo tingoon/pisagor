@@ -1,0 +1,21 @@
+{
+  "extends": "//",
+  "html": {
+    "experimentalFullSupportEnabled": false,
+    "formatter": {
+      "enabled": false
+    }
+  },
+  "linter": {
+    "domains": {
+      "svelte": "recommended"
+    },
+    "rules": {
+      "a11y": {
+        "noAutofocus": "off",
+        "useAriaPropsForRole": "off",
+        "useSemanticElements": "off"
+      }
+    }
+  }
+}

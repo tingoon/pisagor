@@ -1,0 +1,36 @@
+---
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import Installation from "../../../components/docs/installation.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 2, slug: "installation", text: "Installation" },
+];
+
+const usage = `<script>
+  import { Popover } from "@pisagor/svelte/popover";
+</script>
+
+<Popover>
+  <Popover.Trigger>Open</Popover.Trigger>
+  <Popover.Content>Hello</Popover.Content>
+</Popover>`;
+---
+
+<DocsLayout
+  description="Anchored panel with header, body, and footer parts."
+  framework="svelte"
+  headings={headings}
+  title="Popover"
+>
+  <ComponentHeader framework="svelte" id="popover" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <pre
+    class="mb-8 overflow-x-auto rounded-lg border border-border bg-muted/40 p-4 text-sm"
+  ><code>{usage}</code></pre>
+
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/svelte" />
+</DocsLayout>

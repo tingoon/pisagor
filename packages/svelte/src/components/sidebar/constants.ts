@@ -1,0 +1,6 @@
+export const SIDEBAR_STORAGE_KEY = "sidebar_state";
+export const SIDEBAR_WIDTH = "16rem";
+export const SIDEBAR_WIDTH_MOBILE = "18rem";
+export const SIDEBAR_WIDTH_ICON = "3rem";
+
+export const MOBILE_BREAKPOINT = 768;
