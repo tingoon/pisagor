@@ -61,7 +61,7 @@ Weekly dependency PRs: Actions → **Dependency Updates** (Renovate; config in `
 
 ## Turborepo Remote Cache
 
-**Checks** and **Docs Site** share Turborepo artifacts via [Vercel Remote Cache](https://vercel.com/docs/monorepos/remote-caching) (OIDC; no long-lived token). Team: `tingoon` (repo variable `TURBO_TEAM`).
+**Checks** and **Docs Site** share Turborepo artifacts via [Vercel Remote Cache](https://vercel.com/docs/monorepos/remote-caching) through `./.github/actions/setup-turborepo` (OIDC; no long-lived token). Team: `tingoon` (repo variable `TURBO_TEAM`).
 
 One-time setup (owners):
 

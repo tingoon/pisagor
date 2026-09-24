@@ -19,10 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
-      - name: Set up Turborepo Remote Cache
-        uses: vercel/setup-turborepo-remote-cache-action@v1.1.0
-        with:
-          team: ${{ vars.TURBO_TEAM }}
+      - uses: ./.github/actions/setup-turborepo
       - uses: ./.github/actions/setup-bun
       - name: Build docs
         run: bunx turbo build --filter=docs

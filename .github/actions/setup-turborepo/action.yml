@@ -1,0 +1,9 @@
+name: Setup Turborepo
+description: Exchange a GitHub OIDC token for Turborepo Remote Cache access
+
+runs:
+  using: composite
+  steps:
+    - uses: vercel/setup-turborepo-remote-cache-action@v1.1.0
+      with:
+        team: ${{ vars.TURBO_TEAM }}
