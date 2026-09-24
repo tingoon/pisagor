@@ -3,7 +3,7 @@
     "url": "https://github.com/tingoon/pisagor/issues"
   },
   "dependencies": {
-    "@pisagor/react": "^0.2.0",
+    "@pisagor/react": "workspace:*",
     "@pisagor/utils": "workspace:*",
     "@tanstack/react-form": "^1.33.5"
   },

@@ -4,7 +4,7 @@
   },
   "dependencies": {
     "@pisagor/utils": "workspace:*",
-    "@pisagor/vue": "^0.2.0",
+    "@pisagor/vue": "workspace:*",
     "@tanstack/vue-form": "^1.33.5"
   },
   "description": "Form fields and TanStack Form integration for Pisagor Vue.",
