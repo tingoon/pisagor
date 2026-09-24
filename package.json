@@ -27,7 +27,6 @@
     "@types/node": "^26.6.2",
     "knip": "^6.37.0",
     "lefthook": "^2.1.14",
-    "repomix": "^1.18.1",
     "rulesync": "^17.0.0",
     "taze": "^21.1.0",
     "turbo": "^2.11.2",
@@ -50,7 +49,7 @@
     "lint": "biome lint .",
     "prepare": "lefthook install && rulesync install",
     "rulesync": "rulesync generate",
-    "setup": "bun run rulesync && repomix",
+    "setup": "bun run rulesync",
     "test": "turbo test",
     "type-check": "turbo type-check"
   },

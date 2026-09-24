@@ -2,9 +2,6 @@ import { defineConfig } from "knip/config";
 
 export default defineConfig({
   workspaces: {
-    ".": {
-      entry: ["repomix.config.ts", "taze.config.ts"],
-    },
     "apps/astro": {
       entry: [".storybook/**/*", "src/**/*", "../../packages/astro/**/*.stories.@(ts|tsx)"],
       ignoreDependencies: ["chromatic"],
