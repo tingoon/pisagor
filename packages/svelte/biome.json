@@ -1,7 +1,6 @@
 {
   "extends": "//",
   "html": {
-    "experimentalFullSupportEnabled": false,
     "formatter": {
       "enabled": false
     }
