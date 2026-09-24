@@ -8,11 +8,6 @@ const { class: className, ...rest } = Astro.props;
 const slots = timelineItemRecipe();
 ---
 
-<div
-  {...rest}
-  class={slots.indicator({ className })}
-  data-part="indicator"
-  data-scope="timeline"
->
+<div {...rest} class={slots.indicator({ className })} data-part="indicator" data-scope="timeline">
   <slot />
 </div>

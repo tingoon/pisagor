@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { Button } from "@pisagor/vue";
 import { toast } from "..";
 
@@ -17,11 +17,10 @@ function handleWarning() {
 </script>
 
 <template>
-        <div class="flex flex-wrap gap-2">
-          <Button variant="outline" @click="handleSuccess" >Success</Button>
-          <Button variant="outline" @click="handleError" >Error</Button>
-          <Button variant="outline" @click="handleWarning" >Warning</Button>
-          <Button variant="outline" @click="handleInfo" >Info</Button>
-        </div>
-  
+  <div class="flex flex-wrap gap-2">
+    <Button variant="outline" @click="handleSuccess">Success</Button>
+    <Button variant="outline" @click="handleError">Error</Button>
+    <Button variant="outline" @click="handleWarning">Warning</Button>
+    <Button variant="outline" @click="handleInfo">Info</Button>
+  </div>
 </template>

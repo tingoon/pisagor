@@ -8,11 +8,6 @@ const { class: className, ...rest } = Astro.props;
 const slots = frameRecipe();
 ---
 
-<div
-  {...rest}
-  class={slots.panelTitle({ className })}
-  data-part="panel-title"
-  data-scope="frame"
->
+<div {...rest} class={slots.panelTitle({ className })} data-part="panel-title" data-scope="frame">
   <slot />
 </div>

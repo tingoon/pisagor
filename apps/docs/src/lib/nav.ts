@@ -430,5 +430,5 @@ export function swapFrameworkPath(pathname: string, next: Framework) {
   if (next === "astro" && (parts[1] === "forms" || parts[1] === "charts")) {
     return frameworkPath(next);
   }
-  return withDocsBase("/" + parts.join("/"));
+  return withDocsBase(`/${parts.join("/")}`);
 }

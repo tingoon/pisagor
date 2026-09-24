@@ -9,24 +9,22 @@ interface Props {
 ---
 
 <nav aria-label="Primary" class="ms-6 hidden items-center gap-0.5 md:flex">
-  {
-    mainNav.map((item) => {
-      const href = frameworkPath(Astro.props.framework, item.slug);
-      const active = Astro.props.area === item.id;
-      return (
-        <a
-          aria-current={active ? "page" : undefined}
-          class:list={[
-            "docs-press rounded-full px-3 py-1.5 text-sm font-medium",
-            active
-              ? "bg-accent/80 text-accent-foreground"
-              : "text-foreground/65 hover:bg-accent/40 hover:text-foreground",
-          ]}
-          href={href}
-        >
-          {item.label}
-        </a>
-      );
-    })
-  }
+  {mainNav.map((item) => {
+  const href = frameworkPath(Astro.props.framework, item.slug);
+  const active = Astro.props.area === item.id;
+  return (
+    <a
+      aria-current={active ? "page" : undefined}
+      class:list={[
+        "docs-press rounded-full px-3 py-1.5 text-sm font-medium",
+        active
+          ? "bg-accent/80 text-accent-foreground"
+          : "text-foreground/65 hover:bg-accent/40 hover:text-foreground",
+      ]}
+      href={href}
+    >
+      {item.label}
+    </a>
+  );
+})}
 </nav>

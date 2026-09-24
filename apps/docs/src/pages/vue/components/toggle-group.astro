@@ -40,7 +40,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -49,9 +48,7 @@ const headings = [
   headings={headings}
   title="Toggle Group"
 >
-
   <ComponentHeader framework="vue" id="toggle-group" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -64,47 +61,47 @@ const headings = [
   <ComponentPreview code={examples.Sizes} language="vue" title="Sizes">
     <Sizes client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
   <ComponentPreview code={examples.Variants} language="vue" title="Variants">
     <Variants client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="horizontal">Horizontal</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="horizontal">Horizontal</h3>
   <ComponentPreview code={examples.Horizontal} language="vue" title="Horizontal">
     <Horizontal client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="vertical">Vertical</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="vertical">Vertical</h3>
   <ComponentPreview code={examples.Vertical} language="vue" title="Vertical">
     <Vertical client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="spacing">Spacing</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="spacing">Spacing</h3>
   <ComponentPreview code={examples.Spacing} language="vue" title="Spacing">
     <Spacing client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled-item">Disabled Item</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled-item">Disabled Item</h3>
   <ComponentPreview code={examples.DisabledItem} language="vue" title="Disabled Item">
     <DisabledItem client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="font-weight">Font Weight</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="font-weight">Font Weight</h3>
   <ComponentPreview code={examples.FontWeight} language="vue" title="Font Weight">
     <FontWeight client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
   <ComponentPreview code={examples.Disabled} language="vue" title="Disabled">
     <Disabled client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="single">Single</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="single">Single</h3>
   <ComponentPreview code={examples.Single} language="vue" title="Single">
     <Single client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
   <ComponentPreview code={examples.Controlled} language="vue" title="Controlled">
     <Controlled client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="compound">Compound</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="compound">Compound</h3>
   <ComponentPreview code={examples.Compound} language="vue" title="Compound">
     <Compound client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
   <ComponentPreview code={examples.Default} language="vue" title="Default">
     <Default client:only="vue" />
   </ComponentPreview>
@@ -114,7 +111,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/toggle-group</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/toggle-group</code>. Native HTML attributes are also
+    supported and omitted from this table.
   </p>
   <PropsTable rows={toggleGroupProps} />
 </DocsLayout>

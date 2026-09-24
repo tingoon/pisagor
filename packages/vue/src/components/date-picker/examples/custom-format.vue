@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { PhCalendar } from "@phosphor-icons/vue";
 import { Button, Calendar } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
@@ -52,16 +52,15 @@ function handleValueChange(details?: { value?: unknown; page?: unknown }) {
 </script>
 
 <template>
-        <DatePicker :value="value" @value-change="handleValueChange" >
-          <DatePicker.Trigger :asChild="true">
-            <Button variant="outline">
-              <PhCalendar />
-              {{ formattedDate }}
-            </Button>
-          </DatePicker.Trigger>
-          <DatePicker.Content>
-            <CalendarBody />
-          </DatePicker.Content>
-        </DatePicker>
-  
+  <DatePicker :value="value" @value-change="handleValueChange">
+    <DatePicker.Trigger :as-child="true">
+      <Button variant="outline">
+        <PhCalendar />
+        {{ formattedDate }}
+      </Button>
+    </DatePicker.Trigger>
+    <DatePicker.Content>
+      <CalendarBody />
+    </DatePicker.Content>
+  </DatePicker>
 </template>

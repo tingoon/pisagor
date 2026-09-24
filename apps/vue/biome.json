@@ -1,8 +1,18 @@
 {
   "extends": "//",
+  "linter": {
+    "domains": {
+      "vue": "recommended"
+    },
+    "rules": {
+      "style": {
+        "useVueMultiWordComponentNames": "off"
+      }
+    }
+  },
   "overrides": [
     {
-      "includes": ["**/*.stories.ts", "../../../packages/vue/src/**/*.stories.ts"],
+      "includes": ["**/*.stories.ts"],
       "linter": {
         "rules": {
           "suspicious": {

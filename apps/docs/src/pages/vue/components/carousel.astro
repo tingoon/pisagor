@@ -40,7 +40,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -49,9 +48,7 @@ const headings = [
   headings={headings}
   title="Carousel"
 >
-
   <ComponentHeader framework="vue" id="carousel" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -64,47 +61,65 @@ const headings = [
   <ComponentPreview code={examples.Autoplay} language="vue" title="Autoplay">
     <Autoplay client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="loop">Loop</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="loop">Loop</h3>
   <ComponentPreview code={examples.Loop} language="vue" title="Loop">
     <Loop client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="mouse-drag">Mouse Drag</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="mouse-drag">Mouse Drag</h3>
   <ComponentPreview code={examples.MouseDrag} language="vue" title="Mouse Drag">
     <MouseDrag client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-horizontal">Orientation Horizontal</h3>
-  <ComponentPreview code={examples.OrientationHorizontal} language="vue" title="Orientation Horizontal">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-horizontal">
+    Orientation Horizontal
+  </h3>
+  <ComponentPreview
+    code={examples.OrientationHorizontal}
+    language="vue"
+    title="Orientation Horizontal"
+  >
     <OrientationHorizontal client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-vertical">Orientation Vertical</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-vertical">
+    Orientation Vertical
+  </h3>
   <ComponentPreview code={examples.OrientationVertical} language="vue" title="Orientation Vertical">
     <OrientationVertical client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="spacing">Spacing</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="spacing">Spacing</h3>
   <ComponentPreview code={examples.Spacing} language="vue" title="Spacing">
     <Spacing client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="slides-per-page">Slides Per Page</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="slides-per-page">
+    Slides Per Page
+  </h3>
   <ComponentPreview code={examples.SlidesPerPage} language="vue" title="Slides Per Page">
     <SlidesPerPage client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="thumbnail-indicator-vertical">Thumbnail Indicator Vertical</h3>
-  <ComponentPreview code={examples.ThumbnailIndicatorVertical} language="vue" title="Thumbnail Indicator Vertical">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="thumbnail-indicator-vertical">
+    Thumbnail Indicator Vertical
+  </h3>
+  <ComponentPreview
+    code={examples.ThumbnailIndicatorVertical}
+    language="vue"
+    title="Thumbnail Indicator Vertical"
+  >
     <ThumbnailIndicatorVertical client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="thumbnail-indicator">Thumbnail Indicator</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="thumbnail-indicator">
+    Thumbnail Indicator
+  </h3>
   <ComponentPreview code={examples.ThumbnailIndicator} language="vue" title="Thumbnail Indicator">
     <ThumbnailIndicator client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
   <ComponentPreview code={examples.Controlled} language="vue" title="Controlled">
     <Controlled client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="compound">Compound</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="compound">Compound</h3>
   <ComponentPreview code={examples.Compound} language="vue" title="Compound">
     <Compound client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
   <ComponentPreview code={examples.Default} language="vue" title="Default">
     <Default client:only="vue" />
   </ComponentPreview>
@@ -114,7 +129,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/carousel</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/carousel</code>. Native HTML attributes are also supported
+    and omitted from this table.
   </p>
   <PropsTable rows={carouselProps} />
 </DocsLayout>

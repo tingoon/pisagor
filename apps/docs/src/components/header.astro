@@ -38,7 +38,11 @@ interface Props {
     <MainNav area={Astro.props.area} framework={Astro.props.framework} />
 
     <div class="ms-auto flex items-center gap-2">
-      <FrameworkSwitcher framework={Astro.props.framework} pathname={Astro.props.currentPath} client:load />
+      <FrameworkSwitcher
+        framework={Astro.props.framework}
+        pathname={Astro.props.currentPath}
+        client:load
+      />
       <ThemeToggle client:load />
     </div>
   </div>

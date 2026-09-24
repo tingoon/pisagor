@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { Item } from "..";
 
 const images = [
@@ -21,22 +21,21 @@ const images = [
 </script>
 
 <template>
-        <Item.Group class="gap-2" variant="outline">
-          <Item v-for="image in images" :key="image.src">
-            <Item.Media variant="image">
-              <img
-                class="aspect-square w-full object-cover grayscale"
-                height="80"
-                width="80"
-                :alt="image.alt"
-                :src="image.src"
-              />
-            </Item.Media>
-            <Item.Content>
-              <Item.Title>{{ image.alt }}</Item.Title>
-              <Item.Description>{{ image.description }}</Item.Description>
-            </Item.Content>
-          </Item>
-        </Item.Group>
-  
+  <Item.Group class="gap-2" variant="outline">
+    <Item v-for="image in images" :key="image.src">
+      <Item.Media variant="image">
+        <img
+          class="aspect-square w-full object-cover grayscale"
+          height="80"
+          width="80"
+          :alt="image.alt"
+          :src="image.src"
+        >
+      </Item.Media>
+      <Item.Content>
+        <Item.Title>{{ image.alt }}</Item.Title>
+        <Item.Description>{{ image.description }}</Item.Description>
+      </Item.Content>
+    </Item>
+  </Item.Group>
 </template>

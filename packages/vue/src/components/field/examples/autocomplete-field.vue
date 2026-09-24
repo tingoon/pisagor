@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
 
 import { Autocomplete } from "@pisagor/vue";
@@ -23,23 +23,22 @@ function filter(_inputValue: string) {}
 </script>
 
 <template>
-        <Field>
-          <Field.Label>Fruits</Field.Label>
-          <Autocomplete.Root
-            :collection="collection"
-            @input-value-change="({ inputValue }) => filter(inputValue)"
-          >
-            <Autocomplete.Input aria-label="Search items" placeholder="Search items…" />
-            <Autocomplete.Content>
-              <Autocomplete.Empty>No items found.</Autocomplete.Empty>
-              <Autocomplete.List>
-                <Autocomplete.Item v-for="item in collection.items" :key="item.value" :item="item">
-                  {{ item.label }}
-                </Autocomplete.Item>
-              </Autocomplete.List>
-            </Autocomplete.Content>
-          </Autocomplete.Root>
-          <Field.Description>Select an item.</Field.Description>
-        </Field>
-  
+  <Field>
+    <Field.Label>Fruits</Field.Label>
+    <Autocomplete.Root
+      :collection="collection"
+      @input-value-change="({ inputValue }) => filter(inputValue)"
+    >
+      <Autocomplete.Input aria-label="Search items" placeholder="Search items…" />
+      <Autocomplete.Content>
+        <Autocomplete.Empty>No items found.</Autocomplete.Empty>
+        <Autocomplete.List>
+          <Autocomplete.Item v-for="item in collection.items" :key="item.value" :item="item">
+            {{ item.label }}
+          </Autocomplete.Item>
+        </Autocomplete.List>
+      </Autocomplete.Content>
+    </Autocomplete.Root>
+    <Field.Description>Select an item.</Field.Description>
+  </Field>
 </template>

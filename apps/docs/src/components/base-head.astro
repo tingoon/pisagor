@@ -5,25 +5,25 @@ interface Props {
 }
 ---
 
-<meta charset="UTF-8" />
-<meta content="width=device-width, initial-scale=1" name="viewport" />
-<meta content={Astro.props.description ?? "Pisagor UI documentation"} name="description" />
-<meta content="dark light" name="color-scheme" />
-<link href={`${import.meta.env.BASE_URL}favicon.svg`} rel="icon" type="image/svg+xml" />
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1" name="viewport">
+<meta content={Astro.props.description ?? "Pisagor UI documentation"} name="description">
+<meta content="dark light" name="color-scheme">
+<link href={`${import.meta.env.BASE_URL}favicon.svg`} rel="icon" type="image/svg+xml">
 <title>{Astro.props.title} · Pisagor</title>
 <script is:inline>
-  (() => {
-    const key = "pisagor-docs-theme";
-    const stored = localStorage.getItem(key);
-    const preference =
-      stored === "light" || stored === "dark" || stored === "system" ? stored : "system";
-    const resolved =
-      preference === "system"
-        ? window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light"
-        : preference;
-    document.documentElement.classList.toggle("dark", resolved === "dark");
-    document.documentElement.style.colorScheme = resolved;
-  })();
+(() => {
+  const key = "pisagor-docs-theme";
+  const stored = localStorage.getItem(key);
+  const preference =
+    stored === "light" || stored === "dark" || stored === "system" ? stored : "system";
+  const resolved =
+    preference === "system"
+      ? window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light"
+      : preference;
+  document.documentElement.classList.toggle("dark", resolved === "dark");
+  document.documentElement.style.colorScheme = resolved;
+})();
 </script>

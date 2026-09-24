@@ -72,8 +72,8 @@ function niceDefault(v: string): string {
   const t = v.trim();
   if (t.startsWith("`")) return t;
   const q = t.match(/^["'](.*)["']$/);
-  if (q) return "`" + q[1] + "`";
-  if (t === "true" || t === "false" || /^-?\d+(\.\d+)?$/.test(t)) return "`" + t + "`";
+  if (q) return `\`${q[1]}\``;
+  if (t === "true" || t === "false" || /^-?\d+(\.\d+)?$/.test(t)) return `\`${t}\``;
   return t;
 }
 

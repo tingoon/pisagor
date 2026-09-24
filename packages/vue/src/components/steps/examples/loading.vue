@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { PhCircleNotch } from "@phosphor-icons/vue";
 import { Steps } from "..";
 
@@ -10,18 +10,17 @@ const items = [
 </script>
 
 <template>
-        <Steps :count="items.length">
-          <Steps.List>
-            <Steps.Item v-for="(item, index) in items" :key="item.id" :index="index">
-              <Steps.Trigger disabled>
-                <Steps.Indicator>
-                  <PhCircleNotch class="animate-spin" v-if="item.loading" />
-                  <template v-else>{{ index + 1 }}</template>
-                </Steps.Indicator>
-              </Steps.Trigger>
-              <Steps.Separator />
-            </Steps.Item>
-          </Steps.List>
-        </Steps>
-  
+  <Steps :count="items.length">
+    <Steps.List>
+      <Steps.Item v-for="(item, index) in items" :key="item.id" :index="index">
+        <Steps.Trigger disabled>
+          <Steps.Indicator>
+            <PhCircleNotch class="animate-spin" v-if="item.loading" />
+            <template v-else>{{ index + 1 }}</template>
+          </Steps.Indicator>
+        </Steps.Trigger>
+        <Steps.Separator />
+      </Steps.Item>
+    </Steps.List>
+  </Steps>
 </template>

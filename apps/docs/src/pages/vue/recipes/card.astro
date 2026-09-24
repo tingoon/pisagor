@@ -30,7 +30,6 @@ const headings = [
     text: "Product Card",
   },
 ];
-
 ---
 
 <DocsLayout
@@ -39,21 +38,27 @@ const headings = [
   headings={headings}
   title="Card"
 >
-
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">Overview</h2>
-  <p class="mb-8 text-muted-foreground">Card compositions for login flows, custom spacing, and product display.</p>
+  <p class="mb-8 text-muted-foreground">
+    Card compositions for login flows, custom spacing, and product display.
+  </p>
 
   <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="login-card">Login Card</h2>
   <ComponentPreview code={LoginCardSource} language="ts" title="Login Card">
     <LoginCard client:only="vue" />
   </ComponentPreview>
-  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="login-card-custom-spacing">Login Card Custom Spacing</h2>
-  <ComponentPreview code={LoginCardCustomSpacingSource} language="ts" title="Login Card Custom Spacing">
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="login-card-custom-spacing">
+    Login Card Custom Spacing
+  </h2>
+  <ComponentPreview
+    code={LoginCardCustomSpacingSource}
+    language="ts"
+    title="Login Card Custom Spacing"
+  >
     <LoginCardCustomSpacing client:only="vue" />
   </ComponentPreview>
   <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="product-card">Product Card</h2>
   <ComponentPreview code={ProductCardSource} language="ts" title="Product Card">
     <ProductCard client:only="vue" />
   </ComponentPreview>
-
 </DocsLayout>

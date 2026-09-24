@@ -38,7 +38,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -47,9 +46,7 @@ const headings = [
   headings={headings}
   title="Input Otp"
 >
-
   <ComponentHeader framework="react" id="input-otp" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -62,43 +59,47 @@ const headings = [
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
   <ComponentPreview code={examples.Variants} language="tsx" title="Variants">
     <Variants client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="blur-on-complete">Blur On Complete</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="blur-on-complete">
+    Blur On Complete
+  </h3>
   <ComponentPreview code={examples.BlurOnComplete} language="tsx" title="Blur On Complete">
     <BlurOnComplete client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-size">Custom Size</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-size">Custom Size</h3>
   <ComponentPreview code={examples.CustomSize} language="tsx" title="Custom Size">
     <CustomSize client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="four-digits">Four Digits</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="four-digits">Four Digits</h3>
   <ComponentPreview code={examples.FourDigits} language="tsx" title="Four Digits">
     <FourDigits client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="mask">Mask</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="mask">Mask</h3>
   <ComponentPreview code={examples.Mask} language="tsx" title="Mask">
     <Mask client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="separator">Separator</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="separator">Separator</h3>
   <ComponentPreview code={examples.Separator} language="tsx" title="Separator">
     <Separator client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-placeholder">With Placeholder</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-placeholder">
+    With Placeholder
+  </h3>
   <ComponentPreview code={examples.WithPlaceholder} language="tsx" title="With Placeholder">
     <WithPlaceholder client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
   <ComponentPreview code={examples.Disabled} language="tsx" title="Disabled">
     <Disabled client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">Invalid</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">Invalid</h3>
   <ComponentPreview code={examples.Invalid} language="tsx" title="Invalid">
     <Invalid client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
   <ComponentPreview code={examples.Controlled} language="tsx" title="Controlled">
     <Controlled client:only="react" />
   </ComponentPreview>
@@ -108,7 +109,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/input-otp</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/input-otp</code>. Native HTML attributes are also supported
+    and omitted from this table.
   </p>
   <PropsTable rows={inputOtpProps} />
 </DocsLayout>

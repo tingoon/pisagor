@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { Button } from "@pisagor/vue";
 import { Toaster, toast } from "..";
 
@@ -47,26 +47,25 @@ function handleTopStart() {
 </script>
 
 <template>
-        <div>
-          <Toaster :toaster="topStartToaster" />
-          <Toaster :toaster="topToaster" />
-          <Toaster :toaster="topEndToaster" />
-          <Toaster :toaster="bottomStartToaster" />
-          <Toaster :toaster="bottomToaster" />
-          <Toaster :toaster="bottomEndToaster" />
+  <div>
+    <Toaster :toaster="topStartToaster" />
+    <Toaster :toaster="topToaster" />
+    <Toaster :toaster="topEndToaster" />
+    <Toaster :toaster="bottomStartToaster" />
+    <Toaster :toaster="bottomToaster" />
+    <Toaster :toaster="bottomEndToaster" />
 
-          <div class="flex flex-col items-center justify-center gap-2">
-            <div class="flex flex-wrap gap-2">
-              <Button variant="outline" @click="handleTopStart" >Top start</Button>
-              <Button variant="outline" @click="handleTop" >Top center</Button>
-              <Button variant="outline" @click="handleTopEnd" >Top end</Button>
-            </div>
-            <div class="flex flex-wrap gap-2">
-              <Button variant="outline" @click="handleBottomStart" >Bottom start</Button>
-              <Button variant="outline" @click="handleBottom" >Bottom center</Button>
-              <Button variant="outline" @click="handleBottomEnd" >Bottom end</Button>
-            </div>
-          </div>
-        </div>
-  
+    <div class="flex flex-col items-center justify-center gap-2">
+      <div class="flex flex-wrap gap-2">
+        <Button variant="outline" @click="handleTopStart">Top start</Button>
+        <Button variant="outline" @click="handleTop">Top center</Button>
+        <Button variant="outline" @click="handleTopEnd">Top end</Button>
+      </div>
+      <div class="flex flex-wrap gap-2">
+        <Button variant="outline" @click="handleBottomStart">Bottom start</Button>
+        <Button variant="outline" @click="handleBottom">Bottom center</Button>
+        <Button variant="outline" @click="handleBottomEnd">Bottom end</Button>
+      </div>
+    </div>
+  </div>
 </template>

@@ -24,7 +24,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -33,9 +32,7 @@ const headings = [
   headings={headings}
   title="Json Tree View"
 >
-
   <ComponentHeader framework="react" id="json-tree-view" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -48,15 +45,15 @@ const headings = [
   <ComponentPreview code={examples.DataTypes} language="tsx" title="Data Types">
     <DataTypes client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="expand-depth">Expand Depth</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="expand-depth">Expand Depth</h3>
   <ComponentPreview code={examples.ExpandDepth} language="tsx" title="Expand Depth">
     <ExpandDepth client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="map-set">Map Set</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="map-set">Map Set</h3>
   <ComponentPreview code={examples.MapSet} language="tsx" title="Map Set">
     <MapSet client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
@@ -66,7 +63,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/json-tree-view</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/json-tree-view</code>. Native HTML attributes are also
+    supported and omitted from this table.
   </p>
   <PropsTable rows={jsonTreeViewProps} />
 </DocsLayout>

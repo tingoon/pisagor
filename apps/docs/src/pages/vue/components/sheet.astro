@@ -32,7 +32,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -41,9 +40,7 @@ const headings = [
   headings={headings}
   title="Sheet"
 >
-
   <ComponentHeader framework="vue" id="sheet" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -52,35 +49,41 @@ const headings = [
 
   <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-spacing">Custom Spacing</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-spacing">
+    Custom Spacing
+  </h3>
   <ComponentPreview code={examples.CustomSpacing} language="vue" title="Custom Spacing">
     <CustomSpacing client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="inset">Inset</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="inset">Inset</h3>
   <ComponentPreview code={examples.Inset} language="vue" title="Inset">
     <Inset client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="no-close-button">No Close Button</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="no-close-button">
+    No Close Button
+  </h3>
   <ComponentPreview code={examples.NoCloseButton} language="vue" title="No Close Button">
     <NoCloseButton client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="non-modal">Non Modal</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="non-modal">Non Modal</h3>
   <ComponentPreview code={examples.NonModal} language="vue" title="Non Modal">
     <NonModal client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="scroll-area">Scroll Area</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="scroll-area">Scroll Area</h3>
   <ComponentPreview code={examples.ScrollArea} language="vue" title="Scroll Area">
     <ScrollArea client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sides">Sides</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sides">Sides</h3>
   <ComponentPreview code={examples.Sides} language="vue" title="Sides">
     <Sides client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="close-behavior">Close Behavior</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="close-behavior">
+    Close Behavior
+  </h3>
   <ComponentPreview code={examples.CloseBehavior} language="vue" title="Close Behavior">
     <CloseBehavior client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
   <ComponentPreview code={examples.Default} language="vue" title="Default">
     <Default client:only="vue" />
   </ComponentPreview>
@@ -90,7 +93,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/sheet</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/sheet</code>. Native HTML attributes are also supported and
+    omitted from this table.
   </p>
   <PropsTable rows={sheetProps} />
 </DocsLayout>

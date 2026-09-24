@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
 
 import { Input, Item } from "@pisagor/vue";
@@ -21,19 +21,18 @@ const collection = createListCollection({ items: initialItems });
 </script>
 
 <template>
-        <Item.Group variant="outline">
-        <Item class="flex flex-col gap-2 p-1">
-          <Input placeholder="Search..." :value="search" @value-change="onValueChange" />
-          <Listbox.Root :collection="collection">
-            <Listbox.Content>
-              <Listbox.Item v-for="item in collection.items" :key="item.value" :item="item">
-                <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>
-                <Listbox.ItemIndicator />
-              </Listbox.Item>
-              <Listbox.Empty v-if="isEmpty">No results found. Try a different search.</Listbox.Empty>
-            </Listbox.Content>
-          </Listbox.Root>
-        </Item>
-        </Item.Group>
-  
+  <Item.Group variant="outline">
+    <Item class="flex flex-col gap-2 p-1">
+      <Input placeholder="Search..." :value="search" @value-change="onValueChange" />
+      <Listbox.Root :collection="collection">
+        <Listbox.Content>
+          <Listbox.Item v-for="item in collection.items" :key="item.value" :item="item">
+            <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>
+            <Listbox.ItemIndicator />
+          </Listbox.Item>
+          <Listbox.Empty v-if="isEmpty">No results found. Try a different search.</Listbox.Empty>
+        </Listbox.Content>
+      </Listbox.Root>
+    </Item>
+  </Item.Group>
 </template>

@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
 import { PhAppleLogo } from "@phosphor-icons/vue";
 import { InputGroup } from "@pisagor/vue";
@@ -16,22 +16,21 @@ function filter(_inputValue: string) {}
 </script>
 
 <template>
-        <Combobox.Root
-          :collection="collection"
-          @input-value-change="({ inputValue }) => filter(inputValue)"
-        >
-          <Combobox.Input placeholder="Search fruits...">
-            <InputGroup.Addon align="inline-start">
-              <PhAppleLogo />
-            </InputGroup.Addon>
-          </Combobox.Input>
-          <Combobox.Content>
-            <Combobox.List>
-              <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item">
-                {{ item.label }}
-              </Combobox.Item>
-            </Combobox.List>
-          </Combobox.Content>
-        </Combobox.Root>
-  
+  <Combobox.Root
+    :collection="collection"
+    @input-value-change="({ inputValue }) => filter(inputValue)"
+  >
+    <Combobox.Input placeholder="Search fruits...">
+      <InputGroup.Addon align="inline-start">
+        <PhAppleLogo />
+      </InputGroup.Addon>
+    </Combobox.Input>
+    <Combobox.Content>
+      <Combobox.List>
+        <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item">
+          {{ item.label }}
+        </Combobox.Item>
+      </Combobox.List>
+    </Combobox.Content>
+  </Combobox.Root>
 </template>

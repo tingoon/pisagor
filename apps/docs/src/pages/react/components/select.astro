@@ -40,7 +40,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -49,9 +48,7 @@ const headings = [
   headings={headings}
   title="Select"
 >
-
   <ComponentHeader framework="react" id="select" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -64,47 +61,47 @@ const headings = [
   <ComponentPreview code={examples.Sizes} language="tsx" title="Sizes">
     <Sizes client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
   <ComponentPreview code={examples.Variants} language="tsx" title="Variants">
     <Variants client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="empty">Empty</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="empty">Empty</h3>
   <ComponentPreview code={examples.Empty} language="tsx" title="Empty">
     <Empty client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="grouping">Grouping</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="grouping">Grouping</h3>
   <ComponentPreview code={examples.Grouping} language="tsx" title="Grouping">
     <Grouping client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="max-selection">Max Selection</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="max-selection">Max Selection</h3>
   <ComponentPreview code={examples.MaxSelection} language="tsx" title="Max Selection">
     <MaxSelection client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="multiple">Multiple</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="multiple">Multiple</h3>
   <ComponentPreview code={examples.Multiple} language="tsx" title="Multiple">
     <Multiple client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
   <ComponentPreview code={examples.Disabled} language="tsx" title="Disabled">
     <Disabled client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">Invalid</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">Invalid</h3>
   <ComponentPreview code={examples.Invalid} language="tsx" title="Invalid">
     <Invalid client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-scroll">With Scroll</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-scroll">With Scroll</h3>
   <ComponentPreview code={examples.WithScroll} language="tsx" title="With Scroll">
     <WithScroll client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
   <ComponentPreview code={examples.Controlled} language="tsx" title="Controlled">
     <Controlled client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="compound">Compound</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="compound">Compound</h3>
   <ComponentPreview code={examples.Compound} language="tsx" title="Compound">
     <Compound client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
@@ -114,7 +111,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/select</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/select</code>. Native HTML attributes are also supported and
+    omitted from this table.
   </p>
   <PropsTable rows={selectProps} />
 </DocsLayout>

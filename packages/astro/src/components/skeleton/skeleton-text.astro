@@ -16,7 +16,5 @@ const slots = skeletonRecipe();
 ---
 
 <div {...rest} class={slots.text({ className })} data-part="text" data-scope="skeleton">
-  {Array.from({ length: lines }).map(() => (
-    <div class={slots.line()} />
-  ))}
+  {Array.from({ length: lines }).map(() => <div class={slots.line()} />)}
 </div>

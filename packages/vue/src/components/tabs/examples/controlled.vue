@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { ref } from "vue";
 import { Tabs } from "..";
 import { profileTabs } from "./helpers";

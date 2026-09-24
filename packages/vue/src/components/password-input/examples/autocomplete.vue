@@ -1,11 +1,10 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { PasswordInput } from "..";
 </script>
 
 <template>
-        <div class="flex flex-col gap-2">
-          <PasswordInput autocomplete="current-password" placeholder="••••••••" />
-          <PasswordInput autocomplete="new-password" placeholder="••••••••" />
-        </div>
-  
+  <div class="flex flex-col gap-2">
+    <PasswordInput autocomplete="current-password" placeholder="••••••••" />
+    <PasswordInput autocomplete="new-password" placeholder="••••••••" />
+  </div>
 </template>

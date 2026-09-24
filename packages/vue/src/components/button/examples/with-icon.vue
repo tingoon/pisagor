@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { PhArrowSquareOut, PhDownload, PhGear, PhHeart, PhPlus } from "@phosphor-icons/vue";
 import { Button } from "..";
 </script>

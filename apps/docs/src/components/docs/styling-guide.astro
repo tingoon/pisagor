@@ -50,12 +50,14 @@ const themeMapSnippet = `@theme inline {
 <section class="mb-10">
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">Overview</h2>
   <p class="mb-4 text-muted-foreground">
-    Pisagor themes through CSS variables (the same convention as shadcn-style token maps). Components
-    read <code class="text-foreground">--primary</code>, <code class="text-foreground">--primary-foreground</code>,
-    and related tokens — they do not hard-code brand colors. Override those variables in your app CSS
-    to recolor the whole library.
+    Pisagor themes through CSS variables (the same convention as shadcn-style token maps).
+    Components read <code class="text-foreground">--primary</code>,
+    <code class="text-foreground">--primary-foreground</code>, and related tokens — they do not
+    hard-code brand colors. Override those variables in your app CSS to recolor the whole library.
   </p>
-  <div class="mb-2 flex flex-wrap items-center gap-3 rounded-xl border border-border/70 bg-card p-4">
+  <div
+    class="mb-2 flex flex-wrap items-center gap-3 rounded-xl border border-border/70 bg-card p-4"
+  >
     <span
       class="inline-flex size-10 rounded-full border border-border shadow-sm"
       style={`background: ${brand.swatch}`}
@@ -70,8 +72,8 @@ const themeMapSnippet = `@theme inline {
       <p class="font-medium text-foreground">{brand.label} docs primary</p>
       <p class="text-muted-foreground text-sm">
         This docs tree sets <code class="text-foreground">data-framework="{brand.css}"</code> on
-        <code class="text-foreground">&lt;html&gt;</code> and overrides Pisagor&apos;s default neutral primary
-        with the framework brand.
+        <code class="text-foreground">&lt;html&gt;</code>
+        and overrides Pisagor&apos;s default neutral primary with the framework brand.
       </p>
     </div>
   </div>
@@ -108,29 +110,42 @@ const themeMapSnippet = `@theme inline {
 </section>
 
 <section class="mb-10">
-  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="customizing-colors">Customizing colors</h2>
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="customizing-colors">
+    Customizing colors
+  </h2>
   <p class="mb-4 text-muted-foreground">
-    Override variables on <code class="text-foreground">:root</code> and <code class="text-foreground">.dark</code>.
-    Always update the matching <code class="text-foreground">*-foreground</code> token when you change a fill so text and icons stay readable.
+    Override variables on <code class="text-foreground">:root</code> and
+    <code class="text-foreground">.dark</code>. Always update the matching
+    <code class="text-foreground">*-foreground</code>
+    token when you change a fill so text and icons stay readable.
   </p>
   <CodeBlock class="mb-2" code={overrideSnippet} lang="css" title="globals.css" />
 </section>
 
 <section class="mb-10">
-  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="framework-brand">Framework brand in these docs</h2>
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="framework-brand">
+    Framework brand in these docs
+  </h2>
   <p class="mb-4 text-muted-foreground">
-    On this site, each framework route paints the shell with that ecosystem&apos;s brand color. The same
-    technique works in your product: scope overrides with a data attribute, a class, or a route layout.
+    On this site, each framework route paints the shell with that ecosystem&apos;s brand color. The
+    same technique works in your product: scope overrides with a data attribute, a class, or a route
+    layout.
   </p>
-  <CodeBlock class="mb-2" code={frameworkSnippet} lang="css" title="apps/docs/src/styles/global.css" />
+  <CodeBlock
+    class="mb-2"
+    code={frameworkSnippet}
+    lang="css"
+    title="apps/docs/src/styles/global.css"
+  />
 </section>
 
 <section class="mb-10">
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="convention">Token convention</h2>
   <p class="text-muted-foreground">
     Each color has two tokens: the base name is the fill. The same name with
-    <code class="text-foreground">-foreground</code> is the text and icon color meant to sit on that fill.
-    Use both together on every new surface so contrast stays consistent in light and dark mode.
+    <code class="text-foreground">-foreground</code>
+    is the text and icon color meant to sit on that fill. Use both together on every new surface so
+    contrast stays consistent in light and dark mode.
   </p>
 </section>
 
@@ -138,7 +153,10 @@ const themeMapSnippet = `@theme inline {
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="next">Next</h2>
   <p class="text-muted-foreground">
     Browse components under{" "}
-    <a class="text-foreground underline-offset-4 hover:underline" href={frameworkPath(framework, "components/button")}>
+    <a
+      class="text-foreground underline-offset-4 hover:underline"
+      href={frameworkPath(framework, "components/button")}
+    >
       Button
     </a>{" "}
     to see the brand primary on real controls.

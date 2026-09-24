@@ -287,8 +287,8 @@ html[data-framework="astro"] [data-preview-theme="dark"] {
 
   .docs-sheet-panel,
   .docs-sheet-scrim {
-    animation: none !important;
-    transition: opacity 160ms ease !important;
+    animation: none;
+    transition: opacity 160ms ease;
   }
 }
 

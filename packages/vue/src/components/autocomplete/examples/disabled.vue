@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
 
 import { Autocomplete } from "..";
@@ -15,20 +15,19 @@ function filter(_inputValue: string) {}
 </script>
 
 <template>
-        <Autocomplete.Root
-          disabled
-          :collection="collection"
-          @input-value-change="({ inputValue }) => filter(inputValue)"
-        >
-          <Autocomplete.Input placeholder="Select a fruit..." />
-          <Autocomplete.Content>
-            <Autocomplete.Empty>No items found.</Autocomplete.Empty>
-            <Autocomplete.List>
-              <Autocomplete.Item v-for="item in collection.items" :key="item.value" :item="item">
-                {{ item.label }}
-              </Autocomplete.Item>
-            </Autocomplete.List>
-          </Autocomplete.Content>
-        </Autocomplete.Root>
-  
+  <Autocomplete.Root
+    disabled
+    :collection="collection"
+    @input-value-change="({ inputValue }) => filter(inputValue)"
+  >
+    <Autocomplete.Input placeholder="Select a fruit..." />
+    <Autocomplete.Content>
+      <Autocomplete.Empty>No items found.</Autocomplete.Empty>
+      <Autocomplete.List>
+        <Autocomplete.Item v-for="item in collection.items" :key="item.value" :item="item">
+          {{ item.label }}
+        </Autocomplete.Item>
+      </Autocomplete.List>
+    </Autocomplete.Content>
+  </Autocomplete.Root>
 </template>

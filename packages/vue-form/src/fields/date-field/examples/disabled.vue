@@ -1,7 +1,13 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { DateField } from "..";
 </script>
 
 <template>
-  <DateField description="Pick your preferred project kickoff date." disabled id="date-field-start-date-disabled" label="Start date" placeholder="Select a date" />
+  <DateField
+    description="Pick your preferred project kickoff date."
+    disabled
+    id="date-field-start-date-disabled"
+    label="Start date"
+    placeholder="Select a date"
+  />
 </template>

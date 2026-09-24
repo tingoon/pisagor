@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { PhCalendar } from "@phosphor-icons/vue";
 import { Button, Calendar } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
@@ -43,16 +43,15 @@ const CalendarBody = defineComponent({
 </script>
 
 <template>
-        <DatePicker>
-          <DatePicker.Trigger :asChild="true">
-            <Button variant="outline">
-              <PhCalendar />
-              <DatePicker.ValueText placeholder="Pick a date" />
-            </Button>
-          </DatePicker.Trigger>
-          <DatePicker.Content>
-            <CalendarBody />
-          </DatePicker.Content>
-        </DatePicker>
-  
+  <DatePicker>
+    <DatePicker.Trigger :as-child="true">
+      <Button variant="outline">
+        <PhCalendar />
+        <DatePicker.ValueText placeholder="Pick a date" />
+      </Button>
+    </DatePicker.Trigger>
+    <DatePicker.Content>
+      <CalendarBody />
+    </DatePicker.Content>
+  </DatePicker>
 </template>

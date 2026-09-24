@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { Button, Card } from "@pisagor/vue";
 import { Calendar } from "..";
 

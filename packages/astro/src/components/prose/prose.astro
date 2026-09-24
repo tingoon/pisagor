@@ -12,18 +12,16 @@ interface Props extends HTMLAttributes<"div"> {
 const { html, class: className, ...rest } = Astro.props;
 ---
 
-{
-  html ? (
-    <div
-      {...rest}
-      class={proseRecipe({ className })}
-      data-part="root"
-      data-scope="prose"
-      set:html={html}
-    />
-  ) : (
-    <div {...rest} class={proseRecipe({ className })} data-part="root" data-scope="prose">
-      <slot />
-    </div>
-  )
-}
+{html ? (
+  <div
+    {...rest}
+    class={proseRecipe({ className })}
+    data-part="root"
+    data-scope="prose"
+    set:html={html}
+  />
+) : (
+  <div {...rest} class={proseRecipe({ className })} data-part="root" data-scope="prose">
+    <slot />
+  </div>
+)}

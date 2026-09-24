@@ -16,19 +16,13 @@ const rows = meta
   : [];
 ---
 
-{
-  
-  rows.length > 0 ? (
-    <dl
-      aria-label="Component metadata"
-      class="flex flex-wrap items-baseline gap-x-6 gap-y-2 text-sm"
-    >
-      {rows.map((row) => (
-        <div class="flex min-w-0 items-baseline gap-2">
-          <dt class="docs-label shrink-0">{row.label}</dt>
-          <dd class="font-mono text-3.25 text-foreground/90">{row.value}</dd>
-        </div>
-      ))}
-    </dl>
-  ) : null
-}
+{rows.length > 0 ? (
+  <dl aria-label="Component metadata" class="flex flex-wrap items-baseline gap-x-6 gap-y-2 text-sm">
+    {rows.map((row) => (
+      <div class="flex min-w-0 items-baseline gap-2">
+        <dt class="docs-label shrink-0">{row.label}</dt>
+        <dd class="font-mono text-3.25 text-foreground/90">{row.value}</dd>
+      </div>
+    ))}
+  </dl>
+) : null}

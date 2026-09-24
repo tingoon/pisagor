@@ -1,7 +1,7 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { TagsInput } from "..";
 </script>
 
 <template>
-  <TagsInput class="w-full" invalid :defaultValue="['React']" />
+  <TagsInput class="w-full" invalid :default-value="['React']" />
 </template>

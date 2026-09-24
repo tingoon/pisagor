@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { Checkbox, Field, Input, Select, Switch, Textarea } from "@pisagor/vue";
 import { defineComponent } from "vue";
 import { Surface } from "..";
@@ -42,12 +42,11 @@ const FormControlsDemo = defineComponent({
 </script>
 
 <template>
-        <Surface bordered padding="md" variant="default">
-          <div class="mb-4">
-            <h3 class="font-semibold text-sm">Settings</h3>
-            <p class="text-muted-foreground text-sm">Grouped controls on a surface background.</p>
-          </div>
-          <FormControlsDemo />
-        </Surface>
-  
+  <Surface bordered padding="md" variant="default">
+    <div class="mb-4">
+      <h3 class="font-semibold text-sm">Settings</h3>
+      <p class="text-muted-foreground text-sm">Grouped controls on a surface background.</p>
+    </div>
+    <FormControlsDemo />
+  </Surface>
 </template>

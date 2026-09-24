@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { RadioGroup } from "..";
 
 const allDisabledItems = [
@@ -14,9 +14,8 @@ const partiallyDisabledItems = [
 </script>
 
 <template>
-        <div class="flex flex-wrap gap-8">
-          <RadioGroup default-value="1" :items="partiallyDisabledItems" />
-          <RadioGroup disabled :items="allDisabledItems" />
-        </div>
-  
+  <div class="flex flex-wrap gap-8">
+    <RadioGroup default-value="1" :items="partiallyDisabledItems" />
+    <RadioGroup disabled :items="allDisabledItems" />
+  </div>
 </template>

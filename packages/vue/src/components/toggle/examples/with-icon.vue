@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { PhTextB } from "@phosphor-icons/vue";
 import { Toggle } from "..";
 </script>

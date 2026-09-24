@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { Button } from "@pisagor/vue";
 import { toast } from "..";
 
@@ -8,5 +8,5 @@ function handleClick() {
 </script>
 
 <template>
-  <Button variant="outline" @click="handleClick" >Run Promise</Button>
+  <Button variant="outline" @click="handleClick">Run Promise</Button>
 </template>

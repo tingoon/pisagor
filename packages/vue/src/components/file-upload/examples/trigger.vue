@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { useFileUploadContext } from "@ark-ui/vue/file-upload";
 import { PhPaperclip, PhX } from "@phosphor-icons/vue";
 import { Button } from "@pisagor/vue";
@@ -43,16 +43,15 @@ const _CustomPreviewList = defineComponent({
 </script>
 
 <template>
-        <FileUpload>
-          <div class="flex justify-center">
-            <FileUpload.Trigger as-child>
-              <Button variant="outline">
-                <PhPaperclip />
-                Browse files
-              </Button>
-            </FileUpload.Trigger>
-          </div>
-          <FileUpload.List />
-        </FileUpload>
-  
+  <FileUpload>
+    <div class="flex justify-center">
+      <FileUpload.Trigger as-child>
+        <Button variant="outline">
+          <PhPaperclip />
+          Browse files
+        </Button>
+      </FileUpload.Trigger>
+    </div>
+    <FileUpload.List />
+  </FileUpload>
 </template>

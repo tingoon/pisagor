@@ -28,7 +28,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -37,9 +36,7 @@ const headings = [
   headings={headings}
   title="Highlight"
 >
-
   <ComponentHeader framework="vue" id="highlight" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -52,23 +49,25 @@ const headings = [
   <ComponentPreview code={examples.Multiple} language="vue" title="Multiple">
     <Multiple client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-style">Custom Style</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-style">Custom Style</h3>
   <ComponentPreview code={examples.CustomStyle} language="vue" title="Custom Style">
     <CustomStyle client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="search-query">Search Query</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="search-query">Search Query</h3>
   <ComponentPreview code={examples.SearchQuery} language="vue" title="Search Query">
     <SearchQuery client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="squiggle">Squiggle</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="squiggle">Squiggle</h3>
   <ComponentPreview code={examples.Squiggle} language="vue" title="Squiggle">
     <Squiggle client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="multiple-queries">Multiple Queries</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="multiple-queries">
+    Multiple Queries
+  </h3>
   <ComponentPreview code={examples.MultipleQueries} language="vue" title="Multiple Queries">
     <MultipleQueries client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
   <ComponentPreview code={examples.Default} language="vue" title="Default">
     <Default client:only="vue" />
   </ComponentPreview>
@@ -78,7 +77,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/highlight</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/highlight</code>. Native HTML attributes are also supported
+    and omitted from this table.
   </p>
   <PropsTable rows={highlightProps} />
 </DocsLayout>

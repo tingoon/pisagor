@@ -2,7 +2,7 @@
   "extends": "//",
   "overrides": [
     {
-      "includes": ["**/*.stories.ts", "../../../packages/astro/src/**/*.stories.ts"],
+      "includes": ["**/*.stories.ts"],
       "linter": {
         "rules": {
           "suspicious": {

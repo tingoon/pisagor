@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { PhKeyboard } from "@phosphor-icons/vue";
 import { Button } from "@pisagor/vue";
 import { Tour } from "..";
@@ -38,44 +38,43 @@ const steps = [
 </script>
 
 <template>
-        <div class="flex flex-col gap-2">
-          <Tour keyboard-navigation :steps="steps">
-            <Tour.Trigger as-child>
-              <Button variant="outline">Start tour</Button>
-            </Tour.Trigger>
-            <p class="flex items-center gap-2 text-muted-foreground text-sm">
-              <PhKeyboard class="size-4" />
-              Use arrow keys to navigate, Escape to close
-            </p>
-            <div class="flex flex-wrap gap-2">
-              <div
-                class="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
-                id="tour-key-1"
-              >
-                Step 1
-              </div>
-              <div
-                class="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
-                id="tour-key-2"
-              >
-                Step 2
-              </div>
-              <div
-                class="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
-                id="tour-key-3"
-              >
-                Step 3
-              </div>
-            </div>
-            <Tour.Content>
-              <Tour.Header>
-                <Tour.ProgressText />
-                <Tour.Title />
-                <Tour.Description />
-              </Tour.Header>
-              <Tour.Actions />
-            </Tour.Content>
-          </Tour>
+  <div class="flex flex-col gap-2">
+    <Tour keyboard-navigation :steps="steps">
+      <Tour.Trigger as-child>
+        <Button variant="outline">Start tour</Button>
+      </Tour.Trigger>
+      <p class="flex items-center gap-2 text-muted-foreground text-sm">
+        <PhKeyboard class="size-4" />
+        Use arrow keys to navigate, Escape to close
+      </p>
+      <div class="flex flex-wrap gap-2">
+        <div
+          class="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
+          id="tour-key-1"
+        >
+          Step 1
         </div>
-  
+        <div
+          class="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
+          id="tour-key-2"
+        >
+          Step 2
+        </div>
+        <div
+          class="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
+          id="tour-key-3"
+        >
+          Step 3
+        </div>
+      </div>
+      <Tour.Content>
+        <Tour.Header>
+          <Tour.ProgressText />
+          <Tour.Title />
+          <Tour.Description />
+        </Tour.Header>
+        <Tour.Actions />
+      </Tour.Content>
+    </Tour>
+  </div>
 </template>

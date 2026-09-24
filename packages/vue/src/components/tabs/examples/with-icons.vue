@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { PhGear, PhShield, PhUser } from "@phosphor-icons/vue";
 import { h } from "vue";
 import { Tabs } from "..";

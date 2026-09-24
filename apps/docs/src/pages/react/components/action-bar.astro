@@ -32,7 +32,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -41,9 +40,7 @@ const headings = [
   headings={headings}
   title="Action Bar"
 >
-
   <ComponentHeader framework="react" id="action-bar" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -56,31 +53,33 @@ const headings = [
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-spacing">Custom Spacing</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-spacing">
+    Custom Spacing
+  </h3>
   <ComponentPreview code={examples.CustomSpacing} language="tsx" title="Custom Spacing">
     <CustomSpacing client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="gutter">Gutter</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="gutter">Gutter</h3>
   <ComponentPreview code={examples.Gutter} language="tsx" title="Gutter">
     <Gutter client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="close-trigger">Close Trigger</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="close-trigger">Close Trigger</h3>
   <ComponentPreview code={examples.CloseTrigger} language="tsx" title="Close Trigger">
     <CloseTrigger client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-dialog">With Dialog</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-dialog">With Dialog</h3>
   <ComponentPreview code={examples.WithDialog} language="tsx" title="With Dialog">
     <WithDialog client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-menu">With Menu</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-menu">With Menu</h3>
   <ComponentPreview code={examples.WithMenu} language="tsx" title="With Menu">
     <WithMenu client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
   <ComponentPreview code={examples.Controlled} language="tsx" title="Controlled">
     <Controlled client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="placements">Placements</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="placements">Placements</h3>
   <ComponentPreview code={examples.Placements} language="tsx" title="Placements">
     <Placements client:only="react" />
   </ComponentPreview>
@@ -90,7 +89,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/action-bar</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/action-bar</code>. Native HTML attributes are also supported
+    and omitted from this table.
   </p>
   <PropsTable rows={actionBarProps} />
 </DocsLayout>

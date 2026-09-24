@@ -15,7 +15,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -24,9 +23,7 @@ const headings = [
   headings={headings}
   title="Data Table"
 >
-
   <ComponentHeader framework="vue" id="data-table" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
@@ -35,7 +32,7 @@ const headings = [
   <ComponentPreview class="mb-8" code={examples.Empty} title="Empty">
     <Empty client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 text-xl font-semibold tracking-tight" id="sorting">Sorting</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="sorting">Sorting</h3>
   <ComponentPreview class="mb-8" code={examples.Sorting} title="Sorting">
     <Sorting client:only="vue" />
   </ComponentPreview>
@@ -45,7 +42,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/data-table</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/data-table</code>. Native HTML attributes are also supported
+    and omitted from this table.
   </p>
   <PropsTable rows={dataTableProps} />
 </DocsLayout>

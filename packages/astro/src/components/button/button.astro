@@ -18,7 +18,7 @@ const {
 } = Astro.props;
 
 const slots = buttonRecipe({ clickEffect, loading, pill, size, variant });
-const content = loading ? await Astro.slots.render("default") : null;
+const content = loading ? await Astro.slots.render("default") : "";
 ---
 
 <button
@@ -33,17 +33,15 @@ const content = loading ? await Astro.slots.render("default") : null;
   disabled={disabled || loading}
   type={type}
 >
-  {
-    loading ? (
-      <>
-        <span aria-hidden class={slots.hidden()} set:html={content!} />
-        <span class={slots.srOnly()} set:html={content!} />
-        <span class={slots.spinner()}>
-          <Spinner aria-hidden />
-        </span>
-      </>
-    ) : (
-      <slot />
-    )
-  }
+  {loading ? (
+  <>
+    <span aria-hidden class={slots.hidden()} set:html={content} />
+    <span class={slots.srOnly()} set:html={content} />
+    <span class={slots.spinner()}>
+      <Spinner aria-hidden />
+    </span>
+  </>
+) : (
+  <slot />
+)}
 </button>

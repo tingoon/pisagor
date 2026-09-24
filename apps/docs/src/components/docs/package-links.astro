@@ -23,40 +23,38 @@ const links = [
 
 <div
   class:list={[
-    "flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between",
-    Astro.props.embedded && "mt-3 border-t border-border/50 pt-3",
-    !Astro.props.inset && "mb-8",
-    Astro.props.class,
-  ]}
+  "flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between",
+  Astro.props.embedded && "mt-3 border-t border-border/50 pt-3",
+  !Astro.props.inset && "mb-8",
+  Astro.props.class,
+]}
 >
   <div
     aria-label="Package links"
     class="inline-flex w-fit overflow-hidden rounded-md border border-border/60 bg-background/40"
     role="group"
   >
-    {
-      links.map((link, index) => (
-        <a
-          class:list={[
-            "docs-press inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-muted-foreground hover:bg-muted/60 hover:text-foreground",
-            index > 0 && "border-s border-border/60",
-          ]}
-          href={link.href}
-          rel="noreferrer"
-          target="_blank"
-        >
-          {link.icon === "github" ? (
-            <GithubLogo aria-hidden size={13} weight="fill" />
-          ) : link.icon === "storybook" ? (
-            <StorybookBrandIcon size={13} />
-          ) : (
-            <NpmBrandIcon size={13} />
-          )}
-          {link.label}
-          <ArrowSquareOut aria-hidden className="opacity-40" size={11} weight="bold" />
-        </a>
-      ))
-    }
+    {links.map((link, index) => (
+  <a
+    class:list={[
+      "docs-press inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium text-muted-foreground hover:bg-muted/60 hover:text-foreground",
+      index > 0 && "border-s border-border/60",
+    ]}
+    href={link.href}
+    rel="noreferrer"
+    target="_blank"
+  >
+    {link.icon === "github" ? (
+      <GithubLogo aria-hidden size={13} weight="fill" />
+    ) : link.icon === "storybook" ? (
+      <StorybookBrandIcon size={13} />
+    ) : (
+      <NpmBrandIcon size={13} />
+    )}
+    {link.label}
+    <ArrowSquareOut aria-hidden className="opacity-40" size={11} weight="bold" />
+  </a>
+))}
   </div>
 
   <a

@@ -50,7 +50,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -59,9 +58,7 @@ const headings = [
   headings={headings}
   title="Listbox"
 >
-
   <ComponentHeader framework="react" id="listbox" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -74,67 +71,77 @@ const headings = [
   <ComponentPreview code={examples.DisabledItem} language="tsx" title="Disabled Item">
     <DisabledItem client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="grid">Grid</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="grid">Grid</h3>
   <ComponentPreview code={examples.Grid} language="tsx" title="Grid">
     <Grid client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="grouping">Grouping</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="grouping">Grouping</h3>
   <ComponentPreview code={examples.Grouping} language="tsx" title="Grouping">
     <Grouping client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="horizontal">Horizontal</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="horizontal">Horizontal</h3>
   <ComponentPreview code={examples.Horizontal} language="tsx" title="Horizontal">
     <Horizontal client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
   <ComponentPreview code={examples.Disabled} language="tsx" title="Disabled">
     <Disabled client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="image-explorer">Image Explorer</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="image-explorer">
+    Image Explorer
+  </h3>
   <ComponentPreview code={examples.ImageExplorer} language="tsx" title="Image Explorer">
     <ImageExplorer client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="selection-extended">Selection Extended</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="selection-extended">
+    Selection Extended
+  </h3>
   <ComponentPreview code={examples.SelectionExtended} language="tsx" title="Selection Extended">
     <SelectionExtended client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="selection-multiple">Selection Multiple</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="selection-multiple">
+    Selection Multiple
+  </h3>
   <ComponentPreview code={examples.SelectionMultiple} language="tsx" title="Selection Multiple">
     <SelectionMultiple client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="selection-none">Selection None</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="selection-none">
+    Selection None
+  </h3>
   <ComponentPreview code={examples.SelectionNone} language="tsx" title="Selection None">
     <SelectionNone client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="transfer-list">Transfer List</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="transfer-list">Transfer List</h3>
   <ComponentPreview code={examples.TransferList} language="tsx" title="Transfer List">
     <TransferList client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-description">With Description</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-description">
+    With Description
+  </h3>
   <ComponentPreview code={examples.WithDescription} language="tsx" title="With Description">
     <WithDescription client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-filter">With Filter</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-filter">With Filter</h3>
   <ComponentPreview code={examples.WithFilter} language="tsx" title="With Filter">
     <WithFilter client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-icon">With Icon</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-icon">With Icon</h3>
   <ComponentPreview code={examples.WithIcon} language="tsx" title="With Icon">
     <WithIcon client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-popover">With Popover</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-popover">With Popover</h3>
   <ComponentPreview code={examples.WithPopover} language="tsx" title="With Popover">
     <WithPopover client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
   <ComponentPreview code={examples.Controlled} language="tsx" title="Controlled">
     <Controlled client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="compound">Compound</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="compound">Compound</h3>
   <ComponentPreview code={examples.Compound} language="tsx" title="Compound">
     <Compound client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
@@ -144,7 +151,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/listbox</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/listbox</code>. Native HTML attributes are also supported
+    and omitted from this table.
   </p>
   <PropsTable rows={listboxProps} />
 </DocsLayout>

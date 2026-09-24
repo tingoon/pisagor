@@ -21,7 +21,10 @@
     "lineWidth": 100
   },
   "html": {
-    "experimentalFullSupportEnabled": true
+    "experimentalFullSupportEnabled": true,
+    "formatter": {
+      "enabled": true
+    }
   },
   "linter": {
     "domains": {

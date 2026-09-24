@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { h } from "vue";
 import { Timeline } from "..";
 
@@ -28,8 +28,7 @@ const items = [{ title: "Planned" }, { title: "In progress" }, { title: "Shipped
 </script>
 
 <template>
-        <div class="w-full">
-          <Timeline orientation="horizontal" :items="items" />
-        </div>
-  
+  <div class="w-full">
+    <Timeline orientation="horizontal" :items="items" />
+  </div>
 </template>

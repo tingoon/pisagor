@@ -36,7 +36,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -45,9 +44,7 @@ const headings = [
   headings={headings}
   title="Circular Slider"
 >
-
   <ComponentHeader framework="vue" id="circular-slider" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -60,39 +57,41 @@ const headings = [
   <ComponentPreview code={examples.OnSurface} language="vue" title="On Surface">
     <OnSurface client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sizes">Sizes</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sizes">Sizes</h3>
   <ComponentPreview code={examples.Sizes} language="vue" title="Sizes">
     <Sizes client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="step">Step</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="step">Step</h3>
   <ComponentPreview code={examples.Step} language="vue" title="Step">
     <Step client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="thickness">Thickness</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="thickness">Thickness</h3>
   <ComponentPreview code={examples.Thickness} language="vue" title="Thickness">
     <Thickness client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-value">With Value</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-value">With Value</h3>
   <ComponentPreview code={examples.WithValue} language="vue" title="With Value">
     <WithValue client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
   <ComponentPreview code={examples.Disabled} language="vue" title="Disabled">
     <Disabled client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-markers">Custom Markers</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-markers">
+    Custom Markers
+  </h3>
   <ComponentPreview code={examples.CustomMarkers} language="vue" title="Custom Markers">
     <CustomMarkers client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-markers">With Markers</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-markers">With Markers</h3>
   <ComponentPreview code={examples.WithMarkers} language="vue" title="With Markers">
     <WithMarkers client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
   <ComponentPreview code={examples.Controlled} language="vue" title="Controlled">
     <Controlled client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
   <ComponentPreview code={examples.Default} language="vue" title="Default">
     <Default client:only="vue" />
   </ComponentPreview>
@@ -102,7 +101,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/circular-slider</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/circular-slider</code>. Native HTML attributes are also
+    supported and omitted from this table.
   </p>
   <PropsTable rows={circularSliderProps} />
 </DocsLayout>

@@ -51,7 +51,6 @@ const headings = [
     text: "Settings Row",
   },
 ];
-
 ---
 
 <DocsLayout
@@ -60,9 +59,10 @@ const headings = [
   headings={headings}
   title="Field"
 >
-
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">Overview</h2>
-  <p class="mb-8 text-muted-foreground">Field layout compositions for grids, sections, labels, and settings rows.</p>
+  <p class="mb-8 text-muted-foreground">
+    Field layout compositions for grids, sections, labels, and settings rows.
+  </p>
 
   <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="form-grid">Form Grid</h2>
   <ComponentPreview code={FormGridSource} language="ts" title="Form Grid">
@@ -72,15 +72,21 @@ const headings = [
   <ComponentPreview code={FormSectionSource} language="ts" title="Form Section">
     <FormSection client:only="vue" />
   </ComponentPreview>
-  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="form-section-textarea">Form Section Textarea</h2>
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="form-section-textarea">
+    Form Section Textarea
+  </h2>
   <ComponentPreview code={FormSectionTextareaSource} language="ts" title="Form Section Textarea">
     <FormSectionTextarea client:only="vue" />
   </ComponentPreview>
-  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="label-accessory">Label Accessory</h2>
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="label-accessory">
+    Label Accessory
+  </h2>
   <ComponentPreview code={LabelAccessorySource} language="ts" title="Label Accessory">
     <LabelAccessory client:only="vue" />
   </ComponentPreview>
-  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="settings-panel">Settings Panel</h2>
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="settings-panel">
+    Settings Panel
+  </h2>
   <ComponentPreview code={SettingsPanelSource} language="ts" title="Settings Panel">
     <SettingsPanel client:only="vue" />
   </ComponentPreview>
@@ -88,5 +94,4 @@ const headings = [
   <ComponentPreview code={SettingsRowSource} language="ts" title="Settings Row">
     <SettingsRow client:only="vue" />
   </ComponentPreview>
-
 </DocsLayout>

@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
 import { PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
 import { Button, Item } from "@pisagor/vue";
@@ -42,55 +42,68 @@ function moveToAvailable() {
 </script>
 
 <template>
-        <div class="flex gap-2 max-sm:flex-col">
-          <Item.Group variant="outline">
-          <Item class="w-full p-1">
-            <Listbox.Root
-              class="min-h-40"
-              selectionMode="multiple"
-              :collection="availableCollection"
-              :value="availableValue"
-              @value-change="onAvailableValueChange"
-            >
-              <Listbox.Content>
-                <Listbox.ItemGroup heading="Available">
-                  <Listbox.Item v-for="item in availableCollection.items" :key="item.value" :item="item">
-                    <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>
-                    <Listbox.ItemIndicator />
-                  </Listbox.Item>
-                </Listbox.ItemGroup>
-              </Listbox.Content>
-            </Listbox.Root>
-          </Item>
-          </Item.Group>
-          <div class="flex flex-row-reverse justify-center gap-2 sm:flex-col">
-            <Button size="icon-md" variant="outline" :disabled="availableValue.length === 0" @click="moveToSelected">
-              <PhCaretRight />
-            </Button>
-            <Button size="icon-md" variant="outline" :disabled="selectedValue.length === 0" @click="moveToAvailable">
-              <PhCaretLeft />
-            </Button>
-          </div>
-          <Item.Group variant="outline">
-          <Item class="w-full p-1">
-            <Listbox.Root
-              class="min-h-40"
-              selectionMode="multiple"
-              :collection="selectedCollection"
-              :value="selectedValue"
-              @value-change="onSelectedValueChange"
-            >
-              <Listbox.Content class="max-h-48 min-h-40">
-                <Listbox.ItemGroup heading="Selected">
-                  <Listbox.Item v-for="item in selectedCollection.items" :key="item.value" :item="item">
-                    <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>
-                    <Listbox.ItemIndicator />
-                  </Listbox.Item>
-                </Listbox.ItemGroup>
-              </Listbox.Content>
-            </Listbox.Root>
-          </Item>
-          </Item.Group>
-        </div>
-  
+  <div class="flex gap-2 max-sm:flex-col">
+    <Item.Group variant="outline">
+      <Item class="w-full p-1">
+        <Listbox.Root
+          class="min-h-40"
+          selection-mode="multiple"
+          :collection="availableCollection"
+          :value="availableValue"
+          @value-change="onAvailableValueChange"
+        >
+          <Listbox.Content>
+            <Listbox.ItemGroup heading="Available">
+              <Listbox.Item
+                v-for="item in availableCollection.items"
+                :key="item.value"
+                :item="item"
+              >
+                <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>
+                <Listbox.ItemIndicator />
+              </Listbox.Item>
+            </Listbox.ItemGroup>
+          </Listbox.Content>
+        </Listbox.Root>
+      </Item>
+    </Item.Group>
+    <div class="flex flex-row-reverse justify-center gap-2 sm:flex-col">
+      <Button
+        size="icon-md"
+        variant="outline"
+        :disabled="availableValue.length === 0"
+        @click="moveToSelected"
+      >
+        <PhCaretRight />
+      </Button>
+      <Button
+        size="icon-md"
+        variant="outline"
+        :disabled="selectedValue.length === 0"
+        @click="moveToAvailable"
+      >
+        <PhCaretLeft />
+      </Button>
+    </div>
+    <Item.Group variant="outline">
+      <Item class="w-full p-1">
+        <Listbox.Root
+          class="min-h-40"
+          selection-mode="multiple"
+          :collection="selectedCollection"
+          :value="selectedValue"
+          @value-change="onSelectedValueChange"
+        >
+          <Listbox.Content class="max-h-48 min-h-40">
+            <Listbox.ItemGroup heading="Selected">
+              <Listbox.Item v-for="item in selectedCollection.items" :key="item.value" :item="item">
+                <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>
+                <Listbox.ItemIndicator />
+              </Listbox.Item>
+            </Listbox.ItemGroup>
+          </Listbox.Content>
+        </Listbox.Root>
+      </Item>
+    </Item.Group>
+  </div>
 </template>

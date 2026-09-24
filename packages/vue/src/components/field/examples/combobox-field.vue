@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
 
 import { Combobox } from "@pisagor/vue";
@@ -23,22 +23,21 @@ function filter(_inputValue: string) {}
 </script>
 
 <template>
-        <Field>
-          <Field.Label>Fruits</Field.Label>
-          <Combobox.Root
-            :collection="collection"
-            @input-value-change="({ inputValue }) => filter(inputValue)"
-          >
-            <Combobox.Input aria-label="Select an item" placeholder="Select an item..." />
-            <Combobox.Content>
-              <Combobox.List>
-                <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item">
-                  {{ item.label }}
-                </Combobox.Item>
-              </Combobox.List>
-            </Combobox.Content>
-          </Combobox.Root>
-          <Field.Description>Select an item.</Field.Description>
-        </Field>
-  
+  <Field>
+    <Field.Label>Fruits</Field.Label>
+    <Combobox.Root
+      :collection="collection"
+      @input-value-change="({ inputValue }) => filter(inputValue)"
+    >
+      <Combobox.Input aria-label="Select an item" placeholder="Select an item..." />
+      <Combobox.Content>
+        <Combobox.List>
+          <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item">
+            {{ item.label }}
+          </Combobox.Item>
+        </Combobox.List>
+      </Combobox.Content>
+    </Combobox.Root>
+    <Field.Description>Select an item.</Field.Description>
+  </Field>
 </template>

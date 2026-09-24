@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { DataList } from "..";
 
 const data = [
@@ -11,12 +11,11 @@ const data = [
 </script>
 
 <template>
-        <div class="w-96 rounded-xl border bg-card p-4">
-          <DataList.Root class="divide-y" >
-            <DataList.Item v-for="item in data" :key="item.label" :value="item.value">
-              {{ item.label }}
-            </DataList.Item>
-          </DataList.Root>
-        </div>
-  
+  <div class="w-96 rounded-xl border bg-card p-4">
+    <DataList.Root class="divide-y">
+      <DataList.Item v-for="item in data" :key="item.label" :value="item.value">
+        {{ item.label }}
+      </DataList.Item>
+    </DataList.Root>
+  </div>
 </template>

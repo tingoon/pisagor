@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { useFileUploadContext } from "@ark-ui/vue/file-upload";
 import { PhX } from "@phosphor-icons/vue";
 import { Button } from "@pisagor/vue";
@@ -43,12 +43,11 @@ const CustomPreviewList = defineComponent({
 </script>
 
 <template>
-        <FileUpload accept="image/*">
-          <FileUpload.Dropzone>
-            <FileUpload.DropzoneIcon />
-            <FileUpload.Title>Drop files here</FileUpload.Title>
-          </FileUpload.Dropzone>
-          <CustomPreviewList />
-        </FileUpload>
-  
+  <FileUpload accept="image/*">
+    <FileUpload.Dropzone>
+      <FileUpload.DropzoneIcon />
+      <FileUpload.Title>Drop files here</FileUpload.Title>
+    </FileUpload.Dropzone>
+    <CustomPreviewList />
+  </FileUpload>
 </template>

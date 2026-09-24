@@ -1,19 +1,18 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { PhTextB, PhTextItalic, PhTextUnderline } from "@phosphor-icons/vue";
 import { ToggleGroup } from "..";
 </script>
 
 <template>
-        <ToggleGroup.Root orientation="vertical" variant="outline" :default-value="['bold']" >
-          <ToggleGroup.Item aria-label="Toggle bold" value="bold">
-            <PhTextB />
-          </ToggleGroup.Item>
-          <ToggleGroup.Item aria-label="Toggle italic" value="italic">
-            <PhTextItalic />
-          </ToggleGroup.Item>
-          <ToggleGroup.Item aria-label="Toggle underline" value="underline">
-            <PhTextUnderline />
-          </ToggleGroup.Item>
-        </ToggleGroup.Root>
-  
+  <ToggleGroup.Root orientation="vertical" variant="outline" :default-value="['bold']">
+    <ToggleGroup.Item aria-label="Toggle bold" value="bold">
+      <PhTextB />
+    </ToggleGroup.Item>
+    <ToggleGroup.Item aria-label="Toggle italic" value="italic">
+      <PhTextItalic />
+    </ToggleGroup.Item>
+    <ToggleGroup.Item aria-label="Toggle underline" value="underline">
+      <PhTextUnderline />
+    </ToggleGroup.Item>
+  </ToggleGroup.Root>
 </template>

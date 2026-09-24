@@ -14,7 +14,6 @@ const headings = [
   headings={headings}
   title="Recipes"
 >
-
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">Overview</h2>
   <p class="mb-8 text-muted-foreground">
     Recipes are opinionated compositions built from Pisagor primitives. Every Storybook recipe
@@ -23,16 +22,97 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="recipes">Recipes</h2>
   <ul class="list-disc space-y-3 ps-5 text-muted-foreground">
-    <li><a class="text-foreground underline-offset-4 hover:underline" href={withDocsBase("/vue/recipes/app-shell")}>App Shell</a> — Standard application shell with top navigation, icon rail, side panel, main content, and inspector regions ready for menus and page content.</li>
-    <li><a class="text-foreground underline-offset-4 hover:underline" href={withDocsBase("/vue/recipes/card")}>Card</a> — Card compositions for login flows, custom spacing, and product display.</li>
-    <li><a class="text-foreground underline-offset-4 hover:underline" href={withDocsBase("/vue/recipes/editors")}>Editors</a> — Editor compositions for IDE layouts, rich text toolbars, and editable user cards.</li>
-    <li><a class="text-foreground underline-offset-4 hover:underline" href={withDocsBase("/vue/recipes/field")}>Field</a> — Field layout compositions for grids, sections, labels, and settings rows.</li>
-    <li><a class="text-foreground underline-offset-4 hover:underline" href={withDocsBase("/vue/recipes/input-group")}>Input Group</a> — Input group compositions for code editing, menus, inline actions, labels, number inputs, and tooltips.</li>
-    <li><a class="text-foreground underline-offset-4 hover:underline" href={withDocsBase("/vue/recipes/overlay")}>Overlay</a> — Overlay compositions for menus, dialogs, popovers, item pickers, and avatar overflow.</li>
-    <li><a class="text-foreground underline-offset-4 hover:underline" href={withDocsBase("/vue/recipes/password")}>Password Input</a> — Compose a password field with live strength feedback, a segmented progress bar, and a requirement checklist for password creation flows.</li>
-    <li><a class="text-foreground underline-offset-4 hover:underline" href={withDocsBase("/vue/recipes/search-field")}>Search Field</a> — Search input compositions with button group and inline field layouts.</li>
-    <li><a class="text-foreground underline-offset-4 hover:underline" href={withDocsBase("/vue/recipes/sign-in-form")}>Sign In</a> — Complete sign-in flow with email, password, validation, and remember-me checkbox using form fields.</li>
-    <li><a class="text-foreground underline-offset-4 hover:underline" href={withDocsBase("/vue/recipes/table")}>Table</a> — Table compositions with bulk actions, row menus, and pagination controls.</li>
-    <li><a class="text-foreground underline-offset-4 hover:underline" href={withDocsBase("/vue/recipes/tags-input")}>Tags Input</a> — Tags input paired with a combobox for searchable tag selection and custom value entry.</li>
+    <li>
+      <a
+        class="text-foreground underline-offset-4 hover:underline"
+        href={withDocsBase("/vue/recipes/app-shell")}
+        >App Shell</a
+      >
+      — Standard application shell with top navigation, icon rail, side panel, main content, and
+      inspector regions ready for menus and page content.
+    </li>
+    <li>
+      <a
+        class="text-foreground underline-offset-4 hover:underline"
+        href={withDocsBase("/vue/recipes/card")}
+        >Card</a
+      >
+      — Card compositions for login flows, custom spacing, and product display.
+    </li>
+    <li>
+      <a
+        class="text-foreground underline-offset-4 hover:underline"
+        href={withDocsBase("/vue/recipes/editors")}
+        >Editors</a
+      >
+      — Editor compositions for IDE layouts, rich text toolbars, and editable user cards.
+    </li>
+    <li>
+      <a
+        class="text-foreground underline-offset-4 hover:underline"
+        href={withDocsBase("/vue/recipes/field")}
+        >Field</a
+      >
+      — Field layout compositions for grids, sections, labels, and settings rows.
+    </li>
+    <li>
+      <a
+        class="text-foreground underline-offset-4 hover:underline"
+        href={withDocsBase("/vue/recipes/input-group")}
+        >Input Group</a
+      >
+      — Input group compositions for code editing, menus, inline actions, labels, number inputs, and
+      tooltips.
+    </li>
+    <li>
+      <a
+        class="text-foreground underline-offset-4 hover:underline"
+        href={withDocsBase("/vue/recipes/overlay")}
+        >Overlay</a
+      >
+      — Overlay compositions for menus, dialogs, popovers, item pickers, and avatar overflow.
+    </li>
+    <li>
+      <a
+        class="text-foreground underline-offset-4 hover:underline"
+        href={withDocsBase("/vue/recipes/password")}
+        >Password Input</a
+      >
+      — Compose a password field with live strength feedback, a segmented progress bar, and a
+      requirement checklist for password creation flows.
+    </li>
+    <li>
+      <a
+        class="text-foreground underline-offset-4 hover:underline"
+        href={withDocsBase("/vue/recipes/search-field")}
+        >Search Field</a
+      >
+      — Search input compositions with button group and inline field layouts.
+    </li>
+    <li>
+      <a
+        class="text-foreground underline-offset-4 hover:underline"
+        href={withDocsBase("/vue/recipes/sign-in-form")}
+        >Sign In</a
+      >
+      — Complete sign-in flow with email, password, validation, and remember-me checkbox using form
+      fields.
+    </li>
+    <li>
+      <a
+        class="text-foreground underline-offset-4 hover:underline"
+        href={withDocsBase("/vue/recipes/table")}
+        >Table</a
+      >
+      — Table compositions with bulk actions, row menus, and pagination controls.
+    </li>
+    <li>
+      <a
+        class="text-foreground underline-offset-4 hover:underline"
+        href={withDocsBase("/vue/recipes/tags-input")}
+        >Tags Input</a
+      >
+      — Tags input paired with a combobox for searchable tag selection and custom value entry.
+    </li>
   </ul>
 </DocsLayout>

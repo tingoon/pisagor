@@ -18,7 +18,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -27,9 +26,7 @@ const headings = [
   headings={headings}
   title="Client Only"
 >
-
   <ComponentHeader framework="react" id="client-only" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -42,7 +39,7 @@ const headings = [
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="fallback">Fallback</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="fallback">Fallback</h3>
   <ComponentPreview code={examples.Fallback} language="tsx" title="Fallback">
     <Fallback client:only="react" />
   </ComponentPreview>
@@ -52,6 +49,7 @@ const headings = [
 
   <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-8 text-muted-foreground">
-    This utility has no dedicated entries in <code>@pisagor/props</code> yet. Use the TypeScript types exported from the framework package.
+    This utility has no dedicated entries in <code>@pisagor/props</code> yet. Use the TypeScript
+    types exported from the framework package.
   </p>
 </DocsLayout>

@@ -26,7 +26,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -35,9 +34,7 @@ const headings = [
   headings={headings}
   title="Status"
 >
-
   <ComponentHeader framework="react" id="status" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -50,19 +47,19 @@ const headings = [
   <ComponentPreview code={examples.Variants} language="tsx" title="Variants">
     <Variants client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-color">Custom Color</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-color">Custom Color</h3>
   <ComponentPreview code={examples.CustomColor} language="tsx" title="Custom Color">
     <CustomColor client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-size">Custom Size</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-size">Custom Size</h3>
   <ComponentPreview code={examples.CustomSize} language="tsx" title="Custom Size">
     <CustomSize client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-icon">With Icon</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-icon">With Icon</h3>
   <ComponentPreview code={examples.WithIcon} language="tsx" title="With Icon">
     <WithIcon client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sizes">Sizes</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sizes">Sizes</h3>
   <ComponentPreview code={examples.Sizes} language="tsx" title="Sizes">
     <Sizes client:only="react" />
   </ComponentPreview>
@@ -72,7 +69,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/status</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/status</code>. Native HTML attributes are also supported and
+    omitted from this table.
   </p>
   <PropsTable rows={statusProps} />
 </DocsLayout>

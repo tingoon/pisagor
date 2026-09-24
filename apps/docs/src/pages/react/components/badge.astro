@@ -30,7 +30,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -39,9 +38,7 @@ const headings = [
   headings={headings}
   title="Badge"
 >
-
   <ComponentHeader framework="react" id="badge" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -54,27 +51,27 @@ const headings = [
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sizes">Sizes</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sizes">Sizes</h3>
   <ComponentPreview code={examples.Sizes} language="tsx" title="Sizes">
     <Sizes client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
   <ComponentPreview code={examples.Variants} language="tsx" title="Variants">
     <Variants client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-color">Custom Color</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-color">Custom Color</h3>
   <ComponentPreview code={examples.CustomColor} language="tsx" title="Custom Color">
     <CustomColor client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="pill">Pill</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="pill">Pill</h3>
   <ComponentPreview code={examples.Pill} language="tsx" title="Pill">
     <Pill client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-link">With Link</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-link">With Link</h3>
   <ComponentPreview code={examples.WithLink} language="tsx" title="With Link">
     <WithLink client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-spinner">With Spinner</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-spinner">With Spinner</h3>
   <ComponentPreview code={examples.WithSpinner} language="tsx" title="With Spinner">
     <WithSpinner client:only="react" />
   </ComponentPreview>
@@ -84,7 +81,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/badge</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/badge</code>. Native HTML attributes are also supported and
+    omitted from this table.
   </p>
   <PropsTable rows={badgeProps} />
 </DocsLayout>

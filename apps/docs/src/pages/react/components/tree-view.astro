@@ -36,7 +36,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -45,9 +44,7 @@ const headings = [
   headings={headings}
   title="Tree View"
 >
-
   <ComponentHeader framework="react" id="tree-view" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -60,39 +57,47 @@ const headings = [
   <ComponentPreview code={examples.Links} language="tsx" title="Links">
     <Links client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="checkbox-tree">Checkbox Tree</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="checkbox-tree">Checkbox Tree</h3>
   <ComponentPreview code={examples.CheckboxTree} language="tsx" title="Checkbox Tree">
     <CheckboxTree client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-context-menu">With Context Menu</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-context-menu">
+    With Context Menu
+  </h3>
   <ComponentPreview code={examples.WithContextMenu} language="tsx" title="With Context Menu">
     <WithContextMenu client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-icons-folder">Custom Icons Folder</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-icons-folder">
+    Custom Icons Folder
+  </h3>
   <ComponentPreview code={examples.CustomIconsFolder} language="tsx" title="Custom Icons Folder">
     <CustomIconsFolder client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-icons-item">Custom Icons Item</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-icons-item">
+    Custom Icons Item
+  </h3>
   <ComponentPreview code={examples.CustomIconsItem} language="tsx" title="Custom Icons Item">
     <CustomIconsItem client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-icons">Custom Icons</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-icons">Custom Icons</h3>
   <ComponentPreview code={examples.CustomIcons} language="tsx" title="Custom Icons">
     <CustomIcons client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="multiple-selection">Multiple Selection</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="multiple-selection">
+    Multiple Selection
+  </h3>
   <ComponentPreview code={examples.MultipleSelection} language="tsx" title="Multiple Selection">
     <MultipleSelection client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="rename">Rename</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="rename">Rename</h3>
   <ComponentPreview code={examples.Rename} language="tsx" title="Rename">
     <Rename client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
   <ComponentPreview code={examples.Controlled} language="tsx" title="Controlled">
     <Controlled client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
@@ -102,7 +107,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/tree-view</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/tree-view</code>. Native HTML attributes are also supported
+    and omitted from this table.
   </p>
   <PropsTable rows={treeViewProps} />
 </DocsLayout>

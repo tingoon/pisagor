@@ -33,13 +33,11 @@ const hasFallbackSlot = Astro.slots.has("fallback");
   data-shape={shape}
   data-size={size}
 >
-  {
-    src ? (
-      <img alt={alt ?? ""} class={slots.image()} data-part="image" data-scope="avatar" src={src} />
-    ) : (fallback !== undefined || hasFallbackSlot) ? (
-      <span class={slots.fallback()} data-part="fallback" data-scope="avatar">
-        {fallback ?? <slot name="fallback" />}
-      </span>
-    ) : null
-  }
+  {src ? (
+  <img alt={alt ?? ""} class={slots.image()} data-part="image" data-scope="avatar" src={src} />
+) : fallback !== undefined || hasFallbackSlot ? (
+  <span class={slots.fallback()} data-part="fallback" data-scope="avatar">
+    {fallback ?? <slot name="fallback" />}
+  </span>
+) : null}
 </span>

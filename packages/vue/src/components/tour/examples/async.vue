@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { Button } from "@pisagor/vue";
 import { Tour } from "..";
 
@@ -43,26 +43,25 @@ const steps = [
 </script>
 
 <template>
-        <div class="flex flex-col gap-2">
-          <Tour :steps="steps">
-            <Tour.Trigger as-child>
-              <Button variant="outline">Start tour</Button>
-            </Tour.Trigger>
-            <div
-              class="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
-              id="user-card"
-            >
-              User profile card
-            </div>
-            <Tour.Content>
-              <Tour.Header>
-                <Tour.ProgressText />
-                <Tour.Title />
-                <Tour.Description />
-              </Tour.Header>
-              <Tour.Actions />
-            </Tour.Content>
-          </Tour>
-        </div>
-  
+  <div class="flex flex-col gap-2">
+    <Tour :steps="steps">
+      <Tour.Trigger as-child>
+        <Button variant="outline">Start tour</Button>
+      </Tour.Trigger>
+      <div
+        class="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
+        id="user-card"
+      >
+        User profile card
+      </div>
+      <Tour.Content>
+        <Tour.Header>
+          <Tour.ProgressText />
+          <Tour.Title />
+          <Tour.Description />
+        </Tour.Header>
+        <Tour.Actions />
+      </Tour.Content>
+    </Tour>
+  </div>
 </template>

@@ -1,6 +1,5 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { Accordion } from "..";
-import { shortFaqItems } from "./helpers";
 
 const items = [
   {

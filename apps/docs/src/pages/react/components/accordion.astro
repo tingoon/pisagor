@@ -30,7 +30,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -39,7 +38,6 @@ const headings = [
   headings={headings}
   title="Accordion"
 >
-
   <ComponentHeader framework="react" id="accordion" />
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
@@ -47,33 +45,35 @@ const headings = [
     Each example matches a Storybook story, in the same order.
   </p>
 
-    <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
 
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="multiple">Multiple</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="multiple">Multiple</h3>
   <ComponentPreview code={examples.Multiple} language="tsx" title="Multiple">
     <Multiple client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="non-collapsible">Non-collapsible</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="non-collapsible">
+    Non-collapsible
+  </h3>
   <ComponentPreview code={examples.NonCollapsible} language="tsx" title="Non-collapsible">
     <NonCollapsible client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
   <ComponentPreview code={examples.Disabled} language="tsx" title="Disabled">
     <Disabled client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
   <ComponentPreview code={examples.Controlled} language="tsx" title="Controlled">
     <Controlled client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="compound">Compound</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="compound">Compound</h3>
   <ComponentPreview code={examples.Compound} language="tsx" title="Compound">
     <Compound client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-card">With Card</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-card">With Card</h3>
   <ComponentPreview code={examples.WithCard} language="tsx" title="With Card">
     <WithCard client:only="react" />
   </ComponentPreview>
@@ -81,9 +81,10 @@ const headings = [
   <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
   <Installation class="mb-8" packages="@pisagor/react" />
 
-    <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/accordion</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/accordion</code>. Native HTML attributes are also supported
+    and omitted from this table.
   </p>
   <PropsTable rows={accordionProps} />
 </DocsLayout>
