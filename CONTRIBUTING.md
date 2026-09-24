@@ -59,6 +59,18 @@ bunx taze -r
 
 Weekly dependency PRs: Actions → **Dependency Updates** (Renovate; config in `renovate.json`). Manual run via **Run workflow**.
 
+## Turborepo Remote Cache
+
+**Checks** and **Docs Site** share Turborepo artifacts via [Vercel Remote Cache](https://vercel.com/docs/monorepos/remote-caching) (OIDC; no long-lived token).
+
+One-time setup:
+
+1. In the Vercel team: enable **Remote Caching** (Settings → Billing → Remote Caching).
+2. Add an OIDC policy for Turborepo CLI (Settings → Build and Deployment → OIDC Policies) scoped to this GitHub repo.
+3. Set the repository variable `TURBO_TEAM` to the Vercel team slug (`gh variable set TURBO_TEAM --body "<slug>"`).
+
+Local (optional): `bunx turbo login` then `bunx turbo link` from the repo root.
+
 Commits: [Conventional Commits](https://www.conventionalcommits.org/). Scope with the workspace when the change is local (`feat(react-stories):`, `fix(react):`).
 
 ## Pull requests
