@@ -1,4 +1,3 @@
-<script lang="ts" setup>
 import { Avatar, AvatarGroup } from "..";
 
 const users = [
@@ -23,16 +22,14 @@ const users = [
     src: "https://randomuser.me/api/portraits/men/32.jpg",
   },
 ];
-</script>
 
-<template>
-  <AvatarGroup.Root>
-    <Avatar
-      v-for="user in users"
-      :key="user.src"
-      :alt="user.name"
-      :fallback="user.fallback"
-      :src="user.src"
-    />
-  </AvatarGroup.Root>
-</template>
+export function Count() {
+  return (
+    <AvatarGroup.Root>
+      {users.map((user) => (
+        <Avatar alt={user.name} fallback={user.fallback} key={user.src} src={user.src} />
+      ))}
+      <AvatarGroup.Count>+5</AvatarGroup.Count>
+    </AvatarGroup.Root>
+  );
+}

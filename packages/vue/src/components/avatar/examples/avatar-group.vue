@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Avatar, AvatarGroup } from "..";
+import { AvatarGroup } from "..";
 
 const users = [
   {
@@ -26,13 +26,5 @@ const users = [
 </script>
 
 <template>
-  <AvatarGroup.Root>
-    <Avatar
-      v-for="user in users"
-      :key="user.src"
-      :alt="user.name"
-      :fallback="user.fallback"
-      :src="user.src"
-    />
-  </AvatarGroup.Root>
+  <AvatarGroup :max="4" :users="users" />
 </template>
