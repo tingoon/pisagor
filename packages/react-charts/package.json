@@ -3,9 +3,9 @@
     "url": "https://github.com/tingoon/pisagor/issues"
   },
   "dependencies": {
-    "@pisagor/react": "^0.2.0",
-    "@pisagor/recipes": "^0.2.0",
-    "@pisagor/utils": "^0.1.0",
+    "@pisagor/react": "workspace:*",
+    "@pisagor/recipes": "workspace:*",
+    "@pisagor/utils": "workspace:*",
     "recharts": "^3.10.1"
   },
   "description": "Chart primitives for Pisagor React (Recharts wrappers).",
