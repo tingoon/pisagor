@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { DataList } from "..";
 
 const items = [
@@ -9,8 +9,7 @@ const items = [
 </script>
 
 <template>
-        <div class="w-96 rounded-xl border bg-card p-4">
-          <DataList :items="items" />
-        </div>
-  
+  <div class="w-96 rounded-xl border bg-card p-4">
+    <DataList :items="items" />
+  </div>
 </template>

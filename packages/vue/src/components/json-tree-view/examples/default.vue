@@ -1,8 +1,7 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { JsonTreeView } from "..";
 import { defaultData } from "./helpers";
 
-const items = defaultData();
 const data = defaultData();
 </script>
 

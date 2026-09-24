@@ -14,7 +14,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -23,9 +22,7 @@ const headings = [
   headings={headings}
   title="Sidebar"
 >
-
   <ComponentHeader framework="react" id="sidebar" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -44,7 +41,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/sidebar</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/sidebar</code>. Native HTML attributes are also supported
+    and omitted from this table.
   </p>
   <PropsTable rows={sidebarProps} />
 </DocsLayout>

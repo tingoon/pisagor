@@ -24,7 +24,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -33,9 +32,7 @@ const headings = [
   headings={headings}
   title="Skeleton"
 >
-
   <ComponentHeader framework="astro" id="skeleton" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <CodeBlock class="mb-8" code={imports} lang="astro" title="Import" />
@@ -44,15 +41,15 @@ const headings = [
   <ComponentPreview class="mb-8" code={examples.Circle} title="Circle">
     <Circle />
   </ComponentPreview>
-<h3 class="mb-3 text-xl font-semibold tracking-tight" id="composition">Composition</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="composition">Composition</h3>
   <ComponentPreview class="mb-8" code={examples.Composition} title="Composition">
     <Composition />
   </ComponentPreview>
-<h3 class="mb-3 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="default">Default</h3>
   <ComponentPreview class="mb-8" code={examples.Default} title="Default">
     <Default />
   </ComponentPreview>
-<h3 class="mb-3 text-xl font-semibold tracking-tight" id="text">Text</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="text">Text</h3>
   <ComponentPreview class="mb-8" code={examples.Text} title="Text">
     <Text />
   </ComponentPreview>
@@ -62,7 +59,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/skeleton</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/skeleton</code>. Native HTML attributes are also supported
+    and omitted from this table.
   </p>
   <PropsTable rows={skeletonProps} />
 </DocsLayout>

@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { Steps } from "..";
 
 const items = [
@@ -9,19 +9,18 @@ const items = [
 </script>
 
 <template>
-        <Steps :count="items.length">
-          <Steps.List>
-            <Steps.Item v-for="(item, index) in items" :key="item.title" :index="index">
-              <Steps.Trigger>
-                <Steps.Indicator>{{ index + 1 }}</Steps.Indicator>
-                <div class="flex flex-col items-start gap-1">
-                  <Steps.Title>{{ item.title }}</Steps.Title>
-                  <Steps.Description>{{ item.description }}</Steps.Description>
-                </div>
-              </Steps.Trigger>
-              <Steps.Separator />
-            </Steps.Item>
-          </Steps.List>
-        </Steps>
-  
+  <Steps :count="items.length">
+    <Steps.List>
+      <Steps.Item v-for="(item, index) in items" :key="item.title" :index="index">
+        <Steps.Trigger>
+          <Steps.Indicator>{{ index + 1 }}</Steps.Indicator>
+          <div class="flex flex-col items-start gap-1">
+            <Steps.Title>{{ item.title }}</Steps.Title>
+            <Steps.Description>{{ item.description }}</Steps.Description>
+          </div>
+        </Steps.Trigger>
+        <Steps.Separator />
+      </Steps.Item>
+    </Steps.List>
+  </Steps>
 </template>

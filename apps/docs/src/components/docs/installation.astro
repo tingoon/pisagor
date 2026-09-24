@@ -27,7 +27,7 @@ const defaultManual =
     : pkgs.map((p) => `import { /* … */ } from "${p}";`).join("\n"));
 ---
 
-<div data-installation class:list={["installation not-prose", Astro.props.class]} >
+<div data-installation class:list={["installation not-prose", Astro.props.class]}>
   <div
     aria-label="Installation method"
     class="mb-3 inline-flex rounded-lg border border-border/70 bg-muted/30 p-0.5"
@@ -79,23 +79,20 @@ const defaultManual =
         class="flex min-w-0 flex-1 items-center gap-0.5 overflow-x-auto"
         role="tablist"
       >
-        {
-          
-          managers.map((manager) => (
-            <button
-              aria-selected={manager.id === "bun" ? "true" : "false"}
-              class="shrink-0 rounded-md px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground data-[active]:bg-muted data-[active]:text-foreground"
-              data-active={manager.id === "bun" ? "" : undefined}
-              data-command={manager.command}
-              data-pm={manager.id}
-              data-pm-tab
-              role="tab"
-              type="button"
-            >
-              {manager.label}
-            </button>
-          ))
-        }
+        {managers.map((manager) => (
+  <button
+    aria-selected={manager.id === "bun" ? "true" : "false"}
+    class="shrink-0 rounded-md px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground data-[active]:bg-muted data-[active]:text-foreground"
+    data-active={manager.id === "bun" ? "" : undefined}
+    data-command={manager.command}
+    data-pm={manager.id}
+    data-pm-tab
+    role="tab"
+    type="button"
+  >
+    {manager.label}
+  </button>
+))}
       </div>
 
       <button
@@ -131,10 +128,15 @@ const defaultManual =
       </button>
     </div>
 
-    <pre class="overflow-x-auto px-4 py-3.5 font-mono text-3.25 leading-relaxed text-foreground"><code data-command-text>{managers[1].command}</code></pre>
+    <pre
+      class="overflow-x-auto px-4 py-3.5 font-mono text-3.25 leading-relaxed text-foreground"
+    ><code data-command-text>{managers[1].command}</code></pre>
   </div>
 
-  <div class="hidden overflow-hidden rounded-xl border border-border/70 bg-card" data-panel="manual">
+  <div
+    class="hidden overflow-hidden rounded-xl border border-border/70 bg-card"
+    data-panel="manual"
+  >
     <div class="flex items-center justify-between gap-3 border-b border-border/60 px-3 py-2">
       <span class="text-xs font-medium text-muted-foreground">Import</span>
       <button
@@ -180,113 +182,113 @@ const defaultManual =
 </div>
 
 <script>
-  const STORAGE_KEY = "pisagor.docs.package-manager";
+const STORAGE_KEY = "pisagor.docs.package-manager";
 
-  function markCopied(btn: HTMLElement) {
-    const idle = btn.querySelector<HTMLElement>("[data-copy-idle]");
-    const done = btn.querySelector<HTMLElement>("[data-copy-done]");
-    if (idle) idle.hidden = true;
-    if (done) done.hidden = false;
-    btn.dataset.copied = "";
-    window.setTimeout(() => {
-      if (idle) idle.hidden = false;
-      if (done) done.hidden = true;
-      delete btn.dataset.copied;
-    }, 1400);
+function markCopied(btn: HTMLElement) {
+  const idle = btn.querySelector<HTMLElement>("[data-copy-idle]");
+  const done = btn.querySelector<HTMLElement>("[data-copy-done]");
+  if (idle) idle.hidden = true;
+  if (done) done.hidden = false;
+  btn.dataset.copied = "";
+  window.setTimeout(() => {
+    if (idle) idle.hidden = false;
+    if (done) done.hidden = true;
+    delete btn.dataset.copied;
+  }, 1400);
+}
+
+async function copyText(text: string) {
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch {
+    const ta = document.createElement("textarea");
+    ta.value = text;
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand("copy");
+    ta.remove();
   }
+}
 
-  async function copyText(text: string) {
-    try {
-      await navigator.clipboard.writeText(text);
-    } catch {
-      const ta = document.createElement("textarea");
-      ta.value = text;
-      document.body.appendChild(ta);
-      ta.select();
-      document.execCommand("copy");
-      ta.remove();
-    }
-  }
+function bindInstallation(root: HTMLElement) {
+  if (root.dataset.bound === "1") return;
+  root.dataset.bound = "1";
 
-  function bindInstallation(root: HTMLElement) {
-    if (root.dataset.bound === "1") return;
-    root.dataset.bound = "1";
+  const modeTabs = [...root.querySelectorAll<HTMLElement>("[data-mode-tab]")];
+  const cliPanel = root.querySelector<HTMLElement>('[data-panel="cli"]');
+  const manualPanel = root.querySelector<HTMLElement>('[data-panel="manual"]');
+  const pmTabs = [...root.querySelectorAll<HTMLElement>("[data-pm-tab]")];
+  const commandEl = root.querySelector<HTMLElement>("[data-command-text]");
+  const copyBtn = root.querySelector<HTMLElement>("[data-copy]");
+  const copyManualBtn = root.querySelector<HTMLElement>("[data-copy-manual]");
+  const manualSource = root.querySelector<HTMLElement>("[data-manual-source]");
 
-    const modeTabs = [...root.querySelectorAll<HTMLElement>("[data-mode-tab]")];
-    const cliPanel = root.querySelector<HTMLElement>('[data-panel="cli"]');
-    const manualPanel = root.querySelector<HTMLElement>('[data-panel="manual"]');
-    const pmTabs = [...root.querySelectorAll<HTMLElement>("[data-pm-tab]")];
-    const commandEl = root.querySelector<HTMLElement>("[data-command-text]");
-    const copyBtn = root.querySelector<HTMLElement>("[data-copy]");
-    const copyManualBtn = root.querySelector<HTMLElement>("[data-copy-manual]");
-    const manualSource = root.querySelector<HTMLElement>("[data-manual-source]");
-
-    function setMode(mode: "cli" | "manual") {
-      for (const tab of modeTabs) {
-        const active = tab.dataset.mode === mode;
-        tab.toggleAttribute("data-active", active);
-        tab.setAttribute("aria-selected", active ? "true" : "false");
-      }
-      cliPanel?.classList.toggle("hidden", mode !== "cli");
-      manualPanel?.classList.toggle("hidden", mode !== "manual");
-    }
-
-    function setPm(id: string) {
-      let command = "";
-      for (const tab of pmTabs) {
-        const active = tab.dataset.pm === id;
-        tab.toggleAttribute("data-active", active);
-        tab.setAttribute("aria-selected", active ? "true" : "false");
-        if (active) command = tab.dataset.command ?? "";
-      }
-      if (commandEl && command) commandEl.textContent = command;
-      try {
-        localStorage.setItem(STORAGE_KEY, id);
-      } catch {
-        /* ignore */
-      }
-    }
-
+  function setMode(mode: "cli" | "manual") {
     for (const tab of modeTabs) {
-      tab.addEventListener("click", () => {
-        setMode(tab.dataset.mode === "manual" ? "manual" : "cli");
-      });
+      const active = tab.dataset.mode === mode;
+      tab.toggleAttribute("data-active", active);
+      tab.setAttribute("aria-selected", active ? "true" : "false");
     }
+    cliPanel?.classList.toggle("hidden", mode !== "cli");
+    manualPanel?.classList.toggle("hidden", mode !== "manual");
+  }
 
+  function setPm(id: string) {
+    let command = "";
     for (const tab of pmTabs) {
-      tab.addEventListener("click", () => {
-        if (tab.dataset.pm) setPm(tab.dataset.pm);
-      });
+      const active = tab.dataset.pm === id;
+      tab.toggleAttribute("data-active", active);
+      tab.setAttribute("aria-selected", active ? "true" : "false");
+      if (active) command = tab.dataset.command ?? "";
     }
-
-    copyBtn?.addEventListener("click", async () => {
-      const text = commandEl?.textContent?.trim() ?? "";
-      if (!text) return;
-      await copyText(text);
-      markCopied(copyBtn);
-    });
-
-    copyManualBtn?.addEventListener("click", async () => {
-      const text = manualSource?.innerText?.trim() ?? "";
-      if (!text) return;
-      await copyText(text);
-      markCopied(copyManualBtn);
-    });
-
-    let preferred = "bun";
+    if (commandEl && command) commandEl.textContent = command;
     try {
-      preferred = localStorage.getItem(STORAGE_KEY) ?? "bun";
+      localStorage.setItem(STORAGE_KEY, id);
     } catch {
       /* ignore */
     }
-    if (!pmTabs.some((t) => t.dataset.pm === preferred)) preferred = "bun";
-    setPm(preferred);
   }
 
-  function bindAll() {
-    document.querySelectorAll<HTMLElement>("[data-installation]").forEach(bindInstallation);
+  for (const tab of modeTabs) {
+    tab.addEventListener("click", () => {
+      setMode(tab.dataset.mode === "manual" ? "manual" : "cli");
+    });
   }
 
-  bindAll();
-  document.addEventListener("astro:page-load", bindAll);
+  for (const tab of pmTabs) {
+    tab.addEventListener("click", () => {
+      if (tab.dataset.pm) setPm(tab.dataset.pm);
+    });
+  }
+
+  copyBtn?.addEventListener("click", async () => {
+    const text = commandEl?.textContent?.trim() ?? "";
+    if (!text) return;
+    await copyText(text);
+    markCopied(copyBtn);
+  });
+
+  copyManualBtn?.addEventListener("click", async () => {
+    const text = manualSource?.innerText?.trim() ?? "";
+    if (!text) return;
+    await copyText(text);
+    markCopied(copyManualBtn);
+  });
+
+  let preferred = "bun";
+  try {
+    preferred = localStorage.getItem(STORAGE_KEY) ?? "bun";
+  } catch {
+    /* ignore */
+  }
+  if (!pmTabs.some((t) => t.dataset.pm === preferred)) preferred = "bun";
+  setPm(preferred);
+}
+
+function bindAll() {
+  document.querySelectorAll<HTMLElement>("[data-installation]").forEach(bindInstallation);
+}
+
+bindAll();
+document.addEventListener("astro:page-load", bindAll);
 </script>

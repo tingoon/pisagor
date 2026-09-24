@@ -10,7 +10,7 @@ import { tsx } from "@tanstack/highlight/languages/tsx";
 import { vue } from "@tanstack/highlight/languages/vue";
 
 /** Shared docs highlighter (SSR-safe, synchronous). */
-export const docsHighlighter = createHighlighter({
+const docsHighlighter = createHighlighter({
   fallbackLanguage: "plaintext",
   languages: [css, html, js, json, jsx, shell, ts, tsx, vue],
 });
@@ -28,7 +28,7 @@ const LANG_ALIASES: Record<string, string> = {
   zsh: "shell",
 };
 
-export function resolveHighlightLang(lang: string): string {
+function resolveHighlightLang(lang: string): string {
   const key = lang.trim().toLowerCase();
   return LANG_ALIASES[key] ?? key;
 }

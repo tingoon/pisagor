@@ -1,7 +1,12 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { SwitchField } from "..";
 </script>
 
 <template>
-  <SwitchField error="You must enable notifications to continue." id="switch-field-notifications-invalid" invalid label="Enable notifications" />
+  <SwitchField
+    error="You must enable notifications to continue."
+    id="switch-field-notifications-invalid"
+    invalid
+    label="Enable notifications"
+  />
 </template>

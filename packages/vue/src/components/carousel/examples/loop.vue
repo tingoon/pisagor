@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { Carousel } from "..";
 import { numberedSlides } from "./helpers";
 

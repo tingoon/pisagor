@@ -42,7 +42,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -51,9 +50,7 @@ const headings = [
   headings={headings}
   title="Dropdown Menu"
 >
-
   <ComponentHeader framework="vue" id="dropdown-menu" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -66,51 +63,53 @@ const headings = [
   <ComponentPreview code={examples.Shortcuts} language="vue" title="Shortcuts">
     <Shortcuts client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="checkboxes">Checkboxes</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="checkboxes">Checkboxes</h3>
   <ComponentPreview code={examples.Checkboxes} language="vue" title="Checkboxes">
     <Checkboxes client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="destructive">Destructive</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="destructive">Destructive</h3>
   <ComponentPreview code={examples.Destructive} language="vue" title="Destructive">
     <Destructive client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="group-label">Group Label</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="group-label">Group Label</h3>
   <ComponentPreview code={examples.GroupLabel} language="vue" title="Group Label">
     <GroupLabel client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="icons">Icons</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="icons">Icons</h3>
   <ComponentPreview code={examples.Icons} language="vue" title="Icons">
     <Icons client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="link">Link</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="link">Link</h3>
   <ComponentPreview code={examples.Link} language="vue" title="Link">
     <Link client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="nested">Nested</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="nested">Nested</h3>
   <ComponentPreview code={examples.Nested} language="vue" title="Nested">
     <Nested client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="quick-item">Quick Item</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="quick-item">Quick Item</h3>
   <ComponentPreview code={examples.QuickItem} language="vue" title="Quick Item">
     <QuickItem client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="radio-group">Radio Group</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="radio-group">Radio Group</h3>
   <ComponentPreview code={examples.RadioGroup} language="vue" title="Radio Group">
     <RadioGroup client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-scroll">With Scroll</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-scroll">With Scroll</h3>
   <ComponentPreview code={examples.WithScroll} language="vue" title="With Scroll">
     <WithScroll client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-separator">With Separator</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-separator">
+    With Separator
+  </h3>
   <ComponentPreview code={examples.WithSeparator} language="vue" title="With Separator">
     <WithSeparator client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="placements">Placements</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="placements">Placements</h3>
   <ComponentPreview code={examples.Placements} language="vue" title="Placements">
     <Placements client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
   <ComponentPreview code={examples.Default} language="vue" title="Default">
     <Default client:only="vue" />
   </ComponentPreview>
@@ -120,7 +119,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/dropdown-menu</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/dropdown-menu</code>. Native HTML attributes are also
+    supported and omitted from this table.
   </p>
   <PropsTable rows={dropdownMenuProps} />
 </DocsLayout>

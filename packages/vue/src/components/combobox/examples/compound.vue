@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
 
 import { Combobox } from "..";
@@ -16,18 +16,17 @@ function filter(_inputValue: string) {}
 </script>
 
 <template>
-        <Combobox.Root
-          :collection="collection"
-          @input-value-change="({ inputValue }) => filter(inputValue)"
-        >
-          <Combobox.Input placeholder="Select an option" />
-          <Combobox.Content>
-            <Combobox.List>
-              <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item">
-                {{ item.label }}
-              </Combobox.Item>
-            </Combobox.List>
-          </Combobox.Content>
-        </Combobox.Root>
-  
+  <Combobox.Root
+    :collection="collection"
+    @input-value-change="({ inputValue }) => filter(inputValue)"
+  >
+    <Combobox.Input placeholder="Select an option" />
+    <Combobox.Content>
+      <Combobox.List>
+        <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item">
+          {{ item.label }}
+        </Combobox.Item>
+      </Combobox.List>
+    </Combobox.Content>
+  </Combobox.Root>
 </template>

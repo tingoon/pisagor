@@ -24,9 +24,9 @@ const className =
 </div>
 
 <script>
-  const root = document.currentScript?.previousElementSibling as HTMLElement | null;
-  if (root?.dataset.theme === "system") {
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    root.classList.toggle("dark", prefersDark);
-  }
+const root = document.currentScript?.previousElementSibling as HTMLElement | null;
+if (root?.dataset.theme === "system") {
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  root.classList.toggle("dark", prefersDark);
+}
 </script>

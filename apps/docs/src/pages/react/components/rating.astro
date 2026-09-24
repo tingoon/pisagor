@@ -36,7 +36,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -45,9 +44,7 @@ const headings = [
   headings={headings}
   title="Rating"
 >
-
   <ComponentHeader framework="react" id="rating" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -60,39 +57,39 @@ const headings = [
   <ComponentPreview code={examples.CustomColor} language="tsx" title="Custom Color">
     <CustomColor client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="count">Count</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="count">Count</h3>
   <ComponentPreview code={examples.Count} language="tsx" title="Count">
     <Count client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-icon">Custom Icon</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-icon">Custom Icon</h3>
   <ComponentPreview code={examples.CustomIcon} language="tsx" title="Custom Icon">
     <CustomIcon client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-size">Custom Size</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-size">Custom Size</h3>
   <ComponentPreview code={examples.CustomSize} language="tsx" title="Custom Size">
     <CustomSize client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="half-star">Half Star</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="half-star">Half Star</h3>
   <ComponentPreview code={examples.HalfStar} language="tsx" title="Half Star">
     <HalfStar client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="testimonial">Testimonial</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="testimonial">Testimonial</h3>
   <ComponentPreview code={examples.Testimonial} language="tsx" title="Testimonial">
     <Testimonial client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">Invalid</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">Invalid</h3>
   <ComponentPreview code={examples.Invalid} language="tsx" title="Invalid">
     <Invalid client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
   <ComponentPreview code={examples.Disabled} language="tsx" title="Disabled">
     <Disabled client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="readonly">Readonly</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="readonly">Readonly</h3>
   <ComponentPreview code={examples.Readonly} language="tsx" title="Readonly">
     <Readonly client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
   <ComponentPreview code={examples.Controlled} language="tsx" title="Controlled">
     <Controlled client:only="react" />
   </ComponentPreview>
@@ -102,7 +99,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/rating</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/rating</code>. Native HTML attributes are also supported and
+    omitted from this table.
   </p>
   <PropsTable rows={ratingProps} />
 </DocsLayout>

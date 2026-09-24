@@ -21,7 +21,9 @@ html {
   color-scheme: light;
   scroll-behavior: smooth;
   /* Soft theme handoff — avoid abrupt brightness jumps */
-  transition: background-color 220ms ease, color 220ms ease;
+  transition:
+    background-color 220ms ease,
+    color 220ms ease;
 }
 
 html.dark {
@@ -285,8 +287,8 @@ html[data-framework="astro"] [data-preview-theme="dark"] {
 
   .docs-sheet-panel,
   .docs-sheet-scrim {
-    animation: none !important;
-    transition: opacity 160ms ease !important;
+    animation: none;
+    transition: opacity 160ms ease;
   }
 }
 

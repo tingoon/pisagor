@@ -3,9 +3,9 @@ import { frameworks, swapFrameworkPath } from "../../lib/nav";
 import { AstroBrandIcon, ReactBrandIcon, VueBrandIcon } from "./brand-icons";
 
 const frameworkIcons = {
+  astro: AstroBrandIcon,
   react: ReactBrandIcon,
   vue: VueBrandIcon,
-  astro: AstroBrandIcon,
 } as const;
 
 export default function FrameworkSwitcher({

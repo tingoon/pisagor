@@ -26,7 +26,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -35,9 +34,7 @@ const headings = [
   headings={headings}
   title="Table"
 >
-
   <ComponentHeader framework="react" id="table" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -50,19 +47,19 @@ const headings = [
   <ComponentPreview code={examples.Variants} language="tsx" title="Variants">
     <Variants client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="actions">Actions</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="actions">Actions</h3>
   <ComponentPreview code={examples.Actions} language="tsx" title="Actions">
     <Actions client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="footer">Footer</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="footer">Footer</h3>
   <ComponentPreview code={examples.Footer} language="tsx" title="Footer">
     <Footer client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="not-hoverable">Not Hoverable</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="not-hoverable">Not Hoverable</h3>
   <ComponentPreview code={examples.NotHoverable} language="tsx" title="Not Hoverable">
     <NotHoverable client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
@@ -72,7 +69,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/table</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/table</code>. Native HTML attributes are also supported and
+    omitted from this table.
   </p>
   <PropsTable rows={tableProps} />
 </DocsLayout>

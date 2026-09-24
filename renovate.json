@@ -39,6 +39,5 @@
       "matchUpdateTypes": ["patch"]
     }
   ],
-  "rangeStrategy": "bump",
-  "schedule": ["before 6am on Monday"]
+  "rangeStrategy": "bump"
 }

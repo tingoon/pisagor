@@ -21,12 +21,6 @@ const hasTitle = Astro.slots.has("title") || title !== undefined;
 
 <AnnouncementRoot {...rest} role={role}>
   {hasBadge && <slot name="badge" />}
-  {
-    hasTitle && (
-      <AnnouncementTitle>
-        {title ?? <slot name="title" />}
-      </AnnouncementTitle>
-    )
-  }
+  {hasTitle && <AnnouncementTitle>{title ?? <slot name="title" />}</AnnouncementTitle>}
   <slot />
 </AnnouncementRoot>

@@ -82,14 +82,12 @@ const chunks = getChunks(text, query, ignoreCase, matchAll);
 const markClass = highlightRecipe({ className });
 ---
 
-{
-  chunks.map((chunk) =>
-    chunk.match ? (
-      <mark {...rest} class={markClass} data-part="root" data-scope="highlight">
-        {chunk.text}
-      </mark>
-    ) : (
-      chunk.text
-    ),
-  )
-}
+{chunks.map((chunk) =>
+  chunk.match ? (
+    <mark {...rest} class={markClass} data-part="root" data-scope="highlight">
+      {chunk.text}
+    </mark>
+  ) : (
+    chunk.text
+  ),
+)}

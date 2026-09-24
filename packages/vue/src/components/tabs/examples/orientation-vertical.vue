@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { Tabs } from "..";
 import { numberedTabs } from "./helpers";
 

@@ -44,7 +44,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -53,9 +52,7 @@ const headings = [
   headings={headings}
   title="Editable"
 >
-
   <ComponentHeader framework="react" id="editable" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -68,55 +65,71 @@ const headings = [
   <ComponentPreview code={examples.Invalid} language="tsx" title="Invalid">
     <Invalid client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
   <ComponentPreview code={examples.Disabled} language="tsx" title="Disabled">
     <Disabled client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sizes">Sizes</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sizes">Sizes</h3>
   <ComponentPreview code={examples.Sizes} language="tsx" title="Sizes">
     <Sizes client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
   <ComponentPreview code={examples.Variants} language="tsx" title="Variants">
     <Variants client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="dblclick">Dblclick</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="dblclick">Dblclick</h3>
   <ComponentPreview code={examples.Dblclick} language="tsx" title="Dblclick">
     <Dblclick client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-horizontal">Orientation Horizontal</h3>
-  <ComponentPreview code={examples.OrientationHorizontal} language="tsx" title="Orientation Horizontal">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-horizontal">
+    Orientation Horizontal
+  </h3>
+  <ComponentPreview
+    code={examples.OrientationHorizontal}
+    language="tsx"
+    title="Orientation Horizontal"
+  >
     <OrientationHorizontal client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-vertical">Orientation Vertical</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-vertical">
+    Orientation Vertical
+  </h3>
   <ComponentPreview code={examples.OrientationVertical} language="tsx" title="Orientation Vertical">
     <OrientationVertical client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-textarea">With Textarea</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-textarea">With Textarea</h3>
   <ComponentPreview code={examples.WithTextarea} language="tsx" title="With Textarea">
     <WithTextarea client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="without-controls">Without Controls</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="without-controls">
+    Without Controls
+  </h3>
   <ComponentPreview code={examples.WithoutControls} language="tsx" title="Without Controls">
     <WithoutControls client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="activation-click">Activation Click</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="activation-click">
+    Activation Click
+  </h3>
   <ComponentPreview code={examples.ActivationClick} language="tsx" title="Activation Click">
     <ActivationClick client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="activation-focus">Activation Focus</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="activation-focus">
+    Activation Focus
+  </h3>
   <ComponentPreview code={examples.ActivationFocus} language="tsx" title="Activation Focus">
     <ActivationFocus client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="activation-none">Activation None</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="activation-none">
+    Activation None
+  </h3>
   <ComponentPreview code={examples.ActivationNone} language="tsx" title="Activation None">
     <ActivationNone client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
   <ComponentPreview code={examples.Controlled} language="tsx" title="Controlled">
     <Controlled client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
@@ -126,7 +139,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/editable</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/editable</code>. Native HTML attributes are also supported
+    and omitted from this table.
   </p>
   <PropsTable rows={editableProps} />
 </DocsLayout>

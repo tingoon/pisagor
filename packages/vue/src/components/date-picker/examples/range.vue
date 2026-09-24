@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { PhCalendar } from "@phosphor-icons/vue";
 import { Button, Calendar } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
@@ -44,16 +44,15 @@ const focusedValue = parseDate(new Date());
 </script>
 
 <template>
-        <DatePicker selectionMode="range" :focusedValue="focusedValue" >
-          <DatePicker.Trigger :asChild="true">
-            <Button variant="outline">
-              <PhCalendar />
-              <DatePicker.ValueText placeholder="Pick a date range" />
-            </Button>
-          </DatePicker.Trigger>
-          <DatePicker.Content>
-            <CalendarBody />
-          </DatePicker.Content>
-        </DatePicker>
-  
+  <DatePicker selection-mode="range" :focused-value="focusedValue">
+    <DatePicker.Trigger :as-child="true">
+      <Button variant="outline">
+        <PhCalendar />
+        <DatePicker.ValueText placeholder="Pick a date range" />
+      </Button>
+    </DatePicker.Trigger>
+    <DatePicker.Content>
+      <CalendarBody />
+    </DatePicker.Content>
+  </DatePicker>
 </template>

@@ -26,7 +26,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -35,9 +34,7 @@ const headings = [
   headings={headings}
   title="Surface"
 >
-
   <ComponentHeader framework="react" id="surface" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -50,19 +47,21 @@ const headings = [
   <ComponentPreview code={examples.Variants} language="tsx" title="Variants">
     <Variants client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="padding">Padding</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="padding">Padding</h3>
   <ComponentPreview code={examples.Padding} language="tsx" title="Padding">
     <Padding client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="nested">Nested</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="nested">Nested</h3>
   <ComponentPreview code={examples.Nested} language="tsx" title="Nested">
     <Nested client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-form-controls">With Form Controls</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-form-controls">
+    With Form Controls
+  </h3>
   <ComponentPreview code={examples.WithFormControls} language="tsx" title="With Form Controls">
     <WithFormControls client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
@@ -72,7 +71,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/surface</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/surface</code>. Native HTML attributes are also supported
+    and omitted from this table.
   </p>
   <PropsTable rows={surfaceProps} />
 </DocsLayout>

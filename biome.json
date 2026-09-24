@@ -14,14 +14,17 @@
   },
   "files": {
     "ignoreUnknown": true,
-    "includes": ["**", "!**/*.gen.*", "!bun.lock"]
+    "includes": ["**", "!**/*.gen.*", "!**/*.lock"]
   },
   "formatter": {
     "indentStyle": "space",
     "lineWidth": 100
   },
   "html": {
-    "experimentalFullSupportEnabled": true
+    "experimentalFullSupportEnabled": true,
+    "formatter": {
+      "enabled": true
+    }
   },
   "linter": {
     "domains": {
@@ -40,21 +43,6 @@
         "rules": {
           "suspicious": {
             "noExplicitAny": "off"
-          }
-        }
-      }
-    },
-    {
-      "includes": ["**/*.{astro,vue}"],
-      "linter": {
-        "rules": {
-          "a11y": {
-            "noLabelWithoutControl": "off",
-            "noRedundantRoles": "off",
-            "useAnchorContent": "off",
-            "useHeadingContent": "off",
-            "useSemanticElements": "off",
-            "useValidAnchor": "off"
           }
         }
       }

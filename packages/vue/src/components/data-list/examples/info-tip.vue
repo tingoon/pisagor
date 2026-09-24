@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { PhInfo } from "@phosphor-icons/vue";
 import { Button, Popover } from "@pisagor/vue";
 import { DataList } from "..";
@@ -19,25 +19,24 @@ const data = [
 </script>
 
 <template>
-        <div class="w-96 rounded-xl border bg-card p-4">
-          <DataList.Root>
-            <DataList.Item
-              v-for="item in data"
-              :key="item.label"
-              :classNames="{ label: 'inline-flex items-center gap-1.5' }"
-              :value="item.value"
-            >
-              {{ item.label }}
-              <Popover :modal="false" :positioning="{ placement: 'top' }">
-                <Popover.Trigger :asChild="true">
-                  <Button size="icon-sm" variant="ghost" :aria-label="'Info about ' + item.label" >
-                    <PhInfo />
-                  </Button>
-                </Popover.Trigger>
-                <Popover.Content class="w-max text-sm">{{ item.info }}</Popover.Content>
-              </Popover>
-            </DataList.Item>
-          </DataList.Root>
-        </div>
-  
+  <div class="w-96 rounded-xl border bg-card p-4">
+    <DataList.Root>
+      <DataList.Item
+        v-for="item in data"
+        :key="item.label"
+        :class-names="{ label: 'inline-flex items-center gap-1.5' }"
+        :value="item.value"
+      >
+        {{ item.label }}
+        <Popover :modal="false" :positioning="{ placement: 'top' }">
+          <Popover.Trigger :as-child="true">
+            <Button size="icon-sm" variant="ghost" :aria-label="`Info about ${item.label}`">
+              <PhInfo />
+            </Button>
+          </Popover.Trigger>
+          <Popover.Content class="w-max text-sm">{{ item.info }}</Popover.Content>
+        </Popover>
+      </DataList.Item>
+    </DataList.Root>
+  </div>
 </template>

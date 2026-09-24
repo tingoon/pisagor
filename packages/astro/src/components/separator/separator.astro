@@ -2,7 +2,7 @@
 import { separatorRecipe } from "@pisagor/recipes/separator";
 import type { HTMLAttributes } from "astro/types";
 
-interface Props extends HTMLAttributes<"div"> {
+interface Props extends HTMLAttributes<"hr"> {
   /**
    * The orientation of the separator.
    *
@@ -14,13 +14,11 @@ interface Props extends HTMLAttributes<"div"> {
 const { orientation = "horizontal", class: className, ...rest } = Astro.props;
 ---
 
-<div
+<hr
   {...rest}
   aria-orientation={orientation}
   class={separatorRecipe({ className })}
   data-orientation={orientation}
   data-part="root"
   data-scope="separator"
-  role="separator"
 >
-</div>

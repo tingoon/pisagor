@@ -1,11 +1,11 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
+import { Field } from "@pisagor/vue";
 import { Switch } from "..";
 </script>
 
 <template>
-        <label class="flex items-center gap-2 text-sm">
-          <Switch default-checked />
-          Airplane mode
-        </label>
-  
+  <Field orientation="horizontal">
+    <Switch default-checked />
+    <Field.Label>Airplane mode</Field.Label>
+  </Field>
 </template>

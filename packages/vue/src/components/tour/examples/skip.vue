@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { Button } from "@pisagor/vue";
 import { Tour } from "..";
 
@@ -41,40 +41,39 @@ const steps = [
 </script>
 
 <template>
-        <div class="flex flex-col gap-2">
-          <Tour :steps="steps">
-            <Tour.Trigger as-child>
-              <Button variant="outline">Start tour</Button>
-            </Tour.Trigger>
-            <div class="flex flex-wrap gap-2">
-              <div
-                class="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
-                id="tour-item-1"
-              >
-                Item 1
-              </div>
-              <div
-                class="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
-                id="tour-item-2"
-              >
-                Item 2
-              </div>
-              <div
-                class="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
-                id="tour-item-3"
-              >
-                Item 3
-              </div>
-            </div>
-            <Tour.Content>
-              <Tour.Header>
-                <Tour.ProgressText />
-                <Tour.Title />
-                <Tour.Description />
-              </Tour.Header>
-              <Tour.Actions />
-            </Tour.Content>
-          </Tour>
+  <div class="flex flex-col gap-2">
+    <Tour :steps="steps">
+      <Tour.Trigger as-child>
+        <Button variant="outline">Start tour</Button>
+      </Tour.Trigger>
+      <div class="flex flex-wrap gap-2">
+        <div
+          class="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
+          id="tour-item-1"
+        >
+          Item 1
         </div>
-  
+        <div
+          class="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
+          id="tour-item-2"
+        >
+          Item 2
+        </div>
+        <div
+          class="flex items-center justify-center rounded-lg border border-border bg-muted px-8 py-4 font-medium text-sm"
+          id="tour-item-3"
+        >
+          Item 3
+        </div>
+      </div>
+      <Tour.Content>
+        <Tour.Header>
+          <Tour.ProgressText />
+          <Tour.Title />
+          <Tour.Description />
+        </Tour.Header>
+        <Tour.Actions />
+      </Tour.Content>
+    </Tour>
+  </div>
 </template>

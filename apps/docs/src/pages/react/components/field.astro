@@ -54,7 +54,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -63,9 +62,7 @@ const headings = [
   headings={headings}
   title="Field"
 >
-
   <ComponentHeader framework="react" id="field" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -78,75 +75,109 @@ const headings = [
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-horizontal">Orientation Horizontal</h3>
-  <ComponentPreview code={examples.OrientationHorizontal} language="tsx" title="Orientation Horizontal">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-horizontal">
+    Orientation Horizontal
+  </h3>
+  <ComponentPreview
+    code={examples.OrientationHorizontal}
+    language="tsx"
+    title="Orientation Horizontal"
+  >
     <OrientationHorizontal client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-vertical">Orientation Vertical</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-vertical">
+    Orientation Vertical
+  </h3>
   <ComponentPreview code={examples.OrientationVertical} language="tsx" title="Orientation Vertical">
     <OrientationVertical client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="autocomplete-field">Autocomplete Field</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="autocomplete-field">
+    Autocomplete Field
+  </h3>
   <ComponentPreview code={examples.AutocompleteField} language="tsx" title="Autocomplete Field">
     <AutocompleteField client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="checkbox-field">Checkbox Field</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="checkbox-field">
+    Checkbox Field
+  </h3>
   <ComponentPreview code={examples.CheckboxField} language="tsx" title="Checkbox Field">
     <CheckboxField client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="checkbox-group-field">Checkbox Group Field</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="checkbox-group-field">
+    Checkbox Group Field
+  </h3>
   <ComponentPreview code={examples.CheckboxGroupField} language="tsx" title="Checkbox Group Field">
     <CheckboxGroupField client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="combobox-field">Combobox Field</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="combobox-field">
+    Combobox Field
+  </h3>
   <ComponentPreview code={examples.ComboboxField} language="tsx" title="Combobox Field">
     <ComboboxField client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="combobox-multiple-field">Combobox Multiple Field</h3>
-  <ComponentPreview code={examples.ComboboxMultipleField} language="tsx" title="Combobox Multiple Field">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="combobox-multiple-field">
+    Combobox Multiple Field
+  </h3>
+  <ComponentPreview
+    code={examples.ComboboxMultipleField}
+    language="tsx"
+    title="Combobox Multiple Field"
+  >
     <ComboboxMultipleField client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled-field">Disabled Field</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled-field">
+    Disabled Field
+  </h3>
   <ComponentPreview code={examples.DisabledField} language="tsx" title="Disabled Field">
     <DisabledField client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="field-group">Field Group</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="field-group">Field Group</h3>
   <ComponentPreview code={examples.FieldGroup} language="tsx" title="Field Group">
     <FieldGroup client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-input-group">With Input Group</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-input-group">
+    With Input Group
+  </h3>
   <ComponentPreview code={examples.WithInputGroup} language="tsx" title="With Input Group">
     <WithInputGroup client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="number-input-story">Number Input Story</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="number-input-story">
+    Number Input Story
+  </h3>
   <ComponentPreview code={examples.NumberInputStory} language="tsx" title="Number Input Story">
     <NumberInputStory client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="radio-group-field">Radio Group Field</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="radio-group-field">
+    Radio Group Field
+  </h3>
   <ComponentPreview code={examples.RadioGroupField} language="tsx" title="Radio Group Field">
     <RadioGroupField client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="required-field">Required Field</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="required-field">
+    Required Field
+  </h3>
   <ComponentPreview code={examples.RequiredField} language="tsx" title="Required Field">
     <RequiredField client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="select-field">Select Field</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="select-field">Select Field</h3>
   <ComponentPreview code={examples.SelectField} language="tsx" title="Select Field">
     <SelectField client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="slider-field">Slider Field</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="slider-field">Slider Field</h3>
   <ComponentPreview code={examples.SliderField} language="tsx" title="Slider Field">
     <SliderField client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="switch-field">Switch Field</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="switch-field">Switch Field</h3>
   <ComponentPreview code={examples.SwitchField} language="tsx" title="Switch Field">
     <SwitchField client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="textarea-field">Textarea Field</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="textarea-field">
+    Textarea Field
+  </h3>
   <ComponentPreview code={examples.TextareaField} language="tsx" title="Textarea Field">
     <TextareaField client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-error">With Error</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-error">With Error</h3>
   <ComponentPreview code={examples.WithError} language="tsx" title="With Error">
     <WithError client:only="react" />
   </ComponentPreview>
@@ -156,7 +187,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/field</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/field</code>. Native HTML attributes are also supported and
+    omitted from this table.
   </p>
   <PropsTable rows={fieldProps} />
 </DocsLayout>

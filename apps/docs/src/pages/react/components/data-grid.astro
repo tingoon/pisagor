@@ -58,7 +58,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -67,94 +66,102 @@ const headings = [
   headings={headings}
   title="Data Grid"
 >
-
   <ComponentHeader framework="react" id="data-grid" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
 
-  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="active-filter-chips">Active Filter Chips</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="active-filter-chips">
+    Active Filter Chips
+  </h3>
   <ComponentPreview class="mb-8" code={examples.ActiveFilterChips} title="Active Filter Chips">
     <ActiveFilterChips client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 text-xl font-semibold tracking-tight" id="column-filters">Column Filters</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="column-filters">Column Filters</h3>
   <ComponentPreview class="mb-8" code={examples.ColumnFilters} title="Column Filters">
     <ColumnFilters client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 text-xl font-semibold tracking-tight" id="column-layout">Column Layout</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="column-layout">Column Layout</h3>
   <ComponentPreview class="mb-8" code={examples.ColumnLayout} title="Column Layout">
     <ColumnLayout client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 text-xl font-semibold tracking-tight" id="column-pinning">Column Pinning</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="column-pinning">Column Pinning</h3>
   <ComponentPreview class="mb-8" code={examples.ColumnPinning} title="Column Pinning">
     <ColumnPinning client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 text-xl font-semibold tracking-tight" id="column-resize">Column Resize</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="column-resize">Column Resize</h3>
   <ComponentPreview class="mb-8" code={examples.ColumnResize} title="Column Resize">
     <ColumnResize client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 text-xl font-semibold tracking-tight" id="column-visibility">Column Visibility</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="column-visibility">
+    Column Visibility
+  </h3>
   <ComponentPreview class="mb-8" code={examples.ColumnVisibility} title="Column Visibility">
     <ColumnVisibility client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 text-xl font-semibold tracking-tight" id="expanding-rows">Expanding Rows</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="expanding-rows">Expanding Rows</h3>
   <ComponentPreview class="mb-8" code={examples.ExpandingRows} title="Expanding Rows">
     <ExpandingRows client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 text-xl font-semibold tracking-tight" id="global-selection">Global Selection</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="global-selection">Global Selection</h3>
   <ComponentPreview class="mb-8" code={examples.GlobalSelection} title="Global Selection">
     <GlobalSelection client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 text-xl font-semibold tracking-tight" id="grouped-rows">Grouped Rows</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="grouped-rows">Grouped Rows</h3>
   <ComponentPreview class="mb-8" code={examples.GroupedRows} title="Grouped Rows">
     <GroupedRows client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 text-xl font-semibold tracking-tight" id="loading-state">Loading State</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="loading-state">Loading State</h3>
   <ComponentPreview class="mb-8" code={examples.LoadingState} title="Loading State">
     <LoadingState client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 text-xl font-semibold tracking-tight" id="manual-pagination">Manual Pagination</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="manual-pagination">
+    Manual Pagination
+  </h3>
   <ComponentPreview class="mb-8" code={examples.ManualPagination} title="Manual Pagination">
     <ManualPagination client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 text-xl font-semibold tracking-tight" id="multi-grouping">Multi Grouping</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="multi-grouping">Multi Grouping</h3>
   <ComponentPreview class="mb-8" code={examples.MultiGrouping} title="Multi Grouping">
     <MultiGrouping client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 text-xl font-semibold tracking-tight" id="orders-with-footer">Orders With Footer</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="orders-with-footer">
+    Orders With Footer
+  </h3>
   <ComponentPreview class="mb-8" code={examples.OrdersWithFooter} title="Orders With Footer">
     <OrdersWithFooter client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 text-xl font-semibold tracking-tight" id="paginated">Paginated</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="paginated">Paginated</h3>
   <ComponentPreview class="mb-8" code={examples.Paginated} title="Paginated">
     <Paginated client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 text-xl font-semibold tracking-tight" id="rich-cells">Rich Cells</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="rich-cells">Rich Cells</h3>
   <ComponentPreview class="mb-8" code={examples.RichCells} title="Rich Cells">
     <RichCells client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 text-xl font-semibold tracking-tight" id="row-details">Row Details</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="row-details">Row Details</h3>
   <ComponentPreview class="mb-8" code={examples.RowDetails} title="Row Details">
     <RowDetails client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 text-xl font-semibold tracking-tight" id="row-selection">Row Selection</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="row-selection">Row Selection</h3>
   <ComponentPreview class="mb-8" code={examples.RowSelection} title="Row Selection">
     <RowSelection client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 text-xl font-semibold tracking-tight" id="sorting">Sorting</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="sorting">Sorting</h3>
   <ComponentPreview class="mb-8" code={examples.Sorting} title="Sorting">
     <Sorting client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 text-xl font-semibold tracking-tight" id="striped-variant">Striped Variant</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="striped-variant">Striped Variant</h3>
   <ComponentPreview class="mb-8" code={examples.StripedVariant} title="Striped Variant">
     <StripedVariant client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 text-xl font-semibold tracking-tight" id="virtualized">Virtualized</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="virtualized">Virtualized</h3>
   <ComponentPreview class="mb-8" code={examples.Virtualized} title="Virtualized">
     <Virtualized client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 text-xl font-semibold tracking-tight" id="with-sortable-data">With Sortable Data</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="with-sortable-data">
+    With Sortable Data
+  </h3>
   <ComponentPreview class="mb-8" code={examples.WithSortableData} title="With Sortable Data">
     <WithSortableData client:only="react" />
   </ComponentPreview>
@@ -164,7 +171,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/data-grid</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/data-grid</code>. Native HTML attributes are also supported
+    and omitted from this table.
   </p>
   <PropsTable rows={dataGridProps} />
 </DocsLayout>

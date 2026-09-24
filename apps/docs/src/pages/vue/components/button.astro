@@ -38,7 +38,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -47,7 +46,6 @@ const headings = [
   headings={headings}
   title="Button"
 >
-
   <ComponentHeader framework="vue" id="button" />
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
@@ -55,49 +53,51 @@ const headings = [
     Each example matches a Storybook story, in the same order.
   </p>
 
-    <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
+  <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
 
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
   <ComponentPreview code={examples.Default} language="vue" title="Default">
     <Default client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sizes">Sizes</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sizes">Sizes</h3>
   <ComponentPreview code={examples.Sizes} language="vue" title="Sizes">
     <Sizes client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
   <ComponentPreview code={examples.Variants} language="vue" title="Variants">
     <Variants client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-color">Custom color</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-color">Custom color</h3>
   <ComponentPreview code={examples.CustomColor} language="vue" title="Custom color">
     <CustomColor client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="pill">Pill</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="pill">Pill</h3>
   <ComponentPreview code={examples.Pill} language="vue" title="Pill">
     <Pill client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="no-click-effect">No click effect</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="no-click-effect">
+    No click effect
+  </h3>
   <ComponentPreview code={examples.NoClickEffect} language="vue" title="No click effect">
     <NoClickEffect client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="icon">Icon</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="icon">Icon</h3>
   <ComponentPreview code={examples.Icon} language="vue" title="Icon">
     <Icon client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="as-child">As child</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="as-child">As child</h3>
   <ComponentPreview code={examples.AsChild} language="vue" title="As child">
     <AsChild client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
   <ComponentPreview code={examples.Disabled} language="vue" title="Disabled">
     <Disabled client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="loading">Loading</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="loading">Loading</h3>
   <ComponentPreview code={examples.Loading} language="vue" title="Loading">
     <Loading client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-icon">With icon</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-icon">With icon</h3>
   <ComponentPreview code={examples.WithIcon} language="vue" title="With icon">
     <WithIcon client:only="vue" />
   </ComponentPreview>
@@ -105,9 +105,10 @@ const headings = [
   <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
   <Installation class="mb-8" packages="@pisagor/vue" />
 
-    <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/button</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/button</code>. Native HTML attributes are also supported and
+    omitted from this table.
   </p>
   <PropsTable rows={buttonProps} />
 </DocsLayout>

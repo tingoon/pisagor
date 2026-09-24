@@ -7,11 +7,6 @@ type Props = HTMLAttributes<"kbd"> & KbdVariantProps;
 const { variant = "default", class: className, ...rest } = Astro.props;
 ---
 
-<kbd
-  {...rest}
-  class={kbdRecipe({ className, variant })}
-  data-part="root"
-  data-scope="kbd"
->
+<kbd {...rest} class={kbdRecipe({ className, variant })} data-part="root" data-scope="kbd">
   <slot />
 </kbd>

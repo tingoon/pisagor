@@ -33,7 +33,6 @@ export default defineConfig({
         "@pisagor/utils",
         "@pisagor/recipes",
         "@pisagor/tokens",
-        "zod",
       ],
     },
   },

@@ -22,25 +22,11 @@ const hasDescription = Astro.slots.has("description") || description !== undefin
 
 <AlertRoot {...rest} variant={variant}>
   {hasIcon && <slot name="icon" />}
-  {
-    hasTitle && (
-      <AlertTitle>
-        {title ?? <slot name="title" />}
-      </AlertTitle>
-    )
-  }
-  {
-    hasDescription && (
-      <AlertDescription>
-        {description ?? <slot name="description" />}
-      </AlertDescription>
-    )
-  }
-  {
-    hasAction && (
-      <AlertAction>
-        <slot name="action" />
-      </AlertAction>
-    )
-  }
+  {hasTitle && <AlertTitle>{title ?? <slot name="title" />}</AlertTitle>}
+  {hasDescription && <AlertDescription>{description ?? <slot name="description" />}</AlertDescription>}
+  {hasAction && (
+  <AlertAction>
+    <slot name="action" />
+  </AlertAction>
+)}
 </AlertRoot>

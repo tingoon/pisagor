@@ -1,21 +1,38 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { Avatar, AvatarGroup } from "..";
 
 const users = [
-  { name: "Colm Tuite", src: "https://i.pravatar.cc/150?u=a" },
-  { name: "Christian", src: "https://i.pravatar.cc/150?u=b" },
-  { name: "Pedro", src: "https://i.pravatar.cc/150?u=c" },
+  {
+    fallback: "JD",
+    name: "Jane Doe",
+    src: "https://randomuser.me/api/portraits/women/5.jpg",
+  },
+  {
+    fallback: "JD",
+    name: "John Doe",
+    src: "https://randomuser.me/api/portraits/men/12.jpg",
+  },
+  {
+    fallback: "JD",
+    name: "Jane Doe",
+    src: "https://randomuser.me/api/portraits/women/44.jpg",
+  },
+  {
+    fallback: "JD",
+    name: "John Doe",
+    src: "https://randomuser.me/api/portraits/men/32.jpg",
+  },
 ];
 </script>
 
 <template>
   <AvatarGroup.Root>
-          <Avatar
-            v-for="user in users"
-            :key="user.src"
-            :alt="user.name"
-            :fallback="user.fallback"
-            :src="user.src"
-          />
-        </AvatarGroup.Root>
+    <Avatar
+      v-for="user in users"
+      :key="user.src"
+      :alt="user.name"
+      :fallback="user.fallback"
+      :src="user.src"
+    />
+  </AvatarGroup.Root>
 </template>

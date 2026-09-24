@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { Stat } from "..";
 
 const description = "Updated 2 minutes ago";

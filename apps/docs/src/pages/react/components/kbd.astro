@@ -26,7 +26,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -35,9 +34,7 @@ const headings = [
   headings={headings}
   title="Kbd"
 >
-
   <ComponentHeader framework="react" id="kbd" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -50,19 +47,19 @@ const headings = [
   <ComponentPreview code={examples.Variants} language="tsx" title="Variants">
     <Variants client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-button">With Button</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-button">With Button</h3>
   <ComponentPreview code={examples.WithButton} language="tsx" title="With Button">
     <WithButton client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="kbd-group">Kbd Group</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="kbd-group">Kbd Group</h3>
   <ComponentPreview code={examples.KbdGroup} language="tsx" title="Kbd Group">
     <KbdGroup client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-tooltip">With Tooltip</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-tooltip">With Tooltip</h3>
   <ComponentPreview code={examples.WithTooltip} language="tsx" title="With Tooltip">
     <WithTooltip client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
@@ -72,7 +69,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/kbd</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/kbd</code>. Native HTML attributes are also supported and
+    omitted from this table.
   </p>
   <PropsTable rows={kbdProps} />
 </DocsLayout>

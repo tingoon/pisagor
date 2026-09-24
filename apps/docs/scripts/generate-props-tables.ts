@@ -72,8 +72,8 @@ function niceDefault(v: string): string {
   const t = v.trim();
   if (t.startsWith("`")) return t;
   const q = t.match(/^["'](.*)["']$/);
-  if (q) return "`" + q[1] + "`";
-  if (t === "true" || t === "false" || /^-?\d+(\.\d+)?$/.test(t)) return "`" + t + "`";
+  if (q) return `\`${q[1]}\``;
+  if (t === "true" || t === "false" || /^-?\d+(\.\d+)?$/.test(t)) return `\`${t}\``;
   return t;
 }
 
@@ -287,7 +287,6 @@ function main() {
     .map((f) => f.replace(/\.ts$/, ""));
 
   let ok = 0;
-  const indexExports: string[] = [];
 
   for (const slug of files) {
     let parsed = parsePropsFile(slug);
@@ -317,14 +316,9 @@ function main() {
       parsed.find((p) => p.interfaceName === prefer) ??
       [...parsed].sort((a, b) => b.fields.length - a.fields.length)[0];
     fs.writeFileSync(path.join(OUT_DIR, `${slug}.ts`), emitFile(slug, chosen));
-    indexExports.push(`export { ${kebabToCamel(slug)}Props } from "./${slug}";`);
     ok++;
   }
 
-  fs.writeFileSync(
-    path.join(OUT_DIR, "index.ts"),
-    `export type { PropRow } from "./types";\n${indexExports.sort().join("\n")}\n`,
-  );
   console.log(`generated ${ok} prop tables -> ${OUT_DIR}`);
 }
 

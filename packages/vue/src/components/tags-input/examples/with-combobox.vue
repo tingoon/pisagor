@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
 import { Combobox, Field } from "@pisagor/vue";
 import { computed, ref } from "vue";

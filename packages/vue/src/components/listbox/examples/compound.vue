@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { Listbox } from "..";
 
 const collection = createListCollection({
@@ -11,13 +11,12 @@ const collection = createListCollection({
 </script>
 
 <template>
-        <Listbox.Root :collection="collection" :defaultValue="['br']">
-          <Listbox.Content>
-            <Listbox.Item v-for="item in collection.items" :key="item.value" :item="item">
-              <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>
-              <Listbox.ItemIndicator />
-            </Listbox.Item>
-          </Listbox.Content>
-        </Listbox.Root>
-  
+  <Listbox.Root :collection="collection" :default-value="['br']">
+    <Listbox.Content>
+      <Listbox.Item v-for="item in collection.items" :key="item.value" :item="item">
+        <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>
+        <Listbox.ItemIndicator />
+      </Listbox.Item>
+    </Listbox.Content>
+  </Listbox.Root>
 </template>

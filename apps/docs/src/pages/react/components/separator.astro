@@ -24,7 +24,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -33,9 +32,7 @@ const headings = [
   headings={headings}
   title="Separator"
 >
-
   <ComponentHeader framework="react" id="separator" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -48,15 +45,17 @@ const headings = [
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="list">List</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="list">List</h3>
   <ComponentPreview code={examples.List} language="tsx" title="List">
     <List client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="inline-navigation">Inline Navigation</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="inline-navigation">
+    Inline Navigation
+  </h3>
   <ComponentPreview code={examples.InlineNavigation} language="tsx" title="Inline Navigation">
     <InlineNavigation client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="vertical">Vertical</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="vertical">Vertical</h3>
   <ComponentPreview code={examples.Vertical} language="tsx" title="Vertical">
     <Vertical client:only="react" />
   </ComponentPreview>
@@ -66,7 +65,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/separator</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/separator</code>. Native HTML attributes are also supported
+    and omitted from this table.
   </p>
   <PropsTable rows={separatorProps} />
 </DocsLayout>

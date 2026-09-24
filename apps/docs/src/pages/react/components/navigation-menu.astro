@@ -20,7 +20,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -29,9 +28,7 @@ const headings = [
   headings={headings}
   title="Navigation Menu"
 >
-
   <ComponentHeader framework="react" id="navigation-menu" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -44,7 +41,7 @@ const headings = [
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="wrapping">Wrapping</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="wrapping">Wrapping</h3>
   <ComponentPreview code={examples.Wrapping} language="tsx" title="Wrapping">
     <Wrapping client:only="react" />
   </ComponentPreview>
@@ -54,7 +51,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/navigation-menu</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/navigation-menu</code>. Native HTML attributes are also
+    supported and omitted from this table.
   </p>
   <PropsTable rows={navigationMenuProps} />
 </DocsLayout>

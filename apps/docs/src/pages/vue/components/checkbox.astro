@@ -32,7 +32,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -41,9 +40,7 @@ const headings = [
   headings={headings}
   title="Checkbox"
 >
-
   <ComponentHeader framework="vue" id="checkbox" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -56,31 +53,33 @@ const headings = [
   <ComponentPreview code={examples.Variants} language="vue" title="Variants">
     <Variants client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="on-surface">On Surface</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="on-surface">On Surface</h3>
   <ComponentPreview code={examples.OnSurface} language="vue" title="On Surface">
     <OnSurface client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
   <ComponentPreview code={examples.Disabled} language="vue" title="Disabled">
     <Disabled client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="indeterminate">Indeterminate</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="indeterminate">Indeterminate</h3>
   <ComponentPreview code={examples.Indeterminate} language="vue" title="Indeterminate">
     <Indeterminate client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">Invalid</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">Invalid</h3>
   <ComponentPreview code={examples.Invalid} language="vue" title="Invalid">
     <Invalid client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="checkbox-group">Checkbox Group</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="checkbox-group">
+    Checkbox Group
+  </h3>
   <ComponentPreview code={examples.CheckboxGroup} language="vue" title="Checkbox Group">
     <CheckboxGroup client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
   <ComponentPreview code={examples.Controlled} language="vue" title="Controlled">
     <Controlled client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
   <ComponentPreview code={examples.Default} language="vue" title="Default">
     <Default client:only="vue" />
   </ComponentPreview>
@@ -90,7 +89,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/checkbox</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/checkbox</code>. Native HTML attributes are also supported
+    and omitted from this table.
   </p>
   <PropsTable rows={checkboxProps} />
 </DocsLayout>

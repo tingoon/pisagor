@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { useFileUploadContext } from "@ark-ui/vue/file-upload";
 import { PhX } from "@phosphor-icons/vue";
 import { Button, Separator } from "@pisagor/vue";
@@ -43,21 +43,20 @@ const _CustomPreviewList = defineComponent({
 </script>
 
 <template>
-        <FileUpload :max-files="5">
-          <FileUpload.Dropzone>
-            <FileUpload.DropzoneIcon />
-            <FileUpload.Title>Drop files here</FileUpload.Title>
-            <div class="flex items-center justify-center gap-2">
-              <Separator />
-              <FileUpload.Description>or</FileUpload.Description>
-              <Separator />
-            </div>
-            <FileUpload.Trigger as-child>
-              <Button>Browse files</Button>
-            </FileUpload.Trigger>
-            <FileUpload.Helper>You can upload up to 5 files at a time.</FileUpload.Helper>
-          </FileUpload.Dropzone>
-          <FileUpload.List />
-        </FileUpload>
-  
+  <FileUpload :max-files="5">
+    <FileUpload.Dropzone>
+      <FileUpload.DropzoneIcon />
+      <FileUpload.Title>Drop files here</FileUpload.Title>
+      <div class="flex items-center justify-center gap-2">
+        <Separator />
+        <FileUpload.Description>or</FileUpload.Description>
+        <Separator />
+      </div>
+      <FileUpload.Trigger as-child>
+        <Button>Browse files</Button>
+      </FileUpload.Trigger>
+      <FileUpload.Helper>You can upload up to 5 files at a time.</FileUpload.Helper>
+    </FileUpload.Dropzone>
+    <FileUpload.List />
+  </FileUpload>
 </template>

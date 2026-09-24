@@ -1,14 +1,13 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { Input } from "@pisagor/vue";
 import { Field } from "..";
 </script>
 
 <template>
-        <Field>
-          <Field.Label>Account</Field.Label>
-          <Input placeholder="Username" />
-          <Field.Separator>or</Field.Separator>
-          <Input placeholder="Email" />
-        </Field>
-  
+  <Field>
+    <Field.Label>Account</Field.Label>
+    <Input placeholder="Username" />
+    <Field.Separator>or</Field.Separator>
+    <Input placeholder="Email" />
+  </Field>
 </template>

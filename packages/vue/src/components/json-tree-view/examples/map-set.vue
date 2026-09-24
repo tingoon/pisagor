@@ -1,8 +1,7 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { JsonTreeView } from "..";
 import { mapSetData } from "./helpers";
 
-const items = mapSetData();
 const data = mapSetData();
 </script>
 

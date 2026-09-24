@@ -1,10 +1,9 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { Prose } from "..";
 </script>
 
 <template>
-        <Prose>
-          <h1>Taxing Laughter: The Joke Tax Chronicles</h1>
-        </Prose>
-  
+  <Prose>
+    <h1>Taxing Laughter: The Joke Tax Chronicles</h1>
+  </Prose>
 </template>

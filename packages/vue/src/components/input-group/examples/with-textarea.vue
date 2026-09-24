@@ -1,10 +1,9 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { InputGroup } from "..";
 </script>
 
 <template>
-        <InputGroup>
-          <InputGroup.Textarea placeholder="Write a comment..." rows="3" />
-        </InputGroup>
-  
+  <InputGroup>
+    <InputGroup.Textarea placeholder="Write a comment..." rows="3" />
+  </InputGroup>
 </template>

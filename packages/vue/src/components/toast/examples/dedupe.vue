@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { Button } from "@pisagor/vue";
 import { toast } from "..";
 
@@ -11,9 +11,8 @@ function handleWithoutId() {
 </script>
 
 <template>
-        <div class="flex gap-2">
-          <Button variant="outline" @click="handleWithId" >Toast with id</Button>
-          <Button variant="outline" @click="handleWithoutId" >Toast without id</Button>
-        </div>
-  
+  <div class="flex gap-2">
+    <Button variant="outline" @click="handleWithId">Toast with id</Button>
+    <Button variant="outline" @click="handleWithoutId">Toast without id</Button>
+  </div>
 </template>

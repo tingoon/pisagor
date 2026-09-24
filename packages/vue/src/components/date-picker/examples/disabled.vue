@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { Calendar } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 import { DatePicker } from "..";
@@ -42,11 +42,10 @@ const CalendarBody = defineComponent({
 </script>
 
 <template>
-        <DatePicker :disabled="true">
-          <DatePicker.Input placeholder="Select date" />
-          <DatePicker.Content>
-            <CalendarBody />
-          </DatePicker.Content>
-        </DatePicker>
-  
+  <DatePicker :disabled="true">
+    <DatePicker.Input placeholder="Select date" />
+    <DatePicker.Content>
+      <CalendarBody />
+    </DatePicker.Content>
+  </DatePicker>
 </template>

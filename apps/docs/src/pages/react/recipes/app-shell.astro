@@ -16,7 +16,6 @@ const headings = [
     text: "Standard App Shell",
   },
 ];
-
 ---
 
 <DocsLayout
@@ -25,13 +24,16 @@ const headings = [
   headings={headings}
   title="App Shell"
 >
-
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">Overview</h2>
-  <p class="mb-8 text-muted-foreground">Standard application shell with top navigation, icon rail, side panel, main content, and inspector regions ready for menus and page content.</p>
+  <p class="mb-8 text-muted-foreground">
+    Standard application shell with top navigation, icon rail, side panel, main content, and
+    inspector regions ready for menus and page content.
+  </p>
 
-  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="standard-app-shell">Standard App Shell</h2>
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="standard-app-shell">
+    Standard App Shell
+  </h2>
   <ComponentPreview code={StandardAppShellSource} language="tsx" title="Standard App Shell">
     <StandardAppShell client:only="react" />
   </ComponentPreview>
-
 </DocsLayout>

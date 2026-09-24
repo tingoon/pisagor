@@ -16,7 +16,6 @@ const headings = [
     text: "Tags With Combobox",
   },
 ];
-
 ---
 
 <DocsLayout
@@ -25,13 +24,15 @@ const headings = [
   headings={headings}
   title="Tags Input"
 >
-
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">Overview</h2>
-  <p class="mb-8 text-muted-foreground">Tags input paired with a combobox for searchable tag selection and custom value entry.</p>
+  <p class="mb-8 text-muted-foreground">
+    Tags input paired with a combobox for searchable tag selection and custom value entry.
+  </p>
 
-  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="tags-with-combobox">Tags With Combobox</h2>
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="tags-with-combobox">
+    Tags With Combobox
+  </h2>
   <ComponentPreview code={TagsWithComboboxSource} language="tsx" title="Tags With Combobox">
     <TagsWithCombobox client:only="react" />
   </ComponentPreview>
-
 </DocsLayout>

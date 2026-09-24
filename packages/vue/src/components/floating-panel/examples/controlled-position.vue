@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import {
   PhCaretDown,
   PhCaretLeft,
@@ -30,50 +30,49 @@ function moveRight() {
 </script>
 
 <template>
-        <div class="flex flex-col gap-2">
-          <FloatingPanel :position="position" @position-change="onPositionChange">
-            <FloatingPanel.Trigger as-child>
-              <Button variant="outline">Open</Button>
-            </FloatingPanel.Trigger>
-            <FloatingPanel.Content>
-              <FloatingPanel.Header>
-                <PhGearSix />
-                <FloatingPanel.Title>Settings</FloatingPanel.Title>
-                <FloatingPanel.Control>
-                  <FloatingPanel.Minimize />
-                  <FloatingPanel.Maximize />
-                  <FloatingPanel.Restore />
-                  <FloatingPanel.CloseTrigger as-child>
-                    <Button aria-label="Close" size="icon-sm">
-                      <PhX aria-hidden="true" />
-                    </Button>
-                  </FloatingPanel.CloseTrigger>
-                </FloatingPanel.Control>
-              </FloatingPanel.Header>
-              <FloatingPanel.Body class="text-center text-muted-foreground text-sm">
-                <p>Position: ({{ position.x }}, {{ position.y }}).</p>
-                <p>Use the buttons to move the panel.</p>
-                <div class="flex flex-col items-center gap-1">
-                  <div>
-                    <Button aria-label="Move up" size="icon-md" variant="outline" @click="moveUp" >
-                      <PhCaretUp aria-hidden="true" />
-                    </Button>
-                  </div>
-                  <div class="flex gap-1">
-                    <Button aria-label="Move left" size="icon-md" variant="outline" @click="moveLeft" >
-                      <PhCaretLeft aria-hidden="true" />
-                    </Button>
-                    <Button aria-label="Move down" size="icon-md" variant="outline" @click="moveDown" >
-                      <PhCaretDown aria-hidden="true" />
-                    </Button>
-                    <Button aria-label="Move right" size="icon-md" variant="outline" @click="moveRight" >
-                      <PhCaretRight aria-hidden="true" />
-                    </Button>
-                  </div>
-                </div>
-              </FloatingPanel.Body>
-            </FloatingPanel.Content>
-          </FloatingPanel>
-        </div>
-  
+  <div class="flex flex-col gap-2">
+    <FloatingPanel :position="position" @position-change="onPositionChange">
+      <FloatingPanel.Trigger as-child>
+        <Button variant="outline">Open</Button>
+      </FloatingPanel.Trigger>
+      <FloatingPanel.Content>
+        <FloatingPanel.Header>
+          <PhGearSix />
+          <FloatingPanel.Title>Settings</FloatingPanel.Title>
+          <FloatingPanel.Control>
+            <FloatingPanel.Minimize />
+            <FloatingPanel.Maximize />
+            <FloatingPanel.Restore />
+            <FloatingPanel.CloseTrigger as-child>
+              <Button aria-label="Close" size="icon-sm">
+                <PhX aria-hidden="true" />
+              </Button>
+            </FloatingPanel.CloseTrigger>
+          </FloatingPanel.Control>
+        </FloatingPanel.Header>
+        <FloatingPanel.Body class="text-center text-muted-foreground text-sm">
+          <p>Position: ({{ position.x }}, {{ position.y }}).</p>
+          <p>Use the buttons to move the panel.</p>
+          <div class="flex flex-col items-center gap-1">
+            <div>
+              <Button aria-label="Move up" size="icon-md" variant="outline" @click="moveUp">
+                <PhCaretUp aria-hidden="true" />
+              </Button>
+            </div>
+            <div class="flex gap-1">
+              <Button aria-label="Move left" size="icon-md" variant="outline" @click="moveLeft">
+                <PhCaretLeft aria-hidden="true" />
+              </Button>
+              <Button aria-label="Move down" size="icon-md" variant="outline" @click="moveDown">
+                <PhCaretDown aria-hidden="true" />
+              </Button>
+              <Button aria-label="Move right" size="icon-md" variant="outline" @click="moveRight">
+                <PhCaretRight aria-hidden="true" />
+              </Button>
+            </div>
+          </div>
+        </FloatingPanel.Body>
+      </FloatingPanel.Content>
+    </FloatingPanel>
+  </div>
 </template>

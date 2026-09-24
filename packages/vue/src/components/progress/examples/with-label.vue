@@ -1,12 +1,7 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { Progress } from "..";
 </script>
 
 <template>
-        <Progress
-          is-value-visible
-          label="Upload progress"
-          :value="66"
-        />
-  
+  <Progress is-value-visible label="Upload progress" :value="66" />
 </template>

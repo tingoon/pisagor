@@ -22,7 +22,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -31,9 +30,7 @@ const headings = [
   headings={headings}
   title="Circular Progress"
 >
-
   <ComponentHeader framework="astro" id="circular-progress" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <CodeBlock class="mb-8" code={imports} lang="astro" title="Import" />
@@ -42,11 +39,11 @@ const headings = [
   <ComponentPreview class="mb-8" code={examples.Default} title="Default">
     <Default />
   </ComponentPreview>
-<h3 class="mb-3 text-xl font-semibold tracking-tight" id="indeterminate">Indeterminate</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="indeterminate">Indeterminate</h3>
   <ComponentPreview class="mb-8" code={examples.Indeterminate} title="Indeterminate">
     <Indeterminate />
   </ComponentPreview>
-<h3 class="mb-3 text-xl font-semibold tracking-tight" id="with-value">With Value</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="with-value">With Value</h3>
   <ComponentPreview class="mb-8" code={examples.WithValue} title="With Value">
     <WithValue />
   </ComponentPreview>
@@ -56,7 +53,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/circular-progress</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/circular-progress</code>. Native HTML attributes are also
+    supported and omitted from this table.
   </p>
   <PropsTable rows={circularProgressProps} />
 </DocsLayout>

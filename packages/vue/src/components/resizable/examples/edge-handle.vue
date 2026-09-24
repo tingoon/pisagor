@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { cn } from "@pisagor/utils";
 import { ref } from "vue";
 import { Resizable } from "..";
@@ -19,7 +19,7 @@ const onWidthChange = setWidth;
     <div class="flex size-full overflow-hidden rounded-md border">
       <aside
         class="relative flex shrink-0 flex-col overflow-visible border-e bg-muted text-muted-foreground"
-        :style="{ width: width + 'px' }"
+        :style="{ width: `${width}px` }"
       >
         <Resizable.EdgeHandle
           handle-position="top"

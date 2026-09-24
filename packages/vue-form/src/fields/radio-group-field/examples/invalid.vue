@@ -1,7 +1,13 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { RadioGroupField } from "..";
 </script>
 
 <template>
-  <RadioGroupField error="Please select a plan." id="radio-group-field-plan-invalid" invalid label="Plan" :options='planOptions' />
+  <RadioGroupField
+    error="Please select a plan."
+    id="radio-group-field-plan-invalid"
+    invalid
+    label="Plan"
+    :options="planOptions"
+  />
 </template>

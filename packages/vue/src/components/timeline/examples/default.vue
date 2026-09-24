@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { h } from "vue";
 import { Timeline } from "..";
 
@@ -41,8 +41,7 @@ const items = [
 </script>
 
 <template>
-        <div class="w-96">
-          <Timeline :items="items" />
-        </div>
-  
+  <div class="w-96">
+    <Timeline :items="items" />
+  </div>
 </template>

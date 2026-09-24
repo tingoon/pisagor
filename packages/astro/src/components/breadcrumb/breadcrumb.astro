@@ -27,25 +27,23 @@ const { items = [], ...rest } = Astro.props;
 ---
 
 <BreadcrumbRoot {...rest}>
-  {
-    items.length > 0 && (
-      <BreadcrumbList>
-        {items.map((item, index) => (
-          <>
-            {index > 0 && <BreadcrumbSeparator />}
-            <BreadcrumbItem>
-              {item.isCurrentPage ? (
-                <BreadcrumbPage>{item.label}</BreadcrumbPage>
-              ) : item.href ? (
-                <BreadcrumbLink href={item.href}>{item.label}</BreadcrumbLink>
-              ) : (
-                item.label
-              )}
-            </BreadcrumbItem>
-          </>
-        ))}
-      </BreadcrumbList>
-    )
-  }
+  {items.length > 0 && (
+  <BreadcrumbList>
+    {items.map((item, index) => (
+      <>
+        {index > 0 && <BreadcrumbSeparator />}
+        <BreadcrumbItem>
+          {item.isCurrentPage ? (
+            <BreadcrumbPage>{item.label}</BreadcrumbPage>
+          ) : item.href ? (
+            <BreadcrumbLink href={item.href}>{item.label}</BreadcrumbLink>
+          ) : (
+            item.label
+          )}
+        </BreadcrumbItem>
+      </>
+    ))}
+  </BreadcrumbList>
+)}
   <slot />
 </BreadcrumbRoot>

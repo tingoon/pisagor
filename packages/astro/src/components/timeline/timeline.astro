@@ -24,17 +24,15 @@ const { orientation = "vertical", items = [], ...rest } = Astro.props;
 ---
 
 <TimelineRoot {...rest} orientation={orientation}>
-  {
-    items.map((item) => (
-      <TimelineItem>
-        <TimelineSeparator />
-        <TimelineIndicator>{item.indicator}</TimelineIndicator>
-        <TimelineContent>
-          <TimelineTitle>{item.title}</TimelineTitle>
-          {item.description ? <TimelineDescription>{item.description}</TimelineDescription> : null}
-        </TimelineContent>
-      </TimelineItem>
-    ))
-  }
+  {items.map((item) => (
+  <TimelineItem>
+    <TimelineSeparator />
+    <TimelineIndicator>{item.indicator}</TimelineIndicator>
+    <TimelineContent>
+      <TimelineTitle>{item.title}</TimelineTitle>
+      {item.description ? <TimelineDescription>{item.description}</TimelineDescription> : null}
+    </TimelineContent>
+  </TimelineItem>
+))}
   <slot />
 </TimelineRoot>

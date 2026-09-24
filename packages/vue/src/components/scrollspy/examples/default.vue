@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { Button, ScrollArea } from "@pisagor/vue";
 import { ref } from "vue";
 import { Scrollspy } from "..";
@@ -29,10 +29,10 @@ const verticalSections = [
       </Scrollspy>
     </div>
 
-    <div class="grow" ref="parentRef" >
+    <div class="grow" ref="parentRef">
       <ScrollArea class="-me-5 h-125 grow pe-5">
         <div class="space-y-8">
-          <div class="space-y-2.5" v-for="item in verticalSections" :key="item.id" :id="item.id" >
+          <div class="space-y-2.5" v-for="item in verticalSections" :key="item.id" :id="item.id">
             <h3 class="text-base text-foreground">{{ item.label }}</h3>
             <div class="h-87.5 rounded-2xl bg-muted" />
           </div>

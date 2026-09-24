@@ -73,25 +73,18 @@ const rangeStyle = orientation === "horizontal" ? `width: ${percent}%` : `height
   data-state={state}
   role="progressbar"
 >
-  {
-    showHeader && (
-      <div class={slots.header()} data-part="header" data-scope="progress">
-        {label ? <span>{label}</span> : null}
-        {isValueVisible && !indeterminate ? (
-          <span class={slots.value()} data-part="value" data-scope="progress">
-            {Math.round(percent)}%
-          </span>
-        ) : null}
-      </div>
-    )
-  }
+  {showHeader && (
+  <div class={slots.header()} data-part="header" data-scope="progress">
+    {label ? <span>{label}</span> : null}
+    {isValueVisible && !indeterminate ? (
+      <span class={slots.value()} data-part="value" data-scope="progress">
+        {Math.round(percent)}%
+      </span>
+    ) : null}
+  </div>
+)}
   <slot />
-  <div
-    class={slots.track()}
-    data-orientation={orientation}
-    data-part="track"
-    data-scope="progress"
-  >
+  <div class={slots.track()} data-orientation={orientation} data-part="track" data-scope="progress">
     <div
       class={slots.range()}
       data-orientation={orientation}
@@ -99,7 +92,6 @@ const rangeStyle = orientation === "horizontal" ? `width: ${percent}%` : `height
       data-scope="progress"
       data-state={state}
       style={indeterminate ? undefined : rangeStyle}
-    >
-    </div>
+    ></div>
   </div>
 </div>

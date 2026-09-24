@@ -3,6 +3,11 @@
   "linter": {
     "domains": {
       "vue": "recommended"
+    },
+    "rules": {
+      "style": {
+        "useVueMultiWordComponentNames": "off"
+      }
     }
   }
 }

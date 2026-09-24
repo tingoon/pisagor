@@ -21,32 +21,18 @@ const hasDescription = Astro.slots.has("description") || description !== undefin
 ---
 
 <EmptyStateRoot {...rest}>
-  {
-    hasMedia && (
-      <EmptyStateMedia>
-        <slot name="media" />
-      </EmptyStateMedia>
-    )
-  }
-  {
-    hasTitle && (
-      <EmptyStateTitle>
-        {title ?? <slot name="title" />}
-      </EmptyStateTitle>
-    )
-  }
-  {
-    hasDescription && (
-      <EmptyStateDescription>
-        {description ?? <slot name="description" />}
-      </EmptyStateDescription>
-    )
-  }
-  {
-    hasActions && (
-      <EmptyStateActions>
-        <slot name="actions" />
-      </EmptyStateActions>
-    )
-  }
+  {hasMedia && (
+  <EmptyStateMedia>
+    <slot name="media" />
+  </EmptyStateMedia>
+)}
+  {hasTitle && <EmptyStateTitle>{title ?? <slot name="title" />}</EmptyStateTitle>}
+  {hasDescription && (
+  <EmptyStateDescription>{description ?? <slot name="description" />}</EmptyStateDescription>
+)}
+  {hasActions && (
+  <EmptyStateActions>
+    <slot name="actions" />
+  </EmptyStateActions>
+)}
 </EmptyStateRoot>

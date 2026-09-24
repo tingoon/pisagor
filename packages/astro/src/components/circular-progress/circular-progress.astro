@@ -79,15 +79,13 @@ const strokeDashoffset = indeterminate ? circumference * 0.7 : dashOffset;
   data-state={state}
   role="progressbar"
 >
-  {
-    isValueVisible && !indeterminate && (
-      <span class={slots.valueWrapper()} data-part="value-wrapper" data-scope="circular-progress">
-        <span class={slots.value()} data-part="value" data-scope="circular-progress">
-          {Math.round(percent * 100)}%
-        </span>
-      </span>
-    )
-  }
+  {isValueVisible && !indeterminate && (
+  <span class={slots.valueWrapper()} data-part="value-wrapper" data-scope="circular-progress">
+    <span class={slots.value()} data-part="value" data-scope="circular-progress">
+      {Math.round(percent * 100)}%
+    </span>
+  </span>
+)}
   <slot />
   <svg
     aria-hidden="true"
@@ -105,8 +103,7 @@ const strokeDashoffset = indeterminate ? circumference * 0.7 : dashOffset;
       data-scope="circular-progress"
       r={radius}
       stroke-width={thickness}
-    >
-    </circle>
+    ></circle>
     <circle
       class={slots.range()}
       cx={size / 2}
@@ -118,7 +115,6 @@ const strokeDashoffset = indeterminate ? circumference * 0.7 : dashOffset;
       stroke-dashoffset={strokeDashoffset}
       stroke-linecap="round"
       stroke-width={thickness}
-    >
-    </circle>
+    ></circle>
   </svg>
 </div>

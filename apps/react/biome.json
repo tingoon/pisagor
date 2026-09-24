@@ -7,7 +7,7 @@
   },
   "overrides": [
     {
-      "includes": ["**/*.stories.tsx", "../../../packages/*/src/**/*.stories.tsx"],
+      "includes": ["**/*.stories.tsx"],
       "linter": {
         "rules": {
           "suspicious": {

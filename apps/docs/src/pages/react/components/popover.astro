@@ -34,7 +34,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -43,9 +42,7 @@ const headings = [
   headings={headings}
   title="Popover"
 >
-
   <ComponentHeader framework="react" id="popover" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -58,35 +55,39 @@ const headings = [
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-spacing">Custom Spacing</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-spacing">
+    Custom Spacing
+  </h3>
   <ComponentPreview code={examples.CustomSpacing} language="tsx" title="Custom Spacing">
     <CustomSpacing client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="anchor">Anchor</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="anchor">Anchor</h3>
   <ComponentPreview code={examples.Anchor} language="tsx" title="Anchor">
     <Anchor client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="close-button">Close Button</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="close-button">Close Button</h3>
   <ComponentPreview code={examples.CloseButton} language="tsx" title="Close Button">
     <CloseButton client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="nested">Nested</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="nested">Nested</h3>
   <ComponentPreview code={examples.Nested} language="tsx" title="Nested">
     <Nested client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="modal">Modal</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="modal">Modal</h3>
   <ComponentPreview code={examples.Modal} language="tsx" title="Modal">
     <Modal client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="scroll-area">Scroll Area</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="scroll-area">Scroll Area</h3>
   <ComponentPreview code={examples.ScrollArea} language="tsx" title="Scroll Area">
     <ScrollArea client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="close-behavior">Close Behavior</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="close-behavior">
+    Close Behavior
+  </h3>
   <ComponentPreview code={examples.CloseBehavior} language="tsx" title="Close Behavior">
     <CloseBehavior client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="placements">Placements</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="placements">Placements</h3>
   <ComponentPreview code={examples.Placements} language="tsx" title="Placements">
     <Placements client:only="react" />
   </ComponentPreview>
@@ -96,7 +97,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/popover</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/popover</code>. Native HTML attributes are also supported
+    and omitted from this table.
   </p>
   <PropsTable rows={popoverProps} />
 </DocsLayout>

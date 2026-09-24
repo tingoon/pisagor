@@ -40,7 +40,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -49,9 +48,7 @@ const headings = [
   headings={headings}
   title="Rating"
 >
-
   <ComponentHeader framework="vue" id="rating" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -64,47 +61,47 @@ const headings = [
   <ComponentPreview code={examples.OnSurface} language="vue" title="On Surface">
     <OnSurface client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-color">Custom Color</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-color">Custom Color</h3>
   <ComponentPreview code={examples.CustomColor} language="vue" title="Custom Color">
     <CustomColor client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="count">Count</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="count">Count</h3>
   <ComponentPreview code={examples.Count} language="vue" title="Count">
     <Count client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-icon">Custom Icon</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-icon">Custom Icon</h3>
   <ComponentPreview code={examples.CustomIcon} language="vue" title="Custom Icon">
     <CustomIcon client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-size">Custom Size</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-size">Custom Size</h3>
   <ComponentPreview code={examples.CustomSize} language="vue" title="Custom Size">
     <CustomSize client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="half-star">Half Star</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="half-star">Half Star</h3>
   <ComponentPreview code={examples.HalfStar} language="vue" title="Half Star">
     <HalfStar client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="testimonial">Testimonial</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="testimonial">Testimonial</h3>
   <ComponentPreview code={examples.Testimonial} language="vue" title="Testimonial">
     <Testimonial client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">Invalid</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">Invalid</h3>
   <ComponentPreview code={examples.Invalid} language="vue" title="Invalid">
     <Invalid client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
   <ComponentPreview code={examples.Disabled} language="vue" title="Disabled">
     <Disabled client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="readonly">Readonly</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="readonly">Readonly</h3>
   <ComponentPreview code={examples.Readonly} language="vue" title="Readonly">
     <Readonly client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
   <ComponentPreview code={examples.Controlled} language="vue" title="Controlled">
     <Controlled client:only="vue" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
   <ComponentPreview code={examples.Default} language="vue" title="Default">
     <Default client:only="vue" />
   </ComponentPreview>
@@ -114,7 +111,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/rating</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/rating</code>. Native HTML attributes are also supported and
+    omitted from this table.
   </p>
   <PropsTable rows={ratingProps} />
 </DocsLayout>

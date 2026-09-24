@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { PhStar } from "@phosphor-icons/vue";
 import { Button } from "..";
 </script>

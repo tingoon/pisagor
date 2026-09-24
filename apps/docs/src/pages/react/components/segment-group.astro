@@ -36,7 +36,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -45,9 +44,7 @@ const headings = [
   headings={headings}
   title="Segment Group"
 >
-
   <ComponentHeader framework="react" id="segment-group" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -60,39 +57,51 @@ const headings = [
   <ComponentPreview code={examples.Variants} language="tsx" title="Variants">
     <Variants client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-horizontal">Orientation Horizontal</h3>
-  <ComponentPreview code={examples.OrientationHorizontal} language="tsx" title="Orientation Horizontal">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-horizontal">
+    Orientation Horizontal
+  </h3>
+  <ComponentPreview
+    code={examples.OrientationHorizontal}
+    language="tsx"
+    title="Orientation Horizontal"
+  >
     <OrientationHorizontal client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-vertical">Orientation Vertical</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-vertical">
+    Orientation Vertical
+  </h3>
   <ComponentPreview code={examples.OrientationVertical} language="tsx" title="Orientation Vertical">
     <OrientationVertical client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled-item">Disabled Item</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled-item">Disabled Item</h3>
   <ComponentPreview code={examples.DisabledItem} language="tsx" title="Disabled Item">
     <DisabledItem client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-indicator">Custom Indicator</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-indicator">
+    Custom Indicator
+  </h3>
   <ComponentPreview code={examples.CustomIndicator} language="tsx" title="Custom Indicator">
     <CustomIndicator client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="indicator-on-hover">Indicator On Hover</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="indicator-on-hover">
+    Indicator On Hover
+  </h3>
   <ComponentPreview code={examples.IndicatorOnHover} language="tsx" title="Indicator On Hover">
     <IndicatorOnHover client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
   <ComponentPreview code={examples.Disabled} language="tsx" title="Disabled">
     <Disabled client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
   <ComponentPreview code={examples.Controlled} language="tsx" title="Controlled">
     <Controlled client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="compound">Compound</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="compound">Compound</h3>
   <ComponentPreview code={examples.Compound} language="tsx" title="Compound">
     <Compound client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
@@ -102,7 +111,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/segment-group</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/segment-group</code>. Native HTML attributes are also
+    supported and omitted from this table.
   </p>
   <PropsTable rows={segmentGroupProps} />
 </DocsLayout>

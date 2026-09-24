@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
 import { computed } from "vue";
 import { Select } from "..";
@@ -19,17 +19,16 @@ const groups = computed(() => collection.group().map(([category, items]) => ({ c
 </script>
 
 <template>
-        <Select.Root :collection="collection">
-          <Select.Trigger>
-            <Select.ValueText placeholder="Select framework" />
-          </Select.Trigger>
-          <Select.Content>
-            <Select.ItemGroup v-for="group in groups" :key="group.category" :heading="group.category">
-              <Select.Item v-for="item in group.items" :key="item.value" :item="item">
-                {{ item.label }}
-              </Select.Item>
-            </Select.ItemGroup>
-          </Select.Content>
-        </Select.Root>
-  
+  <Select.Root :collection="collection">
+    <Select.Trigger>
+      <Select.ValueText placeholder="Select framework" />
+    </Select.Trigger>
+    <Select.Content>
+      <Select.ItemGroup v-for="group in groups" :key="group.category" :heading="group.category">
+        <Select.Item v-for="item in group.items" :key="item.value" :item="item">
+          {{ item.label }}
+        </Select.Item>
+      </Select.ItemGroup>
+    </Select.Content>
+  </Select.Root>
 </template>

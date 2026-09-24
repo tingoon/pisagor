@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { PhCalendar } from "@phosphor-icons/vue";
 import { Button, Calendar } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
@@ -50,34 +50,33 @@ const defaultValue = [parseDate(new Date())];
 </script>
 
 <template>
-        <DatePicker :defaultValue="defaultValue">
-          <DatePicker.Trigger :asChild="true">
-            <Button variant="outline">
-              <PhCalendar />
-              <DatePicker.ValueText />
-            </Button>
-          </DatePicker.Trigger>
-          <DatePicker.Content>
-            <div class="flex max-sm:flex-col">
-              <div class="relative py-1 ps-1 max-sm:order-1 max-sm:border-t">
-                <div class="flex h-full flex-col sm:border-e sm:pe-3">
-                  <DatePicker.PresetTrigger
-                    v-for="preset in presets"
-                    :key="preset.label"
-                    :asChild="true"
-                    :value="preset.value"
-                  >
-                    <Button class="w-full justify-start" size="sm" variant="ghost">
-                      {{ preset.label }}
-                    </Button>
-                  </DatePicker.PresetTrigger>
-                </div>
-              </div>
-              <div class="max-sm:pb-3 sm:ps-2">
-                <CalendarBody />
-              </div>
-            </div>
-          </DatePicker.Content>
-        </DatePicker>
-  
+  <DatePicker :default-value="defaultValue">
+    <DatePicker.Trigger :as-child="true">
+      <Button variant="outline">
+        <PhCalendar />
+        <DatePicker.ValueText />
+      </Button>
+    </DatePicker.Trigger>
+    <DatePicker.Content>
+      <div class="flex max-sm:flex-col">
+        <div class="relative py-1 ps-1 max-sm:order-1 max-sm:border-t">
+          <div class="flex h-full flex-col sm:border-e sm:pe-3">
+            <DatePicker.PresetTrigger
+              v-for="preset in presets"
+              :key="preset.label"
+              :as-child="true"
+              :value="preset.value"
+            >
+              <Button class="w-full justify-start" size="sm" variant="ghost">
+                {{ preset.label }}
+              </Button>
+            </DatePicker.PresetTrigger>
+          </div>
+        </div>
+        <div class="max-sm:pb-3 sm:ps-2">
+          <CalendarBody />
+        </div>
+      </div>
+    </DatePicker.Content>
+  </DatePicker>
 </template>

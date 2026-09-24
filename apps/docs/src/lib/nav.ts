@@ -2,7 +2,7 @@ export type Framework = "react" | "vue" | "astro";
 
 export type DocsArea = "components" | "blocks" | "recipes" | "forms" | "charts";
 
-export type NavItem = {
+type NavItem = {
   title: string;
   slug: string;
   status?: "ready" | "soon";
@@ -337,7 +337,7 @@ const recipeSections: NavSection[] = [
 ];
 
 /** Astro/Vite `base`; always ends with `/` (`/` or `/pisagor/`). */
-export function docsBase(): string {
+function docsBase(): string {
   return import.meta.env.BASE_URL ?? "/";
 }
 
@@ -400,20 +400,6 @@ export function getSidebarNav(framework: Framework, area: DocsArea): NavSection[
   return framework === "astro" ? astroComponentSections : componentSections;
 }
 
-/** Full tree (mobile drawer). */
-export function getDocsNav(framework: Framework): NavSection[] {
-  return [
-    ...getSidebarNav(framework, "components"),
-    ...getSidebarNav(framework, "forms"),
-    ...getSidebarNav(framework, "charts"),
-    ...getSidebarNav(framework, "blocks"),
-    ...getSidebarNav(framework, "recipes"),
-  ];
-}
-
-/** @deprecated use getDocsNav(framework) */
-export const docsNav = getDocsNav("react");
-
 export function frameworkPath(framework: Framework, slug = "") {
   return withDocsBase(slug ? `/${framework}/${slug}` : `/${framework}`);
 }
@@ -430,5 +416,5 @@ export function swapFrameworkPath(pathname: string, next: Framework) {
   if (next === "astro" && (parts[1] === "forms" || parts[1] === "charts")) {
     return frameworkPath(next);
   }
-  return withDocsBase("/" + parts.join("/"));
+  return withDocsBase(`/${parts.join("/")}`);
 }

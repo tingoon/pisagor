@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { useFileUploadContext } from "@ark-ui/vue/file-upload";
 import { PhTrash, PhX } from "@phosphor-icons/vue";
 import { Button } from "@pisagor/vue";
@@ -43,17 +43,16 @@ const _CustomPreviewList = defineComponent({
 </script>
 
 <template>
-        <FileUpload>
-          <FileUpload.ClearTrigger as-child class="absolute top-2 right-2">
-            <Button aria-label="Clear files" size="icon-sm" variant="ghost">
-              <PhTrash />
-            </Button>
-          </FileUpload.ClearTrigger>
-          <FileUpload.Dropzone class="w-full">
-            <FileUpload.DropzoneIcon />
-            <FileUpload.Title>Drop files here</FileUpload.Title>
-          </FileUpload.Dropzone>
-          <FileUpload.List />
-        </FileUpload>
-  
+  <FileUpload>
+    <FileUpload.ClearTrigger as-child class="absolute top-2 right-2">
+      <Button aria-label="Clear files" size="icon-sm" variant="ghost">
+        <PhTrash />
+      </Button>
+    </FileUpload.ClearTrigger>
+    <FileUpload.Dropzone class="w-full">
+      <FileUpload.DropzoneIcon />
+      <FileUpload.Title>Drop files here</FileUpload.Title>
+    </FileUpload.Dropzone>
+    <FileUpload.List />
+  </FileUpload>
 </template>

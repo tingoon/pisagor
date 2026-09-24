@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { Button, Checkbox, Field, Input } from "@pisagor/vue";
 import { Tour } from "..";
 
@@ -66,34 +66,33 @@ const steps = [
 </script>
 
 <template>
-        <div class="flex flex-col gap-2">
-          <Tour :steps="steps">
-            <Tour.Trigger as-child>
-              <Button variant="outline">Start form tutorial</Button>
-            </Tour.Trigger>
-            <div class="flex flex-col gap-2 rounded-lg border border-border bg-muted/50 p-4">
-              <Field>
-                <Field.Label for="input-name">Name</Field.Label>
-                <Input id="input-name" placeholder="Enter your name" type="text" />
-              </Field>
-              <Field>
-                <Field.Label for="input-email">Email</Field.Label>
-                <Input id="input-email" placeholder="Enter your email" type="email" />
-              </Field>
-              <Field orientation="horizontal">
-                <Checkbox id="checkbox-terms" />
-                <Field.Label for="checkbox-terms">I accept the terms and conditions</Field.Label>
-              </Field>
-            </div>
-            <Tour.Content>
-              <Tour.Header>
-                <Tour.ProgressText />
-                <Tour.Title />
-                <Tour.Description />
-              </Tour.Header>
-              <Tour.Actions />
-            </Tour.Content>
-          </Tour>
-        </div>
-  
+  <div class="flex flex-col gap-2">
+    <Tour :steps="steps">
+      <Tour.Trigger as-child>
+        <Button variant="outline">Start form tutorial</Button>
+      </Tour.Trigger>
+      <div class="flex flex-col gap-2 rounded-lg border border-border bg-muted/50 p-4">
+        <Field>
+          <Field.Label for="input-name">Name</Field.Label>
+          <Input id="input-name" placeholder="Enter your name" type="text" />
+        </Field>
+        <Field>
+          <Field.Label for="input-email">Email</Field.Label>
+          <Input id="input-email" placeholder="Enter your email" type="email" />
+        </Field>
+        <Field orientation="horizontal">
+          <Checkbox id="checkbox-terms" />
+          <Field.Label for="checkbox-terms">I accept the terms and conditions</Field.Label>
+        </Field>
+      </div>
+      <Tour.Content>
+        <Tour.Header>
+          <Tour.ProgressText />
+          <Tour.Title />
+          <Tour.Description />
+        </Tour.Header>
+        <Tour.Actions />
+      </Tour.Content>
+    </Tour>
+  </div>
 </template>

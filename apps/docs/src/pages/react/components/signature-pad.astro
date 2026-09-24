@@ -24,7 +24,6 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
-
 ---
 
 <DocsLayout
@@ -33,9 +32,7 @@ const headings = [
   headings={headings}
   title="Signature Pad"
 >
-
   <ComponentHeader framework="react" id="signature-pad" />
-
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <p class="mb-4 text-muted-foreground">
@@ -48,15 +45,15 @@ const headings = [
   <ComponentPreview code={examples.Invalid} language="tsx" title="Invalid">
     <Invalid client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
   <ComponentPreview code={examples.Disabled} language="tsx" title="Disabled">
     <Disabled client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
   <ComponentPreview code={examples.Controlled} language="tsx" title="Controlled">
     <Controlled client:only="react" />
   </ComponentPreview>
-<h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="image-preview">Image Preview</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="image-preview">Image Preview</h3>
   <ComponentPreview code={examples.ImagePreview} language="tsx" title="Image Preview">
     <ImagePreview client:only="react" />
   </ComponentPreview>
@@ -66,7 +63,8 @@ const headings = [
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/signature-pad</code>. Native HTML attributes are also supported and omitted from this table.
+    Own props from <code>@pisagor/props/signature-pad</code>. Native HTML attributes are also
+    supported and omitted from this table.
   </p>
   <PropsTable rows={signaturePadProps} />
 </DocsLayout>

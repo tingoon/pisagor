@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { PhMagnifyingGlass } from "@phosphor-icons/vue";
 import { Button } from "@pisagor/vue";
 import { EmptyState } from "..";

@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
 
 import { computed } from "vue";
@@ -25,24 +25,23 @@ function filter(_inputValue: string) {}
 </script>
 
 <template>
-        <Combobox.Root
-          :collection="collection"
-          @input-value-change="({ inputValue }) => filter(inputValue)"
+  <Combobox.Root
+    :collection="collection"
+    @input-value-change="({ inputValue }) => filter(inputValue)"
+  >
+    <Combobox.Input placeholder="Select a timezone" />
+    <Combobox.Content class="w-60">
+      <Combobox.List>
+        <Combobox.ItemGroup
+          v-for="[ continent, group ] in groups"
+          :key="continent"
+          :heading="continent"
         >
-          <Combobox.Input placeholder="Select a timezone" />
-          <Combobox.Content class="w-60">
-            <Combobox.List>
-              <Combobox.ItemGroup
-                v-for="[continent, group] in groups"
-                :key="continent"
-                :heading="continent"
-              >
-                <Combobox.Item v-for="item in group" :key="item.value" :item="item">
-                  {{ item.label }}
-                </Combobox.Item>
-              </Combobox.ItemGroup>
-            </Combobox.List>
-          </Combobox.Content>
-        </Combobox.Root>
-  
+          <Combobox.Item v-for="item in group" :key="item.value" :item="item">
+            {{ item.label }}
+          </Combobox.Item>
+        </Combobox.ItemGroup>
+      </Combobox.List>
+    </Combobox.Content>
+  </Combobox.Root>
 </template>

@@ -1,4 +1,4 @@
-<script lang="ts" setup >
+<script lang="ts" setup>
 import { Calendar } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 import { DatePicker } from "..";
@@ -42,19 +42,18 @@ const CalendarBody = defineComponent({
 </script>
 
 <template>
-        <div class="flex flex-col gap-2">
-          <DatePicker variant="primary">
-            <DatePicker.Input placeholder="Primary" />
-            <DatePicker.Content>
-              <CalendarBody />
-            </DatePicker.Content>
-          </DatePicker>
-          <DatePicker variant="secondary">
-            <DatePicker.Input placeholder="Secondary" />
-            <DatePicker.Content>
-              <CalendarBody />
-            </DatePicker.Content>
-          </DatePicker>
-        </div>
-  
+  <div class="flex flex-col gap-2">
+    <DatePicker variant="primary">
+      <DatePicker.Input placeholder="Primary" />
+      <DatePicker.Content>
+        <CalendarBody />
+      </DatePicker.Content>
+    </DatePicker>
+    <DatePicker variant="secondary">
+      <DatePicker.Input placeholder="Secondary" />
+      <DatePicker.Content>
+        <CalendarBody />
+      </DatePicker.Content>
+    </DatePicker>
+  </div>
 </template>
