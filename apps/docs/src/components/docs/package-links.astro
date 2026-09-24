@@ -15,9 +15,9 @@ interface Props {
 
 const pkg = packages[Astro.props.framework];
 const links = [
-  { href: pkg.github, label: "GitHub", icon: "github" as const },
-  { href: pkg.storybook, label: "Storybook", icon: "storybook" as const },
-  { href: pkg.npm, label: "npm", icon: "npm" as const },
+  { href: pkg.github, icon: "github" as const, label: "GitHub" },
+  { href: pkg.storybook, icon: "storybook" as const, label: "Storybook" },
+  { href: pkg.npm, icon: "npm" as const, label: "npm" },
 ];
 ---
 
