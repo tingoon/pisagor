@@ -61,15 +61,15 @@ Weekly dependency PRs: Actions → **Dependency Updates** (Renovate; config in `
 
 ## Turborepo Remote Cache
 
-**Checks** and **Docs Site** share Turborepo artifacts via [Vercel Remote Cache](https://vercel.com/docs/monorepos/remote-caching) (OIDC; no long-lived token).
+**Checks** and **Docs Site** share Turborepo artifacts via [Vercel Remote Cache](https://vercel.com/docs/monorepos/remote-caching) (OIDC; no long-lived token). Team: `tingoon` (repo variable `TURBO_TEAM`).
 
-One-time setup:
+One-time setup (owners):
 
-1. In the Vercel team: enable **Remote Caching** (Settings → Billing → Remote Caching).
-2. Add an OIDC policy for Turborepo CLI (Settings → Build and Deployment → OIDC Policies) scoped to this GitHub repo.
-3. Set the repository variable `TURBO_TEAM` to the Vercel team slug (`gh variable set TURBO_TEAM --body "<slug>"`).
+1. Confirm Remote Caching is on (team Settings → Billing). Already enabled for Tingoon.
+2. Add a Turborepo CLI [OIDC policy](https://vercel.com/d?to=%2Ftingoon%2F%7E%2Fsettings%2Fbuild-and-deployment%3FaddOidcPolicy%3Dturborepo-cli&title=Add+a+Turborepo+CLI+OIDC+Policy) scoped to GitHub `tingoon/pisagor`.
+3. Repo variable: `gh variable set TURBO_TEAM --body "tingoon"` (already set).
 
-Local (optional): `bunx turbo login` then `bunx turbo link` from the repo root.
+Local (optional): `bunx turbo login` then `bunx turbo link` from the repo root. CI logs should show `Remote caching enabled` after the OIDC policy exists.
 
 Commits: [Conventional Commits](https://www.conventionalcommits.org/). Scope with the workspace when the change is local (`feat(react-stories):`, `fix(react):`).
 
