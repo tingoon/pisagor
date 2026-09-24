@@ -4,10 +4,16 @@ import type { HTMLAttributes } from "astro/types";
 
 type Props = HTMLAttributes<"a">;
 
-const { class: className, ...rest } = Astro.props;
+const { class: className, href, ...rest } = Astro.props;
 const slots = linkBoxRecipe();
 ---
 
-<a {...rest} class={slots.overlay({ className })} data-part="overlay" data-scope="link-box">
-  <slot />
+<a
+  {...rest}
+  class={slots.overlay({ className })}
+  data-part="overlay"
+  data-scope="link-box"
+  href={href}
+>
+  <slot>Open</slot>
 </a>

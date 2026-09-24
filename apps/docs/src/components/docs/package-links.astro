@@ -29,10 +29,9 @@ const links = [
   Astro.props.class,
 ]}
 >
-  <div
+  <nav
     aria-label="Package links"
     class="inline-flex w-fit overflow-hidden rounded-md border border-border/60 bg-background/40"
-    role="group"
   >
     {links.map((link, index) => (
   <a
@@ -55,7 +54,7 @@ const links = [
     <ArrowSquareOut aria-hidden className="opacity-40" size={11} weight="bold" />
   </a>
 ))}
-  </div>
+  </nav>
 
   <a
     class="w-fit font-mono text-3.25 text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"

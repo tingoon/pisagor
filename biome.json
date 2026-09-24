@@ -14,7 +14,7 @@
   },
   "files": {
     "ignoreUnknown": true,
-    "includes": ["**", "!**/*.gen.*", "!bun.lock"]
+    "includes": ["**", "!**/*.gen.*", "!**/*.lock"]
   },
   "formatter": {
     "indentStyle": "space",
@@ -43,21 +43,6 @@
         "rules": {
           "suspicious": {
             "noExplicitAny": "off"
-          }
-        }
-      }
-    },
-    {
-      "includes": ["**/*.{astro,vue}"],
-      "linter": {
-        "rules": {
-          "a11y": {
-            "noLabelWithoutControl": "off",
-            "noRedundantRoles": "off",
-            "useAnchorContent": "off",
-            "useHeadingContent": "off",
-            "useSemanticElements": "off",
-            "useValidAnchor": "off"
           }
         }
       }

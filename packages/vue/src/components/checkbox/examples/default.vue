@@ -1,10 +1,11 @@
 <script lang="ts" setup>
+import { Field } from "@pisagor/vue";
 import { Checkbox } from "..";
 </script>
 
 <template>
-  <label class="flex items-center gap-2 text-sm">
+  <Field orientation="horizontal">
     <Checkbox default-checked />
-    Accept terms and conditions
-  </label>
+    <Field.Label>Accept terms and conditions</Field.Label>
+  </Field>
 </template>
