@@ -8,6 +8,7 @@ export default defineConfig({
     },
     "apps/docs": {
       entry: ["scripts/**/*.ts", "src/**/*.{astro,ts,tsx}"],
+      ignoreDependencies: ["@pisagor/solid"],
     },
     "apps/react": {
       entry: [".storybook/**/*", "src/**/*"],
@@ -44,8 +45,21 @@ export default defineConfig({
         "src/internal/**": ["exports", "types"],
       },
     },
+    "packages/solid": {
+      entry: ["src/**/*"],
+      ignoreIssues: {
+        "src/components/**": ["exports", "types", "duplicates"],
+        "src/data-grid/**": ["exports", "types"],
+        "src/data-table/**": ["exports", "types"],
+        "src/hooks/**": ["exports", "types"],
+        "src/internal/**": ["exports", "types", "duplicates"],
+        "src/phone-input/**": ["exports", "types"],
+        "src/rich-text-editor/**": ["exports", "types"],
+        "src/utils/**": ["exports", "types"],
+      },
+    },
     "packages/tsconfig": {
-      ignoreDependencies: ["@types/react"],
+      ignoreDependencies: ["@types/react", "solid-js"],
     },
     "packages/vue": {
       entry: ["src/**/*"],
