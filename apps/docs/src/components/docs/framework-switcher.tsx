@@ -1,10 +1,11 @@
 import type { Framework } from "../../lib/nav";
 import { frameworks, swapFrameworkPath } from "../../lib/nav";
-import { AstroBrandIcon, ReactBrandIcon, VueBrandIcon } from "./brand-icons";
+import { AstroBrandIcon, ReactBrandIcon, SvelteBrandIcon, VueBrandIcon } from "./brand-icons";
 
 const frameworkIcons = {
   astro: AstroBrandIcon,
   react: ReactBrandIcon,
+  svelte: SvelteBrandIcon,
   vue: VueBrandIcon,
 } as const;
 

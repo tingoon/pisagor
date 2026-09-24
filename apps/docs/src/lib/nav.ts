@@ -1,4 +1,4 @@
-export type Framework = "react" | "vue" | "astro";
+export type Framework = "react" | "vue" | "astro" | "svelte";
 
 export type DocsArea = "components" | "blocks" | "recipes" | "forms" | "charts";
 
@@ -17,6 +17,7 @@ export const frameworks: { id: Framework; label: string }[] = [
   { id: "react", label: "React" },
   { id: "vue", label: "Vue" },
   { id: "astro", label: "Astro" },
+  { id: "svelte", label: "Svelte" },
 ];
 
 export const mainNav: { id: DocsArea; label: string; slug: string }[] = [
@@ -371,6 +372,128 @@ export function getDocsArea(pathname: string): DocsArea {
   return "components";
 }
 
+/** Svelte — forms/charts packages out of scope; only shipped components. */
+const svelteComponentSections: NavSection[] = [
+  {
+    items: [
+      { slug: "", status: "ready", title: "Introduction" },
+      { slug: "styling", status: "ready", title: "Styling" },
+    ],
+    title: "Getting started",
+  },
+  {
+    items: [
+      { slug: "components/app-shell", status: "ready", title: "App Shell" },
+      { slug: "components/action-bar", status: "ready", title: "Action Bar" },
+      { slug: "components/autocomplete", status: "ready", title: "Autocomplete" },
+      { slug: "components/bottom-navigation", status: "ready", title: "Bottom Navigation" },
+      { slug: "components/breadcrumb", status: "ready", title: "Breadcrumb" },
+      { slug: "components/button", status: "ready", title: "Button" },
+      { slug: "components/badge", status: "ready", title: "Badge" },
+      { slug: "components/carousel", status: "ready", title: "Carousel" },
+      { slug: "components/spinner", status: "ready", title: "Spinner" },
+      { slug: "components/circular-slider", status: "ready", title: "Circular Slider" },
+      { slug: "components/file", status: "ready", title: "File" },
+      { slug: "components/color-picker", status: "ready", title: "Color Picker" },
+      { slug: "components/file-upload", status: "ready", title: "File Upload" },
+      { slug: "components/image-cropper", status: "ready", title: "Image Cropper" },
+      { slug: "components/file-input", status: "ready", title: "File Input" },
+      { slug: "components/kbd", status: "ready", title: "Kbd" },
+      { slug: "components/floating-panel", status: "ready", title: "Floating Panel" },
+      { slug: "components/marquee", status: "ready", title: "Marquee" },
+      { slug: "components/navbar", status: "ready", title: "Navbar" },
+      { slug: "components/scrollspy", status: "ready", title: "Scrollspy" },
+      { slug: "components/separator", status: "ready", title: "Separator" },
+      { slug: "components/sidebar", status: "ready", title: "Sidebar" },
+      { slug: "components/aspect-ratio", status: "ready", title: "Aspect Ratio" },
+      { slug: "components/status", status: "ready", title: "Status" },
+      { slug: "components/download-trigger", status: "ready", title: "Download Trigger" },
+      { slug: "components/prose", status: "ready", title: "Prose" },
+      { slug: "components/format", status: "ready", title: "Format" },
+      { slug: "components/highlight", status: "ready", title: "Highlight" },
+      { slug: "components/json-tree-view", status: "ready", title: "JSON Tree View" },
+      { slug: "components/qr-code", status: "ready", title: "QR Code" },
+      { slug: "components/resizable", status: "ready", title: "Resizable" },
+      { slug: "components/segment-group", status: "ready", title: "Segment Group" },
+      { slug: "components/sortable", status: "ready", title: "Sortable" },
+      { slug: "components/swap", status: "ready", title: "Swap" },
+      { slug: "components/signature-pad", status: "ready", title: "Signature Pad" },
+      { slug: "components/table", status: "ready", title: "Table" },
+      { slug: "components/timeline", status: "ready", title: "Timeline" },
+      { slug: "components/toolbar", status: "ready", title: "Toolbar" },
+      { slug: "components/timer", status: "ready", title: "Timer" },
+      { slug: "components/tree-view", status: "ready", title: "Tree View" },
+      { slug: "components/tour", status: "ready", title: "Tour" },
+      { slug: "components/visually-hidden", status: "ready", title: "Visually Hidden" },
+      { slug: "components/skeleton", status: "ready", title: "Skeleton" },
+      { slug: "components/alert", status: "ready", title: "Alert" },
+      { slug: "components/card", status: "ready", title: "Card" },
+      { slug: "components/empty-state", status: "ready", title: "Empty State" },
+      { slug: "components/announcement", status: "ready", title: "Announcement" },
+      { slug: "components/surface", status: "ready", title: "Surface" },
+      { slug: "components/frame", status: "ready", title: "Frame" },
+      { slug: "components/link-box", status: "ready", title: "Link Box" },
+      { slug: "components/item", status: "ready", title: "Item" },
+      { slug: "components/data-grid", status: "ready", title: "Data Grid" },
+      { slug: "components/data-table", status: "ready", title: "Data Table" },
+      { slug: "components/data-list", status: "ready", title: "Data List" },
+      { slug: "components/stat", status: "ready", title: "Stat" },
+      { slug: "components/skip-nav", status: "ready", title: "Skip Nav" },
+      { slug: "components/client-only", status: "ready", title: "Client Only" },
+      { slug: "components/presence", status: "ready", title: "Presence" },
+      { slug: "components/provider", status: "ready", title: "Provider" },
+      { slug: "components/toggle", status: "ready", title: "Toggle" },
+      { slug: "components/checkbox", status: "ready", title: "Checkbox" },
+      { slug: "components/switch", status: "ready", title: "Switch" },
+      { slug: "components/progress", status: "ready", title: "Progress" },
+      { slug: "components/circular-progress", status: "ready", title: "Circular Progress" },
+      { slug: "components/button-group", status: "ready", title: "Button Group" },
+      { slug: "components/radio-group", status: "ready", title: "Radio Group" },
+      { slug: "components/toggle-group", status: "ready", title: "Toggle Group" },
+      { slug: "components/input", status: "ready", title: "Input" },
+      { slug: "components/input-group", status: "ready", title: "Input Group" },
+      { slug: "components/textarea", status: "ready", title: "Textarea" },
+      { slug: "components/phone-input", status: "ready", title: "Phone Input" },
+      { slug: "components/password-input", status: "ready", title: "Password Input" },
+      { slug: "components/number-input", status: "ready", title: "Number Input" },
+      { slug: "components/input-otp", status: "ready", title: "Input OTP" },
+      { slug: "components/slider", status: "ready", title: "Slider" },
+      { slug: "components/rich-text-editor", status: "ready", title: "Rich Text Editor" },
+      { slug: "components/rating", status: "ready", title: "Rating" },
+      { slug: "components/avatar", status: "ready", title: "Avatar" },
+      { slug: "components/tooltip", status: "ready", title: "Tooltip" },
+      { slug: "components/popover", status: "ready", title: "Popover" },
+      { slug: "components/hover-card", status: "ready", title: "Hover Card" },
+      { slug: "components/dialog", status: "ready", title: "Dialog" },
+      { slug: "components/collapsible", status: "ready", title: "Collapsible" },
+      { slug: "components/accordion", status: "ready", title: "Accordion" },
+      { slug: "components/tabs", status: "ready", title: "Tabs" },
+      { slug: "components/alert-dialog", status: "ready", title: "Alert Dialog" },
+      { slug: "components/sheet", status: "ready", title: "Sheet" },
+      { slug: "components/drawer", status: "ready", title: "Drawer" },
+      { slug: "components/steps", status: "ready", title: "Steps" },
+      { slug: "components/pagination", status: "ready", title: "Pagination" },
+      { slug: "components/scroll-area", status: "ready", title: "Scroll Area" },
+      { slug: "components/editable", status: "ready", title: "Editable" },
+      { slug: "components/clipboard", status: "ready", title: "Clipboard" },
+      { slug: "components/select", status: "ready", title: "Select" },
+      { slug: "components/listbox", status: "ready", title: "Listbox" },
+      { slug: "components/tags-input", status: "ready", title: "Tags Input" },
+      { slug: "components/menu", status: "ready", title: "Menu" },
+      { slug: "components/dropdown-menu", status: "ready", title: "Dropdown Menu" },
+      { slug: "components/context-menu", status: "ready", title: "Context Menu" },
+      { slug: "components/navigation-menu", status: "ready", title: "Navigation Menu" },
+      { slug: "components/combobox", status: "ready", title: "Combobox" },
+      { slug: "components/command", status: "ready", title: "Command" },
+      { slug: "components/calendar", status: "ready", title: "Calendar" },
+      { slug: "components/date-picker", status: "ready", title: "Date Picker" },
+      { slug: "components/field", status: "ready", title: "Field" },
+      { slug: "components/toast", status: "ready", title: "Toast" },
+    ],
+    title: "Components",
+  },
+];
+
 /** Sidebar list for the active main-nav area. */
 export function getSidebarNav(framework: Framework, area: DocsArea): NavSection[] {
   if (area === "blocks") {
@@ -385,19 +508,21 @@ export function getSidebarNav(framework: Framework, area: DocsArea): NavSection[
     return recipeSections;
   }
   if (area === "forms") {
-    if (framework === "astro") {
+    if (framework === "astro" || framework === "svelte") {
       return [{ items: [{ slug: "forms", status: "soon", title: "Overview" }], title: "Forms" }];
     }
     return [{ items: formItems, title: "Forms" }];
   }
   if (area === "charts") {
-    if (framework === "astro") {
+    if (framework === "astro" || framework === "svelte") {
       return [{ items: [{ slug: "charts", status: "soon", title: "Overview" }], title: "Charts" }];
     }
     return [{ items: chartItems, title: "Charts" }];
   }
 
-  return framework === "astro" ? astroComponentSections : componentSections;
+  if (framework === "astro") return astroComponentSections;
+  if (framework === "svelte") return svelteComponentSections;
+  return componentSections;
 }
 
 export function frameworkPath(framework: Framework, slug = "") {
@@ -413,7 +538,7 @@ export function swapFrameworkPath(pathname: string, next: Framework) {
     return frameworkPath(next);
   }
   // forms/charts not on astro
-  if (next === "astro" && (parts[1] === "forms" || parts[1] === "charts")) {
+  if ((next === "astro" || next === "svelte") && (parts[1] === "forms" || parts[1] === "charts")) {
     return frameworkPath(next);
   }
   return withDocsBase(`/${parts.join("/")}`);

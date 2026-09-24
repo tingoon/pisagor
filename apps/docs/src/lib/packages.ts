@@ -22,6 +22,12 @@ export const packages: Record<Framework, PackageLinks> = {
     npm: "https://www.npmjs.com/package/@pisagor/react",
     storybook: "http://localhost:4001",
   },
+  svelte: {
+    github: `${githubRoot}/tree/main/packages/svelte`,
+    name: "@pisagor/svelte",
+    npm: "https://www.npmjs.com/package/@pisagor/svelte",
+    storybook: "",
+  },
   vue: {
     github: `${githubRoot}/tree/main/packages/vue`,
     name: "@pisagor/vue",

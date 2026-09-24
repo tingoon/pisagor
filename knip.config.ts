@@ -44,6 +44,19 @@ export default defineConfig({
         "src/internal/**": ["exports", "types"],
       },
     },
+    "packages/svelte": {
+      entry: ["src/**/*"],
+      ignoreIssues: {
+        "src/components/**": ["exports", "types", "duplicates"],
+        "src/data-grid/**": ["exports", "types"],
+        "src/data-table/**": ["exports", "types"],
+        "src/hooks/**": ["exports", "types"],
+        "src/internal/**": ["exports", "types", "duplicates"],
+        "src/phone-input/**": ["exports", "types"],
+        "src/rich-text-editor/**": ["exports", "types"],
+        "src/utils/**": ["exports", "types"],
+      },
+    },
     "packages/tsconfig": {
       ignoreDependencies: ["@types/react"],
     },

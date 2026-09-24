@@ -1,0 +1,23 @@
+---
+import StylingGuide from "../../components/docs/styling-guide.astro";
+import DocsLayout from "../../layouts/docs-layout.astro";
+
+const headings = [
+  { depth: 2, slug: "overview", text: "Overview" },
+  { depth: 2, slug: "token-map", text: "Token map" },
+  { depth: 2, slug: "customizing-colors", text: "Customizing colors" },
+  { depth: 2, slug: "framework-brand", text: "Framework brand in these docs" },
+  { depth: 2, slug: "convention", text: "Token convention" },
+  { depth: 2, slug: "next", text: "Next" },
+];
+---
+
+<DocsLayout
+  description="Override Pisagor theme tokens — including primary — with CSS variables."
+  framework="svelte"
+  headings={headings}
+  kicker="Get started"
+  title="Styling"
+>
+  <StylingGuide framework="svelte" />
+</DocsLayout>
