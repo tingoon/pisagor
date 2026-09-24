@@ -3,27 +3,18 @@ import { defineConfig } from "knip/config";
 export default defineConfig({
   workspaces: {
     "apps/astro": {
-      entry: [".storybook/**/*", "src/**/*", "../../packages/astro/**/*.stories.@(ts|tsx)"],
+      entry: [".storybook/**/*", "src/**/*"],
       ignoreDependencies: ["chromatic"],
     },
+    "apps/docs": {
+      entry: ["scripts/**/*.ts", "src/**/*.{astro,ts,tsx}"],
+    },
     "apps/react": {
-      entry: [
-        ".storybook/**/*",
-        "src/**/*",
-        "../../packages/react/**/*.stories.@(ts|tsx)",
-        "../../packages/react-charts/**/*.stories.@(ts|tsx)",
-        "../../packages/react-form/**/*.stories.@(ts|tsx)",
-      ],
+      entry: [".storybook/**/*", "src/**/*"],
       ignoreDependencies: ["chromatic"],
     },
     "apps/vue": {
-      entry: [
-        ".storybook/**/*",
-        "src/**/*",
-        "../../packages/vue/**/*.stories.@(ts|tsx)",
-        "../../packages/vue-charts/**/*.stories.@(ts|tsx)",
-        "../../packages/vue-form/**/*.stories.@(ts|tsx)",
-      ],
+      entry: [".storybook/**/*", "src/**/*"],
       ignoreDependencies: ["chromatic"],
     },
     "packages/astro": {
@@ -52,9 +43,6 @@ export default defineConfig({
         "src/**/*.stories.tsx": ["unresolved", "dependencies", "unlisted"],
         "src/internal/**": ["exports", "types"],
       },
-    },
-    "packages/recipes": {
-      entry: ["src/ui/*.ts"],
     },
     "packages/tsconfig": {
       ignoreDependencies: ["@types/react"],

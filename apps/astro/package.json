@@ -1,8 +1,6 @@
 {
   "dependencies": {
-    "@pisagor/astro": "workspace:*",
-    "@pisagor/props": "workspace:*",
-    "@pisagor/recipes": "workspace:*"
+    "@pisagor/astro": "workspace:*"
   },
   "description": "Astro Storybook for @pisagor/astro package stories.",
   "devDependencies": {

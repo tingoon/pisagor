@@ -2,8 +2,6 @@
   "dependencies": {
     "@ark-ui/vue": "^5.39.2",
     "@phosphor-icons/vue": "^2.2.1",
-    "@pisagor/props": "workspace:*",
-    "@pisagor/recipes": "workspace:*",
     "@pisagor/utils": "workspace:*",
     "@pisagor/vue": "workspace:*",
     "@pisagor/vue-charts": "workspace:*",

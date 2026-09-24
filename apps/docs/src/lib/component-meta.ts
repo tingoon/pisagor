@@ -1,7 +1,7 @@
-export type ComponentApi = "closed" | "open" | "compound-shorthand" | "compound";
-export type ComponentTaxonomy = "primitive" | "standard" | "composite" | "layout" | "pattern";
+type ComponentApi = "closed" | "open" | "compound-shorthand" | "compound";
+type ComponentTaxonomy = "primitive" | "standard" | "composite" | "layout" | "pattern";
 
-export interface ComponentMeta {
+interface ComponentMeta {
   /** Public API shape. */
   api: ComponentApi;
   /** Catalog grouping. */
@@ -482,5 +482,3 @@ export const componentMeta = {
     taxonomy: "primitive",
   },
 } as const satisfies Record<string, ComponentMeta>;
-
-export type ComponentMetaId = keyof typeof componentMeta;

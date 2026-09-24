@@ -13,8 +13,7 @@
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "react": "catalog:",
-    "react-dom": "catalog:",
-    "storybook": "^10.6.0"
+    "react-dom": "catalog:"
   },
   "exports": {
     ".": "./src/fields/index.ts",

@@ -10,7 +10,6 @@
   "description": "Form fields and TanStack Form integration for Pisagor Vue.",
   "devDependencies": {
     "@pisagor/tsconfig": "workspace:*",
-    "storybook": "^10.6.0",
     "vue": "catalog:"
   },
   "exports": {
