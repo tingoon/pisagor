@@ -3,8 +3,8 @@
     "url": "https://github.com/tingoon/pisagor/issues"
   },
   "dependencies": {
-    "@pisagor/recipes": "^0.2.0",
-    "@pisagor/utils": "^0.1.0"
+    "@pisagor/recipes": "workspace:*",
+    "@pisagor/utils": "workspace:*"
   },
   "description": "Chart primitives for Pisagor Vue.",
   "devDependencies": {
