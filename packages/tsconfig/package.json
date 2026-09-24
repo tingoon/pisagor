@@ -10,6 +10,7 @@
     "./react": "./react/tsconfig.json",
     "./react-stories": "./react-stories/tsconfig.json",
     "./react-vite": "./react-vite/tsconfig.json",
+    "./solid": "./solid/tsconfig.json",
     "./vue": "./vue/tsconfig.json",
     "./vue-stories": "./vue-stories/tsconfig.json",
     "./vue-vite": "./vue-vite/tsconfig.json"
@@ -23,7 +24,8 @@
     "react-stories",
     "vue",
     "vue-stories",
-    "vue-vite"
+    "vue-vite",
+    "solid"
   ],
   "license": "MIT",
   "name": "@pisagor/tsconfig",

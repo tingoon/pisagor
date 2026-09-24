@@ -1,0 +1,45 @@
+import type { SortableItemRecipe } from "@pisagor/recipes/sortable";
+import type { Accessor } from "solid-js";
+import { createContext } from "../../utils";
+
+type SortableOrientation = "vertical" | "horizontal";
+
+interface SortableContextValue {
+  activeId: Accessor<string | null>;
+  disabled: boolean;
+  endDrag: () => void;
+  getItemProps: (id: string) => {
+    "aria-disabled"?: boolean;
+    "data-dragging"?: string;
+    "data-drop-target"?: string;
+    draggable: boolean;
+    onDragEnd: (event: DragEvent) => void;
+    onDragEnter: (event: DragEvent) => void;
+    onDragLeave: (event: DragEvent) => void;
+    onDragOver: (event: DragEvent) => void;
+    onDragStart: (event: DragEvent) => void;
+    onDrop: (event: DragEvent) => void;
+    onKeyDown: (event: KeyboardEvent) => void;
+    tabIndex: number;
+  };
+  hasHandle: (id: string) => boolean;
+  moveItem: (id: string, delta: -1 | 1) => void;
+  orientation: SortableOrientation;
+  registerHandle: (id: string) => void;
+  startDrag: (id: string, event: DragEvent) => void;
+  unregisterHandle: (id: string) => void;
+}
+
+interface SortableItemContextValue {
+  id: string;
+  isDragging: Accessor<boolean>;
+  slots: SortableItemRecipe;
+}
+
+export const { SortableContext, useSortable } = createContext<SortableContextValue>()({
+  name: "Sortable",
+});
+
+export const { SortableItemContext, useSortableItem } = createContext<SortableItemContextValue>()({
+  name: "SortableItem",
+});

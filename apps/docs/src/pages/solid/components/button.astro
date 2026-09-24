@@ -1,0 +1,39 @@
+---
+import ComponentHeader from "../../../components/docs/component-header.astro";
+import Installation from "../../../components/docs/installation.astro";
+import PropsTable from "../../../components/docs/props-table.astro";
+import DocsLayout from "../../../layouts/docs-layout.astro";
+import { buttonProps } from "../../../lib/props/button";
+
+const headings = [
+  { depth: 2, slug: "usage", text: "Usage" },
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+
+const usage = `import { Button } from "@pisagor/solid/button";
+
+export function Example() {
+  return <Button>Continue</Button>;
+}`;
+---
+
+<DocsLayout
+  description="Triggers actions with emphasis, size, and loading states."
+  framework="solid"
+  headings={headings}
+  title="Button"
+>
+  <ComponentHeader framework="solid" id="button" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <pre
+    class="mb-8 overflow-x-auto rounded-lg border border-border bg-muted/40 p-4 text-sm"
+  ><code>{usage}</code></pre>
+
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <Installation class="mb-8" packages="@pisagor/solid" />
+
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <PropsTable rows={buttonProps} />
+</DocsLayout>
