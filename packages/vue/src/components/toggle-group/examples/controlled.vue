@@ -4,9 +4,9 @@ import { ref } from "vue";
 import { ToggleGroup } from "..";
 
 const value = ref(["bold"]);
-function handleValueChange(details?: { value?: unknown; page?: unknown }) {
-  if (details && "value" in details) value.value = details.value;
-  else if (details && "page" in details) value.value = details.page;
+
+function handleValueChange(next: string | string[]) {
+  value.value = Array.isArray(next) ? next : [next];
 }
 </script>
 

@@ -3,19 +3,19 @@ import { createListCollection } from "@ark-ui/vue/collection";
 import { ref } from "vue";
 import { Combobox } from "..";
 
-const value = ref("banana");
+const value = ref<string | undefined>("banana");
 const initialItems = [
   { label: "Apple", value: "apple" },
   { label: "Banana", value: "banana" },
   { label: "Cherry", value: "cherry" },
   { label: "Date", value: "date" },
 ];
-function handleValueChange(details?: { value?: unknown; page?: unknown }) {
-  if (details && "value" in details) value.value = details.value;
-  else if (details && "page" in details) value.value = details.page;
-}
 
 const collection = createListCollection({ items: initialItems });
+
+function handleValueChange(next: string[]) {
+  value.value = next[0];
+}
 
 function filter(_inputValue: string) {}
 </script>

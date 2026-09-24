@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import { createListCollection } from "@ark-ui/vue/collection";
-
 import { ref } from "vue";
-
 import { Autocomplete } from "..";
 
 const initialItems = [
@@ -11,13 +9,13 @@ const initialItems = [
   { label: "Cherry", value: "cherry" },
   { label: "Date", value: "date" },
 ];
-const value = ref();
-function handleValueChange(details?: { value?: unknown; page?: unknown }) {
-  if (details && "value" in details) value.value = details.value;
-  else if (details && "page" in details) value.value = details.page;
-}
 
+const value = ref<string | undefined>("banana");
 const collection = createListCollection({ items: initialItems });
+
+function handleValueChange(next: string[]) {
+  value.value = next.at(0);
+}
 
 function filter(_inputValue: string) {}
 </script>

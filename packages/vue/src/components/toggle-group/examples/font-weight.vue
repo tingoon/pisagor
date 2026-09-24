@@ -2,13 +2,18 @@
 import { ref } from "vue";
 import { ToggleGroup } from "..";
 
-const value = ref(["normal"]);
-function handleValueChange(details?: { value?: unknown; page?: unknown }) {
-  if (details && "value" in details) value.value = details.value;
-  else if (details && "page" in details) value.value = details.page;
-}
+const fontWeights = [
+  { className: "font-light", label: "Light", value: "light" },
+  { className: "font-normal", label: "Normal", value: "normal" },
+  { className: "font-medium", label: "Medium", value: "medium" },
+  { className: "font-bold", label: "Bold", value: "bold" },
+] as const;
 
-const fontWeights = ["normal", "medium", "semibold", "bold"] as const;
+const value = ref(["normal"]);
+
+function handleValueChange(next: string | string[]) {
+  value.value = Array.isArray(next) ? next : [next];
+}
 </script>
 
 <template>
