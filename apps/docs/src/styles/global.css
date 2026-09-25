@@ -206,7 +206,7 @@ body {
   letter-spacing: -0.005em;
 }
 
-/* Framework brand primary (docs only) — overrides Pisagor --primary while browsing /react|/vue|/astro */
+/* Framework brand primary (docs only) — overrides Pisagor --primary while browsing /react|/vue|/astro|/solid|/svelte */
 html[data-framework="react"] {
   --primary: #087ea4;
   --primary-foreground: #ffffff;
@@ -240,6 +240,28 @@ html.dark[data-framework="astro"] {
   --ring: #ff8a4c;
 }
 
+html[data-framework="solid"] {
+  --primary: #2c4f7c;
+  --primary-foreground: #ffffff;
+  --ring: #2c4f7c;
+}
+html.dark[data-framework="solid"] {
+  --primary: #8ba4ff;
+  --primary-foreground: #0b1220;
+  --ring: #8ba4ff;
+}
+
+html[data-framework="svelte"] {
+  --primary: #ff3e00;
+  --primary-foreground: #ffffff;
+  --ring: #ff3e00;
+}
+html.dark[data-framework="svelte"] {
+  --primary: #ff7b5c;
+  --primary-foreground: #2a0e00;
+  --ring: #ff7b5c;
+}
+
 /* Preview-scoped theme (ComponentPreview toggle; does not change page) */
 html[data-framework="react"] [data-preview-theme="light"] {
   --primary: #087ea4;
@@ -270,6 +292,26 @@ html[data-framework="astro"] [data-preview-theme="dark"] {
   --primary: #ff8a4c;
   --primary-foreground: #2a0e00;
   --ring: #ff8a4c;
+}
+html[data-framework="solid"] [data-preview-theme="light"] {
+  --primary: #2c4f7c;
+  --primary-foreground: #ffffff;
+  --ring: #2c4f7c;
+}
+html[data-framework="solid"] [data-preview-theme="dark"] {
+  --primary: #8ba4ff;
+  --primary-foreground: #0b1220;
+  --ring: #8ba4ff;
+}
+html[data-framework="svelte"] [data-preview-theme="light"] {
+  --primary: #ff3e00;
+  --primary-foreground: #ffffff;
+  --ring: #ff3e00;
+}
+html[data-framework="svelte"] [data-preview-theme="dark"] {
+  --primary: #ff7b5c;
+  --primary-foreground: #2a0e00;
+  --ring: #ff7b5c;
 }
 
 /* Accessibility — gentler equivalents, not silence */

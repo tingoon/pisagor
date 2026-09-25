@@ -7,15 +7,13 @@ import { defineConfig } from "astro/config";
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 
-/** GitHub Pages project site uses `/<repo>/`; local/dev stays at `/`. */
 const base = process.env.DOCS_BASE_PATH || "/";
 
 export default defineConfig({
   base,
   integrations: [react(), vue()],
   server: { host: true, port: 4000 },
-  // Custom domain when set; Pages build uses https://tingoon.github.io
-  site: process.env.DOCS_SITE || "https://pisagor.dev",
+  site: process.env.DOCS_SITE || "https://tingoon.github.com/pisagor",
   vite: {
     plugins: [tailwindcss()],
     resolve: {

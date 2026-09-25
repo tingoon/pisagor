@@ -27,11 +27,18 @@
   },
   "linter": {
     "domains": {
-      "astro": "recommended"
+      "project": "recommended",
+      "turborepo": "recommended"
     },
     "rules": {
       "suspicious": {
-        "noImportCycles": "error"
+        "noImportCycles": "error",
+        "noUndeclaredEnvVars": {
+          "level": "warn",
+          "options": {
+            "allowedEnvVars": ["BASE_URL"]
+          }
+        }
       }
     }
   },
