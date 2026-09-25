@@ -13,7 +13,10 @@ const TourProgressBar = defineComponent({
 
       return h(
         "div",
-        { class: "absolute right-0 bottom-0 left-0 h-1 overflow-hidden rounded-b-2xl bg-muted" },
+        {
+          class:
+            "absolute right-0 bottom-0 left-0 h-1 overflow-hidden rounded-b-2xl bg-muted",
+        },
         [
           h("div", {
             class: "h-full bg-primary transition-[width]",

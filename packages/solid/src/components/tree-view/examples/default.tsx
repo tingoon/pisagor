@@ -41,7 +41,10 @@ function TreeNode(props: NodeProviderProps<TreeNodeType>) {
             <TreeView.BranchContent>
               <For each={children()}>
                 {(child, index) => (
-                  <TreeNode indexPath={[...props.indexPath, index()]} node={child} />
+                  <TreeNode
+                    indexPath={[...props.indexPath, index()]}
+                    node={child}
+                  />
                 )}
               </For>
             </TreeView.BranchContent>

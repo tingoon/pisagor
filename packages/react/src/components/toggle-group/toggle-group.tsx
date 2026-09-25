@@ -32,7 +32,8 @@ export interface ToggleGroupRootProps
   recipe?: typeof toggleGroupRecipe;
 }
 
-export interface ToggleGroupProps extends Omit<ToggleGroupRootProps, "children"> {
+export interface ToggleGroupProps
+  extends Omit<ToggleGroupRootProps, "children"> {
   items?: ToggleGroupPresetItem[];
 }
 
@@ -60,7 +61,9 @@ export function ToggleGroupRoot({
         {...rest}
         className={slots.base({ className })}
         multiple={multiple}
-        onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
+        onValueChange={
+          onValueChange ? (details) => onValueChange(details.value) : undefined
+        }
         orientation={orientation}
         style={{
           ...style,
@@ -73,7 +76,11 @@ export function ToggleGroupRoot({
   );
 }
 
-export function ToggleGroupItem({ value, className, ...rest }: ToggleGroupItemProps) {
+export function ToggleGroupItem({
+  value,
+  className,
+  ...rest
+}: ToggleGroupItemProps) {
   const { slots, variant, size, spacing } = useToggleGroup();
 
   return (
@@ -96,7 +103,11 @@ export function ToggleGroupShorthand({ items, ...rest }: ToggleGroupProps) {
   return (
     <ToggleGroupRoot {...rest}>
       {items?.map((item) => (
-        <ToggleGroupItem disabled={item.disabled} key={item.value} value={item.value}>
+        <ToggleGroupItem
+          disabled={item.disabled}
+          key={item.value}
+          value={item.value}
+        >
           {item.children}
         </ToggleGroupItem>
       ))}

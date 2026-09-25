@@ -57,7 +57,9 @@ function tryResolveRoot(specifier: string, from: string): string | null {
     while (true) {
       const pkgJson = path.join(dir, "package.json");
       if (existsSync(pkgJson)) {
-        const name = (JSON.parse(readFileSync(pkgJson, "utf8")) as { name?: string }).name;
+        const name = (
+          JSON.parse(readFileSync(pkgJson, "utf8")) as { name?: string }
+        ).name;
         if (name === specifier) {
           return dir;
         }
@@ -80,7 +82,10 @@ function readPackageName(dir: string): string | null {
     return null;
   }
   try {
-    return (JSON.parse(readFileSync(pkgJson, "utf8")) as { name?: string }).name ?? null;
+    return (
+      (JSON.parse(readFileSync(pkgJson, "utf8")) as { name?: string }).name ??
+      null
+    );
   } catch {
     return null;
   }
@@ -89,7 +94,10 @@ function readPackageName(dir: string): string | null {
 function collectCandidateRoots(): string[] {
   const roots = new Set<string>();
 
-  const bases = [path.join(process.cwd(), "package.json"), fileURLToPath(import.meta.url)];
+  const bases = [
+    path.join(process.cwd(), "package.json"),
+    fileURLToPath(import.meta.url),
+  ];
 
   for (const known of KNOWN_PACKAGES) {
     for (const base of bases) {
@@ -101,7 +109,10 @@ function collectCandidateRoots(): string[] {
   }
 
   // Installed @pisagor/* scopes (cwd + ancestors + mcp install location)
-  const searchDirs = [process.cwd(), path.dirname(fileURLToPath(import.meta.url))];
+  const searchDirs = [
+    process.cwd(),
+    path.dirname(fileURLToPath(import.meta.url)),
+  ];
   for (const start of searchDirs) {
     let dir = start;
     while (true) {
@@ -140,7 +151,9 @@ function loadCatalog(root: string): ComponentsCatalog | RecipesCatalog | null {
     return null;
   }
   try {
-    return JSON.parse(readFileSync(file, "utf8")) as ComponentsCatalog | RecipesCatalog;
+    return JSON.parse(readFileSync(file, "utf8")) as
+      | ComponentsCatalog
+      | RecipesCatalog;
   } catch {
     return null;
   }
@@ -173,10 +186,14 @@ export function discoverPackages(): ToolConfig {
     });
   }
 
-  const packages = [...byName.values()].sort((a, b) => a.name.localeCompare(b.name));
+  const packages = [...byName.values()].sort((a, b) =>
+    a.name.localeCompare(b.name),
+  );
   const frameworks = [
     ...new Set(
-      packages.map((pkg) => pkg.framework).filter((value): value is Framework => value !== null),
+      packages
+        .map((pkg) => pkg.framework)
+        .filter((value): value is Framework => value !== null),
     ),
   ].sort() as Framework[];
 

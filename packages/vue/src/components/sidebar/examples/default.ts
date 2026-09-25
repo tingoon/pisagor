@@ -49,19 +49,30 @@ export default defineComponent({
           h(Sidebar.Footer, { class: "border-t" }, () =>
             h(Sidebar.Menu, null, () =>
               h(Sidebar.MenuItem, null, () =>
-                h(Sidebar.MenuButton, null, () => [h(PhUser), h("span", null, "Account")]),
+                h(Sidebar.MenuButton, null, () => [
+                  h(PhUser),
+                  h("span", null, "Account"),
+                ]),
               ),
             ),
           ),
           h(Sidebar.Rail),
         ]),
         h(Sidebar.Inset, null, () => [
-          h("header", { class: "flex h-12 items-center gap-2 border-b px-4" }, () => [
-            h(Sidebar.Trigger),
-            h("span", { class: "font-medium text-sm" }, "Dashboard"),
-          ]),
+          h(
+            "header",
+            { class: "flex h-12 items-center gap-2 border-b px-4" },
+            () => [
+              h(Sidebar.Trigger),
+              h("span", { class: "font-medium text-sm" }, "Dashboard"),
+            ],
+          ),
           h("div", { class: "flex flex-1 flex-col gap-2 p-4" }, () => [
-            h("p", { class: "text-muted-foreground text-sm" }, "Main content area"),
+            h(
+              "p",
+              { class: "text-muted-foreground text-sm" },
+              "Main content area",
+            ),
             h(
               Button as Parameters<typeof h>[0],
               { class: "w-fit", variant: "outline" },

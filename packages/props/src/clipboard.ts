@@ -1,4 +1,7 @@
-import type { ClipboardRecipeFn, ClipboardVariantProps } from "@pisagor/recipes/clipboard";
+import type {
+  ClipboardRecipeFn,
+  ClipboardVariantProps,
+} from "@pisagor/recipes/clipboard";
 
 /** Clipboard props. */
 export interface ClipboardProps extends ClipboardVariantProps {

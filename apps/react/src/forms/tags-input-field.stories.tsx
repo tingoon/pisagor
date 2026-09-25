@@ -8,7 +8,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Adds and removes multiple tags with a label and optional validation message.",
+        component:
+          "Adds and removes multiple tags with a label and optional validation message.",
       },
     },
   },

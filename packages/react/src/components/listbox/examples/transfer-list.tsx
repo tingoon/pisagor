@@ -18,7 +18,9 @@ export function TransferList() {
   });
 
   const moveToSelected = useCallback(() => {
-    setAvailable((prev) => prev.filter((item) => !availableValue.includes(item)));
+    setAvailable((prev) =>
+      prev.filter((item) => !availableValue.includes(item)),
+    );
     setSelected((prev) => [...prev, ...availableValue]);
     setAvailableValue([]);
   }, [availableValue]);
@@ -36,7 +38,9 @@ export function TransferList() {
           <Listbox.Root
             className="min-h-40"
             collection={availableCollection}
-            onValueChange={(value) => setAvailableValue(Array.isArray(value) ? value : [value])}
+            onValueChange={(value) =>
+              setAvailableValue(Array.isArray(value) ? value : [value])
+            }
             selectionMode="multiple"
             value={availableValue}
           >
@@ -78,7 +82,9 @@ export function TransferList() {
           <Listbox.Root
             className="min-h-40"
             collection={selectedCollection}
-            onValueChange={(value) => setSelectedValue(Array.isArray(value) ? value : [value])}
+            onValueChange={(value) =>
+              setSelectedValue(Array.isArray(value) ? value : [value])
+            }
             selectionMode="multiple"
             value={selectedValue}
           >

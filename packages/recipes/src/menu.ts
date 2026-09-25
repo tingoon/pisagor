@@ -4,7 +4,11 @@ export const menuRecipe = tv({
   slots: {
     base: ["group/menu", "w-full"],
     group: ["flex flex-col gap-1"],
-    groupLabel: ["px-2 py-1.5", "font-medium text-muted-foreground text-sm", "pointer-events-none"],
+    groupLabel: [
+      "px-2 py-1.5",
+      "font-medium text-muted-foreground text-sm",
+      "pointer-events-none",
+    ],
     item: [
       "group/menu-item",
       "relative",

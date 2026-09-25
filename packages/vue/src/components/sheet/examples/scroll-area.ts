@@ -54,10 +54,18 @@ export default defineComponent({
           ),
           h(Sheet.Footer, null, () => [
             h(Sheet.CloseTrigger, { asChild: true }, () =>
-              h("button", { class: outlineButtonClass(), type: "button" }, "Cancel"),
+              h(
+                "button",
+                { class: outlineButtonClass(), type: "button" },
+                "Cancel",
+              ),
             ),
             h(Sheet.CloseTrigger, { asChild: true }, () =>
-              h("button", { class: outlineButtonClass(), type: "button" }, "Agree"),
+              h(
+                "button",
+                { class: outlineButtonClass(), type: "button" },
+                "Agree",
+              ),
             ),
           ]),
         ]),

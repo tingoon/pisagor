@@ -8,7 +8,10 @@ export function WithLink() {
           <a href="https://example.com/blog/simple-post">Blog post title</a>
         </LinkBox.Overlay>
         <p className="text-muted-foreground text-sm">A sample blog post.</p>
-        <a className="text-primary underline" href="https://example.com/blog/simple-post/details">
+        <a
+          className="text-primary underline"
+          href="https://example.com/blog/simple-post/details"
+        >
           Inner link
         </a>
       </article>

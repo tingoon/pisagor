@@ -21,14 +21,20 @@ export interface AppShellResizableProps {
 export const APP_SHELL_DEFAULT_PANEL_RESIZABLE_PROPS = {
   enabled: true,
   handlePosition: "top",
-} as const satisfies Required<Pick<AppShellResizableProps, "enabled" | "handlePosition">>;
+} as const satisfies Required<
+  Pick<AppShellResizableProps, "enabled" | "handlePosition">
+>;
 
 export const APP_SHELL_DEFAULT_INSPECTOR_RESIZABLE_PROPS = {
   enabled: true,
   handlePosition: "top",
-} as const satisfies Required<Pick<AppShellResizableProps, "enabled" | "handlePosition">>;
+} as const satisfies Required<
+  Pick<AppShellResizableProps, "enabled" | "handlePosition">
+>;
 
-export type AppShellFixedStackVar = "--app-shell-banner-height" | "--app-shell-navigation-height";
+export type AppShellFixedStackVar =
+  | "--app-shell-banner-height"
+  | "--app-shell-navigation-height";
 
 export type AppShellRegionVar =
   | "--app-shell-end-inspector-width"

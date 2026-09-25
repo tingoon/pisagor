@@ -8,7 +8,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Lets users filter options while typing and pick a single result.",
+        component:
+          "Lets users filter options while typing and pick a single result.",
       },
     },
   },

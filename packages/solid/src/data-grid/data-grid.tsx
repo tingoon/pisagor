@@ -4,7 +4,14 @@ import type { RowData, TableOptions } from "@tanstack/solid-table";
 import { createTable, flexRender } from "@tanstack/solid-table";
 import { createVirtualizer } from "@tanstack/solid-virtual";
 import type { ComponentProps, JSX } from "solid-js";
-import { createSignal, For, onCleanup, onMount, Show, splitProps } from "solid-js";
+import {
+  createSignal,
+  For,
+  onCleanup,
+  onMount,
+  Show,
+  splitProps,
+} from "solid-js";
 import {
   Table,
   type TableCellProps,
@@ -95,7 +102,11 @@ export function useDataGridRow<TData extends RowData>() {
 }
 
 function columnSizeStyle<TData extends RowData>(
-  column: import("./data-grid.context").Column<DataGridFeatures, TData, unknown>,
+  column: import("./data-grid.context").Column<
+    DataGridFeatures,
+    TData,
+    unknown
+  >,
   enabled: boolean,
 ): JSX.CSSProperties | undefined {
   if (!enabled) return undefined;
@@ -105,7 +116,9 @@ function columnSizeStyle<TData extends RowData>(
   };
 }
 
-function DataGridHeader<TData extends RowData>(props: DataGridHeaderProps): JSX.Element {
+function DataGridHeader<TData extends RowData>(
+  props: DataGridHeaderProps,
+): JSX.Element {
   const table = useDataGridContext<TData>().table;
   return (
     <For each={table.getHeaderGroups()}>
@@ -157,16 +170,26 @@ function DataGridColumnResizer(props: DataGridColumnResizerProps): JSX.Element {
 }
 
 function DataGridHeadCell<TData extends RowData>(
-  props: DataGridHeadProps & { header: Header<DataGridFeatures, TData, unknown> },
+  props: DataGridHeadProps & {
+    header: Header<DataGridFeatures, TData, unknown>;
+  },
 ): JSX.Element {
-  const [local, rest] = splitProps(props, ["header", "children", "class", "filter", "style"]);
+  const [local, rest] = splitProps(props, [
+    "header",
+    "children",
+    "class",
+    "filter",
+    "style",
+  ]);
   const { slots, table } = useDataGridContext<TData>();
   const sizingEnabled = () => Boolean(table.options.enableColumnResizing);
   const headClass = () => cn(local.filter && slots.filterHead(), local.class);
 
   return (
     <DataGridHeaderCellContext
-      value={{ header: local.header } as DataGridHeaderCellContextValue<RowData>}
+      value={
+        { header: local.header } as DataGridHeaderCellContextValue<RowData>
+      }
     >
       <Table.Head
         {...rest}
@@ -181,7 +204,10 @@ function DataGridHeadCell<TData extends RowData>(
         <Show
           fallback={
             <>
-              {flexRender(local.header.column.columnDef.header, local.header.getContext())}
+              {flexRender(
+                local.header.column.columnDef.header,
+                local.header.getContext(),
+              )}
               <Show when={sizingEnabled()}>
                 <DataGridColumnResizer />
               </Show>
@@ -196,8 +222,15 @@ function DataGridHeadCell<TData extends RowData>(
   );
 }
 
-function DataGridHead<TData extends RowData>(props: DataGridHeadProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["columnId", "children", "class", "filter"]);
+function DataGridHead<TData extends RowData>(
+  props: DataGridHeadProps,
+): JSX.Element {
+  const [local, rest] = splitProps(props, [
+    "columnId",
+    "children",
+    "class",
+    "filter",
+  ]);
   const { headerGroup } = useDataGridHeaderGroupContext<TData>();
 
   return (
@@ -205,18 +238,30 @@ function DataGridHead<TData extends RowData>(props: DataGridHeadProps): JSX.Elem
       fallback={
         <For each={headerGroup.headers}>
           {(header) => (
-            <DataGridHeadCell {...rest} class={local.class} filter={local.filter} header={header} />
+            <DataGridHeadCell
+              {...rest}
+              class={local.class}
+              filter={local.filter}
+              header={header}
+            />
           )}
         </For>
       }
       when={local.columnId}
     >
       {(columnId) => {
-        const header = headerGroup.headers.find((item) => item.column.id === columnId());
+        const header = headerGroup.headers.find(
+          (item) => item.column.id === columnId(),
+        );
         return (
           <Show when={header}>
             {(h) => (
-              <DataGridHeadCell {...rest} class={local.class} filter={local.filter} header={h()}>
+              <DataGridHeadCell
+                {...rest}
+                class={local.class}
+                filter={local.filter}
+                header={h()}
+              >
                 {local.children}
               </DataGridHeadCell>
             )}
@@ -240,7 +285,9 @@ export function renderDataGridCell<TData extends RowData>(
   return flexRender(cell.column.columnDef.cell, cell.getContext());
 }
 
-function DataGridBody<TData extends RowData>(props: DataGridBodyProps): JSX.Element {
+function DataGridBody<TData extends RowData>(
+  props: DataGridBodyProps,
+): JSX.Element {
   const table = useDataGridContext<TData>().table;
   const rows = () => table.getRowModel().rows;
 
@@ -248,7 +295,9 @@ function DataGridBody<TData extends RowData>(props: DataGridBodyProps): JSX.Elem
     <Show fallback={props.empty} when={rows().length > 0}>
       <For each={rows()}>
         {(row) => (
-          <DataGridRowContext value={{ row } as DataGridRowContextValue<RowData>}>
+          <DataGridRowContext
+            value={{ row } as DataGridRowContextValue<RowData>}
+          >
             {props.children}
           </DataGridRowContext>
         )}
@@ -257,7 +306,9 @@ function DataGridBody<TData extends RowData>(props: DataGridBodyProps): JSX.Elem
   );
 }
 
-function DataGridVirtualBody<TData extends RowData>(props: DataGridVirtualBodyProps): JSX.Element {
+function DataGridVirtualBody<TData extends RowData>(
+  props: DataGridVirtualBodyProps,
+): JSX.Element {
   const [local] = splitProps(props, [
     "children",
     "empty",
@@ -271,7 +322,9 @@ function DataGridVirtualBody<TData extends RowData>(props: DataGridVirtualBodyPr
 
   const { slots, table } = useDataGridContext<TData>();
   const rows = () => table.getRowModel().rows;
-  const [scrollElement, setScrollElement] = createSignal<HTMLElement | null>(null);
+  const [scrollElement, setScrollElement] = createSignal<HTMLElement | null>(
+    null,
+  );
   let anchorRef: HTMLTableRowElement | undefined;
 
   onMount(() => {
@@ -319,8 +372,15 @@ function DataGridVirtualBody<TData extends RowData>(props: DataGridVirtualBodyPr
         fallback={<tr class={slots.anchor()} ref={(el) => (anchorRef = el)} />}
         when={paddingTop() > 0}
       >
-        <tr data-part="virtual-spacer" data-scope="data-grid" ref={(el) => (anchorRef = el)}>
-          <td colSpan={table.getAllColumns().length} style={{ height: `${paddingTop()}px` }} />
+        <tr
+          data-part="virtual-spacer"
+          data-scope="data-grid"
+          ref={(el) => (anchorRef = el)}
+        >
+          <td
+            colSpan={table.getAllColumns().length}
+            style={{ height: `${paddingTop()}px` }}
+          />
         </tr>
       </Show>
       <For each={virtualRows()}>
@@ -329,7 +389,9 @@ function DataGridVirtualBody<TData extends RowData>(props: DataGridVirtualBodyPr
           return (
             <Show when={row()}>
               {(r) => (
-                <DataGridRowContext value={{ row: r() } as DataGridRowContextValue<RowData>}>
+                <DataGridRowContext
+                  value={{ row: r() } as DataGridRowContextValue<RowData>}
+                >
                   {local.children}
                 </DataGridRowContext>
               )}
@@ -339,7 +401,10 @@ function DataGridVirtualBody<TData extends RowData>(props: DataGridVirtualBodyPr
       </For>
       <Show when={paddingBottom() > 0}>
         <tr data-part="virtual-spacer" data-scope="data-grid">
-          <td colSpan={table.getAllColumns().length} style={{ height: `${paddingBottom()}px` }} />
+          <td
+            colSpan={table.getAllColumns().length}
+            style={{ height: `${paddingBottom()}px` }}
+          />
         </tr>
       </Show>
     </Show>
@@ -350,13 +415,17 @@ function DataGridRowProvider<TData extends RowData>(
   props: DataGridRowProviderProps<TData>,
 ): JSX.Element {
   return (
-    <DataGridRowContext value={{ row: props.row } as DataGridRowContextValue<RowData>}>
+    <DataGridRowContext
+      value={{ row: props.row } as DataGridRowContextValue<RowData>}
+    >
       {props.children}
     </DataGridRowContext>
   );
 }
 
-function DataGridRow<TData extends RowData>(props: DataGridRowProps): JSX.Element {
+function DataGridRow<TData extends RowData>(
+  props: DataGridRowProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class", "style"]);
   const row = useDataGridRowContext<TData>().row;
 
@@ -377,8 +446,15 @@ function DataGridRow<TData extends RowData>(props: DataGridRowProps): JSX.Elemen
   );
 }
 
-function DataGridCell<TData extends RowData>(props: DataGridCellProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["columnId", "children", "class", "style"]);
+function DataGridCell<TData extends RowData>(
+  props: DataGridCellProps,
+): JSX.Element {
+  const [local, rest] = splitProps(props, [
+    "columnId",
+    "children",
+    "class",
+    "style",
+  ]);
   const table = useDataGridContext<TData>().table;
   const row = useDataGridRowContext<TData>().row;
   const sizingEnabled = () => Boolean(table.options.enableColumnResizing);
@@ -406,7 +482,9 @@ function DataGridCell<TData extends RowData>(props: DataGridCellProps): JSX.Elem
       when={local.columnId}
     >
       {(columnId) => {
-        const cell = row.getVisibleCells().find((item) => item.column.id === columnId());
+        const cell = row
+          .getVisibleCells()
+          .find((item) => item.column.id === columnId());
         return (
           <Show when={cell}>
             {(c) => (
@@ -436,9 +514,15 @@ function DataGridEmpty(props: DataGridEmptyProps): JSX.Element {
   const span = () => local.colSpan ?? table.getAllColumns().length;
 
   return (
-    <Table.Row {...rest} class={local.class} data-part="empty" data-scope="data-grid">
+    <Table.Row
+      {...rest}
+      class={local.class}
+      data-part="empty"
+      data-scope="data-grid"
+    >
       <Table.Cell class={slots.empty()} colSpan={span()}>
-        {local.children ?? "No results. Try a different search or clear filters."}
+        {local.children ??
+          "No results. Try a different search or clear filters."}
       </Table.Cell>
     </Table.Row>
   );
@@ -470,16 +554,17 @@ function DataGridFooter(props: DataGridFooterProps): JSX.Element {
   );
 }
 
-function DataGridRoot<TData extends RowData>(props: DataGridProps<TData>): JSX.Element {
-  const [local, rest] = splitProps(props as DataGridProps<TData> & Record<string, unknown>, [
-    "children",
-    "recipe",
-    "class",
-    "features",
-    "columnResizeMode",
-  ]);
-  const features = () => (local.features as DataGridFeatures | undefined) ?? dataGridFeatures;
-  const recipe = () => (local.recipe as typeof dataGridRecipe | undefined) ?? dataGridRecipe;
+function DataGridRoot<TData extends RowData>(
+  props: DataGridProps<TData>,
+): JSX.Element {
+  const [local, rest] = splitProps(
+    props as DataGridProps<TData> & Record<string, unknown>,
+    ["children", "recipe", "class", "features", "columnResizeMode"],
+  );
+  const features = () =>
+    (local.features as DataGridFeatures | undefined) ?? dataGridFeatures;
+  const recipe = () =>
+    (local.recipe as typeof dataGridRecipe | undefined) ?? dataGridRecipe;
   const slots = () => recipe()();
   const columnResizeMode = () =>
     (local.columnResizeMode as "onChange" | "onEnd" | undefined) ?? "onChange";
@@ -491,7 +576,9 @@ function DataGridRoot<TData extends RowData>(props: DataGridProps<TData>): JSX.E
   });
 
   return (
-    <DataGridContext value={{ slots: slots(), table } as DataGridContextValue<RowData>}>
+    <DataGridContext
+      value={{ slots: slots(), table } as DataGridContextValue<RowData>}
+    >
       <div
         class={slots().base({ class: local.class as string | undefined })}
         data-part="root"
@@ -503,7 +590,9 @@ function DataGridRoot<TData extends RowData>(props: DataGridProps<TData>): JSX.E
   );
 }
 
-export function DataGrid<TData extends RowData>(props: DataGridProps<TData>): JSX.Element {
+export function DataGrid<TData extends RowData>(
+  props: DataGridProps<TData>,
+): JSX.Element {
   return DataGridRoot(props);
 }
 

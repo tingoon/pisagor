@@ -5,7 +5,9 @@ export function Default() {
     <Frame>
       <Frame.Header>
         <Frame.Title>Section header</Frame.Title>
-        <Frame.Description>Brief description about the section</Frame.Description>
+        <Frame.Description>
+          Brief description about the section
+        </Frame.Description>
       </Frame.Header>
       <Frame.Panel>
         <h2 class="font-semibold text-sm">Section title</h2>

@@ -9,16 +9,22 @@ export function loremParagraphs(count: number) {
 }
 
 export function regionTitle(text: string): VNodeChild {
-  return h("div", { class: "flex min-h-12 w-full items-center justify-center" }, [
-    h("h6", { class: "text-center leading-4" }, text),
-  ]);
+  return h(
+    "div",
+    { class: "flex min-h-12 w-full items-center justify-center" },
+    [h("h6", { class: "text-center leading-4" }, text)],
+  );
 }
 
 export function mainContent(title: string, paragraphs = 24): VNodeChild {
   return h(AppShell.Content, null, () => [
     h("h6", { style: { marginBottom: "8px" } }, title),
     ...loremParagraphs(paragraphs).map((paragraph, index) =>
-      h("p", { key: paragraph + index, style: { fontSize: "15px" } }, paragraph),
+      h(
+        "p",
+        { key: paragraph + index, style: { fontSize: "15px" } },
+        paragraph,
+      ),
     ),
   ]);
 }
@@ -32,7 +38,9 @@ export const ActiveRailPanelContent = defineComponent({
       const { railStates } = context;
       return h(AppShell.PanelContent, null, () =>
         regionTitle(
-          railStates.start?.activeRailId ? `Panel: ${railStates.start.activeRailId}` : "Panel",
+          railStates.start?.activeRailId
+            ? `Panel: ${railStates.start.activeRailId}`
+            : "Panel",
         ),
       );
     };

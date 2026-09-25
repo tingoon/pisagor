@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { Prose } from "..";
 
-const html = '<p>Trusted <strong>HTML</strong> content with a <a href="#">link</a>.</p>';
+const html =
+  '<p>Trusted <strong>HTML</strong> content with a <a href="#">link</a>.</p>';
 </script>
 
 <template>

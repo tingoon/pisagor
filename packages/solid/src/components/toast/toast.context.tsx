@@ -5,6 +5,7 @@ interface ToastItemContextValue {
   slots: ToastItemRecipe;
 }
 
-export const { ToastItemContext, useToastItem } = createContext<ToastItemContextValue>()({
-  name: "ToastItem",
-});
+export const { ToastItemContext, useToastItem } =
+  createContext<ToastItemContextValue>()({
+    name: "ToastItem",
+  });

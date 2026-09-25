@@ -6,12 +6,19 @@ import type {
   PaginationPrevTriggerProps,
   PaginationRootProps as PaginationPrimitiveRootProps,
 } from "@ark-ui/solid/pagination";
-import { Pagination as PaginationPrimitive, usePaginationContext } from "@ark-ui/solid/pagination";
+import {
+  Pagination as PaginationPrimitive,
+  usePaginationContext,
+} from "@ark-ui/solid/pagination";
 import { paginationRecipe } from "@pisagor/recipes/pagination";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
-import { CaretLeftIcon, CaretRightIcon, DotsThreeIcon } from "../../internal/icons";
+import {
+  CaretLeftIcon,
+  CaretRightIcon,
+  DotsThreeIcon,
+} from "../../internal/icons";
 import { Button, type ButtonProps } from "../button";
 import { PaginationContext, usePagination } from "./pagination.context";
 
@@ -31,7 +38,10 @@ export function PaginationRoot(props: PaginationRootProps): JSX.Element {
 
   return (
     <PaginationContext value={{ slots: slots() }}>
-      <PaginationPrimitive.Root {...rest} class={slots().base({ class: cn(local.class) })}>
+      <PaginationPrimitive.Root
+        {...rest}
+        class={slots().base({ class: cn(local.class) })}
+      >
         <Show
           fallback={
             <>
@@ -49,7 +59,9 @@ export function PaginationRoot(props: PaginationRootProps): JSX.Element {
   );
 }
 
-export function PaginationPrevTrigger(props: PaginationPrevTriggerProps): JSX.Element {
+export function PaginationPrevTrigger(
+  props: PaginationPrevTriggerProps,
+): JSX.Element {
   return (
     <PaginationPrimitive.PrevTrigger
       {...props}
@@ -63,7 +75,9 @@ export function PaginationPrevTrigger(props: PaginationPrevTriggerProps): JSX.El
   );
 }
 
-export function PaginationNextTrigger(props: PaginationNextTriggerProps): JSX.Element {
+export function PaginationNextTrigger(
+  props: PaginationNextTriggerProps,
+): JSX.Element {
   return (
     <PaginationPrimitive.NextTrigger
       {...props}
@@ -120,7 +134,9 @@ export function PaginationItems(props: PaginationItemsProps): JSX.Element {
   );
 }
 
-export function PaginationItemLink(props: PaginationItemLinkProps): JSX.Element {
+export function PaginationItemLink(
+  props: PaginationItemLinkProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["page", "children"]);
   const pagination = usePaginationContext();
 
@@ -145,12 +161,17 @@ export function PaginationItemLink(props: PaginationItemLinkProps): JSX.Element 
   );
 }
 
-export function PaginationEllipsis(props: PaginationEllipsisProps): JSX.Element {
+export function PaginationEllipsis(
+  props: PaginationEllipsisProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = usePagination();
 
   return (
-    <PaginationPrimitive.Ellipsis {...rest} class={slots.ellipsis({ class: cn(local.class) })}>
+    <PaginationPrimitive.Ellipsis
+      {...rest}
+      class={slots.ellipsis({ class: cn(local.class) })}
+    >
       <DotsThreeIcon />
     </PaginationPrimitive.Ellipsis>
   );

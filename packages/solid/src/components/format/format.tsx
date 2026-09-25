@@ -14,6 +14,8 @@ export function FormatNumber(props: FormatNumberProps): JSX.Element {
   return <FormatPrimitive.Number {...props} />;
 }
 
-export function FormatRelativeTime(props: FormatRelativeTimeProps): JSX.Element {
+export function FormatRelativeTime(
+  props: FormatRelativeTimeProps,
+): JSX.Element {
   return <FormatPrimitive.RelativeTime {...props} />;
 }

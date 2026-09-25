@@ -4,7 +4,10 @@ import {
   useFileUploadContext,
 } from "@ark-ui/vue/file-upload";
 import { PhUpload, PhX } from "@phosphor-icons/vue";
-import { fileUploadItemRecipe, fileUploadRecipe } from "@pisagor/recipes/file-upload";
+import {
+  fileUploadItemRecipe,
+  fileUploadRecipe,
+} from "@pisagor/recipes/file-upload";
 import { formControlZoneRecipe } from "@pisagor/recipes/form-control";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
@@ -49,7 +52,10 @@ export const FileUploadRoot = defineComponent({
   inheritAttrs: false,
   name: "FileUpload",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     onValueChange: {
       default: undefined,
       type: Function as PropType<FileUploadRootProps["onValueChange"]>,
@@ -76,7 +82,10 @@ export const FileUploadRoot = defineComponent({
             props.onValueChange?.(details.acceptedFiles);
           },
         },
-        () => [slots.default?.(), h(FileUploadPrimitive.HiddenInput as ArkPart)],
+        () => [
+          slots.default?.(),
+          h(FileUploadPrimitive.HiddenInput as ArkPart),
+        ],
       );
     };
   },
@@ -94,12 +103,18 @@ export const FileUploadDropzone = defineComponent({
   inheritAttrs: false,
   name: "FileUpload.Dropzone",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: fileUploadRecipe,
       type: Function as PropType<typeof fileUploadRecipe>,
     },
-    variant: { default: undefined, type: String as PropType<FileUploadDropzoneProps["variant"]> },
+    variant: {
+      default: undefined,
+      type: String as PropType<FileUploadDropzoneProps["variant"]>,
+    },
   },
   setup(props, { attrs, slots }) {
     const surfaceVariant = useFormControlSurface();
@@ -121,7 +136,11 @@ export const FileUploadDropzone = defineComponent({
         {
           ...attrs,
           ...controlProps,
-          class: cn(formControlZoneRecipe({ ...shellArgs }), variantSlots.dropzone(), props.class),
+          class: cn(
+            formControlZoneRecipe({ ...shellArgs }),
+            variantSlots.dropzone(),
+            props.class,
+          ),
         },
         slots,
       );
@@ -133,7 +152,10 @@ export const FileUploadDropzoneIcon = defineComponent({
   inheritAttrs: false,
   name: "FileUpload.DropzoneIcon",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: fileUploadRecipe,
       type: Function as PropType<typeof fileUploadRecipe>,
@@ -161,7 +183,10 @@ export const FileUploadTitle = defineComponent({
   inheritAttrs: false,
   name: "FileUpload.Title",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: fileUploadRecipe,
       type: Function as PropType<typeof fileUploadRecipe>,
@@ -189,7 +214,10 @@ export const FileUploadDescription = defineComponent({
   inheritAttrs: false,
   name: "FileUpload.Description",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: fileUploadRecipe,
       type: Function as PropType<typeof fileUploadRecipe>,
@@ -217,7 +245,10 @@ export const FileUploadHelper = defineComponent({
   inheritAttrs: false,
   name: "FileUpload.Helper",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: fileUploadRecipe,
       type: Function as PropType<typeof fileUploadRecipe>,
@@ -245,7 +276,8 @@ export const FileUploadItemGroup = defineComponent({
   inheritAttrs: false,
   name: "FileUpload.ItemGroup",
   setup(_, { attrs, slots }) {
-    return () => h(FileUploadPrimitive.ItemGroup as ArkPart, { ...attrs }, slots);
+    return () =>
+      h(FileUploadPrimitive.ItemGroup as ArkPart, { ...attrs }, slots);
   },
 });
 
@@ -253,7 +285,10 @@ export const FileUploadItem = defineComponent({
   inheritAttrs: false,
   name: "FileUpload.Item",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     file: { required: true, type: Object as PropType<File> },
     itemRecipe: {
       default: fileUploadItemRecipe,
@@ -281,7 +316,10 @@ export const FileUploadItemPreview = defineComponent({
   inheritAttrs: false,
   name: "FileUpload.ItemPreview",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: fileUploadItemRecipe,
       type: Function as PropType<typeof fileUploadItemRecipe>,
@@ -309,7 +347,10 @@ export const FileUploadItemPreviewImage = defineComponent({
   inheritAttrs: false,
   name: "FileUpload.ItemPreviewImage",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: fileUploadItemRecipe,
       type: Function as PropType<typeof fileUploadItemRecipe>,
@@ -331,7 +372,10 @@ export const FileUploadItemName = defineComponent({
   inheritAttrs: false,
   name: "FileUpload.ItemName",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: fileUploadItemRecipe,
       type: Function as PropType<typeof fileUploadItemRecipe>,
@@ -357,7 +401,10 @@ export const FileUploadItemSize = defineComponent({
   inheritAttrs: false,
   name: "FileUpload.ItemSize",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: fileUploadItemRecipe,
       type: Function as PropType<typeof fileUploadItemRecipe>,
@@ -383,7 +430,10 @@ export const FileUploadItemDeleteTrigger = defineComponent({
   inheritAttrs: false,
   name: "FileUpload.ItemDeleteTrigger",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: fileUploadItemRecipe,
       type: Function as PropType<typeof fileUploadItemRecipe>,
@@ -409,7 +459,8 @@ export const FileUploadClearTrigger = defineComponent({
   inheritAttrs: false,
   name: "FileUpload.ClearTrigger",
   setup(_, { attrs, slots }) {
-    return () => h(FileUploadPrimitive.ClearTrigger as ArkPart, { ...attrs }, slots);
+    return () =>
+      h(FileUploadPrimitive.ClearTrigger as ArkPart, { ...attrs }, slots);
   },
 });
 
@@ -417,7 +468,10 @@ export const FileUploadList = defineComponent({
   inheritAttrs: false,
   name: "FileUpload.List",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: fileUploadItemRecipe,
       type: Function as PropType<typeof fileUploadItemRecipe>,
@@ -472,7 +526,11 @@ export const FileUploadList = defineComponent({
               h(FileUploadItemDeleteTrigger, { asChild: true }, () =>
                 h(
                   Button as ArkPart,
-                  { class: itemSlots.deleteButton(), size: "icon-xs", variant: "ghost" },
+                  {
+                    class: itemSlots.deleteButton(),
+                    size: "icon-xs",
+                    variant: "ghost",
+                  },
                   () => h(PhX),
                 ),
               ),

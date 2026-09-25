@@ -5,7 +5,8 @@ export function Default() {
   const steps: TourStepType[] = [
     {
       actions: [{ action: "next" as const, label: "Start tour" }],
-      description: "You gonna learn how to use to install and use the component.",
+      description:
+        "You gonna learn how to use to install and use the component.",
       id: "step-1",
       title: "Welcome to the tour",
       type: "dialog",
@@ -15,7 +16,8 @@ export function Default() {
         { action: "prev" as const, label: "Previous" },
         { action: "next" as const, label: "Next" },
       ],
-      description: "Let's take a quick tour of the documentation site to help you get started。",
+      description:
+        "Let's take a quick tour of the documentation site to help you get started。",
       id: "step-2",
       target: () => document.querySelector("#installation"),
       title: "Installation step",

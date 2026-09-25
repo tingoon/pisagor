@@ -47,7 +47,9 @@ export const PasswordStrength = defineComponent({
     const password = ref("");
     const showPassword = ref(false);
 
-    const requirements = computed(() => checkPasswordRequirements(password.value));
+    const requirements = computed(() =>
+      checkPasswordRequirements(password.value),
+    );
     const strengthScore = computed(
       () => requirements.value.filter((requirement) => requirement.met).length,
     );
@@ -82,7 +84,9 @@ export const PasswordStrength = defineComponent({
             h(
               "button",
               {
-                "aria-label": showPassword.value ? "Hide password" : "Show password",
+                "aria-label": showPassword.value
+                  ? "Hide password"
+                  : "Show password",
                 class: cn(
                   "absolute inset-y-0 end-0 flex items-center px-2.5 text-muted-foreground",
                   "hover:text-foreground",
@@ -115,7 +119,9 @@ export const PasswordStrength = defineComponent({
             h("div", {
               class: cn(
                 "h-1 flex-1 rounded-full transition-colors duration-500",
-                index < strengthScore.value ? getStrengthColor(strengthScore.value) : "bg-border",
+                index < strengthScore.value
+                  ? getStrengthColor(strengthScore.value)
+                  : "bg-border",
               ),
               key: requirement.text,
             }),
@@ -145,28 +151,42 @@ export const PasswordStrength = defineComponent({
             class: "space-y-1.5",
           },
           requirements.value.map((requirement) =>
-            h("li", { class: "flex items-center gap-1.5", key: requirement.text }, [
-              requirement.met
-                ? h(PhCheck, { "aria-hidden": true, class: "size-3.5 text-emerald-500" })
-                : h(PhX, { "aria-hidden": true, class: "size-3.5 text-muted-foreground/60" }),
-              h(
-                "span",
-                {
-                  class: cn(
-                    "text-xs transition-colors",
-                    requirement.met ? "text-emerald-600" : "text-muted-foreground",
-                  ),
-                },
-                [
-                  requirement.text,
-                  h(
-                    "span",
-                    { class: "sr-only" },
-                    requirement.met ? " — Requirement met" : " — Requirement not met",
-                  ),
-                ],
-              ),
-            ]),
+            h(
+              "li",
+              { class: "flex items-center gap-1.5", key: requirement.text },
+              [
+                requirement.met
+                  ? h(PhCheck, {
+                      "aria-hidden": true,
+                      class: "size-3.5 text-emerald-500",
+                    })
+                  : h(PhX, {
+                      "aria-hidden": true,
+                      class: "size-3.5 text-muted-foreground/60",
+                    }),
+                h(
+                  "span",
+                  {
+                    class: cn(
+                      "text-xs transition-colors",
+                      requirement.met
+                        ? "text-emerald-600"
+                        : "text-muted-foreground",
+                    ),
+                  },
+                  [
+                    requirement.text,
+                    h(
+                      "span",
+                      { class: "sr-only" },
+                      requirement.met
+                        ? " — Requirement met"
+                        : " — Requirement not met",
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ]);

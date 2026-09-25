@@ -1,4 +1,8 @@
-export type { ChartConfig, ChartLegendContentProps, ChartTooltipContentProps } from "./chart";
+export type {
+  ChartConfig,
+  ChartLegendContentProps,
+  ChartTooltipContentProps,
+} from "./chart";
 export {
   Chart,
   ChartContainer,

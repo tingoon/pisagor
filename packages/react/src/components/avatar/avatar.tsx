@@ -70,13 +70,20 @@ function AvatarRoot({
 function AvatarImage({ className, ...rest }: AvatarImageProps) {
   const { slots } = useAvatar();
 
-  return <AvatarPrimitive.Image {...rest} className={slots.image({ className })} />;
+  return (
+    <AvatarPrimitive.Image {...rest} className={slots.image({ className })} />
+  );
 }
 
 function AvatarFallback({ className, ...rest }: AvatarFallbackProps) {
   const { slots } = useAvatar();
 
-  return <AvatarPrimitive.Fallback {...rest} className={slots.fallback({ className })} />;
+  return (
+    <AvatarPrimitive.Fallback
+      {...rest}
+      className={slots.fallback({ className })}
+    />
+  );
 }
 // #endregion
 
@@ -94,7 +101,14 @@ export function Avatar({
 }: AvatarProps) {
   return (
     <AvatarRoot {...rest} shape={shape} size={size}>
-      {src && <AvatarImage {...imageProps} alt={alt} className={classNames?.image} src={src} />}
+      {src && (
+        <AvatarImage
+          {...imageProps}
+          alt={alt}
+          className={classNames?.image}
+          src={src}
+        />
+      )}
 
       {fallback !== undefined && (
         <AvatarFallback {...fallbackProps} className={classNames?.fallback}>

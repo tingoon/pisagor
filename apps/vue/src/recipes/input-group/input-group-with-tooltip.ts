@@ -17,7 +17,12 @@ export const InputGroupWithTooltip = defineComponent({
             {
               children: h(
                 Button as ArkPart,
-                { "aria-label": "More info", size: "icon-xs", type: "button", variant: "ghost" },
+                {
+                  "aria-label": "More info",
+                  size: "icon-xs",
+                  type: "button",
+                  variant: "ghost",
+                },
                 () => h(PhInfo, { "aria-hidden": true }),
               ),
               content: "Additional information about this field",

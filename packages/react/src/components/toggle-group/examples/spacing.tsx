@@ -1,9 +1,18 @@
-import { TextBIcon, TextItalicIcon, TextUnderlineIcon } from "@phosphor-icons/react";
+import {
+  TextBIcon,
+  TextItalicIcon,
+  TextUnderlineIcon,
+} from "@phosphor-icons/react";
 import { ToggleGroup } from "..";
 
 export function Spacing() {
   return (
-    <ToggleGroup.Root defaultValue={["italic"]} multiple spacing={2} variant="outline">
+    <ToggleGroup.Root
+      defaultValue={["italic"]}
+      multiple
+      spacing={2}
+      variant="outline"
+    >
       <ToggleGroup.Item aria-label="Toggle bold" value="bold">
         <TextBIcon />
       </ToggleGroup.Item>

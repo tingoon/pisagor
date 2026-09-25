@@ -1,4 +1,7 @@
-import { ArrowsInLineHorizontalIcon, ArrowsOutLineHorizontalIcon } from "@phosphor-icons/react";
+import {
+  ArrowsInLineHorizontalIcon,
+  ArrowsOutLineHorizontalIcon,
+} from "@phosphor-icons/react";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { useState } from "react";
@@ -57,7 +60,8 @@ export interface AppShellInspectorProps extends ComponentProps<"aside"> {
   resizableProps?: AppShellResizableProps;
 }
 
-export interface AppShellInspectorTriggerProps extends Omit<ButtonProps, "children"> {
+export interface AppShellInspectorTriggerProps
+  extends Omit<ButtonProps, "children"> {
   /**
    * Inspector side to toggle.
    *
@@ -91,8 +95,12 @@ export function AppShellInspector({
   resizableProps: resizablePropsProp,
   ...rest
 }: AppShellInspectorProps) {
-  const { defaultInspectorResizableProps, inspectorStates, slots } = useAppShell();
-  const resizableProps = mergeResizableProps(defaultInspectorResizableProps, resizablePropsProp);
+  const { defaultInspectorResizableProps, inspectorStates, slots } =
+    useAppShell();
+  const resizableProps = mergeResizableProps(
+    defaultInspectorResizableProps,
+    resizablePropsProp,
+  );
   const side = useRegisteredSideState({
     controlledOpen: openProp,
     defaultOpen,
@@ -113,7 +121,13 @@ export function AppShellInspector({
       className={cn(
         slots.inspector(),
         placement === "start" ? "border-e" : "border-s",
-        regionPositionClasses(slots, position, "column", undefined, "inspector"),
+        regionPositionClasses(
+          slots,
+          position,
+          "column",
+          undefined,
+          "inspector",
+        ),
         side.open ? "opacity-100" : "pointer-events-none opacity-0",
         className,
       )}
@@ -139,7 +153,10 @@ export function AppShellInspector({
   );
 }
 
-export function AppShellInspectorHeader({ className, ...rest }: AppShellInspectorHeaderProps) {
+export function AppShellInspectorHeader({
+  className,
+  ...rest
+}: AppShellInspectorHeaderProps) {
   const { slots } = useAppShell();
 
   return (
@@ -152,7 +169,10 @@ export function AppShellInspectorHeader({ className, ...rest }: AppShellInspecto
   );
 }
 
-export function AppShellInspectorContent({ className, ...rest }: AppShellInspectorContentProps) {
+export function AppShellInspectorContent({
+  className,
+  ...rest
+}: AppShellInspectorContentProps) {
   const { slots } = useAppShell();
 
   return (
@@ -167,7 +187,10 @@ export function AppShellInspectorContent({ className, ...rest }: AppShellInspect
   );
 }
 
-export function AppShellInspectorFooter({ className, ...rest }: AppShellInspectorFooterProps) {
+export function AppShellInspectorFooter({
+  className,
+  ...rest
+}: AppShellInspectorFooterProps) {
   const { slots } = useAppShell();
 
   return (

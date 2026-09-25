@@ -10,15 +10,25 @@ export default defineComponent({
         h(AppShell.Navigation, null, () => regionTitle("Navigation")),
 
         h(AppShell.Panel, { defaultOpen: true, placement: "start" }, () => [
-          h(AppShell.PanelHeader, null, () => regionTitle("Start panel header")),
+          h(AppShell.PanelHeader, null, () =>
+            regionTitle("Start panel header"),
+          ),
           h(AppShell.PanelContent, null, () => regionTitle("Start panel")),
-          h(AppShell.PanelFooter, null, () => regionTitle("Start panel footer")),
+          h(AppShell.PanelFooter, null, () =>
+            regionTitle("Start panel footer"),
+          ),
         ]),
 
         h(AppShell.Main, null, () => [
           h(AppShell.Header, null, () => [
-            h(AppShell.PanelTrigger, { "aria-label": "Toggle start panel", placement: "start" }),
-            h(AppShell.PanelTrigger, { "aria-label": "Toggle end panel", placement: "end" }),
+            h(AppShell.PanelTrigger, {
+              "aria-label": "Toggle start panel",
+              placement: "start",
+            }),
+            h(AppShell.PanelTrigger, {
+              "aria-label": "Toggle end panel",
+              placement: "end",
+            }),
           ]),
           mainContent("Main"),
         ]),

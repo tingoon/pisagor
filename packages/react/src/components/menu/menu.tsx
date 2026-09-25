@@ -1,5 +1,9 @@
 import { ark } from "@ark-ui/react/factory";
-import { type MenuItemVariantProps, menuItemRecipe, menuRecipe } from "@pisagor/recipes/menu";
+import {
+  type MenuItemVariantProps,
+  menuItemRecipe,
+  menuRecipe,
+} from "@pisagor/recipes/menu";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { MenuContext, useMenu } from "./menu.context";
@@ -18,7 +22,9 @@ export type MenuPartProps = ComponentProps<typeof ark.div>;
 
 export type MenuListProps = ComponentProps<typeof ark.ul>;
 
-export interface MenuItemProps extends ComponentProps<typeof ark.button>, MenuItemVariantProps {
+export interface MenuItemProps
+  extends ComponentProps<typeof ark.button>,
+    MenuItemVariantProps {
   /**
    * Style recipe. Defaults to `menuItemRecipe` from `@pisagor/recipes/menu`.
    *
@@ -115,7 +121,12 @@ export function MenuItem({
   const { slots } = useMenu();
 
   return (
-    <ark.li className={slots.wrapper()} data-part="item-wrapper" data-scope="menu" role="none">
+    <ark.li
+      className={slots.wrapper()}
+      data-part="item-wrapper"
+      data-scope="menu"
+      role="none"
+    >
       <ark.button
         {...rest}
         className={cn(recipe({ variant }), className)}
@@ -128,11 +139,20 @@ export function MenuItem({
   );
 }
 
-export function MenuLink({ active = false, className, ...rest }: MenuLinkProps) {
+export function MenuLink({
+  active = false,
+  className,
+  ...rest
+}: MenuLinkProps) {
   const { slots } = useMenu();
 
   return (
-    <ark.li className={slots.wrapper()} data-part="item-wrapper" data-scope="menu" role="none">
+    <ark.li
+      className={slots.wrapper()}
+      data-part="item-wrapper"
+      data-scope="menu"
+      role="none"
+    >
       <ark.a
         {...rest}
         aria-current={active ? "page" : undefined}

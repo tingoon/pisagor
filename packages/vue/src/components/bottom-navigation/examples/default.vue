@@ -4,7 +4,10 @@ import { BottomNavigation } from "..";
 </script>
 
 <template>
-  <BottomNavigation class="fixed inset-x-0 bottom-0 border-t" default-value="home">
+  <BottomNavigation
+    class="fixed inset-x-0 bottom-0 border-t"
+    default-value="home"
+  >
     <BottomNavigation.List aria-label="Main">
       <BottomNavigation.Item value="home">
         <BottomNavigation.ItemIcon><PhHouse /></BottomNavigation.ItemIcon>

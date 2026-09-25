@@ -16,7 +16,12 @@ const text = sampleText();
         <Item.Title>{{ text }}</Item.Title>
       </Item>
     </Item.Group>
-    <DownloadTrigger as-child file-name="hello.txt" mime-type="text/plain" :data="text">
+    <DownloadTrigger
+      as-child
+      file-name="hello.txt"
+      mime-type="text/plain"
+      :data="text"
+    >
       <Button size="lg" variant="outline">
         <PhDownload />
         Download

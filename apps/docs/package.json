@@ -31,9 +31,9 @@
   "private": true,
   "scripts": {
     "build": "astro build",
-    "dev": "astro dev --host --port 4000",
+    "dev": "astro dev",
     "generate:props": "bun scripts/generate-props-tables.ts",
-    "preview": "astro preview --host --port 4000",
+    "preview": "astro preview",
     "type-check": "tsc --noEmit"
   },
   "type": "module",

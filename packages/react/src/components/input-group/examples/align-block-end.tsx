@@ -11,7 +11,9 @@ export function AlignBlockEnd() {
           </InputGroup.Button>
         </InputGroup.Addon>
       </InputGroup>
-      <p className="text-muted-foreground text-sm">Footer positioned below the textarea.</p>
+      <p className="text-muted-foreground text-sm">
+        Footer positioned below the textarea.
+      </p>
     </div>
   );
 }

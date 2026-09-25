@@ -21,22 +21,31 @@ import { Portal } from "solid-js/web";
 import { ArrowsOutIcon, CornersInIcon, MinusIcon } from "../../internal/icons";
 import { Button, type ButtonProps } from "../button";
 import { ScrollArea } from "../scroll-area";
-import { FloatingPanelContext, useFloatingPanel } from "./floating-panel.context";
+import {
+  FloatingPanelContext,
+  useFloatingPanel,
+} from "./floating-panel.context";
 
-export interface FloatingPanelRootProps extends FloatingPanelPrimitiveRootProps {
+export interface FloatingPanelRootProps
+  extends FloatingPanelPrimitiveRootProps {
   recipe?: typeof floatingPanelRecipe;
 }
 
-export interface FloatingPanelContentProps extends FloatingPanelPrimitiveContentProps {
+export interface FloatingPanelContentProps
+  extends FloatingPanelPrimitiveContentProps {
   resizable?: boolean;
 }
 
-export type FloatingPanelMinimizeProps = Omit<FloatingPanelStageTriggerProps, "stage"> &
+export type FloatingPanelMinimizeProps = Omit<
+  FloatingPanelStageTriggerProps,
+  "stage"
+> &
   ButtonProps;
 export type FloatingPanelMaximizeProps = FloatingPanelMinimizeProps;
 export type FloatingPanelRestoreProps = FloatingPanelMinimizeProps;
 
-export interface FloatingPanelBodyProps extends FloatingPanelPrimitiveBodyProps {
+export interface FloatingPanelBodyProps
+  extends FloatingPanelPrimitiveBodyProps {
   scrollFade?: boolean;
 }
 
@@ -48,16 +57,22 @@ export function FloatingPanelRoot(props: FloatingPanelRootProps): JSX.Element {
 
   return (
     <FloatingPanelContext value={{ slots: slots() }}>
-      <FloatingPanelPrimitive.Root {...rest}>{local.children}</FloatingPanelPrimitive.Root>
+      <FloatingPanelPrimitive.Root {...rest}>
+        {local.children}
+      </FloatingPanelPrimitive.Root>
     </FloatingPanelContext>
   );
 }
 
-export function FloatingPanelTrigger(props: FloatingPanelTriggerProps): JSX.Element {
+export function FloatingPanelTrigger(
+  props: FloatingPanelTriggerProps,
+): JSX.Element {
   return <FloatingPanelPrimitive.Trigger {...props} />;
 }
 
-export function FloatingPanelContent(props: FloatingPanelContentProps): JSX.Element {
+export function FloatingPanelContent(
+  props: FloatingPanelContentProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "resizable", "class"]);
   const ctx = useFloatingPanel();
   const slots = () => ctx?.slots ?? floatingPanelRecipe();
@@ -87,37 +102,51 @@ export function FloatingPanelContent(props: FloatingPanelContentProps): JSX.Elem
   );
 }
 
-export function FloatingPanelDragTrigger(props: FloatingPanelDragTriggerProps): JSX.Element {
+export function FloatingPanelDragTrigger(
+  props: FloatingPanelDragTriggerProps,
+): JSX.Element {
   return <FloatingPanelPrimitive.DragTrigger {...props} />;
 }
 
-export function FloatingPanelHeader(props: FloatingPanelHeaderProps): JSX.Element {
+export function FloatingPanelHeader(
+  props: FloatingPanelHeaderProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const ctx = useFloatingPanel();
   const slots = () => ctx?.slots ?? floatingPanelRecipe();
 
   return (
     <FloatingPanelDragTrigger>
-      <FloatingPanelPrimitive.Header {...rest} class={slots().header({ class: cn(local.class) })}>
+      <FloatingPanelPrimitive.Header
+        {...rest}
+        class={slots().header({ class: cn(local.class) })}
+      >
         {local.children}
       </FloatingPanelPrimitive.Header>
     </FloatingPanelDragTrigger>
   );
 }
 
-export function FloatingPanelControl(props: FloatingPanelControlProps): JSX.Element {
+export function FloatingPanelControl(
+  props: FloatingPanelControlProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const ctx = useFloatingPanel();
   const slots = () => ctx?.slots ?? floatingPanelRecipe();
 
   return (
-    <FloatingPanelPrimitive.Control {...rest} class={slots().control({ class: cn(local.class) })}>
+    <FloatingPanelPrimitive.Control
+      {...rest}
+      class={slots().control({ class: cn(local.class) })}
+    >
       {local.children}
     </FloatingPanelPrimitive.Control>
   );
 }
 
-export function FloatingPanelMinimize(props: FloatingPanelMinimizeProps): JSX.Element {
+export function FloatingPanelMinimize(
+  props: FloatingPanelMinimizeProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["size", "variant", "children"]);
   return (
     <FloatingPanelPrimitive.StageTrigger
@@ -137,7 +166,9 @@ export function FloatingPanelMinimize(props: FloatingPanelMinimizeProps): JSX.El
   );
 }
 
-export function FloatingPanelMaximize(props: FloatingPanelMaximizeProps): JSX.Element {
+export function FloatingPanelMaximize(
+  props: FloatingPanelMaximizeProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["size", "variant", "children"]);
   return (
     <FloatingPanelPrimitive.StageTrigger
@@ -157,7 +188,9 @@ export function FloatingPanelMaximize(props: FloatingPanelMaximizeProps): JSX.El
   );
 }
 
-export function FloatingPanelRestore(props: FloatingPanelRestoreProps): JSX.Element {
+export function FloatingPanelRestore(
+  props: FloatingPanelRestoreProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["size", "variant", "children"]);
   const ctx = useFloatingPanel();
   const slots = () => ctx?.slots ?? floatingPanelRecipe();
@@ -185,27 +218,38 @@ export function FloatingPanelRestore(props: FloatingPanelRestoreProps): JSX.Elem
   );
 }
 
-export function FloatingPanelTitle(props: FloatingPanelTitleProps): JSX.Element {
+export function FloatingPanelTitle(
+  props: FloatingPanelTitleProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const ctx = useFloatingPanel();
   const slots = () => ctx?.slots ?? floatingPanelRecipe();
 
   return (
-    <FloatingPanelPrimitive.Title {...rest} class={slots().title({ class: cn(local.class) })}>
+    <FloatingPanelPrimitive.Title
+      {...rest}
+      class={slots().title({ class: cn(local.class) })}
+    >
       {local.children}
     </FloatingPanelPrimitive.Title>
   );
 }
 
-export function FloatingPanelResizeTrigger(props: FloatingPanelResizeTriggerProps): JSX.Element {
+export function FloatingPanelResizeTrigger(
+  props: FloatingPanelResizeTriggerProps,
+): JSX.Element {
   return <FloatingPanelPrimitive.ResizeTrigger {...props} />;
 }
 
-export function FloatingPanelStageTrigger(props: FloatingPanelStageTriggerProps): JSX.Element {
+export function FloatingPanelStageTrigger(
+  props: FloatingPanelStageTriggerProps,
+): JSX.Element {
   return <FloatingPanelPrimitive.StageTrigger {...props} />;
 }
 
-export function FloatingPanelCloseTrigger(props: FloatingPanelCloseTriggerProps): JSX.Element {
+export function FloatingPanelCloseTrigger(
+  props: FloatingPanelCloseTriggerProps,
+): JSX.Element {
   return <FloatingPanelPrimitive.CloseTrigger {...props} />;
 }
 
@@ -216,14 +260,19 @@ export function FloatingPanelBody(props: FloatingPanelBodyProps): JSX.Element {
 
   return (
     <ScrollArea scrollFade={local.scrollFade ?? false}>
-      <FloatingPanelPrimitive.Body {...rest} class={slots().body({ class: cn(local.class) })}>
+      <FloatingPanelPrimitive.Body
+        {...rest}
+        class={slots().body({ class: cn(local.class) })}
+      >
         {local.children}
       </FloatingPanelPrimitive.Body>
     </ScrollArea>
   );
 }
 
-export function FloatingPanelFooter(props: FloatingPanelFooterProps): JSX.Element {
+export function FloatingPanelFooter(
+  props: FloatingPanelFooterProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const ctx = useFloatingPanel();
   const slots = () => ctx?.slots ?? floatingPanelRecipe();

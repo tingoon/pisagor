@@ -1,6 +1,12 @@
-import { RichTextEditor, type RichTextEditorRootProps } from "@pisagor/vue/rich-text-editor";
+import {
+  RichTextEditor,
+  type RichTextEditorRootProps,
+} from "@pisagor/vue/rich-text-editor";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
+import {
+  type FieldPresentationProps,
+  FieldShell,
+} from "../../internal/field-shell";
 import type { SetRequired } from "../../internal/types";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -26,15 +32,30 @@ export const RichTextEditorField = defineComponent({
   name: "RichTextEditorField",
   props: {
     "aria-label": { default: undefined, type: String },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     defaultValue: { default: undefined, type: String },
-    description: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    description: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     disabled: { default: undefined, type: Boolean },
-    error: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    error: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     id: { default: undefined, type: String },
     invalid: { default: undefined, type: Boolean },
-    label: { default: undefined, type: null as unknown as PropType<VNodeChild> },
-    labelAccessory: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    label: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
+    labelAccessory: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     labelProps: {
       default: undefined,
       type: Object as PropType<FieldPresentationProps["labelProps"]>,
@@ -51,7 +72,10 @@ export const RichTextEditorField = defineComponent({
     },
     readOnly: { default: undefined, type: Boolean },
     value: { default: undefined, type: String },
-    variant: { default: undefined, type: String as PropType<RichTextEditorRootProps["variant"]> },
+    variant: {
+      default: undefined,
+      type: String as PropType<RichTextEditorRootProps["variant"]>,
+    },
   },
   setup(props, { attrs }) {
     return () => {
@@ -74,7 +98,9 @@ export const RichTextEditorField = defineComponent({
         () =>
           h(RichTextEditor as ArkPart, {
             ...attrs,
-            "aria-label": hasVisibleLabel ? ariaLabel : (ariaLabel ?? "Rich text editor"),
+            "aria-label": hasVisibleLabel
+              ? ariaLabel
+              : (ariaLabel ?? "Rich text editor"),
             defaultValue: props.defaultValue,
             disabled: props.disabled,
             id: props.id,

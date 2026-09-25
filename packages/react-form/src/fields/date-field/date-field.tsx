@@ -1,11 +1,19 @@
 import type { DatePickerProps } from "@pisagor/react";
 import { DatePicker } from "@pisagor/react";
-import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
+import {
+  type FieldPresentationProps,
+  FieldShell,
+} from "../../internal/field-shell";
 
 // #region Types
-type DatePickerControlProps = Omit<DatePickerProps, "invalid" | "name" | "value">;
+type DatePickerControlProps = Omit<
+  DatePickerProps,
+  "invalid" | "name" | "value"
+>;
 
-export interface DateFieldProps extends FieldPresentationProps, DatePickerControlProps {
+export interface DateFieldProps
+  extends FieldPresentationProps,
+    DatePickerControlProps {
   name?: string;
   value?: DatePickerProps["value"];
   placeholder?: string;

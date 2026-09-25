@@ -7,7 +7,11 @@ export default defineComponent({
   setup() {
     return () =>
       h(Tooltip as ArkPart, {
-        children: h(Button as ArkPart, { size: "sm", variant: "outline" }, () => "Dark mode"),
+        children: h(
+          Button as ArkPart,
+          { size: "sm", variant: "outline" },
+          () => "Dark mode",
+        ),
         classNames: { content: "flex items-center gap-2" },
         content: [
           "Toggle mode",

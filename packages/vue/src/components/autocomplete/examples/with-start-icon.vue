@@ -28,7 +28,11 @@ function filter(_inputValue: string) {}
     <Autocomplete.Content>
       <Autocomplete.Empty />
       <Autocomplete.List>
-        <Autocomplete.Item v-for="item in collection.items" :key="item.value" :item="item">
+        <Autocomplete.Item
+          v-for="item in collection.items"
+          :key="item.value"
+          :item="item"
+        >
           {{ item.label }}
         </Autocomplete.Item>
       </Autocomplete.List>

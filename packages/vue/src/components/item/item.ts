@@ -1,7 +1,11 @@
 import { ark } from "@ark-ui/vue/factory";
 import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes/item";
 import { computed, defineComponent, h, type PropType, unref } from "vue";
-import { provideItemContext, resolveItemVariant, useItemSlots } from "./item.context";
+import {
+  provideItemContext,
+  resolveItemVariant,
+  useItemSlots,
+} from "./item.context";
 import { useItemGroupContextRef } from "./item-group.context";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -31,7 +35,10 @@ export const ItemRoot = defineComponent({
   inheritAttrs: false,
   name: "ItemRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: itemRecipe,
       type: Function as PropType<typeof itemRecipe>,
@@ -64,7 +71,10 @@ export const ItemRoot = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: itemSlots.base({ class: props.class, variant: resolvedVariant }),
+          class: itemSlots.base({
+            class: props.class,
+            variant: resolvedVariant,
+          }),
           "data-part": "root",
           "data-scope": "item",
           "data-variant": resolvedVariant,
@@ -79,7 +89,10 @@ export const ItemMedia = defineComponent({
   inheritAttrs: false,
   name: "ItemMedia",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     variant: {
       default: "default",
       type: String as PropType<ItemVariantProps["variant"]>,
@@ -93,7 +106,10 @@ export const ItemMedia = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: itemSlots.media({ class: props.class, variant: props.variant }),
+          class: itemSlots.media({
+            class: props.class,
+            variant: props.variant,
+          }),
           "data-part": "media",
           "data-scope": "item",
           "data-variant": props.variant,
@@ -107,7 +123,10 @@ export const ItemContent = defineComponent({
   inheritAttrs: false,
   name: "ItemContent",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     const itemSlots = useItemSlots();
@@ -130,7 +149,10 @@ export const ItemTitle = defineComponent({
   inheritAttrs: false,
   name: "ItemTitle",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     const itemSlots = useItemSlots();
@@ -153,7 +175,10 @@ export const ItemDescription = defineComponent({
   inheritAttrs: false,
   name: "ItemDescription",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     const itemSlots = useItemSlots();
@@ -176,7 +201,10 @@ export const ItemActions = defineComponent({
   inheritAttrs: false,
   name: "ItemActions",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     const itemSlots = useItemSlots();
@@ -199,7 +227,10 @@ export const ItemHeader = defineComponent({
   inheritAttrs: false,
   name: "ItemHeader",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     const itemSlots = useItemSlots();
@@ -222,7 +253,10 @@ export const ItemFooter = defineComponent({
   inheritAttrs: false,
   name: "ItemFooter",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     const itemSlots = useItemSlots();

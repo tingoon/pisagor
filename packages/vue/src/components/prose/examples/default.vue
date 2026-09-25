@@ -7,8 +7,8 @@ import { Prose } from "..";
     <Prose>
       <h1>Readable typography, styled consistently</h1>
       <p>
-        Prose is intended for long-form content so headings, lists, and links look great without
-        manual class tuning.
+        Prose is intended for long-form content so headings, lists, and links
+        look great without manual class tuning.
       </p>
       <ul>
         <li>Clean spacing</li>

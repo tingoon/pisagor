@@ -24,7 +24,9 @@ export function AppShellMain(props: AppShellMainProps): JSX.Element {
       data-scope="app-shell"
       style={{
         "grid-area": "main",
-        ...(typeof local.style === "object" && local.style && !Array.isArray(local.style)
+        ...(typeof local.style === "object" &&
+        local.style &&
+        !Array.isArray(local.style)
           ? (local.style as Record<string, string>)
           : {}),
       }}

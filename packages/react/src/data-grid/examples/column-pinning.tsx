@@ -20,7 +20,13 @@ const ROLES: User["role"][] = ["Admin", "Editor", "Viewer"];
 
 const STATUSES: User["status"][] = ["active", "inactive", "invited"];
 
-const DEPARTMENTS = ["Engineering", "Design", "Marketing", "Sales", "Support"] as const;
+const DEPARTMENTS = [
+  "Engineering",
+  "Design",
+  "Marketing",
+  "Sales",
+  "Support",
+] as const;
 
 const FIRST_NAMES = [
   "Alice",
@@ -47,10 +53,15 @@ const statusVariants: Record<User["status"], BadgeVariant> = {
 };
 
 const allUsers: User[] = Array.from({ length: 48 }, (_, index) => ({
-  department: DEPARTMENTS[index % DEPARTMENTS.length] ?? DEPARTMENTS[0] ?? "Engineering",
+  department:
+    DEPARTMENTS[index % DEPARTMENTS.length] ?? DEPARTMENTS[0] ?? "Engineering",
   email: `user${index + 1}@example.com`,
   id: String(index + 1),
-  joinedAt: new Date(2020 + (index % 5), index % 12, (index % 28) + 1).toISOString(),
+  joinedAt: new Date(
+    2020 + (index % 5),
+    index % 12,
+    (index % 28) + 1,
+  ).toISOString(),
   name: `${FIRST_NAMES[index % FIRST_NAMES.length] ?? "Alex"} ${String.fromCharCode(65 + (index % 26))}.`,
   role: ROLES[index % ROLES.length] ?? "Viewer",
   status: STATUSES[index % STATUSES.length] ?? "active",
@@ -74,7 +85,9 @@ export function ColumnPinning() {
     () => [
       {
         accessorKey: "name",
-        cell: ({ row }) => <span className="font-medium">{row.original.name}</span>,
+        cell: ({ row }) => (
+          <span className="font-medium">{row.original.name}</span>
+        ),
         header: "Name",
         meta: { pinned: "start" as const },
       },
@@ -84,7 +97,10 @@ export function ColumnPinning() {
       {
         accessorKey: "status",
         cell: ({ row }) => (
-          <Badge className="capitalize" variant={statusVariants[row.original.status]}>
+          <Badge
+            className="capitalize"
+            variant={statusVariants[row.original.status]}
+          >
             {row.original.status}
           </Badge>
         ),
@@ -116,7 +132,8 @@ export function ColumnPinning() {
       >
         <DataGrid.Toolbar>
           <p className="text-muted-foreground text-sm">
-            Name pinned start, actions pinned end — scroll horizontally to see pinning.
+            Name pinned start, actions pinned end — scroll horizontally to see
+            pinning.
           </p>
         </DataGrid.Toolbar>
         <Table className="min-w-240">
@@ -124,8 +141,13 @@ export function ColumnPinning() {
             <DataGrid.Header>
               <DataGrid.HeaderRow>
                 {columns.map((column) => {
-                  const id = "accessorKey" in column ? String(column.accessorKey) : column.id;
-                  const pinned = (column.meta as { pinned?: "start" | "end" } | undefined)?.pinned;
+                  const id =
+                    "accessorKey" in column
+                      ? String(column.accessorKey)
+                      : column.id;
+                  const pinned = (
+                    column.meta as { pinned?: "start" | "end" } | undefined
+                  )?.pinned;
 
                   return (
                     <DataGrid.Head
@@ -148,8 +170,13 @@ export function ColumnPinning() {
             <DataGrid.Body empty={<DataGrid.Empty colSpan={6} />}>
               <DataGrid.Row>
                 {columns.map((column) => {
-                  const id = "accessorKey" in column ? String(column.accessorKey) : column.id;
-                  const pinned = (column.meta as { pinned?: "start" | "end" } | undefined)?.pinned;
+                  const id =
+                    "accessorKey" in column
+                      ? String(column.accessorKey)
+                      : column.id;
+                  const pinned = (
+                    column.meta as { pinned?: "start" | "end" } | undefined
+                  )?.pinned;
 
                   return (
                     <DataGrid.Cell

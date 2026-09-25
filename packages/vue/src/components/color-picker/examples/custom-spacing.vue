@@ -17,7 +17,9 @@ import { ColorPicker } from "..";
         </ColorPicker.Input>
       </InputGroup>
     </ColorPicker.Control>
-    <ColorPicker.Content class="[--space:--spacing(2)] sm:[--space:--spacing(4)]">
+    <ColorPicker.Content
+      class="[--space:--spacing(2)] sm:[--space:--spacing(4)]"
+    >
       <ColorPicker.Area>
         <ColorPicker.AreaThumb />
       </ColorPicker.Area>

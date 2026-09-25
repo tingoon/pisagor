@@ -1,5 +1,9 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type KbdVariantProps, kbdGroupRecipe, kbdRecipe } from "@pisagor/recipes/kbd";
+import {
+  type KbdVariantProps,
+  kbdGroupRecipe,
+  kbdRecipe,
+} from "@pisagor/recipes/kbd";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 
@@ -32,12 +36,18 @@ export const KbdRoot = defineComponent({
   inheritAttrs: false,
   name: "KbdRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: kbdRecipe,
       type: Function as PropType<typeof kbdRecipe>,
     },
-    variant: { default: "default", type: String as PropType<KbdProps["variant"]> },
+    variant: {
+      default: "default",
+      type: String as PropType<KbdProps["variant"]>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -58,7 +68,10 @@ export const KbdGroup = defineComponent({
   inheritAttrs: false,
   name: "KbdGroup",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: kbdGroupRecipe,
       type: Function as PropType<typeof kbdGroupRecipe>,

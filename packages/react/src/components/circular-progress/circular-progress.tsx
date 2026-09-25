@@ -32,7 +32,8 @@ type CircularProgressRootProps = ProgressRootProps & {
   recipe?: typeof circularProgressRecipe;
 };
 
-export interface CircularProgressProps extends Omit<CircularProgressRootProps, "children"> {
+export interface CircularProgressProps
+  extends Omit<CircularProgressRootProps, "children"> {
   /**
    * Visual size preset for the progress circle.
    *
@@ -57,7 +58,10 @@ export interface CircularProgressProps extends Omit<CircularProgressRootProps, "
   /** Slot class names */
   classNames?: CircularProgressClassNames;
   /** Extra props forwarded to the circular progress track element */
-  trackProps?: Omit<CircularProgressTrackProps, "className" | "height" | "viewBox" | "width">;
+  trackProps?: Omit<
+    CircularProgressTrackProps,
+    "className" | "height" | "viewBox" | "width"
+  >;
   /** Extra props forwarded to the circular progress value element */
   valueProps?: Omit<CircularProgressValueProps, "children" | "className">;
 }
@@ -67,7 +71,10 @@ interface CircularProgressTrackPartProps {
   thickness?: number;
   className?: string;
   rangeClassName?: string;
-  trackProps?: Omit<CircularProgressTrackProps, "className" | "height" | "viewBox" | "width">;
+  trackProps?: Omit<
+    CircularProgressTrackProps,
+    "className" | "height" | "viewBox" | "width"
+  >;
 }
 // #endregion
 
@@ -101,10 +108,18 @@ function CircularProgressValueWrapper({
   return <span className={slots.valueWrapper({ className })}>{children}</span>;
 }
 
-function CircularProgressValue({ className, ...rest }: CircularProgressValueProps) {
+function CircularProgressValue({
+  className,
+  ...rest
+}: CircularProgressValueProps) {
   const { slots } = useCircularProgressSlots();
 
-  return <ProgressPrimitive.ValueText {...rest} className={slots.value({ className })} />;
+  return (
+    <ProgressPrimitive.ValueText
+      {...rest}
+      className={slots.value({ className })}
+    />
+  );
 }
 
 function CircularProgressTrack({
@@ -120,7 +135,8 @@ function CircularProgressTrack({
   const radius = size / 2 - thickness / 2;
   const circumference = 2 * Math.PI * radius;
   const range = Math.max(max - min, 1);
-  const normalizedValue = value == null ? min : Math.min(Math.max(value, min), max);
+  const normalizedValue =
+    value == null ? min : Math.min(Math.max(value, min), max);
   const percent = (normalizedValue - min) / range;
   const dashOffset = circumference * (1 - percent);
 
@@ -175,10 +191,17 @@ export function CircularProgress({
   ...rest
 }: CircularProgressProps) {
   return (
-    <CircularProgressRoot {...rest} className={className} value={indeterminate ? null : value}>
+    <CircularProgressRoot
+      {...rest}
+      className={className}
+      value={indeterminate ? null : value}
+    >
       {isValueVisible && (
         <CircularProgressValueWrapper className={classNames?.valueWrapper}>
-          <CircularProgressValue {...valueProps} className={classNames?.value} />
+          <CircularProgressValue
+            {...valueProps}
+            className={classNames?.value}
+          />
         </CircularProgressValueWrapper>
       )}
 

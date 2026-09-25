@@ -45,44 +45,80 @@ const headings = [
 
   <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
+    Default
+  </h3>
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-spacing">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="custom-spacing"
+  >
     Custom Spacing
   </h3>
-  <ComponentPreview code={examples.CustomSpacing} language="tsx" title="Custom Spacing">
+  <ComponentPreview
+    code={examples.CustomSpacing}
+    language="tsx"
+    title="Custom Spacing"
+  >
     <CustomSpacing client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="drawer-content-inner">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="drawer-content-inner"
+  >
     Drawer Content Inner
   </h3>
-  <ComponentPreview code={examples.DrawerContentInner} language="tsx" title="Drawer Content Inner">
+  <ComponentPreview
+    code={examples.DrawerContentInner}
+    language="tsx"
+    title="Drawer Content Inner"
+  >
     <DrawerContentInner client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="inset">Inset</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="inset">
+    Inset
+  </h3>
   <ComponentPreview code={examples.Inset} language="tsx" title="Inset">
     <Inset client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="snap-points">Snap Points</h3>
-  <ComponentPreview code={examples.SnapPoints} language="tsx" title="Snap Points">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="snap-points">
+    Snap Points
+  </h3>
+  <ComponentPreview
+    code={examples.SnapPoints}
+    language="tsx"
+    title="Snap Points"
+  >
     <SnapPoints client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="swipe-directions">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="swipe-directions"
+  >
     Swipe Directions
   </h3>
-  <ComponentPreview code={examples.SwipeDirections} language="tsx" title="Swipe Directions">
+  <ComponentPreview
+    code={examples.SwipeDirections}
+    language="tsx"
+    title="Swipe Directions"
+  >
     <SwipeDirections client:only="react" />
   </ComponentPreview>
 
-  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <h2
+    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    id="installation"
+  >
+    Installation
+  </h2>
   <Installation class="mb-8" packages="@pisagor/react" />
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/drawer</code>. Native HTML attributes are also supported and
-    omitted from this table.
+    Own props from <code>@pisagor/props/drawer</code>. Native HTML attributes
+    are also supported and omitted from this table.
   </p>
   <PropsTable rows={drawerProps} />
 </DocsLayout>

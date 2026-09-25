@@ -41,25 +41,31 @@ export const FormSectionTextarea = defineComponent({
                   placeholder: "Type your message here",
                   value: message.value,
                 }),
-                error.value ? h(Field.Error as ArkPart, null, () => error.value) : null,
+                error.value
+                  ? h(Field.Error as ArkPart, null, () => error.value)
+                  : null,
               ]),
             ]),
             h(Card.Footer as ArkPart, null, () =>
-              h(Field as ArkPart, { orientation: "horizontal", reverse: true }, () => [
-                h(Button as ArkPart, { type: "submit" }, () => "Submit"),
-                h(
-                  Button as ArkPart,
-                  {
-                    onClick: () => {
-                      message.value = "";
-                      error.value = null;
+              h(
+                Field as ArkPart,
+                { orientation: "horizontal", reverse: true },
+                () => [
+                  h(Button as ArkPart, { type: "submit" }, () => "Submit"),
+                  h(
+                    Button as ArkPart,
+                    {
+                      onClick: () => {
+                        message.value = "";
+                        error.value = null;
+                      },
+                      type: "button",
+                      variant: "outline",
                     },
-                    type: "button",
-                    variant: "outline",
-                  },
-                  () => "Clear",
-                ),
-              ]),
+                    () => "Clear",
+                  ),
+                ],
+              ),
             ),
           ],
         ),

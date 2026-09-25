@@ -43,9 +43,15 @@ export const InputOTPRoot = defineComponent({
   name: "InputOTP",
   props: {
     blurOnComplete: { default: undefined, type: Boolean },
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     count: { default: undefined, type: Number },
-    defaultValue: { default: undefined, type: Array as PropType<string[] | undefined> },
+    defaultValue: {
+      default: undefined,
+      type: Array as PropType<string[] | undefined>,
+    },
     disabled: { default: undefined, type: Boolean },
     invalid: { default: undefined, type: Boolean },
     mask: { default: undefined, type: Boolean },
@@ -59,9 +65,18 @@ export const InputOTPRoot = defineComponent({
       default: inputOtpRecipe,
       type: Function as PropType<typeof inputOtpRecipe>,
     },
-    size: { default: undefined, type: String as PropType<InputOTPProps["size"]> },
-    value: { default: undefined, type: Array as PropType<string[] | undefined> },
-    variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
+    size: {
+      default: undefined,
+      type: String as PropType<InputOTPProps["size"]>,
+    },
+    value: {
+      default: undefined,
+      type: Array as PropType<string[] | undefined>,
+    },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant | undefined>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -81,7 +96,8 @@ export const InputOTPRoot = defineComponent({
           mask: props.mask,
           modelValue: props.value,
           onValueChange: props.onValueChange
-            ? (details: PinInputValueChangeDetails) => props.onValueChange?.(details.value)
+            ? (details: PinInputValueChangeDetails) =>
+                props.onValueChange?.(details.value)
             : undefined,
           otp: props.otp,
           placeholder: props.placeholder ?? "",
@@ -90,7 +106,9 @@ export const InputOTPRoot = defineComponent({
           h(
             PinInputPrimitive.Control as ArkPart,
             {
-              class: variantSlots.control({ class: cn(props.class, attrClass) }),
+              class: variantSlots.control({
+                class: cn(props.class, attrClass),
+              }),
             },
             () => slots.default?.(),
           ),
@@ -105,12 +123,18 @@ export const InputOTPSlot = defineComponent({
   inheritAttrs: false,
   name: "InputOTP.Slot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     recipe: {
       default: inputOtpRecipe,
       type: Function as PropType<typeof inputOtpRecipe>,
     },
-    variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant | undefined>,
+    },
   },
   setup(props, { attrs }) {
     return () => {
@@ -139,7 +163,10 @@ export const InputOTPSeparator = defineComponent({
   inheritAttrs: false,
   name: "InputOTP.Separator",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     recipe: {
       default: inputOtpRecipe,
       type: Function as PropType<typeof inputOtpRecipe>,

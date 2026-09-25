@@ -5,6 +5,7 @@ interface ClipboardContextValue {
   slots: ClipboardRecipe;
 }
 
-export const { ClipboardContext, useClipboard } = createContext<ClipboardContextValue>()({
-  name: "Clipboard",
-});
+export const { ClipboardContext, useClipboard } =
+  createContext<ClipboardContextValue>()({
+    name: "Clipboard",
+  });

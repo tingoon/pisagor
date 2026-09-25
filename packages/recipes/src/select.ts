@@ -47,8 +47,13 @@ export const selectRecipe = tv({
       "[&_svg]:pointer-events-none [&_svg]:shrink-0",
       "[&_svg:not([class*='size-'])]:size-4 [&_svg]:text-muted-foreground",
     ],
-    itemGroupLabel: ["px-2 py-1.5", "font-semibold text-muted-foreground text-xs"],
-    itemIndicator: ["absolute inset-e-2 flex size-4 items-center justify-center"],
+    itemGroupLabel: [
+      "px-2 py-1.5",
+      "font-semibold text-muted-foreground text-xs",
+    ],
+    itemIndicator: [
+      "absolute inset-e-2 flex size-4 items-center justify-center",
+    ],
     itemText: ["flex w-full flex-1 items-center gap-2"],
     separator: ["pointer-events-none -mx-1 my-1 h-px bg-border"],
     trigger: [

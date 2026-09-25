@@ -38,7 +38,10 @@ export function TabsRoot(props: TabsRootProps): JSX.Element {
 
   return (
     <TabsContext value={{ slots: slots() }}>
-      <TabsPrimitive.Root {...rest} class={slots().base({ class: cn(local.class) })}>
+      <TabsPrimitive.Root
+        {...rest}
+        class={slots().base({ class: cn(local.class) })}
+      >
         {local.children}
       </TabsPrimitive.Root>
     </TabsContext>
@@ -56,7 +59,9 @@ export function TabsList(props: TabsListProps): JSX.Element {
       class={slots.list({ class: cn(local.class), variant: variant() })}
     >
       {local.children}
-      <TabsPrimitive.Indicator class={slots.indicator({ variant: variant() })} />
+      <TabsPrimitive.Indicator
+        class={slots.indicator({ variant: variant() })}
+      />
     </TabsPrimitive.List>
   );
 }
@@ -64,13 +69,23 @@ export function TabsList(props: TabsListProps): JSX.Element {
 export function TabsTrigger(props: TabsTriggerProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useTabs();
-  return <TabsPrimitive.Trigger {...rest} class={slots.trigger({ class: cn(local.class) })} />;
+  return (
+    <TabsPrimitive.Trigger
+      {...rest}
+      class={slots.trigger({ class: cn(local.class) })}
+    />
+  );
 }
 
 export function TabsContent(props: TabsContentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useTabs();
-  return <TabsPrimitive.Content {...rest} class={slots.content({ class: cn(local.class) })} />;
+  return (
+    <TabsPrimitive.Content
+      {...rest}
+      class={slots.content({ class: cn(local.class) })}
+    />
+  );
 }
 
 export function TabsShorthand(props: TabsProps): JSX.Element {

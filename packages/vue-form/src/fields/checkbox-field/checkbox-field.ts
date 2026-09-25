@@ -8,7 +8,10 @@ type ArkPart = Parameters<typeof h>[0];
 // #region Types
 export interface CheckboxFieldProps
   extends FieldPresentationProps,
-    Omit<CheckboxProps, "checked" | "invalid" | "name" | "onCheckedChange" | "onValueChange"> {
+    Omit<
+      CheckboxProps,
+      "checked" | "invalid" | "name" | "onCheckedChange" | "onValueChange"
+    > {
   checked?: boolean;
   name?: string;
   onBlur?: () => void;
@@ -23,14 +26,29 @@ export const CheckboxField = defineComponent({
   name: "CheckboxField",
   props: {
     checked: { default: undefined, type: Boolean },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    description: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    description: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     disabled: { default: undefined, type: Boolean },
-    error: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    error: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     id: { default: undefined, type: String },
     invalid: { default: undefined, type: Boolean },
-    label: { default: undefined, type: null as unknown as PropType<VNodeChild> },
-    labelAccessory: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    label: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
+    labelAccessory: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     labelProps: {
       default: undefined,
       type: Object as PropType<FieldPresentationProps["labelProps"]>,
@@ -45,7 +63,10 @@ export const CheckboxField = defineComponent({
       default: "horizontal",
       type: String as PropType<"horizontal" | "vertical" | "responsive">,
     },
-    variant: { default: undefined, type: String as PropType<CheckboxProps["variant"]> },
+    variant: {
+      default: undefined,
+      type: String as PropType<CheckboxProps["variant"]>,
+    },
   },
   setup(props, { attrs }) {
     return () => {
@@ -67,24 +88,32 @@ export const CheckboxField = defineComponent({
             invalid: props.invalid,
             name: props.name,
             onBlur: props.onBlur,
-            onCheckedChange: (details: { checked: boolean | "indeterminate" }) =>
-              props.onCheckedChange(details.checked === true),
+            onCheckedChange: (details: {
+              checked: boolean | "indeterminate";
+            }) => props.onCheckedChange(details.checked === true),
             variant: props.variant,
           }),
           hasLabel || props.description
             ? h(Field.Content as ArkPart, null, () => [
                 hasLabel
-                  ? h(Field.Label as ArkPart, { ...props.labelProps, for: props.id }, () => [
-                      props.label,
-                      props.labelAccessory,
-                    ])
+                  ? h(
+                      Field.Label as ArkPart,
+                      { ...props.labelProps, for: props.id },
+                      () => [props.label, props.labelAccessory],
+                    )
                   : null,
                 props.description
-                  ? h(Field.Description as ArkPart, null, () => props.description)
+                  ? h(
+                      Field.Description as ArkPart,
+                      null,
+                      () => props.description,
+                    )
                   : null,
               ])
             : null,
-          props.error ? h(Field.Error as ArkPart, null, () => props.error) : null,
+          props.error
+            ? h(Field.Error as ArkPart, null, () => props.error)
+            : null,
         ],
       );
     };

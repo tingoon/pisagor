@@ -20,7 +20,8 @@ export interface ImageCropperRootProps
   recipe?: typeof imageCropperRecipe;
 }
 
-export interface ImageCropperSelectionProps extends ImageCropperPrimitiveSelectionProps {
+export interface ImageCropperSelectionProps
+  extends ImageCropperPrimitiveSelectionProps {
   axis?: "horizontal" | "vertical" | "both";
 }
 
@@ -56,16 +57,26 @@ export function ImageCropperRoot(props: ImageCropperRootProps): JSX.Element {
 export function ImageCropperImage(props: ImageCropperImageProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useImageCropper();
-  return <ImageCropperPrimitive.Image {...rest} class={slots.image({ class: local.class })} />;
+  return (
+    <ImageCropperPrimitive.Image
+      {...rest}
+      class={slots.image({ class: local.class })}
+    />
+  );
 }
 
-export function ImageCropperSelection(props: ImageCropperSelectionProps): JSX.Element {
+export function ImageCropperSelection(
+  props: ImageCropperSelectionProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["axis", "children", "class"]);
   const { slots } = useImageCropper();
   const axis = () => local.axis ?? "both";
 
   return (
-    <ImageCropperPrimitive.Selection {...rest} class={slots.selection({ class: local.class })}>
+    <ImageCropperPrimitive.Selection
+      {...rest}
+      class={slots.selection({ class: local.class })}
+    >
       {local.children}
       <Show when={axis() === "horizontal" || axis() === "both"}>
         <ImageCropperGrid axis="horizontal" />
@@ -85,11 +96,16 @@ export function ImageCropperSelection(props: ImageCropperSelectionProps): JSX.El
   );
 }
 
-export function ImageCropperHandle(props: ImageCropperHandleProps): JSX.Element {
+export function ImageCropperHandle(
+  props: ImageCropperHandleProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useImageCropper();
   return (
-    <ImageCropperPrimitive.Handle {...rest} class={slots.handle({ class: local.class })}>
+    <ImageCropperPrimitive.Handle
+      {...rest}
+      class={slots.handle({ class: local.class })}
+    >
       <span aria-hidden class={slots.handleGrip()} />
     </ImageCropperPrimitive.Handle>
   );
@@ -98,5 +114,10 @@ export function ImageCropperHandle(props: ImageCropperHandleProps): JSX.Element 
 export function ImageCropperGrid(props: ImageCropperGridProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useImageCropper();
-  return <ImageCropperPrimitive.Grid {...rest} class={slots.grid({ class: local.class })} />;
+  return (
+    <ImageCropperPrimitive.Grid
+      {...rest}
+      class={slots.grid({ class: local.class })}
+    />
+  );
 }

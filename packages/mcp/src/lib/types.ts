@@ -78,7 +78,10 @@ export function frameworkInputSchema(frameworks: Framework[]) {
     );
 }
 
-export function resolveFramework(config: ToolConfig, framework?: Framework): Framework {
+export function resolveFramework(
+  config: ToolConfig,
+  framework?: Framework,
+): Framework {
   const [only] = config.frameworks;
   if (config.frameworks.length === 1 && only) {
     return only;

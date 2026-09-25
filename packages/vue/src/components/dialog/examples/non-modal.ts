@@ -25,7 +25,11 @@ export default defineComponent({
           ),
           h(Dialog.Footer, null, () =>
             h(Dialog.CloseTrigger, { asChild: true }, () =>
-              h("button", { class: outlineButtonClass(), type: "button" }, "Close"),
+              h(
+                "button",
+                { class: outlineButtonClass(), type: "button" },
+                "Close",
+              ),
             ),
           ),
         ]),

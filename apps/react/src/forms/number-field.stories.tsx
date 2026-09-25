@@ -8,7 +8,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Adjusts a numeric value with steppers, label, and optional validation message.",
+        component:
+          "Adjusts a numeric value with steppers, label, and optional validation message.",
       },
     },
   },

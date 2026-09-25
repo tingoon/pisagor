@@ -47,42 +47,69 @@ const headings = [
 
   <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
+    Default
+  </h3>
   <ComponentPreview code={examples.Default} language="vue" title="Default">
     <Default client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sizes">Sizes</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sizes">
+    Sizes
+  </h3>
   <ComponentPreview code={examples.Sizes} language="vue" title="Sizes">
     <Sizes client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">
+    Variants
+  </h3>
   <ComponentPreview code={examples.Variants} language="vue" title="Variants">
     <Variants client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-color">Custom Color</h3>
-  <ComponentPreview code={examples.CustomColor} language="vue" title="Custom Color">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-color">
+    Custom Color
+  </h3>
+  <ComponentPreview
+    code={examples.CustomColor}
+    language="vue"
+    title="Custom Color"
+  >
     <CustomColor client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="pill">Pill</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="pill">
+    Pill
+  </h3>
   <ComponentPreview code={examples.Pill} language="vue" title="Pill">
     <Pill client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-link">With Link</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-link">
+    With Link
+  </h3>
   <ComponentPreview code={examples.WithLink} language="vue" title="With Link">
     <WithLink client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-spinner">With Spinner</h3>
-  <ComponentPreview code={examples.WithSpinner} language="vue" title="With Spinner">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-spinner">
+    With Spinner
+  </h3>
+  <ComponentPreview
+    code={examples.WithSpinner}
+    language="vue"
+    title="With Spinner"
+  >
     <WithSpinner client:only="vue" />
   </ComponentPreview>
 
-  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <h2
+    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    id="installation"
+  >
+    Installation
+  </h2>
   <Installation class="mb-8" packages="@pisagor/vue" />
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/badge</code>. Native HTML attributes are also supported and
-    omitted from this table.
+    Own props from <code>@pisagor/props/badge</code>. Native HTML attributes are
+    also supported and omitted from this table.
   </p>
   <PropsTable rows={badgeProps} />
 </DocsLayout>

@@ -60,7 +60,10 @@ export function BottomNavigationRoot({
   );
 }
 
-export function BottomNavigationList({ className, ...rest }: BottomNavigationListProps) {
+export function BottomNavigationList({
+  className,
+  ...rest
+}: BottomNavigationListProps) {
   const { slots } = useBottomNavigation();
 
   return <TabsPrimitive.List {...rest} className={slots.list({ className })} />;
@@ -83,7 +86,10 @@ export function BottomNavigationItem({
   );
 }
 
-export function BottomNavigationItemIcon({ className, ...rest }: BottomNavigationItemIconProps) {
+export function BottomNavigationItemIcon({
+  className,
+  ...rest
+}: BottomNavigationItemIconProps) {
   const { slots } = useBottomNavigationItem();
 
   return (
@@ -97,7 +103,10 @@ export function BottomNavigationItemIcon({ className, ...rest }: BottomNavigatio
   );
 }
 
-export function BottomNavigationItemLabel({ className, ...rest }: BottomNavigationItemLabelProps) {
+export function BottomNavigationItemLabel({
+  className,
+  ...rest
+}: BottomNavigationItemLabelProps) {
   const { slots } = useBottomNavigationItem();
 
   return (

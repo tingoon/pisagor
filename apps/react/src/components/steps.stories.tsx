@@ -8,7 +8,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Guides users through a multi-step flow and shows which stage they are on.",
+        component:
+          "Guides users through a multi-step flow and shows which stage they are on.",
       },
     },
   },

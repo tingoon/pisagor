@@ -6,7 +6,8 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: "Groups related content in a bordered surface with optional header and footer.",
+        component:
+          "Groups related content in a bordered surface with optional header and footer.",
       },
     },
   },
@@ -28,7 +29,10 @@ export const Playground = {
         },
         {
           component: Card.Content,
-          slots: { default: '<p class="text-sm text-muted-foreground">Card body content.</p>' },
+          slots: {
+            default:
+              '<p class="text-sm text-muted-foreground">Card body content.</p>',
+          },
         },
         {
           component: Card.Footer,

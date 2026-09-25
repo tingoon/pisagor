@@ -2,7 +2,12 @@ import { ark } from "@ark-ui/react/factory";
 import { DotsSixVerticalIcon } from "@phosphor-icons/react";
 import { sortableItemRecipe, sortableRecipe } from "@pisagor/recipes/sortable";
 import { cn } from "@pisagor/utils";
-import type { ComponentProps, DragEvent, KeyboardEvent, ReactNode } from "react";
+import type {
+  ComponentProps,
+  DragEvent,
+  KeyboardEvent,
+  ReactNode,
+} from "react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   SortableContext,
@@ -14,7 +19,8 @@ import {
 // #region Types
 type SortableOrientation = "vertical" | "horizontal";
 
-export interface SortableRootProps extends Omit<ComponentProps<typeof ark.div>, "onDragStart"> {
+export interface SortableRootProps
+  extends Omit<ComponentProps<typeof ark.div>, "onDragStart"> {
   /**
    * Layout axis for drop indicators and keyboard moves.
    *
@@ -179,7 +185,8 @@ export function SortableRoot({
       return {
         "aria-disabled": disabled || undefined,
         "data-dragging": activeId === id ? "true" : undefined,
-        "data-drop-target": overId === id && activeId !== id ? "true" : undefined,
+        "data-drop-target":
+          overId === id && activeId !== id ? "true" : undefined,
         // When a handle exists, only the handle is the drag source.
         draggable: !disabled && !itemHasHandle,
         onDragEnd: () => {
@@ -225,7 +232,8 @@ export function SortableRoot({
           event.preventDefault();
           event.stopPropagation();
 
-          const fromId = event.dataTransfer.getData("text/plain") || activeIdRef.current;
+          const fromId =
+            event.dataTransfer.getData("text/plain") || activeIdRef.current;
 
           if (fromId) {
             commitReorder(fromId, id);
@@ -239,9 +247,13 @@ export function SortableRoot({
           }
 
           const movePrev =
-            orientation === "vertical" ? event.key === "ArrowUp" : event.key === "ArrowLeft";
+            orientation === "vertical"
+              ? event.key === "ArrowUp"
+              : event.key === "ArrowLeft";
           const moveNext =
-            orientation === "vertical" ? event.key === "ArrowDown" : event.key === "ArrowRight";
+            orientation === "vertical"
+              ? event.key === "ArrowDown"
+              : event.key === "ArrowRight";
 
           if (!(event.altKey && (movePrev || moveNext))) {
             return;
@@ -338,10 +350,21 @@ export function SortableItem({
   );
 }
 
-export function SortableHandle({ children, className, ...rest }: SortableHandleProps) {
+export function SortableHandle({
+  children,
+  className,
+  ...rest
+}: SortableHandleProps) {
   const { id, slots } = useSortableItem();
-  const { disabled, endDrag, moveItem, orientation, registerHandle, startDrag, unregisterHandle } =
-    useSortable();
+  const {
+    disabled,
+    endDrag,
+    moveItem,
+    orientation,
+    registerHandle,
+    startDrag,
+    unregisterHandle,
+  } = useSortable();
 
   useEffect(() => {
     registerHandle(id);
@@ -381,9 +404,13 @@ export function SortableHandle({ children, className, ...rest }: SortableHandleP
         }
 
         const movePrev =
-          orientation === "vertical" ? event.key === "ArrowUp" : event.key === "ArrowLeft";
+          orientation === "vertical"
+            ? event.key === "ArrowUp"
+            : event.key === "ArrowLeft";
         const moveNext =
-          orientation === "vertical" ? event.key === "ArrowDown" : event.key === "ArrowRight";
+          orientation === "vertical"
+            ? event.key === "ArrowDown"
+            : event.key === "ArrowRight";
 
         if (!(event.altKey && (movePrev || moveNext))) {
           return;
@@ -400,7 +427,10 @@ export function SortableHandle({ children, className, ...rest }: SortableHandleP
   );
 }
 
-export function SortableItemContent({ className, ...rest }: SortableItemContentProps) {
+export function SortableItemContent({
+  className,
+  ...rest
+}: SortableItemContentProps) {
   const { slots } = useSortableItem();
 
   return (

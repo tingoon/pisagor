@@ -10,7 +10,9 @@ import { DropdownMenu } from "..";
     </DropdownMenu.Trigger>
     <DropdownMenu.Content class="w-40">
       <DropdownMenu.ItemGroup heading="Appearance">
-        <DropdownMenu.CheckboxItem checked value="save"> Status bar </DropdownMenu.CheckboxItem>
+        <DropdownMenu.CheckboxItem checked value="save">
+          Status bar
+        </DropdownMenu.CheckboxItem>
         <DropdownMenu.CheckboxItem value="notifications" :checked="false">
           Activity bar
         </DropdownMenu.CheckboxItem>

@@ -35,8 +35,14 @@ export const InputGroupInput = defineComponent({
   inheritAttrs: false,
   name: "InputGroupInput",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<InputProps["classNames"]> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<InputProps["classNames"]>,
+    },
     recipe: {
       default: inputGroupControlRecipe,
       type: Function as PropType<typeof inputGroupControlRecipe>,
@@ -59,7 +65,10 @@ export const InputGroupTextarea = defineComponent({
   inheritAttrs: false,
   name: "InputGroupTextarea",
   props: {
-    classNames: { default: undefined, type: Object as PropType<TextareaProps["classNames"]> },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<TextareaProps["classNames"]>,
+    },
     recipe: {
       default: inputGroupTextareaControlRecipe,
       type: Function as PropType<typeof inputGroupTextareaControlRecipe>,

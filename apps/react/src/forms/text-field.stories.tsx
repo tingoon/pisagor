@@ -8,7 +8,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Collects a single line of text with a label and optional validation message.",
+        component:
+          "Collects a single line of text with a label and optional validation message.",
       },
     },
   },

@@ -20,7 +20,12 @@ export type TableCellProps = ComponentProps<typeof ark.td>;
 export type TableCaptionProps = ComponentProps<typeof ark.caption>;
 
 export function TableRoot(props: TableProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["variant", "isHoverable", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "variant",
+    "isHoverable",
+    "recipe",
+    "class",
+  ]);
   const slots = () => (local.recipe ?? tableRecipe)();
 
   return (

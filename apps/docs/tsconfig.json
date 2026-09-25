@@ -3,7 +3,9 @@
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "#recipes-react/*": ["../react/src/recipes/*"],
+      "#recipes-vue/*": ["../vue/src/recipes/*"]
     },
     "types": ["astro/client"]
   },

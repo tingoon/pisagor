@@ -30,7 +30,9 @@ export function IdeLayout({ className }: IdeLayoutProps) {
       <div className="rounded-lg border p-2">
         <TreeView
           collection={collection}
-          onSelectionChange={({ selectedNodes }) => handleSelectNode(selectedNodes)}
+          onSelectionChange={({ selectedNodes }) =>
+            handleSelectNode(selectedNodes)
+          }
         >
           <TreeView.Tree>
             {collection.rootNode.children?.map((node, index) => (
@@ -56,7 +58,10 @@ export function IdeLayout({ className }: IdeLayoutProps) {
                 </Button>
               </Tabs.Trigger>
             </Tabs.List>
-            <Tabs.Content className="p-2 text-muted-foreground text-sm" value={activeItem}>
+            <Tabs.Content
+              className="p-2 text-muted-foreground text-sm"
+              value={activeItem}
+            >
               {"// File content"}
             </Tabs.Content>
           </Tabs.Root>
@@ -75,7 +80,11 @@ function TreeNode({ indexPath, node, ...rest }: NodeProviderProps) {
 
           <TreeView.BranchContent>
             {node.children.map((child, index) => (
-              <TreeNode indexPath={[...indexPath, index]} key={child.id} node={child} />
+              <TreeNode
+                indexPath={[...indexPath, index]}
+                key={child.id}
+                node={child}
+              />
             ))}
           </TreeView.BranchContent>
         </TreeView.Branch>

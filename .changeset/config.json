@@ -5,7 +5,12 @@
   "changelog": "@changesets/cli/changelog",
   "commit": false,
   "fixed": [],
-  "ignore": ["@pisagor/tsconfig", "astro-stories", "react-stories", "vue-stories"],
+  "ignore": [
+    "@pisagor/tsconfig",
+    "astro-stories",
+    "react-stories",
+    "vue-stories"
+  ],
   "linked": [],
   "updateInternalDependencies": "patch"
 }

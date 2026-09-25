@@ -35,7 +35,8 @@ export interface SegmentGroupRootProps
   recipe?: typeof segmentGroupRecipe;
 }
 
-export interface SegmentGroupProps extends Omit<SegmentGroupRootProps, "children"> {
+export interface SegmentGroupProps
+  extends Omit<SegmentGroupRootProps, "children"> {
   items?: SegmentGroupPresetItem[];
 }
 
@@ -63,7 +64,9 @@ export function SegmentGroupRoot({
         {...rest}
         className={slots.base({ className })}
         data-variant={variant}
-        onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
+        onValueChange={
+          onValueChange ? (details) => onValueChange(details.value) : undefined
+        }
         orientation={orientation}
       >
         <SegmentGroupIndicator />
@@ -74,13 +77,20 @@ export function SegmentGroupRoot({
   );
 }
 
-export function SegmentGroupItem({ children, text, className, ...rest }: SegmentGroupItemProps) {
+export function SegmentGroupItem({
+  children,
+  text,
+  className,
+  ...rest
+}: SegmentGroupItemProps) {
   const { slots } = useSegmentGroup();
   const content = children ?? text;
 
   return (
     <SegmentGroupPrimitive.Item {...rest} className={slots.item({ className })}>
-      {content != null && <SegmentGroupItemText>{content}</SegmentGroupItemText>}
+      {content != null && (
+        <SegmentGroupItemText>{content}</SegmentGroupItemText>
+      )}
 
       <SegmentGroupPrimitive.ItemControl />
       <SegmentGroupPrimitive.ItemHiddenInput />
@@ -88,16 +98,32 @@ export function SegmentGroupItem({ children, text, className, ...rest }: Segment
   );
 }
 
-function SegmentGroupItemText({ className, ...rest }: SegmentGroupItemTextProps) {
+function SegmentGroupItemText({
+  className,
+  ...rest
+}: SegmentGroupItemTextProps) {
   const { slots } = useSegmentGroup();
 
-  return <SegmentGroupPrimitive.ItemText {...rest} className={slots.itemText({ className })} />;
+  return (
+    <SegmentGroupPrimitive.ItemText
+      {...rest}
+      className={slots.itemText({ className })}
+    />
+  );
 }
 
-export function SegmentGroupIndicator({ className, ...rest }: SegmentGroupIndicatorProps) {
+export function SegmentGroupIndicator({
+  className,
+  ...rest
+}: SegmentGroupIndicatorProps) {
   const { slots } = useSegmentGroup();
 
-  return <SegmentGroupPrimitive.Indicator {...rest} className={slots.indicator({ className })} />;
+  return (
+    <SegmentGroupPrimitive.Indicator
+      {...rest}
+      className={slots.indicator({ className })}
+    />
+  );
 }
 // #endregion
 

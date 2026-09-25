@@ -9,7 +9,11 @@ export function NumberPercent() {
       </div>
       <div>
         <span className="text-muted-foreground text-sm">With decimals: </span>
-        <Format.Number minimumFractionDigits={2} style="percent" value={0.7567} />
+        <Format.Number
+          minimumFractionDigits={2}
+          style="percent"
+          value={0.7567}
+        />
       </div>
     </div>
   );

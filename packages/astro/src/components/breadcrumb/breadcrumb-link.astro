@@ -8,6 +8,12 @@ const { class: className, href, ...rest } = Astro.props;
 const slots = breadcrumbItemRecipe();
 ---
 
-<a {...rest} class={slots.link({ className })} data-part="link" data-scope="breadcrumb" href={href}>
+<a
+  {...rest}
+  class={slots.link({ className })}
+  data-part="link"
+  data-scope="breadcrumb"
+  href={href}
+>
   <slot>Page</slot>
 </a>

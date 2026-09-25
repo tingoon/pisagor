@@ -14,7 +14,9 @@ export function Nested() {
           <Dialog.Content>
             <Dialog.Header>
               <Dialog.Title>Manage team member</Dialog.Title>
-              <Dialog.Description>View and manage a user in your team.</Dialog.Description>
+              <Dialog.Description>
+                View and manage a user in your team.
+              </Dialog.Description>
             </Dialog.Header>
             <Dialog.Body className="grid gap-2">
               <div className="grid gap-1">

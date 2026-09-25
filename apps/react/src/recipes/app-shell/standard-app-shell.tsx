@@ -59,10 +59,15 @@ export function StandardAppShell({
 
       <AppShell.Main>
         <AppShell.Header>
-          <AppShell.PanelTrigger aria-label="Toggle navigation panel" placement="start" />
+          <AppShell.PanelTrigger
+            aria-label="Toggle navigation panel"
+            placement="start"
+          />
           <h1 className="font-semibold text-sm tracking-tight">{title}</h1>
         </AppShell.Header>
-        <AppShell.Content>{children ?? <StandardAppShellPlaceholder />}</AppShell.Content>
+        <AppShell.Content>
+          {children ?? <StandardAppShellPlaceholder />}
+        </AppShell.Content>
       </AppShell.Main>
 
       <AppShell.Inspector placement="end">
@@ -91,7 +96,10 @@ export function StandardAppShellNavigation() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <AppShell.InspectorTrigger aria-label="Toggle inspector" placement="end" />
+          <AppShell.InspectorTrigger
+            aria-label="Toggle inspector"
+            placement="end"
+          />
           {/* Add search, notifications, theme, and account menus here. */}
         </div>
       </div>
@@ -100,7 +108,11 @@ export function StandardAppShellNavigation() {
 }
 
 /** Side panel navigation — replace items or wire up routing. */
-export function StandardAppShellPanelNav({ className }: { className?: string }) {
+export function StandardAppShellPanelNav({
+  className,
+}: {
+  className?: string;
+}) {
   return (
     <AppShell.PanelContent className={className}>
       <nav aria-label="Section" className="flex flex-col gap-0.5 p-1">
@@ -135,7 +147,9 @@ function StandardAppShellPlaceholder() {
   return (
     <div className="flex max-w-prose flex-col gap-4">
       <div className="flex flex-col gap-1.5">
-        <h2 className="font-semibold text-xl leading-tight tracking-tight">Welcome back</h2>
+        <h2 className="font-semibold text-xl leading-tight tracking-tight">
+          Welcome back
+        </h2>
         <p className="text-muted-foreground text-sm leading-relaxed">
           Main content area. Replace this block with your page layout.
         </p>

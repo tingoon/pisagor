@@ -27,7 +27,10 @@ import { Portal } from "solid-js/web";
 import { CheckIcon, EyedropperIcon, XIcon } from "../../internal/icons";
 import { Button, type ButtonProps } from "../button";
 import { InputGroup, type InputGroupButtonProps } from "../input-group";
-import { ColorPickerSlotsContext, useColorPicker } from "./color-picker.context";
+import {
+  ColorPickerSlotsContext,
+  useColorPicker,
+} from "./color-picker.context";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -49,7 +52,8 @@ export interface ColorPickerClearTriggerProps extends InputGroupButtonProps {
   clearable?: boolean;
 }
 
-export interface ColorPickerControlProps extends ColorPickerPrimitiveControlProps {
+export interface ColorPickerControlProps
+  extends ColorPickerPrimitiveControlProps {
   clearable?: boolean;
 }
 
@@ -100,8 +104,13 @@ export function ColorPickerRoot(props: ColorPickerProps): JSX.Element {
   const slots = () => (local.recipe ?? colorPickerRecipe)();
   const isControlled = () => local.value !== undefined;
   const [uncontrolled, setUncontrolled] = createSignal(local.defaultValue);
-  const color = createMemo(() => (isControlled() ? local.value : uncontrolled()));
-  const parsedColor = createMemo(() => (color() ? parseColor(color()!) : undefined));
+  const color = createMemo(() =>
+    isControlled() ? local.value : uncontrolled(),
+  );
+  const parsedColor = createMemo(() => {
+    const value = color();
+    return value ? parseColor(value) : undefined;
+  });
 
   const handleValueChange = (e: ColorPickerValueChangeDetails) => {
     if (!isControlled()) setUncontrolled(e.valueAsString);
@@ -125,14 +134,19 @@ export function ColorPickerRoot(props: ColorPickerProps): JSX.Element {
   );
 }
 
-export function ColorPickerClearTrigger(props: ColorPickerClearTriggerProps): JSX.Element {
+export function ColorPickerClearTrigger(
+  props: ColorPickerClearTriggerProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["clearable", "onClick", "class"]);
   const api = useColorPickerContext();
   const clearable = () => local.clearable ?? false;
 
   const visible = createMemo(() => {
     if (!clearable()) return false;
-    const controlProps = api().getControlProps() as { disabled?: boolean; readOnly?: boolean };
+    const controlProps = api().getControlProps() as {
+      disabled?: boolean;
+      readOnly?: boolean;
+    };
     if (controlProps.disabled || controlProps.readOnly) return false;
     return api().value.getChannelValue("alpha") !== 0;
   });
@@ -161,12 +175,17 @@ export function ColorPickerClearTrigger(props: ColorPickerClearTriggerProps): JS
   );
 }
 
-export function ColorPickerControl(props: ColorPickerControlProps): JSX.Element {
+export function ColorPickerControl(
+  props: ColorPickerControlProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["clearable", "children", "class"]);
   const { slots } = useColorPicker();
 
   return (
-    <ColorPickerPrimitive.Control {...rest} class={slots.control({ class: cn(local.class) })}>
+    <ColorPickerPrimitive.Control
+      {...rest}
+      class={slots.control({ class: cn(local.class) })}
+    >
       {local.children}
       <Show when={local.clearable}>
         <ColorPickerClearTrigger />
@@ -175,11 +194,15 @@ export function ColorPickerControl(props: ColorPickerControlProps): JSX.Element 
   );
 }
 
-export function ColorPickerTrigger(props: ColorPickerTriggerProps): JSX.Element {
+export function ColorPickerTrigger(
+  props: ColorPickerTriggerProps,
+): JSX.Element {
   return <ColorPickerPrimitive.Trigger {...props} />;
 }
 
-export function ColorPickerTransparencyGrid(props: ColorPickerTransparencyGridProps): JSX.Element {
+export function ColorPickerTransparencyGrid(
+  props: ColorPickerTransparencyGridProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useColorPicker();
   return (
@@ -190,14 +213,19 @@ export function ColorPickerTransparencyGrid(props: ColorPickerTransparencyGridPr
   );
 }
 
-export function ColorPickerContent(props: ColorPickerContentProps): JSX.Element {
+export function ColorPickerContent(
+  props: ColorPickerContentProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useColorPicker();
 
   return (
     <Portal>
       <ColorPickerPrimitive.Positioner>
-        <ColorPickerPrimitive.Content {...rest} class={slots.content({ class: cn(local.class) })} />
+        <ColorPickerPrimitive.Content
+          {...rest}
+          class={slots.content({ class: cn(local.class) })}
+        />
       </ColorPickerPrimitive.Positioner>
     </Portal>
   );
@@ -206,10 +234,17 @@ export function ColorPickerContent(props: ColorPickerContentProps): JSX.Element 
 export function ColorPickerView(props: ColorPickerViewProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useColorPicker();
-  return <ColorPickerPrimitive.View {...rest} class={slots.view({ class: cn(local.class) })} />;
+  return (
+    <ColorPickerPrimitive.View
+      {...rest}
+      class={slots.view({ class: cn(local.class) })}
+    />
+  );
 }
 
-export function ColorPickerChannelSlider(props: ColorPickerChannelSliderProps): JSX.Element {
+export function ColorPickerChannelSlider(
+  props: ColorPickerChannelSliderProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const { slots } = useColorPicker();
 
@@ -219,8 +254,12 @@ export function ColorPickerChannelSlider(props: ColorPickerChannelSliderProps): 
       class={slots.channelSlider({ class: cn(local.class) })}
     >
       {local.children}
-      <ColorPickerPrimitive.ChannelSliderTrack class={slots.channelSliderTrack()} />
-      <ColorPickerPrimitive.ChannelSliderThumb class={slots.channelSliderThumb()} />
+      <ColorPickerPrimitive.ChannelSliderTrack
+        class={slots.channelSliderTrack()}
+      />
+      <ColorPickerPrimitive.ChannelSliderThumb
+        class={slots.channelSliderThumb()}
+      />
     </ColorPickerPrimitive.ChannelSlider>
   );
 }
@@ -245,7 +284,9 @@ export function ColorPickerEyeDropperTrigger(
   );
 }
 
-export function ColorPickerSwatchGroup(props: ColorPickerSwatchGroupProps): JSX.Element {
+export function ColorPickerSwatchGroup(
+  props: ColorPickerSwatchGroupProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useColorPicker();
   return (
@@ -256,7 +297,9 @@ export function ColorPickerSwatchGroup(props: ColorPickerSwatchGroupProps): JSX.
   );
 }
 
-export function ColorPickerSwatchTrigger(props: ColorPickerSwatchTriggerProps): JSX.Element {
+export function ColorPickerSwatchTrigger(
+  props: ColorPickerSwatchTriggerProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useColorPicker();
   return (
@@ -270,10 +313,17 @@ export function ColorPickerSwatchTrigger(props: ColorPickerSwatchTriggerProps): 
 export function ColorPickerSwatch(props: ColorPickerSwatchProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useColorPicker();
-  return <ColorPickerPrimitive.Swatch {...rest} class={slots.swatch({ class: cn(local.class) })} />;
+  return (
+    <ColorPickerPrimitive.Swatch
+      {...rest}
+      class={slots.swatch({ class: cn(local.class) })}
+    />
+  );
 }
 
-export function ColorPickerSwatchIndicator(props: ColorPickerSwatchIndicatorProps): JSX.Element {
+export function ColorPickerSwatchIndicator(
+  props: ColorPickerSwatchIndicatorProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const { slots } = useColorPicker();
 
@@ -287,15 +337,22 @@ export function ColorPickerSwatchIndicator(props: ColorPickerSwatchIndicatorProp
   );
 }
 
-export function ColorPickerValueText(props: ColorPickerValueTextProps): JSX.Element {
+export function ColorPickerValueText(
+  props: ColorPickerValueTextProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useColorPicker();
   return (
-    <ColorPickerPrimitive.ValueText {...rest} class={slots.valueText({ class: cn(local.class) })} />
+    <ColorPickerPrimitive.ValueText
+      {...rest}
+      class={slots.valueText({ class: cn(local.class) })}
+    />
   );
 }
 
-export function ColorPickerValueSwatch(props: ColorPickerValueSwatchProps): JSX.Element {
+export function ColorPickerValueSwatch(
+  props: ColorPickerValueSwatchProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useColorPicker();
   return (
@@ -327,20 +384,32 @@ export function ColorPickerArea(props: ColorPickerAreaProps): JSX.Element {
   );
 }
 
-export function ColorPickerAreaThumb(props: ColorPickerAreaThumbProps): JSX.Element {
+export function ColorPickerAreaThumb(
+  props: ColorPickerAreaThumbProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useColorPicker();
   return (
-    <ColorPickerPrimitive.AreaThumb {...rest} class={slots.areaThumb({ class: cn(local.class) })} />
+    <ColorPickerPrimitive.AreaThumb
+      {...rest}
+      class={slots.areaThumb({ class: cn(local.class) })}
+    />
   );
 }
 
 export function ColorPickerInput(props: ColorPickerInputProps): JSX.Element {
   const [local, rest] = splitProps(props, ["channel"]);
-  return <ColorPickerPrimitive.ChannelInput {...rest} channel={local.channel ?? "hex"} />;
+  return (
+    <ColorPickerPrimitive.ChannelInput
+      {...rest}
+      channel={local.channel ?? "hex"}
+    />
+  );
 }
 
-export function ColorPickerSwatchPreview(props: ColorPickerSwatchPreviewProps): JSX.Element {
+export function ColorPickerSwatchPreview(
+  props: ColorPickerSwatchPreviewProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useColorPicker();
 
@@ -373,7 +442,9 @@ export function ColorPickerField(props: ColorPickerProps): JSX.Element {
             )}
           />
           <ColorPickerInput
-            asChild={(inputProps) => <InputGroup.Input {...inputProps()} clearable={false} />}
+            asChild={(inputProps) => (
+              <InputGroup.Input {...inputProps()} clearable={false} />
+            )}
           />
           <Show when={clearable()}>
             <ColorPickerClearTrigger clearable />

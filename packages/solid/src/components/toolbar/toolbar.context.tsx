@@ -5,6 +5,7 @@ interface ToolbarContextValue {
   slots: ToolbarRecipe;
 }
 
-export const { ToolbarContext, useToolbar } = createContext<ToolbarContextValue>()({
-  name: "Toolbar",
-});
+export const { ToolbarContext, useToolbar } =
+  createContext<ToolbarContextValue>()({
+    name: "Toolbar",
+  });

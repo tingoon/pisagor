@@ -20,7 +20,10 @@ const defaultValue = parseColor("#0485F7").toString("hsla");
         </ColorPicker.Input>
         <Separator orientation="vertical" />
         <ColorPicker.Input as-child channel="alpha">
-          <InputGroup.Input aria-label="Opacity percentage" class="text-right" />
+          <InputGroup.Input
+            aria-label="Opacity percentage"
+            class="text-right"
+          />
         </ColorPicker.Input>
         <InputGroup.Addon align="inline-end">
           <PhPercent aria-hidden />

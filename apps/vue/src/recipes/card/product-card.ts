@@ -9,7 +9,10 @@ export const ProductCard = defineComponent({
   setup() {
     return () =>
       h(Card as ArkPart, { class: "max-w-sm overflow-hidden" }, () => [
-        h(Card.Media as ArkPart, { class: "aspect-[4/3] bg-muted", variant: "image" }),
+        h(Card.Media as ArkPart, {
+          class: "aspect-[4/3] bg-muted",
+          variant: "image",
+        }),
         h(
           Card.Header as ArkPart,
           {
@@ -30,7 +33,11 @@ export const ProductCard = defineComponent({
             { class: "flex-1", type: "button", variant: "outline" },
             () => "Add to cart",
           ),
-          h(Button as ArkPart, { class: "flex-1", type: "button" }, () => "Buy now"),
+          h(
+            Button as ArkPart,
+            { class: "flex-1", type: "button" },
+            () => "Buy now",
+          ),
         ]),
       ]);
   },

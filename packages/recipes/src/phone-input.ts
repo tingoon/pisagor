@@ -24,7 +24,9 @@ export const phoneInputRecipe = tv({
       "cursor-pointer ps-0",
       "disabled:pointer-events-none disabled:opacity-64",
     ],
-    flag: ["inline-flex shrink-0 items-center justify-center text-base leading-none"],
+    flag: [
+      "inline-flex shrink-0 items-center justify-center text-base leading-none",
+    ],
     flagEmoji: "text-base",
     flagIcon: "size-4",
     input: [

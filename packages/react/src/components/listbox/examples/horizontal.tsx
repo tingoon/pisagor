@@ -18,7 +18,11 @@ export function Horizontal() {
       <Listbox.Root collection={collection} orientation="horizontal">
         <Listbox.Content className="overflow-x-auto">
           {collection.items.map((item) => (
-            <Listbox.Item className="w-full flex-col items-start" item={item} key={item.title}>
+            <Listbox.Item
+              className="w-full flex-col items-start"
+              item={item}
+              key={item.title}
+            >
               <div className="aspect-square size-20 w-full rounded-lg bg-foreground" />
               <div>
                 <Listbox.ItemText>{item.title}</Listbox.ItemText>

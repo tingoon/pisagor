@@ -10,7 +10,10 @@ import { people } from "./helpers";
   <Item.Group variant="outline">
     <Item v-for="person in people" :key="person.id">
       <Item.Media>
-        <Avatar class="grayscale" :fallback="person.username.charAt(0).toUpperCase()" />
+        <Avatar
+          class="grayscale"
+          :fallback="person.username.charAt(0).toUpperCase()"
+        />
       </Item.Media>
       <Item.Content>
         <Item.Title>{{ person.username }}</Item.Title>

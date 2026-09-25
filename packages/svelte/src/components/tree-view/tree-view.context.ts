@@ -23,7 +23,9 @@ interface TreeViewItemContextValue {
 }
 
 const root = createContext<TreeViewContextValue>({ name: "TreeView" });
-const branch = createContext<TreeViewBranchContextValue>({ name: "TreeViewBranch" });
+const branch = createContext<TreeViewBranchContextValue>({
+  name: "TreeViewBranch",
+});
 const item = createContext<TreeViewItemContextValue | undefined>({
   defaultValue: undefined,
   name: "TreeViewItem",

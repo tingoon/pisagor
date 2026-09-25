@@ -58,7 +58,10 @@ export const ContextMenuContextTrigger = defineComponent({
   inheritAttrs: false,
   name: "ContextMenuContextTrigger",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: contextMenuRecipe,
       type: Function as PropType<typeof contextMenuRecipe>,

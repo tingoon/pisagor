@@ -21,7 +21,9 @@ export interface ScrollspyProps extends ComponentProps<typeof ark.div> {
 function resolveScrollElement(target: ScrollTarget): HTMLElement | null {
   if (target === document) return document.documentElement;
   if (!(target instanceof HTMLElement)) return document.documentElement;
-  const viewport = target.querySelector('[data-scope="scroll-area"][data-part="viewport"]');
+  const viewport = target.querySelector(
+    '[data-scope="scroll-area"][data-part="viewport"]',
+  );
   if (viewport instanceof HTMLElement) return viewport;
   return target;
 }
@@ -29,14 +31,19 @@ function resolveScrollElement(target: ScrollTarget): HTMLElement | null {
 function resolveScrollTarget(target: ScrollTarget): HTMLElement | Window {
   if (target === document || !target) return window;
   if (target instanceof HTMLElement) {
-    const viewport = target.querySelector('[data-scope="scroll-area"][data-part="viewport"]');
+    const viewport = target.querySelector(
+      '[data-scope="scroll-area"][data-part="viewport"]',
+    );
     if (viewport instanceof HTMLElement) return viewport;
     return target;
   }
   return window;
 }
 
-function getSectionScrollOffset(sectionElement: HTMLElement, scrollElement: HTMLElement): number {
+function getSectionScrollOffset(
+  sectionElement: HTMLElement,
+  scrollElement: HTMLElement,
+): number {
   if (scrollElement === document.documentElement) {
     return sectionElement.getBoundingClientRect().top + window.scrollY;
   }
@@ -99,7 +106,10 @@ export function Scrollspy(props: ScrollspyProps): JSX.Element {
       let customOffset = offset();
       const dataOffset = anchor.getAttribute(SCROLLSPY_OFFSET);
       if (dataOffset) customOffset = Number.parseInt(dataOffset, 10);
-      const sectionOffset = getSectionScrollOffset(sectionElement, scrollElement);
+      const sectionOffset = getSectionScrollOffset(
+        sectionElement,
+        scrollElement,
+      );
       const delta = Math.abs(sectionOffset - customOffset - scrollTop);
       if (sectionOffset - customOffset <= scrollTop && delta < minDelta) {
         minDelta = delta;
@@ -107,17 +117,22 @@ export function Scrollspy(props: ScrollspyProps): JSX.Element {
       }
     });
 
-    if (scrollTop + scrollElement.clientHeight >= scrollElement.scrollHeight - 2) {
+    if (
+      scrollTop + scrollElement.clientHeight >=
+      scrollElement.scrollHeight - 2
+    ) {
       activeIdx = anchorElements.length - 1;
     }
 
-    const sectionId = anchorElements[activeIdx]?.getAttribute(SCROLLSPY_ANCHOR) ?? null;
+    const sectionId =
+      anchorElements[activeIdx]?.getAttribute(SCROLLSPY_ANCHOR) ?? null;
     setActiveSection(sectionId);
   };
 
   const scrollTo = (anchorElement: HTMLElement) => (event?: Event) => {
     event?.preventDefault();
-    const sectionId = anchorElement.getAttribute(SCROLLSPY_ANCHOR)?.replace("#", "") ?? null;
+    const sectionId =
+      anchorElement.getAttribute(SCROLLSPY_ANCHOR)?.replace("#", "") ?? null;
     if (!sectionId) return;
     const sectionElement = document.getElementById(sectionId);
     if (!sectionElement) return;
@@ -126,8 +141,11 @@ export function Scrollspy(props: ScrollspyProps): JSX.Element {
     const dataOffset = anchorElement.getAttribute(SCROLLSPY_OFFSET);
     if (dataOffset) customOffset = Number.parseInt(dataOffset, 10);
     const scrollElement =
-      scrollToElement instanceof HTMLElement ? scrollToElement : document.documentElement;
-    const scrollTop = getSectionScrollOffset(sectionElement, scrollElement) - customOffset;
+      scrollToElement instanceof HTMLElement
+        ? scrollToElement
+        : document.documentElement;
+    const scrollTop =
+      getSectionScrollOffset(sectionElement, scrollElement) - customOffset;
     scrollToElement.scrollTo({
       behavior: smooth() ? "smooth" : "auto",
       left: 0,
@@ -147,7 +165,9 @@ export function Scrollspy(props: ScrollspyProps): JSX.Element {
 
   onMount(() => {
     if (selfEl) {
-      anchorElements = Array.from(selfEl.querySelectorAll(SCROLLSPY_ANCHOR_SELECTOR));
+      anchorElements = Array.from(
+        selfEl.querySelectorAll(SCROLLSPY_ANCHOR_SELECTOR),
+      );
     }
     const currentAnchors = anchorElements;
     const clickHandlers = new Map<Element, (event: Event) => void>();
@@ -162,7 +182,8 @@ export function Scrollspy(props: ScrollspyProps): JSX.Element {
       const scrollElement = resolveScrollTarget(scrollTarget);
       if (
         scrollElement === window ||
-        (scrollElement instanceof HTMLElement && scrollElement.contains(event.target as Node))
+        (scrollElement instanceof HTMLElement &&
+          scrollElement.contains(event.target as Node))
       ) {
         handleScroll();
       }

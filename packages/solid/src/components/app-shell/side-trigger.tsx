@@ -53,7 +53,9 @@ export function AppShellSideTrigger(
       size="icon-md"
       variant="ghost"
     >
-      {local.children ?? <Swap off={resolvedOff()} on={resolvedOn()} swap={local.open} />}
+      {local.children ?? (
+        <Swap off={resolvedOff()} on={resolvedOn()} swap={local.open} />
+      )}
     </Button>
   );
 }

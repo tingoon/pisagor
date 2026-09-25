@@ -9,7 +9,9 @@ import { DataGrid } from "..";
 type ArkPart = Parameters<typeof h>[0];
 
 function applyUpdater<T>(current: T, updater: T | ((old: T) => T)): T {
-  return typeof updater === "function" ? (updater as (old: T) => T)(current) : updater;
+  return typeof updater === "function"
+    ? (updater as (old: T) => T)(current)
+    : updater;
 }
 
 interface FullUser {
@@ -26,7 +28,13 @@ const ROLES: FullUser["role"][] = ["Admin", "Editor", "Viewer"];
 
 const STATUSES: FullUser["status"][] = ["active", "inactive", "invited"];
 
-const DEPARTMENTS = ["Engineering", "Design", "Marketing", "Sales", "Support"] as const;
+const DEPARTMENTS = [
+  "Engineering",
+  "Design",
+  "Marketing",
+  "Sales",
+  "Support",
+] as const;
 
 const FIRST_NAMES = [
   "Alice",
@@ -53,10 +61,15 @@ const statusVariants: Record<FullUser["status"], BadgeVariant> = {
 };
 
 const allUsers: FullUser[] = Array.from({ length: 48 }, (_, index) => ({
-  department: DEPARTMENTS[index % DEPARTMENTS.length] ?? DEPARTMENTS[0] ?? "Engineering",
+  department:
+    DEPARTMENTS[index % DEPARTMENTS.length] ?? DEPARTMENTS[0] ?? "Engineering",
   email: `user${index + 1}@example.com`,
   id: String(index + 1),
-  joinedAt: new Date(2020 + (index % 5), index % 12, (index % 28) + 1).toISOString(),
+  joinedAt: new Date(
+    2020 + (index % 5),
+    index % 12,
+    (index % 28) + 1,
+  ).toISOString(),
   name: `${FIRST_NAMES[index % FIRST_NAMES.length] ?? "Alex"} ${String.fromCharCode(65 + (index % 26))}.`,
   role: ROLES[index % ROLES.length] ?? "Viewer",
   status: STATUSES[index % STATUSES.length] ?? "active",
@@ -67,7 +80,9 @@ const DataGridShell = defineComponent({
   setup(_, { slots }) {
     return () =>
       h("div", { class: "flex w-full flex-col gap-3" }, () =>
-        h("div", { class: "rounded-xl border bg-muted/20 p-3" }, () => slots.default?.()),
+        h("div", { class: "rounded-xl border bg-muted/20 p-3" }, () =>
+          slots.default?.(),
+        ),
       );
   },
 });
@@ -83,12 +98,16 @@ const DataGridView = defineComponent({
       h(Table, null, () => [
         h(Table.Header, null, () =>
           h(DataGrid.Header, null, () =>
-            h(DataGrid.HeaderRow, null, () => h(DataGrid.Head, { filter: props.filterHead })),
+            h(DataGrid.HeaderRow, null, () =>
+              h(DataGrid.Head, { filter: props.filterHead }),
+            ),
           ),
         ),
         h(Table.Body, null, () =>
-          h(DataGrid.Body, { empty: h(DataGrid.Empty, { colSpan: props.colSpan }) }, () =>
-            h(DataGrid.Row, null, () => h(DataGrid.Cell)),
+          h(
+            DataGrid.Body,
+            { empty: h(DataGrid.Empty, { colSpan: props.colSpan }) },
+            () => h(DataGrid.Row, null, () => h(DataGrid.Cell)),
           ),
         ),
       ]);
@@ -151,7 +170,10 @@ export function MultiGrouping() {
               ? null
               : h(
                   Badge as ArkPart,
-                  { class: "capitalize", variant: statusVariants[row.original.status] },
+                  {
+                    class: "capitalize",
+                    variant: statusVariants[row.original.status],
+                  },
                   () => row.original.status,
                 ),
           header: "Status",
@@ -173,7 +195,10 @@ export function MultiGrouping() {
       };
 
       const data = allUsers.slice(0, 30);
-      const state = computed(() => ({ expanded: expanded.value, grouping: grouping.value }));
+      const state = computed(() => ({
+        expanded: expanded.value,
+        grouping: grouping.value,
+      }));
 
       return {
         columns,

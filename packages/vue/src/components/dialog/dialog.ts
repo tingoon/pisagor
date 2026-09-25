@@ -1,5 +1,9 @@
 import { Dialog as DialogPrimitive } from "@ark-ui/vue/dialog";
-import { type DialogRecipe, type DialogVariantProps, dialogRecipe } from "@pisagor/recipes/dialog";
+import {
+  type DialogRecipe,
+  type DialogVariantProps,
+  dialogRecipe,
+} from "@pisagor/recipes/dialog";
 import {
   defineComponent,
   h,
@@ -53,9 +57,10 @@ export interface DialogProps {
 // #endregion
 
 // #region Context
-const [provideDialogContext, useDialogLocal] = createContext<DialogContextValue>({
-  name: "DialogLocal",
-});
+const [provideDialogContext, useDialogLocal] =
+  createContext<DialogContextValue>({
+    name: "DialogLocal",
+  });
 
 export { useDialogLocal as useDialog };
 
@@ -122,7 +127,10 @@ export const DialogBackdrop = defineComponent({
   inheritAttrs: false,
   name: "DialogBackdrop",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs }) {
     const dialogContext = useDialogLocal();
@@ -145,7 +153,10 @@ export const DialogPositioner = defineComponent({
   name: "DialogPositioner",
   props: {
     bottomStickOnMobile: { default: undefined, type: Boolean },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -171,12 +182,24 @@ export const DialogContent = defineComponent({
   name: "DialogContent",
   props: {
     bottomStickOnMobile: { default: true, type: Boolean },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     showCloseButton: { default: true, type: Boolean },
     size: {
       default: "md",
       type: String as PropType<
-        "2xl" | "3xl" | "4xl" | "5xl" | "6xl" | "fullscreen" | "lg" | "md" | "sm" | "xl"
+        | "2xl"
+        | "3xl"
+        | "4xl"
+        | "5xl"
+        | "6xl"
+        | "fullscreen"
+        | "lg"
+        | "md"
+        | "sm"
+        | "xl"
       >,
     },
   },
@@ -190,26 +213,29 @@ export const DialogContent = defineComponent({
 
       return dialogTeleport([
         h(DialogBackdrop),
-        h(DialogPositioner, { bottomStickOnMobile: props.bottomStickOnMobile }, () =>
-          h(
-            DialogPrimitive.Content as ArkPart,
-            {
-              ...attrs,
-              class: dialogContext.slots.content({
-                bottomStickOnMobile: props.bottomStickOnMobile,
-                class: props.class,
-                size: props.size,
-              }),
-            },
-            () => [
-              slots.default?.(),
-              props.showCloseButton
-                ? h(DialogCloseTrigger, { asChild: true }, () =>
-                    renderIconCloseButton(dialogContext.slots.inline()),
-                  )
-                : null,
-            ],
-          ),
+        h(
+          DialogPositioner,
+          { bottomStickOnMobile: props.bottomStickOnMobile },
+          () =>
+            h(
+              DialogPrimitive.Content as ArkPart,
+              {
+                ...attrs,
+                class: dialogContext.slots.content({
+                  bottomStickOnMobile: props.bottomStickOnMobile,
+                  class: props.class,
+                  size: props.size,
+                }),
+              },
+              () => [
+                slots.default?.(),
+                props.showCloseButton
+                  ? h(DialogCloseTrigger, { asChild: true }, () =>
+                      renderIconCloseButton(dialogContext.slots.inline()),
+                    )
+                  : null,
+              ],
+            ),
         ),
       ]);
     };
@@ -220,7 +246,10 @@ export const DialogBody = defineComponent({
   inheritAttrs: false,
   name: "DialogBody",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     dataPart: { default: "body", type: String },
     dataScope: { default: "dialog", type: String },
     scrollFade: { default: false, type: Boolean },
@@ -248,7 +277,10 @@ export const DialogHeader = defineComponent({
   inheritAttrs: false,
   name: "DialogHeader",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     dataPart: { default: "header", type: String },
     dataScope: { default: "dialog", type: String },
     description: String,
@@ -269,7 +301,9 @@ export const DialogHeader = defineComponent({
         },
         () => [
           props.title ? h(DialogTitle, null, () => props.title) : null,
-          props.description ? h(DialogDescription, null, () => props.description) : null,
+          props.description
+            ? h(DialogDescription, null, () => props.description)
+            : null,
           slots.default?.(),
         ],
       );
@@ -281,7 +315,10 @@ export const DialogTitle = defineComponent({
   inheritAttrs: false,
   name: "DialogTitle",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -303,7 +340,10 @@ export const DialogDescription = defineComponent({
   inheritAttrs: false,
   name: "DialogDescription",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -325,7 +365,8 @@ export const DialogCloseTrigger = defineComponent({
   inheritAttrs: false,
   name: "DialogCloseTrigger",
   setup(_, { attrs, slots }) {
-    return () => h(DialogPrimitive.CloseTrigger as ArkPart, { ...attrs }, slots);
+    return () =>
+      h(DialogPrimitive.CloseTrigger as ArkPart, { ...attrs }, slots);
   },
 });
 
@@ -333,7 +374,10 @@ export const DialogFooter = defineComponent({
   inheritAttrs: false,
   name: "DialogFooter",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     dataPart: { default: "footer", type: String },
     dataScope: { default: "dialog", type: String },
   },

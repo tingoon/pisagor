@@ -11,8 +11,8 @@ import { SkipNav } from "..";
   >
     <h2 class="mb-2 font-semibold">Main content</h2>
     <p class="text-muted-foreground text-sm">
-      This is the main content area. When users press Tab and then Enter on the skip link, focus
-      jumps here.
+      This is the main content area. When users press Tab and then Enter on the
+      skip link, focus jumps here.
     </p>
   </SkipNav.Content>
 </template>

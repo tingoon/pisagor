@@ -19,7 +19,10 @@ export const Button = defineComponent({
   inheritAttrs: false,
   name: "PisagorButton",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     clickEffect: { default: true, type: Boolean },
     disabled: { default: undefined, type: Boolean },
     loading: { default: false, type: Boolean },
@@ -32,7 +35,10 @@ export const Button = defineComponent({
       default: "md",
       type: String as PropType<NonNullable<ButtonVariantProps["size"]>>,
     },
-    type: { default: "button", type: String as PropType<NonNullable<ButtonProps["type"]>> },
+    type: {
+      default: "button",
+      type: String as PropType<NonNullable<ButtonProps["type"]>>,
+    },
     variant: {
       default: "default",
       type: String as PropType<NonNullable<ButtonVariantProps["variant"]>>,
@@ -65,9 +71,15 @@ export const Button = defineComponent({
         () =>
           props.loading
             ? [
-                h("span", { "aria-hidden": true, class: slots.hidden() }, children.default?.()),
+                h(
+                  "span",
+                  { "aria-hidden": true, class: slots.hidden() },
+                  children.default?.(),
+                ),
                 h("span", { class: slots.srOnly() }, children.default?.()),
-                h("span", { class: slots.spinner() }, () => h(Spinner, { "aria-hidden": true })),
+                h("span", { class: slots.spinner() }, () =>
+                  h(Spinner, { "aria-hidden": true }),
+                ),
               ]
             : children.default?.(),
       );

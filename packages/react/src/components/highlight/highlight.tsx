@@ -16,7 +16,11 @@ export interface HighlightProps extends HighlightPrimitiveProps {
 // #endregion
 
 // #region Component
-export function Highlight({ recipe = highlightRecipe, className, ...rest }: HighlightProps) {
+export function Highlight({
+  recipe = highlightRecipe,
+  className,
+  ...rest
+}: HighlightProps) {
   return <HighlightPrimitive {...rest} className={recipe({ className })} />;
 }
 // #endregion

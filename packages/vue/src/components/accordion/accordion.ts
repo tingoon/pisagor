@@ -60,7 +60,10 @@ export const AccordionItem = defineComponent({
   inheritAttrs: false,
   name: "AccordionItem",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: accordionItemRecipe,
       type: Function as PropType<typeof accordionItemRecipe>,
@@ -86,7 +89,10 @@ export const AccordionItemTrigger = defineComponent({
   inheritAttrs: false,
   name: "AccordionItemTrigger",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: accordionItemRecipe,
       type: Function as PropType<typeof accordionItemRecipe>,
@@ -117,7 +123,10 @@ export const AccordionItemContent = defineComponent({
   inheritAttrs: false,
   name: "AccordionItemContent",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: accordionItemRecipe,
       type: Function as PropType<typeof accordionItemRecipe>,
@@ -144,7 +153,10 @@ export const AccordionShorthand = defineComponent({
   name: "AccordionShorthand",
   props: {
     collapsible: { default: true, type: Boolean },
-    items: { default: undefined, type: Array as PropType<AccordionPresetItem[]> },
+    items: {
+      default: undefined,
+      type: Array as PropType<AccordionPresetItem[]>,
+    },
     lazyMount: { default: true, type: Boolean },
     unmountOnExit: { default: true, type: Boolean },
   },

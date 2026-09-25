@@ -1,4 +1,10 @@
-import { MarqueeContent, MarqueeEdge, MarqueeItem, MarqueeRoot, MarqueeShorthand } from "./marquee";
+import {
+  MarqueeContent,
+  MarqueeEdge,
+  MarqueeItem,
+  MarqueeRoot,
+  MarqueeShorthand,
+} from "./marquee";
 
 export type { MarqueeProps } from "./marquee";
 

@@ -90,7 +90,12 @@ export function StatLabel({ className, ...rest }: StatLabelProps) {
   const { slots } = useStat();
 
   return (
-    <ark.div {...rest} className={slots.label({ className })} data-part="label" data-scope="stat" />
+    <ark.div
+      {...rest}
+      className={slots.label({ className })}
+      data-part="label"
+      data-scope="stat"
+    />
   );
 }
 
@@ -98,7 +103,12 @@ export function StatValue({ className, ...rest }: StatValueProps) {
   const { slots } = useStat();
 
   return (
-    <ark.div {...rest} className={slots.value({ className })} data-part="value" data-scope="stat" />
+    <ark.div
+      {...rest}
+      className={slots.value({ className })}
+      data-part="value"
+      data-scope="stat"
+    />
   );
 }
 
@@ -163,7 +173,10 @@ export function StatShorthand({
       )}
 
       {description !== undefined && (
-        <StatDescription {...descriptionProps} className={classNames?.description}>
+        <StatDescription
+          {...descriptionProps}
+          className={classNames?.description}
+        >
           {description}
         </StatDescription>
       )}

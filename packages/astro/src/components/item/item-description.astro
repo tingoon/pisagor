@@ -8,6 +8,11 @@ const { class: className, ...rest } = Astro.props;
 const slots = itemRecipe();
 ---
 
-<p {...rest} class={slots.description({ className })} data-part="description" data-scope="item">
+<p
+  {...rest}
+  class={slots.description({ className })}
+  data-part="description"
+  data-scope="item"
+>
   <slot />
 </p>

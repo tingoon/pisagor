@@ -40,7 +40,9 @@ export function Default() {
               </Button>
             )}
           />
-          <Sheet.CloseTrigger asChild={(props) => <Button {...props()}>Save changes</Button>} />
+          <Sheet.CloseTrigger
+            asChild={(props) => <Button {...props()}>Save changes</Button>}
+          />
         </Sheet.Footer>
       </Sheet.Content>
     </Sheet>

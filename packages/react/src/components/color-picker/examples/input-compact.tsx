@@ -3,7 +3,10 @@ import { InputGroup, parseColor, Separator } from "@pisagor/react";
 import { ColorPicker } from "..";
 export function InputCompact() {
   return (
-    <ColorPicker defaultValue={parseColor("#0485F7").toString("hsla")} format="hsla">
+    <ColorPicker
+      defaultValue={parseColor("#0485F7").toString("hsla")}
+      format="hsla"
+    >
       <ColorPicker.Control>
         <InputGroup>
           <ColorPicker.Trigger asChild>
@@ -16,7 +19,10 @@ export function InputCompact() {
           </ColorPicker.Input>
           <Separator orientation="vertical" />
           <ColorPicker.Input asChild channel="alpha">
-            <InputGroup.Input aria-label="Opacity percentage" className="text-right" />
+            <InputGroup.Input
+              aria-label="Opacity percentage"
+              className="text-right"
+            />
           </ColorPicker.Input>
           <InputGroup.Addon align="inline-end">
             <PercentIcon aria-hidden />

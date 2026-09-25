@@ -26,18 +26,32 @@ type ScrollAreaRootProps = ScrollAreaPrimitiveRootProps &
 export interface ScrollAreaProps extends Omit<ScrollAreaRootProps, "children"> {
   children?: JSX.Element;
   classNames?: ScrollAreaClassNames;
-  scrollbarProps?: Omit<ScrollAreaScrollbarProps, "children" | "class" | "orientation">;
+  scrollbarProps?: Omit<
+    ScrollAreaScrollbarProps,
+    "children" | "class" | "orientation"
+  >;
   thumbProps?: Omit<ScrollAreaThumbProps, "children" | "class">;
   viewportProps?: Omit<ScrollAreaViewportProps, "children" | "class">;
 }
 
 function ScrollAreaRoot(props: ScrollAreaRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["scrollFade", "children", "recipe", "class"]);
-  const slots = () => (local.recipe ?? scrollAreaRecipe)({ scrollFade: local.scrollFade ?? false });
+  const [local, rest] = splitProps(props, [
+    "scrollFade",
+    "children",
+    "recipe",
+    "class",
+  ]);
+  const slots = () =>
+    (local.recipe ?? scrollAreaRecipe)({
+      scrollFade: local.scrollFade ?? false,
+    });
 
   return (
     <ScrollAreaContext value={{ slots: slots() }}>
-      <ScrollAreaPrimitive.Root {...rest} class={slots().base({ class: cn(local.class) })}>
+      <ScrollAreaPrimitive.Root
+        {...rest}
+        class={slots().base({ class: cn(local.class) })}
+      >
         {local.children}
       </ScrollAreaPrimitive.Root>
     </ScrollAreaContext>
@@ -49,8 +63,13 @@ function ScrollAreaViewport(props: ScrollAreaViewportProps): JSX.Element {
   const { slots } = useScrollArea();
 
   return (
-    <ScrollAreaPrimitive.Viewport {...rest} class={slots.viewport({ class: cn(local.class) })}>
-      <ScrollAreaPrimitive.Content>{local.children}</ScrollAreaPrimitive.Content>
+    <ScrollAreaPrimitive.Viewport
+      {...rest}
+      class={slots.viewport({ class: cn(local.class) })}
+    >
+      <ScrollAreaPrimitive.Content>
+        {local.children}
+      </ScrollAreaPrimitive.Content>
     </ScrollAreaPrimitive.Viewport>
   );
 }
@@ -73,7 +92,12 @@ function ScrollAreaScrollbar(props: ScrollAreaScrollbarProps): JSX.Element {
 function ScrollAreaThumb(props: ScrollAreaThumbProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useScrollArea();
-  return <ScrollAreaPrimitive.Thumb {...rest} class={slots.thumb({ class: cn(local.class) })} />;
+  return (
+    <ScrollAreaPrimitive.Thumb
+      {...rest}
+      class={slots.thumb({ class: cn(local.class) })}
+    />
+  );
 }
 
 export function ScrollArea(props: ScrollAreaProps): JSX.Element {
@@ -89,7 +113,10 @@ export function ScrollArea(props: ScrollAreaProps): JSX.Element {
 
   return (
     <ScrollAreaRoot {...rest} class={local.class} scrollFade={local.scrollFade}>
-      <ScrollAreaViewport {...local.viewportProps} class={local.classNames?.viewport}>
+      <ScrollAreaViewport
+        {...local.viewportProps}
+        class={local.classNames?.viewport}
+      >
         {local.children}
       </ScrollAreaViewport>
       <ScrollAreaScrollbar
@@ -97,14 +124,20 @@ export function ScrollArea(props: ScrollAreaProps): JSX.Element {
         class={local.classNames?.scrollbar}
         orientation="vertical"
       >
-        <ScrollAreaThumb {...local.thumbProps} class={local.classNames?.thumb} />
+        <ScrollAreaThumb
+          {...local.thumbProps}
+          class={local.classNames?.thumb}
+        />
       </ScrollAreaScrollbar>
       <ScrollAreaScrollbar
         {...local.scrollbarProps}
         class={local.classNames?.scrollbar}
         orientation="horizontal"
       >
-        <ScrollAreaThumb {...local.thumbProps} class={local.classNames?.thumb} />
+        <ScrollAreaThumb
+          {...local.thumbProps}
+          class={local.classNames?.thumb}
+        />
       </ScrollAreaScrollbar>
       <ScrollAreaPrimitive.Corner />
     </ScrollAreaRoot>

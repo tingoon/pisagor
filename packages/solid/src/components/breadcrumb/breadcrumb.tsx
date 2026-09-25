@@ -1,5 +1,8 @@
 import { ark } from "@ark-ui/solid/factory";
-import { breadcrumbItemRecipe, breadcrumbRecipe } from "@pisagor/recipes/breadcrumb";
+import {
+  breadcrumbItemRecipe,
+  breadcrumbRecipe,
+} from "@pisagor/recipes/breadcrumb";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
@@ -36,7 +39,12 @@ export interface BreadcrumbProps extends Omit<BreadcrumbRootProps, "children"> {
 }
 
 export function BreadcrumbRoot(props: BreadcrumbRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["aria-label", "children", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "aria-label",
+    "children",
+    "recipe",
+    "class",
+  ]);
   const slots = () => (local.recipe ?? breadcrumbRecipe)();
 
   return (
@@ -113,7 +121,9 @@ export function BreadcrumbPage(props: BreadcrumbPageProps): JSX.Element {
   );
 }
 
-export function BreadcrumbSeparator(props: BreadcrumbSeparatorProps): JSX.Element {
+export function BreadcrumbSeparator(
+  props: BreadcrumbSeparatorProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const { slots } = useBreadcrumb();
   return (
@@ -130,7 +140,9 @@ export function BreadcrumbSeparator(props: BreadcrumbSeparatorProps): JSX.Elemen
   );
 }
 
-export function BreadcrumbEllipsis(props: BreadcrumbEllipsisProps): JSX.Element {
+export function BreadcrumbEllipsis(
+  props: BreadcrumbEllipsisProps,
+): JSX.Element {
   const { slots } = useBreadcrumb();
   return (
     <ark.span
@@ -162,7 +174,9 @@ export function BreadcrumbShorthand(props: BreadcrumbProps): JSX.Element {
                   <Show
                     fallback={
                       <Show fallback={item.label} when={item.href}>
-                        <BreadcrumbLink href={item.href}>{item.label}</BreadcrumbLink>
+                        <BreadcrumbLink href={item.href}>
+                          {item.label}
+                        </BreadcrumbLink>
                       </Show>
                     }
                     when={item.isCurrentPage}

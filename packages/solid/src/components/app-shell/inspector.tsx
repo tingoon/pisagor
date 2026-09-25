@@ -1,7 +1,10 @@
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { createSignal, Show, splitProps } from "solid-js";
-import { ArrowsInLineHorizontalIcon, ArrowsOutLineHorizontalIcon } from "../../internal/icons";
+import {
+  ArrowsInLineHorizontalIcon,
+  ArrowsOutLineHorizontalIcon,
+} from "../../internal/icons";
 import type { ButtonProps } from "../button";
 import { Resizable } from "../resizable";
 import { ScrollArea } from "../scroll-area";
@@ -33,7 +36,8 @@ export interface AppShellInspectorProps extends ComponentProps<"aside"> {
   resizableProps?: AppShellResizableProps;
 }
 
-export interface AppShellInspectorTriggerProps extends Omit<ButtonProps, "children"> {
+export interface AppShellInspectorTriggerProps
+  extends Omit<ButtonProps, "children"> {
   placement?: AppShellPlacement;
   children?: JSX.Element;
   off?: JSX.Element;
@@ -59,7 +63,8 @@ export function AppShellInspector(props: AppShellInspectorProps): JSX.Element {
   ]);
   const placement = () => local.placement ?? "end";
   const position = () => local.position ?? "fixed";
-  const { defaultInspectorResizableProps, inspectorStates, slots } = useAppShell();
+  const { defaultInspectorResizableProps, inspectorStates, slots } =
+    useAppShell();
   const resizableProps = () =>
     mergeResizableProps(defaultInspectorResizableProps, local.resizableProps);
   const side = useRegisteredSideState({
@@ -82,7 +87,13 @@ export function AppShellInspector(props: AppShellInspectorProps): JSX.Element {
       class={cn(
         slots.inspector(),
         placement() === "start" ? "border-e" : "border-s",
-        regionPositionClasses(slots, position(), "column", undefined, "inspector"),
+        regionPositionClasses(
+          slots,
+          position(),
+          "column",
+          undefined,
+          "inspector",
+        ),
         side.open() ? "opacity-100" : "pointer-events-none opacity-0",
         local.class,
       )}
@@ -93,7 +104,9 @@ export function AppShellInspector(props: AppShellInspectorProps): JSX.Element {
       data-state={side.open() ? "open" : "closed"}
       style={{
         "grid-area": gridAreaFor(placement(), "inspector"),
-        ...(typeof local.style === "object" && local.style && !Array.isArray(local.style)
+        ...(typeof local.style === "object" &&
+        local.style &&
+        !Array.isArray(local.style)
           ? (local.style as Record<string, string>)
           : {}),
       }}
@@ -113,7 +126,9 @@ export function AppShellInspector(props: AppShellInspectorProps): JSX.Element {
   );
 }
 
-export function AppShellInspectorHeader(props: AppShellInspectorHeaderProps): JSX.Element {
+export function AppShellInspectorHeader(
+  props: AppShellInspectorHeaderProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useAppShell();
   return (
@@ -126,7 +141,9 @@ export function AppShellInspectorHeader(props: AppShellInspectorHeaderProps): JS
   );
 }
 
-export function AppShellInspectorContent(props: AppShellInspectorContentProps): JSX.Element {
+export function AppShellInspectorContent(
+  props: AppShellInspectorContentProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useAppShell();
   return (
@@ -141,7 +158,9 @@ export function AppShellInspectorContent(props: AppShellInspectorContentProps): 
   );
 }
 
-export function AppShellInspectorFooter(props: AppShellInspectorFooterProps): JSX.Element {
+export function AppShellInspectorFooter(
+  props: AppShellInspectorFooterProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useAppShell();
   return (
@@ -154,7 +173,9 @@ export function AppShellInspectorFooter(props: AppShellInspectorFooterProps): JS
   );
 }
 
-export function AppShellInspectorTrigger(props: AppShellInspectorTriggerProps): JSX.Element {
+export function AppShellInspectorTrigger(
+  props: AppShellInspectorTriggerProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, [
     "placement",
     "children",

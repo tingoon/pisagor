@@ -15,6 +15,8 @@ const onValueChange = setValue;
       <InputOTP.Slot :index="2" />
       <InputOTP.Slot :index="3" />
     </InputOTP>
-    <p class="text-center text-muted-foreground text-sm">{{ isCorrect() ? "✅" : "❌" }}</p>
+    <p class="text-center text-muted-foreground text-sm">
+      {{ isCorrect() ? "✅" : "❌" }}
+    </p>
   </div>
 </template>

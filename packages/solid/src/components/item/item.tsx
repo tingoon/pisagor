@@ -6,7 +6,9 @@ import { splitProps } from "solid-js";
 import { ItemContext, useItem } from "./item.context";
 import { useItemGroup } from "./item-group.context";
 
-export interface ItemProps extends ComponentProps<typeof ark.div>, ItemVariantProps {
+export interface ItemProps
+  extends ComponentProps<typeof ark.div>,
+    ItemVariantProps {
   recipe?: typeof itemRecipe;
 }
 
@@ -19,7 +21,12 @@ export type ItemActionsProps = ComponentProps<typeof ark.div>;
 export type ItemFooterProps = ComponentProps<typeof ark.div>;
 
 export function ItemRoot(props: ItemProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["variant", "children", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "variant",
+    "children",
+    "recipe",
+    "class",
+  ]);
   const group = useItemGroup();
   const variant = () => local.variant ?? group?.variant ?? "default";
   const slots = () => (local.recipe ?? itemRecipe)();

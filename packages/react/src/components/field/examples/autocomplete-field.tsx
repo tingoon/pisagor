@@ -28,7 +28,10 @@ export function AutocompleteField() {
         collection={collection}
         onInputValueChange={({ inputValue }) => filter(inputValue)}
       >
-        <Autocomplete.Input aria-label="Search items" placeholder="Search items…" />
+        <Autocomplete.Input
+          aria-label="Search items"
+          placeholder="Search items…"
+        />
         <Autocomplete.Content>
           <Autocomplete.Empty>No items found.</Autocomplete.Empty>
           <Combobox.List>

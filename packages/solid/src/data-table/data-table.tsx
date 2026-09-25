@@ -23,7 +23,10 @@ import {
   useDataTableHeaderGroupContext,
   useDataTableRowContext,
 } from "./data-table.context";
-import { type DataTableFeatures, dataTableFeatures } from "./data-table.features";
+import {
+  type DataTableFeatures,
+  dataTableFeatures,
+} from "./data-table.features";
 
 export type DataTableProps<TData extends RowData> = {
   children: JSX.Element;
@@ -73,7 +76,9 @@ export function useDataTableRowApi<TData extends RowData>() {
   return useDataTableRowContext<TData>().row;
 }
 
-function DataTableHeader<TData extends RowData>(props: DataTableHeaderProps): JSX.Element {
+function DataTableHeader<TData extends RowData>(
+  props: DataTableHeaderProps,
+): JSX.Element {
   const table = useDataTableContext<TData>().table;
   return (
     <For each={table.getHeaderGroups()}>
@@ -89,10 +94,14 @@ function DataTableHeader<TData extends RowData>(props: DataTableHeaderProps): JS
 }
 
 function DataTableHeaderRow(props: DataTableHeaderRowProps): JSX.Element {
-  return <Table.Row {...props} data-part="header-row" data-scope="data-table" />;
+  return (
+    <Table.Row {...props} data-part="header-row" data-scope="data-table" />
+  );
 }
 
-function DataTableHead<TData extends RowData>(props: DataTableHeadProps): JSX.Element {
+function DataTableHead<TData extends RowData>(
+  props: DataTableHeadProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["columnId", "children", "class"]);
   const { headerGroup } = useDataTableHeaderGroupContext<TData>();
 
@@ -101,7 +110,12 @@ function DataTableHead<TData extends RowData>(props: DataTableHeadProps): JSX.El
       fallback={
         <For each={headerGroup.headers}>
           {(header) => (
-            <Table.Head {...rest} class={local.class} data-part="head" data-scope="data-table">
+            <Table.Head
+              {...rest}
+              class={local.class}
+              data-part="head"
+              data-scope="data-table"
+            >
               {flexRender(header.column.columnDef.header, header.getContext())}
             </Table.Head>
           )}
@@ -110,12 +124,20 @@ function DataTableHead<TData extends RowData>(props: DataTableHeadProps): JSX.El
       when={local.columnId}
     >
       {(columnId) => {
-        const header = headerGroup.headers.find((item) => item.column.id === columnId());
+        const header = headerGroup.headers.find(
+          (item) => item.column.id === columnId(),
+        );
         return (
           <Show when={header}>
             {(h) => (
-              <Table.Head {...rest} class={local.class} data-part="head" data-scope="data-table">
-                {local.children ?? flexRender(h().column.columnDef.header, h().getContext())}
+              <Table.Head
+                {...rest}
+                class={local.class}
+                data-part="head"
+                data-scope="data-table"
+              >
+                {local.children ??
+                  flexRender(h().column.columnDef.header, h().getContext())}
               </Table.Head>
             )}
           </Show>
@@ -132,7 +154,9 @@ export function renderDataTableCell<TData extends RowData>(
   return flexRender(cell.column.columnDef.cell, cell.getContext());
 }
 
-function DataTableBody<TData extends RowData>(props: DataTableBodyProps): JSX.Element {
+function DataTableBody<TData extends RowData>(
+  props: DataTableBodyProps,
+): JSX.Element {
   const table = useDataTableContext<TData>().table;
   const rows = () => table.getRowModel().rows;
 
@@ -140,7 +164,9 @@ function DataTableBody<TData extends RowData>(props: DataTableBodyProps): JSX.El
     <Show fallback={props.empty} when={rows().length > 0}>
       <For each={rows()}>
         {(row) => (
-          <DataTableRowContext value={{ row } as DataTableRowContextValue<RowData>}>
+          <DataTableRowContext
+            value={{ row } as DataTableRowContextValue<RowData>}
+          >
             {props.children}
           </DataTableRowContext>
         )}
@@ -149,7 +175,9 @@ function DataTableBody<TData extends RowData>(props: DataTableBodyProps): JSX.El
   );
 }
 
-function DataTableRow<TData extends RowData>(props: DataTableRowProps): JSX.Element {
+function DataTableRow<TData extends RowData>(
+  props: DataTableRowProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const row = useDataTableRowContext<TData>().row;
 
@@ -165,7 +193,9 @@ function DataTableRow<TData extends RowData>(props: DataTableRowProps): JSX.Elem
   );
 }
 
-function DataTableCell<TData extends RowData>(props: DataTableCellProps): JSX.Element {
+function DataTableCell<TData extends RowData>(
+  props: DataTableCellProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["columnId", "children"]);
   const row = useDataTableRowContext<TData>().row;
 
@@ -183,7 +213,9 @@ function DataTableCell<TData extends RowData>(props: DataTableCellProps): JSX.El
       when={local.columnId}
     >
       {(columnId) => {
-        const cell = row.getVisibleCells().find((item) => item.column.id === columnId());
+        const cell = row
+          .getVisibleCells()
+          .find((item) => item.column.id === columnId());
         return (
           <Show when={cell}>
             {(c) => (
@@ -204,9 +236,15 @@ function DataTableEmpty(props: DataTableEmptyProps): JSX.Element {
   const span = () => local.colSpan ?? table.getAllColumns().length;
 
   return (
-    <Table.Row {...rest} class={local.class} data-part="empty" data-scope="data-table">
+    <Table.Row
+      {...rest}
+      class={local.class}
+      data-part="empty"
+      data-scope="data-table"
+    >
       <Table.Cell class={slots.empty()} colSpan={span()}>
-        {local.children ?? "No results. Try a different search or clear filters."}
+        {local.children ??
+          "No results. Try a different search or clear filters."}
       </Table.Cell>
     </Table.Row>
   );
@@ -238,15 +276,17 @@ function DataTableFooter(props: DataTableFooterProps): JSX.Element {
   );
 }
 
-function DataTableRoot<TData extends RowData>(props: DataTableProps<TData>): JSX.Element {
-  const [local, rest] = splitProps(props as DataTableProps<TData> & Record<string, unknown>, [
-    "children",
-    "recipe",
-    "class",
-    "features",
-  ]);
-  const features = () => (local.features as DataTableFeatures | undefined) ?? dataTableFeatures;
-  const recipe = () => (local.recipe as typeof dataTableRecipe | undefined) ?? dataTableRecipe;
+function DataTableRoot<TData extends RowData>(
+  props: DataTableProps<TData>,
+): JSX.Element {
+  const [local, rest] = splitProps(
+    props as DataTableProps<TData> & Record<string, unknown>,
+    ["children", "recipe", "class", "features"],
+  );
+  const features = () =>
+    (local.features as DataTableFeatures | undefined) ?? dataTableFeatures;
+  const recipe = () =>
+    (local.recipe as typeof dataTableRecipe | undefined) ?? dataTableRecipe;
   const slots = () => recipe()();
 
   const table = createTable({
@@ -255,7 +295,9 @@ function DataTableRoot<TData extends RowData>(props: DataTableProps<TData>): JSX
   });
 
   return (
-    <DataTableContext value={{ slots: slots(), table } as DataTableContextValue<RowData>}>
+    <DataTableContext
+      value={{ slots: slots(), table } as DataTableContextValue<RowData>}
+    >
       <div
         class={slots().base({ class: local.class as string | undefined })}
         data-part="root"
@@ -267,7 +309,9 @@ function DataTableRoot<TData extends RowData>(props: DataTableProps<TData>): JSX
   );
 }
 
-export function DataTable<TData extends RowData>(props: DataTableProps<TData>): JSX.Element {
+export function DataTable<TData extends RowData>(
+  props: DataTableProps<TData>,
+): JSX.Element {
   return DataTableRoot(props);
 }
 

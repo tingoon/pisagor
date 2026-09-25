@@ -10,7 +10,9 @@ export function AlignInlineEnd() {
           <EyeIcon aria-hidden />
         </InputGroup.Addon>
       </InputGroup>
-      <p className="text-muted-foreground text-sm">Icon positioned at the end.</p>
+      <p className="text-muted-foreground text-sm">
+        Icon positioned at the end.
+      </p>
     </div>
   );
 }

@@ -1,6 +1,12 @@
 import { useHotkey } from "@ark-ui/react";
 import { appShellRecipe } from "@pisagor/recipes/app-shell";
-import { type ComponentProps, useCallback, useMemo, useRef, useState } from "react";
+import {
+  type ComponentProps,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import type {
   AppShellFixedStackVar,
   AppShellPlacement,
@@ -33,7 +39,8 @@ const APP_SHELL_CONTENT_ROW =
 const APP_SHELL_NAV_ROW =
   '"start-inspector navigation navigation navigation navigation navigation end-inspector"';
 
-const APP_SHELL_BANNER_ROW = '"banner banner banner banner banner banner banner"';
+const APP_SHELL_BANNER_ROW =
+  '"banner banner banner banner banner banner banner"';
 
 function buildGridAreas(hasBanner: boolean, hasNavigation: boolean) {
   if (hasBanner && hasNavigation) {
@@ -52,7 +59,11 @@ function buildGridAreas(hasBanner: boolean, hasNavigation: boolean) {
 }
 
 function buildGridRows(hasBanner: boolean, hasNavigation: boolean) {
-  return [...(hasBanner ? ["auto"] : []), ...(hasNavigation ? ["auto"] : []), "auto"].join(" ");
+  return [
+    ...(hasBanner ? ["auto"] : []),
+    ...(hasNavigation ? ["auto"] : []),
+    "auto",
+  ].join(" ");
 }
 
 export interface AppShellRootProps extends ComponentProps<"div"> {
@@ -85,14 +96,23 @@ export function AppShellRoot({
   style,
   ...rest
 }: AppShellRootProps) {
-  const childSlots = useMemo(() => partitionAppShellChildren(children), [children]);
+  const childSlots = useMemo(
+    () => partitionAppShellChildren(children),
+    [children],
+  );
   const slots = recipe();
   const [regionRevision, setRegionRevision] = useState(0);
   const [regionVars, setRegionVars] = useState(ZERO_REGION_VARS);
   const [fixedStackVars, setFixedStackVars] = useState(ZERO_FIXED_STACK_VARS);
-  const panelStates = useRef<Partial<Record<AppShellPlacement, AppShellSideState>>>({});
-  const inspectorStates = useRef<Partial<Record<AppShellPlacement, AppShellSideState>>>({});
-  const railStates = useRef<Partial<Record<AppShellPlacement, AppShellRailState>>>({});
+  const panelStates = useRef<
+    Partial<Record<AppShellPlacement, AppShellSideState>>
+  >({});
+  const inspectorStates = useRef<
+    Partial<Record<AppShellPlacement, AppShellSideState>>
+  >({});
+  const railStates = useRef<
+    Partial<Record<AppShellPlacement, AppShellRailState>>
+  >({});
   const shellRef = useRef<HTMLDivElement>(null);
   const [regionResizing, setRegionResizing] = useState(false);
   const gridStyle = useShellGridStyle(childSlots);
@@ -106,14 +126,17 @@ export function AppShellRoot({
     });
   }, []);
 
-  const setFixedStackVar = useCallback((name: AppShellFixedStackVar, value: string) => {
-    setFixedStackVars((current) => {
-      if (current[name] === value) {
-        return current;
-      }
-      return { ...current, [name]: value };
-    });
-  }, []);
+  const setFixedStackVar = useCallback(
+    (name: AppShellFixedStackVar, value: string) => {
+      setFixedStackVars((current) => {
+        if (current[name] === value) {
+          return current;
+        }
+        return { ...current, [name]: value };
+      });
+    },
+    [],
+  );
 
   useHotkey({
     action: () => {
@@ -128,7 +151,8 @@ export function AppShellRoot({
 
   const contextValue = useMemo(
     () => ({
-      defaultInspectorResizableProps: APP_SHELL_DEFAULT_INSPECTOR_RESIZABLE_PROPS,
+      defaultInspectorResizableProps:
+        APP_SHELL_DEFAULT_INSPECTOR_RESIZABLE_PROPS,
       defaultPanelResizableProps: APP_SHELL_DEFAULT_PANEL_RESIZABLE_PROPS,
       fixedStackVars,
       inspectorStates,

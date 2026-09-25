@@ -17,7 +17,10 @@ interface Props {
 const title = Astro.props.title;
 const language = Astro.props.language ?? "tsx";
 const packageName = Astro.props.packageName ?? "@pisagor/react";
-const dependencies = Astro.props.dependencies ?? ["@pisagor/recipes", "@pisagor/tokens"];
+const dependencies = Astro.props.dependencies ?? [
+  "@pisagor/recipes",
+  "@pisagor/tokens",
+];
 const reportUrl =
   Astro.props.reportUrl ??
   "https://github.com/tingoon/pisagor/issues/new?labels=docs&title=" +
@@ -30,7 +33,10 @@ const iconBtn =
 <section
   data-component-preview
   data-package={packageName}
-  class:list={["my-7 overflow-hidden rounded-xl border border-border/70 bg-card shadow-sm", Astro.props.class]}
+  class:list={[
+  "my-7 overflow-hidden rounded-xl border border-border/70 bg-card shadow-sm",
+  Astro.props.class,
+]}
 >
   <!-- Toolbar -->
   <div
@@ -123,7 +129,11 @@ const iconBtn =
           stroke-width="2"
           viewBox="0 0 24 24"
         >
-          <path d="M14 3h7v7" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path
+            d="M14 3h7v7"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
           <path d="M10 14L21 3" stroke-linecap="round"></path>
           <path
             d="M21 14v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h6"
@@ -155,7 +165,10 @@ const iconBtn =
             <circle cx="6" cy="6" r="2.5"></circle>
             <circle cx="18" cy="6" r="2.5"></circle>
             <circle cx="12" cy="18" r="2.5"></circle>
-            <path d="M8 7.5 10.5 15M16 7.5 13.5 15" stroke-linecap="round"></path>
+            <path
+              d="M8 7.5 10.5 15M16 7.5 13.5 15"
+              stroke-linecap="round"
+            ></path>
           </svg>
         </button>
         <div
@@ -166,8 +179,12 @@ const iconBtn =
         >
           <p class="mb-1.5 px-1 docs-label">Dependencies</p>
           <ul class="space-y-0.5 font-mono text-xs">
-            <li class="rounded-md px-1.5 py-1 text-foreground">{packageName}</li>
-            {dependencies.map((dep) => <li class="rounded-md px-1.5 py-1 text-muted-foreground">{dep}</li>)}
+            <li class="rounded-md px-1.5 py-1 text-foreground">
+              {packageName}
+            </li>
+            {dependencies.map((dep) => (
+  <li class="rounded-md px-1.5 py-1 text-muted-foreground">{dep}</li>
+))}
           </ul>
         </div>
       </div>
@@ -190,13 +207,25 @@ const iconBtn =
           stroke-width="2"
           viewBox="0 0 24 24"
         >
-          <path d="M8 9V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v4" stroke-linecap="round"></path>
-          <path d="M6 9h12v4a6 6 0 0 1-6 6h0a6 6 0 0 1-6-6V9z" stroke-linejoin="round"></path>
-          <path d="M4 13h2M18 13h2M9 19v2M15 19v2" stroke-linecap="round"></path>
+          <path
+            d="M8 9V5a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v4"
+            stroke-linecap="round"
+          ></path>
+          <path
+            d="M6 9h12v4a6 6 0 0 1-6 6h0a6 6 0 0 1-6-6V9z"
+            stroke-linejoin="round"
+          ></path>
+          <path
+            d="M4 13h2M18 13h2M9 19v2M15 19v2"
+            stroke-linecap="round"
+          ></path>
         </svg>
       </a>
 
-      <div aria-hidden="true" class="mx-0.5 hidden h-4 w-px bg-border/70 sm:block"></div>
+      <div
+        aria-hidden="true"
+        class="mx-0.5 hidden h-4 w-px bg-border/70 sm:block"
+      ></div>
 
       <!-- Desktop / Tablet / Mobile -->
       <div
@@ -371,7 +400,9 @@ function bindPreview(root: HTMLElement) {
   root.dataset.bound = "1";
 
   const tabs = [...root.querySelectorAll<HTMLElement>("[data-view-tab]")];
-  const previewPanel = root.querySelector<HTMLElement>('[data-panel="preview"]');
+  const previewPanel = root.querySelector<HTMLElement>(
+    '[data-panel="preview"]',
+  );
   const codePanel = root.querySelector<HTMLElement>('[data-panel="code"]');
   const stage = root.querySelector<HTMLElement>("[data-preview-stage]");
   const themeBtn = root.querySelector<HTMLElement>("[data-theme-toggle]");
@@ -398,10 +429,14 @@ function bindPreview(root: HTMLElement) {
     });
   }
 
-  const previewThemeRoot = root.querySelector<HTMLElement>('[data-panel="preview"]');
+  const previewThemeRoot = root.querySelector<HTMLElement>(
+    '[data-panel="preview"]',
+  );
 
   function getDocsTheme(): "light" | "dark" {
-    return document.documentElement.classList.contains("dark") ? "dark" : "light";
+    return document.documentElement.classList.contains("dark")
+      ? "dark"
+      : "light";
   }
 
   function getPreviewTheme(): "light" | "dark" {
@@ -438,7 +473,9 @@ function bindPreview(root: HTMLElement) {
 
   openTabBtn?.addEventListener("click", () => {
     if (!stage) return;
-    const styles = [...document.querySelectorAll('link[rel="stylesheet"], style')]
+    const styles = [
+      ...document.querySelectorAll('link[rel="stylesheet"], style'),
+    ]
       .map((node) => node.outerHTML)
       .join("\n");
     const title = root.dataset.package || "Preview";
@@ -484,23 +521,30 @@ function bindPreview(root: HTMLElement) {
 
   function setViewport(size: "desktop" | "tablet" | "mobile") {
     if (stage) stage.dataset.viewport = size;
-    for (const btn of root.querySelectorAll<HTMLElement>("[data-viewport-group] [data-viewport]")) {
+    for (const btn of root.querySelectorAll<HTMLElement>(
+      "[data-viewport-group] [data-viewport]",
+    )) {
       const active = btn.dataset.viewport === size;
       btn.toggleAttribute("data-active", active);
       btn.setAttribute("aria-pressed", active ? "true" : "false");
     }
   }
 
-  for (const btn of root.querySelectorAll<HTMLElement>("[data-viewport-group] [data-viewport]")) {
+  for (const btn of root.querySelectorAll<HTMLElement>(
+    "[data-viewport-group] [data-viewport]",
+  )) {
     btn.addEventListener("click", () => {
       const size = btn.dataset.viewport;
-      if (size === "tablet" || size === "mobile" || size === "desktop") setViewport(size);
+      if (size === "tablet" || size === "mobile" || size === "desktop")
+        setViewport(size);
     });
   }
 }
 
 function bindAll() {
-  document.querySelectorAll<HTMLElement>("[data-component-preview]").forEach(bindPreview);
+  document
+    .querySelectorAll<HTMLElement>("[data-component-preview]")
+    .forEach(bindPreview);
 }
 
 bindAll();

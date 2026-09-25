@@ -9,8 +9,14 @@ import type {
   TagsInputRootProps as TagsInputPrimitiveRootProps,
   TagsInputRootProviderProps as TagsInputPrimitiveRootProviderProps,
 } from "@ark-ui/solid/tags-input";
-import { TagsInput as TagsInputPrimitive, useTagsInputContext } from "@ark-ui/solid/tags-input";
-import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes/tags-input";
+import {
+  TagsInput as TagsInputPrimitive,
+  useTagsInputContext,
+} from "@ark-ui/solid/tags-input";
+import {
+  tagsInputItemRecipe,
+  tagsInputRecipe,
+} from "@pisagor/recipes/tags-input";
 import type { ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
 import { XIcon } from "../../internal/icons";
@@ -22,7 +28,10 @@ import {
   useTagsInputItem,
 } from "./tags-input.context";
 
-export type TagsInputRootProps = Omit<TagsInputPrimitiveRootProps, "onValueChange"> &
+export type TagsInputRootProps = Omit<
+  TagsInputPrimitiveRootProps,
+  "onValueChange"
+> &
   Pick<InputGroupProps, "size" | "variant">;
 
 export interface TagsInputProps extends TagsInputRootProps {
@@ -82,14 +91,18 @@ export function TagsInputRoot(props: TagsInputProps): JSX.Element {
         data-size={size()}
         editable={local.editable ?? false}
         onValueChange={
-          local.onValueChange ? (details) => local.onValueChange?.(details.value) : undefined
+          local.onValueChange
+            ? (details) => local.onValueChange?.(details.value)
+            : undefined
         }
       >
         <TagsInputControl clearable={local.clearable} variant={local.variant}>
           <TagsInputPrimitive.Context>
             {(api) => (
               <For each={api().value}>
-                {(value, index) => <TagsInputItem index={index()} value={value} />}
+                {(value, index) => (
+                  <TagsInputItem index={index()} value={value} />
+                )}
               </For>
             )}
           </TagsInputPrimitive.Context>
@@ -103,7 +116,13 @@ export function TagsInputRoot(props: TagsInputProps): JSX.Element {
 }
 
 export function TagsInputControl(props: TagsInputControlProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["size", "variant", "clearable", "children", "class"]);
+  const [local, rest] = splitProps(props, [
+    "size",
+    "variant",
+    "clearable",
+    "children",
+    "class",
+  ]);
   const api = useTagsInputContext();
   const { slots } = useTagsInput();
   const clearable = () => local.clearable ?? false;
@@ -128,13 +147,21 @@ export function TagsInputControl(props: TagsInputControlProps): JSX.Element {
 }
 
 export function TagsInputItem(props: TagsInputItemProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["showDelete", "children", "itemRecipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "showDelete",
+    "children",
+    "itemRecipe",
+    "class",
+  ]);
   const slots = () => (local.itemRecipe ?? tagsInputItemRecipe)();
   const showDelete = () => local.showDelete ?? true;
 
   return (
     <TagsInputItemContext value={{ slots: slots() }}>
-      <TagsInputPrimitive.Item {...rest} class={slots().base({ class: local.class })}>
+      <TagsInputPrimitive.Item
+        {...rest}
+        class={slots().base({ class: local.class })}
+      >
         <TagsInputItemPreview>
           <TagsInputItemText>{local.children}</TagsInputItemText>
           <Show when={showDelete()}>
@@ -147,19 +174,33 @@ export function TagsInputItem(props: TagsInputItemProps): JSX.Element {
   );
 }
 
-export function TagsInputItemPreview(props: TagsInputItemPreviewProps): JSX.Element {
+export function TagsInputItemPreview(
+  props: TagsInputItemPreviewProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useTagsInputItem();
-  return <TagsInputPrimitive.ItemPreview {...rest} class={slots.preview({ class: local.class })} />;
+  return (
+    <TagsInputPrimitive.ItemPreview
+      {...rest}
+      class={slots.preview({ class: local.class })}
+    />
+  );
 }
 
 export function TagsInputItemText(props: TagsInputItemTextProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useTagsInputItem();
-  return <TagsInputPrimitive.ItemText {...rest} class={slots.text({ class: local.class })} />;
+  return (
+    <TagsInputPrimitive.ItemText
+      {...rest}
+      class={slots.text({ class: local.class })}
+    />
+  );
 }
 
-export function TagsInputItemDeleteTrigger(props: TagsInputItemDeleteTriggerProps): JSX.Element {
+export function TagsInputItemDeleteTrigger(
+  props: TagsInputItemDeleteTriggerProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const { slots } = useTagsInputItem();
 
@@ -180,12 +221,16 @@ export function TagsInputItemDeleteTrigger(props: TagsInputItemDeleteTriggerProp
   );
 }
 
-export function TagsInputItemInput(props: TagsInputItemInputProps): JSX.Element {
+export function TagsInputItemInput(
+  props: TagsInputItemInputProps,
+): JSX.Element {
   const { slots } = useTagsInputItem();
   return (
     <TagsInputPrimitive.ItemInput
       {...props}
-      asChild={(inputProps) => <InputGroup.Input {...inputProps({ class: slots.input() })} />}
+      asChild={(inputProps) => (
+        <InputGroup.Input {...inputProps({ class: slots.input() })} />
+      )}
     />
   );
 }
@@ -195,12 +240,16 @@ export function TagsInputInput(props: TagsInputInputProps): JSX.Element {
   return (
     <TagsInputPrimitive.Input
       {...props}
-      asChild={(inputProps) => <InputGroup.Input {...inputProps({ class: slots.input() })} />}
+      asChild={(inputProps) => (
+        <InputGroup.Input {...inputProps({ class: slots.input() })} />
+      )}
     />
   );
 }
 
-export function TagsInputClearTrigger(props: TagsInputClearTriggerProps): JSX.Element {
+export function TagsInputClearTrigger(
+  props: TagsInputClearTriggerProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const { slots } = useTagsInput();
 
@@ -209,7 +258,9 @@ export function TagsInputClearTrigger(props: TagsInputClearTriggerProps): JSX.El
       {...rest}
       asChild={(triggerProps) => (
         <InputGroup.Button
-          {...triggerProps({ class: slots.clearTrigger({ class: local.class }) })}
+          {...triggerProps({
+            class: slots.clearTrigger({ class: local.class }),
+          })}
           aria-label="Clear"
           size="icon-xs"
           variant="ghost"
@@ -221,8 +272,16 @@ export function TagsInputClearTrigger(props: TagsInputClearTriggerProps): JSX.El
   );
 }
 
-export function TagsInputRootProvider(props: TagsInputRootProviderProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["size", "clearable", "children", "recipe", "class"]);
+export function TagsInputRootProvider(
+  props: TagsInputRootProviderProps,
+): JSX.Element {
+  const [local, rest] = splitProps(props, [
+    "size",
+    "clearable",
+    "children",
+    "recipe",
+    "class",
+  ]);
   const slots = () => (local.recipe ?? tagsInputRecipe)();
   const size = () => local.size ?? "md";
 
@@ -233,7 +292,9 @@ export function TagsInputRootProvider(props: TagsInputRootProviderProps): JSX.El
         class={slots().base({ class: local.class })}
         data-size={size()}
       >
-        <TagsInputControl clearable={local.clearable}>{local.children}</TagsInputControl>
+        <TagsInputControl clearable={local.clearable}>
+          {local.children}
+        </TagsInputControl>
         <TagsInputPrimitive.HiddenInput />
       </TagsInputPrimitive.RootProvider>
     </TagsInputSlotsContext>

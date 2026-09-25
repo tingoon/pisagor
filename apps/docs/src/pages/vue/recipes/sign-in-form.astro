@@ -1,6 +1,6 @@
 ---
-import { SignInForm } from "@recipes-vue/sign-in-form/sign-in-form";
-import SignInFormSource from "@recipes-vue/sign-in-form/sign-in-form.ts?raw";
+import { SignInForm } from "#recipes-vue/sign-in-form/sign-in-form";
+import SignInFormSource from "#recipes-vue/sign-in-form/sign-in-form.ts?raw";
 import ComponentPreview from "../../../components/docs/component-preview.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 
@@ -24,13 +24,20 @@ const headings = [
   headings={headings}
   title="Sign In"
 >
-  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">Overview</h2>
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">
+    Overview
+  </h2>
   <p class="mb-8 text-muted-foreground">
-    Complete sign-in flow with email, password, validation, and remember-me checkbox using form
-    fields.
+    Complete sign-in flow with email, password, validation, and remember-me
+    checkbox using form fields.
   </p>
 
-  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="sign-in-form">Sign In Form</h2>
+  <h2
+    class="mb-3 mt-10 text-2xl font-semibold tracking-tight"
+    id="sign-in-form"
+  >
+    Sign In Form
+  </h2>
   <ComponentPreview code={SignInFormSource} language="ts" title="Sign In Form">
     <SignInForm client:only="vue" />
   </ComponentPreview>

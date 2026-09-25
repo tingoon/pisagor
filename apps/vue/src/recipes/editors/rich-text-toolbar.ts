@@ -1,4 +1,9 @@
-import { PhTextB, PhTextItalic, PhTextStrikethrough, PhTextUnderline } from "@phosphor-icons/vue";
+import {
+  PhTextB,
+  PhTextItalic,
+  PhTextStrikethrough,
+  PhTextUnderline,
+} from "@phosphor-icons/vue";
 import { Button, Tooltip } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 

@@ -7,7 +7,10 @@ import type {
   SplitterRootProviderProps,
 } from "@ark-ui/solid/splitter";
 import { Splitter as SplitterPrimitive } from "@ark-ui/solid/splitter";
-import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes/resizable";
+import {
+  resizableEdgeHandleRecipe,
+  resizableRecipe,
+} from "@pisagor/recipes/resizable";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
@@ -44,7 +47,8 @@ export interface ResizableEdgeHandleProps extends ComponentProps<"button"> {
   recipe?: typeof resizableEdgeHandleRecipe;
 }
 
-export interface ResizableResizeTriggerProps extends SplitterResizeTriggerProps {
+export interface ResizableResizeTriggerProps
+  extends SplitterResizeTriggerProps {
   withHandle?: boolean;
 }
 
@@ -53,14 +57,17 @@ export interface ResizableRootProps extends SplitterRootProps {
 }
 
 export type ResizablePanelProps = SplitterPanelProps;
-export type ResizableResizeTriggerIndicatorProps = SplitterResizeTriggerIndicatorProps;
+export type ResizableResizeTriggerIndicatorProps =
+  SplitterResizeTriggerIndicatorProps;
 export type ResizableContextProps = SplitterContextProps;
 
 export interface ResizableRootProviderProps extends SplitterRootProviderProps {
   recipe?: typeof resizableRecipe;
 }
 
-export function ResizableEdgeHandle(props: ResizableEdgeHandleProps): JSX.Element {
+export function ResizableEdgeHandle(
+  props: ResizableEdgeHandleProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, [
     "placement",
     "handlePosition",
@@ -152,7 +159,10 @@ export function ResizableRoot(props: ResizableRootProps): JSX.Element {
 
   return (
     <ResizableSlotsContext value={{ slots: slots() }}>
-      <SplitterPrimitive.Root {...rest} class={slots().base({ class: cn(local.class) })}>
+      <SplitterPrimitive.Root
+        {...rest}
+        class={slots().base({ class: cn(local.class) })}
+      >
         {local.children}
       </SplitterPrimitive.Root>
     </ResizableSlotsContext>
@@ -176,7 +186,9 @@ export function ResizableResizeTriggerIndicator(
   );
 }
 
-export function ResizableResizeTrigger(props: ResizableResizeTriggerProps): JSX.Element {
+export function ResizableResizeTrigger(
+  props: ResizableResizeTriggerProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "withHandle", "class"]);
   const { slots } = useResizable();
   const withHandle = () => local.withHandle ?? false;
@@ -187,7 +199,10 @@ export function ResizableResizeTrigger(props: ResizableResizeTriggerProps): JSX.
       aria-label="Resize"
       class={slots.resizeTrigger({ class: cn(local.class) })}
     >
-      <Show fallback={local.children ?? <ResizableResizeTriggerIndicator />} when={withHandle()}>
+      <Show
+        fallback={local.children ?? <ResizableResizeTriggerIndicator />}
+        when={withHandle()}
+      >
         <div class={slots.resizeTriggerHandle()}>
           <DotsSixVerticalIcon class={slots.resizeTriggerIcon()} />
         </div>
@@ -200,13 +215,18 @@ export function ResizableContext(props: ResizableContextProps): JSX.Element {
   return <SplitterPrimitive.Context {...props} />;
 }
 
-export function ResizableRootProvider(props: ResizableRootProviderProps): JSX.Element {
+export function ResizableRootProvider(
+  props: ResizableRootProviderProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "recipe", "class"]);
   const slots = () => (local.recipe ?? resizableRecipe)();
 
   return (
     <ResizableSlotsContext value={{ slots: slots() }}>
-      <SplitterPrimitive.RootProvider {...rest} class={slots().base({ class: cn(local.class) })}>
+      <SplitterPrimitive.RootProvider
+        {...rest}
+        class={slots().base({ class: cn(local.class) })}
+      >
         {local.children}
       </SplitterPrimitive.RootProvider>
     </ResizableSlotsContext>

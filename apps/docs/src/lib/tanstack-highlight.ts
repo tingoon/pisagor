@@ -35,5 +35,6 @@ function resolveHighlightLang(lang: string): string {
 
 /** Escape-safe highlighted HTML (`<pre class="th-code">…</pre>`). */
 export function highlightCode(code: string, lang: string): string {
-  return docsHighlighter.highlight(code, { lang: resolveHighlightLang(lang) }).html;
+  return docsHighlighter.highlight(code, { lang: resolveHighlightLang(lang) })
+    .html;
 }

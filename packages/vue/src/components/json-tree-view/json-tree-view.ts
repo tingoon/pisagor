@@ -1,6 +1,9 @@
 import { JsonTreeView as JsonTreeViewPrimitive } from "@ark-ui/vue/json-tree-view";
 import { PhCaretRight } from "@phosphor-icons/vue";
-import { type JsonTreeViewRecipeSlot, jsonTreeViewRecipe } from "@pisagor/recipes/json-tree-view";
+import {
+  type JsonTreeViewRecipeSlot,
+  jsonTreeViewRecipe,
+} from "@pisagor/recipes/json-tree-view";
 import { defineComponent, h, type PropType } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 
@@ -36,8 +39,14 @@ export const JsonTreeView = defineComponent({
   inheritAttrs: false,
   name: "PisagorJsonTreeView",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<JsonTreeViewClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<JsonTreeViewClassNames>,
+    },
     data: { required: true, type: Object as PropType<object> },
     defaultExpandedDepth: { default: undefined, type: Number },
     lazyMount: { default: true, type: Boolean },
@@ -45,8 +54,14 @@ export const JsonTreeView = defineComponent({
       default: jsonTreeViewRecipe,
       type: Function as PropType<typeof jsonTreeViewRecipe>,
     },
-    renderValue: { default: undefined, type: Function as PropType<JsonTreeViewRenderValue> },
-    treeProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
+    renderValue: {
+      default: undefined,
+      type: Function as PropType<JsonTreeViewRenderValue>,
+    },
+    treeProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs }) {

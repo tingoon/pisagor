@@ -5,6 +5,7 @@ interface CollapsibleContextValue {
   slots: CollapsibleRecipe;
 }
 
-export const { CollapsibleContext, useCollapsible } = createContext<CollapsibleContextValue>()({
-  name: "Collapsible",
-});
+export const { CollapsibleContext, useCollapsible } =
+  createContext<CollapsibleContextValue>()({
+    name: "Collapsible",
+  });

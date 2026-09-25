@@ -8,7 +8,9 @@ import type { ComponentProps, ReactNode } from "react";
 import { TimelineItemContext, useTimelineItem } from "./timeline.context";
 
 // #region Types
-export interface TimelineRootProps extends ComponentProps<typeof ark.ol>, TimelineVariantProps {
+export interface TimelineRootProps
+  extends ComponentProps<typeof ark.ol>,
+    TimelineVariantProps {
   /**
    * Style recipe. Defaults to `timelineRecipe` from `@pisagor/recipes/timeline`.
    *
@@ -89,7 +91,11 @@ export function TimelineItem({
   );
 }
 
-export function TimelineIndicator({ children, className, ...rest }: TimelineIndicatorProps) {
+export function TimelineIndicator({
+  children,
+  className,
+  ...rest
+}: TimelineIndicatorProps) {
   const { slots } = useTimelineItem();
 
   return (
@@ -104,7 +110,10 @@ export function TimelineIndicator({ children, className, ...rest }: TimelineIndi
   );
 }
 
-export function TimelineSeparator({ className, ...rest }: TimelineSeparatorProps) {
+export function TimelineSeparator({
+  className,
+  ...rest
+}: TimelineSeparatorProps) {
   const { slots } = useTimelineItem();
 
   return (
@@ -144,7 +153,10 @@ export function TimelineTitle({ className, ...rest }: TimelineTitleProps) {
   );
 }
 
-export function TimelineDescription({ className, ...rest }: TimelineDescriptionProps) {
+export function TimelineDescription({
+  className,
+  ...rest
+}: TimelineDescriptionProps) {
   const { slots } = useTimelineItem();
 
   return (

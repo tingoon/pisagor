@@ -8,7 +8,11 @@ export const toggleGroupRecipe = tv({
     orientation: "horizontal",
   },
   slots: {
-    base: ["w-fit", "flex items-center gap-[--spacing(var(--gap))]", "rounded-lg"],
+    base: [
+      "w-fit",
+      "flex items-center gap-[--spacing(var(--gap))]",
+      "rounded-lg",
+    ],
     item: [
       "shrink-0 focus:z-10 focus-visible:z-10",
       "data-[spacing=0]:rounded-none",

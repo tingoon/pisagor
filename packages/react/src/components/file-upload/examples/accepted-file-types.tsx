@@ -6,7 +6,9 @@ export function AcceptedFileTypes() {
       <FileUpload.Dropzone className="w-full">
         <FileUpload.DropzoneIcon />
         <FileUpload.Title>Drop your images here</FileUpload.Title>
-        <FileUpload.Helper>Only PNG and JPEG formats are allowed.</FileUpload.Helper>
+        <FileUpload.Helper>
+          Only PNG and JPEG formats are allowed.
+        </FileUpload.Helper>
       </FileUpload.Dropzone>
       <FileUpload.List />
     </FileUpload>

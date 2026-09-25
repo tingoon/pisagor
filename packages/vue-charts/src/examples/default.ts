@@ -19,13 +19,27 @@ export default defineComponent({
         };
 
         const legendPayload = [
-          { color: "var(--color-desktop)", dataKey: "desktop", name: "desktop" },
+          {
+            color: "var(--color-desktop)",
+            dataKey: "desktop",
+            name: "desktop",
+          },
           { color: "var(--color-mobile)", dataKey: "mobile", name: "mobile" },
         ];
 
         const tooltipPayload = [
-          { dataKey: "desktop", fill: "var(--color-desktop)", name: "Desktop", value: 186 },
-          { dataKey: "mobile", fill: "var(--color-mobile)", name: "Mobile", value: 80 },
+          {
+            dataKey: "desktop",
+            fill: "var(--color-desktop)",
+            name: "Desktop",
+            value: 186,
+          },
+          {
+            dataKey: "mobile",
+            fill: "var(--color-mobile)",
+            name: "Mobile",
+            value: 80,
+          },
         ];
 
         return { chartConfig, legendPayload, tooltipPayload };

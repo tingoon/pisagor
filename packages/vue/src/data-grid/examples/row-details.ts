@@ -9,7 +9,14 @@ import {
   useDataGrid,
 } from "@pisagor/vue/data-grid";
 import type { ExpandedState, Row, RowData } from "@tanstack/vue-table";
-import { computed, defineComponent, h, type PropType, ref, type VNodeChild } from "vue";
+import {
+  computed,
+  defineComponent,
+  h,
+  type PropType,
+  ref,
+  type VNodeChild,
+} from "vue";
 import { DataGrid } from "..";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -17,7 +24,9 @@ type ArkPart = Parameters<typeof h>[0];
 type DataGridRow<TData extends RowData> = Row<DataGridFeatures, TData>;
 
 function applyUpdater<T>(current: T, updater: T | ((old: T) => T)): T {
-  return typeof updater === "function" ? (updater as (old: T) => T)(current) : updater;
+  return typeof updater === "function"
+    ? (updater as (old: T) => T)(current)
+    : updater;
 }
 
 interface FullUser {
@@ -34,7 +43,13 @@ const ROLES: FullUser["role"][] = ["Admin", "Editor", "Viewer"];
 
 const STATUSES: FullUser["status"][] = ["active", "inactive", "invited"];
 
-const DEPARTMENTS = ["Engineering", "Design", "Marketing", "Sales", "Support"] as const;
+const DEPARTMENTS = [
+  "Engineering",
+  "Design",
+  "Marketing",
+  "Sales",
+  "Support",
+] as const;
 
 const FIRST_NAMES = [
   "Alice",
@@ -61,10 +76,15 @@ const statusVariants: Record<FullUser["status"], BadgeVariant> = {
 };
 
 const allUsers: FullUser[] = Array.from({ length: 48 }, (_, index) => ({
-  department: DEPARTMENTS[index % DEPARTMENTS.length] ?? DEPARTMENTS[0] ?? "Engineering",
+  department:
+    DEPARTMENTS[index % DEPARTMENTS.length] ?? DEPARTMENTS[0] ?? "Engineering",
   email: `user${index + 1}@example.com`,
   id: String(index + 1),
-  joinedAt: new Date(2020 + (index % 5), index % 12, (index % 28) + 1).toISOString(),
+  joinedAt: new Date(
+    2020 + (index % 5),
+    index % 12,
+    (index % 28) + 1,
+  ).toISOString(),
   name: `${FIRST_NAMES[index % FIRST_NAMES.length] ?? "Alex"} ${String.fromCharCode(65 + (index % 26))}.`,
   role: ROLES[index % ROLES.length] ?? "Viewer",
   status: STATUSES[index % STATUSES.length] ?? "active",
@@ -83,7 +103,9 @@ const DataGridShell = defineComponent({
   setup(_, { slots }) {
     return () =>
       h("div", { class: "flex w-full flex-col gap-3" }, () =>
-        h("div", { class: "rounded-xl border bg-muted/20 p-3" }, () => slots.default?.()),
+        h("div", { class: "rounded-xl border bg-muted/20 p-3" }, () =>
+          slots.default?.(),
+        ),
       );
   },
 });
@@ -117,23 +139,30 @@ const DataGridExpandableBody = defineComponent({
             key: row.id,
           },
           () =>
-            row
-              .getVisibleCells()
-              .map((cell) =>
-                h(
-                  Table.Cell,
-                  { "data-part": "cell", "data-scope": "data-grid", key: cell.id },
-                  () => renderDataGridCell(cell),
-                ),
+            row.getVisibleCells().map((cell) =>
+              h(
+                Table.Cell,
+                {
+                  "data-part": "cell",
+                  "data-scope": "data-grid",
+                  key: cell.id,
+                },
+                () => renderDataGridCell(cell),
               ),
+            ),
         ),
         row.getIsExpanded()
           ? h(
               Table.Row as ArkPart,
-              { class: "bg-muted/30 hover:bg-muted/30", key: `${row.id}-detail` },
+              {
+                class: "bg-muted/30 hover:bg-muted/30",
+                key: `${row.id}-detail`,
+              },
               () =>
-                h(Table.Cell as ArkPart, { class: "p-4", colSpan: props.colSpan }, () =>
-                  props.renderDetail(row),
+                h(
+                  Table.Cell as ArkPart,
+                  { class: "p-4", colSpan: props.colSpan },
+                  () => props.renderDetail(row),
                 ),
             )
           : null,
@@ -154,8 +183,11 @@ export function RowDetails() {
             h(
               "button",
               {
-                "aria-label": row.getIsExpanded() ? "Collapse details" : "Expand details",
-                class: "inline-flex size-6 items-center justify-center rounded-md hover:bg-muted",
+                "aria-label": row.getIsExpanded()
+                  ? "Collapse details"
+                  : "Expand details",
+                class:
+                  "inline-flex size-6 items-center justify-center rounded-md hover:bg-muted",
                 onClick: row.getToggleExpandedHandler(),
                 type: "button",
               },
@@ -176,7 +208,10 @@ export function RowDetails() {
           cell: ({ row }: CellContext<FullUser, unknown>) =>
             h(
               Badge as ArkPart,
-              { class: "capitalize", variant: statusVariants[row.original.status] },
+              {
+                class: "capitalize",
+                variant: statusVariants[row.original.status],
+              },
               () => row.original.status,
             ),
           header: "Status",
@@ -199,12 +234,24 @@ export function RowDetails() {
         h("div", { class: "grid gap-3 sm:grid-cols-2" }, [
           h("div", null, [
             h("p", { class: "font-medium text-sm" }, "Profile"),
-            h("p", { class: "text-muted-foreground text-sm" }, row.original.name),
-            h("p", { class: "text-muted-foreground text-sm" }, row.original.email),
+            h(
+              "p",
+              { class: "text-muted-foreground text-sm" },
+              row.original.name,
+            ),
+            h(
+              "p",
+              { class: "text-muted-foreground text-sm" },
+              row.original.email,
+            ),
           ]),
           h("div", null, [
             h("p", { class: "font-medium text-sm" }, "Organization"),
-            h("p", { class: "text-muted-foreground text-sm" }, row.original.department),
+            h(
+              "p",
+              { class: "text-muted-foreground text-sm" },
+              row.original.department,
+            ),
             h(
               "p",
               { class: "text-muted-foreground text-sm" },

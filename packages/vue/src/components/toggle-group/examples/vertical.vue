@@ -4,7 +4,11 @@ import { ToggleGroup } from "..";
 </script>
 
 <template>
-  <ToggleGroup.Root orientation="vertical" variant="outline" :default-value="['bold']">
+  <ToggleGroup.Root
+    orientation="vertical"
+    variant="outline"
+    :default-value="['bold']"
+  >
     <ToggleGroup.Item aria-label="Toggle bold" value="bold">
       <PhTextB />
     </ToggleGroup.Item>

@@ -2,7 +2,23 @@
   "extends": "//",
   "linter": {
     "domains": {
-      "astro": "recommended"
+      "astro": "all",
+      "react": "recommended",
+      "solid": "none",
+      "svelte": "none",
+      "vue": "recommended"
     }
-  }
+  },
+  "overrides": [
+    {
+      "includes": ["scripts/**"],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noConsole": "off"
+          }
+        }
+      }
+    }
+  ]
 }

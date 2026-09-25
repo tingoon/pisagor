@@ -17,7 +17,10 @@ export type {
   PaginationRootProps,
 } from "@ark-ui/react/pagination";
 
-export type { PaginationItemLinkProps, PaginationItemsProps } from "./pagination";
+export type {
+  PaginationItemLinkProps,
+  PaginationItemsProps,
+} from "./pagination";
 
 export const Pagination = Object.assign(PaginationRoot, {
   Ellipsis: PaginationEllipsis,

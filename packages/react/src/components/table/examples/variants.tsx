@@ -5,7 +5,9 @@ export function Variants() {
   return (
     <div className="flex flex-col gap-2">
       <Table variant="plain">
-        <Table.Caption className="sr-only">Default table variant.</Table.Caption>
+        <Table.Caption className="sr-only">
+          Default table variant.
+        </Table.Caption>
         <Table.Header>
           <Table.Row>
             <Table.Head>Name</Table.Head>
@@ -22,7 +24,9 @@ export function Variants() {
         </Table.Body>
       </Table>
       <Table variant="striped">
-        <Table.Caption className="sr-only">Striped table variant.</Table.Caption>
+        <Table.Caption className="sr-only">
+          Striped table variant.
+        </Table.Caption>
         <Table.Header>
           <Table.Row>
             <Table.Head>Name</Table.Head>

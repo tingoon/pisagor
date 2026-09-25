@@ -4,7 +4,12 @@ import {
   type FormControlGroupShellVariantProps,
   formControlGroupShellRecipe,
 } from "@pisagor/recipes/form-control";
-import { type ChangeEventHandler, type ComponentProps, useRef, useState } from "react";
+import {
+  type ChangeEventHandler,
+  type ComponentProps,
+  useRef,
+  useState,
+} from "react";
 import {
   InputGroupAddon,
   InputGroupButton,
@@ -36,7 +41,9 @@ type FileInputRootProps = ComponentProps<typeof ark.div> &
     recipe?: typeof fileInputRecipe;
   };
 
-export interface FileInputProps extends NativeFileInputProps, FileInputVariantProps {
+export interface FileInputProps
+  extends NativeFileInputProps,
+    FileInputVariantProps {
   /** Marks the control invalid for styling and assistive tech. */
   invalid?: boolean;
   /** Label for the browse button. */
@@ -105,7 +112,11 @@ function FileInputRoot({
       <ark.div
         {...rest}
         {...controlProps}
-        className={formControlGroupShellRecipe({ className, size, ...shellArgs })}
+        className={formControlGroupShellRecipe({
+          className,
+          size,
+          ...shellArgs,
+        })}
         data-disabled={disabled ? true : undefined}
         data-part="root"
         data-scope="file-input"
@@ -217,7 +228,11 @@ export function FileInput({
       />
 
       <InputGroupAddon align="inline-start">
-        <InputGroupButton disabled={disabled} onClick={openPicker} type="button">
+        <InputGroupButton
+          disabled={disabled}
+          onClick={openPicker}
+          type="button"
+        >
           {browseLabel}
         </InputGroupButton>
       </InputGroupAddon>

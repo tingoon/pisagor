@@ -9,7 +9,12 @@ type FormControlVariant = "primary" | "secondary";
 
 type Props = HTMLAttributes<"div"> & FormControlGroupShellVariantProps;
 
-const { size = "md", variant: variantProp, class: className, ...rest } = Astro.props;
+const {
+  size = "md",
+  variant: variantProp,
+  class: className,
+  ...rest
+} = Astro.props;
 const variant = variantProp ?? ("primary" as FormControlVariant);
 ---
 

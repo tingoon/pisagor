@@ -1,6 +1,9 @@
 import { ark } from "@ark-ui/vue/factory";
 import { PhX } from "@phosphor-icons/vue";
-import { type ActionBarRecipe, actionBarRecipe } from "@pisagor/recipes/action-bar";
+import {
+  type ActionBarRecipe,
+  actionBarRecipe,
+} from "@pisagor/recipes/action-bar";
 import { cn } from "@pisagor/utils";
 import {
   defineComponent,
@@ -35,7 +38,8 @@ interface ActionBarActionItem {
   disabled?: boolean;
 }
 
-export interface ActionBarProps extends Pick<ActionBarContextValue, "lazyMount" | "unmountOnExit"> {
+export interface ActionBarProps
+  extends Pick<ActionBarContextValue, "lazyMount" | "unmountOnExit"> {
   closeOnEscape?: boolean;
   defaultOpen?: boolean;
   onOpenChange?: (open: boolean) => void;
@@ -86,16 +90,22 @@ interface ActionBarContextValue {
 // #endregion
 
 // #region Context
-const [provideActionBarContext, useActionBarContext] = createContext<ActionBarContextValue>({
-  name: "ActionBar",
-  strict: false,
-});
+const [provideActionBarContext, useActionBarContext] =
+  createContext<ActionBarContextValue>({
+    name: "ActionBar",
+    strict: false,
+  });
 // #endregion
 
 // #region Constants
-const defaultPositioning: Required<ActionBarPositioning> = { gutter: "16px", placement: "bottom" };
+const defaultPositioning: Required<ActionBarPositioning> = {
+  gutter: "16px",
+  placement: "bottom",
+};
 
-function actionBarTeleport(content: ReturnType<typeof h> | ReturnType<typeof h>[]) {
+function actionBarTeleport(
+  content: ReturnType<typeof h> | ReturnType<typeof h>[],
+) {
   return h(Teleport, { to: "body" }, () => content);
 }
 // #endregion
@@ -105,14 +115,23 @@ export const ActionBarRoot = defineComponent({
   inheritAttrs: false,
   name: "ActionBarRoot",
   props: {
-    actions: { default: undefined, type: Array as PropType<ActionBarActionItem[]> },
+    actions: {
+      default: undefined,
+      type: Array as PropType<ActionBarActionItem[]>,
+    },
     closeOnEscape: { default: true, type: Boolean },
     count: { default: undefined, type: Number },
     defaultOpen: { default: false, type: Boolean },
     lazyMount: { default: true, type: Boolean },
-    onOpenChange: { default: undefined, type: Function as PropType<(open: boolean) => void> },
+    onOpenChange: {
+      default: undefined,
+      type: Function as PropType<(open: boolean) => void>,
+    },
     open: { default: undefined, type: Boolean },
-    positioning: { default: undefined, type: Object as PropType<ActionBarPositioning> },
+    positioning: {
+      default: undefined,
+      type: Object as PropType<ActionBarPositioning>,
+    },
     recipe: {
       default: actionBarRecipe,
       type: Function as PropType<typeof actionBarRecipe>,
@@ -120,10 +139,13 @@ export const ActionBarRoot = defineComponent({
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    const internalOpen = reactive<{ value: boolean }>({ value: props.defaultOpen });
+    const internalOpen = reactive<{ value: boolean }>({
+      value: props.defaultOpen,
+    });
 
     const isControlled = () => props.open !== undefined;
-    const isOpen = () => (isControlled() ? props.open : internalOpen.value) ?? false;
+    const isOpen = () =>
+      (isControlled() ? props.open : internalOpen.value) ?? false;
 
     const handleClose = () => {
       if (!isControlled()) internalOpen.value = false;
@@ -168,14 +190,18 @@ export const ActionBarRoot = defineComponent({
       contextValue.isOpen = isOpen();
       contextValue.lazyMount = props.lazyMount;
       contextValue.unmountOnExit = props.unmountOnExit;
-      contextValue.positioning = { ...defaultPositioning, ...(props.positioning ?? {}) };
+      contextValue.positioning = {
+        ...defaultPositioning,
+        ...(props.positioning ?? {}),
+      };
     });
 
     provideActionBarContext(contextValue);
 
     return () => {
       const hasPreset =
-        props.count !== undefined || (props.actions !== undefined && props.actions.length > 0);
+        props.count !== undefined ||
+        (props.actions !== undefined && props.actions.length > 0);
 
       return h(
         "div",
@@ -188,7 +214,9 @@ export const ActionBarRoot = defineComponent({
           slots.default?.(),
           hasPreset
             ? h(ActionBarContent, null, () => [
-                props.count !== undefined ? h(ActionBarValue, { count: props.count }) : null,
+                props.count !== undefined
+                  ? h(ActionBarValue, { count: props.count })
+                  : null,
                 props.count !== undefined ? h(ActionBarSeparator) : null,
                 props.actions?.length
                   ? h(ActionBarBody, null, () =>
@@ -221,7 +249,10 @@ export const ActionBarTrigger = defineComponent({
   inheritAttrs: false,
   name: "ActionBarTrigger",
   props: {
-    onClick: { default: undefined, type: Function as PropType<(event: MouseEvent) => void> },
+    onClick: {
+      default: undefined,
+      type: Function as PropType<(event: MouseEvent) => void>,
+    },
   },
   setup(props, { attrs, slots }) {
     const context = useActionBarContext();
@@ -252,7 +283,10 @@ export const ActionBarContent = defineComponent({
   inheritAttrs: false,
   name: "ActionBarContent",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     const context = useActionBarContext();
@@ -298,8 +332,14 @@ export const ActionBarSeparator = defineComponent({
   inheritAttrs: false,
   name: "ActionBarSeparator",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    orientation: { default: "vertical", type: String as PropType<"horizontal" | "vertical"> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    orientation: {
+      default: "vertical",
+      type: String as PropType<"horizontal" | "vertical">,
+    },
     recipe: {
       default: actionBarRecipe,
       type: Function as PropType<typeof actionBarRecipe>,
@@ -313,7 +353,11 @@ export const ActionBarSeparator = defineComponent({
         Separator as ArkPart,
         {
           ...attrs,
-          class: cn((context?.slots ?? props.recipe()).separator(), props.class, attrs.class),
+          class: cn(
+            (context?.slots ?? props.recipe()).separator(),
+            props.class,
+            attrs.class,
+          ),
           dataPart: "separator",
           dataScope: "action-bar",
           orientation: "vertical",
@@ -327,8 +371,14 @@ export const ActionBarClose = defineComponent({
   inheritAttrs: false,
   name: "ActionBarClose",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    onClick: { default: undefined, type: Function as PropType<(event: MouseEvent) => void> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    onClick: {
+      default: undefined,
+      type: Function as PropType<(event: MouseEvent) => void>,
+    },
     recipe: {
       default: actionBarRecipe,
       type: Function as PropType<typeof actionBarRecipe>,
@@ -342,7 +392,11 @@ export const ActionBarClose = defineComponent({
         ark.button as unknown as ArkPart,
         {
           ...attrs,
-          class: cn((context?.slots ?? props.recipe()).close(), props.class, attrs.class),
+          class: cn(
+            (context?.slots ?? props.recipe()).close(),
+            props.class,
+            attrs.class,
+          ),
           "data-part": "close",
           "data-scope": "action-bar",
           "data-state": context?.isOpen ? "open" : "closed",
@@ -362,7 +416,10 @@ export const ActionBarValue = defineComponent({
   inheritAttrs: false,
   name: "ActionBarValue",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     count: { required: true, type: Number },
     label: { default: undefined, type: String },
     recipe: {
@@ -378,7 +435,11 @@ export const ActionBarValue = defineComponent({
         Badge as ArkPart,
         {
           ...attrs,
-          class: cn((context?.slots ?? props.recipe()).value(), props.class, attrs.class),
+          class: cn(
+            (context?.slots ?? props.recipe()).value(),
+            props.class,
+            attrs.class,
+          ),
           "data-part": "value",
           "data-scope": "action-bar",
           variant: "secondary",
@@ -392,7 +453,10 @@ export const ActionBarBody = defineComponent({
   inheritAttrs: false,
   name: "ActionBarBody",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: actionBarRecipe,
       type: Function as PropType<typeof actionBarRecipe>,
@@ -406,7 +470,11 @@ export const ActionBarBody = defineComponent({
         ark.div as unknown as ArkPart,
         {
           ...attrs,
-          class: cn((context?.slots ?? props.recipe()).body(), props.class, attrs.class),
+          class: cn(
+            (context?.slots ?? props.recipe()).body(),
+            props.class,
+            attrs.class,
+          ),
         },
         slots.default?.(),
       );

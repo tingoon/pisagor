@@ -56,7 +56,9 @@ export function HoverCardArrow(props: HoverCardArrowProps): JSX.Element {
       style={{
         "--arrow-background": "var(--popover)",
         "--arrow-size": "calc(1.5 * var(--spacing))",
-        ...(typeof local.style === "object" && local.style !== null ? local.style : {}),
+        ...(typeof local.style === "object" && local.style !== null
+          ? local.style
+          : {}),
       }}
     >
       <HoverCardPrimitive.ArrowTip class={slots.arrowTip()} />
@@ -71,7 +73,10 @@ export function HoverCardContent(props: HoverCardContentProps): JSX.Element {
   return (
     <Portal>
       <HoverCardPrimitive.Positioner>
-        <HoverCardPrimitive.Content {...rest} class={slots.content({ class: cn(local.class) })}>
+        <HoverCardPrimitive.Content
+          {...rest}
+          class={slots.content({ class: cn(local.class) })}
+        >
           {local.children}
           <HoverCardArrow />
         </HoverCardPrimitive.Content>

@@ -71,9 +71,10 @@ export interface SortableHandleProps {
 // #endregion
 
 // #region Context
-const [provideSortableContext, useSortableContext] = createContext<SortableContextValue>({
-  name: "Sortable",
-});
+const [provideSortableContext, useSortableContext] =
+  createContext<SortableContextValue>({
+    name: "Sortable",
+  });
 const [provideSortableItemContext, useSortableItemContext] =
   createContext<SortableItemContextValue>({
     name: "SortableItem",
@@ -104,10 +105,16 @@ export const SortableRoot = defineComponent({
   inheritAttrs: false,
   name: "SortableRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     disabled: { default: false, type: Boolean },
     items: { required: true, type: Array as PropType<string[]> },
-    onValueChange: { default: undefined, type: Function as PropType<(items: string[]) => void> },
+    onValueChange: {
+      default: undefined,
+      type: Function as PropType<(items: string[]) => void>,
+    },
     orientation: {
       default: "vertical",
       type: String as PropType<SortableOrientation>,
@@ -170,7 +177,8 @@ export const SortableRoot = defineComponent({
       const current = itemsRef.value;
       const index = current.indexOf(id);
       const targetIndex = index + delta;
-      if (index === -1 || targetIndex < 0 || targetIndex >= current.length) return;
+      if (index === -1 || targetIndex < 0 || targetIndex >= current.length)
+        return;
       props.onValueChange?.(reorder(current, index, targetIndex));
     };
 
@@ -180,7 +188,8 @@ export const SortableRoot = defineComponent({
       return {
         "aria-disabled": props.disabled || undefined,
         "data-dragging": activeId.value === id ? "true" : undefined,
-        "data-drop-target": overId.value === id && activeId.value !== id ? "true" : undefined,
+        "data-drop-target":
+          overId.value === id && activeId.value !== id ? "true" : undefined,
         draggable: !props.disabled && !itemHasHandle,
         onDragEnd: () => {
           endDrag();
@@ -194,7 +203,11 @@ export const SortableRoot = defineComponent({
         },
         onDragLeave: (event: DragEvent) => {
           const related = event.relatedTarget as Node | null;
-          if (related && event.currentTarget && (event.currentTarget as Node).contains(related)) {
+          if (
+            related &&
+            event.currentTarget &&
+            (event.currentTarget as Node).contains(related)
+          ) {
             return;
           }
           overId.value = overId.value === id ? null : overId.value;
@@ -217,14 +230,17 @@ export const SortableRoot = defineComponent({
         onDrop: (event: DragEvent) => {
           event.preventDefault();
           event.stopPropagation();
-          const fromId = event.dataTransfer?.getData("text/plain") || activeIdRef.value;
+          const fromId =
+            event.dataTransfer?.getData("text/plain") || activeIdRef.value;
           if (fromId) commitReorder(fromId, id);
           endDrag();
         },
         onKeyDown: (event: KeyboardEvent) => {
           if (props.disabled) return;
           const movePrev =
-            props.orientation === "vertical" ? event.key === "ArrowUp" : event.key === "ArrowLeft";
+            props.orientation === "vertical"
+              ? event.key === "ArrowUp"
+              : event.key === "ArrowLeft";
           const moveNext =
             props.orientation === "vertical"
               ? event.key === "ArrowDown"
@@ -263,7 +279,11 @@ export const SortableRoot = defineComponent({
         ark.div as unknown as ArkPart,
         {
           ...attrs,
-          class: cn(props.recipe({ orientation: props.orientation }), props.class, attrs.class),
+          class: cn(
+            props.recipe({ orientation: props.orientation }),
+            props.class,
+            attrs.class,
+          ),
           "data-orientation": props.orientation,
           "data-part": "root",
           "data-scope": "sortable",
@@ -278,7 +298,10 @@ export const SortableItem = defineComponent({
   inheritAttrs: false,
   name: "SortableItem",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: sortableItemRecipe,
       type: Function as PropType<typeof sortableItemRecipe>,
@@ -325,7 +348,10 @@ export const SortableHandle = defineComponent({
   name: "SortableHandle",
   props: {
     ariaLabel: { default: undefined, type: String },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     const itemContext = useSortableItemContext();
@@ -350,7 +376,9 @@ export const SortableHandle = defineComponent({
           ...attrs,
           "aria-disabled": sortable.disabled || undefined,
           "aria-label":
-            (attrs["aria-label"] as string | undefined) ?? props.ariaLabel ?? "Drag to reorder",
+            (attrs["aria-label"] as string | undefined) ??
+            props.ariaLabel ??
+            "Drag to reorder",
           class: itemContext.slots.handle({
             class: cn(
               sortable.disabled && "pointer-events-none opacity-50",
@@ -401,7 +429,10 @@ export const SortableItemContent = defineComponent({
   inheritAttrs: false,
   name: "SortableItemContent",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     const itemContext = useSortableItemContext();
@@ -415,7 +446,9 @@ export const SortableItemContent = defineComponent({
         ark.div as unknown as ArkPart,
         {
           ...attrs,
-          class: itemContext.slots.content({ class: cn(props.class, attrs.class) }),
+          class: itemContext.slots.content({
+            class: cn(props.class, attrs.class),
+          }),
           "data-part": "item-content",
           "data-scope": "sortable",
         },

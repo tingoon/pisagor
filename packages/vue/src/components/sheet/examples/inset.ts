@@ -12,7 +12,8 @@ export default defineComponent({
         ),
         h(Sheet.Content, { variant: "inset" }, () => [
           h(Sheet.Header, {
-            description: "This sheet uses the inset variant with rounded corners and padding.",
+            description:
+              "This sheet uses the inset variant with rounded corners and padding.",
             title: "Inset sheet",
           }),
           h(Sheet.Body, null, () =>
@@ -29,10 +30,18 @@ export default defineComponent({
           ),
           h(Sheet.Footer, null, () => [
             h(Sheet.CloseTrigger, { asChild: true }, () =>
-              h("button", { class: outlineButtonClass(), type: "button" }, "Cancel"),
+              h(
+                "button",
+                { class: outlineButtonClass(), type: "button" },
+                "Cancel",
+              ),
             ),
             h(Sheet.CloseTrigger, { asChild: true }, () =>
-              h("button", { class: outlineButtonClass(), type: "button" }, "Save changes"),
+              h(
+                "button",
+                { class: outlineButtonClass(), type: "button" },
+                "Save changes",
+              ),
             ),
           ]),
         ]),

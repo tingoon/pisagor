@@ -13,15 +13,24 @@ export default defineComponent({
         h(Drawer.Content, null, () =>
           h(Drawer.ContentInner, null, () => [
             h(Drawer.Header, {
-              description: "Make changes to your account here. Swipe down to close.",
+              description:
+                "Make changes to your account here. Swipe down to close.",
               title: "Edit profile",
             }),
             h(Drawer.Body, null, () =>
-              h("p", { class: "text-muted-foreground text-sm" }, "Drawer body content."),
+              h(
+                "p",
+                { class: "text-muted-foreground text-sm" },
+                "Drawer body content.",
+              ),
             ),
             h(Drawer.Footer, null, () =>
               h(Drawer.CloseTrigger, { asChild: true }, () =>
-                h("button", { class: outlineButtonClass(), type: "button" }, "Save"),
+                h(
+                  "button",
+                  { class: outlineButtonClass(), type: "button" },
+                  "Save",
+                ),
               ),
             ),
           ]),

@@ -3,13 +3,22 @@ import {
   type FormControlShellVariantProps,
   formControlShellRecipe,
 } from "@pisagor/recipes/form-control";
-import { type TextareaRecipeSlot, textareaRecipe } from "@pisagor/recipes/textarea";
+import {
+  type TextareaRecipeSlot,
+  textareaRecipe,
+} from "@pisagor/recipes/textarea";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
-import { type ClearableChangeEvent, useClearableInput } from "../../hooks/use-clearable-input";
+import {
+  type ClearableChangeEvent,
+  useClearableInput,
+} from "../../hooks/use-clearable-input";
 import type { VariantClassNames } from "../../internal/types";
 import { InputClearButton } from "../input/input-clear-button";
-import { InputGroupAddon, InputGroupRoot } from "../input-group/input-group-core";
+import {
+  InputGroupAddon,
+  InputGroupRoot,
+} from "../input-group/input-group-core";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
@@ -44,15 +53,24 @@ export const Textarea = defineComponent({
   inheritAttrs: false,
   name: "PisagorTextarea",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<TextareaClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<TextareaClassNames>,
+    },
     clearable: { default: false, type: Boolean },
     defaultValue: {
       default: undefined,
       type: [String, Number, Array] as PropType<TextareaProps["defaultValue"]>,
     },
     disabled: { default: undefined, type: Boolean },
-    onChange: { default: undefined, type: Function as PropType<TextareaProps["onChange"]> },
+    onChange: {
+      default: undefined,
+      type: Function as PropType<TextareaProps["onChange"]>,
+    },
     onValueChange: {
       default: undefined,
       type: Function as PropType<TextareaProps["onValueChange"]>,
@@ -66,7 +84,10 @@ export const Textarea = defineComponent({
       default: undefined,
       type: [String, Number, Array] as PropType<TextareaProps["value"]>,
     },
-    variant: { default: undefined, type: String as PropType<FormControlVariant> },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant>,
+    },
   },
   setup(props, { attrs }) {
     const surfaceVariant = useFormControlSurface();
@@ -75,15 +96,17 @@ export const Textarea = defineComponent({
       variant: props.variant ?? ("primary" as FormControlVariant),
     }));
 
-    const { canClear, handleChange, handleClear, inputRef } = useClearableInput({
-      clearable: () => props.clearable,
-      defaultValue: props.defaultValue,
-      disabled: () => props.disabled,
-      onChange: props.onChange,
-      onValueChange: props.onValueChange,
-      readOnly: () => props.readOnly,
-      value: () => props.value,
-    });
+    const { canClear, handleChange, handleClear, inputRef } = useClearableInput(
+      {
+        clearable: () => props.clearable,
+        defaultValue: props.defaultValue,
+        disabled: () => props.disabled,
+        onChange: props.onChange,
+        onValueChange: props.onValueChange,
+        readOnly: () => props.readOnly,
+        value: () => props.value,
+      },
+    );
 
     return () => {
       const resolved = resolvedVariant.value;
@@ -125,12 +148,19 @@ export const Textarea = defineComponent({
 
       return h(
         InputGroupRoot as ArkPart,
-        { class: slots.group({ class: props.classNames?.group }), variant: props.variant },
+        {
+          class: slots.group({ class: props.classNames?.group }),
+          variant: props.variant,
+        },
         () => [
           h(FieldPrimitive.Textarea as ArkPart, {
             ...attrs,
             class: slots.clearableRoot({
-              class: cn(canClear.value && "pe-9", props.class, props.classNames?.clearableRoot),
+              class: cn(
+                canClear.value && "pe-9",
+                props.class,
+                props.classNames?.clearableRoot,
+              ),
             }),
             defaultValue: props.defaultValue,
             disabled: props.disabled,

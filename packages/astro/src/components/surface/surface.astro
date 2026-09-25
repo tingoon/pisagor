@@ -1,5 +1,8 @@
 ---
-import { type SurfaceVariantProps, surfaceRecipe } from "@pisagor/recipes/surface";
+import {
+  type SurfaceVariantProps,
+  surfaceRecipe,
+} from "@pisagor/recipes/surface";
 import type { HTMLAttributes } from "astro/types";
 
 type SurfaceVariant = NonNullable<SurfaceVariantProps["variant"]>;
@@ -31,7 +34,9 @@ const {
 } = Astro.props;
 
 const variant =
-  variantProp ?? AUTO_VARIANTS[Math.min(depth, AUTO_VARIANTS.length - 1)] ?? "default";
+  variantProp ??
+  AUTO_VARIANTS[Math.min(depth, AUTO_VARIANTS.length - 1)] ??
+  "default";
 ---
 
 <div

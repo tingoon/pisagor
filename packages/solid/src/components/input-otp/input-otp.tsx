@@ -19,7 +19,8 @@ export interface InputOTPProps extends InputOTPRootProps {
   recipe?: typeof inputOtpRecipe;
 }
 
-export type InputOTPSlotProps = PinInputInputProps & Pick<InputProps, "variant">;
+export type InputOTPSlotProps = PinInputInputProps &
+  Pick<InputProps, "variant">;
 
 export type InputOTPSeparatorProps = ComponentProps<typeof ark.hr>;
 
@@ -41,12 +42,16 @@ export function InputOTPRoot(props: InputOTPProps): JSX.Element {
         {...rest}
         class={slots().base()}
         onValueChange={
-          local.onValueChange ? (details) => local.onValueChange?.(details.value) : undefined
+          local.onValueChange
+            ? (details) => local.onValueChange?.(details.value)
+            : undefined
         }
         otp={local.otp ?? true}
         placeholder={local.placeholder ?? ""}
       >
-        <PinInputPrimitive.Control class={slots().control({ class: cn(local.class) })}>
+        <PinInputPrimitive.Control
+          class={slots().control({ class: cn(local.class) })}
+        >
           {local.children}
         </PinInputPrimitive.Control>
         <PinInputPrimitive.HiddenInput />

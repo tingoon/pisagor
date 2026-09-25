@@ -8,7 +8,10 @@ export function Controlled() {
   return (
     <Field.Group>
       <Field orientation="horizontal">
-        <Checkbox checked={checked} onCheckedChange={({ checked }) => setChecked(checked)} />
+        <Checkbox
+          checked={checked}
+          onCheckedChange={({ checked }) => setChecked(checked)}
+        />
         <Field.Label>Accept terms and conditions</Field.Label>
       </Field>
       <p className="text-center">{checked ? "✅" : "❌"}</p>

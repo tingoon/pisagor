@@ -43,10 +43,18 @@ export function Controlled() {
         <Button onClick={() => setValue("profile")} size="sm" variant="outline">
           Go to Profile
         </Button>
-        <Button onClick={() => setValue("settings")} size="sm" variant="outline">
+        <Button
+          onClick={() => setValue("settings")}
+          size="sm"
+          variant="outline"
+        >
           Go to Settings
         </Button>
-        <Button onClick={() => setValue("security")} size="sm" variant="outline">
+        <Button
+          onClick={() => setValue("security")}
+          size="sm"
+          variant="outline"
+        >
           Go to Security
         </Button>
       </div>

@@ -5,6 +5,7 @@ interface MenuContextValue {
   slots: MenuRecipe;
 }
 
-export const { setContext: setMenuContext, getContext: useMenu } = createContext<MenuContextValue>({
-  name: "Menu",
-});
+export const { setContext: setMenuContext, getContext: useMenu } =
+  createContext<MenuContextValue>({
+    name: "Menu",
+  });

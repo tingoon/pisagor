@@ -15,7 +15,8 @@ const steps = [
       { action: "prev", label: "Previous" },
       { action: "next", label: "Next" },
     ],
-    description: "Let's take a quick tour of the documentation site to help you get started。",
+    description:
+      "Let's take a quick tour of the documentation site to help you get started。",
     id: "step-2",
     target: () => document.querySelector("#installation"),
     title: "Installation step",

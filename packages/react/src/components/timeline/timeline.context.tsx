@@ -5,6 +5,7 @@ interface TimelineItemContextValue {
   slots: TimelineItemRecipe;
 }
 
-export const { TimelineItemContext, useTimelineItem } = createContext<TimelineItemContextValue>()({
-  name: "TimelineItem",
-});
+export const { TimelineItemContext, useTimelineItem } =
+  createContext<TimelineItemContextValue>()({
+    name: "TimelineItem",
+  });

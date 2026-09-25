@@ -1,4 +1,7 @@
-import type { PhoneInputRecipeFn, PhoneInputVariantProps } from "@pisagor/recipes/phone-input";
+import type {
+  PhoneInputRecipeFn,
+  PhoneInputVariantProps,
+} from "@pisagor/recipes/phone-input";
 
 /** PhoneInput props. */
 export interface PhoneInputProps extends PhoneInputVariantProps {

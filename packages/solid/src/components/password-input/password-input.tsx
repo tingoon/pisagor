@@ -12,7 +12,11 @@ import { Show, splitProps } from "solid-js";
 import { useClearableInput } from "../../hooks";
 import { EyeIcon, EyeSlashIcon, XIcon } from "../../internal/icons";
 import { callEventHandler } from "../../utils";
-import { InputGroup, type InputGroupButtonProps, type InputGroupProps } from "../input-group";
+import {
+  InputGroup,
+  type InputGroupButtonProps,
+  type InputGroupProps,
+} from "../input-group";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -67,42 +71,47 @@ export function PasswordInput(props: PasswordInputProps): JSX.Element {
   const clearable = () => local.clearable ?? false;
   const slots = () => (local.recipe ?? passwordInputRecipe)();
 
-  const [indicatorLocal, restIndicatorProps] = splitProps(local.indicatorProps ?? {}, [
-    "fallback",
-    "children",
-  ]);
-  const [clearLocal, restClearButtonProps] = splitProps(local.clearButtonProps ?? {}, [
-    "onClick",
-    "children",
-  ]);
+  const [indicatorLocal, restIndicatorProps] = splitProps(
+    local.indicatorProps ?? {},
+    ["fallback", "children"],
+  );
+  const [clearLocal, restClearButtonProps] = splitProps(
+    local.clearButtonProps ?? {},
+    ["onClick", "children"],
+  );
 
-  const { canClear, handleChange, handleClear, mergedRef } = useClearableInput<HTMLInputElement>({
-    get clearable() {
-      return clearable();
-    },
-    get defaultValue() {
-      return local.defaultValue;
-    },
-    get disabled() {
-      return local.disabled;
-    },
-    get onChange() {
-      return (event: Event & { currentTarget: HTMLInputElement; target: HTMLInputElement }) =>
-        callEventHandler(local.onChange, event);
-    },
-    get onValueChange() {
-      return local.onValueChange;
-    },
-    get readOnly() {
-      return local.readOnly;
-    },
-    get ref() {
-      return typeof local.ref === "function" ? local.ref : undefined;
-    },
-    get value() {
-      return local.value;
-    },
-  });
+  const { canClear, handleChange, handleClear, mergedRef } =
+    useClearableInput<HTMLInputElement>({
+      get clearable() {
+        return clearable();
+      },
+      get defaultValue() {
+        return local.defaultValue;
+      },
+      get disabled() {
+        return local.disabled;
+      },
+      get onChange() {
+        return (
+          event: Event & {
+            currentTarget: HTMLInputElement;
+            target: HTMLInputElement;
+          },
+        ) => callEventHandler(local.onChange, event);
+      },
+      get onValueChange() {
+        return local.onValueChange;
+      },
+      get readOnly() {
+        return local.readOnly;
+      },
+      get ref() {
+        return typeof local.ref === "function" ? local.ref : undefined;
+      },
+      get value() {
+        return local.value;
+      },
+    });
 
   return (
     <PasswordInputPrimitive.Root

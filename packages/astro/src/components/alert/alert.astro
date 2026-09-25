@@ -6,7 +6,9 @@ import AlertDescription from "./alert-description.astro";
 import AlertRoot from "./alert-root.astro";
 import AlertTitle from "./alert-title.astro";
 
-interface Props extends Omit<HTMLAttributes<"div">, "title">, AlertVariantProps {
+interface Props
+  extends Omit<HTMLAttributes<"div">, "title">,
+    AlertVariantProps {
   /** Bold title line. */
   title?: string;
   /** Description content. */
@@ -17,13 +19,18 @@ const { variant = "default", title, description, ...rest } = Astro.props;
 const hasIcon = Astro.slots.has("icon");
 const hasAction = Astro.slots.has("action");
 const hasTitle = Astro.slots.has("title") || title !== undefined;
-const hasDescription = Astro.slots.has("description") || description !== undefined;
+const hasDescription =
+  Astro.slots.has("description") || description !== undefined;
 ---
 
 <AlertRoot {...rest} variant={variant}>
   {hasIcon && <slot name="icon" />}
   {hasTitle && <AlertTitle>{title ?? <slot name="title" />}</AlertTitle>}
-  {hasDescription && <AlertDescription>{description ?? <slot name="description" />}</AlertDescription>}
+  {hasDescription && (
+  <AlertDescription>
+    {description ?? <slot name="description" />}
+  </AlertDescription>
+)}
   {hasAction && (
   <AlertAction>
     <slot name="action" />

@@ -12,14 +12,24 @@ const collection = createListCollection({
 </script>
 
 <template>
-  <Select.Root multiple :collection="collection" :default-value="['javascript', 'typescript']">
+  <Select.Root
+    multiple
+    :collection="collection"
+    :default-value="['javascript', 'typescript']"
+  >
     <Select.Trigger>
       <Select.ValueText class="capitalize">
-        <Select.Context v-slot="{ value }">{{ renderValue(value) }}</Select.Context>
+        <Select.Context v-slot="{ value }">{{
+          renderValue(value)
+        }}</Select.Context>
       </Select.ValueText>
     </Select.Trigger>
     <Select.Content>
-      <Select.Item v-for="item in collection.items" :key="item.value" :item="item">
+      <Select.Item
+        v-for="item in collection.items"
+        :key="item.value"
+        :item="item"
+      >
         {{ item.label }}
       </Select.Item>
     </Select.Content>

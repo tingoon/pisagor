@@ -5,7 +5,9 @@ import { Separator, type SeparatorProps } from "../separator";
 import { ItemGroupContext } from "./item-group.context";
 
 // #region Types
-export interface ItemGroupProps extends ComponentProps<typeof ark.div>, ItemVariantProps {
+export interface ItemGroupProps
+  extends ComponentProps<typeof ark.div>,
+    ItemVariantProps {
   /**
    * Style recipe. Defaults to `itemRecipe` from `@pisagor/recipes/item`.
    *
@@ -50,7 +52,11 @@ export function ItemGroup({
   );
 }
 
-export function ItemSeparator({ recipe = itemRecipe, className, ...rest }: ItemSeparatorProps) {
+export function ItemSeparator({
+  recipe = itemRecipe,
+  className,
+  ...rest
+}: ItemSeparatorProps) {
   const slots = recipe();
 
   return (

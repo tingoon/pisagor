@@ -30,11 +30,14 @@ export interface DropdownMenuItemGroupProps extends MenuItemGroupProps {
   heading?: string;
 }
 
-export interface DropdownMenuItemProps extends MenuItemProps, DropdownMenuItemVariantProps {
+export interface DropdownMenuItemProps
+  extends MenuItemProps,
+    DropdownMenuItemVariantProps {
   recipe?: typeof dropdownMenuItemRecipe;
 }
 
-export interface DropdownMenuRadioItemGroupProps extends MenuRadioItemGroupProps {
+export interface DropdownMenuRadioItemGroupProps
+  extends MenuRadioItemGroupProps {
   heading?: string;
 }
 
@@ -72,22 +75,36 @@ export type DropdownMenuShortcutProps = ComponentProps<typeof ark.span>;
 export function DropdownMenuRoot(props: DropdownMenuRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["positioning"]);
   return (
-    <MenuPrimitive.Root {...rest} positioning={local.positioning ?? { placement: "bottom-end" }} />
+    <MenuPrimitive.Root
+      {...rest}
+      positioning={local.positioning ?? { placement: "bottom-end" }}
+    />
   );
 }
 
-export function DropdownMenuTrigger(props: DropdownMenuTriggerProps): JSX.Element {
+export function DropdownMenuTrigger(
+  props: DropdownMenuTriggerProps,
+): JSX.Element {
   return <MenuPrimitive.Trigger {...props} />;
 }
 
-export function DropdownMenuPositioner(props: DropdownMenuPositionerProps): JSX.Element {
+export function DropdownMenuPositioner(
+  props: DropdownMenuPositionerProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const context = useDropdownMenu();
   const slots = () => context?.slots ?? dropdownMenuRecipe();
-  return <MenuPrimitive.Positioner {...rest} class={slots().positioner({ class: local.class })} />;
+  return (
+    <MenuPrimitive.Positioner
+      {...rest}
+      class={slots().positioner({ class: local.class })}
+    />
+  );
 }
 
-export function DropdownMenuContent(props: DropdownMenuContentProps): JSX.Element {
+export function DropdownMenuContent(
+  props: DropdownMenuContentProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "recipe", "class"]);
   const slots = () => (local.recipe ?? dropdownMenuRecipe)();
 
@@ -95,7 +112,10 @@ export function DropdownMenuContent(props: DropdownMenuContentProps): JSX.Elemen
     <DropdownMenuContext value={{ slots: slots() }}>
       <Portal>
         <DropdownMenuPositioner>
-          <MenuPrimitive.Content {...rest} class={slots().content({ class: local.class })}>
+          <MenuPrimitive.Content
+            {...rest}
+            class={slots().content({ class: local.class })}
+          >
             {local.children}
           </MenuPrimitive.Content>
         </DropdownMenuPositioner>
@@ -104,7 +124,9 @@ export function DropdownMenuContent(props: DropdownMenuContentProps): JSX.Elemen
   );
 }
 
-export function DropdownMenuItemGroup(props: DropdownMenuItemGroupProps): JSX.Element {
+export function DropdownMenuItemGroup(
+  props: DropdownMenuItemGroupProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "heading"]);
   return (
     <MenuPrimitive.ItemGroup {...rest}>
@@ -116,11 +138,18 @@ export function DropdownMenuItemGroup(props: DropdownMenuItemGroupProps): JSX.El
   );
 }
 
-export function DropdownMenuSeparator(props: DropdownMenuSeparatorProps): JSX.Element {
+export function DropdownMenuSeparator(
+  props: DropdownMenuSeparatorProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const context = useDropdownMenu();
   const slots = () => context?.slots ?? dropdownMenuRecipe();
-  return <MenuPrimitive.Separator {...rest} class={slots().separator({ class: local.class })} />;
+  return (
+    <MenuPrimitive.Separator
+      {...rest}
+      class={slots().separator({ class: local.class })}
+    />
+  );
 }
 
 export function DropdownMenuItem(props: DropdownMenuItemProps): JSX.Element {
@@ -136,7 +165,9 @@ export function DropdownMenuItem(props: DropdownMenuItemProps): JSX.Element {
   );
 }
 
-export function DropdownMenuQuickItem(props: DropdownMenuItemProps): JSX.Element {
+export function DropdownMenuQuickItem(
+  props: DropdownMenuItemProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["variant", "recipe", "class"]);
   const context = useDropdownMenu();
   const slots = () => context?.slots ?? dropdownMenuRecipe();
@@ -153,21 +184,34 @@ export function DropdownMenuQuickItem(props: DropdownMenuItemProps): JSX.Element
   );
 }
 
-export function DropdownMenuCheckboxItem(props: DropdownMenuCheckboxItemProps): JSX.Element {
+export function DropdownMenuCheckboxItem(
+  props: DropdownMenuCheckboxItemProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "recipe", "class"]);
-  const slots = () => (local.recipe ?? dropdownMenuItemRecipe)({ inset: true, variant: "default" });
+  const slots = () =>
+    (local.recipe ?? dropdownMenuItemRecipe)({
+      inset: true,
+      variant: "default",
+    });
 
   return (
-    <MenuPrimitive.CheckboxItem {...rest} class={slots().base({ class: local.class })}>
+    <MenuPrimitive.CheckboxItem
+      {...rest}
+      class={slots().base({ class: local.class })}
+    >
       <MenuPrimitive.ItemIndicator class={slots().indicator()}>
         <CheckIcon />
       </MenuPrimitive.ItemIndicator>
-      <MenuPrimitive.ItemText class={slots().text()}>{local.children}</MenuPrimitive.ItemText>
+      <MenuPrimitive.ItemText class={slots().text()}>
+        {local.children}
+      </MenuPrimitive.ItemText>
     </MenuPrimitive.CheckboxItem>
   );
 }
 
-export function DropdownMenuRadioItemGroup(props: DropdownMenuRadioItemGroupProps): JSX.Element {
+export function DropdownMenuRadioItemGroup(
+  props: DropdownMenuRadioItemGroupProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "heading"]);
   return (
     <MenuPrimitive.RadioItemGroup {...rest}>
@@ -179,7 +223,9 @@ export function DropdownMenuRadioItemGroup(props: DropdownMenuRadioItemGroupProp
   );
 }
 
-export function DropdownMenuItemGroupLabel(props: DropdownMenuItemGroupLabelProps): JSX.Element {
+export function DropdownMenuItemGroupLabel(
+  props: DropdownMenuItemGroupLabelProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const context = useDropdownMenu();
   const slots = () => context?.slots ?? dropdownMenuRecipe();
@@ -191,16 +237,27 @@ export function DropdownMenuItemGroupLabel(props: DropdownMenuItemGroupLabelProp
   );
 }
 
-export function DropdownMenuRadioItem(props: DropdownMenuRadioItemProps): JSX.Element {
+export function DropdownMenuRadioItem(
+  props: DropdownMenuRadioItemProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "recipe", "class"]);
-  const slots = () => (local.recipe ?? dropdownMenuItemRecipe)({ inset: true, variant: "default" });
+  const slots = () =>
+    (local.recipe ?? dropdownMenuItemRecipe)({
+      inset: true,
+      variant: "default",
+    });
 
   return (
-    <MenuPrimitive.RadioItem {...rest} class={slots().base({ class: local.class })}>
+    <MenuPrimitive.RadioItem
+      {...rest}
+      class={slots().base({ class: local.class })}
+    >
       <MenuPrimitive.ItemIndicator class={slots().indicator()}>
         <CheckIcon />
       </MenuPrimitive.ItemIndicator>
-      <MenuPrimitive.ItemText class={slots().text()}>{local.children}</MenuPrimitive.ItemText>
+      <MenuPrimitive.ItemText class={slots().text()}>
+        {local.children}
+      </MenuPrimitive.ItemText>
     </MenuPrimitive.RadioItem>
   );
 }
@@ -209,7 +266,9 @@ export function DropdownMenuSub(props: DropdownMenuRootProps): JSX.Element {
   return <DropdownMenuRoot {...props} />;
 }
 
-export function DropdownMenuSubContent(props: DropdownMenuSubContentProps): JSX.Element {
+export function DropdownMenuSubContent(
+  props: DropdownMenuSubContentProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["recipe", "class"]);
   const slots = () => (local.recipe ?? dropdownMenuRecipe)();
 
@@ -217,14 +276,19 @@ export function DropdownMenuSubContent(props: DropdownMenuSubContentProps): JSX.
     <DropdownMenuContext value={{ slots: slots() }}>
       <Portal>
         <DropdownMenuPositioner>
-          <MenuPrimitive.Content {...rest} class={slots().content({ class: local.class })} />
+          <MenuPrimitive.Content
+            {...rest}
+            class={slots().content({ class: local.class })}
+          />
         </DropdownMenuPositioner>
       </Portal>
     </DropdownMenuContext>
   );
 }
 
-export function DropdownMenuTriggerItem(props: DropdownMenuTriggerItemProps): JSX.Element {
+export function DropdownMenuTriggerItem(
+  props: DropdownMenuTriggerItemProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "recipe", "class"]);
   const recipe = () => local.recipe ?? dropdownMenuItemRecipe;
 
@@ -241,7 +305,9 @@ export function DropdownMenuTriggerItem(props: DropdownMenuTriggerItemProps): JS
   );
 }
 
-export function DropdownMenuShortcut(props: DropdownMenuShortcutProps): JSX.Element {
+export function DropdownMenuShortcut(
+  props: DropdownMenuShortcutProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const context = useDropdownMenu();
   const slots = () => context?.slots ?? dropdownMenuRecipe();
@@ -266,7 +332,9 @@ export function DropdownMenuArrow(props: DropdownMenuArrowProps): JSX.Element {
       style={{
         "--arrow-background": "var(--popover)",
         "--arrow-size": "calc(1.5 * var(--spacing))",
-        ...(typeof local.style === "object" && local.style !== null ? local.style : {}),
+        ...(typeof local.style === "object" && local.style !== null
+          ? local.style
+          : {}),
         left: "20px",
       }}
     >

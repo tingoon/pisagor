@@ -70,13 +70,20 @@ export function HoverCardArrow({ style, ...rest }: HoverCardArrowProps) {
   );
 }
 
-export function HoverCardContent({ children, className, ...rest }: HoverCardContentProps) {
+export function HoverCardContent({
+  children,
+  className,
+  ...rest
+}: HoverCardContentProps) {
   const { slots } = useHoverCard();
 
   return (
     <Portal>
       <HoverCardPrimitive.Positioner>
-        <HoverCardPrimitive.Content {...rest} className={slots.content({ className })}>
+        <HoverCardPrimitive.Content
+          {...rest}
+          className={slots.content({ className })}
+        >
           {children}
 
           <HoverCardArrow />

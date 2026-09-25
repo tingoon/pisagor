@@ -3,13 +3,25 @@ import { Presence } from "@ark-ui/solid/presence";
 import { actionBarRecipe } from "@pisagor/recipes/action-bar";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX, ParentProps } from "solid-js";
-import { createEffect, createMemo, createSignal, For, onCleanup, Show, splitProps } from "solid-js";
+import {
+  createEffect,
+  createMemo,
+  createSignal,
+  For,
+  onCleanup,
+  Show,
+  splitProps,
+} from "solid-js";
 import { Portal } from "solid-js/web";
 import { XIcon } from "../../internal/icons";
 import { Badge, type BadgeProps } from "../badge";
 import { Button } from "../button";
 import { Separator, type SeparatorProps } from "../separator";
-import { ActionBarContext, type ActionBarContextValue, useActionBar } from "./action-bar.context";
+import {
+  ActionBarContext,
+  type ActionBarContextValue,
+  useActionBar,
+} from "./action-bar.context";
 
 interface ActionBarActionItem {
   icon?: JSX.Element;
@@ -18,7 +30,8 @@ interface ActionBarActionItem {
   disabled?: boolean;
 }
 
-export interface ActionBarProps extends Pick<ActionBarContextValue, "lazyMount" | "unmountOnExit"> {
+export interface ActionBarProps
+  extends Pick<ActionBarContextValue, "lazyMount" | "unmountOnExit"> {
   recipe?: typeof actionBarRecipe;
   closeOnEscape?: boolean;
   defaultOpen?: boolean;
@@ -58,8 +71,12 @@ export function ActionBarRoot(props: ParentProps<ActionBarProps>): JSX.Element {
     "recipe",
   ]);
 
-  const [uncontrolledOpen, setUncontrolledOpen] = createSignal(local.defaultOpen ?? false);
-  const isOpen = createMemo(() => (local.open !== undefined ? !!local.open : uncontrolledOpen()));
+  const [uncontrolledOpen, setUncontrolledOpen] = createSignal(
+    local.defaultOpen ?? false,
+  );
+  const isOpen = createMemo(() =>
+    local.open !== undefined ? !!local.open : uncontrolledOpen(),
+  );
   const setOpen = (next: boolean) => {
     if (local.open === undefined) setUncontrolledOpen(next);
     local.onOpenChange?.(next);
@@ -89,7 +106,8 @@ export function ActionBarRoot(props: ParentProps<ActionBarProps>): JSX.Element {
     }),
   );
 
-  const hasPreset = () => local.count !== undefined || (local.actions && local.actions.length > 0);
+  const hasPreset = () =>
+    local.count !== undefined || (local.actions && local.actions.length > 0);
 
   return (
     <ActionBarContext
@@ -106,9 +124,9 @@ export function ActionBarRoot(props: ParentProps<ActionBarProps>): JSX.Element {
       {local.children}
       <Show when={hasPreset()}>
         <ActionBarContent>
-          <Show when={local.count !== undefined}>
-            <ActionBarValue count={local.count!} />
-          </Show>
+          {local.count !== undefined ? (
+            <ActionBarValue count={local.count} />
+          ) : null}
           <Show when={local.count !== undefined && local.actions}>
             <ActionBarSeparator />
           </Show>
@@ -163,7 +181,8 @@ export function ActionBarTrigger(props: ActionBarTriggerProps): JSX.Element {
 
 export function ActionBarContent(props: ActionBarContentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class", "aria-labelledby"]);
-  const { isOpen, lazyMount, unmountOnExit, positioning, slots } = useActionBar();
+  const { isOpen, lazyMount, unmountOnExit, positioning, slots } =
+    useActionBar();
   const placement = () => positioning.placement;
   const gutter = () => positioning.gutter;
 
@@ -198,7 +217,9 @@ export function ActionBarContent(props: ActionBarContentProps): JSX.Element {
   );
 }
 
-export function ActionBarSeparator(props: ActionBarSeparatorProps): JSX.Element {
+export function ActionBarSeparator(
+  props: ActionBarSeparatorProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useActionBar();
 
@@ -237,7 +258,12 @@ export function ActionBarClose(props: ActionBarCloseProps): JSX.Element {
 }
 
 export function ActionBarValue(props: ActionBarValueProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["count", "children", "label", "class"]);
+  const [local, rest] = splitProps(props, [
+    "count",
+    "children",
+    "label",
+    "class",
+  ]);
   const { slots } = useActionBar();
 
   return (

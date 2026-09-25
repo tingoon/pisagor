@@ -1,4 +1,7 @@
-import type { ButtonGroupRecipeFn, ButtonGroupVariantProps } from "@pisagor/recipes/button-group";
+import type {
+  ButtonGroupRecipeFn,
+  ButtonGroupVariantProps,
+} from "@pisagor/recipes/button-group";
 
 /** ButtonGroup props. */
 export interface ButtonGroupProps extends ButtonGroupVariantProps {

@@ -43,36 +43,64 @@ const headings = [
 
   <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">
+    Variants
+  </h3>
   <ComponentPreview code={examples.Variants} language="vue" title="Variants">
     <Variants client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-button">With Button</h3>
-  <ComponentPreview code={examples.WithButton} language="vue" title="With Button">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-button">
+    With Button
+  </h3>
+  <ComponentPreview
+    code={examples.WithButton}
+    language="vue"
+    title="With Button"
+  >
     <WithButton client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="kbd-group-story">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="kbd-group-story"
+  >
     Kbd Group Story
   </h3>
-  <ComponentPreview code={examples.KbdGroupStory} language="vue" title="Kbd Group Story">
+  <ComponentPreview
+    code={examples.KbdGroupStory}
+    language="vue"
+    title="Kbd Group Story"
+  >
     <KbdGroupStory client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-tooltip">With Tooltip</h3>
-  <ComponentPreview code={examples.WithTooltip} language="vue" title="With Tooltip">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-tooltip">
+    With Tooltip
+  </h3>
+  <ComponentPreview
+    code={examples.WithTooltip}
+    language="vue"
+    title="With Tooltip"
+  >
     <WithTooltip client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
+    Default
+  </h3>
   <ComponentPreview code={examples.Default} language="vue" title="Default">
     <Default client:only="vue" />
   </ComponentPreview>
 
-  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <h2
+    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    id="installation"
+  >
+    Installation
+  </h2>
   <Installation class="mb-8" packages="@pisagor/vue" />
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/kbd</code>. Native HTML attributes are also supported and
-    omitted from this table.
+    Own props from <code>@pisagor/props/kbd</code>. Native HTML attributes are
+    also supported and omitted from this table.
   </p>
   <PropsTable rows={kbdProps} />
 </DocsLayout>

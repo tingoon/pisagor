@@ -7,7 +7,11 @@ import { Input, type InputProps } from "../input/input";
 import { Textarea, type TextareaProps } from "../textarea/textarea";
 
 // #region Parts
-export function InputGroupInput({ className, classNames, ...rest }: InputProps) {
+export function InputGroupInput({
+  className,
+  classNames,
+  ...rest
+}: InputProps) {
   return (
     <Input
       {...rest}
@@ -26,7 +30,10 @@ export function InputGroupTextarea({ classNames, ...rest }: TextareaProps) {
       {...rest}
       classNames={{
         ...classNames,
-        rootLayout: cn(inputGroupTextareaControlRecipe(), classNames?.rootLayout),
+        rootLayout: cn(
+          inputGroupTextareaControlRecipe(),
+          classNames?.rootLayout,
+        ),
       }}
     />
   );

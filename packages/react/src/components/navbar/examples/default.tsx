@@ -20,10 +20,14 @@ export function Default() {
               </NavigationMenu.Link>
             </NavigationMenu.Item>
             <NavigationMenu.Item>
-              <NavigationMenu.Link href="#projects">Projects</NavigationMenu.Link>
+              <NavigationMenu.Link href="#projects">
+                Projects
+              </NavigationMenu.Link>
             </NavigationMenu.Item>
             <NavigationMenu.Item>
-              <NavigationMenu.Link href="#analytics">Analytics</NavigationMenu.Link>
+              <NavigationMenu.Link href="#analytics">
+                Analytics
+              </NavigationMenu.Link>
             </NavigationMenu.Item>
           </NavigationMenu.List>
         </NavigationMenu>

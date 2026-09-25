@@ -1,5 +1,8 @@
 import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/vue/scroll-area";
-import { type ScrollAreaRecipeSlot, scrollAreaRecipe } from "@pisagor/recipes/scroll-area";
+import {
+  type ScrollAreaRecipeSlot,
+  scrollAreaRecipe,
+} from "@pisagor/recipes/scroll-area";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 
@@ -36,7 +39,10 @@ export const ScrollArea = defineComponent({
   inheritAttrs: false,
   name: "ScrollArea",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     classNames: {
       default: undefined,
       type: Object as PropType<VariantClassNames<ScrollAreaRecipeSlot>>,
@@ -45,10 +51,19 @@ export const ScrollArea = defineComponent({
       default: scrollAreaRecipe,
       type: Function as PropType<typeof scrollAreaRecipe>,
     },
-    scrollbarProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
+    scrollbarProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
     scrollFade: { default: false, type: Boolean },
-    thumbProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
-    viewportProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
+    thumbProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
+    viewportProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -65,15 +80,22 @@ export const ScrollArea = defineComponent({
             ScrollAreaPrimitive.Viewport as ArkPart,
             {
               ...(props.viewportProps ?? {}),
-              class: slotsClasses.viewport({ class: props.classNames?.viewport }),
+              class: slotsClasses.viewport({
+                class: props.classNames?.viewport,
+              }),
             },
-            () => h(ScrollAreaPrimitive.Content as ArkPart, {}, () => slots.default?.()),
+            () =>
+              h(ScrollAreaPrimitive.Content as ArkPart, {}, () =>
+                slots.default?.(),
+              ),
           ),
           h(
             ScrollAreaPrimitive.Scrollbar as ArkPart,
             {
               ...(props.scrollbarProps ?? {}),
-              class: slotsClasses.scrollbar({ class: props.classNames?.scrollbar }),
+              class: slotsClasses.scrollbar({
+                class: props.classNames?.scrollbar,
+              }),
               orientation: "vertical",
             },
             () =>
@@ -90,7 +112,9 @@ export const ScrollArea = defineComponent({
             ScrollAreaPrimitive.Scrollbar as ArkPart,
             {
               ...(props.scrollbarProps ?? {}),
-              class: slotsClasses.scrollbar({ class: props.classNames?.scrollbar }),
+              class: slotsClasses.scrollbar({
+                class: props.classNames?.scrollbar,
+              }),
               orientation: "horizontal",
             },
             () =>

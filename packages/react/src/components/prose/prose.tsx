@@ -23,7 +23,13 @@ export interface ProseProps
 // #endregion
 
 // #region Component
-export function Prose({ children, html, recipe = proseRecipe, className, ...rest }: ProseProps) {
+export function Prose({
+  children,
+  html,
+  recipe = proseRecipe,
+  className,
+  ...rest
+}: ProseProps) {
   return (
     <ark.div
       {...rest}

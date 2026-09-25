@@ -6,6 +6,8 @@ interface DialogContextValue {
   slots: DialogRecipe;
 }
 
-export const { DialogContext, useDialog } = createContext<DialogContextValue>()({
-  name: "Dialog",
-});
+export const { DialogContext, useDialog } = createContext<DialogContextValue>()(
+  {
+    name: "Dialog",
+  },
+);

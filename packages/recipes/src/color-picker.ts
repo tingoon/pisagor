@@ -111,7 +111,11 @@ export const colorPickerRecipe = tv({
       "bg-[linear-gradient(45deg,#e4e4e4_25%,transparent_25%),linear-gradient(-45deg,#e4e4e4_25%,transparent_25%),linear-gradient(45deg,transparent_75%,#e4e4e4_75%),linear-gradient(-45deg,transparent_75%,#e4e4e4_75%)]",
       "bg-position-[0_0,0_4px,4px_-4px,-4px_0] bg-size-(--spacing(2))",
     ],
-    valueSwatch: ["relative size-8 shrink-0", "overflow-hidden", "rounded-full border"],
+    valueSwatch: [
+      "relative size-8 shrink-0",
+      "overflow-hidden",
+      "rounded-full border",
+    ],
     valueText: ["font-medium text-sm"],
     view: ["relative flex size-full flex-1 flex-col gap-4"],
   },

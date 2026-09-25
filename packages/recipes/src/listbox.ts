@@ -12,7 +12,11 @@ export const listboxRecipe = tv({
     ],
     empty: ["px-2 py-1.5", "text-center text-muted-foreground text-sm"],
     itemGroup: ["flex flex-col gap-1"],
-    itemGroupLabel: ["px-2.5 py-2", "font-medium text-muted-foreground", "pointer-events-none"],
+    itemGroupLabel: [
+      "px-2.5 py-2",
+      "font-medium text-muted-foreground",
+      "pointer-events-none",
+    ],
     valueText: "font-normal",
   },
 });
@@ -43,7 +47,12 @@ export const listboxItemRecipe = tv({
       "zoom-in-95 fade-in-0 animate-in",
       "motion-reduce:animate-none!",
     ],
-    text: ["min-w-0", "flex-1", "text-ellipsis whitespace-nowrap", "overflow-hidden"],
+    text: [
+      "min-w-0",
+      "flex-1",
+      "text-ellipsis whitespace-nowrap",
+      "overflow-hidden",
+    ],
   },
   variants: {
     variant: {

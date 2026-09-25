@@ -29,7 +29,11 @@ export const inputGroupAddonRecipe = tv({
         "group-has-[>input]/input-group:pt-2.5",
         "[.border-b]:pb-3",
       ],
-      "inline-end": ["order-last pe-3", "has-[>button]:me-[-0.45rem]", "has-[>kbd]:me-[-0.35rem]"],
+      "inline-end": [
+        "order-last pe-3",
+        "has-[>button]:me-[-0.45rem]",
+        "has-[>kbd]:me-[-0.35rem]",
+      ],
       "inline-start": [
         "order-first ps-3",
         "has-[>button]:ms-[-0.45rem]",
@@ -56,7 +60,12 @@ export const inputGroupButtonRecipe = tv({
   variants: {
     size: {
       "icon-sm": ["size-8", "p-0", "has-[>svg]:p-0"],
-      "icon-xs": ["size-6", "rounded-[calc(var(--radius)-5px)]", "p-0", "has-[>svg]:p-0"],
+      "icon-xs": [
+        "size-6",
+        "rounded-[calc(var(--radius)-5px)]",
+        "p-0",
+        "has-[>svg]:p-0",
+      ],
       sm: ["h-8", "gap-1.5", "px-2.5", "rounded-md", "has-[>svg]:px-2.5"],
       xs: [
         "h-6",
@@ -107,7 +116,8 @@ export type InputGroupAddonRecipe = ReturnType<InputGroupAddonRecipeFn>;
 export type InputGroupAddonRecipeSlot = keyof InputGroupAddonRecipe;
 
 export type InputGroupButtonRecipeFn = typeof inputGroupButtonRecipe;
-export type InputGroupButtonVariantProps = VariantProps<InputGroupButtonRecipeFn>;
+export type InputGroupButtonVariantProps =
+  VariantProps<InputGroupButtonRecipeFn>;
 export type InputGroupButtonRecipe = ReturnType<InputGroupButtonRecipeFn>;
 export type InputGroupButtonRecipeSlot = keyof InputGroupButtonRecipe;
 
@@ -119,6 +129,9 @@ export type InputGroupControlRecipeFn = typeof inputGroupControlRecipe;
 export type InputGroupControlRecipe = ReturnType<InputGroupControlRecipeFn>;
 export type InputGroupControlRecipeSlot = keyof InputGroupControlRecipe;
 
-export type InputGroupTextareaControlRecipeFn = typeof inputGroupTextareaControlRecipe;
-export type InputGroupTextareaControlRecipe = ReturnType<InputGroupTextareaControlRecipeFn>;
-export type InputGroupTextareaControlRecipeSlot = keyof InputGroupTextareaControlRecipe;
+export type InputGroupTextareaControlRecipeFn =
+  typeof inputGroupTextareaControlRecipe;
+export type InputGroupTextareaControlRecipe =
+  ReturnType<InputGroupTextareaControlRecipeFn>;
+export type InputGroupTextareaControlRecipeSlot =
+  keyof InputGroupTextareaControlRecipe;

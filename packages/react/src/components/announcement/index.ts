@@ -1,4 +1,8 @@
-import { AnnouncementRoot, AnnouncementShorthand, AnnouncementTitle } from "./announcement";
+import {
+  AnnouncementRoot,
+  AnnouncementShorthand,
+  AnnouncementTitle,
+} from "./announcement";
 
 export type { AnnouncementProps } from "./announcement";
 

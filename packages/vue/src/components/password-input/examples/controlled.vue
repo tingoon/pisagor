@@ -7,5 +7,9 @@ const onChange = (event) => setPassword(event.target.value);
 </script>
 
 <template>
-  <PasswordInput placeholder="Enter password" :value="password" @change="onChange" />
+  <PasswordInput
+    placeholder="Enter password"
+    :value="password"
+    @change="onChange"
+  />
 </template>

@@ -11,7 +11,11 @@ const onValueChange = setValue;
   <div class="flex flex-col items-center gap-2">
     <ColorPicker inline :value="value" @value-change="onValueChange">
       <ColorPicker.SwatchGroup>
-        <ColorPicker.SwatchTrigger v-for="color in swatches" :key="color" :value="color">
+        <ColorPicker.SwatchTrigger
+          v-for="color in swatches"
+          :key="color"
+          :value="color"
+        >
           <ColorPicker.Swatch :value="color">
             <ColorPicker.SwatchIndicator />
           </ColorPicker.Swatch>

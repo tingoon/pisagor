@@ -12,7 +12,11 @@ export function Default() {
           <Item.Title>{sampleText()}</Item.Title>
         </Item>
       </Item.Group>
-      <DownloadTrigger data={sampleText()} fileName="notes.txt" mimeType="text/plain">
+      <DownloadTrigger
+        data={sampleText()}
+        fileName="notes.txt"
+        mimeType="text/plain"
+      >
         <Button size="lg" variant="outline">
           <DownloadIcon />
           Download

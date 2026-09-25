@@ -1,11 +1,18 @@
-import { DotsThreeVerticalIcon, EyeIcon, PencilSimpleIcon, TrashIcon } from "@phosphor-icons/react";
+import {
+  DotsThreeVerticalIcon,
+  EyeIcon,
+  PencilSimpleIcon,
+  TrashIcon,
+} from "@phosphor-icons/react";
 import { Button, DropdownMenu } from "@pisagor/react";
 import { Table } from "..";
 import { workspaceUsers } from "./helpers";
 export function Actions() {
   return (
     <Table>
-      <Table.Caption className="sr-only">Users with row actions (edit, delete).</Table.Caption>
+      <Table.Caption className="sr-only">
+        Users with row actions (edit, delete).
+      </Table.Caption>
       <Table.Header>
         <Table.Row>
           <Table.Head>Name</Table.Head>
@@ -21,7 +28,11 @@ export function Actions() {
             <Table.Cell className="text-right">
               <DropdownMenu positioning={{ placement: "left-end" }}>
                 <DropdownMenu.Trigger asChild>
-                  <Button aria-label="More options" size="icon-sm" variant="outline">
+                  <Button
+                    aria-label="More options"
+                    size="icon-sm"
+                    variant="outline"
+                  >
                     <DotsThreeVerticalIcon />
                   </Button>
                 </DropdownMenu.Trigger>

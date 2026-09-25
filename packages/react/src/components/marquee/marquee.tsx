@@ -11,7 +11,8 @@ import { Children, isValidElement } from "react";
 import { MarqueeContext, useMarquee } from "./marquee.context";
 
 // #region Types
-export interface MarqueeRootProps extends Omit<MarqueePrimitiveRootProps, "side"> {
+export interface MarqueeRootProps
+  extends Omit<MarqueePrimitiveRootProps, "side"> {
   /**
    *
    * @defaultValue "horizontal"
@@ -65,8 +66,12 @@ export function MarqueeRoot({
         {children}
         {showEdges && (
           <>
-            <MarqueeEdge side={orientation === "horizontal" ? "start" : "top"} />
-            <MarqueeEdge side={orientation === "horizontal" ? "end" : "bottom"} />
+            <MarqueeEdge
+              side={orientation === "horizontal" ? "start" : "top"}
+            />
+            <MarqueeEdge
+              side={orientation === "horizontal" ? "end" : "bottom"}
+            />
           </>
         )}
       </MarqueePrimitive.Root>
@@ -79,7 +84,10 @@ export function MarqueeContent({ className, ...rest }: MarqueeContentProps) {
 
   return (
     <MarqueePrimitive.Viewport className={slots.viewport()}>
-      <MarqueePrimitive.Content {...rest} className={slots.content({ className })} />
+      <MarqueePrimitive.Content
+        {...rest}
+        className={slots.content({ className })}
+      />
     </MarqueePrimitive.Viewport>
   );
 }
@@ -87,13 +95,17 @@ export function MarqueeContent({ className, ...rest }: MarqueeContentProps) {
 export function MarqueeItem({ className, ...rest }: MarqueeItemProps) {
   const { slots } = useMarquee();
 
-  return <MarqueePrimitive.Item {...rest} className={slots.item({ className })} />;
+  return (
+    <MarqueePrimitive.Item {...rest} className={slots.item({ className })} />
+  );
 }
 
 export function MarqueeEdge({ className, ...rest }: MarqueeEdgeProps) {
   const { slots } = useMarquee();
 
-  return <MarqueePrimitive.Edge {...rest} className={slots.edge({ className })} />;
+  return (
+    <MarqueePrimitive.Edge {...rest} className={slots.edge({ className })} />
+  );
 }
 // #endregion
 

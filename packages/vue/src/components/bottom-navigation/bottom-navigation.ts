@@ -35,7 +35,10 @@ export const BottomNavigationRoot = defineComponent({
   inheritAttrs: false,
   name: "BottomNavigationRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: bottomNavigationRecipe,
       type: Function as PropType<typeof bottomNavigationRecipe>,
@@ -62,7 +65,10 @@ export const BottomNavigationList = defineComponent({
   name: "BottomNavigationList",
   props: {
     ariaLabel: { default: undefined, type: String },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: bottomNavigationRecipe,
       type: Function as PropType<typeof bottomNavigationRecipe>,
@@ -76,7 +82,8 @@ export const BottomNavigationList = defineComponent({
         TabsPrimitive.List as ArkPart,
         {
           ...attrs,
-          "aria-label": props.ariaLabel ?? (attrs["aria-label"] as string | undefined),
+          "aria-label":
+            props.ariaLabel ?? (attrs["aria-label"] as string | undefined),
           class: variantSlots.list({ class: props.class }),
         },
         slots,
@@ -89,7 +96,10 @@ export const BottomNavigationItem = defineComponent({
   inheritAttrs: false,
   name: "BottomNavigationItem",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: bottomNavigationItemRecipe,
       type: Function as PropType<typeof bottomNavigationItemRecipe>,
@@ -115,7 +125,10 @@ export const BottomNavigationItemIcon = defineComponent({
   inheritAttrs: false,
   name: "BottomNavigationItemIcon",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: bottomNavigationItemRecipe,
       type: Function as PropType<typeof bottomNavigationItemRecipe>,
@@ -144,7 +157,10 @@ export const BottomNavigationItemLabel = defineComponent({
   inheritAttrs: false,
   name: "BottomNavigationItemLabel",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: bottomNavigationItemRecipe,
       type: Function as PropType<typeof bottomNavigationItemRecipe>,

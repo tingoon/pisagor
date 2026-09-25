@@ -27,7 +27,10 @@ import { cn } from "@pisagor/utils";
 import { type ComponentProps, useMemo } from "react";
 import { Button, type ButtonProps } from "../button";
 import { InputGroup, type InputGroupButtonProps } from "../input-group";
-import { ColorPickerSlotsContext, useColorPicker } from "./color-picker.context";
+import {
+  ColorPickerSlotsContext,
+  useColorPicker,
+} from "./color-picker.context";
 
 // #region Types
 type FormControlVariant = "primary" | "secondary";
@@ -79,7 +82,8 @@ export interface ColorPickerClearTriggerProps extends InputGroupButtonProps {
   clearable?: boolean;
 }
 
-export interface ColorPickerControlProps extends ColorPickerPrimitiveControlProps {
+export interface ColorPickerControlProps
+  extends ColorPickerPrimitiveControlProps {
   /**
    * Whether to show a clear button when a color is selected.
    *
@@ -187,7 +191,10 @@ export function ColorPickerClearTrigger({
     return null;
   }
 
-  const controlProps = api.getControlProps() as { disabled?: boolean; readOnly?: boolean };
+  const controlProps = api.getControlProps() as {
+    disabled?: boolean;
+    readOnly?: boolean;
+  };
   if (controlProps.disabled || controlProps.readOnly) {
     return null;
   }
@@ -228,7 +235,10 @@ export function ColorPickerControl({
   const { slots } = useColorPicker();
 
   return (
-    <ColorPickerPrimitive.Control {...rest} className={slots.control({ className })}>
+    <ColorPickerPrimitive.Control
+      {...rest}
+      className={slots.control({ className })}
+    >
       {children}
       {clearable ? <ColorPickerClearTrigger /> : null}
     </ColorPickerPrimitive.Control>
@@ -253,13 +263,19 @@ export function ColorPickerTransparencyGrid({
   );
 }
 
-export function ColorPickerContent({ className, ...rest }: ColorPickerContentProps) {
+export function ColorPickerContent({
+  className,
+  ...rest
+}: ColorPickerContentProps) {
   const { slots } = useColorPicker();
 
   return (
     <Portal>
       <ColorPickerPrimitive.Positioner>
-        <ColorPickerPrimitive.Content {...rest} className={slots.content({ className })} />
+        <ColorPickerPrimitive.Content
+          {...rest}
+          className={slots.content({ className })}
+        />
       </ColorPickerPrimitive.Positioner>
     </Portal>
   );
@@ -268,7 +284,12 @@ export function ColorPickerContent({ className, ...rest }: ColorPickerContentPro
 export function ColorPickerView({ className, ...rest }: ColorPickerViewProps) {
   const { slots } = useColorPicker();
 
-  return <ColorPickerPrimitive.View {...rest} className={slots.view({ className })} />;
+  return (
+    <ColorPickerPrimitive.View
+      {...rest}
+      className={slots.view({ className })}
+    />
+  );
 }
 
 export function ColorPickerChannelSlider({
@@ -279,11 +300,18 @@ export function ColorPickerChannelSlider({
   const { slots } = useColorPicker();
 
   return (
-    <ColorPickerPrimitive.ChannelSlider {...rest} className={slots.channelSlider({ className })}>
+    <ColorPickerPrimitive.ChannelSlider
+      {...rest}
+      className={slots.channelSlider({ className })}
+    >
       {children}
 
-      <ColorPickerPrimitive.ChannelSliderTrack className={slots.channelSliderTrack()} />
-      <ColorPickerPrimitive.ChannelSliderThumb className={slots.channelSliderThumb()} />
+      <ColorPickerPrimitive.ChannelSliderTrack
+        className={slots.channelSliderTrack()}
+      />
+      <ColorPickerPrimitive.ChannelSliderThumb
+        className={slots.channelSliderThumb()}
+      />
     </ColorPickerPrimitive.ChannelSlider>
   );
 }
@@ -303,26 +331,46 @@ export function ColorPickerEyeDropperTrigger({
   );
 }
 
-export function ColorPickerSwatchGroup({ className, ...rest }: ColorPickerSwatchGroupProps) {
+export function ColorPickerSwatchGroup({
+  className,
+  ...rest
+}: ColorPickerSwatchGroupProps) {
   const { slots } = useColorPicker();
 
   return (
-    <ColorPickerPrimitive.SwatchGroup {...rest} className={slots.swatchGroup({ className })} />
+    <ColorPickerPrimitive.SwatchGroup
+      {...rest}
+      className={slots.swatchGroup({ className })}
+    />
   );
 }
 
-export function ColorPickerSwatchTrigger({ className, ...rest }: ColorPickerSwatchTriggerProps) {
+export function ColorPickerSwatchTrigger({
+  className,
+  ...rest
+}: ColorPickerSwatchTriggerProps) {
   const { slots } = useColorPicker();
 
   return (
-    <ColorPickerPrimitive.SwatchTrigger {...rest} className={slots.swatchTrigger({ className })} />
+    <ColorPickerPrimitive.SwatchTrigger
+      {...rest}
+      className={slots.swatchTrigger({ className })}
+    />
   );
 }
 
-export function ColorPickerSwatch({ className, ...rest }: ColorPickerSwatchProps) {
+export function ColorPickerSwatch({
+  className,
+  ...rest
+}: ColorPickerSwatchProps) {
   const { slots } = useColorPicker();
 
-  return <ColorPickerPrimitive.Swatch {...rest} className={slots.swatch({ className })} />;
+  return (
+    <ColorPickerPrimitive.Swatch
+      {...rest}
+      className={slots.swatch({ className })}
+    />
+  );
 }
 
 export function ColorPickerSwatchIndicator({
@@ -342,17 +390,31 @@ export function ColorPickerSwatchIndicator({
   );
 }
 
-export function ColorPickerValueText({ className, ...rest }: ColorPickerValueTextProps) {
-  const { slots } = useColorPicker();
-
-  return <ColorPickerPrimitive.ValueText {...rest} className={slots.valueText({ className })} />;
-}
-
-export function ColorPickerValueSwatch({ className, ...rest }: ColorPickerValueSwatchProps) {
+export function ColorPickerValueText({
+  className,
+  ...rest
+}: ColorPickerValueTextProps) {
   const { slots } = useColorPicker();
 
   return (
-    <ColorPickerPrimitive.ValueSwatch {...rest} className={slots.valueSwatch({ className })} />
+    <ColorPickerPrimitive.ValueText
+      {...rest}
+      className={slots.valueText({ className })}
+    />
+  );
+}
+
+export function ColorPickerValueSwatch({
+  className,
+  ...rest
+}: ColorPickerValueSwatchProps) {
+  const { slots } = useColorPicker();
+
+  return (
+    <ColorPickerPrimitive.ValueSwatch
+      {...rest}
+      className={slots.valueSwatch({ className })}
+    />
   );
 }
 
@@ -384,17 +446,31 @@ export function ColorPickerArea({
   );
 }
 
-export function ColorPickerAreaThumb({ className, ...rest }: ColorPickerAreaThumbProps) {
+export function ColorPickerAreaThumb({
+  className,
+  ...rest
+}: ColorPickerAreaThumbProps) {
   const { slots } = useColorPicker();
 
-  return <ColorPickerPrimitive.AreaThumb {...rest} className={slots.areaThumb({ className })} />;
+  return (
+    <ColorPickerPrimitive.AreaThumb
+      {...rest}
+      className={slots.areaThumb({ className })}
+    />
+  );
 }
 
-export function ColorPickerInput({ channel = "hex", ...rest }: ColorPickerInputProps) {
+export function ColorPickerInput({
+  channel = "hex",
+  ...rest
+}: ColorPickerInputProps) {
   return <ColorPickerPrimitive.ChannelInput {...rest} channel={channel} />;
 }
 
-export function ColorPickerSwatchPreview({ className, ...rest }: ColorPickerSwatchPreviewProps) {
+export function ColorPickerSwatchPreview({
+  className,
+  ...rest
+}: ColorPickerSwatchPreviewProps) {
   const { slots } = useColorPicker();
 
   return (
@@ -404,7 +480,9 @@ export function ColorPickerSwatchPreview({ className, ...rest }: ColorPickerSwat
       data-part="input-swatch"
       data-scope="color-picker"
     >
-      <ColorPickerPrimitive.TransparencyGrid className={slots.inputSwatchGrid()} />
+      <ColorPickerPrimitive.TransparencyGrid
+        className={slots.inputSwatchGrid()}
+      />
       <ColorPickerPrimitive.ValueSwatch className={slots.inputSwatchSwatch()} />
     </ark.div>
   );
@@ -414,7 +492,10 @@ export function ColorPickerSwatchPreview({ className, ...rest }: ColorPickerSwat
  * Compact preset that renders a swatch trigger, hex input, and standard
  * color picker popover in one component.
  */
-export function ColorPickerField({ clearable = false, ...rest }: ColorPickerProps) {
+export function ColorPickerField({
+  clearable = false,
+  ...rest
+}: ColorPickerProps) {
   return (
     <ColorPickerRoot {...rest} clearable={clearable}>
       <ColorPickerControl clearable={false}>

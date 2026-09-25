@@ -8,7 +8,10 @@ import type {
   TooltipTriggerProps,
 } from "@ark-ui/react/tooltip";
 import { Tooltip as TooltipPrimitive } from "@ark-ui/react/tooltip";
-import { type TooltipRecipeSlot, tooltipRecipe } from "@pisagor/recipes/tooltip";
+import {
+  type TooltipRecipeSlot,
+  tooltipRecipe,
+} from "@pisagor/recipes/tooltip";
 import type { ReactElement, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { TooltipContext, useTooltip } from "./tooltip.context";
@@ -25,9 +28,13 @@ export interface TooltipRootProps extends TooltipPrimitiveRootProps {
 
 type TooltipContextApi = Parameters<TooltipContextProps["children"]>[0];
 
-export type TooltipTriggerHandleProps = ReturnType<TooltipContextApi["getTriggerProps"]>;
+export type TooltipTriggerHandleProps = ReturnType<
+  TooltipContextApi["getTriggerProps"]
+>;
 
-export type TooltipTriggerHandle = (props: TooltipTriggerHandleProps) => ReactElement;
+export type TooltipTriggerHandle = (
+  props: TooltipTriggerHandleProps,
+) => ReactElement;
 
 type TooltipClassNames = VariantClassNames<TooltipRecipeSlot>;
 
@@ -45,7 +52,10 @@ export interface TooltipProps extends Omit<TooltipRootProps, "children"> {
   /** Extra props forwarded to the tooltip positioner element */
   positionerProps?: Omit<TooltipPositionerProps, "children" | "className">;
   /** Extra props forwarded to the tooltip trigger element */
-  triggerProps?: Omit<TooltipTriggerProps, "asChild" | "children" | "className">;
+  triggerProps?: Omit<
+    TooltipTriggerProps,
+    "asChild" | "children" | "className"
+  >;
 }
 // #endregion
 
@@ -74,7 +84,11 @@ function TooltipRoot({
   );
 }
 
-function TooltipTrigger({ asChild = true, children, ...rest }: TooltipTriggerProps) {
+function TooltipTrigger({
+  asChild = true,
+  children,
+  ...rest
+}: TooltipTriggerProps) {
   return (
     <TooltipPrimitive.Trigger {...rest} asChild={asChild}>
       {children}
@@ -83,14 +97,21 @@ function TooltipTrigger({ asChild = true, children, ...rest }: TooltipTriggerPro
 }
 
 function TooltipPositioner({ children, ...rest }: TooltipPositionerProps) {
-  return <TooltipPrimitive.Positioner {...rest}>{children}</TooltipPrimitive.Positioner>;
+  return (
+    <TooltipPrimitive.Positioner {...rest}>
+      {children}
+    </TooltipPrimitive.Positioner>
+  );
 }
 
 function TooltipContent({ children, className, ...rest }: TooltipContentProps) {
   const { slots } = useTooltip();
 
   return (
-    <TooltipPrimitive.Content {...rest} className={slots.content({ className })}>
+    <TooltipPrimitive.Content
+      {...rest}
+      className={slots.content({ className })}
+    >
       {children}
     </TooltipPrimitive.Content>
   );

@@ -23,6 +23,8 @@ const onOpenChange = ({ open: isOpen }) => setOpen(isOpen);
         </div>
       </HoverCard.Content>
     </HoverCard>
-    <p class="text-center text-muted-foreground text-sm">{{ open ? "✅" : "❌" }}</p>
+    <p class="text-center text-muted-foreground text-sm">
+      {{ open ? "✅" : "❌" }}
+    </p>
   </div>
 </template>

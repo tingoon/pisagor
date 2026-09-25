@@ -6,7 +6,14 @@ import {
   alertRecipe,
 } from "@pisagor/recipes/alert";
 import { cn } from "@pisagor/utils";
-import { computed, defineComponent, h, type PropType, toValue, type VNodeChild } from "vue";
+import {
+  computed,
+  defineComponent,
+  h,
+  type PropType,
+  toValue,
+  type VNodeChild,
+} from "vue";
 import type { VariantClassNames } from "../../internal/types";
 import { createContext } from "../../internal/utils/create-context";
 
@@ -40,9 +47,10 @@ interface AlertContextValue {
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Context
-const [provideAlertContext, , useAlertContextRef] = createContext<AlertContextValue>({
-  name: "Alert",
-});
+const [provideAlertContext, , useAlertContextRef] =
+  createContext<AlertContextValue>({
+    name: "Alert",
+  });
 // #endregion
 
 // #region Parts
@@ -50,13 +58,22 @@ export const AlertRoot = defineComponent({
   inheritAttrs: false,
   name: "AlertRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<AlertClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<AlertClassNames>,
+    },
     recipe: {
       default: alertRecipe,
       type: Function as PropType<typeof alertRecipe>,
     },
-    variant: { default: undefined, type: String as PropType<AlertVariantProps["variant"]> },
+    variant: {
+      default: undefined,
+      type: String as PropType<AlertVariantProps["variant"]>,
+    },
   },
   setup(props, { attrs, slots }) {
     const contextValue = computed(() => ({
@@ -84,7 +101,10 @@ export const AlertTitle = defineComponent({
   inheritAttrs: false,
   name: "AlertTitle",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     const contextRef = useAlertContextRef();
@@ -101,7 +121,9 @@ export const AlertTitle = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: variantSlots.title({ class: cn(props.class, classNames?.title) }),
+          class: variantSlots.title({
+            class: cn(props.class, classNames?.title),
+          }),
           "data-part": "title",
           "data-scope": "alert",
         },
@@ -115,7 +137,10 @@ export const AlertDescription = defineComponent({
   inheritAttrs: false,
   name: "AlertDescription",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     const contextRef = useAlertContextRef();
@@ -132,7 +157,9 @@ export const AlertDescription = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: variantSlots.description({ class: cn(props.class, classNames?.description) }),
+          class: variantSlots.description({
+            class: cn(props.class, classNames?.description),
+          }),
           "data-part": "description",
           "data-scope": "alert",
         },
@@ -146,7 +173,10 @@ export const AlertAction = defineComponent({
   inheritAttrs: false,
   name: "AlertAction",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     const contextRef = useAlertContextRef();
@@ -163,7 +193,9 @@ export const AlertAction = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: variantSlots.action({ class: cn(props.class, classNames?.action) }),
+          class: variantSlots.action({
+            class: cn(props.class, classNames?.action),
+          }),
           "data-part": "action",
           "data-scope": "alert",
         },
@@ -177,16 +209,46 @@ export const AlertShorthand = defineComponent({
   inheritAttrs: false,
   name: "AlertShorthand",
   props: {
-    action: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
-    actionProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<AlertClassNames> },
-    description: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
-    descriptionProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
-    icon: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
-    title: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
-    titleProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
-    variant: { default: undefined, type: String as PropType<AlertVariantProps["variant"]> },
+    action: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<VNodeChild>,
+    },
+    actionProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<AlertClassNames>,
+    },
+    description: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<VNodeChild>,
+    },
+    descriptionProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
+    icon: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<VNodeChild>,
+    },
+    title: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<VNodeChild>,
+    },
+    titleProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
+    variant: {
+      default: undefined,
+      type: String as PropType<AlertVariantProps["variant"]>,
+    },
   },
   setup(props, { attrs }) {
     return () => {
@@ -201,7 +263,9 @@ export const AlertShorthand = defineComponent({
       }
 
       if (props.description !== undefined) {
-        nodes.push(h(AlertDescription, props.descriptionProps, () => props.description));
+        nodes.push(
+          h(AlertDescription, props.descriptionProps, () => props.description),
+        );
       }
 
       if (props.action !== undefined) {

@@ -33,7 +33,8 @@ export interface EditableProps extends EditableRootProps {
   recipe?: typeof editableRecipe;
 }
 
-export interface EditableInputProps extends Omit<EditablePrimitiveInputProps, "size"> {}
+export interface EditableInputProps
+  extends Omit<EditablePrimitiveInputProps, "size"> {}
 
 export interface EditablePreviewProps extends EditablePrimitivePreviewProps {
   controlVariant?: FormControlVariant;
@@ -62,7 +63,9 @@ export function EditableRoot(props: EditableProps): JSX.Element {
         data-orientation={orientation()}
         defaultValue={local.defaultValue}
         onValueChange={
-          local.onValueChange ? (details) => local.onValueChange?.(details.value) : undefined
+          local.onValueChange
+            ? (details) => local.onValueChange?.(details.value)
+            : undefined
         }
         value={local.value}
       />
@@ -73,7 +76,12 @@ export function EditableRoot(props: EditableProps): JSX.Element {
 export function EditableArea(props: EditableAreaProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useEditable();
-  return <EditablePrimitive.Area {...rest} class={slots.area({ class: local.class })} />;
+  return (
+    <EditablePrimitive.Area
+      {...rest}
+      class={slots.area({ class: local.class })}
+    />
+  );
 }
 
 export function EditableInput(props: EditableInputProps): JSX.Element {
@@ -93,7 +101,8 @@ export function EditablePreview(props: EditablePreviewProps): JSX.Element {
   const variant = () => local.variant ?? "outline";
   const buttonRecipeProp = () => local.buttonRecipe ?? buttonRecipe;
   const surfaceVariant = useFormControlSurface();
-  const controlVariant = () => local.controlVariant ?? ("primary" as FormControlVariant);
+  const controlVariant = () =>
+    local.controlVariant ?? ("primary" as FormControlVariant);
 
   const previewShellClass = () => {
     const resolvedVariant = controlVariant();
@@ -113,7 +122,11 @@ export function EditablePreview(props: EditablePreviewProps): JSX.Element {
     <EditablePrimitive.Preview
       {...rest}
       class={cn(
-        buttonRecipeProp()({ clickEffect: false, size: size(), variant: variant() }).base(),
+        buttonRecipeProp()({
+          clickEffect: false,
+          size: size(),
+          variant: variant(),
+        }).base(),
         previewShellClass(),
         slots.preview(),
         previewShellClass() ? "dark:hover:bg-transparent" : undefined,
@@ -127,17 +140,28 @@ export function EditablePreview(props: EditablePreviewProps): JSX.Element {
 export function EditableControl(props: EditableControlProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useEditable();
-  return <EditablePrimitive.Control {...rest} class={slots.control({ class: local.class })} />;
+  return (
+    <EditablePrimitive.Control
+      {...rest}
+      class={slots.control({ class: local.class })}
+    />
+  );
 }
 
-export function EditableEditTrigger(props: EditableEditTriggerProps): JSX.Element {
+export function EditableEditTrigger(
+  props: EditableEditTriggerProps,
+): JSX.Element {
   return <EditablePrimitive.EditTrigger {...props} />;
 }
 
-export function EditableCancelTrigger(props: EditableCancelTriggerProps): JSX.Element {
+export function EditableCancelTrigger(
+  props: EditableCancelTriggerProps,
+): JSX.Element {
   return <EditablePrimitive.CancelTrigger {...props} />;
 }
 
-export function EditableSubmitTrigger(props: EditableSubmitTriggerProps): JSX.Element {
+export function EditableSubmitTrigger(
+  props: EditableSubmitTriggerProps,
+): JSX.Element {
   return <EditablePrimitive.SubmitTrigger {...props} />;
 }

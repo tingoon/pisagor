@@ -8,7 +8,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Horizontal list of navigation links for primary site sections.",
+        component:
+          "Horizontal list of navigation links for primary site sections.",
       },
     },
   },

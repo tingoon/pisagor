@@ -73,7 +73,14 @@ export const buttonRecipe = tv({
       "icon-xs": { base: "size-6 rounded-xs" },
       lg: { base: ["h-9", "px-3.5"] },
       md: { base: ["h-8", "px-3", "py-2"] },
-      sm: { base: ["h-7", "px-2.5", "gap-1.5", "[&_svg:not([class*='size-'])]:size-3.5"] },
+      sm: {
+        base: [
+          "h-7",
+          "px-2.5",
+          "gap-1.5",
+          "[&_svg:not([class*='size-'])]:size-3.5",
+        ],
+      },
       xl: { base: ["h-10", "text-base", "px-4"] },
       xs: {
         base: [

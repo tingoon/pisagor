@@ -23,7 +23,11 @@ const value = ref("");
               PNG
             </Button>
           </QrCode.Download>
-          <QrCode.Download as-child file-name="qr-code" mime-type="image/svg+xml">
+          <QrCode.Download
+            as-child
+            file-name="qr-code"
+            mime-type="image/svg+xml"
+          >
             <Button class="w-1/2" size="icon-md">
               <PhDownload />
               SVG

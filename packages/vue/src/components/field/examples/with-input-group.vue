@@ -10,7 +10,11 @@ import { Field } from "..";
     <InputGroup>
       <InputGroup.Input placeholder="Your best email" type="email" />
       <InputGroup.Addon align="inline-end">
-        <InputGroup.Button aria-label="Subscribe" size="icon-xs" variant="ghost">
+        <InputGroup.Button
+          aria-label="Subscribe"
+          size="icon-xs"
+          variant="ghost"
+        >
           <PhArrowRight aria-hidden="true" />
         </InputGroup.Button>
       </InputGroup.Addon>

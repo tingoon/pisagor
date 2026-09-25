@@ -16,7 +16,10 @@ export function CustomPreview() {
       <FileUpload.ItemGroup className="grid grid-cols-4 gap-2">
         {files.map((file) => (
           <FileUpload.Item file={file} key={file.name}>
-            <FileUpload.ItemPreview className="size-auto w-full rounded-2xl" type="image/*">
+            <FileUpload.ItemPreview
+              className="size-auto w-full rounded-2xl"
+              type="image/*"
+            >
               <FileUpload.ItemPreviewImage />
             </FileUpload.ItemPreview>
             <FileUpload.ItemDeleteTrigger asChild>

@@ -35,8 +35,14 @@ export const FieldRoot = defineComponent({
   inheritAttrs: false,
   name: "FieldRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    orientation: { default: "vertical", type: String as PropType<FieldProps["orientation"]> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    orientation: {
+      default: "vertical",
+      type: String as PropType<FieldProps["orientation"]>,
+    },
     recipe: {
       default: fieldRecipe,
       type: Function as PropType<typeof fieldRecipe>,
@@ -67,7 +73,10 @@ export const FieldSet = defineComponent({
   inheritAttrs: false,
   name: "FieldSet",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: fieldRecipe,
       type: Function as PropType<typeof fieldRecipe>,
@@ -93,12 +102,18 @@ export const FieldLegend = defineComponent({
   inheritAttrs: false,
   name: "FieldLegend",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: fieldRecipe,
       type: Function as PropType<typeof fieldRecipe>,
     },
-    variant: { default: "legend", type: String as PropType<"label" | "legend"> },
+    variant: {
+      default: "legend",
+      type: String as PropType<"label" | "legend">,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -121,7 +136,10 @@ export const FieldGroup = defineComponent({
   inheritAttrs: false,
   name: "FieldGroup",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: fieldRecipe,
       type: Function as PropType<typeof fieldRecipe>,
@@ -149,7 +167,10 @@ export const FieldContent = defineComponent({
   inheritAttrs: false,
   name: "FieldContent",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: fieldRecipe,
       type: Function as PropType<typeof fieldRecipe>,
@@ -178,7 +199,10 @@ export const FieldLabel = defineComponent({
   name: "FieldLabel",
   props: {
     asChild: Boolean,
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: fieldRecipe,
       type: Function as PropType<typeof fieldRecipe>,
@@ -205,7 +229,10 @@ export const FieldRequiredIndicator = defineComponent({
   inheritAttrs: false,
   name: "FieldRequiredIndicator",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: fieldRecipe,
       type: Function as PropType<typeof fieldRecipe>,
@@ -232,7 +259,10 @@ export const FieldTitle = defineComponent({
   inheritAttrs: false,
   name: "FieldTitle",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: fieldRecipe,
       type: Function as PropType<typeof fieldRecipe>,
@@ -260,7 +290,10 @@ export const FieldDescription = defineComponent({
   inheritAttrs: false,
   name: "FieldDescription",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: fieldRecipe,
       type: Function as PropType<typeof fieldRecipe>,
@@ -288,7 +321,10 @@ export const FieldSeparator = defineComponent({
   inheritAttrs: false,
   name: "FieldSeparator",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: fieldRecipe,
       type: Function as PropType<typeof fieldRecipe>,
@@ -298,7 +334,10 @@ export const FieldSeparator = defineComponent({
     const surfaceVariant = useFormControlSurface();
 
     return () => {
-      const resolved = { surfaceVariant, variant: "primary" as FormControlVariant };
+      const resolved = {
+        surfaceVariant,
+        variant: "primary" as FormControlVariant,
+      };
       const shellArgs = {
         surfaceVariant: resolved.surfaceVariant,
         variant: resolved.variant,
@@ -318,7 +357,11 @@ export const FieldSeparator = defineComponent({
         [
           h(Separator as ArkPart, { class: variantSlots.inline() }),
           children
-            ? h("span", { class: cn(formControlSeparatorRecipe({ ...shellArgs })) }, children)
+            ? h(
+                "span",
+                { class: cn(formControlSeparatorRecipe({ ...shellArgs })) },
+                children,
+              )
             : null,
         ],
       );
@@ -330,7 +373,10 @@ export const FieldHelper = defineComponent({
   inheritAttrs: false,
   name: "FieldHelper",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: fieldRecipe,
       type: Function as PropType<typeof fieldRecipe>,
@@ -356,7 +402,10 @@ export const FieldError = defineComponent({
   inheritAttrs: false,
   name: "FieldError",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: fieldRecipe,
       type: Function as PropType<typeof fieldRecipe>,

@@ -5,6 +5,7 @@ interface FileInputContextValue {
   slots: FileInputRecipe;
 }
 
-export const { FileInputContext, useFileInput } = createContext<FileInputContextValue>()({
-  name: "FileInput",
-});
+export const { FileInputContext, useFileInput } =
+  createContext<FileInputContextValue>()({
+    name: "FileInput",
+  });

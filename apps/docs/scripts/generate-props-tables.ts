@@ -36,7 +36,10 @@ function stripStars(block: string): string {
     .trim();
 }
 
-function parseJsDoc(doc: string): { description: string; defaultValue?: string } {
+function parseJsDoc(doc: string): {
+  description: string;
+  defaultValue?: string;
+} {
   const raw = stripStars(doc);
   let defaultValue: string | undefined;
   const descLines: string[] = [];
@@ -73,7 +76,8 @@ function niceDefault(v: string): string {
   if (t.startsWith("`")) return t;
   const q = t.match(/^["'](.*)["']$/);
   if (q) return `\`${q[1]}\``;
-  if (t === "true" || t === "false" || /^-?\d+(\.\d+)?$/.test(t)) return `\`${t}\``;
+  if (t === "true" || t === "false" || /^-?\d+(\.\d+)?$/.test(t))
+    return `\`${t}\``;
   return t;
 }
 
@@ -109,7 +113,9 @@ function topLevelKeysBeforeColon(block: string): string[] {
       continue;
     }
     const slice = inner.slice(i);
-    const m = slice.match(/^(?:true|false|"[^"]+"|'[^']+'|[A-Za-z_][A-Za-z0-9_-]*)\s*:/);
+    const m = slice.match(
+      /^(?:true|false|"[^"]+"|'[^']+'|[A-Za-z_][A-Za-z0-9_-]*)\s*:/,
+    );
     if (m) {
       let token = m[0].replace(/\s*:$/, "");
       if (
@@ -165,7 +171,8 @@ function parseRecipeVariantFields(slug: string): PropRow[] {
     const vOpen = src.indexOf("{", vIdx);
     const vBlock = extractBraceBlock(src, vOpen);
     const vInner = vBlock.slice(1, -1);
-    const keyRe = /(?:\/\*\*[\s\S]*?\*\/\s*)?([A-Za-z_][A-Za-z0-9_]*)\s*:\s*\{/g;
+    const keyRe =
+      /(?:\/\*\*[\s\S]*?\*\/\s*)?([A-Za-z_][A-Za-z0-9_]*)\s*:\s*\{/g;
     let km: RegExpExecArray | null;
     while (true) {
       km = keyRe.exec(vInner);
@@ -191,7 +198,8 @@ function parseRecipeVariantFields(slug: string): PropRow[] {
   const inner = block.slice(1, -1);
 
   const fields: PropRow[] = [];
-  const fieldRe = /(?:\/\*\*[\s\S]*?\*\/\s*)?([A-Za-z_][A-Za-z0-9_]*)\s*:\s*([^,}]+)/g;
+  const fieldRe =
+    /(?:\/\*\*[\s\S]*?\*\/\s*)?([A-Za-z_][A-Za-z0-9_]*)\s*:\s*([^,}]+)/g;
   let fm: RegExpExecArray | null;
   while (true) {
     fm = fieldRe.exec(inner);
@@ -203,10 +211,12 @@ function parseRecipeVariantFields(slug: string): PropRow[] {
     const description = docMatch ? parseJsDoc(docMatch[0]).description : "";
     let type = "unknown";
     const opts = variantsMap.get(name);
-    if (opts?.length === 1 && opts[0] === "boolean") type = "boolean | undefined";
+    if (opts?.length === 1 && opts[0] === "boolean")
+      type = "boolean | undefined";
     else if (opts?.length) {
       type = `${opts.map((o) => JSON.stringify(o)).join(" | ")} | undefined`;
-    } else if (rawVal === "true" || rawVal === "false") type = "boolean | undefined";
+    } else if (rawVal === "true" || rawVal === "false")
+      type = "boolean | undefined";
     else if (/^["']/.test(rawVal)) type = "string | undefined";
     fields.push({
       defaultValue: niceDefault(rawVal),
@@ -218,13 +228,16 @@ function parseRecipeVariantFields(slug: string): PropRow[] {
   return fields;
 }
 
-function parsePropsFile(slug: string): { interfaceName: string; fields: PropRow[] }[] {
+function parsePropsFile(
+  slug: string,
+): { interfaceName: string; fields: PropRow[] }[] {
   const file = path.join(PROPS_DIR, `${slug}.ts`);
   if (!fs.existsSync(file)) return [];
   const src = fs.readFileSync(file, "utf8");
   const results: { interfaceName: string; fields: PropRow[] }[] = [];
 
-  const ifaceRe = /export\s+interface\s+([A-Za-z0-9_]+Props)\s*(?:extends\s+([^{]+))?\s*\{/g;
+  const ifaceRe =
+    /export\s+interface\s+([A-Za-z0-9_]+Props)\s*(?:extends\s+([^{]+))?\s*\{/g;
   let im: RegExpExecArray | null;
   while (true) {
     im = ifaceRe.exec(src);
@@ -249,7 +262,10 @@ function parsePropsFile(slug: string): { interfaceName: string; fields: PropRow[
   return results;
 }
 
-function emitFile(slug: string, primary: { interfaceName: string; fields: PropRow[] }): string {
+function emitFile(
+  slug: string,
+  primary: { interfaceName: string; fields: PropRow[] },
+): string {
   const exportName = `${kebabToCamel(slug)}Props`;
   const rows = primary.fields
     .map((f) => {
@@ -303,7 +319,8 @@ function main() {
         const base =
           fromParsed.find(
             (x) =>
-              x.interfaceName === prefer.replace(/^Alert/, "") || x.interfaceName.endsWith("Props"),
+              x.interfaceName === prefer.replace(/^Alert/, "") ||
+              x.interfaceName.endsWith("Props"),
           ) ?? fromParsed[0];
         if (base) {
           parsed = [{ fields: base.fields, interfaceName: asName }];

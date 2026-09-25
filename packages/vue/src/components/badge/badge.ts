@@ -23,14 +23,20 @@ export const Badge = defineComponent({
   inheritAttrs: false,
   name: "PisagorBadge",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     pill: { default: false, type: Boolean },
     recipe: {
       default: badgeRecipe,
       type: Function as PropType<typeof badgeRecipe>,
     },
     size: { default: "md", type: String as PropType<BadgeProps["size"]> },
-    variant: { default: "default", type: String as PropType<BadgeProps["variant"]> },
+    variant: {
+      default: "default",
+      type: String as PropType<BadgeProps["variant"]>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () =>

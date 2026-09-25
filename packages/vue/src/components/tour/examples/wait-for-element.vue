@@ -11,7 +11,8 @@ const addItem = () => {
 const steps = [
   {
     actions: [{ action: "next", label: "Start" }],
-    description: "This tour demonstrates waiting for elements that appear dynamically.",
+    description:
+      "This tour demonstrates waiting for elements that appear dynamically.",
     id: "intro",
     title: "Dynamic elements",
     type: "dialog",
@@ -31,7 +32,8 @@ const steps = [
   },
   {
     actions: [{ action: "next", label: "Next" }],
-    description: "The tour waited for this element to appear before showing this step.",
+    description:
+      "The tour waited for this element to appear before showing this step.",
     effect({ show }) {
       const [promise, cancel] = waitForElement(
         () => document.querySelector<HTMLElement>('[data-item="new"]'),

@@ -42,7 +42,14 @@ function formatRelativeTime(
   return formatter.format(Math.round(duration), "year");
 }
 
-const { value, locale, numeric = "auto", style = "long", class: className, ...rest } = Astro.props;
+const {
+  value,
+  locale,
+  numeric = "auto",
+  style = "long",
+  class: className,
+  ...rest
+} = Astro.props;
 
 const date = value instanceof Date ? value : new Date(value);
 const formatted = formatRelativeTime(date, locale, numeric, style);

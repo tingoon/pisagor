@@ -35,7 +35,8 @@ type SliderRootProps = SliderPrimitiveRootProps & {
   recipe?: typeof sliderRecipe;
 };
 
-export interface SliderProps extends Omit<SliderRootProps, "children" | "onValueChange"> {
+export interface SliderProps
+  extends Omit<SliderRootProps, "children" | "onValueChange"> {
   /**
    * The interval between markers.
    *
@@ -105,12 +106,18 @@ function SliderRoot({
   };
   const shellControlProps = { "data-variant": resolved.variant };
   const slots = recipe();
-  const thumbShadowClass = resolved.variant === "secondary" ? "shadow-none" : undefined;
-  const trackVariantClass = resolved.variant === "secondary" ? "bg-muted/40" : "bg-input/64";
+  const thumbShadowClass =
+    resolved.variant === "secondary" ? "shadow-none" : undefined;
+  const trackVariantClass =
+    resolved.variant === "secondary" ? "bg-muted/40" : "bg-input/64";
 
   return (
     <SliderContext value={{ slots, thumbShadowClass, trackVariantClass }}>
-      <SliderPrimitive.Root {...rest} {...shellControlProps} className={slots.base({ className })}>
+      <SliderPrimitive.Root
+        {...rest}
+        {...shellControlProps}
+        className={slots.base({ className })}
+      >
         {children}
       </SliderPrimitive.Root>
     </SliderContext>
@@ -130,7 +137,12 @@ function SliderHeader({ children, className, ...rest }: SliderHeaderProps) {
 function SliderValue({ className, ...rest }: SliderValueProps) {
   const { slots } = useSlider();
 
-  return <SliderPrimitive.ValueText {...rest} className={slots.value({ className })} />;
+  return (
+    <SliderPrimitive.ValueText
+      {...rest}
+      className={slots.value({ className })}
+    />
+  );
 }
 
 function SliderControl({ children, className, ...rest }: SliderControlProps) {
@@ -159,7 +171,9 @@ function SliderTrack({ children, className, ...rest }: SliderTrackProps) {
 function SliderRange({ className, ...rest }: SliderRangeProps) {
   const { slots } = useSlider();
 
-  return <SliderPrimitive.Range {...rest} className={slots.range({ className })} />;
+  return (
+    <SliderPrimitive.Range {...rest} className={slots.range({ className })} />
+  );
 }
 
 function SliderThumb({ className, ...rest }: SliderThumbProps) {
@@ -173,11 +187,18 @@ function SliderThumb({ className, ...rest }: SliderThumbProps) {
   );
 }
 
-function SliderMarkerGroup({ children, className, ...rest }: SliderMarkerGroupProps) {
+function SliderMarkerGroup({
+  children,
+  className,
+  ...rest
+}: SliderMarkerGroupProps) {
   const { slots } = useSlider();
 
   return (
-    <SliderPrimitive.MarkerGroup {...rest} className={slots.markerGroup({ className })}>
+    <SliderPrimitive.MarkerGroup
+      {...rest}
+      className={slots.markerGroup({ className })}
+    >
       {children}
     </SliderPrimitive.MarkerGroup>
   );
@@ -199,7 +220,11 @@ function SliderMarkerTick({ className, ...rest }: SliderMarkerTickProps) {
   return <span {...rest} className={slots.markerTick({ className })} />;
 }
 
-function SliderMarkerLabel({ children, className, ...rest }: SliderMarkerLabelProps) {
+function SliderMarkerLabel({
+  children,
+  className,
+  ...rest
+}: SliderMarkerLabelProps) {
   const { slots } = useSlider();
 
   return (

@@ -23,7 +23,8 @@ type RatingRootProps = RatingGroupRootProps & {
   recipe?: typeof ratingRecipe;
 };
 
-export interface RatingProps extends Omit<RatingRootProps, "children" | "onValueChange"> {
+export interface RatingProps
+  extends Omit<RatingRootProps, "children" | "onValueChange"> {
   defaultValue?: number;
   value?: number;
   icon?: JSX.Element;
@@ -45,7 +46,8 @@ function RatingRoot(props: RatingRootProps): JSX.Element {
   ]);
   const variant = () => local.variant ?? ("primary" as FormControlVariant);
   const slots = () => (local.recipe ?? ratingRecipe)();
-  const surfaceTone = () => (variant() === "secondary" ? "opacity-90" : undefined);
+  const surfaceTone = () =>
+    variant() === "secondary" ? "opacity-90" : undefined;
 
   return (
     <RatingContext value={{ slots: slots() }}>
@@ -66,7 +68,10 @@ function RatingControl(props: RatingControlProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const { slots } = useRating();
   return (
-    <RatingGroupPrimitive.Control {...rest} class={slots.control({ class: cn(local.class) })}>
+    <RatingGroupPrimitive.Control
+      {...rest}
+      class={slots.control({ class: cn(local.class) })}
+    >
       {local.children}
     </RatingGroupPrimitive.Control>
   );
@@ -75,7 +80,12 @@ function RatingControl(props: RatingControlProps): JSX.Element {
 function RatingItem(props: RatingItemProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useRating();
-  return <RatingGroupPrimitive.Item {...rest} class={slots.item({ class: cn(local.class) })} />;
+  return (
+    <RatingGroupPrimitive.Item
+      {...rest}
+      class={slots.item({ class: cn(local.class) })}
+    />
+  );
 }
 
 function RatingIndicator(props: RatingIndicatorProps): JSX.Element {
@@ -111,7 +121,9 @@ export function Rating(props: RatingProps): JSX.Element {
       {...rest}
       class={local.class}
       onValueChange={
-        local.onValueChange ? (details) => local.onValueChange?.(details.value) : undefined
+        local.onValueChange
+          ? (details) => local.onValueChange?.(details.value)
+          : undefined
       }
       variant={local.variant}
     >
@@ -120,7 +132,11 @@ export function Rating(props: RatingProps): JSX.Element {
           {(api) => (
             <For each={api().items}>
               {(item) => (
-                <RatingItem {...local.itemProps} class={local.classNames?.item} index={item}>
+                <RatingItem
+                  {...local.itemProps}
+                  class={local.classNames?.item}
+                  index={item}
+                >
                   <RatingGroupPrimitive.ItemContext>
                     {(itemApi) => {
                       const state = () => itemApi();
@@ -129,13 +145,18 @@ export function Rating(props: RatingProps): JSX.Element {
                           {...local.indicatorProps}
                           class={local.classNames?.indicator}
                           data-half={state().half ? "" : undefined}
-                          data-highlighted={state().highlighted ? "" : undefined}
+                          data-highlighted={
+                            state().highlighted ? "" : undefined
+                          }
                         >
                           <Show keyed when={icon()}>
                             {(node) => (
                               <>
                                 <span data-bg="">{node}</span>
-                                <span data-fg="" style={{ color: "currentColor" }}>
+                                <span
+                                  data-fg=""
+                                  style={{ color: "currentColor" }}
+                                >
                                   {node}
                                 </span>
                               </>

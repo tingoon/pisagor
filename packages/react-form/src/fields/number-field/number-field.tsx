@@ -1,11 +1,19 @@
 import type { NumberInputProps } from "@pisagor/react";
 import { NumberInput } from "@pisagor/react";
-import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
+import {
+  type FieldPresentationProps,
+  FieldShell,
+} from "../../internal/field-shell";
 
 // #region Types
-type NumberInputControlProps = Omit<NumberInputProps, "invalid" | "name" | "value">;
+type NumberInputControlProps = Omit<
+  NumberInputProps,
+  "invalid" | "name" | "value"
+>;
 
-export interface NumberFieldProps extends FieldPresentationProps, NumberInputControlProps {
+export interface NumberFieldProps
+  extends FieldPresentationProps,
+    NumberInputControlProps {
   name?: string;
   value?: number;
   placeholder?: string;
@@ -46,7 +54,9 @@ export function NumberField({
     >
       <NumberInput
         {...numberInputProps}
-        {...(value !== undefined ? { value: Number.isFinite(value) ? String(value) : "" } : {})}
+        {...(value !== undefined
+          ? { value: Number.isFinite(value) ? String(value) : "" }
+          : {})}
         clearable={clearable}
         id={id}
         invalid={invalid}

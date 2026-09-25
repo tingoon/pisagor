@@ -25,7 +25,8 @@ export interface DrawerRootProps extends DrawerPrimitiveRootProps {
 export type DrawerPositionerProps = DrawerPrimitivePositionerProps &
   Pick<DrawerVariantProps, "variant">;
 
-export type DrawerContentProps = DrawerPrimitiveContentProps & Pick<DrawerVariantProps, "variant">;
+export type DrawerContentProps = DrawerPrimitiveContentProps &
+  Pick<DrawerVariantProps, "variant">;
 
 export interface DrawerHeaderProps extends ComponentProps<typeof ark.div> {
   description?: string;
@@ -58,7 +59,12 @@ export function DrawerTrigger(props: DrawerTriggerProps): JSX.Element {
 export function DrawerBackdrop(props: DrawerBackdropProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useDrawer();
-  return <DrawerPrimitive.Backdrop {...rest} class={slots.backdrop({ class: cn(local.class) })} />;
+  return (
+    <DrawerPrimitive.Backdrop
+      {...rest}
+      class={slots.backdrop({ class: cn(local.class) })}
+    />
+  );
 }
 
 export function DrawerPositioner(props: DrawerPositionerProps): JSX.Element {
@@ -68,7 +74,10 @@ export function DrawerPositioner(props: DrawerPositionerProps): JSX.Element {
   return (
     <DrawerPrimitive.Positioner
       {...rest}
-      class={slots.positioner({ class: cn(local.class), variant: local.variant ?? "default" })}
+      class={slots.positioner({
+        class: cn(local.class),
+        variant: local.variant ?? "default",
+      })}
     />
   );
 }
@@ -95,7 +104,8 @@ export function DrawerContent(props: DrawerContentProps): JSX.Element {
               {...rest}
               class={slots.content({
                 class: cn(local.class),
-                placement: SWIPE_DIRECTION_TO_PLACEMENT[drawer().swipeDirection],
+                placement:
+                  SWIPE_DIRECTION_TO_PLACEMENT[drawer().swipeDirection],
                 variant: variant(),
               })}
             >
@@ -109,7 +119,9 @@ export function DrawerContent(props: DrawerContentProps): JSX.Element {
   );
 }
 
-export function DrawerContentInner(props: DrawerContentInnerProps): JSX.Element {
+export function DrawerContentInner(
+  props: DrawerContentInnerProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useDrawer();
 
@@ -129,7 +141,10 @@ export function DrawerGrabber(props: DrawerGrabberProps): JSX.Element {
 
   return (
     <ark.div class={slots.grabberWrapper()}>
-      <DrawerPrimitive.Grabber {...rest} class={slots.grabber({ class: cn(local.class) })}>
+      <DrawerPrimitive.Grabber
+        {...rest}
+        class={slots.grabber({ class: cn(local.class) })}
+      >
         <DrawerPrimitive.GrabberIndicator class={slots.grabberIcon()} />
       </DrawerPrimitive.Grabber>
     </ark.div>
@@ -137,7 +152,12 @@ export function DrawerGrabber(props: DrawerGrabberProps): JSX.Element {
 }
 
 export function DrawerHeader(props: DrawerHeaderProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "description", "title", "class"]);
+  const [local, rest] = splitProps(props, [
+    "children",
+    "description",
+    "title",
+    "class",
+  ]);
   const { slots } = useDrawer();
 
   return (
@@ -161,7 +181,12 @@ export function DrawerHeader(props: DrawerHeaderProps): JSX.Element {
 export function DrawerTitle(props: DrawerTitleProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useDrawer();
-  return <DrawerPrimitive.Title {...rest} class={slots.title({ class: cn(local.class) })} />;
+  return (
+    <DrawerPrimitive.Title
+      {...rest}
+      class={slots.title({ class: cn(local.class) })}
+    />
+  );
 }
 
 export function DrawerDescription(props: DrawerDescriptionProps): JSX.Element {
@@ -194,7 +219,9 @@ export function DrawerBody(props: DrawerBodyProps): JSX.Element {
   );
 }
 
-export function DrawerCloseTrigger(props: DrawerCloseTriggerProps): JSX.Element {
+export function DrawerCloseTrigger(
+  props: DrawerCloseTriggerProps,
+): JSX.Element {
   return <DrawerPrimitive.CloseTrigger {...props} />;
 }
 

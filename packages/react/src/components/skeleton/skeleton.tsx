@@ -38,7 +38,11 @@ export interface SkeletonCircleProps extends ComponentProps<typeof ark.div> {
 // #endregion
 
 // #region Parts
-export function SkeletonRoot({ recipe = skeletonRecipe, className, ...rest }: SkeletonRootProps) {
+export function SkeletonRoot({
+  recipe = skeletonRecipe,
+  className,
+  ...rest
+}: SkeletonRootProps) {
   const slots = recipe();
 
   return (
@@ -77,7 +81,12 @@ export function SkeletonText({
   const slots = recipe();
 
   return (
-    <ark.div {...rest} className={slots.text({ className })} data-part="text" data-scope="skeleton">
+    <ark.div
+      {...rest}
+      className={slots.text({ className })}
+      data-part="text"
+      data-scope="skeleton"
+    >
       {Array.from({ length: lines }).map((_, index) => {
         const key = `skeleton-text-${index}`;
 

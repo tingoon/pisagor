@@ -39,7 +39,10 @@ export function Scrollable() {
   });
 
   return (
-    <Command collection={collection} onInputValueChange={({ inputValue }) => filter(inputValue)}>
+    <Command
+      collection={collection}
+      onInputValueChange={({ inputValue }) => filter(inputValue)}
+    >
       <Command.Input placeholder="Search frameworks..." />
       <Command.Content>
         <Command.Empty />

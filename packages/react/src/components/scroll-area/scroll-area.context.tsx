@@ -5,6 +5,7 @@ interface ScrollAreaContextValue {
   slots: ScrollAreaRecipe;
 }
 
-export const { ScrollAreaContext, useScrollArea } = createContext<ScrollAreaContextValue>()({
-  name: "ScrollArea",
-});
+export const { ScrollAreaContext, useScrollArea } =
+  createContext<ScrollAreaContextValue>()({
+    name: "ScrollArea",
+  });

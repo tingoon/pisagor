@@ -47,7 +47,9 @@ export function Events() {
     <div className="flex flex-col gap-2">
       <Tour
         onStatusChange={(details) => addLog(`Status: ${details.status}`)}
-        onStepChange={(details) => addLog(`Step changed: ${details.stepId ?? "unknown"}`)}
+        onStepChange={(details) =>
+          addLog(`Step changed: ${details.stepId ?? "unknown"}`)
+        }
         steps={steps}
       >
         <Tour.Trigger asChild>

@@ -92,12 +92,18 @@ function DataGridView({
   );
 }
 
-function countLeaves(row: { subRows?: unknown[]; getLeafRows?: () => unknown[] }): number {
+function countLeaves(row: {
+  subRows?: unknown[];
+  getLeafRows?: () => unknown[];
+}): number {
   if (typeof row.getLeafRows === "function") {
     return row.getLeafRows().length;
   }
   if (!row.subRows?.length) return 1;
-  return row.subRows.reduce((sum: number, child) => sum + countLeaves(child as typeof row), 0);
+  return row.subRows.reduce(
+    (sum: number, child) => sum + countLeaves(child as typeof row),
+    0,
+  );
 }
 
 export function ExpandingRows() {
@@ -145,7 +151,9 @@ export function ExpandingRows() {
           const leafCount = countLeaves(row);
           return (
             <span className="text-muted-foreground tabular-nums">
-              {row.subRows?.length ? `${row.subRows.length} teams · ${leafCount} units` : "Leaf"}
+              {row.subRows?.length
+                ? `${row.subRows.length} teams · ${leafCount} units`
+                : "Leaf"}
             </span>
           );
         },

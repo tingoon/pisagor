@@ -1,5 +1,12 @@
 import { createListCollection } from "@ark-ui/react";
-import { Checkbox, Field, Input, Select, Switch, Textarea } from "@pisagor/react";
+import {
+  Checkbox,
+  Field,
+  Input,
+  Select,
+  Switch,
+  Textarea,
+} from "@pisagor/react";
 import { Surface } from "..";
 
 const selectCollection = createListCollection({
@@ -38,7 +45,9 @@ function FormControlsDemo() {
       <Field orientation="horizontal">
         <Switch id="surface-notify" />
         <Field.Content>
-          <Field.Label htmlFor="surface-notify">Email notifications</Field.Label>
+          <Field.Label htmlFor="surface-notify">
+            Email notifications
+          </Field.Label>
         </Field.Content>
       </Field>
 
@@ -57,7 +66,9 @@ export function WithFormControls() {
     <Surface bordered padding="md" variant="default">
       <div className="mb-4">
         <h3 className="font-semibold text-sm">Settings</h3>
-        <p className="text-muted-foreground text-sm">Grouped controls on a surface background.</p>
+        <p className="text-muted-foreground text-sm">
+          Grouped controls on a surface background.
+        </p>
       </div>
       <FormControlsDemo />
     </Surface>

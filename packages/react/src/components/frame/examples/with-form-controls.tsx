@@ -6,7 +6,9 @@ export function WithFormControls() {
     <Frame>
       <Frame.Header>
         <Frame.Title>Account</Frame.Title>
-        <Frame.Description>Controls on muted Frame chrome and raised panels.</Frame.Description>
+        <Frame.Description>
+          Controls on muted Frame chrome and raised panels.
+        </Frame.Description>
       </Frame.Header>
       <Frame.Panel>
         <Field.Group>
@@ -17,7 +19,9 @@ export function WithFormControls() {
           <Field orientation="horizontal">
             <Switch id="frame-notify" />
             <Field.Content>
-              <Field.Label htmlFor="frame-notify">Email notifications</Field.Label>
+              <Field.Label htmlFor="frame-notify">
+                Email notifications
+              </Field.Label>
             </Field.Content>
           </Field>
         </Field.Group>

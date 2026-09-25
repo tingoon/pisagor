@@ -23,7 +23,8 @@ export interface InputOTPProps extends InputOTPRootProps {
   recipe?: typeof inputOtpRecipe;
 }
 
-export type InputOTPSlotProps = PinInputInputProps & Pick<InputProps, "variant">;
+export type InputOTPSlotProps = PinInputInputProps &
+  Pick<InputProps, "variant">;
 
 export type InputOTPSeparatorProps = ComponentProps<typeof ark.hr>;
 // #endregion
@@ -46,7 +47,9 @@ export function InputOTPRoot({
       <PinInputPrimitive.Root
         {...rest}
         className={slots.base()}
-        onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
+        onValueChange={
+          onValueChange ? (details) => onValueChange(details.value) : undefined
+        }
         otp={otp}
         placeholder={placeholder ?? ""}
       >
@@ -60,7 +63,11 @@ export function InputOTPRoot({
   );
 }
 
-export function InputOTPSlot({ variant, className, ...rest }: InputOTPSlotProps) {
+export function InputOTPSlot({
+  variant,
+  className,
+  ...rest
+}: InputOTPSlotProps) {
   const { slots } = useInputOTP();
 
   return (
@@ -70,7 +77,10 @@ export function InputOTPSlot({ variant, className, ...rest }: InputOTPSlotProps)
   );
 }
 
-export function InputOTPSeparator({ className, ...rest }: InputOTPSeparatorProps) {
+export function InputOTPSeparator({
+  className,
+  ...rest
+}: InputOTPSeparatorProps) {
   const { slots } = useInputOTP();
 
   return (

@@ -5,6 +5,7 @@ interface ProgressContextValue {
   slots: ProgressRecipe;
 }
 
-export const { ProgressContext, useProgress } = createContext<ProgressContextValue>()({
-  name: "Progress",
-});
+export const { ProgressContext, useProgress } =
+  createContext<ProgressContextValue>()({
+    name: "Progress",
+  });

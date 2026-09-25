@@ -1,4 +1,7 @@
-import type { CheckboxGroupRecipeFn, CheckboxRecipeFn } from "@pisagor/recipes/checkbox";
+import type {
+  CheckboxGroupRecipeFn,
+  CheckboxRecipeFn,
+} from "@pisagor/recipes/checkbox";
 
 /** CheckboxGroup props. */
 export interface CheckboxGroupProps {

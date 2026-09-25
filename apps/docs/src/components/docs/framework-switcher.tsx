@@ -36,8 +36,8 @@ export default function FrameworkSwitcher({
             aria-current={active ? "page" : undefined}
             className={
               active
-                ? "docs-press inline-flex items-center gap-1.5 rounded-full bg-background px-2.5 py-1 text-xs font-semibold text-foreground shadow-xs"
-                : "docs-press inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium text-muted-foreground hover:text-foreground"
+                ? "docs-press inline-flex items-center gap-1.5 rounded-full bg-background px-2.5 py-1 font-semibold text-foreground text-xs shadow-xs"
+                : "docs-press inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 font-medium text-muted-foreground text-xs hover:text-foreground"
             }
             href={swapFrameworkPath(pathname, item.id)}
             key={item.id}

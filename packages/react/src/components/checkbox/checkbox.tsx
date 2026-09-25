@@ -14,7 +14,8 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 // #region Types
 type FormControlVariant = "primary" | "secondary";
 
-export interface CheckboxGroupProps extends Omit<CheckboxPrimitiveGroupProps, "onValueChange"> {
+export interface CheckboxGroupProps
+  extends Omit<CheckboxPrimitiveGroupProps, "onValueChange"> {
   onValueChange?: (value: string[]) => void;
   /**
    * Style recipe. Defaults to `checkboxGroupRecipe` from `@pisagor/recipes/checkbox`.
@@ -80,7 +81,9 @@ export function CheckboxRoot({
 
   const handleCheckedChange =
     onCheckedChange || onValueChange
-      ? (details: Parameters<NonNullable<CheckboxProps["onCheckedChange"]>>[0]) => {
+      ? (
+          details: Parameters<NonNullable<CheckboxProps["onCheckedChange"]>>[0],
+        ) => {
           onCheckedChange?.(details);
           onValueChange?.(details.checked === true);
         }
@@ -119,7 +122,12 @@ function CheckboxIndicator({
 }: CheckboxIndicatorPartProps) {
   const slots = recipe();
 
-  return <CheckboxPrimitive.Indicator {...rest} className={slots.indicator({ className })} />;
+  return (
+    <CheckboxPrimitive.Indicator
+      {...rest}
+      className={slots.indicator({ className })}
+    />
+  );
 }
 // #endregion
 

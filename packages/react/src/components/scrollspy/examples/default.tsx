@@ -8,7 +8,11 @@ export function Default() {
   return (
     <div className="flex w-full grow gap-5">
       <div className="flex w-37.5 flex-col gap-2">
-        <Scrollspy className="flex flex-col gap-2.5" offset={50} targetRef={parentRef}>
+        <Scrollspy
+          className="flex flex-col gap-2.5"
+          offset={50}
+          targetRef={parentRef}
+        >
           {verticalSections.map((item) => (
             <Button
               className="data-[active=true]:bg-primary data-[active=true]:text-primary-foreground"

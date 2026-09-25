@@ -1,6 +1,6 @@
 import { Field } from "@pisagor/react";
 import type { AnyFieldApi } from "@tanstack/react-form";
-import type { FormEvent } from "react";
+import type { SyntheticEvent } from "react";
 import { useSubmissionAttempts } from "./hooks";
 
 export function getFieldErrorMessage(field: AnyFieldApi): string | undefined {
@@ -22,9 +22,13 @@ export function getFieldErrorMessage(field: AnyFieldApi): string | undefined {
   return undefined;
 }
 
-export function isFieldInvalid(field: AnyFieldApi, submissionAttempts = 0): boolean {
+export function isFieldInvalid(
+  field: AnyFieldApi,
+  submissionAttempts = 0,
+): boolean {
   return (
-    field.state.meta.errors.length > 0 && (field.state.meta.isTouched || submissionAttempts > 0)
+    field.state.meta.errors.length > 0 &&
+    (field.state.meta.isTouched || submissionAttempts > 0)
   );
 }
 
@@ -49,7 +53,7 @@ export function FormFieldError({ field }: FormFieldErrorProps) {
   return <Field.Error>{message}</Field.Error>;
 }
 
-export function preventDefaultFormSubmit(event: FormEvent) {
+export function preventDefaultFormSubmit(event: SyntheticEvent) {
   event.preventDefault();
   event.stopPropagation();
 }

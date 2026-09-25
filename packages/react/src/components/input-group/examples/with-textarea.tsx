@@ -6,7 +6,12 @@ export function WithTextarea() {
     <InputGroup>
       <InputGroup.Textarea placeholder="Ask, Search or Chat…" />
       <InputGroup.Addon align="block-end">
-        <Button aria-label="Add files" className="rounded-full" size="icon-sm" variant="ghost">
+        <Button
+          aria-label="Add files"
+          className="rounded-full"
+          size="icon-sm"
+          variant="ghost"
+        >
           <PlusIcon />
         </Button>
         <InputGroup.Text className="ml-auto">33% used</InputGroup.Text>

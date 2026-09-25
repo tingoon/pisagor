@@ -21,7 +21,8 @@ function renderValue(selected: string[]) {
   }
 
   const firstValue = selected.at(0) ?? "";
-  const additionalValues = selected.length > 1 ? ` (+${selected.length - 1} more)` : "";
+  const additionalValues =
+    selected.length > 1 ? ` (+${selected.length - 1} more)` : "";
 
   return firstValue + additionalValues;
 }
@@ -33,14 +34,25 @@ function handleValueChange(next: string | string[]) {
 </script>
 
 <template>
-  <Select.Root multiple :collection="collection" :value="value" @value-change="handleValueChange">
+  <Select.Root
+    multiple
+    :collection="collection"
+    :value="value"
+    @value-change="handleValueChange"
+  >
     <Select.Trigger>
       <Select.ValueText class="capitalize">
-        <Select.Context v-slot="{ value: selected }">{{ renderValue(selected) }}</Select.Context>
+        <Select.Context v-slot="{ value: selected }">{{
+          renderValue(selected)
+        }}</Select.Context>
       </Select.ValueText>
     </Select.Trigger>
     <Select.Content>
-      <Select.Item v-for="item in collection.items" :key="item.value" :item="item">
+      <Select.Item
+        v-for="item in collection.items"
+        :key="item.value"
+        :item="item"
+      >
         {{ item.label }}
       </Select.Item>
     </Select.Content>

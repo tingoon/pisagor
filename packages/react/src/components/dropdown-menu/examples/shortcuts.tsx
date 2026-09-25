@@ -1,4 +1,9 @@
-import { CopyIcon, GearIcon, SignOutIcon, UserIcon } from "@phosphor-icons/react";
+import {
+  CopyIcon,
+  GearIcon,
+  SignOutIcon,
+  UserIcon,
+} from "@phosphor-icons/react";
 import { Button } from "@pisagor/react";
 import { DropdownMenu } from "..";
 export function Shortcuts() {

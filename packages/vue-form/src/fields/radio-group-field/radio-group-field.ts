@@ -29,15 +29,33 @@ export const RadioGroupField = defineComponent({
   inheritAttrs: false,
   name: "RadioGroupField",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    defaultValue: { default: undefined, type: [String, null] as PropType<string | null> },
-    description: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    defaultValue: {
+      default: undefined,
+      type: [String, null] as PropType<string | null>,
+    },
+    description: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     disabled: { default: undefined, type: Boolean },
-    error: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    error: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     id: { default: undefined, type: String },
     invalid: { default: undefined, type: Boolean },
-    label: { default: undefined, type: null as unknown as PropType<VNodeChild> },
-    labelAccessory: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    label: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
+    labelAccessory: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     labelProps: {
       default: undefined,
       type: Object as PropType<FieldPresentationProps["labelProps"]>,
@@ -84,7 +102,9 @@ export const RadioGroupField = defineComponent({
                 () => [props.label, props.labelAccessory],
               )
             : null,
-          props.description ? h(Field.Description as ArkPart, null, () => props.description) : null,
+          props.description
+            ? h(Field.Description as ArkPart, null, () => props.description)
+            : null,
           h(
             RadioGroup.Root as ArkPart,
             {
@@ -95,13 +115,18 @@ export const RadioGroupField = defineComponent({
               invalid: props.invalid,
               name: props.name,
               onBlur: props.onBlur,
-              onValueChange: (nextValue: string | null) => props.onValueChange(nextValue ?? ""),
+              onValueChange: (nextValue: string | null) =>
+                props.onValueChange(nextValue ?? ""),
               orientation: props.orientation,
-              ...(props.value !== undefined ? { value: props.value || null } : {}),
+              ...(props.value !== undefined
+                ? { value: props.value || null }
+                : {}),
             },
             () =>
               normalizedOptions.map((option) => {
-                const optionId = props.id ? `${props.id}-${option.value}` : undefined;
+                const optionId = props.id
+                  ? `${props.id}-${option.value}`
+                  : undefined;
 
                 if (option.description) {
                   return h(Field as ArkPart, { key: option.value }, () => [
@@ -110,7 +135,11 @@ export const RadioGroupField = defineComponent({
                       { id: optionId, value: option.value },
                       () => option.label,
                     ),
-                    h(Field.Description as ArkPart, null, () => option.description),
+                    h(
+                      Field.Description as ArkPart,
+                      null,
+                      () => option.description,
+                    ),
                   ]);
                 }
 

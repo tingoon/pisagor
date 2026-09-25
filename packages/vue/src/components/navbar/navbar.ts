@@ -25,8 +25,14 @@ export const NavbarRoot = defineComponent({
   inheritAttrs: false,
   name: "NavbarRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<NavbarClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<NavbarClassNames>,
+    },
     recipe: {
       default: navbarRecipe,
       type: Function as PropType<typeof navbarRecipe>,
@@ -54,8 +60,14 @@ export const NavbarBrand = defineComponent({
   inheritAttrs: false,
   name: "NavbarBrand",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<NavbarClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<NavbarClassNames>,
+    },
     recipe: {
       default: navbarRecipe,
       type: Function as PropType<typeof navbarRecipe>,
@@ -69,7 +81,9 @@ export const NavbarBrand = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: slots$.brand({ class: cn(props.class, attrs.class, props.classNames?.brand) }),
+          class: slots$.brand({
+            class: cn(props.class, attrs.class, props.classNames?.brand),
+          }),
           "data-part": "brand",
           "data-scope": "navbar",
         },
@@ -83,8 +97,14 @@ export const NavbarContent = defineComponent({
   inheritAttrs: false,
   name: "NavbarContent",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<NavbarClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<NavbarClassNames>,
+    },
     recipe: {
       default: navbarRecipe,
       type: Function as PropType<typeof navbarRecipe>,
@@ -98,7 +118,9 @@ export const NavbarContent = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: slots$.content({ class: cn(props.class, attrs.class, props.classNames?.content) }),
+          class: slots$.content({
+            class: cn(props.class, attrs.class, props.classNames?.content),
+          }),
           "data-part": "content",
           "data-scope": "navbar",
         },
@@ -113,8 +135,14 @@ export const NavbarNav = defineComponent({
   name: "NavbarNav",
   props: {
     ariaLabel: { default: "Main", type: String },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<NavbarClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<NavbarClassNames>,
+    },
     recipe: {
       default: navbarRecipe,
       type: Function as PropType<typeof navbarRecipe>,
@@ -129,7 +157,9 @@ export const NavbarNav = defineComponent({
         {
           ...attrs,
           "aria-label": props.ariaLabel,
-          class: slots$.nav({ class: cn(props.class, attrs.class, props.classNames?.nav) }),
+          class: slots$.nav({
+            class: cn(props.class, attrs.class, props.classNames?.nav),
+          }),
           "data-part": "nav",
           "data-scope": "navbar",
         },
@@ -143,8 +173,14 @@ export const NavbarActions = defineComponent({
   inheritAttrs: false,
   name: "NavbarActions",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<NavbarClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<NavbarClassNames>,
+    },
     recipe: {
       default: navbarRecipe,
       type: Function as PropType<typeof navbarRecipe>,
@@ -158,7 +194,9 @@ export const NavbarActions = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: slots$.actions({ class: cn(props.class, attrs.class, props.classNames?.actions) }),
+          class: slots$.actions({
+            class: cn(props.class, attrs.class, props.classNames?.actions),
+          }),
           "data-part": "actions",
           "data-scope": "navbar",
         },

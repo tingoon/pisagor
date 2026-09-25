@@ -5,7 +5,8 @@ interface DropdownMenuContextValue {
   slots: DropdownMenuRecipe;
 }
 
-export const { DropdownMenuContext, useDropdownMenu } = createContext<DropdownMenuContextValue>()({
-  name: "DropdownMenu",
-  strict: false,
-});
+export const { DropdownMenuContext, useDropdownMenu } =
+  createContext<DropdownMenuContextValue>()({
+    name: "DropdownMenu",
+    strict: false,
+  });

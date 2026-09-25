@@ -5,6 +5,7 @@ interface CommandContextValue {
   slots: CommandRecipe;
 }
 
-export const { CommandContext, useCommand } = createContext<CommandContextValue>()({
-  name: "Command",
-});
+export const { CommandContext, useCommand } =
+  createContext<CommandContextValue>()({
+    name: "Command",
+  });

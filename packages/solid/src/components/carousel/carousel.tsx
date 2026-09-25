@@ -26,12 +26,18 @@ interface CarouselPresetItem {
   key?: string;
 }
 
-export interface CarouselProps extends Omit<CarouselRootProps, "children" | "slideCount"> {
+export interface CarouselProps
+  extends Omit<CarouselRootProps, "children" | "slideCount"> {
   slides?: CarouselPresetItem[];
 }
 
 export function CarouselRoot(props: CarouselRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "spacing", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "children",
+    "spacing",
+    "recipe",
+    "class",
+  ]);
   const slots = () => (local.recipe ?? carouselRecipe)();
 
   return (
@@ -50,10 +56,17 @@ export function CarouselRoot(props: CarouselRootProps): JSX.Element {
 export function CarouselControl(props: CarouselControlProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useCarousel();
-  return <CarouselPrimitive.Control {...rest} class={slots.control({ class: local.class })} />;
+  return (
+    <CarouselPrimitive.Control
+      {...rest}
+      class={slots.control({ class: local.class })}
+    />
+  );
 }
 
-export function CarouselPrevTrigger(props: CarouselPrevTriggerProps): JSX.Element {
+export function CarouselPrevTrigger(
+  props: CarouselPrevTriggerProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useCarousel();
   return (
@@ -61,7 +74,9 @@ export function CarouselPrevTrigger(props: CarouselPrevTriggerProps): JSX.Elemen
       {...rest}
       asChild={(triggerProps) => (
         <Button
-          {...triggerProps({ class: slots.prevTrigger({ class: local.class }) })}
+          {...triggerProps({
+            class: slots.prevTrigger({ class: local.class }),
+          })}
           aria-label="Previous"
           clickEffect={false}
           pill
@@ -75,7 +90,9 @@ export function CarouselPrevTrigger(props: CarouselPrevTriggerProps): JSX.Elemen
   );
 }
 
-export function CarouselNextTrigger(props: CarouselNextTriggerProps): JSX.Element {
+export function CarouselNextTrigger(
+  props: CarouselNextTriggerProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useCarousel();
   return (
@@ -83,7 +100,9 @@ export function CarouselNextTrigger(props: CarouselNextTriggerProps): JSX.Elemen
       {...rest}
       asChild={(triggerProps) => (
         <Button
-          {...triggerProps({ class: slots.nextTrigger({ class: local.class }) })}
+          {...triggerProps({
+            class: slots.nextTrigger({ class: local.class }),
+          })}
           aria-label="Next"
           clickEffect={false}
           pill
@@ -97,7 +116,9 @@ export function CarouselNextTrigger(props: CarouselNextTriggerProps): JSX.Elemen
   );
 }
 
-export function CarouselIndicatorGroup(props: CarouselIndicatorGroupProps): JSX.Element {
+export function CarouselIndicatorGroup(
+  props: CarouselIndicatorGroupProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useCarousel();
   return (
@@ -111,19 +132,34 @@ export function CarouselIndicatorGroup(props: CarouselIndicatorGroupProps): JSX.
 export function CarouselIndicator(props: CarouselIndicatorProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useCarousel();
-  return <CarouselPrimitive.Indicator {...rest} class={slots.indicator({ class: local.class })} />;
+  return (
+    <CarouselPrimitive.Indicator
+      {...rest}
+      class={slots.indicator({ class: local.class })}
+    />
+  );
 }
 
 export function CarouselItemGroup(props: CarouselItemGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useCarousel();
-  return <CarouselPrimitive.ItemGroup {...rest} class={slots.itemGroup({ class: local.class })} />;
+  return (
+    <CarouselPrimitive.ItemGroup
+      {...rest}
+      class={slots.itemGroup({ class: local.class })}
+    />
+  );
 }
 
 export function CarouselItem(props: CarouselItemProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useCarousel();
-  return <CarouselPrimitive.Item {...rest} class={slots.item({ class: local.class })} />;
+  return (
+    <CarouselPrimitive.Item
+      {...rest}
+      class={slots.item({ class: local.class })}
+    />
+  );
 }
 
 export function CarouselShorthand(props: CarouselProps): JSX.Element {
@@ -138,11 +174,15 @@ export function CarouselShorthand(props: CarouselProps): JSX.Element {
       </CarouselControl>
       <CarouselItemGroup>
         <For each={slides()}>
-          {(slide, index) => <CarouselItem index={index()}>{slide.content}</CarouselItem>}
+          {(slide, index) => (
+            <CarouselItem index={index()}>{slide.content}</CarouselItem>
+          )}
         </For>
       </CarouselItemGroup>
       <CarouselIndicatorGroup>
-        <For each={slides()}>{(_, index) => <CarouselIndicator index={index()} />}</For>
+        <For each={slides()}>
+          {(_, index) => <CarouselIndicator index={index()} />}
+        </For>
       </CarouselIndicatorGroup>
     </CarouselRoot>
   );

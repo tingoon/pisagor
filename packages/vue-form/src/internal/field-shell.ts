@@ -23,13 +23,28 @@ export const FieldShell = defineComponent({
   inheritAttrs: false,
   name: "FieldShell",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    description: { default: undefined, type: null as unknown as PropType<VNodeChild> },
-    error: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    description: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
+    error: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     id: { default: undefined, type: String },
     invalid: { default: undefined, type: Boolean },
-    label: { default: undefined, type: null as unknown as PropType<VNodeChild> },
-    labelAccessory: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    label: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
+    labelAccessory: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     labelProps: {
       default: undefined,
       type: Object as PropType<FieldPresentationProps["labelProps"]>,
@@ -61,9 +76,13 @@ export const FieldShell = defineComponent({
                 () => [props.label, props.labelAccessory],
               )
             : null,
-          props.description ? h(Field.Description as ArkPart, null, () => props.description) : null,
+          props.description
+            ? h(Field.Description as ArkPart, null, () => props.description)
+            : null,
           slots.default?.(),
-          props.error ? h(Field.Error as ArkPart, null, () => props.error) : null,
+          props.error
+            ? h(Field.Error as ArkPart, null, () => props.error)
+            : null,
         ],
       );
     };

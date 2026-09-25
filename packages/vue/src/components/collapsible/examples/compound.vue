@@ -4,7 +4,9 @@ import { Collapsible } from "..";
 
 <template>
   <Collapsible class="w-96 rounded-xl border bg-card p-4" default-open>
-    <Collapsible.Trigger class="flex w-full items-center justify-between font-medium text-sm">
+    <Collapsible.Trigger
+      class="flex w-full items-center justify-between font-medium text-sm"
+    >
       Details
       <Collapsible.Indicator />
     </Collapsible.Trigger>

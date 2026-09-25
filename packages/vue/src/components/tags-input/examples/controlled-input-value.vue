@@ -9,8 +9,12 @@ const inputValue = ref("");
 <template>
   <div class="flex flex-col gap-3">
     <div class="flex flex-wrap gap-2">
-      <Button size="sm" variant="outline" @click="inputValue = 'React'">Set "React"</Button>
-      <Button size="sm" variant="outline" @click="inputValue = ''">Clear</Button>
+      <Button size="sm" variant="outline" @click="inputValue = 'React'"
+        >Set "React"</Button
+      >
+      <Button size="sm" variant="outline" @click="inputValue = ''"
+        >Clear</Button
+      >
     </div>
     <Field>
       <Field.Label>Frameworks</Field.Label>

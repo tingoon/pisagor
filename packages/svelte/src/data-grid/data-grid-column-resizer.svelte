@@ -12,7 +12,7 @@ const headerCell = useDataGridHeaderCellContext();
 const { slots } = useDataGridContext();
 </script>
 
-{#if headerCell && headerCell.header.column.getCanResize()}
+{#if headerCell?.header.column.getCanResize()}
   <div
     {...rest}
     aria-hidden="true"

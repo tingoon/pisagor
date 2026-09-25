@@ -1,16 +1,16 @@
 ---
-import { CodeEditorInput } from "@recipes-vue/input-group/code-editor-input";
-import CodeEditorInputSource from "@recipes-vue/input-group/code-editor-input.ts?raw";
-import { InputGroupWithButton } from "@recipes-vue/input-group/input-group-with-button";
-import InputGroupWithButtonSource from "@recipes-vue/input-group/input-group-with-button.ts?raw";
-import { InputGroupWithInnerLabel } from "@recipes-vue/input-group/input-group-with-inner-label";
-import InputGroupWithInnerLabelSource from "@recipes-vue/input-group/input-group-with-inner-label.ts?raw";
-import { InputGroupWithMenu } from "@recipes-vue/input-group/input-group-with-menu";
-import InputGroupWithMenuSource from "@recipes-vue/input-group/input-group-with-menu.ts?raw";
-import { InputGroupWithNumberInput } from "@recipes-vue/input-group/input-group-with-number-input";
-import InputGroupWithNumberInputSource from "@recipes-vue/input-group/input-group-with-number-input.ts?raw";
-import { InputGroupWithTooltip } from "@recipes-vue/input-group/input-group-with-tooltip";
-import InputGroupWithTooltipSource from "@recipes-vue/input-group/input-group-with-tooltip.ts?raw";
+import { CodeEditorInput } from "#recipes-vue/input-group/code-editor-input";
+import CodeEditorInputSource from "#recipes-vue/input-group/code-editor-input.ts?raw";
+import { InputGroupWithButton } from "#recipes-vue/input-group/input-group-with-button";
+import InputGroupWithButtonSource from "#recipes-vue/input-group/input-group-with-button.ts?raw";
+import { InputGroupWithInnerLabel } from "#recipes-vue/input-group/input-group-with-inner-label";
+import InputGroupWithInnerLabelSource from "#recipes-vue/input-group/input-group-with-inner-label.ts?raw";
+import { InputGroupWithMenu } from "#recipes-vue/input-group/input-group-with-menu";
+import InputGroupWithMenuSource from "#recipes-vue/input-group/input-group-with-menu.ts?raw";
+import { InputGroupWithNumberInput } from "#recipes-vue/input-group/input-group-with-number-input";
+import InputGroupWithNumberInputSource from "#recipes-vue/input-group/input-group-with-number-input.ts?raw";
+import { InputGroupWithTooltip } from "#recipes-vue/input-group/input-group-with-tooltip";
+import InputGroupWithTooltipSource from "#recipes-vue/input-group/input-group-with-tooltip.ts?raw";
 import ComponentPreview from "../../../components/docs/component-preview.astro";
 import DocsLayout from "../../../layouts/docs-layout.astro";
 
@@ -59,31 +59,57 @@ const headings = [
   headings={headings}
   title="Input Group"
 >
-  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">Overview</h2>
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">
+    Overview
+  </h2>
   <p class="mb-8 text-muted-foreground">
-    Input group compositions for code editing, menus, inline actions, labels, number inputs, and
-    tooltips.
+    Input group compositions for code editing, menus, inline actions, labels,
+    number inputs, and tooltips.
   </p>
 
-  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="code-editor-input">
+  <h2
+    class="mb-3 mt-10 text-2xl font-semibold tracking-tight"
+    id="code-editor-input"
+  >
     Code Editor Input
   </h2>
-  <ComponentPreview code={CodeEditorInputSource} language="ts" title="Code Editor Input">
+  <ComponentPreview
+    code={CodeEditorInputSource}
+    language="ts"
+    title="Code Editor Input"
+  >
     <CodeEditorInput client:only="vue" />
   </ComponentPreview>
-  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="input-group-with-menu">
+  <h2
+    class="mb-3 mt-10 text-2xl font-semibold tracking-tight"
+    id="input-group-with-menu"
+  >
     Input Group With Menu
   </h2>
-  <ComponentPreview code={InputGroupWithMenuSource} language="ts" title="Input Group With Menu">
+  <ComponentPreview
+    code={InputGroupWithMenuSource}
+    language="ts"
+    title="Input Group With Menu"
+  >
     <InputGroupWithMenu client:only="vue" />
   </ComponentPreview>
-  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="input-group-with-button">
+  <h2
+    class="mb-3 mt-10 text-2xl font-semibold tracking-tight"
+    id="input-group-with-button"
+  >
     Input Group With Button
   </h2>
-  <ComponentPreview code={InputGroupWithButtonSource} language="ts" title="Input Group With Button">
+  <ComponentPreview
+    code={InputGroupWithButtonSource}
+    language="ts"
+    title="Input Group With Button"
+  >
     <InputGroupWithButton client:only="vue" />
   </ComponentPreview>
-  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="input-group-with-inner-label">
+  <h2
+    class="mb-3 mt-10 text-2xl font-semibold tracking-tight"
+    id="input-group-with-inner-label"
+  >
     Input Group With Inner Label
   </h2>
   <ComponentPreview
@@ -93,7 +119,10 @@ const headings = [
   >
     <InputGroupWithInnerLabel client:only="vue" />
   </ComponentPreview>
-  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="input-group-with-number-input">
+  <h2
+    class="mb-3 mt-10 text-2xl font-semibold tracking-tight"
+    id="input-group-with-number-input"
+  >
     Input Group With Number Input
   </h2>
   <ComponentPreview
@@ -103,7 +132,10 @@ const headings = [
   >
     <InputGroupWithNumberInput client:only="vue" />
   </ComponentPreview>
-  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="input-group-with-tooltip">
+  <h2
+    class="mb-3 mt-10 text-2xl font-semibold tracking-tight"
+    id="input-group-with-tooltip"
+  >
     Input Group With Tooltip
   </h2>
   <ComponentPreview

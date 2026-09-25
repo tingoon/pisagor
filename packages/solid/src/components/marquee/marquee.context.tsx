@@ -5,6 +5,7 @@ interface MarqueeContextValue {
   slots: MarqueeRecipe;
 }
 
-export const { MarqueeContext, useMarquee } = createContext<MarqueeContextValue>()({
-  name: "Marquee",
-});
+export const { MarqueeContext, useMarquee } =
+  createContext<MarqueeContextValue>()({
+    name: "Marquee",
+  });

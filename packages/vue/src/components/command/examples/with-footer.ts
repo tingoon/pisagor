@@ -1,6 +1,10 @@
 import { useListCollection } from "@ark-ui/vue/collection";
 import { useFilter } from "@ark-ui/vue/locale";
-import { PhArrowBendDownLeft, PhArrowDown, PhArrowUp } from "@phosphor-icons/vue";
+import {
+  PhArrowBendDownLeft,
+  PhArrowDown,
+  PhArrowUp,
+} from "@phosphor-icons/vue";
 import { Kbd } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 import type { ArkPart } from "../../../internal/types";
@@ -30,7 +34,8 @@ export default defineComponent({
         Command,
         {
           collection: collection.value,
-          onInputValueChange: (details: { inputValue: string }) => filter(details.inputValue),
+          onInputValueChange: (details: { inputValue: string }) =>
+            filter(details.inputValue),
         },
         () => [
           h(Command.Input, { placeholder: "Search..." }),
@@ -42,10 +47,14 @@ export default defineComponent({
                 .map(([group, items]) =>
                   h(Command.ItemGroup, { heading: group, key: group }, () =>
                     items.map((item) =>
-                      h(Command.Item as ArkPart, { item, key: item.value }, () => [
-                        item.label,
-                        h(Command.Shortcut, null, () => item.shortcut),
-                      ]),
+                      h(
+                        Command.Item as ArkPart,
+                        { item, key: item.value },
+                        () => [
+                          item.label,
+                          h(Command.Shortcut, null, () => item.shortcut),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -53,12 +62,18 @@ export default defineComponent({
           ]),
           h(Command.Footer, null, () => [
             h("div", { class: "flex items-center gap-2" }, [
-              h(Kbd, { variant: "outline" }, () => h(PhArrowBendDownLeft, { class: "size-3" })),
+              h(Kbd, { variant: "outline" }, () =>
+                h(PhArrowBendDownLeft, { class: "size-3" }),
+              ),
               h("span", null, "Select"),
             ]),
             h("div", { class: "flex items-center gap-2" }, [
-              h(Kbd, { variant: "outline" }, () => h(PhArrowUp, { class: "size-3" })),
-              h(Kbd, { variant: "outline" }, () => h(PhArrowDown, { class: "size-3" })),
+              h(Kbd, { variant: "outline" }, () =>
+                h(PhArrowUp, { class: "size-3" }),
+              ),
+              h(Kbd, { variant: "outline" }, () =>
+                h(PhArrowDown, { class: "size-3" }),
+              ),
               h("span", null, "Navigate"),
             ]),
           ]),

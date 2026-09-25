@@ -1,5 +1,8 @@
 import { Portal } from "@ark-ui/react";
-import { type CollectionItem, createListCollection } from "@ark-ui/react/collection";
+import {
+  type CollectionItem,
+  createListCollection,
+} from "@ark-ui/react/collection";
 import { ark } from "@ark-ui/react/factory";
 import type {
   SelectClearTriggerProps,
@@ -11,7 +14,10 @@ import type {
   SelectTriggerProps as SelectPrimitiveTriggerProps,
   SelectValueTextProps,
 } from "@ark-ui/react/select";
-import { Select as SelectPrimitive, useSelectContext } from "@ark-ui/react/select";
+import {
+  Select as SelectPrimitive,
+  useSelectContext,
+} from "@ark-ui/react/select";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
 import {
   type FormControlShellVariantProps,
@@ -50,7 +56,8 @@ export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
   recipe?: typeof selectRecipe;
 };
 
-export interface SelectProps extends Omit<SelectRootProps, "children" | "collection"> {
+export interface SelectProps
+  extends Omit<SelectRootProps, "children" | "collection"> {
   /**
    * Whether to show a clear button when a value is selected.
    *
@@ -96,7 +103,9 @@ export function SelectRoot<T extends CollectionItem = CollectionItem>({
     <SelectRootContext value={{ slots }}>
       <SelectPrimitive.Root
         {...rest}
-        onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
+        onValueChange={
+          onValueChange ? (details) => onValueChange(details.value) : undefined
+        }
       >
         {children}
 
@@ -130,7 +139,11 @@ export function SelectTrigger({
       <SelectPrimitive.Trigger
         {...rest}
         {...controlProps}
-        className={cn(formControlShellRecipe({ size, ...shellArgs }), slots.trigger(), className)}
+        className={cn(
+          formControlShellRecipe({ size, ...shellArgs }),
+          slots.trigger(),
+          className,
+        )}
       >
         {children}
 
@@ -165,7 +178,12 @@ export function SelectSeparator({ className, ...rest }: SeparatorProps) {
 export function SelectValueText({ className, ...rest }: SelectValueTextProps) {
   const { slots = selectRecipe() } = useSelectRoot() ?? {};
 
-  return <SelectPrimitive.ValueText {...rest} className={slots.valueText({ className })} />;
+  return (
+    <SelectPrimitive.ValueText
+      {...rest}
+      className={slots.valueText({ className })}
+    />
+  );
 }
 
 export function SelectContent({ className, ...rest }: SelectContentProps) {
@@ -174,13 +192,20 @@ export function SelectContent({ className, ...rest }: SelectContentProps) {
   return (
     <Portal>
       <SelectPrimitive.Positioner>
-        <SelectPrimitive.Content {...rest} className={slots.content({ className })} />
+        <SelectPrimitive.Content
+          {...rest}
+          className={slots.content({ className })}
+        />
       </SelectPrimitive.Positioner>
     </Portal>
   );
 }
 
-export function SelectItemGroup({ children, heading, ...rest }: SelectItemGroupProps) {
+export function SelectItemGroup({
+  children,
+  heading,
+  ...rest
+}: SelectItemGroupProps) {
   return (
     <SelectPrimitive.ItemGroup {...rest}>
       {!heading && <SelectItemGroupLabel>{heading}</SelectItemGroupLabel>}
@@ -190,11 +215,17 @@ export function SelectItemGroup({ children, heading, ...rest }: SelectItemGroupP
   );
 }
 
-export function SelectItemGroupLabel({ className, ...rest }: SelectItemGroupLabelProps) {
+export function SelectItemGroupLabel({
+  className,
+  ...rest
+}: SelectItemGroupLabelProps) {
   const { slots = selectRecipe() } = useSelectRoot() ?? {};
 
   return (
-    <SelectPrimitive.ItemGroupLabel {...rest} className={slots.itemGroupLabel({ className })} />
+    <SelectPrimitive.ItemGroupLabel
+      {...rest}
+      className={slots.itemGroupLabel({ className })}
+    />
   );
 }
 
@@ -203,7 +234,9 @@ export function SelectItem({ children, className, ...rest }: SelectItemProps) {
 
   return (
     <SelectPrimitive.Item {...rest} className={slots.item({ className })}>
-      <SelectPrimitive.ItemText className={slots.itemText()}>{children}</SelectPrimitive.ItemText>
+      <SelectPrimitive.ItemText className={slots.itemText()}>
+        {children}
+      </SelectPrimitive.ItemText>
 
       <span className={slots.itemIndicator()}>
         <SelectPrimitive.ItemIndicator>
@@ -214,7 +247,10 @@ export function SelectItem({ children, className, ...rest }: SelectItemProps) {
   );
 }
 
-export function SelectClearTrigger({ className, ...rest }: SelectClearTriggerProps) {
+export function SelectClearTrigger({
+  className,
+  ...rest
+}: SelectClearTriggerProps) {
   const { slots = selectRecipe() } = useSelectRoot() ?? {};
 
   return (
@@ -231,7 +267,13 @@ export function SelectEmpty({ className, ...rest }: SelectEmptyProps) {
   const { slots = selectRecipe() } = useSelectRoot() ?? {};
 
   if (empty) {
-    return <ark.div {...rest} className={slots.empty({ className })} role="presentation" />;
+    return (
+      <ark.div
+        {...rest}
+        className={slots.empty({ className })}
+        role="presentation"
+      />
+    );
   }
 
   return null;

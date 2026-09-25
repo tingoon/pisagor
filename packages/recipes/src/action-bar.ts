@@ -8,8 +8,15 @@ export const actionBarRecipe = tv({
     placement: "bottom",
   },
   slots: {
-    body: ["flex items-center gap-1", "**:data-[scope=action-bar]:data-[part=separator]:h-2"],
-    close: ["opacity-64 transition-opacity", "hover:opacity-100", "motion-reduce:transition-none!"],
+    body: [
+      "flex items-center gap-1",
+      "**:data-[scope=action-bar]:data-[part=separator]:h-2",
+    ],
+    close: [
+      "opacity-64 transition-opacity",
+      "hover:opacity-100",
+      "motion-reduce:transition-none!",
+    ],
     content: [
       "[--space:--spacing(2)]",
       "flex w-fit items-center gap-1",

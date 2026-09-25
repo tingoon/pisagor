@@ -1,6 +1,10 @@
 import { PhCaretDown, PhCaretRight } from "@phosphor-icons/vue";
 import { Table } from "@pisagor/vue";
-import type { CellContext, ColumnDef, DataGridFeatures } from "@pisagor/vue/data-grid";
+import type {
+  CellContext,
+  ColumnDef,
+  DataGridFeatures,
+} from "@pisagor/vue/data-grid";
 import type { ExpandedState, Row, RowData } from "@tanstack/vue-table";
 import { computed, defineComponent, h, ref } from "vue";
 import { DataGrid } from "..";
@@ -8,7 +12,9 @@ import { DataGrid } from "..";
 type DataGridRow<TData extends RowData> = Row<DataGridFeatures, TData>;
 
 function applyUpdater<T>(current: T, updater: T | ((old: T) => T)): T {
-  return typeof updater === "function" ? (updater as (old: T) => T)(current) : updater;
+  return typeof updater === "function"
+    ? (updater as (old: T) => T)(current)
+    : updater;
 }
 
 interface OrgNode {
@@ -68,7 +74,9 @@ const DataGridShell = defineComponent({
   setup(_, { slots }) {
     return () =>
       h("div", { class: "flex w-full flex-col gap-3" }, () =>
-        h("div", { class: "rounded-xl border bg-muted/20 p-3" }, () => slots.default?.()),
+        h("div", { class: "rounded-xl border bg-muted/20 p-3" }, () =>
+          slots.default?.(),
+        ),
       );
   },
 });
@@ -84,12 +92,16 @@ const DataGridView = defineComponent({
       h(Table, null, () => [
         h(Table.Header, null, () =>
           h(DataGrid.Header, null, () =>
-            h(DataGrid.HeaderRow, null, () => h(DataGrid.Head, { filter: props.filterHead })),
+            h(DataGrid.HeaderRow, null, () =>
+              h(DataGrid.Head, { filter: props.filterHead }),
+            ),
           ),
         ),
         h(Table.Body, null, () =>
-          h(DataGrid.Body, { empty: h(DataGrid.Empty, { colSpan: props.colSpan }) }, () =>
-            h(DataGrid.Row, null, () => h(DataGrid.Cell)),
+          h(
+            DataGrid.Body,
+            { empty: h(DataGrid.Empty, { colSpan: props.colSpan }) },
+            () => h(DataGrid.Row, null, () => h(DataGrid.Cell)),
           ),
         ),
       ]);
@@ -102,7 +114,8 @@ function countLeaves(row: DataGridRow<OrgNode>): number {
   }
 
   return row.subRows.reduce(
-    (total: number, subRow: DataGridRow<OrgNode>) => total + countLeaves(subRow),
+    (total: number, subRow: DataGridRow<OrgNode>) =>
+      total + countLeaves(subRow),
     0,
   );
 }
@@ -127,7 +140,9 @@ export function ExpandingRows() {
                   ? h(
                       "button",
                       {
-                        "aria-label": row.getIsExpanded() ? "Collapse" : "Expand",
+                        "aria-label": row.getIsExpanded()
+                          ? "Collapse"
+                          : "Expand",
                         class:
                           "inline-flex size-6 items-center justify-center rounded-md hover:bg-muted",
                         onClick: row.getToggleExpandedHandler(),
@@ -151,7 +166,8 @@ export function ExpandingRows() {
         },
         {
           accessorKey: "budget",
-          cell: ({ row }: CellContext<OrgNode, unknown>) => formatCurrency(row.original.budget),
+          cell: ({ row }: CellContext<OrgNode, unknown>) =>
+            formatCurrency(row.original.budget),
           header: "Budget",
         },
         {
@@ -160,7 +176,9 @@ export function ExpandingRows() {
             return h(
               "span",
               { class: "text-muted-foreground tabular-nums" },
-              row.subRows?.length ? `${row.subRows.length} teams · ${leafCount} units` : "Leaf",
+              row.subRows?.length
+                ? `${row.subRows.length} teams · ${leafCount} units`
+                : "Leaf",
             );
           },
           header: "Structure",

@@ -15,7 +15,10 @@ import { type ComponentProps, type ReactNode, useEffect, useMemo } from "react";
 import { useFormControlSurface } from "../components/surface/use-form-control-surface";
 import { Toggle } from "../components/toggle";
 import { VisuallyHidden } from "../components/visually-hidden";
-import { RichTextEditorContext, useRichTextEditorState } from "./rich-text-editor.context";
+import {
+  RichTextEditorContext,
+  useRichTextEditorState,
+} from "./rich-text-editor.context";
 
 // #region Types
 type FormControlVariant = "primary" | "secondary";
@@ -269,7 +272,9 @@ export function RichTextEditorToolbar({
           </Toggle>
           <Toggle
             aria-label="Bullet list"
-            onPressedChange={() => editor.chain().focus().toggleBulletList().run()}
+            onPressedChange={() =>
+              editor.chain().focus().toggleBulletList().run()
+            }
             pressed={activeMarks.bulletList}
             size="sm"
             variant="ghost"
@@ -279,7 +284,9 @@ export function RichTextEditorToolbar({
           </Toggle>
           <Toggle
             aria-label="Ordered list"
-            onPressedChange={() => editor.chain().focus().toggleOrderedList().run()}
+            onPressedChange={() =>
+              editor.chain().focus().toggleOrderedList().run()
+            }
             pressed={activeMarks.orderedList}
             size="sm"
             variant="ghost"
@@ -293,7 +300,10 @@ export function RichTextEditorToolbar({
   );
 }
 
-export function RichTextEditorContent({ className, ...rest }: RichTextEditorContentProps) {
+export function RichTextEditorContent({
+  className,
+  ...rest
+}: RichTextEditorContentProps) {
   const { editor, slots } = useRichTextEditorState();
 
   return (
@@ -310,7 +320,9 @@ export function RichTextEditorContent({ className, ...rest }: RichTextEditorCont
 // #endregion
 
 // #region Shorthand
-export function RichTextEditorShorthand(props: Omit<RichTextEditorRootProps, "children">) {
+export function RichTextEditorShorthand(
+  props: Omit<RichTextEditorRootProps, "children">,
+) {
   return (
     <RichTextEditorRoot {...props}>
       <RichTextEditorToolbar />

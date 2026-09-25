@@ -21,7 +21,9 @@ export function Variants() {
           <>
             <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
             <AlertDialog.CloseTrigger asChild>
-              <AlertDialog.Action variant="destructive">Delete project</AlertDialog.Action>
+              <AlertDialog.Action variant="destructive">
+                Delete project
+              </AlertDialog.Action>
             </AlertDialog.CloseTrigger>
           </>
         }

@@ -30,14 +30,20 @@ export interface AppShellResizableProps {
 export const APP_SHELL_DEFAULT_PANEL_RESIZABLE_PROPS = {
   enabled: true,
   handlePosition: "top",
-} as const satisfies Required<Pick<AppShellResizableProps, "enabled" | "handlePosition">>;
+} as const satisfies Required<
+  Pick<AppShellResizableProps, "enabled" | "handlePosition">
+>;
 
 export const APP_SHELL_DEFAULT_INSPECTOR_RESIZABLE_PROPS = {
   enabled: true,
   handlePosition: "top",
-} as const satisfies Required<Pick<AppShellResizableProps, "enabled" | "handlePosition">>;
+} as const satisfies Required<
+  Pick<AppShellResizableProps, "enabled" | "handlePosition">
+>;
 
-export type AppShellFixedStackVar = "--app-shell-banner-height" | "--app-shell-navigation-height";
+export type AppShellFixedStackVar =
+  | "--app-shell-banner-height"
+  | "--app-shell-navigation-height";
 
 export type AppShellRegionVar =
   | "--app-shell-end-inspector-width"
@@ -60,7 +66,9 @@ export interface AppShellRailState {
 }
 
 interface AppShellContextValue {
-  inspectorStates: RefObject<Partial<Record<AppShellPlacement, AppShellSideState>>>;
+  inspectorStates: RefObject<
+    Partial<Record<AppShellPlacement, AppShellSideState>>
+  >;
   notifyRegionChange: () => void;
   panelStates: RefObject<Partial<Record<AppShellPlacement, AppShellSideState>>>;
   railStates: RefObject<Partial<Record<AppShellPlacement, AppShellRailState>>>;
@@ -98,9 +106,10 @@ export const ZERO_REGION_VARS: Record<AppShellRegionVar, string> = {
   "--app-shell-start-rail-width": "0px",
 };
 
-export const { AppShellContext, useAppShell } = createContext<AppShellContextValue>()({
-  name: "AppShell",
-});
+export const { AppShellContext, useAppShell } =
+  createContext<AppShellContextValue>()({
+    name: "AppShell",
+  });
 
 export function useSideState({
   defaultOpen = false,

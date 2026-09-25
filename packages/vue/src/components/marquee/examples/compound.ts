@@ -33,7 +33,9 @@ export default defineComponent({
             h(Marquee.Item, { key: index }, () =>
               h("div", { class: "[--space:--spacing(8)]" }, () =>
                 h(Card, null, () =>
-                  h(Card.Content, null, () => h(IconComponent, { class: "size-10" })),
+                  h(Card.Content, null, () =>
+                    h(IconComponent, { class: "size-10" }),
+                  ),
                 ),
               ),
             ),

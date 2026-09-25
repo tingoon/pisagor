@@ -41,11 +41,16 @@ const headings = [
 
   <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">
+    Disabled
+  </h3>
   <ComponentPreview code={examples.Disabled} language="vue" title="Disabled">
     <Disabled client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-keyboard-shortcut">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="with-keyboard-shortcut"
+  >
     With Keyboard Shortcut
   </h3>
   <ComponentPreview
@@ -55,22 +60,35 @@ const headings = [
   >
     <WithKeyboardShortcut client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="placements">Placements</h3>
-  <ComponentPreview code={examples.Placements} language="vue" title="Placements">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="placements">
+    Placements
+  </h3>
+  <ComponentPreview
+    code={examples.Placements}
+    language="vue"
+    title="Placements"
+  >
     <Placements client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
+    Default
+  </h3>
   <ComponentPreview code={examples.Default} language="vue" title="Default">
     <Default client:only="vue" />
   </ComponentPreview>
 
-  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <h2
+    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    id="installation"
+  >
+    Installation
+  </h2>
   <Installation class="mb-8" packages="@pisagor/vue" />
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/tooltip</code>. Native HTML attributes are also supported
-    and omitted from this table.
+    Own props from <code>@pisagor/props/tooltip</code>. Native HTML attributes
+    are also supported and omitted from this table.
   </p>
   <PropsTable rows={tooltipProps} />
 </DocsLayout>

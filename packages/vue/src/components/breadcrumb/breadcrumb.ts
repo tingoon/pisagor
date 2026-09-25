@@ -57,9 +57,10 @@ export interface BreadcrumbItemProps {
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Context
-const [provideBreadcrumbContext, useBreadcrumbContext] = createContext<BreadcrumbContextValue>({
-  name: "Breadcrumb",
-});
+const [provideBreadcrumbContext, useBreadcrumbContext] =
+  createContext<BreadcrumbContextValue>({
+    name: "Breadcrumb",
+  });
 
 const [provideBreadcrumbItemContext, useBreadcrumbItemContext] =
   createContext<BreadcrumbItemContextValue>({
@@ -101,7 +102,10 @@ export const BreadcrumbList = defineComponent({
   inheritAttrs: false,
   name: "BreadcrumbList",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     const context = useBreadcrumbContext();
@@ -125,7 +129,10 @@ export const BreadcrumbItem = defineComponent({
   inheritAttrs: false,
   name: "BreadcrumbItem",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: breadcrumbItemRecipe,
       type: Function as PropType<typeof breadcrumbItemRecipe>,
@@ -154,7 +161,10 @@ export const BreadcrumbLink = defineComponent({
   inheritAttrs: false,
   name: "BreadcrumbLink",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     const context = useBreadcrumbItemContext();
@@ -177,7 +187,10 @@ export const BreadcrumbPage = defineComponent({
   inheritAttrs: false,
   name: "BreadcrumbPage",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     const context = useBreadcrumbItemContext();
@@ -201,7 +214,10 @@ export const BreadcrumbSeparator = defineComponent({
   inheritAttrs: false,
   name: "BreadcrumbSeparator",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     const context = useBreadcrumbContext();
@@ -248,7 +264,10 @@ export const BreadcrumbShorthand = defineComponent({
   name: "BreadcrumbShorthand",
   props: {
     ariaLabel: { default: "Breadcrumb", type: String },
-    items: { default: undefined, type: Array as PropType<BreadcrumbPresetItem[]> },
+    items: {
+      default: undefined,
+      type: Array as PropType<BreadcrumbPresetItem[]>,
+    },
   },
   setup(props, { attrs }) {
     return () =>
@@ -262,13 +281,19 @@ export const BreadcrumbShorthand = defineComponent({
                     item.isCurrentPage
                       ? h(BreadcrumbPage, null, () => item.label)
                       : item.href
-                        ? h(BreadcrumbLink, { href: item.href }, () => item.label)
+                        ? h(
+                            BreadcrumbLink,
+                            { href: item.href },
+                            () => item.label,
+                          )
                         : item.label,
                   ),
                 ];
 
                 if (index > 0) {
-                  nodes.unshift(h(BreadcrumbSeparator, { key: `separator-${key}` }));
+                  nodes.unshift(
+                    h(BreadcrumbSeparator, { key: `separator-${key}` }),
+                  );
                 }
 
                 return nodes;

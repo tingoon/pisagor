@@ -10,8 +10,14 @@ import type {
   FileUploadRootProps as FileUploadPrimitiveRootProps,
   FileUploadTriggerProps,
 } from "@ark-ui/solid/file-upload";
-import { FileUpload as FileUploadPrimitive, useFileUploadContext } from "@ark-ui/solid/file-upload";
-import { fileUploadItemRecipe, fileUploadRecipe } from "@pisagor/recipes/file-upload";
+import {
+  FileUpload as FileUploadPrimitive,
+  useFileUploadContext,
+} from "@ark-ui/solid/file-upload";
+import {
+  fileUploadItemRecipe,
+  fileUploadRecipe,
+} from "@pisagor/recipes/file-upload";
 import { formControlZoneRecipe } from "@pisagor/recipes/form-control";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
@@ -39,7 +45,8 @@ export interface FileUploadRootProps extends FileUploadPrimitiveRootProps {
   recipe?: typeof fileUploadRecipe;
 }
 
-export interface FileUploadDropzoneProps extends FileUploadPrimitiveDropzoneProps {
+export interface FileUploadDropzoneProps
+  extends FileUploadPrimitiveDropzoneProps {
   variant?: FormControlVariant;
 }
 
@@ -86,7 +93,9 @@ export function FileUploadTrigger(props: FileUploadTriggerProps): JSX.Element {
   return <FileUploadPrimitive.Trigger {...props} />;
 }
 
-export function FileUploadDropzone(props: FileUploadDropzoneProps): JSX.Element {
+export function FileUploadDropzone(
+  props: FileUploadDropzoneProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["variant", "class"]);
   const surfaceVariant = useFormControlSurface();
   const variant = () => local.variant ?? ("primary" as FormControlVariant);
@@ -105,7 +114,9 @@ export function FileUploadDropzone(props: FileUploadDropzoneProps): JSX.Element 
   );
 }
 
-export function FileUploadDropzoneIcon(props: FileUploadDropzoneIconProps): JSX.Element {
+export function FileUploadDropzoneIcon(
+  props: FileUploadDropzoneIconProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const { slots } = useFileUpload();
 
@@ -134,7 +145,9 @@ export function FileUploadTitle(props: FileUploadTitleProps): JSX.Element {
   );
 }
 
-export function FileUploadDescription(props: FileUploadDescriptionProps): JSX.Element {
+export function FileUploadDescription(
+  props: FileUploadDescriptionProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useFileUpload();
   return (
@@ -160,7 +173,9 @@ export function FileUploadHelper(props: FileUploadHelperProps): JSX.Element {
   );
 }
 
-export function FileUploadItemGroup(props: FileUploadItemGroupProps): JSX.Element {
+export function FileUploadItemGroup(
+  props: FileUploadItemGroupProps,
+): JSX.Element {
   return <FileUploadPrimitive.ItemGroup {...props} />;
 }
 
@@ -191,7 +206,9 @@ export function FileUploadList(props: FileUploadListProps): JSX.Element {
                   type={isImage() ? "image/*" : ".*"}
                 >
                   <Show
-                    fallback={<span class={itemSlots().extension()}>{extension()}</span>}
+                    fallback={
+                      <span class={itemSlots().extension()}>{extension()}</span>
+                    }
                     when={isImage()}
                   >
                     <FileUploadItemPreviewImage />
@@ -228,22 +245,32 @@ export function FileUploadItem(props: FileUploadItemRootProps): JSX.Element {
 
   return (
     <FileUploadItemContext value={{ slots: slots() }}>
-      <FileUploadPrimitive.Item {...rest} class={slots().base({ class: cn(local.class) })}>
+      <FileUploadPrimitive.Item
+        {...rest}
+        class={slots().base({ class: cn(local.class) })}
+      >
         {local.children}
       </FileUploadPrimitive.Item>
     </FileUploadItemContext>
   );
 }
 
-export function FileUploadItemPreview(props: FileUploadItemPreviewProps): JSX.Element {
+export function FileUploadItemPreview(
+  props: FileUploadItemPreviewProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useFileUploadItem();
   return (
-    <FileUploadPrimitive.ItemPreview {...rest} class={slots.preview({ class: cn(local.class) })} />
+    <FileUploadPrimitive.ItemPreview
+      {...rest}
+      class={slots.preview({ class: cn(local.class) })}
+    />
   );
 }
 
-export function FileUploadItemPreviewImage(props: FileUploadItemPreviewImageProps): JSX.Element {
+export function FileUploadItemPreviewImage(
+  props: FileUploadItemPreviewImageProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useFileUploadItem();
   return (
@@ -254,21 +281,35 @@ export function FileUploadItemPreviewImage(props: FileUploadItemPreviewImageProp
   );
 }
 
-export function FileUploadItemName(props: FileUploadItemNameProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class"]);
-  const { slots } = useFileUploadItem();
-  return <FileUploadPrimitive.ItemName {...rest} class={slots.name({ class: cn(local.class) })} />;
-}
-
-export function FileUploadItemSize(props: FileUploadItemSizeProps): JSX.Element {
+export function FileUploadItemName(
+  props: FileUploadItemNameProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useFileUploadItem();
   return (
-    <FileUploadPrimitive.ItemSizeText {...rest} class={slots.size({ class: cn(local.class) })} />
+    <FileUploadPrimitive.ItemName
+      {...rest}
+      class={slots.name({ class: cn(local.class) })}
+    />
   );
 }
 
-export function FileUploadItemDeleteTrigger(props: FileUploadItemDeleteTriggerProps): JSX.Element {
+export function FileUploadItemSize(
+  props: FileUploadItemSizeProps,
+): JSX.Element {
+  const [local, rest] = splitProps(props, ["class"]);
+  const { slots } = useFileUploadItem();
+  return (
+    <FileUploadPrimitive.ItemSizeText
+      {...rest}
+      class={slots.size({ class: cn(local.class) })}
+    />
+  );
+}
+
+export function FileUploadItemDeleteTrigger(
+  props: FileUploadItemDeleteTriggerProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useFileUploadItem();
   return (
@@ -279,6 +320,8 @@ export function FileUploadItemDeleteTrigger(props: FileUploadItemDeleteTriggerPr
   );
 }
 
-export function FileUploadClearTrigger(props: FileUploadClearTriggerProps): JSX.Element {
+export function FileUploadClearTrigger(
+  props: FileUploadClearTriggerProps,
+): JSX.Element {
   return <FileUploadPrimitive.ClearTrigger {...props} />;
 }

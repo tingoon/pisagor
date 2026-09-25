@@ -6,7 +6,9 @@ import { splitProps } from "solid-js";
 import { Separator, type SeparatorProps } from "../separator";
 import { ItemGroupContext } from "./item-group.context";
 
-export interface ItemGroupProps extends ComponentProps<typeof ark.div>, ItemVariantProps {
+export interface ItemGroupProps
+  extends ComponentProps<typeof ark.div>,
+    ItemVariantProps {
   recipe?: typeof itemRecipe;
 }
 
@@ -15,7 +17,12 @@ export interface ItemSeparatorProps extends Omit<SeparatorProps, "recipe"> {
 }
 
 export function ItemGroup(props: ItemGroupProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["variant", "children", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "variant",
+    "children",
+    "recipe",
+    "class",
+  ]);
   const variant = () => local.variant ?? "default";
   const slots = () => (local.recipe ?? itemRecipe)();
 

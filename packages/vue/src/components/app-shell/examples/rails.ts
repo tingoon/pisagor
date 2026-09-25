@@ -16,7 +16,9 @@ export default defineComponent({
 
           return h(AppShell.PanelContent, null, () =>
             regionTitle(
-              railStates.start?.activeRailId ? `Panel: ${railStates.start.activeRailId}` : "Panel",
+              railStates.start?.activeRailId
+                ? `Panel: ${railStates.start.activeRailId}`
+                : "Panel",
             ),
           );
         };
@@ -24,31 +26,53 @@ export default defineComponent({
     });
     return () =>
       h(AppShell, null, () => [
-        h(AppShell.Rail, { defaultActiveRailId: "home", placement: "start" }, () => [
-          h(AppShell.RailItem, { opensPanel: true, railId: "home", tooltip: "Home" }, () => "H"),
-          h(
-            AppShell.RailItem,
-            { opensPanel: true, railId: "search", tooltip: "Search" },
-            () => "S",
-          ),
-          h(
-            AppShell.RailItem,
-            { opensPanel: true, railId: "settings", tooltip: "Settings" },
-            () => "G",
-          ),
-        ]),
+        h(
+          AppShell.Rail,
+          { defaultActiveRailId: "home", placement: "start" },
+          () => [
+            h(
+              AppShell.RailItem,
+              { opensPanel: true, railId: "home", tooltip: "Home" },
+              () => "H",
+            ),
+            h(
+              AppShell.RailItem,
+              { opensPanel: true, railId: "search", tooltip: "Search" },
+              () => "S",
+            ),
+            h(
+              AppShell.RailItem,
+              { opensPanel: true, railId: "settings", tooltip: "Settings" },
+              () => "G",
+            ),
+          ],
+        ),
 
-        h(AppShell.Panel, { placement: "start" }, () => h(ActiveRailPanelContent)),
+        h(AppShell.Panel, { placement: "start" }, () =>
+          h(ActiveRailPanelContent),
+        ),
 
         h(AppShell.Main, null, () => [
           h(AppShell.Header, null, () => regionTitle("Header")),
           mainContent("Main"),
         ]),
 
-        h(AppShell.Rail, { defaultActiveRailId: "notes", placement: "end" }, () => [
-          h(AppShell.RailItem, { railId: "notes", tooltip: "Notes" }, () => "N"),
-          h(AppShell.RailItem, { railId: "chat", tooltip: "Chat" }, () => "C"),
-        ]),
+        h(
+          AppShell.Rail,
+          { defaultActiveRailId: "notes", placement: "end" },
+          () => [
+            h(
+              AppShell.RailItem,
+              { railId: "notes", tooltip: "Notes" },
+              () => "N",
+            ),
+            h(
+              AppShell.RailItem,
+              { railId: "chat", tooltip: "Chat" },
+              () => "C",
+            ),
+          ],
+        ),
       ]);
   },
 });

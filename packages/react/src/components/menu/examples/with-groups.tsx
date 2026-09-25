@@ -1,4 +1,8 @@
-import { ArchiveIcon, HouseIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
+import {
+  ArchiveIcon,
+  HouseIcon,
+  MagnifyingGlassIcon,
+} from "@phosphor-icons/react";
 import { Menu } from "..";
 
 export function WithGroups() {

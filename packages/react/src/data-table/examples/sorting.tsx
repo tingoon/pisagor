@@ -25,7 +25,9 @@ function useColumns() {
       { accessorKey: "email", header: "Email" },
       {
         accessorKey: "role",
-        cell: ({ row }) => <Badge variant="secondary">{row.original.role}</Badge>,
+        cell: ({ row }) => (
+          <Badge variant="secondary">{row.original.role}</Badge>
+        ),
         header: "Role",
       },
     ],
@@ -54,7 +56,10 @@ function SortableHead() {
                 onClick={header.column.getToggleSortingHandler()}
                 type="button"
               >
-                {flexRender(header.column.columnDef.header, header.getContext())}
+                {flexRender(
+                  header.column.columnDef.header,
+                  header.getContext(),
+                )}
                 {sorted === "asc" ? (
                   <CaretUpIcon className="size-3.5" />
                 ) : sorted === "desc" ? (
@@ -73,7 +78,9 @@ function SortableHead() {
 
 export function Sorting() {
   const columns = useColumns();
-  const [sorting, setSorting] = useState<SortingState>([{ desc: false, id: "name" }]);
+  const [sorting, setSorting] = useState<SortingState>([
+    { desc: false, id: "name" },
+  ]);
 
   return (
     <DataTable<User>
@@ -84,7 +91,9 @@ export function Sorting() {
       state={{ sorting }}
     >
       <DataTable.Toolbar>
-        <p className="text-muted-foreground text-sm">Click a column header to sort.</p>
+        <p className="text-muted-foreground text-sm">
+          Click a column header to sort.
+        </p>
       </DataTable.Toolbar>
       <Table>
         <Table.Header>

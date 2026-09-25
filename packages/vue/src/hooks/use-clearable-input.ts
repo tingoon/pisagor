@@ -21,10 +21,14 @@ interface UseClearableInputOptions {
 export function useClearableInput(options: UseClearableInputOptions) {
   const inputRef = ref<ClearableElement | null>(null);
   const isControlled = computed(() => toValue(options.value) !== undefined);
-  const internalValue = ref(options.defaultValue !== undefined ? String(options.defaultValue) : "");
+  const internalValue = ref(
+    options.defaultValue !== undefined ? String(options.defaultValue) : "",
+  );
 
   const currentValue = computed(() =>
-    isControlled.value ? String(toValue(options.value) ?? "") : internalValue.value,
+    isControlled.value
+      ? String(toValue(options.value) ?? "")
+      : internalValue.value,
   );
 
   const canClear = computed(

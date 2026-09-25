@@ -29,7 +29,10 @@ export const TabsRoot = defineComponent({
   inheritAttrs: false,
   name: "TabsRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     lazyMount: { default: true, type: Boolean },
     recipe: {
       default: tabsRecipe,
@@ -59,12 +62,18 @@ export const TabsList = defineComponent({
   inheritAttrs: false,
   name: "TabsList",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: tabsRecipe,
       type: Function as PropType<typeof tabsRecipe>,
     },
-    variant: { default: "default", type: String as PropType<"default" | "underline"> },
+    variant: {
+      default: "default",
+      type: String as PropType<"default" | "underline">,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -74,7 +83,10 @@ export const TabsList = defineComponent({
         TabsPrimitive.List as ArkPart,
         {
           ...attrs,
-          class: variantSlots.list({ class: cn(props.class, attrs.class), variant: props.variant }),
+          class: variantSlots.list({
+            class: cn(props.class, attrs.class),
+            variant: props.variant,
+          }),
         },
         () => [
           slots.default?.(),
@@ -91,7 +103,10 @@ export const TabsTrigger = defineComponent({
   inheritAttrs: false,
   name: "TabsTrigger",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: tabsRecipe,
       type: Function as PropType<typeof tabsRecipe>,
@@ -117,7 +132,10 @@ export const TabsContent = defineComponent({
   inheritAttrs: false,
   name: "TabsContent",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: tabsRecipe,
       type: Function as PropType<typeof tabsRecipe>,
@@ -145,11 +163,17 @@ export const TabsShorthand = defineComponent({
   inheritAttrs: false,
   name: "TabsShorthand",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     items: { default: undefined, type: Array as PropType<TabsPresetItem[]> },
     lazyMount: { default: true, type: Boolean },
     unmountOnExit: { default: true, type: Boolean },
-    variant: { default: undefined, type: String as PropType<"default" | "underline"> },
+    variant: {
+      default: undefined,
+      type: String as PropType<"default" | "underline">,
+    },
   },
   setup(props, { attrs }) {
     return () =>
@@ -172,7 +196,11 @@ export const TabsShorthand = defineComponent({
             ),
           ),
           ...(props.items?.map((tab) =>
-            h(TabsContent, { key: tab.value, value: tab.value }, () => tab.content),
+            h(
+              TabsContent,
+              { key: tab.value, value: tab.value },
+              () => tab.content,
+            ),
           ) ?? []),
         ],
       );

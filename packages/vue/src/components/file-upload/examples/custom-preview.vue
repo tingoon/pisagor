@@ -30,7 +30,11 @@ const CustomPreviewList = defineComponent({
             h(FileUpload.ItemDeleteTrigger, { asChild: true }, () =>
               h(
                 Button as ArkPart,
-                { class: "absolute -top-2 -right-2", pill: true, size: "icon-xs" },
+                {
+                  class: "absolute -top-2 -right-2",
+                  pill: true,
+                  size: "icon-xs",
+                },
                 () => h(PhX),
               ),
             ),

@@ -23,7 +23,10 @@ export const CardRoot = defineComponent({
   inheritAttrs: false,
   name: "CardRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: cardRecipe,
       type: Function as PropType<typeof cardRecipe>,
@@ -51,12 +54,18 @@ export const CardMedia = defineComponent({
   inheritAttrs: false,
   name: "CardMedia",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: cardRecipe,
       type: Function as PropType<typeof cardRecipe>,
     },
-    variant: { default: "default", type: String as PropType<CardVariantProps["variant"]> },
+    variant: {
+      default: "default",
+      type: String as PropType<CardVariantProps["variant"]>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -81,7 +90,10 @@ export const CardHeader = defineComponent({
   inheritAttrs: false,
   name: "CardHeader",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     description: { default: undefined, type: String },
     recipe: {
       default: cardRecipe,
@@ -103,7 +115,9 @@ export const CardHeader = defineComponent({
         },
         () => [
           props.title ? h(CardTitle, null, () => props.title) : null,
-          props.description ? h(CardDescription, null, () => props.description) : null,
+          props.description
+            ? h(CardDescription, null, () => props.description)
+            : null,
           slots.default?.(),
         ],
       );
@@ -115,7 +129,10 @@ export const CardTitle = defineComponent({
   inheritAttrs: false,
   name: "CardTitle",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: cardRecipe,
       type: Function as PropType<typeof cardRecipe>,
@@ -143,7 +160,10 @@ export const CardDescription = defineComponent({
   inheritAttrs: false,
   name: "CardDescription",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: cardRecipe,
       type: Function as PropType<typeof cardRecipe>,
@@ -171,7 +191,10 @@ export const CardAction = defineComponent({
   inheritAttrs: false,
   name: "CardAction",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: cardRecipe,
       type: Function as PropType<typeof cardRecipe>,
@@ -199,7 +222,10 @@ export const CardContent = defineComponent({
   inheritAttrs: false,
   name: "CardContent",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: cardRecipe,
       type: Function as PropType<typeof cardRecipe>,
@@ -227,7 +253,10 @@ export const CardFooter = defineComponent({
   inheritAttrs: false,
   name: "CardFooter",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: cardRecipe,
       type: Function as PropType<typeof cardRecipe>,

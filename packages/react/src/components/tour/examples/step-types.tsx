@@ -5,7 +5,8 @@ export function StepTypes() {
   const steps: TourStepType[] = [
     {
       actions: [{ action: "next", label: "Start tour" }],
-      description: "This tour demonstrates different step types: dialog, tooltip, and floating.",
+      description:
+        "This tour demonstrates different step types: dialog, tooltip, and floating.",
       id: "welcome",
       title: "Welcome",
       type: "dialog",
@@ -15,7 +16,8 @@ export function StepTypes() {
         { action: "prev", label: "Back" },
         { action: "next", label: "Next" },
       ],
-      description: "This step appears as a tooltip anchored to a specific element.",
+      description:
+        "This step appears as a tooltip anchored to a specific element.",
       id: "tooltip-step",
       target: () => document.querySelector<HTMLElement>("#tour-target-element"),
       title: "Tooltip step",
@@ -26,7 +28,8 @@ export function StepTypes() {
         { action: "prev", label: "Back" },
         { action: "next", label: "Next" },
       ],
-      description: "This step floats at a fixed position on the screen, independent of any target.",
+      description:
+        "This step floats at a fixed position on the screen, independent of any target.",
       id: "floating-step",
       placement: "bottom-end",
       title: "Floating step",

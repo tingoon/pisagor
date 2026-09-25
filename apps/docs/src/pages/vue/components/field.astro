@@ -41,7 +41,11 @@ const headings = [
   { depth: 3, slug: "checkbox-field", text: "Checkbox Field" },
   { depth: 3, slug: "checkbox-group-field", text: "Checkbox Group Field" },
   { depth: 3, slug: "combobox-field", text: "Combobox Field" },
-  { depth: 3, slug: "combobox-multiple-field", text: "Combobox Multiple Field" },
+  {
+    depth: 3,
+    slug: "combobox-multiple-field",
+    text: "Combobox Multiple Field",
+  },
   { depth: 3, slug: "disabled-field", text: "Disabled Field" },
   { depth: 3, slug: "field-group", text: "Field Group" },
   { depth: 3, slug: "with-input-group", text: "With Input Group" },
@@ -75,11 +79,16 @@ const headings = [
 
   <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="on-surface">On Surface</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="on-surface">
+    On Surface
+  </h3>
   <ComponentPreview code={examples.OnSurface} language="vue" title="On Surface">
     <OnSurface client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-horizontal">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="orientation-horizontal"
+  >
     Orientation Horizontal
   </h3>
   <ComponentPreview
@@ -89,37 +98,75 @@ const headings = [
   >
     <OrientationHorizontal client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-vertical">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="orientation-vertical"
+  >
     Orientation Vertical
   </h3>
-  <ComponentPreview code={examples.OrientationVertical} language="vue" title="Orientation Vertical">
+  <ComponentPreview
+    code={examples.OrientationVertical}
+    language="vue"
+    title="Orientation Vertical"
+  >
     <OrientationVertical client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="autocomplete-field">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="autocomplete-field"
+  >
     Autocomplete Field
   </h3>
-  <ComponentPreview code={examples.AutocompleteField} language="vue" title="Autocomplete Field">
+  <ComponentPreview
+    code={examples.AutocompleteField}
+    language="vue"
+    title="Autocomplete Field"
+  >
     <AutocompleteField client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="checkbox-field">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="checkbox-field"
+  >
     Checkbox Field
   </h3>
-  <ComponentPreview code={examples.CheckboxField} language="vue" title="Checkbox Field">
+  <ComponentPreview
+    code={examples.CheckboxField}
+    language="vue"
+    title="Checkbox Field"
+  >
     <CheckboxField client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="checkbox-group-field">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="checkbox-group-field"
+  >
     Checkbox Group Field
   </h3>
-  <ComponentPreview code={examples.CheckboxGroupField} language="vue" title="Checkbox Group Field">
+  <ComponentPreview
+    code={examples.CheckboxGroupField}
+    language="vue"
+    title="Checkbox Group Field"
+  >
     <CheckboxGroupField client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="combobox-field">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="combobox-field"
+  >
     Combobox Field
   </h3>
-  <ComponentPreview code={examples.ComboboxField} language="vue" title="Combobox Field">
+  <ComponentPreview
+    code={examples.ComboboxField}
+    language="vue"
+    title="Combobox Field"
+  >
     <ComboboxField client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="combobox-multiple-field">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="combobox-multiple-field"
+  >
     Combobox Multiple Field
   </h3>
   <ComponentPreview
@@ -129,80 +176,162 @@ const headings = [
   >
     <ComboboxMultipleField client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled-field">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="disabled-field"
+  >
     Disabled Field
   </h3>
-  <ComponentPreview code={examples.DisabledField} language="vue" title="Disabled Field">
+  <ComponentPreview
+    code={examples.DisabledField}
+    language="vue"
+    title="Disabled Field"
+  >
     <DisabledField client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="field-group">Field Group</h3>
-  <ComponentPreview code={examples.FieldGroup} language="vue" title="Field Group">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="field-group">
+    Field Group
+  </h3>
+  <ComponentPreview
+    code={examples.FieldGroup}
+    language="vue"
+    title="Field Group"
+  >
     <FieldGroup client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-input-group">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="with-input-group"
+  >
     With Input Group
   </h3>
-  <ComponentPreview code={examples.WithInputGroup} language="vue" title="With Input Group">
+  <ComponentPreview
+    code={examples.WithInputGroup}
+    language="vue"
+    title="With Input Group"
+  >
     <WithInputGroup client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="number-input-story">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="number-input-story"
+  >
     Number Input Story
   </h3>
-  <ComponentPreview code={examples.NumberInputStory} language="vue" title="Number Input Story">
+  <ComponentPreview
+    code={examples.NumberInputStory}
+    language="vue"
+    title="Number Input Story"
+  >
     <NumberInputStory client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="radio-group-field">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="radio-group-field"
+  >
     Radio Group Field
   </h3>
-  <ComponentPreview code={examples.RadioGroupField} language="vue" title="Radio Group Field">
+  <ComponentPreview
+    code={examples.RadioGroupField}
+    language="vue"
+    title="Radio Group Field"
+  >
     <RadioGroupField client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="required-field">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="required-field"
+  >
     Required Field
   </h3>
-  <ComponentPreview code={examples.RequiredField} language="vue" title="Required Field">
+  <ComponentPreview
+    code={examples.RequiredField}
+    language="vue"
+    title="Required Field"
+  >
     <RequiredField client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="select-field">Select Field</h3>
-  <ComponentPreview code={examples.SelectField} language="vue" title="Select Field">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="select-field">
+    Select Field
+  </h3>
+  <ComponentPreview
+    code={examples.SelectField}
+    language="vue"
+    title="Select Field"
+  >
     <SelectField client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="slider-field">Slider Field</h3>
-  <ComponentPreview code={examples.SliderField} language="vue" title="Slider Field">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="slider-field">
+    Slider Field
+  </h3>
+  <ComponentPreview
+    code={examples.SliderField}
+    language="vue"
+    title="Slider Field"
+  >
     <SliderField client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="switch-field">Switch Field</h3>
-  <ComponentPreview code={examples.SwitchField} language="vue" title="Switch Field">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="switch-field">
+    Switch Field
+  </h3>
+  <ComponentPreview
+    code={examples.SwitchField}
+    language="vue"
+    title="Switch Field"
+  >
     <SwitchField client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="textarea-field">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="textarea-field"
+  >
     Textarea Field
   </h3>
-  <ComponentPreview code={examples.TextareaField} language="vue" title="Textarea Field">
+  <ComponentPreview
+    code={examples.TextareaField}
+    language="vue"
+    title="Textarea Field"
+  >
     <TextareaField client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-error">With Error</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-error">
+    With Error
+  </h3>
   <ComponentPreview code={examples.WithError} language="vue" title="With Error">
     <WithError client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-separator">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="with-separator"
+  >
     With Separator
   </h3>
-  <ComponentPreview code={examples.WithSeparator} language="vue" title="With Separator">
+  <ComponentPreview
+    code={examples.WithSeparator}
+    language="vue"
+    title="With Separator"
+  >
     <WithSeparator client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
+    Default
+  </h3>
   <ComponentPreview code={examples.Default} language="vue" title="Default">
     <Default client:only="vue" />
   </ComponentPreview>
 
-  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <h2
+    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    id="installation"
+  >
+    Installation
+  </h2>
   <Installation class="mb-8" packages="@pisagor/vue" />
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/field</code>. Native HTML attributes are also supported and
-    omitted from this table.
+    Own props from <code>@pisagor/props/field</code>. Native HTML attributes are
+    also supported and omitted from this table.
   </p>
   <PropsTable rows={fieldProps} />
 </DocsLayout>

@@ -1,4 +1,7 @@
-import { DatePicker as CalendarPrimitive, parseDate } from "@ark-ui/svelte/date-picker";
+import {
+  DatePicker as CalendarPrimitive,
+  parseDate,
+} from "@ark-ui/svelte/date-picker";
 import { setCalendarSlotsContext, useCalendar } from "./calendar.context";
 import CalendarClearTrigger from "./calendar-clear-trigger.svelte";
 import CalendarControl from "./calendar-control.svelte";

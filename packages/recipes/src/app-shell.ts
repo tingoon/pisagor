@@ -30,7 +30,9 @@ export const appShellRecipe = tv({
     ],
     inspectorContent: ["flex flex-col gap-2 p-3"],
     inspectorFooter: ["mt-auto shrink-0 border-t border-border/40 p-3"],
-    inspectorHeader: ["flex shrink-0 flex-col gap-2 border-b border-border/40 p-3"],
+    inspectorHeader: [
+      "flex shrink-0 flex-col gap-2 border-b border-border/40 p-3",
+    ],
     main: ["flex w-full min-w-0 flex-col"],
     navigation: [
       "flex w-full items-center border-b border-border/40 bg-background/72 px-4 md:px-6",
@@ -45,7 +47,9 @@ export const appShellRecipe = tv({
     panelContent: ["flex flex-col gap-1 p-2"],
     panelFooter: ["mt-auto shrink-0 border-t border-border/40 p-3"],
     panelHeader: ["flex shrink-0 flex-col gap-2 border-b border-border/40 p-3"],
-    rail: ["flex flex-col items-center gap-2 overflow-hidden border-border/40 bg-muted/80 py-3"],
+    rail: [
+      "flex flex-col items-center gap-2 overflow-hidden border-border/40 bg-muted/80 py-3",
+    ],
     railItem: [
       "relative flex size-10 items-center justify-center rounded-xl",
       "text-muted-foreground transition-[color,background-color,box-shadow,transform] duration-fast ease-out",
@@ -73,7 +77,9 @@ export const appShellRecipe = tv({
       "top-(--app-shell-banner-height,0px)",
       "max-h-[calc(100svh-var(--app-shell-banner-height,0px))] min-h-[calc(100svh-var(--app-shell-banner-height,0px))]",
     ],
-    regionStickyNavigation: ["sticky top-(--app-shell-banner-height,0px) z-20 w-full shrink-0"],
+    regionStickyNavigation: [
+      "sticky top-(--app-shell-banner-height,0px) z-20 w-full shrink-0",
+    ],
     scrollArea: ["min-h-0 flex-1 [--fade-size:2rem]"],
     /** Fills panel / inspector column; do not reuse `inline` (trigger sizing). */
     sideBody: ["flex min-h-0 min-w-0 flex-1 flex-col"],

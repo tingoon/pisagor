@@ -3,7 +3,10 @@ import { fileURLToPath } from "node:url";
 import type { StorybookConfig } from "@storybook-astro/framework";
 
 const config: StorybookConfig = {
-  addons: [getAbsolutePath("@storybook/addon-a11y"), getAbsolutePath("@storybook/addon-docs")],
+  addons: [
+    getAbsolutePath("@storybook/addon-a11y"),
+    getAbsolutePath("@storybook/addon-docs"),
+  ],
   core: {
     disableTelemetry: true,
     enableCrashReports: false,
@@ -24,5 +27,7 @@ const config: StorybookConfig = {
 export default config;
 
 function getAbsolutePath(value: string) {
-  return path.dirname(fileURLToPath(import.meta.resolve(`${value}/package.json`)));
+  return path.dirname(
+    fileURLToPath(import.meta.resolve(`${value}/package.json`)),
+  );
 }

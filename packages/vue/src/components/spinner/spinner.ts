@@ -22,7 +22,10 @@ export const Spinner = defineComponent({
   inheritAttrs: false,
   name: "PisagorSpinner",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: spinnerRecipe,
       type: Function as PropType<typeof spinnerRecipe>,

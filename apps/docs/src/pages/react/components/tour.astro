@@ -55,68 +55,120 @@ const headings = [
 
   <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-spacing">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="custom-spacing"
+  >
     Custom Spacing
   </h3>
-  <ComponentPreview code={examples.CustomSpacing} language="tsx" title="Custom Spacing">
+  <ComponentPreview
+    code={examples.CustomSpacing}
+    language="tsx"
+    title="Custom Spacing"
+  >
     <CustomSpacing client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="async">Async</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="async">
+    Async
+  </h3>
   <ComponentPreview code={examples.Async} language="tsx" title="Async">
     <Async client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="events">Events</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="events">
+    Events
+  </h3>
   <ComponentPreview code={examples.Events} language="tsx" title="Events">
     <Events client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="keyboard-navigation">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="keyboard-navigation"
+  >
     Keyboard Navigation
   </h3>
-  <ComponentPreview code={examples.KeyboardNavigation} language="tsx" title="Keyboard Navigation">
+  <ComponentPreview
+    code={examples.KeyboardNavigation}
+    language="tsx"
+    title="Keyboard Navigation"
+  >
     <KeyboardNavigation client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="progress">Progress</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="progress">
+    Progress
+  </h3>
   <ComponentPreview code={examples.Progress} language="tsx" title="Progress">
     <Progress client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="skip">Skip</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="skip">
+    Skip
+  </h3>
   <ComponentPreview code={examples.Skip} language="tsx" title="Skip">
     <Skip client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="step-types">Step Types</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="step-types">
+    Step Types
+  </h3>
   <ComponentPreview code={examples.StepTypes} language="tsx" title="Step Types">
     <StepTypes client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="wait-for-click">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="wait-for-click"
+  >
     Wait For Click
   </h3>
-  <ComponentPreview code={examples.WaitForClick} language="tsx" title="Wait For Click">
+  <ComponentPreview
+    code={examples.WaitForClick}
+    language="tsx"
+    title="Wait For Click"
+  >
     <WaitForClick client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="wait-for-element">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="wait-for-element"
+  >
     Wait For Element
   </h3>
-  <ComponentPreview code={examples.WaitForElement} language="tsx" title="Wait For Element">
+  <ComponentPreview
+    code={examples.WaitForElement}
+    language="tsx"
+    title="Wait For Element"
+  >
     <WaitForElement client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="wait-for-input">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="wait-for-input"
+  >
     Wait For Input
   </h3>
-  <ComponentPreview code={examples.WaitForInput} language="tsx" title="Wait For Input">
+  <ComponentPreview
+    code={examples.WaitForInput}
+    language="tsx"
+    title="Wait For Input"
+  >
     <WaitForInput client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
+    Default
+  </h3>
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
 
-  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <h2
+    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    id="installation"
+  >
+    Installation
+  </h2>
   <Installation class="mb-8" packages="@pisagor/react" />
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/tour</code>. Native HTML attributes are also supported and
-    omitted from this table.
+    Own props from <code>@pisagor/props/tour</code>. Native HTML attributes are
+    also supported and omitted from this table.
   </p>
   <PropsTable rows={tourProps} />
 </DocsLayout>

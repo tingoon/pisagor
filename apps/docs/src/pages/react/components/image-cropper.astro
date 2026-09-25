@@ -49,50 +49,101 @@ const headings = [
 
   <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="aspect-ratio">Aspect Ratio</h3>
-  <ComponentPreview code={examples.AspectRatio} language="tsx" title="Aspect Ratio">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="aspect-ratio">
+    Aspect Ratio
+  </h3>
+  <ComponentPreview
+    code={examples.AspectRatio}
+    language="tsx"
+    title="Aspect Ratio"
+  >
     <AspectRatio client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="circle-crop">Circle Crop</h3>
-  <ComponentPreview code={examples.CircleCrop} language="tsx" title="Circle Crop">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="circle-crop">
+    Circle Crop
+  </h3>
+  <ComponentPreview
+    code={examples.CircleCrop}
+    language="tsx"
+    title="Circle Crop"
+  >
     <CircleCrop client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="fixed-crop-area">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="fixed-crop-area"
+  >
     Fixed Crop Area
   </h3>
-  <ComponentPreview code={examples.FixedCropArea} language="tsx" title="Fixed Crop Area">
+  <ComponentPreview
+    code={examples.FixedCropArea}
+    language="tsx"
+    title="Fixed Crop Area"
+  >
     <FixedCropArea client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="initial-crop">Initial Crop</h3>
-  <ComponentPreview code={examples.InitialCrop} language="tsx" title="Initial Crop">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="initial-crop">
+    Initial Crop
+  </h3>
+  <ComponentPreview
+    code={examples.InitialCrop}
+    language="tsx"
+    title="Initial Crop"
+  >
     <InitialCrop client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="min-max-size">Min Max Size</h3>
-  <ComponentPreview code={examples.MinMaxSize} language="tsx" title="Min Max Size">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="min-max-size">
+    Min Max Size
+  </h3>
+  <ComponentPreview
+    code={examples.MinMaxSize}
+    language="tsx"
+    title="Min Max Size"
+  >
     <MinMaxSize client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="zoom-limits">Zoom Limits</h3>
-  <ComponentPreview code={examples.ZoomLimits} language="tsx" title="Zoom Limits">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="zoom-limits">
+    Zoom Limits
+  </h3>
+  <ComponentPreview
+    code={examples.ZoomLimits}
+    language="tsx"
+    title="Zoom Limits"
+  >
     <ZoomLimits client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled-zoom">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="controlled-zoom"
+  >
     Controlled Zoom
   </h3>
-  <ComponentPreview code={examples.ControlledZoom} language="tsx" title="Controlled Zoom">
+  <ComponentPreview
+    code={examples.ControlledZoom}
+    language="tsx"
+    title="Controlled Zoom"
+  >
     <ControlledZoom client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
+    Default
+  </h3>
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
 
-  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <h2
+    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    id="installation"
+  >
+    Installation
+  </h2>
   <Installation class="mb-8" packages="@pisagor/react" />
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/image-cropper</code>. Native HTML attributes are also
-    supported and omitted from this table.
+    Own props from <code>@pisagor/props/image-cropper</code>. Native HTML
+    attributes are also supported and omitted from this table.
   </p>
   <PropsTable rows={imageCropperProps} />
 </DocsLayout>

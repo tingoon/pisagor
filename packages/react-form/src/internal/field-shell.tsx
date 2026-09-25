@@ -40,7 +40,9 @@ export function FieldShell({
           {labelAccessory}
         </Field.Label>
       ) : null}
-      {description ? <Field.Description>{description}</Field.Description> : null}
+      {description ? (
+        <Field.Description>{description}</Field.Description>
+      ) : null}
       {children}
       {error ? <Field.Error>{error}</Field.Error> : null}
     </Field>

@@ -1,8 +1,15 @@
 import { ark } from "@ark-ui/react/factory";
-import { type SurfaceVariantProps, surfaceRecipe } from "@pisagor/recipes/surface";
+import {
+  type SurfaceVariantProps,
+  surfaceRecipe,
+} from "@pisagor/recipes/surface";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
-import { SurfaceContext, type SurfaceVariant, useSurface } from "./surface.context";
+import {
+  SurfaceContext,
+  type SurfaceVariant,
+  useSurface,
+} from "./surface.context";
 
 // #region Types
 const AUTO_VARIANTS = [
@@ -12,7 +19,9 @@ const AUTO_VARIANTS = [
   "tertiary",
 ] as const satisfies readonly SurfaceVariant[];
 
-export interface SurfaceProps extends ComponentProps<typeof ark.div>, SurfaceVariantProps {
+export interface SurfaceProps
+  extends ComponentProps<typeof ark.div>,
+    SurfaceVariantProps {
   /**
    * Style recipe. Defaults to `surfaceRecipe` from `@pisagor/recipes/surface`.
    *
@@ -38,7 +47,9 @@ export function Surface({
   const surface = useMemo(() => {
     const depth = parent ? parent.depth + 1 : 0;
     const variant =
-      variantProp ?? AUTO_VARIANTS[Math.min(depth, AUTO_VARIANTS.length - 1)] ?? "default";
+      variantProp ??
+      AUTO_VARIANTS[Math.min(depth, AUTO_VARIANTS.length - 1)] ??
+      "default";
 
     return { depth, variant };
   }, [parent, variantProp]);

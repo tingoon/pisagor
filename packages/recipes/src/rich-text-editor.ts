@@ -15,7 +15,9 @@ export const richTextEditorRecipe = tv({
       "[&_.tiptap_ol]:my-2 [&_.tiptap_ol]:list-decimal [&_.tiptap_ol]:ps-5",
     ],
     inline: ["flex flex-wrap items-center gap-0.5"],
-    toolbar: ["flex flex-wrap items-center gap-1 border-border border-b bg-muted/30 px-2 py-1.5"],
+    toolbar: [
+      "flex flex-wrap items-center gap-1 border-border border-b bg-muted/30 px-2 py-1.5",
+    ],
   },
 });
 

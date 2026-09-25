@@ -7,7 +7,10 @@ export function CustomSpacing() {
         <Button variant="outline">Open</Button>
       </Popover.Trigger>
       <Popover.Content className="w-80 [--space:--spacing(2)] sm:[--space:--spacing(5)]">
-        <Popover.Header description="Set the dimensions for the layer." title="Dimensions" />
+        <Popover.Header
+          description="Set the dimensions for the layer."
+          title="Dimensions"
+        />
         <Popover.Body>
           <Field.Group className="gap-2">
             <Field className="grid grid-cols-3 items-center gap-2">

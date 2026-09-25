@@ -19,7 +19,10 @@ const initialItems = [
 
 const groups = computed(() => collection.group());
 
-const collection = createListCollection({ groupBy: (item) => item.continent, items: initialItems });
+const collection = createListCollection({
+  groupBy: (item) => item.continent,
+  items: initialItems,
+});
 
 function filter(_inputValue: string) {}
 </script>
@@ -38,7 +41,11 @@ function filter(_inputValue: string) {}
           :key="continent"
           :heading="continent"
         >
-          <Autocomplete.Item v-for="item in group" :key="item.value" :item="item">
+          <Autocomplete.Item
+            v-for="item in group"
+            :key="item.value"
+            :item="item"
+          >
             {{ item.label }}
           </Autocomplete.Item>
         </Autocomplete.ItemGroup>

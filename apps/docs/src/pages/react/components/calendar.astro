@@ -59,72 +59,134 @@ const headings = [
 
   <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
+    Default
+  </h3>
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">Invalid</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">
+    Invalid
+  </h3>
   <ComponentPreview code={examples.Invalid} language="tsx" title="Invalid">
     <Invalid client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">
+    Disabled
+  </h3>
   <ComponentPreview code={examples.Disabled} language="tsx" title="Disabled">
     <Disabled client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="booked-dates">Booked Dates</h3>
-  <ComponentPreview code={examples.BookedDates} language="tsx" title="Booked Dates">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="booked-dates">
+    Booked Dates
+  </h3>
+  <ComponentPreview
+    code={examples.BookedDates}
+    language="tsx"
+    title="Booked Dates"
+  >
     <BookedDates client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-cell-size">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="custom-cell-size"
+  >
     Custom Cell Size
   </h3>
-  <ComponentPreview code={examples.CustomCellSize} language="tsx" title="Custom Cell Size">
+  <ComponentPreview
+    code={examples.CustomCellSize}
+    language="tsx"
+    title="Custom Cell Size"
+  >
     <CustomCellSize client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="min-max">Min Max</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="min-max">
+    Min Max
+  </h3>
   <ComponentPreview code={examples.MinMax} language="tsx" title="Min Max">
     <MinMax client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="range">Range</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="range">
+    Range
+  </h3>
   <ComponentPreview code={examples.Range} language="tsx" title="Range">
     <Range client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="fixed-weeks">Fixed Weeks</h3>
-  <ComponentPreview code={examples.FixedWeeks} language="tsx" title="Fixed Weeks">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="fixed-weeks">
+    Fixed Weeks
+  </h3>
+  <ComponentPreview
+    code={examples.FixedWeeks}
+    language="tsx"
+    title="Fixed Weeks"
+  >
     <FixedWeeks client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="month-year-selector">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="month-year-selector"
+  >
     Month Year Selector
   </h3>
-  <ComponentPreview code={examples.MonthYearSelector} language="tsx" title="Month Year Selector">
+  <ComponentPreview
+    code={examples.MonthYearSelector}
+    language="tsx"
+    title="Month Year Selector"
+  >
     <MonthYearSelector client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="multiple-months">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="multiple-months"
+  >
     Multiple Months
   </h3>
-  <ComponentPreview code={examples.MultipleMonths} language="tsx" title="Multiple Months">
+  <ComponentPreview
+    code={examples.MultipleMonths}
+    language="tsx"
+    title="Multiple Months"
+  >
     <MultipleMonths client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="presets">Presets</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="presets">
+    Presets
+  </h3>
   <ComponentPreview code={examples.Presets} language="tsx" title="Presets">
     <Presets client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="select-today">Select Today</h3>
-  <ComponentPreview code={examples.SelectToday} language="tsx" title="Select Today">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="select-today">
+    Select Today
+  </h3>
+  <ComponentPreview
+    code={examples.SelectToday}
+    language="tsx"
+    title="Select Today"
+  >
     <SelectToday client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
-  <ComponentPreview code={examples.Controlled} language="tsx" title="Controlled">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">
+    Controlled
+  </h3>
+  <ComponentPreview
+    code={examples.Controlled}
+    language="tsx"
+    title="Controlled"
+  >
     <Controlled client:only="react" />
   </ComponentPreview>
 
-  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <h2
+    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    id="installation"
+  >
+    Installation
+  </h2>
   <Installation class="mb-8" packages="@pisagor/react" />
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/calendar</code>. Native HTML attributes are also supported
-    and omitted from this table.
+    Own props from <code>@pisagor/props/calendar</code>. Native HTML attributes
+    are also supported and omitted from this table.
   </p>
   <PropsTable rows={calendarProps} />
 </DocsLayout>

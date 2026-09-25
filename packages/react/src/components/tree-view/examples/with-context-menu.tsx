@@ -1,4 +1,9 @@
-import { FilePlusIcon, FolderPlusIcon, PencilSimpleIcon, TrashIcon } from "@phosphor-icons/react";
+import {
+  FilePlusIcon,
+  FolderPlusIcon,
+  PencilSimpleIcon,
+  TrashIcon,
+} from "@phosphor-icons/react";
 import { ContextMenu, createTreeCollection } from "@pisagor/react";
 import type { NodeProviderProps } from "..";
 import { TreeView } from "..";
@@ -62,7 +67,11 @@ export function WithContextMenu() {
             </ContextMenu>
             <TreeView.BranchContent>
               {node.children.map((child, index) => (
-                <TreeNode indexPath={[...indexPath, index]} key={child.id} node={child} />
+                <TreeNode
+                  indexPath={[...indexPath, index]}
+                  key={child.id}
+                  node={child}
+                />
               ))}
             </TreeView.BranchContent>
           </TreeView.Branch>

@@ -32,7 +32,10 @@ export interface ScrollAreaProps extends Omit<ScrollAreaRootProps, "children"> {
   /** Slot class names */
   classNames?: ScrollAreaClassNames;
   /** Extra props forwarded to each scroll area scrollbar element */
-  scrollbarProps?: Omit<ScrollAreaScrollbarProps, "children" | "className" | "orientation">;
+  scrollbarProps?: Omit<
+    ScrollAreaScrollbarProps,
+    "children" | "className" | "orientation"
+  >;
   /** Extra props forwarded to each scroll area thumb element */
   thumbProps?: Omit<ScrollAreaThumbProps, "children" | "className">;
   /** Extra props forwarded to the scroll area viewport element */
@@ -59,11 +62,18 @@ function ScrollAreaRoot({
   );
 }
 
-function ScrollAreaViewport({ children, className, ...rest }: ScrollAreaViewportProps) {
+function ScrollAreaViewport({
+  children,
+  className,
+  ...rest
+}: ScrollAreaViewportProps) {
   const { slots } = useScrollArea();
 
   return (
-    <ScrollAreaPrimitive.Viewport {...rest} className={slots.viewport({ className })}>
+    <ScrollAreaPrimitive.Viewport
+      {...rest}
+      className={slots.viewport({ className })}
+    >
       <ScrollAreaPrimitive.Content>{children}</ScrollAreaPrimitive.Content>
     </ScrollAreaPrimitive.Viewport>
   );
@@ -91,7 +101,12 @@ function ScrollAreaScrollbar({
 function ScrollAreaThumb({ className, ...rest }: ScrollAreaThumbProps) {
   const { slots } = useScrollArea();
 
-  return <ScrollAreaPrimitive.Thumb {...rest} className={slots.thumb({ className })} />;
+  return (
+    <ScrollAreaPrimitive.Thumb
+      {...rest}
+      className={slots.thumb({ className })}
+    />
+  );
 }
 // #endregion
 

@@ -19,7 +19,13 @@ const ROLES: User["role"][] = ["Admin", "Editor", "Viewer"];
 
 const STATUSES: User["status"][] = ["active", "inactive", "invited"];
 
-const DEPARTMENTS = ["Engineering", "Design", "Marketing", "Sales", "Support"] as const;
+const DEPARTMENTS = [
+  "Engineering",
+  "Design",
+  "Marketing",
+  "Sales",
+  "Support",
+] as const;
 
 const FIRST_NAMES = [
   "Alice",
@@ -46,10 +52,15 @@ const statusVariants: Record<User["status"], BadgeVariant> = {
 };
 
 const allUsers: User[] = Array.from({ length: 48 }, (_, index) => ({
-  department: DEPARTMENTS[index % DEPARTMENTS.length] ?? DEPARTMENTS[0] ?? "Engineering",
+  department:
+    DEPARTMENTS[index % DEPARTMENTS.length] ?? DEPARTMENTS[0] ?? "Engineering",
   email: `user${index + 1}@example.com`,
   id: String(index + 1),
-  joinedAt: new Date(2020 + (index % 5), index % 12, (index % 28) + 1).toISOString(),
+  joinedAt: new Date(
+    2020 + (index % 5),
+    index % 12,
+    (index % 28) + 1,
+  ).toISOString(),
   name: `${FIRST_NAMES[index % FIRST_NAMES.length] ?? "Alex"} ${String.fromCharCode(65 + (index % 26))}.`,
   role: ROLES[index % ROLES.length] ?? "Viewer",
   status: STATUSES[index % STATUSES.length] ?? "active",
@@ -83,7 +94,10 @@ function DataGridShell({ children }: { children: ReactNode }) {
   );
 }
 
-function useUserColumns(options?: { selectable?: boolean; sortable?: boolean }) {
+function useUserColumns(options?: {
+  selectable?: boolean;
+  sortable?: boolean;
+}) {
   const { selectable = false, sortable = false } = options ?? {};
 
   return useMemo<ColumnDef<User>[]>(() => {
@@ -113,7 +127,9 @@ function useUserColumns(options?: { selectable?: boolean; sortable?: boolean }) 
           <Checkbox
             aria-label={`Select ${row.original.name}`}
             checked={row.getIsSelected()}
-            onCheckedChange={({ checked }) => row.toggleSelected(checked === true)}
+            onCheckedChange={({ checked }) =>
+              row.toggleSelected(checked === true)
+            }
           />
         ),
         enableHiding: false,
@@ -128,7 +144,9 @@ function useUserColumns(options?: { selectable?: boolean; sortable?: boolean }) 
                   ? "indeterminate"
                   : false
             }
-            onCheckedChange={({ checked }) => table.toggleAllPageRowsSelected(checked === true)}
+            onCheckedChange={({ checked }) =>
+              table.toggleAllPageRowsSelected(checked === true)
+            }
           />
         ),
         id: "select",
@@ -162,7 +180,10 @@ function useUserColumns(options?: { selectable?: boolean; sortable?: boolean }) 
       {
         accessorKey: "status",
         cell: ({ row }) => (
-          <Badge className="capitalize" variant={statusVariants[row.original.status]}>
+          <Badge
+            className="capitalize"
+            variant={statusVariants[row.original.status]}
+          >
             {row.original.status}
           </Badge>
         ),
@@ -189,7 +210,9 @@ export function StripedVariant() {
     <DataGridShell>
       <DataGrid<User> columns={columns} data={allUsers.slice(0, 10)}>
         <DataGrid.Toolbar>
-          <p className="text-muted-foreground text-sm">Striped rows via Table variant.</p>
+          <p className="text-muted-foreground text-sm">
+            Striped rows via Table variant.
+          </p>
         </DataGrid.Toolbar>
         <Table isHoverable variant="striped">
           <Table.Header>

@@ -51,7 +51,12 @@ export const DataGrid = Object.assign(DataGridRoot, {
   VirtualBody: DataGridVirtualBody,
 });
 
-export { renderDataGridCell, useDataGrid, useDataGridHeaderGroup, useDataGridRow };
+export {
+  renderDataGridCell,
+  useDataGrid,
+  useDataGridHeaderGroup,
+  useDataGridRow,
+};
 
 export type ColumnDef<TData extends RowData, TValue = unknown> = TableColumnDef<
   DataGridFeatures,
@@ -59,14 +64,12 @@ export type ColumnDef<TData extends RowData, TValue = unknown> = TableColumnDef<
   TValue
 >;
 
-export type CellContext<TData extends RowData, TValue = unknown> = TableCellContext<
-  DataGridFeatures,
-  TData,
-  TValue
->;
+export type CellContext<
+  TData extends RowData,
+  TValue = unknown,
+> = TableCellContext<DataGridFeatures, TData, TValue>;
 
-export type HeaderContext<TData extends RowData, TValue = unknown> = TableHeaderContext<
-  DataGridFeatures,
-  TData,
-  TValue
->;
+export type HeaderContext<
+  TData extends RowData,
+  TValue = unknown,
+> = TableHeaderContext<DataGridFeatures, TData, TValue>;

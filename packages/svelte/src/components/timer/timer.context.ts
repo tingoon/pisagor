@@ -10,7 +10,9 @@ interface TimerItemGroupContextValue {
 }
 
 const root = createContext<TimerContextValue>({ name: "Timer" });
-const itemGroup = createContext<TimerItemGroupContextValue>({ name: "TimerItemGroup" });
+const itemGroup = createContext<TimerItemGroupContextValue>({
+  name: "TimerItemGroup",
+});
 
 export const setTimerContext = root.setContext;
 export const useTimer = root.getContext;

@@ -7,7 +7,11 @@ const placements = ["left", "top", "bottom", "right"] as const;
 
 <template>
   <div class="flex flex-wrap justify-center gap-2">
-    <HoverCard v-for="placement in placements" :key="placement" :positioning="{ placement }">
+    <HoverCard
+      v-for="placement in placements"
+      :key="placement"
+      :positioning="{ placement }"
+    >
       <HoverCard.Trigger as-child>
         <Button class="capitalize" variant="outline">
           {{ placement }}
@@ -16,7 +20,8 @@ const placements = ["left", "top", "bottom", "right"] as const;
       <HoverCard.Content class="flex flex-col gap-1">
         <h4 class="font-medium">Hover Card</h4>
         <p class="text-muted-foreground text-sm">
-          This hover card appears on the {{ placement }} placement of the trigger.
+          This hover card appears on the {{ placement }} placement of the
+          trigger.
         </p>
       </HoverCard.Content>
     </HoverCard>

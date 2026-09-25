@@ -2,11 +2,12 @@ import { createContext } from "../../utils";
 
 export type ProviderMessages = Record<string, string>;
 
-export const { ProviderMessagesContext, useProviderMessages } = createContext<ProviderMessages>()({
-  defaultValue: {},
-  name: "ProviderMessages",
-  strict: false,
-});
+export const { ProviderMessagesContext, useProviderMessages } =
+  createContext<ProviderMessages>()({
+    defaultValue: {},
+    name: "ProviderMessages",
+    strict: false,
+  });
 
 /**
  * Resolve a library message key from the nearest `Provider` message map.

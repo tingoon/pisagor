@@ -10,7 +10,9 @@ export function ProductCard() {
         <Card.Header description="Soft lines and easy depth for modern living spaces.">
           <LinkBox.Overlay asChild>
             <Card.Title asChild>
-              <a href="https://example.com/products/living-room-sofa">Living room sofa</a>
+              <a href="https://example.com/products/living-room-sofa">
+                Living room sofa
+              </a>
             </Card.Title>
           </LinkBox.Overlay>
         </Card.Header>

@@ -19,7 +19,10 @@ export function renderIconCloseButton(
     "button",
     {
       "aria-label": "Close",
-      class: cn(recipe({ size: "icon-sm", variant: "ghost" }).base(), inlineClass),
+      class: cn(
+        recipe({ size: "icon-sm", variant: "ghost" }).base(),
+        inlineClass,
+      ),
       type: "button",
     },
     () => h(PhX),

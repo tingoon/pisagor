@@ -6,7 +6,11 @@ export function Placements() {
   return (
     <div className="flex flex-wrap items-center justify-center gap-2">
       {placements.map((placement) => (
-        <Tooltip content={<p>Add to library</p>} key={placement} positioning={{ placement }}>
+        <Tooltip
+          content={<p>Add to library</p>}
+          key={placement}
+          positioning={{ placement }}
+        >
           <Button className="capitalize" variant="outline">
             {placement}
           </Button>

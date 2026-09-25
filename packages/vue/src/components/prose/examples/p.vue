@@ -5,8 +5,8 @@ import { Prose } from "..";
 <template>
   <Prose>
     <p>
-      The king, seeing how much happier his subjects were, realized the error of his ways and
-      repealed the joke tax.
+      The king, seeing how much happier his subjects were, realized the error of
+      his ways and repealed the joke tax.
     </p>
   </Prose>
 </template>

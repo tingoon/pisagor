@@ -15,7 +15,9 @@ const collection = createListCollection({
   ],
 });
 
-const groups = computed(() => collection.group().map(([category, items]) => ({ category, items })));
+const groups = computed(() =>
+  collection.group().map(([category, items]) => ({ category, items })),
+);
 </script>
 
 <template>
@@ -24,7 +26,11 @@ const groups = computed(() => collection.group().map(([category, items]) => ({ c
       <Select.ValueText placeholder="Select framework" />
     </Select.Trigger>
     <Select.Content>
-      <Select.ItemGroup v-for="group in groups" :key="group.category" :heading="group.category">
+      <Select.ItemGroup
+        v-for="group in groups"
+        :key="group.category"
+        :heading="group.category"
+      >
         <Select.Item v-for="item in group.items" :key="item.value" :item="item">
           {{ item.label }}
         </Select.Item>

@@ -6,10 +6,14 @@ import { Rating } from "..";
 <template>
   <Card>
     <Card.Content class="space-y-2">
-      <Rating class="**:data-[slot=rating-item-indicator]:size-4" read-only :default-value="5" />
+      <Rating
+        class="**:data-[slot=rating-item-indicator]:size-4"
+        read-only
+        :default-value="5"
+      />
       <blockquote class="text-muted-foreground">
-        &ldquo;This completely changed our workflow. Fast, reliable, and the team loves it. Would
-        recommend to anyone.&rdquo;
+        &ldquo;This completely changed our workflow. Fast, reliable, and the
+        team loves it. Would recommend to anyone.&rdquo;
       </blockquote>
       <div class="flex gap-2">
         <Avatar alt="jane.doe@example.com" fallback="JD" size="lg" />

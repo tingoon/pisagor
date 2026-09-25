@@ -17,7 +17,8 @@ const { title, description, ...rest } = Astro.props;
 const hasMedia = Astro.slots.has("media");
 const hasActions = Astro.slots.has("actions");
 const hasTitle = Astro.slots.has("title") || title !== undefined;
-const hasDescription = Astro.slots.has("description") || description !== undefined;
+const hasDescription =
+  Astro.slots.has("description") || description !== undefined;
 ---
 
 <EmptyStateRoot {...rest}>
@@ -28,7 +29,9 @@ const hasDescription = Astro.slots.has("description") || description !== undefin
 )}
   {hasTitle && <EmptyStateTitle>{title ?? <slot name="title" />}</EmptyStateTitle>}
   {hasDescription && (
-  <EmptyStateDescription>{description ?? <slot name="description" />}</EmptyStateDescription>
+  <EmptyStateDescription>
+    {description ?? <slot name="description" />}
+  </EmptyStateDescription>
 )}
   {hasActions && (
   <EmptyStateActions>

@@ -1,5 +1,9 @@
 import { parseDate } from "@pisagor/react";
-import { cityOptions, countryOptions, planOptions } from "../../examples/options";
+import {
+  cityOptions,
+  countryOptions,
+  planOptions,
+} from "../../examples/options";
 import { useAppForm } from "..";
 
 export function Default() {
@@ -109,7 +113,9 @@ export function Default() {
       </form.AppField>
 
       <form.AppField name="code">
-        {(field) => <field.OtpField className="items-center" label="Verification code" />}
+        {(field) => (
+          <field.OtpField className="items-center" label="Verification code" />
+        )}
       </form.AppField>
 
       <form.AppField name="plan">
@@ -125,12 +131,22 @@ export function Default() {
 
       <form.AppField name="attachments">
         {(field) => (
-          <field.FileField accept="image/*" id="tanstack-form-attachments" label="Avatar" />
+          <field.FileField
+            accept="image/*"
+            id="tanstack-form-attachments"
+            label="Avatar"
+          />
         )}
       </form.AppField>
 
       <form.AppField name="priority">
-        {(field) => <field.SliderField id="tanstack-form-priority" label="Priority" showValue />}
+        {(field) => (
+          <field.SliderField
+            id="tanstack-form-priority"
+            label="Priority"
+            showValue
+          />
+        )}
       </form.AppField>
 
       <form.AppField name="skills">

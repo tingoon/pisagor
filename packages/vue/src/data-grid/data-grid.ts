@@ -1,4 +1,7 @@
-import { type DataGridRecipe, dataGridRecipe } from "@pisagor/recipes/data-grid";
+import {
+  type DataGridRecipe,
+  dataGridRecipe,
+} from "@pisagor/recipes/data-grid";
 import { cn } from "@pisagor/utils";
 import type {
   Cell,
@@ -95,18 +98,16 @@ const [provideDataGridContext, useDataGridContextBase] = createContext<
   name: "DataGrid",
 });
 
-const [provideDataGridHeaderGroupContext, useDataGridHeaderGroupContextBase] = createContext<
-  DataGridHeaderGroupContextValue<RowData>
->({
-  name: "DataGridHeaderGroup",
-});
+const [provideDataGridHeaderGroupContext, useDataGridHeaderGroupContextBase] =
+  createContext<DataGridHeaderGroupContextValue<RowData>>({
+    name: "DataGridHeaderGroup",
+  });
 
-const [provideDataGridHeaderCellContext, useDataGridHeaderCellContextBase] = createContext<
-  DataGridHeaderCellContextValue<RowData>
->({
-  name: "DataGridHeaderCell",
-  strict: false,
-});
+const [provideDataGridHeaderCellContext, useDataGridHeaderCellContextBase] =
+  createContext<DataGridHeaderCellContextValue<RowData>>({
+    name: "DataGridHeaderCell",
+    strict: false,
+  });
 
 const [provideDataGridRowContext, useDataGridRowContextBase] = createContext<
   DataGridRowContextValue<RowData>
@@ -131,7 +132,10 @@ export function useDataGrid<TData extends RowData>() {
  * @returns The active header group.
  */
 export function useDataGridHeaderGroup<TData extends RowData>() {
-  return useDataGridHeaderGroupContextBase() as unknown as HeaderGroup<DataGridFeatures, TData>;
+  return useDataGridHeaderGroupContextBase() as unknown as HeaderGroup<
+    DataGridFeatures,
+    TData
+  >;
 }
 
 /**
@@ -145,7 +149,9 @@ export function useDataGridRow<TData extends RowData>() {
 }
 
 function useDataGridHeaderCellContext<TData extends RowData>() {
-  return useDataGridHeaderCellContextBase() as DataGridHeaderCellContextValue<TData> | undefined;
+  return useDataGridHeaderCellContextBase() as
+    | DataGridHeaderCellContextValue<TData>
+    | undefined;
 }
 
 function columnSizeStyle(
@@ -164,7 +170,8 @@ function columnSizeStyle(
 
 function flexRender(template: unknown, context: unknown): VNodeChild {
   if (template === null || template === undefined) return null;
-  if (typeof template === "function") return (template as (ctx: unknown) => VNodeChild)(context);
+  if (typeof template === "function")
+    return (template as (ctx: unknown) => VNodeChild)(context);
   return template as VNodeChild;
 }
 
@@ -212,11 +219,17 @@ export const DataGridRoot = defineComponent({
         get(_target, key: string) {
           switch (key) {
             case "columnResizeMode":
-              return (attrs.columnResizeMode as ColumnResizeMode | undefined) ?? "onChange";
+              return (
+                (attrs.columnResizeMode as ColumnResizeMode | undefined) ??
+                "onChange"
+              );
             case "data":
               return (attrs.data as RowData[] | undefined) ?? [];
             case "features":
-              return (attrs.features as DataGridFeatures | undefined) ?? dataGridFeatures;
+              return (
+                (attrs.features as DataGridFeatures | undefined) ??
+                dataGridFeatures
+              );
             default:
               return (attrs as Record<string, unknown>)[key];
           }
@@ -225,11 +238,21 @@ export const DataGridRoot = defineComponent({
           return { configurable: true, enumerable: true };
         },
         has(_target, key: string) {
-          return key in attrs || key === "columnResizeMode" || key === "data" || key === "features";
+          return (
+            key in attrs ||
+            key === "columnResizeMode" ||
+            key === "data" ||
+            key === "features"
+          );
         },
         ownKeys() {
           return Array.from(
-            new Set([...Reflect.ownKeys(attrs), "columnResizeMode", "data", "features"]),
+            new Set([
+              ...Reflect.ownKeys(attrs),
+              "columnResizeMode",
+              "data",
+              "features",
+            ]),
           );
         },
       },
@@ -262,13 +285,16 @@ export const DataGridHeader = defineComponent({
   name: "DataGridHeader",
   setup(_, { slots }) {
     return () => {
-      const { table } = useDataGridContextBase() as unknown as DataGridContextValue<RowData>;
+      const { table } =
+        useDataGridContextBase() as unknown as DataGridContextValue<RowData>;
 
       return table
         .getHeaderGroups()
         .map((headerGroup) =>
-          h(DataGridHeaderGroupProvider, { headerGroup, key: headerGroup.id }, () =>
-            slots.default?.(),
+          h(
+            DataGridHeaderGroupProvider,
+            { headerGroup, key: headerGroup.id },
+            () => slots.default?.(),
           ),
         );
     };
@@ -285,7 +311,9 @@ const DataGridHeaderGroupProvider = defineComponent({
     },
   },
   setup(props, { slots }) {
-    provideDataGridHeaderGroupContext(computed(() => ({ headerGroup: props.headerGroup })));
+    provideDataGridHeaderGroupContext(
+      computed(() => ({ headerGroup: props.headerGroup })),
+    );
 
     return () => slots.default?.();
   },
@@ -301,7 +329,12 @@ export const DataGridHeaderRow = defineComponent({
     return () =>
       h(
         Table.Row as ArkPart,
-        { ...attrs, class: cn(props.class), "data-part": "header-row", "data-scope": "data-grid" },
+        {
+          ...attrs,
+          class: cn(props.class),
+          "data-part": "header-row",
+          "data-scope": "data-grid",
+        },
         () => slots.default?.(),
       );
   },
@@ -317,7 +350,9 @@ const DataGridHeaderCellProvider = defineComponent({
     },
   },
   setup(props, { slots }) {
-    provideDataGridHeaderCellContext(computed(() => ({ header: props.header })));
+    provideDataGridHeaderCellContext(
+      computed(() => ({ header: props.header })),
+    );
 
     return () => slots.default?.();
   },
@@ -404,7 +439,10 @@ export const DataGridHead = defineComponent({
   name: "DataGridHead",
   props: {
     class: { type: [String, Object, Array] as PropType<ClassValue> },
-    columnId: { default: undefined, type: String as PropType<string | undefined> },
+    columnId: {
+      default: undefined,
+      type: String as PropType<string | undefined>,
+    },
     filter: { default: false, type: Boolean },
   },
   setup(props, { attrs, slots }) {
@@ -415,7 +453,9 @@ export const DataGridHead = defineComponent({
         useDataGridContextBase() as unknown as DataGridContextValue<RowData>;
 
       if (props.columnId) {
-        const header = headerGroup.headers.find((item) => item.column.id === props.columnId);
+        const header = headerGroup.headers.find(
+          (item) => item.column.id === props.columnId,
+        );
 
         if (!header) {
           return null;
@@ -437,12 +477,15 @@ export const DataGridBody = defineComponent({
   props: {
     empty: {
       default: undefined,
-      type: [String, Number, Boolean, Object, Array] as PropType<VNodeChild | undefined>,
+      type: [String, Number, Boolean, Object, Array] as PropType<
+        VNodeChild | undefined
+      >,
     },
   },
   setup(props, { slots }) {
     return () => {
-      const { table } = useDataGridContextBase() as unknown as DataGridContextValue<RowData>;
+      const { table } =
+        useDataGridContextBase() as unknown as DataGridContextValue<RowData>;
       const rows = table.getRowModel().rows;
 
       if (rows.length === 0) {
@@ -460,7 +503,10 @@ export const DataGridRowProvider = defineComponent({
   inheritAttrs: false,
   name: "DataGridRowProvider",
   props: {
-    row: { required: true, type: Object as PropType<Row<DataGridFeatures, RowData>> },
+    row: {
+      required: true,
+      type: Object as PropType<Row<DataGridFeatures, RowData>>,
+    },
   },
   setup(props, { slots }) {
     provideDataGridRowContext(computed(() => ({ row: props.row })));
@@ -475,7 +521,9 @@ export const DataGridVirtualBody = defineComponent({
   props: {
     empty: {
       default: undefined,
-      type: [String, Number, Boolean, Object, Array] as PropType<VNodeChild | undefined>,
+      type: [String, Number, Boolean, Object, Array] as PropType<
+        VNodeChild | undefined
+      >,
     },
     estimateSize: { default: 40, type: Number },
     overscan: { default: 8, type: Number },
@@ -486,7 +534,9 @@ export const DataGridVirtualBody = defineComponent({
     const scrollElement = shallowRef<HTMLElement | null>(null);
 
     const findWrapper = () =>
-      anchorRef.value?.closest('[data-scope="table"][data-part="wrapper"]') as HTMLElement | null;
+      anchorRef.value?.closest(
+        '[data-scope="table"][data-part="wrapper"]',
+      ) as HTMLElement | null;
 
     const applyViewportHeight = () => {
       const wrapper = findWrapper();
@@ -523,22 +573,34 @@ export const DataGridVirtualBody = defineComponent({
       const rows = table.getRowModel().rows;
 
       if (rows.length === 0) {
-        return [h("tr", { class: variantSlots.anchor(), ref: anchorRef }), props.empty ?? null];
+        return [
+          h("tr", { class: variantSlots.anchor(), ref: anchorRef }),
+          props.empty ?? null,
+        ];
       }
 
       const virtualRows = virtualizer.value.getVirtualItems();
       const paddingTop = virtualRows[0]?.start ?? 0;
       const paddingBottom =
-        virtualizer.value.getTotalSize() - (virtualRows[virtualRows.length - 1]?.end ?? 0);
+        virtualizer.value.getTotalSize() -
+        (virtualRows[virtualRows.length - 1]?.end ?? 0);
 
       return [
         paddingTop > 0
-          ? h("tr", { "data-part": "virtual-spacer", "data-scope": "data-grid", ref: anchorRef }, [
-              h("td", {
-                colSpan: table.getAllColumns().length,
-                style: { height: `${paddingTop}px` },
-              }),
-            ])
+          ? h(
+              "tr",
+              {
+                "data-part": "virtual-spacer",
+                "data-scope": "data-grid",
+                ref: anchorRef,
+              },
+              [
+                h("td", {
+                  colSpan: table.getAllColumns().length,
+                  style: { height: `${paddingTop}px` },
+                }),
+              ],
+            )
           : h("tr", { class: variantSlots.anchor(), ref: anchorRef }),
         ...virtualRows.map((virtualRow) => {
           const row = rows[virtualRow.index];
@@ -547,15 +609,21 @@ export const DataGridVirtualBody = defineComponent({
             return null;
           }
 
-          return h(DataGridRowProvider, { key: row.id, row }, () => slots.default?.());
+          return h(DataGridRowProvider, { key: row.id, row }, () =>
+            slots.default?.(),
+          );
         }),
         paddingBottom > 0
-          ? h("tr", { "data-part": "virtual-spacer", "data-scope": "data-grid" }, [
-              h("td", {
-                colSpan: table.getAllColumns().length,
-                style: { height: `${paddingBottom}px` },
-              }),
-            ])
+          ? h(
+              "tr",
+              { "data-part": "virtual-spacer", "data-scope": "data-grid" },
+              [
+                h("td", {
+                  colSpan: table.getAllColumns().length,
+                  style: { height: `${paddingBottom}px` },
+                }),
+              ],
+            )
           : null,
       ];
     };
@@ -567,11 +635,15 @@ export const DataGridRow = defineComponent({
   name: "DataGridRow",
   props: {
     class: { type: [String, Object, Array] as PropType<ClassValue> },
-    style: { default: undefined, type: Object as PropType<CSSProperties | undefined> },
+    style: {
+      default: undefined,
+      type: Object as PropType<CSSProperties | undefined>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const { row } = useDataGridRowContextBase() as unknown as DataGridRowContextValue<RowData>;
+      const { row } =
+        useDataGridRowContextBase() as unknown as DataGridRowContextValue<RowData>;
 
       return h(
         Table.Row as ArkPart,
@@ -579,7 +651,10 @@ export const DataGridRow = defineComponent({
           ...attrs,
           "aria-expanded": row.getCanExpand() ? row.getIsExpanded() : undefined,
           "aria-selected": row.getIsSelected(),
-          class: cn(row.getIsGrouped() && "bg-muted/40 font-medium", props.class),
+          class: cn(
+            row.getIsGrouped() && "bg-muted/40 font-medium",
+            props.class,
+          ),
           "data-depth": row.depth,
           "data-expanded": row.getIsExpanded() ? "true" : undefined,
           "data-grouped": row.getIsGrouped() ? "true" : undefined,
@@ -599,17 +674,27 @@ export const DataGridCell = defineComponent({
   name: "DataGridCell",
   props: {
     class: { type: [String, Object, Array] as PropType<ClassValue> },
-    columnId: { default: undefined, type: String as PropType<string | undefined> },
-    style: { default: undefined, type: Object as PropType<CSSProperties | undefined> },
+    columnId: {
+      default: undefined,
+      type: String as PropType<string | undefined>,
+    },
+    style: {
+      default: undefined,
+      type: Object as PropType<CSSProperties | undefined>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const { table } = useDataGridContextBase() as unknown as DataGridContextValue<RowData>;
-      const { row } = useDataGridRowContextBase() as unknown as DataGridRowContextValue<RowData>;
+      const { table } =
+        useDataGridContextBase() as unknown as DataGridContextValue<RowData>;
+      const { row } =
+        useDataGridRowContextBase() as unknown as DataGridRowContextValue<RowData>;
       const sizingEnabled = Boolean(table.options.enableColumnResizing);
 
       if (props.columnId) {
-        const cell = row.getVisibleCells().find((item) => item.column.id === props.columnId);
+        const cell = row
+          .getVisibleCells()
+          .find((item) => item.column.id === props.columnId);
 
         if (!cell) {
           return null;
@@ -657,7 +742,10 @@ export const DataGridEmpty = defineComponent({
   name: "DataGridEmpty",
   props: {
     class: { type: [String, Object, Array] as PropType<ClassValue> },
-    colSpan: { default: undefined, type: Number as PropType<number | undefined> },
+    colSpan: {
+      default: undefined,
+      type: Number as PropType<number | undefined>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -667,12 +755,19 @@ export const DataGridEmpty = defineComponent({
 
       return h(
         Table.Row as ArkPart,
-        { ...attrs, class: props.class, "data-part": "empty", "data-scope": "data-grid" },
+        {
+          ...attrs,
+          class: props.class,
+          "data-part": "empty",
+          "data-scope": "data-grid",
+        },
         () =>
           h(
             Table.Cell as ArkPart,
             { class: variantSlots.empty(), colSpan: span },
-            () => slots.default?.() ?? "No results. Try a different search or clear filters.",
+            () =>
+              slots.default?.() ??
+              "No results. Try a different search or clear filters.",
           ),
       );
     };

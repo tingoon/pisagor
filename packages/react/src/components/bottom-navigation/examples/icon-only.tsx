@@ -1,4 +1,9 @@
-import { BellIcon, HouseIcon, MagnifyingGlassIcon, UserIcon } from "@phosphor-icons/react";
+import {
+  BellIcon,
+  HouseIcon,
+  MagnifyingGlassIcon,
+  UserIcon,
+} from "@phosphor-icons/react";
 import { ScrollArea } from "@pisagor/react";
 import { BottomNavigation } from "..";
 export function IconOnly() {

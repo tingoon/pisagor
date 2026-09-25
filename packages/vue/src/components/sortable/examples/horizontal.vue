@@ -15,7 +15,11 @@ const onValueChange = setItems;
 </script>
 
 <template>
-  <Sortable orientation="horizontal" :items="items" @value-change="onValueChange">
+  <Sortable
+    orientation="horizontal"
+    :items="items"
+    @value-change="onValueChange"
+  >
     <Sortable.Item class="min-w-36" v-for="id in items" :key="id" :value="id">
       <Sortable.ItemContent>
         <Sortable.Handle />

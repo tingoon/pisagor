@@ -5,6 +5,8 @@ interface SwitchContextValue {
   slots: SwitchRecipe;
 }
 
-export const { SwitchContext, useSwitch } = createContext<SwitchContextValue>()({
-  name: "Switch",
-});
+export const { SwitchContext, useSwitch } = createContext<SwitchContextValue>()(
+  {
+    name: "Switch",
+  },
+);

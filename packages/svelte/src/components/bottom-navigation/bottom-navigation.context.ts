@@ -12,8 +12,12 @@ interface BottomNavigationItemContextValue {
   slots: BottomNavigationItemRecipe;
 }
 
-const root = createContext<BottomNavigationContextValue>({ name: "BottomNavigation" });
-const item = createContext<BottomNavigationItemContextValue>({ name: "BottomNavigationItem" });
+const root = createContext<BottomNavigationContextValue>({
+  name: "BottomNavigation",
+});
+const item = createContext<BottomNavigationItemContextValue>({
+  name: "BottomNavigationItem",
+});
 
 export const setBottomNavigationContext = root.setContext;
 export const useBottomNavigation = root.getContext;

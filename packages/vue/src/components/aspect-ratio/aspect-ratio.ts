@@ -22,7 +22,10 @@ export const AspectRatio = defineComponent({
   inheritAttrs: false,
   name: "AspectRatio",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: aspectRatioRecipe,
       type: Function as PropType<typeof aspectRatioRecipe>,

@@ -8,7 +8,8 @@ export function Multiple() {
     }
 
     const firstValue = value?.at(0) ?? "";
-    const additionalValues = value.length > 1 ? ` (+${value.length - 1} more)` : "";
+    const additionalValues =
+      value.length > 1 ? ` (+${value.length - 1} more)` : "";
 
     return firstValue + additionalValues;
   };
@@ -22,7 +23,11 @@ export function Multiple() {
     ],
   });
   return (
-    <Select.Root collection={collection} defaultValue={["javascript", "typescript"]} multiple>
+    <Select.Root
+      collection={collection}
+      defaultValue={["javascript", "typescript"]}
+      multiple
+    >
       <Select.Trigger>
         <Select.ValueText className="capitalize">
           <Select.Context>{({ value }) => renderValue(value)}</Select.Context>

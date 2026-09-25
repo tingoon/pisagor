@@ -31,10 +31,13 @@ export default defineComponent({
     return () =>
       h(Marquee as ArkPart, {
         items: marqueeIcons.map((IconComponent, index) =>
-          h(Card as ArkPart, { class: "[--space:--spacing(8)]", key: index }, () =>
-            h(Card.Content as ArkPart, null, () =>
-              h(IconComponent as ArkPart, { class: "size-10" }),
-            ),
+          h(
+            Card as ArkPart,
+            { class: "[--space:--spacing(8)]", key: index },
+            () =>
+              h(Card.Content as ArkPart, null, () =>
+                h(IconComponent as ArkPart, { class: "size-10" }),
+              ),
           ),
         ),
         spacing: 32,

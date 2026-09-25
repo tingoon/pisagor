@@ -29,11 +29,18 @@ function filter(_inputValue: string) {}
       :collection="collection"
       @input-value-change="({ inputValue }) => filter(inputValue)"
     >
-      <Autocomplete.Input aria-label="Search items" placeholder="Search items…" />
+      <Autocomplete.Input
+        aria-label="Search items"
+        placeholder="Search items…"
+      />
       <Autocomplete.Content>
         <Autocomplete.Empty>No items found.</Autocomplete.Empty>
         <Autocomplete.List>
-          <Autocomplete.Item v-for="item in collection.items" :key="item.value" :item="item">
+          <Autocomplete.Item
+            v-for="item in collection.items"
+            :key="item.value"
+            :item="item"
+          >
             {{ item.label }}
           </Autocomplete.Item>
         </Autocomplete.List>

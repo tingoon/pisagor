@@ -5,10 +5,14 @@ export function WithPromise() {
     <Button
       onClick={() => {
         toast.promise<{ name: string }>(
-          () => new Promise((resolve) => setTimeout(() => resolve({ name: "Event" }), 2000)),
+          () =>
+            new Promise((resolve) =>
+              setTimeout(() => resolve({ name: "Event" }), 2000),
+            ),
           {
             error: {
-              description: "Something went wrong. Check your connection and try again.",
+              description:
+                "Something went wrong. Check your connection and try again.",
               title: "Error generating event",
             },
             loading: {

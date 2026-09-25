@@ -2,14 +2,24 @@ import { tv } from "tailwind-variants";
 
 export const tableRecipe = tv({
   slots: {
-    base: ["group/table", "w-full", "caption-bottom", "text-foreground text-sm"],
+    base: [
+      "group/table",
+      "w-full",
+      "caption-bottom",
+      "text-foreground text-sm",
+    ],
     body: "[&_tr:last-child]:border-0",
     caption: ["mt-4", "text-muted-foreground text-sm"],
     cell: [
       "whitespace-nowrap p-2 align-middle",
       "has-[[role=checkbox]]:ps-2 has-[[role=checkbox]]:pe-0",
     ],
-    footer: ["border-t", "bg-muted/48", "font-medium", "last:[&>tr]:border-b-0"],
+    footer: [
+      "border-t",
+      "bg-muted/48",
+      "font-medium",
+      "last:[&>tr]:border-b-0",
+    ],
     head: [
       "h-10 px-2",
       "text-left align-middle",

@@ -9,10 +9,12 @@ interface RichTextEditorContextValue {
   slots: RichTextEditorRecipe;
 }
 
-export const { RichTextEditorContext, useRichTextEditor: useRichTextEditorState } =
-  createContext<RichTextEditorContextValue>()({
-    name: "RichTextEditor",
-  });
+export const {
+  RichTextEditorContext,
+  useRichTextEditor: useRichTextEditorState,
+} = createContext<RichTextEditorContextValue>()({
+  name: "RichTextEditor",
+});
 
 /** Access the TipTap editor instance from the nearest RichTextEditor root. */
 export function useRichTextEditor() {

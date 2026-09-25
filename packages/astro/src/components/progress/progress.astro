@@ -58,7 +58,8 @@ const showHeader = Boolean(label) || isValueVisible;
 const clamped = Math.min(Math.max(value, min), max);
 const percent = max === min ? 0 : ((clamped - min) / (max - min)) * 100;
 const state = indeterminate ? "indeterminate" : "loading";
-const rangeStyle = orientation === "horizontal" ? `width: ${percent}%` : `height: ${percent}%`;
+const rangeStyle =
+  orientation === "horizontal" ? `width: ${percent}%` : `height: ${percent}%`;
 ---
 
 <div
@@ -84,7 +85,12 @@ const rangeStyle = orientation === "horizontal" ? `width: ${percent}%` : `height
   </div>
 )}
   <slot />
-  <div class={slots.track()} data-orientation={orientation} data-part="track" data-scope="progress">
+  <div
+    class={slots.track()}
+    data-orientation={orientation}
+    data-part="track"
+    data-scope="progress"
+  >
     <div
       class={slots.range()}
       data-orientation={orientation}

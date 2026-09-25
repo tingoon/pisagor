@@ -1,5 +1,10 @@
 {
   "extends": "//",
+  "linter": {
+    "domains": {
+      "astro": "all"
+    }
+  },
   "overrides": [
     {
       "includes": ["**/*.stories.ts"],

@@ -30,7 +30,9 @@ export function WithDescription() {
               <Listbox.Item item={item} key={item.value}>
                 <div className="flex min-w-0 flex-1 flex-col gap-0.5">
                   <Listbox.ItemText>{item.label}</Listbox.ItemText>
-                  <span className="text-muted-foreground text-xs">{item.description}</span>
+                  <span className="text-muted-foreground text-xs">
+                    {item.description}
+                  </span>
                 </div>
                 <Listbox.ItemIndicator />
               </Listbox.Item>

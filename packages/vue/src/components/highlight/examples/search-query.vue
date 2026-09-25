@@ -20,9 +20,15 @@ function onValueChange(details: { value: string }) {
       @value-change="onValueChange"
     />
     <div class="space-y-2">
-      <p class="text-muted-foreground text-sm">Search result for: {{ query || "(empty)" }}</p>
+      <p class="text-muted-foreground text-sm">
+        Search result for: {{ query || "(empty)" }}
+      </p>
       <ul class="space-y-1">
-        <li class="text-base text-foreground" v-for="item in searchResults" :key="item">
+        <li
+          class="text-base text-foreground"
+          v-for="item in searchResults"
+          :key="item"
+        >
           <Highlight ignore-case v-if="query" :query="query" :text="item" />
           <template v-else>{{ item }}</template>
         </li>

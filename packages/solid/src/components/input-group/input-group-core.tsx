@@ -63,7 +63,12 @@ export function InputGroupRoot(props: InputGroupProps): JSX.Element {
 }
 
 export function InputGroupAddon(props: InputGroupAddonProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["align", "recipe", "class", "onClick"]);
+  const [local, rest] = splitProps(props, [
+    "align",
+    "recipe",
+    "class",
+    "onClick",
+  ]);
   const align = () => local.align ?? "inline-start";
 
   const handleClick: JSX.EventHandler<HTMLDivElement, MouseEvent> = (event) => {
@@ -80,7 +85,10 @@ export function InputGroupAddon(props: InputGroupAddonProps): JSX.Element {
   return (
     <ark.div
       {...rest}
-      class={(local.recipe ?? inputGroupAddonRecipe)({ align: align(), class: cn(local.class) })}
+      class={(local.recipe ?? inputGroupAddonRecipe)({
+        align: align(),
+        class: cn(local.class),
+      })}
       data-align={align()}
       data-part="addon"
       data-scope="input-group"
@@ -91,7 +99,12 @@ export function InputGroupAddon(props: InputGroupAddonProps): JSX.Element {
 }
 
 export function InputGroupButton(props: InputGroupButtonProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["size", "variant", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "size",
+    "variant",
+    "recipe",
+    "class",
+  ]);
 
   return (
     <Button

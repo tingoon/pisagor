@@ -96,10 +96,19 @@ export const ImageCropperRoot = defineComponent({
   props: {
     alt: { default: undefined, type: String },
     aspectRatio: { default: undefined, type: Number },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    cropShape: { default: undefined, type: String as PropType<ImageCropperProps["cropShape"]> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    cropShape: {
+      default: undefined,
+      type: String as PropType<ImageCropperProps["cropShape"]>,
+    },
     fixedCropArea: { default: undefined, type: Boolean },
-    initialCrop: { default: undefined, type: Object as PropType<CropRect | undefined> },
+    initialCrop: {
+      default: undefined,
+      type: Object as PropType<CropRect | undefined>,
+    },
     maxHeight: { default: undefined, type: Number },
     maxWidth: { default: undefined, type: Number },
     maxZoom: { default: undefined, type: Number },
@@ -176,7 +185,10 @@ export const ImageCropperImage = defineComponent({
   inheritAttrs: false,
   name: "ImageCropper.Image",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: imageCropperRecipe,
       type: Function as PropType<typeof imageCropperRecipe>,
@@ -195,8 +207,14 @@ export const ImageCropperGrid = defineComponent({
   inheritAttrs: false,
   name: "ImageCropper.Grid",
   props: {
-    axis: { required: true, type: String as PropType<"horizontal" | "vertical"> },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    axis: {
+      required: true,
+      type: String as PropType<"horizontal" | "vertical">,
+    },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: imageCropperRecipe,
       type: Function as PropType<typeof imageCropperRecipe>,
@@ -216,8 +234,14 @@ export const ImageCropperHandle = defineComponent({
   inheritAttrs: false,
   name: "ImageCropper.Handle",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    position: { required: true, type: String as PropType<ImageCropperHandlePosition> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    position: {
+      required: true,
+      type: String as PropType<ImageCropperHandlePosition>,
+    },
     recipe: {
       default: imageCropperRecipe,
       type: Function as PropType<typeof imageCropperRecipe>,
@@ -244,8 +268,14 @@ export const ImageCropperSelection = defineComponent({
   inheritAttrs: false,
   name: "ImageCropper.Selection",
   props: {
-    axis: { default: "both", type: String as PropType<ImageCropperSelectionProps["axis"]> },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    axis: {
+      default: "both",
+      type: String as PropType<ImageCropperSelectionProps["axis"]>,
+    },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: imageCropperRecipe,
       type: Function as PropType<typeof imageCropperRecipe>,

@@ -36,7 +36,12 @@ type DataListItemLabelProps = ComponentProps<typeof ark.dt>;
 type DataListItemValueProps = ComponentProps<typeof ark.dd>;
 
 export function DataListRoot(props: DataListRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["orientation", "children", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "orientation",
+    "children",
+    "recipe",
+    "class",
+  ]);
 
   return (
     <ark.dl
@@ -98,10 +103,14 @@ export function DataListItem(props: DataListItemProps): JSX.Element {
         data-scope="data-list"
       >
         <Show when={local.children != null}>
-          <DataListItemLabel class={local.classNames?.label}>{local.children}</DataListItemLabel>
+          <DataListItemLabel class={local.classNames?.label}>
+            {local.children}
+          </DataListItemLabel>
         </Show>
         <Show when={local.value != null}>
-          <DataListItemValue class={local.classNames?.value}>{local.value}</DataListItemValue>
+          <DataListItemValue class={local.classNames?.value}>
+            {local.value}
+          </DataListItemValue>
         </Show>
       </ark.div>
     </DataListItemContext>

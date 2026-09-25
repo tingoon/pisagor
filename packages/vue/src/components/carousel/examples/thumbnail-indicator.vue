@@ -11,7 +11,11 @@ const slides = imageSources();
       <Carousel.NextTrigger>Next</Carousel.NextTrigger>
 
       <Carousel.ItemGroup>
-        <Carousel.Item v-for="(slide, index) in slides" :key="slide.src" :index="index">
+        <Carousel.Item
+          v-for="(slide, index) in slides"
+          :key="slide.src"
+          :index="index"
+        >
           <img :alt="slide.alt" :height="300" :src="slide.src" :width="500">
         </Carousel.Item>
       </Carousel.ItemGroup>

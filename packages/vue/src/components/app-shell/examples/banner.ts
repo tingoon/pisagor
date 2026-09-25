@@ -14,18 +14,26 @@ export default defineComponent({
     return () =>
       h(AppShell, null, () => [
         opened.value
-          ? h(AppShell.Banner, { class: "flex items-center justify-center gap-1 p-2" }, () => [
-              h(Announcement, {
-                badge: h(Badge, { variant: "destructive" }, () => [
-                  h(PhWarning),
-                  "Process interrupted",
-                ]),
-                role: "alert",
-                title:
-                  "Something went wrong during the process. Try again or contact support if the problem continues.",
-              }),
-              h(Button, { onClick: close, pill: true, size: "sm" }, () => "Dismiss"),
-            ])
+          ? h(
+              AppShell.Banner,
+              { class: "flex items-center justify-center gap-1 p-2" },
+              () => [
+                h(Announcement, {
+                  badge: h(Badge, { variant: "destructive" }, () => [
+                    h(PhWarning),
+                    "Process interrupted",
+                  ]),
+                  role: "alert",
+                  title:
+                    "Something went wrong during the process. Try again or contact support if the problem continues.",
+                }),
+                h(
+                  Button,
+                  { onClick: close, pill: true, size: "sm" },
+                  () => "Dismiss",
+                ),
+              ],
+            )
           : null,
         h(AppShell.Main, null, () => mainContent("Main")),
       ]);

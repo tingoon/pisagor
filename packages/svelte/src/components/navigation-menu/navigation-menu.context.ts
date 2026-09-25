@@ -5,5 +5,7 @@ interface NavigationMenuContextValue {
   slots: NavigationMenuRecipe;
 }
 
-export const { setContext: setNavigationMenuContext, getContext: useNavigationMenu } =
-  createContext<NavigationMenuContextValue>({ name: "NavigationMenu" });
+export const {
+  setContext: setNavigationMenuContext,
+  getContext: useNavigationMenu,
+} = createContext<NavigationMenuContextValue>({ name: "NavigationMenu" });

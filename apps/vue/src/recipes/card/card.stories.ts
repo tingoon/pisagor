@@ -8,7 +8,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Card compositions for login flows, custom spacing, and product display.",
+        component:
+          "Card compositions for login flows, custom spacing, and product display.",
       },
     },
   },

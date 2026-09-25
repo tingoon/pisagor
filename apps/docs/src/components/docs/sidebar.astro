@@ -21,14 +21,16 @@ const docsNav = getSidebarNav(Astro.props.framework, Astro.props.area);
     <ul class="space-y-px">
       {section.items.map((item) => {
         const href = frameworkPath(Astro.props.framework, item.slug);
-        const active = Astro.props.currentPath === href || Astro.props.currentPath === `${href}/`;
+        const active =
+          Astro.props.currentPath === href ||
+          Astro.props.currentPath === `${href}/`;
         const soon = item.status === "soon";
         return (
           <li>
             {soon ? (
               <span class="docs-nav-link flex items-center justify-between rounded-md px-2.5 py-1.5 text-foreground/40">
                 {item.title}
-                <span class="rounded border border-border/50 px-1.5 py-px text-[0.625rem] font-semibold uppercase tracking-[0.06em] text-muted-foreground/70">
+                <span class="rounded border border-border/50 px-1.5 py-px font-semibold text-[0.625rem] text-muted-foreground/70 uppercase tracking-[0.06em]">
                   Soon
                 </span>
               </span>

@@ -1,5 +1,8 @@
 import { ark } from "@ark-ui/solid/factory";
-import { type ToolbarRecipeSlot, toolbarRecipe } from "@pisagor/recipes/toolbar";
+import {
+  type ToolbarRecipeSlot,
+  toolbarRecipe,
+} from "@pisagor/recipes/toolbar";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
@@ -69,7 +72,9 @@ export function ToolbarTitle(props: ToolbarTitleProps): JSX.Element {
   );
 }
 
-export function ToolbarDescription(props: ToolbarDescriptionProps): JSX.Element {
+export function ToolbarDescription(
+  props: ToolbarDescriptionProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useToolbar();
   return (
@@ -117,14 +122,20 @@ export function ToolbarShorthand(props: ToolbarProps): JSX.Element {
             </ToolbarTitle>
           </Show>
           <Show when={local.description !== undefined}>
-            <ToolbarDescription {...local.descriptionProps} class={local.classNames?.description}>
+            <ToolbarDescription
+              {...local.descriptionProps}
+              class={local.classNames?.description}
+            >
               {local.description}
             </ToolbarDescription>
           </Show>
         </ToolbarHeading>
       </Show>
       <Show when={local.actions !== undefined}>
-        <ToolbarActions {...local.actionsProps} class={local.classNames?.actions}>
+        <ToolbarActions
+          {...local.actionsProps}
+          class={local.classNames?.actions}
+        >
           {local.actions}
         </ToolbarActions>
       </Show>

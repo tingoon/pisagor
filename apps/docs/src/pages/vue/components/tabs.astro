@@ -49,11 +49,16 @@ const headings = [
 
   <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">
+    Variants
+  </h3>
   <ComponentPreview code={examples.Variants} language="vue" title="Variants">
     <Variants client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-horizontal">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="orientation-horizontal"
+  >
     Orientation Horizontal
   </h3>
   <ComponentPreview
@@ -63,40 +68,66 @@ const headings = [
   >
     <OrientationHorizontal client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-vertical">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="orientation-vertical"
+  >
     Orientation Vertical
   </h3>
-  <ComponentPreview code={examples.OrientationVertical} language="vue" title="Orientation Vertical">
+  <ComponentPreview
+    code={examples.OrientationVertical}
+    language="vue"
+    title="Orientation Vertical"
+  >
     <OrientationVertical client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">
+    Disabled
+  </h3>
   <ComponentPreview code={examples.Disabled} language="vue" title="Disabled">
     <Disabled client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-icons">With Icons</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-icons">
+    With Icons
+  </h3>
   <ComponentPreview code={examples.WithIcons} language="vue" title="With Icons">
     <WithIcons client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
-  <ComponentPreview code={examples.Controlled} language="vue" title="Controlled">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">
+    Controlled
+  </h3>
+  <ComponentPreview
+    code={examples.Controlled}
+    language="vue"
+    title="Controlled"
+  >
     <Controlled client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="compound">Compound</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="compound">
+    Compound
+  </h3>
   <ComponentPreview code={examples.Compound} language="vue" title="Compound">
     <Compound client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
+    Default
+  </h3>
   <ComponentPreview code={examples.Default} language="vue" title="Default">
     <Default client:only="vue" />
   </ComponentPreview>
 
-  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <h2
+    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    id="installation"
+  >
+    Installation
+  </h2>
   <Installation class="mb-8" packages="@pisagor/vue" />
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/tabs</code>. Native HTML attributes are also supported and
-    omitted from this table.
+    Own props from <code>@pisagor/props/tabs</code>. Native HTML attributes are
+    also supported and omitted from this table.
   </p>
   <PropsTable rows={tabsProps} />
 </DocsLayout>

@@ -26,7 +26,11 @@ export const PopoverDialog = defineComponent({
     return () =>
       h(Dialog as ArkPart, null, () => [
         h(dialogParts.Trigger, { asChild: true }, () =>
-          h(Button as ArkPart, { type: "button", variant: "outline" }, () => "Open dialog"),
+          h(
+            Button as ArkPart,
+            { type: "button", variant: "outline" },
+            () => "Open dialog",
+          ),
         ),
         h(dialogParts.Content, null, () => [
           h(
@@ -41,13 +45,18 @@ export const PopoverDialog = defineComponent({
           h(dialogParts.Body, null, () =>
             h(Popover as ArkPart, null, () => [
               h(popoverParts.Trigger, { asChild: true }, () =>
-                h(Button as ArkPart, { type: "button", variant: "outline" }, () => "Open popover"),
+                h(
+                  Button as ArkPart,
+                  { type: "button", variant: "outline" },
+                  () => "Open popover",
+                ),
               ),
               h(popoverParts.Content, null, () => [
                 h(
                   popoverParts.Header,
                   {
-                    description: "You're all caught up. Check back later for new notifications.",
+                    description:
+                      "You're all caught up. Check back later for new notifications.",
                     title: "Notifications",
                   },
                   () => undefined,
@@ -57,7 +66,11 @@ export const PopoverDialog = defineComponent({
           ),
           h(dialogParts.Footer, null, () =>
             h(dialogParts.CloseTrigger, { asChild: true }, () =>
-              h(Button as ArkPart, { type: "button", variant: "outline" }, () => "Done"),
+              h(
+                Button as ArkPart,
+                { type: "button", variant: "outline" },
+                () => "Done",
+              ),
             ),
           ),
         ]),

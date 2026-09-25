@@ -5,7 +5,10 @@ import type {
   ProgressValueTextProps,
 } from "@ark-ui/react/progress";
 import { Progress as ProgressPrimitive } from "@ark-ui/react/progress";
-import { type ProgressRecipeSlot, progressRecipe } from "@pisagor/recipes/progress";
+import {
+  type ProgressRecipeSlot,
+  progressRecipe,
+} from "@pisagor/recipes/progress";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { Field } from "../field";
@@ -90,7 +93,12 @@ function ProgressHeader({ children, className, ...rest }: ProgressHeaderProps) {
 function ProgressValue({ className, ...rest }: ProgressValueTextProps) {
   const { slots } = useProgress();
 
-  return <ProgressPrimitive.ValueText {...rest} className={slots.value({ className })} />;
+  return (
+    <ProgressPrimitive.ValueText
+      {...rest}
+      className={slots.value({ className })}
+    />
+  );
 }
 
 function ProgressTrack({ children, className, ...rest }: ProgressTrackProps) {
@@ -106,7 +114,9 @@ function ProgressTrack({ children, className, ...rest }: ProgressTrackProps) {
 function ProgressRange({ className, ...rest }: ProgressRangeProps) {
   const { slots } = useProgress();
 
-  return <ProgressPrimitive.Range {...rest} className={slots.range({ className })} />;
+  return (
+    <ProgressPrimitive.Range {...rest} className={slots.range({ className })} />
+  );
 }
 // #endregion
 

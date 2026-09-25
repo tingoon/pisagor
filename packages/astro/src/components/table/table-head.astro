@@ -8,6 +8,11 @@ const { class: className, ...rest } = Astro.props;
 const slots = tableRecipe();
 ---
 
-<th {...rest} class={slots.head({ className })} data-part="head" data-scope="table">
+<th
+  {...rest}
+  class={slots.head({ className })}
+  data-part="head"
+  data-scope="table"
+>
   <slot />
 </th>

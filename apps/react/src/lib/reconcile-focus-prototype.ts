@@ -12,7 +12,10 @@ export function reconcileFocusPrototype(): void {
     return;
   }
 
-  const descriptor = Object.getOwnPropertyDescriptor(HTMLElement.prototype, "focus");
+  const descriptor = Object.getOwnPropertyDescriptor(
+    HTMLElement.prototype,
+    "focus",
+  );
   if (!descriptor?.get || !descriptor.configurable) {
     return;
   }

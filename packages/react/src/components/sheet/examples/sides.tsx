@@ -57,7 +57,9 @@ export function Sides() {
             <Sheet.Title>Bottom placement sheet</Sheet.Title>
           </Sheet.Header>
           <Sheet.Body>
-            <p className="text-muted-foreground text-sm">This sheet slides in from the bottom.</p>
+            <p className="text-muted-foreground text-sm">
+              This sheet slides in from the bottom.
+            </p>
           </Sheet.Body>
         </Sheet.Content>
       </Sheet>

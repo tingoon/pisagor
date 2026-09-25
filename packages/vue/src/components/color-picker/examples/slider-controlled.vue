@@ -8,7 +8,13 @@ const onValueChange = setColor;
 
 <template>
   <div class="flex flex-col gap-2">
-    <ColorPicker class="w-full" format="hsla" inline :value="color" @value-change="onValueChange">
+    <ColorPicker
+      class="w-full"
+      format="hsla"
+      inline
+      :value="color"
+      @value-change="onValueChange"
+    >
       <ColorPicker.View format="hsla">
         <ColorPicker.ChannelSlider channel="hue" />
       </ColorPicker.View>

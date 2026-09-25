@@ -2,7 +2,10 @@ import { LocaleProvider } from "@ark-ui/react";
 import { IconContext } from "@phosphor-icons/react";
 import type { ReactNode } from "react";
 import { Toaster } from "../toast";
-import { type ProviderMessages, ProviderMessagesContext } from "./provider.context";
+import {
+  type ProviderMessages,
+  ProviderMessagesContext,
+} from "./provider.context";
 
 // #region Types
 export type { ProviderMessages } from "./provider.context";

@@ -1,5 +1,12 @@
 import { cn } from "@pisagor/utils";
-import { defineComponent, h, onMounted, onUnmounted, type PropType, ref } from "vue";
+import {
+  defineComponent,
+  h,
+  onMounted,
+  onUnmounted,
+  type PropType,
+  ref,
+} from "vue";
 
 // #region Types
 type ScrollTarget = HTMLElement | Document | null | undefined;
@@ -57,7 +64,9 @@ function resolveScrollElement(target: ScrollTarget): HTMLElement | null {
     return document.documentElement;
   }
 
-  const viewport = target.querySelector('[data-scope="scroll-area"][data-part="viewport"]');
+  const viewport = target.querySelector(
+    '[data-scope="scroll-area"][data-part="viewport"]',
+  );
   if (viewport instanceof HTMLElement) {
     return viewport;
   }
@@ -71,7 +80,9 @@ function resolveScrollTarget(target: ScrollTarget): HTMLElement | Window {
   }
 
   if (target instanceof HTMLElement) {
-    const viewport = target.querySelector('[data-scope="scroll-area"][data-part="viewport"]');
+    const viewport = target.querySelector(
+      '[data-scope="scroll-area"][data-part="viewport"]',
+    );
     if (viewport instanceof HTMLElement) {
       return viewport;
     }
@@ -82,7 +93,10 @@ function resolveScrollTarget(target: ScrollTarget): HTMLElement | Window {
   return window;
 }
 
-function getSectionScrollOffset(sectionElement: HTMLElement, scrollElement: HTMLElement): number {
+function getSectionScrollOffset(
+  sectionElement: HTMLElement,
+  scrollElement: HTMLElement,
+): number {
   if (scrollElement === document.documentElement) {
     return sectionElement.getBoundingClientRect().top + window.scrollY;
   }
@@ -99,12 +113,27 @@ export const Scrollspy = defineComponent({
   inheritAttrs: false,
   name: "PisagorScrollspy",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    history: { default: true, type: Boolean as PropType<ScrollspyProps["history"]> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    history: {
+      default: true,
+      type: Boolean as PropType<ScrollspyProps["history"]>,
+    },
     offset: { default: 0, type: Number as PropType<ScrollspyProps["offset"]> },
-    onUpdate: { default: undefined, type: Function as PropType<ScrollspyProps["onUpdate"]> },
-    smooth: { default: true, type: Boolean as PropType<ScrollspyProps["smooth"]> },
-    targetRef: { default: undefined, type: Object as PropType<ScrollspyProps["targetRef"]> },
+    onUpdate: {
+      default: undefined,
+      type: Function as PropType<ScrollspyProps["onUpdate"]>,
+    },
+    smooth: {
+      default: true,
+      type: Boolean as PropType<ScrollspyProps["smooth"]>,
+    },
+    targetRef: {
+      default: undefined,
+      type: Object as PropType<ScrollspyProps["targetRef"]>,
+    },
   },
   setup(props, { attrs, slots }) {
     const selfRef = ref<HTMLDivElement | null>(null);
@@ -172,7 +201,10 @@ export const Scrollspy = defineComponent({
           customOffset = Number.parseInt(dataOffset, 10);
         }
 
-        const sectionOffset = getSectionScrollOffset(sectionElement, scrollElement);
+        const sectionOffset = getSectionScrollOffset(
+          sectionElement,
+          scrollElement,
+        );
         const delta = Math.abs(sectionOffset - customOffset - scrollTop);
 
         if (sectionOffset - customOffset <= scrollTop && delta < minDelta) {
@@ -197,7 +229,8 @@ export const Scrollspy = defineComponent({
     const scrollTo = (anchorElement: HTMLElement) => (event?: Event) => {
       event?.preventDefault();
 
-      const sectionId = anchorElement.getAttribute(SCROLLSPY_ANCHOR)?.replace("#", "") ?? null;
+      const sectionId =
+        anchorElement.getAttribute(SCROLLSPY_ANCHOR)?.replace("#", "") ?? null;
       if (!sectionId) {
         return;
       }
@@ -216,8 +249,13 @@ export const Scrollspy = defineComponent({
       }
 
       const scrollElement =
-        scrollToElement instanceof HTMLElement ? scrollToElement : document.documentElement;
-      const sectionOffset = getSectionScrollOffset(sectionElement, scrollElement);
+        scrollToElement instanceof HTMLElement
+          ? scrollToElement
+          : document.documentElement;
+      const sectionOffset = getSectionScrollOffset(
+        sectionElement,
+        scrollElement,
+      );
       const scrollTop = sectionOffset - customOffset;
 
       scrollToElement.scrollTo({
@@ -247,7 +285,9 @@ export const Scrollspy = defineComponent({
 
     onMounted(() => {
       if (selfRef.value) {
-        anchorElements = Array.from(selfRef.value.querySelectorAll(SCROLLSPY_ANCHOR_SELECTOR));
+        anchorElements = Array.from(
+          selfRef.value.querySelectorAll(SCROLLSPY_ANCHOR_SELECTOR),
+        );
       }
 
       const anchorListeners = anchorElements.map((item) => {
@@ -262,7 +302,8 @@ export const Scrollspy = defineComponent({
 
         if (
           scrollElement === window ||
-          (scrollElement instanceof HTMLElement && scrollElement.contains(event.target as Node))
+          (scrollElement instanceof HTMLElement &&
+            scrollElement.contains(event.target as Node))
         ) {
           handleScroll();
         }

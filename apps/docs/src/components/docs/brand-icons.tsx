@@ -2,7 +2,11 @@ import type { ReactNode, SVGProps } from "react";
 
 type IconProps = SVGProps<SVGSVGElement> & { size?: number | string };
 
-function BrandSvg({ size = 14, children, ...props }: IconProps & { children: ReactNode }) {
+function BrandSvg({
+  size = 14,
+  children,
+  ...props
+}: IconProps & { children: ReactNode }) {
   return (
     <svg
       aria-hidden

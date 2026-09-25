@@ -7,7 +7,11 @@ export function ControlledInputValue() {
   return (
     <div className="flex flex-col gap-3">
       <div className="flex flex-wrap gap-2">
-        <Button onClick={() => setInputValue("React")} size="sm" variant="outline">
+        <Button
+          onClick={() => setInputValue("React")}
+          size="sm"
+          variant="outline"
+        >
           Set &quot;React&quot;
         </Button>
         <Button onClick={() => setInputValue("")} size="sm" variant="outline">

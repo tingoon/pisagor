@@ -35,15 +35,30 @@ export const Slider = defineComponent({
   inheritAttrs: false,
   name: "PisagorSlider",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    defaultValue: { default: undefined, type: Array as PropType<number[] | undefined> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    defaultValue: {
+      default: undefined,
+      type: Array as PropType<number[] | undefined>,
+    },
     disabled: { default: undefined, type: Boolean },
-    label: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
+    label: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<VNodeChild>,
+    },
     markerInterval: { default: 1, type: Number },
-    markerLabels: { default: undefined, type: Array as PropType<string[] | undefined> },
+    markerLabels: {
+      default: undefined,
+      type: Array as PropType<string[] | undefined>,
+    },
     max: { default: 100, type: Number },
     min: { default: 0, type: Number },
-    onValueChange: { default: undefined, type: Function as PropType<SliderProps["onValueChange"]> },
+    onValueChange: {
+      default: undefined,
+      type: Function as PropType<SliderProps["onValueChange"]>,
+    },
     recipe: {
       default: sliderRecipe,
       type: Function as PropType<typeof sliderRecipe>,
@@ -52,8 +67,14 @@ export const Slider = defineComponent({
     showValue: { default: false, type: Boolean },
     step: { default: undefined, type: Number },
     tabIndex: { default: undefined, type: Number },
-    value: { default: undefined, type: Array as PropType<number[] | undefined> },
-    variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
+    value: {
+      default: undefined,
+      type: Array as PropType<number[] | undefined>,
+    },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant | undefined>,
+    },
   },
   setup(props, { attrs, slots }) {
     const surfaceVariant = useFormControlSurface();
@@ -67,8 +88,10 @@ export const Slider = defineComponent({
 
       const variantSlots = props.recipe();
 
-      const thumbShadowClass = resolved.variant === "secondary" ? "shadow-none" : undefined;
-      const trackVariantClass = resolved.variant === "secondary" ? "bg-muted/40" : "bg-input/64";
+      const thumbShadowClass =
+        resolved.variant === "secondary" ? "shadow-none" : undefined;
+      const trackVariantClass =
+        resolved.variant === "secondary" ? "bg-muted/40" : "bg-input/64";
 
       const _values = Array.isArray(props.value)
         ? props.value
@@ -88,7 +111,8 @@ export const Slider = defineComponent({
           min: props.min,
           modelValue: props.value,
           onValueChange: props.onValueChange
-            ? (details: { value: number[] }) => props.onValueChange?.(details.value)
+            ? (details: { value: number[] }) =>
+                props.onValueChange?.(details.value)
             : undefined,
           step: props.step,
         },
@@ -111,51 +135,58 @@ export const Slider = defineComponent({
             ]),
           ],
           slots.default?.(),
-          h(SliderPrimitive.Control as ArkPart, { class: variantSlots.control() }, () =>
-            h(
-              SliderPrimitive.Track as ArkPart,
-              {
-                class: variantSlots.track({ class: trackVariantClass }),
-              },
-              () => [
-                h(SliderPrimitive.Range as ArkPart, {
-                  class: variantSlots.range(),
-                }),
-                ..._values.map((_, index) =>
-                  h(
-                    SliderPrimitive.Thumb as ArkPart,
-                    {
-                      class: variantSlots.thumb({ class: thumbShadowClass }),
-                      index,
-                      tabIndex: props.tabIndex ?? undefined,
-                    },
-                    () => h(SliderPrimitive.HiddenInput as ArkPart, {}),
+          h(
+            SliderPrimitive.Control as ArkPart,
+            { class: variantSlots.control() },
+            () =>
+              h(
+                SliderPrimitive.Track as ArkPart,
+                {
+                  class: variantSlots.track({ class: trackVariantClass }),
+                },
+                () => [
+                  h(SliderPrimitive.Range as ArkPart, {
+                    class: variantSlots.range(),
+                  }),
+                  ..._values.map((_, index) =>
+                    h(
+                      SliderPrimitive.Thumb as ArkPart,
+                      {
+                        class: variantSlots.thumb({ class: thumbShadowClass }),
+                        index,
+                        tabIndex: props.tabIndex ?? undefined,
+                      },
+                      () => h(SliderPrimitive.HiddenInput as ArkPart, {}),
+                    ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              ),
           ),
           props.showMarkers
-            ? h(SliderPrimitive.MarkerGroup as ArkPart, { class: variantSlots.markerGroup() }, () =>
-                Array.from({ length: props.max + 1 }, (_, index) =>
-                  h(
-                    SliderPrimitive.Marker as ArkPart,
-                    {
-                      class: variantSlots.marker(),
-                      "data-interval": index % props.markerInterval === 0 ? undefined : "",
-                      key: String(index),
-                      value: index,
-                    },
-                    () => [
-                      h("span", { class: variantSlots.markerTick() }),
-                      h(
-                        "span",
-                        { class: variantSlots.markerLabel() },
-                        () => props.markerLabels?.[index] ?? String(index),
-                      ),
-                    ],
+            ? h(
+                SliderPrimitive.MarkerGroup as ArkPart,
+                { class: variantSlots.markerGroup() },
+                () =>
+                  Array.from({ length: props.max + 1 }, (_, index) =>
+                    h(
+                      SliderPrimitive.Marker as ArkPart,
+                      {
+                        class: variantSlots.marker(),
+                        "data-interval":
+                          index % props.markerInterval === 0 ? undefined : "",
+                        key: String(index),
+                        value: index,
+                      },
+                      () => [
+                        h("span", { class: variantSlots.markerTick() }),
+                        h(
+                          "span",
+                          { class: variantSlots.markerLabel() },
+                          () => props.markerLabels?.[index] ?? String(index),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
               )
             : null,
         ],

@@ -50,7 +50,6 @@ function handleCheckedChange(
 )}
   data-variant={variant}
   onCheckedChange={onCheckedChange || onValueChange ? handleCheckedChange : undefined}
-  role="checkbox"
 >
   <CheckboxPrimitive.Control>
     <CheckboxPrimitive.Indicator class={slots.indicator()}>

@@ -1,6 +1,9 @@
 import { Field, Input } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { defaultButtonClass, outlineButtonClass } from "../../../internal/story-button";
+import {
+  defaultButtonClass,
+  outlineButtonClass,
+} from "../../../internal/story-button";
 import { Drawer } from "..";
 
 export default defineComponent({
@@ -13,11 +16,15 @@ export default defineComponent({
         ),
         h(
           Drawer.Content,
-          { class: "[--bleed:2rem] [--space:--spacing(6)]" } as Record<string, unknown>,
+          { class: "[--bleed:2rem] [--space:--spacing(6)]" } as Record<
+            string,
+            unknown
+          >,
           () => [
             h(Drawer.ContentInner, null, () => [
               h(Drawer.Header, {
-                description: "Tighter bleed and larger internal padding than defaults.",
+                description:
+                  "Tighter bleed and larger internal padding than defaults.",
                 title: "Custom spacing",
               }),
               h(Drawer.Body, null, () =>
@@ -36,10 +43,18 @@ export default defineComponent({
             h(Drawer.Footer, null, () =>
               h(Drawer.ContentInner, null, () => [
                 h(Drawer.CloseTrigger, { asChild: true }, () =>
-                  h("button", { class: outlineButtonClass(), type: "button" }, "Cancel"),
+                  h(
+                    "button",
+                    { class: outlineButtonClass(), type: "button" },
+                    "Cancel",
+                  ),
                 ),
                 h(Drawer.CloseTrigger, { asChild: true }, () =>
-                  h("button", { class: defaultButtonClass(), type: "button" }, "Save changes"),
+                  h(
+                    "button",
+                    { class: defaultButtonClass(), type: "button" },
+                    "Save changes",
+                  ),
                 ),
               ]),
             ),

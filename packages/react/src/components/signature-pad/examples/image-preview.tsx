@@ -7,7 +7,9 @@ export function ImagePreview() {
   return (
     <Field className="flex flex-col gap-2">
       <SignaturePad
-        onDrawEnd={(details) => details.getDataUrl("image/png").then((url) => setImageUrl(url))}
+        onDrawEnd={(details) =>
+          details.getDataUrl("image/png").then((url) => setImageUrl(url))
+        }
       />
       <Field.Description>Image preview</Field.Description>
       <div className="relative h-40 w-full rounded-lg border bg-muted">

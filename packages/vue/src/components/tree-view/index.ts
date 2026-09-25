@@ -12,7 +12,12 @@ import {
   TreeViewTree,
 } from "./tree-view";
 
-export type { NodeProviderProps, TreeCollection, TreeNodeType, TreeViewProps } from "./tree-view";
+export type {
+  NodeProviderProps,
+  TreeCollection,
+  TreeNodeType,
+  TreeViewProps,
+} from "./tree-view";
 
 export { createFileIcons, createTreeCollection } from "./tree-view";
 

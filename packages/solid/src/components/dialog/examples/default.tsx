@@ -16,7 +16,9 @@ export function Default() {
               </Button>
             )}
           />
-          <Dialog.CloseTrigger asChild={(props) => <Button {...props()}>Save</Button>} />
+          <Dialog.CloseTrigger
+            asChild={(props) => <Button {...props()}>Save</Button>}
+          />
         </>
       }
       description="Make changes to your project settings."

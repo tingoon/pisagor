@@ -8,6 +8,11 @@ const { class: className, ...rest } = Astro.props;
 const slots = skeletonRecipe();
 ---
 
-<div {...rest} class={slots.base({ className })} data-part="root" data-scope="skeleton">
+<div
+  {...rest}
+  class={slots.base({ className })}
+  data-part="root"
+  data-scope="skeleton"
+>
   <slot />
 </div>

@@ -1,5 +1,7 @@
 @custom-variant dark (&:is(.dark *):not(:is(.light, .light *)));
-@custom-variant transparency-reduce (@media (prefers-reduced-transparency: reduce));
+@custom-variant transparency-reduce (
+  @media (prefers-reduced-transparency: reduce)
+);
 
 @theme inline {
   --font-sans: var(--font-sans, ui-sans-serif, system-ui, sans-serif);
@@ -61,8 +63,10 @@
   --animate-slide-down: slideDown var(--duration-normal) var(--ease-out);
   --animate-expand: expand var(--duration-normal) var(--ease-out);
   --animate-collapse: collapse var(--duration-normal) var(--ease-out);
-  --animate-marquee-x: marqueeX var(--marquee-duration) linear infinite var(--marquee-delay);
-  --animate-marquee-y: marqueeY var(--marquee-duration) linear infinite var(--marquee-delay);
+  --animate-marquee-x: marqueeX var(--marquee-duration) linear infinite
+    var(--marquee-delay);
+  --animate-marquee-y: marqueeY var(--marquee-duration) linear infinite
+    var(--marquee-delay);
   --animate-flip-in: flip-in var(--duration-normal) var(--ease-out);
   --animate-flip-out: flip-out var(--duration-normal) var(--ease-out);
   --animate-indeterminate: indeterminate 1.5s ease-in-out infinite;
@@ -143,9 +147,12 @@
 :root {
   --radius: 0.75rem;
   --elevation-1: 0 0.5px 1px 0 rgb(0 0 0 / 0.04), 0 1px 2px 0 rgb(0 0 0 / 0.04);
-  --elevation-2: 0 1px 2px 0 rgb(0 0 0 / 0.04), 0 2px 8px -2px rgb(0 0 0 / 0.08);
-  --elevation-3: 0 2px 4px 0 rgb(0 0 0 / 0.04), 0 8px 24px -4px rgb(0 0 0 / 0.1);
-  --elevation-4: 0 4px 8px 0 rgb(0 0 0 / 0.04), 0 16px 40px -8px rgb(0 0 0 / 0.14);
+  --elevation-2:
+    0 1px 2px 0 rgb(0 0 0 / 0.04), 0 2px 8px -2px rgb(0 0 0 / 0.08);
+  --elevation-3:
+    0 2px 4px 0 rgb(0 0 0 / 0.04), 0 8px 24px -4px rgb(0 0 0 / 0.1);
+  --elevation-4:
+    0 4px 8px 0 rgb(0 0 0 / 0.04), 0 16px 40px -8px rgb(0 0 0 / 0.14);
   --motion-duration-fast: 100ms;
   --motion-duration-normal: 200ms;
   --motion-duration-slow: 300ms;
@@ -186,9 +193,12 @@
 .light {
   color-scheme: light;
   --elevation-1: 0 0.5px 1px 0 rgb(0 0 0 / 0.04), 0 1px 2px 0 rgb(0 0 0 / 0.04);
-  --elevation-2: 0 1px 2px 0 rgb(0 0 0 / 0.04), 0 2px 8px -2px rgb(0 0 0 / 0.08);
-  --elevation-3: 0 2px 4px 0 rgb(0 0 0 / 0.04), 0 8px 24px -4px rgb(0 0 0 / 0.1);
-  --elevation-4: 0 4px 8px 0 rgb(0 0 0 / 0.04), 0 16px 40px -8px rgb(0 0 0 / 0.14);
+  --elevation-2:
+    0 1px 2px 0 rgb(0 0 0 / 0.04), 0 2px 8px -2px rgb(0 0 0 / 0.08);
+  --elevation-3:
+    0 2px 4px 0 rgb(0 0 0 / 0.04), 0 8px 24px -4px rgb(0 0 0 / 0.1);
+  --elevation-4:
+    0 4px 8px 0 rgb(0 0 0 / 0.04), 0 16px 40px -8px rgb(0 0 0 / 0.14);
   --background: var(--color-neutral-100);
   --foreground: var(--color-neutral-800);
   --card: var(--color-white);
@@ -219,9 +229,12 @@
 .dark {
   color-scheme: dark;
   --elevation-1: 0 0.5px 1px 0 rgb(0 0 0 / 0.4), 0 1px 2px 0 rgb(0 0 0 / 0.32);
-  --elevation-2: 0 1px 2px 0 rgb(0 0 0 / 0.36), 0 2px 8px -2px rgb(0 0 0 / 0.48);
-  --elevation-3: 0 2px 4px 0 rgb(0 0 0 / 0.36), 0 8px 24px -4px rgb(0 0 0 / 0.56);
-  --elevation-4: 0 4px 8px 0 rgb(0 0 0 / 0.4), 0 16px 40px -8px rgb(0 0 0 / 0.64);
+  --elevation-2:
+    0 1px 2px 0 rgb(0 0 0 / 0.36), 0 2px 8px -2px rgb(0 0 0 / 0.48);
+  --elevation-3:
+    0 2px 4px 0 rgb(0 0 0 / 0.36), 0 8px 24px -4px rgb(0 0 0 / 0.56);
+  --elevation-4:
+    0 4px 8px 0 rgb(0 0 0 / 0.4), 0 16px 40px -8px rgb(0 0 0 / 0.64);
   --background: var(--color-neutral-950);
   --foreground: var(--color-neutral-100);
   --card: var(--color-neutral-900);

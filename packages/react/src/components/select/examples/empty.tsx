@@ -11,7 +11,9 @@ export function Empty() {
         <Select.ValueText placeholder="Select an option" />
       </Select.Trigger>
       <Select.Content>
-        <Select.Empty>No items to display. Add an item to get started.</Select.Empty>
+        <Select.Empty>
+          No items to display. Add an item to get started.
+        </Select.Empty>
       </Select.Content>
     </Select.Root>
   );

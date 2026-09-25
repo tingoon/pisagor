@@ -11,13 +11,22 @@ export interface StatusProps extends ComponentProps<typeof ark.span> {
 }
 
 export function Status(props: StatusProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class", "recipe", "size", "variant"]);
+  const [local, rest] = splitProps(props, [
+    "class",
+    "recipe",
+    "size",
+    "variant",
+  ]);
   const recipeFn = () => local.recipe ?? statusRecipe;
 
   return (
     <ark.span
       {...rest}
-      class={recipeFn()({ class: cn(local.class), size: local.size, variant: local.variant })}
+      class={recipeFn()({
+        class: cn(local.class),
+        size: local.size,
+        variant: local.variant,
+      })}
       data-part="indicator"
       data-scope="status"
       data-size={local.size}

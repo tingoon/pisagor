@@ -1,6 +1,12 @@
-import { Field as FieldPrimitive, type FieldTextareaProps } from "@ark-ui/solid/field";
+import {
+  Field as FieldPrimitive,
+  type FieldTextareaProps,
+} from "@ark-ui/solid/field";
 import { formControlShellRecipe } from "@pisagor/recipes/form-control";
-import { type TextareaRecipeSlot, textareaRecipe } from "@pisagor/recipes/textarea";
+import {
+  type TextareaRecipeSlot,
+  textareaRecipe,
+} from "@pisagor/recipes/textarea";
 import { cn } from "@pisagor/utils";
 import type { JSX, ParentProps } from "solid-js";
 import { Show, splitProps } from "solid-js";
@@ -8,7 +14,10 @@ import { useClearableInput } from "../../hooks";
 import type { VariantClassNames } from "../../internal/types";
 import { callEventHandler } from "../../utils";
 import { Input } from "../input";
-import { InputGroupAddon, InputGroupRoot } from "../input-group/input-group-core";
+import {
+  InputGroupAddon,
+  InputGroupRoot,
+} from "../input-group/input-group-core";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { TextareaContext, useTextarea } from "./textarea.context";
 
@@ -28,9 +37,15 @@ export interface TextareaProps extends TextareaRootProps {
   classNames?: TextareaClassNames;
 }
 
-function TextareaProvider(props: ParentProps<{ recipe?: typeof textareaRecipe }>): JSX.Element {
+function TextareaProvider(
+  props: ParentProps<{ recipe?: typeof textareaRecipe }>,
+): JSX.Element {
   const slots = () => (props.recipe ?? textareaRecipe)();
-  return <TextareaContext value={{ slots: slots() }}>{props.children}</TextareaContext>;
+  return (
+    <TextareaContext value={{ slots: slots() }}>
+      {props.children}
+    </TextareaContext>
+  );
 }
 
 function TextareaField(
@@ -48,7 +63,11 @@ function TextareaField(
   const variant = () => local.variant ?? ("primary" as FormControlVariant);
 
   const applyDefaultValueRef = (el: HTMLTextAreaElement) => {
-    if (rest.value === undefined && local.defaultValue !== undefined && el.value === "") {
+    if (
+      rest.value === undefined &&
+      local.defaultValue !== undefined &&
+      el.value === ""
+    ) {
       el.value = String(local.defaultValue);
     }
     if (typeof local.ref === "function") {
@@ -65,7 +84,9 @@ function TextareaField(
           surfaceVariant,
           variant: variant(),
         }),
-        slots.rootLayout({ class: cn(local.class, local.classNames?.rootLayout) }),
+        slots.rootLayout({
+          class: cn(local.class, local.classNames?.rootLayout),
+        }),
       )}
       data-variant={variant()}
       ref={applyDefaultValueRef}
@@ -79,23 +100,38 @@ function TextareaGroup(
   const { slots } = useTextarea();
 
   return (
-    <InputGroupRoot class={slots.group({ class: cn(props.class) })} variant={props.variant}>
+    <InputGroupRoot
+      class={slots.group({ class: cn(props.class) })}
+      variant={props.variant}
+    >
       {props.children}
     </InputGroupRoot>
   );
 }
 
 function TextareaClearableField(
-  props: TextareaRootProps & { canClear?: boolean; classNames?: TextareaClassNames },
+  props: TextareaRootProps & {
+    canClear?: boolean;
+    classNames?: TextareaClassNames;
+  },
 ): JSX.Element {
-  const [local, rest] = splitProps(props, ["canClear", "class", "classNames", "defaultValue"]);
+  const [local, rest] = splitProps(props, [
+    "canClear",
+    "class",
+    "classNames",
+    "defaultValue",
+  ]);
   const { slots } = useTextarea();
 
   return (
     <FieldPrimitive.Textarea
       {...rest}
       class={slots.clearableRoot({
-        class: cn(local.canClear && "pe-9", local.class, local.classNames?.clearableRoot),
+        class: cn(
+          local.canClear && "pe-9",
+          local.class,
+          local.classNames?.clearableRoot,
+        ),
       })}
     />
   );
@@ -130,8 +166,8 @@ export function Textarea(props: TextareaProps): JSX.Element {
   const clearable = () => local.clearable ?? false;
   const skipClearable = () => !clearable();
 
-  const { canClear, handleChange, handleClear, mergedRef } = useClearableInput<HTMLTextAreaElement>(
-    {
+  const { canClear, handleChange, handleClear, mergedRef } =
+    useClearableInput<HTMLTextAreaElement>({
       get clearable() {
         return clearable();
       },
@@ -143,7 +179,10 @@ export function Textarea(props: TextareaProps): JSX.Element {
       },
       get onChange() {
         return (
-          event: Event & { currentTarget: HTMLTextAreaElement; target: HTMLTextAreaElement },
+          event: Event & {
+            currentTarget: HTMLTextAreaElement;
+            target: HTMLTextAreaElement;
+          },
         ) => {
           callEventHandler(local.onChange, event);
         };
@@ -160,8 +199,7 @@ export function Textarea(props: TextareaProps): JSX.Element {
       get value() {
         return local.value;
       },
-    },
-  );
+    });
 
   return (
     <TextareaProvider recipe={local.recipe}>

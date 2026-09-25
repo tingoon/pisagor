@@ -6,7 +6,10 @@ import {
   RadioGroupShorthand,
 } from "./radio-group";
 
-export type { RadioGroupItemTextProps, RadioGroupLabelProps } from "@ark-ui/solid/radio-group";
+export type {
+  RadioGroupItemTextProps,
+  RadioGroupLabelProps,
+} from "@ark-ui/solid/radio-group";
 
 export type {
   RadioGroupItemProps,

@@ -9,7 +9,10 @@ export function createRoot(form: AppFormApi) {
     inheritAttrs: false,
     name: "FormRoot",
     props: {
-      class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+      class: {
+        default: undefined,
+        type: [String, Object, Array] as PropType<unknown>,
+      },
       noValidate: { default: true, type: Boolean },
     },
     setup(props, { attrs, slots }) {

@@ -13,7 +13,14 @@ import {
   parsePhoneNumberFromString,
 } from "libphonenumber-js";
 import type { ComponentProps, JSX } from "solid-js";
-import { createEffect, createMemo, createSignal, For, Show, splitProps } from "solid-js";
+import {
+  createEffect,
+  createMemo,
+  createSignal,
+  For,
+  Show,
+  splitProps,
+} from "solid-js";
 import { Combobox, type ComboboxContentProps } from "../components/combobox";
 import type { InputProps } from "../components/input";
 import { InputGroup } from "../components/input-group";
@@ -47,7 +54,10 @@ export interface PhoneInputProps extends PhoneInputVariantProps {
   class?: string;
   recipe?: typeof phoneInputRecipe;
   classNames?: PhoneInputClassNames;
-  inputProps?: Omit<InputProps, "class" | "onChange" | "onBlur" | "size" | "type" | "value">;
+  inputProps?: Omit<
+    InputProps,
+    "class" | "onChange" | "onBlur" | "size" | "type" | "value"
+  >;
   popupProps?: Omit<ComboboxContentProps, "class" | "children">;
 }
 
@@ -79,14 +89,20 @@ function PhoneInputContainer(props: PhoneInputContainerProps): JSX.Element {
   );
 }
 
-function PhoneInputFlag(props: { country?: Country; countryName?: string }): JSX.Element {
+function PhoneInputFlag(props: {
+  country?: Country;
+  countryName?: string;
+}): JSX.Element {
   const ctx = usePhoneInput();
   const flagClass = () => ctx.slots.flag({ class: ctx.classNames?.flag });
-  const emoji = () => (props.country ? phoneInputFlags[props.country] : undefined);
+  const emoji = () =>
+    props.country ? phoneInputFlags[props.country] : undefined;
 
   return (
     <Show
-      fallback={<GlobeIcon aria-hidden class={cn(ctx.slots.flagIcon(), flagClass())} />}
+      fallback={
+        <GlobeIcon aria-hidden class={cn(ctx.slots.flagIcon(), flagClass())} />
+      }
       when={emoji()}
     >
       {(flag) => (
@@ -113,10 +129,14 @@ function PhoneInputCountrySelect(props: {
 }): JSX.Element {
   const ctx = usePhoneInput();
   const items = createMemo(() =>
-    props.options.map((option) => ({ label: option.label, value: option.value })),
+    props.options.map((option) => ({
+      label: option.label,
+      value: option.value,
+    })),
   );
   const collection = createMemo(() => createListCollection({ items: items() }));
-  const callingCode = () => (props.value ? getCountryCallingCode(props.value) : "");
+  const callingCode = () =>
+    props.value ? getCountryCallingCode(props.value) : "";
   const isDisabled = () => props.disabled || props.readOnly;
 
   return (
@@ -132,7 +152,9 @@ function PhoneInputCountrySelect(props: {
     >
       <InputGroup.Addon
         align="inline-start"
-        class={ctx.slots.countryTrigger({ class: ctx.classNames?.countryTrigger })}
+        class={ctx.slots.countryTrigger({
+          class: ctx.classNames?.countryTrigger,
+        })}
         data-part="country-trigger"
         data-scope="phone-input"
       >
@@ -154,7 +176,9 @@ function PhoneInputCountrySelect(props: {
               <Show when={props.value}>
                 {(c) => <PhoneInputFlag country={c()} countryName={c()} />}
               </Show>
-              <Show when={callingCode()}>{(code) => <span>+{code()}</span>}</Show>
+              <Show when={callingCode()}>
+                {(code) => <span>+{code()}</span>}
+              </Show>
               <CaretUpDownIcon aria-hidden class={ctx.slots.countryCaret()} />
             </InputGroup.Button>
           </Combobox.Trigger>
@@ -183,12 +207,16 @@ function PhoneInputCountrySelect(props: {
               <Combobox.Item item={item}>
                 <PhoneInputFlag country={item.value} countryName={item.label} />
                 <span class={ctx.slots.itemLabel()}>{item.label}</span>
-                <span class={ctx.slots.itemCode()}>+{getCountryCallingCode(item.value)}</span>
+                <span class={ctx.slots.itemCode()}>
+                  +{getCountryCallingCode(item.value)}
+                </span>
               </Combobox.Item>
             )}
           </For>
         </Combobox.List>
-        <Combobox.Empty>No country found. Try a different search.</Combobox.Empty>
+        <Combobox.Empty>
+          No country found. Try a different search.
+        </Combobox.Empty>
       </Combobox.Content>
     </Combobox.Root>
   );
@@ -243,7 +271,9 @@ export function PhoneInput(props: PhoneInputProps): JSX.Element {
   const [internalCountry, setInternalCountry] = createSignal<Country>(
     resolveCountry(local.value, defaultCountry()),
   );
-  const [display, setDisplay] = createSignal(formatNational(local.value, internalCountry()));
+  const [display, setDisplay] = createSignal(
+    formatNational(local.value, internalCountry()),
+  );
 
   const country = createMemo(() => {
     if (local.value !== undefined) {
@@ -273,8 +303,12 @@ export function PhoneInput(props: PhoneInputProps): JSX.Element {
     const number = formatter.getNumber();
     const e164 =
       number?.number ??
-      (formatted ? `+${getCountryCallingCode(nextCountry)}${formatted.replace(/\D/g, "")}` : "");
-    local.onChange?.(number?.format("E.164") ?? (e164.startsWith("+") ? e164 : ""));
+      (formatted
+        ? `+${getCountryCallingCode(nextCountry)}${formatted.replace(/\D/g, "")}`
+        : "");
+    local.onChange?.(
+      number?.format("E.164") ?? (e164.startsWith("+") ? e164 : ""),
+    );
   };
 
   const contextValue = createMemo(() => ({
@@ -289,7 +323,10 @@ export function PhoneInput(props: PhoneInputProps): JSX.Element {
 
   return (
     <PhoneInputContext value={contextValue()}>
-      <PhoneInputContainer class={cn(local.class)} data-disabled={local.disabled || undefined}>
+      <PhoneInputContainer
+        class={cn(local.class)}
+        data-disabled={local.disabled || undefined}
+      >
         <PhoneInputCountrySelect
           disabled={local.disabled}
           onBlur={local.onBlur}

@@ -10,7 +10,11 @@ export default defineComponent({
       h(
         Tooltip as ArkPart,
         {
-          children: h(Button as ArkPart, { size: "icon-md", variant: "outline" }, () => h(PhTextB)),
+          children: h(
+            Button as ArkPart,
+            { size: "icon-md", variant: "outline" },
+            () => h(PhTextB),
+          ),
           content: "Bold",
         },
         () => undefined,

@@ -39,28 +39,44 @@ const headings = [
 
   <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="skeleton-text-story">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="skeleton-text-story"
+  >
     Skeleton Text Story
   </h3>
-  <ComponentPreview code={examples.SkeletonTextStory} language="vue" title="Skeleton Text Story">
+  <ComponentPreview
+    code={examples.SkeletonTextStory}
+    language="vue"
+    title="Skeleton Text Story"
+  >
     <SkeletonTextStory client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
+    Default
+  </h3>
   <ComponentPreview code={examples.Default} language="vue" title="Default">
     <Default client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="in-card">In Card</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="in-card">
+    In Card
+  </h3>
   <ComponentPreview code={examples.InCard} language="vue" title="In Card">
     <InCard client:only="vue" />
   </ComponentPreview>
 
-  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <h2
+    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    id="installation"
+  >
+    Installation
+  </h2>
   <Installation class="mb-8" packages="@pisagor/vue" />
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/skeleton</code>. Native HTML attributes are also supported
-    and omitted from this table.
+    Own props from <code>@pisagor/props/skeleton</code>. Native HTML attributes
+    are also supported and omitted from this table.
   </p>
   <PropsTable rows={skeletonProps} />
 </DocsLayout>

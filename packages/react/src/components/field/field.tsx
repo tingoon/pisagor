@@ -20,7 +20,9 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { FieldContext, useFieldSlots } from "./field.context";
 
 // #region Types
-export interface FieldRootProps extends FieldPrimitiveRootProps, FieldVariantProps {
+export interface FieldRootProps
+  extends FieldPrimitiveRootProps,
+    FieldVariantProps {
   /**
    * Style recipe. Defaults to `fieldRecipe` from `@pisagor/recipes/field`.
    *
@@ -78,7 +80,10 @@ export function FieldRoot({
   className,
   ...rest
 }: FieldRootProps) {
-  const slots = useMemo(() => recipe({ orientation, reverse }), [orientation, reverse, recipe]);
+  const slots = useMemo(
+    () => recipe({ orientation, reverse }),
+    [orientation, reverse, recipe],
+  );
 
   return (
     <FieldContext value={{ slots }}>
@@ -93,7 +98,12 @@ export function FieldRoot({
   );
 }
 
-export function FieldSet({ children, recipe = fieldRecipe, className, ...rest }: FieldSetProps) {
+export function FieldSet({
+  children,
+  recipe = fieldRecipe,
+  className,
+  ...rest
+}: FieldSetProps) {
   const slots = recipe();
 
   return (
@@ -105,7 +115,11 @@ export function FieldSet({ children, recipe = fieldRecipe, className, ...rest }:
   );
 }
 
-export function FieldLegend({ variant = "legend", className, ...rest }: FieldLegendProps) {
+export function FieldLegend({
+  variant = "legend",
+  className,
+  ...rest
+}: FieldLegendProps) {
   const slots = useFieldSlots();
 
   return (
@@ -155,7 +169,9 @@ export function FieldContent({ className, ...rest }: FieldContentProps) {
 export function FieldLabel({ className, ...rest }: FieldLabelProps) {
   const slots = useFieldSlots();
 
-  return <FieldPrimitive.Label {...rest} className={slots.label({ className })} />;
+  return (
+    <FieldPrimitive.Label {...rest} className={slots.label({ className })} />
+  );
 }
 
 export function FieldRequiredIndicator({
@@ -189,7 +205,10 @@ export function FieldTitle({ className, ...rest }: FieldTitleProps) {
   );
 }
 
-export function FieldDescription({ className, ...rest }: FieldDescriptionProps) {
+export function FieldDescription({
+  className,
+  ...rest
+}: FieldDescriptionProps) {
   const slots = useFieldSlots();
 
   return (
@@ -202,7 +221,11 @@ export function FieldDescription({ className, ...rest }: FieldDescriptionProps) 
   );
 }
 
-export function FieldSeparator({ children, className, ...rest }: FieldSeparatorProps) {
+export function FieldSeparator({
+  children,
+  className,
+  ...rest
+}: FieldSeparatorProps) {
   const slots = useFieldSlots();
   const surfaceVariant = useFormControlSurface();
 
@@ -217,7 +240,12 @@ export function FieldSeparator({ children, className, ...rest }: FieldSeparatorP
       <Separator className={slots.inline()} />
 
       {!!children && (
-        <span className={formControlSeparatorRecipe({ surfaceVariant, variant: "primary" })}>
+        <span
+          className={formControlSeparatorRecipe({
+            surfaceVariant,
+            variant: "primary",
+          })}
+        >
           {children}
         </span>
       )}
@@ -228,13 +256,23 @@ export function FieldSeparator({ children, className, ...rest }: FieldSeparatorP
 export function FieldHelper({ className, ...rest }: FieldHelperProps) {
   const slots = useFieldSlots();
 
-  return <FieldPrimitive.HelperText {...rest} className={slots.helper({ className })} />;
+  return (
+    <FieldPrimitive.HelperText
+      {...rest}
+      className={slots.helper({ className })}
+    />
+  );
 }
 
 export function FieldError({ className, ...rest }: FieldErrorProps) {
   const slots = useFieldSlots();
 
-  return <FieldPrimitive.ErrorText {...rest} className={slots.error({ className })} />;
+  return (
+    <FieldPrimitive.ErrorText
+      {...rest}
+      className={slots.error({ className })}
+    />
+  );
 }
 // #endregion
 

@@ -22,7 +22,10 @@ export const Highlight = defineComponent({
   inheritAttrs: false,
   name: "PisagorHighlight",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: highlightRecipe,
       type: Function as PropType<typeof highlightRecipe>,

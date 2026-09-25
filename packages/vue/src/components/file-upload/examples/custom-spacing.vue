@@ -30,7 +30,11 @@ const _CustomPreviewList = defineComponent({
             h(FileUpload.ItemDeleteTrigger, { asChild: true }, () =>
               h(
                 Button as ArkPart,
-                { class: "absolute -top-2 -right-2", pill: true, size: "icon-xs" },
+                {
+                  class: "absolute -top-2 -right-2",
+                  pill: true,
+                  size: "icon-xs",
+                },
                 () => h(PhX),
               ),
             ),
@@ -44,7 +48,9 @@ const _CustomPreviewList = defineComponent({
 
 <template>
   <FileUpload>
-    <FileUpload.Dropzone class="[--space:--spacing(4)] md:[--space:--spacing(6)]">
+    <FileUpload.Dropzone
+      class="[--space:--spacing(4)] md:[--space:--spacing(6)]"
+    >
       <FileUpload.DropzoneIcon />
       <FileUpload.Title>Drop your files here</FileUpload.Title>
     </FileUpload.Dropzone>

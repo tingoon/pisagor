@@ -51,50 +51,81 @@ const headings = [
 
   <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="banner">Banner</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="banner">
+    Banner
+  </h3>
   <ComponentPreview code={examples.Banner} language="vue" title="Banner">
     <Banner client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="navigation">Navigation</h3>
-  <ComponentPreview code={examples.Navigation} language="vue" title="Navigation">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="navigation">
+    Navigation
+  </h3>
+  <ComponentPreview
+    code={examples.Navigation}
+    language="vue"
+    title="Navigation"
+  >
     <Navigation client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="inspectors">Inspectors</h3>
-  <ComponentPreview code={examples.Inspectors} language="vue" title="Inspectors">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="inspectors">
+    Inspectors
+  </h3>
+  <ComponentPreview
+    code={examples.Inspectors}
+    language="vue"
+    title="Inspectors"
+  >
     <Inspectors client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="panels">Panels</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="panels">
+    Panels
+  </h3>
   <ComponentPreview code={examples.Panels} language="vue" title="Panels">
     <Panels client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="rails">Rails</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="rails">
+    Rails
+  </h3>
   <ComponentPreview code={examples.Rails} language="vue" title="Rails">
     <Rails client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="header">Header</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="header">
+    Header
+  </h3>
   <ComponentPreview code={examples.Header} language="vue" title="Header">
     <Header client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="main">Main</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="main">
+    Main
+  </h3>
   <ComponentPreview code={examples.Main} language="vue" title="Main">
     <Main client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="content">Content</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="content">
+    Content
+  </h3>
   <ComponentPreview code={examples.Content} language="vue" title="Content">
     <Content client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
+    Default
+  </h3>
   <ComponentPreview code={examples.Default} language="vue" title="Default">
     <Default client:only="vue" />
   </ComponentPreview>
 
-  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <h2
+    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    id="installation"
+  >
+    Installation
+  </h2>
   <Installation class="mb-8" packages="@pisagor/vue" />
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/app-shell</code>. Native HTML attributes are also supported
-    and omitted from this table.
+    Own props from <code>@pisagor/props/app-shell</code>. Native HTML attributes
+    are also supported and omitted from this table.
   </p>
   <PropsTable rows={appShellProps} />
 </DocsLayout>

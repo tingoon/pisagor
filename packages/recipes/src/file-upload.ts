@@ -2,7 +2,11 @@ import { tv } from "tailwind-variants";
 
 export const fileUploadRecipe = tv({
   slots: {
-    base: ["group/file-upload", "relative", "flex flex-col justify-center gap-4"],
+    base: [
+      "group/file-upload",
+      "relative",
+      "flex flex-col justify-center gap-4",
+    ],
     description: ["font-medium text-muted-foreground text-sm"],
     dropzone: [
       "[--space:--spacing(6)]",

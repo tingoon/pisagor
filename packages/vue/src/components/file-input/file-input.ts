@@ -2,7 +2,11 @@ import { fileInputRecipe } from "@pisagor/recipes/file-input";
 import { formControlGroupShellRecipe } from "@pisagor/recipes/form-control";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, ref } from "vue";
-import { InputGroupAddon, InputGroupButton, InputGroupText } from "../input-group/input-group-core";
+import {
+  InputGroupAddon,
+  InputGroupButton,
+  InputGroupText,
+} from "../input-group/input-group-core";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
@@ -69,14 +73,23 @@ export const FileInput = defineComponent({
   props: {
     accept: { default: undefined, type: String },
     browseLabel: { default: "Choose file", type: String },
-    capture: { default: undefined, type: String as PropType<FileInputProps["capture"]> },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    capture: {
+      default: undefined,
+      type: String as PropType<FileInputProps["capture"]>,
+    },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     disabled: { default: undefined, type: Boolean },
     id: { default: undefined, type: String },
     invalid: { default: undefined, type: Boolean },
     multiple: { default: undefined, type: Boolean },
     name: { default: undefined, type: String },
-    onChange: { default: undefined, type: Function as PropType<FileInputProps["onChange"]> },
+    onChange: {
+      default: undefined,
+      type: Function as PropType<FileInputProps["onChange"]>,
+    },
     onFilesChange: {
       default: undefined,
       type: Function as PropType<FileInputProps["onFilesChange"]>,
@@ -92,7 +105,10 @@ export const FileInput = defineComponent({
     },
     required: { default: undefined, type: Boolean },
     size: { default: "md", type: String as PropType<FileInputProps["size"]> },
-    variant: { default: undefined, type: String as PropType<FormControlVariant> },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant>,
+    },
   },
   setup(props, { attrs }) {
     const surfaceVariant = useFormControlSurface();
@@ -129,7 +145,10 @@ export const FileInput = defineComponent({
         {
           ...attrs,
           ...controlProps,
-          class: cn(formControlGroupShellRecipe({ size: props.size, ...shellArgs }), props.class),
+          class: cn(
+            formControlGroupShellRecipe({ size: props.size, ...shellArgs }),
+            props.class,
+          ),
           "data-disabled": props.disabled || undefined,
           "data-part": "root",
           "data-scope": "file-input",

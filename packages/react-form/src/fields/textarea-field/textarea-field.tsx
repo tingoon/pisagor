@@ -1,11 +1,19 @@
 import type { TextareaProps } from "@pisagor/react";
 import { Textarea } from "@pisagor/react";
-import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
+import {
+  type FieldPresentationProps,
+  FieldShell,
+} from "../../internal/field-shell";
 
 // #region Types
-type TextareaControlProps = Omit<TextareaProps, "name" | "onBlur" | "onChange" | "value">;
+type TextareaControlProps = Omit<
+  TextareaProps,
+  "name" | "onBlur" | "onChange" | "value"
+>;
 
-export interface TextareaFieldProps extends FieldPresentationProps, TextareaControlProps {
+export interface TextareaFieldProps
+  extends FieldPresentationProps,
+    TextareaControlProps {
   name?: string;
   value?: string;
   onBlur?: () => void;

@@ -14,11 +14,17 @@ export function SearchQuery() {
         value={query}
       />
       <div className="space-y-2">
-        <p className="text-muted-foreground text-sm">Search result for: {query || "(empty)"}</p>
+        <p className="text-muted-foreground text-sm">
+          Search result for: {query || "(empty)"}
+        </p>
         <ul className="space-y-1">
           {searchResults.map((item) => (
             <li className="text-base text-foreground" key={item}>
-              {query ? <Highlight ignoreCase query={query} text={item} /> : item}
+              {query ? (
+                <Highlight ignoreCase query={query} text={item} />
+              ) : (
+                item
+              )}
             </li>
           ))}
         </ul>

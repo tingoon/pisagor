@@ -34,7 +34,11 @@ export function AppShellMain({ className, style, ...rest }: AppShellMainProps) {
   );
 }
 
-export function AppShellHeader({ position = "fixed", className, ...rest }: AppShellHeaderProps) {
+export function AppShellHeader({
+  position = "fixed",
+  className,
+  ...rest
+}: AppShellHeaderProps) {
   const { slots } = useAppShell();
 
   return (

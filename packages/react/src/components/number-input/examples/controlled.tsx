@@ -9,7 +9,10 @@ export function Controlled() {
   return (
     <div className="flex flex-col gap-2 text-center text-sm">
       <p>Select the number 3</p>
-      <NumberInput onValueChange={(value) => setValue(String(value))} value={value}>
+      <NumberInput
+        onValueChange={(value) => setValue(String(value))}
+        value={value}
+      >
         <NumberInput.Control>
           <NumberInput.DecrementTrigger />
           <NumberInput.Input />

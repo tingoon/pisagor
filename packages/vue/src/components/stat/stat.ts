@@ -55,8 +55,14 @@ export const StatRoot = defineComponent({
   inheritAttrs: false,
   name: "StatRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<StatClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<StatClassNames>,
+    },
     recipe: {
       default: statRecipe,
       type: Function as PropType<typeof statRecipe>,
@@ -86,8 +92,14 @@ export const StatLabel = defineComponent({
   inheritAttrs: false,
   name: "StatLabel",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<StatClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<StatClassNames>,
+    },
     recipe: {
       default: statRecipe,
       type: Function as PropType<typeof statRecipe>,
@@ -101,7 +113,9 @@ export const StatLabel = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: slots_.label({ class: cn(props.class, props.classNames?.label) }),
+          class: slots_.label({
+            class: cn(props.class, props.classNames?.label),
+          }),
           "data-part": "label",
           "data-scope": "stat",
         },
@@ -115,8 +129,14 @@ export const StatValue = defineComponent({
   inheritAttrs: false,
   name: "StatValue",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<StatClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<StatClassNames>,
+    },
     recipe: {
       default: statRecipe,
       type: Function as PropType<typeof statRecipe>,
@@ -130,7 +150,9 @@ export const StatValue = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: slots_.value({ class: cn(props.class, props.classNames?.value) }),
+          class: slots_.value({
+            class: cn(props.class, props.classNames?.value),
+          }),
           "data-part": "value",
           "data-scope": "stat",
         },
@@ -144,8 +166,14 @@ export const StatDescription = defineComponent({
   inheritAttrs: false,
   name: "StatDescription",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<StatClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<StatClassNames>,
+    },
     recipe: {
       default: statRecipe,
       type: Function as PropType<typeof statRecipe>,
@@ -159,7 +187,9 @@ export const StatDescription = defineComponent({
         ark.p as ArkPart,
         {
           ...attrs,
-          class: slots_.description({ class: cn(props.class, props.classNames?.description) }),
+          class: slots_.description({
+            class: cn(props.class, props.classNames?.description),
+          }),
           "data-part": "description",
           "data-scope": "stat",
         },
@@ -173,7 +203,10 @@ export const StatTrend = defineComponent({
   inheritAttrs: false,
   name: "StatTrend",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     trend: { default: "neutral", type: String as PropType<StatTrendVariant> },
     trendRecipe: {
       default: statTrendRecipe,
@@ -201,8 +234,14 @@ export const StatShorthand = defineComponent({
   inheritAttrs: false,
   name: "StatShorthand",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<StatClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<StatClassNames>,
+    },
     description: {
       default: undefined,
       type: [String, Number, Boolean, Object, Array] as PropType<VNodeChild>,
@@ -265,7 +304,10 @@ export const StatShorthand = defineComponent({
           props.description !== undefined
             ? h(
                 StatDescription,
-                { ...(props.descriptionProps ?? {}), classNames: props.classNames },
+                {
+                  ...(props.descriptionProps ?? {}),
+                  classNames: props.classNames,
+                },
                 () => props.description,
               )
             : null,

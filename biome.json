@@ -17,8 +17,7 @@
     "includes": ["**", "!**/*.gen.*", "!**/*.lock"]
   },
   "formatter": {
-    "indentStyle": "space",
-    "lineWidth": 100
+    "indentStyle": "space"
   },
   "html": {
     "experimentalFullSupportEnabled": true,
@@ -28,11 +27,38 @@
   },
   "linter": {
     "domains": {
-      "astro": "recommended"
+      "project": "recommended",
+      "turborepo": "recommended"
     },
     "rules": {
+      "complexity": {
+        "noUselessFragments": "error"
+      },
+      "correctness": {
+        "noUndeclaredDependencies": "error",
+        "noUnusedFunctionParameters": "warn",
+        "noUnusedImports": "error",
+        "noUnusedVariables": "error"
+      },
+      "nursery": {
+        "useSortedClasses": "warn"
+      },
+      "style": {
+        "noNonNullAssertion": "warn",
+        "useExportType": "error",
+        "useImportType": "error",
+        "useNodejsImportProtocol": "error"
+      },
       "suspicious": {
-        "noImportCycles": "error"
+        "noConsole": "warn",
+        "noDeprecatedImports": "warn",
+        "noImportCycles": "error",
+        "noUndeclaredEnvVars": {
+          "level": "warn",
+          "options": {
+            "allowedEnvVars": ["BASE_URL"]
+          }
+        }
       }
     }
   },

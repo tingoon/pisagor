@@ -4,7 +4,10 @@ import {
   type UseDatePickerContext,
 } from "@ark-ui/vue/date-picker";
 import { PhCaretDown, PhCaretLeft, PhCaretRight } from "@phosphor-icons/vue";
-import { calendarRecipe, calendarTableCellRecipe } from "@pisagor/recipes/calendar";
+import {
+  calendarRecipe,
+  calendarTableCellRecipe,
+} from "@pisagor/recipes/calendar";
 import { formControlShellRecipe } from "@pisagor/recipes/form-control";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type UnwrapRef } from "vue";
@@ -83,14 +86,20 @@ export const CalendarRoot = defineComponent({
   inheritAttrs: false,
   name: "CalendarRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     lazyMount: { default: true, type: Boolean },
     recipe: {
       default: calendarRecipe,
       type: Function as PropType<typeof calendarRecipe>,
     },
     unmountOnExit: { default: true, type: Boolean },
-    variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant | undefined>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -138,7 +147,11 @@ export const CalendarLabel = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () =>
-      h(DatePickerPrimitive.Label as ArkPart, { ...attrs, class: props.recipe().label() }, slots);
+      h(
+        DatePickerPrimitive.Label as ArkPart,
+        { ...attrs, class: props.recipe().label() },
+        slots,
+      );
   },
 });
 
@@ -154,7 +167,8 @@ export const CalendarPresetTrigger = defineComponent({
   inheritAttrs: false,
   name: "Calendar.PresetTrigger",
   setup(_, { attrs, slots }) {
-    return () => h(DatePickerPrimitive.PresetTrigger as ArkPart, { ...attrs }, slots);
+    return () =>
+      h(DatePickerPrimitive.PresetTrigger as ArkPart, { ...attrs }, slots);
   },
 });
 
@@ -162,7 +176,10 @@ export const CalendarViewDate = defineComponent({
   inheritAttrs: false,
   name: "Calendar.ViewDate",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     recipe: {
       default: calendarRecipe,
       type: Function as PropType<typeof calendarRecipe>,
@@ -182,7 +199,10 @@ export const CalendarTodayTrigger = defineComponent({
   name: "Calendar.TodayTrigger",
   props: {
     size: { default: "lg", type: String as PropType<ButtonProps["size"]> },
-    variant: { default: "outline", type: String as PropType<ButtonProps["variant"]> },
+    variant: {
+      default: "outline",
+      type: String as PropType<ButtonProps["variant"]>,
+    },
   },
   setup(props, { attrs }) {
     return () =>
@@ -208,7 +228,8 @@ export const CalendarClearTrigger = defineComponent({
   inheritAttrs: false,
   name: "Calendar.ClearTrigger",
   setup(_, { attrs, slots }) {
-    return () => h(DatePickerPrimitive.ClearTrigger as ArkPart, { ...attrs }, slots);
+    return () =>
+      h(DatePickerPrimitive.ClearTrigger as ArkPart, { ...attrs }, slots);
   },
 });
 
@@ -216,7 +237,10 @@ export const CalendarYearSelect = defineComponent({
   inheritAttrs: false,
   name: "Calendar.YearSelect",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     recipe: {
       default: calendarRecipe,
       type: Function as PropType<typeof calendarRecipe>,
@@ -226,11 +250,8 @@ export const CalendarYearSelect = defineComponent({
     const surfaceVariant = useFormControlSurface();
 
     return () => {
-      const { className: selectClassName, controlProps } = getCalendarSelectShell(
-        props.class,
-        props.recipe,
-        surfaceVariant,
-      );
+      const { className: selectClassName, controlProps } =
+        getCalendarSelectShell(props.class, props.recipe, surfaceVariant);
       const slots = props.recipe();
 
       return h(
@@ -262,7 +283,10 @@ export const CalendarMonthSelect = defineComponent({
   inheritAttrs: false,
   name: "Calendar.MonthSelect",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     recipe: {
       default: calendarRecipe,
       type: Function as PropType<typeof calendarRecipe>,
@@ -272,11 +296,8 @@ export const CalendarMonthSelect = defineComponent({
     const surfaceVariant = useFormControlSurface();
 
     return () => {
-      const { className: selectClassName, controlProps } = getCalendarSelectShell(
-        props.class,
-        props.recipe,
-        surfaceVariant,
-      );
+      const { className: selectClassName, controlProps } =
+        getCalendarSelectShell(props.class, props.recipe, surfaceVariant);
       const slots = props.recipe();
 
       return h(
@@ -308,7 +329,10 @@ export const CalendarView = defineComponent({
   inheritAttrs: false,
   name: "Calendar.View",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     recipe: {
       default: calendarRecipe,
       type: Function as PropType<typeof calendarRecipe>,
@@ -329,7 +353,11 @@ export const CalendarContext = defineComponent({
   name: "Calendar.Context",
   setup(_, { attrs, slots }) {
     return () =>
-      h(DatePickerPrimitive.Context as ArkPart, { ...attrs }, { default: slots.default });
+      h(
+        DatePickerPrimitive.Context as ArkPart,
+        { ...attrs },
+        { default: slots.default },
+      );
   },
 });
 
@@ -337,7 +365,10 @@ export const CalendarViewControl = defineComponent({
   inheritAttrs: false,
   name: "Calendar.ViewControl",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     recipe: {
       default: calendarRecipe,
       type: Function as PropType<typeof calendarRecipe>,
@@ -367,17 +398,24 @@ export const CalendarPrevTrigger = defineComponent({
   },
   setup(props, { attrs }) {
     return () =>
-      h(DatePickerPrimitive.PrevTrigger as ArkPart, { ...attrs, asChild: true }, () =>
-        h(
-          Button as ArkPart,
-          {
-            "aria-label": "Previous month",
-            class: props.recipe().prevTrigger(),
-            size: "icon-md",
-            variant: "ghost",
-          },
-          () => h(PhCaretLeft, { "aria-hidden": true, class: props.recipe().prevIcon() }),
-        ),
+      h(
+        DatePickerPrimitive.PrevTrigger as ArkPart,
+        { ...attrs, asChild: true },
+        () =>
+          h(
+            Button as ArkPart,
+            {
+              "aria-label": "Previous month",
+              class: props.recipe().prevTrigger(),
+              size: "icon-md",
+              variant: "ghost",
+            },
+            () =>
+              h(PhCaretLeft, {
+                "aria-hidden": true,
+                class: props.recipe().prevIcon(),
+              }),
+          ),
       );
   },
 });
@@ -393,17 +431,24 @@ export const CalendarNextTrigger = defineComponent({
   },
   setup(props, { attrs }) {
     return () =>
-      h(DatePickerPrimitive.NextTrigger as ArkPart, { ...attrs, asChild: true }, () =>
-        h(
-          Button as ArkPart,
-          {
-            "aria-label": "Next month",
-            class: props.recipe().nextTrigger(),
-            size: "icon-md",
-            variant: "ghost",
-          },
-          () => h(PhCaretRight, { "aria-hidden": true, class: props.recipe().nextIcon() }),
-        ),
+      h(
+        DatePickerPrimitive.NextTrigger as ArkPart,
+        { ...attrs, asChild: true },
+        () =>
+          h(
+            Button as ArkPart,
+            {
+              "aria-label": "Next month",
+              class: props.recipe().nextTrigger(),
+              size: "icon-md",
+              variant: "ghost",
+            },
+            () =>
+              h(PhCaretRight, {
+                "aria-hidden": true,
+                class: props.recipe().nextIcon(),
+              }),
+          ),
       );
   },
 });
@@ -412,7 +457,10 @@ export const CalendarTable = defineComponent({
   inheritAttrs: false,
   name: "Calendar.Table",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     recipe: {
       default: calendarRecipe,
       type: Function as PropType<typeof calendarRecipe>,
@@ -435,7 +483,10 @@ export const CalendarWeekDays = defineComponent({
   inheritAttrs: false,
   name: "Calendar.WeekDays",
   props: {
-    format: { default: "narrow", type: String as PropType<CalendarWeekDaysProps["format"]> },
+    format: {
+      default: "narrow",
+      type: String as PropType<CalendarWeekDaysProps["format"]>,
+    },
   },
   setup(props, { attrs }) {
     return () =>
@@ -475,7 +526,11 @@ export const CalendarTableDays = defineComponent({
                 week.map((day) =>
                   h(
                     CalendarTableCell,
-                    { key: day.day, tabIndex: props.tabIndex ?? undefined, value: day },
+                    {
+                      key: day.day,
+                      tabIndex: props.tabIndex ?? undefined,
+                      value: day,
+                    },
                     () => day.day,
                   ),
                 ),
@@ -490,7 +545,10 @@ export const CalendarTableNextMonth = defineComponent({
   inheritAttrs: false,
   name: "Calendar.TableNextMonth",
   props: {
-    months: { default: 1, type: Number as PropType<CalendarTableNextMonthProps["months"]> },
+    months: {
+      default: 1,
+      type: Number as PropType<CalendarTableNextMonthProps["months"]>,
+    },
     tabIndex: {
       default: undefined,
       type: [Number, String] as PropType<number | string | undefined>,
@@ -529,7 +587,8 @@ export const CalendarTableHead = defineComponent({
   inheritAttrs: false,
   name: "Calendar.TableHead",
   setup(_, { attrs, slots }) {
-    return () => h(DatePickerPrimitive.TableHead as ArkPart, { ...attrs }, slots);
+    return () =>
+      h(DatePickerPrimitive.TableHead as ArkPart, { ...attrs }, slots);
   },
 });
 
@@ -537,7 +596,10 @@ export const CalendarTableRow = defineComponent({
   inheritAttrs: false,
   name: "Calendar.TableRow",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     recipe: {
       default: calendarRecipe,
       type: Function as PropType<typeof calendarRecipe>,
@@ -560,7 +622,10 @@ export const CalendarTableHeader = defineComponent({
   inheritAttrs: false,
   name: "Calendar.TableHeader",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     recipe: {
       default: calendarRecipe,
       type: Function as PropType<typeof calendarRecipe>,
@@ -583,7 +648,8 @@ export const CalendarTableBody = defineComponent({
   inheritAttrs: false,
   name: "Calendar.TableBody",
   setup(_, { attrs, slots }) {
-    return () => h(DatePickerPrimitive.TableBody as ArkPart, { ...attrs }, slots);
+    return () =>
+      h(DatePickerPrimitive.TableBody as ArkPart, { ...attrs }, slots);
   },
 });
 
@@ -591,11 +657,16 @@ export const CalendarTableCell = defineComponent({
   inheritAttrs: false,
   name: "Calendar.TableCell",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     value: { required: true, type: null as unknown as PropType<CalendarDay> },
     visibleRange: {
       default: undefined,
-      type: null as unknown as PropType<CalendarApi["visibleRange"] | undefined>,
+      type: null as unknown as PropType<
+        CalendarApi["visibleRange"] | undefined
+      >,
     },
   },
   setup(props, { attrs, slots: children }) {

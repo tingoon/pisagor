@@ -17,7 +17,11 @@ const CalendarWeekDays = defineComponent({
           h(Calendar.TableHead, null, () =>
             h(Calendar.TableRow, null, () =>
               calendar.weekDays.map((weekDay) =>
-                h(Calendar.TableHeader, { key: weekDay.short }, () => weekDay.narrow),
+                h(
+                  Calendar.TableHeader,
+                  { key: weekDay.short },
+                  () => weekDay.narrow,
+                ),
               ),
             ),
           ),
@@ -35,7 +39,10 @@ const CalendarBody = defineComponent({
         h(Calendar.YearSelect),
         h(Calendar.NextTrigger),
       ]),
-      h(Calendar.Table, null, () => [h(CalendarWeekDays), h(Calendar.TableDays)]),
+      h(Calendar.Table, null, () => [
+        h(CalendarWeekDays),
+        h(Calendar.TableDays),
+      ]),
     ];
   },
 });

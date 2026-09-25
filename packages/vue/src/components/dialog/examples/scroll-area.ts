@@ -53,10 +53,18 @@ export default defineComponent({
           ),
           h(Dialog.Footer, null, () => [
             h(Dialog.CloseTrigger, { asChild: true }, () =>
-              h("button", { class: ghostButtonClass(), type: "button" }, "Cancel"),
+              h(
+                "button",
+                { class: ghostButtonClass(), type: "button" },
+                "Cancel",
+              ),
             ),
             h(Dialog.CloseTrigger, { asChild: true }, () =>
-              h("button", { class: defaultButtonClass(), type: "button" }, "Agree"),
+              h(
+                "button",
+                { class: defaultButtonClass(), type: "button" },
+                "Agree",
+              ),
             ),
           ]),
         ]),

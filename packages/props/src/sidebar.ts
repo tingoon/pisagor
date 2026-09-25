@@ -1,4 +1,7 @@
-import type { SidebarRecipeFn, SidebarVariantProps } from "@pisagor/recipes/sidebar";
+import type {
+  SidebarRecipeFn,
+  SidebarVariantProps,
+} from "@pisagor/recipes/sidebar";
 
 /** Sidebar props. */
 export interface SidebarProps extends SidebarVariantProps {

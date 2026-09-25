@@ -22,16 +22,18 @@ interface TreeViewItemContextValue {
   slots: TreeViewItemRecipe;
 }
 
-export const { TreeViewContext, useTreeView } = createContext<TreeViewContextValue>()({
-  name: "TreeView",
-});
+export const { TreeViewContext, useTreeView } =
+  createContext<TreeViewContextValue>()({
+    name: "TreeView",
+  });
 
 export const { TreeViewBranchContext, useTreeViewBranch } =
   createContext<TreeViewBranchContextValue>()({
     name: "TreeViewBranch",
   });
 
-export const { TreeViewItemContext, useTreeViewItem } = createContext<TreeViewItemContextValue>()({
-  name: "TreeViewItem",
-  strict: false,
-});
+export const { TreeViewItemContext, useTreeViewItem } =
+  createContext<TreeViewItemContextValue>()({
+    name: "TreeViewItem",
+    strict: false,
+  });

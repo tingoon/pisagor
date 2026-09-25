@@ -11,7 +11,8 @@ export function CloseBehavior() {
           <Sheet.Header>
             <Sheet.Title>Stays on outside click</Sheet.Title>
             <Sheet.Description>
-              Clicking outside does not close this sheet. Press ESC or use the close button.
+              Clicking outside does not close this sheet. Press ESC or use the
+              close button.
             </Sheet.Description>
           </Sheet.Header>
         </Sheet.Content>
@@ -24,7 +25,8 @@ export function CloseBehavior() {
           <Sheet.Header>
             <Sheet.Title>Escape key unavailable</Sheet.Title>
             <Sheet.Description>
-              Pressing Escape does not close this sheet. Click outside or use the close button.
+              Pressing Escape does not close this sheet. Click outside or use
+              the close button.
             </Sheet.Description>
           </Sheet.Header>
         </Sheet.Content>

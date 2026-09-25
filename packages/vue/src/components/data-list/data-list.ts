@@ -53,7 +53,10 @@ export const DataListRoot = defineComponent({
   inheritAttrs: false,
   name: "DataListRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     orientation: {
       default: "horizontal",
       type: String as PropType<DataListRootProps["orientation"]>,
@@ -83,7 +86,10 @@ export const DataListItemLabel = defineComponent({
   inheritAttrs: false,
   name: "DataListItemLabel",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: dataListItemRecipe,
       type: Function as PropType<typeof dataListItemRecipe>,
@@ -111,7 +117,10 @@ export const DataListItemValue = defineComponent({
   inheritAttrs: false,
   name: "DataListItemValue",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: dataListItemRecipe,
       type: Function as PropType<typeof dataListItemRecipe>,
@@ -139,8 +148,14 @@ export const DataListItem = defineComponent({
   inheritAttrs: false,
   name: "DataListItem",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<DataListClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<DataListClassNames>,
+    },
     itemRecipe: {
       default: dataListItemRecipe,
       type: Function as PropType<typeof dataListItemRecipe>,
@@ -168,14 +183,18 @@ export const DataListItem = defineComponent({
           label !== undefined
             ? h(
                 DataListItemLabel as ArkPart,
-                { class: props.classNames?.label } as unknown as Parameters<typeof h>[1],
+                { class: props.classNames?.label } as unknown as Parameters<
+                  typeof h
+                >[1],
                 () => label,
               )
             : null,
           props.value !== undefined
             ? h(
                 DataListItemValue as ArkPart,
-                { class: props.classNames?.value } as unknown as Parameters<typeof h>[1],
+                { class: props.classNames?.value } as unknown as Parameters<
+                  typeof h
+                >[1],
                 () => props.value,
               )
             : null,
@@ -189,8 +208,14 @@ export const DataListShorthand = defineComponent({
   inheritAttrs: false,
   name: "DataListShorthand",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    items: { default: undefined, type: Array as PropType<DataListPresetItem[]> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    items: {
+      default: undefined,
+      type: Array as PropType<DataListPresetItem[]>,
+    },
     orientation: {
       default: "horizontal",
       type: String as PropType<DataListRootProps["orientation"]>,
@@ -207,7 +232,11 @@ export const DataListShorthand = defineComponent({
         },
         () =>
           props.items?.map((item, index) =>
-            h(DataListItem, { key: index, value: item.value }, () => item.label),
+            h(
+              DataListItem,
+              { key: index, value: item.value },
+              () => item.label,
+            ),
           ),
       );
   },

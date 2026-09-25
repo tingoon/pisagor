@@ -9,7 +9,8 @@
         "biomejs.biome",
         "bradlc.vscode-tailwindcss",
         "oven.bun-vscode",
-        "vue.volar"
+        "vue.volar",
+        "svelte.svelte-vscode"
       ],
       "settings": {
         "remote.autoForwardPorts": true
@@ -21,14 +22,22 @@
       "username": "vscode"
     }
   },
-  "forwardPorts": [4001, 4002],
+  "forwardPorts": [4000, 4001, 4002, 4003],
   "portsAttributes": {
+    "4000": {
+      "label": "docs",
+      "onAutoForward": "notify"
+    },
     "4001": {
       "label": "react",
       "onAutoForward": "notify"
     },
     "4002": {
       "label": "vue",
+      "onAutoForward": "notify"
+    },
+    "4003": {
+      "label": "astro",
       "onAutoForward": "notify"
     }
   },

@@ -1,4 +1,8 @@
-import { ToggleGroupItem, ToggleGroupRoot, ToggleGroupShorthand } from "./toggle-group";
+import {
+  ToggleGroupItem,
+  ToggleGroupRoot,
+  ToggleGroupShorthand,
+} from "./toggle-group";
 
 export type { ToggleGroupItemProps } from "@ark-ui/react/toggle-group";
 

@@ -1,4 +1,11 @@
-import { StatDescription, StatLabel, StatRoot, StatShorthand, StatTrend, StatValue } from "./stat";
+import {
+  StatDescription,
+  StatLabel,
+  StatRoot,
+  StatShorthand,
+  StatTrend,
+  StatValue,
+} from "./stat";
 
 export type { StatProps } from "./stat";
 

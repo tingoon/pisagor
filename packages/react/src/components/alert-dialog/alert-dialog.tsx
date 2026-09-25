@@ -33,7 +33,8 @@ export interface AlertDialogCancelProps
   extends DialogCloseTriggerProps,
     Omit<ButtonProps, "variant"> {}
 
-export interface AlertDialogProps extends Omit<AlertDialogRootProps, "children" | "title"> {
+export interface AlertDialogProps
+  extends Omit<AlertDialogRootProps, "children" | "title"> {
   /** Footer actions (typically Cancel / Action). */
   actions?: ReactNode;
   /** Header description content. */
@@ -68,7 +69,11 @@ export function AlertDialogContent({
       <Dialog.Backdrop />
 
       <Dialog.Positioner bottomStickOnMobile={bottomStickOnMobile}>
-        <Dialog.Content {...rest} bottomStickOnMobile={bottomStickOnMobile} showCloseButton={false}>
+        <Dialog.Content
+          {...rest}
+          bottomStickOnMobile={bottomStickOnMobile}
+          showCloseButton={false}
+        >
           {children}
         </Dialog.Content>
       </Dialog.Positioner>
@@ -90,7 +95,9 @@ export function AlertDialogBody({ className, ...rest }: DialogBodyProps) {
 }
 
 export function AlertDialogHeader(props: DialogHeaderProps) {
-  return <Dialog.Header {...props} data-part="header" data-scope="alert-dialog" />;
+  return (
+    <Dialog.Header {...props} data-part="header" data-scope="alert-dialog" />
+  );
 }
 
 export function AlertDialogTitle(props: DialogTitleProps) {
@@ -106,10 +113,15 @@ export function AlertDialogCloseTrigger(props: DialogCloseTriggerProps) {
 }
 
 export function AlertDialogFooter(props: DialogFooterProps) {
-  return <Dialog.Footer {...props} data-part="footer" data-scope="alert-dialog" />;
+  return (
+    <Dialog.Footer {...props} data-part="footer" data-scope="alert-dialog" />
+  );
 }
 
-export function AlertDialogAction({ variant = "default", ...rest }: AlertDialogActionProps) {
+export function AlertDialogAction({
+  variant = "default",
+  ...rest
+}: AlertDialogActionProps) {
   return <Button {...rest} variant={variant} />;
 }
 
@@ -132,12 +144,16 @@ export function AlertDialogShorthand({
 }: AlertDialogProps) {
   return (
     <AlertDialogRoot {...rest}>
-      {trigger !== undefined && <AlertDialogTrigger asChild>{trigger}</AlertDialogTrigger>}
+      {trigger !== undefined && (
+        <AlertDialogTrigger asChild>{trigger}</AlertDialogTrigger>
+      )}
 
       <AlertDialogContent>
         {(title !== undefined || description !== undefined) && (
           <AlertDialogHeader>
-            {title !== undefined && <AlertDialogTitle>{title}</AlertDialogTitle>}
+            {title !== undefined && (
+              <AlertDialogTitle>{title}</AlertDialogTitle>
+            )}
 
             {description !== undefined && (
               <AlertDialogDescription>{description}</AlertDialogDescription>
@@ -145,7 +161,9 @@ export function AlertDialogShorthand({
           </AlertDialogHeader>
         )}
 
-        {actions !== undefined && <AlertDialogFooter>{actions}</AlertDialogFooter>}
+        {actions !== undefined && (
+          <AlertDialogFooter>{actions}</AlertDialogFooter>
+        )}
       </AlertDialogContent>
     </AlertDialogRoot>
   );

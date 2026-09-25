@@ -28,7 +28,10 @@ export function ComboboxField() {
         collection={collection}
         onInputValueChange={({ inputValue }) => filter(inputValue)}
       >
-        <Combobox.Input aria-label="Select an item" placeholder="Select an item..." />
+        <Combobox.Input
+          aria-label="Select an item"
+          placeholder="Select an item..."
+        />
         <Combobox.Content>
           <Combobox.List>
             {collection.items.map((item) => (

@@ -28,22 +28,22 @@ interface DataGridRowContextValue<TData extends RowData> {
   row: Row<DataGridFeatures, TData>;
 }
 
-export const { DataGridContext, useDataGrid } = createContext<DataGridContextValue<RowData>>()({
+export const { DataGridContext, useDataGrid } = createContext<
+  DataGridContextValue<RowData>
+>()({
   name: "DataGrid",
 });
 
-export const { DataGridHeaderGroupContext, useDataGridHeaderGroup } = createContext<
-  DataGridHeaderGroupContextValue<RowData>
->()({
-  name: "DataGridHeaderGroup",
-});
+export const { DataGridHeaderGroupContext, useDataGridHeaderGroup } =
+  createContext<DataGridHeaderGroupContextValue<RowData>>()({
+    name: "DataGridHeaderGroup",
+  });
 
-export const { DataGridHeaderCellContext, useDataGridHeaderCell } = createContext<
-  DataGridHeaderCellContextValue<RowData>
->()({
-  name: "DataGridHeaderCell",
-  strict: false,
-});
+export const { DataGridHeaderCellContext, useDataGridHeaderCell } =
+  createContext<DataGridHeaderCellContextValue<RowData>>()({
+    name: "DataGridHeaderCell",
+    strict: false,
+  });
 
 export const { DataGridRowContext, useDataGridRow } = createContext<
   DataGridRowContextValue<RowData>
@@ -60,7 +60,9 @@ export function useDataGridHeaderGroupContext<TData extends RowData>() {
 }
 
 export function useDataGridHeaderCellContext<TData extends RowData>() {
-  return useDataGridHeaderCell() as DataGridHeaderCellContextValue<TData> | undefined;
+  return useDataGridHeaderCell() as
+    | DataGridHeaderCellContextValue<TData>
+    | undefined;
 }
 
 export function useDataGridRowContext<TData extends RowData>() {

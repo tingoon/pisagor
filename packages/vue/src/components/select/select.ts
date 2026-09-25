@@ -1,7 +1,10 @@
 import type { CollectionItem, ListCollection } from "@ark-ui/vue/collection";
 import { createListCollection } from "@ark-ui/vue/collection";
 import type { SelectRootProps as ArkSelectRootProps } from "@ark-ui/vue/select";
-import { Select as SelectPrimitive, useSelectContext as useSelect } from "@ark-ui/vue/select";
+import {
+  Select as SelectPrimitive,
+  useSelectContext as useSelect,
+} from "@ark-ui/vue/select";
 import { PhCaretUpDown, PhCheck, PhX } from "@phosphor-icons/vue";
 import {
   type FormControlShellVariantProps,
@@ -9,7 +12,13 @@ import {
 } from "@pisagor/recipes/form-control";
 import { selectRecipe } from "@pisagor/recipes/select";
 import { cn } from "@pisagor/utils";
-import { defineComponent, h, type PropType, Teleport, type VNodeChild } from "vue";
+import {
+  defineComponent,
+  h,
+  type PropType,
+  Teleport,
+  type VNodeChild,
+} from "vue";
 import { Separator } from "../separator/separator";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 
@@ -76,7 +85,10 @@ export const SelectRoot = defineComponent({
       type: Function as PropType<SelectRootProps["onValueChange"]>,
     },
     unmountOnExit: { default: true, type: Boolean },
-    variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant | undefined>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -87,7 +99,8 @@ export const SelectRoot = defineComponent({
           collection: props.collection,
           lazyMount: props.lazyMount,
           onValueChange: props.onValueChange
-            ? (details: { value: string | string[] }) => props.onValueChange?.(details.value)
+            ? (details: { value: string | string[] }) =>
+                props.onValueChange?.(details.value)
             : undefined,
           unmountOnExit: props.unmountOnExit,
         },
@@ -101,14 +114,20 @@ export const SelectTrigger = defineComponent({
   inheritAttrs: false,
   name: "SelectTrigger",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     clearable: { default: false, type: Boolean },
     recipe: {
       default: selectRecipe,
       type: Function as PropType<typeof selectRecipe>,
     },
     size: { default: "md", type: String as PropType<SelectTriggerSize> },
-    variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant | undefined>,
+    },
   },
   setup(props, { attrs, slots }) {
     const surfaceVariant = useFormControlSurface();
@@ -143,7 +162,9 @@ export const SelectTrigger = defineComponent({
             slots.default?.(),
             h("div", { class: styleSlots.triggerActions() }, () => [
               props.clearable
-                ? h(SelectClearTrigger as ArkPart, null, () => h(PhX, { "aria-hidden": true }))
+                ? h(SelectClearTrigger as ArkPart, null, () =>
+                    h(PhX, { "aria-hidden": true }),
+                  )
                 : null,
               h(SelectPrimitive.Indicator as ArkPart, {}, () =>
                 h(PhCaretUpDown, { "aria-hidden": true }),
@@ -160,7 +181,10 @@ export const SelectSeparator = defineComponent({
   inheritAttrs: false,
   name: "SelectSeparator",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: selectRecipe,
       type: Function as PropType<typeof selectRecipe>,
@@ -189,8 +213,14 @@ export const SelectValueText = defineComponent({
   inheritAttrs: false,
   name: "SelectValueText",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    placeholder: { default: undefined, type: String as PropType<string | undefined> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    placeholder: {
+      default: undefined,
+      type: String as PropType<string | undefined>,
+    },
     recipe: {
       default: selectRecipe,
       type: Function as PropType<typeof selectRecipe>,
@@ -213,7 +243,9 @@ export const SelectValueText = defineComponent({
   },
 });
 
-function selectTeleport(content: ReturnType<typeof h> | Array<ReturnType<typeof h>>) {
+function selectTeleport(
+  content: ReturnType<typeof h> | Array<ReturnType<typeof h>>,
+) {
   return h(Teleport, { to: "body" }, () => content);
 }
 
@@ -221,7 +253,10 @@ export const SelectContent = defineComponent({
   inheritAttrs: false,
   name: "SelectContent",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: selectRecipe,
       type: Function as PropType<typeof selectRecipe>,
@@ -251,7 +286,10 @@ export const SelectItemGroup = defineComponent({
   inheritAttrs: false,
   name: "SelectItemGroup",
   props: {
-    heading: { default: undefined, type: [String, Object] as PropType<VNodeChild | undefined> },
+    heading: {
+      default: undefined,
+      type: [String, Object] as PropType<VNodeChild | undefined>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -261,7 +299,9 @@ export const SelectItemGroup = defineComponent({
           ...attrs,
         },
         () => [
-          props.heading !== undefined ? h(SelectItemGroupLabel, null, () => props.heading) : null,
+          props.heading !== undefined
+            ? h(SelectItemGroupLabel, null, () => props.heading)
+            : null,
           slots.default?.(),
         ],
       );
@@ -272,7 +312,10 @@ export const SelectItemGroupLabel = defineComponent({
   inheritAttrs: false,
   name: "SelectItemGroupLabel",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: selectRecipe,
       type: Function as PropType<typeof selectRecipe>,
@@ -298,7 +341,10 @@ export const SelectItem = defineComponent({
   inheritAttrs: false,
   name: "SelectItem",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     // Ark uses `item` for collection items.
     item: { default: undefined, type: Object as PropType<unknown> },
     recipe: {
@@ -341,7 +387,10 @@ export const SelectClearTrigger = defineComponent({
   name: "SelectClearTrigger",
   props: {
     "aria-label": { default: "Clear selected value(s)", type: String },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: selectRecipe,
       type: Function as PropType<typeof selectRecipe>,
@@ -368,7 +417,10 @@ export const SelectEmpty = defineComponent({
   inheritAttrs: false,
   name: "SelectEmpty",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: selectRecipe,
       type: Function as PropType<typeof selectRecipe>,
@@ -407,8 +459,14 @@ export const SelectShorthand = defineComponent({
       default: undefined,
       type: Array as PropType<Array<SelectPresetItem | string> | undefined>,
     },
-    placeholder: { default: undefined, type: String as PropType<string | undefined> },
-    variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
+    placeholder: {
+      default: undefined,
+      type: String as PropType<string | undefined>,
+    },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant | undefined>,
+    },
   },
   setup(props, { attrs }) {
     return () => {

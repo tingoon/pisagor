@@ -6,7 +6,10 @@ export function Controlled() {
 
   return (
     <div className="flex flex-col gap-2">
-      <HoverCard onOpenChange={({ open: isOpen }) => setOpen(isOpen)} open={open}>
+      <HoverCard
+        onOpenChange={({ open: isOpen }) => setOpen(isOpen)}
+        open={open}
+      >
         <HoverCard.Trigger asChild>
           <Button variant="outline">Hover here</Button>
         </HoverCard.Trigger>
@@ -20,7 +23,9 @@ export function Controlled() {
           </div>
         </HoverCard.Content>
       </HoverCard>
-      <p className="text-center text-muted-foreground text-sm">{open ? "✅" : "❌"}</p>
+      <p className="text-center text-muted-foreground text-sm">
+        {open ? "✅" : "❌"}
+      </p>
     </div>
   );
 }

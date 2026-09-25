@@ -33,22 +33,28 @@ const headings = [
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
   <CodeBlock class="mb-8" code={imports} lang="astro" title="Import" />
 
-  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="default">
+    Default
+  </h3>
   <ComponentPreview class="mb-8" code={examples.Default} title="Default">
     <Default />
   </ComponentPreview>
-  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="widescreen">Widescreen</h3>
+  <h3 class="mb-3 text-xl font-semibold tracking-tight" id="widescreen">
+    Widescreen
+  </h3>
   <ComponentPreview class="mb-8" code={examples.Widescreen} title="Widescreen">
     <Widescreen />
   </ComponentPreview>
 
-  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="installation">
+    Installation
+  </h2>
   <Installation class="mb-8" packages="@pisagor/astro" />
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/aspect-ratio</code>. Native HTML attributes are also
-    supported and omitted from this table.
+    Own props from <code>@pisagor/props/aspect-ratio</code>. Native HTML
+    attributes are also supported and omitted from this table.
   </p>
   <PropsTable rows={aspectRatioProps} />
 </DocsLayout>

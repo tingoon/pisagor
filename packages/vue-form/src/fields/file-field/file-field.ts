@@ -1,7 +1,10 @@
 import type { FileInputProps } from "@pisagor/vue";
 import { FileInput } from "@pisagor/vue";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
+import {
+  type FieldPresentationProps,
+  FieldShell,
+} from "../../internal/field-shell";
 import type { SetRequired } from "../../internal/types";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -12,7 +15,9 @@ type FileInputControlProps = SetRequired<
   "onValueChange"
 >;
 
-export interface FileFieldProps extends FieldPresentationProps, FileInputControlProps {
+export interface FileFieldProps
+  extends FieldPresentationProps,
+    FileInputControlProps {
   name?: string;
   onBlur?: () => void;
 }
@@ -25,15 +30,33 @@ export const FileField = defineComponent({
   props: {
     accept: { default: undefined, type: String },
     browseLabel: { default: undefined, type: String },
-    capture: { default: undefined, type: String as PropType<FileInputProps["capture"]> },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    description: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    capture: {
+      default: undefined,
+      type: String as PropType<FileInputProps["capture"]>,
+    },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    description: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     disabled: { default: undefined, type: Boolean },
-    error: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    error: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     id: { default: undefined, type: String },
     invalid: { default: undefined, type: Boolean },
-    label: { default: undefined, type: null as unknown as PropType<VNodeChild> },
-    labelAccessory: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    label: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
+    labelAccessory: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     labelProps: {
       default: undefined,
       type: Object as PropType<FieldPresentationProps["labelProps"]>,
@@ -51,8 +74,14 @@ export const FileField = defineComponent({
     },
     placeholder: { default: undefined, type: String },
     required: { default: undefined, type: Boolean },
-    size: { default: undefined, type: String as PropType<FileInputProps["size"]> },
-    variant: { default: undefined, type: String as PropType<FileInputProps["variant"]> },
+    size: {
+      default: undefined,
+      type: String as PropType<FileInputProps["size"]>,
+    },
+    variant: {
+      default: undefined,
+      type: String as PropType<FileInputProps["variant"]>,
+    },
   },
   setup(props, { attrs }) {
     return () =>

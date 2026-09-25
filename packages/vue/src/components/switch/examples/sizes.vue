@@ -5,6 +5,9 @@ import { Switch } from "..";
 <template>
   <div class="flex flex-wrap items-center gap-2">
     <Switch default-checked />
-    <Switch class="[--size:--spacing(5)] sm:[--size:--spacing(6)]" default-checked />
+    <Switch
+      class="[--size:--spacing(5)] sm:[--size:--spacing(6)]"
+      default-checked
+    />
   </div>
 </template>

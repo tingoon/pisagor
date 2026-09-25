@@ -1,6 +1,9 @@
 import { Splitter as SplitterPrimitive } from "@ark-ui/vue/splitter";
 import { PhDotsSixVertical } from "@phosphor-icons/vue";
-import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes/resizable";
+import {
+  resizableEdgeHandleRecipe,
+  resizableRecipe,
+} from "@pisagor/recipes/resizable";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, ref } from "vue";
 
@@ -44,18 +47,33 @@ export const ResizableEdgeHandle = defineComponent({
   inheritAttrs: false,
   name: "ResizableEdgeHandle",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     handlePosition: {
       default: "center",
       type: String as PropType<ResizableHandlePosition>,
     },
     label: { required: true, type: String },
     minWidth: { default: 1, type: Number },
-    onResizeChange: { default: undefined, type: Function as PropType<(width: number) => void> },
+    onResizeChange: {
+      default: undefined,
+      type: Function as PropType<(width: number) => void>,
+    },
     onResizeEnd: { default: undefined, type: Function as PropType<() => void> },
-    onResizeStart: { default: undefined, type: Function as PropType<() => void> },
-    onWidthChange: { required: true, type: Function as PropType<(width: number) => void> },
-    placement: { required: true, type: String as PropType<ResizableEdgePlacement> },
+    onResizeStart: {
+      default: undefined,
+      type: Function as PropType<() => void>,
+    },
+    onWidthChange: {
+      required: true,
+      type: Function as PropType<(width: number) => void>,
+    },
+    placement: {
+      required: true,
+      type: String as PropType<ResizableEdgePlacement>,
+    },
     width: { required: true, type: Number },
   },
   setup(props, { attrs }) {
@@ -114,7 +132,9 @@ export const ResizableEdgeHandle = defineComponent({
             const delta = event.clientX - startXRef.value;
             const next = Math.max(
               props.minWidth ?? 1,
-              isStart.value ? startWidthRef.value + delta : startWidthRef.value - delta,
+              isStart.value
+                ? startWidthRef.value + delta
+                : startWidthRef.value - delta,
             );
 
             liveWidthRef.value = next;
@@ -143,7 +163,10 @@ export const ResizableRoot = defineComponent({
   inheritAttrs: false,
   name: "ResizableRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: resizableRecipe,
       type: Function as PropType<typeof resizableRecipe>,
@@ -181,7 +204,10 @@ export const ResizableResizeTriggerIndicator = defineComponent({
   inheritAttrs: false,
   name: "ResizableResizeTriggerIndicator",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: resizableRecipe,
       type: Function as PropType<typeof resizableRecipe>,
@@ -204,7 +230,10 @@ export const ResizableResizeTrigger = defineComponent({
   inheritAttrs: false,
   name: "ResizableResizeTrigger",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: resizableRecipe,
       type: Function as PropType<typeof resizableRecipe>,
@@ -223,7 +252,9 @@ export const ResizableResizeTrigger = defineComponent({
         () =>
           props.withHandle
             ? h("div", { class: props.recipe().resizeTriggerHandle() }, () =>
-                h(PhDotsSixVertical, { class: props.recipe().resizeTriggerIcon() }),
+                h(PhDotsSixVertical, {
+                  class: props.recipe().resizeTriggerIcon(),
+                }),
               )
             : (slots.default?.() ?? h(ResizableResizeTriggerIndicator)),
       );

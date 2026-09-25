@@ -33,7 +33,14 @@ export const planOptions = [
   },
 ];
 
-export const marqueeItems = ["Pisagor", "Design", "Systems", "React", "Vue", "Astro"];
+export const marqueeItems = [
+  "Pisagor",
+  "Design",
+  "Systems",
+  "React",
+  "Vue",
+  "Astro",
+];
 
 export const segmentItems = [
   { label: "Profile", value: "profile" },
@@ -43,8 +50,20 @@ export const segmentItems = [
 
 export function profileTabs() {
   return [
-    { content: "Make changes to your account here.", label: "Account", value: "tab-1" },
-    { content: "Change your password here.", label: "Password", value: "tab-2" },
-    { content: "Update your notification preferences.", label: "Notifications", value: "tab-3" },
+    {
+      content: "Make changes to your account here.",
+      label: "Account",
+      value: "tab-1",
+    },
+    {
+      content: "Change your password here.",
+      label: "Password",
+      value: "tab-2",
+    },
+    {
+      content: "Update your notification preferences.",
+      label: "Notifications",
+      value: "tab-3",
+    },
   ];
 }

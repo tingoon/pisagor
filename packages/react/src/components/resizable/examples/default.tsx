@@ -11,13 +11,17 @@ function ResizableFrame({
   className?: string;
   heightClassName?: string;
 }) {
-  return <div className={cn("w-full", heightClassName, className)}>{children}</div>;
+  return (
+    <div className={cn("w-full", heightClassName, className)}>{children}</div>
+  );
 }
 
 function panelClassName(orientation: "horizontal" | "vertical" = "horizontal") {
   return cn(
     "flex items-center justify-center bg-muted/30 text-sm",
-    orientation === "vertical" ? "min-h-0 h-full w-full" : "min-w-0 h-full w-full",
+    orientation === "vertical"
+      ? "min-h-0 h-full w-full"
+      : "min-w-0 h-full w-full",
   );
 }
 
@@ -37,7 +41,7 @@ export function Default() {
         </Resizable.Panel>
         <Resizable.ResizeTrigger id="1:2" withHandle />
 
-        <Resizable.Panel className="min-h-0 h-full min-w-0" id="2">
+        <Resizable.Panel className="h-full min-h-0 min-w-0" id="2">
           <Resizable
             className="size-full"
             defaultSize={[50, 50]}

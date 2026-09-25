@@ -1,5 +1,8 @@
 import { ark } from "@ark-ui/react/factory";
-import { type EmptyStateRecipeSlot, emptyStateRecipe } from "@pisagor/recipes/empty-state";
+import {
+  type EmptyStateRecipeSlot,
+  emptyStateRecipe,
+} from "@pisagor/recipes/empty-state";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { EmptyStateContext, useEmptyState } from "./empty-state.context";
@@ -95,7 +98,10 @@ export function EmptyStateTitle({ className, ...rest }: EmptyStateTitleProps) {
   );
 }
 
-export function EmptyStateDescription({ className, ...rest }: EmptyStateDescriptionProps) {
+export function EmptyStateDescription({
+  className,
+  ...rest
+}: EmptyStateDescriptionProps) {
   const { slots } = useEmptyState();
 
   return (
@@ -108,7 +114,10 @@ export function EmptyStateDescription({ className, ...rest }: EmptyStateDescript
   );
 }
 
-export function EmptyStateActions({ className, ...rest }: EmptyStateActionsProps) {
+export function EmptyStateActions({
+  className,
+  ...rest
+}: EmptyStateActionsProps) {
   const { slots } = useEmptyState();
 
   return (
@@ -151,7 +160,10 @@ export function EmptyStateShorthand({
       )}
 
       {description !== undefined && (
-        <EmptyStateDescription {...descriptionProps} className={classNames?.description}>
+        <EmptyStateDescription
+          {...descriptionProps}
+          className={classNames?.description}
+        >
           {description}
         </EmptyStateDescription>
       )}

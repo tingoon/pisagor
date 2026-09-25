@@ -5,6 +5,7 @@ interface NumberInputContextValue {
   slots: NumberInputRecipe;
 }
 
-export const { NumberInputContext, useNumberInput } = createContext<NumberInputContextValue>()({
-  name: "NumberInput",
-});
+export const { NumberInputContext, useNumberInput } =
+  createContext<NumberInputContextValue>()({
+    name: "NumberInput",
+  });

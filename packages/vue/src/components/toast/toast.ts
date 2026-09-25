@@ -3,8 +3,18 @@ import {
   Toaster as ToasterPrimitive,
   Toast as ToastPrimitive,
 } from "@ark-ui/vue/toast";
-import { PhCheckCircle, PhInfo, PhWarning, PhWarningCircle, PhX } from "@phosphor-icons/vue";
-import { type ToastItemRecipeSlot, toastItemRecipe, toastRecipe } from "@pisagor/recipes/toast";
+import {
+  PhCheckCircle,
+  PhInfo,
+  PhWarning,
+  PhWarningCircle,
+  PhX,
+} from "@phosphor-icons/vue";
+import {
+  type ToastItemRecipeSlot,
+  toastItemRecipe,
+  toastRecipe,
+} from "@pisagor/recipes/toast";
 import { cn } from "@pisagor/utils";
 
 type ClassValue = Parameters<typeof cn>[0];
@@ -86,12 +96,18 @@ export const ToasterRoot = defineComponent({
   inheritAttrs: false,
   name: "ToasterRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     recipe: {
       default: toastRecipe,
       type: Function as PropType<typeof toastRecipe>,
     },
-    style: { default: undefined, type: Object as PropType<Record<string, unknown>> },
+    style: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
     toaster: { default: undefined, type: Object as PropType<unknown> },
   },
   setup(props, { attrs }) {
@@ -102,7 +118,10 @@ export const ToasterRoot = defineComponent({
           {
             ...attrs,
             class: cn(props.recipe(), props.class),
-            style: { "--width": "356px", ...(props.style ?? {}) } as Record<string, unknown>,
+            style: { "--width": "356px", ...(props.style ?? {}) } as Record<
+              string,
+              unknown
+            >,
             toaster: props.toaster ?? toast,
           },
           {
@@ -118,18 +137,42 @@ export const ToastItem = defineComponent({
   inheritAttrs: false,
   name: "ToastItem",
   props: {
-    actionsProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
-    actionTriggerProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<ToastItemClassNames> },
-    closeTriggerProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
-    descriptionProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
-    iconProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
+    actionsProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
+    actionTriggerProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<ToastItemClassNames>,
+    },
+    closeTriggerProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
+    descriptionProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
+    iconProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
     itemRecipe: {
       default: toastItemRecipe,
       type: Function as PropType<typeof toastItemRecipe>,
     },
-    titleProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
+    titleProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
     toast: { required: true, type: Object as PropType<ToastData> },
   },
   setup(props, { attrs }) {
@@ -167,36 +210,48 @@ export const ToastItem = defineComponent({
                 },
                 () => icon,
               ),
-              h("div", { class: slots.body({ class: props.classNames?.body }) }, () => [
-                h(
-                  ToastPrimitive.Title as ArkPart,
-                  {
-                    ...(props.titleProps ?? {}),
-                    class: slots.title({
-                      class: cn(
-                        props.classNames?.title,
-                        (props.titleProps as { class?: ClassValue } | undefined)?.class,
-                      ),
-                    }),
-                  },
-                  () => toastData.title,
-                ),
-                toastData.description
-                  ? h(
-                      ToastPrimitive.Description as ArkPart,
-                      {
-                        ...(props.descriptionProps ?? {}),
-                        class: slots.description({
-                          class: cn(
-                            props.classNames?.description,
-                            (props.descriptionProps as { class?: ClassValue } | undefined)?.class,
-                          ),
-                        }),
-                      },
-                      () => toastData.description,
-                    )
-                  : null,
-              ]),
+              h(
+                "div",
+                { class: slots.body({ class: props.classNames?.body }) },
+                () => [
+                  h(
+                    ToastPrimitive.Title as ArkPart,
+                    {
+                      ...(props.titleProps ?? {}),
+                      class: slots.title({
+                        class: cn(
+                          props.classNames?.title,
+                          (
+                            props.titleProps as
+                              | { class?: ClassValue }
+                              | undefined
+                          )?.class,
+                        ),
+                      }),
+                    },
+                    () => toastData.title,
+                  ),
+                  toastData.description
+                    ? h(
+                        ToastPrimitive.Description as ArkPart,
+                        {
+                          ...(props.descriptionProps ?? {}),
+                          class: slots.description({
+                            class: cn(
+                              props.classNames?.description,
+                              (
+                                props.descriptionProps as
+                                  | { class?: ClassValue }
+                                  | undefined
+                              )?.class,
+                            ),
+                          }),
+                        },
+                        () => toastData.description,
+                      )
+                    : null,
+                ],
+              ),
             ],
           ),
           h(
@@ -236,7 +291,9 @@ export const ToastItem = defineComponent({
                         Button as ArkPart,
                         {
                           "aria-label": "Close",
-                          class: slots.close({ class: props.classNames?.close }),
+                          class: slots.close({
+                            class: props.classNames?.close,
+                          }),
                           size: "icon-xs",
                           variant: "ghost",
                         },

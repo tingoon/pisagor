@@ -56,7 +56,8 @@ export const Compound = meta.story({
   parameters: {
     docs: {
       description: {
-        story: "Manual composition with `Marquee.Root` when shorthand props are not enough.",
+        story:
+          "Manual composition with `Marquee.Root` when shorthand props are not enough.",
       },
     },
   },

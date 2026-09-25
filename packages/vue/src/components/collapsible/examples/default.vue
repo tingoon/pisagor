@@ -5,7 +5,9 @@ import { Collapsible } from "..";
 <template>
   <div class="w-96 rounded-xl border bg-card p-4">
     <Collapsible>
-      <Collapsible.Trigger class="flex w-full items-center justify-between font-medium text-sm">
+      <Collapsible.Trigger
+        class="flex w-full items-center justify-between font-medium text-sm"
+      >
         Total visits
         <Collapsible.Indicator />
       </Collapsible.Trigger>

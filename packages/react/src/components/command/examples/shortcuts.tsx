@@ -18,7 +18,10 @@ export function Shortcuts() {
   });
 
   return (
-    <Command collection={collection} onInputValueChange={({ inputValue }) => filter(inputValue)}>
+    <Command
+      collection={collection}
+      onInputValueChange={({ inputValue }) => filter(inputValue)}
+    >
       <Command.Input placeholder="Search..." />
       <Command.Content>
         <Command.Empty />

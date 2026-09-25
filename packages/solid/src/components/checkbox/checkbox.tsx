@@ -13,7 +13,8 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
 
-export interface CheckboxGroupProps extends Omit<CheckboxPrimitiveGroupProps, "onValueChange"> {
+export interface CheckboxGroupProps
+  extends Omit<CheckboxPrimitiveGroupProps, "onValueChange"> {
   onValueChange?: (value: string[]) => void;
   recipe?: typeof checkboxGroupRecipe;
 }
@@ -30,7 +31,13 @@ type CheckboxIndicatorPartProps = CheckboxIndicatorProps & {
 
 function CheckIcon() {
   return (
-    <svg aria-hidden="true" fill="none" height="1em" viewBox="0 0 256 256" width="1em">
+    <svg
+      aria-hidden="true"
+      fill="none"
+      height="1em"
+      viewBox="0 0 256 256"
+      width="1em"
+    >
       <path
         d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"
         fill="currentColor"
@@ -41,7 +48,13 @@ function CheckIcon() {
 
 function MinusIcon() {
   return (
-    <svg aria-hidden="true" fill="none" height="1em" viewBox="0 0 256 256" width="1em">
+    <svg
+      aria-hidden="true"
+      fill="none"
+      height="1em"
+      viewBox="0 0 256 256"
+      width="1em"
+    >
       <path
         d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128Z"
         fill="currentColor"
@@ -116,6 +129,9 @@ function CheckboxIndicator(props: CheckboxIndicatorPartProps): JSX.Element {
   const slots = () => (local.recipe ?? checkboxRecipe)();
 
   return (
-    <CheckboxPrimitive.Indicator {...rest} class={slots().indicator({ class: cn(local.class) })} />
+    <CheckboxPrimitive.Indicator
+      {...rest}
+      class={slots().indicator({ class: cn(local.class) })}
+    />
   );
 }

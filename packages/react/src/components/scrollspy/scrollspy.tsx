@@ -1,6 +1,12 @@
 import { ark } from "@ark-ui/react/factory";
 import { cn } from "@pisagor/utils";
-import { type ComponentProps, type RefObject, useCallback, useEffect, useRef } from "react";
+import {
+  type ComponentProps,
+  type RefObject,
+  useCallback,
+  useEffect,
+  useRef,
+} from "react";
 
 // #region Types
 type ScrollTarget = HTMLElement | Document | null | undefined;
@@ -52,7 +58,9 @@ function resolveScrollElement(target: ScrollTarget): HTMLElement | null {
     return document.documentElement;
   }
 
-  const viewport = target.querySelector('[data-scope="scroll-area"][data-part="viewport"]');
+  const viewport = target.querySelector(
+    '[data-scope="scroll-area"][data-part="viewport"]',
+  );
   if (viewport instanceof HTMLElement) {
     return viewport;
   }
@@ -66,7 +74,9 @@ function resolveScrollTarget(target: ScrollTarget): HTMLElement | Window {
   }
 
   if (target instanceof HTMLElement) {
-    const viewport = target.querySelector('[data-scope="scroll-area"][data-part="viewport"]');
+    const viewport = target.querySelector(
+      '[data-scope="scroll-area"][data-part="viewport"]',
+    );
     if (viewport instanceof HTMLElement) {
       return viewport;
     }
@@ -77,7 +87,10 @@ function resolveScrollTarget(target: ScrollTarget): HTMLElement | Window {
   return window;
 }
 
-function getSectionScrollOffset(sectionElement: HTMLElement, scrollElement: HTMLElement): number {
+function getSectionScrollOffset(
+  sectionElement: HTMLElement,
+  scrollElement: HTMLElement,
+): number {
   if (scrollElement === document.documentElement) {
     return sectionElement.getBoundingClientRect().top + window.scrollY;
   }
@@ -165,7 +178,10 @@ export function Scrollspy({
         customOffset = Number.parseInt(dataOffset, 10);
       }
 
-      const sectionOffset = getSectionScrollOffset(sectionElement, scrollElement);
+      const sectionOffset = getSectionScrollOffset(
+        sectionElement,
+        scrollElement,
+      );
       const delta = Math.abs(sectionOffset - customOffset - scrollTop);
 
       if (sectionOffset - customOffset <= scrollTop && delta < minDelta) {
@@ -191,7 +207,8 @@ export function Scrollspy({
     (anchorElement: HTMLElement) => (event?: Event) => {
       event?.preventDefault();
 
-      const sectionId = anchorElement.getAttribute(SCROLLSPY_ANCHOR)?.replace("#", "") ?? null;
+      const sectionId =
+        anchorElement.getAttribute(SCROLLSPY_ANCHOR)?.replace("#", "") ?? null;
       if (!sectionId) {
         return;
       }
@@ -210,8 +227,13 @@ export function Scrollspy({
       }
 
       const scrollElement =
-        scrollToElement instanceof HTMLElement ? scrollToElement : document.documentElement;
-      const sectionOffset = getSectionScrollOffset(sectionElement, scrollElement);
+        scrollToElement instanceof HTMLElement
+          ? scrollToElement
+          : document.documentElement;
+      const sectionOffset = getSectionScrollOffset(
+        sectionElement,
+        scrollElement,
+      );
       const scrollTop = sectionOffset - customOffset;
 
       scrollToElement.scrollTo({
@@ -259,7 +281,8 @@ export function Scrollspy({
 
       if (
         scrollElement === window ||
-        (scrollElement instanceof HTMLElement && scrollElement.contains(event.target as Node))
+        (scrollElement instanceof HTMLElement &&
+          scrollElement.contains(event.target as Node))
       ) {
         handleScroll();
       }

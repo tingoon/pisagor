@@ -11,7 +11,11 @@ import { DropdownMenu } from "..";
     </DropdownMenu.Trigger>
     <DropdownMenu.Content class="w-40">
       <DropdownMenu.Item as-child value="docs">
-        <a href="https://example.com/docs" rel="noopener noreferrer" target="_blank">
+        <a
+          href="https://example.com/docs"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
           External link
           <DropdownMenu.Shortcut>
             <PhArrowSquareOut />

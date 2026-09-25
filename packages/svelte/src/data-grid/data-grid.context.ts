@@ -5,25 +5,27 @@ import type {
   Header,
   HeaderGroup,
   Row,
+  RowData,
   Table as TableType,
 } from "@tanstack/svelte-table";
 import { createContext } from "../utils/create-context";
+import type { DataGridFeatures } from "./data-grid.features";
 
 export interface DataGridContextValue {
   slots: DataGridRecipe;
-  table: any;
+  table: TableType<DataGridFeatures, RowData>;
 }
 
 export interface DataGridHeaderGroupContextValue {
-  headerGroup: any;
+  headerGroup: HeaderGroup<DataGridFeatures, RowData>;
 }
 
 export interface DataGridHeaderCellContextValue {
-  header: any;
+  header: Header<DataGridFeatures, RowData, unknown>;
 }
 
 export interface DataGridRowContextValue {
-  row: any;
+  row: Row<DataGridFeatures, RowData>;
 }
 
 const rootCtx = createContext<DataGridContextValue>({ name: "DataGrid" });
@@ -36,10 +38,12 @@ const headerGroupCtx = createContext<DataGridHeaderGroupContextValue>({
 export const setDataGridHeaderGroupContext = headerGroupCtx.setContext;
 export const useDataGridHeaderGroupContext = headerGroupCtx.getContext;
 
-const headerCellCtx = createContext<DataGridHeaderCellContextValue | undefined>({
-  name: "DataGridHeaderCell",
-  strict: false,
-});
+const headerCellCtx = createContext<DataGridHeaderCellContextValue | undefined>(
+  {
+    name: "DataGridHeaderCell",
+    strict: false,
+  },
+);
 export const setDataGridHeaderCellContext = headerCellCtx.setContext;
 export const useDataGridHeaderCellContext = headerCellCtx.getContext;
 

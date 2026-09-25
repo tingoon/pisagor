@@ -1,6 +1,12 @@
 import { HoverCard as HoverCardPrimitive } from "@ark-ui/vue/hover-card";
 import { hoverCardRecipe } from "@pisagor/recipes/hover-card";
-import { type CSSProperties, defineComponent, h, type PropType, Teleport } from "vue";
+import {
+  type CSSProperties,
+  defineComponent,
+  h,
+  type PropType,
+  Teleport,
+} from "vue";
 
 // #region Types
 export interface HoverCardProps {
@@ -24,7 +30,9 @@ export interface HoverCardArrowProps {
 
 type ArkPart = Parameters<typeof h>[0];
 
-function hoverCardTeleport(content: ReturnType<typeof h> | ReturnType<typeof h>[]) {
+function hoverCardTeleport(
+  content: ReturnType<typeof h> | ReturnType<typeof h>[],
+) {
   return h(Teleport, { to: "body" }, () => content);
 }
 
@@ -99,7 +107,9 @@ export const HoverCardArrow = defineComponent({
           } as CSSProperties,
         },
         () => [
-          h(HoverCardPrimitive.ArrowTip as ArkPart, { class: variantSlots.arrowTip() }),
+          h(HoverCardPrimitive.ArrowTip as ArkPart, {
+            class: variantSlots.arrowTip(),
+          }),
           slots.default?.(),
         ],
       );
@@ -111,7 +121,10 @@ export const HoverCardContent = defineComponent({
   inheritAttrs: false,
   name: "HoverCardContent",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: hoverCardRecipe,
       type: Function as PropType<typeof hoverCardRecipe>,

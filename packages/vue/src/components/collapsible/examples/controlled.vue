@@ -21,6 +21,8 @@ const open = ref(false);
         </p>
       </Collapsible.Content>
     </Collapsible>
-    <p class="text-center text-muted-foreground text-sm">{{ open ? "✅" : "❌" }}</p>
+    <p class="text-center text-muted-foreground text-sm">
+      {{ open ? "✅" : "❌" }}
+    </p>
   </div>
 </template>

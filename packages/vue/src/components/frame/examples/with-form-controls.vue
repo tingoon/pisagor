@@ -7,7 +7,9 @@ import { Frame } from "..";
   <Frame>
     <Frame.Header>
       <Frame.Title>Account</Frame.Title>
-      <Frame.Description>Controls on muted Frame chrome and raised panels.</Frame.Description>
+      <Frame.Description
+        >Controls on muted Frame chrome and raised panels.</Frame.Description
+      >
     </Frame.Header>
     <Frame.Panel>
       <Field.Group>

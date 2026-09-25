@@ -10,7 +10,7 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> &
+type Props = Omit<HTMLAttributes<HTMLFieldSetElement>, "class"> &
   FormControlGroupShellVariantProps & {
     children?: import("svelte").Snippet;
     class?: string | undefined;
@@ -23,10 +23,10 @@ const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
 </script>
 
 <Ark
-  as="div"
+  as="fieldset"
   {...rest}
   class={formControlGroupShellRecipe({
-  class: cn(className),
+  class: cn("m-0 min-w-0 border-solid p-0", className),
   size,
   surfaceVariant,
   variant,
@@ -35,7 +35,6 @@ const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
   data-scope="input-group"
   data-size={size}
   data-variant={variant}
-  role="group"
 >
   {@render children?.()}
 </Ark>

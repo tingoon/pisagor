@@ -2,7 +2,9 @@ import { tv, type VariantProps } from "tailwind-variants";
 
 export const resizableRecipe = tv({
   slots: {
-    base: ["flex size-full min-h-0 min-w-0 data-[orientation=vertical]:flex-col"],
+    base: [
+      "flex size-full min-h-0 min-w-0 data-[orientation=vertical]:flex-col",
+    ],
     resizeTrigger: [
       "group/resizable-resize-trigger relative shrink-0 bg-transparent transition-opacity",
       "opacity-0 hover:bg-accent/60 hover:opacity-100 active:bg-accent active:opacity-100",
@@ -75,6 +77,7 @@ export type ResizableRecipe = ReturnType<ResizableRecipeFn>;
 export type ResizableRecipeSlot = keyof ResizableRecipe;
 
 export type ResizableEdgeHandleRecipeFn = typeof resizableEdgeHandleRecipe;
-export type ResizableEdgeHandleVariantProps = VariantProps<ResizableEdgeHandleRecipeFn>;
+export type ResizableEdgeHandleVariantProps =
+  VariantProps<ResizableEdgeHandleRecipeFn>;
 export type ResizableEdgeHandleRecipe = ReturnType<ResizableEdgeHandleRecipeFn>;
 export type ResizableEdgeHandleRecipeSlot = keyof ResizableEdgeHandleRecipe;

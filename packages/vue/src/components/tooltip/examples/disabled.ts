@@ -13,9 +13,17 @@ export default defineComponent({
             h(
               "span",
               triggerProps,
-              h(Button as ArkPart, { disabled: true, variant: "outline" }, () => "Unavailable"),
+              h(
+                Button as ArkPart,
+                { disabled: true, variant: "outline" },
+                () => "Unavailable",
+              ),
             ),
-          content: h("p", null, "You can still show a tooltip on an unavailable element"),
+          content: h(
+            "p",
+            null,
+            "You can still show a tooltip on an unavailable element",
+          ),
         },
         () => undefined,
       );

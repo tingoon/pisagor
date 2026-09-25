@@ -26,7 +26,8 @@ export interface SegmentGroupRootProps
   recipe?: typeof segmentGroupRecipe;
 }
 
-export interface SegmentGroupProps extends Omit<SegmentGroupRootProps, "children"> {
+export interface SegmentGroupProps
+  extends Omit<SegmentGroupRootProps, "children"> {
   items?: SegmentGroupPresetItem[];
 }
 
@@ -52,7 +53,9 @@ export function SegmentGroupRoot(props: SegmentGroupRootProps): JSX.Element {
         class={slots().base({ class: cn(local.class) })}
         data-variant={local.variant ?? "default"}
         onValueChange={
-          local.onValueChange ? (details) => local.onValueChange?.(details.value) : undefined
+          local.onValueChange
+            ? (details) => local.onValueChange?.(details.value)
+            : undefined
         }
         orientation={local.orientation ?? "horizontal"}
       >
@@ -69,7 +72,10 @@ export function SegmentGroupItem(props: SegmentGroupItemProps): JSX.Element {
   const content = () => local.children ?? local.text;
 
   return (
-    <SegmentGroupPrimitive.Item {...rest} class={slots.item({ class: local.class })}>
+    <SegmentGroupPrimitive.Item
+      {...rest}
+      class={slots.item({ class: local.class })}
+    >
       <Show when={content() != null}>
         <SegmentGroupItemText>{content()}</SegmentGroupItemText>
       </Show>
@@ -83,15 +89,23 @@ function SegmentGroupItemText(props: SegmentGroupItemTextProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useSegmentGroup();
   return (
-    <SegmentGroupPrimitive.ItemText {...rest} class={slots.itemText({ class: local.class })} />
+    <SegmentGroupPrimitive.ItemText
+      {...rest}
+      class={slots.itemText({ class: local.class })}
+    />
   );
 }
 
-export function SegmentGroupIndicator(props: SegmentGroupIndicatorProps): JSX.Element {
+export function SegmentGroupIndicator(
+  props: SegmentGroupIndicatorProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useSegmentGroup();
   return (
-    <SegmentGroupPrimitive.Indicator {...rest} class={slots.indicator({ class: local.class })} />
+    <SegmentGroupPrimitive.Indicator
+      {...rest}
+      class={slots.indicator({ class: local.class })}
+    />
   );
 }
 
@@ -101,7 +115,11 @@ export function SegmentGroupShorthand(props: SegmentGroupProps): JSX.Element {
     <SegmentGroupRoot {...rest}>
       <For each={local.items ?? []}>
         {(item) => (
-          <SegmentGroupItem disabled={item.disabled} text={item.label} value={item.value} />
+          <SegmentGroupItem
+            disabled={item.disabled}
+            text={item.label}
+            value={item.value}
+          />
         )}
       </For>
     </SegmentGroupRoot>

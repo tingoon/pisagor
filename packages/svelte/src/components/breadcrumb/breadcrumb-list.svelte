@@ -15,7 +15,6 @@ const { slots } = useBreadcrumb();
   class={slots.list({ class: cn(className) })}
   data-part="list"
   data-scope="breadcrumb"
-  role="list"
 >
   {@render children?.()}
 </Ark>

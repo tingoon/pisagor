@@ -8,7 +8,9 @@ export function Footer() {
   ];
   return (
     <Table>
-      <Table.Caption className="sr-only">Order summary with footer totals.</Table.Caption>
+      <Table.Caption className="sr-only">
+        Order summary with footer totals.
+      </Table.Caption>
       <Table.Header>
         <Table.Row>
           <Table.Head>Item</Table.Head>
@@ -22,8 +24,12 @@ export function Footer() {
           <Table.Row key={row.id}>
             <Table.Cell>{row.item}</Table.Cell>
             <Table.Cell className="text-right">{row.qty}</Table.Cell>
-            <Table.Cell className="text-right">${row.unitPrice.toFixed(2)}</Table.Cell>
-            <Table.Cell className="text-right">${(row.qty * row.unitPrice).toFixed(2)}</Table.Cell>
+            <Table.Cell className="text-right">
+              ${row.unitPrice.toFixed(2)}
+            </Table.Cell>
+            <Table.Cell className="text-right">
+              ${(row.qty * row.unitPrice).toFixed(2)}
+            </Table.Cell>
           </Table.Row>
         ))}
       </Table.Body>

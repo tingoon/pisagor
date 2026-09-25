@@ -1,9 +1,12 @@
 {
   "globalDependencies": ["biome.json", "packages/tsconfig/**"],
-  "globalPassThroughEnv": ["TANSTACK_CLI_TELEMETRY_DISABLED", "TURBO_TELEMETRY_DISABLED"],
+  "globalPassThroughEnv": [
+    "TANSTACK_CLI_TELEMETRY_DISABLED",
+    "TURBO_TELEMETRY_DISABLED"
+  ],
   "tasks": {
     "build": {
-      "env": ["DOCS_BASE_PATH", "DOCS_SITE"],
+      "env": ["DOCS_BASE_PATH", "DOCS_SITE", "STORYBOOK_BASE_PATH"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"]
     },
     "dev": {

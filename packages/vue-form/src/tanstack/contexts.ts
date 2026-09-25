@@ -5,14 +5,20 @@ export type FieldContextValue = Reactive<{ field: AnyFieldApi }>;
 export type FormContextValue = AnyFormApi & {
   Subscribe: unknown;
   useSelector: <T>(
-    selector: (state: { submissionAttempts: number; isSubmitting: boolean }) => T,
+    selector: (state: {
+      submissionAttempts: number;
+      isSubmitting: boolean;
+    }) => T,
   ) => {
     value: T;
   };
 };
 
-const fieldContextKey: InjectionKey<FieldContextValue> = Symbol("pisagor-vue-form-field");
-const formContextKey: InjectionKey<FormContextValue> = Symbol("pisagor-vue-form");
+const fieldContextKey: InjectionKey<FieldContextValue> = Symbol(
+  "pisagor-vue-form-field",
+);
+const formContextKey: InjectionKey<FormContextValue> =
+  Symbol("pisagor-vue-form");
 
 export const fieldContext = {
   key: fieldContextKey,

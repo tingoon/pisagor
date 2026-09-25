@@ -103,7 +103,12 @@ export function TableRow({ className, ...rest }: TableRowProps) {
   const { slots } = useTable();
 
   return (
-    <ark.tr {...rest} className={slots.row({ className })} data-part="row" data-scope="table" />
+    <ark.tr
+      {...rest}
+      className={slots.row({ className })}
+      data-part="row"
+      data-scope="table"
+    />
   );
 }
 
@@ -111,7 +116,12 @@ export function TableHead({ className, ...rest }: TableHeadProps) {
   const { slots } = useTable();
 
   return (
-    <ark.th {...rest} className={slots.head({ className })} data-part="head" data-scope="table" />
+    <ark.th
+      {...rest}
+      className={slots.head({ className })}
+      data-part="head"
+      data-scope="table"
+    />
   );
 }
 
@@ -119,7 +129,12 @@ export function TableCell({ className, ...rest }: TableCellProps) {
   const { slots } = useTable();
 
   return (
-    <ark.td {...rest} className={slots.cell({ className })} data-part="cell" data-scope="table" />
+    <ark.td
+      {...rest}
+      className={slots.cell({ className })}
+      data-part="cell"
+      data-scope="table"
+    />
   );
 }
 

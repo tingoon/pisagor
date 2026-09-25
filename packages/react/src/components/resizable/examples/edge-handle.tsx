@@ -12,7 +12,9 @@ function ResizableFrame({
   className?: string;
   heightClassName?: string;
 }) {
-  return <div className={cn("w-full", heightClassName, className)}>{children}</div>;
+  return (
+    <div className={cn("w-full", heightClassName, className)}>{children}</div>
+  );
 }
 
 export function EdgeHandle() {
@@ -33,7 +35,9 @@ export function EdgeHandle() {
             placement="start"
             width={width}
           />
-          <div className="flex flex-1 items-center justify-center p-4 text-sm">Panel</div>
+          <div className="flex flex-1 items-center justify-center p-4 text-sm">
+            Panel
+          </div>
         </aside>
         <div className="flex min-w-0 flex-1 items-center justify-center bg-muted/30 text-sm">
           Main

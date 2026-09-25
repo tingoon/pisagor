@@ -43,14 +43,19 @@ const highlightedHtml = highlightCode(code, lang);
 <div
   data-codeblock
   data-highlighter="tanstack"
-  class:list={["relative overflow-hidden rounded-xl border border-border/70 bg-[#0d1117]", Astro.props.class]}
+  class:list={[
+  "relative overflow-hidden rounded-xl border border-border/70 bg-[#0d1117]",
+  Astro.props.class,
+]}
 >
   <div
     class="flex items-center justify-between gap-3 border-b border-white/10 bg-[#0d1117]/88% px-3.5 py-2"
   >
     <div class="flex min-w-0 items-center gap-2">
       {Astro.props.title ? (
-  <span class="truncate text-xs font-semibold text-white/80">{Astro.props.title}</span>
+  <span class="truncate font-semibold text-white/80 text-xs">
+    {Astro.props.title}
+  </span>
 ) : null}
       <span
         class="rounded border border-white/15 px-1.5 py-0.5 text-2.6 font-semibold uppercase tracking-wider text-white/55"
@@ -78,36 +83,40 @@ const highlightedHtml = highlightCode(code, lang);
 
 <script>
 function bindCopyButtons() {
-  document.querySelectorAll<HTMLButtonElement>("[data-copy-btn]").forEach((btn) => {
-    if (btn.dataset.bound === "1") return;
-    btn.dataset.bound = "1";
-    btn.addEventListener("click", async () => {
-      const id = btn.dataset.copyFor;
-      const source = id ? document.querySelector<HTMLElement>(`[data-copy-source="${id}"]`) : null;
-      const text = source?.innerText?.trim() ?? "";
-      if (!text) return;
-      try {
-        await navigator.clipboard.writeText(text);
-      } catch {
-        const ta = document.createElement("textarea");
-        ta.value = text;
-        document.body.appendChild(ta);
-        ta.select();
-        document.execCommand("copy");
-        ta.remove();
-      }
-      const idle = btn.querySelector<HTMLElement>("[data-copy-idle]");
-      const done = btn.querySelector<HTMLElement>("[data-copy-done]");
-      if (idle) idle.hidden = true;
-      if (done) done.hidden = false;
-      btn.dataset.copied = "";
-      window.setTimeout(() => {
-        if (idle) idle.hidden = false;
-        if (done) done.hidden = true;
-        delete btn.dataset.copied;
-      }, 1600);
+  document
+    .querySelectorAll<HTMLButtonElement>("[data-copy-btn]")
+    .forEach((btn) => {
+      if (btn.dataset.bound === "1") return;
+      btn.dataset.bound = "1";
+      btn.addEventListener("click", async () => {
+        const id = btn.dataset.copyFor;
+        const source = id
+          ? document.querySelector<HTMLElement>(`[data-copy-source="${id}"]`)
+          : null;
+        const text = source?.innerText?.trim() ?? "";
+        if (!text) return;
+        try {
+          await navigator.clipboard.writeText(text);
+        } catch {
+          const ta = document.createElement("textarea");
+          ta.value = text;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand("copy");
+          ta.remove();
+        }
+        const idle = btn.querySelector<HTMLElement>("[data-copy-idle]");
+        const done = btn.querySelector<HTMLElement>("[data-copy-done]");
+        if (idle) idle.hidden = true;
+        if (done) done.hidden = false;
+        btn.dataset.copied = "";
+        window.setTimeout(() => {
+          if (idle) idle.hidden = false;
+          if (done) done.hidden = true;
+          delete btn.dataset.copied;
+        }, 1600);
+      });
     });
-  });
 }
 
 bindCopyButtons();

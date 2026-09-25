@@ -12,6 +12,7 @@ export interface TourProviderProps {
 }
 
 /** Returns the nearest tour context. */
-export const { TourContext, useTour: useTourContext } = createContext<TourProviderProps>()({
-  name: "Tour",
-});
+export const { TourContext, useTour: useTourContext } =
+  createContext<TourProviderProps>()({
+    name: "Tour",
+  });

@@ -8,7 +8,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Displays large or interactive tabular datasets with grid behaviors.",
+        component:
+          "Displays large or interactive tabular datasets with grid behaviors.",
       },
     },
   },

@@ -11,10 +11,9 @@ export default defineComponent({
         description: "This alert uses a custom color.",
         icon: h(PhMagicWand),
         title: "Custom color alert",
-        ...({ class: "border-purple-500/32 bg-purple-500/5 [&_svg]:text-purple-500" } as Record<
-          string,
-          unknown
-        >),
+        ...({
+          class: "border-purple-500/32 bg-purple-500/5 [&_svg]:text-purple-500",
+        } as Record<string, unknown>),
       });
   },
 });

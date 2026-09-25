@@ -118,10 +118,14 @@ export function DataListItem({
         data-scope="data-list"
       >
         {children != null && (
-          <DataListItemLabel className={classNames?.label}>{children}</DataListItemLabel>
+          <DataListItemLabel className={classNames?.label}>
+            {children}
+          </DataListItemLabel>
         )}
         {value != null && (
-          <DataListItemValue className={classNames?.value}>{value}</DataListItemValue>
+          <DataListItemValue className={classNames?.value}>
+            {value}
+          </DataListItemValue>
         )}
       </ark.div>
     </DataListItemContext>

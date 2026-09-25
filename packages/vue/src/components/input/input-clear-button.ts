@@ -16,7 +16,10 @@ export const InputClearButton = defineComponent({
   inheritAttrs: false,
   name: "InputClearButton",
   props: {
-    onClear: { required: true, type: Function as PropType<InputClearButtonProps["onClear"]> },
+    onClear: {
+      required: true,
+      type: Function as PropType<InputClearButtonProps["onClear"]>,
+    },
   },
   setup(props, { attrs }) {
     return () =>
@@ -41,12 +44,18 @@ export const InputClearAddon = defineComponent({
   inheritAttrs: false,
   name: "InputClearAddon",
   props: {
-    onClear: { required: true, type: Function as PropType<InputClearButtonProps["onClear"]> },
+    onClear: {
+      required: true,
+      type: Function as PropType<InputClearButtonProps["onClear"]>,
+    },
   },
   setup(props, { attrs }) {
     return () =>
       h(InputGroupAddon as ArkPart, { align: "inline-end" }, () =>
-        h(InputClearButton as ArkPart, { ...(attrs as object), onClear: props.onClear }),
+        h(InputClearButton as ArkPart, {
+          ...(attrs as object),
+          onClear: props.onClear,
+        }),
       );
   },
 });

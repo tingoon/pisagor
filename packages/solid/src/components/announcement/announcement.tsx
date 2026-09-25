@@ -12,14 +12,20 @@ type AnnouncementRootProps = Omit<ComponentProps<typeof ark.div>, "title"> & {
   recipe?: typeof announcementRecipe;
 };
 
-export interface AnnouncementProps extends Omit<AnnouncementRootProps, "children"> {
+export interface AnnouncementProps
+  extends Omit<AnnouncementRootProps, "children"> {
   badge?: JSX.Element;
   title?: JSX.Element;
   titleProps?: Omit<AnnouncementTitleProps, "children" | "class">;
 }
 
 export function AnnouncementRoot(props: AnnouncementRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["role", "children", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "role",
+    "children",
+    "recipe",
+    "class",
+  ]);
   const slots = () => (local.recipe ?? announcementRecipe)();
 
   return (
@@ -58,7 +64,9 @@ export function AnnouncementShorthand(props: AnnouncementProps): JSX.Element {
     <AnnouncementRoot {...rest}>
       {local.badge}
       <Show when={local.title !== undefined}>
-        <AnnouncementTitle {...local.titleProps}>{local.title}</AnnouncementTitle>
+        <AnnouncementTitle {...local.titleProps}>
+          {local.title}
+        </AnnouncementTitle>
       </Show>
     </AnnouncementRoot>
   );

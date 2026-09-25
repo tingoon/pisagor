@@ -24,7 +24,10 @@ export const ItemGroup = defineComponent({
   inheritAttrs: false,
   name: "ItemGroup",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: itemRecipe,
       type: Function as PropType<typeof itemRecipe>,
@@ -63,7 +66,10 @@ export const ItemSeparator = defineComponent({
   inheritAttrs: false,
   name: "ItemSeparator",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: itemRecipe,
       type: Function as PropType<typeof itemRecipe>,

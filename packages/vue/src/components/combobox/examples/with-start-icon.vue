@@ -27,7 +27,11 @@ function filter(_inputValue: string) {}
     </Combobox.Input>
     <Combobox.Content>
       <Combobox.List>
-        <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item">
+        <Combobox.Item
+          v-for="item in collection.items"
+          :key="item.value"
+          :item="item"
+        >
           {{ item.label }}
         </Combobox.Item>
       </Combobox.List>

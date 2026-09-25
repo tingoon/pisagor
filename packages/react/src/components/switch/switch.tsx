@@ -61,7 +61,11 @@ function SwitchRoot({
 
   return (
     <SwitchContext value={{ slots }}>
-      <SwitchPrimitive.Root {...rest} {...controlShellProps} className={slots.base({ className })}>
+      <SwitchPrimitive.Root
+        {...rest}
+        {...controlShellProps}
+        className={slots.base({ className })}
+      >
         {children}
       </SwitchPrimitive.Root>
     </SwitchContext>
@@ -81,7 +85,9 @@ function SwitchControl({ children, className, ...rest }: SwitchControlProps) {
 function SwitchThumb({ className, ...rest }: SwitchThumbProps) {
   const { slots } = useSwitch();
 
-  return <SwitchPrimitive.Thumb {...rest} className={slots.thumb({ className })} />;
+  return (
+    <SwitchPrimitive.Thumb {...rest} className={slots.thumb({ className })} />
+  );
 }
 
 function SwitchHiddenInput(props: SwitchHiddenInputProps) {
@@ -103,7 +109,11 @@ export function Switch({
 }: SwitchProps) {
   const handleCheckedChange =
     onCheckedChange || onValueChange
-      ? (details: Parameters<NonNullable<SwitchRootProps["onCheckedChange"]>>[0]) => {
+      ? (
+          details: Parameters<
+            NonNullable<SwitchRootProps["onCheckedChange"]>
+          >[0],
+        ) => {
           onCheckedChange?.(details);
           onValueChange?.(details.checked === true);
         }

@@ -1,4 +1,10 @@
-import { PhBell, PhDatabase, PhHouse, PhMagnifyingGlass, PhUser } from "@phosphor-icons/vue";
+import {
+  PhBell,
+  PhDatabase,
+  PhHouse,
+  PhMagnifyingGlass,
+  PhUser,
+} from "@phosphor-icons/vue";
 import { Avatar, Button, Sidebar } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
 import type { ArkPart } from "../../../internal/types";
@@ -69,7 +75,11 @@ export default defineComponent({
               h(Navbar.Actions as ArkPart, null, () => [
                 h(
                   Button as ArkPart,
-                  { "aria-label": "Notifications", size: "icon-sm", variant: "ghost" },
+                  {
+                    "aria-label": "Notifications",
+                    size: "icon-sm",
+                    variant: "ghost",
+                  },
                   () => h(PhBell as ArkPart),
                 ),
                 h(Avatar as ArkPart, { fallback: "JD", size: "sm" }),
@@ -77,7 +87,11 @@ export default defineComponent({
             ),
           ]),
           h("div", { class: "flex flex-1 flex-col gap-2 p-4" }, () =>
-            h("p", { class: "text-muted-foreground text-sm" }, "Main content area"),
+            h(
+              "p",
+              { class: "text-muted-foreground text-sm" },
+              "Main content area",
+            ),
           ),
         ]),
       ]);

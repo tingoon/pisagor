@@ -43,7 +43,8 @@ export default defineComponent({
               Command,
               {
                 collection: collection.value,
-                onInputValueChange: (details: { inputValue: string }) => filter(details.inputValue),
+                onInputValueChange: (details: { inputValue: string }) =>
+                  filter(details.inputValue),
                 onValueChange: () => {
                   open.value = false;
                 },
@@ -51,18 +52,33 @@ export default defineComponent({
               () => [
                 h(Command.Input, { placeholder: "Search commands..." }),
                 h(Command.Content, null, () => [
-                  h(Command.Empty, null, () => "No results found. Try a different search."),
+                  h(
+                    Command.Empty,
+                    null,
+                    () => "No results found. Try a different search.",
+                  ),
                   h(Command.List, null, () =>
                     collection.value
                       .group()
                       .map(([group, items]) =>
-                        h(Command.ItemGroup, { heading: group, key: group }, () =>
-                          items.map((item) =>
-                            h(Command.Item as ArkPart, { item, key: item.value }, () => [
-                              item.label,
-                              h(Command.Shortcut, null, () => item.shortcut),
-                            ]),
-                          ),
+                        h(
+                          Command.ItemGroup,
+                          { heading: group, key: group },
+                          () =>
+                            items.map((item) =>
+                              h(
+                                Command.Item as ArkPart,
+                                { item, key: item.value },
+                                () => [
+                                  item.label,
+                                  h(
+                                    Command.Shortcut,
+                                    null,
+                                    () => item.shortcut,
+                                  ),
+                                ],
+                              ),
+                            ),
                         ),
                       ),
                   ),

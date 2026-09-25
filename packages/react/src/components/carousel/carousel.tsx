@@ -30,7 +30,8 @@ interface CarouselPresetItem {
   key?: string;
 }
 
-export interface CarouselProps extends Omit<CarouselRootProps, "children" | "slideCount"> {
+export interface CarouselProps
+  extends Omit<CarouselRootProps, "children" | "slideCount"> {
   slides?: CarouselPresetItem[];
 }
 // #endregion
@@ -47,7 +48,11 @@ export function CarouselRoot({
 
   return (
     <CarouselContext value={{ slots }}>
-      <CarouselPrimitive.Root {...rest} className={slots.base({ className })} spacing={spacing}>
+      <CarouselPrimitive.Root
+        {...rest}
+        className={slots.base({ className })}
+        spacing={spacing}
+      >
         {children}
       </CarouselPrimitive.Root>
     </CarouselContext>
@@ -57,57 +62,112 @@ export function CarouselRoot({
 export function CarouselControl({ className, ...rest }: CarouselControlProps) {
   const { slots } = useCarousel();
 
-  return <CarouselPrimitive.Control {...rest} className={slots.control({ className })} />;
+  return (
+    <CarouselPrimitive.Control
+      {...rest}
+      className={slots.control({ className })}
+    />
+  );
 }
 
-export function CarouselPrevTrigger({ className, ...rest }: CarouselPrevTriggerProps) {
+export function CarouselPrevTrigger({
+  className,
+  ...rest
+}: CarouselPrevTriggerProps) {
   const { slots } = useCarousel();
 
   return (
-    <CarouselPrimitive.PrevTrigger {...rest} asChild className={slots.prevTrigger({ className })}>
-      <Button aria-label="Previous" clickEffect={false} pill size="icon-md" variant="outline">
+    <CarouselPrimitive.PrevTrigger
+      {...rest}
+      asChild
+      className={slots.prevTrigger({ className })}
+    >
+      <Button
+        aria-label="Previous"
+        clickEffect={false}
+        pill
+        size="icon-md"
+        variant="outline"
+      >
         <CaretLeftIcon aria-hidden />
       </Button>
     </CarouselPrimitive.PrevTrigger>
   );
 }
 
-export function CarouselNextTrigger({ className, ...rest }: CarouselNextTriggerProps) {
+export function CarouselNextTrigger({
+  className,
+  ...rest
+}: CarouselNextTriggerProps) {
   const { slots } = useCarousel();
 
   return (
-    <CarouselPrimitive.NextTrigger {...rest} asChild className={slots.nextTrigger({ className })}>
-      <Button aria-label="Next" clickEffect={false} pill size="icon-md" variant="outline">
+    <CarouselPrimitive.NextTrigger
+      {...rest}
+      asChild
+      className={slots.nextTrigger({ className })}
+    >
+      <Button
+        aria-label="Next"
+        clickEffect={false}
+        pill
+        size="icon-md"
+        variant="outline"
+      >
         <CaretRightIcon aria-hidden />
       </Button>
     </CarouselPrimitive.NextTrigger>
   );
 }
 
-export function CarouselIndicatorGroup({ className, ...rest }: CarouselIndicatorGroupProps) {
+export function CarouselIndicatorGroup({
+  className,
+  ...rest
+}: CarouselIndicatorGroupProps) {
   const { slots } = useCarousel();
 
   return (
-    <CarouselPrimitive.IndicatorGroup {...rest} className={slots.indicatorGroup({ className })} />
+    <CarouselPrimitive.IndicatorGroup
+      {...rest}
+      className={slots.indicatorGroup({ className })}
+    />
   );
 }
 
-export function CarouselIndicator({ className, ...rest }: CarouselIndicatorProps) {
+export function CarouselIndicator({
+  className,
+  ...rest
+}: CarouselIndicatorProps) {
   const { slots } = useCarousel();
 
-  return <CarouselPrimitive.Indicator {...rest} className={slots.indicator({ className })} />;
+  return (
+    <CarouselPrimitive.Indicator
+      {...rest}
+      className={slots.indicator({ className })}
+    />
+  );
 }
 
-export function CarouselItemGroup({ className, ...rest }: CarouselItemGroupProps) {
+export function CarouselItemGroup({
+  className,
+  ...rest
+}: CarouselItemGroupProps) {
   const { slots } = useCarousel();
 
-  return <CarouselPrimitive.ItemGroup {...rest} className={slots.itemGroup({ className })} />;
+  return (
+    <CarouselPrimitive.ItemGroup
+      {...rest}
+      className={slots.itemGroup({ className })}
+    />
+  );
 }
 
 export function CarouselItem({ className, ...rest }: CarouselItemProps) {
   const { slots } = useCarousel();
 
-  return <CarouselPrimitive.Item {...rest} className={slots.item({ className })} />;
+  return (
+    <CarouselPrimitive.Item {...rest} className={slots.item({ className })} />
+  );
 }
 // #endregion
 

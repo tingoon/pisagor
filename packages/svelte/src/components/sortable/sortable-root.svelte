@@ -5,7 +5,7 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setSortableContext } from "./sortable.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = Omit<HTMLAttributes<HTMLUListElement>, "class"> & {
   class?: string | undefined;
   disabled?: boolean;
   items: string[];
@@ -58,8 +58,9 @@ function unregisterHandle(id: string) {
 }
 
 function startDrag(id: string, event: DragEvent) {
-  event.dataTransfer!.effectAllowed = "move";
-  event.dataTransfer!.setData("text/plain", id);
+  if (!event.dataTransfer) return;
+  event.dataTransfer.effectAllowed = "move";
+  event.dataTransfer.setData("text/plain", id);
   activeIdRef = id;
   activeId = id;
 }
@@ -104,7 +105,7 @@ function getItemProps(id: string) {
     },
     ondragover: (event: DragEvent) => {
       event.preventDefault();
-      event.dataTransfer!.dropEffect = "move";
+      if (event.dataTransfer) event.dataTransfer.dropEffect = "move";
       if (activeIdRef && activeIdRef !== id) overId = id;
     },
     ondragstart: (event: DragEvent) => {
@@ -156,13 +157,12 @@ setSortableContext({
 </script>
 
 <Ark
-  as="div"
+  as="ul"
   {...rest}
   class={recipe({ class: cn(className), orientation })}
   data-orientation={orientation}
   data-part="root"
   data-scope="sortable"
-  role="list"
 >
   {@render children?.()}
 </Ark>

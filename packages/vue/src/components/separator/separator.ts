@@ -19,10 +19,16 @@ export const Separator = defineComponent({
   inheritAttrs: false,
   name: "PisagorSeparator",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     dataPart: { default: "root", type: String },
     dataScope: { default: "separator", type: String },
-    orientation: { default: "horizontal", type: String as PropType<"horizontal" | "vertical"> },
+    orientation: {
+      default: "horizontal",
+      type: String as PropType<"horizontal" | "vertical">,
+    },
     recipe: {
       default: separatorRecipe,
       type: Function as PropType<typeof separatorRecipe>,

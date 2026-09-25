@@ -5,7 +5,8 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: "Highlights a key metric with an optional label, description, and trend.",
+        component:
+          "Highlights a key metric with an optional label, description, and trend.",
       },
     },
   },

@@ -8,8 +8,14 @@ export function Controlled() {
 
   return (
     <div className="flex flex-col gap-2">
-      <Carousel onPageChange={({ page }) => setPage(page)} page={page} slides={slides} />
-      <p className="text-center text-muted-foreground text-sm">Current page: {page + 1} of 5</p>
+      <Carousel
+        onPageChange={({ page }) => setPage(page)}
+        page={page}
+        slides={slides}
+      />
+      <p className="text-center text-muted-foreground text-sm">
+        Current page: {page + 1} of 5
+      </p>
     </div>
   );
 }

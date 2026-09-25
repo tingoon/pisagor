@@ -41,7 +41,12 @@ export interface StatProps extends Omit<StatRootProps, "children"> {
 }
 
 export function StatRoot(props: StatRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["variant", "children", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "variant",
+    "children",
+    "recipe",
+    "class",
+  ]);
   const slots = () => (local.recipe ?? statRecipe)();
 
   return (
@@ -146,7 +151,10 @@ export function StatShorthand(props: StatProps): JSX.Element {
         </StatValue>
       </Show>
       <Show when={local.description !== undefined}>
-        <StatDescription {...local.descriptionProps} class={local.classNames?.description}>
+        <StatDescription
+          {...local.descriptionProps}
+          class={local.classNames?.description}
+        >
           {local.description}
         </StatDescription>
       </Show>

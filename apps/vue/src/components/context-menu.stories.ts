@@ -8,7 +8,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Opens a menu of actions at the pointer position when the user right-clicks.",
+        component:
+          "Opens a menu of actions at the pointer position when the user right-clicks.",
       },
     },
   },

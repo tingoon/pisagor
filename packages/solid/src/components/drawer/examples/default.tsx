@@ -41,7 +41,9 @@ export function Default() {
                 </Button>
               )}
             />
-            <Drawer.CloseTrigger asChild={(props) => <Button {...props()}>Save changes</Button>} />
+            <Drawer.CloseTrigger
+              asChild={(props) => <Button {...props()}>Save changes</Button>}
+            />
           </Drawer.ContentInner>
         </Drawer.Footer>
       </Drawer.Content>

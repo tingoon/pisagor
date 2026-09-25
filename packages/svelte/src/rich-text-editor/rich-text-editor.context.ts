@@ -9,7 +9,9 @@ export interface RichTextEditorContextValue {
   slots: RichTextEditorRecipe;
 }
 
-const ctx = createContext<RichTextEditorContextValue>({ name: "RichTextEditor" });
+const ctx = createContext<RichTextEditorContextValue>({
+  name: "RichTextEditor",
+});
 export const setRichTextEditorContext = ctx.setContext;
 export const useRichTextEditorState = ctx.getContext;
 

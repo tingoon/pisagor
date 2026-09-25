@@ -7,7 +7,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Toggles a setting on or off with immediate visual feedback.",
+        component:
+          "Toggles a setting on or off with immediate visual feedback.",
       },
     },
   },

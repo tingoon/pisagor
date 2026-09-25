@@ -7,7 +7,10 @@ import {
 } from "@pisagor/recipes/input";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
-import { type ClearableChangeEvent, useClearableInput } from "../../hooks/use-clearable-input";
+import {
+  type ClearableChangeEvent,
+  useClearableInput,
+} from "../../hooks/use-clearable-input";
 import type { VariantClassNames } from "../../internal/types";
 import { InputGroupRoot } from "../input-group/input-group-core";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
@@ -52,16 +55,28 @@ export const Input = defineComponent({
   inheritAttrs: false,
   name: "PisagorInput",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<InputClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<InputClassNames>,
+    },
     clearable: { default: false, type: Boolean },
     defaultValue: {
       default: undefined,
       type: [String, Number, Array] as PropType<InputProps["defaultValue"]>,
     },
     disabled: { default: undefined, type: Boolean },
-    onChange: { default: undefined, type: Function as PropType<InputProps["onChange"]> },
-    onValueChange: { default: undefined, type: Function as PropType<InputProps["onValueChange"]> },
+    onChange: {
+      default: undefined,
+      type: Function as PropType<InputProps["onChange"]>,
+    },
+    onValueChange: {
+      default: undefined,
+      type: Function as PropType<InputProps["onValueChange"]>,
+    },
     readOnly: { default: undefined, type: Boolean },
     recipe: {
       default: inputRecipe,
@@ -73,8 +88,14 @@ export const Input = defineComponent({
     },
     size: { default: "md", type: String as PropType<InputProps["size"]> },
     type: { default: "text", type: String },
-    value: { default: undefined, type: [String, Number, Array] as PropType<InputProps["value"]> },
-    variant: { default: undefined, type: String as PropType<FormControlVariant> },
+    value: {
+      default: undefined,
+      type: [String, Number, Array] as PropType<InputProps["value"]>,
+    },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant>,
+    },
   },
   setup(props, { attrs }) {
     const surfaceVariant = useFormControlSurface();
@@ -84,23 +105,27 @@ export const Input = defineComponent({
     }));
 
     const clearableEnabled = computed(
-      () => props.clearable && props.type !== "file" && props.type !== "password",
+      () =>
+        props.clearable && props.type !== "file" && props.type !== "password",
     );
 
-    const { canClear, handleChange, handleClear, inputRef } = useClearableInput({
-      clearable: clearableEnabled,
-      defaultValue: props.defaultValue,
-      disabled: () => props.disabled,
-      onChange: props.onChange,
-      onValueChange: props.onValueChange,
-      readOnly: () => props.readOnly,
-      type: () => props.type,
-      value: () => props.value,
-    });
+    const { canClear, handleChange, handleClear, inputRef } = useClearableInput(
+      {
+        clearable: clearableEnabled,
+        defaultValue: props.defaultValue,
+        disabled: () => props.disabled,
+        onChange: props.onChange,
+        onValueChange: props.onValueChange,
+        readOnly: () => props.readOnly,
+        type: () => props.type,
+        value: () => props.value,
+      },
+    );
 
     return () => {
       const resolved = resolvedVariant.value;
-      const skipClearable = !props.clearable || props.type === "file" || props.type === "password";
+      const skipClearable =
+        !props.clearable || props.type === "file" || props.type === "password";
       const shellArgs = {
         surfaceVariant: resolved.surfaceVariant,
         variant: resolved.variant,
@@ -122,7 +147,10 @@ export const Input = defineComponent({
         return h(FieldPrimitive.Input as ArkPart, {
           ...attrs,
           ...controlProps,
-          class: cn(props.rootRecipe({ size: props.size, ...shellArgs }), props.class),
+          class: cn(
+            props.rootRecipe({ size: props.size, ...shellArgs }),
+            props.class,
+          ),
           "data-size": props.size,
           defaultValue: props.defaultValue,
           disabled: props.disabled,
@@ -133,21 +161,29 @@ export const Input = defineComponent({
         });
       }
 
-      return h(InputGroupRoot as ArkPart, { size: props.size, variant: props.variant }, () => [
-        h(FieldPrimitive.Input as ArkPart, {
-          ...attrs,
-          class: slots.clearableRoot({ class: cn(props.class, props.classNames?.clearableRoot) }),
-          "data-size": props.size,
-          defaultValue: props.defaultValue,
-          disabled: props.disabled,
-          onInput: handleChange,
-          readOnly: props.readOnly,
-          ref: inputRef,
-          type: props.type,
-          value: props.value,
-        }),
-        canClear.value ? h(InputClearAddon as ArkPart, { onClear: handleClear }) : null,
-      ]);
+      return h(
+        InputGroupRoot as ArkPart,
+        { size: props.size, variant: props.variant },
+        () => [
+          h(FieldPrimitive.Input as ArkPart, {
+            ...attrs,
+            class: slots.clearableRoot({
+              class: cn(props.class, props.classNames?.clearableRoot),
+            }),
+            "data-size": props.size,
+            defaultValue: props.defaultValue,
+            disabled: props.disabled,
+            onInput: handleChange,
+            readOnly: props.readOnly,
+            ref: inputRef,
+            type: props.type,
+            value: props.value,
+          }),
+          canClear.value
+            ? h(InputClearAddon as ArkPart, { onClear: handleClear })
+            : null,
+        ],
+      );
     };
   },
 });

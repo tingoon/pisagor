@@ -10,7 +10,14 @@ interface Props extends HTMLAttributes<"span"> {
   unitDisplay?: Intl.NumberFormatOptions["unitDisplay"];
 }
 
-const UNITS = ["byte", "kilobyte", "megabyte", "gigabyte", "terabyte", "petabyte"] as const;
+const UNITS = [
+  "byte",
+  "kilobyte",
+  "megabyte",
+  "gigabyte",
+  "terabyte",
+  "petabyte",
+] as const;
 
 function formatBytes(
   value: number,
@@ -33,7 +40,13 @@ function formatBytes(
   }).format(amount);
 }
 
-const { value, locale, unitDisplay = "short", class: className, ...rest } = Astro.props;
+const {
+  value,
+  locale,
+  unitDisplay = "short",
+  class: className,
+  ...rest
+} = Astro.props;
 const formatted = formatBytes(value, locale, unitDisplay);
 ---
 

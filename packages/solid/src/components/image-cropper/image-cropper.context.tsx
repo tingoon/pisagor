@@ -5,6 +5,7 @@ interface ImageCropperContextValue {
   slots: ImageCropperRecipe;
 }
 
-export const { ImageCropperContext, useImageCropper } = createContext<ImageCropperContextValue>()({
-  name: "ImageCropper",
-});
+export const { ImageCropperContext, useImageCropper } =
+  createContext<ImageCropperContextValue>()({
+    name: "ImageCropper",
+  });

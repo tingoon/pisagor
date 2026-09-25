@@ -30,7 +30,11 @@ export function Controlled() {
 
             <TreeView.BranchContent>
               {node.children.map((child, index) => (
-                <TreeNode indexPath={[...indexPath, index]} key={child.id} node={child} />
+                <TreeNode
+                  indexPath={[...indexPath, index]}
+                  key={child.id}
+                  node={child}
+                />
               ))}
             </TreeView.BranchContent>
           </TreeView.Branch>
@@ -62,7 +66,9 @@ export function Controlled() {
           ))}
         </TreeView.Tree>
       </TreeView>
-      <p className="text-muted-foreground text-sm">{isCorrectSelection ? "✅" : "❌"}</p>
+      <p className="text-muted-foreground text-sm">
+        {isCorrectSelection ? "✅" : "❌"}
+      </p>
     </div>
   );
 }

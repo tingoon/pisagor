@@ -20,7 +20,9 @@ import { Separator } from "../separator";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { FieldContext, useFieldSlots } from "./field.context";
 
-export interface FieldRootProps extends FieldPrimitiveRootProps, FieldVariantProps {
+export interface FieldRootProps
+  extends FieldPrimitiveRootProps,
+    FieldVariantProps {
   recipe?: typeof fieldRecipe;
 }
 
@@ -58,7 +60,10 @@ export function FieldRoot(props: FieldRootProps): JSX.Element {
   const orientation = () => local.orientation ?? "vertical";
   const reverse = () => local.reverse ?? false;
   const slots = createMemo(() =>
-    (local.recipe ?? fieldRecipe)({ orientation: orientation(), reverse: reverse() }),
+    (local.recipe ?? fieldRecipe)({
+      orientation: orientation(),
+      reverse: reverse(),
+    }),
   );
 
   return (
@@ -80,7 +85,10 @@ export function FieldSet(props: FieldSetProps): JSX.Element {
 
   return (
     <FieldContext value={{ slots: slots() }}>
-      <FieldsetPrimitive.Root {...rest} class={slots().set({ class: cn(local.class) })}>
+      <FieldsetPrimitive.Root
+        {...rest}
+        class={slots().set({ class: cn(local.class) })}
+      >
         {local.children}
       </FieldsetPrimitive.Root>
     </FieldContext>
@@ -133,10 +141,17 @@ export function FieldContent(props: FieldContentProps): JSX.Element {
 export function FieldLabel(props: FieldLabelProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useFieldSlots();
-  return <FieldPrimitive.Label {...rest} class={slots.label({ class: cn(local.class) })} />;
+  return (
+    <FieldPrimitive.Label
+      {...rest}
+      class={slots.label({ class: cn(local.class) })}
+    />
+  );
 }
 
-export function FieldRequiredIndicator(props: FieldRequiredIndicatorProps): JSX.Element {
+export function FieldRequiredIndicator(
+  props: FieldRequiredIndicatorProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const slots = useFieldSlots();
 
@@ -192,7 +207,12 @@ export function FieldSeparator(props: FieldSeparatorProps): JSX.Element {
     >
       <Separator class={slots.inline()} />
       <Show when={!!local.children}>
-        <span class={formControlSeparatorRecipe({ surfaceVariant, variant: "primary" })}>
+        <span
+          class={formControlSeparatorRecipe({
+            surfaceVariant,
+            variant: "primary",
+          })}
+        >
           {local.children}
         </span>
       </Show>
@@ -203,11 +223,21 @@ export function FieldSeparator(props: FieldSeparatorProps): JSX.Element {
 export function FieldHelper(props: FieldHelperProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useFieldSlots();
-  return <FieldPrimitive.HelperText {...rest} class={slots.helper({ class: cn(local.class) })} />;
+  return (
+    <FieldPrimitive.HelperText
+      {...rest}
+      class={slots.helper({ class: cn(local.class) })}
+    />
+  );
 }
 
 export function FieldError(props: FieldErrorProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const slots = useFieldSlots();
-  return <FieldPrimitive.ErrorText {...rest} class={slots.error({ class: cn(local.class) })} />;
+  return (
+    <FieldPrimitive.ErrorText
+      {...rest}
+      class={slots.error({ class: cn(local.class) })}
+    />
+  );
 }

@@ -42,23 +42,38 @@ export const PhoneInput = defineComponent({
   name: "PhoneInput",
   props: {
     class: { type: [String, Object, Array] as PropType<ClassValue> },
-    defaultCountry: { default: undefined, type: String as PropType<string | undefined> },
-    defaultValue: { default: undefined, type: String as PropType<string | undefined> },
+    defaultCountry: {
+      default: undefined,
+      type: String as PropType<string | undefined>,
+    },
+    defaultValue: {
+      default: undefined,
+      type: String as PropType<string | undefined>,
+    },
     disabled: { default: undefined, type: Boolean },
     inputProps: {
       default: undefined,
       type: Object as PropType<PhoneInputProps["inputProps"] | undefined>,
     },
     invalid: { default: undefined, type: Boolean },
-    onChange: { default: undefined, type: Function as PropType<PhoneInputProps["onChange"]> },
+    onChange: {
+      default: undefined,
+      type: Function as PropType<PhoneInputProps["onChange"]>,
+    },
     readOnly: { default: undefined, type: Boolean },
     recipe: {
       default: phoneInputRecipe,
       type: Function as PropType<typeof phoneInputRecipe>,
     },
-    size: { default: undefined, type: String as PropType<PhoneInputProps["size"]> },
+    size: {
+      default: undefined,
+      type: String as PropType<PhoneInputProps["size"]>,
+    },
     value: { default: undefined, type: String as PropType<string | undefined> },
-    variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant | undefined>,
+    },
   },
   setup(props, { attrs }) {
     return () => {
@@ -94,7 +109,12 @@ export const PhoneInput = defineComponent({
               "data-part": "country-trigger",
               "data-scope": "phone-input",
             },
-            () => h("span", { class: slots.flag({ class: slots.flagIcon() }) }, () => h(PhGlobe)),
+            () =>
+              h(
+                "span",
+                { class: slots.flag({ class: slots.flagIcon() }) },
+                () => h(PhGlobe),
+              ),
           ),
           h(
             InputGroup.Input as ArkPart,
@@ -104,7 +124,11 @@ export const PhoneInput = defineComponent({
               "aria-invalid": props.invalid || undefined,
               class: slots.input({
                 class: cn(
-                  (props.inputProps as unknown as { class?: ClassValue } | undefined)?.class,
+                  (
+                    props.inputProps as unknown as
+                      | { class?: ClassValue }
+                      | undefined
+                  )?.class,
                   (attrs as { class?: ClassValue }).class,
                 ),
               }),

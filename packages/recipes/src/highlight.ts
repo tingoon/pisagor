@@ -1,7 +1,13 @@
 import { tv } from "tailwind-variants";
 
 export const highlightRecipe = tv({
-  base: ["px-1", "bg-primary/20", "text-primary", "rounded-md", "box-decoration-clone"],
+  base: [
+    "px-1",
+    "bg-primary/20",
+    "text-primary",
+    "rounded-md",
+    "box-decoration-clone",
+  ],
 });
 
 export type HighlightRecipeFn = typeof highlightRecipe;

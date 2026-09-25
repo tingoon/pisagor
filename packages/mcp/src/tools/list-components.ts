@@ -1,6 +1,11 @@
 import { listComponents } from "../lib/catalog";
 import { INSTALL_GUIDE } from "../lib/resolve";
-import { type Framework, frameworkInputSchema, resolveFramework, type Tool } from "../lib/types";
+import {
+  type Framework,
+  frameworkInputSchema,
+  resolveFramework,
+  type Tool,
+} from "../lib/types";
 
 export const listComponentsTool: Tool = {
   description:
@@ -12,7 +17,9 @@ export const listComponentsTool: Tool = {
       name,
       {
         description,
-        inputSchema: multi ? { framework: frameworkInputSchema(config.frameworks) } : {},
+        inputSchema: multi
+          ? { framework: frameworkInputSchema(config.frameworks) }
+          : {},
       },
       async (args: { framework?: Framework }) => {
         if (config.packages.length === 0) {

@@ -1,4 +1,7 @@
-import { Toggle as TogglePrimitive, type ToggleRootProps } from "@ark-ui/react/toggle";
+import {
+  Toggle as TogglePrimitive,
+  type ToggleRootProps,
+} from "@ark-ui/react/toggle";
 import { type ButtonVariantProps, buttonRecipe } from "@pisagor/recipes/button";
 import { type ToggleVariantProps, toggleRecipe } from "@pisagor/recipes/toggle";
 

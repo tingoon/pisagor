@@ -14,7 +14,11 @@ export interface AspectRatioProps extends ComponentProps<typeof ark.div> {
 // #endregion
 
 // #region Component
-export function AspectRatio({ recipe = aspectRatioRecipe, className, ...rest }: AspectRatioProps) {
+export function AspectRatio({
+  recipe = aspectRatioRecipe,
+  className,
+  ...rest
+}: AspectRatioProps) {
   return (
     <ark.div
       {...rest}

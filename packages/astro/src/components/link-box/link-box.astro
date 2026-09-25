@@ -8,6 +8,11 @@ const { class: className, ...rest } = Astro.props;
 const slots = linkBoxRecipe();
 ---
 
-<div {...rest} class={slots.base({ className })} data-part="root" data-scope="link-box">
+<div
+  {...rest}
+  class={slots.base({ className })}
+  data-part="root"
+  data-scope="link-box"
+>
   <slot />
 </div>

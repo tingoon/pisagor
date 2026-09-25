@@ -26,7 +26,11 @@ export function AppShellNavigation({
 }: AppShellNavigationProps) {
   const navigationRef = useRef<HTMLElement>(null);
   const { slots } = useAppShell();
-  useSyncFixedRegionHeight(navigationRef, position, APP_SHELL_NAVIGATION_HEIGHT_VAR);
+  useSyncFixedRegionHeight(
+    navigationRef,
+    position,
+    APP_SHELL_NAVIGATION_HEIGHT_VAR,
+  );
 
   return (
     <nav

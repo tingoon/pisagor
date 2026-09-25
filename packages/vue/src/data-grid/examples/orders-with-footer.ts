@@ -12,7 +12,9 @@ import { DataGrid } from "..";
 type ArkPart = Parameters<typeof h>[0];
 
 function applyUpdater<T>(current: T, updater: T | ((old: T) => T)): T {
-  return typeof updater === "function" ? (updater as (old: T) => T)(current) : updater;
+  return typeof updater === "function"
+    ? (updater as (old: T) => T)(current)
+    : updater;
 }
 
 interface Order {
@@ -57,7 +59,12 @@ const ORDER_PRODUCTS = [
   "iPad Air",
 ] as const;
 
-const ORDER_STATUSES = ["pending", "shipped", "delivered", "cancelled"] as const;
+const ORDER_STATUSES = [
+  "pending",
+  "shipped",
+  "delivered",
+  "cancelled",
+] as const;
 
 const orders: Order[] = Array.from({ length: 32 }, (_, index) => ({
   amount: 49 + ((index * 17) % 450),
@@ -89,7 +96,9 @@ const DataGridShell = defineComponent({
   setup(_, { slots }) {
     return () =>
       h("div", { class: "flex w-full flex-col gap-3" }, () =>
-        h("div", { class: "rounded-xl border bg-muted/20 p-3" }, () => slots.default?.()),
+        h("div", { class: "rounded-xl border bg-muted/20 p-3" }, () =>
+          slots.default?.(),
+        ),
       );
   },
 });
@@ -134,19 +143,24 @@ export function OrdersWithFooter() {
           cell: ({ row }: CellContext<Order, unknown>) =>
             h(
               Badge as ArkPart,
-              { class: "capitalize", variant: orderStatusVariants[row.original.status] },
+              {
+                class: "capitalize",
+                variant: orderStatusVariants[row.original.status],
+              },
               () => row.original.status,
             ),
           header: "Status",
         },
         {
           accessorKey: "amount",
-          cell: ({ row }: CellContext<Order, unknown>) => formatCurrency(row.original.amount),
+          cell: ({ row }: CellContext<Order, unknown>) =>
+            formatCurrency(row.original.amount),
           header: "Amount",
         },
         {
           accessorKey: "placedAt",
-          cell: ({ row }: CellContext<Order, unknown>) => formatDate(row.original.placedAt),
+          cell: ({ row }: CellContext<Order, unknown>) =>
+            formatDate(row.original.placedAt),
           header: "Placed",
         },
       ];

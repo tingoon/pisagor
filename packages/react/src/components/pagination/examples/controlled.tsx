@@ -12,7 +12,9 @@ export function Controlled() {
         page={page}
         pageSize={10}
       />
-      <p className="text-center text-muted-foreground text-sm">Page {page} of 5</p>
+      <p className="text-center text-muted-foreground text-sm">
+        Page {page} of 5
+      </p>
     </div>
   );
 }

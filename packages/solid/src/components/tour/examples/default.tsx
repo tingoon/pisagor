@@ -19,7 +19,9 @@ export function Default() {
         },
       ]}
     >
-      <Tour.Trigger asChild={(props) => <Button {...props()}>Start tour</Button>} />
+      <Tour.Trigger
+        asChild={(props) => <Button {...props()}>Start tour</Button>}
+      />
       <Tour.Content />
     </Tour>
   );

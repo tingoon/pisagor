@@ -22,9 +22,11 @@ interface AutocompletePresetItem {
   value: string;
 }
 
-export type AutocompleteRootProps<T extends CollectionItem = CollectionItem> = ComboboxRootProps<T>;
+export type AutocompleteRootProps<T extends CollectionItem = CollectionItem> =
+  ComboboxRootProps<T>;
 
-export interface AutocompleteProps extends Omit<AutocompleteRootProps, "children" | "collection"> {
+export interface AutocompleteProps
+  extends Omit<AutocompleteRootProps, "children" | "collection"> {
   clearable?: boolean;
   items?: Array<AutocompletePresetItem | string>;
 }
@@ -32,7 +34,9 @@ export interface AutocompleteProps extends Omit<AutocompleteRootProps, "children
 export function AutocompleteRoot<T extends CollectionItem = CollectionItem>(
   props: AutocompleteRootProps<T>,
 ): JSX.Element {
-  return <Combobox.Root {...props} allowCustomValue inputBehavior="autocomplete" />;
+  return (
+    <Combobox.Root {...props} allowCustomValue inputBehavior="autocomplete" />
+  );
 }
 
 export function AutocompleteControl(props: ComboboxControlProps): JSX.Element {
@@ -50,7 +54,9 @@ export function AutocompleteInput(props: ComboboxInputProps): JSX.Element {
   );
 }
 
-export function AutocompleteItemGroupLabel(props: ComboboxItemGroupLabelProps): JSX.Element {
+export function AutocompleteItemGroupLabel(
+  props: ComboboxItemGroupLabelProps,
+): JSX.Element {
   return <Combobox.ItemGroupLabel {...props} />;
 }
 
@@ -66,11 +72,15 @@ export function AutocompleteTrigger(props: ComboboxTriggerProps): JSX.Element {
   return <Combobox.Trigger {...props} />;
 }
 
-export function AutocompleteClearTrigger(props: ComboboxClearTriggerProps): JSX.Element {
+export function AutocompleteClearTrigger(
+  props: ComboboxClearTriggerProps,
+): JSX.Element {
   return <Combobox.ClearTrigger {...props} />;
 }
 
-export function AutocompleteItemGroup(props: ComboboxItemGroupProps): JSX.Element {
+export function AutocompleteItemGroup(
+  props: ComboboxItemGroupProps,
+): JSX.Element {
   return <Combobox.ItemGroup {...props} />;
 }
 
@@ -87,7 +97,9 @@ export function AutocompleteCollection(props: ComboboxListProps): JSX.Element {
 }
 
 export function AutocompleteSeparator(props: SeparatorProps): JSX.Element {
-  return <Separator {...props} data-part="separator" data-scope="autocomplete" />;
+  return (
+    <Separator {...props} data-part="separator" data-scope="autocomplete" />
+  );
 }
 
 export function AutocompleteShorthand(props: AutocompleteProps): JSX.Element {

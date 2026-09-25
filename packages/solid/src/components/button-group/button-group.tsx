@@ -1,5 +1,8 @@
 import { ark } from "@ark-ui/solid/factory";
-import { type ButtonGroupVariantProps, buttonGroupRecipe } from "@pisagor/recipes/button-group";
+import {
+  type ButtonGroupVariantProps,
+  buttonGroupRecipe,
+} from "@pisagor/recipes/button-group";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
@@ -15,8 +18,14 @@ export interface ButtonGroupProps
 export type ButtonGroupTextProps = ComponentProps<typeof ark.div>;
 
 export function ButtonGroupRoot(props: ButtonGroupProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["orientation", "children", "recipe", "class"]);
-  const slots = () => (local.recipe ?? buttonGroupRecipe)({ orientation: local.orientation });
+  const [local, rest] = splitProps(props, [
+    "orientation",
+    "children",
+    "recipe",
+    "class",
+  ]);
+  const slots = () =>
+    (local.recipe ?? buttonGroupRecipe)({ orientation: local.orientation });
 
   return (
     <ButtonGroupContext value={{ slots: slots() }}>

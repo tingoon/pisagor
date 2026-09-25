@@ -5,6 +5,7 @@ interface DataListItemContextValue {
   slots: DataListItemRecipe;
 }
 
-export const { DataListItemContext, useDataListItem } = createContext<DataListItemContextValue>()({
-  name: "DataListItem",
-});
+export const { DataListItemContext, useDataListItem } =
+  createContext<DataListItemContextValue>()({
+    name: "DataListItem",
+  });

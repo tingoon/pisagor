@@ -11,8 +11,10 @@ export const SearchFieldInline = defineComponent({
     return () =>
       h(Field as ArkPart, { orientation: "horizontal" }, () => [
         h(Input as ArkPart, { placeholder: "Search..." }),
-        h(Button as ArkPart, { "aria-label": "Search", size: "icon-md", type: "button" }, () =>
-          h(PhMagnifyingGlass, { "aria-hidden": true }),
+        h(
+          Button as ArkPart,
+          { "aria-label": "Search", size: "icon-md", type: "button" },
+          () => h(PhMagnifyingGlass, { "aria-hidden": true }),
         ),
       ]);
   },

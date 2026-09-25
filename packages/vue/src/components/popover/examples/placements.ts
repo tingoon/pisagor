@@ -18,7 +18,10 @@ export default defineComponent({
             h(Popover.Trigger, { asChild: true }, () =>
               h(
                 "button",
-                { class: cn(outlineButtonClass(), "capitalize"), type: "button" },
+                {
+                  class: cn(outlineButtonClass(), "capitalize"),
+                  type: "button",
+                },
                 placement,
               ),
             ),

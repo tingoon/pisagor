@@ -3,7 +3,10 @@ import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { Button, type ButtonProps } from "../button";
 import { Tooltip, type TooltipProps } from "../tooltip";
-import type { AppShellPlacement, AppShellRegionPosition } from "./app-shell.context";
+import type {
+  AppShellPlacement,
+  AppShellRegionPosition,
+} from "./app-shell.context";
 import { useAppShell } from "./app-shell.context";
 import { APP_SHELL_RAIL_WIDTH } from "./constants";
 import { AppShellRailContext, useAppShellRail } from "./rail.context";
@@ -72,7 +75,9 @@ export function AppShellRail(props: AppShellRailProps): JSX.Element {
         data-scope="app-shell"
         style={{
           "grid-area": gridAreaFor(placement(), "rail"),
-          ...(typeof local.style === "object" && local.style && !Array.isArray(local.style)
+          ...(typeof local.style === "object" &&
+          local.style &&
+          !Array.isArray(local.style)
             ? (local.style as Record<string, string>)
             : {}),
         }}
@@ -96,11 +101,16 @@ export function AppShellRailItem(props: AppShellRailItemProps): JSX.Element {
     "class",
     "children",
   ]);
-  const { activeRailId, placement: railPlacement, setActiveRailId } = useAppShellRail();
+  const {
+    activeRailId,
+    placement: railPlacement,
+    setActiveRailId,
+  } = useAppShellRail();
   const panelPlacement = () => local.panelPlacement ?? railPlacement;
   const { panelStates, slots } = useAppShell();
   const active = () =>
-    local.isActive ?? (local.railId !== undefined && activeRailId() === local.railId);
+    local.isActive ??
+    (local.railId !== undefined && activeRailId() === local.railId);
 
   const button = (
     <Button

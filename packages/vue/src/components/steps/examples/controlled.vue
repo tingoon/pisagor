@@ -29,9 +29,18 @@ function reset() {
 
 <template>
   <div class="flex flex-col gap-2">
-    <Steps class="w-full" :count="items.length" :step="step" @step-change="onStepChange">
+    <Steps
+      class="w-full"
+      :count="items.length"
+      :step="step"
+      @step-change="onStepChange"
+    >
       <Steps.List>
-        <Steps.Item v-for="(item, index) in items" :key="item.title" :index="index">
+        <Steps.Item
+          v-for="(item, index) in items"
+          :key="item.title"
+          :index="index"
+        >
           <Steps.Trigger>
             <Steps.Indicator>{{ index + 1 }}</Steps.Indicator>
             <Steps.Title>{{ item.title }}</Steps.Title>
@@ -40,7 +49,11 @@ function reset() {
         </Steps.Item>
       </Steps.List>
 
-      <Steps.Content v-for="(item, index) in items" :key="item.title" :index="index">
+      <Steps.Content
+        v-for="(item, index) in items"
+        :key="item.title"
+        :index="index"
+      >
         <p class="text-muted-foreground">{{ item.content }}</p>
       </Steps.Content>
 

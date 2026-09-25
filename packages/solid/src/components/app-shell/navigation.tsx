@@ -10,12 +10,18 @@ export interface AppShellNavigationProps extends ComponentProps<"nav"> {
   position?: AppShellRegionPosition;
 }
 
-export function AppShellNavigation(props: AppShellNavigationProps): JSX.Element {
+export function AppShellNavigation(
+  props: AppShellNavigationProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["position", "class", "style"]);
   let navigationEl: HTMLElement | undefined;
   const { slots } = useAppShell();
   const position = () => local.position ?? "fixed";
-  useSyncFixedRegionHeight(() => navigationEl, position, APP_SHELL_NAVIGATION_HEIGHT_VAR);
+  useSyncFixedRegionHeight(
+    () => navigationEl,
+    position,
+    APP_SHELL_NAVIGATION_HEIGHT_VAR,
+  );
 
   return (
     <nav
@@ -33,7 +39,9 @@ export function AppShellNavigation(props: AppShellNavigationProps): JSX.Element 
       }}
       style={{
         "grid-area": "navigation",
-        ...(typeof local.style === "object" && local.style && !Array.isArray(local.style)
+        ...(typeof local.style === "object" &&
+        local.style &&
+        !Array.isArray(local.style)
           ? (local.style as Record<string, string>)
           : {}),
       }}

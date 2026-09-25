@@ -15,7 +15,12 @@ import { Steps as StepsPrimitive } from "@ark-ui/react/steps";
 import { CheckIcon } from "@phosphor-icons/react";
 import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes/steps";
 import type { ComponentProps } from "react";
-import { StepsContext, StepsItemContext, useSteps, useStepsItem } from "./steps.context";
+import {
+  StepsContext,
+  StepsItemContext,
+  useSteps,
+  useStepsItem,
+} from "./steps.context";
 
 // #region Types
 export interface StepsRootProps extends StepsPrimitiveRootProps {
@@ -42,7 +47,12 @@ export type StepsDescriptionProps = ComponentProps<typeof ark.span>;
 // #endregion
 
 // #region Parts
-export function StepsRoot({ children, recipe = stepsRecipe, className, ...rest }: StepsRootProps) {
+export function StepsRoot({
+  children,
+  recipe = stepsRecipe,
+  className,
+  ...rest
+}: StepsRootProps) {
   const slots = recipe();
 
   return (
@@ -57,7 +67,9 @@ export function StepsRoot({ children, recipe = stepsRecipe, className, ...rest }
 export function StepsList({ className, ...rest }: StepsListProps) {
   const { slots } = useSteps();
 
-  return <StepsPrimitive.List {...rest} className={slots.list({ className })} />;
+  return (
+    <StepsPrimitive.List {...rest} className={slots.list({ className })} />
+  );
 }
 
 export function StepsItem({
@@ -80,14 +92,26 @@ export function StepsItem({
 export function StepsTrigger({ className, ...rest }: StepsTriggerProps) {
   const { slots } = useStepsItem();
 
-  return <StepsPrimitive.Trigger {...rest} className={slots.trigger({ className })} />;
+  return (
+    <StepsPrimitive.Trigger
+      {...rest}
+      className={slots.trigger({ className })}
+    />
+  );
 }
 
-export function StepsIndicator({ children, className, ...rest }: StepsIndicatorProps) {
+export function StepsIndicator({
+  children,
+  className,
+  ...rest
+}: StepsIndicatorProps) {
   const { slots } = useStepsItem();
 
   return (
-    <StepsPrimitive.Indicator {...rest} className={slots.indicator({ className })}>
+    <StepsPrimitive.Indicator
+      {...rest}
+      className={slots.indicator({ className })}
+    >
       <span className={slots.label()}>{children}</span>
       <CheckIcon className={slots.check()} />
     </StepsPrimitive.Indicator>
@@ -97,7 +121,12 @@ export function StepsIndicator({ children, className, ...rest }: StepsIndicatorP
 export function StepsSeparator({ className, ...rest }: StepsSeparatorProps) {
   const { slots } = useStepsItem();
 
-  return <StepsPrimitive.Separator {...rest} className={slots.separator({ className })} />;
+  return (
+    <StepsPrimitive.Separator
+      {...rest}
+      className={slots.separator({ className })}
+    />
+  );
 }
 
 export function StepsTitle({ className, ...rest }: StepsTitleProps) {
@@ -113,7 +142,10 @@ export function StepsTitle({ className, ...rest }: StepsTitleProps) {
   );
 }
 
-export function StepsDescription({ className, ...rest }: StepsDescriptionProps) {
+export function StepsDescription({
+  className,
+  ...rest
+}: StepsDescriptionProps) {
   const { slots } = useStepsItem();
 
   return (
@@ -129,14 +161,25 @@ export function StepsDescription({ className, ...rest }: StepsDescriptionProps) 
 export function StepsContent({ className, ...rest }: StepsContentProps) {
   const { slots } = useSteps();
 
-  return <StepsPrimitive.Content {...rest} className={slots.content({ className })} />;
+  return (
+    <StepsPrimitive.Content
+      {...rest}
+      className={slots.content({ className })}
+    />
+  );
 }
 
-export function StepsCompletedContent({ className, ...rest }: StepsCompletedContentProps) {
+export function StepsCompletedContent({
+  className,
+  ...rest
+}: StepsCompletedContentProps) {
   const { slots } = useSteps();
 
   return (
-    <StepsPrimitive.CompletedContent {...rest} className={slots.completedContent({ className })} />
+    <StepsPrimitive.CompletedContent
+      {...rest}
+      className={slots.completedContent({ className })}
+    />
   );
 }
 

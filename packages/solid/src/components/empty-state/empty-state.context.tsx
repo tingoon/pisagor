@@ -5,6 +5,7 @@ interface EmptyStateContextValue {
   slots: EmptyStateRecipe;
 }
 
-export const { EmptyStateContext, useEmptyState } = createContext<EmptyStateContextValue>()({
-  name: "EmptyState",
-});
+export const { EmptyStateContext, useEmptyState } =
+  createContext<EmptyStateContextValue>()({
+    name: "EmptyState",
+  });

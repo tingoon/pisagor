@@ -6,7 +6,8 @@ export interface ComboboxRootContextValue {
   slots: ComboboxRecipe;
 }
 
-export const { ComboboxRootContext, useComboboxRoot } = createContext<ComboboxRootContextValue>()({
-  name: "ComboboxRoot",
-  strict: false,
-});
+export const { ComboboxRootContext, useComboboxRoot } =
+  createContext<ComboboxRootContextValue>()({
+    name: "ComboboxRoot",
+    strict: false,
+  });

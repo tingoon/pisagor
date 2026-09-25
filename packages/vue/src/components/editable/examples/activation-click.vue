@@ -6,7 +6,10 @@ import { Editable } from "..";
 
 <template>
   <Card>
-    <Card.Header description="Click the text to start editing" title="Edit with click" />
+    <Card.Header
+      description="Click the text to start editing"
+      title="Edit with click"
+    />
     <Card.Content>
       <Field.Group>
         <Field>

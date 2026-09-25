@@ -18,7 +18,10 @@ export const textareaRecipe = tv({
       "motion-reduce:transition-none!",
     ],
     group: ["relative", "h-auto", "items-start"],
-    rootLayout: ["field-sizing-content min-h-16 w-full", "flex h-auto px-3 py-2"],
+    rootLayout: [
+      "field-sizing-content min-h-16 w-full",
+      "flex h-auto px-3 py-2",
+    ],
   },
 });
 

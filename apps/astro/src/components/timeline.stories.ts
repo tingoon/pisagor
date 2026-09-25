@@ -5,7 +5,8 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: "Shows a sequence of events with indicators and supporting detail.",
+        component:
+          "Shows a sequence of events with indicators and supporting detail.",
       },
     },
   },

@@ -6,7 +6,10 @@ import {
   type RadioGroupRootProps as RadioGroupPrimitiveRootProps,
 } from "@ark-ui/solid/radio-group";
 import { formControlRadioToggleRecipe } from "@pisagor/recipes/form-control";
-import { radioGroupItemRecipe, radioGroupRecipe } from "@pisagor/recipes/radio-group";
+import {
+  radioGroupItemRecipe,
+  radioGroupRecipe,
+} from "@pisagor/recipes/radio-group";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { For, splitProps } from "solid-js";
@@ -21,7 +24,8 @@ interface RadioGroupPresetItem {
   value: string;
 }
 
-export interface RadioGroupRootProps extends Omit<RadioGroupPrimitiveRootProps, "onValueChange"> {
+export interface RadioGroupRootProps
+  extends Omit<RadioGroupPrimitiveRootProps, "onValueChange"> {
   onValueChange?: (value: string | null) => void;
   recipe?: typeof radioGroupRecipe;
 }
@@ -36,14 +40,21 @@ export interface RadioGroupItemProps extends RadioGroupPrimitiveItemProps {
 }
 
 export function RadioGroupRoot(props: RadioGroupRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "onValueChange", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "children",
+    "onValueChange",
+    "recipe",
+    "class",
+  ]);
 
   return (
     <RadioGroupPrimitive.Root
       {...rest}
       class={(local.recipe ?? radioGroupRecipe)({ class: cn(local.class) })}
       onValueChange={
-        local.onValueChange ? (details) => local.onValueChange?.(details.value) : undefined
+        local.onValueChange
+          ? (details) => local.onValueChange?.(details.value)
+          : undefined
       }
     >
       {local.children}
@@ -52,13 +63,22 @@ export function RadioGroupRoot(props: RadioGroupRootProps): JSX.Element {
 }
 
 export function RadioGroupItem(props: RadioGroupItemProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["variant", "tabIndex", "children", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "variant",
+    "tabIndex",
+    "children",
+    "recipe",
+    "class",
+  ]);
   const surfaceVariant = useFormControlSurface();
   const variant = () => local.variant ?? ("primary" as FormControlVariant);
   const slots = () => (local.recipe ?? radioGroupItemRecipe)();
 
   return (
-    <RadioGroupPrimitive.Item {...rest} class={slots().base({ class: cn(local.class) })}>
+    <RadioGroupPrimitive.Item
+      {...rest}
+      class={slots().base({ class: cn(local.class) })}
+    >
       <RadioGroupPrimitive.ItemControl
         class={cn(
           formControlRadioToggleRecipe({
@@ -75,12 +95,18 @@ export function RadioGroupItem(props: RadioGroupItemProps): JSX.Element {
   );
 }
 
-export function RadioGroupItemText(props: RadioGroupItemTextProps): JSX.Element {
+export function RadioGroupItemText(
+  props: RadioGroupItemTextProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   return (
     <Field.Label
       asChild={(labelProps) => (
-        <RadioGroupPrimitive.ItemText {...labelProps()} {...rest} class={cn(local.class)}>
+        <RadioGroupPrimitive.ItemText
+          {...labelProps()}
+          {...rest}
+          class={cn(local.class)}
+        >
           {local.children}
         </RadioGroupPrimitive.ItemText>
       )}

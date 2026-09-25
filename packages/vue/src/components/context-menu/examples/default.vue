@@ -14,7 +14,10 @@ import { ContextMenu } from "..";
       <ContextMenu.Item value="edit"><PhPencil /> Edit</ContextMenu.Item>
       <ContextMenu.Item value="copy"><PhCopy /> Copy</ContextMenu.Item>
       <ContextMenu.Separator />
-      <ContextMenu.Item value="delete" variant="destructive"><PhTrash /> Delete</ContextMenu.Item>
+      <ContextMenu.Item value="delete" variant="destructive"
+        ><PhTrash />
+        Delete</ContextMenu.Item
+      >
     </ContextMenu.Content>
   </ContextMenu>
 </template>

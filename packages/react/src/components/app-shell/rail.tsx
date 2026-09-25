@@ -2,7 +2,10 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { Button, type ButtonProps } from "../button";
 import { Tooltip, type TooltipProps } from "../tooltip";
-import type { AppShellPlacement, AppShellRegionPosition } from "./app-shell.context";
+import type {
+  AppShellPlacement,
+  AppShellRegionPosition,
+} from "./app-shell.context";
 import { useAppShell } from "./app-shell.context";
 import { APP_SHELL_RAIL_WIDTH } from "./constants";
 import { AppShellRailContext, useAppShellRail } from "./rail.context";
@@ -111,7 +114,11 @@ export function AppShellRailItem({
   className,
   ...rest
 }: AppShellRailItemProps) {
-  const { activeRailId, placement: railPlacement, setActiveRailId } = useAppShellRail();
+  const {
+    activeRailId,
+    placement: railPlacement,
+    setActiveRailId,
+  } = useAppShellRail();
   const panelPlacement = panelPlacementProp ?? railPlacement;
   const { panelStates, slots } = useAppShell();
   const active = isActive ?? (railId !== undefined && activeRailId === railId);
@@ -144,7 +151,8 @@ export function AppShellRailItem({
     return button;
   }
 
-  const tooltipProps = typeof tooltip === "string" ? { content: tooltip } : tooltip;
+  const tooltipProps =
+    typeof tooltip === "string" ? { content: tooltip } : tooltip;
 
   return (
     <Tooltip

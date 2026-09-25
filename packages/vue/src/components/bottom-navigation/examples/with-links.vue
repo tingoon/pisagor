@@ -1,11 +1,18 @@
 <script lang="ts" setup>
-import { PhBell, PhHouse, PhMagnifyingGlass, PhUser } from "@phosphor-icons/vue";
+import {
+  PhBell,
+  PhHouse,
+  PhMagnifyingGlass,
+  PhUser,
+} from "@phosphor-icons/vue";
 import { ScrollArea } from "@pisagor/vue";
 import { BottomNavigation } from "..";
 </script>
 
 <template>
-  <div class="flex h-72 flex-col overflow-y-auto rounded-lg border bg-muted shadow-lg/5">
+  <div
+    class="flex h-72 flex-col overflow-y-auto rounded-lg border bg-muted shadow-lg/5"
+  >
     <ScrollArea>
       <div class="h-96" />
       <BottomNavigation default-value="/docs">
@@ -18,7 +25,9 @@ import { BottomNavigation } from "..";
           </BottomNavigation.Item>
           <BottomNavigation.Item as-child value="/docs">
             <a href="https://example.com/search">
-              <BottomNavigation.ItemIcon><PhMagnifyingGlass /></BottomNavigation.ItemIcon>
+              <BottomNavigation.ItemIcon
+                ><PhMagnifyingGlass /></BottomNavigation.ItemIcon
+              >
               <BottomNavigation.ItemLabel>Search</BottomNavigation.ItemLabel>
             </a>
           </BottomNavigation.Item>

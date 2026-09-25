@@ -33,7 +33,10 @@ export const StepsRoot = defineComponent({
   inheritAttrs: false,
   name: "StepsRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: stepsRecipe,
       type: Function as PropType<typeof stepsRecipe>,
@@ -59,7 +62,10 @@ export const StepsList = defineComponent({
   inheritAttrs: false,
   name: "StepsList",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: stepsRecipe,
       type: Function as PropType<typeof stepsRecipe>,
@@ -85,7 +91,10 @@ export const StepsItem = defineComponent({
   inheritAttrs: false,
   name: "StepsItem",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: stepsItemRecipe,
       type: Function as PropType<typeof stepsItemRecipe>,
@@ -111,7 +120,10 @@ export const StepsTrigger = defineComponent({
   inheritAttrs: false,
   name: "StepsTrigger",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: stepsItemRecipe,
       type: Function as PropType<typeof stepsItemRecipe>,
@@ -137,7 +149,10 @@ export const StepsIndicator = defineComponent({
   inheritAttrs: false,
   name: "StepsIndicator",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: stepsItemRecipe,
       type: Function as PropType<typeof stepsItemRecipe>,
@@ -166,7 +181,10 @@ export const StepsSeparator = defineComponent({
   inheritAttrs: false,
   name: "StepsSeparator",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: stepsItemRecipe,
       type: Function as PropType<typeof stepsItemRecipe>,
@@ -192,7 +210,10 @@ export const StepsTitle = defineComponent({
   inheritAttrs: false,
   name: "StepsTitle",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: stepsItemRecipe,
       type: Function as PropType<typeof stepsItemRecipe>,
@@ -220,7 +241,10 @@ export const StepsDescription = defineComponent({
   inheritAttrs: false,
   name: "StepsDescription",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: stepsItemRecipe,
       type: Function as PropType<typeof stepsItemRecipe>,
@@ -248,7 +272,10 @@ export const StepsContent = defineComponent({
   inheritAttrs: false,
   name: "StepsContent",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: stepsRecipe,
       type: Function as PropType<typeof stepsRecipe>,
@@ -274,7 +301,10 @@ export const StepsCompletedContent = defineComponent({
   inheritAttrs: false,
   name: "StepsCompletedContent",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: stepsRecipe,
       type: Function as PropType<typeof stepsRecipe>,

@@ -8,7 +8,10 @@ import type {
 import { SignaturePad as SignaturePadPrimitive } from "@ark-ui/react/signature-pad";
 import { ArrowCounterClockwiseIcon } from "@phosphor-icons/react";
 import { formControlZoneRecipe } from "@pisagor/recipes/form-control";
-import { type SignaturePadRecipeSlot, signaturePadRecipe } from "@pisagor/recipes/signature-pad";
+import {
+  type SignaturePadRecipeSlot,
+  signaturePadRecipe,
+} from "@pisagor/recipes/signature-pad";
 import { cn } from "@pisagor/utils";
 import type { VariantClassNames } from "../../internal/types";
 import { Button } from "../button";
@@ -33,7 +36,8 @@ type SignaturePadRootProps = SignaturePadPrimitiveRootProps & {
   invalid?: boolean;
 };
 
-export interface SignaturePadProps extends Omit<SignaturePadRootProps, "children"> {
+export interface SignaturePadProps
+  extends Omit<SignaturePadRootProps, "children"> {
   /** Slot class names */
   classNames?: SignaturePadClassNames;
 }
@@ -91,7 +95,10 @@ function SignaturePadControl({
       className={cn(
         formControlZoneRecipe({ ...shellArgs }),
         slots.control({
-          className: cn(resolved.variant === "primary" && "shadow-xs/5", className),
+          className: cn(
+            resolved.variant === "primary" && "shadow-xs/5",
+            className,
+          ),
         }),
       )}
       data-invalid={invalid || undefined}
@@ -104,14 +111,23 @@ function SignaturePadControl({
 function SignaturePadSegment({ className, ...rest }: SignaturePadSegmentProps) {
   const { slots } = useSignaturePad();
 
-  return <SignaturePadPrimitive.Segment {...rest} className={slots.segment({ className })} />;
+  return (
+    <SignaturePadPrimitive.Segment
+      {...rest}
+      className={slots.segment({ className })}
+    />
+  );
 }
 
 function SignaturePadClear({ className, ...rest }: SignaturePadClearProps) {
   const { slots } = useSignaturePad();
 
   return (
-    <SignaturePadPrimitive.ClearTrigger {...rest} asChild className={slots.clear({ className })}>
+    <SignaturePadPrimitive.ClearTrigger
+      {...rest}
+      asChild
+      className={slots.clear({ className })}
+    >
       <Button aria-label="Clear signature" size="icon-md" variant="ghost">
         <ArrowCounterClockwiseIcon />
       </Button>
@@ -122,7 +138,12 @@ function SignaturePadClear({ className, ...rest }: SignaturePadClearProps) {
 function SignaturePadGuide({ className, ...rest }: SignaturePadGuideProps) {
   const { slots } = useSignaturePad();
 
-  return <SignaturePadPrimitive.Guide {...rest} className={slots.guide({ className })} />;
+  return (
+    <SignaturePadPrimitive.Guide
+      {...rest}
+      className={slots.guide({ className })}
+    />
+  );
 }
 // #endregion
 
@@ -135,7 +156,12 @@ export function SignaturePad({
   ...rest
 }: SignaturePadProps) {
   return (
-    <SignaturePadRoot {...rest} className={className} invalid={invalid} variant={variant}>
+    <SignaturePadRoot
+      {...rest}
+      className={className}
+      invalid={invalid}
+      variant={variant}
+    >
       <SignaturePadControl className={classNames?.control} invalid={invalid}>
         <SignaturePadSegment className={classNames?.segment} />
         <SignaturePadClear className={classNames?.clear} />

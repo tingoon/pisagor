@@ -1,6 +1,12 @@
 import { type ChartRecipe, chartRecipe } from "@pisagor/recipes/chart";
 import { cn } from "@pisagor/utils";
-import { computed, defineComponent, h, type PropType, type VNodeChild } from "vue";
+import {
+  computed,
+  defineComponent,
+  h,
+  type PropType,
+  type VNodeChild,
+} from "vue";
 import { createContext } from "./internal/create-context";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -63,10 +69,12 @@ interface ChartContextValue {
   slots: ChartRecipe;
 }
 
-const [provideChartContext, useChartContext] = createContext<ChartContextValue>({
-  name: "Chart",
-  strict: true,
-});
+const [provideChartContext, useChartContext] = createContext<ChartContextValue>(
+  {
+    name: "Chart",
+    strict: true,
+  },
+);
 
 function useChart(): ChartContextValue {
   // `createContext(..., { strict: true })` ensures this is never undefined at runtime.
@@ -93,14 +101,22 @@ type ChartPayloadEntry = {
   [key: string]: unknown;
 };
 
-function resolvePayloadKey(item: ChartPayloadEntry, key: string, fallback: string) {
+function resolvePayloadKey(
+  item: ChartPayloadEntry,
+  key: string,
+  fallback: string,
+) {
   if (typeof item?.dataKey === "string") return item.dataKey;
   if (typeof item?.name === "string") return item.name;
   if (typeof key === "string") return key || fallback;
   return fallback;
 }
 
-function getPayloadConfig(config: ChartConfig, item: ChartPayloadEntry, key: string) {
+function getPayloadConfig(
+  config: ChartConfig,
+  item: ChartPayloadEntry,
+  key: string,
+) {
   const resolvedKey = resolvePayloadKey(item, key, key);
   if (resolvedKey in config) return config[resolvedKey];
 
@@ -139,7 +155,8 @@ export const ChartStyle = defineComponent({
             ${prefix} [data-chart=${props.id}] {
               ${colorConfig
                 .map(([key, itemConfig]) => {
-                  const color = itemConfig.theme?.[themeKey] ?? itemConfig.color;
+                  const color =
+                    itemConfig.theme?.[themeKey] ?? itemConfig.color;
                   return color ? `--color-${key}: ${color};` : null;
                 })
                 .filter((line): line is string => Boolean(line))
@@ -158,7 +175,10 @@ export const ChartContainer = defineComponent({
   inheritAttrs: false,
   name: "ChartContainer",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     config: { required: true, type: Object as PropType<ChartConfig> },
     id: { default: undefined, type: String },
     recipe: {
@@ -167,9 +187,13 @@ export const ChartContainer = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
-    const uniqueId = computed(() => props.id ?? `chart-${Math.random().toString(36).slice(2)}`);
+    const uniqueId = computed(
+      () => props.id ?? `chart-${Math.random().toString(36).slice(2)}`,
+    );
     const variantSlots = props.recipe();
-    provideChartContext(computed(() => ({ config: props.config, slots: variantSlots })));
+    provideChartContext(
+      computed(() => ({ config: props.config, slots: variantSlots })),
+    );
 
     return () =>
       h(
@@ -181,7 +205,10 @@ export const ChartContainer = defineComponent({
           "data-part": "root",
           "data-scope": "chart",
         },
-        () => [h(ChartStyle, { config: props.config, id: uniqueId.value }), slots.default?.()],
+        () => [
+          h(ChartStyle, { config: props.config, id: uniqueId.value }),
+          slots.default?.(),
+        ],
       );
   },
 });
@@ -211,7 +238,10 @@ export const ChartTooltipContent = defineComponent({
     color: { default: undefined, type: String },
     hideIndicator: { default: false, type: Boolean },
     hideLabel: { default: false, type: Boolean },
-    indicator: { default: "dot", type: String as PropType<ChartTooltipContentProps["indicator"]> },
+    indicator: {
+      default: "dot",
+      type: String as PropType<ChartTooltipContentProps["indicator"]>,
+    },
     label: { default: undefined, type: null as unknown as PropType<unknown> },
     labelClassName: { default: undefined, type: String },
     labelKey: { default: undefined, type: String },
@@ -234,79 +264,98 @@ export const ChartTooltipContent = defineComponent({
 
       const nestLabel = payload.length === 1 && props.indicator !== "dot";
 
-      return h("div" as ArkPart, { class: cn(variantSlots.tooltip(), props.className) }, () => [
-        nestLabel
-          ? null
-          : tooltipLabelValue != null
-            ? h(
-                "div",
-                { class: cn(variantSlots.label(), props.labelClassName) },
-                () => tooltipLabelValue,
-              )
-            : null,
-        h(
-          "div" as ArkPart,
-          { class: variantSlots.tooltipStack() },
-          payload.map((entry, index) => {
-            const item = entry as ChartPayloadEntry;
-            const itemKey = (
-              props.nameKey && typeof item?.[props.nameKey] === "string"
-                ? (item[props.nameKey] as string)
-                : typeof item?.dataKey === "string"
-                  ? item.dataKey
-                  : typeof item?.name === "string"
-                    ? item.name
-                    : "value"
-            ) as string;
+      return h(
+        "div" as ArkPart,
+        { class: cn(variantSlots.tooltip(), props.className) },
+        () => [
+          nestLabel
+            ? null
+            : tooltipLabelValue != null
+              ? h(
+                  "div",
+                  { class: cn(variantSlots.label(), props.labelClassName) },
+                  () => tooltipLabelValue,
+                )
+              : null,
+          h(
+            "div" as ArkPart,
+            { class: variantSlots.tooltipStack() },
+            payload.map((entry, index) => {
+              const item = entry as ChartPayloadEntry;
+              const itemKey = (
+                props.nameKey && typeof item?.[props.nameKey] === "string"
+                  ? (item[props.nameKey] as string)
+                  : typeof item?.dataKey === "string"
+                    ? item.dataKey
+                    : typeof item?.name === "string"
+                      ? item.name
+                      : "value"
+              ) as string;
 
-            const itemConfig = getPayloadConfig(config, item, itemKey);
-            const indicatorColor =
-              props.color ??
-              (typeof item?.payload?.fill === "string" ? item.payload.fill : undefined) ??
-              (typeof item?.fill === "string" ? item.fill : undefined) ??
-              (typeof item?.color === "string" ? item.color : undefined);
-            const itemLabel =
-              itemConfig?.label ?? (typeof item?.name === "string" ? item.name : itemKey);
-            const itemValue = item?.value ?? item?.payload?.value ?? item?.payload?.[itemKey];
+              const itemConfig = getPayloadConfig(config, item, itemKey);
+              const indicatorColor =
+                props.color ??
+                (typeof item?.payload?.fill === "string"
+                  ? item.payload.fill
+                  : undefined) ??
+                (typeof item?.fill === "string" ? item.fill : undefined) ??
+                (typeof item?.color === "string" ? item.color : undefined);
+              const itemLabel =
+                itemConfig?.label ??
+                (typeof item?.name === "string" ? item.name : itemKey);
+              const itemValue =
+                item?.value ?? item?.payload?.value ?? item?.payload?.[itemKey];
 
-            return h(
-              "div" as ArkPart,
-              { class: variantSlots.tooltipItem(), key: itemKey + String(index) },
-              () => [
-                props.hideIndicator
-                  ? null
-                  : h("div" as ArkPart, {
-                      class: cn(variantSlots.indicator()),
-                      style: {
-                        "--color-bg": indicatorColor ?? "",
-                        "--color-border": indicatorColor ?? "",
-                      },
-                    }),
-                h("div" as ArkPart, { class: variantSlots.tooltipRow() }, () =>
-                  [
-                    h("div" as ArkPart, { class: variantSlots.tooltipStack() }, () =>
+              return h(
+                "div" as ArkPart,
+                {
+                  class: variantSlots.tooltipItem(),
+                  key: itemKey + String(index),
+                },
+                () => [
+                  props.hideIndicator
+                    ? null
+                    : h("div" as ArkPart, {
+                        class: cn(variantSlots.indicator()),
+                        style: {
+                          "--color-bg": indicatorColor ?? "",
+                          "--color-border": indicatorColor ?? "",
+                        },
+                      }),
+                  h(
+                    "div" as ArkPart,
+                    { class: variantSlots.tooltipRow() },
+                    () =>
                       [
-                        nestLabel ? tooltipLabelValue : null,
                         h(
-                          "span" as ArkPart,
-                          { class: variantSlots.tooltipLabel() },
-                          () => itemLabel,
+                          "div" as ArkPart,
+                          { class: variantSlots.tooltipStack() },
+                          () =>
+                            [
+                              nestLabel ? tooltipLabelValue : null,
+                              h(
+                                "span" as ArkPart,
+                                { class: variantSlots.tooltipLabel() },
+                                () => itemLabel,
+                              ),
+                            ].filter(Boolean),
                         ),
+                        itemValue != null
+                          ? h(
+                              "span" as ArkPart,
+                              { class: variantSlots.tooltipValue() },
+                              () => String(itemValue),
+                            )
+                          : null,
                       ].filter(Boolean),
-                    ),
-                    itemValue != null
-                      ? h("span" as ArkPart, { class: variantSlots.tooltipValue() }, () =>
-                          String(itemValue),
-                        )
-                      : null,
-                  ].filter(Boolean),
-                ),
-              ],
-            );
-          }),
-        ),
-        slots.default?.(),
-      ]);
+                  ),
+                ],
+              );
+            }),
+          ),
+          slots.default?.(),
+        ],
+      );
     };
   },
 });
@@ -354,20 +403,27 @@ export const ChartLegendContent = defineComponent({
                     : `value-${index}`;
               const itemConfig = getPayloadConfig(config, item, itemKey);
               const itemLabel =
-                itemConfig?.label ?? (typeof item?.name === "string" ? item.name : itemKey);
+                itemConfig?.label ??
+                (typeof item?.name === "string" ? item.name : itemKey);
               const indicatorColor =
                 (typeof item?.color === "string" ? item.color : undefined) ??
-                (typeof item?.payload?.color === "string" ? item.payload.color : undefined);
+                (typeof item?.payload?.color === "string"
+                  ? item.payload.color
+                  : undefined);
 
-              return h("div" as ArkPart, { class: variantSlots.legendItem(), key: itemKey }, () => [
-                itemConfig?.icon && !props.hideIcon
-                  ? h(itemConfig.icon, null)
-                  : h("div" as ArkPart, {
-                      class: variantSlots.swatch(),
-                      style: { backgroundColor: indicatorColor ?? "" },
-                    }),
-                itemLabel,
-              ]);
+              return h(
+                "div" as ArkPart,
+                { class: variantSlots.legendItem(), key: itemKey },
+                () => [
+                  itemConfig?.icon && !props.hideIcon
+                    ? h(itemConfig.icon, null)
+                    : h("div" as ArkPart, {
+                        class: variantSlots.swatch(),
+                        style: { backgroundColor: indicatorColor ?? "" },
+                      }),
+                  itemLabel,
+                ],
+              );
             })
             .concat(slots.default?.() ?? []),
       );
@@ -390,7 +446,10 @@ export const ChartTooltip = defineComponent({
     },
     hideIndicator: { default: false, type: Boolean },
     hideLabel: { default: false, type: Boolean },
-    indicator: { default: "dot", type: String as PropType<ChartTooltipContentProps["indicator"]> },
+    indicator: {
+      default: "dot",
+      type: String as PropType<ChartTooltipContentProps["indicator"]>,
+    },
     label: { default: undefined, type: null as unknown as PropType<unknown> },
     labelKey: { default: undefined, type: String },
     nameKey: { default: undefined, type: String },

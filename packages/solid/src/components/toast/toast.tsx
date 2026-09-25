@@ -12,7 +12,11 @@ import {
   Toaster as ToasterPrimitive,
   Toast as ToastPrimitive,
 } from "@ark-ui/solid/toast";
-import { type ToastItemRecipeSlot, toastItemRecipe, toastRecipe } from "@pisagor/recipes/toast";
+import {
+  type ToastItemRecipeSlot,
+  toastItemRecipe,
+  toastRecipe,
+} from "@pisagor/recipes/toast";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
@@ -30,7 +34,8 @@ import { ToastItemContext, useToastItem } from "./toast.context";
 
 type ToastItemClassNames = VariantClassNames<ToastItemRecipeSlot>;
 
-export interface ToasterRootProps extends Omit<ToasterPrimitiveProps, "toaster" | "children"> {
+export interface ToasterRootProps
+  extends Omit<ToasterPrimitiveProps, "toaster" | "children"> {
   recipe?: typeof toastRecipe;
 }
 
@@ -45,8 +50,14 @@ export interface ToastItemRootProps extends ToastRootProps {
 export interface ToastItemProps extends ToastItemRootProps {
   classNames?: ToastItemClassNames;
   actionsProps?: Omit<ComponentProps<"div">, "class">;
-  actionTriggerProps?: Omit<ToastActionTriggerProps, "asChild" | "children" | "class" | "onClick">;
-  closeTriggerProps?: Omit<ToastCloseTriggerProps, "asChild" | "children" | "class">;
+  actionTriggerProps?: Omit<
+    ToastActionTriggerProps,
+    "asChild" | "children" | "class" | "onClick"
+  >;
+  closeTriggerProps?: Omit<
+    ToastCloseTriggerProps,
+    "asChild" | "children" | "class"
+  >;
   descriptionProps?: Omit<ToastDescriptionProps, "children" | "class">;
   iconProps?: Omit<ComponentProps<"div">, "class">;
   titleProps?: Omit<ToastTitleProps, "children" | "class">;
@@ -60,7 +71,12 @@ export const toast = createToaster({
 });
 
 export function ToasterRoot(props: ToasterProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["toaster", "recipe", "class", "style"]);
+  const [local, rest] = splitProps(props, [
+    "toaster",
+    "recipe",
+    "class",
+    "style",
+  ]);
   const toasterInstance = () => local.toaster ?? toast;
   const recipe = () => local.recipe ?? toastRecipe;
 
@@ -71,7 +87,9 @@ export function ToasterRoot(props: ToasterProps): JSX.Element {
         class={recipe()({ class: local.class })}
         style={{
           "--width": "356px",
-          ...(typeof local.style === "object" && local.style !== null ? local.style : {}),
+          ...(typeof local.style === "object" && local.style !== null
+            ? local.style
+            : {}),
         }}
         toaster={toasterInstance()}
       >
@@ -95,7 +113,10 @@ function ToastItemRoot(props: ToastItemRootProps): JSX.Element {
 
   return (
     <ToastItemContext value={{ slots: slots() }}>
-      <ToastPrimitive.Root {...rest} class={slots().base({ class: local.class })}>
+      <ToastPrimitive.Root
+        {...rest}
+        class={slots().base({ class: local.class })}
+      >
         {local.children}
       </ToastPrimitive.Root>
     </ToastItemContext>
@@ -103,7 +124,8 @@ function ToastItemRoot(props: ToastItemRootProps): JSX.Element {
 }
 
 function ToastItemContent(
-  props: Omit<ToastItemProps, keyof ToastItemRootProps> & Pick<ToastItemProps, "toast">,
+  props: Omit<ToastItemProps, keyof ToastItemRootProps> &
+    Pick<ToastItemProps, "toast">,
 ): JSX.Element {
   const [local] = splitProps(props, [
     "actionsProps",
@@ -145,14 +167,19 @@ function ToastItemContent(
           <Show when={toastData().description}>
             <ToastPrimitive.Description
               {...local.descriptionProps}
-              class={slots.description({ class: local.classNames?.description })}
+              class={slots.description({
+                class: local.classNames?.description,
+              })}
             >
               {toastData().description}
             </ToastPrimitive.Description>
           </Show>
         </div>
       </div>
-      <div {...local.actionsProps} class={slots.actions({ class: local.classNames?.actions })}>
+      <div
+        {...local.actionsProps}
+        class={slots.actions({ class: local.classNames?.actions })}
+      >
         <Show when={toastData().action}>
           <ToastPrimitive.ActionTrigger
             {...local.actionTriggerProps}
@@ -173,7 +200,9 @@ function ToastItemContent(
             {...local.closeTriggerProps}
             asChild={(triggerProps) => (
               <Button
-                {...triggerProps({ class: slots.close({ class: local.classNames?.close }) })}
+                {...triggerProps({
+                  class: slots.close({ class: local.classNames?.close }),
+                })}
                 aria-label="Close"
                 size="icon-xs"
                 variant="ghost"

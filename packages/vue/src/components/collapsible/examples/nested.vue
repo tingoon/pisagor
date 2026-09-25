@@ -5,7 +5,10 @@ import { Collapsible } from "..";
 
 <template>
   <Card class="w-80">
-    <Card.Header description="We'll help you get started" title="Getting started" />
+    <Card.Header
+      description="We'll help you get started"
+      title="Getting started"
+    />
 
     <Card.Content>
       <Collapsible>
@@ -17,7 +20,8 @@ import { Collapsible } from "..";
         </Collapsible.Trigger>
         <Collapsible.Content class="flex flex-col gap-2 p-2">
           <p class="text-muted-foreground text-sm">
-            Here you can find the documentation for all the components and how to use them.
+            Here you can find the documentation for all the components and how
+            to use them.
           </p>
           <Collapsible>
             <Collapsible.Trigger as-child>
@@ -27,10 +31,14 @@ import { Collapsible } from "..";
               </Button>
             </Collapsible.Trigger>
             <Collapsible.Content class="flex flex-col gap-2 p-2">
-              <p class="text-muted-foreground text-sm">Copy the following code:</p>
+              <p class="text-muted-foreground text-sm">
+                Copy the following code:
+              </p>
 
               <div class="relative">
-                <pre class="rounded-md bg-muted p-2 text-muted-foreground text-xs">
+                <pre
+                  class="rounded-md bg-muted p-2 text-muted-foreground text-xs"
+                >
                         <code>bun add ui</code>
                       </pre>
                 <Clipboard

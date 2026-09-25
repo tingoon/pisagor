@@ -8,11 +8,15 @@ export default defineComponent({
     return () =>
       h(File, {
         actions: [
-          h(Button, { "aria-label": "Download", size: "icon-xs", variant: "ghost" }, () =>
-            h(PhDownloadSimple),
+          h(
+            Button,
+            { "aria-label": "Download", size: "icon-xs", variant: "ghost" },
+            () => h(PhDownloadSimple),
           ),
-          h(Button, { "aria-label": "Remove", size: "icon-xs", variant: "ghost" }, () =>
-            h(PhTrash),
+          h(
+            Button,
+            { "aria-label": "Remove", size: "icon-xs", variant: "ghost" },
+            () => h(PhTrash),
           ),
         ],
         meta: "PNG image",

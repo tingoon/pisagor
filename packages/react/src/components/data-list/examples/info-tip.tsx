@@ -26,11 +26,17 @@ export function InfoTip() {
           {item.label}
           <Popover modal={false} positioning={{ placement: "top" }}>
             <Popover.Trigger asChild>
-              <Button aria-label={`Info about ${item.label}`} size="icon-sm" variant="ghost">
+              <Button
+                aria-label={`Info about ${item.label}`}
+                size="icon-sm"
+                variant="ghost"
+              >
                 <InfoIcon />
               </Button>
             </Popover.Trigger>
-            <Popover.Content className="w-max text-sm">{item.info}</Popover.Content>
+            <Popover.Content className="w-max text-sm">
+              {item.info}
+            </Popover.Content>
           </Popover>
         </DataList.Item>
       ))}

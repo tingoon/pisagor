@@ -8,7 +8,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Fixed bottom bar for switching between primary app sections on mobile.",
+        component:
+          "Fixed bottom bar for switching between primary app sections on mobile.",
       },
     },
   },

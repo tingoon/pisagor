@@ -5,23 +5,43 @@ export function Variants() {
 
   return (
     <div className="flex flex-col gap-2">
-      <SegmentGroup.Root className="rounded-lg" defaultValue="Profile" variant="default">
+      <SegmentGroup.Root
+        className="rounded-lg"
+        defaultValue="Profile"
+        variant="default"
+      >
         {items.map((item) => (
-          <SegmentGroup.Item className="px-2 py-1.5 text-sm" key={item} value={item}>
+          <SegmentGroup.Item
+            className="px-2 py-1.5 text-sm"
+            key={item}
+            value={item}
+          >
             {item}
           </SegmentGroup.Item>
         ))}
       </SegmentGroup.Root>
       <SegmentGroup.Root defaultValue="Profile" variant="underline">
         {items.map((item) => (
-          <SegmentGroup.Item className="px-2 py-1.5 text-sm" key={item} value={item}>
+          <SegmentGroup.Item
+            className="px-2 py-1.5 text-sm"
+            key={item}
+            value={item}
+          >
             {item}
           </SegmentGroup.Item>
         ))}
       </SegmentGroup.Root>
-      <SegmentGroup.Root defaultValue="Profile" orientation="vertical" variant="underline">
+      <SegmentGroup.Root
+        defaultValue="Profile"
+        orientation="vertical"
+        variant="underline"
+      >
         {items.map((item) => (
-          <SegmentGroup.Item className="px-2 py-1.5 text-sm" key={item} value={item}>
+          <SegmentGroup.Item
+            className="px-2 py-1.5 text-sm"
+            key={item}
+            value={item}
+          >
             {item}
           </SegmentGroup.Item>
         ))}

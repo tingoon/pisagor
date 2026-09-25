@@ -21,17 +21,27 @@ export function Placements() {
   return (
     <>
       <div className="flex flex-wrap gap-2">
-        <Button onClick={() => handleOpenChange("bottom-start")} variant="outline">
+        <Button
+          onClick={() => handleOpenChange("bottom-start")}
+          variant="outline"
+        >
           Bottom start
         </Button>
         <Button onClick={() => handleOpenChange("bottom")} variant="outline">
           Bottom
         </Button>
-        <Button onClick={() => handleOpenChange("bottom-end")} variant="outline">
+        <Button
+          onClick={() => handleOpenChange("bottom-end")}
+          variant="outline"
+        >
           Bottom end
         </Button>
       </div>
-      <ActionBar onOpenChange={setIsOpen} open={isOpen} positioning={{ placement }}>
+      <ActionBar
+        onOpenChange={setIsOpen}
+        open={isOpen}
+        positioning={{ placement }}
+      >
         <ActionBar.Content aria-label="Bulk actions">
           <ActionBar.Value count={5} />
           <ActionBar.Separator />

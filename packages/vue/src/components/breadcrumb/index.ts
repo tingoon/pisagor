@@ -9,7 +9,11 @@ import {
   BreadcrumbShorthand,
 } from "./breadcrumb";
 
-export type { BreadcrumbPresetItem, BreadcrumbProps, BreadcrumbRootProps } from "./breadcrumb";
+export type {
+  BreadcrumbPresetItem,
+  BreadcrumbProps,
+  BreadcrumbRootProps,
+} from "./breadcrumb";
 
 export const Breadcrumb = Object.assign(BreadcrumbShorthand, {
   Ellipsis: BreadcrumbEllipsis,

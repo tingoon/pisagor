@@ -29,9 +29,15 @@ const onWidthChange = setWidth;
           :on-width-change="onWidthChange"
           :width="width"
         />
-        <div class="flex flex-1 items-center justify-center p-4 text-sm">Panel</div>
+        <div class="flex flex-1 items-center justify-center p-4 text-sm">
+          Panel
+        </div>
       </aside>
-      <div class="flex min-w-0 flex-1 items-center justify-center bg-muted/30 text-sm">Main</div>
+      <div
+        class="flex min-w-0 flex-1 items-center justify-center bg-muted/30 text-sm"
+      >
+        Main
+      </div>
     </div>
   </div>
 </template>

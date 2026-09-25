@@ -30,7 +30,11 @@ const _CustomPreviewList = defineComponent({
             h(FileUpload.ItemDeleteTrigger, { asChild: true }, () =>
               h(
                 Button as ArkPart,
-                { class: "absolute -top-2 -right-2", pill: true, size: "icon-xs" },
+                {
+                  class: "absolute -top-2 -right-2",
+                  pill: true,
+                  size: "icon-xs",
+                },
                 () => h(PhX),
               ),
             ),
@@ -55,7 +59,9 @@ const _CustomPreviewList = defineComponent({
       <FileUpload.Trigger as-child>
         <Button>Browse files</Button>
       </FileUpload.Trigger>
-      <FileUpload.Helper>You can upload up to 2 files at a time.</FileUpload.Helper>
+      <FileUpload.Helper
+        >You can upload up to 2 files at a time.</FileUpload.Helper
+      >
     </FileUpload.Dropzone>
     <FileUpload.List />
   </FileUpload>

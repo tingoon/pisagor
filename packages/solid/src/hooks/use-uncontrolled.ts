@@ -13,13 +13,18 @@ export function useUncontrolled<T>({
   defaultValue,
   finalValue,
   onChange,
-}: UseUncontrolledInput<T>): [Accessor<T>, (value: T, ...payload: unknown[]) => void] {
+}: UseUncontrolledInput<T>): [
+  Accessor<T>,
+  (value: T, ...payload: unknown[]) => void,
+] {
   const isControlled = () => value !== undefined;
   const [uncontrolled, setUncontrolled] = createSignal(
     (defaultValue !== undefined ? defaultValue : finalValue) as T,
   );
 
-  const current = createMemo(() => (isControlled() ? (value as T) : uncontrolled()));
+  const current = createMemo(() =>
+    isControlled() ? (value as T) : uncontrolled(),
+  );
 
   const setValue = (next: T, ...payload: unknown[]) => {
     if (!isControlled()) {

@@ -14,7 +14,10 @@ export function Default() {
         )}
       />
       <Popover.Content class="w-80">
-        <Popover.Header description="Set the dimensions for the layer." title="Dimensions" />
+        <Popover.Header
+          description="Set the dimensions for the layer."
+          title="Dimensions"
+        />
         <Popover.Body>
           <Field.Group class="gap-2">
             <Field class="grid grid-cols-3 items-center gap-2">

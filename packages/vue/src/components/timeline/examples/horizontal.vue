@@ -24,7 +24,11 @@ function _items() {
     },
   ];
 }
-const items = [{ title: "Planned" }, { title: "In progress" }, { title: "Shipped" }];
+const items = [
+  { title: "Planned" },
+  { title: "In progress" },
+  { title: "Shipped" },
+];
 </script>
 
 <template>

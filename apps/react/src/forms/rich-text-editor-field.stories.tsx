@@ -8,7 +8,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Edits formatted text with a toolbar, label, and optional validation message.",
+        component:
+          "Edits formatted text with a toolbar, label, and optional validation message.",
       },
     },
   },

@@ -1,5 +1,8 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type ButtonGroupVariantProps, buttonGroupRecipe } from "@pisagor/recipes/button-group";
+import {
+  type ButtonGroupVariantProps,
+  buttonGroupRecipe,
+} from "@pisagor/recipes/button-group";
 import { defineComponent, h, type PropType } from "vue";
 import { Separator, type SeparatorProps } from "../separator";
 
@@ -22,7 +25,10 @@ export const ButtonGroupRoot = defineComponent({
   inheritAttrs: false,
   name: "ButtonGroupRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     orientation: {
       default: "horizontal",
       type: String as PropType<ButtonGroupVariantProps["orientation"]>,
@@ -55,7 +61,10 @@ export const ButtonGroupText = defineComponent({
   inheritAttrs: false,
   name: "ButtonGroupText",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: buttonGroupRecipe,
       type: Function as PropType<typeof buttonGroupRecipe>,
@@ -83,8 +92,14 @@ export const ButtonGroupSeparator = defineComponent({
   inheritAttrs: false,
   name: "ButtonGroupSeparator",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    orientation: { default: "vertical", type: String as PropType<SeparatorProps["orientation"]> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    orientation: {
+      default: "vertical",
+      type: String as PropType<SeparatorProps["orientation"]>,
+    },
     recipe: {
       default: buttonGroupRecipe,
       type: Function as PropType<typeof buttonGroupRecipe>,

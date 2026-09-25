@@ -13,6 +13,8 @@ const message = ref("");
       :value="message"
       @value-change="(value) => (message = value)"
     />
-    <Field.Description class="text-right">Character count: {{ message.length }}</Field.Description>
+    <Field.Description class="text-right"
+      >Character count: {{ message.length }}</Field.Description
+    >
   </Field>
 </template>

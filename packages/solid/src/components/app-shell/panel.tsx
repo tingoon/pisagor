@@ -1,7 +1,10 @@
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { createSignal, Show, splitProps } from "solid-js";
-import { ArrowsInLineHorizontalIcon, ArrowsOutLineHorizontalIcon } from "../../internal/icons";
+import {
+  ArrowsInLineHorizontalIcon,
+  ArrowsOutLineHorizontalIcon,
+} from "../../internal/icons";
 import type { ButtonProps } from "../button";
 import { Resizable } from "../resizable";
 import { ScrollArea } from "../scroll-area";
@@ -33,7 +36,8 @@ export interface AppShellPanelProps extends ComponentProps<"aside"> {
   resizableProps?: AppShellResizableProps;
 }
 
-export interface AppShellPanelTriggerProps extends Omit<ButtonProps, "children"> {
+export interface AppShellPanelTriggerProps
+  extends Omit<ButtonProps, "children"> {
   placement?: AppShellPlacement;
   children?: JSX.Element;
   off?: JSX.Element;
@@ -81,7 +85,9 @@ export function AppShellPanel(props: AppShellPanelProps): JSX.Element {
       {...rest}
       class={cn(
         slots.panel(),
-        placement() === "start" ? "border-e border-border" : "border-s border-border",
+        placement() === "start"
+          ? "border-border border-e"
+          : "border-border border-s",
         regionPositionClasses(slots, position(), "column"),
         side.open() ? "opacity-100" : "pointer-events-none opacity-0",
         local.class,
@@ -93,7 +99,9 @@ export function AppShellPanel(props: AppShellPanelProps): JSX.Element {
       data-state={side.open() ? "open" : "closed"}
       style={{
         "grid-area": gridAreaFor(placement(), "panel"),
-        ...(typeof local.style === "object" && local.style && !Array.isArray(local.style)
+        ...(typeof local.style === "object" &&
+        local.style &&
+        !Array.isArray(local.style)
           ? (local.style as Record<string, string>)
           : {}),
       }}
@@ -113,7 +121,9 @@ export function AppShellPanel(props: AppShellPanelProps): JSX.Element {
   );
 }
 
-export function AppShellPanelHeader(props: AppShellPanelHeaderProps): JSX.Element {
+export function AppShellPanelHeader(
+  props: AppShellPanelHeaderProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useAppShell();
   return (
@@ -126,7 +136,9 @@ export function AppShellPanelHeader(props: AppShellPanelHeaderProps): JSX.Elemen
   );
 }
 
-export function AppShellPanelContent(props: AppShellPanelContentProps): JSX.Element {
+export function AppShellPanelContent(
+  props: AppShellPanelContentProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useAppShell();
   return (
@@ -141,7 +153,9 @@ export function AppShellPanelContent(props: AppShellPanelContentProps): JSX.Elem
   );
 }
 
-export function AppShellPanelFooter(props: AppShellPanelFooterProps): JSX.Element {
+export function AppShellPanelFooter(
+  props: AppShellPanelFooterProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useAppShell();
   return (
@@ -154,7 +168,9 @@ export function AppShellPanelFooter(props: AppShellPanelFooterProps): JSX.Elemen
   );
 }
 
-export function AppShellPanelTrigger(props: AppShellPanelTriggerProps): JSX.Element {
+export function AppShellPanelTrigger(
+  props: AppShellPanelTriggerProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, [
     "placement",
     "children",

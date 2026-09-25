@@ -17,7 +17,10 @@ export function InputGroupInput(props: InputProps): JSX.Element {
       class={inputGroupControlRecipe({ class: cn(local.class) })}
       classNames={{
         ...local.classNames,
-        clearableRoot: cn(inputGroupControlRecipe(), local.classNames?.clearableRoot),
+        clearableRoot: cn(
+          inputGroupControlRecipe(),
+          local.classNames?.clearableRoot,
+        ),
       }}
     />
   );
@@ -31,7 +34,10 @@ export function InputGroupTextarea(props: TextareaProps): JSX.Element {
       {...rest}
       classNames={{
         ...local.classNames,
-        rootLayout: cn(inputGroupTextareaControlRecipe(), local.classNames?.rootLayout),
+        rootLayout: cn(
+          inputGroupTextareaControlRecipe(),
+          local.classNames?.rootLayout,
+        ),
       }}
     />
   );

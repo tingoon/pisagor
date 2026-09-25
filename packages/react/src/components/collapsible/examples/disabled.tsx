@@ -12,7 +12,8 @@ export function Disabled() {
         </Collapsible.Trigger>
         <Collapsible.Content className="pt-2">
           <p className="text-muted-foreground text-sm">
-            This content cannot be accessed because the collapsible is unavailable.
+            This content cannot be accessed because the collapsible is
+            unavailable.
           </p>
         </Collapsible.Content>
       </Collapsible>

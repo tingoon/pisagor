@@ -6,7 +6,10 @@ import type {
   DatePickerTriggerProps as DatePickerPrimitiveTriggerProps,
   DatePickerValueTextProps,
 } from "@ark-ui/solid/date-picker";
-import { DatePicker as DatePickerPrimitive, useDatePickerContext } from "@ark-ui/solid/date-picker";
+import {
+  DatePicker as DatePickerPrimitive,
+  useDatePickerContext,
+} from "@ark-ui/solid/date-picker";
 import { calendarRecipe } from "@pisagor/recipes/calendar";
 import { datePickerRecipe } from "@pisagor/recipes/date-picker";
 import type { JSX } from "solid-js";
@@ -22,7 +25,8 @@ import { DatePickerSlotsContext, useDatePicker } from "./date-picker.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-export interface DatePickerTriggerProps extends DatePickerPrimitiveTriggerProps {
+export interface DatePickerTriggerProps
+  extends DatePickerPrimitiveTriggerProps {
   clearable?: boolean;
 }
 
@@ -37,11 +41,13 @@ export interface DatePickerTimerProps extends Omit<InputProps, "recipe"> {
   recipe?: typeof datePickerRecipe;
 }
 
-export interface DatePickerContentProps extends DatePickerPrimitiveContentProps {
+export interface DatePickerContentProps
+  extends DatePickerPrimitiveContentProps {
   showCalendar?: boolean;
 }
 
-export interface DatePickerRootProps extends Omit<DatePickerPrimitiveRootProps, "onValueChange"> {
+export interface DatePickerRootProps
+  extends Omit<DatePickerPrimitiveRootProps, "onValueChange"> {
   variant?: FormControlVariant;
   onValueChange?: (value: DatePickerRootProps["value"]) => void;
   recipe?: typeof datePickerRecipe;
@@ -67,7 +73,9 @@ export function DatePickerRoot(props: DatePickerRootProps): JSX.Element {
           {...rest}
           inline={false}
           onValueChange={
-            local.onValueChange ? (details) => local.onValueChange?.(details.value) : undefined
+            local.onValueChange
+              ? (details) => local.onValueChange?.(details.value)
+              : undefined
           }
           positioning={local.positioning ?? { placement: "top" }}
         >
@@ -85,7 +93,10 @@ export function DatePickerTrigger(props: DatePickerTriggerProps): JSX.Element {
 
   return (
     <DatePickerPrimitive.Control class={slots().control()}>
-      <DatePickerPrimitive.Trigger {...rest} class={slots().trigger({ class: local.class })}>
+      <DatePickerPrimitive.Trigger
+        {...rest}
+        class={slots().trigger({ class: local.class })}
+      >
         {local.children}
       </DatePickerPrimitive.Trigger>
       <Show when={local.clearable ?? false}>
@@ -105,7 +116,9 @@ export function DatePickerInput(props: DatePickerInputProps): JSX.Element {
       <InputGroup class={local.class} size={local.size}>
         <DatePickerPrimitive.Input
           {...rest}
-          asChild={(inputProps) => <InputGroup.Input {...inputProps()} clearable={false} />}
+          asChild={(inputProps) => (
+            <InputGroup.Input {...inputProps()} clearable={false} />
+          )}
         />
         <InputGroup.Addon align="inline-end">
           <Show when={local.clearable ?? false}>
@@ -171,36 +184,42 @@ export function DatePickerTimer(props: DatePickerTimerProps): JSX.Element {
   const picker = useDatePicker();
   const slots = () => picker?.slots ?? (local.recipe ?? datePickerRecipe)();
 
-  const { canClear, handleChange, handleClear, mergedRef } = useClearableInput<HTMLInputElement>({
-    get clearable() {
-      return local.clearable ?? false;
-    },
-    get defaultValue() {
-      return local.defaultValue;
-    },
-    get disabled() {
-      return local.disabled;
-    },
-    get onChange() {
-      return local.onChange
-        ? (event: Event & { currentTarget: HTMLInputElement; target: HTMLInputElement }) => {
-            const handler = local.onChange;
-            if (typeof handler === "function") {
-              (handler as (e: typeof event) => void)(event);
+  const { canClear, handleChange, handleClear, mergedRef } =
+    useClearableInput<HTMLInputElement>({
+      get clearable() {
+        return local.clearable ?? false;
+      },
+      get defaultValue() {
+        return local.defaultValue;
+      },
+      get disabled() {
+        return local.disabled;
+      },
+      get onChange() {
+        return local.onChange
+          ? (
+              event: Event & {
+                currentTarget: HTMLInputElement;
+                target: HTMLInputElement;
+              },
+            ) => {
+              const handler = local.onChange;
+              if (typeof handler === "function") {
+                (handler as (e: typeof event) => void)(event);
+              }
             }
-          }
-        : undefined;
-    },
-    get readOnly() {
-      return local.readOnly;
-    },
-    get ref() {
-      return typeof local.ref === "function" ? local.ref : undefined;
-    },
-    get value() {
-      return local.value;
-    },
-  });
+          : undefined;
+      },
+      get readOnly() {
+        return local.readOnly;
+      },
+      get ref() {
+        return typeof local.ref === "function" ? local.ref : undefined;
+      },
+      get value() {
+        return local.value;
+      },
+    });
 
   return (
     <InputGroup size={local.size} variant={local.variant}>
@@ -231,7 +250,11 @@ export function DatePickerTimer(props: DatePickerTimerProps): JSX.Element {
 }
 
 export function DatePickerContent(props: DatePickerContentProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["showCalendar", "children", "class"]);
+  const [local, rest] = splitProps(props, [
+    "showCalendar",
+    "children",
+    "class",
+  ]);
   const picker = useDatePicker();
   const slots = () => picker?.slots ?? datePickerRecipe();
   const showCalendar = () => local.showCalendar ?? true;
@@ -239,8 +262,14 @@ export function DatePickerContent(props: DatePickerContentProps): JSX.Element {
   return (
     <Portal>
       <DatePickerPrimitive.Positioner>
-        <DatePickerPrimitive.Content {...rest} class={slots().content({ class: local.class })}>
-          <Show fallback={local.children} when={showCalendar() && local.children === undefined}>
+        <DatePickerPrimitive.Content
+          {...rest}
+          class={slots().content({ class: local.class })}
+        >
+          <Show
+            fallback={local.children}
+            when={showCalendar() && local.children === undefined}
+          >
             <Calendar.ViewControl>
               <Calendar.PrevTrigger />
               <Calendar.MonthSelect />
@@ -258,15 +287,22 @@ export function DatePickerContent(props: DatePickerContentProps): JSX.Element {
   );
 }
 
-export function DatePickerValueText(props: DatePickerValueTextProps): JSX.Element {
+export function DatePickerValueText(
+  props: DatePickerValueTextProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const picker = useDatePicker();
   const slots = () => picker?.slots ?? datePickerRecipe();
   return (
-    <DatePickerPrimitive.ValueText {...rest} class={slots().valueText({ class: local.class })} />
+    <DatePickerPrimitive.ValueText
+      {...rest}
+      class={slots().valueText({ class: local.class })}
+    />
   );
 }
 
-export function DatePickerPresetTrigger(props: DatePickerPresetTriggerProps): JSX.Element {
+export function DatePickerPresetTrigger(
+  props: DatePickerPresetTriggerProps,
+): JSX.Element {
   return <Calendar.PresetTrigger {...props} />;
 }

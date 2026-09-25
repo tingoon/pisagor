@@ -9,9 +9,19 @@ const items = [
 export function Variants() {
   return (
     <div className="flex flex-wrap items-center gap-2">
-      <ToggleGroup defaultValue={["bold"]} items={items} multiple variant="ghost" />
+      <ToggleGroup
+        defaultValue={["bold"]}
+        items={items}
+        multiple
+        variant="ghost"
+      />
       <ToggleGroup defaultValue={["bold"]} items={items} multiple />
-      <ToggleGroup defaultValue={["bold"]} items={items} multiple variant="outline" />
+      <ToggleGroup
+        defaultValue={["bold"]}
+        items={items}
+        multiple
+        variant="outline"
+      />
     </div>
   );
 }

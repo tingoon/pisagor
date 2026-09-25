@@ -81,7 +81,10 @@ export const SheetBackdrop = defineComponent({
   inheritAttrs: false,
   name: "SheetBackdrop",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => h(DialogBackdrop, { ...attrs, class: props.class }, slots);
@@ -92,12 +95,18 @@ export const SheetPositioner = defineComponent({
   inheritAttrs: false,
   name: "SheetPositioner",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     placement: {
       default: undefined,
       type: String as PropType<"top" | "right" | "bottom" | "left">,
     },
-    variant: { default: "default", type: String as PropType<"default" | "inset"> },
+    variant: {
+      default: "default",
+      type: String as PropType<"default" | "inset">,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -123,10 +132,19 @@ export const SheetContent = defineComponent({
   inheritAttrs: false,
   name: "SheetContent",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    placement: { default: "right", type: String as PropType<"top" | "right" | "bottom" | "left"> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    placement: {
+      default: "right",
+      type: String as PropType<"top" | "right" | "bottom" | "left">,
+    },
     showCloseButton: { default: true, type: Boolean },
-    variant: { default: "default", type: String as PropType<"default" | "inset"> },
+    variant: {
+      default: "default",
+      type: String as PropType<"default" | "inset">,
+    },
   },
   setup(props, { attrs, slots }) {
     const dialogContext = useDialog();
@@ -140,26 +158,29 @@ export const SheetContent = defineComponent({
 
       return sheetTeleport([
         h(SheetBackdrop),
-        h(SheetPositioner, { placement: props.placement, variant: props.variant }, () =>
-          h(
-            DialogPrimitive.Content as ArkPart,
-            {
-              ...attrs,
-              class: sheetSlots.content({
-                class: props.class,
-                placement: props.placement,
-                variant: props.variant,
-              }),
-            },
-            () => [
-              slots.default?.(),
-              props.showCloseButton
-                ? h(SheetCloseTrigger, { asChild: true }, () =>
-                    renderIconCloseButton(sheetSlots.inline()),
-                  )
-                : null,
-            ],
-          ),
+        h(
+          SheetPositioner,
+          { placement: props.placement, variant: props.variant },
+          () =>
+            h(
+              DialogPrimitive.Content as ArkPart,
+              {
+                ...attrs,
+                class: sheetSlots.content({
+                  class: props.class,
+                  placement: props.placement,
+                  variant: props.variant,
+                }),
+              },
+              () => [
+                slots.default?.(),
+                props.showCloseButton
+                  ? h(SheetCloseTrigger, { asChild: true }, () =>
+                      renderIconCloseButton(sheetSlots.inline()),
+                    )
+                  : null,
+              ],
+            ),
         ),
       ]);
     };
@@ -171,7 +192,11 @@ export const SheetHeader = defineComponent({
   name: "SheetHeader",
   setup(_, { attrs, slots }) {
     return () =>
-      h(DialogHeader as ArkPart, { ...attrs, dataPart: "header", dataScope: "sheet" }, slots);
+      h(
+        DialogHeader as ArkPart,
+        { ...attrs, dataPart: "header", dataScope: "sheet" },
+        slots,
+      );
   },
 });
 
@@ -195,7 +220,10 @@ export const SheetBody = defineComponent({
   inheritAttrs: false,
   name: "SheetBody",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     scrollFade: { default: false, type: Boolean },
   },
   setup(props, { attrs, slots }) {
@@ -221,7 +249,8 @@ export const SheetCloseTrigger = defineComponent({
   inheritAttrs: false,
   name: "SheetCloseTrigger",
   setup(_, { attrs, slots }) {
-    return () => h(DialogPrimitive.CloseTrigger as ArkPart, { ...attrs }, slots);
+    return () =>
+      h(DialogPrimitive.CloseTrigger as ArkPart, { ...attrs }, slots);
   },
 });
 
@@ -229,7 +258,10 @@ export const SheetFooter = defineComponent({
   inheritAttrs: false,
   name: "SheetFooter",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -250,7 +282,10 @@ export const SheetFooter = defineComponent({
 });
 // #endregion
 
-export type { DialogBodyProps as SheetBodyProps, DialogHeaderProps as SheetHeaderProps };
+export type {
+  DialogBodyProps as SheetBodyProps,
+  DialogHeaderProps as SheetHeaderProps,
+};
 
 export const Sheet = Object.assign(SheetRoot, {
   Backdrop: SheetBackdrop,

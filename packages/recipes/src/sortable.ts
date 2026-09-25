@@ -1,7 +1,7 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
 export const sortableRecipe = tv({
-  base: ["flex gap-2"],
+  base: ["m-0 flex list-none gap-2 p-0"],
   defaultVariants: {
     /**
      * Layout orientation.
@@ -19,6 +19,7 @@ export const sortableRecipe = tv({
 export const sortableItemRecipe = tv({
   slots: {
     base: [
+      "list-none",
       "relative",
       "rounded-2xl border border-border/50 bg-card",
       "outline-hidden focus-visible:border-primary focus-visible:ring-0.75 focus-visible:ring-ring/32",
@@ -29,6 +30,7 @@ export const sortableItemRecipe = tv({
     handle: [
       "inline-flex size-8 shrink-0 items-center justify-center",
       "cursor-grab touch-none text-muted-foreground",
+      "appearance-none border-0 bg-transparent p-0",
       "rounded-lg",
       "transition-[color,background-color,transform] duration-fast ease-out",
       "hover:bg-muted hover:text-foreground",

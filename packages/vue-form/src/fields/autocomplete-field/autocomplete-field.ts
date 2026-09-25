@@ -1,7 +1,10 @@
 import type { AutocompleteProps } from "@pisagor/vue";
 import { Autocomplete } from "@pisagor/vue";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
+import {
+  type FieldPresentationProps,
+  FieldShell,
+} from "../../internal/field-shell";
 
 type ArkPart = Parameters<typeof h>[0];
 
@@ -13,7 +16,10 @@ interface AutocompleteOption {
 
 export interface AutocompleteFieldProps
   extends FieldPresentationProps,
-    Omit<AutocompleteProps, "class" | "invalid" | "name" | "onValueChange" | "value" | "items"> {
+    Omit<
+      AutocompleteProps,
+      "class" | "invalid" | "name" | "onValueChange" | "value" | "items"
+    > {
   items: Array<AutocompleteOption | string>;
   name?: string;
   onBlur?: () => void;
@@ -27,19 +33,34 @@ export const AutocompleteField = defineComponent({
   inheritAttrs: false,
   name: "AutocompleteField",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     clearable: { default: undefined, type: Boolean },
-    description: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    description: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     disabled: { default: undefined, type: Boolean },
-    error: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    error: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     id: { default: undefined, type: String },
     invalid: { default: undefined, type: Boolean },
     items: {
       required: true,
       type: Array as PropType<Array<AutocompleteOption | string>>,
     },
-    label: { default: undefined, type: null as unknown as PropType<VNodeChild> },
-    labelAccessory: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    label: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
+    labelAccessory: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     labelProps: {
       default: undefined,
       type: Object as PropType<FieldPresentationProps["labelProps"]>,
@@ -56,7 +77,10 @@ export const AutocompleteField = defineComponent({
     },
     placeholder: { default: undefined, type: String },
     value: { default: undefined, type: String },
-    variant: { default: undefined, type: String as PropType<AutocompleteProps["variant"]> },
+    variant: {
+      default: undefined,
+      type: String as PropType<AutocompleteProps["variant"]>,
+    },
   },
   setup(props, { attrs }) {
     return () =>
@@ -89,7 +113,9 @@ export const AutocompleteField = defineComponent({
             },
             placeholder: props.placeholder,
             variant: props.variant,
-            ...(props.value !== undefined ? { value: props.value ? [props.value] : [] } : {}),
+            ...(props.value !== undefined
+              ? { value: props.value ? [props.value] : [] }
+              : {}),
           }),
       );
   },

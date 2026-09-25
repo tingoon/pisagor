@@ -7,11 +7,21 @@ import {
   PhTextStrikethrough,
 } from "@phosphor-icons/vue";
 import { formControlShellRecipe } from "@pisagor/recipes/form-control";
-import { type RichTextEditorRecipe, richTextEditorRecipe } from "@pisagor/recipes/rich-text-editor";
+import {
+  type RichTextEditorRecipe,
+  richTextEditorRecipe,
+} from "@pisagor/recipes/rich-text-editor";
 import { cn } from "@pisagor/utils";
 import StarterKit from "@tiptap/starter-kit";
 import { type Editor, EditorContent, useEditor } from "@tiptap/vue-3";
-import { defineComponent, h, type PropType, shallowReactive, watch, watchEffect } from "vue";
+import {
+  defineComponent,
+  h,
+  type PropType,
+  shallowReactive,
+  watch,
+  watchEffect,
+} from "vue";
 import { useFormControlSurface } from "../components/surface/use-form-control-surface";
 import { Toggle } from "../components/toggle/toggle";
 import { VisuallyHidden } from "../components/visually-hidden/visually-hidden";
@@ -89,7 +99,10 @@ const richTextEditorRootProps = {
   id: String,
   invalid: { default: false, type: Boolean },
   name: String,
-  onBlur: { default: undefined, type: Function as PropType<RichTextEditorRootProps["onBlur"]> },
+  onBlur: {
+    default: undefined,
+    type: Function as PropType<RichTextEditorRootProps["onBlur"]>,
+  },
   onValueChange: {
     default: undefined,
     type: Function as PropType<RichTextEditorRootProps["onValueChange"]>,
@@ -100,7 +113,10 @@ const richTextEditorRootProps = {
     type: Function as PropType<typeof richTextEditorRecipe>,
   },
   value: { default: undefined, type: String },
-  variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
+  variant: {
+    default: undefined,
+    type: String as PropType<FormControlVariant | undefined>,
+  },
 };
 
 // #region Parts
@@ -189,7 +205,8 @@ export const RichTextEditorRoot = defineComponent({
         variant: resolved.variant,
       };
       const controlProps = { "data-variant": resolved.variant };
-      const resolvedAriaLabel = props["aria-label"] ?? (props.id ? undefined : "Rich text editor");
+      const resolvedAriaLabel =
+        props["aria-label"] ?? (props.id ? undefined : "Rich text editor");
 
       return h(
         ark.div as ArkPart,
@@ -220,7 +237,11 @@ export const RichTextEditorRoot = defineComponent({
                   readOnly: true,
                   tabIndex: -1,
                   type: "hidden",
-                  value: props.value ?? editor.value?.getHTML() ?? props.defaultValue ?? "",
+                  value:
+                    props.value ??
+                    editor.value?.getHTML() ??
+                    props.defaultValue ??
+                    "",
                 }),
               )
             : null,
@@ -271,29 +292,38 @@ export const RichTextEditorToolbar = defineComponent({
                 Toggle as ArkPart,
                 {
                   "aria-label": "Bold",
-                  onPressedChange: () => editor.chain().focus().toggleBold().run(),
+                  onPressedChange: () =>
+                    editor.chain().focus().toggleBold().run(),
                   pressed: activeMarks.bold,
                   size: "sm",
                   variant: "ghost",
                 },
-                () => [h(PhTextB), h(VisuallyHidden as ArkPart, {}, () => "Bold")],
+                () => [
+                  h(PhTextB),
+                  h(VisuallyHidden as ArkPart, {}, () => "Bold"),
+                ],
               ),
               h(
                 Toggle as ArkPart,
                 {
                   "aria-label": "Italic",
-                  onPressedChange: () => editor.chain().focus().toggleItalic().run(),
+                  onPressedChange: () =>
+                    editor.chain().focus().toggleItalic().run(),
                   pressed: activeMarks.italic,
                   size: "sm",
                   variant: "ghost",
                 },
-                () => [h(PhTextItalic), h(VisuallyHidden as ArkPart, {}, () => "Italic")],
+                () => [
+                  h(PhTextItalic),
+                  h(VisuallyHidden as ArkPart, {}, () => "Italic"),
+                ],
               ),
               h(
                 Toggle as ArkPart,
                 {
                   "aria-label": "Strikethrough",
-                  onPressedChange: () => editor.chain().focus().toggleStrike().run(),
+                  onPressedChange: () =>
+                    editor.chain().focus().toggleStrike().run(),
                   pressed: activeMarks.strike,
                   size: "sm",
                   variant: "ghost",
@@ -307,23 +337,31 @@ export const RichTextEditorToolbar = defineComponent({
                 Toggle as ArkPart,
                 {
                   "aria-label": "Bullet list",
-                  onPressedChange: () => editor.chain().focus().toggleBulletList().run(),
+                  onPressedChange: () =>
+                    editor.chain().focus().toggleBulletList().run(),
                   pressed: activeMarks.bulletList,
                   size: "sm",
                   variant: "ghost",
                 },
-                () => [h(PhListBullets), h(VisuallyHidden as ArkPart, {}, () => "Bullet list")],
+                () => [
+                  h(PhListBullets),
+                  h(VisuallyHidden as ArkPart, {}, () => "Bullet list"),
+                ],
               ),
               h(
                 Toggle as ArkPart,
                 {
                   "aria-label": "Ordered list",
-                  onPressedChange: () => editor.chain().focus().toggleOrderedList().run(),
+                  onPressedChange: () =>
+                    editor.chain().focus().toggleOrderedList().run(),
                   pressed: activeMarks.orderedList,
                   size: "sm",
                   variant: "ghost",
                 },
-                () => [h(PhListNumbers), h(VisuallyHidden as ArkPart, {}, () => "Ordered list")],
+                () => [
+                  h(PhListNumbers),
+                  h(VisuallyHidden as ArkPart, {}, () => "Ordered list"),
+                ],
               ),
             ]),
           ],

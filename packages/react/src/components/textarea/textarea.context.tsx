@@ -5,6 +5,7 @@ interface TextareaContextValue {
   slots: TextareaRecipe;
 }
 
-export const { TextareaContext, useTextarea } = createContext<TextareaContextValue>()({
-  name: "Textarea",
-});
+export const { TextareaContext, useTextarea } =
+  createContext<TextareaContextValue>()({
+    name: "Textarea",
+  });

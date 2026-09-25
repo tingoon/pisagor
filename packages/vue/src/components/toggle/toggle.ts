@@ -37,16 +37,24 @@ export const Toggle = defineComponent({
       default: buttonRecipe,
       type: Function as PropType<typeof buttonRecipe>,
     },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     disabled: { default: false, type: Boolean },
     recipe: {
       default: toggleRecipe,
       type: Function as PropType<typeof toggleRecipe>,
     },
-    size: { default: "md", type: String as PropType<ToggleVariantProps["size"]> },
+    size: {
+      default: "md",
+      type: String as PropType<ToggleVariantProps["size"]>,
+    },
     variant: {
       default: "ghost",
-      type: String as PropType<Extract<ButtonVariantProps["variant"], "outline" | "ghost">>,
+      type: String as PropType<
+        Extract<ButtonVariantProps["variant"], "outline" | "ghost">
+      >,
     },
   },
   setup(props, { attrs, emit, slots }) {
@@ -56,7 +64,9 @@ export const Toggle = defineComponent({
         {
           ...attrs,
           class: cn(
-            props.buttonRecipe({ clickEffect: false, variant: props.variant }).base(),
+            props
+              .buttonRecipe({ clickEffect: false, variant: props.variant })
+              .base(),
             props.recipe({ size: props.size }),
             props.class,
           ),

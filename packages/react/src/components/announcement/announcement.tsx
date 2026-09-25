@@ -21,7 +21,8 @@ type AnnouncementRootProps = Omit<ComponentProps<typeof ark.div>, "title"> & {
   recipe?: typeof announcementRecipe;
 };
 
-export interface AnnouncementProps extends Omit<AnnouncementRootProps, "children"> {
+export interface AnnouncementProps
+  extends Omit<AnnouncementRootProps, "children"> {
   /** Optional badge or label rendered before the title. */
   badge?: ReactNode;
   /** Title content rendered inside `Announcement.Title`. */
@@ -57,7 +58,10 @@ export function AnnouncementRoot({
   );
 }
 
-export function AnnouncementTitle({ className, ...rest }: AnnouncementTitleProps) {
+export function AnnouncementTitle({
+  className,
+  ...rest
+}: AnnouncementTitleProps) {
   const { slots } = useAnnouncement();
 
   return (
@@ -72,12 +76,19 @@ export function AnnouncementTitle({ className, ...rest }: AnnouncementTitleProps
 // #endregion
 
 // #region Shorthand
-export function AnnouncementShorthand({ badge, title, titleProps, ...rest }: AnnouncementProps) {
+export function AnnouncementShorthand({
+  badge,
+  title,
+  titleProps,
+  ...rest
+}: AnnouncementProps) {
   return (
     <AnnouncementRoot {...rest}>
       {" "}
       {badge}
-      {title !== undefined && <AnnouncementTitle {...titleProps}>{title}</AnnouncementTitle>}
+      {title !== undefined && (
+        <AnnouncementTitle {...titleProps}>{title}</AnnouncementTitle>
+      )}
     </AnnouncementRoot>
   );
 }

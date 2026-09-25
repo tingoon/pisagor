@@ -5,6 +5,7 @@ interface JsonTreeViewContextValue {
   slots: JsonTreeViewRecipe;
 }
 
-export const { JsonTreeViewContext, useJsonTreeView } = createContext<JsonTreeViewContextValue>()({
-  name: "JsonTreeView",
-});
+export const { JsonTreeViewContext, useJsonTreeView } =
+  createContext<JsonTreeViewContextValue>()({
+    name: "JsonTreeView",
+  });

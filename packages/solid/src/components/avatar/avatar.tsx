@@ -32,10 +32,17 @@ export interface AvatarProps extends Omit<AvatarRootProps, "children"> {
 }
 
 function AvatarRoot(props: AvatarRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["shape", "size", "children", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "shape",
+    "size",
+    "children",
+    "recipe",
+    "class",
+  ]);
   const shape = () => local.shape ?? "circle";
   const size = () => local.size ?? "md";
-  const slots = () => (local.recipe ?? avatarRecipe)({ shape: shape(), size: size() });
+  const slots = () =>
+    (local.recipe ?? avatarRecipe)({ shape: shape(), size: size() });
 
   return (
     <AvatarContext value={{ slots: slots() }}>
@@ -54,13 +61,23 @@ function AvatarRoot(props: AvatarRootProps): JSX.Element {
 function AvatarImage(props: AvatarImageProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useAvatar();
-  return <AvatarPrimitive.Image {...rest} class={slots.image({ class: cn(local.class) })} />;
+  return (
+    <AvatarPrimitive.Image
+      {...rest}
+      class={slots.image({ class: cn(local.class) })}
+    />
+  );
 }
 
 function AvatarFallback(props: AvatarFallbackProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useAvatar();
-  return <AvatarPrimitive.Fallback {...rest} class={slots.fallback({ class: cn(local.class) })} />;
+  return (
+    <AvatarPrimitive.Fallback
+      {...rest}
+      class={slots.fallback({ class: cn(local.class) })}
+    />
+  );
 }
 
 export function Avatar(props: AvatarProps): JSX.Element {
@@ -86,7 +103,10 @@ export function Avatar(props: AvatarProps): JSX.Element {
         />
       </Show>
       <Show when={local.fallback !== undefined}>
-        <AvatarFallback {...local.fallbackProps} class={local.classNames?.fallback}>
+        <AvatarFallback
+          {...local.fallbackProps}
+          class={local.classNames?.fallback}
+        >
           {local.fallback}
         </AvatarFallback>
       </Show>

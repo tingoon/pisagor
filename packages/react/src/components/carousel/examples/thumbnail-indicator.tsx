@@ -20,7 +20,11 @@ export function ThumbnailIndicator() {
       </Carousel.Control>
       <Carousel.IndicatorGroup className="mt-4">
         {slides.map((slide, index) => (
-          <Carousel.Indicator className="size-10 rounded-md" index={index} key={slide.src}>
+          <Carousel.Indicator
+            className="size-10 rounded-md"
+            index={index}
+            key={slide.src}
+          >
             <img alt={slide.alt} height={40} src={slide.src} width={40} />
           </Carousel.Indicator>
         ))}

@@ -10,7 +10,12 @@ import Button from "../button/button.astro";
 type Props = Omit<HTMLAttributes<"button"> & ButtonVariantProps, "size"> &
   InputGroupButtonVariantProps;
 
-const { size = "xs", variant = "ghost", class: className, ...rest } = Astro.props;
+const {
+  size = "xs",
+  variant = "ghost",
+  class: className,
+  ...rest
+} = Astro.props;
 ---
 
 <Button

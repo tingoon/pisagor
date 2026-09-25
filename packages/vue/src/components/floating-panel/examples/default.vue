@@ -37,7 +37,11 @@ const collection = createListCollection({
               <Select.ValueText />
             </Select.Trigger>
             <Select.Content>
-              <Select.Item v-for="item in collection.items" :key="item" :item="item">
+              <Select.Item
+                v-for="item in collection.items"
+                :key="item"
+                :item="item"
+              >
                 {{ item }}
               </Select.Item>
             </Select.Content>

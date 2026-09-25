@@ -6,7 +6,8 @@ export interface SelectRootContextValue {
   slots: SelectRecipe;
 }
 
-export const { SelectRootContext, useSelectRoot } = createContext<SelectRootContextValue>()({
-  name: "SelectRoot",
-  strict: false,
-});
+export const { SelectRootContext, useSelectRoot } =
+  createContext<SelectRootContextValue>()({
+    name: "SelectRoot",
+    strict: false,
+  });

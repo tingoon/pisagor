@@ -12,7 +12,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Field layout compositions for grids, sections, labels, and settings rows.",
+        component:
+          "Field layout compositions for grids, sections, labels, and settings rows.",
       },
     },
   },

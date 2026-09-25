@@ -6,7 +6,8 @@ export function FieldGroup() {
       <Field.Set>
         <Field.Legend variant="label">Newsletter</Field.Legend>
         <Field.Description>
-          Choose how you want to receive updates about new features and product releases.
+          Choose how you want to receive updates about new features and product
+          releases.
         </Field.Description>
         <Field orientation="horizontal">
           <Checkbox defaultChecked disabled value="weekly" />

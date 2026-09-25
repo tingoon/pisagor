@@ -2,7 +2,15 @@
 import { Button } from "@pisagor/vue";
 import { ColorPicker } from "..";
 
-const swatchPalette = ["#eb5e41", "#f5a524", "#17c964", "#006FEE", "#7828c8", "#ffffff", "#000000"];
+const swatchPalette = [
+  "#eb5e41",
+  "#f5a524",
+  "#17c964",
+  "#006FEE",
+  "#7828c8",
+  "#ffffff",
+  "#000000",
+];
 </script>
 
 <template>

@@ -4,7 +4,12 @@ export function MaxWithOverflow() {
   return (
     <Field>
       <Field.Label>Frameworks</Field.Label>
-      <TagsInput allowOverflow className="w-full" defaultValue={["React", "Solid", "Vue"]} max={3}>
+      <TagsInput
+        allowOverflow
+        className="w-full"
+        defaultValue={["React", "Solid", "Vue"]}
+        max={3}
+      >
         <TagsInput.Context>
           {({ value }) =>
             value.map((tag, index) => (

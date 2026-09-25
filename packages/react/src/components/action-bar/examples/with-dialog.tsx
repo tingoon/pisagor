@@ -16,7 +16,9 @@ export function WithDialog() {
               <>
                 <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
                 <AlertDialog.CloseTrigger asChild>
-                  <AlertDialog.Action variant="destructive">Delete</AlertDialog.Action>
+                  <AlertDialog.Action variant="destructive">
+                    Delete
+                  </AlertDialog.Action>
                 </AlertDialog.CloseTrigger>
               </>
             }

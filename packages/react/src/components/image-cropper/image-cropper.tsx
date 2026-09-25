@@ -32,7 +32,8 @@ export interface ImageCropperRootProps
   recipe?: typeof imageCropperRecipe;
 }
 
-export interface ImageCropperSelectionProps extends ImageCropperPrimitiveSelectionProps {
+export interface ImageCropperSelectionProps
+  extends ImageCropperPrimitiveSelectionProps {
   /**
    * The axis of the grid to show.
    *
@@ -76,10 +77,18 @@ export function ImageCropperRoot({
   );
 }
 
-export function ImageCropperImage({ className, ...rest }: ImageCropperImageProps) {
+export function ImageCropperImage({
+  className,
+  ...rest
+}: ImageCropperImageProps) {
   const { slots } = useImageCropper();
 
-  return <ImageCropperPrimitive.Image {...rest} className={slots.image({ className })} />;
+  return (
+    <ImageCropperPrimitive.Image
+      {...rest}
+      className={slots.image({ className })}
+    />
+  );
 }
 
 export function ImageCropperSelection({
@@ -91,11 +100,18 @@ export function ImageCropperSelection({
   const { slots } = useImageCropper();
 
   return (
-    <ImageCropperPrimitive.Selection {...rest} className={slots.selection({ className })}>
+    <ImageCropperPrimitive.Selection
+      {...rest}
+      className={slots.selection({ className })}
+    >
       {children}
 
-      {(axis === "horizontal" || axis === "both") && <ImageCropperGrid axis="horizontal" />}
-      {(axis === "vertical" || axis === "both") && <ImageCropperGrid axis="vertical" />}
+      {(axis === "horizontal" || axis === "both") && (
+        <ImageCropperGrid axis="horizontal" />
+      )}
+      {(axis === "vertical" || axis === "both") && (
+        <ImageCropperGrid axis="vertical" />
+      )}
 
       <ImageCropperHandle position="n" />
       <ImageCropperHandle position="e" />
@@ -109,20 +125,34 @@ export function ImageCropperSelection({
   );
 }
 
-export function ImageCropperHandle({ className, ...rest }: ImageCropperHandleProps) {
+export function ImageCropperHandle({
+  className,
+  ...rest
+}: ImageCropperHandleProps) {
   const { slots } = useImageCropper();
 
   return (
-    <ImageCropperPrimitive.Handle {...rest} className={slots.handle({ className })}>
+    <ImageCropperPrimitive.Handle
+      {...rest}
+      className={slots.handle({ className })}
+    >
       <span aria-hidden className={slots.handleGrip()} />
     </ImageCropperPrimitive.Handle>
   );
 }
 
-export function ImageCropperGrid({ className, ...rest }: ImageCropperGridProps) {
+export function ImageCropperGrid({
+  className,
+  ...rest
+}: ImageCropperGridProps) {
   const { slots } = useImageCropper();
 
-  return <ImageCropperPrimitive.Grid {...rest} className={slots.grid({ className })} />;
+  return (
+    <ImageCropperPrimitive.Grid
+      {...rest}
+      className={slots.grid({ className })}
+    />
+  );
 }
 // #endregion
 

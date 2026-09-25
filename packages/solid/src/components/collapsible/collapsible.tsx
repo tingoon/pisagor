@@ -44,15 +44,22 @@ export function CollapsibleRoot(props: CollapsibleRootProps): JSX.Element {
   );
 }
 
-export function CollapsibleTrigger(props: CollapsibleTriggerProps): JSX.Element {
+export function CollapsibleTrigger(
+  props: CollapsibleTriggerProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useCollapsible();
   return (
-    <CollapsiblePrimitive.Trigger {...rest} class={slots.trigger({ class: cn(local.class) })} />
+    <CollapsiblePrimitive.Trigger
+      {...rest}
+      class={slots.trigger({ class: cn(local.class) })}
+    />
   );
 }
 
-export function CollapsibleContent(props: CollapsibleContentProps): JSX.Element {
+export function CollapsibleContent(
+  props: CollapsibleContentProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const { slots } = useCollapsible();
   return (
@@ -62,11 +69,16 @@ export function CollapsibleContent(props: CollapsibleContentProps): JSX.Element 
   );
 }
 
-export function CollapsibleIndicator(props: CollapsibleIndicatorProps): JSX.Element {
+export function CollapsibleIndicator(
+  props: CollapsibleIndicatorProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useCollapsible();
   return (
-    <CollapsiblePrimitive.Indicator {...rest} class={slots.indicator({ class: cn(local.class) })}>
+    <CollapsiblePrimitive.Indicator
+      {...rest}
+      class={slots.indicator({ class: cn(local.class) })}
+    >
       <CaretDownIcon class={slots.icon()} />
     </CollapsiblePrimitive.Indicator>
   );

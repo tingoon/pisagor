@@ -43,7 +43,9 @@ function shrink() {
         <p>Size: {{ size.width }} × {{ size.height }}.</p>
         <p>Use the buttons above or drag the edges to resize.</p>
         <div class="flex gap-2">
-          <Button class="flex-1" variant="outline" @click="shrink">Shrink</Button>
+          <Button class="flex-1" variant="outline" @click="shrink"
+            >Shrink</Button
+          >
           <Button class="flex-1" variant="outline" @click="grow">Grow</Button>
         </div>
       </FloatingPanel.Body>

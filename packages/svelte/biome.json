@@ -7,14 +7,7 @@
   },
   "linter": {
     "domains": {
-      "svelte": "recommended"
-    },
-    "rules": {
-      "a11y": {
-        "noAutofocus": "off",
-        "useAriaPropsForRole": "off",
-        "useSemanticElements": "off"
-      }
+      "svelte": "all"
     }
   }
 }

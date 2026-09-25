@@ -5,6 +5,8 @@ interface AvatarContextValue {
   slots: AvatarRecipe;
 }
 
-export const { AvatarContext, useAvatar } = createContext<AvatarContextValue>()({
-  name: "Avatar",
-});
+export const { AvatarContext, useAvatar } = createContext<AvatarContextValue>()(
+  {
+    name: "Avatar",
+  },
+);

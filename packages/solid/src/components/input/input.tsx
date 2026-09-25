@@ -1,4 +1,7 @@
-import { type FieldInputProps, FieldInput as InputPrimitive } from "@ark-ui/solid/field";
+import {
+  type FieldInputProps,
+  FieldInput as InputPrimitive,
+} from "@ark-ui/solid/field";
 import {
   type InputRecipeSlot,
   type InputRootVariantProps,
@@ -19,7 +22,9 @@ type FormControlVariant = "primary" | "secondary";
 type InputClassNames = VariantClassNames<InputRecipeSlot>;
 type InputVariantProps = InputRootVariantProps;
 
-export interface InputProps extends Omit<FieldInputProps, "size">, InputVariantProps {
+export interface InputProps
+  extends Omit<FieldInputProps, "size">,
+    InputVariantProps {
   /** Initial value when uncontrolled. Solid has no native defaultValue on inputs. */
   defaultValue?: string | number | readonly string[];
   clearable?: boolean;
@@ -53,39 +58,46 @@ export function Input(props: InputProps): JSX.Element {
   const type = () => local.type ?? "text";
   const variant = () => local.variant ?? ("primary" as FormControlVariant);
   const clearable = () => local.clearable ?? false;
-  const skipClearable = () => !clearable() || type() === "file" || type() === "password";
+  const skipClearable = () =>
+    !clearable() || type() === "file" || type() === "password";
 
-  const { canClear, handleChange, handleClear, mergedRef } = useClearableInput<HTMLInputElement>({
-    get clearable() {
-      return clearable() && type() !== "file" && type() !== "password";
-    },
-    get defaultValue() {
-      return local.defaultValue;
-    },
-    get disabled() {
-      return local.disabled;
-    },
-    get onChange() {
-      return (event: Event & { currentTarget: HTMLInputElement; target: HTMLInputElement }) => {
-        callEventHandler(local.onChange, event);
-      };
-    },
-    get onValueChange() {
-      return local.onValueChange;
-    },
-    get readOnly() {
-      return local.readOnly;
-    },
-    get ref() {
-      return typeof local.ref === "function" ? local.ref : undefined;
-    },
-    get type() {
-      return type();
-    },
-    get value() {
-      return local.value;
-    },
-  });
+  const { canClear, handleChange, handleClear, mergedRef } =
+    useClearableInput<HTMLInputElement>({
+      get clearable() {
+        return clearable() && type() !== "file" && type() !== "password";
+      },
+      get defaultValue() {
+        return local.defaultValue;
+      },
+      get disabled() {
+        return local.disabled;
+      },
+      get onChange() {
+        return (
+          event: Event & {
+            currentTarget: HTMLInputElement;
+            target: HTMLInputElement;
+          },
+        ) => {
+          callEventHandler(local.onChange, event);
+        };
+      },
+      get onValueChange() {
+        return local.onValueChange;
+      },
+      get readOnly() {
+        return local.readOnly;
+      },
+      get ref() {
+        return typeof local.ref === "function" ? local.ref : undefined;
+      },
+      get type() {
+        return type();
+      },
+      get value() {
+        return local.value;
+      },
+    });
 
   const shellArgs = () => ({
     surfaceVariant,
@@ -95,7 +107,11 @@ export function Input(props: InputProps): JSX.Element {
   const rootRecipeFn = () => local.rootRecipe ?? inputRootRecipe;
 
   const applyDefaultValueRef = (el: HTMLInputElement) => {
-    if (local.value === undefined && local.defaultValue !== undefined && el.value === "") {
+    if (
+      local.value === undefined &&
+      local.defaultValue !== undefined &&
+      el.value === ""
+    ) {
       el.value = String(local.defaultValue);
     }
     if (typeof local.ref === "function") {
@@ -108,7 +124,11 @@ export function Input(props: InputProps): JSX.Element {
       fallback={
         <InputPrimitive
           {...rest}
-          class={rootRecipeFn()({ class: cn(local.class), size: size(), ...shellArgs() })}
+          class={rootRecipeFn()({
+            class: cn(local.class),
+            size: size(),
+            ...shellArgs(),
+          })}
           data-size={size()}
           data-variant={variant()}
           disabled={local.disabled}

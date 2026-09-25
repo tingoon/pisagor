@@ -11,6 +11,8 @@ import { InputGroup } from "..";
         <InputGroup.Button class="ml-auto" size="xs"> Post </InputGroup.Button>
       </InputGroup.Addon>
     </InputGroup>
-    <p class="text-muted-foreground text-sm">Footer positioned below the textarea.</p>
+    <p class="text-muted-foreground text-sm">
+      Footer positioned below the textarea.
+    </p>
   </div>
 </template>

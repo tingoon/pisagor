@@ -1,8 +1,18 @@
 import { FloatingPanel as FloatingPanelPrimitive } from "@ark-ui/vue/floating-panel";
 import { PhArrowsOut, PhCornersIn, PhMinus } from "@phosphor-icons/vue";
-import { type FloatingPanelRecipe, floatingPanelRecipe } from "@pisagor/recipes/floating-panel";
+import {
+  type FloatingPanelRecipe,
+  floatingPanelRecipe,
+} from "@pisagor/recipes/floating-panel";
 import { cn } from "@pisagor/utils";
-import { defineComponent, h, type PropType, reactive, Teleport, type VNodeChild } from "vue";
+import {
+  defineComponent,
+  h,
+  type PropType,
+  reactive,
+  Teleport,
+  type VNodeChild,
+} from "vue";
 import { createContext } from "../../internal/utils/create-context";
 import { Button, type ButtonProps } from "../button";
 import { ScrollArea } from "../scroll-area";
@@ -50,10 +60,11 @@ export interface FloatingPanelRootProps {
 // #endregion
 
 // #region Context
-const [provideFloatingPanelContext, useFloatingPanel] = createContext<FloatingPanelContextProps>({
-  name: "FloatingPanel",
-  strict: false,
-});
+const [provideFloatingPanelContext, useFloatingPanel] =
+  createContext<FloatingPanelContextProps>({
+    name: "FloatingPanel",
+    strict: false,
+  });
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];
@@ -104,7 +115,8 @@ export const FloatingPanelTrigger = defineComponent({
   inheritAttrs: false,
   name: "FloatingPanel.Trigger",
   setup(_, { attrs, slots }) {
-    return () => h(FloatingPanelPrimitive.Trigger as ArkPart, { ...attrs }, slots);
+    return () =>
+      h(FloatingPanelPrimitive.Trigger as ArkPart, { ...attrs }, slots);
   },
 });
 
@@ -127,12 +139,18 @@ export const FloatingPanelContent = defineComponent({
   inheritAttrs: false,
   name: "FloatingPanel.Content",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: floatingPanelRecipe,
       type: Function as PropType<typeof floatingPanelRecipe>,
     },
-    resizable: { default: true, type: Boolean as PropType<FloatingPanelContentProps["resizable"]> },
+    resizable: {
+      default: true,
+      type: Boolean as PropType<FloatingPanelContentProps["resizable"]>,
+    },
   },
   setup(props, { attrs, slots }) {
     const floatingPanelContext = useFloatingPanel();
@@ -141,20 +159,25 @@ export const FloatingPanelContent = defineComponent({
       const panelSlots = floatingPanelContext?.slots ?? props.recipe();
 
       return floatingPanelTeleport(
-        h(FloatingPanelPrimitive.Positioner as ArkPart, { class: panelSlots.positioner() }, () =>
-          h(
-            FloatingPanelPrimitive.Content as ArkPart,
-            {
-              ...attrs,
-              class: cn(panelSlots.content(), props.class),
-            },
-            () => [
-              slots.default?.(),
-              props.resizable
-                ? RESIZE_AXES.map((axis) => h(FloatingPanelResizeTrigger, { axis, key: axis }))
-                : null,
-            ],
-          ),
+        h(
+          FloatingPanelPrimitive.Positioner as ArkPart,
+          { class: panelSlots.positioner() },
+          () =>
+            h(
+              FloatingPanelPrimitive.Content as ArkPart,
+              {
+                ...attrs,
+                class: cn(panelSlots.content(), props.class),
+              },
+              () => [
+                slots.default?.(),
+                props.resizable
+                  ? RESIZE_AXES.map((axis) =>
+                      h(FloatingPanelResizeTrigger, { axis, key: axis }),
+                    )
+                  : null,
+              ],
+            ),
         ),
       );
     };
@@ -165,7 +188,8 @@ export const FloatingPanelDragTrigger = defineComponent({
   inheritAttrs: false,
   name: "FloatingPanel.DragTrigger",
   setup(_, { attrs, slots }) {
-    return () => h(FloatingPanelPrimitive.DragTrigger as ArkPart, { ...attrs }, slots);
+    return () =>
+      h(FloatingPanelPrimitive.DragTrigger as ArkPart, { ...attrs }, slots);
   },
 });
 
@@ -173,7 +197,10 @@ export const FloatingPanelHeader = defineComponent({
   inheritAttrs: false,
   name: "FloatingPanel.Header",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -194,7 +221,10 @@ export const FloatingPanelControl = defineComponent({
   inheritAttrs: false,
   name: "FloatingPanel.Control",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -213,8 +243,14 @@ export const FloatingPanelMinimize = defineComponent({
   inheritAttrs: false,
   name: "FloatingPanel.Minimize",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    size: { default: "icon-xs", type: String as PropType<FloatingPanelStageTriggerProps["size"]> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    size: {
+      default: "icon-xs",
+      type: String as PropType<FloatingPanelStageTriggerProps["size"]>,
+    },
     variant: {
       default: "ghost",
       type: String as PropType<FloatingPanelStageTriggerProps["variant"]>,
@@ -244,8 +280,14 @@ export const FloatingPanelMaximize = defineComponent({
   inheritAttrs: false,
   name: "FloatingPanel.Maximize",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    size: { default: "icon-xs", type: String as PropType<FloatingPanelStageTriggerProps["size"]> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    size: {
+      default: "icon-xs",
+      type: String as PropType<FloatingPanelStageTriggerProps["size"]>,
+    },
     variant: {
       default: "ghost",
       type: String as PropType<FloatingPanelStageTriggerProps["variant"]>,
@@ -275,8 +317,14 @@ export const FloatingPanelRestore = defineComponent({
   inheritAttrs: false,
   name: "FloatingPanel.Restore",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    size: { default: "icon-xs", type: String as PropType<FloatingPanelStageTriggerProps["size"]> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    size: {
+      default: "icon-xs",
+      type: String as PropType<FloatingPanelStageTriggerProps["size"]>,
+    },
     variant: {
       default: "outline",
       type: String as PropType<FloatingPanelStageTriggerProps["variant"]>,
@@ -312,7 +360,10 @@ export const FloatingPanelTitle = defineComponent({
   inheritAttrs: false,
   name: "FloatingPanel.Title",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -334,7 +385,8 @@ export const FloatingPanelStageTrigger = defineComponent({
   inheritAttrs: false,
   name: "FloatingPanel.StageTrigger",
   setup(_, { attrs, slots }) {
-    return () => h(FloatingPanelPrimitive.StageTrigger as ArkPart, { ...attrs }, slots);
+    return () =>
+      h(FloatingPanelPrimitive.StageTrigger as ArkPart, { ...attrs }, slots);
   },
 });
 
@@ -342,7 +394,8 @@ export const FloatingPanelCloseTrigger = defineComponent({
   inheritAttrs: false,
   name: "FloatingPanel.CloseTrigger",
   setup(_, { attrs, slots }) {
-    return () => h(FloatingPanelPrimitive.CloseTrigger as ArkPart, { ...attrs }, slots);
+    return () =>
+      h(FloatingPanelPrimitive.CloseTrigger as ArkPart, { ...attrs }, slots);
   },
 });
 
@@ -350,8 +403,14 @@ export const FloatingPanelBody = defineComponent({
   inheritAttrs: false,
   name: "FloatingPanel.Body",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    scrollFade: { default: false, type: Boolean as PropType<FloatingPanelBodyProps["scrollFade"]> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    scrollFade: {
+      default: false,
+      type: Boolean as PropType<FloatingPanelBodyProps["scrollFade"]>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -375,7 +434,10 @@ export const FloatingPanelFooter = defineComponent({
   inheritAttrs: false,
   name: "FloatingPanel.Footer",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {

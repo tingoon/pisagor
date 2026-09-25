@@ -5,7 +5,14 @@ import { cn } from "@pisagor/utils";
 import { Editor } from "@tiptap/core";
 import StarterKit from "@tiptap/starter-kit";
 import type { ComponentProps, JSX } from "solid-js";
-import { createEffect, createSignal, onCleanup, Show, splitProps, untrack } from "solid-js";
+import {
+  createEffect,
+  createSignal,
+  onCleanup,
+  Show,
+  splitProps,
+  untrack,
+} from "solid-js";
 import { createEditorTransaction } from "solid-tiptap";
 import { useFormControlSurface } from "../components/surface/use-form-control-surface";
 import { Toggle } from "../components/toggle";
@@ -17,7 +24,10 @@ import {
   TextItalicIcon,
   TextStrikethroughIcon,
 } from "../internal/icons";
-import { RichTextEditorContext, useRichTextEditorState } from "./rich-text-editor.context";
+import {
+  RichTextEditorContext,
+  useRichTextEditorState,
+} from "./rich-text-editor.context";
 
 type FormControlVariant = "primary" | "secondary";
 
@@ -40,7 +50,9 @@ export interface RichTextEditorRootProps
 export type RichTextEditorToolbarProps = ComponentProps<typeof ark.div>;
 export type RichTextEditorContentProps = ComponentProps<typeof ark.div>;
 
-export function RichTextEditorRoot(props: RichTextEditorRootProps): JSX.Element {
+export function RichTextEditorRoot(
+  props: RichTextEditorRootProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, [
     "variant",
     "defaultValue",
@@ -123,7 +135,8 @@ export function RichTextEditorRoot(props: RichTextEditorRootProps): JSX.Element 
     });
   });
 
-  const htmlValue = () => local.value ?? editor()?.getHTML() ?? local.defaultValue ?? "";
+  const htmlValue = () =>
+    local.value ?? editor()?.getHTML() ?? local.defaultValue ?? "";
 
   return (
     <RichTextEditorContext
@@ -155,7 +168,13 @@ export function RichTextEditorRoot(props: RichTextEditorRootProps): JSX.Element 
         <Show when={local.name}>
           {(name) => (
             <VisuallyHidden>
-              <input name={name()} readOnly tabIndex={-1} type="hidden" value={htmlValue()} />
+              <input
+                name={name()}
+                readOnly
+                tabIndex={-1}
+                type="hidden"
+                value={htmlValue()}
+              />
             </VisuallyHidden>
           )}
         </Show>
@@ -165,13 +184,24 @@ export function RichTextEditorRoot(props: RichTextEditorRootProps): JSX.Element 
   );
 }
 
-export function RichTextEditorToolbar(props: RichTextEditorToolbarProps): JSX.Element {
+export function RichTextEditorToolbar(
+  props: RichTextEditorToolbarProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const { editor, slots } = useRichTextEditorState();
 
-  const bold = createEditorTransaction(editor, (current) => current?.isActive("bold") ?? false);
-  const italic = createEditorTransaction(editor, (current) => current?.isActive("italic") ?? false);
-  const strike = createEditorTransaction(editor, (current) => current?.isActive("strike") ?? false);
+  const bold = createEditorTransaction(
+    editor,
+    (current) => current?.isActive("bold") ?? false,
+  );
+  const italic = createEditorTransaction(
+    editor,
+    (current) => current?.isActive("italic") ?? false,
+  );
+  const strike = createEditorTransaction(
+    editor,
+    (current) => current?.isActive("strike") ?? false,
+  );
   const bulletList = createEditorTransaction(
     editor,
     (current) => current?.isActive("bulletList") ?? false,
@@ -195,7 +225,9 @@ export function RichTextEditorToolbar(props: RichTextEditorToolbarProps): JSX.El
               <div class={slots.inline()}>
                 <Toggle
                   aria-label="Bold"
-                  onPressedChange={() => instance().chain().focus().toggleBold().run()}
+                  onPressedChange={() =>
+                    instance().chain().focus().toggleBold().run()
+                  }
                   pressed={bold()}
                   size="sm"
                   variant="ghost"
@@ -205,7 +237,9 @@ export function RichTextEditorToolbar(props: RichTextEditorToolbarProps): JSX.El
                 </Toggle>
                 <Toggle
                   aria-label="Italic"
-                  onPressedChange={() => instance().chain().focus().toggleItalic().run()}
+                  onPressedChange={() =>
+                    instance().chain().focus().toggleItalic().run()
+                  }
                   pressed={italic()}
                   size="sm"
                   variant="ghost"
@@ -215,7 +249,9 @@ export function RichTextEditorToolbar(props: RichTextEditorToolbarProps): JSX.El
                 </Toggle>
                 <Toggle
                   aria-label="Strikethrough"
-                  onPressedChange={() => instance().chain().focus().toggleStrike().run()}
+                  onPressedChange={() =>
+                    instance().chain().focus().toggleStrike().run()
+                  }
                   pressed={strike()}
                   size="sm"
                   variant="ghost"
@@ -225,7 +261,9 @@ export function RichTextEditorToolbar(props: RichTextEditorToolbarProps): JSX.El
                 </Toggle>
                 <Toggle
                   aria-label="Bullet list"
-                  onPressedChange={() => instance().chain().focus().toggleBulletList().run()}
+                  onPressedChange={() =>
+                    instance().chain().focus().toggleBulletList().run()
+                  }
                   pressed={bulletList()}
                   size="sm"
                   variant="ghost"
@@ -235,7 +273,9 @@ export function RichTextEditorToolbar(props: RichTextEditorToolbarProps): JSX.El
                 </Toggle>
                 <Toggle
                   aria-label="Ordered list"
-                  onPressedChange={() => instance().chain().focus().toggleOrderedList().run()}
+                  onPressedChange={() =>
+                    instance().chain().focus().toggleOrderedList().run()
+                  }
                   pressed={orderedList()}
                   size="sm"
                   variant="ghost"
@@ -255,7 +295,9 @@ export function RichTextEditorToolbar(props: RichTextEditorToolbarProps): JSX.El
   );
 }
 
-export function RichTextEditorContent(props: RichTextEditorContentProps): JSX.Element {
+export function RichTextEditorContent(
+  props: RichTextEditorContentProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { registerHost, slots } = useRichTextEditorState();
 

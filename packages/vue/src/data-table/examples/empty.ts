@@ -15,7 +15,8 @@ function useColumns(): ColumnDef<User>[] {
     { accessorKey: "email", header: "Email" },
     {
       accessorKey: "role",
-      cell: ({ row }) => h(Badge, { variant: "secondary" }, () => row.original.role),
+      cell: ({ row }) =>
+        h(Badge, { variant: "secondary" }, () => row.original.role),
       header: "Role",
     },
   ];
@@ -30,11 +31,15 @@ const DataTableView = defineComponent({
     return () =>
       h(Table, null, () => [
         h(Table.Header, null, () =>
-          h(DataTable.Header, null, () => h(DataTable.HeaderRow, null, () => h(DataTable.Head))),
+          h(DataTable.Header, null, () =>
+            h(DataTable.HeaderRow, null, () => h(DataTable.Head)),
+          ),
         ),
         h(Table.Body, null, () =>
-          h(DataTable.Body, { empty: h(DataTable.Empty, { colSpan: props.colSpan }) }, () =>
-            h(DataTable.Row, null, () => h(DataTable.Cell)),
+          h(
+            DataTable.Body,
+            { empty: h(DataTable.Empty, { colSpan: props.colSpan }) },
+            () => h(DataTable.Row, null, () => h(DataTable.Cell)),
           ),
         ),
       ]);

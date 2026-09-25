@@ -4,6 +4,8 @@ import { Prose } from "..";
 
 <template>
   <Prose>
-    <p>The king's <mark>brilliant plan</mark> was to tax jokes in the kingdom.</p>
+    <p>
+      The king's <mark>brilliant plan</mark> was to tax jokes in the kingdom.
+    </p>
   </Prose>
 </template>

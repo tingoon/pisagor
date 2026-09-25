@@ -5,7 +5,10 @@ import type { FieldPresentationProps } from "../../internal/field-shell";
 // #region Types
 export interface CheckboxFieldProps
   extends FieldPresentationProps,
-    Omit<CheckboxProps, "checked" | "invalid" | "name" | "onCheckedChange" | "onValueChange"> {
+    Omit<
+      CheckboxProps,
+      "checked" | "invalid" | "name" | "onCheckedChange" | "onValueChange"
+    > {
   orientation?: "horizontal" | "vertical" | "responsive";
   checked?: boolean;
   name?: string;
@@ -52,7 +55,9 @@ export function CheckboxField({
               {labelAccessory}
             </Field.Label>
           ) : null}
-          {description ? <Field.Description>{description}</Field.Description> : null}
+          {description ? (
+            <Field.Description>{description}</Field.Description>
+          ) : null}
         </Field.Content>
       ) : null}
       {error ? <Field.Error>{error}</Field.Error> : null}

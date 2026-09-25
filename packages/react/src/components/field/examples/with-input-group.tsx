@@ -8,7 +8,11 @@ export function WithInputGroup() {
       <InputGroup>
         <InputGroup.Input placeholder="Your best email" type="email" />
         <InputGroup.Addon align="inline-end">
-          <InputGroup.Button aria-label="Subscribe" size="icon-xs" variant="ghost">
+          <InputGroup.Button
+            aria-label="Subscribe"
+            size="icon-xs"
+            variant="ghost"
+          >
             <ArrowRightIcon aria-hidden />
           </InputGroup.Button>
         </InputGroup.Addon>

@@ -10,7 +10,8 @@ export function MaxSelection() {
     }
 
     const firstValue = value?.at(0) ?? "";
-    const additionalValues = value.length > 1 ? ` (+${value.length - 1} more)` : "";
+    const additionalValues =
+      value.length > 1 ? ` (+${value.length - 1} more)` : "";
 
     return firstValue + additionalValues;
   };
@@ -31,7 +32,12 @@ export function MaxSelection() {
   };
 
   return (
-    <Select.Root collection={collection} multiple onValueChange={handleValueChange} value={value}>
+    <Select.Root
+      collection={collection}
+      multiple
+      onValueChange={handleValueChange}
+      value={value}
+    >
       <Select.Trigger>
         <Select.ValueText className="capitalize">
           <Select.Context>{({ value }) => renderValue(value)}</Select.Context>

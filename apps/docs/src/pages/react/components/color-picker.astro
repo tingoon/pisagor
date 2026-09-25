@@ -53,11 +53,23 @@ const headings = [
   { depth: 3, slug: "disabled", text: "Disabled" },
   { depth: 3, slug: "invalid", text: "Invalid" },
   { depth: 3, slug: "input-with-popover", text: "Input With Popover" },
-  { depth: 3, slug: "input-with-swatch-preview", text: "Input With Swatch Preview" },
+  {
+    depth: 3,
+    slug: "input-with-swatch-preview",
+    text: "Input With Swatch Preview",
+  },
   { depth: 3, slug: "popover-disabled", text: "Popover Disabled" },
   { depth: 3, slug: "popover-sliders-only", text: "Popover Sliders Only" },
-  { depth: 3, slug: "popover-with-channel-editing", text: "Popover With Channel Editing" },
-  { depth: 3, slug: "popover-with-swatch-picker", text: "Popover With Swatch Picker" },
+  {
+    depth: 3,
+    slug: "popover-with-channel-editing",
+    text: "Popover With Channel Editing",
+  },
+  {
+    depth: 3,
+    slug: "popover-with-swatch-picker",
+    text: "Popover With Swatch Picker",
+  },
   { depth: 3, slug: "slider-alpha-channel", text: "Slider Alpha Channel" },
   { depth: 3, slug: "slider-controlled", text: "Slider Controlled" },
   { depth: 3, slug: "slider-disabled", text: "Slider Disabled" },
@@ -65,10 +77,26 @@ const headings = [
   { depth: 3, slug: "slider-hsl-channels", text: "Slider Hsl Channels" },
   { depth: 3, slug: "slider-rgb-channels", text: "Slider Rgb Channels" },
   { depth: 3, slug: "slider-vertical", text: "Slider Vertical" },
-  { depth: 3, slug: "swatch-picker-controlled", text: "Swatch Picker Controlled" },
-  { depth: 3, slug: "swatch-picker-custom-indicator", text: "Swatch Picker Custom Indicator" },
-  { depth: 3, slug: "swatch-picker-custom-radius", text: "Swatch Picker Custom Radius" },
-  { depth: 3, slug: "swatch-picker-custom-size", text: "Swatch Picker Custom Size" },
+  {
+    depth: 3,
+    slug: "swatch-picker-controlled",
+    text: "Swatch Picker Controlled",
+  },
+  {
+    depth: 3,
+    slug: "swatch-picker-custom-indicator",
+    text: "Swatch Picker Custom Indicator",
+  },
+  {
+    depth: 3,
+    slug: "swatch-picker-custom-radius",
+    text: "Swatch Picker Custom Radius",
+  },
+  {
+    depth: 3,
+    slug: "swatch-picker-custom-size",
+    text: "Swatch Picker Custom Size",
+  },
   { depth: 3, slug: "swatch-picker-disabled", text: "Swatch Picker Disabled" },
   { depth: 3, slug: "swatch-picker", text: "Swatch Picker" },
   { depth: 3, slug: "clearable", text: "Clearable" },
@@ -93,53 +121,112 @@ const headings = [
 
   <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">
+    Variants
+  </h3>
   <ComponentPreview code={examples.Variants} language="tsx" title="Variants">
     <Variants client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-spacing">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="custom-spacing"
+  >
     Custom Spacing
   </h3>
-  <ComponentPreview code={examples.CustomSpacing} language="tsx" title="Custom Spacing">
+  <ComponentPreview
+    code={examples.CustomSpacing}
+    language="tsx"
+    title="Custom Spacing"
+  >
     <CustomSpacing client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="area-channels">Area Channels</h3>
-  <ComponentPreview code={examples.AreaChannels} language="tsx" title="Area Channels">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="area-channels"
+  >
+    Area Channels
+  </h3>
+  <ComponentPreview
+    code={examples.AreaChannels}
+    language="tsx"
+    title="Area Channels"
+  >
     <AreaChannels client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="area-dots">Area Dots</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="area-dots">
+    Area Dots
+  </h3>
   <ComponentPreview code={examples.AreaDots} language="tsx" title="Area Dots">
     <AreaDots client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="input-channel">Input Channel</h3>
-  <ComponentPreview code={examples.InputChannel} language="tsx" title="Input Channel">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="input-channel"
+  >
+    Input Channel
+  </h3>
+  <ComponentPreview
+    code={examples.InputChannel}
+    language="tsx"
+    title="Input Channel"
+  >
     <InputChannel client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="input-compact">Input Compact</h3>
-  <ComponentPreview code={examples.InputCompact} language="tsx" title="Input Compact">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="input-compact"
+  >
+    Input Compact
+  </h3>
+  <ComponentPreview
+    code={examples.InputCompact}
+    language="tsx"
+    title="Input Compact"
+  >
     <InputCompact client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="input-controlled">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="input-controlled"
+  >
     Input Controlled
   </h3>
-  <ComponentPreview code={examples.InputControlled} language="tsx" title="Input Controlled">
+  <ComponentPreview
+    code={examples.InputControlled}
+    language="tsx"
+    title="Input Controlled"
+  >
     <InputControlled client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">
+    Disabled
+  </h3>
   <ComponentPreview code={examples.Disabled} language="tsx" title="Disabled">
     <Disabled client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">Invalid</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">
+    Invalid
+  </h3>
   <ComponentPreview code={examples.Invalid} language="tsx" title="Invalid">
     <Invalid client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="input-with-popover">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="input-with-popover"
+  >
     Input With Popover
   </h3>
-  <ComponentPreview code={examples.InputWithPopover} language="tsx" title="Input With Popover">
+  <ComponentPreview
+    code={examples.InputWithPopover}
+    language="tsx"
+    title="Input With Popover"
+  >
     <InputWithPopover client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="input-with-swatch-preview">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="input-with-swatch-preview"
+  >
     Input With Swatch Preview
   </h3>
   <ComponentPreview
@@ -149,19 +236,36 @@ const headings = [
   >
     <InputWithSwatchPreview client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="popover-disabled">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="popover-disabled"
+  >
     Popover Disabled
   </h3>
-  <ComponentPreview code={examples.PopoverDisabled} language="tsx" title="Popover Disabled">
+  <ComponentPreview
+    code={examples.PopoverDisabled}
+    language="tsx"
+    title="Popover Disabled"
+  >
     <PopoverDisabled client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="popover-sliders-only">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="popover-sliders-only"
+  >
     Popover Sliders Only
   </h3>
-  <ComponentPreview code={examples.PopoverSlidersOnly} language="tsx" title="Popover Sliders Only">
+  <ComponentPreview
+    code={examples.PopoverSlidersOnly}
+    language="tsx"
+    title="Popover Sliders Only"
+  >
     <PopoverSlidersOnly client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="popover-with-channel-editing">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="popover-with-channel-editing"
+  >
     Popover With Channel Editing
   </h3>
   <ComponentPreview
@@ -171,7 +275,10 @@ const headings = [
   >
     <PopoverWithChannelEditing client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="popover-with-swatch-picker">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="popover-with-swatch-picker"
+  >
     Popover With Swatch Picker
   </h3>
   <ComponentPreview
@@ -181,49 +288,101 @@ const headings = [
   >
     <PopoverWithSwatchPicker client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="slider-alpha-channel">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="slider-alpha-channel"
+  >
     Slider Alpha Channel
   </h3>
-  <ComponentPreview code={examples.SliderAlphaChannel} language="tsx" title="Slider Alpha Channel">
+  <ComponentPreview
+    code={examples.SliderAlphaChannel}
+    language="tsx"
+    title="Slider Alpha Channel"
+  >
     <SliderAlphaChannel client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="slider-controlled">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="slider-controlled"
+  >
     Slider Controlled
   </h3>
-  <ComponentPreview code={examples.SliderControlled} language="tsx" title="Slider Controlled">
+  <ComponentPreview
+    code={examples.SliderControlled}
+    language="tsx"
+    title="Slider Controlled"
+  >
     <SliderControlled client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="slider-disabled">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="slider-disabled"
+  >
     Slider Disabled
   </h3>
-  <ComponentPreview code={examples.SliderDisabled} language="tsx" title="Slider Disabled">
+  <ComponentPreview
+    code={examples.SliderDisabled}
+    language="tsx"
+    title="Slider Disabled"
+  >
     <SliderDisabled client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="slider-hsba-channels">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="slider-hsba-channels"
+  >
     Slider Hsba Channels
   </h3>
-  <ComponentPreview code={examples.SliderHsbaChannels} language="tsx" title="Slider Hsba Channels">
+  <ComponentPreview
+    code={examples.SliderHsbaChannels}
+    language="tsx"
+    title="Slider Hsba Channels"
+  >
     <SliderHsbaChannels client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="slider-hsl-channels">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="slider-hsl-channels"
+  >
     Slider Hsl Channels
   </h3>
-  <ComponentPreview code={examples.SliderHslChannels} language="tsx" title="Slider Hsl Channels">
+  <ComponentPreview
+    code={examples.SliderHslChannels}
+    language="tsx"
+    title="Slider Hsl Channels"
+  >
     <SliderHslChannels client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="slider-rgb-channels">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="slider-rgb-channels"
+  >
     Slider Rgb Channels
   </h3>
-  <ComponentPreview code={examples.SliderRgbChannels} language="tsx" title="Slider Rgb Channels">
+  <ComponentPreview
+    code={examples.SliderRgbChannels}
+    language="tsx"
+    title="Slider Rgb Channels"
+  >
     <SliderRgbChannels client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="slider-vertical">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="slider-vertical"
+  >
     Slider Vertical
   </h3>
-  <ComponentPreview code={examples.SliderVertical} language="tsx" title="Slider Vertical">
+  <ComponentPreview
+    code={examples.SliderVertical}
+    language="tsx"
+    title="Slider Vertical"
+  >
     <SliderVertical client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="swatch-picker-controlled">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="swatch-picker-controlled"
+  >
     Swatch Picker Controlled
   </h3>
   <ComponentPreview
@@ -233,7 +392,10 @@ const headings = [
   >
     <SwatchPickerControlled client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="swatch-picker-custom-indicator">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="swatch-picker-custom-indicator"
+  >
     Swatch Picker Custom Indicator
   </h3>
   <ComponentPreview
@@ -243,7 +405,10 @@ const headings = [
   >
     <SwatchPickerCustomIndicator client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="swatch-picker-custom-radius">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="swatch-picker-custom-radius"
+  >
     Swatch Picker Custom Radius
   </h3>
   <ComponentPreview
@@ -253,7 +418,10 @@ const headings = [
   >
     <SwatchPickerCustomRadius client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="swatch-picker-custom-size">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="swatch-picker-custom-size"
+  >
     Swatch Picker Custom Size
   </h3>
   <ComponentPreview
@@ -263,7 +431,10 @@ const headings = [
   >
     <SwatchPickerCustomSize client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="swatch-picker-disabled">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="swatch-picker-disabled"
+  >
     Swatch Picker Disabled
   </h3>
   <ComponentPreview
@@ -273,26 +444,44 @@ const headings = [
   >
     <SwatchPickerDisabled client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="swatch-picker">Swatch Picker</h3>
-  <ComponentPreview code={examples.SwatchPicker} language="tsx" title="Swatch Picker">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="swatch-picker"
+  >
+    Swatch Picker
+  </h3>
+  <ComponentPreview
+    code={examples.SwatchPicker}
+    language="tsx"
+    title="Swatch Picker"
+  >
     <SwatchPicker client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="clearable">Clearable</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="clearable">
+    Clearable
+  </h3>
   <ComponentPreview code={examples.Clearable} language="tsx" title="Clearable">
     <Clearable client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
+    Default
+  </h3>
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
 
-  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <h2
+    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    id="installation"
+  >
+    Installation
+  </h2>
   <Installation class="mb-8" packages="@pisagor/react" />
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/color-picker</code>. Native HTML attributes are also
-    supported and omitted from this table.
+    Own props from <code>@pisagor/props/color-picker</code>. Native HTML
+    attributes are also supported and omitted from this table.
   </p>
   <PropsTable rows={colorPickerProps} />
 </DocsLayout>

@@ -25,7 +25,10 @@ export default defineComponent({
               items.map((item) =>
                 h(
                   "li",
-                  { class: "rounded-md px-2 py-1.5 text-sm hover:bg-muted", key: item.id },
+                  {
+                    class: "rounded-md px-2 py-1.5 text-sm hover:bg-muted",
+                    key: item.id,
+                  },
                   item.label,
                 ),
               ),
@@ -33,7 +36,11 @@ export default defineComponent({
           ),
           h(Popover.Footer, null, () =>
             h(Popover.CloseTrigger, { asChild: true }, () =>
-              h("button", { class: outlineButtonClass(), type: "button" }, "Close"),
+              h(
+                "button",
+                { class: outlineButtonClass(), type: "button" },
+                "Close",
+              ),
             ),
           ),
         ]),

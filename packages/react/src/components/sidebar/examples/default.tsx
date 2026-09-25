@@ -1,4 +1,8 @@
-import { HouseIcon, MagnifyingGlassIcon, UserIcon } from "@phosphor-icons/react";
+import {
+  HouseIcon,
+  MagnifyingGlassIcon,
+  UserIcon,
+} from "@phosphor-icons/react";
 import { Button } from "@pisagor/react";
 import { Sidebar } from "..";
 export function Default() {

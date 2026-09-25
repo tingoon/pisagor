@@ -25,7 +25,7 @@ function sizeStyle(column: { columnDef: { minSize?: number }; getSize: () => num
 </script>
 
 {#if columnId}
-  {@const header = headerGroup.headers.find((item: any) => item.column.id === columnId)}
+  {@const header = headerGroup.headers.find((item) => item.column.id === columnId)}
   {#if header}
     <DataGridHeaderCellProvider {header}>
       <Table.Head

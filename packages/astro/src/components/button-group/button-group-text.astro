@@ -8,6 +8,11 @@ const { class: className, ...rest } = Astro.props;
 const slots = buttonGroupRecipe();
 ---
 
-<div {...rest} class={slots.text({ className })} data-part="text" data-scope="button-group">
+<div
+  {...rest}
+  class={slots.text({ className })}
+  data-part="text"
+  data-scope="button-group"
+>
   <slot />
 </div>

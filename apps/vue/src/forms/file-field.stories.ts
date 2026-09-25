@@ -9,7 +9,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Combines Field and FileInput for uploading one or more files with validation.",
+        component:
+          "Combines Field and FileInput for uploading one or more files with validation.",
       },
     },
   },
@@ -17,7 +18,12 @@ const meta = preview.meta({
 });
 
 export const Playground = meta.story({
-  args: { accept: "image/*", id: "file-field-avatar", label: "Avatar", onValueChange: fn() },
+  args: {
+    accept: "image/*",
+    id: "file-field-avatar",
+    label: "Avatar",
+    onValueChange: fn(),
+  },
   render: (args) => ({
     components: { FileField },
     setup: () => ({ args }),

@@ -1,4 +1,10 @@
-import { ArchiveIcon, CopyIcon, DotsThreeIcon, TrashIcon, XIcon } from "@phosphor-icons/react";
+import {
+  ArchiveIcon,
+  CopyIcon,
+  DotsThreeIcon,
+  TrashIcon,
+  XIcon,
+} from "@phosphor-icons/react";
 import { Button, DropdownMenu } from "@pisagor/react";
 import { ActionBar } from "..";
 export function WithMenu() {

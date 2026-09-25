@@ -43,36 +43,64 @@ const headings = [
 
   <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="horizontal">Horizontal</h3>
-  <ComponentPreview code={examples.Horizontal} language="vue" title="Horizontal">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="horizontal">
+    Horizontal
+  </h3>
+  <ComponentPreview
+    code={examples.Horizontal}
+    language="vue"
+    title="Horizontal"
+  >
     <Horizontal client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="scroll-fade">Scroll Fade</h3>
-  <ComponentPreview code={examples.ScrollFade} language="vue" title="Scroll Fade">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="scroll-fade">
+    Scroll Fade
+  </h3>
+  <ComponentPreview
+    code={examples.ScrollFade}
+    language="vue"
+    title="Scroll Fade"
+  >
     <ScrollFade client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="both-directions">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="both-directions"
+  >
     Both Directions
   </h3>
-  <ComponentPreview code={examples.BothDirections} language="vue" title="Both Directions">
+  <ComponentPreview
+    code={examples.BothDirections}
+    language="vue"
+    title="Both Directions"
+  >
     <BothDirections client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="nested">Nested</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="nested">
+    Nested
+  </h3>
   <ComponentPreview code={examples.Nested} language="vue" title="Nested">
     <Nested client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
+    Default
+  </h3>
   <ComponentPreview code={examples.Default} language="vue" title="Default">
     <Default client:only="vue" />
   </ComponentPreview>
 
-  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <h2
+    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    id="installation"
+  >
+    Installation
+  </h2>
   <Installation class="mb-8" packages="@pisagor/vue" />
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/scroll-area</code>. Native HTML attributes are also
-    supported and omitted from this table.
+    Own props from <code>@pisagor/props/scroll-area</code>. Native HTML
+    attributes are also supported and omitted from this table.
   </p>
   <PropsTable rows={scrollAreaProps} />
 </DocsLayout>

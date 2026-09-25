@@ -1,4 +1,7 @@
-import { type CollectionItem, createListCollection } from "@ark-ui/react/collection";
+import {
+  type CollectionItem,
+  createListCollection,
+} from "@ark-ui/react/collection";
 import type {
   ComboboxClearTriggerProps,
   ComboboxControlProps,
@@ -13,10 +16,16 @@ import type {
   ComboboxRootProps as ComboboxPrimitiveRootProps,
   ComboboxTriggerProps,
 } from "@ark-ui/react/combobox";
-import { Combobox as ComboboxPrimitive, useComboboxContext } from "@ark-ui/react/combobox";
+import {
+  Combobox as ComboboxPrimitive,
+  useComboboxContext,
+} from "@ark-ui/react/combobox";
 import { Portal } from "@ark-ui/react/portal";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
-import { type ComboboxVariantProps, comboboxRecipe } from "@pisagor/recipes/combobox";
+import {
+  type ComboboxVariantProps,
+  comboboxRecipe,
+} from "@pisagor/recipes/combobox";
 import type { InputRootVariantProps } from "@pisagor/recipes/input";
 
 import { cn } from "@pisagor/utils";
@@ -48,7 +57,8 @@ export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   recipe?: typeof comboboxRecipe;
 };
 
-export interface ComboboxProps extends Omit<ComboboxRootProps, "children" | "collection"> {
+export interface ComboboxProps
+  extends Omit<ComboboxRootProps, "children" | "collection"> {
   /**
    * Whether to show a clear button when the input has a value.
    *
@@ -81,12 +91,15 @@ export interface ComboboxInputProps
   showTrigger?: boolean;
 }
 
-export interface ComboboxItemGroupProps extends ComboboxPrimitiveItemGroupProps {
+export interface ComboboxItemGroupProps
+  extends ComboboxPrimitiveItemGroupProps {
   /** The heading of the group */
   heading?: string | ReactNode;
 }
 
-export interface ComboboxItemProps extends ComboboxPrimitiveItemProps, ComboboxVariantProps {}
+export interface ComboboxItemProps
+  extends ComboboxPrimitiveItemProps,
+    ComboboxVariantProps {}
 
 export type ComboboxFieldInputProps = ComboboxPrimitiveInputProps;
 
@@ -116,7 +129,9 @@ export function ComboboxRoot<T extends CollectionItem = CollectionItem>({
     <ComboboxRootContext value={{ slots }}>
       <ComboboxPrimitive.Root
         {...rest}
-        onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
+        onValueChange={
+          onValueChange ? (details) => onValueChange(details.value) : undefined
+        }
         openOnClick={openOnClick}
       >
         {children}
@@ -130,7 +145,12 @@ export const ComboboxContext = ComboboxPrimitive.Context;
 export function ComboboxControl({ className, ...rest }: ComboboxControlProps) {
   const { slots = comboboxRecipe() } = useComboboxRoot() ?? {};
 
-  return <ComboboxPrimitive.Control {...rest} className={slots.control({ className })} />;
+  return (
+    <ComboboxPrimitive.Control
+      {...rest}
+      className={slots.control({ className })}
+    />
+  );
 }
 
 export function ComboboxInput({
@@ -165,7 +185,11 @@ export function ComboboxInput({
           )}
           {clearable && inputValue && (
             <ComboboxClearTrigger asChild>
-              <InputGroup.Button aria-label="Clear" size="icon-xs" variant="ghost">
+              <InputGroup.Button
+                aria-label="Clear"
+                size="icon-xs"
+                variant="ghost"
+              >
                 <XIcon aria-hidden />
               </InputGroup.Button>
             </ComboboxClearTrigger>
@@ -176,13 +200,25 @@ export function ComboboxInput({
   );
 }
 
-export function ComboboxTrigger({ children, className, ...rest }: ComboboxTriggerProps) {
+export function ComboboxTrigger({
+  children,
+  className,
+  ...rest
+}: ComboboxTriggerProps) {
   const { slots = comboboxRecipe() } = useComboboxRoot() ?? {};
 
   return (
-    <ComboboxPrimitive.Trigger {...rest} asChild className={slots.trigger({ className })}>
+    <ComboboxPrimitive.Trigger
+      {...rest}
+      asChild
+      className={slots.trigger({ className })}
+    >
       {children ?? (
-        <Button aria-label="Toggle" className={slots.triggerButton()} variant="ghost">
+        <Button
+          aria-label="Toggle"
+          className={slots.triggerButton()}
+          variant="ghost"
+        >
           <CaretUpDownIcon aria-hidden />
         </Button>
       )}
@@ -215,7 +251,10 @@ export function ComboboxContent({
   const { slots = comboboxRecipe() } = useComboboxRoot() ?? {};
 
   const content = (
-    <ComboboxPrimitive.Content {...rest} className={slots.content({ className })}>
+    <ComboboxPrimitive.Content
+      {...rest}
+      className={slots.content({ className })}
+    >
       {children}
     </ComboboxPrimitive.Content>
   );
@@ -231,7 +270,11 @@ export function ComboboxContent({
   );
 }
 
-export function ComboboxItemGroup({ children, heading, ...rest }: ComboboxItemGroupProps) {
+export function ComboboxItemGroup({
+  children,
+  heading,
+  ...rest
+}: ComboboxItemGroupProps) {
   return (
     <ComboboxPrimitive.ItemGroup {...rest}>
       {!!heading && <ComboboxItemGroupLabel>{heading}</ComboboxItemGroupLabel>}
@@ -241,11 +284,17 @@ export function ComboboxItemGroup({ children, heading, ...rest }: ComboboxItemGr
   );
 }
 
-export function ComboboxItemGroupLabel({ className, ...rest }: ComboboxItemGroupLabelProps) {
+export function ComboboxItemGroupLabel({
+  className,
+  ...rest
+}: ComboboxItemGroupLabelProps) {
   const { slots = comboboxRecipe() } = useComboboxRoot() ?? {};
 
   return (
-    <ComboboxPrimitive.ItemGroupLabel {...rest} className={slots.itemGroupLabel({ className })} />
+    <ComboboxPrimitive.ItemGroupLabel
+      {...rest}
+      className={slots.itemGroupLabel({ className })}
+    />
   );
 }
 
@@ -276,7 +325,11 @@ export function ComboboxItem({
   );
 }
 
-export function ComboboxEmpty({ children, className, ...rest }: ComboboxEmptyProps) {
+export function ComboboxEmpty({
+  children,
+  className,
+  ...rest
+}: ComboboxEmptyProps) {
   const { slots = comboboxRecipe() } = useComboboxRoot() ?? {};
 
   return (
@@ -289,12 +342,19 @@ export function ComboboxEmpty({ children, className, ...rest }: ComboboxEmptyPro
 export function ComboboxList({ className, ...rest }: ComboboxListProps) {
   const { slots = comboboxRecipe() } = useComboboxRoot() ?? {};
 
-  return <ComboboxPrimitive.List {...rest} className={slots.list({ className })} />;
+  return (
+    <ComboboxPrimitive.List {...rest} className={slots.list({ className })} />
+  );
 }
 // #endregion
 
 // #region Shorthand
-export function ComboboxShorthand({ clearable = false, items = [], id, ...rest }: ComboboxProps) {
+export function ComboboxShorthand({
+  clearable = false,
+  items = [],
+  id,
+  ...rest
+}: ComboboxProps) {
   const normalized = items.map((item) =>
     typeof item === "string" ? { label: item, value: item } : item,
   );

@@ -33,7 +33,11 @@ export interface AccordionProps extends Omit<AccordionRootProps, "children"> {
 // #endregion
 
 // #region Parts
-export function AccordionRoot({ collapsible = true, children, ...rest }: AccordionRootProps) {
+export function AccordionRoot({
+  collapsible = true,
+  children,
+  ...rest
+}: AccordionRootProps) {
   return (
     <AccordionPrimitive.Root {...rest} collapsible={collapsible}>
       {children}
@@ -58,11 +62,18 @@ export function AccordionItem({
   );
 }
 
-export function AccordionItemTrigger({ children, className, ...rest }: AccordionItemTriggerProps) {
+export function AccordionItemTrigger({
+  children,
+  className,
+  ...rest
+}: AccordionItemTriggerProps) {
   const { slots } = useAccordionItem();
 
   return (
-    <AccordionPrimitive.ItemTrigger {...rest} className={slots.trigger({ className })}>
+    <AccordionPrimitive.ItemTrigger
+      {...rest}
+      className={slots.trigger({ className })}
+    >
       {children}
 
       <AccordionPrimitive.ItemIndicator>
@@ -72,11 +83,18 @@ export function AccordionItemTrigger({ children, className, ...rest }: Accordion
   );
 }
 
-export function AccordionItemContent({ children, className, ...rest }: AccordionItemContentProps) {
+export function AccordionItemContent({
+  children,
+  className,
+  ...rest
+}: AccordionItemContentProps) {
   const { slots } = useAccordionItem();
 
   return (
-    <AccordionPrimitive.ItemContent {...rest} className={slots.content({ className })}>
+    <AccordionPrimitive.ItemContent
+      {...rest}
+      className={slots.content({ className })}
+    >
       <div className={slots.body()}>{children}</div>
     </AccordionPrimitive.ItemContent>
   );
@@ -88,7 +106,11 @@ export function AccordionShorthand({ items, ...rest }: AccordionProps) {
   return (
     <AccordionRoot {...rest}>
       {items?.map((item) => (
-        <AccordionItem disabled={item.disabled} key={item.value} value={item.value}>
+        <AccordionItem
+          disabled={item.disabled}
+          key={item.value}
+          value={item.value}
+        >
           <AccordionItemTrigger>{item.title}</AccordionItemTrigger>
           <AccordionItemContent>{item.content}</AccordionItemContent>
         </AccordionItem>

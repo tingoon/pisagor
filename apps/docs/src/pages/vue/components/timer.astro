@@ -51,7 +51,10 @@ const headings = [
 
   <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-horizontal">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="orientation-horizontal"
+  >
     Orientation Horizontal
   </h3>
   <ComponentPreview
@@ -61,52 +64,92 @@ const headings = [
   >
     <OrientationHorizontal client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-vertical">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="orientation-vertical"
+  >
     Orientation Vertical
   </h3>
-  <ComponentPreview code={examples.OrientationVertical} language="vue" title="Orientation Vertical">
+  <ComponentPreview
+    code={examples.OrientationVertical}
+    language="vue"
+    title="Orientation Vertical"
+  >
     <OrientationVertical client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="countdown-date">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="countdown-date"
+  >
     Countdown Date
   </h3>
-  <ComponentPreview code={examples.CountdownDate} language="vue" title="Countdown Date">
+  <ComponentPreview
+    code={examples.CountdownDate}
+    language="vue"
+    title="Countdown Date"
+  >
     <CountdownDate client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="countdown">Countdown</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="countdown">
+    Countdown
+  </h3>
   <ComponentPreview code={examples.Countdown} language="vue" title="Countdown">
     <Countdown client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-separator">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="custom-separator"
+  >
     Custom Separator
   </h3>
-  <ComponentPreview code={examples.CustomSeparator} language="vue" title="Custom Separator">
+  <ComponentPreview
+    code={examples.CustomSeparator}
+    language="vue"
+    title="Custom Separator"
+  >
     <CustomSeparator client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="interval">Interval</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="interval">
+    Interval
+  </h3>
   <ComponentPreview code={examples.Interval} language="vue" title="Interval">
     <Interval client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="pomodoro">Pomodoro</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="pomodoro">
+    Pomodoro
+  </h3>
   <ComponentPreview code={examples.Pomodoro} language="vue" title="Pomodoro">
     <Pomodoro client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">Controlled</h3>
-  <ComponentPreview code={examples.Controlled} language="vue" title="Controlled">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">
+    Controlled
+  </h3>
+  <ComponentPreview
+    code={examples.Controlled}
+    language="vue"
+    title="Controlled"
+  >
     <Controlled client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
+    Default
+  </h3>
   <ComponentPreview code={examples.Default} language="vue" title="Default">
     <Default client:only="vue" />
   </ComponentPreview>
 
-  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <h2
+    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    id="installation"
+  >
+    Installation
+  </h2>
   <Installation class="mb-8" packages="@pisagor/vue" />
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/timer</code>. Native HTML attributes are also supported and
-    omitted from this table.
+    Own props from <code>@pisagor/props/timer</code>. Native HTML attributes are
+    also supported and omitted from this table.
   </p>
   <PropsTable rows={timerProps} />
 </DocsLayout>

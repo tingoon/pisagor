@@ -9,7 +9,9 @@ import type Input from "../components/input/input.svelte";
 import { createContext } from "../utils/create-context";
 
 type FormControlVariant = "primary" | "secondary";
-type PhoneInputClassNames = Partial<Record<Exclude<PhoneInputRecipeSlot, "base">, string>>;
+type PhoneInputClassNames = Partial<
+  Record<Exclude<PhoneInputRecipeSlot, "base">, string>
+>;
 type PhoneInputSize = NonNullable<PhoneInputVariantProps["size"]>;
 
 export interface PhoneInputContextValue {
@@ -19,7 +21,10 @@ export interface PhoneInputContextValue {
     "class" | "onChange" | "onBlur" | "size" | "type" | "value"
   >;
   invalid?: boolean;
-  popupProps?: Omit<ComponentProps<typeof ComboboxContent>, "class" | "children">;
+  popupProps?: Omit<
+    ComponentProps<typeof ComboboxContent>,
+    "class" | "children"
+  >;
   size: PhoneInputSize;
   slots: PhoneInputRecipe;
   variant?: FormControlVariant;

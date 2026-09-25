@@ -15,14 +15,20 @@ export interface AppShellResizableProps {
 export const APP_SHELL_DEFAULT_PANEL_RESIZABLE_PROPS = {
   enabled: true,
   handlePosition: "top",
-} as const satisfies Required<Pick<AppShellResizableProps, "enabled" | "handlePosition">>;
+} as const satisfies Required<
+  Pick<AppShellResizableProps, "enabled" | "handlePosition">
+>;
 
 export const APP_SHELL_DEFAULT_INSPECTOR_RESIZABLE_PROPS = {
   enabled: true,
   handlePosition: "top",
-} as const satisfies Required<Pick<AppShellResizableProps, "enabled" | "handlePosition">>;
+} as const satisfies Required<
+  Pick<AppShellResizableProps, "enabled" | "handlePosition">
+>;
 
-export type AppShellFixedStackVar = "--app-shell-banner-height" | "--app-shell-navigation-height";
+export type AppShellFixedStackVar =
+  | "--app-shell-banner-height"
+  | "--app-shell-navigation-height";
 
 export type AppShellRegionVar =
   | "--app-shell-end-inspector-width"
@@ -47,9 +53,13 @@ export interface AppShellRailState {
 export type MutableRef<T> = { current: T };
 
 interface AppShellContextValue {
-  inspectorStates: MutableRef<Partial<Record<AppShellPlacement, AppShellSideState>>>;
+  inspectorStates: MutableRef<
+    Partial<Record<AppShellPlacement, AppShellSideState>>
+  >;
   notifyRegionChange: () => void;
-  panelStates: MutableRef<Partial<Record<AppShellPlacement, AppShellSideState>>>;
+  panelStates: MutableRef<
+    Partial<Record<AppShellPlacement, AppShellSideState>>
+  >;
   railStates: MutableRef<Partial<Record<AppShellPlacement, AppShellRailState>>>;
   regionResizing: Accessor<boolean>;
   regionRevision: Accessor<number>;
@@ -84,9 +94,10 @@ export const ZERO_REGION_VARS: Record<AppShellRegionVar, string> = {
   "--app-shell-start-rail-width": "0px",
 };
 
-export const { AppShellContext, useAppShell } = createContext<AppShellContextValue>()({
-  name: "AppShell",
-});
+export const { AppShellContext, useAppShell } =
+  createContext<AppShellContextValue>()({
+    name: "AppShell",
+  });
 
 export function useSideState({
   defaultOpen = false,

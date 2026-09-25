@@ -30,7 +30,11 @@ export const MenuDialog = defineComponent({
       h("div", null, () => [
         h(DropdownMenu as ArkPart, null, () => [
           h(dropdownMenuParts.Trigger, { asChild: true }, () =>
-            h(Button as ArkPart, { type: "button", variant: "outline" }, () => "Open menu"),
+            h(
+              Button as ArkPart,
+              { type: "button", variant: "outline" },
+              () => "Open menu",
+            ),
           ),
           h(dropdownMenuParts.Content, null, () => [
             h(
@@ -41,10 +45,11 @@ export const MenuDialog = defineComponent({
               },
               () => [h(PhGear, { "aria-hidden": true }), "Open settings"],
             ),
-            h(dropdownMenuParts.Item, { disabled: true, value: "profile" }, () => [
-              h(PhUser, { "aria-hidden": true }),
-              "View profile",
-            ]),
+            h(
+              dropdownMenuParts.Item,
+              { disabled: true, value: "profile" },
+              () => [h(PhUser, { "aria-hidden": true }), "View profile"],
+            ),
             h(dropdownMenuParts.Item, { disabled: true, value: "help" }, () => [
               h(PhInfo, { "aria-hidden": true }),
               "Help",
@@ -55,7 +60,9 @@ export const MenuDialog = defineComponent({
           Dialog as ArkPart,
           {
             onOpenChange: (details: { open?: boolean } | boolean) =>
-              setOpen(Boolean(typeof details === "boolean" ? details : details?.open)),
+              setOpen(
+                Boolean(typeof details === "boolean" ? details : details?.open),
+              ),
             open: isOpen.value,
           },
           () => [
@@ -63,7 +70,8 @@ export const MenuDialog = defineComponent({
               h(
                 dialogParts.Header,
                 {
-                  description: "Adjust preferences without leaving your current context.",
+                  description:
+                    "Adjust preferences without leaving your current context.",
                   title: "Settings",
                 },
                 () => undefined,
@@ -77,7 +85,11 @@ export const MenuDialog = defineComponent({
               ),
               h(dialogParts.Footer, null, () => [
                 h(dialogParts.CloseTrigger, { asChild: true }, () =>
-                  h(Button as ArkPart, { type: "button", variant: "outline" }, () => "Cancel"),
+                  h(
+                    Button as ArkPart,
+                    { type: "button", variant: "outline" },
+                    () => "Cancel",
+                  ),
                 ),
                 h(dialogParts.CloseTrigger, { asChild: true }, () =>
                   h(Button as ArkPart, { type: "button" }, () => "Save"),

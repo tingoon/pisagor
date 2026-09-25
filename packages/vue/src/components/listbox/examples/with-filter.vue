@@ -16,7 +16,9 @@ const { collection, filter } = useListCollection({
   ],
 });
 
-const isEmpty = computed(() => collection.value.items.length === 0 && search.value !== "");
+const isEmpty = computed(
+  () => collection.value.items.length === 0 && search.value !== "",
+);
 
 function onSearchChange(next: string) {
   search.value = next;
@@ -27,14 +29,24 @@ function onSearchChange(next: string) {
 <template>
   <Item.Group variant="outline">
     <Item class="flex flex-col gap-2 p-1">
-      <Input placeholder="Search..." :value="search" @value-change="onSearchChange" />
+      <Input
+        placeholder="Search..."
+        :value="search"
+        @value-change="onSearchChange"
+      />
       <Listbox.Root :collection="collection">
         <Listbox.Content>
-          <Listbox.Item v-for="item in collection.items" :key="item.value" :item="item">
+          <Listbox.Item
+            v-for="item in collection.items"
+            :key="item.value"
+            :item="item"
+          >
             <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>
             <Listbox.ItemIndicator />
           </Listbox.Item>
-          <Listbox.Empty v-if="isEmpty">No results found. Try a different search.</Listbox.Empty>
+          <Listbox.Empty v-if="isEmpty"
+            >No results found. Try a different search.</Listbox.Empty
+          >
         </Listbox.Content>
       </Listbox.Root>
     </Item>

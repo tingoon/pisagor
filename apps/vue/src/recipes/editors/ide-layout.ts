@@ -5,7 +5,10 @@ import { Button, createTreeCollection, Tabs, TreeView } from "@pisagor/vue";
 import { defineComponent, h, type PropType, ref } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
-type TreeViewSelectionDetails = { selectedNodes?: unknown; selectedValue?: unknown };
+type TreeViewSelectionDetails = {
+  selectedNodes?: unknown;
+  selectedValue?: unknown;
+};
 
 const treeViewParts = TreeView as unknown as {
   Tree: ArkPart;
@@ -25,14 +28,20 @@ export const IdeLayout = defineComponent({
   inheritAttrs: false,
   name: "IdeLayout",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props) {
     const activeItem = ref<string>("");
 
     const handleSelectNode = (details: TreeViewSelectionDetails) => {
-      const selectedNodes = details?.selectedNodes ?? details?.selectedValue ?? [];
-      const items: unknown[] = Array.isArray(selectedNodes) ? selectedNodes : [selectedNodes];
+      const selectedNodes =
+        details?.selectedNodes ?? details?.selectedValue ?? [];
+      const items: unknown[] = Array.isArray(selectedNodes)
+        ? selectedNodes
+        : [selectedNodes];
 
       const first = items[0];
       if (!first) return;
@@ -56,7 +65,9 @@ export const IdeLayout = defineComponent({
       const selectedItemName =
         typeof first === "string"
           ? first
-          : (items.map(getNodeName).filter((name): name is string => typeof name === "string")[0] ??
+          : (items
+              .map(getNodeName)
+              .filter((name): name is string => typeof name === "string")[0] ??
             "");
 
       const formattedName = selectedItemName.split("/").at(-1);
@@ -64,61 +75,78 @@ export const IdeLayout = defineComponent({
     };
 
     return () => {
-      return h("div", { class: cn("flex size-full gap-2", props.class) }, () => [
-        h("div", { class: "rounded-lg border p-2" }, () =>
-          h(
-            TreeView as ArkPart,
-            {
-              collection,
-              onSelectionChange: (details: TreeViewSelectionDetails) => handleSelectNode(details),
-            },
-            () =>
-              h(treeViewParts.Tree, null, () =>
-                collection.rootNode.children?.map((node: TreeNodeType, index: number) =>
-                  h(TreeNode as unknown as ArkPart, { indexPath: [index], key: node.id, node }),
+      return h(
+        "div",
+        { class: cn("flex size-full gap-2", props.class) },
+        () => [
+          h("div", { class: "rounded-lg border p-2" }, () =>
+            h(
+              TreeView as ArkPart,
+              {
+                collection,
+                onSelectionChange: (details: TreeViewSelectionDetails) =>
+                  handleSelectNode(details),
+              },
+              () =>
+                h(treeViewParts.Tree, null, () =>
+                  collection.rootNode.children?.map(
+                    (node: TreeNodeType, index: number) =>
+                      h(TreeNode as unknown as ArkPart, {
+                        indexPath: [index],
+                        key: node.id,
+                        node,
+                      }),
+                  ),
                 ),
-              ),
+            ),
           ),
-        ),
-        h("div", { class: "flex flex-1 flex-col rounded-lg border p-0.5" }, () =>
-          activeItem.value
-            ? h(
-                Tabs as ArkPart,
-                {
-                  class: "flex-1",
-                  tabs: [
+          h(
+            "div",
+            { class: "flex flex-1 flex-col rounded-lg border p-0.5" },
+            () =>
+              activeItem.value
+                ? h(
+                    Tabs as ArkPart,
                     {
-                      content: h(
-                        "div",
-                        { class: "p-2 text-muted-foreground text-sm" },
-                        () => "// File content",
-                      ),
-                      disabled: false,
-                      label: h("div", { class: "flex items-center gap-2" }, () => [
-                        h("span", null, () => activeItem.value),
-                        h(
-                          Button as ArkPart,
-                          {
-                            onClick: (event: MouseEvent) => {
-                              event.stopPropagation();
-                              activeItem.value = "";
-                            },
-                            size: "icon-xs",
-                            type: "button",
-                            variant: "ghost",
-                          },
-                          () => h(PhX, { "aria-hidden": true }),
-                        ),
-                      ]),
-                      value: activeItem.value,
+                      class: "flex-1",
+                      tabs: [
+                        {
+                          content: h(
+                            "div",
+                            { class: "p-2 text-muted-foreground text-sm" },
+                            () => "// File content",
+                          ),
+                          disabled: false,
+                          label: h(
+                            "div",
+                            { class: "flex items-center gap-2" },
+                            () => [
+                              h("span", null, () => activeItem.value),
+                              h(
+                                Button as ArkPart,
+                                {
+                                  onClick: (event: MouseEvent) => {
+                                    event.stopPropagation();
+                                    activeItem.value = "";
+                                  },
+                                  size: "icon-xs",
+                                  type: "button",
+                                  variant: "ghost",
+                                },
+                                () => h(PhX, { "aria-hidden": true }),
+                              ),
+                            ],
+                          ),
+                          value: activeItem.value,
+                        },
+                      ],
                     },
-                  ],
-                },
-                () => undefined,
-              )
-            : null,
-        ),
-      ]);
+                    () => undefined,
+                  )
+                : null,
+          ),
+        ],
+      );
     };
   },
 });
@@ -141,7 +169,9 @@ function TreeNode({
             ),
           ),
         ])
-      : h(treeViewParts.Content, null, () => h(treeViewParts.Item, null, () => node.name)),
+      : h(treeViewParts.Content, null, () =>
+          h(treeViewParts.Item, null, () => node.name),
+        ),
   );
 }
 

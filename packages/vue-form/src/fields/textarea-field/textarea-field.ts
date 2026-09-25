@@ -1,7 +1,10 @@
 import type { TextareaProps } from "@pisagor/vue";
 import { Textarea } from "@pisagor/vue";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
+import {
+  type FieldPresentationProps,
+  FieldShell,
+} from "../../internal/field-shell";
 import type { SetRequired } from "../../internal/types";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -12,7 +15,9 @@ type TextareaControlProps = SetRequired<
   "onValueChange"
 >;
 
-export interface TextareaFieldProps extends FieldPresentationProps, TextareaControlProps {
+export interface TextareaFieldProps
+  extends FieldPresentationProps,
+    TextareaControlProps {
   name?: string;
   onBlur?: () => void;
   value?: string;
@@ -24,17 +29,35 @@ export const TextareaField = defineComponent({
   inheritAttrs: false,
   name: "TextareaField",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<TextareaProps["classNames"]> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<TextareaProps["classNames"]>,
+    },
     clearable: { default: undefined, type: Boolean },
     defaultValue: { default: undefined, type: String },
-    description: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    description: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     disabled: { default: undefined, type: Boolean },
-    error: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    error: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     id: { default: undefined, type: String },
     invalid: { default: undefined, type: Boolean },
-    label: { default: undefined, type: null as unknown as PropType<VNodeChild> },
-    labelAccessory: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    label: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
+    labelAccessory: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     labelProps: {
       default: undefined,
       type: Object as PropType<FieldPresentationProps["labelProps"]>,
@@ -53,7 +76,10 @@ export const TextareaField = defineComponent({
     readOnly: { default: undefined, type: Boolean },
     rows: { default: undefined, type: Number },
     value: { default: undefined, type: String },
-    variant: { default: undefined, type: String as PropType<TextareaProps["variant"]> },
+    variant: {
+      default: undefined,
+      type: String as PropType<TextareaProps["variant"]>,
+    },
   },
   setup(props, { attrs }) {
     return () =>

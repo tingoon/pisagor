@@ -14,7 +14,9 @@ interface SwitchControlProps {
   variant?: string;
 }
 
-export interface SwitchFieldProps extends FieldPresentationProps, SwitchControlProps {
+export interface SwitchFieldProps
+  extends FieldPresentationProps,
+    SwitchControlProps {
   checked?: boolean;
   name?: string;
   onBlur?: () => void;
@@ -28,15 +30,30 @@ export const SwitchField = defineComponent({
   name: "SwitchField",
   props: {
     checked: { default: undefined, type: Boolean },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     classNames: { default: undefined, type: Object },
-    description: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    description: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     disabled: { default: undefined, type: Boolean },
-    error: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    error: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     id: { default: undefined, type: String },
     invalid: { default: undefined, type: Boolean },
-    label: { default: undefined, type: null as unknown as PropType<VNodeChild> },
-    labelAccessory: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    label: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
+    labelAccessory: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     labelProps: {
       default: undefined,
       type: Object as PropType<FieldPresentationProps["labelProps"]>,
@@ -80,17 +97,24 @@ export const SwitchField = defineComponent({
           hasLabel || props.description
             ? h(Field.Content as ArkPart, null, () => [
                 hasLabel
-                  ? h(Field.Label as ArkPart, { ...props.labelProps, for: props.id }, () => [
-                      props.label,
-                      props.labelAccessory,
-                    ])
+                  ? h(
+                      Field.Label as ArkPart,
+                      { ...props.labelProps, for: props.id },
+                      () => [props.label, props.labelAccessory],
+                    )
                   : null,
                 props.description
-                  ? h(Field.Description as ArkPart, null, () => props.description)
+                  ? h(
+                      Field.Description as ArkPart,
+                      null,
+                      () => props.description,
+                    )
                   : null,
               ])
             : null,
-          props.error ? h(Field.Error as ArkPart, null, () => props.error) : null,
+          props.error
+            ? h(Field.Error as ArkPart, null, () => props.error)
+            : null,
         ],
       );
     };

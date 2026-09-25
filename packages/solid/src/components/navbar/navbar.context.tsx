@@ -5,6 +5,8 @@ interface NavbarContextValue {
   slots: NavbarRecipe;
 }
 
-export const { NavbarContext, useNavbar } = createContext<NavbarContextValue>()({
-  name: "Navbar",
-});
+export const { NavbarContext, useNavbar } = createContext<NavbarContextValue>()(
+  {
+    name: "Navbar",
+  },
+);

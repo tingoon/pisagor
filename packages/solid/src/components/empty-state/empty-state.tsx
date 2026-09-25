@@ -1,5 +1,8 @@
 import { ark } from "@ark-ui/solid/factory";
-import { type EmptyStateRecipeSlot, emptyStateRecipe } from "@pisagor/recipes/empty-state";
+import {
+  type EmptyStateRecipeSlot,
+  emptyStateRecipe,
+} from "@pisagor/recipes/empty-state";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
@@ -74,7 +77,9 @@ export function EmptyStateTitle(props: EmptyStateTitleProps): JSX.Element {
   );
 }
 
-export function EmptyStateDescription(props: EmptyStateDescriptionProps): JSX.Element {
+export function EmptyStateDescription(
+  props: EmptyStateDescriptionProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useEmptyState();
 
@@ -129,12 +134,18 @@ export function EmptyStateShorthand(props: EmptyStateProps): JSX.Element {
         </EmptyStateTitle>
       </Show>
       <Show when={local.description !== undefined}>
-        <EmptyStateDescription {...local.descriptionProps} class={local.classNames?.description}>
+        <EmptyStateDescription
+          {...local.descriptionProps}
+          class={local.classNames?.description}
+        >
           {local.description}
         </EmptyStateDescription>
       </Show>
       <Show when={local.actions !== undefined}>
-        <EmptyStateActions {...local.actionsProps} class={local.classNames?.actions}>
+        <EmptyStateActions
+          {...local.actionsProps}
+          class={local.classNames?.actions}
+        >
           {local.actions}
         </EmptyStateActions>
       </Show>
