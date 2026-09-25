@@ -141,9 +141,7 @@ export function FileShorthand(props: FileProps): JSX.Element {
         <Show when={local.meta}>
           <FileMeta>{local.meta}</FileMeta>
         </Show>
-        <Show when={local.size !== undefined}>
-          <FileSize value={local.size!} />
-        </Show>
+        {local.size !== undefined ? <FileSize value={local.size} /> : null}
       </FileContent>
       <Show when={local.actions}>
         <FileActions>{local.actions}</FileActions>

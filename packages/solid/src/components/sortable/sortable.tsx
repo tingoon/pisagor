@@ -82,8 +82,9 @@ export function SortableRoot(props: SortableRootProps): JSX.Element {
   };
 
   const startDrag = (id: string, event: DragEvent) => {
-    event.dataTransfer!.effectAllowed = "move";
-    event.dataTransfer!.setData("text/plain", id);
+    if (!event.dataTransfer) return;
+    event.dataTransfer.effectAllowed = "move";
+    event.dataTransfer.setData("text/plain", id);
     activeIdRef.current = id;
     setActiveId(id);
   };
@@ -131,7 +132,7 @@ export function SortableRoot(props: SortableRootProps): JSX.Element {
       },
       onDragOver: (event: DragEvent) => {
         event.preventDefault();
-        event.dataTransfer!.dropEffect = "move";
+        if (event.dataTransfer) event.dataTransfer.dropEffect = "move";
         const draggingId = activeIdRef.current;
         if (draggingId && draggingId !== id) setOverId(id);
       },

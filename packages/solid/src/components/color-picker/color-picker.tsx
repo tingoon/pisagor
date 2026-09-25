@@ -101,7 +101,10 @@ export function ColorPickerRoot(props: ColorPickerProps): JSX.Element {
   const isControlled = () => local.value !== undefined;
   const [uncontrolled, setUncontrolled] = createSignal(local.defaultValue);
   const color = createMemo(() => (isControlled() ? local.value : uncontrolled()));
-  const parsedColor = createMemo(() => (color() ? parseColor(color()!) : undefined));
+  const parsedColor = createMemo(() => {
+    const value = color();
+    return value ? parseColor(value) : undefined;
+  });
 
   const handleValueChange = (e: ColorPickerValueChangeDetails) => {
     if (!isControlled()) setUncontrolled(e.valueAsString);

@@ -106,9 +106,7 @@ export function ActionBarRoot(props: ParentProps<ActionBarProps>): JSX.Element {
       {local.children}
       <Show when={hasPreset()}>
         <ActionBarContent>
-          <Show when={local.count !== undefined}>
-            <ActionBarValue count={local.count!} />
-          </Show>
+          {local.count !== undefined ? <ActionBarValue count={local.count} /> : null}
           <Show when={local.count !== undefined && local.actions}>
             <ActionBarSeparator />
           </Show>
