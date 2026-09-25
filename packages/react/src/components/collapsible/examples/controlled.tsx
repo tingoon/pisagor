@@ -19,7 +19,9 @@ export function Controlled() {
           </p>
         </Collapsible.Content>
       </Collapsible>
-      <p className="text-center text-muted-foreground text-sm">{open ? "✅" : "❌"}</p>
+      <p className="text-center text-muted-foreground text-sm">
+        {open ? "✅" : "❌"}
+      </p>
     </div>
   );
 }

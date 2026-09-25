@@ -2,7 +2,10 @@ import { Surface } from "@pisagor/react";
 import type { Decorator } from "@storybook/react-vite";
 import type { PropsWithChildren } from "react";
 
-function SurfacePanel({ children, title }: PropsWithChildren<{ title: string }>) {
+function SurfacePanel({
+  children,
+  title,
+}: PropsWithChildren<{ title: string }>) {
   return (
     <div className="relative flex size-full items-center justify-center">
       <p className="absolute top-0 left-0 w-full p-4 text-center font-medium text-muted-foreground text-sm">

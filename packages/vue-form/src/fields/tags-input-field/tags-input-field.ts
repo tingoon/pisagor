@@ -1,7 +1,10 @@
 import type { TagsInputProps } from "@pisagor/vue";
 import { TagsInput } from "@pisagor/vue";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
+import {
+  type FieldPresentationProps,
+  FieldShell,
+} from "../../internal/field-shell";
 import type { SetRequired } from "../../internal/types";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -12,7 +15,9 @@ type TagsInputControlProps = SetRequired<
   "onValueChange"
 >;
 
-export interface TagsInputFieldProps extends FieldPresentationProps, TagsInputControlProps {
+export interface TagsInputFieldProps
+  extends FieldPresentationProps,
+    TagsInputControlProps {
   name?: string;
   onBlur?: () => void;
 }
@@ -23,17 +28,32 @@ export const TagsInputField = defineComponent({
   inheritAttrs: false,
   name: "TagsInputField",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     clearable: { default: undefined, type: Boolean },
     defaultValue: { default: undefined, type: Array as PropType<string[]> },
-    description: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    description: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     disabled: { default: undefined, type: Boolean },
     editable: { default: undefined, type: Boolean },
-    error: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    error: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     id: { default: undefined, type: String },
     invalid: { default: undefined, type: Boolean },
-    label: { default: undefined, type: null as unknown as PropType<VNodeChild> },
-    labelAccessory: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    label: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
+    labelAccessory: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     labelProps: {
       default: undefined,
       type: Object as PropType<FieldPresentationProps["labelProps"]>,
@@ -49,9 +69,15 @@ export const TagsInputField = defineComponent({
       type: String as PropType<FieldPresentationProps["orientation"]>,
     },
     placeholder: { default: undefined, type: String },
-    size: { default: undefined, type: String as PropType<TagsInputProps["size"]> },
+    size: {
+      default: undefined,
+      type: String as PropType<TagsInputProps["size"]>,
+    },
     value: { default: undefined, type: Array as PropType<string[]> },
-    variant: { default: undefined, type: String as PropType<TagsInputProps["variant"]> },
+    variant: {
+      default: undefined,
+      type: String as PropType<TagsInputProps["variant"]>,
+    },
   },
   setup(props, { attrs }) {
     return () =>

@@ -4,7 +4,11 @@ export function DisableEditing() {
   return (
     <Field>
       <Field.Label>Frameworks</Field.Label>
-      <TagsInput className="w-full" defaultValue={["React", "Solid"]} editable={false}>
+      <TagsInput
+        className="w-full"
+        defaultValue={["React", "Solid"]}
+        editable={false}
+      >
         <TagsInput.Context>
           {({ value }) =>
             value.map((tag, index) => (

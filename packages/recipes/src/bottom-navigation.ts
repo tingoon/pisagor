@@ -2,7 +2,10 @@ import { tv } from "tailwind-variants";
 
 export const bottomNavigationRecipe = tv({
   slots: {
-    base: ["w-full", "min-h-[calc(var(--spacing)*14+env(safe-area-inset-bottom,0))]"],
+    base: [
+      "w-full",
+      "min-h-[calc(var(--spacing)*14+env(safe-area-inset-bottom,0))]",
+    ],
     list: [
       "fixed inset-x-0 bottom-0 z-10",
       "flex w-full items-center justify-around",
@@ -47,5 +50,6 @@ export type BottomNavigationRecipe = ReturnType<BottomNavigationRecipeFn>;
 export type BottomNavigationRecipeSlot = keyof BottomNavigationRecipe;
 
 export type BottomNavigationItemRecipeFn = typeof bottomNavigationItemRecipe;
-export type BottomNavigationItemRecipe = ReturnType<BottomNavigationItemRecipeFn>;
+export type BottomNavigationItemRecipe =
+  ReturnType<BottomNavigationItemRecipeFn>;
 export type BottomNavigationItemRecipeSlot = keyof BottomNavigationItemRecipe;

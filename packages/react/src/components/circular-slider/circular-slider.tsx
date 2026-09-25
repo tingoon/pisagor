@@ -24,7 +24,10 @@ import {
 // #region Types
 export type CircularSliderHiddenInputProps = AngleSliderHiddenInputProps;
 
-export type CircularSliderRootProps = Omit<AngleSliderRootProps, "onValueChange">;
+export type CircularSliderRootProps = Omit<
+  AngleSliderRootProps,
+  "onValueChange"
+>;
 
 export interface CircularSliderProps
   extends CircularSliderRootProps,
@@ -48,7 +51,8 @@ export interface CircularSliderControlProps extends AngleSliderControlProps {
   step?: number;
 }
 
-export interface CircularSliderValueTextProps extends Omit<AngleSliderValueTextProps, "prefix"> {
+export interface CircularSliderValueTextProps
+  extends Omit<AngleSliderValueTextProps, "prefix"> {
   prefix?: ReactNode | string;
   suffix?: ReactNode | string;
 }
@@ -93,7 +97,9 @@ export function CircularSliderRoot({
       <AngleSliderPrimitive.Root
         {...rest}
         className={slots.base({ className })}
-        onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
+        onValueChange={
+          onValueChange ? (details) => onValueChange(details.value) : undefined
+        }
         step={step}
         style={{
           "--thickness": `${thickness}px`,
@@ -101,7 +107,11 @@ export function CircularSliderRoot({
           width: size,
         }}
       >
-        <CircularSliderControl markers={markers} markersAtSteps={markersAtSteps} step={step} />
+        <CircularSliderControl
+          markers={markers}
+          markersAtSteps={markersAtSteps}
+          step={step}
+        />
 
         {children}
 
@@ -133,7 +143,10 @@ export function CircularSliderControl({
   }, [markers, markersAtSteps, step]);
 
   return (
-    <AngleSliderPrimitive.Control {...rest} className={slots.control({ className })}>
+    <AngleSliderPrimitive.Control
+      {...rest}
+      className={slots.control({ className })}
+    >
       <CircularSliderProgressRing />
       {markerValues ? (
         <CircularSliderMarkerGroup>
@@ -149,7 +162,8 @@ export function CircularSliderControl({
 
 function CircularSliderProgressRing() {
   const api = useAngleSliderContext();
-  const { size, thickness, ringRadius, ringCircumference, slots } = _useCircularSlider();
+  const { size, thickness, ringRadius, ringCircumference, slots } =
+    _useCircularSlider();
 
   const percent = api.value / 360;
   const dashLength = percent * ringCircumference;
@@ -185,7 +199,10 @@ function CircularSliderProgressRing() {
   );
 }
 
-export function CircularSliderThumb({ className, ...rest }: CircularSliderThumbProps) {
+export function CircularSliderThumb({
+  className,
+  ...rest
+}: CircularSliderThumbProps) {
   const { thumbSize, ringRadius, slots } = _useCircularSlider();
 
   const halfThumb = thumbSize / 2;
@@ -220,28 +237,42 @@ export function CircularSliderValueText({
 
   return (
     <Field.Label asChild>
-      <AngleSliderPrimitive.ValueText {...rest} className={slots.value({ className })}>
+      <AngleSliderPrimitive.ValueText
+        {...rest}
+        className={slots.value({ className })}
+      >
         {prefix} {value} {suffix}
       </AngleSliderPrimitive.ValueText>
     </Field.Label>
   );
 }
 
-export function CircularSliderMarkerGroup({ className, ...rest }: CircularSliderMarkerGroupProps) {
+export function CircularSliderMarkerGroup({
+  className,
+  ...rest
+}: CircularSliderMarkerGroupProps) {
   const { slots } = _useCircularSlider();
 
   return (
-    <AngleSliderPrimitive.MarkerGroup {...rest} className={slots.markerGroup({ className })} />
+    <AngleSliderPrimitive.MarkerGroup
+      {...rest}
+      className={slots.markerGroup({ className })}
+    />
   );
 }
 
-export function CircularSliderMarker({ className, style, ...rest }: CircularSliderMarkerProps) {
+export function CircularSliderMarker({
+  className,
+  style,
+  ...rest
+}: CircularSliderMarkerProps) {
   const { size, thickness, slots } = _useCircularSlider();
 
   const ringRadius = size / 2 - thickness / 2;
   const markerHeight = Math.max(8, Math.min(thickness * 1.1, 16));
   const markerWidth = Math.max(4, Math.min(thickness * 0.4, 6));
-  const markerOffset = size / 2 - ringRadius - markerHeight / 2 + (thickness + 4);
+  const markerOffset =
+    size / 2 - ringRadius - markerHeight / 2 + (thickness + 4);
 
   return (
     <AngleSliderPrimitive.Marker

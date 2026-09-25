@@ -24,13 +24,28 @@ export const FormSection = defineComponent({
             ]),
             h(Field as ArkPart, null, () => [
               h(Field.Label as ArkPart, null, () => "Email"),
-              h(Input as ArkPart, { placeholder: "you@example.com", type: "email" }),
-              h(Field.Description as ArkPart, null, () => "We'll use this email to contact you"),
+              h(Input as ArkPart, {
+                placeholder: "you@example.com",
+                type: "email",
+              }),
+              h(
+                Field.Description as ArkPart,
+                null,
+                () => "We'll use this email to contact you",
+              ),
             ]),
-            h(Field as ArkPart, { orientation: "horizontal", reverse: true }, () => [
-              h(Button as ArkPart, { type: "button" }, () => "Submit"),
-              h(Button as ArkPart, { type: "button", variant: "outline" }, () => "Reset"),
-            ]),
+            h(
+              Field as ArkPart,
+              { orientation: "horizontal", reverse: true },
+              () => [
+                h(Button as ArkPart, { type: "button" }, () => "Submit"),
+                h(
+                  Button as ArkPart,
+                  { type: "button", variant: "outline" },
+                  () => "Reset",
+                ),
+              ],
+            ),
           ]),
       );
   },

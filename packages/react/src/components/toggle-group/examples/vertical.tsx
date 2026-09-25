@@ -1,9 +1,17 @@
-import { TextBIcon, TextItalicIcon, TextUnderlineIcon } from "@phosphor-icons/react";
+import {
+  TextBIcon,
+  TextItalicIcon,
+  TextUnderlineIcon,
+} from "@phosphor-icons/react";
 import { ToggleGroup } from "..";
 
 export function Vertical() {
   return (
-    <ToggleGroup.Root defaultValue={["bold"]} orientation="vertical" variant="outline">
+    <ToggleGroup.Root
+      defaultValue={["bold"]}
+      orientation="vertical"
+      variant="outline"
+    >
       <ToggleGroup.Item aria-label="Toggle bold" value="bold">
         <TextBIcon />
       </ToggleGroup.Item>

@@ -10,5 +10,9 @@ function onValueChange(next: string) {
 </script>
 
 <template>
-  <Input placeholder="Enter your message" :value="value" @value-change="onValueChange" />
+  <Input
+    placeholder="Enter your message"
+    :value="value"
+    @value-change="onValueChange"
+  />
 </template>

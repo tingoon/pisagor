@@ -42,7 +42,9 @@ export function PasswordStrength({ className }: PasswordStrengthProps) {
   const id = useId();
   const [password, setPassword] = useState("");
   const requirements = checkPasswordRequirements(password);
-  const strengthScore = requirements.filter((requirement) => requirement.met).length;
+  const strengthScore = requirements.filter(
+    (requirement) => requirement.met,
+  ).length;
 
   return (
     <div className={cn("w-full", className)}>
@@ -70,7 +72,9 @@ export function PasswordStrength({ className }: PasswordStrengthProps) {
           <div
             className={cn(
               "h-1 flex-1 rounded-full transition-colors duration-500",
-              index < strengthScore ? getStrengthColor(strengthScore) : "bg-border",
+              index < strengthScore
+                ? getStrengthColor(strengthScore)
+                : "bg-border",
             )}
             key={requirement.text}
           />
@@ -78,7 +82,10 @@ export function PasswordStrength({ className }: PasswordStrengthProps) {
       </div>
 
       <div className="mb-3 flex items-center justify-between">
-        <p className="font-medium text-foreground text-sm" id={`${id}-description`}>
+        <p
+          className="font-medium text-foreground text-sm"
+          id={`${id}-description`}
+        >
           {getStrengthText(strengthScore)}
         </p>
         <span className="text-muted-foreground text-xs">
@@ -92,7 +99,10 @@ export function PasswordStrength({ className }: PasswordStrengthProps) {
             {requirement.met ? (
               <CheckIcon aria-hidden className="size-3.5 text-emerald-500" />
             ) : (
-              <XIcon aria-hidden className="size-3.5 text-muted-foreground/60" />
+              <XIcon
+                aria-hidden
+                className="size-3.5 text-muted-foreground/60"
+              />
             )}
             <span
               className={cn(
@@ -102,7 +112,9 @@ export function PasswordStrength({ className }: PasswordStrengthProps) {
             >
               {requirement.text}
               <span className="sr-only">
-                {requirement.met ? " — Requirement met" : " — Requirement not met"}
+                {requirement.met
+                  ? " — Requirement met"
+                  : " — Requirement not met"}
               </span>
             </span>
           </li>

@@ -38,10 +38,12 @@ const headerGroupCtx = createContext<DataGridHeaderGroupContextValue>({
 export const setDataGridHeaderGroupContext = headerGroupCtx.setContext;
 export const useDataGridHeaderGroupContext = headerGroupCtx.getContext;
 
-const headerCellCtx = createContext<DataGridHeaderCellContextValue | undefined>({
-  name: "DataGridHeaderCell",
-  strict: false,
-});
+const headerCellCtx = createContext<DataGridHeaderCellContextValue | undefined>(
+  {
+    name: "DataGridHeaderCell",
+    strict: false,
+  },
+);
 export const setDataGridHeaderCellContext = headerCellCtx.setContext;
 export const useDataGridHeaderCellContext = headerCellCtx.getContext;
 

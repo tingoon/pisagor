@@ -44,8 +44,14 @@ export const Avatar = defineComponent({
   name: "PisagorAvatar",
   props: {
     alt: { default: undefined, type: String },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<AvatarClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<AvatarClassNames>,
+    },
     fallback: {
       default: undefined,
       type: [String, Number, Boolean, Object, Array] as PropType<VNodeChild>,

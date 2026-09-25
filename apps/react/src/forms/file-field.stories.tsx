@@ -8,7 +8,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Uploads one or more files with a label and optional validation message.",
+        component:
+          "Uploads one or more files with a label and optional validation message.",
       },
     },
   },

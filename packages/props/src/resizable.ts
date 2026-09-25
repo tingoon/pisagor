@@ -14,7 +14,8 @@ export interface ResizableProps {
 }
 
 /** ResizableEdgeHandle props. */
-export interface ResizableEdgeHandleProps extends ResizableEdgeHandleVariantProps {
+export interface ResizableEdgeHandleProps
+  extends ResizableEdgeHandleVariantProps {
   /**
    * Style recipe override.
    * @defaultValue resizableEdgeHandleRecipe

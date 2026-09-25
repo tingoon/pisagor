@@ -6,5 +6,11 @@
     "types": ["astro/client", "vite/client", "node"]
   },
   "extends": "@pisagor/tsconfig/astro",
-  "include": ["src", ".storybook", "vite.config.ts", "astro.config.ts", "env.d.ts"]
+  "include": [
+    "src",
+    ".storybook",
+    "vite.config.ts",
+    "astro.config.ts",
+    "env.d.ts"
+  ]
 }

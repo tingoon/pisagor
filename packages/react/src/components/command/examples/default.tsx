@@ -6,8 +6,18 @@ export function Default() {
     { group: "Suggestions", label: "Linear", shortcut: "⌘L", value: "linear" },
     { group: "Suggestions", label: "Figma", shortcut: "⌘F", value: "figma" },
     { group: "Suggestions", label: "Slack", shortcut: "⌘S", value: "slack" },
-    { group: "Suggestions", label: "YouTube", shortcut: "⌘Y", value: "youtube" },
-    { group: "Suggestions", label: "Raycast", shortcut: "⌘R", value: "raycast" },
+    {
+      group: "Suggestions",
+      label: "YouTube",
+      shortcut: "⌘Y",
+      value: "youtube",
+    },
+    {
+      group: "Suggestions",
+      label: "Raycast",
+      shortcut: "⌘R",
+      value: "raycast",
+    },
     { group: "Settings", label: "Settings", shortcut: "⌘,", value: "settings" },
     { group: "Settings", label: "Help", shortcut: "⌘?", value: "help" },
     { group: "Settings", label: "About", shortcut: "⌘I", value: "about" },
@@ -27,7 +37,10 @@ export function Default() {
   });
 
   return (
-    <Command collection={collection} onInputValueChange={({ inputValue }) => filter(inputValue)}>
+    <Command
+      collection={collection}
+      onInputValueChange={({ inputValue }) => filter(inputValue)}
+    >
       <Command.Input />
       <Command.Content>
         <Command.Empty />

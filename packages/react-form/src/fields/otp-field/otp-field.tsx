@@ -1,12 +1,18 @@
 import type { InputOTPProps } from "@pisagor/react";
 import { InputOTP } from "@pisagor/react";
 import type { ReactNode } from "react";
-import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
+import {
+  type FieldPresentationProps,
+  FieldShell,
+} from "../../internal/field-shell";
 
 // #region Types
 export interface OtpFieldProps
   extends FieldPresentationProps,
-    Omit<InputOTPProps, "children" | "invalid" | "onValueChange" | "value" | "name" | "onBlur"> {
+    Omit<
+      InputOTPProps,
+      "children" | "invalid" | "onValueChange" | "value" | "name" | "onBlur"
+    > {
   /**
    * Number of OTP digits.
    *
@@ -62,7 +68,9 @@ export function OtpField({
     >
       <InputOTP
         {...inputOtpProps}
-        {...(value !== undefined ? { value: value ? value.split("") : [] } : {})}
+        {...(value !== undefined
+          ? { value: value ? value.split("") : [] }
+          : {})}
         id={id}
         invalid={invalid}
         name={name}

@@ -35,7 +35,10 @@ export const FileRoot = defineComponent({
   inheritAttrs: false,
   name: "FileRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: fileRecipe,
       type: Function as PropType<typeof fileRecipe>,
@@ -63,12 +66,18 @@ export const FileMedia = defineComponent({
   inheritAttrs: false,
   name: "FileMedia",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: fileRecipe,
       type: Function as PropType<typeof fileRecipe>,
     },
-    variant: { default: "icon", type: String as PropType<FileVariantProps["variant"]> },
+    variant: {
+      default: "icon",
+      type: String as PropType<FileVariantProps["variant"]>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -78,7 +87,10 @@ export const FileMedia = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: variantSlots.media({ class: props.class, variant: props.variant }),
+          class: variantSlots.media({
+            class: props.class,
+            variant: props.variant,
+          }),
           "data-part": "media",
           "data-scope": "file",
           "data-variant": props.variant,
@@ -93,7 +105,10 @@ export const FileContent = defineComponent({
   inheritAttrs: false,
   name: "FileContent",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: fileRecipe,
       type: Function as PropType<typeof fileRecipe>,
@@ -121,7 +136,10 @@ export const FileName = defineComponent({
   inheritAttrs: false,
   name: "FileName",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: fileRecipe,
       type: Function as PropType<typeof fileRecipe>,
@@ -149,7 +167,10 @@ export const FileMeta = defineComponent({
   inheritAttrs: false,
   name: "FileMeta",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: fileRecipe,
       type: Function as PropType<typeof fileRecipe>,
@@ -177,7 +198,10 @@ export const FileSize = defineComponent({
   inheritAttrs: false,
   name: "FileSize",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: fileRecipe,
       type: Function as PropType<typeof fileRecipe>,
@@ -206,7 +230,10 @@ export const FileActions = defineComponent({
   inheritAttrs: false,
   name: "FileActions",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: fileRecipe,
       type: Function as PropType<typeof fileRecipe>,
@@ -234,11 +261,26 @@ export const FileShorthand = defineComponent({
   inheritAttrs: false,
   name: "FileShorthand",
   props: {
-    actions: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    media: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
-    meta: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
-    name: { required: true, type: [String, Object, Array] as PropType<VNodeChild> },
+    actions: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<VNodeChild>,
+    },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    media: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<VNodeChild>,
+    },
+    meta: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<VNodeChild>,
+    },
+    name: {
+      required: true,
+      type: [String, Object, Array] as PropType<VNodeChild>,
+    },
     size: { default: undefined, type: Number },
   },
   setup(props, { attrs }) {
@@ -254,7 +296,9 @@ export const FileShorthand = defineComponent({
           props.size !== undefined ? h(FileSize, { value: props.size }) : null,
         ]),
 
-        props.actions !== undefined ? h(FileActions, null, () => props.actions) : null,
+        props.actions !== undefined
+          ? h(FileActions, null, () => props.actions)
+          : null,
       ]);
   },
 });

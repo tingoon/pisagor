@@ -1,4 +1,8 @@
-import { TextBIcon, TextItalicIcon, TextUnderlineIcon } from "@phosphor-icons/react";
+import {
+  TextBIcon,
+  TextItalicIcon,
+  TextUnderlineIcon,
+} from "@phosphor-icons/react";
 import { useState } from "react";
 import { ToggleGroup } from "..";
 
@@ -8,7 +12,9 @@ export function Controlled() {
   return (
     <div className="flex flex-col items-center gap-2">
       <ToggleGroup.Root
-        onValueChange={(value) => setValue(Array.isArray(value) ? value : [value])}
+        onValueChange={(value) =>
+          setValue(Array.isArray(value) ? value : [value])
+        }
         value={value}
       >
         <ToggleGroup.Item aria-label="Toggle bold" value="bold">

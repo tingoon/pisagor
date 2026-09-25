@@ -8,7 +8,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Displays milestones and progress over time in a compact, scannable layout.",
+        component:
+          "Displays milestones and progress over time in a compact, scannable layout.",
       },
     },
   },

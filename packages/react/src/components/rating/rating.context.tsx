@@ -5,6 +5,8 @@ interface RatingContextValue {
   slots: RatingRecipe;
 }
 
-export const { RatingContext, useRating } = createContext<RatingContextValue>()({
-  name: "Rating",
-});
+export const { RatingContext, useRating } = createContext<RatingContextValue>()(
+  {
+    name: "Rating",
+  },
+);

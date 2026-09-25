@@ -9,7 +9,10 @@ export const emptyStateRecipe = tv({
       "rounded-2xl border border-dashed border-border/60 bg-muted/24",
       "p-8 text-center",
     ],
-    description: ["max-w-prose", "text-balance text-muted-foreground text-sm leading-relaxed"],
+    description: [
+      "max-w-prose",
+      "text-balance text-muted-foreground text-sm leading-relaxed",
+    ],
     media: [
       "mb-2",
       "flex size-12 items-center justify-center",

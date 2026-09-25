@@ -1,4 +1,8 @@
-import { TextBIcon, TextItalicIcon, TextUnderlineIcon } from "@phosphor-icons/react";
+import {
+  TextBIcon,
+  TextItalicIcon,
+  TextUnderlineIcon,
+} from "@phosphor-icons/react";
 import { ToggleGroup } from "..";
 
 export function Compound() {

@@ -12,7 +12,9 @@ export const collapsibleRecipe = tv({
       "data-[state=closed]:animate-collapse",
       "motion-reduce:animate-none! motion-reduce:transition-none!",
     ],
-    icon: ["transition-transform duration-normal ease-out motion-reduce:transition-none!"],
+    icon: [
+      "transition-transform duration-normal ease-out motion-reduce:transition-none!",
+    ],
     indicator: "data-[state=open]:[&_svg]:rotate-180",
     trigger: [
       "cursor-pointer",

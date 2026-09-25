@@ -1,5 +1,12 @@
-import { createListCollection, Select, type SelectRootProps } from "@pisagor/react";
-import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
+import {
+  createListCollection,
+  Select,
+  type SelectRootProps,
+} from "@pisagor/react";
+import {
+  type FieldPresentationProps,
+  FieldShell,
+} from "../../internal/field-shell";
 
 // #region Types
 interface SelectOption {
@@ -66,7 +73,9 @@ export function SelectField({
         name={name}
         onFocusOutside={onBlur}
         onValueChange={(nextValue) => {
-          onValueChange?.(Array.isArray(nextValue) ? (nextValue.at(0) ?? "") : nextValue);
+          onValueChange?.(
+            Array.isArray(nextValue) ? (nextValue.at(0) ?? "") : nextValue,
+          );
         }}
       >
         <Select.Trigger className="w-full" id={id}>

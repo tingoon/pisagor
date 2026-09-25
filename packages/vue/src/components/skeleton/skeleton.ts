@@ -26,7 +26,10 @@ export const SkeletonRoot = defineComponent({
   inheritAttrs: false,
   name: "SkeletonRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: skeletonRecipe,
       type: Function as PropType<typeof skeletonRecipe>,
@@ -54,7 +57,10 @@ export const SkeletonCircle = defineComponent({
   inheritAttrs: false,
   name: "SkeletonCircle",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: skeletonRecipe,
       type: Function as PropType<typeof skeletonRecipe>,
@@ -78,7 +84,10 @@ export const SkeletonText = defineComponent({
   inheritAttrs: false,
   name: "SkeletonText",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     lines: { default: 2, type: Number },
     recipe: {
       default: skeletonRecipe,
@@ -99,7 +108,10 @@ export const SkeletonText = defineComponent({
         },
         () =>
           Array.from({ length: props.lines }).map((_, index) =>
-            h("div", { class: variantSlots.line(), key: `skeleton-text-${index}` }),
+            h("div", {
+              class: variantSlots.line(),
+              key: `skeleton-text-${index}`,
+            }),
           ),
       );
     };

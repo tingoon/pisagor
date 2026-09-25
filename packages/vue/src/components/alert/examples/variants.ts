@@ -1,4 +1,9 @@
-import { PhCheckCircle, PhChecks, PhClockCounterClockwise, PhWarning } from "@phosphor-icons/vue";
+import {
+  PhCheckCircle,
+  PhChecks,
+  PhClockCounterClockwise,
+  PhWarning,
+} from "@phosphor-icons/vue";
 import { defineComponent, h } from "vue";
 import { Alert } from "..";
 
@@ -20,7 +25,8 @@ export default defineComponent({
           variant: "destructive",
         }),
         h(Alert, {
-          description: "A new update is available. Review the update when you're ready.",
+          description:
+            "A new update is available. Review the update when you're ready.",
           icon: h(PhClockCounterClockwise),
           title: "New update available",
           variant: "info",

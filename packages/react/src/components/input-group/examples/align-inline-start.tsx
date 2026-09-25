@@ -10,7 +10,9 @@ export function AlignInlineStart() {
         </InputGroup.Addon>
         <InputGroup.Input placeholder="Search..." />
       </InputGroup>
-      <p className="text-muted-foreground text-sm">Icon positioned at the start.</p>
+      <p className="text-muted-foreground text-sm">
+        Icon positioned at the start.
+      </p>
     </div>
   );
 }

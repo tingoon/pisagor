@@ -6,7 +6,13 @@ export function SliderControlled() {
 
   return (
     <div className="flex flex-col gap-2">
-      <ColorPicker className="w-full" format="hsla" inline onValueChange={setColor} value={color}>
+      <ColorPicker
+        className="w-full"
+        format="hsla"
+        inline
+        onValueChange={setColor}
+        value={color}
+      >
         <ColorPicker.View format="hsla">
           <ColorPicker.ChannelSlider channel="hue" />
         </ColorPicker.View>

@@ -12,8 +12,17 @@ export const fieldRecipe = tv({
     reverse: false,
   },
   slots: {
-    base: ["group/field", "w-full", "flex gap-2", "data-invalid:text-destructive"],
-    content: ["group/field-content", "flex flex-1 flex-col gap-1.5", "leading-snug"],
+    base: [
+      "group/field",
+      "w-full",
+      "flex gap-2",
+      "data-invalid:text-destructive",
+    ],
+    content: [
+      "group/field-content",
+      "flex flex-1 flex-col gap-1.5",
+      "leading-snug",
+    ],
     description: [
       "pointer-events-none",
       "font-normal text-muted-foreground text-sm leading-normal",

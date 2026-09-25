@@ -1,5 +1,11 @@
-import { RichTextEditor, type RichTextEditorRootProps } from "@pisagor/react/rich-text-editor";
-import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
+import {
+  RichTextEditor,
+  type RichTextEditorRootProps,
+} from "@pisagor/react/rich-text-editor";
+import {
+  type FieldPresentationProps,
+  FieldShell,
+} from "../../internal/field-shell";
 
 // #region Types
 type RichTextEditorControlProps = Omit<
@@ -51,7 +57,9 @@ export function RichTextEditorField({
       <RichTextEditor
         {...editorProps}
         {...(value !== undefined ? { value } : {})}
-        aria-label={hasVisibleLabel ? ariaLabel : (ariaLabel ?? "Rich text editor")}
+        aria-label={
+          hasVisibleLabel ? ariaLabel : (ariaLabel ?? "Rich text editor")
+        }
         id={id}
         invalid={invalid}
         name={name}

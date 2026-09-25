@@ -7,6 +7,11 @@ type Props = HTMLAttributes<"div">;
 const { class: className, ...rest } = Astro.props;
 ---
 
-<div {...rest} class={kbdGroupRecipe({ className })} data-part="group" data-scope="kbd">
+<div
+  {...rest}
+  class={kbdGroupRecipe({ className })}
+  data-part="group"
+  data-scope="kbd"
+>
   <slot />
 </div>

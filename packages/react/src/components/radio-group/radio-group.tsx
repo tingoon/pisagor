@@ -6,7 +6,10 @@ import type {
 } from "@ark-ui/react/radio-group";
 import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/react/radio-group";
 import { formControlRadioToggleRecipe } from "@pisagor/recipes/form-control";
-import { radioGroupItemRecipe, radioGroupRecipe } from "@pisagor/recipes/radio-group";
+import {
+  radioGroupItemRecipe,
+  radioGroupRecipe,
+} from "@pisagor/recipes/radio-group";
 import { cn } from "@pisagor/utils";
 import type { ReactNode } from "react";
 import { Field } from "../field";
@@ -21,7 +24,8 @@ interface RadioGroupPresetItem {
   value: string;
 }
 
-export interface RadioGroupRootProps extends Omit<RadioGroupPrimitiveRootProps, "onValueChange"> {
+export interface RadioGroupRootProps
+  extends Omit<RadioGroupPrimitiveRootProps, "onValueChange"> {
   onValueChange?: (value: string | null) => void;
   /**
    * Style recipe. Defaults to `radioGroupRecipe` from `@pisagor/recipes/radio-group`.
@@ -60,7 +64,9 @@ export function RadioGroupRoot({
     <RadioGroupPrimitive.Root
       {...rest}
       className={recipe({ className })}
-      onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
+      onValueChange={
+        onValueChange ? (details) => onValueChange(details.value) : undefined
+      }
     >
       {children}
     </RadioGroupPrimitive.Root>
@@ -90,7 +96,10 @@ export function RadioGroupItem({
     <RadioGroupPrimitive.Item {...rest} className={slots.base({ className })}>
       <RadioGroupPrimitive.ItemControl
         {...controlProps}
-        className={cn(formControlRadioToggleRecipe({ ...shellArgs }), slots.control())}
+        className={cn(
+          formControlRadioToggleRecipe({ ...shellArgs }),
+          slots.control(),
+        )}
       />
 
       <RadioGroupItemText>{children}</RadioGroupItemText>
@@ -100,7 +109,11 @@ export function RadioGroupItem({
   );
 }
 
-export function RadioGroupItemText({ children, className, ...rest }: RadioGroupItemTextProps) {
+export function RadioGroupItemText({
+  children,
+  className,
+  ...rest
+}: RadioGroupItemTextProps) {
   return (
     <Field.Label asChild>
       <RadioGroupPrimitive.ItemText {...rest} className={className}>
@@ -113,7 +126,9 @@ export function RadioGroupItemText({ children, className, ...rest }: RadioGroupI
 export function RadioGroupLabel({ children, ...rest }: RadioGroupLabelProps) {
   return (
     <Field.Label asChild>
-      <RadioGroupPrimitive.Label {...rest}>{children}</RadioGroupPrimitive.Label>
+      <RadioGroupPrimitive.Label {...rest}>
+        {children}
+      </RadioGroupPrimitive.Label>
     </Field.Label>
   );
 }
@@ -124,7 +139,11 @@ export function RadioGroupShorthand({ items = [], ...rest }: RadioGroupProps) {
   return (
     <RadioGroupRoot {...rest}>
       {items.map((item) => (
-        <RadioGroupItem disabled={item.disabled} key={item.value} value={item.value}>
+        <RadioGroupItem
+          disabled={item.disabled}
+          key={item.value}
+          value={item.value}
+        >
           {item.label}
         </RadioGroupItem>
       ))}

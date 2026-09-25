@@ -5,7 +5,10 @@ import {
   type ProgressTrackProps,
   type ProgressValueTextProps,
 } from "@ark-ui/solid/progress";
-import { type ProgressRecipeSlot, progressRecipe } from "@pisagor/recipes/progress";
+import {
+  type ProgressRecipeSlot,
+  progressRecipe,
+} from "@pisagor/recipes/progress";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
@@ -34,7 +37,12 @@ export interface ProgressProps extends Omit<ProgressRootProps, "children"> {
 }
 
 function ProgressRoot(props: ProgressRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["orientation", "children", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "orientation",
+    "children",
+    "recipe",
+    "class",
+  ]);
   const slots = () => (local.recipe ?? progressRecipe)();
 
   return (
@@ -65,7 +73,12 @@ function ProgressValue(props: ProgressValueTextProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useProgress();
 
-  return <ProgressPrimitive.ValueText {...rest} class={slots.value({ class: cn(local.class) })} />;
+  return (
+    <ProgressPrimitive.ValueText
+      {...rest}
+      class={slots.value({ class: cn(local.class) })}
+    />
+  );
 }
 
 function ProgressTrack(props: ProgressTrackProps): JSX.Element {
@@ -73,7 +86,10 @@ function ProgressTrack(props: ProgressTrackProps): JSX.Element {
   const { slots } = useProgress();
 
   return (
-    <ProgressPrimitive.Track {...rest} class={slots.track({ class: cn(local.class) })}>
+    <ProgressPrimitive.Track
+      {...rest}
+      class={slots.track({ class: cn(local.class) })}
+    >
       {local.children}
     </ProgressPrimitive.Track>
   );
@@ -83,7 +99,12 @@ function ProgressRange(props: ProgressRangeProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useProgress();
 
-  return <ProgressPrimitive.Range {...rest} class={slots.range({ class: cn(local.class) })} />;
+  return (
+    <ProgressPrimitive.Range
+      {...rest}
+      class={slots.range({ class: cn(local.class) })}
+    />
+  );
 }
 
 export function Progress(props: ProgressProps): JSX.Element {

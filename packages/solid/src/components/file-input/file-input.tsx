@@ -30,11 +30,18 @@ type FileInputRootProps = ComponentProps<typeof ark.div> &
     recipe?: typeof fileInputRecipe;
   };
 
-export interface FileInputProps extends NativeFileInputProps, FileInputVariantProps {
+export interface FileInputProps
+  extends NativeFileInputProps,
+    FileInputVariantProps {
   invalid?: boolean;
   browseLabel?: string;
   placeholder?: string;
-  onChange?: (event: Event & { currentTarget: HTMLInputElement; target: HTMLInputElement }) => void;
+  onChange?: (
+    event: Event & {
+      currentTarget: HTMLInputElement;
+      target: HTMLInputElement;
+    },
+  ) => void;
   onFilesChange?: (files: globalThis.File[]) => void;
   onValueChange?: (files: globalThis.File[]) => void;
   recipe?: typeof fileInputRecipe;
@@ -142,7 +149,10 @@ export function FileInput(props: FileInputProps): JSX.Element {
   const openPicker = () => inputEl?.click();
 
   const changeHandler = (
-    event: Event & { currentTarget: HTMLInputElement; target: HTMLInputElement },
+    event: Event & {
+      currentTarget: HTMLInputElement;
+      target: HTMLInputElement;
+    },
   ) => {
     local.onChange?.(event);
     const files = getSelectedFiles(event.currentTarget);
@@ -177,7 +187,11 @@ export function FileInput(props: FileInputProps): JSX.Element {
         required={local.required}
       />
       <InputGroupAddon align="inline-start">
-        <InputGroupButton disabled={local.disabled} onClick={openPicker} type="button">
+        <InputGroupButton
+          disabled={local.disabled}
+          onClick={openPicker}
+          type="button"
+        >
           {local.browseLabel ?? "Choose file"}
         </InputGroupButton>
       </InputGroupAddon>

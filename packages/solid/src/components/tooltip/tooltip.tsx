@@ -6,7 +6,10 @@ import type {
   TooltipTriggerProps,
 } from "@ark-ui/solid/tooltip";
 import { Tooltip as TooltipPrimitive } from "@ark-ui/solid/tooltip";
-import { type TooltipRecipeSlot, tooltipRecipe } from "@pisagor/recipes/tooltip";
+import {
+  type TooltipRecipeSlot,
+  tooltipRecipe,
+} from "@pisagor/recipes/tooltip";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
@@ -18,8 +21,11 @@ export interface TooltipRootProps extends TooltipPrimitiveRootProps {
   recipe?: typeof tooltipRecipe;
 }
 
-export type TooltipTriggerHandleProps = JSX.ButtonHTMLAttributes<HTMLButtonElement>;
-export type TooltipTriggerHandle = (props: TooltipTriggerHandleProps) => JSX.Element;
+export type TooltipTriggerHandleProps =
+  JSX.ButtonHTMLAttributes<HTMLButtonElement>;
+export type TooltipTriggerHandle = (
+  props: TooltipTriggerHandleProps,
+) => JSX.Element;
 
 type TooltipClassNames = VariantClassNames<TooltipRecipeSlot>;
 
@@ -61,7 +67,10 @@ function TooltipContent(props: TooltipContentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const { slots } = useTooltip();
   return (
-    <TooltipPrimitive.Content {...rest} class={slots.content({ class: cn(local.class) })}>
+    <TooltipPrimitive.Content
+      {...rest}
+      class={slots.content({ class: cn(local.class) })}
+    >
       {local.children}
     </TooltipPrimitive.Content>
   );
@@ -71,7 +80,10 @@ function TooltipArrow(props: TooltipArrowProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const { slots } = useTooltip();
   return (
-    <TooltipPrimitive.Arrow {...rest} class={slots.arrow({ class: cn(local.class) })}>
+    <TooltipPrimitive.Arrow
+      {...rest}
+      class={slots.arrow({ class: cn(local.class) })}
+    >
       {local.children}
     </TooltipPrimitive.Arrow>
   );
@@ -101,13 +113,18 @@ export function Tooltip(props: TooltipProps): JSX.Element {
         when={isHandle()}
       >
         <TooltipPrimitive.Context>
-          {(api) => (local.children as TooltipTriggerHandle)(api().getTriggerProps())}
+          {(api) =>
+            (local.children as TooltipTriggerHandle)(api().getTriggerProps())
+          }
         </TooltipPrimitive.Context>
       </Show>
 
       <Portal>
         <TooltipPrimitive.Positioner {...local.positionerProps}>
-          <TooltipContent {...local.contentProps} class={local.classNames?.content}>
+          <TooltipContent
+            {...local.contentProps}
+            class={local.classNames?.content}
+          >
             <TooltipArrow {...local.arrowProps} class={local.classNames?.arrow}>
               <TooltipPrimitive.ArrowTip />
             </TooltipArrow>

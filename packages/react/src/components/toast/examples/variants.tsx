@@ -17,7 +17,8 @@ export function Variants() {
       <Button
         onClick={() =>
           toast.error({
-            description: "Event has not been created. Check your connection and try again.",
+            description:
+              "Event has not been created. Check your connection and try again.",
             title: "Something went wrong",
           })
         }

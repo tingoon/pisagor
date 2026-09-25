@@ -11,7 +11,9 @@ export function ExpandDepth() {
         <JsonTreeView data={expandDepthData()} defaultExpandedDepth={0} />
       </div>
       <div>
-        <p className="mb-2 font-medium text-foreground text-sm">defaultExpandedDepth={2}</p>
+        <p className="mb-2 font-medium text-foreground text-sm">
+          defaultExpandedDepth={2}
+        </p>
         <JsonTreeView data={expandDepthData()} defaultExpandedDepth={2} />
       </div>
     </div>

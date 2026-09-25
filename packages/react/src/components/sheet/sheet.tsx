@@ -25,7 +25,9 @@ import { SheetContext, useSheet } from "./sheet.context";
 // #region Types
 export type SheetPositionerProps = DialogPositionerProps & SheetVariantProps;
 
-export interface SheetContentProps extends DialogContentProps, SheetVariantProps {
+export interface SheetContentProps
+  extends DialogContentProps,
+    SheetVariantProps {
   /**
    * Whether to show a close button at the top right corner.
    *
@@ -106,7 +108,12 @@ export function SheetContent({
 
           {!!showCloseButton && (
             <SheetCloseTrigger asChild>
-              <Button aria-label="Close" className={slots.inline()} size="icon-sm" variant="ghost">
+              <Button
+                aria-label="Close"
+                className={slots.inline()}
+                size="icon-sm"
+                variant="ghost"
+              >
                 <XIcon />
               </Button>
             </SheetCloseTrigger>

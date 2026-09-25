@@ -15,8 +15,8 @@ export function PopoverDialog() {
             <Dialog.Header>
               <Dialog.Title>Nested layers</Dialog.Title>
               <Dialog.Description>
-                Open the popover from the button below — it stays anchored to its trigger above the
-                dialog.
+                Open the popover from the button below — it stays anchored to
+                its trigger above the dialog.
               </Dialog.Description>
             </Dialog.Header>
             <Dialog.Body>

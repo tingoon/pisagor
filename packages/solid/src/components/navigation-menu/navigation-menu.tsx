@@ -3,7 +3,10 @@ import { navigationMenuRecipe } from "@pisagor/recipes/navigation-menu";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
-import { NavigationMenuContext, useNavigationMenu } from "./navigation-menu.context";
+import {
+  NavigationMenuContext,
+  useNavigationMenu,
+} from "./navigation-menu.context";
 
 export interface NavigationMenuProps extends ComponentProps<typeof ark.nav> {
   recipe?: typeof navigationMenuRecipe;
@@ -34,7 +37,9 @@ export function NavigationMenuRoot(props: NavigationMenuProps): JSX.Element {
   );
 }
 
-export function NavigationMenuList(props: NavigationMenuPartProps): JSX.Element {
+export function NavigationMenuList(
+  props: NavigationMenuPartProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useNavigationMenu();
   return (
@@ -47,7 +52,9 @@ export function NavigationMenuList(props: NavigationMenuPartProps): JSX.Element 
   );
 }
 
-export function NavigationMenuItem(props: NavigationMenuItemProps): JSX.Element {
+export function NavigationMenuItem(
+  props: NavigationMenuItemProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useNavigationMenu();
   return (
@@ -60,7 +67,9 @@ export function NavigationMenuItem(props: NavigationMenuItemProps): JSX.Element 
   );
 }
 
-export function NavigationMenuLink(props: NavigationMenuLinkProps): JSX.Element {
+export function NavigationMenuLink(
+  props: NavigationMenuLinkProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["active", "class"]);
   const { slots } = useNavigationMenu();
   const active = () => local.active ?? false;

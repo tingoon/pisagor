@@ -31,7 +31,9 @@ export interface DropdownMenuItemGroupProps extends MenuItemGroupProps {
   heading?: string;
 }
 
-export interface DropdownMenuItemProps extends MenuItemProps, DropdownMenuItemVariantProps {
+export interface DropdownMenuItemProps
+  extends MenuItemProps,
+    DropdownMenuItemVariantProps {
   /**
    * Style recipe. Defaults to `dropdownMenuItemRecipe` from `@pisagor/recipes/dropdown-menu`.
    *
@@ -40,7 +42,8 @@ export interface DropdownMenuItemProps extends MenuItemProps, DropdownMenuItemVa
   recipe?: typeof dropdownMenuItemRecipe;
 }
 
-export interface DropdownMenuRadioItemGroupProps extends MenuRadioItemGroupProps {
+export interface DropdownMenuRadioItemGroupProps
+  extends MenuRadioItemGroupProps {
   /** The heading of the menu radio item group. */
   heading?: string;
 }
@@ -117,11 +120,19 @@ export function DropdownMenuTrigger(props: DropdownMenuTriggerProps) {
   return <MenuPrimitive.Trigger {...props} />;
 }
 
-export function DropdownMenuPositioner({ className, ...rest }: DropdownMenuPositionerProps) {
+export function DropdownMenuPositioner({
+  className,
+  ...rest
+}: DropdownMenuPositionerProps) {
   const context = useDropdownMenu();
   const slots = context?.slots ?? dropdownMenuRecipe();
 
-  return <MenuPrimitive.Positioner {...rest} className={slots.positioner({ className })} />;
+  return (
+    <MenuPrimitive.Positioner
+      {...rest}
+      className={slots.positioner({ className })}
+    />
+  );
 }
 
 export function DropdownMenuContent({
@@ -136,7 +147,10 @@ export function DropdownMenuContent({
     <DropdownMenuContext value={{ slots }}>
       <Portal>
         <DropdownMenuPositioner>
-          <MenuPrimitive.Content {...rest} className={slots.content({ className })}>
+          <MenuPrimitive.Content
+            {...rest}
+            className={slots.content({ className })}
+          >
             {children}
           </MenuPrimitive.Content>
         </DropdownMenuPositioner>
@@ -145,21 +159,35 @@ export function DropdownMenuContent({
   );
 }
 
-export function DropdownMenuItemGroup({ children, heading, ...rest }: DropdownMenuItemGroupProps) {
+export function DropdownMenuItemGroup({
+  children,
+  heading,
+  ...rest
+}: DropdownMenuItemGroupProps) {
   return (
     <MenuPrimitive.ItemGroup {...rest}>
-      {!!heading && <DropdownMenuItemGroupLabel>{heading}</DropdownMenuItemGroupLabel>}
+      {!!heading && (
+        <DropdownMenuItemGroupLabel>{heading}</DropdownMenuItemGroupLabel>
+      )}
 
       {children}
     </MenuPrimitive.ItemGroup>
   );
 }
 
-export function DropdownMenuSeparator({ className, ...rest }: DropdownMenuSeparatorProps) {
+export function DropdownMenuSeparator({
+  className,
+  ...rest
+}: DropdownMenuSeparatorProps) {
   const context = useDropdownMenu();
   const slots = context?.slots ?? dropdownMenuRecipe();
 
-  return <MenuPrimitive.Separator {...rest} className={slots.separator({ className })} />;
+  return (
+    <MenuPrimitive.Separator
+      {...rest}
+      className={slots.separator({ className })}
+    />
+  );
 }
 
 export function DropdownMenuItem({
@@ -210,7 +238,9 @@ export function DropdownMenuCheckboxItem({
         <CheckIcon />
       </MenuPrimitive.ItemIndicator>
 
-      <MenuPrimitive.ItemText className={slots.text()}>{children}</MenuPrimitive.ItemText>
+      <MenuPrimitive.ItemText className={slots.text()}>
+        {children}
+      </MenuPrimitive.ItemText>
     </MenuPrimitive.CheckboxItem>
   );
 }
@@ -222,7 +252,9 @@ export function DropdownMenuRadioItemGroup({
 }: DropdownMenuRadioItemGroupProps) {
   return (
     <MenuPrimitive.RadioItemGroup {...rest}>
-      {!!heading && <DropdownMenuItemGroupLabel>{heading}</DropdownMenuItemGroupLabel>}
+      {!!heading && (
+        <DropdownMenuItemGroupLabel>{heading}</DropdownMenuItemGroupLabel>
+      )}
 
       {children}
     </MenuPrimitive.RadioItemGroup>
@@ -236,7 +268,12 @@ export function DropdownMenuItemGroupLabel({
   const context = useDropdownMenu();
   const slots = context?.slots ?? dropdownMenuRecipe();
 
-  return <MenuPrimitive.ItemGroupLabel {...rest} className={slots.itemGroupLabel({ className })} />;
+  return (
+    <MenuPrimitive.ItemGroupLabel
+      {...rest}
+      className={slots.itemGroupLabel({ className })}
+    />
+  );
 }
 
 export function DropdownMenuRadioItem({
@@ -253,7 +290,9 @@ export function DropdownMenuRadioItem({
         <CheckIcon />
       </MenuPrimitive.ItemIndicator>
 
-      <MenuPrimitive.ItemText className={slots.text()}>{children}</MenuPrimitive.ItemText>
+      <MenuPrimitive.ItemText className={slots.text()}>
+        {children}
+      </MenuPrimitive.ItemText>
     </MenuPrimitive.RadioItem>
   );
 }
@@ -273,7 +312,10 @@ export function DropdownMenuSubContent({
     <DropdownMenuContext value={{ slots }}>
       <Portal>
         <DropdownMenuPositioner>
-          <MenuPrimitive.Content {...rest} className={slots.content({ className })} />
+          <MenuPrimitive.Content
+            {...rest}
+            className={slots.content({ className })}
+          />
         </DropdownMenuPositioner>
       </Portal>
     </DropdownMenuContext>
@@ -300,7 +342,10 @@ export function DropdownMenuTriggerItem({
   );
 }
 
-export function DropdownMenuShortcut({ className, ...rest }: DropdownMenuShortcutProps) {
+export function DropdownMenuShortcut({
+  className,
+  ...rest
+}: DropdownMenuShortcutProps) {
   const context = useDropdownMenu();
   const slots = context?.slots ?? dropdownMenuRecipe();
 

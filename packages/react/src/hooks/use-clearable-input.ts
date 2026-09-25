@@ -40,7 +40,11 @@ export function useClearableInput(options: UseClearableInputOptions) {
   });
 
   const canClear =
-    clearable && type !== "file" && !disabled && !readOnly && currentValue.length > 0;
+    clearable &&
+    type !== "file" &&
+    !disabled &&
+    !readOnly &&
+    currentValue.length > 0;
 
   const handleChange = useCallback(
     (event: ChangeEvent<ClearableElement>) => {

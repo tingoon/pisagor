@@ -6,7 +6,12 @@ import { Timer } from "..";
 <template>
   <Card class="rounded-3xl [--space:--spacing(6)]">
     <Card.Content>
-      <Timer auto-start class="items-center gap-2" countdown :start-ms="5 * 60 * 1000">
+      <Timer
+        auto-start
+        class="items-center gap-2"
+        countdown
+        :start-ms="5 * 60 * 1000"
+      >
         <Timer.Area class="flex-wrap justify-center">
           <Timer.ItemGroup orientation="vertical">
             <Timer.Item type="minutes" />

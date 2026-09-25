@@ -6,7 +6,10 @@ export function ControlledSize() {
   const [size, setSize] = useState({ height: 200, width: 360 });
 
   return (
-    <FloatingPanel onSizeChange={(details) => setSize(details.size)} size={size}>
+    <FloatingPanel
+      onSizeChange={(details) => setSize(details.size)}
+      size={size}
+    >
       <FloatingPanel.Trigger asChild>
         <Button variant="outline">Open</Button>
       </FloatingPanel.Trigger>

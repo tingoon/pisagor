@@ -1,9 +1,22 @@
-import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
+import {
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  readFileSync,
+  statSync,
+  writeFileSync,
+} from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
-const HEAVY = ["data-grid", "data-table", "phone-input", "rich-text-editor"] as const;
-const STORY_EXPORT = /^export\s+const\s+([A-Z][A-Za-z0-9]*)\s*=\s*meta\.story\b/gm;
+const HEAVY = [
+  "data-grid",
+  "data-table",
+  "phone-input",
+  "rich-text-editor",
+] as const;
+const STORY_EXPORT =
+  /^export\s+const\s+([A-Z][A-Za-z0-9]*)\s*=\s*meta\.story\b/gm;
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const workspaceRoot = path.resolve(scriptDir, "../..");
@@ -70,7 +83,10 @@ function listDirs(dir: string): string[] {
 }
 
 function findStories(dir: string, name: string): string | null {
-  const candidates = [path.join(dir, `${name}.stories.tsx`), path.join(dir, `${name}.stories.ts`)];
+  const candidates = [
+    path.join(dir, `${name}.stories.tsx`),
+    path.join(dir, `${name}.stories.ts`),
+  ];
   return candidates.find((file) => existsSync(file)) ?? null;
 }
 
@@ -85,7 +101,10 @@ function findSources(dir: string, name: string): string[] {
   ]
     .map((file) => path.join(dir, file))
     .filter(
-      (file) => existsSync(file) && !file.endsWith(".stories.ts") && !file.endsWith(".stories.tsx"),
+      (file) =>
+        existsSync(file) &&
+        !file.endsWith(".stories.ts") &&
+        !file.endsWith(".stories.tsx"),
     );
 }
 
@@ -108,7 +127,11 @@ function parseExamples(storiesContent: string): CatalogExample[] {
   return examples;
 }
 
-function buildComponent(dir: string, name: string, packageName: string): CatalogComponent {
+function buildComponent(
+  dir: string,
+  name: string,
+  packageName: string,
+): CatalogComponent {
   const storiesAbs = findStories(dir, name);
   const storiesContent = storiesAbs ? readFileSync(storiesAbs, "utf8") : null;
   const sourcePaths = findSources(dir, name);
@@ -130,7 +153,14 @@ function buildComponentsCatalog(target: ScanTarget): ComponentsCatalog {
   const byName = new Map<string, CatalogComponent>();
 
   for (const name of listDirs(target.componentsRoot)) {
-    byName.set(name, buildComponent(path.join(target.componentsRoot, name), name, target.package));
+    byName.set(
+      name,
+      buildComponent(
+        path.join(target.componentsRoot, name),
+        name,
+        target.package,
+      ),
+    );
   }
 
   for (const dir of target.extraDirs ?? []) {
@@ -149,7 +179,9 @@ function buildComponentsCatalog(target: ScanTarget): ComponentsCatalog {
   }
 
   return {
-    components: [...byName.values()].sort((a, b) => a.name.localeCompare(b.name)),
+    components: [...byName.values()].sort((a, b) =>
+      a.name.localeCompare(b.name),
+    ),
     framework: target.framework,
     kind: "components",
     package: target.package,
@@ -188,7 +220,9 @@ function frameworkTargets(framework: "react" | "vue"): ScanTarget[] {
   const targets: ScanTarget[] = [
     {
       componentsRoot: path.join(base, "src/components"),
-      extraDirs: HEAVY.map((name) => path.join(base, "src", name)).filter((dir) => existsSync(dir)),
+      extraDirs: HEAVY.map((name) => path.join(base, "src", name)).filter(
+        (dir) => existsSync(dir),
+      ),
       framework,
       package: `@pisagor/${pkg}`,
       packageDir: base,
@@ -219,7 +253,10 @@ function frameworkTargets(framework: "react" | "vue"): ScanTarget[] {
   return targets;
 }
 
-function writeCatalog(packageDir: string, catalog: ComponentsCatalog | RecipesCatalog) {
+function writeCatalog(
+  packageDir: string,
+  catalog: ComponentsCatalog | RecipesCatalog,
+) {
   mkdirSync(packageDir, { recursive: true });
   const out = path.join(packageDir, "catalog.gen.json");
   writeFileSync(out, `${JSON.stringify(catalog)}\n`);
@@ -243,14 +280,20 @@ function main() {
   ];
 
   for (const target of targets) {
-    if (!existsSync(target.componentsRoot) && !(target.extraDirs?.length ?? 0)) {
+    if (
+      !existsSync(target.componentsRoot) &&
+      !(target.extraDirs?.length ?? 0)
+    ) {
       console.warn(`skip ${target.package}: missing sources`);
       continue;
     }
     writeCatalog(target.packageDir, buildComponentsCatalog(target));
   }
 
-  writeCatalog(path.join(workspaceRoot, "packages/recipes"), buildRecipesCatalog());
+  writeCatalog(
+    path.join(workspaceRoot, "packages/recipes"),
+    buildRecipesCatalog(),
+  );
 }
 
 main();

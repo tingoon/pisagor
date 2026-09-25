@@ -16,11 +16,22 @@ import { dialogRecipe } from "@pisagor/recipes/dialog";
 import { tourRecipe } from "@pisagor/recipes/tour";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
-import { createEffect, createSignal, For, onCleanup, Show, splitProps } from "solid-js";
+import {
+  createEffect,
+  createSignal,
+  For,
+  onCleanup,
+  Show,
+  splitProps,
+} from "solid-js";
 import { Portal } from "solid-js/web";
 import { CaretLeftIcon, CaretRightIcon, XIcon } from "../../internal/icons";
 import { Button } from "../button";
-import type { DialogBodyProps, DialogFooterProps, DialogHeaderProps } from "../dialog/dialog";
+import type {
+  DialogBodyProps,
+  DialogFooterProps,
+  DialogHeaderProps,
+} from "../dialog/dialog";
 import { ScrollArea } from "../scroll-area";
 import { TourContext, useTourContext } from "./tour.context";
 
@@ -37,7 +48,8 @@ export interface TourProps extends TourRootProps {
 
 export type TourTriggerProps = ComponentProps<typeof ark.button>;
 
-export interface TourBackdropProps extends ComponentProps<typeof TourPrimitive.Backdrop> {
+export interface TourBackdropProps
+  extends ComponentProps<typeof TourPrimitive.Backdrop> {
   dialogRecipe?: typeof dialogRecipe;
 }
 
@@ -115,7 +127,11 @@ export function TourPositioner(props: TourPositionerProps): JSX.Element {
 }
 
 export function TourContent(props: TourContentProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["showCloseButton", "children", "class"]);
+  const [local, rest] = splitProps(props, [
+    "showCloseButton",
+    "children",
+    "class",
+  ]);
   const { slots } = useTourContext();
   const showCloseButton = () => local.showCloseButton ?? true;
 
@@ -123,7 +139,10 @@ export function TourContent(props: TourContentProps): JSX.Element {
     <Portal>
       <TourBackdrop />
       <TourPositioner>
-        <TourPrimitive.Content {...rest} class={slots.content({ class: cn(local.class) })}>
+        <TourPrimitive.Content
+          {...rest}
+          class={slots.content({ class: cn(local.class) })}
+        >
           <Show
             fallback={
               <>
@@ -148,7 +167,9 @@ export function TourContent(props: TourContentProps): JSX.Element {
             <TourCloseTrigger
               asChild={(triggerProps) => (
                 <Button
-                  {...triggerProps({ class: cn(slots.close(), slots.closeButton()) })}
+                  {...triggerProps({
+                    class: cn(slots.close(), slots.closeButton()),
+                  })}
                   size="icon-md"
                   variant="ghost"
                 >
@@ -207,7 +228,10 @@ export function TourTitle(props: TourTitleProps): JSX.Element {
   const { slots, tour } = useTourContext();
 
   return (
-    <TourPrimitive.Title {...rest} class={slots.title({ class: cn(local.class) })}>
+    <TourPrimitive.Title
+      {...rest}
+      class={slots.title({ class: cn(local.class) })}
+    >
       {tour().step?.title}
     </TourPrimitive.Title>
   );
@@ -218,7 +242,10 @@ export function TourDescription(props: TourDescriptionProps): JSX.Element {
   const { slots, tour } = useTourContext();
 
   return (
-    <TourPrimitive.Description {...rest} class={slots.description({ class: cn(local.class) })}>
+    <TourPrimitive.Description
+      {...rest}
+      class={slots.description({ class: cn(local.class) })}
+    >
       {tour().step?.description}
     </TourPrimitive.Description>
   );
@@ -229,7 +256,10 @@ export function TourProgressText(props: TourProgressTextProps): JSX.Element {
   const { slots, tour } = useTourContext();
 
   return (
-    <TourPrimitive.ProgressText {...rest} class={slots.progressText({ class: cn(local.class) })}>
+    <TourPrimitive.ProgressText
+      {...rest}
+      class={slots.progressText({ class: cn(local.class) })}
+    >
       {tour().getProgressText()}
     </TourPrimitive.ProgressText>
   );
@@ -248,7 +278,9 @@ export function TourFooter(props: DialogFooterProps): JSX.Element {
       {...rest}
       asChild={(controlProps) => (
         <ark.div
-          {...controlProps({ class: dialogSlots.footer({ class: cn(local.class) }) })}
+          {...controlProps({
+            class: dialogSlots.footer({ class: cn(local.class) }),
+          })}
           data-part="control"
           data-scope="tour"
         >
@@ -272,7 +304,10 @@ export function TourActions(props: DialogFooterProps): JSX.Element {
         asChild={(controlProps) => (
           <ark.div
             {...controlProps({
-              class: cn(dialogSlots.footer(), slots.actions({ class: cn(local.class) })),
+              class: cn(
+                dialogSlots.footer(),
+                slots.actions({ class: cn(local.class) }),
+              ),
             })}
             data-part="actions"
             data-scope="tour"
@@ -310,9 +345,12 @@ export function TourActions(props: DialogFooterProps): JSX.Element {
   );
 }
 
-export function TourPreviousStep(props: Omit<TourActionTriggerProps, "action">): JSX.Element {
+export function TourPreviousStep(
+  props: Omit<TourActionTriggerProps, "action">,
+): JSX.Element {
   const { tour } = useTourContext();
-  const prevAction = () => tour().step?.actions?.find((action) => action.action === "prev");
+  const prevAction = () =>
+    tour().step?.actions?.find((action) => action.action === "prev");
 
   return (
     <Show when={prevAction()}>
@@ -332,10 +370,14 @@ export function TourPreviousStep(props: Omit<TourActionTriggerProps, "action">):
   );
 }
 
-export function TourNextStep(props: Omit<TourActionTriggerProps, "action">): JSX.Element {
+export function TourNextStep(
+  props: Omit<TourActionTriggerProps, "action">,
+): JSX.Element {
   const { tour } = useTourContext();
   const action = () =>
-    tour().step?.actions?.find((a) => a.action === "next" || a.action === "dismiss");
+    tour().step?.actions?.find(
+      (a) => a.action === "next" || a.action === "dismiss",
+    );
 
   return (
     <Show when={action()}>

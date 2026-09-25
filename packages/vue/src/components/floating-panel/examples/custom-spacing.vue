@@ -14,7 +14,9 @@ const collection = createListCollection({
     <FloatingPanel.Trigger as-child>
       <Button variant="outline">Open</Button>
     </FloatingPanel.Trigger>
-    <FloatingPanel.Content class="[--space:--spacing(3)] sm:[--space:--spacing(6)]">
+    <FloatingPanel.Content
+      class="[--space:--spacing(3)] sm:[--space:--spacing(6)]"
+    >
       <FloatingPanel.Header>
         <PhGearSix />
         <FloatingPanel.Title>Settings</FloatingPanel.Title>
@@ -37,7 +39,11 @@ const collection = createListCollection({
               <Select.ValueText />
             </Select.Trigger>
             <Select.Content>
-              <Select.Item v-for="item in collection.items" :key="item" :item="item">
+              <Select.Item
+                v-for="item in collection.items"
+                :key="item"
+                :item="item"
+              >
                 {{ item }}
               </Select.Item>
             </Select.Content>

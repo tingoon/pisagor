@@ -8,6 +8,7 @@ export interface TourProviderProps {
   slots: TourRecipe;
 }
 
-export const { TourContext, useTour: useTourContext } = createContext<TourProviderProps>()({
-  name: "Tour",
-});
+export const { TourContext, useTour: useTourContext } =
+  createContext<TourProviderProps>()({
+    name: "Tour",
+  });

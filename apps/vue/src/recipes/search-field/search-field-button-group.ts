@@ -10,7 +10,10 @@ export const SearchFieldButtonGroup = defineComponent({
   setup() {
     return () =>
       h(InputGroup as ArkPart, null, () => [
-        h(InputGroup.Input as ArkPart, { placeholder: "Search...", type: "search" }),
+        h(InputGroup.Input as ArkPart, {
+          placeholder: "Search...",
+          type: "search",
+        }),
         h(InputGroup.Addon as ArkPart, { align: "inline-end" }, () =>
           h(Button as ArkPart, { type: "button", variant: "outline" }, () =>
             h(PhMagnifyingGlass, { "aria-hidden": true }),

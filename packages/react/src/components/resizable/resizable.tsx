@@ -8,7 +8,10 @@ import type {
 } from "@ark-ui/react/splitter";
 import { Splitter as SplitterPrimitive } from "@ark-ui/react/splitter";
 import { DotsSixVerticalIcon } from "@phosphor-icons/react";
-import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes/resizable";
+import {
+  resizableEdgeHandleRecipe,
+  resizableRecipe,
+} from "@pisagor/recipes/resizable";
 import { type ComponentProps, useCallback, useRef } from "react";
 import { ResizableSlotsContext, useResizable } from "./resizable.context";
 
@@ -57,7 +60,8 @@ export interface ResizableEdgeHandleProps extends ComponentProps<"button"> {
   recipe?: typeof resizableEdgeHandleRecipe;
 }
 
-export interface ResizableResizeTriggerProps extends SplitterResizeTriggerProps {
+export interface ResizableResizeTriggerProps
+  extends SplitterResizeTriggerProps {
   /**
    * Whether to show the handle.
    *
@@ -77,7 +81,8 @@ export interface ResizableRootProps extends SplitterRootProps {
 
 export type ResizablePanelProps = SplitterPanelProps;
 
-export type ResizableResizeTriggerIndicatorProps = SplitterResizeTriggerIndicatorProps;
+export type ResizableResizeTriggerIndicatorProps =
+  SplitterResizeTriggerIndicatorProps;
 
 export type ResizableContextProps = SplitterContextProps;
 
@@ -155,7 +160,9 @@ export function ResizableEdgeHandle({
         const delta = event.clientX - startXRef.current;
         const next = Math.max(
           minWidth,
-          isStart ? startWidthRef.current + delta : startWidthRef.current - delta,
+          isStart
+            ? startWidthRef.current + delta
+            : startWidthRef.current - delta,
         );
 
         liveWidthRef.current = next;
@@ -249,7 +256,10 @@ export function ResizableRootProvider({
 
   return (
     <ResizableSlotsContext value={{ slots }}>
-      <SplitterPrimitive.RootProvider {...rest} className={slots.base({ className })}>
+      <SplitterPrimitive.RootProvider
+        {...rest}
+        className={slots.base({ className })}
+      >
         {children}
       </SplitterPrimitive.RootProvider>
     </ResizableSlotsContext>
@@ -261,7 +271,8 @@ export function ResizableRootProvider({
 ResizableEdgeHandle.displayName = "Resizable.EdgeHandle";
 ResizableRoot.displayName = "Resizable";
 ResizablePanel.displayName = "Resizable.Panel";
-ResizableResizeTriggerIndicator.displayName = "Resizable.ResizeTriggerIndicator";
+ResizableResizeTriggerIndicator.displayName =
+  "Resizable.ResizeTriggerIndicator";
 ResizableResizeTrigger.displayName = "Resizable.ResizeTrigger";
 ResizableContext.displayName = "Resizable.Context";
 ResizableRootProvider.displayName = "Resizable.RootProvider";

@@ -37,7 +37,11 @@ export type {
   AppShellInspectorProps,
   AppShellInspectorTriggerProps,
 } from "./inspector";
-export type { AppShellContentProps, AppShellHeaderProps, AppShellMainProps } from "./main";
+export type {
+  AppShellContentProps,
+  AppShellHeaderProps,
+  AppShellMainProps,
+} from "./main";
 export type { AppShellNavigationProps } from "./navigation";
 export type {
   AppShellPanelContentProps,

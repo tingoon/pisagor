@@ -1,5 +1,9 @@
 import { ark } from "@ark-ui/solid/factory";
-import { type AlertRecipeSlot, type AlertVariantProps, alertRecipe } from "@pisagor/recipes/alert";
+import {
+  type AlertRecipeSlot,
+  type AlertVariantProps,
+  alertRecipe,
+} from "@pisagor/recipes/alert";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
@@ -28,7 +32,12 @@ export interface AlertProps extends Omit<AlertRootProps, "children"> {
 }
 
 export function AlertRoot(props: AlertRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["variant", "children", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "variant",
+    "children",
+    "recipe",
+    "class",
+  ]);
   const slots = () => (local.recipe ?? alertRecipe)({ variant: local.variant });
 
   return (
@@ -116,7 +125,10 @@ export function AlertShorthand(props: AlertProps): JSX.Element {
         </AlertTitle>
       </Show>
       <Show when={local.description !== undefined}>
-        <AlertDescription {...local.descriptionProps} class={local.classNames?.description}>
+        <AlertDescription
+          {...local.descriptionProps}
+          class={local.classNames?.description}
+        >
           {local.description}
         </AlertDescription>
       </Show>

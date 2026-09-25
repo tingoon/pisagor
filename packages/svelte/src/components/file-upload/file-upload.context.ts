@@ -1,4 +1,7 @@
-import type { FileUploadItemRecipe, FileUploadRecipe } from "@pisagor/recipes/file-upload";
+import type {
+  FileUploadItemRecipe,
+  FileUploadRecipe,
+} from "@pisagor/recipes/file-upload";
 import { createContext } from "../../utils/create-context";
 
 interface FileUploadContextValue {
@@ -10,7 +13,9 @@ interface FileUploadItemContextValue {
 }
 
 const root = createContext<FileUploadContextValue>({ name: "FileUpload" });
-const item = createContext<FileUploadItemContextValue>({ name: "FileUploadItem" });
+const item = createContext<FileUploadItemContextValue>({
+  name: "FileUploadItem",
+});
 
 export const setFileUploadContext = root.setContext;
 export const useFileUpload = root.getContext;

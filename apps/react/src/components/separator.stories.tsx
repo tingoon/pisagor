@@ -7,7 +7,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Visually divides sections of content so grouped information is easier to scan.",
+        component:
+          "Visually divides sections of content so grouped information is easier to scan.",
       },
     },
   },

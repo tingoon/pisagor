@@ -19,7 +19,11 @@ const surfaceVariantOptions = {
 } as const;
 
 /** Surfaces where controls need a raised (page/card) fill to stay visible. */
-const mutedSurfaces: Array<"secondary" | "tertiary" | "glass"> = ["secondary", "tertiary", "glass"];
+const mutedSurfaces: Array<"secondary" | "tertiary" | "glass"> = [
+  "secondary",
+  "tertiary",
+  "glass",
+];
 
 export const formControlShellRecipe = tv({
   base: [
@@ -411,28 +415,38 @@ export const formControlZoneRecipe = tv({
 });
 
 export type FormControlShellRecipeFn = typeof formControlShellRecipe;
-export type FormControlShellVariantProps = VariantProps<FormControlShellRecipeFn>;
+export type FormControlShellVariantProps =
+  VariantProps<FormControlShellRecipeFn>;
 export type FormControlShellRecipe = ReturnType<FormControlShellRecipeFn>;
 export type FormControlShellRecipeSlot = keyof FormControlShellRecipe;
 
 export type FormControlGroupShellRecipeFn = typeof formControlGroupShellRecipe;
-export type FormControlGroupShellVariantProps = VariantProps<FormControlGroupShellRecipeFn>;
-export type FormControlGroupShellRecipe = ReturnType<FormControlGroupShellRecipeFn>;
+export type FormControlGroupShellVariantProps =
+  VariantProps<FormControlGroupShellRecipeFn>;
+export type FormControlGroupShellRecipe =
+  ReturnType<FormControlGroupShellRecipeFn>;
 export type FormControlGroupShellRecipeSlot = keyof FormControlGroupShellRecipe;
 
 export type FormControlToggleRecipeFn = typeof formControlToggleRecipe;
-export type FormControlToggleVariantProps = VariantProps<FormControlToggleRecipeFn>;
+export type FormControlToggleVariantProps =
+  VariantProps<FormControlToggleRecipeFn>;
 export type FormControlToggleRecipe = ReturnType<FormControlToggleRecipeFn>;
 export type FormControlToggleRecipeSlot = keyof FormControlToggleRecipe;
 
-export type FormControlRadioToggleRecipeFn = typeof formControlRadioToggleRecipe;
-export type FormControlRadioToggleVariantProps = VariantProps<FormControlRadioToggleRecipeFn>;
-export type FormControlRadioToggleRecipe = ReturnType<FormControlRadioToggleRecipeFn>;
-export type FormControlRadioToggleRecipeSlot = keyof FormControlRadioToggleRecipe;
+export type FormControlRadioToggleRecipeFn =
+  typeof formControlRadioToggleRecipe;
+export type FormControlRadioToggleVariantProps =
+  VariantProps<FormControlRadioToggleRecipeFn>;
+export type FormControlRadioToggleRecipe =
+  ReturnType<FormControlRadioToggleRecipeFn>;
+export type FormControlRadioToggleRecipeSlot =
+  keyof FormControlRadioToggleRecipe;
 
 export type FormControlSeparatorRecipeFn = typeof formControlSeparatorRecipe;
-export type FormControlSeparatorVariantProps = VariantProps<FormControlSeparatorRecipeFn>;
-export type FormControlSeparatorRecipe = ReturnType<FormControlSeparatorRecipeFn>;
+export type FormControlSeparatorVariantProps =
+  VariantProps<FormControlSeparatorRecipeFn>;
+export type FormControlSeparatorRecipe =
+  ReturnType<FormControlSeparatorRecipeFn>;
 export type FormControlSeparatorRecipeSlot = keyof FormControlSeparatorRecipe;
 
 export type FormControlZoneRecipeFn = typeof formControlZoneRecipe;

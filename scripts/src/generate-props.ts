@@ -71,7 +71,9 @@ function jsDocCommentText(comment: ts.JSDoc["comment"]): string {
 
 /** JSDoc on object-literal properties is not exposed via ts-morph `getJsDocs()`. */
 function compilerJsDocs(node: Node): ts.JSDoc[] {
-  return ts.getJSDocCommentsAndTags(node.compilerNode).filter((n): n is ts.JSDoc => ts.isJSDoc(n));
+  return ts
+    .getJSDocCommentsAndTags(node.compilerNode)
+    .filter((n): n is ts.JSDoc => ts.isJSDoc(n));
 }
 
 function jsDocDescriptionFromNode(node: Node): string {
@@ -97,7 +99,11 @@ function descriptionOf(prop: PropertySignature): string {
 }
 
 function defaultOf(prop: PropertySignature): string | undefined {
-  return jsDocTagFromNode(prop, "defaultValue") ?? jsDocTagFromNode(prop, "default") ?? undefined;
+  return (
+    jsDocTagFromNode(prop, "defaultValue") ??
+    jsDocTagFromNode(prop, "default") ??
+    undefined
+  );
 }
 
 function formatTypeText(raw: string): string {
@@ -107,9 +113,14 @@ function formatTypeText(raw: string): string {
     .trim();
 }
 
-function typeTextFromSymbol(symbol: TsSymbol, location: InterfaceDeclaration): string {
+function typeTextFromSymbol(
+  symbol: TsSymbol,
+  location: InterfaceDeclaration,
+): string {
   const type = symbol.getTypeAtLocation(location);
-  const flags = TypeFormatFlags.UseAliasDefinedOutsideCurrentScope | TypeFormatFlags.NoTruncation;
+  const flags =
+    TypeFormatFlags.UseAliasDefinedOutsideCurrentScope |
+    TypeFormatFlags.NoTruncation;
   return formatTypeText(type.getText(location, flags));
 }
 
@@ -161,7 +172,9 @@ function loadRecipeDefaultVariantDocs(
   project: Project,
   recipe: NonNullable<ComponentSpec["recipe"]>,
 ): { docs: Record<string, PropDoc>; order: string[] } {
-  const source = project.addSourceFileAtPathIfExists(path.join(recipesUiDir, recipe.fileName));
+  const source = project.addSourceFileAtPathIfExists(
+    path.join(recipesUiDir, recipe.fileName),
+  );
   if (!source) {
     throw new Error(`Recipe file not found: ${recipe.fileName}`);
   }
@@ -207,7 +220,10 @@ function extractInterfaceProps(
   docs: Record<string, PropDoc>,
   preferredOrder: string[],
 ): PropRow[] {
-  const byName = new Map<string, { type: string; description: string; defaultValue?: string }>();
+  const byName = new Map<
+    string,
+    { type: string; description: string; defaultValue?: string }
+  >();
 
   for (const symbol of iface.getType().getProperties()) {
     const name = symbol.getName();
@@ -216,12 +232,16 @@ function extractInterfaceProps(
     const own = iface.getProperty(name);
     const fromDocs = docs[name];
     const description =
-      fromDocs?.description || (own && Node.isPropertySignature(own) ? descriptionOf(own) : "");
+      fromDocs?.description ||
+      (own && Node.isPropertySignature(own) ? descriptionOf(own) : "");
     const defaultValue =
-      fromDocs?.defaultValue ?? (own && Node.isPropertySignature(own) ? defaultOf(own) : undefined);
+      fromDocs?.defaultValue ??
+      (own && Node.isPropertySignature(own) ? defaultOf(own) : undefined);
     const type =
       fromDocs?.type ??
-      (own && Node.isPropertySignature(own) ? typeTextFromOwn(own) : undefined) ??
+      (own && Node.isPropertySignature(own)
+        ? typeTextFromOwn(own)
+        : undefined) ??
       typeTextFromSymbol(symbol, iface);
 
     byName.set(name, {
@@ -281,7 +301,9 @@ function writeTypesFile(): void {
 }
 
 function generateComponent(project: Project, spec: ComponentSpec): void {
-  const source = project.getSourceFileOrThrow(path.join(propsDir, "src", `${spec.id}.ts`));
+  const source = project.getSourceFileOrThrow(
+    path.join(propsDir, "src", `${spec.id}.ts`),
+  );
   const iface = source.getInterfaceOrThrow(spec.interfaceName);
 
   let docs: Record<string, PropDoc> = {};
@@ -319,7 +341,9 @@ ${serializeRows(rows)},
 ];
 `;
   writeFileSync(outPath, file);
-  console.log(`Wrote ${path.relative(workspaceRoot, outPath)} (${rows.length} props)`);
+  console.log(
+    `Wrote ${path.relative(workspaceRoot, outPath)} (${rows.length} props)`,
+  );
   for (const row of rows) {
     console.log(`  - ${row.name}: ${row.type}`);
   }

@@ -6,7 +6,9 @@ type ResolvedTheme = "light" | "dark";
 const STORAGE_KEY = "pisagor-docs-theme";
 
 function systemTheme(): ResolvedTheme {
-  return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
 }
 
 function resolveTheme(preference: ThemePreference): ResolvedTheme {
@@ -20,7 +22,8 @@ function applyResolved(resolved: ResolvedTheme) {
 
 function readPreference(): ThemePreference {
   const stored = localStorage.getItem(STORAGE_KEY);
-  if (stored === "light" || stored === "dark" || stored === "system") return stored;
+  if (stored === "light" || stored === "dark" || stored === "system")
+    return stored;
   return "system";
 }
 
@@ -163,7 +166,12 @@ export default function ThemeToggle() {
                 <PreferenceIcon preference={option.id} />
                 <span className="flex-1">{option.label}</span>
                 {active ? (
-                  <svg aria-hidden className="size-3.5 opacity-80" fill="none" viewBox="0 0 24 24">
+                  <svg
+                    aria-hidden
+                    className="size-3.5 opacity-80"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
                     <path
                       d="m5 12 5 5L20 7"
                       stroke="currentColor"

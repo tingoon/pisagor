@@ -16,7 +16,11 @@ export const CodeEditorInput = defineComponent({
         }),
         h(InputGroup.Addon as ArkPart, { align: "block-start" }, () => [
           h(PhFile, { class: "text-muted-foreground" }),
-          h(InputGroup.Text as ArkPart, { class: "font-mono" }, () => "script.js"),
+          h(
+            InputGroup.Text as ArkPart,
+            { class: "font-mono" },
+            () => "script.js",
+          ),
           h(
             InputGroup.Button as ArkPart,
             {

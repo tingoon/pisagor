@@ -23,7 +23,8 @@ export interface FormControlShellProps extends FormControlShellVariantProps {
 }
 
 /** FormControlGroupShell props. */
-export interface FormControlGroupShellProps extends FormControlGroupShellVariantProps {
+export interface FormControlGroupShellProps
+  extends FormControlGroupShellVariantProps {
   /**
    * Style recipe override.
    * @defaultValue formControlGroupShellRecipe
@@ -41,7 +42,8 @@ export interface FormControlToggleProps extends FormControlToggleVariantProps {
 }
 
 /** FormControlRadioToggle props. */
-export interface FormControlRadioToggleProps extends FormControlRadioToggleVariantProps {
+export interface FormControlRadioToggleProps
+  extends FormControlRadioToggleVariantProps {
   /**
    * Style recipe override.
    * @defaultValue formControlRadioToggleRecipe
@@ -50,7 +52,8 @@ export interface FormControlRadioToggleProps extends FormControlRadioToggleVaria
 }
 
 /** FormControlSeparator props. */
-export interface FormControlSeparatorProps extends FormControlSeparatorVariantProps {
+export interface FormControlSeparatorProps
+  extends FormControlSeparatorVariantProps {
   /**
    * Style recipe override.
    * @defaultValue formControlSeparatorRecipe

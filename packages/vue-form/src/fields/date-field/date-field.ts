@@ -1,7 +1,10 @@
 import type { DatePickerProps } from "@pisagor/vue";
 import { DatePicker } from "@pisagor/vue";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
+import {
+  type FieldPresentationProps,
+  FieldShell,
+} from "../../internal/field-shell";
 import type { SetRequired } from "../../internal/types";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -12,7 +15,9 @@ type DatePickerControlProps = SetRequired<
   "onValueChange"
 >;
 
-export interface DateFieldProps extends FieldPresentationProps, DatePickerControlProps {
+export interface DateFieldProps
+  extends FieldPresentationProps,
+    DatePickerControlProps {
   name?: string;
   onBlur?: () => void;
   placeholder?: string;
@@ -25,15 +30,33 @@ export const DateField = defineComponent({
   inheritAttrs: false,
   name: "DateField",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    defaultValue: { default: undefined, type: null as unknown as PropType<unknown> },
-    description: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    defaultValue: {
+      default: undefined,
+      type: null as unknown as PropType<unknown>,
+    },
+    description: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     disabled: { default: undefined, type: Boolean },
-    error: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    error: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     id: { default: undefined, type: String },
     invalid: { default: undefined, type: Boolean },
-    label: { default: undefined, type: null as unknown as PropType<VNodeChild> },
-    labelAccessory: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    label: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
+    labelAccessory: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     labelProps: {
       default: undefined,
       type: Object as PropType<FieldPresentationProps["labelProps"]>,
@@ -50,7 +73,10 @@ export const DateField = defineComponent({
     },
     placeholder: { default: "Pick a date", type: String },
     value: { default: undefined, type: null as unknown as PropType<unknown> },
-    variant: { default: undefined, type: String as PropType<DatePickerProps["variant"]> },
+    variant: {
+      default: undefined,
+      type: String as PropType<DatePickerProps["variant"]>,
+    },
   },
   setup(props, { attrs }) {
     return () =>
@@ -81,12 +107,18 @@ export const DateField = defineComponent({
                   props.onBlur?.();
                 }
               },
-              onValueChange: (nextValue: unknown) => props.onValueChange(nextValue ?? []),
+              onValueChange: (nextValue: unknown) =>
+                props.onValueChange(nextValue ?? []),
               variant: props.variant,
-              ...(props.value !== undefined ? { value: props.value ?? [] } : {}),
+              ...(props.value !== undefined
+                ? { value: props.value ?? [] }
+                : {}),
             },
             () => [
-              h(DatePicker.Input as ArkPart, { id: props.id, placeholder: props.placeholder }),
+              h(DatePicker.Input as ArkPart, {
+                id: props.id,
+                placeholder: props.placeholder,
+              }),
               h(DatePicker.Content as ArkPart),
             ],
           ),

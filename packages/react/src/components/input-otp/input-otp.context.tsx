@@ -5,6 +5,7 @@ interface InputOTPContextValue {
   slots: InputOtpRecipe;
 }
 
-export const { InputOTPContext, useInputOTP } = createContext<InputOTPContextValue>()({
-  name: "InputOTP",
-});
+export const { InputOTPContext, useInputOTP } =
+  createContext<InputOTPContextValue>()({
+    name: "InputOTP",
+  });

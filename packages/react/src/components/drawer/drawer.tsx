@@ -29,7 +29,8 @@ export interface DrawerRootProps extends DrawerPrimitiveRootProps {
 export type DrawerPositionerProps = DrawerPrimitivePositionerProps &
   Pick<DrawerVariantProps, "variant">;
 
-export type DrawerContentProps = DrawerPrimitiveContentProps & Pick<DrawerVariantProps, "variant">;
+export type DrawerContentProps = DrawerPrimitiveContentProps &
+  Pick<DrawerVariantProps, "variant">;
 
 export interface DrawerHeaderProps extends ComponentProps<typeof ark.div> {
   /** The description of the drawer */
@@ -55,7 +56,10 @@ export type DrawerFooterProps = ComponentProps<typeof ark.div>;
 // #endregion
 
 // #region Parts
-export function DrawerRoot({ recipe = drawerRecipe, ...rest }: DrawerRootProps) {
+export function DrawerRoot({
+  recipe = drawerRecipe,
+  ...rest
+}: DrawerRootProps) {
   const slots = recipe();
 
   return (
@@ -72,7 +76,12 @@ export function DrawerTrigger(props: DrawerTriggerProps) {
 export function DrawerBackdrop({ className, ...rest }: DrawerBackdropProps) {
   const { slots } = useDrawer();
 
-  return <DrawerPrimitive.Backdrop {...rest} className={slots.backdrop({ className })} />;
+  return (
+    <DrawerPrimitive.Backdrop
+      {...rest}
+      className={slots.backdrop({ className })}
+    />
+  );
 }
 
 export function DrawerPositioner({
@@ -83,7 +92,10 @@ export function DrawerPositioner({
   const { slots } = useDrawer();
 
   return (
-    <DrawerPrimitive.Positioner {...rest} className={slots.positioner({ className, variant })} />
+    <DrawerPrimitive.Positioner
+      {...rest}
+      className={slots.positioner({ className, variant })}
+    />
   );
 }
 
@@ -127,7 +139,10 @@ export function DrawerContent({
   );
 }
 
-export function DrawerContentInner({ className, ...rest }: DrawerContentInnerProps) {
+export function DrawerContentInner({
+  className,
+  ...rest
+}: DrawerContentInnerProps) {
   const { slots } = useDrawer();
 
   return (
@@ -145,7 +160,10 @@ export function DrawerGrabber({ className, ...rest }: DrawerGrabberProps) {
 
   return (
     <ark.div className={slots.grabberWrapper()}>
-      <DrawerPrimitive.Grabber {...rest} className={slots.grabber({ className })}>
+      <DrawerPrimitive.Grabber
+        {...rest}
+        className={slots.grabber({ className })}
+      >
         <DrawerPrimitive.GrabberIndicator className={slots.grabberIcon()} />
       </DrawerPrimitive.Grabber>
     </ark.div>
@@ -180,10 +198,15 @@ export function DrawerHeader({
 export function DrawerTitle({ className, ...rest }: DrawerTitleProps) {
   const { slots } = useDrawer();
 
-  return <DrawerPrimitive.Title {...rest} className={slots.title({ className })} />;
+  return (
+    <DrawerPrimitive.Title {...rest} className={slots.title({ className })} />
+  );
 }
 
-export function DrawerDescription({ className, ...rest }: DrawerDescriptionProps) {
+export function DrawerDescription({
+  className,
+  ...rest
+}: DrawerDescriptionProps) {
   const { slots } = useDrawer();
 
   return (
@@ -196,7 +219,11 @@ export function DrawerDescription({ className, ...rest }: DrawerDescriptionProps
   );
 }
 
-export function DrawerBody({ scrollFade = false, className, ...rest }: DrawerBodyProps) {
+export function DrawerBody({
+  scrollFade = false,
+  className,
+  ...rest
+}: DrawerBodyProps) {
   const { slots } = useDrawer();
 
   return (

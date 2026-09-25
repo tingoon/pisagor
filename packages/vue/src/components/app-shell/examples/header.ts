@@ -22,13 +22,20 @@ export default defineComponent({
         ]),
 
         h(AppShell.Inspector, { defaultOpen: true, placement: "end" }, () => [
-          h(AppShell.InspectorContent, null, () => regionTitle("End inspector")),
+          h(AppShell.InspectorContent, null, () =>
+            regionTitle("End inspector"),
+          ),
         ]),
 
         h(AppShell.Main, null, () => [
           h(AppShell.Header, null, () => [
-            h(AppShell.PanelTrigger, { "aria-label": "Toggle start panel", placement: "start" }),
-            h("div", { class: "flex min-w-0 flex-1 justify-center" }, [regionTitle("Header")]),
+            h(AppShell.PanelTrigger, {
+              "aria-label": "Toggle start panel",
+              placement: "start",
+            }),
+            h("div", { class: "flex min-w-0 flex-1 justify-center" }, [
+              regionTitle("Header"),
+            ]),
           ]),
           mainContent("Main"),
         ]),

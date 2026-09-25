@@ -5,7 +5,8 @@ import { Prose } from "..";
 <template>
   <Prose>
     <small>
-      Never underestimate the power of a good laugh and always be careful of bad ideas.
+      Never underestimate the power of a good laugh and always be careful of bad
+      ideas.
     </small>
   </Prose>
 </template>

@@ -46,7 +46,9 @@ export function ControlledPosition() {
               <div>
                 <Button
                   aria-label="Move up"
-                  onClick={() => setPosition((prev) => ({ ...prev, y: prev.y - 20 }))}
+                  onClick={() =>
+                    setPosition((prev) => ({ ...prev, y: prev.y - 20 }))
+                  }
                   size="icon-md"
                   variant="outline"
                 >
@@ -56,7 +58,9 @@ export function ControlledPosition() {
               <div className="flex gap-1">
                 <Button
                   aria-label="Move left"
-                  onClick={() => setPosition((prev) => ({ ...prev, x: prev.x - 20 }))}
+                  onClick={() =>
+                    setPosition((prev) => ({ ...prev, x: prev.x - 20 }))
+                  }
                   size="icon-md"
                   variant="outline"
                 >
@@ -64,7 +68,9 @@ export function ControlledPosition() {
                 </Button>
                 <Button
                   aria-label="Move down"
-                  onClick={() => setPosition((prev) => ({ ...prev, y: prev.y + 20 }))}
+                  onClick={() =>
+                    setPosition((prev) => ({ ...prev, y: prev.y + 20 }))
+                  }
                   size="icon-md"
                   variant="outline"
                 >
@@ -72,7 +78,9 @@ export function ControlledPosition() {
                 </Button>
                 <Button
                   aria-label="Move right"
-                  onClick={() => setPosition((prev) => ({ ...prev, x: prev.x + 20 }))}
+                  onClick={() =>
+                    setPosition((prev) => ({ ...prev, x: prev.x + 20 }))
+                  }
                   size="icon-md"
                   variant="outline"
                 >

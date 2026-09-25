@@ -58,7 +58,9 @@ export const sources = {
   SliderVertical: stripTsxExample(slider_verticalRaw),
   SwatchPicker: stripTsxExample(swatch_pickerRaw),
   SwatchPickerControlled: stripTsxExample(swatch_picker_controlledRaw),
-  SwatchPickerCustomIndicator: stripTsxExample(swatch_picker_custom_indicatorRaw),
+  SwatchPickerCustomIndicator: stripTsxExample(
+    swatch_picker_custom_indicatorRaw,
+  ),
   SwatchPickerCustomRadius: stripTsxExample(swatch_picker_custom_radiusRaw),
   SwatchPickerCustomSize: stripTsxExample(swatch_picker_custom_sizeRaw),
   SwatchPickerDisabled: stripTsxExample(swatch_picker_disabledRaw),

@@ -18,13 +18,17 @@ export function Default() {
       </AppShell.Rail>
 
       <AppShell.Panel defaultOpen>
-        <AppShell.PanelContent>{regionTitle("Start panel")}</AppShell.PanelContent>
+        <AppShell.PanelContent>
+          {regionTitle("Start panel")}
+        </AppShell.PanelContent>
       </AppShell.Panel>
 
       <AppShell.Main>
         <AppShell.Header>
           <AppShell.PanelTrigger aria-label="Toggle start panel" />
-          <div className="flex min-w-0 flex-1 justify-center">{regionTitle("Header")}</div>
+          <div className="flex min-w-0 flex-1 justify-center">
+            {regionTitle("Header")}
+          </div>
         </AppShell.Header>
         {mainContent("Content")}
       </AppShell.Main>

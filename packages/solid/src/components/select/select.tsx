@@ -1,4 +1,7 @@
-import { type CollectionItem, createListCollection } from "@ark-ui/solid/collection";
+import {
+  type CollectionItem,
+  createListCollection,
+} from "@ark-ui/solid/collection";
 import { ark } from "@ark-ui/solid/factory";
 import type {
   SelectClearTriggerProps,
@@ -10,7 +13,10 @@ import type {
   SelectTriggerProps as SelectPrimitiveTriggerProps,
   SelectValueTextProps,
 } from "@ark-ui/solid/select";
-import { Select as SelectPrimitive, useSelectContext } from "@ark-ui/solid/select";
+import {
+  Select as SelectPrimitive,
+  useSelectContext,
+} from "@ark-ui/solid/select";
 import {
   type FormControlShellVariantProps,
   formControlShellRecipe,
@@ -41,7 +47,8 @@ export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
   recipe?: typeof selectRecipe;
 };
 
-export interface SelectProps extends Omit<SelectRootProps, "children" | "collection"> {
+export interface SelectProps
+  extends Omit<SelectRootProps, "children" | "collection"> {
   clearable?: boolean;
   items?: Array<SelectPresetItem | string>;
   placeholder?: string;
@@ -77,7 +84,9 @@ export function SelectRoot<T extends CollectionItem = CollectionItem>(
       <SelectPrimitive.Root
         {...rest}
         onValueChange={
-          local.onValueChange ? (details) => local.onValueChange?.(details.value) : undefined
+          local.onValueChange
+            ? (details) => local.onValueChange?.(details.value)
+            : undefined
         }
       >
         {local.children}
@@ -88,7 +97,13 @@ export function SelectRoot<T extends CollectionItem = CollectionItem>(
 }
 
 export function SelectTrigger(props: SelectTriggerProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["size", "variant", "clearable", "children", "class"]);
+  const [local, rest] = splitProps(props, [
+    "size",
+    "variant",
+    "clearable",
+    "children",
+    "class",
+  ]);
   const root = useSelectRoot();
   const slots = () => root?.slots ?? selectRecipe();
   const size = () => local.size ?? "md";
@@ -146,7 +161,12 @@ export function SelectValueText(props: SelectValueTextProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const root = useSelectRoot();
   const slots = () => root?.slots ?? selectRecipe();
-  return <SelectPrimitive.ValueText {...rest} class={slots().valueText({ class: local.class })} />;
+  return (
+    <SelectPrimitive.ValueText
+      {...rest}
+      class={slots().valueText({ class: local.class })}
+    />
+  );
 }
 
 export function SelectContent(props: SelectContentProps): JSX.Element {
@@ -157,7 +177,10 @@ export function SelectContent(props: SelectContentProps): JSX.Element {
   return (
     <Portal>
       <SelectPrimitive.Positioner>
-        <SelectPrimitive.Content {...rest} class={slots().content({ class: local.class })} />
+        <SelectPrimitive.Content
+          {...rest}
+          class={slots().content({ class: local.class })}
+        />
       </SelectPrimitive.Positioner>
     </Portal>
   );
@@ -176,7 +199,9 @@ export function SelectItemGroup(props: SelectItemGroupProps): JSX.Element {
   );
 }
 
-export function SelectItemGroupLabel(props: SelectItemGroupLabelProps): JSX.Element {
+export function SelectItemGroupLabel(
+  props: SelectItemGroupLabelProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const root = useSelectRoot();
   const slots = () => root?.slots ?? selectRecipe();
@@ -194,7 +219,10 @@ export function SelectItem(props: SelectItemProps): JSX.Element {
   const slots = () => root?.slots ?? selectRecipe();
 
   return (
-    <SelectPrimitive.Item {...rest} class={slots().item({ class: local.class })}>
+    <SelectPrimitive.Item
+      {...rest}
+      class={slots().item({ class: local.class })}
+    >
       <SelectPrimitive.ItemText class={slots().itemText()}>
         {local.children}
       </SelectPrimitive.ItemText>
@@ -207,7 +235,9 @@ export function SelectItem(props: SelectItemProps): JSX.Element {
   );
 }
 
-export function SelectClearTrigger(props: SelectClearTriggerProps): JSX.Element {
+export function SelectClearTrigger(
+  props: SelectClearTriggerProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const root = useSelectRoot();
   const slots = () => root?.slots ?? selectRecipe();
@@ -229,19 +259,29 @@ export function SelectEmpty(props: SelectEmptyProps): JSX.Element {
 
   return (
     <Show when={select().empty}>
-      <ark.div {...rest} class={slots().empty({ class: local.class })} role="presentation" />
+      <ark.div
+        {...rest}
+        class={slots().empty({ class: local.class })}
+        role="presentation"
+      />
     </Show>
   );
 }
 
 export function SelectShorthand(props: SelectProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["clearable", "items", "placeholder"]);
+  const [local, rest] = splitProps(props, [
+    "clearable",
+    "items",
+    "placeholder",
+  ]);
   const normalized = createMemo(() =>
     (local.items ?? []).map((item) =>
       typeof item === "string" ? { label: item, value: item } : item,
     ),
   );
-  const collection = createMemo(() => createListCollection({ items: normalized() }));
+  const collection = createMemo(() =>
+    createListCollection({ items: normalized() }),
+  );
 
   return (
     <SelectRoot {...rest} collection={collection()}>
@@ -249,7 +289,9 @@ export function SelectShorthand(props: SelectProps): JSX.Element {
         <SelectValueText placeholder={local.placeholder} />
       </SelectTrigger>
       <SelectContent>
-        <For each={normalized()}>{(item) => <SelectItem item={item}>{item.label}</SelectItem>}</For>
+        <For each={normalized()}>
+          {(item) => <SelectItem item={item}>{item.label}</SelectItem>}
+        </For>
       </SelectContent>
     </SelectRoot>
   );

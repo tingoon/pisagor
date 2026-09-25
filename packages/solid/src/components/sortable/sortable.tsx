@@ -13,7 +13,8 @@ import {
 
 type SortableOrientation = "vertical" | "horizontal";
 
-export interface SortableRootProps extends Omit<ComponentProps<typeof ark.div>, "onDragStart"> {
+export interface SortableRootProps
+  extends Omit<ComponentProps<typeof ark.div>, "onDragStart"> {
   orientation?: SortableOrientation;
   disabled?: boolean;
   items: string[];
@@ -108,7 +109,8 @@ export function SortableRoot(props: SortableRootProps): JSX.Element {
     const current = itemsRef.current;
     const index = current.indexOf(id);
     const targetIndex = index + delta;
-    if (index === -1 || targetIndex < 0 || targetIndex >= current.length) return;
+    if (index === -1 || targetIndex < 0 || targetIndex >= current.length)
+      return;
     local.onValueChange?.(reorder(current, index, targetIndex));
   };
 
@@ -117,7 +119,8 @@ export function SortableRoot(props: SortableRootProps): JSX.Element {
     return {
       "aria-disabled": disabled() || undefined,
       "data-dragging": activeId() === id ? "true" : undefined,
-      "data-drop-target": overId() === id && activeId() !== id ? "true" : undefined,
+      "data-drop-target":
+        overId() === id && activeId() !== id ? "true" : undefined,
       draggable: !disabled() && !itemHasHandle,
       onDragEnd: () => endDrag(),
       onDragEnter: (event: DragEvent) => {
@@ -146,16 +149,21 @@ export function SortableRoot(props: SortableRootProps): JSX.Element {
       onDrop: (event: DragEvent) => {
         event.preventDefault();
         event.stopPropagation();
-        const fromId = event.dataTransfer?.getData("text/plain") || activeIdRef.current;
+        const fromId =
+          event.dataTransfer?.getData("text/plain") || activeIdRef.current;
         if (fromId) commitReorder(fromId, id);
         endDrag();
       },
       onKeyDown: (event: KeyboardEvent) => {
         if (disabled()) return;
         const movePrev =
-          orientation() === "vertical" ? event.key === "ArrowUp" : event.key === "ArrowLeft";
+          orientation() === "vertical"
+            ? event.key === "ArrowUp"
+            : event.key === "ArrowLeft";
         const moveNext =
-          orientation() === "vertical" ? event.key === "ArrowDown" : event.key === "ArrowRight";
+          orientation() === "vertical"
+            ? event.key === "ArrowDown"
+            : event.key === "ArrowRight";
         if (!(event.altKey && (movePrev || moveNext))) return;
         event.preventDefault();
         moveItem(id, movePrev ? -1 : 1);
@@ -197,14 +205,21 @@ export function SortableRoot(props: SortableRootProps): JSX.Element {
 }
 
 export function SortableItem(props: SortableItemProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["value", "children", "itemRecipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "value",
+    "children",
+    "itemRecipe",
+    "class",
+  ]);
   const { getItemProps, activeId } = useSortable();
   const itemProps = () => getItemProps(local.value);
   const isDragging = () => activeId() === local.value;
   const slots = () => (local.itemRecipe ?? sortableItemRecipe)();
 
   return (
-    <SortableItemContext value={{ id: local.value, isDragging, slots: slots() }}>
+    <SortableItemContext
+      value={{ id: local.value, isDragging, slots: slots() }}
+    >
       <ark.div
         {...rest}
         {...itemProps()}
@@ -222,8 +237,15 @@ export function SortableItem(props: SortableItemProps): JSX.Element {
 export function SortableHandle(props: SortableHandleProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class", "aria-label"]);
   const { id, slots } = useSortableItem();
-  const { disabled, endDrag, moveItem, orientation, registerHandle, startDrag, unregisterHandle } =
-    useSortable();
+  const {
+    disabled,
+    endDrag,
+    moveItem,
+    orientation,
+    registerHandle,
+    startDrag,
+    unregisterHandle,
+  } = useSortable();
 
   onMount(() => {
     registerHandle(id);
@@ -253,9 +275,13 @@ export function SortableHandle(props: SortableHandleProps): JSX.Element {
       onKeyDown={(event) => {
         if (disabled) return;
         const movePrev =
-          orientation === "vertical" ? event.key === "ArrowUp" : event.key === "ArrowLeft";
+          orientation === "vertical"
+            ? event.key === "ArrowUp"
+            : event.key === "ArrowLeft";
         const moveNext =
-          orientation === "vertical" ? event.key === "ArrowDown" : event.key === "ArrowRight";
+          orientation === "vertical"
+            ? event.key === "ArrowDown"
+            : event.key === "ArrowRight";
         if (!(event.altKey && (movePrev || moveNext))) return;
         event.preventDefault();
         moveItem(id, movePrev ? -1 : 1);
@@ -268,7 +294,9 @@ export function SortableHandle(props: SortableHandleProps): JSX.Element {
   );
 }
 
-export function SortableItemContent(props: SortableItemContentProps): JSX.Element {
+export function SortableItemContent(
+  props: SortableItemContentProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useSortableItem();
   return (

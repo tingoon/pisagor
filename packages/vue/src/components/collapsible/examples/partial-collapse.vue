@@ -13,19 +13,20 @@ import { Collapsible } from "..";
     </Collapsible.Trigger>
     <Collapsible.Content class="space-y-2 p-2">
       <p class="text-muted-foreground text-sm">
-        This is the first paragraph of content. When collapsed, only a portion of this content will
-        be visible.
+        This is the first paragraph of content. When collapsed, only a portion
+        of this content will be visible.
       </p>
       <p class="text-muted-foreground text-sm">
-        This is the second paragraph. It will be hidden when the collapsible is in its collapsed
-        state.
+        This is the second paragraph. It will be hidden when the collapsible is
+        in its collapsed state.
       </p>
       <p class="text-muted-foreground text-sm">
-        This is the third paragraph. Expand the collapsible to see all the content.
+        This is the third paragraph. Expand the collapsible to see all the
+        content.
       </p>
       <p class="text-muted-foreground text-sm">
-        This is the fourth paragraph. The collapsedHeight prop controls how much content is visible
-        when collapsed.
+        This is the fourth paragraph. The collapsedHeight prop controls how much
+        content is visible when collapsed.
       </p>
       <Collapsible.Trigger as-child>
         <Button class="w-full" variant="outline">

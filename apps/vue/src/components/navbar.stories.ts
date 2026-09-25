@@ -23,7 +23,8 @@ export const WithSidebar = meta.story({
   parameters: {
     docs: {
       description: {
-        story: "Dashboard layout combining Navbar and Sidebar with a collapsible start rail.",
+        story:
+          "Dashboard layout combining Navbar and Sidebar with a collapsible start rail.",
       },
     },
   },

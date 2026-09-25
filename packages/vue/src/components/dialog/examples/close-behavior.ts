@@ -25,7 +25,11 @@ export default defineComponent({
         ]),
         h(Dialog, { closeOnEscape: false }, () => [
           h(Dialog.Trigger, { asChild: true }, () =>
-            h("button", { class: outlineButtonClass(), type: "button" }, "No close on Escape"),
+            h(
+              "button",
+              { class: outlineButtonClass(), type: "button" },
+              "No close on Escape",
+            ),
           ),
           h(Dialog.Content, { size: "sm" }, () =>
             h(Dialog.Header, {

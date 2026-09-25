@@ -43,15 +43,24 @@ export function Links() {
     },
   });
 
-  const TreeNode = ({ indexPath, node }: NodeProviderProps<TreeNodeWithLinks>) => {
+  const TreeNode = ({
+    indexPath,
+    node,
+  }: NodeProviderProps<TreeNodeWithLinks>) => {
     return (
       <TreeView.NodeProvider indexPath={indexPath} node={node}>
         {node.children ? (
           <TreeView.Branch>
-            <TreeView.BranchControl icon={null}>{node.name}</TreeView.BranchControl>
+            <TreeView.BranchControl icon={null}>
+              {node.name}
+            </TreeView.BranchControl>
             <TreeView.BranchContent>
               {node.children.map((child, index) => (
-                <TreeNode indexPath={[...indexPath, index]} key={child.id} node={child} />
+                <TreeNode
+                  indexPath={[...indexPath, index]}
+                  key={child.id}
+                  node={child}
+                />
               ))}
             </TreeView.BranchContent>
           </TreeView.Branch>
@@ -59,7 +68,11 @@ export function Links() {
           <TreeView.Item asChild>
             <a
               href={node.href ?? "#"}
-              rel={node.href?.startsWith("http") ? "noopener noreferrer" : undefined}
+              rel={
+                node.href?.startsWith("http")
+                  ? "noopener noreferrer"
+                  : undefined
+              }
               target={node.href?.startsWith("http") ? "_blank" : undefined}
             >
               <TreeView.ItemText icon={LinkIcon}>

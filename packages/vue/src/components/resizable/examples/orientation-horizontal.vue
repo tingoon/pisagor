@@ -6,10 +6,14 @@ function _frameClass(heightClass = "h-96") {
   return cn("mx-auto w-full max-w-4xl", heightClass);
 }
 
-function _panelClassName(orientation: "horizontal" | "vertical" = "horizontal") {
+function _panelClassName(
+  orientation: "horizontal" | "vertical" = "horizontal",
+) {
   return cn(
     "flex items-center justify-center bg-muted/30 text-sm",
-    orientation === "vertical" ? "min-h-0 h-full w-full" : "min-w-0 h-full w-full",
+    orientation === "vertical"
+      ? "min-h-0 h-full w-full"
+      : "min-w-0 h-full w-full",
   );
 }
 </script>

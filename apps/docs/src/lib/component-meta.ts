@@ -1,5 +1,10 @@
 type ComponentApi = "closed" | "open" | "compound-shorthand" | "compound";
-type ComponentTaxonomy = "primitive" | "standard" | "composite" | "layout" | "pattern";
+type ComponentTaxonomy =
+  | "primitive"
+  | "standard"
+  | "composite"
+  | "layout"
+  | "pattern";
 
 interface ComponentMeta {
   /** Public API shape. */

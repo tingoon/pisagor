@@ -11,11 +11,14 @@ export interface FileRootProps extends ComponentProps<typeof ark.div> {
   recipe?: typeof fileRecipe;
 }
 
-export interface FileMediaProps extends ComponentProps<typeof ark.div>, FileVariantProps {}
+export interface FileMediaProps
+  extends ComponentProps<typeof ark.div>,
+    FileVariantProps {}
 export type FileNameProps = ComponentProps<typeof ark.div>;
 export type FileMetaProps = ComponentProps<typeof ark.div>;
 
-export interface FileSizeProps extends Omit<ComponentProps<typeof ark.div>, "children"> {
+export interface FileSizeProps
+  extends Omit<ComponentProps<typeof ark.div>, "children"> {
   value: number;
 }
 
@@ -132,7 +135,13 @@ export function FileActions(props: FileActionsProps): JSX.Element {
 }
 
 export function FileShorthand(props: FileProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["size", "name", "actions", "media", "meta"]);
+  const [local, rest] = splitProps(props, [
+    "size",
+    "name",
+    "actions",
+    "media",
+    "meta",
+  ]);
   return (
     <FileRoot {...rest}>
       <FileMedia>{local.media}</FileMedia>

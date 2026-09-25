@@ -1,4 +1,7 @@
-import type { ScrollAreaRecipeFn, ScrollAreaVariantProps } from "@pisagor/recipes/scroll-area";
+import type {
+  ScrollAreaRecipeFn,
+  ScrollAreaVariantProps,
+} from "@pisagor/recipes/scroll-area";
 
 /** ScrollArea props. */
 export interface ScrollAreaProps extends ScrollAreaVariantProps {

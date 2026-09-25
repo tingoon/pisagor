@@ -4,12 +4,21 @@ import { Presence } from "@ark-ui/react/presence";
 import { useUncontrolled } from "@mantine/hooks";
 import { XIcon } from "@phosphor-icons/react";
 import { actionBarRecipe } from "@pisagor/recipes/action-bar";
-import type { ComponentProps, MouseEvent, PropsWithChildren, ReactNode } from "react";
+import type {
+  ComponentProps,
+  MouseEvent,
+  PropsWithChildren,
+  ReactNode,
+} from "react";
 import { useCallback, useMemo } from "react";
 import { Badge, type BadgeProps } from "../badge";
 import { Button } from "../button";
 import { Separator, type SeparatorProps } from "../separator";
-import { ActionBarContext, type ActionBarContextValue, useActionBar } from "./action-bar.context";
+import {
+  ActionBarContext,
+  type ActionBarContextValue,
+  useActionBar,
+} from "./action-bar.context";
 
 // #region Types
 interface ActionBarActionItem {
@@ -23,7 +32,8 @@ interface ActionBarActionItem {
   disabled?: boolean;
 }
 
-export interface ActionBarProps extends Pick<ActionBarContextValue, "lazyMount" | "unmountOnExit"> {
+export interface ActionBarProps
+  extends Pick<ActionBarContextValue, "lazyMount" | "unmountOnExit"> {
   /**
    * Style recipe. Defaults to `actionBarRecipe` from `@pisagor/recipes/action-bar`.
    *
@@ -150,7 +160,15 @@ export function ActionBarRoot({
       slots,
       unmountOnExit,
     }),
-    [handleClose, handleOpen, isOpen, lazyMount, positioning, slots, unmountOnExit],
+    [
+      handleClose,
+      handleOpen,
+      isOpen,
+      lazyMount,
+      positioning,
+      slots,
+      unmountOnExit,
+    ],
   );
 
   const hasPreset = count !== undefined || (actions && actions.length > 0);
@@ -214,14 +232,20 @@ export function ActionBarContent({
   className,
   ...rest
 }: ActionBarContentProps) {
-  const { isOpen, lazyMount, unmountOnExit, positioning, slots } = useActionBar();
+  const { isOpen, lazyMount, unmountOnExit, positioning, slots } =
+    useActionBar();
 
   const placement = positioning.placement;
   const gutter = positioning.gutter;
 
   return (
     <Portal>
-      <Presence asChild lazyMount={lazyMount} present={isOpen} unmountOnExit={unmountOnExit}>
+      <Presence
+        asChild
+        lazyMount={lazyMount}
+        present={isOpen}
+        unmountOnExit={unmountOnExit}
+      >
         <ark.div
           className={slots.positioner({ placement })}
           data-part="positioner"
@@ -243,7 +267,10 @@ export function ActionBarContent({
   );
 }
 
-export function ActionBarSeparator({ className, ...rest }: ActionBarSeparatorProps) {
+export function ActionBarSeparator({
+  className,
+  ...rest
+}: ActionBarSeparatorProps) {
   const { slots } = useActionBar();
 
   return (
@@ -257,7 +284,11 @@ export function ActionBarSeparator({ className, ...rest }: ActionBarSeparatorPro
   );
 }
 
-export function ActionBarClose({ onClick, className, ...rest }: ActionBarCloseProps) {
+export function ActionBarClose({
+  onClick,
+  className,
+  ...rest
+}: ActionBarCloseProps) {
   const { onClose, isOpen, slots } = useActionBar();
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {

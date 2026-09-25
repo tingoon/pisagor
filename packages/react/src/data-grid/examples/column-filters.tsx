@@ -1,4 +1,9 @@
-import { CaretDownIcon, CaretUpIcon, FunnelIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
+import {
+  CaretDownIcon,
+  CaretUpIcon,
+  FunnelIcon,
+  MagnifyingGlassIcon,
+} from "@phosphor-icons/react";
 import type { BadgeVariant } from "@pisagor/react";
 import {
   Badge,
@@ -29,7 +34,13 @@ const ROLES: User["role"][] = ["Admin", "Editor", "Viewer"];
 
 const STATUSES: User["status"][] = ["active", "inactive", "invited"];
 
-const DEPARTMENTS = ["Engineering", "Design", "Marketing", "Sales", "Support"] as const;
+const DEPARTMENTS = [
+  "Engineering",
+  "Design",
+  "Marketing",
+  "Sales",
+  "Support",
+] as const;
 
 const FIRST_NAMES = [
   "Alice",
@@ -56,10 +67,15 @@ const statusVariants: Record<User["status"], BadgeVariant> = {
 };
 
 const allUsers: User[] = Array.from({ length: 48 }, (_, index) => ({
-  department: DEPARTMENTS[index % DEPARTMENTS.length] ?? DEPARTMENTS[0] ?? "Engineering",
+  department:
+    DEPARTMENTS[index % DEPARTMENTS.length] ?? DEPARTMENTS[0] ?? "Engineering",
   email: `user${index + 1}@example.com`,
   id: String(index + 1),
-  joinedAt: new Date(2020 + (index % 5), index % 12, (index % 28) + 1).toISOString(),
+  joinedAt: new Date(
+    2020 + (index % 5),
+    index % 12,
+    (index % 28) + 1,
+  ).toISOString(),
   name: `${FIRST_NAMES[index % FIRST_NAMES.length] ?? "Alex"} ${String.fromCharCode(65 + (index % 26))}.`,
   role: ROLES[index % ROLES.length] ?? "Viewer",
   status: STATUSES[index % STATUSES.length] ?? "active",
@@ -93,7 +109,13 @@ function DataGridShell({ children }: { children: ReactNode }) {
   );
 }
 
-function ColumnFilterHeader({ children, label }: { children?: ReactNode; label: ReactNode }) {
+function ColumnFilterHeader({
+  children,
+  label,
+}: {
+  children?: ReactNode;
+  label: ReactNode;
+}) {
   return (
     <div className="flex w-full min-w-0 flex-col gap-1.5">
       <span className="truncate">{label}</span>
@@ -167,7 +189,10 @@ function DataGridPaginationBar<TData extends RowData>() {
   );
 }
 
-function useUserColumns(options?: { selectable?: boolean; sortable?: boolean }) {
+function useUserColumns(options?: {
+  selectable?: boolean;
+  sortable?: boolean;
+}) {
   const { selectable = false, sortable = false } = options ?? {};
 
   return useMemo<ColumnDef<User>[]>(() => {
@@ -197,7 +222,9 @@ function useUserColumns(options?: { selectable?: boolean; sortable?: boolean }) 
           <Checkbox
             aria-label={`Select ${row.original.name}`}
             checked={row.getIsSelected()}
-            onCheckedChange={({ checked }) => row.toggleSelected(checked === true)}
+            onCheckedChange={({ checked }) =>
+              row.toggleSelected(checked === true)
+            }
           />
         ),
         enableHiding: false,
@@ -212,7 +239,9 @@ function useUserColumns(options?: { selectable?: boolean; sortable?: boolean }) 
                   ? "indeterminate"
                   : false
             }
-            onCheckedChange={({ checked }) => table.toggleAllPageRowsSelected(checked === true)}
+            onCheckedChange={({ checked }) =>
+              table.toggleAllPageRowsSelected(checked === true)
+            }
           />
         ),
         id: "select",
@@ -246,7 +275,10 @@ function useUserColumns(options?: { selectable?: boolean; sortable?: boolean }) 
       {
         accessorKey: "status",
         cell: ({ row }) => (
-          <Badge className="capitalize" variant={statusVariants[row.original.status]}>
+          <Badge
+            className="capitalize"
+            variant={statusVariants[row.original.status]}
+          >
             {row.original.status}
           </Badge>
         ),
@@ -292,9 +324,14 @@ export function ColumnFilters() {
                     items={["All", ...values]}
                     onValueChange={(value) => {
                       const next = Array.isArray(value) ? value[0] : value;
-                      tableColumn.setFilterValue(next === "All" ? undefined : next);
+                      tableColumn.setFilterValue(
+                        next === "All" ? undefined : next,
+                      );
                     }}
-                    value={[(tableColumn.getFilterValue() as string | undefined) ?? "All"]}
+                    value={[
+                      (tableColumn.getFilterValue() as string | undefined) ??
+                        "All",
+                    ]}
                   />
                 </ColumnFilterHeader>
               );
@@ -309,20 +346,29 @@ export function ColumnFilters() {
               <ColumnFilterHeader label={column.header as string}>
                 <Input
                   aria-label={`Filter ${String(column.accessorKey)}`}
-                  onChange={(event) => tableColumn.setFilterValue(event.target.value)}
+                  onChange={(event) =>
+                    tableColumn.setFilterValue(event.target.value)
+                  }
                   placeholder="Filter…"
                   size="sm"
-                  value={(tableColumn.getFilterValue() as string | undefined) ?? ""}
+                  value={
+                    (tableColumn.getFilterValue() as string | undefined) ?? ""
+                  }
                 />
               </ColumnFilterHeader>
             ),
           };
         }
 
-        if (column.accessorKey === "department" || column.accessorKey === "joinedAt") {
+        if (
+          column.accessorKey === "department" ||
+          column.accessorKey === "joinedAt"
+        ) {
           return {
             ...column,
-            header: () => <ColumnFilterHeader label={column.header as string} />,
+            header: () => (
+              <ColumnFilterHeader label={column.header as string} />
+            ),
           };
         }
 

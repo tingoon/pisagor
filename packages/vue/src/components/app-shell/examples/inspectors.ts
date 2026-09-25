@@ -22,17 +22,29 @@ export default defineComponent({
         ]),
 
         h(AppShell.Inspector, { defaultOpen: true, placement: "start" }, () => [
-          h(AppShell.InspectorHeader, null, () => regionTitle("Start inspector header")),
-          h(AppShell.InspectorContent, null, () => regionTitle("Start inspector")),
-          h(AppShell.InspectorFooter, null, () => regionTitle("Start inspector footer")),
+          h(AppShell.InspectorHeader, null, () =>
+            regionTitle("Start inspector header"),
+          ),
+          h(AppShell.InspectorContent, null, () =>
+            regionTitle("Start inspector"),
+          ),
+          h(AppShell.InspectorFooter, null, () =>
+            regionTitle("Start inspector footer"),
+          ),
         ]),
 
         h(AppShell.Main, null, () => mainContent("Main")),
 
         h(AppShell.Inspector, { defaultOpen: true, placement: "end" }, () => [
-          h(AppShell.InspectorHeader, null, () => regionTitle("End inspector header")),
-          h(AppShell.InspectorContent, null, () => regionTitle("End inspector")),
-          h(AppShell.InspectorFooter, null, () => regionTitle("End inspector footer")),
+          h(AppShell.InspectorHeader, null, () =>
+            regionTitle("End inspector header"),
+          ),
+          h(AppShell.InspectorContent, null, () =>
+            regionTitle("End inspector"),
+          ),
+          h(AppShell.InspectorFooter, null, () =>
+            regionTitle("End inspector footer"),
+          ),
         ]),
       ]);
   },

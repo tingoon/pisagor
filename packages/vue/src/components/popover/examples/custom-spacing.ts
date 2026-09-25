@@ -21,14 +21,28 @@ export default defineComponent({
             }),
             h(Popover.Body, null, () =>
               h(Field.Group as ArkPart, { class: "gap-2" }, () => [
-                h(Field as ArkPart, { class: "grid grid-cols-3 items-center gap-2" }, () => [
-                  h(Field.Label, null, () => "Width"),
-                  h(Input as ArkPart, { class: "col-span-2", defaultValue: "100%" }),
-                ]),
-                h(Field as ArkPart, { class: "grid grid-cols-3 items-center gap-2" }, () => [
-                  h(Field.Label, null, () => "Max. width"),
-                  h(Input as ArkPart, { class: "col-span-2", defaultValue: "300px" }),
-                ]),
+                h(
+                  Field as ArkPart,
+                  { class: "grid grid-cols-3 items-center gap-2" },
+                  () => [
+                    h(Field.Label, null, () => "Width"),
+                    h(Input as ArkPart, {
+                      class: "col-span-2",
+                      defaultValue: "100%",
+                    }),
+                  ],
+                ),
+                h(
+                  Field as ArkPart,
+                  { class: "grid grid-cols-3 items-center gap-2" },
+                  () => [
+                    h(Field.Label, null, () => "Max. width"),
+                    h(Input as ArkPart, {
+                      class: "col-span-2",
+                      defaultValue: "300px",
+                    }),
+                  ],
+                ),
               ]),
             ),
           ],

@@ -28,7 +28,11 @@ export const alertRecipe = tv({
       "has-[>svg]:gap-x-2 [&_svg]:h-lh [&_svg]:w-4",
       "has-[[data-scope=alert][data-part=action]]:grid-cols-[1fr_auto]",
     ],
-    description: ["flex flex-col gap-2.5", "text-muted-foreground", "[svg~&]:col-start-2"],
+    description: [
+      "flex flex-col gap-2.5",
+      "text-muted-foreground",
+      "[svg~&]:col-start-2",
+    ],
     title: ["font-heading font-medium tracking-tight", "[svg~&]:col-start-2"],
   },
   variants: {

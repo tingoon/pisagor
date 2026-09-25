@@ -22,7 +22,10 @@ import {
   useDataTableHeaderGroupContext,
   useDataTableRowContext,
 } from "./data-table.context";
-import { type DataTableFeatures, dataTableFeatures } from "./data-table.features";
+import {
+  type DataTableFeatures,
+  dataTableFeatures,
+} from "./data-table.features";
 
 // #region Types
 /**
@@ -122,7 +125,9 @@ export function useDataTableRow<TData extends RowData>() {
 // #endregion
 
 // #region Parts
-function DataTableHeader<TData extends RowData>({ children }: DataTableHeaderProps) {
+function DataTableHeader<TData extends RowData>({
+  children,
+}: DataTableHeaderProps) {
   const table = useDataTableContext<TData>().table;
 
   return (
@@ -140,7 +145,9 @@ function DataTableHeader<TData extends RowData>({ children }: DataTableHeaderPro
 }
 
 function DataTableHeaderRow(props: DataTableHeaderRowProps) {
-  return <Table.Row {...props} data-part="header-row" data-scope="data-table" />;
+  return (
+    <Table.Row {...props} data-part="header-row" data-scope="data-table" />
+  );
 }
 
 function DataTableHead<TData extends RowData>({
@@ -152,15 +159,23 @@ function DataTableHead<TData extends RowData>({
   const { headerGroup } = useDataTableHeaderGroupContext<TData>();
 
   if (columnId) {
-    const header = headerGroup.headers.find((item) => item.column.id === columnId);
+    const header = headerGroup.headers.find(
+      (item) => item.column.id === columnId,
+    );
 
     if (!header) {
       return null;
     }
 
     return (
-      <Table.Head {...rest} className={className} data-part="head" data-scope="data-table">
-        {children ?? flexRender(header.column.columnDef.header, header.getContext())}
+      <Table.Head
+        {...rest}
+        className={className}
+        data-part="head"
+        data-scope="data-table"
+      >
+        {children ??
+          flexRender(header.column.columnDef.header, header.getContext())}
       </Table.Head>
     );
   }
@@ -198,7 +213,10 @@ export function renderDataTableCell<TData extends RowData>(
   return flexRender(cell.column.columnDef.cell, cell.getContext());
 }
 
-function DataTableBody<TData extends RowData>({ children, empty = null }: DataTableBodyProps) {
+function DataTableBody<TData extends RowData>({
+  children,
+  empty = null,
+}: DataTableBodyProps) {
   const table = useDataTableContext<TData>().table;
   const rows = table.getRowModel().rows;
 
@@ -209,7 +227,10 @@ function DataTableBody<TData extends RowData>({ children, empty = null }: DataTa
   return (
     <>
       {rows.map((row) => (
-        <DataTableRowContext key={row.id} value={{ row } as DataTableRowContextValue<RowData>}>
+        <DataTableRowContext
+          key={row.id}
+          value={{ row } as DataTableRowContextValue<RowData>}
+        >
           {children}
         </DataTableRowContext>
       ))}
@@ -217,7 +238,10 @@ function DataTableBody<TData extends RowData>({ children, empty = null }: DataTa
   );
 }
 
-function DataTableRow<TData extends RowData>({ className, ...rest }: DataTableRowProps) {
+function DataTableRow<TData extends RowData>({
+  className,
+  ...rest
+}: DataTableRowProps) {
   const row = useDataTableRowContext<TData>().row;
 
   return (
@@ -232,11 +256,17 @@ function DataTableRow<TData extends RowData>({ className, ...rest }: DataTableRo
   );
 }
 
-function DataTableCell<TData extends RowData>({ columnId, children, ...rest }: DataTableCellProps) {
+function DataTableCell<TData extends RowData>({
+  columnId,
+  children,
+  ...rest
+}: DataTableCellProps) {
   const row = useDataTableRowContext<TData>().row;
 
   if (columnId) {
-    const cell = row.getVisibleCells().find((item) => item.column.id === columnId);
+    const cell = row
+      .getVisibleCells()
+      .find((item) => item.column.id === columnId);
 
     if (!cell) {
       return null;
@@ -252,7 +282,12 @@ function DataTableCell<TData extends RowData>({ columnId, children, ...rest }: D
   return (
     <>
       {row.getVisibleCells().map((cell) => (
-        <Table.Cell {...rest} data-part="cell" data-scope="data-table" key={cell.id}>
+        <Table.Cell
+          {...rest}
+          data-part="cell"
+          data-scope="data-table"
+          key={cell.id}
+        >
           {renderDataTableCell(cell)}
         </Table.Cell>
       ))}
@@ -270,7 +305,12 @@ function DataTableEmpty({
   const span = colSpan ?? table.getAllColumns().length;
 
   return (
-    <Table.Row {...rest} className={className} data-part="empty" data-scope="data-table">
+    <Table.Row
+      {...rest}
+      className={className}
+      data-part="empty"
+      data-scope="data-table"
+    >
       <Table.Cell className={slots.empty()} colSpan={span}>
         {children}
       </Table.Cell>
@@ -321,7 +361,11 @@ function DataTableRoot<TData extends RowData>({
 
   return (
     <DataTableContext value={contextValue as DataTableContextValue<RowData>}>
-      <div className={slots.base({ className })} data-part="root" data-scope="data-table">
+      <div
+        className={slots.base({ className })}
+        data-part="root"
+        data-scope="data-table"
+      >
         {children}
       </div>
     </DataTableContext>

@@ -1,6 +1,10 @@
 import { parseDate } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { cityOptions, countryOptions, planOptions } from "../../examples/options";
+import {
+  cityOptions,
+  countryOptions,
+  planOptions,
+} from "../../examples/options";
 import { useAppForm } from "..";
 
 export default defineComponent({

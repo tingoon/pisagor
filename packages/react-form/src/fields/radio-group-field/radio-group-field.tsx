@@ -45,14 +45,20 @@ export function RadioGroupField({
   const hasLabel = Boolean(label ?? labelAccessory);
 
   return (
-    <Field.Set className={className} data-invalid={invalid || undefined} invalid={invalid}>
+    <Field.Set
+      className={className}
+      data-invalid={invalid || undefined}
+      invalid={invalid}
+    >
       {hasLabel ? (
         <Field.Legend className={labelProps?.className} id={id} variant="label">
           {label}
           {labelAccessory}
         </Field.Legend>
       ) : null}
-      {description ? <Field.Description>{description}</Field.Description> : null}
+      {description ? (
+        <Field.Description>{description}</Field.Description>
+      ) : null}
       <RadioGroup.Root
         {...radioGroupProps}
         {...(value !== undefined ? { value: value || null } : {})}
@@ -78,7 +84,11 @@ export function RadioGroupField({
           }
 
           return (
-            <RadioGroup.Item id={optionId} key={option.value} value={option.value}>
+            <RadioGroup.Item
+              id={optionId}
+              key={option.value}
+              value={option.value}
+            >
               {option.label}
             </RadioGroup.Item>
           );

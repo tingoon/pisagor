@@ -24,15 +24,16 @@ interface DataTableRowContextValue<TData extends RowData> {
   row: Row<DataTableFeatures, TData>;
 }
 
-export const { DataTableContext, useDataTable } = createContext<DataTableContextValue<RowData>>()({
+export const { DataTableContext, useDataTable } = createContext<
+  DataTableContextValue<RowData>
+>()({
   name: "DataTable",
 });
 
-export const { DataTableHeaderGroupContext, useDataTableHeaderGroup } = createContext<
-  DataTableHeaderGroupContextValue<RowData>
->()({
-  name: "DataTableHeaderGroup",
-});
+export const { DataTableHeaderGroupContext, useDataTableHeaderGroup } =
+  createContext<DataTableHeaderGroupContextValue<RowData>>()({
+    name: "DataTableHeaderGroup",
+  });
 
 export const { DataTableRowContext, useDataTableRow } = createContext<
   DataTableRowContextValue<RowData>

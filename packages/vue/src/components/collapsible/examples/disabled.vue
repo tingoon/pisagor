@@ -14,7 +14,8 @@ import { Collapsible } from "..";
       </Collapsible.Trigger>
       <Collapsible.Content class="pt-2">
         <p class="text-muted-foreground text-sm">
-          This content cannot be accessed because the collapsible is unavailable.
+          This content cannot be accessed because the collapsible is
+          unavailable.
         </p>
       </Collapsible.Content>
     </Collapsible>

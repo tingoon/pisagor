@@ -33,7 +33,10 @@ export const Playground = {
         },
         {
           component: Item.Actions,
-          slots: { default: '<span class="text-muted-foreground text-sm">Action</span>' },
+          slots: {
+            default:
+              '<span class="text-muted-foreground text-sm">Action</span>',
+          },
         },
       ],
     },

@@ -10,7 +10,11 @@ const activeValue = ref("react");
 </script>
 
 <template>
-  <SegmentGroup.Root class="rounded-lg" :value="activeValue" @value-change="onValueChange">
+  <SegmentGroup.Root
+    class="rounded-lg"
+    :value="activeValue"
+    @value-change="onValueChange"
+  >
     <SegmentGroup.Item
       class="px-2 py-1.5 text-sm"
       v-for="page in pages"

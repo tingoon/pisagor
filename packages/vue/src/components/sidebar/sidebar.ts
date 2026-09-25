@@ -4,7 +4,14 @@ import { cn } from "@pisagor/utils";
 
 type ClassValue = Parameters<typeof cn>[0];
 
-import { defineComponent, h, type PropType, reactive, ref, watchEffect } from "vue";
+import {
+  defineComponent,
+  h,
+  type PropType,
+  reactive,
+  ref,
+  watchEffect,
+} from "vue";
 import { useIsMobile } from "../../hooks/use-is-mobile";
 import { createContext } from "../../internal/utils/create-context";
 import { Button } from "../button";
@@ -59,10 +66,11 @@ interface SidebarContextValue {
 // #endregion
 
 // #region Context
-const [provideSidebarContext, useSidebarContext] = createContext<SidebarContextValue>({
-  name: "Sidebar",
-  strict: false,
-});
+const [provideSidebarContext, useSidebarContext] =
+  createContext<SidebarContextValue>({
+    name: "Sidebar",
+    strict: false,
+  });
 
 export const useSidebar = () => useSidebarContext();
 // #endregion
@@ -78,10 +86,19 @@ export const SidebarProvider = defineComponent({
   inheritAttrs: false,
   name: "SidebarProvider",
   props: {
-    className: { default: undefined, type: String as PropType<string | undefined> },
-    collapsible: { default: "offcanvas", type: String as PropType<SidebarCollapsible> },
+    className: {
+      default: undefined,
+      type: String as PropType<string | undefined>,
+    },
+    collapsible: {
+      default: "offcanvas",
+      type: String as PropType<SidebarCollapsible>,
+    },
     defaultOpen: { default: true, type: Boolean },
-    onOpenChange: { default: undefined, type: Function as PropType<(open: boolean) => void> },
+    onOpenChange: {
+      default: undefined,
+      type: Function as PropType<(open: boolean) => void>,
+    },
     open: { default: undefined, type: Boolean },
     placement: { default: "left", type: String as PropType<SidebarPlacement> },
     recipe: {
@@ -102,7 +119,9 @@ export const SidebarProvider = defineComponent({
 
     const setOpen = (value: boolean | ((current: boolean) => boolean)) => {
       const next =
-        typeof value === "function" ? (value as (current: boolean) => boolean)(open.value) : value;
+        typeof value === "function"
+          ? (value as (current: boolean) => boolean)(open.value)
+          : value;
 
       if (props.onOpenChange) {
         props.onOpenChange(next);
@@ -167,8 +186,9 @@ export const SidebarProvider = defineComponent({
           style: {
             "--sidebar-width": "16rem",
             "--sidebar-width-icon": "3rem",
-            ...(((attrs as { style?: unknown }).style as Record<string, unknown> | undefined) ??
-              {}),
+            ...(((attrs as { style?: unknown }).style as
+              | Record<string, unknown>
+              | undefined) ?? {}),
           },
         },
         slots.default?.(),
@@ -182,7 +202,10 @@ export const SidebarRoot = defineComponent({
   name: "SidebarRoot",
   props: {
     className: { default: undefined, type: String },
-    collapsible: { default: "offcanvas", type: String as PropType<SidebarCollapsible> },
+    collapsible: {
+      default: "offcanvas",
+      type: String as PropType<SidebarCollapsible>,
+    },
     placement: { default: "left", type: String as PropType<SidebarPlacement> },
     recipe: {
       default: sidebarRecipe,
@@ -221,7 +244,8 @@ export const SidebarRoot = defineComponent({
         return h(
           Sheet,
           {
-            onOpenChange: ({ open }: { open: boolean }) => ctx.setOpenMobile(open),
+            onOpenChange: ({ open }: { open: boolean }) =>
+              ctx.setOpenMobile(open),
             open: ctx.openMobile,
           },
           {
@@ -246,8 +270,13 @@ export const SidebarRoot = defineComponent({
         "aside",
         {
           ...attrs,
-          class: cn(variantSlots.peer(), props.className, (attrs as { class?: ClassValue }).class),
-          "data-collapsible": ctx.state === "collapsed" ? props.collapsible : "",
+          class: cn(
+            variantSlots.peer(),
+            props.className,
+            (attrs as { class?: ClassValue }).class,
+          ),
+          "data-collapsible":
+            ctx.state === "collapsed" ? props.collapsible : "",
           "data-part": "root",
           "data-placement": props.placement,
           "data-scope": "sidebar",
@@ -414,7 +443,10 @@ export const SidebarSeparator = defineComponent({
   inheritAttrs: false,
   name: "SidebarSeparator",
   props: {
-    className: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    className: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     recipe: {
       default: sidebarRecipe,
       type: Function as PropType<typeof sidebarRecipe>,
@@ -442,7 +474,10 @@ export const SidebarRail = defineComponent({
   inheritAttrs: false,
   name: "SidebarRail",
   props: {
-    className: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    className: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     placement: { default: "left", type: String as PropType<SidebarPlacement> },
     recipe: {
       default: sidebarRecipe,
@@ -457,7 +492,11 @@ export const SidebarRail = defineComponent({
         "div",
         {
           ...attrs,
-          class: cn(variantSlots.rail(), props.className, (attrs as { class?: ClassValue }).class),
+          class: cn(
+            variantSlots.rail(),
+            props.className,
+            (attrs as { class?: ClassValue }).class,
+          ),
           "data-part": "rail",
           "data-placement": props.placement,
           "data-scope": "sidebar",
@@ -472,7 +511,10 @@ export const SidebarTrigger = defineComponent({
   inheritAttrs: false,
   name: "SidebarTrigger",
   props: {
-    className: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    className: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     recipe: {
       default: sidebarRecipe,
       type: Function as PropType<typeof sidebarRecipe>,
@@ -523,7 +565,10 @@ export const SidebarInset = defineComponent({
         "div",
         {
           ...attrs,
-          class: cn(variantSlots.inset(), (attrs as { class?: ClassValue }).class),
+          class: cn(
+            variantSlots.inset(),
+            (attrs as { class?: ClassValue }).class,
+          ),
           "data-part": "inset",
           "data-scope": "sidebar",
         },
@@ -537,7 +582,10 @@ export const SidebarInput = defineComponent({
   inheritAttrs: false,
   name: "SidebarInput",
   props: {
-    className: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    className: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     recipe: {
       default: sidebarRecipe,
       type: Function as PropType<typeof sidebarRecipe>,
@@ -549,7 +597,11 @@ export const SidebarInput = defineComponent({
 
       return h("input", {
         ...attrs,
-        class: cn(variantSlots.input(), props.className, (attrs as { class?: ClassValue }).class),
+        class: cn(
+          variantSlots.input(),
+          props.className,
+          (attrs as { class?: ClassValue }).class,
+        ),
         "data-part": "input",
         "data-scope": "sidebar",
       });
@@ -561,7 +613,10 @@ export const SidebarGroup = defineComponent({
   inheritAttrs: false,
   name: "SidebarGroup",
   props: {
-    className: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    className: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     recipe: {
       default: sidebarRecipe,
       type: Function as PropType<typeof sidebarRecipe>,
@@ -575,7 +630,11 @@ export const SidebarGroup = defineComponent({
         "div",
         {
           ...attrs,
-          class: cn(variantSlots.group(), props.className, (attrs as { class?: ClassValue }).class),
+          class: cn(
+            variantSlots.group(),
+            props.className,
+            (attrs as { class?: ClassValue }).class,
+          ),
           "data-part": "group",
           "data-scope": "sidebar",
         },
@@ -602,7 +661,10 @@ export const SidebarGroupLabel = defineComponent({
         "div",
         {
           ...attrs,
-          class: cn(variantSlots.groupLabel(), (attrs as { class?: ClassValue }).class),
+          class: cn(
+            variantSlots.groupLabel(),
+            (attrs as { class?: ClassValue }).class,
+          ),
           "data-part": "group-label",
           "data-scope": "sidebar",
         },
@@ -629,7 +691,10 @@ export const SidebarGroupAction = defineComponent({
         "div",
         {
           ...attrs,
-          class: cn(variantSlots.groupAction(), (attrs as { class?: ClassValue }).class),
+          class: cn(
+            variantSlots.groupAction(),
+            (attrs as { class?: ClassValue }).class,
+          ),
           "data-part": "group-action",
           "data-scope": "sidebar",
         },
@@ -656,7 +721,10 @@ export const SidebarGroupContent = defineComponent({
         "div",
         {
           ...attrs,
-          class: cn(variantSlots.groupContent(), (attrs as { class?: ClassValue }).class),
+          class: cn(
+            variantSlots.groupContent(),
+            (attrs as { class?: ClassValue }).class,
+          ),
           "data-part": "group-content",
           "data-scope": "sidebar",
         },
@@ -683,7 +751,10 @@ export const SidebarMenu = defineComponent({
         "div",
         {
           ...attrs,
-          class: cn(variantSlots.menu(), (attrs as { class?: ClassValue }).class),
+          class: cn(
+            variantSlots.menu(),
+            (attrs as { class?: ClassValue }).class,
+          ),
           "data-part": "menu",
           "data-scope": "sidebar",
         },
@@ -697,7 +768,10 @@ export const SidebarMenuButton = defineComponent({
   inheritAttrs: false,
   name: "SidebarMenuButton",
   props: {
-    className: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    className: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     isActive: { default: false, type: Boolean },
     recipe: {
       default: sidebarRecipe,
@@ -706,7 +780,9 @@ export const SidebarMenuButton = defineComponent({
     size: { default: undefined, type: String },
     tooltip: {
       default: undefined,
-      type: [String, Object] as PropType<string | Omit<TooltipProps, "children">>,
+      type: [String, Object] as PropType<
+        string | Omit<TooltipProps, "children">
+      >,
     },
   },
   setup(props, { attrs, slots }) {
@@ -728,8 +804,12 @@ export const SidebarMenuButton = defineComponent({
           "data-scope": "sidebar",
           "data-size": props.size ?? "md",
           onClick: (event: MouseEvent) =>
-            (attrs as { onClick?: (event: MouseEvent) => unknown }).onClick?.(event),
-          size: (props.size ?? (attrs as { size?: string }).size ?? "md") as string,
+            (attrs as { onClick?: (event: MouseEvent) => unknown }).onClick?.(
+              event,
+            ),
+          size: (props.size ??
+            (attrs as { size?: string }).size ??
+            "md") as string,
           variant: "ghost",
         },
         () => slots.default?.(),
@@ -738,7 +818,9 @@ export const SidebarMenuButton = defineComponent({
       if (!props.tooltip) return button;
 
       const tooltipArgs =
-        typeof props.tooltip === "string" ? { content: props.tooltip } : props.tooltip;
+        typeof props.tooltip === "string"
+          ? { content: props.tooltip }
+          : props.tooltip;
       return h(
         Tooltip as ArkPart,
         { ...tooltipArgs, positioning: { placement: "right" } },
@@ -765,7 +847,11 @@ export const SidebarMenuItem = defineComponent({
         "div",
         {
           ...attrs,
-          class: cn(variantSlots.menuItem(), "min-w-0", (attrs as { class?: ClassValue }).class),
+          class: cn(
+            variantSlots.menuItem(),
+            "min-w-0",
+            (attrs as { class?: ClassValue }).class,
+          ),
           "data-part": "menu-item",
           "data-scope": "sidebar",
         },
@@ -779,7 +865,10 @@ export const SidebarMenuSkeleton = defineComponent({
   inheritAttrs: false,
   name: "SidebarMenuSkeleton",
   props: {
-    className: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    className: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: sidebarRecipe,
       type: Function as PropType<typeof sidebarRecipe>,
@@ -824,7 +913,10 @@ export const SidebarMenuSub = defineComponent({
         "div",
         {
           ...attrs,
-          class: cn(variantSlots.menuSub(), (attrs as { class?: ClassValue }).class),
+          class: cn(
+            variantSlots.menuSub(),
+            (attrs as { class?: ClassValue }).class,
+          ),
           "data-part": "menu-sub",
           "data-scope": "sidebar",
         },
@@ -854,7 +946,10 @@ export const SidebarMenuAction = defineComponent({
         "div",
         {
           ...attrs,
-          class: cn(variantSlots.menuAction(), (attrs as { class?: ClassValue }).class),
+          class: cn(
+            variantSlots.menuAction(),
+            (attrs as { class?: ClassValue }).class,
+          ),
           "data-part": "menu-action",
           "data-scope": "sidebar",
         },
@@ -881,7 +976,10 @@ export const SidebarMenuBadge = defineComponent({
         "div",
         {
           ...attrs,
-          class: cn(variantSlots.menuBadge(), (attrs as { class?: ClassValue }).class),
+          class: cn(
+            variantSlots.menuBadge(),
+            (attrs as { class?: ClassValue }).class,
+          ),
           "data-part": "menu-badge",
           "data-scope": "sidebar",
         },

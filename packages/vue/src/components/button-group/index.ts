@@ -1,4 +1,8 @@
-import { ButtonGroupRoot, ButtonGroupSeparator, ButtonGroupText } from "./button-group";
+import {
+  ButtonGroupRoot,
+  ButtonGroupSeparator,
+  ButtonGroupText,
+} from "./button-group";
 
 export type { ButtonGroupProps } from "./button-group";
 

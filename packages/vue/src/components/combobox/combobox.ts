@@ -8,7 +8,13 @@ import {
 import { PhCaretUpDown, PhCheck, PhX } from "@phosphor-icons/vue";
 import { comboboxRecipe } from "@pisagor/recipes/combobox";
 import { cn } from "@pisagor/utils";
-import { defineComponent, h, type PropType, Teleport, type VNodeChild } from "vue";
+import {
+  defineComponent,
+  h,
+  type PropType,
+  Teleport,
+  type VNodeChild,
+} from "vue";
 import { Button } from "../button";
 import { InputGroup } from "../input-group";
 
@@ -72,7 +78,9 @@ type ArkPart = Parameters<typeof h>[0];
 
 export const ComboboxContext = ComboboxPrimitive.Context;
 
-function comboboxTeleport(content: ReturnType<typeof h> | Array<ReturnType<typeof h>>) {
+function comboboxTeleport(
+  content: ReturnType<typeof h> | Array<ReturnType<typeof h>>,
+) {
   return h(Teleport, { to: "body" }, () => content);
 }
 
@@ -91,7 +99,10 @@ export const ComboboxRoot = defineComponent({
     },
     openOnClick: { default: true, type: Boolean },
     unmountOnExit: { default: true, type: Boolean },
-    variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant | undefined>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -102,7 +113,8 @@ export const ComboboxRoot = defineComponent({
           collection: props.collection,
           lazyMount: props.lazyMount,
           onValueChange: props.onValueChange
-            ? (details: { value: string[] }) => props.onValueChange?.(details.value)
+            ? (details: { value: string[] }) =>
+                props.onValueChange?.(details.value)
             : undefined,
           openOnClick: props.openOnClick,
           unmountOnExit: props.unmountOnExit,
@@ -117,7 +129,10 @@ export const ComboboxControl = defineComponent({
   inheritAttrs: false,
   name: "ComboboxControl",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: comboboxRecipe,
       type: Function as PropType<typeof comboboxRecipe>,
@@ -144,7 +159,10 @@ export const ComboboxInput = defineComponent({
   inheritAttrs: false,
   name: "ComboboxInput",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     clearable: { default: false, type: Boolean },
     disabled: { default: undefined, type: Boolean },
     recipe: {
@@ -152,8 +170,14 @@ export const ComboboxInput = defineComponent({
       type: Function as PropType<typeof comboboxRecipe>,
     },
     showTrigger: { default: true, type: Boolean },
-    size: { default: "md", type: String as PropType<ComboboxInputProps["size"]> },
-    variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
+    size: {
+      default: "md",
+      type: String as PropType<ComboboxInputProps["size"]>,
+    },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant | undefined>,
+    },
   },
   setup(props, { attrs, slots }) {
     const api = useCombobox();
@@ -180,15 +204,23 @@ export const ComboboxInput = defineComponent({
             ),
             h(
               InputGroup.Addon as ArkPart,
-              { align: "inline-end", "data-part": "addon", "data-scope": "combobox" },
+              {
+                align: "inline-end",
+                "data-part": "addon",
+                "data-scope": "combobox",
+              },
               () => [
                 props.showTrigger
-                  ? h(ComboboxTrigger as ArkPart, { class: styleSlots.triggerHidden() })
+                  ? h(ComboboxTrigger as ArkPart, {
+                      class: styleSlots.triggerHidden(),
+                    })
                   : null,
                 props.clearable && api.value.inputValue
                   ? h(ComboboxClearTrigger as ArkPart, { asChild: true }, () =>
-                      h(InputGroup.Button as ArkPart, { size: "icon-xs", variant: "ghost" }, () =>
-                        h(PhX, { "aria-hidden": true }),
+                      h(
+                        InputGroup.Button as ArkPart,
+                        { size: "icon-xs", variant: "ghost" },
+                        () => h(PhX, { "aria-hidden": true }),
                       ),
                     )
                   : null,
@@ -205,7 +237,10 @@ export const ComboboxTrigger = defineComponent({
   inheritAttrs: false,
   name: "ComboboxTrigger",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: comboboxRecipe,
       type: Function as PropType<typeof comboboxRecipe>,
@@ -224,8 +259,10 @@ export const ComboboxTrigger = defineComponent({
         },
         () =>
           slots.default?.() ??
-          h(Button as ArkPart, { class: styleSlots.triggerButton(), variant: "ghost" }, () =>
-            h(PhCaretUpDown, { "aria-hidden": true }),
+          h(
+            Button as ArkPart,
+            { class: styleSlots.triggerButton(), variant: "ghost" },
+            () => h(PhCaretUpDown, { "aria-hidden": true }),
           ),
       );
     };
@@ -286,7 +323,10 @@ export const ComboboxContent = defineComponent({
   inheritAttrs: false,
   name: "ComboboxContent",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: comboboxRecipe,
       type: Function as PropType<typeof comboboxRecipe>,
@@ -316,7 +356,10 @@ export const ComboboxItemGroup = defineComponent({
   inheritAttrs: false,
   name: "ComboboxItemGroup",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     heading: {
       default: undefined,
       type: [String, Object] as PropType<ComboboxItemGroupProps["heading"]>,
@@ -324,10 +367,16 @@ export const ComboboxItemGroup = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () =>
-      h(ComboboxPrimitive.ItemGroup as ArkPart, { ...attrs, class: props.class }, () => [
-        props.heading ? h(ComboboxItemGroupLabel, null, () => props.heading) : null,
-        slots.default?.(),
-      ]);
+      h(
+        ComboboxPrimitive.ItemGroup as ArkPart,
+        { ...attrs, class: props.class },
+        () => [
+          props.heading
+            ? h(ComboboxItemGroupLabel, null, () => props.heading)
+            : null,
+          slots.default?.(),
+        ],
+      );
   },
 });
 
@@ -335,7 +384,10 @@ export const ComboboxItemGroupLabel = defineComponent({
   inheritAttrs: false,
   name: "ComboboxItemGroupLabel",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: comboboxRecipe,
       type: Function as PropType<typeof comboboxRecipe>,
@@ -361,7 +413,10 @@ export const ComboboxItem = defineComponent({
   inheritAttrs: false,
   name: "ComboboxItem",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     item: { default: undefined, type: Object as PropType<unknown> },
     recipe: {
       default: comboboxRecipe,
@@ -400,7 +455,10 @@ export const ComboboxEmpty = defineComponent({
   inheritAttrs: false,
   name: "ComboboxEmpty",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: comboboxRecipe,
       type: Function as PropType<typeof comboboxRecipe>,
@@ -426,7 +484,10 @@ export const ComboboxList = defineComponent({
   inheritAttrs: false,
   name: "ComboboxList",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: comboboxRecipe,
       type: Function as PropType<typeof comboboxRecipe>,

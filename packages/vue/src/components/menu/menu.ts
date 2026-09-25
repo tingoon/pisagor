@@ -1,5 +1,9 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type MenuRecipeSlot, menuItemRecipe, menuRecipe } from "@pisagor/recipes/menu";
+import {
+  type MenuRecipeSlot,
+  menuItemRecipe,
+  menuRecipe,
+} from "@pisagor/recipes/menu";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { VariantClassNames } from "../../internal/types";
@@ -36,7 +40,10 @@ export const MenuRoot = defineComponent({
   inheritAttrs: false,
   name: "MenuRoot",
   props: {
-    classNames: { default: undefined, type: Object as PropType<MenuClassNames> },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<MenuClassNames>,
+    },
     recipe: {
       default: menuRecipe,
       type: Function as PropType<typeof menuRecipe>,
@@ -66,7 +73,10 @@ export const MenuList = defineComponent({
   inheritAttrs: false,
   name: "MenuList",
   props: {
-    classNames: { default: undefined, type: Object as PropType<MenuClassNames> },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<MenuClassNames>,
+    },
     recipe: {
       default: menuRecipe,
       type: Function as PropType<typeof menuRecipe>,
@@ -80,7 +90,9 @@ export const MenuList = defineComponent({
         ark.ul as ArkPart,
         {
           ...attrs,
-          class: slots$.list({ class: cn(attrs.class, props.classNames?.list) }),
+          class: slots$.list({
+            class: cn(attrs.class, props.classNames?.list),
+          }),
           "data-part": "list",
           "data-scope": "menu",
           role: "list",
@@ -95,7 +107,10 @@ export const MenuGroup = defineComponent({
   inheritAttrs: false,
   name: "MenuGroup",
   props: {
-    classNames: { default: undefined, type: Object as PropType<MenuClassNames> },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<MenuClassNames>,
+    },
     recipe: {
       default: menuRecipe,
       type: Function as PropType<typeof menuRecipe>,
@@ -109,7 +124,9 @@ export const MenuGroup = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: slots$.group({ class: cn(attrs.class, props.classNames?.group) }),
+          class: slots$.group({
+            class: cn(attrs.class, props.classNames?.group),
+          }),
           "data-part": "group",
           "data-scope": "menu",
           role: "group",
@@ -124,7 +141,10 @@ export const MenuGroupLabel = defineComponent({
   inheritAttrs: false,
   name: "MenuGroupLabel",
   props: {
-    classNames: { default: undefined, type: Object as PropType<MenuClassNames> },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<MenuClassNames>,
+    },
     recipe: {
       default: menuRecipe,
       type: Function as PropType<typeof menuRecipe>,
@@ -138,7 +158,9 @@ export const MenuGroupLabel = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: slots$.groupLabel({ class: cn(attrs.class, props.classNames?.groupLabel) }),
+          class: slots$.groupLabel({
+            class: cn(attrs.class, props.classNames?.groupLabel),
+          }),
           "data-part": "group-label",
           "data-scope": "menu",
         },
@@ -152,8 +174,14 @@ export const MenuItem = defineComponent({
   inheritAttrs: false,
   name: "MenuItem",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<MenuClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<MenuClassNames>,
+    },
     itemRecipe: {
       default: menuItemRecipe,
       type: Function as PropType<typeof menuItemRecipe>,
@@ -163,7 +191,10 @@ export const MenuItem = defineComponent({
       type: Function as PropType<typeof menuRecipe>,
     },
     type: { default: "button", type: String },
-    variant: { default: "default", type: String as PropType<"default" | "destructive"> },
+    variant: {
+      default: "default",
+      type: String as PropType<"default" | "destructive">,
+    },
   },
   setup(props, { attrs, slots: children }) {
     return () => {
@@ -204,8 +235,14 @@ export const MenuLink = defineComponent({
   name: "MenuLink",
   props: {
     active: { default: false, type: Boolean },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<MenuClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<MenuClassNames>,
+    },
     recipe: {
       default: menuRecipe,
       type: Function as PropType<typeof menuRecipe>,
@@ -229,7 +266,9 @@ export const MenuLink = defineComponent({
             {
               ...attrs,
               "aria-current": props.active ? "page" : undefined,
-              class: slots.link({ class: cn(props.class, props.classNames?.link) }),
+              class: slots.link({
+                class: cn(props.class, props.classNames?.link),
+              }),
               "data-active": props.active,
               "data-part": "link",
               "data-scope": "menu",
@@ -245,7 +284,10 @@ export const MenuSeparator = defineComponent({
   inheritAttrs: false,
   name: "MenuSeparator",
   props: {
-    classNames: { default: undefined, type: Object as PropType<MenuClassNames> },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<MenuClassNames>,
+    },
     recipe: {
       default: menuRecipe,
       type: Function as PropType<typeof menuRecipe>,
@@ -260,7 +302,9 @@ export const MenuSeparator = defineComponent({
         {
           ...attrs,
           "aria-hidden": true,
-          class: slots$.separator({ class: cn(attrs.class, props.classNames?.separator) }),
+          class: slots$.separator({
+            class: cn(attrs.class, props.classNames?.separator),
+          }),
           "data-part": "separator",
           "data-scope": "menu",
           role: "separator",
@@ -275,7 +319,10 @@ export const MenuShortcut = defineComponent({
   inheritAttrs: false,
   name: "MenuShortcut",
   props: {
-    classNames: { default: undefined, type: Object as PropType<MenuClassNames> },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<MenuClassNames>,
+    },
     recipe: {
       default: menuRecipe,
       type: Function as PropType<typeof menuRecipe>,
@@ -289,7 +336,9 @@ export const MenuShortcut = defineComponent({
         ark.span as ArkPart,
         {
           ...attrs,
-          class: slots$.shortcut({ class: cn(attrs.class, props.classNames?.shortcut) }),
+          class: slots$.shortcut({
+            class: cn(attrs.class, props.classNames?.shortcut),
+          }),
           "data-part": "shortcut",
           "data-scope": "menu",
         },

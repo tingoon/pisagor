@@ -26,7 +26,8 @@ type SliderRootProps = SliderPrimitiveRootProps & {
   recipe?: typeof sliderRecipe;
 };
 
-export interface SliderProps extends Omit<SliderRootProps, "children" | "onValueChange"> {
+export interface SliderProps
+  extends Omit<SliderRootProps, "children" | "onValueChange"> {
   markerInterval?: number;
   markerLabels?: string[];
   showMarkers?: boolean;
@@ -47,11 +48,18 @@ type SliderMarkerTickProps = ComponentProps<"span">;
 type SliderMarkerLabelProps = ComponentProps<"span">;
 
 function SliderRoot(props: SliderRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["variant", "children", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "variant",
+    "children",
+    "recipe",
+    "class",
+  ]);
   const variant = () => local.variant ?? ("primary" as FormControlVariant);
   const slots = () => (local.recipe ?? sliderRecipe)();
-  const thumbShadowClass = () => (variant() === "secondary" ? "shadow-none" : undefined);
-  const trackVariantClass = () => (variant() === "secondary" ? "bg-muted/40" : "bg-input/64");
+  const thumbShadowClass = () =>
+    variant() === "secondary" ? "shadow-none" : undefined;
+  const trackVariantClass = () =>
+    variant() === "secondary" ? "bg-muted/40" : "bg-input/64";
 
   return (
     <SliderContext
@@ -85,14 +93,22 @@ function SliderHeader(props: SliderHeaderProps): JSX.Element {
 function SliderValue(props: SliderValueProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useSlider();
-  return <SliderPrimitive.ValueText {...rest} class={slots.value({ class: cn(local.class) })} />;
+  return (
+    <SliderPrimitive.ValueText
+      {...rest}
+      class={slots.value({ class: cn(local.class) })}
+    />
+  );
 }
 
 function SliderControl(props: SliderControlProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const { slots } = useSlider();
   return (
-    <SliderPrimitive.Control {...rest} class={slots.control({ class: cn(local.class) })}>
+    <SliderPrimitive.Control
+      {...rest}
+      class={slots.control({ class: cn(local.class) })}
+    >
       {local.children}
     </SliderPrimitive.Control>
   );
@@ -114,7 +130,12 @@ function SliderTrack(props: SliderTrackProps): JSX.Element {
 function SliderRange(props: SliderRangeProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useSlider();
-  return <SliderPrimitive.Range {...rest} class={slots.range({ class: cn(local.class) })} />;
+  return (
+    <SliderPrimitive.Range
+      {...rest}
+      class={slots.range({ class: cn(local.class) })}
+    />
+  );
 }
 
 function SliderThumb(props: SliderThumbProps): JSX.Element {
@@ -134,7 +155,10 @@ function SliderMarkerGroup(props: SliderMarkerGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const { slots } = useSlider();
   return (
-    <SliderPrimitive.MarkerGroup {...rest} class={slots.markerGroup({ class: cn(local.class) })}>
+    <SliderPrimitive.MarkerGroup
+      {...rest}
+      class={slots.markerGroup({ class: cn(local.class) })}
+    >
       {local.children}
     </SliderPrimitive.MarkerGroup>
   );
@@ -144,7 +168,10 @@ function SliderMarker(props: SliderMarkerProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const { slots } = useSlider();
   return (
-    <SliderPrimitive.Marker {...rest} class={slots.marker({ class: cn(local.class) })}>
+    <SliderPrimitive.Marker
+      {...rest}
+      class={slots.marker({ class: cn(local.class) })}
+    >
       {local.children}
     </SliderPrimitive.Marker>
   );
@@ -153,7 +180,9 @@ function SliderMarker(props: SliderMarkerProps): JSX.Element {
 function SliderMarkerTick(props: SliderMarkerTickProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useSlider();
-  return <span {...rest} class={slots.markerTick({ class: cn(local.class) })} />;
+  return (
+    <span {...rest} class={slots.markerTick({ class: cn(local.class) })} />
+  );
 }
 
 function SliderMarkerLabel(props: SliderMarkerLabelProps): JSX.Element {
@@ -209,7 +238,9 @@ export function Slider(props: SliderProps): JSX.Element {
       max={max()}
       min={min()}
       onValueChange={
-        local.onValueChange ? (details) => local.onValueChange?.(details.value) : undefined
+        local.onValueChange
+          ? (details) => local.onValueChange?.(details.value)
+          : undefined
       }
       value={local.value}
       variant={local.variant}

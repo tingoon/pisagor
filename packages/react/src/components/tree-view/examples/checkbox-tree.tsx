@@ -30,7 +30,13 @@ export function CheckboxTree() {
     },
   });
 
-  const TreeNode = ({ indexPath, node }: { node: TreeNodeType; indexPath: number[] }) => {
+  const TreeNode = ({
+    indexPath,
+    node,
+  }: {
+    node: TreeNodeType;
+    indexPath: number[];
+  }) => {
     return (
       <TreeView.NodeProvider indexPath={indexPath} node={node}>
         {node.children ? (
@@ -41,7 +47,11 @@ export function CheckboxTree() {
             </TreeView.BranchControl>
             <TreeView.BranchContent>
               {node.children.map((child, index) => (
-                <TreeNode indexPath={[...indexPath, index]} key={child.id} node={child} />
+                <TreeNode
+                  indexPath={[...indexPath, index]}
+                  key={child.id}
+                  node={child}
+                />
               ))}
             </TreeView.BranchContent>
           </TreeView.Branch>

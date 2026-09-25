@@ -23,7 +23,10 @@ export const itemRecipe = tv({
       "[&_svg:not([class*='size-'])]:size-4 [&_svg]:pointer-events-none [&_svg]:shrink-0",
       "motion-reduce:transition-none!",
     ],
-    content: ["flex flex-1 flex-col gap-0.5", "[&+[data-scope=item][data-part=content]]:flex-none"],
+    content: [
+      "flex flex-1 flex-col gap-0.5",
+      "[&+[data-scope=item][data-part=content]]:flex-none",
+    ],
     description: [
       "line-clamp-2 text-left font-normal text-muted-foreground text-sm leading-relaxed",
       "[&>a:hover]:text-primary",

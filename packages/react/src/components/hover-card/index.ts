@@ -1,4 +1,9 @@
-import { HoverCardArrow, HoverCardContent, HoverCardRoot, HoverCardTrigger } from "./hover-card";
+import {
+  HoverCardArrow,
+  HoverCardContent,
+  HoverCardRoot,
+  HoverCardTrigger,
+} from "./hover-card";
 
 export type {
   HoverCardArrowProps,

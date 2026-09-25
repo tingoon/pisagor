@@ -5,7 +5,8 @@ import { Tour } from "..";
 
 const logs = ref([]);
 const onStatusChange = (details) => addLog(`Status: ${details.status}`);
-const onStepChange = (details) => addLog(`Step changed: ${details.stepId ?? "unknown"}`);
+const onStepChange = (details) =>
+  addLog(`Step changed: ${details.stepId ?? "unknown"}`);
 const steps = [
   {
     actions: [{ action: "next", label: "Next" }],
@@ -42,7 +43,11 @@ const steps = [
 
 <template>
   <div class="flex flex-col gap-2">
-    <Tour :steps="steps" @status-change="onStatusChange" @step-change="onStepChange">
+    <Tour
+      :steps="steps"
+      @status-change="onStatusChange"
+      @step-change="onStepChange"
+    >
       <Tour.Trigger as-child>
         <Button variant="outline">Start tour</Button>
       </Tour.Trigger>

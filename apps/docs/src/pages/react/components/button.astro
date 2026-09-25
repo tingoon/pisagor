@@ -55,60 +55,98 @@ const headings = [
 
   <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
+    Default
+  </h3>
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sizes">Sizes</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sizes">
+    Sizes
+  </h3>
   <ComponentPreview code={examples.Sizes} language="tsx" title="Sizes">
     <Sizes client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">
+    Variants
+  </h3>
   <ComponentPreview code={examples.Variants} language="tsx" title="Variants">
     <Variants client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-color">Custom color</h3>
-  <ComponentPreview code={examples.CustomColor} language="tsx" title="Custom color">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-color">
+    Custom color
+  </h3>
+  <ComponentPreview
+    code={examples.CustomColor}
+    language="tsx"
+    title="Custom color"
+  >
     <CustomColor client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="pill">Pill</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="pill">
+    Pill
+  </h3>
   <ComponentPreview code={examples.Pill} language="tsx" title="Pill">
     <Pill client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="no-click-effect">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="no-click-effect"
+  >
     No click effect
   </h3>
-  <ComponentPreview code={examples.NoClickEffect} language="tsx" title="No click effect">
+  <ComponentPreview
+    code={examples.NoClickEffect}
+    language="tsx"
+    title="No click effect"
+  >
     <NoClickEffect client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="icon">Icon</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="icon">
+    Icon
+  </h3>
   <ComponentPreview code={examples.Icon} language="tsx" title="Icon">
     <Icon client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="as-child">As child</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="as-child">
+    As child
+  </h3>
   <ComponentPreview code={examples.AsChild} language="tsx" title="As child">
     <AsChild client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">Disabled</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">
+    Disabled
+  </h3>
   <ComponentPreview code={examples.Disabled} language="tsx" title="Disabled">
     <Disabled client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="loading">Loading</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="loading">
+    Loading
+  </h3>
   <ComponentPreview code={examples.Loading} language="tsx" title="Loading">
     <Loading client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-icon">With icon</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-icon">
+    With icon
+  </h3>
   <ComponentPreview code={examples.WithIcon} language="tsx" title="With icon">
     <WithIcon client:only="react" />
   </ComponentPreview>
 
-  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <h2
+    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    id="installation"
+  >
+    Installation
+  </h2>
   <Installation class="mb-8" packages="@pisagor/react" />
 
-  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="props">
+    Props
+  </h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/button</code>. Native HTML attributes are also supported and
-    omitted from this table.
+    Own props from <code>@pisagor/props/button</code>. Native HTML attributes
+    are also supported and omitted from this table.
   </p>
   <PropsTable rows={buttonProps} />
 </DocsLayout>

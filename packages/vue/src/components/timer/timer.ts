@@ -1,5 +1,8 @@
 import { ark } from "@ark-ui/vue/factory";
-import { Timer as TimerPrimitive, useTimerContext as useTimer } from "@ark-ui/vue/timer";
+import {
+  Timer as TimerPrimitive,
+  useTimerContext as useTimer,
+} from "@ark-ui/vue/timer";
 import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes/timer";
 import { defineComponent, h, type PropType } from "vue";
 
@@ -37,7 +40,10 @@ export const TimerRoot = defineComponent({
   inheritAttrs: false,
   name: "TimerRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     isControlsVisible: { default: undefined, type: Boolean },
     recipe: {
       default: timerRecipe,
@@ -59,7 +65,9 @@ export const TimerRoot = defineComponent({
           props.units
             ? h(TimerArea, null, () =>
                 props.units?.map((unit, index) => [
-                  index > 0 ? h(TimerSeparator, { key: `sep-${unit}-${index}` }) : null,
+                  index > 0
+                    ? h(TimerSeparator, { key: `sep-${unit}-${index}` })
+                    : null,
                   h(TimerItemGroup, { key: `group-${unit}-${index}` }, () => [
                     h(TimerItem, { type: unit }),
                     h(TimerItemLabel, null, () => unit),
@@ -81,7 +89,10 @@ export const TimerArea = defineComponent({
   inheritAttrs: false,
   name: "TimerArea",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: timerRecipe,
       type: Function as PropType<typeof timerRecipe>,
@@ -107,7 +118,10 @@ export const TimerItemGroup = defineComponent({
   inheritAttrs: false,
   name: "TimerItemGroup",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemGroupRecipe: {
       default: timerItemGroupRecipe,
       type: Function as PropType<typeof timerItemGroupRecipe>,
@@ -140,7 +154,10 @@ export const TimerItem = defineComponent({
   inheritAttrs: false,
   name: "TimerItem",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemGroupRecipe: {
       default: timerItemGroupRecipe,
       type: Function as PropType<typeof timerItemGroupRecipe>,
@@ -166,7 +183,10 @@ export const TimerItemLabel = defineComponent({
   inheritAttrs: false,
   name: "TimerItemLabel",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemGroupRecipe: {
       default: timerItemGroupRecipe,
       type: Function as PropType<typeof timerItemGroupRecipe>,
@@ -194,7 +214,10 @@ export const TimerSeparator = defineComponent({
   inheritAttrs: false,
   name: "TimerSeparator",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: timerRecipe,
       type: Function as PropType<typeof timerRecipe>,
@@ -220,7 +243,10 @@ export const TimerControl = defineComponent({
   inheritAttrs: false,
   name: "TimerControl",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: timerRecipe,
       type: Function as PropType<typeof timerRecipe>,
@@ -246,7 +272,8 @@ export const TimerActionTrigger = defineComponent({
   inheritAttrs: false,
   name: "TimerActionTrigger",
   setup(_, { attrs, slots }) {
-    return () => h(TimerPrimitive.ActionTrigger as ArkPart, { ...attrs }, slots);
+    return () =>
+      h(TimerPrimitive.ActionTrigger as ArkPart, { ...attrs }, slots);
   },
 });
 
@@ -321,7 +348,9 @@ export const TimerPlay = defineComponent({
   setup(_, { attrs, slots }) {
     const timer = useTimer();
     return () =>
-      timer.value.paused ? h(TimerResume, { ...attrs }, slots) : h(TimerStart, { ...attrs }, slots);
+      timer.value.paused
+        ? h(TimerResume, { ...attrs }, slots)
+        : h(TimerStart, { ...attrs }, slots);
   },
 });
 // #endregion

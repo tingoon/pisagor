@@ -54,14 +54,23 @@ export const DatePickerRoot = defineComponent({
   inheritAttrs: false,
   name: "DatePicker",
   props: {
-    defaultValue: { default: undefined, type: null as unknown as PropType<unknown> },
+    defaultValue: {
+      default: undefined,
+      type: null as unknown as PropType<unknown>,
+    },
     onValueChange: {
       default: undefined,
       type: Function as PropType<DatePickerRootProps["onValueChange"]>,
     },
-    positioning: { default: { placement: "top" }, type: Object as PropType<unknown> },
+    positioning: {
+      default: { placement: "top" },
+      type: Object as PropType<unknown>,
+    },
     value: { default: undefined, type: null as unknown as PropType<unknown> },
-    variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant | undefined>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -141,7 +150,11 @@ export const DatePickerInput = defineComponent({
             h(DatePickerPrimitive.Trigger as ArkPart, { asChild: true }, () =>
               h(
                 Button as ArkPart,
-                { "aria-label": "Open calendar", size: "icon-md", variant: "ghost" },
+                {
+                  "aria-label": "Open calendar",
+                  size: "icon-md",
+                  variant: "ghost",
+                },
                 () => h(PhCalendar),
               ),
             ),
@@ -199,9 +212,15 @@ export const DatePickerTimer = defineComponent({
   inheritAttrs: false,
   name: "DatePicker.Timer",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     clearable: { default: false, type: Boolean },
-    defaultValue: { default: undefined, type: [String, Number, Array] as PropType<unknown> },
+    defaultValue: {
+      default: undefined,
+      type: [String, Number, Array] as PropType<unknown>,
+    },
     disabled: { default: undefined, type: Boolean },
     onValueChange: {
       default: undefined,
@@ -212,17 +231,26 @@ export const DatePickerTimer = defineComponent({
       default: datePickerRecipe,
       type: Function as PropType<typeof datePickerRecipe>,
     },
-    value: { default: undefined, type: [String, Number, Array] as PropType<unknown> },
+    value: {
+      default: undefined,
+      type: [String, Number, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs }) {
     return () => {
-      const internalValue = ref(props.defaultValue !== undefined ? String(props.defaultValue) : "");
+      const internalValue = ref(
+        props.defaultValue !== undefined ? String(props.defaultValue) : "",
+      );
       const isControlled = computed(() => props.value !== undefined);
       const current = computed(() =>
         isControlled.value ? String(props.value ?? "") : internalValue.value,
       );
       const canClear = computed(
-        () => props.clearable && !props.disabled && !props.readOnly && current.value.length > 0,
+        () =>
+          props.clearable &&
+          !props.disabled &&
+          !props.readOnly &&
+          current.value.length > 0,
       );
 
       const handleValueChange = (next: string) => {
@@ -240,7 +268,11 @@ export const DatePickerTimer = defineComponent({
           InputGroup.Input as ArkPart,
           {
             ...attrs,
-            class: cn(props.recipe().timer(), props.class, (attrs as { class?: ClassValue }).class),
+            class: cn(
+              props.recipe().timer(),
+              props.class,
+              (attrs as { class?: ClassValue }).class,
+            ),
             clearable: false,
             disabled: props.disabled,
             onValueChange: handleValueChange,
@@ -264,7 +296,10 @@ export const DatePickerContent = defineComponent({
   inheritAttrs: false,
   name: "DatePicker.Content",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     recipe: {
       default: datePickerRecipe,
       type: Function as PropType<typeof datePickerRecipe>,
@@ -299,8 +334,10 @@ export const DatePickerContent = defineComponent({
         ),
       ];
 
-      return h("teleport", { to: "body" } as unknown as Parameters<typeof h>[1], () =>
-        h(DatePickerPrimitive.Positioner as ArkPart, {}, () => content),
+      return h(
+        "teleport",
+        { to: "body" } as unknown as Parameters<typeof h>[1],
+        () => h(DatePickerPrimitive.Positioner as ArkPart, {}, () => content),
       );
     };
   },
@@ -319,7 +356,10 @@ export const DatePickerValueText = defineComponent({
     return () =>
       h(DatePickerPrimitive.ValueText as ArkPart, {
         ...attrs,
-        class: cn(props.recipe().valueText(), (attrs as { class?: ClassValue }).class),
+        class: cn(
+          props.recipe().valueText(),
+          (attrs as { class?: ClassValue }).class,
+        ),
       });
   },
 });
@@ -330,7 +370,9 @@ export const DatePickerPresetTrigger = defineComponent({
   props: {},
   setup(_, { attrs, slots }) {
     return () =>
-      h(DatePickerPrimitive.PresetTrigger as ArkPart, { ...attrs }, () => slots.default?.());
+      h(DatePickerPrimitive.PresetTrigger as ArkPart, { ...attrs }, () =>
+        slots.default?.(),
+      );
   },
 });
 

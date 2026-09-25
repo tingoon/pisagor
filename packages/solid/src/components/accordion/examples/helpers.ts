@@ -7,7 +7,8 @@ export type FaqItem = {
 export function faqItems(): FaqItem[] {
   return [
     {
-      content: "Our flagship product combines cutting-edge technology with sleek design.",
+      content:
+        "Our flagship product combines cutting-edge technology with sleek design.",
       title: "Product information",
       value: "item-1",
     },
@@ -17,7 +18,8 @@ export function faqItems(): FaqItem[] {
       value: "item-2",
     },
     {
-      content: "We stand behind our products with a comprehensive 30-day return policy.",
+      content:
+        "We stand behind our products with a comprehensive 30-day return policy.",
       title: "Return policy",
       value: "item-3",
     },

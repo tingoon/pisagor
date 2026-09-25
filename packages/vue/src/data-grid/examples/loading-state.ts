@@ -1,8 +1,19 @@
 import { PhCaretDown, PhCaretUp } from "@phosphor-icons/vue";
 import type { BadgeVariant } from "@pisagor/vue";
 import { Badge, Button, Checkbox, Skeleton, Table } from "@pisagor/vue";
-import type { CellContext, ColumnDef, HeaderContext } from "@pisagor/vue/data-grid";
-import { defineComponent, h, onBeforeUnmount, onMounted, type PropType, ref } from "vue";
+import type {
+  CellContext,
+  ColumnDef,
+  HeaderContext,
+} from "@pisagor/vue/data-grid";
+import {
+  defineComponent,
+  h,
+  onBeforeUnmount,
+  onMounted,
+  type PropType,
+  ref,
+} from "vue";
 import { DataGrid } from "..";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -21,7 +32,13 @@ const ROLES: FullUser["role"][] = ["Admin", "Editor", "Viewer"];
 
 const STATUSES: FullUser["status"][] = ["active", "inactive", "invited"];
 
-const DEPARTMENTS = ["Engineering", "Design", "Marketing", "Sales", "Support"] as const;
+const DEPARTMENTS = [
+  "Engineering",
+  "Design",
+  "Marketing",
+  "Sales",
+  "Support",
+] as const;
 
 const FIRST_NAMES = [
   "Alice",
@@ -48,10 +65,15 @@ const statusVariants: Record<FullUser["status"], BadgeVariant> = {
 };
 
 const allUsers: FullUser[] = Array.from({ length: 48 }, (_, index) => ({
-  department: DEPARTMENTS[index % DEPARTMENTS.length] ?? DEPARTMENTS[0] ?? "Engineering",
+  department:
+    DEPARTMENTS[index % DEPARTMENTS.length] ?? DEPARTMENTS[0] ?? "Engineering",
   email: `user${index + 1}@example.com`,
   id: String(index + 1),
-  joinedAt: new Date(2020 + (index % 5), index % 12, (index % 28) + 1).toISOString(),
+  joinedAt: new Date(
+    2020 + (index % 5),
+    index % 12,
+    (index % 28) + 1,
+  ).toISOString(),
   name: `${FIRST_NAMES[index % FIRST_NAMES.length] ?? "Alex"} ${String.fromCharCode(65 + (index % 26))}.`,
   role: ROLES[index % ROLES.length] ?? "Viewer",
   status: STATUSES[index % STATUSES.length] ?? "active",
@@ -68,7 +90,10 @@ function formatDate(value: string) {
 const SortIndicator = defineComponent({
   name: "SortIndicator",
   props: {
-    direction: { default: false, type: [Boolean, String] as PropType<false | "asc" | "desc"> },
+    direction: {
+      default: false,
+      type: [Boolean, String] as PropType<false | "asc" | "desc">,
+    },
   },
   setup(props) {
     return () => {
@@ -90,7 +115,9 @@ const DataGridShell = defineComponent({
   setup(_, { slots }) {
     return () =>
       h("div", { class: "flex w-full flex-col gap-3" }, () =>
-        h("div", { class: "rounded-xl border bg-muted/20 p-3" }, () => slots.default?.()),
+        h("div", { class: "rounded-xl border bg-muted/20 p-3" }, () =>
+          slots.default?.(),
+        ),
       );
   },
 });
@@ -106,12 +133,16 @@ const DataGridView = defineComponent({
       h(Table, null, () => [
         h(Table.Header, null, () =>
           h(DataGrid.Header, null, () =>
-            h(DataGrid.HeaderRow, null, () => h(DataGrid.Head, { filter: props.filterHead })),
+            h(DataGrid.HeaderRow, null, () =>
+              h(DataGrid.Head, { filter: props.filterHead }),
+            ),
           ),
         ),
         h(Table.Body, null, () =>
-          h(DataGrid.Body, { empty: h(DataGrid.Empty, { colSpan: props.colSpan }) }, () =>
-            h(DataGrid.Row, null, () => h(DataGrid.Cell)),
+          h(
+            DataGrid.Body,
+            { empty: h(DataGrid.Empty, { colSpan: props.colSpan }) },
+            () => h(DataGrid.Row, null, () => h(DataGrid.Cell)),
           ),
         ),
       ]);
@@ -124,7 +155,8 @@ function sortableHeaderRenderer(label: string) {
       "button",
       {
         class: "inline-flex items-center gap-1.5 font-medium",
-        onClick: () => ctx.column.toggleSorting(ctx.column.getIsSorted() === "asc"),
+        onClick: () =>
+          ctx.column.toggleSorting(ctx.column.getIsSorted() === "asc"),
         type: "button",
       },
       [label, h(SortIndicator, { direction: ctx.column.getIsSorted() })],
@@ -202,7 +234,8 @@ function userColumns(options?: {
     },
     {
       accessorKey: "joinedAt",
-      cell: ({ row }: CellContext<FullUser, unknown>) => formatDate(row.original.joinedAt),
+      cell: ({ row }: CellContext<FullUser, unknown>) =>
+        formatDate(row.original.joinedAt),
       header: sortable ? sortableHeaderRenderer("Joined") : "Joined",
       sortFn: "datetime",
     },
@@ -213,7 +246,14 @@ function userColumns(options?: {
 
 export function LoadingState() {
   return {
-    components: { Button, DataGrid, DataGridShell, DataGridView, Skeleton, Table },
+    components: {
+      Button,
+      DataGrid,
+      DataGridShell,
+      DataGridView,
+      Skeleton,
+      Table,
+    },
     setup() {
       const isLoading = ref(true);
       const columns = userColumns();
@@ -230,8 +270,18 @@ export function LoadingState() {
       onMounted(reload);
       onBeforeUnmount(() => window.clearTimeout(loadTimer));
 
-      const skeletonRows = Array.from({ length: 6 }, (_, index) => `skeleton-row-${index}`);
-      const skeletonLabels = ["Name", "Email", "Role", "Department", "Status", "Joined"];
+      const skeletonRows = Array.from(
+        { length: 6 },
+        (_, index) => `skeleton-row-${index}`,
+      );
+      const skeletonLabels = [
+        "Name",
+        "Email",
+        "Role",
+        "Department",
+        "Status",
+        "Joined",
+      ];
       const data = allUsers.slice(0, 8);
 
       return { columns, data, isLoading, reload, skeletonLabels, skeletonRows };

@@ -38,27 +38,50 @@ const headings = [
   headings={headings}
   title="Table"
 >
-  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">Overview</h2>
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">
+    Overview
+  </h2>
   <p class="mb-8 text-muted-foreground">
     Table compositions with bulk actions, row menus, and pagination controls.
   </p>
 
-  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="table-bulk-actions">
+  <h2
+    class="mb-3 mt-10 text-2xl font-semibold tracking-tight"
+    id="table-bulk-actions"
+  >
     Table Bulk Actions
   </h2>
-  <ComponentPreview code={TableBulkActionsSource} language="ts" title="Table Bulk Actions">
+  <ComponentPreview
+    code={TableBulkActionsSource}
+    language="ts"
+    title="Table Bulk Actions"
+  >
     <TableBulkActions client:only="vue" />
   </ComponentPreview>
-  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="table-row-menu">
+  <h2
+    class="mb-3 mt-10 text-2xl font-semibold tracking-tight"
+    id="table-row-menu"
+  >
     Table Row Menu
   </h2>
-  <ComponentPreview code={TableRowMenuSource} language="ts" title="Table Row Menu">
+  <ComponentPreview
+    code={TableRowMenuSource}
+    language="ts"
+    title="Table Row Menu"
+  >
     <TableRowMenu client:only="vue" />
   </ComponentPreview>
-  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="table-pagination">
+  <h2
+    class="mb-3 mt-10 text-2xl font-semibold tracking-tight"
+    id="table-pagination"
+  >
     Table Pagination
   </h2>
-  <ComponentPreview code={TablePaginationSource} language="ts" title="Table Pagination">
+  <ComponentPreview
+    code={TablePaginationSource}
+    language="ts"
+    title="Table Pagination"
+  >
     <TablePagination client:only="vue" />
   </ComponentPreview>
 </DocsLayout>

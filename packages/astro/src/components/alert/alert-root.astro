@@ -8,6 +8,11 @@ const { variant = "default", class: className, ...rest } = Astro.props;
 const slots = alertRecipe({ variant });
 ---
 
-<div {...rest} class={slots.base({ className })} data-part="root" data-scope="alert">
+<div
+  {...rest}
+  class={slots.base({ className })}
+  data-part="root"
+  data-scope="alert"
+>
   <slot />
 </div>

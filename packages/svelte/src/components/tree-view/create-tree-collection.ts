@@ -20,4 +20,6 @@ export const createTreeCollection = <T extends TreeNodeType>(
     ...options,
   });
 
-export const createFileIcons = <T extends Record<`.${string}`, unknown>>(args: T) => ({ ...args });
+export const createFileIcons = <T extends Record<`.${string}`, unknown>>(
+  args: T,
+) => ({ ...args });

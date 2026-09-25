@@ -49,46 +49,75 @@ const headings = [
 
   <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">Variants</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">
+    Variants
+  </h3>
   <ComponentPreview code={examples.Variants} language="vue" title="Variants">
     <Variants client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="duration">Duration</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="duration">
+    Duration
+  </h3>
   <ComponentPreview code={examples.Duration} language="vue" title="Duration">
     <Duration client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="closable">Closable</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="closable">
+    Closable
+  </h3>
   <ComponentPreview code={examples.Closable} language="vue" title="Closable">
     <Closable client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="dedupe">Dedupe</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="dedupe">
+    Dedupe
+  </h3>
   <ComponentPreview code={examples.Dedupe} language="vue" title="Dedupe">
     <Dedupe client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="action">Action</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="action">
+    Action
+  </h3>
   <ComponentPreview code={examples.Action} language="vue" title="Action">
     <Action client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-promise">With Promise</h3>
-  <ComponentPreview code={examples.WithPromise} language="vue" title="With Promise">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-promise">
+    With Promise
+  </h3>
+  <ComponentPreview
+    code={examples.WithPromise}
+    language="vue"
+    title="With Promise"
+  >
     <WithPromise client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="placements">Placements</h3>
-  <ComponentPreview code={examples.Placements} language="vue" title="Placements">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="placements">
+    Placements
+  </h3>
+  <ComponentPreview
+    code={examples.Placements}
+    language="vue"
+    title="Placements"
+  >
     <Placements client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
+    Default
+  </h3>
   <ComponentPreview code={examples.Default} language="vue" title="Default">
     <Default client:only="vue" />
   </ComponentPreview>
 
-  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <h2
+    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    id="installation"
+  >
+    Installation
+  </h2>
   <Installation class="mb-8" packages="@pisagor/vue" />
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/toast</code>. Native HTML attributes are also supported and
-    omitted from this table.
+    Own props from <code>@pisagor/props/toast</code>. Native HTML attributes are
+    also supported and omitted from this table.
   </p>
   <PropsTable rows={toastProps} />
 </DocsLayout>

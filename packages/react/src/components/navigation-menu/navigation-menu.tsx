@@ -1,7 +1,10 @@
 import { ark } from "@ark-ui/react/factory";
 import { navigationMenuRecipe } from "@pisagor/recipes/navigation-menu";
 import type { ComponentProps } from "react";
-import { NavigationMenuContext, useNavigationMenu } from "./navigation-menu.context";
+import {
+  NavigationMenuContext,
+  useNavigationMenu,
+} from "./navigation-menu.context";
 
 // #region Types
 export interface NavigationMenuProps extends ComponentProps<typeof ark.nav> {
@@ -46,7 +49,10 @@ export function NavigationMenuRoot({
   );
 }
 
-export function NavigationMenuList({ className, ...rest }: NavigationMenuPartProps) {
+export function NavigationMenuList({
+  className,
+  ...rest
+}: NavigationMenuPartProps) {
   const { slots } = useNavigationMenu();
 
   return (
@@ -59,7 +65,10 @@ export function NavigationMenuList({ className, ...rest }: NavigationMenuPartPro
   );
 }
 
-export function NavigationMenuItem({ className, ...rest }: NavigationMenuItemProps) {
+export function NavigationMenuItem({
+  className,
+  ...rest
+}: NavigationMenuItemProps) {
   const { slots } = useNavigationMenu();
 
   return (

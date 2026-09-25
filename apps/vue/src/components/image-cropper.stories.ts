@@ -8,7 +8,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Lets users crop and adjust an image selection before saving or uploading it.",
+        component:
+          "Lets users crop and adjust an image selection before saving or uploading it.",
       },
     },
   },

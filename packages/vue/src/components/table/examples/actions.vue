@@ -1,5 +1,10 @@
 <script lang="ts" setup>
-import { PhDotsThreeVertical, PhEye, PhPencilSimple, PhTrash } from "@phosphor-icons/vue";
+import {
+  PhDotsThreeVertical,
+  PhEye,
+  PhPencilSimple,
+  PhTrash,
+} from "@phosphor-icons/vue";
 
 import { Button, DropdownMenu } from "@pisagor/vue";
 import { Table } from "..";
@@ -8,7 +13,9 @@ import { workspaceUsers } from "./helpers";
 
 <template>
   <Table>
-    <Table.Caption class="sr-only">Users with row actions (edit, delete).</Table.Caption>
+    <Table.Caption class="sr-only"
+      >Users with row actions (edit, delete).</Table.Caption
+    >
     <Table.Header>
       <Table.Row>
         <Table.Head>Name</Table.Head>

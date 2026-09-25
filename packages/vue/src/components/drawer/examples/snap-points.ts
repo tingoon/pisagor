@@ -8,15 +8,24 @@ export default defineComponent({
     return () =>
       h(
         Drawer,
-        { defaultSnapPoint: 0.5, snapPoints: [0.25, 0.5, 1], snapToSequentialPoints: true },
+        {
+          defaultSnapPoint: 0.5,
+          snapPoints: [0.25, 0.5, 1],
+          snapToSequentialPoints: true,
+        },
         () => [
           h(Drawer.Trigger, { asChild: true }, () =>
-            h("button", { class: outlineButtonClass(), type: "button" }, "Open"),
+            h(
+              "button",
+              { class: outlineButtonClass(), type: "button" },
+              "Open",
+            ),
           ),
           h(Drawer.Content, null, () =>
             h(Drawer.ContentInner, null, () => [
               h(Drawer.Header, {
-                description: "Drag to 25%, 50%, or 100% height. Swipe down to close.",
+                description:
+                  "Drag to 25%, 50%, or 100% height. Swipe down to close.",
                 title: "Snap points",
               }),
               h(Drawer.Body, null, () =>

@@ -33,7 +33,9 @@ export function Default() {
           tickLine={false}
           tickMargin={10}
         />
-        <Chart.Tooltip content={(props) => <Chart.TooltipContent {...props} />} />
+        <Chart.Tooltip
+          content={(props) => <Chart.TooltipContent {...props} />}
+        />
         <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
         <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
       </BarChart>

@@ -16,7 +16,10 @@ type PhoneInputSize = NonNullable<PhoneInputVariantProps["size"]>;
 
 interface PhoneInputContextValue {
   classNames?: PhoneInputClassNames;
-  inputProps?: Omit<InputProps, "class" | "onChange" | "onBlur" | "size" | "type" | "value">;
+  inputProps?: Omit<
+    InputProps,
+    "class" | "onChange" | "onBlur" | "size" | "type" | "value"
+  >;
   invalid?: boolean;
   popupProps?: Omit<ComboboxContentProps, "class" | "children">;
   size: PhoneInputSize;
@@ -24,6 +27,7 @@ interface PhoneInputContextValue {
   variant?: FormControlVariant;
 }
 
-export const { PhoneInputContext, usePhoneInput } = createContext<PhoneInputContextValue>()({
-  name: "PhoneInput",
-});
+export const { PhoneInputContext, usePhoneInput } =
+  createContext<PhoneInputContextValue>()({
+    name: "PhoneInput",
+  });

@@ -26,14 +26,18 @@ type CircularProgressRootProps = ProgressRootProps & {
   recipe?: typeof circularProgressRecipe;
 };
 
-export interface CircularProgressProps extends Omit<CircularProgressRootProps, "children"> {
+export interface CircularProgressProps
+  extends Omit<CircularProgressRootProps, "children"> {
   size?: number;
   thickness?: number;
   indeterminate?: boolean;
   isValueVisible?: boolean;
   children?: JSX.Element;
   classNames?: CircularProgressClassNames;
-  trackProps?: Omit<CircularProgressTrackProps, "class" | "height" | "viewBox" | "width">;
+  trackProps?: Omit<
+    CircularProgressTrackProps,
+    "class" | "height" | "viewBox" | "width"
+  >;
   valueProps?: Omit<CircularProgressValueProps, "children" | "class">;
 }
 
@@ -42,7 +46,10 @@ interface CircularProgressTrackPartProps {
   thickness?: number;
   class?: string;
   rangeClassName?: string;
-  trackProps?: Omit<CircularProgressTrackProps, "class" | "height" | "viewBox" | "width">;
+  trackProps?: Omit<
+    CircularProgressTrackProps,
+    "class" | "height" | "viewBox" | "width"
+  >;
 }
 
 function CircularProgressRoot(props: CircularProgressRootProps): JSX.Element {
@@ -51,7 +58,10 @@ function CircularProgressRoot(props: CircularProgressRootProps): JSX.Element {
 
   return (
     <CircularProgressSlotsContext value={{ slots: slots() }}>
-      <ProgressPrimitive.Root {...rest} class={slots().base({ class: cn(local.class) })}>
+      <ProgressPrimitive.Root
+        {...rest}
+        class={slots().base({ class: cn(local.class) })}
+      >
         {local.children}
       </ProgressPrimitive.Root>
     </CircularProgressSlotsContext>
@@ -63,16 +73,27 @@ function CircularProgressValueWrapper(props: {
   children?: JSX.Element;
 }): JSX.Element {
   const { slots } = useCircularProgressSlots();
-  return <span class={slots.valueWrapper({ class: cn(props.class) })}>{props.children}</span>;
+  return (
+    <span class={slots.valueWrapper({ class: cn(props.class) })}>
+      {props.children}
+    </span>
+  );
 }
 
 function CircularProgressValue(props: CircularProgressValueProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useCircularProgressSlots();
-  return <ProgressPrimitive.ValueText {...rest} class={slots.value({ class: cn(local.class) })} />;
+  return (
+    <ProgressPrimitive.ValueText
+      {...rest}
+      class={slots.value({ class: cn(local.class) })}
+    />
+  );
 }
 
-function CircularProgressTrack(props: CircularProgressTrackPartProps): JSX.Element {
+function CircularProgressTrack(
+  props: CircularProgressTrackPartProps,
+): JSX.Element {
   const { slots } = useCircularProgressSlots();
   const progress = useProgressContext();
   const size = () => props.size ?? 32;
@@ -83,7 +104,9 @@ function CircularProgressTrack(props: CircularProgressTrackPartProps): JSX.Eleme
   const range = () => Math.max(api().max - api().min, 1);
   const normalizedValue = () => {
     const value = api().value;
-    return value == null ? api().min : Math.min(Math.max(value, api().min), api().max);
+    return value == null
+      ? api().min
+      : Math.min(Math.max(value, api().min), api().max);
   };
   const percent = () => (normalizedValue() - api().min) / range();
   const dashOffset = () => circumference() * (1 - percent());
@@ -115,7 +138,9 @@ function CircularProgressTrack(props: CircularProgressTrackPartProps): JSX.Eleme
         data-scope="circular-progress"
         r={radius()}
         stroke-dasharray={String(circumference())}
-        stroke-dashoffset={String(api().value == null ? circumference() * 0.7 : dashOffset())}
+        stroke-dashoffset={String(
+          api().value == null ? circumference() * 0.7 : dashOffset(),
+        )}
         stroke-linecap="round"
         stroke-width={thickness()}
       />
@@ -145,7 +170,10 @@ export function CircularProgress(props: CircularProgressProps): JSX.Element {
     >
       <Show when={local.isValueVisible}>
         <CircularProgressValueWrapper class={local.classNames?.valueWrapper}>
-          <CircularProgressValue {...local.valueProps} class={local.classNames?.value} />
+          <CircularProgressValue
+            {...local.valueProps}
+            class={local.classNames?.value}
+          />
         </CircularProgressValueWrapper>
       </Show>
       {local.children}

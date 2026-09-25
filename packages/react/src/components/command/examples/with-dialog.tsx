@@ -35,7 +35,9 @@ export function WithDialog() {
         >
           <Command.Input placeholder="Search commands..." />
           <Command.Content>
-            <Command.Empty>No results found. Try a different search.</Command.Empty>
+            <Command.Empty>
+              No results found. Try a different search.
+            </Command.Empty>
             <Command.List>
               {collection.group().map(([group, items]) => (
                 <Command.ItemGroup heading={group} key={group}>

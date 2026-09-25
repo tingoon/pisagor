@@ -10,7 +10,10 @@ export function CustomSpacing() {
       <ActionBar.Trigger asChild>
         <Button variant="outline">Open</Button>
       </ActionBar.Trigger>
-      <ActionBar.Content aria-label="Bulk actions" className="[--space:--spacing(2)]">
+      <ActionBar.Content
+        aria-label="Bulk actions"
+        className="[--space:--spacing(2)]"
+      >
         <ActionBar.Value count={2} />
         <ActionBar.Separator />
         <ActionBar.Body>

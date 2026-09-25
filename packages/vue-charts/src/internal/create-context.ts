@@ -7,13 +7,17 @@ export interface CreateContextOptions<T> {
 }
 
 export function createContext<T>(options: CreateContextOptions<T>) {
-  const key: InjectionKey<MaybeRef<T | undefined>> = Symbol(`${options.name}Context`);
+  const key: InjectionKey<MaybeRef<T | undefined>> = Symbol(
+    `${options.name}Context`,
+  );
 
   function useContextRef(): MaybeRef<T> {
     const context = inject(key, options.defaultValue);
 
     if (context === undefined && options.strict !== false) {
-      const error = new Error(`use${options.name} must be used within ${options.name}Context.`);
+      const error = new Error(
+        `use${options.name} must be used within ${options.name}Context.`,
+      );
 
       error.name = `${options.name}ContextError`;
       throw error;
@@ -27,7 +31,9 @@ export function createContext<T>(options: CreateContextOptions<T>) {
 
     if (context === undefined) {
       if (options.strict !== false) {
-        const error = new Error(`use${options.name} must be used within ${options.name}Context.`);
+        const error = new Error(
+          `use${options.name} must be used within ${options.name}Context.`,
+        );
 
         error.name = `${options.name}ContextError`;
         throw error;

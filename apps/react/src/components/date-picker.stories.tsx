@@ -7,7 +7,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Lets users pick a date or range from a calendar inside a field or popover.",
+        component:
+          "Lets users pick a date or range from a calendar inside a field or popover.",
       },
     },
   },

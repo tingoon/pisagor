@@ -6,6 +6,10 @@ import { TagsInput } from "..";
 <template>
   <Field>
     <Field.Label>Frameworks</Field.Label>
-    <TagsInput class="w-full" :default-value="['React', 'Solid']" :editable="false" />
+    <TagsInput
+      class="w-full"
+      :default-value="['React', 'Solid']"
+      :editable="false"
+    />
   </Field>
 </template>

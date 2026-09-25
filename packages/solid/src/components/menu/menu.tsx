@@ -1,5 +1,9 @@
 import { ark } from "@ark-ui/solid/factory";
-import { type MenuItemVariantProps, menuItemRecipe, menuRecipe } from "@pisagor/recipes/menu";
+import {
+  type MenuItemVariantProps,
+  menuItemRecipe,
+  menuRecipe,
+} from "@pisagor/recipes/menu";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
@@ -12,7 +16,9 @@ export interface MenuRootProps extends ComponentProps<typeof ark.nav> {
 export type MenuPartProps = ComponentProps<typeof ark.div>;
 export type MenuListProps = ComponentProps<typeof ark.ul>;
 
-export interface MenuItemProps extends ComponentProps<typeof ark.button>, MenuItemVariantProps {
+export interface MenuItemProps
+  extends ComponentProps<typeof ark.button>,
+    MenuItemVariantProps {
   recipe?: typeof menuItemRecipe;
 }
 
@@ -25,7 +31,12 @@ export type MenuSeparatorProps = ComponentProps<typeof ark.div>;
 export type MenuShortcutProps = ComponentProps<typeof ark.span>;
 
 export function MenuRoot(props: MenuRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["aria-label", "children", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "aria-label",
+    "children",
+    "recipe",
+    "class",
+  ]);
   const slots = () => (local.recipe ?? menuRecipe)();
 
   return (
@@ -85,13 +96,23 @@ export function MenuGroupLabel(props: MenuGroupLabelProps): JSX.Element {
 }
 
 export function MenuItem(props: MenuItemProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["variant", "type", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "variant",
+    "type",
+    "recipe",
+    "class",
+  ]);
   const { slots } = useMenu();
   const variant = () => local.variant ?? "default";
   const recipe = () => local.recipe ?? menuItemRecipe;
 
   return (
-    <ark.li class={slots.wrapper()} data-part="item-wrapper" data-scope="menu" role="none">
+    <ark.li
+      class={slots.wrapper()}
+      data-part="item-wrapper"
+      data-scope="menu"
+      role="none"
+    >
       <ark.button
         {...rest}
         class={cn(recipe()({ variant: variant() }), local.class)}
@@ -110,7 +131,12 @@ export function MenuLink(props: MenuLinkProps): JSX.Element {
   const active = () => local.active ?? false;
 
   return (
-    <ark.li class={slots.wrapper()} data-part="item-wrapper" data-scope="menu" role="none">
+    <ark.li
+      class={slots.wrapper()}
+      data-part="item-wrapper"
+      data-scope="menu"
+      role="none"
+    >
       <ark.a
         {...rest}
         aria-current={active() ? "page" : undefined}

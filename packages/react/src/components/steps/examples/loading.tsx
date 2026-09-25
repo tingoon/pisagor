@@ -14,7 +14,11 @@ export function Loading() {
           <Steps.Item index={index} key={item.id}>
             <Steps.Trigger disabled>
               <Steps.Indicator>
-                {item.loading ? <CircleNotchIcon className="animate-spin" /> : index + 1}
+                {item.loading ? (
+                  <CircleNotchIcon className="animate-spin" />
+                ) : (
+                  index + 1
+                )}
               </Steps.Indicator>
             </Steps.Trigger>
             <Steps.Separator />

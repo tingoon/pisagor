@@ -24,7 +24,9 @@ export interface DialogRootProps extends DialogPrimitiveRootProps {
   recipe?: typeof dialogRecipe;
 }
 
-export interface DialogContentProps extends DialogPrimitiveContentProps, DialogVariantProps {
+export interface DialogContentProps
+  extends DialogPrimitiveContentProps,
+    DialogVariantProps {
   bottomStickOnMobile?: boolean;
   showCloseButton?: boolean;
 }
@@ -46,7 +48,9 @@ export interface DialogProps extends Omit<DialogRootProps, "title"> {
   description?: JSX.Element;
   title?: JSX.Element;
   /** Prefer a render fn for Solid asChild; JSX elements are wrapped with display:contents. */
-  trigger?: JSX.Element | ((props: JSX.ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element);
+  trigger?:
+    | JSX.Element
+    | ((props: JSX.ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element);
 }
 
 export function DialogRoot(props: DialogRootProps): JSX.Element {
@@ -73,7 +77,10 @@ export function DialogBackdrop(props: DialogBackdropProps): JSX.Element {
 
   return (
     <Show when={modal !== false}>
-      <DialogPrimitive.Backdrop {...rest} class={slots.backdrop({ class: cn(local.class) })} />
+      <DialogPrimitive.Backdrop
+        {...rest}
+        class={slots.backdrop({ class: cn(local.class) })}
+      />
     </Show>
   );
 }
@@ -169,18 +176,28 @@ export function DialogHeader(props: DialogHeaderProps): JSX.Element {
 export function DialogTitle(props: DialogTitleProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useDialog();
-  return <DialogPrimitive.Title {...rest} class={slots.title({ class: cn(local.class) })} />;
+  return (
+    <DialogPrimitive.Title
+      {...rest}
+      class={slots.title({ class: cn(local.class) })}
+    />
+  );
 }
 
 export function DialogDescription(props: DialogDescriptionProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useDialog();
   return (
-    <DialogPrimitive.Description {...rest} class={slots.description({ class: cn(local.class) })} />
+    <DialogPrimitive.Description
+      {...rest}
+      class={slots.description({ class: cn(local.class) })}
+    />
   );
 }
 
-export function DialogCloseTrigger(props: DialogCloseTriggerProps): JSX.Element {
+export function DialogCloseTrigger(
+  props: DialogCloseTriggerProps,
+): JSX.Element {
   return <DialogPrimitive.CloseTrigger {...props} />;
 }
 
@@ -228,7 +245,11 @@ export function DialogShorthand(props: DialogProps): JSX.Element {
         <DialogBackdrop />
         <DialogPositioner>
           <DialogContent>
-            <Show when={local.title !== undefined || local.description !== undefined}>
+            <Show
+              when={
+                local.title !== undefined || local.description !== undefined
+              }
+            >
               <DialogHeader>
                 <Show when={local.title !== undefined}>
                   <DialogTitle>{local.title}</DialogTitle>

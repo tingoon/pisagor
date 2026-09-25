@@ -16,7 +16,8 @@ export default defineComponent({
           { class: "[--space:--spacing(4)] sm:[--space:--spacing(8)]" },
           () => [
             h(Sheet.Header, {
-              description: "Make changes to your account here. Click save when you're done.",
+              description:
+                "Make changes to your account here. Click save when you're done.",
               title: "Edit user",
             }),
             h(Sheet.Body, null, () =>
@@ -33,10 +34,18 @@ export default defineComponent({
             ),
             h(Sheet.Footer, null, () => [
               h(Sheet.CloseTrigger, { asChild: true }, () =>
-                h("button", { class: outlineButtonClass(), type: "button" }, "Cancel"),
+                h(
+                  "button",
+                  { class: outlineButtonClass(), type: "button" },
+                  "Cancel",
+                ),
               ),
               h(Sheet.CloseTrigger, { asChild: true }, () =>
-                h("button", { class: outlineButtonClass(), type: "button" }, "Save changes"),
+                h(
+                  "button",
+                  { class: outlineButtonClass(), type: "button" },
+                  "Save changes",
+                ),
               ),
             ]),
           ],

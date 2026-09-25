@@ -36,6 +36,7 @@ export interface ActionBarContextValue {
 /**
  * Returns the nearest action bar context.
  */
-export const { ActionBarContext, useActionBar } = createContext<ActionBarContextValue>()({
-  name: "ActionBar",
-});
+export const { ActionBarContext, useActionBar } =
+  createContext<ActionBarContextValue>()({
+    name: "ActionBar",
+  });

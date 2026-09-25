@@ -1,4 +1,10 @@
-import { TabsContent, TabsList, TabsRoot, TabsShorthand, TabsTrigger } from "./tabs";
+import {
+  TabsContent,
+  TabsList,
+  TabsRoot,
+  TabsShorthand,
+  TabsTrigger,
+} from "./tabs";
 
 export type { TabsRootProps } from "@ark-ui/react/tabs";
 

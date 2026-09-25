@@ -3,7 +3,10 @@ import { fileURLToPath } from "node:url";
 import { defineMain } from "@storybook/react-vite/node";
 
 export default defineMain({
-  addons: [getAbsolutePath("@storybook/addon-a11y"), getAbsolutePath("@storybook/addon-docs")],
+  addons: [
+    getAbsolutePath("@storybook/addon-a11y"),
+    getAbsolutePath("@storybook/addon-docs"),
+  ],
   core: {
     disableTelemetry: true,
     enableCrashReports: false,
@@ -16,5 +19,7 @@ export default defineMain({
 });
 
 function getAbsolutePath(value: string) {
-  return path.dirname(fileURLToPath(import.meta.resolve(`${value}/package.json`)));
+  return path.dirname(
+    fileURLToPath(import.meta.resolve(`${value}/package.json`)),
+  );
 }

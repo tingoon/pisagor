@@ -14,7 +14,9 @@ export function CustomSpacing() {
           <Dialog.Content className="[--space:--spacing(4)] sm:[--space:--spacing(8)]">
             <Dialog.Header>
               <Dialog.Title>Edit project</Dialog.Title>
-              <Dialog.Description>Make changes to your project settings.</Dialog.Description>
+              <Dialog.Description>
+                Make changes to your project settings.
+              </Dialog.Description>
             </Dialog.Header>
             <Dialog.Body>
               <Field.Set>

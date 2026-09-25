@@ -9,14 +9,20 @@ export function Clearable() {
     <div className="flex flex-col gap-2">
       <Field>
         <Field.Label>Input variant</Field.Label>
-        <DatePicker onValueChange={(value) => setValue(value ?? [])} value={value}>
+        <DatePicker
+          onValueChange={(value) => setValue(value ?? [])}
+          value={value}
+        >
           <DatePicker.Input placeholder="Select date" />
           <DatePicker.Content />
         </DatePicker>
       </Field>
       <Field>
         <Field.Label>Trigger variant</Field.Label>
-        <DatePicker onValueChange={(value) => setValue(value ?? [])} value={value}>
+        <DatePicker
+          onValueChange={(value) => setValue(value ?? [])}
+          value={value}
+        >
           <DatePicker.Trigger asChild>
             <Button variant="outline">
               <CalendarIcon />

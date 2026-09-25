@@ -1,4 +1,7 @@
-import { type CollectionItem, createListCollection } from "@ark-ui/solid/collection";
+import {
+  type CollectionItem,
+  createListCollection,
+} from "@ark-ui/solid/collection";
 import type {
   ListboxContentProps,
   ListboxEmptyProps,
@@ -21,7 +24,12 @@ import type { JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
 import { CheckIcon } from "../../internal/icons";
 import { DropdownMenu, type DropdownMenuShortcutProps } from "../dropdown-menu";
-import { ListboxContext, ListboxItemContext, useListbox, useListboxItem } from "./listbox.context";
+import {
+  ListboxContext,
+  ListboxItemContext,
+  useListbox,
+  useListboxItem,
+} from "./listbox.context";
 
 interface ListboxPresetItem extends CollectionItem {
   label: string;
@@ -37,12 +45,15 @@ export type ListboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   recipe?: typeof listboxRecipe;
 };
 
-export interface ListboxProps extends Omit<ListboxRootProps, "children" | "collection"> {
+export interface ListboxProps
+  extends Omit<ListboxRootProps, "children" | "collection"> {
   collection?: ListboxRootProps["collection"];
   items?: ListboxPresetItem[];
 }
 
-export interface ListboxItemProps extends ListboxPrimitiveItemProps, ListboxItemVariantProps {
+export interface ListboxItemProps
+  extends ListboxPrimitiveItemProps,
+    ListboxItemVariantProps {
   itemRecipe?: typeof listboxItemRecipe;
 }
 
@@ -67,7 +78,9 @@ export function ListboxRoot<T extends CollectionItem = CollectionItem>(
         {...rest}
         class={slots().base({ class: cn(local.class) })}
         onValueChange={
-          local.onValueChange ? (details) => local.onValueChange?.(details.value) : undefined
+          local.onValueChange
+            ? (details) => local.onValueChange?.(details.value)
+            : undefined
         }
       >
         {local.children}
@@ -79,13 +92,25 @@ export function ListboxRoot<T extends CollectionItem = CollectionItem>(
 export function ListboxContent(props: ListboxContentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useListbox();
-  return <ListboxPrimitive.Content {...rest} class={slots.content({ class: local.class })} />;
+  return (
+    <ListboxPrimitive.Content
+      {...rest}
+      class={slots.content({ class: local.class })}
+    />
+  );
 }
 
 export function ListboxItem(props: ListboxItemProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["variant", "children", "itemRecipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "variant",
+    "children",
+    "itemRecipe",
+    "class",
+  ]);
   const variant = () => local.variant ?? "default";
-  const slots = createMemo(() => (local.itemRecipe ?? listboxItemRecipe)({ variant: variant() }));
+  const slots = createMemo(() =>
+    (local.itemRecipe ?? listboxItemRecipe)({ variant: variant() }),
+  );
 
   return (
     <ListboxItemContext value={{ slots: slots() }}>
@@ -103,7 +128,12 @@ export function ListboxItem(props: ListboxItemProps): JSX.Element {
 export function ListboxItemText(props: ListboxItemTextProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useListboxItem();
-  return <ListboxPrimitive.ItemText {...rest} class={slots.text({ class: local.class })} />;
+  return (
+    <ListboxPrimitive.ItemText
+      {...rest}
+      class={slots.text({ class: local.class })}
+    />
+  );
 }
 
 export function ListboxItemGroup(props: ListboxItemGroupProps): JSX.Element {
@@ -111,7 +141,10 @@ export function ListboxItemGroup(props: ListboxItemGroupProps): JSX.Element {
   const { slots } = useListbox();
 
   return (
-    <ListboxPrimitive.ItemGroup {...rest} class={slots.itemGroup({ class: local.class })}>
+    <ListboxPrimitive.ItemGroup
+      {...rest}
+      class={slots.itemGroup({ class: local.class })}
+    >
       <Show when={!!local.heading}>
         <ListboxItemGroupLabel>{local.heading}</ListboxItemGroupLabel>
       </Show>
@@ -120,7 +153,9 @@ export function ListboxItemGroup(props: ListboxItemGroupProps): JSX.Element {
   );
 }
 
-export function ListboxItemGroupLabel(props: ListboxItemGroupLabelProps): JSX.Element {
+export function ListboxItemGroupLabel(
+  props: ListboxItemGroupLabelProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useListbox();
   return (
@@ -134,14 +169,24 @@ export function ListboxItemGroupLabel(props: ListboxItemGroupLabelProps): JSX.El
 export function ListboxValueText(props: ListboxValueTextProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useListbox();
-  return <ListboxPrimitive.ValueText {...rest} class={slots.valueText({ class: local.class })} />;
+  return (
+    <ListboxPrimitive.ValueText
+      {...rest}
+      class={slots.valueText({ class: local.class })}
+    />
+  );
 }
 
-export function ListboxItemIndicator(props: ListboxItemIndicatorProps): JSX.Element {
+export function ListboxItemIndicator(
+  props: ListboxItemIndicatorProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const { slots } = useListboxItem();
   return (
-    <ListboxPrimitive.ItemIndicator {...rest} class={slots.indicator({ class: local.class })}>
+    <ListboxPrimitive.ItemIndicator
+      {...rest}
+      class={slots.indicator({ class: local.class })}
+    >
       {local.children ?? <CheckIcon />}
     </ListboxPrimitive.ItemIndicator>
   );
@@ -150,11 +195,22 @@ export function ListboxItemIndicator(props: ListboxItemIndicatorProps): JSX.Elem
 export function ListboxEmpty(props: ListboxEmptyProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useListbox();
-  return <ListboxPrimitive.Empty {...rest} class={slots.empty({ class: local.class })} />;
+  return (
+    <ListboxPrimitive.Empty
+      {...rest}
+      class={slots.empty({ class: local.class })}
+    />
+  );
 }
 
 export function ListboxShortcut(props: DropdownMenuShortcutProps): JSX.Element {
-  return <DropdownMenu.Shortcut {...props} data-part="shortcut" data-scope="listbox" />;
+  return (
+    <DropdownMenu.Shortcut
+      {...props}
+      data-part="shortcut"
+      data-scope="listbox"
+    />
+  );
 }
 
 export function ListboxShorthand(props: ListboxProps): JSX.Element {

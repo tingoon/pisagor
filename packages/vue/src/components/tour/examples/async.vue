@@ -34,7 +34,8 @@ const steps = [
   },
   {
     actions: [{ action: "dismiss", label: "Done" }],
-    description: "The async step loaded data from the GitHub API before displaying.",
+    description:
+      "The async step loaded data from the GitHub API before displaying.",
     id: "complete",
     title: "Tour complete",
     type: "dialog",

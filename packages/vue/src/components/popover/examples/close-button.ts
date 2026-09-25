@@ -11,11 +11,15 @@ export default defineComponent({
         h(Popover.Trigger, { asChild: true }, () =>
           h("button", { class: outlineButtonClass(), type: "button" }, "Open"),
         ),
-        h(Popover.Content as ArkPart, { class: "w-72", showCloseButton: true }, () =>
-          h(Popover.Header, {
-            description: "You're all caught up. Check back later for new notifications.",
-            title: "Notifications",
-          }),
+        h(
+          Popover.Content as ArkPart,
+          { class: "w-72", showCloseButton: true },
+          () =>
+            h(Popover.Header, {
+              description:
+                "You're all caught up. Check back later for new notifications.",
+              title: "Notifications",
+            }),
         ),
       ]);
   },

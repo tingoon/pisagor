@@ -29,7 +29,10 @@ export const Prose = defineComponent({
   inheritAttrs: false,
   name: "PisagorProse",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     html: { default: undefined, type: String },
     recipe: {
       default: proseRecipe,

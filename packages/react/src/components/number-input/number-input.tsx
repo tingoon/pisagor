@@ -18,7 +18,10 @@ import { NumberInputContext, useNumberInput } from "./number-input.context";
 // #region Types
 type FormControlVariant = "primary" | "secondary";
 
-export type NumberInputRootProps = Omit<NumberInputPrimitiveRootProps, "onValueChange"> &
+export type NumberInputRootProps = Omit<
+  NumberInputPrimitiveRootProps,
+  "onValueChange"
+> &
   Pick<InputProps, "size" | "variant">;
 
 export interface NumberInputProps extends NumberInputRootProps {
@@ -40,7 +43,8 @@ export interface NumberInputProps extends NumberInputRootProps {
   recipe?: typeof numberInputRecipe;
 }
 
-export interface NumberInputControlProps extends NumberInputPrimitiveControlProps {
+export interface NumberInputControlProps
+  extends NumberInputPrimitiveControlProps {
   variant?: FormControlVariant;
   clearable?: boolean;
 }
@@ -76,7 +80,9 @@ export function NumberInputRoot({
         className={slots.base({ className })}
         data-size={size}
         onValueChange={
-          onValueChange ? (details) => onValueChange(Number(details.value)) : undefined
+          onValueChange
+            ? (details) => onValueChange(Number(details.value))
+            : undefined
         }
       >
         {children ?? (
@@ -130,7 +136,9 @@ export function NumberInputClearTrigger() {
     <NumberInputPrimitive.Context>
       {(api) => {
         const hasValue =
-          api.value !== undefined && api.value !== null && String(api.value).length > 0;
+          api.value !== undefined &&
+          api.value !== null &&
+          String(api.value).length > 0;
 
         if (!hasValue) {
           return null;
@@ -185,7 +193,13 @@ export function NumberInputIncrementTrigger({
   );
 }
 
-export function NumberInputInput({ size, variant, className, classNames, ...rest }: InputProps) {
+export function NumberInputInput({
+  size,
+  variant,
+  className,
+  classNames,
+  ...rest
+}: InputProps) {
   const { slots } = useNumberInput();
 
   return (
@@ -200,11 +214,19 @@ export function NumberInputInput({ size, variant, className, classNames, ...rest
   );
 }
 
-export function NumberInputScrubber({ children, className, ...rest }: NumberInputScrubberProps) {
+export function NumberInputScrubber({
+  children,
+  className,
+  ...rest
+}: NumberInputScrubberProps) {
   const { slots } = useNumberInput();
 
   return (
-    <NumberInputPrimitive.Scrubber {...rest} asChild className={slots.scrubber({ className })}>
+    <NumberInputPrimitive.Scrubber
+      {...rest}
+      asChild
+      className={slots.scrubber({ className })}
+    >
       <NumberInputPrimitive.Label asChild>
         <Field.Label>{children}</Field.Label>
       </NumberInputPrimitive.Label>

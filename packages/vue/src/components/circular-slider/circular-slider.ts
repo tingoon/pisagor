@@ -64,10 +64,16 @@ export const CircularSliderRoot = defineComponent({
   inheritAttrs: false,
   name: "CircularSliderRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     defaultValue: { default: undefined, type: Number },
     disabled: { default: undefined, type: Boolean },
-    hiddenInputProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
+    hiddenInputProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
     markers: {
       default: undefined,
       type: [Boolean, Array] as PropType<boolean | number[] | undefined>,
@@ -98,7 +104,8 @@ export const CircularSliderRoot = defineComponent({
     });
 
     watchEffect(() => {
-      context.ringCircumference = 2 * Math.PI * (props.size / 2 - props.thickness / 2);
+      context.ringCircumference =
+        2 * Math.PI * (props.size / 2 - props.thickness / 2);
       context.ringRadius = props.size / 2 - props.thickness / 2;
       context.size = props.size;
       context.thickness = props.thickness;
@@ -117,7 +124,8 @@ export const CircularSliderRoot = defineComponent({
           disabled: props.disabled,
           modelValue: props.value,
           onValueChange: props.onValueChange
-            ? (details: { value: number }) => props.onValueChange?.(details.value)
+            ? (details: { value: number }) =>
+                props.onValueChange?.(details.value)
             : undefined,
           step: props.step,
           style: {
@@ -133,7 +141,9 @@ export const CircularSliderRoot = defineComponent({
             step: props.step,
           }),
           slots.default?.(),
-          h(AngleSliderPrimitive.HiddenInput as ArkPart, { ...props.hiddenInputProps }),
+          h(AngleSliderPrimitive.HiddenInput as ArkPart, {
+            ...props.hiddenInputProps,
+          }),
         ],
       );
   },
@@ -143,7 +153,10 @@ export const CircularSliderControl = defineComponent({
   inheritAttrs: false,
   name: "CircularSliderControl",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     markers: {
       default: undefined,
       type: [Boolean, Array] as PropType<boolean | number[] | undefined>,
@@ -163,7 +176,10 @@ export const CircularSliderControl = defineComponent({
           ? props.markers
           : props.markers === true
             ? props.markersAtSteps
-              ? Array.from({ length: Math.floor(360 / props.step) }, (_, i) => i * props.step)
+              ? Array.from(
+                  { length: Math.floor(360 / props.step) },
+                  (_, i) => i * props.step,
+                )
               : CLOCK_MARKER_ANGLES
             : null;
 
@@ -177,7 +193,9 @@ export const CircularSliderControl = defineComponent({
           h(CircularSliderProgressRing),
           markerValues
             ? h(CircularSliderMarkerGroup, {}, () =>
-                markerValues.map((value) => h(CircularSliderMarker, { key: value, value })),
+                markerValues.map((value) =>
+                  h(CircularSliderMarker, { key: value, value }),
+                ),
               )
             : null,
           h(CircularSliderThumb),
@@ -240,7 +258,10 @@ export const CircularSliderThumb = defineComponent({
   inheritAttrs: false,
   name: "CircularSliderThumb",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs }) {
     const contextRef = useCircularSliderContext();
@@ -277,9 +298,18 @@ export const CircularSliderValueText = defineComponent({
   inheritAttrs: false,
   name: "CircularSliderValueText",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    prefix: { default: "", type: [String, Object, Array] as PropType<VNodeChild> },
-    suffix: { default: "", type: [String, Object, Array] as PropType<VNodeChild> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    prefix: {
+      default: "",
+      type: [String, Object, Array] as PropType<VNodeChild>,
+    },
+    suffix: {
+      default: "",
+      type: [String, Object, Array] as PropType<VNodeChild>,
+    },
   },
   setup(props, { attrs }) {
     const api = useAngleSliderContext();
@@ -307,7 +337,10 @@ export const CircularSliderMarkerGroup = defineComponent({
   inheritAttrs: false,
   name: "CircularSliderMarkerGroup",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     const contextRef = useCircularSliderContext();
@@ -332,7 +365,10 @@ export const CircularSliderMarker = defineComponent({
   inheritAttrs: false,
   name: "CircularSliderMarker",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     value: { required: true, type: Number },
   },
   setup(props, { attrs }) {
@@ -346,7 +382,8 @@ export const CircularSliderMarker = defineComponent({
       const ringRadius = size / 2 - thickness / 2;
       const markerHeight = Math.max(8, Math.min(thickness * 1.1, 16));
       const markerWidth = Math.max(4, Math.min(thickness * 0.4, 6));
-      const markerOffset = size / 2 - ringRadius - markerHeight / 2 + (thickness + 4);
+      const markerOffset =
+        size / 2 - ringRadius - markerHeight / 2 + (thickness + 4);
 
       return h(AngleSliderPrimitive.Marker as ArkPart, {
         ...attrs,

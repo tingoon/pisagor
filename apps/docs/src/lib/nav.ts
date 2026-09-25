@@ -42,14 +42,30 @@ const componentSections: NavSection[] = [
     items: [
       { slug: "components/action-bar", status: "ready", title: "Action Bar" },
       { slug: "components/button", status: "ready", title: "Button" },
-      { slug: "components/button-group", status: "ready", title: "Button Group" },
+      {
+        slug: "components/button-group",
+        status: "ready",
+        title: "Button Group",
+      },
       { slug: "components/clipboard", status: "ready", title: "Clipboard" },
-      { slug: "components/download-trigger", status: "ready", title: "Download Trigger" },
-      { slug: "components/segment-group", status: "ready", title: "Segment Group" },
+      {
+        slug: "components/download-trigger",
+        status: "ready",
+        title: "Download Trigger",
+      },
+      {
+        slug: "components/segment-group",
+        status: "ready",
+        title: "Segment Group",
+      },
       { slug: "components/sortable", status: "ready", title: "Sortable" },
       { slug: "components/swap", status: "ready", title: "Swap" },
       { slug: "components/toggle", status: "ready", title: "Toggle" },
-      { slug: "components/toggle-group", status: "ready", title: "Toggle Group" },
+      {
+        slug: "components/toggle-group",
+        status: "ready",
+        title: "Toggle Group",
+      },
     ],
     title: "Actions",
   },
@@ -64,7 +80,11 @@ const componentSections: NavSection[] = [
       { slug: "components/format", status: "ready", title: "Format" },
       { slug: "components/highlight", status: "ready", title: "Highlight" },
       { slug: "components/item", status: "ready", title: "Item" },
-      { slug: "components/json-tree-view", status: "ready", title: "JSON Tree View" },
+      {
+        slug: "components/json-tree-view",
+        status: "ready",
+        title: "JSON Tree View",
+      },
       { slug: "components/kbd", status: "ready", title: "Kbd" },
       { slug: "components/prose", status: "ready", title: "Prose" },
       { slug: "components/stat", status: "ready", title: "Stat" },
@@ -76,11 +96,27 @@ const componentSections: NavSection[] = [
   {
     items: [
       { slug: "components/alert", status: "ready", title: "Alert" },
-      { slug: "components/announcement", status: "ready", title: "Announcement" },
-      { slug: "components/circular-progress", status: "ready", title: "Circular Progress" },
+      {
+        slug: "components/announcement",
+        status: "ready",
+        title: "Announcement",
+      },
+      {
+        slug: "components/circular-progress",
+        status: "ready",
+        title: "Circular Progress",
+      },
       { slug: "components/input-otp", status: "ready", title: "Input OTP" },
-      { slug: "components/password-input", status: "ready", title: "Password Input" },
-      { slug: "components/number-input", status: "ready", title: "Number Input" },
+      {
+        slug: "components/password-input",
+        status: "ready",
+        title: "Password Input",
+      },
+      {
+        slug: "components/number-input",
+        status: "ready",
+        title: "Number Input",
+      },
       { slug: "components/radio-group", status: "ready", title: "Radio Group" },
       { slug: "components/slider", status: "ready", title: "Slider" },
       { slug: "components/rating", status: "ready", title: "Rating" },
@@ -105,11 +141,23 @@ const componentSections: NavSection[] = [
   },
   {
     items: [
-      { slug: "components/autocomplete", status: "ready", title: "Autocomplete" },
+      {
+        slug: "components/autocomplete",
+        status: "ready",
+        title: "Autocomplete",
+      },
       { slug: "components/calendar", status: "ready", title: "Calendar" },
       { slug: "components/checkbox", status: "ready", title: "Checkbox" },
-      { slug: "components/circular-slider", status: "ready", title: "Circular Slider" },
-      { slug: "components/color-picker", status: "ready", title: "Color Picker" },
+      {
+        slug: "components/circular-slider",
+        status: "ready",
+        title: "Circular Slider",
+      },
+      {
+        slug: "components/color-picker",
+        status: "ready",
+        title: "Color Picker",
+      },
       { slug: "components/combobox", status: "ready", title: "Combobox" },
       { slug: "components/date-picker", status: "ready", title: "Date Picker" },
       { slug: "components/editable", status: "ready", title: "Editable" },
@@ -120,14 +168,30 @@ const componentSections: NavSection[] = [
       { slug: "components/input-group", status: "ready", title: "Input Group" },
       { slug: "components/input-otp", status: "ready", title: "Input Otp" },
       { slug: "components/listbox", status: "ready", title: "Listbox" },
-      { slug: "components/number-input", status: "ready", title: "Number Input" },
-      { slug: "components/password-input", status: "ready", title: "Password Input" },
+      {
+        slug: "components/number-input",
+        status: "ready",
+        title: "Number Input",
+      },
+      {
+        slug: "components/password-input",
+        status: "ready",
+        title: "Password Input",
+      },
       { slug: "components/phone-input", status: "ready", title: "Phone Input" },
       { slug: "components/radio-group", status: "ready", title: "Radio Group" },
       { slug: "components/rating", status: "ready", title: "Rating" },
-      { slug: "components/rich-text-editor", status: "ready", title: "Rich Text Editor" },
+      {
+        slug: "components/rich-text-editor",
+        status: "ready",
+        title: "Rich Text Editor",
+      },
       { slug: "components/select", status: "ready", title: "Select" },
-      { slug: "components/signature-pad", status: "ready", title: "Signature Pad" },
+      {
+        slug: "components/signature-pad",
+        status: "ready",
+        title: "Signature Pad",
+      },
       { slug: "components/slider", status: "ready", title: "Slider" },
       { slug: "components/switch", status: "ready", title: "Switch" },
       { slug: "components/tags-input", status: "ready", title: "Tags Input" },
@@ -139,7 +203,11 @@ const componentSections: NavSection[] = [
     items: [
       { slug: "components/accordion", status: "ready", title: "Accordion" },
       { slug: "components/app-shell", status: "ready", title: "App Shell" },
-      { slug: "components/aspect-ratio", status: "ready", title: "Aspect Ratio" },
+      {
+        slug: "components/aspect-ratio",
+        status: "ready",
+        title: "Aspect Ratio",
+      },
       { slug: "components/card", status: "ready", title: "Card" },
       { slug: "components/collapsible", status: "ready", title: "Collapsible" },
       { slug: "components/resizable", status: "ready", title: "Resizable" },
@@ -161,18 +229,34 @@ const componentSections: NavSection[] = [
     items: [
       { slug: "components/carousel", status: "ready", title: "Carousel" },
       { slug: "components/frame", status: "ready", title: "Frame" },
-      { slug: "components/image-cropper", status: "ready", title: "Image Cropper" },
+      {
+        slug: "components/image-cropper",
+        status: "ready",
+        title: "Image Cropper",
+      },
     ],
     title: "Media",
   },
   {
     items: [
-      { slug: "components/bottom-navigation", status: "ready", title: "Bottom Navigation" },
+      {
+        slug: "components/bottom-navigation",
+        status: "ready",
+        title: "Bottom Navigation",
+      },
       { slug: "components/breadcrumb", status: "ready", title: "Breadcrumb" },
-      { slug: "components/dropdown-menu", status: "ready", title: "Dropdown Menu" },
+      {
+        slug: "components/dropdown-menu",
+        status: "ready",
+        title: "Dropdown Menu",
+      },
       { slug: "components/menu", status: "ready", title: "Menu" },
       { slug: "components/navbar", status: "ready", title: "Navbar" },
-      { slug: "components/navigation-menu", status: "ready", title: "Navigation Menu" },
+      {
+        slug: "components/navigation-menu",
+        status: "ready",
+        title: "Navigation Menu",
+      },
       { slug: "components/pagination", status: "ready", title: "Pagination" },
       { slug: "components/scrollspy", status: "ready", title: "Scrollspy" },
       { slug: "components/sidebar", status: "ready", title: "Sidebar" },
@@ -185,12 +269,24 @@ const componentSections: NavSection[] = [
   },
   {
     items: [
-      { slug: "components/alert-dialog", status: "ready", title: "Alert Dialog" },
+      {
+        slug: "components/alert-dialog",
+        status: "ready",
+        title: "Alert Dialog",
+      },
       { slug: "components/command", status: "ready", title: "Command" },
-      { slug: "components/context-menu", status: "ready", title: "Context Menu" },
+      {
+        slug: "components/context-menu",
+        status: "ready",
+        title: "Context Menu",
+      },
       { slug: "components/dialog", status: "ready", title: "Dialog" },
       { slug: "components/drawer", status: "ready", title: "Drawer" },
-      { slug: "components/floating-panel", status: "ready", title: "Floating Panel" },
+      {
+        slug: "components/floating-panel",
+        status: "ready",
+        title: "Floating Panel",
+      },
       { slug: "components/hover-card", status: "ready", title: "Hover Card" },
       { slug: "components/popover", status: "ready", title: "Popover" },
       { slug: "components/sheet", status: "ready", title: "Sheet" },
@@ -211,11 +307,27 @@ const componentSections: NavSection[] = [
       { slug: "components/checkbox", status: "ready", title: "Checkbox" },
       { slug: "components/switch", status: "ready", title: "Switch" },
       { slug: "components/toggle", status: "ready", title: "Toggle" },
-      { slug: "components/toggle-group", status: "ready", title: "Toggle Group" },
-      { slug: "components/button-group", status: "ready", title: "Button Group" },
+      {
+        slug: "components/toggle-group",
+        status: "ready",
+        title: "Toggle Group",
+      },
+      {
+        slug: "components/button-group",
+        status: "ready",
+        title: "Button Group",
+      },
       { slug: "components/progress", status: "ready", title: "Progress" },
-      { slug: "components/circular-progress", status: "ready", title: "Circular Progress" },
-      { slug: "components/visually-hidden", status: "ready", title: "Visually Hidden" },
+      {
+        slug: "components/circular-progress",
+        status: "ready",
+        title: "Circular Progress",
+      },
+      {
+        slug: "components/visually-hidden",
+        status: "ready",
+        title: "Visually Hidden",
+      },
     ],
     title: "Utilities",
   },
@@ -233,7 +345,11 @@ const astroComponentSections: NavSection[] = [
   {
     items: [
       { slug: "components/button", status: "ready", title: "Button" },
-      { slug: "components/button-group", status: "ready", title: "Button Group" },
+      {
+        slug: "components/button-group",
+        status: "ready",
+        title: "Button Group",
+      },
     ],
     title: "Actions",
   },
@@ -256,8 +372,16 @@ const astroComponentSections: NavSection[] = [
   {
     items: [
       { slug: "components/alert", status: "ready", title: "Alert" },
-      { slug: "components/announcement", status: "ready", title: "Announcement" },
-      { slug: "components/circular-progress", status: "ready", title: "Circular Progress" },
+      {
+        slug: "components/announcement",
+        status: "ready",
+        title: "Announcement",
+      },
+      {
+        slug: "components/circular-progress",
+        status: "ready",
+        title: "Circular Progress",
+      },
       { slug: "components/empty-state", status: "ready", title: "Empty State" },
       { slug: "components/progress", status: "ready", title: "Progress" },
       { slug: "components/skeleton", status: "ready", title: "Skeleton" },
@@ -267,12 +391,18 @@ const astroComponentSections: NavSection[] = [
     title: "Feedback",
   },
   {
-    items: [{ slug: "components/input-group", status: "ready", title: "Input Group" }],
+    items: [
+      { slug: "components/input-group", status: "ready", title: "Input Group" },
+    ],
     title: "Forms",
   },
   {
     items: [
-      { slug: "components/aspect-ratio", status: "ready", title: "Aspect Ratio" },
+      {
+        slug: "components/aspect-ratio",
+        status: "ready",
+        title: "Aspect Ratio",
+      },
       { slug: "components/card", status: "ready", title: "Card" },
       { slug: "components/separator", status: "ready", title: "Separator" },
       { slug: "components/surface", status: "ready", title: "Surface" },
@@ -293,7 +423,11 @@ const astroComponentSections: NavSection[] = [
   {
     items: [
       { slug: "components/link-box", status: "ready", title: "Link Box" },
-      { slug: "components/visually-hidden", status: "ready", title: "Visually Hidden" },
+      {
+        slug: "components/visually-hidden",
+        status: "ready",
+        title: "Visually Hidden",
+      },
     ],
     title: "Utilities",
   },
@@ -302,7 +436,11 @@ const astroComponentSections: NavSection[] = [
 const formItems: NavItem[] = [
   { slug: "forms", status: "ready", title: "Overview" },
   { slug: "forms/text-field", status: "ready", title: "Text Field" },
-  { slug: "forms/autocomplete-field", status: "ready", title: "Autocomplete Field" },
+  {
+    slug: "forms/autocomplete-field",
+    status: "ready",
+    title: "Autocomplete Field",
+  },
   { slug: "forms/checkbox-field", status: "ready", title: "Checkbox Field" },
   { slug: "forms/date-field", status: "ready", title: "Date Field" },
   { slug: "forms/file-field", status: "ready", title: "File Field" },
@@ -310,12 +448,24 @@ const formItems: NavItem[] = [
   { slug: "forms/otp-field", status: "ready", title: "Otp Field" },
   { slug: "forms/password-field", status: "ready", title: "Password Field" },
   { slug: "forms/phone-field", status: "ready", title: "Phone Field" },
-  { slug: "forms/radio-group-field", status: "ready", title: "Radio Group Field" },
-  { slug: "forms/rich-text-editor-field", status: "ready", title: "Rich Text Editor Field" },
+  {
+    slug: "forms/radio-group-field",
+    status: "ready",
+    title: "Radio Group Field",
+  },
+  {
+    slug: "forms/rich-text-editor-field",
+    status: "ready",
+    title: "Rich Text Editor Field",
+  },
   { slug: "forms/select-field", status: "ready", title: "Select Field" },
   { slug: "forms/slider-field", status: "ready", title: "Slider Field" },
   { slug: "forms/switch-field", status: "ready", title: "Switch Field" },
-  { slug: "forms/tags-input-field", status: "ready", title: "Tags Input Field" },
+  {
+    slug: "forms/tags-input-field",
+    status: "ready",
+    title: "Tags Input Field",
+  },
   { slug: "forms/textarea-field", status: "ready", title: "Textarea Field" },
 ];
 
@@ -324,7 +474,9 @@ const chartItems: NavItem[] = [
   { slug: "charts/chart", status: "ready", title: "Chart" },
 ];
 
-const blockItems: NavItem[] = [{ slug: "blocks", status: "ready", title: "Overview" }];
+const blockItems: NavItem[] = [
+  { slug: "blocks", status: "ready", title: "Overview" },
+];
 
 const recipeSections: NavSection[] = [
   {
@@ -414,15 +566,27 @@ const solidComponentSections: NavSection[] = [
       { slug: "components/spinner", status: "ready", title: "Spinner" },
       { slug: "components/kbd", status: "ready", title: "Kbd" },
       { slug: "components/separator", status: "ready", title: "Separator" },
-      { slug: "components/aspect-ratio", status: "ready", title: "Aspect Ratio" },
+      {
+        slug: "components/aspect-ratio",
+        status: "ready",
+        title: "Aspect Ratio",
+      },
       { slug: "components/status", status: "ready", title: "Status" },
       { slug: "components/prose", status: "ready", title: "Prose" },
-      { slug: "components/visually-hidden", status: "ready", title: "Visually Hidden" },
+      {
+        slug: "components/visually-hidden",
+        status: "ready",
+        title: "Visually Hidden",
+      },
       { slug: "components/skeleton", status: "ready", title: "Skeleton" },
       { slug: "components/alert", status: "ready", title: "Alert" },
       { slug: "components/card", status: "ready", title: "Card" },
       { slug: "components/empty-state", status: "ready", title: "Empty State" },
-      { slug: "components/announcement", status: "ready", title: "Announcement" },
+      {
+        slug: "components/announcement",
+        status: "ready",
+        title: "Announcement",
+      },
       { slug: "components/surface", status: "ready", title: "Surface" },
       { slug: "components/frame", status: "ready", title: "Frame" },
       { slug: "components/link-box", status: "ready", title: "Link Box" },
@@ -437,25 +601,49 @@ const solidComponentSections: NavSection[] = [
       { slug: "components/textarea", status: "ready", title: "Textarea" },
       { slug: "components/input-group", status: "ready", title: "Input Group" },
       { slug: "components/input-otp", status: "ready", title: "Input OTP" },
-      { slug: "components/password-input", status: "ready", title: "Password Input" },
-      { slug: "components/number-input", status: "ready", title: "Number Input" },
+      {
+        slug: "components/password-input",
+        status: "ready",
+        title: "Password Input",
+      },
+      {
+        slug: "components/number-input",
+        status: "ready",
+        title: "Number Input",
+      },
       { slug: "components/checkbox", status: "ready", title: "Checkbox" },
       { slug: "components/switch", status: "ready", title: "Switch" },
       { slug: "components/radio-group", status: "ready", title: "Radio Group" },
       { slug: "components/slider", status: "ready", title: "Slider" },
-      { slug: "components/circular-progress", status: "ready", title: "Circular Progress" },
+      {
+        slug: "components/circular-progress",
+        status: "ready",
+        title: "Circular Progress",
+      },
       { slug: "components/progress", status: "ready", title: "Progress" },
       { slug: "components/rating", status: "ready", title: "Rating" },
       { slug: "components/toggle", status: "ready", title: "Toggle" },
-      { slug: "components/toggle-group", status: "ready", title: "Toggle Group" },
-      { slug: "components/button-group", status: "ready", title: "Button Group" },
+      {
+        slug: "components/toggle-group",
+        status: "ready",
+        title: "Toggle Group",
+      },
+      {
+        slug: "components/button-group",
+        status: "ready",
+        title: "Button Group",
+      },
       { slug: "components/avatar", status: "ready", title: "Avatar" },
       { slug: "components/tooltip", status: "ready", title: "Tooltip" },
       { slug: "components/popover", status: "ready", title: "Popover" },
       { slug: "components/hover-card", status: "ready", title: "Hover Card" },
       { slug: "components/scroll-area", status: "ready", title: "Scroll Area" },
       { slug: "components/dialog", status: "ready", title: "Dialog" },
-      { slug: "components/alert-dialog", status: "ready", title: "Alert Dialog" },
+      {
+        slug: "components/alert-dialog",
+        status: "ready",
+        title: "Alert Dialog",
+      },
       { slug: "components/sheet", status: "ready", title: "Sheet" },
       { slug: "components/drawer", status: "ready", title: "Drawer" },
       { slug: "components/collapsible", status: "ready", title: "Collapsible" },
@@ -470,9 +658,21 @@ const solidComponentSections: NavSection[] = [
       { slug: "components/editable", status: "ready", title: "Editable" },
       { slug: "components/clipboard", status: "ready", title: "Clipboard" },
       { slug: "components/menu", status: "ready", title: "Menu" },
-      { slug: "components/dropdown-menu", status: "ready", title: "Dropdown Menu" },
-      { slug: "components/context-menu", status: "ready", title: "Context Menu" },
-      { slug: "components/navigation-menu", status: "ready", title: "Navigation Menu" },
+      {
+        slug: "components/dropdown-menu",
+        status: "ready",
+        title: "Dropdown Menu",
+      },
+      {
+        slug: "components/context-menu",
+        status: "ready",
+        title: "Context Menu",
+      },
+      {
+        slug: "components/navigation-menu",
+        status: "ready",
+        title: "Navigation Menu",
+      },
       { slug: "components/command", status: "ready", title: "Command" },
     ],
     title: "Components",
@@ -481,10 +681,22 @@ const solidComponentSections: NavSection[] = [
     items: [
       { slug: "components/action-bar", status: "ready", title: "Action Bar" },
       { slug: "components/app-shell", status: "ready", title: "App Shell" },
-      { slug: "components/circular-slider", status: "ready", title: "Circular Slider" },
-      { slug: "components/color-picker", status: "ready", title: "Color Picker" },
+      {
+        slug: "components/circular-slider",
+        status: "ready",
+        title: "Circular Slider",
+      },
+      {
+        slug: "components/color-picker",
+        status: "ready",
+        title: "Color Picker",
+      },
       { slug: "components/file-upload", status: "ready", title: "File Upload" },
-      { slug: "components/floating-panel", status: "ready", title: "Floating Panel" },
+      {
+        slug: "components/floating-panel",
+        status: "ready",
+        title: "Floating Panel",
+      },
       { slug: "components/resizable", status: "ready", title: "Resizable" },
       { slug: "components/sidebar", status: "ready", title: "Sidebar" },
       { slug: "components/sortable", status: "ready", title: "Sortable" },
@@ -498,7 +710,11 @@ const solidComponentSections: NavSection[] = [
       { slug: "components/data-grid", status: "ready", title: "Data Grid" },
       { slug: "components/data-table", status: "ready", title: "Data Table" },
       { slug: "components/phone-input", status: "ready", title: "Phone Input" },
-      { slug: "components/rich-text-editor", status: "ready", title: "Rich Text Editor" },
+      {
+        slug: "components/rich-text-editor",
+        status: "ready",
+        title: "Rich Text Editor",
+      },
     ],
     title: "Data & editors",
   },
@@ -517,51 +733,103 @@ const svelteComponentSections: NavSection[] = [
     items: [
       { slug: "components/app-shell", status: "ready", title: "App Shell" },
       { slug: "components/action-bar", status: "ready", title: "Action Bar" },
-      { slug: "components/autocomplete", status: "ready", title: "Autocomplete" },
-      { slug: "components/bottom-navigation", status: "ready", title: "Bottom Navigation" },
+      {
+        slug: "components/autocomplete",
+        status: "ready",
+        title: "Autocomplete",
+      },
+      {
+        slug: "components/bottom-navigation",
+        status: "ready",
+        title: "Bottom Navigation",
+      },
       { slug: "components/breadcrumb", status: "ready", title: "Breadcrumb" },
       { slug: "components/button", status: "ready", title: "Button" },
       { slug: "components/badge", status: "ready", title: "Badge" },
       { slug: "components/carousel", status: "ready", title: "Carousel" },
       { slug: "components/spinner", status: "ready", title: "Spinner" },
-      { slug: "components/circular-slider", status: "ready", title: "Circular Slider" },
+      {
+        slug: "components/circular-slider",
+        status: "ready",
+        title: "Circular Slider",
+      },
       { slug: "components/file", status: "ready", title: "File" },
-      { slug: "components/color-picker", status: "ready", title: "Color Picker" },
+      {
+        slug: "components/color-picker",
+        status: "ready",
+        title: "Color Picker",
+      },
       { slug: "components/file-upload", status: "ready", title: "File Upload" },
-      { slug: "components/image-cropper", status: "ready", title: "Image Cropper" },
+      {
+        slug: "components/image-cropper",
+        status: "ready",
+        title: "Image Cropper",
+      },
       { slug: "components/file-input", status: "ready", title: "File Input" },
       { slug: "components/kbd", status: "ready", title: "Kbd" },
-      { slug: "components/floating-panel", status: "ready", title: "Floating Panel" },
+      {
+        slug: "components/floating-panel",
+        status: "ready",
+        title: "Floating Panel",
+      },
       { slug: "components/marquee", status: "ready", title: "Marquee" },
       { slug: "components/navbar", status: "ready", title: "Navbar" },
       { slug: "components/scrollspy", status: "ready", title: "Scrollspy" },
       { slug: "components/separator", status: "ready", title: "Separator" },
       { slug: "components/sidebar", status: "ready", title: "Sidebar" },
-      { slug: "components/aspect-ratio", status: "ready", title: "Aspect Ratio" },
+      {
+        slug: "components/aspect-ratio",
+        status: "ready",
+        title: "Aspect Ratio",
+      },
       { slug: "components/status", status: "ready", title: "Status" },
-      { slug: "components/download-trigger", status: "ready", title: "Download Trigger" },
+      {
+        slug: "components/download-trigger",
+        status: "ready",
+        title: "Download Trigger",
+      },
       { slug: "components/prose", status: "ready", title: "Prose" },
       { slug: "components/format", status: "ready", title: "Format" },
       { slug: "components/highlight", status: "ready", title: "Highlight" },
-      { slug: "components/json-tree-view", status: "ready", title: "JSON Tree View" },
+      {
+        slug: "components/json-tree-view",
+        status: "ready",
+        title: "JSON Tree View",
+      },
       { slug: "components/qr-code", status: "ready", title: "QR Code" },
       { slug: "components/resizable", status: "ready", title: "Resizable" },
-      { slug: "components/segment-group", status: "ready", title: "Segment Group" },
+      {
+        slug: "components/segment-group",
+        status: "ready",
+        title: "Segment Group",
+      },
       { slug: "components/sortable", status: "ready", title: "Sortable" },
       { slug: "components/swap", status: "ready", title: "Swap" },
-      { slug: "components/signature-pad", status: "ready", title: "Signature Pad" },
+      {
+        slug: "components/signature-pad",
+        status: "ready",
+        title: "Signature Pad",
+      },
       { slug: "components/table", status: "ready", title: "Table" },
       { slug: "components/timeline", status: "ready", title: "Timeline" },
       { slug: "components/toolbar", status: "ready", title: "Toolbar" },
       { slug: "components/timer", status: "ready", title: "Timer" },
       { slug: "components/tree-view", status: "ready", title: "Tree View" },
       { slug: "components/tour", status: "ready", title: "Tour" },
-      { slug: "components/visually-hidden", status: "ready", title: "Visually Hidden" },
+      {
+        slug: "components/visually-hidden",
+        status: "ready",
+        title: "Visually Hidden",
+      },
       { slug: "components/skeleton", status: "ready", title: "Skeleton" },
       { slug: "components/alert", status: "ready", title: "Alert" },
       { slug: "components/card", status: "ready", title: "Card" },
       { slug: "components/empty-state", status: "ready", title: "Empty State" },
-      { slug: "components/announcement", status: "ready", title: "Announcement" },
+      {
+        slug: "components/announcement",
+        status: "ready",
+        title: "Announcement",
+      },
       { slug: "components/surface", status: "ready", title: "Surface" },
       { slug: "components/frame", status: "ready", title: "Frame" },
       { slug: "components/link-box", status: "ready", title: "Link Box" },
@@ -578,19 +846,43 @@ const svelteComponentSections: NavSection[] = [
       { slug: "components/checkbox", status: "ready", title: "Checkbox" },
       { slug: "components/switch", status: "ready", title: "Switch" },
       { slug: "components/progress", status: "ready", title: "Progress" },
-      { slug: "components/circular-progress", status: "ready", title: "Circular Progress" },
-      { slug: "components/button-group", status: "ready", title: "Button Group" },
+      {
+        slug: "components/circular-progress",
+        status: "ready",
+        title: "Circular Progress",
+      },
+      {
+        slug: "components/button-group",
+        status: "ready",
+        title: "Button Group",
+      },
       { slug: "components/radio-group", status: "ready", title: "Radio Group" },
-      { slug: "components/toggle-group", status: "ready", title: "Toggle Group" },
+      {
+        slug: "components/toggle-group",
+        status: "ready",
+        title: "Toggle Group",
+      },
       { slug: "components/input", status: "ready", title: "Input" },
       { slug: "components/input-group", status: "ready", title: "Input Group" },
       { slug: "components/textarea", status: "ready", title: "Textarea" },
       { slug: "components/phone-input", status: "ready", title: "Phone Input" },
-      { slug: "components/password-input", status: "ready", title: "Password Input" },
-      { slug: "components/number-input", status: "ready", title: "Number Input" },
+      {
+        slug: "components/password-input",
+        status: "ready",
+        title: "Password Input",
+      },
+      {
+        slug: "components/number-input",
+        status: "ready",
+        title: "Number Input",
+      },
       { slug: "components/input-otp", status: "ready", title: "Input OTP" },
       { slug: "components/slider", status: "ready", title: "Slider" },
-      { slug: "components/rich-text-editor", status: "ready", title: "Rich Text Editor" },
+      {
+        slug: "components/rich-text-editor",
+        status: "ready",
+        title: "Rich Text Editor",
+      },
       { slug: "components/rating", status: "ready", title: "Rating" },
       { slug: "components/avatar", status: "ready", title: "Avatar" },
       { slug: "components/tooltip", status: "ready", title: "Tooltip" },
@@ -600,7 +892,11 @@ const svelteComponentSections: NavSection[] = [
       { slug: "components/collapsible", status: "ready", title: "Collapsible" },
       { slug: "components/accordion", status: "ready", title: "Accordion" },
       { slug: "components/tabs", status: "ready", title: "Tabs" },
-      { slug: "components/alert-dialog", status: "ready", title: "Alert Dialog" },
+      {
+        slug: "components/alert-dialog",
+        status: "ready",
+        title: "Alert Dialog",
+      },
       { slug: "components/sheet", status: "ready", title: "Sheet" },
       { slug: "components/drawer", status: "ready", title: "Drawer" },
       { slug: "components/steps", status: "ready", title: "Steps" },
@@ -612,9 +908,21 @@ const svelteComponentSections: NavSection[] = [
       { slug: "components/listbox", status: "ready", title: "Listbox" },
       { slug: "components/tags-input", status: "ready", title: "Tags Input" },
       { slug: "components/menu", status: "ready", title: "Menu" },
-      { slug: "components/dropdown-menu", status: "ready", title: "Dropdown Menu" },
-      { slug: "components/context-menu", status: "ready", title: "Context Menu" },
-      { slug: "components/navigation-menu", status: "ready", title: "Navigation Menu" },
+      {
+        slug: "components/dropdown-menu",
+        status: "ready",
+        title: "Dropdown Menu",
+      },
+      {
+        slug: "components/context-menu",
+        status: "ready",
+        title: "Context Menu",
+      },
+      {
+        slug: "components/navigation-menu",
+        status: "ready",
+        title: "Navigation Menu",
+      },
       { slug: "components/combobox", status: "ready", title: "Combobox" },
       { slug: "components/command", status: "ready", title: "Command" },
       { slug: "components/calendar", status: "ready", title: "Calendar" },
@@ -627,27 +935,51 @@ const svelteComponentSections: NavSection[] = [
 ];
 
 /** Sidebar list for the active main-nav area. */
-export function getSidebarNav(framework: Framework, area: DocsArea): NavSection[] {
+export function getSidebarNav(
+  framework: Framework,
+  area: DocsArea,
+): NavSection[] {
   if (area === "blocks") {
     return [{ items: blockItems, title: "Blocks" }];
   }
   if (area === "recipes") {
     if (framework === "astro") {
       return [
-        { items: [{ slug: "recipes", status: "soon", title: "Overview" }], title: "Recipes" },
+        {
+          items: [{ slug: "recipes", status: "soon", title: "Overview" }],
+          title: "Recipes",
+        },
       ];
     }
     return recipeSections;
   }
   if (area === "forms") {
-    if (framework === "astro" || framework === "solid" || framework === "svelte") {
-      return [{ items: [{ slug: "forms", status: "soon", title: "Overview" }], title: "Forms" }];
+    if (
+      framework === "astro" ||
+      framework === "solid" ||
+      framework === "svelte"
+    ) {
+      return [
+        {
+          items: [{ slug: "forms", status: "soon", title: "Overview" }],
+          title: "Forms",
+        },
+      ];
     }
     return [{ items: formItems, title: "Forms" }];
   }
   if (area === "charts") {
-    if (framework === "astro" || framework === "solid" || framework === "svelte") {
-      return [{ items: [{ slug: "charts", status: "soon", title: "Overview" }], title: "Charts" }];
+    if (
+      framework === "astro" ||
+      framework === "solid" ||
+      framework === "svelte"
+    ) {
+      return [
+        {
+          items: [{ slug: "charts", status: "soon", title: "Overview" }],
+          title: "Charts",
+        },
+      ];
     }
     return [{ items: chartItems, title: "Charts" }];
   }
@@ -667,7 +999,10 @@ export function swapFrameworkPath(pathname: string, next: Framework) {
   if (parts.length === 0) return frameworkPath(next);
   parts[0] = next;
   // Accordion is react/vue only
-  if (next === "astro" && (parts[1] === "accordion" || parts[2] === "accordion")) {
+  if (
+    next === "astro" &&
+    (parts[1] === "accordion" || parts[2] === "accordion")
+  ) {
     return frameworkPath(next);
   }
   // forms/charts not on astro

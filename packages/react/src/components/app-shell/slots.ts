@@ -11,7 +11,10 @@ export interface AppShellSlots {
 }
 
 function getDisplayName(type: unknown): string | undefined {
-  if (typeof type === "function" || (typeof type === "object" && type !== null)) {
+  if (
+    typeof type === "function" ||
+    (typeof type === "object" && type !== null)
+  ) {
     return (type as { displayName?: string }).displayName;
   }
 

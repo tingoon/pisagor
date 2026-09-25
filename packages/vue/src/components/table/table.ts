@@ -33,13 +33,19 @@ export const TableRoot = defineComponent({
   inheritAttrs: false,
   name: "TableRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     isHoverable: { default: true, type: Boolean },
     recipe: {
       default: tableRecipe,
       type: Function as PropType<typeof tableRecipe>,
     },
-    variant: { default: "plain", type: String as PropType<TableProps["variant"]> },
+    variant: {
+      default: "plain",
+      type: String as PropType<TableProps["variant"]>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -74,7 +80,10 @@ export const TableHeader = defineComponent({
   inheritAttrs: false,
   name: "TableHeader",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: tableRecipe,
       type: Function as PropType<typeof tableRecipe>,
@@ -102,7 +111,10 @@ export const TableBody = defineComponent({
   inheritAttrs: false,
   name: "TableBody",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: tableRecipe,
       type: Function as PropType<typeof tableRecipe>,
@@ -130,7 +142,10 @@ export const TableFooter = defineComponent({
   inheritAttrs: false,
   name: "TableFooter",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: tableRecipe,
       type: Function as PropType<typeof tableRecipe>,
@@ -158,7 +173,10 @@ export const TableRow = defineComponent({
   inheritAttrs: false,
   name: "TableRow",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: tableRecipe,
       type: Function as PropType<typeof tableRecipe>,
@@ -186,7 +204,10 @@ export const TableHead = defineComponent({
   inheritAttrs: false,
   name: "TableHead",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: tableRecipe,
       type: Function as PropType<typeof tableRecipe>,
@@ -214,7 +235,10 @@ export const TableCell = defineComponent({
   inheritAttrs: false,
   name: "TableCell",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: tableRecipe,
       type: Function as PropType<typeof tableRecipe>,
@@ -242,7 +266,10 @@ export const TableCaption = defineComponent({
   inheritAttrs: false,
   name: "TableCaption",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: tableRecipe,
       type: Function as PropType<typeof tableRecipe>,

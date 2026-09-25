@@ -23,7 +23,8 @@ function useColumns(): ColumnDef<User>[] {
     { accessorKey: "email", header: "Email" },
     {
       accessorKey: "role",
-      cell: ({ row }) => h(Badge, { variant: "secondary" }, () => row.original.role),
+      cell: ({ row }) =>
+        h(Badge, { variant: "secondary" }, () => row.original.role),
       header: "Role",
     },
   ];
@@ -82,7 +83,8 @@ export function Sorting() {
       const handleSortingChange = (
         updater: SortingState | ((state: SortingState) => SortingState),
       ) => {
-        sorting.value = typeof updater === "function" ? updater(sorting.value) : updater;
+        sorting.value =
+          typeof updater === "function" ? updater(sorting.value) : updater;
       };
       const state = computed(() => ({ sorting: sorting.value }));
       const emptyNode = h(DataTable.Empty, { colSpan: 3 });

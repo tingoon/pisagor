@@ -31,7 +31,11 @@ export function PopoverWithSwatchPicker() {
         </ColorPicker.View>
         <ColorPicker.SwatchGroup>
           {swatches.map((color) => (
-            <ColorPicker.SwatchTrigger className="size-4" key={color} value={color}>
+            <ColorPicker.SwatchTrigger
+              className="size-4"
+              key={color}
+              value={color}
+            >
               <ColorPicker.Swatch value={color} />
             </ColorPicker.SwatchTrigger>
           ))}

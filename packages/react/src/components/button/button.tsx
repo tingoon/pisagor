@@ -5,7 +5,9 @@ import type { ComponentProps } from "react";
 import { Spinner } from "../spinner";
 
 // #region Types
-export interface ButtonProps extends ComponentProps<typeof ark.button>, ButtonSharedProps {}
+export interface ButtonProps
+  extends ComponentProps<typeof ark.button>,
+    ButtonSharedProps {}
 // #endregion
 
 // #region Component

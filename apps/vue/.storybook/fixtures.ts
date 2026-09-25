@@ -16,8 +16,16 @@ export const countryOptions = [
 ];
 
 export const planOptions = [
-  { description: "For individuals getting started.", label: "Starter", value: "starter" },
-  { description: "For growing teams that need more control.", label: "Pro", value: "pro" },
+  {
+    description: "For individuals getting started.",
+    label: "Starter",
+    value: "starter",
+  },
+  {
+    description: "For growing teams that need more control.",
+    label: "Pro",
+    value: "pro",
+  },
   {
     description: "For organizations with advanced needs.",
     label: "Enterprise",

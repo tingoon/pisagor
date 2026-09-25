@@ -29,13 +29,19 @@ function onSelectedValueChange(details) {
 }
 function moveToSelected() {
   const moving = new Set(availableValue.value);
-  selected.value = [...selected.value, ...available.value.filter((x) => moving.has(x))];
+  selected.value = [
+    ...selected.value,
+    ...available.value.filter((x) => moving.has(x)),
+  ];
   available.value = available.value.filter((x) => !moving.has(x));
   availableValue.value = [];
 }
 function moveToAvailable() {
   const moving = new Set(selectedValue.value);
-  available.value = [...available.value, ...selected.value.filter((x) => moving.has(x))];
+  available.value = [
+    ...available.value,
+    ...selected.value.filter((x) => moving.has(x)),
+  ];
   selected.value = selected.value.filter((x) => !moving.has(x));
   selectedValue.value = [];
 }
@@ -96,7 +102,11 @@ function moveToAvailable() {
         >
           <Listbox.Content class="max-h-48 min-h-40">
             <Listbox.ItemGroup heading="Selected">
-              <Listbox.Item v-for="item in selectedCollection.items" :key="item.value" :item="item">
+              <Listbox.Item
+                v-for="item in selectedCollection.items"
+                :key="item.value"
+                :item="item"
+              >
                 <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>
                 <Listbox.ItemIndicator />
               </Listbox.Item>

@@ -10,11 +10,23 @@ export function Default() {
         panels={[{ id: "a" }, { id: "b" }]}
       >
         <Resizable.Panel id="a">
-          <div class={cn("flex size-full items-center justify-center bg-muted/30 text-sm")}>A</div>
+          <div
+            class={cn(
+              "flex size-full items-center justify-center bg-muted/30 text-sm",
+            )}
+          >
+            A
+          </div>
         </Resizable.Panel>
         <Resizable.ResizeTrigger id="a:b" />
         <Resizable.Panel id="b">
-          <div class={cn("flex size-full items-center justify-center bg-muted/30 text-sm")}>B</div>
+          <div
+            class={cn(
+              "flex size-full items-center justify-center bg-muted/30 text-sm",
+            )}
+          >
+            B
+          </div>
         </Resizable.Panel>
       </Resizable>
     </div>

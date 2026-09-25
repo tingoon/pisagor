@@ -9,7 +9,11 @@ import type {
   AppShellResizableProps,
   AppShellSideState,
 } from "./app-shell.context";
-import { type AppShellRailState, useAppShell, useSideState } from "./app-shell.context";
+import {
+  type AppShellRailState,
+  useAppShell,
+  useSideState,
+} from "./app-shell.context";
 
 export function useRegionWidth(name: AppShellRegionVar, width: string) {
   const { setRegionVar } = useAppShell();
@@ -22,16 +26,24 @@ export function useRegionWidth(name: AppShellRegionVar, width: string) {
   }, [name, setRegionVar, width]);
 }
 
-export function regionVarFor(placement: AppShellPlacement, region: "inspector" | "panel" | "rail") {
+export function regionVarFor(
+  placement: AppShellPlacement,
+  region: "inspector" | "panel" | "rail",
+) {
   return `--app-shell-${placement}-${region}-width` as AppShellRegionVar;
 }
 
-export function gridAreaFor(placement: AppShellPlacement, region: "inspector" | "panel" | "rail") {
+export function gridAreaFor(
+  placement: AppShellPlacement,
+  region: "inspector" | "panel" | "rail",
+) {
   return `${placement}-${region}` as const;
 }
 
 export function mergeResizableProps(
-  defaults: Required<Pick<AppShellResizableProps, "enabled" | "handlePosition">>,
+  defaults: Required<
+    Pick<AppShellResizableProps, "enabled" | "handlePosition">
+  >,
   override?: AppShellResizableProps,
 ): Required<Pick<AppShellResizableProps, "enabled" | "handlePosition">> {
   return {
@@ -63,7 +75,9 @@ export function regionPositionClasses(
   columnLayer?: "inspector",
 ) {
   if (position === "relative") {
-    return orientation === "column" ? slots.regionRelativeColumn() : slots.regionRelativeRow();
+    return orientation === "column"
+      ? slots.regionRelativeColumn()
+      : slots.regionRelativeRow();
   }
 
   if (orientation === "column") {

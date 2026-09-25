@@ -7,7 +7,15 @@ import {
   PhTrash,
 } from "@phosphor-icons/vue";
 import { cn } from "@pisagor/utils";
-import { ActionBar, AlertDialog, Badge, Button, Checkbox, DropdownMenu, Table } from "@pisagor/vue";
+import {
+  ActionBar,
+  AlertDialog,
+  Badge,
+  Button,
+  Checkbox,
+  DropdownMenu,
+  Table,
+} from "@pisagor/vue";
 import { computed, defineComponent, h, type PropType, ref } from "vue";
 
 export interface TableBulkActionsProps {
@@ -21,11 +29,26 @@ const statusVariants: Record<string, "warning" | "info" | "success"> = {
 };
 
 const orders = [
-  { amount: "245,12 $", id: "SO-01", name: "Macbook Pro 16", status: "progress" },
-  { amount: "122,18 $", id: "SO-02", name: "Apple Watch Series 9", status: "transit" },
+  {
+    amount: "245,12 $",
+    id: "SO-01",
+    name: "Macbook Pro 16",
+    status: "progress",
+  },
+  {
+    amount: "122,18 $",
+    id: "SO-02",
+    name: "Apple Watch Series 9",
+    status: "transit",
+  },
   { amount: "89,50 $", id: "SO-03", name: "AirPods Max", status: "pending" },
   { amount: "310,00 $", id: "SO-04", name: "iPad Pro 13", status: "pending" },
-  { amount: "156,75 $", id: "SO-05", name: "iPhone 15 Pro Max", status: "transit" },
+  {
+    amount: "156,75 $",
+    id: "SO-05",
+    name: "iPhone 15 Pro Max",
+    status: "transit",
+  },
 ];
 
 type ArkPart = Parameters<typeof h>[0];
@@ -34,14 +57,19 @@ export const TableBulkActions = defineComponent({
   inheritAttrs: false,
   name: "TableBulkActions",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props) {
     const selectedIds = ref<string[]>([]);
 
     const isOpen = computed(() => selectedIds.value.length > 0);
     const allSelected = computed(
-      () => selectedIds.value.length > 0 && selectedIds.value.length === orders.length,
+      () =>
+        selectedIds.value.length > 0 &&
+        selectedIds.value.length === orders.length,
     );
 
     const handleSelectAll = (checked: boolean | "indeterminate") => {
@@ -52,9 +80,13 @@ export const TableBulkActions = defineComponent({
       }
     };
 
-    const handleSelectRow = (id: string, checked: boolean | "indeterminate") => {
+    const handleSelectRow = (
+      id: string,
+      checked: boolean | "indeterminate",
+    ) => {
       if (checked) {
-        if (!selectedIds.value.includes(id)) selectedIds.value = [...selectedIds.value, id];
+        if (!selectedIds.value.includes(id))
+          selectedIds.value = [...selectedIds.value, id];
       } else {
         selectedIds.value = selectedIds.value.filter((item) => item !== id);
       }
@@ -87,8 +119,9 @@ export const TableBulkActions = defineComponent({
                     h(Checkbox as ArkPart, {
                       "aria-label": "Select all orders",
                       checked: allSelected.value,
-                      onCheckedChange: (details: { checked: boolean | "indeterminate" }) =>
-                        handleSelectAll(details.checked),
+                      onCheckedChange: (details: {
+                        checked: boolean | "indeterminate";
+                      }) => handleSelectAll(details.checked),
                     }),
                   ),
                   h(Table.Head as ArkPart, null, () => "ID"),
@@ -103,14 +136,18 @@ export const TableBulkActions = defineComponent({
 
                   return h(
                     Table.Row as ArkPart,
-                    { "data-state": isSelected ? "selected" : undefined, key: order.id },
+                    {
+                      "data-state": isSelected ? "selected" : undefined,
+                      key: order.id,
+                    },
                     () => [
                       h(Table.Cell as ArkPart, { class: "w-12" }, () =>
                         h(Checkbox as ArkPart, {
                           "aria-label": `Select order ${order.id}`,
                           checked: isSelected,
-                          onCheckedChange: (details: { checked: boolean | "indeterminate" }) =>
-                            handleSelectRow(order.id, details.checked),
+                          onCheckedChange: (details: {
+                            checked: boolean | "indeterminate";
+                          }) => handleSelectRow(order.id, details.checked),
                         }),
                       ),
                       h(Table.Cell as ArkPart, null, () => order.id),
@@ -118,7 +155,10 @@ export const TableBulkActions = defineComponent({
                       h(Table.Cell as ArkPart, null, () =>
                         h(
                           Badge as ArkPart,
-                          { class: "capitalize", variant: statusVariants[order.status] },
+                          {
+                            class: "capitalize",
+                            variant: statusVariants[order.status],
+                          },
                           () => order.status,
                         ),
                       ),
@@ -129,33 +169,48 @@ export const TableBulkActions = defineComponent({
               ),
             ]),
             h(ActionBar.Content as ArkPart, null, () => [
-              h(ActionBar.Value as ArkPart, { count: selectedIds.value.length }),
+              h(ActionBar.Value as ArkPart, {
+                count: selectedIds.value.length,
+              }),
               h("div", { class: "ml-auto flex gap-2" }, () => [
-                h(Button as ArkPart, { size: "sm", type: "button", variant: "secondary" }, () => [
-                  h(PhPaperPlaneTilt, { "aria-hidden": true }),
-                  "Send",
-                ]),
-                h(Button as ArkPart, { size: "sm", type: "button", variant: "secondary" }, () => [
-                  h(PhPencil, { "aria-hidden": true }),
-                  "Edit",
-                ]),
-                h(DropdownMenu as ArkPart, { positioning: { placement: "top" } }, () => [
-                  h(DropdownMenu.Trigger as ArkPart, { asChild: true }, () =>
-                    h(Button as ArkPart, { size: "sm", type: "button", variant: "secondary" }, () =>
-                      h(PhDotsThree, { "aria-hidden": true }),
+                h(
+                  Button as ArkPart,
+                  { size: "sm", type: "button", variant: "secondary" },
+                  () => [h(PhPaperPlaneTilt, { "aria-hidden": true }), "Send"],
+                ),
+                h(
+                  Button as ArkPart,
+                  { size: "sm", type: "button", variant: "secondary" },
+                  () => [h(PhPencil, { "aria-hidden": true }), "Edit"],
+                ),
+                h(
+                  DropdownMenu as ArkPart,
+                  { positioning: { placement: "top" } },
+                  () => [
+                    h(DropdownMenu.Trigger as ArkPart, { asChild: true }, () =>
+                      h(
+                        Button as ArkPart,
+                        { size: "sm", type: "button", variant: "secondary" },
+                        () => h(PhDotsThree, { "aria-hidden": true }),
+                      ),
                     ),
-                  ),
-                  h(DropdownMenu.Content as ArkPart, null, () => [
-                    h(DropdownMenu.Item as ArkPart, { value: "archive" }, () => [
-                      h(PhArchive, { "aria-hidden": true }),
-                      "Archive",
+                    h(DropdownMenu.Content as ArkPart, null, () => [
+                      h(
+                        DropdownMenu.Item as ArkPart,
+                        { value: "archive" },
+                        () => [
+                          h(PhArchive, { "aria-hidden": true }),
+                          "Archive",
+                        ],
+                      ),
+                      h(
+                        DropdownMenu.Item as ArkPart,
+                        { value: "duplicate" },
+                        () => [h(PhCopy, { "aria-hidden": true }), "Duplicate"],
+                      ),
                     ]),
-                    h(DropdownMenu.Item as ArkPart, { value: "duplicate" }, () => [
-                      h(PhCopy, { "aria-hidden": true }),
-                      "Duplicate",
-                    ]),
-                  ]),
-                ]),
+                  ],
+                ),
                 h(AlertDialog as ArkPart, null, () => [
                   h(AlertDialog.Trigger as ArkPart, { asChild: true }, () =>
                     h(
@@ -188,12 +243,15 @@ export const TableBulkActions = defineComponent({
                     ]),
                     h(AlertDialog.Footer as ArkPart, null, () => [
                       h(AlertDialog.Cancel as ArkPart, null, () => "Cancel"),
-                      h(AlertDialog.CloseTrigger as ArkPart, { asChild: true }, () =>
-                        h(
-                          AlertDialog.Action as ArkPart,
-                          { variant: "destructive" },
-                          () => "Delete",
-                        ),
+                      h(
+                        AlertDialog.CloseTrigger as ArkPart,
+                        { asChild: true },
+                        () =>
+                          h(
+                            AlertDialog.Action as ArkPart,
+                            { variant: "destructive" },
+                            () => "Delete",
+                          ),
                       ),
                     ]),
                   ]),

@@ -8,7 +8,9 @@ export function Default() {
         <>
           <AlertDialog.Cancel>Don't allow</AlertDialog.Cancel>
           <AlertDialog.CloseTrigger
-            asChild={(props) => <AlertDialog.Action {...props()}>Allow</AlertDialog.Action>}
+            asChild={(props) => (
+              <AlertDialog.Action {...props()}>Allow</AlertDialog.Action>
+            )}
           />
         </>
       }

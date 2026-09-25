@@ -31,13 +31,22 @@ export const Switch = defineComponent({
   inheritAttrs: false,
   name: "PisagorSwitch",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<SwitchClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<SwitchClassNames>,
+    },
     recipe: {
       default: switchRecipe,
       type: Function as PropType<typeof switchRecipe>,
     },
-    variant: { default: undefined, type: String as PropType<FormControlVariant> },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant>,
+    },
   },
   setup(props, { attrs, emit }) {
     const surfaceVariant = useFormControlSurface();

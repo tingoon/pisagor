@@ -30,7 +30,12 @@ export interface SwitchProps extends Omit<SwitchRootProps, "children"> {
 }
 
 function SwitchRoot(props: SwitchRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["variant", "children", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "variant",
+    "children",
+    "recipe",
+    "class",
+  ]);
   const surfaceVariant = useFormControlSurface();
   const variant = () => local.variant ?? ("primary" as FormControlVariant);
   const slots = () =>
@@ -57,7 +62,10 @@ function SwitchControl(props: SwitchControlProps): JSX.Element {
   const { slots } = useSwitch();
 
   return (
-    <SwitchPrimitive.Control {...rest} class={slots.control({ class: cn(local.class) })}>
+    <SwitchPrimitive.Control
+      {...rest}
+      class={slots.control({ class: cn(local.class) })}
+    >
       {local.children}
     </SwitchPrimitive.Control>
   );
@@ -67,7 +75,12 @@ function SwitchThumb(props: SwitchThumbProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useSwitch();
 
-  return <SwitchPrimitive.Thumb {...rest} class={slots.thumb({ class: cn(local.class) })} />;
+  return (
+    <SwitchPrimitive.Thumb
+      {...rest}
+      class={slots.thumb({ class: cn(local.class) })}
+    />
+  );
 }
 
 function SwitchHiddenInput(props: SwitchHiddenInputProps): JSX.Element {

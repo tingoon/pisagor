@@ -34,11 +34,15 @@ export function Grid() {
         <Listbox.Root collection={collection}>
           <Listbox.Content
             className="grid grid-cols-[repeat(var(--column-count),1fr)] gap-1"
-            style={{ "--column-count": collection.columnCount } as CSSProperties}
+            style={
+              { "--column-count": collection.columnCount } as CSSProperties
+            }
           >
             {collection.items.map((item) => (
               <Listbox.Item item={item} key={item.value}>
-                <Listbox.ItemText className="text-center text-xl">{item.label}</Listbox.ItemText>
+                <Listbox.ItemText className="text-center text-xl">
+                  {item.label}
+                </Listbox.ItemText>
               </Listbox.Item>
             ))}
           </Listbox.Content>

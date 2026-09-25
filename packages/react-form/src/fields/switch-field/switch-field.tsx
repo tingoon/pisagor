@@ -3,9 +3,14 @@ import { Field, Switch } from "@pisagor/react";
 import type { FieldPresentationProps } from "../../internal/field-shell";
 
 // #region Types
-type SwitchControlProps = Omit<SwitchProps, "checked" | "invalid" | "label" | "name">;
+type SwitchControlProps = Omit<
+  SwitchProps,
+  "checked" | "invalid" | "label" | "name"
+>;
 
-export interface SwitchFieldProps extends FieldPresentationProps, SwitchControlProps {
+export interface SwitchFieldProps
+  extends FieldPresentationProps,
+    SwitchControlProps {
   orientation?: "horizontal" | "vertical" | "responsive";
   checked?: boolean;
   name?: string;
@@ -51,7 +56,9 @@ export function SwitchField({
               {labelAccessory}
             </Field.Label>
           ) : null}
-          {description ? <Field.Description>{description}</Field.Description> : null}
+          {description ? (
+            <Field.Description>{description}</Field.Description>
+          ) : null}
         </Field.Content>
       ) : null}
       {error ? <Field.Error>{error}</Field.Error> : null}

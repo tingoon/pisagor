@@ -52,14 +52,22 @@ export function PopoverPositioner(props: PopoverPositionerProps): JSX.Element {
 }
 
 export function PopoverContent(props: PopoverContentProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["showCloseButton", "children", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "showCloseButton",
+    "children",
+    "recipe",
+    "class",
+  ]);
   const slots = () => (local.recipe ?? popoverRecipe)();
 
   return (
     <Portal>
       <PopoverPositioner>
         <PopoverContentContext value={{ slots: slots() }}>
-          <PopoverPrimitive.Content {...rest} class={slots().base({ class: cn(local.class) })}>
+          <PopoverPrimitive.Content
+            {...rest}
+            class={slots().base({ class: cn(local.class) })}
+          >
             {local.children}
             <Show when={local.showCloseButton}>
               <PopoverCloseTrigger
@@ -83,7 +91,12 @@ export function PopoverContent(props: PopoverContentProps): JSX.Element {
 }
 
 export function PopoverHeader(props: PopoverHeaderProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "description", "title", "class"]);
+  const [local, rest] = splitProps(props, [
+    "children",
+    "description",
+    "title",
+    "class",
+  ]);
   const { slots } = usePopoverContent();
 
   return (
@@ -107,14 +120,24 @@ export function PopoverHeader(props: PopoverHeaderProps): JSX.Element {
 export function PopoverTitle(props: PopoverTitleProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = usePopoverContent();
-  return <PopoverPrimitive.Title {...rest} class={slots.title({ class: cn(local.class) })} />;
+  return (
+    <PopoverPrimitive.Title
+      {...rest}
+      class={slots.title({ class: cn(local.class) })}
+    />
+  );
 }
 
-export function PopoverDescription(props: PopoverDescriptionProps): JSX.Element {
+export function PopoverDescription(
+  props: PopoverDescriptionProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = usePopoverContent();
   return (
-    <PopoverPrimitive.Description {...rest} class={slots.description({ class: cn(local.class) })} />
+    <PopoverPrimitive.Description
+      {...rest}
+      class={slots.description({ class: cn(local.class) })}
+    />
   );
 }
 
@@ -147,7 +170,9 @@ export function PopoverFooter(props: PopoverFooterProps): JSX.Element {
   );
 }
 
-export function PopoverCloseTrigger(props: PopoverCloseTriggerProps): JSX.Element {
+export function PopoverCloseTrigger(
+  props: PopoverCloseTriggerProps,
+): JSX.Element {
   return <PopoverPrimitive.CloseTrigger {...props} />;
 }
 
@@ -160,7 +185,9 @@ export function PopoverArrow(props: PopoverArrowProps): JSX.Element {
       style={{
         "--arrow-background": "var(--popover)",
         "--arrow-size": "calc(1.5 * var(--spacing))",
-        ...(typeof local.style === "object" && local.style !== null ? local.style : {}),
+        ...(typeof local.style === "object" && local.style !== null
+          ? local.style
+          : {}),
       }}
     >
       <PopoverPrimitive.ArrowTip class={slots.arrowTip()} />

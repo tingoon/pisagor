@@ -37,19 +37,31 @@ export const Rating = defineComponent({
   name: "PisagorRating",
   props: {
     allowHalf: { default: false, type: Boolean },
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     count: { default: 5, type: Number },
     defaultValue: { default: undefined, type: Number },
     disabled: { default: undefined, type: Boolean },
-    icon: { default: undefined, type: [Object, Function, String] as PropType<VNodeChild> },
-    onValueChange: { default: undefined, type: Function as PropType<RatingProps["onValueChange"]> },
+    icon: {
+      default: undefined,
+      type: [Object, Function, String] as PropType<VNodeChild>,
+    },
+    onValueChange: {
+      default: undefined,
+      type: Function as PropType<RatingProps["onValueChange"]>,
+    },
     readOnly: { default: undefined, type: Boolean },
     recipe: {
       default: ratingRecipe,
       type: Function as PropType<typeof ratingRecipe>,
     },
     value: { default: undefined, type: Number },
-    variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant | undefined>,
+    },
   },
   setup(props, { attrs }) {
     const surfaceVariant = useFormControlSurface();
@@ -60,7 +72,8 @@ export const Rating = defineComponent({
         variant: props.variant ?? ("primary" as FormControlVariant),
       };
       const slots = props.recipe();
-      const surfaceTone = resolved.variant === "secondary" ? "opacity-90" : undefined;
+      const surfaceTone =
+        resolved.variant === "secondary" ? "opacity-90" : undefined;
 
       const icon = props.icon ?? PhStar;
 
@@ -70,7 +83,11 @@ export const Rating = defineComponent({
           ...attrs,
           allowHalf: props.allowHalf,
           class: slots.base({
-            class: cn(surfaceTone, props.class, (attrs as { class?: ClassValue }).class),
+            class: cn(
+              surfaceTone,
+              props.class,
+              (attrs as { class?: ClassValue }).class,
+            ),
           }),
           count: props.count,
           "data-variant": resolved.variant,
@@ -78,7 +95,8 @@ export const Rating = defineComponent({
           disabled: props.disabled,
           modelValue: props.value,
           onValueChange: props.onValueChange
-            ? (details: { value: number }) => props.onValueChange?.(details.value)
+            ? (details: { value: number }) =>
+                props.onValueChange?.(details.value)
             : undefined,
           readOnly: props.readOnly,
         },
@@ -91,33 +109,42 @@ export const Rating = defineComponent({
               }),
             },
             () => [
-              ...Array.from({ length: props.count }, (_, i) => i + 1).map((index) =>
-                h(
-                  RatingGroupPrimitive.Item as ArkPart,
-                  { class: slots.item(), index, key: index },
-                  () =>
-                    h(RatingGroupPrimitive.ItemContext as ArkPart, null, {
-                      default: (itemState: { half: boolean; highlighted: boolean }) =>
-                        h(
-                          "span",
-                          {
-                            class: slots.indicator(),
-                            "data-half": itemState.half ? "" : undefined,
-                            "data-highlighted": itemState.highlighted ? "" : undefined,
-                            "data-part": "item-indicator",
-                            "data-scope": "rating",
-                          },
-                          () => [
-                            h(icon as ArkPart, { "aria-hidden": true, "data-bg": "" }),
-                            h(icon as ArkPart, {
-                              "aria-hidden": true,
-                              "data-fg": "",
-                              fill: "currentColor",
-                            }),
-                          ],
-                        ),
-                    }),
-                ),
+              ...Array.from({ length: props.count }, (_, i) => i + 1).map(
+                (index) =>
+                  h(
+                    RatingGroupPrimitive.Item as ArkPart,
+                    { class: slots.item(), index, key: index },
+                    () =>
+                      h(RatingGroupPrimitive.ItemContext as ArkPart, null, {
+                        default: (itemState: {
+                          half: boolean;
+                          highlighted: boolean;
+                        }) =>
+                          h(
+                            "span",
+                            {
+                              class: slots.indicator(),
+                              "data-half": itemState.half ? "" : undefined,
+                              "data-highlighted": itemState.highlighted
+                                ? ""
+                                : undefined,
+                              "data-part": "item-indicator",
+                              "data-scope": "rating",
+                            },
+                            () => [
+                              h(icon as ArkPart, {
+                                "aria-hidden": true,
+                                "data-bg": "",
+                              }),
+                              h(icon as ArkPart, {
+                                "aria-hidden": true,
+                                "data-fg": "",
+                                fill: "currentColor",
+                              }),
+                            ],
+                          ),
+                      }),
+                  ),
               ),
               h(RatingGroupPrimitive.HiddenInput as ArkPart),
             ],

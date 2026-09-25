@@ -28,7 +28,10 @@ export const comboboxRecipe = tv({
       "data-[placement=left]:slide-in-from-end-2 data-[state=closed]:data-[placement=left]:slide-out-to-end-2",
       "motion-reduce:animate-none!",
     ],
-    control: ["group/combobox-control", "relative flex flex-wrap items-center gap-1"],
+    control: [
+      "group/combobox-control",
+      "relative flex flex-wrap items-center gap-1",
+    ],
     empty: ["px-2 py-1.5", "text-center text-muted-foreground text-sm"],
     item: [
       "relative",
@@ -45,11 +48,14 @@ export const comboboxRecipe = tv({
       "[&_svg:not([class*='size-'])]:size-4 [&_svg:not([class*='text-'])]:text-muted-foreground [&_svg]:pointer-events-none [&_svg]:shrink-0",
     ],
     itemGroupLabel: ["px-2 py-1.5 font-semibold text-muted-foreground text-xs"],
-    itemIndicator: ["absolute inset-e-2 flex size-3.5 items-center justify-center"],
+    itemIndicator: [
+      "absolute inset-e-2 flex size-3.5 items-center justify-center",
+    ],
     list: ["flex flex-col"],
     trigger: ["absolute inset-e-1 inset-y-0"],
     triggerButton: "size-4",
-    triggerHidden: "group-has-[[data-scope=combobox][data-part=clear-trigger]]/input-group:hidden",
+    triggerHidden:
+      "group-has-[[data-scope=combobox][data-part=clear-trigger]]/input-group:hidden",
   },
   variants: {
     showIndicator: {

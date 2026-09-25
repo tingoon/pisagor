@@ -7,7 +7,10 @@ export function Controlled() {
   return (
     <Field.Group className="flex flex-col items-center gap-2">
       <Field orientation="horizontal">
-        <Switch checked={checked} onCheckedChange={({ checked }) => setChecked(checked ?? false)} />
+        <Switch
+          checked={checked}
+          onCheckedChange={({ checked }) => setChecked(checked ?? false)}
+        />
         <Field.Content>
           <Field.Label>Enable notifications</Field.Label>
         </Field.Content>

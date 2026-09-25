@@ -28,8 +28,14 @@ export const NavigationMenuRoot = defineComponent({
   inheritAttrs: false,
   name: "NavigationMenuRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<NavigationMenuClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<NavigationMenuClassNames>,
+    },
     recipe: {
       default: navigationMenuRecipe,
       type: Function as PropType<typeof navigationMenuRecipe>,
@@ -57,8 +63,14 @@ export const NavigationMenuList = defineComponent({
   inheritAttrs: false,
   name: "NavigationMenuList",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<NavigationMenuClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<NavigationMenuClassNames>,
+    },
     recipe: {
       default: navigationMenuRecipe,
       type: Function as PropType<typeof navigationMenuRecipe>,
@@ -72,7 +84,9 @@ export const NavigationMenuList = defineComponent({
         ark.ul as ArkPart,
         {
           ...attrs,
-          class: slots$.list({ class: cn(props.class, attrs.class, props.classNames?.list) }),
+          class: slots$.list({
+            class: cn(props.class, attrs.class, props.classNames?.list),
+          }),
           "data-part": "list",
           "data-scope": "navigation-menu",
         },
@@ -86,8 +100,14 @@ export const NavigationMenuItem = defineComponent({
   inheritAttrs: false,
   name: "NavigationMenuItem",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<NavigationMenuClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<NavigationMenuClassNames>,
+    },
     recipe: {
       default: navigationMenuRecipe,
       type: Function as PropType<typeof navigationMenuRecipe>,
@@ -101,7 +121,9 @@ export const NavigationMenuItem = defineComponent({
         ark.li as ArkPart,
         {
           ...attrs,
-          class: slots$.item({ class: cn(props.class, attrs.class, props.classNames?.item) }),
+          class: slots$.item({
+            class: cn(props.class, attrs.class, props.classNames?.item),
+          }),
           "data-part": "item",
           "data-scope": "navigation-menu",
         },
@@ -116,8 +138,14 @@ export const NavigationMenuLink = defineComponent({
   name: "NavigationMenuLink",
   props: {
     active: { default: false, type: Boolean },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<NavigationMenuClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<NavigationMenuClassNames>,
+    },
     recipe: {
       default: navigationMenuRecipe,
       type: Function as PropType<typeof navigationMenuRecipe>,
@@ -132,7 +160,9 @@ export const NavigationMenuLink = defineComponent({
         {
           ...attrs,
           "aria-current": props.active ? "page" : undefined,
-          class: slots$.link({ class: cn(props.class, attrs.class, props.classNames?.link) }),
+          class: slots$.link({
+            class: cn(props.class, attrs.class, props.classNames?.link),
+          }),
           "data-active": props.active,
           "data-part": "link",
           "data-scope": "navigation-menu",

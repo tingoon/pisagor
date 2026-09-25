@@ -36,10 +36,12 @@ interface SortableItemContextValue {
   slots: SortableItemRecipe;
 }
 
-export const { SortableContext, useSortable } = createContext<SortableContextValue>()({
-  name: "Sortable",
-});
+export const { SortableContext, useSortable } =
+  createContext<SortableContextValue>()({
+    name: "Sortable",
+  });
 
-export const { SortableItemContext, useSortableItem } = createContext<SortableItemContextValue>()({
-  name: "SortableItem",
-});
+export const { SortableItemContext, useSortableItem } =
+  createContext<SortableItemContextValue>()({
+    name: "SortableItem",
+  });

@@ -39,7 +39,11 @@ export function useClearableInput<T extends ClearableElement>(
 
   const mergedRef = (el: T) => {
     inputEl = el;
-    if (!isControlled() && options.defaultValue !== undefined && el.value === "") {
+    if (
+      !isControlled() &&
+      options.defaultValue !== undefined &&
+      el.value === ""
+    ) {
       el.value = String(options.defaultValue);
     }
     options.ref?.(el);

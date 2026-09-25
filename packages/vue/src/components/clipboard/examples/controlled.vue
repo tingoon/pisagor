@@ -9,7 +9,10 @@ const value = ref("https://example.com/docs");
 <template>
   <div class="flex flex-col gap-2">
     <Clipboard :value="value" />
-    <Button variant="secondary" @click="value = 'https://example.com/docs/alternate'">
+    <Button
+      variant="secondary"
+      @click="value = 'https://example.com/docs/alternate'"
+    >
       Change URL
     </Button>
   </div>

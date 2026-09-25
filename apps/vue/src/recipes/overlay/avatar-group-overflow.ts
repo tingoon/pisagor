@@ -48,29 +48,38 @@ export const AvatarGroupOverflow = defineComponent({
             }),
           ),
         ),
-        h(Popover as ArkPart, { positioning: { placement: "bottom-end" } }, () => [
-          h(popoverParts.Trigger, { asChild: true }, () =>
-            h(
-              Button as ArkPart,
-              { pill: true, size: "icon-md", type: "button", variant: "ghost" },
-              () => "+5",
+        h(
+          Popover as ArkPart,
+          { positioning: { placement: "bottom-end" } },
+          () => [
+            h(popoverParts.Trigger, { asChild: true }, () =>
+              h(
+                Button as ArkPart,
+                {
+                  pill: true,
+                  size: "icon-md",
+                  type: "button",
+                  variant: "ghost",
+                },
+                () => "+5",
+              ),
             ),
-          ),
-          h(popoverParts.Content, null, () =>
-            h(popoverParts.Body, null, () =>
-              h("div", { class: "flex items-center gap-2" }, () =>
-                users.map((user) =>
-                  h(Avatar as ArkPart, {
-                    alt: user.name,
-                    fallback: user.fallback,
-                    key: user.src,
-                    src: user.src,
-                  }),
+            h(popoverParts.Content, null, () =>
+              h(popoverParts.Body, null, () =>
+                h("div", { class: "flex items-center gap-2" }, () =>
+                  users.map((user) =>
+                    h(Avatar as ArkPart, {
+                      alt: user.name,
+                      fallback: user.fallback,
+                      key: user.src,
+                      src: user.src,
+                    }),
+                  ),
                 ),
               ),
             ),
-          ),
-        ]),
+          ],
+        ),
       ]);
   },
 });

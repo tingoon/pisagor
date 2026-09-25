@@ -5,6 +5,7 @@ interface LinkBoxContextValue {
   slots: LinkBoxRecipe;
 }
 
-export const { LinkBoxContext, useLinkBox } = createContext<LinkBoxContextValue>()({
-  name: "LinkBox",
-});
+export const { LinkBoxContext, useLinkBox } =
+  createContext<LinkBoxContextValue>()({
+    name: "LinkBox",
+  });

@@ -4,6 +4,9 @@ import { Highlight } from "..";
 
 <template>
   <div class="w-96 rounded-xl border bg-card p-4 text-sm">
-    <Highlight query="accessible" text="Build accessible interfaces with reusable UI components." />
+    <Highlight
+      query="accessible"
+      text="Build accessible interfaces with reusable UI components."
+    />
   </div>
 </template>

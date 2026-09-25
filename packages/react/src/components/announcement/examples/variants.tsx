@@ -1,4 +1,8 @@
-import { ArrowUpRightIcon, CheckCircleIcon, WarningIcon } from "@phosphor-icons/react";
+import {
+  ArrowUpRightIcon,
+  CheckCircleIcon,
+  WarningIcon,
+} from "@phosphor-icons/react";
 import { Badge } from "@pisagor/react";
 import { Announcement } from "..";
 export function Variants() {

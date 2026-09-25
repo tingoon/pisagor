@@ -8,7 +8,10 @@ export function Controlled() {
     <div className="flex flex-col gap-2">
       <Card className="[--space:--spacing(2)]">
         <Card.Content>
-          <Calendar onValueChange={({ value }) => setValue(value)} value={value}>
+          <Calendar
+            onValueChange={({ value }) => setValue(value)}
+            value={value}
+          >
             <Calendar.ViewControl>
               <Calendar.PrevTrigger />
               <Calendar.MonthSelect />

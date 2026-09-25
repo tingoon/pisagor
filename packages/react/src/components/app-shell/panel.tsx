@@ -1,4 +1,7 @@
-import { ArrowsInLineHorizontalIcon, ArrowsOutLineHorizontalIcon } from "@phosphor-icons/react";
+import {
+  ArrowsInLineHorizontalIcon,
+  ArrowsOutLineHorizontalIcon,
+} from "@phosphor-icons/react";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, ReactNode } from "react";
 import { useState } from "react";
@@ -57,7 +60,8 @@ export interface AppShellPanelProps extends ComponentProps<"aside"> {
   resizableProps?: AppShellResizableProps;
 }
 
-export interface AppShellPanelTriggerProps extends Omit<ButtonProps, "children"> {
+export interface AppShellPanelTriggerProps
+  extends Omit<ButtonProps, "children"> {
   /**
    * Panel side to toggle.
    *
@@ -92,7 +96,10 @@ export function AppShellPanel({
   ...rest
 }: AppShellPanelProps) {
   const { defaultPanelResizableProps, panelStates, slots } = useAppShell();
-  const resizableProps = mergeResizableProps(defaultPanelResizableProps, resizablePropsProp);
+  const resizableProps = mergeResizableProps(
+    defaultPanelResizableProps,
+    resizablePropsProp,
+  );
   const side = useRegisteredSideState({
     controlledOpen: openProp,
     defaultOpen,
@@ -112,7 +119,9 @@ export function AppShellPanel({
       {...rest}
       className={cn(
         slots.panel(),
-        placement === "start" ? "border-e border-border" : "border-s border-border",
+        placement === "start"
+          ? "border-e border-border"
+          : "border-s border-border",
         regionPositionClasses(slots, position, "column"),
         side.open ? "opacity-100" : "pointer-events-none opacity-0",
         className,
@@ -139,7 +148,10 @@ export function AppShellPanel({
   );
 }
 
-export function AppShellPanelHeader({ className, ...rest }: AppShellPanelHeaderProps) {
+export function AppShellPanelHeader({
+  className,
+  ...rest
+}: AppShellPanelHeaderProps) {
   const { slots } = useAppShell();
 
   return (
@@ -152,7 +164,10 @@ export function AppShellPanelHeader({ className, ...rest }: AppShellPanelHeaderP
   );
 }
 
-export function AppShellPanelContent({ className, ...rest }: AppShellPanelContentProps) {
+export function AppShellPanelContent({
+  className,
+  ...rest
+}: AppShellPanelContentProps) {
   const { slots } = useAppShell();
 
   return (
@@ -167,7 +182,10 @@ export function AppShellPanelContent({ className, ...rest }: AppShellPanelConten
   );
 }
 
-export function AppShellPanelFooter({ className, ...rest }: AppShellPanelFooterProps) {
+export function AppShellPanelFooter({
+  className,
+  ...rest
+}: AppShellPanelFooterProps) {
   const { slots } = useAppShell();
 
   return (

@@ -9,7 +9,11 @@ import { EyeIcon, EyeSlashIcon, XIcon } from "@phosphor-icons/react";
 import { passwordInputRecipe } from "@pisagor/recipes/password-input";
 import type { RefAttributes } from "react";
 import { useClearableInput } from "../../hooks";
-import { InputGroup, type InputGroupButtonProps, type InputGroupProps } from "../input-group";
+import {
+  InputGroup,
+  type InputGroupButtonProps,
+  type InputGroupProps,
+} from "../input-group";
 
 // #region Types
 type FormControlVariant = "primary" | "secondary";
@@ -144,7 +148,10 @@ export function PasswordInput({
             </InputGroup.Addon>
           ) : null}
           <InputGroup.Addon align="inline-end">
-            <PasswordInputPrimitive.VisibilityTrigger {...visibilityTriggerProps} asChild>
+            <PasswordInputPrimitive.VisibilityTrigger
+              {...visibilityTriggerProps}
+              asChild
+            >
               <InputGroup.Button
                 aria-label="Toggle password visibility"
                 size="icon-xs"

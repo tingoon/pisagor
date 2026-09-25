@@ -34,7 +34,9 @@ export interface ChartLegendContentProps {
 }
 
 // Interface cannot extend: labelFormatter override is incompatible with Partial<TooltipContentProps>.
-export type CustomTooltipProps = Partial<TooltipContentProps<TooltipValueType, NameType>> & {
+export type CustomTooltipProps = Partial<
+  TooltipContentProps<TooltipValueType, NameType>
+> & {
   className?: string;
   color?: string;
   formatter?: Formatter;
@@ -92,23 +94,32 @@ const getPayload = (config: ChartConfig, payload: unknown, key: string) => {
   }
 
   const payloadPayload =
-    "payload" in payload && typeof payload.payload === "object" && payload.payload !== null
+    "payload" in payload &&
+    typeof payload.payload === "object" &&
+    payload.payload !== null
       ? payload.payload
       : undefined;
 
   let configLabelKey: string = key;
 
-  if (key in payload && typeof payload[key as keyof typeof payload] === "string") {
+  if (
+    key in payload &&
+    typeof payload[key as keyof typeof payload] === "string"
+  ) {
     configLabelKey = payload[key as keyof typeof payload] as string;
   } else if (
     payloadPayload &&
     key in payloadPayload &&
     typeof payloadPayload[key as keyof typeof payloadPayload] === "string"
   ) {
-    configLabelKey = payloadPayload[key as keyof typeof payloadPayload] as string;
+    configLabelKey = payloadPayload[
+      key as keyof typeof payloadPayload
+    ] as string;
   }
 
-  return configLabelKey in config ? config[configLabelKey] : config[key as keyof typeof config];
+  return configLabelKey in config
+    ? config[configLabelKey]
+    : config[key as keyof typeof config];
 };
 // #endregion
 
@@ -142,7 +153,9 @@ export function ChartContainer({
 }
 
 export function ChartStyle({ config, id }: ChartStyleProps) {
-  const colorConfig = Object.entries(config).filter(([, config]) => config.theme || config.color);
+  const colorConfig = Object.entries(config).filter(
+    ([, config]) => config.theme || config.color,
+  );
 
   if (!colorConfig.length) {
     return null;
@@ -155,7 +168,8 @@ export function ChartStyle({ config, id }: ChartStyleProps) {
             ${colorConfig
               .map(([key, itemConfig]) => {
                 const color =
-                  itemConfig.theme?.[theme as keyof typeof itemConfig.theme] || itemConfig.color;
+                  itemConfig.theme?.[theme as keyof typeof itemConfig.theme] ||
+                  itemConfig.color;
                 return color ? `  --color-${key}: ${color};` : null;
               })
               .join("\n")}
@@ -215,8 +229,19 @@ export function ChartTooltipContent({
       return null;
     }
 
-    return <div className={slots.label({ className: labelClassName })}>{value}</div>;
-  }, [label, labelFormatter, payload, hideLabel, labelClassName, config, labelKey, slots]);
+    return (
+      <div className={slots.label({ className: labelClassName })}>{value}</div>
+    );
+  }, [
+    label,
+    labelFormatter,
+    payload,
+    hideLabel,
+    labelClassName,
+    config,
+    labelKey,
+    slots,
+  ]);
 
   if (!(active && payload?.length)) {
     return null;
@@ -235,7 +260,10 @@ export function ChartTooltipContent({
 
           return (
             <div
-              className={cn(slots.tooltipItem(), indicator === "dot" && "items-center")}
+              className={cn(
+                slots.tooltipItem(),
+                indicator === "dot" && "items-center",
+              )}
               key={key}
             >
               {formatter && item?.value !== undefined && item.name ? (
@@ -250,7 +278,8 @@ export function ChartTooltipContent({
                         className={cn(slots.indicator(), {
                           "h-2.5 w-2.5": indicator === "dot",
                           "my-0.5": nestLabel && indicator === "dashed",
-                          "w-0 border-0.375 border-dashed bg-transparent": indicator === "dashed",
+                          "w-0 border-0.375 border-dashed bg-transparent":
+                            indicator === "dashed",
                           "w-1": indicator === "line",
                         })}
                         style={{
@@ -260,13 +289,22 @@ export function ChartTooltipContent({
                       />
                     )
                   )}
-                  <div className={cn(slots.tooltipRow(), nestLabel ? "items-end" : "items-center")}>
+                  <div
+                    className={cn(
+                      slots.tooltipRow(),
+                      nestLabel ? "items-end" : "items-center",
+                    )}
+                  >
                     <div className={slots.tooltipStack()}>
                       {nestLabel ? tooltipLabel : null}
-                      <span className={slots.tooltipLabel()}>{itemConfig?.label || item.name}</span>
+                      <span className={slots.tooltipLabel()}>
+                        {itemConfig?.label || item.name}
+                      </span>
                     </div>
                     {item.value && (
-                      <span className={slots.tooltipValue()}>{item.value.toLocaleString()}</span>
+                      <span className={slots.tooltipValue()}>
+                        {item.value.toLocaleString()}
+                      </span>
                     )}
                   </div>
                 </>
@@ -295,7 +333,13 @@ export function ChartLegendContent({
   }
 
   return (
-    <div className={cn(slots.legend(), verticalAlign === "top" ? "pb-3" : "pt-3", className)}>
+    <div
+      className={cn(
+        slots.legend(),
+        verticalAlign === "top" ? "pb-3" : "pt-3",
+        className,
+      )}
+    >
       {payload.map((item) => {
         const key = `${nameKey || item.dataKey || "value"}`;
         const itemConfig = getPayload(config, item, key);

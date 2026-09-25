@@ -27,7 +27,10 @@ const defaultManual =
     : pkgs.map((p) => `import { /* … */ } from "${p}";`).join("\n"));
 ---
 
-<div data-installation class:list={["installation not-prose", Astro.props.class]}>
+<div
+  data-installation
+  class:list={["installation not-prose", Astro.props.class]}
+>
   <div
     aria-label="Installation method"
     class="mb-3 inline-flex rounded-lg border border-border/70 bg-muted/30 p-0.5"
@@ -56,8 +59,13 @@ const defaultManual =
     </button>
   </div>
 
-  <div class="overflow-hidden rounded-xl border border-border/70 bg-card" data-panel="cli">
-    <div class="flex items-center gap-1 border-b border-border/60 px-2 py-1.5 sm:px-2.5">
+  <div
+    class="overflow-hidden rounded-xl border border-border/70 bg-card"
+    data-panel="cli"
+  >
+    <div
+      class="flex items-center gap-1 border-b border-border/60 px-2 py-1.5 sm:px-2.5"
+    >
       <span
         aria-hidden="true"
         class="me-1 hidden size-7 items-center justify-center text-muted-foreground sm:inline-flex"
@@ -70,7 +78,11 @@ const defaultManual =
           stroke-width="2"
           viewBox="0 0 24 24"
         >
-          <path d="M4 17l6-6-6-6M12 19h8" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path
+            d="M4 17l6-6-6-6M12 19h8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
         </svg>
       </span>
 
@@ -111,7 +123,9 @@ const defaultManual =
           viewBox="0 0 24 24"
         >
           <rect height="13" rx="2" width="13" x="9" y="9"></rect>
-          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          <path
+            d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+          ></path>
         </svg>
         <svg
           aria-hidden="true"
@@ -123,7 +137,11 @@ const defaultManual =
           stroke-width="2"
           viewBox="0 0 24 24"
         >
-          <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path
+            d="M20 6L9 17l-5-5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
         </svg>
       </button>
     </div>
@@ -137,7 +155,9 @@ const defaultManual =
     class="hidden overflow-hidden rounded-xl border border-border/70 bg-card"
     data-panel="manual"
   >
-    <div class="flex items-center justify-between gap-3 border-b border-border/60 px-3 py-2">
+    <div
+      class="flex items-center justify-between gap-3 border-b border-border/60 px-3 py-2"
+    >
       <span class="text-xs font-medium text-muted-foreground">Import</span>
       <button
         aria-label="Copy import snippet"
@@ -155,7 +175,9 @@ const defaultManual =
           viewBox="0 0 24 24"
         >
           <rect height="13" rx="2" width="13" x="9" y="9"></rect>
-          <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          <path
+            d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+          ></path>
         </svg>
         <svg
           aria-hidden="true"
@@ -167,7 +189,11 @@ const defaultManual =
           stroke-width="2"
           viewBox="0 0 24 24"
         >
-          <path d="M20 6L9 17l-5-5" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path
+            d="M20 6L9 17l-5-5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          ></path>
         </svg>
       </button>
     </div>
@@ -175,8 +201,11 @@ const defaultManual =
       class="overflow-x-auto px-4 py-3.5 font-mono text-3.25 leading-relaxed text-foreground"
       data-manual-source
     ><code>{defaultManual}</code></pre>
-    <p class="border-t border-border/60 px-4 py-2.5 text-xs text-muted-foreground">
-      Install the package with your package manager (CLI tab), then import the components you need.
+    <p
+      class="border-t border-border/60 px-4 py-2.5 text-xs text-muted-foreground"
+    >
+      Install the package with your package manager (CLI tab), then import the
+      components you need.
     </p>
   </div>
 </div>
@@ -286,7 +315,9 @@ function bindInstallation(root: HTMLElement) {
 }
 
 function bindAll() {
-  document.querySelectorAll<HTMLElement>("[data-installation]").forEach(bindInstallation);
+  document
+    .querySelectorAll<HTMLElement>("[data-installation]")
+    .forEach(bindInstallation);
 }
 
 bindAll();

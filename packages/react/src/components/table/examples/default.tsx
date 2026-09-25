@@ -27,7 +27,10 @@ export function Default() {
             <Table.Cell>{user.email}</Table.Cell>
             <Table.Cell>{user.role}</Table.Cell>
             <Table.Cell className="text-center">
-              <Badge className="capitalize" variant={statusVariants[user.status]}>
+              <Badge
+                className="capitalize"
+                variant={statusVariants[user.status]}
+              >
                 {user.status}
               </Badge>
             </Table.Cell>

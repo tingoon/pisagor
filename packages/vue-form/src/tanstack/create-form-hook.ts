@@ -5,7 +5,13 @@ import {
   type FormValidateOrFn,
   useForm,
 } from "@tanstack/vue-form";
-import { type Component, defineComponent, h, type PropType, provide } from "vue";
+import {
+  type Component,
+  defineComponent,
+  h,
+  type PropType,
+  provide,
+} from "vue";
 import { createRoot } from "./components/root";
 import { SubmitButton } from "./components/submit-button";
 import {
@@ -57,7 +63,10 @@ interface CreateFormHookOptions {
   formContext: typeof formContext;
 }
 
-function createFormHook({ fieldComponents, formComponents }: CreateFormHookOptions) {
+function createFormHook({
+  fieldComponents,
+  formComponents,
+}: CreateFormHookOptions) {
   function useAppFormBase<
     TFormData,
     TOnMount extends undefined | FormValidateOrFn<TFormData>,

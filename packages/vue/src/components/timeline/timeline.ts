@@ -44,8 +44,14 @@ export const TimelineRoot = defineComponent({
   inheritAttrs: false,
   name: "TimelineRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    orientation: { default: "vertical", type: String as PropType<TimelineProps["orientation"]> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    orientation: {
+      default: "vertical",
+      type: String as PropType<TimelineProps["orientation"]>,
+    },
     recipe: {
       default: timelineRecipe,
       type: Function as PropType<typeof timelineRecipe>,
@@ -57,7 +63,10 @@ export const TimelineRoot = defineComponent({
         ark.ol as ArkPart,
         {
           ...attrs,
-          class: props.recipe({ class: props.class, orientation: props.orientation }),
+          class: props.recipe({
+            class: props.class,
+            orientation: props.orientation,
+          }),
           "data-orientation": props.orientation,
           "data-part": "root",
           "data-scope": "timeline",
@@ -71,7 +80,10 @@ export const TimelineItem = defineComponent({
   inheritAttrs: false,
   name: "TimelineItem",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: timelineItemRecipe,
       type: Function as PropType<typeof timelineItemRecipe>,
@@ -99,7 +111,10 @@ export const TimelineIndicator = defineComponent({
   inheritAttrs: false,
   name: "TimelineIndicator",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: timelineItemRecipe,
       type: Function as PropType<typeof timelineItemRecipe>,
@@ -127,7 +142,10 @@ export const TimelineSeparator = defineComponent({
   inheritAttrs: false,
   name: "TimelineSeparator",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: timelineItemRecipe,
       type: Function as PropType<typeof timelineItemRecipe>,
@@ -156,7 +174,10 @@ export const TimelineContent = defineComponent({
   inheritAttrs: false,
   name: "TimelineContent",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: timelineItemRecipe,
       type: Function as PropType<typeof timelineItemRecipe>,
@@ -184,7 +205,10 @@ export const TimelineTitle = defineComponent({
   inheritAttrs: false,
   name: "TimelineTitle",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: timelineItemRecipe,
       type: Function as PropType<typeof timelineItemRecipe>,
@@ -212,7 +236,10 @@ export const TimelineDescription = defineComponent({
   inheritAttrs: false,
   name: "TimelineDescription",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: timelineItemRecipe,
       type: Function as PropType<typeof timelineItemRecipe>,
@@ -240,9 +267,18 @@ export const TimelineShorthand = defineComponent({
   inheritAttrs: false,
   name: "TimelineShorthand",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    items: { default: undefined, type: Array as PropType<TimelinePresetItem[]> },
-    orientation: { default: "vertical", type: String as PropType<TimelineProps["orientation"]> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    items: {
+      default: undefined,
+      type: Array as PropType<TimelinePresetItem[]>,
+    },
+    orientation: {
+      default: "vertical",
+      type: String as PropType<TimelineProps["orientation"]>,
+    },
   },
   setup(props, { attrs }) {
     return () =>
@@ -266,7 +302,9 @@ export const TimelineShorthand = defineComponent({
               h(TimelineIndicator, null, () => item.indicator),
               h(TimelineContent, null, () => [
                 h(TimelineTitle, null, () => item.title),
-                item.description ? h(TimelineDescription, null, () => item.description) : null,
+                item.description
+                  ? h(TimelineDescription, null, () => item.description)
+                  : null,
               ]),
             ]);
           }),

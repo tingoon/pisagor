@@ -38,7 +38,11 @@ export function MultipleSelection() {
 
             <TreeView.BranchContent>
               {node.children.map((child, index) => (
-                <TreeNode indexPath={[...indexPath, index]} key={child.id} node={child} />
+                <TreeNode
+                  indexPath={[...indexPath, index]}
+                  key={child.id}
+                  node={child}
+                />
               ))}
             </TreeView.BranchContent>
           </TreeView.Branch>

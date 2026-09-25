@@ -1,5 +1,8 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type ToolbarRecipeSlot, toolbarRecipe } from "@pisagor/recipes/toolbar";
+import {
+  type ToolbarRecipeSlot,
+  toolbarRecipe,
+} from "@pisagor/recipes/toolbar";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";
@@ -31,8 +34,14 @@ export const ToolbarRoot = defineComponent({
   inheritAttrs: false,
   name: "ToolbarRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<ToolbarClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<ToolbarClassNames>,
+    },
     recipe: {
       default: toolbarRecipe,
       type: Function as PropType<typeof toolbarRecipe>,
@@ -57,8 +66,14 @@ export const ToolbarHeading = defineComponent({
   inheritAttrs: false,
   name: "ToolbarHeading",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<ToolbarClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<ToolbarClassNames>,
+    },
     recipe: {
       default: toolbarRecipe,
       type: Function as PropType<typeof toolbarRecipe>,
@@ -72,7 +87,9 @@ export const ToolbarHeading = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: slotsClasses.heading({ class: cn(props.class, props.classNames?.heading) }),
+          class: slotsClasses.heading({
+            class: cn(props.class, props.classNames?.heading),
+          }),
           "data-part": "heading",
           "data-scope": "toolbar",
         },
@@ -85,8 +102,14 @@ export const ToolbarTitle = defineComponent({
   inheritAttrs: false,
   name: "ToolbarTitle",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<ToolbarClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<ToolbarClassNames>,
+    },
     recipe: {
       default: toolbarRecipe,
       type: Function as PropType<typeof toolbarRecipe>,
@@ -100,7 +123,9 @@ export const ToolbarTitle = defineComponent({
         ark.h2 as ArkPart,
         {
           ...attrs,
-          class: slotsClasses.title({ class: cn(props.class, props.classNames?.title) }),
+          class: slotsClasses.title({
+            class: cn(props.class, props.classNames?.title),
+          }),
           "data-part": "title",
           "data-scope": "toolbar",
         },
@@ -113,8 +138,14 @@ export const ToolbarDescription = defineComponent({
   inheritAttrs: false,
   name: "ToolbarDescription",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<ToolbarClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<ToolbarClassNames>,
+    },
     recipe: {
       default: toolbarRecipe,
       type: Function as PropType<typeof toolbarRecipe>,
@@ -143,8 +174,14 @@ export const ToolbarActions = defineComponent({
   inheritAttrs: false,
   name: "ToolbarActions",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<ToolbarClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<ToolbarClassNames>,
+    },
     recipe: {
       default: toolbarRecipe,
       type: Function as PropType<typeof toolbarRecipe>,
@@ -158,7 +195,9 @@ export const ToolbarActions = defineComponent({
         ark.div as ArkPart,
         {
           ...attrs,
-          class: slotsClasses.actions({ class: cn(props.class, props.classNames?.actions) }),
+          class: slotsClasses.actions({
+            class: cn(props.class, props.classNames?.actions),
+          }),
           "data-part": "actions",
           "data-scope": "toolbar",
         },
@@ -175,29 +214,54 @@ export const ToolbarShorthand = defineComponent({
       default: undefined,
       type: [String, Object, Array, Function] as PropType<VNodeChild>,
     },
-    actionsProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<ToolbarClassNames> },
+    actionsProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<ToolbarClassNames>,
+    },
     description: {
       default: undefined,
       type: [String, Object, Array, Function] as PropType<VNodeChild>,
     },
-    descriptionProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
-    title: { default: undefined, type: [String, Object, Array, Function] as PropType<VNodeChild> },
-    titleProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
+    descriptionProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
+    title: {
+      default: undefined,
+      type: [String, Object, Array, Function] as PropType<VNodeChild>,
+    },
+    titleProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
   },
   setup(props, { attrs }) {
     return () => {
-      const hasHeading = props.title !== undefined || props.description !== undefined;
+      const hasHeading =
+        props.title !== undefined || props.description !== undefined;
 
       const nodes: VNodeChild[] = [];
 
       if (hasHeading) {
         nodes.push(
           h(ToolbarHeading, null, () => [
-            props.title !== undefined ? h(ToolbarTitle, props.titleProps, () => props.title) : null,
+            props.title !== undefined
+              ? h(ToolbarTitle, props.titleProps, () => props.title)
+              : null,
             props.description !== undefined
-              ? h(ToolbarDescription, props.descriptionProps, () => props.description)
+              ? h(
+                  ToolbarDescription,
+                  props.descriptionProps,
+                  () => props.description,
+                )
               : null,
           ]),
         );

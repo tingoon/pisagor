@@ -24,12 +24,19 @@ import {
   parseDate as arkParseDate,
   DatePicker as CalendarPrimitive,
 } from "@ark-ui/solid/date-picker";
-import { calendarRecipe, calendarTableCellRecipe } from "@pisagor/recipes/calendar";
+import {
+  calendarRecipe,
+  calendarTableCellRecipe,
+} from "@pisagor/recipes/calendar";
 import { formControlShellRecipe } from "@pisagor/recipes/form-control";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { For, splitProps } from "solid-js";
-import { CaretDownIcon, CaretLeftIcon, CaretRightIcon } from "../../internal/icons";
+import {
+  CaretDownIcon,
+  CaretLeftIcon,
+  CaretRightIcon,
+} from "../../internal/icons";
 import { Button, type ButtonProps } from "../button";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { CalendarSlotsContext, useCalendar } from "./calendar.context";
@@ -92,12 +99,21 @@ function useCalendarSelectShell(className?: string) {
 export const parseDate = arkParseDate;
 
 export function CalendarRoot(props: CalendarProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["variant", "children", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "variant",
+    "children",
+    "recipe",
+    "class",
+  ]);
   const slots = () => (local.recipe ?? calendarRecipe)();
 
   return (
     <CalendarSlotsContext value={{ slots: slots() }}>
-      <CalendarPrimitive.Root {...rest} class={slots().base({ class: cn(local.class) })} inline>
+      <CalendarPrimitive.Root
+        {...rest}
+        class={slots().base({ class: cn(local.class) })}
+        inline
+      >
         {local.children}
       </CalendarPrimitive.Root>
     </CalendarSlotsContext>
@@ -107,27 +123,44 @@ export function CalendarRoot(props: CalendarProps): JSX.Element {
 export function CalendarControl(props: CalendarControlProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useCalendar();
-  return <CalendarPrimitive.Control {...rest} class={slots.control({ class: local.class })} />;
+  return (
+    <CalendarPrimitive.Control
+      {...rest}
+      class={slots.control({ class: local.class })}
+    />
+  );
 }
 
 export function CalendarLabel(props: CalendarLabelProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useCalendar();
-  return <CalendarPrimitive.Label {...rest} class={slots.label({ class: local.class })} />;
+  return (
+    <CalendarPrimitive.Label
+      {...rest}
+      class={slots.label({ class: local.class })}
+    />
+  );
 }
 
 export function CalendarTrigger(props: CalendarTriggerProps): JSX.Element {
   return <CalendarPrimitive.Trigger {...props} />;
 }
 
-export function CalendarPresetTrigger(props: CalendarPresetTriggerProps): JSX.Element {
+export function CalendarPresetTrigger(
+  props: CalendarPresetTriggerProps,
+): JSX.Element {
   return <CalendarPrimitive.PresetTrigger {...props} />;
 }
 
 export function CalendarViewDate(props: CalendarViewDateProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useCalendar();
-  return <CalendarPrimitive.RangeText {...rest} class={slots.rangeText({ class: local.class })} />;
+  return (
+    <CalendarPrimitive.RangeText
+      {...rest}
+      class={slots.rangeText({ class: local.class })}
+    />
+  );
 }
 
 export function CalendarTodayTrigger(props: ButtonProps): JSX.Element {
@@ -150,18 +183,30 @@ export function CalendarTodayTrigger(props: ButtonProps): JSX.Element {
   );
 }
 
-export function CalendarClearTrigger(props: CalendarClearTriggerProps): JSX.Element {
+export function CalendarClearTrigger(
+  props: CalendarClearTriggerProps,
+): JSX.Element {
   return <CalendarPrimitive.ClearTrigger {...props} />;
 }
 
-export function CalendarYearSelect(props: CalendarYearSelectProps): JSX.Element {
+export function CalendarYearSelect(
+  props: CalendarYearSelectProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useCalendar();
   const shell = useCalendarSelectShell(local.class);
 
   return (
-    <div class={slots.selectWrapper()} data-part="year-select-wrapper" data-scope="calendar">
-      <CalendarPrimitive.YearSelect {...rest} {...shell.controlProps} class={shell.className} />
+    <div
+      class={slots.selectWrapper()}
+      data-part="year-select-wrapper"
+      data-scope="calendar"
+    >
+      <CalendarPrimitive.YearSelect
+        {...rest}
+        {...shell.controlProps}
+        class={shell.className}
+      />
       <CaretDownIcon
         class={slots.selectIcon()}
         data-part="year-select-icon"
@@ -171,14 +216,24 @@ export function CalendarYearSelect(props: CalendarYearSelectProps): JSX.Element 
   );
 }
 
-export function CalendarMonthSelect(props: CalendarMonthSelectProps): JSX.Element {
+export function CalendarMonthSelect(
+  props: CalendarMonthSelectProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useCalendar();
   const shell = useCalendarSelectShell(local.class);
 
   return (
-    <div class={slots.selectWrapper()} data-part="month-select-wrapper" data-scope="calendar">
-      <CalendarPrimitive.MonthSelect {...rest} {...shell.controlProps} class={shell.className} />
+    <div
+      class={slots.selectWrapper()}
+      data-part="month-select-wrapper"
+      data-scope="calendar"
+    >
+      <CalendarPrimitive.MonthSelect
+        {...rest}
+        {...shell.controlProps}
+        class={shell.className}
+      />
       <CaretDownIcon
         class={slots.selectIcon()}
         data-part="month-select-icon"
@@ -191,22 +246,34 @@ export function CalendarMonthSelect(props: CalendarMonthSelectProps): JSX.Elemen
 export function CalendarView(props: CalendarViewProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useCalendar();
-  return <CalendarPrimitive.View {...rest} class={slots.view({ class: local.class })} />;
+  return (
+    <CalendarPrimitive.View
+      {...rest}
+      class={slots.view({ class: local.class })}
+    />
+  );
 }
 
 export function CalendarContext(props: CalendarContextProps): JSX.Element {
   return <CalendarPrimitive.Context {...props} />;
 }
 
-export function CalendarViewControl(props: CalendarViewControlProps): JSX.Element {
+export function CalendarViewControl(
+  props: CalendarViewControlProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useCalendar();
   return (
-    <CalendarPrimitive.ViewControl {...rest} class={slots.viewControl({ class: local.class })} />
+    <CalendarPrimitive.ViewControl
+      {...rest}
+      class={slots.viewControl({ class: local.class })}
+    />
   );
 }
 
-export function CalendarPrevTrigger(props: CalendarPrevTriggerProps): JSX.Element {
+export function CalendarPrevTrigger(
+  props: CalendarPrevTriggerProps,
+): JSX.Element {
   const { slots } = useCalendar();
   return (
     <CalendarPrimitive.PrevTrigger
@@ -225,7 +292,9 @@ export function CalendarPrevTrigger(props: CalendarPrevTriggerProps): JSX.Elemen
   );
 }
 
-export function CalendarNextTrigger(props: CalendarNextTriggerProps): JSX.Element {
+export function CalendarNextTrigger(
+  props: CalendarNextTriggerProps,
+): JSX.Element {
   const { slots } = useCalendar();
   return (
     <CalendarPrimitive.NextTrigger
@@ -247,7 +316,12 @@ export function CalendarNextTrigger(props: CalendarNextTriggerProps): JSX.Elemen
 export function CalendarTable(props: CalendarTableProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useCalendar();
-  return <CalendarPrimitive.Table {...rest} class={slots.table({ class: local.class })} />;
+  return (
+    <CalendarPrimitive.Table
+      {...rest}
+      class={slots.table({ class: local.class })}
+    />
+  );
 }
 
 export function CalendarWeekDays(props: CalendarWeekDaysProps): JSX.Element {
@@ -260,7 +334,9 @@ export function CalendarWeekDays(props: CalendarWeekDaysProps): JSX.Element {
         <CalendarTableHead {...rest}>
           <CalendarTableRow>
             <For each={calendar().weekDays}>
-              {(weekDay) => <CalendarTableHeader>{weekDay[format()]}</CalendarTableHeader>}
+              {(weekDay) => (
+                <CalendarTableHeader>{weekDay[format()]}</CalendarTableHeader>
+              )}
             </For>
           </CalendarTableRow>
         </CalendarTableHead>
@@ -281,7 +357,10 @@ export function CalendarTableDays(props: CalendarTableBodyProps): JSX.Element {
               <CalendarTableRow>
                 <For each={week}>
                   {(day) => (
-                    <CalendarTableCell tabIndex={local.tabIndex ?? undefined} value={day}>
+                    <CalendarTableCell
+                      tabIndex={local.tabIndex ?? undefined}
+                      value={day}
+                    >
                       {day.day}
                     </CalendarTableCell>
                   )}
@@ -295,7 +374,9 @@ export function CalendarTableDays(props: CalendarTableBodyProps): JSX.Element {
   );
 }
 
-export function CalendarTableNextMonth(props: CalendarTableNextMonthProps): JSX.Element {
+export function CalendarTableNextMonth(
+  props: CalendarTableNextMonthProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["tabIndex", "months"]);
   const months = () => local.months ?? 1;
 
@@ -336,14 +417,24 @@ export function CalendarTableHead(props: CalendarTableHeadProps): JSX.Element {
 export function CalendarTableRow(props: CalendarTableRowProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useCalendar();
-  return <CalendarPrimitive.TableRow {...rest} class={slots.tableRow({ class: local.class })} />;
+  return (
+    <CalendarPrimitive.TableRow
+      {...rest}
+      class={slots.tableRow({ class: local.class })}
+    />
+  );
 }
 
-export function CalendarTableHeader(props: CalendarTableHeaderProps): JSX.Element {
+export function CalendarTableHeader(
+  props: CalendarTableHeaderProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useCalendar();
   return (
-    <CalendarPrimitive.TableHeader {...rest} class={slots.tableHeader({ class: local.class })} />
+    <CalendarPrimitive.TableHeader
+      {...rest}
+      class={slots.tableHeader({ class: local.class })}
+    />
   );
 }
 

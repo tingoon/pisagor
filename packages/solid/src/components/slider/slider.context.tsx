@@ -7,6 +7,8 @@ interface SliderContextValue {
   trackVariantClass: string;
 }
 
-export const { SliderContext, useSlider } = createContext<SliderContextValue>()({
-  name: "Slider",
-});
+export const { SliderContext, useSlider } = createContext<SliderContextValue>()(
+  {
+    name: "Slider",
+  },
+);

@@ -11,10 +11,14 @@ export const InputGroupWithNumberInput = defineComponent({
 
     return () =>
       h(InputGroup as ArkPart, null, () => [
-        h(NumberInput as ArkPart, { "aria-label": "Enter the amount", defaultValue: "10" }, () =>
-          h(numberInputParts.Input),
+        h(
+          NumberInput as ArkPart,
+          { "aria-label": "Enter the amount", defaultValue: "10" },
+          () => h(numberInputParts.Input),
         ),
-        h(InputGroup.Addon as ArkPart, null, () => h(InputGroup.Text as ArkPart, null, () => "€")),
+        h(InputGroup.Addon as ArkPart, null, () =>
+          h(InputGroup.Text as ArkPart, null, () => "€"),
+        ),
         h(InputGroup.Addon as ArkPart, { align: "inline-end" }, () =>
           h(InputGroup.Text as ArkPart, null, () => "EUR"),
         ),

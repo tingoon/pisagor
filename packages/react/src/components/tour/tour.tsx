@@ -78,7 +78,11 @@ export interface TourContentProps extends TourPrimitiveContentProps {
 // #endregion
 
 // #region Parts
-export function TourRoot({ steps = [], recipe = tourRecipe, ...rest }: TourProps) {
+export function TourRoot({
+  steps = [],
+  recipe = tourRecipe,
+  ...rest
+}: TourProps) {
   const [isStarted, setIsStarted] = useState(false);
 
   const tour = useTour({ steps });
@@ -166,7 +170,10 @@ export function TourContent({
     <Portal>
       <TourBackdrop />
       <TourPositioner>
-        <TourPrimitive.Content {...rest} className={slots.content({ className })}>
+        <TourPrimitive.Content
+          {...rest}
+          className={slots.content({ className })}
+        >
           {children ?? (
             <>
               <TourHeader>
@@ -185,7 +192,11 @@ export function TourContent({
 
           {!!showCloseButton && (
             <TourCloseTrigger asChild className={slots.close()}>
-              <Button className={slots.closeButton()} size="icon-md" variant="ghost">
+              <Button
+                className={slots.closeButton()}
+                size="icon-md"
+                variant="ghost"
+              >
                 <XIcon />
 
                 <span className={slots.closeLabel()}>Close</span>
@@ -200,7 +211,11 @@ export function TourContent({
   );
 }
 
-export function TourBody({ scrollFade = false, className, ...rest }: DialogBodyProps) {
+export function TourBody({
+  scrollFade = false,
+  className,
+  ...rest
+}: DialogBodyProps) {
   const dialogSlots = dialogRecipe();
 
   return (
@@ -221,7 +236,11 @@ export function TourSpotlight(props: TourSpotlightProps) {
   return <TourPrimitive.Spotlight {...props} className={slots.spotlight()} />;
 }
 
-export function TourHeader({ children, className, ...rest }: DialogHeaderProps) {
+export function TourHeader({
+  children,
+  className,
+  ...rest
+}: DialogHeaderProps) {
   const dialogSlots = dialogRecipe();
 
   return (
@@ -250,17 +269,26 @@ export function TourDescription({ className, ...rest }: TourDescriptionProps) {
   const { slots, tour } = useTourContext();
 
   return (
-    <TourPrimitive.Description {...rest} className={slots.description({ className })}>
+    <TourPrimitive.Description
+      {...rest}
+      className={slots.description({ className })}
+    >
       {tour.step?.description}
     </TourPrimitive.Description>
   );
 }
 
-export function TourProgressText({ className, ...rest }: TourProgressTextProps) {
+export function TourProgressText({
+  className,
+  ...rest
+}: TourProgressTextProps) {
   const { slots, tour } = useTourContext();
 
   return (
-    <TourPrimitive.ProgressText {...rest} className={slots.progressText({ className })}>
+    <TourPrimitive.ProgressText
+      {...rest}
+      className={slots.progressText({ className })}
+    >
       {tour.getProgressText()}
     </TourPrimitive.ProgressText>
   );
@@ -270,12 +298,20 @@ export function TourCloseTrigger(props: TourCloseTriggerProps) {
   return <TourPrimitive.CloseTrigger {...props} />;
 }
 
-export function TourFooter({ children, className, ...rest }: DialogFooterProps) {
+export function TourFooter({
+  children,
+  className,
+  ...rest
+}: DialogFooterProps) {
   const dialogSlots = dialogRecipe();
 
   return (
     <TourPrimitive.Control {...rest} asChild>
-      <ark.div className={dialogSlots.footer({ className })} data-part="control" data-scope="tour">
+      <ark.div
+        className={dialogSlots.footer({ className })}
+        data-part="control"
+        data-scope="tour"
+      >
         {children}
       </ark.div>
     </TourPrimitive.Control>
@@ -304,7 +340,9 @@ export function TourActions({ className, ...rest }: DialogFooterProps) {
             <Button
               size="sm"
               variant={
-                action.action === "dismiss" || action.action === "prev" ? "outline" : "default"
+                action.action === "dismiss" || action.action === "prev"
+                  ? "outline"
+                  : "default"
               }
             >
               {action.action === "prev" && <CaretLeftIcon />}
@@ -318,7 +356,9 @@ export function TourActions({ className, ...rest }: DialogFooterProps) {
   );
 }
 
-export function TourPreviousStep({ ...rest }: Omit<TourActionTriggerProps, "action">) {
+export function TourPreviousStep({
+  ...rest
+}: Omit<TourActionTriggerProps, "action">) {
   const { tour } = useTourContext();
 
   const prevAction = useMemo(
@@ -340,11 +380,16 @@ export function TourPreviousStep({ ...rest }: Omit<TourActionTriggerProps, "acti
   );
 }
 
-export function TourNextStep({ ...rest }: Omit<TourActionTriggerProps, "action">) {
+export function TourNextStep({
+  ...rest
+}: Omit<TourActionTriggerProps, "action">) {
   const { tour } = useTourContext();
 
   const action = useMemo(
-    () => tour.step?.actions?.find((a) => a.action === "next" || a.action === "dismiss"),
+    () =>
+      tour.step?.actions?.find(
+        (a) => a.action === "next" || a.action === "dismiss",
+      ),
     [tour],
   );
 

@@ -1,5 +1,9 @@
 import { useFilter, useListCollection } from "@ark-ui/react";
-import { ArrowBendDownLeftIcon, ArrowDownIcon, ArrowUpIcon } from "@phosphor-icons/react";
+import {
+  ArrowBendDownLeftIcon,
+  ArrowDownIcon,
+  ArrowUpIcon,
+} from "@phosphor-icons/react";
 import { Kbd } from "@pisagor/react";
 import { Command } from "..";
 export function WithFooter() {
@@ -22,7 +26,10 @@ export function WithFooter() {
   });
 
   return (
-    <Command collection={collection} onInputValueChange={({ inputValue }) => filter(inputValue)}>
+    <Command
+      collection={collection}
+      onInputValueChange={({ inputValue }) => filter(inputValue)}
+    >
       <Command.Input placeholder="Search..." />
       <Command.Content>
         <Command.Empty />

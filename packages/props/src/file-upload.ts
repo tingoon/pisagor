@@ -1,4 +1,7 @@
-import type { FileUploadItemRecipeFn, FileUploadRecipeFn } from "@pisagor/recipes/file-upload";
+import type {
+  FileUploadItemRecipeFn,
+  FileUploadRecipeFn,
+} from "@pisagor/recipes/file-upload";
 
 /** FileUpload props. */
 export interface FileUploadProps {

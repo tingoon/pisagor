@@ -4,7 +4,12 @@ import { TagsInput } from "..";
 
 const validate = ({ value, inputValue }) => {
   const next = inputValue.trim();
-  return Boolean(next) && !value.includes(next) && next.length >= 3 && validTagPattern.test(next);
+  return (
+    Boolean(next) &&
+    !value.includes(next) &&
+    next.length >= 3 &&
+    validTagPattern.test(next)
+  );
 };
 </script>
 

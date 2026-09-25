@@ -1,4 +1,9 @@
-import { CopyIcon, DotsThreeIcon, FileIcon, FolderIcon } from "@phosphor-icons/react";
+import {
+  CopyIcon,
+  DotsThreeIcon,
+  FileIcon,
+  FolderIcon,
+} from "@phosphor-icons/react";
 import { DropdownMenu, InputGroup } from "@pisagor/react";
 
 export function InputGroupWithMenu() {
@@ -8,7 +13,11 @@ export function InputGroupWithMenu() {
       <InputGroup.Addon align="inline-end">
         <DropdownMenu>
           <DropdownMenu.Trigger asChild>
-            <InputGroup.Button aria-label="Open menu" size="icon-xs" variant="ghost">
+            <InputGroup.Button
+              aria-label="Open menu"
+              size="icon-xs"
+              variant="ghost"
+            >
               <DotsThreeIcon aria-hidden />
             </InputGroup.Button>
           </DropdownMenu.Trigger>

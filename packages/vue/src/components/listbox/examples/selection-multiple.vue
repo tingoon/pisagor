@@ -16,7 +16,11 @@ const collection = createListCollection({
     <Item class="p-1">
       <Listbox.Root selection-mode="multiple" :collection="collection">
         <Listbox.Content>
-          <Listbox.Item v-for="item in collection.items" :key="item.value" :item="item">
+          <Listbox.Item
+            v-for="item in collection.items"
+            :key="item.value"
+            :item="item"
+          >
             <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>
             <Listbox.ItemIndicator />
           </Listbox.Item>

@@ -6,7 +6,10 @@ import { InputGroup } from "..";
 <template>
   <div class="flex flex-col gap-2">
     <InputGroup>
-      <InputGroup.Textarea class="font-mono text-sm" placeholder="console.log('Hello, world!');" />
+      <InputGroup.Textarea
+        class="font-mono text-sm"
+        placeholder="console.log('Hello, world!');"
+      />
       <InputGroup.Addon align="block-start">
         <PhFileCode class="text-muted-foreground" />
         <InputGroup.Text class="font-mono">script.js</InputGroup.Text>
@@ -16,6 +19,8 @@ import { InputGroup } from "..";
         </InputGroup.Button>
       </InputGroup.Addon>
     </InputGroup>
-    <p class="text-muted-foreground text-sm">Header positioned above the textarea.</p>
+    <p class="text-muted-foreground text-sm">
+      Header positioned above the textarea.
+    </p>
   </div>
 </template>

@@ -64,7 +64,9 @@ export const dropdownMenuItemRecipe = tv({
       "data-disabled:pointer-events-none data-disabled:opacity-64",
       "[&_svg:not([class*='size-'])]:size-3.5 [&_svg]:pointer-events-none [&_svg]:shrink-0",
     ],
-    indicator: ["pointer-events-none absolute inset-s-2 flex size-3.5 items-center justify-center"],
+    indicator: [
+      "pointer-events-none absolute inset-s-2 flex size-3.5 items-center justify-center",
+    ],
     text: ["flex items-center gap-2"],
   },
   variants: {
@@ -72,7 +74,11 @@ export const dropdownMenuItemRecipe = tv({
       true: { base: "ps-8" },
     },
     variant: {
-      default: { base: ["data-highlighted:bg-accent data-highlighted:text-accent-foreground"] },
+      default: {
+        base: [
+          "data-highlighted:bg-accent data-highlighted:text-accent-foreground",
+        ],
+      },
       destructive: {
         base: [
           "text-destructive",
@@ -89,6 +95,7 @@ export type DropdownMenuRecipe = ReturnType<DropdownMenuRecipeFn>;
 export type DropdownMenuRecipeSlot = keyof DropdownMenuRecipe;
 
 export type DropdownMenuItemRecipeFn = typeof dropdownMenuItemRecipe;
-export type DropdownMenuItemVariantProps = VariantProps<DropdownMenuItemRecipeFn>;
+export type DropdownMenuItemVariantProps =
+  VariantProps<DropdownMenuItemRecipeFn>;
 export type DropdownMenuItemRecipe = ReturnType<DropdownMenuItemRecipeFn>;
 export type DropdownMenuItemRecipeSlot = keyof DropdownMenuItemRecipe;

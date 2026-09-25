@@ -45,29 +45,50 @@ const headings = [
   headings={headings}
   title="Overlay"
 >
-  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">Overview</h2>
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">
+    Overview
+  </h2>
   <p class="mb-8 text-muted-foreground">
-    Overlay compositions for menus, dialogs, popovers, item pickers, and avatar overflow.
+    Overlay compositions for menus, dialogs, popovers, item pickers, and avatar
+    overflow.
   </p>
 
-  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="menu-dialog">Menu Dialog</h2>
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="menu-dialog">
+    Menu Dialog
+  </h2>
   <ComponentPreview code={MenuDialogSource} language="tsx" title="Menu Dialog">
     <MenuDialog client:only="react" />
   </ComponentPreview>
-  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="popover-dialog">
+  <h2
+    class="mb-3 mt-10 text-2xl font-semibold tracking-tight"
+    id="popover-dialog"
+  >
     Popover Dialog
   </h2>
-  <ComponentPreview code={PopoverDialogSource} language="tsx" title="Popover Dialog">
+  <ComponentPreview
+    code={PopoverDialogSource}
+    language="tsx"
+    title="Popover Dialog"
+  >
     <PopoverDialog client:only="react" />
   </ComponentPreview>
-  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="item-picker">Item Picker</h2>
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="item-picker">
+    Item Picker
+  </h2>
   <ComponentPreview code={ItemPickerSource} language="tsx" title="Item Picker">
     <ItemPicker client:only="react" />
   </ComponentPreview>
-  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="avatar-group-overflow">
+  <h2
+    class="mb-3 mt-10 text-2xl font-semibold tracking-tight"
+    id="avatar-group-overflow"
+  >
     Avatar Group Overflow
   </h2>
-  <ComponentPreview code={AvatarGroupOverflowSource} language="tsx" title="Avatar Group Overflow">
+  <ComponentPreview
+    code={AvatarGroupOverflowSource}
+    language="tsx"
+    title="Avatar Group Overflow"
+  >
     <AvatarGroupOverflow client:only="react" />
   </ComponentPreview>
 </DocsLayout>

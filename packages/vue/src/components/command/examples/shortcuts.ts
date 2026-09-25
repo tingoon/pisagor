@@ -26,7 +26,8 @@ export default defineComponent({
         Command,
         {
           collection: collection.value,
-          onInputValueChange: (details: { inputValue: string }) => filter(details.inputValue),
+          onInputValueChange: (details: { inputValue: string }) =>
+            filter(details.inputValue),
         },
         () => [
           h(Command.Input, { placeholder: "Search..." }),

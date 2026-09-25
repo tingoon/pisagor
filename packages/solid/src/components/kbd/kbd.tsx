@@ -1,10 +1,16 @@
 import { ark } from "@ark-ui/solid/factory";
-import { type KbdVariantProps, kbdGroupRecipe, kbdRecipe } from "@pisagor/recipes/kbd";
+import {
+  type KbdVariantProps,
+  kbdGroupRecipe,
+  kbdRecipe,
+} from "@pisagor/recipes/kbd";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
-export interface KbdProps extends ComponentProps<typeof ark.kbd>, KbdVariantProps {
+export interface KbdProps
+  extends ComponentProps<typeof ark.kbd>,
+    KbdVariantProps {
   recipe?: typeof kbdRecipe;
 }
 
@@ -17,7 +23,10 @@ export function Kbd(props: KbdProps): JSX.Element {
   return (
     <ark.kbd
       {...rest}
-      class={(local.recipe ?? kbdRecipe)({ class: cn(local.class), variant: local.variant })}
+      class={(local.recipe ?? kbdRecipe)({
+        class: cn(local.class),
+        variant: local.variant,
+      })}
       data-part="root"
       data-scope="kbd"
     />

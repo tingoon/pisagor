@@ -7,7 +7,10 @@ import type {
 } from "@ark-ui/solid/signature-pad";
 import { SignaturePad as SignaturePadPrimitive } from "@ark-ui/solid/signature-pad";
 import { formControlZoneRecipe } from "@pisagor/recipes/form-control";
-import { type SignaturePadRecipeSlot, signaturePadRecipe } from "@pisagor/recipes/signature-pad";
+import {
+  type SignaturePadRecipeSlot,
+  signaturePadRecipe,
+} from "@pisagor/recipes/signature-pad";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
@@ -26,14 +29,21 @@ type SignaturePadRootProps = SignaturePadPrimitiveRootProps & {
   invalid?: boolean;
 };
 
-export interface SignaturePadProps extends Omit<SignaturePadRootProps, "children"> {
+export interface SignaturePadProps
+  extends Omit<SignaturePadRootProps, "children"> {
   classNames?: SignaturePadClassNames;
 }
 
 type SignaturePadClearProps = SignaturePadClearTriggerProps;
 
 function SignaturePadRoot(props: SignaturePadRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["variant", "invalid", "children", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "variant",
+    "invalid",
+    "children",
+    "recipe",
+    "class",
+  ]);
   const slots = () => (local.recipe ?? signaturePadRecipe)();
   const invalid = () => local.invalid ?? false;
 
@@ -51,7 +61,9 @@ function SignaturePadRoot(props: SignaturePadRootProps): JSX.Element {
   );
 }
 
-function SignaturePadControl(props: SignaturePadControlProps & { invalid?: boolean }): JSX.Element {
+function SignaturePadControl(
+  props: SignaturePadControlProps & { invalid?: boolean },
+): JSX.Element {
   const [local, rest] = splitProps(props, ["invalid", "children", "class"]);
   const { slots } = useSignaturePad();
   const surfaceVariant = useFormControlSurface();
@@ -77,7 +89,12 @@ function SignaturePadControl(props: SignaturePadControlProps & { invalid?: boole
 function SignaturePadSegment(props: SignaturePadSegmentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useSignaturePad();
-  return <SignaturePadPrimitive.Segment {...rest} class={slots.segment({ class: local.class })} />;
+  return (
+    <SignaturePadPrimitive.Segment
+      {...rest}
+      class={slots.segment({ class: local.class })}
+    />
+  );
 }
 
 function SignaturePadClear(props: SignaturePadClearProps): JSX.Element {
@@ -103,16 +120,34 @@ function SignaturePadClear(props: SignaturePadClearProps): JSX.Element {
 function SignaturePadGuide(props: SignaturePadGuideProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useSignaturePad();
-  return <SignaturePadPrimitive.Guide {...rest} class={slots.guide({ class: local.class })} />;
+  return (
+    <SignaturePadPrimitive.Guide
+      {...rest}
+      class={slots.guide({ class: local.class })}
+    />
+  );
 }
 
 export function SignaturePad(props: SignaturePadProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["variant", "invalid", "class", "classNames"]);
+  const [local, rest] = splitProps(props, [
+    "variant",
+    "invalid",
+    "class",
+    "classNames",
+  ]);
   const invalid = () => local.invalid ?? false;
 
   return (
-    <SignaturePadRoot {...rest} class={local.class} invalid={invalid()} variant={local.variant}>
-      <SignaturePadControl class={local.classNames?.control} invalid={invalid()}>
+    <SignaturePadRoot
+      {...rest}
+      class={local.class}
+      invalid={invalid()}
+      variant={local.variant}
+    >
+      <SignaturePadControl
+        class={local.classNames?.control}
+        invalid={invalid()}
+      >
         <SignaturePadSegment class={local.classNames?.segment} />
         <SignaturePadClear class={local.classNames?.clear} />
         <SignaturePadGuide class={local.classNames?.guide} />

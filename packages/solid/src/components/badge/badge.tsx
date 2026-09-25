@@ -4,12 +4,20 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
-export interface BadgeProps extends ComponentProps<typeof ark.span>, BadgeVariantProps {
+export interface BadgeProps
+  extends ComponentProps<typeof ark.span>,
+    BadgeVariantProps {
   recipe?: typeof badgeRecipe;
 }
 
 export function Badge(props: BadgeProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["pill", "size", "variant", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "pill",
+    "size",
+    "variant",
+    "recipe",
+    "class",
+  ]);
   const recipe = () => local.recipe ?? badgeRecipe;
 
   return (

@@ -4,13 +4,19 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 
-export interface ProseProps extends Omit<ComponentProps<typeof ark.div>, "innerHTML"> {
+export interface ProseProps
+  extends Omit<ComponentProps<typeof ark.div>, "innerHTML"> {
   html?: string;
   recipe?: typeof proseRecipe;
 }
 
 export function Prose(props: ProseProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class", "recipe", "html", "children"]);
+  const [local, rest] = splitProps(props, [
+    "class",
+    "recipe",
+    "html",
+    "children",
+  ]);
   const recipe = () => local.recipe ?? proseRecipe;
 
   return (

@@ -17,7 +17,11 @@ const items = (Astro.props.headings ?? []).filter(
 {items.length > 0 ? (
   <aside class="sticky top-14 hidden h-[calc(100dvh-3.5rem)] w-52 shrink-0 overflow-y-auto p-4 [scrollbar-color:color-mix(in_oklab,var(--border)_80%,transparent)_transparent] [scrollbar-width:thin] xl:block">
     <p class="docs-label mb-3">On this page</p>
-    <nav aria-label="On this page" class="relative space-y-px border-s border-border/50" data-toc>
+    <nav
+      aria-label="On this page"
+      class="relative space-y-px border-s border-border/50"
+      data-toc
+    >
       {items.map((item) => (
         <a
           class:list={[

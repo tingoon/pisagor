@@ -36,18 +36,33 @@ export function Download() {
             value={value}
           />
           <div className="flex flex-col items-center gap-2">
-            <p className="font-medium text-muted-foreground text-sm">Live preview</p>
+            <p className="font-medium text-muted-foreground text-sm">
+              Live preview
+            </p>
             <QrCode.Frame />
           </div>
           <div className="flex items-center gap-2">
             <QrCode.Download asChild fileName="qr-code" mimeType="image/png">
-              <Button aria-label="Download PNG" className="w-1/2" size="icon-md" variant="outline">
+              <Button
+                aria-label="Download PNG"
+                className="w-1/2"
+                size="icon-md"
+                variant="outline"
+              >
                 <DownloadIcon />
                 PNG
               </Button>
             </QrCode.Download>
-            <QrCode.Download asChild fileName="qr-code" mimeType="image/svg+xml">
-              <Button aria-label="Download SVG" className="w-1/2" size="icon-md">
+            <QrCode.Download
+              asChild
+              fileName="qr-code"
+              mimeType="image/svg+xml"
+            >
+              <Button
+                aria-label="Download SVG"
+                className="w-1/2"
+                size="icon-md"
+              >
                 <DownloadIcon />
                 SVG
               </Button>

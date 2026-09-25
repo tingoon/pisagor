@@ -17,7 +17,8 @@ const meta = preview.meta({
 
 export const Playground = meta.story({
   args: {
-    defaultValue: "<p>Write release notes with <strong>bold</strong> and lists.</p>",
+    defaultValue:
+      "<p>Write release notes with <strong>bold</strong> and lists.</p>",
   },
   tags: ["autodocs"],
 });

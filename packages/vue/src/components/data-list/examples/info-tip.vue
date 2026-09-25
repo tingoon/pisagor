@@ -30,11 +30,17 @@ const data = [
         {{ item.label }}
         <Popover :modal="false" :positioning="{ placement: 'top' }">
           <Popover.Trigger :as-child="true">
-            <Button size="icon-sm" variant="ghost" :aria-label="`Info about ${item.label}`">
+            <Button
+              size="icon-sm"
+              variant="ghost"
+              :aria-label="`Info about ${item.label}`"
+            >
               <PhInfo />
             </Button>
           </Popover.Trigger>
-          <Popover.Content class="w-max text-sm">{{ item.info }}</Popover.Content>
+          <Popover.Content class="w-max text-sm">{{
+            item.info
+          }}</Popover.Content>
         </Popover>
       </DataList.Item>
     </DataList.Root>

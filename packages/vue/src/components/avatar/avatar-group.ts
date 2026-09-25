@@ -32,7 +32,10 @@ export const AvatarGroupRoot = defineComponent({
   inheritAttrs: false,
   name: "AvatarGroupRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: avatarGroupRecipe,
       type: Function as PropType<typeof avatarGroupRecipe>,
@@ -60,7 +63,10 @@ export const AvatarGroupCount = defineComponent({
   inheritAttrs: false,
   name: "AvatarGroupCount",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: avatarGroupRecipe,
       type: Function as PropType<typeof avatarGroupRecipe>,
@@ -88,13 +94,17 @@ export const AvatarGroupShorthand = defineComponent({
   inheritAttrs: false,
   name: "AvatarGroup",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     max: { default: undefined, type: Number },
     users: { default: () => [], type: Array as PropType<AvatarGroupUser[]> },
   },
   setup(props, { attrs }) {
     return () => {
-      const visibleUsers = props.max !== undefined ? props.users.slice(0, props.max) : props.users;
+      const visibleUsers =
+        props.max !== undefined ? props.users.slice(0, props.max) : props.users;
       const remainingCount =
         props.max !== undefined && props.users.length > props.max
           ? props.users.length - props.max
@@ -109,7 +119,9 @@ export const AvatarGroupShorthand = defineComponent({
             src: user.src,
           }),
         ),
-        remainingCount > 0 ? h(AvatarGroupCount, () => `+${remainingCount}`) : null,
+        remainingCount > 0
+          ? h(AvatarGroupCount, () => `+${remainingCount}`)
+          : null,
       ]);
     };
   },

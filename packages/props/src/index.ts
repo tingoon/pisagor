@@ -1,4 +1,8 @@
-export type { AccordionItemProps, AccordionPresetItem, AccordionProps } from "./accordion";
+export type {
+  AccordionItemProps,
+  AccordionPresetItem,
+  AccordionProps,
+} from "./accordion";
 export type { ActionBarProps } from "./action-bar";
 export type { AlertProps } from "./alert";
 export type { AlertDialogProps } from "./alert-dialog";
@@ -7,7 +11,10 @@ export type { AppShellProps } from "./app-shell";
 export type { AspectRatioProps } from "./aspect-ratio";
 export type { AvatarGroupProps, AvatarProps } from "./avatar";
 export type { BadgeProps } from "./badge";
-export type { BottomNavigationItemProps, BottomNavigationProps } from "./bottom-navigation";
+export type {
+  BottomNavigationItemProps,
+  BottomNavigationProps,
+} from "./bottom-navigation";
 export type { BreadcrumbItemProps, BreadcrumbProps } from "./breadcrumb";
 export type { ButtonProps } from "./button";
 export type { ButtonGroupProps } from "./button-group";
@@ -110,5 +117,9 @@ export type { ToggleGroupProps } from "./toggle-group";
 export type { ToolbarProps } from "./toolbar";
 export type { TooltipProps } from "./tooltip";
 export type { TourProps } from "./tour";
-export type { TreeViewBranchProps, TreeViewItemProps, TreeViewProps } from "./tree-view";
+export type {
+  TreeViewBranchProps,
+  TreeViewItemProps,
+  TreeViewProps,
+} from "./tree-view";
 export type { VisuallyHiddenProps } from "./visually-hidden";

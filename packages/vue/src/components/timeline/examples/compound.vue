@@ -17,7 +17,9 @@ import { Timeline } from "..";
     </Timeline.Item>
     <Timeline.Item>
       <Timeline.Separator />
-      <Timeline.Indicator class="size-6 border-0 bg-primary text-primary-foreground">
+      <Timeline.Indicator
+        class="size-6 border-0 bg-primary text-primary-foreground"
+      >
         <PhRocket weight="fill" />
       </Timeline.Indicator>
       <Timeline.Content>

@@ -6,7 +6,9 @@ interface Props {
 }
 ---
 
-<div class="overflow-x-auto rounded-xl border border-border/70 bg-card/80 backdrop-blur">
+<div
+  class="overflow-x-auto rounded-xl border border-border/70 bg-card/80 backdrop-blur"
+>
   <table class="w-full border-collapse text-sm">
     <thead>
       <tr class="border-b border-border/60 text-left text-muted-foreground">
@@ -20,7 +22,9 @@ interface Props {
       {Astro.props.rows.map((row) => (
   <tr class="border-b border-border/40 last:border-0">
     <td class="px-4 py-3 align-top">
-      <code class="rounded bg-muted/80 px-1.5 py-0.5 font-mono text-3.25">{row.name}</code>
+      <code class="rounded bg-muted/80 px-1.5 py-0.5 font-mono text-3.25">
+        {row.name}
+      </code>
     </td>
     <td class="px-4 py-3 align-top">
       <code class="inline-block max-w-88 break-words font-mono text-3.25 text-primary/90">

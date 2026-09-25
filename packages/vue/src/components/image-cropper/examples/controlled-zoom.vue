@@ -1,5 +1,8 @@
 <script lang="ts" setup>
-import { PhMagnifyingGlassMinus, PhMagnifyingGlassPlus } from "@phosphor-icons/vue";
+import {
+  PhMagnifyingGlassMinus,
+  PhMagnifyingGlassPlus,
+} from "@phosphor-icons/vue";
 import { Button } from "@pisagor/vue";
 import { ref } from "vue";
 import { ImageCropper } from "..";
@@ -26,10 +29,20 @@ function zoomOut() {
       <ImageCropper.Selection />
     </ImageCropper>
     <div class="flex gap-1">
-      <Button aria-label="Zoom out" size="icon-sm" variant="outline" @click="zoomOut">
+      <Button
+        aria-label="Zoom out"
+        size="icon-sm"
+        variant="outline"
+        @click="zoomOut"
+      >
         <PhMagnifyingGlassMinus aria-hidden="true" />
       </Button>
-      <Button aria-label="Zoom in" size="icon-sm" variant="outline" @click="zoomIn">
+      <Button
+        aria-label="Zoom in"
+        size="icon-sm"
+        variant="outline"
+        @click="zoomIn"
+      >
         <PhMagnifyingGlassPlus aria-hidden="true" />
       </Button>
     </div>

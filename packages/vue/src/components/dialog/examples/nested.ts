@@ -20,20 +20,28 @@ export default defineComponent({
             description: "View and manage a user in your team.",
             title: "Manage team member",
           }),
-          h(Dialog.Body, { class: "grid gap-2" } as Record<string, unknown>, () => [
-            h("div", { class: "grid gap-1" }, [
-              h("p", { class: "text-muted-foreground text-sm" }, "Name"),
-              h("p", { class: "font-medium text-sm" }, "Jane Doe"),
-            ]),
-            h("div", { class: "grid gap-1" }, [
-              h("p", { class: "text-muted-foreground text-sm" }, "Email"),
-              h("p", { class: "font-medium text-sm" }, "you@example.com"),
-            ]),
-          ]),
+          h(
+            Dialog.Body,
+            { class: "grid gap-2" } as Record<string, unknown>,
+            () => [
+              h("div", { class: "grid gap-1" }, [
+                h("p", { class: "text-muted-foreground text-sm" }, "Name"),
+                h("p", { class: "font-medium text-sm" }, "Jane Doe"),
+              ]),
+              h("div", { class: "grid gap-1" }, [
+                h("p", { class: "text-muted-foreground text-sm" }, "Email"),
+                h("p", { class: "font-medium text-sm" }, "you@example.com"),
+              ]),
+            ],
+          ),
           h(Dialog.Footer, null, () =>
             h(Dialog, null, () => [
               h(Dialog.Trigger, { asChild: true }, () =>
-                h("button", { class: outlineButtonClass(), type: "button" }, "Edit details"),
+                h(
+                  "button",
+                  { class: outlineButtonClass(), type: "button" },
+                  "Edit details",
+                ),
               ),
               h(Dialog.Content, { showCloseButton: false }, () => [
                 h(Dialog.Header, {
@@ -48,15 +56,26 @@ export default defineComponent({
                     ]),
                     h(Field, null, () => [
                       h(Field.Label, null, () => "Email"),
-                      h(Input, { defaultValue: "you@example.com", type: "text" }),
+                      h(Input, {
+                        defaultValue: "you@example.com",
+                        type: "text",
+                      }),
                     ]),
                   ]),
                 ),
                 h(Dialog.Footer, null, () => [
                   h(Dialog.CloseTrigger, { asChild: true }, () =>
-                    h("button", { class: ghostButtonClass(), type: "button" }, "Cancel"),
+                    h(
+                      "button",
+                      { class: ghostButtonClass(), type: "button" },
+                      "Cancel",
+                    ),
                   ),
-                  h("button", { class: defaultButtonClass(), type: "submit" }, "Save changes"),
+                  h(
+                    "button",
+                    { class: defaultButtonClass(), type: "submit" },
+                    "Save changes",
+                  ),
                 ]),
               ]),
             ]),

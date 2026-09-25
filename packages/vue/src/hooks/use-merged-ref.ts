@@ -25,7 +25,9 @@ export function assignRef<T>(ref: PossibleRef<T>, value: T | null): RefCleanup {
 /**
  * Merges multiple template refs into a single callback ref.
  */
-export function mergeRefs<T>(...refs: PossibleRef<T>[]): (instance: T | null) => RefCleanup {
+export function mergeRefs<T>(
+  ...refs: PossibleRef<T>[]
+): (instance: T | null) => RefCleanup {
   const cleanupMap = new Map<PossibleRef<T>, Exclude<RefCleanup, void>>();
 
   return (instance: T | null) => {
@@ -57,6 +59,8 @@ export function mergeRefs<T>(...refs: PossibleRef<T>[]): (instance: T | null) =>
 /**
  * Returns a callback ref that assigns the element to every provided ref.
  */
-export function useMergedRef<T>(...refs: PossibleRef<T>[]): (instance: T | null) => RefCleanup {
+export function useMergedRef<T>(
+  ...refs: PossibleRef<T>[]
+): (instance: T | null) => RefCleanup {
   return mergeRefs(...refs);
 }

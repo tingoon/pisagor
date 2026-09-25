@@ -1,4 +1,7 @@
-import { type MenuContextTriggerProps, Menu as MenuPrimitive } from "@ark-ui/react/menu";
+import {
+  type MenuContextTriggerProps,
+  Menu as MenuPrimitive,
+} from "@ark-ui/react/menu";
 import { contextMenuRecipe } from "@pisagor/recipes/context-menu";
 import type {
   DropdownMenuContentProps,
@@ -14,7 +17,8 @@ import { DropdownMenu } from "../dropdown-menu";
 // #region Types
 export type ContextMenuRootProps = DropdownMenuRootProps;
 
-export interface ContextMenuContextTriggerProps extends MenuContextTriggerProps {
+export interface ContextMenuContextTriggerProps
+  extends MenuContextTriggerProps {
   /**
    * Style recipe. Defaults to `contextMenuRecipe` from `@pisagor/recipes/context-menu`.
    *
@@ -34,7 +38,9 @@ export function ContextMenuContextTrigger({
   className,
   ...rest
 }: ContextMenuContextTriggerProps) {
-  return <MenuPrimitive.ContextTrigger {...rest} className={recipe({ className })} />;
+  return (
+    <MenuPrimitive.ContextTrigger {...rest} className={recipe({ className })} />
+  );
 }
 
 export function ContextMenuContent(props: DropdownMenuContentProps) {
@@ -66,7 +72,13 @@ export function ContextMenuTriggerItem(props: DropdownMenuTriggerItemProps) {
 }
 
 export function ContextMenuShortcut(props: DropdownMenuShortcutProps) {
-  return <DropdownMenu.Shortcut {...props} data-part="shortcut" data-scope="context-menu" />;
+  return (
+    <DropdownMenu.Shortcut
+      {...props}
+      data-part="shortcut"
+      data-scope="context-menu"
+    />
+  );
 }
 // #endregion
 

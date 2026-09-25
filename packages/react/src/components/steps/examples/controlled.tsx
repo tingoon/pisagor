@@ -8,7 +8,10 @@ export function Controlled() {
       title: "Your details",
     },
     { content: "A few details about your company.", title: "Company details" },
-    { content: "Start collaborating with your team.", title: "Invite your team" },
+    {
+      content: "Start collaborating with your team.",
+      title: "Invite your team",
+    },
   ];
   const [step, setStep] = useState(0);
 
@@ -43,10 +46,15 @@ export function Controlled() {
         </Steps.CompletedContent>
       </Steps>
       <div className="flex gap-2">
-        <Button onClick={() => setStep((s) => Math.max(0, s - 1))} variant="outline">
+        <Button
+          onClick={() => setStep((s) => Math.max(0, s - 1))}
+          variant="outline"
+        >
           Back
         </Button>
-        <Button onClick={() => setStep((s) => Math.min(items.length, s + 1))}>Next</Button>
+        <Button onClick={() => setStep((s) => Math.min(items.length, s + 1))}>
+          Next
+        </Button>
 
         <Button onClick={() => setStep(0)} variant="ghost">
           Reset

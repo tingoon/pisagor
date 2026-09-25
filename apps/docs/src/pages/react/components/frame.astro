@@ -39,30 +39,51 @@ const headings = [
 
   <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
+    Default
+  </h3>
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="separated-panels">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="separated-panels"
+  >
     Separated Panels
   </h3>
-  <ComponentPreview code={examples.SeparatedPanels} language="tsx" title="Separated Panels">
+  <ComponentPreview
+    code={examples.SeparatedPanels}
+    language="tsx"
+    title="Separated Panels"
+  >
     <SeparatedPanels client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-form-controls">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="with-form-controls"
+  >
     With Form Controls
   </h3>
-  <ComponentPreview code={examples.WithFormControls} language="tsx" title="With Form Controls">
+  <ComponentPreview
+    code={examples.WithFormControls}
+    language="tsx"
+    title="With Form Controls"
+  >
     <WithFormControls client:only="react" />
   </ComponentPreview>
 
-  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <h2
+    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    id="installation"
+  >
+    Installation
+  </h2>
   <Installation class="mb-8" packages="@pisagor/react" />
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/frame</code>. Native HTML attributes are also supported and
-    omitted from this table.
+    Own props from <code>@pisagor/props/frame</code>. Native HTML attributes are
+    also supported and omitted from this table.
   </p>
   <PropsTable rows={frameProps} />
 </DocsLayout>

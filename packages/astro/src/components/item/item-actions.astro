@@ -8,6 +8,11 @@ const { class: className, ...rest } = Astro.props;
 const slots = itemRecipe();
 ---
 
-<div {...rest} class={slots.actions({ className })} data-part="actions" data-scope="item">
+<div
+  {...rest}
+  class={slots.actions({ className })}
+  data-part="actions"
+  data-scope="item"
+>
   <slot />
 </div>

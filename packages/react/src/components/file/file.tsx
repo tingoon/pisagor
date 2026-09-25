@@ -15,13 +15,16 @@ export interface FileRootProps extends ComponentProps<typeof ark.div> {
   recipe?: typeof fileRecipe;
 }
 
-export interface FileMediaProps extends ComponentProps<typeof ark.div>, FileVariantProps {}
+export interface FileMediaProps
+  extends ComponentProps<typeof ark.div>,
+    FileVariantProps {}
 
 export type FileNameProps = ComponentProps<typeof ark.div>;
 
 export type FileMetaProps = ComponentProps<typeof ark.div>;
 
-export interface FileSizeProps extends Omit<ComponentProps<typeof ark.div>, "children"> {
+export interface FileSizeProps
+  extends Omit<ComponentProps<typeof ark.div>, "children"> {
   /** File size in bytes. */
   value: number;
 }
@@ -45,19 +48,34 @@ export interface FileProps extends Omit<FileRootProps, "children" | "title"> {
 // #endregion
 
 // #region Parts
-export function FileRoot({ children, recipe = fileRecipe, className, ...rest }: FileRootProps) {
+export function FileRoot({
+  children,
+  recipe = fileRecipe,
+  className,
+  ...rest
+}: FileRootProps) {
   const slots = recipe();
 
   return (
     <FileContext value={{ slots }}>
-      <ark.div {...rest} className={slots.base({ className })} data-part="root" data-scope="file">
+      <ark.div
+        {...rest}
+        className={slots.base({ className })}
+        data-part="root"
+        data-scope="file"
+      >
         {children}
       </ark.div>
     </FileContext>
   );
 }
 
-export function FileMedia({ variant = "icon", children, className, ...rest }: FileMediaProps) {
+export function FileMedia({
+  variant = "icon",
+  children,
+  className,
+  ...rest
+}: FileMediaProps) {
   const { slots } = useFile();
 
   return (
@@ -90,7 +108,12 @@ export function FileName({ className, ...rest }: FileNameProps) {
   const { slots } = useFile();
 
   return (
-    <ark.div {...rest} className={slots.name({ className })} data-part="name" data-scope="file" />
+    <ark.div
+      {...rest}
+      className={slots.name({ className })}
+      data-part="name"
+      data-scope="file"
+    />
   );
 }
 
@@ -98,7 +121,12 @@ export function FileMeta({ className, ...rest }: FileMetaProps) {
   const { slots } = useFile();
 
   return (
-    <ark.div {...rest} className={slots.meta({ className })} data-part="meta" data-scope="file" />
+    <ark.div
+      {...rest}
+      className={slots.meta({ className })}
+      data-part="meta"
+      data-scope="file"
+    />
   );
 }
 
@@ -106,7 +134,12 @@ export function FileSize({ value, className, ...rest }: FileSizeProps) {
   const { slots } = useFile();
 
   return (
-    <ark.div {...rest} className={slots.size({ className })} data-part="size" data-scope="file">
+    <ark.div
+      {...rest}
+      className={slots.size({ className })}
+      data-part="size"
+      data-scope="file"
+    >
       <Format.Byte value={value} />
     </ark.div>
   );
@@ -127,7 +160,14 @@ export function FileActions({ className, ...rest }: FileActionsProps) {
 // #endregion
 
 // #region Shorthand
-export function FileShorthand({ size, name, actions, media, meta, ...rest }: FileProps) {
+export function FileShorthand({
+  size,
+  name,
+  actions,
+  media,
+  meta,
+  ...rest
+}: FileProps) {
   return (
     <FileRoot {...rest}>
       <FileMedia>{media}</FileMedia>

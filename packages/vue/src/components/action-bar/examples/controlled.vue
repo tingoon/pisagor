@@ -1,5 +1,11 @@
 <script lang="ts" setup>
-import { PhArchive, PhDownload, PhPencilSimple, PhTrash, PhX } from "@phosphor-icons/vue";
+import {
+  PhArchive,
+  PhDownload,
+  PhPencilSimple,
+  PhTrash,
+  PhX,
+} from "@phosphor-icons/vue";
 import { Button } from "@pisagor/vue";
 import { ref } from "vue";
 import { ActionBar } from "..";

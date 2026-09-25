@@ -44,7 +44,8 @@ export const File = meta.story({
   parameters: {
     docs: {
       description: {
-        story: "Prefer `FileInput` for file selection. See Components/Forms/File Input.",
+        story:
+          "Prefer `FileInput` for file selection. See Components/Forms/File Input.",
       },
     },
   },

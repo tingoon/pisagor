@@ -1,6 +1,9 @@
 import type { SliderProps } from "@pisagor/react";
 import { Slider } from "@pisagor/react";
-import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
+import {
+  type FieldPresentationProps,
+  FieldShell,
+} from "../../internal/field-shell";
 
 // #region Types
 type SliderControlProps = Omit<SliderProps, "invalid" | "label" | "name">;

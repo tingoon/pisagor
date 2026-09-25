@@ -49,15 +49,22 @@ const headings = [
 
   <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
+    Default
+  </h3>
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="min-max">Min Max</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="min-max">
+    Min Max
+  </h3>
   <ComponentPreview code={examples.MinMax} language="tsx" title="Min Max">
     <MinMax client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-horizontal">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="orientation-horizontal"
+  >
     Orientation Horizontal
   </h3>
   <ComponentPreview
@@ -67,38 +74,71 @@ const headings = [
   >
     <OrientationHorizontal client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-vertical">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="orientation-vertical"
+  >
     Orientation Vertical
   </h3>
-  <ComponentPreview code={examples.OrientationVertical} language="tsx" title="Orientation Vertical">
+  <ComponentPreview
+    code={examples.OrientationVertical}
+    language="tsx"
+    title="Orientation Vertical"
+  >
     <OrientationVertical client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="handle">Handle</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="handle">
+    Handle
+  </h3>
   <ComponentPreview code={examples.Handle} language="tsx" title="Handle">
     <Handle client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="edge-handle">Edge Handle</h3>
-  <ComponentPreview code={examples.EdgeHandle} language="tsx" title="Edge Handle">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="edge-handle">
+    Edge Handle
+  </h3>
+  <ComponentPreview
+    code={examples.EdgeHandle}
+    language="tsx"
+    title="Edge Handle"
+  >
     <EdgeHandle client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="multiple-panels">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="multiple-panels"
+  >
     Multiple Panels
   </h3>
-  <ComponentPreview code={examples.MultiplePanels} language="tsx" title="Multiple Panels">
+  <ComponentPreview
+    code={examples.MultiplePanels}
+    language="tsx"
+    title="Multiple Panels"
+  >
     <MultiplePanels client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="collapsible">Collapsible</h3>
-  <ComponentPreview code={examples.Collapsible} language="tsx" title="Collapsible">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="collapsible">
+    Collapsible
+  </h3>
+  <ComponentPreview
+    code={examples.Collapsible}
+    language="tsx"
+    title="Collapsible"
+  >
     <Collapsible client:only="react" />
   </ComponentPreview>
 
-  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <h2
+    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    id="installation"
+  >
+    Installation
+  </h2>
   <Installation class="mb-8" packages="@pisagor/react" />
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/resizable</code>. Native HTML attributes are also supported
-    and omitted from this table.
+    Own props from <code>@pisagor/props/resizable</code>. Native HTML attributes
+    are also supported and omitted from this table.
   </p>
   <PropsTable rows={resizableProps} />
 </DocsLayout>

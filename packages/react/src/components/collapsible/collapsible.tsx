@@ -49,13 +49,25 @@ export function CollapsibleRoot({
   );
 }
 
-export function CollapsibleTrigger({ className, ...rest }: CollapsibleTriggerProps) {
+export function CollapsibleTrigger({
+  className,
+  ...rest
+}: CollapsibleTriggerProps) {
   const { slots } = useCollapsible();
 
-  return <CollapsiblePrimitive.Trigger {...rest} className={slots.trigger({ className })} />;
+  return (
+    <CollapsiblePrimitive.Trigger
+      {...rest}
+      className={slots.trigger({ className })}
+    />
+  );
 }
 
-export function CollapsibleContent({ children, className, ...rest }: CollapsibleContentProps) {
+export function CollapsibleContent({
+  children,
+  className,
+  ...rest
+}: CollapsibleContentProps) {
   const { slots } = useCollapsible();
 
   return (
@@ -65,11 +77,17 @@ export function CollapsibleContent({ children, className, ...rest }: Collapsible
   );
 }
 
-export function CollapsibleIndicator({ className, ...rest }: CollapsibleIndicatorProps) {
+export function CollapsibleIndicator({
+  className,
+  ...rest
+}: CollapsibleIndicatorProps) {
   const { slots } = useCollapsible();
 
   return (
-    <CollapsiblePrimitive.Indicator {...rest} className={slots.indicator({ className })}>
+    <CollapsiblePrimitive.Indicator
+      {...rest}
+      className={slots.indicator({ className })}
+    >
       <CaretDownIcon className={slots.icon()} />
     </CollapsiblePrimitive.Indicator>
   );

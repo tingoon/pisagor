@@ -5,6 +5,7 @@ interface ButtonGroupContextValue {
   slots: ButtonGroupRecipe;
 }
 
-export const { ButtonGroupContext, useButtonGroup } = createContext<ButtonGroupContextValue>()({
-  name: "ButtonGroup",
-});
+export const { ButtonGroupContext, useButtonGroup } =
+  createContext<ButtonGroupContextValue>()({
+    name: "ButtonGroup",
+  });

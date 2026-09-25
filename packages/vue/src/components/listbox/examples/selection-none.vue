@@ -33,7 +33,9 @@ const collection = createListCollection({
               </div>
               <div class="flex min-w-0 flex-1 flex-col">
                 <Listbox.ItemText>New file</Listbox.ItemText>
-                <span class="text-muted-foreground text-xs">Create a new file</span>
+                <span class="text-muted-foreground text-xs"
+                  >Create a new file</span
+                >
               </div>
               <Listbox.Shortcut>⌘N</Listbox.Shortcut>
             </Listbox.Item>

@@ -1,4 +1,8 @@
-import type { KbdGroupRecipeFn, KbdRecipeFn, KbdVariantProps } from "@pisagor/recipes/kbd";
+import type {
+  KbdGroupRecipeFn,
+  KbdRecipeFn,
+  KbdVariantProps,
+} from "@pisagor/recipes/kbd";
 
 /** Kbd props. */
 export interface KbdProps extends KbdVariantProps {

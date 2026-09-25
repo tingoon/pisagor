@@ -41,7 +41,12 @@ export function Variants() {
         size="icon-lg"
         variant="outline"
       >
-        <Swap off={<SunIcon />} on={<MoonIcon />} swap={rotate} variant="rotate" />
+        <Swap
+          off={<SunIcon />}
+          on={<MoonIcon />}
+          swap={rotate}
+          variant="rotate"
+        />
       </Button>
       <Button
         aria-label="Toggle theme"
@@ -49,7 +54,12 @@ export function Variants() {
         size="icon-lg"
         variant="outline"
       >
-        <Swap off={<SunIcon />} on={<MoonIcon />} swap={scale} variant="scale" />
+        <Swap
+          off={<SunIcon />}
+          on={<MoonIcon />}
+          swap={scale}
+          variant="scale"
+        />
       </Button>
     </div>
   );

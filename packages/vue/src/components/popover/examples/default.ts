@@ -17,7 +17,11 @@ export default defineComponent({
               title: "Dimensions",
             }),
             h(Popover.Body, null, () =>
-              h("p", { class: "text-muted-foreground text-sm" }, "Popover body content."),
+              h(
+                "p",
+                { class: "text-muted-foreground text-sm" },
+                "Popover body content.",
+              ),
             ),
           ]),
         ),

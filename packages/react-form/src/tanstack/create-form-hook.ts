@@ -1,4 +1,8 @@
-import type { FormAsyncValidateOrFn, FormOptions, FormValidateOrFn } from "@tanstack/react-form";
+import type {
+  FormAsyncValidateOrFn,
+  FormOptions,
+  FormValidateOrFn,
+} from "@tanstack/react-form";
 import { createFormHook } from "@tanstack/react-form";
 import { useMemo } from "react";
 import { createRoot } from "./components/root";

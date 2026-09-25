@@ -50,7 +50,9 @@ export function createContext<T>() {
       const context = useSolidContext(Ctx);
 
       if (context === undefined && strict) {
-        const error = new Error(`${hookName} must be used within ${contextName}.`);
+        const error = new Error(
+          `${hookName} must be used within ${contextName}.`,
+        );
         error.name = `${contextName}Error`;
 
         if (typeof Error.captureStackTrace === "function") {

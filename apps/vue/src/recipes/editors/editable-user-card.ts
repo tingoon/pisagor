@@ -12,7 +12,10 @@ export const EditableUserCard = defineComponent({
   inheritAttrs: false,
   name: "EditableUserCard",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props) {
     // Vue repo does not include the editable control used by the React recipe.
@@ -30,7 +33,11 @@ export const EditableUserCard = defineComponent({
           h(Field.Group as ArkPart, null, () => [
             h(Field as ArkPart, null, () => [
               h(Field.Label as ArkPart, null, () => "Name"),
-              h(Input as ArkPart, { class: "w-full", readOnly: true, value: name.value }),
+              h(Input as ArkPart, {
+                class: "w-full",
+                readOnly: true,
+                value: name.value,
+              }),
             ]),
             h(Field as ArkPart, null, () => [
               h(Field.Label as ArkPart, null, () => "Username"),
@@ -40,7 +47,11 @@ export const EditableUserCard = defineComponent({
         ),
         // Kept as visual affordance (no editing logic in Vue).
         h(Card.Footer as ArkPart, null, () =>
-          h(Button as ArkPart, { type: "button", variant: "outline" }, () => "Edit"),
+          h(
+            Button as ArkPart,
+            { type: "button", variant: "outline" },
+            () => "Edit",
+          ),
         ),
       ]);
   },

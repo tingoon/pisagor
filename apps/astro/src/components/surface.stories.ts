@@ -7,7 +7,8 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: "Provides nested background surfaces that step through tonal levels.",
+        component:
+          "Provides nested background surfaces that step through tonal levels.",
       },
     },
   },

@@ -5,7 +5,8 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: "Displays tabular data with semantic table structure and styling.",
+        component:
+          "Displays tabular data with semantic table structure and styling.",
       },
     },
   },

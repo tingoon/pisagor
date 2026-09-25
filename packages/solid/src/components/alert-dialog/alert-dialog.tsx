@@ -28,11 +28,14 @@ export interface AlertDialogCancelProps
   extends DialogCloseTriggerProps,
     Omit<ButtonProps, "variant"> {}
 
-export interface AlertDialogProps extends Omit<AlertDialogRootProps, "children" | "title"> {
+export interface AlertDialogProps
+  extends Omit<AlertDialogRootProps, "children" | "title"> {
   actions?: JSX.Element;
   description?: JSX.Element;
   title?: JSX.Element;
-  trigger?: JSX.Element | ((props: JSX.ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element);
+  trigger?:
+    | JSX.Element
+    | ((props: JSX.ButtonHTMLAttributes<HTMLButtonElement>) => JSX.Element);
 }
 
 export function AlertDialogRoot(props: AlertDialogRootProps): JSX.Element {
@@ -83,23 +86,31 @@ export function AlertDialogBody(props: DialogBodyProps): JSX.Element {
 }
 
 export function AlertDialogHeader(props: DialogHeaderProps): JSX.Element {
-  return <Dialog.Header {...props} data-part="header" data-scope="alert-dialog" />;
+  return (
+    <Dialog.Header {...props} data-part="header" data-scope="alert-dialog" />
+  );
 }
 
 export function AlertDialogTitle(props: DialogTitleProps): JSX.Element {
   return <Dialog.Title {...props} />;
 }
 
-export function AlertDialogDescription(props: DialogDescriptionProps): JSX.Element {
+export function AlertDialogDescription(
+  props: DialogDescriptionProps,
+): JSX.Element {
   return <Dialog.Description {...props} />;
 }
 
-export function AlertDialogCloseTrigger(props: DialogCloseTriggerProps): JSX.Element {
+export function AlertDialogCloseTrigger(
+  props: DialogCloseTriggerProps,
+): JSX.Element {
   return <Dialog.CloseTrigger {...props} />;
 }
 
 export function AlertDialogFooter(props: DialogFooterProps): JSX.Element {
-  return <Dialog.Footer {...props} data-part="footer" data-scope="alert-dialog" />;
+  return (
+    <Dialog.Footer {...props} data-part="footer" data-scope="alert-dialog" />
+  );
 }
 
 export function AlertDialogAction(props: AlertDialogActionProps): JSX.Element {
@@ -112,14 +123,23 @@ export function AlertDialogCancel(props: AlertDialogCancelProps): JSX.Element {
   return (
     <AlertDialogCloseTrigger
       asChild={(triggerProps) => (
-        <Button {...triggerProps({ class: local.class })} {...rest} variant="outline" />
+        <Button
+          {...triggerProps({ class: local.class })}
+          {...rest}
+          variant="outline"
+        />
       )}
     />
   );
 }
 
 export function AlertDialogShorthand(props: AlertDialogProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["actions", "description", "title", "trigger"]);
+  const [local, rest] = splitProps(props, [
+    "actions",
+    "description",
+    "title",
+    "trigger",
+  ]);
 
   return (
     <AlertDialogRoot {...rest}>
@@ -139,13 +159,17 @@ export function AlertDialogShorthand(props: AlertDialogProps): JSX.Element {
       </Show>
 
       <AlertDialogContent>
-        <Show when={local.title !== undefined || local.description !== undefined}>
+        <Show
+          when={local.title !== undefined || local.description !== undefined}
+        >
           <AlertDialogHeader>
             <Show when={local.title !== undefined}>
               <AlertDialogTitle>{local.title}</AlertDialogTitle>
             </Show>
             <Show when={local.description !== undefined}>
-              <AlertDialogDescription>{local.description}</AlertDialogDescription>
+              <AlertDialogDescription>
+                {local.description}
+              </AlertDialogDescription>
             </Show>
           </AlertDialogHeader>
         </Show>

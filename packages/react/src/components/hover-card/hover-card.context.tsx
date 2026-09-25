@@ -5,6 +5,7 @@ interface HoverCardContextValue {
   slots: HoverCardRecipe;
 }
 
-export const { HoverCardContext, useHoverCard } = createContext<HoverCardContextValue>()({
-  name: "HoverCard",
-});
+export const { HoverCardContext, useHoverCard } =
+  createContext<HoverCardContextValue>()({
+    name: "HoverCard",
+  });

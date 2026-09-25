@@ -2,7 +2,11 @@ import { tv } from "tailwind-variants";
 
 export const skeletonRecipe = tv({
   slots: {
-    base: ["rounded-md bg-muted", "animate-pulse", "motion-reduce:animate-none!"],
+    base: [
+      "rounded-md bg-muted",
+      "animate-pulse",
+      "motion-reduce:animate-none!",
+    ],
     circle: [
       "size-10",
       "shrink-0",

@@ -6,7 +6,10 @@ import type {
   DatePickerTriggerProps as DatePickerPrimitiveTriggerProps,
   DatePickerValueTextProps,
 } from "@ark-ui/react/date-picker";
-import { DatePicker as DatePickerPrimitive, useDatePickerContext } from "@ark-ui/react/date-picker";
+import {
+  DatePicker as DatePickerPrimitive,
+  useDatePickerContext,
+} from "@ark-ui/react/date-picker";
 import { Portal } from "@ark-ui/react/portal";
 import { CalendarIcon, ClockIcon, XIcon } from "@phosphor-icons/react";
 import { calendarRecipe } from "@pisagor/recipes/calendar";
@@ -24,7 +27,8 @@ import { DatePickerSlotsContext, useDatePicker } from "./date-picker.context";
 // #region Types
 type FormControlVariant = "primary" | "secondary";
 
-export interface DatePickerTriggerProps extends DatePickerPrimitiveTriggerProps {
+export interface DatePickerTriggerProps
+  extends DatePickerPrimitiveTriggerProps {
   /**
    * Whether to show a clear button when a date is selected.
    *
@@ -60,7 +64,8 @@ export interface DatePickerTimerProps extends Omit<InputProps, "recipe"> {
   recipe?: typeof datePickerRecipe;
 }
 
-export interface DatePickerContentProps extends DatePickerPrimitiveContentProps {
+export interface DatePickerContentProps
+  extends DatePickerPrimitiveContentProps {
   /**
    * When `true` (default), auto-renders the standard month/year navigation and
    * day grid inside the content — no need to add calendar sub-components manually.
@@ -68,7 +73,8 @@ export interface DatePickerContentProps extends DatePickerPrimitiveContentProps 
   showCalendar?: boolean;
 }
 
-export interface DatePickerRootProps extends Omit<DatePickerPrimitiveRootProps, "onValueChange"> {
+export interface DatePickerRootProps
+  extends Omit<DatePickerPrimitiveRootProps, "onValueChange"> {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
   onValueChange?: (value: DatePickerRootProps["value"]) => void;
@@ -107,7 +113,11 @@ export function DatePickerRoot({
         <DatePickerPrimitive.Root
           {...rest}
           inline={false}
-          onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
+          onValueChange={
+            onValueChange
+              ? (details) => onValueChange(details.value)
+              : undefined
+          }
           positioning={positioning}
         >
           {children}
@@ -127,7 +137,10 @@ export function DatePickerTrigger({
 
   return (
     <DatePickerPrimitive.Control className={slots.control()}>
-      <DatePickerPrimitive.Trigger {...rest} className={slots.trigger({ className })}>
+      <DatePickerPrimitive.Trigger
+        {...rest}
+        className={slots.trigger({ className })}
+      >
         {children}
       </DatePickerPrimitive.Trigger>
       {clearable ? <DatePickerClearTrigger /> : null}
@@ -180,7 +193,12 @@ export function DatePickerClearTrigger() {
 
   return (
     <DatePickerPrimitive.ClearTrigger asChild>
-      <InputGroup.Button aria-label="Clear" size="icon-xs" type="button" variant="ghost">
+      <InputGroup.Button
+        aria-label="Clear"
+        size="icon-xs"
+        type="button"
+        variant="ghost"
+      >
         <XIcon />
       </InputGroup.Button>
     </DatePickerPrimitive.ClearTrigger>
@@ -251,7 +269,10 @@ export function DatePickerContent({
   return (
     <Portal>
       <DatePickerPrimitive.Positioner>
-        <DatePickerPrimitive.Content {...rest} className={slots.content({ className })}>
+        <DatePickerPrimitive.Content
+          {...rest}
+          className={slots.content({ className })}
+        >
           {showCalendar && !children ? (
             <>
               <Calendar.ViewControl>
@@ -274,10 +295,18 @@ export function DatePickerContent({
   );
 }
 
-export function DatePickerValueText({ className, ...rest }: DatePickerValueTextProps) {
+export function DatePickerValueText({
+  className,
+  ...rest
+}: DatePickerValueTextProps) {
   const { slots } = useDatePicker();
 
-  return <DatePickerPrimitive.ValueText {...rest} className={slots.valueText({ className })} />;
+  return (
+    <DatePickerPrimitive.ValueText
+      {...rest}
+      className={slots.valueText({ className })}
+    />
+  );
 }
 
 export function DatePickerPresetTrigger(props: DatePickerPresetTriggerProps) {

@@ -2,7 +2,13 @@ import { Checkbox, Field, Surface } from "@pisagor/react";
 
 export function SettingsRow() {
   return (
-    <Surface bordered className="w-full max-w-md" padding="md" rounded variant="secondary">
+    <Surface
+      bordered
+      className="w-full max-w-md"
+      padding="md"
+      rounded
+      variant="secondary"
+    >
       <Field.Label>
         <Field orientation="horizontal">
           <Checkbox />

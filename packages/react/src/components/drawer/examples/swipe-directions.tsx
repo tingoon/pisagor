@@ -10,7 +10,9 @@ export function SwipeDirections() {
         <Drawer.Content>
           <Drawer.Header title="Bottom drawer" />
           <Drawer.Body>
-            <p className="text-muted-foreground text-sm">Swipe down to close this drawer.</p>
+            <p className="text-muted-foreground text-sm">
+              Swipe down to close this drawer.
+            </p>
           </Drawer.Body>
         </Drawer.Content>
       </Drawer>
@@ -21,7 +23,9 @@ export function SwipeDirections() {
         <Drawer.Content>
           <Drawer.Header title="Top drawer" />
           <Drawer.Body>
-            <p className="text-muted-foreground text-sm">Swipe up to close this drawer.</p>
+            <p className="text-muted-foreground text-sm">
+              Swipe up to close this drawer.
+            </p>
           </Drawer.Body>
         </Drawer.Content>
       </Drawer>
@@ -32,7 +36,9 @@ export function SwipeDirections() {
         <Drawer.Content>
           <Drawer.Header title="Start drawer" />
           <Drawer.Body>
-            <p className="text-muted-foreground text-sm">Swipe left to close this drawer.</p>
+            <p className="text-muted-foreground text-sm">
+              Swipe left to close this drawer.
+            </p>
           </Drawer.Body>
         </Drawer.Content>
       </Drawer>
@@ -43,7 +49,9 @@ export function SwipeDirections() {
         <Drawer.Content>
           <Drawer.Header title="End drawer" />
           <Drawer.Body>
-            <p className="text-muted-foreground text-sm">Swipe right to close this drawer.</p>
+            <p className="text-muted-foreground text-sm">
+              Swipe right to close this drawer.
+            </p>
           </Drawer.Body>
         </Drawer.Content>
       </Drawer>

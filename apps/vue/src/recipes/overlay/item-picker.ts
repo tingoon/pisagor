@@ -22,24 +22,44 @@ export const ItemPicker = defineComponent({
     return () =>
       h(DropdownMenu as ArkPart, null, () => [
         h(dropdownMenuParts.Trigger, { asChild: true }, () =>
-          h(Button as ArkPart, { type: "button", variant: "outline" }, () => "Choose person"),
+          h(
+            Button as ArkPart,
+            { type: "button", variant: "outline" },
+            () => "Choose person",
+          ),
         ),
         h(dropdownMenuParts.Content, { class: "w-72 p-1.5" }, () =>
           people.map((person) =>
-            h(dropdownMenuParts.Item, { key: person.id, value: person.username }, () => [
-              h("div", { class: "[--space:--spacing(2)] flex items-center gap-2" }, () => [
-                h(Avatar as ArkPart, {
-                  alt: "",
-                  class: "grayscale",
-                  fallback: person.username.charAt(0).toUpperCase(),
-                  size: "sm",
-                }),
-                h("div", { class: "min-w-0" }, () => [
-                  h("div", { class: "font-medium truncate" }, () => person.username),
-                  h("div", { class: "text-muted-foreground text-sm truncate" }, () => person.email),
-                ]),
-              ]),
-            ]),
+            h(
+              dropdownMenuParts.Item,
+              { key: person.id, value: person.username },
+              () => [
+                h(
+                  "div",
+                  { class: "[--space:--spacing(2)] flex items-center gap-2" },
+                  () => [
+                    h(Avatar as ArkPart, {
+                      alt: "",
+                      class: "grayscale",
+                      fallback: person.username.charAt(0).toUpperCase(),
+                      size: "sm",
+                    }),
+                    h("div", { class: "min-w-0" }, () => [
+                      h(
+                        "div",
+                        { class: "font-medium truncate" },
+                        () => person.username,
+                      ),
+                      h(
+                        "div",
+                        { class: "text-muted-foreground text-sm truncate" },
+                        () => person.email,
+                      ),
+                    ]),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ]);

@@ -55,18 +55,38 @@ function moveRight() {
           <p>Use the buttons to move the panel.</p>
           <div class="flex flex-col items-center gap-1">
             <div>
-              <Button aria-label="Move up" size="icon-md" variant="outline" @click="moveUp">
+              <Button
+                aria-label="Move up"
+                size="icon-md"
+                variant="outline"
+                @click="moveUp"
+              >
                 <PhCaretUp aria-hidden="true" />
               </Button>
             </div>
             <div class="flex gap-1">
-              <Button aria-label="Move left" size="icon-md" variant="outline" @click="moveLeft">
+              <Button
+                aria-label="Move left"
+                size="icon-md"
+                variant="outline"
+                @click="moveLeft"
+              >
                 <PhCaretLeft aria-hidden="true" />
               </Button>
-              <Button aria-label="Move down" size="icon-md" variant="outline" @click="moveDown">
+              <Button
+                aria-label="Move down"
+                size="icon-md"
+                variant="outline"
+                @click="moveDown"
+              >
                 <PhCaretDown aria-hidden="true" />
               </Button>
-              <Button aria-label="Move right" size="icon-md" variant="outline" @click="moveRight">
+              <Button
+                aria-label="Move right"
+                size="icon-md"
+                variant="outline"
+                @click="moveRight"
+              >
                 <PhCaretRight aria-hidden="true" />
               </Button>
             </div>

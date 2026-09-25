@@ -4,7 +4,12 @@ export function OrientationHorizontal() {
   return (
     <Card className="rounded-3xl [--space:--spacing(6)]">
       <Card.Content>
-        <Timer autoStart className="items-center gap-2" countdown startMs={5 * 60 * 1000}>
+        <Timer
+          autoStart
+          className="items-center gap-2"
+          countdown
+          startMs={5 * 60 * 1000}
+        >
           <Timer.Area className="flex-wrap justify-center">
             <Timer.ItemGroup orientation="horizontal">
               <Timer.Item type="minutes" />

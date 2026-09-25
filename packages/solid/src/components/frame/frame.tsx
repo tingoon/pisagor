@@ -48,7 +48,9 @@ export function FramePanel(props: FramePanelProps): JSX.Element {
       data-part="panel"
       data-scope="frame"
     >
-      <SurfaceContext value={{ depth: 1, variant: "default" }}>{local.children}</SurfaceContext>
+      <SurfaceContext value={{ depth: 1, variant: "default" }}>
+        {local.children}
+      </SurfaceContext>
     </ark.div>
   );
 }

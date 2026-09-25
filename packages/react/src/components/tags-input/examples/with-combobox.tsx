@@ -26,7 +26,9 @@ export function WithCombobox() {
     ids: { control: `tags-control-${uid}`, input: `tags-input-${uid}` },
   });
 
-  const availableItems = collection.items.filter((item) => !tagsInput.value.includes(item));
+  const availableItems = collection.items.filter(
+    (item) => !tagsInput.value.includes(item),
+  );
 
   return (
     <Field>
@@ -63,7 +65,9 @@ export function WithCombobox() {
         </TagsInput.RootProvider>
         <Combobox.Content>
           <Combobox.List>
-            <Combobox.Empty>No frameworks found. Try a different search.</Combobox.Empty>
+            <Combobox.Empty>
+              No frameworks found. Try a different search.
+            </Combobox.Empty>
             {availableItems.map((item) => (
               <Combobox.Item item={item} key={item}>
                 {item}

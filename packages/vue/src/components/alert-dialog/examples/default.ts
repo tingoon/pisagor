@@ -12,7 +12,8 @@ export default defineComponent({
         ),
         h(AlertDialog.Content, null, () => [
           h(AlertDialog.Header, {
-            description: "Do you want to allow the USB accessory to connect to this device?",
+            description:
+              "Do you want to allow the USB accessory to connect to this device?",
             title: "Allow accessory to connect?",
           }),
           h(AlertDialog.Footer, null, () => [

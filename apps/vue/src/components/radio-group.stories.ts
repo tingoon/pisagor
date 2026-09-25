@@ -8,7 +8,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Lets users pick exactly one option from a small set of related choices.",
+        component:
+          "Lets users pick exactly one option from a small set of related choices.",
       },
     },
   },

@@ -1,11 +1,20 @@
-import { ArrowCounterClockwiseIcon, GearIcon, PauseIcon, PlayIcon } from "@phosphor-icons/react";
+import {
+  ArrowCounterClockwiseIcon,
+  GearIcon,
+  PauseIcon,
+  PlayIcon,
+} from "@phosphor-icons/react";
 import { Button, Card } from "@pisagor/react";
 import { Timer } from "..";
 export function Pomodoro() {
   return (
     <Card className="rounded-3xl [--space:--spacing(6)]">
       <Card.Content>
-        <Timer className="items-center justify-center px-10" countdown startMs={25 * 60 * 1000}>
+        <Timer
+          className="items-center justify-center px-10"
+          countdown
+          startMs={25 * 60 * 1000}
+        >
           <span>🍅</span>
           <Timer.Area>
             <Timer.Item className="text-5xl" type="minutes" />

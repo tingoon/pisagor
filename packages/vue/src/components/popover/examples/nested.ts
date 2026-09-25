@@ -14,14 +14,19 @@ export default defineComponent({
           h("button", { class: outlineButtonClass(), type: "button" }, "Open"),
         ),
         h(Popover.Content, null, () => [
-          h(Popover.Header, { description: "Check your notifications.", title: "Notifications" }),
+          h(Popover.Header, {
+            description: "Check your notifications.",
+            title: "Notifications",
+          }),
           h(Popover.Body, null, () =>
             h(Popover, null, () => [
               h(Popover.Trigger, { asChild: true }, () =>
                 h(
                   "button",
                   {
-                    class: cn(buttonRecipe({ size: "sm", variant: "outline" }).base()),
+                    class: cn(
+                      buttonRecipe({ size: "sm", variant: "outline" }).base(),
+                    ),
                     type: "button",
                   },
                   "Open nested",
@@ -29,7 +34,8 @@ export default defineComponent({
               ),
               h(Popover.Content as ArkPart, { class: "w-56" }, () =>
                 h(Popover.Header, {
-                  description: "You're all caught up. Check back later for new notifications.",
+                  description:
+                    "You're all caught up. Check back later for new notifications.",
                   title: "Nested popover",
                 }),
               ),

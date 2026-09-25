@@ -5,6 +5,7 @@ interface SignaturePadContextValue {
   slots: SignaturePadRecipe;
 }
 
-export const { SignaturePadContext, useSignaturePad } = createContext<SignaturePadContextValue>()({
-  name: "SignaturePad",
-});
+export const { SignaturePadContext, useSignaturePad } =
+  createContext<SignaturePadContextValue>()({
+    name: "SignaturePad",
+  });

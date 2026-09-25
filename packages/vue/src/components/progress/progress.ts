@@ -5,7 +5,10 @@ import {
   ProgressValueText,
 } from "@ark-ui/vue/progress";
 import { fieldRecipe } from "@pisagor/recipes/field";
-import { type ProgressRecipeSlot, progressRecipe } from "@pisagor/recipes/progress";
+import {
+  type ProgressRecipeSlot,
+  progressRecipe,
+} from "@pisagor/recipes/progress";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNode } from "vue";
 import type { VariantClassNames } from "../../internal/types";
@@ -40,20 +43,38 @@ export const Progress = defineComponent({
   inheritAttrs: false,
   name: "PisagorProgress",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<ProgressClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<ProgressClassNames>,
+    },
     indeterminate: { default: false, type: Boolean },
     isValueVisible: { default: undefined, type: Boolean },
     label: { default: undefined, type: String },
-    orientation: { default: "horizontal", type: String as PropType<ProgressProps["orientation"]> },
-    rangeProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
+    orientation: {
+      default: "horizontal",
+      type: String as PropType<ProgressProps["orientation"]>,
+    },
+    rangeProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
     recipe: {
       default: progressRecipe,
       type: Function as PropType<typeof progressRecipe>,
     },
-    trackProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
+    trackProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
     value: { default: undefined, type: Number },
-    valueProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
+    valueProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -76,7 +97,11 @@ export const Progress = defineComponent({
               children.push(
                 h(
                   "div",
-                  { class: variantSlots.header({ class: props.classNames?.header }) },
+                  {
+                    class: variantSlots.header({
+                      class: props.classNames?.header,
+                    }),
+                  },
                   () => {
                     const headerNodes: VNode[] = [];
 
@@ -96,7 +121,9 @@ export const Progress = defineComponent({
                       headerNodes.push(
                         h(ProgressValueText as ArkPart, {
                           ...props.valueProps,
-                          class: variantSlots.value({ class: props.classNames?.value }),
+                          class: variantSlots.value({
+                            class: props.classNames?.value,
+                          }),
                         }),
                       );
                     }
@@ -109,7 +136,9 @@ export const Progress = defineComponent({
 
             const slotContent = slots.default?.();
             if (slotContent) {
-              children.push(...(Array.isArray(slotContent) ? slotContent : [slotContent]));
+              children.push(
+                ...(Array.isArray(slotContent) ? slotContent : [slotContent]),
+              );
             }
 
             children.push(
@@ -122,7 +151,9 @@ export const Progress = defineComponent({
                 () =>
                   h(ProgressRange as ArkPart, {
                     ...props.rangeProps,
-                    class: variantSlots.range({ class: props.classNames?.range }),
+                    class: variantSlots.range({
+                      class: props.classNames?.range,
+                    }),
                   }),
               ),
             );

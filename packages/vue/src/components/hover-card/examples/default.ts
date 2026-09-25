@@ -20,7 +20,11 @@ export default defineComponent({
         h(HoverCard.Content, null, () =>
           h("div", { class: "flex flex-col gap-2" }, [
             h("span", { class: "font-medium text-sm" }, "Jane Doe"),
-            h("p", { class: "text-muted-foreground text-sm" }, "Software engineer at Example Co."),
+            h(
+              "p",
+              { class: "text-muted-foreground text-sm" },
+              "Software engineer at Example Co.",
+            ),
           ]),
         ),
       ]);

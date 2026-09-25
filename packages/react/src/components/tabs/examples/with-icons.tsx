@@ -7,7 +7,11 @@ export function WithIcons() {
       defaultValue="tab-1"
       items={[
         {
-          content: <p className="p-4 text-center text-muted-foreground text-xs">Profile content</p>,
+          content: (
+            <p className="p-4 text-center text-muted-foreground text-xs">
+              Profile content
+            </p>
+          ),
           label: (
             <>
               <UserIcon />
@@ -18,7 +22,9 @@ export function WithIcons() {
         },
         {
           content: (
-            <p className="p-4 text-center text-muted-foreground text-xs">Settings content</p>
+            <p className="p-4 text-center text-muted-foreground text-xs">
+              Settings content
+            </p>
           ),
           label: (
             <>
@@ -30,7 +36,9 @@ export function WithIcons() {
         },
         {
           content: (
-            <p className="p-4 text-center text-muted-foreground text-xs">Security content</p>
+            <p className="p-4 text-center text-muted-foreground text-xs">
+              Security content
+            </p>
           ),
           label: (
             <>

@@ -34,7 +34,9 @@ export function WithMenu() {
         </Breadcrumb.Item>
         <Breadcrumb.Separator />
         <Breadcrumb.Item>
-          <Breadcrumb.Link href="https://example.com/">Products</Breadcrumb.Link>
+          <Breadcrumb.Link href="https://example.com/">
+            Products
+          </Breadcrumb.Link>
         </Breadcrumb.Item>
         <Breadcrumb.Separator />
         <Breadcrumb.Item>

@@ -1,4 +1,7 @@
-import type { ToggleGroupRecipeFn, ToggleGroupVariantProps } from "@pisagor/recipes/toggle-group";
+import type {
+  ToggleGroupRecipeFn,
+  ToggleGroupVariantProps,
+} from "@pisagor/recipes/toggle-group";
 
 /** ToggleGroup props. */
 export interface ToggleGroupProps extends ToggleGroupVariantProps {

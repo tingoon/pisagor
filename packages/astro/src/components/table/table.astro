@@ -17,7 +17,12 @@ interface Props extends HTMLAttributes<"table"> {
   isHoverable?: boolean;
 }
 
-const { variant = "plain", isHoverable = true, class: className, ...rest } = Astro.props;
+const {
+  variant = "plain",
+  isHoverable = true,
+  class: className,
+  ...rest
+} = Astro.props;
 const slots = tableRecipe();
 ---
 

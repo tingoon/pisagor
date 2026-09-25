@@ -8,7 +8,8 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: "Surfaces status, warning, or actionable feedback within page flow.",
+        component:
+          "Surfaces status, warning, or actionable feedback within page flow.",
       },
     },
   },

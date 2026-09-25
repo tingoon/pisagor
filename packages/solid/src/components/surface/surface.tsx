@@ -1,9 +1,16 @@
 import { ark } from "@ark-ui/solid/factory";
-import { type SurfaceVariantProps, surfaceRecipe } from "@pisagor/recipes/surface";
+import {
+  type SurfaceVariantProps,
+  surfaceRecipe,
+} from "@pisagor/recipes/surface";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
-import { SurfaceContext, type SurfaceVariant, useSurface } from "./surface.context";
+import {
+  SurfaceContext,
+  type SurfaceVariant,
+  useSurface,
+} from "./surface.context";
 
 const AUTO_VARIANTS = [
   "default",
@@ -12,7 +19,9 @@ const AUTO_VARIANTS = [
   "tertiary",
 ] as const satisfies readonly SurfaceVariant[];
 
-export interface SurfaceProps extends ComponentProps<typeof ark.div>, SurfaceVariantProps {
+export interface SurfaceProps
+  extends ComponentProps<typeof ark.div>,
+    SurfaceVariantProps {
   recipe?: typeof surfaceRecipe;
 }
 
@@ -31,7 +40,9 @@ export function Surface(props: SurfaceProps): JSX.Element {
   const surface = createMemo(() => {
     const depth = parent ? parent.depth + 1 : 0;
     const variant =
-      local.variant ?? AUTO_VARIANTS[Math.min(depth, AUTO_VARIANTS.length - 1)] ?? "default";
+      local.variant ??
+      AUTO_VARIANTS[Math.min(depth, AUTO_VARIANTS.length - 1)] ??
+      "default";
 
     return { depth, variant };
   });

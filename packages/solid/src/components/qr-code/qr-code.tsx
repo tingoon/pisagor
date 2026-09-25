@@ -23,7 +23,10 @@ export function QrCodeRoot(props: QrCodeRootProps): JSX.Element {
 
   return (
     <QrCodeContext value={{ slots: slots() }}>
-      <QrCodePrimitive.Root {...rest} class={slots().base({ class: cn(local.class) })}>
+      <QrCodePrimitive.Root
+        {...rest}
+        class={slots().base({ class: cn(local.class) })}
+      >
         {local.children ?? <QrCodeFrame />}
       </QrCodePrimitive.Root>
     </QrCodeContext>
@@ -34,7 +37,10 @@ export function QrCodeFrame(props: QrCodeFrameProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useQrCode();
   return (
-    <QrCodePrimitive.Frame {...rest} class={slots.frame({ class: local.class })}>
+    <QrCodePrimitive.Frame
+      {...rest}
+      class={slots.frame({ class: local.class })}
+    >
       <QrCodePrimitive.Pattern class={slots.pattern()} />
     </QrCodePrimitive.Frame>
   );
@@ -43,7 +49,12 @@ export function QrCodeFrame(props: QrCodeFrameProps): JSX.Element {
 export function QrCodeOverlay(props: QrCodeOverlayProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useQrCode();
-  return <QrCodePrimitive.Overlay {...rest} class={slots.overlay({ class: local.class })} />;
+  return (
+    <QrCodePrimitive.Overlay
+      {...rest}
+      class={slots.overlay({ class: local.class })}
+    />
+  );
 }
 
 export function QrCodeDownload(props: QrCodeDownloadProps): JSX.Element {

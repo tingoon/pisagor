@@ -24,9 +24,13 @@ export function getFieldErrorMessage(field: AnyFieldApi): string | undefined {
   return undefined;
 }
 
-export function isFieldInvalid(field: AnyFieldApi, submissionAttempts = 0): boolean {
+export function isFieldInvalid(
+  field: AnyFieldApi,
+  submissionAttempts = 0,
+): boolean {
   return (
-    field.state.meta.errors.length > 0 && (field.state.meta.isTouched || submissionAttempts > 0)
+    field.state.meta.errors.length > 0 &&
+    (field.state.meta.isTouched || submissionAttempts > 0)
   );
 }
 

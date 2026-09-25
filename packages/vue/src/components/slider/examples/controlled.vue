@@ -11,7 +11,12 @@ const onValueChange = setValue;
   <div class="flex flex-col gap-2">
     <p class="text-center text-sm">Greater than 80</p>
     <Field>
-      <Slider label="Temperature" show-value :on-value-change="onValueChange" :value="value" />
+      <Slider
+        label="Temperature"
+        show-value
+        :on-value-change="onValueChange"
+        :value="value"
+      />
     </Field>
     <p class="text-center">{{ isGreaterThan80 ? "✅" : "❌" }}</p>
   </div>

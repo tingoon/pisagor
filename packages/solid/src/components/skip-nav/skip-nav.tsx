@@ -17,7 +17,12 @@ export interface SkipNavContentProps extends ComponentProps<typeof ark.div> {
 }
 
 export function SkipNavLink(props: SkipNavLinkProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "id", "recipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "children",
+    "id",
+    "recipe",
+    "class",
+  ]);
   const slots = () => (local.recipe ?? skipNavRecipe)();
   const id = () => local.id ?? SKIP_NAV_ID;
 

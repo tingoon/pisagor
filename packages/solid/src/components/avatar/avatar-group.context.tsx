@@ -5,6 +5,7 @@ interface AvatarGroupContextValue {
   slots: AvatarGroupRecipe;
 }
 
-export const { AvatarGroupContext, useAvatarGroup } = createContext<AvatarGroupContextValue>()({
-  name: "AvatarGroup",
-});
+export const { AvatarGroupContext, useAvatarGroup } =
+  createContext<AvatarGroupContextValue>()({
+    name: "AvatarGroup",
+  });

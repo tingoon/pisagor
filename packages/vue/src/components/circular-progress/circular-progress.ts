@@ -1,5 +1,9 @@
 import { ark } from "@ark-ui/vue/factory";
-import { ProgressRoot, ProgressValueText, useProgressContext } from "@ark-ui/vue/progress";
+import {
+  ProgressRoot,
+  ProgressValueText,
+  useProgressContext,
+} from "@ark-ui/vue/progress";
 import {
   type CircularProgressRecipeSlot,
   circularProgressRecipe,
@@ -36,14 +40,20 @@ const CircularProgressTrack = defineComponent({
   inheritAttrs: false,
   name: "CircularProgressTrack",
   props: {
-    classNames: { default: undefined, type: Object as PropType<CircularProgressClassNames> },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<CircularProgressClassNames>,
+    },
     recipe: {
       default: circularProgressRecipe,
       type: Function as PropType<typeof circularProgressRecipe>,
     },
     size: { default: 32, type: Number },
     thickness: { default: 4, type: Number },
-    trackProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
+    trackProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
   },
   setup(props) {
     const progress = useProgressContext();
@@ -54,7 +64,8 @@ const CircularProgressTrack = defineComponent({
       const radius = props.size / 2 - props.thickness / 2;
       const circumference = 2 * Math.PI * radius;
       const range = Math.max(max - min, 1);
-      const normalizedValue = value == null ? min : Math.min(Math.max(value, min), max);
+      const normalizedValue =
+        value == null ? min : Math.min(Math.max(value, min), max);
       const percent = (normalizedValue - min) / range;
       const dashOffset = circumference * (1 - percent);
 
@@ -101,7 +112,10 @@ const CircularProgressValue = defineComponent({
   inheritAttrs: false,
   name: "CircularProgressValue",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs }) {
     return () =>
@@ -116,8 +130,14 @@ export const CircularProgress = defineComponent({
   inheritAttrs: false,
   name: "CircularProgress",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<CircularProgressClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<CircularProgressClassNames>,
+    },
     indeterminate: { default: false, type: Boolean },
     isValueVisible: { default: undefined, type: Boolean },
     recipe: {
@@ -126,9 +146,15 @@ export const CircularProgress = defineComponent({
     },
     size: { default: 32, type: Number },
     thickness: { default: 4, type: Number },
-    trackProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
+    trackProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
     value: { default: undefined, type: Number },
-    valueProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
+    valueProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
   },
   setup(props, { attrs, slots }) {
     const slotsVariants = computed(() => props.recipe());
@@ -141,7 +167,11 @@ export const CircularProgress = defineComponent({
         children.push(
           h(
             "span",
-            { class: variantSlots.valueWrapper({ class: props.classNames?.valueWrapper }) },
+            {
+              class: variantSlots.valueWrapper({
+                class: props.classNames?.valueWrapper,
+              }),
+            },
             () =>
               h(CircularProgressValue as ArkPart, {
                 ...props.valueProps,
@@ -153,7 +183,9 @@ export const CircularProgress = defineComponent({
 
       const slotContent = slots.default?.();
       if (slotContent) {
-        children.push(...(Array.isArray(slotContent) ? slotContent : [slotContent]));
+        children.push(
+          ...(Array.isArray(slotContent) ? slotContent : [slotContent]),
+        );
       }
 
       children.push(

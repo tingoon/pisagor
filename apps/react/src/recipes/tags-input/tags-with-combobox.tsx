@@ -27,7 +27,9 @@ export function TagsWithCombobox() {
     ids: { control: `tags-control-${uid}`, input: `tags-input-${uid}` },
   });
 
-  const availableItems = collection.items.filter((item: string) => !tagsInput.value.includes(item));
+  const availableItems = collection.items.filter(
+    (item: string) => !tagsInput.value.includes(item),
+  );
 
   return (
     <Field>

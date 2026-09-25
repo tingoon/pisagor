@@ -25,10 +25,18 @@ export function WithPresets() {
                   asChild
                   key={preset.label}
                   value={[
-                    parseDate(new Date(new Date().setDate(new Date().getDate() + preset.days))),
+                    parseDate(
+                      new Date(
+                        new Date().setDate(new Date().getDate() + preset.days),
+                      ),
+                    ),
                   ]}
                 >
-                  <Button className="w-full justify-start" size="sm" variant="ghost">
+                  <Button
+                    className="w-full justify-start"
+                    size="sm"
+                    variant="ghost"
+                  >
                     {preset.label}
                   </Button>
                 </DatePicker.PresetTrigger>

@@ -12,7 +12,9 @@ import type {
 function componentCatalogs(config: ToolConfig): ComponentsCatalog[] {
   return config.packages
     .map((pkg) => pkg.catalog)
-    .filter((catalog): catalog is ComponentsCatalog => catalog.kind === "components");
+    .filter(
+      (catalog): catalog is ComponentsCatalog => catalog.kind === "components",
+    );
 }
 
 function recipesCatalog(config: ToolConfig): RecipesCatalog | null {
@@ -24,7 +26,10 @@ function recipesCatalog(config: ToolConfig): RecipesCatalog | null {
   return null;
 }
 
-function componentsForFramework(config: ToolConfig, framework: Framework): CatalogComponent[] {
+function componentsForFramework(
+  config: ToolConfig,
+  framework: Framework,
+): CatalogComponent[] {
   const byName = new Map<string, CatalogComponent>();
   for (const catalog of componentCatalogs(config)) {
     if (catalog.framework !== framework) {
@@ -42,7 +47,9 @@ function getCatalogComponent(
   framework: Framework,
   component: string,
 ): CatalogComponent {
-  const entry = componentsForFramework(config, framework).find((item) => item.name === component);
+  const entry = componentsForFramework(config, framework).find(
+    (item) => item.name === component,
+  );
   if (!entry) {
     throw new Error(
       `Unknown component "${component}" for framework "${framework}". Call list_components first.`,
@@ -57,7 +64,10 @@ function assertHasPackages(config: ToolConfig): void {
   }
 }
 
-export function listComponents(config: ToolConfig, framework: Framework): ComponentEntry[] {
+export function listComponents(
+  config: ToolConfig,
+  framework: Framework,
+): ComponentEntry[] {
   assertHasPackages(config);
   return componentsForFramework(config, framework).map((entry) => ({
     hasStories: Boolean(entry.storiesContent),
@@ -93,7 +103,9 @@ export function getExample(
   assertHasPackages(config);
   const entry = getCatalogComponent(config, params.framework, params.component);
   if (!entry.storiesContent || !entry.storiesPath) {
-    throw new Error(`No stories file for "${params.component}" (${params.framework}).`);
+    throw new Error(
+      `No stories file for "${params.component}" (${params.framework}).`,
+    );
   }
 
   const examples = entry.examples;
@@ -102,7 +114,8 @@ export function getExample(
   if (exampleId) {
     const match = examples.find(
       (example) =>
-        example.id === exampleId || example.exportName.toLowerCase() === exampleId.toLowerCase(),
+        example.id === exampleId ||
+        example.exportName.toLowerCase() === exampleId.toLowerCase(),
     );
     if (!match) {
       throw new Error(

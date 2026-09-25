@@ -49,52 +49,99 @@ const headings = [
 
   <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
+    Default
+  </h3>
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-spacing">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="custom-spacing"
+  >
     Custom Spacing
   </h3>
-  <ComponentPreview code={examples.CustomSpacing} language="tsx" title="Custom Spacing">
+  <ComponentPreview
+    code={examples.CustomSpacing}
+    language="tsx"
+    title="Custom Spacing"
+  >
     <CustomSpacing client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="initial-focus">Initial Focus</h3>
-  <ComponentPreview code={examples.InitialFocus} language="tsx" title="Initial Focus">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="initial-focus"
+  >
+    Initial Focus
+  </h3>
+  <ComponentPreview
+    code={examples.InitialFocus}
+    language="tsx"
+    title="Initial Focus"
+  >
     <InitialFocus client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="nested">Nested</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="nested">
+    Nested
+  </h3>
   <ComponentPreview code={examples.Nested} language="tsx" title="Nested">
     <Nested client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="no-close-button">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="no-close-button"
+  >
     No Close Button
   </h3>
-  <ComponentPreview code={examples.NoCloseButton} language="tsx" title="No Close Button">
+  <ComponentPreview
+    code={examples.NoCloseButton}
+    language="tsx"
+    title="No Close Button"
+  >
     <NoCloseButton client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="non-modal">Non Modal</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="non-modal">
+    Non Modal
+  </h3>
   <ComponentPreview code={examples.NonModal} language="tsx" title="Non Modal">
     <NonModal client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="scroll-area">Scroll Area</h3>
-  <ComponentPreview code={examples.ScrollArea} language="tsx" title="Scroll Area">
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="scroll-area">
+    Scroll Area
+  </h3>
+  <ComponentPreview
+    code={examples.ScrollArea}
+    language="tsx"
+    title="Scroll Area"
+  >
     <ScrollArea client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="close-behavior">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="close-behavior"
+  >
     Close Behavior
   </h3>
-  <ComponentPreview code={examples.CloseBehavior} language="tsx" title="Close Behavior">
+  <ComponentPreview
+    code={examples.CloseBehavior}
+    language="tsx"
+    title="Close Behavior"
+  >
     <CloseBehavior client:only="react" />
   </ComponentPreview>
 
-  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <h2
+    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    id="installation"
+  >
+    Installation
+  </h2>
   <Installation class="mb-8" packages="@pisagor/react" />
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/dialog</code>. Native HTML attributes are also supported and
-    omitted from this table.
+    Own props from <code>@pisagor/props/dialog</code>. Native HTML attributes
+    are also supported and omitted from this table.
   </p>
   <PropsTable rows={dialogProps} />
 </DocsLayout>

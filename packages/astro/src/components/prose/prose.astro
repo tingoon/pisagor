@@ -21,7 +21,12 @@ const { html, class: className, ...rest } = Astro.props;
     set:html={html}
   />
 ) : (
-  <div {...rest} class={proseRecipe({ className })} data-part="root" data-scope="prose">
+  <div
+    {...rest}
+    class={proseRecipe({ className })}
+    data-part="root"
+    data-scope="prose"
+  >
     <slot />
   </div>
 )}

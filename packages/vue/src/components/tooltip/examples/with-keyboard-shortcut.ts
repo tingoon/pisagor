@@ -9,7 +9,11 @@ export default defineComponent({
       h(
         Tooltip as ArkPart,
         {
-          children: h(Button as ArkPart, { variant: "outline" }, () => "Add to library"),
+          children: h(
+            Button as ArkPart,
+            { variant: "outline" },
+            () => "Add to library",
+          ),
           classNames: { content: "flex items-center gap-2" },
           content: h(Fragment, null, [
             h("p", null, "Add to library"),

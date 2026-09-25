@@ -3,7 +3,10 @@ import { Collapsible } from "..";
 export function Nested() {
   return (
     <Card className="w-80">
-      <Card.Header description="We'll help you get started" title="Getting started" />
+      <Card.Header
+        description="We'll help you get started"
+        title="Getting started"
+      />
 
       <Card.Content>
         <Collapsible>
@@ -15,7 +18,8 @@ export function Nested() {
           </Collapsible.Trigger>
           <Collapsible.Content className="flex flex-col gap-2 p-2">
             <p className="text-muted-foreground text-sm">
-              Here you can find the documentation for all the components and how to use them.
+              Here you can find the documentation for all the components and how
+              to use them.
             </p>
             <Collapsible>
               <Collapsible.Trigger asChild>
@@ -25,7 +29,9 @@ export function Nested() {
                 </Button>
               </Collapsible.Trigger>
               <Collapsible.Content className="flex flex-col gap-2 p-2">
-                <p className="text-muted-foreground text-sm">Copy the following code:</p>
+                <p className="text-muted-foreground text-sm">
+                  Copy the following code:
+                </p>
 
                 <pre className="relative rounded-md bg-muted p-2 text-muted-foreground text-xs">
                   <code>bun add ui</code>

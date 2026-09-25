@@ -18,7 +18,11 @@ const positioning = { fitViewport: true };
       <Select.ValueText placeholder="Select framework" />
     </Select.Trigger>
     <Select.Content class="max-h-56">
-      <Select.Item v-for="item in collection.items" :key="item.value" :item="item">
+      <Select.Item
+        v-for="item in collection.items"
+        :key="item.value"
+        :item="item"
+      >
         {{ item.label }}
       </Select.Item>
     </Select.Content>

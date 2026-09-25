@@ -43,7 +43,9 @@ export const listExamplesTool: Tool<{ componentList: string[] }> = {
           component: componentSchema.describe(
             "Component name (kebab-case), e.g. button or date-picker.",
           ),
-          ...(multi ? { framework: frameworkInputSchema(config.frameworks) } : {}),
+          ...(multi
+            ? { framework: frameworkInputSchema(config.frameworks) }
+            : {}),
         },
       },
       async (args: { component: string; framework?: Framework }) => {

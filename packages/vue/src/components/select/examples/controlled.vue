@@ -11,16 +11,25 @@ const collection = createListCollection({
     { label: "Svelte", value: "svelte" },
   ],
 });
-const onValueChange = (value) => setValue(Array.isArray(value) ? value : [value]);
+const onValueChange = (value) =>
+  setValue(Array.isArray(value) ? value : [value]);
 </script>
 
 <template>
-  <Select.Root :collection="collection" :value="value" @value-change="onValueChange">
+  <Select.Root
+    :collection="collection"
+    :value="value"
+    @value-change="onValueChange"
+  >
     <Select.Trigger>
       <Select.ValueText placeholder="Select a framework" />
     </Select.Trigger>
     <Select.Content>
-      <Select.Item v-for="item in collection.items" :key="item.value" :item="item">
+      <Select.Item
+        v-for="item in collection.items"
+        :key="item.value"
+        :item="item"
+      >
         {{ item.label }}
       </Select.Item>
     </Select.Content>

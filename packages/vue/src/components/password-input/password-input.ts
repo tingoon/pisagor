@@ -2,16 +2,23 @@ import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/vue/password-in
 import { PhEye, PhEyeSlash, PhX } from "@phosphor-icons/vue";
 import { passwordInputRecipe } from "@pisagor/recipes/password-input";
 import { defineComponent, h, type PropType } from "vue";
-import { type ClearableChangeEvent, useClearableInput } from "../../hooks/use-clearable-input";
+import {
+  type ClearableChangeEvent,
+  useClearableInput,
+} from "../../hooks/use-clearable-input";
 import { InputGroup } from "../input-group";
-import type { InputGroupButtonProps, InputGroupProps } from "../input-group/input-group-core";
+import type {
+  InputGroupButtonProps,
+  InputGroupProps,
+} from "../input-group/input-group-core";
 
 type ArkPart = Parameters<typeof h>[0];
 
 type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
 
 // #region Types
-export interface PasswordInputProps extends Pick<InputGroupProps, "size" | "variant"> {
+export interface PasswordInputProps
+  extends Pick<InputGroupProps, "size" | "variant"> {
   /**
    * Style recipe. Defaults to `passwordInputRecipe` from `@pisagor/recipes/password-input`.
    *
@@ -42,15 +49,27 @@ export const PasswordInput = defineComponent({
   inheritAttrs: false,
   name: "PasswordInput",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     clearable: { default: false, type: Boolean },
-    clearButtonProps: { default: undefined, type: Object as PropType<InputGroupButtonProps> },
+    clearButtonProps: {
+      default: undefined,
+      type: Object as PropType<InputGroupButtonProps>,
+    },
     defaultValue: { default: undefined, type: String },
     defaultVisible: { default: undefined, type: Boolean },
     disabled: { default: undefined, type: Boolean },
-    indicatorProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
+    indicatorProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
     invalid: { default: undefined, type: Boolean },
-    onChange: { default: undefined, type: Function as PropType<PasswordInputProps["onChange"]> },
+    onChange: {
+      default: undefined,
+      type: Function as PropType<PasswordInputProps["onChange"]>,
+    },
     onValueChange: {
       default: undefined,
       type: Function as PropType<PasswordInputProps["onValueChange"]>,
@@ -65,9 +84,15 @@ export const PasswordInput = defineComponent({
       default: passwordInputRecipe,
       type: Function as PropType<typeof passwordInputRecipe>,
     },
-    size: { default: "md", type: String as PropType<PasswordInputProps["size"]> },
+    size: {
+      default: "md",
+      type: String as PropType<PasswordInputProps["size"]>,
+    },
     value: { default: undefined, type: String },
-    variant: { default: undefined, type: String as PropType<PasswordInputProps["variant"]> },
+    variant: {
+      default: undefined,
+      type: String as PropType<PasswordInputProps["variant"]>,
+    },
     visibilityTriggerProps: {
       default: undefined,
       type: Object as PropType<Record<string, unknown>>,
@@ -75,18 +100,21 @@ export const PasswordInput = defineComponent({
     visible: { default: undefined, type: Boolean },
   },
   setup(props, { attrs, slots }) {
-    const { canClear, handleChange, handleClear, inputRef } = useClearableInput({
-      clearable: () => props.clearable,
-      defaultValue: props.defaultValue,
-      disabled: () => props.disabled,
-      onChange: props.onChange,
-      onValueChange: props.onValueChange,
-      readOnly: () => props.readOnly,
-      value: () => props.value,
-    });
+    const { canClear, handleChange, handleClear, inputRef } = useClearableInput(
+      {
+        clearable: () => props.clearable,
+        defaultValue: props.defaultValue,
+        disabled: () => props.disabled,
+        onChange: props.onChange,
+        onValueChange: props.onValueChange,
+        readOnly: () => props.readOnly,
+        value: () => props.value,
+      },
+    );
 
     return () => {
-      const { onClick: onClearClick, ...restClearButtonProps } = props.clearButtonProps ?? {};
+      const { onClick: onClearClick, ...restClearButtonProps } =
+        props.clearButtonProps ?? {};
       const { fallback, ...restIndicatorProps } = props.indicatorProps ?? {};
       const variantSlots = props.recipe();
 

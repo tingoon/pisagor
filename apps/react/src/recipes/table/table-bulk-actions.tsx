@@ -27,7 +27,8 @@ export function TableBulkActions({ className }: TableBulkActionsProps) {
   const [selectedIds, setSelectedIds] = useState<string[]>([]);
 
   const isOpen = selectedIds.length > 0;
-  const allSelected = selectedIds.length > 0 && selectedIds.length === orders.length;
+  const allSelected =
+    selectedIds.length > 0 && selectedIds.length === orders.length;
 
   const handleSelectAll = (checked: boolean | "indeterminate") => {
     if (checked) {
@@ -76,18 +77,26 @@ export function TableBulkActions({ className }: TableBulkActionsProps) {
               const isSelected = selectedIds.includes(order.id);
 
               return (
-                <Table.Row data-state={isSelected ? "selected" : undefined} key={order.id}>
+                <Table.Row
+                  data-state={isSelected ? "selected" : undefined}
+                  key={order.id}
+                >
                   <Table.Cell className="w-12">
                     <Checkbox
                       aria-label={`Select order ${order.id}`}
                       checked={isSelected}
-                      onCheckedChange={({ checked }) => handleSelectRow(order.id, checked)}
+                      onCheckedChange={({ checked }) =>
+                        handleSelectRow(order.id, checked)
+                      }
                     />
                   </Table.Cell>
                   <Table.Cell className="font-medium">{order.id}</Table.Cell>
                   <Table.Cell>{order.name}</Table.Cell>
                   <Table.Cell>
-                    <Badge className="capitalize" variant={statusVariants[order.status]}>
+                    <Badge
+                      className="capitalize"
+                      variant={statusVariants[order.status]}
+                    >
                       {order.status}
                     </Badge>
                   </Table.Cell>
@@ -135,7 +144,9 @@ export function TableBulkActions({ className }: TableBulkActionsProps) {
               <AlertDialog.Content>
                 <AlertDialog.Header>
                   <AlertDialog.Title>Delete selected orders?</AlertDialog.Title>
-                  <AlertDialog.Description>This action cannot be undone.</AlertDialog.Description>
+                  <AlertDialog.Description>
+                    This action cannot be undone.
+                  </AlertDialog.Description>
                 </AlertDialog.Header>
                 <AlertDialog.Body>
                   <ul>
@@ -157,7 +168,9 @@ export function TableBulkActions({ className }: TableBulkActionsProps) {
                 <AlertDialog.Footer>
                   <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
                   <AlertDialog.CloseTrigger asChild>
-                    <AlertDialog.Action variant="destructive">Delete</AlertDialog.Action>
+                    <AlertDialog.Action variant="destructive">
+                      Delete
+                    </AlertDialog.Action>
                   </AlertDialog.CloseTrigger>
                 </AlertDialog.Footer>
               </AlertDialog.Content>

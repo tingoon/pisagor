@@ -15,7 +15,11 @@ export function AppShellBanner(props: AppShellBannerProps): JSX.Element {
   let bannerEl: HTMLDivElement | undefined;
   const { slots } = useAppShell();
   const position = () => local.position ?? "fixed";
-  useSyncFixedRegionHeight(() => bannerEl, position, APP_SHELL_BANNER_HEIGHT_VAR);
+  useSyncFixedRegionHeight(
+    () => bannerEl,
+    position,
+    APP_SHELL_BANNER_HEIGHT_VAR,
+  );
 
   return (
     <div
@@ -33,7 +37,9 @@ export function AppShellBanner(props: AppShellBannerProps): JSX.Element {
       }}
       style={{
         "grid-area": "banner",
-        ...(typeof local.style === "object" && local.style && !Array.isArray(local.style)
+        ...(typeof local.style === "object" &&
+        local.style &&
+        !Array.isArray(local.style)
           ? (local.style as Record<string, string>)
           : {}),
       }}

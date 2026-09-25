@@ -10,9 +10,15 @@ import type {
   FileUploadRootProps as FileUploadPrimitiveRootProps,
   FileUploadTriggerProps,
 } from "@ark-ui/react/file-upload";
-import { FileUpload as FileUploadPrimitive, useFileUploadContext } from "@ark-ui/react/file-upload";
+import {
+  FileUpload as FileUploadPrimitive,
+  useFileUploadContext,
+} from "@ark-ui/react/file-upload";
 import { UploadIcon, XIcon } from "@phosphor-icons/react";
-import { fileUploadItemRecipe, fileUploadRecipe } from "@pisagor/recipes/file-upload";
+import {
+  fileUploadItemRecipe,
+  fileUploadRecipe,
+} from "@pisagor/recipes/file-upload";
 import { formControlZoneRecipe } from "@pisagor/recipes/form-control";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
@@ -49,7 +55,8 @@ export interface FileUploadRootProps extends FileUploadPrimitiveRootProps {
   recipe?: typeof fileUploadRecipe;
 }
 
-export interface FileUploadDropzoneProps extends FileUploadPrimitiveDropzoneProps {
+export interface FileUploadDropzoneProps
+  extends FileUploadPrimitiveDropzoneProps {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
 }
@@ -126,7 +133,11 @@ export function FileUploadDropzone({
     <FileUploadPrimitive.Dropzone
       {...rest}
       {...controlProps}
-      className={cn(formControlZoneRecipe({ ...shellArgs }), slots.dropzone(), className)}
+      className={cn(
+        formControlZoneRecipe({ ...shellArgs }),
+        slots.dropzone(),
+        className,
+      )}
     />
   );
 }
@@ -163,7 +174,10 @@ export function FileUploadTitle({ className, ...rest }: FileUploadTitleProps) {
   );
 }
 
-export function FileUploadDescription({ className, ...rest }: FileUploadDescriptionProps) {
+export function FileUploadDescription({
+  className,
+  ...rest
+}: FileUploadDescriptionProps) {
   const { slots } = useFileUpload();
 
   return (
@@ -176,7 +190,10 @@ export function FileUploadDescription({ className, ...rest }: FileUploadDescript
   );
 }
 
-export function FileUploadHelper({ className, ...rest }: FileUploadHelperProps) {
+export function FileUploadHelper({
+  className,
+  ...rest
+}: FileUploadHelperProps) {
   const { slots } = useFileUpload();
 
   return (
@@ -275,10 +292,18 @@ export function FileUploadItem({
   );
 }
 
-export function FileUploadItemPreview({ className, ...rest }: FileUploadItemPreviewProps) {
+export function FileUploadItemPreview({
+  className,
+  ...rest
+}: FileUploadItemPreviewProps) {
   const { slots } = useFileUploadItem();
 
-  return <FileUploadPrimitive.ItemPreview {...rest} className={slots.preview({ className })} />;
+  return (
+    <FileUploadPrimitive.ItemPreview
+      {...rest}
+      className={slots.preview({ className })}
+    />
+  );
 }
 
 export function FileUploadItemPreviewImage({
@@ -288,20 +313,39 @@ export function FileUploadItemPreviewImage({
   const { slots } = useFileUploadItem();
 
   return (
-    <FileUploadPrimitive.ItemPreviewImage {...rest} className={slots.previewImage({ className })} />
+    <FileUploadPrimitive.ItemPreviewImage
+      {...rest}
+      className={slots.previewImage({ className })}
+    />
   );
 }
 
-export function FileUploadItemName({ className, ...rest }: FileUploadItemNameProps) {
+export function FileUploadItemName({
+  className,
+  ...rest
+}: FileUploadItemNameProps) {
   const { slots } = useFileUploadItem();
 
-  return <FileUploadPrimitive.ItemName {...rest} className={slots.name({ className })} />;
+  return (
+    <FileUploadPrimitive.ItemName
+      {...rest}
+      className={slots.name({ className })}
+    />
+  );
 }
 
-export function FileUploadItemSize({ className, ...rest }: FileUploadItemSizeProps) {
+export function FileUploadItemSize({
+  className,
+  ...rest
+}: FileUploadItemSizeProps) {
   const { slots } = useFileUploadItem();
 
-  return <FileUploadPrimitive.ItemSizeText {...rest} className={slots.size({ className })} />;
+  return (
+    <FileUploadPrimitive.ItemSizeText
+      {...rest}
+      className={slots.size({ className })}
+    />
+  );
 }
 
 export function FileUploadItemDeleteTrigger({

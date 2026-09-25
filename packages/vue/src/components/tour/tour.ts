@@ -85,9 +85,10 @@ export interface TourBackdropProps {
 // #endregion
 
 // #region Context
-const [provideTourContext, , useTourContextRef] = createContext<TourContextProps>({
-  name: "Tour",
-});
+const [provideTourContext, , useTourContextRef] =
+  createContext<TourContextProps>({
+    name: "Tour",
+  });
 
 export { useTourContextRef as useTourContext };
 // #endregion
@@ -166,7 +167,9 @@ export const TourTrigger = defineComponent({
       const ctx = toValue(useTourContextRef());
       if (!ctx) return null;
       const { handleStart } = ctx;
-      const onClick = attrs.onClick as ((event: MouseEvent) => void) | undefined;
+      const onClick = attrs.onClick as
+        | ((event: MouseEvent) => void)
+        | undefined;
 
       const handleClick = (event: MouseEvent) => {
         onClick?.(event);
@@ -200,7 +203,10 @@ export const TourBackdrop = defineComponent({
   inheritAttrs: false,
   name: "Tour.Backdrop",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     dialogRecipe: {
       default: dialogRecipe,
       type: Function as PropType<typeof dialogRecipe>,
@@ -213,7 +219,11 @@ export const TourBackdrop = defineComponent({
 
       return h(TourPrimitive.Backdrop as ArkPart, {
         ...attrs,
-        class: cn(props.dialogRecipe().backdrop(), ctx.slots.backdrop(), props.class),
+        class: cn(
+          props.dialogRecipe().backdrop(),
+          ctx.slots.backdrop(),
+          props.class,
+        ),
       });
     };
   },
@@ -240,7 +250,10 @@ export const TourContent = defineComponent({
   inheritAttrs: false,
   name: "Tour.Content",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     showCloseButton: { default: true, type: Boolean },
   },
   setup(props, { attrs, slots }) {
@@ -267,12 +280,26 @@ export const TourContent = defineComponent({
             () => [
               slots.default ? slots.default() : defaultChildren(),
               props.showCloseButton
-                ? h(TourCloseTrigger, { asChild: true, class: recipeSlots.close() }, () =>
-                    h(
-                      Button as ArkPart,
-                      { class: recipeSlots.closeButton(), size: "icon-md", variant: "ghost" },
-                      () => [h(PhX), h("span", { class: recipeSlots.closeLabel() }, "Close")],
-                    ),
+                ? h(
+                    TourCloseTrigger,
+                    { asChild: true, class: recipeSlots.close() },
+                    () =>
+                      h(
+                        Button as ArkPart,
+                        {
+                          class: recipeSlots.closeButton(),
+                          size: "icon-md",
+                          variant: "ghost",
+                        },
+                        () => [
+                          h(PhX),
+                          h(
+                            "span",
+                            { class: recipeSlots.closeLabel() },
+                            "Close",
+                          ),
+                        ],
+                      ),
                   )
                 : null,
             ],
@@ -288,7 +315,12 @@ export const TourBody = defineComponent({
   inheritAttrs: false,
   name: "Tour.Body",
   setup(_, { attrs, slots }) {
-    return () => h(DialogBody as ArkPart, { ...attrs, dataPart: "body", dataScope: "tour" }, slots);
+    return () =>
+      h(
+        DialogBody as ArkPart,
+        { ...attrs, dataPart: "body", dataScope: "tour" },
+        slots,
+      );
   },
 });
 
@@ -313,7 +345,11 @@ export const TourHeader = defineComponent({
   name: "Tour.Header",
   setup(_, { attrs, slots }) {
     return () =>
-      h(DialogHeader as ArkPart, { ...attrs, dataPart: "header", dataScope: "tour" }, slots);
+      h(
+        DialogHeader as ArkPart,
+        { ...attrs, dataPart: "header", dataScope: "tour" },
+        slots,
+      );
   },
 });
 
@@ -321,7 +357,10 @@ export const TourTitle = defineComponent({
   inheritAttrs: false,
   name: "Tour.Title",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
   },
   setup(props, { attrs }) {
     return () => {
@@ -342,7 +381,10 @@ export const TourDescription = defineComponent({
   inheritAttrs: false,
   name: "Tour.Description",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
   },
   setup(props, { attrs }) {
     return () => {
@@ -366,7 +408,10 @@ export const TourProgressText = defineComponent({
   inheritAttrs: false,
   name: "Tour.ProgressText",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
   },
   setup(props, { attrs }) {
     return () => {
@@ -409,7 +454,10 @@ export const TourActions = defineComponent({
   inheritAttrs: false,
   name: "Tour.Actions",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
   },
   setup(props, { attrs }) {
     return () => {
@@ -422,35 +470,42 @@ export const TourActions = defineComponent({
         return null;
       }
 
-      return h(TourPrimitive.Control as ArkPart, { ...attrs, asChild: true }, () =>
-        h(
-          DialogFooter as ArkPart,
-          {
-            class: cn(recipeSlots.actions(), props.class),
-            dataPart: "actions",
-            dataScope: "tour",
-          },
-          () =>
-            actions.map((action) =>
-              h(TourActionTrigger, { action, asChild: true, key: action.label }, () =>
+      return h(
+        TourPrimitive.Control as ArkPart,
+        { ...attrs, asChild: true },
+        () =>
+          h(
+            DialogFooter as ArkPart,
+            {
+              class: cn(recipeSlots.actions(), props.class),
+              dataPart: "actions",
+              dataScope: "tour",
+            },
+            () =>
+              actions.map((action) =>
                 h(
-                  Button,
-                  {
-                    size: "sm",
-                    variant:
-                      action.action === "dismiss" || action.action === "prev"
-                        ? "outline"
-                        : "default",
-                  },
-                  () => [
-                    action.action === "prev" ? h(PhCaretLeft) : null,
-                    action.label,
-                    action.action === "next" ? h(PhCaretRight) : null,
-                  ],
+                  TourActionTrigger,
+                  { action, asChild: true, key: action.label },
+                  () =>
+                    h(
+                      Button,
+                      {
+                        size: "sm",
+                        variant:
+                          action.action === "dismiss" ||
+                          action.action === "prev"
+                            ? "outline"
+                            : "default",
+                      },
+                      () => [
+                        action.action === "prev" ? h(PhCaretLeft) : null,
+                        action.label,
+                        action.action === "next" ? h(PhCaretRight) : null,
+                      ],
+                    ),
                 ),
               ),
-            ),
-        ),
+          ),
       );
     };
   },
@@ -464,14 +519,22 @@ export const TourPreviousStep = defineComponent({
       const ctx = toValue(useTourContextRef());
       if (!ctx) return null;
       const { tour } = ctx;
-      const prevAction = tour.step?.actions?.find((action) => action.action === "prev");
+      const prevAction = tour.step?.actions?.find(
+        (action) => action.action === "prev",
+      );
 
       if (!prevAction) {
         return null;
       }
 
-      return h(TourActionTrigger, { ...attrs, action: prevAction, asChild: true }, () =>
-        h(Button, { size: "sm", variant: "outline" }, () => [h(PhCaretLeft), prevAction.label]),
+      return h(
+        TourActionTrigger,
+        { ...attrs, action: prevAction, asChild: true },
+        () =>
+          h(Button, { size: "sm", variant: "outline" }, () => [
+            h(PhCaretLeft),
+            prevAction.label,
+          ]),
       );
     };
   },
@@ -486,7 +549,8 @@ export const TourNextStep = defineComponent({
       if (!ctx) return null;
       const { tour } = ctx;
       const action = tour.step?.actions?.find(
-        (candidate) => candidate.action === "next" || candidate.action === "dismiss",
+        (candidate) =>
+          candidate.action === "next" || candidate.action === "dismiss",
       );
 
       if (!action) {

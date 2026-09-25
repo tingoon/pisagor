@@ -1,4 +1,9 @@
-import { QrCodeDownload, QrCodeFrame, QrCodeOverlay, QrCodeRoot } from "./qr-code";
+import {
+  QrCodeDownload,
+  QrCodeFrame,
+  QrCodeOverlay,
+  QrCodeRoot,
+} from "./qr-code";
 
 export type { QrCodeRootProps } from "./qr-code";
 

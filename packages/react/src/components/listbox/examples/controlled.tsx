@@ -17,12 +17,16 @@ export function Controlled() {
 
   return (
     <div className="flex flex-col gap-2">
-      <p className="text-center text-muted-foreground text-sm">Selected the Large size</p>
+      <p className="text-center text-muted-foreground text-sm">
+        Selected the Large size
+      </p>
       <Item.Group variant="outline">
         <Item className="p-1">
           <Listbox.Root
             collection={collection}
-            onValueChange={(value) => setValue(Array.isArray(value) ? value : [value])}
+            onValueChange={(value) =>
+              setValue(Array.isArray(value) ? value : [value])
+            }
             value={value}
           >
             <Listbox.Content>
@@ -36,7 +40,9 @@ export function Controlled() {
           </Listbox.Root>
         </Item>
       </Item.Group>
-      <p className="text-center text-muted-foreground text-sm">{isLarge ? "✅" : "❌"}</p>
+      <p className="text-center text-muted-foreground text-sm">
+        {isLarge ? "✅" : "❌"}
+      </p>
     </div>
   );
 }

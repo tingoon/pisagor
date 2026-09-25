@@ -6,7 +6,13 @@ import { comboboxRecipe } from "@pisagor/recipes/combobox";
 import { commandRecipe } from "@pisagor/recipes/command";
 import { dialogRecipe } from "@pisagor/recipes/dialog";
 import { cn } from "@pisagor/utils";
-import { defineComponent, h, type PropType, Teleport, type VNodeChild } from "vue";
+import {
+  defineComponent,
+  h,
+  type PropType,
+  Teleport,
+  type VNodeChild,
+} from "vue";
 import { Combobox, type ComboboxRootProps } from "../combobox";
 import { Dialog, type DialogContentProps } from "../dialog";
 import type { InputProps } from "../input/input";
@@ -72,7 +78,10 @@ export const CommandDialogContent = defineComponent({
   inheritAttrs: false,
   name: "CommandDialogContent",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     description: {
       default: "Search for a command to run...",
       type: String as PropType<CommandDialogContentProps["description"]>,
@@ -128,7 +137,10 @@ export const CommandRoot = defineComponent({
   inheritAttrs: false,
   name: "CommandRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     collection: {
       default: undefined,
       type: Object as PropType<ListCollection<CollectionItem> | undefined>,
@@ -175,7 +187,10 @@ export const CommandContent = defineComponent({
   inheritAttrs: false,
   name: "CommandContent",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: commandRecipe,
       type: Function as PropType<typeof commandRecipe>,
@@ -202,33 +217,48 @@ export const CommandInput = defineComponent({
   inheritAttrs: false,
   name: "CommandInput",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: commandRecipe,
       type: Function as PropType<typeof commandRecipe>,
     },
-    size: { default: undefined, type: String as PropType<CommandInputProps["size"]> },
+    size: {
+      default: undefined,
+      type: String as PropType<CommandInputProps["size"]>,
+    },
   },
   setup(props, { attrs }) {
     return () => {
       const variantSlots = props.recipe();
 
-      return h(ComboboxPrimitive.Control as ArkPart, { class: variantSlots.control() }, () =>
-        h(
-          InputGroup as ArkPart,
-          { class: variantSlots.input({ class: props.class }), size: props.size },
-          () => [
-            h(InputGroup.Addon as ArkPart, null, () =>
-              h(PhMagnifyingGlass, { "aria-hidden": true, class: variantSlots.inputIcon() }),
-            ),
-            h(ComboboxPrimitive.Input as ArkPart, { asChild: true }, () =>
-              h(InputGroup.Input as ArkPart, {
-                ...attrs,
-                autofocus: true,
-              }),
-            ),
-          ],
-        ),
+      return h(
+        ComboboxPrimitive.Control as ArkPart,
+        { class: variantSlots.control() },
+        () =>
+          h(
+            InputGroup as ArkPart,
+            {
+              class: variantSlots.input({ class: props.class }),
+              size: props.size,
+            },
+            () => [
+              h(InputGroup.Addon as ArkPart, null, () =>
+                h(PhMagnifyingGlass, {
+                  "aria-hidden": true,
+                  class: variantSlots.inputIcon(),
+                }),
+              ),
+              h(ComboboxPrimitive.Input as ArkPart, { asChild: true }, () =>
+                h(InputGroup.Input as ArkPart, {
+                  ...attrs,
+                  autofocus: true,
+                }),
+              ),
+            ],
+          ),
       );
     };
   },
@@ -239,7 +269,10 @@ export const CommandList = defineComponent({
   inheritAttrs: false,
   name: "CommandList",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: commandRecipe,
       type: Function as PropType<typeof commandRecipe>,
@@ -268,7 +301,10 @@ export const CommandEmpty = defineComponent({
   inheritAttrs: false,
   name: "CommandEmpty",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: commandRecipe,
       type: Function as PropType<typeof commandRecipe>,
@@ -295,7 +331,10 @@ export const CommandItemGroup = defineComponent({
   inheritAttrs: false,
   name: "CommandItemGroup",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     heading: {
       default: undefined,
       type: [String, Object] as PropType<string | VNodeChild>,
@@ -316,11 +355,18 @@ export const CommandItemGroupLabel = defineComponent({
   inheritAttrs: false,
   name: "CommandItemGroupLabel",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () =>
-      h(Combobox.ItemGroupLabel as ArkPart, { ...attrs, class: props.class }, slots.default?.());
+      h(
+        Combobox.ItemGroupLabel as ArkPart,
+        { ...attrs, class: props.class },
+        slots.default?.(),
+      );
   },
 });
 CommandItemGroupLabel.displayName = "Command.ItemGroupLabel";
@@ -329,7 +375,10 @@ export const CommandItem = defineComponent({
   inheritAttrs: false,
   name: "CommandItem",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     item: { default: undefined, type: Object as PropType<unknown> },
   },
   setup(props, { attrs, slots }) {
@@ -338,7 +387,9 @@ export const CommandItem = defineComponent({
         ComboboxPrimitive.Item as ArkPart,
         {
           ...attrs,
-          class: comboboxRecipe({ showIndicator: false }).item({ class: props.class }),
+          class: comboboxRecipe({ showIndicator: false }).item({
+            class: props.class,
+          }),
           item: props.item,
           persistFocus: true,
         },
@@ -352,7 +403,10 @@ export const CommandSeparator = defineComponent({
   inheritAttrs: false,
   name: "CommandSeparator",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: commandRecipe,
       type: Function as PropType<typeof commandRecipe>,
@@ -377,7 +431,10 @@ export const CommandShortcut = defineComponent({
   inheritAttrs: false,
   name: "CommandShortcut",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: commandRecipe,
       type: Function as PropType<typeof commandRecipe>,
@@ -406,7 +463,10 @@ export const CommandFooter = defineComponent({
   inheritAttrs: false,
   name: "CommandFooter",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: commandRecipe,
       type: Function as PropType<typeof commandRecipe>,

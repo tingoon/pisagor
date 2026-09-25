@@ -76,7 +76,14 @@ function getChunks(
   return chunks;
 }
 
-const { text, query, ignoreCase = true, matchAll = true, class: className, ...rest } = Astro.props;
+const {
+  text,
+  query,
+  ignoreCase = true,
+  matchAll = true,
+  class: className,
+  ...rest
+} = Astro.props;
 
 const chunks = getChunks(text, query, ignoreCase, matchAll);
 const markClass = highlightRecipe({ className });

@@ -10,10 +10,18 @@ const value = ref(55);
 <template>
   <div class="flex flex-col items-center gap-2">
     <div class="flex gap-2">
-      <Button size="icon-sm" variant="outline" @click="value = Math.max(0, value - 10)">
+      <Button
+        size="icon-sm"
+        variant="outline"
+        @click="value = Math.max(0, value - 10)"
+      >
         <PhMinus />
       </Button>
-      <Button size="icon-sm" variant="outline" @click="value = Math.min(100, value + 10)">
+      <Button
+        size="icon-sm"
+        variant="outline"
+        @click="value = Math.min(100, value + 10)"
+      >
         <PhPlus />
       </Button>
     </div>

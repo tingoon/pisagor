@@ -41,8 +41,9 @@ export function MenuDialog() {
               </Dialog.Header>
               <Dialog.Body>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  You can open dialogs from menu items using the onSelect handler — the menu closes,
-                  then the dialog opens above the page.
+                  You can open dialogs from menu items using the onSelect
+                  handler — the menu closes, then the dialog opens above the
+                  page.
                 </p>
               </Dialog.Body>
               <Dialog.Footer>

@@ -9,7 +9,10 @@ export const InputGroupWithButton = defineComponent({
   setup() {
     return () =>
       h(InputGroup as ArkPart, null, () => [
-        h(InputGroup.Input as ArkPart, { placeholder: "Your email", type: "email" }),
+        h(InputGroup.Input as ArkPart, {
+          placeholder: "Your email",
+          type: "email",
+        }),
         h(InputGroup.Addon as ArkPart, { align: "inline-end" }, () =>
           h(
             InputGroup.Button as ArkPart,

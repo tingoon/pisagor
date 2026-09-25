@@ -46,7 +46,12 @@ const ORDER_PRODUCTS = [
   "iPad Air",
 ] as const;
 
-const ORDER_STATUSES = ["pending", "shipped", "delivered", "cancelled"] as const;
+const ORDER_STATUSES = [
+  "pending",
+  "shipped",
+  "delivered",
+  "cancelled",
+] as const;
 
 const orders: Order[] = Array.from({ length: 32 }, (_, index) => ({
   amount: 49 + ((index * 17) % 450),
@@ -98,7 +103,10 @@ function OrdersTableFooter() {
           Total
         </Table.Cell>
         <Table.Cell className="text-right font-medium tabular-nums">
-          {total.toLocaleString(undefined, { currency: "USD", style: "currency" })}
+          {total.toLocaleString(undefined, {
+            currency: "USD",
+            style: "currency",
+          })}
         </Table.Cell>
       </Table.Row>
     </Table.Footer>
@@ -116,7 +124,10 @@ export function OrdersWithFooter() {
       {
         accessorKey: "status",
         cell: ({ row }) => (
-          <Badge className="capitalize" variant={orderStatusVariants[row.original.status]}>
+          <Badge
+            className="capitalize"
+            variant={orderStatusVariants[row.original.status]}
+          >
             {row.original.status}
           </Badge>
         ),

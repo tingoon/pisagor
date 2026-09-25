@@ -1,10 +1,21 @@
 import { Tooltip as TooltipPrimitive } from "@ark-ui/vue/tooltip";
-import { type TooltipRecipeSlot, tooltipRecipe } from "@pisagor/recipes/tooltip";
-import { defineComponent, h, type PropType, Teleport, type VNodeChild } from "vue";
+import {
+  type TooltipRecipeSlot,
+  tooltipRecipe,
+} from "@pisagor/recipes/tooltip";
+import {
+  defineComponent,
+  h,
+  type PropType,
+  Teleport,
+  type VNodeChild,
+} from "vue";
 import type { VariantClassNames } from "../../internal/types";
 
 // #region Types
-export type TooltipTriggerHandle = (props: Record<string, unknown>) => VNodeChild;
+export type TooltipTriggerHandle = (
+  props: Record<string, unknown>,
+) => VNodeChild;
 
 type TooltipClassNames = VariantClassNames<TooltipRecipeSlot>;
 
@@ -43,18 +54,35 @@ export const Tooltip = defineComponent({
   inheritAttrs: false,
   name: "PisagorTooltip",
   props: {
-    arrowProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
+    arrowProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
     children: {
       required: true,
-      type: [Object, Function, String, Array] as PropType<VNodeChild | TooltipTriggerHandle>,
+      type: [Object, Function, String, Array] as PropType<
+        VNodeChild | TooltipTriggerHandle
+      >,
     },
-    classNames: { default: undefined, type: Object as PropType<TooltipClassNames> },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<TooltipClassNames>,
+    },
     closeDelay: { default: 150, type: Number },
-    content: { required: true, type: [Object, String, Array] as PropType<VNodeChild> },
-    contentProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
+    content: {
+      required: true,
+      type: [Object, String, Array] as PropType<VNodeChild>,
+    },
+    contentProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
     lazyMount: { default: true, type: Boolean },
     openDelay: { default: 400, type: Number },
-    positionerProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
+    positionerProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
     positioning: {
       default: () => ({ placement: "top" }),
       type: Object as PropType<Record<string, unknown>>,
@@ -63,7 +91,10 @@ export const Tooltip = defineComponent({
       default: tooltipRecipe,
       type: Function as PropType<typeof tooltipRecipe>,
     },
-    triggerProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
+    triggerProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
     unmountOnExit: { default: true, type: Boolean },
   },
   setup(props, { attrs }) {
@@ -71,7 +102,9 @@ export const Tooltip = defineComponent({
       const slots = props.recipe();
       const trigger = isTriggerHandle(props.children)
         ? h(TooltipPrimitive.Context as ArkPart, null, {
-            default: (api: { getTriggerProps: () => Record<string, unknown> }) =>
+            default: (api: {
+              getTriggerProps: () => Record<string, unknown>;
+            }) =>
               (props.children as TooltipTriggerHandle)(api.getTriggerProps()),
           })
         : h(
@@ -96,25 +129,28 @@ export const Tooltip = defineComponent({
         () => [
           trigger,
           h(Teleport, { to: "body" }, () =>
-            h(TooltipPrimitive.Positioner as ArkPart, { ...props.positionerProps }, () =>
-              h(
-                TooltipPrimitive.Content as ArkPart,
-                {
-                  ...props.contentProps,
-                  class: slots.content({ class: props.classNames?.content }),
-                },
-                () => [
-                  h(
-                    TooltipPrimitive.Arrow as ArkPart,
-                    {
-                      ...props.arrowProps,
-                      class: slots.arrow({ class: props.classNames?.arrow }),
-                    },
-                    () => h(TooltipPrimitive.ArrowTip as ArkPart),
-                  ),
-                  props.content,
-                ],
-              ),
+            h(
+              TooltipPrimitive.Positioner as ArkPart,
+              { ...props.positionerProps },
+              () =>
+                h(
+                  TooltipPrimitive.Content as ArkPart,
+                  {
+                    ...props.contentProps,
+                    class: slots.content({ class: props.classNames?.content }),
+                  },
+                  () => [
+                    h(
+                      TooltipPrimitive.Arrow as ArkPart,
+                      {
+                        ...props.arrowProps,
+                        class: slots.arrow({ class: props.classNames?.arrow }),
+                      },
+                      () => h(TooltipPrimitive.ArrowTip as ArkPart),
+                    ),
+                    props.content,
+                  ],
+                ),
             ),
           ),
         ],

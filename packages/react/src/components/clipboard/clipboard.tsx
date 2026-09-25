@@ -96,11 +96,18 @@ function ClipboardRoot({ children, className, ...rest }: ClipboardRootProps) {
   );
 }
 
-function ClipboardControl({ children, className, ...rest }: ClipboardControlProps) {
+function ClipboardControl({
+  children,
+  className,
+  ...rest
+}: ClipboardControlProps) {
   const { slots } = useClipboard();
 
   return (
-    <ClipboardPrimitive.Control {...rest} className={slots.control({ className })}>
+    <ClipboardPrimitive.Control
+      {...rest}
+      className={slots.control({ className })}
+    >
       {children}
     </ClipboardPrimitive.Control>
   );
@@ -109,22 +116,41 @@ function ClipboardControl({ children, className, ...rest }: ClipboardControlProp
 function ClipboardInput({ className, ...rest }: ClipboardInputProps) {
   const { slots } = useClipboard();
 
-  return <ClipboardPrimitive.Input {...rest} className={slots.input({ className })} />;
+  return (
+    <ClipboardPrimitive.Input
+      {...rest}
+      className={slots.input({ className })}
+    />
+  );
 }
 
 function ClipboardValue({ className, ...rest }: ClipboardValueTextProps) {
   const { slots } = useClipboard();
 
-  return <ClipboardPrimitive.ValueText {...rest} className={slots.value({ className })} />;
+  return (
+    <ClipboardPrimitive.ValueText
+      {...rest}
+      className={slots.value({ className })}
+    />
+  );
 }
 
 function ClipboardIndicator({ className, ...rest }: ClipboardIndicatorProps) {
   const { slots } = useClipboard();
 
-  return <ClipboardPrimitive.Indicator {...rest} className={slots.indicator({ className })} />;
+  return (
+    <ClipboardPrimitive.Indicator
+      {...rest}
+      className={slots.indicator({ className })}
+    />
+  );
 }
 
-function ClipboardField({ children, className, ...rest }: ComponentProps<"div">) {
+function ClipboardField({
+  children,
+  className,
+  ...rest
+}: ComponentProps<"div">) {
   const { slots } = useClipboard();
 
   return (
@@ -134,7 +160,11 @@ function ClipboardField({ children, className, ...rest }: ComponentProps<"div">)
   );
 }
 
-function ClipboardLabel({ children, className, ...rest }: ComponentProps<"span">) {
+function ClipboardLabel({
+  children,
+  className,
+  ...rest
+}: ComponentProps<"span">) {
   const { slots } = useClipboard();
 
   return (
@@ -185,7 +215,10 @@ export function Clipboard({
         )}
 
         {variant === "value" && (
-          <ClipboardValue {...controlProps} className={cn(shellClassName, classNames?.value)} />
+          <ClipboardValue
+            {...controlProps}
+            className={cn(shellClassName, classNames?.value)}
+          />
         )}
 
         <ClipboardPrimitive.Trigger asChild>
@@ -195,7 +228,10 @@ export function Clipboard({
             type="button"
             variant={buttonVariant}
           >
-            <ClipboardIndicator className={classNames?.indicator} copied={copiedIcon}>
+            <ClipboardIndicator
+              className={classNames?.indicator}
+              copied={copiedIcon}
+            >
               {copyIcon}
             </ClipboardIndicator>
           </Button>

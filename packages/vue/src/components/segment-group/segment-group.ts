@@ -28,7 +28,8 @@ export interface SegmentGroupRootProps {
   variant?: SegmentGroupVariant;
 }
 
-export interface SegmentGroupProps extends Omit<SegmentGroupRootProps, "children"> {
+export interface SegmentGroupProps
+  extends Omit<SegmentGroupRootProps, "children"> {
   items?: SegmentGroupPresetItem[];
 }
 
@@ -47,20 +48,35 @@ export const SegmentGroupRoot = defineComponent({
   inheritAttrs: false,
   name: "SegmentGroupRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    defaultValue: { default: undefined, type: [String, null] as PropType<string | null> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    defaultValue: {
+      default: undefined,
+      type: [String, null] as PropType<string | null>,
+    },
     disabled: { default: undefined, type: Boolean },
     onValueChange: {
       default: undefined,
       type: Function as PropType<SegmentGroupRootProps["onValueChange"]>,
     },
-    orientation: { default: "horizontal", type: String as PropType<"horizontal" | "vertical"> },
+    orientation: {
+      default: "horizontal",
+      type: String as PropType<"horizontal" | "vertical">,
+    },
     recipe: {
       default: segmentGroupRecipe,
       type: Function as PropType<typeof segmentGroupRecipe>,
     },
-    value: { default: undefined, type: [String, null] as PropType<string | null> },
-    variant: { default: "default", type: String as PropType<SegmentGroupVariant> },
+    value: {
+      default: undefined,
+      type: [String, null] as PropType<string | null>,
+    },
+    variant: {
+      default: "default",
+      type: String as PropType<SegmentGroupVariant>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -77,7 +93,8 @@ export const SegmentGroupRoot = defineComponent({
           disabled: props.disabled,
           modelValue: props.value,
           onValueChange: props.onValueChange
-            ? (details: { value: string | null }) => props.onValueChange?.(details.value)
+            ? (details: { value: string | null }) =>
+                props.onValueChange?.(details.value)
             : undefined,
           orientation: props.orientation,
         },
@@ -91,13 +108,19 @@ export const SegmentGroupItem = defineComponent({
   inheritAttrs: false,
   name: "SegmentGroupItem",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     disabled: { default: undefined, type: Boolean },
     recipe: {
       default: segmentGroupRecipe,
       type: Function as PropType<typeof segmentGroupRecipe>,
     },
-    text: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
+    text: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<VNodeChild>,
+    },
     value: { required: true, type: String },
   },
   setup(props, { attrs, slots }) {
@@ -115,7 +138,11 @@ export const SegmentGroupItem = defineComponent({
         },
         () => [
           content != null
-            ? h(SegmentGroupItemText as ArkPart, null, () => content as VNodeChild)
+            ? h(
+                SegmentGroupItemText as ArkPart,
+                null,
+                () => content as VNodeChild,
+              )
             : null,
           h(SegmentGroupPrimitive.ItemControl as ArkPart, {}),
           h(SegmentGroupPrimitive.ItemHiddenInput as ArkPart, {}),
@@ -129,7 +156,10 @@ export const SegmentGroupItemText = defineComponent({
   inheritAttrs: false,
   name: "SegmentGroupItemText",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: segmentGroupRecipe,
       type: Function as PropType<typeof segmentGroupRecipe>,
@@ -155,7 +185,10 @@ export const SegmentGroupIndicator = defineComponent({
   inheritAttrs: false,
   name: "SegmentGroupIndicator",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: segmentGroupRecipe,
       type: Function as PropType<typeof segmentGroupRecipe>,
@@ -169,7 +202,9 @@ export const SegmentGroupIndicator = defineComponent({
         SegmentGroupPrimitive.Indicator as ArkPart,
         {
           ...attrs,
-          class: variantSlots.indicator({ class: cn(props.class, attrs.class) }),
+          class: variantSlots.indicator({
+            class: cn(props.class, attrs.class),
+          }),
         },
         slots.default?.(),
       );
@@ -183,18 +218,36 @@ export const SegmentGroupShorthand = defineComponent({
   inheritAttrs: false,
   name: "SegmentGroup",
   props: {
-    items: { default: undefined, type: Array as PropType<SegmentGroupPresetItem[] | undefined> },
+    items: {
+      default: undefined,
+      type: Array as PropType<SegmentGroupPresetItem[] | undefined>,
+    },
     ...({
-      class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-      defaultValue: { default: undefined, type: [String, null] as PropType<string | null> },
+      class: {
+        default: undefined,
+        type: [String, Object, Array] as PropType<unknown>,
+      },
+      defaultValue: {
+        default: undefined,
+        type: [String, null] as PropType<string | null>,
+      },
       disabled: { default: undefined, type: Boolean },
       onValueChange: {
         default: undefined,
         type: Function as PropType<SegmentGroupRootProps["onValueChange"]>,
       },
-      orientation: { default: "horizontal", type: String as PropType<"horizontal" | "vertical"> },
-      value: { default: undefined, type: [String, null] as PropType<string | null> },
-      variant: { default: "default", type: String as PropType<SegmentGroupVariant> },
+      orientation: {
+        default: "horizontal",
+        type: String as PropType<"horizontal" | "vertical">,
+      },
+      value: {
+        default: undefined,
+        type: [String, null] as PropType<string | null>,
+      },
+      variant: {
+        default: "default",
+        type: String as PropType<SegmentGroupVariant>,
+      },
     } as const),
   },
   setup(props, { slots, attrs }) {

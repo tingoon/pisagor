@@ -5,7 +5,9 @@ export function DisabledField() {
     <Field disabled>
       <Field.Label>Email</Field.Label>
       <Input disabled placeholder="Enter your email" type="email" />
-      <Field.Description>This field is currently unavailable.</Field.Description>
+      <Field.Description>
+        This field is currently unavailable.
+      </Field.Description>
     </Field>
   );
 }

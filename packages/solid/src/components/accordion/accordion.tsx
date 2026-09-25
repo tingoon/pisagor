@@ -42,19 +42,27 @@ export function AccordionItem(props: AccordionItemProps): JSX.Element {
 
   return (
     <AccordionItemContext value={{ slots: slots() }}>
-      <AccordionPrimitive.Item {...rest} class={slots().base({ class: cn(local.class) })}>
+      <AccordionPrimitive.Item
+        {...rest}
+        class={slots().base({ class: cn(local.class) })}
+      >
         {local.children}
       </AccordionPrimitive.Item>
     </AccordionItemContext>
   );
 }
 
-export function AccordionItemTrigger(props: AccordionItemTriggerProps): JSX.Element {
+export function AccordionItemTrigger(
+  props: AccordionItemTriggerProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const { slots } = useAccordionItem();
 
   return (
-    <AccordionPrimitive.ItemTrigger {...rest} class={slots.trigger({ class: cn(local.class) })}>
+    <AccordionPrimitive.ItemTrigger
+      {...rest}
+      class={slots.trigger({ class: cn(local.class) })}
+    >
       {local.children}
       <AccordionPrimitive.ItemIndicator>
         <CaretDownIcon class={slots.indicator()} />
@@ -63,12 +71,17 @@ export function AccordionItemTrigger(props: AccordionItemTriggerProps): JSX.Elem
   );
 }
 
-export function AccordionItemContent(props: AccordionItemContentProps): JSX.Element {
+export function AccordionItemContent(
+  props: AccordionItemContentProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const { slots } = useAccordionItem();
 
   return (
-    <AccordionPrimitive.ItemContent {...rest} class={slots.content({ class: cn(local.class) })}>
+    <AccordionPrimitive.ItemContent
+      {...rest}
+      class={slots.content({ class: cn(local.class) })}
+    >
       <div class={slots.body()}>{local.children}</div>
     </AccordionPrimitive.ItemContent>
   );

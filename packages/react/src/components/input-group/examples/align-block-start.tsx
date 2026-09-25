@@ -11,13 +11,19 @@ export function AlignBlockStart() {
         <InputGroup.Addon align="block-start">
           <FileCodeIcon className="text-muted-foreground" />
           <InputGroup.Text className="font-mono">script.js</InputGroup.Text>
-          <InputGroup.Button aria-label="Copy" className="ml-auto" size="icon-xs">
+          <InputGroup.Button
+            aria-label="Copy"
+            className="ml-auto"
+            size="icon-xs"
+          >
             <CopyIcon />
             <span className="sr-only">Copy</span>
           </InputGroup.Button>
         </InputGroup.Addon>
       </InputGroup>
-      <p className="text-muted-foreground text-sm">Header positioned above the textarea.</p>
+      <p className="text-muted-foreground text-sm">
+        Header positioned above the textarea.
+      </p>
     </div>
   );
 }

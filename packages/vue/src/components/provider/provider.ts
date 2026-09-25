@@ -1,5 +1,12 @@
 import { LocaleProvider } from "@ark-ui/vue/locale";
-import { computed, defineComponent, h, type InjectionKey, inject, provide } from "vue";
+import {
+  computed,
+  defineComponent,
+  h,
+  type InjectionKey,
+  inject,
+  provide,
+} from "vue";
 
 // #region Types
 export type ProviderMessages = Record<string, string>;
@@ -20,7 +27,8 @@ export interface ProviderProps {
 // #endregion
 
 // #region Context
-const ProviderMessagesKey: InjectionKey<ProviderMessages> = Symbol("ProviderMessages");
+const ProviderMessagesKey: InjectionKey<ProviderMessages> =
+  Symbol("ProviderMessages");
 
 /**
  * Resolve a library message key from the nearest `Provider` message map.
@@ -53,7 +61,10 @@ export const Provider = defineComponent({
   inheritAttrs: false,
   name: "PisagorProvider",
   props: {
-    dir: { default: undefined, type: String as () => "ltr" | "rtl" | undefined },
+    dir: {
+      default: undefined,
+      type: String as () => "ltr" | "rtl" | undefined,
+    },
     locale: { default: "en-US", type: String },
     messages: { default: () => ({}), type: Object as () => ProviderMessages },
   },
@@ -68,7 +79,11 @@ export const Provider = defineComponent({
         { ...attrs, locale: props.locale },
         {
           default: () => [
-            h("div", { dir: dir.value, style: "display: contents" }, slots.default?.()),
+            h(
+              "div",
+              { dir: dir.value, style: "display: contents" },
+              slots.default?.(),
+            ),
           ],
         },
       );

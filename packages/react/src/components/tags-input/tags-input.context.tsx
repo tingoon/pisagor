@@ -1,4 +1,7 @@
-import type { TagsInputItemRecipe, TagsInputRecipe } from "@pisagor/recipes/tags-input";
+import type {
+  TagsInputItemRecipe,
+  TagsInputRecipe,
+} from "@pisagor/recipes/tags-input";
 import { createContext } from "../../utils";
 
 interface TagsInputContextValue {

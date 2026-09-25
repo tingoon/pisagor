@@ -5,7 +5,11 @@ export function Variants() {
 
   return (
     <div className="flex flex-col gap-2">
-      <TagsInput className="w-full" defaultValue={defaultValue} variant="primary">
+      <TagsInput
+        className="w-full"
+        defaultValue={defaultValue}
+        variant="primary"
+      >
         <TagsInput.Context>
           {({ value }) =>
             value.map((tag, index) => (
@@ -16,7 +20,11 @@ export function Variants() {
           }
         </TagsInput.Context>
       </TagsInput>
-      <TagsInput className="w-full" defaultValue={defaultValue} variant="secondary">
+      <TagsInput
+        className="w-full"
+        defaultValue={defaultValue}
+        variant="secondary"
+      >
         <TagsInput.Context>
           {({ value }) =>
             value.map((tag, index) => (

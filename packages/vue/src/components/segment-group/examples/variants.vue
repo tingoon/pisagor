@@ -6,7 +6,11 @@ const items = ["Profile", "Account", "Security", "Notifications"];
 
 <template>
   <div class="flex flex-col gap-2">
-    <SegmentGroup.Root class="rounded-lg" default-value="Profile" variant="default">
+    <SegmentGroup.Root
+      class="rounded-lg"
+      default-value="Profile"
+      variant="default"
+    >
       <SegmentGroup.Item
         class="px-2 py-1.5 text-sm"
         v-for="item in items"
@@ -26,7 +30,11 @@ const items = ["Profile", "Account", "Security", "Notifications"];
         {{ item }}
       </SegmentGroup.Item>
     </SegmentGroup.Root>
-    <SegmentGroup.Root default-value="Profile" orientation="vertical" variant="underline">
+    <SegmentGroup.Root
+      default-value="Profile"
+      orientation="vertical"
+      variant="underline"
+    >
       <SegmentGroup.Item
         class="px-2 py-1.5 text-sm"
         v-for="item in items"

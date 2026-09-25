@@ -11,10 +11,17 @@ export default defineComponent({
         h(Popover, null, () =>
           h("div", { class: "flex items-center gap-2" }, [
             h(Popover.Trigger, { asChild: true }, () =>
-              h("button", { class: outlineButtonClass(), type: "button" }, "Open"),
+              h(
+                "button",
+                { class: outlineButtonClass(), type: "button" },
+                "Open",
+              ),
             ),
             h(Popover.Anchor, { asChild: true }, () =>
-              h(Input as ArkPart, { class: "w-full", placeholder: "jane.doe@example.com" }),
+              h(Input as ArkPart, {
+                class: "w-full",
+                placeholder: "jane.doe@example.com",
+              }),
             ),
             h(Popover.Content as ArkPart, { class: "w-56" }, () =>
               h(Popover.Header, {

@@ -14,7 +14,9 @@ export const getRecipeTool: Tool = {
         inputSchema: {
           component: z
             .string()
-            .describe("Component name (kebab-case), matching packages/recipes/src/<name>.ts."),
+            .describe(
+              "Component name (kebab-case), matching packages/recipes/src/<name>.ts.",
+            ),
         },
       },
       async ({ component }) => {

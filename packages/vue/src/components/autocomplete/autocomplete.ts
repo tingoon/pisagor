@@ -13,16 +13,15 @@ interface AutocompletePresetItem {
   value: string;
 }
 
-export type AutocompleteRootProps<T extends CollectionItem = CollectionItem> = Omit<
-  ComboboxRootProps<T>,
-  "children"
-> & {
-  collection?: ListCollection<T>;
-} & {
-  variant?: FormControlVariant;
-};
+export type AutocompleteRootProps<T extends CollectionItem = CollectionItem> =
+  Omit<ComboboxRootProps<T>, "children"> & {
+    collection?: ListCollection<T>;
+  } & {
+    variant?: FormControlVariant;
+  };
 
-export interface AutocompleteProps extends Omit<AutocompleteRootProps, "children"> {
+export interface AutocompleteProps
+  extends Omit<AutocompleteRootProps, "children"> {
   items?: Array<AutocompletePresetItem | string>;
   /**
    * Whether to show a clear button when the input has a value.
@@ -57,7 +56,8 @@ export const AutocompleteControl = defineComponent({
   inheritAttrs: false,
   name: "AutocompleteControl",
   setup(_, { attrs, slots }) {
-    return () => h(Combobox.Control as ArkPart, { ...attrs }, slots.default?.());
+    return () =>
+      h(Combobox.Control as ArkPart, { ...attrs }, slots.default?.());
   },
 });
 
@@ -93,7 +93,10 @@ export const AutocompleteSeparator = defineComponent({
   inheritAttrs: false,
   name: "AutocompleteSeparator",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -117,9 +120,14 @@ export const AutocompleteShorthand = defineComponent({
     clearable: { default: false, type: Boolean },
     items: {
       default: undefined,
-      type: Array as PropType<Array<AutocompletePresetItem | string> | undefined>,
+      type: Array as PropType<
+        Array<AutocompletePresetItem | string> | undefined
+      >,
     },
-    variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant | undefined>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {

@@ -1,4 +1,7 @@
-import type { CalendarRecipeFn, CalendarTableCellRecipeFn } from "@pisagor/recipes/calendar";
+import type {
+  CalendarRecipeFn,
+  CalendarTableCellRecipeFn,
+} from "@pisagor/recipes/calendar";
 
 /** Calendar props. */
 export interface CalendarProps {

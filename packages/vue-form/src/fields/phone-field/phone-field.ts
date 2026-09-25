@@ -1,6 +1,9 @@
 import { PhoneInput, type PhoneInputProps } from "@pisagor/vue/phone-input";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
+import {
+  type FieldPresentationProps,
+  FieldShell,
+} from "../../internal/field-shell";
 
 type ArkPart = Parameters<typeof h>[0];
 
@@ -20,16 +23,31 @@ export const PhoneField = defineComponent({
   inheritAttrs: false,
   name: "PhoneField",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     defaultCountry: { default: undefined, type: String },
     defaultValue: { default: undefined, type: String },
-    description: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    description: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     disabled: { default: undefined, type: Boolean },
-    error: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    error: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     id: { default: undefined, type: String },
     invalid: { default: undefined, type: Boolean },
-    label: { default: undefined, type: null as unknown as PropType<VNodeChild> },
-    labelAccessory: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    label: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
+    labelAccessory: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     labelProps: {
       default: undefined,
       type: Object as PropType<FieldPresentationProps["labelProps"]>,
@@ -46,9 +64,15 @@ export const PhoneField = defineComponent({
     },
     placeholder: { default: undefined, type: String },
     readOnly: { default: undefined, type: Boolean },
-    size: { default: undefined, type: String as PropType<PhoneInputProps["size"]> },
+    size: {
+      default: undefined,
+      type: String as PropType<PhoneInputProps["size"]>,
+    },
     value: { default: undefined, type: String },
-    variant: { default: undefined, type: String as PropType<PhoneInputProps["variant"]> },
+    variant: {
+      default: undefined,
+      type: String as PropType<PhoneInputProps["variant"]>,
+    },
   },
   setup(props, { attrs }) {
     return () =>

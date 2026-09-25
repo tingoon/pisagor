@@ -23,9 +23,15 @@ export interface SwapProps extends SwapRootProps, SwapVariantProps {
    */
   recipe?: typeof swapRecipe;
   /** Extra props forwarded to the off indicator element */
-  offIndicatorProps?: Omit<SwapOffIndicatorProps, "children" | "type" | "className">;
+  offIndicatorProps?: Omit<
+    SwapOffIndicatorProps,
+    "children" | "type" | "className"
+  >;
   /** Extra props forwarded to the on indicator element */
-  onIndicatorProps?: Omit<SwapOnIndicatorProps, "children" | "type" | "className">;
+  onIndicatorProps?: Omit<
+    SwapOnIndicatorProps,
+    "children" | "type" | "className"
+  >;
 }
 // #endregion
 

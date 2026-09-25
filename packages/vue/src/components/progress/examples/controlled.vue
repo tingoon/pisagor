@@ -12,10 +12,18 @@ const value = ref(50);
     <div class="flex items-center gap-2 font-medium text-sm">
       Controlled progress
       <div class="ml-auto flex gap-2">
-        <Button size="icon-sm" variant="outline" @click="value = Math.max(0, value - 10)">
+        <Button
+          size="icon-sm"
+          variant="outline"
+          @click="value = Math.max(0, value - 10)"
+        >
           <PhMinus />
         </Button>
-        <Button size="icon-sm" variant="outline" @click="value = Math.min(100, value + 10)">
+        <Button
+          size="icon-sm"
+          variant="outline"
+          @click="value = Math.min(100, value + 10)"
+        >
           <PhPlus />
         </Button>
       </div>

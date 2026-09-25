@@ -33,7 +33,8 @@ export interface InputGroupAddonProps {
   class?: unknown;
 }
 
-export interface InputGroupButtonProps extends Omit<ButtonProps, "size" | "recipe"> {
+export interface InputGroupButtonProps
+  extends Omit<ButtonProps, "size" | "recipe"> {
   onClick?: (event: MouseEvent) => void;
   size?: InputGroupButtonSize;
   /**
@@ -60,9 +61,15 @@ export const InputGroupRoot = defineComponent({
   inheritAttrs: false,
   name: "InputGroupRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     size: { default: "md", type: String as PropType<InputGroupProps["size"]> },
-    variant: { default: undefined, type: String as PropType<FormControlVariant> },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant>,
+    },
   },
   setup(props, { attrs, slots }) {
     const surfaceVariant = useFormControlSurface();
@@ -83,7 +90,10 @@ export const InputGroupRoot = defineComponent({
         {
           ...attrs,
           ...controlProps,
-          class: cn(formControlGroupShellRecipe({ size: props.size, ...shellArgs }), props.class),
+          class: cn(
+            formControlGroupShellRecipe({ size: props.size, ...shellArgs }),
+            props.class,
+          ),
           "data-part": "root",
           "data-scope": "input-group",
           "data-size": props.size,
@@ -103,7 +113,10 @@ export const InputGroupAddon = defineComponent({
       default: "inline-start",
       type: String as PropType<InputGroupAddonProps["align"]>,
     },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: inputGroupAddonRecipe,
       type: Function as PropType<typeof inputGroupAddonRecipe>,
@@ -138,13 +151,19 @@ export const InputGroupButton = defineComponent({
   inheritAttrs: false,
   name: "InputGroupButton",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: inputGroupButtonRecipe,
       type: Function as PropType<typeof inputGroupButtonRecipe>,
     },
     size: { default: "xs", type: String as PropType<InputGroupButtonSize> },
-    variant: { default: "ghost", type: String as PropType<ButtonProps["variant"]> },
+    variant: {
+      default: "ghost",
+      type: String as PropType<ButtonProps["variant"]>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -168,7 +187,10 @@ export const InputGroupText = defineComponent({
   inheritAttrs: false,
   name: "InputGroupText",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: inputGroupTextRecipe,
       type: Function as PropType<typeof inputGroupTextRecipe>,

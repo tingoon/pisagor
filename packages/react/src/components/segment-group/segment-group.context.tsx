@@ -5,6 +5,7 @@ interface SegmentGroupContextValue {
   slots: SegmentGroupRecipe;
 }
 
-export const { SegmentGroupContext, useSegmentGroup } = createContext<SegmentGroupContextValue>()({
-  name: "SegmentGroup",
-});
+export const { SegmentGroupContext, useSegmentGroup } =
+  createContext<SegmentGroupContextValue>()({
+    name: "SegmentGroup",
+  });

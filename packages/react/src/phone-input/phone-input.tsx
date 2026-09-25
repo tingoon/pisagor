@@ -8,8 +8,14 @@ import {
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
-import type { DefaultInputComponentProps, FlagProps } from "react-phone-number-input";
-import RPNPhoneInput, { type Country, getCountryCallingCode } from "react-phone-number-input";
+import type {
+  DefaultInputComponentProps,
+  FlagProps,
+} from "react-phone-number-input";
+import RPNPhoneInput, {
+  type Country,
+  getCountryCallingCode,
+} from "react-phone-number-input";
 import { Combobox, type ComboboxContentProps } from "../components/combobox";
 import type { InputProps } from "../components/input";
 import { InputGroup } from "../components/input-group";
@@ -43,7 +49,11 @@ interface PhoneInputCountrySelectProps {
 export interface PhoneInputProps
   extends Omit<
       ComponentProps<typeof RPNPhoneInput>,
-      "onChange" | "value" | "flagComponent" | "countrySelectComponent" | "inputComponent"
+      | "onChange"
+      | "value"
+      | "flagComponent"
+      | "countrySelectComponent"
+      | "inputComponent"
     >,
     PhoneInputVariantProps {
   /** Visual shell variant. Defaults to `primary`. */
@@ -65,7 +75,10 @@ export interface PhoneInputProps
   recipe?: typeof phoneInputRecipe;
   classNames?: PhoneInputClassNames;
   /** Tel input props (except `className`). */
-  inputProps?: Omit<InputProps, "className" | "onChange" | "onBlur" | "size" | "type" | "value">;
+  inputProps?: Omit<
+    InputProps,
+    "className" | "onChange" | "onBlur" | "size" | "type" | "value"
+  >;
   /** Country dropdown props (Combobox.Content, except `className` and `children`). */
   popupProps?: Omit<ComboboxContentProps, "className" | "children">;
 }
@@ -74,7 +87,11 @@ interface PhoneInputContainerProps extends ComponentProps<"div"> {}
 // #endregion
 
 // #region Parts
-function PhoneInputContainer({ children, className, ...rest }: PhoneInputContainerProps) {
+function PhoneInputContainer({
+  children,
+  className,
+  ...rest
+}: PhoneInputContainerProps) {
   const { size, variant } = usePhoneInput();
 
   return (
@@ -98,11 +115,17 @@ function PhoneInputFlag({ country, countryName }: FlagProps) {
   const emoji = country ? phoneInputFlags[country] : undefined;
 
   if (!emoji) {
-    return <GlobeIcon aria-hidden className={cn(slots.flagIcon(), flagClassName)} />;
+    return (
+      <GlobeIcon aria-hidden className={cn(slots.flagIcon(), flagClassName)} />
+    );
   }
 
   return (
-    <span aria-label={countryName} className={cn(slots.flagEmoji(), flagClassName)} role="img">
+    <span
+      aria-label={countryName}
+      className={cn(slots.flagEmoji(), flagClassName)}
+      role="img"
+    >
       {emoji}
     </span>
   );
@@ -152,7 +175,9 @@ function PhoneInputCountrySelect({
   const items = useMemo(
     () =>
       options
-        .filter((option): option is { label: string; value: Country } => Boolean(option.value))
+        .filter((option): option is { label: string; value: Country } =>
+          Boolean(option.value),
+        )
         .map((option) => ({ label: option.label, value: option.value })),
     [options],
   );
@@ -175,7 +200,9 @@ function PhoneInputCountrySelect({
     >
       <InputGroup.Addon
         align="inline-start"
-        className={slots.countryTrigger({ className: classNames?.countryTrigger })}
+        className={slots.countryTrigger({
+          className: classNames?.countryTrigger,
+        })}
         data-part="country-trigger"
         data-scope="phone-input"
       >
@@ -194,14 +221,19 @@ function PhoneInputCountrySelect({
               type="button"
               variant="ghost"
             >
-              {value ? <PhoneInputFlag country={value} countryName={value} /> : null}
+              {value ? (
+                <PhoneInputFlag country={value} countryName={value} />
+              ) : null}
               {callingCode ? <span>+{callingCode}</span> : null}
               <CaretUpDownIcon aria-hidden className={slots.countryCaret()} />
             </InputGroup.Button>
           </Combobox.Trigger>
         </Combobox.Control>
       </InputGroup.Addon>
-      <Combobox.Content {...popupProps} className={slots.popup({ className: classNames?.popup })}>
+      <Combobox.Content
+        {...popupProps}
+        className={slots.popup({ className: classNames?.popup })}
+      >
         <div className={slots.searchGroup()}>
           <InputGroup size={size}>
             <Combobox.FieldInput asChild>
@@ -217,11 +249,15 @@ function PhoneInputCountrySelect({
             <Combobox.Item item={item} key={item.value}>
               <PhoneInputFlag country={item.value} countryName={item.label} />
               <span className={slots.itemLabel()}>{item.label}</span>
-              <span className={slots.itemCode()}>+{getCountryCallingCode(item.value)}</span>
+              <span className={slots.itemCode()}>
+                +{getCountryCallingCode(item.value)}
+              </span>
             </Combobox.Item>
           ))}
         </Combobox.List>
-        <Combobox.Empty>No country found. Try a different search.</Combobox.Empty>
+        <Combobox.Empty>
+          No country found. Try a different search.
+        </Combobox.Empty>
       </Combobox.Content>
     </Combobox.Root>
   );

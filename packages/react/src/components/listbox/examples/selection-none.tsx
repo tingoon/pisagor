@@ -1,5 +1,9 @@
 import { createListCollection } from "@ark-ui/react";
-import { PencilSimpleIcon, PlusSquareIcon, TrashIcon } from "@phosphor-icons/react";
+import {
+  PencilSimpleIcon,
+  PlusSquareIcon,
+  TrashIcon,
+} from "@phosphor-icons/react";
 import { Item, Separator } from "@pisagor/react";
 import { Listbox } from "..";
 export function SelectionNone() {
@@ -31,7 +35,9 @@ export function SelectionNone() {
                 </div>
                 <div className="flex min-w-0 flex-1 flex-col">
                   <Listbox.ItemText>New file</Listbox.ItemText>
-                  <span className="text-muted-foreground text-xs">Create a new file</span>
+                  <span className="text-muted-foreground text-xs">
+                    Create a new file
+                  </span>
                 </div>
                 <Listbox.Shortcut>⌘N</Listbox.Shortcut>
               </Listbox.Item>
@@ -41,7 +47,9 @@ export function SelectionNone() {
                 </div>
                 <div className="flex min-w-0 flex-1 flex-col">
                   <Listbox.ItemText>Edit file</Listbox.ItemText>
-                  <span className="text-muted-foreground text-xs">Make changes</span>
+                  <span className="text-muted-foreground text-xs">
+                    Make changes
+                  </span>
                 </div>
                 <Listbox.Shortcut>⌘E</Listbox.Shortcut>
               </Listbox.Item>
@@ -54,7 +62,9 @@ export function SelectionNone() {
                 </div>
                 <div className="flex min-w-0 flex-1 flex-col">
                   <Listbox.ItemText>Delete file</Listbox.ItemText>
-                  <span className="text-muted-foreground text-xs">Move to trash</span>
+                  <span className="text-muted-foreground text-xs">
+                    Move to trash
+                  </span>
                 </div>
                 <Listbox.Shortcut>⌘D</Listbox.Shortcut>
               </Listbox.Item>

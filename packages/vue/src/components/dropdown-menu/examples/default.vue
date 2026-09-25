@@ -16,7 +16,10 @@ import { DropdownMenu } from "..";
           Forward
           <DropdownMenu.Shortcut>⌘F</DropdownMenu.Shortcut>
         </DropdownMenu.Item>
-        <DropdownMenu.Item value="archive"> <PhArchive /> Archive </DropdownMenu.Item>
+        <DropdownMenu.Item value="archive">
+          <PhArchive />
+          Archive
+        </DropdownMenu.Item>
       </DropdownMenu.ItemGroup>
     </DropdownMenu.Content>
   </DropdownMenu>

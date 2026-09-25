@@ -40,7 +40,12 @@ export interface TabsProps
 // #endregion
 
 // #region Parts
-export function TabsRoot({ children, recipe = tabsRecipe, className, ...rest }: TabsRootProps) {
+export function TabsRoot({
+  children,
+  recipe = tabsRecipe,
+  className,
+  ...rest
+}: TabsRootProps) {
   const slots = recipe();
 
   return (
@@ -52,11 +57,19 @@ export function TabsRoot({ children, recipe = tabsRecipe, className, ...rest }: 
   );
 }
 
-export function TabsList({ variant = "default", children, className, ...rest }: TabsListProps) {
+export function TabsList({
+  variant = "default",
+  children,
+  className,
+  ...rest
+}: TabsListProps) {
   const { slots } = useTabs();
 
   return (
-    <TabsPrimitive.List {...rest} className={slots.list({ className, variant })}>
+    <TabsPrimitive.List
+      {...rest}
+      className={slots.list({ className, variant })}
+    >
       {children}
 
       <TabsPrimitive.Indicator className={slots.indicator({ variant })} />
@@ -67,13 +80,17 @@ export function TabsList({ variant = "default", children, className, ...rest }: 
 export function TabsTrigger({ className, ...rest }: TabsTriggerProps) {
   const { slots } = useTabs();
 
-  return <TabsPrimitive.Trigger {...rest} className={slots.trigger({ className })} />;
+  return (
+    <TabsPrimitive.Trigger {...rest} className={slots.trigger({ className })} />
+  );
 }
 
 export function TabsContent({ className, ...rest }: TabsContentProps) {
   const { slots } = useTabs();
 
-  return <TabsPrimitive.Content {...rest} className={slots.content({ className })} />;
+  return (
+    <TabsPrimitive.Content {...rest} className={slots.content({ className })} />
+  );
 }
 // #endregion
 
@@ -83,7 +100,11 @@ export function TabsShorthand({ variant, items, ...rest }: TabsProps) {
     <TabsRoot {...rest}>
       <TabsList variant={variant}>
         {items?.map((tab) => (
-          <TabsTrigger disabled={tab.disabled} key={tab.value} value={tab.value}>
+          <TabsTrigger
+            disabled={tab.disabled}
+            key={tab.value}
+            value={tab.value}
+          >
             {tab.label}
           </TabsTrigger>
         ))}

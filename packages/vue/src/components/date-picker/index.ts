@@ -1,5 +1,8 @@
 export { parseDate } from "../calendar";
-export type { DatePickerInputProps, DatePickerRootProps as DatePickerProps } from "./date-picker";
+export type {
+  DatePickerInputProps,
+  DatePickerRootProps as DatePickerProps,
+} from "./date-picker";
 export {
   DatePicker,
   DatePickerClearTrigger,

@@ -5,7 +5,8 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: "Styles long-form HTML content with readable typography defaults.",
+        component:
+          "Styles long-form HTML content with readable typography defaults.",
       },
     },
   },

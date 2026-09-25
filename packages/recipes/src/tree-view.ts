@@ -30,7 +30,10 @@ export const treeViewRecipe = tv({
       "motion-reduce:transition-none!",
     ],
     label: ["select-none font-medium text-foreground text-sm"],
-    tree: ["flex flex-col text-sm", "[&_svg]:size-(--icon-size) [&_svg]:shrink-0"],
+    tree: [
+      "flex flex-col text-sm",
+      "[&_svg]:size-(--icon-size) [&_svg]:shrink-0",
+    ],
   },
 });
 

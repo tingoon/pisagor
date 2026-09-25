@@ -10,6 +10,8 @@ export interface CircularSliderContextValue {
   thumbSize: number;
 }
 
-const ctx = createContext<CircularSliderContextValue>({ name: "CircularSlider" });
+const ctx = createContext<CircularSliderContextValue>({
+  name: "CircularSlider",
+});
 export const setCircularSliderContext = ctx.setContext;
 export const useCircularSlider = ctx.getContext;

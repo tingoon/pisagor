@@ -26,7 +26,10 @@ export const MarqueeRoot = defineComponent({
   inheritAttrs: false,
   name: "MarqueeRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     items: { default: undefined, type: Array as PropType<VNodeChild[]> },
     orientation: {
       default: "horizontal",
@@ -60,7 +63,9 @@ export const MarqueeRoot = defineComponent({
           slots.default?.(),
           items?.length
             ? h(MarqueeContent, null, () =>
-                items.map((item, index) => h(MarqueeItem, { key: index }, () => item)),
+                items.map((item, index) =>
+                  h(MarqueeItem, { key: index }, () => item),
+                ),
               )
             : null,
           props.showEdges
@@ -94,15 +99,18 @@ export const MarqueeContent = defineComponent({
     return () => {
       const variantSlots = props.recipe();
 
-      return h(MarqueePrimitive.Viewport as ArkPart, { class: variantSlots.viewport() }, () =>
-        h(
-          MarqueePrimitive.Content as ArkPart,
-          {
-            ...attrs,
-            class: variantSlots.content({ class: cn(attrs.class) }),
-          },
-          children,
-        ),
+      return h(
+        MarqueePrimitive.Viewport as ArkPart,
+        { class: variantSlots.viewport() },
+        () =>
+          h(
+            MarqueePrimitive.Content as ArkPart,
+            {
+              ...attrs,
+              class: variantSlots.content({ class: cn(attrs.class) }),
+            },
+            children,
+          ),
       );
     };
   },
@@ -162,7 +170,10 @@ export const MarqueeShorthand = defineComponent({
   inheritAttrs: false,
   name: "MarqueeShorthand",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     items: { default: undefined, type: Array as PropType<VNodeChild[]> },
     orientation: {
       default: "horizontal",

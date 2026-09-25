@@ -25,7 +25,10 @@ export const VisuallyHidden = defineComponent({
   inheritAttrs: false,
   name: "VisuallyHidden",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: visuallyHiddenRecipe,
       type: Function as PropType<typeof visuallyHiddenRecipe>,

@@ -11,7 +11,11 @@ export const LabelAccessory = defineComponent({
       h(Field as ArkPart, null, () => [
         h(Field.Label as ArkPart, { class: "flex items-center gap-2" }, () => [
           "Webhook URL",
-          h(Badge as ArkPart, { class: "ml-auto", variant: "info" }, () => "Beta"),
+          h(
+            Badge as ArkPart,
+            { class: "ml-auto", variant: "info" },
+            () => "Beta",
+          ),
         ]),
         h(Input as ArkPart, { placeholder: "https://example.com/webhook" }),
       ]);

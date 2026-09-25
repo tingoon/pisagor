@@ -7,7 +7,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Search input compositions with button group and inline field layouts.",
+        component:
+          "Search input compositions with button group and inline field layouts.",
       },
     },
   },

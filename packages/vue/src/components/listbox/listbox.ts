@@ -55,7 +55,10 @@ export const ListboxRoot = defineComponent({
   inheritAttrs: false,
   name: "ListboxRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     collection: {
       default: undefined,
       type: Object as PropType<ListCollection<CollectionItem> | undefined>,
@@ -80,7 +83,8 @@ export const ListboxRoot = defineComponent({
           class: variantSlots.base({ class: cn(props.class, attrs.class) }),
           collection: props.collection,
           onValueChange: props.onValueChange
-            ? (details: { value: string | string[] }) => props.onValueChange?.(details.value)
+            ? (details: { value: string | string[] }) =>
+                props.onValueChange?.(details.value)
             : undefined,
         },
         slots.default?.(),
@@ -94,7 +98,10 @@ export const ListboxContent = defineComponent({
   inheritAttrs: false,
   name: "ListboxContent",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: listboxRecipe,
       type: Function as PropType<typeof listboxRecipe>,
@@ -121,7 +128,10 @@ export const ListboxItem = defineComponent({
   inheritAttrs: false,
   name: "ListboxItem",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     item: { default: undefined, type: Object as PropType<unknown> },
     itemRecipe: {
       default: listboxItemRecipe,
@@ -155,7 +165,10 @@ export const ListboxItemText = defineComponent({
   inheritAttrs: false,
   name: "ListboxItemText",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: listboxItemRecipe,
       type: Function as PropType<typeof listboxItemRecipe>,
@@ -182,8 +195,14 @@ export const ListboxItemGroup = defineComponent({
   inheritAttrs: false,
   name: "ListboxItemGroup",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    heading: { default: undefined, type: String as PropType<string | undefined> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    heading: {
+      default: undefined,
+      type: String as PropType<string | undefined>,
+    },
     recipe: {
       default: listboxRecipe,
       type: Function as PropType<typeof listboxRecipe>,
@@ -197,10 +216,14 @@ export const ListboxItemGroup = defineComponent({
         ListboxPrimitive.ItemGroup as ArkPart,
         {
           ...attrs,
-          class: variantSlots.itemGroup({ class: cn(props.class, attrs.class) }),
+          class: variantSlots.itemGroup({
+            class: cn(props.class, attrs.class),
+          }),
         },
         () => [
-          props.heading ? h(ListboxItemGroupLabel, null, () => props.heading) : null,
+          props.heading
+            ? h(ListboxItemGroupLabel, null, () => props.heading)
+            : null,
           slots.default?.(),
         ],
       );
@@ -213,7 +236,10 @@ export const ListboxItemGroupLabel = defineComponent({
   inheritAttrs: false,
   name: "ListboxItemGroupLabel",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: listboxRecipe,
       type: Function as PropType<typeof listboxRecipe>,
@@ -227,7 +253,9 @@ export const ListboxItemGroupLabel = defineComponent({
         ListboxPrimitive.ItemGroupLabel as ArkPart,
         {
           ...attrs,
-          class: variantSlots.itemGroupLabel({ class: cn(props.class, attrs.class) }),
+          class: variantSlots.itemGroupLabel({
+            class: cn(props.class, attrs.class),
+          }),
         },
         slots.default?.(),
       );
@@ -240,7 +268,10 @@ export const ListboxValueText = defineComponent({
   inheritAttrs: false,
   name: "ListboxValueText",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: listboxRecipe,
       type: Function as PropType<typeof listboxRecipe>,
@@ -254,7 +285,9 @@ export const ListboxValueText = defineComponent({
         ListboxPrimitive.ValueText as ArkPart,
         {
           ...attrs,
-          class: variantSlots.valueText({ class: cn(props.class, attrs.class) }),
+          class: variantSlots.valueText({
+            class: cn(props.class, attrs.class),
+          }),
         },
         slots.default?.(),
       );
@@ -267,7 +300,10 @@ export const ListboxItemIndicator = defineComponent({
   inheritAttrs: false,
   name: "ListboxItemIndicator",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     itemRecipe: {
       default: listboxItemRecipe,
       type: Function as PropType<typeof listboxItemRecipe>,
@@ -281,7 +317,9 @@ export const ListboxItemIndicator = defineComponent({
         ListboxPrimitive.ItemIndicator as ArkPart,
         {
           ...attrs,
-          class: variantSlots.indicator({ class: cn(props.class, attrs.class) }),
+          class: variantSlots.indicator({
+            class: cn(props.class, attrs.class),
+          }),
         },
         slots.default?.() ?? h(PhCheck, { "aria-hidden": true }),
       );
@@ -294,7 +332,10 @@ export const ListboxEmpty = defineComponent({
   inheritAttrs: false,
   name: "ListboxEmpty",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: listboxRecipe,
       type: Function as PropType<typeof listboxRecipe>,
@@ -321,7 +362,10 @@ export const ListboxShortcut = defineComponent({
   inheritAttrs: false,
   name: "ListboxShortcut",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -343,12 +387,18 @@ export const ListboxShorthand = defineComponent({
   inheritAttrs: false,
   name: "PisagorListbox",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     collection: {
       default: undefined,
       type: Object as PropType<ListCollection<CollectionItem> | undefined>,
     },
-    items: { default: undefined, type: Array as PropType<ListboxPresetItem[] | undefined> },
+    items: {
+      default: undefined,
+      type: Array as PropType<ListboxPresetItem[] | undefined>,
+    },
     onValueChange: {
       default: undefined,
       type: Function as PropType<ListboxRootProps["onValueChange"]>,

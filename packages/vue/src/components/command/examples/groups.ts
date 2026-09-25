@@ -27,7 +27,8 @@ export default defineComponent({
         Command,
         {
           collection: collection.value,
-          onInputValueChange: (details: { inputValue: string }) => filter(details.inputValue),
+          onInputValueChange: (details: { inputValue: string }) =>
+            filter(details.inputValue),
         },
         () => [
           h(Command.Input, { placeholder: "Search..." }),
@@ -37,10 +38,16 @@ export default defineComponent({
               collection.value
                 .group()
                 .map(([group, items], index) => [
-                  index !== 0 ? h(Command.Separator, { key: `${group}-separator` }) : null,
+                  index !== 0
+                    ? h(Command.Separator, { key: `${group}-separator` })
+                    : null,
                   h(Command.ItemGroup, { heading: group, key: group }, () =>
                     items.map((item) =>
-                      h(Command.Item as ArkPart, { item, key: item.value }, () => item.label),
+                      h(
+                        Command.Item as ArkPart,
+                        { item, key: item.value },
+                        () => item.label,
+                      ),
                     ),
                   ),
                 ]),

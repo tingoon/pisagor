@@ -7,7 +7,12 @@ import { File } from "..";
 <template>
   <File.Root>
     <File.Media variant="image">
-      <img alt="" height="40" src="https://picsum.photos/seed/file/80/80" width="40">
+      <img
+        alt=""
+        height="40"
+        src="https://picsum.photos/seed/file/80/80"
+        width="40"
+      >
     </File.Media>
     <File.Content>
       <File.Name>cover.jpg</File.Name>

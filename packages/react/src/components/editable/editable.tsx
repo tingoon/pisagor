@@ -57,7 +57,8 @@ export interface EditableProps extends EditableRootProps {
   recipe?: typeof editableRecipe;
 }
 
-export interface EditableInputProps extends Omit<EditablePrimitiveInputProps, "size"> {}
+export interface EditableInputProps
+  extends Omit<EditablePrimitiveInputProps, "size"> {}
 
 export interface EditablePreviewProps extends EditablePrimitivePreviewProps {
   /** Form shell variant. Defaults to `primary`. */
@@ -95,8 +96,11 @@ export function EditableRoot({
   ...rest
 }: EditableProps) {
   const handleValueChange = onValueChange
-    ? (details: Parameters<NonNullable<EditablePrimitiveRootProps["onValueChange"]>>[0]) =>
-        onValueChange(details.value)
+    ? (
+        details: Parameters<
+          NonNullable<EditablePrimitiveRootProps["onValueChange"]>
+        >[0],
+      ) => onValueChange(details.value)
     : undefined;
 
   const slots = recipe();
@@ -118,7 +122,9 @@ export function EditableRoot({
 export function EditableArea({ className, ...rest }: EditableAreaProps) {
   const { slots } = useEditable();
 
-  return <EditablePrimitive.Area {...rest} className={slots.area({ className })} />;
+  return (
+    <EditablePrimitive.Area {...rest} className={slots.area({ className })} />
+  );
 }
 
 export function EditableInput(props: EditableInputProps) {
@@ -166,7 +172,12 @@ export function EditablePreview({
 export function EditableControl({ className, ...rest }: EditableControlProps) {
   const { slots } = useEditable();
 
-  return <EditablePrimitive.Control {...rest} className={slots.control({ className })} />;
+  return (
+    <EditablePrimitive.Control
+      {...rest}
+      className={slots.control({ className })}
+    />
+  );
 }
 
 export function EditableEditTrigger(props: EditableEditTriggerProps) {

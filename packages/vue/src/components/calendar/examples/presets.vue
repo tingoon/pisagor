@@ -32,7 +32,9 @@ const presets = [
           :key="preset.value"
           :value="preset.value"
         >
-          <Button class="flex-1" size="sm" variant="outline">{{ preset.label }}</Button>
+          <Button class="flex-1" size="sm" variant="outline">{{
+            preset.label
+          }}</Button>
         </Calendar.PresetTrigger>
       </Card.Footer>
     </Card>

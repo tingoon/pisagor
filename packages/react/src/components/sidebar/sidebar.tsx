@@ -4,7 +4,13 @@ import { SidebarSimpleIcon } from "@phosphor-icons/react";
 import { type ButtonVariantProps, buttonRecipe } from "@pisagor/recipes/button";
 import { sidebarRecipe } from "@pisagor/recipes/sidebar";
 import { cn } from "@pisagor/utils";
-import { type ComponentProps, type CSSProperties, useCallback, useMemo, useState } from "react";
+import {
+  type ComponentProps,
+  type CSSProperties,
+  useCallback,
+  useMemo,
+  useState,
+} from "react";
 import { useIsMobile } from "../../hooks";
 import { Button, type ButtonProps } from "../button";
 import { Input, type InputProps } from "../input";
@@ -13,7 +19,11 @@ import { Separator, type SeparatorProps } from "../separator";
 import { Sheet, type SheetProps } from "../sheet";
 import { Skeleton } from "../skeleton";
 import { Tooltip, type TooltipProps } from "../tooltip";
-import { SidebarContext, type SidebarContextProps, useSidebar } from "./sidebar.context";
+import {
+  SidebarContext,
+  type SidebarContextProps,
+  useSidebar,
+} from "./sidebar.context";
 
 // #region Types
 export interface SidebarProviderProps extends ComponentProps<"div"> {
@@ -78,7 +88,8 @@ export interface SidebarMenuButtonProps extends ButtonProps {
   tooltip?: string | Omit<TooltipProps, "children">;
 }
 
-export interface SidebarMenuActionProps extends ComponentProps<typeof ark.button> {
+export interface SidebarMenuActionProps
+  extends ComponentProps<typeof ark.button> {
   showOnHover?: boolean;
   /**
    * Button style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
@@ -88,7 +99,8 @@ export interface SidebarMenuActionProps extends ComponentProps<typeof ark.button
   buttonRecipe?: typeof buttonRecipe;
 }
 
-export interface SidebarMenuSkeletonProps extends ComponentProps<typeof ark.div> {
+export interface SidebarMenuSkeletonProps
+  extends ComponentProps<typeof ark.div> {
   showIcon?: boolean;
 }
 
@@ -116,7 +128,8 @@ export type SidebarGroupProps = ComponentProps<typeof ark.div>;
 
 export type SidebarGroupLabelProps = ComponentProps<typeof ark.div>;
 
-export interface SidebarGroupActionProps extends ComponentProps<typeof ark.button> {
+export interface SidebarGroupActionProps
+  extends ComponentProps<typeof ark.button> {
   /**
    * Button style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
    *
@@ -289,7 +302,11 @@ export function SidebarRoot(props: SidebarProps) {
       data-state={state}
       data-variant={variant}
     >
-      <ark.div className={slots.gap({ padded, placement })} data-part="gap" data-scope="sidebar" />
+      <ark.div
+        className={slots.gap({ padded, placement })}
+        data-part="gap"
+        data-scope="sidebar"
+      />
       <ark.div
         className={slots.container({ className, padded, placement })}
         data-part="container"
@@ -418,7 +435,11 @@ export function SidebarSeparator({ className, ...rest }: SeparatorProps) {
   );
 }
 
-export function SidebarContent({ scrollFade = false, className, ...rest }: SidebarContentProps) {
+export function SidebarContent({
+  scrollFade = false,
+  className,
+  ...rest
+}: SidebarContentProps) {
   const { slots } = useSidebar();
 
   return (
@@ -448,7 +469,10 @@ export function SidebarGroup({ className, ...rest }: SidebarGroupProps) {
   );
 }
 
-export function SidebarGroupLabel({ className, ...rest }: SidebarGroupLabelProps) {
+export function SidebarGroupLabel({
+  className,
+  ...rest
+}: SidebarGroupLabelProps) {
   const { slots } = useSidebar();
 
   return (
@@ -489,7 +513,10 @@ export function SidebarGroupAction({
   );
 }
 
-export function SidebarGroupContent({ className, ...rest }: SidebarGroupContentProps) {
+export function SidebarGroupContent({
+  className,
+  ...rest
+}: SidebarGroupContentProps) {
   const { slots } = useSidebar();
 
   return (
@@ -608,7 +635,10 @@ export function SidebarMenuAction({
   );
 }
 
-export function SidebarMenuBadge({ className, ...rest }: SidebarMenuBadgeProps) {
+export function SidebarMenuBadge({
+  className,
+  ...rest
+}: SidebarMenuBadgeProps) {
   const { slots } = useSidebar();
 
   return (
@@ -638,7 +668,10 @@ export function SidebarMenuSkeleton({
       data-sidebar="menu-skeleton"
     >
       {!!showIcon && (
-        <Skeleton className={slots.menuSkeletonIcon()} data-sidebar="menu-skeleton-icon" />
+        <Skeleton
+          className={slots.menuSkeletonIcon()}
+          data-sidebar="menu-skeleton-icon"
+        />
       )}
       <Skeleton
         className={slots.menuSkeletonText()}
@@ -667,7 +700,10 @@ export function SidebarMenuSub({ className, ...rest }: SidebarMenuSubProps) {
   );
 }
 
-export function SidebarMenuSubItem({ className, ...props }: SidebarMenuSubItemProps) {
+export function SidebarMenuSubItem({
+  className,
+  ...props
+}: SidebarMenuSubItemProps) {
   const { slots } = useSidebar();
 
   return (

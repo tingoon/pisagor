@@ -11,7 +11,10 @@ import {
   ContextMenuTriggerItem,
 } from "./context-menu";
 
-export type { ContextMenuContextTriggerProps, ContextMenuRootProps } from "./context-menu";
+export type {
+  ContextMenuContextTriggerProps,
+  ContextMenuRootProps,
+} from "./context-menu";
 
 export const ContextMenu = Object.assign(ContextMenuRoot, {
   Content: ContextMenuContent,

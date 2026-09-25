@@ -38,7 +38,9 @@ export function Controlled() {
           </Combobox.List>
         </Combobox.Content>
       </Combobox.Root>
-      <p className="text-center text-muted-foreground text-sm">Selected: {value ?? "(none)"}</p>
+      <p className="text-center text-muted-foreground text-sm">
+        Selected: {value ?? "(none)"}
+      </p>
     </div>
   );
 }

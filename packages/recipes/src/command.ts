@@ -18,7 +18,10 @@ export const commandRecipe = tv({
       "scrollbar-thin scrollbar-track-transparent scrollbar-thumb-foreground/20 overflow-auto overscroll-contain",
       "[:not(.has-[+[data-scope=command][data-part=footer]])]:rounded-b-2xl [:not(.has-[+[data-scope=command][data-part=footer]])]:border-b",
     ],
-    control: ["group/combobox-control", "relative mb-2 flex flex-wrap items-center gap-1"],
+    control: [
+      "group/combobox-control",
+      "relative mb-2 flex flex-wrap items-center gap-1",
+    ],
     dialogContent: ["max-sm:row-start-1", "border-0 p-0"],
     dialogHeader: "sr-only",
     empty: ["py-6 text-center text-sm"],
@@ -35,7 +38,10 @@ export const commandRecipe = tv({
     list: ["flex-1 pe-2.5"],
     listWrapper: ["max-h-72 min-h-0 flex-1"],
     separator: "my-2",
-    shortcut: ["ms-auto rtl:me-auto", "text-muted-foreground text-xs tracking-widest"],
+    shortcut: [
+      "ms-auto rtl:me-auto",
+      "text-muted-foreground text-xs tracking-widest",
+    ],
   },
 });
 

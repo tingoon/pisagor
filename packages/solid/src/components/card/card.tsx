@@ -57,7 +57,12 @@ export function CardMedia(props: CardMediaProps): JSX.Element {
 }
 
 export function CardHeader(props: CardHeaderProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "description", "title", "class"]);
+  const [local, rest] = splitProps(props, [
+    "children",
+    "description",
+    "title",
+    "class",
+  ]);
   const { slots } = useCard();
 
   return (

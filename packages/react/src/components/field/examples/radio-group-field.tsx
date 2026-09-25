@@ -15,7 +15,9 @@ export function RadioGroupField() {
           <RadioGroup.Item value="enterprise">Enterprise</RadioGroup.Item>
         </Field>
       </RadioGroup.Root>
-      <Field.Description>Select the plan that fits your needs.</Field.Description>
+      <Field.Description>
+        Select the plan that fits your needs.
+      </Field.Description>
     </Field.Set>
   );
 }

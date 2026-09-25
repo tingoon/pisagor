@@ -13,6 +13,7 @@ export interface SidebarContextProps {
   toggleSidebar: () => void;
 }
 
-export const { SidebarContext, useSidebar } = createContext<SidebarContextProps>()({
-  name: "Sidebar",
-});
+export const { SidebarContext, useSidebar } =
+  createContext<SidebarContextProps>()({
+    name: "Sidebar",
+  });

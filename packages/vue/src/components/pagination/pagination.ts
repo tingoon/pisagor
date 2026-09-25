@@ -1,5 +1,8 @@
 import { ark } from "@ark-ui/vue/factory";
-import { Pagination as PaginationPrimitive, usePaginationContext } from "@ark-ui/vue/pagination";
+import {
+  Pagination as PaginationPrimitive,
+  usePaginationContext,
+} from "@ark-ui/vue/pagination";
 import { PhCaretLeft, PhCaretRight, PhDotsThree } from "@phosphor-icons/vue";
 import { buttonRecipe } from "@pisagor/recipes/button";
 import { paginationRecipe } from "@pisagor/recipes/pagination";
@@ -30,7 +33,10 @@ export const PaginationRoot = defineComponent({
   inheritAttrs: false,
   name: "PaginationRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: paginationRecipe,
       type: Function as PropType<typeof paginationRecipe>,
@@ -47,7 +53,11 @@ export const PaginationRoot = defineComponent({
           class: variantSlots.base({ class: cn(props.class, attrs.class) }),
         },
         slots.default ??
-          (() => [h(PaginationPrevTrigger), h(PaginationItems), h(PaginationNextTrigger)]),
+          (() => [
+            h(PaginationPrevTrigger),
+            h(PaginationItems),
+            h(PaginationNextTrigger),
+          ]),
       );
     };
   },
@@ -58,11 +68,14 @@ export const PaginationPrevTrigger = defineComponent({
   name: "PaginationPrevTrigger",
   setup(_, { attrs, slots }) {
     return () =>
-      h(PaginationPrimitive.PrevTrigger as ArkPart, { ...attrs, asChild: true }, () =>
-        h(Button as ArkPart, { variant: "ghost" }, () => [
-          h(PhCaretLeft),
-          slots.default?.() ?? "Previous",
-        ]),
+      h(
+        PaginationPrimitive.PrevTrigger as ArkPart,
+        { ...attrs, asChild: true },
+        () =>
+          h(Button as ArkPart, { variant: "ghost" }, () => [
+            h(PhCaretLeft),
+            slots.default?.() ?? "Previous",
+          ]),
       );
   },
 });
@@ -72,11 +85,14 @@ export const PaginationNextTrigger = defineComponent({
   name: "PaginationNextTrigger",
   setup(_, { attrs, slots }) {
     return () =>
-      h(PaginationPrimitive.NextTrigger as ArkPart, { ...attrs, asChild: true }, () =>
-        h(Button as ArkPart, { variant: "ghost" }, () => [
-          slots.default?.() ?? "Next",
-          h(PhCaretRight),
-        ]),
+      h(
+        PaginationPrimitive.NextTrigger as ArkPart,
+        { ...attrs, asChild: true },
+        () =>
+          h(Button as ArkPart, { variant: "ghost" }, () => [
+            slots.default?.() ?? "Next",
+            h(PhCaretRight),
+          ]),
       );
   },
 });
@@ -85,7 +101,10 @@ export const PaginationItem = defineComponent({
   inheritAttrs: false,
   name: "PaginationItem",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: paginationRecipe,
       type: Function as PropType<typeof paginationRecipe>,
@@ -95,16 +114,19 @@ export const PaginationItem = defineComponent({
     return () => {
       const variantSlots = props.recipe();
 
-      return h(PaginationPrimitive.Item as ArkPart, { ...attrs, asChild: true }, () =>
-        h(
-          Button as ArkPart,
-          {
-            class: variantSlots.item({ class: cn(props.class, attrs.class) }),
-            size: "icon-md",
-            variant: "ghost",
-          },
-          slots,
-        ),
+      return h(
+        PaginationPrimitive.Item as ArkPart,
+        { ...attrs, asChild: true },
+        () =>
+          h(
+            Button as ArkPart,
+            {
+              class: variantSlots.item({ class: cn(props.class, attrs.class) }),
+              size: "icon-md",
+              variant: "ghost",
+            },
+            slots,
+          ),
       );
     };
   },
@@ -119,7 +141,11 @@ export const PaginationItems = defineComponent({
         PaginationPrimitive.Context as ArkPart,
         { ...attrs },
         {
-          default: ({ pages }: { pages: Array<{ type: string; value?: number }> }) =>
+          default: ({
+            pages,
+          }: {
+            pages: Array<{ type: string; value?: number }>;
+          }) =>
             pages.map((page, index) => {
               if (page.type === "page") {
                 return h(
@@ -131,10 +157,16 @@ export const PaginationItems = defineComponent({
 
               const previousPage = [...pages.slice(0, index)]
                 .reverse()
-                .find((item: { type: string; value?: number }) => item.type === "page");
+                .find(
+                  (item: { type: string; value?: number }) =>
+                    item.type === "page",
+                );
               const nextPage = pages
                 .slice(index + 1)
-                .find((item: { type: string; value?: number }) => item.type === "page");
+                .find(
+                  (item: { type: string; value?: number }) =>
+                    item.type === "page",
+                );
               const ellipsisKey = `ellipsis-${previousPage?.value ?? "start"}-${nextPage?.value ?? "end"}`;
 
               return h(PaginationEllipsis, { index, key: ellipsisKey });
@@ -148,10 +180,19 @@ export const PaginationItemLink = defineComponent({
   inheritAttrs: false,
   name: "PaginationItemLink",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    page: { default: undefined, type: [String, Number] as PropType<"previous" | "next" | number> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    page: {
+      default: undefined,
+      type: [String, Number] as PropType<"previous" | "next" | number>,
+    },
     size: { default: undefined, type: String as PropType<ButtonProps["size"]> },
-    variant: { default: undefined, type: String as PropType<ButtonProps["variant"]> },
+    variant: {
+      default: undefined,
+      type: String as PropType<ButtonProps["variant"]>,
+    },
   },
   setup(props, { attrs, slots }) {
     const pagination = usePaginationContext();
@@ -169,13 +210,18 @@ export const PaginationItemLink = defineComponent({
         return props.page;
       };
 
-      const variant = props.variant ?? (typeof props.page === "number" ? "outline" : "ghost");
+      const variant =
+        props.variant ?? (typeof props.page === "number" ? "outline" : "ghost");
 
       return h(
         ark.a as ArkPart,
         {
           ...attrs,
-          class: cn(buttonRecipe({ size: props.size, variant }).base(), props.class, attrs.class),
+          class: cn(
+            buttonRecipe({ size: props.size, variant }).base(),
+            props.class,
+            attrs.class,
+          ),
           href: `?page=${pageValue()}`,
         },
         slots,
@@ -188,7 +234,10 @@ export const PaginationEllipsis = defineComponent({
   inheritAttrs: false,
   name: "PaginationEllipsis",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: paginationRecipe,
       type: Function as PropType<typeof paginationRecipe>,

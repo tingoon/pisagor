@@ -1,5 +1,9 @@
 ---
-import { Default, sources as examples, imports } from "@pisagor/vue/provider/examples";
+import {
+  Default,
+  sources as examples,
+  imports,
+} from "@pisagor/vue/provider/examples";
 import CodeBlock from "../../../components/docs/code-block.astro";
 import ComponentHeader from "../../../components/docs/component-header.astro";
 import ComponentPreview from "../../../components/docs/component-preview.astro";
@@ -29,17 +33,26 @@ const headings = [
 
   <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
+    Default
+  </h3>
   <ComponentPreview code={examples.Default} language="vue" title="Default">
     <Default client:only="vue" />
   </ComponentPreview>
 
-  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <h2
+    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    id="installation"
+  >
+    Installation
+  </h2>
   <Installation class="mb-8" packages="@pisagor/vue" />
 
-  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="props">Props</h2>
+  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="props">
+    Props
+  </h2>
   <p class="mb-8 text-muted-foreground">
-    This utility has no dedicated entries in <code>@pisagor/props</code> yet. Use the TypeScript
-    types exported from the framework package.
+    This utility has no dedicated entries in <code>@pisagor/props</code> yet.
+    Use the TypeScript types exported from the framework package.
   </p>
 </DocsLayout>

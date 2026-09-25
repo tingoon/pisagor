@@ -23,7 +23,10 @@ import {
 } from "./circular-slider.context";
 
 export type CircularSliderHiddenInputProps = AngleSliderHiddenInputProps;
-export type CircularSliderRootProps = Omit<AngleSliderRootProps, "onValueChange">;
+export type CircularSliderRootProps = Omit<
+  AngleSliderRootProps,
+  "onValueChange"
+>;
 
 export interface CircularSliderProps
   extends CircularSliderRootProps,
@@ -41,7 +44,8 @@ export interface CircularSliderControlProps extends AngleSliderControlProps {
   step?: number;
 }
 
-export interface CircularSliderValueTextProps extends Omit<AngleSliderValueTextProps, "prefix"> {
+export interface CircularSliderValueTextProps
+  extends Omit<AngleSliderValueTextProps, "prefix"> {
   prefix?: JSX.Element | string;
   suffix?: JSX.Element | string;
 }
@@ -94,7 +98,9 @@ export function CircularSliderRoot(props: CircularSliderProps): JSX.Element {
         {...rest}
         class={slots().base({ class: cn(local.class) })}
         onValueChange={
-          local.onValueChange ? (details) => local.onValueChange?.(details.value) : undefined
+          local.onValueChange
+            ? (details) => local.onValueChange?.(details.value)
+            : undefined
         }
         step={step()}
         style={{
@@ -115,8 +121,15 @@ export function CircularSliderRoot(props: CircularSliderProps): JSX.Element {
   );
 }
 
-export function CircularSliderControl(props: CircularSliderControlProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["step", "markers", "markersAtSteps", "class"]);
+export function CircularSliderControl(
+  props: CircularSliderControlProps,
+): JSX.Element {
+  const [local, rest] = splitProps(props, [
+    "step",
+    "markers",
+    "markersAtSteps",
+    "class",
+  ]);
   const { slots } = useCircularSliderStrict();
   const step = () => local.step ?? 1;
 
@@ -133,12 +146,17 @@ export function CircularSliderControl(props: CircularSliderControlProps): JSX.El
   });
 
   return (
-    <AngleSliderPrimitive.Control {...rest} class={slots.control({ class: cn(local.class) })}>
+    <AngleSliderPrimitive.Control
+      {...rest}
+      class={slots.control({ class: cn(local.class) })}
+    >
       <CircularSliderProgressRing />
       <Show when={markerValues()}>
         {(values) => (
           <CircularSliderMarkerGroup>
-            <For each={values()}>{(value) => <CircularSliderMarker value={value} />}</For>
+            <For each={values()}>
+              {(value) => <CircularSliderMarker value={value} />}
+            </For>
           </CircularSliderMarkerGroup>
         )}
       </Show>
@@ -149,7 +167,8 @@ export function CircularSliderControl(props: CircularSliderControlProps): JSX.El
 
 function CircularSliderProgressRing(): JSX.Element {
   const api = useAngleSliderContext();
-  const { size, thickness, ringRadius, ringCircumference, slots } = useCircularSliderStrict();
+  const { size, thickness, ringRadius, ringCircumference, slots } =
+    useCircularSliderStrict();
 
   const percent = () => api().value / 360;
   const dashLength = () => percent() * ringCircumference;
@@ -185,7 +204,9 @@ function CircularSliderProgressRing(): JSX.Element {
   );
 }
 
-export function CircularSliderThumb(props: CircularSliderThumbProps): JSX.Element {
+export function CircularSliderThumb(
+  props: CircularSliderThumbProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { thumbSize, ringRadius, slots } = useCircularSliderStrict();
   const halfThumb = thumbSize / 2;
@@ -207,7 +228,9 @@ export function CircularSliderThumb(props: CircularSliderThumbProps): JSX.Elemen
   );
 }
 
-export function CircularSliderValueText(props: CircularSliderValueTextProps): JSX.Element {
+export function CircularSliderValueText(
+  props: CircularSliderValueTextProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["prefix", "suffix", "class"]);
   const api = useAngleSliderContext();
   const { slots } = useCircularSliderStrict();
@@ -226,7 +249,9 @@ export function CircularSliderValueText(props: CircularSliderValueTextProps): JS
   );
 }
 
-export function CircularSliderMarkerGroup(props: CircularSliderMarkerGroupProps): JSX.Element {
+export function CircularSliderMarkerGroup(
+  props: CircularSliderMarkerGroupProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useCircularSliderStrict();
   return (
@@ -237,14 +262,17 @@ export function CircularSliderMarkerGroup(props: CircularSliderMarkerGroupProps)
   );
 }
 
-export function CircularSliderMarker(props: CircularSliderMarkerProps): JSX.Element {
+export function CircularSliderMarker(
+  props: CircularSliderMarkerProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class", "style"]);
   const { size, thickness, slots } = useCircularSliderStrict();
 
   const ringRadius = size / 2 - thickness / 2;
   const markerHeight = Math.max(8, Math.min(thickness * 1.1, 16));
   const markerWidth = Math.max(4, Math.min(thickness * 0.4, 6));
-  const markerOffset = size / 2 - ringRadius - markerHeight / 2 + (thickness + 4);
+  const markerOffset =
+    size / 2 - ringRadius - markerHeight / 2 + (thickness + 4);
 
   return (
     <AngleSliderPrimitive.Marker

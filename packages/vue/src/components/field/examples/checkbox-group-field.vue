@@ -5,9 +5,14 @@ import { Field } from "..";
 
 <template>
   <Field.Set>
-    <Field.Legend variant="label">Select the items you want to show:</Field.Legend>
+    <Field.Legend variant="label"
+      >Select the items you want to show:</Field.Legend
+    >
     <Field.Group>
-      <Checkbox.Group class="gap-3" :default-value="['hard-disks', 'external-disks']">
+      <Checkbox.Group
+        class="gap-3"
+        :default-value="['hard-disks', 'external-disks']"
+      >
         <Field orientation="horizontal">
           <Checkbox default-checked value="hard-disks" />
           <Field.Label class="font-normal">Hard disks</Field.Label>

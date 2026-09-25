@@ -5,10 +5,17 @@ import { Checkbox } from "..";
 
 <template>
   <Field.Set>
-    <Field.Legend variant="label">Show these items on the desktop:</Field.Legend>
-    <Field.Description>Select the items you want to show on the desktop.</Field.Description>
+    <Field.Legend variant="label"
+      >Show these items on the desktop:</Field.Legend
+    >
+    <Field.Description
+      >Select the items you want to show on the desktop.</Field.Description
+    >
     <Field.Group>
-      <Checkbox.Group class="gap-3" :default-value="['hard-disks', 'external-disks']">
+      <Checkbox.Group
+        class="gap-3"
+        :default-value="['hard-disks', 'external-disks']"
+      >
         <Field orientation="horizontal">
           <Checkbox default-checked value="hard-disks" />
           <Field.Label class="font-normal">Hard disks</Field.Label>

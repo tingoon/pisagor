@@ -1,5 +1,9 @@
 import { describe, expect, test } from "bun:test";
-import { stripAstroExample, stripTsxExample, stripVueExample } from "./strip-example-source";
+import {
+  stripAstroExample,
+  stripTsxExample,
+  stripVueExample,
+} from "./strip-example-source";
 
 describe("stripTsxExample", () => {
   test("unwraps a named-export return", () => {

@@ -11,7 +11,9 @@ export function FormSection() {
         <Field>
           <Field.Label>Email</Field.Label>
           <Input placeholder="you@example.com" type="email" />
-          <Field.Description>We'll use this email to contact you</Field.Description>
+          <Field.Description>
+            We'll use this email to contact you
+          </Field.Description>
         </Field>
         <Field orientation="horizontal" reverse>
           <Button>Submit</Button>

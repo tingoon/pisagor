@@ -1,4 +1,10 @@
-import { PhGear, PhHouse, PhMagnifyingGlass, PhSquaresFour, PhUsers } from "@phosphor-icons/vue";
+import {
+  PhGear,
+  PhHouse,
+  PhMagnifyingGlass,
+  PhSquaresFour,
+  PhUsers,
+} from "@phosphor-icons/vue";
 import { cn } from "@pisagor/utils";
 import { AppShell, Button, useAppShell } from "@pisagor/vue";
 import { defineComponent, h, type PropType } from "vue";
@@ -31,7 +37,10 @@ export const StandardAppShell = defineComponent({
   inheritAttrs: false,
   name: "StandardAppShell",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     title: { default: "Dashboard", type: String },
   },
   setup(props, { attrs, slots }) {
@@ -62,17 +71,27 @@ export const StandardAppShell = defineComponent({
                 ),
               ),
           ),
-          h(AppShell.Panel as ArkPart, { defaultOpen: true, placement: "start" }, () => [
-            h(AppShell.PanelHeader as ArkPart, null, () => h(ActiveRailTitle)),
-            h(StandardAppShellPanelNav),
-          ]),
+          h(
+            AppShell.Panel as ArkPart,
+            { defaultOpen: true, placement: "start" },
+            () => [
+              h(AppShell.PanelHeader as ArkPart, null, () =>
+                h(ActiveRailTitle),
+              ),
+              h(StandardAppShellPanelNav),
+            ],
+          ),
           h(AppShell.Main as ArkPart, null, () => [
             h(AppShell.Header as ArkPart, null, () => [
               h(AppShell.PanelTrigger as ArkPart, {
                 "aria-label": "Toggle navigation panel",
                 placement: "start",
               }),
-              h("h1", { class: "font-semibold text-sm tracking-tight" }, props.title),
+              h(
+                "h1",
+                { class: "font-semibold text-sm tracking-tight" },
+                props.title,
+              ),
             ]),
             h(
               AppShell.Content as ArkPart,
@@ -82,7 +101,11 @@ export const StandardAppShell = defineComponent({
           ]),
           h(AppShell.Inspector as ArkPart, { placement: "end" }, () => [
             h(AppShell.InspectorHeader as ArkPart, null, () =>
-              h("h2", { class: "font-semibold text-sm tracking-tight" }, "Inspector"),
+              h(
+                "h2",
+                { class: "font-semibold text-sm tracking-tight" },
+                "Inspector",
+              ),
             ),
             h(AppShell.InspectorContent as ArkPart, null, () =>
               h(
@@ -118,21 +141,28 @@ export function StandardAppShellNavigation() {
 }
 
 /** Side panel navigation — replace items or wire up routing. */
-export function StandardAppShellPanelNav({ class: className }: { class?: unknown } = {}) {
+export function StandardAppShellPanelNav({
+  class: className,
+}: {
+  class?: unknown;
+} = {}) {
   return h(AppShell.PanelContent as ArkPart, { class: className }, () =>
-    h("nav", { "aria-label": "Section", class: "flex flex-col gap-0.5 p-1" }, () =>
-      PANEL_NAV_ITEMS.map((item) =>
-        h(
-          Button as ArkPart,
-          {
-            class: "justify-start rounded-xl",
-            key: item.id,
-            type: "button",
-            variant: item.id === "overview" ? "secondary" : "ghost",
-          },
-          () => item.label,
+    h(
+      "nav",
+      { "aria-label": "Section", class: "flex flex-col gap-0.5 p-1" },
+      () =>
+        PANEL_NAV_ITEMS.map((item) =>
+          h(
+            Button as ArkPart,
+            {
+              class: "justify-start rounded-xl",
+              key: item.id,
+              type: "button",
+              variant: item.id === "overview" ? "secondary" : "ghost",
+            },
+            () => item.label,
+          ),
         ),
-      ),
     ),
   );
 }
@@ -165,13 +195,21 @@ const ActiveRailTitle = defineComponent({
 function StandardAppShellPlaceholder() {
   return h("div", { class: "flex max-w-prose flex-col gap-4" }, () => [
     h("div", { class: "flex flex-col gap-1.5" }, () => [
-      h("h2", { class: "font-semibold text-xl leading-tight tracking-tight" }, "Welcome back"),
+      h(
+        "h2",
+        { class: "font-semibold text-xl leading-tight tracking-tight" },
+        "Welcome back",
+      ),
       h(
         "p",
         { class: "text-muted-foreground text-sm leading-relaxed" },
         "Main content area. Replace this block with your page layout.",
       ),
     ]),
-    h(Button as ArkPart, { class: "w-fit", variant: "outline" }, () => "Example action"),
+    h(
+      Button as ArkPart,
+      { class: "w-fit", variant: "outline" },
+      () => "Example action",
+    ),
   ]);
 }

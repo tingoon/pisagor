@@ -54,7 +54,11 @@ export function WithPopover() {
               </Listbox.Item>
             ))}
 
-            {isEmpty && <Listbox.Empty>No results found. Try a different search.</Listbox.Empty>}
+            {isEmpty && (
+              <Listbox.Empty>
+                No results found. Try a different search.
+              </Listbox.Empty>
+            )}
           </Listbox.Content>
         </Popover.Content>
       </Popover>

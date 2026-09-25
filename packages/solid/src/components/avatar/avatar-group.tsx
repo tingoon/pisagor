@@ -10,7 +10,8 @@ export interface AvatarGroupRootProps extends ComponentProps<typeof ark.div> {
   recipe?: typeof avatarGroupRecipe;
 }
 
-export interface AvatarGroupProps extends Omit<AvatarGroupRootProps, "children"> {
+export interface AvatarGroupProps
+  extends Omit<AvatarGroupRootProps, "children"> {
   max?: number;
   users: Array<{ src?: string; fallback?: string; name?: string }>;
 }
@@ -53,12 +54,20 @@ export function AvatarGroupShorthand(props: AvatarGroupProps): JSX.Element {
   const visibleUsers = () =>
     local.max !== undefined ? local.users.slice(0, local.max) : local.users;
   const remainingCount = () =>
-    local.max !== undefined && local.users.length > local.max ? local.users.length - local.max : 0;
+    local.max !== undefined && local.users.length > local.max
+      ? local.users.length - local.max
+      : 0;
 
   return (
     <AvatarGroupRoot {...rest}>
       <For each={visibleUsers()}>
-        {(user) => <Avatar alt={user.name ?? ""} fallback={user.fallback} src={user.src} />}
+        {(user) => (
+          <Avatar
+            alt={user.name ?? ""}
+            fallback={user.fallback}
+            src={user.src}
+          />
+        )}
       </For>
       <Show when={remainingCount() > 0}>
         <AvatarGroupCount>+{remainingCount()}</AvatarGroupCount>

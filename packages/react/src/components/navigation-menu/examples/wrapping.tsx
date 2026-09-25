@@ -14,10 +14,14 @@ export function Wrapping() {
             <NavigationMenu.Link href="#design">Design</NavigationMenu.Link>
           </NavigationMenu.Item>
           <NavigationMenu.Item>
-            <NavigationMenu.Link href="#development">Development</NavigationMenu.Link>
+            <NavigationMenu.Link href="#development">
+              Development
+            </NavigationMenu.Link>
           </NavigationMenu.Item>
           <NavigationMenu.Item>
-            <NavigationMenu.Link href="#operations">Operations</NavigationMenu.Link>
+            <NavigationMenu.Link href="#operations">
+              Operations
+            </NavigationMenu.Link>
           </NavigationMenu.Item>
           <NavigationMenu.Item>
             <NavigationMenu.Link href="#support">Support</NavigationMenu.Link>

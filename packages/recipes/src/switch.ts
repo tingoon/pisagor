@@ -8,7 +8,11 @@ const surfaceVariantOptions = {
   transparent: "",
 } as const;
 
-const mutedSurfaces: Array<"secondary" | "tertiary" | "glass"> = ["secondary", "tertiary", "glass"];
+const mutedSurfaces: Array<"secondary" | "tertiary" | "glass"> = [
+  "secondary",
+  "tertiary",
+  "glass",
+];
 
 export const switchRecipe = tv({
   compoundVariants: [

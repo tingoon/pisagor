@@ -33,12 +33,18 @@ export const AnnouncementRoot = defineComponent({
   inheritAttrs: false,
   name: "AnnouncementRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: announcementRecipe,
       type: Function as PropType<typeof announcementRecipe>,
     },
-    role: { default: "status", type: String as PropType<AnnouncementProps["role"]> },
+    role: {
+      default: "status",
+      type: String as PropType<AnnouncementProps["role"]>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -63,7 +69,10 @@ export const AnnouncementTitle = defineComponent({
   inheritAttrs: false,
   name: "AnnouncementTitle",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: announcementRecipe,
       type: Function as PropType<typeof announcementRecipe>,
@@ -91,11 +100,26 @@ export const AnnouncementShorthand = defineComponent({
   inheritAttrs: false,
   name: "AnnouncementShorthand",
   props: {
-    badge: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    role: { default: undefined, type: String as PropType<AnnouncementProps["role"]> },
-    title: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
-    titleProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
+    badge: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<VNodeChild>,
+    },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    role: {
+      default: undefined,
+      type: String as PropType<AnnouncementProps["role"]>,
+    },
+    title: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<VNodeChild>,
+    },
+    titleProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
   },
   setup(props, { attrs }) {
     return () =>

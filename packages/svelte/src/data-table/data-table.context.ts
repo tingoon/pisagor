@@ -34,7 +34,9 @@ const headerGroupCtx = createContext<DataTableHeaderGroupContextValue>({
 export const setDataTableHeaderGroupContext = headerGroupCtx.setContext;
 export const useDataTableHeaderGroupContext = headerGroupCtx.getContext;
 
-const rowCtx = createContext<DataTableRowContextValue>({ name: "DataTableRow" });
+const rowCtx = createContext<DataTableRowContextValue>({
+  name: "DataTableRow",
+});
 export const setDataTableRowContext = rowCtx.setContext;
 export const useDataTableRowContext = rowCtx.getContext;
 

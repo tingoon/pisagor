@@ -13,7 +13,11 @@ const items = [
 <template>
   <Steps class="h-64" orientation="vertical" :count="items.length">
     <Steps.List>
-      <Steps.Item v-for="(item, index) in items" :key="item.title" :index="index">
+      <Steps.Item
+        v-for="(item, index) in items"
+        :key="item.title"
+        :index="index"
+      >
         <Steps.Trigger>
           <Steps.Indicator>{{ index + 1 }}</Steps.Indicator>
           <span class="flex flex-col items-start gap-1">
@@ -33,7 +37,9 @@ const items = [
       >
         <p class="text-muted-foreground">{{ item.description }}</p>
       </Steps.Content>
-      <Steps.CompletedContent class="flex h-full items-center justify-center rounded-md border">
+      <Steps.CompletedContent
+        class="flex h-full items-center justify-center rounded-md border"
+      >
         <p class="text-muted-foreground">Completed</p>
       </Steps.CompletedContent>
       <div class="flex flex-row-reverse gap-2">

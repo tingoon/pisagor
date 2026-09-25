@@ -5,6 +5,7 @@ interface EditableContextValue {
   slots: EditableRecipe;
 }
 
-export const { EditableContext, useEditable } = createContext<EditableContextValue>()({
-  name: "Editable",
-});
+export const { EditableContext, useEditable } =
+  createContext<EditableContextValue>()({
+    name: "Editable",
+  });

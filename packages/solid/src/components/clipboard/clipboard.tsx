@@ -46,8 +46,13 @@ function ClipboardProvider(props: {
   recipe?: typeof clipboardRecipe;
 }): JSX.Element {
   const [local] = splitProps(props, ["children", "valueSize", "recipe"]);
-  const slots = () => (local.recipe ?? clipboardRecipe)({ valueSize: local.valueSize });
-  return <ClipboardContext value={{ slots: slots() }}>{local.children}</ClipboardContext>;
+  const slots = () =>
+    (local.recipe ?? clipboardRecipe)({ valueSize: local.valueSize });
+  return (
+    <ClipboardContext value={{ slots: slots() }}>
+      {local.children}
+    </ClipboardContext>
+  );
 }
 
 function ClipboardRoot(props: ClipboardRootProps): JSX.Element {
@@ -63,7 +68,10 @@ function ClipboardControl(props: ClipboardControlProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const { slots } = useClipboard();
   return (
-    <ClipboardPrimitive.Control {...rest} class={slots.control({ class: local.class })}>
+    <ClipboardPrimitive.Control
+      {...rest}
+      class={slots.control({ class: local.class })}
+    >
       {local.children}
     </ClipboardPrimitive.Control>
   );
@@ -72,19 +80,34 @@ function ClipboardControl(props: ClipboardControlProps): JSX.Element {
 function ClipboardInput(props: ClipboardInputProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useClipboard();
-  return <ClipboardPrimitive.Input {...rest} class={slots.input({ class: local.class })} />;
+  return (
+    <ClipboardPrimitive.Input
+      {...rest}
+      class={slots.input({ class: local.class })}
+    />
+  );
 }
 
 function ClipboardValue(props: ClipboardValueTextProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useClipboard();
-  return <ClipboardPrimitive.ValueText {...rest} class={slots.value({ class: local.class })} />;
+  return (
+    <ClipboardPrimitive.ValueText
+      {...rest}
+      class={slots.value({ class: local.class })}
+    />
+  );
 }
 
 function ClipboardIndicator(props: ClipboardIndicatorProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useClipboard();
-  return <ClipboardPrimitive.Indicator {...rest} class={slots.indicator({ class: local.class })} />;
+  return (
+    <ClipboardPrimitive.Indicator
+      {...rest}
+      class={slots.indicator({ class: local.class })}
+    />
+  );
 }
 
 function ClipboardField(props: ComponentProps<"div">): JSX.Element {
@@ -125,7 +148,8 @@ export function Clipboard(props: ClipboardProps): JSX.Element {
   ]);
 
   const surfaceVariant = useFormControlSurface();
-  const controlVariant = () => local.controlVariant ?? ("primary" as FormControlVariant);
+  const controlVariant = () =>
+    local.controlVariant ?? ("primary" as FormControlVariant);
   const variant = () => local.variant ?? "input";
   const buttonSize = () => local.buttonSize ?? "icon-md";
   const buttonAriaLabel = () => local.buttonAriaLabel ?? "Copy to clipboard";
@@ -163,7 +187,10 @@ export function Clipboard(props: ClipboardProps): JSX.Element {
               type="button"
               variant={local.buttonVariant}
             >
-              <ClipboardIndicator class={local.classNames?.indicator} copied={copiedIcon()}>
+              <ClipboardIndicator
+                class={local.classNames?.indicator}
+                copied={copiedIcon()}
+              >
                 {copyIcon()}
               </ClipboardIndicator>
             </Button>

@@ -22,7 +22,12 @@ export const InputGroupWithMenu = defineComponent({
             h(dropdownMenuParts.Trigger, { asChild: true }, () =>
               h(
                 InputGroup.Button as ArkPart,
-                { "aria-label": "Open menu", size: "icon-xs", type: "button", variant: "ghost" },
+                {
+                  "aria-label": "Open menu",
+                  size: "icon-xs",
+                  type: "button",
+                  variant: "ghost",
+                },
                 () => h(PhDotsThree, { "aria-hidden": true }),
               ),
             ),

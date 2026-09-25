@@ -1,4 +1,7 @@
-import type { DataListItemRecipeFn, DataListRecipeFn } from "@pisagor/recipes/data-list";
+import type {
+  DataListItemRecipeFn,
+  DataListRecipeFn,
+} from "@pisagor/recipes/data-list";
 
 /** DataList props. */
 export interface DataListProps {

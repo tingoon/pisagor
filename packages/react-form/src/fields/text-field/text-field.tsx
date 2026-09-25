@@ -1,11 +1,19 @@
 import type { InputProps } from "@pisagor/react";
 import { Input } from "@pisagor/react";
-import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
+import {
+  type FieldPresentationProps,
+  FieldShell,
+} from "../../internal/field-shell";
 
 // #region Types
-type InputControlProps = Omit<InputProps, "name" | "onBlur" | "onChange" | "value">;
+type InputControlProps = Omit<
+  InputProps,
+  "name" | "onBlur" | "onChange" | "value"
+>;
 
-export interface TextFieldProps extends FieldPresentationProps, InputControlProps {
+export interface TextFieldProps
+  extends FieldPresentationProps,
+    InputControlProps {
   name?: string;
   value?: string;
   onBlur?: () => void;

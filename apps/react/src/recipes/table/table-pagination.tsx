@@ -35,7 +35,9 @@ export function TablePagination({ className }: TablePaginationProps) {
           <div className="text-muted-foreground text-sm">Items per page:</div>
           <Select
             items={["2", "3", "4"]}
-            onValueChange={(value) => setPageSize(Number(Array.isArray(value) ? value[0] : value))}
+            onValueChange={(value) =>
+              setPageSize(Number(Array.isArray(value) ? value[0] : value))
+            }
             value={[String(pageSize)]}
           />
         </div>

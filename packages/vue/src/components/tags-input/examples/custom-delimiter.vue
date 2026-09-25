@@ -8,6 +8,10 @@ const tagDelimiter = /[,\s]+/;
 <template>
   <Field>
     <Field.Label>Frameworks</Field.Label>
-    <TagsInput class="w-full" :default-value="['React']" :delimiter="tagDelimiter" />
+    <TagsInput
+      class="w-full"
+      :default-value="['React']"
+      :delimiter="tagDelimiter"
+    />
   </Field>
 </template>

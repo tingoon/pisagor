@@ -30,7 +30,9 @@ const { orientation = "vertical", items = [], ...rest } = Astro.props;
     <TimelineIndicator>{item.indicator}</TimelineIndicator>
     <TimelineContent>
       <TimelineTitle>{item.title}</TimelineTitle>
-      {item.description ? <TimelineDescription>{item.description}</TimelineDescription> : null}
+      {item.description ? (
+        <TimelineDescription>{item.description}</TimelineDescription>
+      ) : null}
     </TimelineContent>
   </TimelineItem>
 ))}

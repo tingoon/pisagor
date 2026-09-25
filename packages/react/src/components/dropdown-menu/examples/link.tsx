@@ -9,7 +9,11 @@ export function Link() {
       </DropdownMenu.Trigger>
       <DropdownMenu.Content className="w-40">
         <DropdownMenu.Item asChild value="docs">
-          <a href="https://example.com/docs" rel="noopener noreferrer" target="_blank">
+          <a
+            href="https://example.com/docs"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             External link
             <DropdownMenu.Shortcut>
               <ArrowSquareOutIcon />

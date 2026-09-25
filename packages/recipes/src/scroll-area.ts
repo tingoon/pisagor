@@ -23,7 +23,12 @@ export const scrollAreaRecipe = tv({
       "motion-reduce:transition-none!",
     ],
     thumb: ["relative flex-1 rounded-full bg-foreground/20"],
-    viewport: ["h-full", "rounded-[inherit]", "outline-hidden", "scrollbar-none"],
+    viewport: [
+      "h-full",
+      "rounded-[inherit]",
+      "outline-hidden",
+      "scrollbar-none",
+    ],
   },
   variants: {
     scrollFade: {

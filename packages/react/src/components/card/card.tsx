@@ -34,19 +34,33 @@ export type CardFooterProps = ComponentProps<typeof ark.div>;
 // #endregion
 
 // #region Parts
-export function CardRoot({ children, recipe = cardRecipe, className, ...rest }: CardRootProps) {
+export function CardRoot({
+  children,
+  recipe = cardRecipe,
+  className,
+  ...rest
+}: CardRootProps) {
   const slots = recipe();
 
   return (
     <CardContext value={{ slots }}>
-      <ark.div {...rest} className={slots.base({ className })} data-part="root" data-scope="card">
+      <ark.div
+        {...rest}
+        className={slots.base({ className })}
+        data-part="root"
+        data-scope="card"
+      >
         {children}
       </ark.div>
     </CardContext>
   );
 }
 
-export function CardMedia({ variant = "default", className, ...rest }: CardMediaProps) {
+export function CardMedia({
+  variant = "default",
+  className,
+  ...rest
+}: CardMediaProps) {
   const { slots } = useCard();
 
   return (
@@ -60,11 +74,22 @@ export function CardMedia({ variant = "default", className, ...rest }: CardMedia
   );
 }
 
-export function CardHeader({ children, description, title, className, ...rest }: CardHeaderProps) {
+export function CardHeader({
+  children,
+  description,
+  title,
+  className,
+  ...rest
+}: CardHeaderProps) {
   const { slots } = useCard();
 
   return (
-    <ark.div {...rest} className={slots.header({ className })} data-part="header" data-scope="card">
+    <ark.div
+      {...rest}
+      className={slots.header({ className })}
+      data-part="header"
+      data-scope="card"
+    >
       {!!title && <CardTitle>{title}</CardTitle>}
 
       {!!description && <CardDescription>{description}</CardDescription>}
@@ -78,7 +103,12 @@ export function CardTitle({ className, ...rest }: CardTitleProps) {
   const { slots } = useCard();
 
   return (
-    <ark.div {...rest} className={slots.title({ className })} data-part="title" data-scope="card" />
+    <ark.div
+      {...rest}
+      className={slots.title({ className })}
+      data-part="title"
+      data-scope="card"
+    />
   );
 }
 

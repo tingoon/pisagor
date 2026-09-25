@@ -32,10 +32,11 @@ export interface DrawerProps {
 // #endregion
 
 // #region Context
-const [provideDrawerContext, useDrawerLocal] = createContext<DrawerContextValue>({
-  name: "DrawerLocal",
-  strict: false,
-});
+const [provideDrawerContext, useDrawerLocal] =
+  createContext<DrawerContextValue>({
+    name: "DrawerLocal",
+    strict: false,
+  });
 
 function useDrawerSlots() {
   return useDrawerLocal()?.slots ?? drawerRecipe();
@@ -51,7 +52,9 @@ const SWIPE_DIRECTION_TO_PLACEMENT = {
   up: "up",
 } as const;
 
-function drawerTeleport(content: ReturnType<typeof h> | ReturnType<typeof h>[]) {
+function drawerTeleport(
+  content: ReturnType<typeof h> | ReturnType<typeof h>[],
+) {
   return h(Teleport, { to: "body" }, () => content);
 }
 
@@ -87,7 +90,10 @@ export const DrawerBackdrop = defineComponent({
   inheritAttrs: false,
   name: "DrawerBackdrop",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -109,8 +115,14 @@ export const DrawerPositioner = defineComponent({
   inheritAttrs: false,
   name: "DrawerPositioner",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    variant: { default: "default", type: String as PropType<"default" | "inset"> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    variant: {
+      default: "default",
+      type: String as PropType<"default" | "inset">,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -120,7 +132,10 @@ export const DrawerPositioner = defineComponent({
         DrawerPrimitive.Positioner as ArkPart,
         {
           ...attrs,
-          class: drawerSlots.positioner({ class: props.class, variant: props.variant }),
+          class: drawerSlots.positioner({
+            class: props.class,
+            variant: props.variant,
+          }),
         },
         slots,
       );
@@ -132,8 +147,14 @@ export const DrawerContent = defineComponent({
   inheritAttrs: false,
   name: "DrawerContent",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    variant: { default: "default", type: String as PropType<"default" | "inset"> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    variant: {
+      default: "default",
+      type: String as PropType<"default" | "inset">,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -142,7 +163,9 @@ export const DrawerContent = defineComponent({
       return drawerTeleport([
         h(DrawerBackdrop),
         h(DrawerPrimitive.Context as ArkPart, null, {
-          default: (drawerApi: { swipeDirection: keyof typeof SWIPE_DIRECTION_TO_PLACEMENT }) =>
+          default: (drawerApi: {
+            swipeDirection: keyof typeof SWIPE_DIRECTION_TO_PLACEMENT;
+          }) =>
             h(DrawerPositioner, { variant: props.variant }, () =>
               h(
                 DrawerPrimitive.Content as ArkPart,
@@ -150,7 +173,8 @@ export const DrawerContent = defineComponent({
                   ...attrs,
                   class: drawerSlots.content({
                     class: props.class,
-                    placement: SWIPE_DIRECTION_TO_PLACEMENT[drawerApi.swipeDirection],
+                    placement:
+                      SWIPE_DIRECTION_TO_PLACEMENT[drawerApi.swipeDirection],
                     variant: props.variant,
                   }),
                 },
@@ -167,7 +191,10 @@ export const DrawerContentInner = defineComponent({
   inheritAttrs: false,
   name: "DrawerContentInner",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -191,7 +218,10 @@ export const DrawerGrabber = defineComponent({
   inheritAttrs: false,
   name: "DrawerGrabber",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots: children }) {
     return () => {
@@ -220,7 +250,10 @@ export const DrawerHeader = defineComponent({
   inheritAttrs: false,
   name: "DrawerHeader",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     description: String,
     title: String,
   },
@@ -238,7 +271,9 @@ export const DrawerHeader = defineComponent({
         },
         () => [
           props.title ? h(DrawerTitle, null, () => props.title) : null,
-          props.description ? h(DrawerDescription, null, () => props.description) : null,
+          props.description
+            ? h(DrawerDescription, null, () => props.description)
+            : null,
           slots.default?.(),
         ],
       );
@@ -250,7 +285,10 @@ export const DrawerTitle = defineComponent({
   inheritAttrs: false,
   name: "DrawerTitle",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -272,7 +310,10 @@ export const DrawerDescription = defineComponent({
   inheritAttrs: false,
   name: "DrawerDescription",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {
@@ -296,7 +337,10 @@ export const DrawerBody = defineComponent({
   inheritAttrs: false,
   name: "DrawerBody",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     scrollFade: { default: false, type: Boolean },
   },
   setup(props, { attrs, slots }) {
@@ -321,7 +365,8 @@ export const DrawerCloseTrigger = defineComponent({
   inheritAttrs: false,
   name: "DrawerCloseTrigger",
   setup(_, { attrs, slots }) {
-    return () => h(DrawerPrimitive.CloseTrigger as ArkPart, { ...attrs }, slots);
+    return () =>
+      h(DrawerPrimitive.CloseTrigger as ArkPart, { ...attrs }, slots);
   },
 });
 
@@ -329,7 +374,10 @@ export const DrawerFooter = defineComponent({
   inheritAttrs: false,
   name: "DrawerFooter",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () => {

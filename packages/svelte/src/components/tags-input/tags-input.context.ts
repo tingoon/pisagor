@@ -1,4 +1,7 @@
-import type { TagsInputItemRecipe, TagsInputRecipe } from "@pisagor/recipes/tags-input";
+import type {
+  TagsInputItemRecipe,
+  TagsInputRecipe,
+} from "@pisagor/recipes/tags-input";
 import { createContext } from "../../utils/create-context";
 
 interface TagsInputSlotsContextValue {
@@ -9,8 +12,12 @@ interface TagsInputItemContextValue {
   slots: TagsInputItemRecipe;
 }
 
-export const { setContext: setTagsInputSlotsContext, getContext: useTagsInput } =
-  createContext<TagsInputSlotsContextValue>({ name: "TagsInput" });
+export const {
+  setContext: setTagsInputSlotsContext,
+  getContext: useTagsInput,
+} = createContext<TagsInputSlotsContextValue>({ name: "TagsInput" });
 
-export const { setContext: setTagsInputItemContext, getContext: useTagsInputItem } =
-  createContext<TagsInputItemContextValue>({ name: "TagsInputItem" });
+export const {
+  setContext: setTagsInputItemContext,
+  getContext: useTagsInputItem,
+} = createContext<TagsInputItemContextValue>({ name: "TagsInputItem" });

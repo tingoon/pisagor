@@ -12,7 +12,9 @@ import { Navbar } from "..";
       </Navbar.Nav>
     </Navbar.Content>
     <Navbar.Actions>
-      <button class="rounded-lg border px-3 py-1.5 text-sm" type="button">Sign in</button>
+      <button class="rounded-lg border px-3 py-1.5 text-sm" type="button">
+        Sign in
+      </button>
     </Navbar.Actions>
   </Navbar>
 </template>

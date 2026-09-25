@@ -1,4 +1,7 @@
-import type { TimerItemGroupRecipeFn, TimerRecipeFn } from "@pisagor/recipes/timer";
+import type {
+  TimerItemGroupRecipeFn,
+  TimerRecipeFn,
+} from "@pisagor/recipes/timer";
 
 /** Timer props. */
 export interface TimerProps {

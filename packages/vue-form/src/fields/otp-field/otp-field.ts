@@ -1,14 +1,20 @@
 import type { InputOTPProps } from "@pisagor/vue";
 import { InputOTP } from "@pisagor/vue";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
+import {
+  type FieldPresentationProps,
+  FieldShell,
+} from "../../internal/field-shell";
 
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 export interface OtpFieldProps
   extends FieldPresentationProps,
-    Omit<InputOTPProps, "class" | "invalid" | "onValueChange" | "value" | "name" | "onBlur"> {
+    Omit<
+      InputOTPProps,
+      "class" | "invalid" | "onValueChange" | "value" | "name" | "onBlur"
+    > {
   name?: string;
   onBlur?: () => void;
   onValueChange: (value: string) => void;
@@ -27,14 +33,29 @@ export const OtpField = defineComponent({
   inheritAttrs: false,
   name: "OtpField",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    description: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    description: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     disabled: { default: undefined, type: Boolean },
-    error: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    error: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     id: { default: undefined, type: String },
     invalid: { default: undefined, type: Boolean },
-    label: { default: undefined, type: null as unknown as PropType<VNodeChild> },
-    labelAccessory: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    label: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
+    labelAccessory: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     labelProps: {
       default: undefined,
       type: Object as PropType<FieldPresentationProps["labelProps"]>,
@@ -51,7 +72,10 @@ export const OtpField = defineComponent({
       type: String as PropType<FieldPresentationProps["orientation"]>,
     },
     value: { default: undefined, type: String },
-    variant: { default: undefined, type: String as PropType<InputOTPProps["variant"]> },
+    variant: {
+      default: undefined,
+      type: String as PropType<InputOTPProps["variant"]>,
+    },
   },
   setup(props, { attrs }) {
     return () => {
@@ -61,9 +85,13 @@ export const OtpField = defineComponent({
 
       for (let index = 0; index < length; index += 1) {
         if (index === separatorAt) {
-          slots.push(h(InputOTP.Separator as ArkPart, { key: `otp-separator-${index}` }));
+          slots.push(
+            h(InputOTP.Separator as ArkPart, { key: `otp-separator-${index}` }),
+          );
         }
-        slots.push(h(InputOTP.Slot as ArkPart, { index, key: `otp-slot-${index}` }));
+        slots.push(
+          h(InputOTP.Slot as ArkPart, { index, key: `otp-slot-${index}` }),
+        );
       }
 
       return h(
@@ -89,7 +117,8 @@ export const OtpField = defineComponent({
               invalid: props.invalid,
               name: props.name,
               onBlur: props.onBlur,
-              onValueChange: (nextValue: string[]) => props.onValueChange(nextValue.join("")),
+              onValueChange: (nextValue: string[]) =>
+                props.onValueChange(nextValue.join("")),
               variant: props.variant,
               ...(props.value !== undefined
                 ? { value: props.value ? props.value.split("") : [] }

@@ -7,7 +7,10 @@ export const carouselRecipe = tv({
       "flex flex-col",
       "data-[orientation=vertical]:w-max data-[orientation=vertical]:flex-row",
     ],
-    control: ["flex items-center justify-between gap-2", "data-[orientation=vertical]:flex-col"],
+    control: [
+      "flex items-center justify-between gap-2",
+      "data-[orientation=vertical]:flex-col",
+    ],
     indicator: [
       "size-2",
       "shrink-0",
@@ -19,13 +22,21 @@ export const carouselRecipe = tv({
       "transition-opacity duration-fast ease-out",
       "motion-reduce:transition-none!",
     ],
-    indicatorGroup: ["flex justify-center gap-2", "data-[orientation=vertical]:flex-col"],
+    indicatorGroup: [
+      "flex justify-center gap-2",
+      "data-[orientation=vertical]:flex-col",
+    ],
     item: [
       "min-w-0",
       "shrink-0 grow-0 basis-full",
       "[&_img]:size-full [&_img]:rounded-lg [&_img]:object-cover",
     ],
-    itemGroup: ["min-w-0", "-my-4 py-4", "flex flex-1 gap-4", "overflow-hidden rounded-lg"],
+    itemGroup: [
+      "min-w-0",
+      "-my-4 py-4",
+      "flex flex-1 gap-4",
+      "overflow-hidden rounded-lg",
+    ],
     nextTrigger: [
       "absolute",
       "data-[orientation=horizontal]:-inset-e-12 data-[orientation=horizontal]:top-1/2 data-[orientation=horizontal]:-translate-y-1/2",

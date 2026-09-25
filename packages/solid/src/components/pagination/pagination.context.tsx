@@ -5,6 +5,7 @@ interface PaginationContextValue {
   slots: PaginationRecipe;
 }
 
-export const { PaginationContext, usePagination } = createContext<PaginationContextValue>()({
-  name: "Pagination",
-});
+export const { PaginationContext, usePagination } =
+  createContext<PaginationContextValue>()({
+    name: "Pagination",
+  });

@@ -1,4 +1,8 @@
-import type { MenuItemRecipeFn, MenuItemVariantProps, MenuRecipeFn } from "@pisagor/recipes/menu";
+import type {
+  MenuItemRecipeFn,
+  MenuItemVariantProps,
+  MenuRecipeFn,
+} from "@pisagor/recipes/menu";
 
 /** Menu props. */
 export interface MenuProps {

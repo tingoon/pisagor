@@ -15,7 +15,11 @@ import type {
   ComboboxRootProps,
 } from "../combobox";
 import { Combobox } from "../combobox";
-import { Dialog, type DialogContentProps, type DialogTriggerProps } from "../dialog";
+import {
+  Dialog,
+  type DialogContentProps,
+  type DialogTriggerProps,
+} from "../dialog";
 import type { InputProps } from "../input";
 import { InputGroup } from "../input-group";
 import { Separator } from "../separator";
@@ -27,7 +31,8 @@ export interface CommandDialogContentProps extends DialogContentProps {
   recipe?: typeof commandRecipe;
 }
 
-export interface CommandInputProps extends Omit<ComboboxFieldInputProps, "size"> {
+export interface CommandInputProps
+  extends Omit<ComboboxFieldInputProps, "size"> {
   size?: InputProps["size"];
 }
 
@@ -50,7 +55,9 @@ export function CommandDialogTrigger(props: DialogTriggerProps): JSX.Element {
   return <Dialog.Trigger {...props} />;
 }
 
-export function CommandDialogContent(props: CommandDialogContentProps): JSX.Element {
+export function CommandDialogContent(
+  props: CommandDialogContentProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, [
     "size",
     "children",
@@ -61,7 +68,8 @@ export function CommandDialogContent(props: CommandDialogContentProps): JSX.Elem
   ]);
   const slots = () => (local.recipe ?? commandRecipe)();
   const size = () => local.size ?? "lg";
-  const description = () => local.description ?? "Search for a command to run...";
+  const description = () =>
+    local.description ?? "Search for a command to run...";
   const title = () => local.title ?? "Command Palette";
 
   return (
@@ -113,7 +121,11 @@ export function CommandContent(props: CommandContentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useCommand();
   return (
-    <Combobox.Content {...rest} class={slots.content({ class: local.class })} portalled={false} />
+    <Combobox.Content
+      {...rest}
+      class={slots.content({ class: local.class })}
+      portalled={false}
+    />
   );
 }
 
@@ -129,7 +141,9 @@ export function CommandInput(props: CommandInputProps): JSX.Element {
         </InputGroup.Addon>
         <Combobox.FieldInput
           {...rest}
-          asChild={(inputProps) => <InputGroup.Input {...inputProps()} autofocus />}
+          asChild={(inputProps) => (
+            <InputGroup.Input {...inputProps()} autofocus />
+          )}
         />
       </InputGroup>
     </Combobox.Control>
@@ -160,7 +174,9 @@ export function CommandItemGroup(props: ComboboxItemGroupProps): JSX.Element {
   return <Combobox.ItemGroup {...props} />;
 }
 
-export function CommandItemGroupLabel(props: ComboboxItemGroupLabelProps): JSX.Element {
+export function CommandItemGroupLabel(
+  props: ComboboxItemGroupLabelProps,
+): JSX.Element {
   return <Combobox.ItemGroupLabel {...props} />;
 }
 

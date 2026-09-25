@@ -40,12 +40,27 @@ export const Swap = defineComponent({
   inheritAttrs: false,
   name: "PisagorSwap",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     lazyMount: { default: true, type: Boolean },
-    off: { default: undefined, type: [String, Object, Array, Function] as PropType<VNodeChild> },
-    offIndicatorProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
-    on: { default: undefined, type: [String, Object, Array, Function] as PropType<VNodeChild> },
-    onIndicatorProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
+    off: {
+      default: undefined,
+      type: [String, Object, Array, Function] as PropType<VNodeChild>,
+    },
+    offIndicatorProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
+    on: {
+      default: undefined,
+      type: [String, Object, Array, Function] as PropType<VNodeChild>,
+    },
+    onIndicatorProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
     recipe: {
       default: swapRecipe,
       type: Function as PropType<typeof swapRecipe>,

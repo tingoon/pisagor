@@ -33,7 +33,8 @@ const collection = createListCollection({
     },
   ],
 });
-const onValueChange = (value) => setValue(Array.isArray(value) ? value : [value]);
+const onValueChange = (value) =>
+  setValue(Array.isArray(value) ? value : [value]);
 </script>
 
 <template>
@@ -45,7 +46,11 @@ const onValueChange = (value) => setValue(Array.isArray(value) ? value : [value]
       @value-change="onValueChange"
     >
       <Listbox.Content class="overflow-auto max-sm:flex-row">
-        <Listbox.Item v-for="item in collection.items" :key="item.value" :item="item">
+        <Listbox.Item
+          v-for="item in collection.items"
+          :key="item.value"
+          :item="item"
+        >
           <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>
         </Listbox.Item>
       </Listbox.Content>

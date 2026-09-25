@@ -8,6 +8,11 @@ const { class: className, ...rest } = Astro.props;
 const slots = emptyStateRecipe();
 ---
 
-<h3 {...rest} class={slots.title({ className })} data-part="title" data-scope="empty-state">
+<h3
+  {...rest}
+  class={slots.title({ className })}
+  data-part="title"
+  data-scope="empty-state"
+>
   <slot>Title</slot>
 </h3>

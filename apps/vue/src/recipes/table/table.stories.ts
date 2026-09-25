@@ -8,7 +8,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Table compositions with bulk actions, row menus, and pagination controls.",
+        component:
+          "Table compositions with bulk actions, row menus, and pagination controls.",
       },
     },
   },

@@ -6,6 +6,8 @@ interface DrawerContextValue {
   slots: DrawerRecipe;
 }
 
-export const { DrawerContext, useDrawer } = createContext<DrawerContextValue>()({
-  name: "Drawer",
-});
+export const { DrawerContext, useDrawer } = createContext<DrawerContextValue>()(
+  {
+    name: "Drawer",
+  },
+);

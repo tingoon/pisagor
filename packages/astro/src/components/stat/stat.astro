@@ -19,14 +19,19 @@ interface Props extends HTMLAttributes<"div">, StatVariantProps {
 const { variant = "outline", label, value, description, ...rest } = Astro.props;
 const hasLabel = Astro.slots.has("label") || label !== undefined;
 const hasValue = Astro.slots.has("value") || value !== undefined;
-const hasDescription = Astro.slots.has("description") || description !== undefined;
+const hasDescription =
+  Astro.slots.has("description") || description !== undefined;
 const hasTrend = Astro.slots.has("trend");
 ---
 
 <StatRoot {...rest} variant={variant}>
   {hasLabel && <StatLabel>{label ?? <slot name="label" />}</StatLabel>}
   {hasValue && <StatValue>{value ?? <slot name="value" />}</StatValue>}
-  {hasDescription && <StatDescription>{description ?? <slot name="description" />}</StatDescription>}
+  {hasDescription && (
+  <StatDescription>
+    {description ?? <slot name="description" />}
+  </StatDescription>
+)}
   {hasTrend && (
   <StatTrend>
     <slot name="trend" />

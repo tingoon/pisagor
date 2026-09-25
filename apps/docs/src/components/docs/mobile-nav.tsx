@@ -73,7 +73,8 @@ export default function MobileNav({
                   <ul className="space-y-px">
                     {section.items.map((item) => {
                       const href = frameworkPath(framework, item.slug);
-                      const active = currentPath === href || currentPath === `${href}/`;
+                      const active =
+                        currentPath === href || currentPath === `${href}/`;
                       const disabled = item.status === "soon";
                       return (
                         <li key={item.slug || "index"}>

@@ -5,7 +5,9 @@ import type { ComponentProps } from "react";
 // #region Types
 export type BadgeVariant = BadgeVariantProps["variant"];
 
-export interface BadgeProps extends ComponentProps<typeof ark.span>, BadgeVariantProps {
+export interface BadgeProps
+  extends ComponentProps<typeof ark.span>,
+    BadgeVariantProps {
   /**
    * Style recipe. Defaults to `badgeRecipe` from `@pisagor/recipes/badge`.
    *

@@ -53,7 +53,12 @@ export function QrCodeFrame({ className, ...rest }: QrCodeFrameProps) {
 export function QrCodeOverlay({ className, ...rest }: QrCodeOverlayProps) {
   const { slots } = useQrCode();
 
-  return <QrCodePrimitive.Overlay {...rest} className={slots.overlay({ className })} />;
+  return (
+    <QrCodePrimitive.Overlay
+      {...rest}
+      className={slots.overlay({ className })}
+    />
+  );
 }
 
 export function QrCodeDownload(props: QrCodeDownloadProps) {

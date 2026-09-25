@@ -3,7 +3,14 @@ import { type ButtonVariantProps, buttonRecipe } from "@pisagor/recipes/button";
 import { sidebarRecipe } from "@pisagor/recipes/sidebar";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
-import { createEffect, createMemo, createSignal, onCleanup, Show, splitProps } from "solid-js";
+import {
+  createEffect,
+  createMemo,
+  createSignal,
+  onCleanup,
+  Show,
+  splitProps,
+} from "solid-js";
 import { useIsMobile } from "../../hooks";
 import { SidebarSimpleIcon } from "../../internal/icons";
 import { Button, type ButtonProps } from "../button";
@@ -13,7 +20,11 @@ import { Separator, type SeparatorProps } from "../separator";
 import { Sheet, type SheetProps } from "../sheet";
 import { Skeleton } from "../skeleton";
 import { Tooltip, type TooltipProps } from "../tooltip";
-import { SidebarContext, type SidebarContextProps, useSidebar } from "./sidebar.context";
+import {
+  SidebarContext,
+  type SidebarContextProps,
+  useSidebar,
+} from "./sidebar.context";
 
 export interface SidebarProviderProps extends ComponentProps<"div"> {
   defaultOpen?: boolean;
@@ -39,12 +50,14 @@ export interface SidebarMenuButtonProps extends ButtonProps {
   tooltip?: string | Omit<TooltipProps, "children">;
 }
 
-export interface SidebarMenuActionProps extends ComponentProps<typeof ark.button> {
+export interface SidebarMenuActionProps
+  extends ComponentProps<typeof ark.button> {
   showOnHover?: boolean;
   buttonRecipe?: typeof buttonRecipe;
 }
 
-export interface SidebarMenuSkeletonProps extends ComponentProps<typeof ark.div> {
+export interface SidebarMenuSkeletonProps
+  extends ComponentProps<typeof ark.div> {
   showIcon?: boolean;
 }
 
@@ -62,7 +75,8 @@ export type SidebarFooterProps = ComponentProps<typeof ark.div>;
 export type SidebarGroupProps = ComponentProps<typeof ark.div>;
 export type SidebarGroupLabelProps = ComponentProps<typeof ark.div>;
 
-export interface SidebarGroupActionProps extends ComponentProps<typeof ark.button> {
+export interface SidebarGroupActionProps
+  extends ComponentProps<typeof ark.button> {
   buttonRecipe?: typeof buttonRecipe;
 }
 
@@ -91,9 +105,13 @@ export function SidebarProvider(props: SidebarProviderProps): JSX.Element {
 
   const isMobile = useIsMobile();
   const [openMobile, setOpenMobile] = createSignal(false);
-  const [uncontrolledOpen, setUncontrolledOpen] = createSignal(local.defaultOpen ?? true);
+  const [uncontrolledOpen, setUncontrolledOpen] = createSignal(
+    local.defaultOpen ?? true,
+  );
 
-  const open = createMemo(() => (local.open !== undefined ? !!local.open : uncontrolledOpen()));
+  const open = createMemo(() =>
+    local.open !== undefined ? !!local.open : uncontrolledOpen(),
+  );
 
   const setOpen = (value: boolean) => {
     if (local.open === undefined) {
@@ -124,7 +142,9 @@ export function SidebarProvider(props: SidebarProviderProps): JSX.Element {
     onCleanup(() => window.removeEventListener("keydown", onKeyDown));
   });
 
-  const state = createMemo<"expanded" | "collapsed">(() => (open() ? "expanded" : "collapsed"));
+  const state = createMemo<"expanded" | "collapsed">(() =>
+    open() ? "expanded" : "collapsed",
+  );
   const slots = () => (local.recipe ?? sidebarRecipe)();
 
   const contextValue: SidebarContextProps = {
@@ -221,7 +241,10 @@ export function SidebarRoot(props: SidebarProps): JSX.Element {
           }
           when={isMobile()}
         >
-          <Sheet onOpenChange={(details) => setOpenMobile(details.open)} open={openMobile()}>
+          <Sheet
+            onOpenChange={(details) => setOpenMobile(details.open)}
+            open={openMobile()}
+          >
             <Sheet.Content
               {...rest}
               class={slots.mobile()}
@@ -232,7 +255,9 @@ export function SidebarRoot(props: SidebarProps): JSX.Element {
             >
               <Sheet.Header class={slots.mobileHeader()}>
                 <Sheet.Title>Sidebar</Sheet.Title>
-                <Sheet.Description>Displays the mobile sidebar.</Sheet.Description>
+                <Sheet.Description>
+                  Displays the mobile sidebar.
+                </Sheet.Description>
               </Sheet.Header>
               <ark.div class={slots.mobileBody()}>{local.children}</ark.div>
             </Sheet.Content>
@@ -369,7 +394,10 @@ export function SidebarContent(props: SidebarContentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["scrollFade", "class"]);
   const { slots } = useSidebar();
   return (
-    <ScrollArea class={slots.scrollArea()} scrollFade={local.scrollFade ?? false}>
+    <ScrollArea
+      class={slots.scrollArea()}
+      scrollFade={local.scrollFade ?? false}
+    >
       <ark.div
         {...rest}
         class={slots.content({ class: cn(local.class) })}
@@ -409,7 +437,9 @@ export function SidebarGroupLabel(props: SidebarGroupLabelProps): JSX.Element {
   );
 }
 
-export function SidebarGroupAction(props: SidebarGroupActionProps): JSX.Element {
+export function SidebarGroupAction(
+  props: SidebarGroupActionProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["buttonRecipe", "class"]);
   const { slots } = useSidebar();
   const recipe = () => local.buttonRecipe ?? buttonRecipe;
@@ -418,7 +448,11 @@ export function SidebarGroupAction(props: SidebarGroupActionProps): JSX.Element 
     <ark.button
       {...rest}
       class={cn(
-        recipe()({ clickEffect: false, size: "icon-xs", variant: "ghost" }).base(),
+        recipe()({
+          clickEffect: false,
+          size: "icon-xs",
+          variant: "ghost",
+        }).base(),
         slots.groupAction(),
         local.class,
       )}
@@ -430,7 +464,9 @@ export function SidebarGroupAction(props: SidebarGroupActionProps): JSX.Element 
   );
 }
 
-export function SidebarGroupContent(props: SidebarGroupContentProps): JSX.Element {
+export function SidebarGroupContent(
+  props: SidebarGroupContentProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useSidebar();
   return (
@@ -527,7 +563,11 @@ export function SidebarMenuButton(props: SidebarMenuButtonProps): JSX.Element {
 }
 
 export function SidebarMenuAction(props: SidebarMenuActionProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["showOnHover", "buttonRecipe", "class"]);
+  const [local, rest] = splitProps(props, [
+    "showOnHover",
+    "buttonRecipe",
+    "class",
+  ]);
   const { slots } = useSidebar();
   const recipe = () => local.buttonRecipe ?? buttonRecipe;
   const showOnHover = () => local.showOnHover ?? false;
@@ -536,7 +576,11 @@ export function SidebarMenuAction(props: SidebarMenuActionProps): JSX.Element {
     <ark.button
       {...rest}
       class={cn(
-        recipe()({ clickEffect: false, size: "icon-xs", variant: "ghost" }).base(),
+        recipe()({
+          clickEffect: false,
+          size: "icon-xs",
+          variant: "ghost",
+        }).base(),
         slots.menuAction(),
         !showOnHover() &&
           "group-focus-within/menu-item:opacity-100 group-hover/menu-item:opacity-100 data-[state=open]:opacity-100 peer-data-[active=true]/menu-button:text-accent-foreground md:opacity-0",
@@ -564,7 +608,9 @@ export function SidebarMenuBadge(props: SidebarMenuBadgeProps): JSX.Element {
   );
 }
 
-export function SidebarMenuSkeleton(props: SidebarMenuSkeletonProps): JSX.Element {
+export function SidebarMenuSkeleton(
+  props: SidebarMenuSkeletonProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["showIcon", "class"]);
   const { slots } = useSidebar();
 
@@ -577,7 +623,10 @@ export function SidebarMenuSkeleton(props: SidebarMenuSkeletonProps): JSX.Elemen
       data-sidebar="menu-skeleton"
     >
       <Show when={local.showIcon}>
-        <Skeleton class={slots.menuSkeletonIcon()} data-sidebar="menu-skeleton-icon" />
+        <Skeleton
+          class={slots.menuSkeletonIcon()}
+          data-sidebar="menu-skeleton-icon"
+        />
       </Show>
       <Skeleton
         class={slots.menuSkeletonText()}
@@ -602,7 +651,9 @@ export function SidebarMenuSub(props: SidebarMenuSubProps): JSX.Element {
   );
 }
 
-export function SidebarMenuSubItem(props: SidebarMenuSubItemProps): JSX.Element {
+export function SidebarMenuSubItem(
+  props: SidebarMenuSubItemProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useSidebar();
   return (
@@ -616,8 +667,15 @@ export function SidebarMenuSubItem(props: SidebarMenuSubItemProps): JSX.Element 
   );
 }
 
-export function SidebarMenuSubButton(props: SidebarMenuSubButtonProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["size", "isActive", "buttonRecipe", "class"]);
+export function SidebarMenuSubButton(
+  props: SidebarMenuSubButtonProps,
+): JSX.Element {
+  const [local, rest] = splitProps(props, [
+    "size",
+    "isActive",
+    "buttonRecipe",
+    "class",
+  ]);
   const { slots } = useSidebar();
   const size = () => local.size ?? "md";
   const recipe = () => local.buttonRecipe ?? buttonRecipe;

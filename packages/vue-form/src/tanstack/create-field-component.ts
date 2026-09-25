@@ -14,7 +14,10 @@ export function createFieldComponent<
   TValue,
   TControlProps extends object,
   TConnectedProps extends Partial<TControlProps>,
->(Component: Component, mapFieldToProps: (connection: FieldConnection) => TConnectedProps) {
+>(
+  Component: Component,
+  mapFieldToProps: (connection: FieldConnection) => TConnectedProps,
+) {
   return defineComponent({
     inheritAttrs: false,
     name:

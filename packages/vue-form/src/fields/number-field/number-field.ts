@@ -1,7 +1,10 @@
 import type { NumberInputProps } from "@pisagor/vue";
 import { NumberInput } from "@pisagor/vue";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
+import {
+  type FieldPresentationProps,
+  FieldShell,
+} from "../../internal/field-shell";
 import type { SetRequired } from "../../internal/types";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -12,7 +15,9 @@ type NumberInputControlProps = SetRequired<
   "onValueChange"
 >;
 
-export interface NumberFieldProps extends FieldPresentationProps, NumberInputControlProps {
+export interface NumberFieldProps
+  extends FieldPresentationProps,
+    NumberInputControlProps {
   name?: string;
   onBlur?: () => void;
   placeholder?: string;
@@ -25,16 +30,31 @@ export const NumberField = defineComponent({
   inheritAttrs: false,
   name: "NumberField",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     clearable: { default: false, type: Boolean },
     defaultValue: { default: undefined, type: String },
-    description: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    description: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     disabled: { default: undefined, type: Boolean },
-    error: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    error: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     id: { default: undefined, type: String },
     invalid: { default: undefined, type: Boolean },
-    label: { default: undefined, type: null as unknown as PropType<VNodeChild> },
-    labelAccessory: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    label: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
+    labelAccessory: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     labelProps: {
       default: undefined,
       type: Object as PropType<FieldPresentationProps["labelProps"]>,
@@ -53,10 +73,16 @@ export const NumberField = defineComponent({
     },
     placeholder: { default: undefined, type: String },
     readOnly: { default: undefined, type: Boolean },
-    size: { default: undefined, type: String as PropType<NumberInputProps["size"]> },
+    size: {
+      default: undefined,
+      type: String as PropType<NumberInputProps["size"]>,
+    },
     step: { default: undefined, type: Number },
     value: { default: undefined, type: Number },
-    variant: { default: undefined, type: String as PropType<NumberInputProps["variant"]> },
+    variant: {
+      default: undefined,
+      type: String as PropType<NumberInputProps["variant"]>,
+    },
   },
   setup(props, { attrs }) {
     return () =>
@@ -92,7 +118,11 @@ export const NumberField = defineComponent({
             step: props.step,
             variant: props.variant,
             ...(props.value !== undefined
-              ? { value: Number.isFinite(props.value) ? String(props.value) : "" }
+              ? {
+                  value: Number.isFinite(props.value)
+                    ? String(props.value)
+                    : "",
+                }
               : {}),
           }),
       );

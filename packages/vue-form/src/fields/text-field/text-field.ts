@@ -1,7 +1,10 @@
 import type { InputProps } from "@pisagor/vue";
 import { Input } from "@pisagor/vue";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
+import {
+  type FieldPresentationProps,
+  FieldShell,
+} from "../../internal/field-shell";
 import type { SetRequired } from "../../internal/types";
 
 type ArkPart = Parameters<typeof h>[0];
@@ -12,7 +15,9 @@ type InputControlProps = SetRequired<
   "onValueChange"
 >;
 
-export interface TextFieldProps extends FieldPresentationProps, InputControlProps {
+export interface TextFieldProps
+  extends FieldPresentationProps,
+    InputControlProps {
   name?: string;
   onBlur?: () => void;
   value?: string;
@@ -24,20 +29,38 @@ export const TextField = defineComponent({
   inheritAttrs: false,
   name: "TextField",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<InputProps["classNames"]> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<InputProps["classNames"]>,
+    },
     clearable: { default: undefined, type: Boolean },
     defaultValue: {
       default: undefined,
       type: [String, Number, Array] as PropType<InputProps["defaultValue"]>,
     },
-    description: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    description: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     disabled: { default: undefined, type: Boolean },
-    error: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    error: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     id: { default: undefined, type: String },
     invalid: { default: undefined, type: Boolean },
-    label: { default: undefined, type: null as unknown as PropType<VNodeChild> },
-    labelAccessory: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    label: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
+    labelAccessory: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     labelProps: {
       default: undefined,
       type: Object as PropType<FieldPresentationProps["labelProps"]>,
@@ -56,8 +79,14 @@ export const TextField = defineComponent({
     readOnly: { default: undefined, type: Boolean },
     size: { default: undefined, type: String as PropType<InputProps["size"]> },
     type: { default: undefined, type: String },
-    value: { default: undefined, type: [String, Number, Array] as PropType<InputProps["value"]> },
-    variant: { default: undefined, type: String as PropType<InputProps["variant"]> },
+    value: {
+      default: undefined,
+      type: [String, Number, Array] as PropType<InputProps["value"]>,
+    },
+    variant: {
+      default: undefined,
+      type: String as PropType<InputProps["variant"]>,
+    },
   },
   setup(props, { attrs }) {
     return () =>

@@ -8,7 +8,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Picks a date from a calendar with label and optional validation message.",
+        component:
+          "Picks a date from a calendar with label and optional validation message.",
       },
     },
   },

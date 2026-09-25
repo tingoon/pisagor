@@ -14,7 +14,9 @@ export function Default() {
         <FileUpload.Trigger asChild>
           <Button>Browse files</Button>
         </FileUpload.Trigger>
-        <FileUpload.Helper>You can upload up to 2 files at a time.</FileUpload.Helper>
+        <FileUpload.Helper>
+          You can upload up to 2 files at a time.
+        </FileUpload.Helper>
       </FileUpload.Dropzone>
       <FileUpload.List />
     </FileUpload>

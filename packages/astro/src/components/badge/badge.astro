@@ -4,7 +4,13 @@ import type { HTMLAttributes } from "astro/types";
 
 type Props = HTMLAttributes<"span"> & BadgeVariantProps;
 
-const { pill = false, size = "md", variant = "default", class: className, ...rest } = Astro.props;
+const {
+  pill = false,
+  size = "md",
+  variant = "default",
+  class: className,
+  ...rest
+} = Astro.props;
 ---
 
 <span

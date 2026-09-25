@@ -1,5 +1,8 @@
 import { ark } from "@ark-ui/react/factory";
-import { type ToolbarRecipeSlot, toolbarRecipe } from "@pisagor/recipes/toolbar";
+import {
+  type ToolbarRecipeSlot,
+  toolbarRecipe,
+} from "@pisagor/recipes/toolbar";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { ToolbarContext, useToolbar } from "./toolbar.context";
@@ -91,7 +94,10 @@ export function ToolbarTitle({ className, ...rest }: ToolbarTitleProps) {
   );
 }
 
-export function ToolbarDescription({ className, ...rest }: ToolbarDescriptionProps) {
+export function ToolbarDescription({
+  className,
+  ...rest
+}: ToolbarDescriptionProps) {
   const { slots } = useToolbar();
 
   return (
@@ -143,7 +149,10 @@ export function ToolbarShorthand({
           )}
 
           {description !== undefined && (
-            <ToolbarDescription {...descriptionProps} className={classNames?.description}>
+            <ToolbarDescription
+              {...descriptionProps}
+              className={classNames?.description}
+            >
               {description}
             </ToolbarDescription>
           )}

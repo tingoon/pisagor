@@ -8,7 +8,8 @@ export function WaitForElement() {
   const steps: TourStepType[] = [
     {
       actions: [{ action: "next", label: "Start" }],
-      description: "This tour demonstrates waiting for elements that appear dynamically.",
+      description:
+        "This tour demonstrates waiting for elements that appear dynamically.",
       id: "intro",
       title: "Dynamic elements",
       type: "dialog",
@@ -28,7 +29,8 @@ export function WaitForElement() {
     },
     {
       actions: [{ action: "next", label: "Next" }],
-      description: "The tour waited for this element to appear before showing this step.",
+      description:
+        "The tour waited for this element to appear before showing this step.",
       effect({ show }) {
         const [promise, cancel] = waitForElement(
           () => document.querySelector<HTMLElement>('[data-item="new"]'),
@@ -63,7 +65,12 @@ export function WaitForElement() {
           <Button variant="outline">Start tour</Button>
         </Tour.Trigger>
         <div className="flex flex-col gap-2">
-          <Button id="btn-add-item" onClick={addItem} size="sm" variant="outline">
+          <Button
+            id="btn-add-item"
+            onClick={addItem}
+            size="sm"
+            variant="outline"
+          >
             <PlusIcon className="size-4" />
             Add Item
           </Button>
@@ -71,7 +78,11 @@ export function WaitForElement() {
             {items.map((item, index) => (
               <div
                 className="rounded-lg border border-border bg-muted/50 px-4 py-3 text-sm"
-                data-item={index === items.length - 1 && items.length > 2 ? "new" : undefined}
+                data-item={
+                  index === items.length - 1 && items.length > 2
+                    ? "new"
+                    : undefined
+                }
                 key={item}
               >
                 {item}

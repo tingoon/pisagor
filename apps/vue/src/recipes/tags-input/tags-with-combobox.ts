@@ -21,7 +21,10 @@ export const TagsWithCombobox = defineComponent({
   inheritAttrs: false,
   name: "TagsWithCombobox",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props) {
     const uid = useId();
@@ -55,7 +58,11 @@ export const TagsWithCombobox = defineComponent({
 
     return () =>
       h(Field as ArkPart, { class: props.class }, () => [
-        h(Field.Label as ArkPart, { for: `tags-input-${uid}` }, () => "Frameworks"),
+        h(
+          Field.Label as ArkPart,
+          { for: `tags-input-${uid}` },
+          () => "Frameworks",
+        ),
         h(
           Combobox.Root as ArkPart,
           {
@@ -66,23 +73,33 @@ export const TagsWithCombobox = defineComponent({
               input: `tags-input-${uid}`,
             },
             modelValue: [],
-            onInputValueChange: ({ inputValue }: { inputValue: string }) => filter(inputValue),
+            onInputValueChange: ({ inputValue }: { inputValue: string }) =>
+              filter(inputValue),
             onValueChange: (value: string[]) => addTagIfMissing(value[0]),
             selectionBehavior: "clear",
           },
           () => [
             h(
               TagsInput.RootProvider as ArkPart,
-              { class: "w-full", value: tagsInput.value } as unknown as ArkProps,
+              {
+                class: "w-full",
+                value: tagsInput.value,
+              } as unknown as ArkProps,
               {
                 default: () =>
                   h(TagsInput.Context as ArkPart, null, {
                     default: (api: { value: string[] }) => [
                       ...api.value.map((tag: string, index: number) =>
-                        h(TagsInput.Item as ArkPart, { index, key: tag, value: tag }, () => tag),
+                        h(
+                          TagsInput.Item as ArkPart,
+                          { index, key: tag, value: tag },
+                          () => tag,
+                        ),
                       ),
                       h(Combobox.FieldInput as ArkPart, { asChild: true }, () =>
-                        h(TagsInput.Input as ArkPart, { placeholder: "Search framework" }),
+                        h(TagsInput.Input as ArkPart, {
+                          placeholder: "Search framework",
+                        }),
                       ),
                     ],
                   }),

@@ -40,7 +40,11 @@ export function WithFilter() {
               </Listbox.Item>
             ))}
 
-            {isEmpty && <Listbox.Empty>No results found. Try a different search.</Listbox.Empty>}
+            {isEmpty && (
+              <Listbox.Empty>
+                No results found. Try a different search.
+              </Listbox.Empty>
+            )}
           </Listbox.Content>
         </Listbox.Root>
       </Item>

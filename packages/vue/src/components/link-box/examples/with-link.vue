@@ -9,7 +9,10 @@ import { LinkBox } from "..";
         <a href="https://example.com/blog/simple-post">Blog post title</a>
       </LinkBox.Overlay>
       <p class="text-muted-foreground text-sm">A sample blog post.</p>
-      <a class="text-primary underline" href="https://example.com/blog/simple-post/details">
+      <a
+        class="text-primary underline"
+        href="https://example.com/blog/simple-post/details"
+      >
         Inner link
       </a>
     </article>

@@ -1,4 +1,7 @@
-import type { ActionBarRecipeFn, ActionBarVariantProps } from "@pisagor/recipes/action-bar";
+import type {
+  ActionBarRecipeFn,
+  ActionBarVariantProps,
+} from "@pisagor/recipes/action-bar";
 
 /** ActionBar props. */
 export interface ActionBarProps extends ActionBarVariantProps {

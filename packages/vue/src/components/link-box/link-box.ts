@@ -21,7 +21,10 @@ export const LinkBoxRoot = defineComponent({
   inheritAttrs: false,
   name: "LinkBoxRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: linkBoxRecipe,
       type: Function as PropType<typeof linkBoxRecipe>,
@@ -49,7 +52,10 @@ export const LinkOverlayLink = defineComponent({
   inheritAttrs: false,
   name: "LinkOverlayLink",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: linkBoxRecipe,
       type: Function as PropType<typeof linkBoxRecipe>,

@@ -5,6 +5,8 @@ interface QrCodeContextValue {
   slots: QrCodeRecipe;
 }
 
-export const { QrCodeContext, useQrCode } = createContext<QrCodeContextValue>()({
-  name: "QrCode",
-});
+export const { QrCodeContext, useQrCode } = createContext<QrCodeContextValue>()(
+  {
+    name: "QrCode",
+  },
+);

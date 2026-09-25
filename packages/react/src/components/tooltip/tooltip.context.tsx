@@ -5,6 +5,7 @@ interface TooltipContextValue {
   slots: TooltipRecipe;
 }
 
-export const { TooltipContext, useTooltip } = createContext<TooltipContextValue>()({
-  name: "Tooltip",
-});
+export const { TooltipContext, useTooltip } =
+  createContext<TooltipContextValue>()({
+    name: "Tooltip",
+  });

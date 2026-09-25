@@ -21,9 +21,11 @@ interface AutocompletePresetItem {
   value: string;
 }
 
-export type AutocompleteRootProps<T extends CollectionItem = CollectionItem> = ComboboxRootProps<T>;
+export type AutocompleteRootProps<T extends CollectionItem = CollectionItem> =
+  ComboboxRootProps<T>;
 
-export interface AutocompleteProps extends Omit<AutocompleteRootProps, "children" | "collection"> {
+export interface AutocompleteProps
+  extends Omit<AutocompleteRootProps, "children" | "collection"> {
   /**
    * Whether to show a clear button when the input has a value.
    *
@@ -38,7 +40,9 @@ export interface AutocompleteProps extends Omit<AutocompleteRootProps, "children
 export function AutocompleteRoot<T extends CollectionItem = CollectionItem>(
   props: AutocompleteRootProps<T>,
 ) {
-  return <Combobox.Root {...props} allowCustomValue inputBehavior="autocomplete" />;
+  return (
+    <Combobox.Root {...props} allowCustomValue inputBehavior="autocomplete" />
+  );
 }
 
 export function AutocompleteControl(props: ComboboxControlProps) {
@@ -50,7 +54,9 @@ export function AutocompleteInput({
   showTrigger = false,
   ...rest
 }: ComboboxInputProps) {
-  return <Combobox.Input {...rest} clearable={clearable} showTrigger={showTrigger} />;
+  return (
+    <Combobox.Input {...rest} clearable={clearable} showTrigger={showTrigger} />
+  );
 }
 
 export function AutocompleteItemGroupLabel(props: ComboboxItemGroupLabelProps) {
@@ -90,12 +96,18 @@ export function AutocompleteCollection(props: ComboboxListProps) {
 }
 
 export function AutocompleteSeparator(props: SeparatorProps) {
-  return <Separator {...props} data-part="separator" data-scope="autocomplete" />;
+  return (
+    <Separator {...props} data-part="separator" data-scope="autocomplete" />
+  );
 }
 // #endregion
 
 // #region Shorthand
-export function AutocompleteShorthand({ clearable, items, ...rest }: AutocompleteProps) {
+export function AutocompleteShorthand({
+  clearable,
+  items,
+  ...rest
+}: AutocompleteProps) {
   return (
     <Combobox
       {...rest}

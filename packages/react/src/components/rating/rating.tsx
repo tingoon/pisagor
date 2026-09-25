@@ -34,7 +34,8 @@ type RatingRootProps = RatingGroupRootProps & {
   recipe?: typeof ratingRecipe;
 };
 
-export interface RatingProps extends Omit<RatingRootProps, "children" | "onValueChange"> {
+export interface RatingProps
+  extends Omit<RatingRootProps, "children" | "onValueChange"> {
   /**
    * Initial rating value when uncontrolled.
    *
@@ -88,7 +89,8 @@ function RatingRoot({
     variant: variantProp ?? ("primary" as FormControlVariant),
   };
   const slots = recipe();
-  const surfaceTone = resolved.variant === "secondary" ? "opacity-90" : undefined;
+  const surfaceTone =
+    resolved.variant === "secondary" ? "opacity-90" : undefined;
 
   return (
     <RatingContext value={{ slots }}>
@@ -109,7 +111,10 @@ function RatingControl({ children, className, ...rest }: RatingControlProps) {
   const { slots } = useRating();
 
   return (
-    <RatingGroupPrimitive.Control {...rest} className={slots.control({ className })}>
+    <RatingGroupPrimitive.Control
+      {...rest}
+      className={slots.control({ className })}
+    >
       {children}
     </RatingGroupPrimitive.Control>
   );
@@ -118,10 +123,19 @@ function RatingControl({ children, className, ...rest }: RatingControlProps) {
 function RatingItem({ className, ...rest }: RatingItemProps) {
   const { slots } = useRating();
 
-  return <RatingGroupPrimitive.Item {...rest} className={slots.item({ className })} />;
+  return (
+    <RatingGroupPrimitive.Item
+      {...rest}
+      className={slots.item({ className })}
+    />
+  );
 }
 
-function RatingIndicator({ children, className, ...rest }: RatingIndicatorProps) {
+function RatingIndicator({
+  children,
+  className,
+  ...rest
+}: RatingIndicatorProps) {
   const { slots } = useRating();
 
   return (
@@ -153,14 +167,21 @@ export function Rating({
     <RatingRoot
       {...rest}
       className={className}
-      onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
+      onValueChange={
+        onValueChange ? (details) => onValueChange(details.value) : undefined
+      }
       variant={variant}
     >
       <RatingControl {...controlProps} className={classNames?.control}>
         <RatingGroupPrimitive.Context>
           {({ items }) =>
             items.map((item) => (
-              <RatingItem {...itemProps} className={classNames?.item} index={item} key={item}>
+              <RatingItem
+                {...itemProps}
+                className={classNames?.item}
+                index={item}
+                key={item}
+              >
                 <RatingGroupPrimitive.ItemContext>
                   {({ half, highlighted }) => (
                     <RatingIndicator

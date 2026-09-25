@@ -27,7 +27,12 @@ export function Compound() {
   return (
     <AvatarGroup.Root>
       {users.map((user) => (
-        <Avatar alt={user.name} fallback={user.fallback} key={user.src} src={user.src} />
+        <Avatar
+          alt={user.name}
+          fallback={user.fallback}
+          key={user.src}
+          src={user.src}
+        />
       ))}
     </AvatarGroup.Root>
   );

@@ -11,7 +11,12 @@ import { Timer as TimerPrimitive, useTimerContext } from "@ark-ui/react/timer";
 import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes/timer";
 import type { ComponentProps } from "react";
 import { Fragment } from "react";
-import { TimerContext, TimerItemGroupContext, useTimer, useTimerItemGroup } from "./timer.context";
+import {
+  TimerContext,
+  TimerItemGroupContext,
+  useTimer,
+  useTimerItemGroup,
+} from "./timer.context";
 
 // #region Types
 type TimerUnit = "hours" | "minutes" | "seconds";
@@ -31,7 +36,8 @@ export interface TimerItemGroupProps extends ComponentProps<typeof ark.div> {
   itemGroupRecipe?: typeof timerItemGroupRecipe;
 }
 
-export interface TimerActionProps extends Omit<TimerActionTriggerProps, "action"> {}
+export interface TimerActionProps
+  extends Omit<TimerActionTriggerProps, "action"> {}
 
 export interface TimerRootProps extends TimerPrimitiveRootProps {
   units?: TimerUnit[];
@@ -90,7 +96,9 @@ export function TimerRoot({
 export function TimerArea({ className, ...rest }: TimerAreaProps) {
   const { slots } = useTimer();
 
-  return <TimerPrimitive.Area {...rest} className={slots.area({ className })} />;
+  return (
+    <TimerPrimitive.Area {...rest} className={slots.area({ className })} />
+  );
 }
 
 export function TimerItemGroup({
@@ -120,7 +128,9 @@ export function TimerItemGroup({
 export function TimerItem({ className, ...rest }: TimerItemProps) {
   const { slots } = useTimerItemGroup();
 
-  return <TimerPrimitive.Item {...rest} className={slots.item({ className })} />;
+  return (
+    <TimerPrimitive.Item {...rest} className={slots.item({ className })} />
+  );
 }
 
 export function TimerItemLabel({ className, ...rest }: TimerItemLabelProps) {
@@ -136,11 +146,18 @@ export function TimerItemLabel({ className, ...rest }: TimerItemLabelProps) {
   );
 }
 
-export function TimerSeparator({ children, className, ...rest }: TimerSeparatorProps) {
+export function TimerSeparator({
+  children,
+  className,
+  ...rest
+}: TimerSeparatorProps) {
   const { slots } = useTimer();
 
   return (
-    <TimerPrimitive.Separator {...rest} className={slots.separator({ className })}>
+    <TimerPrimitive.Separator
+      {...rest}
+      className={slots.separator({ className })}
+    >
       {children ?? ":"}
     </TimerPrimitive.Separator>
   );
@@ -149,7 +166,12 @@ export function TimerSeparator({ children, className, ...rest }: TimerSeparatorP
 export function TimerControl({ className, ...rest }: TimerControlProps) {
   const { slots } = useTimer();
 
-  return <TimerPrimitive.Control {...rest} className={slots.control({ className })} />;
+  return (
+    <TimerPrimitive.Control
+      {...rest}
+      className={slots.control({ className })}
+    />
+  );
 }
 
 export function TimerActionTrigger(props: TimerActionTriggerProps) {
@@ -157,23 +179,53 @@ export function TimerActionTrigger(props: TimerActionTriggerProps) {
 }
 
 export function TimerPause(props: TimerActionProps) {
-  return <TimerPrimitive.ActionTrigger {...props} action="pause" aria-label="Pause" />;
+  return (
+    <TimerPrimitive.ActionTrigger
+      {...props}
+      action="pause"
+      aria-label="Pause"
+    />
+  );
 }
 
 export function TimerResume(props: TimerActionProps) {
-  return <TimerPrimitive.ActionTrigger {...props} action="resume" aria-label="Resume" />;
+  return (
+    <TimerPrimitive.ActionTrigger
+      {...props}
+      action="resume"
+      aria-label="Resume"
+    />
+  );
 }
 
 export function TimerStart(props: TimerActionProps) {
-  return <TimerPrimitive.ActionTrigger {...props} action="start" aria-label="Start" />;
+  return (
+    <TimerPrimitive.ActionTrigger
+      {...props}
+      action="start"
+      aria-label="Start"
+    />
+  );
 }
 
 export function TimerReset(props: TimerActionProps) {
-  return <TimerPrimitive.ActionTrigger {...props} action="reset" aria-label="Reset" />;
+  return (
+    <TimerPrimitive.ActionTrigger
+      {...props}
+      action="reset"
+      aria-label="Reset"
+    />
+  );
 }
 
 export function TimerRestart(props: TimerActionProps) {
-  return <TimerPrimitive.ActionTrigger {...props} action="restart" aria-label="Restart" />;
+  return (
+    <TimerPrimitive.ActionTrigger
+      {...props}
+      action="restart"
+      aria-label="Restart"
+    />
+  );
 }
 
 export function TimerPlay(props: TimerActionProps) {

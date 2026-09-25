@@ -1,5 +1,8 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type EmptyStateRecipeSlot, emptyStateRecipe } from "@pisagor/recipes/empty-state";
+import {
+  type EmptyStateRecipeSlot,
+  emptyStateRecipe,
+} from "@pisagor/recipes/empty-state";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";
@@ -30,8 +33,14 @@ export const EmptyStateRoot = defineComponent({
   inheritAttrs: false,
   name: "EmptyStateRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<EmptyStateClassNames> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<EmptyStateClassNames>,
+    },
     recipe: {
       default: emptyStateRecipe,
       type: Function as PropType<typeof emptyStateRecipe>,
@@ -55,20 +64,30 @@ export const EmptyStateRoot = defineComponent({
   },
 });
 
-function createEmptyStatePart(slot: Exclude<EmptyStateRecipeSlot, "base">, part: string) {
+function createEmptyStatePart(
+  slot: Exclude<EmptyStateRecipeSlot, "base">,
+  part: string,
+) {
   return defineComponent({
     inheritAttrs: false,
     name: `EmptyState${slot.charAt(0).toUpperCase()}${slot.slice(1)}`,
     props: {
-      class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-      classNames: { default: undefined, type: Object as PropType<EmptyStateClassNames> },
+      class: {
+        default: undefined,
+        type: [String, Object, Array] as PropType<unknown>,
+      },
+      classNames: {
+        default: undefined,
+        type: Object as PropType<EmptyStateClassNames>,
+      },
       recipe: {
         default: emptyStateRecipe,
         type: Function as PropType<NonNullable<EmptyStateProps["recipe"]>>,
       },
     },
     setup(props, { attrs, slots }) {
-      const element = slot === "title" ? ark.h3 : slot === "description" ? ark.p : ark.div;
+      const element =
+        slot === "title" ? ark.h3 : slot === "description" ? ark.p : ark.div;
 
       return () => {
         const slots_ = props.recipe();
@@ -77,7 +96,9 @@ function createEmptyStatePart(slot: Exclude<EmptyStateRecipeSlot, "base">, part:
           element as ArkPart,
           {
             ...attrs,
-            class: slots_[slot]({ class: cn(props.class, props.classNames?.[slot]) }),
+            class: slots_[slot]({
+              class: cn(props.class, props.classNames?.[slot]),
+            }),
             "data-part": part,
             "data-scope": "empty-state",
           },
@@ -90,23 +111,44 @@ function createEmptyStatePart(slot: Exclude<EmptyStateRecipeSlot, "base">, part:
 
 export const EmptyStateMedia = createEmptyStatePart("media", "media");
 export const EmptyStateTitle = createEmptyStatePart("title", "title");
-export const EmptyStateDescription = createEmptyStatePart("description", "description");
+export const EmptyStateDescription = createEmptyStatePart(
+  "description",
+  "description",
+);
 export const EmptyStateActions = createEmptyStatePart("actions", "actions");
 
 export const EmptyStateShorthand = defineComponent({
   inheritAttrs: false,
   name: "EmptyStateShorthand",
   props: {
-    actions: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<EmptyStateClassNames> },
-    description: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
-    media: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
+    actions: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<VNodeChild>,
+    },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<EmptyStateClassNames>,
+    },
+    description: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<VNodeChild>,
+    },
+    media: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<VNodeChild>,
+    },
     recipe: {
       default: emptyStateRecipe,
       type: Function as PropType<typeof emptyStateRecipe>,
     },
-    title: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
+    title: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<VNodeChild>,
+    },
   },
   setup(props, { attrs }) {
     return () =>
@@ -119,11 +161,14 @@ export const EmptyStateShorthand = defineComponent({
           recipe: props.recipe,
         },
         () => [
-          props.media !== undefined && h(EmptyStateMedia, null, () => props.media),
-          props.title !== undefined && h(EmptyStateTitle, null, () => props.title),
+          props.media !== undefined &&
+            h(EmptyStateMedia, null, () => props.media),
+          props.title !== undefined &&
+            h(EmptyStateTitle, null, () => props.title),
           props.description !== undefined &&
             h(EmptyStateDescription, null, () => props.description),
-          props.actions !== undefined && h(EmptyStateActions, null, () => props.actions),
+          props.actions !== undefined &&
+            h(EmptyStateActions, null, () => props.actions),
         ],
       );
   },

@@ -20,7 +20,13 @@ const ROLES: User["role"][] = ["Admin", "Editor", "Viewer"];
 
 const STATUSES: User["status"][] = ["active", "inactive", "invited"];
 
-const DEPARTMENTS = ["Engineering", "Design", "Marketing", "Sales", "Support"] as const;
+const DEPARTMENTS = [
+  "Engineering",
+  "Design",
+  "Marketing",
+  "Sales",
+  "Support",
+] as const;
 
 const FIRST_NAMES = [
   "Alice",
@@ -47,10 +53,15 @@ const statusVariants: Record<User["status"], BadgeVariant> = {
 };
 
 const allUsers: User[] = Array.from({ length: 48 }, (_, index) => ({
-  department: DEPARTMENTS[index % DEPARTMENTS.length] ?? DEPARTMENTS[0] ?? "Engineering",
+  department:
+    DEPARTMENTS[index % DEPARTMENTS.length] ?? DEPARTMENTS[0] ?? "Engineering",
   email: `user${index + 1}@example.com`,
   id: String(index + 1),
-  joinedAt: new Date(2020 + (index % 5), index % 12, (index % 28) + 1).toISOString(),
+  joinedAt: new Date(
+    2020 + (index % 5),
+    index % 12,
+    (index % 28) + 1,
+  ).toISOString(),
   name: `${FIRST_NAMES[index % FIRST_NAMES.length] ?? "Alex"} ${String.fromCharCode(65 + (index % 26))}.`,
   role: ROLES[index % ROLES.length] ?? "Viewer",
   status: STATUSES[index % STATUSES.length] ?? "active",
@@ -92,7 +103,10 @@ function DataGridView({
 }
 
 export function MultiGrouping() {
-  const [grouping, setGrouping] = useState<GroupingState>(["department", "role"]);
+  const [grouping, setGrouping] = useState<GroupingState>([
+    "department",
+    "role",
+  ]);
   const [expanded, setExpanded] = useState<ExpandedState>(true);
 
   const columns = useMemo<ColumnDef<User>[]>(
@@ -141,7 +155,10 @@ export function MultiGrouping() {
         accessorKey: "status",
         cell: ({ row }) =>
           row.getIsGrouped() ? null : (
-            <Badge className="capitalize" variant={statusVariants[row.original.status]}>
+            <Badge
+              className="capitalize"
+              variant={statusVariants[row.original.status]}
+            >
               {row.original.status}
             </Badge>
           ),
@@ -162,7 +179,9 @@ export function MultiGrouping() {
         state={{ expanded, grouping }}
       >
         <DataGrid.Toolbar>
-          <p className="text-muted-foreground text-sm">Nested grouping by department, then role.</p>
+          <p className="text-muted-foreground text-sm">
+            Nested grouping by department, then role.
+          </p>
         </DataGrid.Toolbar>
         <DataGridView colSpan={4} />
       </DataGrid>

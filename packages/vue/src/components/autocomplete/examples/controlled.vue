@@ -33,12 +33,18 @@ function filter(_inputValue: string) {}
       <Autocomplete.Content>
         <Autocomplete.Empty />
         <Autocomplete.List>
-          <Autocomplete.Item v-for="item in collection.items" :key="item.value" :item="item">
+          <Autocomplete.Item
+            v-for="item in collection.items"
+            :key="item.value"
+            :item="item"
+          >
             {{ item.label }}
           </Autocomplete.Item>
         </Autocomplete.List>
       </Autocomplete.Content>
     </Autocomplete.Root>
-    <p class="text-center text-muted-foreground text-sm">Selected: {{ value ?? "(none)" }}</p>
+    <p class="text-center text-muted-foreground text-sm">
+      Selected: {{ value ?? "(none)" }}
+    </p>
   </div>
 </template>

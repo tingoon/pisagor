@@ -17,6 +17,7 @@ export interface ActionBarContextValue {
   unmountOnExit?: boolean;
 }
 
-export const { ActionBarContext, useActionBar } = createContext<ActionBarContextValue>()({
-  name: "ActionBar",
-});
+export const { ActionBarContext, useActionBar } =
+  createContext<ActionBarContextValue>()({
+    name: "ActionBar",
+  });

@@ -20,7 +20,11 @@ import {
   WarningIcon,
   XIcon,
 } from "@phosphor-icons/react";
-import { type ToastItemRecipeSlot, toastItemRecipe, toastRecipe } from "@pisagor/recipes/toast";
+import {
+  type ToastItemRecipeSlot,
+  toastItemRecipe,
+  toastRecipe,
+} from "@pisagor/recipes/toast";
 import type { ComponentProps, CSSProperties, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { Button } from "../button";
@@ -30,7 +34,8 @@ import { ToastItemContext, useToastItem } from "./toast.context";
 // #region Types
 type ToastItemClassNames = VariantClassNames<ToastItemRecipeSlot>;
 
-export interface ToasterRootProps extends Omit<ToasterPrimitiveProps, "toaster" | "children"> {
+export interface ToasterRootProps
+  extends Omit<ToasterPrimitiveProps, "toaster" | "children"> {
   /**
    * Style recipe. Defaults to `toastRecipe` from `@pisagor/recipes/toast`.
    *
@@ -64,7 +69,10 @@ export interface ToastItemProps extends ToastItemRootProps {
     "asChild" | "children" | "className" | "onClick"
   >;
   /** Extra props forwarded to the toast close trigger element */
-  closeTriggerProps?: Omit<ToastCloseTriggerProps, "asChild" | "children" | "className">;
+  closeTriggerProps?: Omit<
+    ToastCloseTriggerProps,
+    "asChild" | "children" | "className"
+  >;
   /** Extra props forwarded to the toast description element */
   descriptionProps?: Omit<ToastDescriptionProps, "children" | "className">;
   /** Extra props forwarded to the toast icon wrapper element */
@@ -138,9 +146,12 @@ function ToastItemContent({
   titleProps,
   toast: toastData,
   classNames,
-}: Omit<ToastItemProps, keyof ToastItemRootProps> & Pick<ToastItemProps, "toast">) {
+}: Omit<ToastItemProps, keyof ToastItemRootProps> &
+  Pick<ToastItemProps, "toast">) {
   const { slots } = useToastItem();
-  const ToastIcon = toastData.type ? TOAST_ICONS[toastData.type as keyof typeof TOAST_ICONS] : null;
+  const ToastIcon = toastData.type
+    ? TOAST_ICONS[toastData.type as keyof typeof TOAST_ICONS]
+    : null;
   const isExplicitClosable = toastData.closable === false;
 
   return (
@@ -166,7 +177,9 @@ function ToastItemContent({
           {toastData.description && (
             <ToastPrimitive.Description
               {...descriptionProps}
-              className={slots.description({ className: classNames?.description })}
+              className={slots.description({
+                className: classNames?.description,
+              })}
             >
               {toastData.description}
             </ToastPrimitive.Description>
@@ -174,7 +187,10 @@ function ToastItemContent({
         </div>
       </div>
 
-      <div {...actionsProps} className={slots.actions({ className: classNames?.actions })}>
+      <div
+        {...actionsProps}
+        className={slots.actions({ className: classNames?.actions })}
+      >
         {toastData.action && (
           <ToastPrimitive.ActionTrigger
             {...actionTriggerProps}

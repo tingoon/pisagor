@@ -45,12 +45,19 @@ export const AlertDialogContent = defineComponent({
   name: "AlertDialogContent",
   props: {
     bottomStickOnMobile: { default: true, type: Boolean },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     showCloseButton: { default: false, type: Boolean },
-    size: { default: "md", type: String as PropType<DialogContentProps["size"]> },
+    size: {
+      default: "md",
+      type: String as PropType<DialogContentProps["size"]>,
+    },
   },
   setup(props, { attrs, slots }) {
-    return () => h(DialogContent, { ...attrs, ...props, showCloseButton: false }, slots);
+    return () =>
+      h(DialogContent, { ...attrs, ...props, showCloseButton: false }, slots);
   },
 });
 
@@ -58,7 +65,10 @@ export const AlertDialogBody = defineComponent({
   inheritAttrs: false,
   name: "AlertDialogBody",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     scrollFade: { default: false, type: Boolean },
   },
   setup(props, { attrs, slots }) {
@@ -134,7 +144,10 @@ export const AlertDialogAction = defineComponent({
   inheritAttrs: false,
   name: "AlertDialogAction",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     variant: {
       default: "default",
       type: String as PropType<"default" | "destructive">,
@@ -146,7 +159,10 @@ export const AlertDialogAction = defineComponent({
         "button",
         {
           ...attrs,
-          class: cn(buttonRecipe({ variant: props.variant }).base(), props.class),
+          class: cn(
+            buttonRecipe({ variant: props.variant }).base(),
+            props.class,
+          ),
           type: "button",
         },
         slots,
@@ -158,7 +174,10 @@ export const AlertDialogCancel = defineComponent({
   inheritAttrs: false,
   name: "AlertDialogCancel",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () =>

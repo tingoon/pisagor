@@ -3,7 +3,9 @@ import { type StatusVariantProps, statusRecipe } from "@pisagor/recipes/status";
 import type { ComponentProps } from "react";
 
 // #region Types
-export interface StatusProps extends ComponentProps<typeof ark.span>, StatusVariantProps {
+export interface StatusProps
+  extends ComponentProps<typeof ark.span>,
+    StatusVariantProps {
   /**
    * Style recipe. Defaults to `statusRecipe` from `@pisagor/recipes/status`.
    *
@@ -14,7 +16,13 @@ export interface StatusProps extends ComponentProps<typeof ark.span>, StatusVari
 // #endregion
 
 // #region Component
-export function Status({ size, variant, recipe = statusRecipe, className, ...rest }: StatusProps) {
+export function Status({
+  size,
+  variant,
+  recipe = statusRecipe,
+  className,
+  ...rest
+}: StatusProps) {
   return (
     <ark.span
       {...rest}

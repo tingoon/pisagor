@@ -1,4 +1,10 @@
-import { AlertAction, AlertDescription, AlertRoot, AlertShorthand, AlertTitle } from "./alert";
+import {
+  AlertAction,
+  AlertDescription,
+  AlertRoot,
+  AlertShorthand,
+  AlertTitle,
+} from "./alert";
 
 export type { AlertProps } from "./alert";
 

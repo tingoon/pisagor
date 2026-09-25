@@ -100,7 +100,10 @@ export const EditableRoot = defineComponent({
       type: String as PropType<EditableProps["activationMode"]>,
     },
     autoResize: { default: undefined, type: Boolean },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     defaultEdit: { default: undefined, type: Boolean },
     defaultValue: { default: undefined, type: String },
     disabled: { default: undefined, type: Boolean },
@@ -111,7 +114,10 @@ export const EditableRoot = defineComponent({
       default: undefined,
       type: Function as PropType<EditableProps["onValueChange"]>,
     },
-    orientation: { default: "horizontal", type: String as PropType<EditableProps["orientation"]> },
+    orientation: {
+      default: "horizontal",
+      type: String as PropType<EditableProps["orientation"]>,
+    },
     placeholder: {
       default: undefined,
       type: [String, Object] as PropType<EditableProps["placeholder"]>,
@@ -123,7 +129,10 @@ export const EditableRoot = defineComponent({
     },
     required: { default: undefined, type: Boolean },
     selectOnFocus: { default: undefined, type: Boolean },
-    submitMode: { default: undefined, type: String as PropType<EditableProps["submitMode"]> },
+    submitMode: {
+      default: undefined,
+      type: String as PropType<EditableProps["submitMode"]>,
+    },
     value: { default: undefined, type: String },
   },
   setup(props, { attrs, slots }) {
@@ -146,7 +155,8 @@ export const EditableRoot = defineComponent({
           maxLength: props.maxLength,
           modelValue: props.value,
           onValueChange: props.onValueChange
-            ? (details: EditableValueChangeDetails) => props.onValueChange?.(details.value)
+            ? (details: EditableValueChangeDetails) =>
+                props.onValueChange?.(details.value)
             : undefined,
           placeholder: props.placeholder,
           readOnly: props.readOnly,
@@ -164,7 +174,10 @@ export const EditableArea = defineComponent({
   inheritAttrs: false,
   name: "Editable.Area",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: editableRecipe,
       type: Function as PropType<typeof editableRecipe>,
@@ -198,7 +211,10 @@ export const EditablePreview = defineComponent({
   inheritAttrs: false,
   name: "Editable.Preview",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     controlVariant: {
       default: undefined,
       type: String as PropType<EditablePreviewProps["controlVariant"]>,
@@ -207,8 +223,14 @@ export const EditablePreview = defineComponent({
       default: editableRecipe,
       type: Function as PropType<typeof editableRecipe>,
     },
-    size: { default: "md", type: String as PropType<EditablePreviewProps["size"]> },
-    variant: { default: "outline", type: String as PropType<EditablePreviewProps["variant"]> },
+    size: {
+      default: "md",
+      type: String as PropType<EditablePreviewProps["size"]>,
+    },
+    variant: {
+      default: "outline",
+      type: String as PropType<EditablePreviewProps["variant"]>,
+    },
   },
   setup(props, { attrs, slots }) {
     const surfaceVariant = useFormControlSurface();
@@ -221,7 +243,8 @@ export const EditablePreview = defineComponent({
       };
       const controlProps = { "data-variant": resolved.variant };
       const previewShellClass =
-        resolved.variant === "secondary" && resolved.surfaceVariant === "default"
+        resolved.variant === "secondary" &&
+        resolved.surfaceVariant === "default"
           ? "bg-muted/40 shadow-none hover:bg-muted/40 dark:hover:bg-muted/40"
           : resolved.variant === "secondary" && resolved.surfaceVariant
             ? "bg-background shadow-none hover:bg-background dark:hover:bg-background/90"
@@ -235,7 +258,11 @@ export const EditablePreview = defineComponent({
           ...attrs,
           ...controlProps,
           class: cn(
-            buttonRecipe({ clickEffect: false, size: props.size, variant: props.variant }).base(),
+            buttonRecipe({
+              clickEffect: false,
+              size: props.size,
+              variant: props.variant,
+            }).base(),
             previewShellClass,
             variantSlots.preview(),
             previewShellClass ? "dark:hover:bg-transparent" : undefined,
@@ -252,7 +279,10 @@ export const EditableControl = defineComponent({
   inheritAttrs: false,
   name: "Editable.Control",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: editableRecipe,
       type: Function as PropType<typeof editableRecipe>,
@@ -278,7 +308,8 @@ export const EditableEditTrigger = defineComponent({
   inheritAttrs: false,
   name: "Editable.EditTrigger",
   setup(_, { attrs, slots }) {
-    return () => h(EditablePrimitive.EditTrigger as ArkPart, { ...attrs }, slots);
+    return () =>
+      h(EditablePrimitive.EditTrigger as ArkPart, { ...attrs }, slots);
   },
 });
 
@@ -286,7 +317,8 @@ export const EditableCancelTrigger = defineComponent({
   inheritAttrs: false,
   name: "Editable.CancelTrigger",
   setup(_, { attrs, slots }) {
-    return () => h(EditablePrimitive.CancelTrigger as ArkPart, { ...attrs }, slots);
+    return () =>
+      h(EditablePrimitive.CancelTrigger as ArkPart, { ...attrs }, slots);
   },
 });
 
@@ -294,7 +326,8 @@ export const EditableSubmitTrigger = defineComponent({
   inheritAttrs: false,
   name: "Editable.SubmitTrigger",
   setup(_, { attrs, slots }) {
-    return () => h(EditablePrimitive.SubmitTrigger as ArkPart, { ...attrs }, slots);
+    return () =>
+      h(EditablePrimitive.SubmitTrigger as ArkPart, { ...attrs }, slots);
   },
 });
 // #endregion

@@ -24,7 +24,9 @@ const pathParts = stripDocsBase(currentPath).split("/").filter(Boolean);
 const isIntro = pathParts.length === 1;
 const kicker =
   Astro.props.kicker ??
-  (isIntro ? "Get started" : (mainNav.find((item) => item.id === area)?.label ?? "Docs"));
+  (isIntro
+    ? "Get started"
+    : (mainNav.find((item) => item.id === area)?.label ?? "Docs"));
 const description = Astro.props.description ?? "Pisagor UI documentation";
 const title = Astro.props.title;
 const headings = Astro.props.headings ?? [];
@@ -46,7 +48,9 @@ const headings = Astro.props.headings ?? [];
 
       <div class="mx-auto flex max-w-384">
         <Sidebar area={area} currentPath={currentPath} framework={framework} />
-        <main class="docs-main min-w-0 max-w-3xl flex-1 px-4 py-10 sm:px-8 lg:max-w-208 lg:px-10">
+        <main
+          class="docs-main min-w-0 max-w-3xl flex-1 px-4 py-10 sm:px-8 lg:max-w-208 lg:px-10"
+        >
           <header class="mb-10">
             <p class="docs-kicker">{kicker}</p>
             <h1 class="docs-title">{title}</h1>

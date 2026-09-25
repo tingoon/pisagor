@@ -28,7 +28,9 @@ export interface DialogRootProps extends DialogPrimitiveRootProps {
   recipe?: typeof dialogRecipe;
 }
 
-export interface DialogContentProps extends DialogPrimitiveContentProps, DialogVariantProps {
+export interface DialogContentProps
+  extends DialogPrimitiveContentProps,
+    DialogVariantProps {
   /**
    * Whether to stick the dialog to the bottom of the screen on mobile.
    *
@@ -73,7 +75,11 @@ export interface DialogProps extends Omit<DialogRootProps, "title"> {
 // #endregion
 
 // #region Parts
-export function DialogRoot({ modal = true, recipe = dialogRecipe, ...rest }: DialogRootProps) {
+export function DialogRoot({
+  modal = true,
+  recipe = dialogRecipe,
+  ...rest
+}: DialogRootProps) {
   const slots = recipe();
 
   return (
@@ -94,7 +100,12 @@ export function DialogBackdrop({ className, ...rest }: DialogBackdropProps) {
     return null;
   }
 
-  return <DialogPrimitive.Backdrop {...rest} className={slots.backdrop({ className })} />;
+  return (
+    <DialogPrimitive.Backdrop
+      {...rest}
+      className={slots.backdrop({ className })}
+    />
+  );
 }
 
 export function DialogPositioner({
@@ -131,7 +142,12 @@ export function DialogContent({
 
       {!!showCloseButton && (
         <DialogCloseTrigger asChild>
-          <Button aria-label="Close" className={slots.inline()} size="icon-sm" variant="ghost">
+          <Button
+            aria-label="Close"
+            className={slots.inline()}
+            size="icon-sm"
+            variant="ghost"
+          >
             <XIcon />
           </Button>
         </DialogCloseTrigger>
@@ -140,7 +156,11 @@ export function DialogContent({
   );
 }
 
-export function DialogBody({ scrollFade = false, className, ...rest }: DialogBodyProps) {
+export function DialogBody({
+  scrollFade = false,
+  className,
+  ...rest
+}: DialogBodyProps) {
   const { slots } = useDialog();
 
   return (
@@ -155,7 +175,11 @@ export function DialogBody({ scrollFade = false, className, ...rest }: DialogBod
   );
 }
 
-export function DialogHeader({ children, className, ...rest }: DialogHeaderProps) {
+export function DialogHeader({
+  children,
+  className,
+  ...rest
+}: DialogHeaderProps) {
   const { slots } = useDialog();
 
   return (
@@ -173,13 +197,23 @@ export function DialogHeader({ children, className, ...rest }: DialogHeaderProps
 export function DialogTitle({ className, ...rest }: DialogTitleProps) {
   const { slots } = useDialog();
 
-  return <DialogPrimitive.Title {...rest} className={slots.title({ className })} />;
+  return (
+    <DialogPrimitive.Title {...rest} className={slots.title({ className })} />
+  );
 }
 
-export function DialogDescription({ className, ...rest }: DialogDescriptionProps) {
+export function DialogDescription({
+  className,
+  ...rest
+}: DialogDescriptionProps) {
   const { slots } = useDialog();
 
-  return <DialogPrimitive.Description {...rest} className={slots.description({ className })} />;
+  return (
+    <DialogPrimitive.Description
+      {...rest}
+      className={slots.description({ className })}
+    />
+  );
 }
 
 export function DialogCloseTrigger(props: DialogCloseTriggerProps) {
@@ -211,7 +245,9 @@ export function DialogShorthand({
 }: DialogProps) {
   return (
     <DialogRoot {...rest}>
-      {trigger !== undefined && <DialogTrigger asChild>{trigger}</DialogTrigger>}
+      {trigger !== undefined && (
+        <DialogTrigger asChild>{trigger}</DialogTrigger>
+      )}
 
       <Portal>
         <DialogBackdrop />
@@ -222,7 +258,9 @@ export function DialogShorthand({
               <DialogHeader>
                 {title !== undefined && <DialogTitle>{title}</DialogTitle>}
 
-                {description !== undefined && <DialogDescription>{description}</DialogDescription>}
+                {description !== undefined && (
+                  <DialogDescription>{description}</DialogDescription>
+                )}
               </DialogHeader>
             )}
 

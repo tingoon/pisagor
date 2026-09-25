@@ -1,7 +1,11 @@
 import { ark } from "@ark-ui/vue/factory";
 import { frameRecipe } from "@pisagor/recipes/frame";
 import { computed, defineComponent, h, type PropType } from "vue";
-import { provideSurfaceContext, type SurfaceVariant, useSurface } from "../surface/surface";
+import {
+  provideSurfaceContext,
+  type SurfaceVariant,
+  useSurface,
+} from "../surface/surface";
 
 type ArkPart = Parameters<typeof h>[0];
 
@@ -22,7 +26,10 @@ export const FrameRoot = defineComponent({
   inheritAttrs: false,
   name: "FrameRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: frameRecipe,
       type: Function as PropType<typeof frameRecipe>,
@@ -59,7 +66,10 @@ export const FramePanel = defineComponent({
   inheritAttrs: false,
   name: "FramePanel",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: frameRecipe,
       type: Function as PropType<typeof frameRecipe>,
@@ -96,7 +106,10 @@ export const FrameTitle = defineComponent({
   inheritAttrs: false,
   name: "FrameTitle",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: frameRecipe,
       type: Function as PropType<typeof frameRecipe>,
@@ -124,7 +137,10 @@ export const FrameDescription = defineComponent({
   inheritAttrs: false,
   name: "FrameDescription",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: frameRecipe,
       type: Function as PropType<typeof frameRecipe>,
@@ -152,7 +168,10 @@ export const FrameHeader = defineComponent({
   inheritAttrs: false,
   name: "FrameHeader",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: frameRecipe,
       type: Function as PropType<typeof frameRecipe>,
@@ -180,7 +199,10 @@ export const FrameFooter = defineComponent({
   inheritAttrs: false,
   name: "FrameFooter",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: frameRecipe,
       type: Function as PropType<typeof frameRecipe>,

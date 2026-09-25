@@ -16,7 +16,9 @@ function useColumns() {
       { accessorKey: "email", header: "Email" },
       {
         accessorKey: "role",
-        cell: ({ row }) => <Badge variant="secondary">{row.original.role}</Badge>,
+        cell: ({ row }) => (
+          <Badge variant="secondary">{row.original.role}</Badge>
+        ),
         header: "Role",
       },
     ],
@@ -51,7 +53,9 @@ export function Empty() {
   return (
     <DataTable<User> columns={columns} data={[]} getRowId={(row) => row.id}>
       <DataTable.Toolbar>
-        <p className="text-muted-foreground text-sm">No members match the current filters.</p>
+        <p className="text-muted-foreground text-sm">
+          No members match the current filters.
+        </p>
       </DataTable.Toolbar>
       <DataTableView />
     </DataTable>

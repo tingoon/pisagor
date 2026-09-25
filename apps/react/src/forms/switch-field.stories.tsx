@@ -8,7 +8,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Toggles a setting on or off with a label and optional validation message.",
+        component:
+          "Toggles a setting on or off with a label and optional validation message.",
       },
     },
   },

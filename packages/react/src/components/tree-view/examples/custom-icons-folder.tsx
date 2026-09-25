@@ -39,12 +39,19 @@ export function CustomIconsFolder() {
       <TreeView.NodeProvider {...rest} indexPath={indexPath} node={node}>
         {node.children ? (
           <TreeView.Branch>
-            <TreeView.BranchControl expandedIcon={node.expandedIcon} icon={node.icon}>
+            <TreeView.BranchControl
+              expandedIcon={node.expandedIcon}
+              icon={node.icon}
+            >
               {node.name}
             </TreeView.BranchControl>
             <TreeView.BranchContent>
               {node.children.map((child, index) => (
-                <TreeNode indexPath={[...indexPath, index]} key={child.id} node={child} />
+                <TreeNode
+                  indexPath={[...indexPath, index]}
+                  key={child.id}
+                  node={child}
+                />
               ))}
             </TreeView.BranchContent>
           </TreeView.Branch>

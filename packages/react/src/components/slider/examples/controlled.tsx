@@ -10,7 +10,12 @@ export function Controlled() {
     <div className="flex flex-col gap-2">
       <p className="text-center text-sm">Greater than 80</p>
       <Field>
-        <Slider label="Temperature" onValueChange={setValue} showValue value={value} />
+        <Slider
+          label="Temperature"
+          onValueChange={setValue}
+          showValue
+          value={value}
+        />
       </Field>
       <p className="text-center">{isGreaterThan80 ? "✅" : "❌"}</p>
     </div>

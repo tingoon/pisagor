@@ -6,9 +6,10 @@ export interface ItemContextValue extends ItemVariantProps {
   slots: ItemRecipe;
 }
 
-export const [provideItemContext, , useItemContextRef] = createContext<ItemContextValue>({
-  name: "Item",
-});
+export const [provideItemContext, , useItemContextRef] =
+  createContext<ItemContextValue>({
+    name: "Item",
+  });
 
 export function useItem(): MaybeRef<ItemContextValue> {
   const context = useItemContextRef();

@@ -27,7 +27,11 @@ function filterLg(_inputValue: string) {}
       <Combobox.Input size="sm" />
       <Combobox.Content>
         <Combobox.List>
-          <Combobox.Item v-for="item in collectionSm.items" :key="item.value" :item="item">
+          <Combobox.Item
+            v-for="item in collectionSm.items"
+            :key="item.value"
+            :item="item"
+          >
             {{ item.label }}
           </Combobox.Item>
         </Combobox.List>
@@ -40,7 +44,11 @@ function filterLg(_inputValue: string) {}
       <Combobox.Input size="md" />
       <Combobox.Content>
         <Combobox.List>
-          <Combobox.Item v-for="item in collectionMd.items" :key="item.value" :item="item">
+          <Combobox.Item
+            v-for="item in collectionMd.items"
+            :key="item.value"
+            :item="item"
+          >
             {{ item.label }}
           </Combobox.Item>
         </Combobox.List>
@@ -53,7 +61,11 @@ function filterLg(_inputValue: string) {}
       <Combobox.Input size="lg" />
       <Combobox.Content>
         <Combobox.List>
-          <Combobox.Item v-for="item in collectionLg.items" :key="item.value" :item="item">
+          <Combobox.Item
+            v-for="item in collectionLg.items"
+            :key="item.value"
+            :item="item"
+          >
             {{ item.label }}
           </Combobox.Item>
         </Combobox.List>

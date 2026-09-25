@@ -28,10 +28,16 @@ const collection = createListCollection({
     <Item class="p-1">
       <Listbox.Root :collection="collection">
         <Listbox.Content>
-          <Listbox.Item v-for="item in collection.items" :key="item.value" :item="item">
+          <Listbox.Item
+            v-for="item in collection.items"
+            :key="item.value"
+            :item="item"
+          >
             <div class="flex min-w-0 flex-1 flex-col gap-0.5">
               <Listbox.ItemText>{{ item.label }}</Listbox.ItemText>
-              <span class="text-muted-foreground text-xs">{{ item.description }}</span>
+              <span class="text-muted-foreground text-xs">{{
+                item.description
+              }}</span>
             </div>
             <Listbox.ItemIndicator />
           </Listbox.Item>

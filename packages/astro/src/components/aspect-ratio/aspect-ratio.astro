@@ -16,7 +16,9 @@ const { ratio, style, class: className, ...rest } = Astro.props;
 const mergedStyle =
   ratio === undefined
     ? style
-    : [typeof style === "string" ? style : "", `--ratio:${ratio}`].filter(Boolean).join(";");
+    : [typeof style === "string" ? style : "", `--ratio:${ratio}`]
+        .filter(Boolean)
+        .join(";");
 ---
 
 <div

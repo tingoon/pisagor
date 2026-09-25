@@ -5,7 +5,8 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: "Composes an input with leading or trailing addons and actions.",
+        component:
+          "Composes an input with leading or trailing addons and actions.",
       },
     },
   },
@@ -21,7 +22,10 @@ export const Playground = {
           component: InputGroup.Addon,
           props: { align: "inline-start" },
           slots: {
-            default: { component: InputGroup.Text, slots: { default: "https://" } },
+            default: {
+              component: InputGroup.Text,
+              slots: { default: "https://" },
+            },
           },
         },
         '<input class="min-w-0 flex-1 bg-transparent outline-none" placeholder="example.com" />',

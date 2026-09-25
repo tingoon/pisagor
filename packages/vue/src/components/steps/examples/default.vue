@@ -25,7 +25,9 @@ const steps = Array.from({ length: 3 }, (_, index) => index + 1);
       <p class="text-muted-foreground text-sm">Step {{ step }}</p>
     </Steps.Content>
 
-    <Steps.CompletedContent class="flex h-full items-center justify-center rounded-md border">
+    <Steps.CompletedContent
+      class="flex h-full items-center justify-center rounded-md border"
+    >
       <p class="text-muted-foreground text-sm">All steps completed.</p>
     </Steps.CompletedContent>
     <div class="flex flex-row-reverse gap-2">

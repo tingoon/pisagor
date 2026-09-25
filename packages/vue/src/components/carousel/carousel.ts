@@ -31,7 +31,10 @@ export const CarouselRoot = defineComponent({
   inheritAttrs: false,
   name: "CarouselRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: carouselRecipe,
       type: Function as PropType<typeof carouselRecipe>,
@@ -262,7 +265,10 @@ export const CarouselShorthand = defineComponent({
   inheritAttrs: false,
   name: "CarouselShorthand",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     slides: {
       default: () => [],
       type: Array as PropType<CarouselPresetItem[]>,
@@ -280,10 +286,17 @@ export const CarouselShorthand = defineComponent({
           spacing: props.spacing,
         },
         () => [
-          h(CarouselControl, null, () => [h(CarouselPrevTrigger), h(CarouselNextTrigger)]),
+          h(CarouselControl, null, () => [
+            h(CarouselPrevTrigger),
+            h(CarouselNextTrigger),
+          ]),
           h(CarouselItemGroup, null, () =>
             props.slides?.map((slide, index) =>
-              h(CarouselItem, { index, key: slide.key ?? String(index) }, () => slide.content),
+              h(
+                CarouselItem,
+                { index, key: slide.key ?? String(index) },
+                () => slide.content,
+              ),
             ),
           ),
           h(CarouselIndicatorGroup, null, () =>

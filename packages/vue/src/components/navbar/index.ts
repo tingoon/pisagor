@@ -1,4 +1,10 @@
-import { NavbarActions, NavbarBrand, NavbarContent, NavbarNav, NavbarRoot } from "./navbar";
+import {
+  NavbarActions,
+  NavbarBrand,
+  NavbarContent,
+  NavbarNav,
+  NavbarRoot,
+} from "./navbar";
 
 export const Navbar = Object.assign(NavbarRoot, {
   Actions: NavbarActions,

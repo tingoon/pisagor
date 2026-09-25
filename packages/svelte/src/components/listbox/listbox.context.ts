@@ -1,4 +1,7 @@
-import type { ListboxItemRecipe, ListboxRecipe } from "@pisagor/recipes/listbox";
+import type {
+  ListboxItemRecipe,
+  ListboxRecipe,
+} from "@pisagor/recipes/listbox";
 import { createContext } from "../../utils/create-context";
 
 interface ListboxContextValue {

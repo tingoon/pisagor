@@ -27,7 +27,8 @@ export interface ToggleGroupRootProps
   recipe?: typeof toggleGroupRecipe;
 }
 
-export interface ToggleGroupProps extends Omit<ToggleGroupRootProps, "children"> {
+export interface ToggleGroupProps
+  extends Omit<ToggleGroupRootProps, "children"> {
   items?: ToggleGroupPresetItem[];
 }
 
@@ -49,22 +50,32 @@ export function ToggleGroupRoot(props: ToggleGroupRootProps): JSX.Element {
   const variant = () => local.variant ?? "ghost";
   const multiple = () => local.multiple ?? true;
   const spacing = () => local.spacing ?? 0;
-  const slots = () => (local.recipe ?? toggleGroupRecipe)({ orientation: orientation() });
+  const slots = () =>
+    (local.recipe ?? toggleGroupRecipe)({ orientation: orientation() });
 
   return (
     <ToggleGroupContext
-      value={{ size: size(), slots: slots(), spacing: spacing(), variant: variant() }}
+      value={{
+        size: size(),
+        slots: slots(),
+        spacing: spacing(),
+        variant: variant(),
+      }}
     >
       <ToggleGroupPrimitive.Root
         {...rest}
         class={slots().base({ class: cn(local.class) })}
         multiple={multiple()}
         onValueChange={
-          local.onValueChange ? (details) => local.onValueChange?.(details.value) : undefined
+          local.onValueChange
+            ? (details) => local.onValueChange?.(details.value)
+            : undefined
         }
         orientation={orientation()}
         style={{
-          ...(typeof local.style === "object" && local.style !== null ? local.style : {}),
+          ...(typeof local.style === "object" && local.style !== null
+            ? local.style
+            : {}),
           "--gap": spacing(),
         }}
       >

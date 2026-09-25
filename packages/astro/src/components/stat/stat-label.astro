@@ -8,6 +8,11 @@ const { class: className, ...rest } = Astro.props;
 const slots = statRecipe();
 ---
 
-<div {...rest} class={slots.label({ className })} data-part="label" data-scope="stat">
+<div
+  {...rest}
+  class={slots.label({ className })}
+  data-part="label"
+  data-scope="stat"
+>
   <slot />
 </div>

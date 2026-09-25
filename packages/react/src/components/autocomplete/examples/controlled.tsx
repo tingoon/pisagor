@@ -39,7 +39,9 @@ export function Controlled() {
           </Autocomplete.List>
         </Autocomplete.Content>
       </Autocomplete.Root>
-      <p className="text-center text-muted-foreground text-sm">Selected: {value ?? "(none)"}</p>
+      <p className="text-center text-muted-foreground text-sm">
+        Selected: {value ?? "(none)"}
+      </p>
     </div>
   );
 }

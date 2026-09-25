@@ -59,7 +59,10 @@ export function XIcon(props: IconProps): JSX.Element {
 
 export function MinusIcon(props: IconProps): JSX.Element {
   return (
-    <BaseIcon {...props} path="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128Z" />
+    <BaseIcon
+      {...props}
+      path="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128Z"
+    />
   );
 }
 

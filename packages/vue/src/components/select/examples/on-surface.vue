@@ -22,7 +22,11 @@ const collection = createListCollection({ items: initialItems });
           <Select.ValueText placeholder="Primary" />
         </Select.Trigger>
         <Select.Content>
-          <Select.Item v-for="item in collection.items" :key="item" :item="item">
+          <Select.Item
+            v-for="item in collection.items"
+            :key="item"
+            :item="item"
+          >
             {{ item }}
           </Select.Item>
         </Select.Content>
@@ -32,7 +36,11 @@ const collection = createListCollection({ items: initialItems });
           <Select.ValueText placeholder="Secondary" />
         </Select.Trigger>
         <Select.Content>
-          <Select.Item v-for="item in collection.items" :key="item" :item="item">
+          <Select.Item
+            v-for="item in collection.items"
+            :key="item"
+            :item="item"
+          >
             {{ item }}
           </Select.Item>
         </Select.Content>

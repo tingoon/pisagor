@@ -1,4 +1,10 @@
-import { TabsContent, TabsList, TabsRoot, TabsShorthand, TabsTrigger } from "./tabs";
+import {
+  TabsContent,
+  TabsList,
+  TabsRoot,
+  TabsShorthand,
+  TabsTrigger,
+} from "./tabs";
 
 export type { TabsPresetItem } from "./tabs";
 

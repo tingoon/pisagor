@@ -12,7 +12,8 @@ export default defineComponent({
         ),
         h(Popover.Content, null, () =>
           h(Popover.Header, {
-            description: "You're all caught up. Check back later for new notifications.",
+            description:
+              "You're all caught up. Check back later for new notifications.",
             title: "Notifications",
           }),
         ),

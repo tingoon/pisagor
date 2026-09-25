@@ -4,7 +4,10 @@ import {
   useTagsInputContext,
 } from "@ark-ui/vue/tags-input";
 import { PhX } from "@phosphor-icons/vue";
-import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes/tags-input";
+import {
+  tagsInputItemRecipe,
+  tagsInputRecipe,
+} from "@pisagor/recipes/tags-input";
 import { cn } from "@pisagor/utils";
 
 type FormControlVariant = "primary" | "secondary";
@@ -99,7 +102,10 @@ export const TagsInputItemDeleteTrigger = defineComponent({
   name: "TagsInput.ItemDeleteTrigger",
   props: {
     "aria-label": { default: "Remove tag", type: String },
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     itemRecipe: {
       default: tagsInputItemRecipe,
       type: Function as PropType<typeof tagsInputItemRecipe>,
@@ -139,7 +145,10 @@ export const TagsInputItemText = defineComponent({
   inheritAttrs: false,
   name: "TagsInput.ItemText",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     itemRecipe: {
       default: tagsInputItemRecipe,
       type: Function as PropType<typeof tagsInputItemRecipe>,
@@ -167,7 +176,10 @@ export const TagsInputItemPreview = defineComponent({
   inheritAttrs: false,
   name: "TagsInput.ItemPreview",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     itemRecipe: {
       default: tagsInputItemRecipe,
       type: Function as PropType<typeof tagsInputItemRecipe>,
@@ -223,7 +235,10 @@ export const TagsInputItem = defineComponent({
   inheritAttrs: false,
   name: "TagsInput.Item",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     disabled: { default: undefined, type: Boolean },
     index: { required: true, type: Number },
     itemRecipe: {
@@ -250,7 +265,11 @@ export const TagsInputItem = defineComponent({
         },
         () => [
           h(TagsInputItemPreview, null, () => [
-            h(TagsInputItemText, null, () => vueSlots.default?.() ?? props.value),
+            h(
+              TagsInputItemText,
+              null,
+              () => vueSlots.default?.() ?? props.value,
+            ),
             props.showDelete ? h(TagsInputItemDeleteTrigger) : null,
           ]),
           h(TagsInputItemInput),
@@ -265,7 +284,10 @@ export const TagsInputClearTrigger = defineComponent({
   name: "TagsInput.ClearTrigger",
   props: {
     "aria-label": { default: "Clear all tags", type: String },
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     recipe: {
       default: tagsInputRecipe,
       type: Function as PropType<typeof tagsInputRecipe>,
@@ -311,7 +333,10 @@ export const TagsInputControl = defineComponent({
       type: Function as PropType<typeof tagsInputRecipe>,
     },
     size: { default: "md", type: String as PropType<TagsInputSize> },
-    variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant | undefined>,
+    },
   },
   setup(props, { attrs, slots: vueSlots }) {
     const api = useTagsInputContext();
@@ -337,7 +362,9 @@ export const TagsInputControl = defineComponent({
             },
             () => [
               vueSlots.default?.(),
-              props.clearable && api.value.value.length > 0 ? h(TagsInputClearTrigger) : null,
+              props.clearable && api.value.value.length > 0
+                ? h(TagsInputClearTrigger)
+                : null,
             ],
           ),
       );
@@ -349,9 +376,15 @@ export const TagsInputRoot = defineComponent({
   inheritAttrs: false,
   name: "TagsInput",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     clearable: { default: false, type: Boolean },
-    defaultValue: { default: undefined, type: Array as PropType<string[] | undefined> },
+    defaultValue: {
+      default: undefined,
+      type: Array as PropType<string[] | undefined>,
+    },
     editable: { default: false, type: Boolean },
     onValueChange: {
       default: undefined,
@@ -365,8 +398,14 @@ export const TagsInputRoot = defineComponent({
     },
     size: { default: "md", type: String as PropType<TagsInputSize> },
     tabIndex: { default: undefined, type: Number },
-    value: { default: undefined, type: Array as PropType<string[] | undefined> },
-    variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
+    value: {
+      default: undefined,
+      type: Array as PropType<string[] | undefined>,
+    },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant | undefined>,
+    },
   },
   setup(props, { attrs, slots: vueSlots }) {
     return () => {
@@ -384,14 +423,19 @@ export const TagsInputRoot = defineComponent({
           editable: props.editable,
           modelValue: props.value,
           onValueChange: props.onValueChange
-            ? (details: TagsInputValueChangeDetails) => props.onValueChange?.(details.value)
+            ? (details: TagsInputValueChangeDetails) =>
+                props.onValueChange?.(details.value)
             : undefined,
           tabIndex: props.tabIndex,
         },
         () => [
           h(
             TagsInputControl as ArkPart,
-            { clearable: props.clearable, size: props.size, variant: props.variant },
+            {
+              clearable: props.clearable,
+              size: props.size,
+              variant: props.variant,
+            },
             () => [
               h(
                 TagsInputPrimitive.Context as ArkPart,
@@ -405,7 +449,9 @@ export const TagsInputRoot = defineComponent({
               h(TagsInputInput as ArkPart, { placeholder: props.placeholder }),
             ],
           ),
-          h(TagsInputPrimitive.HiddenInput as ArkPart, { tabIndex: props.tabIndex }),
+          h(TagsInputPrimitive.HiddenInput as ArkPart, {
+            tabIndex: props.tabIndex,
+          }),
         ],
       );
     };
@@ -416,7 +462,10 @@ export const TagsInputRootProvider = defineComponent({
   inheritAttrs: false,
   name: "TagsInputRootProvider",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<ClassValue> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<ClassValue>,
+    },
     clearable: { default: false, type: Boolean },
     recipe: {
       default: tagsInputRecipe,
@@ -443,7 +492,11 @@ export const TagsInputRootProvider = defineComponent({
         () => [
           h(
             TagsInputControl as ArkPart,
-            { clearable: props.clearable, size: props.size, variant: undefined },
+            {
+              clearable: props.clearable,
+              size: props.size,
+              variant: undefined,
+            },
             () => vueSlots.default?.(),
           ),
           h(TagsInputPrimitive.HiddenInput as ArkPart),

@@ -1,6 +1,9 @@
 import { Field, Input, Select } from "@pisagor/vue";
 import { defineComponent, h } from "vue";
-import { defaultButtonClass, outlineButtonClass } from "../../../internal/story-button";
+import {
+  defaultButtonClass,
+  outlineButtonClass,
+} from "../../../internal/story-button";
 import { Dialog } from "..";
 
 export default defineComponent({
@@ -18,7 +21,9 @@ export default defineComponent({
         ),
         h(
           Dialog.Content,
-          { class: "[--space:--spacing(4)] sm:[--space:--spacing(8)]" } as Record<string, unknown>,
+          {
+            class: "[--space:--spacing(4)] sm:[--space:--spacing(8)]",
+          } as Record<string, unknown>,
           () => [
             h(Dialog.Header, {
               description: "Make changes to your project settings.",
@@ -33,17 +38,28 @@ export default defineComponent({
                   ]),
                   h(Field, null, () => [
                     h(Field.Label, null, () => "Main branch"),
-                    h(Select, { items: branches, placeholder: "Select branch" }),
+                    h(Select, {
+                      items: branches,
+                      placeholder: "Select branch",
+                    }),
                   ]),
                 ]),
               ),
             ),
             h(Dialog.Footer, null, () => [
               h(Dialog.CloseTrigger, { asChild: true }, () =>
-                h("button", { class: outlineButtonClass(), type: "button" }, "Cancel"),
+                h(
+                  "button",
+                  { class: outlineButtonClass(), type: "button" },
+                  "Cancel",
+                ),
               ),
               h(Dialog.CloseTrigger, { asChild: true }, () =>
-                h("button", { class: defaultButtonClass(), type: "button" }, "Save"),
+                h(
+                  "button",
+                  { class: defaultButtonClass(), type: "button" },
+                  "Save",
+                ),
               ),
             ]),
           ],

@@ -46,7 +46,10 @@ export const SkipNavLink = defineComponent({
   inheritAttrs: false,
   name: "SkipNavLink",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     id: { default: SKIP_NAV_ID, type: String },
     recipe: {
       default: skipNavRecipe,
@@ -75,7 +78,10 @@ export const SkipNavContent = defineComponent({
   inheritAttrs: false,
   name: "SkipNavContent",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     id: { default: SKIP_NAV_ID, type: String },
     recipe: {
       default: skipNavRecipe,

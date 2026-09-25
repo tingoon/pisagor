@@ -12,7 +12,12 @@ const slots = dataListItemRecipe();
 const hasLabel = Astro.slots.has("default");
 ---
 
-<div {...rest} class={slots.base({ className })} data-part="item" data-scope="data-list">
+<div
+  {...rest}
+  class={slots.base({ className })}
+  data-part="item"
+  data-scope="data-list"
+>
   {hasLabel && (
   <dt class={slots.label()} data-part="item-label" data-scope="data-list">
     <slot />

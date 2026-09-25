@@ -14,7 +14,8 @@ export interface AvatarGroupRootProps extends ComponentProps<typeof ark.div> {
   recipe?: typeof avatarGroupRecipe;
 }
 
-export interface AvatarGroupProps extends Omit<AvatarGroupRootProps, "children"> {
+export interface AvatarGroupProps
+  extends Omit<AvatarGroupRootProps, "children"> {
   /** Maximum number of avatars to show; excess shown as "+N". */
   max?: number;
   /** User list rendered as avatars. */
@@ -47,7 +48,10 @@ export function AvatarGroupRoot({
   );
 }
 
-export function AvatarGroupCount({ className, ...rest }: AvatarGroupCountProps) {
+export function AvatarGroupCount({
+  className,
+  ...rest
+}: AvatarGroupCountProps) {
   const { slots } = useAvatarGroup();
 
   return (
@@ -62,9 +66,14 @@ export function AvatarGroupCount({ className, ...rest }: AvatarGroupCountProps) 
 // #endregion
 
 // #region Shorthand
-export function AvatarGroupShorthand({ max, users, ...rest }: AvatarGroupProps) {
+export function AvatarGroupShorthand({
+  max,
+  users,
+  ...rest
+}: AvatarGroupProps) {
   const visibleUsers = max !== undefined ? users.slice(0, max) : users;
-  const remainingCount = max !== undefined && users.length > max ? users.length - max : 0;
+  const remainingCount =
+    max !== undefined && users.length > max ? users.length - max : 0;
 
   return (
     <AvatarGroupRoot {...rest}>
@@ -76,7 +85,9 @@ export function AvatarGroupShorthand({ max, users, ...rest }: AvatarGroupProps) 
           src={user.src}
         />
       ))}
-      {remainingCount > 0 ? <AvatarGroupCount>+{remainingCount}</AvatarGroupCount> : null}
+      {remainingCount > 0 ? (
+        <AvatarGroupCount>+{remainingCount}</AvatarGroupCount>
+      ) : null}
     </AvatarGroupRoot>
   );
 }

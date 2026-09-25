@@ -1,5 +1,9 @@
 import { ark } from "@ark-ui/react/factory";
-import { type AlertRecipeSlot, type AlertVariantProps, alertRecipe } from "@pisagor/recipes/alert";
+import {
+  type AlertRecipeSlot,
+  type AlertVariantProps,
+  alertRecipe,
+} from "@pisagor/recipes/alert";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
 import { AlertContext, useAlert } from "./alert.context";
@@ -55,7 +59,12 @@ export function AlertRoot({
 
   return (
     <AlertContext value={{ slots }}>
-      <ark.div {...rest} className={slots.base({ className })} data-part="root" data-scope="alert">
+      <ark.div
+        {...rest}
+        className={slots.base({ className })}
+        data-part="root"
+        data-scope="alert"
+      >
         {children}
       </ark.div>
     </AlertContext>
@@ -66,13 +75,22 @@ export function AlertTitle({ children, className, ...rest }: AlertTitleProps) {
   const { slots } = useAlert();
 
   return (
-    <ark.div {...rest} className={slots.title({ className })} data-part="title" data-scope="alert">
+    <ark.div
+      {...rest}
+      className={slots.title({ className })}
+      data-part="title"
+      data-scope="alert"
+    >
       {children}
     </ark.div>
   );
 }
 
-export function AlertDescription({ children, className, ...rest }: AlertDescriptionProps) {
+export function AlertDescription({
+  children,
+  className,
+  ...rest
+}: AlertDescriptionProps) {
   const { slots } = useAlert();
 
   return (
@@ -87,7 +105,11 @@ export function AlertDescription({ children, className, ...rest }: AlertDescript
   );
 }
 
-export function AlertAction({ children, className, ...rest }: AlertActionProps) {
+export function AlertAction({
+  children,
+  className,
+  ...rest
+}: AlertActionProps) {
   const { slots } = useAlert();
 
   return (
@@ -128,7 +150,10 @@ export function AlertShorthand({
       )}
 
       {description !== undefined && (
-        <AlertDescription {...descriptionProps} className={classNames?.description}>
+        <AlertDescription
+          {...descriptionProps}
+          className={classNames?.description}
+        >
           {description}
         </AlertDescription>
       )}

@@ -5,7 +5,9 @@ export interface CircularProgressContextValue {
   slots: CircularProgressRecipe;
 }
 
-const ctx = createContext<CircularProgressContextValue>({ name: "CircularProgress" });
+const ctx = createContext<CircularProgressContextValue>({
+  name: "CircularProgress",
+});
 
 export const setCircularProgressContext = ctx.setContext;
 export const useCircularProgressSlots = ctx.getContext;

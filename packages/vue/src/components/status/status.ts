@@ -22,13 +22,19 @@ export const Status = defineComponent({
   inheritAttrs: false,
   name: "PisagorStatus",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: statusRecipe,
       type: Function as PropType<typeof statusRecipe>,
     },
     size: { default: undefined, type: String as PropType<StatusProps["size"]> },
-    variant: { default: undefined, type: String as PropType<StatusProps["variant"]> },
+    variant: {
+      default: undefined,
+      type: String as PropType<StatusProps["variant"]>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -36,7 +42,10 @@ export const Status = defineComponent({
         ark.span as ArkPart,
         {
           ...attrs,
-          class: cn(props.recipe({ size: props.size, variant: props.variant }), props.class),
+          class: cn(
+            props.recipe({ size: props.size, variant: props.variant }),
+            props.class,
+          ),
           "data-part": "indicator",
           "data-scope": "status",
           "data-size": props.size,

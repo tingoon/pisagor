@@ -16,7 +16,12 @@ const data = () =>
 </script>
 
 <template>
-  <DownloadTrigger as-child file-name="data.json" mime-type="application/json" :data="data">
+  <DownloadTrigger
+    as-child
+    file-name="data.json"
+    mime-type="application/json"
+    :data="data"
+  >
     <Button size="lg" variant="outline">
       <PhDownload />
       Download

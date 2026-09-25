@@ -21,7 +21,10 @@ export const QrCodeRoot = defineComponent({
   inheritAttrs: false,
   name: "QrCodeRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: qrCodeRecipe,
       type: Function as PropType<typeof qrCodeRecipe>,
@@ -47,7 +50,10 @@ export const QrCodeFrame = defineComponent({
   inheritAttrs: false,
   name: "QrCodeFrame",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: qrCodeRecipe,
       type: Function as PropType<typeof qrCodeRecipe>,
@@ -76,7 +82,10 @@ export const QrCodeOverlay = defineComponent({
   inheritAttrs: false,
   name: "QrCodeOverlay",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: qrCodeRecipe,
       type: Function as PropType<typeof qrCodeRecipe>,
@@ -102,7 +111,8 @@ export const QrCodeDownload = defineComponent({
   inheritAttrs: false,
   name: "QrCodeDownload",
   setup(_, { attrs, slots }) {
-    return () => h(QrCodePrimitive.DownloadTrigger as ArkPart, { ...attrs }, slots);
+    return () =>
+      h(QrCodePrimitive.DownloadTrigger as ArkPart, { ...attrs }, slots);
   },
 });
 // #endregion

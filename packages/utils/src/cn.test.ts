@@ -11,6 +11,8 @@ describe("cn", () => {
   });
 
   test("ignores falsy values", () => {
-    expect(cn("block", false && "hidden", null, undefined, "text-sm")).toBe("block text-sm");
+    expect(cn("block", false && "hidden", null, undefined, "text-sm")).toBe(
+      "block text-sm",
+    );
   });
 });

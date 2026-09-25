@@ -13,6 +13,7 @@ export const { StepsContext, useSteps } = createContext<StepsContextValue>()({
   name: "Steps",
 });
 
-export const { StepsItemContext, useStepsItem } = createContext<StepsItemContextValue>()({
-  name: "StepsItem",
-});
+export const { StepsItemContext, useStepsItem } =
+  createContext<StepsItemContextValue>()({
+    name: "StepsItem",
+  });

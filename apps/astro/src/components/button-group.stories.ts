@@ -18,11 +18,23 @@ export const Playground = {
     component: ButtonGroup,
     slots: {
       default: [
-        { component: Button, props: { variant: "outline" }, slots: { default: "Copy" } },
+        {
+          component: Button,
+          props: { variant: "outline" },
+          slots: { default: "Copy" },
+        },
         { component: ButtonGroup.Separator },
-        { component: Button, props: { variant: "outline" }, slots: { default: "Paste" } },
+        {
+          component: Button,
+          props: { variant: "outline" },
+          slots: { default: "Paste" },
+        },
         { component: ButtonGroup.Separator },
-        { component: Button, props: { variant: "outline" }, slots: { default: "Cut" } },
+        {
+          component: Button,
+          props: { variant: "outline" },
+          slots: { default: "Cut" },
+        },
       ],
     },
   }),

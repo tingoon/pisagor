@@ -16,14 +16,26 @@ export default defineComponent({
             title: "Edit project",
           }),
           h(Dialog.Body, null, () =>
-            h("p", { class: "text-muted-foreground text-sm" }, "Dialog body content."),
+            h(
+              "p",
+              { class: "text-muted-foreground text-sm" },
+              "Dialog body content.",
+            ),
           ),
           h(Dialog.Footer, null, () => [
             h(Dialog.CloseTrigger, { asChild: true }, () =>
-              h("button", { class: outlineButtonClass(), type: "button" }, "Cancel"),
+              h(
+                "button",
+                { class: outlineButtonClass(), type: "button" },
+                "Cancel",
+              ),
             ),
             h(Dialog.CloseTrigger, { asChild: true }, () =>
-              h("button", { class: outlineButtonClass(), type: "button" }, "Save"),
+              h(
+                "button",
+                { class: outlineButtonClass(), type: "button" },
+                "Save",
+              ),
             ),
           ]),
         ]),

@@ -8,14 +8,21 @@ export interface SpinnerProps extends JSX.SvgSVGAttributes<SVGSVGElement> {
 }
 
 export function Spinner(props: SpinnerProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class", "recipe", "aria-label", "aria-hidden"]);
+  const [local, rest] = splitProps(props, [
+    "class",
+    "recipe",
+    "aria-label",
+    "aria-hidden",
+  ]);
   const recipe = () => local.recipe ?? spinnerRecipe;
 
   return (
     <svg
       {...rest}
       aria-hidden={local["aria-hidden"]}
-      aria-label={local["aria-hidden"] ? undefined : (local["aria-label"] ?? "Loading")}
+      aria-label={
+        local["aria-hidden"] ? undefined : (local["aria-label"] ?? "Loading")
+      }
       class={recipe()({ class: cn(local.class) })}
       data-part="root"
       data-scope="spinner"

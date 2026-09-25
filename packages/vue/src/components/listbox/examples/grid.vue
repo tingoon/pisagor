@@ -37,8 +37,14 @@ const collection = createGridCollection({
           class="grid grid-cols-[repeat(var(--column-count),1fr)] gap-1"
           :style="{ '--column-count': collection.columnCount }"
         >
-          <Listbox.Item v-for="item in collection.items" :key="item.value" :item="item">
-            <Listbox.ItemText class="text-center text-xl">{{ item.label }}</Listbox.ItemText>
+          <Listbox.Item
+            v-for="item in collection.items"
+            :key="item.value"
+            :item="item"
+          >
+            <Listbox.ItemText class="text-center text-xl">{{
+              item.label
+            }}</Listbox.ItemText>
           </Listbox.Item>
         </Listbox.Content>
       </Listbox.Root>

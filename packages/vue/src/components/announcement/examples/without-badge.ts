@@ -7,7 +7,10 @@ export default defineComponent({
   setup() {
     return () =>
       h(Announcement, {
-        title: ["New features added, check the logs for more details.", h(PhArrowUpRight)],
+        title: [
+          "New features added, check the logs for more details.",
+          h(PhArrowUpRight),
+        ],
       });
   },
 });

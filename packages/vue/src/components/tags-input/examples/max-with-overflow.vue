@@ -6,6 +6,11 @@ import { TagsInput } from "..";
 <template>
   <Field>
     <Field.Label>Frameworks</Field.Label>
-    <TagsInput allow-overflow class="w-full" :default-value="['React', 'Solid', 'Vue']" :max="3" />
+    <TagsInput
+      allow-overflow
+      class="w-full"
+      :default-value="['React', 'Solid', 'Vue']"
+      :max="3"
+    />
   </Field>
 </template>

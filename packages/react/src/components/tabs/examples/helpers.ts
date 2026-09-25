@@ -1,8 +1,20 @@
 export function profileTabs() {
   return [
-    { content: "Make changes to your account here.", label: "Account", value: "tab-1" },
-    { content: "Change your password here.", label: "Password", value: "tab-2" },
-    { content: "Update your notification preferences.", label: "Notifications", value: "tab-3" },
+    {
+      content: "Make changes to your account here.",
+      label: "Account",
+      value: "tab-1",
+    },
+    {
+      content: "Change your password here.",
+      label: "Password",
+      value: "tab-2",
+    },
+    {
+      content: "Update your notification preferences.",
+      label: "Notifications",
+      value: "tab-3",
+    },
   ];
 }
 
@@ -17,7 +29,15 @@ export function numberedTabs() {
 export function variantTabs(description = "Tab panel") {
   return [
     { content: `${description} — account.`, label: "Account", value: "tab-1" },
-    { content: `${description} — password.`, label: "Password", value: "tab-2" },
-    { content: `${description} — notifications.`, label: "Notifications", value: "tab-3" },
+    {
+      content: `${description} — password.`,
+      label: "Password",
+      value: "tab-2",
+    },
+    {
+      content: `${description} — notifications.`,
+      label: "Notifications",
+      value: "tab-3",
+    },
   ];
 }

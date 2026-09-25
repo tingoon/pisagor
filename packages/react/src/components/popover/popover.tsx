@@ -77,12 +77,20 @@ export function PopoverContent({
     <Portal>
       <PopoverPositioner>
         <PopoverContentContext value={{ slots }}>
-          <PopoverPrimitive.Content {...rest} className={slots.base({ className })}>
+          <PopoverPrimitive.Content
+            {...rest}
+            className={slots.base({ className })}
+          >
             {children}
 
             {!!showCloseButton && (
               <PopoverCloseTrigger asChild>
-                <Button aria-label="Close" className={slots.close()} size="icon-sm" variant="ghost">
+                <Button
+                  aria-label="Close"
+                  className={slots.close()}
+                  size="icon-sm"
+                  variant="ghost"
+                >
                   <XIcon />
                 </Button>
               </PopoverCloseTrigger>
@@ -122,13 +130,23 @@ export function PopoverHeader({
 export function PopoverTitle({ className, ...rest }: PopoverTitleProps) {
   const { slots } = usePopoverContent();
 
-  return <PopoverPrimitive.Title {...rest} className={slots.title({ className })} />;
+  return (
+    <PopoverPrimitive.Title {...rest} className={slots.title({ className })} />
+  );
 }
 
-export function PopoverDescription({ className, ...rest }: PopoverDescriptionProps) {
+export function PopoverDescription({
+  className,
+  ...rest
+}: PopoverDescriptionProps) {
   const { slots } = usePopoverContent();
 
-  return <PopoverPrimitive.Description {...rest} className={slots.description({ className })} />;
+  return (
+    <PopoverPrimitive.Description
+      {...rest}
+      className={slots.description({ className })}
+    />
+  );
 }
 
 export function PopoverBody({ className, ...rest }: PopoverBodyProps) {

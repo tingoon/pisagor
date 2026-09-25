@@ -5,7 +5,11 @@ import { sampleSvg } from "./helpers";
 
 export function DownloadSvg() {
   return (
-    <DownloadTrigger data={sampleSvg()} fileName="icon.svg" mimeType="image/svg+xml">
+    <DownloadTrigger
+      data={sampleSvg()}
+      fileName="icon.svg"
+      mimeType="image/svg+xml"
+    >
       <Button size="lg" variant="outline">
         <DownloadIcon />
         Download SVG

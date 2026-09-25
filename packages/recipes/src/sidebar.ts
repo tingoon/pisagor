@@ -12,7 +12,12 @@ export const sidebarRecipe = tv({
     placement: "left",
   },
   slots: {
-    base: ["h-full w-(--sidebar-width)", "flex flex-col", "bg-muted", "text-muted-foreground"],
+    base: [
+      "h-full w-(--sidebar-width)",
+      "flex flex-col",
+      "bg-muted",
+      "text-muted-foreground",
+    ],
     container: [
       "fixed inset-y-0 z-10",
       "w-(--sidebar-width)",
@@ -175,7 +180,9 @@ export const sidebarRecipe = tv({
       "[[data-placement=right][data-collapsible=offcanvas]_&]:-inset-s-2",
       "motion-reduce:transition-none!",
     ],
-    scrollArea: ["[--fade-size:3rem] **:data-[scope=scroll-area]:data-[part=scrollbar]:hidden"],
+    scrollArea: [
+      "[--fade-size:3rem] **:data-[scope=scroll-area]:data-[part=scrollbar]:hidden",
+    ],
     separator: ["mx-2 w-auto bg-border"],
     trigger: "size-7",
     triggerIcon: "rtl:rotate-180",
@@ -202,10 +209,12 @@ export const sidebarRecipe = tv({
     },
     placement: {
       left: {
-        container: "inset-s-0 group-data-[collapsible=offcanvas]:-inset-s-(--sidebar-width)",
+        container:
+          "inset-s-0 group-data-[collapsible=offcanvas]:-inset-s-(--sidebar-width)",
       },
       right: {
-        container: "inset-e-0 group-data-[collapsible=offcanvas]:-inset-e-(--sidebar-width)",
+        container:
+          "inset-e-0 group-data-[collapsible=offcanvas]:-inset-e-(--sidebar-width)",
       },
     },
   },

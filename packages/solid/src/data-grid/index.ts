@@ -31,14 +31,12 @@ export type ColumnDef<TData extends RowData, TValue = unknown> = TableColumnDef<
   TValue
 >;
 
-export type CellContext<TData extends RowData, TValue = unknown> = TableCellContext<
-  DataGridFeatures,
-  TData,
-  TValue
->;
+export type CellContext<
+  TData extends RowData,
+  TValue = unknown,
+> = TableCellContext<DataGridFeatures, TData, TValue>;
 
-export type HeaderContext<TData extends RowData, TValue = unknown> = TableHeaderContext<
-  DataGridFeatures,
-  TData,
-  TValue
->;
+export type HeaderContext<
+  TData extends RowData,
+  TValue = unknown,
+> = TableHeaderContext<DataGridFeatures, TData, TValue>;

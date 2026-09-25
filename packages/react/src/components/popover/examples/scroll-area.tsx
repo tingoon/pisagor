@@ -15,7 +15,10 @@ export function ScrollArea() {
         <Popover.Body>
           <ul className="flex flex-col gap-1">
             {items.map((item) => (
-              <li className="rounded-md px-2 py-1.5 text-sm hover:bg-muted" key={item.id}>
+              <li
+                className="rounded-md px-2 py-1.5 text-sm hover:bg-muted"
+                key={item.id}
+              >
                 {item.label}
               </li>
             ))}

@@ -6,7 +6,10 @@ import {
   ImageCropperSelection,
 } from "./image-cropper";
 
-export type { ImageCropperProps, ImageCropperSelectionProps } from "./image-cropper";
+export type {
+  ImageCropperProps,
+  ImageCropperSelectionProps,
+} from "./image-cropper";
 
 export const ImageCropper = Object.assign(ImageCropperRoot, {
   Grid: ImageCropperGrid,

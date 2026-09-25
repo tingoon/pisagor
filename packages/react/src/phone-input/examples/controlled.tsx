@@ -14,7 +14,9 @@ export function Controlled() {
         placeholder="Enter phone number"
         value={phone}
       />
-      <Field.Description className="text-right">E.164 value: {phone || "—"}</Field.Description>
+      <Field.Description className="text-right">
+        E.164 value: {phone || "—"}
+      </Field.Description>
     </Field>
   );
 }

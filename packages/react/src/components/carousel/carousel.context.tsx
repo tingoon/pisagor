@@ -5,6 +5,7 @@ interface CarouselContextValue {
   slots: CarouselRecipe;
 }
 
-export const { CarouselContext, useCarousel } = createContext<CarouselContextValue>()({
-  name: "Carousel",
-});
+export const { CarouselContext, useCarousel } =
+  createContext<CarouselContextValue>()({
+    name: "Carousel",
+  });

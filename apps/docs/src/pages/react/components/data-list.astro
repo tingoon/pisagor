@@ -45,7 +45,10 @@ const headings = [
 
   <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-horizontal">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="orientation-horizontal"
+  >
     Orientation Horizontal
   </h3>
   <ComponentPreview
@@ -55,36 +58,56 @@ const headings = [
   >
     <OrientationHorizontal client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="orientation-vertical">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="orientation-vertical"
+  >
     Orientation Vertical
   </h3>
-  <ComponentPreview code={examples.OrientationVertical} language="tsx" title="Orientation Vertical">
+  <ComponentPreview
+    code={examples.OrientationVertical}
+    language="tsx"
+    title="Orientation Vertical"
+  >
     <OrientationVertical client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="separator">Separator</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="separator">
+    Separator
+  </h3>
   <ComponentPreview code={examples.Separator} language="tsx" title="Separator">
     <Separator client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="info-tip">Info Tip</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="info-tip">
+    Info Tip
+  </h3>
   <ComponentPreview code={examples.InfoTip} language="tsx" title="Info Tip">
     <InfoTip client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="compound">Compound</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="compound">
+    Compound
+  </h3>
   <ComponentPreview code={examples.Compound} language="tsx" title="Compound">
     <Compound client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
+    Default
+  </h3>
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
 
-  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <h2
+    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    id="installation"
+  >
+    Installation
+  </h2>
   <Installation class="mb-8" packages="@pisagor/react" />
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/data-list</code>. Native HTML attributes are also supported
-    and omitted from this table.
+    Own props from <code>@pisagor/props/data-list</code>. Native HTML attributes
+    are also supported and omitted from this table.
   </p>
   <PropsTable rows={dataListProps} />
 </DocsLayout>

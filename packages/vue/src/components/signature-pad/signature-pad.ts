@@ -6,7 +6,10 @@ import {
 } from "@ark-ui/vue/signature-pad";
 import { PhArrowCounterClockwise } from "@phosphor-icons/vue";
 import { formControlZoneRecipe } from "@pisagor/recipes/form-control";
-import { type SignaturePadRecipeSlot, signaturePadRecipe } from "@pisagor/recipes/signature-pad";
+import {
+  type SignaturePadRecipeSlot,
+  signaturePadRecipe,
+} from "@pisagor/recipes/signature-pad";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { VariantClassNames } from "../../internal/types";
@@ -67,9 +70,18 @@ export const SignaturePad = defineComponent({
   inheritAttrs: false,
   name: "SignaturePad",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<SignaturePadClassNames> },
-    defaultPaths: { default: undefined, type: Array as PropType<string[] | undefined> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<SignaturePadClassNames>,
+    },
+    defaultPaths: {
+      default: undefined,
+      type: Array as PropType<string[] | undefined>,
+    },
     disabled: { default: undefined, type: Boolean },
     drawing: {
       default: undefined,
@@ -77,16 +89,28 @@ export const SignaturePad = defineComponent({
     },
     invalid: { default: false, type: Boolean },
     name: { default: undefined, type: String },
-    onDraw: { default: undefined, type: Function as PropType<SignaturePadProps["onDraw"]> },
-    onDrawEnd: { default: undefined, type: Function as PropType<SignaturePadProps["onDrawEnd"]> },
-    paths: { default: undefined, type: Array as PropType<string[] | undefined> },
+    onDraw: {
+      default: undefined,
+      type: Function as PropType<SignaturePadProps["onDraw"]>,
+    },
+    onDrawEnd: {
+      default: undefined,
+      type: Function as PropType<SignaturePadProps["onDrawEnd"]>,
+    },
+    paths: {
+      default: undefined,
+      type: Array as PropType<string[] | undefined>,
+    },
     readOnly: { default: undefined, type: Boolean },
     recipe: {
       default: signaturePadRecipe,
       type: Function as PropType<typeof signaturePadRecipe>,
     },
     required: { default: undefined, type: Boolean },
-    variant: { default: undefined, type: String as PropType<FormControlVariant | undefined> },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant | undefined>,
+    },
   },
   setup(props, { attrs }) {
     const surfaceVariant = useFormControlSurface();
@@ -149,7 +173,11 @@ export const SignaturePad = defineComponent({
                 () =>
                   h(
                     Button as ArkPart,
-                    { "aria-label": "Clear signature", size: "icon-md", variant: "ghost" },
+                    {
+                      "aria-label": "Clear signature",
+                      size: "icon-md",
+                      variant: "ghost",
+                    },
                     () => h(PhArrowCounterClockwise),
                   ),
               ),

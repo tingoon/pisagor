@@ -8,14 +8,22 @@ export function Group() {
       {people.map((person) => (
         <Item key={person.id}>
           <Item.Media>
-            <Avatar className="grayscale" fallback={person.username.charAt(0).toUpperCase()} />
+            <Avatar
+              className="grayscale"
+              fallback={person.username.charAt(0).toUpperCase()}
+            />
           </Item.Media>
           <Item.Content>
             <Item.Title>{person.username}</Item.Title>
             <Item.Description>{person.email}</Item.Description>
           </Item.Content>
           <Item.Actions>
-            <Button aria-label="Add" className="rounded-full" size="icon-md" variant="ghost">
+            <Button
+              aria-label="Add"
+              className="rounded-full"
+              size="icon-md"
+              variant="ghost"
+            >
               <PlusIcon />
             </Button>
           </Item.Actions>

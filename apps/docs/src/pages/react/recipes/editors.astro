@@ -38,25 +38,44 @@ const headings = [
   headings={headings}
   title="Editors"
 >
-  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">Overview</h2>
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">
+    Overview
+  </h2>
   <p class="mb-8 text-muted-foreground">
-    Editor compositions for IDE layouts, rich text toolbars, and editable user cards.
+    Editor compositions for IDE layouts, rich text toolbars, and editable user
+    cards.
   </p>
 
-  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="ide-layout">Ide Layout</h2>
+  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="ide-layout">
+    Ide Layout
+  </h2>
   <ComponentPreview code={IdeLayoutSource} language="tsx" title="Ide Layout">
     <IdeLayout client:only="react" />
   </ComponentPreview>
-  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="rich-text-toolbar">
+  <h2
+    class="mb-3 mt-10 text-2xl font-semibold tracking-tight"
+    id="rich-text-toolbar"
+  >
     Rich Text Toolbar
   </h2>
-  <ComponentPreview code={RichTextToolbarSource} language="tsx" title="Rich Text Toolbar">
+  <ComponentPreview
+    code={RichTextToolbarSource}
+    language="tsx"
+    title="Rich Text Toolbar"
+  >
     <RichTextToolbar client:only="react" />
   </ComponentPreview>
-  <h2 class="mb-3 mt-10 text-2xl font-semibold tracking-tight" id="editable-user-card">
+  <h2
+    class="mb-3 mt-10 text-2xl font-semibold tracking-tight"
+    id="editable-user-card"
+  >
     Editable User Card
   </h2>
-  <ComponentPreview code={EditableUserCardSource} language="tsx" title="Editable User Card">
+  <ComponentPreview
+    code={EditableUserCardSource}
+    language="tsx"
+    title="Editable User Card"
+  >
     <EditableUserCard client:only="react" />
   </ComponentPreview>
 </DocsLayout>

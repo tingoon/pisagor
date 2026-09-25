@@ -17,7 +17,9 @@ export interface CreatedContext<T> {
 }
 
 /** Thin wrapper around Ark UI's `createContext` with a consistent API. */
-export function createContext<T>(options: CreateContextOptions<T>): CreatedContext<T> {
+export function createContext<T>(
+  options: CreateContextOptions<T>,
+): CreatedContext<T> {
   const [setContextValue, getContextValue] = createArkContext<T>({
     defaultValue: options.defaultValue,
     hookName: options.hookName ?? `use${options.name}`,

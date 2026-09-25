@@ -4,7 +4,10 @@ import "../src/styles.css";
 
 const wrapAstroStory = (
   Story: () => unknown,
-  context: { parameters?: { renderer?: string }; globals?: Record<string, string> },
+  context: {
+    parameters?: { renderer?: string };
+    globals?: Record<string, string>;
+  },
 ) => {
   if (context.parameters?.renderer && context.parameters.renderer !== "astro") {
     return Story();

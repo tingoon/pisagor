@@ -1,6 +1,12 @@
 import { Popover as PopoverPrimitive } from "@ark-ui/vue/popover";
 import { popoverRecipe } from "@pisagor/recipes/popover";
-import { type CSSProperties, defineComponent, h, type PropType, Teleport } from "vue";
+import {
+  type CSSProperties,
+  defineComponent,
+  h,
+  type PropType,
+  Teleport,
+} from "vue";
 import { renderIconCloseButton } from "../../internal/close-button";
 
 // #region Types
@@ -30,7 +36,9 @@ export interface PopoverProps {
 
 type ArkPart = Parameters<typeof h>[0];
 
-function popoverTeleport(content: ReturnType<typeof h> | ReturnType<typeof h>[]) {
+function popoverTeleport(
+  content: ReturnType<typeof h> | ReturnType<typeof h>[],
+) {
   return h(Teleport, { to: "body" }, () => content);
 }
 
@@ -91,7 +99,10 @@ export const PopoverContent = defineComponent({
   inheritAttrs: false,
   name: "PopoverContent",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: popoverRecipe,
       type: Function as PropType<typeof popoverRecipe>,
@@ -129,7 +140,10 @@ export const PopoverHeader = defineComponent({
   inheritAttrs: false,
   name: "PopoverHeader",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     description: String,
     recipe: {
       default: popoverRecipe,
@@ -151,7 +165,9 @@ export const PopoverHeader = defineComponent({
         },
         () => [
           props.title ? h(PopoverTitle, null, () => props.title) : null,
-          props.description ? h(PopoverDescription, null, () => props.description) : null,
+          props.description
+            ? h(PopoverDescription, null, () => props.description)
+            : null,
           slots.default?.(),
         ],
       );
@@ -163,7 +179,10 @@ export const PopoverTitle = defineComponent({
   inheritAttrs: false,
   name: "PopoverTitle",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: popoverRecipe,
       type: Function as PropType<typeof popoverRecipe>,
@@ -189,7 +208,10 @@ export const PopoverDescription = defineComponent({
   inheritAttrs: false,
   name: "PopoverDescription",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: popoverRecipe,
       type: Function as PropType<typeof popoverRecipe>,
@@ -215,7 +237,10 @@ export const PopoverBody = defineComponent({
   inheritAttrs: false,
   name: "PopoverBody",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: popoverRecipe,
       type: Function as PropType<typeof popoverRecipe>,
@@ -243,7 +268,10 @@ export const PopoverFooter = defineComponent({
   inheritAttrs: false,
   name: "PopoverFooter",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: popoverRecipe,
       type: Function as PropType<typeof popoverRecipe>,
@@ -271,7 +299,8 @@ export const PopoverCloseTrigger = defineComponent({
   inheritAttrs: false,
   name: "PopoverCloseTrigger",
   setup(_, { attrs, slots }) {
-    return () => h(PopoverPrimitive.CloseTrigger as ArkPart, { ...attrs }, slots);
+    return () =>
+      h(PopoverPrimitive.CloseTrigger as ArkPart, { ...attrs }, slots);
   },
 });
 

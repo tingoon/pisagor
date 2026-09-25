@@ -10,7 +10,8 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: "Triggers an action or navigation with clear hierarchy and loading feedback.",
+        component:
+          "Triggers an action or navigation with clear hierarchy and loading feedback.",
       },
     },
   },

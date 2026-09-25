@@ -23,7 +23,11 @@ function filter(_inputValue: string) {}
     <Combobox.Input placeholder="Search..." />
     <Combobox.Content class="max-h-60">
       <Combobox.List>
-        <Combobox.Item v-for="item in collection.items" :key="item.value" :item="item">
+        <Combobox.Item
+          v-for="item in collection.items"
+          :key="item.value"
+          :item="item"
+        >
           {{ item.label }}
         </Combobox.Item>
       </Combobox.List>

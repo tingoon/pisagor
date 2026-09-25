@@ -18,7 +18,9 @@ export function FontWeight() {
         <ToggleGroup.Root
           className="flex-wrap"
           multiple={false}
-          onValueChange={(value) => setValue(Array.isArray(value) ? value : [value])}
+          onValueChange={(value) =>
+            setValue(Array.isArray(value) ? value : [value])
+          }
           size="lg"
           spacing={2}
           value={value}
@@ -32,7 +34,9 @@ export function FontWeight() {
               value={weight.value}
             >
               <span className={cn("text-lg", weight.className)}>Aa</span>
-              <span className="text-muted-foreground text-xs">{weight.label}</span>
+              <span className="text-muted-foreground text-xs">
+                {weight.label}
+              </span>
             </ToggleGroup.Item>
           ))}
         </ToggleGroup.Root>

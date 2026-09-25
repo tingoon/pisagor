@@ -42,7 +42,10 @@ export const CheckboxGroup = defineComponent({
   inheritAttrs: false,
   name: "CheckboxGroup",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: checkboxGroupRecipe,
       type: Function as PropType<typeof checkboxGroupRecipe>,
@@ -70,13 +73,19 @@ export const CheckboxRoot = defineComponent({
   inheritAttrs: false,
   name: "CheckboxRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: checkboxRecipe,
       type: Function as PropType<typeof checkboxRecipe>,
     },
     tabIndex: { default: undefined, type: Number },
-    variant: { default: undefined, type: String as PropType<FormControlVariant> },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant>,
+    },
   },
   setup(props, { attrs, emit }) {
     const surfaceVariant = useFormControlSurface();
@@ -102,7 +111,9 @@ export const CheckboxRoot = defineComponent({
             formControlToggleRecipe({ size: "md", ...shellArgs }),
             slots.base({ class: props.class }),
           ),
-          onCheckedChange: (details: { checked: boolean | "indeterminate" }) => {
+          onCheckedChange: (details: {
+            checked: boolean | "indeterminate";
+          }) => {
             emit("checkedChange", details);
             emit("valueChange", details.checked === true);
           },
@@ -126,7 +137,9 @@ export const CheckboxRoot = defineComponent({
               () => h(PhMinus),
             ),
           ]),
-          h(CheckboxPrimitive.HiddenInput as ArkPart, { tabIndex: props.tabIndex }),
+          h(CheckboxPrimitive.HiddenInput as ArkPart, {
+            tabIndex: props.tabIndex,
+          }),
         ],
       );
     };

@@ -22,8 +22,14 @@ export const CollapsibleRoot = defineComponent({
   inheritAttrs: false,
   name: "CollapsibleRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    collapsedHeight: { default: undefined, type: [Number, String] as PropType<number | string> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    collapsedHeight: {
+      default: undefined,
+      type: [Number, String] as PropType<number | string>,
+    },
     lazyMount: { default: true, type: Boolean },
     recipe: {
       default: collapsibleRecipe,
@@ -57,7 +63,10 @@ export const CollapsibleTrigger = defineComponent({
   inheritAttrs: false,
   name: "CollapsibleTrigger",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: collapsibleRecipe,
       type: Function as PropType<typeof collapsibleRecipe>,
@@ -83,7 +92,10 @@ export const CollapsibleContent = defineComponent({
   inheritAttrs: false,
   name: "CollapsibleContent",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: collapsibleRecipe,
       type: Function as PropType<typeof collapsibleRecipe>,
@@ -109,7 +121,10 @@ export const CollapsibleIndicator = defineComponent({
   inheritAttrs: false,
   name: "CollapsibleIndicator",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     recipe: {
       default: collapsibleRecipe,
       type: Function as PropType<typeof collapsibleRecipe>,
@@ -125,7 +140,10 @@ export const CollapsibleIndicator = defineComponent({
           ...attrs,
           class: variantSlots.indicator({ class: props.class }),
         },
-        () => [children.default?.(), h(PhCaretDown, { class: variantSlots.icon() })],
+        () => [
+          children.default?.(),
+          h(PhCaretDown, { class: variantSlots.icon() }),
+        ],
       );
     };
   },

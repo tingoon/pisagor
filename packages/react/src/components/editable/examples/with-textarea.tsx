@@ -4,7 +4,10 @@ import { Editable } from "..";
 export function WithTextarea() {
   return (
     <Card>
-      <Card.Header description="Double-click the text to start editing" title="Edit description" />
+      <Card.Header
+        description="Double-click the text to start editing"
+        title="Edit description"
+      />
       <Card.Content>
         <Field.Group>
           <Field>

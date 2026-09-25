@@ -44,7 +44,12 @@ export const DataTable = Object.assign(DataTableRoot, {
   Toolbar: DataTableToolbar,
 });
 
-export { renderDataTableCell, useDataTable, useDataTableHeaderGroup, useDataTableRow };
+export {
+  renderDataTableCell,
+  useDataTable,
+  useDataTableHeaderGroup,
+  useDataTableRow,
+};
 
 export type ColumnDef<TData extends RowData, TValue = unknown> = TableColumnDef<
   DataTableFeatures,
@@ -52,14 +57,12 @@ export type ColumnDef<TData extends RowData, TValue = unknown> = TableColumnDef<
   TValue
 >;
 
-export type CellContext<TData extends RowData, TValue = unknown> = TableCellContext<
-  DataTableFeatures,
-  TData,
-  TValue
->;
+export type CellContext<
+  TData extends RowData,
+  TValue = unknown,
+> = TableCellContext<DataTableFeatures, TData, TValue>;
 
-export type HeaderContext<TData extends RowData, TValue = unknown> = TableHeaderContext<
-  DataTableFeatures,
-  TData,
-  TValue
->;
+export type HeaderContext<
+  TData extends RowData,
+  TValue = unknown,
+> = TableHeaderContext<DataTableFeatures, TData, TValue>;

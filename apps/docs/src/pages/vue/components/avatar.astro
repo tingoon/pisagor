@@ -43,34 +43,56 @@ const headings = [
 
   <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sizes">Sizes</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="sizes">
+    Sizes
+  </h3>
   <ComponentPreview code={examples.Sizes} language="vue" title="Sizes">
     <Sizes client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="shapes">Shapes</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="shapes">
+    Shapes
+  </h3>
   <ComponentPreview code={examples.Shapes} language="vue" title="Shapes">
     <Shapes client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="fallbacks">Fallbacks</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="fallbacks">
+    Fallbacks
+  </h3>
   <ComponentPreview code={examples.Fallbacks} language="vue" title="Fallbacks">
     <Fallbacks client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="fallback-only">Fallback Only</h3>
-  <ComponentPreview code={examples.FallbackOnly} language="vue" title="Fallback Only">
+  <h3
+    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
+    id="fallback-only"
+  >
+    Fallback Only
+  </h3>
+  <ComponentPreview
+    code={examples.FallbackOnly}
+    language="vue"
+    title="Fallback Only"
+  >
     <FallbackOnly client:only="vue" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
+    Default
+  </h3>
   <ComponentPreview code={examples.Default} language="vue" title="Default">
     <Default client:only="vue" />
   </ComponentPreview>
 
-  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <h2
+    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    id="installation"
+  >
+    Installation
+  </h2>
   <Installation class="mb-8" packages="@pisagor/vue" />
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/avatar</code>. Native HTML attributes are also supported and
-    omitted from this table.
+    Own props from <code>@pisagor/props/avatar</code>. Native HTML attributes
+    are also supported and omitted from this table.
   </p>
   <PropsTable rows={avatarProps} />
 </DocsLayout>

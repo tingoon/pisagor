@@ -51,18 +51,18 @@ export type ColumnDef<TData extends RowData, TValue = unknown> = TableColumnDef<
   TData,
   TValue
 >;
-export type CellContext<TData extends RowData, TValue = unknown> = TableCellContext<
-  DataGridFeatures,
-  TData,
-  TValue
->;
-export type HeaderContext<TData extends RowData, TValue = unknown> = TableHeaderContext<
-  DataGridFeatures,
-  TData,
-  TValue
->;
+export type CellContext<
+  TData extends RowData,
+  TValue = unknown,
+> = TableCellContext<DataGridFeatures, TData, TValue>;
+export type HeaderContext<
+  TData extends RowData,
+  TValue = unknown,
+> = TableHeaderContext<DataGridFeatures, TData, TValue>;
 
-export type DataGridProps = import("svelte").ComponentProps<typeof DataGridRoot>;
+export type DataGridProps = import("svelte").ComponentProps<
+  typeof DataGridRoot
+>;
 
 export const DataGrid = Object.assign(DataGridRoot, {
   Body: DataGridBody,

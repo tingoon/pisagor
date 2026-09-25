@@ -1,12 +1,21 @@
-import { Field as FieldPrimitive, type FieldTextareaProps } from "@ark-ui/react/field";
+import {
+  Field as FieldPrimitive,
+  type FieldTextareaProps,
+} from "@ark-ui/react/field";
 import { formControlShellRecipe } from "@pisagor/recipes/form-control";
-import { type TextareaRecipeSlot, textareaRecipe } from "@pisagor/recipes/textarea";
+import {
+  type TextareaRecipeSlot,
+  textareaRecipe,
+} from "@pisagor/recipes/textarea";
 import { cn } from "@pisagor/utils";
 import type { ChangeEventHandler, ReactNode, RefAttributes } from "react";
 import { useClearableInput } from "../../hooks";
 import type { VariantClassNames } from "../../internal/types";
 import { Input } from "../input";
-import { InputGroupAddon, InputGroupRoot } from "../input-group/input-group-core";
+import {
+  InputGroupAddon,
+  InputGroupRoot,
+} from "../input-group/input-group-core";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
 import { TextareaContext, useTextarea } from "./textarea.context";
 
@@ -113,7 +122,10 @@ function TextareaClearableField({
   className,
   classNames,
   ...rest
-}: TextareaRootProps & { canClear?: boolean; classNames?: TextareaClassNames }) {
+}: TextareaRootProps & {
+  canClear?: boolean;
+  classNames?: TextareaClassNames;
+}) {
   const { slots } = useTextarea();
 
   return (
@@ -166,14 +178,15 @@ export function Textarea({
 
   const skipClearable = !clearable;
 
-  const changeHandler: ChangeEventHandler<HTMLTextAreaElement> | undefined = skipClearable
-    ? onChange || onValueChange
-      ? (event) => {
-          onChange?.(event);
-          onValueChange?.(event.target.value);
-        }
-      : undefined
-    : handleChange;
+  const changeHandler: ChangeEventHandler<HTMLTextAreaElement> | undefined =
+    skipClearable
+      ? onChange || onValueChange
+        ? (event) => {
+            onChange?.(event);
+            onValueChange?.(event.target.value);
+          }
+        : undefined
+      : handleChange;
 
   return (
     <TextareaProvider recipe={recipe}>

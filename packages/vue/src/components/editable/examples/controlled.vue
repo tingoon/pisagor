@@ -6,9 +6,15 @@ import { Editable } from "..";
 
 <template>
   <Card>
-    <Card.Header description="Click the edit button to start editing" title="Edit user">
+    <Card.Header
+      description="Click the edit button to start editing"
+      title="Edit user"
+    >
       <Card.Action>
-        <Button :variant="isEditing ? 'outline' : 'ghost'" @click="isEditing = !isEditing">
+        <Button
+          :variant="isEditing ? 'outline' : 'ghost'"
+          @click="isEditing = !isEditing"
+        >
           <template v-if="isEditing"> <PhCheck /> Save </template>
           <template v-else> <PhPencilSimple /> Edit </template>
         </Button>
@@ -18,7 +24,11 @@ import { Editable } from "..";
       <Field.Group>
         <Field>
           <Field.Label>Name</Field.Label>
-          <Editable activation-mode="none" default-value="Jane Doe" :edit="isEditing">
+          <Editable
+            activation-mode="none"
+            default-value="Jane Doe"
+            :edit="isEditing"
+          >
             <Editable.Area>
               <Editable.Input as-child>
                 <Input />
@@ -29,7 +39,11 @@ import { Editable } from "..";
         </Field>
         <Field>
           <Field.Label>Username</Field.Label>
-          <Editable activation-mode="none" default-value="@jane.doe" :edit="isEditing">
+          <Editable
+            activation-mode="none"
+            default-value="@jane.doe"
+            :edit="isEditing"
+          >
             <Editable.Area>
               <Editable.Input as-child>
                 <Input />

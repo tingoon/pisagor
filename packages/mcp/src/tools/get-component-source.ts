@@ -40,8 +40,12 @@ export const getComponentSourceTool: Tool<{ componentList: string[] }> = {
       {
         description,
         inputSchema: {
-          component: componentSchema.describe("Component name (kebab-case), e.g. button."),
-          ...(multi ? { framework: frameworkInputSchema(config.frameworks) } : {}),
+          component: componentSchema.describe(
+            "Component name (kebab-case), e.g. button.",
+          ),
+          ...(multi
+            ? { framework: frameworkInputSchema(config.frameworks) }
+            : {}),
         },
       },
       async (args: { component: string; framework?: Framework }) => {

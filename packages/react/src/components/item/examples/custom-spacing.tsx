@@ -21,7 +21,9 @@ export function CustomSpacing() {
         </Item.Media>
         <Item.Content>
           <Item.Title>Responsive spacing</Item.Title>
-          <Item.Description>Wider from `md` up with `md:[--space:--spacing(5)]`.</Item.Description>
+          <Item.Description>
+            Wider from `md` up with `md:[--space:--spacing(5)]`.
+          </Item.Description>
         </Item.Content>
       </Item>
     </Item.Group>

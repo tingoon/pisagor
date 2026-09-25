@@ -9,11 +9,16 @@ export default defineComponent({
       h("div", { class: "flex flex-wrap gap-2" }, [
         h(AlertDialog, null, () => [
           h(AlertDialog.Trigger, { asChild: true }, () =>
-            h("button", { class: outlineButtonClass(), type: "button" }, "Default"),
+            h(
+              "button",
+              { class: outlineButtonClass(), type: "button" },
+              "Default",
+            ),
           ),
           h(AlertDialog.Content, null, () => [
             h(AlertDialog.Header, {
-              description: "Do you want to allow the USB accessory to connect to this device?",
+              description:
+                "Do you want to allow the USB accessory to connect to this device?",
               title: "Allow accessory to connect?",
             }),
             h(AlertDialog.Footer, null, () => [
@@ -26,7 +31,11 @@ export default defineComponent({
         ]),
         h(AlertDialog, null, () => [
           h(AlertDialog.Trigger, { asChild: true }, () =>
-            h("button", { class: outlineButtonClass(), type: "button" }, "Destructive"),
+            h(
+              "button",
+              { class: outlineButtonClass(), type: "button" },
+              "Destructive",
+            ),
           ),
           h(AlertDialog.Content, null, () => [
             h(AlertDialog.Header, {
@@ -37,7 +46,11 @@ export default defineComponent({
             h(AlertDialog.Footer, null, () => [
               h(AlertDialog.Cancel, null, () => "Cancel"),
               h(AlertDialog.CloseTrigger, { asChild: true }, () =>
-                h(AlertDialog.Action, { variant: "destructive" }, () => "Delete project"),
+                h(
+                  AlertDialog.Action,
+                  { variant: "destructive" },
+                  () => "Delete project",
+                ),
               ),
             ]),
           ]),

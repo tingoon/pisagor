@@ -2,7 +2,10 @@ import { tv } from "tailwind-variants";
 
 export const tooltipRecipe = tv({
   slots: {
-    arrow: ["[--arrow-background:var(--foreground)]", "[--arrow-size:calc(1.5*var(--spacing))]"],
+    arrow: [
+      "[--arrow-background:var(--foreground)]",
+      "[--arrow-size:calc(1.5*var(--spacing))]",
+    ],
     content: [
       "z-popover w-fit",
       "px-3 py-1.5",

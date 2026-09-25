@@ -186,7 +186,9 @@ function columnSizeStyle<TData extends RowData>(
 // #endregion
 
 // #region Parts
-function DataGridHeader<TData extends RowData>({ children }: DataGridHeaderProps) {
+function DataGridHeader<TData extends RowData>({
+  children,
+}: DataGridHeaderProps) {
   const table = useDataGridContext<TData>().table;
 
   return (
@@ -207,7 +209,10 @@ function DataGridHeaderRow(props: DataGridHeaderRowProps) {
   return <Table.Row {...props} data-part="header-row" data-scope="data-grid" />;
 }
 
-function DataGridColumnResizer({ className, ...rest }: DataGridColumnResizerProps) {
+function DataGridColumnResizer({
+  className,
+  ...rest
+}: DataGridColumnResizerProps) {
   const headerCell = useDataGridHeaderCellContext();
   const { slots } = useDataGridContext();
 
@@ -251,7 +256,9 @@ function DataGridHeadCell<TData extends RowData>({
   const headClassName = cn(filter && slots.filterHead(), className);
 
   return (
-    <DataGridHeaderCellContext value={{ header } as DataGridHeaderCellContextValue<RowData>}>
+    <DataGridHeaderCellContext
+      value={{ header } as DataGridHeaderCellContextValue<RowData>}
+    >
       <Table.Head
         {...rest}
         className={cn(sizingEnabled && "relative", headClassName)}
@@ -283,14 +290,21 @@ function DataGridHead<TData extends RowData>({
   const { headerGroup } = useDataGridHeaderGroupContext<TData>();
 
   if (columnId) {
-    const header = headerGroup.headers.find((item) => item.column.id === columnId);
+    const header = headerGroup.headers.find(
+      (item) => item.column.id === columnId,
+    );
 
     if (!header) {
       return null;
     }
 
     return (
-      <DataGridHeadCell {...rest} className={className} filter={filter} header={header}>
+      <DataGridHeadCell
+        {...rest}
+        className={className}
+        filter={filter}
+        header={header}
+      >
         {children}
       </DataGridHeadCell>
     );
@@ -334,7 +348,10 @@ export function renderDataGridCell<TData extends RowData>(
   return flexRender(cell.column.columnDef.cell, cell.getContext());
 }
 
-function DataGridBody<TData extends RowData>({ children, empty = null }: DataGridBodyProps) {
+function DataGridBody<TData extends RowData>({
+  children,
+  empty = null,
+}: DataGridBodyProps) {
   const table = useDataGridContext<TData>().table;
   const rows = table.getRowModel().rows;
 
@@ -345,7 +362,10 @@ function DataGridBody<TData extends RowData>({ children, empty = null }: DataGri
   return (
     <>
       {rows.map((row) => (
-        <DataGridRowContext key={row.id} value={{ row } as DataGridRowContextValue<RowData>}>
+        <DataGridRowContext
+          key={row.id}
+          value={{ row } as DataGridRowContextValue<RowData>}
+        >
           {children}
         </DataGridRowContext>
       ))}
@@ -402,13 +422,17 @@ function DataGridVirtualBody<TData extends RowData>({
   const virtualRows = virtualizer.getVirtualItems();
   const paddingTop = virtualRows[0]?.start ?? 0;
   const paddingBottom =
-    virtualizer.getTotalSize() - (virtualRows[virtualRows.length - 1]?.end ?? 0);
+    virtualizer.getTotalSize() -
+    (virtualRows[virtualRows.length - 1]?.end ?? 0);
 
   return (
     <>
       {paddingTop > 0 ? (
         <tr data-part="virtual-spacer" data-scope="data-grid" ref={anchorRef}>
-          <td colSpan={table.getAllColumns().length} style={{ height: paddingTop }} />
+          <td
+            colSpan={table.getAllColumns().length}
+            style={{ height: paddingTop }}
+          />
         </tr>
       ) : (
         <tr className={slots.anchor()} ref={anchorRef} />
@@ -421,14 +445,20 @@ function DataGridVirtualBody<TData extends RowData>({
         }
 
         return (
-          <DataGridRowContext key={row.id} value={{ row } as DataGridRowContextValue<RowData>}>
+          <DataGridRowContext
+            key={row.id}
+            value={{ row } as DataGridRowContextValue<RowData>}
+          >
             {children}
           </DataGridRowContext>
         );
       })}
       {paddingBottom > 0 ? (
         <tr data-part="virtual-spacer" data-scope="data-grid">
-          <td colSpan={table.getAllColumns().length} style={{ height: paddingBottom }} />
+          <td
+            colSpan={table.getAllColumns().length}
+            style={{ height: paddingBottom }}
+          />
         </tr>
       ) : null}
     </>
@@ -446,7 +476,11 @@ function DataGridRowProvider<TData extends RowData>({
   );
 }
 
-function DataGridRow<TData extends RowData>({ className, style, ...rest }: DataGridRowProps) {
+function DataGridRow<TData extends RowData>({
+  className,
+  style,
+  ...rest
+}: DataGridRowProps) {
   const row = useDataGridRowContext<TData>().row;
 
   return (
@@ -478,7 +512,9 @@ function DataGridCell<TData extends RowData>({
   const sizingEnabled = Boolean(table.options.enableColumnResizing);
 
   if (columnId) {
-    const cell = row.getVisibleCells().find((item) => item.column.id === columnId);
+    const cell = row
+      .getVisibleCells()
+      .find((item) => item.column.id === columnId);
 
     if (!cell) {
       return null;
@@ -531,7 +567,12 @@ function DataGridEmpty({
   const span = colSpan ?? table.getAllColumns().length;
 
   return (
-    <Table.Row {...rest} className={className} data-part="empty" data-scope="data-grid">
+    <Table.Row
+      {...rest}
+      className={className}
+      data-part="empty"
+      data-scope="data-grid"
+    >
       <Table.Cell className={slots.empty()} colSpan={span}>
         {children}
       </Table.Cell>
@@ -584,7 +625,11 @@ function DataGridRoot<TData extends RowData>({
 
   return (
     <DataGridContext value={contextValue as DataGridContextValue<RowData>}>
-      <div className={slots.base({ className })} data-part="root" data-scope="data-grid">
+      <div
+        className={slots.base({ className })}
+        data-part="root"
+        data-scope="data-grid"
+      >
         {children}
       </div>
     </DataGridContext>

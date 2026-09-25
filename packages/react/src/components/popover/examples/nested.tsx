@@ -7,7 +7,10 @@ export function Nested() {
         <Button variant="outline">Open</Button>
       </Popover.Trigger>
       <Popover.Content>
-        <Popover.Header description="Check your notifications." title="Notifications" />
+        <Popover.Header
+          description="Check your notifications."
+          title="Notifications"
+        />
         <Popover.Body>
           <Popover>
             <Popover.Trigger asChild>

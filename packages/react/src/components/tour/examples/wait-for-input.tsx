@@ -8,7 +8,8 @@ export function WaitForInput() {
   const steps: TourStepType[] = [
     {
       actions: [{ action: "next", label: "Start" }],
-      description: "Learn how to fill out the form by following the guided steps.",
+      description:
+        "Learn how to fill out the form by following the guided steps.",
       id: "intro",
       title: "Form tutorial",
       type: "dialog",
@@ -17,9 +18,13 @@ export function WaitForInput() {
       description: "Type your name in the input field to continue.",
       effect({ next, target, show }) {
         show();
-        const [promise, cancel] = waitForEvent<HTMLInputElement>(target, "input", {
-          predicate: (el) => el.value.trim().length >= 2,
-        });
+        const [promise, cancel] = waitForEvent<HTMLInputElement>(
+          target,
+          "input",
+          {
+            predicate: (el) => el.value.trim().length >= 2,
+          },
+        );
         promise.then(() => next());
         return cancel;
       },
@@ -32,9 +37,13 @@ export function WaitForInput() {
       description: "Now enter a valid email address.",
       effect({ next, target, show }) {
         show();
-        const [promise, cancel] = waitForEvent<HTMLInputElement>(target, "input", {
-          predicate: (el) => emailRegex.test(el.value),
-        });
+        const [promise, cancel] = waitForEvent<HTMLInputElement>(
+          target,
+          "input",
+          {
+            predicate: (el) => emailRegex.test(el.value),
+          },
+        );
         promise.then(() => next());
         return cancel;
       },
@@ -47,9 +56,13 @@ export function WaitForInput() {
       description: "Check the checkbox to accept the terms.",
       effect({ next, target, show }) {
         show();
-        const [promise, cancel] = waitForEvent<HTMLInputElement>(target, "change", {
-          predicate: (el) => el.checked,
-        });
+        const [promise, cancel] = waitForEvent<HTMLInputElement>(
+          target,
+          "change",
+          {
+            predicate: (el) => el.checked,
+          },
+        );
         promise.then(() => next());
         return cancel;
       },
@@ -79,11 +92,17 @@ export function WaitForInput() {
           </Field>
           <Field>
             <Field.Label htmlFor="input-email">Email</Field.Label>
-            <Input id="input-email" placeholder="Enter your email" type="email" />
+            <Input
+              id="input-email"
+              placeholder="Enter your email"
+              type="email"
+            />
           </Field>
           <Field orientation="horizontal">
             <Checkbox id="checkbox-terms" />
-            <Field.Label htmlFor="checkbox-terms">I accept the terms and conditions</Field.Label>
+            <Field.Label htmlFor="checkbox-terms">
+              I accept the terms and conditions
+            </Field.Label>
           </Field>
         </div>
         <Tour.Content>

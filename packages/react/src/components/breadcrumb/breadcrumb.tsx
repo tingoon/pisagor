@@ -1,6 +1,9 @@
 import { ark } from "@ark-ui/react/factory";
 import { CaretRightIcon, DotsThreeIcon } from "@phosphor-icons/react";
-import { breadcrumbItemRecipe, breadcrumbRecipe } from "@pisagor/recipes/breadcrumb";
+import {
+  breadcrumbItemRecipe,
+  breadcrumbRecipe,
+} from "@pisagor/recipes/breadcrumb";
 import type { ComponentProps, ReactNode } from "react";
 import { Fragment } from "react";
 import {
@@ -62,7 +65,12 @@ export function BreadcrumbRoot({
 
   return (
     <BreadcrumbContext value={{ slots }}>
-      <ark.nav {...rest} aria-label={ariaLabel} data-part="root" data-scope="breadcrumb">
+      <ark.nav
+        {...rest}
+        aria-label={ariaLabel}
+        data-part="root"
+        data-scope="breadcrumb"
+      >
         {children}
       </ark.nav>
     </BreadcrumbContext>
@@ -132,7 +140,11 @@ export function BreadcrumbPage({ className, ...rest }: BreadcrumbPageProps) {
   );
 }
 
-export function BreadcrumbSeparator({ children, className, ...rest }: BreadcrumbSeparatorProps) {
+export function BreadcrumbSeparator({
+  children,
+  className,
+  ...rest
+}: BreadcrumbSeparatorProps) {
   const { slots } = useBreadcrumb();
 
   return (

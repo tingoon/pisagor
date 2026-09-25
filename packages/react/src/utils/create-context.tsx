@@ -44,7 +44,9 @@ export function createContext<T>() {
       const context = useReactContext(Context);
 
       if (context === undefined && strict) {
-        const error = new Error(`${hookName} must be used within ${contextName}.`);
+        const error = new Error(
+          `${hookName} must be used within ${contextName}.`,
+        );
 
         error.name = `${contextName}Error`;
 

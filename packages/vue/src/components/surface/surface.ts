@@ -1,4 +1,7 @@
-import { type SurfaceVariantProps, surfaceRecipe } from "@pisagor/recipes/surface";
+import {
+  type SurfaceVariantProps,
+  surfaceRecipe,
+} from "@pisagor/recipes/surface";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
 import { createContext } from "../../internal/utils/create-context";
@@ -17,10 +20,11 @@ const AUTO_VARIANTS = [
   "tertiary",
 ] as const satisfies readonly SurfaceVariant[];
 
-export const [provideSurfaceContext, useSurfaceContext] = createContext<SurfaceContextValue>({
-  name: "PisagorSurface",
-  strict: false,
-});
+export const [provideSurfaceContext, useSurfaceContext] =
+  createContext<SurfaceContextValue>({
+    name: "PisagorSurface",
+    strict: false,
+  });
 
 export function useSurface() {
   return useSurfaceContext();
@@ -43,8 +47,14 @@ export const Surface = defineComponent({
   name: "PisagorSurface",
   props: {
     bordered: { default: false, type: Boolean },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    padding: { default: undefined, type: String as PropType<SurfaceVariantProps["padding"]> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    padding: {
+      default: undefined,
+      type: String as PropType<SurfaceVariantProps["padding"]>,
+    },
     recipe: {
       default: surfaceRecipe,
       type: Function as PropType<typeof surfaceRecipe>,
@@ -58,7 +68,9 @@ export const Surface = defineComponent({
     const surface = computed(() => {
       const depth = parent ? parent.depth + 1 : 0;
       const variant =
-        props.variant ?? AUTO_VARIANTS[Math.min(depth, AUTO_VARIANTS.length - 1)] ?? "default";
+        props.variant ??
+        AUTO_VARIANTS[Math.min(depth, AUTO_VARIANTS.length - 1)] ??
+        "default";
 
       return { depth, variant };
     });

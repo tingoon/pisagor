@@ -6,8 +6,15 @@ import type {
   PaginationPrevTriggerProps,
   PaginationRootProps as PaginationPrimitiveRootProps,
 } from "@ark-ui/react/pagination";
-import { Pagination as PaginationPrimitive, usePaginationContext } from "@ark-ui/react/pagination";
-import { CaretLeftIcon, CaretRightIcon, DotsThreeIcon } from "@phosphor-icons/react";
+import {
+  Pagination as PaginationPrimitive,
+  usePaginationContext,
+} from "@ark-ui/react/pagination";
+import {
+  CaretLeftIcon,
+  CaretRightIcon,
+  DotsThreeIcon,
+} from "@phosphor-icons/react";
 import { paginationRecipe } from "@pisagor/recipes/pagination";
 
 import { Button, type ButtonProps } from "../button";
@@ -77,12 +84,20 @@ export function PaginationNextTrigger(props: PaginationNextTriggerProps) {
   );
 }
 
-export function PaginationItem({ children, className, ...rest }: PaginationItemProps) {
+export function PaginationItem({
+  children,
+  className,
+  ...rest
+}: PaginationItemProps) {
   const { slots } = usePagination();
 
   return (
     <PaginationPrimitive.Item {...rest} asChild>
-      <Button className={slots.item({ className })} size="icon-md" variant="ghost">
+      <Button
+        className={slots.item({ className })}
+        size="icon-md"
+        variant="ghost"
+      >
         {children}
       </Button>
     </PaginationPrimitive.Item>
@@ -102,8 +117,12 @@ export function PaginationItems(props: PaginationItemsProps) {
             );
           }
 
-          const previousPage = pages.slice(0, index).findLast((item) => item.type === "page");
-          const nextPage = pages.slice(index + 1).find((item) => item.type === "page");
+          const previousPage = pages
+            .slice(0, index)
+            .findLast((item) => item.type === "page");
+          const nextPage = pages
+            .slice(index + 1)
+            .find((item) => item.type === "page");
           const ellipsisKey = `ellipsis-${previousPage?.value ?? "start"}-${nextPage?.value ?? "end"}`;
 
           return <PaginationEllipsis index={index} key={ellipsisKey} />;
@@ -113,7 +132,11 @@ export function PaginationItems(props: PaginationItemsProps) {
   );
 }
 
-export function PaginationItemLink({ page, children, ...rest }: PaginationItemLinkProps) {
+export function PaginationItemLink({
+  page,
+  children,
+  ...rest
+}: PaginationItemLinkProps) {
   const pagination = usePaginationContext();
 
   const pageValue = () => {
@@ -143,11 +166,17 @@ export function PaginationItemLink({ page, children, ...rest }: PaginationItemLi
   );
 }
 
-export function PaginationEllipsis({ className, ...rest }: PaginationEllipsisProps) {
+export function PaginationEllipsis({
+  className,
+  ...rest
+}: PaginationEllipsisProps) {
   const { slots } = usePagination();
 
   return (
-    <PaginationPrimitive.Ellipsis {...rest} className={slots.ellipsis({ className })}>
+    <PaginationPrimitive.Ellipsis
+      {...rest}
+      className={slots.ellipsis({ className })}
+    >
       <DotsThreeIcon />
     </PaginationPrimitive.Ellipsis>
   );

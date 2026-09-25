@@ -2,7 +2,10 @@ import { LocaleProvider } from "@ark-ui/solid/locale";
 import type { JSX, ParentProps } from "solid-js";
 import { createMemo, splitProps } from "solid-js";
 import { Toaster } from "../toast";
-import { type ProviderMessages, ProviderMessagesContext } from "./provider.context";
+import {
+  type ProviderMessages,
+  ProviderMessagesContext,
+} from "./provider.context";
 
 export type { ProviderMessages } from "./provider.context";
 
@@ -23,7 +26,12 @@ function resolveDir(locale: string, dir?: "ltr" | "rtl"): "ltr" | "rtl" {
 }
 
 export function Provider(props: ProviderProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["dir", "locale", "children", "messages"]);
+  const [local, rest] = splitProps(props, [
+    "dir",
+    "locale",
+    "children",
+    "messages",
+  ]);
   const locale = () => local.locale ?? "en-US";
   const messages = () => local.messages ?? {};
   const dir = createMemo(() => resolveDir(locale(), local.dir));

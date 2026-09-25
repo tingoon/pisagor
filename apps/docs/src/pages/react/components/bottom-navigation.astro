@@ -39,26 +39,37 @@ const headings = [
 
   <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">Default</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
+    Default
+  </h3>
   <ComponentPreview code={examples.Default} language="tsx" title="Default">
     <Default client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="icon-only">Icon Only</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="icon-only">
+    Icon Only
+  </h3>
   <ComponentPreview code={examples.IconOnly} language="tsx" title="Icon Only">
     <IconOnly client:only="react" />
   </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-links">With Links</h3>
+  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-links">
+    With Links
+  </h3>
   <ComponentPreview code={examples.WithLinks} language="tsx" title="With Links">
     <WithLinks client:only="react" />
   </ComponentPreview>
 
-  <h2 class="mb-3 mt-12 text-2xl font-semibold tracking-tight" id="installation">Installation</h2>
+  <h2
+    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    id="installation"
+  >
+    Installation
+  </h2>
   <Installation class="mb-8" packages="@pisagor/react" />
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
   <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/bottom-navigation</code>. Native HTML attributes are also
-    supported and omitted from this table.
+    Own props from <code>@pisagor/props/bottom-navigation</code>. Native HTML
+    attributes are also supported and omitted from this table.
   </p>
   <PropsTable rows={bottomNavigationProps} />
 </DocsLayout>

@@ -8,7 +8,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Sets a value along a range with a label and optional validation message.",
+        component:
+          "Sets a value along a range with a label and optional validation message.",
       },
     },
   },

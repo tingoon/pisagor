@@ -15,7 +15,11 @@ export const circularSliderRecipe = tv({
       "data-[state=at-value]:before:bg-primary",
       "data-[state=under-value]:before:bg-primary",
     ],
-    markerGroup: ["absolute inset-0 z-0", "rounded-full", "pointer-events-none"],
+    markerGroup: [
+      "absolute inset-0 z-0",
+      "rounded-full",
+      "pointer-events-none",
+    ],
     ring: ["pointer-events-none -rotate-90"],
     ringRange: ["stroke-primary [stroke-linecap:round]"],
     ringTrack: ["stroke-muted"],
@@ -35,7 +39,11 @@ export const circularSliderRecipe = tv({
       "hover:cursor-grab hover:ring-0.75",
       "motion-reduce:transition-none!",
     ],
-    value: ["gap-1", "tabular-nums", "[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0"],
+    value: [
+      "gap-1",
+      "tabular-nums",
+      "[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+    ],
   },
 });
 

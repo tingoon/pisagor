@@ -8,7 +8,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Highlights matching text segments for search results and emphasis.",
+        component:
+          "Highlights matching text segments for search results and emphasis.",
       },
     },
   },

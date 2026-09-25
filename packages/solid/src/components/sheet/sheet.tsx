@@ -26,7 +26,9 @@ import { SheetContext, useSheet } from "./sheet.context";
 
 export type SheetPositionerProps = DialogPositionerProps & SheetVariantProps;
 
-export interface SheetContentProps extends DialogContentProps, SheetVariantProps {
+export interface SheetContentProps
+  extends DialogContentProps,
+    SheetVariantProps {
   showCloseButton?: boolean;
 }
 

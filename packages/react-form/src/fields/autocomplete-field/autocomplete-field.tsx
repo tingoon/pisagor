@@ -1,6 +1,9 @@
 import type { AutocompleteProps } from "@pisagor/react";
 import { Autocomplete } from "@pisagor/react";
-import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
+import {
+  type FieldPresentationProps,
+  FieldShell,
+} from "../../internal/field-shell";
 
 // #region Types
 interface AutocompleteOption {

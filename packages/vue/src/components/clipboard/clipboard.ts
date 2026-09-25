@@ -92,17 +92,44 @@ export const Clipboard = defineComponent({
   name: "PisagorClipboard",
   props: {
     buttonAriaLabel: { default: "Copy to clipboard", type: String },
-    buttonSize: { default: "icon-md", type: String as PropType<ButtonProps["size"]> },
-    buttonVariant: { default: undefined, type: String as PropType<ButtonProps["variant"]> },
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    classNames: { default: undefined, type: Object as PropType<ClipboardClassNames> },
-    controlVariant: { default: undefined, type: String as PropType<FormControlVariant> },
-    copiedIcon: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
-    copyIcon: { default: undefined, type: [String, Object, Array] as PropType<VNodeChild> },
+    buttonSize: {
+      default: "icon-md",
+      type: String as PropType<ButtonProps["size"]>,
+    },
+    buttonVariant: {
+      default: undefined,
+      type: String as PropType<ButtonProps["variant"]>,
+    },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    classNames: {
+      default: undefined,
+      type: Object as PropType<ClipboardClassNames>,
+    },
+    controlVariant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant>,
+    },
+    copiedIcon: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<VNodeChild>,
+    },
+    copyIcon: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<VNodeChild>,
+    },
     defaultValue: { default: undefined, type: String },
-    ids: { default: undefined, type: Object as PropType<ClipboardProps["ids"]> },
+    ids: {
+      default: undefined,
+      type: Object as PropType<ClipboardProps["ids"]>,
+    },
     label: { default: undefined, type: String },
-    labelProps: { default: undefined, type: Object as PropType<Record<string, unknown>> },
+    labelProps: {
+      default: undefined,
+      type: Object as PropType<Record<string, unknown>>,
+    },
     onStatusChange: {
       default: undefined,
       type: Function as PropType<ClipboardProps["onStatusChange"]>,
@@ -122,7 +149,10 @@ export const Clipboard = defineComponent({
     },
     value: { default: undefined, type: String },
     valueSize: { default: "md", type: String as PropType<ClipboardValueSize> },
-    variant: { default: "input", type: String as PropType<ClipboardProps["variant"]> },
+    variant: {
+      default: "input",
+      type: String as PropType<ClipboardProps["variant"]>,
+    },
   },
   setup(props, { attrs }) {
     const surfaceVariant = useFormControlSurface();
@@ -137,7 +167,10 @@ export const Clipboard = defineComponent({
         variant: resolved.variant,
       };
       const controlProps = { "data-variant": resolved.variant };
-      const shellClassName = formControlShellRecipe({ size: "md", ...shellArgs });
+      const shellClassName = formControlShellRecipe({
+        size: "md",
+        ...shellArgs,
+      });
       const slots_ = props.recipe({ valueSize: props.valueSize });
 
       const copiedIcon = props.copiedIcon ?? h(PhCheck);
@@ -166,7 +199,10 @@ export const Clipboard = defineComponent({
               props.variant === "input"
                 ? h(ClipboardPrimitive.Input as ArkPart, {
                     ...controlProps,
-                    class: cn(shellClassName, slots_.input({ class: props.classNames?.input })),
+                    class: cn(
+                      shellClassName,
+                      slots_.input({ class: props.classNames?.input }),
+                    ),
                     readOnly: true,
                   })
                 : null,
@@ -174,7 +210,10 @@ export const Clipboard = defineComponent({
               props.variant === "value"
                 ? h(ClipboardPrimitive.ValueText as ArkPart, {
                     ...controlProps,
-                    class: cn(shellClassName, slots_.value({ class: props.classNames?.value })),
+                    class: cn(
+                      shellClassName,
+                      slots_.value({ class: props.classNames?.value }),
+                    ),
                   })
                 : null,
 
@@ -191,7 +230,9 @@ export const Clipboard = defineComponent({
                     h(
                       ClipboardPrimitive.Indicator as ArkPart,
                       {
-                        class: slots_.indicator({ class: props.classNames?.indicator }),
+                        class: slots_.indicator({
+                          class: props.classNames?.indicator,
+                        }),
                       },
                       { copied: () => copiedIcon, default: () => copyIcon },
                     ),
@@ -205,14 +246,21 @@ export const Clipboard = defineComponent({
         return control;
       }
 
-      return h("div", { class: slots_.field({ class: props.classNames?.field }) }, [
-        h(
-          "span",
-          { ...props.labelProps, class: slots_.label({ class: props.classNames?.label }) },
-          props.label,
-        ),
-        control,
-      ]);
+      return h(
+        "div",
+        { class: slots_.field({ class: props.classNames?.field }) },
+        [
+          h(
+            "span",
+            {
+              ...props.labelProps,
+              class: slots_.label({ class: props.classNames?.label }),
+            },
+            props.label,
+          ),
+          control,
+        ],
+      );
     };
   },
 });

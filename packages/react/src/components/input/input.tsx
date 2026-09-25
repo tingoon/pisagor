@@ -1,4 +1,7 @@
-import { type FieldInputProps, FieldInput as InputPrimitive } from "@ark-ui/react/field";
+import {
+  type FieldInputProps,
+  FieldInput as InputPrimitive,
+} from "@ark-ui/react/field";
 import {
   type InputRecipeSlot,
   type InputRootVariantProps,
@@ -96,14 +99,15 @@ export function Input({
   const controlProps = { "data-variant": resolved.variant };
   const slots = recipe();
 
-  const changeHandler: ChangeEventHandler<HTMLInputElement> | undefined = skipClearable
-    ? onChange || onValueChange
-      ? (event) => {
-          onChange?.(event);
-          onValueChange?.(event.target.value);
-        }
-      : undefined
-    : handleChange;
+  const changeHandler: ChangeEventHandler<HTMLInputElement> | undefined =
+    skipClearable
+      ? onChange || onValueChange
+        ? (event) => {
+            onChange?.(event);
+            onValueChange?.(event.target.value);
+          }
+        : undefined
+      : handleChange;
 
   if (skipClearable) {
     return (
@@ -127,7 +131,9 @@ export function Input({
     <InputGroupRoot size={size} variant={variantProp}>
       <InputPrimitive
         {...rest}
-        className={slots.clearableRoot({ className: cn(className, classNames?.clearableRoot) })}
+        className={slots.clearableRoot({
+          className: cn(className, classNames?.clearableRoot),
+        })}
         data-size={size}
         defaultValue={defaultValue}
         disabled={disabled}

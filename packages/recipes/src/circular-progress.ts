@@ -2,7 +2,11 @@ import { tv } from "tailwind-variants";
 
 export const circularProgressRecipe = tv({
   slots: {
-    base: ["group/circular-progress", "relative", "inline-flex items-center justify-center"],
+    base: [
+      "group/circular-progress",
+      "relative",
+      "inline-flex items-center justify-center",
+    ],
     range: [
       "fill-none stroke-primary transition-all duration-slow ease-out motion-reduce:transition-none!",
     ],
@@ -16,7 +20,9 @@ export const circularProgressRecipe = tv({
       "**:data-[scope=circular-progress]:data-[part=track-bg]:stroke-input",
     ],
     value: ["font-medium text-xs tabular-nums", "pointer-events-none"],
-    valueWrapper: ["pointer-events-none absolute inset-0 flex items-center justify-center"],
+    valueWrapper: [
+      "pointer-events-none absolute inset-0 flex items-center justify-center",
+    ],
   },
 });
 

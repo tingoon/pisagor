@@ -1,4 +1,7 @@
-import type { ButtonRecipeFn, ButtonVariantProps } from "@pisagor/recipes/button";
+import type {
+  ButtonRecipeFn,
+  ButtonVariantProps,
+} from "@pisagor/recipes/button";
 
 /**
  * Button props (`variant`, `size`, `pill`, `loading`, `clickEffect`).

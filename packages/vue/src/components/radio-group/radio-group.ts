@@ -1,7 +1,10 @@
 import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/vue/radio-group";
 import { fieldRecipe } from "@pisagor/recipes/field";
 import { formControlRadioToggleRecipe } from "@pisagor/recipes/form-control";
-import { radioGroupItemRecipe, radioGroupRecipe } from "@pisagor/recipes/radio-group";
+import {
+  radioGroupItemRecipe,
+  radioGroupRecipe,
+} from "@pisagor/recipes/radio-group";
 import { type ClassValue, cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
@@ -57,20 +60,32 @@ export const RadioGroupRoot = defineComponent({
   inheritAttrs: false,
   name: "RadioGroupRoot",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
-    defaultValue: { default: undefined, type: [String, null] as PropType<string | null> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
+    defaultValue: {
+      default: undefined,
+      type: [String, null] as PropType<string | null>,
+    },
     disabled: { default: undefined, type: Boolean },
     name: { default: undefined, type: String },
     onValueChange: {
       default: undefined,
       type: Function as PropType<RadioGroupRootProps["onValueChange"]>,
     },
-    orientation: { default: undefined, type: String as PropType<"horizontal" | "vertical"> },
+    orientation: {
+      default: undefined,
+      type: String as PropType<"horizontal" | "vertical">,
+    },
     recipe: {
       default: radioGroupRecipe,
       type: Function as PropType<typeof radioGroupRecipe>,
     },
-    value: { default: undefined, type: [String, null] as PropType<string | null> },
+    value: {
+      default: undefined,
+      type: [String, null] as PropType<string | null>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -84,7 +99,8 @@ export const RadioGroupRoot = defineComponent({
           modelValue: props.value,
           name: props.name,
           onValueChange: props.onValueChange
-            ? (details: { value: string | null }) => props.onValueChange?.(details.value)
+            ? (details: { value: string | null }) =>
+                props.onValueChange?.(details.value)
             : undefined,
           orientation: props.orientation,
         },
@@ -97,7 +113,10 @@ export const RadioGroupItem = defineComponent({
   inheritAttrs: false,
   name: "RadioGroupItem",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     disabled: { default: undefined, type: Boolean },
     itemRecipe: {
       default: radioGroupItemRecipe,
@@ -105,7 +124,10 @@ export const RadioGroupItem = defineComponent({
     },
     tabIndex: { default: undefined, type: Number },
     value: { required: true, type: String },
-    variant: { default: undefined, type: String as PropType<FormControlVariant> },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant>,
+    },
   },
   setup(props, { attrs, slots: children }) {
     const surfaceVariant = useFormControlSurface();
@@ -133,10 +155,15 @@ export const RadioGroupItem = defineComponent({
         () => [
           h(RadioGroupPrimitive.ItemControl as ArkPart, {
             ...controlProps,
-            class: cn(formControlRadioToggleRecipe({ ...shellArgs }), slots.control()),
+            class: cn(
+              formControlRadioToggleRecipe({ ...shellArgs }),
+              slots.control(),
+            ),
           }),
           h(RadioGroupItemText as ArkPart, null, children.default),
-          h(RadioGroupPrimitive.ItemHiddenInput as ArkPart, { tabIndex: props.tabIndex }),
+          h(RadioGroupPrimitive.ItemHiddenInput as ArkPart, {
+            tabIndex: props.tabIndex,
+          }),
         ],
       );
     };
@@ -147,7 +174,10 @@ export const RadioGroupItemText = defineComponent({
   inheritAttrs: false,
   name: "RadioGroupItemText",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
   },
   setup(props, { attrs, slots }) {
     return () =>
@@ -171,7 +201,10 @@ export const RadioGroupLabel = defineComponent({
         RadioGroupPrimitive.Label as ArkPart,
         {
           ...(attrs as object),
-          class: cn(fieldRecipe().label(), (attrs as { class?: ClassValue }).class),
+          class: cn(
+            fieldRecipe().label(),
+            (attrs as { class?: ClassValue }).class,
+          ),
         },
         slots,
       );
@@ -182,16 +215,28 @@ export const RadioGroupShorthand = defineComponent({
   inheritAttrs: false,
   name: "RadioGroupShorthand",
   props: {
-    defaultValue: { default: undefined, type: [String, null] as PropType<string | null> },
+    defaultValue: {
+      default: undefined,
+      type: [String, null] as PropType<string | null>,
+    },
     disabled: { default: undefined, type: Boolean },
-    items: { default: () => [], type: Array as PropType<RadioGroupPresetItem[]> },
+    items: {
+      default: () => [],
+      type: Array as PropType<RadioGroupPresetItem[]>,
+    },
     name: { default: undefined, type: String },
     onValueChange: {
       default: undefined,
       type: Function as PropType<RadioGroupRootProps["onValueChange"]>,
     },
-    orientation: { default: undefined, type: String as PropType<"horizontal" | "vertical"> },
-    value: { default: undefined, type: [String, null] as PropType<string | null> },
+    orientation: {
+      default: undefined,
+      type: String as PropType<"horizontal" | "vertical">,
+    },
+    value: {
+      default: undefined,
+      type: [String, null] as PropType<string | null>,
+    },
   },
   setup(props, { attrs }) {
     return () =>

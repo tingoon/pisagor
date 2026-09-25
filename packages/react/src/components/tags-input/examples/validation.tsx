@@ -10,7 +10,10 @@ export function Validation() {
         validate={({ value, inputValue }) => {
           const next = inputValue.trim();
           return (
-            Boolean(next) && !value.includes(next) && next.length >= 3 && validTagPattern.test(next)
+            Boolean(next) &&
+            !value.includes(next) &&
+            next.length >= 3 &&
+            validTagPattern.test(next)
           );
         }}
       >

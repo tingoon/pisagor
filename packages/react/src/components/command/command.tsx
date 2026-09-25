@@ -14,7 +14,11 @@ import type {
   ComboboxRootProps,
 } from "../combobox";
 import { Combobox } from "../combobox";
-import { Dialog, type DialogContentProps, type DialogTriggerProps } from "../dialog";
+import {
+  Dialog,
+  type DialogContentProps,
+  type DialogTriggerProps,
+} from "../dialog";
 import type { InputProps } from "../input";
 import { InputGroup } from "../input-group";
 import { Separator } from "../separator";
@@ -42,7 +46,8 @@ export interface CommandDialogContentProps extends DialogContentProps {
   recipe?: typeof commandRecipe;
 }
 
-export interface CommandInputProps extends Omit<ComboboxFieldInputProps, "size"> {
+export interface CommandInputProps
+  extends Omit<ComboboxFieldInputProps, "size"> {
   /**
    * The size of the input
    *
@@ -142,7 +147,13 @@ export function CommandRoot<T extends CollectionItem = CollectionItem>({
 export function CommandContent({ className, ...rest }: CommandContentProps) {
   const { slots } = useCommand();
 
-  return <Combobox.Content {...rest} className={slots.content({ className })} portalled={false} />;
+  return (
+    <Combobox.Content
+      {...rest}
+      className={slots.content({ className })}
+      portalled={false}
+    />
+  );
 }
 
 export function CommandInput({ size, className, ...rest }: CommandInputProps) {
@@ -172,7 +183,11 @@ export function CommandList({ className, ...rest }: CommandListProps) {
   );
 }
 
-export function CommandEmpty({ children, className, ...rest }: ComboboxEmptyProps) {
+export function CommandEmpty({
+  children,
+  className,
+  ...rest
+}: ComboboxEmptyProps) {
   const { slots } = useCommand();
 
   return (
@@ -191,10 +206,15 @@ export function CommandItemGroupLabel(props: ComboboxItemGroupLabelProps) {
 }
 
 export function CommandItem({ className, ...rest }: ComboboxItemProps) {
-  return <Combobox.Item {...rest} className={className} showIndicator={false} />;
+  return (
+    <Combobox.Item {...rest} className={className} showIndicator={false} />
+  );
 }
 
-export function CommandSeparator({ className, ...rest }: CommandSeparatorProps) {
+export function CommandSeparator({
+  className,
+  ...rest
+}: CommandSeparatorProps) {
   const { slots } = useCommand();
 
   return (

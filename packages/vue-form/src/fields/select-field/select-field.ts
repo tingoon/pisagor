@@ -1,7 +1,10 @@
 import type { SelectProps } from "@pisagor/vue";
 import { Select } from "@pisagor/vue";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
-import { type FieldPresentationProps, FieldShell } from "../../internal/field-shell";
+import {
+  type FieldPresentationProps,
+  FieldShell,
+} from "../../internal/field-shell";
 
 type ArkPart = Parameters<typeof h>[0];
 
@@ -13,7 +16,10 @@ interface SelectOption {
 
 export interface SelectFieldProps
   extends FieldPresentationProps,
-    Omit<SelectProps, "class" | "invalid" | "name" | "onValueChange" | "value" | "items"> {
+    Omit<
+      SelectProps,
+      "class" | "invalid" | "name" | "onValueChange" | "value" | "items"
+    > {
   items: Array<SelectOption | string>;
   name?: string;
   onBlur?: () => void;
@@ -28,19 +34,34 @@ export const SelectField = defineComponent({
   inheritAttrs: false,
   name: "SelectField",
   props: {
-    class: { default: undefined, type: [String, Object, Array] as PropType<unknown> },
+    class: {
+      default: undefined,
+      type: [String, Object, Array] as PropType<unknown>,
+    },
     clearable: { default: undefined, type: Boolean },
-    description: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    description: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     disabled: { default: undefined, type: Boolean },
-    error: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    error: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     id: { default: undefined, type: String },
     invalid: { default: undefined, type: Boolean },
     items: {
       required: true,
       type: Array as PropType<Array<SelectOption | string>>,
     },
-    label: { default: undefined, type: null as unknown as PropType<VNodeChild> },
-    labelAccessory: { default: undefined, type: null as unknown as PropType<VNodeChild> },
+    label: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
+    labelAccessory: {
+      default: undefined,
+      type: null as unknown as PropType<VNodeChild>,
+    },
     labelProps: {
       default: undefined,
       type: Object as PropType<FieldPresentationProps["labelProps"]>,
@@ -57,7 +78,10 @@ export const SelectField = defineComponent({
     },
     placeholder: { default: "Select an option", type: String },
     value: { default: undefined, type: String },
-    variant: { default: undefined, type: String as PropType<SelectProps["variant"]> },
+    variant: {
+      default: undefined,
+      type: String as PropType<SelectProps["variant"]>,
+    },
   },
   setup(props, { attrs }) {
     return () =>
@@ -85,11 +109,15 @@ export const SelectField = defineComponent({
             name: props.name,
             onFocusOutside: props.onBlur,
             onValueChange: (nextValue: string | string[]) => {
-              props.onValueChange(Array.isArray(nextValue) ? (nextValue.at(0) ?? "") : nextValue);
+              props.onValueChange(
+                Array.isArray(nextValue) ? (nextValue.at(0) ?? "") : nextValue,
+              );
             },
             placeholder: props.placeholder,
             variant: props.variant,
-            ...(props.value !== undefined ? { value: props.value ? [props.value] : [] } : {}),
+            ...(props.value !== undefined
+              ? { value: props.value ? [props.value] : [] }
+              : {}),
           }),
       );
   },

@@ -30,7 +30,9 @@ export function SignInForm() {
     <Surface bordered className="mx-auto w-full max-w-md" padding="lg" rounded>
       <form.Root className="flex flex-col gap-4">
         <div className="flex flex-col gap-1.5">
-          <h1 className="font-semibold text-xl leading-tight tracking-tight">Sign in</h1>
+          <h1 className="font-semibold text-xl leading-tight tracking-tight">
+            Sign in
+          </h1>
           <p className="text-muted-foreground text-sm leading-relaxed">
             Enter your email and password to continue.
           </p>
@@ -72,7 +74,12 @@ export function SignInForm() {
         </form.SubmitButton>
         <Field.Separator>Or continue with</Field.Separator>
         <form.AppField name="rememberMe">
-          {(field) => <field.CheckboxField id="form-remember" label="Remember me on this device" />}
+          {(field) => (
+            <field.CheckboxField
+              id="form-remember"
+              label="Remember me on this device"
+            />
+          )}
         </form.AppField>
       </form.Root>
     </Surface>

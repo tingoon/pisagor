@@ -33,14 +33,18 @@ export function ImageExplorer() {
   });
   const [value, setValue] = useState(["mountain"]);
 
-  const selectedImage = collection.items.find((item) => item.value === value.at(0));
+  const selectedImage = collection.items.find(
+    (item) => item.value === value.at(0),
+  );
 
   return (
     <div className="flex flex-col gap-2 sm:flex-row">
       <Listbox.Root
         className="w-full"
         collection={collection}
-        onValueChange={(value) => setValue(Array.isArray(value) ? value : [value])}
+        onValueChange={(value) =>
+          setValue(Array.isArray(value) ? value : [value])
+        }
         value={value}
       >
         <Listbox.Content className="overflow-auto max-sm:flex-row">

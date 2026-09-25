@@ -9,7 +9,9 @@ import type { ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
 import { TimelineItemContext, useTimelineItem } from "./timeline.context";
 
-export interface TimelineRootProps extends ComponentProps<typeof ark.ol>, TimelineVariantProps {
+export interface TimelineRootProps
+  extends ComponentProps<typeof ark.ol>,
+    TimelineVariantProps {
   recipe?: typeof timelineRecipe;
 }
 
@@ -122,7 +124,9 @@ export function TimelineTitle(props: TimelineTitleProps): JSX.Element {
   );
 }
 
-export function TimelineDescription(props: TimelineDescriptionProps): JSX.Element {
+export function TimelineDescription(
+  props: TimelineDescriptionProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useTimelineItem();
   return (

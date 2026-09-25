@@ -8,7 +8,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Captures a handwritten signature on a canvas for approvals and forms.",
+        component:
+          "Captures a handwritten signature on a canvas for approvals and forms.",
       },
     },
   },

@@ -25,7 +25,11 @@ export default defineComponent({
         ]),
         h(Sheet, { closeOnEscape: false }, () => [
           h(Sheet.Trigger, { asChild: true }, () =>
-            h("button", { class: outlineButtonClass(), type: "button" }, "No close on Escape"),
+            h(
+              "button",
+              { class: outlineButtonClass(), type: "button" },
+              "No close on Escape",
+            ),
           ),
           h(Sheet.Content, null, () =>
             h(Sheet.Header, {

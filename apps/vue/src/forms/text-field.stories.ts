@@ -9,7 +9,8 @@ const meta = preview.meta({
   parameters: {
     docs: {
       description: {
-        component: "Combines Field and Input with label, description, and optional error message.",
+        component:
+          "Combines Field and Input with label, description, and optional error message.",
       },
     },
   },

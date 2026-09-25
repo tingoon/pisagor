@@ -4,12 +4,22 @@ export function AvatarGroupOverflow() {
   return (
     <AvatarGroup.Root>
       {users.map((user) => (
-        <Avatar alt={user.name} fallback={user.fallback} key={user.src} src={user.src} />
+        <Avatar
+          alt={user.name}
+          fallback={user.fallback}
+          key={user.src}
+          src={user.src}
+        />
       ))}
       <Popover positioning={{ placement: "bottom-end" }}>
         <AvatarGroup.Count asChild>
           <Popover.Trigger asChild>
-            <Button aria-label="Show more members" pill size="icon-md" variant="ghost">
+            <Button
+              aria-label="Show more members"
+              pill
+              size="icon-md"
+              variant="ghost"
+            >
               +5
             </Button>
           </Popover.Trigger>

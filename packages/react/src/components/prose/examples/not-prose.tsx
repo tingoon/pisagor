@@ -7,8 +7,8 @@ export function NotProse() {
         <h1>Davy Jones' locker</h1>
 
         <p>
-          Davy Jones' locker is a metaphor for the oceanic abyss, the final resting place of drowned
-          sailors and travellers
+          Davy Jones' locker is a metaphor for the oceanic abyss, the final
+          resting place of drowned sailors and travellers
         </p>
       </div>
       <hr />
@@ -17,8 +17,8 @@ export function NotProse() {
         <h1>Davy Jones' locker</h1>
 
         <p>
-          Davy Jones' locker is a metaphor for the oceanic abyss, the final resting place of drowned
-          sailors and travellers
+          Davy Jones' locker is a metaphor for the oceanic abyss, the final
+          resting place of drowned sailors and travellers
         </p>
       </div>
     </Prose>

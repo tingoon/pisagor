@@ -13,7 +13,11 @@ const slides = numberedSlides(8);
       <Carousel.NextTrigger>Next</Carousel.NextTrigger>
     </Carousel.Control>
     <Carousel.ItemGroup>
-      <Carousel.Item v-for="(slideId, index) in slides" :key="slideId" :index="index">
+      <Carousel.Item
+        v-for="(slideId, index) in slides"
+        :key="slideId"
+        :index="index"
+      >
         <Card>
           <Card.Content class="flex aspect-square items-center justify-center">
             <span class="font-semibold text-4xl">{{ index + 1 }}</span>

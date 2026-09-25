@@ -27,7 +27,11 @@ function filter(_inputValue: string) {}
         <Autocomplete.Input placeholder="Primary" />
         <Autocomplete.Content>
           <Autocomplete.List>
-            <Autocomplete.Item v-for="item in collection.items" :key="item.value" :item="item">
+            <Autocomplete.Item
+              v-for="item in collection.items"
+              :key="item.value"
+              :item="item"
+            >
               {{ item.label }}
             </Autocomplete.Item>
           </Autocomplete.List>
@@ -41,7 +45,11 @@ function filter(_inputValue: string) {}
         <Autocomplete.Input placeholder="Secondary" />
         <Autocomplete.Content>
           <Autocomplete.List>
-            <Autocomplete.Item v-for="item in collection.items" :key="item.value" :item="item">
+            <Autocomplete.Item
+              v-for="item in collection.items"
+              :key="item.value"
+              :item="item"
+            >
               {{ item.label }}
             </Autocomplete.Item>
           </Autocomplete.List>

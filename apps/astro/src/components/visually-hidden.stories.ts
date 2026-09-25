@@ -5,7 +5,8 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: "Hides content visually while keeping it available to assistive technology.",
+        component:
+          "Hides content visually while keeping it available to assistive technology.",
       },
     },
   },

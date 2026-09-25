@@ -15,7 +15,9 @@ export function Controlled() {
   return (
     <Select.Root
       collection={collection}
-      onValueChange={(value) => setValue(Array.isArray(value) ? value : [value])}
+      onValueChange={(value) =>
+        setValue(Array.isArray(value) ? value : [value])
+      }
       value={value}
     >
       <Select.Trigger>

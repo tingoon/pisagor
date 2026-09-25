@@ -9,9 +9,15 @@ import type {
   TagsInputRootProps as TagsInputPrimitiveRootProps,
   TagsInputRootProviderProps as TagsInputPrimitiveRootProviderProps,
 } from "@ark-ui/react/tags-input";
-import { TagsInput as TagsInputPrimitive, useTagsInputContext } from "@ark-ui/react/tags-input";
+import {
+  TagsInput as TagsInputPrimitive,
+  useTagsInputContext,
+} from "@ark-ui/react/tags-input";
 import { XIcon } from "@phosphor-icons/react";
-import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes/tags-input";
+import {
+  tagsInputItemRecipe,
+  tagsInputRecipe,
+} from "@pisagor/recipes/tags-input";
 import type { ComponentProps } from "react";
 import { InputGroup, type InputGroupProps } from "../input-group";
 import {
@@ -22,7 +28,10 @@ import {
 } from "./tags-input.context";
 
 // #region Types
-export type TagsInputRootProps = Omit<TagsInputPrimitiveRootProps, "onValueChange"> &
+export type TagsInputRootProps = Omit<
+  TagsInputPrimitiveRootProps,
+  "onValueChange"
+> &
   Pick<InputGroupProps, "size" | "variant">;
 
 export interface TagsInputProps extends TagsInputRootProps {
@@ -119,7 +128,9 @@ export function TagsInputRoot({
         className={slots.base({ className })}
         data-size={size}
         editable={editable}
-        onValueChange={onValueChange ? (details) => onValueChange(details.value) : undefined}
+        onValueChange={
+          onValueChange ? (details) => onValueChange(details.value) : undefined
+        }
       >
         <TagsInputControl clearable={clearable} variant={variant}>
           <TagsInputPrimitive.Context>
@@ -152,9 +163,16 @@ export function TagsInputControl({
 
   return (
     <TagsInputPrimitive.Control asChild>
-      <InputGroup {...rest} className={slots.control({ className })} size={size} variant={variant}>
+      <InputGroup
+        {...rest}
+        className={slots.control({ className })}
+        size={size}
+        variant={variant}
+      >
         {children}
-        {clearable && api.value.length > 0 && <TagsInputClearTrigger aria-label="Clear all tags" />}
+        {clearable && api.value.length > 0 && (
+          <TagsInputClearTrigger aria-label="Clear all tags" />
+        )}
       </InputGroup>
     </TagsInputPrimitive.Control>
   );
@@ -182,16 +200,32 @@ export function TagsInputItem({
   );
 }
 
-export function TagsInputItemPreview({ className, ...rest }: TagsInputItemPreviewProps) {
+export function TagsInputItemPreview({
+  className,
+  ...rest
+}: TagsInputItemPreviewProps) {
   const { slots } = useTagsInputItem();
 
-  return <TagsInputPrimitive.ItemPreview {...rest} className={slots.preview({ className })} />;
+  return (
+    <TagsInputPrimitive.ItemPreview
+      {...rest}
+      className={slots.preview({ className })}
+    />
+  );
 }
 
-export function TagsInputItemText({ className, ...rest }: TagsInputItemTextProps) {
+export function TagsInputItemText({
+  className,
+  ...rest
+}: TagsInputItemTextProps) {
   const { slots } = useTagsInputItem();
 
-  return <TagsInputPrimitive.ItemText {...rest} className={slots.text({ className })} />;
+  return (
+    <TagsInputPrimitive.ItemText
+      {...rest}
+      className={slots.text({ className })}
+    />
+  );
 }
 
 export function TagsInputItemDeleteTrigger({

@@ -41,7 +41,13 @@ export const SignInForm = defineComponent({
           () =>
             h(form.Root as never, { class: "flex flex-col gap-4" }, () => [
               h("div", { class: "flex flex-col gap-1.5" }, [
-                h("h1", { class: "font-semibold text-xl leading-tight tracking-tight" }, "Sign in"),
+                h(
+                  "h1",
+                  {
+                    class: "font-semibold text-xl leading-tight tracking-tight",
+                  },
+                  "Sign in",
+                ),
                 h(
                   "p",
                   { class: "text-muted-foreground text-sm leading-relaxed" },
@@ -74,7 +80,8 @@ export const SignInForm = defineComponent({
                       labelAccessory: h(
                         "a",
                         {
-                          class: "ms-auto text-sm underline-offset-4 hover:underline",
+                          class:
+                            "ms-auto text-sm underline-offset-4 hover:underline",
                           href: "https://example.com/forgot-password",
                         },
                         "Forgot password?",
@@ -84,7 +91,11 @@ export const SignInForm = defineComponent({
                     }),
                 },
               ),
-              h(form.SubmitButton as never, { class: "w-full", size: "lg" }, () => "Sign in"),
+              h(
+                form.SubmitButton as never,
+                { class: "w-full", size: "lg" },
+                () => "Sign in",
+              ),
               h(Field.Separator as never, null, () => "Or continue with"),
               h(
                 form.AppField,

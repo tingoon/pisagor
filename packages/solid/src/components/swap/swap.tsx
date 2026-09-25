@@ -15,7 +15,10 @@ export interface SwapProps extends SwapRootProps, SwapVariantProps {
   off?: JSX.Element;
   on?: JSX.Element;
   recipe?: typeof swapRecipe;
-  offIndicatorProps?: Omit<SwapOffIndicatorProps, "children" | "type" | "class">;
+  offIndicatorProps?: Omit<
+    SwapOffIndicatorProps,
+    "children" | "type" | "class"
+  >;
   onIndicatorProps?: Omit<SwapOnIndicatorProps, "children" | "type" | "class">;
 }
 

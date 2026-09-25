@@ -11,7 +11,8 @@ import type { JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
 import { MarqueeContext, useMarquee } from "./marquee.context";
 
-export interface MarqueeRootProps extends Omit<MarqueePrimitiveRootProps, "side"> {
+export interface MarqueeRootProps
+  extends Omit<MarqueePrimitiveRootProps, "side"> {
   orientation?: "horizontal" | "vertical";
   showEdges?: boolean;
   recipe?: typeof marqueeRecipe;
@@ -48,8 +49,12 @@ export function MarqueeRoot(props: MarqueeRootProps): JSX.Element {
       >
         {local.children}
         <Show when={showEdges()}>
-          <MarqueeEdge side={orientation() === "horizontal" ? "start" : "top"} />
-          <MarqueeEdge side={orientation() === "horizontal" ? "end" : "bottom"} />
+          <MarqueeEdge
+            side={orientation() === "horizontal" ? "start" : "top"}
+          />
+          <MarqueeEdge
+            side={orientation() === "horizontal" ? "end" : "bottom"}
+          />
         </Show>
       </MarqueePrimitive.Root>
     </MarqueeContext>
@@ -61,7 +66,10 @@ export function MarqueeContent(props: MarqueeContentProps): JSX.Element {
   const { slots } = useMarquee();
   return (
     <MarqueePrimitive.Viewport class={slots.viewport()}>
-      <MarqueePrimitive.Content {...rest} class={slots.content({ class: local.class })} />
+      <MarqueePrimitive.Content
+        {...rest}
+        class={slots.content({ class: local.class })}
+      />
     </MarqueePrimitive.Viewport>
   );
 }
@@ -69,13 +77,23 @@ export function MarqueeContent(props: MarqueeContentProps): JSX.Element {
 export function MarqueeItem(props: MarqueeItemProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useMarquee();
-  return <MarqueePrimitive.Item {...rest} class={slots.item({ class: local.class })} />;
+  return (
+    <MarqueePrimitive.Item
+      {...rest}
+      class={slots.item({ class: local.class })}
+    />
+  );
 }
 
 export function MarqueeEdge(props: MarqueeEdgeProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useMarquee();
-  return <MarqueePrimitive.Edge {...rest} class={slots.edge({ class: local.class })} />;
+  return (
+    <MarqueePrimitive.Edge
+      {...rest}
+      class={slots.edge({ class: local.class })}
+    />
+  );
 }
 
 export function MarqueeShorthand(props: MarqueeProps): JSX.Element {
@@ -84,7 +102,9 @@ export function MarqueeShorthand(props: MarqueeProps): JSX.Element {
     <MarqueeRoot {...rest}>
       <Show when={local.items}>
         <MarqueeContent>
-          <For each={local.items}>{(item) => <MarqueeItem>{item}</MarqueeItem>}</For>
+          <For each={local.items}>
+            {(item) => <MarqueeItem>{item}</MarqueeItem>}
+          </For>
         </MarqueeContent>
       </Show>
     </MarqueeRoot>

@@ -24,7 +24,11 @@ export function Presets() {
         </Card.Content>
         <Card.Footer className="flex flex-wrap">
           {presets.map((preset) => (
-            <Calendar.PresetTrigger asChild key={preset.value} value={preset.value}>
+            <Calendar.PresetTrigger
+              asChild
+              key={preset.value}
+              value={preset.value}
+            >
               <Button className="flex-1" size="sm" variant="outline">
                 {preset.label}
               </Button>

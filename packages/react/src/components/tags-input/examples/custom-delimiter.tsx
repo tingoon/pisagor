@@ -5,7 +5,11 @@ export function CustomDelimiter() {
   return (
     <Field>
       <Field.Label>Frameworks</Field.Label>
-      <TagsInput className="w-full" defaultValue={["React"]} delimiter={tagDelimiter}>
+      <TagsInput
+        className="w-full"
+        defaultValue={["React"]}
+        delimiter={tagDelimiter}
+      >
         <TagsInput.Context>
           {({ value }) =>
             value.map((tag, index) => (

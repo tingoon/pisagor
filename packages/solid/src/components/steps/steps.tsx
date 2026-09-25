@@ -17,7 +17,12 @@ import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { CheckIcon } from "../../internal/icons";
-import { StepsContext, StepsItemContext, useSteps, useStepsItem } from "./steps.context";
+import {
+  StepsContext,
+  StepsItemContext,
+  useSteps,
+  useStepsItem,
+} from "./steps.context";
 
 export interface StepsRootProps extends StepsPrimitiveRootProps {
   recipe?: typeof stepsRecipe;
@@ -36,7 +41,10 @@ export function StepsRoot(props: StepsRootProps): JSX.Element {
 
   return (
     <StepsContext value={{ slots: slots() }}>
-      <StepsPrimitive.Root {...rest} class={slots().base({ class: cn(local.class) })}>
+      <StepsPrimitive.Root
+        {...rest}
+        class={slots().base({ class: cn(local.class) })}
+      >
         {local.children}
       </StepsPrimitive.Root>
     </StepsContext>
@@ -46,7 +54,12 @@ export function StepsRoot(props: StepsRootProps): JSX.Element {
 export function StepsList(props: StepsListProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useSteps();
-  return <StepsPrimitive.List {...rest} class={slots.list({ class: cn(local.class) })} />;
+  return (
+    <StepsPrimitive.List
+      {...rest}
+      class={slots.list({ class: cn(local.class) })}
+    />
+  );
 }
 
 export function StepsItem(props: StepsItemProps): JSX.Element {
@@ -55,7 +68,10 @@ export function StepsItem(props: StepsItemProps): JSX.Element {
 
   return (
     <StepsItemContext value={{ slots: slots() }}>
-      <StepsPrimitive.Item {...rest} class={slots().base({ class: cn(local.class) })}>
+      <StepsPrimitive.Item
+        {...rest}
+        class={slots().base({ class: cn(local.class) })}
+      >
         {local.children}
       </StepsPrimitive.Item>
     </StepsItemContext>
@@ -65,14 +81,22 @@ export function StepsItem(props: StepsItemProps): JSX.Element {
 export function StepsTrigger(props: StepsTriggerProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useStepsItem();
-  return <StepsPrimitive.Trigger {...rest} class={slots.trigger({ class: cn(local.class) })} />;
+  return (
+    <StepsPrimitive.Trigger
+      {...rest}
+      class={slots.trigger({ class: cn(local.class) })}
+    />
+  );
 }
 
 export function StepsIndicator(props: StepsIndicatorProps): JSX.Element {
   const [local, rest] = splitProps(props, ["children", "class"]);
   const { slots } = useStepsItem();
   return (
-    <StepsPrimitive.Indicator {...rest} class={slots.indicator({ class: cn(local.class) })}>
+    <StepsPrimitive.Indicator
+      {...rest}
+      class={slots.indicator({ class: cn(local.class) })}
+    >
       <span class={slots.label()}>{local.children}</span>
       <CheckIcon class={slots.check()} />
     </StepsPrimitive.Indicator>
@@ -82,7 +106,12 @@ export function StepsIndicator(props: StepsIndicatorProps): JSX.Element {
 export function StepsSeparator(props: StepsSeparatorProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useStepsItem();
-  return <StepsPrimitive.Separator {...rest} class={slots.separator({ class: cn(local.class) })} />;
+  return (
+    <StepsPrimitive.Separator
+      {...rest}
+      class={slots.separator({ class: cn(local.class) })}
+    />
+  );
 }
 
 export function StepsTitle(props: StepsTitleProps): JSX.Element {
@@ -114,10 +143,17 @@ export function StepsDescription(props: StepsDescriptionProps): JSX.Element {
 export function StepsContent(props: StepsContentProps): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useSteps();
-  return <StepsPrimitive.Content {...rest} class={slots.content({ class: cn(local.class) })} />;
+  return (
+    <StepsPrimitive.Content
+      {...rest}
+      class={slots.content({ class: cn(local.class) })}
+    />
+  );
 }
 
-export function StepsCompletedContent(props: StepsCompletedContentProps): JSX.Element {
+export function StepsCompletedContent(
+  props: StepsCompletedContentProps,
+): JSX.Element {
   const [local, rest] = splitProps(props, ["class"]);
   const { slots } = useSteps();
   return (

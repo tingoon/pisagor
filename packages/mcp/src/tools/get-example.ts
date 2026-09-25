@@ -40,17 +40,25 @@ export const getExampleTool: Tool<{ componentList: string[] }> = {
       {
         description,
         inputSchema: {
-          component: componentSchema.describe("Component name (kebab-case), e.g. button."),
+          component: componentSchema.describe(
+            "Component name (kebab-case), e.g. button.",
+          ),
           exampleId: z
             .string()
             .optional()
             .describe(
               "Optional example id from list_examples (e.g. default or sizes). When omitted, returns the full stories file.",
             ),
-          ...(multi ? { framework: frameworkInputSchema(config.frameworks) } : {}),
+          ...(multi
+            ? { framework: frameworkInputSchema(config.frameworks) }
+            : {}),
         },
       },
-      async (args: { component: string; exampleId?: string; framework?: Framework }) => {
+      async (args: {
+        component: string;
+        exampleId?: string;
+        framework?: Framework;
+      }) => {
         if (config.packages.length === 0) {
           return {
             content: [{ text: INSTALL_GUIDE, type: "text" as const }],

@@ -7,7 +7,11 @@ const placements = ["left", "top", "bottom", "right"] as const;
 
 <template>
   <div class="flex flex-wrap justify-center gap-2">
-    <DropdownMenu v-for="placement in placements" :key="placement" :positioning="{ placement }">
+    <DropdownMenu
+      v-for="placement in placements"
+      :key="placement"
+      :positioning="{ placement }"
+    >
       <DropdownMenu.Trigger as-child>
         <Button class="capitalize" variant="outline">
           {{ placement }}
