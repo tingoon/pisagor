@@ -30,6 +30,8 @@ export default defineConfig({
         "@pisagor/vue",
         "@pisagor/react-form",
         "@pisagor/vue-form",
+        "@pisagor/solid",
+        "@pisagor/svelte",
         "@pisagor/utils",
         "@pisagor/recipes",
         "@pisagor/tokens",

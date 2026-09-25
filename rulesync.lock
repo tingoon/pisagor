@@ -4,7 +4,7 @@
     "tingoon/agent-skills": {
       "requestedRef": "main",
       "resolvedRef": "2778e67dfdab2085725c6e8ad859d7f24db19438",
-      "resolvedAt": "2026-09-24T13:50:25.725Z",
+      "resolvedAt": "2026-09-24T14:47:29.800Z",
       "skills": {
         "create-commit": {
           "integrity": "sha256-1d5e12d91284fc7e4792665a66f3fc3a7c4840aac59c9f55b74b27f6a0e0274a"
@@ -20,7 +20,7 @@
     "emilkowalski/skills": {
       "requestedRef": "main",
       "resolvedRef": "85e8e2363b713506e1d5b6e07a0eb2da66be1bc3",
-      "resolvedAt": "2026-09-24T13:50:26.695Z",
+      "resolvedAt": "2026-09-24T14:47:30.730Z",
       "skills": {
         "apple-design": {
           "integrity": "sha256-79b75afd2538d394256f38f54b6b3815bb8e26bd5e3b33dbef8e858fd8ecbebf"
@@ -33,7 +33,7 @@
     "vercel/turborepo": {
       "requestedRef": "main",
       "resolvedRef": "f9fa885f670b61ed6a09458649a426a8e4cdeeb4",
-      "resolvedAt": "2026-09-24T13:50:37.137Z",
+      "resolvedAt": "2026-09-24T14:47:41.960Z",
       "skills": {
         "turborepo": {
           "integrity": "sha256-623867566bc273610247d779101c230decdfaa79599bbb75324fa85e8bfc76f8"
