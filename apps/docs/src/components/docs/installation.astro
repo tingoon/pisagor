@@ -94,7 +94,7 @@ const defaultManual =
         {managers.map((manager) => (
   <button
     aria-selected={manager.id === "bun" ? "true" : "false"}
-    class="shrink-0 rounded-md px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground data-[active]:bg-muted data-[active]:text-foreground"
+    class="shrink-0 rounded-md px-2.5 py-1 font-medium text-muted-foreground text-xs transition-colors hover:text-foreground data-[active]:bg-muted data-[active]:text-foreground"
     data-active={manager.id === "bun" ? "" : undefined}
     data-command={manager.command}
     data-pm={manager.id}

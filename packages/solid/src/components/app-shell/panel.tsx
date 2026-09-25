@@ -86,8 +86,8 @@ export function AppShellPanel(props: AppShellPanelProps): JSX.Element {
       class={cn(
         slots.panel(),
         placement() === "start"
-          ? "border-e border-border"
-          : "border-s border-border",
+          ? "border-border border-e"
+          : "border-border border-s",
         regionPositionClasses(slots, position(), "column"),
         side.open() ? "opacity-100" : "pointer-events-none opacity-0",
         local.class,

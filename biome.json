@@ -31,7 +31,27 @@
       "turborepo": "recommended"
     },
     "rules": {
+      "complexity": {
+        "noUselessFragments": "error"
+      },
+      "correctness": {
+        "noUndeclaredDependencies": "error",
+        "noUnusedFunctionParameters": "warn",
+        "noUnusedImports": "error",
+        "noUnusedVariables": "error"
+      },
+      "nursery": {
+        "useSortedClasses": "warn"
+      },
+      "style": {
+        "noNonNullAssertion": "warn",
+        "useExportType": "error",
+        "useImportType": "error",
+        "useNodejsImportProtocol": "error"
+      },
       "suspicious": {
+        "noConsole": "warn",
+        "noDeprecatedImports": "warn",
         "noImportCycles": "error",
         "noUndeclaredEnvVars": {
           "level": "warn",

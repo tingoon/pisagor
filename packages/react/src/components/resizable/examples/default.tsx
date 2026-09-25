@@ -41,7 +41,7 @@ export function Default() {
         </Resizable.Panel>
         <Resizable.ResizeTrigger id="1:2" withHandle />
 
-        <Resizable.Panel className="min-h-0 h-full min-w-0" id="2">
+        <Resizable.Panel className="h-full min-h-0 min-w-0" id="2">
           <Resizable
             className="size-full"
             defaultSize={[50, 50]}

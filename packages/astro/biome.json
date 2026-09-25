@@ -2,7 +2,7 @@
   "extends": "//",
   "linter": {
     "domains": {
-      "astro": "recommended"
+      "astro": "all"
     }
   }
 }

@@ -130,7 +130,7 @@ function ColumnFilterSelect(props: {
   value: string[];
 }) {
   return (
-    <div className="w-full min-w-0 **:data-[slot=select-control]:w-full **:data-[slot=select-trigger]:h-7 **:data-[slot=select-trigger]:w-full">
+    <div className="w-full min-w-0 **:data-[slot=select-trigger]:h-7 **:data-[slot=select-control]:w-full **:data-[slot=select-trigger]:w-full">
       <Select {...props} />
     </div>
   );

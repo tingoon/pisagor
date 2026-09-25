@@ -1,6 +1,6 @@
 import { Field } from "@pisagor/react";
 import type { AnyFieldApi } from "@tanstack/react-form";
-import type { FormEvent } from "react";
+import type { SyntheticEvent } from "react";
 import { useSubmissionAttempts } from "./hooks";
 
 export function getFieldErrorMessage(field: AnyFieldApi): string | undefined {
@@ -53,7 +53,7 @@ export function FormFieldError({ field }: FormFieldErrorProps) {
   return <Field.Error>{message}</Field.Error>;
 }
 
-export function preventDefaultFormSubmit(event: FormEvent) {
+export function preventDefaultFormSubmit(event: SyntheticEvent) {
   event.preventDefault();
   event.stopPropagation();
 }

@@ -31,6 +31,14 @@
   ],
   "license": "MIT",
   "name": "@pisagor/tsconfig",
+  "peerDependencies": {
+    "vue": "catalog:"
+  },
+  "peerDependenciesMeta": {
+    "vue": {
+      "optional": true
+    }
+  },
   "private": true,
   "repository": {
     "directory": "packages/tsconfig",

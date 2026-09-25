@@ -18,8 +18,8 @@ export default defineConfig({
     plugins: [tailwindcss()],
     resolve: {
       alias: {
-        "@recipes-react": path.resolve(root, "../react/src/recipes"),
-        "@recipes-vue": path.resolve(root, "../vue/src/recipes"),
+        "#recipes-react": path.resolve(root, "../react/src/recipes"),
+        "#recipes-vue": path.resolve(root, "../vue/src/recipes"),
       },
     },
     ssr: {
