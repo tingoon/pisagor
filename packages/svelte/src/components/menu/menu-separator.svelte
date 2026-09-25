@@ -4,7 +4,7 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useMenu } from "./menu.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = Omit<HTMLAttributes<HTMLHRElement>, "class"> & {
   class?: string | undefined;
 };
 
@@ -13,11 +13,10 @@ const { slots } = useMenu();
 </script>
 
 <Ark
-  as="div"
+  as="hr"
   {...rest}
   aria-hidden="true"
   class={slots.separator({ class: cn(className) })}
   data-part="separator"
   data-scope="menu"
-  role="separator"
 />

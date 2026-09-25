@@ -5,21 +5,23 @@ import type {
   Header,
   HeaderGroup,
   Row,
+  RowData,
   Table as TableType,
 } from "@tanstack/svelte-table";
 import { createContext } from "../utils/create-context";
+import type { DataTableFeatures } from "./data-table.features";
 
 export interface DataTableContextValue {
   slots: DataTableRecipe;
-  table: any;
+  table: TableType<DataTableFeatures, RowData>;
 }
 
 export interface DataTableHeaderGroupContextValue {
-  headerGroup: any;
+  headerGroup: HeaderGroup<DataTableFeatures, RowData>;
 }
 
 export interface DataTableRowContextValue {
-  row: any;
+  row: Row<DataTableFeatures, RowData>;
 }
 
 const rootCtx = createContext<DataTableContextValue>({ name: "DataTable" });

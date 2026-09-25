@@ -1,7 +1,7 @@
 <script lang="ts">
 import { dataGridRecipe } from "@pisagor/recipes/data-grid";
 import { cn } from "@pisagor/utils";
-import type { TableOptions } from "@tanstack/svelte-table";
+import type { RowData, TableOptions } from "@tanstack/svelte-table";
 import { createTable } from "@tanstack/svelte-table";
 import { setDataGridContext } from "./data-grid.context";
 import { type DataGridFeatures, dataGridFeatures } from "./data-grid.features";
@@ -12,9 +12,7 @@ type Props = {
   features?: DataGridFeatures;
   recipe?: typeof dataGridRecipe;
   columnResizeMode?: "onChange" | "onEnd";
-  columns: any;
-  data: any;
-} & Omit<TableOptions<DataGridFeatures, any>, "features" | "columns" | "data" | "columnResizeMode">;
+} & Omit<TableOptions<DataGridFeatures, RowData>, "features">;
 
 let {
   children,

@@ -21,7 +21,7 @@ function sizeStyle(column: { columnDef: { minSize?: number }; getSize: () => num
 </script>
 
 {#if columnId}
-  {@const cell = row.getVisibleCells().find((item: any) => item.column.id === columnId)}
+  {@const cell = row.getVisibleCells().find((item) => item.column.id === columnId)}
   {#if cell}
     <Table.Cell
       {...rest}

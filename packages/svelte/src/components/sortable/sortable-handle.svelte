@@ -6,7 +6,7 @@ import { onMount } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { useSortable, useSortableItem } from "./sortable.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & { class?: string | undefined };
+type Props = Omit<HTMLAttributes<HTMLButtonElement>, "class"> & { class?: string | undefined };
 let { children, class: className, ...rest }: Props = $props();
 const item = useSortableItem();
 const sortable = useSortable();
@@ -18,7 +18,7 @@ onMount(() => {
 </script>
 
 <Ark
-  as="div"
+  as="button"
   {...rest}
   aria-disabled={sortable.disabled || undefined}
   aria-label={(rest as { "aria-label"?: string })["aria-label"] ?? "Drag to reorder"}
@@ -27,6 +27,7 @@ onMount(() => {
 })}
   data-part="handle"
   data-scope="sortable"
+  disabled={sortable.disabled || undefined}
   draggable={!sortable.disabled}
   ondragend={() => sortable.endDrag()}
   ondragstart={(event) => {
@@ -47,8 +48,7 @@ onMount(() => {
   event.preventDefault();
   sortable.moveItem(item.id, movePrev ? -1 : 1);
 }}
-  role="button"
-  tabindex={sortable.disabled ? -1 : 0}
+  type="button"
 >
   {#if children}
     {@render children()}

@@ -36,7 +36,6 @@ setItemGroupContext({
   data-part="group"
   data-scope="item"
   data-variant={variant}
-  role="list"
 >
   {@render children?.()}
 </Ark>

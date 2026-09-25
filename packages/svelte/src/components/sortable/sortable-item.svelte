@@ -5,7 +5,7 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setSortableItemContext, useSortable } from "./sortable.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+type Props = Omit<HTMLAttributes<HTMLLIElement>, "class"> & {
   class?: string | undefined;
   itemRecipe?: typeof sortableItemRecipe;
   value: string;
@@ -38,13 +38,12 @@ setSortableItemContext({
 </script>
 
 <Ark
-  as="div"
+  as="li"
   {...rest}
   {...itemProps}
   class={slots.base({ class: cn(className) })}
   data-part="item"
   data-scope="sortable"
-  role="listitem"
 >
   {@render children?.()}
 </Ark>

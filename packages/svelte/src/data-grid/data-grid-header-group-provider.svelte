@@ -1,8 +1,10 @@
 <script lang="ts">
+import type { HeaderGroup, RowData } from "@tanstack/svelte-table";
 import { setDataGridHeaderGroupContext } from "./data-grid.context";
+import type { DataGridFeatures } from "./data-grid.features";
 
 type Props = {
-  headerGroup: any;
+  headerGroup: HeaderGroup<DataGridFeatures, RowData>;
   children?: import("svelte").Snippet;
 };
 

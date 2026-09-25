@@ -20,7 +20,6 @@ const { slots } = useMenu();
   class={slots.list({ class: cn(className) })}
   data-part="list"
   data-scope="menu"
-  role="list"
 >
   {@render children?.()}
 </Ark>

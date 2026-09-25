@@ -14,7 +14,7 @@ const { row } = useDataTableRowContext();
 </script>
 
 {#if columnId}
-  {@const cell = row.getVisibleCells().find((item: any) => item.column.id === columnId)}
+  {@const cell = row.getVisibleCells().find((item) => item.column.id === columnId)}
   {#if cell}
     <Table.Cell {...rest} class={className} data-part="cell" data-scope="data-table">
       {#if children}

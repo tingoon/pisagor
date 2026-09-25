@@ -38,7 +38,6 @@ function handleClick(event: MouseEvent & { currentTarget: HTMLDivElement }) {
   data-part="addon"
   data-scope="input-group"
   onclick={handleClick}
-  role="group"
 >
   {@render children?.()}
 </Ark>

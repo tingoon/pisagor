@@ -13,7 +13,7 @@ import { setRichTextEditorContext } from "./rich-text-editor.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "onblur"> & {
+type Props = Omit<HTMLAttributes<HTMLFieldSetElement>, "class" | "onblur"> & {
   variant?: FormControlVariant;
   defaultValue?: string;
   value?: string;
@@ -137,13 +137,14 @@ setRichTextEditorContext({
 </script>
 
 <Ark
-  as="div"
+  as="fieldset"
   {...rest}
   aria-disabled={disabled || undefined}
   aria-invalid={invalid || undefined}
   aria-label={resolvedAriaLabel}
   aria-readonly={readOnly || undefined}
   class={cn(
+  "m-0 min-w-0 border-solid p-0",
   formControlShellRecipe({ surfaceVariant, variant }),
   slots.base({ class: className }),
   disabled && "pointer-events-none opacity-64",
@@ -154,7 +155,6 @@ setRichTextEditorContext({
   data-readonly={readOnly ? "true" : undefined}
   data-scope="rich-text-editor"
   data-variant={variant}
-  role="group"
 >
   {#if name}
     <VisuallyHidden>

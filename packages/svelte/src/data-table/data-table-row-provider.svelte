@@ -1,8 +1,10 @@
 <script lang="ts">
+import type { Row, RowData } from "@tanstack/svelte-table";
 import { setDataTableRowContext } from "./data-table.context";
+import type { DataTableFeatures } from "./data-table.features";
 
 type Props = {
-  row: any;
+  row: Row<DataTableFeatures, RowData>;
   children?: import("svelte").Snippet;
 };
 

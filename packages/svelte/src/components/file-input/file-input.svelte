@@ -81,14 +81,18 @@ function handleChange(event: Event & { currentTarget: HTMLInputElement }) {
 </script>
 
 <Ark
-  as="div"
-  class={formControlGroupShellRecipe({ class: cn(className), size, surfaceVariant, variant })}
+  as="fieldset"
+  class={formControlGroupShellRecipe({
+  class: cn("m-0 min-w-0 border-solid p-0", className),
+  size,
+  surfaceVariant,
+  variant,
+})}
   data-disabled={disabled ? true : undefined}
   data-part="root"
   data-scope="file-input"
   data-size={size}
   data-variant={variant}
-  role="group"
 >
   <input
     {...rest}
