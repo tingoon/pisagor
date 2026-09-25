@@ -4,6 +4,7 @@
     "biomejs.biome",
     "bradlc.vscode-tailwindcss",
     "oven.bun-vscode",
-    "vue.volar"
+    "vue.volar",
+    "svelte.svelte-vscode"
   ]
 }
