@@ -1,4 +1,4 @@
-import { Accordion } from "..";
+import { Accordion } from "@pisagor/react/accordion";
 import { shortFaqItems } from "./helpers";
 
 export function Disabled() {

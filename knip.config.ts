@@ -26,7 +26,7 @@ export default defineConfig({
     },
     "packages/mcp": {},
     "packages/react": {
-      entry: ["src/**/*"],
+      entry: ["src/**/*", "skills/**/*"],
       ignoreIssues: {
         "src/**/*.stories.tsx": ["unresolved", "dependencies", "unlisted"],
         "src/internal/**": ["exports", "types"],

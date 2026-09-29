@@ -30,8 +30,6 @@
   "exports": {
     ".": "./src/components/index.ts",
     "./accordion": "./src/components/accordion/index.ts",
-    "./accordion/examples": "./src/components/accordion/examples/index.ts",
-    "./accordion/examples/*": "./src/components/accordion/examples/*",
     "./action-bar": "./src/components/action-bar/index.ts",
     "./action-bar/examples": "./src/components/action-bar/examples/index.ts",
     "./action-bar/examples/*": "./src/components/action-bar/examples/*",

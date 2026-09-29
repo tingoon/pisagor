@@ -1,4 +1,4 @@
-import { Accordion } from "..";
+import { Accordion } from "@pisagor/react/accordion";
 
 export function Compound() {
   return (
