@@ -88,7 +88,7 @@ export const PasswordStrength = defineComponent({
                   ? "Hide password"
                   : "Show password",
                 class: cn(
-                  "absolute inset-y-0 end-0 flex items-center px-2.5 text-muted-foreground",
+                  "absolute inset-y-0 inset-e-0 flex items-center px-2.5 text-muted-foreground",
                   "hover:text-foreground",
                 ),
                 onClick: () => {

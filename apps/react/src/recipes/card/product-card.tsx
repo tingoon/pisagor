@@ -4,7 +4,7 @@ export function ProductCard() {
   return (
     <LinkBox asChild>
       <Card className="max-w-sm overflow-hidden">
-        <Card.Media className="aspect-[4/3] bg-muted" variant="image">
+        <Card.Media className="aspect-4/3 bg-muted" variant="image">
           {/* Image goes here */}
         </Card.Media>
         <Card.Header description="Soft lines and easy depth for modern living spaces.">
