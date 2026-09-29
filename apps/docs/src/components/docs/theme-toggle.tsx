@@ -147,7 +147,7 @@ export default function ThemeToggle() {
 
       {open ? (
         <div
-          className="docs-material-heavy docs-sheet-panel docs-sheet-panel-end absolute end-0 z-50 mt-2 min-w-36 overflow-hidden rounded-xl border border-white/20 p-1 text-popover-foreground shadow-md dark:border-white/10"
+          className="docs-material-heavy docs-sheet-panel docs-sheet-panel-end absolute inset-e-0 z-50 mt-2 min-w-36 overflow-hidden rounded-xl border border-white/20 p-1 text-popover-foreground shadow-md dark:border-white/10"
           id={menuId}
           role="menu"
         >
@@ -156,7 +156,7 @@ export default function ThemeToggle() {
             return (
               <button
                 aria-checked={active}
-                className="docs-press flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 text-left text-sm hover:bg-accent/60 data-[active]:bg-accent data-[active]:text-accent-foreground"
+                className="docs-press flex w-full items-center gap-2 rounded-lg px-2.5 py-1.5 text-left text-sm hover:bg-accent/60 data-active:bg-accent data-active:text-accent-foreground"
                 data-active={active || undefined}
                 key={option.id}
                 onClick={() => choose(option.id)}
