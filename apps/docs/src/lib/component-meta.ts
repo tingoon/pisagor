@@ -1,3 +1,8 @@
+import { parseSkillDoc } from "#/lib/skill-doc";
+import accordionSkillMd from "#/react/references/primitives/accordion.md?raw";
+
+const { docs: accordionDocs } = parseSkillDoc(accordionSkillMd);
+
 type ComponentApi = "closed" | "open" | "compound-shorthand" | "compound";
 type ComponentTaxonomy =
   | "primitive"
@@ -18,9 +23,9 @@ interface ComponentMeta {
 /** Framework-agnostic component catalog metadata (formerly Storybook parameters.metadata). */
 export const componentMeta = {
   accordion: {
-    aliases: ["disclosure"],
-    api: "compound-shorthand",
-    taxonomy: "standard",
+    aliases: accordionDocs.aliases ? [...accordionDocs.aliases] : undefined,
+    api: accordionDocs.api as ComponentApi,
+    taxonomy: accordionDocs.taxonomy as ComponentTaxonomy,
   },
   "action-bar": {
     aliases: ["bulk-actions"],
