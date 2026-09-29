@@ -3,9 +3,15 @@
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "paths": {
-      "@/*": ["./src/*"],
-      "#recipes-react/*": ["../react/src/recipes/*"],
-      "#recipes-vue/*": ["../vue/src/recipes/*"]
+      "#/*": ["./src/*"],
+      "#/react/examples/*": [
+        "../../packages/react/skills/react/assets/examples/*"
+      ],
+      "#/react/recipes/*": ["../react/src/recipes/*"],
+      "#/react/references/*": [
+        "../../packages/react/skills/react/references/*"
+      ],
+      "#/vue/recipes/*": ["../vue/src/recipes/*"]
     },
     "types": ["astro/client"]
   },

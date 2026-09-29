@@ -1,11 +1,11 @@
 ---
-import BaseHead from "../components/base-head.astro";
-import Sidebar from "../components/docs/sidebar.astro";
-import TableOfContents from "../components/docs/table-of-contents.astro";
-import Header from "../components/header.astro";
-import type { Framework } from "../lib/nav";
-import { getDocsArea, getSidebarNav, mainNav, stripDocsBase } from "../lib/nav";
-import "../styles/global.css";
+import BaseHead from "#/components/base-head.astro";
+import Sidebar from "#/components/docs/sidebar.astro";
+import TableOfContents from "#/components/docs/table-of-contents.astro";
+import Header from "#/components/header.astro";
+import type { Framework } from "#/lib/nav";
+import { getDocsArea, getSidebarNav, mainNav, stripDocsBase } from "#/lib/nav";
+import "#/styles/global.css";
 
 interface Props {
   framework: Framework;

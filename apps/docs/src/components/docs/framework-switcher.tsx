@@ -1,5 +1,5 @@
-import type { Framework } from "../../lib/nav";
-import { frameworks, swapFrameworkPath } from "../../lib/nav";
+import type { Framework } from "#/lib/nav";
+import { frameworks, swapFrameworkPath } from "#/lib/nav";
 import {
   AstroBrandIcon,
   ReactBrandIcon,
