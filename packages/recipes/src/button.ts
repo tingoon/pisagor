@@ -45,7 +45,7 @@ export const buttonRecipe = tv({
   variants: {
     clickEffect: {
       true: {
-        base: "active:not-aria-[haspopup]:scale-[0.97] motion-reduce:active:scale-100",
+        base: "active:not-aria-haspopup:scale-[0.97] motion-reduce:active:scale-100",
       },
     },
     loading: {

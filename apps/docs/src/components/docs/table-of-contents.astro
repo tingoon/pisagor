@@ -15,7 +15,7 @@ const items = (Astro.props.headings ?? []).filter(
 ---
 
 {items.length > 0 ? (
-  <aside class="sticky top-14 hidden h-[calc(100dvh-3.5rem)] w-52 shrink-0 overflow-y-auto p-4 [scrollbar-color:color-mix(in_oklab,var(--border)_80%,transparent)_transparent] [scrollbar-width:thin] xl:block">
+  <aside class="scrollbar-thin sticky top-14 hidden h-[calc(100dvh-3.5rem)] w-52 shrink-0 overflow-y-auto p-4 [scrollbar-color:color-mix(in_oklab,var(--border)_80%,transparent)_transparent] xl:block">
     <p class="docs-label mb-3">On this page</p>
     <nav
       aria-label="On this page"
@@ -25,7 +25,7 @@ const items = (Astro.props.headings ?? []).filter(
       {items.map((item) => (
         <a
           class:list={[
-            "docs-press docs-nav-link relative block py-1.5 text-foreground/65 hover:text-foreground data-[active]:font-medium data-[active]:text-foreground",
+            "docs-press docs-nav-link relative block py-1.5 text-foreground/65 hover:text-foreground data-active:font-medium data-active:text-foreground",
             item.depth === 2 ? "ps-3" : "ps-5",
           ]}
           data-toc-link
@@ -33,7 +33,7 @@ const items = (Astro.props.headings ?? []).filter(
         >
           <span
             aria-hidden
-            class="absolute inset-y-1 -start-px w-0.5 rounded-full bg-primary opacity-0 transition-opacity duration-150 data-[active]:opacity-100"
+            class="absolute -inset-s-px inset-y-1 w-0.5 rounded-full bg-primary opacity-0 transition-opacity duration-150 data-active:opacity-100"
             data-toc-indicator
           />
           {item.text}
