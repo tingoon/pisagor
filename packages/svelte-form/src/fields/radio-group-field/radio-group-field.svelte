@@ -85,16 +85,21 @@ function handleValueChange(nextValue: string | null) {
     value={radioValue}
   >
     {#each normalizedOptions as option (option.value)}
-      {@const (optionId = id ? `${id}-${option.value}` : undefined)}
       {#if option.description}
         <Field>
-          <RadioGroup.Item id={optionId} value={option.value}>
+          <RadioGroup.Item
+            id={id ? `${id}-${option.value}` : undefined}
+            value={option.value}
+          >
             {option.label}
           </RadioGroup.Item>
           <Field.Description>{option.description}</Field.Description>
         </Field>
       {:else}
-        <RadioGroup.Item id={optionId} value={option.value}>
+        <RadioGroup.Item
+          id={id ? `${id}-${option.value}` : undefined}
+          value={option.value}
+        >
           {option.label}
         </RadioGroup.Item>
       {/if}
