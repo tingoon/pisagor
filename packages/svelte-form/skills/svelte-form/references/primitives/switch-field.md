@@ -4,7 +4,13 @@ description: Toggles a setting on or off with a label and optional validation me
 api: closed
 taxonomy: standard
 packageName: "@pisagor/svelte-form"
-examples: []
+examples:
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: invalid
+    title: Invalid
+    exportName: Invalid
 ---
 
 ## When to use
@@ -20,4 +26,4 @@ examples: []
 import { SwitchField } from "@pisagor/svelte-form/switch-field";
 ```
 
-> Docs page wiring for this primitive is under forms/charts or pending.
+Live examples below match `assets/examples/switch-field/`.

@@ -4,7 +4,13 @@ description: Sets a value along a range with a label and optional validation mes
 api: closed
 taxonomy: standard
 packageName: "@pisagor/svelte-form"
-examples: []
+examples:
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: invalid
+    title: Invalid
+    exportName: Invalid
 ---
 
 ## When to use
@@ -20,4 +26,4 @@ examples: []
 import { SliderField } from "@pisagor/svelte-form/slider-field";
 ```
 
-> Docs page wiring for this primitive is under forms/charts or pending.
+Live examples below match `assets/examples/slider-field/`.

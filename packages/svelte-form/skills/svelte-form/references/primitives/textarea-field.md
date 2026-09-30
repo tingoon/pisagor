@@ -4,7 +4,13 @@ description: Collects multiple lines of text with a label and optional validatio
 api: closed
 taxonomy: standard
 packageName: "@pisagor/svelte-form"
-examples: []
+examples:
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: invalid
+    title: Invalid
+    exportName: Invalid
 ---
 
 ## When to use
@@ -20,4 +26,4 @@ examples: []
 import { TextareaField } from "@pisagor/svelte-form/textarea-field";
 ```
 
-> Docs page wiring for this primitive is under forms/charts or pending.
+Live examples below match `assets/examples/textarea-field/`.

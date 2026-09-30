@@ -1,5 +1,5 @@
 <script lang="ts">
-import { CheckboxField } from "../../../../../src/fields/checkbox-field";
+import { CheckboxField } from "@pisagor/svelte-form";
 </script>
 
 <CheckboxField

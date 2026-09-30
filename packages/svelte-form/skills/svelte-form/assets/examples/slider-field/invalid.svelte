@@ -1,5 +1,5 @@
 <script lang="ts">
-import { SliderField } from "../../../../../src/fields/slider-field";
+import { SliderField } from "@pisagor/svelte-form";
 </script>
 
 <SliderField

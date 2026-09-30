@@ -1,5 +1,5 @@
 <script lang="ts">
-import { AutocompleteField } from "../../../../../src/fields/autocomplete-field";
+import { AutocompleteField } from "@pisagor/svelte-form";
 import { cityOptions } from "../options";
 </script>
 

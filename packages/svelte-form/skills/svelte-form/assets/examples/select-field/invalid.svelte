@@ -1,5 +1,5 @@
 <script lang="ts">
-import { SelectField } from "../../../../../src/fields/select-field";
+import { SelectField } from "@pisagor/svelte-form";
 import { countryOptions } from "../options";
 </script>
 

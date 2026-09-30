@@ -1,5 +1,5 @@
 <script lang="ts">
-import { RadioGroupField } from "../../../../../src/fields/radio-group-field";
+import { RadioGroupField } from "@pisagor/svelte-form";
 import { planOptions } from "../options";
 </script>
 

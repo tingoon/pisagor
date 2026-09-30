@@ -1,5 +1,5 @@
 <script lang="ts">
-import { PhoneField } from "../../../../../src/fields/phone-field";
+import { PhoneField } from "@pisagor/svelte-form";
 </script>
 
 <PhoneField

@@ -4,7 +4,13 @@ description: "Collects text with typeahead suggestions, label, and optional vali
 api: closed
 taxonomy: standard
 packageName: "@pisagor/svelte-form"
-examples: []
+examples:
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: invalid
+    title: Invalid
+    exportName: Invalid
 ---
 
 ## When to use
@@ -20,4 +26,4 @@ examples: []
 import { AutocompleteField } from "@pisagor/svelte-form/autocomplete-field";
 ```
 
-> Docs page wiring for this primitive is under forms/charts or pending.
+Live examples below match `assets/examples/autocomplete-field/`.

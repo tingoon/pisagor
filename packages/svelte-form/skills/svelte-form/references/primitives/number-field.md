@@ -4,7 +4,13 @@ description: "Adjusts a numeric value with steppers, label, and optional validat
 api: closed
 taxonomy: standard
 packageName: "@pisagor/svelte-form"
-examples: []
+examples:
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: invalid
+    title: Invalid
+    exportName: Invalid
 ---
 
 ## When to use
@@ -20,4 +26,4 @@ examples: []
 import { NumberField } from "@pisagor/svelte-form/number-field";
 ```
 
-> Docs page wiring for this primitive is under forms/charts or pending.
+Live examples below match `assets/examples/number-field/`.

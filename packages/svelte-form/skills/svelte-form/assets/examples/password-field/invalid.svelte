@@ -1,5 +1,5 @@
 <script lang="ts">
-import { PasswordField } from "../../../../../src/fields/password-field";
+import { PasswordField } from "@pisagor/svelte-form";
 </script>
 
 <PasswordField

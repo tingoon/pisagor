@@ -1,6 +1,6 @@
 <script lang="ts">
 import { parseDate } from "@pisagor/svelte";
-import { createAppForm, Root } from "../../../../../src/tanstack";
+import { createAppForm, Root } from "@pisagor/svelte-form/tanstack";
 import { cityOptions, countryOptions, planOptions } from "../options";
 
 const form = createAppForm(() => ({
