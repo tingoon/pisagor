@@ -1,4 +1,12 @@
 ---
+import ComponentHeader from "#/components/docs/component-header.astro";
+import ComponentPreview from "#/components/docs/component-preview.astro";
+import Installation from "#/components/docs/installation.astro";
+import PropsTable from "#/components/docs/props-table.astro";
+import DocsLayout from "#/layouts/docs-layout.astro";
+import type { ComponentDocs } from "#/lib/component-docs-types";
+import { listboxProps } from "#/lib/props/listbox";
+import { getSkillDocImportStatement } from "#/lib/skill-doc";
 import {
   Compound,
   Controlled,
@@ -10,7 +18,6 @@ import {
   Grouping,
   Horizontal,
   ImageExplorer,
-  imports,
   SelectionExtended,
   SelectionMultiple,
   SelectionNone,
@@ -19,234 +26,371 @@ import {
   WithFilter,
   WithIcon,
   WithPopover,
-} from "@pisagor/react/listbox/examples";
-import CodeBlock from "#/components/docs/code-block.astro";
-import ComponentHeader from "#/components/docs/component-header.astro";
-import ComponentPreview from "#/components/docs/component-preview.astro";
-import Installation from "#/components/docs/installation.astro";
-import PropsTable from "#/components/docs/props-table.astro";
-import DocsLayout from "#/layouts/docs-layout.astro";
-import { listboxProps } from "#/lib/props/listbox";
+} from "#/react/examples/listbox";
+import {
+  frontmatter,
+  getHeadings,
+  Content as SkillContent,
+} from "#/react/references/primitives/listbox.md";
+
+const id = "listbox";
+const docs = frontmatter as ComponentDocs;
+const importStatement = getSkillDocImportStatement(
+  id,
+  docs.packageName ?? "@pisagor/react",
+);
+
+const mdHeadings = getHeadings()
+  .filter((h) => h.depth >= 2)
+  .map((h) => ({ depth: h.depth, slug: h.slug, text: h.text }));
 
 const headings = [
-  { depth: 2, slug: "usage", text: "Usage" },
-  { depth: 3, slug: "disabled-item", text: "Disabled Item" },
-  { depth: 3, slug: "grid", text: "Grid" },
-  { depth: 3, slug: "grouping", text: "Grouping" },
-  { depth: 3, slug: "horizontal", text: "Horizontal" },
-  { depth: 3, slug: "disabled", text: "Disabled" },
-  { depth: 3, slug: "image-explorer", text: "Image Explorer" },
-  { depth: 3, slug: "selection-extended", text: "Selection Extended" },
-  { depth: 3, slug: "selection-multiple", text: "Selection Multiple" },
-  { depth: 3, slug: "selection-none", text: "Selection None" },
-  { depth: 3, slug: "transfer-list", text: "Transfer List" },
-  { depth: 3, slug: "with-description", text: "With Description" },
-  { depth: 3, slug: "with-filter", text: "With Filter" },
-  { depth: 3, slug: "with-icon", text: "With Icon" },
-  { depth: 3, slug: "with-popover", text: "With Popover" },
-  { depth: 3, slug: "controlled", text: "Controlled" },
-  { depth: 3, slug: "compound", text: "Compound" },
-  { depth: 3, slug: "default", text: "Default" },
+  ...mdHeadings,
+  { depth: 2, slug: "examples", text: "Examples" },
+  ...docs.examples.map((ex) => ({
+    depth: 3,
+    slug: ex.id,
+    text: ex.title,
+  })),
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
+
+function exampleMeta(exportName: string) {
+  return docs.examples.find((ex) => ex.exportName === exportName);
+}
 ---
 
 <DocsLayout
-  description="Lets users choose one or more options from a scrollable list with clear selection states."
+  description={docs.description}
   framework="react"
   headings={headings}
-  title="Listbox"
+  title={docs.title}
 >
-  <ComponentHeader framework="react" id="listbox" />
+  <ComponentHeader framework="react" id={id} />
 
-  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
-  <p class="mb-4 text-muted-foreground">
-    Each example matches a Storybook story, in the same order.
-  </p>
+  <div
+    class="docs-skill-md mb-10 space-y-4 text-[0.9375rem] leading-7 text-foreground/90 [&_a]:text-foreground [&_a]:underline [&_a]:underline-offset-2 [&_code]:rounded-md [&_code]:bg-muted/60 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-3.25 [&_h2]:mt-10 [&_h2]:mb-3 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:text-foreground [&_li]:my-1 [&_ol]:my-3 [&_ol]:list-decimal [&_ol]:ps-5 [&_p]:my-3 [&_pre]:my-4 [&_pre]:overflow-x-auto [&_pre]:rounded-xl [&_pre]:border [&_pre]:border-border/60 [&_pre]:bg-muted/30 [&_pre]:p-4 [&_pre]:text-3.25 [&_strong]:font-semibold [&_ul]:my-3 [&_ul]:list-disc [&_ul]:ps-5"
+  >
+    <SkillContent />
+  </div>
 
-  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="examples">
+    Examples
+  </h2>
 
-  <h3
-    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
-    id="disabled-item"
-  >
-    Disabled Item
-  </h3>
-  <ComponentPreview
-    code={examples.DisabledItem}
-    language="tsx"
-    title="Disabled Item"
-  >
-    <DisabledItem client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="grid">
-    Grid
-  </h3>
-  <ComponentPreview code={examples.Grid} language="tsx" title="Grid">
-    <Grid client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="grouping">
-    Grouping
-  </h3>
-  <ComponentPreview code={examples.Grouping} language="tsx" title="Grouping">
-    <Grouping client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="horizontal">
-    Horizontal
-  </h3>
-  <ComponentPreview
-    code={examples.Horizontal}
-    language="tsx"
-    title="Horizontal"
-  >
-    <Horizontal client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">
-    Disabled
-  </h3>
-  <ComponentPreview code={examples.Disabled} language="tsx" title="Disabled">
-    <Disabled client:only="react" />
-  </ComponentPreview>
-  <h3
-    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
-    id="image-explorer"
-  >
-    Image Explorer
-  </h3>
-  <ComponentPreview
-    code={examples.ImageExplorer}
-    language="tsx"
-    title="Image Explorer"
-  >
-    <ImageExplorer client:only="react" />
-  </ComponentPreview>
-  <h3
-    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
-    id="selection-extended"
-  >
-    Selection Extended
-  </h3>
-  <ComponentPreview
-    code={examples.SelectionExtended}
-    language="tsx"
-    title="Selection Extended"
-  >
-    <SelectionExtended client:only="react" />
-  </ComponentPreview>
-  <h3
-    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
-    id="selection-multiple"
-  >
-    Selection Multiple
-  </h3>
-  <ComponentPreview
-    code={examples.SelectionMultiple}
-    language="tsx"
-    title="Selection Multiple"
-  >
-    <SelectionMultiple client:only="react" />
-  </ComponentPreview>
-  <h3
-    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
-    id="selection-none"
-  >
-    Selection None
-  </h3>
-  <ComponentPreview
-    code={examples.SelectionNone}
-    language="tsx"
-    title="Selection None"
-  >
-    <SelectionNone client:only="react" />
-  </ComponentPreview>
-  <h3
-    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
-    id="transfer-list"
-  >
-    Transfer List
-  </h3>
-  <ComponentPreview
-    code={examples.TransferList}
-    language="tsx"
-    title="Transfer List"
-  >
-    <TransferList client:only="react" />
-  </ComponentPreview>
-  <h3
-    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
-    id="with-description"
-  >
-    With Description
-  </h3>
-  <ComponentPreview
-    code={examples.WithDescription}
-    language="tsx"
-    title="With Description"
-  >
-    <WithDescription client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-filter">
-    With Filter
-  </h3>
-  <ComponentPreview
-    code={examples.WithFilter}
-    language="tsx"
-    title="With Filter"
-  >
-    <WithFilter client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-icon">
-    With Icon
-  </h3>
-  <ComponentPreview code={examples.WithIcon} language="tsx" title="With Icon">
-    <WithIcon client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-popover">
-    With Popover
-  </h3>
-  <ComponentPreview
-    code={examples.WithPopover}
-    language="tsx"
-    title="With Popover"
-  >
-    <WithPopover client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">
-    Controlled
-  </h3>
-  <ComponentPreview
-    code={examples.Controlled}
-    language="tsx"
-    title="Controlled"
-  >
-    <Controlled client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="compound">
-    Compound
-  </h3>
-  <ComponentPreview code={examples.Compound} language="tsx" title="Compound">
-    <Compound client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
-    Default
-  </h3>
-  <ComponentPreview code={examples.Default} language="tsx" title="Default">
-    <Default client:only="react" />
-  </ComponentPreview>
+  {(() => {
+  const ex = exampleMeta("DisabledItem");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.DisabledItem}
+        language="tsx"
+        title={ex.title}
+      >
+        <DisabledItem client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("Grid");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview code={examples.Grid} language="tsx" title={ex.title}>
+        <Grid client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("Grouping");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.Grouping}
+        language="tsx"
+        title={ex.title}
+      >
+        <Grouping client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("Horizontal");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.Horizontal}
+        language="tsx"
+        title={ex.title}
+      >
+        <Horizontal client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("Disabled");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.Disabled}
+        language="tsx"
+        title={ex.title}
+      >
+        <Disabled client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("ImageExplorer");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.ImageExplorer}
+        language="tsx"
+        title={ex.title}
+      >
+        <ImageExplorer client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("SelectionExtended");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.SelectionExtended}
+        language="tsx"
+        title={ex.title}
+      >
+        <SelectionExtended client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("SelectionMultiple");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.SelectionMultiple}
+        language="tsx"
+        title={ex.title}
+      >
+        <SelectionMultiple client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("SelectionNone");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.SelectionNone}
+        language="tsx"
+        title={ex.title}
+      >
+        <SelectionNone client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("TransferList");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.TransferList}
+        language="tsx"
+        title={ex.title}
+      >
+        <TransferList client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("WithDescription");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.WithDescription}
+        language="tsx"
+        title={ex.title}
+      >
+        <WithDescription client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("WithFilter");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.WithFilter}
+        language="tsx"
+        title={ex.title}
+      >
+        <WithFilter client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("WithIcon");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.WithIcon}
+        language="tsx"
+        title={ex.title}
+      >
+        <WithIcon client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("WithPopover");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.WithPopover}
+        language="tsx"
+        title={ex.title}
+      >
+        <WithPopover client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("Controlled");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.Controlled}
+        language="tsx"
+        title={ex.title}
+      >
+        <Controlled client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("Compound");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.Compound}
+        language="tsx"
+        title={ex.title}
+      >
+        <Compound client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("Default");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview code={examples.Default} language="tsx" title={ex.title}>
+        <Default client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
 
   <h2
-    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    class="mb-3 mt-16 text-2xl font-semibold tracking-tight"
     id="installation"
   >
     Installation
   </h2>
-  <Installation class="mb-8" packages="@pisagor/react" />
+  <Installation
+    class="mb-12"
+    manual={importStatement}
+    packages={docs.packageName ?? "@pisagor/react"}
+  />
 
-  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
-  <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/listbox</code>. Native HTML attributes
-    are also supported and omitted from this table.
-  </p>
+  <h2 class="mb-3 mt-16 text-2xl font-semibold tracking-tight" id="props">
+    Props
+  </h2>
   <PropsTable rows={listboxProps} />
 </DocsLayout>

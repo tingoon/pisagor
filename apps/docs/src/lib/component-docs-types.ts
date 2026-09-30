@@ -7,16 +7,23 @@ export interface ComponentExampleDoc {
 }
 
 export interface ComponentDocs {
-  id: string;
   title: string;
   description: string;
-  whenToUse: string[];
-  api: "compound" | "compound-shorthand" | "shorthand" | "primitive";
-  taxonomy: "standard" | "pattern" | "layout" | "utility";
+  api:
+    | "closed"
+    | "open"
+    | "compound"
+    | "compound-shorthand"
+    | "shorthand"
+    | "primitive";
+  taxonomy:
+    | "standard"
+    | "pattern"
+    | "layout"
+    | "utility"
+    | "primitive"
+    | "composite";
   aliases?: string[];
-  importStatement: string;
-  packageName: string;
-  usageIntro?: string;
+  packageName?: string;
   examples: ComponentExampleDoc[];
-  recipe?: string;
 }

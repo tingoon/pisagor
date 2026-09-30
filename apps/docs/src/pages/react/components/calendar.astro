@@ -1,4 +1,12 @@
 ---
+import ComponentHeader from "#/components/docs/component-header.astro";
+import ComponentPreview from "#/components/docs/component-preview.astro";
+import Installation from "#/components/docs/installation.astro";
+import PropsTable from "#/components/docs/props-table.astro";
+import DocsLayout from "#/layouts/docs-layout.astro";
+import type { ComponentDocs } from "#/lib/component-docs-types";
+import { calendarProps } from "#/lib/props/calendar";
+import { getSkillDocImportStatement } from "#/lib/skill-doc";
 import {
   BookedDates,
   Controlled,
@@ -8,185 +16,293 @@ import {
   sources as examples,
   FixedWeeks,
   Invalid,
-  imports,
   MinMax,
   MonthYearSelector,
   MultipleMonths,
   Presets,
   Range,
   SelectToday,
-} from "@pisagor/react/calendar/examples";
-import CodeBlock from "#/components/docs/code-block.astro";
-import ComponentHeader from "#/components/docs/component-header.astro";
-import ComponentPreview from "#/components/docs/component-preview.astro";
-import Installation from "#/components/docs/installation.astro";
-import PropsTable from "#/components/docs/props-table.astro";
-import DocsLayout from "#/layouts/docs-layout.astro";
-import { calendarProps } from "#/lib/props/calendar";
+} from "#/react/examples/calendar";
+import {
+  frontmatter,
+  getHeadings,
+  Content as SkillContent,
+} from "#/react/references/primitives/calendar.md";
+
+const id = "calendar";
+const docs = frontmatter as ComponentDocs;
+const importStatement = getSkillDocImportStatement(
+  id,
+  docs.packageName ?? "@pisagor/react",
+);
+
+const mdHeadings = getHeadings()
+  .filter((h) => h.depth >= 2)
+  .map((h) => ({ depth: h.depth, slug: h.slug, text: h.text }));
 
 const headings = [
-  { depth: 2, slug: "usage", text: "Usage" },
-  { depth: 3, slug: "default", text: "Default" },
-  { depth: 3, slug: "invalid", text: "Invalid" },
-  { depth: 3, slug: "disabled", text: "Disabled" },
-  { depth: 3, slug: "booked-dates", text: "Booked Dates" },
-  { depth: 3, slug: "custom-cell-size", text: "Custom Cell Size" },
-  { depth: 3, slug: "min-max", text: "Min Max" },
-  { depth: 3, slug: "range", text: "Range" },
-  { depth: 3, slug: "fixed-weeks", text: "Fixed Weeks" },
-  { depth: 3, slug: "month-year-selector", text: "Month Year Selector" },
-  { depth: 3, slug: "multiple-months", text: "Multiple Months" },
-  { depth: 3, slug: "presets", text: "Presets" },
-  { depth: 3, slug: "select-today", text: "Select Today" },
-  { depth: 3, slug: "controlled", text: "Controlled" },
+  ...mdHeadings,
+  { depth: 2, slug: "examples", text: "Examples" },
+  ...docs.examples.map((ex) => ({
+    depth: 3,
+    slug: ex.id,
+    text: ex.title,
+  })),
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
+
+function exampleMeta(exportName: string) {
+  return docs.examples.find((ex) => ex.exportName === exportName);
+}
 ---
 
 <DocsLayout
-  description="Lets users browse dates and pick a day, month, or range on a familiar calendar grid."
+  description={docs.description}
   framework="react"
   headings={headings}
-  title="Calendar"
+  title={docs.title}
 >
-  <ComponentHeader framework="react" id="calendar" />
+  <ComponentHeader framework="react" id={id} />
 
-  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
-  <p class="mb-4 text-muted-foreground">
-    Each example matches a Storybook story, in the same order.
-  </p>
+  <div
+    class="docs-skill-md mb-10 space-y-4 text-[0.9375rem] leading-7 text-foreground/90 [&_a]:text-foreground [&_a]:underline [&_a]:underline-offset-2 [&_code]:rounded-md [&_code]:bg-muted/60 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-3.25 [&_h2]:mt-10 [&_h2]:mb-3 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:text-foreground [&_li]:my-1 [&_ol]:my-3 [&_ol]:list-decimal [&_ol]:ps-5 [&_p]:my-3 [&_pre]:my-4 [&_pre]:overflow-x-auto [&_pre]:rounded-xl [&_pre]:border [&_pre]:border-border/60 [&_pre]:bg-muted/30 [&_pre]:p-4 [&_pre]:text-3.25 [&_strong]:font-semibold [&_ul]:my-3 [&_ul]:list-disc [&_ul]:ps-5"
+  >
+    <SkillContent />
+  </div>
 
-  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="examples">
+    Examples
+  </h2>
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
-    Default
-  </h3>
-  <ComponentPreview code={examples.Default} language="tsx" title="Default">
-    <Default client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">
-    Invalid
-  </h3>
-  <ComponentPreview code={examples.Invalid} language="tsx" title="Invalid">
-    <Invalid client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">
-    Disabled
-  </h3>
-  <ComponentPreview code={examples.Disabled} language="tsx" title="Disabled">
-    <Disabled client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="booked-dates">
-    Booked Dates
-  </h3>
-  <ComponentPreview
-    code={examples.BookedDates}
-    language="tsx"
-    title="Booked Dates"
-  >
-    <BookedDates client:only="react" />
-  </ComponentPreview>
-  <h3
-    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
-    id="custom-cell-size"
-  >
-    Custom Cell Size
-  </h3>
-  <ComponentPreview
-    code={examples.CustomCellSize}
-    language="tsx"
-    title="Custom Cell Size"
-  >
-    <CustomCellSize client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="min-max">
-    Min Max
-  </h3>
-  <ComponentPreview code={examples.MinMax} language="tsx" title="Min Max">
-    <MinMax client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="range">
-    Range
-  </h3>
-  <ComponentPreview code={examples.Range} language="tsx" title="Range">
-    <Range client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="fixed-weeks">
-    Fixed Weeks
-  </h3>
-  <ComponentPreview
-    code={examples.FixedWeeks}
-    language="tsx"
-    title="Fixed Weeks"
-  >
-    <FixedWeeks client:only="react" />
-  </ComponentPreview>
-  <h3
-    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
-    id="month-year-selector"
-  >
-    Month Year Selector
-  </h3>
-  <ComponentPreview
-    code={examples.MonthYearSelector}
-    language="tsx"
-    title="Month Year Selector"
-  >
-    <MonthYearSelector client:only="react" />
-  </ComponentPreview>
-  <h3
-    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
-    id="multiple-months"
-  >
-    Multiple Months
-  </h3>
-  <ComponentPreview
-    code={examples.MultipleMonths}
-    language="tsx"
-    title="Multiple Months"
-  >
-    <MultipleMonths client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="presets">
-    Presets
-  </h3>
-  <ComponentPreview code={examples.Presets} language="tsx" title="Presets">
-    <Presets client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="select-today">
-    Select Today
-  </h3>
-  <ComponentPreview
-    code={examples.SelectToday}
-    language="tsx"
-    title="Select Today"
-  >
-    <SelectToday client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">
-    Controlled
-  </h3>
-  <ComponentPreview
-    code={examples.Controlled}
-    language="tsx"
-    title="Controlled"
-  >
-    <Controlled client:only="react" />
-  </ComponentPreview>
+  {(() => {
+  const ex = exampleMeta("Default");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview code={examples.Default} language="tsx" title={ex.title}>
+        <Default client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("Invalid");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview code={examples.Invalid} language="tsx" title={ex.title}>
+        <Invalid client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("Disabled");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.Disabled}
+        language="tsx"
+        title={ex.title}
+      >
+        <Disabled client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("BookedDates");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.BookedDates}
+        language="tsx"
+        title={ex.title}
+      >
+        <BookedDates client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("CustomCellSize");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.CustomCellSize}
+        language="tsx"
+        title={ex.title}
+      >
+        <CustomCellSize client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("MinMax");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview code={examples.MinMax} language="tsx" title={ex.title}>
+        <MinMax client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("Range");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview code={examples.Range} language="tsx" title={ex.title}>
+        <Range client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("FixedWeeks");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.FixedWeeks}
+        language="tsx"
+        title={ex.title}
+      >
+        <FixedWeeks client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("MonthYearSelector");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.MonthYearSelector}
+        language="tsx"
+        title={ex.title}
+      >
+        <MonthYearSelector client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("MultipleMonths");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.MultipleMonths}
+        language="tsx"
+        title={ex.title}
+      >
+        <MultipleMonths client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("Presets");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview code={examples.Presets} language="tsx" title={ex.title}>
+        <Presets client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("SelectToday");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.SelectToday}
+        language="tsx"
+        title={ex.title}
+      >
+        <SelectToday client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("Controlled");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.Controlled}
+        language="tsx"
+        title={ex.title}
+      >
+        <Controlled client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
 
   <h2
-    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    class="mb-3 mt-16 text-2xl font-semibold tracking-tight"
     id="installation"
   >
     Installation
   </h2>
-  <Installation class="mb-8" packages="@pisagor/react" />
+  <Installation
+    class="mb-12"
+    manual={importStatement}
+    packages={docs.packageName ?? "@pisagor/react"}
+  />
 
-  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
-  <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/calendar</code>. Native HTML attributes
-    are also supported and omitted from this table.
-  </p>
+  <h2 class="mb-3 mt-16 text-2xl font-semibold tracking-tight" id="props">
+    Props
+  </h2>
   <PropsTable rows={calendarProps} />
 </DocsLayout>

@@ -1,4 +1,12 @@
 ---
+import ComponentHeader from "#/components/docs/component-header.astro";
+import ComponentPreview from "#/components/docs/component-preview.astro";
+import Installation from "#/components/docs/installation.astro";
+import PropsTable from "#/components/docs/props-table.astro";
+import DocsLayout from "#/layouts/docs-layout.astro";
+import type { ComponentDocs } from "#/lib/component-docs-types";
+import { inputOtpProps } from "#/lib/props/input-otp";
+import { getSkillDocImportStatement } from "#/lib/skill-doc";
 import {
   BlurOnComplete,
   Controlled,
@@ -8,158 +16,263 @@ import {
   sources as examples,
   FourDigits,
   Invalid,
-  imports,
   Mask,
   Separator,
   Variants,
   WithPlaceholder,
-} from "@pisagor/react/input-otp/examples";
-import CodeBlock from "#/components/docs/code-block.astro";
-import ComponentHeader from "#/components/docs/component-header.astro";
-import ComponentPreview from "#/components/docs/component-preview.astro";
-import Installation from "#/components/docs/installation.astro";
-import PropsTable from "#/components/docs/props-table.astro";
-import DocsLayout from "#/layouts/docs-layout.astro";
-import { inputOtpProps } from "#/lib/props/input-otp";
+} from "#/react/examples/input-otp";
+import {
+  frontmatter,
+  getHeadings,
+  Content as SkillContent,
+} from "#/react/references/primitives/input-otp.md";
+
+const id = "input-otp";
+const docs = frontmatter as ComponentDocs;
+const importStatement = getSkillDocImportStatement(
+  id,
+  docs.packageName ?? "@pisagor/react",
+);
+
+const mdHeadings = getHeadings()
+  .filter((h) => h.depth >= 2)
+  .map((h) => ({ depth: h.depth, slug: h.slug, text: h.text }));
 
 const headings = [
-  { depth: 2, slug: "usage", text: "Usage" },
-  { depth: 3, slug: "default", text: "Default" },
-  { depth: 3, slug: "variants", text: "Variants" },
-  { depth: 3, slug: "blur-on-complete", text: "Blur On Complete" },
-  { depth: 3, slug: "custom-size", text: "Custom Size" },
-  { depth: 3, slug: "four-digits", text: "Four Digits" },
-  { depth: 3, slug: "mask", text: "Mask" },
-  { depth: 3, slug: "separator", text: "Separator" },
-  { depth: 3, slug: "with-placeholder", text: "With Placeholder" },
-  { depth: 3, slug: "disabled", text: "Disabled" },
-  { depth: 3, slug: "invalid", text: "Invalid" },
-  { depth: 3, slug: "controlled", text: "Controlled" },
+  ...mdHeadings,
+  { depth: 2, slug: "examples", text: "Examples" },
+  ...docs.examples.map((ex) => ({
+    depth: 3,
+    slug: ex.id,
+    text: ex.title,
+  })),
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
+
+function exampleMeta(exportName: string) {
+  return docs.examples.find((ex) => ex.exportName === exportName);
+}
 ---
 
 <DocsLayout
-  description="Collects one-time passcodes as separate digits so users can enter and review verification codes."
+  description={docs.description}
   framework="react"
   headings={headings}
-  title="Input Otp"
+  title={docs.title}
 >
-  <ComponentHeader framework="react" id="input-otp" />
+  <ComponentHeader framework="react" id={id} />
 
-  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
-  <p class="mb-4 text-muted-foreground">
-    Each example matches a Storybook story, in the same order.
-  </p>
+  <div
+    class="docs-skill-md mb-10 space-y-4 text-[0.9375rem] leading-7 text-foreground/90 [&_a]:text-foreground [&_a]:underline [&_a]:underline-offset-2 [&_code]:rounded-md [&_code]:bg-muted/60 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-3.25 [&_h2]:mt-10 [&_h2]:mb-3 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:text-foreground [&_li]:my-1 [&_ol]:my-3 [&_ol]:list-decimal [&_ol]:ps-5 [&_p]:my-3 [&_pre]:my-4 [&_pre]:overflow-x-auto [&_pre]:rounded-xl [&_pre]:border [&_pre]:border-border/60 [&_pre]:bg-muted/30 [&_pre]:p-4 [&_pre]:text-3.25 [&_strong]:font-semibold [&_ul]:my-3 [&_ul]:list-disc [&_ul]:ps-5"
+  >
+    <SkillContent />
+  </div>
 
-  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="examples">
+    Examples
+  </h2>
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
-    Default
-  </h3>
-  <ComponentPreview code={examples.Default} language="tsx" title="Default">
-    <Default client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="variants">
-    Variants
-  </h3>
-  <ComponentPreview code={examples.Variants} language="tsx" title="Variants">
-    <Variants client:only="react" />
-  </ComponentPreview>
-  <h3
-    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
-    id="blur-on-complete"
-  >
-    Blur On Complete
-  </h3>
-  <ComponentPreview
-    code={examples.BlurOnComplete}
-    language="tsx"
-    title="Blur On Complete"
-  >
-    <BlurOnComplete client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-size">
-    Custom Size
-  </h3>
-  <ComponentPreview
-    code={examples.CustomSize}
-    language="tsx"
-    title="Custom Size"
-  >
-    <CustomSize client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="four-digits">
-    Four Digits
-  </h3>
-  <ComponentPreview
-    code={examples.FourDigits}
-    language="tsx"
-    title="Four Digits"
-  >
-    <FourDigits client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="mask">
-    Mask
-  </h3>
-  <ComponentPreview code={examples.Mask} language="tsx" title="Mask">
-    <Mask client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="separator">
-    Separator
-  </h3>
-  <ComponentPreview code={examples.Separator} language="tsx" title="Separator">
-    <Separator client:only="react" />
-  </ComponentPreview>
-  <h3
-    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
-    id="with-placeholder"
-  >
-    With Placeholder
-  </h3>
-  <ComponentPreview
-    code={examples.WithPlaceholder}
-    language="tsx"
-    title="With Placeholder"
-  >
-    <WithPlaceholder client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">
-    Disabled
-  </h3>
-  <ComponentPreview code={examples.Disabled} language="tsx" title="Disabled">
-    <Disabled client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">
-    Invalid
-  </h3>
-  <ComponentPreview code={examples.Invalid} language="tsx" title="Invalid">
-    <Invalid client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">
-    Controlled
-  </h3>
-  <ComponentPreview
-    code={examples.Controlled}
-    language="tsx"
-    title="Controlled"
-  >
-    <Controlled client:only="react" />
-  </ComponentPreview>
+  {(() => {
+  const ex = exampleMeta("Default");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview code={examples.Default} language="tsx" title={ex.title}>
+        <Default client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("Variants");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.Variants}
+        language="tsx"
+        title={ex.title}
+      >
+        <Variants client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("BlurOnComplete");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.BlurOnComplete}
+        language="tsx"
+        title={ex.title}
+      >
+        <BlurOnComplete client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("CustomSize");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.CustomSize}
+        language="tsx"
+        title={ex.title}
+      >
+        <CustomSize client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("FourDigits");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.FourDigits}
+        language="tsx"
+        title={ex.title}
+      >
+        <FourDigits client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("Mask");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview code={examples.Mask} language="tsx" title={ex.title}>
+        <Mask client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("Separator");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.Separator}
+        language="tsx"
+        title={ex.title}
+      >
+        <Separator client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("WithPlaceholder");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.WithPlaceholder}
+        language="tsx"
+        title={ex.title}
+      >
+        <WithPlaceholder client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("Disabled");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.Disabled}
+        language="tsx"
+        title={ex.title}
+      >
+        <Disabled client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("Invalid");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview code={examples.Invalid} language="tsx" title={ex.title}>
+        <Invalid client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("Controlled");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.Controlled}
+        language="tsx"
+        title={ex.title}
+      >
+        <Controlled client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
 
   <h2
-    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    class="mb-3 mt-16 text-2xl font-semibold tracking-tight"
     id="installation"
   >
     Installation
   </h2>
-  <Installation class="mb-8" packages="@pisagor/react" />
+  <Installation
+    class="mb-12"
+    manual={importStatement}
+    packages={docs.packageName ?? "@pisagor/react"}
+  />
 
-  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
-  <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/input-otp</code>. Native HTML attributes
-    are also supported and omitted from this table.
-  </p>
+  <h2 class="mb-3 mt-16 text-2xl font-semibold tracking-tight" id="props">
+    Props
+  </h2>
   <PropsTable rows={inputOtpProps} />
 </DocsLayout>

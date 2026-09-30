@@ -1,75 +1,130 @@
 ---
-import {
-  Article,
-  Default,
-  sources as examples,
-  imports,
-  WithLink,
-} from "@pisagor/react/link-box/examples";
-import CodeBlock from "#/components/docs/code-block.astro";
 import ComponentHeader from "#/components/docs/component-header.astro";
 import ComponentPreview from "#/components/docs/component-preview.astro";
 import Installation from "#/components/docs/installation.astro";
 import PropsTable from "#/components/docs/props-table.astro";
 import DocsLayout from "#/layouts/docs-layout.astro";
+import type { ComponentDocs } from "#/lib/component-docs-types";
 import { linkBoxProps } from "#/lib/props/link-box";
+import { getSkillDocImportStatement } from "#/lib/skill-doc";
+import {
+  Article,
+  Default,
+  sources as examples,
+  WithLink,
+} from "#/react/examples/link-box";
+import {
+  frontmatter,
+  getHeadings,
+  Content as SkillContent,
+} from "#/react/references/primitives/link-box.md";
+
+const id = "link-box";
+const docs = frontmatter as ComponentDocs;
+const importStatement = getSkillDocImportStatement(
+  id,
+  docs.packageName ?? "@pisagor/react",
+);
+
+const mdHeadings = getHeadings()
+  .filter((h) => h.depth >= 2)
+  .map((h) => ({ depth: h.depth, slug: h.slug, text: h.text }));
 
 const headings = [
-  { depth: 2, slug: "usage", text: "Usage" },
-  { depth: 3, slug: "default", text: "Default" },
-  { depth: 3, slug: "article", text: "Article" },
-  { depth: 3, slug: "with-link", text: "With Link" },
+  ...mdHeadings,
+  { depth: 2, slug: "examples", text: "Examples" },
+  ...docs.examples.map((ex) => ({
+    depth: 3,
+    slug: ex.id,
+    text: ex.title,
+  })),
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
+
+function exampleMeta(exportName: string) {
+  return docs.examples.find((ex) => ex.exportName === exportName);
+}
 ---
 
 <DocsLayout
-  description="Makes an entire card or tile clickable while keeping nested buttons usable underneath."
+  description={docs.description}
   framework="react"
   headings={headings}
-  title="Link Box"
+  title={docs.title}
 >
-  <ComponentHeader framework="react" id="link-box" />
+  <ComponentHeader framework="react" id={id} />
 
-  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
-  <p class="mb-4 text-muted-foreground">
-    Each example matches a Storybook story, in the same order.
-  </p>
+  <div
+    class="docs-skill-md mb-10 space-y-4 text-[0.9375rem] leading-7 text-foreground/90 [&_a]:text-foreground [&_a]:underline [&_a]:underline-offset-2 [&_code]:rounded-md [&_code]:bg-muted/60 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-3.25 [&_h2]:mt-10 [&_h2]:mb-3 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:text-foreground [&_li]:my-1 [&_ol]:my-3 [&_ol]:list-decimal [&_ol]:ps-5 [&_p]:my-3 [&_pre]:my-4 [&_pre]:overflow-x-auto [&_pre]:rounded-xl [&_pre]:border [&_pre]:border-border/60 [&_pre]:bg-muted/30 [&_pre]:p-4 [&_pre]:text-3.25 [&_strong]:font-semibold [&_ul]:my-3 [&_ul]:list-disc [&_ul]:ps-5"
+  >
+    <SkillContent />
+  </div>
 
-  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="examples">
+    Examples
+  </h2>
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
-    Default
-  </h3>
-  <ComponentPreview code={examples.Default} language="tsx" title="Default">
-    <Default client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="article">
-    Article
-  </h3>
-  <ComponentPreview code={examples.Article} language="tsx" title="Article">
-    <Article client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="with-link">
-    With Link
-  </h3>
-  <ComponentPreview code={examples.WithLink} language="tsx" title="With Link">
-    <WithLink client:only="react" />
-  </ComponentPreview>
+  {(() => {
+  const ex = exampleMeta("Default");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview code={examples.Default} language="tsx" title={ex.title}>
+        <Default client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("Article");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview code={examples.Article} language="tsx" title={ex.title}>
+        <Article client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("WithLink");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.WithLink}
+        language="tsx"
+        title={ex.title}
+      >
+        <WithLink client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
 
   <h2
-    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    class="mb-3 mt-16 text-2xl font-semibold tracking-tight"
     id="installation"
   >
     Installation
   </h2>
-  <Installation class="mb-8" packages="@pisagor/react" />
+  <Installation
+    class="mb-12"
+    manual={importStatement}
+    packages={docs.packageName ?? "@pisagor/react"}
+  />
 
-  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
-  <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/link-box</code>. Native HTML attributes
-    are also supported and omitted from this table.
-  </p>
+  <h2 class="mb-3 mt-16 text-2xl font-semibold tracking-tight" id="props">
+    Props
+  </h2>
   <PropsTable rows={linkBoxProps} />
 </DocsLayout>

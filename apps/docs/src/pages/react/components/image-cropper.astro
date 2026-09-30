@@ -1,4 +1,12 @@
 ---
+import ComponentHeader from "#/components/docs/component-header.astro";
+import ComponentPreview from "#/components/docs/component-preview.astro";
+import Installation from "#/components/docs/installation.astro";
+import PropsTable from "#/components/docs/props-table.astro";
+import DocsLayout from "#/layouts/docs-layout.astro";
+import type { ComponentDocs } from "#/lib/component-docs-types";
+import { imageCropperProps } from "#/lib/props/image-cropper";
+import { getSkillDocImportStatement } from "#/lib/skill-doc";
 import {
   AspectRatio,
   CircleCrop,
@@ -7,143 +15,215 @@ import {
   sources as examples,
   FixedCropArea,
   InitialCrop,
-  imports,
   MinMaxSize,
   ZoomLimits,
-} from "@pisagor/react/image-cropper/examples";
-import CodeBlock from "#/components/docs/code-block.astro";
-import ComponentHeader from "#/components/docs/component-header.astro";
-import ComponentPreview from "#/components/docs/component-preview.astro";
-import Installation from "#/components/docs/installation.astro";
-import PropsTable from "#/components/docs/props-table.astro";
-import DocsLayout from "#/layouts/docs-layout.astro";
-import { imageCropperProps } from "#/lib/props/image-cropper";
+} from "#/react/examples/image-cropper";
+import {
+  frontmatter,
+  getHeadings,
+  Content as SkillContent,
+} from "#/react/references/primitives/image-cropper.md";
+
+const id = "image-cropper";
+const docs = frontmatter as ComponentDocs;
+const importStatement = getSkillDocImportStatement(
+  id,
+  docs.packageName ?? "@pisagor/react",
+);
+
+const mdHeadings = getHeadings()
+  .filter((h) => h.depth >= 2)
+  .map((h) => ({ depth: h.depth, slug: h.slug, text: h.text }));
 
 const headings = [
-  { depth: 2, slug: "usage", text: "Usage" },
-  { depth: 3, slug: "aspect-ratio", text: "Aspect Ratio" },
-  { depth: 3, slug: "circle-crop", text: "Circle Crop" },
-  { depth: 3, slug: "fixed-crop-area", text: "Fixed Crop Area" },
-  { depth: 3, slug: "initial-crop", text: "Initial Crop" },
-  { depth: 3, slug: "min-max-size", text: "Min Max Size" },
-  { depth: 3, slug: "zoom-limits", text: "Zoom Limits" },
-  { depth: 3, slug: "controlled-zoom", text: "Controlled Zoom" },
-  { depth: 3, slug: "default", text: "Default" },
+  ...mdHeadings,
+  { depth: 2, slug: "examples", text: "Examples" },
+  ...docs.examples.map((ex) => ({
+    depth: 3,
+    slug: ex.id,
+    text: ex.title,
+  })),
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
+
+function exampleMeta(exportName: string) {
+  return docs.examples.find((ex) => ex.exportName === exportName);
+}
 ---
 
 <DocsLayout
-  description="Lets users crop and adjust an image selection before saving or uploading it."
+  description={docs.description}
   framework="react"
   headings={headings}
-  title="Image Cropper"
+  title={docs.title}
 >
-  <ComponentHeader framework="react" id="image-cropper" />
+  <ComponentHeader framework="react" id={id} />
 
-  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
-  <p class="mb-4 text-muted-foreground">
-    Each example matches a Storybook story, in the same order.
-  </p>
+  <div
+    class="docs-skill-md mb-10 space-y-4 text-[0.9375rem] leading-7 text-foreground/90 [&_a]:text-foreground [&_a]:underline [&_a]:underline-offset-2 [&_code]:rounded-md [&_code]:bg-muted/60 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-3.25 [&_h2]:mt-10 [&_h2]:mb-3 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:text-foreground [&_li]:my-1 [&_ol]:my-3 [&_ol]:list-decimal [&_ol]:ps-5 [&_p]:my-3 [&_pre]:my-4 [&_pre]:overflow-x-auto [&_pre]:rounded-xl [&_pre]:border [&_pre]:border-border/60 [&_pre]:bg-muted/30 [&_pre]:p-4 [&_pre]:text-3.25 [&_strong]:font-semibold [&_ul]:my-3 [&_ul]:list-disc [&_ul]:ps-5"
+  >
+    <SkillContent />
+  </div>
 
-  <CodeBlock class="mb-8" code={imports} lang="tsx" title="Import" />
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="examples">
+    Examples
+  </h2>
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="aspect-ratio">
-    Aspect Ratio
-  </h3>
-  <ComponentPreview
-    code={examples.AspectRatio}
-    language="tsx"
-    title="Aspect Ratio"
-  >
-    <AspectRatio client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="circle-crop">
-    Circle Crop
-  </h3>
-  <ComponentPreview
-    code={examples.CircleCrop}
-    language="tsx"
-    title="Circle Crop"
-  >
-    <CircleCrop client:only="react" />
-  </ComponentPreview>
-  <h3
-    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
-    id="fixed-crop-area"
-  >
-    Fixed Crop Area
-  </h3>
-  <ComponentPreview
-    code={examples.FixedCropArea}
-    language="tsx"
-    title="Fixed Crop Area"
-  >
-    <FixedCropArea client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="initial-crop">
-    Initial Crop
-  </h3>
-  <ComponentPreview
-    code={examples.InitialCrop}
-    language="tsx"
-    title="Initial Crop"
-  >
-    <InitialCrop client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="min-max-size">
-    Min Max Size
-  </h3>
-  <ComponentPreview
-    code={examples.MinMaxSize}
-    language="tsx"
-    title="Min Max Size"
-  >
-    <MinMaxSize client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="zoom-limits">
-    Zoom Limits
-  </h3>
-  <ComponentPreview
-    code={examples.ZoomLimits}
-    language="tsx"
-    title="Zoom Limits"
-  >
-    <ZoomLimits client:only="react" />
-  </ComponentPreview>
-  <h3
-    class="mb-3 mt-10 text-xl font-semibold tracking-tight"
-    id="controlled-zoom"
-  >
-    Controlled Zoom
-  </h3>
-  <ComponentPreview
-    code={examples.ControlledZoom}
-    language="tsx"
-    title="Controlled Zoom"
-  >
-    <ControlledZoom client:only="react" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
-    Default
-  </h3>
-  <ComponentPreview code={examples.Default} language="tsx" title="Default">
-    <Default client:only="react" />
-  </ComponentPreview>
+  {(() => {
+  const ex = exampleMeta("AspectRatio");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.AspectRatio}
+        language="tsx"
+        title={ex.title}
+      >
+        <AspectRatio client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("CircleCrop");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.CircleCrop}
+        language="tsx"
+        title={ex.title}
+      >
+        <CircleCrop client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("FixedCropArea");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.FixedCropArea}
+        language="tsx"
+        title={ex.title}
+      >
+        <FixedCropArea client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("InitialCrop");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.InitialCrop}
+        language="tsx"
+        title={ex.title}
+      >
+        <InitialCrop client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("MinMaxSize");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.MinMaxSize}
+        language="tsx"
+        title={ex.title}
+      >
+        <MinMaxSize client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("ZoomLimits");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.ZoomLimits}
+        language="tsx"
+        title={ex.title}
+      >
+        <ZoomLimits client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("ControlledZoom");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.ControlledZoom}
+        language="tsx"
+        title={ex.title}
+      >
+        <ControlledZoom client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("Default");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview code={examples.Default} language="tsx" title={ex.title}>
+        <Default client:only="react" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
 
   <h2
-    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    class="mb-3 mt-16 text-2xl font-semibold tracking-tight"
     id="installation"
   >
     Installation
   </h2>
-  <Installation class="mb-8" packages="@pisagor/react" />
+  <Installation
+    class="mb-12"
+    manual={importStatement}
+    packages={docs.packageName ?? "@pisagor/react"}
+  />
 
-  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
-  <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/image-cropper</code>. Native HTML
-    attributes are also supported and omitted from this table.
-  </p>
+  <h2 class="mb-3 mt-16 text-2xl font-semibold tracking-tight" id="props">
+    Props
+  </h2>
   <PropsTable rows={imageCropperProps} />
 </DocsLayout>
