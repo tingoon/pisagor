@@ -32,7 +32,7 @@ const EXPORT_NAME =
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const workspaceRoot = path.resolve(scriptDir, "../..");
 
-type Framework = "react" | "vue" | "astro";
+type Framework = "react" | "vue" | "astro" | "solid" | "svelte";
 
 interface CatalogFile {
   path: string;
@@ -98,9 +98,11 @@ function findSources(dir: string, name: string): string[] {
     `${name}.tsx`,
     `${name}.ts`,
     `${name}.astro`,
+    `${name}.svelte`,
     `${name}.context.tsx`,
     `${name}.context.ts`,
     "index.ts",
+    "index.tsx",
   ]
     .map((file) => path.join(dir, file))
     .filter((file) => existsSync(file));
@@ -298,7 +300,9 @@ function buildRecipesCatalog(): RecipesCatalog {
   };
 }
 
-function frameworkTargets(framework: "react" | "vue"): ScanTarget[] {
+function frameworkTargets(
+  framework: "react" | "vue" | "solid" | "svelte",
+): ScanTarget[] {
   const pkg = framework;
   const base = path.join(workspaceRoot, `packages/${pkg}`);
   const chartsDir = path.join(workspaceRoot, `packages/${pkg}-charts`);
@@ -327,7 +331,7 @@ function frameworkTargets(framework: "react" | "vue"): ScanTarget[] {
   }
 
   const chartsSrc = path.join(chartsDir, "src");
-  if (existsSync(chartsSrc)) {
+  if ((framework === "react" || framework === "vue") && existsSync(chartsSrc)) {
     targets.push({
       chartRoot: true,
       componentsRoot: chartsSrc,
@@ -358,6 +362,8 @@ function main() {
   const targets: ScanTarget[] = [
     ...frameworkTargets("react"),
     ...frameworkTargets("vue"),
+    ...frameworkTargets("solid"),
+    ...frameworkTargets("svelte"),
     {
       componentsRoot: path.join(workspaceRoot, "packages/astro/src/components"),
       framework: "astro",
