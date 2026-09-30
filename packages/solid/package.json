@@ -114,6 +114,7 @@
     "./stat": "./src/components/stat/index.ts",
     "./status": "./src/components/status/index.ts",
     "./steps": "./src/components/steps/index.ts",
+    "./styles": "./src/styles.css",
     "./surface": "./src/components/surface/index.ts",
     "./swap": "./src/components/swap/index.ts",
     "./switch": "./src/components/switch/index.ts",
