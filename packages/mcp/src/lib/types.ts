@@ -1,7 +1,7 @@
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 
-export type Framework = "react" | "vue" | "astro";
+export type Framework = "react" | "vue" | "astro" | "solid" | "svelte";
 
 interface CatalogFile {
   path: string;

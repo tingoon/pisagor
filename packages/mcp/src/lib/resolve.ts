@@ -19,6 +19,10 @@ const KNOWN_PACKAGES = [
   { framework: "vue" as const, name: "@pisagor/vue-form" },
   { framework: "vue" as const, name: "@pisagor/vue-charts" },
   { framework: "astro" as const, name: "@pisagor/astro" },
+  { framework: "solid" as const, name: "@pisagor/solid" },
+  { framework: "solid" as const, name: "@pisagor/solid-form" },
+  { framework: "svelte" as const, name: "@pisagor/svelte" },
+  { framework: "svelte" as const, name: "@pisagor/svelte-form" },
   { framework: null, name: "@pisagor/recipes" },
 ] as const;
 
@@ -45,6 +49,16 @@ Install what you need, then restart the MCP server:
   # Astro (recipes/tokens come transitively; utils is separate if you need cn())
   bun add @pisagor/astro
   bun add astro tailwindcss
+
+  # Solid
+  bun add @pisagor/solid
+  bun add solid-js tailwindcss
+  bun add @pisagor/solid-form  # optional
+
+  # Svelte
+  bun add @pisagor/svelte
+  bun add svelte tailwindcss
+  bun add @pisagor/svelte-form  # optional
 
 MCP: bunx @pisagor/mcp
 `;
