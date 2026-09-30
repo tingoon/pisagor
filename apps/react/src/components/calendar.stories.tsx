@@ -1,5 +1,5 @@
 import { Calendar } from "@pisagor/react";
-import * as Examples from "@pisagor/react/calendar/examples";
+import * as Examples from "#/react/examples/calendar";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

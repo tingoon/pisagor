@@ -1,4 +1,11 @@
 ---
+import CodeBlock from "#/components/docs/code-block.astro";
+import ComponentHeader from "#/components/docs/component-header.astro";
+import ComponentPreview from "#/components/docs/component-preview.astro";
+import Installation from "#/components/docs/installation.astro";
+import PropsTable from "#/components/docs/props-table.astro";
+import DocsLayout from "#/layouts/docs-layout.astro";
+import { hoverCardProps } from "#/lib/props/hover-card";
 import {
   Controlled,
   Default,
@@ -7,14 +14,7 @@ import {
   imports,
   Placements,
   TriggersDelays,
-} from "@pisagor/vue/hover-card/examples";
-import CodeBlock from "#/components/docs/code-block.astro";
-import ComponentHeader from "#/components/docs/component-header.astro";
-import ComponentPreview from "#/components/docs/component-preview.astro";
-import Installation from "#/components/docs/installation.astro";
-import PropsTable from "#/components/docs/props-table.astro";
-import DocsLayout from "#/layouts/docs-layout.astro";
-import { hoverCardProps } from "#/lib/props/hover-card";
+} from "#/vue/examples/hover-card";
 
 const headings = [
   { depth: 2, slug: "usage", text: "Usage" },

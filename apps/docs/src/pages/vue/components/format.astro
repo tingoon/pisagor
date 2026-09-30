@@ -1,4 +1,9 @@
 ---
+import CodeBlock from "#/components/docs/code-block.astro";
+import ComponentHeader from "#/components/docs/component-header.astro";
+import ComponentPreview from "#/components/docs/component-preview.astro";
+import Installation from "#/components/docs/installation.astro";
+import DocsLayout from "#/layouts/docs-layout.astro";
 import {
   Byte,
   ByteUnitDisplay,
@@ -12,12 +17,7 @@ import {
   NumberStory,
   RelativeTime,
   RelativeTimeShort,
-} from "@pisagor/vue/format/examples";
-import CodeBlock from "#/components/docs/code-block.astro";
-import ComponentHeader from "#/components/docs/component-header.astro";
-import ComponentPreview from "#/components/docs/component-preview.astro";
-import Installation from "#/components/docs/installation.astro";
-import DocsLayout from "#/layouts/docs-layout.astro";
+} from "#/vue/examples/format";
 
 const headings = [
   { depth: 2, slug: "usage", text: "Usage" },

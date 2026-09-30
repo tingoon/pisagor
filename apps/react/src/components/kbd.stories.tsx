@@ -1,5 +1,5 @@
 import { Kbd } from "@pisagor/react";
-import * as Examples from "@pisagor/react/kbd/examples";
+import * as Examples from "#/react/examples/kbd";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

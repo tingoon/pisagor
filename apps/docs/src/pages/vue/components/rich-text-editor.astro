@@ -1,12 +1,4 @@
 ---
-import {
-  Compound,
-  Controlled,
-  Disabled,
-  sources as examples,
-  Invalid,
-  imports,
-} from "@pisagor/vue/rich-text-editor/examples";
 import CodeBlock from "#/components/docs/code-block.astro";
 import ComponentHeader from "#/components/docs/component-header.astro";
 import ComponentPreview from "#/components/docs/component-preview.astro";
@@ -14,6 +6,14 @@ import Installation from "#/components/docs/installation.astro";
 import PropsTable from "#/components/docs/props-table.astro";
 import DocsLayout from "#/layouts/docs-layout.astro";
 import { richTextEditorProps } from "#/lib/props/rich-text-editor";
+import {
+  Compound,
+  Controlled,
+  Disabled,
+  sources as examples,
+  Invalid,
+  imports,
+} from "#/vue/examples/rich-text-editor";
 
 const headings = [
   { depth: 2, slug: "usage", text: "Usage" },

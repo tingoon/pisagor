@@ -1,5 +1,5 @@
 import { SignaturePad } from "@pisagor/react";
-import * as Examples from "@pisagor/react/signature-pad/examples";
+import * as Examples from "#/react/examples/signature-pad";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

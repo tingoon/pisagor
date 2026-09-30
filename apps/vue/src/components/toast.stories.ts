@@ -1,7 +1,7 @@
 import { toast } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/toast/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/toast";
 
 const meta = preview.meta({
   component: toast,

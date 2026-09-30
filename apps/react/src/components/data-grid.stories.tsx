@@ -1,5 +1,5 @@
 import { DataGrid } from "@pisagor/react/data-grid";
-import * as Examples from "@pisagor/react/data-grid/examples";
+import * as Examples from "#/react/examples/data-grid";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

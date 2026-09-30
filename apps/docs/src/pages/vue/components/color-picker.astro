@@ -1,4 +1,11 @@
 ---
+import CodeBlock from "#/components/docs/code-block.astro";
+import ComponentHeader from "#/components/docs/component-header.astro";
+import ComponentPreview from "#/components/docs/component-preview.astro";
+import Installation from "#/components/docs/installation.astro";
+import PropsTable from "#/components/docs/props-table.astro";
+import DocsLayout from "#/layouts/docs-layout.astro";
+import { colorPickerProps } from "#/lib/props/color-picker";
 import {
   AreaChannels,
   AreaDots,
@@ -33,14 +40,7 @@ import {
   SwatchPickerCustomSize,
   SwatchPickerDisabled,
   Variants,
-} from "@pisagor/vue/color-picker/examples";
-import CodeBlock from "#/components/docs/code-block.astro";
-import ComponentHeader from "#/components/docs/component-header.astro";
-import ComponentPreview from "#/components/docs/component-preview.astro";
-import Installation from "#/components/docs/installation.astro";
-import PropsTable from "#/components/docs/props-table.astro";
-import DocsLayout from "#/layouts/docs-layout.astro";
-import { colorPickerProps } from "#/lib/props/color-picker";
+} from "#/vue/examples/color-picker";
 
 const headings = [
   { depth: 2, slug: "usage", text: "Usage" },

@@ -1,7 +1,7 @@
 import { Drawer } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/drawer/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/drawer";
 
 const meta = preview.meta({
   component: Drawer,

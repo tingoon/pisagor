@@ -1,4 +1,11 @@
 ---
+import CodeBlock from "#/components/docs/code-block.astro";
+import ComponentHeader from "#/components/docs/component-header.astro";
+import ComponentPreview from "#/components/docs/component-preview.astro";
+import Installation from "#/components/docs/installation.astro";
+import PropsTable from "#/components/docs/props-table.astro";
+import DocsLayout from "#/layouts/docs-layout.astro";
+import { proseProps } from "#/lib/props/prose";
 import {
   A,
   Blockquote,
@@ -25,14 +32,7 @@ import {
   P,
   Separator,
   Small,
-} from "@pisagor/vue/prose/examples";
-import CodeBlock from "#/components/docs/code-block.astro";
-import ComponentHeader from "#/components/docs/component-header.astro";
-import ComponentPreview from "#/components/docs/component-preview.astro";
-import Installation from "#/components/docs/installation.astro";
-import PropsTable from "#/components/docs/props-table.astro";
-import DocsLayout from "#/layouts/docs-layout.astro";
-import { proseProps } from "#/lib/props/prose";
+} from "#/vue/examples/prose";
 
 const headings = [
   { depth: 2, slug: "usage", text: "Usage" },

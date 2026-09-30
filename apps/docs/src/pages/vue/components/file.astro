@@ -1,11 +1,4 @@
 ---
-import {
-  Compound,
-  Default,
-  sources as examples,
-  imports,
-  WithActions,
-} from "@pisagor/vue/file/examples";
 import CodeBlock from "#/components/docs/code-block.astro";
 import ComponentHeader from "#/components/docs/component-header.astro";
 import ComponentPreview from "#/components/docs/component-preview.astro";
@@ -13,6 +6,13 @@ import Installation from "#/components/docs/installation.astro";
 import PropsTable from "#/components/docs/props-table.astro";
 import DocsLayout from "#/layouts/docs-layout.astro";
 import { fileProps } from "#/lib/props/file";
+import {
+  Compound,
+  Default,
+  sources as examples,
+  imports,
+  WithActions,
+} from "#/vue/examples/file";
 
 const headings = [
   { depth: 2, slug: "usage", text: "Usage" },

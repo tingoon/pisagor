@@ -1,7 +1,7 @@
 import { Scrollspy } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/scrollspy/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/scrollspy";
 
 const meta = preview.meta({
   component: Scrollspy,

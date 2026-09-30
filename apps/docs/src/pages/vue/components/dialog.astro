@@ -1,4 +1,11 @@
 ---
+import CodeBlock from "#/components/docs/code-block.astro";
+import ComponentHeader from "#/components/docs/component-header.astro";
+import ComponentPreview from "#/components/docs/component-preview.astro";
+import Installation from "#/components/docs/installation.astro";
+import PropsTable from "#/components/docs/props-table.astro";
+import DocsLayout from "#/layouts/docs-layout.astro";
+import { dialogProps } from "#/lib/props/dialog";
 import {
   CloseBehavior,
   CustomSpacing,
@@ -10,14 +17,7 @@ import {
   NoCloseButton,
   NonModal,
   ScrollArea,
-} from "@pisagor/vue/dialog/examples";
-import CodeBlock from "#/components/docs/code-block.astro";
-import ComponentHeader from "#/components/docs/component-header.astro";
-import ComponentPreview from "#/components/docs/component-preview.astro";
-import Installation from "#/components/docs/installation.astro";
-import PropsTable from "#/components/docs/props-table.astro";
-import DocsLayout from "#/layouts/docs-layout.astro";
-import { dialogProps } from "#/lib/props/dialog";
+} from "#/vue/examples/dialog";
 
 const headings = [
   { depth: 2, slug: "usage", text: "Usage" },

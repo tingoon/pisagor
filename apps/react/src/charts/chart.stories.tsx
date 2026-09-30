@@ -1,5 +1,5 @@
 import { Chart } from "@pisagor/react-charts";
-import * as Examples from "@pisagor/react-charts/examples";
+import * as Examples from "#/react-charts/examples";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

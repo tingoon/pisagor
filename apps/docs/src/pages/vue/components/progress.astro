@@ -1,4 +1,11 @@
 ---
+import CodeBlock from "#/components/docs/code-block.astro";
+import ComponentHeader from "#/components/docs/component-header.astro";
+import ComponentPreview from "#/components/docs/component-preview.astro";
+import Installation from "#/components/docs/installation.astro";
+import PropsTable from "#/components/docs/props-table.astro";
+import DocsLayout from "#/layouts/docs-layout.astro";
+import { progressProps } from "#/lib/props/progress";
 import {
   Controlled,
   Default,
@@ -8,14 +15,7 @@ import {
   OrientationHorizontal,
   OrientationVertical,
   WithLabel,
-} from "@pisagor/vue/progress/examples";
-import CodeBlock from "#/components/docs/code-block.astro";
-import ComponentHeader from "#/components/docs/component-header.astro";
-import ComponentPreview from "#/components/docs/component-preview.astro";
-import Installation from "#/components/docs/installation.astro";
-import PropsTable from "#/components/docs/props-table.astro";
-import DocsLayout from "#/layouts/docs-layout.astro";
-import { progressProps } from "#/lib/props/progress";
+} from "#/vue/examples/progress";
 
 const headings = [
   { depth: 2, slug: "usage", text: "Usage" },

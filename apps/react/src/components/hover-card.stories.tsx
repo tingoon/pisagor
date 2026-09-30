@@ -1,5 +1,5 @@
 import { HoverCard } from "@pisagor/react";
-import * as Examples from "@pisagor/react/hover-card/examples";
+import * as Examples from "#/react/examples/hover-card";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

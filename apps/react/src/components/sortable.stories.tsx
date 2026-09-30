@@ -1,5 +1,5 @@
 import { Sortable } from "@pisagor/react";
-import * as Examples from "@pisagor/react/sortable/examples";
+import * as Examples from "#/react/examples/sortable";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

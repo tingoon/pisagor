@@ -1,4 +1,11 @@
 ---
+import CodeBlock from "#/components/docs/code-block.astro";
+import ComponentHeader from "#/components/docs/component-header.astro";
+import ComponentPreview from "#/components/docs/component-preview.astro";
+import Installation from "#/components/docs/installation.astro";
+import PropsTable from "#/components/docs/props-table.astro";
+import DocsLayout from "#/layouts/docs-layout.astro";
+import { actionBarProps } from "#/lib/props/action-bar";
 import {
   CloseTrigger,
   Controlled,
@@ -10,14 +17,7 @@ import {
   Placements,
   WithDialog,
   WithMenu,
-} from "@pisagor/vue/action-bar/examples";
-import CodeBlock from "#/components/docs/code-block.astro";
-import ComponentHeader from "#/components/docs/component-header.astro";
-import ComponentPreview from "#/components/docs/component-preview.astro";
-import Installation from "#/components/docs/installation.astro";
-import PropsTable from "#/components/docs/props-table.astro";
-import DocsLayout from "#/layouts/docs-layout.astro";
-import { actionBarProps } from "#/lib/props/action-bar";
+} from "#/vue/examples/action-bar";
 
 const headings = [
   { depth: 2, slug: "usage", text: "Usage" },

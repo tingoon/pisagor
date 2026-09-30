@@ -1,7 +1,7 @@
 import { Slider } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/slider/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/slider";
 
 const meta = preview.meta({
   component: Slider,

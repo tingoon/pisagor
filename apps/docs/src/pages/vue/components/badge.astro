@@ -1,4 +1,11 @@
 ---
+import CodeBlock from "#/components/docs/code-block.astro";
+import ComponentHeader from "#/components/docs/component-header.astro";
+import ComponentPreview from "#/components/docs/component-preview.astro";
+import Installation from "#/components/docs/installation.astro";
+import PropsTable from "#/components/docs/props-table.astro";
+import DocsLayout from "#/layouts/docs-layout.astro";
+import { badgeProps } from "#/lib/props/badge";
 import {
   CustomColor,
   Default,
@@ -9,14 +16,7 @@ import {
   Variants,
   WithLink,
   WithSpinner,
-} from "@pisagor/vue/badge/examples";
-import CodeBlock from "#/components/docs/code-block.astro";
-import ComponentHeader from "#/components/docs/component-header.astro";
-import ComponentPreview from "#/components/docs/component-preview.astro";
-import Installation from "#/components/docs/installation.astro";
-import PropsTable from "#/components/docs/props-table.astro";
-import DocsLayout from "#/layouts/docs-layout.astro";
-import { badgeProps } from "#/lib/props/badge";
+} from "#/vue/examples/badge";
 
 const headings = [
   { depth: 2, slug: "usage", text: "Usage" },

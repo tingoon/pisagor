@@ -1,4 +1,11 @@
 ---
+import CodeBlock from "#/components/docs/code-block.astro";
+import ComponentHeader from "#/components/docs/component-header.astro";
+import ComponentPreview from "#/components/docs/component-preview.astro";
+import Installation from "#/components/docs/installation.astro";
+import PropsTable from "#/components/docs/props-table.astro";
+import DocsLayout from "#/layouts/docs-layout.astro";
+import { switchProps } from "#/lib/props/switch";
 import {
   Controlled,
   Default,
@@ -9,14 +16,7 @@ import {
   OnSurface,
   Sizes,
   Variants,
-} from "@pisagor/vue/switch/examples";
-import CodeBlock from "#/components/docs/code-block.astro";
-import ComponentHeader from "#/components/docs/component-header.astro";
-import ComponentPreview from "#/components/docs/component-preview.astro";
-import Installation from "#/components/docs/installation.astro";
-import PropsTable from "#/components/docs/props-table.astro";
-import DocsLayout from "#/layouts/docs-layout.astro";
-import { switchProps } from "#/lib/props/switch";
+} from "#/vue/examples/switch";
 
 const headings = [
   { depth: 2, slug: "usage", text: "Usage" },

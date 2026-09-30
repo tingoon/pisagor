@@ -1,4 +1,11 @@
 ---
+import CodeBlock from "#/components/docs/code-block.astro";
+import ComponentHeader from "#/components/docs/component-header.astro";
+import ComponentPreview from "#/components/docs/component-preview.astro";
+import Installation from "#/components/docs/installation.astro";
+import PropsTable from "#/components/docs/props-table.astro";
+import DocsLayout from "#/layouts/docs-layout.astro";
+import { toastProps } from "#/lib/props/toast";
 import {
   Action,
   Closable,
@@ -10,14 +17,7 @@ import {
   Placements,
   Variants,
   WithPromise,
-} from "@pisagor/vue/toast/examples";
-import CodeBlock from "#/components/docs/code-block.astro";
-import ComponentHeader from "#/components/docs/component-header.astro";
-import ComponentPreview from "#/components/docs/component-preview.astro";
-import Installation from "#/components/docs/installation.astro";
-import PropsTable from "#/components/docs/props-table.astro";
-import DocsLayout from "#/layouts/docs-layout.astro";
-import { toastProps } from "#/lib/props/toast";
+} from "#/vue/examples/toast";
 
 const headings = [
   { depth: 2, slug: "usage", text: "Usage" },

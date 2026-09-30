@@ -1,6 +1,6 @@
 import { Kbd } from "@pisagor/astro/kbd";
-import DefaultExample from "@pisagor/astro/kbd/examples/default.astro";
-import GroupExample from "@pisagor/astro/kbd/examples/group.astro";
+import DefaultExample from "#/astro/examples/kbd/default.astro";
+import GroupExample from "#/astro/examples/kbd/group.astro";
 
 export default {
   component: Kbd,

@@ -1,4 +1,11 @@
 ---
+import CodeBlock from "#/components/docs/code-block.astro";
+import ComponentHeader from "#/components/docs/component-header.astro";
+import ComponentPreview from "#/components/docs/component-preview.astro";
+import Installation from "#/components/docs/installation.astro";
+import PropsTable from "#/components/docs/props-table.astro";
+import DocsLayout from "#/layouts/docs-layout.astro";
+import { alertProps } from "#/lib/props/alert";
 import {
   Compound,
   CustomColor,
@@ -8,14 +15,7 @@ import {
   Variants,
   WithAction,
   WithIcon,
-} from "@pisagor/vue/alert/examples";
-import CodeBlock from "#/components/docs/code-block.astro";
-import ComponentHeader from "#/components/docs/component-header.astro";
-import ComponentPreview from "#/components/docs/component-preview.astro";
-import Installation from "#/components/docs/installation.astro";
-import PropsTable from "#/components/docs/props-table.astro";
-import DocsLayout from "#/layouts/docs-layout.astro";
-import { alertProps } from "#/lib/props/alert";
+} from "#/vue/examples/alert";
 
 const headings = [
   { depth: 2, slug: "usage", text: "Usage" },

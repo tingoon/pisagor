@@ -1,5 +1,5 @@
-import * as Examples from "@pisagor/react-form/tanstack/examples";
 import { Fragment } from "react";
+import * as Examples from "#/react-form/examples/tanstack";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

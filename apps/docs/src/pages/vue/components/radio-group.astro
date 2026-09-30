@@ -1,4 +1,11 @@
 ---
+import CodeBlock from "#/components/docs/code-block.astro";
+import ComponentHeader from "#/components/docs/component-header.astro";
+import ComponentPreview from "#/components/docs/component-preview.astro";
+import Installation from "#/components/docs/installation.astro";
+import PropsTable from "#/components/docs/props-table.astro";
+import DocsLayout from "#/layouts/docs-layout.astro";
+import { radioGroupProps } from "#/lib/props/radio-group";
 import {
   Compound,
   Controlled,
@@ -11,14 +18,7 @@ import {
   Variants,
   WithDescription,
   WithField,
-} from "@pisagor/vue/radio-group/examples";
-import CodeBlock from "#/components/docs/code-block.astro";
-import ComponentHeader from "#/components/docs/component-header.astro";
-import ComponentPreview from "#/components/docs/component-preview.astro";
-import Installation from "#/components/docs/installation.astro";
-import PropsTable from "#/components/docs/props-table.astro";
-import DocsLayout from "#/layouts/docs-layout.astro";
-import { radioGroupProps } from "#/lib/props/radio-group";
+} from "#/vue/examples/radio-group";
 
 const headings = [
   { depth: 2, slug: "usage", text: "Usage" },

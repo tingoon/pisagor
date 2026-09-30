@@ -1,6 +1,6 @@
 import { PhoneField } from "@pisagor/react-form";
-import * as Examples from "@pisagor/react-form/phone-field/examples";
 import { fn } from "storybook/test";
+import * as Examples from "#/react-form/examples/phone-field";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

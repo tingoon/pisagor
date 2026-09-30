@@ -1,8 +1,8 @@
 import { Badge } from "@pisagor/astro/badge";
-import DefaultExample from "@pisagor/astro/badge/examples/default.astro";
-import PillExample from "@pisagor/astro/badge/examples/pill.astro";
-import SizesExample from "@pisagor/astro/badge/examples/sizes.astro";
-import VariantsExample from "@pisagor/astro/badge/examples/variants.astro";
+import DefaultExample from "#/astro/examples/badge/default.astro";
+import PillExample from "#/astro/examples/badge/pill.astro";
+import SizesExample from "#/astro/examples/badge/sizes.astro";
+import VariantsExample from "#/astro/examples/badge/variants.astro";
 
 export default {
   component: Badge,

@@ -1,10 +1,25 @@
 {
   "compilerOptions": {
+    "jsx": "react-jsx",
     "noUncheckedSideEffectImports": false,
     "paths": {
+      "#/react-charts/examples": [
+        "../../packages/react-charts/skills/react-charts/assets/examples/index.ts"
+      ],
+      "#/react-charts/examples/*": [
+        "../../packages/react-charts/skills/react-charts/assets/examples/*"
+      ],
+      "#/react-form/examples/*": [
+        "../../packages/react-form/skills/react-form/assets/examples/*"
+      ],
+      "#/react/examples/*": [
+        "../../packages/react/skills/react/assets/examples/*"
+      ],
       "#/storybook/*": ["./.storybook/*"]
-    }
+    },
+    "types": ["vite/client", "node"]
   },
-  "extends": "@pisagor/tsconfig/react-vite",
+  "extends": "../../tsconfig.json",
+  "files": ["./css-modules.d.ts", "./react-global.d.ts"],
   "include": ["src", ".storybook", "vite.config.ts"]
 }

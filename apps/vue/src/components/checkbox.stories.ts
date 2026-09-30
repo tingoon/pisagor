@@ -1,7 +1,7 @@
 import { Checkbox } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/checkbox/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/checkbox";
 
 const meta = preview.meta({
   component: Checkbox,

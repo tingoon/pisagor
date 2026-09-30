@@ -1,5 +1,5 @@
 import { Announcement, Badge } from "@pisagor/react";
-import * as Examples from "@pisagor/react/announcement/examples";
+import * as Examples from "#/react/examples/announcement";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

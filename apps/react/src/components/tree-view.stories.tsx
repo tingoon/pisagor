@@ -1,5 +1,5 @@
 import { TreeView } from "@pisagor/react";
-import * as Examples from "@pisagor/react/tree-view/examples";
+import * as Examples from "#/react/examples/tree-view";
 
 import preview from "#/storybook/preview";
 

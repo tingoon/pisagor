@@ -1,7 +1,7 @@
 import { Select } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/select/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/select";
 
 const meta = preview.meta({
   component: Select,

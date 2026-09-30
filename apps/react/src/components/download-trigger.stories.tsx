@@ -1,5 +1,5 @@
 import { DownloadTrigger } from "@pisagor/react";
-import * as Examples from "@pisagor/react/download-trigger/examples";
+import * as Examples from "#/react/examples/download-trigger";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

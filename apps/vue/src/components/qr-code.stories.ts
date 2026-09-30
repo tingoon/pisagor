@@ -1,7 +1,7 @@
 import { QrCode } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/qr-code/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/qr-code";
 
 const meta = preview.meta({
   component: QrCode,

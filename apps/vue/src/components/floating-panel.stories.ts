@@ -1,7 +1,7 @@
 import { FloatingPanel } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/floating-panel/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/floating-panel";
 
 const meta = preview.meta({
   component: FloatingPanel,

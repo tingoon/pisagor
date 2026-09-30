@@ -1,4 +1,11 @@
 ---
+import CodeBlock from "#/components/docs/code-block.astro";
+import ComponentHeader from "#/components/docs/component-header.astro";
+import ComponentPreview from "#/components/docs/component-preview.astro";
+import Installation from "#/components/docs/installation.astro";
+import PropsTable from "#/components/docs/props-table.astro";
+import DocsLayout from "#/layouts/docs-layout.astro";
+import { phoneInputProps } from "#/lib/props/phone-input";
 import {
   Controlled,
   Disabled,
@@ -8,14 +15,7 @@ import {
   OnSurface,
   Sizes,
   Variants,
-} from "@pisagor/vue/phone-input/examples";
-import CodeBlock from "#/components/docs/code-block.astro";
-import ComponentHeader from "#/components/docs/component-header.astro";
-import ComponentPreview from "#/components/docs/component-preview.astro";
-import Installation from "#/components/docs/installation.astro";
-import PropsTable from "#/components/docs/props-table.astro";
-import DocsLayout from "#/layouts/docs-layout.astro";
-import { phoneInputProps } from "#/lib/props/phone-input";
+} from "#/vue/examples/phone-input";
 
 const headings = [
   { depth: 2, slug: "usage", text: "Usage" },

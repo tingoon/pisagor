@@ -1,7 +1,7 @@
 import { Progress } from "@pisagor/astro/progress";
-import DefaultExample from "@pisagor/astro/progress/examples/default.astro";
-import IndeterminateExample from "@pisagor/astro/progress/examples/indeterminate.astro";
-import WithLabelExample from "@pisagor/astro/progress/examples/with-label.astro";
+import DefaultExample from "#/astro/examples/progress/default.astro";
+import IndeterminateExample from "#/astro/examples/progress/indeterminate.astro";
+import WithLabelExample from "#/astro/examples/progress/with-label.astro";
 
 export default {
   component: Progress,

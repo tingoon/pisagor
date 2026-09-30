@@ -1,5 +1,5 @@
 import { File } from "@pisagor/react";
-import * as Examples from "@pisagor/react/file/examples";
+import * as Examples from "#/react/examples/file";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

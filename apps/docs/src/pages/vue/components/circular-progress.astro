@@ -1,4 +1,11 @@
 ---
+import CodeBlock from "#/components/docs/code-block.astro";
+import ComponentHeader from "#/components/docs/component-header.astro";
+import ComponentPreview from "#/components/docs/component-preview.astro";
+import Installation from "#/components/docs/installation.astro";
+import PropsTable from "#/components/docs/props-table.astro";
+import DocsLayout from "#/layouts/docs-layout.astro";
+import { circularProgressProps } from "#/lib/props/circular-progress";
 import {
   Controlled,
   Default,
@@ -8,14 +15,7 @@ import {
   Sizes,
   Thickness,
   WithValue,
-} from "@pisagor/vue/circular-progress/examples";
-import CodeBlock from "#/components/docs/code-block.astro";
-import ComponentHeader from "#/components/docs/component-header.astro";
-import ComponentPreview from "#/components/docs/component-preview.astro";
-import Installation from "#/components/docs/installation.astro";
-import PropsTable from "#/components/docs/props-table.astro";
-import DocsLayout from "#/layouts/docs-layout.astro";
-import { circularProgressProps } from "#/lib/props/circular-progress";
+} from "#/vue/examples/circular-progress";
 
 const headings = [
   { depth: 2, slug: "usage", text: "Usage" },

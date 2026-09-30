@@ -1,5 +1,5 @@
 import { JsonTreeView } from "@pisagor/react";
-import * as Examples from "@pisagor/react/json-tree-view/examples";
+import * as Examples from "#/react/examples/json-tree-view";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

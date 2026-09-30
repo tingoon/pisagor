@@ -1,4 +1,11 @@
 ---
+import CodeBlock from "#/components/docs/code-block.astro";
+import ComponentHeader from "#/components/docs/component-header.astro";
+import ComponentPreview from "#/components/docs/component-preview.astro";
+import Installation from "#/components/docs/installation.astro";
+import PropsTable from "#/components/docs/props-table.astro";
+import DocsLayout from "#/layouts/docs-layout.astro";
+import { itemProps } from "#/lib/props/item";
 import {
   CustomSpacing,
   Default,
@@ -12,14 +19,7 @@ import {
   Variants,
   WithAvatar,
   WithMedia,
-} from "@pisagor/vue/item/examples";
-import CodeBlock from "#/components/docs/code-block.astro";
-import ComponentHeader from "#/components/docs/component-header.astro";
-import ComponentPreview from "#/components/docs/component-preview.astro";
-import Installation from "#/components/docs/installation.astro";
-import PropsTable from "#/components/docs/props-table.astro";
-import DocsLayout from "#/layouts/docs-layout.astro";
-import { itemProps } from "#/lib/props/item";
+} from "#/vue/examples/item";
 
 const headings = [
   { depth: 2, slug: "usage", text: "Usage" },

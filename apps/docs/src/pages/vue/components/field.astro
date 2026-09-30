@@ -1,4 +1,11 @@
 ---
+import CodeBlock from "#/components/docs/code-block.astro";
+import ComponentHeader from "#/components/docs/component-header.astro";
+import ComponentPreview from "#/components/docs/component-preview.astro";
+import Installation from "#/components/docs/installation.astro";
+import PropsTable from "#/components/docs/props-table.astro";
+import DocsLayout from "#/layouts/docs-layout.astro";
+import { fieldProps } from "#/lib/props/field";
 import {
   AutocompleteField,
   CheckboxField,
@@ -23,14 +30,7 @@ import {
   WithError,
   WithInputGroup,
   WithSeparator,
-} from "@pisagor/vue/field/examples";
-import CodeBlock from "#/components/docs/code-block.astro";
-import ComponentHeader from "#/components/docs/component-header.astro";
-import ComponentPreview from "#/components/docs/component-preview.astro";
-import Installation from "#/components/docs/installation.astro";
-import PropsTable from "#/components/docs/props-table.astro";
-import DocsLayout from "#/layouts/docs-layout.astro";
-import { fieldProps } from "#/lib/props/field";
+} from "#/vue/examples/field";
 
 const headings = [
   { depth: 2, slug: "usage", text: "Usage" },

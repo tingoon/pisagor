@@ -1,4 +1,11 @@
 ---
+import CodeBlock from "#/components/docs/code-block.astro";
+import ComponentHeader from "#/components/docs/component-header.astro";
+import ComponentPreview from "#/components/docs/component-preview.astro";
+import Installation from "#/components/docs/installation.astro";
+import PropsTable from "#/components/docs/props-table.astro";
+import DocsLayout from "#/layouts/docs-layout.astro";
+import { breadcrumbProps } from "#/lib/props/breadcrumb";
 import {
   Collapsed,
   Compound,
@@ -8,14 +15,7 @@ import {
   imports,
   WithLink,
   WithMenu,
-} from "@pisagor/vue/breadcrumb/examples";
-import CodeBlock from "#/components/docs/code-block.astro";
-import ComponentHeader from "#/components/docs/component-header.astro";
-import ComponentPreview from "#/components/docs/component-preview.astro";
-import Installation from "#/components/docs/installation.astro";
-import PropsTable from "#/components/docs/props-table.astro";
-import DocsLayout from "#/layouts/docs-layout.astro";
-import { breadcrumbProps } from "#/lib/props/breadcrumb";
+} from "#/vue/examples/breadcrumb";
 
 const headings = [
   { depth: 2, slug: "usage", text: "Usage" },

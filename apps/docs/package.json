@@ -21,7 +21,6 @@
   },
   "description": "Pisagor documentation site (Astro + React + Vue live demos).",
   "devDependencies": {
-    "@pisagor/tsconfig": "workspace:*",
     "@tailwindcss/vite": "catalog:",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",

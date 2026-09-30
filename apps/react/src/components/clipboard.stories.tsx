@@ -1,5 +1,5 @@
 import { Clipboard } from "@pisagor/react";
-import * as Examples from "@pisagor/react/clipboard/examples";
+import * as Examples from "#/react/examples/clipboard";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

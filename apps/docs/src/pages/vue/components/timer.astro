@@ -1,4 +1,11 @@
 ---
+import CodeBlock from "#/components/docs/code-block.astro";
+import ComponentHeader from "#/components/docs/component-header.astro";
+import ComponentPreview from "#/components/docs/component-preview.astro";
+import Installation from "#/components/docs/installation.astro";
+import PropsTable from "#/components/docs/props-table.astro";
+import DocsLayout from "#/layouts/docs-layout.astro";
+import { timerProps } from "#/lib/props/timer";
 import {
   Controlled,
   Countdown,
@@ -11,14 +18,7 @@ import {
   OrientationHorizontal,
   OrientationVertical,
   Pomodoro,
-} from "@pisagor/vue/timer/examples";
-import CodeBlock from "#/components/docs/code-block.astro";
-import ComponentHeader from "#/components/docs/component-header.astro";
-import ComponentPreview from "#/components/docs/component-preview.astro";
-import Installation from "#/components/docs/installation.astro";
-import PropsTable from "#/components/docs/props-table.astro";
-import DocsLayout from "#/layouts/docs-layout.astro";
-import { timerProps } from "#/lib/props/timer";
+} from "#/vue/examples/timer";
 
 const headings = [
   { depth: 2, slug: "usage", text: "Usage" },

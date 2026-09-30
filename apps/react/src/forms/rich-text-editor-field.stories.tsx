@@ -1,6 +1,6 @@
 import { RichTextEditorField } from "@pisagor/react-form";
-import * as Examples from "@pisagor/react-form/rich-text-editor-field/examples";
 import { fn } from "storybook/test";
+import * as Examples from "#/react-form/examples/rich-text-editor-field";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

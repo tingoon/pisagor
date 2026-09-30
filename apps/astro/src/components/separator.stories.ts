@@ -1,6 +1,6 @@
 import { Separator } from "@pisagor/astro/separator";
-import DefaultExample from "@pisagor/astro/separator/examples/default.astro";
-import VerticalExample from "@pisagor/astro/separator/examples/vertical.astro";
+import DefaultExample from "#/astro/examples/separator/default.astro";
+import VerticalExample from "#/astro/examples/separator/vertical.astro";
 
 export default {
   component: Separator,

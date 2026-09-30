@@ -1,5 +1,5 @@
 import { Spinner } from "@pisagor/react";
-import * as Examples from "@pisagor/react/spinner/examples";
+import * as Examples from "#/react/examples/spinner";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

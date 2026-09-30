@@ -4,6 +4,9 @@
     "jsxImportSource": "react",
     "paths": {
       "#/*": ["./src/*"],
+      "#/astro/examples/*": [
+        "../../packages/astro/skills/astro/assets/examples/*"
+      ],
       "#/react/examples/*": [
         "../../packages/react/skills/react/assets/examples/*"
       ],
@@ -11,10 +14,12 @@
       "#/react/references/*": [
         "../../packages/react/skills/react/references/*"
       ],
+      "#/vue/examples/*": ["../../packages/vue/skills/vue/assets/examples/*"],
       "#/vue/recipes/*": ["../vue/src/recipes/*"]
     },
     "types": ["astro/client"]
   },
-  "extends": "@pisagor/tsconfig/astro",
+  "extends": "../../tsconfig.json",
+  "files": ["./css-modules.d.ts", "./react-global.d.ts", "./vue-global.d.ts"],
   "include": [".astro/types.d.ts", "src", "astro.config.ts"]
 }

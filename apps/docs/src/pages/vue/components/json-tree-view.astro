@@ -1,12 +1,4 @@
 ---
-import {
-  DataTypes,
-  Default,
-  ExpandDepth,
-  sources as examples,
-  imports,
-  MapSet,
-} from "@pisagor/vue/json-tree-view/examples";
 import CodeBlock from "#/components/docs/code-block.astro";
 import ComponentHeader from "#/components/docs/component-header.astro";
 import ComponentPreview from "#/components/docs/component-preview.astro";
@@ -14,6 +6,14 @@ import Installation from "#/components/docs/installation.astro";
 import PropsTable from "#/components/docs/props-table.astro";
 import DocsLayout from "#/layouts/docs-layout.astro";
 import { jsonTreeViewProps } from "#/lib/props/json-tree-view";
+import {
+  DataTypes,
+  Default,
+  ExpandDepth,
+  sources as examples,
+  imports,
+  MapSet,
+} from "#/vue/examples/json-tree-view";
 
 const headings = [
   { depth: 2, slug: "usage", text: "Usage" },

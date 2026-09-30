@@ -1,5 +1,5 @@
 import { Combobox } from "@pisagor/react";
-import * as Examples from "@pisagor/react/combobox/examples";
+import * as Examples from "#/react/examples/combobox";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

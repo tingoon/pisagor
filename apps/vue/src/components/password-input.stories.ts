@@ -1,7 +1,7 @@
 import { PasswordInput } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/password-input/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/password-input";
 
 const meta = preview.meta({
   component: PasswordInput,

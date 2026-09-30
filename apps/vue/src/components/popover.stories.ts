@@ -1,7 +1,7 @@
 import { Popover } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/popover/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/popover";
 
 const meta = preview.meta({
   component: Popover,
