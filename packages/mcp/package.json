@@ -10,9 +10,7 @@
     "zod": "^4.6.5"
   },
   "description": "MCP server for Pisagor UI — reads catalogs from installed @pisagor/* packages.",
-  "devDependencies": {
-    "@pisagor/tsconfig": "workspace:*"
-  },
+
   "files": [
     "src"
   ],

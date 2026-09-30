@@ -8,13 +8,12 @@
   },
   "description": "Chart primitives for Pisagor Vue.",
   "devDependencies": {
-    "@pisagor/tsconfig": "workspace:*",
     "vue": "catalog:"
   },
   "exports": {
     ".": "./src/index.ts",
-    "./examples": "./src/examples/index.ts",
-    "./examples/*": "./src/examples/*",
+    "./examples": "./skills/vue-charts/assets/examples/index.ts",
+    "./examples/*": "./skills/vue-charts/assets/examples/*",
     "./styles": "./src/styles.css"
   },
   "files": [

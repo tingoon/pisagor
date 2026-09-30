@@ -8,16 +8,16 @@ interface CatalogFile {
   content: string;
 }
 
-interface CatalogExample {
+export interface CatalogExample {
   id: string;
   exportName: string;
+  path: string;
+  content: string;
 }
 
 export interface CatalogComponent {
   name: string;
   package: string;
-  storiesPath: string | null;
-  storiesContent: string | null;
   examples: CatalogExample[];
   sources: CatalogFile[];
 }
@@ -60,7 +60,7 @@ export interface Tool<T = unknown> {
 export interface ComponentEntry {
   name: string;
   package: string;
-  hasStories: boolean;
+  hasExamples: boolean;
 }
 
 export interface ExampleEntry {

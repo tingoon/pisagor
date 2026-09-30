@@ -1,7 +1,9 @@
 {
   "compilerOptions": {
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
     "types": ["bun", "node"]
   },
-  "extends": "@pisagor/tsconfig/solid",
+  "extends": "../../tsconfig.json",
   "include": ["src"]
 }

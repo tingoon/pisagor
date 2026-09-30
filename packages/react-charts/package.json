@@ -10,7 +10,6 @@
   },
   "description": "Chart primitives for Pisagor React (Recharts wrappers).",
   "devDependencies": {
-    "@pisagor/tsconfig": "workspace:*",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "react": "catalog:",
@@ -18,8 +17,8 @@
   },
   "exports": {
     ".": "./src/index.ts",
-    "./examples": "./src/examples/index.ts",
-    "./examples/*": "./src/examples/*",
+    "./examples": "./skills/react-charts/assets/examples/index.ts",
+    "./examples/*": "./skills/react-charts/assets/examples/*",
     "./styles": "./src/styles.css"
   },
   "files": [

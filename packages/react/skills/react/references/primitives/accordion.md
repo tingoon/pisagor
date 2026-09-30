@@ -44,8 +44,3 @@ Prefer shorthand `items` for FAQ lists; use `Accordion.Root` for custom structur
 
 Live examples below match `assets/examples/accordion/`.
 
-## Examples
-
-```tsx
-import { Accordion } from "@pisagor/react/accordion";
-```

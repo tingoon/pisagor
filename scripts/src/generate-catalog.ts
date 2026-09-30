@@ -15,8 +15,19 @@ const HEAVY = [
   "phone-input",
   "rich-text-editor",
 ] as const;
-const STORY_EXPORT =
-  /^export\s+const\s+([A-Z][A-Za-z0-9]*)\s*=\s*meta\.story\b/gm;
+
+const EXAMPLE_EXTENSIONS = new Set([
+  ".astro",
+  ".svelte",
+  ".ts",
+  ".tsx",
+  ".vue",
+]);
+
+const EXAMPLE_SKIP = new Set(["helpers.ts", "helpers.tsx", "index.ts"]);
+
+const EXPORT_NAME =
+  /^export\s+(?:async\s+)?(?:function|const)\s+([A-Z][A-Za-z0-9]*)\b/m;
 
 const scriptDir = path.dirname(fileURLToPath(import.meta.url));
 const workspaceRoot = path.resolve(scriptDir, "../..");
@@ -31,13 +42,13 @@ interface CatalogFile {
 interface CatalogExample {
   id: string;
   exportName: string;
+  path: string;
+  content: string;
 }
 
 interface CatalogComponent {
   name: string;
   package: string;
-  storiesPath: string | null;
-  storiesContent: string | null;
   examples: CatalogExample[];
   sources: CatalogFile[];
 }
@@ -82,14 +93,6 @@ function listDirs(dir: string): string[] {
     .sort();
 }
 
-function findStories(dir: string, name: string): string | null {
-  const candidates = [
-    path.join(dir, `${name}.stories.tsx`),
-    path.join(dir, `${name}.stories.ts`),
-  ];
-  return candidates.find((file) => existsSync(file)) ?? null;
-}
-
 function findSources(dir: string, name: string): string[] {
   return [
     `${name}.tsx`,
@@ -100,29 +103,92 @@ function findSources(dir: string, name: string): string[] {
     "index.ts",
   ]
     .map((file) => path.join(dir, file))
-    .filter(
-      (file) =>
-        existsSync(file) &&
-        !file.endsWith(".stories.ts") &&
-        !file.endsWith(".stories.tsx"),
-    );
+    .filter((file) => existsSync(file));
 }
 
-function kebabCase(value: string): string {
-  return value
-    .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
-    .replace(/([A-Z])([A-Z][a-z])/g, "$1-$2")
-    .toLowerCase();
-}
-
-function parseExamples(storiesContent: string): CatalogExample[] {
-  const examples: CatalogExample[] = [];
-  for (const match of storiesContent.matchAll(STORY_EXPORT)) {
-    const exportName = match[1];
-    if (!exportName) {
+function findExamplesRoot(packageDir: string): string | null {
+  const skillsDir = path.join(packageDir, "skills");
+  if (!existsSync(skillsDir)) {
+    return null;
+  }
+  for (const entry of readdirSync(skillsDir)) {
+    if (entry.startsWith(".")) {
       continue;
     }
-    examples.push({ exportName, id: kebabCase(exportName) });
+    const examples = path.join(skillsDir, entry, "assets", "examples");
+    if (existsSync(examples) && statSync(examples).isDirectory()) {
+      return examples;
+    }
+  }
+  return null;
+}
+
+function toExportName(id: string): string {
+  return id
+    .split("-")
+    .filter(Boolean)
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join("");
+}
+
+function resolveExampleDir(
+  examplesRoot: string | null,
+  componentName: string,
+  chartRoot?: boolean,
+): string | null {
+  if (!examplesRoot) {
+    return null;
+  }
+  const nested = path.join(examplesRoot, componentName);
+  if (existsSync(nested) && statSync(nested).isDirectory()) {
+    return nested;
+  }
+  // Charts ship examples at assets/examples/* (no <component>/ folder).
+  if (chartRoot || componentName === "chart") {
+    return examplesRoot;
+  }
+  return null;
+}
+
+function loadExamples(
+  examplesRoot: string | null,
+  componentName: string,
+  packageDir: string,
+  chartRoot?: boolean,
+): CatalogExample[] {
+  const dir = resolveExampleDir(examplesRoot, componentName, chartRoot);
+  if (!dir) {
+    return [];
+  }
+
+  const examples: CatalogExample[] = [];
+  for (const file of readdirSync(dir).sort()) {
+    if (EXAMPLE_SKIP.has(file) || file.startsWith(".")) {
+      continue;
+    }
+    const ext = path.extname(file);
+    if (!EXAMPLE_EXTENSIONS.has(ext)) {
+      continue;
+    }
+    // Flat chart root: only example files, not nested component dirs' indexes.
+    if (chartRoot && statSync(path.join(dir, file)).isDirectory()) {
+      continue;
+    }
+
+    const abs = path.join(dir, file);
+    if (!statSync(abs).isFile()) {
+      continue;
+    }
+
+    const id = path.basename(file, ext);
+    const content = readFileSync(abs, "utf8");
+    const matched = content.match(EXPORT_NAME)?.[1];
+    examples.push({
+      content,
+      exportName: matched ?? toExportName(id),
+      id,
+      path: path.relative(packageDir, abs),
+    });
   }
   return examples;
 }
@@ -131,26 +197,26 @@ function buildComponent(
   dir: string,
   name: string,
   packageName: string,
+  packageDir: string,
+  examplesRoot: string | null,
+  chartRoot?: boolean,
 ): CatalogComponent {
-  const storiesAbs = findStories(dir, name);
-  const storiesContent = storiesAbs ? readFileSync(storiesAbs, "utf8") : null;
   const sourcePaths = findSources(dir, name);
 
   return {
-    examples: storiesContent ? parseExamples(storiesContent) : [],
+    examples: loadExamples(examplesRoot, name, packageDir, chartRoot),
     name,
     package: packageName,
     sources: sourcePaths.map((file) => ({
       content: readFileSync(file, "utf8"),
       path: path.relative(workspaceRoot, file),
     })),
-    storiesContent,
-    storiesPath: storiesAbs ? path.relative(workspaceRoot, storiesAbs) : null,
   };
 }
 
 function buildComponentsCatalog(target: ScanTarget): ComponentsCatalog {
   const byName = new Map<string, CatalogComponent>();
+  const examplesRoot = findExamplesRoot(target.packageDir);
 
   for (const name of listDirs(target.componentsRoot)) {
     byName.set(
@@ -159,13 +225,24 @@ function buildComponentsCatalog(target: ScanTarget): ComponentsCatalog {
         path.join(target.componentsRoot, name),
         name,
         target.package,
+        target.packageDir,
+        examplesRoot,
       ),
     );
   }
 
   for (const dir of target.extraDirs ?? []) {
     const name = path.basename(dir);
-    byName.set(name, buildComponent(dir, name, target.package));
+    byName.set(
+      name,
+      buildComponent(
+        dir,
+        name,
+        target.package,
+        target.packageDir,
+        examplesRoot,
+      ),
+    );
   }
 
   if (target.chartRoot) {
@@ -174,7 +251,17 @@ function buildComponentsCatalog(target: ScanTarget): ComponentsCatalog {
       existsSync(path.join(chartDir, "chart.tsx")) ||
       existsSync(path.join(chartDir, "chart.ts"))
     ) {
-      byName.set("chart", buildComponent(chartDir, "chart", target.package));
+      byName.set(
+        "chart",
+        buildComponent(
+          chartDir,
+          "chart",
+          target.package,
+          target.packageDir,
+          examplesRoot,
+          true,
+        ),
+      );
     }
   }
 

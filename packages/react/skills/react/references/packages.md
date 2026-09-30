@@ -1,6 +1,6 @@
 # Pisagor React packages
 
-Framework: **react** only. Sibling skills: `vue`, `astro`.
+Framework: **react** only (`@pisagor/react` components). Sibling UI skills: `packages/vue/skills/vue`, `packages/astro/skills/astro`. Forms, charts, recipes, tokens, and utils are separate skills (`packages/<name>/skills/<name>`), not part of this one.
 
 ## Install
 

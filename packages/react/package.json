@@ -21,7 +21,6 @@
   "description": "Accessible React UI components built on Ark UI and Tailwind CSS.",
   "devDependencies": {
     "@faker-js/faker": "^10.6.0",
-    "@pisagor/tsconfig": "workspace:*",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",
     "react": "catalog:",

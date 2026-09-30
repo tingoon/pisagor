@@ -19,7 +19,7 @@ export default defineConfig({
       ignoreDependencies: ["chromatic"],
     },
     "packages/astro": {
-      entry: ["src/**/*"],
+      entry: ["src/**/*", "skills/**/*"],
       ignoreIssues: {
         "src/**/*.stories.ts": ["unresolved", "dependencies", "unlisted"],
       },
@@ -33,20 +33,20 @@ export default defineConfig({
       },
     },
     "packages/react-charts": {
-      entry: ["src/**/*"],
+      entry: ["src/**/*", "skills/**/*"],
       ignoreIssues: {
         "src/**/*.stories.tsx": ["unresolved", "dependencies", "unlisted"],
       },
     },
     "packages/react-form": {
-      entry: ["src/**/*"],
+      entry: ["src/**/*", "skills/**/*"],
       ignoreIssues: {
         "src/**/*.stories.tsx": ["unresolved", "dependencies", "unlisted"],
         "src/internal/**": ["exports", "types"],
       },
     },
     "packages/solid": {
-      entry: ["src/**/*"],
+      entry: ["src/**/*", "skills/**/*"],
       ignoreIssues: {
         "src/components/**": ["exports", "types", "duplicates"],
         "src/data-grid/**": ["exports", "types"],
@@ -56,10 +56,16 @@ export default defineConfig({
         "src/phone-input/**": ["exports", "types"],
         "src/rich-text-editor/**": ["exports", "types"],
         "src/utils/**": ["exports", "types"],
+      },
+    },
+    "packages/solid-form": {
+      entry: ["src/**/*", "skills/**/*"],
+      ignoreIssues: {
+        "src/internal/**": ["exports", "types"],
       },
     },
     "packages/svelte": {
-      entry: ["src/**/*"],
+      entry: ["src/**/*", "skills/**/*"],
       ignoreIssues: {
         "src/components/**": ["exports", "types", "duplicates"],
         "src/data-grid/**": ["exports", "types"],
@@ -71,11 +77,14 @@ export default defineConfig({
         "src/utils/**": ["exports", "types"],
       },
     },
-    "packages/tsconfig": {
-      ignoreDependencies: ["@types/react", "solid-js"],
+    "packages/svelte-form": {
+      entry: ["src/**/*", "skills/**/*"],
+      ignoreIssues: {
+        "src/internal/**": ["exports", "types"],
+      },
     },
     "packages/vue": {
-      entry: ["src/**/*"],
+      entry: ["src/**/*", "skills/**/*"],
       ignoreIssues: {
         "src/**/*.stories.ts": ["unresolved", "dependencies", "unlisted"],
         "src/components/**": ["exports", "types", "duplicates"],
@@ -83,14 +92,14 @@ export default defineConfig({
       },
     },
     "packages/vue-charts": {
-      entry: ["src/**/*"],
+      entry: ["src/**/*", "skills/**/*"],
       ignoreIssues: {
         "src/**/*.stories.ts": ["unresolved", "dependencies", "unlisted"],
         "src/internal/**": ["exports", "types"],
       },
     },
     "packages/vue-form": {
-      entry: ["src/**/*"],
+      entry: ["src/**/*", "skills/**/*"],
       ignoreIssues: {
         "src/**/*.stories.ts": ["unresolved", "dependencies", "unlisted"],
         "src/internal/**": ["exports", "types"],

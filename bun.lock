@@ -13,11 +13,13 @@
         "@commitlint/types": "^21.2.3",
         "@types/bun": "1.4.0",
         "@types/node": "^26.6.3",
+        "@types/react": "catalog:",
         "knip": "^6.38.0",
         "lefthook": "^2.1.14",
         "rulesync": "^24.0.0",
         "turbo": "^2.11.5",
         "typescript": "^7.0.2",
+        "vue": "catalog:",
       },
     },
     "apps/astro": {
@@ -27,7 +29,6 @@
         "@pisagor/astro": "workspace:*",
       },
       "devDependencies": {
-        "@pisagor/tsconfig": "workspace:*",
         "@storybook-astro/framework": "^1.12.0",
         "@storybook/addon-a11y": "^10.6.0",
         "@storybook/addon-docs": "^10.6.0",
@@ -63,7 +64,6 @@
         "yaml": "^2.9.1",
       },
       "devDependencies": {
-        "@pisagor/tsconfig": "workspace:*",
         "@tailwindcss/vite": "catalog:",
         "@types/react": "catalog:",
         "@types/react-dom": "catalog:",
@@ -87,7 +87,6 @@
         "zod": "^4.6.5",
       },
       "devDependencies": {
-        "@pisagor/tsconfig": "workspace:*",
         "@storybook/addon-a11y": "^10.6.0",
         "@storybook/addon-docs": "^10.6.0",
         "@storybook/react-vite": "^10.6.0",
@@ -115,7 +114,6 @@
         "zod": "^4.6.5",
       },
       "devDependencies": {
-        "@pisagor/tsconfig": "workspace:*",
         "@storybook/addon-a11y": "^10.6.0",
         "@storybook/addon-docs": "^10.6.0",
         "@storybook/vue3-vite": "^10.6.0",
@@ -138,7 +136,6 @@
         "tw-animate-css": "^1.4.0",
       },
       "devDependencies": {
-        "@pisagor/tsconfig": "workspace:*",
         "astro": "catalog:",
       },
       "peerDependencies": {
@@ -156,18 +153,12 @@
         "@modelcontextprotocol/sdk": "^1.30.0",
         "zod": "^4.6.5",
       },
-      "devDependencies": {
-        "@pisagor/tsconfig": "workspace:*",
-      },
     },
     "packages/props": {
       "name": "@pisagor/props",
       "version": "0.1.0",
       "dependencies": {
         "@pisagor/recipes": "workspace:*",
-      },
-      "devDependencies": {
-        "@pisagor/tsconfig": "workspace:*",
       },
     },
     "packages/react": {
@@ -191,7 +182,6 @@
       },
       "devDependencies": {
         "@faker-js/faker": "^10.6.0",
-        "@pisagor/tsconfig": "workspace:*",
         "@types/react": "catalog:",
         "@types/react-dom": "catalog:",
         "react": "catalog:",
@@ -213,7 +203,6 @@
         "recharts": "^3.10.1",
       },
       "devDependencies": {
-        "@pisagor/tsconfig": "workspace:*",
         "@types/react": "catalog:",
         "@types/react-dom": "catalog:",
         "react": "catalog:",
@@ -234,7 +223,6 @@
         "@tanstack/react-form": "^1.33.5",
       },
       "devDependencies": {
-        "@pisagor/tsconfig": "workspace:*",
         "@types/react": "catalog:",
         "@types/react-dom": "catalog:",
         "react": "catalog:",
@@ -251,9 +239,6 @@
       "version": "0.2.0",
       "dependencies": {
         "tailwind-variants": "^3.3.1",
-      },
-      "devDependencies": {
-        "@pisagor/tsconfig": "workspace:*",
       },
     },
     "packages/solid": {
@@ -276,12 +261,27 @@
         "tw-animate-css": "^1.4.0",
       },
       "devDependencies": {
-        "@pisagor/tsconfig": "workspace:*",
         "solid-js": "catalog:",
         "typescript": "^7.0.2",
       },
       "peerDependencies": {
         "solid-js": "^1.9.0",
+        "tailwindcss": "^4",
+      },
+    },
+    "packages/solid-form": {
+      "name": "@pisagor/solid-form",
+      "version": "0.1.0",
+      "dependencies": {
+        "@pisagor/solid": "workspace:*",
+        "@pisagor/utils": "workspace:*",
+        "@tanstack/solid-form": "^1.33.5",
+      },
+      "devDependencies": {
+        "solid-js": "catalog:",
+      },
+      "peerDependencies": {
+        "solid-js": "^1",
         "tailwindcss": "^4",
       },
     },
@@ -305,13 +305,30 @@
         "tw-animate-css": "^1.4.0",
       },
       "devDependencies": {
-        "@pisagor/tsconfig": "workspace:*",
         "svelte": "catalog:",
         "svelte-check": "^4.7.6",
         "typescript": "5.9.3",
       },
       "peerDependencies": {
         "svelte": "^5.20.0",
+        "tailwindcss": "^4",
+      },
+    },
+    "packages/svelte-form": {
+      "name": "@pisagor/svelte-form",
+      "version": "0.1.0",
+      "dependencies": {
+        "@pisagor/svelte": "workspace:*",
+        "@pisagor/utils": "workspace:*",
+        "@tanstack/svelte-form": "^1.33.5",
+      },
+      "devDependencies": {
+        "svelte": "catalog:",
+        "svelte-check": "^4.7.6",
+        "typescript": "5.9.3",
+      },
+      "peerDependencies": {
+        "svelte": "^5",
         "tailwindcss": "^4",
       },
     },
@@ -322,28 +339,12 @@
         "tailwindcss": "^4",
       },
     },
-    "packages/tsconfig": {
-      "name": "@pisagor/tsconfig",
-      "version": "0.0.0",
-      "devDependencies": {
-        "@types/react": "catalog:",
-      },
-      "peerDependencies": {
-        "vue": "catalog:",
-      },
-      "optionalPeers": [
-        "vue",
-      ],
-    },
     "packages/utils": {
       "name": "@pisagor/utils",
       "version": "0.1.0",
       "dependencies": {
         "clsx": "^2.1.1",
         "tailwind-merge": "^3.7.0",
-      },
-      "devDependencies": {
-        "@pisagor/tsconfig": "workspace:*",
       },
     },
     "packages/vue": {
@@ -366,7 +367,6 @@
         "tw-animate-css": "^1.4.0",
       },
       "devDependencies": {
-        "@pisagor/tsconfig": "workspace:*",
         "vue": "catalog:",
       },
       "peerDependencies": {
@@ -382,7 +382,6 @@
         "@pisagor/utils": "workspace:*",
       },
       "devDependencies": {
-        "@pisagor/tsconfig": "workspace:*",
         "vue": "catalog:",
       },
       "peerDependencies": {
@@ -399,7 +398,6 @@
         "@tanstack/vue-form": "^1.33.5",
       },
       "devDependencies": {
-        "@pisagor/tsconfig": "workspace:*",
         "vue": "catalog:",
       },
       "peerDependencies": {
@@ -411,7 +409,6 @@
       "name": "@pisagor/scripts",
       "version": "0.0.0",
       "devDependencies": {
-        "@pisagor/tsconfig": "workspace:*",
         "ts-morph": "^28.0.0",
       },
     },
@@ -968,11 +965,13 @@
 
     "@pisagor/solid": ["@pisagor/solid@workspace:packages/solid"],
 
+    "@pisagor/solid-form": ["@pisagor/solid-form@workspace:packages/solid-form"],
+
     "@pisagor/svelte": ["@pisagor/svelte@workspace:packages/svelte"],
 
-    "@pisagor/tokens": ["@pisagor/tokens@workspace:packages/tokens"],
+    "@pisagor/svelte-form": ["@pisagor/svelte-form@workspace:packages/svelte-form"],
 
-    "@pisagor/tsconfig": ["@pisagor/tsconfig@workspace:packages/tsconfig"],
+    "@pisagor/tokens": ["@pisagor/tokens@workspace:packages/tokens"],
 
     "@pisagor/utils": ["@pisagor/utils@workspace:packages/utils"],
 
@@ -1130,11 +1129,17 @@
 
     "@tanstack/react-virtual": ["@tanstack/react-virtual@3.14.13", "", { "dependencies": { "@tanstack/virtual-core": "3.17.11" }, "peerDependencies": { "react": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0", "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0" } }, "sha512-JbDTAwtzZ99aOeCrAfW5EsE5KSq5RWh6Af2dtFwyLIIk48Ja7vm6n4axu/43T3vfjFnEGJalxJ1wyYjSQD6bSg=="],
 
+    "@tanstack/solid-form": ["@tanstack/solid-form@1.33.5", "", { "dependencies": { "@tanstack/form-core": "1.33.5", "@tanstack/solid-store": "^0.11.0" }, "peerDependencies": { "solid-js": ">=1.9.9" } }, "sha512-azYHYzNwop64bedJRKgjCpi5w9cHu7cNz+dAdSXzaqy9M6JO+GlKNQn54VFhCLYJo45sgNjcdrnz4eyTmgzJ/w=="],
+
+    "@tanstack/solid-store": ["@tanstack/solid-store@0.11.2", "", { "dependencies": { "@tanstack/store": "0.11.2" }, "peerDependencies": { "solid-js": "^1.6.0" } }, "sha512-lscar3xeRKfs/RQBcZjR9NG55sfMP5Pb8S/URohUqcnSB8Yu19JLE/hPjfSd7pKmCpjYq1ZbjqtpIc5bDE1lAQ=="],
+
     "@tanstack/solid-table": ["@tanstack/solid-table@9.2.4", "", { "dependencies": { "@tanstack/store": "^0.11.1", "@tanstack/table-core": "9.2.4" }, "peerDependencies": { "solid-js": ">=1.3" } }, "sha512-fPveX8c3TJp63Bt9hQkrgd2Lm7Cfsm6/s6lh1Vmp2jcX90+RP+UHr3VO8/GPtVOSSroik9ZVSzC3Gobi17SqSA=="],
 
     "@tanstack/solid-virtual": ["@tanstack/solid-virtual@3.13.40", "", { "dependencies": { "@tanstack/virtual-core": "3.17.11" }, "peerDependencies": { "solid-js": "^1.3.0" } }, "sha512-+YNHjRP8Te4d4Iy3ux+eixsPkADFjUiFTPNFFXlZzzSRXSo2kMudczrVYTwFqWyY5/g1to3HSLjY6PNuuV3dVw=="],
 
     "@tanstack/store": ["@tanstack/store@0.11.1", "", {}, "sha512-mzTOBhypOuDJAy/D8n2MfUZ1HFkXnmSETviRyhqEC8LUE7/IZQExOTxMANj3KjTofYTkFNpBY67qaVrT41YccA=="],
+
+    "@tanstack/svelte-form": ["@tanstack/svelte-form@1.33.5", "", { "dependencies": { "@tanstack/form-core": "1.33.5", "@tanstack/svelte-store": "^0.12.0" }, "peerDependencies": { "svelte": "^5.0.0" } }, "sha512-GGlLocQwc4f15EoslfSKSiFwGy1Wz8CPTl6LXcykg4XUEGOmgs8Dg4/RjNyHeN/qrbIMemWuwzbt2wXBq50eXg=="],
 
     "@tanstack/svelte-store": ["@tanstack/svelte-store@0.12.1", "", { "dependencies": { "@tanstack/store": "0.11.1" }, "peerDependencies": { "svelte": "^5.0.0" } }, "sha512-ZFj8gyIWHZRYLv8RHp5jhnMhvw15g86KinotrUp9RfY7ygjkU3CcaMUytIdMJ4Xzq/9GqVlAphV9gFIGKRXWSw=="],
 
@@ -2882,6 +2887,8 @@
 
     "@pisagor/svelte/typescript": ["typescript@5.9.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw=="],
 
+    "@pisagor/svelte-form/typescript": ["typescript@5.9.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw=="],
+
     "@rollup/pluginutils/estree-walker": ["estree-walker@2.0.2", "", {}, "sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w=="],
 
     "@storybook-astro/framework/get-tsconfig": ["get-tsconfig@5.0.0-beta.4", "", { "dependencies": { "resolve-pkg-maps": "^1.0.0" } }, "sha512-7nF7C9fIPFEMHgEMEfgIlO9wDdZ8CyHw27rWciFZfHvHDReIiPhsYuzPRXsfvBCqFy1l8RRyyWV7QLM+ZhUJsQ=="],
@@ -2903,6 +2910,8 @@
     "@tailwindcss/oxide-wasm32-wasi/@tybys/wasm-util": ["@tybys/wasm-util@0.10.4", "", { "dependencies": { "tslib": "^2.4.0" }, "bundled": true }, "sha512-W3c4gRigFS0T/Ma4qIYF3GDAc5AQdHb1yL5znJT1Zv1YaD9Kitx656wBjvr19qbiosmZT8lWDM5BEMynUqX65A=="],
 
     "@tailwindcss/oxide-wasm32-wasi/tslib": ["tslib@2.8.1", "", { "bundled": true }, "sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w=="],
+
+    "@tanstack/solid-store/@tanstack/store": ["@tanstack/store@0.11.2", "", {}, "sha512-sJ4mjol8uQsHV0gOJzzjwXfh2Fwm+Sz0+8deqiTm4jGbMdjzNSW+xZCFm0kUa870uhd8yi+DpKnZb5Kc4apa0Q=="],
 
     "@testing-library/dom/aria-query": ["aria-query@5.3.0", "", { "dependencies": { "dequal": "^2.0.3" } }, "sha512-b0P0sZPKtyu8HkeRAfCq0IfURZK+SuwMjY1UXGBU27wpAiTwQAIlq56IbIO+ytk/JjS1fMR14ee5WBBfKi5J6A=="],
 

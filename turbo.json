@@ -1,5 +1,5 @@
 {
-  "globalDependencies": ["biome.json", "packages/tsconfig/**"],
+  "globalDependencies": ["biome.json", "tsconfig.json"],
   "globalPassThroughEnv": [
     "TANSTACK_CLI_TELEMETRY_DISABLED",
     "TURBO_TELEMETRY_DISABLED"

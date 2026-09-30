@@ -6,9 +6,7 @@
     "tailwind-variants": "^3.3.1"
   },
   "description": "Shared Tailwind class recipes (tv) for Pisagor components.",
-  "devDependencies": {
-    "@pisagor/tsconfig": "workspace:*"
-  },
+
   "exports": {
     ".": "./src/index.ts",
     "./accordion": "./src/accordion.ts",

@@ -123,25 +123,14 @@ Use this skill only for **react**. Sibling skills: `vue`, `astro`.
 - **RichTextEditor** (`rich-text-editor`) — Lets users write and format rich text with common styles such as bold, lists, and emphasis. `./references/primitives/rich-text-editor.md`
 
 ## Form fields
-- **AutocompleteField** (`autocomplete-field`) — Collects text with typeahead suggestions, label, and optional validation message. `./references/primitives/autocomplete-field.md`
-- **CheckboxField** (`checkbox-field`) — Lets the user confirm a choice with a checkbox, label, and optional validation message. `./references/primitives/checkbox-field.md`
-- **DateField** (`date-field`) — Picks a date from a calendar with label and optional validation message. `./references/primitives/date-field.md`
-- **FileField** (`file-field`) — Uploads one or more files with a label and optional validation message. `./references/primitives/file-field.md`
-- **NumberField** (`number-field`) — Adjusts a numeric value with steppers, label, and optional validation message. `./references/primitives/number-field.md`
-- **OtpField** (`otp-field`) — Collects a one-time code across separate digit slots with optional validation message. `./references/primitives/otp-field.md`
-- **PasswordField** (`password-field`) — Captures a password with show-hide control, label, and optional validation message. `./references/primitives/password-field.md`
-- **PhoneField** (`phone-field`) — Collects a phone number with country selection and optional validation message. `./references/primitives/phone-field.md`
-- **RadioGroupField** (`radio-group-field`) — Lets the user pick one option from a short list with an optional validation message. `./references/primitives/radio-group-field.md`
-- **RichTextEditorField** (`rich-text-editor-field`) — Edits formatted text with a toolbar, label, and optional validation message. `./references/primitives/rich-text-editor-field.md`
-- **SelectField** (`select-field`) — Lets the user pick one option from a dropdown with label and optional validation message. `./references/primitives/select-field.md`
-- **SliderField** (`slider-field`) — Sets a value along a range with a label and optional validation message. `./references/primitives/slider-field.md`
-- **SwitchField** (`switch-field`) — Toggles a setting on or off with a label and optional validation message. `./references/primitives/switch-field.md`
-- **TagsInputField** (`tags-input-field`) — Adds and removes multiple tags with a label and optional validation message. `./references/primitives/tags-input-field.md`
-- **TextField** (`text-field`) — Collects a single line of text with a label and optional validation message. `./references/primitives/text-field.md`
-- **TextareaField** (`textarea-field`) — Collects multiple lines of text with a label and optional validation message. `./references/primitives/textarea-field.md`
+
+Labeled fields belong to `@pisagor/react-form`, not this skill. See `packages/react-form/skills/react-form`.
+
 
 ## Charts
-- **Chart** (`chart`) — Wraps charts in themed, accessible layout so data visualizations match the rest of the interface. `./references/primitives/chart.md`
+
+Charts belong to `@pisagor/react-charts`, not this skill. See `packages/react-charts/skills/react-charts`.
+
 
 ## Utilities
 - **Provider** (`provider`) — Wraps the app with locale, icons, and toasts. `./references/primitives/provider.md`

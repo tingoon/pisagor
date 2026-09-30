@@ -2,6 +2,6 @@
   "compilerOptions": {
     "types": ["bun", "node"]
   },
-  "extends": "@pisagor/tsconfig/svelte",
+  "extends": "../../tsconfig.json",
   "include": ["src"]
 }

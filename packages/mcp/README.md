@@ -41,4 +41,4 @@ Catalog generation lives in `@pisagor/scripts`, not this package:
 bun run --filter @pisagor/scripts generate
 ```
 
-Writes `catalog.gen.json` into each UI package (`react`, `vue`, `astro`, `*-form`, `*-charts`, `recipes`). Run before publish.
+Writes `catalog.gen.json` into each UI package (`react`, `vue`, `astro`, `*-form`, `*-charts`, `recipes`). Component examples come from each package’s `skills/*/assets/examples`. Run before publish.
