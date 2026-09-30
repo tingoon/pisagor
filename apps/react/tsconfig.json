@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "jsx": "react-jsx",
+    "noEmit": true,
     "noUncheckedSideEffectImports": false,
     "paths": {
       "#/react-charts/examples": [

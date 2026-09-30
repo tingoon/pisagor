@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "jsx": "preserve",
+    "noEmit": true,
     "noUncheckedSideEffectImports": false,
     "paths": {
       "#/storybook/*": ["./.storybook/*"],
