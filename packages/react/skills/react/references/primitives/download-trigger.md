@@ -1,33 +1,28 @@
-# Pisagor React — DownloadTrigger
+---
+title: Download Trigger
+description: Starts a file download when activated so users can save content without navigating away.
+api: closed
+taxonomy: primitive
+examples:
+  - id: download-svg
+    title: Download Svg
+    exportName: DownloadSvg
+  - id: with-promise
+    title: With Promise
+    exportName: WithPromise
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Starts a file download when activated so users can save content without navigating away.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { DownloadTrigger } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { DownloadTrigger } from "@pisagor/react/download-trigger";
 ```
 
-## Source of truth
-
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/download-trigger/` |
-| Examples | MCP `get_example` / `list_examples` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/download-trigger/`.

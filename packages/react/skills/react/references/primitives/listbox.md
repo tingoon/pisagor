@@ -1,34 +1,74 @@
-# Pisagor React — Listbox
+---
+title: Listbox
+description: Lets users choose one or more options from a scrollable list with clear selection states.
+api: compound-shorthand
+taxonomy: standard
+aliases:
+  - list-box
+examples:
+  - id: disabled-item
+    title: Disabled Item
+    exportName: DisabledItem
+  - id: grid
+    title: Grid
+    exportName: Grid
+  - id: grouping
+    title: Grouping
+    exportName: Grouping
+  - id: horizontal
+    title: Horizontal
+    exportName: Horizontal
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: image-explorer
+    title: Image Explorer
+    exportName: ImageExplorer
+  - id: selection-extended
+    title: Selection Extended
+    exportName: SelectionExtended
+  - id: selection-multiple
+    title: Selection Multiple
+    exportName: SelectionMultiple
+  - id: selection-none
+    title: Selection None
+    exportName: SelectionNone
+  - id: transfer-list
+    title: Transfer List
+    exportName: TransferList
+  - id: with-description
+    title: With Description
+    exportName: WithDescription
+  - id: with-filter
+    title: With Filter
+    exportName: WithFilter
+  - id: with-icon
+    title: With Icon
+    exportName: WithIcon
+  - id: with-popover
+    title: With Popover
+    exportName: WithPopover
+  - id: controlled
+    title: Controlled
+    exportName: Controlled
+  - id: compound
+    title: Compound
+    exportName: Compound
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Lets users choose one or more options from a scrollable list with clear selection states.
-- Public API model: **compound-shorthand**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { Listbox } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { Listbox } from "@pisagor/react/listbox";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/listbox` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/listbox/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/listbox` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/listbox/`.

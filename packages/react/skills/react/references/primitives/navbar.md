@@ -1,34 +1,29 @@
-# Pisagor React — Navbar
+---
+title: Navbar
+description: "Top application bar with brand, navigation, and action slots. Pair with Sidebar for dashboard layouts."
+api: compound
+taxonomy: pattern
+aliases:
+  - header
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: with-sidebar
+    title: With Sidebar
+    exportName: WithSidebar
+---
 
 ## When to use
 
 - Top application bar with brand, navigation, and action slots. Pair with Sidebar for dashboard layouts.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { Navbar } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { Navbar } from "@pisagor/react/navbar";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/navbar` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/navbar/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/navbar` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/navbar/`.

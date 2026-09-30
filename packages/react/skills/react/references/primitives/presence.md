@@ -1,33 +1,22 @@
-# Pisagor React — Presence
+---
+title: Presence
+description: Animates elements in and out of the tree so enter and exit transitions feel smooth.
+api: closed
+taxonomy: primitive
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Animates elements in and out of the tree so enter and exit transitions feel smooth.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { Presence } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { Presence } from "@pisagor/react/presence";
 ```
 
-## Source of truth
-
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/presence/` |
-| Examples | MCP `get_example` / `list_examples` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/presence/`.

@@ -1,34 +1,39 @@
-# Pisagor React — Switch
+---
+title: Switch
+description: Toggles a setting on or off with immediate visual feedback.
+api: closed
+taxonomy: standard
+examples:
+  - id: sizes
+    title: Sizes
+    exportName: Sizes
+  - id: variants
+    title: Variants
+    exportName: Variants
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: invalid
+    title: Invalid
+    exportName: Invalid
+  - id: controlled
+    title: Controlled
+    exportName: Controlled
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Toggles a setting on or off with immediate visual feedback.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { Switch } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { Switch } from "@pisagor/react/switch";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/switch` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/switch/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/switch` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/switch/`.

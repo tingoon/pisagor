@@ -1,34 +1,39 @@
-# Pisagor React — DataList
+---
+title: Data List
+description: "Presents label-value pairs in a readable list for summaries, metadata, and detail views."
+api: compound-shorthand
+taxonomy: standard
+examples:
+  - id: orientation-horizontal
+    title: Orientation Horizontal
+    exportName: OrientationHorizontal
+  - id: orientation-vertical
+    title: Orientation Vertical
+    exportName: OrientationVertical
+  - id: separator
+    title: Separator
+    exportName: Separator
+  - id: info-tip
+    title: Info Tip
+    exportName: InfoTip
+  - id: compound
+    title: Compound
+    exportName: Compound
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Presents label-value pairs in a readable list for summaries, metadata, and detail views.
-- Public API model: **compound-shorthand**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { DataList } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { DataList } from "@pisagor/react/data-list";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/data-list` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/data-list/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/data-list` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/data-list/`.

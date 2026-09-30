@@ -1,34 +1,45 @@
-# Pisagor React — Resizable
+---
+title: Resizable
+description: Splits space between panels with draggable handles so users can adjust layout to their needs.
+api: compound
+taxonomy: standard
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: min-max
+    title: Min Max
+    exportName: MinMax
+  - id: orientation-horizontal
+    title: Orientation Horizontal
+    exportName: OrientationHorizontal
+  - id: orientation-vertical
+    title: Orientation Vertical
+    exportName: OrientationVertical
+  - id: handle
+    title: Handle
+    exportName: Handle
+  - id: edge-handle
+    title: Edge Handle
+    exportName: EdgeHandle
+  - id: multiple-panels
+    title: Multiple Panels
+    exportName: MultiplePanels
+  - id: collapsible
+    title: Collapsible
+    exportName: Collapsible
+---
 
 ## When to use
 
 - Splits space between panels with draggable handles so users can adjust layout to their needs.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { Resizable } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { Resizable } from "@pisagor/react/resizable";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/resizable` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/resizable/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/resizable` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/resizable/`.

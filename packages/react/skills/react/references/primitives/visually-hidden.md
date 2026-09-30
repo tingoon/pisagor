@@ -1,34 +1,24 @@
-# Pisagor React — VisuallyHidden
+---
+title: Visually Hidden
+description: Hides text from the screen while keeping it available to screen readers and other assistive technology.
+api: closed
+taxonomy: primitive
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Hides text from the screen while keeping it available to screen readers and other assistive technology.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { VisuallyHidden } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { VisuallyHidden } from "@pisagor/react/visually-hidden";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/visually-hidden` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/visually-hidden/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/visually-hidden` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/visually-hidden/`.

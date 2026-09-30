@@ -1,34 +1,38 @@
-# Pisagor React — Pagination
+---
+title: Pagination
+description: "Moves through long lists or result sets page by page with previous, next, and numbered links."
+api: compound
+taxonomy: standard
+aliases:
+  - pager
+examples:
+  - id: links
+    title: Links
+    exportName: Links
+  - id: page-range
+    title: Page Range
+    exportName: PageRange
+  - id: custom-composition
+    title: Custom Composition
+    exportName: CustomComposition
+  - id: controlled
+    title: Controlled
+    exportName: Controlled
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Moves through long lists or result sets page by page with previous, next, and numbered links.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { Pagination } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { Pagination } from "@pisagor/react/pagination";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/pagination` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/pagination/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/pagination` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/pagination/`.

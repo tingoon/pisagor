@@ -1,34 +1,39 @@
-# Pisagor React — Announcement
+---
+title: Announcement
+description: Draws attention to a short product or marketing message without blocking the rest of the interface.
+api: compound-shorthand
+taxonomy: standard
+examples:
+  - id: variants
+    title: Variants
+    exportName: Variants
+  - id: with-icon
+    title: With Icon
+    exportName: WithIcon
+  - id: with-link
+    title: With Link
+    exportName: WithLink
+  - id: without-badge
+    title: Without Badge
+    exportName: WithoutBadge
+  - id: compound
+    title: Compound
+    exportName: Compound
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Draws attention to a short product or marketing message without blocking the rest of the interface.
-- Public API model: **compound-shorthand**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { Announcement } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { Announcement } from "@pisagor/react/announcement";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/announcement` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/announcement/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/announcement` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/announcement/`.

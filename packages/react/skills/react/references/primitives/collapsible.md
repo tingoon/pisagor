@@ -1,34 +1,36 @@
-# Pisagor React — Collapsible
+---
+title: Collapsible
+description: Hides and reveals a section of content behind a trigger so users can keep dense pages manageable.
+api: compound
+taxonomy: standard
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: partial-collapse
+    title: Partial Collapse
+    exportName: PartialCollapse
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: nested
+    title: Nested
+    exportName: Nested
+  - id: controlled
+    title: Controlled
+    exportName: Controlled
+---
 
 ## When to use
 
 - Hides and reveals a section of content behind a trigger so users can keep dense pages manageable.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { Collapsible } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { Collapsible } from "@pisagor/react/collapsible";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/collapsible` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/collapsible/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/collapsible` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/collapsible/`.

@@ -1,34 +1,86 @@
-# Pisagor React — DataGrid
+---
+title: Data Grid
+description: "Display and edit tabular data with sorting, filtering, and virtualization."
+api: compound
+taxonomy: pattern
+aliases:
+  - advanced-table
+examples:
+  - id: active-filter-chips
+    title: Active Filter Chips
+    exportName: ActiveFilterChips
+  - id: column-filters
+    title: Column Filters
+    exportName: ColumnFilters
+  - id: column-layout
+    title: Column Layout
+    exportName: ColumnLayout
+  - id: column-pinning
+    title: Column Pinning
+    exportName: ColumnPinning
+  - id: column-resize
+    title: Column Resize
+    exportName: ColumnResize
+  - id: column-visibility
+    title: Column Visibility
+    exportName: ColumnVisibility
+  - id: expanding-rows
+    title: Expanding Rows
+    exportName: ExpandingRows
+  - id: global-selection
+    title: Global Selection
+    exportName: GlobalSelection
+  - id: grouped-rows
+    title: Grouped Rows
+    exportName: GroupedRows
+  - id: loading-state
+    title: Loading State
+    exportName: LoadingState
+  - id: manual-pagination
+    title: Manual Pagination
+    exportName: ManualPagination
+  - id: multi-grouping
+    title: Multi Grouping
+    exportName: MultiGrouping
+  - id: orders-with-footer
+    title: Orders With Footer
+    exportName: OrdersWithFooter
+  - id: paginated
+    title: Paginated
+    exportName: Paginated
+  - id: rich-cells
+    title: Rich Cells
+    exportName: RichCells
+  - id: row-details
+    title: Row Details
+    exportName: RowDetails
+  - id: row-selection
+    title: Row Selection
+    exportName: RowSelection
+  - id: sorting
+    title: Sorting
+    exportName: Sorting
+  - id: striped-variant
+    title: Striped Variant
+    exportName: StripedVariant
+  - id: virtualized
+    title: Virtualized
+    exportName: Virtualized
+  - id: with-sortable-data
+    title: With Sortable Data
+    exportName: WithSortableData
+---
 
 ## When to use
 
 - Displays large or interactive tabular datasets with grid behaviors such as column resize and virtualization. Prefer Data Table for basic lists.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { DataGrid } from "@pisagor/react/data-grid"
-import { PlusIcon } from "@phosphor-icons/react"
+import { type ColumnDef } from "@pisagor/react/data-grid";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/data-grid` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react/data-grid` → `src/data-grid/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/data-grid` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/data-grid/`.

@@ -1,34 +1,41 @@
-# Pisagor React — Command
+---
+title: Command
+description: "Offers a searchable command palette for jumping to actions, pages, or settings from the keyboard."
+api: compound
+taxonomy: pattern
+aliases:
+  - command-palette
+examples:
+  - id: scrollable
+    title: Scrollable
+    exportName: Scrollable
+  - id: shortcuts
+    title: Shortcuts
+    exportName: Shortcuts
+  - id: with-dialog
+    title: With Dialog
+    exportName: WithDialog
+  - id: groups
+    title: Groups
+    exportName: Groups
+  - id: with-footer
+    title: With Footer
+    exportName: WithFooter
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Offers a searchable command palette for jumping to actions, pages, or settings from the keyboard.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { Command } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { Command } from "@pisagor/react/command";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/command` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/command/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/command` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/command/`.

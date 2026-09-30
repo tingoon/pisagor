@@ -1,34 +1,48 @@
-# Pisagor React — CircularSlider
+---
+title: Circular Slider
+description: Lets users choose a value by dragging around a circular control instead of a straight track.
+api: compound
+taxonomy: standard
+examples:
+  - id: sizes
+    title: Sizes
+    exportName: Sizes
+  - id: step
+    title: Step
+    exportName: Step
+  - id: thickness
+    title: Thickness
+    exportName: Thickness
+  - id: with-value
+    title: With Value
+    exportName: WithValue
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: custom-markers
+    title: Custom Markers
+    exportName: CustomMarkers
+  - id: with-markers
+    title: With Markers
+    exportName: WithMarkers
+  - id: controlled
+    title: Controlled
+    exportName: Controlled
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Lets users choose a value by dragging around a circular control instead of a straight track.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { CircularSlider } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { CircularSlider } from "@pisagor/react/circular-slider";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/circular-slider` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/circular-slider/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/circular-slider` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/circular-slider/`.

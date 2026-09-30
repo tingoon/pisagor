@@ -1,33 +1,22 @@
-# Pisagor React — Provider
+---
+title: Provider
+description: "Wraps the app with locale, icons, and toasts."
+api: closed
+taxonomy: primitive
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Wraps the app with locale, icons, and toasts.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { Provider } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { Provider } from "@pisagor/react/provider";
 ```
 
-## Source of truth
-
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/provider/` |
-| Examples | MCP `get_example` / `list_examples` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/provider/`.

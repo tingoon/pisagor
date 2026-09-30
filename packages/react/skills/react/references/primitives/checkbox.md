@@ -1,34 +1,42 @@
-# Pisagor React — Checkbox
+---
+title: Checkbox
+description: "Lets users turn an individual option on or off, alone or as part of a multi-select list."
+api: compound
+taxonomy: standard
+examples:
+  - id: variants
+    title: Variants
+    exportName: Variants
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: indeterminate
+    title: Indeterminate
+    exportName: Indeterminate
+  - id: invalid
+    title: Invalid
+    exportName: Invalid
+  - id: checkbox-group
+    title: Checkbox Group
+    exportName: CheckboxGroup
+  - id: controlled
+    title: Controlled
+    exportName: Controlled
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Lets users turn an individual option on or off, alone or as part of a multi-select list.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { Checkbox } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { Checkbox } from "@pisagor/react/checkbox";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/checkbox` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/checkbox/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/checkbox` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/checkbox/`.

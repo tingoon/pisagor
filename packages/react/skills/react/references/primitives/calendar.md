@@ -1,34 +1,62 @@
-# Pisagor React — Calendar
+---
+title: Calendar
+description: "Lets users browse dates and pick a day, month, or range on a familiar calendar grid."
+api: compound
+taxonomy: pattern
+aliases:
+  - date-grid
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: invalid
+    title: Invalid
+    exportName: Invalid
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: booked-dates
+    title: Booked Dates
+    exportName: BookedDates
+  - id: custom-cell-size
+    title: Custom Cell Size
+    exportName: CustomCellSize
+  - id: min-max
+    title: Min Max
+    exportName: MinMax
+  - id: range
+    title: Range
+    exportName: Range
+  - id: fixed-weeks
+    title: Fixed Weeks
+    exportName: FixedWeeks
+  - id: month-year-selector
+    title: Month Year Selector
+    exportName: MonthYearSelector
+  - id: multiple-months
+    title: Multiple Months
+    exportName: MultipleMonths
+  - id: presets
+    title: Presets
+    exportName: Presets
+  - id: select-today
+    title: Select Today
+    exportName: SelectToday
+  - id: controlled
+    title: Controlled
+    exportName: Controlled
+---
 
 ## When to use
 
 - Lets users browse dates and pick a day, month, or range on a familiar calendar grid.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { Calendar } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { Calendar } from "@pisagor/react/calendar";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/calendar` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/calendar/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/calendar` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/calendar/`.

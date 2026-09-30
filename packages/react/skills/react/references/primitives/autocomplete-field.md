@@ -1,32 +1,23 @@
-# Pisagor React — AutocompleteField
+---
+title: Autocomplete Field
+description: "Collects text with typeahead suggestions, label, and optional validation message"
+api: closed
+taxonomy: standard
+packageName: "@pisagor/react-form"
+examples: []
+---
 
 ## When to use
 
 - Collects text with typeahead suggestions, label, and optional validation message.
-
-## Canonical import
-
-```tsx
-import { AutocompleteField } from "@pisagor/react-form"
-import { PlusIcon } from "@phosphor-icons/react"
-```
-
-## Source of truth
-
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react-form` → `src/fields/autocomplete-field/` |
-| Examples | MCP `get_example` / `list_examples` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
 - Mixing frameworks — this guide is **react** only (`@pisagor/react`).
 - Treating shorthand as a composition root when `Foo.Root` is required.
 - Calling `tv()` in app code — use `@pisagor/recipes`.
 
+## Import
+
+```tsx
+import { AutocompleteField } from "@pisagor/react-form/autocomplete-field";
+```
+
+> Docs page wiring for this primitive is under forms/charts or pending.

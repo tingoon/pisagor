@@ -1,34 +1,51 @@
-# Pisagor React — Rating
+---
+title: Rating
+description: Collects or displays a star-style score so users can rate or review at a glance.
+api: closed
+taxonomy: standard
+examples:
+  - id: custom-color
+    title: Custom Color
+    exportName: CustomColor
+  - id: count
+    title: Count
+    exportName: Count
+  - id: custom-icon
+    title: Custom Icon
+    exportName: CustomIcon
+  - id: custom-size
+    title: Custom Size
+    exportName: CustomSize
+  - id: half-star
+    title: Half Star
+    exportName: HalfStar
+  - id: testimonial
+    title: Testimonial
+    exportName: Testimonial
+  - id: invalid
+    title: Invalid
+    exportName: Invalid
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: readonly
+    title: Readonly
+    exportName: Readonly
+  - id: controlled
+    title: Controlled
+    exportName: Controlled
+---
 
 ## When to use
 
 - Collects or displays a star-style score so users can rate or review at a glance.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { Rating } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { Rating } from "@pisagor/react/rating";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/rating` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/rating/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/rating` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/rating/`.

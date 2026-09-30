@@ -1,33 +1,25 @@
-# Pisagor React — Scrollspy
+---
+title: Scrollspy
+description: Highlights navigation links to show which section is currently visible while scrolling.
+api: closed
+taxonomy: standard
+examples:
+  - id: horizontal
+    title: Horizontal
+    exportName: Horizontal
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Highlights navigation links to show which section is currently visible while scrolling.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { Scrollspy } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { Scrollspy } from "@pisagor/react/scrollspy";
 ```
 
-## Source of truth
-
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/scrollspy/` |
-| Examples | MCP `get_example` / `list_examples` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/scrollspy/`.

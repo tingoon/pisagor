@@ -1,34 +1,45 @@
-# Pisagor React — ImageCropper
+---
+title: Image Cropper
+description: Lets users crop and adjust an image selection before saving or uploading it.
+api: compound
+taxonomy: pattern
+examples:
+  - id: aspect-ratio
+    title: Aspect Ratio
+    exportName: AspectRatio
+  - id: circle-crop
+    title: Circle Crop
+    exportName: CircleCrop
+  - id: fixed-crop-area
+    title: Fixed Crop Area
+    exportName: FixedCropArea
+  - id: initial-crop
+    title: Initial Crop
+    exportName: InitialCrop
+  - id: min-max-size
+    title: Min Max Size
+    exportName: MinMaxSize
+  - id: zoom-limits
+    title: Zoom Limits
+    exportName: ZoomLimits
+  - id: controlled-zoom
+    title: Controlled Zoom
+    exportName: ControlledZoom
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Lets users crop and adjust an image selection before saving or uploading it.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { ImageCropper } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { ImageCropper } from "@pisagor/react/image-cropper";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/image-cropper` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/image-cropper/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/image-cropper` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/image-cropper/`.

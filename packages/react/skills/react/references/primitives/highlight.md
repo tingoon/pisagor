@@ -1,34 +1,36 @@
-# Pisagor React — Highlight
+---
+title: Highlight
+description: Emphasizes matching words inside text so search results and queries are easier to spot.
+api: closed
+taxonomy: primitive
+examples:
+  - id: multiple
+    title: Multiple
+    exportName: Multiple
+  - id: custom-style
+    title: Custom Style
+    exportName: CustomStyle
+  - id: search-query
+    title: Search Query
+    exportName: SearchQuery
+  - id: squiggle
+    title: Squiggle
+    exportName: Squiggle
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Emphasizes matching words inside text so search results and queries are easier to spot.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { Highlight } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { Highlight } from "@pisagor/react/highlight";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/highlight` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/highlight/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/highlight` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/highlight/`.

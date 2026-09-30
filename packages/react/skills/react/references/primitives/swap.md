@@ -1,34 +1,27 @@
-# Pisagor React — Swap
+---
+title: Swap
+description: "Swaps between two pieces of content with a transition, such as play and pause icons."
+api: closed
+taxonomy: primitive
+examples:
+  - id: variants
+    title: Variants
+    exportName: Variants
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Swaps between two pieces of content with a transition, such as play and pause icons.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { Swap } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { Swap } from "@pisagor/react/swap";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/swap` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/swap/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/swap` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/swap/`.

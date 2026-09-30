@@ -1,34 +1,33 @@
-# Pisagor React — Tooltip
+---
+title: Tooltip
+description: Explains a control or label on hover or focus with a short message that does not block interaction.
+api: closed
+taxonomy: standard
+examples:
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: with-keyboard-shortcut
+    title: With Keyboard Shortcut
+    exportName: WithKeyboardShortcut
+  - id: placements
+    title: Placements
+    exportName: Placements
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Explains a control or label on hover or focus with a short message that does not block interaction.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { Tooltip } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { Tooltip } from "@pisagor/react/tooltip";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/tooltip` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/tooltip/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/tooltip` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/tooltip/`.

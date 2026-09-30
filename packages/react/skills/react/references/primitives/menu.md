@@ -1,34 +1,30 @@
-# Pisagor React — Menu
+---
+title: Menu
+description: "Always-visible list of navigation links or actions. For popup menus opened from a trigger, use Dropdown Menu."
+api: compound
+taxonomy: standard
+aliases:
+  - nav
+  - navigation
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: with-groups
+    title: With Groups
+    exportName: WithGroups
+---
 
 ## When to use
 
 - Always-visible list of navigation links or actions. For popup menus opened from a trigger, use Dropdown Menu.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { Menu } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { Menu } from "@pisagor/react/menu";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/menu` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/menu/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/menu` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/menu/`.

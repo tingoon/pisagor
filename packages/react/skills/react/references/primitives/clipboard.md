@@ -1,34 +1,41 @@
-# Pisagor React — Clipboard
+---
+title: Clipboard
+description: Copies text to the clipboard with clear feedback so users can reuse values without selecting manually.
+api: closed
+taxonomy: standard
+aliases:
+  - copy
+examples:
+  - id: variants
+    title: Variants
+    exportName: Variants
+  - id: custom-timeout
+    title: Custom Timeout
+    exportName: CustomTimeout
+  - id: different-icon
+    title: Different Icon
+    exportName: DifferentIcon
+  - id: with-label
+    title: With Label
+    exportName: WithLabel
+  - id: controlled
+    title: Controlled
+    exportName: Controlled
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Copies text to the clipboard with clear feedback so users can reuse values without selecting manually.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { Clipboard } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { Clipboard } from "@pisagor/react/clipboard";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/clipboard` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/clipboard/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/clipboard` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/clipboard/`.

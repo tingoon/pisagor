@@ -1,34 +1,36 @@
-# Pisagor React — AspectRatio
+---
+title: Aspect Ratio
+description: Keeps media and embedded content at a consistent width-to-height ratio as the layout changes.
+api: closed
+taxonomy: primitive
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: portrait
+    title: Portrait
+    exportName: Portrait
+  - id: responsive
+    title: Responsive
+    exportName: Responsive
+  - id: square
+    title: Square
+    exportName: Square
+  - id: video
+    title: Video
+    exportName: Video
+---
 
 ## When to use
 
 - Keeps media and embedded content at a consistent width-to-height ratio as the layout changes.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { AspectRatio } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { AspectRatio } from "@pisagor/react/aspect-ratio";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/aspect-ratio` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/aspect-ratio/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/aspect-ratio` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/aspect-ratio/`.

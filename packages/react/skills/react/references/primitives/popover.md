@@ -1,34 +1,50 @@
-# Pisagor React — Popover
+---
+title: Popover
+description: "Anchors extra content to a trigger for compact forms, menus, or details without a full modal."
+api: compound
+taxonomy: standard
+aliases:
+  - flyout
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: custom-spacing
+    title: Custom Spacing
+    exportName: CustomSpacing
+  - id: anchor
+    title: Anchor
+    exportName: Anchor
+  - id: close-button
+    title: Close Button
+    exportName: CloseButton
+  - id: nested
+    title: Nested
+    exportName: Nested
+  - id: modal
+    title: Modal
+    exportName: Modal
+  - id: scroll-area
+    title: Scroll Area
+    exportName: ScrollArea
+  - id: close-behavior
+    title: Close Behavior
+    exportName: CloseBehavior
+  - id: placements
+    title: Placements
+    exportName: Placements
+---
 
 ## When to use
 
 - Anchors extra content to a trigger for compact forms, menus, or details without a full modal.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { Popover } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { Popover } from "@pisagor/react/popover";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/popover` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/popover/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/popover` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/popover/`.

@@ -1,34 +1,78 @@
-# Pisagor React — Field
+---
+title: Field
+description: "Wraps a form control with label, description, and error text so inputs are easier to understand and fix."
+api: compound
+taxonomy: standard
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: orientation-horizontal
+    title: Orientation Horizontal
+    exportName: OrientationHorizontal
+  - id: orientation-vertical
+    title: Orientation Vertical
+    exportName: OrientationVertical
+  - id: autocomplete-field
+    title: Autocomplete Field
+    exportName: AutocompleteField
+  - id: checkbox-field
+    title: Checkbox Field
+    exportName: CheckboxField
+  - id: checkbox-group-field
+    title: Checkbox Group Field
+    exportName: CheckboxGroupField
+  - id: combobox-field
+    title: Combobox Field
+    exportName: ComboboxField
+  - id: combobox-multiple-field
+    title: Combobox Multiple Field
+    exportName: ComboboxMultipleField
+  - id: disabled-field
+    title: Disabled Field
+    exportName: DisabledField
+  - id: field-group
+    title: Field Group
+    exportName: FieldGroup
+  - id: with-input-group
+    title: With Input Group
+    exportName: WithInputGroup
+  - id: number-input-story
+    title: Number Input Story
+    exportName: NumberInputStory
+  - id: radio-group-field
+    title: Radio Group Field
+    exportName: RadioGroupField
+  - id: required-field
+    title: Required Field
+    exportName: RequiredField
+  - id: select-field
+    title: Select Field
+    exportName: SelectField
+  - id: slider-field
+    title: Slider Field
+    exportName: SliderField
+  - id: switch-field
+    title: Switch Field
+    exportName: SwitchField
+  - id: textarea-field
+    title: Textarea Field
+    exportName: TextareaField
+  - id: with-error
+    title: With Error
+    exportName: WithError
+---
 
 ## When to use
 
 - Wraps a form control with label, description, and error text so inputs are easier to understand and fix.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { Field } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { Field } from "@pisagor/react/field";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/field` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/field/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/field` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/field/`.

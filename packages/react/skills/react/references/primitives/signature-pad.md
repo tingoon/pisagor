@@ -1,34 +1,33 @@
-# Pisagor React — SignaturePad
+---
+title: Signature Pad
+description: Captures a handwritten signature on a canvas for approvals and forms.
+api: closed
+taxonomy: standard
+examples:
+  - id: invalid
+    title: Invalid
+    exportName: Invalid
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: controlled
+    title: Controlled
+    exportName: Controlled
+  - id: image-preview
+    title: Image Preview
+    exportName: ImagePreview
+---
 
 ## When to use
 
 - Captures a handwritten signature on a canvas for approvals and forms.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { SignaturePad } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { SignaturePad } from "@pisagor/react/signature-pad";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/signature-pad` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/signature-pad/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/signature-pad` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/signature-pad/`.

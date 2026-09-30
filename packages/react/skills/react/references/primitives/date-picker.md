@@ -1,34 +1,51 @@
-# Pisagor React — DatePicker
+---
+title: Date Picker
+description: Lets users pick a date or range from a calendar inside a field or popover.
+api: compound
+taxonomy: pattern
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: variants
+    title: Variants
+    exportName: Variants
+  - id: range
+    title: Range
+    exportName: Range
+  - id: custom-format
+    title: Custom Format
+    exportName: CustomFormat
+  - id: input
+    title: Input
+    exportName: Input
+  - id: invalid
+    title: Invalid
+    exportName: Invalid
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: clearable
+    title: Clearable
+    exportName: Clearable
+  - id: time
+    title: Time
+    exportName: Time
+  - id: with-presets
+    title: With Presets
+    exportName: WithPresets
+---
 
 ## When to use
 
 - Lets users pick a date or range from a calendar inside a field or popover.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { DatePicker } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { DatePicker } from "@pisagor/react/date-picker";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/date-picker` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/date-picker/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/date-picker` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/date-picker/`.

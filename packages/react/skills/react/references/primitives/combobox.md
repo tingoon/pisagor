@@ -1,34 +1,60 @@
-# Pisagor React — Combobox
+---
+title: Combobox
+description: "Internal selection engine that combines search with a filterable list. Prefer Select, Autocomplete, or Listbox in application code."
+api: compound-shorthand
+taxonomy: standard
+examples:
+  - id: sizes
+    title: Sizes
+    exportName: Sizes
+  - id: variants
+    title: Variants
+    exportName: Variants
+  - id: autohighlight
+    title: Autohighlight
+    exportName: Autohighlight
+  - id: multiple
+    title: Multiple
+    exportName: Multiple
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: invalid
+    title: Invalid
+    exportName: Invalid
+  - id: group
+    title: Group
+    exportName: Group
+  - id: with-clear-button
+    title: With Clear Button
+    exportName: WithClearButton
+  - id: with-scroll
+    title: With Scroll
+    exportName: WithScroll
+  - id: with-start-icon
+    title: With Start Icon
+    exportName: WithStartIcon
+  - id: controlled
+    title: Controlled
+    exportName: Controlled
+  - id: compound
+    title: Compound
+    exportName: Compound
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Internal selection engine that combines search with a filterable list. Prefer Select, Autocomplete, or Listbox in application code.
-- Public API model: **compound-shorthand**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { Combobox } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { Combobox } from "@pisagor/react/combobox";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/combobox` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/combobox/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/combobox` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/combobox/`.

@@ -1,34 +1,111 @@
-# Pisagor React — ColorPicker
+---
+title: Color Picker
+description: Lets users choose a color visually and fine-tune it with sliders or numeric inputs.
+api: compound
+taxonomy: standard
+examples:
+  - id: variants
+    title: Variants
+    exportName: Variants
+  - id: custom-spacing
+    title: Custom Spacing
+    exportName: CustomSpacing
+  - id: area-channels
+    title: Area Channels
+    exportName: AreaChannels
+  - id: area-dots
+    title: Area Dots
+    exportName: AreaDots
+  - id: input-channel
+    title: Input Channel
+    exportName: InputChannel
+  - id: input-compact
+    title: Input Compact
+    exportName: InputCompact
+  - id: input-controlled
+    title: Input Controlled
+    exportName: InputControlled
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: invalid
+    title: Invalid
+    exportName: Invalid
+  - id: input-with-popover
+    title: Input With Popover
+    exportName: InputWithPopover
+  - id: input-with-swatch-preview
+    title: Input With Swatch Preview
+    exportName: InputWithSwatchPreview
+  - id: popover-disabled
+    title: Popover Disabled
+    exportName: PopoverDisabled
+  - id: popover-sliders-only
+    title: Popover Sliders Only
+    exportName: PopoverSlidersOnly
+  - id: popover-with-channel-editing
+    title: Popover With Channel Editing
+    exportName: PopoverWithChannelEditing
+  - id: popover-with-swatch-picker
+    title: Popover With Swatch Picker
+    exportName: PopoverWithSwatchPicker
+  - id: slider-alpha-channel
+    title: Slider Alpha Channel
+    exportName: SliderAlphaChannel
+  - id: slider-controlled
+    title: Slider Controlled
+    exportName: SliderControlled
+  - id: slider-disabled
+    title: Slider Disabled
+    exportName: SliderDisabled
+  - id: slider-hsba-channels
+    title: Slider Hsba Channels
+    exportName: SliderHsbaChannels
+  - id: slider-hsl-channels
+    title: Slider Hsl Channels
+    exportName: SliderHslChannels
+  - id: slider-rgb-channels
+    title: Slider Rgb Channels
+    exportName: SliderRgbChannels
+  - id: slider-vertical
+    title: Slider Vertical
+    exportName: SliderVertical
+  - id: swatch-picker-controlled
+    title: Swatch Picker Controlled
+    exportName: SwatchPickerControlled
+  - id: swatch-picker-custom-indicator
+    title: Swatch Picker Custom Indicator
+    exportName: SwatchPickerCustomIndicator
+  - id: swatch-picker-custom-radius
+    title: Swatch Picker Custom Radius
+    exportName: SwatchPickerCustomRadius
+  - id: swatch-picker-custom-size
+    title: Swatch Picker Custom Size
+    exportName: SwatchPickerCustomSize
+  - id: swatch-picker-disabled
+    title: Swatch Picker Disabled
+    exportName: SwatchPickerDisabled
+  - id: swatch-picker
+    title: Swatch Picker
+    exportName: SwatchPicker
+  - id: clearable
+    title: Clearable
+    exportName: Clearable
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Lets users choose a color visually and fine-tune it with sliders or numeric inputs.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { ColorPicker } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { ColorPicker } from "@pisagor/react/color-picker";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/color-picker` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/color-picker/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/color-picker` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/color-picker/`.

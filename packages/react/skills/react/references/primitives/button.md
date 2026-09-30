@@ -1,34 +1,54 @@
-# Pisagor React — Button
+---
+title: Button
+description: "Triggers actions with emphasis, size, and loading states."
+api: closed
+taxonomy: primitive
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: sizes
+    title: Sizes
+    exportName: Sizes
+  - id: variants
+    title: Variants
+    exportName: Variants
+  - id: custom-color
+    title: Custom color
+    exportName: CustomColor
+  - id: pill
+    title: Pill
+    exportName: Pill
+  - id: no-click-effect
+    title: No click effect
+    exportName: NoClickEffect
+  - id: icon
+    title: Icon
+    exportName: Icon
+  - id: as-child
+    title: As child
+    exportName: AsChild
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: loading
+    title: Loading
+    exportName: Loading
+  - id: with-icon
+    title: With icon
+    exportName: WithIcon
+---
 
 ## When to use
 
 - Primary and secondary action triggers.
-- Public API model: **closed**.
 
-## Canonical import
-
-```tsx
-import { Button } from "@pisagor/react";
-import { PlusIcon } from "@phosphor-icons/react";
-```
-
-## Patterns
+## Import
 
 ```tsx
-<Button>Button</Button>
-<Button variant="outline" size="sm">Save</Button>
-<Button loading={pending}>Submit</Button>
-<Button aria-label="Add" size="icon-md">
-  <PlusIcon />
-</Button>
+import { Button } from "@pisagor/react/button";
 ```
 
-Loading prop is **`loading`** (not `isLoading`). Class prop is **`className`**.
+Style with `@pisagor/recipes/button` — no app-level `tv()`.
 
-## Source of truth
-
-| Resource | Path |
-| -------- | ---- |
-| Source | `@pisagor/react` → `src/components/button/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/button` |
+Live examples below match `assets/examples/button/`.

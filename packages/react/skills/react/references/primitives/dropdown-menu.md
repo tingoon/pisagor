@@ -1,34 +1,60 @@
-# Pisagor React — DropdownMenu
+---
+title: Dropdown Menu
+description: Opens a dropdown list of actions or destinations from a trigger for navigation and contextual commands.
+api: compound
+taxonomy: standard
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: shortcuts
+    title: Shortcuts
+    exportName: Shortcuts
+  - id: checkboxes
+    title: Checkboxes
+    exportName: Checkboxes
+  - id: destructive
+    title: Destructive
+    exportName: Destructive
+  - id: group-label
+    title: Group Label
+    exportName: GroupLabel
+  - id: icons
+    title: Icons
+    exportName: Icons
+  - id: link
+    title: Link
+    exportName: Link
+  - id: nested
+    title: Nested
+    exportName: Nested
+  - id: quick-item
+    title: Quick Item
+    exportName: QuickItem
+  - id: radio-group
+    title: Radio Group
+    exportName: RadioGroup
+  - id: with-scroll
+    title: With Scroll
+    exportName: WithScroll
+  - id: with-separator
+    title: With Separator
+    exportName: WithSeparator
+  - id: placements
+    title: Placements
+    exportName: Placements
+---
 
 ## When to use
 
 - Opens a dropdown list of actions or destinations from a trigger for navigation and contextual commands.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { DropdownMenu } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { DropdownMenu } from "@pisagor/react/dropdown-menu";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/dropdown-menu` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/dropdown-menu/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/dropdown-menu` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/dropdown-menu/`.

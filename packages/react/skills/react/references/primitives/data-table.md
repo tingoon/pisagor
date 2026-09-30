@@ -1,34 +1,27 @@
-# Pisagor React — DataTable
+---
+title: Data Table
+description: "Present structured tabular data with headers, rows, and optional selection."
+api: compound
+taxonomy: pattern
+examples:
+  - id: empty
+    title: Empty
+    exportName: Empty
+  - id: sorting
+    title: Sorting
+    exportName: Sorting
+---
 
 ## When to use
 
 - Renders basic tabular data with columns and rows. Prefer Data Grid when you need resize, virtualization, or advanced interactions.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { DataTable } from "@pisagor/react/data-table"
-import { PlusIcon } from "@phosphor-icons/react"
+import { DataTable } from "@pisagor/react/data-table";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/data-table` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react/data-table` → `src/data-table/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/data-table` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/data-table/`.

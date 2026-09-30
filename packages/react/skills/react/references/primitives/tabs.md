@@ -1,34 +1,47 @@
-# Pisagor React — Tabs
+---
+title: Tabs
+description: Organizes related content into panels that users switch between without leaving the page.
+api: compound-shorthand
+taxonomy: standard
+aliases:
+  - tablist
+examples:
+  - id: variants
+    title: Variants
+    exportName: Variants
+  - id: orientation-horizontal
+    title: Orientation Horizontal
+    exportName: OrientationHorizontal
+  - id: orientation-vertical
+    title: Orientation Vertical
+    exportName: OrientationVertical
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: with-icons
+    title: With Icons
+    exportName: WithIcons
+  - id: controlled
+    title: Controlled
+    exportName: Controlled
+  - id: compound
+    title: Compound
+    exportName: Compound
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Organizes related content into panels that users switch between without leaving the page.
-- Public API model: **compound-shorthand**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { Tabs } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { Tabs } from "@pisagor/react/tabs";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/tabs` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/tabs/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/tabs` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/tabs/`.

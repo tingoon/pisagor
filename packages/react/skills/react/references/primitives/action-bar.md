@@ -1,34 +1,47 @@
-# Pisagor React — ActionBar
+---
+title: Action Bar
+description: "Surfaces bulk actions when one or more items are selected, keeping primary tools close without cluttering the page."
+api: compound
+taxonomy: pattern
+aliases:
+  - bulk-actions
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: custom-spacing
+    title: Custom Spacing
+    exportName: CustomSpacing
+  - id: gutter
+    title: Gutter
+    exportName: Gutter
+  - id: close-trigger
+    title: Close Trigger
+    exportName: CloseTrigger
+  - id: with-dialog
+    title: With Dialog
+    exportName: WithDialog
+  - id: with-menu
+    title: With Menu
+    exportName: WithMenu
+  - id: controlled
+    title: Controlled
+    exportName: Controlled
+  - id: placements
+    title: Placements
+    exportName: Placements
+---
 
 ## When to use
 
 - Surfaces bulk actions when one or more items are selected, keeping primary tools close without cluttering the page.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { ActionBar } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { ActionBar } from "@pisagor/react/action-bar";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/action-bar` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/action-bar/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/action-bar` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/action-bar/`.

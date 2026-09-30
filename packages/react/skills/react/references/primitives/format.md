@@ -1,33 +1,49 @@
-# Pisagor React — Format
+---
+title: Format
+description: "Formats numbers, bytes, and relative times for display so values read naturally in the user locale."
+api: compound
+taxonomy: primitive
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: byte-unit-display
+    title: Byte Unit Display
+    exportName: ByteUnitDisplay
+  - id: byte-unit-system
+    title: Byte Unit System
+    exportName: ByteUnitSystem
+  - id: byte
+    title: Byte
+    exportName: Byte
+  - id: number-compact
+    title: Number Compact
+    exportName: NumberCompact
+  - id: number-currency
+    title: Number Currency
+    exportName: NumberCurrency
+  - id: number-percent
+    title: Number Percent
+    exportName: NumberPercent
+  - id: number-story
+    title: Number Story
+    exportName: NumberStory
+  - id: relative-time-short
+    title: Relative Time Short
+    exportName: RelativeTimeShort
+  - id: relative-time
+    title: Relative Time
+    exportName: RelativeTime
+---
 
 ## When to use
 
 - Formats numbers, bytes, and relative times for display so values read naturally in the user locale.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { Format } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { Format } from "@pisagor/react/format";
 ```
 
-## Source of truth
-
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/format/` |
-| Examples | MCP `get_example` / `list_examples` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/format/`.

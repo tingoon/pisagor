@@ -1,34 +1,36 @@
-# Pisagor React — ButtonGroup
+---
+title: Button Group
+description: Groups related actions together so users can compare choices and pick one option from a set.
+api: compound
+taxonomy: primitive
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: orientation-horizontal
+    title: Orientation Horizontal
+    exportName: OrientationHorizontal
+  - id: orientation-vertical
+    title: Orientation Vertical
+    exportName: OrientationVertical
+  - id: nested
+    title: Nested
+    exportName: Nested
+  - id: with-separator
+    title: With Separator
+    exportName: WithSeparator
+---
 
 ## When to use
 
 - Groups related actions together so users can compare choices and pick one option from a set.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```tsx
-import { ButtonGroup } from "@pisagor/react"
-import { PlusIcon } from "@phosphor-icons/react"
+import { ButtonGroup } from "@pisagor/react/button-group";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/button-group` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/react` → `src/components/button-group/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/button-group` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `className` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **react** only (`@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/button-group/`.
