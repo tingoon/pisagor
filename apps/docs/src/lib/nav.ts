@@ -550,7 +550,7 @@ export function getDocsArea(pathname: string): DocsArea {
   return "components";
 }
 
-/** Solid — forms/charts packages out of scope; only shipped components. */
+/** Solid — charts out of scope; components + forms. */
 const solidComponentSections: NavSection[] = [
   {
     items: [
@@ -720,7 +720,7 @@ const solidComponentSections: NavSection[] = [
   },
 ];
 
-/** Svelte — forms/charts packages out of scope; only shipped components. */
+/** Svelte — charts out of scope; components + forms. */
 const svelteComponentSections: NavSection[] = [
   {
     items: [
@@ -954,11 +954,7 @@ export function getSidebarNav(
     return recipeSections;
   }
   if (area === "forms") {
-    if (
-      framework === "astro" ||
-      framework === "solid" ||
-      framework === "svelte"
-    ) {
+    if (framework === "astro") {
       return [
         {
           items: [{ slug: "forms", status: "soon", title: "Overview" }],
@@ -1005,11 +1001,14 @@ export function swapFrameworkPath(pathname: string, next: Framework) {
   ) {
     return frameworkPath(next);
   }
-  // forms/charts not on astro
+  // charts not on astro/solid/svelte; forms not on astro
   if (
-    (next === "astro" || next === "solid" || next === "svelte") &&
-    (parts[1] === "forms" || parts[1] === "charts")
+    parts[1] === "charts" &&
+    (next === "astro" || next === "solid" || next === "svelte")
   ) {
+    return frameworkPath(next);
+  }
+  if (parts[1] === "forms" && next === "astro") {
     return frameworkPath(next);
   }
   return withDocsBase(`/${parts.join("/")}`);

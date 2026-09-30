@@ -1,11 +1,13 @@
 ---
 import { ArrowSquareOut, GithubLogo } from "@phosphor-icons/react";
 import type { Framework } from "#/lib/nav";
-import { packages } from "#/lib/packages";
+import { resolvePackageLinks } from "#/lib/packages";
 import { NpmBrandIcon, StorybookBrandIcon } from "./brand-icons";
 
 interface Props {
   framework: Framework;
+  /** Override npm package (e.g. @pisagor/react-form) instead of framework default. */
+  packageName?: string;
   /** Top rule under meta inside ComponentHeader. */
   embedded?: boolean;
   /** Inside ComponentHeader card — skip page bottom margin. */
@@ -13,10 +15,12 @@ interface Props {
   class?: string;
 }
 
-const pkg = packages[Astro.props.framework];
+const pkg = resolvePackageLinks(Astro.props.framework, Astro.props.packageName);
 const links = [
   { href: pkg.github, icon: "github" as const, label: "GitHub" },
-  { href: pkg.storybook, icon: "storybook" as const, label: "Storybook" },
+  ...(pkg.storybook
+    ? [{ href: pkg.storybook, icon: "storybook" as const, label: "Storybook" }]
+    : []),
   { href: pkg.npm, icon: "npm" as const, label: "npm" },
 ];
 ---

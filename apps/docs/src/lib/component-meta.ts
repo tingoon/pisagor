@@ -18,7 +18,7 @@ interface ComponentMeta {
 }
 
 const skillRawModules = import.meta.glob(
-  "../../../../packages/react/skills/react/references/primitives/*.md",
+  "../../../../packages/*/skills/*/references/primitives/*.md",
   {
     eager: true,
     import: "default",
@@ -26,12 +26,24 @@ const skillRawModules = import.meta.glob(
   },
 ) as Record<string, string>;
 
+function packagePriority(path: string): number {
+  if (path.includes("/packages/react/")) return 0;
+  if (path.includes("/packages/vue/")) return 1;
+  if (path.includes("/packages/astro/")) return 2;
+  if (path.includes("/packages/solid/")) return 3;
+  if (path.includes("/packages/svelte/")) return 4;
+  return 10;
+}
+
 function metaFromSkillDocs(): Record<string, ComponentMeta> {
   const out: Record<string, ComponentMeta> = {};
-  for (const [path, raw] of Object.entries(skillRawModules)) {
+  const ranked = Object.entries(skillRawModules).sort(
+    ([a], [b]) => packagePriority(a) - packagePriority(b),
+  );
+  for (const [path, raw] of ranked) {
     if (typeof raw !== "string" || !raw.startsWith("---")) continue;
     const id = path.split("/").pop()?.replace(/\.md$/, "");
-    if (!id) continue;
+    if (!id || out[id]) continue;
     try {
       const { docs } = parseSkillDoc(raw);
       out[id] = {
