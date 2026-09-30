@@ -1,32 +1,28 @@
-# Pisagor Vue Form — RichTextEditorField
+---
+title: Rich Text Editor Field
+description: Rich Text Editor Field.
+api: closed
+taxonomy: standard
+packageName: "@pisagor/vue-form"
+examples:
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: invalid
+    title: Invalid
+    exportName: Invalid
+---
 
 ## When to use
 
 - Combines Field and RichTextEditor with label, description, and optional error message.
 
-## Canonical import
+## Import
 
 ```ts
-import { RichTextEditorField } from "@pisagor/vue-form"
-import { PhPlus } from "@phosphor-icons/vue"
+import { RichTextEditorField } from "@pisagor/vue-form/rich-text-editor-field";
 ```
 
-## Source of truth
+Part of `@pisagor/vue-form`. Style with recipes where available — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue-form` → `src/fields/rich-text-editor-field/` |
-| Examples | MCP `get_example` / `list_examples` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **@pisagor/vue-form** (not `@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/rich-text-editor-field/`.

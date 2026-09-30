@@ -1,32 +1,31 @@
-# Pisagor Vue Form — PasswordField
+---
+title: Password Field
+description: Password Field.
+api: closed
+taxonomy: standard
+packageName: "@pisagor/vue-form"
+examples:
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: invalid
+    title: Invalid
+    exportName: Invalid
+  - id: with-label-accessory
+    title: With Label Accessory
+    exportName: WithLabelAccessory
+---
 
 ## When to use
 
 - Combines Field and PasswordInput with show-hide control, label, and optional error message.
 
-## Canonical import
+## Import
 
 ```ts
-import { PasswordField } from "@pisagor/vue-form"
-import { PhPlus } from "@phosphor-icons/vue"
+import { PasswordField } from "@pisagor/vue-form/password-field";
 ```
 
-## Source of truth
+Part of `@pisagor/vue-form`. Style with recipes where available — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue-form` → `src/fields/password-field/` |
-| Examples | MCP `get_example` / `list_examples` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **@pisagor/vue-form** (not `@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/password-field/`.

@@ -1,34 +1,25 @@
-# Pisagor Vue Charts — Chart
+---
+title: Chart
+description: Wraps charts in themed, accessible layout so data visualizations match the rest of the interface
+api: compound
+taxonomy: standard
+packageName: "@pisagor/vue-charts"
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Wraps charts in themed, accessible layout so data visualizations match the rest of the interface.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Chart } from "@pisagor/vue-charts"
-import { PhPlus } from "@phosphor-icons/vue"
+import { Chart } from "@pisagor/vue-charts";
 ```
 
-## Source of truth
+Part of `@pisagor/vue-charts`. Style with recipes where available — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue-charts` → `src/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/chart` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **@pisagor/vue-charts** (not `@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/`.
