@@ -1,11 +1,12 @@
 ---
-import CodeBlock from "#/components/docs/code-block.astro";
 import ComponentHeader from "#/components/docs/component-header.astro";
 import ComponentPreview from "#/components/docs/component-preview.astro";
 import Installation from "#/components/docs/installation.astro";
 import PropsTable from "#/components/docs/props-table.astro";
 import DocsLayout from "#/layouts/docs-layout.astro";
+import type { ComponentDocs } from "#/lib/component-docs-types";
 import { ratingProps } from "#/lib/props/rating";
+import { getSkillDocImportStatement } from "#/lib/skill-doc";
 import {
   Controlled,
   Count,
@@ -17,148 +18,285 @@ import {
   sources as examples,
   HalfStar,
   Invalid,
-  imports,
   OnSurface,
   Readonly,
   Testimonial,
 } from "#/vue/examples/rating";
+import {
+  Content,
+  frontmatter,
+  getHeadings,
+} from "#/vue/references/primitives/rating.md";
+
+const id = "rating";
+const docs = frontmatter as ComponentDocs;
+const importStatement = getSkillDocImportStatement(
+  id,
+  docs.packageName ?? "@pisagor/vue",
+  "vue",
+);
+
+const mdHeadings = getHeadings()
+  .filter((h) => h.depth >= 2)
+  .map((h) => ({ depth: h.depth, slug: h.slug, text: h.text }));
 
 const headings = [
-  { depth: 2, slug: "usage", text: "Usage" },
-  { depth: 3, slug: "on-surface", text: "On Surface" },
-  { depth: 3, slug: "custom-color", text: "Custom Color" },
-  { depth: 3, slug: "count", text: "Count" },
-  { depth: 3, slug: "custom-icon", text: "Custom Icon" },
-  { depth: 3, slug: "custom-size", text: "Custom Size" },
-  { depth: 3, slug: "half-star", text: "Half Star" },
-  { depth: 3, slug: "testimonial", text: "Testimonial" },
-  { depth: 3, slug: "invalid", text: "Invalid" },
-  { depth: 3, slug: "disabled", text: "Disabled" },
-  { depth: 3, slug: "readonly", text: "Readonly" },
-  { depth: 3, slug: "controlled", text: "Controlled" },
-  { depth: 3, slug: "default", text: "Default" },
+  ...mdHeadings,
+  { depth: 2, slug: "examples", text: "Examples" },
+  ...docs.examples.map((ex) => ({
+    depth: 3,
+    slug: ex.id,
+    text: ex.title,
+  })),
   { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
+
+function exampleMeta(exportName: string) {
+  return docs.examples.find((ex) => ex.exportName === exportName);
+}
 ---
 
 <DocsLayout
-  description="A star rating component built on Ark UI rating-group."
+  description={docs.description}
   framework="vue"
   headings={headings}
-  title="Rating"
+  title={docs.title}
 >
-  <ComponentHeader framework="vue" id="rating" />
+  <ComponentHeader
+    framework="vue"
+    id={id}
+    packageName={docs.packageName ?? "@pisagor/vue"}
+  />
 
-  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="usage">Usage</h2>
+  <div
+    class="docs-skill-md mb-10 space-y-4 text-[0.9375rem] leading-7 text-foreground/90 [&_a]:text-foreground [&_a]:underline [&_a]:underline-offset-2 [&_code]:rounded-md [&_code]:bg-muted/60 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-3.25 [&_h2]:mt-10 [&_h2]:mb-3 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:text-foreground [&_li]:my-1 [&_ol]:my-3 [&_ol]:list-decimal [&_ol]:ps-5 [&_p]:my-3 [&_pre]:my-4 [&_pre]:overflow-x-auto [&_pre]:rounded-xl [&_pre]:border [&_pre]:border-border/60 [&_pre]:bg-muted/30 [&_pre]:p-4 [&_pre]:text-3.25 [&_strong]:font-semibold [&_ul]:my-3 [&_ul]:list-disc [&_ul]:ps-5"
+  >
+    <Content />
+  </div>
 
-  <CodeBlock class="mb-8" code={imports} lang="ts" title="Import" />
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="examples">
+    Examples
+  </h2>
 
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="on-surface">
-    On Surface
-  </h3>
-  <ComponentPreview code={examples.OnSurface} language="vue" title="On Surface">
-    <OnSurface client:only="vue" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-color">
-    Custom Color
-  </h3>
-  <ComponentPreview
-    code={examples.CustomColor}
-    language="vue"
-    title="Custom Color"
-  >
-    <CustomColor client:only="vue" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="count">
-    Count
-  </h3>
-  <ComponentPreview code={examples.Count} language="vue" title="Count">
-    <Count client:only="vue" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-icon">
-    Custom Icon
-  </h3>
-  <ComponentPreview
-    code={examples.CustomIcon}
-    language="vue"
-    title="Custom Icon"
-  >
-    <CustomIcon client:only="vue" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="custom-size">
-    Custom Size
-  </h3>
-  <ComponentPreview
-    code={examples.CustomSize}
-    language="vue"
-    title="Custom Size"
-  >
-    <CustomSize client:only="vue" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="half-star">
-    Half Star
-  </h3>
-  <ComponentPreview code={examples.HalfStar} language="vue" title="Half Star">
-    <HalfStar client:only="vue" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="testimonial">
-    Testimonial
-  </h3>
-  <ComponentPreview
-    code={examples.Testimonial}
-    language="vue"
-    title="Testimonial"
-  >
-    <Testimonial client:only="vue" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="invalid">
-    Invalid
-  </h3>
-  <ComponentPreview code={examples.Invalid} language="vue" title="Invalid">
-    <Invalid client:only="vue" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="disabled">
-    Disabled
-  </h3>
-  <ComponentPreview code={examples.Disabled} language="vue" title="Disabled">
-    <Disabled client:only="vue" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="readonly">
-    Readonly
-  </h3>
-  <ComponentPreview code={examples.Readonly} language="vue" title="Readonly">
-    <Readonly client:only="vue" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="controlled">
-    Controlled
-  </h3>
-  <ComponentPreview
-    code={examples.Controlled}
-    language="vue"
-    title="Controlled"
-  >
-    <Controlled client:only="vue" />
-  </ComponentPreview>
-  <h3 class="mb-3 mt-10 text-xl font-semibold tracking-tight" id="default">
-    Default
-  </h3>
-  <ComponentPreview code={examples.Default} language="vue" title="Default">
-    <Default client:only="vue" />
-  </ComponentPreview>
+  {(() => {
+  const ex = exampleMeta("CustomColor");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.CustomColor}
+        language="vue"
+        title={ex.title}
+      >
+        <CustomColor client:only="vue" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("Count");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview code={examples.Count} language="vue" title={ex.title}>
+        <Count client:only="vue" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("CustomIcon");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.CustomIcon}
+        language="vue"
+        title={ex.title}
+      >
+        <CustomIcon client:only="vue" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("CustomSize");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.CustomSize}
+        language="vue"
+        title={ex.title}
+      >
+        <CustomSize client:only="vue" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("HalfStar");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.HalfStar}
+        language="vue"
+        title={ex.title}
+      >
+        <HalfStar client:only="vue" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("Testimonial");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.Testimonial}
+        language="vue"
+        title={ex.title}
+      >
+        <Testimonial client:only="vue" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("Invalid");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview code={examples.Invalid} language="vue" title={ex.title}>
+        <Invalid client:only="vue" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("Disabled");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.Disabled}
+        language="vue"
+        title={ex.title}
+      >
+        <Disabled client:only="vue" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("Readonly");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.Readonly}
+        language="vue"
+        title={ex.title}
+      >
+        <Readonly client:only="vue" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("Controlled");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.Controlled}
+        language="vue"
+        title={ex.title}
+      >
+        <Controlled client:only="vue" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("Default");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview code={examples.Default} language="vue" title={ex.title}>
+        <Default client:only="vue" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
+
+  {(() => {
+  const ex = exampleMeta("OnSurface");
+  return ex ? (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={examples.OnSurface}
+        language="vue"
+        title={ex.title}
+      >
+        <OnSurface client:only="vue" />
+      </ComponentPreview>
+    </>
+  ) : null;
+})()}
 
   <h2
-    class="mb-3 mt-12 text-2xl font-semibold tracking-tight"
+    class="mb-3 mt-16 text-2xl font-semibold tracking-tight"
     id="installation"
   >
     Installation
   </h2>
-  <Installation class="mb-8" packages="@pisagor/vue" />
+  <Installation
+    class="mb-12"
+    manual={importStatement}
+    packages={docs.packageName ?? "@pisagor/vue"}
+  />
 
-  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="props">Props</h2>
-  <p class="mb-4 text-muted-foreground">
-    Own props from <code>@pisagor/props/rating</code>. Native HTML attributes
-    are also supported and omitted from this table.
-  </p>
+  <h2 class="mb-3 mt-16 text-2xl font-semibold tracking-tight" id="props">
+    Props
+  </h2>
   <PropsTable rows={ratingProps} />
 </DocsLayout>
