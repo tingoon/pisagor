@@ -1,4 +1,5 @@
-import { PasswordField } from "../../../../../src/fields/password-field";
+/** @jsxImportSource solid-js */
+import { PasswordField } from "@pisagor/solid-form";
 
 export function WithLabelAccessory() {
   return (

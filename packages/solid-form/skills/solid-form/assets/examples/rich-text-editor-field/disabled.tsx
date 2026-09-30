@@ -1,4 +1,5 @@
-import { RichTextEditorField } from "../../../../../src/fields/rich-text-editor-field";
+/** @jsxImportSource solid-js */
+import { RichTextEditorField } from "@pisagor/solid-form";
 
 export function Disabled() {
   return (

@@ -1,4 +1,5 @@
-import { SliderField } from "../../../../../src/fields/slider-field";
+/** @jsxImportSource solid-js */
+import { SliderField } from "@pisagor/solid-form";
 
 export function Invalid() {
   return (

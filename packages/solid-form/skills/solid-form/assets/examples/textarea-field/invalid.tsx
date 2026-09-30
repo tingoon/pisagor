@@ -1,4 +1,5 @@
-import { TextareaField } from "../../../../../src/fields/textarea-field";
+/** @jsxImportSource solid-js */
+import { TextareaField } from "@pisagor/solid-form";
 
 export function Invalid() {
   return (

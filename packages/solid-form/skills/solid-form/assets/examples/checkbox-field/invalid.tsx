@@ -1,4 +1,5 @@
-import { CheckboxField } from "../../../../../src/fields/checkbox-field";
+/** @jsxImportSource solid-js */
+import { CheckboxField } from "@pisagor/solid-form";
 
 export function Invalid() {
   return (

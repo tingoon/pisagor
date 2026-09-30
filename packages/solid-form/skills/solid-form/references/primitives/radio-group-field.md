@@ -4,7 +4,13 @@ description: Lets the user pick one option from a short list with an optional va
 api: closed
 taxonomy: standard
 packageName: "@pisagor/solid-form"
-examples: []
+examples:
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: invalid
+    title: Invalid
+    exportName: Invalid
 ---
 
 ## When to use
@@ -20,4 +26,4 @@ examples: []
 import { RadioGroupField } from "@pisagor/solid-form/radio-group-field";
 ```
 
-> Docs page wiring for this primitive is under forms/charts or pending.
+Live examples below match `assets/examples/radio-group-field/`.

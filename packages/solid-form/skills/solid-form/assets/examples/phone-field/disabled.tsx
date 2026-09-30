@@ -1,4 +1,5 @@
-import { PhoneField } from "../../../../../src/fields/phone-field";
+/** @jsxImportSource solid-js */
+import { PhoneField } from "@pisagor/solid-form";
 
 export function Disabled() {
   return (

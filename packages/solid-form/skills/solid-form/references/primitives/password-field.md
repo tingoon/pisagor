@@ -4,7 +4,16 @@ description: "Captures a password with show-hide control, label, and optional va
 api: closed
 taxonomy: standard
 packageName: "@pisagor/solid-form"
-examples: []
+examples:
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: invalid
+    title: Invalid
+    exportName: Invalid
+  - id: with-label-accessory
+    title: With Label Accessory
+    exportName: WithLabelAccessory
 ---
 
 ## When to use
@@ -20,4 +29,4 @@ examples: []
 import { PasswordField } from "@pisagor/solid-form/password-field";
 ```
 
-> Docs page wiring for this primitive is under forms/charts or pending.
+Live examples below match `assets/examples/password-field/`.

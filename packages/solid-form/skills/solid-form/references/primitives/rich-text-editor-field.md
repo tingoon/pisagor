@@ -4,7 +4,13 @@ description: "Edits formatted text with a toolbar, label, and optional validatio
 api: closed
 taxonomy: standard
 packageName: "@pisagor/solid-form"
-examples: []
+examples:
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: invalid
+    title: Invalid
+    exportName: Invalid
 ---
 
 ## When to use
@@ -20,4 +26,4 @@ examples: []
 import { RichTextEditorField } from "@pisagor/solid-form/rich-text-editor-field";
 ```
 
-> Docs page wiring for this primitive is under forms/charts or pending.
+Live examples below match `assets/examples/rich-text-editor-field/`.

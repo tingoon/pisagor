@@ -4,7 +4,13 @@ description: Uploads one or more files with a label and optional validation mess
 api: closed
 taxonomy: standard
 packageName: "@pisagor/solid-form"
-examples: []
+examples:
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: invalid
+    title: Invalid
+    exportName: Invalid
 ---
 
 ## When to use
@@ -20,4 +26,4 @@ examples: []
 import { FileField } from "@pisagor/solid-form/file-field";
 ```
 
-> Docs page wiring for this primitive is under forms/charts or pending.
+Live examples below match `assets/examples/file-field/`.

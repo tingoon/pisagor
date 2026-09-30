@@ -1,4 +1,5 @@
-import { NumberField } from "../../../../../src/fields/number-field";
+/** @jsxImportSource solid-js */
+import { NumberField } from "@pisagor/solid-form";
 
 export function Disabled() {
   return (

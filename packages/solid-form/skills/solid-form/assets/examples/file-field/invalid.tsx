@@ -1,4 +1,5 @@
-import { FileField } from "../../../../../src/fields/file-field";
+/** @jsxImportSource solid-js */
+import { FileField } from "@pisagor/solid-form";
 
 export function Invalid() {
   return (

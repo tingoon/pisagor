@@ -1,4 +1,5 @@
-import { DateField } from "../../../../../src/fields/date-field";
+/** @jsxImportSource solid-js */
+import { DateField } from "@pisagor/solid-form";
 
 export function Invalid() {
   return (

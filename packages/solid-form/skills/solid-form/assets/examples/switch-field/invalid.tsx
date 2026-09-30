@@ -1,4 +1,5 @@
-import { SwitchField } from "../../../../../src/fields/switch-field";
+/** @jsxImportSource solid-js */
+import { SwitchField } from "@pisagor/solid-form";
 
 export function Invalid() {
   return (

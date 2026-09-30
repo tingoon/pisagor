@@ -1,4 +1,5 @@
-import { OtpField } from "../../../../../src/fields/otp-field";
+/** @jsxImportSource solid-js */
+import { OtpField } from "@pisagor/solid-form";
 
 export function Invalid() {
   return (

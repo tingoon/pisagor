@@ -1,4 +1,5 @@
-import { TagsInputField } from "../../../../../src/fields/tags-input-field";
+/** @jsxImportSource solid-js */
+import { TagsInputField } from "@pisagor/solid-form";
 
 export function Disabled() {
   return (

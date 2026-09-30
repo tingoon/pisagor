@@ -1,4 +1,5 @@
-import { AutocompleteField } from "../../../../../src/fields/autocomplete-field";
+/** @jsxImportSource solid-js */
+import { AutocompleteField } from "@pisagor/solid-form";
 import { cityOptions } from "../options";
 
 export function Disabled() {

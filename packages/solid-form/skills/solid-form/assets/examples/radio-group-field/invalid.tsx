@@ -1,4 +1,5 @@
-import { RadioGroupField } from "../../../../../src/fields/radio-group-field";
+/** @jsxImportSource solid-js */
+import { RadioGroupField } from "@pisagor/solid-form";
 import { planOptions } from "../options";
 
 export function Invalid() {
