@@ -4,15 +4,18 @@ description: Sets a value along a range with a label and optional validation mes
 api: closed
 taxonomy: standard
 packageName: "@pisagor/react-form"
-examples: []
+examples:
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: invalid
+    title: Invalid
+    exportName: Invalid
 ---
 
 ## When to use
 
 - Sets a value along a range with a label and optional validation message.
-- Mixing frameworks — this guide is **@pisagor/react-form** (not `@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
 
 ## Import
 
@@ -20,4 +23,6 @@ examples: []
 import { SliderField } from "@pisagor/react-form/slider-field";
 ```
 
-> Docs page wiring for this primitive is under forms/charts or pending.
+Part of `@pisagor/react-form`. Style with recipes where available — no app-level `tv()`.
+
+Live examples below match `assets/examples/slider-field/`.

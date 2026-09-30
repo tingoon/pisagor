@@ -1,17 +1,18 @@
 ---
 title: Chart
-description: "Wraps charts in themed, accessible layout so data visualizations match the rest of the interface"
+description: Wraps charts in themed, accessible layout so data visualizations match the rest of the interface
 api: compound
 taxonomy: standard
-examples: []
+packageName: "@pisagor/react-charts"
+examples:
+  - id: default
+    title: Default
+    exportName: Default
 ---
 
 ## When to use
 
 - Wraps charts in themed, accessible layout so data visualizations match the rest of the interface.
-- Mixing frameworks — this guide is **@pisagor/react-charts** (not `@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
 
 ## Import
 
@@ -19,4 +20,6 @@ examples: []
 import { Chart } from "@pisagor/react-charts";
 ```
 
-> Docs page wiring for this primitive is under forms/charts or pending.
+Part of `@pisagor/react-charts`. Style with recipes where available — no app-level `tv()`.
+
+Live examples below match `assets/examples/`.

@@ -4,15 +4,18 @@ description: Collects a one-time code across separate digit slots with optional 
 api: closed
 taxonomy: standard
 packageName: "@pisagor/react-form"
-examples: []
+examples:
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: invalid
+    title: Invalid
+    exportName: Invalid
 ---
 
 ## When to use
 
 - Collects a one-time code across separate digit slots with optional validation message.
-- Mixing frameworks — this guide is **@pisagor/react-form** (not `@pisagor/react`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
 
 ## Import
 
@@ -20,4 +23,6 @@ examples: []
 import { OtpField } from "@pisagor/react-form/otp-field";
 ```
 
-> Docs page wiring for this primitive is under forms/charts or pending.
+Part of `@pisagor/react-form`. Style with recipes where available — no app-level `tv()`.
+
+Live examples below match `assets/examples/otp-field/`.
