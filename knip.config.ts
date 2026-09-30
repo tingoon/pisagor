@@ -8,7 +8,6 @@ export default defineConfig({
     },
     "apps/docs": {
       entry: ["scripts/**/*.ts", "src/**/*.{astro,ts,tsx}"],
-      ignoreDependencies: ["@pisagor/solid"],
     },
     "apps/react": {
       entry: [".storybook/**/*", "src/**/*"],
