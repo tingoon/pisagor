@@ -7,12 +7,30 @@
       "#/astro/examples/*": [
         "../../packages/astro/skills/astro/assets/examples/*"
       ],
+      "#/react-charts/examples": [
+        "../../packages/react-charts/skills/react-charts/assets/examples/index.ts"
+      ],
+      "#/react-charts/examples/*": [
+        "../../packages/react-charts/skills/react-charts/assets/examples/*"
+      ],
+      "#/react-form/examples/*": [
+        "../../packages/react-form/skills/react-form/assets/examples/*"
+      ],
       "#/react/examples/*": [
         "../../packages/react/skills/react/assets/examples/*"
       ],
       "#/react/recipes/*": ["../react/src/recipes/*"],
       "#/react/references/*": [
         "../../packages/react/skills/react/references/*"
+      ],
+      "#/vue-charts/examples": [
+        "../../packages/vue-charts/skills/vue-charts/assets/examples/index.ts"
+      ],
+      "#/vue-charts/examples/*": [
+        "../../packages/vue-charts/skills/vue-charts/assets/examples/*"
+      ],
+      "#/vue-form/examples/*": [
+        "../../packages/vue-form/skills/vue-form/assets/examples/*"
       ],
       "#/vue/examples/*": ["../../packages/vue/skills/vue/assets/examples/*"],
       "#/vue/recipes/*": ["../vue/src/recipes/*"]

@@ -15,8 +15,10 @@ export default defineConfig({
     ssr: {
       noExternal: [
         "@pisagor/react",
-        "@pisagor/vue",
+        "@pisagor/react-charts",
         "@pisagor/react-form",
+        "@pisagor/vue",
+        "@pisagor/vue-charts",
         "@pisagor/vue-form",
         "@pisagor/solid",
         "@pisagor/svelte",
