@@ -1,0 +1,16 @@
+---
+import Changelog from "#/components/docs/changelog.astro";
+import DocsLayout from "#/layouts/docs-layout.astro";
+
+const headings: { depth: number; slug: string; text: string }[] = [];
+---
+
+<DocsLayout
+  description="Release notes for the Blocks package."
+  framework="vue"
+  headings={headings}
+  kicker="Get started"
+  title="Changelog"
+>
+  <Changelog />
+</DocsLayout>

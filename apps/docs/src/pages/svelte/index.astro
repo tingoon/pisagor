@@ -1,4 +1,5 @@
 ---
+import Installation from "#/components/docs/installation.astro";
 import PackageLinks from "#/components/docs/package-links.astro";
 import DocsLayout from "#/layouts/docs-layout.astro";
 import { withDocsBase } from "#/lib/nav";
@@ -37,19 +38,17 @@ const headings = [
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="install">
     Install
   </h2>
-  <pre
-    class="mb-6 overflow-x-auto rounded-lg border border-border bg-muted/40 p-4 text-sm"
-  ><code>bun add @pisagor/svelte</code></pre>
+  <Installation class="mb-6" packages="@pisagor/svelte" />
 
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="next">Next</h2>
   <p class="text-muted-foreground">
-    Start with
+    Start with{" "}
     <a
       class="text-foreground underline-offset-4 hover:underline"
       href={withDocsBase("/svelte/components/button")}
       >Button</a
     >
-    or
+    or{" "}
     <a
       class="text-foreground underline-offset-4 hover:underline"
       href={withDocsBase("/svelte/styling")}

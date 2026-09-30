@@ -40,6 +40,7 @@ export const packageLinksByName: Record<string, PackageLinks> = {
     "@pisagor/react-form",
     "http://localhost:4001",
   ),
+  "@pisagor/recipes": pkg("recipes", "@pisagor/recipes"),
   "@pisagor/solid": packages.solid,
   "@pisagor/solid-form": pkg("solid-form", "@pisagor/solid-form"),
   "@pisagor/svelte": packages.svelte,

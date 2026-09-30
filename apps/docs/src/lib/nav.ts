@@ -1,4 +1,4 @@
-export type Framework = "react" | "vue" | "astro" | "solid" | "svelte";
+export type Framework = "react" | "vue" | "solid" | "svelte" | "astro";
 
 export type DocsArea = "components" | "blocks" | "recipes" | "forms" | "charts";
 
@@ -16,25 +16,26 @@ export type NavSection = {
 export const frameworks: { id: Framework; label: string }[] = [
   { id: "react", label: "React" },
   { id: "vue", label: "Vue" },
-  { id: "astro", label: "Astro" },
   { id: "solid", label: "Solid" },
   { id: "svelte", label: "Svelte" },
+  { id: "astro", label: "Astro" },
 ];
 
 export const mainNav: { id: DocsArea; label: string; slug: string }[] = [
-  { id: "components", label: "Components", slug: "components" },
+  { id: "components", label: "Components", slug: "" },
   { id: "forms", label: "Forms", slug: "forms" },
   { id: "charts", label: "Charts", slug: "charts" },
   { id: "blocks", label: "Blocks", slug: "blocks" },
   { id: "recipes", label: "Recipes", slug: "recipes" },
 ];
 
-/** React / Vue component sidebar — grouped like Storybook. */
+/** React / Vue / Solid / Svelte component sidebar — grouped like Storybook. */
 const componentSections: NavSection[] = [
   {
     items: [
       { slug: "", status: "ready", title: "Introduction" },
       { slug: "styling", status: "ready", title: "Styling" },
+      { slug: "changelog", status: "ready", title: "Changelog" },
     ],
     title: "Getting started",
   },
@@ -106,29 +107,6 @@ const componentSections: NavSection[] = [
         status: "ready",
         title: "Circular Progress",
       },
-      { slug: "components/input-otp", status: "ready", title: "Input OTP" },
-      {
-        slug: "components/password-input",
-        status: "ready",
-        title: "Password Input",
-      },
-      {
-        slug: "components/number-input",
-        status: "ready",
-        title: "Number Input",
-      },
-      { slug: "components/radio-group", status: "ready", title: "Radio Group" },
-      { slug: "components/slider", status: "ready", title: "Slider" },
-      { slug: "components/rating", status: "ready", title: "Rating" },
-      { slug: "components/avatar", status: "ready", title: "Avatar" },
-      { slug: "components/tooltip", status: "ready", title: "Tooltip" },
-      { slug: "components/popover", status: "ready", title: "Popover" },
-      { slug: "components/hover-card", status: "ready", title: "Hover Card" },
-      { slug: "components/collapsible", status: "ready", title: "Collapsible" },
-      { slug: "components/accordion", status: "ready", title: "Accordion" },
-      { slug: "components/tabs", status: "ready", title: "Tabs" },
-      { slug: "components/steps", status: "ready", title: "Steps" },
-      { slug: "components/pagination", status: "ready", title: "Pagination" },
       { slug: "components/empty-state", status: "ready", title: "Empty State" },
       { slug: "components/progress", status: "ready", title: "Progress" },
       { slug: "components/skeleton", status: "ready", title: "Skeleton" },
@@ -166,7 +144,7 @@ const componentSections: NavSection[] = [
       { slug: "components/file-upload", status: "ready", title: "File Upload" },
       { slug: "components/input", status: "ready", title: "Input" },
       { slug: "components/input-group", status: "ready", title: "Input Group" },
-      { slug: "components/input-otp", status: "ready", title: "Input Otp" },
+      { slug: "components/input-otp", status: "ready", title: "Input OTP" },
       { slug: "components/listbox", status: "ready", title: "Listbox" },
       {
         slug: "components/number-input",
@@ -221,7 +199,7 @@ const componentSections: NavSection[] = [
   {
     items: [
       { slug: "components/marquee", status: "ready", title: "Marquee" },
-      { slug: "components/qr-code", status: "ready", title: "Qr Code" },
+      { slug: "components/qr-code", status: "ready", title: "QR Code" },
     ],
     title: "Marketing",
   },
@@ -301,28 +279,6 @@ const componentSections: NavSection[] = [
       { slug: "components/link-box", status: "ready", title: "Link Box" },
       { slug: "components/presence", status: "ready", title: "Presence" },
       { slug: "components/provider", status: "ready", title: "Provider" },
-      { slug: "components/input", status: "ready", title: "Input" },
-      { slug: "components/textarea", status: "ready", title: "Textarea" },
-      { slug: "components/input-group", status: "ready", title: "Input Group" },
-      { slug: "components/checkbox", status: "ready", title: "Checkbox" },
-      { slug: "components/switch", status: "ready", title: "Switch" },
-      { slug: "components/toggle", status: "ready", title: "Toggle" },
-      {
-        slug: "components/toggle-group",
-        status: "ready",
-        title: "Toggle Group",
-      },
-      {
-        slug: "components/button-group",
-        status: "ready",
-        title: "Button Group",
-      },
-      { slug: "components/progress", status: "ready", title: "Progress" },
-      {
-        slug: "components/circular-progress",
-        status: "ready",
-        title: "Circular Progress",
-      },
       {
         slug: "components/visually-hidden",
         status: "ready",
@@ -339,6 +295,7 @@ const astroComponentSections: NavSection[] = [
     items: [
       { slug: "", status: "ready", title: "Introduction" },
       { slug: "styling", status: "ready", title: "Styling" },
+      { slug: "changelog", status: "ready", title: "Changelog" },
     ],
     title: "Getting started",
   },
@@ -433,54 +390,95 @@ const astroComponentSections: NavSection[] = [
   },
 ];
 
-const formItems: NavItem[] = [
-  { slug: "forms", status: "ready", title: "Overview" },
-  { slug: "forms/text-field", status: "ready", title: "Text Field" },
+const formSections: NavSection[] = [
   {
-    slug: "forms/autocomplete-field",
-    status: "ready",
-    title: "Autocomplete Field",
-  },
-  { slug: "forms/checkbox-field", status: "ready", title: "Checkbox Field" },
-  { slug: "forms/date-field", status: "ready", title: "Date Field" },
-  { slug: "forms/file-field", status: "ready", title: "File Field" },
-  { slug: "forms/number-field", status: "ready", title: "Number Field" },
-  { slug: "forms/otp-field", status: "ready", title: "Otp Field" },
-  { slug: "forms/password-field", status: "ready", title: "Password Field" },
-  { slug: "forms/phone-field", status: "ready", title: "Phone Field" },
-  {
-    slug: "forms/radio-group-field",
-    status: "ready",
-    title: "Radio Group Field",
+    items: [
+      { slug: "forms", status: "ready", title: "Introduction" },
+      { slug: "forms/changelog", status: "ready", title: "Changelog" },
+    ],
+    title: "Getting started",
   },
   {
-    slug: "forms/rich-text-editor-field",
-    status: "ready",
-    title: "Rich Text Editor Field",
+    items: [
+      { slug: "forms/text-field", status: "ready", title: "Text Field" },
+      {
+        slug: "forms/autocomplete-field",
+        status: "ready",
+        title: "Autocomplete Field",
+      },
+      {
+        slug: "forms/checkbox-field",
+        status: "ready",
+        title: "Checkbox Field",
+      },
+      { slug: "forms/date-field", status: "ready", title: "Date Field" },
+      { slug: "forms/file-field", status: "ready", title: "File Field" },
+      { slug: "forms/number-field", status: "ready", title: "Number Field" },
+      { slug: "forms/otp-field", status: "ready", title: "Otp Field" },
+      {
+        slug: "forms/password-field",
+        status: "ready",
+        title: "Password Field",
+      },
+      { slug: "forms/phone-field", status: "ready", title: "Phone Field" },
+      {
+        slug: "forms/radio-group-field",
+        status: "ready",
+        title: "Radio Group Field",
+      },
+      {
+        slug: "forms/rich-text-editor-field",
+        status: "ready",
+        title: "Rich Text Editor Field",
+      },
+      { slug: "forms/select-field", status: "ready", title: "Select Field" },
+      { slug: "forms/slider-field", status: "ready", title: "Slider Field" },
+      { slug: "forms/switch-field", status: "ready", title: "Switch Field" },
+      {
+        slug: "forms/tags-input-field",
+        status: "ready",
+        title: "Tags Input Field",
+      },
+      {
+        slug: "forms/textarea-field",
+        status: "ready",
+        title: "Textarea Field",
+      },
+    ],
+    title: "Fields",
   },
-  { slug: "forms/select-field", status: "ready", title: "Select Field" },
-  { slug: "forms/slider-field", status: "ready", title: "Slider Field" },
-  { slug: "forms/switch-field", status: "ready", title: "Switch Field" },
-  {
-    slug: "forms/tags-input-field",
-    status: "ready",
-    title: "Tags Input Field",
-  },
-  { slug: "forms/textarea-field", status: "ready", title: "Textarea Field" },
 ];
 
-const chartItems: NavItem[] = [
-  { slug: "charts", status: "ready", title: "Overview" },
-  { slug: "charts/chart", status: "ready", title: "Chart" },
+const chartSections: NavSection[] = [
+  {
+    items: [
+      { slug: "charts", status: "ready", title: "Introduction" },
+      { slug: "charts/changelog", status: "ready", title: "Changelog" },
+    ],
+    title: "Getting started",
+  },
+  {
+    items: [{ slug: "charts/chart", status: "ready", title: "Chart" }],
+    title: "Charts",
+  },
 ];
 
-const blockItems: NavItem[] = [
-  { slug: "blocks", status: "ready", title: "Overview" },
+const blockSections: NavSection[] = [
+  {
+    items: [
+      { slug: "blocks", status: "ready", title: "Introduction" },
+      { slug: "blocks/changelog", status: "ready", title: "Changelog" },
+    ],
+    title: "Getting started",
+  },
 ];
 
 const recipeSections: NavSection[] = [
   {
-    items: [{ slug: "recipes", status: "ready", title: "Overview" }],
+    items: [
+      { slug: "recipes", status: "ready", title: "Introduction" },
+      { slug: "recipes/changelog", status: "ready", title: "Changelog" },
+    ],
     title: "Getting started",
   },
   {
@@ -550,389 +548,15 @@ export function getDocsArea(pathname: string): DocsArea {
   return "components";
 }
 
-/** Solid — charts out of scope; components + forms. */
-const solidComponentSections: NavSection[] = [
-  {
-    items: [
-      { slug: "", status: "ready", title: "Introduction" },
-      { slug: "styling", status: "ready", title: "Styling" },
-    ],
-    title: "Getting started",
-  },
-  {
-    items: [
-      { slug: "components/button", status: "ready", title: "Button" },
-      { slug: "components/badge", status: "ready", title: "Badge" },
-      { slug: "components/spinner", status: "ready", title: "Spinner" },
-      { slug: "components/kbd", status: "ready", title: "Kbd" },
-      { slug: "components/separator", status: "ready", title: "Separator" },
-      {
-        slug: "components/aspect-ratio",
-        status: "ready",
-        title: "Aspect Ratio",
-      },
-      { slug: "components/status", status: "ready", title: "Status" },
-      { slug: "components/prose", status: "ready", title: "Prose" },
-      {
-        slug: "components/visually-hidden",
-        status: "ready",
-        title: "Visually Hidden",
-      },
-      { slug: "components/skeleton", status: "ready", title: "Skeleton" },
-      { slug: "components/alert", status: "ready", title: "Alert" },
-      { slug: "components/card", status: "ready", title: "Card" },
-      { slug: "components/empty-state", status: "ready", title: "Empty State" },
-      {
-        slug: "components/announcement",
-        status: "ready",
-        title: "Announcement",
-      },
-      { slug: "components/surface", status: "ready", title: "Surface" },
-      { slug: "components/frame", status: "ready", title: "Frame" },
-      { slug: "components/link-box", status: "ready", title: "Link Box" },
-      { slug: "components/item", status: "ready", title: "Item" },
-      { slug: "components/data-list", status: "ready", title: "Data List" },
-      { slug: "components/stat", status: "ready", title: "Stat" },
-      { slug: "components/skip-nav", status: "ready", title: "Skip Nav" },
-      { slug: "components/client-only", status: "ready", title: "Client Only" },
-      { slug: "components/presence", status: "ready", title: "Presence" },
-      { slug: "components/provider", status: "ready", title: "Provider" },
-      { slug: "components/input", status: "ready", title: "Input" },
-      { slug: "components/textarea", status: "ready", title: "Textarea" },
-      { slug: "components/input-group", status: "ready", title: "Input Group" },
-      { slug: "components/input-otp", status: "ready", title: "Input OTP" },
-      {
-        slug: "components/password-input",
-        status: "ready",
-        title: "Password Input",
-      },
-      {
-        slug: "components/number-input",
-        status: "ready",
-        title: "Number Input",
-      },
-      { slug: "components/checkbox", status: "ready", title: "Checkbox" },
-      { slug: "components/switch", status: "ready", title: "Switch" },
-      { slug: "components/radio-group", status: "ready", title: "Radio Group" },
-      { slug: "components/slider", status: "ready", title: "Slider" },
-      {
-        slug: "components/circular-progress",
-        status: "ready",
-        title: "Circular Progress",
-      },
-      { slug: "components/progress", status: "ready", title: "Progress" },
-      { slug: "components/rating", status: "ready", title: "Rating" },
-      { slug: "components/toggle", status: "ready", title: "Toggle" },
-      {
-        slug: "components/toggle-group",
-        status: "ready",
-        title: "Toggle Group",
-      },
-      {
-        slug: "components/button-group",
-        status: "ready",
-        title: "Button Group",
-      },
-      { slug: "components/avatar", status: "ready", title: "Avatar" },
-      { slug: "components/tooltip", status: "ready", title: "Tooltip" },
-      { slug: "components/popover", status: "ready", title: "Popover" },
-      { slug: "components/hover-card", status: "ready", title: "Hover Card" },
-      { slug: "components/scroll-area", status: "ready", title: "Scroll Area" },
-      { slug: "components/dialog", status: "ready", title: "Dialog" },
-      {
-        slug: "components/alert-dialog",
-        status: "ready",
-        title: "Alert Dialog",
-      },
-      { slug: "components/sheet", status: "ready", title: "Sheet" },
-      { slug: "components/drawer", status: "ready", title: "Drawer" },
-      { slug: "components/collapsible", status: "ready", title: "Collapsible" },
-      { slug: "components/accordion", status: "ready", title: "Accordion" },
-      { slug: "components/tabs", status: "ready", title: "Tabs" },
-      { slug: "components/steps", status: "ready", title: "Steps" },
-      { slug: "components/pagination", status: "ready", title: "Pagination" },
-      { slug: "components/select", status: "ready", title: "Select" },
-      { slug: "components/combobox", status: "ready", title: "Combobox" },
-      { slug: "components/listbox", status: "ready", title: "Listbox" },
-      { slug: "components/tags-input", status: "ready", title: "Tags Input" },
-      { slug: "components/editable", status: "ready", title: "Editable" },
-      { slug: "components/clipboard", status: "ready", title: "Clipboard" },
-      { slug: "components/menu", status: "ready", title: "Menu" },
-      {
-        slug: "components/dropdown-menu",
-        status: "ready",
-        title: "Dropdown Menu",
-      },
-      {
-        slug: "components/context-menu",
-        status: "ready",
-        title: "Context Menu",
-      },
-      {
-        slug: "components/navigation-menu",
-        status: "ready",
-        title: "Navigation Menu",
-      },
-      { slug: "components/command", status: "ready", title: "Command" },
-    ],
-    title: "Components",
-  },
-  {
-    items: [
-      { slug: "components/action-bar", status: "ready", title: "Action Bar" },
-      { slug: "components/app-shell", status: "ready", title: "App Shell" },
-      {
-        slug: "components/circular-slider",
-        status: "ready",
-        title: "Circular Slider",
-      },
-      {
-        slug: "components/color-picker",
-        status: "ready",
-        title: "Color Picker",
-      },
-      { slug: "components/file-upload", status: "ready", title: "File Upload" },
-      {
-        slug: "components/floating-panel",
-        status: "ready",
-        title: "Floating Panel",
-      },
-      { slug: "components/resizable", status: "ready", title: "Resizable" },
-      { slug: "components/sidebar", status: "ready", title: "Sidebar" },
-      { slug: "components/sortable", status: "ready", title: "Sortable" },
-      { slug: "components/tour", status: "ready", title: "Tour" },
-      { slug: "components/tree-view", status: "ready", title: "Tree View" },
-    ],
-    title: "Layout & media",
-  },
-  {
-    items: [
-      { slug: "components/data-grid", status: "ready", title: "Data Grid" },
-      { slug: "components/data-table", status: "ready", title: "Data Table" },
-      { slug: "components/phone-input", status: "ready", title: "Phone Input" },
-      {
-        slug: "components/rich-text-editor",
-        status: "ready",
-        title: "Rich Text Editor",
-      },
-    ],
-    title: "Data & editors",
-  },
-];
-
-/** Svelte — charts out of scope; components + forms. */
-const svelteComponentSections: NavSection[] = [
-  {
-    items: [
-      { slug: "", status: "ready", title: "Introduction" },
-      { slug: "styling", status: "ready", title: "Styling" },
-    ],
-    title: "Getting started",
-  },
-  {
-    items: [
-      { slug: "components/app-shell", status: "ready", title: "App Shell" },
-      { slug: "components/action-bar", status: "ready", title: "Action Bar" },
-      {
-        slug: "components/autocomplete",
-        status: "ready",
-        title: "Autocomplete",
-      },
-      {
-        slug: "components/bottom-navigation",
-        status: "ready",
-        title: "Bottom Navigation",
-      },
-      { slug: "components/breadcrumb", status: "ready", title: "Breadcrumb" },
-      { slug: "components/button", status: "ready", title: "Button" },
-      { slug: "components/badge", status: "ready", title: "Badge" },
-      { slug: "components/carousel", status: "ready", title: "Carousel" },
-      { slug: "components/spinner", status: "ready", title: "Spinner" },
-      {
-        slug: "components/circular-slider",
-        status: "ready",
-        title: "Circular Slider",
-      },
-      { slug: "components/file", status: "ready", title: "File" },
-      {
-        slug: "components/color-picker",
-        status: "ready",
-        title: "Color Picker",
-      },
-      { slug: "components/file-upload", status: "ready", title: "File Upload" },
-      {
-        slug: "components/image-cropper",
-        status: "ready",
-        title: "Image Cropper",
-      },
-      { slug: "components/file-input", status: "ready", title: "File Input" },
-      { slug: "components/kbd", status: "ready", title: "Kbd" },
-      {
-        slug: "components/floating-panel",
-        status: "ready",
-        title: "Floating Panel",
-      },
-      { slug: "components/marquee", status: "ready", title: "Marquee" },
-      { slug: "components/navbar", status: "ready", title: "Navbar" },
-      { slug: "components/scrollspy", status: "ready", title: "Scrollspy" },
-      { slug: "components/separator", status: "ready", title: "Separator" },
-      { slug: "components/sidebar", status: "ready", title: "Sidebar" },
-      {
-        slug: "components/aspect-ratio",
-        status: "ready",
-        title: "Aspect Ratio",
-      },
-      { slug: "components/status", status: "ready", title: "Status" },
-      {
-        slug: "components/download-trigger",
-        status: "ready",
-        title: "Download Trigger",
-      },
-      { slug: "components/prose", status: "ready", title: "Prose" },
-      { slug: "components/format", status: "ready", title: "Format" },
-      { slug: "components/highlight", status: "ready", title: "Highlight" },
-      {
-        slug: "components/json-tree-view",
-        status: "ready",
-        title: "JSON Tree View",
-      },
-      { slug: "components/qr-code", status: "ready", title: "QR Code" },
-      { slug: "components/resizable", status: "ready", title: "Resizable" },
-      {
-        slug: "components/segment-group",
-        status: "ready",
-        title: "Segment Group",
-      },
-      { slug: "components/sortable", status: "ready", title: "Sortable" },
-      { slug: "components/swap", status: "ready", title: "Swap" },
-      {
-        slug: "components/signature-pad",
-        status: "ready",
-        title: "Signature Pad",
-      },
-      { slug: "components/table", status: "ready", title: "Table" },
-      { slug: "components/timeline", status: "ready", title: "Timeline" },
-      { slug: "components/toolbar", status: "ready", title: "Toolbar" },
-      { slug: "components/timer", status: "ready", title: "Timer" },
-      { slug: "components/tree-view", status: "ready", title: "Tree View" },
-      { slug: "components/tour", status: "ready", title: "Tour" },
-      {
-        slug: "components/visually-hidden",
-        status: "ready",
-        title: "Visually Hidden",
-      },
-      { slug: "components/skeleton", status: "ready", title: "Skeleton" },
-      { slug: "components/alert", status: "ready", title: "Alert" },
-      { slug: "components/card", status: "ready", title: "Card" },
-      { slug: "components/empty-state", status: "ready", title: "Empty State" },
-      {
-        slug: "components/announcement",
-        status: "ready",
-        title: "Announcement",
-      },
-      { slug: "components/surface", status: "ready", title: "Surface" },
-      { slug: "components/frame", status: "ready", title: "Frame" },
-      { slug: "components/link-box", status: "ready", title: "Link Box" },
-      { slug: "components/item", status: "ready", title: "Item" },
-      { slug: "components/data-grid", status: "ready", title: "Data Grid" },
-      { slug: "components/data-table", status: "ready", title: "Data Table" },
-      { slug: "components/data-list", status: "ready", title: "Data List" },
-      { slug: "components/stat", status: "ready", title: "Stat" },
-      { slug: "components/skip-nav", status: "ready", title: "Skip Nav" },
-      { slug: "components/client-only", status: "ready", title: "Client Only" },
-      { slug: "components/presence", status: "ready", title: "Presence" },
-      { slug: "components/provider", status: "ready", title: "Provider" },
-      { slug: "components/toggle", status: "ready", title: "Toggle" },
-      { slug: "components/checkbox", status: "ready", title: "Checkbox" },
-      { slug: "components/switch", status: "ready", title: "Switch" },
-      { slug: "components/progress", status: "ready", title: "Progress" },
-      {
-        slug: "components/circular-progress",
-        status: "ready",
-        title: "Circular Progress",
-      },
-      {
-        slug: "components/button-group",
-        status: "ready",
-        title: "Button Group",
-      },
-      { slug: "components/radio-group", status: "ready", title: "Radio Group" },
-      {
-        slug: "components/toggle-group",
-        status: "ready",
-        title: "Toggle Group",
-      },
-      { slug: "components/input", status: "ready", title: "Input" },
-      { slug: "components/input-group", status: "ready", title: "Input Group" },
-      { slug: "components/textarea", status: "ready", title: "Textarea" },
-      { slug: "components/phone-input", status: "ready", title: "Phone Input" },
-      {
-        slug: "components/password-input",
-        status: "ready",
-        title: "Password Input",
-      },
-      {
-        slug: "components/number-input",
-        status: "ready",
-        title: "Number Input",
-      },
-      { slug: "components/input-otp", status: "ready", title: "Input OTP" },
-      { slug: "components/slider", status: "ready", title: "Slider" },
-      {
-        slug: "components/rich-text-editor",
-        status: "ready",
-        title: "Rich Text Editor",
-      },
-      { slug: "components/rating", status: "ready", title: "Rating" },
-      { slug: "components/avatar", status: "ready", title: "Avatar" },
-      { slug: "components/tooltip", status: "ready", title: "Tooltip" },
-      { slug: "components/popover", status: "ready", title: "Popover" },
-      { slug: "components/hover-card", status: "ready", title: "Hover Card" },
-      { slug: "components/dialog", status: "ready", title: "Dialog" },
-      { slug: "components/collapsible", status: "ready", title: "Collapsible" },
-      { slug: "components/accordion", status: "ready", title: "Accordion" },
-      { slug: "components/tabs", status: "ready", title: "Tabs" },
-      {
-        slug: "components/alert-dialog",
-        status: "ready",
-        title: "Alert Dialog",
-      },
-      { slug: "components/sheet", status: "ready", title: "Sheet" },
-      { slug: "components/drawer", status: "ready", title: "Drawer" },
-      { slug: "components/steps", status: "ready", title: "Steps" },
-      { slug: "components/pagination", status: "ready", title: "Pagination" },
-      { slug: "components/scroll-area", status: "ready", title: "Scroll Area" },
-      { slug: "components/editable", status: "ready", title: "Editable" },
-      { slug: "components/clipboard", status: "ready", title: "Clipboard" },
-      { slug: "components/select", status: "ready", title: "Select" },
-      { slug: "components/listbox", status: "ready", title: "Listbox" },
-      { slug: "components/tags-input", status: "ready", title: "Tags Input" },
-      { slug: "components/menu", status: "ready", title: "Menu" },
-      {
-        slug: "components/dropdown-menu",
-        status: "ready",
-        title: "Dropdown Menu",
-      },
-      {
-        slug: "components/context-menu",
-        status: "ready",
-        title: "Context Menu",
-      },
-      {
-        slug: "components/navigation-menu",
-        status: "ready",
-        title: "Navigation Menu",
-      },
-      { slug: "components/combobox", status: "ready", title: "Combobox" },
-      { slug: "components/command", status: "ready", title: "Command" },
-      { slug: "components/calendar", status: "ready", title: "Calendar" },
-      { slug: "components/date-picker", status: "ready", title: "Date Picker" },
-      { slug: "components/field", status: "ready", title: "Field" },
-      { slug: "components/toast", status: "ready", title: "Toast" },
-    ],
-    title: "Components",
-  },
-];
+/** Unsupported area stub — same "Getting started" label as shipped packages. */
+function soonGettingStarted(slug: string): NavSection[] {
+  return [
+    {
+      items: [{ slug, status: "soon", title: "Introduction" }],
+      title: "Getting started",
+    },
+  ];
+}
 
 /** Sidebar list for the active main-nav area. */
 export function getSidebarNav(
@@ -940,29 +564,26 @@ export function getSidebarNav(
   area: DocsArea,
 ): NavSection[] {
   if (area === "blocks") {
-    return [{ items: blockItems, title: "Blocks" }];
+    if (framework === "solid" || framework === "svelte") {
+      return soonGettingStarted("blocks");
+    }
+    return blockSections;
   }
   if (area === "recipes") {
-    if (framework === "astro") {
-      return [
-        {
-          items: [{ slug: "recipes", status: "soon", title: "Overview" }],
-          title: "Recipes",
-        },
-      ];
+    if (
+      framework === "astro" ||
+      framework === "solid" ||
+      framework === "svelte"
+    ) {
+      return soonGettingStarted("recipes");
     }
     return recipeSections;
   }
   if (area === "forms") {
     if (framework === "astro") {
-      return [
-        {
-          items: [{ slug: "forms", status: "soon", title: "Overview" }],
-          title: "Forms",
-        },
-      ];
+      return soonGettingStarted("forms");
     }
-    return [{ items: formItems, title: "Forms" }];
+    return formSections;
   }
   if (area === "charts") {
     if (
@@ -970,24 +591,31 @@ export function getSidebarNav(
       framework === "solid" ||
       framework === "svelte"
     ) {
-      return [
-        {
-          items: [{ slug: "charts", status: "soon", title: "Overview" }],
-          title: "Charts",
-        },
-      ];
+      return soonGettingStarted("charts");
     }
-    return [{ items: chartItems, title: "Charts" }];
+    return chartSections;
   }
 
   if (framework === "astro") return astroComponentSections;
-  if (framework === "solid") return solidComponentSections;
-  if (framework === "svelte") return svelteComponentSections;
   return componentSections;
 }
 
 export function frameworkPath(framework: Framework, slug = "") {
   return withDocsBase(slug ? `/${framework}/${slug}` : `/${framework}`);
+}
+
+/** Areas each framework ships docs for (main-nav + switcher). */
+const frameworkAreas: Record<Framework, DocsArea[]> = {
+  astro: ["components", "blocks", "recipes"],
+  react: ["components", "forms", "charts", "blocks", "recipes"],
+  solid: ["components", "forms"],
+  svelte: ["components", "forms"],
+  vue: ["components", "forms", "charts", "blocks", "recipes"],
+};
+
+export function getMainNav(framework: Framework) {
+  const allowed = new Set(frameworkAreas[framework]);
+  return mainNav.filter((item) => allowed.has(item.id));
 }
 
 export function swapFrameworkPath(pathname: string, next: Framework) {
@@ -1001,14 +629,15 @@ export function swapFrameworkPath(pathname: string, next: Framework) {
   ) {
     return frameworkPath(next);
   }
-  // charts not on astro/solid/svelte; forms not on astro
+  const area = parts[1] as DocsArea | undefined;
   if (
-    parts[1] === "charts" &&
-    (next === "astro" || next === "solid" || next === "svelte")
+    area &&
+    (area === "charts" ||
+      area === "blocks" ||
+      area === "recipes" ||
+      area === "forms") &&
+    !frameworkAreas[next].includes(area)
   ) {
-    return frameworkPath(next);
-  }
-  if (parts[1] === "forms" && next === "astro") {
     return frameworkPath(next);
   }
   return withDocsBase(`/${parts.join("/")}`);

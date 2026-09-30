@@ -1,25 +1,43 @@
 ---
+import Installation from "#/components/docs/installation.astro";
+import PackageLinks from "#/components/docs/package-links.astro";
 import DocsLayout from "#/layouts/docs-layout.astro";
 import { withDocsBase } from "#/lib/nav";
 
-const headings = [{ depth: 2, slug: "overview", text: "Overview" }];
+const headings = [
+  { depth: 2, slug: "overview", text: "Overview" },
+  { depth: 2, slug: "install", text: "Install" },
+  { depth: 2, slug: "next", text: "Next" },
+];
 ---
 
 <DocsLayout
   description="Chart components for dashboards and data visualization."
   framework="react"
   headings={headings}
-  title="Charts"
+  kicker="Get started"
+  title="Introduction"
 >
+  <PackageLinks framework="react" packageName="@pisagor/react-charts" />
   <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">
     Overview
   </h2>
   <p class="mb-6 text-muted-foreground">
-    Charts build on Pisagor styling with React and Recharts. Browse the sidebar
-    for available chart docs.
+    <code class="rounded bg-muted px-1.5 py-0.5 text-sm"
+      >@pisagor/react-charts</code
+    >
+    builds chart components on Pisagor styling with React and Recharts. Browse
+    the sidebar for available chart docs.
   </p>
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="install">
+    Install
+  </h2>
+  <Installation class="mb-6" packages="@pisagor/react-charts" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="next">Next</h2>
   <p class="text-muted-foreground">
-    Start with
+    Start with{" "}
     <a
       class="text-foreground underline-offset-4 hover:underline"
       href={withDocsBase("/react/charts/chart")}
