@@ -9,6 +9,7 @@
     "@pisagor/react-form": "workspace:*",
     "@pisagor/solid": "workspace:*",
     "@pisagor/svelte": "workspace:*",
+    "@pisagor/utils": "workspace:*",
     "@pisagor/vue": "workspace:*",
     "@pisagor/vue-charts": "workspace:*",
     "@pisagor/vue-form": "workspace:*",

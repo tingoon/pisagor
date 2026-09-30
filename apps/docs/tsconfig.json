@@ -23,6 +23,12 @@
       "#/react/references/*": [
         "../../packages/react/skills/react/references/*"
       ],
+      "#/solid/examples/*": [
+        "../../packages/solid/skills/solid/assets/examples/*"
+      ],
+      "#/svelte/examples/*": [
+        "../../packages/svelte/skills/svelte/assets/examples/*"
+      ],
       "#/vue-charts/examples": [
         "../../packages/vue-charts/skills/vue-charts/assets/examples/index.ts"
       ],
