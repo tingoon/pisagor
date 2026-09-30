@@ -1,32 +1,36 @@
-# Pisagor Astro — Button
+---
+title: Button
+description: Triggers actions with emphasis, size, and loading states.
+api: closed
+taxonomy: primitive
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: sizes
+    title: Sizes
+    exportName: Sizes
+  - id: variants
+    title: Variants
+    exportName: Variants
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: loading
+    title: Loading
+    exportName: Loading
+---
 
 ## When to use
 
 - Triggers an action or navigation with clear hierarchy and loading feedback.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Button } from "@pisagor/astro/button"
+import { Button } from "@pisagor/astro/button";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/button` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/astro` → `src/components/button/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/button` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **astro** only (`@pisagor/astro`).
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/button/`.

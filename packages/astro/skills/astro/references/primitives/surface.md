@@ -1,32 +1,27 @@
-# Pisagor Astro — Surface
+---
+title: Surface
+description: Provides a semantic background layer for grouped content such as cards and panels, with automatic elevation for nested sections.
+api: closed
+taxonomy: primitive
+examples:
+  - id: nested
+    title: Nested
+    exportName: Nested
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Provides nested background surfaces that step through tonal levels.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Surface } from "@pisagor/astro/surface"
+import { Surface } from "@pisagor/astro/surface";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/surface` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/astro` → `src/components/surface/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/surface` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **astro** only (`@pisagor/astro`).
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/surface/`.

@@ -1,32 +1,24 @@
-# Pisagor Astro — ButtonGroup
+---
+title: Button Group
+description: Groups related actions together so users can compare choices and pick one option from a set.
+api: compound
+taxonomy: primitive
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Groups related actions into a single segmented control.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```ts
-import { ButtonGroup } from "@pisagor/astro/button-group"
+import { ButtonGroup } from "@pisagor/astro/button-group";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/button-group` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/astro` → `src/components/button-group/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/button-group` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **astro** only (`@pisagor/astro`).
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/button-group/`.

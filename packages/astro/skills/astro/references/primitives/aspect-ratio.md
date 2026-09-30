@@ -1,32 +1,27 @@
-# Pisagor Astro — AspectRatio
+---
+title: Aspect Ratio
+description: Keeps media and embedded content at a consistent width-to-height ratio as the layout changes.
+api: closed
+taxonomy: primitive
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: widescreen
+    title: Widescreen
+    exportName: Widescreen
+---
 
 ## When to use
 
 - Keeps media and embedded content at a consistent width-to-height ratio as the layout changes.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```ts
-import { AspectRatio } from "@pisagor/astro/aspect-ratio"
+import { AspectRatio } from "@pisagor/astro/aspect-ratio";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/aspect-ratio` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/astro` → `src/components/aspect-ratio/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/aspect-ratio` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **astro** only (`@pisagor/astro`).
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/aspect-ratio/`.

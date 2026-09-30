@@ -1,32 +1,30 @@
-# Pisagor Astro — Avatar
+---
+title: Avatar
+description: Shows who a user is in the interface — usually a profile photo, or initials or an icon when there is no image or it has not loaded yet.
+api: closed
+taxonomy: primitive
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: sizes
+    title: Sizes
+    exportName: Sizes
+  - id: with-image
+    title: With Image
+    exportName: WithImage
+---
 
 ## When to use
 
 - Shows a user or entity with an image or fallback initials.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Avatar } from "@pisagor/astro/avatar"
+import { Avatar } from "@pisagor/astro/avatar";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/avatar` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/astro` → `src/components/avatar/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/avatar` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **astro** only (`@pisagor/astro`).
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/avatar/`.

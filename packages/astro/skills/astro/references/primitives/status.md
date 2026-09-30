@@ -1,32 +1,27 @@
-# Pisagor Astro — Status
+---
+title: Status
+description: Signals state with a small colored dot so users can see availability or severity at a glance.
+api: closed
+taxonomy: primitive
+examples:
+  - id: variants
+    title: Variants
+    exportName: Variants
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Shows a compact status indicator for presence or state.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Status } from "@pisagor/astro/status"
+import { Status } from "@pisagor/astro/status";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/status` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/astro` → `src/components/status/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/status` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **astro** only (`@pisagor/astro`).
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/status/`.

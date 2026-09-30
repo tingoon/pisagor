@@ -1,32 +1,24 @@
-# Pisagor Astro — Table
+---
+title: Table
+description: Presents rows and columns of data in a structured grid for comparison and scanning.
+api: compound
+taxonomy: standard
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Displays tabular data with semantic table structure and styling.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Table } from "@pisagor/astro/table"
+import { Table } from "@pisagor/astro/table";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/table` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/astro` → `src/components/table/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/table` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **astro** only (`@pisagor/astro`).
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/table/`.

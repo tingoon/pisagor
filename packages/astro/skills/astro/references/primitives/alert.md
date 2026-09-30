@@ -1,32 +1,30 @@
-# Pisagor Astro — Alert
+---
+title: Alert
+description: Shows a brief message that helps users notice important information — such as updates, warnings, or errors — with an optional title, icon, and actions.
+api: compound-shorthand
+taxonomy: standard
+examples:
+  - id: variants
+    title: Variants
+    exportName: Variants
+  - id: compound
+    title: Compound
+    exportName: Compound
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Surfaces status, warning, or actionable feedback within page flow.
-- Public API model: **compound-shorthand**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Alert } from "@pisagor/astro/alert"
+import { Alert } from "@pisagor/astro/alert";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/alert` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/astro` → `src/components/alert/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/alert` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **astro** only (`@pisagor/astro`).
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/alert/`.
