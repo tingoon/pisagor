@@ -1,7 +1,6 @@
 ---
 import ComponentHeader from "#/components/docs/component-header.astro";
 import ComponentPreview from "#/components/docs/component-preview.astro";
-import Installation from "#/components/docs/installation.astro";
 import PropsTable from "#/components/docs/props-table.astro";
 import { ReactExampleIsland } from "#/components/docs/react-example-island";
 import { SolidExampleIsland } from "#/components/docs/solid-example-island";
@@ -19,7 +18,8 @@ import {
 } from "#/lib/component-doc";
 import type { ComponentDocs } from "#/lib/component-docs-types";
 import type { Framework } from "#/lib/nav";
-import { getSkillDocImportStatement } from "#/lib/skill-doc";
+import { resolveComponentExamples } from "#/lib/parse-example-directives";
+import { findSkillRaw, parseSkillDoc } from "#/lib/skill-doc";
 
 interface Props {
   id: string;
@@ -42,21 +42,26 @@ const propsRows = loadProps(id);
 const pkg = docs.packageName ?? defaultPackageName(framework, kind);
 const language = PREVIEW_LANGUAGE[framework];
 
-const importStatement = getSkillDocImportStatement(id, pkg, framework);
+const skillRaw = findSkillRaw(id, { framework, packageName: pkg });
+const skillBody = skillRaw ? parseSkillDoc(skillRaw).body : "";
+const exampleDocs = resolveComponentExamples(skillBody);
 
+const exampleSlugs = new Set(exampleDocs.map((ex) => ex.id));
 const mdHeadings = getHeadings()
   .filter((h) => h.depth >= 2)
+  // Examples live in the page shell (`:::example` anywhere), not in stripped Content.
+  .filter((h) => h.slug !== "examples" && h.text.toLowerCase() !== "examples")
+  .filter((h) => !exampleSlugs.has(h.slug))
   .map((h) => ({ depth: h.depth, slug: h.slug, text: h.text }));
 
 const headings = [
   ...mdHeadings,
   { depth: 2, slug: "examples", text: "Examples" },
-  ...docs.examples.map((ex) => ({
+  ...exampleDocs.map((ex) => ({
     depth: 3,
     slug: ex.id,
     text: ex.title,
   })),
-  { depth: 2, slug: "installation", text: "Installation" },
   { depth: 2, slug: "props", text: "Props" },
 ];
 ---
@@ -79,7 +84,7 @@ const headings = [
     Examples
   </h2>
 
-  {docs.examples.map((ex) => {
+  {exampleDocs.map((ex) => {
   const Example = getExampleExport(examples, ex.exportName);
   const code = examples.sources[ex.exportName];
   if (!code) return null;
@@ -88,6 +93,11 @@ const headings = [
       <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
         {ex.title}
       </h3>
+      {ex.description ? (
+        <p class="mb-3 text-[0.9375rem] text-foreground/80 leading-7">
+          {ex.description}
+        </p>
+      ) : null}
       <ComponentPreview
         code={code}
         language={language}
@@ -131,14 +141,6 @@ const headings = [
     </>
   );
 })}
-
-  <h2
-    class="mb-3 mt-16 text-2xl font-semibold tracking-tight"
-    id="installation"
-  >
-    Installation
-  </h2>
-  <Installation class="mb-12" manual={importStatement} packages={pkg} />
 
   <h2 class="mb-3 mt-16 text-2xl font-semibold tracking-tight" id="props">
     Props

@@ -1,9 +1,11 @@
+import { unified } from "@astrojs/markdown-remark";
 import react from "@astrojs/react";
 import solid from "@astrojs/solid-js";
 import svelte from "@astrojs/svelte";
 import vue from "@astrojs/vue";
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
+import { stripSkillExamplesPlugin } from "./src/lib/remark-strip-skill-examples";
 
 const base = process.env.DOCS_BASE_PATH || "/";
 
@@ -86,6 +88,12 @@ export default defineConfig({
     svelte(),
     vue(),
   ],
+  markdown: {
+    // Classic remark (not Sätteri): strip one-liner `:::example ExportName` from Content.
+    processor: unified({
+      remarkPlugins: [stripSkillExamplesPlugin],
+    }),
+  },
   server: { host: true, port: 4000 },
   site: process.env.DOCS_SITE || "https://tingoon.github.com/pisagor",
   vite: {

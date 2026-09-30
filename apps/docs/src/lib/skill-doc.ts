@@ -41,6 +41,18 @@ function pascalCase(id: string): string {
     .join("");
 }
 
+/**
+ * Heavy UI modules live under `src/<id>/` and are omitted from the package
+ * root barrel — import via `@pisagor/<fw>/<id>` only.
+ * Charts/forms are separate packages (always barrel / `./tanstack`).
+ */
+const HEAVY_UI_COMPONENT_IDS = new Set([
+  "data-grid",
+  "data-table",
+  "phone-input",
+  "rich-text-editor",
+]);
+
 function packageDirSlug(packageName: string): string {
   return packageName.replace(/^@pisagor\//, "");
 }
@@ -106,5 +118,9 @@ export function getSkillDocImportStatement(
       if (statement) return statement;
     }
   }
-  return `import { ${pascalCase(id)} } from "${packageName}/${id}";`;
+  const isFormOrChartsPackage =
+    packageName.endsWith("-form") || packageName.endsWith("-charts");
+  const useSubpath = !isFormOrChartsPackage && HEAVY_UI_COMPONENT_IDS.has(id);
+  const specifier = useSubpath ? `${packageName}/${id}` : packageName;
+  return `import { ${pascalCase(id)} } from "${specifier}";`;
 }

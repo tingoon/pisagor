@@ -25,5 +25,4 @@ export interface ComponentDocs {
     | "composite";
   aliases?: string[];
   packageName?: string;
-  examples: ComponentExampleDoc[];
 }
