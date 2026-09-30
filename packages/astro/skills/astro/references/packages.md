@@ -1,6 +1,6 @@
 # Pisagor Astro packages
 
-Framework: **astro** only (`@pisagor/astro`). Sibling UI skills: `packages/react/skills/react`, `packages/vue/skills/vue`. Recipes, tokens, and utils are separate skills (`packages/<name>/skills/<name>`).
+Framework: **astro** only (`@pisagor/astro`). Recipes, tokens, and utils are separate skills (`packages/<name>/skills/<name>`).
 
 ## Install
 

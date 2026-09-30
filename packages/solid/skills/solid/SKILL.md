@@ -12,14 +12,14 @@ metadata:
 
 # @pisagor/solid
 
-`@pisagor/solid` components only. There is no separate `solid-form` or `solid-charts` package; `Field` in this package stays here.
+`@pisagor/solid` components only. Labeled fields live in `@pisagor/solid-form`. There is no `solid-charts` package.
 
 Other packages:
 
 - `@pisagor/recipes` → `packages/recipes/skills/recipes`
 - `@pisagor/utils` → `packages/utils/skills/utils`
 - `@pisagor/tokens` → `packages/tokens/skills/tokens`
-- React / Vue (and their form and chart packages) → `packages/<name>/skills/<name>`
+- `@pisagor/solid-form` → `packages/solid-form/skills/solid-form`
 
 ## Layout
 

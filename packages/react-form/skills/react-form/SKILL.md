@@ -11,7 +11,7 @@ compatibility: >-
 
 # @pisagor/react-form
 
-Labeled field helpers on top of `@pisagor/react`. Sibling: `@pisagor/vue-form`.
+Labeled field helpers on top of `@pisagor/react`.
 
 **Recommended:** `bunx @pisagor/mcp`.
 

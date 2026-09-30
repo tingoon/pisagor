@@ -22,7 +22,6 @@ Other packages have their own skills. Do not duplicate their docs here:
 - `@pisagor/tokens` → `packages/tokens/skills/tokens`
 - `@pisagor/vue-form` → `packages/vue-form/skills/vue-form`
 - `@pisagor/vue-charts` → `packages/vue-charts/skills/vue-charts`
-- Other frameworks: `packages/react/skills/react`, `packages/astro/skills/astro`
 
 **Recommended:** `bunx @pisagor/mcp`.
 

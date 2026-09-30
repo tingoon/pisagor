@@ -4,7 +4,7 @@ description: >-
   Pisagor Astro components (`@pisagor/astro` only — static subset). Use when
   implementing or debugging Astro layout and presentational UI. Ships inside the
   npm package for Intent. Prefer MCP (`bunx @pisagor/mcp`) when available.
-  Do not use for React/Vue forms, charts, or other frameworks.
+  Do not use for interactive forms, charts, or other UI stacks.
 compatibility: >-
   Requires Tailwind CSS v4.
   For Astro apps consuming @pisagor/astro or this monorepo.
@@ -19,7 +19,7 @@ Other packages have their own skills. Do not duplicate their docs here:
 - `@pisagor/recipes` → `packages/recipes/skills/recipes`
 - `@pisagor/utils` → `packages/utils/skills/utils`
 - `@pisagor/tokens` → `packages/tokens/skills/tokens`
-- Interactive forms and charts: `packages/react/skills/react`, `packages/vue/skills/vue`, plus `packages/react-form/skills/react-form` or `packages/vue-form/skills/vue-form`, and the matching charts skill.
+- Forms and charts for other stacks live in their own packages — do not document them here.
 
 **Recommended:** `bunx @pisagor/mcp`.
 
@@ -52,7 +52,7 @@ skills/astro/
 ## Critical rules
 
 - Styling → [`references/rules/styling.md`](references/rules/styling.md)
-- Forms → [`references/rules/forms.md`](references/rules/forms.md) (static subset only; interactive forms are React/Vue skills)
+- Forms → [`references/rules/forms.md`](references/rules/forms.md) (static subset only)
 - Composition → [`references/rules/composition.md`](references/rules/composition.md)
 - Migration → [`references/rules/migration.md`](references/rules/migration.md)
 

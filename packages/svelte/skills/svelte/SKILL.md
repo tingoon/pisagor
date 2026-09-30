@@ -12,14 +12,14 @@ metadata:
 
 # @pisagor/svelte
 
-`@pisagor/svelte` components only. There is no separate `svelte-form` or `svelte-charts` package; `Field` in this package stays here.
+`@pisagor/svelte` components only. Labeled fields live in `@pisagor/svelte-form`. There is no `svelte-charts` package.
 
 Other packages:
 
 - `@pisagor/recipes` → `packages/recipes/skills/recipes`
 - `@pisagor/utils` → `packages/utils/skills/utils`
 - `@pisagor/tokens` → `packages/tokens/skills/tokens`
-- React / Vue (and their form and chart packages) → `packages/<name>/skills/<name>`
+- `@pisagor/svelte-form` → `packages/svelte-form/skills/svelte-form`
 
 ## Layout
 

@@ -11,7 +11,7 @@ compatibility: >-
 
 # @pisagor/vue-form
 
-Labeled field helpers on top of `@pisagor/vue`. Sibling: `@pisagor/react-form`.
+Labeled field helpers on top of `@pisagor/vue`.
 
 **Recommended:** `bunx @pisagor/mcp`.
 
@@ -37,7 +37,7 @@ TanStack Form (`./tanstack` does **not** re-export field components — use `use
 import { useAppForm } from "@pisagor/vue-form/tanstack";
 
 const form = useAppForm({ defaultValues: { email: "" }, onSubmit: async () => {} });
-// field.TextField via form.AppField (same model as react-form)
+// field.TextField via form.AppField
 ```
 
 ## Fields

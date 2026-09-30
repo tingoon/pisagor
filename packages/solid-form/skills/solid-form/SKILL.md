@@ -11,7 +11,7 @@ compatibility: >-
 
 # @pisagor/solid-form
 
-Labeled field helpers on top of `@pisagor/solid`. Siblings: `@pisagor/react-form`, `@pisagor/vue-form`, `@pisagor/svelte-form`.
+Labeled field helpers on top of `@pisagor/solid`.
 
 **Recommended:** `bunx @pisagor/mcp`.
 
