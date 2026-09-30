@@ -1,0 +1,14 @@
+---
+import ComponentDocPage from "#/components/docs/component-doc-page.astro";
+import { listComponentIds } from "#/lib/component-doc";
+
+export function getStaticPaths() {
+  return listComponentIds("vue", "form").map((id) => ({
+    params: { id },
+  }));
+}
+
+const id = Astro.params.id as string;
+---
+
+<ComponentDocPage framework="vue" id={id} kind="form" />

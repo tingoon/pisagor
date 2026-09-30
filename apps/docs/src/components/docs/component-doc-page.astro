@@ -1,0 +1,153 @@
+---
+import ComponentHeader from "#/components/docs/component-header.astro";
+import ComponentPreview from "#/components/docs/component-preview.astro";
+import Installation from "#/components/docs/installation.astro";
+import PropsTable from "#/components/docs/props-table.astro";
+import { ReactExampleIsland } from "#/components/docs/react-example-island";
+import { SolidExampleIsland } from "#/components/docs/solid-example-island";
+import SvelteExampleIsland from "#/components/docs/svelte-example-island.svelte";
+import VueExampleIsland from "#/components/docs/vue-example-island.vue";
+import DocsLayout from "#/layouts/docs-layout.astro";
+import {
+  type ComponentDocKind,
+  defaultPackageName,
+  getExampleExport,
+  loadExamples,
+  loadProps,
+  loadSkillMd,
+  PREVIEW_LANGUAGE,
+} from "#/lib/component-doc";
+import type { ComponentDocs } from "#/lib/component-docs-types";
+import type { Framework } from "#/lib/nav";
+import { getSkillDocImportStatement } from "#/lib/skill-doc";
+
+interface Props {
+  id: string;
+  framework: Framework;
+  kind?: ComponentDocKind;
+}
+
+const id = Astro.props.id;
+const framework = Astro.props.framework;
+const kind = Astro.props.kind ?? "component";
+
+const { Content, frontmatter, getHeadings } = await loadSkillMd(
+  framework,
+  id,
+  kind,
+);
+const docs = frontmatter as ComponentDocs;
+const examples = loadExamples(framework, id, kind);
+const propsRows = loadProps(id);
+const pkg = docs.packageName ?? defaultPackageName(framework, kind);
+const language = PREVIEW_LANGUAGE[framework];
+
+const importStatement = getSkillDocImportStatement(id, pkg, framework);
+
+const mdHeadings = getHeadings()
+  .filter((h) => h.depth >= 2)
+  .map((h) => ({ depth: h.depth, slug: h.slug, text: h.text }));
+
+const headings = [
+  ...mdHeadings,
+  { depth: 2, slug: "examples", text: "Examples" },
+  ...docs.examples.map((ex) => ({
+    depth: 3,
+    slug: ex.id,
+    text: ex.title,
+  })),
+  { depth: 2, slug: "installation", text: "Installation" },
+  { depth: 2, slug: "props", text: "Props" },
+];
+---
+
+<DocsLayout
+  description={docs.description}
+  framework={framework}
+  headings={headings}
+  title={docs.title}
+>
+  <ComponentHeader framework={framework} id={id} packageName={pkg} />
+
+  <div
+    class="docs-skill-md mb-10 space-y-4 text-[0.9375rem] leading-7 text-foreground/90 [&_a]:text-foreground [&_a]:underline [&_a]:underline-offset-2 [&_code]:rounded-md [&_code]:bg-muted/60 [&_code]:px-1.5 [&_code]:py-0.5 [&_code]:font-mono [&_code]:text-3.25 [&_h2]:mt-10 [&_h2]:mb-3 [&_h2]:text-2xl [&_h2]:font-semibold [&_h2]:tracking-tight [&_h2]:text-foreground [&_li]:my-1 [&_ol]:my-3 [&_ol]:list-decimal [&_ol]:ps-5 [&_p]:my-3 [&_pre]:my-4 [&_pre]:overflow-x-auto [&_pre]:rounded-xl [&_pre]:border [&_pre]:border-border/60 [&_pre]:bg-muted/30 [&_pre]:p-4 [&_pre]:text-3.25 [&_strong]:font-semibold [&_ul]:my-3 [&_ul]:list-disc [&_ul]:ps-5"
+  >
+    <Content />
+  </div>
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="examples">
+    Examples
+  </h2>
+
+  {docs.examples.map((ex) => {
+  const Example = getExampleExport(examples, ex.exportName);
+  const code = examples.sources[ex.exportName];
+  if (!code) return null;
+  return (
+    <>
+      <h3 class="mt-10 mb-3 font-semibold text-xl tracking-tight" id={ex.id}>
+        {ex.title}
+      </h3>
+      <ComponentPreview
+        code={code}
+        language={language}
+        packageName={pkg}
+        title={ex.title}
+      >
+        {framework === "react" ? (
+          <ReactExampleIsland
+            client:only="react"
+            componentId={id}
+            exportName={ex.exportName}
+            kind={kind}
+          />
+        ) : null}
+        {framework === "vue" ? (
+          <VueExampleIsland
+            client:only="vue"
+            componentId={id}
+            exportName={ex.exportName}
+            kind={kind}
+          />
+        ) : null}
+        {framework === "solid" ? (
+          <SolidExampleIsland
+            client:only="solid-js"
+            componentId={id}
+            exportName={ex.exportName}
+            kind={kind}
+          />
+        ) : null}
+        {framework === "svelte" ? (
+          <SvelteExampleIsland
+            client:only="svelte"
+            componentId={id}
+            exportName={ex.exportName}
+            kind={kind}
+          />
+        ) : null}
+        {framework === "astro" ? <Example /> : null}
+      </ComponentPreview>
+    </>
+  );
+})}
+
+  <h2
+    class="mb-3 mt-16 text-2xl font-semibold tracking-tight"
+    id="installation"
+  >
+    Installation
+  </h2>
+  <Installation class="mb-12" manual={importStatement} packages={pkg} />
+
+  <h2 class="mb-3 mt-16 text-2xl font-semibold tracking-tight" id="props">
+    Props
+  </h2>
+  {propsRows ? (
+  <PropsTable rows={propsRows} />
+) : (
+  <p class="text-muted-foreground text-sm">
+    This utility has no dedicated entries in <code>@pisagor/props</code> yet.
+  </p>
+)}
+</DocsLayout>

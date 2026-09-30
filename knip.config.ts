@@ -7,7 +7,7 @@ export default defineConfig({
       ignoreDependencies: ["chromatic"],
     },
     "apps/docs": {
-      entry: ["scripts/**/*.ts", "src/**/*.{astro,ts,tsx}"],
+      entry: ["scripts/**/*.ts", "src/**/*.{astro,ts,tsx,vue,svelte}"],
     },
     "apps/react": {
       entry: [".storybook/**/*", "src/**/*"],

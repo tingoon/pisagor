@@ -11,14 +11,24 @@ export default defineConfig({
   base,
   integrations: [
     react({
+      // Solid island lives under apps/docs; keep React plugin off that file.
+      exclude: ["**/apps/docs/src/components/docs/solid-example-island.tsx"],
+      // Extension-limited: @vitejs/plugin-react maps `include` to Vite 8
+      // `oxc.jsxRefreshInclude`. A bare `**` glob also matches CSS, so after
+      // `@tailwindcss/vite` emits `@layer properties;` vite:oxc tries to parse
+      // it as JS and docs `astro dev` 500s (build is fine — different pipeline).
       include: [
-        "**/packages/react/**",
-        "**/packages/react-*/**",
-        "**/apps/docs/src/**",
+        "**/packages/react/**/*.{js,jsx,ts,tsx}",
+        "**/packages/react-*/**/*.{js,jsx,ts,tsx}",
+        "**/apps/docs/src/**/*.{js,jsx,ts,tsx}",
       ],
     }),
     solid({
-      include: ["**/packages/solid/**", "**/packages/solid-*/**"],
+      include: [
+        "**/packages/solid/**/*.{js,jsx,ts,tsx}",
+        "**/packages/solid-*/**/*.{js,jsx,ts,tsx}",
+        "**/apps/docs/src/components/docs/solid-example-island.tsx",
+      ],
     }),
     svelte(),
     vue(),
