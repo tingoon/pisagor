@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Switch } from "../../../../../src/components/switch/index";
+import { Switch } from "@pisagor/svelte/switch";
 </script>
 
 <Switch />

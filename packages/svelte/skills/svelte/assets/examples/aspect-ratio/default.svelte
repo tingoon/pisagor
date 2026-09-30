@@ -1,5 +1,5 @@
 <script lang="ts">
-import { AspectRatio } from "../../../../../src/components/aspect-ratio/index";
+import { AspectRatio } from "@pisagor/svelte/aspect-ratio";
 </script>
 
 <AspectRatio />

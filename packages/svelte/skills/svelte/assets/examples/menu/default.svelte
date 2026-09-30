@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Menu } from "../../../../../src/components/menu/index";
+import { Menu } from "@pisagor/svelte/menu";
 </script>
 
 <Menu>

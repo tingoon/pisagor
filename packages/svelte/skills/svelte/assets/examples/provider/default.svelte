@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Provider } from "../../../../../src/components/provider/index";
+import { Provider } from "@pisagor/svelte/provider";
 </script>
 
 <Provider locale="en-US">

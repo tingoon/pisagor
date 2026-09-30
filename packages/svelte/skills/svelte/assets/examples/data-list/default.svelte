@@ -1,5 +1,5 @@
 <script lang="ts">
-import { DataList } from "../../../../../src/components/data-list/index";
+import { DataList } from "@pisagor/svelte/data-list";
 </script>
 
 <DataList

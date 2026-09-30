@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Calendar } from "../../../../../src/components/calendar/index";
+import { Calendar } from "@pisagor/svelte/calendar";
 </script>
 
 <Calendar>

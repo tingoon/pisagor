@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Rating } from "../../../../../src/components/rating/index";
+import { Rating } from "@pisagor/svelte/rating";
 </script>
 
 <Rating />

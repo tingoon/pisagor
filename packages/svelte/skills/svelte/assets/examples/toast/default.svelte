@@ -1,6 +1,6 @@
 <script lang="ts">
-import { Button } from "../../../../../src/components/button";
-import { Toaster, toast } from "../../../../../src/components/toast/index";
+import { Button } from "@pisagor/svelte/button";
+import { Toaster, toast } from "@pisagor/svelte/toast";
 </script>
 
 <Toaster />

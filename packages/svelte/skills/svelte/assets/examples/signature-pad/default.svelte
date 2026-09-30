@@ -1,5 +1,5 @@
 <script lang="ts">
-import { SignaturePad } from "../../../../../src/components/signature-pad/index";
+import { SignaturePad } from "@pisagor/svelte/signature-pad";
 </script>
 
 <SignaturePad />

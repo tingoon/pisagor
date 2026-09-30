@@ -1,5 +1,5 @@
 <script lang="ts">
-import { ScrollArea } from "../../../../../src/components/scroll-area/index";
+import { ScrollArea } from "@pisagor/svelte/scroll-area";
 </script>
 
 <ScrollArea class="h-32 w-64 rounded-md border">

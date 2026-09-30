@@ -1,5 +1,5 @@
 <script lang="ts">
-import { ImageCropper } from "../../../../../src/components/image-cropper/index";
+import { ImageCropper } from "@pisagor/svelte/image-cropper";
 </script>
 
 <ImageCropper alt="Crop me" src="https://picsum.photos/400" />

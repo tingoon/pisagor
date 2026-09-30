@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Badge } from "../../../../../src/components/badge/index";
+import { Badge } from "@pisagor/svelte/badge";
 </script>
 
 <Badge>Badge</Badge>

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Input } from "../../../../../src/components/input/index";
+import { Input } from "@pisagor/svelte/input";
 </script>
 
 <Input placeholder="Type here" />

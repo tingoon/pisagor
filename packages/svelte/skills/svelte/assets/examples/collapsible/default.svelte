@@ -1,6 +1,6 @@
 <script lang="ts">
-import { Button } from "../../../../../src/components/button";
-import { Collapsible } from "../../../../../src/components/collapsible/index";
+import { Button } from "@pisagor/svelte/button";
+import { Collapsible } from "@pisagor/svelte/collapsible";
 </script>
 
 <Collapsible>

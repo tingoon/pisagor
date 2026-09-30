@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Marquee } from "../../../../../src/components/marquee/index";
+import { Marquee } from "@pisagor/svelte/marquee";
 </script>
 
 <Marquee items={["Pisagor", "Svelte", "Ark UI", "Recipes"]} />

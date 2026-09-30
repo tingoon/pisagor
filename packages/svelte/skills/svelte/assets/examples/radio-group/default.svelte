@@ -1,5 +1,5 @@
 <script lang="ts">
-import { RadioGroup } from "../../../../../src/components/radio-group/index";
+import { RadioGroup } from "@pisagor/svelte/radio-group";
 </script>
 
 <RadioGroup

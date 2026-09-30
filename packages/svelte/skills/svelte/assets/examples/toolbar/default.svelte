@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Toolbar } from "../../../../../src/components/toolbar/index";
+import { Toolbar } from "@pisagor/svelte/toolbar";
 </script>
 
 <Toolbar description="Manage your workspace" title="Projects">

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Sortable } from "../../../../../src/components/sortable/index";
+import { Sortable } from "@pisagor/svelte/sortable";
 
 let items = $state(["one", "two", "three"]);
 </script>

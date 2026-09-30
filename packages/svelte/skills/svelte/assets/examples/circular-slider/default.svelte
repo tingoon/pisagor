@@ -1,5 +1,5 @@
 <script lang="ts">
-import { CircularSlider } from "../../../../../src/components/circular-slider/index";
+import { CircularSlider } from "@pisagor/svelte/circular-slider";
 </script>
 
 <CircularSlider defaultValue={90}>

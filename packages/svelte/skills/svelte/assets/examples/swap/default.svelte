@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Swap } from "../../../../../src/components/swap/index";
+import { Swap } from "@pisagor/svelte/swap";
 
 let swap = $state(false);
 </script>

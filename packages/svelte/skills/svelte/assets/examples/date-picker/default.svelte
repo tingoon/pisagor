@@ -1,5 +1,5 @@
 <script lang="ts">
-import { DatePicker } from "../../../../../src/components/date-picker/index";
+import { DatePicker } from "@pisagor/svelte/date-picker";
 </script>
 
 <DatePicker>

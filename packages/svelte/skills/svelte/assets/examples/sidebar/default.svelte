@@ -1,9 +1,9 @@
 <script lang="ts">
+import { Button } from "@pisagor/svelte/button";
+import { Sidebar } from "@pisagor/svelte/sidebar";
 import HouseIcon from "phosphor-svelte/lib/HouseIcon";
 import MagnifyingGlassIcon from "phosphor-svelte/lib/MagnifyingGlassIcon";
 import UserIcon from "phosphor-svelte/lib/UserIcon";
-import Button from "../../../../../src/components/button/button.svelte";
-import { Sidebar } from "../../../../../src/components/sidebar";
 </script>
 
 <Sidebar.Provider>

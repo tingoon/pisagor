@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Presence } from "../../../../../src/components/presence/index";
+import { Presence } from "@pisagor/svelte/presence";
 
 let present = $state(true);
 </script>

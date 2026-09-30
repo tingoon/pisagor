@@ -1,5 +1,5 @@
 <script lang="ts">
-import { DropdownMenu } from "../../../../../src/components/dropdown-menu/index";
+import { DropdownMenu } from "@pisagor/svelte/dropdown-menu";
 </script>
 
 <DropdownMenu>

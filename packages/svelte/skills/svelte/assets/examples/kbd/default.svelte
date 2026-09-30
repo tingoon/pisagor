@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Kbd } from "../../../../../src/components/kbd/index";
+import { Kbd } from "@pisagor/svelte/kbd";
 </script>
 
 <Kbd>⌘</Kbd>

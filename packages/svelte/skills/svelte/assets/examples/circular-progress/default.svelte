@@ -1,5 +1,5 @@
 <script lang="ts">
-import { CircularProgress } from "../../../../../src/components/circular-progress/index";
+import { CircularProgress } from "@pisagor/svelte/circular-progress";
 </script>
 
 <CircularProgress isValueVisible value={60} />

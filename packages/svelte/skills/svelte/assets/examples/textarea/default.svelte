@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Textarea } from "../../../../../src/components/textarea/index";
+import { Textarea } from "@pisagor/svelte/textarea";
 </script>
 
 <Textarea placeholder="Write something…" />

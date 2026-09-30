@@ -1,5 +1,5 @@
 <script lang="ts">
-import { FileUpload } from "../../../../../src/components/file-upload/index";
+import { FileUpload } from "@pisagor/svelte/file-upload";
 </script>
 
 <FileUpload>

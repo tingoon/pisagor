@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Checkbox } from "../../../../../src/components/checkbox/index";
+import { Checkbox } from "@pisagor/svelte/checkbox";
 </script>
 
 <Checkbox />

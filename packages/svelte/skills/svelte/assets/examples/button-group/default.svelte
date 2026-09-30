@@ -1,6 +1,6 @@
 <script lang="ts">
-import { Button } from "../../../../../src/components/button";
-import { ButtonGroup } from "../../../../../src/components/button-group/index";
+import { Button } from "@pisagor/svelte/button";
+import { ButtonGroup } from "@pisagor/svelte/button-group";
 </script>
 
 <ButtonGroup>

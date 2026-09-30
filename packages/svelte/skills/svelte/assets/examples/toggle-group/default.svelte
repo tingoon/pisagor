@@ -1,5 +1,5 @@
 <script lang="ts">
-import { ToggleGroup } from "../../../../../src/components/toggle-group/index";
+import { ToggleGroup } from "@pisagor/svelte/toggle-group";
 </script>
 
 <ToggleGroup

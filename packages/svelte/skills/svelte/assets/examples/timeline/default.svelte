@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Timeline } from "../../../../../src/components/timeline/index";
+import { Timeline } from "@pisagor/svelte/timeline";
 </script>
 
 <Timeline

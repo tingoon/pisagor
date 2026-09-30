@@ -1,6 +1,6 @@
 <script lang="ts">
-import { Field } from "../../../../../src/components/field/index";
-import { Input } from "../../../../../src/components/input";
+import { Field } from "@pisagor/svelte/field";
+import { Input } from "@pisagor/svelte/input";
 </script>
 
 <Field>

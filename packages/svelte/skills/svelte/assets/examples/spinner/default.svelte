@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Spinner } from "../../../../../src/components/spinner/index";
+import { Spinner } from "@pisagor/svelte/spinner";
 </script>
 
 <Spinner />

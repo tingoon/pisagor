@@ -1,5 +1,5 @@
 <script lang="ts">
-import { PhoneInput } from "../../../../../src/phone-input";
+import { PhoneInput } from "@pisagor/svelte/phone-input";
 
 let value = $state("");
 </script>

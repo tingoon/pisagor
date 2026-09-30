@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Highlight } from "../../../../../src/components/highlight/index";
+import { Highlight } from "@pisagor/svelte/highlight";
 </script>
 
 <p>

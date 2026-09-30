@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Surface } from "../../../../../src/components/surface/index";
+import { Surface } from "@pisagor/svelte/surface";
 </script>
 
 <Surface bordered class="p-4"> Surface </Surface>

@@ -1,6 +1,6 @@
 <script lang="ts">
-import { Table } from "../../../../../src/components/table";
-import { DataGrid, dataGridFeatures } from "../../../../../src/data-grid";
+import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
+import { Table } from "@pisagor/svelte/table";
 
 const data = [
   { id: "1", name: "Ada", role: "Admin" },

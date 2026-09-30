@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Editable } from "../../../../../src/components/editable/index";
+import { Editable } from "@pisagor/svelte/editable";
 </script>
 
 <Editable defaultValue="Click to edit" placeholder="Enter text…">

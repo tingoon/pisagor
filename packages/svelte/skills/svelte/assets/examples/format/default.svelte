@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Format } from "../../../../../src/components/format/index";
+import { Format } from "@pisagor/svelte/format";
 </script>
 
 <p><Format.Number value={1000} /></p>

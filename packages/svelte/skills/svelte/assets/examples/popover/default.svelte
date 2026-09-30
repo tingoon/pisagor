@@ -1,6 +1,6 @@
 <script lang="ts">
-import { Button } from "../../../../../src/components/button";
-import { Popover } from "../../../../../src/components/popover/index";
+import { Button } from "@pisagor/svelte/button";
+import { Popover } from "@pisagor/svelte/popover";
 </script>
 
 <Popover>

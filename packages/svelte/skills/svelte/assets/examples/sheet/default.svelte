@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Sheet } from "../../../../../src/components/sheet/index";
+import { Sheet } from "@pisagor/svelte/sheet";
 </script>
 
 <Sheet>

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { InputGroup } from "../../../../../src/components/input-group/index";
+import { InputGroup } from "@pisagor/svelte/input-group";
 </script>
 
 <InputGroup>

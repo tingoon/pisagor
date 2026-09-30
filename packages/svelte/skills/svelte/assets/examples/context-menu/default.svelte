@@ -1,5 +1,5 @@
 <script lang="ts">
-import { ContextMenu } from "../../../../../src/components/context-menu/index";
+import { ContextMenu } from "@pisagor/svelte/context-menu";
 </script>
 
 <ContextMenu>

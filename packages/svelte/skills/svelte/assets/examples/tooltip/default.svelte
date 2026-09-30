@@ -1,6 +1,6 @@
 <script lang="ts">
-import { Button } from "../../../../../src/components/button";
-import { Tooltip } from "../../../../../src/components/tooltip/index";
+import { Button } from "@pisagor/svelte/button";
+import { Tooltip } from "@pisagor/svelte/tooltip";
 </script>
 
 <Tooltip content="Bold">

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { LinkBox } from "../../../../../src/components/link-box/index";
+import { LinkBox } from "@pisagor/svelte/link-box";
 </script>
 
 <LinkBox>

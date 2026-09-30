@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Toggle } from "../../../../../src/components/toggle/index";
+import { Toggle } from "@pisagor/svelte/toggle";
 </script>
 
 <Toggle>B</Toggle>

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Scrollspy } from "../../../../../src/components/scrollspy/index";
+import { Scrollspy } from "@pisagor/svelte/scrollspy";
 </script>
 
 <Scrollspy>

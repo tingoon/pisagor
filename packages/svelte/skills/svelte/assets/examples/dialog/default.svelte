@@ -1,6 +1,6 @@
 <script lang="ts">
-import { Button } from "../../../../../src/components/button";
-import { Dialog } from "../../../../../src/components/dialog/index";
+import { Button } from "@pisagor/svelte/button";
+import { Dialog } from "@pisagor/svelte/dialog";
 </script>
 
 <Dialog description="This is a dialog description." title="Dialog title">

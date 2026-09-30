@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Drawer } from "../../../../../src/components/drawer/index";
+import { Drawer } from "@pisagor/svelte/drawer";
 </script>
 
 <Drawer>

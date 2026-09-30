@@ -1,5 +1,5 @@
 <script lang="ts">
-import { SegmentGroup } from "../../../../../src/components/segment-group/index";
+import { SegmentGroup } from "@pisagor/svelte/segment-group";
 </script>
 
 <SegmentGroup

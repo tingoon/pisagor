@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Table } from "../../../../../src/components/table/index";
+import { Table } from "@pisagor/svelte/table";
 </script>
 
 <Table>

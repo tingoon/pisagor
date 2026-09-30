@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Tour } from "../../../../../src/components/tour/index";
+import { Tour } from "@pisagor/svelte/tour";
 </script>
 
 <Tour steps={[{ description: "Start here", id: "welcome", title: "Welcome" }]}>

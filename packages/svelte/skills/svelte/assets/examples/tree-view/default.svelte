@@ -1,5 +1,5 @@
 <script lang="ts">
-import { createTreeCollection, TreeView } from "../../../../../src/components/tree-view/index";
+import { createTreeCollection, TreeView } from "@pisagor/svelte/tree-view";
 
 const collection = createTreeCollection({
   rootNode: {

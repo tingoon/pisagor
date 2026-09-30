@@ -1,5 +1,5 @@
 <script lang="ts">
-import { VisuallyHidden } from "../../../../../src/components/visually-hidden/index";
+import { VisuallyHidden } from "@pisagor/svelte/visually-hidden";
 </script>
 
 <VisuallyHidden />

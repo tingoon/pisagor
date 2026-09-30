@@ -1,5 +1,5 @@
 <script lang="ts">
-import { HoverCard } from "../../../../../src/components/hover-card/index";
+import { HoverCard } from "@pisagor/svelte/hover-card";
 </script>
 
 <HoverCard>

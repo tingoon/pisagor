@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Breadcrumb } from "../../../../../src/components/breadcrumb/index";
+import { Breadcrumb } from "@pisagor/svelte/breadcrumb";
 </script>
 
 <Breadcrumb

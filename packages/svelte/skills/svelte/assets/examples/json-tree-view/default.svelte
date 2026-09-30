@@ -1,5 +1,5 @@
 <script lang="ts">
-import { JsonTreeView } from "../../../../../src/components/json-tree-view/index";
+import { JsonTreeView } from "@pisagor/svelte/json-tree-view";
 
 const data = { name: "Pisagor", nested: { count: 3, ok: true } };
 </script>

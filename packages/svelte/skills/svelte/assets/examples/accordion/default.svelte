@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Accordion } from "../../../../../src/components/accordion/index";
+import { Accordion } from "@pisagor/svelte/accordion";
 </script>
 
 <Accordion

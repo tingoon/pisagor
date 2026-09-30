@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Frame } from "../../../../../src/components/frame/index";
+import { Frame } from "@pisagor/svelte/frame";
 </script>
 
 <Frame>

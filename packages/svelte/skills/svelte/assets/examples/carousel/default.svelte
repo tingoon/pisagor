@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Carousel } from "../../../../../src/components/carousel/index";
+import { Carousel } from "@pisagor/svelte/carousel";
 </script>
 
 <Carousel

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Clipboard } from "../../../../../src/components/clipboard/index";
+import { Clipboard } from "@pisagor/svelte/clipboard";
 </script>
 
 <Clipboard label="Website" value="https://pisagor.dev" />

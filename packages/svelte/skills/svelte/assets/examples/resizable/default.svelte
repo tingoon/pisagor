@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Resizable } from "../../../../../src/components/resizable/index";
+import { Resizable } from "@pisagor/svelte/resizable";
 </script>
 
 <Resizable panels={[{ id: "a" }, { id: "b" }]} style="height: 200px">

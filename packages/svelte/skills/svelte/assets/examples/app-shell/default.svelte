@@ -1,5 +1,5 @@
 <script lang="ts">
-import { AppShell } from "../../../../../src/components/app-shell";
+import { AppShell } from "@pisagor/svelte/app-shell";
 </script>
 
 <AppShell>

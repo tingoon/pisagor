@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Listbox } from "../../../../../src/components/listbox/index";
+import { Listbox } from "@pisagor/svelte/listbox";
 </script>
 
 <Listbox

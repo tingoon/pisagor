@@ -1,5 +1,5 @@
 <script lang="ts">
-import { InputOTP } from "../../../../../src/components/input-otp/index";
+import { InputOTP } from "@pisagor/svelte/input-otp";
 </script>
 
 <InputOTP>

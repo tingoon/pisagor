@@ -1,5 +1,5 @@
 <script lang="ts">
-import { Alert } from "../../../../../src/components/alert/index";
+import { Alert } from "@pisagor/svelte/alert";
 </script>
 
 <Alert
