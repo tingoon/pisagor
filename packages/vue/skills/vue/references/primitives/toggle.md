@@ -1,34 +1,42 @@
-# Pisagor Vue — Toggle
+---
+title: Toggle
+description: Stays pressed or released to turn a single option on or off, similar to a checkbox styled as a button.
+api: closed
+taxonomy: primitive
+examples:
+  - id: sizes
+    title: Sizes
+    exportName: Sizes
+  - id: variants
+    title: Variants
+    exportName: Variants
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: icon-group
+    title: Icon Group
+    exportName: IconGroup
+  - id: with-icon
+    title: With Icon
+    exportName: WithIcon
+  - id: controlled
+    title: Controlled
+    exportName: Controlled
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Stays pressed or released to turn a single option on or off, similar to a checkbox styled as a button.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Toggle } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { Toggle } from "@pisagor/vue/toggle";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/toggle` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/toggle/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/toggle` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/toggle/`.

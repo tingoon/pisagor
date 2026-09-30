@@ -1,34 +1,36 @@
-# Pisagor Vue — Kbd
+---
+title: Kbd
+description: Displays keyboard shortcuts in a monospace badge so users know which keys to press.
+api: compound
+taxonomy: primitive
+examples:
+  - id: variants
+    title: Variants
+    exportName: Variants
+  - id: with-button
+    title: With Button
+    exportName: WithButton
+  - id: with-tooltip
+    title: With Tooltip
+    exportName: WithTooltip
+  - id: default
+    title: Default
+    exportName: Default
+  - id: kbd-group-story
+    title: Kbd Group Story
+    exportName: KbdGroupStory
+---
 
 ## When to use
 
 - Displays keyboard shortcuts in a monospace badge so users know which keys to press.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Kbd } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { Kbd } from "@pisagor/vue/kbd";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/kbd` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/kbd/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/kbd` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/kbd/`.

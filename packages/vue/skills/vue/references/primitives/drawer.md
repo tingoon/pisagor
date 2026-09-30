@@ -1,34 +1,41 @@
-# Pisagor Vue — Drawer
+---
+title: Drawer
+description: Slides a panel over the page for secondary tasks or details without leaving the current context.
+api: compound
+taxonomy: standard
+aliases:
+  - tray
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: custom-spacing
+    title: Custom Spacing
+    exportName: CustomSpacing
+  - id: drawer-content-inner
+    title: Drawer Content Inner
+    exportName: DrawerContentInner
+  - id: inset
+    title: Inset
+    exportName: Inset
+  - id: snap-points
+    title: Snap Points
+    exportName: SnapPoints
+  - id: swipe-directions
+    title: Swipe Directions
+    exportName: SwipeDirections
+---
 
 ## When to use
 
 - Slides a panel over the page for secondary tasks or details without leaving the current context.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Drawer } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { Drawer } from "@pisagor/vue/drawer";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/drawer` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/drawer/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/drawer` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/drawer/`.

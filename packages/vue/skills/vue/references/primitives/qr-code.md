@@ -1,34 +1,38 @@
-# Pisagor Vue — QrCode
+---
+title: Qr Code
+description: Displays a scannable QR code so users can open links or share data with a phone camera.
+api: compound
+taxonomy: standard
+aliases:
+  - qrcode
+examples:
+  - id: sizes
+    title: Sizes
+    exportName: Sizes
+  - id: error-correction
+    title: Error Correction
+    exportName: ErrorCorrection
+  - id: overlay
+    title: Overlay
+    exportName: Overlay
+  - id: download
+    title: Download
+    exportName: Download
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Displays a scannable QR code so users can open links or share data with a phone camera.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```ts
-import { QrCode } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { QrCode } from "@pisagor/vue/qr-code";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/qr-code` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/qr-code/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/qr-code` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/qr-code/`.

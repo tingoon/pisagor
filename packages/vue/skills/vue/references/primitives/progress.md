@@ -1,34 +1,39 @@
-# Pisagor Vue — Progress
+---
+title: Progress
+description: Shows how complete a task is along a track, including indeterminate loading when progress is unknown.
+api: closed
+taxonomy: primitive
+examples:
+  - id: orientation-horizontal
+    title: Orientation Horizontal
+    exportName: OrientationHorizontal
+  - id: orientation-vertical
+    title: Orientation Vertical
+    exportName: OrientationVertical
+  - id: with-label
+    title: With Label
+    exportName: WithLabel
+  - id: indeterminate
+    title: Indeterminate
+    exportName: Indeterminate
+  - id: controlled
+    title: Controlled
+    exportName: Controlled
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Shows how complete a task is along a track, including indeterminate loading when progress is unknown.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Progress } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { Progress } from "@pisagor/vue/progress";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/progress` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/progress/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/progress` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/progress/`.

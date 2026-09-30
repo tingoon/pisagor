@@ -1,34 +1,48 @@
-# Pisagor Vue — AppShell
+---
+title: App Shell
+description: Multi-region application shell with draggable side panels and an optional inspector for dashboard layouts.
+api: compound
+taxonomy: pattern
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: banner
+    title: Banner
+    exportName: Banner
+  - id: navigation
+    title: Navigation
+    exportName: Navigation
+  - id: inspectors
+    title: Inspectors
+    exportName: Inspectors
+  - id: panels
+    title: Panels
+    exportName: Panels
+  - id: rails
+    title: Rails
+    exportName: Rails
+  - id: header
+    title: Header
+    exportName: Header
+  - id: main
+    title: Main
+    exportName: Main
+  - id: content
+    title: Content
+    exportName: Content
+---
 
 ## When to use
 
 - Multi-region application shell with draggable side panels and an optional inspector for dashboard layouts.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```ts
-import { AppShell } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { AppShell } from "@pisagor/vue/app-shell";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/app-shell` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/app-shell/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/app-shell` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/app-shell/`.

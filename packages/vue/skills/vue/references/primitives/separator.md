@@ -1,34 +1,33 @@
-# Pisagor Vue — Separator
+---
+title: Separator
+description: Visually divides sections of content so grouped information is easier to scan.
+api: closed
+taxonomy: primitive
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: list
+    title: List
+    exportName: List
+  - id: inline-navigation
+    title: Inline Navigation
+    exportName: InlineNavigation
+  - id: vertical
+    title: Vertical
+    exportName: Vertical
+---
 
 ## When to use
 
 - Visually divides sections of content so grouped information is easier to scan.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Separator } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { Separator } from "@pisagor/vue/separator";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/separator` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/separator/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/separator` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/separator/`.

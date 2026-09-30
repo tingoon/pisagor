@@ -1,34 +1,39 @@
-# Pisagor Vue — PhoneInput
+---
+title: Phone Input
+description: Enter and format international phone numbers with country selection.
+api: closed
+taxonomy: pattern
+examples:
+  - id: controlled
+    title: Controlled
+    exportName: Controlled
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: invalid
+    title: Invalid
+    exportName: Invalid
+  - id: sizes
+    title: Sizes
+    exportName: Sizes
+  - id: variants
+    title: Variants
+    exportName: Variants
+  - id: on-surface
+    title: On Surface
+    exportName: OnSurface
+---
 
 ## When to use
 
 - Phone number input with optional globe flag preview.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```ts
-import { PhoneInput } from "@pisagor/vue/phone-input"
-import { PhPlus } from "@phosphor-icons/vue"
+import { PhoneInput } from "@pisagor/vue/phone-input";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/phone-input` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue/phone-input` → `src/phone-input/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/phone-input` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/phone-input/`.

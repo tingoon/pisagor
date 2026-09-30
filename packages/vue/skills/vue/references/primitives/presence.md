@@ -1,33 +1,22 @@
-# Pisagor Vue — Presence
+---
+title: Presence
+description: Animates elements in and out of the tree so enter and exit transitions feel smooth.
+api: closed
+taxonomy: primitive
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Animates elements in and out of the tree so enter and exit transitions feel smooth.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Presence } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { Presence } from "@pisagor/vue/presence";
 ```
 
-## Source of truth
-
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/presence/` |
-| Examples | MCP `get_example` / `list_examples` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/presence/`.

@@ -1,34 +1,57 @@
-# Pisagor Vue — ToggleGroup
+---
+title: Toggle Group
+description: Lets users choose one or more pressed states from a row of related toggle buttons.
+api: compound-shorthand
+taxonomy: standard
+examples:
+  - id: sizes
+    title: Sizes
+    exportName: Sizes
+  - id: variants
+    title: Variants
+    exportName: Variants
+  - id: horizontal
+    title: Horizontal
+    exportName: Horizontal
+  - id: vertical
+    title: Vertical
+    exportName: Vertical
+  - id: spacing
+    title: Spacing
+    exportName: Spacing
+  - id: disabled-item
+    title: Disabled Item
+    exportName: DisabledItem
+  - id: font-weight
+    title: Font Weight
+    exportName: FontWeight
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: single
+    title: Single
+    exportName: Single
+  - id: controlled
+    title: Controlled
+    exportName: Controlled
+  - id: compound
+    title: Compound
+    exportName: Compound
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Select one or more options from a compact set.
-- Public API model: **compound-shorthand**.
 
-## Canonical import
+## Import
 
 ```ts
-import { ToggleGroup } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { ToggleGroup } from "@pisagor/vue/toggle-group";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/toggle-group` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/toggle-group/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/toggle-group` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/toggle-group/`.

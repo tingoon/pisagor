@@ -1,34 +1,39 @@
-# Pisagor Vue — SignaturePad
+---
+title: Signature Pad
+description: Captures a handwritten signature on a canvas for approvals and forms.
+api: closed
+taxonomy: standard
+examples:
+  - id: invalid
+    title: Invalid
+    exportName: Invalid
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: controlled
+    title: Controlled
+    exportName: Controlled
+  - id: image-preview
+    title: Image Preview
+    exportName: ImagePreview
+  - id: default
+    title: Default
+    exportName: Default
+  - id: on-surface
+    title: On Surface
+    exportName: OnSurface
+---
 
 ## When to use
 
 - Captures a handwritten signature on a canvas for approvals and forms.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```ts
-import { SignaturePad } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { SignaturePad } from "@pisagor/vue/signature-pad";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/signature-pad` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/signature-pad/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/signature-pad` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/signature-pad/`.

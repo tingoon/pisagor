@@ -1,34 +1,47 @@
-# Pisagor Vue — Sheet
+---
+title: Sheet
+description: Slides a panel in from the edge of the screen for secondary tasks on mobile and desktop.
+api: compound
+taxonomy: pattern
+aliases:
+  - side-panel
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: custom-spacing
+    title: Custom Spacing
+    exportName: CustomSpacing
+  - id: inset
+    title: Inset
+    exportName: Inset
+  - id: no-close-button
+    title: No Close Button
+    exportName: NoCloseButton
+  - id: non-modal
+    title: Non Modal
+    exportName: NonModal
+  - id: scroll-area
+    title: Scroll Area
+    exportName: ScrollArea
+  - id: sides
+    title: Sides
+    exportName: Sides
+  - id: close-behavior
+    title: Close Behavior
+    exportName: CloseBehavior
+---
 
 ## When to use
 
 - Slides a panel in from the edge of the screen for secondary tasks on mobile and desktop.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Sheet } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { Sheet } from "@pisagor/vue/sheet";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/sheet` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/sheet/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/sheet` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/sheet/`.

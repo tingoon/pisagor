@@ -1,34 +1,47 @@
-# Pisagor Vue — Toast
+---
+title: Toast
+description: Shows brief feedback messages that appear and dismiss automatically after an action completes.
+api: compound
+taxonomy: standard
+aliases:
+  - snackbar
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: variants
+    title: Variants
+    exportName: Variants
+  - id: duration
+    title: Duration
+    exportName: Duration
+  - id: closable
+    title: Closable
+    exportName: Closable
+  - id: dedupe
+    title: Dedupe
+    exportName: Dedupe
+  - id: action
+    title: Action
+    exportName: Action
+  - id: with-promise
+    title: With Promise
+    exportName: WithPromise
+  - id: placements
+    title: Placements
+    exportName: Placements
+---
 
 ## When to use
 
 - Shows brief feedback messages that appear and dismiss automatically after an action completes.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Toast } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { Toast } from "@pisagor/vue/toast";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/toast` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/toast/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/toast` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/toast/`.

@@ -1,34 +1,45 @@
-# Pisagor Vue — Avatar
+---
+title: Avatar
+description: Shows who a user is in the interface — usually a profile photo, or initials or an icon when there is no image or it has not loaded yet.
+api: closed
+taxonomy: primitive
+examples:
+  - id: compound
+    title: Compound
+    exportName: Compound
+  - id: count
+    title: Count
+    exportName: Count
+  - id: default
+    title: Default
+    exportName: Default
+  - id: fallbacks
+    title: Fallbacks
+    exportName: Fallbacks
+  - id: group
+    title: Group
+    exportName: Group
+  - id: shapes
+    title: Shapes
+    exportName: Shapes
+  - id: sizes
+    title: Sizes
+    exportName: Sizes
+  - id: fallback-only
+    title: Fallback Only
+    exportName: FallbackOnly
+---
 
 ## When to use
 
 - Displays a user or entity image with a shaped fallback when the source is unavailable.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Avatar } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { Avatar } from "@pisagor/vue/avatar";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/avatar` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/avatar/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/avatar` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/avatar/`.

@@ -1,34 +1,33 @@
-# Pisagor Vue — JsonTreeView
+---
+title: Json Tree View
+description: Explores nested JSON as an expandable tree so structured data is easier to inspect.
+api: closed
+taxonomy: pattern
+examples:
+  - id: data-types
+    title: Data Types
+    exportName: DataTypes
+  - id: expand-depth
+    title: Expand Depth
+    exportName: ExpandDepth
+  - id: map-set
+    title: Map Set
+    exportName: MapSet
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Explores nested JSON as an expandable tree so structured data is easier to inspect.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```ts
-import { JsonTreeView } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { JsonTreeView } from "@pisagor/vue/json-tree-view";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/json-tree-view` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/json-tree-view/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/json-tree-view` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/json-tree-view/`.

@@ -1,34 +1,39 @@
-# Pisagor Vue — Highlight
+---
+title: Highlight
+description: Emphasizes matching words inside text so search results and queries are easier to spot.
+api: closed
+taxonomy: primitive
+examples:
+  - id: multiple
+    title: Multiple
+    exportName: Multiple
+  - id: custom-style
+    title: Custom Style
+    exportName: CustomStyle
+  - id: search-query
+    title: Search Query
+    exportName: SearchQuery
+  - id: squiggle
+    title: Squiggle
+    exportName: Squiggle
+  - id: default
+    title: Default
+    exportName: Default
+  - id: multiple-queries
+    title: Multiple Queries
+    exportName: MultipleQueries
+---
 
 ## When to use
 
 - Highlights matching text segments for search results and emphasis.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Highlight } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { Highlight } from "@pisagor/vue/highlight";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/highlight` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/highlight/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/highlight` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/highlight/`.

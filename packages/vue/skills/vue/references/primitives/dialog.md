@@ -1,34 +1,47 @@
-# Pisagor Vue — Dialog
+---
+title: Dialog
+description: Focuses attention on a task or decision in a modal layer above the current page.
+api: compound-shorthand
+taxonomy: standard
+aliases:
+  - modal
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: custom-spacing
+    title: Custom Spacing
+    exportName: CustomSpacing
+  - id: initial-focus
+    title: Initial Focus
+    exportName: InitialFocus
+  - id: nested
+    title: Nested
+    exportName: Nested
+  - id: no-close-button
+    title: No Close Button
+    exportName: NoCloseButton
+  - id: non-modal
+    title: Non Modal
+    exportName: NonModal
+  - id: scroll-area
+    title: Scroll Area
+    exportName: ScrollArea
+  - id: close-behavior
+    title: Close Behavior
+    exportName: CloseBehavior
+---
 
 ## When to use
 
 - Focuses attention on a task or decision in a modal layer above the current page.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Dialog } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { Dialog } from "@pisagor/vue/dialog";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/dialog` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/dialog/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/dialog` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/dialog/`.

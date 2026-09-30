@@ -1,34 +1,27 @@
-# Pisagor Vue — AlertDialog
+---
+title: Alert Dialog
+description: Interrupts the user with a focused confirmation before a destructive or irreversible action proceeds.
+api: compound-shorthand
+taxonomy: pattern
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: variants
+    title: Variants
+    exportName: Variants
+---
 
 ## When to use
 
 - Interrupts the user with a focused confirmation before a destructive or irreversible action proceeds.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```ts
-import { AlertDialog } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { AlertDialog } from "@pisagor/vue/alert-dialog";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/alert-dialog` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/alert-dialog/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/alert-dialog` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/alert-dialog/`.

@@ -1,34 +1,51 @@
-# Pisagor Vue — Item
+---
+title: Item
+description: Lays out a row of media, title, description, and actions for lists, menus, and pickers.
+api: compound
+taxonomy: standard
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: variants
+    title: Variants
+    exportName: Variants
+  - id: icon
+    title: Icon
+    exportName: Icon
+  - id: custom-spacing
+    title: Custom Spacing
+    exportName: CustomSpacing
+  - id: with-media
+    title: With Media
+    exportName: WithMedia
+  - id: with-avatar
+    title: With Avatar
+    exportName: WithAvatar
+  - id: image
+    title: Image
+    exportName: Image
+  - id: link
+    title: Link
+    exportName: Link
+  - id: group
+    title: Group
+    exportName: Group
+  - id: header
+    title: Header
+    exportName: Header
+---
 
 ## When to use
 
 - Lays out a row of media, title, description, and actions for lists, menus, and pickers.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Item } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { Item } from "@pisagor/vue/item";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/item` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/item/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/item` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/item/`.

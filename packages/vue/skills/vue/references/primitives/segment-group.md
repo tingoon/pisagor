@@ -1,34 +1,53 @@
-# Pisagor Vue — SegmentGroup
+---
+title: Segment Group
+description: Switches between a few related views or modes with segmented controls that show the current choice.
+api: compound-shorthand
+taxonomy: standard
+aliases:
+  - segmented-control
+examples:
+  - id: variants
+    title: Variants
+    exportName: Variants
+  - id: orientation-horizontal
+    title: Orientation Horizontal
+    exportName: OrientationHorizontal
+  - id: orientation-vertical
+    title: Orientation Vertical
+    exportName: OrientationVertical
+  - id: disabled-item
+    title: Disabled Item
+    exportName: DisabledItem
+  - id: custom-indicator
+    title: Custom Indicator
+    exportName: CustomIndicator
+  - id: indicator-on-hover
+    title: Indicator On Hover
+    exportName: IndicatorOnHover
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: controlled
+    title: Controlled
+    exportName: Controlled
+  - id: compound
+    title: Compound
+    exportName: Compound
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Lets users switch between discrete options.
-- Public API model: **compound-shorthand**.
 
-## Canonical import
+## Import
 
 ```ts
-import { SegmentGroup } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { SegmentGroup } from "@pisagor/vue/segment-group";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/segment-group` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/segment-group/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/segment-group` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/segment-group/`.

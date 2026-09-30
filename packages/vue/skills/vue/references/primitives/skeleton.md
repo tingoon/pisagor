@@ -1,34 +1,30 @@
-# Pisagor Vue — Skeleton
+---
+title: Skeleton
+description: Placeholder shapes that pulse while content loads so layouts feel stable instead of empty.
+api: compound
+taxonomy: primitive
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: in-card
+    title: In Card
+    exportName: InCard
+  - id: skeleton-text-story
+    title: Skeleton Text Story
+    exportName: SkeletonTextStory
+---
 
 ## When to use
 
 - Placeholder shapes that pulse while content loads so layouts feel stable instead of empty.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Skeleton } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { Skeleton } from "@pisagor/vue/skeleton";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/skeleton` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/skeleton/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/skeleton` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/skeleton/`.

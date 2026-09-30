@@ -1,34 +1,51 @@
-# Pisagor Vue — Marquee
+---
+title: Marquee
+description: Scrolls content horizontally in a continuous loop for logos, quotes, or promotional strips.
+api: compound-shorthand
+taxonomy: standard
+examples:
+  - id: orientation-horizontal
+    title: Orientation Horizontal
+    exportName: OrientationHorizontal
+  - id: orientation-vertical
+    title: Orientation Vertical
+    exportName: OrientationVertical
+  - id: pause-on-hover
+    title: Pause On Hover
+    exportName: PauseOnHover
+  - id: reverse
+    title: Reverse
+    exportName: Reverse
+  - id: spacing
+    title: Spacing
+    exportName: Spacing
+  - id: autofill
+    title: Autofill
+    exportName: Autofill
+  - id: custom-speed
+    title: Custom Speed
+    exportName: CustomSpeed
+  - id: fade
+    title: Fade
+    exportName: Fade
+  - id: compound
+    title: Compound
+    exportName: Compound
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Scrolls content horizontally in a continuous loop for logos, quotes, or promotional strips.
-- Public API model: **compound-shorthand**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Marquee } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { Marquee } from "@pisagor/vue/marquee";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/marquee` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/marquee/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/marquee` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/marquee/`.

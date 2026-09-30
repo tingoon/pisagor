@@ -1,34 +1,66 @@
-# Pisagor Vue — NumberInput
+---
+title: Number Input
+description: Captures numeric values with optional steppers and validation for quantities and settings.
+api: compound
+taxonomy: standard
+examples:
+  - id: sizes
+    title: Sizes
+    exportName: Sizes
+  - id: variants
+    title: Variants
+    exportName: Variants
+  - id: field-only
+    title: Field Only
+    exportName: FieldOnly
+  - id: formatted
+    title: Formatted
+    exportName: Formatted
+  - id: mouse-wheel
+    title: Mouse Wheel
+    exportName: MouseWheel
+  - id: range
+    title: Range
+    exportName: Range
+  - id: step
+    title: Step
+    exportName: Step
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: invalid
+    title: Invalid
+    exportName: Invalid
+  - id: controlled
+    title: Controlled
+    exportName: Controlled
+  - id: default
+    title: Default
+    exportName: Default
+  - id: compound
+    title: Compound
+    exportName: Compound
+  - id: on-surface
+    title: On Surface
+    exportName: OnSurface
+  - id: with-field
+    title: With Field
+    exportName: WithField
+  - id: with-scrubber
+    title: With Scrubber
+    exportName: WithScrubber
+---
 
 ## When to use
 
 - Captures numeric values with optional steppers and validation for quantities and settings.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```ts
-import { NumberInput } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { NumberInput } from "@pisagor/vue/number-input";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/number-input` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/number-input/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/number-input` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/number-input/`.

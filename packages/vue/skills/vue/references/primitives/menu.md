@@ -1,34 +1,30 @@
-# Pisagor Vue — Menu
+---
+title: Menu
+description: Always-visible list of navigation links or actions. For popup menus opened from a trigger, use Dropdown Menu.
+api: compound
+taxonomy: standard
+aliases:
+  - nav
+  - navigation
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: with-groups
+    title: With Groups
+    exportName: WithGroups
+---
 
 ## When to use
 
 - Always-visible list of navigation links or actions. For popup menus opened from a trigger, use Dropdown Menu.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Menu } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { Menu } from "@pisagor/vue/menu";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/menu` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/menu/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/menu` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/menu/`.

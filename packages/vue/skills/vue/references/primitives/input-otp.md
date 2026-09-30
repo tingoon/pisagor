@@ -1,34 +1,57 @@
-# Pisagor Vue — InputOtp
+---
+title: Input Otp
+description: Collects one-time passcodes as separate digits so users can enter and review verification codes.
+api: compound
+taxonomy: standard
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: variants
+    title: Variants
+    exportName: Variants
+  - id: blur-on-complete
+    title: Blur On Complete
+    exportName: BlurOnComplete
+  - id: custom-size
+    title: Custom Size
+    exportName: CustomSize
+  - id: four-digits
+    title: Four Digits
+    exportName: FourDigits
+  - id: mask
+    title: Mask
+    exportName: Mask
+  - id: separator
+    title: Separator
+    exportName: Separator
+  - id: with-placeholder
+    title: With Placeholder
+    exportName: WithPlaceholder
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: invalid
+    title: Invalid
+    exportName: Invalid
+  - id: controlled
+    title: Controlled
+    exportName: Controlled
+  - id: on-surface
+    title: On Surface
+    exportName: OnSurface
+---
 
 ## When to use
 
 - Collects one-time passcodes as separate digits so users can enter and review verification codes.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```ts
-import { InputOtp } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { InputOtp } from "@pisagor/vue/input-otp";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/input-otp` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/input-otp/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/input-otp` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/input-otp/`.

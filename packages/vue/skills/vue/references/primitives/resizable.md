@@ -1,34 +1,45 @@
-# Pisagor Vue — Resizable
+---
+title: Resizable
+description: Splits space between panels with draggable handles so users can adjust layout to their needs.
+api: compound
+taxonomy: standard
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: min-max
+    title: Min Max
+    exportName: MinMax
+  - id: orientation-horizontal
+    title: Orientation Horizontal
+    exportName: OrientationHorizontal
+  - id: orientation-vertical
+    title: Orientation Vertical
+    exportName: OrientationVertical
+  - id: handle
+    title: Handle
+    exportName: Handle
+  - id: edge-handle
+    title: Edge Handle
+    exportName: EdgeHandle
+  - id: multiple-panels
+    title: Multiple Panels
+    exportName: MultiplePanels
+  - id: collapsible
+    title: Collapsible
+    exportName: Collapsible
+---
 
 ## When to use
 
 - Splits space between panels with draggable handles so users can adjust layout to their needs.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Resizable } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { Resizable } from "@pisagor/vue/resizable";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/resizable` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/resizable/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/resizable` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/resizable/`.

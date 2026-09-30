@@ -1,34 +1,29 @@
-# Pisagor Vue — Navbar
+---
+title: Navbar
+description: Top application bar with brand, navigation, and action slots. Pair with Sidebar for dashboard layouts.
+api: compound
+taxonomy: pattern
+aliases:
+  - header
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: with-sidebar
+    title: With Sidebar
+    exportName: WithSidebar
+---
 
 ## When to use
 
 - Top app bar with brand, navigation, and action regions.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Navbar } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { Navbar } from "@pisagor/vue/navbar";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/navbar` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/navbar/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/navbar` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/navbar/`.

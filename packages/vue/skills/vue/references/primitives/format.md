@@ -1,33 +1,49 @@
-# Pisagor Vue — Format
+---
+title: Format
+description: Formats numbers, bytes, and relative times for display so values read naturally in the user locale.
+api: compound
+taxonomy: primitive
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: byte-unit-display
+    title: Byte Unit Display
+    exportName: ByteUnitDisplay
+  - id: byte-unit-system
+    title: Byte Unit System
+    exportName: ByteUnitSystem
+  - id: byte
+    title: Byte
+    exportName: Byte
+  - id: number-compact
+    title: Number Compact
+    exportName: NumberCompact
+  - id: number-currency
+    title: Number Currency
+    exportName: NumberCurrency
+  - id: number-percent
+    title: Number Percent
+    exportName: NumberPercent
+  - id: number-story
+    title: Number Story
+    exportName: NumberStory
+  - id: relative-time-short
+    title: Relative Time Short
+    exportName: RelativeTimeShort
+  - id: relative-time
+    title: Relative Time
+    exportName: RelativeTime
+---
 
 ## When to use
 
 - Formats byte counts, numbers, and relative dates in a consistent, accessible way.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Format } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { Format } from "@pisagor/vue/format";
 ```
 
-## Source of truth
-
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/format/` |
-| Examples | MCP `get_example` / `list_examples` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/format/`.

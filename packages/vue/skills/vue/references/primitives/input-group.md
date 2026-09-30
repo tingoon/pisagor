@@ -1,34 +1,66 @@
-# Pisagor Vue — InputGroup
+---
+title: Input Group
+description: Combines inputs with icons, buttons, or labels in one control so related actions stay together.
+api: compound
+taxonomy: primitive
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: sizes
+    title: Sizes
+    exportName: Sizes
+  - id: variants
+    title: Variants
+    exportName: Variants
+  - id: with-textarea
+    title: With Textarea
+    exportName: WithTextarea
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: invalid
+    title: Invalid
+    exportName: Invalid
+  - id: align-block-end
+    title: Align Block End
+    exportName: AlignBlockEnd
+  - id: align-block-start
+    title: Align Block Start
+    exportName: AlignBlockStart
+  - id: align-inline-end
+    title: Align Inline End
+    exportName: AlignInlineEnd
+  - id: align-inline-start
+    title: Align Inline Start
+    exportName: AlignInlineStart
+  - id: with-badge
+    title: With Badge
+    exportName: WithBadge
+  - id: with-keyboard-shortcut
+    title: With Keyboard Shortcut
+    exportName: WithKeyboardShortcut
+  - id: with-spinner
+    title: With Spinner
+    exportName: WithSpinner
+  - id: on-surface
+    title: On Surface
+    exportName: OnSurface
+  - id: with-text
+    title: With Text
+    exportName: WithText
+---
 
 ## When to use
 
 - Combines inputs with icons, buttons, or labels in one control so related actions stay together.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```ts
-import { InputGroup } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { InputGroup } from "@pisagor/vue/input-group";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/input-group` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/input-group/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/input-group` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/input-group/`.

@@ -1,34 +1,36 @@
-# Pisagor Vue — Sortable
+---
+title: Sortable
+description: Lets users reorder a list by dragging items or moving them with Alt and arrow keys.
+api: compound
+taxonomy: standard
+aliases:
+  - reorder
+  - drag-list
+examples:
+  - id: horizontal
+    title: Horizontal
+    exportName: Horizontal
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: without-handle
+    title: Without Handle
+    exportName: WithoutHandle
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Lets users reorder a list by dragging items or moving them with Alt and arrow keys.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Sortable } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { Sortable } from "@pisagor/vue/sortable";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/sortable` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/sortable/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/sortable` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/sortable/`.

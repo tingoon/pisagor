@@ -1,34 +1,36 @@
-# Pisagor Vue — ScrollArea
+---
+title: Scroll Area
+description: Scrolls overflow content with styled scrollbars and optional fade edges that match the surrounding interface.
+api: closed
+taxonomy: standard
+examples:
+  - id: horizontal
+    title: Horizontal
+    exportName: Horizontal
+  - id: scroll-fade
+    title: Scroll Fade
+    exportName: ScrollFade
+  - id: both-directions
+    title: Both Directions
+    exportName: BothDirections
+  - id: nested
+    title: Nested
+    exportName: Nested
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Scrolls overflow content with styled scrollbars and optional fade edges that match the surrounding interface.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```ts
-import { ScrollArea } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { ScrollArea } from "@pisagor/vue/scroll-area";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/scroll-area` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/scroll-area/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/scroll-area` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/scroll-area/`.

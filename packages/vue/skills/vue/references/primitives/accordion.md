@@ -1,34 +1,44 @@
-# Pisagor Vue — Accordion
+---
+title: Accordion
+description: Expand and collapse sections of related content.
+api: compound-shorthand
+taxonomy: standard
+aliases:
+  - disclosure
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: multiple
+    title: Multiple
+    exportName: Multiple
+  - id: non-collapsible
+    title: Non-collapsible
+    exportName: NonCollapsible
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: controlled
+    title: Controlled
+    exportName: Controlled
+  - id: compound
+    title: Compound
+    exportName: Compound
+  - id: with-card
+    title: With Card
+    exportName: WithCard
+---
 
 ## When to use
 
 - Lets users expand and collapse sections of content so they can scan headings and open only what they need.
-- Public API model: **compound-shorthand**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Accordion } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { Accordion } from "@pisagor/vue/accordion";
 ```
 
-## Source of truth
+Prefer shorthand `items` for FAQ lists; use `Accordion.Root` for custom structure. Style with `@pisagor/recipes/accordion` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/accordion/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/accordion` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/accordion/`.

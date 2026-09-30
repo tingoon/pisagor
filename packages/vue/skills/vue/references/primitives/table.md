@@ -1,34 +1,36 @@
-# Pisagor Vue — Table
+---
+title: Table
+description: Presents rows and columns of data in a structured grid for comparison and scanning.
+api: compound
+taxonomy: standard
+examples:
+  - id: variants
+    title: Variants
+    exportName: Variants
+  - id: actions
+    title: Actions
+    exportName: Actions
+  - id: footer
+    title: Footer
+    exportName: Footer
+  - id: not-hoverable
+    title: Not Hoverable
+    exportName: NotHoverable
+  - id: default
+    title: Default
+    exportName: Default
+---
 
 ## When to use
 
 - Presents rows and columns of data in a structured grid for comparison and scanning.
-- Public API model: **compound**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Table } from "@pisagor/vue"
-import { PhPlus } from "@phosphor-icons/vue"
+import { Table } from "@pisagor/vue/table";
 ```
 
-## Source of truth
+Style with `@pisagor/recipes/table` — no app-level `tv()`.
 
-| Resource | Path |
-|----------|------|
-| Source | `@pisagor/vue` → `src/components/table/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/table` |
-
-## Usage
-
-1. Prefer MCP `get_example` for composition examples.
-2. Style with `class` for layout; prefer recipe `variant` / `size`.
-3. Do not invent props — confirm from source / index exports.
-
-## Common pitfalls
-
-- Mixing frameworks — this guide is **vue** only (`@pisagor/vue`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
-
+Live examples below match `assets/examples/table/`.

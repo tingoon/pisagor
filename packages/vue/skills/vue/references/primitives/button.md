@@ -1,34 +1,54 @@
-# Pisagor Vue — Button
+---
+title: Button
+description: Triggers actions with emphasis, size, and loading states.
+api: closed
+taxonomy: primitive
+examples:
+  - id: default
+    title: Default
+    exportName: Default
+  - id: sizes
+    title: Sizes
+    exportName: Sizes
+  - id: variants
+    title: Variants
+    exportName: Variants
+  - id: custom-color
+    title: Custom color
+    exportName: CustomColor
+  - id: pill
+    title: Pill
+    exportName: Pill
+  - id: no-click-effect
+    title: No click effect
+    exportName: NoClickEffect
+  - id: icon
+    title: Icon
+    exportName: Icon
+  - id: as-child
+    title: As child
+    exportName: AsChild
+  - id: disabled
+    title: Disabled
+    exportName: Disabled
+  - id: loading
+    title: Loading
+    exportName: Loading
+  - id: with-icon
+    title: With icon
+    exportName: WithIcon
+---
 
 ## When to use
 
 - Primary and secondary action triggers.
-- Public API model: **closed**.
 
-## Canonical import
+## Import
 
 ```ts
-import { Button } from "@pisagor/vue";
-import { PhPlus } from "@phosphor-icons/vue";
+import { Button } from "@pisagor/vue/button";
 ```
 
-## Patterns
+Style with `@pisagor/recipes/button` — no app-level `tv()`.
 
-```vue
-<Button>Button</Button>
-<Button variant="outline" size="sm">Save</Button>
-<Button :loading="pending">Submit</Button>
-<Button aria-label="Add" size="icon-md">
-  <PhPlus />
-</Button>
-```
-
-Loading prop is **`loading`**. Class prop is **`class`**.
-
-## Source of truth
-
-| Resource | Path |
-| -------- | ---- |
-| Source | `@pisagor/vue` → `src/components/button/` |
-| Examples | MCP `get_example` / `list_examples` |
-| Recipe | `@pisagor/recipes/button` |
+Live examples below match `assets/examples/button/`.
