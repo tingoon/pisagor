@@ -75,6 +75,7 @@
     "./highlight": "./src/components/highlight/index.ts",
     "./hooks": "./src/hooks/index.ts",
     "./hover-card": "./src/components/hover-card/index.ts",
+    "./icons": "./src/icons/index.ts",
     "./image-cropper": "./src/components/image-cropper/index.ts",
     "./input": "./src/components/input/index.ts",
     "./input-group": "./src/components/input-group/index.ts",
