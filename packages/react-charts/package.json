@@ -17,8 +17,6 @@
   },
   "exports": {
     ".": "./src/index.ts",
-    "./examples": "./skills/react-charts/assets/examples/index.ts",
-    "./examples/*": "./skills/react-charts/assets/examples/*",
     "./styles": "./src/styles.css"
   },
   "files": [

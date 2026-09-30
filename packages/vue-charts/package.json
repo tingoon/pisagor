@@ -12,8 +12,6 @@
   },
   "exports": {
     ".": "./src/index.ts",
-    "./examples": "./skills/vue-charts/assets/examples/index.ts",
-    "./examples/*": "./skills/vue-charts/assets/examples/*",
     "./styles": "./src/styles.css"
   },
   "files": [
