@@ -3,16 +3,6 @@ title: Format
 description: Formats numbers, bytes, and relative times for display so values read naturally in the user locale.
 api: compound
 taxonomy: primitive
-examples:
-  - id: default
-    title: Default
-    exportName: Default
-  - id: number-compact
-    title: Number Compact
-    exportName: NumberCompact
-  - id: relative-time
-    title: Relative Time
-    exportName: RelativeTime
 ---
 
 ## When to use
@@ -22,7 +12,21 @@ examples:
 ## Import
 
 ```ts
-import { Format } from "@pisagor/astro/format";
+import { Format } from "@pisagor/astro";
 ```
 
 Live examples below match `assets/examples/format/`.
+
+## Examples
+
+### Default
+
+:::example Default
+
+### Number Compact
+
+:::example NumberCompact
+
+### Relative Time
+
+:::example RelativeTime

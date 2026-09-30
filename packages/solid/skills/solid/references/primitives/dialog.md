@@ -5,10 +5,6 @@ api: compound-shorthand
 taxonomy: standard
 aliases:
   - modal
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -18,9 +14,15 @@ examples:
 ## Import
 
 ```tsx
-import { Dialog } from "@pisagor/solid/dialog";
+import { Dialog } from "@pisagor/solid";
 ```
 
 Style with `@pisagor/recipes/dialog` — no app-level `tv()`.
 
 Live examples below match `assets/examples/dialog/`.
+
+## Examples
+
+### Default
+
+:::example Default

@@ -5,28 +5,6 @@ api: closed
 taxonomy: standard
 aliases:
   - copy
-examples:
-  - id: variants
-    title: Variants
-    exportName: Variants
-  - id: custom-timeout
-    title: Custom Timeout
-    exportName: CustomTimeout
-  - id: different-icon
-    title: Different Icon
-    exportName: DifferentIcon
-  - id: with-label
-    title: With Label
-    exportName: WithLabel
-  - id: controlled
-    title: Controlled
-    exportName: Controlled
-  - id: default
-    title: Default
-    exportName: Default
-  - id: on-surface
-    title: On Surface
-    exportName: OnSurface
 ---
 
 ## When to use
@@ -36,9 +14,39 @@ examples:
 ## Import
 
 ```ts
-import { Clipboard } from "@pisagor/vue/clipboard";
+import { Clipboard } from "@pisagor/vue";
 ```
 
 Style with `@pisagor/recipes/clipboard` — no app-level `tv()`.
 
 Live examples below match `assets/examples/clipboard/`.
+
+## Examples
+
+### Variants
+
+:::example Variants
+
+### Custom Timeout
+
+:::example CustomTimeout
+
+### Different Icon
+
+:::example DifferentIcon
+
+### With Label
+
+:::example WithLabel
+
+### Controlled
+
+:::example Controlled
+
+### Default
+
+:::example Default
+
+### On Surface
+
+:::example OnSurface

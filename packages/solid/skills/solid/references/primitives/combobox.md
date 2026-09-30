@@ -3,10 +3,6 @@ title: Combobox
 description: Internal selection engine that combines search with a filterable list. Prefer Select, Autocomplete, or Listbox in application code.
 api: compound-shorthand
 taxonomy: standard
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -16,9 +12,15 @@ examples:
 ## Import
 
 ```tsx
-import { Combobox } from "@pisagor/solid/combobox";
+import { Combobox } from "@pisagor/solid";
 ```
 
 Style with `@pisagor/recipes/combobox` — no app-level `tv()`.
 
 Live examples below match `assets/examples/combobox/`.
+
+## Examples
+
+### Default
+
+:::example Default

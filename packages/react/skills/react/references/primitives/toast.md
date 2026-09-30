@@ -5,31 +5,6 @@ api: compound
 taxonomy: standard
 aliases:
   - snackbar
-examples:
-  - id: default
-    title: Default
-    exportName: Default
-  - id: variants
-    title: Variants
-    exportName: Variants
-  - id: duration
-    title: Duration
-    exportName: Duration
-  - id: closable
-    title: Closable
-    exportName: Closable
-  - id: dedupe
-    title: Dedupe
-    exportName: Dedupe
-  - id: action
-    title: Action
-    exportName: Action
-  - id: with-promise
-    title: With Promise
-    exportName: WithPromise
-  - id: placements
-    title: Placements
-    exportName: Placements
 ---
 
 ## When to use
@@ -39,9 +14,43 @@ examples:
 ## Import
 
 ```tsx
-import { toast } from "@pisagor/react/toast";
+import { toast } from "@pisagor/react";
 ```
 
 Style with `@pisagor/recipes/toast` — no app-level `tv()`.
 
 Live examples below match `assets/examples/toast/`.
+
+## Examples
+
+### Default
+
+:::example Default
+
+### Variants
+
+:::example Variants
+
+### Duration
+
+:::example Duration
+
+### Closable
+
+:::example Closable
+
+### Dedupe
+
+:::example Dedupe
+
+### Action
+
+:::example Action
+
+### With Promise
+
+:::example WithPromise
+
+### Placements
+
+:::example Placements

@@ -5,25 +5,6 @@ api: compound
 taxonomy: standard
 aliases:
   - tray
-examples:
-  - id: default
-    title: Default
-    exportName: Default
-  - id: custom-spacing
-    title: Custom Spacing
-    exportName: CustomSpacing
-  - id: drawer-content-inner
-    title: Drawer Content Inner
-    exportName: DrawerContentInner
-  - id: inset
-    title: Inset
-    exportName: Inset
-  - id: snap-points
-    title: Snap Points
-    exportName: SnapPoints
-  - id: swipe-directions
-    title: Swipe Directions
-    exportName: SwipeDirections
 ---
 
 ## When to use
@@ -33,9 +14,35 @@ examples:
 ## Import
 
 ```tsx
-import { Drawer } from "@pisagor/react/drawer";
+import { Drawer } from "@pisagor/react";
 ```
 
 Style with `@pisagor/recipes/drawer` — no app-level `tv()`.
 
 Live examples below match `assets/examples/drawer/`.
+
+## Examples
+
+### Default
+
+:::example Default
+
+### Custom Spacing
+
+:::example CustomSpacing
+
+### Drawer Content Inner
+
+:::example DrawerContentInner
+
+### Inset
+
+:::example Inset
+
+### Snap Points
+
+:::example SnapPoints
+
+### Swipe Directions
+
+:::example SwipeDirections

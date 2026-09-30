@@ -3,10 +3,6 @@ title: Spinner
 description: Shows that something is loading when the wait time is short and a progress bar is not needed.
 api: closed
 taxonomy: primitive
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -16,9 +12,15 @@ examples:
 ## Import
 
 ```ts
-import { Spinner } from "@pisagor/svelte/spinner";
+import { Spinner } from "@pisagor/svelte";
 ```
 
 Style with `@pisagor/recipes/spinner` — no app-level `tv()`.
 
 Live examples below match `assets/examples/spinner/`.
+
+## Examples
+
+### Default
+
+:::example Default

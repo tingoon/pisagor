@@ -5,10 +5,6 @@ api: compound
 taxonomy: standard
 aliases:
   - flyout
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -18,9 +14,15 @@ examples:
 ## Import
 
 ```tsx
-import { Popover } from "@pisagor/solid/popover";
+import { Popover } from "@pisagor/solid";
 ```
 
 Style with `@pisagor/recipes/popover` — no app-level `tv()`.
 
 Live examples below match `assets/examples/popover/`.
+
+## Examples
+
+### Default
+
+:::example Default

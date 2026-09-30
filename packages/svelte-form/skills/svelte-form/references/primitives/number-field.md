@@ -4,13 +4,6 @@ description: "Adjusts a numeric value with steppers, label, and optional validat
 api: closed
 taxonomy: standard
 packageName: "@pisagor/svelte-form"
-examples:
-  - id: disabled
-    title: Disabled
-    exportName: Disabled
-  - id: invalid
-    title: Invalid
-    exportName: Invalid
 ---
 
 ## When to use
@@ -23,7 +16,17 @@ examples:
 ## Import
 
 ```tsx
-import { NumberField } from "@pisagor/svelte-form/number-field";
+import { NumberField } from "@pisagor/svelte-form";
 ```
 
 Live examples below match `assets/examples/number-field/`.
+
+## Examples
+
+### Disabled
+
+:::example Disabled
+
+### Invalid
+
+:::example Invalid

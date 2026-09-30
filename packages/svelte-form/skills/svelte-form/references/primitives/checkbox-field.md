@@ -4,13 +4,6 @@ description: "Lets the user confirm a choice with a checkbox, label, and optiona
 api: closed
 taxonomy: standard
 packageName: "@pisagor/svelte-form"
-examples:
-  - id: disabled
-    title: Disabled
-    exportName: Disabled
-  - id: invalid
-    title: Invalid
-    exportName: Invalid
 ---
 
 ## When to use
@@ -23,7 +16,17 @@ examples:
 ## Import
 
 ```tsx
-import { CheckboxField } from "@pisagor/svelte-form/checkbox-field";
+import { CheckboxField } from "@pisagor/svelte-form";
 ```
 
 Live examples below match `assets/examples/checkbox-field/`.
+
+## Examples
+
+### Disabled
+
+:::example Disabled
+
+### Invalid
+
+:::example Invalid

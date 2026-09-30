@@ -3,10 +3,6 @@ title: Presence
 description: Animates elements in and out of the tree so enter and exit transitions feel smooth.
 api: closed
 taxonomy: primitive
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -16,7 +12,13 @@ examples:
 ## Import
 
 ```ts
-import { Presence } from "@pisagor/svelte/presence";
+import { Presence } from "@pisagor/svelte";
 ```
 
 Live examples below match `assets/examples/presence/`.
+
+## Examples
+
+### Default
+
+:::example Default

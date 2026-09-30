@@ -3,16 +3,6 @@ title: Toolbar
 description: Organizes a section heading on the left and related actions on the right for list and page headers.
 api: compound-shorthand
 taxonomy: pattern
-examples:
-  - id: wrapped-actions
-    title: Wrapped Actions
-    exportName: WrappedActions
-  - id: compound
-    title: Compound
-    exportName: Compound
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -22,9 +12,23 @@ examples:
 ## Import
 
 ```tsx
-import { Toolbar } from "@pisagor/react/toolbar";
+import { Toolbar } from "@pisagor/react";
 ```
 
 Style with `@pisagor/recipes/toolbar` — no app-level `tv()`.
 
 Live examples below match `assets/examples/toolbar/`.
+
+## Examples
+
+### Wrapped Actions
+
+:::example WrappedActions
+
+### Compound
+
+:::example Compound
+
+### Default
+
+:::example Default

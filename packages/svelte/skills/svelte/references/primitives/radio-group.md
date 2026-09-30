@@ -3,10 +3,6 @@ title: Radio Group
 description: Lets users pick exactly one option from a small set of related choices.
 api: compound-shorthand
 taxonomy: standard
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -16,9 +12,15 @@ examples:
 ## Import
 
 ```ts
-import { RadioGroup } from "@pisagor/svelte/radio-group";
+import { RadioGroup } from "@pisagor/svelte";
 ```
 
 Style with `@pisagor/recipes/radio-group` — no app-level `tv()`.
 
 Live examples below match `assets/examples/radio-group/`.
+
+## Examples
+
+### Default
+
+:::example Default

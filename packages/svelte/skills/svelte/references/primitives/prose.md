@@ -3,10 +3,6 @@ title: Prose
 description: Styles long-form written content with readable typography for articles, docs, and markdown.
 api: closed
 taxonomy: primitive
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -16,9 +12,15 @@ examples:
 ## Import
 
 ```ts
-import { Prose } from "@pisagor/svelte/prose";
+import { Prose } from "@pisagor/svelte";
 ```
 
 Style with `@pisagor/recipes/prose` — no app-level `tv()`.
 
 Live examples below match `assets/examples/prose/`.
+
+## Examples
+
+### Default
+
+:::example Default

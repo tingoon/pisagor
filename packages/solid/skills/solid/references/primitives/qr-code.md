@@ -5,10 +5,6 @@ api: compound
 taxonomy: standard
 aliases:
   - qrcode
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -18,9 +14,15 @@ examples:
 ## Import
 
 ```tsx
-import { QrCode } from "@pisagor/solid/qr-code";
+import { QrCode } from "@pisagor/solid";
 ```
 
 Style with `@pisagor/recipes/qr-code` — no app-level `tv()`.
 
 Live examples below match `assets/examples/qr-code/`.
+
+## Examples
+
+### Default
+
+:::example Default

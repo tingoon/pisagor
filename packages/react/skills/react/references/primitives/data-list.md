@@ -3,25 +3,6 @@ title: Data List
 description: "Presents label-value pairs in a readable list for summaries, metadata, and detail views."
 api: compound-shorthand
 taxonomy: standard
-examples:
-  - id: orientation-horizontal
-    title: Orientation Horizontal
-    exportName: OrientationHorizontal
-  - id: orientation-vertical
-    title: Orientation Vertical
-    exportName: OrientationVertical
-  - id: separator
-    title: Separator
-    exportName: Separator
-  - id: info-tip
-    title: Info Tip
-    exportName: InfoTip
-  - id: compound
-    title: Compound
-    exportName: Compound
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -31,9 +12,35 @@ examples:
 ## Import
 
 ```tsx
-import { DataList } from "@pisagor/react/data-list";
+import { DataList } from "@pisagor/react";
 ```
 
 Style with `@pisagor/recipes/data-list` — no app-level `tv()`.
 
 Live examples below match `assets/examples/data-list/`.
+
+## Examples
+
+### Orientation Horizontal
+
+:::example OrientationHorizontal
+
+### Orientation Vertical
+
+:::example OrientationVertical
+
+### Separator
+
+:::example Separator
+
+### Info Tip
+
+:::example InfoTip
+
+### Compound
+
+:::example Compound
+
+### Default
+
+:::example Default

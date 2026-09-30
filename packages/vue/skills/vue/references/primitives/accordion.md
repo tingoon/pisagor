@@ -5,28 +5,6 @@ api: compound-shorthand
 taxonomy: standard
 aliases:
   - disclosure
-examples:
-  - id: default
-    title: Default
-    exportName: Default
-  - id: multiple
-    title: Multiple
-    exportName: Multiple
-  - id: non-collapsible
-    title: Non-collapsible
-    exportName: NonCollapsible
-  - id: disabled
-    title: Disabled
-    exportName: Disabled
-  - id: controlled
-    title: Controlled
-    exportName: Controlled
-  - id: compound
-    title: Compound
-    exportName: Compound
-  - id: with-card
-    title: With Card
-    exportName: WithCard
 ---
 
 ## When to use
@@ -36,9 +14,39 @@ examples:
 ## Import
 
 ```ts
-import { Accordion } from "@pisagor/vue/accordion";
+import { Accordion } from "@pisagor/vue";
 ```
 
 Prefer shorthand `items` for FAQ lists; use `Accordion.Root` for custom structure. Style with `@pisagor/recipes/accordion` — no app-level `tv()`.
 
 Live examples below match `assets/examples/accordion/`.
+
+## Examples
+
+### Default
+
+:::example Default
+
+### Multiple
+
+:::example Multiple
+
+### Non-collapsible
+
+:::example NonCollapsible
+
+### Disabled
+
+:::example Disabled
+
+### Controlled
+
+:::example Controlled
+
+### Compound
+
+:::example Compound
+
+### With Card
+
+:::example WithCard

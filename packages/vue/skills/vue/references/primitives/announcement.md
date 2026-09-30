@@ -3,25 +3,6 @@ title: Announcement
 description: Draws attention to a short product or marketing message without blocking the rest of the interface.
 api: compound-shorthand
 taxonomy: standard
-examples:
-  - id: variants
-    title: Variants
-    exportName: Variants
-  - id: with-icon
-    title: With Icon
-    exportName: WithIcon
-  - id: with-link
-    title: With Link
-    exportName: WithLink
-  - id: without-badge
-    title: Without Badge
-    exportName: WithoutBadge
-  - id: compound
-    title: Compound
-    exportName: Compound
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -31,9 +12,35 @@ examples:
 ## Import
 
 ```ts
-import { Announcement } from "@pisagor/vue/announcement";
+import { Announcement } from "@pisagor/vue";
 ```
 
 Style with `@pisagor/recipes/announcement` — no app-level `tv()`.
 
 Live examples below match `assets/examples/announcement/`.
+
+## Examples
+
+### Variants
+
+:::example Variants
+
+### With Icon
+
+:::example WithIcon
+
+### With Link
+
+:::example WithLink
+
+### Without Badge
+
+:::example WithoutBadge
+
+### Compound
+
+:::example Compound
+
+### Default
+
+:::example Default

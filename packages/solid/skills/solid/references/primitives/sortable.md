@@ -6,10 +6,6 @@ taxonomy: standard
 aliases:
   - reorder
   - drag-list
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -19,9 +15,15 @@ examples:
 ## Import
 
 ```tsx
-import { Sortable } from "@pisagor/solid/sortable";
+import { Sortable } from "@pisagor/solid";
 ```
 
 Style with `@pisagor/recipes/sortable` — no app-level `tv()`.
 
 Live examples below match `assets/examples/sortable/`.
+
+## Examples
+
+### Default
+
+:::example Default

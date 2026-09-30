@@ -3,10 +3,6 @@ title: Download Trigger
 description: Starts a file download when activated so users can save content without navigating away.
 api: closed
 taxonomy: primitive
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -16,7 +12,13 @@ examples:
 ## Import
 
 ```ts
-import { DownloadTrigger } from "@pisagor/svelte/download-trigger";
+import { DownloadTrigger } from "@pisagor/svelte";
 ```
 
 Live examples below match `assets/examples/download-trigger/`.
+
+## Examples
+
+### Default
+
+:::example Default

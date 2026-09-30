@@ -3,10 +3,6 @@ title: Swap
 description: Swaps between two pieces of content with a transition, such as play and pause icons.
 api: closed
 taxonomy: primitive
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -16,9 +12,15 @@ examples:
 ## Import
 
 ```ts
-import { Swap } from "@pisagor/svelte/swap";
+import { Swap } from "@pisagor/svelte";
 ```
 
 Style with `@pisagor/recipes/swap` — no app-level `tv()`.
 
 Live examples below match `assets/examples/swap/`.
+
+## Examples
+
+### Default
+
+:::example Default

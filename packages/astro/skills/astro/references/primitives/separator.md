@@ -3,13 +3,6 @@ title: Separator
 description: Visually divides sections of content so grouped information is easier to scan.
 api: closed
 taxonomy: primitive
-examples:
-  - id: default
-    title: Default
-    exportName: Default
-  - id: vertical
-    title: Vertical
-    exportName: Vertical
 ---
 
 ## When to use
@@ -19,9 +12,19 @@ examples:
 ## Import
 
 ```ts
-import { Separator } from "@pisagor/astro/separator";
+import { Separator } from "@pisagor/astro";
 ```
 
 Style with `@pisagor/recipes/separator` — no app-level `tv()`.
 
 Live examples below match `assets/examples/separator/`.
+
+## Examples
+
+### Default
+
+:::example Default
+
+### Vertical
+
+:::example Vertical

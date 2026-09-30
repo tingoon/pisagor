@@ -5,37 +5,6 @@ api: compound
 taxonomy: pattern
 aliases:
   - tree
-examples:
-  - id: links
-    title: Links
-    exportName: Links
-  - id: checkbox-tree
-    title: Checkbox Tree
-    exportName: CheckboxTree
-  - id: with-context-menu
-    title: With Context Menu
-    exportName: WithContextMenu
-  - id: custom-icons-folder
-    title: Custom Icons Folder
-    exportName: CustomIconsFolder
-  - id: custom-icons-item
-    title: Custom Icons Item
-    exportName: CustomIconsItem
-  - id: custom-icons
-    title: Custom Icons
-    exportName: CustomIcons
-  - id: multiple-selection
-    title: Multiple Selection
-    exportName: MultipleSelection
-  - id: rename
-    title: Rename
-    exportName: Rename
-  - id: controlled
-    title: Controlled
-    exportName: Controlled
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -45,9 +14,51 @@ examples:
 ## Import
 
 ```tsx
-import { TreeView } from "@pisagor/react/tree-view";
+import { TreeView } from "@pisagor/react";
 ```
 
 Style with `@pisagor/recipes/tree-view` — no app-level `tv()`.
 
 Live examples below match `assets/examples/tree-view/`.
+
+## Examples
+
+### Links
+
+:::example Links
+
+### Checkbox Tree
+
+:::example CheckboxTree
+
+### With Context Menu
+
+:::example WithContextMenu
+
+### Custom Icons Folder
+
+:::example CustomIconsFolder
+
+### Custom Icons Item
+
+:::example CustomIconsItem
+
+### Custom Icons
+
+:::example CustomIcons
+
+### Multiple Selection
+
+:::example MultipleSelection
+
+### Rename
+
+:::example Rename
+
+### Controlled
+
+:::example Controlled
+
+### Default
+
+:::example Default

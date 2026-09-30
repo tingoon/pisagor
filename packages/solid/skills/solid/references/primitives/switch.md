@@ -3,10 +3,6 @@ title: Switch
 description: Toggles a setting on or off with immediate visual feedback.
 api: closed
 taxonomy: standard
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -16,9 +12,15 @@ examples:
 ## Import
 
 ```tsx
-import { Switch } from "@pisagor/solid/switch";
+import { Switch } from "@pisagor/solid";
 ```
 
 Style with `@pisagor/recipes/switch` — no app-level `tv()`.
 
 Live examples below match `assets/examples/switch/`.
+
+## Examples
+
+### Default
+
+:::example Default

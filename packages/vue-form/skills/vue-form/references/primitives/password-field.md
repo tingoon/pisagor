@@ -4,16 +4,6 @@ description: Password Field.
 api: closed
 taxonomy: standard
 packageName: "@pisagor/vue-form"
-examples:
-  - id: disabled
-    title: Disabled
-    exportName: Disabled
-  - id: invalid
-    title: Invalid
-    exportName: Invalid
-  - id: with-label-accessory
-    title: With Label Accessory
-    exportName: WithLabelAccessory
 ---
 
 ## When to use
@@ -23,9 +13,25 @@ examples:
 ## Import
 
 ```ts
-import { PasswordField } from "@pisagor/vue-form/password-field";
+import { PasswordField } from "@pisagor/vue-form";
 ```
 
 Part of `@pisagor/vue-form`. Style with recipes where available — no app-level `tv()`.
 
 Live examples below match `assets/examples/password-field/`.
+
+## Examples
+
+### Disabled
+
+:::example Disabled
+
+### Invalid
+
+:::example Invalid
+
+### With Label Accessory
+
+Places a secondary action next to the label — for example a Forgot password? link — via `labelAccessory`.
+
+:::example WithLabelAccessory

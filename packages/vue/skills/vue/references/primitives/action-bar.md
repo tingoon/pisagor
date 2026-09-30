@@ -5,31 +5,6 @@ api: compound
 taxonomy: pattern
 aliases:
   - bulk-actions
-examples:
-  - id: default
-    title: Default
-    exportName: Default
-  - id: custom-spacing
-    title: Custom Spacing
-    exportName: CustomSpacing
-  - id: gutter
-    title: Gutter
-    exportName: Gutter
-  - id: close-trigger
-    title: Close Trigger
-    exportName: CloseTrigger
-  - id: with-dialog
-    title: With Dialog
-    exportName: WithDialog
-  - id: with-menu
-    title: With Menu
-    exportName: WithMenu
-  - id: controlled
-    title: Controlled
-    exportName: Controlled
-  - id: placements
-    title: Placements
-    exportName: Placements
 ---
 
 ## When to use
@@ -39,9 +14,43 @@ examples:
 ## Import
 
 ```ts
-import { ActionBar } from "@pisagor/vue/action-bar";
+import { ActionBar } from "@pisagor/vue";
 ```
 
 Style with `@pisagor/recipes/action-bar` — no app-level `tv()`.
 
 Live examples below match `assets/examples/action-bar/`.
+
+## Examples
+
+### Default
+
+:::example Default
+
+### Custom Spacing
+
+:::example CustomSpacing
+
+### Gutter
+
+:::example Gutter
+
+### Close Trigger
+
+:::example CloseTrigger
+
+### With Dialog
+
+:::example WithDialog
+
+### With Menu
+
+:::example WithMenu
+
+### Controlled
+
+:::example Controlled
+
+### Placements
+
+:::example Placements

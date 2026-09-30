@@ -5,49 +5,6 @@ api: compound
 taxonomy: pattern
 aliases:
   - upload
-examples:
-  - id: default
-    title: Default
-    exportName: Default
-  - id: variants
-    title: Variants
-    exportName: Variants
-  - id: invalid
-    title: Invalid
-    exportName: Invalid
-  - id: disabled
-    title: Disabled
-    exportName: Disabled
-  - id: custom-spacing
-    title: Custom Spacing
-    exportName: CustomSpacing
-  - id: accepted-file-types
-    title: Accepted File Types
-    exportName: AcceptedFileTypes
-  - id: clear-trigger
-    title: Clear Trigger
-    exportName: ClearTrigger
-  - id: custom-preview
-    title: Custom Preview
-    exportName: CustomPreview
-  - id: directory-upload
-    title: Directory Upload
-    exportName: DirectoryUpload
-  - id: dropzone
-    title: Dropzone
-    exportName: Dropzone
-  - id: media-capture
-    title: Media Capture
-    exportName: MediaCapture
-  - id: multiple-files
-    title: Multiple Files
-    exportName: MultipleFiles
-  - id: trigger
-    title: Trigger
-    exportName: Trigger
-  - id: on-surface
-    title: On Surface
-    exportName: OnSurface
 ---
 
 ## When to use
@@ -57,9 +14,67 @@ examples:
 ## Import
 
 ```ts
-import { FileUpload } from "@pisagor/vue/file-upload";
+import { FileUpload } from "@pisagor/vue";
 ```
 
 Style with `@pisagor/recipes/file-upload` — no app-level `tv()`.
 
 Live examples below match `assets/examples/file-upload/`.
+
+## Examples
+
+### Default
+
+:::example Default
+
+### Variants
+
+:::example Variants
+
+### Invalid
+
+:::example Invalid
+
+### Disabled
+
+:::example Disabled
+
+### Custom Spacing
+
+:::example CustomSpacing
+
+### Accepted File Types
+
+:::example AcceptedFileTypes
+
+### Clear Trigger
+
+:::example ClearTrigger
+
+### Custom Preview
+
+:::example CustomPreview
+
+### Directory Upload
+
+:::example DirectoryUpload
+
+### Dropzone
+
+:::example Dropzone
+
+### Media Capture
+
+:::example MediaCapture
+
+### Multiple Files
+
+:::example MultipleFiles
+
+### Trigger
+
+:::example Trigger
+
+### On Surface
+
+:::example OnSurface

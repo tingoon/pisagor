@@ -3,10 +3,6 @@ title: Provider
 description: Wraps the app with locale, icons, and toasts.
 api: closed
 taxonomy: primitive
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -16,7 +12,13 @@ examples:
 ## Import
 
 ```ts
-import { Provider } from "@pisagor/svelte/provider";
+import { Provider } from "@pisagor/svelte";
 ```
 
 Live examples below match `assets/examples/provider/`.
+
+## Examples
+
+### Default
+
+:::example Default

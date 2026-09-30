@@ -3,34 +3,6 @@ title: App Shell
 description: Multi-region application shell with draggable side panels and an optional inspector for dashboard layouts.
 api: compound
 taxonomy: pattern
-examples:
-  - id: default
-    title: Default
-    exportName: Default
-  - id: banner
-    title: Banner
-    exportName: Banner
-  - id: navigation
-    title: Navigation
-    exportName: Navigation
-  - id: inspectors
-    title: Inspectors
-    exportName: Inspectors
-  - id: panels
-    title: Panels
-    exportName: Panels
-  - id: rails
-    title: Rails
-    exportName: Rails
-  - id: header
-    title: Header
-    exportName: Header
-  - id: main
-    title: Main
-    exportName: Main
-  - id: content
-    title: Content
-    exportName: Content
 ---
 
 ## When to use
@@ -40,9 +12,47 @@ examples:
 ## Import
 
 ```ts
-import { AppShell } from "@pisagor/vue/app-shell";
+import { AppShell } from "@pisagor/vue";
 ```
 
 Style with `@pisagor/recipes/app-shell` — no app-level `tv()`.
 
 Live examples below match `assets/examples/app-shell/`.
+
+## Examples
+
+### Default
+
+:::example Default
+
+### Banner
+
+:::example Banner
+
+### Navigation
+
+:::example Navigation
+
+### Inspectors
+
+:::example Inspectors
+
+### Panels
+
+:::example Panels
+
+### Rails
+
+:::example Rails
+
+### Header
+
+:::example Header
+
+### Main
+
+:::example Main
+
+### Content
+
+:::example Content

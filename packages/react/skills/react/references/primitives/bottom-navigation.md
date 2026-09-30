@@ -5,16 +5,6 @@ api: compound
 taxonomy: pattern
 aliases:
   - tab-bar
-examples:
-  - id: default
-    title: Default
-    exportName: Default
-  - id: icon-only
-    title: Icon Only
-    exportName: IconOnly
-  - id: with-links
-    title: With Links
-    exportName: WithLinks
 ---
 
 ## When to use
@@ -24,9 +14,23 @@ examples:
 ## Import
 
 ```tsx
-import { BottomNavigation } from "@pisagor/react/bottom-navigation";
+import { BottomNavigation } from "@pisagor/react";
 ```
 
 Style with `@pisagor/recipes/bottom-navigation` — no app-level `tv()`.
 
 Live examples below match `assets/examples/bottom-navigation/`.
+
+## Examples
+
+### Default
+
+:::example Default
+
+### Icon Only
+
+:::example IconOnly
+
+### With Links
+
+:::example WithLinks

@@ -5,10 +5,6 @@ api: compound
 taxonomy: pattern
 aliases:
   - date-grid
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -18,9 +14,15 @@ examples:
 ## Import
 
 ```ts
-import { Calendar } from "@pisagor/svelte/calendar";
+import { Calendar } from "@pisagor/svelte";
 ```
 
 Style with `@pisagor/recipes/calendar` — no app-level `tv()`.
 
 Live examples below match `assets/examples/calendar/`.
+
+## Examples
+
+### Default
+
+:::example Default

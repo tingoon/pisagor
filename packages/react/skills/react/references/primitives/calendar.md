@@ -5,46 +5,6 @@ api: compound
 taxonomy: pattern
 aliases:
   - date-grid
-examples:
-  - id: default
-    title: Default
-    exportName: Default
-  - id: invalid
-    title: Invalid
-    exportName: Invalid
-  - id: disabled
-    title: Disabled
-    exportName: Disabled
-  - id: booked-dates
-    title: Booked Dates
-    exportName: BookedDates
-  - id: custom-cell-size
-    title: Custom Cell Size
-    exportName: CustomCellSize
-  - id: min-max
-    title: Min Max
-    exportName: MinMax
-  - id: range
-    title: Range
-    exportName: Range
-  - id: fixed-weeks
-    title: Fixed Weeks
-    exportName: FixedWeeks
-  - id: month-year-selector
-    title: Month Year Selector
-    exportName: MonthYearSelector
-  - id: multiple-months
-    title: Multiple Months
-    exportName: MultipleMonths
-  - id: presets
-    title: Presets
-    exportName: Presets
-  - id: select-today
-    title: Select Today
-    exportName: SelectToday
-  - id: controlled
-    title: Controlled
-    exportName: Controlled
 ---
 
 ## When to use
@@ -54,9 +14,63 @@ examples:
 ## Import
 
 ```tsx
-import { Calendar } from "@pisagor/react/calendar";
+import { Calendar } from "@pisagor/react";
 ```
 
 Style with `@pisagor/recipes/calendar` — no app-level `tv()`.
 
 Live examples below match `assets/examples/calendar/`.
+
+## Examples
+
+### Default
+
+:::example Default
+
+### Invalid
+
+:::example Invalid
+
+### Disabled
+
+:::example Disabled
+
+### Booked Dates
+
+:::example BookedDates
+
+### Custom Cell Size
+
+:::example CustomCellSize
+
+### Min Max
+
+:::example MinMax
+
+### Range
+
+:::example Range
+
+### Fixed Weeks
+
+:::example FixedWeeks
+
+### Month Year Selector
+
+:::example MonthYearSelector
+
+### Multiple Months
+
+:::example MultipleMonths
+
+### Presets
+
+:::example Presets
+
+### Select Today
+
+:::example SelectToday
+
+### Controlled
+
+:::example Controlled

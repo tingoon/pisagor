@@ -5,10 +5,6 @@ api: compound
 taxonomy: pattern
 aliases:
   - command-palette
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -18,9 +14,15 @@ examples:
 ## Import
 
 ```tsx
-import { Command } from "@pisagor/solid/command";
+import { Command } from "@pisagor/solid";
 ```
 
 Style with `@pisagor/recipes/command` — no app-level `tv()`.
 
 Live examples below match `assets/examples/command/`.
+
+## Examples
+
+### Default
+
+:::example Default

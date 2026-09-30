@@ -3,10 +3,6 @@ title: Slider
 description: Lets users pick a value along a track by dragging a thumb, optionally with labeled steps.
 api: closed
 taxonomy: standard
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -16,9 +12,15 @@ examples:
 ## Import
 
 ```ts
-import { Slider } from "@pisagor/svelte/slider";
+import { Slider } from "@pisagor/svelte";
 ```
 
 Style with `@pisagor/recipes/slider` — no app-level `tv()`.
 
 Live examples below match `assets/examples/slider/`.
+
+## Examples
+
+### Default
+
+:::example Default

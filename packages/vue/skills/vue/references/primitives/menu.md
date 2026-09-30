@@ -6,13 +6,6 @@ taxonomy: standard
 aliases:
   - nav
   - navigation
-examples:
-  - id: default
-    title: Default
-    exportName: Default
-  - id: with-groups
-    title: With Groups
-    exportName: WithGroups
 ---
 
 ## When to use
@@ -22,9 +15,19 @@ examples:
 ## Import
 
 ```ts
-import { Menu } from "@pisagor/vue/menu";
+import { Menu } from "@pisagor/vue";
 ```
 
 Style with `@pisagor/recipes/menu` — no app-level `tv()`.
 
 Live examples below match `assets/examples/menu/`.
+
+## Examples
+
+### Default
+
+:::example Default
+
+### With Groups
+
+:::example WithGroups

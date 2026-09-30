@@ -3,16 +3,6 @@ title: Timeline
 description: Shows a sequence of events or milestones so users can follow progress over time.
 api: compound-shorthand
 taxonomy: standard
-examples:
-  - id: horizontal
-    title: Horizontal
-    exportName: Horizontal
-  - id: compound
-    title: Compound
-    exportName: Compound
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -22,9 +12,23 @@ examples:
 ## Import
 
 ```ts
-import { Timeline } from "@pisagor/vue/timeline";
+import { Timeline } from "@pisagor/vue";
 ```
 
 Style with `@pisagor/recipes/timeline` — no app-level `tv()`.
 
 Live examples below match `assets/examples/timeline/`.
+
+## Examples
+
+### Horizontal
+
+:::example Horizontal
+
+### Compound
+
+:::example Compound
+
+### Default
+
+:::example Default

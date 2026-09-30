@@ -3,31 +3,6 @@ title: Image Cropper
 description: Lets users crop and adjust an image selection before saving or uploading it.
 api: compound
 taxonomy: pattern
-examples:
-  - id: aspect-ratio
-    title: Aspect Ratio
-    exportName: AspectRatio
-  - id: circle-crop
-    title: Circle Crop
-    exportName: CircleCrop
-  - id: fixed-crop-area
-    title: Fixed Crop Area
-    exportName: FixedCropArea
-  - id: initial-crop
-    title: Initial Crop
-    exportName: InitialCrop
-  - id: min-max-size
-    title: Min Max Size
-    exportName: MinMaxSize
-  - id: zoom-limits
-    title: Zoom Limits
-    exportName: ZoomLimits
-  - id: controlled-zoom
-    title: Controlled Zoom
-    exportName: ControlledZoom
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -37,9 +12,43 @@ examples:
 ## Import
 
 ```tsx
-import { ImageCropper } from "@pisagor/react/image-cropper";
+import { ImageCropper } from "@pisagor/react";
 ```
 
 Style with `@pisagor/recipes/image-cropper` — no app-level `tv()`.
 
 Live examples below match `assets/examples/image-cropper/`.
+
+## Examples
+
+### Aspect Ratio
+
+:::example AspectRatio
+
+### Circle Crop
+
+:::example CircleCrop
+
+### Fixed Crop Area
+
+:::example FixedCropArea
+
+### Initial Crop
+
+:::example InitialCrop
+
+### Min Max Size
+
+:::example MinMaxSize
+
+### Zoom Limits
+
+:::example ZoomLimits
+
+### Controlled Zoom
+
+:::example ControlledZoom
+
+### Default
+
+:::example Default

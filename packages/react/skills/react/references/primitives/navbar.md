@@ -5,13 +5,6 @@ api: compound
 taxonomy: pattern
 aliases:
   - header
-examples:
-  - id: default
-    title: Default
-    exportName: Default
-  - id: with-sidebar
-    title: With Sidebar
-    exportName: WithSidebar
 ---
 
 ## When to use
@@ -21,9 +14,19 @@ examples:
 ## Import
 
 ```tsx
-import { Navbar } from "@pisagor/react/navbar";
+import { Navbar } from "@pisagor/react";
 ```
 
 Style with `@pisagor/recipes/navbar` — no app-level `tv()`.
 
 Live examples below match `assets/examples/navbar/`.
+
+## Examples
+
+### Default
+
+:::example Default
+
+### With Sidebar
+
+:::example WithSidebar

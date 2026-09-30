@@ -5,25 +5,6 @@ api: compound
 taxonomy: pattern
 aliases:
   - command-palette
-examples:
-  - id: scrollable
-    title: Scrollable
-    exportName: Scrollable
-  - id: shortcuts
-    title: Shortcuts
-    exportName: Shortcuts
-  - id: with-dialog
-    title: With Dialog
-    exportName: WithDialog
-  - id: groups
-    title: Groups
-    exportName: Groups
-  - id: with-footer
-    title: With Footer
-    exportName: WithFooter
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -33,9 +14,35 @@ examples:
 ## Import
 
 ```ts
-import { Command } from "@pisagor/vue/command";
+import { Command } from "@pisagor/vue";
 ```
 
 Style with `@pisagor/recipes/command` — no app-level `tv()`.
 
 Live examples below match `assets/examples/command/`.
+
+## Examples
+
+### Scrollable
+
+:::example Scrollable
+
+### Shortcuts
+
+:::example Shortcuts
+
+### With Dialog
+
+:::example WithDialog
+
+### Groups
+
+:::example Groups
+
+### With Footer
+
+:::example WithFooter
+
+### Default
+
+:::example Default

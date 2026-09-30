@@ -4,13 +4,6 @@ description: Uploads one or more files with a label and optional validation mess
 api: closed
 taxonomy: standard
 packageName: "@pisagor/solid-form"
-examples:
-  - id: disabled
-    title: Disabled
-    exportName: Disabled
-  - id: invalid
-    title: Invalid
-    exportName: Invalid
 ---
 
 ## When to use
@@ -23,7 +16,17 @@ examples:
 ## Import
 
 ```tsx
-import { FileField } from "@pisagor/solid-form/file-field";
+import { FileField } from "@pisagor/solid-form";
 ```
 
 Live examples below match `assets/examples/file-field/`.
+
+## Examples
+
+### Disabled
+
+:::example Disabled
+
+### Invalid
+
+:::example Invalid

@@ -5,31 +5,6 @@ api: compound
 taxonomy: pattern
 aliases:
   - side-panel
-examples:
-  - id: default
-    title: Default
-    exportName: Default
-  - id: custom-spacing
-    title: Custom Spacing
-    exportName: CustomSpacing
-  - id: inset
-    title: Inset
-    exportName: Inset
-  - id: no-close-button
-    title: No Close Button
-    exportName: NoCloseButton
-  - id: non-modal
-    title: Non Modal
-    exportName: NonModal
-  - id: scroll-area
-    title: Scroll Area
-    exportName: ScrollArea
-  - id: sides
-    title: Sides
-    exportName: Sides
-  - id: close-behavior
-    title: Close Behavior
-    exportName: CloseBehavior
 ---
 
 ## When to use
@@ -39,9 +14,43 @@ examples:
 ## Import
 
 ```tsx
-import { Sheet } from "@pisagor/react/sheet";
+import { Sheet } from "@pisagor/react";
 ```
 
 Style with `@pisagor/recipes/sheet` — no app-level `tv()`.
 
 Live examples below match `assets/examples/sheet/`.
+
+## Examples
+
+### Default
+
+:::example Default
+
+### Custom Spacing
+
+:::example CustomSpacing
+
+### Inset
+
+:::example Inset
+
+### No Close Button
+
+:::example NoCloseButton
+
+### Non Modal
+
+:::example NonModal
+
+### Scroll Area
+
+:::example ScrollArea
+
+### Sides
+
+:::example Sides
+
+### Close Behavior
+
+:::example CloseBehavior

@@ -5,10 +5,6 @@ api: compound
 taxonomy: standard
 aliases:
   - popover-card
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -18,9 +14,15 @@ examples:
 ## Import
 
 ```ts
-import { HoverCard } from "@pisagor/svelte/hover-card";
+import { HoverCard } from "@pisagor/svelte";
 ```
 
 Style with `@pisagor/recipes/hover-card` — no app-level `tv()`.
 
 Live examples below match `assets/examples/hover-card/`.
+
+## Examples
+
+### Default
+
+:::example Default

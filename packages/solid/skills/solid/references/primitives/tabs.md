@@ -5,10 +5,6 @@ api: compound-shorthand
 taxonomy: standard
 aliases:
   - tablist
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -18,9 +14,15 @@ examples:
 ## Import
 
 ```tsx
-import { Tabs } from "@pisagor/solid/tabs";
+import { Tabs } from "@pisagor/solid";
 ```
 
 Style with `@pisagor/recipes/tabs` — no app-level `tv()`.
 
 Live examples below match `assets/examples/tabs/`.
+
+## Examples
+
+### Default
+
+:::example Default

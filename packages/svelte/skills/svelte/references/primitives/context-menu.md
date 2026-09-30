@@ -5,10 +5,6 @@ api: compound
 taxonomy: pattern
 aliases:
   - right-click-menu
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -18,9 +14,15 @@ examples:
 ## Import
 
 ```ts
-import { ContextMenu } from "@pisagor/svelte/context-menu";
+import { ContextMenu } from "@pisagor/svelte";
 ```
 
 Style with `@pisagor/recipes/context-menu` — no app-level `tv()`.
 
 Live examples below match `assets/examples/context-menu/`.
+
+## Examples
+
+### Default
+
+:::example Default

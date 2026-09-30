@@ -5,10 +5,6 @@ api: compound
 taxonomy: standard
 aliases:
   - tray
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -18,9 +14,15 @@ examples:
 ## Import
 
 ```tsx
-import { Drawer } from "@pisagor/solid/drawer";
+import { Drawer } from "@pisagor/solid";
 ```
 
 Style with `@pisagor/recipes/drawer` — no app-level `tv()`.
 
 Live examples below match `assets/examples/drawer/`.
+
+## Examples
+
+### Default
+
+:::example Default

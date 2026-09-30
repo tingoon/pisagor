@@ -4,13 +4,6 @@ description: Collects a single line of text with a label and optional validation
 api: closed
 taxonomy: standard
 packageName: "@pisagor/svelte-form"
-examples:
-  - id: disabled
-    title: Disabled
-    exportName: Disabled
-  - id: invalid
-    title: Invalid
-    exportName: Invalid
 ---
 
 ## When to use
@@ -23,7 +16,17 @@ examples:
 ## Import
 
 ```tsx
-import { TextField } from "@pisagor/svelte-form/text-field";
+import { TextField } from "@pisagor/svelte-form";
 ```
 
 Live examples below match `assets/examples/text-field/`.
+
+## Examples
+
+### Disabled
+
+:::example Disabled
+
+### Invalid
+
+:::example Invalid

@@ -5,10 +5,6 @@ api: compound-shorthand
 taxonomy: standard
 aliases:
   - segmented-control
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -18,9 +14,15 @@ examples:
 ## Import
 
 ```ts
-import { SegmentGroup } from "@pisagor/svelte/segment-group";
+import { SegmentGroup } from "@pisagor/svelte";
 ```
 
 Style with `@pisagor/recipes/segment-group` — no app-level `tv()`.
 
 Live examples below match `assets/examples/segment-group/`.
+
+## Examples
+
+### Default
+
+:::example Default

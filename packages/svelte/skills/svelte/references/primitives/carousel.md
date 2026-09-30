@@ -5,10 +5,6 @@ api: compound-shorthand
 taxonomy: standard
 aliases:
   - slideshow
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -18,9 +14,15 @@ examples:
 ## Import
 
 ```ts
-import { Carousel } from "@pisagor/svelte/carousel";
+import { Carousel } from "@pisagor/svelte";
 ```
 
 Style with `@pisagor/recipes/carousel` — no app-level `tv()`.
 
 Live examples below match `assets/examples/carousel/`.
+
+## Examples
+
+### Default
+
+:::example Default

@@ -6,10 +6,6 @@ taxonomy: standard
 aliases:
   - attachment
   - file-row
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -19,9 +15,15 @@ examples:
 ## Import
 
 ```tsx
-import { File } from "@pisagor/solid/file";
+import { File } from "@pisagor/solid";
 ```
 
 Style with `@pisagor/recipes/file` — no app-level `tv()`.
 
 Live examples below match `assets/examples/file/`.
+
+## Examples
+
+### Default
+
+:::example Default

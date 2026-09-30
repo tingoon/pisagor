@@ -5,10 +5,6 @@ api: closed
 taxonomy: standard
 aliases:
   - copy
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -18,9 +14,15 @@ examples:
 ## Import
 
 ```tsx
-import { Clipboard } from "@pisagor/solid/clipboard";
+import { Clipboard } from "@pisagor/solid";
 ```
 
 Style with `@pisagor/recipes/clipboard` — no app-level `tv()`.
 
 Live examples below match `assets/examples/clipboard/`.
+
+## Examples
+
+### Default
+
+:::example Default

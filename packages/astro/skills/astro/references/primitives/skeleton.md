@@ -3,19 +3,6 @@ title: Skeleton
 description: Placeholder shapes that pulse while content loads so layouts feel stable instead of empty.
 api: compound
 taxonomy: primitive
-examples:
-  - id: default
-    title: Default
-    exportName: Default
-  - id: circle
-    title: Circle
-    exportName: Circle
-  - id: composition
-    title: Composition
-    exportName: Composition
-  - id: text
-    title: Text
-    exportName: Text
 ---
 
 ## When to use
@@ -25,9 +12,27 @@ examples:
 ## Import
 
 ```ts
-import { Skeleton } from "@pisagor/astro/skeleton";
+import { Skeleton } from "@pisagor/astro";
 ```
 
 Style with `@pisagor/recipes/skeleton` — no app-level `tv()`.
 
 Live examples below match `assets/examples/skeleton/`.
+
+## Examples
+
+### Default
+
+:::example Default
+
+### Circle
+
+:::example Circle
+
+### Composition
+
+:::example Composition
+
+### Text
+
+:::example Text

@@ -4,13 +4,6 @@ description: Tags Input Field.
 api: closed
 taxonomy: standard
 packageName: "@pisagor/vue-form"
-examples:
-  - id: disabled
-    title: Disabled
-    exportName: Disabled
-  - id: invalid
-    title: Invalid
-    exportName: Invalid
 ---
 
 ## When to use
@@ -20,9 +13,19 @@ examples:
 ## Import
 
 ```ts
-import { TagsInputField } from "@pisagor/vue-form/tags-input-field";
+import { TagsInputField } from "@pisagor/vue-form";
 ```
 
 Part of `@pisagor/vue-form`. Style with recipes where available — no app-level `tv()`.
 
 Live examples below match `assets/examples/tags-input-field/`.
+
+## Examples
+
+### Disabled
+
+:::example Disabled
+
+### Invalid
+
+:::example Invalid

@@ -5,19 +5,6 @@ api: compound
 taxonomy: pattern
 aliases:
   - window
-examples:
-  - id: custom-spacing
-    title: Custom Spacing
-    exportName: CustomSpacing
-  - id: controlled-position
-    title: Controlled Position
-    exportName: ControlledPosition
-  - id: controlled-size
-    title: Controlled Size
-    exportName: ControlledSize
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -27,9 +14,27 @@ examples:
 ## Import
 
 ```tsx
-import { FloatingPanel } from "@pisagor/react/floating-panel";
+import { FloatingPanel } from "@pisagor/react";
 ```
 
 Style with `@pisagor/recipes/floating-panel` — no app-level `tv()`.
 
 Live examples below match `assets/examples/floating-panel/`.
+
+## Examples
+
+### Custom Spacing
+
+:::example CustomSpacing
+
+### Controlled Position
+
+:::example ControlledPosition
+
+### Controlled Size
+
+:::example ControlledSize
+
+### Default
+
+:::example Default

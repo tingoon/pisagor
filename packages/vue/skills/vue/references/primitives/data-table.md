@@ -3,13 +3,6 @@ title: Data Table
 description: Present structured tabular data with headers, rows, and optional selection.
 api: compound
 taxonomy: pattern
-examples:
-  - id: empty
-    title: Empty
-    exportName: Empty
-  - id: sorting
-    title: Sorting
-    exportName: Sorting
 ---
 
 ## When to use
@@ -25,3 +18,13 @@ import { DataTable } from "@pisagor/vue/data-table";
 Style with `@pisagor/recipes/data-table` — no app-level `tv()`.
 
 Live examples below match `assets/examples/data-table/`.
+
+## Examples
+
+### Empty
+
+:::example Empty
+
+### Sorting
+
+:::example Sorting

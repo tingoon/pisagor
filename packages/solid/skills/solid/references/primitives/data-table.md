@@ -3,7 +3,6 @@ title: Data Table
 description: Present structured tabular data with headers, rows, and optional selection.
 api: compound
 taxonomy: pattern
-examples: []
 ---
 
 ## When to use
@@ -17,4 +16,3 @@ import { DataTable } from "@pisagor/solid/data-table";
 ```
 
 Style with `@pisagor/recipes/data-table` — no app-level `tv()`.
-

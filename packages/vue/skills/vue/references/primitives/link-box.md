@@ -3,16 +3,6 @@ title: Link Box
 description: Makes an entire card or tile clickable while keeping nested buttons usable underneath.
 api: compound
 taxonomy: primitive
-examples:
-  - id: default
-    title: Default
-    exportName: Default
-  - id: article
-    title: Article
-    exportName: Article
-  - id: with-link
-    title: With Link
-    exportName: WithLink
 ---
 
 ## When to use
@@ -22,9 +12,23 @@ examples:
 ## Import
 
 ```ts
-import { LinkBox } from "@pisagor/vue/link-box";
+import { LinkBox } from "@pisagor/vue";
 ```
 
 Style with `@pisagor/recipes/link-box` — no app-level `tv()`.
 
 Live examples below match `assets/examples/link-box/`.
+
+## Examples
+
+### Default
+
+:::example Default
+
+### Article
+
+:::example Article
+
+### With Link
+
+:::example WithLink

@@ -5,10 +5,6 @@ api: compound
 taxonomy: pattern
 aliases:
   - side-nav
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -18,9 +14,15 @@ examples:
 ## Import
 
 ```ts
-import { Sidebar } from "@pisagor/vue/sidebar";
+import { Sidebar } from "@pisagor/vue";
 ```
 
 Style with `@pisagor/recipes/sidebar` — no app-level `tv()`.
 
 Live examples below match `assets/examples/sidebar/`.
+
+## Examples
+
+### Default
+
+:::example Default

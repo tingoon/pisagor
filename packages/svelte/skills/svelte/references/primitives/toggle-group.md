@@ -3,10 +3,6 @@ title: Toggle Group
 description: Lets users choose one or more pressed states from a row of related toggle buttons.
 api: compound-shorthand
 taxonomy: standard
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -16,9 +12,15 @@ examples:
 ## Import
 
 ```ts
-import { ToggleGroup } from "@pisagor/svelte/toggle-group";
+import { ToggleGroup } from "@pisagor/svelte";
 ```
 
 Style with `@pisagor/recipes/toggle-group` — no app-level `tv()`.
 
 Live examples below match `assets/examples/toggle-group/`.
+
+## Examples
+
+### Default
+
+:::example Default

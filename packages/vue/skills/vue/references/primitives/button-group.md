@@ -3,22 +3,6 @@ title: Button Group
 description: Groups related actions together so users can compare choices and pick one option from a set.
 api: compound
 taxonomy: primitive
-examples:
-  - id: default
-    title: Default
-    exportName: Default
-  - id: orientation-horizontal
-    title: Orientation Horizontal
-    exportName: OrientationHorizontal
-  - id: orientation-vertical
-    title: Orientation Vertical
-    exportName: OrientationVertical
-  - id: nested
-    title: Nested
-    exportName: Nested
-  - id: with-separator
-    title: With Separator
-    exportName: WithSeparator
 ---
 
 ## When to use
@@ -28,9 +12,31 @@ examples:
 ## Import
 
 ```ts
-import { ButtonGroup } from "@pisagor/vue/button-group";
+import { ButtonGroup } from "@pisagor/vue";
 ```
 
 Style with `@pisagor/recipes/button-group` — no app-level `tv()`.
 
 Live examples below match `assets/examples/button-group/`.
+
+## Examples
+
+### Default
+
+:::example Default
+
+### Orientation Horizontal
+
+:::example OrientationHorizontal
+
+### Orientation Vertical
+
+:::example OrientationVertical
+
+### Nested
+
+:::example Nested
+
+### With Separator
+
+:::example WithSeparator

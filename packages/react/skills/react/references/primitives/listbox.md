@@ -5,58 +5,6 @@ api: compound-shorthand
 taxonomy: standard
 aliases:
   - list-box
-examples:
-  - id: disabled-item
-    title: Disabled Item
-    exportName: DisabledItem
-  - id: grid
-    title: Grid
-    exportName: Grid
-  - id: grouping
-    title: Grouping
-    exportName: Grouping
-  - id: horizontal
-    title: Horizontal
-    exportName: Horizontal
-  - id: disabled
-    title: Disabled
-    exportName: Disabled
-  - id: image-explorer
-    title: Image Explorer
-    exportName: ImageExplorer
-  - id: selection-extended
-    title: Selection Extended
-    exportName: SelectionExtended
-  - id: selection-multiple
-    title: Selection Multiple
-    exportName: SelectionMultiple
-  - id: selection-none
-    title: Selection None
-    exportName: SelectionNone
-  - id: transfer-list
-    title: Transfer List
-    exportName: TransferList
-  - id: with-description
-    title: With Description
-    exportName: WithDescription
-  - id: with-filter
-    title: With Filter
-    exportName: WithFilter
-  - id: with-icon
-    title: With Icon
-    exportName: WithIcon
-  - id: with-popover
-    title: With Popover
-    exportName: WithPopover
-  - id: controlled
-    title: Controlled
-    exportName: Controlled
-  - id: compound
-    title: Compound
-    exportName: Compound
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -66,9 +14,79 @@ examples:
 ## Import
 
 ```tsx
-import { Listbox } from "@pisagor/react/listbox";
+import { Listbox } from "@pisagor/react";
 ```
 
 Style with `@pisagor/recipes/listbox` — no app-level `tv()`.
 
 Live examples below match `assets/examples/listbox/`.
+
+## Examples
+
+### Disabled Item
+
+:::example DisabledItem
+
+### Grid
+
+:::example Grid
+
+### Grouping
+
+:::example Grouping
+
+### Horizontal
+
+:::example Horizontal
+
+### Disabled
+
+:::example Disabled
+
+### Image Explorer
+
+:::example ImageExplorer
+
+### Selection Extended
+
+:::example SelectionExtended
+
+### Selection Multiple
+
+:::example SelectionMultiple
+
+### Selection None
+
+:::example SelectionNone
+
+### Transfer List
+
+:::example TransferList
+
+### With Description
+
+:::example WithDescription
+
+### With Filter
+
+:::example WithFilter
+
+### With Icon
+
+:::example WithIcon
+
+### With Popover
+
+:::example WithPopover
+
+### Controlled
+
+:::example Controlled
+
+### Compound
+
+:::example Compound
+
+### Default
+
+:::example Default

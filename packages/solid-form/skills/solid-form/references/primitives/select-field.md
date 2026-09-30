@@ -4,13 +4,6 @@ description: Lets the user pick one option from a dropdown with label and option
 api: closed
 taxonomy: standard
 packageName: "@pisagor/solid-form"
-examples:
-  - id: disabled
-    title: Disabled
-    exportName: Disabled
-  - id: invalid
-    title: Invalid
-    exportName: Invalid
 ---
 
 ## When to use
@@ -23,7 +16,17 @@ examples:
 ## Import
 
 ```tsx
-import { SelectField } from "@pisagor/solid-form/select-field";
+import { SelectField } from "@pisagor/solid-form";
 ```
 
 Live examples below match `assets/examples/select-field/`.
+
+## Examples
+
+### Disabled
+
+:::example Disabled
+
+### Invalid
+
+:::example Invalid

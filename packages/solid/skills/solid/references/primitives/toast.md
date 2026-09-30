@@ -5,10 +5,6 @@ api: compound
 taxonomy: standard
 aliases:
   - snackbar
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -18,9 +14,15 @@ examples:
 ## Import
 
 ```tsx
-import { Toast } from "@pisagor/solid/toast";
+import { Toast } from "@pisagor/solid";
 ```
 
 Style with `@pisagor/recipes/toast` — no app-level `tv()`.
 
 Live examples below match `assets/examples/toast/`.
+
+## Examples
+
+### Default
+
+:::example Default

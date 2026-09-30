@@ -5,10 +5,6 @@ api: compound
 taxonomy: standard
 aliases:
   - pager
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -18,9 +14,15 @@ examples:
 ## Import
 
 ```ts
-import { Pagination } from "@pisagor/svelte/pagination";
+import { Pagination } from "@pisagor/svelte";
 ```
 
 Style with `@pisagor/recipes/pagination` — no app-level `tv()`.
 
 Live examples below match `assets/examples/pagination/`.
+
+## Examples
+
+### Default
+
+:::example Default

@@ -5,22 +5,6 @@ api: compound
 taxonomy: standard
 aliases:
   - pager
-examples:
-  - id: links
-    title: Links
-    exportName: Links
-  - id: page-range
-    title: Page Range
-    exportName: PageRange
-  - id: custom-composition
-    title: Custom Composition
-    exportName: CustomComposition
-  - id: controlled
-    title: Controlled
-    exportName: Controlled
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -30,9 +14,31 @@ examples:
 ## Import
 
 ```tsx
-import { Pagination } from "@pisagor/react/pagination";
+import { Pagination } from "@pisagor/react";
 ```
 
 Style with `@pisagor/recipes/pagination` — no app-level `tv()`.
 
 Live examples below match `assets/examples/pagination/`.
+
+## Examples
+
+### Links
+
+:::example Links
+
+### Page Range
+
+:::example PageRange
+
+### Custom Composition
+
+:::example CustomComposition
+
+### Controlled
+
+:::example Controlled
+
+### Default
+
+:::example Default

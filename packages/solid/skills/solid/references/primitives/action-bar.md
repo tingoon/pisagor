@@ -5,10 +5,6 @@ api: compound
 taxonomy: pattern
 aliases:
   - bulk-actions
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -18,9 +14,15 @@ examples:
 ## Import
 
 ```tsx
-import { ActionBar } from "@pisagor/solid/action-bar";
+import { ActionBar } from "@pisagor/solid";
 ```
 
 Style with `@pisagor/recipes/action-bar` — no app-level `tv()`.
 
 Live examples below match `assets/examples/action-bar/`.
+
+## Examples
+
+### Default
+
+:::example Default

@@ -5,31 +5,6 @@ api: compound-shorthand
 taxonomy: standard
 aliases:
   - modal
-examples:
-  - id: default
-    title: Default
-    exportName: Default
-  - id: custom-spacing
-    title: Custom Spacing
-    exportName: CustomSpacing
-  - id: initial-focus
-    title: Initial Focus
-    exportName: InitialFocus
-  - id: nested
-    title: Nested
-    exportName: Nested
-  - id: no-close-button
-    title: No Close Button
-    exportName: NoCloseButton
-  - id: non-modal
-    title: Non Modal
-    exportName: NonModal
-  - id: scroll-area
-    title: Scroll Area
-    exportName: ScrollArea
-  - id: close-behavior
-    title: Close Behavior
-    exportName: CloseBehavior
 ---
 
 ## When to use
@@ -39,9 +14,43 @@ examples:
 ## Import
 
 ```ts
-import { Dialog } from "@pisagor/vue/dialog";
+import { Dialog } from "@pisagor/vue";
 ```
 
 Style with `@pisagor/recipes/dialog` — no app-level `tv()`.
 
 Live examples below match `assets/examples/dialog/`.
+
+## Examples
+
+### Default
+
+:::example Default
+
+### Custom Spacing
+
+:::example CustomSpacing
+
+### Initial Focus
+
+:::example InitialFocus
+
+### Nested
+
+:::example Nested
+
+### No Close Button
+
+:::example NoCloseButton
+
+### Non Modal
+
+:::example NonModal
+
+### Scroll Area
+
+:::example ScrollArea
+
+### Close Behavior
+
+:::example CloseBehavior

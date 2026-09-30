@@ -5,10 +5,6 @@ api: compound-shorthand
 taxonomy: standard
 aliases:
   - disclosure
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -19,9 +15,15 @@ examples:
 ## Import
 
 ```tsx
-import { Accordion } from "@pisagor/solid/accordion";
+import { Accordion } from "@pisagor/solid";
 ```
 
 Prefer shorthand `items` for FAQ lists; use `Accordion.Root` for custom structure. Style with `@pisagor/recipes/accordion` — no app-level `tv()`.
 
 Live examples below match `assets/examples/accordion/`.
+
+## Examples
+
+### Default
+
+:::example Default

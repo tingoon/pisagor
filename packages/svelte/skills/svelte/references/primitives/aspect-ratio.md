@@ -3,10 +3,6 @@ title: Aspect Ratio
 description: Keeps media and embedded content at a consistent width-to-height ratio as the layout changes.
 api: closed
 taxonomy: primitive
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -16,9 +12,15 @@ examples:
 ## Import
 
 ```ts
-import { AspectRatio } from "@pisagor/svelte/aspect-ratio";
+import { AspectRatio } from "@pisagor/svelte";
 ```
 
 Style with `@pisagor/recipes/aspect-ratio` — no app-level `tv()`.
 
 Live examples below match `assets/examples/aspect-ratio/`.
+
+## Examples
+
+### Default
+
+:::example Default

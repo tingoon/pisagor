@@ -3,25 +3,6 @@ title: Status
 description: Signals state with a small colored dot so users can see availability or severity at a glance.
 api: closed
 taxonomy: primitive
-examples:
-  - id: variants
-    title: Variants
-    exportName: Variants
-  - id: custom-color
-    title: Custom Color
-    exportName: CustomColor
-  - id: custom-size
-    title: Custom Size
-    exportName: CustomSize
-  - id: with-icon
-    title: With Icon
-    exportName: WithIcon
-  - id: sizes
-    title: Sizes
-    exportName: Sizes
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -31,9 +12,35 @@ examples:
 ## Import
 
 ```ts
-import { Status } from "@pisagor/vue/status";
+import { Status } from "@pisagor/vue";
 ```
 
 Style with `@pisagor/recipes/status` — no app-level `tv()`.
 
 Live examples below match `assets/examples/status/`.
+
+## Examples
+
+### Variants
+
+:::example Variants
+
+### Custom Color
+
+:::example CustomColor
+
+### Custom Size
+
+:::example CustomSize
+
+### With Icon
+
+:::example WithIcon
+
+### Sizes
+
+:::example Sizes
+
+### Default
+
+:::example Default

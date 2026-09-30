@@ -5,10 +5,6 @@ api: compound
 taxonomy: pattern
 aliases:
   - side-panel
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -18,9 +14,15 @@ examples:
 ## Import
 
 ```tsx
-import { Sheet } from "@pisagor/solid/sheet";
+import { Sheet } from "@pisagor/solid";
 ```
 
 Style with `@pisagor/recipes/sheet` — no app-level `tv()`.
 
 Live examples below match `assets/examples/sheet/`.
+
+## Examples
+
+### Default
+
+:::example Default

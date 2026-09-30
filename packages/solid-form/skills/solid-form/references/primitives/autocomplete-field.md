@@ -4,13 +4,6 @@ description: "Collects text with typeahead suggestions, label, and optional vali
 api: closed
 taxonomy: standard
 packageName: "@pisagor/solid-form"
-examples:
-  - id: disabled
-    title: Disabled
-    exportName: Disabled
-  - id: invalid
-    title: Invalid
-    exportName: Invalid
 ---
 
 ## When to use
@@ -23,7 +16,17 @@ examples:
 ## Import
 
 ```tsx
-import { AutocompleteField } from "@pisagor/solid-form/autocomplete-field";
+import { AutocompleteField } from "@pisagor/solid-form";
 ```
 
 Live examples below match `assets/examples/autocomplete-field/`.
+
+## Examples
+
+### Disabled
+
+:::example Disabled
+
+### Invalid
+
+:::example Invalid

@@ -3,10 +3,6 @@ title: Client Only
 description: Renders content only in the browser so server output stays stable when a feature depends on client APIs.
 api: closed
 taxonomy: primitive
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -16,7 +12,13 @@ examples:
 ## Import
 
 ```ts
-import { ClientOnly } from "@pisagor/svelte/client-only";
+import { ClientOnly } from "@pisagor/svelte";
 ```
 
 Live examples below match `assets/examples/client-only/`.
+
+## Examples
+
+### Default
+
+:::example Default

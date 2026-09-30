@@ -5,10 +5,6 @@ api: compound
 taxonomy: pattern
 aliases:
   - upload
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -18,9 +14,15 @@ examples:
 ## Import
 
 ```tsx
-import { FileUpload } from "@pisagor/solid/file-upload";
+import { FileUpload } from "@pisagor/solid";
 ```
 
 Style with `@pisagor/recipes/file-upload` — no app-level `tv()`.
 
 Live examples below match `assets/examples/file-upload/`.
+
+## Examples
+
+### Default
+
+:::example Default

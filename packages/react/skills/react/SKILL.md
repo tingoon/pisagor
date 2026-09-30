@@ -44,7 +44,8 @@ Frontmatter fields:
 
 - `title`, `description`
 - `api`, `taxonomy`, `aliases?`
-- `examples[]` (`id`, `title`, `exportName`)
+
+Do **not** put `examples` in frontmatter. Live demos are declared in the body with a closed `:::example ExportName` / `:::` container (anywhere; optional `### Title` / short prose above for TOC). See `accordion.md`.
 
 Only `@pisagor/react` primitives belong in this folder. The component id is the primitive markdown filename without `.md`; do not duplicate it in frontmatter. Do not put `importStatement` or `recipe` in frontmatter. Installation imports are read from the body's `## Import` code fence, with a package/id-derived fallback in the docs site.
 
@@ -52,7 +53,7 @@ Do **not** put `whenToUse` in frontmatter — guidance lives in the body as `## 
 
 Body should include `## When to use`, `## Import`, and short styling/API notes (see `accordion.md`).
 
-Examples live under `assets/examples/<id>/` and are imported in docs via `#/react/examples/<id>` (tsconfig path alias; not a public package export).
+Example sources live under `assets/examples/<id>/` and are imported in docs via `#/react/examples/<id>` (tsconfig path alias; not a public package export).
 
 ## Principles
 
@@ -65,7 +66,7 @@ Examples live under `assets/examples/<id>/` and are imported in docs via `#/reac
 
 1. `references/primitives/<name>.md` when present.
 2. `assets/examples/<name>/` or MCP.
-3. Confirm `@pisagor/react/<name>`.
+3. Prefer barrel `import { X } from "@pisagor/react"`; heavy only via subpath (`data-grid`, `data-table`, `phone-input`, `rich-text-editor`).
 
 ## Output checklist
 

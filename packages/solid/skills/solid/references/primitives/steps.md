@@ -6,10 +6,6 @@ taxonomy: pattern
 aliases:
   - stepper
   - wizard
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -19,9 +15,15 @@ examples:
 ## Import
 
 ```tsx
-import { Steps } from "@pisagor/solid/steps";
+import { Steps } from "@pisagor/solid";
 ```
 
 Style with `@pisagor/recipes/steps` — no app-level `tv()`.
 
 Live examples below match `assets/examples/steps/`.
+
+## Examples
+
+### Default
+
+:::example Default

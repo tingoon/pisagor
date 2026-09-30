@@ -5,10 +5,6 @@ api: compound-shorthand
 taxonomy: standard
 aliases:
   - list-box
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -18,9 +14,15 @@ examples:
 ## Import
 
 ```ts
-import { Listbox } from "@pisagor/svelte/listbox";
+import { Listbox } from "@pisagor/svelte";
 ```
 
 Style with `@pisagor/recipes/listbox` — no app-level `tv()`.
 
 Live examples below match `assets/examples/listbox/`.
+
+## Examples
+
+### Default
+
+:::example Default

@@ -3,10 +3,6 @@ title: Circular Slider
 description: Lets users choose a value by dragging around a circular control instead of a straight track.
 api: compound
 taxonomy: standard
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -16,9 +12,15 @@ examples:
 ## Import
 
 ```tsx
-import { CircularSlider } from "@pisagor/solid/circular-slider";
+import { CircularSlider } from "@pisagor/solid";
 ```
 
 Style with `@pisagor/recipes/circular-slider` — no app-level `tv()`.
 
 Live examples below match `assets/examples/circular-slider/`.
+
+## Examples
+
+### Default
+
+:::example Default

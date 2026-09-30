@@ -3,10 +3,6 @@ title: Table
 description: Presents rows and columns of data in a structured grid for comparison and scanning.
 api: compound
 taxonomy: standard
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -16,9 +12,15 @@ examples:
 ## Import
 
 ```ts
-import { Table } from "@pisagor/svelte/table";
+import { Table } from "@pisagor/svelte";
 ```
 
 Style with `@pisagor/recipes/table` — no app-level `tv()`.
 
 Live examples below match `assets/examples/table/`.
+
+## Examples
+
+### Default
+
+:::example Default

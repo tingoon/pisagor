@@ -3,16 +3,6 @@ title: Circular Progress
 description: Shows how far along a task is on a circular track, including indeterminate loading when the duration is unknown.
 api: closed
 taxonomy: primitive
-examples:
-  - id: with-value
-    title: With Value
-    exportName: WithValue
-  - id: indeterminate
-    title: Indeterminate
-    exportName: Indeterminate
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -22,9 +12,23 @@ examples:
 ## Import
 
 ```ts
-import { CircularProgress } from "@pisagor/astro/circular-progress";
+import { CircularProgress } from "@pisagor/astro";
 ```
 
 Style with `@pisagor/recipes/circular-progress` — no app-level `tv()`.
 
 Live examples below match `assets/examples/circular-progress/`.
+
+## Examples
+
+### With Value
+
+:::example WithValue
+
+### Indeterminate
+
+:::example Indeterminate
+
+### Default
+
+:::example Default

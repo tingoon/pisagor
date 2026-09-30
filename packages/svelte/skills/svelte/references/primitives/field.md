@@ -3,10 +3,6 @@ title: Field
 description: Wraps a form control with label, description, and error text so inputs are easier to understand and fix.
 api: compound
 taxonomy: standard
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -16,9 +12,15 @@ examples:
 ## Import
 
 ```ts
-import { Field } from "@pisagor/svelte/field";
+import { Field } from "@pisagor/svelte";
 ```
 
 Style with `@pisagor/recipes/field` — no app-level `tv()`.
 
 Live examples below match `assets/examples/field/`.
+
+## Examples
+
+### Default
+
+:::example Default

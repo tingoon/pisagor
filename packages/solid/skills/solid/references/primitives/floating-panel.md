@@ -5,10 +5,6 @@ api: compound
 taxonomy: pattern
 aliases:
   - window
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -18,9 +14,15 @@ examples:
 ## Import
 
 ```tsx
-import { FloatingPanel } from "@pisagor/solid/floating-panel";
+import { FloatingPanel } from "@pisagor/solid";
 ```
 
 Style with `@pisagor/recipes/floating-panel` — no app-level `tv()`.
 
 Live examples below match `assets/examples/floating-panel/`.
+
+## Examples
+
+### Default
+
+:::example Default

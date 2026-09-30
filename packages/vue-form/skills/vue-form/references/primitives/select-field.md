@@ -4,13 +4,6 @@ description: Select Field.
 api: closed
 taxonomy: standard
 packageName: "@pisagor/vue-form"
-examples:
-  - id: disabled
-    title: Disabled
-    exportName: Disabled
-  - id: invalid
-    title: Invalid
-    exportName: Invalid
 ---
 
 ## When to use
@@ -20,9 +13,19 @@ examples:
 ## Import
 
 ```ts
-import { SelectField } from "@pisagor/vue-form/select-field";
+import { SelectField } from "@pisagor/vue-form";
 ```
 
 Part of `@pisagor/vue-form`. Style with recipes where available — no app-level `tv()`.
 
 Live examples below match `assets/examples/select-field/`.
+
+## Examples
+
+### Disabled
+
+:::example Disabled
+
+### Invalid
+
+:::example Invalid

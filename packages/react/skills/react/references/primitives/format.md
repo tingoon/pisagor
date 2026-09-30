@@ -3,37 +3,6 @@ title: Format
 description: "Formats numbers, bytes, and relative times for display so values read naturally in the user locale."
 api: compound
 taxonomy: primitive
-examples:
-  - id: default
-    title: Default
-    exportName: Default
-  - id: byte-unit-display
-    title: Byte Unit Display
-    exportName: ByteUnitDisplay
-  - id: byte-unit-system
-    title: Byte Unit System
-    exportName: ByteUnitSystem
-  - id: byte
-    title: Byte
-    exportName: Byte
-  - id: number-compact
-    title: Number Compact
-    exportName: NumberCompact
-  - id: number-currency
-    title: Number Currency
-    exportName: NumberCurrency
-  - id: number-percent
-    title: Number Percent
-    exportName: NumberPercent
-  - id: number-story
-    title: Number Story
-    exportName: NumberStory
-  - id: relative-time-short
-    title: Relative Time Short
-    exportName: RelativeTimeShort
-  - id: relative-time
-    title: Relative Time
-    exportName: RelativeTime
 ---
 
 ## When to use
@@ -43,7 +12,49 @@ examples:
 ## Import
 
 ```tsx
-import { Format } from "@pisagor/react/format";
+import { Format } from "@pisagor/react";
 ```
 
 Live examples below match `assets/examples/format/`.
+
+## Examples
+
+### Default
+
+:::example Default
+
+### Byte Unit Display
+
+:::example ByteUnitDisplay
+
+### Byte Unit System
+
+:::example ByteUnitSystem
+
+### Byte
+
+:::example Byte
+
+### Number Compact
+
+:::example NumberCompact
+
+### Number Currency
+
+:::example NumberCurrency
+
+### Number Percent
+
+:::example NumberPercent
+
+### Number Story
+
+:::example NumberStory
+
+### Relative Time Short
+
+:::example RelativeTimeShort
+
+### Relative Time
+
+:::example RelativeTime

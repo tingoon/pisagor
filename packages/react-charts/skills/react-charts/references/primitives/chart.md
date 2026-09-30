@@ -4,10 +4,6 @@ description: Wraps charts in themed, accessible layout so data visualizations ma
 api: compound
 taxonomy: standard
 packageName: "@pisagor/react-charts"
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -23,3 +19,9 @@ import { Chart } from "@pisagor/react-charts";
 Part of `@pisagor/react-charts`. Style with recipes where available — no app-level `tv()`.
 
 Live examples below match `assets/examples/`.
+
+## Examples
+
+### Default
+
+:::example Default

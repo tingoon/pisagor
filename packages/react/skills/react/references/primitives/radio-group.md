@@ -3,28 +3,6 @@ title: Radio Group
 description: Lets users pick exactly one option from a small set of related choices.
 api: compound-shorthand
 taxonomy: standard
-examples:
-  - id: variants
-    title: Variants
-    exportName: Variants
-  - id: disabled
-    title: Disabled
-    exportName: Disabled
-  - id: invalid
-    title: Invalid
-    exportName: Invalid
-  - id: with-description
-    title: With Description
-    exportName: WithDescription
-  - id: controlled
-    title: Controlled
-    exportName: Controlled
-  - id: compound
-    title: Compound
-    exportName: Compound
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -34,9 +12,39 @@ examples:
 ## Import
 
 ```tsx
-import { RadioGroup } from "@pisagor/react/radio-group";
+import { RadioGroup } from "@pisagor/react";
 ```
 
 Style with `@pisagor/recipes/radio-group` — no app-level `tv()`.
 
 Live examples below match `assets/examples/radio-group/`.
+
+## Examples
+
+### Variants
+
+:::example Variants
+
+### Disabled
+
+:::example Disabled
+
+### Invalid
+
+:::example Invalid
+
+### With Description
+
+:::example WithDescription
+
+### Controlled
+
+:::example Controlled
+
+### Compound
+
+:::example Compound
+
+### Default
+
+:::example Default

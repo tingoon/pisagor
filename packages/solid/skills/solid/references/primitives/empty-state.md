@@ -3,10 +3,6 @@ title: Empty State
 description: Shows a centered placeholder when a view has no data and offers the next relevant actions.
 api: compound-shorthand
 taxonomy: standard
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -16,9 +12,15 @@ examples:
 ## Import
 
 ```tsx
-import { EmptyState } from "@pisagor/solid/empty-state";
+import { EmptyState } from "@pisagor/solid";
 ```
 
 Style with `@pisagor/recipes/empty-state` — no app-level `tv()`.
 
 Live examples below match `assets/examples/empty-state/`.
+
+## Examples
+
+### Default
+
+:::example Default

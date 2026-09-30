@@ -3,13 +3,6 @@ title: Scrollspy
 description: Highlights navigation links to show which section is currently visible while scrolling.
 api: closed
 taxonomy: standard
-examples:
-  - id: horizontal
-    title: Horizontal
-    exportName: Horizontal
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -19,7 +12,17 @@ examples:
 ## Import
 
 ```ts
-import { Scrollspy } from "@pisagor/vue/scrollspy";
+import { Scrollspy } from "@pisagor/vue";
 ```
 
 Live examples below match `assets/examples/scrollspy/`.
+
+## Examples
+
+### Horizontal
+
+:::example Horizontal
+
+### Default
+
+:::example Default

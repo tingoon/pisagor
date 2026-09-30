@@ -3,10 +3,6 @@ title: Button
 description: Triggers actions with emphasis, size, and loading states.
 api: closed
 taxonomy: primitive
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -16,9 +12,15 @@ examples:
 ## Import
 
 ```tsx
-import { Button } from "@pisagor/solid/button";
+import { Button } from "@pisagor/solid";
 ```
 
 Style with `@pisagor/recipes/button` — no app-level `tv()`.
 
 Live examples below match `assets/examples/button/`.
+
+## Examples
+
+### Default
+
+:::example Default

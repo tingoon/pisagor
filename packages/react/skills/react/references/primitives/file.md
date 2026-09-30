@@ -6,16 +6,6 @@ taxonomy: standard
 aliases:
   - attachment
   - file-row
-examples:
-  - id: with-actions
-    title: With Actions
-    exportName: WithActions
-  - id: compound
-    title: Compound
-    exportName: Compound
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -25,9 +15,23 @@ examples:
 ## Import
 
 ```tsx
-import { File } from "@pisagor/react/file";
+import { File } from "@pisagor/react";
 ```
 
 Style with `@pisagor/recipes/file` — no app-level `tv()`.
 
 Live examples below match `assets/examples/file/`.
+
+## Examples
+
+### With Actions
+
+:::example WithActions
+
+### Compound
+
+:::example Compound
+
+### Default
+
+:::example Default

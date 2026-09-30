@@ -5,31 +5,6 @@ api: compound-shorthand
 taxonomy: standard
 aliases:
   - tablist
-examples:
-  - id: variants
-    title: Variants
-    exportName: Variants
-  - id: orientation-horizontal
-    title: Orientation Horizontal
-    exportName: OrientationHorizontal
-  - id: orientation-vertical
-    title: Orientation Vertical
-    exportName: OrientationVertical
-  - id: disabled
-    title: Disabled
-    exportName: Disabled
-  - id: with-icons
-    title: With Icons
-    exportName: WithIcons
-  - id: controlled
-    title: Controlled
-    exportName: Controlled
-  - id: compound
-    title: Compound
-    exportName: Compound
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -39,9 +14,43 @@ examples:
 ## Import
 
 ```ts
-import { Tabs } from "@pisagor/vue/tabs";
+import { Tabs } from "@pisagor/vue";
 ```
 
 Style with `@pisagor/recipes/tabs` — no app-level `tv()`.
 
 Live examples below match `assets/examples/tabs/`.
+
+## Examples
+
+### Variants
+
+:::example Variants
+
+### Orientation Horizontal
+
+:::example OrientationHorizontal
+
+### Orientation Vertical
+
+:::example OrientationVertical
+
+### Disabled
+
+:::example Disabled
+
+### With Icons
+
+:::example WithIcons
+
+### Controlled
+
+:::example Controlled
+
+### Compound
+
+:::example Compound
+
+### Default
+
+:::example Default

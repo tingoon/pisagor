@@ -3,43 +3,6 @@ title: Select
 description: Lets users choose one option from a dropdown list when screen space for all choices is limited.
 api: compound-shorthand
 taxonomy: standard
-examples:
-  - id: sizes
-    title: Sizes
-    exportName: Sizes
-  - id: variants
-    title: Variants
-    exportName: Variants
-  - id: empty
-    title: Empty
-    exportName: Empty
-  - id: grouping
-    title: Grouping
-    exportName: Grouping
-  - id: max-selection
-    title: Max Selection
-    exportName: MaxSelection
-  - id: multiple
-    title: Multiple
-    exportName: Multiple
-  - id: disabled
-    title: Disabled
-    exportName: Disabled
-  - id: invalid
-    title: Invalid
-    exportName: Invalid
-  - id: with-scroll
-    title: With Scroll
-    exportName: WithScroll
-  - id: controlled
-    title: Controlled
-    exportName: Controlled
-  - id: compound
-    title: Compound
-    exportName: Compound
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -49,9 +12,59 @@ examples:
 ## Import
 
 ```tsx
-import { Select } from "@pisagor/react/select";
+import { Select } from "@pisagor/react";
 ```
 
 Style with `@pisagor/recipes/select` — no app-level `tv()`.
 
 Live examples below match `assets/examples/select/`.
+
+## Examples
+
+### Sizes
+
+:::example Sizes
+
+### Variants
+
+:::example Variants
+
+### Empty
+
+:::example Empty
+
+### Grouping
+
+:::example Grouping
+
+### Max Selection
+
+:::example MaxSelection
+
+### Multiple
+
+:::example Multiple
+
+### Disabled
+
+:::example Disabled
+
+### Invalid
+
+:::example Invalid
+
+### With Scroll
+
+:::example WithScroll
+
+### Controlled
+
+:::example Controlled
+
+### Compound
+
+:::example Compound
+
+### Default
+
+:::example Default

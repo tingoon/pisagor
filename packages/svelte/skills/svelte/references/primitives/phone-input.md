@@ -3,7 +3,6 @@ title: Phone Input
 description: Enter and format international phone numbers with country selection.
 api: closed
 taxonomy: pattern
-examples: []
 ---
 
 ## When to use
@@ -17,4 +16,3 @@ import { PhoneInput } from "@pisagor/svelte/phone-input";
 ```
 
 Style with `@pisagor/recipes/phone-input` — no app-level `tv()`.
-

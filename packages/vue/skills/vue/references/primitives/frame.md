@@ -3,16 +3,6 @@ title: Frame
 description: Embeds external content in a framed viewport with a consistent chrome around it.
 api: compound
 taxonomy: standard
-examples:
-  - id: default
-    title: With Form Controls
-    exportName: Default
-  - id: separated-panels
-    title: Separated Panels
-    exportName: SeparatedPanels
-  - id: with-form-controls
-    title: With Form Controls
-    exportName: WithFormControls
 ---
 
 ## When to use
@@ -22,9 +12,23 @@ examples:
 ## Import
 
 ```ts
-import { Frame } from "@pisagor/vue/frame";
+import { Frame } from "@pisagor/vue";
 ```
 
 Style with `@pisagor/recipes/frame` — no app-level `tv()`.
 
 Live examples below match `assets/examples/frame/`.
+
+## Examples
+
+### Default
+
+:::example Default
+
+### Separated Panels
+
+:::example SeparatedPanels
+
+### With Form Controls
+
+:::example WithFormControls

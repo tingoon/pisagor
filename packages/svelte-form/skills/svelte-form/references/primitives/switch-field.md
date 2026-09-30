@@ -4,13 +4,6 @@ description: Toggles a setting on or off with a label and optional validation me
 api: closed
 taxonomy: standard
 packageName: "@pisagor/svelte-form"
-examples:
-  - id: disabled
-    title: Disabled
-    exportName: Disabled
-  - id: invalid
-    title: Invalid
-    exportName: Invalid
 ---
 
 ## When to use
@@ -23,7 +16,17 @@ examples:
 ## Import
 
 ```tsx
-import { SwitchField } from "@pisagor/svelte-form/switch-field";
+import { SwitchField } from "@pisagor/svelte-form";
 ```
 
 Live examples below match `assets/examples/switch-field/`.
+
+## Examples
+
+### Disabled
+
+:::example Disabled
+
+### Invalid
+
+:::example Invalid

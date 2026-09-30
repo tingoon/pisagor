@@ -5,10 +5,6 @@ api: compound-shorthand
 taxonomy: standard
 aliases:
   - typeahead
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -18,7 +14,13 @@ examples:
 ## Import
 
 ```tsx
-import { Autocomplete } from "@pisagor/solid/autocomplete";
+import { Autocomplete } from "@pisagor/solid";
 ```
 
 Live examples below match `assets/examples/autocomplete/`.
+
+## Examples
+
+### Default
+
+:::example Default

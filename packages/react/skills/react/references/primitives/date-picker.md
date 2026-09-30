@@ -3,37 +3,6 @@ title: Date Picker
 description: Lets users pick a date or range from a calendar inside a field or popover.
 api: compound
 taxonomy: pattern
-examples:
-  - id: default
-    title: Default
-    exportName: Default
-  - id: variants
-    title: Variants
-    exportName: Variants
-  - id: range
-    title: Range
-    exportName: Range
-  - id: custom-format
-    title: Custom Format
-    exportName: CustomFormat
-  - id: input
-    title: Input
-    exportName: Input
-  - id: invalid
-    title: Invalid
-    exportName: Invalid
-  - id: disabled
-    title: Disabled
-    exportName: Disabled
-  - id: clearable
-    title: Clearable
-    exportName: Clearable
-  - id: time
-    title: Time
-    exportName: Time
-  - id: with-presets
-    title: With Presets
-    exportName: WithPresets
 ---
 
 ## When to use
@@ -43,9 +12,51 @@ examples:
 ## Import
 
 ```tsx
-import { DatePicker } from "@pisagor/react/date-picker";
+import { DatePicker } from "@pisagor/react";
 ```
 
 Style with `@pisagor/recipes/date-picker` — no app-level `tv()`.
 
 Live examples below match `assets/examples/date-picker/`.
+
+## Examples
+
+### Default
+
+:::example Default
+
+### Variants
+
+:::example Variants
+
+### Range
+
+:::example Range
+
+### Custom Format
+
+:::example CustomFormat
+
+### Input
+
+:::example Input
+
+### Invalid
+
+:::example Invalid
+
+### Disabled
+
+:::example Disabled
+
+### Clearable
+
+:::example Clearable
+
+### Time
+
+:::example Time
+
+### With Presets
+
+:::example WithPresets

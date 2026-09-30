@@ -6,10 +6,6 @@ taxonomy: standard
 aliases:
   - nav
   - navigation
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -19,9 +15,15 @@ examples:
 ## Import
 
 ```tsx
-import { Menu } from "@pisagor/solid/menu";
+import { Menu } from "@pisagor/solid";
 ```
 
 Style with `@pisagor/recipes/menu` — no app-level `tv()`.
 
 Live examples below match `assets/examples/menu/`.
+
+## Examples
+
+### Default
+
+:::example Default

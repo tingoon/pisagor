@@ -33,7 +33,7 @@ Components: `src/components/<name>/` (heavy modules under `src/<name>/`).
 
 ## Rules
 
-- Import from `@pisagor/solid`.
+- Import light components from `@pisagor/solid`; heavy (`data-grid`, `data-table`, `phone-input`, `rich-text-editor`) from `@pisagor/solid/<name>`.
 - Class prop: `class`. Layout via `class`; look via `variant` / `size`.
 - Do not call `tv()` in app code — recipes are `@pisagor/recipes`.
 - Use `cn()` from `@pisagor/utils` when merging classes.

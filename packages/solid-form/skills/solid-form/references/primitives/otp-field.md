@@ -4,13 +4,6 @@ description: Collects a one-time code across separate digit slots with optional 
 api: closed
 taxonomy: standard
 packageName: "@pisagor/solid-form"
-examples:
-  - id: disabled
-    title: Disabled
-    exportName: Disabled
-  - id: invalid
-    title: Invalid
-    exportName: Invalid
 ---
 
 ## When to use
@@ -23,7 +16,17 @@ examples:
 ## Import
 
 ```tsx
-import { OtpField } from "@pisagor/solid-form/otp-field";
+import { OtpField } from "@pisagor/solid-form";
 ```
 
 Live examples below match `assets/examples/otp-field/`.
+
+## Examples
+
+### Disabled
+
+:::example Disabled
+
+### Invalid
+
+:::example Invalid

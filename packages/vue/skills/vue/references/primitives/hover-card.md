@@ -5,22 +5,6 @@ api: compound
 taxonomy: standard
 aliases:
   - popover-card
-examples:
-  - id: default
-    title: Default
-    exportName: Default
-  - id: disabled
-    title: Disabled
-    exportName: Disabled
-  - id: triggers-delays
-    title: Triggers Delays
-    exportName: TriggersDelays
-  - id: controlled
-    title: Controlled
-    exportName: Controlled
-  - id: placements
-    title: Placements
-    exportName: Placements
 ---
 
 ## When to use
@@ -30,9 +14,31 @@ examples:
 ## Import
 
 ```ts
-import { HoverCard } from "@pisagor/vue/hover-card";
+import { HoverCard } from "@pisagor/vue";
 ```
 
 Style with `@pisagor/recipes/hover-card` — no app-level `tv()`.
 
 Live examples below match `assets/examples/hover-card/`.
+
+## Examples
+
+### Default
+
+:::example Default
+
+### Disabled
+
+:::example Disabled
+
+### Triggers Delays
+
+:::example TriggersDelays
+
+### Controlled
+
+:::example Controlled
+
+### Placements
+
+:::example Placements

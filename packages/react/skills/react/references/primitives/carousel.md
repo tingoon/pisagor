@@ -5,43 +5,6 @@ api: compound-shorthand
 taxonomy: standard
 aliases:
   - slideshow
-examples:
-  - id: default
-    title: Default
-    exportName: Default
-  - id: autoplay
-    title: Autoplay
-    exportName: Autoplay
-  - id: loop
-    title: Loop
-    exportName: Loop
-  - id: mouse-drag
-    title: Mouse Drag
-    exportName: MouseDrag
-  - id: orientation-horizontal
-    title: Orientation Horizontal
-    exportName: OrientationHorizontal
-  - id: orientation-vertical
-    title: Orientation Vertical
-    exportName: OrientationVertical
-  - id: spacing
-    title: Spacing
-    exportName: Spacing
-  - id: slides-per-page
-    title: Slides Per Page
-    exportName: SlidesPerPage
-  - id: thumbnail-indicator-vertical
-    title: Thumbnail Indicator Vertical
-    exportName: ThumbnailIndicatorVertical
-  - id: thumbnail-indicator
-    title: Thumbnail Indicator
-    exportName: ThumbnailIndicator
-  - id: controlled
-    title: Controlled
-    exportName: Controlled
-  - id: compound
-    title: Compound
-    exportName: Compound
 ---
 
 ## When to use
@@ -51,9 +14,59 @@ examples:
 ## Import
 
 ```tsx
-import { Carousel } from "@pisagor/react/carousel";
+import { Carousel } from "@pisagor/react";
 ```
 
 Style with `@pisagor/recipes/carousel` — no app-level `tv()`.
 
 Live examples below match `assets/examples/carousel/`.
+
+## Examples
+
+### Default
+
+:::example Default
+
+### Autoplay
+
+:::example Autoplay
+
+### Loop
+
+:::example Loop
+
+### Mouse Drag
+
+:::example MouseDrag
+
+### Orientation Horizontal
+
+:::example OrientationHorizontal
+
+### Orientation Vertical
+
+:::example OrientationVertical
+
+### Spacing
+
+:::example Spacing
+
+### Slides Per Page
+
+:::example SlidesPerPage
+
+### Thumbnail Indicator Vertical
+
+:::example ThumbnailIndicatorVertical
+
+### Thumbnail Indicator
+
+:::example ThumbnailIndicator
+
+### Controlled
+
+:::example Controlled
+
+### Compound
+
+:::example Compound

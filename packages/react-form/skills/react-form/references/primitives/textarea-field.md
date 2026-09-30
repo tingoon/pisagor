@@ -4,13 +4,6 @@ description: Collects multiple lines of text with a label and optional validatio
 api: closed
 taxonomy: standard
 packageName: "@pisagor/react-form"
-examples:
-  - id: disabled
-    title: Disabled
-    exportName: Disabled
-  - id: invalid
-    title: Invalid
-    exportName: Invalid
 ---
 
 ## When to use
@@ -20,9 +13,19 @@ examples:
 ## Import
 
 ```tsx
-import { TextareaField } from "@pisagor/react-form/textarea-field";
+import { TextareaField } from "@pisagor/react-form";
 ```
 
 Part of `@pisagor/react-form`. Style with recipes where available — no app-level `tv()`.
 
 Live examples below match `assets/examples/textarea-field/`.
+
+## Examples
+
+### Disabled
+
+:::example Disabled
+
+### Invalid
+
+:::example Invalid

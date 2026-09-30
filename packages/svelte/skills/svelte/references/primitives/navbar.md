@@ -5,10 +5,6 @@ api: compound
 taxonomy: pattern
 aliases:
   - header
-examples:
-  - id: default
-    title: Default
-    exportName: Default
 ---
 
 ## When to use
@@ -18,9 +14,15 @@ examples:
 ## Import
 
 ```ts
-import { Navbar } from "@pisagor/svelte/navbar";
+import { Navbar } from "@pisagor/svelte";
 ```
 
 Style with `@pisagor/recipes/navbar` — no app-level `tv()`.
 
 Live examples below match `assets/examples/navbar/`.
+
+## Examples
+
+### Default
+
+:::example Default
