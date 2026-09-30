@@ -1,4 +1,5 @@
-import { InputOTP } from "../../../../../src/components/input-otp/index";
+/** @jsxImportSource solid-js */
+import { InputOTP } from "@pisagor/solid/input-otp";
 
 export function Default() {
   return (

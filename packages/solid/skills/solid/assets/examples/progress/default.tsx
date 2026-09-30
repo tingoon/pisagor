@@ -1,5 +1,7 @@
+/** @jsxImportSource solid-js */
+
+import { Progress } from "@pisagor/solid/progress";
 import { createSignal, onCleanup, onMount } from "solid-js";
-import { Progress } from "../../../../../src/components/progress/index";
 
 export function Default() {
   const [progress, setProgress] = createSignal(13);

@@ -1,6 +1,8 @@
+/** @jsxImportSource solid-js */
+
+import { ScrollArea } from "@pisagor/solid/scroll-area";
+import { Separator } from "@pisagor/solid/separator";
 import { For } from "solid-js";
-import { ScrollArea } from "../../../../../src/components/scroll-area/index";
-import { Separator } from "../../../../../src/components/separator";
 
 export function Default() {
   const tags = Array.from({ length: 50 }, (_, i) => `v1.0.0-beta.${i}`);

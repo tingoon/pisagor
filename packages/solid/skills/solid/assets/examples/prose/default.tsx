@@ -1,4 +1,5 @@
-import { Prose } from "../../../../../src/components/prose/index";
+/** @jsxImportSource solid-js */
+import { Prose } from "@pisagor/solid/prose";
 
 export function Default() {
   return (

@@ -1,4 +1,5 @@
-import { Table } from "../../../../../src/components/table/index";
+/** @jsxImportSource solid-js */
+import { Table } from "@pisagor/solid/table";
 
 export function Default() {
   return (

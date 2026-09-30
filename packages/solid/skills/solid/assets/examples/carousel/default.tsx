@@ -1,4 +1,5 @@
-import { Carousel } from "../../../../../src/components/carousel/index";
+/** @jsxImportSource solid-js */
+import { Carousel } from "@pisagor/solid/carousel";
 
 export function Default() {
   return (

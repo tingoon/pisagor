@@ -1,6 +1,8 @@
+/** @jsxImportSource solid-js */
+
+import { Button } from "@pisagor/solid/button";
+import { Steps } from "@pisagor/solid/steps";
 import { For } from "solid-js";
-import { Button } from "../../../../../src/components/button";
-import { Steps } from "../../../../../src/components/steps/index";
 import {
   CaretLeftIcon,
   CaretRightIcon,

@@ -1,5 +1,6 @@
-import { Button } from "../../../../../src/components/button";
-import { Editable } from "../../../../../src/components/editable/index";
+/** @jsxImportSource solid-js */
+import { Button } from "@pisagor/solid/button";
+import { Editable } from "@pisagor/solid/editable";
 
 export function Default() {
   return (

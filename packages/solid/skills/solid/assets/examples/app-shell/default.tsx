@@ -1,4 +1,5 @@
-import { AppShell } from "../../../../../src/components/app-shell/index";
+/** @jsxImportSource solid-js */
+import { AppShell } from "@pisagor/solid/app-shell";
 
 export function Default() {
   return (

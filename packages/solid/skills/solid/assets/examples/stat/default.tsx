@@ -1,4 +1,5 @@
-import { Stat } from "../../../../../src/components/stat/index";
+/** @jsxImportSource solid-js */
+import { Stat } from "@pisagor/solid/stat";
 
 export function Default() {
   return (

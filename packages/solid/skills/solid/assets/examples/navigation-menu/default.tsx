@@ -1,4 +1,5 @@
-import { NavigationMenu } from "../../../../../src/components/navigation-menu/index";
+/** @jsxImportSource solid-js */
+import { NavigationMenu } from "@pisagor/solid/navigation-menu";
 
 export function Default() {
   return (

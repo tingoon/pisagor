@@ -1,4 +1,5 @@
-import { Scrollspy } from "../../../../../src/components/scrollspy/index";
+/** @jsxImportSource solid-js */
+import { Scrollspy } from "@pisagor/solid/scrollspy";
 
 export function Default() {
   return (

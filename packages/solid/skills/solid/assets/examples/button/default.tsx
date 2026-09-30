@@ -1,4 +1,5 @@
-import { Button } from "../../../../../src/components/button/index";
+/** @jsxImportSource solid-js */
+import { Button } from "@pisagor/solid/button";
 
 export function Default() {
   return <Button>Button</Button>;

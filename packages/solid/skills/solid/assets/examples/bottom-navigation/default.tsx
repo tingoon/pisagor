@@ -1,4 +1,5 @@
-import { BottomNavigation } from "../../../../../src/components/bottom-navigation/index";
+/** @jsxImportSource solid-js */
+import { BottomNavigation } from "@pisagor/solid/bottom-navigation";
 
 export function Default() {
   return (

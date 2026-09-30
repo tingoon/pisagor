@@ -1,4 +1,5 @@
-import { InputGroup } from "../../../../../src/components/input-group/index";
+/** @jsxImportSource solid-js */
+import { InputGroup } from "@pisagor/solid/input-group";
 
 export function Default() {
   return (

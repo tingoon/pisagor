@@ -1,10 +1,12 @@
-import { For, Show } from "solid-js";
+/** @jsxImportSource solid-js */
+
 import {
   createTreeCollection,
   type NodeProviderProps,
   type TreeNodeType,
   TreeView,
-} from "../../../../../src/components/tree-view/index";
+} from "@pisagor/solid/tree-view";
+import { For, Show } from "solid-js";
 
 const collection = createTreeCollection<TreeNodeType>({
   rootNode: {

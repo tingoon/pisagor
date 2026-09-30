@@ -1,5 +1,6 @@
-import { Button } from "../../../../../src/components/button";
-import { ButtonGroup } from "../../../../../src/components/button-group/index";
+/** @jsxImportSource solid-js */
+import { Button } from "@pisagor/solid/button";
+import { ButtonGroup } from "@pisagor/solid/button-group";
 
 export function Default() {
   return (

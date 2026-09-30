@@ -1,7 +1,9 @@
+/** @jsxImportSource solid-js */
+
+import { Button } from "@pisagor/solid/button";
+import { Presence } from "@pisagor/solid/presence";
 import { cn } from "@pisagor/utils";
 import { createSignal } from "solid-js";
-import { Button } from "../../../../../src/components/button";
-import { Presence } from "../../../../../src/components/presence/index";
 
 export function Default() {
   const [present, setPresent] = createSignal(false);

@@ -1,4 +1,5 @@
-import { Format } from "../../../../../src/components/format/index";
+/** @jsxImportSource solid-js */
+import { Format } from "@pisagor/solid/format";
 
 export function Default() {
   return (

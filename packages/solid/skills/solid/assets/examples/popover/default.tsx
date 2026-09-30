@@ -1,7 +1,8 @@
-import { Button } from "../../../../../src/components/button";
-import { Field } from "../../../../../src/components/field";
-import { Input } from "../../../../../src/components/input";
-import { Popover } from "../../../../../src/components/popover/index";
+/** @jsxImportSource solid-js */
+import { Button } from "@pisagor/solid/button";
+import { Field } from "@pisagor/solid/field";
+import { Input } from "@pisagor/solid/input";
+import { Popover } from "@pisagor/solid/popover";
 
 export function Default() {
   return (

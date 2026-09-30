@@ -1,5 +1,6 @@
-import { ActionBar } from "../../../../../src/components/action-bar/index";
-import { Button } from "../../../../../src/components/button";
+/** @jsxImportSource solid-js */
+import { ActionBar } from "@pisagor/solid/action-bar";
+import { Button } from "@pisagor/solid/button";
 
 export function Default() {
   return (

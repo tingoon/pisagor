@@ -1,4 +1,5 @@
-import { Menu } from "../../../../../src/components/menu/index";
+/** @jsxImportSource solid-js */
+import { Menu } from "@pisagor/solid/menu";
 
 export function Default() {
   return (

@@ -1,4 +1,5 @@
-import { Tabs } from "../../../../../src/components/tabs/index";
+/** @jsxImportSource solid-js */
+import { Tabs } from "@pisagor/solid/tabs";
 import { profileTabs } from "./helpers";
 
 export function Default() {

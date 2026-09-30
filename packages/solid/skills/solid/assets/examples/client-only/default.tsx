@@ -1,4 +1,5 @@
-import { ClientOnly } from "../../../../../src/components/client-only/index";
+/** @jsxImportSource solid-js */
+import { ClientOnly } from "@pisagor/solid/client-only";
 
 export function Default() {
   return (

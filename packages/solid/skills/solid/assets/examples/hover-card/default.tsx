@@ -1,6 +1,7 @@
-import { Avatar } from "../../../../../src/components/avatar";
-import { Button } from "../../../../../src/components/button";
-import { HoverCard } from "../../../../../src/components/hover-card/index";
+/** @jsxImportSource solid-js */
+import { Avatar } from "@pisagor/solid/avatar";
+import { Button } from "@pisagor/solid/button";
+import { HoverCard } from "@pisagor/solid/hover-card";
 
 export function Default() {
   return (

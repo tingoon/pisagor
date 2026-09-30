@@ -1,4 +1,5 @@
-import { CircularSlider } from "../../../../../src/components/circular-slider/index";
+/** @jsxImportSource solid-js */
+import { CircularSlider } from "@pisagor/solid/circular-slider";
 
 export function Default() {
   return <CircularSlider defaultValue={45} />;

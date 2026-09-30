@@ -1,5 +1,6 @@
-import { Button } from "../../../../../src/components/button";
-import { Toaster, toast } from "../../../../../src/components/toast/index";
+/** @jsxImportSource solid-js */
+import { Button } from "@pisagor/solid/button";
+import { Toaster, toast } from "@pisagor/solid/toast";
 
 export function Default() {
   return (

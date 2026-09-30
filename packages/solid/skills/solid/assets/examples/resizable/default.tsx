@@ -1,5 +1,7 @@
+/** @jsxImportSource solid-js */
+
+import { Resizable } from "@pisagor/solid/resizable";
 import { cn } from "@pisagor/utils";
-import { Resizable } from "../../../../../src/components/resizable/index";
 
 export function Default() {
   return (

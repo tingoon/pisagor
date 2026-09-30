@@ -1,4 +1,5 @@
-import { DataList } from "../../../../../src/components/data-list/index";
+/** @jsxImportSource solid-js */
+import { DataList } from "@pisagor/solid/data-list";
 
 export function Default() {
   return (

@@ -1,4 +1,5 @@
-import { Calendar } from "../../../../../src/components/calendar/index";
+/** @jsxImportSource solid-js */
+import { Calendar } from "@pisagor/solid/calendar";
 
 export function Default() {
   return (

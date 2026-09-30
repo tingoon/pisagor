@@ -1,4 +1,5 @@
-import { Spinner } from "../../../../../src/components/spinner/index";
+/** @jsxImportSource solid-js */
+import { Spinner } from "@pisagor/solid/spinner";
 
 export function Default() {
   return <Spinner />;

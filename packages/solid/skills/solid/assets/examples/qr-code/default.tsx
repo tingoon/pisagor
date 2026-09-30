@@ -1,4 +1,5 @@
-import { QrCode } from "../../../../../src/components/qr-code/index";
+/** @jsxImportSource solid-js */
+import { QrCode } from "@pisagor/solid/qr-code";
 
 export function Default() {
   return <QrCode value="https://pisagor.dev" />;

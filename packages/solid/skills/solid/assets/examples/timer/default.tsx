@@ -1,4 +1,5 @@
-import { Timer } from "../../../../../src/components/timer/index";
+/** @jsxImportSource solid-js */
+import { Timer } from "@pisagor/solid/timer";
 
 export function Default() {
   return (

@@ -1,5 +1,6 @@
-import { Field } from "../../../../../src/components/field";
-import { Switch } from "../../../../../src/components/switch/index";
+/** @jsxImportSource solid-js */
+import { Field } from "@pisagor/solid/field";
+import { Switch } from "@pisagor/solid/switch";
 
 export function Default() {
   return (

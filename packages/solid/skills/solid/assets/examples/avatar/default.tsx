@@ -1,4 +1,5 @@
-import { Avatar } from "../../../../../src/components/avatar/index";
+/** @jsxImportSource solid-js */
+import { Avatar } from "@pisagor/solid/avatar";
 
 export function Default() {
   return (

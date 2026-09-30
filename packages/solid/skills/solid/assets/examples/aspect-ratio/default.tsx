@@ -1,4 +1,5 @@
-import { AspectRatio } from "../../../../../src/components/aspect-ratio/index";
+/** @jsxImportSource solid-js */
+import { AspectRatio } from "@pisagor/solid/aspect-ratio";
 
 export function Default() {
   return <AspectRatio />;

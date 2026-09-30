@@ -1,4 +1,5 @@
-import { Status } from "../../../../../src/components/status/index";
+/** @jsxImportSource solid-js */
+import { Status } from "@pisagor/solid/status";
 
 export function Default() {
   return <Status />;

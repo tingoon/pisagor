@@ -1,4 +1,5 @@
-import { Listbox } from "../../../../../src/components/listbox/index";
+/** @jsxImportSource solid-js */
+import { Listbox } from "@pisagor/solid/listbox";
 
 export function Default() {
   return (

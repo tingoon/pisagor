@@ -1,4 +1,5 @@
-import { SegmentGroup } from "../../../../../src/components/segment-group/index";
+/** @jsxImportSource solid-js */
+import { SegmentGroup } from "@pisagor/solid/segment-group";
 
 export function Default() {
   return (

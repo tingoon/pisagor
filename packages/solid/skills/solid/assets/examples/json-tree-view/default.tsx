@@ -1,4 +1,5 @@
-import { JsonTreeView } from "../../../../../src/components/json-tree-view/index";
+/** @jsxImportSource solid-js */
+import { JsonTreeView } from "@pisagor/solid/json-tree-view";
 
 export function Default() {
   return (

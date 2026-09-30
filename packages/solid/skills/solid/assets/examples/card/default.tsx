@@ -1,4 +1,5 @@
-import { Card } from "../../../../../src/components/card/index";
+/** @jsxImportSource solid-js */
+import { Card } from "@pisagor/solid/card";
 
 export function Default() {
   return (

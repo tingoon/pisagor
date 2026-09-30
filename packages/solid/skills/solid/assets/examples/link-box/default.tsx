@@ -1,4 +1,5 @@
-import { LinkBox } from "../../../../../src/components/link-box/index";
+/** @jsxImportSource solid-js */
+import { LinkBox } from "@pisagor/solid/link-box";
 
 export function Default() {
   return (

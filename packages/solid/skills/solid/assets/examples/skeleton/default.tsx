@@ -1,4 +1,5 @@
-import { Skeleton } from "../../../../../src/components/skeleton/index";
+/** @jsxImportSource solid-js */
+import { Skeleton } from "@pisagor/solid/skeleton";
 
 export function Default() {
   return (

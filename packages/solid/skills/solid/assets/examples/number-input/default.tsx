@@ -1,4 +1,5 @@
-import { NumberInput } from "../../../../../src/components/number-input/index";
+/** @jsxImportSource solid-js */
+import { NumberInput } from "@pisagor/solid/number-input";
 
 export function Default() {
   return (

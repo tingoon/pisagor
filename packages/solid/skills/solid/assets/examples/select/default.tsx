@@ -1,4 +1,5 @@
-import { Select } from "../../../../../src/components/select/index";
+/** @jsxImportSource solid-js */
+import { Select } from "@pisagor/solid/select";
 
 export function Default() {
   return (

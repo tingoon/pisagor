@@ -1,5 +1,6 @@
-import { Button } from "../../../../../src/components/button";
-import { FloatingPanel } from "../../../../../src/components/floating-panel/index";
+/** @jsxImportSource solid-js */
+import { Button } from "@pisagor/solid/button";
+import { FloatingPanel } from "@pisagor/solid/floating-panel";
 
 export function Default() {
   return (

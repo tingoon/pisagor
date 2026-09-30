@@ -1,5 +1,7 @@
+/** @jsxImportSource solid-js */
+
+import { CircularProgress } from "@pisagor/solid/circular-progress";
 import { createSignal, onCleanup, onMount } from "solid-js";
-import { CircularProgress } from "../../../../../src/components/circular-progress/index";
 
 export function Default() {
   const [progress, setProgress] = createSignal(24);

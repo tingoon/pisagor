@@ -1,5 +1,6 @@
-import { Button } from "../../../../../src/components/button";
-import { DropdownMenu } from "../../../../../src/components/dropdown-menu/index";
+/** @jsxImportSource solid-js */
+import { Button } from "@pisagor/solid/button";
+import { DropdownMenu } from "@pisagor/solid/dropdown-menu";
 
 export function Default() {
   return (

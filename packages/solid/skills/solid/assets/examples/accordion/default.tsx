@@ -1,4 +1,5 @@
-import { Accordion } from "../../../../../src/components/accordion/index";
+/** @jsxImportSource solid-js */
+import { Accordion } from "@pisagor/solid/accordion";
 import { faqItems } from "./helpers";
 
 export function Default() {

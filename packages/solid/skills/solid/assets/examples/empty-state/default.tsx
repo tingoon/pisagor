@@ -1,5 +1,6 @@
-import { Button } from "../../../../../src/components/button";
-import { EmptyState } from "../../../../../src/components/empty-state/index";
+/** @jsxImportSource solid-js */
+import { Button } from "@pisagor/solid/button";
+import { EmptyState } from "@pisagor/solid/empty-state";
 
 export function Default() {
   return (

@@ -1,7 +1,8 @@
-import { Badge } from "../../../../../src/components/badge";
-import { Button } from "../../../../../src/components/button";
-import { Card } from "../../../../../src/components/card";
-import { Collapsible } from "../../../../../src/components/collapsible/index";
+/** @jsxImportSource solid-js */
+import { Badge } from "@pisagor/solid/badge";
+import { Button } from "@pisagor/solid/button";
+import { Card } from "@pisagor/solid/card";
+import { Collapsible } from "@pisagor/solid/collapsible";
 
 export function Default() {
   return (

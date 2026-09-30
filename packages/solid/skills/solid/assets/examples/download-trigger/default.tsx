@@ -1,5 +1,6 @@
-import { Button } from "../../../../../src/components/button";
-import { DownloadTrigger } from "../../../../../src/components/download-trigger/index";
+/** @jsxImportSource solid-js */
+import { Button } from "@pisagor/solid/button";
+import { DownloadTrigger } from "@pisagor/solid/download-trigger";
 
 export function Default() {
   return (

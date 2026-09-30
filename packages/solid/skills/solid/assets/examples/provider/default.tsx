@@ -1,4 +1,5 @@
-import { Provider } from "../../../../../src/components/provider/index";
+/** @jsxImportSource solid-js */
+import { Provider } from "@pisagor/solid/provider";
 
 export function Default() {
   return (

@@ -1,4 +1,5 @@
-import { Surface } from "../../../../../src/components/surface/index";
+/** @jsxImportSource solid-js */
+import { Surface } from "@pisagor/solid/surface";
 
 export function Default() {
   return (

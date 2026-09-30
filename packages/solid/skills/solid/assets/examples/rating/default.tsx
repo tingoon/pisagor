@@ -1,4 +1,5 @@
-import { Rating } from "../../../../../src/components/rating/index";
+/** @jsxImportSource solid-js */
+import { Rating } from "@pisagor/solid/rating";
 
 export function Default() {
   return <Rating defaultValue={3} />;

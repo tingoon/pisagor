@@ -1,5 +1,6 @@
-import { Announcement } from "../../../../../src/components/announcement/index";
-import { Badge } from "../../../../../src/components/badge";
+/** @jsxImportSource solid-js */
+import { Announcement } from "@pisagor/solid/announcement";
+import { Badge } from "@pisagor/solid/badge";
 
 export function Default() {
   return (

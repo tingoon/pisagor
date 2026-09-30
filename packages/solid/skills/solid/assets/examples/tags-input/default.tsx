@@ -1,4 +1,5 @@
-import { TagsInput } from "../../../../../src/components/tags-input/index";
+/** @jsxImportSource solid-js */
+import { TagsInput } from "@pisagor/solid/tags-input";
 
 export function Default() {
   return (

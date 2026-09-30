@@ -1,4 +1,5 @@
-import { FileInput } from "../../../../../src/components/file-input/index";
+/** @jsxImportSource solid-js */
+import { FileInput } from "@pisagor/solid/file-input";
 
 export function Default() {
   return <FileInput />;

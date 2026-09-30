@@ -1,5 +1,6 @@
-import { Button } from "../../../../../src/components/button";
-import { Navbar } from "../../../../../src/components/navbar/index";
+/** @jsxImportSource solid-js */
+import { Button } from "@pisagor/solid/button";
+import { Navbar } from "@pisagor/solid/navbar";
 
 export function Default() {
   return (
