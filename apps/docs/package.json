@@ -26,7 +26,7 @@
     "vue": "catalog:",
     "yaml": "^2.9.1"
   },
-  "description": "Pisagor documentation site (Astro + React/Vue/Solid/Svelte live demos).",
+  "description": "Pisagor documentation site — per-framework URL trees with live demos.",
   "devDependencies": {
     "@tailwindcss/vite": "catalog:",
     "@types/react": "catalog:",
