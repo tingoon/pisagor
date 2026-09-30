@@ -8,7 +8,27 @@ const headings = [
   { depth: 2, slug: "installation", text: "Installation" },
 ];
 
-const usage = `import { Accordion } from "@pisagor/solid/accordion";\n\nexport function Example() {\n  return <div>See @pisagor/solid/accordion/examples</div>;\n}`;
+const usage = `import { Accordion } from "@pisagor/solid/accordion";
+
+export function Example() {
+  return (
+    <Accordion
+      defaultValue={["item-1"]}
+      items={[
+        {
+          content: "Details about the product.",
+          title: "Product information",
+          value: "item-1",
+        },
+        {
+          content: "Shipping and delivery options.",
+          title: "Shipping details",
+          value: "item-2",
+        },
+      ]}
+    />
+  );
+}`;
 ---
 
 <DocsLayout

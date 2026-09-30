@@ -2,17 +2,19 @@
 import ComponentHeader from "#/components/docs/component-header.astro";
 import Installation from "#/components/docs/installation.astro";
 import DocsLayout from "#/layouts/docs-layout.astro";
+import { solidExampleUsage } from "#/lib/solid-example-usage";
+import defaultRaw from "#/solid/examples/rich-text-editor/default.tsx?raw";
 
 const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 2, slug: "installation", text: "Installation" },
 ];
 
-const usage = `import { RichTextEditor } from "@pisagor/solid/rich-text-editor";
-
-export function Example() {
-  return <div>See @pisagor/solid/rich-text-editor/examples</div>;
-}`;
+const usage = solidExampleUsage(
+  "RichTextEditor",
+  "rich-text-editor",
+  defaultRaw,
+);
 ---
 
 <DocsLayout

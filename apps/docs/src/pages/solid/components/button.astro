@@ -4,6 +4,8 @@ import Installation from "#/components/docs/installation.astro";
 import PropsTable from "#/components/docs/props-table.astro";
 import DocsLayout from "#/layouts/docs-layout.astro";
 import { buttonProps } from "#/lib/props/button";
+import { solidExampleUsage } from "#/lib/solid-example-usage";
+import defaultRaw from "#/solid/examples/button/default.tsx?raw";
 
 const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
@@ -11,11 +13,7 @@ const headings = [
   { depth: 2, slug: "props", text: "Props" },
 ];
 
-const usage = `import { Button } from "@pisagor/solid/button";
-
-export function Example() {
-  return <Button>Continue</Button>;
-}`;
+const usage = solidExampleUsage("Button", "button", defaultRaw);
 ---
 
 <DocsLayout

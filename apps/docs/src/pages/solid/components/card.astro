@@ -2,17 +2,15 @@
 import ComponentHeader from "#/components/docs/component-header.astro";
 import Installation from "#/components/docs/installation.astro";
 import DocsLayout from "#/layouts/docs-layout.astro";
+import { solidExampleUsage } from "#/lib/solid-example-usage";
+import defaultRaw from "#/solid/examples/card/default.tsx?raw";
 
 const headings = [
   { depth: 2, slug: "usage", text: "Usage" },
   { depth: 2, slug: "installation", text: "Installation" },
 ];
 
-const usage = `import { Card } from "@pisagor/solid/card";
-
-export function Example() {
-  return <div>See examples in @pisagor/solid/card/examples</div>;
-}`;
+const usage = solidExampleUsage("Card", "card", defaultRaw);
 ---
 
 <DocsLayout
