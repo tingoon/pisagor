@@ -75,7 +75,8 @@ function SignaturePadControl(
       class={cn(
         formControlZoneRecipe({ surfaceVariant, variant }),
         slots.control({
-          class: cn(variant === "primary" && "shadow-xs/5", local.class),
+          class: local.class,
+          variant,
         }),
       )}
       data-invalid={local.invalid || undefined}

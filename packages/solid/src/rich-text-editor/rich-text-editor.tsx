@@ -155,7 +155,6 @@ export function RichTextEditorRoot(
         class={cn(
           formControlShellRecipe({ surfaceVariant, variant: variant() }),
           slots().base({ class: local.class }),
-          local.disabled && "pointer-events-none opacity-64",
         )}
         data-disabled={local.disabled ? "true" : undefined}
         data-invalid={local.invalid ? "true" : undefined}

@@ -332,7 +332,10 @@ export const SortableItem = defineComponent({
         {
           ...attrs,
           ...itemProps,
-          class: itemSlots.base({ class: cn(props.class, attrs.class) }),
+          class: itemSlots.base({
+            class: cn(props.class, attrs.class),
+            disabled: sortable.disabled,
+          }),
           "data-part": "item",
           "data-scope": "sortable",
           role: "listitem",
@@ -380,11 +383,8 @@ export const SortableHandle = defineComponent({
             props.ariaLabel ??
             "Drag to reorder",
           class: itemContext.slots.handle({
-            class: cn(
-              sortable.disabled && "pointer-events-none opacity-50",
-              props.class,
-              attrs.class,
-            ),
+            class: cn(props.class, attrs.class),
+            disabled: sortable.disabled,
           }),
           "data-part": "handle",
           "data-scope": "sortable",

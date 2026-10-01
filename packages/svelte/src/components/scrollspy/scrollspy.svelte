@@ -1,4 +1,5 @@
 <script lang="ts">
+import { scrollspyRecipe } from "@pisagor/recipes/scrollspy";
 import { cn } from "@pisagor/utils";
 import { onMount } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
@@ -10,6 +11,7 @@ type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & {
   history?: boolean;
   offset?: number;
   onUpdate?: (id: string) => void;
+  recipe?: typeof scrollspyRecipe;
   smooth?: boolean;
   /** Bindable scroll target element (or document). */
   target?: ScrollTarget;
@@ -18,6 +20,7 @@ type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & {
 let {
   history = true,
   offset = 0,
+  recipe = scrollspyRecipe,
   smooth = true,
   target = null,
   onUpdate,
@@ -140,7 +143,7 @@ onMount(() => {
 
 <nav
   {...rest}
-  class={cn(className)}
+  class={recipe({ class: cn(className) })}
   data-part="root"
   data-scope="scrollspy"
   onclick={onClick}

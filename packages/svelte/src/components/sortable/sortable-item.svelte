@@ -1,7 +1,6 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
 import { sortableItemRecipe } from "@pisagor/recipes/sortable";
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setSortableItemContext, useSortable } from "./sortable.context";
 
@@ -41,7 +40,7 @@ setSortableItemContext({
   as="li"
   {...rest}
   {...itemProps}
-  class={slots.base({ class: cn(className) })}
+  class={slots.base({ class: className, disabled: sortable.disabled })}
   data-part="item"
   data-scope="sortable"
 >

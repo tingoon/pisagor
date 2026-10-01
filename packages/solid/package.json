@@ -8,6 +8,7 @@
     "@pisagor/recipes": "workspace:*",
     "@pisagor/tokens": "workspace:*",
     "@pisagor/utils": "workspace:*",
+    "@squidlab/phosphor-solid": "^1.1.2",
     "@tailwindcss/typography": "^0.5.20",
     "@tanstack/solid-table": "^9.2.4",
     "@tanstack/solid-virtual": "^3.13.40",
@@ -70,7 +71,9 @@
     "./format": "./src/components/format/index.ts",
     "./frame": "./src/components/frame/index.ts",
     "./highlight": "./src/components/highlight/index.ts",
+    "./hooks": "./src/hooks/index.ts",
     "./hover-card": "./src/components/hover-card/index.ts",
+    "./icons": "./src/icons/index.ts",
     "./image-cropper": "./src/components/image-cropper/index.ts",
     "./input": "./src/components/input/index.ts",
     "./input-group": "./src/components/input-group/index.ts",
@@ -131,6 +134,8 @@
     "./tooltip": "./src/components/tooltip/index.ts",
     "./tour": "./src/components/tour/index.ts",
     "./tree-view": "./src/components/tree-view/index.ts",
+    "./utils": "./src/utils/index.ts",
+    "./utils/*": "./src/utils/*.ts",
     "./visually-hidden": "./src/components/visually-hidden/index.ts"
   },
   "files": [
@@ -142,7 +147,7 @@
   "license": "MIT",
   "name": "@pisagor/solid",
   "peerDependencies": {
-    "solid-js": "^1.9.0",
+    "solid-js": "^1",
     "tailwindcss": "^4"
   },
   "repository": {
