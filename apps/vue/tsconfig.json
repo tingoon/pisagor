@@ -4,12 +4,6 @@
     "noUncheckedSideEffectImports": false,
     "paths": {
       "#/storybook/*": ["./.storybook/*"],
-      "#/vue-charts/examples": [
-        "../../packages/vue-charts/skills/vue-charts/assets/examples/index.ts"
-      ],
-      "#/vue-charts/examples/*": [
-        "../../packages/vue-charts/skills/vue-charts/assets/examples/*"
-      ],
       "#/vue-form/examples/*": [
         "../../packages/vue-form/skills/vue-form/assets/examples/*"
       ],

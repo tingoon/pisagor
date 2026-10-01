@@ -13,6 +13,12 @@ export default defineConfig({
       entry: [".storybook/**/*", "src/**/*"],
       ignoreDependencies: ["chromatic"],
     },
+    "apps/solid": {
+      entry: ["src/**/*"],
+    },
+    "apps/svelte": {
+      entry: ["src/**/*"],
+    },
     "apps/vue": {
       entry: [".storybook/**/*", "src/**/*"],
       ignoreDependencies: ["chromatic"],
@@ -29,12 +35,6 @@ export default defineConfig({
       ignoreIssues: {
         "src/**/*.stories.tsx": ["unresolved", "dependencies", "unlisted"],
         "src/internal/**": ["exports", "types"],
-      },
-    },
-    "packages/react-charts": {
-      entry: ["src/**/*", "skills/**/*"],
-      ignoreIssues: {
-        "src/**/*.stories.tsx": ["unresolved", "dependencies", "unlisted"],
       },
     },
     "packages/react-form": {
@@ -87,14 +87,14 @@ export default defineConfig({
       ignoreIssues: {
         "src/**/*.stories.ts": ["unresolved", "dependencies", "unlisted"],
         "src/components/**": ["exports", "types", "duplicates"],
+        "src/data-grid/**": ["exports", "types"],
+        "src/data-table/**": ["exports", "types"],
+        "src/hooks/**": ["exports", "types"],
+        "src/icons/**": ["exports", "types"],
         "src/internal/**": ["exports", "types", "duplicates"],
-      },
-    },
-    "packages/vue-charts": {
-      entry: ["src/**/*", "skills/**/*"],
-      ignoreIssues: {
-        "src/**/*.stories.ts": ["unresolved", "dependencies", "unlisted"],
-        "src/internal/**": ["exports", "types"],
+        "src/phone-input/**": ["exports", "types"],
+        "src/rich-text-editor/**": ["exports", "types"],
+        "src/utils/**": ["exports", "types"],
       },
     },
     "packages/vue-form": {

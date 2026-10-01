@@ -1,0 +1,23 @@
+import preview from "#/storybook/preview";
+import { PasswordStrength } from "./password-strength";
+
+const meta = preview.meta({
+  component: PasswordStrength,
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "Compose a password field with live strength feedback, a segmented progress bar, and a requirement checklist for password creation flows.",
+      },
+    },
+  },
+  title: "Blocks/Forms/Password Input",
+});
+
+export const Playground = meta.story({
+  render: () => ({
+    components: { PasswordStrength },
+    template: `<PasswordStrength />`,
+  }),
+  tags: ["autodocs"],
+});

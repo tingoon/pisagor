@@ -2,9 +2,9 @@
   "dependencies": {
     "@ark-ui/vue": "^5.39.2",
     "@phosphor-icons/vue": "^2.2.1",
+    "@pisagor/recipes": "workspace:*",
     "@pisagor/utils": "workspace:*",
     "@pisagor/vue": "workspace:*",
-    "@pisagor/vue-charts": "workspace:*",
     "@pisagor/vue-form": "workspace:*",
     "vue": "catalog:",
     "zod": "^4.6.5"

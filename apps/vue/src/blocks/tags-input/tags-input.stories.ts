@@ -1,0 +1,23 @@
+import preview from "#/storybook/preview";
+import { TagsWithCombobox } from "./tags-with-combobox";
+
+const meta = preview.meta({
+  component: TagsWithCombobox,
+  parameters: {
+    docs: {
+      description: {
+        component:
+          "Tags input paired with a combobox for searchable tag selection and custom value entry.",
+      },
+    },
+  },
+  title: "Blocks/Forms/Tags Input",
+});
+
+export const Playground = meta.story({
+  render: () => ({
+    components: { TagsWithCombobox },
+    template: `<TagsWithCombobox />`,
+  }),
+  tags: ["autodocs"],
+});
