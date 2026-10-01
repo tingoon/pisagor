@@ -1,6 +1,6 @@
 # Pisagor React packages
 
-Framework: **react** only (`@pisagor/react` components). Sibling UI skills: `packages/vue/skills/vue`, `packages/astro/skills/astro`. Forms, charts, recipes, tokens, and utils are separate skills (`packages/<name>/skills/<name>`), not part of this one.
+Framework: **react** only (`@pisagor/react` components). Sibling UI skills: `packages/vue/skills/vue`, `packages/astro/skills/astro`. Forms, recipes, tokens, and utils are separate skills (`packages/<name>/skills/<name>`), not part of this one.
 
 ## Install
 
@@ -10,7 +10,6 @@ bun add @pisagor/react
 bun add react react-dom tailwindcss
 # optional packages
 bun add @pisagor/react-form
-bun add @pisagor/react-charts
 ```
 
 `@pisagor/recipes`, `@pisagor/tokens`, and `@pisagor/utils` install transitively with `@pisagor/react`. Add them to the app only if you import those packages directly (some package managers require that).
@@ -24,7 +23,6 @@ bun add @pisagor/react-charts
 | Components | `import { Button } from "@pisagor/react"` |
 | Heavy (subpath only) | `import { DataGrid } from "@pisagor/react/data-grid"` |
 | Form fields | `import { TextField } from "@pisagor/react-form"` |
-| Charts | `import { Chart } from "@pisagor/react-charts"` |
 | Recipe | `import { buttonRecipe } from "@pisagor/recipes/button"` |
 | `cn()` | `import { cn } from "@pisagor/utils"` |
 

@@ -4,7 +4,7 @@ description: >-
   Pisagor Vue components (`@pisagor/vue` only). Use when implementing or debugging
   Vue overlays, collection controls, and layout chrome, or migrating Radix/shadcn
   examples onto `@pisagor/vue`. Ships inside the npm package for Intent. Prefer MCP
-  (`bunx @pisagor/mcp`) when available. Do not use for forms, charts, recipes,
+  (`bunx @pisagor/mcp`) when available. Do not use for forms, recipes,
   tokens, utils, or other frameworks.
 compatibility: >-
   Requires Tailwind CSS v4 and @ark-ui/vue.
@@ -21,7 +21,6 @@ Other packages have their own skills. Do not duplicate their docs here:
 - `@pisagor/utils` → `packages/utils/skills/utils`
 - `@pisagor/tokens` → `packages/tokens/skills/tokens`
 - `@pisagor/vue-form` → `packages/vue-form/skills/vue-form`
-- `@pisagor/vue-charts` → `packages/vue-charts/skills/vue-charts`
 
 **Recommended:** `bunx @pisagor/mcp`.
 

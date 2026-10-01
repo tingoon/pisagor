@@ -72,7 +72,6 @@ interface ScanTarget {
   framework: Framework;
   componentsRoot: string;
   extraDirs?: string[];
-  chartRoot?: boolean;
 }
 
 function listDirs(dir: string): string[] {
@@ -136,7 +135,6 @@ function toExportName(id: string): string {
 function resolveExampleDir(
   examplesRoot: string | null,
   componentName: string,
-  chartRoot?: boolean,
 ): string | null {
   if (!examplesRoot) {
     return null;
@@ -145,10 +143,6 @@ function resolveExampleDir(
   if (existsSync(nested) && statSync(nested).isDirectory()) {
     return nested;
   }
-  // Charts ship examples at assets/examples/* (no <component>/ folder).
-  if (chartRoot || componentName === "chart") {
-    return examplesRoot;
-  }
   return null;
 }
 
@@ -156,9 +150,8 @@ function loadExamples(
   examplesRoot: string | null,
   componentName: string,
   packageDir: string,
-  chartRoot?: boolean,
 ): CatalogExample[] {
-  const dir = resolveExampleDir(examplesRoot, componentName, chartRoot);
+  const dir = resolveExampleDir(examplesRoot, componentName);
   if (!dir) {
     return [];
   }
@@ -170,10 +163,6 @@ function loadExamples(
     }
     const ext = path.extname(file);
     if (!EXAMPLE_EXTENSIONS.has(ext)) {
-      continue;
-    }
-    // Flat chart root: only example files, not nested component dirs' indexes.
-    if (chartRoot && statSync(path.join(dir, file)).isDirectory()) {
       continue;
     }
 
@@ -201,12 +190,11 @@ function buildComponent(
   packageName: string,
   packageDir: string,
   examplesRoot: string | null,
-  chartRoot?: boolean,
 ): CatalogComponent {
   const sourcePaths = findSources(dir, name);
 
   return {
-    examples: loadExamples(examplesRoot, name, packageDir, chartRoot),
+    examples: loadExamples(examplesRoot, name, packageDir),
     name,
     package: packageName,
     sources: sourcePaths.map((file) => ({
@@ -247,26 +235,6 @@ function buildComponentsCatalog(target: ScanTarget): ComponentsCatalog {
     );
   }
 
-  if (target.chartRoot) {
-    const chartDir = target.componentsRoot;
-    if (
-      existsSync(path.join(chartDir, "chart.tsx")) ||
-      existsSync(path.join(chartDir, "chart.ts"))
-    ) {
-      byName.set(
-        "chart",
-        buildComponent(
-          chartDir,
-          "chart",
-          target.package,
-          target.packageDir,
-          examplesRoot,
-          true,
-        ),
-      );
-    }
-  }
-
   return {
     components: [...byName.values()].sort((a, b) =>
       a.name.localeCompare(b.name),
@@ -305,7 +273,6 @@ function frameworkTargets(
 ): ScanTarget[] {
   const pkg = framework;
   const base = path.join(workspaceRoot, `packages/${pkg}`);
-  const chartsDir = path.join(workspaceRoot, `packages/${pkg}-charts`);
   const formDir = path.join(workspaceRoot, `packages/${pkg}-form`);
 
   const targets: ScanTarget[] = [
@@ -327,17 +294,6 @@ function frameworkTargets(
       framework,
       package: `@pisagor/${pkg}-form`,
       packageDir: formDir,
-    });
-  }
-
-  const chartsSrc = path.join(chartsDir, "src");
-  if ((framework === "react" || framework === "vue") && existsSync(chartsSrc)) {
-    targets.push({
-      chartRoot: true,
-      componentsRoot: chartsSrc,
-      framework,
-      package: `@pisagor/${pkg}-charts`,
-      packageDir: chartsDir,
     });
   }
 

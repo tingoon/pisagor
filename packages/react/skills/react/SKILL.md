@@ -4,7 +4,7 @@ description: >-
   Pisagor React components (`@pisagor/react` only). Use when implementing or
   debugging React overlays, collection controls, layout chrome, or migrating
   Radix/shadcn markup onto `@pisagor/react` primitives. Prefer MCP
-  (`bunx @pisagor/mcp`) when available. Do not use for forms, charts, recipes,
+  (`bunx @pisagor/mcp`) when available. Do not use for forms, recipes,
   tokens, utils, or other frameworks.
 license: MIT
 compatibility: Requires Tailwind CSS v4 and @ark-ui/react.
@@ -23,7 +23,6 @@ Other packages have their own skills. Do not duplicate their docs here:
 - `@pisagor/utils` → `packages/utils/skills/utils`
 - `@pisagor/tokens` → `packages/tokens/skills/tokens`
 - `@pisagor/react-form` → `packages/react-form/skills/react-form`
-- `@pisagor/react-charts` → `packages/react-charts/skills/react-charts`
 
 **Recommended:** `bunx @pisagor/mcp`.
 

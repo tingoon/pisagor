@@ -1,6 +1,6 @@
 # Pisagor React Component Registry
 
-Index for `@pisagor/react`, `@pisagor/react-form`, `@pisagor/react-charts`.
+Index for `@pisagor/react`, `@pisagor/react-form`.
 
 Use this skill only for **react**. Sibling skills: `vue`, `astro`.
 
@@ -125,11 +125,6 @@ Use this skill only for **react**. Sibling skills: `vue`, `astro`.
 ## Form fields
 
 Labeled fields belong to `@pisagor/react-form`, not this skill. See `packages/react-form/skills/react-form`.
-
-
-## Charts
-
-Charts belong to `@pisagor/react-charts`, not this skill. See `packages/react-charts/skills/react-charts`.
 
 
 ## Utilities

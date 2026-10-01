@@ -23,7 +23,7 @@ How to build shared UI components in `packages/react` (`@pisagor/react`). Genera
 
 Folder name, main file, and component export name align: **kebab-case folder** → **`<name>.tsx`** → **PascalCase** component (e.g. `accordion/` → `accordion.tsx` → `Accordion`).
 
-**Light** components live under `src/components/<name>/` (root barrel + `./*`). **Heavy** modules live under `src/<name>/` with dedicated exports only — not on the root barrel: `data-grid`, `data-table`, `phone-input`, `rich-text-editor`. Charts: `@pisagor/react-charts`. Forms: `@pisagor/react-form`.
+**Light** components live under `src/components/<name>/` (root barrel + `./*`). **Heavy** modules live under `src/<name>/` with dedicated exports only — not on the root barrel: `data-grid`, `data-table`, `phone-input`, `rich-text-editor`. Forms: `@pisagor/react-form`.
 
 ```text
 <kebab-name>/

@@ -14,10 +14,8 @@ import type {
 const KNOWN_PACKAGES = [
   { framework: "react" as const, name: "@pisagor/react" },
   { framework: "react" as const, name: "@pisagor/react-form" },
-  { framework: "react" as const, name: "@pisagor/react-charts" },
   { framework: "vue" as const, name: "@pisagor/vue" },
   { framework: "vue" as const, name: "@pisagor/vue-form" },
-  { framework: "vue" as const, name: "@pisagor/vue-charts" },
   { framework: "astro" as const, name: "@pisagor/astro" },
   { framework: "solid" as const, name: "@pisagor/solid" },
   { framework: "solid" as const, name: "@pisagor/solid-form" },
@@ -38,13 +36,11 @@ Install what you need, then restart the MCP server:
   bun add @pisagor/react
   bun add react react-dom tailwindcss
   bun add @pisagor/react-form    # optional
-  bun add @pisagor/react-charts  # optional
 
   # Vue
   bun add @pisagor/vue
   bun add vue tailwindcss
   bun add @pisagor/vue-form      # optional
-  bun add @pisagor/vue-charts    # optional
 
   # Astro (recipes/tokens come transitively; utils is separate if you need cn())
   bun add @pisagor/astro
