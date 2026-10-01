@@ -6,7 +6,6 @@
     "@pisagor/recipes": "workspace:*"
   },
   "description": "Framework-agnostic component prop types (TSDoc) for Pisagor. Excludes native HTML attributes.",
-
   "exports": {
     ".": "./src/index.ts",
     "./accordion": "./src/accordion.ts",
@@ -79,6 +78,7 @@
     "./resizable": "./src/resizable.ts",
     "./rich-text-editor": "./src/rich-text-editor.ts",
     "./scroll-area": "./src/scroll-area.ts",
+    "./scrollspy": "./src/scrollspy.ts",
     "./segment-group": "./src/segment-group.ts",
     "./select": "./src/select.ts",
     "./separator": "./src/separator.ts",

@@ -88,6 +88,7 @@ export type { RatingProps } from "./rating";
 export type { ResizableEdgeHandleProps, ResizableProps } from "./resizable";
 export type { RichTextEditorProps } from "./rich-text-editor";
 export type { ScrollAreaProps } from "./scroll-area";
+export type { ScrollspyProps } from "./scrollspy";
 export type { SegmentGroupProps } from "./segment-group";
 export type { SelectProps } from "./select";
 export type { SeparatorProps } from "./separator";
