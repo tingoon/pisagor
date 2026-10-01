@@ -24,3 +24,52 @@ Live examples below match `assets/examples/input-group/`.
 ### Default
 
 :::example Default
+
+### Sizes
+
+:::example Sizes
+
+### Variants
+
+:::example Variants
+
+### With Textarea
+
+:::example WithTextarea
+
+### Disabled
+
+:::example Disabled
+
+### Invalid
+
+:::example Invalid
+
+### Align Block End
+
+:::example AlignBlockEnd
+
+### Align Block Start
+
+:::example AlignBlockStart
+
+### Align Inline End
+
+:::example AlignInlineEnd
+
+### Align Inline Start
+
+:::example AlignInlineStart
+
+### With Badge
+
+:::example WithBadge
+
+### With Keyboard Shortcut
+
+:::example WithKeyboardShortcut
+
+### With Spinner
+
+:::example WithSpinner
+

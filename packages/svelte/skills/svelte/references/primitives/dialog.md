@@ -26,3 +26,32 @@ Live examples below match `assets/examples/dialog/`.
 ### Default
 
 :::example Default
+
+### Custom Spacing
+
+:::example CustomSpacing
+
+### Initial Focus
+
+:::example InitialFocus
+
+### Nested
+
+:::example Nested
+
+### No Close Button
+
+:::example NoCloseButton
+
+### Non Modal
+
+:::example NonModal
+
+### Scroll Area
+
+:::example ScrollArea
+
+### Close Behavior
+
+:::example CloseBehavior
+

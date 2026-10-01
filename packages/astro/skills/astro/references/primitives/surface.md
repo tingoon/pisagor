@@ -21,10 +21,18 @@ Live examples below match `assets/examples/surface/`.
 
 ## Examples
 
+### Default
+
+:::example Default
+
 ### Nested
 
 :::example Nested
 
-### Default
+### Variants
 
-:::example Default
+:::example Variants
+
+### Padding
+
+:::example Padding

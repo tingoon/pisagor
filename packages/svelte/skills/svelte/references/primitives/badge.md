@@ -24,3 +24,28 @@ Live examples below match `assets/examples/badge/`.
 ### Default
 
 :::example Default
+
+### Sizes
+
+:::example Sizes
+
+### Variants
+
+:::example Variants
+
+### Custom Color
+
+:::example CustomColor
+
+### Pill
+
+:::example Pill
+
+### With Link
+
+:::example WithLink
+
+### With Spinner
+
+:::example WithSpinner
+

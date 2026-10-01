@@ -26,3 +26,4 @@ Live examples below match `assets/examples/sidebar/`.
 ### Default
 
 :::example Default
+

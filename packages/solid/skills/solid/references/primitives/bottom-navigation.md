@@ -26,3 +26,11 @@ Live examples below match `assets/examples/bottom-navigation/`.
 ### Default
 
 :::example Default
+
+### Icon Only
+
+:::example IconOnly
+
+### With Links
+
+:::example WithLinks

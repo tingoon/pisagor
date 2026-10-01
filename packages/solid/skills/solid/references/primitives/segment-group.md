@@ -23,6 +23,42 @@ Live examples below match `assets/examples/segment-group/`.
 
 ## Examples
 
+### Variants
+
+:::example Variants
+
+### Orientation Horizontal
+
+:::example OrientationHorizontal
+
+### Orientation Vertical
+
+:::example OrientationVertical
+
+### Disabled Item
+
+:::example DisabledItem
+
+### Custom Indicator
+
+:::example CustomIndicator
+
+### Indicator On Hover
+
+:::example IndicatorOnHover
+
+### Disabled
+
+:::example Disabled
+
+### Controlled
+
+:::example Controlled
+
+### Compound
+
+:::example Compound
+
 ### Default
 
 :::example Default

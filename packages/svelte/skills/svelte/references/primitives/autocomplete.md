@@ -21,6 +21,47 @@ Live examples below match `assets/examples/autocomplete/`.
 
 ## Examples
 
+### Sizes
+
+:::example Sizes
+
+### Variants
+
+:::example Variants
+
+### Disabled
+
+:::example Disabled
+
+### Invalid
+
+:::example Invalid
+
+### Group
+
+:::example Group
+
+### With Clear Button
+
+:::example WithClearButton
+
+### With Start Icon
+
+:::example WithStartIcon
+
+### With Trigger
+
+:::example WithTrigger
+
+### Controlled
+
+:::example Controlled
+
+### Compound
+
+:::example Compound
+
 ### Default
 
 :::example Default
+

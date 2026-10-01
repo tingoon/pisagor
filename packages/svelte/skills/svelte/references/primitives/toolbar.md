@@ -21,6 +21,15 @@ Live examples below match `assets/examples/toolbar/`.
 
 ## Examples
 
+### Wrapped Actions
+
+:::example WrappedActions
+
+### Compound
+
+:::example Compound
+
 ### Default
 
 :::example Default
+

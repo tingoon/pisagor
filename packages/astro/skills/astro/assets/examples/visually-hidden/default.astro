@@ -2,4 +2,7 @@
 import VisuallyHidden from "../../../../../src/components/visually-hidden/visually-hidden.astro";
 ---
 
-<VisuallyHidden />
+<button type="button">
+  <span aria-hidden>⚙</span>
+  <VisuallyHidden>Settings</VisuallyHidden>
+</button>

@@ -26,3 +26,24 @@ Live examples below match `assets/examples/drawer/`.
 ### Default
 
 :::example Default
+
+### Custom Spacing
+
+:::example CustomSpacing
+
+### Drawer Content Inner
+
+:::example DrawerContentInner
+
+### Inset
+
+:::example Inset
+
+### Snap Points
+
+:::example SnapPoints
+
+### Swipe Directions
+
+:::example SwipeDirections
+

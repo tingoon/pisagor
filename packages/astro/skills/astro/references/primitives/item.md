@@ -24,3 +24,7 @@ Live examples below match `assets/examples/item/`.
 ### Default
 
 :::example Default
+
+### Variants
+
+:::example Variants

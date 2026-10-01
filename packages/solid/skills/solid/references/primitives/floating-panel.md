@@ -23,6 +23,18 @@ Live examples below match `assets/examples/floating-panel/`.
 
 ## Examples
 
+### Custom Spacing
+
+:::example CustomSpacing
+
+### Controlled Position
+
+:::example ControlledPosition
+
+### Controlled Size
+
+:::example ControlledSize
+
 ### Default
 
 :::example Default

@@ -21,6 +21,30 @@ Live examples below match `assets/examples/toggle/`.
 
 ## Examples
 
+### Sizes
+
+:::example Sizes
+
+### Variants
+
+:::example Variants
+
+### Disabled
+
+:::example Disabled
+
+### Icon Group
+
+:::example IconGroup
+
+### With Icon
+
+:::example WithIcon
+
+### Controlled
+
+:::example Controlled
+
 ### Default
 
 :::example Default

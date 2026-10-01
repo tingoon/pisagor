@@ -21,10 +21,14 @@ Live examples below match `assets/examples/status/`.
 
 ## Examples
 
+### Default
+
+:::example Default
+
 ### Variants
 
 :::example Variants
 
-### Default
+### Sizes
 
-:::example Default
+:::example Sizes

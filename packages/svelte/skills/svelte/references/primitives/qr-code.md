@@ -23,6 +23,23 @@ Live examples below match `assets/examples/qr-code/`.
 
 ## Examples
 
+### Sizes
+
+:::example Sizes
+
+### Error Correction
+
+:::example ErrorCorrection
+
+### Overlay
+
+:::example Overlay
+
+### Download
+
+:::example Download
+
 ### Default
 
 :::example Default
+

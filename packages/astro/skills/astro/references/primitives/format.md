@@ -23,9 +23,17 @@ Live examples below match `assets/examples/format/`.
 
 :::example Default
 
+### Byte
+
+:::example Byte
+
 ### Number Compact
 
 :::example NumberCompact
+
+### Number Currency
+
+:::example NumberCurrency
 
 ### Relative Time
 

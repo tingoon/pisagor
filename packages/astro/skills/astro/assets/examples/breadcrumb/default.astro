@@ -2,4 +2,10 @@
 import Breadcrumb from "../../../../../src/components/breadcrumb/breadcrumb.astro";
 ---
 
-<Breadcrumb />
+<Breadcrumb
+  items={[
+  { href: "https://example.com/", label: "Home" },
+  { href: "https://example.com/", label: "Components" },
+  { isCurrentPage: true, label: "Breadcrumb" },
+]}
+/>

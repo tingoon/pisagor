@@ -24,3 +24,44 @@ Live examples below match `assets/examples/input-otp/`.
 ### Default
 
 :::example Default
+
+### Variants
+
+:::example Variants
+
+### Blur On Complete
+
+:::example BlurOnComplete
+
+### Custom Size
+
+:::example CustomSize
+
+### Four Digits
+
+:::example FourDigits
+
+### Mask
+
+:::example Mask
+
+### Separator
+
+:::example Separator
+
+### With Placeholder
+
+:::example WithPlaceholder
+
+### Disabled
+
+:::example Disabled
+
+### Invalid
+
+:::example Invalid
+
+### Controlled
+
+:::example Controlled
+

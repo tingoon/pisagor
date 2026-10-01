@@ -21,6 +21,27 @@ Live examples below match `assets/examples/data-list/`.
 
 ## Examples
 
+### Orientation Horizontal
+
+:::example OrientationHorizontal
+
+### Orientation Vertical
+
+:::example OrientationVertical
+
+### Separator
+
+:::example Separator
+
+### Info Tip
+
+:::example InfoTip
+
+### Compound
+
+:::example Compound
+
 ### Default
 
 :::example Default
+

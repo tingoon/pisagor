@@ -24,3 +24,11 @@ Live examples below match `assets/examples/frame/`.
 ### Default
 
 :::example Default
+
+### Separated Panels
+
+:::example SeparatedPanels
+
+### With Form Controls
+
+:::example WithFormControls

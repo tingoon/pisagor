@@ -1,0 +1,38 @@
+<script lang="ts">
+import { Button } from "@pisagor/svelte/button";
+import { Field } from "@pisagor/svelte/field";
+import { Input } from "@pisagor/svelte/input";
+import { Sheet } from "@pisagor/svelte/sheet";
+</script>
+
+<Sheet>
+  <Sheet.Trigger>
+    <Button variant="outline">Open</Button>
+  </Sheet.Trigger>
+  <Sheet.Content class="[--space:--spacing(4)] sm:[--space:--spacing(8)]">
+    <Sheet.Header>
+      <Sheet.Title>Edit user</Sheet.Title>
+      <Sheet.Description>Make changes to your account here. Click save when you're done.</Sheet.Description>
+    </Sheet.Header>
+    <Sheet.Body>
+      <Field.Group>
+        <Field>
+          <Field.Label>Name</Field.Label>
+          <Input value="Jane Doe" />
+        </Field>
+        <Field>
+          <Field.Label>Username</Field.Label>
+          <Input value="@jane.doe" />
+        </Field>
+      </Field.Group>
+    </Sheet.Body>
+    <Sheet.Footer>
+      <Sheet.CloseTrigger>
+        <Button variant="outline">Cancel</Button>
+      </Sheet.CloseTrigger>
+      <Sheet.CloseTrigger>
+        <Button>Save changes</Button>
+      </Sheet.CloseTrigger>
+    </Sheet.Footer>
+  </Sheet.Content>
+</Sheet>

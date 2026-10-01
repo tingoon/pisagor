@@ -21,6 +21,27 @@ Live examples below match `assets/examples/announcement/`.
 
 ## Examples
 
+### Variants
+
+:::example Variants
+
+### With Icon
+
+:::example WithIcon
+
+### With Link
+
+:::example WithLink
+
+### Without Badge
+
+:::example WithoutBadge
+
+### Compound
+
+:::example Compound
+
 ### Default
 
 :::example Default
+

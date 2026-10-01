@@ -21,6 +21,10 @@ Live examples below match `assets/examples/circular-progress/`.
 
 ## Examples
 
+### Default
+
+:::example Default
+
 ### With Value
 
 :::example WithValue
@@ -29,6 +33,6 @@ Live examples below match `assets/examples/circular-progress/`.
 
 :::example Indeterminate
 
-### Default
+### Sizes
 
-:::example Default
+:::example Sizes

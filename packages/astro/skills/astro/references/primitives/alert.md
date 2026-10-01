@@ -21,6 +21,10 @@ Live examples below match `assets/examples/alert/`.
 
 ## Examples
 
+### Default
+
+:::example Default
+
 ### Variants
 
 :::example Variants
@@ -29,6 +33,10 @@ Live examples below match `assets/examples/alert/`.
 
 :::example Compound
 
-### Default
+### With Icon
 
-:::example Default
+:::example WithIcon
+
+### Custom Color
+
+:::example CustomColor

@@ -24,3 +24,11 @@ Live examples below match `assets/examples/data-list/`.
 ### Default
 
 :::example Default
+
+### Orientation Horizontal
+
+:::example OrientationHorizontal
+
+### Orientation Vertical
+
+:::example OrientationVertical

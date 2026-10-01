@@ -24,3 +24,20 @@ Live examples below match `assets/examples/aspect-ratio/`.
 ### Default
 
 :::example Default
+
+### Portrait
+
+:::example Portrait
+
+### Responsive
+
+:::example Responsive
+
+### Square
+
+:::example Square
+
+### Video
+
+:::example Video
+

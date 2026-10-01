@@ -24,3 +24,12 @@ Live examples below match `assets/examples/link-box/`.
 ### Default
 
 :::example Default
+
+### Article
+
+:::example Article
+
+### With Link
+
+:::example WithLink
+

@@ -28,3 +28,19 @@ Live examples below match `assets/examples/aspect-ratio/`.
 ### Widescreen
 
 :::example Widescreen
+
+### Square
+
+:::example Square
+
+### Portrait
+
+:::example Portrait
+
+### Video
+
+:::example Video
+
+### Responsive
+
+:::example Responsive

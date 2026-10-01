@@ -12,7 +12,7 @@ metadata:
 
 # @pisagor/svelte
 
-`@pisagor/svelte` components only. Labeled fields live in `@pisagor/svelte-form`. There is no `svelte-charts` package.
+`@pisagor/svelte` components only. Labeled fields live in `@pisagor/svelte-form`.
 
 Other packages:
 
@@ -26,10 +26,18 @@ Other packages:
 ```
 skills/svelte/
   SKILL.md
+  references/          # rules, primitives/<name>.md
   assets/examples/<component>/
 ```
 
 Components: `src/components/<name>/` (heavy modules under `src/<name>/`).
+
+## Critical rules
+
+- Styling → [`references/rules/styling.md`](references/rules/styling.md) (`class`, gap, tokens, no overlay z-index)
+- Forms → [`references/rules/forms.md`](references/rules/forms.md) (prefer `@pisagor/svelte-form`; do not document field APIs here)
+- Composition → [`references/rules/composition.md`](references/rules/composition.md)
+- Migration → [`references/rules/migration.md`](references/rules/migration.md)
 
 ## Rules
 

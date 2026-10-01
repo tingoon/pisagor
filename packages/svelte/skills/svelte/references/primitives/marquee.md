@@ -21,6 +21,43 @@ Live examples below match `assets/examples/marquee/`.
 
 ## Examples
 
+### Orientation Horizontal
+
+:::example OrientationHorizontal
+
+### Orientation Vertical
+
+:::example OrientationVertical
+
+### Pause On Hover
+
+:::example PauseOnHover
+
+### Reverse
+
+:::example Reverse
+
+### Spacing
+
+:::example Spacing
+
+### Autofill
+
+:::example Autofill
+
+### Custom Speed
+
+:::example CustomSpeed
+
+### Fade
+
+:::example Fade
+
+### Compound
+
+:::example Compound
+
 ### Default
 
 :::example Default
+

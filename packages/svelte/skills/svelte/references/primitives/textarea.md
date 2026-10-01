@@ -21,6 +21,27 @@ Live examples below match `assets/examples/textarea/`.
 
 ## Examples
 
+### Variants
+
+:::example Variants
+
+### Autoresize
+
+:::example Autoresize
+
+### Disabled
+
+:::example Disabled
+
+### Invalid
+
+:::example Invalid
+
+### Controlled
+
+:::example Controlled
+
 ### Default
 
 :::example Default
+

@@ -23,6 +23,42 @@ Live examples below match `assets/examples/tree-view/`.
 
 ## Examples
 
+### Links
+
+:::example Links
+
+### Checkbox Tree
+
+:::example CheckboxTree
+
+### With Context Menu
+
+:::example WithContextMenu
+
+### Custom Icons Folder
+
+:::example CustomIconsFolder
+
+### Custom Icons Item
+
+:::example CustomIconsItem
+
+### Custom Icons
+
+:::example CustomIcons
+
+### Multiple Selection
+
+:::example MultipleSelection
+
+### Rename
+
+:::example Rename
+
+### Controlled
+
+:::example Controlled
+
 ### Default
 
 :::example Default

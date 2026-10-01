@@ -21,6 +21,27 @@ Live examples below match `assets/examples/progress/`.
 
 ## Examples
 
+### Orientation Horizontal
+
+:::example OrientationHorizontal
+
+### Orientation Vertical
+
+:::example OrientationVertical
+
+### With Label
+
+:::example WithLabel
+
+### Indeterminate
+
+:::example Indeterminate
+
+### Controlled
+
+:::example Controlled
+
 ### Default
 
 :::example Default
+

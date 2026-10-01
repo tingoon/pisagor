@@ -23,6 +23,23 @@ Live examples below match `assets/examples/pagination/`.
 
 ## Examples
 
+### Links
+
+:::example Links
+
+### Page Range
+
+:::example PageRange
+
+### Custom Composition
+
+:::example CustomComposition
+
+### Controlled
+
+:::example Controlled
+
 ### Default
 
 :::example Default
+

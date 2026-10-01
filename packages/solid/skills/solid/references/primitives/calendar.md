@@ -26,3 +26,51 @@ Live examples below match `assets/examples/calendar/`.
 ### Default
 
 :::example Default
+
+### Invalid
+
+:::example Invalid
+
+### Disabled
+
+:::example Disabled
+
+### Booked Dates
+
+:::example BookedDates
+
+### Custom Cell Size
+
+:::example CustomCellSize
+
+### Min Max
+
+:::example MinMax
+
+### Range
+
+:::example Range
+
+### Fixed Weeks
+
+:::example FixedWeeks
+
+### Month Year Selector
+
+:::example MonthYearSelector
+
+### Multiple Months
+
+:::example MultipleMonths
+
+### Presets
+
+:::example Presets
+
+### Select Today
+
+:::example SelectToday
+
+### Controlled
+
+:::example Controlled

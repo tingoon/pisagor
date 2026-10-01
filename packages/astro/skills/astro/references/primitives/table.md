@@ -24,3 +24,7 @@ Live examples below match `assets/examples/table/`.
 ### Default
 
 :::example Default
+
+### Variants
+
+:::example Variants

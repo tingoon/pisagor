@@ -24,3 +24,15 @@ Live examples below match `assets/examples/separator/`.
 ### Default
 
 :::example Default
+
+### List
+
+:::example List
+
+### Inline Navigation
+
+:::example InlineNavigation
+
+### Vertical
+
+:::example Vertical

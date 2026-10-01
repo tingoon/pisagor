@@ -40,3 +40,19 @@ Live examples below match `assets/examples/button/`.
 ### Loading
 
 :::example Loading
+
+### Pill
+
+:::example Pill
+
+### Icon
+
+:::example Icon
+
+### With Icon
+
+:::example WithIcon
+
+### No Click Effect
+
+:::example NoClickEffect

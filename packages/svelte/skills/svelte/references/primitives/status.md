@@ -21,6 +21,27 @@ Live examples below match `assets/examples/status/`.
 
 ## Examples
 
+### Variants
+
+:::example Variants
+
+### Custom Color
+
+:::example CustomColor
+
+### Custom Size
+
+:::example CustomSize
+
+### With Icon
+
+:::example WithIcon
+
+### Sizes
+
+:::example Sizes
+
 ### Default
 
 :::example Default
+

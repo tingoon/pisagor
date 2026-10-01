@@ -26,3 +26,31 @@ Live examples below match `assets/examples/toast/`.
 ### Default
 
 :::example Default
+
+### Variants
+
+:::example Variants
+
+### Duration
+
+:::example Duration
+
+### Closable
+
+:::example Closable
+
+### Dedupe
+
+:::example Dedupe
+
+### Action
+
+:::example Action
+
+### With Promise
+
+:::example WithPromise
+
+### Placements
+
+:::example Placements

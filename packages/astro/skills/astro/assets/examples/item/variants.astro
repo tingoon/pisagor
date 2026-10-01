@@ -1,0 +1,17 @@
+---
+import Item from "../../../../../src/components/item/item.astro";
+import ItemContent from "../../../../../src/components/item/item-content.astro";
+import ItemTitle from "../../../../../src/components/item/item-title.astro";
+---
+
+<div class="flex flex-col gap-2">
+  <Item variant="default">
+    <ItemContent><ItemTitle>Default</ItemTitle></ItemContent>
+  </Item>
+  <Item variant="outline">
+    <ItemContent><ItemTitle>Outline</ItemTitle></ItemContent>
+  </Item>
+  <Item variant="muted">
+    <ItemContent><ItemTitle>Muted</ItemTitle></ItemContent>
+  </Item>
+</div>

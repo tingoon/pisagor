@@ -19,3 +19,27 @@ import { RichTextEditor } from "@pisagor/solid/rich-text-editor";
 ```
 
 Style with `@pisagor/recipes/rich-text-editor` — no app-level `tv()`.
+
+Live examples below match `assets/examples/rich-text-editor/`.
+
+## Examples
+
+### Compound
+
+:::example Compound
+
+### Controlled
+
+:::example Controlled
+
+### Disabled
+
+:::example Disabled
+
+### Invalid
+
+:::example Invalid
+
+### Default
+
+:::example Default

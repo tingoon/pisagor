@@ -21,6 +21,30 @@ Live examples below match `assets/examples/checkbox/`.
 
 ## Examples
 
+### Variants
+
+:::example Variants
+
+### Disabled
+
+:::example Disabled
+
+### Indeterminate
+
+:::example Indeterminate
+
+### Invalid
+
+:::example Invalid
+
+### Checkbox Group
+
+:::example CheckboxGroup
+
+### Controlled
+
+:::example Controlled
+
 ### Default
 
 :::example Default

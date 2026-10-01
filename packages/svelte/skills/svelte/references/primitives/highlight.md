@@ -21,6 +21,23 @@ Live examples below match `assets/examples/highlight/`.
 
 ## Examples
 
+### Multiple
+
+:::example Multiple
+
+### Custom Style
+
+:::example CustomStyle
+
+### Search Query
+
+:::example SearchQuery
+
+### Squiggle
+
+:::example Squiggle
+
 ### Default
 
 :::example Default
+

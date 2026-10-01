@@ -1,0 +1,47 @@
+---
+import Table from "../../../../../src/components/table/table.astro";
+import TableBody from "../../../../../src/components/table/table-body.astro";
+import TableCell from "../../../../../src/components/table/table-cell.astro";
+import TableHead from "../../../../../src/components/table/table-head.astro";
+import TableHeader from "../../../../../src/components/table/table-header.astro";
+import TableRow from "../../../../../src/components/table/table-row.astro";
+---
+
+<div class="flex flex-col gap-6">
+  <Table variant="plain">
+    <TableHeader>
+      <TableRow>
+        <TableHead>Plain</TableHead>
+        <TableHead>Value</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell>Alpha</TableCell>
+        <TableCell>1</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell>Beta</TableCell>
+        <TableCell>2</TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+  <Table variant="striped">
+    <TableHeader>
+      <TableRow>
+        <TableHead>Striped</TableHead>
+        <TableHead>Value</TableHead>
+      </TableRow>
+    </TableHeader>
+    <TableBody>
+      <TableRow>
+        <TableCell>Alpha</TableCell>
+        <TableCell>1</TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell>Beta</TableCell>
+        <TableCell>2</TableCell>
+      </TableRow>
+    </TableBody>
+  </Table>
+</div>

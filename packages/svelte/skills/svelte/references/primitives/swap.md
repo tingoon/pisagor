@@ -21,6 +21,11 @@ Live examples below match `assets/examples/swap/`.
 
 ## Examples
 
+### Variants
+
+:::example Variants
+
 ### Default
 
 :::example Default
+

@@ -24,3 +24,35 @@ Live examples below match `assets/examples/app-shell/`.
 ### Default
 
 :::example Default
+
+### Banner
+
+:::example Banner
+
+### Navigation
+
+:::example Navigation
+
+### Inspectors
+
+:::example Inspectors
+
+### Panels
+
+:::example Panels
+
+### Rails
+
+:::example Rails
+
+### Header
+
+:::example Header
+
+### Main
+
+:::example Main
+
+### Content
+
+:::example Content

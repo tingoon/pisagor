@@ -21,6 +21,34 @@ Live examples below match `assets/examples/input/`.
 
 ## Examples
 
+### Sizes
+
+:::example Sizes
+
+### Variants
+
+:::example Variants
+
+### Clearable
+
+:::example Clearable
+
+### Disabled
+
+:::example Disabled
+
+### Invalid
+
+:::example Invalid
+
+### File
+
+:::example File
+
+### Controlled
+
+:::example Controlled
+
 ### Default
 
 :::example Default

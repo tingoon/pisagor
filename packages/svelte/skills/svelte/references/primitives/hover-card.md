@@ -26,3 +26,20 @@ Live examples below match `assets/examples/hover-card/`.
 ### Default
 
 :::example Default
+
+### Disabled
+
+:::example Disabled
+
+### Triggers Delays
+
+:::example TriggersDelays
+
+### Controlled
+
+:::example Controlled
+
+### Placements
+
+:::example Placements
+

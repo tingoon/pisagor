@@ -21,6 +21,15 @@ Live examples below match `assets/examples/empty-state/`.
 
 ## Examples
 
+### Compact
+
+:::example Compact
+
+### Compound
+
+:::example Compound
+
 ### Default
 
 :::example Default
+

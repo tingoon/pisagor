@@ -21,6 +21,19 @@ Live examples below match `assets/examples/stat/`.
 
 ## Examples
 
+### Variants
+
+:::example Variants
+
+### With Trend
+
+:::example WithTrend
+
+### Compound
+
+:::example Compound
+
 ### Default
 
 :::example Default
+

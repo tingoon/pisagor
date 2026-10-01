@@ -24,3 +24,31 @@ Live examples below match `assets/examples/file-input/`.
 ### Default
 
 :::example Default
+
+### Variants
+
+:::example Variants
+
+### Multiple
+
+:::example Multiple
+
+### Accept
+
+:::example Accept
+
+### Disabled
+
+:::example Disabled
+
+### Invalid
+
+:::example Invalid
+
+### On Files Change
+
+:::example OnFilesChange
+
+### Sizes
+
+:::example Sizes

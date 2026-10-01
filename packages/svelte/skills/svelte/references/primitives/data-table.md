@@ -16,3 +16,20 @@ import { DataTable } from "@pisagor/svelte/data-table";
 ```
 
 Style with `@pisagor/recipes/data-table` — no app-level `tv()`.
+
+Live examples below match `assets/examples/data-table/`.
+
+## Examples
+
+### Empty
+
+:::example Empty
+
+### Sorting
+
+:::example Sorting
+
+### Default
+
+:::example Default
+

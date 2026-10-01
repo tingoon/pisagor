@@ -24,3 +24,35 @@ Live examples below match `assets/examples/timer/`.
 ### Default
 
 :::example Default
+
+### Orientation Horizontal
+
+:::example OrientationHorizontal
+
+### Orientation Vertical
+
+:::example OrientationVertical
+
+### Countdown Date
+
+:::example CountdownDate
+
+### Countdown
+
+:::example Countdown
+
+### Custom Separator
+
+:::example CustomSeparator
+
+### Interval
+
+:::example Interval
+
+### Pomodoro
+
+:::example Pomodoro
+
+### Controlled
+
+:::example Controlled

@@ -21,6 +21,15 @@ Live examples below match `assets/examples/timeline/`.
 
 ## Examples
 
+### Horizontal
+
+:::example Horizontal
+
+### Compound
+
+:::example Compound
+
 ### Default
 
 :::example Default
+

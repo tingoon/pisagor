@@ -24,3 +24,11 @@ Live examples below match `assets/examples/card/`.
 ### Default
 
 :::example Default
+
+### Product
+
+:::example Product
+
+### Icon
+
+:::example Icon

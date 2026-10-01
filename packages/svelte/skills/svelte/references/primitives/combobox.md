@@ -21,6 +21,55 @@ Live examples below match `assets/examples/combobox/`.
 
 ## Examples
 
+### Sizes
+
+:::example Sizes
+
+### Variants
+
+:::example Variants
+
+### Autohighlight
+
+:::example Autohighlight
+
+### Multiple
+
+:::example Multiple
+
+### Disabled
+
+:::example Disabled
+
+### Invalid
+
+:::example Invalid
+
+### Group
+
+:::example Group
+
+### With Clear Button
+
+:::example WithClearButton
+
+### With Scroll
+
+:::example WithScroll
+
+### With Start Icon
+
+:::example WithStartIcon
+
+### Controlled
+
+:::example Controlled
+
+### Compound
+
+:::example Compound
+
 ### Default
 
 :::example Default
+

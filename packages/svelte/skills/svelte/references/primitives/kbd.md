@@ -21,6 +21,23 @@ Live examples below match `assets/examples/kbd/`.
 
 ## Examples
 
+### Variants
+
+:::example Variants
+
+### With Button
+
+:::example WithButton
+
+### Kbd Group
+
+:::example KbdGroup
+
+### With Tooltip
+
+:::example WithTooltip
+
 ### Default
 
 :::example Default
+

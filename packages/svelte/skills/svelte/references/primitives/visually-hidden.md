@@ -24,3 +24,4 @@ Live examples below match `assets/examples/visually-hidden/`.
 ### Default
 
 :::example Default
+

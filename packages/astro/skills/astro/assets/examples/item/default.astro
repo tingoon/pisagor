@@ -1,5 +1,13 @@
 ---
 import Item from "../../../../../src/components/item/item.astro";
+import ItemContent from "../../../../../src/components/item/item-content.astro";
+import ItemDescription from "../../../../../src/components/item/item-description.astro";
+import ItemTitle from "../../../../../src/components/item/item-title.astro";
 ---
 
-<Item />
+<Item>
+  <ItemContent>
+    <ItemTitle>Jane Doe</ItemTitle>
+    <ItemDescription>jane.doe@example.com</ItemDescription>
+  </ItemContent>
+</Item>

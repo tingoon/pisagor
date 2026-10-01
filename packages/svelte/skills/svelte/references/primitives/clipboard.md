@@ -23,6 +23,27 @@ Live examples below match `assets/examples/clipboard/`.
 
 ## Examples
 
+### Variants
+
+:::example Variants
+
+### Custom Timeout
+
+:::example CustomTimeout
+
+### Different Icon
+
+:::example DifferentIcon
+
+### With Label
+
+:::example WithLabel
+
+### Controlled
+
+:::example Controlled
+
 ### Default
 
 :::example Default
+

@@ -21,6 +21,34 @@ Live examples below match `assets/examples/image-cropper/`.
 
 ## Examples
 
+### Aspect Ratio
+
+:::example AspectRatio
+
+### Circle Crop
+
+:::example CircleCrop
+
+### Fixed Crop Area
+
+:::example FixedCropArea
+
+### Initial Crop
+
+:::example InitialCrop
+
+### Min Max Size
+
+:::example MinMaxSize
+
+### Zoom Limits
+
+:::example ZoomLimits
+
+### Controlled Zoom
+
+:::example ControlledZoom
+
 ### Default
 
 :::example Default

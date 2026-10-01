@@ -23,6 +23,27 @@ Live examples below match `assets/examples/command/`.
 
 ## Examples
 
+### Scrollable
+
+:::example Scrollable
+
+### Shortcuts
+
+:::example Shortcuts
+
+### With Dialog
+
+:::example WithDialog
+
+### Groups
+
+:::example Groups
+
+### With Footer
+
+:::example WithFooter
+
 ### Default
 
 :::example Default
+

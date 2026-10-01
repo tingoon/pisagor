@@ -24,3 +24,51 @@ Live examples below match `assets/examples/dropdown-menu/`.
 ### Default
 
 :::example Default
+
+### Shortcuts
+
+:::example Shortcuts
+
+### Checkboxes
+
+:::example Checkboxes
+
+### Destructive
+
+:::example Destructive
+
+### Group Label
+
+:::example GroupLabel
+
+### Icons
+
+:::example Icons
+
+### Link
+
+:::example Link
+
+### Nested
+
+:::example Nested
+
+### Quick Item
+
+:::example QuickItem
+
+### Radio Group
+
+:::example RadioGroup
+
+### With Scroll
+
+:::example WithScroll
+
+### With Separator
+
+:::example WithSeparator
+
+### Placements
+
+:::example Placements

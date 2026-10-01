@@ -19,6 +19,15 @@ Live examples below match `assets/examples/download-trigger/`.
 
 ## Examples
 
+### Download Svg
+
+:::example DownloadSvg
+
+### With Promise
+
+:::example WithPromise
+
+
 ### Default
 
 :::example Default

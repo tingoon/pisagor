@@ -12,7 +12,7 @@ metadata:
 
 # @pisagor/solid
 
-`@pisagor/solid` components only. Labeled fields live in `@pisagor/solid-form`. There is no `solid-charts` package.
+`@pisagor/solid` components only. Labeled fields live in `@pisagor/solid-form`.
 
 Other packages:
 
@@ -26,10 +26,18 @@ Other packages:
 ```
 skills/solid/
   SKILL.md
+  references/          # rules, primitives/<name>.md
   assets/examples/<component>/
 ```
 
 Components: `src/components/<name>/` (heavy modules under `src/<name>/`).
+
+## Critical rules
+
+- Styling → [`references/rules/styling.md`](references/rules/styling.md) (`class`, gap, tokens, no overlay z-index)
+- Forms → [`references/rules/forms.md`](references/rules/forms.md) (prefer `@pisagor/solid-form`; do not document field APIs here)
+- Composition → [`references/rules/composition.md`](references/rules/composition.md)
+- Migration → [`references/rules/migration.md`](references/rules/migration.md)
 
 ## Rules
 

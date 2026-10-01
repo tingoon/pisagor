@@ -21,6 +21,34 @@ Live examples below match `assets/examples/password-input/`.
 
 ## Examples
 
+### Sizes
+
+:::example Sizes
+
+### Disabled
+
+:::example Disabled
+
+### Invalid
+
+:::example Invalid
+
+### Autocomplete
+
+:::example Autocomplete
+
+### Auto Hide
+
+:::example AutoHide
+
+### Controlled Visibility
+
+:::example ControlledVisibility
+
+### Controlled
+
+:::example Controlled
+
 ### Default
 
 :::example Default

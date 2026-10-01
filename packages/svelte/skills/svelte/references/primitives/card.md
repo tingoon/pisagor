@@ -24,3 +24,16 @@ Live examples below match `assets/examples/card/`.
 ### Default
 
 :::example Default
+
+### Custom Spacing
+
+:::example CustomSpacing
+
+### Icon
+
+:::example Icon
+
+### Product
+
+:::example Product
+

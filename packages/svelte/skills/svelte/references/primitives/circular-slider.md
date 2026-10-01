@@ -21,6 +21,39 @@ Live examples below match `assets/examples/circular-slider/`.
 
 ## Examples
 
+### Sizes
+
+:::example Sizes
+
+### Step
+
+:::example Step
+
+### Thickness
+
+:::example Thickness
+
+### With Value
+
+:::example WithValue
+
+### Disabled
+
+:::example Disabled
+
+### Custom Markers
+
+:::example CustomMarkers
+
+### With Markers
+
+:::example WithMarkers
+
+### Controlled
+
+:::example Controlled
+
 ### Default
 
 :::example Default
+

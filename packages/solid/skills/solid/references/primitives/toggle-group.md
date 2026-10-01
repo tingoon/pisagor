@@ -21,6 +21,50 @@ Live examples below match `assets/examples/toggle-group/`.
 
 ## Examples
 
+### Sizes
+
+:::example Sizes
+
+### Variants
+
+:::example Variants
+
+### Horizontal
+
+:::example Horizontal
+
+### Vertical
+
+:::example Vertical
+
+### Spacing
+
+:::example Spacing
+
+### Disabled Item
+
+:::example DisabledItem
+
+### Font Weight
+
+:::example FontWeight
+
+### Disabled
+
+:::example Disabled
+
+### Single
+
+:::example Single
+
+### Controlled
+
+:::example Controlled
+
+### Compound
+
+:::example Compound
+
 ### Default
 
 :::example Default

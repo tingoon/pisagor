@@ -24,3 +24,12 @@ Live examples below match `assets/examples/skeleton/`.
 ### Default
 
 :::example Default
+
+### Skeleton Text
+
+:::example SkeletonText
+
+### In Card
+
+:::example InCard
+

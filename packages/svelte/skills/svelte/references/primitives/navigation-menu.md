@@ -24,3 +24,8 @@ Live examples below match `assets/examples/navigation-menu/`.
 ### Default
 
 :::example Default
+
+### Wrapping
+
+:::example Wrapping
+

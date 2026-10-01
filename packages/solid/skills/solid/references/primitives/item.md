@@ -24,3 +24,39 @@ Live examples below match `assets/examples/item/`.
 ### Default
 
 :::example Default
+
+### Variants
+
+:::example Variants
+
+### Icon
+
+:::example Icon
+
+### Custom Spacing
+
+:::example CustomSpacing
+
+### With Media
+
+:::example WithMedia
+
+### With Avatar
+
+:::example WithAvatar
+
+### Image
+
+:::example Image
+
+### Link
+
+:::example Link
+
+### Group
+
+:::example Group
+
+### Header
+
+:::example Header

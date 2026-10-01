@@ -21,6 +21,71 @@ Live examples below match `assets/examples/tags-input/`.
 
 ## Examples
 
+### Sizes
+
+:::example Sizes
+
+### Variants
+
+:::example Variants
+
+### Blur Behavior
+
+:::example BlurBehavior
+
+### Custom Delimiter
+
+:::example CustomDelimiter
+
+### Disable Editing
+
+:::example DisableEditing
+
+### Max Tags
+
+:::example MaxTags
+
+### Paste Behavior
+
+:::example PasteBehavior
+
+### Sanitize Value
+
+:::example SanitizeValue
+
+### Validation
+
+:::example Validation
+
+### Disabled
+
+:::example Disabled
+
+### Invalid
+
+:::example Invalid
+
+### With Combobox
+
+:::example WithCombobox
+
+
+### Max Length
+
+:::example MaxLength
+
+### Max With Overflow
+
+:::example MaxWithOverflow
+
+### Controlled Input Value
+
+:::example ControlledInputValue
+
+### Controlled
+
+:::example Controlled
+
 ### Default
 
 :::example Default

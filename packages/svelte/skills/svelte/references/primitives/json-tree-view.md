@@ -21,6 +21,19 @@ Live examples below match `assets/examples/json-tree-view/`.
 
 ## Examples
 
+### Data Types
+
+:::example DataTypes
+
+### Expand Depth
+
+:::example ExpandDepth
+
+### Map Set
+
+:::example MapSet
+
 ### Default
 
 :::example Default
+

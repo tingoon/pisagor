@@ -1,0 +1,33 @@
+<script lang="ts">
+import { Button } from "@pisagor/svelte";
+import { Popover } from "@pisagor/svelte/popover";
+</script>
+
+<div class="flex flex-wrap justify-center gap-2">
+      <Popover closeOnInteractOutside={false}>
+        <Popover.Trigger>
+            <Button variant="outline">
+              Open outside click
+            </Button>
+          </Popover.Trigger>
+        <Popover.Content showCloseButton>
+          <Popover.Header
+            description="Clicking outside does not close this popover. Press ESC to close."
+            title="Stays on outside click"
+          />
+        </Popover.Content>
+      </Popover>
+      <Popover closeOnEscape={false}>
+        <Popover.Trigger>
+            <Button variant="outline">
+              Open escape
+            </Button>
+          </Popover.Trigger>
+        <Popover.Content showCloseButton>
+          <Popover.Header
+            description="Pressing escape does not close this popover. Click outside to close."
+            title="Escape key unavailable"
+          />
+        </Popover.Content>
+      </Popover>
+    </div>

@@ -24,3 +24,32 @@ Live examples below match `assets/examples/resizable/`.
 ### Default
 
 :::example Default
+
+### Min Max
+
+:::example MinMax
+
+### Orientation Horizontal
+
+:::example OrientationHorizontal
+
+### Orientation Vertical
+
+:::example OrientationVertical
+
+### Handle
+
+:::example Handle
+
+### Edge Handle
+
+:::example EdgeHandle
+
+### Multiple Panels
+
+:::example MultiplePanels
+
+### Collapsible
+
+:::example Collapsible
+

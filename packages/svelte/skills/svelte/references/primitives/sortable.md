@@ -24,6 +24,19 @@ Live examples below match `assets/examples/sortable/`.
 
 ## Examples
 
+### Horizontal
+
+:::example Horizontal
+
+### Disabled
+
+:::example Disabled
+
+### Without Handle
+
+:::example WithoutHandle
+
 ### Default
 
 :::example Default
+

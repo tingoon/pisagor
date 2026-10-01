@@ -26,3 +26,32 @@ Live examples below match `assets/examples/sheet/`.
 ### Default
 
 :::example Default
+
+### Custom Spacing
+
+:::example CustomSpacing
+
+### Inset
+
+:::example Inset
+
+### No Close Button
+
+:::example NoCloseButton
+
+### Non Modal
+
+:::example NonModal
+
+### Scroll Area
+
+:::example ScrollArea
+
+### Sides
+
+:::example Sides
+
+### Close Behavior
+
+:::example CloseBehavior
+

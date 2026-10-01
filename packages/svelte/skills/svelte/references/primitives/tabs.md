@@ -23,6 +23,35 @@ Live examples below match `assets/examples/tabs/`.
 
 ## Examples
 
+### Variants
+
+:::example Variants
+
+### Orientation Horizontal
+
+:::example OrientationHorizontal
+
+### Orientation Vertical
+
+:::example OrientationVertical
+
+### Disabled
+
+:::example Disabled
+
+### With Icons
+
+:::example WithIcons
+
+### Controlled
+
+:::example Controlled
+
+### Compound
+
+:::example Compound
+
 ### Default
 
 :::example Default
+

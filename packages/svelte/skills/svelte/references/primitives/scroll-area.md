@@ -21,6 +21,23 @@ Live examples below match `assets/examples/scroll-area/`.
 
 ## Examples
 
+### Horizontal
+
+:::example Horizontal
+
+### Scroll Fade
+
+:::example ScrollFade
+
+### Both Directions
+
+:::example BothDirections
+
+### Nested
+
+:::example Nested
+
 ### Default
 
 :::example Default
+

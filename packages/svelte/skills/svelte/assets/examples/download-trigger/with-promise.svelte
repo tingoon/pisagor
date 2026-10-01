@@ -1,0 +1,25 @@
+<script lang="ts">
+import { Button } from "@pisagor/svelte";
+import { DownloadTrigger } from "@pisagor/svelte/download-trigger";
+import DownloadIcon from "phosphor-svelte/lib/DownloadIcon";
+
+const data = () =>
+  new Promise<Blob>((resolve) => {
+    setTimeout(() => {
+      resolve(
+        new Blob(['{"message": "Loaded asynchronously"}'], {
+          type: "application/json",
+        }),
+      );
+    }, 500);
+  });
+</script>
+
+<DownloadTrigger {data} fileName="data.json" mimeType="application/json">
+  {#snippet asChild(props)}
+    <Button {...props()} size="lg" variant="outline">
+      <DownloadIcon />
+      Download
+    </Button>
+  {/snippet}
+</DownloadTrigger>

@@ -19,6 +19,10 @@ Live examples below match `assets/examples/scrollspy/`.
 
 ## Examples
 
+### Horizontal
+
+:::example Horizontal
+
 ### Default
 
 :::example Default

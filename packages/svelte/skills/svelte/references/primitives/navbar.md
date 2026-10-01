@@ -26,3 +26,8 @@ Live examples below match `assets/examples/navbar/`.
 ### Default
 
 :::example Default
+
+### With Sidebar
+
+:::example WithSidebar
+

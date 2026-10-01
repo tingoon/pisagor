@@ -21,6 +21,18 @@ Live examples below match `assets/examples/tooltip/`.
 
 ## Examples
 
+### Disabled
+
+:::example Disabled
+
+### With Keyboard Shortcut
+
+:::example WithKeyboardShortcut
+
+### Placements
+
+:::example Placements
+
 ### Default
 
 :::example Default

@@ -22,3 +22,40 @@ Live examples below match `assets/examples/format/`.
 ### Default
 
 :::example Default
+
+### Byte Unit Display
+
+:::example ByteUnitDisplay
+
+### Byte Unit System
+
+:::example ByteUnitSystem
+
+### Byte
+
+:::example Byte
+
+### Number Compact
+
+:::example NumberCompact
+
+### Number Currency
+
+:::example NumberCurrency
+
+### Number Percent
+
+:::example NumberPercent
+
+### Number Story
+
+:::example NumberStory
+
+### Relative Time Short
+
+:::example RelativeTimeShort
+
+### Relative Time
+
+:::example RelativeTime
+

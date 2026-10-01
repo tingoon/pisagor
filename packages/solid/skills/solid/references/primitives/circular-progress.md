@@ -21,6 +21,26 @@ Live examples below match `assets/examples/circular-progress/`.
 
 ## Examples
 
+### Sizes
+
+:::example Sizes
+
+### Thickness
+
+:::example Thickness
+
+### With Value
+
+:::example WithValue
+
+### Indeterminate
+
+:::example Indeterminate
+
+### Controlled
+
+:::example Controlled
+
 ### Default
 
 :::example Default

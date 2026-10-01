@@ -24,6 +24,30 @@ Live examples below match `assets/examples/steps/`.
 
 ## Examples
 
+### Icon
+
+:::example Icon
+
+### Vertical
+
+:::example Vertical
+
+### Loading
+
+:::example Loading
+
+### Description
+
+:::example Description
+
+### Title
+
+:::example Title
+
+### Controlled
+
+:::example Controlled
+
 ### Default
 
 :::example Default

@@ -21,6 +21,30 @@ Live examples below match `assets/examples/avatar/`.
 
 ## Examples
 
+### Compound
+
+:::example Compound
+
+### Count
+
+:::example Count
+
 ### Default
 
 :::example Default
+
+### Fallbacks
+
+:::example Fallbacks
+
+### Shapes
+
+:::example Shapes
+
+### Sizes
+
+:::example Sizes
+
+### Group
+
+:::example Group

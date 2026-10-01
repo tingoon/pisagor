@@ -21,6 +21,11 @@ Live examples below match `assets/examples/spinner/`.
 
 ## Examples
 
+### Sizes
+
+:::example Sizes
+
 ### Default
 
 :::example Default
+

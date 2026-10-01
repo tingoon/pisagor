@@ -24,6 +24,14 @@ Live examples below match `assets/examples/file/`.
 
 ## Examples
 
+### With Actions
+
+:::example WithActions
+
+### Compound
+
+:::example Compound
+
 ### Default
 
 :::example Default

@@ -21,6 +21,27 @@ Live examples below match `assets/examples/switch/`.
 
 ## Examples
 
+### Sizes
+
+:::example Sizes
+
+### Variants
+
+:::example Variants
+
+### Disabled
+
+:::example Disabled
+
+### Invalid
+
+:::example Invalid
+
+### Controlled
+
+:::example Controlled
+
 ### Default
 
 :::example Default
+

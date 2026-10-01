@@ -24,3 +24,11 @@ Live examples below match `assets/examples/input-group/`.
 ### Default
 
 :::example Default
+
+### Sizes
+
+:::example Sizes
+
+### Variants
+
+:::example Variants

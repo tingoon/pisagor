@@ -21,6 +21,59 @@ Live examples below match `assets/examples/editable/`.
 
 ## Examples
 
+### Invalid
+
+:::example Invalid
+
+### Disabled
+
+:::example Disabled
+
+### Sizes
+
+:::example Sizes
+
+### Variants
+
+:::example Variants
+
+### Dblclick
+
+:::example Dblclick
+
+### Orientation Horizontal
+
+:::example OrientationHorizontal
+
+### Orientation Vertical
+
+:::example OrientationVertical
+
+### With Textarea
+
+:::example WithTextarea
+
+### Without Controls
+
+:::example WithoutControls
+
+### Activation Click
+
+:::example ActivationClick
+
+### Activation Focus
+
+:::example ActivationFocus
+
+### Activation None
+
+:::example ActivationNone
+
+### Controlled
+
+:::example Controlled
+
 ### Default
 
 :::example Default
+

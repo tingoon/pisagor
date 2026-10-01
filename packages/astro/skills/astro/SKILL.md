@@ -4,7 +4,7 @@ description: >-
   Pisagor Astro components (`@pisagor/astro` only — static subset). Use when
   implementing or debugging Astro layout and presentational UI. Ships inside the
   npm package for Intent. Prefer MCP (`bunx @pisagor/mcp`) when available.
-  Do not use for interactive forms, charts, or other UI stacks.
+  Do not use for interactive forms or other UI stacks.
 compatibility: >-
   Requires Tailwind CSS v4.
   For Astro apps consuming @pisagor/astro or this monorepo.
@@ -19,7 +19,7 @@ Other packages have their own skills. Do not duplicate their docs here:
 - `@pisagor/recipes` → `packages/recipes/skills/recipes`
 - `@pisagor/utils` → `packages/utils/skills/utils`
 - `@pisagor/tokens` → `packages/tokens/skills/tokens`
-- Forms and charts for other stacks live in their own packages — do not document them here.
+- Forms for other stacks live in their own packages — do not document them here.
 
 **Recommended:** `bunx @pisagor/mcp`.
 

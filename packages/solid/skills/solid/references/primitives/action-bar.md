@@ -26,3 +26,31 @@ Live examples below match `assets/examples/action-bar/`.
 ### Default
 
 :::example Default
+
+### Custom Spacing
+
+:::example CustomSpacing
+
+### Gutter
+
+:::example Gutter
+
+### Close Trigger
+
+:::example CloseTrigger
+
+### With Dialog
+
+:::example WithDialog
+
+### With Menu
+
+:::example WithMenu
+
+### Controlled
+
+:::example Controlled
+
+### Placements
+
+:::example Placements

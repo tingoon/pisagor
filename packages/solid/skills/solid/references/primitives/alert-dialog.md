@@ -24,3 +24,12 @@ Live examples below match `assets/examples/alert-dialog/`.
 ### Default
 
 :::example Default
+
+### Variants
+
+:::example Variants
+
+
+### Composition
+
+:::example Composition

@@ -27,3 +27,8 @@ Live examples below match `assets/examples/menu/`.
 ### Default
 
 :::example Default
+
+### With Groups
+
+:::example WithGroups
+

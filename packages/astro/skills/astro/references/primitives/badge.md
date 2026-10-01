@@ -36,3 +36,15 @@ Live examples below match `assets/examples/badge/`.
 ### Pill
 
 :::example Pill
+
+### Custom Color
+
+:::example CustomColor
+
+### With Spinner
+
+:::example WithSpinner
+
+### With Link
+
+:::example WithLink

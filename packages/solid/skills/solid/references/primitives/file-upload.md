@@ -26,3 +26,51 @@ Live examples below match `assets/examples/file-upload/`.
 ### Default
 
 :::example Default
+
+### Variants
+
+:::example Variants
+
+### Invalid
+
+:::example Invalid
+
+### Disabled
+
+:::example Disabled
+
+### Custom Spacing
+
+:::example CustomSpacing
+
+### Accepted File Types
+
+:::example AcceptedFileTypes
+
+### Clear Trigger
+
+:::example ClearTrigger
+
+### Custom Preview
+
+:::example CustomPreview
+
+### Directory Upload
+
+:::example DirectoryUpload
+
+### Dropzone
+
+:::example Dropzone
+
+### Media Capture
+
+:::example MediaCapture
+
+### Multiple Files
+
+:::example MultipleFiles
+
+### Trigger
+
+:::example Trigger

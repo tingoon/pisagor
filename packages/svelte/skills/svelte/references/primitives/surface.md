@@ -21,6 +21,23 @@ Live examples below match `assets/examples/surface/`.
 
 ## Examples
 
+### Variants
+
+:::example Variants
+
+### Padding
+
+:::example Padding
+
+### Nested
+
+:::example Nested
+
+### With Form Controls
+
+:::example WithFormControls
+
 ### Default
 
 :::example Default
+

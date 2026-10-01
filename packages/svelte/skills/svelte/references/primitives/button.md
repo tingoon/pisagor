@@ -24,3 +24,44 @@ Live examples below match `assets/examples/button/`.
 ### Default
 
 :::example Default
+
+### Sizes
+
+:::example Sizes
+
+### Variants
+
+:::example Variants
+
+### Custom Color
+
+:::example CustomColor
+
+### Pill
+
+:::example Pill
+
+### No Click Effect
+
+:::example NoClickEffect
+
+### Icon
+
+:::example Icon
+
+### As Child
+
+:::example AsChild
+
+### Disabled
+
+:::example Disabled
+
+### Loading
+
+:::example Loading
+
+### With Icon
+
+:::example WithIcon
+

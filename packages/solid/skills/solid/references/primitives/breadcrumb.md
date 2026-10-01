@@ -21,6 +21,26 @@ Live examples below match `assets/examples/breadcrumb/`.
 
 ## Examples
 
+### Collapsed
+
+:::example Collapsed
+
+### Custom Separator
+
+:::example CustomSeparator
+
+### With Link
+
+:::example WithLink
+
+### With Menu
+
+:::example WithMenu
+
+### Compound
+
+:::example Compound
+
 ### Default
 
 :::example Default

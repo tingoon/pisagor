@@ -21,6 +21,50 @@ Live examples below match `assets/examples/select/`.
 
 ## Examples
 
+### Sizes
+
+:::example Sizes
+
+### Variants
+
+:::example Variants
+
+### Empty
+
+:::example Empty
+
+### Grouping
+
+:::example Grouping
+
+### Max Selection
+
+:::example MaxSelection
+
+### Multiple
+
+:::example Multiple
+
+### Disabled
+
+:::example Disabled
+
+### Invalid
+
+:::example Invalid
+
+### With Scroll
+
+:::example WithScroll
+
+### Controlled
+
+:::example Controlled
+
+### Compound
+
+:::example Compound
+
 ### Default
 
 :::example Default

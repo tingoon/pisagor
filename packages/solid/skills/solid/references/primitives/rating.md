@@ -21,6 +21,46 @@ Live examples below match `assets/examples/rating/`.
 
 ## Examples
 
+### Custom Color
+
+:::example CustomColor
+
+### Count
+
+:::example Count
+
+### Custom Icon
+
+:::example CustomIcon
+
+### Custom Size
+
+:::example CustomSize
+
+### Half Star
+
+:::example HalfStar
+
+### Testimonial
+
+:::example Testimonial
+
+### Invalid
+
+:::example Invalid
+
+### Disabled
+
+:::example Disabled
+
+### Readonly
+
+:::example Readonly
+
+### Controlled
+
+:::example Controlled
+
 ### Default
 
 :::example Default

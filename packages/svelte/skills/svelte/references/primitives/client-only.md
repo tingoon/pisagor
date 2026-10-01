@@ -22,3 +22,8 @@ Live examples below match `assets/examples/client-only/`.
 ### Default
 
 :::example Default
+
+### Fallback
+
+:::example Fallback
+

@@ -21,6 +21,22 @@ Live examples below match `assets/examples/signature-pad/`.
 
 ## Examples
 
+### Invalid
+
+:::example Invalid
+
+### Disabled
+
+:::example Disabled
+
+### Controlled
+
+:::example Controlled
+
+### Image Preview
+
+:::example ImagePreview
+
 ### Default
 
 :::example Default

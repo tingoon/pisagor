@@ -24,3 +24,15 @@ Live examples below match `assets/examples/announcement/`.
 ### Default
 
 :::example Default
+
+### Compound
+
+:::example Compound
+
+### Variants
+
+:::example Variants
+
+### Without Badge
+
+:::example WithoutBadge

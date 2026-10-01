@@ -24,3 +24,40 @@ Live examples below match `assets/examples/date-picker/`.
 ### Default
 
 :::example Default
+
+### Variants
+
+:::example Variants
+
+### Range
+
+:::example Range
+
+### Custom Format
+
+:::example CustomFormat
+
+### Input
+
+:::example Input
+
+### Invalid
+
+:::example Invalid
+
+### Disabled
+
+:::example Disabled
+
+### Clearable
+
+:::example Clearable
+
+### Time
+
+:::example Time
+
+### With Presets
+
+:::example WithPresets
+

@@ -24,3 +24,15 @@ Live examples below match `assets/examples/button-group/`.
 ### Default
 
 :::example Default
+
+### Orientation Horizontal
+
+:::example OrientationHorizontal
+
+### Orientation Vertical
+
+:::example OrientationVertical
+
+### With Separator
+
+:::example WithSeparator

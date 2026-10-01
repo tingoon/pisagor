@@ -21,6 +21,47 @@ Live examples below match `assets/examples/tour/`.
 
 ## Examples
 
+### Custom Spacing
+
+:::example CustomSpacing
+
+### Async
+
+:::example Async
+
+### Events
+
+:::example Events
+
+### Keyboard Navigation
+
+:::example KeyboardNavigation
+
+### Progress
+
+:::example Progress
+
+### Skip
+
+:::example Skip
+
+### Step Types
+
+:::example StepTypes
+
+### Wait For Click
+
+:::example WaitForClick
+
+### Wait For Element
+
+:::example WaitForElement
+
+### Wait For Input
+
+:::example WaitForInput
+
 ### Default
 
 :::example Default
+

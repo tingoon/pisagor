@@ -24,3 +24,19 @@ Live examples below match `assets/examples/collapsible/`.
 ### Default
 
 :::example Default
+
+### Partial Collapse
+
+:::example PartialCollapse
+
+### Disabled
+
+:::example Disabled
+
+### Nested
+
+:::example Nested
+
+### Controlled
+
+:::example Controlled

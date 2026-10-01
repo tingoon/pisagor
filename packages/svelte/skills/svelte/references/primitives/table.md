@@ -21,6 +21,23 @@ Live examples below match `assets/examples/table/`.
 
 ## Examples
 
+### Variants
+
+:::example Variants
+
+### Actions
+
+:::example Actions
+
+### Footer
+
+:::example Footer
+
+### Not Hoverable
+
+:::example NotHoverable
+
 ### Default
 
 :::example Default
+

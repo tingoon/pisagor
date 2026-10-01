@@ -16,3 +16,36 @@ import { PhoneInput } from "@pisagor/svelte/phone-input";
 ```
 
 Style with `@pisagor/recipes/phone-input` — no app-level `tv()`.
+
+Live examples below match `assets/examples/phone-input/`.
+
+## Examples
+
+### Controlled
+
+:::example Controlled
+
+### Custom Popup
+
+:::example CustomPopup
+
+### Disabled
+
+:::example Disabled
+
+### Invalid
+
+:::example Invalid
+
+### Sizes
+
+:::example Sizes
+
+### Variants
+
+:::example Variants
+
+### Default
+
+:::example Default
+

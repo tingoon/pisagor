@@ -24,3 +24,11 @@ Live examples below match `assets/examples/stat/`.
 ### Default
 
 :::example Default
+
+### Variants
+
+:::example Variants
+
+### With Trend
+
+:::example WithTrend

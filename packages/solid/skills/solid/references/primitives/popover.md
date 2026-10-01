@@ -26,3 +26,35 @@ Live examples below match `assets/examples/popover/`.
 ### Default
 
 :::example Default
+
+### Custom Spacing
+
+:::example CustomSpacing
+
+### Anchor
+
+:::example Anchor
+
+### Close Button
+
+:::example CloseButton
+
+### Nested
+
+:::example Nested
+
+### Modal
+
+:::example Modal
+
+### Scroll Area
+
+:::example ScrollArea
+
+### Close Behavior
+
+:::example CloseBehavior
+
+### Placements
+
+:::example Placements
