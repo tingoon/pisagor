@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const textareaRecipe = tv({
   slots: {
@@ -23,8 +23,16 @@ export const textareaRecipe = tv({
       "flex h-auto px-3 py-2",
     ],
   },
+  variants: {
+    clearable: {
+      true: {
+        clearableRoot: "pe-9",
+      },
+    },
+  },
 });
 
 export type TextareaRecipeFn = typeof textareaRecipe;
+export type TextareaVariantProps = VariantProps<TextareaRecipeFn>;
 export type TextareaRecipe = ReturnType<TextareaRecipeFn>;
 export type TextareaRecipeSlot = keyof TextareaRecipe;

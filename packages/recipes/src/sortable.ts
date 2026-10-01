@@ -38,6 +38,14 @@ export const sortableItemRecipe = tv({
       "motion-reduce:transition-none! motion-reduce:active:scale-100",
     ],
   },
+  variants: {
+    disabled: {
+      true: {
+        base: "pointer-events-none opacity-50",
+        handle: "pointer-events-none opacity-50",
+      },
+    },
+  },
 });
 
 export type SortableRecipeFn = typeof sortableRecipe;
@@ -46,5 +54,6 @@ export type SortableRecipe = ReturnType<SortableRecipeFn>;
 export type SortableRecipeSlot = keyof SortableRecipe;
 
 export type SortableItemRecipeFn = typeof sortableItemRecipe;
+export type SortableItemVariantProps = VariantProps<SortableItemRecipeFn>;
 export type SortableItemRecipe = ReturnType<SortableItemRecipeFn>;
 export type SortableItemRecipeSlot = keyof SortableItemRecipe;

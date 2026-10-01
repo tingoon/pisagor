@@ -1,4 +1,4 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const dataGridRecipe = tv({
   slots: {
@@ -15,10 +15,25 @@ export const dataGridRecipe = tv({
       "**:data-[scope=select]:data-[part=trigger]:h-7 **:data-[scope=select]:data-[part=trigger]:w-full **:data-[scope=select]:data-[part=trigger]:max-w-none",
     ],
     footer: ["flex flex-col gap-3"],
+    head: "",
+    row: ["data-grouped:bg-muted/40 data-grouped:font-medium"],
     toolbar: ["flex flex-col gap-3"],
+  },
+  variants: {
+    resizing: {
+      true: {
+        columnResizer: "bg-primary",
+      },
+    },
+    sizing: {
+      true: {
+        head: "relative",
+      },
+    },
   },
 });
 
 export type DataGridRecipeFn = typeof dataGridRecipe;
+export type DataGridVariantProps = VariantProps<DataGridRecipeFn>;
 export type DataGridRecipe = ReturnType<DataGridRecipeFn>;
 export type DataGridRecipeSlot = keyof DataGridRecipe;

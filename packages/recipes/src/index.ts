@@ -68,6 +68,7 @@ export * from "./rating";
 export * from "./resizable";
 export * from "./rich-text-editor";
 export * from "./scroll-area";
+export * from "./scrollspy";
 export * from "./segment-group";
 export * from "./select";
 export * from "./separator";

@@ -1,6 +1,12 @@
-import { tv } from "tailwind-variants";
+import { tv, type VariantProps } from "tailwind-variants";
 
 export const signaturePadRecipe = tv({
+  defaultVariants: {
+    /**
+     * Visual emphasis.
+     */
+    variant: "primary",
+  },
   slots: {
     base: [
       "h-40 min-h-40 w-full",
@@ -30,8 +36,19 @@ export const signaturePadRecipe = tv({
     ],
     segment: ["size-full", "min-h-0", "fill-foreground", "touch-none"],
   },
+  variants: {
+    variant: {
+      primary: {
+        control: "shadow-xs/5",
+      },
+      secondary: {
+        control: "",
+      },
+    },
+  },
 });
 
 export type SignaturePadRecipeFn = typeof signaturePadRecipe;
+export type SignaturePadVariantProps = VariantProps<SignaturePadRecipeFn>;
 export type SignaturePadRecipe = ReturnType<SignaturePadRecipeFn>;
 export type SignaturePadRecipeSlot = keyof SignaturePadRecipe;
