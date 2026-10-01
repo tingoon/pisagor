@@ -10,7 +10,7 @@ const DEFAULT_PACKAGE_NAME: Record<Framework, string> = {
   vue: "@pisagor/vue",
 };
 
-/** All skill primitive markdown (react/vue/astro/solid/svelte + form/charts packages). */
+/** All skill primitive markdown (react/vue/astro/solid/svelte + form packages). */
 const skillRawModules = import.meta.glob(
   "../../../../packages/*/skills/*/references/primitives/*.md",
   {
@@ -44,7 +44,7 @@ function pascalCase(id: string): string {
 /**
  * Heavy UI modules live under `src/<id>/` and are omitted from the package
  * root barrel — import via `@pisagor/<fw>/<id>` only.
- * Charts/forms are separate packages (always barrel / `./tanstack`).
+ * Forms are separate packages (always barrel / `./tanstack`).
  */
 const HEAVY_UI_COMPONENT_IDS = new Set([
   "data-grid",
@@ -118,9 +118,8 @@ export function getSkillDocImportStatement(
       if (statement) return statement;
     }
   }
-  const isFormOrChartsPackage =
-    packageName.endsWith("-form") || packageName.endsWith("-charts");
-  const useSubpath = !isFormOrChartsPackage && HEAVY_UI_COMPONENT_IDS.has(id);
+  const isFormPackage = packageName.endsWith("-form");
+  const useSubpath = !isFormPackage && HEAVY_UI_COMPONENT_IDS.has(id);
   const specifier = useSubpath ? `${packageName}/${id}` : packageName;
   return `import { ${pascalCase(id)} } from "${specifier}";`;
 }

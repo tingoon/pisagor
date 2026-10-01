@@ -1,6 +1,5 @@
 declare module "@pisagor/tokens/styles";
 declare module "@pisagor/vue/styles";
-declare module "@pisagor/vue-charts/styles";
 declare module "@pisagor/vue-form/styles";
 
 declare module "*.vue" {

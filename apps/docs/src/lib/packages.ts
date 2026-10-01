@@ -26,15 +26,10 @@ export const packages: Record<Framework, PackageLinks> = {
   vue: pkg("vue", "@pisagor/vue", "http://localhost:4002"),
 };
 
-/** Extra publishable packages (forms/charts) keyed by npm name for PackageLinks overrides. */
+/** Extra publishable packages (forms) keyed by npm name for PackageLinks overrides. */
 export const packageLinksByName: Record<string, PackageLinks> = {
   "@pisagor/astro": packages.astro,
   "@pisagor/react": packages.react,
-  "@pisagor/react-charts": pkg(
-    "react-charts",
-    "@pisagor/react-charts",
-    "http://localhost:4001",
-  ),
   "@pisagor/react-form": pkg(
     "react-form",
     "@pisagor/react-form",
@@ -46,11 +41,6 @@ export const packageLinksByName: Record<string, PackageLinks> = {
   "@pisagor/svelte": packages.svelte,
   "@pisagor/svelte-form": pkg("svelte-form", "@pisagor/svelte-form"),
   "@pisagor/vue": packages.vue,
-  "@pisagor/vue-charts": pkg(
-    "vue-charts",
-    "@pisagor/vue-charts",
-    "http://localhost:4002",
-  ),
   "@pisagor/vue-form": pkg(
     "vue-form",
     "@pisagor/vue-form",

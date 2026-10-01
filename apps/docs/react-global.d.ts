@@ -16,6 +16,5 @@ declare module "react" {
 }
 
 declare module "@pisagor/react/styles";
-declare module "@pisagor/react-charts/styles";
 declare module "@pisagor/react-form/styles";
 declare module "@pisagor/tokens/styles";

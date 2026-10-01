@@ -62,8 +62,10 @@ export default defineConfig({
         "**/*.{vue,svelte,astro,css,scss,sass,less,styl,stylus,html,svg,md,mdx}",
         "**/packages/vue/**",
         "**/packages/vue-*/**",
+        "**/apps/solid/**",
         "**/packages/solid/**",
         "**/packages/solid-*/**",
+        "**/apps/svelte/**",
         "**/packages/svelte/**",
         "**/packages/svelte-*/**",
         "**/packages/astro/**",
@@ -75,6 +77,7 @@ export default defineConfig({
       include: [
         "**/packages/react/**/*.{js,jsx,ts,tsx}",
         "**/packages/react-*/**/*.{js,jsx,ts,tsx}",
+        "**/apps/react/**/*.{js,jsx,ts,tsx}",
         "**/apps/docs/src/**/*.{js,jsx,ts,tsx}",
       ],
     }),
@@ -82,6 +85,7 @@ export default defineConfig({
       include: [
         "**/packages/solid/**/*.{js,jsx,ts,tsx}",
         "**/packages/solid-*/**/*.{js,jsx,ts,tsx}",
+        "**/apps/solid/**/*.{js,jsx,ts,tsx}",
         "**/apps/docs/src/components/docs/solid-example-island.tsx",
       ],
     }),
@@ -101,10 +105,8 @@ export default defineConfig({
     ssr: {
       noExternal: [
         "@pisagor/react",
-        "@pisagor/react-charts",
         "@pisagor/react-form",
         "@pisagor/vue",
-        "@pisagor/vue-charts",
         "@pisagor/vue-form",
         "@pisagor/solid",
         "@pisagor/solid-form",

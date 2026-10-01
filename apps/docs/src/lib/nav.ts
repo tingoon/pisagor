@@ -1,6 +1,6 @@
 export type Framework = "react" | "vue" | "solid" | "svelte" | "astro";
 
-export type DocsArea = "components" | "blocks" | "recipes" | "forms" | "charts";
+export type DocsArea = "components" | "blocks" | "forms";
 
 type NavItem = {
   title: string;
@@ -24,9 +24,7 @@ export const frameworks: { id: Framework; label: string }[] = [
 export const mainNav: { id: DocsArea; label: string; slug: string }[] = [
   { id: "components", label: "Components", slug: "" },
   { id: "forms", label: "Forms", slug: "forms" },
-  { id: "charts", label: "Charts", slug: "charts" },
   { id: "blocks", label: "Blocks", slug: "blocks" },
-  { id: "recipes", label: "Recipes", slug: "recipes" },
 ];
 
 /** React / Vue / Solid / Svelte component sidebar — grouped like Storybook. */
@@ -449,20 +447,6 @@ const formSections: NavSection[] = [
   },
 ];
 
-const chartSections: NavSection[] = [
-  {
-    items: [
-      { slug: "charts", status: "ready", title: "Introduction" },
-      { slug: "charts/changelog", status: "ready", title: "Changelog" },
-    ],
-    title: "Getting started",
-  },
-  {
-    items: [{ slug: "charts/chart", status: "ready", title: "Chart" }],
-    title: "Charts",
-  },
-];
-
 const blockSections: NavSection[] = [
   {
     items: [
@@ -471,45 +455,46 @@ const blockSections: NavSection[] = [
     ],
     title: "Getting started",
   },
-];
-
-const recipeSections: NavSection[] = [
   {
     items: [
-      { slug: "recipes", status: "ready", title: "Introduction" },
-      { slug: "recipes/changelog", status: "ready", title: "Changelog" },
-    ],
-    title: "Getting started",
-  },
-  {
-    items: [
-      { slug: "recipes/app-shell", status: "ready", title: "App Shell" },
-      { slug: "recipes/card", status: "ready", title: "Card" },
+      { slug: "blocks/app-shell", status: "ready", title: "App Shell" },
+      { slug: "blocks/card", status: "ready", title: "Card" },
     ],
     title: "Layout",
   },
   {
-    items: [{ slug: "recipes/editors", status: "ready", title: "Editors" }],
+    items: [{ slug: "blocks/editors", status: "ready", title: "Editors" }],
     title: "Editors",
   },
   {
     items: [
-      { slug: "recipes/field", status: "ready", title: "Field" },
-      { slug: "recipes/input-group", status: "ready", title: "Input Group" },
-      { slug: "recipes/password", status: "ready", title: "Password Input" },
-      { slug: "recipes/search-field", status: "ready", title: "Search Field" },
-      { slug: "recipes/sign-in-form", status: "ready", title: "Sign In" },
-      { slug: "recipes/tags-input", status: "ready", title: "Tags Input" },
+      { slug: "blocks/field", status: "ready", title: "Field" },
+      { slug: "blocks/input-group", status: "ready", title: "Input Group" },
+      { slug: "blocks/password", status: "ready", title: "Password Input" },
+      { slug: "blocks/search-field", status: "ready", title: "Search Field" },
+      { slug: "blocks/sign-in-form", status: "ready", title: "Sign In" },
+      { slug: "blocks/tags-input", status: "ready", title: "Tags Input" },
     ],
     title: "Forms",
   },
   {
-    items: [{ slug: "recipes/overlay", status: "ready", title: "Overlay" }],
+    items: [{ slug: "blocks/overlay", status: "ready", title: "Overlay" }],
     title: "Overlay",
   },
   {
-    items: [{ slug: "recipes/table", status: "ready", title: "Table" }],
+    items: [{ slug: "blocks/table", status: "ready", title: "Table" }],
     title: "Data",
+  },
+];
+
+/** Astro has no composition-demo runners yet — intro + changelog only. */
+const astroBlockSections: NavSection[] = [
+  {
+    items: [
+      { slug: "blocks", status: "ready", title: "Introduction" },
+      { slug: "blocks/changelog", status: "ready", title: "Changelog" },
+    ],
+    title: "Getting started",
   },
 ];
 
@@ -542,9 +527,7 @@ export function getDocsArea(pathname: string): DocsArea {
   const parts = stripDocsBase(pathname).split("/").filter(Boolean);
   const section = parts[1];
   if (section === "blocks") return "blocks";
-  if (section === "recipes") return "recipes";
   if (section === "forms") return "forms";
-  if (section === "charts") return "charts";
   return "components";
 }
 
@@ -564,36 +547,16 @@ export function getSidebarNav(
   area: DocsArea,
 ): NavSection[] {
   if (area === "blocks") {
-    if (framework === "solid" || framework === "svelte") {
-      return soonGettingStarted("blocks");
+    if (framework === "astro") {
+      return astroBlockSections;
     }
     return blockSections;
-  }
-  if (area === "recipes") {
-    if (
-      framework === "astro" ||
-      framework === "solid" ||
-      framework === "svelte"
-    ) {
-      return soonGettingStarted("recipes");
-    }
-    return recipeSections;
   }
   if (area === "forms") {
     if (framework === "astro") {
       return soonGettingStarted("forms");
     }
     return formSections;
-  }
-  if (area === "charts") {
-    if (
-      framework === "astro" ||
-      framework === "solid" ||
-      framework === "svelte"
-    ) {
-      return soonGettingStarted("charts");
-    }
-    return chartSections;
   }
 
   if (framework === "astro") return astroComponentSections;
@@ -606,11 +569,11 @@ export function frameworkPath(framework: Framework, slug = "") {
 
 /** Areas each framework ships docs for (main-nav + switcher). */
 const frameworkAreas: Record<Framework, DocsArea[]> = {
-  astro: ["components", "blocks", "recipes"],
-  react: ["components", "forms", "charts", "blocks", "recipes"],
-  solid: ["components", "forms"],
-  svelte: ["components", "forms"],
-  vue: ["components", "forms", "charts", "blocks", "recipes"],
+  astro: ["components", "blocks"],
+  react: ["components", "forms", "blocks"],
+  solid: ["components", "forms", "blocks"],
+  svelte: ["components", "forms", "blocks"],
+  vue: ["components", "forms", "blocks"],
 };
 
 export function getMainNav(framework: Framework) {
@@ -632,10 +595,7 @@ export function swapFrameworkPath(pathname: string, next: Framework) {
   const area = parts[1] as DocsArea | undefined;
   if (
     area &&
-    (area === "charts" ||
-      area === "blocks" ||
-      area === "recipes" ||
-      area === "forms") &&
+    (area === "blocks" || area === "forms") &&
     !frameworkAreas[next].includes(area)
   ) {
     return frameworkPath(next);

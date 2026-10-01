@@ -12,16 +12,6 @@
         "../../packages/astro/skills/astro/references/*"
       ],
       "#/props/*": ["../../packages/props/*"],
-      "#/react-charts/*": ["../../packages/react-charts/*"],
-      "#/react-charts/examples": [
-        "../../packages/react-charts/skills/react-charts/assets/examples/index.ts"
-      ],
-      "#/react-charts/examples/*": [
-        "../../packages/react-charts/skills/react-charts/assets/examples/*"
-      ],
-      "#/react-charts/references/*": [
-        "../../packages/react-charts/skills/react-charts/references/*"
-      ],
       "#/react-form/*": ["../../packages/react-form/*"],
       "#/react-form/examples/*": [
         "../../packages/react-form/skills/react-form/assets/examples/*"
@@ -30,10 +20,10 @@
         "../../packages/react-form/skills/react-form/references/*"
       ],
       "#/react/*": ["../../packages/react/*"],
+      "#/react/blocks/*": ["../react/src/blocks/*"],
       "#/react/examples/*": [
         "../../packages/react/skills/react/assets/examples/*"
       ],
-      "#/react/recipes/*": ["../react/src/recipes/*"],
       "#/react/references/*": [
         "../../packages/react/skills/react/references/*"
       ],
@@ -46,6 +36,7 @@
         "../../packages/solid-form/skills/solid-form/references/*"
       ],
       "#/solid/*": ["../../packages/solid/*"],
+      "#/solid/blocks/*": ["../solid/src/blocks/*"],
       "#/solid/examples/*": [
         "../../packages/solid/skills/solid/assets/examples/*"
       ],
@@ -60,6 +51,7 @@
         "../../packages/svelte-form/skills/svelte-form/references/*"
       ],
       "#/svelte/*": ["../../packages/svelte/*"],
+      "#/svelte/blocks/*": ["../svelte/src/blocks/*"],
       "#/svelte/examples/*": [
         "../../packages/svelte/skills/svelte/assets/examples/*"
       ],
@@ -68,16 +60,6 @@
       ],
       "#/tokens/*": ["../../packages/tokens/*"],
       "#/utils/*": ["../../packages/utils/*"],
-      "#/vue-charts/*": ["../../packages/vue-charts/*"],
-      "#/vue-charts/examples": [
-        "../../packages/vue-charts/skills/vue-charts/assets/examples/index.ts"
-      ],
-      "#/vue-charts/examples/*": [
-        "../../packages/vue-charts/skills/vue-charts/assets/examples/*"
-      ],
-      "#/vue-charts/references/*": [
-        "../../packages/vue-charts/skills/vue-charts/references/*"
-      ],
       "#/vue-form/*": ["../../packages/vue-form/*"],
       "#/vue-form/examples/*": [
         "../../packages/vue-form/skills/vue-form/assets/examples/*"
@@ -86,8 +68,8 @@
         "../../packages/vue-form/skills/vue-form/references/*"
       ],
       "#/vue/*": ["../../packages/vue/*"],
+      "#/vue/blocks/*": ["../vue/src/blocks/*"],
       "#/vue/examples/*": ["../../packages/vue/skills/vue/assets/examples/*"],
-      "#/vue/recipes/*": ["../vue/src/recipes/*"],
       "#/vue/references/*": ["../../packages/vue/skills/vue/references/*"]
     },
     "types": ["astro/client"]

@@ -1,9 +1,7 @@
 @import "tailwindcss";
 @import "@pisagor/react/styles";
-@import "@pisagor/react-charts/styles";
 @import "@pisagor/react-form/styles";
 @import "@pisagor/vue/styles";
-@import "@pisagor/vue-charts/styles";
 @import "@pisagor/vue-form/styles";
 @import "@pisagor/astro/styles";
 @import "@pisagor/solid/styles";
