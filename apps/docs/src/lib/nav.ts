@@ -1,4 +1,4 @@
-export type Framework = "react" | "vue" | "solid" | "svelte" | "astro";
+export type Framework = "react" | "vue" | "astro" | "svelte" | "solid";
 
 export type DocsArea = "components" | "blocks" | "forms";
 
@@ -13,18 +13,19 @@ export type NavSection = {
   items: NavItem[];
 };
 
+/** Ordered by relative usage (most → least). */
 export const frameworks: { id: Framework; label: string }[] = [
   { id: "react", label: "React" },
   { id: "vue", label: "Vue" },
-  { id: "solid", label: "Solid" },
-  { id: "svelte", label: "Svelte" },
   { id: "astro", label: "Astro" },
+  { id: "svelte", label: "Svelte" },
+  { id: "solid", label: "Solid" },
 ];
 
 export const mainNav: { id: DocsArea; label: string; slug: string }[] = [
   { id: "components", label: "Components", slug: "" },
-  { id: "forms", label: "Forms", slug: "forms" },
   { id: "blocks", label: "Blocks", slug: "blocks" },
+  { id: "forms", label: "Forms", slug: "forms" },
 ];
 
 /** React / Vue / Solid / Svelte component sidebar — grouped like Storybook. */
@@ -581,24 +582,41 @@ export function getMainNav(framework: Framework) {
   return mainNav.filter((item) => allowed.has(item.id));
 }
 
+/** Intro slug for a docs area (used when a page has no counterpart). */
+function areaIntroSlug(area: DocsArea): string {
+  if (area === "blocks") return "blocks";
+  if (area === "forms") return "forms";
+  return "";
+}
+
+/** Whether the sidebar lists a ready page for this framework/area/slug. */
+function sidebarHasSlug(
+  framework: Framework,
+  area: DocsArea,
+  slug: string,
+): boolean {
+  return getSidebarNav(framework, area).some((section) =>
+    section.items.some((item) => item.slug === slug && item.status !== "soon"),
+  );
+}
+
+/**
+ * Map the current docs URL to the same page on another framework.
+ * Falls back to the area intro (or framework home) when that page is not shipped.
+ */
 export function swapFrameworkPath(pathname: string, next: Framework) {
   const parts = stripDocsBase(pathname).split("/").filter(Boolean);
   if (parts.length === 0) return frameworkPath(next);
-  parts[0] = next;
-  // Accordion is react/vue only
-  if (
-    next === "astro" &&
-    (parts[1] === "accordion" || parts[2] === "accordion")
-  ) {
+
+  const area = getDocsArea(pathname);
+  if (!frameworkAreas[next].includes(area)) {
     return frameworkPath(next);
   }
-  const area = parts[1] as DocsArea | undefined;
-  if (
-    area &&
-    (area === "blocks" || area === "forms") &&
-    !frameworkAreas[next].includes(area)
-  ) {
-    return frameworkPath(next);
+
+  const slug = parts.slice(1).join("/");
+  if (!sidebarHasSlug(next, area, slug)) {
+    return frameworkPath(next, areaIntroSlug(area));
   }
-  return withDocsBase(`/${parts.join("/")}`);
+
+  return withDocsBase(`/${[next, ...parts.slice(1)].join("/")}`);
 }
