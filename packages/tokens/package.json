@@ -2,7 +2,7 @@
   "bugs": {
     "url": "https://github.com/tingoon/pisagor/issues"
   },
-  "description": "Design tokens and Tailwind theme for Pisagor packages.",
+  "description": "Design tokens and Tailwind v4 theme CSS for Pisagor.",
   "exports": {
     "./styles": "./src/styles.css"
   },

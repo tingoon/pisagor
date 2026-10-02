@@ -5,7 +5,7 @@
   "dependencies": {
     "@pisagor/recipes": "workspace:*"
   },
-  "description": "Framework-agnostic component prop types (TSDoc) for Pisagor. Excludes native HTML attributes.",
+  "description": "Framework-agnostic component prop types (TSDoc) for Pisagor — excludes native HTML attributes.",
   "exports": {
     ".": "./src/index.ts",
     "./accordion": "./src/accordion.ts",

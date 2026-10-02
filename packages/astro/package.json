@@ -9,7 +9,7 @@
     "@tailwindcss/typography": "^0.5.20",
     "tw-animate-css": "^1.4.0"
   },
-  "description": "Static Astro UI components built on Tailwind CSS recipes.",
+  "description": "Static Astro UI components styled with Tailwind CSS and shared recipes.",
   "devDependencies": {
     "astro": "catalog:"
   },

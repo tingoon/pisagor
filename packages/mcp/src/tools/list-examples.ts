@@ -27,7 +27,7 @@ export const listExamplesTool: Tool<{ componentList: string[] }> = {
     return { componentList: componentNames(config) };
   },
   description:
-    "List skill examples for a Pisagor component (skills/*/assets/examples). Prefer list_components first.",
+    "List examples for a Pisagor component from the installed package skill. Prefer list_components first.",
   exec(server, { ctx, name, description, config }) {
     const multi = config.frameworks.length > 1;
     const componentSchema =

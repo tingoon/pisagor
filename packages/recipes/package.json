@@ -5,7 +5,7 @@
   "dependencies": {
     "tailwind-variants": "^3.3.1"
   },
-  "description": "Shared Tailwind class recipes (tv) for Pisagor components.",
+  "description": "Shared Tailwind Variants (`tv()`) recipes for Pisagor components.",
   "exports": {
     ".": "./src/index.ts",
     "./accordion": "./src/accordion.ts",
