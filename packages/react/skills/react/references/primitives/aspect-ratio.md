@@ -1,13 +1,15 @@
 ---
 title: Aspect Ratio
-description: Keeps media and embedded content at a consistent width-to-height ratio as the layout changes.
+description: "Keeps media and embeds at a consistent width-to-height ratio as the layout resizes."
 api: closed
 taxonomy: primitive
 ---
 
 ## When to use
 
-- Keeps media and embedded content at a consistent width-to-height ratio as the layout changes.
+- Lock media or embeds to a known ratio so layouts do not jump as images load.
+- Prefer Aspect Ratio for video, maps, and product media that must keep proportions.
+- Avoid when the content height should grow with text rather than stay geometrically fixed.
 
 ## Import
 
@@ -17,26 +19,34 @@ import { AspectRatio } from "@pisagor/react";
 
 Style with `@pisagor/recipes/aspect-ratio` — no app-level `tv()`.
 
-Live examples below match `assets/examples/aspect-ratio/`.
-
 ## Examples
 
 ### Default
+
+Lock content to a ratio so media does not jump as it loads.
 
 :::example Default
 
 ### Portrait
 
+Use a portrait ratio for tall media such as mobile screenshots.
+
 :::example Portrait
 
 ### Responsive
+
+Keep the ratio while the box grows and shrinks with the layout.
 
 :::example Responsive
 
 ### Square
 
+Use a 1:1 box for avatars, thumbnails, and tile media.
+
 :::example Square
 
 ### Video
+
+Use a widescreen ratio for video and cinematic embeds.
 
 :::example Video

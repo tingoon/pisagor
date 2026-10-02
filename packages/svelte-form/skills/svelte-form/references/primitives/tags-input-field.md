@@ -1,6 +1,6 @@
 ---
 title: Tags Input Field
-description: Adds and removes multiple tags with a label and optional validation message
+description: "Adds and removes multiple tags with a label and optional validation message."
 api: closed
 taxonomy: standard
 packageName: "@pisagor/svelte-form"
@@ -8,10 +8,9 @@ packageName: "@pisagor/svelte-form"
 
 ## When to use
 
-- Adds and removes multiple tags with a label and optional validation message.
-- Mixing frameworks — this guide is **@pisagor/svelte-form** (not `@pisagor/svelte`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
+- Build a list of tags or chips when users add and remove multiple short values.
+- Prefer over a bare TagsInput when you need a label, description, or error text with the control.
+- Surface an error when at least one tag is required; show unavailable when the list cannot change.
 
 ## Import
 
@@ -19,14 +18,18 @@ packageName: "@pisagor/svelte-form"
 import { TagsInputField } from "@pisagor/svelte-form";
 ```
 
-Live examples below match `assets/examples/tags-input-field/`.
+Part of `@pisagor/svelte-form`. Style with recipes where available — no app-level `tv()`.
 
 ## Examples
 
 ### Disabled
 
+Show that the tags input is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+
 :::example Disabled
 
 ### Invalid
+
+Surface a validation error under the field so the user knows what to fix before submitting.
 
 :::example Invalid

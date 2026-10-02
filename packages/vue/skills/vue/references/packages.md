@@ -1,6 +1,6 @@
 # Pisagor Vue packages
 
-Framework: **vue** only (`@pisagor/vue` components). Sibling UI skills: `packages/react/skills/react`, `packages/astro/skills/astro`. Forms, recipes, tokens, and utils are separate skills (`packages/<name>/skills/<name>`), not part of this one.
+Framework: **vue** only (`@pisagor/vue` components). Other UI frameworks (`@pisagor/react`, `@pisagor/solid`, `@pisagor/svelte`, `@pisagor/astro`) ship their own skills. Forms, recipes, tokens, and utils are separate packages with their own skills — not part of this one.
 
 ## Install
 
@@ -44,4 +44,4 @@ Prefer **this skill** when MCP is disabled. Use MCP `get_example` / `list_exampl
 | -------- | ----- |
 | Registry | [`component-registry.md`](component-registry.md) |
 | Guides | [`primitives/`](primitives/) |
-| Package root (npm) | `@pisagor/vue` (`src/`, `skills/`, `catalog.gen.json`) |
+| Package | `@pisagor/vue` |

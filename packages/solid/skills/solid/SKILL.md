@@ -16,10 +16,10 @@ metadata:
 
 Other packages:
 
-- `@pisagor/recipes` → `packages/recipes/skills/recipes`
-- `@pisagor/utils` → `packages/utils/skills/utils`
-- `@pisagor/tokens` → `packages/tokens/skills/tokens`
-- `@pisagor/solid-form` → `packages/solid-form/skills/solid-form`
+- `@pisagor/recipes`
+- `@pisagor/utils`
+- `@pisagor/tokens`
+- `@pisagor/solid-form`
 
 ## Layout
 

@@ -1,13 +1,15 @@
 ---
 title: Skip Nav
-description: Lets keyboard users jump past repetitive navigation straight to the main content.
+description: "Lets keyboard users jump past repetitive navigation straight to the main content."
 api: compound
 taxonomy: standard
 ---
 
 ## When to use
 
-- Lets keyboard users jump past repetitive navigation straight to the main content.
+- Let keyboard users skip repeated navigation and reach main content quickly.
+- Place Skip Nav as the first focusable control in the page.
+- Ensure the target id matches the main content landmark.
 
 ## Import
 
@@ -17,11 +19,11 @@ import { SkipNav } from "@pisagor/svelte";
 
 Style with `@pisagor/recipes/skip-nav` — no app-level `tv()`.
 
-Live examples below match `assets/examples/skip-nav/`.
-
 ## Examples
 
 ### Default
+
+Skip repeated navigation and move keyboard focus to main content.
 
 :::example Default
 

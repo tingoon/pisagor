@@ -1,6 +1,6 @@
 ---
 title: Context Menu
-description: Opens a menu of actions at the pointer so users can act on an item in its surrounding context.
+description: "Opens a menu of actions at the pointer so users can act on an item in its surrounding context."
 api: compound
 taxonomy: pattern
 aliases:
@@ -9,7 +9,9 @@ aliases:
 
 ## When to use
 
-- Opens a menu of actions at the pointer so users can act on an item in its surrounding context.
+- Offer actions at the pointer for the item under the cursor or focus.
+- Prefer Context Menu for secondary actions; keep primary actions visible without a right-click.
+- Mirror critical actions elsewhere so touch and keyboard users are not blocked.
 
 ## Import
 
@@ -19,10 +21,10 @@ import { ContextMenu } from "@pisagor/solid";
 
 Style with `@pisagor/recipes/context-menu` — no app-level `tv()`.
 
-Live examples below match `assets/examples/context-menu/`.
-
 ## Examples
 
 ### Default
+
+Open actions at the pointer for the item under the cursor or focus.
 
 :::example Default

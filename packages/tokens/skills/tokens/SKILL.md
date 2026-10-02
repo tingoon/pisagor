@@ -4,8 +4,7 @@ description: >-
   Pisagor `@pisagor/tokens` — design tokens and Tailwind v4 theme CSS. Use when wiring theme,
   semantic colors, motion, elevation, or dark mode for Pisagor apps. Ships inside the npm package
   for Intent. Prefer MCP for component work; use this skill for token / theme setup.
-compatibility: >-
-  Requires Tailwind CSS v4. Consumers of @pisagor/tokens or this monorepo.
+compatibility: Requires Tailwind CSS v4 and @pisagor/tokens.
 ---
 
 # @pisagor/tokens

@@ -1,13 +1,15 @@
 ---
 title: Button
-description: Triggers actions with emphasis, size, and loading states.
+description: "Initiates an action or navigation. Use visual weight, size, and loading state to show which control matters most."
 api: closed
 taxonomy: primitive
 ---
 
 ## When to use
 
-- Triggers an action or navigation with clear hierarchy and loading feedback.
+- Start an action or navigation with a clear, verb-led label (Save, Continue, Delete).
+- Prefer one primary button per view; use secondary, outline, or ghost for less important actions.
+- Prefer a button over plain text when the control must look tappable and report progress or an unavailable state.
 
 ## Import
 
@@ -17,42 +19,58 @@ import { Button } from "@pisagor/astro";
 
 Style with `@pisagor/recipes/button` — no app-level `tv()`.
 
-Live examples below match `assets/examples/button/`.
-
 ## Examples
 
 ### Default
+
+The filled button for the main action in a view.
 
 :::example Default
 
 ### Sizes
 
+Match size to the surrounding layout — smaller in compact toolbars, larger for prominent calls to action. Icon sizes keep square hit targets aligned with text buttons.
+
 :::example Sizes
 
 ### Variants
+
+Choose weight by importance: default for the primary action, secondary or outline for alternatives, destructive for irreversible work, ghost for low-emphasis chrome, and link when the control should read like inline text.
 
 :::example Variants
 
 ### Disabled
 
+Show that an action is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+
 :::example Disabled
 
 ### Loading
+
+Keep the control visible while work is in progress and block another press until it finishes.
 
 :::example Loading
 
 ### Pill
 
+Use a fully rounded shape for chip-like or toolbar actions where softer geometry fits the layout.
+
 :::example Pill
 
 ### Icon
 
+An icon-only button for a single, well-known action. Always provide an accessible name.
+
 :::example Icon
 
-### With Icon
+### With icon
+
+Pair an icon with a label to reinforce meaning. Prefer a leading icon for the action; use a trailing icon when the control opens another place.
 
 :::example WithIcon
 
-### No Click Effect
+### No click effect
+
+Turn off the press scale when motion would distract or conflict with surrounding interaction feedback.
 
 :::example NoClickEffect

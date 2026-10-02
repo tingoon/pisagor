@@ -1,6 +1,6 @@
 ---
 title: Password Field
-description: "Captures a password with show-hide control, label, and optional validation message"
+description: "Captures a password with show-hide control, label, and optional validation message."
 api: closed
 taxonomy: standard
 packageName: "@pisagor/solid-form"
@@ -8,10 +8,9 @@ packageName: "@pisagor/solid-form"
 
 ## When to use
 
-- Captures a password with show-hide control, label, and optional validation message.
-- Mixing frameworks — this guide is **@pisagor/solid-form** (not `@pisagor/solid`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
+- Collect a password or secret with a show-hide control and a visible label.
+- Prefer over a bare PasswordInput when you need description, error text, or a label accessory.
+- Surface strength or length errors in validation; show unavailable when the credential cannot change.
 
 ## Import
 
@@ -19,20 +18,24 @@ packageName: "@pisagor/solid-form"
 import { PasswordField } from "@pisagor/solid-form";
 ```
 
-Live examples below match `assets/examples/password-field/`.
+Part of `@pisagor/solid-form`. Style with recipes where available — no app-level `tv()`.
 
 ## Examples
 
 ### Disabled
 
+Show that the password field is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+
 :::example Disabled
 
 ### Invalid
+
+Surface a validation error under the field so the user knows what to fix before submitting.
 
 :::example Invalid
 
 ### With Label Accessory
 
-Places a secondary action next to the label — for example a Forgot password? link — via `labelAccessory`.
+Place a secondary action next to the label, such as a Forgot password? link, via `labelAccessory`.
 
 :::example WithLabelAccessory

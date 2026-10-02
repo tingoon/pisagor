@@ -1,6 +1,6 @@
 ---
 title: File Field
-description: Uploads one or more files with a label and optional validation message
+description: "Uploads one or more files with a label and optional validation message."
 api: closed
 taxonomy: standard
 packageName: "@pisagor/react-form"
@@ -8,7 +8,9 @@ packageName: "@pisagor/react-form"
 
 ## When to use
 
-- Uploads one or more files with a label and optional validation message.
+- Upload one or more files with a visible label and optional helper or error text.
+- Prefer over a bare FileInput or FileUpload when the field must sit in a labeled form layout.
+- Surface an error when a file is required or the type is wrong; show unavailable when upload is blocked.
 
 ## Import
 
@@ -18,14 +20,16 @@ import { FileField } from "@pisagor/react-form";
 
 Part of `@pisagor/react-form`. Style with recipes where available — no app-level `tv()`.
 
-Live examples below match `assets/examples/file-field/`.
-
 ## Examples
 
 ### Disabled
 
+Show that the file field is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+
 :::example Disabled
 
 ### Invalid
+
+Surface a validation error under the field so the user knows what to fix before submitting.
 
 :::example Invalid

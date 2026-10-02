@@ -1,13 +1,15 @@
 ---
 title: Breadcrumb
-description: Shows where the user is within a hierarchy and lets them jump back to earlier levels.
+description: "Shows where the user is within a hierarchy and lets them jump back to earlier levels."
 api: compound-shorthand
 taxonomy: standard
 ---
 
 ## When to use
 
-- Shows where the user is within a hierarchy and lets them jump back to earlier levels.
+- Show location in a hierarchy and let users jump back to parent pages.
+- Prefer Breadcrumb when depth is two or more levels and the path itself is useful.
+- Collapse middle segments when the path is long so the current page stays visible.
 
 ## Import
 
@@ -17,10 +19,10 @@ import { Breadcrumb } from "@pisagor/astro";
 
 Style with `@pisagor/recipes/breadcrumb` — no app-level `tv()`.
 
-Live examples below match `assets/examples/breadcrumb/`.
-
 ## Examples
 
 ### Default
+
+The full path from root to the current page.
 
 :::example Default

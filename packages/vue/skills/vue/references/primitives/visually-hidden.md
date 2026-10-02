@@ -1,13 +1,15 @@
 ---
 title: Visually Hidden
-description: Hides text from the screen while keeping it available to screen readers and other assistive technology.
+description: "Hides text from the screen while keeping it available to screen readers and other assistive tech."
 api: closed
 taxonomy: primitive
 ---
 
 ## When to use
 
-- Hides text from the screen while keeping it available to screen readers and other assistive technology.
+- Provide text for assistive tech without showing it visually.
+- Prefer Visually Hidden for accessible names on icon-only controls.
+- Do not use it to hide critical information sighted users also need.
 
 ## Import
 
@@ -17,10 +19,10 @@ import { VisuallyHidden } from "@pisagor/vue";
 
 Style with `@pisagor/recipes/visually-hidden` — no app-level `tv()`.
 
-Live examples below match `assets/examples/visually-hidden/`.
-
 ## Examples
 
 ### Default
+
+Expose text to assistive tech without showing it on screen.
 
 :::example Default

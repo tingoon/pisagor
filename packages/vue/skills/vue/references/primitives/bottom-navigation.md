@@ -1,6 +1,6 @@
 ---
 title: Bottom Navigation
-description: Gives mobile users quick access to the main sections of an app from a bar fixed to the bottom of the screen.
+description: "Gives mobile users quick access to main app sections from a bar fixed to the bottom of the screen."
 api: compound
 taxonomy: pattern
 aliases:
@@ -9,7 +9,9 @@ aliases:
 
 ## When to use
 
-- Fixed bottom bar for switching between primary app sections on mobile.
+- Give mobile users three to five primary destinations fixed to the bottom of the screen.
+- Prefer Bottom Navigation over a top navbar when thumbs need one-handed reach.
+- Avoid packing secondary or rare destinations into the bar — put those in overflow menus.
 
 ## Import
 
@@ -19,18 +21,22 @@ import { BottomNavigation } from "@pisagor/vue";
 
 Style with `@pisagor/recipes/bottom-navigation` — no app-level `tv()`.
 
-Live examples below match `assets/examples/bottom-navigation/`.
-
 ## Examples
 
 ### Default
+
+Fixed bottom destinations for primary mobile sections.
 
 :::example Default
 
 ### Icon Only
 
+Use icons alone when labels would crowd a narrow bar. Provide accessible names.
+
 :::example IconOnly
 
 ### With Links
+
+Render destinations as links when each item navigates to a route.
 
 :::example WithLinks

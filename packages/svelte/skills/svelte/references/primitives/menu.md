@@ -1,6 +1,6 @@
 ---
 title: Menu
-description: Always-visible list of navigation links or actions. For popup menus opened from a trigger, use Dropdown Menu.
+description: "Always-visible list of navigation links or actions. Prefer Dropdown Menu for popup menus."
 api: compound
 taxonomy: standard
 aliases:
@@ -10,7 +10,9 @@ aliases:
 
 ## When to use
 
-- Always-visible list of navigation links or actions. For popup menus opened from a trigger, use Dropdown Menu.
+- Show an always-visible list of links or actions in a sidebar or panel.
+- Prefer Menu for persistent navigation; prefer Dropdown Menu for popup menus.
+- Group related items so long menus stay scannable.
 
 ## Import
 
@@ -20,15 +22,17 @@ import { Menu } from "@pisagor/svelte";
 
 Style with `@pisagor/recipes/menu` — no app-level `tv()`.
 
-Live examples below match `assets/examples/menu/`.
-
 ## Examples
 
 ### Default
 
+An always-visible list of navigation links or actions.
+
 :::example Default
 
 ### With Groups
+
+Group related items so long menus stay scannable.
 
 :::example WithGroups
 

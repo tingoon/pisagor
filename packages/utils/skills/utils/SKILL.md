@@ -4,8 +4,7 @@ description: >-
   Pisagor `@pisagor/utils` — `cn()` (clsx + tailwind-merge) and `ClassValue`. Use when merging
   Tailwind class names in Pisagor apps or packages. Ships inside the npm package for Intent.
   Prefer MCP when working on UI components; use this skill for class-helper questions.
-compatibility: >-
-  Framework-agnostic. Consumers of @pisagor/utils or this monorepo.
+compatibility: Framework-agnostic. Requires @pisagor/utils.
 ---
 
 # @pisagor/utils

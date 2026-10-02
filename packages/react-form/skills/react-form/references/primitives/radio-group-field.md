@@ -1,6 +1,6 @@
 ---
 title: Radio Group Field
-description: Lets the user pick one option from a short list with an optional validation message
+description: "Lets the user pick one option from a short list with an optional validation message."
 api: closed
 taxonomy: standard
 packageName: "@pisagor/react-form"
@@ -8,7 +8,9 @@ packageName: "@pisagor/react-form"
 
 ## When to use
 
-- Lets the user pick one option from a short list with an optional validation message.
+- Pick exactly one option from a short, related set that fits on screen at once.
+- Prefer over SelectField when comparing choices side by side matters more than saving space.
+- Prefer over a bare RadioGroup when you need a label, description, or error text with the group.
 
 ## Import
 
@@ -18,14 +20,16 @@ import { RadioGroupField } from "@pisagor/react-form";
 
 Part of `@pisagor/react-form`. Style with recipes where available — no app-level `tv()`.
 
-Live examples below match `assets/examples/radio-group-field/`.
-
 ## Examples
 
 ### Disabled
 
+Show that the radio group is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+
 :::example Disabled
 
 ### Invalid
+
+Surface a validation error under the field so the user knows what to fix before submitting.
 
 :::example Invalid

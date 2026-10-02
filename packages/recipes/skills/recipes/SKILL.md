@@ -5,8 +5,7 @@ description: >-
   Use when styling Pisagor primitives, extending variants, or avoiding app-level `tv()` for
   library appearance. Ships inside the npm package for Intent. Prefer MCP for component APIs;
   use this skill when editing or consuming recipes.
-compatibility: >-
-  Requires tailwind-variants. Consumers of @pisagor/recipes or this monorepo.
+compatibility: Requires tailwind-variants and @pisagor/recipes.
 ---
 
 # @pisagor/recipes

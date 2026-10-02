@@ -1,13 +1,15 @@
 ---
 title: Data Table
-description: Present structured tabular data with headers, rows, and optional selection.
+description: "Presents structured tabular data with headers and rows. Prefer Data Grid for heavy interactive grids."
 api: compound
 taxonomy: pattern
 ---
 
 ## When to use
 
-- Renders basic tabular data with columns and rows. Prefer Data Grid when you need resize, virtualization, or advanced interactions.
+- Present structured rows with headers, optional empty state, and sorting.
+- Prefer Data Table for straightforward datasets; prefer Data Grid for heavy interaction.
+- Show Empty when there are no rows so the table does not look broken.
 
 ## Import
 
@@ -17,14 +19,16 @@ import { DataTable } from "@pisagor/vue/data-table";
 
 Style with `@pisagor/recipes/data-table` — no app-level `tv()`.
 
-Live examples below match `assets/examples/data-table/`.
-
 ## Examples
 
 ### Empty
 
+Show an empty presentation when there are no rows yet.
+
 :::example Empty
 
 ### Sorting
+
+Sort columns so users can reorder records.
 
 :::example Sorting

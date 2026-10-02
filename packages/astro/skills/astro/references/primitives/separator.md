@@ -1,13 +1,15 @@
 ---
 title: Separator
-description: Visually divides sections of content so grouped information is easier to scan.
+description: "Visually divides sections of content so grouped information is easier to scan."
 api: closed
 taxonomy: primitive
 ---
 
 ## When to use
 
-- Visually divides related content into clear sections.
+- Divide related groups of content so structure is easier to scan.
+- Prefer Separator for subtle structure; prefer headings when the break needs a label.
+- Use orientation that matches the layout — horizontal between stacked blocks, vertical in rows.
 
 ## Import
 
@@ -17,14 +19,16 @@ import { Separator } from "@pisagor/astro";
 
 Style with `@pisagor/recipes/separator` — no app-level `tv()`.
 
-Live examples below match `assets/examples/separator/`.
-
 ## Examples
 
 ### Default
 
+Divide related groups of content.
+
 :::example Default
 
 ### Vertical
+
+Use a vertical layout when the separator should read top to bottom.
 
 :::example Vertical

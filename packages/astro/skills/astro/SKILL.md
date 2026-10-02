@@ -7,7 +7,6 @@ description: >-
   Do not use for interactive forms or other UI stacks.
 compatibility: >-
   Requires Tailwind CSS v4.
-  For Astro apps consuming @pisagor/astro or this monorepo.
 ---
 
 # Pisagor Astro
@@ -16,9 +15,9 @@ Astro-only guide for `@pisagor/astro` (static subset). There is no `@pisagor/ast
 
 Other packages have their own skills. Do not duplicate their docs here:
 
-- `@pisagor/recipes` → `packages/recipes/skills/recipes`
-- `@pisagor/utils` → `packages/utils/skills/utils`
-- `@pisagor/tokens` → `packages/tokens/skills/tokens`
+- `@pisagor/recipes`
+- `@pisagor/utils`
+- `@pisagor/tokens`
 - Forms for other stacks live in their own packages — do not document them here.
 
 **Recommended:** `bunx @pisagor/mcp`.
@@ -39,8 +38,8 @@ skills/astro/
 1. **Use existing `@pisagor/astro` components first.** See [`references/component-registry.md`](references/component-registry.md).
 2. **Compose, don’t reinvent.** Prefer MCP `get_example` or `assets/examples/<name>/`.
 3. **Variants before custom classes.** [`references/rules/styling.md`](references/rules/styling.md).
-4. **Semantic colors** — not raw palette utilities. Tokens: `packages/tokens/skills/tokens`.
-5. **Recipes in `@pisagor/recipes`** — no app-level `tv()` for library look. See `packages/recipes/skills/recipes`.
+4. **Semantic colors** — not raw palette utilities. Tokens: `@pisagor/tokens`.
+5. **Recipes in `@pisagor/recipes`** — no app-level `tv()` for library look.
 
 ## Source of truth
 

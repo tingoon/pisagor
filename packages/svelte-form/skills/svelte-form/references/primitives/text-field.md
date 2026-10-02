@@ -1,6 +1,6 @@
 ---
 title: Text Field
-description: Collects a single line of text with a label and optional validation message
+description: "Collects a single line of text with a label and optional validation message."
 api: closed
 taxonomy: standard
 packageName: "@pisagor/svelte-form"
@@ -8,10 +8,9 @@ packageName: "@pisagor/svelte-form"
 
 ## When to use
 
-- Collects a single line of text with a label and optional validation message.
-- Mixing frameworks — this guide is **@pisagor/svelte-form** (not `@pisagor/svelte`).
-- Treating shorthand as a composition root when `Foo.Root` is required.
-- Calling `tv()` in app code — use `@pisagor/recipes`.
+- Collect a single line of text such as an email, name, or search term with a visible label.
+- Prefer over a bare Input when you need description or error text wired to the control.
+- Surface validation errors when input fails checks; show unavailable when the value cannot change yet.
 
 ## Import
 
@@ -19,14 +18,18 @@ packageName: "@pisagor/svelte-form"
 import { TextField } from "@pisagor/svelte-form";
 ```
 
-Live examples below match `assets/examples/text-field/`.
+Part of `@pisagor/svelte-form`. Style with recipes where available — no app-level `tv()`.
 
 ## Examples
 
 ### Disabled
 
+Show that the field is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+
 :::example Disabled
 
 ### Invalid
+
+Surface a validation error under the field so the user knows what to fix before submitting.
 
 :::example Invalid

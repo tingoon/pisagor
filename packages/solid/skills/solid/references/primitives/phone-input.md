@@ -1,13 +1,15 @@
 ---
 title: Phone Input
-description: Enter and format international phone numbers with country selection.
+description: "Enters and formats international phone numbers with country selection."
 api: closed
 taxonomy: pattern
 ---
 
 ## When to use
 
-- Collects phone numbers with a searchable country selector and consistent international formatting.
+- Enter international phone numbers with country selection and formatting.
+- Prefer Phone Input when country codes matter; prefer a plain Input for local-only numbers.
+- Keep the country popup reachable by keyboard and clear about the selected region.
 
 ## Import
 
@@ -17,34 +19,46 @@ import { PhoneInput } from "@pisagor/solid/phone-input";
 
 Style with `@pisagor/recipes/phone-input` — no app-level `tv()`.
 
-Live examples below match `assets/examples/phone-input/`.
-
 ## Examples
 
 ### Controlled
+
+Manage state from the parent when other UI must stay in sync with this phone input.
 
 :::example Controlled
 
 ### Custom Popup
 
+Customize the country popup when the default list presentation is not enough.
+
 :::example CustomPopup
 
 ### Disabled
+
+Show that the phone input is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
 
 :::example Disabled
 
 ### Invalid
 
+Surface a validation or error state so users know the phone input needs attention before continuing.
+
 :::example Invalid
 
 ### Sizes
+
+Match size to the surrounding layout — smaller in compact chrome, larger where the phone input needs emphasis.
 
 :::example Sizes
 
 ### Variants
 
+Choose visual weight or emphasis so the phone input matches importance in the surrounding layout.
+
 :::example Variants
 
 ### Default
+
+Enter a phone number with country selection.
 
 :::example Default

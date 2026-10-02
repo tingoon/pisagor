@@ -8,7 +8,6 @@ description: >-
   tokens, utils, or other frameworks.
 compatibility: >-
   Requires Tailwind CSS v4 and @ark-ui/vue.
-  For Vue apps consuming @pisagor/vue or this monorepo.
 ---
 
 # Pisagor Vue
@@ -17,10 +16,10 @@ Vue-only guide for `@pisagor/vue` components (Ark UI + Tailwind v4).
 
 Other packages have their own skills. Do not duplicate their docs here:
 
-- `@pisagor/recipes` → `packages/recipes/skills/recipes`
-- `@pisagor/utils` → `packages/utils/skills/utils`
-- `@pisagor/tokens` → `packages/tokens/skills/tokens`
-- `@pisagor/vue-form` → `packages/vue-form/skills/vue-form`
+- `@pisagor/recipes`
+- `@pisagor/utils`
+- `@pisagor/tokens`
+- `@pisagor/vue-form`
 
 **Recommended:** `bunx @pisagor/mcp`.
 
@@ -32,7 +31,7 @@ This skill ships in the `@pisagor/vue` package (Intent). `skills add` is support
 skills/vue/
   SKILL.md
   references/          # registry, rules, primitives/<name>.md
-  assets/examples/     # <component>/* (docs via #/vue/examples/<id>; not a public package export)
+  assets/examples/     # <component>/*
 ```
 
 ## Principles
@@ -40,8 +39,8 @@ skills/vue/
 1. **Use existing `@pisagor/vue` components first.** See [`references/component-registry.md`](references/component-registry.md).
 2. **Compose, don’t reinvent.** Prefer MCP `get_example` or `assets/examples/<name>/`.
 3. **Variants before custom classes.** [`references/rules/styling.md`](references/rules/styling.md).
-4. **Semantic colors** — not raw palette utilities. Tokens: `packages/tokens/skills/tokens`.
-5. **Recipes in `@pisagor/recipes`** — no app-level `tv()` for library look. See `packages/recipes/skills/recipes`.
+4. **Semantic colors** — not raw palette utilities. Tokens: `@pisagor/tokens`.
+5. **Recipes in `@pisagor/recipes`** — no app-level `tv()` for library look.
 
 ## Source of truth
 

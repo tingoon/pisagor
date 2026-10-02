@@ -1,13 +1,15 @@
 ---
 title: Avatar
-description: Shows who a user is in the interface — usually a profile photo, or initials or an icon when there is no image or it has not loaded yet.
+description: "Shows who a user is — usually a photo, or initials or an icon when no image is available."
 api: closed
 taxonomy: primitive
 ---
 
 ## When to use
 
-- Displays a user or entity image with a shaped fallback when the source is unavailable.
+- Identify a person with a photo, initials, or icon in lists, headers, and comments.
+- Prefer Avatar Group when several people share a row and space is tight.
+- Always provide an accessible name when the image alone is not enough.
 
 ## Import
 
@@ -17,38 +19,52 @@ import { Avatar } from "@pisagor/vue";
 
 Style with `@pisagor/recipes/avatar` — no app-level `tv()`.
 
-Live examples below match `assets/examples/avatar/`.
-
 ## Examples
 
 ### Compound
+
+Compose image, fallback, and badge parts when you need a custom avatar layout.
 
 :::example Compound
 
 ### Count
 
+Show how many people are represented when listing everyone would take too much space.
+
 :::example Count
 
 ### Default
+
+The standard avatar for a single person.
 
 :::example Default
 
 ### Fallbacks
 
+Fall back to initials or an icon when no photo is available.
+
 :::example Fallbacks
 
 ### Group
+
+Overlap several avatars in a row for shared ownership or participants.
 
 :::example Group
 
 ### Shapes
 
+Choose round or squared geometry to match the surrounding visual language.
+
 :::example Shapes
 
 ### Sizes
 
+Match avatar size to list density — smaller in dense rows, larger in profiles.
+
 :::example Sizes
 
 ### Fallback Only
+
+Render initials or an icon with no image when a photo is not available.
 
 :::example FallbackOnly

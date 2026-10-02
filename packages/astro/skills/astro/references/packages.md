@@ -1,6 +1,6 @@
 # Pisagor Astro packages
 
-Framework: **astro** only (`@pisagor/astro`). Recipes, tokens, and utils are separate skills (`packages/<name>/skills/<name>`).
+Framework: **astro** only (`@pisagor/astro`). Recipes, tokens, and utils are separate packages with their own skills.
 
 ## Install
 
@@ -44,4 +44,4 @@ Prefer **this skill** when MCP is disabled. Use MCP `get_example` / `list_exampl
 | -------- | ----- |
 | Registry | [`component-registry.md`](component-registry.md) |
 | Guides | [`primitives/`](primitives/) |
-| Package root (npm) | `@pisagor/astro` (`src/`, `skills/`, `catalog.gen.json`) |
+| Package | `@pisagor/astro` |

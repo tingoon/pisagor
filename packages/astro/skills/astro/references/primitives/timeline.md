@@ -1,13 +1,15 @@
 ---
 title: Timeline
-description: Shows a sequence of events or milestones so users can follow progress over time.
+description: "Shows a sequence of events or milestones so users can follow progress over time."
 api: compound-shorthand
 taxonomy: standard
 ---
 
 ## When to use
 
-- Shows a sequence of events with indicators and supporting detail.
+- Show events or milestones in chronological order.
+- Prefer Timeline for history and progress narratives; prefer Steps for an active wizard.
+- Keep each entry focused on what happened and when.
 
 ## Import
 
@@ -17,10 +19,10 @@ import { Timeline } from "@pisagor/astro";
 
 Style with `@pisagor/recipes/timeline` — no app-level `tv()`.
 
-Live examples below match `assets/examples/timeline/`.
-
 ## Examples
 
 ### Default
+
+Show events or milestones in chronological order.
 
 :::example Default

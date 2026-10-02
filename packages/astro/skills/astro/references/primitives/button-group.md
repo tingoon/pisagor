@@ -1,13 +1,15 @@
 ---
 title: Button Group
-description: Groups related actions together so users can compare choices and pick one option from a set.
+description: "Groups related actions so users can compare choices and pick one without hunting across the layout."
 api: compound
 taxonomy: primitive
 ---
 
 ## When to use
 
-- Groups related actions into a single segmented control.
+- Group related actions so users can compare choices in one visual cluster.
+- Prefer Button Group when actions share a purpose; prefer Toolbar when heading and actions share a row.
+- Keep one primary-looking action per group when possible.
 
 ## Import
 
@@ -17,22 +19,28 @@ import { ButtonGroup } from "@pisagor/astro";
 
 Style with `@pisagor/recipes/button-group` — no app-level `tv()`.
 
-Live examples below match `assets/examples/button-group/`.
-
 ## Examples
 
 ### Default
+
+Related actions clustered as one visual group.
 
 :::example Default
 
 ### Orientation Horizontal
 
+Lay actions in a row for toolbars and footers.
+
 :::example OrientationHorizontal
 
 ### Orientation Vertical
 
+Stack actions when the group sits in a narrow column.
+
 :::example OrientationVertical
 
 ### With Separator
+
+Separate subgroups so distinct action sets stay scannable.
 
 :::example WithSeparator

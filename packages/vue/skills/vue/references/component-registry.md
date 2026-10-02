@@ -124,7 +124,7 @@ Use this skill only for **vue**. Sibling skills: `react`, `astro`.
 
 ## Form fields
 
-Labeled fields belong to `@pisagor/vue-form`, not this skill. See `packages/vue-form/skills/vue-form`.
+Labeled fields belong to `@pisagor/vue-form`, not this skill. See that package’s skill.
 
 
 ## Utilities

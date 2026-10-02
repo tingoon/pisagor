@@ -1,13 +1,15 @@
 ---
 title: Prose
-description: Styles long-form written content with readable typography for articles, docs, and markdown.
+description: "Styles long-form written content with readable typography for articles, docs, and rich text."
 api: closed
 taxonomy: primitive
 ---
 
 ## When to use
 
-- Styles long-form HTML content with readable typography defaults.
+- Style long-form written content with readable type for articles and docs.
+- Prefer Prose for markdown or HTML bodies; prefer app UI components for interactive chrome.
+- Keep heading levels meaningful so structure stays accessible.
 
 ## Import
 
@@ -17,10 +19,10 @@ import { Prose } from "@pisagor/astro";
 
 Style with `@pisagor/recipes/prose` — no app-level `tv()`.
 
-Live examples below match `assets/examples/prose/`.
-
 ## Examples
 
 ### Default
+
+Readable long-form text styled for articles and documentation.
 
 :::example Default

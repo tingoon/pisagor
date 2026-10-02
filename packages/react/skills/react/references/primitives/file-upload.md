@@ -1,15 +1,15 @@
 ---
 title: File Upload
-description: Lets users choose files to upload with drag-and-drop or a file picker and shows upload progress.
+description: "Lets users choose files with drag-and-drop or a picker and shows upload progress and previews."
 api: compound
 taxonomy: pattern
-aliases:
-  - upload
 ---
 
 ## When to use
 
-- Lets users choose files to upload with drag-and-drop or a file picker and shows upload progress.
+- Upload files with drag-and-drop, previews, and clear progress.
+- Prefer File Upload when users may drop multiple files or need media capture.
+- Show Invalid and Unavailable states so failed or blocked uploads are obvious.
 
 ## Import
 
@@ -19,58 +19,82 @@ import { FileUpload } from "@pisagor/react";
 
 Style with `@pisagor/recipes/file-upload` — no app-level `tv()`.
 
-Live examples below match `assets/examples/file-upload/`.
-
 ## Examples
 
 ### Default
+
+Choose files with a dropzone and file picker.
 
 :::example Default
 
 ### Variants
 
+Choose upload surface emphasis to match the form.
+
 :::example Variants
 
 ### Invalid
+
+Surface rejected files or validation errors.
 
 :::example Invalid
 
 ### Disabled
 
+Show that upload is unavailable. Prefer explaining why nearby.
+
 :::example Disabled
 
 ### Custom Spacing
+
+Adjust spacing for denser or roomier upload regions.
 
 :::example CustomSpacing
 
 ### Accepted File Types
 
+Limit selectable types so users only pick suitable files.
+
 :::example AcceptedFileTypes
 
 ### Clear Trigger
+
+Clear selected files in one action.
 
 :::example ClearTrigger
 
 ### Custom Preview
 
+Customize previews when default thumbnails are not enough.
+
 :::example CustomPreview
 
 ### Directory Upload
+
+Accept a folder when bulk directory import is required.
 
 :::example DirectoryUpload
 
 ### Dropzone
 
+Emphasize drag-and-drop as the primary way to add files.
+
 :::example Dropzone
 
 ### Media Capture
+
+Capture from camera or microphone when device media is the source.
 
 :::example MediaCapture
 
 ### Multiple Files
 
+Allow more than one file in a single upload.
+
 :::example MultipleFiles
 
 ### Trigger
+
+Open the file picker from an explicit trigger control.
 
 :::example Trigger

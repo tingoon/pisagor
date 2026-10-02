@@ -124,7 +124,7 @@ Use this skill only for **react**. Sibling skills: `vue`, `astro`.
 
 ## Form fields
 
-Labeled fields belong to `@pisagor/react-form`, not this skill. See `packages/react-form/skills/react-form`.
+Labeled fields belong to `@pisagor/react-form`, not this skill. See that package’s skill.
 
 
 ## Utilities

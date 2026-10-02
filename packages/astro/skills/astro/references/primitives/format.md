@@ -1,13 +1,15 @@
 ---
 title: Format
-description: Formats numbers, bytes, and relative times for display so values read naturally in the user locale.
+description: "Formats numbers, bytes, and relative times so values read naturally in the user's locale."
 api: compound
 taxonomy: primitive
 ---
 
 ## When to use
 
-- Formats numbers, bytes, and relative times for display so values read naturally in the user locale.
+- Display numbers, bytes, and relative times in a locale-friendly way.
+- Prefer Format helpers over hand-rolled string concatenation for currency, percent, and file sizes.
+- Pick compact or short variants when space is tight.
 
 ## Import
 
@@ -15,26 +17,34 @@ taxonomy: primitive
 import { Format } from "@pisagor/astro";
 ```
 
-Live examples below match `assets/examples/format/`.
-
 ## Examples
 
 ### Default
+
+Format a value for readable display.
 
 :::example Default
 
 ### Byte
 
+Format a byte size for storage and download labels.
+
 :::example Byte
 
 ### Number Compact
+
+Shorten large numbers when space is tight.
 
 :::example NumberCompact
 
 ### Number Currency
 
+Format money with the correct currency style.
+
 :::example NumberCurrency
 
 ### Relative Time
+
+Show a fuller relative time such as 2 hours ago.
 
 :::example RelativeTime

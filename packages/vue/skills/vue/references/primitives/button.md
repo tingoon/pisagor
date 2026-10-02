@@ -1,13 +1,15 @@
 ---
 title: Button
-description: Triggers actions with emphasis, size, and loading states.
+description: "Initiates an action or navigation. Use visual weight, size, and loading state to show which control matters most."
 api: closed
 taxonomy: primitive
 ---
 
 ## When to use
 
-- Primary and secondary action triggers.
+- Start an action or navigation with a clear, verb-led label (Save, Continue, Delete).
+- Prefer one primary button per view; use secondary, outline, or ghost for less important actions.
+- Prefer a button over plain text when the control must look tappable and report progress or an unavailable state.
 
 ## Import
 
@@ -17,50 +19,70 @@ import { Button } from "@pisagor/vue";
 
 Style with `@pisagor/recipes/button` — no app-level `tv()`.
 
-Live examples below match `assets/examples/button/`.
-
 ## Examples
 
 ### Default
+
+The filled button for the main action in a view.
 
 :::example Default
 
 ### Sizes
 
+Match size to the surrounding layout — smaller in compact toolbars, larger for prominent calls to action. Icon sizes keep square hit targets aligned with text buttons.
+
 :::example Sizes
 
 ### Variants
+
+Choose weight by importance: default for the primary action, secondary or outline for alternatives, destructive for irreversible work, ghost for low-emphasis chrome, and link when the control should read like inline text.
 
 :::example Variants
 
 ### Custom color
 
+Override the fill when a brand or contextual color matters more than the theme primary. Keep contrast readable and keep hover and focus styles consistent.
+
 :::example CustomColor
 
 ### Pill
+
+Use a fully rounded shape for chip-like or toolbar actions where softer geometry fits the layout.
 
 :::example Pill
 
 ### No click effect
 
+Turn off the press scale when motion would distract or conflict with surrounding interaction feedback.
+
 :::example NoClickEffect
 
 ### Icon
+
+An icon-only button for a single, well-known action. Always provide an accessible name.
 
 :::example Icon
 
 ### As child
 
+Render the button look on a child element (for example a link) when the control should navigate instead of run an in-page action.
+
 :::example AsChild
 
 ### Disabled
+
+Show that an action is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
 
 :::example Disabled
 
 ### Loading
 
+Keep the control visible while work is in progress and block another press until it finishes.
+
 :::example Loading
 
 ### With icon
+
+Pair an icon with a label to reinforce meaning. Prefer a leading icon for the action; use a trailing icon when the control opens another place.
 
 :::example WithIcon

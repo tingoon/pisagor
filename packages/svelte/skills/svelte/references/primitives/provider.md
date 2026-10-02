@@ -1,13 +1,15 @@
 ---
 title: Provider
-description: Wraps the app with locale, icons, and toasts.
+description: "Wraps the app with locale, icons, and toast context shared by Pisagor components."
 api: closed
 taxonomy: primitive
 ---
 
 ## When to use
 
-- Wraps the app with locale, icons, and toasts.
+- Wrap the application once with locale, icon, and toast context.
+- Place Provider near the root so descendant Pisagor components share configuration.
+- Avoid nesting multiple providers unless isolated trees need different defaults.
 
 ## Import
 
@@ -15,11 +17,11 @@ taxonomy: primitive
 import { Provider } from "@pisagor/svelte";
 ```
 
-Live examples below match `assets/examples/provider/`.
-
 ## Examples
 
 ### Default
+
+Wrap the app once so locale, icons, and toasts are shared by child components.
 
 :::example Default
 

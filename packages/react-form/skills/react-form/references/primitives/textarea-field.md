@@ -1,6 +1,6 @@
 ---
 title: Textarea Field
-description: Collects multiple lines of text with a label and optional validation message
+description: "Collects multiple lines of text with a label and optional validation message."
 api: closed
 taxonomy: standard
 packageName: "@pisagor/react-form"
@@ -8,7 +8,9 @@ packageName: "@pisagor/react-form"
 
 ## When to use
 
-- Collects multiple lines of text with a label and optional validation message.
+- Collect longer text such as bios, notes, or messages over multiple lines.
+- Prefer over a bare Textarea when you need a label, description, or error text with the control.
+- Surface validation errors when input fails checks; show unavailable when editing is not allowed.
 
 ## Import
 
@@ -18,14 +20,16 @@ import { TextareaField } from "@pisagor/react-form";
 
 Part of `@pisagor/react-form`. Style with recipes where available — no app-level `tv()`.
 
-Live examples below match `assets/examples/textarea-field/`.
-
 ## Examples
 
 ### Disabled
 
+Show that the textarea is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
+
 :::example Disabled
 
 ### Invalid
+
+Surface a validation error under the field so the user knows what to fix before submitting.
 
 :::example Invalid

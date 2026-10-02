@@ -1,13 +1,15 @@
 ---
 title: Skeleton
-description: Placeholder shapes that pulse while content loads so layouts feel stable instead of empty.
+description: "Placeholder shapes that pulse while content loads so layouts feel stable instead of jumping."
 api: compound
 taxonomy: primitive
 ---
 
 ## When to use
 
-- Placeholders that reserve space while content is loading.
+- Reserve space with pulsing placeholders while content loads.
+- Prefer Skeleton over a blank layout when structure should stay stable.
+- Prefer Spinner only for tiny regions where a shape placeholder would not help.
 
 ## Import
 
@@ -17,22 +19,28 @@ import { Skeleton } from "@pisagor/astro";
 
 Style with `@pisagor/recipes/skeleton` — no app-level `tv()`.
 
-Live examples below match `assets/examples/skeleton/`.
-
 ## Examples
 
 ### Default
+
+Pulse placeholders while content loads.
 
 :::example Default
 
 ### Circle
 
+A circular placeholder sized for avatars and icon slots.
+
 :::example Circle
 
 ### Composition
 
+Combine circle and text skeletons to mirror a list row while it loads.
+
 :::example Composition
 
 ### Text
+
+Multiple text lines when the final content is a paragraph or bio block.
 
 :::example Text

@@ -1,6 +1,6 @@
 ---
 title: Rich Text Editor
-description: Compose rich text with formatting controls for documents and messages.
+description: "Compose rich text with formatting controls for documents and messages."
 api: compound-shorthand
 taxonomy: standard
 aliases:
@@ -10,7 +10,9 @@ aliases:
 
 ## When to use
 
-- Lets users write and format rich text with common styles such as bold, lists, and emphasis.
+- Compose formatted text with a toolbar for documents and messages.
+- Prefer Rich Text Editor when structure and emphasis matter; prefer Textarea for plain notes.
+- Keep the toolbar focused on the formats your product actually supports.
 
 ## Import
 
@@ -20,22 +22,28 @@ import { RichTextEditor } from "@pisagor/vue/rich-text-editor";
 
 Style with `@pisagor/recipes/rich-text-editor` — no app-level `tv()`.
 
-Live examples below match `assets/examples/rich-text-editor/`.
-
 ## Examples
 
 ### Compound
+
+Assemble from parts when you need a custom layout beyond the shorthand API.
 
 :::example Compound
 
 ### Controlled
 
+Drive editor value from the parent when form state lives above.
+
 :::example Controlled
 
 ### Disabled
 
+Show that editing is unavailable. Prefer explaining why nearby.
+
 :::example Disabled
 
 ### Invalid
+
+Surface a validation error when content is missing or not allowed.
 
 :::example Invalid
