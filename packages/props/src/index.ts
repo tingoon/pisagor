@@ -21,7 +21,6 @@ export type { ButtonGroupProps } from "./button-group";
 export type { CalendarProps, CalendarTableCellProps } from "./calendar";
 export type { CardProps } from "./card";
 export type { CarouselProps } from "./carousel";
-export type { ChartProps } from "./chart";
 export type { CheckboxGroupProps, CheckboxProps } from "./checkbox";
 export type { CircularProgressProps } from "./circular-progress";
 export type { CircularSliderProps } from "./circular-slider";

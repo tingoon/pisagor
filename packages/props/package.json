@@ -24,7 +24,6 @@
     "./calendar": "./src/calendar.ts",
     "./card": "./src/card.ts",
     "./carousel": "./src/carousel.ts",
-    "./chart": "./src/chart.ts",
     "./checkbox": "./src/checkbox.ts",
     "./circular-progress": "./src/circular-progress.ts",
     "./circular-slider": "./src/circular-slider.ts",
