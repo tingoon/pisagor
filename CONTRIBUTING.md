@@ -23,9 +23,13 @@ bun run dev
 - Astro Storybook: http://localhost:4003.
 - Solid / Svelte: block demos under `apps/solid` and `apps/svelte` (used by the docs site; no Storybook apps yet).
 
+## CI
+
+**Checks** runs `lint`, `type-check`, `test`, and `build` (docs) as parallel jobs. On PRs and `main`, Turborepo tasks use `--affected`; `build` only runs `docs` when that package is affected (same `DOCS_*` env as **Docs Site** so remote cache can be shared). Storybook static builds are not part of Checks — they run in **Visual review** (Chromatic).
+
 ## Chromatic
 
-The **Visual review** workflow publishes each Storybook to Chromatic when related packages, recipes, tokens, or Storybook apps change. Create three Chromatic projects linked to this monorepo, then add repository secrets:
+The **Visual review** workflow builds each Storybook via Turborepo (remote + local `.turbo` cache), then publishes the prebuilt `storybook-static` to Chromatic when related packages, recipes, tokens, or Storybook apps change. Create three Chromatic projects linked to this monorepo, then add repository secrets:
 
 - `CHROMATIC_PROJECT_TOKEN_REACT`
 - `CHROMATIC_PROJECT_TOKEN_VUE`
@@ -64,12 +68,12 @@ Weekly dependency PRs: Actions → **Dependency Updates** (Renovate; config in `
 
 ## Turborepo Remote Cache
 
-**Checks** and **Docs Site** share Turborepo artifacts via [Vercel Remote Cache](https://vercel.com/docs/monorepos/remote-caching) (OIDC; no long-lived token). Team: `tingoon` (repo variable `TURBO_TEAM`).
+**Checks**, **Docs Site**, and **Visual review** share Turborepo artifacts via [Vercel Remote Cache](https://vercel.com/docs/monorepos/remote-caching) (OIDC; no long-lived token). CI also restores a local `.turbo` cache via `actions/cache`. Team: `tingoon` (repo variable `TURBO_TEAM`).
 
 One-time setup (owners):
 
 1. Confirm Remote Caching is on (team Settings → Billing). Already enabled for Tingoon.
-2. Add a Turborepo CLI [OIDC policy](https://vercel.com/d?to=%2Ftingoon%2F%7E%2Fsettings%2Fbuild-and-deployment%3FaddOidcPolicy%3Dturborepo-cli&title=Add+a+Turborepo+CLI+OIDC+Policy) scoped to GitHub `tingoon/pisagor`.
+2. Add a Turborepo CLI [OIDC policy](https://vercel.com/d?to=%2Ftingoon%2F%7E%2Fsettings%2Fbuild-and-deployment%3FaddOidcPolicy%3Dturborepo-cli&title=Add+a+Turborepo+CLI+OIDC+Policy) scoped to GitHub `tingoon/pisagor` (include the Checks, Docs Site, and Visual review workflows).
 3. Repo variable: `gh variable set TURBO_TEAM --body "tingoon"` (already set).
 
 Local (optional): `bunx turbo login` then `bunx turbo link` from the repo root. CI logs should show `Remote caching enabled` after the OIDC policy exists.
