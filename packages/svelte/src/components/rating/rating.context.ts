@@ -8,4 +8,3 @@ export interface RatingContextValue {
 const ctx = createContext<RatingContextValue>({ name: "Rating" });
 
 export const setRatingContext = ctx.setContext;
-export const useRating = ctx.getContext;

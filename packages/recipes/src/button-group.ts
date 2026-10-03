@@ -9,6 +9,7 @@ export const buttonGroupRecipe = tv({
   },
   slots: {
     base: [
+      "m-0 min-w-0 border-solid p-0",
       "flex w-fit items-stretch",
       "*:not([class*='w-']):w-fit",
       "*:not([class*='flex-']):flex-1",

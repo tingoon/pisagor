@@ -1,7 +1,7 @@
 import { Frame } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/frame/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/frame";
 
 const meta = preview.meta({
   component: Frame,

@@ -12,7 +12,12 @@ import {
   TagsInputRootProvider,
 } from "./tags-input";
 
-export type { TagsInputItemProps, TagsInputProps } from "./tags-input";
+export type {
+  TagsInputInputProps,
+  TagsInputItemDeleteTriggerProps,
+  TagsInputItemProps,
+  TagsInputProps,
+} from "./tags-input";
 
 export const TagsInput = Object.assign(TagsInputRoot, {
   ClearTrigger: TagsInputClearTrigger,

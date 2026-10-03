@@ -1,6 +1,6 @@
 import { SelectField } from "@pisagor/react-form";
-import * as Examples from "@pisagor/react-form/select-field/examples";
 import { fn } from "storybook/test";
+import * as Examples from "#/react-form/examples/select-field";
 import { countryOptions } from "#/storybook/fixtures";
 import preview from "#/storybook/preview";
 

@@ -8,6 +8,7 @@ import {
   type InputGroupButtonVariantProps,
   inputGroupAddonRecipe,
   inputGroupButtonRecipe,
+  inputGroupRootRecipe,
   inputGroupTextRecipe,
 } from "@pisagor/recipes/input-group";
 import { cn } from "@pisagor/utils";
@@ -48,7 +49,7 @@ export function InputGroupRoot(props: InputGroupProps): JSX.Element {
     <ark.div
       {...rest}
       class={formControlGroupShellRecipe({
-        class: cn(local.class),
+        class: cn(inputGroupRootRecipe(), local.class),
         size: size(),
         surfaceVariant,
         variant: variant(),

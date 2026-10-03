@@ -1,7 +1,7 @@
 import { Alert } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/alert/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/alert";
 
 const meta = preview.meta({
   component: Alert,

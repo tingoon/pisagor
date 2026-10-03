@@ -1,7 +1,7 @@
 import { File } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/file/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/file";
 
 const meta = preview.meta({
   component: File.Root,

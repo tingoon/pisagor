@@ -1,7 +1,7 @@
 import { Editable } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/editable/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/editable";
 
 const meta = preview.meta({
   component: Editable,

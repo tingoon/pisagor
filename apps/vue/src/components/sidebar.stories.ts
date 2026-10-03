@@ -1,7 +1,7 @@
 import { Sidebar } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/sidebar/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/sidebar";
 
 const meta = preview.meta({
   component: Sidebar,

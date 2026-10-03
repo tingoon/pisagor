@@ -2,16 +2,15 @@
   "dependencies": {
     "@ark-ui/vue": "^5.39.2",
     "@phosphor-icons/vue": "^2.2.1",
+    "@pisagor/recipes": "workspace:*",
     "@pisagor/utils": "workspace:*",
     "@pisagor/vue": "workspace:*",
-    "@pisagor/vue-charts": "workspace:*",
     "@pisagor/vue-form": "workspace:*",
     "vue": "catalog:",
     "zod": "^4.6.5"
   },
   "description": "Vue Storybook for @pisagor/vue package stories.",
   "devDependencies": {
-    "@pisagor/tsconfig": "workspace:*",
     "@storybook/addon-a11y": "^10.6.0",
     "@storybook/addon-docs": "^10.6.0",
     "@storybook/vue3-vite": "^10.6.0",

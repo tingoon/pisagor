@@ -1,0 +1,71 @@
+/** @jsxImportSource solid-js */
+
+import { ScrollArea } from "@pisagor/solid";
+import { BottomNavigation } from "@pisagor/solid/bottom-navigation";
+import {
+  BellIcon,
+  HouseIcon,
+  MagnifyingGlassIcon,
+  UserIcon,
+} from "@pisagor/solid/icons";
+export function WithLinks() {
+  return (
+    <div class="flex h-72 flex-col overflow-y-auto rounded-lg border bg-muted shadow-lg/5">
+      <ScrollArea>
+        <div class="h-96" />
+        <BottomNavigation defaultValue="/docs">
+          <BottomNavigation.List class="absolute">
+            <BottomNavigation.Item
+              asChild={(props) => (
+                <a {...props()} href="https://example.com/">
+                  <BottomNavigation.ItemIcon>
+                    <HouseIcon />
+                  </BottomNavigation.ItemIcon>
+                  <BottomNavigation.ItemLabel>Home</BottomNavigation.ItemLabel>
+                </a>
+              )}
+              value="/"
+            />
+            <BottomNavigation.Item
+              asChild={(props) => (
+                <a {...props()} href="https://example.com/search">
+                  <BottomNavigation.ItemIcon>
+                    <MagnifyingGlassIcon />
+                  </BottomNavigation.ItemIcon>
+                  <BottomNavigation.ItemLabel>
+                    Search
+                  </BottomNavigation.ItemLabel>
+                </a>
+              )}
+              value="/docs"
+            />
+            <BottomNavigation.Item
+              asChild={(props) => (
+                <a {...props()} href="https://example.com/news">
+                  <BottomNavigation.ItemIcon>
+                    <BellIcon />
+                  </BottomNavigation.ItemIcon>
+                  <BottomNavigation.ItemLabel>News</BottomNavigation.ItemLabel>
+                </a>
+              )}
+              value="/docs/components"
+            />
+            <BottomNavigation.Item
+              asChild={(props) => (
+                <a {...props()} href="https://example.com/profile">
+                  <BottomNavigation.ItemIcon>
+                    <UserIcon />
+                  </BottomNavigation.ItemIcon>
+                  <BottomNavigation.ItemLabel>
+                    Profile
+                  </BottomNavigation.ItemLabel>
+                </a>
+              )}
+              value="/docs/components"
+            />
+          </BottomNavigation.List>
+        </BottomNavigation>
+      </ScrollArea>
+    </div>
+  );
+}

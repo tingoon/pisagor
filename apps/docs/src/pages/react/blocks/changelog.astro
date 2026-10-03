@@ -1,0 +1,17 @@
+---
+import Changelog from "#/components/docs/changelog.astro";
+import DocsLayout from "#/layouts/docs-layout.astro";
+import { Content, getHeadings } from "#/recipes/CHANGELOG.md";
+
+const headings = getHeadings().filter((heading) => heading.depth === 2);
+---
+
+<DocsLayout
+  description="Release notes for @pisagor/recipes (styles used by Blocks demos)."
+  framework="react"
+  headings={headings}
+  kicker="Get started"
+  title="Changelog"
+>
+  <Changelog Content={Content} />
+</DocsLayout>

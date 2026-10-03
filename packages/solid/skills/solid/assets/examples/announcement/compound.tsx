@@ -1,0 +1,14 @@
+/** @jsxImportSource solid-js */
+import { Badge } from "@pisagor/solid";
+import { Announcement } from "@pisagor/solid/announcement";
+export function Compound() {
+  return (
+    <Announcement.Root>
+      <Badge>Release</Badge>
+
+      <Announcement.Title>
+        v2.1.0 — Dark mode, faster builds, and 12 new components
+      </Announcement.Title>
+    </Announcement.Root>
+  );
+}

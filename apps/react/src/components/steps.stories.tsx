@@ -1,5 +1,5 @@
 import { Steps } from "@pisagor/react";
-import * as Examples from "@pisagor/react/steps/examples";
+import * as Examples from "#/react/examples/steps";
 
 import preview from "#/storybook/preview";
 

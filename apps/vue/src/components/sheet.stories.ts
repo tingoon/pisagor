@@ -1,7 +1,7 @@
 import { Sheet } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/sheet/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/sheet";
 
 const meta = preview.meta({
   component: Sheet,

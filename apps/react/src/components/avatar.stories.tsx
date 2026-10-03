@@ -1,5 +1,5 @@
 import { Avatar } from "@pisagor/react";
-import * as Examples from "@pisagor/react/avatar/examples";
+import * as Examples from "#/react/examples/avatar";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

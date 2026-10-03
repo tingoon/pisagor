@@ -1,5 +1,4 @@
 @import "tailwindcss";
 @import "@pisagor/vue/styles";
-@import "@pisagor/vue-charts/styles";
 @import "@pisagor/vue-form/styles";
 @source "./**/*.{ts}";

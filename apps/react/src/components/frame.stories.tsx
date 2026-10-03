@@ -1,5 +1,5 @@
 import { Frame } from "@pisagor/react";
-import * as Examples from "@pisagor/react/frame/examples";
+import * as Examples from "#/react/examples/frame";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

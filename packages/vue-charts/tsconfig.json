@@ -1,9 +1,0 @@
-{
-  "compilerOptions": {
-    "paths": {
-      "#/storybook/*": ["../../apps/vue/.storybook/*"]
-    }
-  },
-  "extends": "@pisagor/tsconfig/vue-stories",
-  "include": ["src"]
-}

@@ -1,7 +1,7 @@
 import { Avatar } from "@pisagor/astro/avatar";
-import DefaultExample from "@pisagor/astro/avatar/examples/default.astro";
-import SizesExample from "@pisagor/astro/avatar/examples/sizes.astro";
-import WithImageExample from "@pisagor/astro/avatar/examples/with-image.astro";
+import DefaultExample from "#/astro/examples/avatar/default.astro";
+import SizesExample from "#/astro/examples/avatar/sizes.astro";
+import WithImageExample from "#/astro/examples/avatar/with-image.astro";
 
 export default {
   component: Avatar,

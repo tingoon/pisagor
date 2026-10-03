@@ -1,0 +1,20 @@
+{
+  "dependencies": {
+    "@ark-ui/solid": "^5.39.2",
+    "@pisagor/recipes": "workspace:*",
+    "@pisagor/solid": "workspace:*",
+    "@pisagor/solid-form": "workspace:*",
+    "@pisagor/utils": "workspace:*",
+    "solid-js": "catalog:",
+    "zod": "^4.6.5"
+  },
+  "description": "Solid block demos for Pisagor docs.",
+  "devDependencies": {
+    "typescript": "catalog:"
+  },
+  "name": "solid-blocks",
+  "private": true,
+  "scripts": {},
+  "type": "module",
+  "version": "0.0.0"
+}

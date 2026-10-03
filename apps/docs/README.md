@@ -1,6 +1,6 @@
 # Pisagor Docs
 
-Astro documentation site for Pisagor UI (React + Vue + Astro live demos).
+Astro documentation site for Pisagor UI. Each framework has its own URL tree (`/react`, `/vue`, `/astro`, `/solid`, `/svelte`) with framework-local copy and demos.
 
 ## Develop
 
@@ -16,6 +16,8 @@ bun --filter docs dev
 - React: `/react`
 - Vue: `/vue`
 - Astro: `/astro`
+- Solid: `/solid`
+- Svelte: `/svelte`
 
 ## Scripts
 
@@ -44,7 +46,9 @@ apps/docs/
 │   ├── pages/              # routes only (required by Astro)
 │   │   ├── react/
 │   │   ├── vue/
-│   │   └── astro/
+│   │   ├── astro/
+│   │   ├── solid/
+│   │   └── svelte/
 │   ├── styles/
 │   │   └── global.css
 │   └── snippets/           # optional page-local source samples
@@ -53,4 +57,4 @@ apps/docs/
 └── tsconfig.json
 ```
 
-Component examples for demos live in `packages/{react,vue,astro}/**/examples` (not under `src/pages`).
+Component examples for demos live in `packages/{react,vue,astro,solid,svelte}/**/examples` (not under `src/pages`).

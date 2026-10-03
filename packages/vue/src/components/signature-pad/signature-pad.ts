@@ -152,10 +152,8 @@ export const SignaturePad = defineComponent({
               class: cn(
                 formControlZoneRecipe({ ...shellArgs }),
                 slots_.control({
-                  class: cn(
-                    resolved.variant === "primary" && "shadow-xs/5",
-                    props.classNames?.control,
-                  ),
+                  class: cn(props.classNames?.control),
+                  variant: resolved.variant,
                 }),
               ),
               "data-invalid": props.invalid || undefined,

@@ -1,6 +1,6 @@
 ---
-import type { DocsArea, Framework } from "../../lib/nav";
-import { frameworkPath, mainNav } from "../../lib/nav";
+import type { DocsArea, Framework } from "#/lib/nav";
+import { frameworkPath, getMainNav } from "#/lib/nav";
 
 interface Props {
   framework: Framework;
@@ -9,7 +9,7 @@ interface Props {
 ---
 
 <nav aria-label="Primary" class="ms-6 hidden items-center gap-0.5 md:flex">
-  {mainNav.map((item) => {
+  {getMainNav(Astro.props.framework).map((item) => {
   const href = frameworkPath(Astro.props.framework, item.slug);
   const active = Astro.props.area === item.id;
   return (

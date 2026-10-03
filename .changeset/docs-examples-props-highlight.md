@@ -3,13 +3,11 @@
 "@pisagor/mcp": patch
 "@pisagor/props": minor
 "@pisagor/react": minor
-"@pisagor/react-charts": minor
 "@pisagor/react-form": minor
 "@pisagor/recipes": minor
 "@pisagor/tokens": patch
 "@pisagor/utils": patch
 "@pisagor/vue": minor
-"@pisagor/vue-charts": minor
 "@pisagor/vue-form": minor
 ---
 

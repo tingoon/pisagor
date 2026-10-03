@@ -1,8 +1,8 @@
 import { RichTextEditorField } from "@pisagor/vue-form";
-import * as Examples from "@pisagor/vue-form/rich-text-editor-field/examples";
 import { fn } from "storybook/test";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue-form/examples/rich-text-editor-field";
 
 const meta = preview.meta({
   component: RichTextEditorField,

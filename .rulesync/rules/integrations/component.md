@@ -6,14 +6,19 @@ description: Shared product naming — overlay/modal, toolbar, nav, select, feed
 globs:
   - packages/react/src/**
   - packages/vue/src/**
+  - packages/solid/src/**
+  - packages/svelte/src/**
+  - packages/astro/src/**
 cursor:
   alwaysApply: false
 ---
 # Component
 
-Framework-agnostic product naming and catalog policy for `@pisagor/react` and `@pisagor/vue`. Implementation patterns: [React Component Patterns](react-component.mdc), [Vue Component Patterns](vue-component.mdc). Stories: [Storybook](stories.mdc).
+Framework-agnostic product naming and catalog policy for Pisagor component packages.
 
-Import paths below use `@pisagor/{pkg}/…` — substitute `react` or `vue`.
+**Sibling frameworks:** `react`, `vue`, `solid`, `svelte`, and `astro` (Astro is a static subset). Full interactive sets: `@pisagor/react`, `@pisagor/vue`, `@pisagor/solid`, `@pisagor/svelte` (forms: `@pisagor/{framework}-form`). Implementation patterns: [React Component Patterns](react-component.mdc), [Vue Component Patterns](vue-component.mdc), [Solid Component Patterns](solid-component.mdc), [Svelte Component Patterns](svelte-component.mdc). Storybook hosts: `apps/react`, `apps/vue`, `apps/astro` — package source stays story-free. `apps/solid` / `apps/svelte` are block demo hosts (`solid-blocks` / `svelte-blocks`), not Storybook.
+
+Import paths below use `@pisagor/{pkg}/…` — substitute `react`, `vue`, `solid`, `svelte`, or `astro` as appropriate.
 
 ---
 
@@ -51,7 +56,7 @@ Import paths below use `@pisagor/{pkg}/…` — substitute `react` or `vue`.
 
 1. kebab-case folder and export path (`dropdown-menu`)
 2. PascalCase component export (`DropdownMenu`)
-3. Story meta (`title`, `parameters.metadata`, docs description) — [Storybook → Meta](stories.mdc)
+3. When the framework has a Storybook app (`apps/react`, `apps/vue`, `apps/astro`), add story meta there (`title`, `parameters.metadata`, docs description) — [Storybook → Meta](stories.mdc). Do not colocate `*.stories.*` inside component packages.
 
 ## Select stack
 
@@ -75,7 +80,7 @@ Prefer public components in app code; only extend `combobox` when building packa
 | ----- | --------- | ----- | ------- |
 | Structural | `data-scope` + `data-part` | Library (fixed) | Compound part targeting, CSS overrides |
 
-- `data-scope` / `data-part` are not public API; they are an internal contract. Machine-backed parts inherit them from Zag; plain parts set them inline (`data-scope="{name}"`, root `data-part="root"`). How to emit them on nodes: [React](react-component.mdc#styling) / [Vue](vue-component.mdc#styling).
+- `data-scope` / `data-part` are not public API; they are an internal contract. Machine-backed parts inherit them from Zag; plain parts set them inline (`data-scope="{name}"`, root `data-part="root"`). How to emit them on nodes: [React](react-component.mdc#styling) / [Vue](vue-component.mdc#styling) / [Solid](solid-component.mdc#styling) / [Svelte](svelte-component.mdc#styling).
 - Components do **not** expose a `testId` prop. Consumers who need `data-testid` can pass it via native HTML attributes on a root that forwards attrs.
 
 Query priority:

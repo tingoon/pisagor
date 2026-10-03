@@ -1,5 +1,5 @@
 import { InputOTP } from "@pisagor/react";
-import * as Examples from "@pisagor/react/input-otp/examples";
+import * as Examples from "#/react/examples/input-otp";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

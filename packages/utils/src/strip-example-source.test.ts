@@ -1,6 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import {
   stripAstroExample,
+  stripSvelteExample,
   stripTsxExample,
   stripVueExample,
 } from "./strip-example-source";
@@ -70,5 +71,17 @@ import Button from "../button.astro";
 <Button>Button</Button>
 `;
     expect(stripAstroExample(raw)).toBe("<Button>Button</Button>");
+  });
+});
+
+describe("stripSvelteExample", () => {
+  test("removes script and returns markup", () => {
+    const raw = `<script lang="ts">
+import { Button } from "..";
+</script>
+
+<Button>Button</Button>
+`;
+    expect(stripSvelteExample(raw)).toBe("<Button>Button</Button>");
   });
 });

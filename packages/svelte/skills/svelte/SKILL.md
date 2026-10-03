@@ -1,0 +1,71 @@
+---
+name: svelte
+description: >-
+  Pisagor Svelte components (`@pisagor/svelte` only). Use when implementing or
+  debugging Svelte UI built on Ark UI and Tailwind v4. Examples live in this
+  skill (`assets/examples/`). Do not use for other frameworks, recipes, tokens,
+  or utils — those packages have their own skills.
+compatibility: Requires Tailwind CSS v4 and @ark-ui/svelte.
+metadata:
+  package: "@pisagor/svelte"
+---
+
+# @pisagor/svelte
+
+`@pisagor/svelte` components only. Labeled fields live in `@pisagor/svelte-form`.
+
+Other packages:
+
+- `@pisagor/recipes`
+- `@pisagor/utils`
+- `@pisagor/tokens`
+- `@pisagor/svelte-form`
+
+## Layout
+
+```
+skills/svelte/
+  SKILL.md
+  references/          # rules, primitives/
+  assets/examples/<component>/
+```
+
+Components: `src/components/<name>/` (heavy modules under `src/<name>/`).
+
+### Primitive docs
+
+Prefer the **folder** form (tabs on the docs site):
+
+```
+references/primitives/<id>/
+  metadata.md    # YAML frontmatter only (title, description, api, taxonomy, aliases?)
+  design.md      # When to use (Prefer / Avoid)
+  usage.md       # Recommended API, Import, Anatomy
+  examples.md    # ### titles + :::example ExportName
+  develop.md     # Accessibility / keyboard (Props table is appended by the docs app)
+```
+
+Docs tabs (order): **Examples** → **Usage** → **Design** → **Develop**.
+Each tab is a real route: `/svelte/components/<id>/<tab>` (e.g. `…/tooltip/usage`).
+`/svelte/components/<id>` redirects to the default tab.
+
+Flat `references/primitives/<id>.md` is legacy (single file with YAML + body); the docs app still maps it into tabs.
+
+The component id is the folder name (or the legacy filename without `.md`).
+
+Example sources live under `assets/examples/<id>/` (also available via MCP `get_example`).
+
+## Critical rules
+
+- Styling → [`references/rules/styling.md`](references/rules/styling.md) (`class`, gap, tokens, no overlay z-index)
+- Forms → [`references/rules/forms.md`](references/rules/forms.md) (prefer `@pisagor/svelte-form`; do not document field APIs here)
+- Composition → [`references/rules/composition.md`](references/rules/composition.md)
+- Migration → [`references/rules/migration.md`](references/rules/migration.md)
+
+## Rules
+
+- Import light components from `@pisagor/svelte`; heavy (`data-grid`, `data-table`, `phone-input`, `rich-text-editor`) from `@pisagor/svelte/<name>`.
+- Class prop: `class`. Layout via `class`; look via `variant` / `size`.
+- Do not call `tv()` in app code — recipes are `@pisagor/recipes`.
+- Use `cn()` from `@pisagor/utils` when merging classes.
+- Prefer examples in `assets/examples/<name>/` or MCP `get_example`.

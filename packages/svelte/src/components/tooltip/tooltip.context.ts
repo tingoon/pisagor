@@ -7,4 +7,3 @@ export interface TooltipContextValue {
 
 const ctx = createContext<TooltipContextValue>({ name: "Tooltip" });
 export const setTooltipContext = ctx.setContext;
-export const useTooltip = ctx.getContext;

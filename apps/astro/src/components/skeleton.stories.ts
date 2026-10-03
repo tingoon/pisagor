@@ -1,8 +1,8 @@
 import { Skeleton } from "@pisagor/astro/skeleton";
-import CircleExample from "@pisagor/astro/skeleton/examples/circle.astro";
-import CompositionExample from "@pisagor/astro/skeleton/examples/composition.astro";
-import DefaultExample from "@pisagor/astro/skeleton/examples/default.astro";
-import TextExample from "@pisagor/astro/skeleton/examples/text.astro";
+import CircleExample from "#/astro/examples/skeleton/circle.astro";
+import CompositionExample from "#/astro/examples/skeleton/composition.astro";
+import DefaultExample from "#/astro/examples/skeleton/default.astro";
+import TextExample from "#/astro/examples/skeleton/text.astro";
 
 export default {
   component: Skeleton,

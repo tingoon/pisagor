@@ -1,5 +1,5 @@
 import { Surface } from "@pisagor/react";
-import * as Examples from "@pisagor/react/surface/examples";
+import * as Examples from "#/react/examples/surface";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

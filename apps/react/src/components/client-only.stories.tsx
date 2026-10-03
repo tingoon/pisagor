@@ -1,5 +1,5 @@
 import { ClientOnly } from "@pisagor/react";
-import * as Examples from "@pisagor/react/client-only/examples";
+import * as Examples from "#/react/examples/client-only";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

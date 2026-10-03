@@ -1,5 +1,5 @@
 import { FileInput } from "@pisagor/react";
-import * as Examples from "@pisagor/react/file-input/examples";
+import * as Examples from "#/react/examples/file-input";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

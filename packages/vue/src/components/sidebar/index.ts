@@ -16,8 +16,6 @@ import {
   SidebarMenuItem,
   SidebarMenuSkeleton,
   SidebarMenuSub,
-  SidebarMenuSubButton,
-  SidebarMenuSubItem,
   SidebarProvider,
   SidebarRail,
   SidebarRoot,
@@ -25,7 +23,10 @@ import {
   SidebarTrigger,
 } from "./sidebar";
 
-export type { SidebarProps } from "./sidebar";
+export type {
+  SidebarProps,
+  SidebarProviderProps,
+} from "./sidebar";
 export { useSidebar } from "./sidebar";
 
 export const Sidebar = Object.assign(SidebarRoot, {
@@ -46,8 +47,8 @@ export const Sidebar = Object.assign(SidebarRoot, {
   MenuItem: SidebarMenuItem,
   MenuSkeleton: SidebarMenuSkeleton,
   MenuSub: SidebarMenuSub,
-  MenuSubButton: SidebarMenuSubButton,
-  MenuSubItem: SidebarMenuSubItem,
+  MenuSubButton: SidebarMenuButton,
+  MenuSubItem: SidebarMenuItem,
   Provider: SidebarProvider,
   Rail: SidebarRail,
   Separator: SidebarSeparator,

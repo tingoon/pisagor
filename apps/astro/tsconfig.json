@@ -1,11 +1,15 @@
 {
   "compilerOptions": {
+    "jsx": "preserve",
     "paths": {
+      "#/astro/examples/*": [
+        "../../packages/astro/skills/astro/assets/examples/*"
+      ],
       "#/storybook/*": ["./.storybook/*"]
     },
     "types": ["astro/client", "vite/client", "node"]
   },
-  "extends": "@pisagor/tsconfig/astro",
+  "extends": "../../tsconfig.json",
   "include": [
     "src",
     ".storybook",

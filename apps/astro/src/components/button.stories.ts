@@ -1,9 +1,9 @@
 import { Button } from "@pisagor/astro/button";
-import DefaultExample from "@pisagor/astro/button/examples/default.astro";
-import DisabledExample from "@pisagor/astro/button/examples/disabled.astro";
-import LoadingExample from "@pisagor/astro/button/examples/loading.astro";
-import SizesExample from "@pisagor/astro/button/examples/sizes.astro";
-import VariantsExample from "@pisagor/astro/button/examples/variants.astro";
+import DefaultExample from "#/astro/examples/button/default.astro";
+import DisabledExample from "#/astro/examples/button/disabled.astro";
+import LoadingExample from "#/astro/examples/button/loading.astro";
+import SizesExample from "#/astro/examples/button/sizes.astro";
+import VariantsExample from "#/astro/examples/button/variants.astro";
 
 export default {
   component: Button,

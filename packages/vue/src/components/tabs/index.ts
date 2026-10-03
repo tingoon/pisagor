@@ -6,7 +6,10 @@ import {
   TabsTrigger,
 } from "./tabs";
 
-export type { TabsPresetItem } from "./tabs";
+export type {
+  TabsPresetItem,
+  TabsRootProps,
+} from "./tabs";
 
 export const Tabs = Object.assign(TabsShorthand, {
   Content: TabsContent,

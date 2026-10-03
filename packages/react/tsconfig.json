@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
-    "paths": {
-      "#/storybook/*": ["../../apps/react/.storybook/*"]
-    },
+    "jsx": "react-jsx",
+    "noUncheckedSideEffectImports": false,
     "types": ["bun", "node"]
   },
-  "extends": "@pisagor/tsconfig/react-stories",
-  "include": ["src"]
+  "extends": "../../tsconfig.json",
+  "files": ["./css-modules.d.ts", "./react-global.d.ts"],
+  "include": ["src", "skills"]
 }

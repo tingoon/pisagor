@@ -1,5 +1,5 @@
 import { Separator } from "@pisagor/react";
-import * as Examples from "@pisagor/react/separator/examples";
+import * as Examples from "#/react/examples/separator";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

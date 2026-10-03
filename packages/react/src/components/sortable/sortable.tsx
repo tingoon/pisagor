@@ -1,7 +1,6 @@
 import { ark } from "@ark-ui/react/factory";
 import { DotsSixVerticalIcon } from "@phosphor-icons/react";
 import { sortableItemRecipe, sortableRecipe } from "@pisagor/recipes/sortable";
-import { cn } from "@pisagor/utils";
 import type {
   ComponentProps,
   DragEvent,
@@ -329,7 +328,7 @@ export function SortableItem({
   className,
   ...rest
 }: SortableItemProps) {
-  const { getItemProps, activeId } = useSortable();
+  const { getItemProps, activeId, disabled } = useSortable();
   const itemProps = getItemProps(value);
   const isDragging = activeId === value;
   const slots = itemRecipe();
@@ -339,7 +338,7 @@ export function SortableItem({
       <ark.div
         {...rest}
         {...itemProps}
-        className={slots.base({ className })}
+        className={slots.base({ className, disabled })}
         data-part="item"
         data-scope="sortable"
         role="listitem"
@@ -379,9 +378,7 @@ export function SortableHandle({
       {...rest}
       aria-disabled={disabled || undefined}
       aria-label={rest["aria-label"] ?? "Drag to reorder"}
-      className={slots.handle({
-        className: cn(disabled && "pointer-events-none opacity-50", className),
-      })}
+      className={slots.handle({ className, disabled })}
       data-part="handle"
       data-scope="sortable"
       draggable={!disabled}

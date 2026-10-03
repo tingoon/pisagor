@@ -1,7 +1,7 @@
 import { Rating } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/rating/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/rating";
 
 const meta = preview.meta({
   component: Rating,

@@ -10,4 +10,3 @@ export interface SliderContextValue {
 const ctx = createContext<SliderContextValue>({ name: "Slider" });
 
 export const setSliderContext = ctx.setContext;
-export const useSlider = ctx.getContext;

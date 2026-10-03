@@ -1,5 +1,5 @@
 import { VisuallyHidden } from "@pisagor/react";
-import * as Examples from "@pisagor/react/visually-hidden/examples";
+import * as Examples from "#/react/examples/visually-hidden";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

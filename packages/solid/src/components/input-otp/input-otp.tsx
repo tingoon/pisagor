@@ -20,12 +20,13 @@ export interface InputOTPProps extends InputOTPRootProps {
 }
 
 export type InputOTPSlotProps = PinInputInputProps &
-  Pick<InputProps, "variant">;
+  Pick<InputProps, "size" | "variant">;
 
 export type InputOTPSeparatorProps = ComponentProps<typeof ark.hr>;
 
 export function InputOTPRoot(props: InputOTPProps): JSX.Element {
   const [local, rest] = splitProps(props, [
+    "size",
     "variant",
     "children",
     "otp",
@@ -37,7 +38,9 @@ export function InputOTPRoot(props: InputOTPProps): JSX.Element {
   const slots = () => (local.recipe ?? inputOtpRecipe)();
 
   return (
-    <InputOTPContext value={{ slots: slots() }}>
+    <InputOTPContext
+      value={{ size: local.size, slots: slots(), variant: local.variant }}
+    >
       <PinInputPrimitive.Root
         {...rest}
         class={slots().base()}
@@ -61,8 +64,8 @@ export function InputOTPRoot(props: InputOTPProps): JSX.Element {
 }
 
 export function InputOTPSlot(props: InputOTPSlotProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["variant", "class"]);
-  const { slots } = useInputOTP();
+  const [local, rest] = splitProps(props, ["size", "variant", "class"]);
+  const { size: contextSize, slots, variant: contextVariant } = useInputOTP();
 
   return (
     <PinInputPrimitive.Input
@@ -70,7 +73,8 @@ export function InputOTPSlot(props: InputOTPSlotProps): JSX.Element {
       asChild={(inputProps) => (
         <Input
           {...inputProps({ class: slots.input({ class: cn(local.class) }) })}
-          variant={local.variant}
+          size={local.size ?? contextSize}
+          variant={local.variant ?? contextVariant}
         />
       )}
     />

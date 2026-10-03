@@ -1,5 +1,5 @@
 import { ButtonGroup } from "@pisagor/react";
-import * as Examples from "@pisagor/react/button-group/examples";
+import * as Examples from "#/react/examples/button-group";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

@@ -9,6 +9,11 @@ import {
   MenuShortcut,
 } from "./menu";
 
+export type {
+  MenuItemProps,
+  MenuRootProps,
+} from "./menu";
+
 export const Menu = Object.assign(MenuRoot, {
   Group: MenuGroup,
   GroupLabel: MenuGroupLabel,

@@ -19,4 +19,7 @@ export const Card = Object.assign(CardRoot, {
   Title: CardTitle,
 });
 
-export type { CardRootProps } from "./card";
+export type {
+  CardMediaVariant,
+  CardRootProps,
+} from "./card";

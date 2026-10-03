@@ -27,6 +27,7 @@ export type {
   AppShellRegionVar,
   AppShellResizableProps,
   AppShellResizeHandlePosition,
+  AppShellRootProps,
   AppShellSideState,
 } from "./app-shell";
 

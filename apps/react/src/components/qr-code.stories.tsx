@@ -1,5 +1,5 @@
 import { QrCode } from "@pisagor/react";
-import * as Examples from "@pisagor/react/qr-code/examples";
+import * as Examples from "#/react/examples/qr-code";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

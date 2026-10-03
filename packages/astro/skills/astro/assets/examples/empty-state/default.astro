@@ -1,0 +1,15 @@
+---
+import Button from "../../../../../src/components/button/button.astro";
+import EmptyState from "../../../../../src/components/empty-state/empty-state.astro";
+---
+
+<EmptyState
+  description="No items match your current filters. Try clearing filters or creating a new project."
+  title="No projects found"
+>
+  <span aria-hidden class="text-2xl" slot="media">⌕</span>
+  <div class="flex flex-wrap gap-2" slot="actions">
+    <Button>Create project</Button>
+    <Button variant="outline">Clear filters</Button>
+  </div>
+</EmptyState>

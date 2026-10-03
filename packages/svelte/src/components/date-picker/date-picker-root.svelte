@@ -16,7 +16,7 @@ type Props = Omit<ArkRootProps, "onValueChange"> & {
 };
 
 let {
-  variant: _variant,
+  variant,
   positioning = { placement: "top" },
   children,
   onValueChange,
@@ -31,6 +31,9 @@ const calendarSlots = $derived(calendarRecipeProp());
 setDatePickerSlotsContext({
   get slots() {
     return slots;
+  },
+  get variant() {
+    return variant;
   },
 });
 setCalendarSlotsContext({

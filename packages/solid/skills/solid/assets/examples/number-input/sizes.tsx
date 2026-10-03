@@ -1,0 +1,30 @@
+/** @jsxImportSource solid-js */
+import { NumberInput } from "@pisagor/solid/number-input";
+
+export function Sizes() {
+  return (
+    <div class="flex flex-col gap-2">
+      <NumberInput defaultValue="10" size="sm">
+        <NumberInput.Control>
+          <NumberInput.DecrementTrigger />
+          <NumberInput.Input />
+          <NumberInput.IncrementTrigger />
+        </NumberInput.Control>
+      </NumberInput>
+      <NumberInput defaultValue="10" size="md">
+        <NumberInput.Control>
+          <NumberInput.DecrementTrigger />
+          <NumberInput.Input />
+          <NumberInput.IncrementTrigger />
+        </NumberInput.Control>
+      </NumberInput>
+      <NumberInput defaultValue="10" size="lg">
+        <NumberInput.Control>
+          <NumberInput.DecrementTrigger />
+          <NumberInput.Input />
+          <NumberInput.IncrementTrigger />
+        </NumberInput.Control>
+      </NumberInput>
+    </div>
+  );
+}

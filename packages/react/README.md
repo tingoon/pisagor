@@ -16,7 +16,7 @@ The root `@pisagor/react` barrel exports **light** components only. Heavy compon
 - `@pisagor/react/rich-text-editor`
 - `@pisagor/react/phone-input`
 
-Charts: [`@pisagor/react-charts`](../react-charts). Form fields: [`@pisagor/react-form`](../react-form) and `@pisagor/react-form/tanstack`. Hooks: `@pisagor/react/hooks`. Utils (`createContext`, …): `@pisagor/react/utils`.
+Form fields: [`@pisagor/react-form`](../react-form) and `@pisagor/react-form/tanstack`. Hooks: `@pisagor/react/hooks`. Utils (`createContext`, …): `@pisagor/react/utils`.
 
 See the [root README](../../README.md) for Tailwind setup.
 

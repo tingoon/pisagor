@@ -1,5 +1,5 @@
 import { InputGroup } from "@pisagor/react";
-import * as Examples from "@pisagor/react/input-group/examples";
+import * as Examples from "#/react/examples/input-group";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

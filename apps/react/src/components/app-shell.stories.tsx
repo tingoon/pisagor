@@ -1,5 +1,5 @@
 import { AppShell } from "@pisagor/react";
-import * as Examples from "@pisagor/react/app-shell/examples";
+import * as Examples from "#/react/examples/app-shell";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

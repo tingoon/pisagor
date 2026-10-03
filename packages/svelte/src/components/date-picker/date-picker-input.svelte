@@ -30,7 +30,7 @@ let {
 const ctx = useDatePicker();
 const slots = $derived(ctx?.slots);
 const surfaceVariant = useFormControlSurface();
-const variant = $derived(variantProp ?? ("primary" as const));
+const variant = $derived(variantProp ?? ctx?.variant ?? ("primary" as const));
 </script>
 
 {#if slots}

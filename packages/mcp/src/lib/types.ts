@@ -1,23 +1,23 @@
 import type { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
 
-export type Framework = "react" | "vue" | "astro";
+export type Framework = "react" | "vue" | "astro" | "solid" | "svelte";
 
 interface CatalogFile {
   path: string;
   content: string;
 }
 
-interface CatalogExample {
+export interface CatalogExample {
   id: string;
   exportName: string;
+  path: string;
+  content: string;
 }
 
 export interface CatalogComponent {
   name: string;
   package: string;
-  storiesPath: string | null;
-  storiesContent: string | null;
   examples: CatalogExample[];
   sources: CatalogFile[];
 }
@@ -60,7 +60,7 @@ export interface Tool<T = unknown> {
 export interface ComponentEntry {
   name: string;
   package: string;
-  hasStories: boolean;
+  hasExamples: boolean;
 }
 
 export interface ExampleEntry {
