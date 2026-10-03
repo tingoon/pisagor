@@ -67,7 +67,7 @@ export function DatePickerRoot(props: DatePickerRootProps): JSX.Element {
   const calendarSlots = () => (local.calendarRecipe ?? calendarRecipe)();
 
   return (
-    <DatePickerSlotsContext value={{ slots: slots() }}>
+    <DatePickerSlotsContext value={{ slots: slots(), variant: local.variant }}>
       <CalendarSlotsContext value={{ slots: calendarSlots() }}>
         <DatePickerPrimitive.Root
           {...rest}
@@ -107,13 +107,22 @@ export function DatePickerTrigger(props: DatePickerTriggerProps): JSX.Element {
 }
 
 export function DatePickerInput(props: DatePickerInputProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["size", "clearable", "class"]);
+  const [local, rest] = splitProps(props, [
+    "size",
+    "variant",
+    "clearable",
+    "class",
+  ]);
   const picker = useDatePicker();
   const slots = () => picker?.slots ?? datePickerRecipe();
 
   return (
     <DatePickerPrimitive.Control>
-      <InputGroup class={local.class} size={local.size}>
+      <InputGroup
+        class={local.class}
+        size={local.size}
+        variant={local.variant ?? picker?.variant}
+      >
         <DatePickerPrimitive.Input
           {...rest}
           asChild={(inputProps) => (
@@ -222,7 +231,7 @@ export function DatePickerTimer(props: DatePickerTimerProps): JSX.Element {
     });
 
   return (
-    <InputGroup size={local.size} variant={local.variant}>
+    <InputGroup size={local.size} variant={local.variant ?? picker?.variant}>
       <InputGroup.Addon>
         <ClockIcon />
       </InputGroup.Addon>
