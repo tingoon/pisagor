@@ -18,7 +18,10 @@ interface ComponentMeta {
 }
 
 const skillRawModules = import.meta.glob(
-  "../../../../packages/*/skills/*/references/primitives/*.md",
+  [
+    "../../../../packages/*/skills/*/references/primitives/*.md",
+    "../../../../packages/*/skills/*/references/primitives/*/metadata.md",
+  ],
   {
     eager: true,
     import: "default",
@@ -35,6 +38,13 @@ function packagePriority(path: string): number {
   return 10;
 }
 
+function idFromMetaPath(path: string): string | undefined {
+  const folder = /\/primitives\/([^/]+)\/metadata\.md$/.exec(path);
+  if (folder?.[1]) return folder[1];
+  const flat = /\/primitives\/([^/]+)\.md$/.exec(path);
+  return flat?.[1];
+}
+
 function metaFromSkillDocs(): Record<string, ComponentMeta> {
   const out: Record<string, ComponentMeta> = {};
   const ranked = Object.entries(skillRawModules).sort(
@@ -42,7 +52,7 @@ function metaFromSkillDocs(): Record<string, ComponentMeta> {
   );
   for (const [path, raw] of ranked) {
     if (typeof raw !== "string" || !raw.startsWith("---")) continue;
-    const id = path.split("/").pop()?.replace(/\.md$/, "");
+    const id = idFromMetaPath(path);
     if (!id || out[id]) continue;
     try {
       const { docs } = parseSkillDoc(raw);

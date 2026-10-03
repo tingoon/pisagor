@@ -1,6 +1,6 @@
 ---
-import ComponentDocPage from "#/components/docs/component-doc-page.astro";
-import { listComponentIds } from "#/lib/component-doc";
+import { getDefaultComponentTab, listComponentIds } from "#/lib/component-doc";
+import { withDocsBase } from "#/lib/nav";
 
 export function getStaticPaths() {
   return listComponentIds("react", "form").map((id) => ({
@@ -9,6 +9,7 @@ export function getStaticPaths() {
 }
 
 const id = Astro.params.id as string;
+const tab = await getDefaultComponentTab("react", id, "form");
+return Astro.redirect(withDocsBase(`/react/forms/${id}/${tab}`));
 ---
 
-<ComponentDocPage framework="react" id={id} kind="form" />

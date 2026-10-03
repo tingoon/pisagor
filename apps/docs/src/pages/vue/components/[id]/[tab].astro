@@ -1,0 +1,16 @@
+---
+import ComponentDocPage from "#/components/docs/component-doc-page.astro";
+import {
+  listComponentTabStaticPaths,
+  type SkillPaneId,
+} from "#/lib/component-doc";
+
+export async function getStaticPaths() {
+  return listComponentTabStaticPaths("vue");
+}
+
+const id = Astro.params.id as string;
+const tab = Astro.params.tab as SkillPaneId;
+---
+
+<ComponentDocPage framework="vue" id={id} tab={tab} />

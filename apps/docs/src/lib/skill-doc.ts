@@ -10,9 +10,13 @@ const DEFAULT_PACKAGE_NAME: Record<Framework, string> = {
   vue: "@pisagor/vue",
 };
 
-/** All skill primitive markdown (react/vue/astro/solid/svelte + form packages). */
+/** Flat primitive markdown + React folder `metadata.md` / panes. */
 const skillRawModules = import.meta.glob(
-  "../../../../packages/*/skills/*/references/primitives/*.md",
+  [
+    "../../../../packages/*/skills/*/references/primitives/*.md",
+    "../../../../packages/*/skills/*/references/primitives/*/metadata.md",
+    "../../../../packages/*/skills/*/references/primitives/*/{design,usage,examples,develop}.md",
+  ],
   {
     eager: true,
     import: "default",
@@ -31,6 +35,18 @@ export function parseSkillDoc(raw: string): {
   }
   const docs = parseYaml(match[1]) as ComponentDocs;
   return { body: (match[2] ?? "").trim(), docs };
+}
+
+/** Body text for pane files that may omit YAML frontmatter. */
+export function skillDocBody(raw: string): string {
+  if (raw.startsWith("---")) {
+    try {
+      return parseSkillDoc(raw).body;
+    } catch {
+      return raw.trim();
+    }
+  }
+  return raw.trim();
 }
 
 function pascalCase(id: string): string {
@@ -57,18 +73,27 @@ function packageDirSlug(packageName: string): string {
   return packageName.replace(/^@pisagor\//, "");
 }
 
-/**
- * Find raw skill markdown for a component id, optionally scoped by package.
- * Prefer an exact package path match; otherwise prefer the given framework's
- * package, then react, then any match.
- */
-export function findSkillRaw(
-  id: string,
-  opts?: { framework?: Framework; packageName?: string },
-): string | undefined {
-  const candidates = Object.entries(skillRawModules).filter(([path]) =>
-    path.endsWith(`/${id}.md`),
-  );
+function isMetadataPath(path: string, id: string): boolean {
+  return path.endsWith(`/primitives/${id}/metadata.md`);
+}
+
+function isFlatPath(path: string, id: string): boolean {
+  return path.endsWith(`/primitives/${id}.md`);
+}
+
+function isPanePath(path: string, id: string, pane: string): boolean {
+  return path.endsWith(`/primitives/${id}/${pane}.md`);
+}
+
+function rankCandidates(
+  candidates: [string, string][],
+  opts?: {
+    framework?: Framework;
+    packageName?: string;
+    /** When true, do not fall back across packages (used for split panes). */
+    strictPackage?: boolean;
+  },
+): [string, string] | undefined {
   if (candidates.length === 0) return undefined;
 
   if (opts?.packageName) {
@@ -76,48 +101,105 @@ export function findSkillRaw(
     const hit = candidates.find(([path]) =>
       path.includes(`/packages/${slug}/`),
     );
-    if (hit) return hit[1];
+    if (hit) return hit;
+    if (opts.strictPackage) return undefined;
   }
 
   if (opts?.framework) {
     const fw = opts.framework;
     const hit = candidates.find(([path]) => path.includes(`/packages/${fw}/`));
-    if (hit) return hit[1];
+    if (hit) return hit;
+    if (opts.strictPackage) return undefined;
   }
 
   const react = candidates.find(([path]) => path.includes("/packages/react/"));
-  return (react ?? candidates[0])?.[1];
+  return react ?? candidates[0];
+}
+
+/**
+ * Find raw skill markdown for a component id, optionally scoped by package.
+ * Prefer folder `metadata.md`, then flat `<id>.md`.
+ */
+export function findSkillRaw(
+  id: string,
+  opts?: { framework?: Framework; packageName?: string },
+): string | undefined {
+  const metadataCandidates = Object.entries(skillRawModules).filter(([path]) =>
+    isMetadataPath(path, id),
+  );
+  const metadataHit = rankCandidates(metadataCandidates, opts);
+  if (metadataHit) return metadataHit[1];
+
+  const flatCandidates = Object.entries(skillRawModules).filter(([path]) =>
+    isFlatPath(path, id),
+  );
+  return rankCandidates(flatCandidates, opts)?.[1];
+}
+
+/** Raw markdown for a split pane (`design` / `usage` / `examples` / `develop`). */
+export function findSkillPaneRaw(
+  id: string,
+  pane: "design" | "usage" | "examples" | "develop",
+  opts?: { framework?: Framework; packageName?: string },
+): string | undefined {
+  const candidates = Object.entries(skillRawModules).filter(([path]) =>
+    isPanePath(path, id, pane),
+  );
+  return rankCandidates(candidates, { ...opts, strictPackage: true })?.[1];
+}
+
+/**
+ * Body used to resolve `:::example` directives — examples pane when split,
+ * otherwise the flat / index skill body.
+ */
+export function findSkillExamplesBody(
+  id: string,
+  opts?: { framework?: Framework; packageName?: string },
+): string {
+  const pane = findSkillPaneRaw(id, "examples", opts);
+  if (pane) return skillDocBody(pane);
+  const raw = findSkillRaw(id, opts);
+  return raw ? parseSkillDoc(raw).body : "";
 }
 
 /**
  * Read the import shown in a primitive's `## Import` section.
- * The fallback keeps docs usable if a markdown file has no import example.
+ * Prefers `usage.md` for split skills; falls back to the main skill body.
  */
 export function getSkillDocImportStatement(
   id: string,
   packageName = DEFAULT_PACKAGE_NAME.react,
   framework?: Framework,
 ): string {
-  const raw = findSkillRaw(id, { framework, packageName });
-  if (raw) {
-    const importHeading = raw.indexOf("## Import");
-    if (importHeading >= 0) {
-      const nextHeading = raw.indexOf("\n## ", importHeading + 1);
-      const section = raw.slice(
-        importHeading,
-        nextHeading >= 0 ? nextHeading : raw.length,
-      );
-      const code =
-        /```(?:tsx?|typescript|astro|vue|svelte)?\s*\r?\n([\s\S]*?)```/.exec(
-          section,
-        )?.[1];
-      const statement = code
-        ?.split(/\r?\n/)
-        .map((line) => line.trim())
-        .find((line) => line.startsWith("import "));
-      if (statement) return statement;
-    }
+  const opts = { framework, packageName };
+  const usageRaw = findSkillPaneRaw(id, "usage", opts);
+  const searchBodies = [
+    usageRaw ? skillDocBody(usageRaw) : undefined,
+    (() => {
+      const raw = findSkillRaw(id, opts);
+      return raw ? parseSkillDoc(raw).body : undefined;
+    })(),
+  ].filter((b): b is string => Boolean(b));
+
+  for (const body of searchBodies) {
+    const importHeading = body.indexOf("## Import");
+    if (importHeading < 0) continue;
+    const nextHeading = body.indexOf("\n## ", importHeading + 1);
+    const section = body.slice(
+      importHeading,
+      nextHeading >= 0 ? nextHeading : body.length,
+    );
+    const code =
+      /```(?:tsx?|typescript|astro|vue|svelte)?\s*\r?\n([\s\S]*?)```/.exec(
+        section,
+      )?.[1];
+    const statement = code
+      ?.split(/\r?\n/)
+      .map((line) => line.trim())
+      .find((line) => line.startsWith("import "));
+    if (statement) return statement;
   }
+
   const isFormPackage = packageName.endsWith("-form");
   const useSubpath = !isFormPackage && HEAVY_UI_COMPONENT_IDS.has(id);
   const specifier = useSubpath ? `${packageName}/${id}` : packageName;

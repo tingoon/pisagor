@@ -19,6 +19,19 @@ type OxcConfig = {
   [key: string]: unknown;
 };
 
+type RolldownTransform = {
+  jsx?: unknown;
+  [key: string]: unknown;
+};
+
+type OptimizeDepsConfig = {
+  rolldownOptions?: {
+    transform?: RolldownTransform;
+    [key: string]: unknown;
+  };
+  [key: string]: unknown;
+};
+
 /**
  * @vitejs/plugin-react sets `oxc.jsx.refresh: true` globally. @vitejs/plugin-vue
  * spreads `config.oxc` into a direct `transformWithOxc` call for `<script lang="ts">`,
@@ -49,6 +62,27 @@ function preventOxcRefreshLeakToVue() {
     },
     enforce: "post" as const,
     name: "pisagor:prevent-oxc-refresh-leak-to-vue",
+  };
+}
+
+/**
+ * vite-plugin-solid sets `optimizeDeps.rolldownOptions.transform.jsx = "preserve"` on
+ * Vite 8 so the scanner does not inject `react/jsx-dev-runtime`. That leaves JSX
+ * intact when Vite's `import.meta.glob` dep-scan path rewrites the module as
+ * `moduleType: "js"`, which then fails with "JSX syntax is disabled".
+ * Serve/build still use babel-preset-solid; only the Rolldown dep scanner needs
+ * a transform that emits plain JS. Docs already depends on React, so automatic
+ * runtime for the scanner is safe.
+ */
+function fixSolidPreserveJsxForDepScan() {
+  return {
+    configResolved(config: { optimizeDeps?: OptimizeDepsConfig }) {
+      const transform = config.optimizeDeps?.rolldownOptions?.transform;
+      if (transform?.jsx !== "preserve") return;
+      transform.jsx = { runtime: "automatic" };
+    },
+    enforce: "post" as const,
+    name: "pisagor:fix-solid-preserve-jsx-dep-scan",
   };
 }
 
@@ -101,7 +135,11 @@ export default defineConfig({
   server: { host: true, port: 4000 },
   site: process.env.DOCS_SITE || "https://tingoon.github.com/pisagor",
   vite: {
-    plugins: [tailwindcss(), preventOxcRefreshLeakToVue()],
+    plugins: [
+      tailwindcss(),
+      preventOxcRefreshLeakToVue(),
+      fixSolidPreserveJsxForDepScan(),
+    ],
     ssr: {
       noExternal: [
         "@pisagor/react",

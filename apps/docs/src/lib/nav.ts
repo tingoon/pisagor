@@ -589,6 +589,24 @@ function areaIntroSlug(area: DocsArea): string {
   return "";
 }
 
+/** Doc section tabs under `/components|forms/<id>/<tab>`. */
+const COMPONENT_DOC_TABS = new Set(["design", "develop", "examples", "usage"]);
+
+/** Drop a trailing doc tab segment so sidebar slugs still match. */
+function stripComponentDocTab(slug: string): string {
+  const segments = slug.split("/").filter(Boolean);
+  const last = segments.at(-1);
+  if (
+    segments.length >= 2 &&
+    last &&
+    COMPONENT_DOC_TABS.has(last) &&
+    (segments[0] === "components" || segments[0] === "forms")
+  ) {
+    return segments.slice(0, -1).join("/");
+  }
+  return slug;
+}
+
 /** Whether the sidebar lists a ready page for this framework/area/slug. */
 function sidebarHasSlug(
   framework: Framework,
@@ -603,6 +621,8 @@ function sidebarHasSlug(
 /**
  * Map the current docs URL to the same page on another framework.
  * Falls back to the area intro (or framework home) when that page is not shipped.
+ * Component doc tabs (`…/usage`) map to the component root; the target framework
+ * redirects to its default tab.
  */
 export function swapFrameworkPath(pathname: string, next: Framework) {
   const parts = stripDocsBase(pathname).split("/").filter(Boolean);
@@ -613,10 +633,10 @@ export function swapFrameworkPath(pathname: string, next: Framework) {
     return frameworkPath(next);
   }
 
-  const slug = parts.slice(1).join("/");
+  const slug = stripComponentDocTab(parts.slice(1).join("/"));
   if (!sidebarHasSlug(next, area, slug)) {
     return frameworkPath(next, areaIntroSlug(area));
   }
 
-  return withDocsBase(`/${[next, ...parts.slice(1)].join("/")}`);
+  return frameworkPath(next, slug);
 }

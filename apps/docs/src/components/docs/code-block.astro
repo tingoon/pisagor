@@ -14,9 +14,12 @@ const code = Astro.props.code ?? "";
 const requestedLang = Astro.props.lang ?? "bash";
 /**
  * Docs Vue snippets come in three shapes:
- * 1) Full SFC (`<script>` / `<template>` / `<style>`) → `vue`
- * 2) Stripped template body (see stripVueExample) → `vue` (was Shiki vue-html)
- * 3) Import / script-only lines (no markup) → `ts`
+ * 1) Full SFC (script / template / style blocks) → vue
+ * 2) Stripped template body (see stripVueExample) → vue (was Shiki vue-html)
+ * 3) Import / script-only lines (no markup) → ts
+ *
+ * Avoid raw angle-bracket tags in this comment — Astro treats bare
+ * script/style openers as real blocks even inside frontmatter docs.
  */
 const hasVueSfcBlock = /<(?:script|template|style)\b/i.test(code);
 const hasMarkup = /<[A-Za-z]/.test(code);
