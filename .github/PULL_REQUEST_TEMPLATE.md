@@ -17,7 +17,7 @@
 
 - [ ] `bun run check` passes
 - [ ] `bun run test` passes
-- [ ] Storybook story checked (if UI)
+- [ ] Storybook story or docs demo checked (if UI)
 
 ## Related Issues
 

@@ -7,7 +7,7 @@ body:
     id: package
     attributes:
       label: Package
-      description: Which package? (`@pisagor/react`, `@pisagor/vue`, …)
+      description: Which package? (`@pisagor/react`, `@pisagor/vue`, `@pisagor/solid`, `@pisagor/svelte`, `@pisagor/astro`, …)
       placeholder: "@pisagor/react"
     validations:
       required: true
