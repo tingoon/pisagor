@@ -1,5 +1,5 @@
 import { Button, Toolbar } from "@pisagor/react";
-import * as Examples from "@pisagor/react/toolbar/examples";
+import * as Examples from "#/react/examples/toolbar";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

@@ -1,0 +1,15 @@
+---
+import { getDefaultComponentTab, listComponentIds } from "#/lib/component-doc";
+import { withDocsBase } from "#/lib/nav";
+
+export function getStaticPaths() {
+  return listComponentIds("svelte", "form").map((id) => ({
+    params: { id },
+  }));
+}
+
+const id = Astro.params.id as string;
+const tab = await getDefaultComponentTab("svelte", id, "form");
+return Astro.redirect(withDocsBase(`/svelte/forms/${id}/${tab}`));
+---
+

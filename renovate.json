@@ -1,40 +1,11 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended", ":semanticCommits"],
+  "extends": ["config:recommended", ":semanticCommits", "group:all"],
   "labels": ["dependencies"],
   "lockFileMaintenance": {
     "enabled": true
   },
   "packageRules": [
-    {
-      "groupName": "TanStack",
-      "matchPackageNames": ["@tanstack/**"]
-    },
-    {
-      "groupName": "Biome",
-      "matchPackageNames": ["@biomejs/**"]
-    },
-    {
-      "groupName": "Commitlint",
-      "matchPackageNames": ["@commitlint/**"]
-    },
-    {
-      "groupName": "React",
-      "matchPackageNames": [
-        "react",
-        "react-dom",
-        "@types/react",
-        "@types/react-dom"
-      ]
-    },
-    {
-      "groupName": "Vite",
-      "matchPackageNames": ["vite", "vitest", "@vitejs/**"]
-    },
-    {
-      "groupName": "Tailwind",
-      "matchPackageNames": ["tailwindcss", "@tailwindcss/**"]
-    },
     {
       "matchCurrentVersion": "!/^0/",
       "matchUpdateTypes": ["minor", "patch"]
@@ -44,5 +15,6 @@
       "matchUpdateTypes": ["patch"]
     }
   ],
+  "prBodyTemplate": "{{{header}}}{{{table}}}{{{warnings}}}{{{notes}}}{{{changelogs}}}",
   "rangeStrategy": "bump"
 }

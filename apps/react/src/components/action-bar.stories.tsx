@@ -1,5 +1,5 @@
 import { ActionBar } from "@pisagor/react";
-import * as Examples from "@pisagor/react/action-bar/examples";
+import * as Examples from "#/react/examples/action-bar";
 
 import preview from "#/storybook/preview";
 

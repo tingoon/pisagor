@@ -5,6 +5,8 @@ import {
   CollapsibleTrigger,
 } from "./collapsible";
 
+export type { CollapsibleRootProps } from "./collapsible";
+
 export const Collapsible = Object.assign(CollapsibleRoot, {
   Content: CollapsibleContent,
   Indicator: CollapsibleIndicator,

@@ -64,3 +64,12 @@ export function stripAstroExample(raw: string): string {
   const body = raw.replace(/^---[\s\S]*?---\s*/, "");
   return dedent(body.replace(/^\n/, "")).trimEnd();
 }
+
+/** Strip a Svelte example to markup (``<script>`` blocks removed). */
+export function stripSvelteExample(raw: string): string {
+  const withoutScript = raw.replace(
+    /<script\b[^>]*>[\s\S]*?<\/script>\s*/gi,
+    "",
+  );
+  return dedent(withoutScript.replace(/^\n/, "")).trimEnd();
+}

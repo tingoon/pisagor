@@ -28,7 +28,6 @@ export const PhoneField = defineComponent({
       type: [String, Object, Array] as PropType<unknown>,
     },
     defaultCountry: { default: undefined, type: String },
-    defaultValue: { default: undefined, type: String },
     description: {
       default: undefined,
       type: null as unknown as PropType<VNodeChild>,
@@ -92,14 +91,16 @@ export const PhoneField = defineComponent({
         () =>
           h(PhoneInput as ArkPart, {
             ...attrs,
-            defaultCountry: props.defaultCountry,
-            defaultValue: props.defaultValue,
+            defaultCountry: props.defaultCountry as
+              | PhoneInputProps["defaultCountry"]
+              | undefined,
             disabled: props.disabled,
             id: props.id,
             invalid: props.invalid,
             name: props.name,
             onBlur: props.onBlur,
             onChange: props.onValueChange,
+            placeholder: props.placeholder,
             readOnly: props.readOnly,
             size: props.size,
             variant: props.variant,

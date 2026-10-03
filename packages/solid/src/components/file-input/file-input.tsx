@@ -79,7 +79,7 @@ function FileInputRoot(props: FileInputRootProps): JSX.Element {
       <ark.div
         {...rest}
         class={formControlGroupShellRecipe({
-          class: cn(local.class),
+          class: cn(slots().root(), local.class),
           size: size(),
           surfaceVariant,
           variant: variant(),

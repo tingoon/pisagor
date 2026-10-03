@@ -1,7 +1,7 @@
 import { ActionBar } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/action-bar/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/action-bar";
 
 const meta = preview.meta({
   component: ActionBar,

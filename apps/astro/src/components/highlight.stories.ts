@@ -1,6 +1,6 @@
 import { Highlight } from "@pisagor/astro/highlight";
-import DefaultExample from "@pisagor/astro/highlight/examples/default.astro";
-import MultipleExample from "@pisagor/astro/highlight/examples/multiple.astro";
+import DefaultExample from "#/astro/examples/highlight/default.astro";
+import MultipleExample from "#/astro/examples/highlight/multiple.astro";
 
 export default {
   component: Highlight,

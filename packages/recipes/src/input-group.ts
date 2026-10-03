@@ -1,5 +1,9 @@
 import { tv, type VariantProps } from "tailwind-variants";
 
+export const inputGroupRootRecipe = tv({
+  base: ["m-0 min-w-0 border-solid p-0"],
+});
+
 export const inputGroupAddonRecipe = tv({
   base: [
     "h-auto",
@@ -135,3 +139,7 @@ export type InputGroupTextareaControlRecipe =
   ReturnType<InputGroupTextareaControlRecipeFn>;
 export type InputGroupTextareaControlRecipeSlot =
   keyof InputGroupTextareaControlRecipe;
+
+export type InputGroupRootRecipeFn = typeof inputGroupRootRecipe;
+export type InputGroupRootRecipe = ReturnType<InputGroupRootRecipeFn>;
+export type InputGroupRootRecipeSlot = keyof InputGroupRootRecipe;

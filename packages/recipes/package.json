@@ -5,10 +5,7 @@
   "dependencies": {
     "tailwind-variants": "^3.3.1"
   },
-  "description": "Shared Tailwind class recipes (tv) for Pisagor components.",
-  "devDependencies": {
-    "@pisagor/tsconfig": "workspace:*"
-  },
+  "description": "Shared Tailwind Variants (`tv()`) recipes for Pisagor components.",
   "exports": {
     ".": "./src/index.ts",
     "./accordion": "./src/accordion.ts",
@@ -20,6 +17,16 @@
     "./aspect-ratio": "./src/aspect-ratio.ts",
     "./avatar": "./src/avatar.ts",
     "./badge": "./src/badge.ts",
+    "./blocks/app-shell": "./src/blocks/app-shell.ts",
+    "./blocks/card": "./src/blocks/card.ts",
+    "./blocks/editors": "./src/blocks/editors.ts",
+    "./blocks/field": "./src/blocks/field.ts",
+    "./blocks/input-group": "./src/blocks/input-group.ts",
+    "./blocks/overlay": "./src/blocks/overlay.ts",
+    "./blocks/password": "./src/blocks/password.ts",
+    "./blocks/sign-in-form": "./src/blocks/sign-in-form.ts",
+    "./blocks/table": "./src/blocks/table.ts",
+    "./blocks/tags-input": "./src/blocks/tags-input.ts",
     "./bottom-navigation": "./src/bottom-navigation.ts",
     "./breadcrumb": "./src/breadcrumb.ts",
     "./button": "./src/button.ts",
@@ -27,7 +34,6 @@
     "./calendar": "./src/calendar.ts",
     "./card": "./src/card.ts",
     "./carousel": "./src/carousel.ts",
-    "./chart": "./src/chart.ts",
     "./checkbox": "./src/checkbox.ts",
     "./circular-progress": "./src/circular-progress.ts",
     "./circular-slider": "./src/circular-slider.ts",
@@ -81,6 +87,7 @@
     "./resizable": "./src/resizable.ts",
     "./rich-text-editor": "./src/rich-text-editor.ts",
     "./scroll-area": "./src/scroll-area.ts",
+    "./scrollspy": "./src/scrollspy.ts",
     "./segment-group": "./src/segment-group.ts",
     "./select": "./src/select.ts",
     "./separator": "./src/separator.ts",

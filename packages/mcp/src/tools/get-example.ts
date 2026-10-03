@@ -27,7 +27,7 @@ export const getExampleTool: Tool<{ componentList: string[] }> = {
     return { componentList: componentNames(config) };
   },
   description:
-    "Get the Storybook stories source for a Pisagor component. Optionally filter by example id from list_examples.",
+    "Get example source for a Pisagor component from the installed package skill. Optionally filter by example id from list_examples.",
   exec(server, { ctx, name, description, config }) {
     const multi = config.frameworks.length > 1;
     const componentSchema =
@@ -47,7 +47,7 @@ export const getExampleTool: Tool<{ componentList: string[] }> = {
             .string()
             .optional()
             .describe(
-              "Optional example id from list_examples (e.g. default or sizes). When omitted, returns the full stories file.",
+              "Optional example id from list_examples (e.g. default or sizes). When omitted, returns all examples concatenated.",
             ),
           ...(multi
             ? { framework: frameworkInputSchema(config.frameworks) }

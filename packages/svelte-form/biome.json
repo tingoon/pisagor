@@ -1,0 +1,13 @@
+{
+  "extends": "//",
+  "html": {
+    "formatter": {
+      "enabled": false
+    }
+  },
+  "linter": {
+    "domains": {
+      "svelte": "all"
+    }
+  }
+}

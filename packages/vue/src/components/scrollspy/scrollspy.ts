@@ -1,3 +1,4 @@
+import { scrollspyRecipe } from "@pisagor/recipes/scrollspy";
 import { cn } from "@pisagor/utils";
 import {
   defineComponent,
@@ -17,6 +18,12 @@ const SCROLLSPY_ANCHOR_SELECTOR = `[${SCROLLSPY_ANCHOR}]`;
 
 export interface ScrollspyProps {
   class?: unknown;
+  /**
+   * Style recipe. Defaults to `scrollspyRecipe` from `@pisagor/recipes/scrollspy`.
+   *
+   * @defaultValue scrollspyRecipe
+   */
+  recipe?: typeof scrollspyRecipe;
   /**
    * Whether to update the URL hash when the active section changes.
    *
@@ -125,6 +132,10 @@ export const Scrollspy = defineComponent({
     onUpdate: {
       default: undefined,
       type: Function as PropType<ScrollspyProps["onUpdate"]>,
+    },
+    recipe: {
+      default: scrollspyRecipe,
+      type: Function as PropType<typeof scrollspyRecipe>,
     },
     smooth: {
       default: true,
@@ -334,7 +345,7 @@ export const Scrollspy = defineComponent({
         "div",
         {
           ...attrs,
-          class: cn(props.class),
+          class: cn(props.recipe(), props.class),
           "data-part": "root",
           "data-scope": "scrollspy",
           ref: selfRef,

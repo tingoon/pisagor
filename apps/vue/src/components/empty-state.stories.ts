@@ -1,7 +1,7 @@
 import { EmptyState } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/empty-state/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/empty-state";
 
 const meta = preview.meta({
   component: EmptyState,

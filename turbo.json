@@ -1,11 +1,12 @@
 {
-  "globalDependencies": ["biome.json", "packages/tsconfig/**"],
+  "globalDependencies": ["biome.json", "tsconfig.json"],
   "globalPassThroughEnv": [
     "TANSTACK_CLI_TELEMETRY_DISABLED",
     "TURBO_TELEMETRY_DISABLED"
   ],
   "tasks": {
     "build": {
+      "dependsOn": ["transit"],
       "env": ["DOCS_BASE_PATH", "DOCS_SITE", "STORYBOOK_BASE_PATH"],
       "inputs": ["$TURBO_DEFAULT$", ".env*"]
     },
@@ -14,7 +15,12 @@
       "persistent": true
     },
     "test": {},
-    "type-check": {}
+    "transit": {
+      "dependsOn": ["^transit"]
+    },
+    "type-check": {
+      "dependsOn": ["transit"]
+    }
   },
   "ui": "tui"
 }

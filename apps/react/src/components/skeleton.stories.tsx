@@ -1,5 +1,5 @@
 import { Skeleton } from "@pisagor/react";
-import * as Examples from "@pisagor/react/skeleton/examples";
+import * as Examples from "#/react/examples/skeleton";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

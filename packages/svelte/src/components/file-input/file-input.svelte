@@ -83,7 +83,7 @@ function handleChange(event: Event & { currentTarget: HTMLInputElement }) {
 <Ark
   as="fieldset"
   class={formControlGroupShellRecipe({
-  class: cn("m-0 min-w-0 border-solid p-0", className),
+  class: cn(slots.root(), className),
   size,
   surfaceVariant,
   variant,

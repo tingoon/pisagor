@@ -1,0 +1,8 @@
+# Forms & inputs (Pisagor Solid)
+
+Labeled field components are not part of this skill. Prefer `@pisagor/solid-form` — see that package’s skill. This file only covers `@pisagor/solid` primitives used inside forms.
+
+- Compose `Field` parts from `@pisagor/solid` for custom layouts (confirm names via MCP `get_component_source` / package exports).
+- Public select surfaces: `Select`, `Autocomplete`, `Listbox` — not internal `Combobox` in apps.
+- Use InputGroup parts for addons; follow MCP `get_example` for `input-group`.
+- Class prop: `class`.

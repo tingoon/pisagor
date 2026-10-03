@@ -1,7 +1,7 @@
 import { DatePicker } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/date-picker/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/date-picker";
 
 const meta = preview.meta({
   component: DatePicker,

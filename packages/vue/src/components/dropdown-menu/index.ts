@@ -1,6 +1,7 @@
 export type {
   DropdownMenuItemGroupProps,
   DropdownMenuItemProps,
+  DropdownMenuPositionerProps,
   DropdownMenuRadioItemGroupProps,
   DropdownMenuRootProps,
 } from "./dropdown-menu";

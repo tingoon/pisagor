@@ -1,7 +1,7 @@
 import { Alert } from "@pisagor/astro/alert";
-import CompoundExample from "@pisagor/astro/alert/examples/compound.astro";
-import DefaultExample from "@pisagor/astro/alert/examples/default.astro";
-import VariantsExample from "@pisagor/astro/alert/examples/variants.astro";
+import CompoundExample from "#/astro/examples/alert/compound.astro";
+import DefaultExample from "#/astro/examples/alert/default.astro";
+import VariantsExample from "#/astro/examples/alert/variants.astro";
 
 export default {
   component: Alert,

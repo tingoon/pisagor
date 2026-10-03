@@ -12,6 +12,7 @@ export type {
   ResizableEdgeHandleProps,
   ResizableEdgePlacement,
   ResizableHandlePosition,
+  ResizableResizeTriggerProps,
   ResizableRootProps,
 } from "./resizable";
 

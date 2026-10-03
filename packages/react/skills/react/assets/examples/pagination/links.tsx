@@ -1,0 +1,18 @@
+import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
+import { Pagination } from "@pisagor/react/pagination";
+
+export function Links() {
+  return (
+    <Pagination count={50} pageSize={10}>
+      <Pagination.ItemLink page="previous">
+        <CaretLeftIcon />
+        Previous
+      </Pagination.ItemLink>
+      <Pagination.Items />
+      <Pagination.ItemLink page="next">
+        Next
+        <CaretRightIcon />
+      </Pagination.ItemLink>
+    </Pagination>
+  );
+}

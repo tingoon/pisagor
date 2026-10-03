@@ -1,5 +1,5 @@
 import { Marquee } from "@pisagor/react";
-import * as Examples from "@pisagor/react/marquee/examples";
+import * as Examples from "#/react/examples/marquee";
 import { marqueeItems } from "#/storybook/fixtures";
 import preview from "#/storybook/preview";
 

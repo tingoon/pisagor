@@ -1,5 +1,5 @@
 import { Format } from "@pisagor/react";
-import * as Examples from "@pisagor/react/format/examples";
+import * as Examples from "#/react/examples/format";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

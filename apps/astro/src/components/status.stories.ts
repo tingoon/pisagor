@@ -1,6 +1,6 @@
 import { Status } from "@pisagor/astro/status";
-import DefaultExample from "@pisagor/astro/status/examples/default.astro";
-import VariantsExample from "@pisagor/astro/status/examples/variants.astro";
+import DefaultExample from "#/astro/examples/status/default.astro";
+import VariantsExample from "#/astro/examples/status/variants.astro";
 
 export default {
   component: Status,

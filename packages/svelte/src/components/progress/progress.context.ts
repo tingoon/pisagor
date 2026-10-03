@@ -8,4 +8,3 @@ export interface ProgressContextValue {
 const ctx = createContext<ProgressContextValue>({ name: "Progress" });
 
 export const setProgressContext = ctx.setContext;
-export const useProgress = ctx.getContext;

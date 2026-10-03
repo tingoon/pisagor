@@ -1,7 +1,7 @@
 import { Separator } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/separator/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/separator";
 
 const meta = preview.meta({
   component: Separator,

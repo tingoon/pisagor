@@ -1,5 +1,5 @@
 import { Swap } from "@pisagor/react";
-import * as Examples from "@pisagor/react/swap/examples";
+import * as Examples from "#/react/examples/swap";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

@@ -5,10 +5,8 @@ Multi-framework UI library: React and Vue components on Ark UI, Tailwind CSS v4,
 | Package | Description |
 | --- | --- |
 | [`@pisagor/react`](./packages/react) | React UI |
-| [`@pisagor/react-charts`](./packages/react-charts) | React charts (Recharts) |
 | [`@pisagor/react-form`](./packages/react-form) | React form fields + TanStack |
 | [`@pisagor/vue`](./packages/vue) | Vue UI |
-| [`@pisagor/vue-charts`](./packages/vue-charts) | Vue charts |
 | [`@pisagor/vue-form`](./packages/vue-form) | Vue form fields + TanStack |
 | [`@pisagor/utils`](./packages/utils) | `cn` and shared helpers |
 | [`@pisagor/tokens`](./packages/tokens) | Design tokens / Tailwind theme |
@@ -24,7 +22,7 @@ bun add @pisagor/react @pisagor/utils
 
 Peers: `react` ^19, `react-dom` ^19, Tailwind CSS v4. For Vue: `vue` ^3.5 and `@pisagor/vue` instead of the React packages.
 
-Optional: `@pisagor/react-charts` / `@pisagor/vue-charts`, `@pisagor/react-form` / `@pisagor/vue-form`.
+Optional: `@pisagor/react-form` / `@pisagor/vue-form`.
 
 The root `@pisagor/react` / `@pisagor/vue` barrels export **light** components only. Heavy components are subpath-only: `data-grid`, `data-table`, `rich-text-editor`, `phone-input`.
 

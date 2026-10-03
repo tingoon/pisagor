@@ -1,7 +1,7 @@
 import { CircularSlider } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/circular-slider/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/circular-slider";
 
 const meta = preview.meta({
   component: CircularSlider,

@@ -127,11 +127,8 @@ function TextareaClearableField(
     <FieldPrimitive.Textarea
       {...rest}
       class={slots.clearableRoot({
-        class: cn(
-          local.canClear && "pe-9",
-          local.class,
-          local.classNames?.clearableRoot,
-        ),
+        class: cn(local.class, local.classNames?.clearableRoot),
+        clearable: local.canClear,
       })}
     />
   );

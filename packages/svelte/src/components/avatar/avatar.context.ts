@@ -7,4 +7,3 @@ export interface AvatarContextValue {
 
 const ctx = createContext<AvatarContextValue>({ name: "Avatar" });
 export const setAvatarContext = ctx.setContext;
-export const useAvatar = ctx.getContext;

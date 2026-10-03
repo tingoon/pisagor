@@ -1,0 +1,38 @@
+<script lang="ts">
+import { DataGrid, dataGridFeatures } from "@pisagor/svelte/data-grid";
+import { Table } from "@pisagor/svelte/table";
+
+const data = [
+  { id: "1", name: "Ada", role: "Admin" },
+  { id: "2", name: "Alan", role: "Editor" },
+  { id: "3", name: "Grace", role: "Viewer" },
+  { id: "4", name: "Linus", role: "Admin" },
+];
+
+const columns = [
+  { accessorKey: "name", header: "Name" },
+  { accessorKey: "role", header: "Role" },
+];
+</script>
+
+<DataGrid {columns} {data} features={dataGridFeatures} variant="striped">
+  <Table>
+    <Table.Header>
+      <DataGrid.Header>
+        <DataGrid.HeaderRow>
+          <DataGrid.Head />
+        </DataGrid.HeaderRow>
+      </DataGrid.Header>
+    </Table.Header>
+    <Table.Body>
+      <DataGrid.Body>
+        {#snippet empty()}
+          <DataGrid.Empty />
+        {/snippet}
+        <DataGrid.Row>
+          <DataGrid.Cell />
+        </DataGrid.Row>
+      </DataGrid.Body>
+    </Table.Body>
+  </Table>
+</DataGrid>

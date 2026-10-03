@@ -5,10 +5,7 @@
   "dependencies": {
     "@pisagor/recipes": "workspace:*"
   },
-  "description": "Framework-agnostic component prop types (TSDoc) for Pisagor. Excludes native HTML attributes.",
-  "devDependencies": {
-    "@pisagor/tsconfig": "workspace:*"
-  },
+  "description": "Framework-agnostic component prop types (TSDoc) for Pisagor — excludes native HTML attributes.",
   "exports": {
     ".": "./src/index.ts",
     "./accordion": "./src/accordion.ts",
@@ -27,7 +24,6 @@
     "./calendar": "./src/calendar.ts",
     "./card": "./src/card.ts",
     "./carousel": "./src/carousel.ts",
-    "./chart": "./src/chart.ts",
     "./checkbox": "./src/checkbox.ts",
     "./circular-progress": "./src/circular-progress.ts",
     "./circular-slider": "./src/circular-slider.ts",
@@ -81,6 +77,7 @@
     "./resizable": "./src/resizable.ts",
     "./rich-text-editor": "./src/rich-text-editor.ts",
     "./scroll-area": "./src/scroll-area.ts",
+    "./scrollspy": "./src/scrollspy.ts",
     "./segment-group": "./src/segment-group.ts",
     "./select": "./src/select.ts",
     "./separator": "./src/separator.ts",

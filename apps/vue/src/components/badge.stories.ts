@@ -1,7 +1,7 @@
 import { Badge } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/badge/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/badge";
 
 const meta = preview.meta({
   component: Badge,

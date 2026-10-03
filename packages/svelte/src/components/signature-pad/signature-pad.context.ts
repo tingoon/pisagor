@@ -7,4 +7,3 @@ interface SignaturePadContextValue {
 
 const ctx = createContext<SignaturePadContextValue>({ name: "SignaturePad" });
 export const setSignaturePadContext = ctx.setContext;
-export const useSignaturePad = ctx.getContext;

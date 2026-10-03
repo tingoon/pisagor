@@ -1,5 +1,5 @@
 import { Scrollspy } from "@pisagor/react";
-import * as Examples from "@pisagor/react/scrollspy/examples";
+import * as Examples from "#/react/examples/scrollspy";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

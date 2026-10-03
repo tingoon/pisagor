@@ -1,7 +1,7 @@
 ---
 interface Props {
   /** One or more packages, e.g. "@pisagor/react" */
-  packages: string | string[];
+  packages?: string | string[];
   /** Optional import / setup snippet shown under Manual */
   manual?: string;
   class?: string;
@@ -9,9 +9,10 @@ interface Props {
 
 const packagesProp = Astro.props.packages;
 const pkgs = (Array.isArray(packagesProp) ? packagesProp : [packagesProp])
-  .map((p) => p.trim())
-  .filter(Boolean);
-const pkgList = pkgs.join(" ");
+  .filter((p): p is string => typeof p === "string" && p.trim().length > 0)
+  .map((p) => p.trim());
+const resolvedPkgs = pkgs.length > 0 ? pkgs : ["@pisagor/react"];
+const pkgList = resolvedPkgs.join(" ");
 
 const managers = [
   { command: `pnpm add ${pkgList}`, id: "pnpm", label: "pnpm" },
@@ -22,9 +23,9 @@ const managers = [
 
 const defaultManual =
   Astro.props.manual ??
-  (pkgs.length === 1
-    ? `import { /* … */ } from "${pkgs[0]}";`
-    : pkgs.map((p) => `import { /* … */ } from "${p}";`).join("\n"));
+  (resolvedPkgs.length === 1
+    ? `import { /* … */ } from "${resolvedPkgs[0]}";`
+    : resolvedPkgs.map((p) => `import { /* … */ } from "${p}";`).join("\n"));
 ---
 
 <div
@@ -38,7 +39,7 @@ const defaultManual =
   >
     <button
       aria-selected="true"
-      class="rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground data-[active]:bg-background data-[active]:text-foreground data-[active]:shadow-sm"
+      class="rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground data-active:bg-background data-active:text-foreground data-active:shadow-sm"
       data-active
       data-mode="cli"
       data-mode-tab
@@ -49,7 +50,7 @@ const defaultManual =
     </button>
     <button
       aria-selected="false"
-      class="rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground data-[active]:bg-background data-[active]:text-foreground data-[active]:shadow-sm"
+      class="rounded-md px-3 py-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground data-active:bg-background data-active:text-foreground data-active:shadow-sm"
       data-mode="manual"
       data-mode-tab
       role="tab"
@@ -94,7 +95,7 @@ const defaultManual =
         {managers.map((manager) => (
   <button
     aria-selected={manager.id === "bun" ? "true" : "false"}
-    class="shrink-0 rounded-md px-2.5 py-1 font-medium text-muted-foreground text-xs transition-colors hover:text-foreground data-[active]:bg-muted data-[active]:text-foreground"
+    class="shrink-0 rounded-md px-2.5 py-1 font-medium text-muted-foreground text-xs transition-colors hover:text-foreground data-active:bg-muted data-active:text-foreground"
     data-active={manager.id === "bun" ? "" : undefined}
     data-command={manager.command}
     data-pm={manager.id}
@@ -109,7 +110,7 @@ const defaultManual =
 
       <button
         aria-label="Copy install command"
-        class="ms-auto inline-flex size-8 shrink-0 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground data-[copied]:text-emerald-500"
+        class="ms-auto inline-flex size-8 shrink-0 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground data-copied:text-emerald-500"
         data-copy
         type="button"
       >
@@ -161,7 +162,7 @@ const defaultManual =
       <span class="text-xs font-medium text-muted-foreground">Import</span>
       <button
         aria-label="Copy import snippet"
-        class="inline-flex size-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground data-[copied]:text-emerald-500"
+        class="inline-flex size-8 items-center justify-center rounded-md text-muted-foreground transition-colors hover:bg-muted hover:text-foreground data-copied:text-emerald-500"
         data-copy-manual
         type="button"
       >

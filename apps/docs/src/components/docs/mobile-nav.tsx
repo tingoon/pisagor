@@ -1,6 +1,6 @@
 import { useEffect, useId, useRef, useState } from "react";
-import type { Framework, NavSection } from "../../lib/nav";
-import { frameworkPath } from "../../lib/nav";
+import type { Framework, NavSection } from "#/lib/nav";
+import { frameworkPath } from "#/lib/nav";
 
 export default function MobileNav({
   framework,

@@ -27,7 +27,7 @@ const reportUrl =
     encodeURIComponent(title ? `Docs preview: ${title}` : "Docs preview issue");
 
 const iconBtn =
-  "docs-press relative inline-flex size-7 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 data-[active]:bg-muted data-[active]:text-foreground";
+  "docs-press relative inline-flex size-7 items-center justify-center rounded-md text-muted-foreground hover:bg-muted hover:text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring/40 data-active:bg-muted data-active:text-foreground";
 ---
 
 <section
@@ -50,7 +50,7 @@ const iconBtn =
     >
       <button
         aria-selected="true"
-        class="rounded-1.25 px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground data-[active]:bg-background data-[active]:text-foreground data-[active]:shadow-sm docs-press"
+        class="rounded-sm px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground data-active:bg-background data-active:text-foreground data-active:shadow-sm docs-press"
         data-active
         data-view="preview"
         data-view-tab
@@ -61,7 +61,7 @@ const iconBtn =
       </button>
       <button
         aria-selected="false"
-        class="rounded-1.25 px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground data-[active]:bg-background data-[active]:text-foreground data-[active]:shadow-sm docs-press"
+        class="rounded-sm px-2.5 py-1 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground data-active:bg-background data-active:text-foreground data-active:shadow-sm docs-press"
         data-view="code"
         data-view-tab
         role="tab"
@@ -173,7 +173,7 @@ const iconBtn =
         </button>
         <div
           aria-label="Dependencies"
-          class="absolute end-0 z-20 mt-1 hidden min-w-56 rounded-lg border border-border/70 bg-popover p-2 text-popover-foreground shadow-lg"
+          class="absolute inset-e-0 z-20 mt-1 hidden min-w-56 rounded-lg border border-border/70 bg-popover p-2 text-popover-foreground shadow-lg"
           data-deps-panel
           role="dialog"
         >
@@ -306,7 +306,7 @@ const iconBtn =
     data-panel="preview"
   >
     <div
-      class="w-full max-w-full transition-[max-width] duration-200 ease-out data-[viewport=tablet]:max-w-192 data-[viewport=mobile]:max-w-93.75"
+      class="w-full max-w-full transition-[max-width] duration-200 ease-out data-[viewport=tablet]:max-w-3xl data-[viewport=mobile]:max-w-93.75"
       data-preview-stage
       data-viewport="desktop"
     >

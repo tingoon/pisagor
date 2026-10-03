@@ -1,0 +1,56 @@
+---
+import Installation from "#/components/docs/installation.astro";
+import PackageLinks from "#/components/docs/package-links.astro";
+import DocsLayout from "#/layouts/docs-layout.astro";
+import { withDocsBase } from "#/lib/nav";
+
+const headings = [
+  { depth: 2, slug: "overview", text: "Overview" },
+  { depth: 2, slug: "install", text: "Install" },
+  { depth: 2, slug: "next", text: "Next" },
+];
+---
+
+<DocsLayout
+  description="Labeled form fields with validation, built on Pisagor primitives."
+  framework="solid"
+  headings={headings}
+  kicker="Get started"
+  title="Introduction"
+>
+  <PackageLinks framework="solid" packageName="@pisagor/solid-form" />
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="overview">
+    Overview
+  </h2>
+  <p class="mb-6 text-muted-foreground">
+    <code class="rounded bg-muted px-1.5 py-0.5 text-sm"
+      >@pisagor/solid-form</code
+    >
+    provides labeled field compositions with descriptions and error messages on
+    top of
+    <code class="rounded bg-muted px-1.5 py-0.5 text-sm">@pisagor/solid</code>
+    primitives. Browse a field for when to use it, installation, and live
+    examples.
+  </p>
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="install">
+    Install
+  </h2>
+  <Installation class="mb-6" packages="@pisagor/solid-form" />
+
+  <h2 class="mb-3 text-2xl font-semibold tracking-tight" id="next">Next</h2>
+  <p class="text-muted-foreground">
+    Start with{" "}
+    <a
+      class="text-foreground underline-offset-4 hover:underline"
+      href={withDocsBase("/solid/forms/text-field")}
+      >Text Field</a
+    >
+    or{" "}
+    <a
+      class="text-foreground underline-offset-4 hover:underline"
+      href={withDocsBase("/solid/forms/select-field")}
+      >Select Field</a
+    >.
+  </p>
+</DocsLayout>

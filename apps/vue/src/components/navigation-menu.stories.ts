@@ -1,7 +1,7 @@
 import { NavigationMenu } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/navigation-menu/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/navigation-menu";
 
 const meta = preview.meta({
   component: NavigationMenu,

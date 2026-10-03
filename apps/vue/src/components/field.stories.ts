@@ -1,7 +1,7 @@
 import { Field } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/field/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/field";
 
 const meta = preview.meta({
   component: Field,

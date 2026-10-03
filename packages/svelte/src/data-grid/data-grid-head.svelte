@@ -30,7 +30,7 @@ function sizeStyle(column: { columnDef: { minSize?: number }; getSize: () => num
     <DataGridHeaderCellProvider {header}>
       <Table.Head
         {...rest}
-        class={cn(sizingEnabled && "relative", filter && slots.filterHead(), className)}
+        class={slots.head({ class: cn(filter && slots.filterHead(), className), sizing: sizingEnabled })}
         data-part="head"
         data-scope="data-grid"
         style={[sizeStyle(header.column), style].filter(Boolean).join("; ")}
@@ -51,7 +51,7 @@ function sizeStyle(column: { columnDef: { minSize?: number }; getSize: () => num
     <DataGridHeaderCellProvider {header}>
       <Table.Head
         {...rest}
-        class={cn(sizingEnabled && "relative", filter && slots.filterHead(), className)}
+        class={slots.head({ class: cn(filter && slots.filterHead(), className), sizing: sizingEnabled })}
         data-part="head"
         data-scope="data-grid"
         style={[sizeStyle(header.column), style].filter(Boolean).join("; ")}

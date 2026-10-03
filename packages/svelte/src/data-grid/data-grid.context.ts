@@ -1,6 +1,5 @@
 import type { DataGridRecipe } from "@pisagor/recipes/data-grid";
 import type {
-  Cell,
   Column,
   Header,
   HeaderGroup,
@@ -51,4 +50,4 @@ const rowCtx = createContext<DataGridRowContextValue>({ name: "DataGridRow" });
 export const setDataGridRowContext = rowCtx.setContext;
 export const useDataGridRowContext = rowCtx.getContext;
 
-export type { Cell, Column, Header, HeaderGroup, Row, TableType };
+export type { Column, Header, HeaderGroup, Row, TableType };

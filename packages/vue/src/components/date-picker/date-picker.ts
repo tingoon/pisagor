@@ -11,14 +11,17 @@ type FormControlVariant = "primary" | "secondary";
 
 type ClassValue = Parameters<typeof cn>[0];
 
-import { computed, defineComponent, h, type PropType, ref } from "vue";
+import { computed, defineComponent, h, type PropType, ref, unref } from "vue";
 import { Button } from "../button";
 import type { InputProps } from "../input";
 import { InputGroup } from "../input-group";
 import { InputGroupRoot } from "../input-group/input-group-core";
+import {
+  provideDatePickerContext,
+  useDatePickerContextRef,
+} from "./date-picker.context";
 
-type ArkPart = Parameters<typeof h>[0];
-
+// #region Types
 export interface DatePickerRootProps {
   variant?: FormControlVariant;
   positioning?: unknown;
@@ -39,6 +42,7 @@ export interface DatePickerTriggerProps {
 
 export interface DatePickerInputProps extends Omit<InputProps, "size"> {
   clearable?: boolean;
+  variant?: FormControlVariant;
 }
 
 export interface DatePickerTimerProps extends InputProps {
@@ -48,6 +52,9 @@ export interface DatePickerTimerProps extends InputProps {
 export interface DatePickerContentProps {
   showCalendar?: boolean;
 }
+// #endregion
+
+type ArkPart = Parameters<typeof h>[0];
 
 // #region Parts
 export const DatePickerRoot = defineComponent({
@@ -73,6 +80,12 @@ export const DatePickerRoot = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    provideDatePickerContext(
+      computed(() => ({
+        variant: props.variant,
+      })),
+    );
+
     return () =>
       h(
         DatePickerPrimitive.Root as ArkPart,
@@ -133,33 +146,48 @@ export const DatePickerInput = defineComponent({
   props: {
     clearable: { default: false, type: Boolean },
     size: { default: undefined, type: String as PropType<InputProps["size"]> },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant | undefined>,
+    },
   },
   setup(props, { attrs }) {
+    const contextRef = useDatePickerContextRef();
+
     return () => {
+      const ctx = unref(contextRef);
+
       return h(DatePickerPrimitive.Control as ArkPart, { ...attrs }, () =>
-        h(InputGroupRoot as ArkPart, { size: props.size }, () => [
-          h(DatePickerPrimitive.Input as ArkPart, { asChild: true }, () =>
-            h(InputGroup.Input as ArkPart, {
-              clearable: false,
-              ...attrs,
-              type: "text",
-            }),
-          ),
-          h(InputGroup.Addon, { align: "inline-end" }, () => [
-            props.clearable ? h(DatePickerClearTrigger) : null,
-            h(DatePickerPrimitive.Trigger as ArkPart, { asChild: true }, () =>
-              h(
-                Button as ArkPart,
-                {
-                  "aria-label": "Open calendar",
-                  size: "icon-md",
-                  variant: "ghost",
-                },
-                () => h(PhCalendar),
-              ),
+        h(
+          InputGroupRoot as ArkPart,
+          {
+            size: props.size,
+            variant: props.variant ?? ctx?.variant,
+          },
+          () => [
+            h(DatePickerPrimitive.Input as ArkPart, { asChild: true }, () =>
+              h(InputGroup.Input as ArkPart, {
+                clearable: false,
+                ...attrs,
+                type: "text",
+              }),
             ),
-          ]),
-        ]),
+            h(InputGroup.Addon, { align: "inline-end" }, () => [
+              props.clearable ? h(DatePickerClearTrigger) : null,
+              h(DatePickerPrimitive.Trigger as ArkPart, { asChild: true }, () =>
+                h(
+                  Button as ArkPart,
+                  {
+                    "aria-label": "Open calendar",
+                    size: "icon-md",
+                    variant: "ghost",
+                  },
+                  () => h(PhCalendar),
+                ),
+              ),
+            ]),
+          ],
+        ),
       );
     };
   },
@@ -235,59 +263,73 @@ export const DatePickerTimer = defineComponent({
       default: undefined,
       type: [String, Number, Array] as PropType<unknown>,
     },
+    variant: {
+      default: undefined,
+      type: String as PropType<FormControlVariant | undefined>,
+    },
   },
   setup(props, { attrs }) {
+    const contextRef = useDatePickerContextRef();
+    const internalValue = ref(
+      props.defaultValue !== undefined ? String(props.defaultValue) : "",
+    );
+    const isControlled = computed(() => props.value !== undefined);
+    const current = computed(() =>
+      isControlled.value ? String(props.value ?? "") : internalValue.value,
+    );
+    const canClear = computed(
+      () =>
+        props.clearable &&
+        !props.disabled &&
+        !props.readOnly &&
+        current.value.length > 0,
+    );
+
+    const handleValueChange = (next: string) => {
+      if (!isControlled.value) {
+        internalValue.value = next;
+      }
+      props.onValueChange?.(next);
+    };
+
+    const handleClear = () => handleValueChange("");
+
     return () => {
-      const internalValue = ref(
-        props.defaultValue !== undefined ? String(props.defaultValue) : "",
-      );
-      const isControlled = computed(() => props.value !== undefined);
-      const current = computed(() =>
-        isControlled.value ? String(props.value ?? "") : internalValue.value,
-      );
-      const canClear = computed(
-        () =>
-          props.clearable &&
-          !props.disabled &&
-          !props.readOnly &&
-          current.value.length > 0,
-      );
+      const ctx = unref(contextRef);
 
-      const handleValueChange = (next: string) => {
-        if (!isControlled.value) {
-          internalValue.value = next;
-        }
-        props.onValueChange?.(next);
-      };
-
-      const handleClear = () => handleValueChange("");
-
-      return h(InputGroupRoot as ArkPart, { ...attrs }, () => [
-        h(InputGroup.Addon, () => h(PhClock)),
-        h(
-          InputGroup.Input as ArkPart,
-          {
-            ...attrs,
-            class: cn(
-              props.recipe().timer(),
-              props.class,
-              (attrs as { class?: ClassValue }).class,
-            ),
-            clearable: false,
-            disabled: props.disabled,
-            onValueChange: handleValueChange,
-            readOnly: props.readOnly,
-            step: "1",
-            type: "time",
-            value: current.value,
-          } as unknown as Parameters<typeof h>[1],
-        ),
-        canClear.value
-          ? h(InputGroup.Addon, { align: "inline-end" }, () =>
-              h(InputClearButton, { onClear: handleClear }),
-            )
-          : null,
-      ]);
+      return h(
+        InputGroupRoot as ArkPart,
+        {
+          ...attrs,
+          variant: props.variant ?? ctx?.variant,
+        },
+        () => [
+          h(InputGroup.Addon, () => h(PhClock)),
+          h(
+            InputGroup.Input as ArkPart,
+            {
+              ...attrs,
+              class: cn(
+                props.recipe().timer(),
+                props.class,
+                (attrs as { class?: ClassValue }).class,
+              ),
+              clearable: false,
+              disabled: props.disabled,
+              onValueChange: handleValueChange,
+              readOnly: props.readOnly,
+              step: "1",
+              type: "time",
+              value: current.value,
+            } as unknown as Parameters<typeof h>[1],
+          ),
+          canClear.value
+            ? h(InputGroup.Addon, { align: "inline-end" }, () =>
+                h(InputClearButton, { onClear: handleClear }),
+              )
+            : null,
+        ],
+      );
     };
   },
 });

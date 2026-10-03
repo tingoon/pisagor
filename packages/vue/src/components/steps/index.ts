@@ -13,6 +13,11 @@ import {
   StepsTrigger,
 } from "./steps";
 
+export type {
+  StepsItemProps,
+  StepsRootProps,
+} from "./steps";
+
 export const Steps = Object.assign(StepsRoot, {
   CompletedContent: StepsCompletedContent,
   Content: StepsContent,

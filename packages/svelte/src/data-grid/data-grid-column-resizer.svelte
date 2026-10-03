@@ -1,5 +1,4 @@
 <script lang="ts">
-import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useDataGridContext, useDataGridHeaderCellContext } from "./data-grid.context";
 
@@ -16,7 +15,7 @@ const { slots } = useDataGridContext();
   <div
     {...rest}
     aria-hidden="true"
-    class={cn(slots.columnResizer(), headerCell.header.column.getIsResizing() && "bg-primary", className)}
+    class={slots.columnResizer({ class: className, resizing: headerCell.header.column.getIsResizing() })}
     data-part="column-resizer"
     data-scope="data-grid"
     ondblclick={() => headerCell.header.column.resetSize()}

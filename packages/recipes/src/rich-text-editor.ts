@@ -3,8 +3,10 @@ import { tv } from "tailwind-variants";
 export const richTextEditorRecipe = tv({
   slots: {
     base: [
+      "m-0 min-w-0 border-solid p-0",
       "flex h-auto min-h-32 flex-col gap-0 overflow-hidden p-0",
       "focus-within:border-primary focus-within:ring-0.75 focus-within:ring-ring/32",
+      "data-disabled:pointer-events-none data-disabled:opacity-64",
     ],
     content: [
       "min-h-24 flex-1 px-3 py-2",

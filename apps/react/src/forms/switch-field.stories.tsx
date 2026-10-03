@@ -1,6 +1,6 @@
 import { SwitchField } from "@pisagor/react-form";
-import * as Examples from "@pisagor/react-form/switch-field/examples";
 import { fn } from "storybook/test";
+import * as Examples from "#/react-form/examples/switch-field";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

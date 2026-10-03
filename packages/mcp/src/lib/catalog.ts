@@ -1,6 +1,7 @@
 import { INSTALL_GUIDE } from "./resolve";
 import type {
   CatalogComponent,
+  CatalogExample,
   ComponentEntry,
   ComponentsCatalog,
   ExampleEntry,
@@ -64,13 +65,24 @@ function assertHasPackages(config: ToolConfig): void {
   }
 }
 
+function matchExample(
+  examples: CatalogExample[],
+  exampleId: string,
+): CatalogExample | undefined {
+  return examples.find(
+    (example) =>
+      example.id === exampleId ||
+      example.exportName.toLowerCase() === exampleId.toLowerCase(),
+  );
+}
+
 export function listComponents(
   config: ToolConfig,
   framework: Framework,
 ): ComponentEntry[] {
   assertHasPackages(config);
   return componentsForFramework(config, framework).map((entry) => ({
-    hasStories: Boolean(entry.storiesContent),
+    hasExamples: entry.examples.length > 0,
     name: entry.name,
     package: entry.package,
   }));
@@ -82,7 +94,12 @@ export function listExamples(
   component: string,
 ): ExampleEntry[] {
   assertHasPackages(config);
-  return getCatalogComponent(config, framework, component).examples;
+  return getCatalogComponent(config, framework, component).examples.map(
+    (example) => ({
+      exportName: example.exportName,
+      id: example.id,
+    }),
+  );
 }
 
 export function getExample(
@@ -96,47 +113,54 @@ export function getExample(
   framework: Framework;
   component: string;
   package: string;
-  path: string;
   examples: ExampleEntry[];
+  path: string;
   content: string;
 } {
   assertHasPackages(config);
   const entry = getCatalogComponent(config, params.framework, params.component);
-  if (!entry.storiesContent || !entry.storiesPath) {
+  if (entry.examples.length === 0) {
     throw new Error(
-      `No stories file for "${params.component}" (${params.framework}).`,
+      `No skill examples for "${params.component}" (${params.framework}). Expected skills/*/assets/examples/${params.component}/.`,
     );
   }
 
-  const examples = entry.examples;
   const exampleId = params.exampleId;
-
   if (exampleId) {
-    const match = examples.find(
-      (example) =>
-        example.id === exampleId ||
-        example.exportName.toLowerCase() === exampleId.toLowerCase(),
-    );
+    const match = matchExample(entry.examples, exampleId);
     if (!match) {
       throw new Error(
         `Unknown example "${exampleId}" for "${params.component}". Call list_examples first.`,
       );
     }
+    return {
+      component: params.component,
+      content: match.content,
+      examples: [{ exportName: match.exportName, id: match.id }],
+      framework: params.framework,
+      package: entry.package,
+      path: match.path,
+    };
   }
 
+  const [first] = entry.examples;
+  const dir = first
+    ? first.path.includes("/")
+      ? first.path.slice(0, first.path.lastIndexOf("/"))
+      : "."
+    : `skills/*/assets/examples/${params.component}`;
   return {
     component: params.component,
-    content: entry.storiesContent,
-    examples: exampleId
-      ? examples.filter(
-          (example) =>
-            example.id === exampleId ||
-            example.exportName.toLowerCase() === exampleId.toLowerCase(),
-        )
-      : examples,
+    content: entry.examples
+      .map((example) => `// ${example.id}\n${example.content}`)
+      .join("\n\n"),
+    examples: entry.examples.map((example) => ({
+      exportName: example.exportName,
+      id: example.id,
+    })),
     framework: params.framework,
     package: entry.package,
-    path: entry.storiesPath,
+    path: dir,
   };
 }
 

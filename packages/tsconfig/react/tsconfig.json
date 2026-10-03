@@ -1,7 +1,0 @@
-{
-  "compilerOptions": {
-    "jsx": "react-jsx"
-  },
-  "extends": "../tsconfig.json",
-  "files": ["../css-modules.d.ts", "./global.d.ts"]
-}

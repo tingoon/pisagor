@@ -1,7 +1,7 @@
 import { JsonTreeView } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/json-tree-view/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/json-tree-view";
 
 const meta = preview.meta({
   component: JsonTreeView,

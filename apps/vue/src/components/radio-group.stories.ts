@@ -1,7 +1,7 @@
 import { RadioGroup } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/radio-group/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/radio-group";
 
 const meta = preview.meta({
   component: RadioGroup,

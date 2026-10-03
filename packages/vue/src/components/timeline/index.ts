@@ -9,7 +9,11 @@ import {
   TimelineTitle,
 } from "./timeline";
 
-export type { TimelinePresetItem, TimelineProps } from "./timeline";
+export type {
+  TimelineItemProps,
+  TimelinePresetItem,
+  TimelineProps,
+} from "./timeline";
 
 export const Timeline = Object.assign(TimelineShorthand, {
   Content: TimelineContent,

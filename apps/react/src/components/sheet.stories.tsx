@@ -1,5 +1,5 @@
 import { Sheet } from "@pisagor/react";
-import * as Examples from "@pisagor/react/sheet/examples";
+import * as Examples from "#/react/examples/sheet";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

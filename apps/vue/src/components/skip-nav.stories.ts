@@ -1,7 +1,7 @@
 import { SkipNav } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/skip-nav/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/skip-nav";
 
 const meta = preview.meta({
   component: SkipNav,

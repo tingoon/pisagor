@@ -144,10 +144,8 @@ setRichTextEditorContext({
   aria-label={resolvedAriaLabel}
   aria-readonly={readOnly || undefined}
   class={cn(
-  "m-0 min-w-0 border-solid p-0",
   formControlShellRecipe({ surfaceVariant, variant }),
   slots.base({ class: className }),
-  disabled && "pointer-events-none opacity-64",
 )}
   data-disabled={disabled ? "true" : undefined}
   data-invalid={invalid ? "true" : undefined}

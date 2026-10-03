@@ -1,0 +1,14 @@
+/** @jsxImportSource solid-js */
+import { CircularSlider } from "@pisagor/solid/circular-slider";
+
+export function Sizes() {
+  return (
+    <div class="flex flex-wrap items-center gap-2">
+      {[120, 180, 240].map((size) => (
+        <CircularSlider aria-label="Angle" defaultValue={45} size={size}>
+          <CircularSlider.ValueText suffix="°" />
+        </CircularSlider>
+      ))}
+    </div>
+  );
+}

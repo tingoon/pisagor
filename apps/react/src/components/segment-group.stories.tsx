@@ -1,5 +1,5 @@
 import { SegmentGroup } from "@pisagor/react";
-import * as Examples from "@pisagor/react/segment-group/examples";
+import * as Examples from "#/react/examples/segment-group";
 import { segmentItems } from "#/storybook/fixtures";
 import preview from "#/storybook/preview";
 

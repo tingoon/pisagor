@@ -1,5 +1,5 @@
 import { Pagination } from "@pisagor/react";
-import * as Examples from "@pisagor/react/pagination/examples";
+import * as Examples from "#/react/examples/pagination";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

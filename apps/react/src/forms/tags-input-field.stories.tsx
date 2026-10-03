@@ -1,6 +1,6 @@
 import { TagsInputField } from "@pisagor/react-form";
-import * as Examples from "@pisagor/react-form/tags-input-field/examples";
 import { fn } from "storybook/test";
+import * as Examples from "#/react-form/examples/tags-input-field";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

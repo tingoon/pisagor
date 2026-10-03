@@ -6,7 +6,11 @@ import {
   AccordionShorthand,
 } from "./accordion";
 
-export type { AccordionPresetItem, AccordionProps } from "./accordion";
+export type {
+  AccordionItemProps,
+  AccordionPresetItem,
+  AccordionProps,
+} from "./accordion";
 
 export const Accordion = Object.assign(AccordionShorthand, {
   Item: AccordionItem,

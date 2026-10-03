@@ -1,0 +1,12 @@
+/** @jsxImportSource solid-js */
+import { CheckboxField } from "@pisagor/solid-form";
+
+export function Disabled() {
+  return (
+    <CheckboxField
+      disabled
+      id="checkbox-field-terms-disabled"
+      label="I accept the terms and conditions"
+    />
+  );
+}

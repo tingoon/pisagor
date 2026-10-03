@@ -4,6 +4,7 @@ import {
   type FormControlGroupShellVariantProps,
   formControlGroupShellRecipe,
 } from "@pisagor/recipes/form-control";
+import { cn } from "@pisagor/utils";
 import {
   type ChangeEventHandler,
   type ComponentProps,
@@ -113,7 +114,7 @@ function FileInputRoot({
         {...rest}
         {...controlProps}
         className={formControlGroupShellRecipe({
-          className,
+          className: cn(slots.root(), className),
           size,
           ...shellArgs,
         })}

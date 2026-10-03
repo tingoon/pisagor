@@ -38,7 +38,7 @@ let {
 const ctx = useDatePicker();
 const slots = $derived(ctx?.slots ?? recipe());
 const surfaceVariant = useFormControlSurface();
-const variant = $derived(variantProp ?? ("primary" as const));
+const variant = $derived(variantProp ?? ctx?.variant ?? ("primary" as const));
 const canClear = $derived(
   clearable && !disabled && !readonly && Boolean(value && String(value).length > 0),
 );

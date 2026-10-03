@@ -1,5 +1,5 @@
 import { Timeline } from "@pisagor/react";
-import * as Examples from "@pisagor/react/timeline/examples";
+import * as Examples from "#/react/examples/timeline";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

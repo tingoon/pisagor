@@ -6,6 +6,8 @@ import {
   NavbarRoot,
 } from "./navbar";
 
+export type { NavbarRootProps } from "./navbar";
+
 export const Navbar = Object.assign(NavbarRoot, {
   Actions: NavbarActions,
   Brand: NavbarBrand,

@@ -1,6 +1,6 @@
 ---
-import type { Framework } from "../../lib/nav";
-import { frameworkPath } from "../../lib/nav";
+import type { Framework } from "#/lib/nav";
+import { frameworkPath } from "#/lib/nav";
 import CodeBlock from "./code-block.astro";
 
 interface Props {
@@ -59,8 +59,8 @@ const themeMapSnippet = `@theme inline {
     Overview
   </h2>
   <p class="mb-4 text-muted-foreground">
-    Pisagor themes through CSS variables (the same convention as shadcn-style
-    token maps). Components read <code class="text-foreground">--primary</code>,
+    Pisagor themes with CSS variables. Components read
+    <code class="text-foreground">--primary</code>,
     <code class="text-foreground">--primary-foreground</code>, and related
     tokens — they do not hard-code brand colors. Override those variables in
     your app CSS to recolor the whole library.
@@ -158,9 +158,12 @@ const themeMapSnippet = `@theme inline {
     Framework brand in these docs
   </h2>
   <p class="mb-4 text-muted-foreground">
-    On this site, each framework route paints the shell with that
-    ecosystem&apos;s brand color. The same technique works in your product:
-    scope overrides with a data attribute, a class, or a route layout.
+    This {brand.label} docs tree paints the shell primary with the{" "}
+    {brand.label}
+    brand via
+    <code class="text-foreground">data-framework</code>. The same technique
+    works in your product: scope overrides with a data attribute, a class, or a
+    route layout.
   </p>
   <CodeBlock
     class="mb-2"
