@@ -31,15 +31,30 @@ Other packages have their own skills. Do not duplicate their docs here:
 ```
 skills/react/
   SKILL.md
-  references/          # registry, rules, primitives/<name>.md
+  references/          # registry, rules, primitives/
   assets/examples/     # <component>/*.tsx
 ```
 
-### Primitive docs (`references/primitives/<id>.md`)
+### Primitive docs
 
-YAML frontmatter (`title`, `description`, `api`, `taxonomy`, optional `aliases`) plus a markdown body. The component id is the filename without `.md`.
+Prefer the **folder** form (tabs on the docs site):
 
-Body should include `## When to use`, `## Import`, and short styling/API notes. Live demos use `:::example ExportName` containers (see `accordion.md`).
+```
+references/primitives/<id>/
+  metadata.md    # YAML frontmatter only (title, description, api, taxonomy, aliases?)
+  design.md      # When to use (Prefer / Avoid)
+  usage.md       # Recommended API, Import, Anatomy
+  examples.md    # ### titles + :::example ExportName
+  develop.md     # Accessibility / keyboard (Props table is appended by the docs app)
+```
+
+Docs tabs (order): **Examples** → **Usage** → **Design** → **Develop**.
+Each tab is a real route: `/react/components/<id>/<tab>` (e.g. `…/tooltip/usage`).
+`/react/components/<id>` redirects to the default tab.
+
+Flat `references/primitives/<id>.md` is legacy (single file with YAML + body); the docs app still maps it into tabs.
+
+The component id is the folder name (or the legacy filename without `.md`).
 
 Example sources live under `assets/examples/<id>/` (also available via MCP `get_example`).
 
@@ -52,7 +67,7 @@ Example sources live under `assets/examples/<id>/` (also available via MCP `get_
 
 ## Workflow
 
-1. `references/primitives/<name>.md` when present.
+1. `references/primitives/<name>/` when present (legacy: `<name>.md`).
 2. `assets/examples/<name>/` or MCP.
 3. Prefer barrel `import { X } from "@pisagor/react"`; heavy only via subpath (`data-grid`, `data-table`, `phone-input`, `rich-text-editor`).
 

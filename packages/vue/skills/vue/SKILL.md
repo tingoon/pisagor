@@ -30,9 +30,32 @@ This skill ships in the `@pisagor/vue` package (Intent). `skills add` is support
 ```
 skills/vue/
   SKILL.md
-  references/          # registry, rules, primitives/<name>.md
+  references/          # registry, rules, primitives/
   assets/examples/     # <component>/*
 ```
+
+### Primitive docs
+
+Prefer the **folder** form (tabs on the docs site):
+
+```
+references/primitives/<id>/
+  metadata.md    # YAML frontmatter only (title, description, api, taxonomy, aliases?)
+  design.md      # When to use (Prefer / Avoid)
+  usage.md       # Recommended API, Import, Anatomy
+  examples.md    # ### titles + :::example ExportName
+  develop.md     # Accessibility / keyboard (Props table is appended by the docs app)
+```
+
+Docs tabs (order): **Examples** → **Usage** → **Design** → **Develop**.
+Each tab is a real route: `/vue/components/<id>/<tab>` (e.g. `…/tooltip/usage`).
+`/vue/components/<id>` redirects to the default tab.
+
+Flat `references/primitives/<id>.md` is legacy (single file with YAML + body); the docs app still maps it into tabs.
+
+The component id is the folder name (or the legacy filename without `.md`).
+
+Example sources live under `assets/examples/<id>/` (also available via MCP `get_example`).
 
 ## Principles
 
@@ -58,7 +81,7 @@ skills/vue/
 
 ## Workflow
 
-1. Open the registry + `./references/primitives/<name>.md` for an `@pisagor/vue` primitive.
+1. Open the registry + `./references/primitives/<name>/` (legacy: `<name>.md`) for an `@pisagor/vue` primitive.
 2. Prefer `assets/examples/<name>/` or MCP `get_example` / `get_component_source`.
 3. Confirm exports from `@pisagor/vue`.
 4. Self-check a11y and critical rules.
@@ -69,17 +92,17 @@ See [`references/packages.md`](references/packages.md).
 
 ## High-composition guides
 
-- `./references/primitives/dialog.md`
-- `./references/primitives/sheet.md`
-- `./references/primitives/dropdown-menu.md`
-- `./references/primitives/context-menu.md`
-- `./references/primitives/popover.md`
-- `./references/primitives/select.md`
-- `./references/primitives/combobox.md`
-- `./references/primitives/field.md`
-- `./references/primitives/sidebar.md`
-- `./references/primitives/button.md`
-- `./references/primitives/card.md`
+- `./references/primitives/dialog/`
+- `./references/primitives/sheet/`
+- `./references/primitives/dropdown-menu/`
+- `./references/primitives/context-menu/`
+- `./references/primitives/popover/`
+- `./references/primitives/select/`
+- `./references/primitives/combobox/`
+- `./references/primitives/field/`
+- `./references/primitives/sidebar/`
+- `./references/primitives/button/`
+- `./references/primitives/card/`
 
 ## Output checklist
 

@@ -26,11 +26,34 @@ Other packages:
 ```
 skills/solid/
   SKILL.md
-  references/          # rules, primitives/<name>.md
+  references/          # rules, primitives/
   assets/examples/<component>/
 ```
 
 Components: `src/components/<name>/` (heavy modules under `src/<name>/`).
+
+### Primitive docs
+
+Prefer the **folder** form (tabs on the docs site):
+
+```
+references/primitives/<id>/
+  metadata.md    # YAML frontmatter only (title, description, api, taxonomy, aliases?)
+  design.md      # When to use (Prefer / Avoid)
+  usage.md       # Recommended API, Import, Anatomy
+  examples.md    # ### titles + :::example ExportName
+  develop.md     # Accessibility / keyboard (Props table is appended by the docs app)
+```
+
+Docs tabs (order): **Examples** → **Usage** → **Design** → **Develop**.
+Each tab is a real route: `/solid/components/<id>/<tab>` (e.g. `…/tooltip/usage`).
+`/solid/components/<id>` redirects to the default tab.
+
+Flat `references/primitives/<id>.md` is legacy (single file with YAML + body); the docs app still maps it into tabs.
+
+The component id is the folder name (or the legacy filename without `.md`).
+
+Example sources live under `assets/examples/<id>/` (also available via MCP `get_example`).
 
 ## Critical rules
 
