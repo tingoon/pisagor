@@ -23,8 +23,10 @@ jobs:
         with:
           team: ${{ vars.TURBO_TEAM }}
       - uses: ./.github/actions/setup-bun
+        with:
+          turbo-cache: "true"
       - name: Build docs
-        run: bunx turbo build --filter=docs
+        run: bunx turbo run build --filter=docs
         env:
           DOCS_BASE_PATH: /${{ github.event.repository.name }}/
           DOCS_SITE: https://tingoon.github.io
