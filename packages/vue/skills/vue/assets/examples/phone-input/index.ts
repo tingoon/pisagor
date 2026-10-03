@@ -1,5 +1,7 @@
 import { stripVueExample } from "@pisagor/utils";
 import controlledRaw from "./controlled.ts?raw";
+import custom_popupRaw from "./custom-popup.ts?raw";
+import defaultRaw from "./default.ts?raw";
 import disabledRaw from "./disabled.ts?raw";
 import invalidRaw from "./invalid.ts?raw";
 import on_surfaceRaw from "./on-surface.ts?raw";
@@ -10,6 +12,8 @@ export const imports = `import { PhoneInput } from "@pisagor/vue/phone-input";`;
 
 export const sources = {
   Controlled: stripVueExample(controlledRaw),
+  CustomPopup: stripVueExample(custom_popupRaw),
+  Default: stripVueExample(defaultRaw),
   Disabled: stripVueExample(disabledRaw),
   Invalid: stripVueExample(invalidRaw),
   OnSurface: stripVueExample(on_surfaceRaw),
@@ -18,6 +22,8 @@ export const sources = {
 } as const;
 
 export { Controlled } from "./controlled";
+export { CustomPopup } from "./custom-popup";
+export { Default } from "./default";
 export { Disabled } from "./disabled";
 export { Invalid } from "./invalid";
 export { OnSurface } from "./on-surface";

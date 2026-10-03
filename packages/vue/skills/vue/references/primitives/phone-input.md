@@ -21,11 +21,23 @@ Style with `@pisagor/recipes/phone-input` — no app-level `tv()`.
 
 ## Examples
 
+### Default
+
+Basic phone input with a default country and national formatting as the user types.
+
+:::example Default
+
 ### Controlled
 
-Manage state from the parent when other UI must stay in sync with this phone input.
+Manage state from the parent when other UI must stay in sync with this phone input. The value is E.164; the field shows a national format for the selected country.
 
 :::example Controlled
+
+### Custom Popup
+
+Pass `popupProps` through to the country Combobox content (positioning and other content attrs).
+
+:::example CustomPopup
 
 ### Disabled
 

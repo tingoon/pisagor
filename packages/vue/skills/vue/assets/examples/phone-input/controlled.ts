@@ -16,7 +16,12 @@ export function Controlled() {
     template: `
         <Field>
           <Field.Label>Phone</Field.Label>
-          <PhoneInput :onChange="onChange" placeholder="Enter phone number" :value="phone" />
+          <PhoneInput
+            default-country="NL"
+            :onChange="onChange"
+            placeholder="Enter phone number"
+            :value="phone"
+          />
           <Field.Description class="text-right">E.164 value: {{ phone || "—" }}</Field.Description>
         </Field>
       `,
