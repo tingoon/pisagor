@@ -1,8 +1,6 @@
 import type { DataTableRecipe } from "@pisagor/recipes/data-table";
 import type {
-  Cell,
   Column,
-  Header,
   HeaderGroup,
   Row,
   RowData,
@@ -40,4 +38,4 @@ const rowCtx = createContext<DataTableRowContextValue>({
 export const setDataTableRowContext = rowCtx.setContext;
 export const useDataTableRowContext = rowCtx.getContext;
 
-export type { Cell, Column, Header, HeaderGroup, Row, TableType };
+export type { Column, HeaderGroup, Row, TableType };

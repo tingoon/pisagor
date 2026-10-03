@@ -17,6 +17,8 @@ import {
   FileUploadTrigger,
 } from "./file-upload";
 
+export type { FileUploadItemProps } from "./file-upload";
+
 export const FileUpload = Object.assign(FileUploadRoot, {
   ClearTrigger: FileUploadClearTrigger,
   Description: FileUploadDescription,

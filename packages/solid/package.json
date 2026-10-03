@@ -22,7 +22,7 @@
   "description": "Accessible Solid UI components built on Ark UI and Tailwind CSS v4.",
   "devDependencies": {
     "solid-js": "catalog:",
-    "typescript": "^7.0.2"
+    "typescript": "catalog:"
   },
   "exports": {
     ".": "./src/components/index.ts",
@@ -139,6 +139,7 @@
     "./visually-hidden": "./src/components/visually-hidden/index.ts"
   },
   "files": [
+    "catalog.gen.json",
     "skills",
     "src",
     "!**/*.test.*"

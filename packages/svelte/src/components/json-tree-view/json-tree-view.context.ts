@@ -8,4 +8,3 @@ interface JsonTreeViewContextValue {
 const ctx = createContext<JsonTreeViewContextValue>({ name: "JsonTreeView" });
 
 export const setJsonTreeViewContext = ctx.setContext;
-export const useJsonTreeView = ctx.getContext;

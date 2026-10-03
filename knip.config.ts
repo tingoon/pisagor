@@ -1,6 +1,8 @@
 import { defineConfig } from "knip/config";
 
 export default defineConfig({
+  // Compound parts are `export const X` then composed via Object.assign in the same file.
+  ignoreExportsUsedInFile: true,
   workspaces: {
     "apps/astro": {
       entry: [".storybook/**/*", "src/**/*"],
@@ -23,86 +25,47 @@ export default defineConfig({
       entry: [".storybook/**/*", "src/**/*"],
       ignoreDependencies: ["chromatic"],
     },
+    // Entries come from package.json `exports` (+ skills below). No blanket
+    // ignoreIssues on src/components or heavy modules — fix real unused deps/files.
     "packages/astro": {
-      entry: ["src/**/*", "skills/**/*"],
-      ignoreIssues: {
-        "src/**/*.stories.ts": ["unresolved", "dependencies", "unlisted"],
-      },
+      entry: ["skills/**/*"],
     },
     "packages/mcp": {},
+    "packages/props": {
+      entry: ["skills/**/*"],
+    },
     "packages/react": {
-      entry: ["src/**/*", "skills/**/*"],
-      ignoreIssues: {
-        "src/**/*.stories.tsx": ["unresolved", "dependencies", "unlisted"],
-        "src/internal/**": ["exports", "types"],
-      },
+      entry: ["skills/**/*"],
     },
     "packages/react-form": {
-      entry: ["src/**/*", "skills/**/*"],
-      ignoreIssues: {
-        "src/**/*.stories.tsx": ["unresolved", "dependencies", "unlisted"],
-        "src/internal/**": ["exports", "types"],
-      },
+      entry: ["skills/**/*"],
+    },
+    "packages/recipes": {
+      entry: ["skills/**/*"],
     },
     "packages/solid": {
-      entry: ["src/**/*", "skills/**/*"],
-      ignoreIssues: {
-        "src/components/**": ["exports", "types", "duplicates"],
-        "src/data-grid/**": ["exports", "types"],
-        "src/data-table/**": ["exports", "types"],
-        "src/hooks/**": ["exports", "types"],
-        "src/internal/**": ["exports", "types", "duplicates"],
-        "src/phone-input/**": ["exports", "types"],
-        "src/rich-text-editor/**": ["exports", "types"],
-        "src/utils/**": ["exports", "types"],
-      },
+      entry: ["skills/**/*"],
     },
     "packages/solid-form": {
-      entry: ["src/**/*", "skills/**/*"],
-      ignoreIssues: {
-        "src/internal/**": ["exports", "types"],
-      },
+      entry: ["skills/**/*"],
     },
     "packages/svelte": {
-      entry: ["src/**/*", "skills/**/*"],
-      ignoreIssues: {
-        "src/components/**": ["exports", "types", "duplicates"],
-        "src/data-grid/**": ["exports", "types"],
-        "src/data-table/**": ["exports", "types"],
-        "src/hooks/**": ["exports", "types"],
-        "src/internal/**": ["exports", "types", "duplicates"],
-        "src/phone-input/**": ["exports", "types"],
-        "src/rich-text-editor/**": ["exports", "types"],
-        "src/utils/**": ["exports", "types"],
-      },
+      entry: ["skills/**/*"],
     },
     "packages/svelte-form": {
-      entry: ["src/**/*", "skills/**/*"],
-      ignoreIssues: {
-        "src/internal/**": ["exports", "types"],
-      },
+      entry: ["skills/**/*"],
+    },
+    "packages/tokens": {
+      entry: ["skills/**/*"],
+    },
+    "packages/utils": {
+      entry: ["skills/**/*"],
     },
     "packages/vue": {
-      entry: ["src/**/*", "skills/**/*"],
-      ignoreIssues: {
-        "src/**/*.stories.ts": ["unresolved", "dependencies", "unlisted"],
-        "src/components/**": ["exports", "types", "duplicates"],
-        "src/data-grid/**": ["exports", "types"],
-        "src/data-table/**": ["exports", "types"],
-        "src/hooks/**": ["exports", "types"],
-        "src/icons/**": ["exports", "types"],
-        "src/internal/**": ["exports", "types", "duplicates"],
-        "src/phone-input/**": ["exports", "types"],
-        "src/rich-text-editor/**": ["exports", "types"],
-        "src/utils/**": ["exports", "types"],
-      },
+      entry: ["skills/**/*"],
     },
     "packages/vue-form": {
-      entry: ["src/**/*", "skills/**/*"],
-      ignoreIssues: {
-        "src/**/*.stories.ts": ["unresolved", "dependencies", "unlisted"],
-        "src/internal/**": ["exports", "types"],
-      },
+      entry: ["skills/**/*"],
     },
     scripts: {
       entry: ["src/**/*"],

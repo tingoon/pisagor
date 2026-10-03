@@ -11,7 +11,7 @@
   },
   "description": "Svelte block demos for Pisagor docs.",
   "devDependencies": {
-    "typescript": "5.9.3"
+    "typescript": "catalog:"
   },
   "name": "svelte-blocks",
   "private": true,

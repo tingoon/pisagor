@@ -10,7 +10,7 @@
   },
   "description": "Solid block demos for Pisagor docs.",
   "devDependencies": {
-    "typescript": "^7.0.2"
+    "typescript": "catalog:"
   },
   "name": "solid-blocks",
   "private": true,

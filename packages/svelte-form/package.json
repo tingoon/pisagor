@@ -10,8 +10,8 @@
   "description": "Labeled form fields and TanStack Form bindings for @pisagor/svelte.",
   "devDependencies": {
     "svelte": "catalog:",
-    "svelte-check": "^4.7.6",
-    "typescript": "5.9.3"
+    "svelte-check-native": "^1.8.0",
+    "typescript": "catalog:"
   },
   "exports": {
     ".": "./src/fields/index.ts",
@@ -38,11 +38,11 @@
     "url": "git+https://github.com/tingoon/pisagor.git"
   },
   "scripts": {
-    "type-check": "svelte-check --tsconfig ./tsconfig.json"
+    "type-check": "svelte-check-native --tsconfig ./tsconfig.json"
   },
   "sideEffects": [
     "**/*.css"
   ],
   "type": "module",
-  "version": "0.1.0"
+  "version": "0.1.1"
 }

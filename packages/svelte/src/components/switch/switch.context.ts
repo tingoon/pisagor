@@ -8,4 +8,3 @@ export interface SwitchContextValue {
 const ctx = createContext<SwitchContextValue>({ name: "Switch" });
 
 export const setSwitchContext = ctx.setContext;
-export const useSwitch = ctx.getContext;

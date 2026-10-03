@@ -8,4 +8,3 @@ export interface NumberInputContextValue {
 const ctx = createContext<NumberInputContextValue>({ name: "NumberInput" });
 
 export const setNumberInputContext = ctx.setContext;
-export const useNumberInput = ctx.getContext;

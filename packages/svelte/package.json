@@ -21,8 +21,8 @@
   "description": "Accessible Svelte UI components built on Ark UI and Tailwind CSS v4.",
   "devDependencies": {
     "svelte": "catalog:",
-    "svelte-check": "^4.7.6",
-    "typescript": "5.9.3"
+    "svelte-check-native": "^1.8.0",
+    "typescript": "catalog:"
   },
   "exports": {
     ".": "./src/components/index.ts",
@@ -139,6 +139,7 @@
     "./visually-hidden": "./src/components/visually-hidden/index.ts"
   },
   "files": [
+    "catalog.gen.json",
     "skills",
     "src",
     "!**/*.test.*"
@@ -156,7 +157,7 @@
     "url": "git+https://github.com/tingoon/pisagor.git"
   },
   "scripts": {
-    "type-check": "svelte-check --tsconfig ./tsconfig.json"
+    "type-check": "svelte-check-native --tsconfig ./tsconfig.json"
   },
   "sideEffects": [
     "**/*.css"

@@ -13,6 +13,7 @@ import TreeViewTree from "./tree-view-tree.svelte";
 export {
   createFileIcons,
   createTreeCollection,
+  type TreeCollection,
   type TreeNodeType,
 } from "./create-tree-collection";
 
