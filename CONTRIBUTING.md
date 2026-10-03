@@ -12,13 +12,16 @@ Then from the repo root:
 bun install
 bun run setup
 bun run dev
+# optional: bun --filter docs
 # optional: bunx turbo dev --filter=vue-stories
 # optional: bunx turbo dev --filter=astro-stories
 ```
 
+- Docs: http://localhost:4000 (`/react`, `/vue`, `/solid`, `/svelte`, `/astro`).
 - React Storybook: http://localhost:4001.
-- Vue: http://localhost:4002.
-- Astro: http://localhost:4003.
+- Vue Storybook: http://localhost:4002.
+- Astro Storybook: http://localhost:4003.
+- Solid / Svelte: block demos under `apps/solid` and `apps/svelte` (used by the docs site; no Storybook apps yet).
 
 ## Chromatic
 
@@ -71,11 +74,11 @@ One-time setup (owners):
 
 Local (optional): `bunx turbo login` then `bunx turbo link` from the repo root. CI logs should show `Remote caching enabled` after the OIDC policy exists.
 
-Commits: [Conventional Commits](https://www.conventionalcommits.org/). Scope with the workspace when the change is local (`feat(react-stories):`, `fix(react):`).
+Commits: [Conventional Commits](https://www.conventionalcommits.org/). Scope with the workspace when the change is local (`feat(react-stories):`, `fix(solid):`, `docs(svelte-form):`).
 
 ## Pull requests
 
-- Describe the change and how you tested it (Storybook story if UI).
+- Describe the change and how you tested it (Storybook story or docs demo if UI).
 - Do not commit `.env`, secrets, or `mcp.json` with credentials.
 - If you add env vars for an app, document them in that app’s `.env.example`.
 

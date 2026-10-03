@@ -7,7 +7,7 @@ body:
     id: package
     attributes:
       label: Package
-      description: Which package? (`@pisagor/react`, `@pisagor/vue`, …)
+      description: Which package? (`@pisagor/react`, `@pisagor/vue`, `@pisagor/solid`, `@pisagor/svelte`, `@pisagor/astro`, …)
       placeholder: "@pisagor/react"
     validations:
       required: true
@@ -33,10 +33,10 @@ body:
     id: environment
     attributes:
       label: Environment
-      description: OS / browser, package version, React / Tailwind versions.
+      description: OS / browser, package version, framework + Tailwind versions.
       placeholder: |
         - OS / browser
         - Package version
-        - React / Tailwind versions
+        - Framework / Tailwind versions
     validations:
       required: false

@@ -15,11 +15,11 @@ Framework-agnostic design tokens and Tailwind theme (`@theme`, `:root` / `.dark`
 @import "@pisagor/tokens/styles";
 ```
 
-Framework packages keep their own entry for plugins and `@source` (e.g. `@pisagor/react/styles`, `@pisagor/vue/styles`) and `@import "@pisagor/tokens/styles"`.
+Framework packages keep their own entry for plugins and `@source` (e.g. `@pisagor/react/styles`, `@pisagor/vue/styles`, `@pisagor/solid/styles`, `@pisagor/svelte/styles`, `@pisagor/astro/styles`) and `@import "@pisagor/tokens/styles"`.
 
 ## Z-index layers
 
-Popover, modal, and toast each have distinct layer values (see [AGENTS.md](./AGENTS.md)).
+Popover, modal, and toast each have distinct layer values — use theme utilities (`z-popover`, `z-modal`, `z-toast`), not hardcoded `z-50`. See the [tokens skill](./skills/tokens/SKILL.md).
 
 ## Font overrides
 

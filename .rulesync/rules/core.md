@@ -28,8 +28,8 @@ Each topic has **one owner**. Other files link — they do not restate. If updat
 | Setup, scripts, verify | [`CONTRIBUTING.md`](../../CONTRIBUTING.md) |
 | Workspace map | root [`AGENTS.md`](../../AGENTS.md) |
 | Agent behavior (this file) | `.rulesync/rules/core.md` |
-| React / Vue / TS / Storybook / env / gitignore | `.rulesync/rules/.curated/` |
-| Package component patterns | `.rulesync/rules/integrations/` |
+| React / Vue / Solid / Svelte / TS / Storybook / env / gitignore | `.rulesync/rules/.curated/` |
+| Package component patterns (react / vue / solid / svelte) | `.rulesync/rules/integrations/` |
 | Commits, UX copy, Turborepo | matching skill under `.rulesync/skills/` |
 | Security | [`SECURITY.md`](../../SECURITY.md) |
 

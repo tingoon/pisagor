@@ -5,7 +5,7 @@ export function Multiple() {
     <p className="text-base text-foreground leading-relaxed">
       <Highlight
         query={["React", "Vue", "Astro"]}
-        text="Use Pisagor with React, Vue, or Astro."
+        text="Use Pisagor with React, Vue, Solid, Svelte, or Astro."
       />
     </p>
   );

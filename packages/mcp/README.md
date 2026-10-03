@@ -21,7 +21,8 @@ Install UI packages in the project (examples):
 
 ```bash
 bun add @pisagor/react
-# peers: react react-dom tailwindcss
+# or @pisagor/vue / @pisagor/solid / @pisagor/svelte / @pisagor/astro
+# peers: matching framework + tailwindcss
 # recipes/tokens/utils come transitively
 ```
 
