@@ -10,7 +10,7 @@ type Props = Omit<
   "error" | "invalid" | "name" | "onBlur" | "onValueChange" | "value"
 >;
 
-let { ...rest }: Props = $props();
+let { options, ...rest }: Props = $props();
 
 const field = useFieldContext<string>();
 const submissionAttempts = useSubmissionAttempts();
@@ -29,5 +29,6 @@ const error = $derived(invalid ? getFieldErrorMessage(field) : undefined);
   name={field.name}
   onBlur={field.handleBlur}
   onValueChange={(v: string) => field.handleChange(v)}
+  {options}
   value={field.state.value}
 />
