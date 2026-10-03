@@ -146,7 +146,11 @@ export const FileInput = defineComponent({
           ...attrs,
           ...controlProps,
           class: cn(
-            formControlGroupShellRecipe({ size: props.size, ...shellArgs }),
+            formControlGroupShellRecipe({
+              class: slots.root(),
+              size: props.size,
+              ...shellArgs,
+            }),
             props.class,
           ),
           "data-disabled": props.disabled || undefined,

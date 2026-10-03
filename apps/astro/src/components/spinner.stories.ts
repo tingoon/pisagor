@@ -1,6 +1,6 @@
 import { Spinner } from "@pisagor/astro/spinner";
-import DefaultExample from "@pisagor/astro/spinner/examples/default.astro";
-import SizesExample from "@pisagor/astro/spinner/examples/sizes.astro";
+import DefaultExample from "#/astro/examples/spinner/default.astro";
+import SizesExample from "#/astro/examples/spinner/sizes.astro";
 
 export default {
   component: Spinner,

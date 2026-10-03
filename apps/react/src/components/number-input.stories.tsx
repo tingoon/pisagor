@@ -1,5 +1,5 @@
 import { NumberInput } from "@pisagor/react";
-import * as Examples from "@pisagor/react/number-input/examples";
+import * as Examples from "#/react/examples/number-input";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

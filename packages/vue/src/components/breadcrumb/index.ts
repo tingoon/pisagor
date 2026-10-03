@@ -10,6 +10,7 @@ import {
 } from "./breadcrumb";
 
 export type {
+  BreadcrumbItemProps,
   BreadcrumbPresetItem,
   BreadcrumbProps,
   BreadcrumbRootProps,

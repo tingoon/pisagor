@@ -1,5 +1,5 @@
 import { CircularSlider } from "@pisagor/react";
-import * as Examples from "@pisagor/react/circular-slider/examples";
+import * as Examples from "#/react/examples/circular-slider";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

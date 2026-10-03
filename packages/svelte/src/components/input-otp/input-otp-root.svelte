@@ -21,16 +21,22 @@ let {
   onValueChange,
   recipe = inputOtpRecipe,
   class: className,
-  size: _size,
-  variant: _variant,
+  size,
+  variant,
   ...rest
 }: Props = $props();
 
 const slots = $derived(recipe());
 
 setInputOTPContext({
+  get size() {
+    return size;
+  },
   get slots() {
     return slots;
+  },
+  get variant() {
+    return variant;
   },
 });
 

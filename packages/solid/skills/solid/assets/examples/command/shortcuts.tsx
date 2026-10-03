@@ -1,0 +1,41 @@
+/** @jsxImportSource solid-js */
+import { useListCollection } from "@ark-ui/solid/collection";
+import { useFilter } from "@ark-ui/solid/locale";
+import { Command } from "@pisagor/solid/command";
+
+export function Shortcuts() {
+  const initialItems = [
+    { label: "New file", shortcut: "⌘N", value: "new" },
+    { label: "Save", shortcut: "⌘S", value: "save" },
+    { label: "Copy", shortcut: "⌘C", value: "copy" },
+    { label: "Paste", shortcut: "⌘V", value: "paste" },
+    { label: "Undo", shortcut: "⌘Z", value: "undo" },
+    { label: "Find", shortcut: "⌘F", value: "find" },
+  ];
+  const { contains } = useFilter({ sensitivity: "base" });
+
+  const { collection, filter } = useListCollection({
+    filter: contains,
+    initialItems,
+  });
+
+  return (
+    <Command
+      collection={collection}
+      onInputValueChange={({ inputValue }) => filter(inputValue)}
+    >
+      <Command.Input placeholder="Search..." />
+      <Command.Content>
+        <Command.Empty />
+        <Command.List>
+          {collection.items.map((item) => (
+            <Command.Item item={item}>
+              {item.label}
+              <Command.Shortcut>{item.shortcut}</Command.Shortcut>
+            </Command.Item>
+          ))}
+        </Command.List>
+      </Command.Content>
+    </Command>
+  );
+}

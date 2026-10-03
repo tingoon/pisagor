@@ -1,7 +1,7 @@
 import { ColorPicker } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/color-picker/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/color-picker";
 
 const meta = preview.meta({
   component: ColorPicker,

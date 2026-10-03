@@ -1,6 +1,6 @@
 import { NumberField } from "@pisagor/react-form";
-import * as Examples from "@pisagor/react-form/number-field/examples";
 import { fn } from "storybook/test";
+import * as Examples from "#/react-form/examples/number-field";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

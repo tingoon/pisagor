@@ -1,100 +1,71 @@
 import { defineConfig } from "knip/config";
 
 export default defineConfig({
+  // Compound parts are `export const X` then composed via Object.assign in the same file.
+  ignoreExportsUsedInFile: true,
   workspaces: {
     "apps/astro": {
       entry: [".storybook/**/*", "src/**/*"],
       ignoreDependencies: ["chromatic"],
     },
     "apps/docs": {
-      entry: ["scripts/**/*.ts", "src/**/*.{astro,ts,tsx}"],
-      ignoreDependencies: ["@pisagor/solid"],
+      entry: ["scripts/**/*.ts", "src/**/*.{astro,ts,tsx,vue,svelte}"],
     },
     "apps/react": {
       entry: [".storybook/**/*", "src/**/*"],
       ignoreDependencies: ["chromatic"],
     },
+    "apps/solid": {
+      entry: ["src/**/*"],
+    },
+    "apps/svelte": {
+      entry: ["src/**/*"],
+    },
     "apps/vue": {
       entry: [".storybook/**/*", "src/**/*"],
       ignoreDependencies: ["chromatic"],
     },
+    // Entries come from package.json `exports` (+ skills below). No blanket
+    // ignoreIssues on src/components or heavy modules — fix real unused deps/files.
     "packages/astro": {
-      entry: ["src/**/*"],
-      ignoreIssues: {
-        "src/**/*.stories.ts": ["unresolved", "dependencies", "unlisted"],
-      },
+      entry: ["skills/**/*"],
     },
     "packages/mcp": {},
-    "packages/react": {
-      entry: ["src/**/*"],
-      ignoreIssues: {
-        "src/**/*.stories.tsx": ["unresolved", "dependencies", "unlisted"],
-        "src/internal/**": ["exports", "types"],
-      },
+    "packages/props": {
+      entry: ["skills/**/*"],
     },
-    "packages/react-charts": {
-      entry: ["src/**/*"],
-      ignoreIssues: {
-        "src/**/*.stories.tsx": ["unresolved", "dependencies", "unlisted"],
-      },
+    "packages/react": {
+      entry: ["skills/**/*"],
     },
     "packages/react-form": {
-      entry: ["src/**/*"],
-      ignoreIssues: {
-        "src/**/*.stories.tsx": ["unresolved", "dependencies", "unlisted"],
-        "src/internal/**": ["exports", "types"],
-      },
+      entry: ["skills/**/*"],
+    },
+    "packages/recipes": {
+      entry: ["skills/**/*"],
     },
     "packages/solid": {
-      entry: ["src/**/*"],
-      ignoreIssues: {
-        "src/components/**": ["exports", "types", "duplicates"],
-        "src/data-grid/**": ["exports", "types"],
-        "src/data-table/**": ["exports", "types"],
-        "src/hooks/**": ["exports", "types"],
-        "src/internal/**": ["exports", "types", "duplicates"],
-        "src/phone-input/**": ["exports", "types"],
-        "src/rich-text-editor/**": ["exports", "types"],
-        "src/utils/**": ["exports", "types"],
-      },
+      entry: ["skills/**/*"],
+    },
+    "packages/solid-form": {
+      entry: ["skills/**/*"],
     },
     "packages/svelte": {
-      entry: ["src/**/*"],
-      ignoreIssues: {
-        "src/components/**": ["exports", "types", "duplicates"],
-        "src/data-grid/**": ["exports", "types"],
-        "src/data-table/**": ["exports", "types"],
-        "src/hooks/**": ["exports", "types"],
-        "src/internal/**": ["exports", "types", "duplicates"],
-        "src/phone-input/**": ["exports", "types"],
-        "src/rich-text-editor/**": ["exports", "types"],
-        "src/utils/**": ["exports", "types"],
-      },
+      entry: ["skills/**/*"],
     },
-    "packages/tsconfig": {
-      ignoreDependencies: ["@types/react", "solid-js"],
+    "packages/svelte-form": {
+      entry: ["skills/**/*"],
+    },
+    "packages/tokens": {
+      entry: ["skills/**/*"],
+    },
+    "packages/utils": {
+      entry: ["skills/**/*"],
     },
     "packages/vue": {
-      entry: ["src/**/*"],
-      ignoreIssues: {
-        "src/**/*.stories.ts": ["unresolved", "dependencies", "unlisted"],
-        "src/components/**": ["exports", "types", "duplicates"],
-        "src/internal/**": ["exports", "types", "duplicates"],
-      },
-    },
-    "packages/vue-charts": {
-      entry: ["src/**/*"],
-      ignoreIssues: {
-        "src/**/*.stories.ts": ["unresolved", "dependencies", "unlisted"],
-        "src/internal/**": ["exports", "types"],
-      },
+      entry: ["skills/**/*"],
     },
     "packages/vue-form": {
-      entry: ["src/**/*"],
-      ignoreIssues: {
-        "src/**/*.stories.ts": ["unresolved", "dependencies", "unlisted"],
-        "src/internal/**": ["exports", "types"],
-      },
+      entry: ["skills/**/*"],
     },
     scripts: {
       entry: ["src/**/*"],

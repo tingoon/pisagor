@@ -1,5 +1,5 @@
 import { NavigationMenu } from "@pisagor/react";
-import * as Examples from "@pisagor/react/navigation-menu/examples";
+import * as Examples from "#/react/examples/navigation-menu";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

@@ -1,7 +1,7 @@
 import { DataTable } from "@pisagor/vue/data-table";
-import * as Examples from "@pisagor/vue/data-table/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/data-table";
 
 const meta = preview.meta({
   component: DataTable,

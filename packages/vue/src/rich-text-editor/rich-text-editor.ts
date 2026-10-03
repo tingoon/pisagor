@@ -220,7 +220,6 @@ export const RichTextEditorRoot = defineComponent({
           class: cn(
             formControlShellRecipe({ ...shellArgs }),
             recipeSlots.base({ class: props.class }),
-            props.disabled && "pointer-events-none opacity-64",
           ),
           "data-disabled": props.disabled ? "true" : undefined,
           "data-invalid": props.invalid ? "true" : undefined,

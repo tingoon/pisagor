@@ -1,6 +1,5 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { cn } from "@pisagor/utils";
 import DotsSixVerticalIcon from "phosphor-svelte/lib/DotsSixVerticalIcon";
 import { onMount } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
@@ -23,7 +22,8 @@ onMount(() => {
   aria-disabled={sortable.disabled || undefined}
   aria-label={(rest as { "aria-label"?: string })["aria-label"] ?? "Drag to reorder"}
   class={item.slots.handle({
-  class: cn(sortable.disabled && "pointer-events-none opacity-50", className),
+  class: className,
+  disabled: sortable.disabled,
 })}
   data-part="handle"
   data-scope="sortable"

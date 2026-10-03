@@ -15,7 +15,7 @@ export const getRecipeTool: Tool = {
           component: z
             .string()
             .describe(
-              "Component name (kebab-case), matching packages/recipes/src/<name>.ts.",
+              "Component name (kebab-case), matching `@pisagor/recipes/<name>`.",
             ),
         },
       },

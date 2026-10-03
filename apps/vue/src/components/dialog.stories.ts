@@ -1,7 +1,7 @@
 import { Dialog } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/dialog/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/dialog";
 
 const meta = preview.meta({
   component: Dialog,

@@ -1,11 +1,18 @@
 {
   "compilerOptions": {
+    "jsx": "preserve",
     "noUncheckedSideEffectImports": false,
     "paths": {
-      "#/storybook/*": ["./.storybook/*"]
-    }
+      "#/storybook/*": ["./.storybook/*"],
+      "#/vue-form/examples/*": [
+        "../../packages/vue-form/skills/vue-form/assets/examples/*"
+      ],
+      "#/vue/examples/*": ["../../packages/vue/skills/vue/assets/examples/*"]
+    },
+    "types": ["vite/client", "node"]
   },
-  "extends": "@pisagor/tsconfig/vue-vite",
+  "extends": "../../tsconfig.json",
+  "files": ["./vue-global.d.ts"],
   "include": [
     "src",
     ".storybook",

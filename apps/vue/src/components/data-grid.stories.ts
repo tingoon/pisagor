@@ -1,7 +1,7 @@
 import { DataGrid } from "@pisagor/vue/data-grid";
-import * as Examples from "@pisagor/vue/data-grid/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/data-grid";
 
 const meta = preview.meta({
   component: DataGrid,

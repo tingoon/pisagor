@@ -1,6 +1,6 @@
 import { Surface } from "@pisagor/astro/surface";
-import DefaultExample from "@pisagor/astro/surface/examples/default.astro";
-import NestedExample from "@pisagor/astro/surface/examples/nested.astro";
+import DefaultExample from "#/astro/examples/surface/default.astro";
+import NestedExample from "#/astro/examples/surface/nested.astro";
 
 export default {
   component: Surface,

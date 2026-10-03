@@ -1,0 +1,31 @@
+<script lang="ts">
+import { Button } from "@pisagor/svelte/button";
+import { Sheet } from "@pisagor/svelte/sheet";
+</script>
+
+<Sheet>
+  <Sheet.Trigger>
+    <Button variant="outline">Open</Button>
+  </Sheet.Trigger>
+  <Sheet.Content showCloseButton={false}>
+    <Sheet.Header>
+      <Sheet.Title>No close button</Sheet.Title>
+      <Sheet.Description>
+        You can only close this sheet using the buttons in the footer, by pressing Escape or by clicking the backdrop.
+      </Sheet.Description>
+    </Sheet.Header>
+    <Sheet.Body>
+      <p class="text-muted-foreground text-sm">
+        The close button in the top right corner is hidden. Use the footer buttons or press Escape to close.
+      </p>
+    </Sheet.Body>
+    <Sheet.Footer>
+      <Sheet.CloseTrigger>
+        <Button variant="outline">Cancel</Button>
+      </Sheet.CloseTrigger>
+      <Sheet.CloseTrigger>
+        <Button>Confirm</Button>
+      </Sheet.CloseTrigger>
+    </Sheet.Footer>
+  </Sheet.Content>
+</Sheet>

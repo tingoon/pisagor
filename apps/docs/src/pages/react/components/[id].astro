@@ -1,0 +1,15 @@
+---
+import { getDefaultComponentTab, listComponentIds } from "#/lib/component-doc";
+import { withDocsBase } from "#/lib/nav";
+
+export function getStaticPaths() {
+  return listComponentIds("react").map((id) => ({
+    params: { id },
+  }));
+}
+
+const id = Astro.params.id as string;
+const tab = await getDefaultComponentTab("react", id);
+return Astro.redirect(withDocsBase(`/react/components/${id}/${tab}`));
+---
+

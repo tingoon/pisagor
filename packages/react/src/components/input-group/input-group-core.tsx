@@ -8,8 +8,10 @@ import {
   type InputGroupButtonVariantProps,
   inputGroupAddonRecipe,
   inputGroupButtonRecipe,
+  inputGroupRootRecipe,
   inputGroupTextRecipe,
 } from "@pisagor/recipes/input-group";
+import { cn } from "@pisagor/utils";
 import type { ComponentProps, MouseEvent } from "react";
 import { Button, type ButtonProps } from "../button";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
@@ -74,7 +76,11 @@ export function InputGroupRoot({
     <ark.div
       {...rest}
       {...controlProps}
-      className={formControlGroupShellRecipe({ className, size, ...shellArgs })}
+      className={formControlGroupShellRecipe({
+        className: cn(inputGroupRootRecipe(), className),
+        size,
+        ...shellArgs,
+      })}
       data-part="root"
       data-scope="input-group"
       data-size={size}

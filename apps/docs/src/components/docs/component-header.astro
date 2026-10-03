@@ -1,12 +1,14 @@
 ---
-import { componentMeta } from "../../lib/component-meta";
-import type { Framework } from "../../lib/nav";
+import { componentMeta } from "#/lib/component-meta";
+import type { Framework } from "#/lib/nav";
 import ComponentMeta from "./component-meta.astro";
 import PackageLinks from "./package-links.astro";
 
 interface Props {
   id: string;
   framework: Framework;
+  /** Override npm package shown in PackageLinks (forms). */
+  packageName?: string;
 }
 
 const hasMeta = Boolean(
@@ -16,5 +18,10 @@ const hasMeta = Boolean(
 
 <div class="mb-8 rounded-xl border border-border/60 bg-muted/15 px-4 py-3.5">
   {hasMeta ? <ComponentMeta id={Astro.props.id} /> : null}
-  <PackageLinks embedded={hasMeta} framework={Astro.props.framework} inset />
+  <PackageLinks
+    embedded={hasMeta}
+    framework={Astro.props.framework}
+    inset
+    packageName={Astro.props.packageName}
+  />
 </div>

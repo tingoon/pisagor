@@ -151,11 +151,10 @@ function DataGridColumnResizer(props: DataGridColumnResizerProps): JSX.Element {
             <div
               {...rest}
               aria-hidden="true"
-              class={cn(
-                slots.columnResizer(),
-                header().column.getIsResizing() && "bg-primary",
-                local.class,
-              )}
+              class={slots.columnResizer({
+                class: local.class,
+                resizing: header().column.getIsResizing(),
+              })}
               data-part="column-resizer"
               data-scope="data-grid"
               onDblClick={() => header().column.resetSize()}
@@ -193,7 +192,7 @@ function DataGridHeadCell<TData extends RowData>(
     >
       <Table.Head
         {...rest}
-        class={cn(sizingEnabled() && "relative", headClass())}
+        class={slots.head({ class: headClass(), sizing: sizingEnabled() })}
         data-part="head"
         data-scope="data-grid"
         style={{
@@ -427,6 +426,7 @@ function DataGridRow<TData extends RowData>(
   props: DataGridRowProps,
 ): JSX.Element {
   const [local, rest] = splitProps(props, ["class", "style"]);
+  const { slots } = useDataGridContext<TData>();
   const row = useDataGridRowContext<TData>().row;
 
   return (
@@ -434,7 +434,7 @@ function DataGridRow<TData extends RowData>(
       {...rest}
       aria-expanded={row.getCanExpand() ? row.getIsExpanded() : undefined}
       aria-selected={row.getIsSelected()}
-      class={cn(row.getIsGrouped() && "bg-muted/40 font-medium", local.class)}
+      class={slots.row({ class: local.class })}
       data-depth={row.depth}
       data-expanded={row.getIsExpanded() ? "true" : undefined}
       data-grouped={row.getIsGrouped() ? "true" : undefined}

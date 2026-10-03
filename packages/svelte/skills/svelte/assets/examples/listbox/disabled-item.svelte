@@ -1,0 +1,33 @@
+<script lang="ts">
+import { createListCollection } from "@ark-ui/svelte/collection";
+import { Item } from "@pisagor/svelte";
+import { Listbox } from "@pisagor/svelte/listbox";
+
+const collection = createListCollection({
+    items: [
+      { label: "Free", value: "free" },
+      { label: "Pro", value: "pro" },
+      {
+        disabled: true,
+        label: "Enterprise",
+        value: "enterprise",
+      },
+      { label: "Custom", value: "custom" },
+    ],
+  });
+</script>
+
+<Item.Group variant="outline">
+      <Item class="p-1">
+        <Listbox.Root collection={collection}>
+          <Listbox.Content>
+            {#each collection.items as item}
+<Listbox.Item item={item}>
+                <Listbox.ItemText>{item.label}</Listbox.ItemText>
+                <Listbox.ItemIndicator />
+              </Listbox.Item>
+{/each}
+          </Listbox.Content>
+        </Listbox.Root>
+      </Item>
+    </Item.Group>

@@ -1,7 +1,7 @@
 import { Avatar } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/avatar/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/avatar";
 
 const meta = preview.meta({
   component: Avatar,

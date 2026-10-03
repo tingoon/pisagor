@@ -7,9 +7,14 @@ import {
 } from "./input-group-core";
 
 export type {
+  InputGroupInputProps,
+  InputGroupTextareaProps,
+} from "./input-group";
+export type {
   InputGroupAddonProps,
   InputGroupButtonProps,
   InputGroupProps,
+  InputGroupTextProps,
 } from "./input-group-core";
 
 export const InputGroup = Object.assign(InputGroupRoot, {

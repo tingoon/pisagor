@@ -108,7 +108,7 @@ export function DatePickerRoot({
   const calendarSlots = calendarRecipeProp();
 
   return (
-    <DatePickerSlotsContext value={{ slots }}>
+    <DatePickerSlotsContext value={{ slots, variant }}>
       <CalendarSlotsContext value={{ slots: calendarSlots }}>
         <DatePickerPrimitive.Root
           {...rest}
@@ -150,15 +150,20 @@ export function DatePickerTrigger({
 
 export function DatePickerInput({
   size,
+  variant,
   clearable = false,
   className,
   ...rest
 }: DatePickerInputProps) {
-  const { slots } = useDatePicker();
+  const { slots, variant: contextVariant } = useDatePicker();
 
   return (
     <DatePickerPrimitive.Control>
-      <InputGroup className={className} size={size}>
+      <InputGroup
+        className={className}
+        size={size}
+        variant={variant ?? contextVariant}
+      >
         <DatePickerPrimitive.Input {...rest} asChild>
           <InputGroup.Input clearable={false} />
         </DatePickerPrimitive.Input>
@@ -217,9 +222,11 @@ export function DatePickerTimer({
   className,
   classNames,
   recipe = datePickerRecipe,
+  variant,
   ...rest
 }: DatePickerTimerProps) {
-  const slots = useContext(DatePickerSlotsContext)?.slots ?? recipe();
+  const context = useContext(DatePickerSlotsContext);
+  const slots = context?.slots ?? recipe();
   const { canClear, handleChange, handleClear, mergedRef } = useClearableInput({
     clearable,
     defaultValue,
@@ -231,7 +238,7 @@ export function DatePickerTimer({
   });
 
   return (
-    <InputGroup {...rest}>
+    <InputGroup {...rest} variant={variant ?? context?.variant}>
       <InputGroup.Addon>
         <ClockIcon />
       </InputGroup.Addon>

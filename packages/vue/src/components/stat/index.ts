@@ -7,7 +7,10 @@ import {
   StatValue,
 } from "./stat";
 
-export type { StatProps } from "./stat";
+export type {
+  StatProps,
+  StatTrendProps,
+} from "./stat";
 
 export const Stat = Object.assign(StatShorthand, {
   Description: StatDescription,

@@ -172,7 +172,6 @@ export function RichTextEditorRoot({
         className={cn(
           formControlShellRecipe({ ...shellArgs }),
           slots.base({ className }),
-          disabled && "pointer-events-none opacity-64",
         )}
         data-disabled={disabled ? "true" : undefined}
         data-invalid={invalid ? "true" : undefined}

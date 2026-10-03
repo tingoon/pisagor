@@ -1,0 +1,106 @@
+import { PhGear, PhInfo, PhUser } from "@phosphor-icons/vue";
+import { menuDialogBlock } from "@pisagor/recipes/blocks/overlay";
+import { Button, Dialog, DropdownMenu } from "@pisagor/vue";
+import { defineComponent, h, ref } from "vue";
+
+const styles = menuDialogBlock();
+
+type ArkPart = Parameters<typeof h>[0];
+
+export const MenuDialog = defineComponent({
+  inheritAttrs: false,
+  name: "MenuDialog",
+  setup() {
+    const isOpen = ref(false);
+    const dropdownMenuParts = DropdownMenu as unknown as {
+      Trigger: ArkPart;
+      Content: ArkPart;
+      Item: ArkPart;
+    };
+    const dialogParts = Dialog as unknown as {
+      Content: ArkPart;
+      Header: ArkPart;
+      Body: ArkPart;
+      Footer: ArkPart;
+      CloseTrigger: ArkPart;
+    };
+
+    const setOpen = (next: boolean) => {
+      isOpen.value = next;
+    };
+
+    return () =>
+      h("div", null, () => [
+        h(DropdownMenu as ArkPart, null, () => [
+          h(dropdownMenuParts.Trigger, { asChild: true }, () =>
+            h(
+              Button as ArkPart,
+              { type: "button", variant: "outline" },
+              () => "Open menu",
+            ),
+          ),
+          h(dropdownMenuParts.Content, null, () => [
+            h(
+              dropdownMenuParts.Item,
+              {
+                onSelect: () => setOpen(true),
+                value: "settings",
+              },
+              () => [h(PhGear, { "aria-hidden": true }), "Open settings"],
+            ),
+            h(
+              dropdownMenuParts.Item,
+              { disabled: true, value: "profile" },
+              () => [h(PhUser, { "aria-hidden": true }), "View profile"],
+            ),
+            h(dropdownMenuParts.Item, { disabled: true, value: "help" }, () => [
+              h(PhInfo, { "aria-hidden": true }),
+              "Help",
+            ]),
+          ]),
+        ]),
+        h(
+          Dialog as ArkPart,
+          {
+            onOpenChange: (details: { open?: boolean } | boolean) =>
+              setOpen(
+                Boolean(typeof details === "boolean" ? details : details?.open),
+              ),
+            open: isOpen.value,
+          },
+          () => [
+            h(dialogParts.Content, null, () => [
+              h(
+                dialogParts.Header,
+                {
+                  description:
+                    "Adjust preferences without leaving your current context.",
+                  title: "Settings",
+                },
+                () => undefined,
+              ),
+              h(dialogParts.Body, null, () =>
+                h(
+                  "p",
+                  { class: styles.description() },
+                  "You can open dialogs from menu items using the onSelect handler — the menu closes, then the dialog opens above the page.",
+                ),
+              ),
+              h(dialogParts.Footer, null, () => [
+                h(dialogParts.CloseTrigger, { asChild: true }, () =>
+                  h(
+                    Button as ArkPart,
+                    { type: "button", variant: "outline" },
+                    () => "Cancel",
+                  ),
+                ),
+                h(dialogParts.CloseTrigger, { asChild: true }, () =>
+                  h(Button as ArkPart, { type: "button" }, () => "Save"),
+                ),
+              ]),
+            ]),
+          ],
+        ),
+      ]);
+  },
+});

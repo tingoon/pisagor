@@ -1,7 +1,7 @@
 ---
 interface Props {
   /** One or more packages, e.g. "@pisagor/react" */
-  packages: string | string[];
+  packages?: string | string[];
   /** Optional import / setup snippet shown under Manual */
   manual?: string;
   class?: string;
@@ -9,9 +9,10 @@ interface Props {
 
 const packagesProp = Astro.props.packages;
 const pkgs = (Array.isArray(packagesProp) ? packagesProp : [packagesProp])
-  .map((p) => p.trim())
-  .filter(Boolean);
-const pkgList = pkgs.join(" ");
+  .filter((p): p is string => typeof p === "string" && p.trim().length > 0)
+  .map((p) => p.trim());
+const resolvedPkgs = pkgs.length > 0 ? pkgs : ["@pisagor/react"];
+const pkgList = resolvedPkgs.join(" ");
 
 const managers = [
   { command: `pnpm add ${pkgList}`, id: "pnpm", label: "pnpm" },
@@ -22,9 +23,9 @@ const managers = [
 
 const defaultManual =
   Astro.props.manual ??
-  (pkgs.length === 1
-    ? `import { /* … */ } from "${pkgs[0]}";`
-    : pkgs.map((p) => `import { /* … */ } from "${p}";`).join("\n"));
+  (resolvedPkgs.length === 1
+    ? `import { /* … */ } from "${resolvedPkgs[0]}";`
+    : resolvedPkgs.map((p) => `import { /* … */ } from "${p}";`).join("\n"));
 ---
 
 <div

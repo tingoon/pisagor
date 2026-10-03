@@ -1,6 +1,6 @@
 import { TextField } from "@pisagor/react-form";
-import * as Examples from "@pisagor/react-form/text-field/examples";
 import { fn } from "storybook/test";
+import * as Examples from "#/react-form/examples/text-field";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

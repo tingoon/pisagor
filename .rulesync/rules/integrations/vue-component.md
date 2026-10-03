@@ -14,7 +14,7 @@ cursor:
 
 How to build shared UI components in `packages/vue` (`@pisagor/vue`). General Vue rules — [Vue Style Guide](../vue.mdc).
 
-**References:** [Vue Style Guide](../vue.mdc), [Storybook](stories.mdc), [Component](component.mdc), [TypeScript Style Guide](../typescript.mdc). Package-specific notes: [`packages/vue/AGENTS.md`](../../../packages/vue/AGENTS.md). Mirror the React sibling when porting — [React Component Patterns](react-component.mdc) — but implement with Vue idioms below (do not copy JSX/`displayName`/`className`).
+**References:** [Vue Style Guide](../vue.mdc), [Storybook](stories.mdc), [Component](component.mdc), [TypeScript Style Guide](../typescript.mdc). Package docs live in skills and these rules — there is no `packages/vue/AGENTS.md`. Mirror the React sibling when porting — [React Component Patterns](react-component.mdc) — but implement with Vue idioms below (do not copy JSX/`displayName`/`className`).
 
 **Out of scope:** design tokens / theme authoring (`@pisagor/tokens`). `tv()` recipe authoring lives in [`@pisagor/recipes`](../../../packages/recipes) — this file covers how components **consume** recipes. General Vue naming, props order, setup body, composables — [Vue Style Guide](../vue.mdc). Story catalog fields — [Storybook](stories.mdc).
 
@@ -24,16 +24,17 @@ How to build shared UI components in `packages/vue` (`@pisagor/vue`). General Vu
 
 Folder name, main file, and component export name align: **kebab-case folder** → **`<name>.ts`** → **PascalCase** component (e.g. `accordion/` → `accordion.ts` → `Accordion`).
 
-**Light** components live under `src/components/<name>/` (root barrel + `./*`). **Heavy** modules live under `src/<name>/` with dedicated exports only — not on the root barrel: `data-grid`, `data-table`, `phone-input`, `rich-text-editor`. Charts: `@pisagor/vue-charts`. Forms: `@pisagor/vue-form`.
+**Light** components live under `src/components/<name>/` (root barrel + `./*`). **Heavy** modules live under `src/<name>/` with dedicated exports only — not on the root barrel: `data-grid`, `data-table`, `phone-input`, `rich-text-editor`. Forms: `@pisagor/vue-form`.
 
 ```text
 <kebab-name>/
 ├── <name>.ts
-├── <name>.stories.ts       # public shared packages — required; Storybook-local — optional
 ├── index.ts                # public shared packages — required; Storybook-local — optional
 ├── <name>.context.ts       # compound shared provide/inject (when present)
 └── [optional splits]       # e.g. input-group-core.ts — large sub-modules only
 ```
+
+Package source stays **story-free**. Stories live in the Storybook app `apps/vue` (e.g. `apps/vue/src/components/<name>.stories.ts`), not under `packages/vue`.
 
 ### Implementation surface
 
@@ -68,17 +69,18 @@ Applies to the published workspace component package (`@pisagor/vue`):
 
 - One folder per public component — layout above is required.
 - Require `index.ts` barrel (package export map, e.g. `@pisagor/vue/*`).
-- Require `<name>.stories.ts` per component — [Storybook](stories.mdc).
+- Do **not** add `*.stories.ts` under `packages/vue` — stories belong in `apps/vue` — [Storybook](stories.mdc).
 - Import recipes from `@pisagor/recipes/<name>` — do not add local `*.recipe.ts` shims or call `tv()`.
 
-### Storybook-local components
+### Storybook app (`apps/vue`)
 
-- Docs UI in `apps/vue` may use a dedicated folder or a single file; `.stories.ts` and `index.ts` are optional.
+- Component and form stories live in `apps/vue` (Storybook host), not in the package.
+- Docs UI / local helpers in `apps/vue` may use a dedicated folder or a single file; `.stories.ts` and `index.ts` are optional for non-catalog helpers.
 
 ### Cross-component imports
 
-- Within a shared package's source (`.ts`, excluding stories), prefer **relative** imports between sibling components (e.g. `../button`, `../input-group/input-group-core`).
-- **Stories** (`.stories.ts`) may use the public export map (e.g. `import { Button } from "@pisagor/vue"`) — same as apps. Heavy components use dedicated subpaths (`@pisagor/vue/data-grid`, …).
+- Within a shared package's source (`.ts`), prefer **relative** imports between sibling components (e.g. `../button`, `../input-group/input-group-core`).
+- **Stories** in `apps/vue` (`.stories.ts`) use the public export map (e.g. `import { Button } from "@pisagor/vue"`). Heavy components use dedicated subpaths (`@pisagor/vue/data-grid`, …).
 - Apps and other packages use the public export map for that package (light barrel or heavy subpath).
 - For cyclic pairs (e.g. `input` ↔ `input-group` ↔ `textarea`), import the concrete module file, not the barrel `index.ts`.
 - Import `{name}Recipe` / `{Name}VariantProps` from `@pisagor/recipes/<name>` — see [Styling](#styling). Do not define `tv()` in component packages. Do not add `<name>.recipe.ts` shims.
@@ -344,7 +346,7 @@ When a part has no recipe slot by design:
 
 ## Storybook
 
-- Follow [Storybook](stories.mdc) for `*.stories.ts` (story order, escape-hatch props, sample data).
+- Author `*.stories.ts` in `apps/vue` (not in `packages/vue`). Follow [Storybook](stories.mdc) for story order, escape-hatch props, and sample data.
 - Declare `subcomponents` on meta for compound components (`Root`, `Item`, …).
 - Prefer `render: () => ({ components: { … }, template: \`…\` })` or `h()` render factories — match sibling stories in the folder.
 - Mirror the React sibling story (title, `parameters.metadata`, docs copy) when porting.

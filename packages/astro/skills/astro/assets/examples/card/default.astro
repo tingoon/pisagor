@@ -1,0 +1,19 @@
+---
+import Card from "../../../../../src/components/card/card.astro";
+import CardContent from "../../../../../src/components/card/card-content.astro";
+import CardFooter from "../../../../../src/components/card/card-footer.astro";
+import CardHeader from "../../../../../src/components/card/card-header.astro";
+---
+
+<Card>
+  <CardHeader
+    description="Brief description about the card"
+    title="Card header"
+  />
+  <CardContent>
+    <p class="text-muted-foreground text-sm">Card content</p>
+  </CardContent>
+  <CardFooter>
+    <p class="text-muted-foreground text-sm">Footer</p>
+  </CardFooter>
+</Card>

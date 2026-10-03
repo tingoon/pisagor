@@ -1,7 +1,7 @@
 import { Menu } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/menu/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/menu";
 
 const meta = preview.meta({
   component: Menu,

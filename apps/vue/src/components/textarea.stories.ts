@@ -1,7 +1,7 @@
 import { Textarea } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/textarea/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/textarea";
 
 const meta = preview.meta({
   component: Textarea,

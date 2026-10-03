@@ -12,7 +12,11 @@ import {
   ListboxValueText,
 } from "./listbox";
 
-export type { ListboxProps, ListboxRootProps } from "./listbox";
+export type {
+  ListboxItemProps,
+  ListboxProps,
+  ListboxRootProps,
+} from "./listbox";
 
 export const Listbox = Object.assign(ListboxShorthand, {
   Content: ListboxContent,

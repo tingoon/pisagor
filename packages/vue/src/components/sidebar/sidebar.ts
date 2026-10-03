@@ -926,9 +926,6 @@ export const SidebarMenuSub = defineComponent({
   },
 });
 
-export const SidebarMenuSubButton = SidebarMenuButton;
-export const SidebarMenuSubItem = SidebarMenuItem;
-
 export const SidebarMenuAction = defineComponent({
   inheritAttrs: false,
   name: "SidebarMenuAction",
@@ -989,13 +986,4 @@ export const SidebarMenuBadge = defineComponent({
   },
 });
 
-export const SidebarInsetPlaceholder = defineComponent({
-  inheritAttrs: false,
-  name: "SidebarInsetPlaceholder",
-  setup(_, { attrs, slots }) {
-    return () => h("div", attrs, slots.default?.());
-  },
-});
 // #endregion
-
-export { SidebarProvider as SidebarProviderRoot };

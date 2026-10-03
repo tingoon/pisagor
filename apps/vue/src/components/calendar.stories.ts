@@ -1,7 +1,7 @@
 import { Calendar } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/calendar/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/calendar";
 
 const meta = preview.meta({
   component: Calendar,

@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js",
+    "noEmit": true,
+    "paths": {
+      "@pisagor/solid": ["../../packages/solid/src/components/index.ts"],
+      "@pisagor/solid-form": ["../../packages/solid-form/src/fields/index.ts"],
+      "@pisagor/solid-form/*": ["../../packages/solid-form/src/*"],
+      "@pisagor/solid/*": ["../../packages/solid/src/components/*"],
+      "@pisagor/utils": ["../../packages/utils/src/index.ts"]
+    },
+    "types": []
+  },
+  "extends": "../../tsconfig.json",
+  "include": ["src"]
+}

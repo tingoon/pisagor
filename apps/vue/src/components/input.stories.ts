@@ -1,7 +1,7 @@
 import { Input } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/input/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/input";
 
 const meta = preview.meta({
   component: Input,

@@ -1,8 +1,8 @@
 import { SliderField } from "@pisagor/vue-form";
-import * as Examples from "@pisagor/vue-form/slider-field/examples";
 import { fn } from "storybook/test";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue-form/examples/slider-field";
 
 const meta = preview.meta({
   component: SliderField,

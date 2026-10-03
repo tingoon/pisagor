@@ -76,7 +76,8 @@ function handleClear() {
     <Field.Textarea
       {...rest}
       class={slots.clearableRoot({
-  class: cn(canClear && "pe-9", className, classNames?.clearableRoot),
+  class: cn(className, classNames?.clearableRoot),
+  clearable: canClear,
 })}
       data-variant={variant}
       {disabled}

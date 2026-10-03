@@ -4,6 +4,7 @@ import {
   type FormControlGroupShellVariantProps,
   formControlGroupShellRecipe,
 } from "@pisagor/recipes/form-control";
+import { inputGroupRootRecipe } from "@pisagor/recipes/input-group";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
@@ -26,7 +27,7 @@ const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
   as="fieldset"
   {...rest}
   class={formControlGroupShellRecipe({
-  class: cn("m-0 min-w-0 border-solid p-0", className),
+  class: cn(inputGroupRootRecipe(), className),
   size,
   surfaceVariant,
   variant,

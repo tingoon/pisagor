@@ -1,5 +1,5 @@
 import { BottomNavigation } from "@pisagor/react";
-import * as Examples from "@pisagor/react/bottom-navigation/examples";
+import * as Examples from "#/react/examples/bottom-navigation";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

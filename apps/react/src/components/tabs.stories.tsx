@@ -1,5 +1,5 @@
 import { Tabs } from "@pisagor/react";
-import * as Examples from "@pisagor/react/tabs/examples";
+import * as Examples from "#/react/examples/tabs";
 import { profileTabs } from "#/storybook/fixtures";
 import preview from "#/storybook/preview";
 

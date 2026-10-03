@@ -1,7 +1,7 @@
 import { Status } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/status/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/status";
 
 const meta = preview.meta({
   component: Status,

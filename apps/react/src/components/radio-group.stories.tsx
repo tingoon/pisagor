@@ -1,5 +1,5 @@
 import { RadioGroup } from "@pisagor/react";
-import * as Examples from "@pisagor/react/radio-group/examples";
+import * as Examples from "#/react/examples/radio-group";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

@@ -5,6 +5,7 @@ import {
 import {
   inputGroupAddonRecipe,
   inputGroupButtonRecipe,
+  inputGroupRootRecipe,
   inputGroupTextRecipe,
 } from "@pisagor/recipes/input-group";
 import { cn } from "@pisagor/utils";
@@ -91,7 +92,11 @@ export const InputGroupRoot = defineComponent({
           ...attrs,
           ...controlProps,
           class: cn(
-            formControlGroupShellRecipe({ size: props.size, ...shellArgs }),
+            formControlGroupShellRecipe({
+              class: inputGroupRootRecipe(),
+              size: props.size,
+              ...shellArgs,
+            }),
             props.class,
           ),
           "data-part": "root",

@@ -211,7 +211,7 @@ export function SortableItem(props: SortableItemProps): JSX.Element {
     "itemRecipe",
     "class",
   ]);
-  const { getItemProps, activeId } = useSortable();
+  const { getItemProps, activeId, disabled } = useSortable();
   const itemProps = () => getItemProps(local.value);
   const isDragging = () => activeId() === local.value;
   const slots = () => (local.itemRecipe ?? sortableItemRecipe)();
@@ -223,7 +223,7 @@ export function SortableItem(props: SortableItemProps): JSX.Element {
       <ark.div
         {...rest}
         {...itemProps()}
-        class={slots().base({ class: cn(local.class) })}
+        class={slots().base({ class: cn(local.class), disabled })}
         data-part="item"
         data-scope="sortable"
         role="listitem"
@@ -257,9 +257,7 @@ export function SortableHandle(props: SortableHandleProps): JSX.Element {
       {...rest}
       aria-disabled={disabled || undefined}
       aria-label={local["aria-label"] ?? "Drag to reorder"}
-      class={slots.handle({
-        class: cn(disabled && "pointer-events-none opacity-50", local.class),
-      })}
+      class={slots.handle({ class: cn(local.class), disabled })}
       data-part="handle"
       data-scope="sortable"
       draggable={!disabled}

@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import "@pisagor/react/styles";
-@import "@pisagor/react-charts/styles";
 @import "@pisagor/react-form/styles";
 @source "./**/*.{ts,tsx}";
 

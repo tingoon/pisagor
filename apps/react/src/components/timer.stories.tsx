@@ -1,5 +1,5 @@
 import { Timer } from "@pisagor/react";
-import * as Examples from "@pisagor/react/timer/examples";
+import * as Examples from "#/react/examples/timer";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

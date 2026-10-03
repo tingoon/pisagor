@@ -1,4 +1,4 @@
 {
-  "extends": "@pisagor/tsconfig/base",
+  "extends": "../../tsconfig.json",
   "include": ["src"]
 }

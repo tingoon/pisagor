@@ -8,18 +8,26 @@ import { useInputOTP } from "./input-otp.context";
 
 type Props = Omit<PinInputInputProps, "class"> & {
   class?: string | undefined;
+  size?: "sm" | "md" | "lg";
   variant?: "primary" | "secondary";
 };
 
-let { variant: variantProp, class: className, index, ...rest }: Props = $props();
+let {
+  size: sizeProp,
+  variant: variantProp,
+  class: className,
+  index,
+  ...rest
+}: Props = $props();
 
-const { slots } = useInputOTP();
+const ctx = useInputOTP();
 const surfaceVariant = useFormControlSurface();
-const variant = $derived(variantProp ?? "primary");
+const size = $derived(sizeProp ?? ctx.size ?? "md");
+const variant = $derived(variantProp ?? ctx.variant ?? "primary");
 </script>
 
 <PinInputPrimitive.Input
   {...rest}
-  class={cn(inputRootRecipe({ size: "md", surfaceVariant, variant }), slots.input({ class: cn(className) }))}
+  class={cn(inputRootRecipe({ size, surfaceVariant, variant }), ctx.slots.input({ class: cn(className) }))}
   {index}
 />

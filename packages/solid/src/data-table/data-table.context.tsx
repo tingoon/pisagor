@@ -2,7 +2,6 @@ import type { DataTableRecipe } from "@pisagor/recipes/data-table";
 import type {
   Cell,
   Column,
-  Header,
   HeaderGroup,
   Row,
   RowData,
@@ -59,7 +58,6 @@ export type {
   DataTableContextValue,
   DataTableHeaderGroupContextValue,
   DataTableRowContextValue,
-  Header,
   HeaderGroup,
   Row,
   TableType,

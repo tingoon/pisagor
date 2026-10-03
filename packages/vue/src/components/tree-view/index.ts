@@ -16,6 +16,9 @@ export type {
   NodeProviderProps,
   TreeCollection,
   TreeNodeType,
+  TreeViewBranchProps,
+  TreeViewItemProps,
+  TreeViewItemTitleProps,
   TreeViewProps,
 } from "./tree-view";
 

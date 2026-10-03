@@ -383,11 +383,10 @@ export const DataGridColumnResizer = defineComponent({
       return h("div", {
         ...attrs,
         "aria-hidden": "true",
-        class: cn(
-          variantSlots.columnResizer(),
-          header.column.getIsResizing() && "bg-primary",
-          props.class,
-        ),
+        class: variantSlots.columnResizer({
+          class: props.class,
+          resizing: header.column.getIsResizing(),
+        }),
         "data-part": "column-resizer",
         "data-scope": "data-grid",
         onDblclick: () => header.column.resetSize(),
@@ -417,7 +416,7 @@ function renderHeadCell(
       Table.Head as ArkPart,
       {
         ...attrs,
-        class: cn(sizingEnabled && "relative", headClass),
+        class: variantSlots.head({ class: headClass, sizing: sizingEnabled }),
         "data-part": "head",
         "data-scope": "data-grid",
         style: {
@@ -644,6 +643,8 @@ export const DataGridRow = defineComponent({
     return () => {
       const { row } =
         useDataGridRowContextBase() as unknown as DataGridRowContextValue<RowData>;
+      const { slots: variantSlots } =
+        useDataGridContextBase() as unknown as DataGridContextValue<RowData>;
 
       return h(
         Table.Row as ArkPart,
@@ -651,10 +652,7 @@ export const DataGridRow = defineComponent({
           ...attrs,
           "aria-expanded": row.getCanExpand() ? row.getIsExpanded() : undefined,
           "aria-selected": row.getIsSelected(),
-          class: cn(
-            row.getIsGrouped() && "bg-muted/40 font-medium",
-            props.class,
-          ),
+          class: variantSlots.row({ class: props.class }),
           "data-depth": row.depth,
           "data-expanded": row.getIsExpanded() ? "true" : undefined,
           "data-grouped": row.getIsGrouped() ? "true" : undefined,

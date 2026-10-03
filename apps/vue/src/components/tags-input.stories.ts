@@ -1,7 +1,7 @@
 import { TagsInput } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/tags-input/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/tags-input";
 
 const meta = preview.meta({
   component: TagsInput,

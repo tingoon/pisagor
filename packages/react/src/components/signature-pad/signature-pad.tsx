@@ -95,10 +95,8 @@ function SignaturePadControl({
       className={cn(
         formControlZoneRecipe({ ...shellArgs }),
         slots.control({
-          className: cn(
-            resolved.variant === "primary" && "shadow-xs/5",
-            className,
-          ),
+          className,
+          variant: resolved.variant,
         }),
       )}
       data-invalid={invalid || undefined}

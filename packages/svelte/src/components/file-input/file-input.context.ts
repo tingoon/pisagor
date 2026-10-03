@@ -7,4 +7,3 @@ interface FileInputContextValue {
 
 const ctx = createContext<FileInputContextValue>({ name: "FileInput" });
 export const setFileInputContext = ctx.setContext;
-export const useFileInput = ctx.getContext;

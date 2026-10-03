@@ -1,7 +1,7 @@
 import { FormatNumber } from "@pisagor/astro/format";
-import DefaultExample from "@pisagor/astro/format/examples/default.astro";
-import NumberCompactExample from "@pisagor/astro/format/examples/number-compact.astro";
-import RelativeTimeExample from "@pisagor/astro/format/examples/relative-time.astro";
+import DefaultExample from "#/astro/examples/format/default.astro";
+import NumberCompactExample from "#/astro/examples/format/number-compact.astro";
+import RelativeTimeExample from "#/astro/examples/format/relative-time.astro";
 
 export default {
   component: FormatNumber,

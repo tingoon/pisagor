@@ -1,7 +1,7 @@
 import { NumberInput } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/number-input/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/number-input";
 
 const meta = preview.meta({
   component: NumberInput,

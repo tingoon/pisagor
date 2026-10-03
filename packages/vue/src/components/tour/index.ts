@@ -19,7 +19,11 @@ import {
   useTourContext,
 } from "./tour";
 
-export type { TourRootProps, TourStepType } from "./tour";
+export type {
+  TourBackdropProps,
+  TourRootProps,
+  TourStepType,
+} from "./tour";
 export {
   TourActions,
   TourActionTrigger,

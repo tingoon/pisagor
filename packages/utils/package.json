@@ -6,10 +6,8 @@
     "clsx": "^2.1.1",
     "tailwind-merge": "^3.7.0"
   },
-  "description": "Class-name helpers for Pisagor packages.",
-  "devDependencies": {
-    "@pisagor/tsconfig": "workspace:*"
-  },
+  "description": "Tree-shakeable class-name helpers (`cn`) for Pisagor.",
+
   "exports": {
     ".": "./src/index.ts"
   },

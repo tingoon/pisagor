@@ -1,9 +1,9 @@
 import { AutocompleteField } from "@pisagor/vue-form";
-import * as Examples from "@pisagor/vue-form/autocomplete-field/examples";
 import { fn } from "storybook/test";
 import { exampleRender } from "#/storybook/example-render";
 import { cityOptions } from "#/storybook/fixtures";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue-form/examples/autocomplete-field";
 
 const meta = preview.meta({
   component: AutocompleteField,

@@ -1,7 +1,7 @@
 import { ImageCropper } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/image-cropper/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/image-cropper";
 
 const meta = preview.meta({
   component: ImageCropper,

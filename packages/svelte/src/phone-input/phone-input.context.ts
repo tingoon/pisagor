@@ -32,4 +32,3 @@ export interface PhoneInputContextValue {
 
 const ctx = createContext<PhoneInputContextValue>({ name: "PhoneInput" });
 export const setPhoneInputContext = ctx.setContext;
-export const usePhoneInput = ctx.getContext;

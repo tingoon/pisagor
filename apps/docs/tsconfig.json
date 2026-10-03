@@ -3,12 +3,84 @@
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "paths": {
-      "@/*": ["./src/*"],
-      "#recipes-react/*": ["../react/src/recipes/*"],
-      "#recipes-vue/*": ["../vue/src/recipes/*"]
+      "#/*": ["./src/*"],
+      "#/astro/*": ["../../packages/astro/*"],
+      "#/astro/examples/*": [
+        "../../packages/astro/skills/astro/assets/examples/*"
+      ],
+      "#/astro/references/*": [
+        "../../packages/astro/skills/astro/references/*"
+      ],
+      "#/props/*": ["../../packages/props/*"],
+      "#/react-form/*": ["../../packages/react-form/*"],
+      "#/react-form/examples/*": [
+        "../../packages/react-form/skills/react-form/assets/examples/*"
+      ],
+      "#/react-form/references/*": [
+        "../../packages/react-form/skills/react-form/references/*"
+      ],
+      "#/react/*": ["../../packages/react/*"],
+      "#/react/blocks/*": ["../react/src/blocks/*"],
+      "#/react/examples/*": [
+        "../../packages/react/skills/react/assets/examples/*"
+      ],
+      "#/react/references/*": [
+        "../../packages/react/skills/react/references/*"
+      ],
+      "#/recipes/*": ["../../packages/recipes/*"],
+      "#/solid-form/*": ["../../packages/solid-form/*"],
+      "#/solid-form/examples/*": [
+        "../../packages/solid-form/skills/solid-form/assets/examples/*"
+      ],
+      "#/solid-form/references/*": [
+        "../../packages/solid-form/skills/solid-form/references/*"
+      ],
+      "#/solid/*": ["../../packages/solid/*"],
+      "#/solid/blocks/*": ["../solid/src/blocks/*"],
+      "#/solid/examples/*": [
+        "../../packages/solid/skills/solid/assets/examples/*"
+      ],
+      "#/solid/references/*": [
+        "../../packages/solid/skills/solid/references/*"
+      ],
+      "#/svelte-form/*": ["../../packages/svelte-form/*"],
+      "#/svelte-form/examples/*": [
+        "../../packages/svelte-form/skills/svelte-form/assets/examples/*"
+      ],
+      "#/svelte-form/references/*": [
+        "../../packages/svelte-form/skills/svelte-form/references/*"
+      ],
+      "#/svelte/*": ["../../packages/svelte/*"],
+      "#/svelte/blocks/*": ["../svelte/src/blocks/*"],
+      "#/svelte/examples/*": [
+        "../../packages/svelte/skills/svelte/assets/examples/*"
+      ],
+      "#/svelte/references/*": [
+        "../../packages/svelte/skills/svelte/references/*"
+      ],
+      "#/tokens/*": ["../../packages/tokens/*"],
+      "#/utils/*": ["../../packages/utils/*"],
+      "#/vue-form/*": ["../../packages/vue-form/*"],
+      "#/vue-form/examples/*": [
+        "../../packages/vue-form/skills/vue-form/assets/examples/*"
+      ],
+      "#/vue-form/references/*": [
+        "../../packages/vue-form/skills/vue-form/references/*"
+      ],
+      "#/vue/*": ["../../packages/vue/*"],
+      "#/vue/blocks/*": ["../vue/src/blocks/*"],
+      "#/vue/examples/*": ["../../packages/vue/skills/vue/assets/examples/*"],
+      "#/vue/references/*": ["../../packages/vue/skills/vue/references/*"]
     },
     "types": ["astro/client"]
   },
-  "extends": "@pisagor/tsconfig/astro",
+  "extends": "../../tsconfig.json",
+  "files": [
+    "./css-modules.d.ts",
+    "./react-global.d.ts",
+    "./solid-global.d.ts",
+    "./svelte-global.d.ts",
+    "./vue-global.d.ts"
+  ],
   "include": [".astro/types.d.ts", "src", "astro.config.ts"]
 }

@@ -1,6 +1,6 @@
 import { AutocompleteField } from "@pisagor/react-form";
-import * as Examples from "@pisagor/react-form/autocomplete-field/examples";
 import { fn } from "storybook/test";
+import * as Examples from "#/react-form/examples/autocomplete-field";
 import { cityOptions } from "#/storybook/fixtures";
 import preview from "#/storybook/preview";
 

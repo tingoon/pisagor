@@ -1,5 +1,5 @@
 import { Table } from "@pisagor/react";
-import * as Examples from "@pisagor/react/table/examples";
+import * as Examples from "#/react/examples/table";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

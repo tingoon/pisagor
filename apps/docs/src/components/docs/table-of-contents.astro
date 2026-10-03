@@ -82,7 +82,6 @@ function bindToc(nav: HTMLElement) {
 
   for (const heading of headings) observer.observe(heading);
 
-  // Initial: first heading in view, or hash target
   const hash = decodeURIComponent(location.hash.slice(1));
   if (hash && ids.includes(hash)) setActive(hash);
   else if (ids[0]) setActive(ids[0]);

@@ -10,9 +10,13 @@ type FormControlVariant = "primary" | "secondary";
 
 type ClassValue = Parameters<typeof cn>[0];
 
-import { defineComponent, h, type PropType } from "vue";
+import { computed, defineComponent, h, type PropType, unref } from "vue";
 import type { InputProps } from "../input";
 import { Input } from "../input";
+import {
+  provideInputOTPContext,
+  useInputOTPContextRef,
+} from "./input-otp.context";
 
 type ArkPart = Parameters<typeof h>[0];
 
@@ -79,6 +83,13 @@ export const InputOTPRoot = defineComponent({
     },
   },
   setup(props, { attrs, slots }) {
+    provideInputOTPContext(
+      computed(() => ({
+        size: props.size,
+        variant: props.variant,
+      })),
+    );
+
     return () => {
       const variantSlots = props.recipe();
       const attrClass = (attrs as { class?: ClassValue }).class;
@@ -131,14 +142,21 @@ export const InputOTPSlot = defineComponent({
       default: inputOtpRecipe,
       type: Function as PropType<typeof inputOtpRecipe>,
     },
+    size: {
+      default: undefined,
+      type: String as PropType<InputProps["size"]>,
+    },
     variant: {
       default: undefined,
       type: String as PropType<FormControlVariant | undefined>,
     },
   },
   setup(props, { attrs }) {
+    const contextRef = useInputOTPContextRef();
+
     return () => {
       const variantSlots = props.recipe();
+      const ctx = unref(contextRef);
 
       return h(
         PinInputPrimitive.Input as ArkPart,
@@ -152,7 +170,8 @@ export const InputOTPSlot = defineComponent({
             class: variantSlots.input({
               class: cn(props.class, (attrs as { class?: ClassValue }).class),
             }),
-            variant: props.variant,
+            size: props.size ?? ctx.size,
+            variant: props.variant ?? ctx.variant,
           }),
       );
     };

@@ -156,11 +156,8 @@ export const Textarea = defineComponent({
           h(FieldPrimitive.Textarea as ArkPart, {
             ...attrs,
             class: slots.clearableRoot({
-              class: cn(
-                canClear.value && "pe-9",
-                props.class,
-                props.classNames?.clearableRoot,
-              ),
+              class: cn(props.class, props.classNames?.clearableRoot),
+              clearable: canClear.value,
             }),
             defaultValue: props.defaultValue,
             disabled: props.disabled,

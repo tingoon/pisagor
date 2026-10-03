@@ -49,7 +49,8 @@ setSignaturePadContext({
     class={cn(
   formControlZoneRecipe({ surfaceVariant, variant }),
   slots.control({
-    class: cn(variant === "primary" && "shadow-xs/5", classNames?.control),
+    class: cn(classNames?.control),
+    variant,
   }),
 )}
     data-invalid={invalid || undefined}

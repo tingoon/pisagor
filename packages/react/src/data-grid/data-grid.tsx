@@ -230,11 +230,10 @@ function DataGridColumnResizer({
     <div
       {...rest}
       aria-hidden="true"
-      className={cn(
-        slots.columnResizer(),
-        header.column.getIsResizing() && "bg-primary",
+      className={slots.columnResizer({
         className,
-      )}
+        resizing: header.column.getIsResizing(),
+      })}
       data-part="column-resizer"
       data-scope="data-grid"
       onDoubleClick={() => header.column.resetSize()}
@@ -261,7 +260,10 @@ function DataGridHeadCell<TData extends RowData>({
     >
       <Table.Head
         {...rest}
-        className={cn(sizingEnabled && "relative", headClassName)}
+        className={slots.head({
+          className: headClassName,
+          sizing: sizingEnabled,
+        })}
         data-part="head"
         data-scope="data-grid"
         style={{
@@ -481,6 +483,7 @@ function DataGridRow<TData extends RowData>({
   style,
   ...rest
 }: DataGridRowProps) {
+  const { slots } = useDataGridContext<TData>();
   const row = useDataGridRowContext<TData>().row;
 
   return (
@@ -488,7 +491,7 @@ function DataGridRow<TData extends RowData>({
       {...rest}
       aria-expanded={row.getCanExpand() ? row.getIsExpanded() : undefined}
       aria-selected={row.getIsSelected()}
-      className={cn(row.getIsGrouped() && "bg-muted/40 font-medium", className)}
+      className={slots.row({ className })}
       data-depth={row.depth}
       data-expanded={row.getIsExpanded() ? "true" : undefined}
       data-grouped={row.getIsGrouped() ? "true" : undefined}

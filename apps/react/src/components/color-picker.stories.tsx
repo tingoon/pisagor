@@ -1,5 +1,5 @@
 import { ColorPicker } from "@pisagor/react";
-import * as Examples from "@pisagor/react/color-picker/examples";
+import * as Examples from "#/react/examples/color-picker";
 
 import preview from "#/storybook/preview";
 

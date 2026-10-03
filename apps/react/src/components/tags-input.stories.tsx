@@ -1,5 +1,5 @@
 import { TagsInput } from "@pisagor/react";
-import * as Examples from "@pisagor/react/tags-input/examples";
+import * as Examples from "#/react/examples/tags-input";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

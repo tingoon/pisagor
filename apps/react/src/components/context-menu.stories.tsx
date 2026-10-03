@@ -1,5 +1,5 @@
 import { ContextMenu } from "@pisagor/react";
-import * as Examples from "@pisagor/react/context-menu/examples";
+import * as Examples from "#/react/examples/context-menu";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

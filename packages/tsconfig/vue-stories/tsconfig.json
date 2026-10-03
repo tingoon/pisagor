@@ -1,7 +1,0 @@
-{
-  "compilerOptions": {
-    "noUncheckedSideEffectImports": false,
-    "types": ["node"]
-  },
-  "extends": "../vue/tsconfig.json"
-}

@@ -1,0 +1,13 @@
+import { stripSvelteExample } from "@pisagor/utils";
+import defaultRaw from "./default.svelte?raw";
+import with_sidebarRaw from "./with-sidebar.svelte?raw";
+
+export const imports = `import { Navbar } from "@pisagor/svelte/navbar";`;
+
+export const sources = {
+  Default: stripSvelteExample(defaultRaw),
+  WithSidebar: stripSvelteExample(with_sidebarRaw),
+} as const;
+
+export { default as Default } from "./default.svelte";
+export { default as WithSidebar } from "./with-sidebar.svelte";

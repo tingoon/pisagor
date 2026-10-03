@@ -1,7 +1,7 @@
 import { Listbox } from "@pisagor/vue";
-import * as Examples from "@pisagor/vue/listbox/examples";
 import { exampleRender } from "#/storybook/example-render";
 import preview from "#/storybook/preview";
+import * as Examples from "#/vue/examples/listbox";
 
 const meta = preview.meta({
   component: Listbox,

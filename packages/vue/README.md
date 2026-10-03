@@ -16,7 +16,7 @@ The root `@pisagor/vue` barrel exports **light** components only. Heavy componen
 - `@pisagor/vue/rich-text-editor`
 - `@pisagor/vue/phone-input`
 
-Charts: [`@pisagor/vue-charts`](../vue-charts). Form fields: [`@pisagor/vue-form`](../vue-form) and `@pisagor/vue-form/tanstack`. Hooks: `@pisagor/vue/hooks`.
+Form fields: [`@pisagor/vue-form`](../vue-form) and `@pisagor/vue-form/tanstack`. Hooks: `@pisagor/vue/hooks`.
 
 See the [root README](../../README.md) for Tailwind setup.
 

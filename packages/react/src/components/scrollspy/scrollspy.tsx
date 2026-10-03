@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import { cn } from "@pisagor/utils";
+import { scrollspyRecipe } from "@pisagor/recipes/scrollspy";
 import {
   type ComponentProps,
   type RefObject,
@@ -16,6 +16,12 @@ const SCROLLSPY_OFFSET = "data-scrollspy-offset";
 const SCROLLSPY_ANCHOR_SELECTOR = `[${SCROLLSPY_ANCHOR}]`;
 
 export interface ScrollspyProps extends ComponentProps<typeof ark.div> {
+  /**
+   * Style recipe. Defaults to `scrollspyRecipe` from `@pisagor/recipes/scrollspy`.
+   *
+   * @defaultValue scrollspyRecipe
+   */
+  recipe?: typeof scrollspyRecipe;
   /**
    * Whether to update the URL hash when the active section changes.
    *
@@ -110,6 +116,7 @@ export function Scrollspy({
   smooth = true,
   targetRef,
   onUpdate,
+  recipe = scrollspyRecipe,
   className,
   ...rest
 }: ScrollspyProps) {
@@ -307,7 +314,7 @@ export function Scrollspy({
   return (
     <ark.div
       {...rest}
-      className={cn(className)}
+      className={recipe({ className })}
       data-part="root"
       data-scope="scrollspy"
       ref={selfRef}
