@@ -13,7 +13,7 @@ cursor:
 
 How to build shared UI components in `packages/react` (`@pisagor/react`). General React rules — [React Style Guide](../react.mdc).
 
-**References:** [React Style Guide](../react.mdc), [Storybook](stories.mdc), [Component](component.mdc), [TypeScript Style Guide](../typescript.mdc). Package-specific policy notes may live in that package's `AGENTS.md` (e.g. [`packages/react/AGENTS.md`](../../../packages/react/AGENTS.md)).
+**References:** [React Style Guide](../react.mdc), [Storybook](stories.mdc), [Component](component.mdc), [TypeScript Style Guide](../typescript.mdc). Package docs live in skills and these rules — there is no `packages/react/AGENTS.md`.
 
 **Out of scope:** design tokens, brand palette, spacing taste, theme authoring (`@pisagor/tokens`). `tv()` recipe authoring lives in [`@pisagor/recipes`](../../../packages/recipes) — this file covers how components **consume** recipes. General React naming, props order, hooks, body order — [React Style Guide](../react.mdc).
 
@@ -28,11 +28,12 @@ Folder name, main file, and component export name align: **kebab-case folder** �
 ```text
 <kebab-name>/
 ├── <name>.tsx
-├── <name>.stories.tsx      # public shared packages — required; Storybook-local — optional
 ├── index.ts                  # public shared packages — required; Storybook-local — optional
 ├── <name>.context.tsx        # compound shared React context (when present)
 └── [optional splits]         # e.g. avatar-group.tsx — large sub-modules only
 ```
+
+Package source stays **story-free**. Stories live in the Storybook app `apps/react` (e.g. `apps/react/src/components/<name>.stories.tsx`), not under `packages/react`.
 
 ### Context file (`<name>.context.tsx`)
 
@@ -56,16 +57,17 @@ Applies to the published workspace component package (`@pisagor/react`):
 
 - One folder per public component — layout above is required.
 - Require `index.ts` barrel (package export map, e.g. `@pisagor/react/*`).
-- Require `<name>.stories.tsx` per component — [Storybook](stories.mdc).
+- Do **not** add `*.stories.tsx` under `packages/react` — stories belong in `apps/react` — [Storybook](stories.mdc).
 
-### Storybook-local components
+### Storybook app (`apps/react`)
 
-- Recipes and docs UI in `apps/react` may use a dedicated folder or a single file; `.stories.tsx` and `index.ts` are optional.
+- Component and form stories live in `apps/react` (Storybook host), not in the package.
+- Docs UI / local helpers in `apps/react` may use a dedicated folder or a single file; `.stories.tsx` and `index.ts` are optional for non-catalog helpers.
 
 ### Cross-component imports
 
-- Within a shared package's source (`.tsx` / `.ts`, excluding stories), prefer **relative** imports between sibling components (e.g. `../button`, `../input-group/input-group-core`).
-- **Stories** (`.stories.tsx`) may use the public export map (e.g. `import { Button } from "@pisagor/react"`) — same as apps. Heavy components use dedicated subpaths (`@pisagor/react/data-grid`, `@pisagor/react/data-table`, …).
+- Within a shared package's source (`.tsx` / `.ts`), prefer **relative** imports between sibling components (e.g. `../button`, `../input-group/input-group-core`).
+- **Stories** in `apps/react` (`.stories.tsx`) use the public export map (e.g. `import { Button } from "@pisagor/react"`). Heavy components use dedicated subpaths (`@pisagor/react/data-grid`, `@pisagor/react/data-table`, …).
 - Apps and other packages use the public export map for that package (light barrel or heavy subpath).
 - For cyclic pairs (e.g. `input` ↔ `input-group` ↔ `textarea`), import the concrete module file, not the barrel `index.ts`.
 - Import `{name}Recipe` / `{Name}VariantProps` from `@pisagor/recipes/<name>` — see [Styling](#styling). Do not define `tv()` in component packages. Do not add `<name>.recipe.ts` shims.
@@ -334,5 +336,5 @@ When a part has no recipe slot by design:
 
 ## Storybook
 
-- Follow [Storybook](stories.mdc) for `*.stories.tsx` (story order, escape-hatch props, sample data).
+- Author `*.stories.tsx` in `apps/react` (not in `packages/react`). Follow [Storybook](stories.mdc) for story order, escape-hatch props, and sample data.
 - Declare `subcomponents` on meta for compound components.
