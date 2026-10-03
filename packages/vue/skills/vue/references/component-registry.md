@@ -2,7 +2,7 @@
 
 Index for `@pisagor/vue`, `@pisagor/vue-form`.
 
-Use this skill only for **vue**. Sibling skills: `react`, `astro`.
+Use this skill only for **vue**. Sibling skills: `react`, `solid`, `svelte`, `astro`.
 
 ## Overlays & Popups
 - **AlertDialog** (`alert-dialog`) — Interrupts the user with a focused confirmation before a destructive or irreversible action proceeds. `./references/primitives/alert-dialog.md`

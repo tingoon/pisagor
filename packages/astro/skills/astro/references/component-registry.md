@@ -2,7 +2,7 @@
 
 Index for `@pisagor/astro`.
 
-Use this skill only for **astro**. Sibling skills: `react`, `vue`.
+Use this skill only for **astro**. Sibling skills: `react`, `vue`, `solid`, `svelte`.
 
 ## Selection & Input
 - **InputGroup** (`input-group`) — Composes an input with leading or trailing addons and actions. `./references/primitives/input-group.md`
