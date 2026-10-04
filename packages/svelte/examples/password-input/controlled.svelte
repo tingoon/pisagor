@@ -5,7 +5,7 @@ let password = $state("");
 </script>
 
 <PasswordInput
-  onChange={(event) => (password = event.target.value)}
+  onValueChange={(next) => (password = next)}
   placeholder="Enter password"
   value={password}
 />

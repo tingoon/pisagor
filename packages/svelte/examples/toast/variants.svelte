@@ -32,8 +32,8 @@ function showInfo() {
 </script>
 
 <div class="flex flex-wrap gap-2">
-  <Button onClick={showSuccess} variant="outline">Success</Button>
-  <Button onClick={showError} variant="outline">Error</Button>
-  <Button onClick={showWarning} variant="outline">Warning</Button>
-  <Button onClick={showInfo} variant="outline">Info</Button>
+  <Button onclick={showSuccess} variant="outline">Success</Button>
+  <Button onclick={showError} variant="outline">Error</Button>
+  <Button onclick={showWarning} variant="outline">Warning</Button>
+  <Button onclick={showInfo} variant="outline">Info</Button>
 </div>

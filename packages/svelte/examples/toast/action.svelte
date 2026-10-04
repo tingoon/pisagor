@@ -22,4 +22,4 @@ const handleAction = () => {
 };
 </script>
 
-<Button onClick={handleAction} variant="outline"> Toast </Button>
+<Button onclick={handleAction} variant="outline"> Toast </Button>

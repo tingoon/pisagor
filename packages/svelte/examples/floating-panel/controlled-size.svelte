@@ -51,10 +51,10 @@ function grow() {
       <p>Size: {size.width} × {size.height}.</p>
       <p>Use the buttons above or drag the edges to resize.</p>
       <div class="flex gap-2">
-        <Button class="flex-1" onClick={shrink} variant="outline"
+        <Button class="flex-1" onclick={shrink} variant="outline"
           >Shrink</Button
         >
-        <Button class="flex-1" onClick={grow} variant="outline">Grow</Button>
+        <Button class="flex-1" onclick={grow} variant="outline">Grow</Button>
       </div>
     </FloatingPanel.Body>
   </FloatingPanel.Content>

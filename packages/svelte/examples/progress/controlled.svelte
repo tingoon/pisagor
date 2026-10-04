@@ -12,7 +12,7 @@ let value = $state(50);
     <ButtonGroup class="ml-auto">
       <Button
         aria-label="Decrease"
-        onClick={() => (value = Math.max(0, value - 10))}
+        onclick={() => (value = Math.max(0, value - 10))}
         size="icon-sm"
         variant="outline"
       >
@@ -20,7 +20,7 @@ let value = $state(50);
       </Button>
       <Button
         aria-label="Increase"
-        onClick={() => (value = Math.min(100, value + 10))}
+        onclick={() => (value = Math.min(100, value + 10))}
         size="icon-sm"
         variant="outline"
       >

@@ -27,13 +27,13 @@ let value = $state("profile");
     {value}
   />
   <div class="flex gap-2">
-    <Button onClick={() => (value = "profile")} size="sm" variant="outline">
+    <Button onclick={() => (value = "profile")} size="sm" variant="outline">
       Go to Profile
     </Button>
-    <Button onClick={() => (value = "settings")} size="sm" variant="outline">
+    <Button onclick={() => (value = "settings")} size="sm" variant="outline">
       Go to Settings
     </Button>
-    <Button onClick={() => (value = "security")} size="sm" variant="outline">
+    <Button onclick={() => (value = "security")} size="sm" variant="outline">
       Go to Security
     </Button>
   </div>

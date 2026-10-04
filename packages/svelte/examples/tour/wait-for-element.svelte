@@ -68,7 +68,7 @@ const addItem = () => {
       {/snippet}
     </Tour.Trigger>
     <div class="flex flex-col gap-2">
-      <Button id="btn-add-item" onClick={addItem} size="sm" variant="outline">
+      <Button id="btn-add-item" onclick={addItem} size="sm" variant="outline">
         <PlusIcon class="size-4" />
         Add Item
       </Button>

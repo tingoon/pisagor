@@ -48,7 +48,7 @@ let position = $state({ x: 120, y: 80 });
           <div>
             <Button
               aria-label="Move up"
-              onClick={() => (position = { ...position, y: position.y - 20 })}
+              onclick={() => (position = { ...position, y: position.y - 20 })}
               size="icon-md"
               variant="outline"
             >
@@ -58,7 +58,7 @@ let position = $state({ x: 120, y: 80 });
           <div class="flex gap-1">
             <Button
               aria-label="Move left"
-              onClick={() => (position = { ...position, x: position.x - 20 })}
+              onclick={() => (position = { ...position, x: position.x - 20 })}
               size="icon-md"
               variant="outline"
             >
@@ -66,7 +66,7 @@ let position = $state({ x: 120, y: 80 });
             </Button>
             <Button
               aria-label="Move down"
-              onClick={() => (position = { ...position, y: position.y + 20 })}
+              onclick={() => (position = { ...position, y: position.y + 20 })}
               size="icon-md"
               variant="outline"
             >
@@ -74,7 +74,7 @@ let position = $state({ x: 120, y: 80 });
             </Button>
             <Button
               aria-label="Move right"
-              onClick={() => (position = { ...position, x: position.x + 20 })}
+              onclick={() => (position = { ...position, x: position.x + 20 })}
               size="icon-md"
               variant="outline"
             >

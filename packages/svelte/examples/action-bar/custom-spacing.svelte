@@ -5,7 +5,7 @@ import { PencilSimpleIcon, TrashIcon, XIcon } from "@pisagor/svelte/icons";
 let isOpen = $state(false);
 </script>
 
-<ActionBar onOpenChange={setIsOpen} open={isOpen}>
+<ActionBar onOpenChange={(open) => (isOpen = open)} open={isOpen}>
   <ActionBar.Trigger>
     <Button variant="outline"> Open </Button>
   </ActionBar.Trigger>

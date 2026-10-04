@@ -11,5 +11,5 @@ function showToast() {
 </script>
 
 <div class="flex flex-wrap gap-2">
-  <Button onClick={showToast} variant="outline">Toast</Button>
+  <Button onclick={showToast} variant="outline">Toast</Button>
 </div>

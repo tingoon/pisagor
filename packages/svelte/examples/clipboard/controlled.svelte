@@ -7,7 +7,7 @@ let value = $state("https://example.com/docs");
 <div class="flex flex-col gap-2">
   <Clipboard {value} />
   <Button
-    onClick={() => (value = "https://example.com/docs/alternate")}
+    onclick={() => (value = "https://example.com/docs/alternate")}
     variant="secondary"
   >
     Change URL

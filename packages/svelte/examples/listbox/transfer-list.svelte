@@ -64,7 +64,7 @@ const moveToAvailable = () => {
     <Button
       aria-label="Move to selected"
       disabled={availableValue.length === 0}
-      onClick={moveToSelected}
+      onclick={moveToSelected}
       size="icon-sm"
       variant="outline"
     >
@@ -73,7 +73,7 @@ const moveToAvailable = () => {
     <Button
       aria-label="Move to available"
       disabled={selectedValue.length === 0}
-      onClick={moveToAvailable}
+      onclick={moveToAvailable}
       size="icon-sm"
       variant="outline"
     >

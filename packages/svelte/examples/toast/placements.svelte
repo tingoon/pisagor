@@ -70,13 +70,13 @@ function showBottomEnd() {
 
 <div class="flex flex-col items-center justify-center gap-2">
   <div class="flex flex-wrap gap-2">
-    <Button onClick={showTopStart} variant="outline">Top start</Button>
-    <Button onClick={showTop} variant="outline">Top center</Button>
-    <Button onClick={showTopEnd} variant="outline">Top end</Button>
+    <Button onclick={showTopStart} variant="outline">Top start</Button>
+    <Button onclick={showTop} variant="outline">Top center</Button>
+    <Button onclick={showTopEnd} variant="outline">Top end</Button>
   </div>
   <div class="flex flex-wrap gap-2">
-    <Button onClick={showBottomStart} variant="outline">Bottom start</Button>
-    <Button onClick={showBottom} variant="outline">Bottom center</Button>
-    <Button onClick={showBottomEnd} variant="outline">Bottom end</Button>
+    <Button onclick={showBottomStart} variant="outline">Bottom start</Button>
+    <Button onclick={showBottom} variant="outline">Bottom center</Button>
+    <Button onclick={showBottomEnd} variant="outline">Bottom end</Button>
   </div>
 </div>
