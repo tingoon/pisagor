@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import autoresizeRaw from "./autoresize.svelte?raw";
 import controlledRaw from "./controlled.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
@@ -9,12 +8,12 @@ import variantsRaw from "./variants.svelte?raw";
 export const imports = `import { Textarea } from "@pisagor/svelte";`;
 
 export const sources = {
-  Autoresize: stripSvelteExample(autoresizeRaw),
-  Controlled: stripSvelteExample(controlledRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Disabled: stripSvelteExample(disabledRaw),
-  Invalid: stripSvelteExample(invalidRaw),
-  Variants: stripSvelteExample(variantsRaw),
+  Autoresize: autoresizeRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Invalid: invalidRaw,
+  Variants: variantsRaw,
 } as const;
 
 export { default as Autoresize } from "./autoresize.svelte";

@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import asyncRaw from "./async.vue?raw";
 import custom_spacingRaw from "./custom-spacing.vue?raw";
 import defaultRaw from "./default.vue?raw";
@@ -14,17 +13,17 @@ import wait_for_inputRaw from "./wait-for-input.vue?raw";
 export const imports = `import { Tour } from "@pisagor/vue";`;
 
 export const sources = {
-  Async: stripVueExample(asyncRaw),
-  CustomSpacing: stripVueExample(custom_spacingRaw),
-  Default: stripVueExample(defaultRaw),
-  Events: stripVueExample(eventsRaw),
-  KeyboardNavigation: stripVueExample(keyboard_navigationRaw),
-  Progress: stripVueExample(progressRaw),
-  Skip: stripVueExample(skipRaw),
-  StepTypes: stripVueExample(step_typesRaw),
-  WaitForClick: stripVueExample(wait_for_clickRaw),
-  WaitForElement: stripVueExample(wait_for_elementRaw),
-  WaitForInput: stripVueExample(wait_for_inputRaw),
+  Async: asyncRaw,
+  CustomSpacing: custom_spacingRaw,
+  Default: defaultRaw,
+  Events: eventsRaw,
+  KeyboardNavigation: keyboard_navigationRaw,
+  Progress: progressRaw,
+  Skip: skipRaw,
+  StepTypes: step_typesRaw,
+  WaitForClick: wait_for_clickRaw,
+  WaitForElement: wait_for_elementRaw,
+  WaitForInput: wait_for_inputRaw,
 } as const;
 
 export { default as Async } from "./async.vue";

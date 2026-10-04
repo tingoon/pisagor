@@ -5,7 +5,6 @@
   "description": "Labeled form fields and TanStack Form bindings for @pisagor/svelte.",
   "devDependencies": {
     "@pisagor/svelte": "workspace:*",
-    "@pisagor/utils": "workspace:*",
     "@tanstack/svelte-form": "^1.33.5",
     "svelte": "catalog:",
     "svelte-check-native": "^1.8.0",

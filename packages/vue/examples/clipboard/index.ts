@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import controlledRaw from "./controlled.vue?raw";
 import custom_timeoutRaw from "./custom-timeout.vue?raw";
 import defaultRaw from "./default.vue?raw";
@@ -10,13 +9,13 @@ import with_labelRaw from "./with-label.vue?raw";
 export const imports = `import { Clipboard } from "@pisagor/vue";`;
 
 export const sources = {
-  Controlled: stripVueExample(controlledRaw),
-  CustomTimeout: stripVueExample(custom_timeoutRaw),
-  Default: stripVueExample(defaultRaw),
-  DifferentIcon: stripVueExample(different_iconRaw),
-  OnSurface: stripVueExample(on_surfaceRaw),
-  Variants: stripVueExample(variantsRaw),
-  WithLabel: stripVueExample(with_labelRaw),
+  Controlled: controlledRaw,
+  CustomTimeout: custom_timeoutRaw,
+  Default: defaultRaw,
+  DifferentIcon: different_iconRaw,
+  OnSurface: on_surfaceRaw,
+  Variants: variantsRaw,
+  WithLabel: with_labelRaw,
 } as const;
 
 export { default as Controlled } from "./controlled.vue";

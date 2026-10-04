@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import controlledRaw from "./controlled.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
 import disabledRaw from "./disabled.tsx?raw";
@@ -8,11 +7,11 @@ import triggers_delaysRaw from "./triggers-delays.tsx?raw";
 export const imports = `import { HoverCard } from "@pisagor/react";`;
 
 export const sources = {
-  Controlled: stripTsxExample(controlledRaw),
-  Default: stripTsxExample(defaultRaw),
-  Disabled: stripTsxExample(disabledRaw),
-  Placements: stripTsxExample(placementsRaw),
-  TriggersDelays: stripTsxExample(triggers_delaysRaw),
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Placements: placementsRaw,
+  TriggersDelays: triggers_delaysRaw,
 } as const;
 
 export * from "./controlled";

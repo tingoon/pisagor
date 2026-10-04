@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import custom_colorRaw from "./custom-color.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
 import pillRaw from "./pill.tsx?raw";
@@ -10,13 +9,13 @@ import with_spinnerRaw from "./with-spinner.tsx?raw";
 export const imports = `import { Badge } from "@pisagor/solid";`;
 
 export const sources = {
-  CustomColor: stripTsxExample(custom_colorRaw),
-  Default: stripTsxExample(defaultRaw),
-  Pill: stripTsxExample(pillRaw),
-  Sizes: stripTsxExample(sizesRaw),
-  Variants: stripTsxExample(variantsRaw),
-  WithLink: stripTsxExample(with_linkRaw),
-  WithSpinner: stripTsxExample(with_spinnerRaw),
+  CustomColor: custom_colorRaw,
+  Default: defaultRaw,
+  Pill: pillRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
+  WithLink: with_linkRaw,
+  WithSpinner: with_spinnerRaw,
 } as const;
 
 export * from "./custom-color";

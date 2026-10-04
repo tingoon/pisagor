@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import autohighlightRaw from "./autohighlight.vue?raw";
 import compoundRaw from "./compound.vue?raw";
 import controlledRaw from "./controlled.vue?raw";
@@ -17,20 +16,20 @@ import with_start_iconRaw from "./with-start-icon.vue?raw";
 export const imports = `import { Combobox } from "@pisagor/vue";`;
 
 export const sources = {
-  Autohighlight: stripVueExample(autohighlightRaw),
-  Compound: stripVueExample(compoundRaw),
-  Controlled: stripVueExample(controlledRaw),
-  Default: stripVueExample(defaultRaw),
-  Disabled: stripVueExample(disabledRaw),
-  Group: stripVueExample(groupRaw),
-  Invalid: stripVueExample(invalidRaw),
-  Multiple: stripVueExample(multipleRaw),
-  OnSurface: stripVueExample(on_surfaceRaw),
-  Sizes: stripVueExample(sizesRaw),
-  Variants: stripVueExample(variantsRaw),
-  WithClearButton: stripVueExample(with_clear_buttonRaw),
-  WithScroll: stripVueExample(with_scrollRaw),
-  WithStartIcon: stripVueExample(with_start_iconRaw),
+  Autohighlight: autohighlightRaw,
+  Compound: compoundRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Group: groupRaw,
+  Invalid: invalidRaw,
+  Multiple: multipleRaw,
+  OnSurface: on_surfaceRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
+  WithClearButton: with_clear_buttonRaw,
+  WithScroll: with_scrollRaw,
+  WithStartIcon: with_start_iconRaw,
 } as const;
 
 export { default as Autohighlight } from "./autohighlight.vue";

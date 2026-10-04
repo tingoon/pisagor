@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import controlled_positionRaw from "./controlled-position.svelte?raw";
 import controlled_sizeRaw from "./controlled-size.svelte?raw";
 import custom_spacingRaw from "./custom-spacing.svelte?raw";
@@ -7,10 +6,10 @@ import defaultRaw from "./default.svelte?raw";
 export const imports = `import { FloatingPanel } from "@pisagor/svelte";`;
 
 export const sources = {
-  ControlledPosition: stripSvelteExample(controlled_positionRaw),
-  ControlledSize: stripSvelteExample(controlled_sizeRaw),
-  CustomSpacing: stripSvelteExample(custom_spacingRaw),
-  Default: stripSvelteExample(defaultRaw),
+  ControlledPosition: controlled_positionRaw,
+  ControlledSize: controlled_sizeRaw,
+  CustomSpacing: custom_spacingRaw,
+  Default: defaultRaw,
 } as const;
 
 export { default as ControlledPosition } from "./controlled-position.svelte";

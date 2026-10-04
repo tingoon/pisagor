@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import close_behaviorRaw from "./close-behavior.ts?raw";
 import custom_spacingRaw from "./custom-spacing.ts?raw";
 import defaultRaw from "./default.ts?raw";
@@ -11,14 +10,14 @@ import sidesRaw from "./sides.ts?raw";
 export const imports = `import { Sheet } from "@pisagor/vue";`;
 
 export const sources = {
-  CloseBehavior: stripVueExample(close_behaviorRaw),
-  CustomSpacing: stripVueExample(custom_spacingRaw),
-  Default: stripVueExample(defaultRaw),
-  Inset: stripVueExample(insetRaw),
-  NoCloseButton: stripVueExample(no_close_buttonRaw),
-  NonModal: stripVueExample(non_modalRaw),
-  ScrollArea: stripVueExample(scroll_areaRaw),
-  Sides: stripVueExample(sidesRaw),
+  CloseBehavior: close_behaviorRaw,
+  CustomSpacing: custom_spacingRaw,
+  Default: defaultRaw,
+  Inset: insetRaw,
+  NoCloseButton: no_close_buttonRaw,
+  NonModal: non_modalRaw,
+  ScrollArea: scroll_areaRaw,
+  Sides: sidesRaw,
 } as const;
 
 export { default as CloseBehavior } from "./close-behavior";

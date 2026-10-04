@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import blur_behaviorRaw from "./blur-behavior.tsx?raw";
 import controlledRaw from "./controlled.tsx?raw";
 import controlled_input_valueRaw from "./controlled-input-value.tsx?raw";
@@ -20,23 +19,23 @@ import with_comboboxRaw from "./with-combobox.tsx?raw";
 export const imports = `import { TagsInput } from "@pisagor/react";`;
 
 export const sources = {
-  BlurBehavior: stripTsxExample(blur_behaviorRaw),
-  Controlled: stripTsxExample(controlledRaw),
-  ControlledInputValue: stripTsxExample(controlled_input_valueRaw),
-  CustomDelimiter: stripTsxExample(custom_delimiterRaw),
-  Default: stripTsxExample(defaultRaw),
-  Disabled: stripTsxExample(disabledRaw),
-  DisableEditing: stripTsxExample(disable_editingRaw),
-  Invalid: stripTsxExample(invalidRaw),
-  MaxLength: stripTsxExample(max_lengthRaw),
-  MaxTags: stripTsxExample(max_tagsRaw),
-  MaxWithOverflow: stripTsxExample(max_with_overflowRaw),
-  PasteBehavior: stripTsxExample(paste_behaviorRaw),
-  SanitizeValue: stripTsxExample(sanitize_valueRaw),
-  Sizes: stripTsxExample(sizesRaw),
-  Validation: stripTsxExample(validationRaw),
-  Variants: stripTsxExample(variantsRaw),
-  WithCombobox: stripTsxExample(with_comboboxRaw),
+  BlurBehavior: blur_behaviorRaw,
+  Controlled: controlledRaw,
+  ControlledInputValue: controlled_input_valueRaw,
+  CustomDelimiter: custom_delimiterRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  DisableEditing: disable_editingRaw,
+  Invalid: invalidRaw,
+  MaxLength: max_lengthRaw,
+  MaxTags: max_tagsRaw,
+  MaxWithOverflow: max_with_overflowRaw,
+  PasteBehavior: paste_behaviorRaw,
+  SanitizeValue: sanitize_valueRaw,
+  Sizes: sizesRaw,
+  Validation: validationRaw,
+  Variants: variantsRaw,
+  WithCombobox: with_comboboxRaw,
 } as const;
 
 export * from "./blur-behavior";

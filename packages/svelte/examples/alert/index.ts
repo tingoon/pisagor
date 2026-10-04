@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import compoundRaw from "./compound.svelte?raw";
 import custom_colorRaw from "./custom-color.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
@@ -9,12 +8,12 @@ import with_iconRaw from "./with-icon.svelte?raw";
 export const imports = `import { Alert } from "@pisagor/svelte";`;
 
 export const sources = {
-  Compound: stripSvelteExample(compoundRaw),
-  CustomColor: stripSvelteExample(custom_colorRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Variants: stripSvelteExample(variantsRaw),
-  WithAction: stripSvelteExample(with_actionRaw),
-  WithIcon: stripSvelteExample(with_iconRaw),
+  Compound: compoundRaw,
+  CustomColor: custom_colorRaw,
+  Default: defaultRaw,
+  Variants: variantsRaw,
+  WithAction: with_actionRaw,
+  WithIcon: with_iconRaw,
 } as const;
 
 export { default as Compound } from "./compound.svelte";

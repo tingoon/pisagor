@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import custom_colorRaw from "./custom-color.vue?raw";
 import defaultRaw from "./default.vue?raw";
 import pillRaw from "./pill.vue?raw";
@@ -10,13 +9,13 @@ import with_spinnerRaw from "./with-spinner.vue?raw";
 export const imports = `import { Badge } from "@pisagor/vue";`;
 
 export const sources = {
-  CustomColor: stripVueExample(custom_colorRaw),
-  Default: stripVueExample(defaultRaw),
-  Pill: stripVueExample(pillRaw),
-  Sizes: stripVueExample(sizesRaw),
-  Variants: stripVueExample(variantsRaw),
-  WithLink: stripVueExample(with_linkRaw),
-  WithSpinner: stripVueExample(with_spinnerRaw),
+  CustomColor: custom_colorRaw,
+  Default: defaultRaw,
+  Pill: pillRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
+  WithLink: with_linkRaw,
+  WithSpinner: with_spinnerRaw,
 } as const;
 
 export { default as CustomColor } from "./custom-color.vue";

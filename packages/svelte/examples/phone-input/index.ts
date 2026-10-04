@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import controlledRaw from "./controlled.svelte?raw";
 import custom_popupRaw from "./custom-popup.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
@@ -10,13 +9,13 @@ import variantsRaw from "./variants.svelte?raw";
 export const imports = `import { PhoneInput } from "@pisagor/svelte/phone-input";`;
 
 export const sources = {
-  Controlled: stripSvelteExample(controlledRaw),
-  CustomPopup: stripSvelteExample(custom_popupRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Disabled: stripSvelteExample(disabledRaw),
-  Invalid: stripSvelteExample(invalidRaw),
-  Sizes: stripSvelteExample(sizesRaw),
-  Variants: stripSvelteExample(variantsRaw),
+  Controlled: controlledRaw,
+  CustomPopup: custom_popupRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Invalid: invalidRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
 } as const;
 
 export { default as Controlled } from "./controlled.svelte";

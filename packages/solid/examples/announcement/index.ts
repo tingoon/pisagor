@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import compoundRaw from "./compound.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
@@ -9,12 +8,12 @@ import without_badgeRaw from "./without-badge.tsx?raw";
 export const imports = `import { Announcement } from "@pisagor/solid";`;
 
 export const sources = {
-  Compound: stripTsxExample(compoundRaw),
-  Default: stripTsxExample(defaultRaw),
-  Variants: stripTsxExample(variantsRaw),
-  WithIcon: stripTsxExample(with_iconRaw),
-  WithLink: stripTsxExample(with_linkRaw),
-  WithoutBadge: stripTsxExample(without_badgeRaw),
+  Compound: compoundRaw,
+  Default: defaultRaw,
+  Variants: variantsRaw,
+  WithIcon: with_iconRaw,
+  WithLink: with_linkRaw,
+  WithoutBadge: without_badgeRaw,
 } as const;
 
 export * from "./compound";

@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import byteRaw from "./byte.tsx?raw";
 import byte_unit_displayRaw from "./byte-unit-display.tsx?raw";
 import byte_unit_systemRaw from "./byte-unit-system.tsx?raw";
@@ -13,16 +12,16 @@ import relative_time_shortRaw from "./relative-time-short.tsx?raw";
 export const imports = `import { Format } from "@pisagor/solid";`;
 
 export const sources = {
-  Byte: stripTsxExample(byteRaw),
-  ByteUnitDisplay: stripTsxExample(byte_unit_displayRaw),
-  ByteUnitSystem: stripTsxExample(byte_unit_systemRaw),
-  Default: stripTsxExample(defaultRaw),
-  NumberCompact: stripTsxExample(number_compactRaw),
-  NumberCurrency: stripTsxExample(number_currencyRaw),
-  NumberPercent: stripTsxExample(number_percentRaw),
-  NumberStory: stripTsxExample(number_storyRaw),
-  RelativeTime: stripTsxExample(relative_timeRaw),
-  RelativeTimeShort: stripTsxExample(relative_time_shortRaw),
+  Byte: byteRaw,
+  ByteUnitDisplay: byte_unit_displayRaw,
+  ByteUnitSystem: byte_unit_systemRaw,
+  Default: defaultRaw,
+  NumberCompact: number_compactRaw,
+  NumberCurrency: number_currencyRaw,
+  NumberPercent: number_percentRaw,
+  NumberStory: number_storyRaw,
+  RelativeTime: relative_timeRaw,
+  RelativeTimeShort: relative_time_shortRaw,
 } as const;
 
 export * from "./byte";

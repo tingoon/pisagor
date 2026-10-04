@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import actionRaw from "./action.tsx?raw";
 import closableRaw from "./closable.tsx?raw";
 import dedupeRaw from "./dedupe.tsx?raw";
@@ -11,14 +10,14 @@ import with_promiseRaw from "./with-promise.tsx?raw";
 export const imports = `import { toast } from "@pisagor/react";`;
 
 export const sources = {
-  Action: stripTsxExample(actionRaw),
-  Closable: stripTsxExample(closableRaw),
-  Dedupe: stripTsxExample(dedupeRaw),
-  Default: stripTsxExample(defaultRaw),
-  Duration: stripTsxExample(durationRaw),
-  Placements: stripTsxExample(placementsRaw),
-  Variants: stripTsxExample(variantsRaw),
-  WithPromise: stripTsxExample(with_promiseRaw),
+  Action: actionRaw,
+  Closable: closableRaw,
+  Dedupe: dedupeRaw,
+  Default: defaultRaw,
+  Duration: durationRaw,
+  Placements: placementsRaw,
+  Variants: variantsRaw,
+  WithPromise: with_promiseRaw,
 } as const;
 
 export * from "./action";

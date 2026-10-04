@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import controlledRaw from "./controlled.tsx?raw";
 import countRaw from "./count.tsx?raw";
 import custom_colorRaw from "./custom-color.tsx?raw";
@@ -13,16 +12,16 @@ import testimonialRaw from "./testimonial.tsx?raw";
 export const imports = `import { Rating } from "@pisagor/react";`;
 
 export const sources = {
-  Controlled: stripTsxExample(controlledRaw),
-  Count: stripTsxExample(countRaw),
-  CustomColor: stripTsxExample(custom_colorRaw),
-  CustomIcon: stripTsxExample(custom_iconRaw),
-  CustomSize: stripTsxExample(custom_sizeRaw),
-  Disabled: stripTsxExample(disabledRaw),
-  HalfStar: stripTsxExample(half_starRaw),
-  Invalid: stripTsxExample(invalidRaw),
-  Readonly: stripTsxExample(readonlyRaw),
-  Testimonial: stripTsxExample(testimonialRaw),
+  Controlled: controlledRaw,
+  Count: countRaw,
+  CustomColor: custom_colorRaw,
+  CustomIcon: custom_iconRaw,
+  CustomSize: custom_sizeRaw,
+  Disabled: disabledRaw,
+  HalfStar: half_starRaw,
+  Invalid: invalidRaw,
+  Readonly: readonlyRaw,
+  Testimonial: testimonialRaw,
 } as const;
 
 export * from "./controlled";

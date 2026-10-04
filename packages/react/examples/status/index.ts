@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import custom_colorRaw from "./custom-color.tsx?raw";
 import custom_sizeRaw from "./custom-size.tsx?raw";
 import sizesRaw from "./sizes.tsx?raw";
@@ -8,11 +7,11 @@ import with_iconRaw from "./with-icon.tsx?raw";
 export const imports = `import { Status } from "@pisagor/react";`;
 
 export const sources = {
-  CustomColor: stripTsxExample(custom_colorRaw),
-  CustomSize: stripTsxExample(custom_sizeRaw),
-  Sizes: stripTsxExample(sizesRaw),
-  Variants: stripTsxExample(variantsRaw),
-  WithIcon: stripTsxExample(with_iconRaw),
+  CustomColor: custom_colorRaw,
+  CustomSize: custom_sizeRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
+  WithIcon: with_iconRaw,
 } as const;
 
 export * from "./custom-color";

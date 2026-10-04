@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import controlledRaw from "./controlled.vue?raw";
 import defaultRaw from "./default.vue?raw";
 import disabledRaw from "./disabled.vue?raw";
@@ -10,13 +9,13 @@ import with_iconRaw from "./with-icon.vue?raw";
 export const imports = `import { Toggle } from "@pisagor/vue";`;
 
 export const sources = {
-  Controlled: stripVueExample(controlledRaw),
-  Default: stripVueExample(defaultRaw),
-  Disabled: stripVueExample(disabledRaw),
-  IconGroup: stripVueExample(icon_groupRaw),
-  Sizes: stripVueExample(sizesRaw),
-  Variants: stripVueExample(variantsRaw),
-  WithIcon: stripVueExample(with_iconRaw),
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  IconGroup: icon_groupRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
+  WithIcon: with_iconRaw,
 } as const;
 
 export { default as Controlled } from "./controlled.vue";

@@ -1,4 +1,3 @@
-import { stripAstroExample } from "@pisagor/utils";
 import circleRaw from "./circle.astro?raw";
 import compositionRaw from "./composition.astro?raw";
 import defaultRaw from "./default.astro?raw";
@@ -9,10 +8,10 @@ import { Skeleton } from "@pisagor/astro";
 ---`;
 
 export const sources = {
-  Circle: stripAstroExample(circleRaw),
-  Composition: stripAstroExample(compositionRaw),
-  Default: stripAstroExample(defaultRaw),
-  Text: stripAstroExample(textRaw),
+  Circle: circleRaw,
+  Composition: compositionRaw,
+  Default: defaultRaw,
+  Text: textRaw,
 } as const;
 
 export { default as Circle } from "./circle.astro";

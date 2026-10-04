@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import compoundRaw from "./compound.ts?raw";
 import custom_colorRaw from "./custom-color.ts?raw";
 import defaultRaw from "./default.vue?raw";
@@ -9,12 +8,12 @@ import with_iconRaw from "./with-icon.ts?raw";
 export const imports = `import { Alert } from "@pisagor/vue";`;
 
 export const sources = {
-  Compound: stripVueExample(compoundRaw),
-  CustomColor: stripVueExample(custom_colorRaw),
-  Default: stripVueExample(defaultRaw),
-  Variants: stripVueExample(variantsRaw),
-  WithAction: stripVueExample(with_actionRaw),
-  WithIcon: stripVueExample(with_iconRaw),
+  Compound: compoundRaw,
+  CustomColor: custom_colorRaw,
+  Default: defaultRaw,
+  Variants: variantsRaw,
+  WithAction: with_actionRaw,
+  WithIcon: with_iconRaw,
 } as const;
 
 export { default as Compound } from "./compound";

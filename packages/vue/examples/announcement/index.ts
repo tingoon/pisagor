@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import compoundRaw from "./compound.ts?raw";
 import defaultRaw from "./default.ts?raw";
 import variantsRaw from "./variants.ts?raw";
@@ -9,12 +8,12 @@ import without_badgeRaw from "./without-badge.ts?raw";
 export const imports = `import { Announcement } from "@pisagor/vue";`;
 
 export const sources = {
-  Compound: stripVueExample(compoundRaw),
-  Default: stripVueExample(defaultRaw),
-  Variants: stripVueExample(variantsRaw),
-  WithIcon: stripVueExample(with_iconRaw),
-  WithLink: stripVueExample(with_linkRaw),
-  WithoutBadge: stripVueExample(without_badgeRaw),
+  Compound: compoundRaw,
+  Default: defaultRaw,
+  Variants: variantsRaw,
+  WithIcon: with_iconRaw,
+  WithLink: with_linkRaw,
+  WithoutBadge: without_badgeRaw,
 } as const;
 
 export { default as Compound } from "./compound";

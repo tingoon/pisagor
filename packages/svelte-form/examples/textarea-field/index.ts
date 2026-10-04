@@ -1,12 +1,11 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import disabledRaw from "./disabled.svelte?raw";
 import invalidRaw from "./invalid.svelte?raw";
 
 export const imports = `import { TextareaField } from "@pisagor/svelte-form";`;
 
 export const sources = {
-  Disabled: stripSvelteExample(disabledRaw),
-  Invalid: stripSvelteExample(invalidRaw),
+  Disabled: disabledRaw,
+  Invalid: invalidRaw,
 } as const;
 
 export { default as Disabled } from "./disabled.svelte";

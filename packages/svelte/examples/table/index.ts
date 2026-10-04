@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import actionsRaw from "./actions.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
 import footerRaw from "./footer.svelte?raw";
@@ -8,11 +7,11 @@ import variantsRaw from "./variants.svelte?raw";
 export const imports = `import { Table } from "@pisagor/svelte";`;
 
 export const sources = {
-  Actions: stripSvelteExample(actionsRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Footer: stripSvelteExample(footerRaw),
-  NotHoverable: stripSvelteExample(not_hoverableRaw),
-  Variants: stripSvelteExample(variantsRaw),
+  Actions: actionsRaw,
+  Default: defaultRaw,
+  Footer: footerRaw,
+  NotHoverable: not_hoverableRaw,
+  Variants: variantsRaw,
 } as const;
 
 export { default as Actions } from "./actions.svelte";

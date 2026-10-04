@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import controlledRaw from "./controlled.svelte?raw";
 import custom_compositionRaw from "./custom-composition.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
@@ -8,11 +7,11 @@ import page_rangeRaw from "./page-range.svelte?raw";
 export const imports = `import { Pagination } from "@pisagor/svelte";`;
 
 export const sources = {
-  Controlled: stripSvelteExample(controlledRaw),
-  CustomComposition: stripSvelteExample(custom_compositionRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Links: stripSvelteExample(linksRaw),
-  PageRange: stripSvelteExample(page_rangeRaw),
+  Controlled: controlledRaw,
+  CustomComposition: custom_compositionRaw,
+  Default: defaultRaw,
+  Links: linksRaw,
+  PageRange: page_rangeRaw,
 } as const;
 
 export { default as Controlled } from "./controlled.svelte";

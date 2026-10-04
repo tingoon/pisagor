@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import close_behaviorRaw from "./close-behavior.tsx?raw";
 import custom_spacingRaw from "./custom-spacing.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
@@ -11,14 +10,14 @@ import scroll_areaRaw from "./scroll-area.tsx?raw";
 export const imports = `import { Dialog } from "@pisagor/solid";`;
 
 export const sources = {
-  CloseBehavior: stripTsxExample(close_behaviorRaw),
-  CustomSpacing: stripTsxExample(custom_spacingRaw),
-  Default: stripTsxExample(defaultRaw),
-  InitialFocus: stripTsxExample(initial_focusRaw),
-  Nested: stripTsxExample(nestedRaw),
-  NoCloseButton: stripTsxExample(no_close_buttonRaw),
-  NonModal: stripTsxExample(non_modalRaw),
-  ScrollArea: stripTsxExample(scroll_areaRaw),
+  CloseBehavior: close_behaviorRaw,
+  CustomSpacing: custom_spacingRaw,
+  Default: defaultRaw,
+  InitialFocus: initial_focusRaw,
+  Nested: nestedRaw,
+  NoCloseButton: no_close_buttonRaw,
+  NonModal: non_modalRaw,
+  ScrollArea: scroll_areaRaw,
 } as const;
 
 export * from "./close-behavior";

@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import blur_behaviorRaw from "./blur-behavior.vue?raw";
 import controlledRaw from "./controlled.vue?raw";
 import controlled_input_valueRaw from "./controlled-input-value.vue?raw";
@@ -21,24 +20,24 @@ import with_comboboxRaw from "./with-combobox.vue?raw";
 export const imports = `import { TagsInput } from "@pisagor/vue";`;
 
 export const sources = {
-  BlurBehavior: stripVueExample(blur_behaviorRaw),
-  Controlled: stripVueExample(controlledRaw),
-  ControlledInputValue: stripVueExample(controlled_input_valueRaw),
-  CustomDelimiter: stripVueExample(custom_delimiterRaw),
-  Default: stripVueExample(defaultRaw),
-  Disabled: stripVueExample(disabledRaw),
-  DisableEditing: stripVueExample(disable_editingRaw),
-  Invalid: stripVueExample(invalidRaw),
-  MaxLength: stripVueExample(max_lengthRaw),
-  MaxTags: stripVueExample(max_tagsRaw),
-  MaxWithOverflow: stripVueExample(max_with_overflowRaw),
-  OnSurface: stripVueExample(on_surfaceRaw),
-  PasteBehavior: stripVueExample(paste_behaviorRaw),
-  SanitizeValue: stripVueExample(sanitize_valueRaw),
-  Sizes: stripVueExample(sizesRaw),
-  Validation: stripVueExample(validationRaw),
-  Variants: stripVueExample(variantsRaw),
-  WithCombobox: stripVueExample(with_comboboxRaw),
+  BlurBehavior: blur_behaviorRaw,
+  Controlled: controlledRaw,
+  ControlledInputValue: controlled_input_valueRaw,
+  CustomDelimiter: custom_delimiterRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  DisableEditing: disable_editingRaw,
+  Invalid: invalidRaw,
+  MaxLength: max_lengthRaw,
+  MaxTags: max_tagsRaw,
+  MaxWithOverflow: max_with_overflowRaw,
+  OnSurface: on_surfaceRaw,
+  PasteBehavior: paste_behaviorRaw,
+  SanitizeValue: sanitize_valueRaw,
+  Sizes: sizesRaw,
+  Validation: validationRaw,
+  Variants: variantsRaw,
+  WithCombobox: with_comboboxRaw,
 } as const;
 
 export { default as BlurBehavior } from "./blur-behavior.vue";

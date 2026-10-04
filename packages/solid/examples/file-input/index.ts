@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import acceptRaw from "./accept.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
 import disabledRaw from "./disabled.tsx?raw";
@@ -11,14 +10,14 @@ import variantsRaw from "./variants.tsx?raw";
 export const imports = `import { FileInput } from "@pisagor/solid";`;
 
 export const sources = {
-  Accept: stripTsxExample(acceptRaw),
-  Default: stripTsxExample(defaultRaw),
-  Disabled: stripTsxExample(disabledRaw),
-  Invalid: stripTsxExample(invalidRaw),
-  Multiple: stripTsxExample(multipleRaw),
-  OnFilesChange: stripTsxExample(on_files_changeRaw),
-  Sizes: stripTsxExample(sizesRaw),
-  Variants: stripTsxExample(variantsRaw),
+  Accept: acceptRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Invalid: invalidRaw,
+  Multiple: multipleRaw,
+  OnFilesChange: on_files_changeRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
 } as const;
 
 export * from "./accept";

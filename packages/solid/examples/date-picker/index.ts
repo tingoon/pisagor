@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import clearableRaw from "./clearable.tsx?raw";
 import custom_formatRaw from "./custom-format.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
@@ -13,16 +12,16 @@ import with_presetsRaw from "./with-presets.tsx?raw";
 export const imports = `import { DatePicker } from "@pisagor/solid";`;
 
 export const sources = {
-  Clearable: stripTsxExample(clearableRaw),
-  CustomFormat: stripTsxExample(custom_formatRaw),
-  Default: stripTsxExample(defaultRaw),
-  Disabled: stripTsxExample(disabledRaw),
-  Input: stripTsxExample(inputRaw),
-  Invalid: stripTsxExample(invalidRaw),
-  Range: stripTsxExample(rangeRaw),
-  Time: stripTsxExample(timeRaw),
-  Variants: stripTsxExample(variantsRaw),
-  WithPresets: stripTsxExample(with_presetsRaw),
+  Clearable: clearableRaw,
+  CustomFormat: custom_formatRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Input: inputRaw,
+  Invalid: invalidRaw,
+  Range: rangeRaw,
+  Time: timeRaw,
+  Variants: variantsRaw,
+  WithPresets: with_presetsRaw,
 } as const;
 
 export * from "./clearable";

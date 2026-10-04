@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import activation_clickRaw from "./activation-click.tsx?raw";
 import activation_focusRaw from "./activation-focus.tsx?raw";
 import activation_noneRaw from "./activation-none.tsx?raw";
@@ -17,20 +16,20 @@ import without_controlsRaw from "./without-controls.tsx?raw";
 export const imports = `import { Editable } from "@pisagor/solid";`;
 
 export const sources = {
-  ActivationClick: stripTsxExample(activation_clickRaw),
-  ActivationFocus: stripTsxExample(activation_focusRaw),
-  ActivationNone: stripTsxExample(activation_noneRaw),
-  Controlled: stripTsxExample(controlledRaw),
-  Dblclick: stripTsxExample(dblclickRaw),
-  Default: stripTsxExample(defaultRaw),
-  Disabled: stripTsxExample(disabledRaw),
-  Invalid: stripTsxExample(invalidRaw),
-  OrientationHorizontal: stripTsxExample(orientation_horizontalRaw),
-  OrientationVertical: stripTsxExample(orientation_verticalRaw),
-  Sizes: stripTsxExample(sizesRaw),
-  Variants: stripTsxExample(variantsRaw),
-  WithoutControls: stripTsxExample(without_controlsRaw),
-  WithTextarea: stripTsxExample(with_textareaRaw),
+  ActivationClick: activation_clickRaw,
+  ActivationFocus: activation_focusRaw,
+  ActivationNone: activation_noneRaw,
+  Controlled: controlledRaw,
+  Dblclick: dblclickRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Invalid: invalidRaw,
+  OrientationHorizontal: orientation_horizontalRaw,
+  OrientationVertical: orientation_verticalRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
+  WithoutControls: without_controlsRaw,
+  WithTextarea: with_textareaRaw,
 } as const;
 
 export * from "./activation-click";

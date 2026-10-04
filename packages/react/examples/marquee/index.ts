@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import autofillRaw from "./autofill.tsx?raw";
 import compoundRaw from "./compound.tsx?raw";
 import custom_speedRaw from "./custom-speed.tsx?raw";
@@ -13,16 +12,16 @@ import spacingRaw from "./spacing.tsx?raw";
 export const imports = `import { Marquee } from "@pisagor/react";`;
 
 export const sources = {
-  Autofill: stripTsxExample(autofillRaw),
-  Compound: stripTsxExample(compoundRaw),
-  CustomSpeed: stripTsxExample(custom_speedRaw),
-  Default: stripTsxExample(defaultRaw),
-  Fade: stripTsxExample(fadeRaw),
-  OrientationHorizontal: stripTsxExample(orientation_horizontalRaw),
-  OrientationVertical: stripTsxExample(orientation_verticalRaw),
-  PauseOnHover: stripTsxExample(pause_on_hoverRaw),
-  Reverse: stripTsxExample(reverseRaw),
-  Spacing: stripTsxExample(spacingRaw),
+  Autofill: autofillRaw,
+  Compound: compoundRaw,
+  CustomSpeed: custom_speedRaw,
+  Default: defaultRaw,
+  Fade: fadeRaw,
+  OrientationHorizontal: orientation_horizontalRaw,
+  OrientationVertical: orientation_verticalRaw,
+  PauseOnHover: pause_on_hoverRaw,
+  Reverse: reverseRaw,
+  Spacing: spacingRaw,
 } as const;
 
 export * from "./autofill";

@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import defaultRaw from "./default.vue?raw";
 import disabledRaw from "./disabled.vue?raw";
 import horizontalRaw from "./horizontal.vue?raw";
@@ -7,10 +6,10 @@ import without_handleRaw from "./without-handle.vue?raw";
 export const imports = `import { Sortable } from "@pisagor/vue";`;
 
 export const sources = {
-  Default: stripVueExample(defaultRaw),
-  Disabled: stripVueExample(disabledRaw),
-  Horizontal: stripVueExample(horizontalRaw),
-  WithoutHandle: stripVueExample(without_handleRaw),
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Horizontal: horizontalRaw,
+  WithoutHandle: without_handleRaw,
 } as const;
 
 export { default as Default } from "./default.vue";

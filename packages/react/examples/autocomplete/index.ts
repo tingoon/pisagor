@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import compoundRaw from "./compound.tsx?raw";
 import controlledRaw from "./controlled.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
@@ -14,17 +13,17 @@ import with_triggerRaw from "./with-trigger.tsx?raw";
 export const imports = `import { Autocomplete } from "@pisagor/react";`;
 
 export const sources = {
-  Compound: stripTsxExample(compoundRaw),
-  Controlled: stripTsxExample(controlledRaw),
-  Default: stripTsxExample(defaultRaw),
-  Disabled: stripTsxExample(disabledRaw),
-  Group: stripTsxExample(groupRaw),
-  Invalid: stripTsxExample(invalidRaw),
-  Sizes: stripTsxExample(sizesRaw),
-  Variants: stripTsxExample(variantsRaw),
-  WithClearButton: stripTsxExample(with_clear_buttonRaw),
-  WithStartIcon: stripTsxExample(with_start_iconRaw),
-  WithTrigger: stripTsxExample(with_triggerRaw),
+  Compound: compoundRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Group: groupRaw,
+  Invalid: invalidRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
+  WithClearButton: with_clear_buttonRaw,
+  WithStartIcon: with_start_iconRaw,
+  WithTrigger: with_triggerRaw,
 } as const;
 
 export * from "./compound";

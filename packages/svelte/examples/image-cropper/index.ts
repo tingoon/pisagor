@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import aspect_ratioRaw from "./aspect-ratio.svelte?raw";
 import circle_cropRaw from "./circle-crop.svelte?raw";
 import controlled_zoomRaw from "./controlled-zoom.svelte?raw";
@@ -11,14 +10,14 @@ import zoom_limitsRaw from "./zoom-limits.svelte?raw";
 export const imports = `import { ImageCropper } from "@pisagor/svelte";`;
 
 export const sources = {
-  AspectRatio: stripSvelteExample(aspect_ratioRaw),
-  CircleCrop: stripSvelteExample(circle_cropRaw),
-  ControlledZoom: stripSvelteExample(controlled_zoomRaw),
-  Default: stripSvelteExample(defaultRaw),
-  FixedCropArea: stripSvelteExample(fixed_crop_areaRaw),
-  InitialCrop: stripSvelteExample(initial_cropRaw),
-  MinMaxSize: stripSvelteExample(min_max_sizeRaw),
-  ZoomLimits: stripSvelteExample(zoom_limitsRaw),
+  AspectRatio: aspect_ratioRaw,
+  CircleCrop: circle_cropRaw,
+  ControlledZoom: controlled_zoomRaw,
+  Default: defaultRaw,
+  FixedCropArea: fixed_crop_areaRaw,
+  InitialCrop: initial_cropRaw,
+  MinMaxSize: min_max_sizeRaw,
+  ZoomLimits: zoom_limitsRaw,
 } as const;
 
 export { default as AspectRatio } from "./aspect-ratio.svelte";

@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import defaultRaw from "./default.tsx?raw";
 import kbd_groupRaw from "./kbd-group.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
@@ -8,11 +7,11 @@ import with_tooltipRaw from "./with-tooltip.tsx?raw";
 export const imports = `import { Kbd } from "@pisagor/react";`;
 
 export const sources = {
-  Default: stripTsxExample(defaultRaw),
-  KbdGroup: stripTsxExample(kbd_groupRaw),
-  Variants: stripTsxExample(variantsRaw),
-  WithButton: stripTsxExample(with_buttonRaw),
-  WithTooltip: stripTsxExample(with_tooltipRaw),
+  Default: defaultRaw,
+  KbdGroup: kbd_groupRaw,
+  Variants: variantsRaw,
+  WithButton: with_buttonRaw,
+  WithTooltip: with_tooltipRaw,
 } as const;
 
 export * from "./default";

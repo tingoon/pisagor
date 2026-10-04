@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import collapsibleRaw from "./collapsible.vue?raw";
 import defaultRaw from "./default.vue?raw";
 import edge_handleRaw from "./edge-handle.vue?raw";
@@ -11,14 +10,14 @@ import orientation_verticalRaw from "./orientation-vertical.vue?raw";
 export const imports = `import { Resizable } from "@pisagor/vue";`;
 
 export const sources = {
-  Collapsible: stripVueExample(collapsibleRaw),
-  Default: stripVueExample(defaultRaw),
-  EdgeHandle: stripVueExample(edge_handleRaw),
-  Handle: stripVueExample(handleRaw),
-  MinMax: stripVueExample(min_maxRaw),
-  MultiplePanels: stripVueExample(multiple_panelsRaw),
-  OrientationHorizontal: stripVueExample(orientation_horizontalRaw),
-  OrientationVertical: stripVueExample(orientation_verticalRaw),
+  Collapsible: collapsibleRaw,
+  Default: defaultRaw,
+  EdgeHandle: edge_handleRaw,
+  Handle: handleRaw,
+  MinMax: min_maxRaw,
+  MultiplePanels: multiple_panelsRaw,
+  OrientationHorizontal: orientation_horizontalRaw,
+  OrientationVertical: orientation_verticalRaw,
 } as const;
 
 export { default as Collapsible } from "./collapsible.vue";

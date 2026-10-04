@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import activation_clickRaw from "./activation-click.svelte?raw";
 import activation_focusRaw from "./activation-focus.svelte?raw";
 import activation_noneRaw from "./activation-none.svelte?raw";
@@ -17,20 +16,20 @@ import without_controlsRaw from "./without-controls.svelte?raw";
 export const imports = `import { Editable } from "@pisagor/svelte";`;
 
 export const sources = {
-  ActivationClick: stripSvelteExample(activation_clickRaw),
-  ActivationFocus: stripSvelteExample(activation_focusRaw),
-  ActivationNone: stripSvelteExample(activation_noneRaw),
-  Controlled: stripSvelteExample(controlledRaw),
-  Dblclick: stripSvelteExample(dblclickRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Disabled: stripSvelteExample(disabledRaw),
-  Invalid: stripSvelteExample(invalidRaw),
-  OrientationHorizontal: stripSvelteExample(orientation_horizontalRaw),
-  OrientationVertical: stripSvelteExample(orientation_verticalRaw),
-  Sizes: stripSvelteExample(sizesRaw),
-  Variants: stripSvelteExample(variantsRaw),
-  WithoutControls: stripSvelteExample(without_controlsRaw),
-  WithTextarea: stripSvelteExample(with_textareaRaw),
+  ActivationClick: activation_clickRaw,
+  ActivationFocus: activation_focusRaw,
+  ActivationNone: activation_noneRaw,
+  Controlled: controlledRaw,
+  Dblclick: dblclickRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Invalid: invalidRaw,
+  OrientationHorizontal: orientation_horizontalRaw,
+  OrientationVertical: orientation_verticalRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
+  WithoutControls: without_controlsRaw,
+  WithTextarea: with_textareaRaw,
 } as const;
 
 export { default as ActivationClick } from "./activation-click.svelte";

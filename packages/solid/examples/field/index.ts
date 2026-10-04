@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import autocomplete_fieldRaw from "./autocomplete-field.tsx?raw";
 import checkbox_fieldRaw from "./checkbox-field.tsx?raw";
 import checkbox_group_fieldRaw from "./checkbox-group-field.tsx?raw";
@@ -22,25 +21,25 @@ import with_input_groupRaw from "./with-input-group.tsx?raw";
 export const imports = `import { Field } from "@pisagor/solid";`;
 
 export const sources = {
-  AutocompleteField: stripTsxExample(autocomplete_fieldRaw),
-  CheckboxField: stripTsxExample(checkbox_fieldRaw),
-  CheckboxGroupField: stripTsxExample(checkbox_group_fieldRaw),
-  ComboboxField: stripTsxExample(combobox_fieldRaw),
-  ComboboxMultipleField: stripTsxExample(combobox_multiple_fieldRaw),
-  Default: stripTsxExample(defaultRaw),
-  DisabledField: stripTsxExample(disabled_fieldRaw),
-  FieldGroup: stripTsxExample(field_groupRaw),
-  NumberInputStory: stripTsxExample(number_input_storyRaw),
-  OrientationHorizontal: stripTsxExample(orientation_horizontalRaw),
-  OrientationVertical: stripTsxExample(orientation_verticalRaw),
-  RadioGroupField: stripTsxExample(radio_group_fieldRaw),
-  RequiredField: stripTsxExample(required_fieldRaw),
-  SelectField: stripTsxExample(select_fieldRaw),
-  SliderField: stripTsxExample(slider_fieldRaw),
-  SwitchField: stripTsxExample(switch_fieldRaw),
-  TextareaField: stripTsxExample(textarea_fieldRaw),
-  WithError: stripTsxExample(with_errorRaw),
-  WithInputGroup: stripTsxExample(with_input_groupRaw),
+  AutocompleteField: autocomplete_fieldRaw,
+  CheckboxField: checkbox_fieldRaw,
+  CheckboxGroupField: checkbox_group_fieldRaw,
+  ComboboxField: combobox_fieldRaw,
+  ComboboxMultipleField: combobox_multiple_fieldRaw,
+  Default: defaultRaw,
+  DisabledField: disabled_fieldRaw,
+  FieldGroup: field_groupRaw,
+  NumberInputStory: number_input_storyRaw,
+  OrientationHorizontal: orientation_horizontalRaw,
+  OrientationVertical: orientation_verticalRaw,
+  RadioGroupField: radio_group_fieldRaw,
+  RequiredField: required_fieldRaw,
+  SelectField: select_fieldRaw,
+  SliderField: slider_fieldRaw,
+  SwitchField: switch_fieldRaw,
+  TextareaField: textarea_fieldRaw,
+  WithError: with_errorRaw,
+  WithInputGroup: with_input_groupRaw,
 } as const;
 
 export * from "./autocomplete-field";

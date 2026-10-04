@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import collapsibleRaw from "./collapsible.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
 import edge_handleRaw from "./edge-handle.tsx?raw";
@@ -11,14 +10,14 @@ import orientation_verticalRaw from "./orientation-vertical.tsx?raw";
 export const imports = `import { Resizable } from "@pisagor/react";`;
 
 export const sources = {
-  Collapsible: stripTsxExample(collapsibleRaw),
-  Default: stripTsxExample(defaultRaw),
-  EdgeHandle: stripTsxExample(edge_handleRaw),
-  Handle: stripTsxExample(handleRaw),
-  MinMax: stripTsxExample(min_maxRaw),
-  MultiplePanels: stripTsxExample(multiple_panelsRaw),
-  OrientationHorizontal: stripTsxExample(orientation_horizontalRaw),
-  OrientationVertical: stripTsxExample(orientation_verticalRaw),
+  Collapsible: collapsibleRaw,
+  Default: defaultRaw,
+  EdgeHandle: edge_handleRaw,
+  Handle: handleRaw,
+  MinMax: min_maxRaw,
+  MultiplePanels: multiple_panelsRaw,
+  OrientationHorizontal: orientation_horizontalRaw,
+  OrientationVertical: orientation_verticalRaw,
 } as const;
 
 export * from "./collapsible";

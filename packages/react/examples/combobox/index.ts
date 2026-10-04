@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import autohighlightRaw from "./autohighlight.tsx?raw";
 import compoundRaw from "./compound.tsx?raw";
 import controlledRaw from "./controlled.tsx?raw";
@@ -16,19 +15,19 @@ import with_start_iconRaw from "./with-start-icon.tsx?raw";
 export const imports = `import { Combobox } from "@pisagor/react";`;
 
 export const sources = {
-  Autohighlight: stripTsxExample(autohighlightRaw),
-  Compound: stripTsxExample(compoundRaw),
-  Controlled: stripTsxExample(controlledRaw),
-  Default: stripTsxExample(defaultRaw),
-  Disabled: stripTsxExample(disabledRaw),
-  Group: stripTsxExample(groupRaw),
-  Invalid: stripTsxExample(invalidRaw),
-  Multiple: stripTsxExample(multipleRaw),
-  Sizes: stripTsxExample(sizesRaw),
-  Variants: stripTsxExample(variantsRaw),
-  WithClearButton: stripTsxExample(with_clear_buttonRaw),
-  WithScroll: stripTsxExample(with_scrollRaw),
-  WithStartIcon: stripTsxExample(with_start_iconRaw),
+  Autohighlight: autohighlightRaw,
+  Compound: compoundRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Group: groupRaw,
+  Invalid: invalidRaw,
+  Multiple: multipleRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
+  WithClearButton: with_clear_buttonRaw,
+  WithScroll: with_scrollRaw,
+  WithStartIcon: with_start_iconRaw,
 } as const;
 
 export * from "./autohighlight";

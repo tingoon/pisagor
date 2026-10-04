@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import booked_datesRaw from "./booked-dates.tsx?raw";
 import controlledRaw from "./controlled.tsx?raw";
 import custom_cell_sizeRaw from "./custom-cell-size.tsx?raw";
@@ -16,19 +15,19 @@ import select_todayRaw from "./select-today.tsx?raw";
 export const imports = `import { Calendar } from "@pisagor/react";`;
 
 export const sources = {
-  BookedDates: stripTsxExample(booked_datesRaw),
-  Controlled: stripTsxExample(controlledRaw),
-  CustomCellSize: stripTsxExample(custom_cell_sizeRaw),
-  Default: stripTsxExample(defaultRaw),
-  Disabled: stripTsxExample(disabledRaw),
-  FixedWeeks: stripTsxExample(fixed_weeksRaw),
-  Invalid: stripTsxExample(invalidRaw),
-  MinMax: stripTsxExample(min_maxRaw),
-  MonthYearSelector: stripTsxExample(month_year_selectorRaw),
-  MultipleMonths: stripTsxExample(multiple_monthsRaw),
-  Presets: stripTsxExample(presetsRaw),
-  Range: stripTsxExample(rangeRaw),
-  SelectToday: stripTsxExample(select_todayRaw),
+  BookedDates: booked_datesRaw,
+  Controlled: controlledRaw,
+  CustomCellSize: custom_cell_sizeRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  FixedWeeks: fixed_weeksRaw,
+  Invalid: invalidRaw,
+  MinMax: min_maxRaw,
+  MonthYearSelector: month_year_selectorRaw,
+  MultipleMonths: multiple_monthsRaw,
+  Presets: presetsRaw,
+  Range: rangeRaw,
+  SelectToday: select_todayRaw,
 } as const;
 
 export * from "./booked-dates";

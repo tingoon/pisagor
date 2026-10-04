@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import booked_datesRaw from "./booked-dates.vue?raw";
 import controlledRaw from "./controlled.vue?raw";
 import custom_cell_sizeRaw from "./custom-cell-size.vue?raw";
@@ -17,20 +16,20 @@ import select_todayRaw from "./select-today.vue?raw";
 export const imports = `import { Calendar } from "@pisagor/vue";`;
 
 export const sources = {
-  BookedDates: stripVueExample(booked_datesRaw),
-  Controlled: stripVueExample(controlledRaw),
-  CustomCellSize: stripVueExample(custom_cell_sizeRaw),
-  Default: stripVueExample(defaultRaw),
-  Disabled: stripVueExample(disabledRaw),
-  FixedWeeks: stripVueExample(fixed_weeksRaw),
-  Invalid: stripVueExample(invalidRaw),
-  MinMax: stripVueExample(min_maxRaw),
-  MonthYearSelector: stripVueExample(month_year_selectorRaw),
-  MultipleMonths: stripVueExample(multiple_monthsRaw),
-  OnSurface: stripVueExample(on_surfaceRaw),
-  Presets: stripVueExample(presetsRaw),
-  Range: stripVueExample(rangeRaw),
-  SelectToday: stripVueExample(select_todayRaw),
+  BookedDates: booked_datesRaw,
+  Controlled: controlledRaw,
+  CustomCellSize: custom_cell_sizeRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  FixedWeeks: fixed_weeksRaw,
+  Invalid: invalidRaw,
+  MinMax: min_maxRaw,
+  MonthYearSelector: month_year_selectorRaw,
+  MultipleMonths: multiple_monthsRaw,
+  OnSurface: on_surfaceRaw,
+  Presets: presetsRaw,
+  Range: rangeRaw,
+  SelectToday: select_todayRaw,
 } as const;
 
 export { default as BookedDates } from "./booked-dates.vue";

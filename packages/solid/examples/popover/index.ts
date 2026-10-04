@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import anchorRaw from "./anchor.tsx?raw";
 import close_behaviorRaw from "./close-behavior.tsx?raw";
 import close_buttonRaw from "./close-button.tsx?raw";
@@ -12,15 +11,15 @@ import scroll_areaRaw from "./scroll-area.tsx?raw";
 export const imports = `import { Popover } from "@pisagor/solid";`;
 
 export const sources = {
-  Anchor: stripTsxExample(anchorRaw),
-  CloseBehavior: stripTsxExample(close_behaviorRaw),
-  CloseButton: stripTsxExample(close_buttonRaw),
-  CustomSpacing: stripTsxExample(custom_spacingRaw),
-  Default: stripTsxExample(defaultRaw),
-  Modal: stripTsxExample(modalRaw),
-  Nested: stripTsxExample(nestedRaw),
-  Placements: stripTsxExample(placementsRaw),
-  ScrollArea: stripTsxExample(scroll_areaRaw),
+  Anchor: anchorRaw,
+  CloseBehavior: close_behaviorRaw,
+  CloseButton: close_buttonRaw,
+  CustomSpacing: custom_spacingRaw,
+  Default: defaultRaw,
+  Modal: modalRaw,
+  Nested: nestedRaw,
+  Placements: placementsRaw,
+  ScrollArea: scroll_areaRaw,
 } as const;
 
 export * from "./anchor";

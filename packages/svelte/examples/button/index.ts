@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import as_childRaw from "./as-child.svelte?raw";
 import custom_colorRaw from "./custom-color.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
@@ -14,17 +13,17 @@ import with_iconRaw from "./with-icon.svelte?raw";
 export const imports = `import { Button } from "@pisagor/svelte";`;
 
 export const sources = {
-  AsChild: stripSvelteExample(as_childRaw),
-  CustomColor: stripSvelteExample(custom_colorRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Disabled: stripSvelteExample(disabledRaw),
-  Icon: stripSvelteExample(iconRaw),
-  Loading: stripSvelteExample(loadingRaw),
-  NoClickEffect: stripSvelteExample(no_click_effectRaw),
-  Pill: stripSvelteExample(pillRaw),
-  Sizes: stripSvelteExample(sizesRaw),
-  Variants: stripSvelteExample(variantsRaw),
-  WithIcon: stripSvelteExample(with_iconRaw),
+  AsChild: as_childRaw,
+  CustomColor: custom_colorRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Icon: iconRaw,
+  Loading: loadingRaw,
+  NoClickEffect: no_click_effectRaw,
+  Pill: pillRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
+  WithIcon: with_iconRaw,
 } as const;
 
 export { default as AsChild } from "./as-child.svelte";

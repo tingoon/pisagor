@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import compoundRaw from "./compound.svelte?raw";
 import controlledRaw from "./controlled.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
@@ -14,17 +13,17 @@ import with_triggerRaw from "./with-trigger.svelte?raw";
 export const imports = `import { Autocomplete } from "@pisagor/svelte";`;
 
 export const sources = {
-  Compound: stripSvelteExample(compoundRaw),
-  Controlled: stripSvelteExample(controlledRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Disabled: stripSvelteExample(disabledRaw),
-  Group: stripSvelteExample(groupRaw),
-  Invalid: stripSvelteExample(invalidRaw),
-  Sizes: stripSvelteExample(sizesRaw),
-  Variants: stripSvelteExample(variantsRaw),
-  WithClearButton: stripSvelteExample(with_clear_buttonRaw),
-  WithStartIcon: stripSvelteExample(with_start_iconRaw),
-  WithTrigger: stripSvelteExample(with_triggerRaw),
+  Compound: compoundRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Group: groupRaw,
+  Invalid: invalidRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
+  WithClearButton: with_clear_buttonRaw,
+  WithStartIcon: with_start_iconRaw,
+  WithTrigger: with_triggerRaw,
 } as const;
 
 export { default as Compound } from "./compound.svelte";

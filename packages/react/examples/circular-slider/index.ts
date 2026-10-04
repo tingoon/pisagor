@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import controlledRaw from "./controlled.tsx?raw";
 import custom_markersRaw from "./custom-markers.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
@@ -12,15 +11,15 @@ import with_valueRaw from "./with-value.tsx?raw";
 export const imports = `import { CircularSlider } from "@pisagor/react";`;
 
 export const sources = {
-  Controlled: stripTsxExample(controlledRaw),
-  CustomMarkers: stripTsxExample(custom_markersRaw),
-  Default: stripTsxExample(defaultRaw),
-  Disabled: stripTsxExample(disabledRaw),
-  Sizes: stripTsxExample(sizesRaw),
-  Step: stripTsxExample(stepRaw),
-  Thickness: stripTsxExample(thicknessRaw),
-  WithMarkers: stripTsxExample(with_markersRaw),
-  WithValue: stripTsxExample(with_valueRaw),
+  Controlled: controlledRaw,
+  CustomMarkers: custom_markersRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Sizes: sizesRaw,
+  Step: stepRaw,
+  Thickness: thicknessRaw,
+  WithMarkers: with_markersRaw,
+  WithValue: with_valueRaw,
 } as const;
 
 export * from "./controlled";

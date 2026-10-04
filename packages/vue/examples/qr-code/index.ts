@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import defaultRaw from "./default.vue?raw";
 import downloadRaw from "./download.vue?raw";
 import error_correctionRaw from "./error-correction.vue?raw";
@@ -8,11 +7,11 @@ import sizesRaw from "./sizes.vue?raw";
 export const imports = `import { QrCode } from "@pisagor/vue";`;
 
 export const sources = {
-  Default: stripVueExample(defaultRaw),
-  Download: stripVueExample(downloadRaw),
-  ErrorCorrection: stripVueExample(error_correctionRaw),
-  Overlay: stripVueExample(overlayRaw),
-  Sizes: stripVueExample(sizesRaw),
+  Default: defaultRaw,
+  Download: downloadRaw,
+  ErrorCorrection: error_correctionRaw,
+  Overlay: overlayRaw,
+  Sizes: sizesRaw,
 } as const;
 
 export { default as Default } from "./default.vue";

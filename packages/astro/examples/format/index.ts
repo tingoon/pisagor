@@ -1,4 +1,3 @@
-import { stripAstroExample } from "@pisagor/utils";
 import byteRaw from "./byte.astro?raw";
 import defaultRaw from "./default.astro?raw";
 import number_compactRaw from "./number-compact.astro?raw";
@@ -10,11 +9,11 @@ import { Format } from "@pisagor/astro";
 ---`;
 
 export const sources = {
-  Byte: stripAstroExample(byteRaw),
-  Default: stripAstroExample(defaultRaw),
-  NumberCompact: stripAstroExample(number_compactRaw),
-  NumberCurrency: stripAstroExample(number_currencyRaw),
-  RelativeTime: stripAstroExample(relative_timeRaw),
+  Byte: byteRaw,
+  Default: defaultRaw,
+  NumberCompact: number_compactRaw,
+  NumberCurrency: number_currencyRaw,
+  RelativeTime: relative_timeRaw,
 } as const;
 
 export { default as Byte } from "./byte.astro";

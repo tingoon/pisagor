@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import blur_on_completeRaw from "./blur-on-complete.tsx?raw";
 import controlledRaw from "./controlled.tsx?raw";
 import custom_sizeRaw from "./custom-size.tsx?raw";
@@ -14,17 +13,17 @@ import with_placeholderRaw from "./with-placeholder.tsx?raw";
 export const imports = `import { InputOTP } from "@pisagor/react";`;
 
 export const sources = {
-  BlurOnComplete: stripTsxExample(blur_on_completeRaw),
-  Controlled: stripTsxExample(controlledRaw),
-  CustomSize: stripTsxExample(custom_sizeRaw),
-  Default: stripTsxExample(defaultRaw),
-  Disabled: stripTsxExample(disabledRaw),
-  FourDigits: stripTsxExample(four_digitsRaw),
-  Invalid: stripTsxExample(invalidRaw),
-  Mask: stripTsxExample(maskRaw),
-  Separator: stripTsxExample(separatorRaw),
-  Variants: stripTsxExample(variantsRaw),
-  WithPlaceholder: stripTsxExample(with_placeholderRaw),
+  BlurOnComplete: blur_on_completeRaw,
+  Controlled: controlledRaw,
+  CustomSize: custom_sizeRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  FourDigits: four_digitsRaw,
+  Invalid: invalidRaw,
+  Mask: maskRaw,
+  Separator: separatorRaw,
+  Variants: variantsRaw,
+  WithPlaceholder: with_placeholderRaw,
 } as const;
 
 export * from "./blur-on-complete";

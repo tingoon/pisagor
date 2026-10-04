@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import autohighlightRaw from "./autohighlight.svelte?raw";
 import compoundRaw from "./compound.svelte?raw";
 import controlledRaw from "./controlled.svelte?raw";
@@ -16,19 +15,19 @@ import with_start_iconRaw from "./with-start-icon.svelte?raw";
 export const imports = `import { Combobox } from "@pisagor/svelte";`;
 
 export const sources = {
-  Autohighlight: stripSvelteExample(autohighlightRaw),
-  Compound: stripSvelteExample(compoundRaw),
-  Controlled: stripSvelteExample(controlledRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Disabled: stripSvelteExample(disabledRaw),
-  Group: stripSvelteExample(groupRaw),
-  Invalid: stripSvelteExample(invalidRaw),
-  Multiple: stripSvelteExample(multipleRaw),
-  Sizes: stripSvelteExample(sizesRaw),
-  Variants: stripSvelteExample(variantsRaw),
-  WithClearButton: stripSvelteExample(with_clear_buttonRaw),
-  WithScroll: stripSvelteExample(with_scrollRaw),
-  WithStartIcon: stripSvelteExample(with_start_iconRaw),
+  Autohighlight: autohighlightRaw,
+  Compound: compoundRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Group: groupRaw,
+  Invalid: invalidRaw,
+  Multiple: multipleRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
+  WithClearButton: with_clear_buttonRaw,
+  WithScroll: with_scrollRaw,
+  WithStartIcon: with_start_iconRaw,
 } as const;
 
 export { default as Autohighlight } from "./autohighlight.svelte";

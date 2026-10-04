@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import byteRaw from "./byte.vue?raw";
 import byte_unit_displayRaw from "./byte-unit-display.vue?raw";
 import byte_unit_systemRaw from "./byte-unit-system.vue?raw";
@@ -13,16 +12,16 @@ import relative_time_shortRaw from "./relative-time-short.vue?raw";
 export const imports = `import { Format } from "@pisagor/vue";`;
 
 export const sources = {
-  Byte: stripVueExample(byteRaw),
-  ByteUnitDisplay: stripVueExample(byte_unit_displayRaw),
-  ByteUnitSystem: stripVueExample(byte_unit_systemRaw),
-  Default: stripVueExample(defaultRaw),
-  NumberCompact: stripVueExample(number_compactRaw),
-  NumberCurrency: stripVueExample(number_currencyRaw),
-  NumberPercent: stripVueExample(number_percentRaw),
-  NumberStory: stripVueExample(number_storyRaw),
-  RelativeTime: stripVueExample(relative_timeRaw),
-  RelativeTimeShort: stripVueExample(relative_time_shortRaw),
+  Byte: byteRaw,
+  ByteUnitDisplay: byte_unit_displayRaw,
+  ByteUnitSystem: byte_unit_systemRaw,
+  Default: defaultRaw,
+  NumberCompact: number_compactRaw,
+  NumberCurrency: number_currencyRaw,
+  NumberPercent: number_percentRaw,
+  NumberStory: number_storyRaw,
+  RelativeTime: relative_timeRaw,
+  RelativeTimeShort: relative_time_shortRaw,
 } as const;
 
 export { default as Byte } from "./byte.vue";

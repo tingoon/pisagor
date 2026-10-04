@@ -1,4 +1,3 @@
-import { stripAstroExample } from "@pisagor/utils";
 import compoundRaw from "./compound.astro?raw";
 import defaultRaw from "./default.astro?raw";
 import variantsRaw from "./variants.astro?raw";
@@ -9,10 +8,10 @@ import { Announcement } from "@pisagor/astro";
 ---`;
 
 export const sources = {
-  Compound: stripAstroExample(compoundRaw),
-  Default: stripAstroExample(defaultRaw),
-  Variants: stripAstroExample(variantsRaw),
-  WithoutBadge: stripAstroExample(without_badgeRaw),
+  Compound: compoundRaw,
+  Default: defaultRaw,
+  Variants: variantsRaw,
+  WithoutBadge: without_badgeRaw,
 } as const;
 
 export { default as Compound } from "./compound.astro";

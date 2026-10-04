@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import checkbox_groupRaw from "./checkbox-group.svelte?raw";
 import controlledRaw from "./controlled.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
@@ -10,13 +9,13 @@ import variantsRaw from "./variants.svelte?raw";
 export const imports = `import { Checkbox } from "@pisagor/svelte";`;
 
 export const sources = {
-  CheckboxGroup: stripSvelteExample(checkbox_groupRaw),
-  Controlled: stripSvelteExample(controlledRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Disabled: stripSvelteExample(disabledRaw),
-  Indeterminate: stripSvelteExample(indeterminateRaw),
-  Invalid: stripSvelteExample(invalidRaw),
-  Variants: stripSvelteExample(variantsRaw),
+  CheckboxGroup: checkbox_groupRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Indeterminate: indeterminateRaw,
+  Invalid: invalidRaw,
+  Variants: variantsRaw,
 } as const;
 
 export { default as CheckboxGroup } from "./checkbox-group.svelte";

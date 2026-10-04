@@ -1,12 +1,11 @@
-import { stripVueExample } from "@pisagor/utils";
 import defaultRaw from "./default.vue?raw";
 import fallbackRaw from "./fallback.vue?raw";
 
 export const imports = `import { ClientOnly } from "@pisagor/vue";`;
 
 export const sources = {
-  Default: stripVueExample(defaultRaw),
-  Fallback: stripVueExample(fallbackRaw),
+  Default: defaultRaw,
+  Fallback: fallbackRaw,
 } as const;
 
 export { default as Default } from "./default.vue";

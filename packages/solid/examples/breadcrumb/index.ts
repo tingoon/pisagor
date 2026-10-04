@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import collapsedRaw from "./collapsed.tsx?raw";
 import compoundRaw from "./compound.tsx?raw";
 import custom_separatorRaw from "./custom-separator.tsx?raw";
@@ -9,12 +8,12 @@ import with_menuRaw from "./with-menu.tsx?raw";
 export const imports = `import { Breadcrumb } from "@pisagor/solid";`;
 
 export const sources = {
-  Collapsed: stripTsxExample(collapsedRaw),
-  Compound: stripTsxExample(compoundRaw),
-  CustomSeparator: stripTsxExample(custom_separatorRaw),
-  Default: stripTsxExample(defaultRaw),
-  WithLink: stripTsxExample(with_linkRaw),
-  WithMenu: stripTsxExample(with_menuRaw),
+  Collapsed: collapsedRaw,
+  Compound: compoundRaw,
+  CustomSeparator: custom_separatorRaw,
+  Default: defaultRaw,
+  WithLink: with_linkRaw,
+  WithMenu: with_menuRaw,
 } as const;
 
 export * from "./collapsed";

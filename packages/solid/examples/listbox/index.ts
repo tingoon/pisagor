@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import compoundRaw from "./compound.tsx?raw";
 import controlledRaw from "./controlled.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
@@ -20,23 +19,23 @@ import with_popoverRaw from "./with-popover.tsx?raw";
 export const imports = `import { Listbox } from "@pisagor/solid";`;
 
 export const sources = {
-  Compound: stripTsxExample(compoundRaw),
-  Controlled: stripTsxExample(controlledRaw),
-  Default: stripTsxExample(defaultRaw),
-  Disabled: stripTsxExample(disabledRaw),
-  DisabledItem: stripTsxExample(disabled_itemRaw),
-  Grid: stripTsxExample(gridRaw),
-  Grouping: stripTsxExample(groupingRaw),
-  Horizontal: stripTsxExample(horizontalRaw),
-  ImageExplorer: stripTsxExample(image_explorerRaw),
-  SelectionExtended: stripTsxExample(selection_extendedRaw),
-  SelectionMultiple: stripTsxExample(selection_multipleRaw),
-  SelectionNone: stripTsxExample(selection_noneRaw),
-  TransferList: stripTsxExample(transfer_listRaw),
-  WithDescription: stripTsxExample(with_descriptionRaw),
-  WithFilter: stripTsxExample(with_filterRaw),
-  WithIcon: stripTsxExample(with_iconRaw),
-  WithPopover: stripTsxExample(with_popoverRaw),
+  Compound: compoundRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  DisabledItem: disabled_itemRaw,
+  Grid: gridRaw,
+  Grouping: groupingRaw,
+  Horizontal: horizontalRaw,
+  ImageExplorer: image_explorerRaw,
+  SelectionExtended: selection_extendedRaw,
+  SelectionMultiple: selection_multipleRaw,
+  SelectionNone: selection_noneRaw,
+  TransferList: transfer_listRaw,
+  WithDescription: with_descriptionRaw,
+  WithFilter: with_filterRaw,
+  WithIcon: with_iconRaw,
+  WithPopover: with_popoverRaw,
 } as const;
 
 export * from "./compound";

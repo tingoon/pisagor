@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import custom_spacingRaw from "./custom-spacing.vue?raw";
 import defaultRaw from "./default.vue?raw";
 import iconRaw from "./icon.vue?raw";
@@ -7,10 +6,10 @@ import productRaw from "./product.vue?raw";
 export const imports = `import { Card } from "@pisagor/vue";`;
 
 export const sources = {
-  CustomSpacing: stripVueExample(custom_spacingRaw),
-  Default: stripVueExample(defaultRaw),
-  Icon: stripVueExample(iconRaw),
-  Product: stripVueExample(productRaw),
+  CustomSpacing: custom_spacingRaw,
+  Default: defaultRaw,
+  Icon: iconRaw,
+  Product: productRaw,
 } as const;
 
 export { default as CustomSpacing } from "./custom-spacing.vue";

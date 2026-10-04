@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import defaultRaw from "./default.svelte?raw";
 import downloadRaw from "./download.svelte?raw";
 import error_correctionRaw from "./error-correction.svelte?raw";
@@ -8,11 +7,11 @@ import sizesRaw from "./sizes.svelte?raw";
 export const imports = `import { QrCode } from "@pisagor/svelte";`;
 
 export const sources = {
-  Default: stripSvelteExample(defaultRaw),
-  Download: stripSvelteExample(downloadRaw),
-  ErrorCorrection: stripSvelteExample(error_correctionRaw),
-  Overlay: stripSvelteExample(overlayRaw),
-  Sizes: stripSvelteExample(sizesRaw),
+  Default: defaultRaw,
+  Download: downloadRaw,
+  ErrorCorrection: error_correctionRaw,
+  Overlay: overlayRaw,
+  Sizes: sizesRaw,
 } as const;
 
 export { default as Default } from "./default.svelte";

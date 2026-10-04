@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import custom_styleRaw from "./custom-style.vue?raw";
 import defaultRaw from "./default.vue?raw";
 import multipleRaw from "./multiple.vue?raw";
@@ -9,12 +8,12 @@ import squiggleRaw from "./squiggle.vue?raw";
 export const imports = `import { Highlight } from "@pisagor/vue";`;
 
 export const sources = {
-  CustomStyle: stripVueExample(custom_styleRaw),
-  Default: stripVueExample(defaultRaw),
-  Multiple: stripVueExample(multipleRaw),
-  MultipleQueries: stripVueExample(multiple_queriesRaw),
-  SearchQuery: stripVueExample(search_queryRaw),
-  Squiggle: stripVueExample(squiggleRaw),
+  CustomStyle: custom_styleRaw,
+  Default: defaultRaw,
+  Multiple: multipleRaw,
+  MultipleQueries: multiple_queriesRaw,
+  SearchQuery: search_queryRaw,
+  Squiggle: squiggleRaw,
 } as const;
 
 export { default as CustomStyle } from "./custom-style.vue";

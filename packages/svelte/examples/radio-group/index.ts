@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import compoundRaw from "./compound.svelte?raw";
 import controlledRaw from "./controlled.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
@@ -10,13 +9,13 @@ import with_descriptionRaw from "./with-description.svelte?raw";
 export const imports = `import { RadioGroup } from "@pisagor/svelte";`;
 
 export const sources = {
-  Compound: stripSvelteExample(compoundRaw),
-  Controlled: stripSvelteExample(controlledRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Disabled: stripSvelteExample(disabledRaw),
-  Invalid: stripSvelteExample(invalidRaw),
-  Variants: stripSvelteExample(variantsRaw),
-  WithDescription: stripSvelteExample(with_descriptionRaw),
+  Compound: compoundRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Invalid: invalidRaw,
+  Variants: variantsRaw,
+  WithDescription: with_descriptionRaw,
 } as const;
 
 export { default as Compound } from "./compound.svelte";

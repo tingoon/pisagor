@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import controlledRaw from "./controlled.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
 import indeterminateRaw from "./indeterminate.svelte?raw";
@@ -9,12 +8,12 @@ import with_valueRaw from "./with-value.svelte?raw";
 export const imports = `import { CircularProgress } from "@pisagor/svelte";`;
 
 export const sources = {
-  Controlled: stripSvelteExample(controlledRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Indeterminate: stripSvelteExample(indeterminateRaw),
-  Sizes: stripSvelteExample(sizesRaw),
-  Thickness: stripSvelteExample(thicknessRaw),
-  WithValue: stripSvelteExample(with_valueRaw),
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Indeterminate: indeterminateRaw,
+  Sizes: sizesRaw,
+  Thickness: thicknessRaw,
+  WithValue: with_valueRaw,
 } as const;
 
 export { default as Controlled } from "./controlled.svelte";

@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import clearableRaw from "./clearable.vue?raw";
 import controlledRaw from "./controlled.vue?raw";
 import defaultRaw from "./default.vue?raw";
@@ -13,16 +12,16 @@ import with_fieldRaw from "./with-field.vue?raw";
 export const imports = `import { Input } from "@pisagor/vue";`;
 
 export const sources = {
-  Clearable: stripVueExample(clearableRaw),
-  Controlled: stripVueExample(controlledRaw),
-  Default: stripVueExample(defaultRaw),
-  Disabled: stripVueExample(disabledRaw),
-  File: stripVueExample(fileRaw),
-  Invalid: stripVueExample(invalidRaw),
-  OnSurface: stripVueExample(on_surfaceRaw),
-  Sizes: stripVueExample(sizesRaw),
-  Variants: stripVueExample(variantsRaw),
-  WithField: stripVueExample(with_fieldRaw),
+  Clearable: clearableRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  File: fileRaw,
+  Invalid: invalidRaw,
+  OnSurface: on_surfaceRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
+  WithField: with_fieldRaw,
 } as const;
 
 export { default as Clearable } from "./clearable.vue";

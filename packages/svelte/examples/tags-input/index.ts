@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import blur_behaviorRaw from "./blur-behavior.svelte?raw";
 import controlledRaw from "./controlled.svelte?raw";
 import controlled_input_valueRaw from "./controlled-input-value.svelte?raw";
@@ -20,23 +19,23 @@ import with_comboboxRaw from "./with-combobox.svelte?raw";
 export const imports = `import { TagsInput } from "@pisagor/svelte";`;
 
 export const sources = {
-  BlurBehavior: stripSvelteExample(blur_behaviorRaw),
-  Controlled: stripSvelteExample(controlledRaw),
-  ControlledInputValue: stripSvelteExample(controlled_input_valueRaw),
-  CustomDelimiter: stripSvelteExample(custom_delimiterRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Disabled: stripSvelteExample(disabledRaw),
-  DisableEditing: stripSvelteExample(disable_editingRaw),
-  Invalid: stripSvelteExample(invalidRaw),
-  MaxLength: stripSvelteExample(max_lengthRaw),
-  MaxTags: stripSvelteExample(max_tagsRaw),
-  MaxWithOverflow: stripSvelteExample(max_with_overflowRaw),
-  PasteBehavior: stripSvelteExample(paste_behaviorRaw),
-  SanitizeValue: stripSvelteExample(sanitize_valueRaw),
-  Sizes: stripSvelteExample(sizesRaw),
-  Validation: stripSvelteExample(validationRaw),
-  Variants: stripSvelteExample(variantsRaw),
-  WithCombobox: stripSvelteExample(with_comboboxRaw),
+  BlurBehavior: blur_behaviorRaw,
+  Controlled: controlledRaw,
+  ControlledInputValue: controlled_input_valueRaw,
+  CustomDelimiter: custom_delimiterRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  DisableEditing: disable_editingRaw,
+  Invalid: invalidRaw,
+  MaxLength: max_lengthRaw,
+  MaxTags: max_tagsRaw,
+  MaxWithOverflow: max_with_overflowRaw,
+  PasteBehavior: paste_behaviorRaw,
+  SanitizeValue: sanitize_valueRaw,
+  Sizes: sizesRaw,
+  Validation: validationRaw,
+  Variants: variantsRaw,
+  WithCombobox: with_comboboxRaw,
 } as const;
 
 export { default as BlurBehavior } from "./blur-behavior.svelte";

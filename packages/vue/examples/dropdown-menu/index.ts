@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import checkboxesRaw from "./checkboxes.vue?raw";
 import defaultRaw from "./default.vue?raw";
 import destructiveRaw from "./destructive.vue?raw";
@@ -16,19 +15,19 @@ import with_separatorRaw from "./with-separator.vue?raw";
 export const imports = `import { DropdownMenu } from "@pisagor/vue";`;
 
 export const sources = {
-  Checkboxes: stripVueExample(checkboxesRaw),
-  Default: stripVueExample(defaultRaw),
-  Destructive: stripVueExample(destructiveRaw),
-  GroupLabel: stripVueExample(group_labelRaw),
-  Icons: stripVueExample(iconsRaw),
-  Link: stripVueExample(linkRaw),
-  Nested: stripVueExample(nestedRaw),
-  Placements: stripVueExample(placementsRaw),
-  QuickItem: stripVueExample(quick_itemRaw),
-  RadioGroup: stripVueExample(radio_groupRaw),
-  Shortcuts: stripVueExample(shortcutsRaw),
-  WithScroll: stripVueExample(with_scrollRaw),
-  WithSeparator: stripVueExample(with_separatorRaw),
+  Checkboxes: checkboxesRaw,
+  Default: defaultRaw,
+  Destructive: destructiveRaw,
+  GroupLabel: group_labelRaw,
+  Icons: iconsRaw,
+  Link: linkRaw,
+  Nested: nestedRaw,
+  Placements: placementsRaw,
+  QuickItem: quick_itemRaw,
+  RadioGroup: radio_groupRaw,
+  Shortcuts: shortcutsRaw,
+  WithScroll: with_scrollRaw,
+  WithSeparator: with_separatorRaw,
 } as const;
 
 export { default as Checkboxes } from "./checkboxes.vue";

@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import checkbox_treeRaw from "./checkbox-tree.tsx?raw";
 import controlledRaw from "./controlled.tsx?raw";
 import custom_iconsRaw from "./custom-icons.tsx?raw";
@@ -13,16 +12,16 @@ import with_context_menuRaw from "./with-context-menu.tsx?raw";
 export const imports = `import { TreeView } from "@pisagor/react";`;
 
 export const sources = {
-  CheckboxTree: stripTsxExample(checkbox_treeRaw),
-  Controlled: stripTsxExample(controlledRaw),
-  CustomIcons: stripTsxExample(custom_iconsRaw),
-  CustomIconsFolder: stripTsxExample(custom_icons_folderRaw),
-  CustomIconsItem: stripTsxExample(custom_icons_itemRaw),
-  Default: stripTsxExample(defaultRaw),
-  Links: stripTsxExample(linksRaw),
-  MultipleSelection: stripTsxExample(multiple_selectionRaw),
-  Rename: stripTsxExample(renameRaw),
-  WithContextMenu: stripTsxExample(with_context_menuRaw),
+  CheckboxTree: checkbox_treeRaw,
+  Controlled: controlledRaw,
+  CustomIcons: custom_iconsRaw,
+  CustomIconsFolder: custom_icons_folderRaw,
+  CustomIconsItem: custom_icons_itemRaw,
+  Default: defaultRaw,
+  Links: linksRaw,
+  MultipleSelection: multiple_selectionRaw,
+  Rename: renameRaw,
+  WithContextMenu: with_context_menuRaw,
 } as const;
 
 export * from "./checkbox-tree";

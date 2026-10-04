@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import byteRaw from "./byte.svelte?raw";
 import byte_unit_displayRaw from "./byte-unit-display.svelte?raw";
 import byte_unit_systemRaw from "./byte-unit-system.svelte?raw";
@@ -13,16 +12,16 @@ import relative_time_shortRaw from "./relative-time-short.svelte?raw";
 export const imports = `import { Format } from "@pisagor/svelte";`;
 
 export const sources = {
-  Byte: stripSvelteExample(byteRaw),
-  ByteUnitDisplay: stripSvelteExample(byte_unit_displayRaw),
-  ByteUnitSystem: stripSvelteExample(byte_unit_systemRaw),
-  Default: stripSvelteExample(defaultRaw),
-  NumberCompact: stripSvelteExample(number_compactRaw),
-  NumberCurrency: stripSvelteExample(number_currencyRaw),
-  NumberPercent: stripSvelteExample(number_percentRaw),
-  NumberStory: stripSvelteExample(number_storyRaw),
-  RelativeTime: stripSvelteExample(relative_timeRaw),
-  RelativeTimeShort: stripSvelteExample(relative_time_shortRaw),
+  Byte: byteRaw,
+  ByteUnitDisplay: byte_unit_displayRaw,
+  ByteUnitSystem: byte_unit_systemRaw,
+  Default: defaultRaw,
+  NumberCompact: number_compactRaw,
+  NumberCurrency: number_currencyRaw,
+  NumberPercent: number_percentRaw,
+  NumberStory: number_storyRaw,
+  RelativeTime: relative_timeRaw,
+  RelativeTimeShort: relative_time_shortRaw,
 } as const;
 
 export { default as Byte } from "./byte.svelte";

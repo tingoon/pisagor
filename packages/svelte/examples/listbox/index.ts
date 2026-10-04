@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import compoundRaw from "./compound.svelte?raw";
 import controlledRaw from "./controlled.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
@@ -20,23 +19,23 @@ import with_popoverRaw from "./with-popover.svelte?raw";
 export const imports = `import { Listbox } from "@pisagor/svelte";`;
 
 export const sources = {
-  Compound: stripSvelteExample(compoundRaw),
-  Controlled: stripSvelteExample(controlledRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Disabled: stripSvelteExample(disabledRaw),
-  DisabledItem: stripSvelteExample(disabled_itemRaw),
-  Grid: stripSvelteExample(gridRaw),
-  Grouping: stripSvelteExample(groupingRaw),
-  Horizontal: stripSvelteExample(horizontalRaw),
-  ImageExplorer: stripSvelteExample(image_explorerRaw),
-  SelectionExtended: stripSvelteExample(selection_extendedRaw),
-  SelectionMultiple: stripSvelteExample(selection_multipleRaw),
-  SelectionNone: stripSvelteExample(selection_noneRaw),
-  TransferList: stripSvelteExample(transfer_listRaw),
-  WithDescription: stripSvelteExample(with_descriptionRaw),
-  WithFilter: stripSvelteExample(with_filterRaw),
-  WithIcon: stripSvelteExample(with_iconRaw),
-  WithPopover: stripSvelteExample(with_popoverRaw),
+  Compound: compoundRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  DisabledItem: disabled_itemRaw,
+  Grid: gridRaw,
+  Grouping: groupingRaw,
+  Horizontal: horizontalRaw,
+  ImageExplorer: image_explorerRaw,
+  SelectionExtended: selection_extendedRaw,
+  SelectionMultiple: selection_multipleRaw,
+  SelectionNone: selection_noneRaw,
+  TransferList: transfer_listRaw,
+  WithDescription: with_descriptionRaw,
+  WithFilter: with_filterRaw,
+  WithIcon: with_iconRaw,
+  WithPopover: with_popoverRaw,
 } as const;
 
 export { default as Compound } from "./compound.svelte";

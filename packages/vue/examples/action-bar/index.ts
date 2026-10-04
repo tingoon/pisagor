@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import close_triggerRaw from "./close-trigger.vue?raw";
 import controlledRaw from "./controlled.vue?raw";
 import custom_spacingRaw from "./custom-spacing.vue?raw";
@@ -11,14 +10,14 @@ import with_menuRaw from "./with-menu.vue?raw";
 export const imports = `import { ActionBar } from "@pisagor/vue";`;
 
 export const sources = {
-  CloseTrigger: stripVueExample(close_triggerRaw),
-  Controlled: stripVueExample(controlledRaw),
-  CustomSpacing: stripVueExample(custom_spacingRaw),
-  Default: stripVueExample(defaultRaw),
-  Gutter: stripVueExample(gutterRaw),
-  Placements: stripVueExample(placementsRaw),
-  WithDialog: stripVueExample(with_dialogRaw),
-  WithMenu: stripVueExample(with_menuRaw),
+  CloseTrigger: close_triggerRaw,
+  Controlled: controlledRaw,
+  CustomSpacing: custom_spacingRaw,
+  Default: defaultRaw,
+  Gutter: gutterRaw,
+  Placements: placementsRaw,
+  WithDialog: with_dialogRaw,
+  WithMenu: with_menuRaw,
 } as const;
 
 export { default as CloseTrigger } from "./close-trigger.vue";

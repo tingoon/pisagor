@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import close_triggerRaw from "./close-trigger.tsx?raw";
 import controlledRaw from "./controlled.tsx?raw";
 import custom_spacingRaw from "./custom-spacing.tsx?raw";
@@ -11,14 +10,14 @@ import with_menuRaw from "./with-menu.tsx?raw";
 export const imports = `import { ActionBar } from "@pisagor/solid";`;
 
 export const sources = {
-  CloseTrigger: stripTsxExample(close_triggerRaw),
-  Controlled: stripTsxExample(controlledRaw),
-  CustomSpacing: stripTsxExample(custom_spacingRaw),
-  Default: stripTsxExample(defaultRaw),
-  Gutter: stripTsxExample(gutterRaw),
-  Placements: stripTsxExample(placementsRaw),
-  WithDialog: stripTsxExample(with_dialogRaw),
-  WithMenu: stripTsxExample(with_menuRaw),
+  CloseTrigger: close_triggerRaw,
+  Controlled: controlledRaw,
+  CustomSpacing: custom_spacingRaw,
+  Default: defaultRaw,
+  Gutter: gutterRaw,
+  Placements: placementsRaw,
+  WithDialog: with_dialogRaw,
+  WithMenu: with_menuRaw,
 } as const;
 
 export * from "./close-trigger";

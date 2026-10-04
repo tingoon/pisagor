@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import compositionRaw from "./composition.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
 import variantsRaw from "./variants.tsx?raw";
@@ -6,9 +5,9 @@ import variantsRaw from "./variants.tsx?raw";
 export const imports = `import { AlertDialog } from "@pisagor/solid";`;
 
 export const sources = {
-  Composition: stripTsxExample(compositionRaw),
-  Default: stripTsxExample(defaultRaw),
-  Variants: stripTsxExample(variantsRaw),
+  Composition: compositionRaw,
+  Default: defaultRaw,
+  Variants: variantsRaw,
 } as const;
 
 export * from "./composition";

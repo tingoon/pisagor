@@ -5,7 +5,6 @@
   "description": "Labeled form fields and TanStack Form bindings for @pisagor/react.",
   "devDependencies": {
     "@pisagor/react": "workspace:*",
-    "@pisagor/utils": "workspace:*",
     "@tanstack/react-form": "^1.33.5",
     "@types/react": "catalog:",
     "@types/react-dom": "catalog:",

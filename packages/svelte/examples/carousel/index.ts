@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import autoplayRaw from "./autoplay.svelte?raw";
 import compoundRaw from "./compound.svelte?raw";
 import controlledRaw from "./controlled.svelte?raw";
@@ -15,20 +14,18 @@ import thumbnail_indicator_verticalRaw from "./thumbnail-indicator-vertical.svel
 export const imports = `import { Carousel } from "@pisagor/svelte";`;
 
 export const sources = {
-  Autoplay: stripSvelteExample(autoplayRaw),
-  Compound: stripSvelteExample(compoundRaw),
-  Controlled: stripSvelteExample(controlledRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Loop: stripSvelteExample(loopRaw),
-  MouseDrag: stripSvelteExample(mouse_dragRaw),
-  OrientationHorizontal: stripSvelteExample(orientation_horizontalRaw),
-  OrientationVertical: stripSvelteExample(orientation_verticalRaw),
-  SlidesPerPage: stripSvelteExample(slides_per_pageRaw),
-  Spacing: stripSvelteExample(spacingRaw),
-  ThumbnailIndicator: stripSvelteExample(thumbnail_indicatorRaw),
-  ThumbnailIndicatorVertical: stripSvelteExample(
-    thumbnail_indicator_verticalRaw,
-  ),
+  Autoplay: autoplayRaw,
+  Compound: compoundRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Loop: loopRaw,
+  MouseDrag: mouse_dragRaw,
+  OrientationHorizontal: orientation_horizontalRaw,
+  OrientationVertical: orientation_verticalRaw,
+  SlidesPerPage: slides_per_pageRaw,
+  Spacing: spacingRaw,
+  ThumbnailIndicator: thumbnail_indicatorRaw,
+  ThumbnailIndicatorVertical: thumbnail_indicator_verticalRaw,
 } as const;
 
 export { default as Autoplay } from "./autoplay.svelte";

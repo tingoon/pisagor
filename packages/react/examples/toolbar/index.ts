@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import compoundRaw from "./compound.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
 import wrapped_actionsRaw from "./wrapped-actions.tsx?raw";
@@ -6,9 +5,9 @@ import wrapped_actionsRaw from "./wrapped-actions.tsx?raw";
 export const imports = `import { Toolbar } from "@pisagor/react";`;
 
 export const sources = {
-  Compound: stripTsxExample(compoundRaw),
-  Default: stripTsxExample(defaultRaw),
-  WrappedActions: stripTsxExample(wrapped_actionsRaw),
+  Compound: compoundRaw,
+  Default: defaultRaw,
+  WrappedActions: wrapped_actionsRaw,
 } as const;
 
 export * from "./compound";

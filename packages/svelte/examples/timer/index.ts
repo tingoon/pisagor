@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import controlledRaw from "./controlled.svelte?raw";
 import countdownRaw from "./countdown.svelte?raw";
 import countdown_dateRaw from "./countdown-date.svelte?raw";
@@ -12,15 +11,15 @@ import pomodoroRaw from "./pomodoro.svelte?raw";
 export const imports = `import { Timer } from "@pisagor/svelte";`;
 
 export const sources = {
-  Controlled: stripSvelteExample(controlledRaw),
-  Countdown: stripSvelteExample(countdownRaw),
-  CountdownDate: stripSvelteExample(countdown_dateRaw),
-  CustomSeparator: stripSvelteExample(custom_separatorRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Interval: stripSvelteExample(intervalRaw),
-  OrientationHorizontal: stripSvelteExample(orientation_horizontalRaw),
-  OrientationVertical: stripSvelteExample(orientation_verticalRaw),
-  Pomodoro: stripSvelteExample(pomodoroRaw),
+  Controlled: controlledRaw,
+  Countdown: countdownRaw,
+  CountdownDate: countdown_dateRaw,
+  CustomSeparator: custom_separatorRaw,
+  Default: defaultRaw,
+  Interval: intervalRaw,
+  OrientationHorizontal: orientation_horizontalRaw,
+  OrientationVertical: orientation_verticalRaw,
+  Pomodoro: pomodoroRaw,
 } as const;
 
 export { default as Controlled } from "./controlled.svelte";

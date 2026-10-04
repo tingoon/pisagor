@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import defaultRaw from "./default.svelte?raw";
 import nestedRaw from "./nested.svelte?raw";
 import paddingRaw from "./padding.svelte?raw";
@@ -8,11 +7,11 @@ import with_form_controlsRaw from "./with-form-controls.svelte?raw";
 export const imports = `import { Surface } from "@pisagor/svelte";`;
 
 export const sources = {
-  Default: stripSvelteExample(defaultRaw),
-  Nested: stripSvelteExample(nestedRaw),
-  Padding: stripSvelteExample(paddingRaw),
-  Variants: stripSvelteExample(variantsRaw),
-  WithFormControls: stripSvelteExample(with_form_controlsRaw),
+  Default: defaultRaw,
+  Nested: nestedRaw,
+  Padding: paddingRaw,
+  Variants: variantsRaw,
+  WithFormControls: with_form_controlsRaw,
 } as const;
 
 export { default as Default } from "./default.svelte";

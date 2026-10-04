@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import controlledRaw from "./controlled.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
 import disabledRaw from "./disabled.tsx?raw";
@@ -15,18 +14,18 @@ import variantsRaw from "./variants.tsx?raw";
 export const imports = `import { NumberInput } from "@pisagor/solid";`;
 
 export const sources = {
-  Controlled: stripTsxExample(controlledRaw),
-  Default: stripTsxExample(defaultRaw),
-  Disabled: stripTsxExample(disabledRaw),
-  FieldOnly: stripTsxExample(field_onlyRaw),
-  Formatted: stripTsxExample(formattedRaw),
-  Invalid: stripTsxExample(invalidRaw),
-  MouseWheel: stripTsxExample(mouse_wheelRaw),
-  Range: stripTsxExample(rangeRaw),
-  Scrub: stripTsxExample(scrubRaw),
-  Sizes: stripTsxExample(sizesRaw),
-  Step: stripTsxExample(stepRaw),
-  Variants: stripTsxExample(variantsRaw),
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  FieldOnly: field_onlyRaw,
+  Formatted: formattedRaw,
+  Invalid: invalidRaw,
+  MouseWheel: mouse_wheelRaw,
+  Range: rangeRaw,
+  Scrub: scrubRaw,
+  Sizes: sizesRaw,
+  Step: stepRaw,
+  Variants: variantsRaw,
 } as const;
 
 export * from "./controlled";

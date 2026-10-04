@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import custom_spacingRaw from "./custom-spacing.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
 import drawer_content_innerRaw from "./drawer-content-inner.tsx?raw";
@@ -9,12 +8,12 @@ import swipe_directionsRaw from "./swipe-directions.tsx?raw";
 export const imports = `import { Drawer } from "@pisagor/solid";`;
 
 export const sources = {
-  CustomSpacing: stripTsxExample(custom_spacingRaw),
-  Default: stripTsxExample(defaultRaw),
-  DrawerContentInner: stripTsxExample(drawer_content_innerRaw),
-  Inset: stripTsxExample(insetRaw),
-  SnapPoints: stripTsxExample(snap_pointsRaw),
-  SwipeDirections: stripTsxExample(swipe_directionsRaw),
+  CustomSpacing: custom_spacingRaw,
+  Default: defaultRaw,
+  DrawerContentInner: drawer_content_innerRaw,
+  Inset: insetRaw,
+  SnapPoints: snap_pointsRaw,
+  SwipeDirections: swipe_directionsRaw,
 } as const;
 
 export * from "./custom-spacing";

@@ -1,4 +1,3 @@
-import { stripAstroExample } from "@pisagor/utils";
 import defaultRaw from "./default.astro?raw";
 import indeterminateRaw from "./indeterminate.astro?raw";
 import with_labelRaw from "./with-label.astro?raw";
@@ -8,9 +7,9 @@ import { Progress } from "@pisagor/astro";
 ---`;
 
 export const sources = {
-  Default: stripAstroExample(defaultRaw),
-  Indeterminate: stripAstroExample(indeterminateRaw),
-  WithLabel: stripAstroExample(with_labelRaw),
+  Default: defaultRaw,
+  Indeterminate: indeterminateRaw,
+  WithLabel: with_labelRaw,
 } as const;
 
 export { default as Default } from "./default.astro";

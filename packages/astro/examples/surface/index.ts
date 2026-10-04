@@ -1,4 +1,3 @@
-import { stripAstroExample } from "@pisagor/utils";
 import defaultRaw from "./default.astro?raw";
 import nestedRaw from "./nested.astro?raw";
 import paddingRaw from "./padding.astro?raw";
@@ -9,10 +8,10 @@ import { Surface } from "@pisagor/astro";
 ---`;
 
 export const sources = {
-  Default: stripAstroExample(defaultRaw),
-  Nested: stripAstroExample(nestedRaw),
-  Padding: stripAstroExample(paddingRaw),
-  Variants: stripAstroExample(variantsRaw),
+  Default: defaultRaw,
+  Nested: nestedRaw,
+  Padding: paddingRaw,
+  Variants: variantsRaw,
 } as const;
 
 export { default as Default } from "./default.astro";

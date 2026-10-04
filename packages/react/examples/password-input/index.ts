@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import auto_hideRaw from "./auto-hide.tsx?raw";
 import autocompleteRaw from "./autocomplete.tsx?raw";
 import controlledRaw from "./controlled.tsx?raw";
@@ -11,14 +10,14 @@ import sizesRaw from "./sizes.tsx?raw";
 export const imports = `import { PasswordInput } from "@pisagor/react";`;
 
 export const sources = {
-  Autocomplete: stripTsxExample(autocompleteRaw),
-  AutoHide: stripTsxExample(auto_hideRaw),
-  Controlled: stripTsxExample(controlledRaw),
-  ControlledVisibility: stripTsxExample(controlled_visibilityRaw),
-  Default: stripTsxExample(defaultRaw),
-  Disabled: stripTsxExample(disabledRaw),
-  Invalid: stripTsxExample(invalidRaw),
-  Sizes: stripTsxExample(sizesRaw),
+  Autocomplete: autocompleteRaw,
+  AutoHide: auto_hideRaw,
+  Controlled: controlledRaw,
+  ControlledVisibility: controlled_visibilityRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Invalid: invalidRaw,
+  Sizes: sizesRaw,
 } as const;
 
 export * from "./auto-hide";

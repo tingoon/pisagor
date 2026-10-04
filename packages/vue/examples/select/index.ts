@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import compoundRaw from "./compound.vue?raw";
 import controlledRaw from "./controlled.vue?raw";
 import defaultRaw from "./default.vue?raw";
@@ -16,19 +15,19 @@ import with_scrollRaw from "./with-scroll.vue?raw";
 export const imports = `import { Select } from "@pisagor/vue";`;
 
 export const sources = {
-  Compound: stripVueExample(compoundRaw),
-  Controlled: stripVueExample(controlledRaw),
-  Default: stripVueExample(defaultRaw),
-  Disabled: stripVueExample(disabledRaw),
-  Empty: stripVueExample(emptyRaw),
-  Grouping: stripVueExample(groupingRaw),
-  Invalid: stripVueExample(invalidRaw),
-  MaxSelection: stripVueExample(max_selectionRaw),
-  Multiple: stripVueExample(multipleRaw),
-  OnSurface: stripVueExample(on_surfaceRaw),
-  Sizes: stripVueExample(sizesRaw),
-  Variants: stripVueExample(variantsRaw),
-  WithScroll: stripVueExample(with_scrollRaw),
+  Compound: compoundRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Empty: emptyRaw,
+  Grouping: groupingRaw,
+  Invalid: invalidRaw,
+  MaxSelection: max_selectionRaw,
+  Multiple: multipleRaw,
+  OnSurface: on_surfaceRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
+  WithScroll: with_scrollRaw,
 } as const;
 
 export { default as Compound } from "./compound.vue";

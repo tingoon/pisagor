@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import active_filter_chipsRaw from "./active-filter-chips.ts?raw";
 import column_filtersRaw from "./column-filters.ts?raw";
 import column_layoutRaw from "./column-layout.ts?raw";
@@ -25,28 +24,28 @@ import with_sortable_dataRaw from "./with-sortable-data.ts?raw";
 export const imports = `import { DataGrid } from "@pisagor/vue/data-grid";`;
 
 export const sources = {
-  ActiveFilterChips: stripVueExample(active_filter_chipsRaw),
-  ColumnFilters: stripVueExample(column_filtersRaw),
-  ColumnLayout: stripVueExample(column_layoutRaw),
-  ColumnPinning: stripVueExample(column_pinningRaw),
-  ColumnResize: stripVueExample(column_resizeRaw),
-  ColumnVisibility: stripVueExample(column_visibilityRaw),
-  ExpandingRows: stripVueExample(expanding_rowsRaw),
-  FilterHead: stripVueExample(filter_headRaw),
-  GlobalSelection: stripVueExample(global_selectionRaw),
-  GroupedRows: stripVueExample(grouped_rowsRaw),
-  LoadingState: stripVueExample(loading_stateRaw),
-  ManualPagination: stripVueExample(manual_paginationRaw),
-  MultiGrouping: stripVueExample(multi_groupingRaw),
-  OrdersWithFooter: stripVueExample(orders_with_footerRaw),
-  Paginated: stripVueExample(paginatedRaw),
-  RichCells: stripVueExample(rich_cellsRaw),
-  RowDetails: stripVueExample(row_detailsRaw),
-  RowSelection: stripVueExample(row_selectionRaw),
-  Sorting: stripVueExample(sortingRaw),
-  StripedVariant: stripVueExample(striped_variantRaw),
-  Virtualized: stripVueExample(virtualizedRaw),
-  WithSortableData: stripVueExample(with_sortable_dataRaw),
+  ActiveFilterChips: active_filter_chipsRaw,
+  ColumnFilters: column_filtersRaw,
+  ColumnLayout: column_layoutRaw,
+  ColumnPinning: column_pinningRaw,
+  ColumnResize: column_resizeRaw,
+  ColumnVisibility: column_visibilityRaw,
+  ExpandingRows: expanding_rowsRaw,
+  FilterHead: filter_headRaw,
+  GlobalSelection: global_selectionRaw,
+  GroupedRows: grouped_rowsRaw,
+  LoadingState: loading_stateRaw,
+  ManualPagination: manual_paginationRaw,
+  MultiGrouping: multi_groupingRaw,
+  OrdersWithFooter: orders_with_footerRaw,
+  Paginated: paginatedRaw,
+  RichCells: rich_cellsRaw,
+  RowDetails: row_detailsRaw,
+  RowSelection: row_selectionRaw,
+  Sorting: sortingRaw,
+  StripedVariant: striped_variantRaw,
+  Virtualized: virtualizedRaw,
+  WithSortableData: with_sortable_dataRaw,
 } as const;
 
 export * from "./active-filter-chips";

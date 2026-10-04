@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import compoundRaw from "./compound.tsx?raw";
 import controlledRaw from "./controlled.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
@@ -15,18 +14,18 @@ import with_scrollRaw from "./with-scroll.tsx?raw";
 export const imports = `import { Select } from "@pisagor/react";`;
 
 export const sources = {
-  Compound: stripTsxExample(compoundRaw),
-  Controlled: stripTsxExample(controlledRaw),
-  Default: stripTsxExample(defaultRaw),
-  Disabled: stripTsxExample(disabledRaw),
-  Empty: stripTsxExample(emptyRaw),
-  Grouping: stripTsxExample(groupingRaw),
-  Invalid: stripTsxExample(invalidRaw),
-  MaxSelection: stripTsxExample(max_selectionRaw),
-  Multiple: stripTsxExample(multipleRaw),
-  Sizes: stripTsxExample(sizesRaw),
-  Variants: stripTsxExample(variantsRaw),
-  WithScroll: stripTsxExample(with_scrollRaw),
+  Compound: compoundRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Empty: emptyRaw,
+  Grouping: groupingRaw,
+  Invalid: invalidRaw,
+  MaxSelection: max_selectionRaw,
+  Multiple: multipleRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
+  WithScroll: with_scrollRaw,
 } as const;
 
 export * from "./compound";

@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import aRaw from "./a.tsx?raw";
 import blockquoteRaw from "./blockquote.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
@@ -26,29 +25,29 @@ import smallRaw from "./small.tsx?raw";
 export const imports = `import { Prose } from "@pisagor/react";`;
 
 export const sources = {
-  A: stripTsxExample(aRaw),
-  Blockquote: stripTsxExample(blockquoteRaw),
-  Default: stripTsxExample(defaultRaw),
-  Details: stripTsxExample(detailsRaw),
-  Dl: stripTsxExample(dlRaw),
-  H1: stripTsxExample(h1Raw),
-  H2: stripTsxExample(h2Raw),
-  H3: stripTsxExample(h3Raw),
-  H4: stripTsxExample(h4Raw),
-  H5: stripTsxExample(h5Raw),
-  H6: stripTsxExample(h6Raw),
-  Html: stripTsxExample(htmlRaw),
-  HtmlTable: stripTsxExample(html_tableRaw),
-  InlineCode: stripTsxExample(inline_codeRaw),
-  Kbd: stripTsxExample(kbdRaw),
-  List: stripTsxExample(listRaw),
-  Mark: stripTsxExample(markRaw),
-  Media: stripTsxExample(mediaRaw),
-  NotProse: stripTsxExample(not_proseRaw),
-  Ol: stripTsxExample(olRaw),
-  P: stripTsxExample(pRaw),
-  Separator: stripTsxExample(separatorRaw),
-  Small: stripTsxExample(smallRaw),
+  A: aRaw,
+  Blockquote: blockquoteRaw,
+  Default: defaultRaw,
+  Details: detailsRaw,
+  Dl: dlRaw,
+  H1: h1Raw,
+  H2: h2Raw,
+  H3: h3Raw,
+  H4: h4Raw,
+  H5: h5Raw,
+  H6: h6Raw,
+  Html: htmlRaw,
+  HtmlTable: html_tableRaw,
+  InlineCode: inline_codeRaw,
+  Kbd: kbdRaw,
+  List: listRaw,
+  Mark: markRaw,
+  Media: mediaRaw,
+  NotProse: not_proseRaw,
+  Ol: olRaw,
+  P: pRaw,
+  Separator: separatorRaw,
+  Small: smallRaw,
 } as const;
 
 export * from "./a";

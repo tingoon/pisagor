@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import checkboxesRaw from "./checkboxes.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
 import destructiveRaw from "./destructive.tsx?raw";
@@ -16,19 +15,19 @@ import with_separatorRaw from "./with-separator.tsx?raw";
 export const imports = `import { DropdownMenu } from "@pisagor/react";`;
 
 export const sources = {
-  Checkboxes: stripTsxExample(checkboxesRaw),
-  Default: stripTsxExample(defaultRaw),
-  Destructive: stripTsxExample(destructiveRaw),
-  GroupLabel: stripTsxExample(group_labelRaw),
-  Icons: stripTsxExample(iconsRaw),
-  Link: stripTsxExample(linkRaw),
-  Nested: stripTsxExample(nestedRaw),
-  Placements: stripTsxExample(placementsRaw),
-  QuickItem: stripTsxExample(quick_itemRaw),
-  RadioGroup: stripTsxExample(radio_groupRaw),
-  Shortcuts: stripTsxExample(shortcutsRaw),
-  WithScroll: stripTsxExample(with_scrollRaw),
-  WithSeparator: stripTsxExample(with_separatorRaw),
+  Checkboxes: checkboxesRaw,
+  Default: defaultRaw,
+  Destructive: destructiveRaw,
+  GroupLabel: group_labelRaw,
+  Icons: iconsRaw,
+  Link: linkRaw,
+  Nested: nestedRaw,
+  Placements: placementsRaw,
+  QuickItem: quick_itemRaw,
+  RadioGroup: radio_groupRaw,
+  Shortcuts: shortcutsRaw,
+  WithScroll: with_scrollRaw,
+  WithSeparator: with_separatorRaw,
 } as const;
 
 export * from "./checkboxes";

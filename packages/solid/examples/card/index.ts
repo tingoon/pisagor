@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import custom_spacingRaw from "./custom-spacing.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
 import iconRaw from "./icon.tsx?raw";
@@ -7,10 +6,10 @@ import productRaw from "./product.tsx?raw";
 export const imports = `import { Card } from "@pisagor/solid";`;
 
 export const sources = {
-  CustomSpacing: stripTsxExample(custom_spacingRaw),
-  Default: stripTsxExample(defaultRaw),
-  Icon: stripTsxExample(iconRaw),
-  Product: stripTsxExample(productRaw),
+  CustomSpacing: custom_spacingRaw,
+  Default: defaultRaw,
+  Icon: iconRaw,
+  Product: productRaw,
 } as const;
 
 export * from "./custom-spacing";

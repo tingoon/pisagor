@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import avatar_groupRaw from "./avatar-group.vue?raw";
 import compoundRaw from "./compound.vue?raw";
 import countRaw from "./count.vue?raw";
@@ -11,14 +10,14 @@ import sizesRaw from "./sizes.vue?raw";
 export const imports = `import { Avatar } from "@pisagor/vue";`;
 
 export const sources = {
-  Compound: stripVueExample(compoundRaw),
-  Count: stripVueExample(countRaw),
-  Default: stripVueExample(defaultRaw),
-  FallbackOnly: stripVueExample(fallback_onlyRaw),
-  Fallbacks: stripVueExample(fallbacksRaw),
-  Group: stripVueExample(avatar_groupRaw),
-  Shapes: stripVueExample(shapesRaw),
-  Sizes: stripVueExample(sizesRaw),
+  Compound: compoundRaw,
+  Count: countRaw,
+  Default: defaultRaw,
+  FallbackOnly: fallback_onlyRaw,
+  Fallbacks: fallbacksRaw,
+  Group: avatar_groupRaw,
+  Shapes: shapesRaw,
+  Sizes: sizesRaw,
 } as const;
 
 export { default as Group } from "./avatar-group.vue";

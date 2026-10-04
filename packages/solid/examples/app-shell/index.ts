@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import bannerRaw from "./banner.tsx?raw";
 import contentRaw from "./content.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
@@ -12,15 +11,15 @@ import railsRaw from "./rails.tsx?raw";
 export const imports = `import { AppShell } from "@pisagor/solid";`;
 
 export const sources = {
-  Banner: stripTsxExample(bannerRaw),
-  Content: stripTsxExample(contentRaw),
-  Default: stripTsxExample(defaultRaw),
-  Header: stripTsxExample(headerRaw),
-  Inspectors: stripTsxExample(inspectorsRaw),
-  Main: stripTsxExample(mainRaw),
-  Navigation: stripTsxExample(navigationRaw),
-  Panels: stripTsxExample(panelsRaw),
-  Rails: stripTsxExample(railsRaw),
+  Banner: bannerRaw,
+  Content: contentRaw,
+  Default: defaultRaw,
+  Header: headerRaw,
+  Inspectors: inspectorsRaw,
+  Main: mainRaw,
+  Navigation: navigationRaw,
+  Panels: panelsRaw,
+  Rails: railsRaw,
 } as const;
 
 export * from "./banner";

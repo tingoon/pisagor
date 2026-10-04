@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import controlledRaw from "./controlled.vue?raw";
 import countRaw from "./count.vue?raw";
 import custom_colorRaw from "./custom-color.vue?raw";
@@ -15,18 +14,18 @@ import testimonialRaw from "./testimonial.vue?raw";
 export const imports = `import { Rating } from "@pisagor/vue";`;
 
 export const sources = {
-  Controlled: stripVueExample(controlledRaw),
-  Count: stripVueExample(countRaw),
-  CustomColor: stripVueExample(custom_colorRaw),
-  CustomIcon: stripVueExample(custom_iconRaw),
-  CustomSize: stripVueExample(custom_sizeRaw),
-  Default: stripVueExample(defaultRaw),
-  Disabled: stripVueExample(disabledRaw),
-  HalfStar: stripVueExample(half_starRaw),
-  Invalid: stripVueExample(invalidRaw),
-  OnSurface: stripVueExample(on_surfaceRaw),
-  Readonly: stripVueExample(readonlyRaw),
-  Testimonial: stripVueExample(testimonialRaw),
+  Controlled: controlledRaw,
+  Count: countRaw,
+  CustomColor: custom_colorRaw,
+  CustomIcon: custom_iconRaw,
+  CustomSize: custom_sizeRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  HalfStar: half_starRaw,
+  Invalid: invalidRaw,
+  OnSurface: on_surfaceRaw,
+  Readonly: readonlyRaw,
+  Testimonial: testimonialRaw,
 } as const;
 
 export { default as Controlled } from "./controlled.vue";

@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import defaultRaw from "./default.svelte?raw";
 import groupsRaw from "./groups.svelte?raw";
 import scrollableRaw from "./scrollable.svelte?raw";
@@ -9,12 +8,12 @@ import with_footerRaw from "./with-footer.svelte?raw";
 export const imports = `import { Command } from "@pisagor/svelte";`;
 
 export const sources = {
-  Default: stripSvelteExample(defaultRaw),
-  Groups: stripSvelteExample(groupsRaw),
-  Scrollable: stripSvelteExample(scrollableRaw),
-  Shortcuts: stripSvelteExample(shortcutsRaw),
-  WithDialog: stripSvelteExample(with_dialogRaw),
-  WithFooter: stripSvelteExample(with_footerRaw),
+  Default: defaultRaw,
+  Groups: groupsRaw,
+  Scrollable: scrollableRaw,
+  Shortcuts: shortcutsRaw,
+  WithDialog: with_dialogRaw,
+  WithFooter: with_footerRaw,
 } as const;
 
 export { default as Default } from "./default.svelte";

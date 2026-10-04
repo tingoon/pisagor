@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import controlledRaw from "./controlled.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
 import disabledRaw from "./disabled.svelte?raw";
@@ -14,17 +13,17 @@ import with_labelRaw from "./with-label.svelte?raw";
 export const imports = `import { Slider } from "@pisagor/svelte";`;
 
 export const sources = {
-  Controlled: stripSvelteExample(controlledRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Disabled: stripSvelteExample(disabledRaw),
-  Invalid: stripSvelteExample(invalidRaw),
-  Marks: stripSvelteExample(marksRaw),
-  MinMax: stripSvelteExample(min_maxRaw),
-  Range: stripSvelteExample(rangeRaw),
-  Step: stripSvelteExample(stepRaw),
-  Variants: stripSvelteExample(variantsRaw),
-  Vertical: stripSvelteExample(verticalRaw),
-  WithLabel: stripSvelteExample(with_labelRaw),
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Invalid: invalidRaw,
+  Marks: marksRaw,
+  MinMax: min_maxRaw,
+  Range: rangeRaw,
+  Step: stepRaw,
+  Variants: variantsRaw,
+  Vertical: verticalRaw,
+  WithLabel: with_labelRaw,
 } as const;
 
 export { default as Controlled } from "./controlled.svelte";

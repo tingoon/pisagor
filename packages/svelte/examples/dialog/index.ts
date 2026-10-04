@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import close_behaviorRaw from "./close-behavior.svelte?raw";
 import custom_spacingRaw from "./custom-spacing.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
@@ -11,14 +10,14 @@ import scroll_areaRaw from "./scroll-area.svelte?raw";
 export const imports = `import { Dialog } from "@pisagor/svelte";`;
 
 export const sources = {
-  CloseBehavior: stripSvelteExample(close_behaviorRaw),
-  CustomSpacing: stripSvelteExample(custom_spacingRaw),
-  Default: stripSvelteExample(defaultRaw),
-  InitialFocus: stripSvelteExample(initial_focusRaw),
-  Nested: stripSvelteExample(nestedRaw),
-  NoCloseButton: stripSvelteExample(no_close_buttonRaw),
-  NonModal: stripSvelteExample(non_modalRaw),
-  ScrollArea: stripSvelteExample(scroll_areaRaw),
+  CloseBehavior: close_behaviorRaw,
+  CustomSpacing: custom_spacingRaw,
+  Default: defaultRaw,
+  InitialFocus: initial_focusRaw,
+  Nested: nestedRaw,
+  NoCloseButton: no_close_buttonRaw,
+  NonModal: non_modalRaw,
+  ScrollArea: scroll_areaRaw,
 } as const;
 
 export { default as CloseBehavior } from "./close-behavior.svelte";

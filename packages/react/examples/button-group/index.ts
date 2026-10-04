@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import defaultRaw from "./default.tsx?raw";
 import nestedRaw from "./nested.tsx?raw";
 import orientation_horizontalRaw from "./orientation-horizontal.tsx?raw";
@@ -8,11 +7,11 @@ import with_separatorRaw from "./with-separator.tsx?raw";
 export const imports = `import { ButtonGroup } from "@pisagor/react";`;
 
 export const sources = {
-  Default: stripTsxExample(defaultRaw),
-  Nested: stripTsxExample(nestedRaw),
-  OrientationHorizontal: stripTsxExample(orientation_horizontalRaw),
-  OrientationVertical: stripTsxExample(orientation_verticalRaw),
-  WithSeparator: stripTsxExample(with_separatorRaw),
+  Default: defaultRaw,
+  Nested: nestedRaw,
+  OrientationHorizontal: orientation_horizontalRaw,
+  OrientationVertical: orientation_verticalRaw,
+  WithSeparator: with_separatorRaw,
 } as const;
 
 export * from "./default";

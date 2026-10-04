@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import accepted_file_typesRaw from "./accepted-file-types.vue?raw";
 import clear_triggerRaw from "./clear-trigger.vue?raw";
 import custom_previewRaw from "./custom-preview.vue?raw";
@@ -17,20 +16,20 @@ import variantsRaw from "./variants.vue?raw";
 export const imports = `import { FileUpload } from "@pisagor/vue";`;
 
 export const sources = {
-  AcceptedFileTypes: stripVueExample(accepted_file_typesRaw),
-  ClearTrigger: stripVueExample(clear_triggerRaw),
-  CustomPreview: stripVueExample(custom_previewRaw),
-  CustomSpacing: stripVueExample(custom_spacingRaw),
-  Default: stripVueExample(defaultRaw),
-  DirectoryUpload: stripVueExample(directory_uploadRaw),
-  Disabled: stripVueExample(disabledRaw),
-  Dropzone: stripVueExample(dropzoneRaw),
-  Invalid: stripVueExample(invalidRaw),
-  MediaCapture: stripVueExample(media_captureRaw),
-  MultipleFiles: stripVueExample(multiple_filesRaw),
-  OnSurface: stripVueExample(on_surfaceRaw),
-  Trigger: stripVueExample(triggerRaw),
-  Variants: stripVueExample(variantsRaw),
+  AcceptedFileTypes: accepted_file_typesRaw,
+  ClearTrigger: clear_triggerRaw,
+  CustomPreview: custom_previewRaw,
+  CustomSpacing: custom_spacingRaw,
+  Default: defaultRaw,
+  DirectoryUpload: directory_uploadRaw,
+  Disabled: disabledRaw,
+  Dropzone: dropzoneRaw,
+  Invalid: invalidRaw,
+  MediaCapture: media_captureRaw,
+  MultipleFiles: multiple_filesRaw,
+  OnSurface: on_surfaceRaw,
+  Trigger: triggerRaw,
+  Variants: variantsRaw,
 } as const;
 
 export { default as AcceptedFileTypes } from "./accepted-file-types.vue";

@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import controlledRaw from "./controlled.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
 import disabledRaw from "./disabled.tsx?raw";
@@ -8,11 +7,11 @@ import invalidRaw from "./invalid.tsx?raw";
 export const imports = `import { SignaturePad } from "@pisagor/solid";`;
 
 export const sources = {
-  Controlled: stripTsxExample(controlledRaw),
-  Default: stripTsxExample(defaultRaw),
-  Disabled: stripTsxExample(disabledRaw),
-  ImagePreview: stripTsxExample(image_previewRaw),
-  Invalid: stripTsxExample(invalidRaw),
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  ImagePreview: image_previewRaw,
+  Invalid: invalidRaw,
 } as const;
 
 export * from "./controlled";

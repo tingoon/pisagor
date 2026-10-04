@@ -1,4 +1,3 @@
-import { stripAstroExample } from "@pisagor/utils";
 import defaultRaw from "./default.astro?raw";
 import groupRaw from "./group.astro?raw";
 
@@ -7,8 +6,8 @@ import { Kbd } from "@pisagor/astro";
 ---`;
 
 export const sources = {
-  Default: stripAstroExample(defaultRaw),
-  Group: stripAstroExample(groupRaw),
+  Default: defaultRaw,
+  Group: groupRaw,
 } as const;
 
 export { default as Default } from "./default.astro";

@@ -5,7 +5,6 @@
   "description": "Labeled form fields and TanStack Form bindings for @pisagor/solid.",
   "devDependencies": {
     "@pisagor/solid": "workspace:*",
-    "@pisagor/utils": "workspace:*",
     "@tanstack/solid-form": "^1.33.5",
     "solid-js": "catalog:"
   },

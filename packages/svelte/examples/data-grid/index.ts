@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import active_filter_chipsRaw from "./active-filter-chips.svelte?raw";
 import column_filtersRaw from "./column-filters.svelte?raw";
 import column_layoutRaw from "./column-layout.svelte?raw";
@@ -25,28 +24,28 @@ import with_sortable_dataRaw from "./with-sortable-data.svelte?raw";
 export const imports = `import { DataGrid } from "@pisagor/svelte/data-grid";`;
 
 export const sources = {
-  ActiveFilterChips: stripSvelteExample(active_filter_chipsRaw),
-  ColumnFilters: stripSvelteExample(column_filtersRaw),
-  ColumnLayout: stripSvelteExample(column_layoutRaw),
-  ColumnPinning: stripSvelteExample(column_pinningRaw),
-  ColumnResize: stripSvelteExample(column_resizeRaw),
-  ColumnVisibility: stripSvelteExample(column_visibilityRaw),
-  Default: stripSvelteExample(defaultRaw),
-  ExpandingRows: stripSvelteExample(expanding_rowsRaw),
-  GlobalSelection: stripSvelteExample(global_selectionRaw),
-  GroupedRows: stripSvelteExample(grouped_rowsRaw),
-  LoadingState: stripSvelteExample(loading_stateRaw),
-  ManualPagination: stripSvelteExample(manual_paginationRaw),
-  MultiGrouping: stripSvelteExample(multi_groupingRaw),
-  OrdersWithFooter: stripSvelteExample(orders_with_footerRaw),
-  Paginated: stripSvelteExample(paginatedRaw),
-  RichCells: stripSvelteExample(rich_cellsRaw),
-  RowDetails: stripSvelteExample(row_detailsRaw),
-  RowSelection: stripSvelteExample(row_selectionRaw),
-  Sorting: stripSvelteExample(sortingRaw),
-  StripedVariant: stripSvelteExample(striped_variantRaw),
-  Virtualized: stripSvelteExample(virtualizedRaw),
-  WithSortableData: stripSvelteExample(with_sortable_dataRaw),
+  ActiveFilterChips: active_filter_chipsRaw,
+  ColumnFilters: column_filtersRaw,
+  ColumnLayout: column_layoutRaw,
+  ColumnPinning: column_pinningRaw,
+  ColumnResize: column_resizeRaw,
+  ColumnVisibility: column_visibilityRaw,
+  Default: defaultRaw,
+  ExpandingRows: expanding_rowsRaw,
+  GlobalSelection: global_selectionRaw,
+  GroupedRows: grouped_rowsRaw,
+  LoadingState: loading_stateRaw,
+  ManualPagination: manual_paginationRaw,
+  MultiGrouping: multi_groupingRaw,
+  OrdersWithFooter: orders_with_footerRaw,
+  Paginated: paginatedRaw,
+  RichCells: rich_cellsRaw,
+  RowDetails: row_detailsRaw,
+  RowSelection: row_selectionRaw,
+  Sorting: sortingRaw,
+  StripedVariant: striped_variantRaw,
+  Virtualized: virtualizedRaw,
+  WithSortableData: with_sortable_dataRaw,
 } as const;
 
 export { default as ActiveFilterChips } from "./active-filter-chips.svelte";

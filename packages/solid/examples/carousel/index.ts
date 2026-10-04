@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import autoplayRaw from "./autoplay.tsx?raw";
 import compoundRaw from "./compound.tsx?raw";
 import controlledRaw from "./controlled.tsx?raw";
@@ -15,18 +14,18 @@ import thumbnail_indicator_verticalRaw from "./thumbnail-indicator-vertical.tsx?
 export const imports = `import { Carousel } from "@pisagor/solid";`;
 
 export const sources = {
-  Autoplay: stripTsxExample(autoplayRaw),
-  Compound: stripTsxExample(compoundRaw),
-  Controlled: stripTsxExample(controlledRaw),
-  Default: stripTsxExample(defaultRaw),
-  Loop: stripTsxExample(loopRaw),
-  MouseDrag: stripTsxExample(mouse_dragRaw),
-  OrientationHorizontal: stripTsxExample(orientation_horizontalRaw),
-  OrientationVertical: stripTsxExample(orientation_verticalRaw),
-  SlidesPerPage: stripTsxExample(slides_per_pageRaw),
-  Spacing: stripTsxExample(spacingRaw),
-  ThumbnailIndicator: stripTsxExample(thumbnail_indicatorRaw),
-  ThumbnailIndicatorVertical: stripTsxExample(thumbnail_indicator_verticalRaw),
+  Autoplay: autoplayRaw,
+  Compound: compoundRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Loop: loopRaw,
+  MouseDrag: mouse_dragRaw,
+  OrientationHorizontal: orientation_horizontalRaw,
+  OrientationVertical: orientation_verticalRaw,
+  SlidesPerPage: slides_per_pageRaw,
+  Spacing: spacingRaw,
+  ThumbnailIndicator: thumbnail_indicatorRaw,
+  ThumbnailIndicatorVertical: thumbnail_indicator_verticalRaw,
 } as const;
 
 export * from "./autoplay";

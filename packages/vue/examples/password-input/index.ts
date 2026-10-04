@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import auto_hideRaw from "./auto-hide.vue?raw";
 import autocompleteRaw from "./autocomplete.vue?raw";
 import clearableRaw from "./clearable.vue?raw";
@@ -13,16 +12,16 @@ import sizesRaw from "./sizes.vue?raw";
 export const imports = `import { PasswordInput } from "@pisagor/vue";`;
 
 export const sources = {
-  Autocomplete: stripVueExample(autocompleteRaw),
-  AutoHide: stripVueExample(auto_hideRaw),
-  Clearable: stripVueExample(clearableRaw),
-  Controlled: stripVueExample(controlledRaw),
-  ControlledVisibility: stripVueExample(controlled_visibilityRaw),
-  Default: stripVueExample(defaultRaw),
-  Disabled: stripVueExample(disabledRaw),
-  Invalid: stripVueExample(invalidRaw),
-  OnSurface: stripVueExample(on_surfaceRaw),
-  Sizes: stripVueExample(sizesRaw),
+  Autocomplete: autocompleteRaw,
+  AutoHide: auto_hideRaw,
+  Clearable: clearableRaw,
+  Controlled: controlledRaw,
+  ControlledVisibility: controlled_visibilityRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Invalid: invalidRaw,
+  OnSurface: on_surfaceRaw,
+  Sizes: sizesRaw,
 } as const;
 
 export { default as AutoHide } from "./auto-hide.vue";

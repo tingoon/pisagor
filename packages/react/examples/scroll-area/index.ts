@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import both_directionsRaw from "./both-directions.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
 import horizontalRaw from "./horizontal.tsx?raw";
@@ -8,11 +7,11 @@ import scroll_fadeRaw from "./scroll-fade.tsx?raw";
 export const imports = `import { ScrollArea } from "@pisagor/react";`;
 
 export const sources = {
-  BothDirections: stripTsxExample(both_directionsRaw),
-  Default: stripTsxExample(defaultRaw),
-  Horizontal: stripTsxExample(horizontalRaw),
-  Nested: stripTsxExample(nestedRaw),
-  ScrollFade: stripTsxExample(scroll_fadeRaw),
+  BothDirections: both_directionsRaw,
+  Default: defaultRaw,
+  Horizontal: horizontalRaw,
+  Nested: nestedRaw,
+  ScrollFade: scroll_fadeRaw,
 } as const;
 
 export * from "./both-directions";

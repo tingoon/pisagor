@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import actionsRaw from "./actions.vue?raw";
 import defaultRaw from "./default.vue?raw";
 import footerRaw from "./footer.vue?raw";
@@ -8,11 +7,11 @@ import variantsRaw from "./variants.vue?raw";
 export const imports = `import { Table } from "@pisagor/vue";`;
 
 export const sources = {
-  Actions: stripVueExample(actionsRaw),
-  Default: stripVueExample(defaultRaw),
-  Footer: stripVueExample(footerRaw),
-  NotHoverable: stripVueExample(not_hoverableRaw),
-  Variants: stripVueExample(variantsRaw),
+  Actions: actionsRaw,
+  Default: defaultRaw,
+  Footer: footerRaw,
+  NotHoverable: not_hoverableRaw,
+  Variants: variantsRaw,
 } as const;
 
 export { default as Actions } from "./actions.vue";

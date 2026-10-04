@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import checkboxesRaw from "./checkboxes.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
 import destructiveRaw from "./destructive.svelte?raw";
@@ -16,19 +15,19 @@ import with_separatorRaw from "./with-separator.svelte?raw";
 export const imports = `import { DropdownMenu } from "@pisagor/svelte";`;
 
 export const sources = {
-  Checkboxes: stripSvelteExample(checkboxesRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Destructive: stripSvelteExample(destructiveRaw),
-  GroupLabel: stripSvelteExample(group_labelRaw),
-  Icons: stripSvelteExample(iconsRaw),
-  Link: stripSvelteExample(linkRaw),
-  Nested: stripSvelteExample(nestedRaw),
-  Placements: stripSvelteExample(placementsRaw),
-  QuickItem: stripSvelteExample(quick_itemRaw),
-  RadioGroup: stripSvelteExample(radio_groupRaw),
-  Shortcuts: stripSvelteExample(shortcutsRaw),
-  WithScroll: stripSvelteExample(with_scrollRaw),
-  WithSeparator: stripSvelteExample(with_separatorRaw),
+  Checkboxes: checkboxesRaw,
+  Default: defaultRaw,
+  Destructive: destructiveRaw,
+  GroupLabel: group_labelRaw,
+  Icons: iconsRaw,
+  Link: linkRaw,
+  Nested: nestedRaw,
+  Placements: placementsRaw,
+  QuickItem: quick_itemRaw,
+  RadioGroup: radio_groupRaw,
+  Shortcuts: shortcutsRaw,
+  WithScroll: with_scrollRaw,
+  WithSeparator: with_separatorRaw,
 } as const;
 
 export { default as Checkboxes } from "./checkboxes.svelte";

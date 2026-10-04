@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import actionRaw from "./action.vue?raw";
 import closableRaw from "./closable.vue?raw";
 import dedupeRaw from "./dedupe.vue?raw";
@@ -11,14 +10,14 @@ import with_promiseRaw from "./with-promise.vue?raw";
 export const imports = `import { toast } from "@pisagor/vue";`;
 
 export const sources = {
-  Action: stripVueExample(actionRaw),
-  Closable: stripVueExample(closableRaw),
-  Dedupe: stripVueExample(dedupeRaw),
-  Default: stripVueExample(defaultRaw),
-  Duration: stripVueExample(durationRaw),
-  Placements: stripVueExample(placementsRaw),
-  Variants: stripVueExample(variantsRaw),
-  WithPromise: stripVueExample(with_promiseRaw),
+  Action: actionRaw,
+  Closable: closableRaw,
+  Dedupe: dedupeRaw,
+  Default: defaultRaw,
+  Duration: durationRaw,
+  Placements: placementsRaw,
+  Variants: variantsRaw,
+  WithPromise: with_promiseRaw,
 } as const;
 
 export { default as Action } from "./action.vue";

@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import asyncRaw from "./async.tsx?raw";
 import custom_spacingRaw from "./custom-spacing.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
@@ -14,17 +13,17 @@ import wait_for_inputRaw from "./wait-for-input.tsx?raw";
 export const imports = `import { Tour } from "@pisagor/solid";`;
 
 export const sources = {
-  Async: stripTsxExample(asyncRaw),
-  CustomSpacing: stripTsxExample(custom_spacingRaw),
-  Default: stripTsxExample(defaultRaw),
-  Events: stripTsxExample(eventsRaw),
-  KeyboardNavigation: stripTsxExample(keyboard_navigationRaw),
-  Progress: stripTsxExample(progressRaw),
-  Skip: stripTsxExample(skipRaw),
-  StepTypes: stripTsxExample(step_typesRaw),
-  WaitForClick: stripTsxExample(wait_for_clickRaw),
-  WaitForElement: stripTsxExample(wait_for_elementRaw),
-  WaitForInput: stripTsxExample(wait_for_inputRaw),
+  Async: asyncRaw,
+  CustomSpacing: custom_spacingRaw,
+  Default: defaultRaw,
+  Events: eventsRaw,
+  KeyboardNavigation: keyboard_navigationRaw,
+  Progress: progressRaw,
+  Skip: skipRaw,
+  StepTypes: step_typesRaw,
+  WaitForClick: wait_for_clickRaw,
+  WaitForElement: wait_for_elementRaw,
+  WaitForInput: wait_for_inputRaw,
 } as const;
 
 export * from "./async";

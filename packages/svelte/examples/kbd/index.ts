@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import defaultRaw from "./default.svelte?raw";
 import kbd_groupRaw from "./kbd-group.svelte?raw";
 import variantsRaw from "./variants.svelte?raw";
@@ -8,11 +7,11 @@ import with_tooltipRaw from "./with-tooltip.svelte?raw";
 export const imports = `import { Kbd } from "@pisagor/svelte";`;
 
 export const sources = {
-  Default: stripSvelteExample(defaultRaw),
-  KbdGroup: stripSvelteExample(kbd_groupRaw),
-  Variants: stripSvelteExample(variantsRaw),
-  WithButton: stripSvelteExample(with_buttonRaw),
-  WithTooltip: stripSvelteExample(with_tooltipRaw),
+  Default: defaultRaw,
+  KbdGroup: kbd_groupRaw,
+  Variants: variantsRaw,
+  WithButton: with_buttonRaw,
+  WithTooltip: with_tooltipRaw,
 } as const;
 
 export { default as Default } from "./default.svelte";

@@ -4,7 +4,6 @@
   },
   "description": "Labeled form fields and TanStack Form bindings for @pisagor/vue.",
   "devDependencies": {
-    "@pisagor/utils": "workspace:*",
     "@pisagor/vue": "workspace:*",
     "@tanstack/vue-form": "^1.33.5",
     "vue": "catalog:"

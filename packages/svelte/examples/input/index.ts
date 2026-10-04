@@ -1,4 +1,3 @@
-import { stripSvelteExample } from "@pisagor/utils";
 import clearableRaw from "./clearable.svelte?raw";
 import controlledRaw from "./controlled.svelte?raw";
 import defaultRaw from "./default.svelte?raw";
@@ -11,14 +10,14 @@ import variantsRaw from "./variants.svelte?raw";
 export const imports = `import { Input } from "@pisagor/svelte";`;
 
 export const sources = {
-  Clearable: stripSvelteExample(clearableRaw),
-  Controlled: stripSvelteExample(controlledRaw),
-  Default: stripSvelteExample(defaultRaw),
-  Disabled: stripSvelteExample(disabledRaw),
-  File: stripSvelteExample(fileRaw),
-  Invalid: stripSvelteExample(invalidRaw),
-  Sizes: stripSvelteExample(sizesRaw),
-  Variants: stripSvelteExample(variantsRaw),
+  Clearable: clearableRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  File: fileRaw,
+  Invalid: invalidRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
 } as const;
 
 export { default as Clearable } from "./clearable.svelte";

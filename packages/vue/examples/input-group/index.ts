@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import align_block_endRaw from "./align-block-end.vue?raw";
 import align_block_startRaw from "./align-block-start.vue?raw";
 import align_inline_endRaw from "./align-inline-end.vue?raw";
@@ -18,21 +17,21 @@ import with_textareaRaw from "./with-textarea.vue?raw";
 export const imports = `import { InputGroup } from "@pisagor/vue";`;
 
 export const sources = {
-  AlignBlockEnd: stripVueExample(align_block_endRaw),
-  AlignBlockStart: stripVueExample(align_block_startRaw),
-  AlignInlineEnd: stripVueExample(align_inline_endRaw),
-  AlignInlineStart: stripVueExample(align_inline_startRaw),
-  Default: stripVueExample(defaultRaw),
-  Disabled: stripVueExample(disabledRaw),
-  Invalid: stripVueExample(invalidRaw),
-  OnSurface: stripVueExample(on_surfaceRaw),
-  Sizes: stripVueExample(sizesRaw),
-  Variants: stripVueExample(variantsRaw),
-  WithBadge: stripVueExample(with_badgeRaw),
-  WithKeyboardShortcut: stripVueExample(with_keyboard_shortcutRaw),
-  WithSpinner: stripVueExample(with_spinnerRaw),
-  WithText: stripVueExample(with_textRaw),
-  WithTextarea: stripVueExample(with_textareaRaw),
+  AlignBlockEnd: align_block_endRaw,
+  AlignBlockStart: align_block_startRaw,
+  AlignInlineEnd: align_inline_endRaw,
+  AlignInlineStart: align_inline_startRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  Invalid: invalidRaw,
+  OnSurface: on_surfaceRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
+  WithBadge: with_badgeRaw,
+  WithKeyboardShortcut: with_keyboard_shortcutRaw,
+  WithSpinner: with_spinnerRaw,
+  WithText: with_textRaw,
+  WithTextarea: with_textareaRaw,
 } as const;
 
 export { default as AlignBlockEnd } from "./align-block-end.vue";

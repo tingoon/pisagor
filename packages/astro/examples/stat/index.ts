@@ -1,4 +1,3 @@
-import { stripAstroExample } from "@pisagor/utils";
 import defaultRaw from "./default.astro?raw";
 import variantsRaw from "./variants.astro?raw";
 import with_trendRaw from "./with-trend.astro?raw";
@@ -8,9 +7,9 @@ import { Stat } from "@pisagor/astro";
 ---`;
 
 export const sources = {
-  Default: stripAstroExample(defaultRaw),
-  Variants: stripAstroExample(variantsRaw),
-  WithTrend: stripAstroExample(with_trendRaw),
+  Default: defaultRaw,
+  Variants: variantsRaw,
+  WithTrend: with_trendRaw,
 } as const;
 
 export { default as Default } from "./default.astro";

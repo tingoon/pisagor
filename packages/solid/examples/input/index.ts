@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import clearableRaw from "./clearable.tsx?raw";
 import controlledRaw from "./controlled.tsx?raw";
 import defaultRaw from "./default.tsx?raw";
@@ -11,14 +10,14 @@ import variantsRaw from "./variants.tsx?raw";
 export const imports = `import { Input } from "@pisagor/solid";`;
 
 export const sources = {
-  Clearable: stripTsxExample(clearableRaw),
-  Controlled: stripTsxExample(controlledRaw),
-  Default: stripTsxExample(defaultRaw),
-  Disabled: stripTsxExample(disabledRaw),
-  File: stripTsxExample(fileRaw),
-  Invalid: stripTsxExample(invalidRaw),
-  Sizes: stripTsxExample(sizesRaw),
-  Variants: stripTsxExample(variantsRaw),
+  Clearable: clearableRaw,
+  Controlled: controlledRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  File: fileRaw,
+  Invalid: invalidRaw,
+  Sizes: sizesRaw,
+  Variants: variantsRaw,
 } as const;
 
 export * from "./clearable";

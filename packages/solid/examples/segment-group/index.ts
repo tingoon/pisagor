@@ -1,4 +1,3 @@
-import { stripTsxExample } from "@pisagor/utils";
 import compoundRaw from "./compound.tsx?raw";
 import controlledRaw from "./controlled.tsx?raw";
 import custom_indicatorRaw from "./custom-indicator.tsx?raw";
@@ -13,16 +12,16 @@ import variantsRaw from "./variants.tsx?raw";
 export const imports = `import { SegmentGroup } from "@pisagor/solid";`;
 
 export const sources = {
-  Compound: stripTsxExample(compoundRaw),
-  Controlled: stripTsxExample(controlledRaw),
-  CustomIndicator: stripTsxExample(custom_indicatorRaw),
-  Default: stripTsxExample(defaultRaw),
-  Disabled: stripTsxExample(disabledRaw),
-  DisabledItem: stripTsxExample(disabled_itemRaw),
-  IndicatorOnHover: stripTsxExample(indicator_on_hoverRaw),
-  OrientationHorizontal: stripTsxExample(orientation_horizontalRaw),
-  OrientationVertical: stripTsxExample(orientation_verticalRaw),
-  Variants: stripTsxExample(variantsRaw),
+  Compound: compoundRaw,
+  Controlled: controlledRaw,
+  CustomIndicator: custom_indicatorRaw,
+  Default: defaultRaw,
+  Disabled: disabledRaw,
+  DisabledItem: disabled_itemRaw,
+  IndicatorOnHover: indicator_on_hoverRaw,
+  OrientationHorizontal: orientation_horizontalRaw,
+  OrientationVertical: orientation_verticalRaw,
+  Variants: variantsRaw,
 } as const;
 
 export * from "./compound";

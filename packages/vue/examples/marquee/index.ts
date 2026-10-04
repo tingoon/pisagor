@@ -1,4 +1,3 @@
-import { stripVueExample } from "@pisagor/utils";
 import autofillRaw from "./autofill.ts?raw";
 import compoundRaw from "./compound.ts?raw";
 import custom_speedRaw from "./custom-speed.ts?raw";
@@ -13,16 +12,16 @@ import spacingRaw from "./spacing.ts?raw";
 export const imports = `import { Marquee } from "@pisagor/vue";`;
 
 export const sources = {
-  Autofill: stripVueExample(autofillRaw),
-  Compound: stripVueExample(compoundRaw),
-  CustomSpeed: stripVueExample(custom_speedRaw),
-  Default: stripVueExample(defaultRaw),
-  Fade: stripVueExample(fadeRaw),
-  OrientationHorizontal: stripVueExample(orientation_horizontalRaw),
-  OrientationVertical: stripVueExample(orientation_verticalRaw),
-  PauseOnHover: stripVueExample(pause_on_hoverRaw),
-  Reverse: stripVueExample(reverseRaw),
-  Spacing: stripVueExample(spacingRaw),
+  Autofill: autofillRaw,
+  Compound: compoundRaw,
+  CustomSpeed: custom_speedRaw,
+  Default: defaultRaw,
+  Fade: fadeRaw,
+  OrientationHorizontal: orientation_horizontalRaw,
+  OrientationVertical: orientation_verticalRaw,
+  PauseOnHover: pause_on_hoverRaw,
+  Reverse: reverseRaw,
+  Spacing: spacingRaw,
 } as const;
 
 export { default as Autofill } from "./autofill";
