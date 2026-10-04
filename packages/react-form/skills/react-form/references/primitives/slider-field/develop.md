@@ -1,3 +1,13 @@
+## Import
+
+```tsx
+import { SliderField } from "@pisagor/react-form";
+```
+
+Part of `@pisagor/react-form`. Style with recipes where available — no app-level `tv()`.
+
+## Examples
+
 ### Disabled
 
 Show that the slider is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
