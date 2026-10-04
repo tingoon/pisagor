@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg
+  aria-label="Surface anatomy"
+  fill="none"
+  role="img"
+  viewBox="0 0 800 450"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <title>Surface anatomy</title>
+  <defs>
+    <linearGradient id="glass" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#000" stop-opacity="0.42" />
+      <stop offset="100%" stop-color="#000" stop-opacity="0.56" />
+    </linearGradient>
+    <linearGradient id="well" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#fff" stop-opacity="0.1" />
+    </linearGradient>
+    <filter
+      color-interpolation-filters="sRGB"
+      filterUnits="userSpaceOnUse"
+      height="546"
+      id="lift"
+      width="896"
+      x="-48"
+      y="-48"
+    >
+      <feDropShadow
+        dx="0"
+        dy="12"
+        flood-color="#000"
+        flood-opacity="0.28"
+        stdDeviation="16"
+      />
+    </filter>
+  </defs>
+  <rect
+    fill="url(#glass)"
+    filter="url(#lift)"
+    height="320"
+    rx="43.2"
+    stroke="#fff"
+    stroke-opacity="0.28"
+    stroke-width="1.2"
+    width="640"
+    x="80"
+    y="65"
+  />
+  <text
+    fill="#fff"
+    fill-opacity="1"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="32"
+    font-weight="600"
+    text-anchor="start"
+    x="120"
+    y="145"
+  >
+    Surface
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.65"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="26"
+    font-weight="400"
+    text-anchor="start"
+    x="120"
+    y="201"
+  >
+    Elevated content container.
+  </text>
+</svg>

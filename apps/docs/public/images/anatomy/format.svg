@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg
+  aria-label="Format anatomy"
+  fill="none"
+  role="img"
+  viewBox="0 0 800 450"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <title>Format anatomy</title>
+  <defs>
+    <linearGradient id="glass" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#000" stop-opacity="0.42" />
+      <stop offset="100%" stop-color="#000" stop-opacity="0.56" />
+    </linearGradient>
+    <linearGradient id="well" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#fff" stop-opacity="0.1" />
+    </linearGradient>
+    <filter
+      color-interpolation-filters="sRGB"
+      filterUnits="userSpaceOnUse"
+      height="546"
+      id="lift"
+      width="896"
+      x="-48"
+      y="-48"
+    >
+      <feDropShadow
+        dx="0"
+        dy="12"
+        flood-color="#000"
+        flood-opacity="0.28"
+        stdDeviation="16"
+      />
+    </filter>
+  </defs>
+  <text
+    fill="#fff"
+    fill-opacity="1"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="56"
+    font-weight="600"
+    text-anchor="middle"
+    x="400"
+    y="241"
+  >
+    $1,280.00
+  </text>
+</svg>

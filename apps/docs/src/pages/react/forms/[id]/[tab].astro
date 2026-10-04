@@ -1,9 +1,11 @@
 ---
 import ComponentDocPage from "#/components/docs/component-doc-page.astro";
 import {
+  isLegacyComponentTab,
   listComponentTabStaticPaths,
   type SkillPaneId,
 } from "#/lib/component-doc";
+import { withDocsBase } from "#/lib/nav";
 
 export async function getStaticPaths() {
   return listComponentTabStaticPaths("react", "form");
@@ -11,6 +13,10 @@ export async function getStaticPaths() {
 
 const id = Astro.params.id as string;
 const tab = Astro.params.tab as SkillPaneId;
+
+if (isLegacyComponentTab(tab)) {
+  return Astro.redirect(withDocsBase(`/react/forms/${id}/develop`));
+}
 ---
 
 <ComponentDocPage framework="react" id={id} kind="form" tab={tab} />

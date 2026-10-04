@@ -27,6 +27,12 @@
   --tracking-wider: 0.05em;
 }
 
+/* Docs canvas — beat token :root/.light (neutral-100) with equal+later specificity. */
+:root,
+.light {
+  --background: #ffffff;
+}
+
 html {
   color-scheme: light;
   scroll-behavior: smooth;
@@ -36,19 +42,15 @@ html {
     color 220ms ease;
 }
 
-html.dark {
+html.dark,
+:root.dark {
   color-scheme: dark;
+  --background: var(--color-neutral-950);
 }
 
 body {
   min-height: 100dvh;
   background-color: var(--background);
-  /* Calm atmosphere for reading — one soft wash, not competing gradients */
-  background-image: radial-gradient(
-    ellipse 90% 45% at 50% -25%,
-    color-mix(in oklab, var(--primary) 12%, transparent),
-    transparent 70%
-  );
   color: var(--foreground);
   font-family: var(--font-sans);
   font-optical-sizing: auto;
@@ -58,46 +60,13 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-/* Docs chrome — translucent material (content scrolls underneath) */
+/* Docs chrome — solid surface (Apple-like docs) */
 .docs-material {
-  background: color-mix(in oklab, var(--card) 72%, transparent);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: var(--background);
 }
 
 .docs-material-heavy {
-  background: color-mix(in oklab, var(--card) 88%, transparent);
-  backdrop-filter: blur(28px) saturate(160%);
-  -webkit-backdrop-filter: blur(28px) saturate(160%);
-}
-
-/* Scroll-edge fade instead of a hard 1px divider under sticky chrome */
-.docs-scroll-edge-b::after {
-  content: "";
-  pointer-events: none;
-  position: absolute;
-  inset-inline: 0;
-  bottom: -12px;
-  height: 12px;
-  background: linear-gradient(
-    to bottom,
-    color-mix(in oklab, var(--background) 55%, transparent),
-    transparent
-  );
-}
-
-.docs-scroll-edge-e::after {
-  content: "";
-  pointer-events: none;
-  position: absolute;
-  inset-block: 0;
-  inset-inline-end: -10px;
-  width: 10px;
-  background: linear-gradient(
-    to right,
-    color-mix(in oklab, var(--border) 35%, transparent),
-    transparent
-  );
+  background: var(--background);
 }
 
 /* Instant press feedback — respond on pointer-down, not release */
@@ -135,10 +104,10 @@ body {
 
 .docs-title {
   margin: 0 0 0.75rem;
-  font-size: clamp(1.625rem, 2vw + 1rem, 2rem);
-  font-weight: 650;
-  letter-spacing: -0.025em;
-  line-height: 1.15;
+  font-size: clamp(1.75rem, 2vw + 1.1rem, 2.25rem);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.12;
   color: var(--foreground);
 }
 
@@ -149,6 +118,73 @@ body {
   line-height: 1.625;
   letter-spacing: 0;
   color: var(--muted-foreground);
+}
+
+/* Tighter gap between page header and anatomy hero */
+.docs-main > header:has(+ .docs-anatomy) {
+  margin-bottom: 1.25rem;
+}
+
+/* Component anatomy hero — transparent SVG + CSS gradient stage */
+.docs-anatomy {
+  --docs-anatomy-from: #5982f6;
+  --docs-anatomy-mid: #3b8cf8;
+  --docs-anatomy-to: #329af9;
+  margin: 0 0 2rem;
+}
+
+html[data-framework="react"] .docs-anatomy {
+  --docs-anatomy-from: #5982f6;
+  --docs-anatomy-mid: #3b8cf8;
+  --docs-anatomy-to: #329af9;
+}
+
+html[data-framework="vue"] .docs-anatomy {
+  --docs-anatomy-from: #50c993;
+  --docs-anatomy-mid: #56cb7e;
+  --docs-anatomy-to: #71cf63;
+}
+
+html[data-framework="astro"] .docs-anatomy {
+  --docs-anatomy-from: #ff5d01;
+  --docs-anatomy-mid: #ff7840;
+  --docs-anatomy-to: #ff9a62;
+}
+
+html[data-framework="solid"] .docs-anatomy {
+  --docs-anatomy-from: #d265b8;
+  --docs-anatomy-mid: #bc6ad5;
+  --docs-anatomy-to: #a96fe5;
+}
+
+html[data-framework="svelte"] .docs-anatomy {
+  --docs-anatomy-from: #fd7b58;
+  --docs-anatomy-mid: #fb6f65;
+  --docs-anatomy-to: #f36d7b;
+}
+
+.docs-anatomy-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 1.35rem;
+  background: linear-gradient(
+    155deg,
+    var(--docs-anatomy-from) 0%,
+    var(--docs-anatomy-mid) 48%,
+    var(--docs-anatomy-to) 100%
+  );
+  box-shadow:
+    0 1px 0 color-mix(in oklab, var(--foreground) 6%, transparent),
+    0 22px 48px -28px
+    color-mix(in oklab, var(--docs-anatomy-mid) 55%, transparent);
+}
+
+.docs-anatomy figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: color-mix(in oklab, var(--muted-foreground) 92%, transparent);
 }
 
 /* Main content rhythm — one scale for all doc pages */
@@ -344,27 +380,11 @@ html[data-framework="svelte"] [data-preview-theme="dark"] {
   }
 }
 
-@media (prefers-reduced-transparency: reduce) {
-  .docs-material,
-  .docs-material-heavy {
-    background: var(--card);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-  }
-
-  .docs-scroll-edge-b::after,
-  .docs-scroll-edge-e::after {
-    display: none;
-  }
-}
-
 @media (prefers-contrast: more) {
   .docs-material,
   .docs-material-heavy {
-    background: var(--card);
+    background: var(--background);
     border-color: var(--border);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
   }
 }
 
@@ -393,4 +413,81 @@ html[data-framework="svelte"] [data-preview-theme="dark"] {
 
 .docs-sheet-scrim {
   animation: docs-sheet-in 200ms ease both;
+}
+
+/* Design guidelines — Apple-style Do / Don’t pairs */
+.docs-do-dont {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+@media (min-width: 640px) {
+  .docs-do-dont {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.docs-do-dont-card {
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid color-mix(in oklab, var(--border) 80%, transparent);
+  border-radius: 1rem;
+  background: color-mix(in oklab, var(--muted) 45%, transparent);
+}
+
+.docs-do-dont-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: var(--muted);
+}
+
+.docs-do-dont-card figcaption {
+  margin: 0;
+  padding: 0.875rem 1rem 1rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: color-mix(in oklab, var(--muted-foreground) 96%, transparent);
+}
+
+/* Text-only Do/Don’t cards (no guideline SVG) */
+.docs-do-dont-card:not(:has(img)) figcaption {
+  padding: 1rem 1.125rem;
+}
+
+.docs-do-dont-card figcaption strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.8125rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--foreground);
+}
+
+.docs-do-dont-do {
+  border-color: color-mix(in oklab, #16a34a 28%, var(--border));
+}
+
+.docs-do-dont-do figcaption strong::before {
+  content: "✓ ";
+  color: #16a34a;
+}
+
+.docs-do-dont-dont {
+  border-color: color-mix(in oklab, #dc2626 28%, var(--border));
+}
+
+.docs-do-dont-dont figcaption strong::before {
+  content: "✕ ";
+  color: #dc2626;
+}
+
+html.dark .docs-do-dont-do figcaption strong::before {
+  color: #4ade80;
+}
+
+html.dark .docs-do-dont-dont figcaption strong::before {
+  color: #f87171;
 }

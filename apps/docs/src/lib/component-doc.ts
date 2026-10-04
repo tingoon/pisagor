@@ -1,8 +1,6 @@
 import type { ComponentDocs } from "./component-docs-types";
 import type { Framework } from "./nav";
-import { resolveComponentExamples } from "./parse-example-directives";
 import type { PropRow } from "./props/types";
-import { findSkillExamplesBody } from "./skill-doc";
 
 /** Astro markdown module from skill `references/primitives/<id>.md`. */
 export type SkillMdModule = {
@@ -21,16 +19,14 @@ export type ExampleModule = {
 export type ComponentDocKind = "component" | "form";
 
 /** Split skill panes (folder layout under `primitives/<id>/`). */
-export type SkillPaneId = "design" | "usage" | "examples" | "develop";
+export type SkillPaneId = "design" | "develop" | "usage" | "examples";
 
 export type SkillPanes = Partial<Record<SkillPaneId, SkillMdModule>>;
 
-export const SKILL_PANE_IDS: SkillPaneId[] = [
-  "examples",
-  "usage",
-  "design",
-  "develop",
-];
+/** Canonical panes on disk. Legacy `usage` / `examples` remain for redirects. */
+export const SKILL_PANE_IDS: SkillPaneId[] = ["design", "develop"];
+
+const LEGACY_SKILL_PANE_IDS: SkillPaneId[] = ["usage", "examples"];
 
 const DEFAULT_PACKAGE: Record<Framework, string> = {
   astro: "@pisagor/astro",
@@ -127,25 +123,25 @@ const skillMdByFramework: Record<
   },
 };
 
-/** Split panes: `primitives/<id>/{design,usage,examples,develop}.md`. */
+/** Split panes: `primitives/<id>/{design,develop}.md` (+ legacy usage/examples). */
 const skillPanesByFramework: Record<
   Framework,
   Record<string, () => Promise<SkillMdModule>>
 > = {
   astro: import.meta.glob<SkillMdModule>(
-    "../../../../packages/astro/skills/astro/references/primitives/*/{design,usage,examples,develop}.md",
+    "../../../../packages/astro/skills/astro/references/primitives/*/{design,develop,usage,examples}.md",
   ),
   react: import.meta.glob<SkillMdModule>(
-    "../../../../packages/react/skills/react/references/primitives/*/{design,usage,examples,develop}.md",
+    "../../../../packages/react/skills/react/references/primitives/*/{design,develop,usage,examples}.md",
   ),
   solid: import.meta.glob<SkillMdModule>(
-    "../../../../packages/solid/skills/solid/references/primitives/*/{design,usage,examples,develop}.md",
+    "../../../../packages/solid/skills/solid/references/primitives/*/{design,develop,usage,examples}.md",
   ),
   svelte: import.meta.glob<SkillMdModule>(
-    "../../../../packages/svelte/skills/svelte/references/primitives/*/{design,usage,examples,develop}.md",
+    "../../../../packages/svelte/skills/svelte/references/primitives/*/{design,develop,usage,examples}.md",
   ),
   vue: import.meta.glob<SkillMdModule>(
-    "../../../../packages/vue/skills/vue/references/primitives/*/{design,usage,examples,develop}.md",
+    "../../../../packages/vue/skills/vue/references/primitives/*/{design,develop,usage,examples}.md",
   ),
 };
 
@@ -190,16 +186,16 @@ const formSkillPanesByFramework: Partial<
   Record<Framework, Record<string, () => Promise<SkillMdModule>>>
 > = {
   react: import.meta.glob<SkillMdModule>(
-    "../../../../packages/react-form/skills/react-form/references/primitives/*/{design,usage,examples,develop}.md",
+    "../../../../packages/react-form/skills/react-form/references/primitives/*/{design,develop,usage,examples}.md",
   ),
   solid: import.meta.glob<SkillMdModule>(
-    "../../../../packages/solid-form/skills/solid-form/references/primitives/*/{design,usage,examples,develop}.md",
+    "../../../../packages/solid-form/skills/solid-form/references/primitives/*/{design,develop,usage,examples}.md",
   ),
   svelte: import.meta.glob<SkillMdModule>(
-    "../../../../packages/svelte-form/skills/svelte-form/references/primitives/*/{design,usage,examples,develop}.md",
+    "../../../../packages/svelte-form/skills/svelte-form/references/primitives/*/{design,develop,usage,examples}.md",
   ),
   vue: import.meta.glob<SkillMdModule>(
-    "../../../../packages/vue-form/skills/vue-form/references/primitives/*/{design,usage,examples,develop}.md",
+    "../../../../packages/vue-form/skills/vue-form/references/primitives/*/{design,develop,usage,examples}.md",
   ),
 };
 
@@ -355,8 +351,9 @@ export async function loadSkillPanes(
   if (!paneModules) return {};
 
   const panes: SkillPanes = {};
+  const paneIds = [...SKILL_PANE_IDS, ...LEGACY_SKILL_PANE_IDS];
   await Promise.all(
-    SKILL_PANE_IDS.map(async (pane) => {
+    paneIds.map(async (pane) => {
       const key = findGlobKey(paneModules, `/primitives/${id}/${pane}.md`);
       const loader = key ? paneModules[key] : undefined;
       if (!loader) return;
@@ -383,32 +380,19 @@ export type ComponentDocTab = {
   label: string;
 };
 
-/** Tabs available for a component (order: Examples → Usage → Design → Develop). */
+/** Tabs available for a component (order: Develop → Design). */
 export async function listComponentDocTabs(
   framework: Framework,
   id: string,
   kind: ComponentDocKind = "component",
 ): Promise<ComponentDocTab[]> {
-  const pkg = defaultPackageName(framework, kind);
-  const examplesBody = findSkillExamplesBody(id, {
-    framework,
-    packageName: pkg,
-  });
-  const hasExamples = resolveComponentExamples(examplesBody).length > 0;
-  const isSplit = hasSkillFolder(framework, id, kind);
   const panes = await loadSkillPanes(framework, id, kind);
-
-  const tabs: ComponentDocTab[] = [];
-  if (hasExamples) {
-    tabs.push({ id: "examples", label: DOC_TAB_LABELS.examples });
-  }
-  if (isSplit ? Boolean(panes.usage) : true) {
-    tabs.push({ id: "usage", label: DOC_TAB_LABELS.usage });
-  }
+  const tabs: ComponentDocTab[] = [
+    { id: "develop", label: DOC_TAB_LABELS.develop },
+  ];
   if (panes.design) {
     tabs.push({ id: "design", label: DOC_TAB_LABELS.design });
   }
-  tabs.push({ id: "develop", label: DOC_TAB_LABELS.develop });
   return tabs;
 }
 
@@ -418,7 +402,12 @@ export async function getDefaultComponentTab(
   kind: ComponentDocKind = "component",
 ): Promise<SkillPaneId> {
   const tabs = await listComponentDocTabs(framework, id, kind);
-  return tabs[0]?.id ?? "examples";
+  return tabs[0]?.id ?? "develop";
+}
+
+/** Former Examples / Usage routes that now live under Develop. */
+export function isLegacyComponentTab(tab: string): boolean {
+  return tab === "examples" || tab === "usage";
 }
 
 /** Static paths for `/…/components|forms/<id>/<tab>`. */
@@ -433,6 +422,11 @@ export async function listComponentTabStaticPaths(
     for (const tab of tabs) {
       paths.push({ params: { id, tab: tab.id } });
     }
+    // Legacy Examples / Usage routes redirect to unified Develop.
+    paths.push(
+      { params: { id, tab: "examples" } },
+      { params: { id, tab: "usage" } },
+    );
   }
   return paths;
 }

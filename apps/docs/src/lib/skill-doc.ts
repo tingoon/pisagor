@@ -15,7 +15,7 @@ const skillRawModules = import.meta.glob(
   [
     "../../../../packages/*/skills/*/references/primitives/*.md",
     "../../../../packages/*/skills/*/references/primitives/*/metadata.md",
-    "../../../../packages/*/skills/*/references/primitives/*/{design,usage,examples,develop}.md",
+    "../../../../packages/*/skills/*/references/primitives/*/{design,develop,usage,examples}.md",
   ],
   {
     eager: true,
@@ -149,22 +149,46 @@ export function findSkillPaneRaw(
 }
 
 /**
- * Body used to resolve `:::example` directives — examples pane when split,
- * otherwise the flat / index skill body.
+ * Body used to resolve `:::example` directives — `develop.md` when split,
+ * legacy `examples.md`, otherwise the flat / index skill body.
  */
 export function findSkillExamplesBody(
   id: string,
   opts?: { framework?: Framework; packageName?: string },
 ): string {
-  const pane = findSkillPaneRaw(id, "examples", opts);
-  if (pane) return skillDocBody(pane);
+  const develop = findSkillPaneRaw(id, "develop", opts);
+  if (develop) return skillDocBody(develop);
+  const legacy = findSkillPaneRaw(id, "examples", opts);
+  if (legacy) return skillDocBody(legacy);
+  const raw = findSkillRaw(id, opts);
+  return raw ? parseSkillDoc(raw).body : "";
+}
+
+/**
+ * Markdown body for the pane currently shown on a component docs page.
+ * Develop falls back through legacy `usage.md`, then the flat skill body.
+ */
+export function findDisplayedSkillBody(
+  id: string,
+  pane: "design" | "develop",
+  opts?: { framework?: Framework; packageName?: string },
+): string {
+  if (pane === "design") {
+    const design = findSkillPaneRaw(id, "design", opts);
+    return design ? skillDocBody(design) : "";
+  }
+
+  const develop = findSkillPaneRaw(id, "develop", opts);
+  if (develop) return skillDocBody(develop);
+  const usage = findSkillPaneRaw(id, "usage", opts);
+  if (usage) return skillDocBody(usage);
   const raw = findSkillRaw(id, opts);
   return raw ? parseSkillDoc(raw).body : "";
 }
 
 /**
  * Read the import shown in a primitive's `## Import` section.
- * Prefers `usage.md` for split skills; falls back to the main skill body.
+ * Prefers `develop.md` (then legacy `usage.md`); falls back to the main skill body.
  */
 export function getSkillDocImportStatement(
   id: string,
@@ -172,8 +196,10 @@ export function getSkillDocImportStatement(
   framework?: Framework,
 ): string {
   const opts = { framework, packageName };
+  const developRaw = findSkillPaneRaw(id, "develop", opts);
   const usageRaw = findSkillPaneRaw(id, "usage", opts);
   const searchBodies = [
+    developRaw ? skillDocBody(developRaw) : undefined,
     usageRaw ? skillDocBody(usageRaw) : undefined,
     (() => {
       const raw = findSkillRaw(id, opts);

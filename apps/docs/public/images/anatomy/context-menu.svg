@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg
+  aria-label="Menu anatomy"
+  fill="none"
+  role="img"
+  viewBox="0 0 800 450"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <title>Menu anatomy</title>
+  <defs>
+    <linearGradient id="glass" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#000" stop-opacity="0.42" />
+      <stop offset="100%" stop-color="#000" stop-opacity="0.56" />
+    </linearGradient>
+    <linearGradient id="well" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#fff" stop-opacity="0.1" />
+    </linearGradient>
+    <filter
+      color-interpolation-filters="sRGB"
+      filterUnits="userSpaceOnUse"
+      height="546"
+      id="lift"
+      width="896"
+      x="-48"
+      y="-48"
+    >
+      <feDropShadow
+        dx="0"
+        dy="12"
+        flood-color="#000"
+        flood-opacity="0.28"
+        stdDeviation="16"
+      />
+    </filter>
+  </defs>
+  <rect
+    fill="url(#glass)"
+    filter="url(#lift)"
+    height="336"
+    rx="24"
+    stroke="#fff"
+    stroke-opacity="0.28"
+    stroke-width="1.2"
+    width="400"
+    x="200"
+    y="57"
+  />
+
+  <text
+    fill="#fff"
+    fill-opacity="1"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="28"
+    font-weight="500"
+    text-anchor="start"
+    x="232"
+    y="97"
+  >
+    Open
+  </text>
+
+  <text
+    fill="#fff"
+    fill-opacity="1"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="28"
+    font-weight="500"
+    text-anchor="start"
+    x="232"
+    y="169"
+  >
+    Share
+  </text>
+
+  <text
+    fill="#fff"
+    fill-opacity="1"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="28"
+    font-weight="500"
+    text-anchor="start"
+    x="232"
+    y="241"
+  >
+    Duplicate
+  </text>
+  <rect
+    fill="#fff"
+    fill-opacity="0.12"
+    height="1"
+    width="352"
+    x="224"
+    y="285"
+  />
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="28"
+    font-weight="500"
+    text-anchor="start"
+    x="232"
+    y="313"
+  >
+    Delete
+  </text>
+</svg>

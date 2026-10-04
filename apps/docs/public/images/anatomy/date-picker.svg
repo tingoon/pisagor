@@ -1,0 +1,434 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg
+  aria-label="Calendar anatomy"
+  fill="none"
+  role="img"
+  viewBox="0 0 800 450"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <title>Calendar anatomy</title>
+  <defs>
+    <linearGradient id="glass" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#000" stop-opacity="0.42" />
+      <stop offset="100%" stop-color="#000" stop-opacity="0.56" />
+    </linearGradient>
+    <linearGradient id="well" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#fff" stop-opacity="0.1" />
+    </linearGradient>
+    <filter
+      color-interpolation-filters="sRGB"
+      filterUnits="userSpaceOnUse"
+      height="546"
+      id="lift"
+      width="896"
+      x="-48"
+      y="-48"
+    >
+      <feDropShadow
+        dx="0"
+        dy="12"
+        flood-color="#000"
+        flood-opacity="0.28"
+        stdDeviation="16"
+      />
+    </filter>
+  </defs>
+  <rect
+    fill="url(#glass)"
+    filter="url(#lift)"
+    height="440"
+    rx="43.2"
+    stroke="#fff"
+    stroke-opacity="0.28"
+    stroke-width="1.2"
+    width="512"
+    x="144"
+    y="5"
+  />
+  <text
+    fill="#fff"
+    fill-opacity="1"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="28"
+    font-weight="600"
+    text-anchor="middle"
+    x="400"
+    y="65"
+  >
+    October 2026
+  </text>
+
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="400"
+    y="133"
+  >
+    1
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="464"
+    y="133"
+  >
+    2
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="528"
+    y="133"
+  >
+    3
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="592"
+    y="133"
+  >
+    4
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="208"
+    y="197"
+  >
+    5
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="272"
+    y="197"
+  >
+    6
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="336"
+    y="197"
+  >
+    7
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="400"
+    y="197"
+  >
+    8
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="464"
+    y="197"
+  >
+    9
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="528"
+    y="197"
+  >
+    10
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="592"
+    y="197"
+  >
+    11
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="208"
+    y="261"
+  >
+    12
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="272"
+    y="261"
+  >
+    13
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="336"
+    y="261"
+  >
+    14
+  </text>
+  <circle cx="400" cy="253" fill="#fff" r="28" />
+  <text
+    fill="#000"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="600"
+    text-anchor="middle"
+    x="400"
+    y="261"
+  >
+    15
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="464"
+    y="261"
+  >
+    16
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="528"
+    y="261"
+  >
+    17
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="592"
+    y="261"
+  >
+    18
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="208"
+    y="325"
+  >
+    19
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="272"
+    y="325"
+  >
+    20
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="336"
+    y="325"
+  >
+    21
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="400"
+    y="325"
+  >
+    22
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="464"
+    y="325"
+  >
+    23
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="528"
+    y="325"
+  >
+    24
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="592"
+    y="325"
+  >
+    25
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="208"
+    y="389"
+  >
+    26
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="272"
+    y="389"
+  >
+    27
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="336"
+    y="389"
+  >
+    28
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="400"
+    y="389"
+  >
+    29
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="464"
+    y="389"
+  >
+    30
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.85"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="528"
+    y="389"
+  >
+    31
+  </text>
+</svg>

@@ -1,0 +1,115 @@
+<svg
+  aria-label="Selection list with a floating action bar"
+  fill="none"
+  role="img"
+  viewBox="0 0 360 220"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <title>Do: reveal action bar with selection</title>
+  <rect fill="#f4f4f5" height="220" rx="16" width="360" />
+  <rect
+    fill="#ffffff"
+    height="36"
+    rx="8"
+    stroke="#e4e4e7"
+    width="312"
+    x="24"
+    y="24"
+  />
+  <rect fill="#087ea4" height="12" rx="3" width="12" x="36" y="36" />
+  <rect
+    fill="#18181b"
+    height="8"
+    opacity="0.35"
+    rx="4"
+    width="120"
+    x="58"
+    y="38"
+  />
+  <rect
+    fill="#ffffff"
+    height="36"
+    rx="8"
+    stroke="#e4e4e7"
+    width="312"
+    x="24"
+    y="68"
+  />
+  <rect fill="#087ea4" height="12" rx="3" width="12" x="36" y="80" />
+  <rect
+    fill="#18181b"
+    height="8"
+    opacity="0.35"
+    rx="4"
+    width="96"
+    x="58"
+    y="82"
+  />
+  <rect
+    fill="#ffffff"
+    height="36"
+    opacity="0.7"
+    rx="8"
+    stroke="#e4e4e7"
+    width="312"
+    x="24"
+    y="112"
+  />
+  <rect
+    fill="transparent"
+    height="12"
+    rx="3"
+    stroke="#d4d4d8"
+    stroke-width="1.5"
+    width="12"
+    x="36"
+    y="124"
+  />
+  <rect
+    fill="#18181b"
+    height="8"
+    opacity="0.2"
+    rx="4"
+    width="140"
+    x="58"
+    y="126"
+  />
+  <rect
+    fill="#ffffff"
+    height="40"
+    rx="12"
+    stroke="#e4e4e7"
+    width="248"
+    x="56"
+    y="164"
+  />
+  <rect fill="#087ea4" height="12" rx="6" width="28" x="72" y="178" />
+  <rect fill="#e4e4e7" height="12" width="1" x="112" y="178" />
+  <rect
+    fill="#18181b"
+    height="8"
+    opacity="0.45"
+    rx="4"
+    width="36"
+    x="128"
+    y="180"
+  />
+  <rect
+    fill="#18181b"
+    height="8"
+    opacity="0.45"
+    rx="4"
+    width="44"
+    x="176"
+    y="180"
+  />
+  <rect
+    fill="#dc2626"
+    height="8"
+    opacity="0.8"
+    rx="4"
+    width="40"
+    x="232"
+    y="180"
+  />
+</svg>

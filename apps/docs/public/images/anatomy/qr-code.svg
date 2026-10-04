@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg
+  aria-label="QR Code anatomy"
+  fill="none"
+  role="img"
+  viewBox="0 0 800 450"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <title>QR Code anatomy</title>
+  <defs>
+    <linearGradient id="glass" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#000" stop-opacity="0.42" />
+      <stop offset="100%" stop-color="#000" stop-opacity="0.56" />
+    </linearGradient>
+    <linearGradient id="well" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#fff" stop-opacity="0.1" />
+    </linearGradient>
+    <filter
+      color-interpolation-filters="sRGB"
+      filterUnits="userSpaceOnUse"
+      height="546"
+      id="lift"
+      width="896"
+      x="-48"
+      y="-48"
+    >
+      <feDropShadow
+        dx="0"
+        dy="12"
+        flood-color="#000"
+        flood-opacity="0.28"
+        stdDeviation="16"
+      />
+    </filter>
+  </defs>
+  <rect
+    fill="url(#glass)"
+    filter="url(#lift)"
+    height="280"
+    rx="24"
+    stroke="#fff"
+    stroke-opacity="0.28"
+    stroke-width="1.2"
+    width="280"
+    x="260"
+    y="85"
+  />
+  <rect fill="#fff" height="24" rx="2" width="24" x="320" y="117" />
+  <rect fill="#fff" height="24" rx="2" width="24" x="376" y="117" />
+  <rect fill="#fff" height="24" rx="2" width="24" x="432" y="117" />
+  <rect fill="#fff" height="24" rx="2" width="24" x="292" y="145" />
+  <rect fill="#fff" height="24" rx="2" width="24" x="348" y="145" />
+  <rect fill="#fff" height="24" rx="2" width="24" x="404" y="145" />
+  <rect fill="#fff" height="24" rx="2" width="24" x="460" y="145" />
+  <rect fill="#fff" height="24" rx="2" width="24" x="320" y="173" />
+  <rect fill="#fff" height="24" rx="2" width="24" x="376" y="173" />
+  <rect fill="#fff" height="24" rx="2" width="24" x="432" y="173" />
+  <rect fill="#fff" height="24" rx="2" width="24" x="292" y="201" />
+  <rect fill="#fff" height="24" rx="2" width="24" x="348" y="201" />
+  <rect fill="#fff" height="24" rx="2" width="24" x="404" y="201" />
+  <rect fill="#fff" height="24" rx="2" width="24" x="460" y="201" />
+  <rect fill="#fff" height="24" rx="2" width="24" x="320" y="229" />
+  <rect fill="#fff" height="24" rx="2" width="24" x="376" y="229" />
+  <rect fill="#fff" height="24" rx="2" width="24" x="432" y="229" />
+  <rect fill="#fff" height="24" rx="2" width="24" x="292" y="257" />
+  <rect fill="#fff" height="24" rx="2" width="24" x="348" y="257" />
+  <rect fill="#fff" height="24" rx="2" width="24" x="404" y="257" />
+  <rect fill="#fff" height="24" rx="2" width="24" x="460" y="257" />
+  <rect fill="#fff" height="24" rx="2" width="24" x="320" y="285" />
+  <rect fill="#fff" height="24" rx="2" width="24" x="376" y="285" />
+  <rect fill="#fff" height="24" rx="2" width="24" x="432" y="285" />
+</svg>

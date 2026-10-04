@@ -16,7 +16,7 @@ const hasMeta = Boolean(
 );
 ---
 
-<div class="mb-8 rounded-xl border border-border/60 bg-muted/15 px-4 py-3.5">
+<div class="mb-6 rounded-xl border border-border/60 bg-muted/15 px-4 py-3.5">
   {hasMeta ? <ComponentMeta id={Astro.props.id} /> : null}
   <PackageLinks
     embedded={hasMeta}

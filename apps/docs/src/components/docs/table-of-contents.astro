@@ -7,43 +7,74 @@ interface Heading {
 
 interface Props {
   headings?: Heading[];
+  /** Skip outer sticky aside when the parent layout already wraps the rail. */
+  bare?: boolean;
 }
 
 const items = (Astro.props.headings ?? []).filter(
   (heading) => heading.depth === 2 || heading.depth === 3,
 );
+const bare = Astro.props.bare ?? false;
+const hasItems = items.length > 0;
 ---
 
-{items.length > 0 ? (
-  <aside class="scrollbar-thin sticky top-14 hidden h-[calc(100dvh-3.5rem)] w-52 shrink-0 overflow-y-auto p-4 [scrollbar-color:color-mix(in_oklab,var(--border)_80%,transparent)_transparent] xl:block">
-    <p class="docs-label mb-3">On this page</p>
-    <nav
-      aria-label="On this page"
-      class="relative space-y-px border-border/50 border-s"
-      data-toc
-    >
-      {items.map((item) => (
-        <a
-          class:list={[
-            "docs-press docs-nav-link relative block py-1.5 text-foreground/65 hover:text-foreground data-active:font-medium data-active:text-foreground",
-            item.depth === 2 ? "ps-3" : "ps-5",
-          ]}
-          data-toc-link
-          href={`#${item.slug}`}
-        >
-          <span
-            aria-hidden
-            class="absolute -inset-s-px inset-y-1 w-0.5 rounded-full bg-primary opacity-0 transition-opacity duration-150 data-active:opacity-100"
-            data-toc-indicator
-          />
-          {item.text}
-        </a>
-      ))}
-    </nav>
-  </aside>
-) : (
-  <div class="hidden w-52 shrink-0 xl:block" />
-)}
+{hasItems ? (
+  bare ? (
+    <>
+      <p class="docs-label mb-3">On this page</p>
+      <nav
+        aria-label="On this page"
+        class="relative space-y-px border-border/50 border-s"
+        data-toc
+      >
+        {items.map((item) => (
+          <a
+            class:list={[
+              "docs-press docs-nav-link relative block py-1.5 text-foreground/65 hover:text-foreground data-active:font-medium data-active:text-foreground",
+              item.depth === 2 ? "ps-3" : "ps-5",
+            ]}
+            data-toc-link
+            href={`#${item.slug}`}
+          >
+            <span
+              aria-hidden
+              class="absolute -inset-s-px inset-y-1 w-0.5 rounded-full bg-primary opacity-0 transition-opacity duration-150 data-active:opacity-100"
+              data-toc-indicator
+            ></span>
+            {item.text}
+          </a>
+        ))}
+      </nav>
+    </>
+  ) : (
+    <aside class="scrollbar-thin sticky top-12 hidden h-[calc(100dvh-3rem)] w-[170px] shrink-0 overflow-y-auto py-10 ps-4 [scrollbar-color:color-mix(in_oklab,var(--border)_80%,transparent)_transparent] xl:block">
+      <p class="docs-label mb-3">On this page</p>
+      <nav
+        aria-label="On this page"
+        class="relative space-y-px border-border/50 border-s"
+        data-toc
+      >
+        {items.map((item) => (
+          <a
+            class:list={[
+              "docs-press docs-nav-link relative block py-1.5 text-foreground/65 hover:text-foreground data-active:font-medium data-active:text-foreground",
+              item.depth === 2 ? "ps-3" : "ps-5",
+            ]}
+            data-toc-link
+            href={`#${item.slug}`}
+          >
+            <span
+              aria-hidden
+              class="absolute -inset-s-px inset-y-1 w-0.5 rounded-full bg-primary opacity-0 transition-opacity duration-150 data-active:opacity-100"
+              data-toc-indicator
+            ></span>
+            {item.text}
+          </a>
+        ))}
+      </nav>
+    </aside>
+  )
+) : null}
 
 <script>
 function bindToc(nav: HTMLElement) {

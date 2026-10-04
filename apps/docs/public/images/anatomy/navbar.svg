@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg
+  aria-label="Navbar anatomy"
+  fill="none"
+  role="img"
+  viewBox="0 0 800 450"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <title>Navbar anatomy</title>
+  <defs>
+    <linearGradient id="glass" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#000" stop-opacity="0.42" />
+      <stop offset="100%" stop-color="#000" stop-opacity="0.56" />
+    </linearGradient>
+    <linearGradient id="well" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#fff" stop-opacity="0.1" />
+    </linearGradient>
+    <filter
+      color-interpolation-filters="sRGB"
+      filterUnits="userSpaceOnUse"
+      height="546"
+      id="lift"
+      width="896"
+      x="-48"
+      y="-48"
+    >
+      <feDropShadow
+        dx="0"
+        dy="12"
+        flood-color="#000"
+        flood-opacity="0.28"
+        stdDeviation="16"
+      />
+    </filter>
+  </defs>
+  <rect
+    fill="url(#glass)"
+    filter="url(#lift)"
+    height="96"
+    rx="24"
+    stroke="#fff"
+    stroke-opacity="0.28"
+    stroke-width="1.2"
+    width="1040"
+    x="-120"
+    y="177"
+  />
+  <text
+    fill="#fff"
+    fill-opacity="1"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="28"
+    font-weight="600"
+    text-anchor="start"
+    x="-88"
+    y="240.36"
+  >
+    Pisagor
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.75"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="28"
+    font-weight="500"
+    text-anchor="start"
+    x="120"
+    y="240.36"
+  >
+    Docs
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="1"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="28"
+    font-weight="500"
+    text-anchor="start"
+    x="240"
+    y="240.36"
+  >
+    Components
+  </text>
+  <rect
+    fill="url(#glass)"
+    filter="url(#lift)"
+    height="64"
+    rx="24"
+    stroke="#fff"
+    stroke-opacity="0.28"
+    stroke-width="1.2"
+    width="157.76"
+    x="730.24"
+    y="193"
+  />
+  <text
+    fill="#fff"
+    fill-opacity="1"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="28"
+    font-weight="500"
+    text-anchor="middle"
+    x="809.12"
+    y="235.24"
+  >
+    Sign in
+  </text>
+</svg>

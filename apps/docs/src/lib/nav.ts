@@ -1,4 +1,4 @@
-export type Framework = "react" | "vue" | "astro" | "svelte" | "solid";
+export type Framework = "react" | "vue" | "svelte" | "solid" | "astro";
 
 export type DocsArea = "components" | "blocks" | "forms";
 
@@ -17,9 +17,9 @@ export type NavSection = {
 export const frameworks: { id: Framework; label: string }[] = [
   { id: "react", label: "React" },
   { id: "vue", label: "Vue" },
-  { id: "astro", label: "Astro" },
   { id: "svelte", label: "Svelte" },
   { id: "solid", label: "Solid" },
+  { id: "astro", label: "Astro" },
 ];
 
 export const mainNav: { id: DocsArea; label: string; slug: string }[] = [

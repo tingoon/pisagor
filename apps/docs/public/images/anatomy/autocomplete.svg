@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<svg
+  aria-label="Select anatomy"
+  fill="none"
+  role="img"
+  viewBox="0 0 800 450"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <title>Select anatomy</title>
+  <defs>
+    <linearGradient id="glass" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#000" stop-opacity="0.42" />
+      <stop offset="100%" stop-color="#000" stop-opacity="0.56" />
+    </linearGradient>
+    <linearGradient id="well" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#fff" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#fff" stop-opacity="0.1" />
+    </linearGradient>
+    <filter
+      color-interpolation-filters="sRGB"
+      filterUnits="userSpaceOnUse"
+      height="546"
+      id="lift"
+      width="896"
+      x="-48"
+      y="-48"
+    >
+      <feDropShadow
+        dx="0"
+        dy="12"
+        flood-color="#000"
+        flood-opacity="0.28"
+        stdDeviation="16"
+      />
+    </filter>
+  </defs>
+  <rect
+    fill="url(#well)"
+    filter="url(#lift)"
+    height="64"
+    rx="24"
+    stroke="#fff"
+    stroke-opacity="0.35"
+    stroke-width="1.2"
+    width="480"
+    x="160"
+    y="73"
+  />
+  <text
+    fill="#fff"
+    fill-opacity="0.7"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="28"
+    font-weight="400"
+    text-anchor="start"
+    x="184"
+    y="115.24000000000001"
+  >
+    Select a fruit…
+  </text>
+  <text
+    fill="#fff"
+    fill-opacity="0.7"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="24"
+    font-weight="500"
+    text-anchor="middle"
+    x="608"
+    y="115.24000000000001"
+  >
+    ▾
+  </text>
+  <rect
+    fill="url(#glass)"
+    filter="url(#lift)"
+    height="224"
+    rx="24"
+    stroke="#fff"
+    stroke-opacity="0.28"
+    stroke-width="1.2"
+    width="480"
+    x="160"
+    y="149"
+  />
+
+  <text
+    fill="#fff"
+    fill-opacity="1"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="28"
+    font-weight="500"
+    text-anchor="start"
+    x="184"
+    y="205"
+  >
+    Apple
+  </text>
+  <rect
+    fill="#fff"
+    fill-opacity="0.12"
+    height="56"
+    rx="19.2"
+    width="464"
+    x="168"
+    y="229"
+  />
+  <text
+    fill="#fff"
+    fill-opacity="1"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="28"
+    font-weight="500"
+    text-anchor="start"
+    x="184"
+    y="269"
+  >
+    Banana
+  </text>
+
+  <text
+    fill="#fff"
+    fill-opacity="1"
+    font-family="ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif"
+    font-size="28"
+    font-weight="500"
+    text-anchor="start"
+    x="184"
+    y="333"
+  >
+    Cherry
+  </text>
+</svg>

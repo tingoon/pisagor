@@ -14,6 +14,48 @@ export function slugifyHeading(text: string): string {
     .replace(/^-|-$/g, "");
 }
 
+export type TocHeading = {
+  depth: number;
+  slug: string;
+  text: string;
+};
+
+/** h2/h3 headings from skill markdown body — source of truth for docs TOC. */
+export function extractTocHeadings(body: string): TocHeading[] {
+  const headings: TocHeading[] = [];
+  for (const line of body.split(/\r?\n/)) {
+    const heading = HEADING_RE.exec(line);
+    if (!heading?.[1] || !heading[2]) continue;
+    const depth = heading[1].length;
+    if (depth !== 2 && depth !== 3) continue;
+    const text = heading[2].trim();
+    if (!text) continue;
+    const slug = slugifyHeading(text);
+    if (!slug) continue;
+    headings.push({ depth, slug, text });
+  }
+  return headings;
+}
+
+/** Drop `## Examples` and nested headings (page shell omits that block when empty). */
+export function omitExamplesSection(headings: TocHeading[]): TocHeading[] {
+  const result: TocHeading[] = [];
+  let inExamples = false;
+  for (const heading of headings) {
+    if (
+      heading.depth === 2 &&
+      heading.text.trim().toLowerCase() === "examples"
+    ) {
+      inExamples = true;
+      continue;
+    }
+    if (inExamples && heading.depth === 2) inExamples = false;
+    if (inExamples) continue;
+    result.push(heading);
+  }
+  return result;
+}
+
 /**
  * Parse every single-line `:::example ExportName` in the skill body (anywhere).
  * No closing `:::` — the opening line alone is the directive.
