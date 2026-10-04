@@ -41,16 +41,15 @@ Prefer the **folder** form (tabs on the docs site):
 
 ```
 references/primitives/<id>/
-  metadata.md    # YAML frontmatter only (title, description, api, taxonomy, aliases?)
-  design.md      # When to use (Prefer / Avoid)
-  usage.md       # Recommended API, Import, Anatomy
-  examples.md    # ### titles + :::example ExportName
-  develop.md     # Accessibility / keyboard (Props table is appended by the docs app)
+  metadata.md    # YAML frontmatter only
+  design.md      # HIG-style guidance (overview, best practices, Do/Don’t)
+  develop.md     # Import, Anatomy, ## Examples (:::example), a11y notes
 ```
 
-Docs tabs (order): **Examples** → **Usage** → **Design** → **Develop**.
-Each tab is a real route: `/react/components/<id>/<tab>` (e.g. `…/tooltip/usage`).
-`/react/components/<id>` redirects to the default tab.
+`design.md` follows Apple HIG tone: short overview, **Best practices**, topic sections, and `docs-do-dont` pairs (optional SVGs under `apps/docs/public/images/guidelines/<id>/`). Keep guidance framework-agnostic; put API/examples in `develop.md`.
+
+Docs tabs: **Develop** (default) → **Design**.
+Routes: `/react/components/<id>/develop` and `/design`. Legacy `/usage` and `/examples` redirect to develop.
 
 Flat `references/primitives/<id>.md` is legacy (single file with YAML + body); the docs app still maps it into tabs.
 
