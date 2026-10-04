@@ -1,5 +1,6 @@
 import { Drawer as DrawerPrimitive } from "@ark-ui/vue/drawer";
-import { type DrawerRecipe, drawerRecipe } from "@pisagor/recipes/drawer";
+import type { DrawerProps as DrawerSharedProps } from "@pisagor/props";
+import { type DrawerRecipe, drawerRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, reactive, Teleport } from "vue";
 import { createContext } from "../../internal/utils/create-context";
 
@@ -19,24 +20,16 @@ export interface DrawerBodyProps {
   scrollFade?: boolean;
 }
 
-export interface DrawerProps {
+export interface DrawerProps extends DrawerSharedProps {
   lazyMount?: boolean;
   unmountOnExit?: boolean;
-  /**
-   * Style recipe. Defaults to `drawerRecipe` from `@pisagor/recipes/drawer`.
-   *
-   * @defaultValue drawerRecipe
-   */
-  recipe?: typeof drawerRecipe;
 }
 // #endregion
 
 // #region Context
-const [provideDrawerContext, useDrawerLocal] =
-  createContext<DrawerContextValue>({
-    name: "DrawerLocal",
-    strict: false,
-  });
+const [provideDrawerContext, useDrawerLocal] = createContext(
+  "DrawerLocal",
+)<DrawerContextValue>({ strict: false });
 
 function useDrawerSlots() {
   return useDrawerLocal()?.slots ?? drawerRecipe();

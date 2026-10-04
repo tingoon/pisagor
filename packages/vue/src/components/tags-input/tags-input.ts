@@ -4,10 +4,11 @@ import {
   useTagsInputContext,
 } from "@ark-ui/vue/tags-input";
 import { PhX } from "@phosphor-icons/vue";
-import {
-  tagsInputItemRecipe,
-  tagsInputRecipe,
-} from "@pisagor/recipes/tags-input";
+import type {
+  TagsInputItemProps as TagsInputItemSharedProps,
+  TagsInputProps as TagsInputSharedProps,
+} from "@pisagor/props";
+import { tagsInputItemRecipe, tagsInputRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 
 type FormControlVariant = "primary" | "secondary";
@@ -22,7 +23,7 @@ type ArkPart = Parameters<typeof h>[0];
 
 type TagsInputSize = NonNullable<InputGroupProps["size"]>;
 
-export interface TagsInputProps {
+export interface TagsInputProps extends TagsInputSharedProps {
   class?: ClassValue;
   clearable?: boolean;
   defaultValue?: string[];
@@ -36,7 +37,7 @@ export interface TagsInputProps {
   tabIndex?: number;
 }
 
-export interface TagsInputItemProps {
+export interface TagsInputItemProps extends TagsInputItemSharedProps {
   class?: ClassValue;
   disabled?: boolean;
   showDelete?: boolean;
@@ -46,23 +47,12 @@ export interface TagsInputItemProps {
 // #endregion
 
 // #region Types
-export interface TagsInputItemDeleteTriggerProps {
-  /**
-   * Style recipe. Defaults to `tagsInputItemRecipe` from `@pisagor/recipes/tags-input-item`.
-   *
-   * @defaultValue tagsInputItemRecipe
-   */
-  itemRecipe?: typeof tagsInputItemRecipe;
+export interface TagsInputItemDeleteTriggerProps
+  extends TagsInputItemSharedProps {
   class?: unknown;
 }
 
-export interface TagsInputInputProps {
-  /**
-   * Style recipe. Defaults to `tagsInputRecipe` from `@pisagor/recipes/tags-input`.
-   *
-   * @defaultValue tagsInputRecipe
-   */
-  recipe?: typeof tagsInputRecipe;
+export interface TagsInputInputProps extends TagsInputSharedProps {
   class?: unknown;
 }
 // #endregion
@@ -106,14 +96,14 @@ export const TagsInputItemDeleteTrigger = defineComponent({
       default: undefined,
       type: [String, Object, Array] as PropType<ClassValue>,
     },
-    itemRecipe: {
+    recipe: {
       default: tagsInputItemRecipe,
       type: Function as PropType<typeof tagsInputItemRecipe>,
     },
   },
   setup(props, { attrs, slots: vueSlots }) {
     return () => {
-      const slots = props.itemRecipe();
+      const slots = props.recipe();
 
       return h(
         TagsInputPrimitive.ItemDeleteTrigger as ArkPart,
@@ -149,14 +139,14 @@ export const TagsInputItemText = defineComponent({
       default: undefined,
       type: [String, Object, Array] as PropType<ClassValue>,
     },
-    itemRecipe: {
+    recipe: {
       default: tagsInputItemRecipe,
       type: Function as PropType<typeof tagsInputItemRecipe>,
     },
   },
   setup(props, { attrs, slots: vueSlots }) {
     return () => {
-      const slots = props.itemRecipe();
+      const slots = props.recipe();
 
       return h(
         TagsInputPrimitive.ItemText as ArkPart,
@@ -180,14 +170,14 @@ export const TagsInputItemPreview = defineComponent({
       default: undefined,
       type: [String, Object, Array] as PropType<ClassValue>,
     },
-    itemRecipe: {
+    recipe: {
       default: tagsInputItemRecipe,
       type: Function as PropType<typeof tagsInputItemRecipe>,
     },
   },
   setup(props, { attrs, slots: vueSlots }) {
     return () => {
-      const slots = props.itemRecipe();
+      const slots = props.recipe();
 
       return h(
         TagsInputPrimitive.ItemPreview as ArkPart,
@@ -207,14 +197,14 @@ export const TagsInputItemInput = defineComponent({
   inheritAttrs: false,
   name: "TagsInput.ItemInput",
   props: {
-    itemRecipe: {
+    recipe: {
       default: tagsInputItemRecipe,
       type: Function as PropType<typeof tagsInputItemRecipe>,
     },
   },
   setup(props, { attrs }) {
     return () => {
-      const slots = props.itemRecipe();
+      const slots = props.recipe();
 
       return h(
         TagsInputPrimitive.ItemInput as ArkPart,
@@ -241,7 +231,7 @@ export const TagsInputItem = defineComponent({
     },
     disabled: { default: undefined, type: Boolean },
     index: { required: true, type: Number },
-    itemRecipe: {
+    recipe: {
       default: tagsInputItemRecipe,
       type: Function as PropType<typeof tagsInputItemRecipe>,
     },
@@ -250,7 +240,7 @@ export const TagsInputItem = defineComponent({
   },
   setup(props, { attrs, slots: vueSlots }) {
     return () => {
-      const slots = props.itemRecipe();
+      const slots = props.recipe();
 
       return h(
         TagsInputPrimitive.Item as ArkPart,

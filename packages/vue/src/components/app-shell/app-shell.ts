@@ -2,7 +2,8 @@ import {
   PhArrowsInLineHorizontal,
   PhArrowsOutLineHorizontal,
 } from "@phosphor-icons/vue";
-import { appShellRecipe } from "@pisagor/recipes/app-shell";
+import type { AppShellProps as AppShellRootSharedProps } from "@pisagor/props";
+import { appShellRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Component, VNode, VNodeChild } from "vue";
 import {
@@ -235,18 +236,16 @@ interface AppShellContextValue {
   setRegionVar: (name: AppShellRegionVar, value: string) => void;
 }
 
-const [provideAppShellContext, useAppShell] =
-  createContext<AppShellContextValue>({
-    defaultValue: undefined as unknown as AppShellContextValue,
-    name: "AppShell",
-    strict: false,
-  });
+const [provideAppShellContext, useAppShell] = createContext(
+  "AppShell",
+)<AppShellContextValue>({
+  defaultValue: undefined as unknown as AppShellContextValue,
+  strict: false,
+});
 
-const [provideAppShellRailContext, useAppShellRail] =
-  createContext<AppShellRailState>({
-    name: "AppShellRail",
-    strict: false,
-  });
+const [provideAppShellRailContext, useAppShellRail] = createContext(
+  "AppShellRail",
+)<AppShellRailState>({ strict: false });
 
 export { useAppShell, useAppShellRail };
 
@@ -476,13 +475,7 @@ function useRegisteredRailState({
 // #endregion
 
 // #region Types (Root)
-export interface AppShellRootProps {
-  /**
-   * Style recipe. Defaults to `appShellRecipe` from `@pisagor/recipes/app-shell`.
-   *
-   * @defaultValue appShellRecipe
-   */
-  recipe?: typeof appShellRecipe;
+export interface AppShellRootProps extends AppShellRootSharedProps {
   class?: unknown;
 }
 // #endregion

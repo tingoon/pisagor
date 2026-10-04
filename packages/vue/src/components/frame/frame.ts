@@ -1,5 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
-import { frameRecipe } from "@pisagor/recipes/frame";
+import type { FrameProps as FrameRootSharedProps } from "@pisagor/props";
+import { frameRecipe } from "@pisagor/recipes";
 import { computed, defineComponent, h, type PropType } from "vue";
 import {
   provideSurfaceContext,
@@ -10,13 +11,7 @@ import {
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface FrameRootProps {
-  /**
-   * Style recipe. Defaults to `frameRecipe` from `@pisagor/recipes/frame`.
-   *
-   * @defaultValue frameRecipe
-   */
-  recipe?: typeof frameRecipe;
+export interface FrameRootProps extends FrameRootSharedProps {
   class?: unknown;
 }
 // #endregion

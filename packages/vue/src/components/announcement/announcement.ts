@@ -1,17 +1,10 @@
 import { ark } from "@ark-ui/vue/factory";
-import { announcementRecipe } from "@pisagor/recipes/announcement";
+import type { AnnouncementProps as AnnouncementSharedProps } from "@pisagor/props";
+import { announcementRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
 // #region Types
-export interface AnnouncementProps {
-  /** Optional badge or label rendered before the title. */
-  badge?: VNodeChild;
-  /**
-   * Style recipe. Defaults to `announcementRecipe` from `@pisagor/recipes/announcement`.
-   *
-   * @defaultValue announcementRecipe
-   */
-  recipe?: typeof announcementRecipe;
+export interface AnnouncementProps extends AnnouncementSharedProps {
   class?: unknown;
   /**
    * The ARIA role of the announcement.

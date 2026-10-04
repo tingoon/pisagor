@@ -1,21 +1,16 @@
 import { Marquee as MarqueePrimitive } from "@ark-ui/vue/marquee";
-import { marqueeRecipe } from "@pisagor/recipes/marquee";
+import type { MarqueeProps as MarqueeSharedProps } from "@pisagor/props";
+import { marqueeRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
 // #region Types
-export interface MarqueeProps {
+export interface MarqueeProps extends MarqueeSharedProps {
   orientation?: "horizontal" | "vertical";
   showEdges?: boolean;
   spacing?: string;
   speed?: number;
   items?: VNodeChild[];
-  /**
-   * Style recipe. Defaults to `marqueeRecipe` from `@pisagor/recipes/marquee`.
-   *
-   * @defaultValue marqueeRecipe
-   */
-  recipe?: typeof marqueeRecipe;
   class?: unknown;
 }
 

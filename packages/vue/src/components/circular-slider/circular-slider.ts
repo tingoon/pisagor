@@ -2,7 +2,8 @@ import {
   AngleSlider as AngleSliderPrimitive,
   useAngleSliderContext,
 } from "@ark-ui/vue/angle-slider";
-import { circularSliderRecipe } from "@pisagor/recipes/circular-slider";
+import type { CircularSliderProps as CircularSliderSharedProps } from "@pisagor/props";
+import { circularSliderRecipe } from "@pisagor/recipes";
 import {
   defineComponent,
   h,
@@ -28,13 +29,7 @@ interface CircularSliderContextValue {
   thumbSize: number;
 }
 
-export interface CircularSliderProps {
-  /**
-   * Style recipe. Defaults to `circularSliderRecipe` from `@pisagor/recipes/circular-slider`.
-   *
-   * @defaultValue circularSliderRecipe
-   */
-  recipe?: typeof circularSliderRecipe;
+export interface CircularSliderProps extends CircularSliderSharedProps {
   class?: unknown;
   defaultValue?: number;
   disabled?: boolean;
@@ -52,9 +47,7 @@ export interface CircularSliderProps {
 
 // #region Context
 const [provideCircularSliderContext, , useCircularSliderContext] =
-  createContext<CircularSliderContextValue>({
-    name: "CircularSlider",
-  });
+  createContext("CircularSlider")<CircularSliderContextValue>();
 // #endregion
 
 const CLOCK_MARKER_ANGLES = [0, 60, 120, 180, 240, 300];

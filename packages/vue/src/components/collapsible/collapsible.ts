@@ -1,18 +1,13 @@
 import { Collapsible as CollapsiblePrimitive } from "@ark-ui/vue/collapsible";
 import { PhCaretDown } from "@phosphor-icons/vue";
-import { collapsibleRecipe } from "@pisagor/recipes/collapsible";
+import type { CollapsibleProps as CollapsibleRootSharedProps } from "@pisagor/props";
+import { collapsibleRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface CollapsibleRootProps {
-  /**
-   * Style recipe. Defaults to `collapsibleRecipe` from `@pisagor/recipes/collapsible`.
-   *
-   * @defaultValue collapsibleRecipe
-   */
-  recipe?: typeof collapsibleRecipe;
+export interface CollapsibleRootProps extends CollapsibleRootSharedProps {
   class?: unknown;
 }
 // #endregion

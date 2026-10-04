@@ -1,7 +1,5 @@
-import {
-  type SurfaceVariantProps,
-  surfaceRecipe,
-} from "@pisagor/recipes/surface";
+import type { SurfaceProps as SurfaceSharedProps } from "@pisagor/props";
+import { type SurfaceVariantProps, surfaceRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
 import { createContext } from "../../internal/utils/create-context";
@@ -20,23 +18,15 @@ const AUTO_VARIANTS = [
   "tertiary",
 ] as const satisfies readonly SurfaceVariant[];
 
-export const [provideSurfaceContext, useSurfaceContext] =
-  createContext<SurfaceContextValue>({
-    name: "PisagorSurface",
-    strict: false,
-  });
+export const [provideSurfaceContext, useSurfaceContext] = createContext(
+  "PisagorSurface",
+)<SurfaceContextValue>({ strict: false });
 
 export function useSurface() {
   return useSurfaceContext();
 }
 
-export interface SurfaceProps extends SurfaceVariantProps {
-  /**
-   * Style recipe. Defaults to `surfaceRecipe` from `@pisagor/recipes/surface`.
-   *
-   * @defaultValue surfaceRecipe
-   */
-  recipe?: typeof surfaceRecipe;
+export interface SurfaceProps extends SurfaceSharedProps {
   class?: unknown;
 }
 

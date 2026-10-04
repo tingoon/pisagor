@@ -7,8 +7,7 @@ export interface DatePickerContextValue {
 }
 
 export const [provideDatePickerContext, , useDatePickerContextRef] =
-  createContext<DatePickerContextValue>({
+  createContext("DatePicker")<DatePickerContextValue>({
     defaultValue: {},
-    name: "DatePicker",
     strict: false,
   });

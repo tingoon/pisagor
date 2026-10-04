@@ -1,7 +1,7 @@
 import { Field as FieldPrimitive } from "@ark-ui/vue/field";
 import { Fieldset as FieldsetPrimitive } from "@ark-ui/vue/fieldset";
-import { fieldRecipe } from "@pisagor/recipes/field";
-import { formControlSeparatorRecipe } from "@pisagor/recipes/form-control";
+import type { FieldProps as FieldSharedProps } from "@pisagor/props";
+import { fieldRecipe, formControlSeparatorRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { Separator } from "../separator/separator";
@@ -12,13 +12,7 @@ type FormControlVariant = "primary" | "secondary";
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface FieldProps {
-  /**
-   * Style recipe. Defaults to `fieldRecipe` from `@pisagor/recipes/field`.
-   *
-   * @defaultValue fieldRecipe
-   */
-  recipe?: typeof fieldRecipe;
+export interface FieldProps extends FieldSharedProps {
   class?: unknown;
   orientation?: "horizontal" | "responsive" | "vertical";
   reverse?: boolean;

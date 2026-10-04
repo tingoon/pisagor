@@ -1,9 +1,13 @@
 import { ark } from "@ark-ui/vue/factory";
+import type {
+  DataListItemProps as DataListItemSharedProps,
+  DataListProps as DataListRootSharedProps,
+} from "@pisagor/props";
 import {
   type DataListItemRecipeSlot,
   dataListItemRecipe,
   dataListRecipe,
-} from "@pisagor/recipes/data-list";
+} from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 
@@ -17,7 +21,7 @@ type DataListClassNames = VariantClassNames<DataListItemRecipeSlot>;
 
 type ArkPart = Parameters<typeof h>[0];
 
-interface DataListRootProps {
+interface DataListRootProps extends DataListRootSharedProps {
   /**
    * The orientation of the data list.
    *
@@ -31,19 +35,13 @@ export interface DataListProps extends Omit<DataListRootProps, "children"> {
   items?: DataListPresetItem[];
 }
 
+export interface DataListItemProps extends DataListItemSharedProps {
+  class?: unknown;
+  classNames?: DataListClassNames;
+  value?: VNodeChild;
+}
+
 export interface DataListItemLabelProps {
-  /**
-   * Style recipe. Defaults to `dataListItemRecipe` from `@pisagor/recipes/data-list-item`.
-   *
-   * @defaultValue dataListItemRecipe
-   */
-  itemRecipe?: typeof dataListItemRecipe;
-  /**
-   * Style recipe. Defaults to `dataListRecipe` from `@pisagor/recipes/data-list`.
-   *
-   * @defaultValue dataListRecipe
-   */
-  recipe?: typeof dataListRecipe;
   class?: unknown;
 }
 // #endregion
@@ -90,14 +88,14 @@ export const DataListItemLabel = defineComponent({
       default: undefined,
       type: [String, Object, Array] as PropType<unknown>,
     },
-    itemRecipe: {
+    recipe: {
       default: dataListItemRecipe,
       type: Function as PropType<typeof dataListItemRecipe>,
     },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots_ = props.itemRecipe();
+      const slots_ = props.recipe();
 
       return h(
         ark.dt,
@@ -121,14 +119,14 @@ export const DataListItemValue = defineComponent({
       default: undefined,
       type: [String, Object, Array] as PropType<unknown>,
     },
-    itemRecipe: {
+    recipe: {
       default: dataListItemRecipe,
       type: Function as PropType<typeof dataListItemRecipe>,
     },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots_ = props.itemRecipe();
+      const slots_ = props.recipe();
 
       return h(
         ark.dd,
@@ -156,7 +154,7 @@ export const DataListItem = defineComponent({
       default: undefined,
       type: Object as PropType<DataListClassNames>,
     },
-    itemRecipe: {
+    recipe: {
       default: dataListItemRecipe,
       type: Function as PropType<typeof dataListItemRecipe>,
     },
@@ -167,7 +165,7 @@ export const DataListItem = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const slots_ = props.itemRecipe();
+      const slots_ = props.recipe();
 
       const label = slots.default?.();
 

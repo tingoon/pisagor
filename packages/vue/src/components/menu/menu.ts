@@ -1,9 +1,13 @@
 import { ark } from "@ark-ui/vue/factory";
+import type {
+  MenuItemProps as MenuItemSharedProps,
+  MenuProps as MenuRootSharedProps,
+} from "@pisagor/props";
 import {
   type MenuRecipeSlot,
   menuItemRecipe,
   menuRecipe,
-} from "@pisagor/recipes/menu";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { VariantClassNames } from "../../internal/types";
@@ -11,24 +15,11 @@ import type { VariantClassNames } from "../../internal/types";
 // #region Types
 type MenuClassNames = VariantClassNames<MenuRecipeSlot>;
 
-export interface MenuRootProps {
-  /** Slot class names */
-  /**
-   * Style recipe. Defaults to `menuRecipe` from `@pisagor/recipes/menu`.
-   *
-   * @defaultValue menuRecipe
-   */
-  recipe?: typeof menuRecipe;
+export interface MenuRootProps extends MenuRootSharedProps {
   classNames?: MenuClassNames;
 }
 
-export interface MenuItemProps {
-  /**
-   * Style recipe. Defaults to `menuItemRecipe` from `@pisagor/recipes/menu-item`.
-   *
-   * @defaultValue menuItemRecipe
-   */
-  itemRecipe?: typeof menuItemRecipe;
+export interface MenuItemProps extends MenuItemSharedProps {
   class?: unknown;
 }
 // #endregion
@@ -182,13 +173,9 @@ export const MenuItem = defineComponent({
       default: undefined,
       type: Object as PropType<MenuClassNames>,
     },
-    itemRecipe: {
+    recipe: {
       default: menuItemRecipe,
       type: Function as PropType<typeof menuItemRecipe>,
-    },
-    recipe: {
-      default: menuRecipe,
-      type: Function as PropType<typeof menuRecipe>,
     },
     type: { default: "button", type: String },
     variant: {
@@ -198,12 +185,12 @@ export const MenuItem = defineComponent({
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const slots = props.recipe();
+      const menuSlots = menuRecipe();
 
       return h(
         ark.li as ArkPart,
         {
-          class: slots.wrapper({ class: props.classNames?.wrapper }),
+          class: menuSlots.wrapper({ class: props.classNames?.wrapper }),
           "data-part": "item-wrapper",
           "data-scope": "menu",
           role: "none",
@@ -214,7 +201,7 @@ export const MenuItem = defineComponent({
             {
               ...attrs,
               class: cn(
-                props.itemRecipe({ variant: props.variant }),
+                props.recipe({ variant: props.variant }),
                 props.class,
                 props.classNames?.item,
               ),

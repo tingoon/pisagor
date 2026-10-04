@@ -6,7 +6,8 @@ import {
   useComboboxContext as useCombobox,
 } from "@ark-ui/vue/combobox";
 import { PhCaretUpDown, PhCheck, PhX } from "@phosphor-icons/vue";
-import { comboboxRecipe } from "@pisagor/recipes/combobox";
+import type { ComboboxProps as ComboboxRootSharedProps } from "@pisagor/props";
+import { comboboxRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
   defineComponent,
@@ -36,7 +37,7 @@ export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   variant?: FormControlVariant;
   collection?: ListCollection<T>;
   onValueChange?: (value: string[]) => void;
-};
+} & ComboboxRootSharedProps;
 
 export interface ComboboxProps extends Omit<ComboboxRootProps, "children"> {
   items?: Array<ComboboxPresetItem | string>;
@@ -62,13 +63,7 @@ export interface ComboboxItemGroupProps {
   class?: unknown;
 }
 
-export interface ComboboxControlProps {
-  /**
-   * Style recipe. Defaults to `comboboxRecipe` from `@pisagor/recipes/combobox`.
-   *
-   * @defaultValue comboboxRecipe
-   */
-  recipe?: typeof comboboxRecipe;
+export interface ComboboxControlProps extends ComboboxRootSharedProps {
   class?: unknown;
 }
 // #endregion

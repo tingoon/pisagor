@@ -1,17 +1,12 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type BadgeVariantProps, badgeRecipe } from "@pisagor/recipes/badge";
+import type { BadgeProps as BadgeSharedProps } from "@pisagor/props";
+import { type BadgeVariantProps, badgeRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
 export type BadgeVariant = NonNullable<BadgeVariantProps["variant"]>;
 
-export interface BadgeProps extends BadgeVariantProps {
-  /**
-   * Style recipe. Defaults to `badgeRecipe` from `@pisagor/recipes/badge`.
-   *
-   * @defaultValue badgeRecipe
-   */
-  recipe?: typeof badgeRecipe;
+export interface BadgeProps extends BadgeSharedProps {
   class?: unknown;
 }
 // #endregion

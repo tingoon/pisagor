@@ -1,9 +1,10 @@
 import { Splitter as SplitterPrimitive } from "@ark-ui/vue/splitter";
 import { PhDotsSixVertical } from "@phosphor-icons/vue";
-import {
-  resizableEdgeHandleRecipe,
-  resizableRecipe,
-} from "@pisagor/recipes/resizable";
+import type {
+  ResizableEdgeHandleProps as ResizableEdgeHandleSharedProps,
+  ResizableProps as ResizableRootSharedProps,
+} from "@pisagor/props";
+import { resizableEdgeHandleRecipe, resizableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, ref } from "vue";
 
@@ -11,7 +12,8 @@ import { defineComponent, h, type PropType, ref } from "vue";
 export type ResizableHandlePosition = "bottom" | "center" | "top";
 export type ResizableEdgePlacement = "end" | "start";
 
-export interface ResizableEdgeHandleProps {
+export interface ResizableEdgeHandleProps
+  extends ResizableEdgeHandleSharedProps {
   handlePosition?: ResizableHandlePosition;
   /** Accessible label for the resize control. */
   label: string;
@@ -25,13 +27,7 @@ export interface ResizableEdgeHandleProps {
 }
 
 // We keep the primitive wrapper types intentionally loose; `h()` polymorphic casts.
-export interface ResizableRootProps {
-  /**
-   * Style recipe. Defaults to `resizableRecipe` from `@pisagor/recipes/resizable`.
-   *
-   * @defaultValue resizableRecipe
-   */
-  recipe?: typeof resizableRecipe;
+export interface ResizableRootProps extends ResizableRootSharedProps {
   class?: unknown;
 }
 

@@ -1,5 +1,6 @@
 import { Tabs as TabsPrimitive } from "@ark-ui/vue/tabs";
-import { tabsRecipe } from "@pisagor/recipes/tabs";
+import type { TabsProps as TabsRootSharedProps } from "@pisagor/props";
+import { tabsRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
@@ -11,13 +12,7 @@ export interface TabsPresetItem {
   value: string;
 }
 
-export interface TabsRootProps {
-  /**
-   * Style recipe. Defaults to `tabsRecipe` from `@pisagor/recipes/tabs`.
-   *
-   * @defaultValue tabsRecipe
-   */
-  recipe?: typeof tabsRecipe;
+export interface TabsRootProps extends TabsRootSharedProps {
   class?: unknown;
 }
 // #endregion

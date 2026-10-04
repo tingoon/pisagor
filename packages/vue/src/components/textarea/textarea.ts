@@ -1,12 +1,11 @@
 import { Field as FieldPrimitive } from "@ark-ui/vue/field";
+import type { TextareaProps as TextareaSharedProps } from "@pisagor/props";
 import {
   type FormControlShellVariantProps,
   formControlShellRecipe,
-} from "@pisagor/recipes/form-control";
-import {
   type TextareaRecipeSlot,
   textareaRecipe,
-} from "@pisagor/recipes/textarea";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
 import {
@@ -29,13 +28,9 @@ type TextareaClassNames = VariantClassNames<TextareaRecipeSlot>;
 type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
 
 // #region Types
-export interface TextareaProps extends FormControlShellVariantProps {
-  /**
-   * Style recipe. Defaults to `textareaRecipe` from `@pisagor/recipes/textarea`.
-   *
-   * @defaultValue textareaRecipe
-   */
-  recipe?: typeof textareaRecipe;
+export interface TextareaProps
+  extends FormControlShellVariantProps,
+    TextareaSharedProps {
   class?: unknown;
   classNames?: TextareaClassNames;
   clearable?: boolean;

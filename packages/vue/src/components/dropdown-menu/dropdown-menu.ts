@@ -1,11 +1,11 @@
 import { ark } from "@ark-ui/vue/factory";
 import { Menu as MenuPrimitive } from "@ark-ui/vue/menu";
 import { PhCaretRight, PhCheck } from "@phosphor-icons/vue";
-import {
-  type DropdownMenuItemVariantProps,
-  dropdownMenuItemRecipe,
-  dropdownMenuRecipe,
-} from "@pisagor/recipes/dropdown-menu";
+import type {
+  DropdownMenuItemProps as DropdownMenuItemSharedProps,
+  DropdownMenuProps as DropdownMenuPositionerSharedProps,
+} from "@pisagor/props";
+import { dropdownMenuItemRecipe, dropdownMenuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { type CSSProperties, defineComponent, h, type PropType } from "vue";
 
@@ -14,13 +14,7 @@ export interface DropdownMenuItemGroupProps {
   heading?: string;
 }
 
-export interface DropdownMenuItemProps extends DropdownMenuItemVariantProps {
-  /**
-   * Style recipe. Defaults to `dropdownMenuItemRecipe` from `@pisagor/recipes/dropdown-menu-item`.
-   *
-   * @defaultValue dropdownMenuItemRecipe
-   */
-  itemRecipe?: typeof dropdownMenuItemRecipe;
+export interface DropdownMenuItemProps extends DropdownMenuItemSharedProps {
   class?: unknown;
 }
 
@@ -34,13 +28,8 @@ export interface DropdownMenuRootProps {
   unmountOnExit?: boolean;
 }
 
-export interface DropdownMenuPositionerProps {
-  /**
-   * Style recipe. Defaults to `dropdownMenuRecipe` from `@pisagor/recipes/dropdown-menu`.
-   *
-   * @defaultValue dropdownMenuRecipe
-   */
-  recipe?: typeof dropdownMenuRecipe;
+export interface DropdownMenuPositionerProps
+  extends DropdownMenuPositionerSharedProps {
   class?: unknown;
 }
 // #endregion
@@ -240,7 +229,7 @@ export const DropdownMenuItem = defineComponent({
       default: undefined,
       type: [String, Object, Array] as PropType<unknown>,
     },
-    itemRecipe: {
+    recipe: {
       default: dropdownMenuItemRecipe,
       type: Function as PropType<typeof dropdownMenuItemRecipe>,
     },
@@ -255,7 +244,7 @@ export const DropdownMenuItem = defineComponent({
         MenuPrimitive.Item as ArkPart,
         {
           ...attrs,
-          class: props.itemRecipe({ variant: props.variant }).base({
+          class: props.recipe({ variant: props.variant }).base({
             class: cn(props.class, attrs.class),
           }),
           "data-variant": props.variant,
@@ -273,13 +262,9 @@ export const DropdownMenuQuickItem = defineComponent({
       default: undefined,
       type: [String, Object, Array] as PropType<unknown>,
     },
-    itemRecipe: {
+    recipe: {
       default: dropdownMenuItemRecipe,
       type: Function as PropType<typeof dropdownMenuItemRecipe>,
-    },
-    recipe: {
-      default: dropdownMenuRecipe,
-      type: Function as PropType<typeof dropdownMenuRecipe>,
     },
     variant: {
       default: "default",
@@ -288,14 +273,14 @@ export const DropdownMenuQuickItem = defineComponent({
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = props.recipe();
+      const menuSlots = dropdownMenuRecipe();
 
       return h(
         MenuPrimitive.Item as ArkPart,
         {
           ...attrs,
-          class: props.itemRecipe({ variant: props.variant }).base({
-            class: variantSlots.quickItem({
+          class: props.recipe({ variant: props.variant }).base({
+            class: menuSlots.quickItem({
               class: cn(props.class, attrs.class),
             }),
           }),
@@ -314,14 +299,14 @@ export const DropdownMenuCheckboxItem = defineComponent({
       default: undefined,
       type: [String, Object, Array] as PropType<unknown>,
     },
-    itemRecipe: {
+    recipe: {
       default: dropdownMenuItemRecipe,
       type: Function as PropType<typeof dropdownMenuItemRecipe>,
     },
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const slots = props.itemRecipe({ inset: true, variant: "default" });
+      const slots = props.recipe({ inset: true, variant: "default" });
 
       return h(
         MenuPrimitive.CheckboxItem as ArkPart,
@@ -371,14 +356,14 @@ export const DropdownMenuRadioItem = defineComponent({
       default: undefined,
       type: [String, Object, Array] as PropType<unknown>,
     },
-    itemRecipe: {
+    recipe: {
       default: dropdownMenuItemRecipe,
       type: Function as PropType<typeof dropdownMenuItemRecipe>,
     },
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const slots = props.itemRecipe({ inset: true, variant: "default" });
+      const slots = props.recipe({ inset: true, variant: "default" });
 
       return h(
         MenuPrimitive.RadioItem as ArkPart,
@@ -460,7 +445,7 @@ export const DropdownMenuTriggerItem = defineComponent({
       default: undefined,
       type: [String, Object, Array] as PropType<unknown>,
     },
-    itemRecipe: {
+    recipe: {
       default: dropdownMenuItemRecipe,
       type: Function as PropType<typeof dropdownMenuItemRecipe>,
     },
@@ -471,7 +456,7 @@ export const DropdownMenuTriggerItem = defineComponent({
         MenuPrimitive.TriggerItem as ArkPart,
         {
           ...attrs,
-          class: props.itemRecipe({ variant: "default" }).base({
+          class: props.recipe({ variant: "default" }).base({
             class: cn(props.class, attrs.class),
           }),
         },

@@ -1,4 +1,4 @@
-import type { ItemRecipe, ItemVariantProps } from "@pisagor/recipes/item";
+import type { ItemRecipe, ItemVariantProps } from "@pisagor/recipes";
 import { type MaybeRef, unref } from "vue";
 import { createContext } from "../../internal/utils/create-context";
 
@@ -7,9 +7,7 @@ export interface ItemContextValue extends ItemVariantProps {
 }
 
 export const [provideItemContext, , useItemContextRef] =
-  createContext<ItemContextValue>({
-    name: "Item",
-  });
+  createContext("Item")<ItemContextValue>();
 
 export function useItem(): MaybeRef<ItemContextValue> {
   const context = useItemContextRef();

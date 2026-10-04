@@ -1,4 +1,4 @@
-import { buttonRecipe } from "@pisagor/recipes/button";
+import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h } from "vue";
 import { HoverCard } from "../../../../../src/components/hover-card";

@@ -1,6 +1,7 @@
 import { Accordion as AccordionPrimitive } from "@ark-ui/vue/accordion";
 import { PhCaretDown } from "@phosphor-icons/vue";
-import { accordionItemRecipe } from "@pisagor/recipes/accordion";
+import type { AccordionItemProps as AccordionItemSharedProps } from "@pisagor/props";
+import { accordionItemRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
 // #region Types
@@ -18,13 +19,7 @@ export interface AccordionProps {
   unmountOnExit?: boolean;
 }
 
-export interface AccordionItemProps {
-  /**
-   * Style recipe. Defaults to `accordionItemRecipe` from `@pisagor/recipes/accordion-item`.
-   *
-   * @defaultValue accordionItemRecipe
-   */
-  itemRecipe?: typeof accordionItemRecipe;
+export interface AccordionItemProps extends AccordionItemSharedProps {
   class?: unknown;
 }
 // #endregion
@@ -64,14 +59,14 @@ export const AccordionItem = defineComponent({
       default: undefined,
       type: [String, Object, Array] as PropType<unknown>,
     },
-    itemRecipe: {
+    recipe: {
       default: accordionItemRecipe,
       type: Function as PropType<typeof accordionItemRecipe>,
     },
   },
   setup(props, { attrs, slots }) {
     return () => {
-      const variantSlots = props.itemRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         AccordionPrimitive.Item as ArkPart,
@@ -93,14 +88,14 @@ export const AccordionItemTrigger = defineComponent({
       default: undefined,
       type: [String, Object, Array] as PropType<unknown>,
     },
-    itemRecipe: {
+    recipe: {
       default: accordionItemRecipe,
       type: Function as PropType<typeof accordionItemRecipe>,
     },
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const variantSlots = props.itemRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         AccordionPrimitive.ItemTrigger as ArkPart,
@@ -127,14 +122,14 @@ export const AccordionItemContent = defineComponent({
       default: undefined,
       type: [String, Object, Array] as PropType<unknown>,
     },
-    itemRecipe: {
+    recipe: {
       default: accordionItemRecipe,
       type: Function as PropType<typeof accordionItemRecipe>,
     },
   },
   setup(props, { attrs, slots: children }) {
     return () => {
-      const variantSlots = props.itemRecipe();
+      const variantSlots = props.recipe();
 
       return h(
         AccordionPrimitive.ItemContent as ArkPart,

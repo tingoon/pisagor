@@ -6,11 +6,12 @@ import {
   useSelectContext as useSelect,
 } from "@ark-ui/vue/select";
 import { PhCaretUpDown, PhCheck, PhX } from "@phosphor-icons/vue";
+import type { SelectProps as SelectRootSharedProps } from "@pisagor/props";
 import {
   type FormControlShellVariantProps,
   formControlShellRecipe,
-} from "@pisagor/recipes/form-control";
-import { selectRecipe } from "@pisagor/recipes/select";
+  selectRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
   defineComponent,
@@ -40,7 +41,7 @@ export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
   variant?: FormControlVariant;
   collection?: ListCollection<T>;
   onValueChange?: (value: string | string[]) => void;
-};
+} & SelectRootSharedProps;
 
 export interface SelectProps extends Omit<SelectRootProps, "children"> {
   items?: Array<SelectPresetItem | string>;
@@ -55,13 +56,7 @@ export interface SelectProps extends Omit<SelectRootProps, "children"> {
 
 export type SelectTriggerSize = FormControlShellVariantProps["size"];
 
-export interface SelectTriggerProps {
-  /**
-   * Style recipe. Defaults to `selectRecipe` from `@pisagor/recipes/select`.
-   *
-   * @defaultValue selectRecipe
-   */
-  recipe?: typeof selectRecipe;
+export interface SelectTriggerProps extends SelectRootSharedProps {
   class?: unknown;
 }
 // #endregion

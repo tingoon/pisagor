@@ -6,11 +6,12 @@ import {
   PhTextItalic,
   PhTextStrikethrough,
 } from "@phosphor-icons/vue";
-import { formControlShellRecipe } from "@pisagor/recipes/form-control";
+import type { RichTextEditorProps as RichTextEditorRootSharedProps } from "@pisagor/props";
 import {
+  formControlShellRecipe,
   type RichTextEditorRecipe,
   richTextEditorRecipe,
-} from "@pisagor/recipes/rich-text-editor";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import StarterKit from "@tiptap/starter-kit";
 import { type Editor, EditorContent, useEditor } from "@tiptap/vue-3";
@@ -38,7 +39,7 @@ interface RichTextEditorContextValue {
   slots: RichTextEditorRecipe;
 }
 
-export interface RichTextEditorRootProps {
+export interface RichTextEditorRootProps extends RichTextEditorRootSharedProps {
   "aria-label"?: string;
   /** Initial HTML content for uncontrolled usage. */
   defaultValue?: string;
@@ -59,12 +60,6 @@ export interface RichTextEditorRootProps {
   value?: string;
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
-  /**
-   * Style recipe. Defaults to `richTextEditorRecipe` from `@pisagor/recipes/rich-text-editor`.
-   *
-   * @defaultValue richTextEditorRecipe
-   */
-  recipe?: typeof richTextEditorRecipe;
   class?: unknown;
 }
 
@@ -79,9 +74,7 @@ export interface RichTextEditorContentProps {
 
 // #region Context
 const [provideRichTextEditorContext, useRichTextEditorContext] =
-  createContext<RichTextEditorContextValue>({
-    name: "RichTextEditor",
-  });
+  createContext("RichTextEditor")<RichTextEditorContextValue>();
 
 /**
  * Access the TipTap editor instance from the nearest RichTextEditor root.

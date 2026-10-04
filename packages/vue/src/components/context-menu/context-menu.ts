@@ -1,5 +1,6 @@
 import { Menu as MenuPrimitive } from "@ark-ui/vue/menu";
-import { contextMenuRecipe } from "@pisagor/recipes/context-menu";
+import type { ContextMenuProps as ContextMenuContextTriggerSharedProps } from "@pisagor/props";
+import { contextMenuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNode } from "vue";
 import type { DropdownMenuRootProps } from "../dropdown-menu/dropdown-menu";
@@ -26,13 +27,8 @@ function wrapDropdownMenuPart(
 }
 
 // #region Types
-export interface ContextMenuContextTriggerProps {
-  /**
-   * Style recipe. Defaults to `contextMenuRecipe` from `@pisagor/recipes/context-menu`.
-   *
-   * @defaultValue contextMenuRecipe
-   */
-  recipe?: typeof contextMenuRecipe;
+export interface ContextMenuContextTriggerProps
+  extends ContextMenuContextTriggerSharedProps {
   class?: unknown;
 }
 // #endregion

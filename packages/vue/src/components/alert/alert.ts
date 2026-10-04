@@ -1,10 +1,11 @@
 import { ark } from "@ark-ui/vue/factory";
+import type { AlertProps as AlertSharedProps } from "@pisagor/props";
 import {
   type AlertRecipe,
   type AlertRecipeSlot,
   type AlertVariantProps,
   alertRecipe,
-} from "@pisagor/recipes/alert";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
   computed,
@@ -20,15 +21,9 @@ import { createContext } from "../../internal/utils/create-context";
 // #region Types
 type AlertClassNames = VariantClassNames<AlertRecipeSlot>;
 
-export interface AlertProps extends AlertVariantProps {
+export interface AlertProps extends AlertSharedProps {
   action?: VNodeChild;
   actionProps?: Record<string, unknown>;
-  /**
-   * Style recipe. Defaults to `alertRecipe` from `@pisagor/recipes/alert`.
-   *
-   * @defaultValue alertRecipe
-   */
-  recipe?: typeof alertRecipe;
   class?: unknown;
   classNames?: AlertClassNames;
   description?: VNodeChild;
@@ -48,9 +43,7 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Context
 const [provideAlertContext, , useAlertContextRef] =
-  createContext<AlertContextValue>({
-    name: "Alert",
-  });
+  createContext("Alert")<AlertContextValue>();
 // #endregion
 
 // #region Parts

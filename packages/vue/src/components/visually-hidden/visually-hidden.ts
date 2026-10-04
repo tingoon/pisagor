@@ -1,16 +1,11 @@
 import { ark } from "@ark-ui/vue/factory";
-import { visuallyHiddenRecipe } from "@pisagor/recipes/visually-hidden";
+import type { VisuallyHiddenProps as VisuallyHiddenSharedProps } from "@pisagor/props";
+import { visuallyHiddenRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
-export interface VisuallyHiddenProps {
-  /**
-   * Style recipe. Defaults to `visuallyHiddenRecipe` from `@pisagor/recipes/visually-hidden`.
-   *
-   * @defaultValue visuallyHiddenRecipe
-   */
-  recipe?: typeof visuallyHiddenRecipe;
+export interface VisuallyHiddenProps extends VisuallyHiddenSharedProps {
   class?: unknown;
 }
 // #endregion

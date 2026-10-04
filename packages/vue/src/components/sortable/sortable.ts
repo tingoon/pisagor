@@ -1,10 +1,14 @@
 import { ark } from "@ark-ui/vue/factory";
 import { PhDotsSixVertical } from "@phosphor-icons/vue";
+import type {
+  SortableItemProps as SortableItemSharedProps,
+  SortableProps as SortableRootSharedProps,
+} from "@pisagor/props";
 import {
   type SortableItemRecipe,
   sortableItemRecipe,
   sortableRecipe,
-} from "@pisagor/recipes/sortable";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
   defineComponent,
@@ -40,28 +44,16 @@ interface SortableItemContextValue {
   slots: SortableItemRecipe;
 }
 
-export interface SortableRootProps {
+export interface SortableRootProps extends SortableRootSharedProps {
   items: string[];
   onValueChange?: (items: string[]) => void;
   orientation?: SortableOrientation;
   disabled?: boolean;
-  /**
-   * Style recipe. Defaults to `sortableRecipe` from `@pisagor/recipes/sortable`.
-   *
-   * @defaultValue sortableRecipe
-   */
-  recipe?: typeof sortableRecipe;
   class?: unknown;
 }
 
-export interface SortableItemProps {
+export interface SortableItemProps extends SortableItemSharedProps {
   value: string;
-  /**
-   * Style recipe. Defaults to `sortableItemRecipe` from `@pisagor/recipes/sortable-item`.
-   *
-   * @defaultValue sortableItemRecipe
-   */
-  itemRecipe?: typeof sortableItemRecipe;
   class?: unknown;
 }
 
@@ -72,13 +64,9 @@ export interface SortableHandleProps {
 
 // #region Context
 const [provideSortableContext, useSortableContext] =
-  createContext<SortableContextValue>({
-    name: "Sortable",
-  });
+  createContext("Sortable")<SortableContextValue>();
 const [provideSortableItemContext, useSortableItemContext] =
-  createContext<SortableItemContextValue>({
-    name: "SortableItem",
-  });
+  createContext("SortableItem")<SortableItemContextValue>();
 // #endregion
 
 // #region Helpers
@@ -302,7 +290,7 @@ export const SortableItem = defineComponent({
       default: undefined,
       type: [String, Object, Array] as PropType<unknown>,
     },
-    itemRecipe: {
+    recipe: {
       default: sortableItemRecipe,
       type: Function as PropType<typeof sortableItemRecipe>,
     },
@@ -314,7 +302,7 @@ export const SortableItem = defineComponent({
       return () => null;
     }
 
-    const itemSlots = props.itemRecipe();
+    const itemSlots = props.recipe();
     const itemContext = reactive<SortableItemContextValue>({
       id: props.value,
       isDragging: false,

@@ -5,11 +5,12 @@ import {
   SignaturePad as SignaturePadPrimitive,
 } from "@ark-ui/vue/signature-pad";
 import { PhArrowCounterClockwise } from "@phosphor-icons/vue";
-import { formControlZoneRecipe } from "@pisagor/recipes/form-control";
+import type { SignaturePadProps as SignaturePadSharedProps } from "@pisagor/props";
 import {
+  formControlZoneRecipe,
   type SignaturePadRecipeSlot,
   signaturePadRecipe,
-} from "@pisagor/recipes/signature-pad";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import type { VariantClassNames } from "../../internal/types";
@@ -23,13 +24,7 @@ type ArkPart = Parameters<typeof h>[0];
 type SignaturePadClassNames = VariantClassNames<SignaturePadRecipeSlot>;
 
 // #region Types
-export interface SignaturePadProps {
-  /**
-   * Style recipe. Defaults to `signaturePadRecipe` from `@pisagor/recipes/signature-pad`.
-   *
-   * @defaultValue signaturePadRecipe
-   */
-  recipe?: typeof signaturePadRecipe;
+export interface SignaturePadProps extends SignaturePadSharedProps {
   class?: unknown;
   /** Slot class names */
   classNames?: SignaturePadClassNames;

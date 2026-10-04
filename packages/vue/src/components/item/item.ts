@@ -1,5 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
-import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes/item";
+import type { ItemProps as ItemSharedProps } from "@pisagor/props";
+import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes";
 import { computed, defineComponent, h, type PropType, unref } from "vue";
 import {
   provideItemContext,
@@ -11,13 +12,7 @@ import { useItemGroupContextRef } from "./item-group.context";
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface ItemProps extends ItemVariantProps {
-  /**
-   * Style recipe. Defaults to `itemRecipe` from `@pisagor/recipes/item`.
-   *
-   * @defaultValue itemRecipe
-   */
-  recipe?: typeof itemRecipe;
+export interface ItemProps extends ItemSharedProps {
   class?: unknown;
 }
 

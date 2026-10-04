@@ -1,18 +1,13 @@
 import { Swap as SwapPrimitive } from "@ark-ui/vue/swap";
-import { type SwapVariantProps, swapRecipe } from "@pisagor/recipes/swap";
+import type { SwapProps as SwapSharedProps } from "@pisagor/props";
+import { type SwapVariantProps, swapRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
 // #region Types
 export type SwapVariant = NonNullable<SwapVariantProps["variant"]>;
 
-export interface SwapProps extends SwapVariantProps {
-  /**
-   * Style recipe. Defaults to `swapRecipe` from `@pisagor/recipes/swap`.
-   *
-   * @defaultValue swapRecipe
-   */
-  recipe?: typeof swapRecipe;
+export interface SwapProps extends SwapSharedProps {
   class?: unknown;
   lazyMount?: boolean;
   /**

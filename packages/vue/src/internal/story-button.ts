@@ -1,4 +1,4 @@
-import { buttonRecipe } from "@pisagor/recipes/button";
+import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 
 export function outlineButtonClass(className?: string) {

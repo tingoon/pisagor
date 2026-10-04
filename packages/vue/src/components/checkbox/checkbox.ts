@@ -1,7 +1,14 @@
 import { Checkbox as CheckboxPrimitive } from "@ark-ui/vue/checkbox";
 import { PhCheck, PhMinus } from "@phosphor-icons/vue";
-import { checkboxGroupRecipe, checkboxRecipe } from "@pisagor/recipes/checkbox";
-import { formControlToggleRecipe } from "@pisagor/recipes/form-control";
+import type {
+  CheckboxGroupProps as CheckboxGroupSharedProps,
+  CheckboxProps as CheckboxSharedProps,
+} from "@pisagor/props";
+import {
+  checkboxGroupRecipe,
+  checkboxRecipe,
+  formControlToggleRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
@@ -11,26 +18,14 @@ type FormControlVariant = "primary" | "secondary";
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface CheckboxGroupProps {
-  /**
-   * Style recipe. Defaults to `checkboxGroupRecipe` from `@pisagor/recipes/checkbox`.
-   *
-   * @defaultValue checkboxGroupRecipe
-   */
-  recipe?: typeof checkboxGroupRecipe;
+export interface CheckboxGroupProps extends CheckboxGroupSharedProps {
   class?: unknown;
 }
 
-export interface CheckboxProps {
+export interface CheckboxProps extends CheckboxSharedProps {
+  class?: unknown;
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
-  /**
-   * Style recipe. Defaults to `checkboxRecipe` from `@pisagor/recipes/checkbox`.
-   *
-   * @defaultValue checkboxRecipe
-   */
-  recipe?: typeof checkboxRecipe;
-  class?: unknown;
 }
 // #endregion
 

@@ -1,15 +1,10 @@
 import { ark } from "@ark-ui/vue/factory";
-import { linkBoxRecipe } from "@pisagor/recipes/link-box";
+import type { LinkBoxProps as LinkBoxRootSharedProps } from "@pisagor/props";
+import { linkBoxRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
-export interface LinkBoxRootProps {
-  /**
-   * Style recipe. Defaults to `linkBoxRecipe` from `@pisagor/recipes/link-box`.
-   *
-   * @defaultValue linkBoxRecipe
-   */
-  recipe?: typeof linkBoxRecipe;
+export interface LinkBoxRootProps extends LinkBoxRootSharedProps {
   class?: unknown;
 }
 // #endregion

@@ -1,18 +1,13 @@
 import { ark } from "@ark-ui/vue/factory";
-import { proseRecipe } from "@pisagor/recipes/prose";
+import type { ProseProps as ProseSharedProps } from "@pisagor/props";
+import { proseRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface ProseProps {
-  /**
-   * Style recipe. Defaults to `proseRecipe` from `@pisagor/recipes/prose`.
-   *
-   * @defaultValue proseRecipe
-   */
-  recipe?: typeof proseRecipe;
+export interface ProseProps extends ProseSharedProps {
   class?: unknown;
   /**
    * Trusted HTML content rendered as-is.

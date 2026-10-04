@@ -1,6 +1,7 @@
 import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/vue/password-input";
 import { PhEye, PhEyeSlash, PhX } from "@phosphor-icons/vue";
-import { passwordInputRecipe } from "@pisagor/recipes/password-input";
+import type { PasswordInputProps as PasswordInputSharedProps } from "@pisagor/props";
+import { passwordInputRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import {
   type ClearableChangeEvent,
@@ -18,13 +19,8 @@ type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
 
 // #region Types
 export interface PasswordInputProps
-  extends Pick<InputGroupProps, "size" | "variant"> {
-  /**
-   * Style recipe. Defaults to `passwordInputRecipe` from `@pisagor/recipes/password-input`.
-   *
-   * @defaultValue passwordInputRecipe
-   */
-  recipe?: typeof passwordInputRecipe;
+  extends Pick<InputGroupProps, "size" | "variant">,
+    PasswordInputSharedProps {
   class?: unknown;
   clearButtonProps?: InputGroupButtonProps;
   clearable?: boolean;

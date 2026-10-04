@@ -4,7 +4,8 @@ import {
   useDatePickerContext as useDatePicker,
 } from "@ark-ui/vue/date-picker";
 import { PhCalendar, PhClock, PhX } from "@phosphor-icons/vue";
-import { datePickerRecipe } from "@pisagor/recipes/date-picker";
+import type { DatePickerProps as DatePickerRootSharedProps } from "@pisagor/props";
+import { datePickerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 
 type FormControlVariant = "primary" | "secondary";
@@ -22,7 +23,7 @@ import {
 } from "./date-picker.context";
 
 // #region Types
-export interface DatePickerRootProps {
+export interface DatePickerRootProps extends DatePickerRootSharedProps {
   variant?: FormControlVariant;
   positioning?: unknown;
   onValueChange?: (value: unknown) => void;
@@ -30,14 +31,8 @@ export interface DatePickerRootProps {
   defaultValue?: unknown;
 }
 
-export interface DatePickerTriggerProps {
+export interface DatePickerTriggerProps extends DatePickerRootSharedProps {
   clearable?: boolean;
-  /**
-   * Style recipe. Defaults to `datePickerRecipe` from `@pisagor/recipes/date-picker`.
-   *
-   * @defaultValue datePickerRecipe
-   */
-  recipe?: typeof datePickerRecipe;
 }
 
 export interface DatePickerInputProps extends Omit<InputProps, "size"> {

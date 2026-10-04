@@ -1,10 +1,11 @@
 import { NumberInput as NumberInputPrimitive } from "@ark-ui/vue/number-input";
 import { PhMinus, PhPlus } from "@phosphor-icons/vue";
+import type { NumberInputProps as NumberInputSharedProps } from "@pisagor/props";
 import {
   type FormControlGroupShellVariantProps,
   formControlGroupShellRecipe,
-} from "@pisagor/recipes/form-control";
-import { numberInputRecipe } from "@pisagor/recipes/number-input";
+  numberInputRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 import { Button } from "../button/button";
@@ -18,13 +19,9 @@ type FormControlVariant = "primary" | "secondary";
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface NumberInputProps extends FormControlGroupShellVariantProps {
-  /**
-   * Style recipe. Defaults to `numberInputRecipe` from `@pisagor/recipes/number-input`.
-   *
-   * @defaultValue numberInputRecipe
-   */
-  recipe?: typeof numberInputRecipe;
+export interface NumberInputProps
+  extends FormControlGroupShellVariantProps,
+    NumberInputSharedProps {
   class?: unknown;
   clearable?: boolean;
   defaultValue?: string;

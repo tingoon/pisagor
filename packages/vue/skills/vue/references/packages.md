@@ -23,7 +23,8 @@ bun add @pisagor/vue-form
 | Components | `import { Button } from "@pisagor/vue"` |
 | Heavy (subpath only) | `import { DataGrid } from "@pisagor/vue/data-grid"` |
 | Form fields | `import { TextField } from "@pisagor/vue-form"` |
-| Recipe | `import { buttonRecipe } from "@pisagor/recipes/button"` |
+| Recipe | `import { buttonRecipe } from "@pisagor/recipes"` |
+| Props | `import type { ButtonProps } from "@pisagor/props"` |
 | `cn()` | `import { cn } from "@pisagor/utils"` |
 
 Prop for classes: **`class`**.

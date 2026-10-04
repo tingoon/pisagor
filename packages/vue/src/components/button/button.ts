@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
-import type { ButtonProps as ButtonSharedProps } from "@pisagor/props/button";
-import { type ButtonVariantProps, buttonRecipe } from "@pisagor/recipes/button";
+import type { ButtonProps as ButtonSharedProps } from "@pisagor/props";
+import { type ButtonVariantProps, buttonRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 import { Spinner } from "../spinner";
 

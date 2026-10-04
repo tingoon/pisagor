@@ -1,9 +1,7 @@
 import { ark } from "@ark-ui/vue/factory";
 import { PhX } from "@phosphor-icons/vue";
-import {
-  type ActionBarRecipe,
-  actionBarRecipe,
-} from "@pisagor/recipes/action-bar";
+import type { ActionBarProps as ActionBarSharedProps } from "@pisagor/props";
+import { type ActionBarRecipe, actionBarRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
   defineComponent,
@@ -39,7 +37,8 @@ interface ActionBarActionItem {
 }
 
 export interface ActionBarProps
-  extends Pick<ActionBarContextValue, "lazyMount" | "unmountOnExit"> {
+  extends Pick<ActionBarContextValue, "lazyMount" | "unmountOnExit">,
+    ActionBarSharedProps {
   closeOnEscape?: boolean;
   defaultOpen?: boolean;
   onOpenChange?: (open: boolean) => void;
@@ -53,13 +52,7 @@ export interface ActionBarTriggerProps {
   onClick?: (event: MouseEvent) => void;
 }
 
-export interface ActionBarContentProps {
-  /**
-   * Style recipe. Defaults to `actionBarRecipe` from `@pisagor/recipes/action-bar`.
-   *
-   * @defaultValue actionBarRecipe
-   */
-  recipe?: typeof actionBarRecipe;
+export interface ActionBarContentProps extends ActionBarSharedProps {
   class?: unknown;
   "aria-labelledby"?: string;
 }
@@ -90,11 +83,9 @@ interface ActionBarContextValue {
 // #endregion
 
 // #region Context
-const [provideActionBarContext, useActionBarContext] =
-  createContext<ActionBarContextValue>({
-    name: "ActionBar",
-    strict: false,
-  });
+const [provideActionBarContext, useActionBarContext] = createContext(
+  "ActionBar",
+)<ActionBarContextValue>({ strict: false });
 // #endregion
 
 // #region Constants

@@ -1,30 +1,18 @@
 import { ark } from "@ark-ui/vue/factory";
-import {
-  type KbdVariantProps,
-  kbdGroupRecipe,
-  kbdRecipe,
-} from "@pisagor/recipes/kbd";
+import type {
+  KbdGroupProps as KbdGroupSharedProps,
+  KbdProps as KbdSharedProps,
+} from "@pisagor/props";
+import { kbdGroupRecipe, kbdRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
-export interface KbdProps extends KbdVariantProps {
-  /**
-   * Style recipe. Defaults to `kbdRecipe` from `@pisagor/recipes/kbd`.
-   *
-   * @defaultValue kbdRecipe
-   */
-  recipe?: typeof kbdRecipe;
+export interface KbdProps extends KbdSharedProps {
   class?: unknown;
 }
 
-export interface KbdGroupProps {
-  /**
-   * Style recipe. Defaults to `kbdGroupRecipe` from `@pisagor/recipes/kbd-group`.
-   *
-   * @defaultValue kbdGroupRecipe
-   */
-  recipe?: typeof kbdGroupRecipe;
+export interface KbdGroupProps extends KbdGroupSharedProps {
   class?: unknown;
 }
 // #endregion

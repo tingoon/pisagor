@@ -1,5 +1,6 @@
 import { Popover as PopoverPrimitive } from "@ark-ui/vue/popover";
-import { popoverRecipe } from "@pisagor/recipes/popover";
+import type { PopoverProps as PopoverContentSharedProps } from "@pisagor/props";
+import { popoverRecipe } from "@pisagor/recipes";
 import {
   type CSSProperties,
   defineComponent,
@@ -10,13 +11,7 @@ import {
 import { renderIconCloseButton } from "../../internal/close-button";
 
 // #region Types
-export interface PopoverContentProps {
-  /**
-   * Style recipe. Defaults to `popoverRecipe` from `@pisagor/recipes/popover`.
-   *
-   * @defaultValue popoverRecipe
-   */
-  recipe?: typeof popoverRecipe;
+export interface PopoverContentProps extends PopoverContentSharedProps {
   class?: unknown;
   showCloseButton?: boolean;
 }

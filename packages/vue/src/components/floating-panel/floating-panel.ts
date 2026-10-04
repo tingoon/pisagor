@@ -1,9 +1,10 @@
 import { FloatingPanel as FloatingPanelPrimitive } from "@ark-ui/vue/floating-panel";
 import { PhArrowsOut, PhCornersIn, PhMinus } from "@phosphor-icons/vue";
+import type { FloatingPanelProps as FloatingPanelRootSharedProps } from "@pisagor/props";
 import {
   type FloatingPanelRecipe,
   floatingPanelRecipe,
-} from "@pisagor/recipes/floating-panel";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
   defineComponent,
@@ -48,23 +49,15 @@ interface FloatingPanelBodyProps {
   scrollFade?: boolean;
 }
 
-export interface FloatingPanelRootProps {
-  /**
-   * Style recipe. Defaults to `floatingPanelRecipe` from `@pisagor/recipes/floating-panel`.
-   *
-   * @defaultValue floatingPanelRecipe
-   */
-  recipe?: typeof floatingPanelRecipe;
+export interface FloatingPanelRootProps extends FloatingPanelRootSharedProps {
   class?: unknown;
 }
 // #endregion
 
 // #region Context
-const [provideFloatingPanelContext, useFloatingPanel] =
-  createContext<FloatingPanelContextProps>({
-    name: "FloatingPanel",
-    strict: false,
-  });
+const [provideFloatingPanelContext, useFloatingPanel] = createContext(
+  "FloatingPanel",
+)<FloatingPanelContextProps>({ strict: false });
 // #endregion
 
 type ArkPart = Parameters<typeof h>[0];

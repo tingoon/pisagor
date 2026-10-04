@@ -1,5 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
-import { skeletonRecipe } from "@pisagor/recipes/skeleton";
+import type { SkeletonProps as SkeletonSharedProps } from "@pisagor/props";
+import { skeletonRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
@@ -8,13 +9,7 @@ export interface SkeletonTextProps {
   lines?: number;
 }
 
-export interface SkeletonProps {
-  /**
-   * Style recipe. Defaults to `skeletonRecipe` from `@pisagor/recipes/skeleton`.
-   *
-   * @defaultValue skeletonRecipe
-   */
-  recipe?: typeof skeletonRecipe;
+export interface SkeletonProps extends SkeletonSharedProps {
   class?: unknown;
 }
 // #endregion
