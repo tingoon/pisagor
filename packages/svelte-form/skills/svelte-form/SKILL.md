@@ -1,102 +1,22 @@
 ---
 name: svelte-form
 description: >-
-  Pisagor `@pisagor/svelte-form` — labeled field compositions and TanStack Form bindings for Svelte.
-  Use when building forms with TextField, SelectField, CheckboxField, etc., or integrating
-  @tanstack/svelte-form. Ships inside the npm package for Intent. Prefer MCP (`bunx @pisagor/mcp`)
-  when available; use this skill for form-field APIs.
-compatibility: >-
-  Requires Svelte 5, Tailwind v4, @pisagor/svelte. Optional: @tanstack/svelte-form for ./tanstack.
+  Thin pointer for @pisagor/svelte-form. Prefer MCP (`bunx @pisagor/mcp`) for agents;
+  human docs live on the docs site. Package examples: `examples/`, develop
+  docs: `docs/`.
+license: MIT
+metadata:
+  author: tingoon
+  package: "@pisagor/svelte-form"
 ---
 
 # @pisagor/svelte-form
 
-Labeled field helpers on top of `@pisagor/svelte`.
+Agent discovery: `bunx @pisagor/mcp`.
 
-**Recommended:** `bunx @pisagor/mcp`.
+Human docs: docs site (`/develop` + shared `/design`).
 
-## Layout
+Local sources in this package:
 
-```
-skills/svelte-form/
-  SKILL.md
-  references/          # primitives/
-  assets/examples/     # <field>/*
-```
-
-### Primitive docs
-
-Prefer the **folder** form (tabs on the docs site):
-
-```
-references/primitives/<id>/
-  metadata.md    # YAML frontmatter only
-  design.md      # When to use (Prefer / Avoid)
-  develop.md     # Import, Anatomy, ## Examples (:::example), a11y notes
-```
-
-Docs tabs: **Develop** (default) → **Design**.
-Routes: `/svelte/forms/<id>/develop` and `/design`. Legacy `/usage` and `/examples` redirect to develop.
-
-Flat `references/primitives/<id>.md` is legacy (single file with YAML + body); the docs app still maps it into tabs.
-
-The field id is the folder name (or the legacy filename without `.md`).
-
-Example sources live under `assets/examples/<id>/` (also available via MCP `get_example`).
-
-## Install
-
-```bash
-bun add @pisagor/svelte @pisagor/svelte-form
-# optional — required only for ./tanstack
-bun add @tanstack/svelte-form
-```
-
-## Imports
-
-Standalone fields:
-
-```ts
-import { TextField, SelectField } from "@pisagor/svelte-form";
-```
-
-TanStack Form (`./tanstack` does **not** re-export field components — use `createAppForm` + `form.AppField`).
-Svelte uses `createAppForm` (not `useAppForm`):
-
-```svelte
-<script lang="ts">
-  import { createAppForm, Root } from "@pisagor/svelte-form/tanstack";
-
-  const form = createAppForm(() => ({
-    defaultValues: { email: "" },
-    onSubmit: async () => {},
-  }));
-</script>
-
-<Root {form}>
-  <form.AppField name="email">
-    {#snippet children(field)}
-      <field.TextField label="Email" />
-    {/snippet}
-  </form.AppField>
-</Root>
-```
-
-## Fields
-
-`AutocompleteField`, `CheckboxField`, `DateField`, `FileField`, `NumberField`, `OtpField`, `PasswordField`, `PhoneField`, `RadioGroupField`, `RichTextEditorField`, `SelectField`, `SliderField`, `SwitchField`, `TagsInputField`, `TextField`, `TextareaField`.
-
-## Rules
-
-- Prefer these fields for labeled controls; compose `Field` from `@pisagor/svelte` only for custom layouts.
-- Class prop: `class` (not `className`).
-- Examples: MCP `get_example` / `list_examples`.
-
-## Source
-
-| Resource | Path |
-| -------- | ---- |
-| Fields | `@pisagor/svelte-form` → `src/fields/` |
-| TanStack | `@pisagor/svelte-form/tanstack` → `src/tanstack/` (`createAppForm`, hooks; fields via `field.TextField`) |
-
-Examples ship at `assets/examples/<field>/` (and `assets/examples/tanstack/`).
+- `docs/<id>.md` — framework develop notes
+- `examples/<id>/` — runnable examples

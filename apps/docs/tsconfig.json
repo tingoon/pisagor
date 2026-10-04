@@ -5,72 +5,31 @@
     "paths": {
       "#/*": ["./src/*"],
       "#/astro/*": ["../../packages/astro/*"],
-      "#/astro/examples/*": [
-        "../../packages/astro/skills/astro/assets/examples/*"
-      ],
-      "#/astro/references/*": [
-        "../../packages/astro/skills/astro/references/*"
-      ],
+      "#/astro/examples/*": ["../../packages/astro/examples/*"],
       "#/props/*": ["../../packages/props/*"],
       "#/react-form/*": ["../../packages/react-form/*"],
-      "#/react-form/examples/*": [
-        "../../packages/react-form/skills/react-form/assets/examples/*"
-      ],
-      "#/react-form/references/*": [
-        "../../packages/react-form/skills/react-form/references/*"
-      ],
+      "#/react-form/examples/*": ["../../packages/react-form/examples/*"],
       "#/react/*": ["../../packages/react/*"],
       "#/react/blocks/*": ["../react/src/blocks/*"],
-      "#/react/examples/*": [
-        "../../packages/react/skills/react/assets/examples/*"
-      ],
-      "#/react/references/*": [
-        "../../packages/react/skills/react/references/*"
-      ],
+      "#/react/examples/*": ["../../packages/react/examples/*"],
       "#/recipes/*": ["../../packages/recipes/*"],
       "#/solid-form/*": ["../../packages/solid-form/*"],
-      "#/solid-form/examples/*": [
-        "../../packages/solid-form/skills/solid-form/assets/examples/*"
-      ],
-      "#/solid-form/references/*": [
-        "../../packages/solid-form/skills/solid-form/references/*"
-      ],
+      "#/solid-form/examples/*": ["../../packages/solid-form/examples/*"],
       "#/solid/*": ["../../packages/solid/*"],
       "#/solid/blocks/*": ["../solid/src/blocks/*"],
-      "#/solid/examples/*": [
-        "../../packages/solid/skills/solid/assets/examples/*"
-      ],
-      "#/solid/references/*": [
-        "../../packages/solid/skills/solid/references/*"
-      ],
+      "#/solid/examples/*": ["../../packages/solid/examples/*"],
       "#/svelte-form/*": ["../../packages/svelte-form/*"],
-      "#/svelte-form/examples/*": [
-        "../../packages/svelte-form/skills/svelte-form/assets/examples/*"
-      ],
-      "#/svelte-form/references/*": [
-        "../../packages/svelte-form/skills/svelte-form/references/*"
-      ],
+      "#/svelte-form/examples/*": ["../../packages/svelte-form/examples/*"],
       "#/svelte/*": ["../../packages/svelte/*"],
       "#/svelte/blocks/*": ["../svelte/src/blocks/*"],
-      "#/svelte/examples/*": [
-        "../../packages/svelte/skills/svelte/assets/examples/*"
-      ],
-      "#/svelte/references/*": [
-        "../../packages/svelte/skills/svelte/references/*"
-      ],
+      "#/svelte/examples/*": ["../../packages/svelte/examples/*"],
       "#/tokens/*": ["../../packages/tokens/*"],
       "#/utils/*": ["../../packages/utils/*"],
       "#/vue-form/*": ["../../packages/vue-form/*"],
-      "#/vue-form/examples/*": [
-        "../../packages/vue-form/skills/vue-form/assets/examples/*"
-      ],
-      "#/vue-form/references/*": [
-        "../../packages/vue-form/skills/vue-form/references/*"
-      ],
+      "#/vue-form/examples/*": ["../../packages/vue-form/examples/*"],
       "#/vue/*": ["../../packages/vue/*"],
       "#/vue/blocks/*": ["../vue/src/blocks/*"],
-      "#/vue/examples/*": ["../../packages/vue/skills/vue/assets/examples/*"],
-      "#/vue/references/*": ["../../packages/vue/skills/vue/references/*"]
+      "#/vue/examples/*": ["../../packages/vue/examples/*"]
     },
     "types": ["astro/client"]
   },

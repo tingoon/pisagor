@@ -1,0 +1,10 @@
+<script lang="ts" setup>
+import { Progress } from "../../src/components/progress";
+</script>
+
+<template>
+  <div class="flex w-full flex-col gap-2">
+    <span class="font-medium text-sm">Establishing connection...</span>
+    <Progress indeterminate />
+  </div>
+</template>

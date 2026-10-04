@@ -1,0 +1,48 @@
+---
+import Badge from "../../src/components/badge/badge.astro";
+import Table from "../../src/components/table/table.astro";
+import TableBody from "../../src/components/table/table-body.astro";
+import TableCaption from "../../src/components/table/table-caption.astro";
+import TableCell from "../../src/components/table/table-cell.astro";
+import TableHead from "../../src/components/table/table-head.astro";
+import TableHeader from "../../src/components/table/table-header.astro";
+import TableRow from "../../src/components/table/table-row.astro";
+---
+
+<Table>
+  <TableCaption>A list of users in your workspace.</TableCaption>
+  <TableHeader>
+    <TableRow>
+      <TableHead>Name</TableHead>
+      <TableHead>Email</TableHead>
+      <TableHead>Role</TableHead>
+      <TableHead class="text-center">Status</TableHead>
+    </TableRow>
+  </TableHeader>
+  <TableBody>
+    <TableRow>
+      <TableCell>Jane Doe</TableCell>
+      <TableCell>jane@example.com</TableCell>
+      <TableCell>Admin</TableCell>
+      <TableCell class="text-center"
+        ><Badge variant="success">active</Badge></TableCell
+      >
+    </TableRow>
+    <TableRow>
+      <TableCell>John Doe</TableCell>
+      <TableCell>john@example.com</TableCell>
+      <TableCell>Editor</TableCell>
+      <TableCell class="text-center"
+        ><Badge variant="info">invited</Badge></TableCell
+      >
+    </TableRow>
+    <TableRow>
+      <TableCell>Alex Kim</TableCell>
+      <TableCell>alex@example.com</TableCell>
+      <TableCell>Viewer</TableCell>
+      <TableCell class="text-center"
+        ><Badge variant="destructive">inactive</Badge></TableCell
+      >
+    </TableRow>
+  </TableBody>
+</Table>

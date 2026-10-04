@@ -10,12 +10,14 @@ const DEFAULT_PACKAGE_NAME: Record<Framework, string> = {
   vue: "@pisagor/vue",
 };
 
-/** Flat primitive markdown + React folder `metadata.md` / panes. */
-const skillRawModules = import.meta.glob(
+/** Shared content + per-package develop docs. */
+const docRawModules = import.meta.glob(
   [
-    "../../../../packages/*/skills/*/references/primitives/*.md",
-    "../../../../packages/*/skills/*/references/primitives/*/metadata.md",
-    "../../../../packages/*/skills/*/references/primitives/*/{design,develop,usage,examples}.md",
+    "../content/components/*/metadata.md",
+    "../content/components/*/design.md",
+    "../content/forms/*/metadata.md",
+    "../content/forms/*/design.md",
+    "../../../../packages/*/docs/*.md",
   ],
   {
     eager: true,
@@ -24,7 +26,7 @@ const skillRawModules = import.meta.glob(
   },
 ) as Record<string, string>;
 
-/** Split `---` YAML frontmatter from a skill markdown file. */
+/** Split `---` YAML frontmatter from a markdown file. */
 export function parseSkillDoc(raw: string): {
   body: string;
   docs: ComponentDocs;
@@ -73,25 +75,35 @@ function packageDirSlug(packageName: string): string {
   return packageName.replace(/^@pisagor\//, "");
 }
 
-function isMetadataPath(path: string, id: string): boolean {
-  return path.endsWith(`/primitives/${id}/metadata.md`);
+function contentArea(opts?: { packageName?: string }): "components" | "forms" {
+  return opts?.packageName?.endsWith("-form") ? "forms" : "components";
 }
 
-function isFlatPath(path: string, id: string): boolean {
-  return path.endsWith(`/primitives/${id}.md`);
+function isMetadataPath(
+  path: string,
+  id: string,
+  area: "components" | "forms",
+): boolean {
+  return path.endsWith(`/content/${area}/${id}/metadata.md`);
 }
 
-function isPanePath(path: string, id: string, pane: string): boolean {
-  return path.endsWith(`/primitives/${id}/${pane}.md`);
+function isDesignPath(
+  path: string,
+  id: string,
+  area: "components" | "forms",
+): boolean {
+  return path.endsWith(`/content/${area}/${id}/design.md`);
 }
 
-function rankCandidates(
+function isDevelopPath(path: string, id: string): boolean {
+  return path.endsWith(`/docs/${id}.md`);
+}
+
+function rankDevelopCandidates(
   candidates: [string, string][],
   opts?: {
     framework?: Framework;
     packageName?: string;
-    /** When true, do not fall back across packages (used for split panes). */
-    strictPackage?: boolean;
   },
 ): [string, string] | undefined {
   if (candidates.length === 0) return undefined;
@@ -102,14 +114,12 @@ function rankCandidates(
       path.includes(`/packages/${slug}/`),
     );
     if (hit) return hit;
-    if (opts.strictPackage) return undefined;
   }
 
   if (opts?.framework) {
     const fw = opts.framework;
     const hit = candidates.find(([path]) => path.includes(`/packages/${fw}/`));
     if (hit) return hit;
-    if (opts.strictPackage) return undefined;
   }
 
   const react = candidates.find(([path]) => path.includes("/packages/react/"));
@@ -117,40 +127,46 @@ function rankCandidates(
 }
 
 /**
- * Find raw skill markdown for a component id, optionally scoped by package.
- * Prefer folder `metadata.md`, then flat `<id>.md`.
+ * Find shared metadata markdown for a component id.
  */
 export function findSkillRaw(
   id: string,
   opts?: { framework?: Framework; packageName?: string },
 ): string | undefined {
-  const metadataCandidates = Object.entries(skillRawModules).filter(([path]) =>
-    isMetadataPath(path, id),
+  const area = contentArea(opts);
+  const hit = Object.entries(docRawModules).find(([path]) =>
+    isMetadataPath(path, id, area),
   );
-  const metadataHit = rankCandidates(metadataCandidates, opts);
-  if (metadataHit) return metadataHit[1];
-
-  const flatCandidates = Object.entries(skillRawModules).filter(([path]) =>
-    isFlatPath(path, id),
-  );
-  return rankCandidates(flatCandidates, opts)?.[1];
+  return hit?.[1];
 }
 
-/** Raw markdown for a split pane (`design` / `usage` / `examples` / `develop`). */
+/** Raw markdown for design (shared) or develop (package docs). */
 export function findSkillPaneRaw(
   id: string,
   pane: "design" | "usage" | "examples" | "develop",
   opts?: { framework?: Framework; packageName?: string },
 ): string | undefined {
-  const candidates = Object.entries(skillRawModules).filter(([path]) =>
-    isPanePath(path, id, pane),
-  );
-  return rankCandidates(candidates, { ...opts, strictPackage: true })?.[1];
+  if (pane === "design") {
+    const area = contentArea(opts);
+    const hit = Object.entries(docRawModules).find(([path]) =>
+      isDesignPath(path, id, area),
+    );
+    return hit?.[1];
+  }
+
+  if (pane === "develop") {
+    const candidates = Object.entries(docRawModules).filter(([path]) =>
+      isDevelopPath(path, id),
+    );
+    return rankDevelopCandidates(candidates, opts)?.[1];
+  }
+
+  // Legacy panes removed — callers fall back to develop / metadata.
+  return undefined;
 }
 
 /**
- * Body used to resolve `:::example` directives — `develop.md` when split,
- * legacy `examples.md`, otherwise the flat / index skill body.
+ * Body used to resolve `:::example` directives — package `docs/<id>.md`.
  */
 export function findSkillExamplesBody(
   id: string,
@@ -158,15 +174,12 @@ export function findSkillExamplesBody(
 ): string {
   const develop = findSkillPaneRaw(id, "develop", opts);
   if (develop) return skillDocBody(develop);
-  const legacy = findSkillPaneRaw(id, "examples", opts);
-  if (legacy) return skillDocBody(legacy);
   const raw = findSkillRaw(id, opts);
   return raw ? parseSkillDoc(raw).body : "";
 }
 
 /**
  * Markdown body for the pane currently shown on a component docs page.
- * Develop falls back through legacy `usage.md`, then the flat skill body.
  */
 export function findDisplayedSkillBody(
   id: string,
@@ -180,15 +193,13 @@ export function findDisplayedSkillBody(
 
   const develop = findSkillPaneRaw(id, "develop", opts);
   if (develop) return skillDocBody(develop);
-  const usage = findSkillPaneRaw(id, "usage", opts);
-  if (usage) return skillDocBody(usage);
   const raw = findSkillRaw(id, opts);
   return raw ? parseSkillDoc(raw).body : "";
 }
 
 /**
  * Read the import shown in a primitive's `## Import` section.
- * Prefers `develop.md` (then legacy `usage.md`); falls back to the main skill body.
+ * Prefers package develop docs; falls back to a generated statement.
  */
 export function getSkillDocImportStatement(
   id: string,
@@ -197,10 +208,8 @@ export function getSkillDocImportStatement(
 ): string {
   const opts = { framework, packageName };
   const developRaw = findSkillPaneRaw(id, "develop", opts);
-  const usageRaw = findSkillPaneRaw(id, "usage", opts);
   const searchBodies = [
     developRaw ? skillDocBody(developRaw) : undefined,
-    usageRaw ? skillDocBody(usageRaw) : undefined,
     (() => {
       const raw = findSkillRaw(id, opts);
       return raw ? parseSkillDoc(raw).body : undefined;

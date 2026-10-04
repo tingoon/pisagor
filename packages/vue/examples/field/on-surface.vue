@@ -1,0 +1,16 @@
+<script lang="ts" setup>
+import { Input, Surface } from "@pisagor/vue";
+import { Field } from "../../src/components/field";
+</script>
+
+<template>
+  <Surface bordered padding="md" variant="default">
+    <Field>
+      <Field.Label>Username</Field.Label>
+      <Input placeholder="Enter username" />
+      <Field.Description
+        >Choose a unique username for your account.</Field.Description
+      >
+    </Field>
+  </Surface>
+</template>

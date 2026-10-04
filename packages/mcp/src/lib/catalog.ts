@@ -121,7 +121,7 @@ export function getExample(
   const entry = getCatalogComponent(config, params.framework, params.component);
   if (entry.examples.length === 0) {
     throw new Error(
-      `No skill examples for "${params.component}" (${params.framework}). Expected skills/*/assets/examples/${params.component}/.`,
+      `No examples for "${params.component}" (${params.framework}). Expected examples/${params.component}/.`,
     );
   }
 
@@ -148,7 +148,7 @@ export function getExample(
     ? first.path.includes("/")
       ? first.path.slice(0, first.path.lastIndexOf("/"))
       : "."
-    : `skills/*/assets/examples/${params.component}`;
+    : `examples/${params.component}`;
   return {
     component: params.component,
     content: entry.examples

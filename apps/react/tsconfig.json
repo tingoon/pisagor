@@ -3,12 +3,8 @@
     "jsx": "react-jsx",
     "noUncheckedSideEffectImports": false,
     "paths": {
-      "#/react-form/examples/*": [
-        "../../packages/react-form/skills/react-form/assets/examples/*"
-      ],
-      "#/react/examples/*": [
-        "../../packages/react/skills/react/assets/examples/*"
-      ],
+      "#/react-form/examples/*": ["../../packages/react-form/examples/*"],
+      "#/react/examples/*": ["../../packages/react/examples/*"],
       "#/storybook/*": ["./.storybook/*"]
     },
     "types": ["vite/client", "node"]

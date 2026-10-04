@@ -2,9 +2,7 @@
   "compilerOptions": {
     "jsx": "preserve",
     "paths": {
-      "#/astro/examples/*": [
-        "../../packages/astro/skills/astro/assets/examples/*"
-      ],
+      "#/astro/examples/*": ["../../packages/astro/examples/*"],
       "#/storybook/*": ["./.storybook/*"]
     },
     "types": ["astro/client", "vite/client", "node"]

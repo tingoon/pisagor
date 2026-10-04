@@ -12,10 +12,15 @@
 /* Scan demos + docs chrome + shared recipes (same path Storybook packages use) */
 @source "../**/*.{astro,ts,tsx,vue,svelte}";
 @source "../../../packages/recipes/src/**/*.ts";
-@source "../../../packages/solid/skills/solid/assets/examples/**/*.{ts,tsx}";
-@source "../../../packages/solid-form/skills/solid-form/assets/examples/**/*.{ts,tsx}";
-@source "../../../packages/svelte/skills/svelte/assets/examples/**/*.{ts,svelte}";
-@source "../../../packages/svelte-form/skills/svelte-form/assets/examples/**/*.{ts,svelte}";
+@source "../../../packages/astro/examples/**/*.{ts,astro}";
+@source "../../../packages/react/examples/**/*.{ts,tsx}";
+@source "../../../packages/react-form/examples/**/*.{ts,tsx}";
+@source "../../../packages/solid/examples/**/*.{ts,tsx}";
+@source "../../../packages/solid-form/examples/**/*.{ts,tsx}";
+@source "../../../packages/svelte/examples/**/*.{ts,svelte}";
+@source "../../../packages/svelte-form/examples/**/*.{ts,svelte}";
+@source "../../../packages/vue/examples/**/*.{ts,vue}";
+@source "../../../packages/vue-form/examples/**/*.{ts,vue}";
 
 @theme {
   --leading-relaxed: 1.625;
