@@ -1,4 +1,4 @@
-import { Prose } from "@pisagor/astro/prose";
+import { Prose } from "@pisagor/astro";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

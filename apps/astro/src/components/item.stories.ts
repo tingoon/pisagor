@@ -1,4 +1,4 @@
-import { Item } from "@pisagor/astro/item";
+import { Item } from "@pisagor/astro";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

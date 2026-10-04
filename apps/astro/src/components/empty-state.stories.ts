@@ -1,5 +1,4 @@
-import { Button } from "@pisagor/astro/button";
-import { EmptyState } from "@pisagor/astro/empty-state";
+import { Button, EmptyState } from "@pisagor/astro";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

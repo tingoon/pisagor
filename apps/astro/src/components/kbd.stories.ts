@@ -1,4 +1,4 @@
-import { Kbd } from "@pisagor/astro/kbd";
+import { Kbd } from "@pisagor/astro";
 import DefaultExample from "#/astro/examples/kbd/default.astro";
 import GroupExample from "#/astro/examples/kbd/group.astro";
 import preview from "#/storybook/preview";

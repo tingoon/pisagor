@@ -1,4 +1,4 @@
-import { LinkBox } from "@pisagor/astro/link-box";
+import { LinkBox } from "@pisagor/astro";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

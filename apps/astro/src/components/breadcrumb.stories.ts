@@ -1,4 +1,4 @@
-import { Breadcrumb } from "@pisagor/astro/breadcrumb";
+import { Breadcrumb } from "@pisagor/astro";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

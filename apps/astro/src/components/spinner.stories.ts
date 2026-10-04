@@ -1,4 +1,4 @@
-import { Spinner } from "@pisagor/astro/spinner";
+import { Spinner } from "@pisagor/astro";
 import DefaultExample from "#/astro/examples/spinner/default.astro";
 import SizesExample from "#/astro/examples/spinner/sizes.astro";
 import preview from "#/storybook/preview";

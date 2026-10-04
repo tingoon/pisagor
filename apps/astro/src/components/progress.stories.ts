@@ -1,4 +1,4 @@
-import { Progress } from "@pisagor/astro/progress";
+import { Progress } from "@pisagor/astro";
 import DefaultExample from "#/astro/examples/progress/default.astro";
 import IndeterminateExample from "#/astro/examples/progress/indeterminate.astro";
 import WithLabelExample from "#/astro/examples/progress/with-label.astro";

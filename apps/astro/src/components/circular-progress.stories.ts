@@ -1,4 +1,4 @@
-import { CircularProgress } from "@pisagor/astro/circular-progress";
+import { CircularProgress } from "@pisagor/astro";
 import DefaultExample from "#/astro/examples/circular-progress/default.astro";
 import IndeterminateExample from "#/astro/examples/circular-progress/indeterminate.astro";
 import WithValueExample from "#/astro/examples/circular-progress/with-value.astro";

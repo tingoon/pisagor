@@ -1,4 +1,4 @@
-import { Badge } from "@pisagor/astro/badge";
+import { Badge } from "@pisagor/astro";
 import DefaultExample from "#/astro/examples/badge/default.astro";
 import PillExample from "#/astro/examples/badge/pill.astro";
 import SizesExample from "#/astro/examples/badge/sizes.astro";

@@ -1,4 +1,4 @@
-import { Skeleton } from "@pisagor/astro/skeleton";
+import { Skeleton } from "@pisagor/astro";
 import CircleExample from "#/astro/examples/skeleton/circle.astro";
 import CompositionExample from "#/astro/examples/skeleton/composition.astro";
 import DefaultExample from "#/astro/examples/skeleton/default.astro";

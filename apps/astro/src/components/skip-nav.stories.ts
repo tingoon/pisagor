@@ -1,4 +1,4 @@
-import { SkipNavContent, SkipNavLink } from "@pisagor/astro/skip-nav";
+import { SkipNavContent, SkipNavLink } from "@pisagor/astro";
 import preview from "#/storybook/preview";
 import StoryFrame from "../../.storybook/story-frame.astro";
 

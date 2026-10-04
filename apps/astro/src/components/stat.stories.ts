@@ -1,4 +1,4 @@
-import { Stat } from "@pisagor/astro/stat";
+import { Stat } from "@pisagor/astro";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

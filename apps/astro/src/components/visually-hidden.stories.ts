@@ -1,4 +1,4 @@
-import { VisuallyHidden } from "@pisagor/astro/visually-hidden";
+import { VisuallyHidden } from "@pisagor/astro";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

@@ -1,4 +1,4 @@
-import { DataList } from "@pisagor/astro/data-list";
+import { DataList } from "@pisagor/astro";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

@@ -1,5 +1,4 @@
-import { Announcement } from "@pisagor/astro/announcement";
-import { Badge } from "@pisagor/astro/badge";
+import { Announcement, Badge } from "@pisagor/astro";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

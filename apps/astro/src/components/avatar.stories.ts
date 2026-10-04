@@ -1,4 +1,4 @@
-import { Avatar } from "@pisagor/astro/avatar";
+import { Avatar } from "@pisagor/astro";
 import DefaultExample from "#/astro/examples/avatar/default.astro";
 import SizesExample from "#/astro/examples/avatar/sizes.astro";
 import WithImageExample from "#/astro/examples/avatar/with-image.astro";

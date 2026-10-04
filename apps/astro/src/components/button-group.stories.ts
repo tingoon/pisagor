@@ -1,5 +1,4 @@
-import { Button } from "@pisagor/astro/button";
-import { ButtonGroup } from "@pisagor/astro/button-group";
+import { Button, ButtonGroup } from "@pisagor/astro";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

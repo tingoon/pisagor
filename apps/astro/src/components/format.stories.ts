@@ -1,4 +1,4 @@
-import { FormatNumber } from "@pisagor/astro/format";
+import { FormatNumber } from "@pisagor/astro";
 import DefaultExample from "#/astro/examples/format/default.astro";
 import NumberCompactExample from "#/astro/examples/format/number-compact.astro";
 import RelativeTimeExample from "#/astro/examples/format/relative-time.astro";

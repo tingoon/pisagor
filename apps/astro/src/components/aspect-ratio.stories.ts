@@ -1,4 +1,4 @@
-import { AspectRatio } from "@pisagor/astro/aspect-ratio";
+import { AspectRatio } from "@pisagor/astro";
 import DefaultExample from "#/astro/examples/aspect-ratio/default.astro";
 import WidescreenExample from "#/astro/examples/aspect-ratio/widescreen.astro";
 import preview from "#/storybook/preview";

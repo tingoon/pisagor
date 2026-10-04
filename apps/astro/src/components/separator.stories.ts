@@ -1,4 +1,4 @@
-import { Separator } from "@pisagor/astro/separator";
+import { Separator } from "@pisagor/astro";
 import DefaultExample from "#/astro/examples/separator/default.astro";
 import VerticalExample from "#/astro/examples/separator/vertical.astro";
 import preview from "#/storybook/preview";

@@ -1,4 +1,4 @@
-import { Button } from "@pisagor/astro/button";
+import { Button } from "@pisagor/astro";
 import DefaultExample from "#/astro/examples/button/default.astro";
 import DisabledExample from "#/astro/examples/button/disabled.astro";
 import LoadingExample from "#/astro/examples/button/loading.astro";

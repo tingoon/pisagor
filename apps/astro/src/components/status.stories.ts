@@ -1,4 +1,4 @@
-import { Status } from "@pisagor/astro/status";
+import { Status } from "@pisagor/astro";
 import DefaultExample from "#/astro/examples/status/default.astro";
 import VariantsExample from "#/astro/examples/status/variants.astro";
 import preview from "#/storybook/preview";

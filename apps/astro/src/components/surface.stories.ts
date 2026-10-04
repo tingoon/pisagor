@@ -1,4 +1,4 @@
-import { Surface } from "@pisagor/astro/surface";
+import { Surface } from "@pisagor/astro";
 import DefaultExample from "#/astro/examples/surface/default.astro";
 import NestedExample from "#/astro/examples/surface/nested.astro";
 import preview from "#/storybook/preview";

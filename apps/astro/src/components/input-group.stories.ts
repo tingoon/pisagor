@@ -1,4 +1,4 @@
-import { InputGroup } from "@pisagor/astro/input-group";
+import { InputGroup } from "@pisagor/astro";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

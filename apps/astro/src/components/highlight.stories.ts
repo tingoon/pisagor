@@ -1,4 +1,4 @@
-import { Highlight } from "@pisagor/astro/highlight";
+import { Highlight } from "@pisagor/astro";
 import DefaultExample from "#/astro/examples/highlight/default.astro";
 import MultipleExample from "#/astro/examples/highlight/multiple.astro";
 import preview from "#/storybook/preview";

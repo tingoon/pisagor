@@ -1,4 +1,4 @@
-import { Frame } from "@pisagor/astro/frame";
+import { Frame } from "@pisagor/astro";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

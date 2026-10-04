@@ -1,7 +1,12 @@
 <script lang="ts">
 import { ideLayoutBlock } from "@pisagor/recipes/blocks/editors";
-import { Button, createTreeCollection, Tabs, TreeView } from "@pisagor/svelte";
-import type { TreeNodeType } from "@pisagor/svelte/tree-view";
+import {
+  Button,
+  createTreeCollection,
+  Tabs,
+  type TreeNodeType,
+  TreeView,
+} from "@pisagor/svelte";
 import { cn } from "@pisagor/utils";
 import XIcon from "phosphor-svelte/lib/XIcon";
 

@@ -1,4 +1,4 @@
-import { Timeline } from "@pisagor/astro/timeline";
+import { Timeline } from "@pisagor/astro";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({

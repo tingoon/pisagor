@@ -1,5 +1,4 @@
-import { Button } from "@pisagor/astro/button";
-import { Card } from "@pisagor/astro/card";
+import { Button, Card } from "@pisagor/astro";
 import preview from "#/storybook/preview";
 
 const meta = preview.meta({
