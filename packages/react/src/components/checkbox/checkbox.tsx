@@ -6,8 +6,8 @@ import {
 } from "@ark-ui/react/checkbox";
 import { CheckIcon, MinusIcon } from "@phosphor-icons/react";
 import type {
-  CheckboxGroupProps as CheckboxGroupSharedProps,
-  CheckboxProps as CheckboxSharedProps,
+  CheckboxGroupProps as BaseCheckboxGroupProps,
+  CheckboxProps as BaseCheckboxProps,
 } from "@pisagor/props";
 import {
   checkboxGroupRecipe,
@@ -23,11 +23,11 @@ type FormControlVariant = "primary" | "secondary";
 
 export interface CheckboxGroupProps
   extends Omit<CheckboxPrimitiveGroupProps, "onValueChange">,
-    CheckboxGroupSharedProps {
+    BaseCheckboxGroupProps {
   onValueChange?: (value: string[]) => void;
 }
 
-export interface CheckboxProps extends CheckboxRootProps, CheckboxSharedProps {
+export interface CheckboxProps extends CheckboxRootProps, BaseCheckboxProps {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
   onValueChange?: (value: boolean) => void;

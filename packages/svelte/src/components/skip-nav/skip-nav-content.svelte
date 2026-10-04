@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { SkipNavProps as SkipNavSharedProps } from "@pisagor/props";
+import type { SkipNavProps as BaseSkipNavProps } from "@pisagor/props";
 import { skipNavRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
@@ -12,7 +12,7 @@ type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "id"> &
   children?: import("svelte").Snippet;
   class?: string | undefined;
   id?: string;
-  } & SkipNavSharedProps;
+  } & BaseSkipNavProps;
 
 let {
   id = SKIP_NAV_ID,

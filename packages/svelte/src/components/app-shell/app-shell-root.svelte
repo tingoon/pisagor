@@ -1,6 +1,6 @@
 <script lang="ts">
 import { useHotkey } from "@ark-ui/svelte/hotkeys";
-import type { AppShellProps as AppShellSharedProps } from "@pisagor/props";
+import type { AppShellProps as BaseAppShellProps } from "@pisagor/props";
 import { appShellRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
@@ -22,7 +22,7 @@ type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "style"> &
   children?: import("svelte").Snippet;
   class?: string | undefined;
   style?: string | undefined;
-  } & AppShellSharedProps;
+  } & BaseAppShellProps;
 
 let { recipe = appShellRecipe, class: className, style, children, ...rest }: Props = $props();
 

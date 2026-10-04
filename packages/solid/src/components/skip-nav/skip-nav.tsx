@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/solid/factory";
 import type {
-  SkipNavProps as SkipNavContentSharedProps,
-  SkipNavProps as SkipNavLinkSharedProps,
+  SkipNavProps as BaseSkipNavContentProps,
+  SkipNavProps as BaseSkipNavLinkProps,
 } from "@pisagor/props";
 import { skipNavRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -12,13 +12,13 @@ const SKIP_NAV_ID = "skip-nav-content";
 
 export interface SkipNavLinkProps
   extends ComponentProps<typeof ark.a>,
-    SkipNavLinkSharedProps {
+    BaseSkipNavLinkProps {
   id?: string;
 }
 
 export interface SkipNavContentProps
   extends ComponentProps<typeof ark.div>,
-    SkipNavContentSharedProps {
+    BaseSkipNavContentProps {
   id?: string;
 }
 

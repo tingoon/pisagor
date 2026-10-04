@@ -2,7 +2,7 @@
 import type { DrawerContentProps } from "@ark-ui/svelte/drawer";
 import { Drawer as DrawerPrimitive } from "@ark-ui/svelte/drawer";
 import { Portal } from "@ark-ui/svelte/portal";
-import type { DrawerProps as DrawerSharedProps } from "@pisagor/props";
+import type { DrawerProps as BaseDrawerProps } from "@pisagor/props";
 import { cn } from "@pisagor/utils";
 import { useDrawer } from "./drawer.context";
 import DrawerBackdrop from "./drawer-backdrop.svelte";
@@ -12,7 +12,7 @@ import DrawerPositioner from "./drawer-positioner.svelte";
 type Props = Omit<DrawerContentProps, "class"> &
   {
     class?: string | undefined;
-  } & DrawerSharedProps;
+  } & BaseDrawerProps;
 
 const SWIPE_DIRECTION_TO_PLACEMENT = {
   down: "down",

@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { AvatarGroupProps as AvatarGroupSharedProps } from "@pisagor/props";
+import type { AvatarGroupProps as BaseAvatarGroupProps } from "@pisagor/props";
 import { avatarGroupRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
@@ -14,7 +14,7 @@ type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "children"> &
   class?: string | undefined;
   max?: number;
   users: User[];
-  } & AvatarGroupSharedProps;
+  } & BaseAvatarGroupProps;
 
 let { max, users, recipe = avatarGroupRecipe, class: className, ...rest }: Props = $props();
 

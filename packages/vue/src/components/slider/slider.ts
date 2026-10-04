@@ -1,5 +1,5 @@
 import { Slider as SliderPrimitive } from "@ark-ui/vue/slider";
-import type { SliderProps as SliderSharedProps } from "@pisagor/props";
+import type { SliderProps as BaseSliderProps } from "@pisagor/props";
 import { sliderRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
@@ -8,7 +8,7 @@ type FormControlVariant = "primary" | "secondary";
 
 type ArkPart = Parameters<typeof h>[0];
 
-export interface SliderProps extends SliderSharedProps {
+export interface SliderProps extends BaseSliderProps {
   class?: unknown;
   defaultValue?: number[];
   disabled?: boolean;

@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { StatProps as StatSharedProps } from "@pisagor/props";
+import type { StatProps as BaseStatProps } from "@pisagor/props";
 import { statRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
@@ -10,7 +10,7 @@ type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> &
   {
     children?: import("svelte").Snippet;
     class?: string | undefined;
-  } & StatSharedProps;
+  } & BaseStatProps;
 
 let { variant, children, recipe = statRecipe, class: className, ...rest }: Props = $props();
 

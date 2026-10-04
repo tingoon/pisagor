@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
 import { Presence } from "@ark-ui/solid/presence";
-import type { ActionBarProps as ActionBarSharedProps } from "@pisagor/props";
+import type { ActionBarProps as BaseActionBarProps } from "@pisagor/props";
 import { actionBarRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX, ParentProps } from "solid-js";
@@ -33,7 +33,7 @@ interface ActionBarActionItem {
 
 export interface ActionBarProps
   extends Pick<ActionBarContextValue, "lazyMount" | "unmountOnExit">,
-    ActionBarSharedProps {
+    BaseActionBarProps {
   closeOnEscape?: boolean;
   defaultOpen?: boolean;
   open?: boolean;

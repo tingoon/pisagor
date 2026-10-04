@@ -10,7 +10,7 @@ import {
   Pagination as PaginationPrimitive,
   usePaginationContext,
 } from "@ark-ui/solid/pagination";
-import type { PaginationProps as PaginationRootSharedProps } from "@pisagor/props";
+import type { PaginationProps as BasePaginationRootProps } from "@pisagor/props";
 import { paginationRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
@@ -25,7 +25,7 @@ import { PaginationContext, usePagination } from "./pagination.context";
 
 export interface PaginationRootProps
   extends PaginationPrimitiveRootProps,
-    PaginationRootSharedProps {}
+    BasePaginationRootProps {}
 
 export type PaginationItemsProps = Omit<PaginationContextProps, "children">;
 

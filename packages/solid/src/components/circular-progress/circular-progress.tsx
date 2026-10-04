@@ -5,7 +5,7 @@ import {
   type ProgressValueTextProps,
   useProgressContext,
 } from "@ark-ui/solid/progress";
-import type { CircularProgressProps as CircularProgressSharedProps } from "@pisagor/props";
+import type { CircularProgressProps as BaseCircularProgressProps } from "@pisagor/props";
 import {
   type CircularProgressRecipeSlot,
   circularProgressRecipe,
@@ -23,8 +23,7 @@ type CircularProgressTrackProps = ComponentProps<typeof ark.svg>;
 type CircularProgressValueProps = ProgressValueTextProps;
 type CircularProgressClassNames = VariantClassNames<CircularProgressRecipeSlot>;
 
-type CircularProgressRootProps = ProgressRootProps &
-  CircularProgressSharedProps;
+type CircularProgressRootProps = ProgressRootProps & BaseCircularProgressProps;
 
 export interface CircularProgressProps
   extends Omit<CircularProgressRootProps, "children"> {

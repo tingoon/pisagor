@@ -11,7 +11,7 @@ import type {
   PopoverTriggerProps,
 } from "@ark-ui/solid/popover";
 import { Popover as PopoverPrimitive } from "@ark-ui/solid/popover";
-import type { PopoverProps as PopoverContentSharedProps } from "@pisagor/props";
+import type { PopoverProps as BasePopoverContentProps } from "@pisagor/props";
 import { popoverRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
@@ -24,7 +24,7 @@ import { PopoverContentContext, usePopoverContent } from "./popover.context";
 
 export interface PopoverContentProps
   extends PopoverPrimitiveContentProps,
-    PopoverContentSharedProps {
+    BasePopoverContentProps {
   showCloseButton?: boolean;
 }
 

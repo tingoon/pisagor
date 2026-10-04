@@ -22,7 +22,7 @@ import {
 } from "@ark-ui/react/combobox";
 import { Portal } from "@ark-ui/react/portal";
 import { CaretUpDownIcon, CheckIcon, XIcon } from "@phosphor-icons/react";
-import type { ComboboxProps as ComboboxRootSharedProps } from "@pisagor/props";
+import type { ComboboxProps as BaseComboboxRootProps } from "@pisagor/props";
 import {
   type ComboboxVariantProps,
   comboboxRecipe,
@@ -50,7 +50,7 @@ export type ComboboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
   onValueChange?: (value: string[]) => void;
-} & ComboboxRootSharedProps;
+} & BaseComboboxRootProps;
 
 export interface ComboboxProps
   extends Omit<ComboboxRootProps, "children" | "collection"> {

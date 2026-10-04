@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { SurfaceProps as SurfaceSharedProps } from "@pisagor/props";
+import type { SurfaceProps as BaseSurfaceProps } from "@pisagor/props";
 import { surfaceRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
@@ -17,7 +17,7 @@ type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> &
   {
     children?: import("svelte").Snippet;
     class?: string | undefined;
-  } & SurfaceSharedProps;
+  } & BaseSurfaceProps;
 
 let {
   bordered = false,

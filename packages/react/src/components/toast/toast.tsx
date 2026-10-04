@@ -21,8 +21,8 @@ import {
   XIcon,
 } from "@phosphor-icons/react";
 import type {
-  ToastProps as ToasterRootSharedProps,
-  ToastItemProps as ToastItemSharedProps,
+  ToastProps as BaseToasterRootProps,
+  ToastItemProps as BaseToastItemProps,
 } from "@pisagor/props";
 import {
   type ToastItemRecipeSlot,
@@ -40,7 +40,7 @@ type ToastItemClassNames = VariantClassNames<ToastItemRecipeSlot>;
 
 export interface ToasterRootProps
   extends Omit<ToasterPrimitiveProps, "toaster" | "children">,
-    ToasterRootSharedProps {}
+    BaseToasterRootProps {}
 
 export interface ToasterProps extends ToasterRootProps {
   /** Toaster instance */
@@ -49,7 +49,7 @@ export interface ToasterProps extends ToasterRootProps {
 
 export interface ToastItemRootProps
   extends ToastRootProps,
-    ToastItemSharedProps {}
+    BaseToastItemProps {}
 
 export interface ToastItemProps extends ToastItemRootProps {
   /** Slot class names */

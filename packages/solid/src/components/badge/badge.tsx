@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/solid/factory";
-import type { BadgeProps as BadgeSharedProps } from "@pisagor/props";
+import type { BadgeProps as BaseBadgeProps } from "@pisagor/props";
 import { badgeRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
@@ -7,7 +7,7 @@ import { splitProps } from "solid-js";
 
 export interface BadgeProps
   extends ComponentProps<typeof ark.span>,
-    BadgeSharedProps {}
+    BaseBadgeProps {}
 
 export function Badge(props: BadgeProps): JSX.Element {
   const [local, rest] = splitProps(props, [

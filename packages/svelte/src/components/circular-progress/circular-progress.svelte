@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ProgressRootProps } from "@ark-ui/svelte/progress";
 import { Progress as ProgressPrimitive } from "@ark-ui/svelte/progress";
-import type { CircularProgressProps as CircularProgressSharedProps } from "@pisagor/props";
+import type { CircularProgressProps as BaseCircularProgressProps } from "@pisagor/props";
 import { type CircularProgressRecipeSlot, circularProgressRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
@@ -31,7 +31,7 @@ type Props = Omit<ProgressRootProps, "class" | "children" | "value"> &
    */
   thickness?: number;
   value?: number;
-  } & CircularProgressSharedProps;
+  } & BaseCircularProgressProps;
 
 let {
   size = 32,

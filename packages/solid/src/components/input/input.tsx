@@ -2,7 +2,7 @@ import {
   type FieldInputProps,
   FieldInput as InputPrimitive,
 } from "@ark-ui/solid/field";
-import type { InputProps as InputSharedProps } from "@pisagor/props";
+import type { InputProps as BaseInputProps } from "@pisagor/props";
 import {
   type InputRecipeSlot,
   inputRecipe,
@@ -22,7 +22,7 @@ type FormControlVariant = "primary" | "secondary";
 type InputClassNames = VariantClassNames<InputRecipeSlot>;
 export interface InputProps
   extends Omit<FieldInputProps, "size">,
-    InputSharedProps {
+    BaseInputProps {
   /** Initial value when uncontrolled. Solid has no native defaultValue on inputs. */
   defaultValue?: string | number | readonly string[];
   clearable?: boolean;

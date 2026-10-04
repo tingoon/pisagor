@@ -1,4 +1,4 @@
-import type { AppShellProps as AppShellRootSharedProps } from "@pisagor/props";
+import type { AppShellProps as BaseAppShellRootProps } from "@pisagor/props";
 import { appShellRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { createEffect, createSignal, onCleanup, splitProps } from "solid-js";
@@ -36,7 +36,7 @@ const APP_SHELL_BANNER_ROW =
 
 export interface AppShellRootProps
   extends ComponentProps<"div">,
-    AppShellRootSharedProps {}
+    BaseAppShellRootProps {}
 
 export function AppShellRoot(props: AppShellRootProps): JSX.Element {
   const [local, rest] = splitProps(props, [

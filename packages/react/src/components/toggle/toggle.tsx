@@ -2,7 +2,7 @@ import {
   Toggle as TogglePrimitive,
   type ToggleRootProps,
 } from "@ark-ui/react/toggle";
-import type { ToggleProps as ToggleSharedProps } from "@pisagor/props";
+import type { ToggleProps as BaseToggleProps } from "@pisagor/props";
 import {
   type ButtonVariantProps,
   buttonRecipe,
@@ -12,7 +12,7 @@ import {
 import { cn } from "@pisagor/utils";
 
 // #region Types
-export interface ToggleProps extends ToggleRootProps, ToggleSharedProps {
+export interface ToggleProps extends ToggleRootProps, BaseToggleProps {
   /**
    * The variant of the toggle
    *

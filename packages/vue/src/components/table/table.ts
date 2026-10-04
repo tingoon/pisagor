@@ -1,10 +1,10 @@
 import { ark } from "@ark-ui/vue/factory";
-import type { TableProps as TableSharedProps } from "@pisagor/props";
+import type { TableProps as BaseTableProps } from "@pisagor/props";
 import { tableRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
-export interface TableProps extends TableSharedProps {
+export interface TableProps extends BaseTableProps {
   class?: unknown;
   /**
    * Whether the table rows are hoverable.

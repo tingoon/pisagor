@@ -1,6 +1,6 @@
 <script lang="ts">
 import { type ToastOptions, Toast as ToastPrimitive } from "@ark-ui/svelte/toast";
-import type { ToastItemProps as ToastItemSharedProps } from "@pisagor/props";
+import type { ToastItemProps as BaseToastItemProps } from "@pisagor/props";
 import { buttonRecipe, type ToastItemRecipeSlot, toastItemRecipe } from "@pisagor/recipes";
 
 type Accessor<T> = () => T;
@@ -36,7 +36,7 @@ type Props = Omit<import("@ark-ui/svelte/toast").ToastRootProps, "class"> &
   iconProps?: Omit<HTMLAttributes<HTMLDivElement>, "class">;
   titleProps?: Omit<import("@ark-ui/svelte/toast").ToastTitleProps, "children" | "class">;
   toast: Accessor<ToastOptions>;
-  } & ToastItemSharedProps;
+  } & BaseToastItemProps;
 
 let {
   actionsProps,

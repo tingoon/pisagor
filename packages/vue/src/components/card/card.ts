@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import type { CardProps as CardRootSharedProps } from "@pisagor/props";
+import type { CardProps as BaseCardRootProps } from "@pisagor/props";
 import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 
@@ -8,7 +8,7 @@ export type CardMediaVariant = NonNullable<CardVariantProps["variant"]>;
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface CardRootProps extends CardRootSharedProps {
+export interface CardRootProps extends BaseCardRootProps {
   class?: unknown;
 }
 // #endregion

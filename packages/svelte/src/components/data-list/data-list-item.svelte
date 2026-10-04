@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { DataListItemProps as DataListItemSharedProps } from "@pisagor/props";
+import type { DataListItemProps as BaseDataListItemProps } from "@pisagor/props";
 import { type DataListItemRecipeSlot, dataListItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
@@ -15,7 +15,7 @@ type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> &
   class?: string | undefined;
   classNames?: Partial<Record<DataListItemRecipeSlot, string>>;
   value?: string | Snippet;
-  } & DataListItemSharedProps;
+  } & BaseDataListItemProps;
 
 let {
   value,

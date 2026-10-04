@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import type { AlertProps as AlertSharedProps } from "@pisagor/props";
+import type { AlertProps as BaseAlertProps } from "@pisagor/props";
 import {
   type AlertRecipe,
   type AlertRecipeSlot,
@@ -21,7 +21,7 @@ import { createContext } from "../../internal/utils/create-context";
 // #region Types
 type AlertClassNames = VariantClassNames<AlertRecipeSlot>;
 
-export interface AlertProps extends AlertSharedProps {
+export interface AlertProps extends BaseAlertProps {
   action?: VNodeChild;
   actionProps?: Record<string, unknown>;
   class?: unknown;

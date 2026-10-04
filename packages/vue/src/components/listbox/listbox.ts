@@ -4,8 +4,8 @@ import type { ListboxRootProps as ArkListboxRootProps } from "@ark-ui/vue/listbo
 import { Listbox as ListboxPrimitive } from "@ark-ui/vue/listbox";
 import { PhCheck } from "@phosphor-icons/vue";
 import type {
-  ListboxItemProps as ListboxItemSharedProps,
-  ListboxProps as ListboxRootSharedProps,
+  ListboxItemProps as BaseListboxItemProps,
+  ListboxProps as BaseListboxRootProps,
 } from "@pisagor/props";
 import {
   type ListboxItemVariantProps,
@@ -29,13 +29,13 @@ export type ListboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
 > & {
   collection?: ListCollection<T>;
   onValueChange?: (value: string | string[]) => void;
-} & ListboxRootSharedProps;
+} & BaseListboxRootProps;
 
 export interface ListboxProps extends Omit<ListboxRootProps, "children"> {
   items?: ListboxPresetItem[];
 }
 
-export interface ListboxItemProps extends ListboxItemSharedProps {
+export interface ListboxItemProps extends BaseListboxItemProps {
   class?: unknown;
 }
 // #endregion

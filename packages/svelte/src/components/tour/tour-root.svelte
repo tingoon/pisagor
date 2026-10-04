@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { TourRootProps as ArkRootProps, TourStepDetails } from "@ark-ui/svelte/tour";
 import { Tour as TourPrimitive, useTour } from "@ark-ui/svelte/tour";
-import type { TourProps as TourSharedProps } from "@pisagor/props";
+import type { TourProps as BaseTourProps } from "@pisagor/props";
 import { tourRecipe } from "@pisagor/recipes";
 import { onDestroy } from "svelte";
 import { setTourContext } from "./tour.context";
@@ -9,7 +9,7 @@ import { setTourContext } from "./tour.context";
 type Props = Omit<ArkRootProps, "tour"> &
   {
   steps?: TourStepDetails[];
-  } & TourSharedProps;
+  } & BaseTourProps;
 
 let { steps = [], recipe = tourRecipe, children, ...rest }: Props = $props();
 

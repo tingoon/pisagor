@@ -4,7 +4,7 @@ import {
   ColorPicker as ColorPickerPrimitive,
   parseColor,
 } from "@ark-ui/svelte/color-picker";
-import type { ColorPickerProps as ColorPickerSharedProps } from "@pisagor/props";
+import type { ColorPickerProps as BaseColorPickerProps } from "@pisagor/props";
 import { colorPickerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setColorPickerContext } from "./color-picker.context";
@@ -15,7 +15,7 @@ type Props = Omit<ArkRootProps, "class" | "defaultValue" | "value" | "onValueCha
   defaultValue?: string;
   onValueChange?: (value: string) => void;
   value?: string;
-  } & ColorPickerSharedProps;
+  } & BaseColorPickerProps;
 
 let {
   positioning = { placement: "top-start" },

@@ -3,7 +3,7 @@ import {
   type JsonTreeViewRootProps as JsonTreeViewPrimitiveRootProps,
   type JsonTreeViewTreeProps,
 } from "@ark-ui/solid/json-tree-view";
-import type { JsonTreeViewProps as JsonTreeViewRootSharedProps } from "@pisagor/props";
+import type { JsonTreeViewProps as BaseJsonTreeViewRootProps } from "@pisagor/props";
 import {
   type JsonTreeViewRecipeSlot,
   jsonTreeViewRecipe,
@@ -17,7 +17,7 @@ import { JsonTreeViewContext, useJsonTreeView } from "./json-tree-view.context";
 
 export interface JsonTreeViewRootProps
   extends JsonTreeViewPrimitiveRootProps,
-    JsonTreeViewRootSharedProps {}
+    BaseJsonTreeViewRootProps {}
 
 type JsonTreeViewClassNames = VariantClassNames<JsonTreeViewRecipeSlot>;
 

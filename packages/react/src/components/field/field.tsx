@@ -12,9 +12,9 @@ import {
   type FieldsetRootProps,
 } from "@ark-ui/react/fieldset";
 import type {
-  FieldProps as FieldGroupSharedProps,
-  FieldProps as FieldRootSharedProps,
-  FieldProps as FieldSetSharedProps,
+  FieldProps as BaseFieldGroupProps,
+  FieldProps as BaseFieldRootProps,
+  FieldProps as BaseFieldSetProps,
 } from "@pisagor/props";
 import { fieldRecipe, formControlSeparatorRecipe } from "@pisagor/recipes";
 
@@ -27,7 +27,7 @@ import { FieldContext, useFieldSlots } from "./field.context";
 // #region Types
 export interface FieldRootProps
   extends FieldPrimitiveRootProps,
-    FieldRootSharedProps {}
+    BaseFieldRootProps {}
 
 export type FieldProps = FieldRootProps;
 
@@ -36,7 +36,7 @@ export interface FieldLegendProps extends FieldsetLegendProps {
   variant?: "legend" | "label";
 }
 
-export interface FieldSetProps extends FieldsetRootProps, FieldSetSharedProps {}
+export interface FieldSetProps extends FieldsetRootProps, BaseFieldSetProps {}
 
 export type FieldHelperProps = FieldHelperTextProps;
 
@@ -44,7 +44,7 @@ export type FieldErrorProps = FieldErrorTextProps;
 
 export interface FieldGroupProps
   extends ComponentProps<typeof ark.div>,
-    FieldGroupSharedProps {}
+    BaseFieldGroupProps {}
 
 export type FieldContentProps = ComponentProps<typeof ark.div>;
 

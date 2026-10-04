@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ToggleGroupRootProps as ArkToggleGroupRootProps } from "@ark-ui/svelte/toggle-group";
 import { ToggleGroup as ToggleGroupPrimitive } from "@ark-ui/svelte/toggle-group";
-import type { ToggleGroupProps as ToggleGroupSharedProps } from "@pisagor/props";
+import type { ToggleGroupProps as BaseToggleGroupProps } from "@pisagor/props";
 import { type ButtonVariantProps, type ToggleVariantProps, toggleGroupRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setToggleGroupContext } from "./toggle-group.context";
@@ -15,7 +15,7 @@ type Props = Omit<ArkToggleGroupRootProps, "class" | "onValueChange" | "style"> 
   spacing?: number;
   variant?: Extract<ButtonVariantProps["variant"], "outline" | "ghost">;
   style?: string | undefined;
-  } & ToggleGroupSharedProps;
+  } & BaseToggleGroupProps;
 
 let {
   orientation = "horizontal",

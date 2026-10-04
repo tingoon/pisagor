@@ -9,7 +9,7 @@ import {
   type SliderTrackProps,
   type SliderValueTextProps,
 } from "@ark-ui/solid/slider";
-import type { SliderProps as SliderSharedProps } from "@pisagor/props";
+import type { SliderProps as BaseSliderProps } from "@pisagor/props";
 import { type SliderRecipeSlot, sliderRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
@@ -23,7 +23,7 @@ type SliderValueProps = SliderValueTextProps;
 type SliderClassNames = VariantClassNames<SliderRecipeSlot>;
 
 type SliderRootProps = SliderPrimitiveRootProps &
-  SliderSharedProps & {
+  BaseSliderProps & {
     variant?: FormControlVariant;
   };
 

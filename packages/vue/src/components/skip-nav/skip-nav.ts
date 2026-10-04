@@ -1,11 +1,11 @@
 import { ark } from "@ark-ui/vue/factory";
-import type { SkipNavProps as SkipNavLinkSharedProps } from "@pisagor/props";
+import type { SkipNavProps as BaseSkipNavLinkProps } from "@pisagor/props";
 import { skipNavRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
-export interface SkipNavLinkProps extends SkipNavLinkSharedProps {
+export interface SkipNavLinkProps extends BaseSkipNavLinkProps {
   class?: unknown;
 }
 

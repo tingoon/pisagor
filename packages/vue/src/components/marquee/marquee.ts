@@ -1,11 +1,11 @@
 import { Marquee as MarqueePrimitive } from "@ark-ui/vue/marquee";
-import type { MarqueeProps as MarqueeSharedProps } from "@pisagor/props";
+import type { MarqueeProps as BaseMarqueeProps } from "@pisagor/props";
 import { marqueeRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 
 // #region Types
-export interface MarqueeProps extends MarqueeSharedProps {
+export interface MarqueeProps extends BaseMarqueeProps {
   orientation?: "horizontal" | "vertical";
   showEdges?: boolean;
   spacing?: string;

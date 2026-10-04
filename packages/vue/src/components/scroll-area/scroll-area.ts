@@ -1,11 +1,11 @@
 import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/vue/scroll-area";
-import type { ScrollAreaProps as ScrollAreaSharedProps } from "@pisagor/props";
+import type { ScrollAreaProps as BaseScrollAreaProps } from "@pisagor/props";
 import { type ScrollAreaRecipeSlot, scrollAreaRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
 import type { VariantClassNames } from "../../internal/types";
 
 // #region Types
-export interface ScrollAreaProps extends ScrollAreaSharedProps {
+export interface ScrollAreaProps extends BaseScrollAreaProps {
   class?: unknown;
   scrollFade?: boolean;
   /**

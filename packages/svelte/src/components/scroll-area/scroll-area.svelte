@@ -6,7 +6,7 @@ import type {
   ScrollAreaViewportProps,
 } from "@ark-ui/svelte/scroll-area";
 import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/svelte/scroll-area";
-import type { ScrollAreaProps as ScrollAreaSharedProps } from "@pisagor/props";
+import type { ScrollAreaProps as BaseScrollAreaProps } from "@pisagor/props";
 import type { ScrollAreaRecipeSlot } from "@pisagor/recipes";
 import type { Snippet } from "svelte";
 import ScrollAreaRoot from "./scroll-area-root.svelte";
@@ -22,7 +22,7 @@ type Props = Omit<ScrollAreaRootProps, "class" | "children"> &
     scrollbarProps?: Omit<ScrollAreaScrollbarProps, "children" | "class" | "orientation">;
     thumbProps?: Omit<ScrollAreaThumbProps, "children" | "class">;
     viewportProps?: Omit<ScrollAreaViewportProps, "children" | "class">;
-  } & ScrollAreaSharedProps;
+  } & BaseScrollAreaProps;
 
 let {
   scrollFade,

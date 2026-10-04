@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ToggleRootProps } from "@ark-ui/svelte/toggle";
 import { Toggle as TogglePrimitive } from "@ark-ui/svelte/toggle";
-import type { ToggleProps as ToggleSharedProps } from "@pisagor/props";
+import type { ToggleProps as BaseToggleProps } from "@pisagor/props";
 import { type ButtonVariantProps, buttonRecipe, toggleRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 
@@ -16,7 +16,7 @@ type Props = Omit<ToggleRootProps, "class"> &
     onValueChange?: (value: boolean) => void;
     class?: string | undefined;
     buttonRecipe?: typeof buttonRecipe;
-  } & ToggleSharedProps;
+  } & BaseToggleProps;
 
 let {
   size = "md",

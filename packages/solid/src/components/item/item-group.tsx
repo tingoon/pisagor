@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/solid/factory";
 import type {
-  ItemProps as ItemGroupSharedProps,
-  ItemProps as ItemSeparatorSharedProps,
+  ItemProps as BaseItemGroupProps,
+  ItemProps as BaseItemSeparatorProps,
 } from "@pisagor/props";
 import { itemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -12,11 +12,11 @@ import { ItemGroupContext } from "./item-group.context";
 
 export interface ItemGroupProps
   extends ComponentProps<typeof ark.div>,
-    ItemGroupSharedProps {}
+    BaseItemGroupProps {}
 
 export interface ItemSeparatorProps
   extends Omit<SeparatorProps, "recipe">,
-    ItemSeparatorSharedProps {}
+    BaseItemSeparatorProps {}
 
 export function ItemGroup(props: ItemGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, [

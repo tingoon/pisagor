@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/react/factory";
 import type {
-  TimelineItemProps as TimelineItemSharedProps,
-  TimelineProps as TimelineRootSharedProps,
+  TimelineItemProps as BaseTimelineItemProps,
+  TimelineProps as BaseTimelineRootProps,
 } from "@pisagor/props";
 import { timelineItemRecipe, timelineRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ReactNode } from "react";
@@ -10,11 +10,11 @@ import { TimelineItemContext, useTimelineItem } from "./timeline.context";
 // #region Types
 export interface TimelineRootProps
   extends ComponentProps<typeof ark.ol>,
-    TimelineRootSharedProps {}
+    BaseTimelineRootProps {}
 
 export interface TimelineItemProps
   extends ComponentProps<typeof ark.li>,
-    TimelineItemSharedProps {}
+    BaseTimelineItemProps {}
 
 export type TimelineIndicatorProps = ComponentProps<typeof ark.div>;
 

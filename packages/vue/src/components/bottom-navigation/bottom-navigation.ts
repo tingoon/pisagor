@@ -1,8 +1,8 @@
 import { ark } from "@ark-ui/vue/factory";
 import { Tabs as TabsPrimitive } from "@ark-ui/vue/tabs";
 import type {
-  BottomNavigationItemProps as BottomNavigationItemSharedProps,
-  BottomNavigationProps as BottomNavigationRootSharedProps,
+  BottomNavigationItemProps as BaseBottomNavigationItemProps,
+  BottomNavigationProps as BaseBottomNavigationRootProps,
 } from "@pisagor/props";
 import {
   bottomNavigationItemRecipe,
@@ -14,12 +14,12 @@ type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
 export interface BottomNavigationItemProps
-  extends BottomNavigationItemSharedProps {
+  extends BaseBottomNavigationItemProps {
   class?: unknown;
 }
 
 export interface BottomNavigationRootProps
-  extends BottomNavigationRootSharedProps {
+  extends BaseBottomNavigationRootProps {
   class?: unknown;
 }
 // #endregion

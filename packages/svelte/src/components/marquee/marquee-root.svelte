@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { MarqueeRootProps as ArkRootProps } from "@ark-ui/svelte/marquee";
 import { Marquee as MarqueePrimitive } from "@ark-ui/svelte/marquee";
-import type { MarqueeProps as MarqueeSharedProps } from "@pisagor/props";
+import type { MarqueeProps as BaseMarqueeProps } from "@pisagor/props";
 import { marqueeRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setMarqueeContext } from "./marquee.context";
@@ -12,7 +12,7 @@ type Props = Omit<ArkRootProps, "class" | "side"> &
   class?: string | undefined;
   orientation?: "horizontal" | "vertical";
   showEdges?: boolean;
-  } & MarqueeSharedProps;
+  } & BaseMarqueeProps;
 
 let {
   orientation = "horizontal",

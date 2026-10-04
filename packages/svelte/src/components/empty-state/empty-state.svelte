@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { EmptyStateProps as EmptyStateSharedProps } from "@pisagor/props";
+import type { EmptyStateProps as BaseEmptyStateProps } from "@pisagor/props";
 import type { EmptyStateRecipeSlot } from "@pisagor/recipes";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
@@ -17,7 +17,7 @@ type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "title" | "children"
   description?: string | Snippet;
   media?: Snippet;
   title?: string | Snippet;
-  } & EmptyStateSharedProps;
+  } & BaseEmptyStateProps;
 
 let {
   actions,

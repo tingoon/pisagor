@@ -1,4 +1,4 @@
-import type { ScrollspyProps as ScrollspySharedProps } from "@pisagor/props";
+import type { ScrollspyProps as BaseScrollspyProps } from "@pisagor/props";
 import { scrollspyRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
@@ -17,7 +17,7 @@ const SCROLLSPY_ANCHOR = "data-scrollspy-anchor";
 const SCROLLSPY_OFFSET = "data-scrollspy-offset";
 const SCROLLSPY_ANCHOR_SELECTOR = `[${SCROLLSPY_ANCHOR}]`;
 
-export interface ScrollspyProps extends ScrollspySharedProps {
+export interface ScrollspyProps extends BaseScrollspyProps {
   class?: unknown;
   /**
    * Whether to update the URL hash when the active section changes.

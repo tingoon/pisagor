@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/solid/factory";
-import type { AvatarGroupProps as AvatarGroupRootSharedProps } from "@pisagor/props";
+import type { AvatarGroupProps as BaseAvatarGroupRootProps } from "@pisagor/props";
 import { avatarGroupRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
@@ -9,7 +9,7 @@ import { AvatarGroupContext, useAvatarGroup } from "./avatar-group.context";
 
 export interface AvatarGroupRootProps
   extends ComponentProps<typeof ark.div>,
-    AvatarGroupRootSharedProps {}
+    BaseAvatarGroupRootProps {}
 
 export interface AvatarGroupProps
   extends Omit<AvatarGroupRootProps, "children"> {

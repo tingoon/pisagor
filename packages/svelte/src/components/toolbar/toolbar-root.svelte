@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { ToolbarProps as ToolbarSharedProps } from "@pisagor/props";
+import type { ToolbarProps as BaseToolbarProps } from "@pisagor/props";
 import { toolbarRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
@@ -9,7 +9,7 @@ import { setToolbarContext } from "./toolbar.context";
 type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "title"> &
   {
   class?: string | undefined;
-  } & ToolbarSharedProps;
+  } & BaseToolbarProps;
 
 let { children, recipe = toolbarRecipe, class: className, ...rest }: Props = $props();
 const slots = $derived(recipe());

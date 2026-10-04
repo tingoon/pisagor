@@ -1,7 +1,7 @@
 <script lang="ts">
 import { Portal } from "@ark-ui/svelte/portal";
 import { type CreateToasterReturn, Toaster as ToasterPrimitive } from "@ark-ui/svelte/toast";
-import type { ToastProps as ToastSharedProps } from "@pisagor/props";
+import type { ToastProps as BaseToastProps } from "@pisagor/props";
 import { toastRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { toast as defaultToast } from "./toast";
@@ -15,7 +15,7 @@ type Props = Omit<
   class?: string | undefined;
   style?: string | undefined;
   toaster?: CreateToasterReturn;
-  } & ToastSharedProps;
+  } & BaseToastProps;
 
 let {
   toaster: toasterInstance = defaultToast,

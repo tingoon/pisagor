@@ -2,7 +2,7 @@ import {
   AngleSlider as AngleSliderPrimitive,
   useAngleSliderContext,
 } from "@ark-ui/vue/angle-slider";
-import type { CircularSliderProps as CircularSliderSharedProps } from "@pisagor/props";
+import type { CircularSliderProps as BaseCircularSliderProps } from "@pisagor/props";
 import { circularSliderRecipe } from "@pisagor/recipes";
 import {
   defineComponent,
@@ -29,7 +29,7 @@ interface CircularSliderContextValue {
   thumbSize: number;
 }
 
-export interface CircularSliderProps extends CircularSliderSharedProps {
+export interface CircularSliderProps extends BaseCircularSliderProps {
   class?: unknown;
   defaultValue?: number;
   disabled?: boolean;

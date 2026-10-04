@@ -2,7 +2,7 @@ import {
   Field as FieldPrimitive,
   type FieldTextareaProps,
 } from "@ark-ui/react/field";
-import type { TextareaProps as TextareaSharedProps } from "@pisagor/props";
+import type { TextareaProps as BaseTextareaProps } from "@pisagor/props";
 import {
   formControlShellRecipe,
   type TextareaRecipeSlot,
@@ -34,7 +34,7 @@ type TextareaRootProps = FieldTextareaProps &
     variant?: FormControlVariant;
   };
 
-export interface TextareaProps extends TextareaRootProps, TextareaSharedProps {
+export interface TextareaProps extends TextareaRootProps, BaseTextareaProps {
   /**
    * Whether to show a clear button when the textarea has a value.
    *

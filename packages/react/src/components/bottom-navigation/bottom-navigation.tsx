@@ -6,8 +6,8 @@ import {
   type TabTriggerProps,
 } from "@ark-ui/react/tabs";
 import type {
-  BottomNavigationItemProps as BottomNavigationItemSharedProps,
-  BottomNavigationProps as BottomNavigationRootSharedProps,
+  BottomNavigationItemProps as BaseBottomNavigationItemProps,
+  BottomNavigationProps as BaseBottomNavigationRootProps,
 } from "@pisagor/props";
 import {
   bottomNavigationItemRecipe,
@@ -24,7 +24,7 @@ import {
 // #region Types
 export interface BottomNavigationRootProps
   extends TabsRootProps,
-    BottomNavigationRootSharedProps {}
+    BaseBottomNavigationRootProps {}
 
 export type BottomNavigationProps = BottomNavigationRootProps;
 
@@ -32,7 +32,7 @@ export type BottomNavigationListProps = TabListProps;
 
 export interface BottomNavigationItemProps
   extends TabTriggerProps,
-    BottomNavigationItemSharedProps {}
+    BaseBottomNavigationItemProps {}
 
 export type BottomNavigationItemIconProps = ComponentProps<typeof ark.span>;
 

@@ -2,8 +2,8 @@ import { ark } from "@ark-ui/vue/factory";
 import { Menu as MenuPrimitive } from "@ark-ui/vue/menu";
 import { PhCaretRight, PhCheck } from "@phosphor-icons/vue";
 import type {
-  DropdownMenuItemProps as DropdownMenuItemSharedProps,
-  DropdownMenuProps as DropdownMenuPositionerSharedProps,
+  DropdownMenuItemProps as BaseDropdownMenuItemProps,
+  DropdownMenuProps as BaseDropdownMenuPositionerProps,
 } from "@pisagor/props";
 import { dropdownMenuItemRecipe, dropdownMenuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -14,7 +14,7 @@ export interface DropdownMenuItemGroupProps {
   heading?: string;
 }
 
-export interface DropdownMenuItemProps extends DropdownMenuItemSharedProps {
+export interface DropdownMenuItemProps extends BaseDropdownMenuItemProps {
   class?: unknown;
 }
 
@@ -29,7 +29,7 @@ export interface DropdownMenuRootProps {
 }
 
 export interface DropdownMenuPositionerProps
-  extends DropdownMenuPositionerSharedProps {
+  extends BaseDropdownMenuPositionerProps {
   class?: unknown;
 }
 // #endregion

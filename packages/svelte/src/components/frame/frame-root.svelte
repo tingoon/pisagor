@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { FrameProps as FrameSharedProps } from "@pisagor/props";
+import type { FrameProps as BaseFrameProps } from "@pisagor/props";
 import { frameRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
@@ -11,7 +11,7 @@ type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> &
   {
   children?: import("svelte").Snippet;
   class?: string | undefined;
-  } & FrameSharedProps;
+  } & BaseFrameProps;
 
 let { children, recipe = frameRecipe, class: className, ...rest }: Props = $props();
 

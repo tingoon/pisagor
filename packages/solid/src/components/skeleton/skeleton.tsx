@@ -1,8 +1,8 @@
 import { ark } from "@ark-ui/solid/factory";
 import type {
-  SkeletonProps as SkeletonCircleSharedProps,
-  SkeletonProps as SkeletonRootSharedProps,
-  SkeletonProps as SkeletonTextSharedProps,
+  SkeletonProps as BaseSkeletonCircleProps,
+  SkeletonProps as BaseSkeletonRootProps,
+  SkeletonProps as BaseSkeletonTextProps,
 } from "@pisagor/props";
 import { skeletonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -11,17 +11,17 @@ import { For, splitProps } from "solid-js";
 
 export interface SkeletonTextProps
   extends ComponentProps<typeof ark.div>,
-    SkeletonTextSharedProps {
+    BaseSkeletonTextProps {
   lines?: number;
 }
 
 export interface SkeletonRootProps
   extends ComponentProps<typeof ark.div>,
-    SkeletonRootSharedProps {}
+    BaseSkeletonRootProps {}
 
 export interface SkeletonCircleProps
   extends ComponentProps<typeof ark.div>,
-    SkeletonCircleSharedProps {}
+    BaseSkeletonCircleProps {}
 
 export function SkeletonRoot(props: SkeletonRootProps): JSX.Element {
   const [local, rest] = splitProps(props, ["recipe", "class"]);

@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/vue/factory";
 import type {
-  MenuItemProps as MenuItemSharedProps,
-  MenuProps as MenuRootSharedProps,
+  MenuItemProps as BaseMenuItemProps,
+  MenuProps as BaseMenuRootProps,
 } from "@pisagor/props";
 import {
   type MenuRecipeSlot,
@@ -15,11 +15,11 @@ import type { VariantClassNames } from "../../internal/types";
 // #region Types
 type MenuClassNames = VariantClassNames<MenuRecipeSlot>;
 
-export interface MenuRootProps extends MenuRootSharedProps {
+export interface MenuRootProps extends BaseMenuRootProps {
   classNames?: MenuClassNames;
 }
 
-export interface MenuItemProps extends MenuItemSharedProps {
+export interface MenuItemProps extends BaseMenuItemProps {
   class?: unknown;
 }
 // #endregion

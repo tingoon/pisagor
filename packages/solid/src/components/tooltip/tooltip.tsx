@@ -6,7 +6,7 @@ import type {
   TooltipTriggerProps,
 } from "@ark-ui/solid/tooltip";
 import { Tooltip as TooltipPrimitive } from "@ark-ui/solid/tooltip";
-import type { TooltipProps as TooltipRootSharedProps } from "@pisagor/props";
+import type { TooltipProps as BaseTooltipRootProps } from "@pisagor/props";
 import { type TooltipRecipeSlot, tooltipRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
@@ -17,7 +17,7 @@ import { TooltipContext, useTooltip } from "./tooltip.context";
 
 export interface TooltipRootProps
   extends TooltipPrimitiveRootProps,
-    TooltipRootSharedProps {}
+    BaseTooltipRootProps {}
 
 export type TooltipTriggerHandleProps =
   JSX.ButtonHTMLAttributes<HTMLButtonElement>;

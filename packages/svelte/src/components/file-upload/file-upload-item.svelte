@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { FileUploadItemProps } from "@ark-ui/svelte/file-upload";
 import { FileUpload as FileUploadPrimitive } from "@ark-ui/svelte/file-upload";
-import type { FileUploadItemProps as FileUploadItemSharedProps } from "@pisagor/props";
+import type { FileUploadItemProps as BaseFileUploadItemProps } from "@pisagor/props";
 import { fileUploadItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setFileUploadItemContext } from "./file-upload.context";
@@ -9,7 +9,7 @@ import { setFileUploadItemContext } from "./file-upload.context";
 type Props = Omit<FileUploadItemProps, "class"> &
   {
   class?: string | undefined;
-  } & FileUploadItemSharedProps;
+  } & BaseFileUploadItemProps;
 
 let { children, recipe = fileUploadItemRecipe, class: className, ...rest }: Props = $props();
 

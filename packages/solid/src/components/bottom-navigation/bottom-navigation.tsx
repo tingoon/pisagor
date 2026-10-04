@@ -6,8 +6,8 @@ import {
   type TabTriggerProps,
 } from "@ark-ui/solid/tabs";
 import type {
-  BottomNavigationItemProps as BottomNavigationItemSharedProps,
-  BottomNavigationProps as BottomNavigationSharedProps,
+  BottomNavigationItemProps as BaseBottomNavigationItemProps,
+  BottomNavigationProps as BaseBottomNavigationProps,
 } from "@pisagor/props";
 import {
   bottomNavigationItemRecipe,
@@ -25,14 +25,14 @@ import {
 
 export interface BottomNavigationRootProps
   extends TabsRootProps,
-    BottomNavigationSharedProps {}
+    BaseBottomNavigationProps {}
 
 export type BottomNavigationProps = BottomNavigationRootProps;
 export type BottomNavigationListProps = TabListProps;
 
 export interface BottomNavigationItemProps
   extends TabTriggerProps,
-    BottomNavigationItemSharedProps {}
+    BaseBottomNavigationItemProps {}
 
 export type BottomNavigationItemIconProps = ComponentProps<typeof ark.span>;
 export type BottomNavigationItemLabelProps = ComponentProps<typeof ark.span>;

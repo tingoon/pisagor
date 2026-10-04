@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { CardProps as CardSharedProps } from "@pisagor/props";
+import type { CardProps as BaseCardProps } from "@pisagor/props";
 import { cardRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
@@ -10,7 +10,7 @@ type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> &
   {
   children?: import("svelte").Snippet;
   class?: string | undefined;
-  } & CardSharedProps;
+  } & BaseCardProps;
 
 let { children, recipe = cardRecipe, class: className, ...rest }: Props = $props();
 

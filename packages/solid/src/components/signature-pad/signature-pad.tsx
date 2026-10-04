@@ -6,7 +6,7 @@ import type {
   SignaturePadSegmentProps,
 } from "@ark-ui/solid/signature-pad";
 import { SignaturePad as SignaturePadPrimitive } from "@ark-ui/solid/signature-pad";
-import type { SignaturePadProps as SignaturePadRootSharedProps } from "@pisagor/props";
+import type { SignaturePadProps as BaseSignaturePadRootProps } from "@pisagor/props";
 import {
   formControlZoneRecipe,
   type SignaturePadRecipeSlot,
@@ -27,7 +27,7 @@ type SignaturePadClassNames = VariantClassNames<SignaturePadRecipeSlot>;
 type SignaturePadRootProps = SignaturePadPrimitiveRootProps & {
   variant?: FormControlVariant;
   invalid?: boolean;
-} & SignaturePadRootSharedProps;
+} & BaseSignaturePadRootProps;
 
 export interface SignaturePadProps
   extends Omit<SignaturePadRootProps, "children"> {

@@ -6,7 +6,7 @@ import type {
   ImageCropperZoomChangeDetails,
 } from "@ark-ui/vue/image-cropper";
 import { ImageCropper as ImageCropperPrimitive } from "@ark-ui/vue/image-cropper";
-import type { ImageCropperProps as ImageCropperSharedProps } from "@pisagor/props";
+import type { ImageCropperProps as BaseImageCropperProps } from "@pisagor/props";
 import { imageCropperRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
@@ -21,7 +21,7 @@ interface CropRect {
 }
 
 // #region Types
-export interface ImageCropperProps extends ImageCropperSharedProps {
+export interface ImageCropperProps extends BaseImageCropperProps {
   class?: unknown;
   /** Shape of the crop selection area. */
   cropShape?: "rectangle" | "circle";

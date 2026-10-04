@@ -10,7 +10,7 @@ import type {
 } from "@ark-ui/react/carousel";
 import { Carousel as CarouselPrimitive } from "@ark-ui/react/carousel";
 import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
-import type { CarouselProps as CarouselRootSharedProps } from "@pisagor/props";
+import type { CarouselProps as BaseCarouselRootProps } from "@pisagor/props";
 import { carouselRecipe } from "@pisagor/recipes";
 import type { ReactNode } from "react";
 import { Button } from "../button";
@@ -19,7 +19,7 @@ import { CarouselContext, useCarousel } from "./carousel.context";
 // #region Types
 export interface CarouselRootProps
   extends CarouselPrimitiveRootProps,
-    CarouselRootSharedProps {}
+    BaseCarouselRootProps {}
 
 interface CarouselPresetItem {
   content: ReactNode;

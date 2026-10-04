@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import type { ButtonProps as ButtonSharedProps } from "@pisagor/props";
+import type { ButtonProps as BaseButtonProps } from "@pisagor/props";
 import { buttonRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { Spinner } from "../spinner";
@@ -7,7 +7,7 @@ import { Spinner } from "../spinner";
 // #region Types
 export interface ButtonProps
   extends ComponentProps<typeof ark.button>,
-    ButtonSharedProps {}
+    BaseButtonProps {}
 // #endregion
 
 // #region Component

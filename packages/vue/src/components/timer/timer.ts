@@ -4,8 +4,8 @@ import {
   useTimerContext as useTimer,
 } from "@ark-ui/vue/timer";
 import type {
-  TimerItemGroupProps as TimerItemGroupSharedProps,
-  TimerProps as TimerRootSharedProps,
+  TimerItemGroupProps as BaseTimerItemGroupProps,
+  TimerProps as BaseTimerRootProps,
 } from "@pisagor/props";
 import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
@@ -13,14 +13,14 @@ import { defineComponent, h, type PropType } from "vue";
 // #region Types
 type TimerUnit = "hours" | "minutes" | "seconds";
 
-export interface TimerRootProps extends TimerRootSharedProps {
+export interface TimerRootProps extends BaseTimerRootProps {
   units?: TimerUnit[];
   class?: unknown;
 }
 
 type ArkPart = Parameters<typeof h>[0];
 
-export interface TimerItemGroupProps extends TimerItemGroupSharedProps {
+export interface TimerItemGroupProps extends BaseTimerItemGroupProps {
   class?: unknown;
 }
 // #endregion

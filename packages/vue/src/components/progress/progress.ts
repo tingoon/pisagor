@@ -4,7 +4,7 @@ import {
   ProgressTrack,
   ProgressValueText,
 } from "@ark-ui/vue/progress";
-import type { ProgressProps as ProgressSharedProps } from "@pisagor/props";
+import type { ProgressProps as BaseProgressProps } from "@pisagor/props";
 import {
   fieldRecipe,
   type ProgressRecipeSlot,
@@ -17,7 +17,7 @@ import type { VariantClassNames } from "../../internal/types";
 // #region Types
 type ProgressClassNames = VariantClassNames<ProgressRecipeSlot>;
 
-export interface ProgressProps extends ProgressSharedProps {
+export interface ProgressProps extends BaseProgressProps {
   class?: unknown;
   classNames?: ProgressClassNames;
   indeterminate?: boolean;

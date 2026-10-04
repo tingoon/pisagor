@@ -4,7 +4,7 @@ import type {
   AngleSliderRootProps,
 } from "@ark-ui/svelte/angle-slider";
 import { AngleSlider as AngleSliderPrimitive } from "@ark-ui/svelte/angle-slider";
-import type { CircularSliderProps as CircularSliderSharedProps } from "@pisagor/props";
+import type { CircularSliderProps as BaseCircularSliderProps } from "@pisagor/props";
 import { circularSliderRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
@@ -22,7 +22,7 @@ type Props = Omit<AngleSliderRootProps, "class" | "onValueChange" | "children"> 
     markers?: boolean | number[];
     markersAtSteps?: boolean;
     onValueChange?: (value: number) => void;
-  } & CircularSliderSharedProps;
+  } & BaseCircularSliderProps;
 
 let {
   size = 100,

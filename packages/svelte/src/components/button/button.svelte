@@ -1,13 +1,13 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { ButtonProps as ButtonSharedProps } from "@pisagor/props";
+import type { ButtonProps as BaseButtonProps } from "@pisagor/props";
 import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLButtonAttributes } from "svelte/elements";
 import Spinner from "../spinner/spinner.svelte";
 
 type Props = Omit<HTMLButtonAttributes, "class" | "disabled" | "type"> &
-  ButtonSharedProps & {
+  BaseButtonProps & {
     children?: import("svelte").Snippet;
     class?: string | undefined;
     disabled?: boolean | null;

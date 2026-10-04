@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import type { BadgeProps as BadgeSharedProps } from "@pisagor/props";
+import type { BadgeProps as BaseBadgeProps } from "@pisagor/props";
 import { type BadgeVariantProps, badgeRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 
@@ -8,7 +8,7 @@ export type BadgeVariant = BadgeVariantProps["variant"];
 
 export interface BadgeProps
   extends ComponentProps<typeof ark.span>,
-    BadgeSharedProps {}
+    BaseBadgeProps {}
 // #endregion
 
 // #region Component

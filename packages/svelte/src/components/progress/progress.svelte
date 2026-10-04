@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ProgressRootProps } from "@ark-ui/svelte/progress";
 import { Progress as ProgressPrimitive } from "@ark-ui/svelte/progress";
-import type { ProgressProps as ProgressSharedProps } from "@pisagor/props";
+import type { ProgressProps as BaseProgressProps } from "@pisagor/props";
 import { type ProgressRecipeSlot, progressRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
@@ -26,7 +26,7 @@ type Props = Omit<ProgressRootProps, "class" | "children" | "value"> &
    * @defaultValue 0
    */
   value?: number;
-  } & ProgressSharedProps;
+  } & BaseProgressProps;
 
 let {
   orientation = "horizontal",

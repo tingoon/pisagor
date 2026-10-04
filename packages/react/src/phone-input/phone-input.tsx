@@ -1,6 +1,6 @@
 import { createListCollection } from "@ark-ui/react/collection";
 import { CaretUpDownIcon, GlobeIcon } from "@phosphor-icons/react";
-import type { PhoneInputProps as PhoneInputSharedProps } from "@pisagor/props";
+import type { PhoneInputProps as BasePhoneInputProps } from "@pisagor/props";
 import { type PhoneInputRecipeSlot, phoneInputRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "react";
@@ -52,7 +52,7 @@ export interface PhoneInputProps
       | "countrySelectComponent"
       | "inputComponent"
     >,
-    PhoneInputSharedProps {
+    BasePhoneInputProps {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
   /** Default country when no value is provided */

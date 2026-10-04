@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import type { ScrollspyProps as ScrollspySharedProps } from "@pisagor/props";
+import type { ScrollspyProps as BaseScrollspyProps } from "@pisagor/props";
 import { scrollspyRecipe } from "@pisagor/recipes";
 import {
   type ComponentProps,
@@ -18,7 +18,7 @@ const SCROLLSPY_ANCHOR_SELECTOR = `[${SCROLLSPY_ANCHOR}]`;
 
 export interface ScrollspyProps
   extends ComponentProps<typeof ark.div>,
-    ScrollspySharedProps {
+    BaseScrollspyProps {
   /**
    * Whether to update the URL hash when the active section changes.
    *

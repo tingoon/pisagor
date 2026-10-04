@@ -2,8 +2,8 @@ import { ark } from "@ark-ui/vue/factory";
 import { Steps as StepsPrimitive } from "@ark-ui/vue/steps";
 import { PhCheck } from "@phosphor-icons/vue";
 import type {
-  StepsItemProps as StepsItemSharedProps,
-  StepsProps as StepsRootSharedProps,
+  StepsItemProps as BaseStepsItemProps,
+  StepsProps as BaseStepsRootProps,
 } from "@pisagor/props";
 import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
@@ -11,11 +11,11 @@ import { defineComponent, h, type PropType } from "vue";
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface StepsItemProps extends StepsItemSharedProps {
+export interface StepsItemProps extends BaseStepsItemProps {
   class?: unknown;
 }
 
-export interface StepsRootProps extends StepsRootSharedProps {
+export interface StepsRootProps extends BaseStepsRootProps {
   class?: unknown;
 }
 // #endregion

@@ -10,7 +10,7 @@ import {
   DatePicker as DatePickerPrimitive,
   useDatePickerContext,
 } from "@ark-ui/solid/date-picker";
-import type { DatePickerProps as DatePickerSharedProps } from "@pisagor/props";
+import type { DatePickerProps as BaseDatePickerProps } from "@pisagor/props";
 import { calendarRecipe, datePickerRecipe } from "@pisagor/recipes";
 import type { JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
@@ -38,7 +38,7 @@ export interface DatePickerInputProps
 
 export interface DatePickerTimerProps
   extends Omit<InputProps, "recipe">,
-    DatePickerSharedProps {
+    BaseDatePickerProps {
   clearable?: boolean;
 }
 
@@ -49,7 +49,7 @@ export interface DatePickerContentProps
 
 export interface DatePickerRootProps
   extends Omit<DatePickerPrimitiveRootProps, "onValueChange">,
-    DatePickerSharedProps {
+    BaseDatePickerProps {
   variant?: FormControlVariant;
   onValueChange?: (value: DatePickerRootProps["value"]) => void;
   calendarRecipe?: typeof calendarRecipe;

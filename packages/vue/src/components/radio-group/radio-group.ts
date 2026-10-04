@@ -1,7 +1,7 @@
 import { RadioGroup as RadioGroupPrimitive } from "@ark-ui/vue/radio-group";
 import type {
-  RadioGroupItemProps as RadioGroupItemSharedProps,
-  RadioGroupProps as RadioGroupRootSharedProps,
+  RadioGroupItemProps as BaseRadioGroupItemProps,
+  RadioGroupProps as BaseRadioGroupRootProps,
 } from "@pisagor/props";
 import {
   fieldRecipe,
@@ -24,7 +24,7 @@ export interface RadioGroupPresetItem {
   value: string;
 }
 
-export interface RadioGroupRootProps extends RadioGroupRootSharedProps {
+export interface RadioGroupRootProps extends BaseRadioGroupRootProps {
   class?: unknown;
   defaultValue?: string | null;
   disabled?: boolean;
@@ -38,7 +38,7 @@ export interface RadioGroupProps extends Omit<RadioGroupRootProps, "class"> {
   items?: RadioGroupPresetItem[];
 }
 
-export interface RadioGroupItemProps extends RadioGroupItemSharedProps {
+export interface RadioGroupItemProps extends BaseRadioGroupItemProps {
   class?: unknown;
   disabled?: boolean;
   tabIndex?: number;

@@ -1,9 +1,9 @@
 ---
-import type { KbdProps as KbdSharedProps } from "@pisagor/props";
+import type { KbdProps as BaseKbdProps } from "@pisagor/props";
 import { kbdRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<"kbd"> & KbdSharedProps;
+type Props = HTMLAttributes<"kbd"> & BaseKbdProps;
 
 const { variant = "default", class: className, ...rest } = Astro.props;
 ---

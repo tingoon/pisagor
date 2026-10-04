@@ -1,5 +1,5 @@
 import { SegmentGroup as SegmentGroupPrimitive } from "@ark-ui/vue/segment-group";
-import type { SegmentGroupProps as SegmentGroupRootSharedProps } from "@pisagor/props";
+import type { SegmentGroupProps as BaseSegmentGroupRootProps } from "@pisagor/props";
 import { segmentGroupRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
@@ -13,7 +13,7 @@ export interface SegmentGroupPresetItem {
   value: string;
 }
 
-export interface SegmentGroupRootProps extends SegmentGroupRootSharedProps {
+export interface SegmentGroupRootProps extends BaseSegmentGroupRootProps {
   class?: unknown;
   defaultValue?: string | null;
   disabled?: boolean;

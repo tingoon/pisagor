@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { SwitchRootProps } from "@ark-ui/svelte/switch";
 import { Switch as SwitchPrimitive } from "@ark-ui/svelte/switch";
-import type { SwitchProps as SwitchSharedProps } from "@pisagor/props";
+import type { SwitchProps as BaseSwitchProps } from "@pisagor/props";
 import { type SwitchRecipeSlot, switchRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
@@ -16,7 +16,7 @@ type Props = Omit<SwitchRootProps, "class" | "children"> &
   onValueChange?: (value: boolean) => void;
   class?: string | undefined;
   classNames?: Partial<Record<SwitchRecipeSlot, string>>;
-  } & SwitchSharedProps;
+  } & BaseSwitchProps;
 
 let {
   variant: variantProp,

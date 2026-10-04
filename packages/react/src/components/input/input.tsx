@@ -2,7 +2,7 @@ import {
   type FieldInputProps,
   FieldInput as InputPrimitive,
 } from "@ark-ui/react/field";
-import type { InputProps as InputSharedProps } from "@pisagor/props";
+import type { InputProps as BaseInputProps } from "@pisagor/props";
 import {
   type InputRecipeSlot,
   inputRecipe,
@@ -24,7 +24,7 @@ type InputClassNames = VariantClassNames<InputRecipeSlot>;
 export interface InputProps
   extends Omit<FieldInputProps, "size">,
     RefAttributes<HTMLInputElement>,
-    InputSharedProps {
+    BaseInputProps {
   /**
    * Whether to show a clear button when the input has a value.
    *

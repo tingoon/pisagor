@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import type { FrameProps as FrameRootSharedProps } from "@pisagor/props";
+import type { FrameProps as BaseFrameRootProps } from "@pisagor/props";
 import { frameRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { SurfaceContext } from "../surface/surface.context";
@@ -10,7 +10,7 @@ export type FrameHeaderProps = ComponentProps<typeof ark.header>;
 
 export interface FrameRootProps
   extends ComponentProps<typeof ark.div>,
-    FrameRootSharedProps {}
+    BaseFrameRootProps {}
 
 export type FramePanelProps = ComponentProps<typeof ark.div>;
 

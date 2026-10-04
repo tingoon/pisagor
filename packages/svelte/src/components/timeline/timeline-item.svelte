@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { TimelineItemProps as TimelineItemSharedProps } from "@pisagor/props";
+import type { TimelineItemProps as BaseTimelineItemProps } from "@pisagor/props";
 import { timelineItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
@@ -9,7 +9,7 @@ import { setTimelineItemContext } from "./timeline.context";
 type Props = Omit<HTMLAttributes<HTMLLIElement>, "class"> &
   {
   class?: string | undefined;
-  } & TimelineItemSharedProps;
+  } & BaseTimelineItemProps;
 
 let { children, recipe = timelineItemRecipe, class: className, ...rest }: Props = $props();
 

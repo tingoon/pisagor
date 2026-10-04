@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/solid/factory";
 import type {
-  BreadcrumbItemProps as BreadcrumbItemSharedProps,
-  BreadcrumbProps as BreadcrumbSharedProps,
+  BreadcrumbItemProps as BaseBreadcrumbItemProps,
+  BreadcrumbProps as BaseBreadcrumbProps,
 } from "@pisagor/props";
 import { breadcrumbItemRecipe, breadcrumbRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
@@ -24,7 +24,7 @@ interface BreadcrumbPresetItem {
 export type BreadcrumbListProps = ComponentProps<typeof ark.ol>;
 export interface BreadcrumbItemProps
   extends ComponentProps<typeof ark.li>,
-    BreadcrumbItemSharedProps {}
+    BaseBreadcrumbItemProps {}
 export type BreadcrumbLinkProps = ComponentProps<typeof ark.a>;
 export type BreadcrumbPageProps = ComponentProps<typeof ark.span>;
 export type BreadcrumbSeparatorProps = ComponentProps<typeof ark.li>;
@@ -32,7 +32,7 @@ export type BreadcrumbEllipsisProps = ComponentProps<typeof ark.span>;
 
 export interface BreadcrumbRootProps
   extends ComponentProps<typeof ark.nav>,
-    BreadcrumbSharedProps {
+    BaseBreadcrumbProps {
   "aria-label"?: string;
 }
 

@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import type { SkeletonProps as SkeletonSharedProps } from "@pisagor/props";
+import type { SkeletonProps as BaseSkeletonProps } from "@pisagor/props";
 import { skeletonRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType } from "vue";
 
@@ -9,7 +9,7 @@ export interface SkeletonTextProps {
   lines?: number;
 }
 
-export interface SkeletonProps extends SkeletonSharedProps {
+export interface SkeletonProps extends BaseSkeletonProps {
   class?: unknown;
 }
 // #endregion

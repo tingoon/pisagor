@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { MenuItemProps } from "@ark-ui/svelte/menu";
 import { Menu as MenuPrimitive } from "@ark-ui/svelte/menu";
-import type { DropdownMenuItemProps as DropdownMenuItemSharedProps } from "@pisagor/props";
+import type { DropdownMenuItemProps as BaseDropdownMenuItemProps } from "@pisagor/props";
 import { dropdownMenuItemRecipe, dropdownMenuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useDropdownMenu } from "./dropdown-menu.context";
@@ -9,7 +9,7 @@ import { useDropdownMenu } from "./dropdown-menu.context";
 type Props = Omit<MenuItemProps, "class"> &
   {
     class?: string | undefined;
-  } & DropdownMenuItemSharedProps;
+  } & BaseDropdownMenuItemProps;
 
 let {
   variant = "default",

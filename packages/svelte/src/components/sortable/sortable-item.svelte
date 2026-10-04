@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { SortableItemProps as SortableItemSharedProps } from "@pisagor/props";
+import type { SortableItemProps as BaseSortableItemProps } from "@pisagor/props";
 import { sortableItemRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "svelte/elements";
 import { setSortableItemContext, useSortable } from "./sortable.context";
@@ -9,7 +9,7 @@ type Props = Omit<HTMLAttributes<HTMLLIElement>, "class"> &
   {
   class?: string | undefined;
   value: string;
-  } & SortableItemSharedProps;
+  } & BaseSortableItemProps;
 
 let {
   value,

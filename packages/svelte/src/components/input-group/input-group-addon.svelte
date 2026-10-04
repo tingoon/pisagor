@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { InputGroupAddonProps as InputGroupAddonSharedProps } from "@pisagor/props";
+import type { InputGroupAddonProps as BaseInputGroupAddonProps } from "@pisagor/props";
 import { inputGroupAddonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
@@ -9,7 +9,7 @@ type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> &
   {
     children?: import("svelte").Snippet;
     class?: string | undefined;
-  } & InputGroupAddonSharedProps;
+  } & BaseInputGroupAddonProps;
 
 let {
   align = "inline-start",

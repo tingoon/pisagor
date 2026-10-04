@@ -5,7 +5,7 @@ import type {
   ScrollAreaViewportProps,
 } from "@ark-ui/react/scroll-area";
 import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/react/scroll-area";
-import type { ScrollAreaProps as ScrollAreaRootSharedProps } from "@pisagor/props";
+import type { ScrollAreaProps as BaseScrollAreaRootProps } from "@pisagor/props";
 import { type ScrollAreaRecipeSlot, scrollAreaRecipe } from "@pisagor/recipes";
 
 import type { VariantClassNames } from "../../internal/types";
@@ -15,7 +15,7 @@ import { ScrollAreaContext, useScrollArea } from "./scroll-area.context";
 type ScrollAreaClassNames = VariantClassNames<ScrollAreaRecipeSlot>;
 
 type ScrollAreaRootProps = ScrollAreaPrimitiveRootProps &
-  ScrollAreaRootSharedProps;
+  BaseScrollAreaRootProps;
 
 export interface ScrollAreaProps extends Omit<ScrollAreaRootProps, "children"> {
   children?: React.ReactNode;

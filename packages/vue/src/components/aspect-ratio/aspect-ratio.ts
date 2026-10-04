@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import type { AspectRatioProps as AspectRatioSharedProps } from "@pisagor/props";
+import type { AspectRatioProps as BaseAspectRatioProps } from "@pisagor/props";
 import { aspectRatioRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
@@ -7,7 +7,7 @@ import { defineComponent, h, type PropType } from "vue";
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface AspectRatioProps extends AspectRatioSharedProps {
+export interface AspectRatioProps extends BaseAspectRatioProps {
   class?: unknown;
 }
 // #endregion

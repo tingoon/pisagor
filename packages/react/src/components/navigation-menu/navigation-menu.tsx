@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import type { NavigationMenuProps as NavigationMenuSharedProps } from "@pisagor/props";
+import type { NavigationMenuProps as BaseNavigationMenuProps } from "@pisagor/props";
 import { navigationMenuRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import {
@@ -10,7 +10,7 @@ import {
 // #region Types
 export interface NavigationMenuProps
   extends ComponentProps<typeof ark.nav>,
-    NavigationMenuSharedProps {}
+    BaseNavigationMenuProps {}
 
 export type NavigationMenuPartProps = ComponentProps<typeof ark.ul>;
 

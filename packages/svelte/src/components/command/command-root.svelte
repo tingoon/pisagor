@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { CommandProps as CommandSharedProps } from "@pisagor/props";
+import type { CommandProps as BaseCommandProps } from "@pisagor/props";
 import { commandRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps } from "svelte";
@@ -9,7 +9,7 @@ import { setCommandContext } from "./command.context";
 type Props = Omit<ComponentProps<typeof ComboboxRoot>, "recipe" | "class"> &
   {
   class?: string | undefined;
-  } & CommandSharedProps;
+  } & BaseCommandProps;
 
 let { recipe = commandRecipe, class: className, children, ...rest }: Props = $props();
 const slots = $derived(recipe());

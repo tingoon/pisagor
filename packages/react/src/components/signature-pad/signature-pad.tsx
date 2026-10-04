@@ -7,7 +7,7 @@ import type {
 } from "@ark-ui/react/signature-pad";
 import { SignaturePad as SignaturePadPrimitive } from "@ark-ui/react/signature-pad";
 import { ArrowCounterClockwiseIcon } from "@phosphor-icons/react";
-import type { SignaturePadProps as SignaturePadRootSharedProps } from "@pisagor/props";
+import type { SignaturePadProps as BaseSignaturePadRootProps } from "@pisagor/props";
 import {
   formControlZoneRecipe,
   type SignaturePadRecipeSlot,
@@ -30,7 +30,7 @@ type SignaturePadRootProps = SignaturePadPrimitiveRootProps & {
   variant?: FormControlVariant;
   /** Marks the control as invalid for styling and assistive tech. */
   invalid?: boolean;
-} & SignaturePadRootSharedProps;
+} & BaseSignaturePadRootProps;
 
 export interface SignaturePadProps
   extends Omit<SignaturePadRootProps, "children"> {

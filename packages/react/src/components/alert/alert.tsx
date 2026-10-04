@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import type { AlertProps as AlertRootSharedProps } from "@pisagor/props";
+import type { AlertProps as BaseAlertRootProps } from "@pisagor/props";
 import { type AlertRecipeSlot, alertRecipe } from "@pisagor/recipes";
 import type { ComponentProps, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
@@ -15,7 +15,7 @@ type AlertActionProps = ComponentProps<typeof ark.div>;
 type AlertClassNames = VariantClassNames<AlertRecipeSlot>;
 
 type AlertRootProps = Omit<ComponentProps<typeof ark.div>, "title"> &
-  AlertRootSharedProps;
+  BaseAlertRootProps;
 
 export interface AlertProps extends Omit<AlertRootProps, "children"> {
   /** Trailing action area. */

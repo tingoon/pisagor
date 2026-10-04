@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/solid/factory";
-import type { FrameProps as FrameSharedProps } from "@pisagor/props";
+import type { FrameProps as BaseFrameProps } from "@pisagor/props";
 import { frameRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
@@ -11,7 +11,7 @@ export type FrameHeaderProps = ComponentProps<typeof ark.header>;
 
 export interface FrameRootProps
   extends ComponentProps<typeof ark.div>,
-    FrameSharedProps {}
+    BaseFrameProps {}
 
 export type FramePanelProps = ComponentProps<typeof ark.div>;
 export type FrameTitleProps = ComponentProps<typeof ark.div>;

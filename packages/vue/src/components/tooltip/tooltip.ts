@@ -1,5 +1,5 @@
 import { Tooltip as TooltipPrimitive } from "@ark-ui/vue/tooltip";
-import type { TooltipProps as TooltipSharedProps } from "@pisagor/props";
+import type { TooltipProps as BaseTooltipProps } from "@pisagor/props";
 import { type TooltipRecipeSlot, tooltipRecipe } from "@pisagor/recipes";
 import {
   defineComponent,
@@ -17,7 +17,7 @@ export type TooltipTriggerHandle = (
 
 type TooltipClassNames = VariantClassNames<TooltipRecipeSlot>;
 
-export interface TooltipProps extends TooltipSharedProps {
+export interface TooltipProps extends BaseTooltipProps {
   arrowProps?: Record<string, unknown>;
   children: VNodeChild | TooltipTriggerHandle;
   classNames?: TooltipClassNames;

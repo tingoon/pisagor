@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { MenuItemProps as MenuItemSharedProps } from "@pisagor/props";
+import type { MenuItemProps as BaseMenuItemProps } from "@pisagor/props";
 import { menuItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
@@ -12,7 +12,7 @@ type Props = Omit<HTMLButtonAttributes, "class" | "type"> &
     children?: Snippet;
     class?: string | undefined;
     type?: "button" | "reset" | "submit";
-  } & MenuItemSharedProps;
+  } & BaseMenuItemProps;
 
 let {
   variant = "default",

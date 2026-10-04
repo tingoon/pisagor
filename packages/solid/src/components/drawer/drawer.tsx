@@ -10,7 +10,7 @@ import type {
 } from "@ark-ui/solid/drawer";
 import { Drawer as DrawerPrimitive } from "@ark-ui/solid/drawer";
 import { ark } from "@ark-ui/solid/factory";
-import type { DrawerProps as DrawerRootSharedProps } from "@pisagor/props";
+import type { DrawerProps as BaseDrawerRootProps } from "@pisagor/props";
 import { type DrawerVariantProps, drawerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
@@ -21,7 +21,7 @@ import { DrawerContext, useDrawer } from "./drawer.context";
 
 export interface DrawerRootProps
   extends DrawerPrimitiveRootProps,
-    DrawerRootSharedProps {}
+    BaseDrawerRootProps {}
 
 export type DrawerPositionerProps = DrawerPrimitivePositionerProps &
   Pick<DrawerVariantProps, "variant">;

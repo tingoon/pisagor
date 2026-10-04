@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { RichTextEditorProps as RichTextEditorSharedProps } from "@pisagor/props";
+import type { RichTextEditorProps as BaseRichTextEditorProps } from "@pisagor/props";
 import { formControlShellRecipe, richTextEditorRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { Editor } from "@tiptap/core";
@@ -28,7 +28,7 @@ type Props = Omit<HTMLAttributes<HTMLFieldSetElement>, "class" | "onblur"> &
   children?: import("svelte").Snippet;
   class?: string | undefined;
   id?: string | undefined | null;
-  } & RichTextEditorSharedProps;
+  } & BaseRichTextEditorProps;
 
 let {
   variant: variantProp,

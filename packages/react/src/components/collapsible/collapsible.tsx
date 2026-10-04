@@ -6,7 +6,7 @@ import type {
 } from "@ark-ui/react/collapsible";
 import { Collapsible as CollapsiblePrimitive } from "@ark-ui/react/collapsible";
 import { CaretDownIcon } from "@phosphor-icons/react";
-import type { CollapsibleProps as CollapsibleRootSharedProps } from "@pisagor/props";
+import type { CollapsibleProps as BaseCollapsibleRootProps } from "@pisagor/props";
 import { collapsibleRecipe } from "@pisagor/recipes";
 
 import { CollapsibleContext, useCollapsible } from "./collapsible.context";
@@ -14,7 +14,7 @@ import { CollapsibleContext, useCollapsible } from "./collapsible.context";
 // #region Types
 export interface CollapsibleRootProps
   extends CollapsiblePrimitiveRootProps,
-    CollapsibleRootSharedProps {}
+    BaseCollapsibleRootProps {}
 // #endregion
 
 // #region Parts

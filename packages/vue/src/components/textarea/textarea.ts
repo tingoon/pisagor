@@ -1,5 +1,5 @@
 import { Field as FieldPrimitive } from "@ark-ui/vue/field";
-import type { TextareaProps as TextareaSharedProps } from "@pisagor/props";
+import type { TextareaProps as BaseTextareaProps } from "@pisagor/props";
 import {
   type FormControlShellVariantProps,
   formControlShellRecipe,
@@ -30,7 +30,7 @@ type ClearableInputChangeHandler = (event: ClearableChangeEvent) => void;
 // #region Types
 export interface TextareaProps
   extends FormControlShellVariantProps,
-    TextareaSharedProps {
+    BaseTextareaProps {
   class?: unknown;
   classNames?: TextareaClassNames;
   clearable?: boolean;

@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { NavigationMenuProps as NavigationMenuSharedProps } from "@pisagor/props";
+import type { NavigationMenuProps as BaseNavigationMenuProps } from "@pisagor/props";
 import { navigationMenuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
@@ -11,7 +11,7 @@ type Props = Omit<HTMLAttributes<HTMLElement>, "class"> &
   {
   children?: Snippet;
   class?: string | undefined;
-  } & NavigationMenuSharedProps;
+  } & BaseNavigationMenuProps;
 
 let { recipe = navigationMenuRecipe, class: className, children, ...rest }: Props = $props();
 const slots = $derived(recipe());

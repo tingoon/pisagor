@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/solid/factory";
-import type { ToolbarProps as ToolbarSharedProps } from "@pisagor/props";
+import type { ToolbarProps as BaseToolbarProps } from "@pisagor/props";
 import { type ToolbarRecipeSlot, toolbarRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
@@ -14,7 +14,7 @@ type ToolbarHeadingProps = ComponentProps<typeof ark.div>;
 type ToolbarClassNames = VariantClassNames<ToolbarRecipeSlot>;
 
 type ToolbarRootProps = Omit<ComponentProps<typeof ark.div>, "title"> &
-  ToolbarSharedProps;
+  BaseToolbarProps;
 
 export interface ToolbarProps extends Omit<ToolbarRootProps, "children"> {
   actions?: JSX.Element;

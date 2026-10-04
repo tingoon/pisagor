@@ -1,12 +1,12 @@
 import { ark } from "@ark-ui/react/factory";
-import type { StatusProps as StatusSharedProps } from "@pisagor/props";
+import type { StatusProps as BaseStatusProps } from "@pisagor/props";
 import { statusRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 
 // #region Types
 export interface StatusProps
   extends ComponentProps<typeof ark.span>,
-    StatusSharedProps {}
+    BaseStatusProps {}
 // #endregion
 
 // #region Component

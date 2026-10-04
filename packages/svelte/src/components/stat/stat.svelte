@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { StatProps as StatSharedProps } from "@pisagor/props";
+import type { StatProps as BaseStatProps } from "@pisagor/props";
 import type { StatRecipeSlot } from "@pisagor/recipes";
 import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
@@ -17,7 +17,7 @@ type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "children"> &
     label?: string | Snippet;
     trend?: string | Snippet;
     value?: string | Snippet;
-  } & StatSharedProps;
+  } & BaseStatProps;
 
 let {
   variant,

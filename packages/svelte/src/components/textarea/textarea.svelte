@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { FieldTextareaProps } from "@ark-ui/svelte/field";
 import { Field } from "@ark-ui/svelte/field";
-import type { TextareaProps as TextareaSharedProps } from "@pisagor/props";
+import type { TextareaProps as BaseTextareaProps } from "@pisagor/props";
 import { formControlShellRecipe, type TextareaRecipeSlot, textareaRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import InputClearButton from "../input/input-clear-button.svelte";
@@ -24,7 +24,7 @@ type Props = Omit<FieldTextareaProps, "class"> &
   onValueChange?: (value: string) => void;
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
-  } & TextareaSharedProps;
+  } & BaseTextareaProps;
 
 let {
   variant: variantProp,

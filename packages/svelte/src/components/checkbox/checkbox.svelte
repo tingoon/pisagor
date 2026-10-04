@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { CheckboxRootProps } from "@ark-ui/svelte/checkbox";
 import { Checkbox as CheckboxPrimitive } from "@ark-ui/svelte/checkbox";
-import type { CheckboxProps as CheckboxSharedProps } from "@pisagor/props";
+import type { CheckboxProps as BaseCheckboxProps } from "@pisagor/props";
 import { checkboxRecipe, formControlToggleRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CheckIcon from "phosphor-svelte/lib/CheckIcon";
@@ -18,7 +18,7 @@ type Props = Omit<CheckboxRootProps, "class"> &
   class?: string | undefined;
   /** Forwarded to the hidden input (Svelte DOM attr). */
   tabindex?: number | null;
-  } & CheckboxSharedProps;
+  } & BaseCheckboxProps;
 
 let {
   variant: variantProp,

@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import type { NavbarProps as NavbarRootSharedProps } from "@pisagor/props";
+import type { NavbarProps as BaseNavbarRootProps } from "@pisagor/props";
 import { type NavbarRecipeSlot, navbarRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
@@ -8,7 +8,7 @@ import type { VariantClassNames } from "../../internal/types";
 // #region Types
 type NavbarClassNames = VariantClassNames<NavbarRecipeSlot>;
 
-export interface NavbarRootProps extends NavbarRootSharedProps {
+export interface NavbarRootProps extends BaseNavbarRootProps {
   class?: unknown;
 }
 // #endregion

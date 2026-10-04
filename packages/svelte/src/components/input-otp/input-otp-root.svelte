@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { PinInputRootProps } from "@ark-ui/svelte/pin-input";
 import { PinInput as PinInputPrimitive } from "@ark-ui/svelte/pin-input";
-import type { InputOtpProps as InputOtpSharedProps } from "@pisagor/props";
+import type { InputOtpProps as BaseInputOtpProps } from "@pisagor/props";
 import { inputOtpRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setInputOTPContext } from "./input-otp.context";
@@ -13,7 +13,7 @@ type Props = Omit<PinInputRootProps, "class" | "onValueChange"> &
   onValueChange?: (value: string[]) => void;
   size?: "sm" | "md" | "lg";
   variant?: "primary" | "secondary";
-  } & InputOtpSharedProps;
+  } & BaseInputOtpProps;
 
 let {
   children,

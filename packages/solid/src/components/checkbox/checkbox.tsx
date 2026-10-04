@@ -5,8 +5,8 @@ import {
   type CheckboxRootProps,
 } from "@ark-ui/solid/checkbox";
 import type {
-  CheckboxGroupProps as CheckboxGroupSharedProps,
-  CheckboxProps as CheckboxSharedProps,
+  CheckboxGroupProps as BaseCheckboxGroupProps,
+  CheckboxProps as BaseCheckboxProps,
 } from "@pisagor/props";
 import {
   checkboxGroupRecipe,
@@ -22,17 +22,17 @@ type FormControlVariant = "primary" | "secondary";
 
 export interface CheckboxGroupProps
   extends Omit<CheckboxPrimitiveGroupProps, "onValueChange">,
-    CheckboxGroupSharedProps {
+    BaseCheckboxGroupProps {
   onValueChange?: (value: string[]) => void;
 }
 
-export interface CheckboxProps extends CheckboxRootProps, CheckboxSharedProps {
+export interface CheckboxProps extends CheckboxRootProps, BaseCheckboxProps {
   variant?: FormControlVariant;
   onValueChange?: (value: boolean) => void;
 }
 
 type CheckboxIndicatorPartProps = CheckboxIndicatorProps &
-  Pick<CheckboxSharedProps, "recipe">;
+  Pick<BaseCheckboxProps, "recipe">;
 
 function CheckIcon() {
   return (

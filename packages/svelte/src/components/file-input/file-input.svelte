@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { FileInputProps as FileInputSharedProps } from "@pisagor/props";
+import type { FileInputProps as BaseFileInputProps } from "@pisagor/props";
 import { type FormControlGroupShellVariantProps, fileInputRecipe, formControlGroupShellRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLInputAttributes } from "svelte/elements";
@@ -22,7 +22,7 @@ type Props = Omit<
     onFilesChange?: (files: globalThis.File[]) => void;
     onValueChange?: (files: globalThis.File[]) => void;
     placeholder?: string;
-  } & FileInputSharedProps;
+  } & BaseFileInputProps;
 
 let {
   size = "md",

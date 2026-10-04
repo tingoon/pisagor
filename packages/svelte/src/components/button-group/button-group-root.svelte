@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { ButtonGroupProps as ButtonGroupSharedProps } from "@pisagor/props";
+import type { ButtonGroupProps as BaseButtonGroupProps } from "@pisagor/props";
 import { buttonGroupRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLFieldsetAttributes } from "svelte/elements";
@@ -10,7 +10,7 @@ type Props = Omit<HTMLFieldsetAttributes, "class"> &
   {
     children?: import("svelte").Snippet;
     class?: string | undefined;
-  } & ButtonGroupSharedProps;
+  } & BaseButtonGroupProps;
 
 let {
   orientation,

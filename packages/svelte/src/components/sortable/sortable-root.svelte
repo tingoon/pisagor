@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { SortableProps as SortableSharedProps } from "@pisagor/props";
+import type { SortableProps as BaseSortableProps } from "@pisagor/props";
 import { sortableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
@@ -13,7 +13,7 @@ type Props = Omit<HTMLAttributes<HTMLUListElement>, "class"> &
   items: string[];
   onValueChange?: (items: string[]) => void;
   orientation?: "vertical" | "horizontal";
-  } & SortableSharedProps;
+  } & BaseSortableProps;
 
 let {
   orientation = "vertical",

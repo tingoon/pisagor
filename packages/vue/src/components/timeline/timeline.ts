@@ -1,7 +1,7 @@
 import { ark } from "@ark-ui/vue/factory";
 import type {
-  TimelineItemProps as TimelineItemSharedProps,
-  TimelineProps as TimelineSharedProps,
+  TimelineItemProps as BaseTimelineItemProps,
+  TimelineProps as BaseTimelineProps,
 } from "@pisagor/props";
 import { timelineItemRecipe, timelineRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, type VNodeChild } from "vue";
@@ -17,12 +17,12 @@ export interface TimelinePresetItem {
   indicator?: VNodeChild;
 }
 
-export interface TimelineProps extends TimelineSharedProps {
+export interface TimelineProps extends BaseTimelineProps {
   class?: unknown;
   items?: TimelinePresetItem[];
 }
 
-export interface TimelineItemProps extends TimelineItemSharedProps {
+export interface TimelineItemProps extends BaseTimelineItemProps {
   class?: unknown;
 }
 // #endregion

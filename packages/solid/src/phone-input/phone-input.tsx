@@ -1,5 +1,5 @@
 import { createListCollection } from "@ark-ui/solid/collection";
-import type { PhoneInputProps as PhoneInputSharedProps } from "@pisagor/props";
+import type { PhoneInputProps as BasePhoneInputProps } from "@pisagor/props";
 import {
   type PhoneInputRecipeSlot,
   type PhoneInputVariantProps,
@@ -39,7 +39,7 @@ interface CountrySelectOption {
   value: Country;
 }
 
-export interface PhoneInputProps extends PhoneInputSharedProps {
+export interface PhoneInputProps extends BasePhoneInputProps {
   variant?: FormControlVariant;
   defaultCountry?: Country;
   invalid?: boolean;

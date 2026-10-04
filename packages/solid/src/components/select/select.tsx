@@ -17,7 +17,7 @@ import {
   Select as SelectPrimitive,
   useSelectContext,
 } from "@ark-ui/solid/select";
-import type { SelectProps as SelectRootSharedProps } from "@pisagor/props";
+import type { SelectProps as BaseSelectRootProps } from "@pisagor/props";
 import {
   type FormControlShellVariantProps,
   formControlShellRecipe,
@@ -45,7 +45,7 @@ export type SelectRootProps<T extends CollectionItem = CollectionItem> = Omit<
 > & {
   variant?: FormControlVariant;
   onValueChange?: (value: string | string[]) => void;
-} & SelectRootSharedProps;
+} & BaseSelectRootProps;
 
 export interface SelectProps
   extends Omit<SelectRootProps, "children" | "collection"> {

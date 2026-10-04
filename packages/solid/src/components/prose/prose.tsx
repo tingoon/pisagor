@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/solid/factory";
-import type { ProseProps as ProseSharedProps } from "@pisagor/props";
+import type { ProseProps as BaseProseProps } from "@pisagor/props";
 import { proseRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
@@ -7,7 +7,7 @@ import { Show, splitProps } from "solid-js";
 
 export interface ProseProps
   extends Omit<ComponentProps<typeof ark.div>, "innerHTML">,
-    ProseSharedProps {
+    BaseProseProps {
   html?: string;
 }
 

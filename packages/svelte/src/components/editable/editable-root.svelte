@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { EditableRootProps as ArkEditableRootProps } from "@ark-ui/svelte/editable";
 import { Editable as EditablePrimitive } from "@ark-ui/svelte/editable";
-import type { EditableProps as EditableSharedProps } from "@pisagor/props";
+import type { EditableProps as BaseEditableProps } from "@pisagor/props";
 import { editableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setEditableContext } from "./editable.context";
@@ -13,7 +13,7 @@ type Props = Omit<ArkEditableRootProps, "class" | "onValueChange" | "value" | "d
   onValueChange?: (value: string) => void;
   orientation?: "horizontal" | "vertical";
   value?: string;
-  } & EditableSharedProps;
+  } & BaseEditableProps;
 
 let {
   orientation = "horizontal",

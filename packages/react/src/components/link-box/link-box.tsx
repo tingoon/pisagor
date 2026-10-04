@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import type { LinkBoxProps as LinkBoxRootSharedProps } from "@pisagor/props";
+import type { LinkBoxProps as BaseLinkBoxRootProps } from "@pisagor/props";
 import { linkBoxRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { LinkBoxContext, useLinkBox } from "./link-box.context";
@@ -7,7 +7,7 @@ import { LinkBoxContext, useLinkBox } from "./link-box.context";
 // #region Types
 export interface LinkBoxRootProps
   extends ComponentProps<typeof ark.div>,
-    LinkBoxRootSharedProps {}
+    BaseLinkBoxRootProps {}
 
 export type LinkOverlayLinkProps = ComponentProps<typeof ark.a>;
 // #endregion

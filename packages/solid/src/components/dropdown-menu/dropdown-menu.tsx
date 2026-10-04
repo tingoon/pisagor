@@ -16,8 +16,8 @@ import type {
 } from "@ark-ui/solid/menu";
 import { Menu as MenuPrimitive } from "@ark-ui/solid/menu";
 import type {
-  DropdownMenuItemProps as DropdownMenuItemSharedProps,
-  DropdownMenuProps as DropdownMenuSharedProps,
+  DropdownMenuItemProps as BaseDropdownMenuItemProps,
+  DropdownMenuProps as BaseDropdownMenuProps,
 } from "@pisagor/props";
 import { dropdownMenuItemRecipe, dropdownMenuRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
@@ -32,41 +32,41 @@ export interface DropdownMenuItemGroupProps extends MenuItemGroupProps {
 
 export interface DropdownMenuItemProps
   extends MenuItemProps,
-    DropdownMenuItemSharedProps {}
+    BaseDropdownMenuItemProps {}
 
 export interface DropdownMenuRadioItemGroupProps
   extends MenuRadioItemGroupProps {
   heading?: string;
 }
 
-export type DropdownMenuRootProps = MenuRootProps & DropdownMenuSharedProps;
+export type DropdownMenuRootProps = MenuRootProps & BaseDropdownMenuProps;
 export type DropdownMenuTriggerProps = MenuTriggerProps;
 export type DropdownMenuPositionerProps = MenuPositionerProps;
 
 export interface DropdownMenuCheckboxItemProps
   extends MenuCheckboxItemProps,
-    DropdownMenuItemSharedProps {}
+    BaseDropdownMenuItemProps {}
 
 export type DropdownMenuItemGroupLabelProps = MenuItemGroupLabelProps;
 
 export interface DropdownMenuRadioItemProps
   extends MenuRadioItemProps,
-    DropdownMenuItemSharedProps {}
+    BaseDropdownMenuItemProps {}
 
 export interface DropdownMenuSubContentProps
   extends MenuContentProps,
-    DropdownMenuSharedProps {}
+    BaseDropdownMenuProps {}
 
 export type DropdownMenuArrowProps = MenuArrowProps;
 export type DropdownMenuSeparatorProps = MenuSeparatorProps;
 
 export interface DropdownMenuTriggerItemProps
   extends MenuTriggerItemProps,
-    DropdownMenuItemSharedProps {}
+    BaseDropdownMenuItemProps {}
 
 export interface DropdownMenuContentProps
   extends MenuContentProps,
-    DropdownMenuSharedProps {}
+    BaseDropdownMenuProps {}
 
 export type DropdownMenuShortcutProps = ComponentProps<typeof ark.span>;
 

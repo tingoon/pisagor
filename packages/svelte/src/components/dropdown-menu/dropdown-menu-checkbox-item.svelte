@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { MenuCheckboxItemProps } from "@ark-ui/svelte/menu";
 import { Menu as MenuPrimitive } from "@ark-ui/svelte/menu";
-import type { DropdownMenuItemProps as DropdownMenuItemSharedProps } from "@pisagor/props";
+import type { DropdownMenuItemProps as BaseDropdownMenuItemProps } from "@pisagor/props";
 import { dropdownMenuItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CheckIcon from "phosphor-svelte/lib/CheckIcon";
@@ -9,7 +9,7 @@ import CheckIcon from "phosphor-svelte/lib/CheckIcon";
 type Props = Omit<MenuCheckboxItemProps, "class"> &
   {
   class?: string | undefined;
-  } & DropdownMenuItemSharedProps;
+  } & BaseDropdownMenuItemProps;
 
 let { recipe = dropdownMenuItemRecipe, class: className, children, ...rest }: Props = $props();
 const slots = $derived(recipe({ inset: true, variant: "default" }));

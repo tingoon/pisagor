@@ -1,9 +1,9 @@
 ---
-import type { AvatarProps as AvatarSharedProps } from "@pisagor/props";
+import type { AvatarProps as BaseAvatarProps } from "@pisagor/props";
 import { avatarRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 
-interface Props extends HTMLAttributes<"span">, AvatarSharedProps {
+interface Props extends HTMLAttributes<"span">, BaseAvatarProps {
   /** Alt text for the avatar image */
   alt?: string;
   /** Fallback text shown when `src` is omitted */

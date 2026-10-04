@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { TabTriggerProps } from "@ark-ui/svelte/tabs";
 import { Tabs as TabsPrimitive } from "@ark-ui/svelte/tabs";
-import type { BottomNavigationItemProps as BottomNavigationItemSharedProps } from "@pisagor/props";
+import type { BottomNavigationItemProps as BaseBottomNavigationItemProps } from "@pisagor/props";
 import { bottomNavigationItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setBottomNavigationItemContext } from "./bottom-navigation.context";
@@ -9,7 +9,7 @@ import { setBottomNavigationItemContext } from "./bottom-navigation.context";
 type Props = Omit<TabTriggerProps, "class"> &
   {
   class?: string | undefined;
-  } & BottomNavigationItemSharedProps;
+  } & BaseBottomNavigationItemProps;
 
 let {
   children,

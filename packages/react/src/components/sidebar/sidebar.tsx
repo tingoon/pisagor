@@ -1,7 +1,7 @@
 import { useHotkey } from "@ark-ui/react";
 import { ark } from "@ark-ui/react/factory";
 import { SidebarSimpleIcon } from "@phosphor-icons/react";
-import type { SidebarProps as SidebarProviderSharedProps } from "@pisagor/props";
+import type { SidebarProps as BaseSidebarProviderProps } from "@pisagor/props";
 import {
   type ButtonVariantProps,
   buttonRecipe,
@@ -33,7 +33,7 @@ import {
 // #region Types
 export interface SidebarProviderProps
   extends ComponentProps<"div">,
-    SidebarProviderSharedProps {
+    BaseSidebarProviderProps {
   /**
    * The default open state of the sidebar.
    *

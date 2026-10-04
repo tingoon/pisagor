@@ -2,7 +2,7 @@ import {
   Editable as EditablePrimitive,
   type EditableValueChangeDetails,
 } from "@ark-ui/vue/editable";
-import type { EditableProps as EditableSharedProps } from "@pisagor/props";
+import type { EditableProps as BaseEditableProps } from "@pisagor/props";
 import { buttonRecipe, editableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
@@ -12,7 +12,7 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 type FormControlVariant = "primary" | "secondary";
 
 // #region Types
-export interface EditableProps extends EditableSharedProps {
+export interface EditableProps extends BaseEditableProps {
   /** The activation mode for the preview element. */
   activationMode?: "focus" | "dblclick" | "click" | "none";
   /** Whether the editable should auto-resize to fit the content. */

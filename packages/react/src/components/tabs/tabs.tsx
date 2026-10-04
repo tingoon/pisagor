@@ -5,7 +5,7 @@ import type {
   TabTriggerProps,
 } from "@ark-ui/react/tabs";
 import { Tabs as TabsPrimitive } from "@ark-ui/react/tabs";
-import type { TabsProps as TabsRootSharedProps } from "@pisagor/props";
+import type { TabsProps as BaseTabsRootProps } from "@pisagor/props";
 import { type TabsVariantProps, tabsRecipe } from "@pisagor/recipes";
 import type { ReactNode } from "react";
 import { TabsContext, useTabs } from "./tabs.context";
@@ -13,7 +13,7 @@ import { TabsContext, useTabs } from "./tabs.context";
 // #region Types
 export interface TabsRootProps
   extends TabsPrimitiveRootProps,
-    TabsRootSharedProps {}
+    BaseTabsRootProps {}
 
 interface TabsPresetItem {
   value: string;

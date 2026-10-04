@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { FieldInputProps } from "@ark-ui/svelte/field";
 import { Field } from "@ark-ui/svelte/field";
-import type { InputProps as InputSharedProps } from "@pisagor/props";
+import type { InputProps as BaseInputProps } from "@pisagor/props";
 import { type InputRecipeSlot, type InputRootVariantProps, inputRecipe, inputRootRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import InputGroupRoot from "../input-group/input-group-root.svelte";
@@ -23,7 +23,7 @@ type Props = Omit<FieldInputProps, "class" | "size"> &
     /** Called with the string value when the input changes. */
     onValueChange?: (value: string) => void;
     rootRecipe?: typeof inputRootRecipe;
-  } & InputSharedProps;
+  } & BaseInputProps;
 
 let {
   size = "md",

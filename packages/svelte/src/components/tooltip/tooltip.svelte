@@ -2,7 +2,7 @@
 import { Portal } from "@ark-ui/svelte/portal";
 import type { TooltipRootProps } from "@ark-ui/svelte/tooltip";
 import { Tooltip as TooltipPrimitive } from "@ark-ui/svelte/tooltip";
-import type { TooltipProps as TooltipSharedProps } from "@pisagor/props";
+import type { TooltipProps as BaseTooltipProps } from "@pisagor/props";
 import { type TooltipRecipeSlot, tooltipRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
@@ -14,7 +14,7 @@ type Props = Omit<TooltipRootProps, "class" | "children"> &
   class?: string | undefined;
   classNames?: Partial<Record<TooltipRecipeSlot, string>>;
   content: string | Snippet;
-  } & TooltipSharedProps;
+  } & BaseTooltipProps;
 
 let {
   closeDelay = 150,

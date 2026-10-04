@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { ClipboardRootProps } from "@ark-ui/svelte/clipboard";
 import { Clipboard as ClipboardPrimitive } from "@ark-ui/svelte/clipboard";
-import type { ButtonProps, ClipboardProps as ClipboardSharedProps } from "@pisagor/props";
+import type { ClipboardProps as BaseClipboardProps, ButtonProps } from "@pisagor/props";
 import { buttonRecipe, type ClipboardRecipeSlot, clipboardRecipe, formControlShellRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CheckIcon from "phosphor-svelte/lib/CheckIcon";
@@ -27,7 +27,7 @@ type Props = Omit<ClipboardRootProps, "class" | "children"> &
     label?: string;
     labelProps?: Omit<HTMLAttributes<HTMLSpanElement>, "children" | "class">;
     variant?: "button" | "input" | "value";
-  } & ClipboardSharedProps;
+  } & BaseClipboardProps;
 
 let {
   buttonSize = "icon-md",

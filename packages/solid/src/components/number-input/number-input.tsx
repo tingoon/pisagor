@@ -4,7 +4,7 @@ import {
   type NumberInputRootProps as NumberInputPrimitiveRootProps,
   type NumberInputScrubberProps,
 } from "@ark-ui/solid/number-input";
-import type { NumberInputProps as NumberInputSharedProps } from "@pisagor/props";
+import type { NumberInputProps as BaseNumberInputProps } from "@pisagor/props";
 import {
   formControlGroupShellRecipe,
   numberInputRecipe,
@@ -28,7 +28,7 @@ export type NumberInputRootProps = Omit<
 
 export interface NumberInputProps
   extends NumberInputRootProps,
-    NumberInputSharedProps {
+    BaseNumberInputProps {
   clearable?: boolean;
   placeholder?: string;
   onValueChange?: (value: number) => void;

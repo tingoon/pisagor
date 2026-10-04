@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import type { ButtonGroupProps as ButtonGroupSharedProps } from "@pisagor/props";
+import type { ButtonGroupProps as BaseButtonGroupProps } from "@pisagor/props";
 import {
   type ButtonGroupVariantProps,
   buttonGroupRecipe,
@@ -10,7 +10,7 @@ import { Separator, type SeparatorProps } from "../separator";
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface ButtonGroupProps extends ButtonGroupSharedProps {
+export interface ButtonGroupProps extends BaseButtonGroupProps {
   class?: unknown;
 }
 // #endregion

@@ -3,7 +3,7 @@ import { ark } from "@ark-ui/react/factory";
 import { Presence } from "@ark-ui/react/presence";
 import { useUncontrolled } from "@mantine/hooks";
 import { XIcon } from "@phosphor-icons/react";
-import type { ActionBarProps as ActionBarSharedProps } from "@pisagor/props";
+import type { ActionBarProps as BaseActionBarProps } from "@pisagor/props";
 import { actionBarRecipe } from "@pisagor/recipes";
 import type {
   ComponentProps,
@@ -35,7 +35,7 @@ interface ActionBarActionItem {
 
 export interface ActionBarProps
   extends Pick<ActionBarContextValue, "lazyMount" | "unmountOnExit">,
-    ActionBarSharedProps {
+    BaseActionBarProps {
   /**
    * Whether to close the action bar when the Escape key is pressed.
    *

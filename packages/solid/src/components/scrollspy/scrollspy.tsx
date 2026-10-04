@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/solid/factory";
-import type { ScrollspyProps as ScrollspySharedProps } from "@pisagor/props";
+import type { ScrollspyProps as BaseScrollspyProps } from "@pisagor/props";
 import { scrollspyRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
@@ -13,7 +13,7 @@ const SCROLLSPY_ANCHOR_SELECTOR = `[${SCROLLSPY_ANCHOR}]`;
 
 export interface ScrollspyProps
   extends ComponentProps<typeof ark.div>,
-    ScrollspySharedProps {
+    BaseScrollspyProps {
   history?: boolean;
   offset?: number;
   smooth?: boolean;

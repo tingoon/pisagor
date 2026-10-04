@@ -1,6 +1,6 @@
 <script lang="ts">
 import type { TabsRootProps } from "@ark-ui/svelte/tabs";
-import type { TabsProps as TabsSharedProps } from "@pisagor/props";
+import type { TabsProps as BaseTabsProps } from "@pisagor/props";
 import TabsContent from "./tabs-content.svelte";
 import TabsList from "./tabs-list.svelte";
 import TabsRoot from "./tabs-root.svelte";
@@ -16,7 +16,7 @@ type Props = Omit<TabsRootProps, "children" | "class"> &
   {
     class?: string | undefined;
     items?: TabsPresetItem[];
-  } & TabsSharedProps;
+  } & BaseTabsProps;
 
 let { variant, items, class: className, ...rest }: Props = $props();
 </script>

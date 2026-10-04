@@ -2,7 +2,7 @@ import {
   PhArrowsInLineHorizontal,
   PhArrowsOutLineHorizontal,
 } from "@phosphor-icons/vue";
-import type { AppShellProps as AppShellRootSharedProps } from "@pisagor/props";
+import type { AppShellProps as BaseAppShellRootProps } from "@pisagor/props";
 import { appShellRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Component, VNode, VNodeChild } from "vue";
@@ -475,7 +475,7 @@ function useRegisteredRailState({
 // #endregion
 
 // #region Types (Root)
-export interface AppShellRootProps extends AppShellRootSharedProps {
+export interface AppShellRootProps extends BaseAppShellRootProps {
   class?: unknown;
 }
 // #endregion

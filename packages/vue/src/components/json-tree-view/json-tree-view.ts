@@ -1,6 +1,6 @@
 import { JsonTreeView as JsonTreeViewPrimitive } from "@ark-ui/vue/json-tree-view";
 import { PhCaretRight } from "@phosphor-icons/vue";
-import type { JsonTreeViewProps as JsonTreeViewSharedProps } from "@pisagor/props";
+import type { JsonTreeViewProps as BaseJsonTreeViewProps } from "@pisagor/props";
 import {
   type JsonTreeViewRecipeSlot,
   jsonTreeViewRecipe,
@@ -13,7 +13,7 @@ type JsonTreeViewClassNames = VariantClassNames<JsonTreeViewRecipeSlot>;
 
 type JsonTreeViewRenderValue = (props: { node: unknown }) => unknown;
 
-export interface JsonTreeViewProps extends JsonTreeViewSharedProps {
+export interface JsonTreeViewProps extends BaseJsonTreeViewProps {
   class?: unknown;
   /** Slot class names */
   classNames?: JsonTreeViewClassNames;

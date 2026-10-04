@@ -5,7 +5,7 @@ import type {
   QrCodeRootProps as QrCodePrimitiveRootProps,
 } from "@ark-ui/solid/qr-code";
 import { QrCode as QrCodePrimitive } from "@ark-ui/solid/qr-code";
-import type { QrCodeProps as QrCodeRootSharedProps } from "@pisagor/props";
+import type { QrCodeProps as BaseQrCodeRootProps } from "@pisagor/props";
 import { qrCodeRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
@@ -14,7 +14,7 @@ import { QrCodeContext, useQrCode } from "./qr-code.context";
 
 export interface QrCodeRootProps
   extends QrCodePrimitiveRootProps,
-    QrCodeRootSharedProps {}
+    BaseQrCodeRootProps {}
 
 export type QrCodeDownloadProps = QrCodeDownloadTriggerProps;
 

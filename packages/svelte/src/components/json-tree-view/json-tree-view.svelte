@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { JsonTreeViewRootProps, JsonTreeViewTreeProps } from "@ark-ui/svelte/json-tree-view";
 import { JsonTreeView as JsonTreeViewPrimitive } from "@ark-ui/svelte/json-tree-view";
-import type { JsonTreeViewProps as JsonTreeViewSharedProps } from "@pisagor/props";
+import type { JsonTreeViewProps as BaseJsonTreeViewProps } from "@pisagor/props";
 import { type JsonTreeViewRecipeSlot, jsonTreeViewRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
@@ -13,7 +13,7 @@ type Props = Omit<JsonTreeViewRootProps, "class" | "children"> &
   classNames?: Partial<Record<JsonTreeViewRecipeSlot, string>>;
   renderValue?: JsonTreeViewTreeProps["renderValue"];
   treeProps?: Omit<JsonTreeViewTreeProps, "arrow" | "class" | "renderValue">;
-  } & JsonTreeViewSharedProps;
+  } & BaseJsonTreeViewProps;
 
 let {
   recipe = jsonTreeViewRecipe,

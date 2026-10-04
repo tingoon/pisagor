@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import type { SurfaceProps as SurfaceSharedProps } from "@pisagor/props";
+import type { SurfaceProps as BaseSurfaceProps } from "@pisagor/props";
 import { surfaceRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
@@ -19,7 +19,7 @@ const AUTO_VARIANTS = [
 
 export interface SurfaceProps
   extends ComponentProps<typeof ark.div>,
-    SurfaceSharedProps {}
+    BaseSurfaceProps {}
 // #endregion
 
 // #region Component

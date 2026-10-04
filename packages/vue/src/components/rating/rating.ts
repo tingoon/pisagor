@@ -1,6 +1,6 @@
 import { RatingGroup as RatingGroupPrimitive } from "@ark-ui/vue/rating-group";
 import { PhStar } from "@phosphor-icons/vue";
-import type { RatingProps as RatingSharedProps } from "@pisagor/props";
+import type { RatingProps as BaseRatingProps } from "@pisagor/props";
 import { ratingRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 
@@ -13,7 +13,7 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 type ArkPart = Parameters<typeof h>[0];
 
-export interface RatingProps extends RatingSharedProps {
+export interface RatingProps extends BaseRatingProps {
   allowHalf?: boolean;
   class?: ClassValue;
   count?: number;

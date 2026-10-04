@@ -86,8 +86,8 @@ When a compound component uses package-local context (`createContext` from packa
 
 Framework-agnostic visual props live in [`@pisagor/props`](../../../packages/props). Recipe `tv()` stays in `@pisagor/recipes`; props re-exports the shared surface (`{Name}VariantProps`, optional `recipe`).
 
-- Import: `import type { FooProps as FooSharedProps } from "@pisagor/props"`.
-- Public component props **intersect / extend** `FooSharedProps` (plus Ark/DOM / Svelte-only fields). Do not re-declare `recipe` or variant fields already on the shared type.
+- Import: `import type { FooProps as BaseFooProps } from "@pisagor/props"`.
+- Public component props **intersect / extend** `BaseFooProps` (plus Ark/DOM / Svelte-only fields). Do not re-declare `recipe` or variant fields already on the shared type.
 - Framework packages own only framework-specific props (event names, snippets, `class`, `classNames`, sub-element bags).
 - Template: React [`button.tsx`](../../../packages/react/src/components/button/button.tsx) / Svelte button under `packages/svelte/src/components/button/`.
 

@@ -1,5 +1,5 @@
 import { Drawer as DrawerPrimitive } from "@ark-ui/vue/drawer";
-import type { DrawerProps as DrawerSharedProps } from "@pisagor/props";
+import type { DrawerProps as BaseDrawerProps } from "@pisagor/props";
 import { type DrawerRecipe, drawerRecipe } from "@pisagor/recipes";
 import { defineComponent, h, type PropType, reactive, Teleport } from "vue";
 import { createContext } from "../../internal/utils/create-context";
@@ -20,7 +20,7 @@ export interface DrawerBodyProps {
   scrollFade?: boolean;
 }
 
-export interface DrawerProps extends DrawerSharedProps {
+export interface DrawerProps extends BaseDrawerProps {
   lazyMount?: boolean;
   unmountOnExit?: boolean;
 }

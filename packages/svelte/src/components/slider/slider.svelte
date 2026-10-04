@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { SliderRootProps } from "@ark-ui/svelte/slider";
 import { Slider as SliderPrimitive } from "@ark-ui/svelte/slider";
-import type { SliderProps as SliderSharedProps } from "@pisagor/props";
+import type { SliderProps as BaseSliderProps } from "@pisagor/props";
 import { type SliderRecipeSlot, sliderRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
@@ -22,7 +22,7 @@ type Props = Omit<SliderRootProps, "class" | "children" | "onValueChange"> &
   showValue?: boolean;
   tabindex?: number | null;
   variant?: FormControlVariant;
-  } & SliderSharedProps;
+  } & BaseSliderProps;
 
 let {
   variant: variantProp,

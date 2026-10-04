@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { TreeViewItemProps } from "@ark-ui/svelte/tree-view";
 import { TreeView as TreeViewPrimitive } from "@ark-ui/svelte/tree-view";
-import type { TreeViewItemProps as TreeViewItemSharedProps } from "@pisagor/props";
+import type { TreeViewItemProps as BaseTreeViewItemProps } from "@pisagor/props";
 import { treeViewItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setTreeViewItemContext, useTreeView } from "./tree-view.context";
@@ -9,7 +9,7 @@ import { setTreeViewItemContext, useTreeView } from "./tree-view.context";
 type Props = Omit<TreeViewItemProps, "class"> &
   {
   class?: string | undefined;
-  } & TreeViewItemSharedProps;
+  } & BaseTreeViewItemProps;
 
 let { children, recipe = treeViewItemRecipe, class: className, ...rest }: Props = $props();
 

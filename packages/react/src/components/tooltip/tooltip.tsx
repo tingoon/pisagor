@@ -8,7 +8,7 @@ import type {
   TooltipTriggerProps,
 } from "@ark-ui/react/tooltip";
 import { Tooltip as TooltipPrimitive } from "@ark-ui/react/tooltip";
-import type { TooltipProps as TooltipRootSharedProps } from "@pisagor/props";
+import type { TooltipProps as BaseTooltipRootProps } from "@pisagor/props";
 import { type TooltipRecipeSlot, tooltipRecipe } from "@pisagor/recipes";
 import type { ReactElement, ReactNode } from "react";
 import type { VariantClassNames } from "../../internal/types";
@@ -17,7 +17,7 @@ import { TooltipContext, useTooltip } from "./tooltip.context";
 // #region Types
 export interface TooltipRootProps
   extends TooltipPrimitiveRootProps,
-    TooltipRootSharedProps {}
+    BaseTooltipRootProps {}
 
 type TooltipContextApi = Parameters<TooltipContextProps["children"]>[0];
 

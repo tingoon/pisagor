@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/solid/factory";
-import type { SurfaceProps as SurfaceSharedProps } from "@pisagor/props";
+import type { SurfaceProps as BaseSurfaceProps } from "@pisagor/props";
 import { surfaceRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
@@ -19,7 +19,7 @@ const AUTO_VARIANTS = [
 
 export interface SurfaceProps
   extends ComponentProps<typeof ark.div>,
-    SurfaceSharedProps {}
+    BaseSurfaceProps {}
 
 export function Surface(props: SurfaceProps): JSX.Element {
   const [local, rest] = splitProps(props, [

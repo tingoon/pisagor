@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { PasswordInputRootProps } from "@ark-ui/svelte/password-input";
 import { PasswordInput as PasswordInputPrimitive } from "@ark-ui/svelte/password-input";
-import type { PasswordInputProps as PasswordInputSharedProps } from "@pisagor/props";
+import type { PasswordInputProps as BasePasswordInputProps } from "@pisagor/props";
 import { inputGroupButtonRecipe, inputGroupControlRecipe, passwordInputRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import EyeIcon from "phosphor-svelte/lib/EyeIcon";
@@ -24,7 +24,7 @@ type Props = Omit<PasswordInputRootProps, "class" | "children"> &
   size?: "sm" | "md" | "lg";
   value?: string | undefined;
   variant?: FormControlVariant;
-  } & PasswordInputSharedProps;
+  } & BasePasswordInputProps;
 
 let {
   size = "md",

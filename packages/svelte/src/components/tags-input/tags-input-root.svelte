@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { TagsInputRootProps as ArkRootProps } from "@ark-ui/svelte/tags-input";
 import { TagsInput as TagsInputPrimitive } from "@ark-ui/svelte/tags-input";
-import type { TagsInputProps as TagsInputSharedProps } from "@pisagor/props";
+import type { TagsInputProps as BaseTagsInputProps } from "@pisagor/props";
 import { type FormControlGroupShellVariantProps, tagsInputRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setTagsInputSlotsContext } from "./tags-input.context";
@@ -16,7 +16,7 @@ type Props = Omit<ArkRootProps, "class" | "onValueChange"> &
     clearable?: boolean;
     onValueChange?: (value: string[]) => void;
     placeholder?: string;
-  } & TagsInputSharedProps;
+  } & BaseTagsInputProps;
 
 let {
   size = "md",

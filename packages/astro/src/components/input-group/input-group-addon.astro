@@ -1,9 +1,9 @@
 ---
-import type { InputGroupAddonProps as InputGroupAddonSharedProps } from "@pisagor/props";
+import type { InputGroupAddonProps as BaseInputGroupAddonProps } from "@pisagor/props";
 import { inputGroupAddonRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "astro/types";
 
-type Props = HTMLAttributes<"div"> & InputGroupAddonSharedProps;
+type Props = HTMLAttributes<"div"> & BaseInputGroupAddonProps;
 
 const { align = "inline-start", class: className, ...rest } = Astro.props;
 ---

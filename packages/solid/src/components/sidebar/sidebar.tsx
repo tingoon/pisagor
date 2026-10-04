@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/solid/factory";
-import type { SidebarProps as SidebarSharedProps } from "@pisagor/props";
+import type { SidebarProps as BaseSidebarProps } from "@pisagor/props";
 import {
   type ButtonVariantProps,
   buttonRecipe,
@@ -32,7 +32,7 @@ import {
 
 export interface SidebarProviderProps
   extends ComponentProps<"div">,
-    Pick<SidebarSharedProps, "recipe"> {
+    Pick<BaseSidebarProps, "recipe"> {
   defaultOpen?: boolean;
   open?: boolean;
   onOpenChange?: (open: boolean) => void;

@@ -4,7 +4,7 @@ import {
   type JsonTreeViewTreeProps,
 } from "@ark-ui/react/json-tree-view";
 import { CaretRightIcon } from "@phosphor-icons/react";
-import type { JsonTreeViewProps as JsonTreeViewRootSharedProps } from "@pisagor/props";
+import type { JsonTreeViewProps as BaseJsonTreeViewRootProps } from "@pisagor/props";
 import {
   type JsonTreeViewRecipeSlot,
   jsonTreeViewRecipe,
@@ -16,7 +16,7 @@ import { JsonTreeViewContext, useJsonTreeView } from "./json-tree-view.context";
 // #region Types
 export interface JsonTreeViewRootProps
   extends JsonTreeViewPrimitiveRootProps,
-    JsonTreeViewRootSharedProps {}
+    BaseJsonTreeViewRootProps {}
 
 type JsonTreeViewClassNames = VariantClassNames<JsonTreeViewRecipeSlot>;
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-import type { DatePickerProps as DatePickerSharedProps } from "@pisagor/props";
+import type { DatePickerProps as BaseDatePickerProps } from "@pisagor/props";
 import { datePickerRecipe, type FormControlGroupShellVariantProps, formControlGroupShellRecipe, inputGroupControlRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import ClockIcon from "phosphor-svelte/lib/ClockIcon";
@@ -16,7 +16,7 @@ type Props = Omit<HTMLInputAttributes, "class" | "size" | "type" | "value"> &
     class?: string | undefined;
     clearable?: boolean;
     value?: string | undefined;
-  } & DatePickerSharedProps;
+  } & BaseDatePickerProps;
 
 let {
   clearable = false,

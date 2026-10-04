@@ -1,18 +1,18 @@
 import { ark } from "@ark-ui/vue/factory";
 import type {
-  KbdGroupProps as KbdGroupSharedProps,
-  KbdProps as KbdSharedProps,
+  KbdGroupProps as BaseKbdGroupProps,
+  KbdProps as BaseKbdProps,
 } from "@pisagor/props";
 import { kbdGroupRecipe, kbdRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { defineComponent, h, type PropType } from "vue";
 
 // #region Types
-export interface KbdProps extends KbdSharedProps {
+export interface KbdProps extends BaseKbdProps {
   class?: unknown;
 }
 
-export interface KbdGroupProps extends KbdGroupSharedProps {
+export interface KbdGroupProps extends BaseKbdGroupProps {
   class?: unknown;
 }
 // #endregion

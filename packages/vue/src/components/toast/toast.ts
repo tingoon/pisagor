@@ -11,8 +11,8 @@ import {
   PhX,
 } from "@phosphor-icons/vue";
 import type {
-  ToastProps as ToasterSharedProps,
-  ToastItemProps as ToastItemSharedProps,
+  ToastProps as BaseToasterProps,
+  ToastItemProps as BaseToastItemProps,
 } from "@pisagor/props";
 import {
   type ToastItemRecipeSlot,
@@ -46,13 +46,13 @@ type ToastData = {
   action?: ToastAction;
 };
 
-export interface ToasterProps extends ToasterSharedProps {
+export interface ToasterProps extends BaseToasterProps {
   toaster?: unknown;
   class?: ClassValue;
   style?: Record<string, unknown>;
 }
 
-export interface ToastItemProps extends ToastItemSharedProps {
+export interface ToastItemProps extends BaseToastItemProps {
   toast: ToastData;
   class?: ClassValue;
   classNames?: ToastItemClassNames;

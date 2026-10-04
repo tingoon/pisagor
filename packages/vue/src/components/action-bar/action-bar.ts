@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/vue/factory";
 import { PhX } from "@phosphor-icons/vue";
-import type { ActionBarProps as ActionBarSharedProps } from "@pisagor/props";
+import type { ActionBarProps as BaseActionBarProps } from "@pisagor/props";
 import { type ActionBarRecipe, actionBarRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
@@ -38,7 +38,7 @@ interface ActionBarActionItem {
 
 export interface ActionBarProps
   extends Pick<ActionBarContextValue, "lazyMount" | "unmountOnExit">,
-    ActionBarSharedProps {
+    BaseActionBarProps {
   closeOnEscape?: boolean;
   defaultOpen?: boolean;
   onOpenChange?: (open: boolean) => void;
@@ -52,7 +52,7 @@ export interface ActionBarTriggerProps {
   onClick?: (event: MouseEvent) => void;
 }
 
-export interface ActionBarContentProps extends ActionBarSharedProps {
+export interface ActionBarContentProps extends BaseActionBarProps {
   class?: unknown;
   "aria-labelledby"?: string;
 }

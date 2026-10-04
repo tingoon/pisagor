@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import type { ButtonGroupProps as ButtonGroupSharedProps } from "@pisagor/props";
+import type { ButtonGroupProps as BaseButtonGroupProps } from "@pisagor/props";
 import { buttonGroupRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { useMemo } from "react";
@@ -9,7 +9,7 @@ import { ButtonGroupContext, useButtonGroup } from "./button-group.context";
 // #region Types
 export interface ButtonGroupProps
   extends ComponentProps<typeof ark.fieldset>,
-    ButtonGroupSharedProps {}
+    BaseButtonGroupProps {}
 
 export type ButtonGroupTextProps = ComponentProps<typeof ark.div>;
 // #endregion

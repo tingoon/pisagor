@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/react/factory";
-import type { AvatarGroupProps as AvatarGroupRootSharedProps } from "@pisagor/props";
+import type { AvatarGroupProps as BaseAvatarGroupRootProps } from "@pisagor/props";
 import { avatarGroupRecipe } from "@pisagor/recipes";
 import type { ComponentProps } from "react";
 import { Avatar } from "./avatar";
@@ -8,7 +8,7 @@ import { AvatarGroupContext, useAvatarGroup } from "./avatar-group.context";
 // #region Types
 export interface AvatarGroupRootProps
   extends ComponentProps<typeof ark.div>,
-    AvatarGroupRootSharedProps {}
+    BaseAvatarGroupRootProps {}
 
 export interface AvatarGroupProps
   extends Omit<AvatarGroupRootProps, "children"> {

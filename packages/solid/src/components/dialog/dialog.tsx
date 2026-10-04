@@ -10,7 +10,7 @@ import type {
 } from "@ark-ui/solid/dialog";
 import { Dialog as DialogPrimitive } from "@ark-ui/solid/dialog";
 import { ark } from "@ark-ui/solid/factory";
-import type { DialogProps as DialogRootSharedProps } from "@pisagor/props";
+import type { DialogProps as BaseDialogRootProps } from "@pisagor/props";
 import { type DialogVariantProps, dialogRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
@@ -23,7 +23,7 @@ import { DialogContext, useDialog } from "./dialog.context";
 
 export interface DialogRootProps
   extends DialogPrimitiveRootProps,
-    DialogRootSharedProps {}
+    BaseDialogRootProps {}
 
 export interface DialogContentProps
   extends DialogPrimitiveContentProps,

@@ -1,6 +1,6 @@
 import type {
-  InputGroupControlProps as InputGroupInputSharedProps,
-  InputGroupTextareaControlProps as InputGroupTextareaSharedProps,
+  InputGroupControlProps as BaseInputGroupInputProps,
+  InputGroupTextareaControlProps as BaseInputGroupTextareaProps,
 } from "@pisagor/props";
 import {
   inputGroupControlRecipe,
@@ -14,11 +14,11 @@ import { Textarea, type TextareaProps } from "../textarea/textarea";
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface InputGroupInputProps extends InputGroupInputSharedProps {
+export interface InputGroupInputProps extends BaseInputGroupInputProps {
   class?: unknown;
 }
 
-export interface InputGroupTextareaProps extends InputGroupTextareaSharedProps {
+export interface InputGroupTextareaProps extends BaseInputGroupTextareaProps {
   class?: unknown;
 }
 // #endregion

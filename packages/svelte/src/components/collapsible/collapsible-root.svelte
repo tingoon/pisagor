@@ -1,7 +1,7 @@
 <script lang="ts">
 import type { CollapsibleRootProps } from "@ark-ui/svelte/collapsible";
 import { Collapsible as CollapsiblePrimitive } from "@ark-ui/svelte/collapsible";
-import type { CollapsibleProps as CollapsibleSharedProps } from "@pisagor/props";
+import type { CollapsibleProps as BaseCollapsibleProps } from "@pisagor/props";
 import { collapsibleRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setCollapsibleContext } from "./collapsible.context";
@@ -9,7 +9,7 @@ import { setCollapsibleContext } from "./collapsible.context";
 type Props = Omit<CollapsibleRootProps, "class"> &
   {
   class?: string | undefined;
-  } & CollapsibleSharedProps;
+  } & BaseCollapsibleProps;
 
 let {
   lazyMount,

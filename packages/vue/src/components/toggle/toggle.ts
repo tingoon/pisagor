@@ -1,5 +1,5 @@
 import { Toggle as TogglePrimitive } from "@ark-ui/vue/toggle";
-import type { ToggleProps as ToggleSharedProps } from "@pisagor/props";
+import type { ToggleProps as BaseToggleProps } from "@pisagor/props";
 import {
   type ButtonVariantProps,
   buttonRecipe,
@@ -12,7 +12,7 @@ import { defineComponent, h, type PropType } from "vue";
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface ToggleProps extends ToggleSharedProps {
+export interface ToggleProps extends BaseToggleProps {
   class?: unknown;
 }
 // #endregion

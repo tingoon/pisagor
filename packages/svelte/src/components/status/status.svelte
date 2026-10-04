@@ -1,6 +1,6 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import type { StatusProps as StatusSharedProps } from "@pisagor/props";
+import type { StatusProps as BaseStatusProps } from "@pisagor/props";
 import { statusRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
@@ -9,7 +9,7 @@ type Props = Omit<HTMLAttributes<HTMLElement>, "class"> &
   {
   children?: import("svelte").Snippet;
   class?: string | undefined;
-  } & StatusSharedProps;
+  } & BaseStatusProps;
 
 let { recipe = statusRecipe, class: className, children, size, variant, ...rest }: Props = $props();
 </script>

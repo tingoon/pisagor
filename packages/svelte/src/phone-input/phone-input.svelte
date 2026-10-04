@@ -1,6 +1,6 @@
 <script lang="ts">
 import { createListCollection } from "@ark-ui/svelte/collection";
-import type { PhoneInputProps as PhoneInputSharedProps } from "@pisagor/props";
+import type { PhoneInputProps as BasePhoneInputProps } from "@pisagor/props";
 import { type PhoneInputRecipeSlot, type PhoneInputVariantProps, phoneInputRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
@@ -43,7 +43,7 @@ type Props = {
     "class" | "onChange" | "onBlur" | "size" | "type" | "value"
   >;
   popupProps?: Omit<ComponentProps<typeof ComboboxContent>, "class" | "children">;
-  } & PhoneInputSharedProps;
+  } & BasePhoneInputProps;
 
 let {
   size = "md",

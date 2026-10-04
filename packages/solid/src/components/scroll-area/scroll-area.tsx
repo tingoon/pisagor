@@ -5,7 +5,7 @@ import type {
   ScrollAreaViewportProps,
 } from "@ark-ui/solid/scroll-area";
 import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/solid/scroll-area";
-import type { ScrollAreaProps as ScrollAreaRootSharedProps } from "@pisagor/props";
+import type { ScrollAreaProps as BaseScrollAreaRootProps } from "@pisagor/props";
 import {
   type ScrollAreaRecipeSlot,
   type ScrollAreaVariantProps,
@@ -21,7 +21,7 @@ type ScrollAreaClassNames = VariantClassNames<ScrollAreaRecipeSlot>;
 
 type ScrollAreaRootProps = ScrollAreaPrimitiveRootProps &
   ScrollAreaVariantProps &
-  ScrollAreaRootSharedProps;
+  BaseScrollAreaRootProps;
 
 export interface ScrollAreaProps extends Omit<ScrollAreaRootProps, "children"> {
   children?: JSX.Element;

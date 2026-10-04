@@ -1,5 +1,5 @@
 import { ark } from "@ark-ui/vue/factory";
-import type { ItemProps as ItemGroupSharedProps } from "@pisagor/props";
+import type { ItemProps as BaseItemGroupProps } from "@pisagor/props";
 import { type ItemVariantProps, itemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { computed, defineComponent, h, type PropType } from "vue";
@@ -9,7 +9,7 @@ import { provideItemGroupContext } from "./item-group.context";
 type ArkPart = Parameters<typeof h>[0];
 
 // #region Types
-export interface ItemGroupProps extends ItemGroupSharedProps {
+export interface ItemGroupProps extends BaseItemGroupProps {
   class?: unknown;
 }
 // #endregion

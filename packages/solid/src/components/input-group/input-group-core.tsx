@@ -1,8 +1,8 @@
 import { ark } from "@ark-ui/solid/factory";
 import type {
-  InputGroupAddonProps as InputGroupAddonSharedProps,
-  InputGroupButtonProps as InputGroupButtonSharedProps,
-  InputGroupTextProps as InputGroupTextSharedProps,
+  InputGroupAddonProps as BaseInputGroupAddonProps,
+  InputGroupButtonProps as BaseInputGroupButtonProps,
+  InputGroupTextProps as BaseInputGroupTextProps,
 } from "@pisagor/props";
 import {
   type FormControlGroupShellVariantProps,
@@ -27,16 +27,16 @@ export interface InputGroupProps
 
 export interface InputGroupAddonProps
   extends ComponentProps<typeof ark.div>,
-    InputGroupAddonSharedProps {}
+    BaseInputGroupAddonProps {}
 
 export interface InputGroupButtonProps
   extends Omit<ButtonProps, "size" | "recipe">,
     InputGroupButtonVariantProps,
-    InputGroupButtonSharedProps {}
+    BaseInputGroupButtonProps {}
 
 export interface InputGroupTextProps
   extends ComponentProps<typeof ark.span>,
-    InputGroupTextSharedProps {}
+    BaseInputGroupTextProps {}
 
 export function InputGroupRoot(props: InputGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, ["size", "variant", "class"]);

@@ -1,12 +1,12 @@
 ---
-import type { AlertProps as AlertSharedProps } from "@pisagor/props";
+import type { AlertProps as BaseAlertProps } from "@pisagor/props";
 import type { HTMLAttributes } from "astro/types";
 import AlertAction from "./alert-action.astro";
 import AlertDescription from "./alert-description.astro";
 import AlertRoot from "./alert-root.astro";
 import AlertTitle from "./alert-title.astro";
 
-interface Props extends Omit<HTMLAttributes<"div">, "title">, AlertSharedProps {
+interface Props extends Omit<HTMLAttributes<"div">, "title">, BaseAlertProps {
   /** Bold title line. */
   title?: string;
   /** Description content. */

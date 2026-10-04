@@ -6,7 +6,7 @@ import type {
   ClipboardValueTextProps,
 } from "@ark-ui/solid/clipboard";
 import { Clipboard as ClipboardPrimitive } from "@ark-ui/solid/clipboard";
-import type { ClipboardProps as ClipboardSharedProps } from "@pisagor/props";
+import type { ClipboardProps as BaseClipboardProps } from "@pisagor/props";
 import {
   type ClipboardRecipeSlot,
   type ClipboardVariantProps,
@@ -27,7 +27,7 @@ type ClipboardClassNames = VariantClassNames<ClipboardRecipeSlot>;
 
 export interface ClipboardProps
   extends Omit<ClipboardRootProps, "children">,
-    ClipboardSharedProps {
+    BaseClipboardProps {
   buttonSize?: ButtonProps["size"];
   buttonVariant?: ButtonProps["variant"];
   controlVariant?: FormControlVariant;
@@ -44,7 +44,7 @@ function ClipboardProvider(
   props: {
     children: JSX.Element;
     valueSize?: ClipboardVariantProps["valueSize"];
-  } & Pick<ClipboardSharedProps, "recipe">,
+  } & Pick<BaseClipboardProps, "recipe">,
 ): JSX.Element {
   const [local] = splitProps(props, ["children", "valueSize", "recipe"]);
   const slots = () =>
