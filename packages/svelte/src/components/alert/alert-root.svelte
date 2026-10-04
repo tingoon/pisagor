@@ -6,13 +6,18 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setAlertContext } from "./alert.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "title"> &
-  {
-    children?: import("svelte").Snippet;
-    class?: string | undefined;
-  } & BaseAlertProps;
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "title"> & {
+  children?: import("svelte").Snippet;
+  class?: string | undefined;
+} & BaseAlertProps;
 
-let { variant, children, recipe = alertRecipe, class: className, ...rest }: Props = $props();
+let {
+  variant,
+  children,
+  recipe = alertRecipe,
+  class: className,
+  ...rest
+}: Props = $props();
 
 const slots = $derived(recipe({ variant }));
 

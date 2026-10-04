@@ -5,12 +5,17 @@ import type { SheetProps as BaseSheetProps } from "@pisagor/props";
 import { cn } from "@pisagor/utils";
 import { useSheet } from "./sheet.context";
 
-type Props = Omit<DialogPositionerProps, "class"> &
-  {
-    class?: string | undefined;
-  } & BaseSheetProps;
+type Props = Omit<DialogPositionerProps, "class"> & {
+  class?: string | undefined;
+} & BaseSheetProps;
 
-let { placement, variant = "default", class: className, children, ...rest }: Props = $props();
+let {
+  placement,
+  variant = "default",
+  class: className,
+  children,
+  ...rest
+}: Props = $props();
 const { slots } = useSheet();
 </script>
 

@@ -5,10 +5,9 @@ import type { HighlightProps as BaseHighlightProps } from "@pisagor/props";
 import { highlightRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 
-type Props = Omit<ArkHighlightProps, "class"> &
-  {
+type Props = Omit<ArkHighlightProps, "class"> & {
   class?: string | undefined;
-  } & BaseHighlightProps;
+} & BaseHighlightProps;
 
 let { recipe = highlightRecipe, class: className, ...rest }: Props = $props();
 </script>

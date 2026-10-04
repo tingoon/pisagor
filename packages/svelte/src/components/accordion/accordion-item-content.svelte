@@ -12,7 +12,10 @@ let { children, class: className, ...rest }: Props = $props();
 const { slots } = useAccordionItem();
 </script>
 
-<AccordionPrimitive.ItemContent {...rest} class={slots.content({ class: cn(className) })}>
+<AccordionPrimitive.ItemContent
+  {...rest}
+  class={slots.content({ class: cn(className) })}
+>
   <div class={slots.body()}>
     {@render children?.()}
   </div>

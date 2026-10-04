@@ -10,11 +10,10 @@ import TagsInputItemInput from "./tags-input-item-input.svelte";
 import TagsInputItemPreview from "./tags-input-item-preview.svelte";
 import TagsInputItemText from "./tags-input-item-text.svelte";
 
-type Props = Omit<ArkItemProps, "class"> &
-  {
+type Props = Omit<ArkItemProps, "class"> & {
   class?: string | undefined;
   showDelete?: boolean;
-  } & BaseTagsInputItemProps;
+} & BaseTagsInputItemProps;
 
 let {
   showDelete = true,

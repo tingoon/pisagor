@@ -3,7 +3,9 @@ import { LinkBox } from "@pisagor/svelte";
 </script>
 
 <LinkBox>
-  {#snippet asChild(props)}
+  {#snippet asChild(
+  props,
+)}
     <article {...props()} class="flex flex-col gap-2 rounded-xl border p-4">
       <LinkBox.Overlay href="https://example.com/blog/simple-post">
         Blog post title

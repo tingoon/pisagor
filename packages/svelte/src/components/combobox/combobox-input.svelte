@@ -1,7 +1,16 @@
 <script lang="ts">
 import type { ComboboxInputProps as ArkInputProps } from "@ark-ui/svelte/combobox";
-import { Combobox as ComboboxPrimitive, useComboboxContext } from "@ark-ui/svelte/combobox";
-import { buttonRecipe, comboboxRecipe, type FormControlGroupShellVariantProps, formControlGroupShellRecipe, inputGroupControlRecipe } from "@pisagor/recipes";
+import {
+  Combobox as ComboboxPrimitive,
+  useComboboxContext,
+} from "@ark-ui/svelte/combobox";
+import {
+  buttonRecipe,
+  comboboxRecipe,
+  type FormControlGroupShellVariantProps,
+  formControlGroupShellRecipe,
+  inputGroupControlRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import XIcon from "phosphor-svelte/lib/XIcon";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
@@ -38,7 +47,11 @@ const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
 
 <ComboboxControl data-size={size}>
   <div
-    class={cn(formControlGroupShellRecipe({ size, surfaceVariant, variant }), "group/input-group", className)}
+    class={cn(
+  formControlGroupShellRecipe({ size, surfaceVariant, variant }),
+  "group/input-group",
+  className,
+)}
     data-part="root"
     data-scope="input-group"
   >

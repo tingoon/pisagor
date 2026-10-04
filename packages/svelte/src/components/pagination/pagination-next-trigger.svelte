@@ -5,7 +5,9 @@ import { buttonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
 
-type Props = Omit<PaginationNextTriggerProps, "class"> & { class?: string | undefined };
+type Props = Omit<PaginationNextTriggerProps, "class"> & {
+  class?: string | undefined;
+};
 
 let { children, class: className, ...rest }: Props = $props();
 </script>

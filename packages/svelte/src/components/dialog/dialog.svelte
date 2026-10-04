@@ -21,7 +21,8 @@ type Props = Omit<DialogRootProps, "title" | "children"> & {
   trigger?: Snippet;
 };
 
-let { actions, children, description, title, trigger, ...rest }: Props = $props();
+let { actions, children, description, title, trigger, ...rest }: Props =
+  $props();
 </script>
 
 <DialogRoot {...rest}>

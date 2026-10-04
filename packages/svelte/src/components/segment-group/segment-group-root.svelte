@@ -9,12 +9,11 @@ import SegmentGroupIndicator from "./segment-group-indicator.svelte";
 
 type SegmentGroupVariant = "default" | "underline";
 
-type Props = Omit<ArkRootProps, "class" | "onValueChange"> &
-  {
+type Props = Omit<ArkRootProps, "class" | "onValueChange"> & {
   class?: string | undefined;
   onValueChange?: (value: string | null) => void;
   variant?: SegmentGroupVariant;
-  } & BaseSegmentGroupProps;
+} & BaseSegmentGroupProps;
 
 let {
   orientation = "horizontal",
@@ -33,7 +32,9 @@ setSegmentGroupContext({
   },
 });
 
-function handleValueChange(details: Parameters<NonNullable<ArkRootProps["onValueChange"]>>[0]) {
+function handleValueChange(
+  details: Parameters<NonNullable<ArkRootProps["onValueChange"]>>[0],
+) {
   onValueChange?.(details.value);
 }
 </script>

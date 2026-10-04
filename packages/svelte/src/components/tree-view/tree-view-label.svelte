@@ -9,6 +9,9 @@ let { class: className, children, ...rest }: Props = $props();
 const { slots } = useTreeView();
 </script>
 
-<TreeViewPrimitive.Label {...rest} class={slots.label({ class: cn(className) })}>
+<TreeViewPrimitive.Label
+  {...rest}
+  class={slots.label({ class: cn(className) })}
+>
   {@render children?.()}
 </TreeViewPrimitive.Label>

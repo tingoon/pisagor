@@ -12,6 +12,9 @@ let { children, class: className, ...rest }: Props = $props();
 const { slots } = useColorPicker();
 </script>
 
-<ColorPickerPrimitive.SwatchGroup {...rest} class={slots.swatchGroup({ class: cn(className) })}>
+<ColorPickerPrimitive.SwatchGroup
+  {...rest}
+  class={slots.swatchGroup({ class: cn(className) })}
+>
   {@render children?.()}
 </ColorPickerPrimitive.SwatchGroup>

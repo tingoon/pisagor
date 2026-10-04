@@ -2,7 +2,11 @@
 import type { FieldTextareaProps } from "@ark-ui/svelte/field";
 import { Field } from "@ark-ui/svelte/field";
 import type { TextareaProps as BaseTextareaProps } from "@pisagor/props";
-import { formControlShellRecipe, type TextareaRecipeSlot, textareaRecipe } from "@pisagor/recipes";
+import {
+  formControlShellRecipe,
+  type TextareaRecipeSlot,
+  textareaRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import InputClearButton from "../input/input-clear-button.svelte";
 import InputGroupAddon from "../input-group/input-group-addon.svelte";
@@ -11,8 +15,7 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<FieldTextareaProps, "class"> &
-  {
+type Props = Omit<FieldTextareaProps, "class"> & {
   /**
    * Whether to show a clear button when the textarea has a value.
    * @defaultValue false
@@ -24,7 +27,7 @@ type Props = Omit<FieldTextareaProps, "class"> &
   onValueChange?: (value: string) => void;
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
-  } & BaseTextareaProps;
+} & BaseTextareaProps;
 
 let {
   variant: variantProp,
@@ -43,7 +46,9 @@ let {
 const surfaceVariant = useFormControlSurface();
 const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
 const slots = $derived(recipe());
-const canClear = $derived(clearable && !disabled && !readonly && String(value ?? "").length > 0);
+const canClear = $derived(
+  clearable && !disabled && !readonly && String(value ?? "").length > 0,
+);
 
 function handleInput(event: Event & { currentTarget: HTMLTextAreaElement }) {
   const next = event.currentTarget.value;
@@ -72,7 +77,10 @@ function handleClear() {
     bind:value
   />
 {:else}
-  <InputGroupRoot class={slots.group({ class: cn(classNames?.group) })} {variant}>
+  <InputGroupRoot
+    class={slots.group({ class: cn(classNames?.group) })}
+    {variant}
+  >
     <Field.Textarea
       {...rest}
       class={slots.clearableRoot({

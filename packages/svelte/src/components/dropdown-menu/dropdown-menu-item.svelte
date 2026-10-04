@@ -5,10 +5,9 @@ import type { DropdownMenuItemProps as BaseDropdownMenuItemProps } from "@pisago
 import { dropdownMenuItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 
-type Props = Omit<MenuItemProps, "class"> &
-  {
-    class?: string | undefined;
-  } & BaseDropdownMenuItemProps;
+type Props = Omit<MenuItemProps, "class"> & {
+  class?: string | undefined;
+} & BaseDropdownMenuItemProps;
 
 let {
   variant = "default",

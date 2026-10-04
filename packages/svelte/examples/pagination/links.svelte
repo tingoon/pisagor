@@ -5,13 +5,13 @@ import CaretRightIcon from "phosphor-svelte/lib/CaretRightIcon";
 </script>
 
 <Pagination count={50} pageSize={10}>
-      <Pagination.ItemLink page="previous">
-        <CaretLeftIcon />
-        Previous
-      </Pagination.ItemLink>
-      <Pagination.Items />
-      <Pagination.ItemLink page="next">
-        Next
-        <CaretRightIcon />
-      </Pagination.ItemLink>
-    </Pagination>
+  <Pagination.ItemLink page="previous">
+    <CaretLeftIcon />
+    Previous
+  </Pagination.ItemLink>
+  <Pagination.Items />
+  <Pagination.ItemLink page="next">
+    Next
+    <CaretRightIcon />
+  </Pagination.ItemLink>
+</Pagination>

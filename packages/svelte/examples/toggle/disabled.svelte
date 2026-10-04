@@ -2,6 +2,4 @@
 import { Toggle } from "@pisagor/svelte";
 </script>
 
-<Toggle disabled variant="outline">
-      Unavailable
-    </Toggle>
+<Toggle disabled variant="outline"> Unavailable </Toggle>

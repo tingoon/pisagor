@@ -13,7 +13,9 @@ const sides = ["top", "right", "bottom", "left"] as const;
       <Sheet.Content placement={side}>
         <Sheet.Header>
           <Sheet.Title class="capitalize">{side} sheet</Sheet.Title>
-          <Sheet.Description>This sheet opens from the {side}.</Sheet.Description>
+          <Sheet.Description
+            >This sheet opens from the {side}.</Sheet.Description
+          >
         </Sheet.Header>
       </Sheet.Content>
     </Sheet>

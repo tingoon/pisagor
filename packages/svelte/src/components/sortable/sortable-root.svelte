@@ -6,14 +6,13 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setSortableContext } from "./sortable.context";
 
-type Props = Omit<HTMLAttributes<HTMLUListElement>, "class"> &
-  {
+type Props = Omit<HTMLAttributes<HTMLUListElement>, "class"> & {
   class?: string | undefined;
   disabled?: boolean;
   items: string[];
   onValueChange?: (items: string[]) => void;
   orientation?: "vertical" | "horizontal";
-  } & BaseSortableProps;
+} & BaseSortableProps;
 
 let {
   orientation = "vertical",
@@ -126,9 +125,13 @@ function getItemProps(id: string) {
     onkeydown: (event: KeyboardEvent) => {
       if (disabled) return;
       const movePrev =
-        orientation === "vertical" ? event.key === "ArrowUp" : event.key === "ArrowLeft";
+        orientation === "vertical"
+          ? event.key === "ArrowUp"
+          : event.key === "ArrowLeft";
       const moveNext =
-        orientation === "vertical" ? event.key === "ArrowDown" : event.key === "ArrowRight";
+        orientation === "vertical"
+          ? event.key === "ArrowDown"
+          : event.key === "ArrowRight";
       if (!(event.altKey && (movePrev || moveNext))) return;
       event.preventDefault();
       moveItem(id, movePrev ? -1 : 1);

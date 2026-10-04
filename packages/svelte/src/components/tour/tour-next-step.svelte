@@ -10,7 +10,9 @@ type Props = { children?: Snippet; class?: string | undefined };
 let { children, class: className }: Props = $props();
 const { tour } = useTourContext();
 const action = $derived(
-  tour().step?.actions?.find((a) => a.action === "next" || a.action === "dismiss"),
+  tour().step?.actions?.find(
+    (a) => a.action === "next" || a.action === "dismiss",
+  ),
 );
 </script>
 

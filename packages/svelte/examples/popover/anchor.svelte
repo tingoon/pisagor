@@ -9,8 +9,14 @@ import { Button, Input, Popover } from "@pisagor/svelte";
         <Button variant="outline">Open</Button>
       </Popover.Trigger>
       <Popover.Anchor>
-        {#snippet asChild(props)}
-          <Input {...props()} class="w-full" placeholder="jane.doe@example.com" />
+        {#snippet asChild(
+  props,
+)}
+          <Input
+            {...props()}
+            class="w-full"
+            placeholder="jane.doe@example.com"
+          />
         {/snippet}
       </Popover.Anchor>
       <Popover.Content class="w-56">

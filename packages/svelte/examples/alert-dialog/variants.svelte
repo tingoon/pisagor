@@ -27,7 +27,9 @@ import { AlertDialog, Button } from "@pisagor/svelte";
     {#snippet actions()}
       <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
       <AlertDialog.CloseTrigger>
-        <AlertDialog.Action variant="destructive">Delete project</AlertDialog.Action>
+        <AlertDialog.Action variant="destructive"
+          >Delete project</AlertDialog.Action
+        >
       </AlertDialog.CloseTrigger>
     {/snippet}
   </AlertDialog>

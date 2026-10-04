@@ -4,9 +4,16 @@ import { cn } from "@pisagor/utils";
 import type { HTMLButtonAttributes } from "svelte/elements";
 import { useActionBar } from "./action-bar.context";
 
-type Props = Omit<HTMLButtonAttributes, "class"> & { class?: string | undefined };
+type Props = Omit<HTMLButtonAttributes, "class"> & {
+  class?: string | undefined;
+};
 let { onclick, class: className, children, ...rest }: Props = $props();
 const ctx = useActionBar();
+
+function handleClick(e: Parameters<NonNullable<Props["onclick"]>>[0]) {
+  ctx.onClose?.();
+  onclick?.(e);
+}
 </script>
 
 <Ark
@@ -17,10 +24,7 @@ const ctx = useActionBar();
   data-part="close"
   data-scope="action-bar"
   data-state={ctx.isOpen ? "open" : "closed"}
-  onclick={(e) => {
-  ctx.onClose?.();
-  onclick?.(e);
-}}
+  onclick={handleClick}
   type="button"
 >
   {@render children?.()}

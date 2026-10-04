@@ -12,8 +12,12 @@ import { AppShell } from "@pisagor/svelte";
   </AppShell.Navigation>
 
   <AppShell.Rail defaultActiveRailId="home" placement="start">
-    <AppShell.RailItem opensPanel railId="home" tooltip="Home">H</AppShell.RailItem>
-    <AppShell.RailItem opensPanel railId="search" tooltip="Search">S</AppShell.RailItem>
+    <AppShell.RailItem opensPanel railId="home" tooltip="Home"
+      >H</AppShell.RailItem
+    >
+    <AppShell.RailItem opensPanel railId="search" tooltip="Search"
+      >S</AppShell.RailItem
+    >
   </AppShell.Rail>
 
   <AppShell.Panel defaultOpen>
@@ -25,7 +29,9 @@ import { AppShell } from "@pisagor/svelte";
   <AppShell.Main>
     <AppShell.Header>
       <AppShell.PanelTrigger aria-label="Toggle start panel" />
-      <div class="flex min-w-0 flex-1 justify-center text-sm font-medium">Header</div>
+      <div class="flex min-w-0 flex-1 justify-center text-sm font-medium">
+        Header
+      </div>
     </AppShell.Header>
     <AppShell.Content>
       <div class="p-4 text-sm text-muted-foreground">Content</div>

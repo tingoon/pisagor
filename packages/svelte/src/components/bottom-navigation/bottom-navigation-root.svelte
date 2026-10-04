@@ -6,12 +6,16 @@ import { bottomNavigationRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setBottomNavigationContext } from "./bottom-navigation.context";
 
-type Props = Omit<TabsRootProps, "class"> &
-  {
+type Props = Omit<TabsRootProps, "class"> & {
   class?: string | undefined;
-  } & BaseBottomNavigationProps;
+} & BaseBottomNavigationProps;
 
-let { recipe = bottomNavigationRecipe, class: className, children, ...rest }: Props = $props();
+let {
+  recipe = bottomNavigationRecipe,
+  class: className,
+  children,
+  ...rest
+}: Props = $props();
 const slots = $derived(recipe());
 setBottomNavigationContext({
   get slots() {

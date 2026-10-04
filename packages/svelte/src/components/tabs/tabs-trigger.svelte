@@ -10,6 +10,9 @@ let { class: className, children, ...rest }: Props = $props();
 const { slots } = useTabs();
 </script>
 
-<TabsPrimitive.Trigger {...rest} class={slots.trigger({ class: cn(className) })}>
+<TabsPrimitive.Trigger
+  {...rest}
+  class={slots.trigger({ class: cn(className) })}
+>
   {@render children?.()}
 </TabsPrimitive.Trigger>

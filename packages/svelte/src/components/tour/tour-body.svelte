@@ -8,7 +8,12 @@ type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
   scrollFade?: boolean;
 };
 
-let { scrollFade = false, children, class: className, ...rest }: Props = $props();
+let {
+  scrollFade = false,
+  children,
+  class: className,
+  ...rest
+}: Props = $props();
 </script>
 
 <ScrollArea {scrollFade}>

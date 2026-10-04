@@ -6,9 +6,7 @@ let value = $state("");
 
 <PhoneInput
   defaultCountry="US"
-  onChange={(next) => {
-  value = next;
-}}
+  onChange={(next) => (value = next)}
   placeholder="Phone number"
   {value}
 />

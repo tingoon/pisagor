@@ -22,5 +22,7 @@ const isCorrectSelection = $derived(selected[0] === "components/input.tsx");
       {/each}
     </TreeView.Tree>
   </TreeView>
-  <p class="text-muted-foreground text-sm">{isCorrectSelection ? "✅" : "❌"}</p>
+  <p class="text-muted-foreground text-sm">
+    {isCorrectSelection ? "✅" : "❌"}
+  </p>
 </div>

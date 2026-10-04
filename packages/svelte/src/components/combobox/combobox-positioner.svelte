@@ -6,4 +6,6 @@ type Props = ComboboxPositionerProps;
 let { children, ...rest }: Props = $props();
 </script>
 
-<ComboboxPrimitive.Positioner {...rest}> {@render children?.()} </ComboboxPrimitive.Positioner>
+<ComboboxPrimitive.Positioner {...rest}>
+  {@render children?.()}
+</ComboboxPrimitive.Positioner>

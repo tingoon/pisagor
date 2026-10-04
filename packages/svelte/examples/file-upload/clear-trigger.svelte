@@ -5,8 +5,15 @@ import TrashIcon from "phosphor-svelte/lib/TrashIcon";
 
 <FileUpload>
   <FileUpload.ClearTrigger class="absolute top-2 right-2">
-    {#snippet asChild(props)}
-      <Button {...props()} aria-label="Clear files" size="icon-sm" variant="ghost">
+    {#snippet asChild(
+  props,
+)}
+      <Button
+        {...props()}
+        aria-label="Clear files"
+        size="icon-sm"
+        variant="ghost"
+      >
         <TrashIcon />
       </Button>
     {/snippet}

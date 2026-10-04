@@ -6,12 +6,16 @@ import type { ComponentProps } from "svelte";
 import ComboboxRoot from "../combobox/combobox-root.svelte";
 import { setCommandContext } from "./command.context";
 
-type Props = Omit<ComponentProps<typeof ComboboxRoot>, "recipe" | "class"> &
-  {
+type Props = Omit<ComponentProps<typeof ComboboxRoot>, "recipe" | "class"> & {
   class?: string | undefined;
-  } & BaseCommandProps;
+} & BaseCommandProps;
 
-let { recipe = commandRecipe, class: className, children, ...rest }: Props = $props();
+let {
+  recipe = commandRecipe,
+  class: className,
+  children,
+  ...rest
+}: Props = $props();
 const slots = $derived(recipe());
 setCommandContext({
   get slots() {

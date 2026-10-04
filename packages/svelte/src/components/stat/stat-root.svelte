@@ -6,13 +6,18 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setStatContext } from "./stat.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> &
-  {
-    children?: import("svelte").Snippet;
-    class?: string | undefined;
-  } & BaseStatProps;
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+  children?: import("svelte").Snippet;
+  class?: string | undefined;
+} & BaseStatProps;
 
-let { variant, children, recipe = statRecipe, class: className, ...rest }: Props = $props();
+let {
+  variant,
+  children,
+  recipe = statRecipe,
+  class: className,
+  ...rest
+}: Props = $props();
 
 const slots = $derived(recipe());
 

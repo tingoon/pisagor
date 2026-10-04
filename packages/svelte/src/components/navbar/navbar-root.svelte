@@ -6,12 +6,16 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setNavbarContext } from "./navbar.context";
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "class"> &
-  {
+type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & {
   class?: string | undefined;
-  } & BaseNavbarProps;
+} & BaseNavbarProps;
 
-let { children, recipe = navbarRecipe, class: className, ...rest }: Props = $props();
+let {
+  children,
+  recipe = navbarRecipe,
+  class: className,
+  ...rest
+}: Props = $props();
 const slots = $derived(recipe());
 setNavbarContext({
   get slots() {

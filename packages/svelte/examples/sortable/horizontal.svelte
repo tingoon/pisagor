@@ -11,7 +11,11 @@ const labels: Record<string, string> = {
 let items = $state(["a", "b", "c", "d"]);
 </script>
 
-<Sortable {items} onValueChange={(next) => (items = next)} orientation="horizontal">
+<Sortable
+  {items}
+  onValueChange={(next) => (items = next)}
+  orientation="horizontal"
+>
   {#each items as id (id)}
     <Sortable.Item class="min-w-36" value={id}>
       <Sortable.ItemContent>

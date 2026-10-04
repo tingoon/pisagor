@@ -41,8 +41,7 @@ const moveToAvailable = () => {
       <Listbox.Root
         class="min-h-40"
         collection={availableCollection}
-        onValueChange={(next) =>
-          (availableValue = Array.isArray(next) ? next : [next])}
+        onValueChange={(next) => (availableValue = Array.isArray(next) ? next : [next])}
         selectionMode="multiple"
         value={availableValue}
       >
@@ -86,8 +85,7 @@ const moveToAvailable = () => {
       <Listbox.Root
         class="min-h-40"
         collection={selectedCollection}
-        onValueChange={(next) =>
-          (selectedValue = Array.isArray(next) ? next : [next])}
+        onValueChange={(next) => (selectedValue = Array.isArray(next) ? next : [next])}
         selectionMode="multiple"
         value={selectedValue}
       >

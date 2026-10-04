@@ -6,12 +6,16 @@ import { treeViewBranchRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setTreeViewBranchContext } from "./tree-view.context";
 
-type Props = Omit<TreeViewBranchProps, "class"> &
-  {
+type Props = Omit<TreeViewBranchProps, "class"> & {
   class?: string | undefined;
-  } & BaseTreeViewBranchProps;
+} & BaseTreeViewBranchProps;
 
-let { children, recipe = treeViewBranchRecipe, class: className, ...rest }: Props = $props();
+let {
+  children,
+  recipe = treeViewBranchRecipe,
+  class: className,
+  ...rest
+}: Props = $props();
 
 const slots = $derived(recipe());
 setTreeViewBranchContext({
@@ -21,6 +25,9 @@ setTreeViewBranchContext({
 });
 </script>
 
-<TreeViewPrimitive.Branch {...rest} class={slots.base({ class: cn(className) })}>
+<TreeViewPrimitive.Branch
+  {...rest}
+  class={slots.base({ class: cn(className) })}
+>
   {@render children?.()}
 </TreeViewPrimitive.Branch>

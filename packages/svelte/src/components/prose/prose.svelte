@@ -5,14 +5,19 @@ import { proseRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "class"> &
-  {
+type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & {
   children?: import("svelte").Snippet;
   class?: string | undefined;
   html?: string;
-  } & BaseProseProps;
+} & BaseProseProps;
 
-let { html, recipe = proseRecipe, class: className, children, ...rest }: Props = $props();
+let {
+  html,
+  recipe = proseRecipe,
+  class: className,
+  children,
+  ...rest
+}: Props = $props();
 </script>
 
 {#if html}

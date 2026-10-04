@@ -14,7 +14,7 @@ import FileUploadItemSize from "./file-upload-item-size.svelte";
 
 type Props = {
   class?: string | undefined;
-  } & BaseFileUploadItemProps;
+} & BaseFileUploadItemProps;
 
 let { class: className, recipe = fileUploadItemRecipe }: Props = $props();
 const api = useFileUploadContext();
@@ -26,10 +26,17 @@ const files = $derived(api().acceptedFiles);
 {#if files.length > 0}
   <FileUploadItemGroup class={slots.itemGroup()}>
     {#each files as file, index (`${file.name}-${index}`)}
-      {@const isImage = file.type.startsWith("image/")}
-      {@const extension = file.name.split(".").pop()}
-      <FileUploadItem class={itemSlots.listItem({ class: cn(className) })} {file} {recipe}>
-        <FileUploadItemPreview class={itemSlots.listPreview()} type={isImage ? "image/*" : ".*"}>
+      {const isImage = file.type.startsWith("image/")}
+      {const extension = file.name.split(".").pop()}
+      <FileUploadItem
+        class={itemSlots.listItem({ class: cn(className) })}
+        {file}
+        {recipe}
+      >
+        <FileUploadItemPreview
+          class={itemSlots.listPreview()}
+          type={isImage ? "image/*" : ".*"}
+        >
           {#if isImage}
             <FileUploadItemPreviewImage />
           {:else}

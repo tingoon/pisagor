@@ -41,7 +41,10 @@ const padded = $derived(variant === "floating" || variant === "inset");
     {@render children?.()}
   </Ark>
 {:else if ctx.isMobile}
-  <Sheet onOpenChange={(details) => ctx.setOpenMobile(details.open)} open={ctx.openMobile}>
+  <Sheet
+    onOpenChange={(details) => ctx.setOpenMobile(details.open)}
+    open={ctx.openMobile}
+  >
     <Sheet.Content
       {...rest}
       class={ctx.slots.mobile()}
@@ -54,7 +57,9 @@ const padded = $derived(variant === "floating" || variant === "inset");
         <Sheet.Title>Sidebar</Sheet.Title>
         <Sheet.Description>Displays the mobile sidebar.</Sheet.Description>
       </Sheet.Header>
-      <Ark as="div" class={ctx.slots.mobileBody()}> {@render children?.()} </Ark>
+      <Ark as="div" class={ctx.slots.mobileBody()}>
+        {@render children?.()}
+      </Ark>
     </Sheet.Content>
   </Sheet>
 {:else}

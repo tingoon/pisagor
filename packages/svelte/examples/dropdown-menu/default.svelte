@@ -8,6 +8,8 @@ import { DropdownMenu } from "@pisagor/svelte";
     <DropdownMenu.Item value="profile">Profile</DropdownMenu.Item>
     <DropdownMenu.Item value="settings">Settings</DropdownMenu.Item>
     <DropdownMenu.Separator />
-    <DropdownMenu.Item value="logout" variant="destructive">Log out</DropdownMenu.Item>
+    <DropdownMenu.Item value="logout" variant="destructive"
+      >Log out</DropdownMenu.Item
+    >
   </DropdownMenu.Content>
 </DropdownMenu>

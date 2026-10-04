@@ -6,4 +6,6 @@ type Props = MenuTriggerProps;
 let { children, ...rest }: Props = $props();
 </script>
 
-<MenuPrimitive.Trigger {...rest}> {@render children?.()} </MenuPrimitive.Trigger>
+<MenuPrimitive.Trigger {...rest}>
+  {@render children?.()}
+</MenuPrimitive.Trigger>

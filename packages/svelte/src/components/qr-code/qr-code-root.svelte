@@ -7,12 +7,16 @@ import { cn } from "@pisagor/utils";
 import { setQrCodeContext } from "./qr-code.context";
 import QrCodeFrame from "./qr-code-frame.svelte";
 
-type Props = Omit<ArkRootProps, "class"> &
-  {
+type Props = Omit<ArkRootProps, "class"> & {
   class?: string | undefined;
-  } & BaseQrCodeProps;
+} & BaseQrCodeProps;
 
-let { recipe = qrCodeRecipe, class: className, children, ...rest }: Props = $props();
+let {
+  recipe = qrCodeRecipe,
+  class: className,
+  children,
+  ...rest
+}: Props = $props();
 const slots = $derived(recipe());
 
 setQrCodeContext({

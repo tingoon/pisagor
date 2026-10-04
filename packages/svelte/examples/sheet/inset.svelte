@@ -9,7 +9,10 @@ import { Button, Field, Input, Sheet } from "@pisagor/svelte";
   <Sheet.Content variant="inset">
     <Sheet.Header>
       <Sheet.Title>Inset sheet</Sheet.Title>
-      <Sheet.Description>This sheet uses the inset variant with rounded corners and padding.</Sheet.Description>
+      <Sheet.Description
+        >This sheet uses the inset variant with rounded corners and
+        padding.</Sheet.Description
+      >
     </Sheet.Header>
     <Sheet.Body>
       <Field.Group>

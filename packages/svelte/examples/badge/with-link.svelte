@@ -5,8 +5,8 @@ import PlusCircleIcon from "phosphor-svelte/lib/PlusCircleIcon";
 </script>
 
 <Badge>
-      <a href="https://example.com/components">
-        <PlusCircleIcon />
-        New components <ArrowUpRightIcon />
-      </a>
-    </Badge>
+  <a href="https://example.com/components">
+    <PlusCircleIcon />
+    New components <ArrowUpRightIcon />
+  </a>
+</Badge>

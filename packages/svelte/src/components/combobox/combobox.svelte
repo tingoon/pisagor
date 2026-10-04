@@ -9,7 +9,10 @@ import ComboboxRoot from "./combobox-root.svelte";
 
 type PresetItem = { label: string; value: string };
 
-type Props = Omit<ComponentProps<typeof ComboboxRoot>, "children" | "collection"> & {
+type Props = Omit<
+  ComponentProps<typeof ComboboxRoot>,
+  "children" | "collection"
+> & {
   clearable?: boolean;
   id?: string;
   items?: Array<PresetItem | string>;
@@ -18,7 +21,9 @@ type Props = Omit<ComponentProps<typeof ComboboxRoot>, "children" | "collection"
 let { clearable = false, items = [], id, ...rest }: Props = $props();
 
 const normalized = $derived(
-  items.map((item) => (typeof item === "string" ? { label: item, value: item } : item)),
+  items.map((item) =>
+    typeof item === "string" ? { label: item, value: item } : item,
+  ),
 );
 const collection = $derived(createListCollection({ items: normalized }));
 </script>

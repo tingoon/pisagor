@@ -18,6 +18,10 @@ let { items, ...rest }: Props = $props();
 
 <SegmentGroupRoot {...rest}>
   {#each items ?? [] as item (item.value)}
-    <SegmentGroupItem disabled={item.disabled} text={item.label} value={item.value} />
+    <SegmentGroupItem
+      disabled={item.disabled}
+      text={item.label}
+      value={item.value}
+    />
   {/each}
 </SegmentGroupRoot>

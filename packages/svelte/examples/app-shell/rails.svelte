@@ -7,9 +7,15 @@ const paragraphs = loremParagraphs(8);
 
 <AppShell>
   <AppShell.Rail defaultActiveRailId="home" placement="start">
-    <AppShell.RailItem opensPanel railId="home" tooltip="Home">H</AppShell.RailItem>
-    <AppShell.RailItem opensPanel railId="search" tooltip="Search">S</AppShell.RailItem>
-    <AppShell.RailItem opensPanel railId="settings" tooltip="Settings">G</AppShell.RailItem>
+    <AppShell.RailItem opensPanel railId="home" tooltip="Home"
+      >H</AppShell.RailItem
+    >
+    <AppShell.RailItem opensPanel railId="search" tooltip="Search"
+      >S</AppShell.RailItem
+    >
+    <AppShell.RailItem opensPanel railId="settings" tooltip="Settings"
+      >G</AppShell.RailItem
+    >
   </AppShell.Rail>
 
   <AppShell.Panel placement="start">

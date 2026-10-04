@@ -13,7 +13,12 @@ type Props = Omit<FloatingPanelStageTriggerProps, "stage" | "class"> & {
   variant?: "ghost" | "outline";
 };
 
-let { size = "icon-xs", variant = "outline", class: className, ...rest }: Props = $props();
+let {
+  size = "icon-xs",
+  variant = "outline",
+  class: className,
+  ...rest
+}: Props = $props();
 const ctx = useFloatingPanel();
 const slots = $derived(ctx?.slots ?? floatingPanelRecipe());
 </script>

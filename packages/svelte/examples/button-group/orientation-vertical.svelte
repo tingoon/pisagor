@@ -5,10 +5,10 @@ import PlusIcon from "phosphor-svelte/lib/PlusIcon";
 </script>
 
 <ButtonGroup>
-      <Button aria-label="Add" size="icon-md" variant="outline">
-        <PlusIcon />
-      </Button>
-      <Button aria-label="Remove" size="icon-md" variant="outline">
-        <MinusIcon />
-      </Button>
-    </ButtonGroup>
+  <Button aria-label="Add" size="icon-md" variant="outline">
+    <PlusIcon />
+  </Button>
+  <Button aria-label="Remove" size="icon-md" variant="outline">
+    <MinusIcon />
+  </Button>
+</ButtonGroup>

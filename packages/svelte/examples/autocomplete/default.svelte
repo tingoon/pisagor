@@ -2,4 +2,8 @@
 import { Autocomplete } from "@pisagor/svelte";
 </script>
 
-<Autocomplete clearable items={["Apple", "Banana", "Cherry"]} placeholder="Search…" />
+<Autocomplete
+  clearable
+  items={["Apple", "Banana", "Cherry"]}
+  placeholder="Search…"
+/>

@@ -1,7 +1,11 @@
 <script lang="ts">
 import { createListCollection } from "@ark-ui/svelte/collection";
 import type { PhoneInputProps as BasePhoneInputProps } from "@pisagor/props";
-import { type PhoneInputRecipeSlot, type PhoneInputVariantProps, phoneInputRecipe } from "@pisagor/recipes";
+import {
+  type PhoneInputRecipeSlot,
+  type PhoneInputVariantProps,
+  phoneInputRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
   AsYouType,
@@ -21,7 +25,9 @@ import { setPhoneInputContext } from "./phone-input.context";
 import { phoneInputFlags } from "./phone-input-flags";
 
 type FormControlVariant = "primary" | "secondary";
-type PhoneInputClassNames = Partial<Record<Exclude<PhoneInputRecipeSlot, "base">, string>>;
+type PhoneInputClassNames = Partial<
+  Record<Exclude<PhoneInputRecipeSlot, "base">, string>
+>;
 type Country = CountryCode;
 type Props = {
   variant?: FormControlVariant;
@@ -42,8 +48,11 @@ type Props = {
     ComponentProps<typeof Input>,
     "class" | "onChange" | "onBlur" | "size" | "type" | "value"
   >;
-  popupProps?: Omit<ComponentProps<typeof ComboboxContent>, "class" | "children">;
-  } & BasePhoneInputProps;
+  popupProps?: Omit<
+    ComponentProps<typeof ComboboxContent>,
+    "class" | "children"
+  >;
+} & BasePhoneInputProps;
 
 let {
   size = "md",
@@ -76,7 +85,9 @@ internalCountry = resolveCountry(value, defaultCountry);
 display = formatNational(value, internalCountry);
 
 const country = $derived(
-  value !== undefined ? resolveCountry(value, internalCountry) : internalCountry,
+  value !== undefined
+    ? resolveCountry(value, internalCountry)
+    : internalCountry,
 );
 
 $effect(() => {
@@ -155,7 +166,9 @@ function emitValue(nextDisplay: string, nextCountry: Country) {
   const number = formatter.getNumber();
   const e164 =
     number?.number ??
-    (formatted ? `+${getCountryCallingCode(nextCountry)}${formatted.replace(/\D/g, "")}` : "");
+    (formatted
+      ? `+${getCountryCallingCode(nextCountry)}${formatted.replace(/\D/g, "")}`
+      : "");
   onChange?.(number?.format("E.164") ?? (e164.startsWith("+") ? e164 : ""));
 }
 
@@ -228,7 +241,10 @@ function handleCountryChange(nextValue: string[]) {
         </Combobox.Trigger>
       </Combobox.Control>
     </InputGroup.Addon>
-    <Combobox.Content {...popupProps} class={slots.popup({ class: classNames?.popup })}>
+    <Combobox.Content
+      {...popupProps}
+      class={slots.popup({ class: classNames?.popup })}
+    >
       <div class={slots.searchGroup()}>
         <InputGroup {size}>
           <Combobox.Input
@@ -241,14 +257,23 @@ function handleCountryChange(nextValue: string[]) {
         {#each options as item (item.value)}
           <Combobox.Item {item}>
             {#if phoneInputFlags[item.value]}
-              <span aria-label={item.label} class={cn(slots.flagEmoji(), slots.flag())} role="img">
+              <span
+                aria-label={item.label}
+                class={cn(slots.flagEmoji(), slots.flag())}
+                role="img"
+              >
                 {phoneInputFlags[item.value]}
               </span>
             {:else}
-              <GlobeIcon aria-hidden class={cn(slots.flagIcon(), slots.flag())} />
+              <GlobeIcon
+                aria-hidden
+                class={cn(slots.flagIcon(), slots.flag())}
+              />
             {/if}
             <span class={slots.itemLabel()}>{item.label}</span>
-            <span class={slots.itemCode()}>+{getCountryCallingCode(item.value)}</span>
+            <span class={slots.itemCode()}
+              >+{getCountryCallingCode(item.value)}</span
+            >
           </Combobox.Item>
         {/each}
       </Combobox.List>
@@ -266,9 +291,7 @@ function handleCountryChange(nextValue: string[]) {
     {name}
     onblur={onBlur}
     onfocus={onFocus}
-    oninput={(event) => {
-  emitValue(event.currentTarget.value, country);
-}}
+    oninput={(event) => emitValue(event.currentTarget.value, country)}
     {placeholder}
     readonly={readOnly}
     {size}

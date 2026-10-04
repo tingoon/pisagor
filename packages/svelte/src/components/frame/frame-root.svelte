@@ -7,13 +7,17 @@ import type { HTMLAttributes } from "svelte/elements";
 import { setSurfaceContext } from "../surface/surface.context";
 import { setFrameContext } from "./frame.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> &
-  {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
   children?: import("svelte").Snippet;
   class?: string | undefined;
-  } & BaseFrameProps;
+} & BaseFrameProps;
 
-let { children, recipe = frameRecipe, class: className, ...rest }: Props = $props();
+let {
+  children,
+  recipe = frameRecipe,
+  class: className,
+  ...rest
+}: Props = $props();
 
 const slots = $derived(recipe());
 

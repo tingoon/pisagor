@@ -8,11 +8,10 @@ import { setSelectRootContext } from "./select.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<ArkSelectRootProps<CollectionItem>, "onValueChange"> &
-  {
+type Props = Omit<ArkSelectRootProps<CollectionItem>, "onValueChange"> & {
   onValueChange?: (value: string[]) => void;
   variant?: FormControlVariant;
-  } & BaseSelectProps;
+} & BaseSelectProps;
 
 let {
   onValueChange,
@@ -35,7 +34,10 @@ function handleValueChange(details: { value: string[] }) {
 }
 </script>
 
-<SelectPrimitive.Root {...rest} onValueChange={onValueChange ? handleValueChange : undefined}>
+<SelectPrimitive.Root
+  {...rest}
+  onValueChange={onValueChange ? handleValueChange : undefined}
+>
   {@render children?.()}
   <SelectPrimitive.HiddenSelect />
 </SelectPrimitive.Root>

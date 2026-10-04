@@ -5,7 +5,10 @@ import Swap from "../swap/swap.svelte";
 import type { AppShellPlacement } from "./app-shell.context";
 import { useAppShell } from "./app-shell.context";
 
-type Props = Omit<ComponentProps<typeof Button>, "children" | "size" | "variant"> & {
+type Props = Omit<
+  ComponentProps<typeof Button>,
+  "children" | "size" | "variant"
+> & {
   "aria-label"?: string | undefined | null;
   children?: Snippet;
   defaultOff: Snippet;
@@ -38,7 +41,9 @@ let {
 
 const ctx = useAppShell();
 
-function handleClick(event: MouseEvent & { currentTarget: EventTarget & HTMLButtonElement }) {
+function handleClick(
+  event: MouseEvent & { currentTarget: EventTarget & HTMLButtonElement },
+) {
   onclick?.(event);
   toggle();
 }

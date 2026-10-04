@@ -5,13 +5,19 @@ import { statusRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "class"> &
-  {
+type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & {
   children?: import("svelte").Snippet;
   class?: string | undefined;
-  } & BaseStatusProps;
+} & BaseStatusProps;
 
-let { recipe = statusRecipe, class: className, children, size, variant, ...rest }: Props = $props();
+let {
+  recipe = statusRecipe,
+  class: className,
+  children,
+  size,
+  variant,
+  ...rest
+}: Props = $props();
 </script>
 
 <Ark

@@ -14,9 +14,16 @@ const { row } = useDataTableRowContext();
 </script>
 
 {#if columnId}
-  {@const cell = row.getVisibleCells().find((item) => item.column.id === columnId)}
+  {const cell = row
+    .getVisibleCells()
+    .find((item) => item.column.id === columnId)}
   {#if cell}
-    <Table.Cell {...rest} class={className} data-part="cell" data-scope="data-table">
+    <Table.Cell
+      {...rest}
+      class={className}
+      data-part="cell"
+      data-scope="data-table"
+    >
       {#if children}
         {@render children()}
       {:else}
@@ -26,7 +33,12 @@ const { row } = useDataTableRowContext();
   {/if}
 {:else}
   {#each row.getVisibleCells() as cell (cell.id)}
-    <Table.Cell {...rest} class={className} data-part="cell" data-scope="data-table">
+    <Table.Cell
+      {...rest}
+      class={className}
+      data-part="cell"
+      data-scope="data-table"
+    >
       <FlexRender {cell} />
     </Table.Cell>
   {/each}

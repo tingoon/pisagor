@@ -1,7 +1,14 @@
 <script lang="ts">
-import { type ToastOptions, Toast as ToastPrimitive } from "@ark-ui/svelte/toast";
+import {
+  type ToastOptions,
+  Toast as ToastPrimitive,
+} from "@ark-ui/svelte/toast";
 import type { ToastItemProps as BaseToastItemProps } from "@pisagor/props";
-import { buttonRecipe, type ToastItemRecipeSlot, toastItemRecipe } from "@pisagor/recipes";
+import {
+  buttonRecipe,
+  type ToastItemRecipeSlot,
+  toastItemRecipe,
+} from "@pisagor/recipes";
 
 type Accessor<T> = () => T;
 
@@ -16,8 +23,7 @@ import type { HTMLAttributes } from "svelte/elements";
 import Spinner from "../spinner/spinner.svelte";
 import { setToastItemContext } from "./toast.context";
 
-type Props = Omit<import("@ark-ui/svelte/toast").ToastRootProps, "class"> &
-  {
+type Props = Omit<import("@ark-ui/svelte/toast").ToastRootProps, "class"> & {
   actionTriggerProps?: Omit<
     import("@ark-ui/svelte/toast").ToastActionTriggerProps,
     "children" | "class"
@@ -34,9 +40,12 @@ type Props = Omit<import("@ark-ui/svelte/toast").ToastRootProps, "class"> &
     "children" | "class"
   >;
   iconProps?: Omit<HTMLAttributes<HTMLDivElement>, "class">;
-  titleProps?: Omit<import("@ark-ui/svelte/toast").ToastTitleProps, "children" | "class">;
+  titleProps?: Omit<
+    import("@ark-ui/svelte/toast").ToastTitleProps,
+    "children" | "class"
+  >;
   toast: Accessor<ToastOptions>;
-  } & BaseToastItemProps;
+} & BaseToastItemProps;
 
 let {
   actionsProps,
@@ -90,7 +99,10 @@ function renderMaybeSnippet(value: unknown): value is Snippet {
     </div>
 
     <div class={slots.body({ class: cn(classNames?.body) })}>
-      <ToastPrimitive.Title {...titleProps} class={slots.title({ class: cn(classNames?.title) })}>
+      <ToastPrimitive.Title
+        {...titleProps}
+        class={slots.title({ class: cn(classNames?.title) })}
+      >
         {#if renderMaybeSnippet(toastData.title)}
           {@render toastData.title()}
         {:else if toastData.title}
@@ -113,7 +125,10 @@ function renderMaybeSnippet(value: unknown): value is Snippet {
     </div>
   </div>
 
-  <div {...actionsProps} class={slots.actions({ class: cn(classNames?.actions) })}>
+  <div
+    {...actionsProps}
+    class={slots.actions({ class: cn(classNames?.actions) })}
+  >
     {#if toastData.action}
       <ToastPrimitive.ActionTrigger
         {...actionTriggerProps}

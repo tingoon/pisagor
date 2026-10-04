@@ -6,11 +6,10 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setItemGroupContext } from "./item-group.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> &
-  {
-    children?: import("svelte").Snippet;
-    class?: string | undefined;
-  } & BaseItemProps;
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+  children?: import("svelte").Snippet;
+  class?: string | undefined;
+} & BaseItemProps;
 
 let {
   variant = "default",

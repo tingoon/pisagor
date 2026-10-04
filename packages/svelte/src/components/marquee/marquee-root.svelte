@@ -7,12 +7,11 @@ import { cn } from "@pisagor/utils";
 import { setMarqueeContext } from "./marquee.context";
 import MarqueeEdge from "./marquee-edge.svelte";
 
-type Props = Omit<ArkRootProps, "class" | "side"> &
-  {
+type Props = Omit<ArkRootProps, "class" | "side"> & {
   class?: string | undefined;
   orientation?: "horizontal" | "vertical";
   showEdges?: boolean;
-  } & BaseMarqueeProps;
+} & BaseMarqueeProps;
 
 let {
   orientation = "horizontal",

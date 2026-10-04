@@ -5,12 +5,11 @@ import type { RadioGroupProps as BaseRadioGroupProps } from "@pisagor/props";
 import { radioGroupRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 
-type Props = Omit<ArkRadioGroupRootProps, "class" | "onValueChange"> &
-  {
+type Props = Omit<ArkRadioGroupRootProps, "class" | "onValueChange"> & {
   children?: import("svelte").Snippet;
   class?: string | undefined;
   onValueChange?: (value: string | null) => void;
-  } & BaseRadioGroupProps;
+} & BaseRadioGroupProps;
 
 let {
   children,

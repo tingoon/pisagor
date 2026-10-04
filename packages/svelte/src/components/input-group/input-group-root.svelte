@@ -1,6 +1,10 @@
 <script lang="ts">
 import { Ark } from "@ark-ui/svelte/factory";
-import { type FormControlGroupShellVariantProps, formControlGroupShellRecipe, inputGroupRootRecipe } from "@pisagor/recipes";
+import {
+  type FormControlGroupShellVariantProps,
+  formControlGroupShellRecipe,
+  inputGroupRootRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
@@ -13,7 +17,13 @@ type Props = Omit<HTMLAttributes<HTMLFieldSetElement>, "class"> &
     class?: string | undefined;
   };
 
-let { size = "md", variant: variantProp, class: className, children, ...rest }: Props = $props();
+let {
+  size = "md",
+  variant: variantProp,
+  class: className,
+  children,
+  ...rest
+}: Props = $props();
 
 const surfaceVariant = useFormControlSurface();
 const variant = $derived(variantProp ?? ("primary" as FormControlVariant));

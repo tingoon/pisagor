@@ -8,7 +8,10 @@ import AlertDialogRoot from "./alert-dialog-root.svelte";
 import AlertDialogTitle from "./alert-dialog-title.svelte";
 import AlertDialogTrigger from "./alert-dialog-trigger.svelte";
 
-type Props = Omit<ComponentProps<typeof AlertDialogRoot>, "children" | "title"> & {
+type Props = Omit<
+  ComponentProps<typeof AlertDialogRoot>,
+  "children" | "title"
+> & {
   actions?: Snippet;
   description?: string | Snippet;
   title?: string | Snippet;
@@ -24,7 +27,7 @@ let { actions, description, title, trigger, ...rest }: Props = $props();
       {#snippet asChild(
   props,
 )}
-        {@const merged = props({})}
+        {const merged = props({})}
         <span {...merged} style="display: contents"> {@render trigger()} </span>
       {/snippet}
     </AlertDialogTrigger>

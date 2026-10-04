@@ -6,12 +6,16 @@ import { treeViewItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setTreeViewItemContext, useTreeView } from "./tree-view.context";
 
-type Props = Omit<TreeViewItemProps, "class"> &
-  {
+type Props = Omit<TreeViewItemProps, "class"> & {
   class?: string | undefined;
-  } & BaseTreeViewItemProps;
+} & BaseTreeViewItemProps;
 
-let { children, recipe = treeViewItemRecipe, class: className, ...rest }: Props = $props();
+let {
+  children,
+  recipe = treeViewItemRecipe,
+  class: className,
+  ...rest
+}: Props = $props();
 
 const { slots } = useTreeView();
 const itemSlots = $derived(recipe());
@@ -22,6 +26,9 @@ setTreeViewItemContext({
 });
 </script>
 
-<TreeViewPrimitive.Item {...rest} class={slots.control({ class: cn(className) })}>
+<TreeViewPrimitive.Item
+  {...rest}
+  class={slots.control({ class: cn(className) })}
+>
   {@render children?.()}
 </TreeViewPrimitive.Item>

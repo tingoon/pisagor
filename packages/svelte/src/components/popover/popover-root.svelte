@@ -6,4 +6,6 @@ type Props = PopoverRootProps;
 let { modal = false, children, ...rest }: Props = $props();
 </script>
 
-<PopoverPrimitive.Root {...rest} {modal}> {@render children?.()} </PopoverPrimitive.Root>
+<PopoverPrimitive.Root {...rest} {modal}>
+  {@render children?.()}
+</PopoverPrimitive.Root>

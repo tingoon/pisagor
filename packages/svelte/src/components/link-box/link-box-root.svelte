@@ -6,13 +6,17 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setLinkBoxContext } from "./link-box.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> &
-  {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
   children?: import("svelte").Snippet;
   class?: string | undefined;
-  } & BaseLinkBoxProps;
+} & BaseLinkBoxProps;
 
-let { children, recipe = linkBoxRecipe, class: className, ...rest }: Props = $props();
+let {
+  children,
+  recipe = linkBoxRecipe,
+  class: className,
+  ...rest
+}: Props = $props();
 
 const slots = $derived(recipe());
 

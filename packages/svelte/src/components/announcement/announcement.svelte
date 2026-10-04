@@ -5,13 +5,15 @@ import type { HTMLAttributes } from "svelte/elements";
 import AnnouncementRoot from "./announcement-root.svelte";
 import AnnouncementTitle from "./announcement-title.svelte";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "title" | "children" | "role"> &
-  {
+type Props = Omit<
+  HTMLAttributes<HTMLDivElement>,
+  "class" | "title" | "children" | "role"
+> & {
   badge?: Snippet;
   class?: string | undefined;
   role?: "status" | "alert";
   title?: string | Snippet;
-  } & BaseAnnouncementProps;
+} & BaseAnnouncementProps;
 
 let { badge, title, class: className, recipe, role, ...rest }: Props = $props();
 </script>

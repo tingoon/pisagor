@@ -1,7 +1,12 @@
 <script lang="ts">
 import type { DatePickerInputProps as ArkInputProps } from "@ark-ui/svelte/date-picker";
 import { DatePicker as DatePickerPrimitive } from "@ark-ui/svelte/date-picker";
-import { buttonRecipe, type FormControlGroupShellVariantProps, formControlGroupShellRecipe, inputGroupControlRecipe } from "@pisagor/recipes";
+import {
+  buttonRecipe,
+  type FormControlGroupShellVariantProps,
+  formControlGroupShellRecipe,
+  inputGroupControlRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import CalendarIcon from "phosphor-svelte/lib/CalendarIcon";
 import { useFormControlSurface } from "../surface/use-form-control-surface";
@@ -31,12 +36,19 @@ const variant = $derived(variantProp ?? ctx?.variant ?? ("primary" as const));
 {#if slots}
   <DatePickerPrimitive.Control>
     <div
-      class={cn(formControlGroupShellRecipe({ size, surfaceVariant, variant }), "group/input-group", className)}
+      class={cn(
+  formControlGroupShellRecipe({ size, surfaceVariant, variant }),
+  "group/input-group",
+  className,
+)}
       data-part="root"
       data-scope="input-group"
     >
       <DatePickerPrimitive.Input {...rest} class={inputGroupControlRecipe()} />
-      <div class="ms-auto flex items-center gap-0.5 pe-1" data-align="inline-end">
+      <div
+        class="ms-auto flex items-center gap-0.5 pe-1"
+        data-align="inline-end"
+      >
         {#if clearable}
           <DatePickerClearTrigger />
         {/if}

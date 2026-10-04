@@ -6,11 +6,10 @@ import { fileUploadRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setFileUploadContext } from "./file-upload.context";
 
-type Props = Omit<ArkRootProps, "class"> &
-  {
+type Props = Omit<ArkRootProps, "class"> & {
   class?: string | undefined;
   onValueChange?: (value: globalThis.File[]) => void;
-  } & BaseFileUploadProps;
+} & BaseFileUploadProps;
 
 let {
   children,
@@ -27,15 +26,19 @@ setFileUploadContext({
     return slots;
   },
 });
+
+function handleFileChange(
+  details: Parameters<NonNullable<Props["onFileChange"]>>[0],
+) {
+  onFileChange?.(details);
+  onValueChange?.(details.acceptedFiles);
+}
 </script>
 
 <FileUploadPrimitive.Root
   {...rest}
   class={slots.base({ class: cn(className) })}
-  onFileChange={(details) => {
-  onFileChange?.(details);
-  onValueChange?.(details.acceptedFiles);
-}}
+  onFileChange={handleFileChange}
 >
   {@render children?.()}
   <FileUploadPrimitive.HiddenInput />

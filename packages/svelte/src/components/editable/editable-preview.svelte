@@ -29,7 +29,9 @@ let {
 
 const { slots } = useEditable();
 const surfaceVariant = useFormControlSurface();
-const resolvedVariant = $derived(controlVariant ?? ("primary" as FormControlVariant));
+const resolvedVariant = $derived(
+  controlVariant ?? ("primary" as FormControlVariant),
+);
 
 const previewShellClass = $derived(
   resolvedVariant === "secondary" && surfaceVariant === "default"

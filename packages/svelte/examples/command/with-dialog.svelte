@@ -24,7 +24,9 @@ const { collection, filter } = useListCollection({
 
 <Command.Dialog onOpenChange={({ open: next }) => (open = next)} {open}>
   <Command.DialogTrigger>
-    {#snippet asChild(props)}
+    {#snippet asChild(
+  props,
+)}
       <Button {...props()} variant="outline">Open Command Palette</Button>
     {/snippet}
   </Command.DialogTrigger>

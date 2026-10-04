@@ -6,10 +6,9 @@ import { collapsibleRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setCollapsibleContext } from "./collapsible.context";
 
-type Props = Omit<CollapsibleRootProps, "class"> &
-  {
+type Props = Omit<CollapsibleRootProps, "class"> & {
   class?: string | undefined;
-  } & BaseCollapsibleProps;
+} & BaseCollapsibleProps;
 
 let {
   lazyMount,

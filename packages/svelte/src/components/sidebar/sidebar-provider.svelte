@@ -58,7 +58,9 @@ onMount(() => {
 });
 
 const slots = $derived(recipe());
-const sidebarState = $derived(open ? ("expanded" as const) : ("collapsed" as const));
+const sidebarState = $derived(
+  open ? ("expanded" as const) : ("collapsed" as const),
+);
 
 function setOpen(value: boolean) {
   open = value;
@@ -109,7 +111,11 @@ setSidebarContext({
 });
 
 const wrapperStyle = $derived(
-  [`--sidebar-width: ${SIDEBAR_WIDTH}`, `--sidebar-width-icon: ${SIDEBAR_WIDTH_ICON}`, style ?? ""]
+  [
+    `--sidebar-width: ${SIDEBAR_WIDTH}`,
+    `--sidebar-width-icon: ${SIDEBAR_WIDTH_ICON}`,
+    style ?? "",
+  ]
     .filter(Boolean)
     .join("; "),
 );

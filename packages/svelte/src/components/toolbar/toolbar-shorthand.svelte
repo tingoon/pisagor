@@ -14,7 +14,14 @@ type Props = Omit<ComponentProps<typeof ToolbarRoot>, "children"> & {
   title?: Snippet | string;
 };
 
-let { actions, classNames, description, title, class: className, ...rest }: Props = $props();
+let {
+  actions,
+  classNames,
+  description,
+  title,
+  class: className,
+  ...rest
+}: Props = $props();
 const hasHeading = $derived(title !== undefined || description !== undefined);
 </script>
 
@@ -42,6 +49,8 @@ const hasHeading = $derived(title !== undefined || description !== undefined);
     </ToolbarHeading>
   {/if}
   {#if actions}
-    <ToolbarActions class={classNames?.actions}>{@render actions()}</ToolbarActions>
+    <ToolbarActions class={classNames?.actions}
+      >{@render actions()}</ToolbarActions
+    >
   {/if}
 </ToolbarRoot>

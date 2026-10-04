@@ -6,4 +6,6 @@ type Props = DatePickerTableHeadProps;
 let { children, ...rest }: Props = $props();
 </script>
 
-<CalendarPrimitive.TableHead {...rest}>{@render children?.()}</CalendarPrimitive.TableHead>
+<CalendarPrimitive.TableHead {...rest}
+  >{@render children?.()}</CalendarPrimitive.TableHead
+>

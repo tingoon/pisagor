@@ -5,10 +5,9 @@ import { timelineRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 
-type Props = Omit<HTMLAttributes<HTMLOListElement>, "class"> &
-  {
-    class?: string | undefined;
-  } & BaseTimelineProps;
+type Props = Omit<HTMLAttributes<HTMLOListElement>, "class"> & {
+  class?: string | undefined;
+} & BaseTimelineProps;
 
 let {
   orientation = "vertical",

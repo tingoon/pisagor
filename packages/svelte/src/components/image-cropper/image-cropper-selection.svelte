@@ -15,7 +15,10 @@ let { axis = "both", children, class: className, ...rest }: Props = $props();
 const { slots } = useImageCropper();
 </script>
 
-<ImageCropperPrimitive.Selection {...rest} class={slots.selection({ class: cn(className) })}>
+<ImageCropperPrimitive.Selection
+  {...rest}
+  class={slots.selection({ class: cn(className) })}
+>
   {@render children?.()}
   {#if axis === "horizontal" || axis === "both"}
     <ImageCropperGrid axis="horizontal" />

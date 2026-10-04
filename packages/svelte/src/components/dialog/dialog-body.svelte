@@ -11,7 +11,12 @@ type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
   scrollFade?: boolean;
 };
 
-let { children, class: className, scrollFade = false, ...rest }: Props = $props();
+let {
+  children,
+  class: className,
+  scrollFade = false,
+  ...rest
+}: Props = $props();
 const { slots } = useDialog();
 </script>
 

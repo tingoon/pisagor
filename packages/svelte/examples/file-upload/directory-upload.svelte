@@ -6,7 +6,9 @@ import FolderIcon from "phosphor-svelte/lib/FolderIcon";
 <FileUpload directory>
   <div class="flex justify-center">
     <FileUpload.Trigger>
-      {#snippet asChild(props)}
+      {#snippet asChild(
+  props,
+)}
         <Button {...props()} size="sm" variant="outline">
           <FolderIcon />
           Select folder

@@ -8,7 +8,11 @@ const collection = createTreeCollection({
       {
         children: [
           { href: "/docs", id: "docs/introduction", name: "Introduction" },
-          { href: "/docs/components", id: "docs/components", name: "Components" },
+          {
+            href: "/docs/components",
+            id: "docs/components",
+            name: "Components",
+          },
         ],
         id: "docs",
         name: "Documentation",

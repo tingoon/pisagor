@@ -9,12 +9,16 @@ import PaginationItems from "./pagination-items.svelte";
 import PaginationNextTrigger from "./pagination-next-trigger.svelte";
 import PaginationPrevTrigger from "./pagination-prev-trigger.svelte";
 
-type Props = Omit<PaginationRootProps, "class"> &
-  {
+type Props = Omit<PaginationRootProps, "class"> & {
   class?: string | undefined;
-  } & BasePaginationProps;
+} & BasePaginationProps;
 
-let { recipe = paginationRecipe, class: className, children, ...rest }: Props = $props();
+let {
+  recipe = paginationRecipe,
+  class: className,
+  children,
+  ...rest
+}: Props = $props();
 const slots = $derived(recipe());
 
 setPaginationContext({
@@ -24,7 +28,10 @@ setPaginationContext({
 });
 </script>
 
-<PaginationPrimitive.Root {...rest} class={slots.base({ class: cn(className) })}>
+<PaginationPrimitive.Root
+  {...rest}
+  class={slots.base({ class: cn(className) })}
+>
   {#if children}
     {@render children()}
   {:else}

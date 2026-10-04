@@ -19,7 +19,10 @@ const { collection, filter } = useListCollection({
 });
 </script>
 
-<Command {collection} onInputValueChange={({ inputValue }) => filter(inputValue)}>
+<Command
+  {collection}
+  onInputValueChange={({ inputValue }) => filter(inputValue)}
+>
   <Command.Input placeholder="Search..." />
   <Command.Content>
     <Command.Empty />

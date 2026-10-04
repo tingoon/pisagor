@@ -12,8 +12,8 @@ type Props = {
   class?: string | undefined;
   features?: DataGridFeatures;
   columnResizeMode?: "onChange" | "onEnd";
-} &
-  Omit<TableOptions<DataGridFeatures, RowData>, "features"> & BaseDataGridProps;
+} & Omit<TableOptions<DataGridFeatures, RowData>, "features"> &
+  BaseDataGridProps;
 
 let {
   children,
@@ -50,6 +50,10 @@ setDataGridContext({
 });
 </script>
 
-<div class={slots.base({ class: cn(className) })} data-part="root" data-scope="data-grid">
+<div
+  class={slots.base({ class: cn(className) })}
+  data-part="root"
+  data-scope="data-grid"
+>
   {@render children?.()}
 </div>

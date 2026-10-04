@@ -4,7 +4,10 @@ import { inputGroupButtonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import Button from "../button/button.svelte";
 
-type Props = Omit<import("svelte").ComponentProps<typeof Button>, "size" | "recipe"> &
+type Props = Omit<
+  import("svelte").ComponentProps<typeof Button>,
+  "size" | "recipe"
+> &
   BaseInputGroupButtonProps;
 
 let {

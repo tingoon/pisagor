@@ -32,7 +32,10 @@ const paragraphs = loremParagraphs(8);
 
   <AppShell.Main>
     <AppShell.Header>
-      <AppShell.PanelTrigger aria-label="Toggle start panel" placement="start" />
+      <AppShell.PanelTrigger
+        aria-label="Toggle start panel"
+        placement="start"
+      />
       <AppShell.PanelTrigger aria-label="Toggle end panel" placement="end" />
     </AppShell.Header>
     <AppShell.Content>

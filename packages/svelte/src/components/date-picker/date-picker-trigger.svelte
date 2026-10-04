@@ -10,14 +10,22 @@ type Props = Omit<ArkTriggerProps, "class"> & {
   clearable?: boolean;
 };
 
-let { clearable = false, children, class: className, ...rest }: Props = $props();
+let {
+  clearable = false,
+  children,
+  class: className,
+  ...rest
+}: Props = $props();
 const ctx = useDatePicker();
 const slots = $derived(ctx?.slots);
 </script>
 
 {#if slots}
   <DatePickerPrimitive.Control class={slots.control()}>
-    <DatePickerPrimitive.Trigger {...rest} class={slots.trigger({ class: cn(className) })}>
+    <DatePickerPrimitive.Trigger
+      {...rest}
+      class={slots.trigger({ class: cn(className) })}
+    >
       {@render children?.()}
     </DatePickerPrimitive.Trigger>
     {#if clearable}

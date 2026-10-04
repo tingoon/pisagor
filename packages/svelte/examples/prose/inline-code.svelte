@@ -3,5 +3,5 @@ import { Prose } from "@pisagor/svelte";
 </script>
 
 <Prose>
-      <code>@pisagor/svelte/button</code>
-    </Prose>
+  <code>@pisagor/svelte/button</code>
+</Prose>

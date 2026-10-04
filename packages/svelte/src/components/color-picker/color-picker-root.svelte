@@ -9,13 +9,15 @@ import { colorPickerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setColorPickerContext } from "./color-picker.context";
 
-type Props = Omit<ArkRootProps, "class" | "defaultValue" | "value" | "onValueChange"> &
-  {
+type Props = Omit<
+  ArkRootProps,
+  "class" | "defaultValue" | "value" | "onValueChange"
+> & {
   class?: string | undefined;
   defaultValue?: string;
   onValueChange?: (value: string) => void;
   value?: string;
-  } & BaseColorPickerProps;
+} & BaseColorPickerProps;
 
 let {
   positioning = { placement: "top-start" },

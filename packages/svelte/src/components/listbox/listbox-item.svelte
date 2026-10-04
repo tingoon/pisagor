@@ -6,10 +6,9 @@ import { listboxItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setListboxItemContext } from "./listbox.context";
 
-type Props = Omit<ArkListboxItemProps, "class"> &
-  {
-    class?: string | undefined;
-  } & BaseListboxItemProps;
+type Props = Omit<ArkListboxItemProps, "class"> & {
+  class?: string | undefined;
+} & BaseListboxItemProps;
 
 let {
   variant = "default",

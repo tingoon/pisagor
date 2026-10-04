@@ -10,15 +10,17 @@ import { setRatingContext } from "./rating.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<RatingGroupRootProps, "class" | "children" | "onValueChange"> &
-  {
+type Props = Omit<
+  RatingGroupRootProps,
+  "class" | "children" | "onValueChange"
+> & {
   class?: string | undefined;
   classNames?: Partial<Record<RatingRecipeSlot, string>>;
   /** Custom icon component (defaults to StarIcon). */
   icon?: Component;
   onValueChange?: (value: number) => void;
   variant?: FormControlVariant;
-  } & BaseRatingProps;
+} & BaseRatingProps;
 
 let {
   variant: variantProp,
@@ -34,7 +36,9 @@ let {
 
 const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
 const slots = $derived(recipe());
-const surfaceTone = $derived(variant === "secondary" ? "opacity-90" : undefined);
+const surfaceTone = $derived(
+  variant === "secondary" ? "opacity-90" : undefined,
+);
 
 setRatingContext({
   get slots() {
@@ -57,7 +61,9 @@ function handleValueChange(
   data-variant={variant}
   onValueChange={onValueChange ? handleValueChange : undefined}
 >
-  <RatingGroupPrimitive.Control class={slots.control({ class: cn(classNames?.control) })}>
+  <RatingGroupPrimitive.Control
+    class={slots.control({ class: cn(classNames?.control) })}
+  >
     <RatingGroupPrimitive.Context>
       {#snippet render(
   api,
@@ -71,7 +77,7 @@ function handleValueChange(
               {#snippet render(
   itemApi,
 )}
-                {@const state = itemApi()}
+                {const state = itemApi()}
                 <span
                   class={slots.indicator({ class: cn(classNames?.indicator) })}
                   data-half={state.half ? "" : undefined}

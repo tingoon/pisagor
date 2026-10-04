@@ -8,13 +8,12 @@ import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import { setTooltipContext } from "./tooltip.context";
 
-type Props = Omit<TooltipRootProps, "class" | "children"> &
-  {
+type Props = Omit<TooltipRootProps, "class" | "children"> & {
   children?: Snippet;
   class?: string | undefined;
   classNames?: Partial<Record<TooltipRecipeSlot, string>>;
   content: string | Snippet;
-  } & BaseTooltipProps;
+} & BaseTooltipProps;
 
 let {
   closeDelay = 150,
@@ -42,7 +41,7 @@ setTooltipContext({
     {#snippet asChild(
   props,
 )}
-      {@const merged = props({ class: "inline-flex" })}
+      {const merged = props({ class: "inline-flex" })}
       <span {...merged}> {@render children?.()} </span>
     {/snippet}
   </TooltipPrimitive.Trigger>
@@ -52,7 +51,9 @@ setTooltipContext({
       <TooltipPrimitive.Content
         class={slots.content({ class: cn(className, classNames?.content) })}
       >
-        <TooltipPrimitive.Arrow class={slots.arrow({ class: cn(classNames?.arrow) })}>
+        <TooltipPrimitive.Arrow
+          class={slots.arrow({ class: cn(classNames?.arrow) })}
+        >
           <TooltipPrimitive.ArrowTip />
         </TooltipPrimitive.Arrow>
         {#if typeof content === "string"}

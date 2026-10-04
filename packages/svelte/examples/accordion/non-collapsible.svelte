@@ -4,7 +4,7 @@ import { shortFaqItems } from "./helpers";
 </script>
 
 <Accordion
-      collapsible={false}
-      defaultValue={["item-1"]}
-      items={shortFaqItems()}
-    />
+  collapsible={false}
+  defaultValue={["item-1"]}
+  items={shortFaqItems()}
+/>

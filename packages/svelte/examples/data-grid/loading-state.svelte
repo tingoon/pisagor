@@ -17,7 +17,7 @@ let loading = $state(true);
 
 <div class="flex flex-col gap-3">
   <label class="flex items-center gap-2 text-sm">
-    <input type="checkbox" bind:checked={loading} />
+    <input type="checkbox" bind:checked={loading}>
     Loading
   </label>
   <DataGrid {columns} {data} features={dataGridFeatures} {loading}>

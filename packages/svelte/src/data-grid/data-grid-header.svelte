@@ -9,5 +9,7 @@ const headerGroups = $derived(table.getHeaderGroups());
 </script>
 
 {#each headerGroups as headerGroup (headerGroup.id)}
-  <DataGridHeaderGroupProvider {headerGroup}> {@render children?.()} </DataGridHeaderGroupProvider>
+  <DataGridHeaderGroupProvider {headerGroup}>
+    {@render children?.()}
+  </DataGridHeaderGroupProvider>
 {/each}

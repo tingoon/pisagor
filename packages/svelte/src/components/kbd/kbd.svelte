@@ -5,11 +5,10 @@ import { kbdRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "class"> &
-  {
-    children?: import("svelte").Snippet;
-    class?: string | undefined;
-  } & BaseKbdProps;
+type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & {
+  children?: import("svelte").Snippet;
+  class?: string | undefined;
+} & BaseKbdProps;
 
 let {
   variant = "default",

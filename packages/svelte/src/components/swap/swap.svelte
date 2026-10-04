@@ -6,15 +6,14 @@ import { swapRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 
-type Props = Omit<SwapRootProps, "class" | "children"> &
-  {
-    class?: string | undefined;
-    children?: Snippet;
-    off?: Snippet;
-    on?: Snippet;
-    offIndicatorProps?: Omit<SwapIndicatorProps, "children" | "type" | "class">;
-    onIndicatorProps?: Omit<SwapIndicatorProps, "children" | "type" | "class">;
-  } & BaseSwapProps;
+type Props = Omit<SwapRootProps, "class" | "children"> & {
+  class?: string | undefined;
+  children?: Snippet;
+  off?: Snippet;
+  on?: Snippet;
+  offIndicatorProps?: Omit<SwapIndicatorProps, "children" | "type" | "class">;
+  onIndicatorProps?: Omit<SwapIndicatorProps, "children" | "type" | "class">;
+} & BaseSwapProps;
 
 let {
   variant = "fade",

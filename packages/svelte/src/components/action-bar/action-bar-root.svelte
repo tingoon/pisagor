@@ -25,9 +25,12 @@ type Props = {
   lazyMount?: boolean;
   onOpenChange?: (open: boolean) => void;
   open?: boolean;
-  positioning?: { gutter?: string; placement?: "bottom" | "bottom-start" | "bottom-end" };
+  positioning?: {
+    gutter?: string;
+    placement?: "bottom" | "bottom-start" | "bottom-end";
+  };
   unmountOnExit?: boolean;
-  } & BaseActionBarProps;
+} & BaseActionBarProps;
 
 let {
   closeOnEscape = true,
@@ -89,7 +92,9 @@ setActionBarContext({
   },
 });
 
-const hasPreset = $derived(count !== undefined || (actions && actions.length > 0));
+const hasPreset = $derived(
+  count !== undefined || (actions && actions.length > 0),
+);
 </script>
 
 {@render children?.()}

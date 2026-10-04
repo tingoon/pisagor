@@ -5,11 +5,10 @@ import { statTrendRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> &
-  {
-    children?: import("svelte").Snippet;
-    class?: string | undefined;
-  } & BaseStatTrendProps;
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+  children?: import("svelte").Snippet;
+  class?: string | undefined;
+} & BaseStatTrendProps;
 
 let {
   trend = "neutral",

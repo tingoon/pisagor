@@ -20,19 +20,21 @@ const collection = $derived(
     items: frameworks.filter((item) => !tags.includes(item)),
   }),
 );
+
+function onComboboxValueChange(value: string[]) {
+  const next = value[0];
+  if (next && !tags.includes(next)) {
+    tags = [...tags, next];
+  }
+}
 </script>
 
 <Field>
   <Field.Label>Frameworks</Field.Label>
   <Combobox.Root
     allowCustomValue
-    collection={collection}
-    onValueChange={(value) => {
-      const next = value[0];
-      if (next && !tags.includes(next)) {
-        tags = [...tags, next];
-      }
-    }}
+    {collection}
+    onValueChange={onComboboxValueChange}
     selectionBehavior="clear"
     value={[]}
   >
@@ -44,7 +46,9 @@ const collection = $derived(
     />
     <Combobox.Content>
       <Combobox.List>
-        <Combobox.Empty>No frameworks found. Try a different search.</Combobox.Empty>
+        <Combobox.Empty
+          >No frameworks found. Try a different search.</Combobox.Empty
+        >
         {#each collection.items as item}
           <Combobox.Item {item}>{item}</Combobox.Item>
         {/each}

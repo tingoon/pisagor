@@ -7,7 +7,9 @@ import CalendarTableRow from "./calendar-table-row.svelte";
 
 type Props = DatePickerTableBodyProps & { tabIndex?: number | null };
 
-function getWeekRowKey(week: Array<{ day: number; month: number; year: number }>) {
+function getWeekRowKey(
+  week: Array<{ day: number; month: number; year: number }>,
+) {
   return week.map((day) => `${day.year}-${day.month}-${day.day}`).join("/");
 }
 

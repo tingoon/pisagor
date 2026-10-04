@@ -4,7 +4,9 @@ import { Button, Collapsible } from "@pisagor/svelte";
 
 <Collapsible class="w-96" collapsedHeight="50px">
   <Collapsible.Trigger>
-    {#snippet asChild(props)}
+    {#snippet asChild(
+  props,
+)}
       <Button {...props()} class="w-full" variant="outline">
         Read more
         <Collapsible.Indicator />
@@ -21,14 +23,17 @@ import { Button, Collapsible } from "@pisagor/svelte";
       its collapsed state.
     </p>
     <p class="text-muted-foreground text-sm">
-      This is the third paragraph. Expand the collapsible to see all the content.
+      This is the third paragraph. Expand the collapsible to see all the
+      content.
     </p>
     <p class="text-muted-foreground text-sm">
       This is the fourth paragraph. The collapsedHeight prop controls how much
       content is visible when collapsed.
     </p>
     <Collapsible.Trigger>
-      {#snippet asChild(props)}
+      {#snippet asChild(
+  props,
+)}
         <Button {...props()} class="w-full" variant="outline">
           Collapse (cannot be focused when collapsed)
           <Collapsible.Indicator />

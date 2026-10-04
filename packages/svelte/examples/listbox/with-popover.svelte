@@ -18,12 +18,20 @@ const { collection, filter } = useListCollection({
 });
 
 const isEmpty = $derived(collection.items.length === 0 && search);
+
+function onSearchInput(e: Event & { currentTarget: HTMLInputElement }) {
+  const next = e.currentTarget.value;
+  search = next;
+  filter(next);
+}
 </script>
 
 <Listbox.Root {collection} onSelect={() => (isOpen = false)}>
   <Popover onOpenChange={({ open }) => (isOpen = open)} open={isOpen}>
     <Popover.Trigger>
-      {#snippet asChild(props)}
+      {#snippet asChild(
+  props,
+)}
         <Button {...props()} class="justify-between" variant="outline">
           <Listbox.ValueText placeholder="Select framework" />
           <CaretUpDownIcon class="opacity-64" />
@@ -31,15 +39,7 @@ const isEmpty = $derived(collection.items.length === 0 && search);
       {/snippet}
     </Popover.Trigger>
     <Popover.Content class="min-w-64 gap-2 p-1">
-      <Input
-        oninput={(e) => {
-          const next = e.currentTarget.value;
-          search = next;
-          filter(next);
-        }}
-        placeholder="Search..."
-        value={search}
-      />
+      <Input oninput={onSearchInput} placeholder="Search..." value={search} />
       <Listbox.Content>
         {#each collection.items as item}
           <Listbox.Item {item}>
@@ -48,7 +48,9 @@ const isEmpty = $derived(collection.items.length === 0 && search);
           </Listbox.Item>
         {/each}
         {#if isEmpty}
-          <Listbox.Empty>No results found. Try a different search.</Listbox.Empty>
+          <Listbox.Empty
+            >No results found. Try a different search.</Listbox.Empty
+          >
         {/if}
       </Listbox.Content>
     </Popover.Content>

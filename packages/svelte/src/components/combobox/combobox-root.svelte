@@ -8,11 +8,10 @@ import { setComboboxRootContext } from "./combobox.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<ArkRootProps<CollectionItem>, "onValueChange"> &
-  {
+type Props = Omit<ArkRootProps<CollectionItem>, "onValueChange"> & {
   onValueChange?: (value: string[]) => void;
   variant?: FormControlVariant;
-  } & BaseComboboxProps;
+} & BaseComboboxProps;
 
 let {
   openOnClick = true,

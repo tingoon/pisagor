@@ -11,7 +11,10 @@ import { TrashIcon, XIcon } from "@pisagor/svelte/icons";
     <ActionBar.Value count={3} />
     <ActionBar.Separator />
     <ActionBar.Body>
-      <AlertDialog description="This action cannot be undone." title="Delete selected orders?">
+      <AlertDialog
+        description="This action cannot be undone."
+        title="Delete selected orders?"
+      >
         {#snippet trigger()}
           <Button variant="destructive">
             <TrashIcon />
@@ -21,7 +24,9 @@ import { TrashIcon, XIcon } from "@pisagor/svelte/icons";
         {#snippet actions()}
           <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
           <AlertDialog.CloseTrigger>
-            <AlertDialog.Action variant="destructive">Delete</AlertDialog.Action>
+            <AlertDialog.Action variant="destructive"
+              >Delete</AlertDialog.Action
+            >
           </AlertDialog.CloseTrigger>
         {/snippet}
       </AlertDialog>

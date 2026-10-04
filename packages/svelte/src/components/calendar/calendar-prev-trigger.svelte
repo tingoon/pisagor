@@ -6,7 +6,9 @@ import { cn } from "@pisagor/utils";
 import CaretLeftIcon from "phosphor-svelte/lib/CaretLeftIcon";
 import { useCalendar } from "./calendar.context";
 
-type Props = Omit<DatePickerPrevTriggerProps, "class"> & { class?: string | undefined };
+type Props = Omit<DatePickerPrevTriggerProps, "class"> & {
+  class?: string | undefined;
+};
 
 let { class: className, children, ...rest }: Props = $props();
 const { slots } = useCalendar();
@@ -15,7 +17,11 @@ const { slots } = useCalendar();
 <CalendarPrimitive.PrevTrigger
   {...rest}
   aria-label="Previous month"
-  class={cn(buttonRecipe({ size: "icon-md", variant: "ghost" }).base(), slots.prevTrigger(), className)}
+  class={cn(
+  buttonRecipe({ size: "icon-md", variant: "ghost" }).base(),
+  slots.prevTrigger(),
+  className,
+)}
   type="button"
 >
   {#if children}

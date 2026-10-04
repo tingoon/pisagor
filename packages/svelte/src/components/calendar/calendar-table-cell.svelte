@@ -9,8 +9,7 @@ import { calendarTableCellRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 
 type Props = Omit<DatePickerTableCellTriggerProps, "class" | "value"> &
-  Pick<DatePickerTableCellProps, "value" | "visibleRange"> &
-  {
+  Pick<DatePickerTableCellProps, "value" | "visibleRange"> & {
     class?: string | undefined;
   } & BaseCalendarTableCellProps;
 
@@ -27,7 +26,10 @@ const slots = $derived(recipe());
 </script>
 
 <CalendarPrimitive.TableCell class={slots.base()} {value} {visibleRange}>
-  <CalendarPrimitive.TableCellTrigger {...rest} class={slots.trigger({ class: cn(className) })}>
+  <CalendarPrimitive.TableCellTrigger
+    {...rest}
+    class={slots.trigger({ class: cn(className) })}
+  >
     {@render children?.()}
   </CalendarPrimitive.TableCellTrigger>
 </CalendarPrimitive.TableCell>

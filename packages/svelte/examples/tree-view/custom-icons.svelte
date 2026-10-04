@@ -1,5 +1,9 @@
 <script lang="ts">
-import { createFileIcons, createTreeCollection, TreeView } from "@pisagor/svelte";
+import {
+  createFileIcons,
+  createTreeCollection,
+  TreeView,
+} from "@pisagor/svelte";
 import FileCodeIcon from "phosphor-svelte/lib/FileCodeIcon";
 import FileJsIcon from "phosphor-svelte/lib/FileJsIcon";
 import FileTextIcon from "phosphor-svelte/lib/FileTextIcon";

@@ -22,28 +22,29 @@ const columns = [
     <DataGrid {columns} data={allUsers.slice(0, 6)} features={dataGridFeatures}>
       <DataGrid.Toolbar>
         <p class="font-medium text-sm">
-          Directory (custom cell components: compose in template / FlexRender components)
+          Directory (custom cell components: compose in template / FlexRender
+          components)
         </p>
       </DataGrid.Toolbar>
-  <Table>
-    <Table.Header>
-      <DataGrid.Header>
-        <DataGrid.HeaderRow>
-          <DataGrid.Head />
-        </DataGrid.HeaderRow>
-      </DataGrid.Header>
-    </Table.Header>
-    <Table.Body>
-      <DataGrid.Body>
-        {#snippet empty()}
-          <DataGrid.Empty />
-        {/snippet}
-        <DataGrid.Row>
-          <DataGrid.Cell />
-        </DataGrid.Row>
-      </DataGrid.Body>
-    </Table.Body>
-  </Table>
+      <Table>
+        <Table.Header>
+          <DataGrid.Header>
+            <DataGrid.HeaderRow>
+              <DataGrid.Head />
+            </DataGrid.HeaderRow>
+          </DataGrid.Header>
+        </Table.Header>
+        <Table.Body>
+          <DataGrid.Body>
+            {#snippet empty()}
+              <DataGrid.Empty />
+            {/snippet}
+            <DataGrid.Row>
+              <DataGrid.Cell />
+            </DataGrid.Row>
+          </DataGrid.Body>
+        </Table.Body>
+      </Table>
     </DataGrid>
   </div>
 </div>

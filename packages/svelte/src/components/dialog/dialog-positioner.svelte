@@ -9,7 +9,12 @@ type Props = Omit<ArkDialogPositionerProps, "class"> & {
   class?: string | undefined;
 };
 
-let { bottomStickOnMobile, class: className, children, ...rest }: Props = $props();
+let {
+  bottomStickOnMobile,
+  class: className,
+  children,
+  ...rest
+}: Props = $props();
 const { slots } = useDialog();
 </script>
 

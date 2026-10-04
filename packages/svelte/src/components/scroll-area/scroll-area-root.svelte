@@ -6,10 +6,9 @@ import { scrollAreaRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setScrollAreaContext } from "./scroll-area.context";
 
-type Props = Omit<ScrollAreaRootProps, "class"> &
-  {
-    class?: string | undefined;
-  } & BaseScrollAreaProps;
+type Props = Omit<ScrollAreaRootProps, "class"> & {
+  class?: string | undefined;
+} & BaseScrollAreaProps;
 
 let {
   scrollFade = false,
@@ -28,6 +27,9 @@ setScrollAreaContext({
 });
 </script>
 
-<ScrollAreaPrimitive.Root {...rest} class={slots.base({ class: cn(className) })}>
+<ScrollAreaPrimitive.Root
+  {...rest}
+  class={slots.base({ class: cn(className) })}
+>
   {@render children?.()}
 </ScrollAreaPrimitive.Root>

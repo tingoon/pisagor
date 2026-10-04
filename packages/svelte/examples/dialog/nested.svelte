@@ -13,7 +13,9 @@ import { Button, Dialog, Field, Input } from "@pisagor/svelte";
       <Dialog.Content>
         <Dialog.Header>
           <Dialog.Title>Manage team member</Dialog.Title>
-          <Dialog.Description>View and manage a user in your team.</Dialog.Description>
+          <Dialog.Description
+            >View and manage a user in your team.</Dialog.Description
+          >
         </Dialog.Header>
         <Dialog.Body class="grid gap-2">
           <div class="grid gap-1">
@@ -36,7 +38,10 @@ import { Button, Dialog, Field, Input } from "@pisagor/svelte";
                 <Dialog.Content showCloseButton={false}>
                   <Dialog.Header>
                     <Dialog.Title>Edit details</Dialog.Title>
-                    <Dialog.Description>Make changes to the member&apos;s information.</Dialog.Description>
+                    <Dialog.Description
+                      >Make changes to the member&apos;s
+                      information.</Dialog.Description
+                    >
                   </Dialog.Header>
                   <Dialog.Body>
                     <Field.Group>

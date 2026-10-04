@@ -12,7 +12,10 @@ const { slots } = useDrawer();
 </script>
 
 <Ark as="div" class={slots.grabberWrapper()}>
-  <DrawerPrimitive.Grabber {...rest} class={slots.grabber({ class: cn(className) })}>
+  <DrawerPrimitive.Grabber
+    {...rest}
+    class={slots.grabber({ class: cn(className) })}
+  >
     <DrawerPrimitive.GrabberIndicator class={slots.grabberIcon()} />
   </DrawerPrimitive.Grabber>
 </Ark>

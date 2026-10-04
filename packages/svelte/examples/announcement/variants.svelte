@@ -6,7 +6,9 @@ import WarningIcon from "phosphor-svelte/lib/WarningIcon";
 </script>
 
 <div class="flex flex-col gap-2">
-  <Announcement title="v2.1.0 — Dark mode, faster builds, and 12 new components">
+  <Announcement
+    title="v2.1.0 — Dark mode, faster builds, and 12 new components"
+  >
     {#snippet badge()}
       <Badge variant="default">Release</Badge>
     {/snippet}
@@ -15,9 +17,7 @@ import WarningIcon from "phosphor-svelte/lib/WarningIcon";
     title="Your last invoice couldn't be processed. Update your billing info."
   >
     {#snippet badge()}
-      <Badge variant="destructive">
-        <WarningIcon /> Payment failed
-      </Badge>
+      <Badge variant="destructive"> <WarningIcon /> Payment failed </Badge>
     {/snippet}
   </Announcement>
   <Announcement
@@ -28,22 +28,22 @@ import WarningIcon from "phosphor-svelte/lib/WarningIcon";
     {/snippet}
   </Announcement>
   <Announcement.Root>
-    {#snippet asChild(props)}
+    {#snippet asChild(
+  props,
+)}
       <a {...props()} href="https://example.com/announcement">
-        <Badge variant="success">
-          <CheckCircleIcon /> Deployed
-        </Badge>
+        <Badge variant="success"> <CheckCircleIcon /> Deployed </Badge>
         <Announcement.Title>
           Production build completed in 2m 34s <ArrowUpRightIcon />
         </Announcement.Title>
       </a>
     {/snippet}
   </Announcement.Root>
-  <Announcement title="Your free trial expires in 3 days. Upgrade to keep access.">
+  <Announcement
+    title="Your free trial expires in 3 days. Upgrade to keep access."
+  >
     {#snippet badge()}
-      <Badge variant="warning">
-        <WarningIcon /> Trial ending
-      </Badge>
+      <Badge variant="warning"> <WarningIcon /> Trial ending </Badge>
     {/snippet}
   </Announcement>
 </div>

@@ -10,11 +10,10 @@ import { useSheet } from "./sheet.context";
 import SheetBackdrop from "./sheet-backdrop.svelte";
 import SheetPositioner from "./sheet-positioner.svelte";
 
-type Props = Omit<DialogContentProps, "class"> &
-  {
-    class?: string | undefined;
-    showCloseButton?: boolean;
-  } & BaseSheetProps;
+type Props = Omit<DialogContentProps, "class"> & {
+  class?: string | undefined;
+  showCloseButton?: boolean;
+} & BaseSheetProps;
 
 let {
   placement = "right",

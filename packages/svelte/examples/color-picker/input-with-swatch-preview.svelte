@@ -9,7 +9,9 @@ import { ColorPicker, InputGroup } from "@pisagor/svelte";
         <ColorPicker.SwatchPreview />
       </InputGroup.Addon>
       <ColorPicker.Input>
-        {#snippet asChild(props)}
+        {#snippet asChild(
+  props,
+)}
           <InputGroup.Input {...props()} />
         {/snippet}
       </ColorPicker.Input>

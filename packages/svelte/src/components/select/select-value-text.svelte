@@ -5,11 +5,16 @@ import { selectRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useSelectRoot } from "./select.context";
 
-type Props = Omit<SelectValueTextProps, "class"> & { class?: string | undefined };
+type Props = Omit<SelectValueTextProps, "class"> & {
+  class?: string | undefined;
+};
 
 let { class: className, ...rest }: Props = $props();
 const ctx = useSelectRoot();
 const slots = $derived(ctx?.slots ?? selectRecipe());
 </script>
 
-<SelectPrimitive.ValueText {...rest} class={slots.valueText({ class: cn(className) })} />
+<SelectPrimitive.ValueText
+  {...rest}
+  class={slots.valueText({ class: cn(className) })}
+/>

@@ -5,12 +5,11 @@ import type { CheckboxGroupProps as BaseCheckboxGroupProps } from "@pisagor/prop
 import { checkboxGroupRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 
-type Props = Omit<ArkCheckboxGroupProps, "class" | "onValueChange"> &
-  {
+type Props = Omit<ArkCheckboxGroupProps, "class" | "onValueChange"> & {
   children?: import("svelte").Snippet;
   class?: string | undefined;
   onValueChange?: (value: string[]) => void;
-  } & BaseCheckboxGroupProps;
+} & BaseCheckboxGroupProps;
 
 let {
   onValueChange,
@@ -21,6 +20,10 @@ let {
 }: Props = $props();
 </script>
 
-<CheckboxPrimitive.Group {...rest} class={recipe({ class: cn(className) })} {onValueChange}>
+<CheckboxPrimitive.Group
+  {...rest}
+  class={recipe({ class: cn(className) })}
+  {onValueChange}
+>
   {@render children?.()}
 </CheckboxPrimitive.Group>

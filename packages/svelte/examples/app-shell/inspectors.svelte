@@ -8,11 +8,17 @@ const paragraphs = loremParagraphs(8);
 <AppShell>
   <AppShell.Navigation>
     <div class="flex items-center gap-2">
-      <AppShell.InspectorTrigger aria-label="Toggle start inspector" placement="start" />
+      <AppShell.InspectorTrigger
+        aria-label="Toggle start inspector"
+        placement="start"
+      />
       <div class="flex min-h-12 flex-1 items-center justify-center">
         <h6 class="text-center leading-4">Navigation</h6>
       </div>
-      <AppShell.InspectorTrigger aria-label="Toggle end inspector" placement="end" />
+      <AppShell.InspectorTrigger
+        aria-label="Toggle end inspector"
+        placement="end"
+      />
     </div>
   </AppShell.Navigation>
 

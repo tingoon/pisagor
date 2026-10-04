@@ -4,7 +4,9 @@ import { DatePicker as CalendarPrimitive } from "@ark-ui/svelte/date-picker";
 import { cn } from "@pisagor/utils";
 import { useCalendar } from "./calendar.context";
 
-type Props = Omit<DatePickerViewProps, "class"> & { class?: string | undefined };
+type Props = Omit<DatePickerViewProps, "class"> & {
+  class?: string | undefined;
+};
 let { class: className, children, ...rest }: Props = $props();
 const { slots } = useCalendar();
 </script>

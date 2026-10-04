@@ -37,11 +37,16 @@ const tooltipProps = $derived.by((): TooltipConfig | undefined => {
   return tooltip;
 });
 
-const showTooltip = $derived(Boolean(tooltipProps) && ctx.state === "collapsed" && !ctx.isMobile);
+const showTooltip = $derived(
+  Boolean(tooltipProps) && ctx.state === "collapsed" && !ctx.isMobile,
+);
 </script>
 
 {#if showTooltip && tooltipProps}
-  <Tooltip {...tooltipProps} positioning={{ placement: "right", ...tooltipProps.positioning }}>
+  <Tooltip
+    {...tooltipProps}
+    positioning={{ placement: "right", ...tooltipProps.positioning }}
+  >
     <Button
       {...rest}
       class={ctx.slots.menuButton({ class: className })}

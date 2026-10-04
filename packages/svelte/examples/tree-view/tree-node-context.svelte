@@ -19,8 +19,12 @@ let { indexPath, node }: Props = $props();
     <TreeView.Branch>
       <ContextMenu>
         <ContextMenu.ContextTrigger>
-          {#snippet asChild(props)}
-            <TreeView.BranchControl {...props()}>{node.name}</TreeView.BranchControl>
+          {#snippet asChild(
+  props,
+)}
+            <TreeView.BranchControl {...props()}
+              >{node.name}</TreeView.BranchControl
+            >
           {/snippet}
         </ContextMenu.ContextTrigger>
         <ContextMenu.Content class="w-40">
@@ -53,7 +57,9 @@ let { indexPath, node }: Props = $props();
   {:else}
     <ContextMenu>
       <ContextMenu.ContextTrigger>
-        {#snippet asChild(props)}
+        {#snippet asChild(
+  props,
+)}
           <TreeView.Item {...props()}>
             <TreeView.ItemText>{node.name}</TreeView.ItemText>
           </TreeView.Item>

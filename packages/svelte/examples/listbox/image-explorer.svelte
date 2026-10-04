@@ -4,7 +4,11 @@ import { Listbox } from "@pisagor/svelte";
 
 const collection = createListCollection({
   items: [
-    { alt: "Scenic mountain view", label: "Mountain Landscape", value: "mountain" },
+    {
+      alt: "Scenic mountain view",
+      label: "Mountain Landscape",
+      value: "mountain",
+    },
     { alt: "Ocean waves", label: "Ocean Waves", value: "ocean" },
     { alt: "Forest path", label: "Forest Path", value: "forest" },
     { alt: "City skyline", label: "City Skyline", value: "city" },

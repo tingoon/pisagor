@@ -32,7 +32,8 @@ const steps: TourStepDetails[] = [
   },
   {
     actions: [{ action: "dismiss", label: "Done" }],
-    description: "The async step loaded data from the GitHub API before displaying.",
+    description:
+      "The async step loaded data from the GitHub API before displaying.",
     id: "complete",
     title: "Tour complete",
     type: "dialog",
@@ -43,7 +44,9 @@ const steps: TourStepDetails[] = [
 <div class="flex flex-col gap-2">
   <Tour {steps}>
     <Tour.Trigger>
-      {#snippet asChild(props)}
+      {#snippet asChild(
+  props,
+)}
         <Button {...props()} variant="outline">Start tour</Button>
       {/snippet}
     </Tour.Trigger>

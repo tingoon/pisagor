@@ -10,15 +10,14 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<CheckboxRootProps, "class"> &
-  {
+type Props = Omit<CheckboxRootProps, "class"> & {
   /** Visual shell variant. Defaults to `primary`. */
   variant?: FormControlVariant;
   onValueChange?: (value: boolean) => void;
   class?: string | undefined;
   /** Forwarded to the hidden input (Svelte DOM attr). */
   tabindex?: number | null;
-  } & BaseCheckboxProps;
+} & BaseCheckboxProps;
 
 let {
   variant: variantProp,

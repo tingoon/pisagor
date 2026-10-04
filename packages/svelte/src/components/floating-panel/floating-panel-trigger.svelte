@@ -5,4 +5,6 @@ import { FloatingPanel as FloatingPanelPrimitive } from "@ark-ui/svelte/floating
 let { children, ...rest }: FloatingPanelTriggerProps = $props();
 </script>
 
-<FloatingPanelPrimitive.Trigger {...rest}> {@render children?.()} </FloatingPanelPrimitive.Trigger>
+<FloatingPanelPrimitive.Trigger {...rest}>
+  {@render children?.()}
+</FloatingPanelPrimitive.Trigger>

@@ -6,12 +6,16 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setTimelineItemContext } from "./timeline.context";
 
-type Props = Omit<HTMLAttributes<HTMLLIElement>, "class"> &
-  {
+type Props = Omit<HTMLAttributes<HTMLLIElement>, "class"> & {
   class?: string | undefined;
-  } & BaseTimelineItemProps;
+} & BaseTimelineItemProps;
 
-let { children, recipe = timelineItemRecipe, class: className, ...rest }: Props = $props();
+let {
+  children,
+  recipe = timelineItemRecipe,
+  class: className,
+  ...rest
+}: Props = $props();
 
 const slots = $derived(recipe());
 setTimelineItemContext({

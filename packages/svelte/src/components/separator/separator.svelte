@@ -5,11 +5,10 @@ import { separatorRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 
-type Props = Omit<HTMLAttributes<HTMLHRElement>, "class"> &
-  {
+type Props = Omit<HTMLAttributes<HTMLHRElement>, "class"> & {
   class?: string | undefined;
   orientation?: "horizontal" | "vertical";
-  } & BaseSeparatorProps;
+} & BaseSeparatorProps;
 
 let {
   recipe = separatorRecipe,

@@ -8,7 +8,9 @@ import { cn } from "@pisagor/utils";
 import XIcon from "phosphor-svelte/lib/XIcon";
 
 const api = useDatePickerContext();
-const visible = $derived(!(api().disabled || api().readOnly || api().value.length === 0));
+const visible = $derived(
+  !(api().disabled || api().readOnly || api().value.length === 0),
+);
 </script>
 
 {#if visible}

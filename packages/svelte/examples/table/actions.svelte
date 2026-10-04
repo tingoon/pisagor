@@ -26,7 +26,9 @@ import { workspaceUsers } from "./helpers";
         <Table.Cell class="text-right">
           <DropdownMenu positioning={{ placement: "left-end" }}>
             <DropdownMenu.Trigger>
-              {#snippet asChild(props)}
+              {#snippet asChild(
+  props,
+)}
                 <Button
                   {...props()}
                   aria-label="More options"

@@ -9,10 +9,9 @@ import DrawerBackdrop from "./drawer-backdrop.svelte";
 import DrawerGrabber from "./drawer-grabber.svelte";
 import DrawerPositioner from "./drawer-positioner.svelte";
 
-type Props = Omit<DrawerContentProps, "class"> &
-  {
-    class?: string | undefined;
-  } & BaseDrawerProps;
+type Props = Omit<DrawerContentProps, "class"> & {
+  class?: string | undefined;
+} & BaseDrawerProps;
 
 const SWIPE_DIRECTION_TO_PLACEMENT = {
   down: "down",
@@ -21,7 +20,12 @@ const SWIPE_DIRECTION_TO_PLACEMENT = {
   up: "up",
 } as const;
 
-let { variant = "default", children: contentChildren, class: className, ...rest }: Props = $props();
+let {
+  variant = "default",
+  children: contentChildren,
+  class: className,
+  ...rest
+}: Props = $props();
 const { slots } = useDrawer();
 </script>
 
@@ -31,7 +35,7 @@ const { slots } = useDrawer();
     {#snippet children(
   api,
 )}
-      {@const swipeDirection = api().swipeDirection}
+      {const swipeDirection = api().swipeDirection}
       <DrawerPositioner {variant}>
         <DrawerPrimitive.Content
           {...rest}

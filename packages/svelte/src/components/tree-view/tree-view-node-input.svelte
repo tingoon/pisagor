@@ -5,10 +5,15 @@ import { treeViewItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useTreeViewItem } from "./tree-view.context";
 
-type Props = Omit<TreeViewNodeRenameInputProps, "class"> & { class?: string | undefined };
+type Props = Omit<TreeViewNodeRenameInputProps, "class"> & {
+  class?: string | undefined;
+};
 let { class: className, ...rest }: Props = $props();
 const item = useTreeViewItem();
 const slots = $derived(item?.slots ?? treeViewItemRecipe());
 </script>
 
-<TreeViewPrimitive.NodeRenameInput {...rest} class={slots.renameInput({ class: cn(className) })} />
+<TreeViewPrimitive.NodeRenameInput
+  {...rest}
+  class={slots.renameInput({ class: cn(className) })}
+/>

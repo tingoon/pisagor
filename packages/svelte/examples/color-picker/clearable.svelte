@@ -7,11 +7,11 @@ let value = $state("#eb5e41");
 <div class="flex flex-col gap-2">
   <Field>
     <Field.Label>Compact field</Field.Label>
-    <ColorPicker.Field onValueChange={(v) => (value = v)} value={value} />
+    <ColorPicker.Field onValueChange={(v) => (value = v)} {value} />
   </Field>
   <Field>
     <Field.Label>Input group</Field.Label>
-    <ColorPicker onValueChange={(v) => (value = v)} value={value}>
+    <ColorPicker onValueChange={(v) => (value = v)} {value}>
       <ColorPicker.Control clearable={false}>
         <InputGroup>
           <ColorPicker.Trigger>
@@ -20,7 +20,9 @@ let value = $state("#eb5e41");
             </InputGroup.Addon>
           </ColorPicker.Trigger>
           <ColorPicker.Input>
-            {#snippet asChild(props)}
+            {#snippet asChild(
+  props,
+)}
               <InputGroup.Input {...props()} clearable={false} />
             {/snippet}
           </ColorPicker.Input>

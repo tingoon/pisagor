@@ -10,4 +10,8 @@ let { class: className, ...rest }: Props = $props();
 const { slots } = useCommand();
 </script>
 
-<ComboboxContent {...rest} class={slots.content({ class: cn(className) })} portalled={false} />
+<ComboboxContent
+  {...rest}
+  class={slots.content({ class: cn(className) })}
+  portalled={false}
+/>

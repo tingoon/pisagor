@@ -4,7 +4,13 @@ import { Menu as MenuPrimitive } from "@ark-ui/svelte/menu";
 
 type Props = MenuRootProps;
 
-let { positioning = { placement: "bottom-end" }, children, ...rest }: Props = $props();
+let {
+  positioning = { placement: "bottom-end" },
+  children,
+  ...rest
+}: Props = $props();
 </script>
 
-<MenuPrimitive.Root {...rest} {positioning}> {@render children?.()} </MenuPrimitive.Root>
+<MenuPrimitive.Root {...rest} {positioning}>
+  {@render children?.()}
+</MenuPrimitive.Root>

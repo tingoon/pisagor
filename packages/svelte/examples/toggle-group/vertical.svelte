@@ -6,17 +6,17 @@ import TextUnderlineIcon from "phosphor-svelte/lib/TextUnderlineIcon";
 </script>
 
 <ToggleGroup.Root
-      defaultValue={["bold"]}
-      orientation="vertical"
-      variant="outline"
-    >
-      <ToggleGroup.Item aria-label="Toggle bold" value="bold">
-        <TextBIcon />
-      </ToggleGroup.Item>
-      <ToggleGroup.Item aria-label="Toggle italic" value="italic">
-        <TextItalicIcon />
-      </ToggleGroup.Item>
-      <ToggleGroup.Item aria-label="Toggle underline" value="underline">
-        <TextUnderlineIcon />
-      </ToggleGroup.Item>
-    </ToggleGroup.Root>
+  defaultValue={["bold"]}
+  orientation="vertical"
+  variant="outline"
+>
+  <ToggleGroup.Item aria-label="Toggle bold" value="bold">
+    <TextBIcon />
+  </ToggleGroup.Item>
+  <ToggleGroup.Item aria-label="Toggle italic" value="italic">
+    <TextItalicIcon />
+  </ToggleGroup.Item>
+  <ToggleGroup.Item aria-label="Toggle underline" value="underline">
+    <TextUnderlineIcon />
+  </ToggleGroup.Item>
+</ToggleGroup.Root>

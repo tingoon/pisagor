@@ -4,7 +4,10 @@ import { CheckIcon, XIcon } from "@pisagor/svelte/icons";
 </script>
 
 <Card>
-  <Card.Header description="Double-click the text to start editing" title="Edit description" />
+  <Card.Header
+    description="Double-click the text to start editing"
+    title="Edit description"
+  />
   <Card.Content>
     <Field.Group>
       <Field>
@@ -12,7 +15,9 @@ import { CheckIcon, XIcon } from "@pisagor/svelte/icons";
         <Editable>
           <Editable.Area>
             <Editable.Input>
-              {#snippet asChild(props)}
+              {#snippet asChild(
+  props,
+)}
                 <Textarea {...props()} class="min-h-24" />
               {/snippet}
             </Editable.Input>
@@ -20,10 +25,14 @@ import { CheckIcon, XIcon } from "@pisagor/svelte/icons";
           </Editable.Area>
           <Editable.Control>
             <Editable.CancelTrigger>
-              <Button aria-label="Cancel" size="icon-md" variant="outline"><XIcon /></Button>
+              <Button aria-label="Cancel" size="icon-md" variant="outline"
+                ><XIcon /></Button
+              >
             </Editable.CancelTrigger>
             <Editable.SubmitTrigger>
-              <Button aria-label="Save" size="icon-md" variant="outline"><CheckIcon /></Button>
+              <Button aria-label="Save" size="icon-md" variant="outline"
+                ><CheckIcon /></Button
+              >
             </Editable.SubmitTrigger>
           </Editable.Control>
         </Editable>

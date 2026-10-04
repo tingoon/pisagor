@@ -8,11 +8,10 @@ import { setCalendarSlotsContext } from "./calendar.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<DatePickerRootProps, "class"> &
-  {
+type Props = Omit<DatePickerRootProps, "class"> & {
   class?: string | undefined;
   variant?: FormControlVariant;
-  } & BaseCalendarProps;
+} & BaseCalendarProps;
 
 let {
   variant: _variant,
@@ -30,6 +29,10 @@ setCalendarSlotsContext({
 });
 </script>
 
-<CalendarPrimitive.Root {...rest} class={slots.base({ class: cn(className) })} inline>
+<CalendarPrimitive.Root
+  {...rest}
+  class={slots.base({ class: cn(className) })}
+  inline
+>
   {@render children?.()}
 </CalendarPrimitive.Root>

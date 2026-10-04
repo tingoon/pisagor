@@ -2,42 +2,42 @@
 import { Table } from "@pisagor/svelte";
 
 const items = [
-    { id: "1", item: "Wireless mouse", qty: 2, unitPrice: 29.99 },
-    { id: "2", item: "Mechanical keyboard", qty: 1, unitPrice: 149.99 },
-    { id: "3", item: "USB-C hub", qty: 3, unitPrice: 45.0 },
-  ];
+  { id: "1", item: "Wireless mouse", qty: 2, unitPrice: 29.99 },
+  { id: "2", item: "Mechanical keyboard", qty: 1, unitPrice: 149.99 },
+  { id: "3", item: "USB-C hub", qty: 3, unitPrice: 45.0 },
+];
 </script>
 
 <Table>
-      <Table.Caption class="sr-only">
-        Order summary with footer totals.
-      </Table.Caption>
-      <Table.Header>
-        <Table.Row>
-          <Table.Head>Item</Table.Head>
-          <Table.Head class="text-right">Qty</Table.Head>
-          <Table.Head class="text-right">Unit price</Table.Head>
-          <Table.Head class="text-right">Amount</Table.Head>
-        </Table.Row>
-      </Table.Header>
-      <Table.Body>
-        {#each items as row}
-<Table.Row>
-            <Table.Cell>{row.item}</Table.Cell>
-            <Table.Cell class="text-right">{row.qty}</Table.Cell>
-            <Table.Cell class="text-right">
-              ${row.unitPrice.toFixed(2)}
-            </Table.Cell>
-            <Table.Cell class="text-right">
-              ${(row.qty * row.unitPrice).toFixed(2)}
-            </Table.Cell>
-          </Table.Row>
-{/each}
-      </Table.Body>
-      <Table.Footer>
-        <Table.Row>
-          <Table.Cell colSpan={3}>Total</Table.Cell>
-          <Table.Cell class="text-right">$379.47</Table.Cell>
-        </Table.Row>
-      </Table.Footer>
-    </Table>
+  <Table.Caption class="sr-only">
+    Order summary with footer totals.
+  </Table.Caption>
+  <Table.Header>
+    <Table.Row>
+      <Table.Head>Item</Table.Head>
+      <Table.Head class="text-right">Qty</Table.Head>
+      <Table.Head class="text-right">Unit price</Table.Head>
+      <Table.Head class="text-right">Amount</Table.Head>
+    </Table.Row>
+  </Table.Header>
+  <Table.Body>
+    {#each items as row}
+      <Table.Row>
+        <Table.Cell>{row.item}</Table.Cell>
+        <Table.Cell class="text-right">{row.qty}</Table.Cell>
+        <Table.Cell class="text-right">
+          ${row.unitPrice.toFixed(2)}
+        </Table.Cell>
+        <Table.Cell class="text-right">
+          ${(row.qty * row.unitPrice).toFixed(2)}
+        </Table.Cell>
+      </Table.Row>
+    {/each}
+  </Table.Body>
+  <Table.Footer>
+    <Table.Row>
+      <Table.Cell colSpan={3}>Total</Table.Cell>
+      <Table.Cell class="text-right">$379.47</Table.Cell>
+    </Table.Row>
+  </Table.Footer>
+</Table>

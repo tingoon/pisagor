@@ -9,7 +9,9 @@ let inputValue = $state("");
     <Button onclick={() => (inputValue = "React")} size="sm" variant="outline">
       Set &quot;React&quot;
     </Button>
-    <Button onclick={() => (inputValue = "")} size="sm" variant="outline">Clear</Button>
+    <Button onclick={() => (inputValue = "")} size="sm" variant="outline"
+      >Clear</Button
+    >
   </div>
   <Field>
     <Field.Label>Frameworks</Field.Label>

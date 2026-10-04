@@ -4,8 +4,8 @@ import FishIcon from "phosphor-svelte/lib/FishIcon";
 </script>
 
 <QrCode>
-      <QrCode.Frame />
-      <QrCode.Overlay>
-        <FishIcon />
-      </QrCode.Overlay>
-    </QrCode>
+  <QrCode.Frame />
+  <QrCode.Overlay>
+    <FishIcon />
+  </QrCode.Overlay>
+</QrCode>

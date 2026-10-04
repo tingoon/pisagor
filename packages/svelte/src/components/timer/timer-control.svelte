@@ -9,6 +9,9 @@ let { class: className, children, ...rest }: Props = $props();
 const { slots } = useTimer();
 </script>
 
-<TimerPrimitive.Control {...rest} class={slots.control({ class: cn(className) })}>
+<TimerPrimitive.Control
+  {...rest}
+  class={slots.control({ class: cn(className) })}
+>
   {@render children?.()}
 </TimerPrimitive.Control>

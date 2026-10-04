@@ -19,7 +19,10 @@ const slots = $derived(ctx?.slots ?? floatingPanelRecipe());
 
 <Portal>
   <FloatingPanelPrimitive.Positioner class={slots.positioner()}>
-    <FloatingPanelPrimitive.Content {...rest} class={slots.content({ class: cn(className) })}>
+    <FloatingPanelPrimitive.Content
+      {...rest}
+      class={slots.content({ class: cn(className) })}
+    >
       {@render children?.()}
       {#if resizable}
         <FloatingPanelResizeTrigger axis="n" />

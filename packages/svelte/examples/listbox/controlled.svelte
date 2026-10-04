@@ -16,7 +16,9 @@ const isLarge = $derived(value.includes("lg"));
 </script>
 
 <div class="flex flex-col gap-2">
-  <p class="text-center text-muted-foreground text-sm">Selected the Large size</p>
+  <p class="text-center text-muted-foreground text-sm">
+    Selected the Large size
+  </p>
   <Item.Group variant="outline">
     <Item class="p-1">
       <Listbox.Root
@@ -35,5 +37,7 @@ const isLarge = $derived(value.includes("lg"));
       </Listbox.Root>
     </Item>
   </Item.Group>
-  <p class="text-center text-muted-foreground text-sm">{isLarge ? "✅" : "❌"}</p>
+  <p class="text-center text-muted-foreground text-sm">
+    {isLarge ? "✅" : "❌"}
+  </p>
 </div>

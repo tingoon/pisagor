@@ -11,7 +11,10 @@ const paragraphs = loremParagraphs(8);
       <div class="flex min-h-12 flex-1 items-center justify-center">
         <h6 class="text-center leading-4">Navigation</h6>
       </div>
-      <AppShell.InspectorTrigger aria-label="Toggle end inspector" placement="end" />
+      <AppShell.InspectorTrigger
+        aria-label="Toggle end inspector"
+        placement="end"
+      />
     </div>
   </AppShell.Navigation>
 
@@ -33,7 +36,10 @@ const paragraphs = loremParagraphs(8);
 
   <AppShell.Main>
     <AppShell.Header>
-      <AppShell.PanelTrigger aria-label="Toggle start panel" placement="start" />
+      <AppShell.PanelTrigger
+        aria-label="Toggle start panel"
+        placement="start"
+      />
       <div class="flex min-w-0 flex-1 justify-center">
         <h6 class="text-center leading-4">Header</h6>
       </div>

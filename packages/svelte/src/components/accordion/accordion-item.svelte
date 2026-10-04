@@ -6,12 +6,16 @@ import { accordionItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setAccordionItemContext } from "./accordion.context";
 
-type Props = Omit<ArkAccordionItemProps, "class"> &
-  {
+type Props = Omit<ArkAccordionItemProps, "class"> & {
   class?: string | undefined;
-  } & BaseAccordionItemProps;
+} & BaseAccordionItemProps;
 
-let { children, recipe = accordionItemRecipe, class: className, ...rest }: Props = $props();
+let {
+  children,
+  recipe = accordionItemRecipe,
+  class: className,
+  ...rest
+}: Props = $props();
 
 const slots = $derived(recipe());
 

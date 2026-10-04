@@ -9,6 +9,9 @@ let { class: className, children, ...rest }: Props = $props();
 const { slots } = useQrCode();
 </script>
 
-<QrCodePrimitive.Overlay {...rest} class={slots.overlay({ class: cn(className) })}>
+<QrCodePrimitive.Overlay
+  {...rest}
+  class={slots.overlay({ class: cn(className) })}
+>
   {@render children?.()}
 </QrCodePrimitive.Overlay>

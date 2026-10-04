@@ -14,7 +14,8 @@ import { Button, Dialog } from "@pisagor/svelte";
         <Dialog.Header>
           <Dialog.Title>No close button</Dialog.Title>
           <Dialog.Description>
-            You can only close this dialog using the buttons in the footer, by pressing Escape or by clicking the backdrop.
+            You can only close this dialog using the buttons in the footer, by
+            pressing Escape or by clicking the backdrop.
           </Dialog.Description>
         </Dialog.Header>
       </Dialog.Content>

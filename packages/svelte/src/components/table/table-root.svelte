@@ -6,12 +6,11 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setTableContext } from "./table.context";
 
-type Props = Omit<HTMLAttributes<HTMLTableElement>, "class"> &
-  {
+type Props = Omit<HTMLAttributes<HTMLTableElement>, "class"> & {
   class?: string | undefined;
   isHoverable?: boolean;
   variant?: "plain" | "striped";
-  } & BaseTableProps;
+} & BaseTableProps;
 
 let {
   variant = "plain",

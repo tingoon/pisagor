@@ -9,7 +9,10 @@ import { Button, Field, Input, Sheet } from "@pisagor/svelte";
   <Sheet.Content class="[--space:--spacing(4)] sm:[--space:--spacing(8)]">
     <Sheet.Header>
       <Sheet.Title>Edit user</Sheet.Title>
-      <Sheet.Description>Make changes to your account here. Click save when you're done.</Sheet.Description>
+      <Sheet.Description
+        >Make changes to your account here. Click save when you're
+        done.</Sheet.Description
+      >
     </Sheet.Header>
     <Sheet.Body>
       <Field.Group>

@@ -1,4 +1,7 @@
-<script generics="T extends Record<string, unknown> = Record<string, unknown>" lang="ts">
+<script
+  generics="T extends Record<string, unknown> = Record<string, unknown>"
+  lang="ts"
+>
 import type { TreeViewRootProps } from "@ark-ui/svelte/tree-view";
 import { TreeView as TreeViewPrimitive } from "@ark-ui/svelte/tree-view";
 import type { TreeViewProps as BaseTreeViewProps } from "@pisagor/props";

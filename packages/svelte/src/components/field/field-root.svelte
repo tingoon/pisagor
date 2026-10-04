@@ -6,10 +6,9 @@ import { fieldRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setFieldContext } from "./field.context";
 
-type Props = Omit<ArkRootProps, "class"> &
-  {
-    class?: string | undefined;
-  } & BaseFieldProps;
+type Props = Omit<ArkRootProps, "class"> & {
+  class?: string | undefined;
+} & BaseFieldProps;
 
 let {
   orientation = "vertical",

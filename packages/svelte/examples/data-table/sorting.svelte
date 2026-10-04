@@ -15,16 +15,15 @@ const columns = [
 ];
 
 let sorting = $state<SortingState>([{ desc: false, id: "name" }]);
+
+function onSortingChange(
+  updater: SortingState | ((prev: SortingState) => SortingState),
+) {
+  sorting = typeof updater === "function" ? updater(sorting) : updater;
+}
 </script>
 
-<DataTable
-  {columns}
-  {data}
-  onSortingChange={(updater) => {
-    sorting = typeof updater === "function" ? updater(sorting) : updater;
-  }}
-  {sorting}
->
+<DataTable {columns} {data} {onSortingChange} {sorting}>
   <Table>
     <Table.Header>
       <DataTable.Header>

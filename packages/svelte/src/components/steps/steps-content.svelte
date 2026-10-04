@@ -10,6 +10,9 @@ let { class: className, children, ...rest }: Props = $props();
 const { slots } = useSteps();
 </script>
 
-<StepsPrimitive.Content {...rest} class={slots.content({ class: cn(className) })}>
+<StepsPrimitive.Content
+  {...rest}
+  class={slots.content({ class: cn(className) })}
+>
   {@render children?.()}
 </StepsPrimitive.Content>

@@ -8,12 +8,11 @@ import { setDatePickerSlotsContext } from "./date-picker.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<ArkRootProps, "onValueChange"> &
-  {
+type Props = Omit<ArkRootProps, "onValueChange"> & {
   calendarRecipe?: typeof calendarRecipe;
   onValueChange?: (value: ArkRootProps["value"]) => void;
   variant?: FormControlVariant;
-  } & BaseDatePickerProps;
+} & BaseDatePickerProps;
 
 let {
   variant,

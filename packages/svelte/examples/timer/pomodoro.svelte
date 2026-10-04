@@ -8,7 +8,11 @@ import PlayIcon from "phosphor-svelte/lib/PlayIcon";
 
 <Card class="rounded-3xl [--space:--spacing(6)]">
   <Card.Content>
-    <Timer class="items-center justify-center px-10" countdown startMs={25 * 60 * 1000}>
+    <Timer
+      class="items-center justify-center px-10"
+      countdown
+      startMs={25 * 60 * 1000}
+    >
       <span>🍅</span>
       <Timer.Area>
         <Timer.Item class="text-5xl" type="minutes" />
@@ -22,22 +26,43 @@ import PlayIcon from "phosphor-svelte/lib/PlayIcon";
       </span>
       <Timer.Control class="w-full justify-center">
         <Timer.Reset hidden={false}>
-          {#snippet asChild(props)}
-            <Button {...props()} aria-label="Reset" size="icon-md" variant="ghost">
+          {#snippet asChild(
+  props,
+)}
+            <Button
+              {...props()}
+              aria-label="Reset"
+              size="icon-md"
+              variant="ghost"
+            >
               <ArrowCounterClockwiseIcon />
             </Button>
           {/snippet}
         </Timer.Reset>
         <Timer.Pause>
-          {#snippet asChild(props)}
-            <Button {...props()} aria-label="Pause" class="w-full" variant="ghost">
+          {#snippet asChild(
+  props,
+)}
+            <Button
+              {...props()}
+              aria-label="Pause"
+              class="w-full"
+              variant="ghost"
+            >
               <PauseIcon />
             </Button>
           {/snippet}
         </Timer.Pause>
         <Timer.Play>
-          {#snippet asChild(props)}
-            <Button {...props()} aria-label="Play" class="w-full" variant="ghost">
+          {#snippet asChild(
+  props,
+)}
+            <Button
+              {...props()}
+              aria-label="Play"
+              class="w-full"
+              variant="ghost"
+            >
               <PlayIcon />
             </Button>
           {/snippet}

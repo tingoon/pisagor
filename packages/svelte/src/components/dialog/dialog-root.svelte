@@ -7,7 +7,12 @@ import { setDialogContext } from "./dialog.context";
 
 type Props = DialogRootProps & BaseDialogProps;
 
-let { modal = true, recipe = dialogRecipe, children, ...rest }: Props = $props();
+let {
+  modal = true,
+  recipe = dialogRecipe,
+  children,
+  ...rest
+}: Props = $props();
 const slots = $derived(recipe());
 
 setDialogContext({
@@ -20,4 +25,6 @@ setDialogContext({
 });
 </script>
 
-<DialogPrimitive.Root {...rest} {modal}> {@render children?.()} </DialogPrimitive.Root>
+<DialogPrimitive.Root {...rest} {modal}>
+  {@render children?.()}
+</DialogPrimitive.Root>

@@ -7,11 +7,10 @@ import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { setMenuContext } from "./menu.context";
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "class"> &
-  {
+type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & {
   children?: Snippet;
   class?: string | undefined;
-  } & BaseMenuProps;
+} & BaseMenuProps;
 
 let {
   "aria-label": ariaLabel = "Menu",

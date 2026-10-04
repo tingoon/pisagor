@@ -5,14 +5,21 @@ import type { ContextMenuProps as BaseContextMenuProps } from "@pisagor/props";
 import { contextMenuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 
-type Props = Omit<MenuContextTriggerProps, "class"> &
-  {
+type Props = Omit<MenuContextTriggerProps, "class"> & {
   class?: string | undefined;
-  } & BaseContextMenuProps;
+} & BaseContextMenuProps;
 
-let { recipe = contextMenuRecipe, class: className, children, ...rest }: Props = $props();
+let {
+  recipe = contextMenuRecipe,
+  class: className,
+  children,
+  ...rest
+}: Props = $props();
 </script>
 
-<MenuPrimitive.ContextTrigger {...rest} class={recipe({ class: cn(className) })}>
+<MenuPrimitive.ContextTrigger
+  {...rest}
+  class={recipe({ class: cn(className) })}
+>
   {@render children?.()}
 </MenuPrimitive.ContextTrigger>

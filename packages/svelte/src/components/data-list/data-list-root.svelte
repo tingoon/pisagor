@@ -5,12 +5,11 @@ import { dataListRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 
-type Props = Omit<HTMLAttributes<HTMLDListElement>, "class"> &
-  {
+type Props = Omit<HTMLAttributes<HTMLDListElement>, "class"> & {
   children?: import("svelte").Snippet;
   class?: string | undefined;
   orientation?: "horizontal" | "vertical";
-  } & BaseDataListProps;
+} & BaseDataListProps;
 
 let {
   orientation = "horizontal",

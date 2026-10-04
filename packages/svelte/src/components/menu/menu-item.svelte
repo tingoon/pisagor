@@ -7,12 +7,11 @@ import type { Snippet } from "svelte";
 import type { HTMLButtonAttributes } from "svelte/elements";
 import { useMenu } from "./menu.context";
 
-type Props = Omit<HTMLButtonAttributes, "class" | "type"> &
-  {
-    children?: Snippet;
-    class?: string | undefined;
-    type?: "button" | "reset" | "submit";
-  } & BaseMenuItemProps;
+type Props = Omit<HTMLButtonAttributes, "class" | "type"> & {
+  children?: Snippet;
+  class?: string | undefined;
+  type?: "button" | "reset" | "submit";
+} & BaseMenuItemProps;
 
 let {
   variant = "default",
@@ -26,7 +25,13 @@ let {
 const { slots } = useMenu();
 </script>
 
-<Ark as="li" class={slots.wrapper()} data-part="item-wrapper" data-scope="menu" role="none">
+<Ark
+  as="li"
+  class={slots.wrapper()}
+  data-part="item-wrapper"
+  data-scope="menu"
+  role="none"
+>
   <Ark
     as="button"
     {...rest}

@@ -6,4 +6,6 @@ type Props = DialogCloseTriggerProps;
 let { children, ...rest }: Props = $props();
 </script>
 
-<DialogPrimitive.CloseTrigger {...rest}> {@render children?.()} </DialogPrimitive.CloseTrigger>
+<DialogPrimitive.CloseTrigger {...rest}>
+  {@render children?.()}
+</DialogPrimitive.CloseTrigger>

@@ -8,11 +8,10 @@ import { cn } from "@pisagor/utils";
 import XIcon from "phosphor-svelte/lib/XIcon";
 import { setPopoverContentContext } from "./popover.context";
 
-type Props = Omit<ArkPopoverContentProps, "class"> &
-  {
+type Props = Omit<ArkPopoverContentProps, "class"> & {
   class?: string | undefined;
   showCloseButton?: boolean;
-  } & BasePopoverProps;
+} & BasePopoverProps;
 
 let {
   showCloseButton = false,
@@ -33,7 +32,10 @@ setPopoverContentContext({
 
 <Portal>
   <PopoverPrimitive.Positioner>
-    <PopoverPrimitive.Content {...rest} class={slots.base({ class: cn(className) })}>
+    <PopoverPrimitive.Content
+      {...rest}
+      class={slots.base({ class: cn(className) })}
+    >
       {@render children?.()}
       {#if showCloseButton}
         <PopoverPrimitive.CloseTrigger

@@ -5,12 +5,12 @@ import { sampleSvg } from "./helpers";
 </script>
 
 <DownloadTrigger
-      data={sampleSvg()}
-      fileName="icon.svg"
-      mimeType="image/svg+xml"
-    >
-      <Button size="lg" variant="outline">
-        <DownloadIcon />
-        Download SVG
-      </Button>
-    </DownloadTrigger>
+  data={sampleSvg()}
+  fileName="icon.svg"
+  mimeType="image/svg+xml"
+>
+  <Button size="lg" variant="outline">
+    <DownloadIcon />
+    Download SVG
+  </Button>
+</DownloadTrigger>

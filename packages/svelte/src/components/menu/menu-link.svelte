@@ -15,7 +15,13 @@ let { active = false, class: className, children, ...rest }: Props = $props();
 const { slots } = useMenu();
 </script>
 
-<Ark as="li" class={slots.wrapper()} data-part="item-wrapper" data-scope="menu" role="none">
+<Ark
+  as="li"
+  class={slots.wrapper()}
+  data-part="item-wrapper"
+  data-scope="menu"
+  role="none"
+>
   <Ark
     as="a"
     {...rest}

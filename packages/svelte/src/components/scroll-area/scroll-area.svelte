@@ -14,15 +14,17 @@ import ScrollAreaScrollbar from "./scroll-area-scrollbar.svelte";
 import ScrollAreaThumb from "./scroll-area-thumb.svelte";
 import ScrollAreaViewport from "./scroll-area-viewport.svelte";
 
-type Props = Omit<ScrollAreaRootProps, "class" | "children"> &
-  {
-    children?: Snippet;
-    class?: string | undefined;
-    classNames?: Partial<Record<ScrollAreaRecipeSlot, string>>;
-    scrollbarProps?: Omit<ScrollAreaScrollbarProps, "children" | "class" | "orientation">;
-    thumbProps?: Omit<ScrollAreaThumbProps, "children" | "class">;
-    viewportProps?: Omit<ScrollAreaViewportProps, "children" | "class">;
-  } & BaseScrollAreaProps;
+type Props = Omit<ScrollAreaRootProps, "class" | "children"> & {
+  children?: Snippet;
+  class?: string | undefined;
+  classNames?: Partial<Record<ScrollAreaRecipeSlot, string>>;
+  scrollbarProps?: Omit<
+    ScrollAreaScrollbarProps,
+    "children" | "class" | "orientation"
+  >;
+  thumbProps?: Omit<ScrollAreaThumbProps, "children" | "class">;
+  viewportProps?: Omit<ScrollAreaViewportProps, "children" | "class">;
+} & BaseScrollAreaProps;
 
 let {
   scrollFade,
@@ -40,10 +42,18 @@ let {
   <ScrollAreaViewport {...viewportProps} class={classNames?.viewport}>
     {@render children?.()}
   </ScrollAreaViewport>
-  <ScrollAreaScrollbar {...scrollbarProps} class={classNames?.scrollbar} orientation="vertical">
+  <ScrollAreaScrollbar
+    {...scrollbarProps}
+    class={classNames?.scrollbar}
+    orientation="vertical"
+  >
     <ScrollAreaThumb {...thumbProps} class={classNames?.thumb} />
   </ScrollAreaScrollbar>
-  <ScrollAreaScrollbar {...scrollbarProps} class={classNames?.scrollbar} orientation="horizontal">
+  <ScrollAreaScrollbar
+    {...scrollbarProps}
+    class={classNames?.scrollbar}
+    orientation="horizontal"
+  >
     <ScrollAreaThumb {...thumbProps} class={classNames?.thumb} />
   </ScrollAreaScrollbar>
   <ScrollAreaPrimitive.Corner />

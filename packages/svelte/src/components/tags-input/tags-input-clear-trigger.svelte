@@ -6,7 +6,9 @@ import { cn } from "@pisagor/utils";
 import XIcon from "phosphor-svelte/lib/XIcon";
 import { useTagsInput } from "./tags-input.context";
 
-type Props = Omit<TagsInputClearTriggerProps, "class"> & { class?: string | undefined };
+type Props = Omit<TagsInputClearTriggerProps, "class"> & {
+  class?: string | undefined;
+};
 
 let { class: className, children, ...rest }: Props = $props();
 const { slots } = useTagsInput();

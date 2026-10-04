@@ -3,11 +3,16 @@ import { Button, Card, Clipboard, Collapsible } from "@pisagor/svelte";
 </script>
 
 <Card class="w-80">
-  <Card.Header description="We'll help you get started" title="Getting started" />
+  <Card.Header
+    description="We'll help you get started"
+    title="Getting started"
+  />
   <Card.Content>
     <Collapsible>
       <Collapsible.Trigger>
-        {#snippet asChild(props)}
+        {#snippet asChild(
+  props,
+)}
           <Button {...props()} class="w-full" variant="outline">
             View details
             <Collapsible.Indicator />
@@ -21,7 +26,9 @@ import { Button, Card, Clipboard, Collapsible } from "@pisagor/svelte";
         </p>
         <Collapsible>
           <Collapsible.Trigger>
-            {#snippet asChild(props)}
+            {#snippet asChild(
+  props,
+)}
               <Button {...props()} class="w-full" size="sm" variant="outline">
                 Install dependencies
                 <Collapsible.Indicator />
@@ -29,17 +36,19 @@ import { Button, Card, Clipboard, Collapsible } from "@pisagor/svelte";
             {/snippet}
           </Collapsible.Trigger>
           <Collapsible.Content class="flex flex-col gap-2 p-2">
-            <p class="text-muted-foreground text-sm">Copy the following code:</p>
-            <pre class="relative rounded-md bg-muted p-2 text-muted-foreground text-xs">
-              <code>bun add ui</code>
+            <p class="text-muted-foreground text-sm">
+              Copy the following code:
+            </p>
+            <pre
+              class="relative rounded-md bg-muted p-2 text-muted-foreground text-xs"
+            ><code>bun add ui</code>
               <Clipboard
                 buttonSize="icon-sm"
                 buttonVariant="ghost"
                 class="absolute inset-e-1.5 top-0.5"
                 value="bun add ui"
                 variant="button"
-              />
-            </pre>
+              /></pre>
           </Collapsible.Content>
         </Collapsible>
       </Collapsible.Content>

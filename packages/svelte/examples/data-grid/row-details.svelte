@@ -6,6 +6,12 @@ import { allUsers, userColumns } from "./helpers";
 
 const columns = [...userColumns];
 let expanded = $state<ExpandedState>({});
+
+function onExpandedChange(
+  updater: ExpandedState | ((prev: ExpandedState) => ExpandedState),
+) {
+  expanded = typeof updater === "function" ? updater(expanded) : updater;
+}
 </script>
 
 <div class="flex w-full flex-col gap-3">
@@ -16,13 +22,13 @@ let expanded = $state<ExpandedState>({});
       features={dataGridFeatures}
       getRowCanExpand={() => true}
       getRowId={(row) => row.id}
-      onExpandedChange={(updater) => {
-        expanded = typeof updater === "function" ? updater(expanded) : updater;
-      }}
+      {onExpandedChange}
       state={{ expanded }}
     >
       <DataGrid.Toolbar>
-        <p class="font-medium text-sm">Click a row chevron pattern via expand state</p>
+        <p class="font-medium text-sm">
+          Click a row chevron pattern via expand state
+        </p>
       </DataGrid.Toolbar>
       <Table>
         <Table.Header>

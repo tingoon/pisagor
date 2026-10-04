@@ -38,7 +38,9 @@ const collection = createGridCollection({
       >
         {#each collection.items as item}
           <Listbox.Item {item}>
-            <Listbox.ItemText class="text-center text-xl">{item.label}</Listbox.ItemText>
+            <Listbox.ItemText class="text-center text-xl"
+              >{item.label}</Listbox.ItemText
+            >
           </Listbox.Item>
         {/each}
       </Listbox.Content>

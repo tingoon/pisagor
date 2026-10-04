@@ -5,11 +5,10 @@ import { sortableItemRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "svelte/elements";
 import { setSortableItemContext, useSortable } from "./sortable.context";
 
-type Props = Omit<HTMLAttributes<HTMLLIElement>, "class"> &
-  {
+type Props = Omit<HTMLAttributes<HTMLLIElement>, "class"> & {
   class?: string | undefined;
   value: string;
-  } & BaseSortableItemProps;
+} & BaseSortableItemProps;
 
 let {
   value,

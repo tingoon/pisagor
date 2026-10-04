@@ -12,11 +12,10 @@ type TabsPresetItem = {
   label: string;
   value: string;
 };
-type Props = Omit<TabsRootProps, "children" | "class"> &
-  {
-    class?: string | undefined;
-    items?: TabsPresetItem[];
-  } & BaseTabsProps;
+type Props = Omit<TabsRootProps, "children" | "class"> & {
+  class?: string | undefined;
+  items?: TabsPresetItem[];
+} & BaseTabsProps;
 
 let { variant, items, class: className, ...rest }: Props = $props();
 </script>
@@ -24,7 +23,9 @@ let { variant, items, class: className, ...rest }: Props = $props();
 <TabsRoot {...rest} class={className}>
   <TabsList {variant}>
     {#each items ?? [] as tab (tab.value)}
-      <TabsTrigger disabled={tab.disabled} value={tab.value}>{tab.label}</TabsTrigger>
+      <TabsTrigger disabled={tab.disabled} value={tab.value}
+        >{tab.label}</TabsTrigger
+      >
     {/each}
   </TabsList>
   {#each items ?? [] as tab (tab.value)}

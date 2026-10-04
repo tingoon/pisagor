@@ -8,7 +8,7 @@ type Props = {
   "aria-hidden"?: boolean | "true" | "false" | undefined;
   "aria-label"?: string | undefined;
   class?: string | undefined;
-  } & BaseSpinnerProps;
+} & BaseSpinnerProps;
 
 let {
   "aria-hidden": ariaHidden,

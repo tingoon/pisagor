@@ -6,12 +6,16 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { setToolbarContext } from "./toolbar.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "title"> &
-  {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "title"> & {
   class?: string | undefined;
-  } & BaseToolbarProps;
+} & BaseToolbarProps;
 
-let { children, recipe = toolbarRecipe, class: className, ...rest }: Props = $props();
+let {
+  children,
+  recipe = toolbarRecipe,
+  class: className,
+  ...rest
+}: Props = $props();
 const slots = $derived(recipe());
 setToolbarContext({
   get slots() {

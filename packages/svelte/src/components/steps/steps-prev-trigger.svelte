@@ -6,4 +6,6 @@ type Props = StepsPrevTriggerProps;
 let { children, ...rest }: Props = $props();
 </script>
 
-<StepsPrimitive.PrevTrigger {...rest}> {@render children?.()} </StepsPrimitive.PrevTrigger>
+<StepsPrimitive.PrevTrigger {...rest}>
+  {@render children?.()}
+</StepsPrimitive.PrevTrigger>

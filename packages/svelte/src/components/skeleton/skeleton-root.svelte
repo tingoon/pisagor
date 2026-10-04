@@ -5,13 +5,17 @@ import { skeletonRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> &
-  {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
   children?: import("svelte").Snippet;
   class?: string | undefined;
-  } & BaseSkeletonProps;
+} & BaseSkeletonProps;
 
-let { recipe = skeletonRecipe, class: className, children, ...rest }: Props = $props();
+let {
+  recipe = skeletonRecipe,
+  class: className,
+  children,
+  ...rest
+}: Props = $props();
 
 const slots = $derived(recipe());
 </script>

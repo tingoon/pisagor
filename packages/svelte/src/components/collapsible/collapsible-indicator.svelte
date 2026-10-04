@@ -13,7 +13,10 @@ let { class: className, children, ...rest }: Props = $props();
 const { slots } = useCollapsible();
 </script>
 
-<CollapsiblePrimitive.Indicator {...rest} class={slots.indicator({ class: cn(className) })}>
+<CollapsiblePrimitive.Indicator
+  {...rest}
+  class={slots.indicator({ class: cn(className) })}
+>
   {#if children}
     {@render children()}
   {:else}

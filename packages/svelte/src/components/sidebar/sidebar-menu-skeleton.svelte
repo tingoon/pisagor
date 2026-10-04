@@ -25,7 +25,10 @@ const ctx = useSidebar();
   {style}
 >
   {#if showIcon}
-    <Skeleton class={ctx.slots.menuSkeletonIcon()} data-sidebar="menu-skeleton-icon" />
+    <Skeleton
+      class={ctx.slots.menuSkeletonIcon()}
+      data-sidebar="menu-skeleton-icon"
+    />
   {/if}
   <Skeleton
     class={ctx.slots.menuSkeletonText()}

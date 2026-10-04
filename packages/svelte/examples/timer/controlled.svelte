@@ -32,15 +32,29 @@ let completed = $state(false);
         </Timer.Area>
         <Timer.Control>
           <Timer.Start>
-            {#snippet asChild(props)}
-              <Button {...props()} aria-label="Start" size="icon-sm" variant="ghost">
+            {#snippet asChild(
+  props,
+)}
+              <Button
+                {...props()}
+                aria-label="Start"
+                size="icon-sm"
+                variant="ghost"
+              >
                 <PlayIcon />
               </Button>
             {/snippet}
           </Timer.Start>
           <Timer.Reset>
-            {#snippet asChild(props)}
-              <Button {...props()} aria-label="Reset" size="icon-sm" variant="ghost">
+            {#snippet asChild(
+  props,
+)}
+              <Button
+                {...props()}
+                aria-label="Reset"
+                size="icon-sm"
+                variant="ghost"
+              >
                 <ArrowCounterClockwiseIcon />
               </Button>
             {/snippet}

@@ -6,12 +6,16 @@ import { fieldRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setFieldContext } from "./field.context";
 
-type Props = Omit<FieldsetRootProps, "class"> &
-  {
+type Props = Omit<FieldsetRootProps, "class"> & {
   class?: string | undefined;
-  } & BaseFieldProps;
+} & BaseFieldProps;
 
-let { recipe = fieldRecipe, class: className, children, ...rest }: Props = $props();
+let {
+  recipe = fieldRecipe,
+  class: className,
+  children,
+  ...rest
+}: Props = $props();
 const slots = $derived(recipe());
 setFieldContext({
   get slots() {

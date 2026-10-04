@@ -11,13 +11,21 @@ type Props = Omit<ArkProps, "class"> & {
   scrollFade?: boolean;
 };
 
-let { scrollFade = false, children, class: className, ...rest }: Props = $props();
+let {
+  scrollFade = false,
+  children,
+  class: className,
+  ...rest
+}: Props = $props();
 const ctx = useFloatingPanel();
 const slots = $derived(ctx?.slots ?? floatingPanelRecipe());
 </script>
 
 <ScrollArea {scrollFade}>
-  <FloatingPanelPrimitive.Body {...rest} class={slots.body({ class: cn(className) })}>
+  <FloatingPanelPrimitive.Body
+    {...rest}
+    class={slots.body({ class: cn(className) })}
+  >
     {@render children?.()}
   </FloatingPanelPrimitive.Body>
 </ScrollArea>

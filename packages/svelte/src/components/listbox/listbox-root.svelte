@@ -7,11 +7,13 @@ import { listboxRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setListboxContext } from "./listbox.context";
 
-type Props = Omit<ArkListboxRootProps<CollectionItem>, "class" | "onValueChange"> &
-  {
+type Props = Omit<
+  ArkListboxRootProps<CollectionItem>,
+  "class" | "onValueChange"
+> & {
   class?: string | undefined;
   onValueChange?: (value: string[]) => void;
-  } & BaseListboxProps;
+} & BaseListboxProps;
 
 let {
   recipe = listboxRecipe,

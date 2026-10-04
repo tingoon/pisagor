@@ -26,7 +26,9 @@ const presets = [
     <Card.Footer class="flex flex-wrap">
       {#each presets as preset}
         <Calendar.PresetTrigger value={preset.value}>
-          {#snippet asChild(props)}
+          {#snippet asChild(
+  props,
+)}
             <Button {...props()} class="flex-1" size="sm" variant="outline">
               {preset.label}
             </Button>

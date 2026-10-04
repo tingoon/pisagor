@@ -5,7 +5,9 @@ import ArrowSquareOutIcon from "phosphor-svelte/lib/ArrowSquareOutIcon";
 
 <Item.Group class="gap-2">
   <Item variant="muted">
-    {#snippet asChild(props)}
+    {#snippet asChild(
+  props,
+)}
       <a {...props()} href="https://example.com/docs">
         <Item.Content>
           <Item.Title>Visit our documentation</Item.Title>
@@ -17,7 +19,9 @@ import ArrowSquareOutIcon from "phosphor-svelte/lib/ArrowSquareOutIcon";
     {/snippet}
   </Item>
   <Item variant="outline">
-    {#snippet asChild(props)}
+    {#snippet asChild(
+  props,
+)}
       <a
         {...props()}
         href="https://example.com/resources"

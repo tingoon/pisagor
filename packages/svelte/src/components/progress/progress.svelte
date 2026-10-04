@@ -7,8 +7,7 @@ import { cn } from "@pisagor/utils";
 import type { Snippet } from "svelte";
 import { setProgressContext } from "./progress.context";
 
-type Props = Omit<ProgressRootProps, "class" | "children" | "value"> &
-  {
+type Props = Omit<ProgressRootProps, "class" | "children" | "value"> & {
   children?: Snippet;
   class?: string | undefined;
   classNames?: Partial<Record<ProgressRecipeSlot, string>>;
@@ -26,7 +25,7 @@ type Props = Omit<ProgressRootProps, "class" | "children" | "value"> &
    * @defaultValue 0
    */
   value?: number;
-  } & BaseProgressProps;
+} & BaseProgressProps;
 
 let {
   orientation = "horizontal",
@@ -63,14 +62,20 @@ setProgressContext({
         <span>{label}</span>
       {/if}
       {#if isValueVisible}
-        <ProgressPrimitive.ValueText class={slots.value({ class: cn(classNames?.value) })} />
+        <ProgressPrimitive.ValueText
+          class={slots.value({ class: cn(classNames?.value) })}
+        />
       {/if}
     </div>
   {/if}
 
   {@render children?.()}
 
-  <ProgressPrimitive.Track class={slots.track({ class: cn(classNames?.track) })}>
-    <ProgressPrimitive.Range class={slots.range({ class: cn(classNames?.range) })} />
+  <ProgressPrimitive.Track
+    class={slots.track({ class: cn(classNames?.track) })}
+  >
+    <ProgressPrimitive.Range
+      class={slots.range({ class: cn(classNames?.range) })}
+    />
   </ProgressPrimitive.Track>
 </ProgressPrimitive.Root>

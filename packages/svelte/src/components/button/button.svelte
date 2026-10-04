@@ -45,7 +45,9 @@ const slots = $derived(recipe({ clickEffect, loading, pill, size, variant }));
   type={type ?? "button"}
 >
   {#if loading}
-    <span aria-hidden="true" class={slots.hidden()}> {@render children?.()} </span>
+    <span aria-hidden="true" class={slots.hidden()}>
+      {@render children?.()}
+    </span>
     <span class={slots.srOnly()}> {@render children?.()} </span>
     <span class={slots.spinner()}>
       <Spinner aria-hidden="true" />

@@ -2,7 +2,11 @@
 import type { NumberInputRootProps } from "@ark-ui/svelte/number-input";
 import { NumberInput as NumberInputPrimitive } from "@ark-ui/svelte/number-input";
 import type { NumberInputProps as BaseNumberInputProps } from "@pisagor/props";
-import { buttonRecipe, formControlGroupShellRecipe, numberInputRecipe } from "@pisagor/recipes";
+import {
+  buttonRecipe,
+  formControlGroupShellRecipe,
+  numberInputRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import MinusIcon from "phosphor-svelte/lib/MinusIcon";
 import PlusIcon from "phosphor-svelte/lib/PlusIcon";
@@ -12,8 +16,10 @@ import { setNumberInputContext } from "./number-input.context";
 
 type FormControlVariant = "primary" | "secondary";
 
-type Props = Omit<NumberInputRootProps, "class" | "children" | "onValueChange"> &
-  {
+type Props = Omit<
+  NumberInputRootProps,
+  "class" | "children" | "onValueChange"
+> & {
   children?: import("svelte").Snippet;
   clearable?: boolean;
   class?: string | undefined;
@@ -21,7 +27,7 @@ type Props = Omit<NumberInputRootProps, "class" | "children" | "onValueChange"> 
   placeholder?: string | null | undefined;
   size?: "sm" | "md" | "lg";
   variant?: FormControlVariant;
-  } & BaseNumberInputProps;
+} & BaseNumberInputProps;
 
 let {
   size = "md",
@@ -39,7 +45,10 @@ const surfaceVariant = useFormControlSurface();
 const variant = $derived(variantProp ?? ("primary" as FormControlVariant));
 const slots = $derived(recipe());
 const triggerClass = $derived(
-  cn(buttonRecipe({ clickEffect: false, variant: "ghost" }).base(), "rounded-none"),
+  cn(
+    buttonRecipe({ clickEffect: false, variant: "ghost" }).base(),
+    "rounded-none",
+  ),
 );
 
 setNumberInputContext({
@@ -65,7 +74,10 @@ function handleValueChange(
     {@render children()}
   {:else}
     <NumberInputPrimitive.Control
-      class={cn(slots.control(), formControlGroupShellRecipe({ size: "md", surfaceVariant, variant }))}
+      class={cn(
+  slots.control(),
+  formControlGroupShellRecipe({ size: "md", surfaceVariant, variant }),
+)}
       data-clearable={clearable || undefined}
       data-variant={variant}
     >
@@ -83,7 +95,10 @@ function handleValueChange(
         {#snippet render(
   api,
 )}
-          {@const hasValue = api().value !== undefined && api().value !== null && String(api().value).length > 0}
+          {const hasValue =
+            api().value !== undefined &&
+            api().value !== null &&
+            String(api().value).length > 0}
           {#if clearable && hasValue}
             <InputClearButton
               class={slots.clearTrigger()}

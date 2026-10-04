@@ -20,7 +20,14 @@ type Props = Omit<
   on?: Snippet;
 };
 
-let { placement = "start", children, off, on, class: className, ...rest }: Props = $props();
+let {
+  placement = "start",
+  children,
+  off,
+  on,
+  class: className,
+  ...rest
+}: Props = $props();
 
 const ctx = useAppShell();
 const open = $derived(
@@ -39,9 +46,7 @@ const open = $derived(
   {on}
   {open}
   {placement}
-  toggle={() => {
-  ctx.panelStates[placement]?.toggle();
-}}
+  toggle={() => ctx.panelStates[placement]?.toggle()}
 >
   {#snippet defaultOff()}
     <ArrowsOutLineHorizontalIcon />

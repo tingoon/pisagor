@@ -7,12 +7,11 @@ import type { HTMLAttributes } from "svelte/elements";
 
 const SKIP_NAV_ID = "skip-nav-content";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "id"> &
-  {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class" | "id"> & {
   children?: import("svelte").Snippet;
   class?: string | undefined;
   id?: string;
-  } & BaseSkipNavProps;
+} & BaseSkipNavProps;
 
 let {
   id = SKIP_NAV_ID,

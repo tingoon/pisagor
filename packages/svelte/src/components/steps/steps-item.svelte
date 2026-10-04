@@ -6,12 +6,16 @@ import { stepsItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setStepsItemContext } from "./steps.context";
 
-type Props = Omit<StepsItemProps, "class"> &
-  {
+type Props = Omit<StepsItemProps, "class"> & {
   class?: string | undefined;
-  } & BaseStepsItemProps;
+} & BaseStepsItemProps;
 
-let { recipe = stepsItemRecipe, class: className, children, ...rest }: Props = $props();
+let {
+  recipe = stepsItemRecipe,
+  class: className,
+  children,
+  ...rest
+}: Props = $props();
 const slots = $derived(recipe());
 
 setStepsItemContext({

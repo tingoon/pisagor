@@ -9,7 +9,12 @@ type Props = Omit<FieldsetLegendProps, "class"> & {
   variant?: "legend" | "label";
 };
 
-let { variant = "legend", class: className, children, ...rest }: Props = $props();
+let {
+  variant = "legend",
+  class: className,
+  children,
+  ...rest
+}: Props = $props();
 const slots = useFieldSlots();
 </script>
 

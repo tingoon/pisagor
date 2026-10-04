@@ -16,7 +16,7 @@ type Props = {
   orientation?: "horizontal" | "vertical";
   value?: string | null;
   children?: Snippet;
-  } & BaseRadioGroupProps;
+} & BaseRadioGroupProps;
 
 let { items = [], children, ...rest }: Props = $props();
 </script>

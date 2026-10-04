@@ -6,10 +6,9 @@ import { dropdownMenuItemRecipe, dropdownMenuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { useDropdownMenu } from "./dropdown-menu.context";
 
-type Props = Omit<MenuItemProps, "class"> &
-  {
-    class?: string | undefined;
-  } & BaseDropdownMenuItemProps;
+type Props = Omit<MenuItemProps, "class"> & {
+  class?: string | undefined;
+} & BaseDropdownMenuItemProps;
 
 let {
   variant = "default",
@@ -25,7 +24,9 @@ const menuSlots = $derived(context?.slots ?? dropdownMenuRecipe());
 
 <MenuPrimitive.Item
   {...rest}
-  class={recipe({ variant }).base({ class: menuSlots.quickItem({ class: cn(className) }) })}
+  class={recipe({ variant }).base({
+  class: menuSlots.quickItem({ class: cn(className) }),
+})}
 >
   {@render children?.()}
 </MenuPrimitive.Item>

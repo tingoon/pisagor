@@ -16,4 +16,6 @@ setFloatingPanelContext({
 });
 </script>
 
-<FloatingPanelPrimitive.Root {...rest}> {@render children?.()} </FloatingPanelPrimitive.Root>
+<FloatingPanelPrimitive.Root {...rest}>
+  {@render children?.()}
+</FloatingPanelPrimitive.Root>

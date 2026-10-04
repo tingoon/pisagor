@@ -13,7 +13,10 @@ let { children, class: className, ...rest }: Props = $props();
 const { slots } = useAccordionItem();
 </script>
 
-<AccordionPrimitive.ItemTrigger {...rest} class={slots.trigger({ class: cn(className) })}>
+<AccordionPrimitive.ItemTrigger
+  {...rest}
+  class={slots.trigger({ class: cn(className) })}
+>
   {@render children?.()}
   <AccordionPrimitive.ItemIndicator>
     <CaretDownIcon class={slots.indicator()} />

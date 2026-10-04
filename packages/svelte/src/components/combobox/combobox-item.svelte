@@ -7,12 +7,16 @@ import { cn } from "@pisagor/utils";
 import CheckIcon from "phosphor-svelte/lib/CheckIcon";
 import { useComboboxRoot } from "./combobox.context";
 
-type Props = Omit<ArkItemProps, "class"> &
-  {
-    class?: string | undefined;
-  } & BaseComboboxProps;
+type Props = Omit<ArkItemProps, "class"> & {
+  class?: string | undefined;
+} & BaseComboboxProps;
 
-let { showIndicator = true, children, class: className, ...rest }: Props = $props();
+let {
+  showIndicator = true,
+  children,
+  class: className,
+  ...rest
+}: Props = $props();
 const ctx = useComboboxRoot();
 const slots = $derived(ctx?.slots ?? comboboxRecipe());
 </script>

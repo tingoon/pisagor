@@ -7,13 +7,17 @@ import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { setNavigationMenuContext } from "./navigation-menu.context";
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "class"> &
-  {
+type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & {
   children?: Snippet;
   class?: string | undefined;
-  } & BaseNavigationMenuProps;
+} & BaseNavigationMenuProps;
 
-let { recipe = navigationMenuRecipe, class: className, children, ...rest }: Props = $props();
+let {
+  recipe = navigationMenuRecipe,
+  class: className,
+  children,
+  ...rest
+}: Props = $props();
 const slots = $derived(recipe());
 setNavigationMenuContext({
   get slots() {

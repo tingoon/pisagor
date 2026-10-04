@@ -2,4 +2,4 @@
 import { AvatarGroup } from "@pisagor/svelte";
 </script>
 
-<AvatarGroup max={4} users={users} />
+<AvatarGroup max={4} {users} />

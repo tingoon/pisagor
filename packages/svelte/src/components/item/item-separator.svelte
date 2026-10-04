@@ -6,7 +6,7 @@ import Separator from "../separator/separator.svelte";
 
 type Props = {
   class?: string | undefined;
-  } & BaseItemProps;
+} & BaseItemProps;
 
 let { recipe = itemRecipe, class: className, ...rest }: Props = $props();
 

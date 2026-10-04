@@ -50,16 +50,35 @@ const addLog = (message: string) => {
     {steps}
   >
     <Tour.Trigger>
-      {#snippet asChild(props)}
+      {#snippet asChild(
+  props,
+)}
         <Button {...props()} variant="outline">Start tour</Button>
       {/snippet}
     </Tour.Trigger>
     <div class="flex flex-wrap gap-2">
-      <div class="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium" id="event-1">Step 1</div>
-      <div class="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium" id="event-2">Step 2</div>
-      <div class="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium" id="event-3">Step 3</div>
+      <div
+        class="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium"
+        id="event-1"
+      >
+        Step 1
+      </div>
+      <div
+        class="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium"
+        id="event-2"
+      >
+        Step 2
+      </div>
+      <div
+        class="flex items-center justify-center rounded-md border bg-popover px-6 py-4 font-medium"
+        id="event-3"
+      >
+        Step 3
+      </div>
     </div>
-    <div class="flex h-32 flex-col gap-1 overflow-y-auto rounded-md border bg-muted p-3 font-mono text-muted-foreground text-xs">
+    <div
+      class="flex h-32 flex-col gap-1 overflow-y-auto rounded-md border bg-muted p-3 font-mono text-muted-foreground text-xs"
+    >
       <strong>Event Log:</strong>
       {#if logs.length === 0}
         <span>Start the tour to see events</span>

@@ -6,17 +6,16 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAnchorAttributes } from "svelte/elements";
 import { useSidebar } from "./sidebar.context";
 
-type Props = Omit<HTMLAnchorAttributes, "class"> &
-  {
-    children?: import("svelte").Snippet;
-    class?: string | undefined;
-    isActive?: boolean;
-    /**
-     * Button style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
-     * @defaultValue buttonRecipe
-     */
-    buttonRecipe?: typeof buttonRecipe;
-  } & BaseButtonProps;
+type Props = Omit<HTMLAnchorAttributes, "class"> & {
+  children?: import("svelte").Snippet;
+  class?: string | undefined;
+  isActive?: boolean;
+  /**
+   * Button style recipe. Defaults to `buttonRecipe` from `@pisagor/recipes/button`.
+   * @defaultValue buttonRecipe
+   */
+  buttonRecipe?: typeof buttonRecipe;
+} & BaseButtonProps;
 
 let {
   size = "md",

@@ -9,7 +9,10 @@ const api = useColorPickerContext();
 
 const visible = $derived.by(() => {
   if (!clearable) return false;
-  const controlProps = api().getControlProps() as { disabled?: boolean; readOnly?: boolean };
+  const controlProps = api().getControlProps() as {
+    disabled?: boolean;
+    readOnly?: boolean;
+  };
   if (controlProps.disabled || controlProps.readOnly) return false;
   return api().value.getChannelValue("alpha") !== 0;
 });

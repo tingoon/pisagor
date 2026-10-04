@@ -7,4 +7,6 @@ type Props = RadioGroupLabelProps;
 let { children, ...rest }: Props = $props();
 </script>
 
-<RadioGroupPrimitive.Label {...rest}> {@render children?.()} </RadioGroupPrimitive.Label>
+<RadioGroupPrimitive.Label {...rest}>
+  {@render children?.()}
+</RadioGroupPrimitive.Label>

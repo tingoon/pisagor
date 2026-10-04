@@ -61,7 +61,9 @@ const addItem = () => {
 <div class="flex flex-col gap-2">
   <Tour {steps}>
     <Tour.Trigger>
-      {#snippet asChild(props)}
+      {#snippet asChild(
+  props,
+)}
         <Button {...props()} variant="outline">Start tour</Button>
       {/snippet}
     </Tour.Trigger>

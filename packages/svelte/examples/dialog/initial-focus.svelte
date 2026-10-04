@@ -16,7 +16,10 @@ const initialFocusEl = () =>
       <Dialog.Content>
         <Dialog.Header>
           <Dialog.Title>Edit profile</Dialog.Title>
-          <Dialog.Description>The first input will be focused when the dialog opens.</Dialog.Description>
+          <Dialog.Description
+            >The first input will be focused when the dialog
+            opens.</Dialog.Description
+          >
         </Dialog.Header>
         <Dialog.Body>
           <Field.Group>

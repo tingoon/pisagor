@@ -17,11 +17,15 @@ const collection = createListCollection({
 
 <FloatingPanel defaultSize={{ height: 300, width: 360 }}>
   <FloatingPanel.Trigger>
-    {#snippet asChild(props)}
+    {#snippet asChild(
+  props,
+)}
       <Button {...props()} variant="outline">Open</Button>
     {/snippet}
   </FloatingPanel.Trigger>
-  <FloatingPanel.Content class="[--space:--spacing(3)] sm:[--space:--spacing(6)]">
+  <FloatingPanel.Content
+    class="[--space:--spacing(3)] sm:[--space:--spacing(6)]"
+  >
     <FloatingPanel.Header>
       <GearSixIcon />
       <FloatingPanel.Title>Settings</FloatingPanel.Title>
@@ -30,7 +34,9 @@ const collection = createListCollection({
         <FloatingPanel.Maximize />
         <FloatingPanel.Restore />
         <FloatingPanel.CloseTrigger>
-          {#snippet asChild(props)}
+          {#snippet asChild(
+  props,
+)}
             <Button {...props()} aria-label="Close" size="icon-xs">
               <XIcon aria-hidden />
             </Button>

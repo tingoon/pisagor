@@ -7,12 +7,11 @@ import { cn } from "@pisagor/utils";
 import XIcon from "phosphor-svelte/lib/XIcon";
 import { useDialog } from "./dialog.context";
 
-type Props = Omit<ArkDialogContentProps, "class"> &
-  {
-    bottomStickOnMobile?: boolean;
-    class?: string | undefined;
-    showCloseButton?: boolean;
-  } & BaseDialogProps;
+type Props = Omit<ArkDialogContentProps, "class"> & {
+  bottomStickOnMobile?: boolean;
+  class?: string | undefined;
+  showCloseButton?: boolean;
+} & BaseDialogProps;
 
 let {
   size = "md",

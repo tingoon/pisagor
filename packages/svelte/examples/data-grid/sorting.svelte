@@ -15,15 +15,19 @@ const columns = [
 ];
 
 let sorting = $state<SortingState>([{ desc: false, id: "name" }]);
+
+function onSortingChange(
+  updater: SortingState | ((prev: SortingState) => SortingState),
+) {
+  sorting = typeof updater === "function" ? updater(sorting) : updater;
+}
 </script>
 
 <DataGrid
   {columns}
   {data}
   features={dataGridFeatures}
-  onSortingChange={(updater) => {
-    sorting = typeof updater === "function" ? updater(sorting) : updater;
-  }}
+  {onSortingChange}
   {sorting}
 >
   <Table>

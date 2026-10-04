@@ -5,7 +5,9 @@ import { Button, Collapsible } from "@pisagor/svelte";
 <div>
   <Collapsible disabled>
     <Collapsible.Trigger>
-      {#snippet asChild(props)}
+      {#snippet asChild(
+  props,
+)}
         <Button {...props()} class="w-full" variant="outline">
           Disabled collapsible
           <Collapsible.Indicator />

@@ -6,12 +6,16 @@ import { tabsRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setTabsContext } from "./tabs.context";
 
-type Props = Omit<TabsRootProps, "class"> &
-  {
+type Props = Omit<TabsRootProps, "class"> & {
   class?: string | undefined;
-  } & BaseTabsProps;
+} & BaseTabsProps;
 
-let { children, recipe = tabsRecipe, class: className, ...rest }: Props = $props();
+let {
+  children,
+  recipe = tabsRecipe,
+  class: className,
+  ...rest
+}: Props = $props();
 const slots = $derived(recipe());
 
 setTabsContext({

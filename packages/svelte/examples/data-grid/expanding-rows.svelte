@@ -34,6 +34,12 @@ const columns = [
 ];
 
 let expanded = $state<ExpandedState>({ eng: true });
+
+function onExpandedChange(
+  updater: ExpandedState | ((prev: ExpandedState) => ExpandedState),
+) {
+  expanded = typeof updater === "function" ? updater(expanded) : updater;
+}
 </script>
 
 <div class="flex w-full flex-col gap-3">
@@ -44,33 +50,31 @@ let expanded = $state<ExpandedState>({ eng: true });
       features={dataGridFeatures}
       getRowId={(row) => row.id}
       getSubRows={(row) => row.subRows}
-      onExpandedChange={(updater) => {
-        expanded = typeof updater === "function" ? updater(expanded) : updater;
-      }}
+      {onExpandedChange}
       state={{ expanded }}
     >
       <DataGrid.Toolbar>
         <p class="font-medium text-sm">Expandable org tree</p>
       </DataGrid.Toolbar>
-  <Table>
-    <Table.Header>
-      <DataGrid.Header>
-        <DataGrid.HeaderRow>
-          <DataGrid.Head />
-        </DataGrid.HeaderRow>
-      </DataGrid.Header>
-    </Table.Header>
-    <Table.Body>
-      <DataGrid.Body>
-        {#snippet empty()}
-          <DataGrid.Empty />
-        {/snippet}
-        <DataGrid.Row>
-          <DataGrid.Cell />
-        </DataGrid.Row>
-      </DataGrid.Body>
-    </Table.Body>
-  </Table>
+      <Table>
+        <Table.Header>
+          <DataGrid.Header>
+            <DataGrid.HeaderRow>
+              <DataGrid.Head />
+            </DataGrid.HeaderRow>
+          </DataGrid.Header>
+        </Table.Header>
+        <Table.Body>
+          <DataGrid.Body>
+            {#snippet empty()}
+              <DataGrid.Empty />
+            {/snippet}
+            <DataGrid.Row>
+              <DataGrid.Cell />
+            </DataGrid.Row>
+          </DataGrid.Body>
+        </Table.Body>
+      </Table>
     </DataGrid>
   </div>
 </div>

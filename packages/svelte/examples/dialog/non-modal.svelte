@@ -14,12 +14,14 @@ import { Button, Dialog } from "@pisagor/svelte";
         <Dialog.Header>
           <Dialog.Title>Non-modal dialog</Dialog.Title>
           <Dialog.Description>
-            This is a non-modal dialog. You can interact with elements outside the dialog.
+            This is a non-modal dialog. You can interact with elements outside
+            the dialog.
           </Dialog.Description>
         </Dialog.Header>
         <Dialog.Body>
           <p class="text-muted-foreground text-sm">
-            Non-modal dialogs allow interaction with elements outside the dialog. Focus trapping and scroll prevention are turned off.
+            Non-modal dialogs allow interaction with elements outside the
+            dialog. Focus trapping and scroll prevention are turned off.
           </p>
         </Dialog.Body>
         <Dialog.Footer>

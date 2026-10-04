@@ -8,7 +8,12 @@ import ArrowUpIcon from "phosphor-svelte/lib/ArrowUpIcon";
 
 const initialItems = [
   { group: "App", label: "Settings", shortcut: "⌘,", value: "settings" },
-  { group: "App", label: "Keyboard Shortcuts", shortcut: "⌘K", value: "shortcuts" },
+  {
+    group: "App",
+    label: "Keyboard Shortcuts",
+    shortcut: "⌘K",
+    value: "shortcuts",
+  },
   { group: "App", label: "Help", shortcut: "⌘?", value: "help" },
 ];
 const { contains } = useFilter({ sensitivity: "base" });
@@ -19,7 +24,10 @@ const { collection, filter } = useListCollection({
 });
 </script>
 
-<Command {collection} onInputValueChange={({ inputValue }) => filter(inputValue)}>
+<Command
+  {collection}
+  onInputValueChange={({ inputValue }) => filter(inputValue)}
+>
   <Command.Input placeholder="Search..." />
   <Command.Content>
     <Command.Empty />

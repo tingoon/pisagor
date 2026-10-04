@@ -6,10 +6,9 @@ import { carouselRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setCarouselContext } from "./carousel.context";
 
-type Props = Omit<ArkRootProps, "class"> &
-  {
+type Props = Omit<ArkRootProps, "class"> & {
   class?: string | undefined;
-  } & BaseCarouselProps;
+} & BaseCarouselProps;
 
 let {
   children,
@@ -27,6 +26,10 @@ setCarouselContext({
 });
 </script>
 
-<CarouselPrimitive.Root {...rest} class={slots.base({ class: cn(className) })} {spacing}>
+<CarouselPrimitive.Root
+  {...rest}
+  class={slots.base({ class: cn(className) })}
+  {spacing}
+>
   {@render children?.()}
 </CarouselPrimitive.Root>

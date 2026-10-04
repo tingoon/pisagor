@@ -6,15 +6,15 @@ const swatches = ["#0485F7", "#EF4444", "#F59E0B", "#10B981"];
 </script>
 
 <ColorPicker inline>
-      <ColorPicker.SwatchGroup>
-        {#each swatches as color}
-<ColorPicker.SwatchTrigger value={color}>
-            <ColorPicker.Swatch value={color}>
-              <ColorPicker.SwatchIndicator>
-                <SparkleIcon />
-              </ColorPicker.SwatchIndicator>
-            </ColorPicker.Swatch>
-          </ColorPicker.SwatchTrigger>
-{/each}
-      </ColorPicker.SwatchGroup>
-    </ColorPicker>
+  <ColorPicker.SwatchGroup>
+    {#each swatches as color}
+      <ColorPicker.SwatchTrigger value={color}>
+        <ColorPicker.Swatch value={color}>
+          <ColorPicker.SwatchIndicator>
+            <SparkleIcon />
+          </ColorPicker.SwatchIndicator>
+        </ColorPicker.Swatch>
+      </ColorPicker.SwatchTrigger>
+    {/each}
+  </ColorPicker.SwatchGroup>
+</ColorPicker>

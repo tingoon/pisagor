@@ -6,12 +6,16 @@ import { fileUploadItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setFileUploadItemContext } from "./file-upload.context";
 
-type Props = Omit<FileUploadItemProps, "class"> &
-  {
+type Props = Omit<FileUploadItemProps, "class"> & {
   class?: string | undefined;
-  } & BaseFileUploadItemProps;
+} & BaseFileUploadItemProps;
 
-let { children, recipe = fileUploadItemRecipe, class: className, ...rest }: Props = $props();
+let {
+  children,
+  recipe = fileUploadItemRecipe,
+  class: className,
+  ...rest
+}: Props = $props();
 
 const slots = $derived(recipe());
 setFileUploadItemContext({
@@ -21,6 +25,9 @@ setFileUploadItemContext({
 });
 </script>
 
-<FileUploadPrimitive.Item {...rest} class={slots.base({ class: cn(className) })}>
+<FileUploadPrimitive.Item
+  {...rest}
+  class={slots.base({ class: cn(className) })}
+>
   {@render children?.()}
 </FileUploadPrimitive.Item>

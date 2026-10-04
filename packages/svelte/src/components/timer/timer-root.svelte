@@ -16,12 +16,11 @@ import TimerSeparator from "./timer-separator.svelte";
 
 type TimerUnit = "hours" | "minutes" | "seconds";
 
-type Props = Omit<ArkRootProps, "class"> &
-  {
+type Props = Omit<ArkRootProps, "class"> & {
   class?: string | undefined;
   isControlsVisible?: boolean;
   units?: TimerUnit[];
-  } & BaseTimerProps;
+} & BaseTimerProps;
 
 let {
   isControlsVisible,

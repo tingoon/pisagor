@@ -5,13 +5,17 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useCard } from "./card.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> &
-  {
-    children?: import("svelte").Snippet;
-    class?: string | undefined;
-  } & BaseCardProps;
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+  children?: import("svelte").Snippet;
+  class?: string | undefined;
+} & BaseCardProps;
 
-let { variant = "default", children, class: className, ...rest }: Props = $props();
+let {
+  variant = "default",
+  children,
+  class: className,
+  ...rest
+}: Props = $props();
 
 const { slots } = useCard();
 </script>

@@ -4,8 +4,15 @@ import { cn } from "@pisagor/utils";
 import type { HTMLAttributes } from "svelte/elements";
 import { useNavbar } from "./navbar.context";
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & { class?: string | undefined };
-let { "aria-label": ariaLabel = "Main", class: className, children, ...rest }: Props = $props();
+type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & {
+  class?: string | undefined;
+};
+let {
+  "aria-label": ariaLabel = "Main",
+  class: className,
+  children,
+  ...rest
+}: Props = $props();
 const { slots } = useNavbar();
 </script>
 

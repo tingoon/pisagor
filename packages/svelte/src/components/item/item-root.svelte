@@ -7,11 +7,10 @@ import type { HTMLAttributes } from "svelte/elements";
 import { setItemContext } from "./item.context";
 import { useItemGroup } from "./item-group.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> &
-  {
-    children?: import("svelte").Snippet;
-    class?: string | undefined;
-  } & BaseItemProps;
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
+  children?: import("svelte").Snippet;
+  class?: string | undefined;
+} & BaseItemProps;
 
 let {
   variant: variantProp,

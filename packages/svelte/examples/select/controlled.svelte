@@ -15,9 +15,7 @@ let value = $state<string[]>(["react"]);
 
 <Select.Root
   {collection}
-  onValueChange={(next) => {
-    value = Array.isArray(next) ? next : [next];
-  }}
+  onValueChange={(next) => (value = Array.isArray(next) ? next : [next])}
   {value}
 >
   <Select.Trigger>

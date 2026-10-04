@@ -6,12 +6,16 @@ import { resizableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setResizableContext } from "./resizable.context";
 
-type Props = Omit<SplitterRootProps, "class"> &
-  {
+type Props = Omit<SplitterRootProps, "class"> & {
   class?: string | undefined;
-  } & BaseResizableProps;
+} & BaseResizableProps;
 
-let { children, recipe = resizableRecipe, class: className, ...rest }: Props = $props();
+let {
+  children,
+  recipe = resizableRecipe,
+  class: className,
+  ...rest
+}: Props = $props();
 const slots = $derived(recipe());
 setResizableContext({
   get slots() {

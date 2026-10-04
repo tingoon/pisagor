@@ -6,10 +6,9 @@ import { bottomNavigationItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setBottomNavigationItemContext } from "./bottom-navigation.context";
 
-type Props = Omit<TabTriggerProps, "class"> &
-  {
+type Props = Omit<TabTriggerProps, "class"> & {
   class?: string | undefined;
-  } & BaseBottomNavigationItemProps;
+} & BaseBottomNavigationItemProps;
 
 let {
   children,

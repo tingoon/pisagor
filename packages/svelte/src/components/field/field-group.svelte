@@ -7,13 +7,17 @@ import type { Snippet } from "svelte";
 import type { HTMLAttributes } from "svelte/elements";
 import { setFieldContext } from "./field.context";
 
-type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> &
-  {
+type Props = Omit<HTMLAttributes<HTMLDivElement>, "class"> & {
   children?: Snippet;
   class?: string | undefined;
-  } & BaseFieldProps;
+} & BaseFieldProps;
 
-let { recipe = fieldRecipe, class: className, children, ...rest }: Props = $props();
+let {
+  recipe = fieldRecipe,
+  class: className,
+  children,
+  ...rest
+}: Props = $props();
 const slots = $derived(recipe());
 setFieldContext({
   get slots() {

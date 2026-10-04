@@ -12,6 +12,9 @@ let { class: className, children, ...rest }: Props = $props();
 const { slots } = useTourContext();
 </script>
 
-<TourPrimitive.Description {...rest} class={slots.description({ class: cn(className) })}>
+<TourPrimitive.Description
+  {...rest}
+  class={slots.description({ class: cn(className) })}
+>
   {@render children?.()}
 </TourPrimitive.Description>

@@ -1,5 +1,10 @@
 <script lang="ts">
-import { ColorPicker, InputGroup, parseColor, Separator } from "@pisagor/svelte";
+import {
+  ColorPicker,
+  InputGroup,
+  parseColor,
+  Separator,
+} from "@pisagor/svelte";
 import { PercentIcon } from "@pisagor/svelte/icons";
 </script>
 
@@ -12,13 +17,17 @@ import { PercentIcon } from "@pisagor/svelte/icons";
         </InputGroup.Addon>
       </ColorPicker.Trigger>
       <ColorPicker.Input channel="hex" class="flex-1">
-        {#snippet asChild(props)}
+        {#snippet asChild(
+  props,
+)}
           <InputGroup.Input {...props()} />
         {/snippet}
       </ColorPicker.Input>
       <Separator orientation="vertical" />
       <ColorPicker.Input channel="alpha">
-        {#snippet asChild(props)}
+        {#snippet asChild(
+  props,
+)}
           <InputGroup.Input
             {...props()}
             aria-label="Opacity percentage"

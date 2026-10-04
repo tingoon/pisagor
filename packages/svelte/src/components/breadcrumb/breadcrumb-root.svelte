@@ -5,10 +5,9 @@ import { breadcrumbRecipe } from "@pisagor/recipes";
 import type { HTMLAttributes } from "svelte/elements";
 import { setBreadcrumbContext } from "./breadcrumb.context";
 
-type Props = Omit<HTMLAttributes<HTMLElement>, "class"> &
-  {
+type Props = Omit<HTMLAttributes<HTMLElement>, "class"> & {
   class?: string | undefined;
-  } & BaseBreadcrumbProps;
+} & BaseBreadcrumbProps;
 
 let {
   "aria-label": ariaLabel = "Breadcrumb",

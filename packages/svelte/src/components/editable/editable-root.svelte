@@ -6,14 +6,16 @@ import { editableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { setEditableContext } from "./editable.context";
 
-type Props = Omit<ArkEditableRootProps, "class" | "onValueChange" | "value" | "defaultValue"> &
-  {
+type Props = Omit<
+  ArkEditableRootProps,
+  "class" | "onValueChange" | "value" | "defaultValue"
+> & {
   class?: string | undefined;
   defaultValue?: string;
   onValueChange?: (value: string) => void;
   orientation?: "horizontal" | "vertical";
   value?: string;
-  } & BaseEditableProps;
+} & BaseEditableProps;
 
 let {
   orientation = "horizontal",

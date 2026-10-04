@@ -6,4 +6,6 @@ type Props = PopoverTriggerProps;
 let { children, ...rest }: Props = $props();
 </script>
 
-<PopoverPrimitive.Trigger {...rest}> {@render children?.()} </PopoverPrimitive.Trigger>
+<PopoverPrimitive.Trigger {...rest}>
+  {@render children?.()}
+</PopoverPrimitive.Trigger>

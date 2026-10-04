@@ -34,7 +34,9 @@ const handleValueChange = (newValue: string | string[]) => {
 <Select.Root {collection} multiple onValueChange={handleValueChange} {value}>
   <Select.Trigger>
     <Select.ValueText class="capitalize">
-      <Select.Context>{({ value: current }) => renderValue(current)}</Select.Context>
+      <Select.Context
+        >{({ value: current }) => renderValue(current)}</Select.Context
+      >
     </Select.ValueText>
   </Select.Trigger>
   <Select.Content>

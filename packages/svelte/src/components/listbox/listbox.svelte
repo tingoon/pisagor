@@ -8,7 +8,10 @@ import ListboxRoot from "./listbox-root.svelte";
 
 type PresetItem = { disabled?: boolean; label: string; value: string };
 
-type Props = Omit<ComponentProps<typeof ListboxRoot>, "children" | "collection"> & {
+type Props = Omit<
+  ComponentProps<typeof ListboxRoot>,
+  "children" | "collection"
+> & {
   collection?: ComponentProps<typeof ListboxRoot>["collection"];
   items?: PresetItem[];
 };
