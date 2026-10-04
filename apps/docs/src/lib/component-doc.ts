@@ -412,3 +412,42 @@ export function getExampleExport(
   }
   return Comp;
 }
+
+/** Static paths for standalone example preview pages (`/preview/…`). */
+export function listExamplePreviewStaticPaths(): {
+  params: {
+    framework: Framework;
+    kind: ComponentDocKind;
+    id: string;
+    example: string;
+  };
+}[] {
+  const frameworks: Framework[] = ["astro", "react", "solid", "svelte", "vue"];
+  const kinds: ComponentDocKind[] = ["component", "form"];
+  const paths: {
+    params: {
+      framework: Framework;
+      kind: ComponentDocKind;
+      id: string;
+      example: string;
+    };
+  }[] = [];
+
+  for (const framework of frameworks) {
+    for (const kind of kinds) {
+      for (const id of listComponentIds(framework, kind)) {
+        let examples: ExampleModule;
+        try {
+          examples = loadExamples(framework, id, kind);
+        } catch {
+          continue;
+        }
+        for (const example of Object.keys(examples.sources)) {
+          paths.push({ params: { example, framework, id, kind } });
+        }
+      }
+    }
+  }
+
+  return paths;
+}

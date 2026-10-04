@@ -12,11 +12,14 @@ interface Props {
   dependencies?: string[];
   /** Override “Report an issue” URL */
   reportUrl?: string;
+  /** Standalone live-preview URL for “Open in new tab” */
+  previewHref?: string;
 }
 
 const title = Astro.props.title;
 const language = Astro.props.language ?? "tsx";
 const packageName = Astro.props.packageName ?? "@pisagor/react";
+const previewHref = Astro.props.previewHref;
 const dependencies = Astro.props.dependencies ?? [
   "@pisagor/recipes",
   "@pisagor/tokens",
@@ -33,6 +36,7 @@ const iconBtn =
 <section
   data-component-preview
   data-package={packageName}
+  data-preview-href={previewHref}
   class:list={[
   "my-7 overflow-hidden rounded-xl border border-border/70 bg-card shadow-sm",
   Astro.props.class,
@@ -472,6 +476,18 @@ function bindPreview(root: HTMLElement) {
   });
 
   openTabBtn?.addEventListener("click", () => {
+    const href = root.dataset.previewHref;
+    const previewTheme = getPreviewTheme();
+
+    // Prefer the hydrated standalone preview page when available.
+    if (href) {
+      const url = new URL(href, window.location.href);
+      url.searchParams.set("theme", previewTheme);
+      window.open(url.href, "_blank", "noopener,noreferrer");
+      return;
+    }
+
+    // Fallback for block demos without a preview route (static snapshot).
     if (!stage) return;
     const styles = [
       ...document.querySelectorAll('link[rel="stylesheet"], style'),
@@ -479,7 +495,7 @@ function bindPreview(root: HTMLElement) {
       .map((node) => node.outerHTML)
       .join("\n");
     const title = root.dataset.package || "Preview";
-    const previewDark = getPreviewTheme() === "dark";
+    const previewDark = previewTheme === "dark";
     const html = `<!doctype html>
 <html lang="en" class="${previewDark ? "dark" : ""}">
 <head>
@@ -492,8 +508,10 @@ function bindPreview(root: HTMLElement) {
 <div class="mx-auto w-full max-w-5xl">${stage.innerHTML}</div>
 </body>
 </html>`;
-    const win = window.open("", "_blank", "noopener,noreferrer");
+    // `noopener` in windowFeatures returns null — open first, then disown.
+    const win = window.open("about:blank", "_blank");
     if (!win) return;
+    win.opener = null;
     win.document.open();
     win.document.write(html);
     win.document.close();

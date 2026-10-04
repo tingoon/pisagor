@@ -1,0 +1,24 @@
+---
+import ExamplePreviewPage from "#/components/docs/example-preview-page.astro";
+import {
+  type ComponentDocKind,
+  listExamplePreviewStaticPaths,
+} from "#/lib/component-doc";
+import type { Framework } from "#/lib/nav";
+
+export function getStaticPaths() {
+  return listExamplePreviewStaticPaths();
+}
+
+const framework = Astro.params.framework as Framework;
+const kind = Astro.params.kind as ComponentDocKind;
+const id = Astro.params.id as string;
+const example = Astro.params.example as string;
+---
+
+<ExamplePreviewPage
+  example={example}
+  framework={framework}
+  id={id}
+  kind={kind}
+/>
