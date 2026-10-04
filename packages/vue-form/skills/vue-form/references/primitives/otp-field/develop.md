@@ -1,3 +1,13 @@
+## Import
+
+```ts
+import { OtpField } from "@pisagor/vue-form";
+```
+
+Part of `@pisagor/vue-form`. Style with recipes where available — no app-level `tv()`.
+
+## Examples
+
 ### Disabled
 
 Show that the OTP field is unavailable. Prefer explaining why nearby rather than relying on the muted state alone.
