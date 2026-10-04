@@ -1,4 +1,4 @@
-import type { SkipNavRecipeFn } from "@pisagor/recipes/skip-nav";
+import type { SkipNavRecipeFn } from "@pisagor/recipes";
 
 /** SkipNav props. */
 export interface SkipNavProps {

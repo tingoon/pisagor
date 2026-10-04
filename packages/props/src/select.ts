@@ -1,4 +1,4 @@
-import type { SelectRecipeFn } from "@pisagor/recipes/select";
+import type { SelectRecipeFn } from "@pisagor/recipes";
 
 /** Select props. */
 export interface SelectProps {

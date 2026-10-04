@@ -1,4 +1,4 @@
-import type { SliderRecipeFn } from "@pisagor/recipes/slider";
+import type { SliderRecipeFn } from "@pisagor/recipes";
 
 /** Slider props. */
 export interface SliderProps {

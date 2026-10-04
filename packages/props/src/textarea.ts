@@ -1,4 +1,4 @@
-import type { TextareaRecipeFn } from "@pisagor/recipes/textarea";
+import type { TextareaRecipeFn } from "@pisagor/recipes";
 
 /** Textarea props. */
 export interface TextareaProps {

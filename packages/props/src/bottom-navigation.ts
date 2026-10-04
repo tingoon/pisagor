@@ -1,7 +1,7 @@
 import type {
   BottomNavigationItemRecipeFn,
   BottomNavigationRecipeFn,
-} from "@pisagor/recipes/bottom-navigation";
+} from "@pisagor/recipes";
 
 /** BottomNavigation props. */
 export interface BottomNavigationProps {

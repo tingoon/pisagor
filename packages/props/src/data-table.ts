@@ -1,4 +1,4 @@
-import type { DataTableRecipeFn } from "@pisagor/recipes/data-table";
+import type { DataTableRecipeFn } from "@pisagor/recipes";
 
 /** DataTable props. */
 export interface DataTableProps {

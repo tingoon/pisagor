@@ -1,4 +1,4 @@
-import type { SeparatorRecipeFn } from "@pisagor/recipes/separator";
+import type { SeparatorRecipeFn } from "@pisagor/recipes";
 
 /** Separator props. */
 export interface SeparatorProps {

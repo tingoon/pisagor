@@ -1,4 +1,4 @@
-import type { BadgeRecipeFn, BadgeVariantProps } from "@pisagor/recipes/badge";
+import type { BadgeRecipeFn, BadgeVariantProps } from "@pisagor/recipes";
 
 /** Badge props. */
 export interface BadgeProps extends BadgeVariantProps {

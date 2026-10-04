@@ -1,4 +1,4 @@
-import type { ProseRecipeFn } from "@pisagor/recipes/prose";
+import type { ProseRecipeFn } from "@pisagor/recipes";
 
 /** Prose props. */
 export interface ProseProps {

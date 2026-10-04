@@ -1,7 +1,7 @@
 import type {
   BreadcrumbItemRecipeFn,
   BreadcrumbRecipeFn,
-} from "@pisagor/recipes/breadcrumb";
+} from "@pisagor/recipes";
 
 /** Breadcrumb props. */
 export interface BreadcrumbProps {

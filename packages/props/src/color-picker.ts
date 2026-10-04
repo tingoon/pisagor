@@ -1,4 +1,4 @@
-import type { ColorPickerRecipeFn } from "@pisagor/recipes/color-picker";
+import type { ColorPickerRecipeFn } from "@pisagor/recipes";
 
 /** ColorPicker props. */
 export interface ColorPickerProps {

@@ -2,7 +2,7 @@ import type {
   ListboxItemRecipeFn,
   ListboxItemVariantProps,
   ListboxRecipeFn,
-} from "@pisagor/recipes/listbox";
+} from "@pisagor/recipes";
 
 /** Listbox props. */
 export interface ListboxProps {

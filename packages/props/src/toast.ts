@@ -1,4 +1,4 @@
-import type { ToastItemRecipeFn, ToastRecipeFn } from "@pisagor/recipes/toast";
+import type { ToastItemRecipeFn, ToastRecipeFn } from "@pisagor/recipes";
 
 /** Toast props. */
 export interface ToastProps {

@@ -1,4 +1,4 @@
-import type { TabsRecipeFn, TabsVariantProps } from "@pisagor/recipes/tabs";
+import type { TabsRecipeFn, TabsVariantProps } from "@pisagor/recipes";
 
 /** Tabs props. */
 export interface TabsProps extends TabsVariantProps {

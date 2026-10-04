@@ -1,4 +1,4 @@
-import type { SpinnerRecipeFn } from "@pisagor/recipes/spinner";
+import type { SpinnerRecipeFn } from "@pisagor/recipes";
 
 /** Spinner props. */
 export interface SpinnerProps {

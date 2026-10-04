@@ -2,7 +2,7 @@ import type {
   TreeViewBranchRecipeFn,
   TreeViewItemRecipeFn,
   TreeViewRecipeFn,
-} from "@pisagor/recipes/tree-view";
+} from "@pisagor/recipes";
 
 /** TreeView props. */
 export interface TreeViewProps {

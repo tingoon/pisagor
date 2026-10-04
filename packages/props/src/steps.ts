@@ -1,4 +1,4 @@
-import type { StepsItemRecipeFn, StepsRecipeFn } from "@pisagor/recipes/steps";
+import type { StepsItemRecipeFn, StepsRecipeFn } from "@pisagor/recipes";
 
 /** Steps props. */
 export interface StepsProps {

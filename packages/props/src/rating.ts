@@ -1,4 +1,4 @@
-import type { RatingRecipeFn } from "@pisagor/recipes/rating";
+import type { RatingRecipeFn } from "@pisagor/recipes";
 
 /** Rating props. */
 export interface RatingProps {

@@ -1,4 +1,4 @@
-import type { NavigationMenuRecipeFn } from "@pisagor/recipes/navigation-menu";
+import type { NavigationMenuRecipeFn } from "@pisagor/recipes";
 
 /** NavigationMenu props. */
 export interface NavigationMenuProps {

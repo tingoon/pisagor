@@ -1,4 +1,4 @@
-import type { DataGridRecipeFn } from "@pisagor/recipes/data-grid";
+import type { DataGridRecipeFn } from "@pisagor/recipes";
 
 /** DataGrid props. */
 export interface DataGridProps {

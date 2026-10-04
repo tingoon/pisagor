@@ -2,7 +2,7 @@ import type {
   ResizableEdgeHandleRecipeFn,
   ResizableEdgeHandleVariantProps,
   ResizableRecipeFn,
-} from "@pisagor/recipes/resizable";
+} from "@pisagor/recipes";
 
 /** Resizable props. */
 export interface ResizableProps {

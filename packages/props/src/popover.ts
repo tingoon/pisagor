@@ -1,4 +1,4 @@
-import type { PopoverRecipeFn } from "@pisagor/recipes/popover";
+import type { PopoverRecipeFn } from "@pisagor/recipes";
 
 /** Popover props. */
 export interface PopoverProps {

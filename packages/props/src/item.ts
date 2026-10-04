@@ -1,4 +1,4 @@
-import type { ItemRecipeFn, ItemVariantProps } from "@pisagor/recipes/item";
+import type { ItemRecipeFn, ItemVariantProps } from "@pisagor/recipes";
 
 /** Item props. */
 export interface ItemProps extends ItemVariantProps {

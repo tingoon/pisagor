@@ -1,4 +1,4 @@
-import type { EmptyStateRecipeFn } from "@pisagor/recipes/empty-state";
+import type { EmptyStateRecipeFn } from "@pisagor/recipes";
 
 /** EmptyState props. */
 export interface EmptyStateProps {

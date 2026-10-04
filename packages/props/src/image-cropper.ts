@@ -1,4 +1,4 @@
-import type { ImageCropperRecipeFn } from "@pisagor/recipes/image-cropper";
+import type { ImageCropperRecipeFn } from "@pisagor/recipes";
 
 /** ImageCropper props. */
 export interface ImageCropperProps {

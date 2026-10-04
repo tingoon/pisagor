@@ -1,7 +1,4 @@
-import type {
-  ToggleRecipeFn,
-  ToggleVariantProps,
-} from "@pisagor/recipes/toggle";
+import type { ToggleRecipeFn, ToggleVariantProps } from "@pisagor/recipes";
 
 /** Toggle props. */
 export interface ToggleProps extends ToggleVariantProps {

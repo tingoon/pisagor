@@ -1,4 +1,4 @@
-import type { InputOtpRecipeFn } from "@pisagor/recipes/input-otp";
+import type { InputOtpRecipeFn } from "@pisagor/recipes";
 
 /** InputOtp props. */
 export interface InputOtpProps {

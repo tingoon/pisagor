@@ -1,4 +1,4 @@
-import type { TableRecipeFn } from "@pisagor/recipes/table";
+import type { TableRecipeFn } from "@pisagor/recipes";
 
 /** Table props. */
 export interface TableProps {

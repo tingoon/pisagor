@@ -1,4 +1,4 @@
-import type { NumberInputRecipeFn } from "@pisagor/recipes/number-input";
+import type { NumberInputRecipeFn } from "@pisagor/recipes";
 
 /** NumberInput props. */
 export interface NumberInputProps {

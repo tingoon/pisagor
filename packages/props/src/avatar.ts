@@ -2,7 +2,7 @@ import type {
   AvatarGroupRecipeFn,
   AvatarRecipeFn,
   AvatarVariantProps,
-} from "@pisagor/recipes/avatar";
+} from "@pisagor/recipes";
 
 /** Avatar props. */
 export interface AvatarProps extends AvatarVariantProps {

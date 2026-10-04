@@ -2,7 +2,7 @@ import type {
   InputRecipeFn,
   InputRootRecipeFn,
   InputRootVariantProps,
-} from "@pisagor/recipes/input";
+} from "@pisagor/recipes";
 
 /** InputRoot props. */
 export interface InputRootProps extends InputRootVariantProps {

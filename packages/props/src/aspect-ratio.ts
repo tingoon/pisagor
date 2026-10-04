@@ -1,4 +1,4 @@
-import type { AspectRatioRecipeFn } from "@pisagor/recipes/aspect-ratio";
+import type { AspectRatioRecipeFn } from "@pisagor/recipes";
 
 /** AspectRatio props. */
 export interface AspectRatioProps {

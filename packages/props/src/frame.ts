@@ -1,4 +1,4 @@
-import type { FrameRecipeFn } from "@pisagor/recipes/frame";
+import type { FrameRecipeFn } from "@pisagor/recipes";
 
 /** Frame props. */
 export interface FrameProps {

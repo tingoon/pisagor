@@ -1,4 +1,4 @@
-import type { SwapRecipeFn, SwapVariantProps } from "@pisagor/recipes/swap";
+import type { SwapRecipeFn, SwapVariantProps } from "@pisagor/recipes";
 
 /** Swap props. */
 export interface SwapProps extends SwapVariantProps {

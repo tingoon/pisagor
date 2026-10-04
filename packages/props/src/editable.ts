@@ -1,4 +1,4 @@
-import type { EditableRecipeFn } from "@pisagor/recipes/editable";
+import type { EditableRecipeFn } from "@pisagor/recipes";
 
 /** Editable props. */
 export interface EditableProps {

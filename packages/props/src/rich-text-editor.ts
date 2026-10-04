@@ -1,4 +1,4 @@
-import type { RichTextEditorRecipeFn } from "@pisagor/recipes/rich-text-editor";
+import type { RichTextEditorRecipeFn } from "@pisagor/recipes";
 
 /** RichTextEditor props. */
 export interface RichTextEditorProps {

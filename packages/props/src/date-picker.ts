@@ -1,4 +1,4 @@
-import type { DatePickerRecipeFn } from "@pisagor/recipes/date-picker";
+import type { DatePickerRecipeFn } from "@pisagor/recipes";
 
 /** DatePicker props. */
 export interface DatePickerProps {

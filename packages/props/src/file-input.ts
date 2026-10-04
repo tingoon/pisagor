@@ -1,4 +1,4 @@
-import type { FileInputRecipeFn } from "@pisagor/recipes/file-input";
+import type { FileInputRecipeFn } from "@pisagor/recipes";
 
 /** FileInput props. */
 export interface FileInputProps {

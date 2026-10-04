@@ -1,4 +1,4 @@
-import type { CommandRecipeFn } from "@pisagor/recipes/command";
+import type { CommandRecipeFn } from "@pisagor/recipes";
 
 /** Command props. */
 export interface CommandProps {

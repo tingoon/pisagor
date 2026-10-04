@@ -1,4 +1,4 @@
-import type { AccordionItemRecipeFn } from "@pisagor/recipes/accordion";
+import type { AccordionItemRecipeFn } from "@pisagor/recipes";
 
 export interface AccordionPresetItem {
   value: string;

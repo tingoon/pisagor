@@ -1,4 +1,4 @@
-import type { ContextMenuRecipeFn } from "@pisagor/recipes/context-menu";
+import type { ContextMenuRecipeFn } from "@pisagor/recipes";
 
 /** ContextMenu props. */
 export interface ContextMenuProps {
