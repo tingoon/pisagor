@@ -6,6 +6,7 @@
     "@pisagor/utils": "workspace:*",
     "@pisagor/vue": "workspace:*",
     "@pisagor/vue-form": "workspace:*",
+    "@tanstack/vue-form": "^1.33.5",
     "vue": "catalog:",
     "zod": "^4.6.5"
   },
