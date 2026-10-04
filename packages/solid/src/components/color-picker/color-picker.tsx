@@ -19,7 +19,8 @@ import {
   useColorPickerContext,
 } from "@ark-ui/solid/color-picker";
 import { ark } from "@ark-ui/solid/factory";
-import { colorPickerRecipe } from "@pisagor/recipes/color-picker";
+import type { ColorPickerProps as ColorPickerSharedProps } from "@pisagor/props";
+import { colorPickerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, createSignal, Show, splitProps } from "solid-js";
@@ -39,13 +40,14 @@ export type ColorPickerRootProps = Omit<
   "defaultValue" | "value" | "onValueChange"
 >;
 
-export interface ColorPickerProps extends ColorPickerRootProps {
+export interface ColorPickerProps
+  extends ColorPickerRootProps,
+    ColorPickerSharedProps {
   variant?: FormControlVariant;
   clearable?: boolean;
   defaultValue?: string;
   value?: string;
   onValueChange?: (value: string) => void;
-  recipe?: typeof colorPickerRecipe;
 }
 
 export interface ColorPickerClearTriggerProps extends InputGroupButtonProps {

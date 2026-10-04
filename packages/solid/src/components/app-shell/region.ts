@@ -1,4 +1,4 @@
-import type { AppShellRecipe } from "@pisagor/recipes/app-shell";
+import type { AppShellRecipe } from "@pisagor/recipes";
 import { createEffect, createMemo, createSignal, onCleanup } from "solid-js";
 import type {
   AppShellFixedStackVar,

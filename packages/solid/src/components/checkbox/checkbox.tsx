@@ -4,8 +4,15 @@ import {
   type CheckboxGroupProps as CheckboxPrimitiveGroupProps,
   type CheckboxRootProps,
 } from "@ark-ui/solid/checkbox";
-import { checkboxGroupRecipe, checkboxRecipe } from "@pisagor/recipes/checkbox";
-import { formControlToggleRecipe } from "@pisagor/recipes/form-control";
+import type {
+  CheckboxGroupProps as CheckboxGroupSharedProps,
+  CheckboxProps as CheckboxSharedProps,
+} from "@pisagor/props";
+import {
+  checkboxGroupRecipe,
+  checkboxRecipe,
+  formControlToggleRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
@@ -14,20 +21,18 @@ import { useFormControlSurface } from "../surface/use-form-control-surface";
 type FormControlVariant = "primary" | "secondary";
 
 export interface CheckboxGroupProps
-  extends Omit<CheckboxPrimitiveGroupProps, "onValueChange"> {
+  extends Omit<CheckboxPrimitiveGroupProps, "onValueChange">,
+    CheckboxGroupSharedProps {
   onValueChange?: (value: string[]) => void;
-  recipe?: typeof checkboxGroupRecipe;
 }
 
-export interface CheckboxProps extends CheckboxRootProps {
+export interface CheckboxProps extends CheckboxRootProps, CheckboxSharedProps {
   variant?: FormControlVariant;
   onValueChange?: (value: boolean) => void;
-  recipe?: typeof checkboxRecipe;
 }
 
-type CheckboxIndicatorPartProps = CheckboxIndicatorProps & {
-  recipe?: typeof checkboxRecipe;
-};
+type CheckboxIndicatorPartProps = CheckboxIndicatorProps &
+  Pick<CheckboxSharedProps, "recipe">;
 
 function CheckIcon() {
   return (

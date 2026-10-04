@@ -1,6 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
-import { formControlShellRecipe } from "@pisagor/recipes/form-control";
-import { richTextEditorRecipe } from "@pisagor/recipes/rich-text-editor";
+import type { RichTextEditorProps as RichTextEditorRootSharedProps } from "@pisagor/props";
+import { formControlShellRecipe, richTextEditorRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import { Editor } from "@tiptap/core";
 import StarterKit from "@tiptap/starter-kit";
@@ -32,7 +32,8 @@ import {
 type FormControlVariant = "primary" | "secondary";
 
 export interface RichTextEditorRootProps
-  extends Omit<ComponentProps<typeof ark.div>, "defaultValue" | "onChange"> {
+  extends Omit<ComponentProps<typeof ark.div>, "defaultValue" | "onChange">,
+    RichTextEditorRootSharedProps {
   variant?: FormControlVariant;
   defaultValue?: string;
   value?: string;
@@ -44,7 +45,6 @@ export interface RichTextEditorRootProps
   invalid?: boolean;
   "aria-label"?: string;
   children?: JSX.Element;
-  recipe?: typeof richTextEditorRecipe;
 }
 
 export type RichTextEditorToolbarProps = ComponentProps<typeof ark.div>;

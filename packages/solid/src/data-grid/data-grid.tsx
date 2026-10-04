@@ -1,4 +1,5 @@
-import { dataGridRecipe } from "@pisagor/recipes/data-grid";
+import type { DataGridProps as DataGridSharedProps } from "@pisagor/props";
+import { dataGridRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { RowData, TableOptions } from "@tanstack/solid-table";
 import { createTable, flexRender } from "@tanstack/solid-table";
@@ -43,8 +44,8 @@ export type DataGridProps<TData extends RowData> = {
   children: JSX.Element;
   class?: string;
   features?: DataGridFeatures;
-  recipe?: typeof dataGridRecipe;
-} & Omit<TableOptions<DataGridFeatures, TData>, "features">;
+} & DataGridSharedProps &
+  Omit<TableOptions<DataGridFeatures, TData>, "features">;
 
 interface DataGridHeaderProps {
   children: JSX.Element;

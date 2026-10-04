@@ -1,7 +1,7 @@
 import {
   inputGroupControlRecipe,
   inputGroupTextareaControlRecipe,
-} from "@pisagor/recipes/input-group";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";

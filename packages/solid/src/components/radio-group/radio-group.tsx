@@ -5,11 +5,15 @@ import {
   type RadioGroupItemProps as RadioGroupPrimitiveItemProps,
   type RadioGroupRootProps as RadioGroupPrimitiveRootProps,
 } from "@ark-ui/solid/radio-group";
-import { formControlRadioToggleRecipe } from "@pisagor/recipes/form-control";
+import type {
+  RadioGroupItemProps as RadioGroupItemSharedProps,
+  RadioGroupProps as RadioGroupRootSharedProps,
+} from "@pisagor/props";
 import {
+  formControlRadioToggleRecipe,
   radioGroupItemRecipe,
   radioGroupRecipe,
-} from "@pisagor/recipes/radio-group";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { For, splitProps } from "solid-js";
@@ -25,18 +29,19 @@ interface RadioGroupPresetItem {
 }
 
 export interface RadioGroupRootProps
-  extends Omit<RadioGroupPrimitiveRootProps, "onValueChange"> {
+  extends Omit<RadioGroupPrimitiveRootProps, "onValueChange">,
+    RadioGroupRootSharedProps {
   onValueChange?: (value: string | null) => void;
-  recipe?: typeof radioGroupRecipe;
 }
 
 export interface RadioGroupProps extends Omit<RadioGroupRootProps, "children"> {
   items?: RadioGroupPresetItem[];
 }
 
-export interface RadioGroupItemProps extends RadioGroupPrimitiveItemProps {
+export interface RadioGroupItemProps
+  extends RadioGroupPrimitiveItemProps,
+    RadioGroupItemSharedProps {
   variant?: FormControlVariant;
-  recipe?: typeof radioGroupItemRecipe;
 }
 
 export function RadioGroupRoot(props: RadioGroupRootProps): JSX.Element {

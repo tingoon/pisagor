@@ -1,4 +1,4 @@
-import type { TextareaRecipe } from "@pisagor/recipes/textarea";
+import type { TextareaRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils";
 
 interface TextareaContextValue {
@@ -6,6 +6,4 @@ interface TextareaContextValue {
 }
 
 export const { TextareaContext, useTextarea } =
-  createContext<TextareaContextValue>()({
-    name: "Textarea",
-  });
+  createContext("Textarea")<TextareaContextValue>();

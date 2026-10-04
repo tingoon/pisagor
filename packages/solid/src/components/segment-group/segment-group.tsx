@@ -5,7 +5,8 @@ import type {
   SegmentGroupRootProps as SegmentGroupPrimitiveRootProps,
 } from "@ark-ui/solid/segment-group";
 import { SegmentGroup as SegmentGroupPrimitive } from "@ark-ui/solid/segment-group";
-import { segmentGroupRecipe } from "@pisagor/recipes/segment-group";
+import type { SegmentGroupProps as SegmentGroupRootSharedProps } from "@pisagor/props";
+import { segmentGroupRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
@@ -20,10 +21,10 @@ interface SegmentGroupPresetItem {
 }
 
 export interface SegmentGroupRootProps
-  extends Omit<SegmentGroupPrimitiveRootProps, "onValueChange"> {
+  extends Omit<SegmentGroupPrimitiveRootProps, "onValueChange">,
+    SegmentGroupRootSharedProps {
   variant?: SegmentGroupVariant;
   onValueChange?: (value: string | null) => void;
-  recipe?: typeof segmentGroupRecipe;
 }
 
 export interface SegmentGroupProps

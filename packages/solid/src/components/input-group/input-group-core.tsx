@@ -1,16 +1,18 @@
 import { ark } from "@ark-ui/solid/factory";
+import type {
+  InputGroupAddonProps as InputGroupAddonSharedProps,
+  InputGroupButtonProps as InputGroupButtonSharedProps,
+  InputGroupTextProps as InputGroupTextSharedProps,
+} from "@pisagor/props";
 import {
   type FormControlGroupShellVariantProps,
   formControlGroupShellRecipe,
-} from "@pisagor/recipes/form-control";
-import {
-  type InputGroupAddonVariantProps,
   type InputGroupButtonVariantProps,
   inputGroupAddonRecipe,
   inputGroupButtonRecipe,
   inputGroupRootRecipe,
   inputGroupTextRecipe,
-} from "@pisagor/recipes/input-group";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
@@ -25,19 +27,16 @@ export interface InputGroupProps
 
 export interface InputGroupAddonProps
   extends ComponentProps<typeof ark.div>,
-    InputGroupAddonVariantProps {
-  recipe?: typeof inputGroupAddonRecipe;
-}
+    InputGroupAddonSharedProps {}
 
 export interface InputGroupButtonProps
   extends Omit<ButtonProps, "size" | "recipe">,
-    InputGroupButtonVariantProps {
-  recipe?: typeof inputGroupButtonRecipe;
-}
+    InputGroupButtonVariantProps,
+    InputGroupButtonSharedProps {}
 
-export interface InputGroupTextProps extends ComponentProps<typeof ark.span> {
-  recipe?: typeof inputGroupTextRecipe;
-}
+export interface InputGroupTextProps
+  extends ComponentProps<typeof ark.span>,
+    InputGroupTextSharedProps {}
 
 export function InputGroupRoot(props: InputGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, ["size", "variant", "class"]);

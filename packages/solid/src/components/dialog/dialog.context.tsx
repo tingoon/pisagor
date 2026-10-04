@@ -1,4 +1,4 @@
-import type { DialogRecipe } from "@pisagor/recipes/dialog";
+import type { DialogRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils";
 
 interface DialogContextValue {
@@ -6,8 +6,5 @@ interface DialogContextValue {
   slots: DialogRecipe;
 }
 
-export const { DialogContext, useDialog } = createContext<DialogContextValue>()(
-  {
-    name: "Dialog",
-  },
-);
+export const { DialogContext, useDialog } =
+  createContext("Dialog")<DialogContextValue>();

@@ -1,5 +1,9 @@
 import { ark } from "@ark-ui/solid/factory";
-import { sortableItemRecipe, sortableRecipe } from "@pisagor/recipes/sortable";
+import type {
+  SortableItemProps as SortableItemSharedProps,
+  SortableProps as SortableRootSharedProps,
+} from "@pisagor/props";
+import { sortableItemRecipe, sortableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { createSignal, onCleanup, onMount, splitProps } from "solid-js";
@@ -14,17 +18,18 @@ import {
 type SortableOrientation = "vertical" | "horizontal";
 
 export interface SortableRootProps
-  extends Omit<ComponentProps<typeof ark.div>, "onDragStart"> {
+  extends Omit<ComponentProps<typeof ark.div>, "onDragStart">,
+    SortableRootSharedProps {
   orientation?: SortableOrientation;
   disabled?: boolean;
   items: string[];
   onValueChange?: (items: string[]) => void;
-  recipe?: typeof sortableRecipe;
 }
 
-export interface SortableItemProps extends ComponentProps<typeof ark.div> {
+export interface SortableItemProps
+  extends ComponentProps<typeof ark.div>,
+    SortableItemSharedProps {
   value: string;
-  itemRecipe?: typeof sortableItemRecipe;
 }
 
 export type SortableHandleProps = ComponentProps<typeof ark.div>;
@@ -208,13 +213,13 @@ export function SortableItem(props: SortableItemProps): JSX.Element {
   const [local, rest] = splitProps(props, [
     "value",
     "children",
-    "itemRecipe",
+    "recipe",
     "class",
   ]);
   const { getItemProps, activeId, disabled } = useSortable();
   const itemProps = () => getItemProps(local.value);
   const isDragging = () => activeId() === local.value;
-  const slots = () => (local.itemRecipe ?? sortableItemRecipe)();
+  const slots = () => (local.recipe ?? sortableItemRecipe)();
 
   return (
     <SortableItemContext

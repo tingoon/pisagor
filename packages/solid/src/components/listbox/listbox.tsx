@@ -14,11 +14,11 @@ import type {
   ListboxValueTextProps,
 } from "@ark-ui/solid/listbox";
 import { Listbox as ListboxPrimitive } from "@ark-ui/solid/listbox";
-import {
-  type ListboxItemVariantProps,
-  listboxItemRecipe,
-  listboxRecipe,
-} from "@pisagor/recipes/listbox";
+import type {
+  ListboxItemProps as ListboxItemSharedProps,
+  ListboxProps as ListboxRootSharedProps,
+} from "@pisagor/props";
+import { listboxItemRecipe, listboxRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { createMemo, For, Show, splitProps } from "solid-js";
@@ -42,8 +42,7 @@ export type ListboxRootProps<T extends CollectionItem = CollectionItem> = Omit<
   "onValueChange"
 > & {
   onValueChange?: (value: string | string[]) => void;
-  recipe?: typeof listboxRecipe;
-};
+} & ListboxRootSharedProps;
 
 export interface ListboxProps
   extends Omit<ListboxRootProps, "children" | "collection"> {
@@ -53,9 +52,7 @@ export interface ListboxProps
 
 export interface ListboxItemProps
   extends ListboxPrimitiveItemProps,
-    ListboxItemVariantProps {
-  itemRecipe?: typeof listboxItemRecipe;
-}
+    ListboxItemSharedProps {}
 
 export interface ListboxItemGroupProps extends ListboxPrimitiveItemGroupProps {
   heading?: string;
@@ -104,12 +101,12 @@ export function ListboxItem(props: ListboxItemProps): JSX.Element {
   const [local, rest] = splitProps(props, [
     "variant",
     "children",
-    "itemRecipe",
+    "recipe",
     "class",
   ]);
   const variant = () => local.variant ?? "default";
   const slots = createMemo(() =>
-    (local.itemRecipe ?? listboxItemRecipe)({ variant: variant() }),
+    (local.recipe ?? listboxItemRecipe)({ variant: variant() }),
   );
 
   return (

@@ -1,8 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
-import {
-  type ButtonGroupVariantProps,
-  buttonGroupRecipe,
-} from "@pisagor/recipes/button-group";
+import type { ButtonGroupProps as ButtonGroupSharedProps } from "@pisagor/props";
+import { buttonGroupRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
@@ -11,9 +9,7 @@ import { ButtonGroupContext, useButtonGroup } from "./button-group.context";
 
 export interface ButtonGroupProps
   extends ComponentProps<typeof ark.fieldset>,
-    ButtonGroupVariantProps {
-  recipe?: typeof buttonGroupRecipe;
-}
+    ButtonGroupSharedProps {}
 
 export type ButtonGroupTextProps = ComponentProps<typeof ark.div>;
 

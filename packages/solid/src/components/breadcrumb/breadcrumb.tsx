@@ -1,8 +1,9 @@
 import { ark } from "@ark-ui/solid/factory";
-import {
-  breadcrumbItemRecipe,
-  breadcrumbRecipe,
-} from "@pisagor/recipes/breadcrumb";
+import type {
+  BreadcrumbItemProps as BreadcrumbItemSharedProps,
+  BreadcrumbProps as BreadcrumbSharedProps,
+} from "@pisagor/props";
+import { breadcrumbItemRecipe, breadcrumbRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
@@ -21,17 +22,18 @@ interface BreadcrumbPresetItem {
 }
 
 export type BreadcrumbListProps = ComponentProps<typeof ark.ol>;
-export interface BreadcrumbItemProps extends ComponentProps<typeof ark.li> {
-  itemRecipe?: typeof breadcrumbItemRecipe;
-}
+export interface BreadcrumbItemProps
+  extends ComponentProps<typeof ark.li>,
+    BreadcrumbItemSharedProps {}
 export type BreadcrumbLinkProps = ComponentProps<typeof ark.a>;
 export type BreadcrumbPageProps = ComponentProps<typeof ark.span>;
 export type BreadcrumbSeparatorProps = ComponentProps<typeof ark.li>;
 export type BreadcrumbEllipsisProps = ComponentProps<typeof ark.span>;
 
-export interface BreadcrumbRootProps extends ComponentProps<typeof ark.nav> {
+export interface BreadcrumbRootProps
+  extends ComponentProps<typeof ark.nav>,
+    BreadcrumbSharedProps {
   "aria-label"?: string;
-  recipe?: typeof breadcrumbRecipe;
 }
 
 export interface BreadcrumbProps extends Omit<BreadcrumbRootProps, "children"> {
@@ -77,8 +79,8 @@ export function BreadcrumbList(props: BreadcrumbListProps): JSX.Element {
 }
 
 export function BreadcrumbItem(props: BreadcrumbItemProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "itemRecipe", "class"]);
-  const slots = () => (local.itemRecipe ?? breadcrumbItemRecipe)();
+  const [local, rest] = splitProps(props, ["children", "recipe", "class"]);
+  const slots = () => (local.recipe ?? breadcrumbItemRecipe)();
 
   return (
     <BreadcrumbItemContext value={{ slots: slots() }}>

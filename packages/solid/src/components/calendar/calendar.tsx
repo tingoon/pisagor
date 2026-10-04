@@ -24,11 +24,15 @@ import {
   parseDate as arkParseDate,
   DatePicker as CalendarPrimitive,
 } from "@ark-ui/solid/date-picker";
+import type {
+  CalendarProps as CalendarSharedProps,
+  CalendarTableCellProps as CalendarTableCellSharedProps,
+} from "@pisagor/props";
 import {
   calendarRecipe,
   calendarTableCellRecipe,
-} from "@pisagor/recipes/calendar";
-import { formControlShellRecipe } from "@pisagor/recipes/form-control";
+  formControlShellRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { For, splitProps } from "solid-js";
@@ -61,9 +65,9 @@ export type CalendarTableHeadProps = DatePickerTableHeadProps;
 export type CalendarTableRowProps = DatePickerTableRowProps;
 export type CalendarTableHeaderProps = DatePickerTableHeaderProps;
 
-export interface CalendarTableCellProps extends DatePickerTableCellProps {
-  recipe?: typeof calendarTableCellRecipe;
-}
+export interface CalendarTableCellProps
+  extends DatePickerTableCellProps,
+    CalendarTableCellSharedProps {}
 
 export interface CalendarWeekDaysProps extends CalendarTableHeadProps {
   format?: "narrow" | "short" | "long";
@@ -77,9 +81,8 @@ export interface CalendarTableNextMonthProps extends CalendarTableBodyProps {
 
 export type CalendarRootProps = DatePickerRootProps;
 
-export interface CalendarProps extends CalendarRootProps {
+export interface CalendarProps extends CalendarRootProps, CalendarSharedProps {
   variant?: FormControlVariant;
-  recipe?: typeof calendarRecipe;
 }
 
 function useCalendarSelectShell(className?: string) {

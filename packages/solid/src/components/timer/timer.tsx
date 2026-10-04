@@ -8,7 +8,11 @@ import type {
   TimerSeparatorProps,
 } from "@ark-ui/solid/timer";
 import { Timer as TimerPrimitive, useTimerContext } from "@ark-ui/solid/timer";
-import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes/timer";
+import type {
+  TimerItemGroupProps as TimerItemGroupSharedProps,
+  TimerProps as TimerRootSharedProps,
+} from "@pisagor/props";
+import { timerItemGroupRecipe, timerRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
@@ -21,18 +25,20 @@ import {
 
 type TimerUnit = "hours" | "minutes" | "seconds";
 
-export interface TimerItemGroupProps extends ComponentProps<typeof ark.div> {
+export interface TimerItemGroupProps
+  extends ComponentProps<typeof ark.div>,
+    TimerItemGroupSharedProps {
   orientation?: "horizontal" | "vertical";
-  itemGroupRecipe?: typeof timerItemGroupRecipe;
 }
 
 export interface TimerActionProps
   extends Omit<TimerActionTriggerProps, "action"> {}
 
-export interface TimerRootProps extends TimerPrimitiveRootProps {
+export interface TimerRootProps
+  extends TimerPrimitiveRootProps,
+    TimerRootSharedProps {
   units?: TimerUnit[];
   isControlsVisible?: boolean;
-  recipe?: typeof timerRecipe;
 }
 
 export type TimerItemLabelProps = ComponentProps<typeof ark.div>;
@@ -94,10 +100,10 @@ export function TimerItemGroup(props: TimerItemGroupProps): JSX.Element {
   const [local, rest] = splitProps(props, [
     "orientation",
     "children",
-    "itemGroupRecipe",
+    "recipe",
     "class",
   ]);
-  const slots = () => (local.itemGroupRecipe ?? timerItemGroupRecipe)();
+  const slots = () => (local.recipe ?? timerItemGroupRecipe)();
   return (
     <TimerItemGroupContext value={{ slots: slots() }}>
       <ark.div

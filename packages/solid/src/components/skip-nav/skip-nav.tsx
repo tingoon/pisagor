@@ -1,19 +1,25 @@
 import { ark } from "@ark-ui/solid/factory";
-import { skipNavRecipe } from "@pisagor/recipes/skip-nav";
+import type {
+  SkipNavProps as SkipNavContentSharedProps,
+  SkipNavProps as SkipNavLinkSharedProps,
+} from "@pisagor/props";
+import { skipNavRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 
 const SKIP_NAV_ID = "skip-nav-content";
 
-export interface SkipNavLinkProps extends ComponentProps<typeof ark.a> {
+export interface SkipNavLinkProps
+  extends ComponentProps<typeof ark.a>,
+    SkipNavLinkSharedProps {
   id?: string;
-  recipe?: typeof skipNavRecipe;
 }
 
-export interface SkipNavContentProps extends ComponentProps<typeof ark.div> {
+export interface SkipNavContentProps
+  extends ComponentProps<typeof ark.div>,
+    SkipNavContentSharedProps {
   id?: string;
-  recipe?: typeof skipNavRecipe;
 }
 
 export function SkipNavLink(props: SkipNavLinkProps): JSX.Element {

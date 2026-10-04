@@ -5,15 +5,16 @@ import type {
   TabTriggerProps,
 } from "@ark-ui/solid/tabs";
 import { Tabs as TabsPrimitive } from "@ark-ui/solid/tabs";
-import { type TabsVariantProps, tabsRecipe } from "@pisagor/recipes/tabs";
+import type { TabsProps as TabsRootSharedProps } from "@pisagor/props";
+import { type TabsVariantProps, tabsRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { For, splitProps } from "solid-js";
 import { TabsContext, useTabs } from "./tabs.context";
 
-export interface TabsRootProps extends TabsPrimitiveRootProps {
-  recipe?: typeof tabsRecipe;
-}
+export interface TabsRootProps
+  extends TabsPrimitiveRootProps,
+    TabsRootSharedProps {}
 
 interface TabsPresetItem {
   value: string;

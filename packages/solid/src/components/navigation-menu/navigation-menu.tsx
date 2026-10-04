@@ -1,5 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
-import { navigationMenuRecipe } from "@pisagor/recipes/navigation-menu";
+import type { NavigationMenuProps as NavigationMenuSharedProps } from "@pisagor/props";
+import { navigationMenuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
@@ -8,9 +9,9 @@ import {
   useNavigationMenu,
 } from "./navigation-menu.context";
 
-export interface NavigationMenuProps extends ComponentProps<typeof ark.nav> {
-  recipe?: typeof navigationMenuRecipe;
-}
+export interface NavigationMenuProps
+  extends ComponentProps<typeof ark.nav>,
+    NavigationMenuSharedProps {}
 
 export type NavigationMenuPartProps = ComponentProps<typeof ark.ul>;
 export type NavigationMenuItemProps = ComponentProps<typeof ark.li>;

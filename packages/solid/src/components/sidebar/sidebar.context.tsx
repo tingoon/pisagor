@@ -1,4 +1,4 @@
-import type { SidebarRecipe } from "@pisagor/recipes/sidebar";
+import type { SidebarRecipe } from "@pisagor/recipes";
 import type { Accessor } from "solid-js";
 import { createContext } from "../../utils";
 
@@ -14,6 +14,4 @@ export interface SidebarContextProps {
 }
 
 export const { SidebarContext, useSidebar } =
-  createContext<SidebarContextProps>()({
-    name: "Sidebar",
-  });
+  createContext("Sidebar")<SidebarContextProps>();

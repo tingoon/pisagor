@@ -15,11 +15,11 @@ import type {
   MenuTriggerProps,
 } from "@ark-ui/solid/menu";
 import { Menu as MenuPrimitive } from "@ark-ui/solid/menu";
-import {
-  type DropdownMenuItemVariantProps,
-  dropdownMenuItemRecipe,
-  dropdownMenuRecipe,
-} from "@pisagor/recipes/dropdown-menu";
+import type {
+  DropdownMenuItemProps as DropdownMenuItemSharedProps,
+  DropdownMenuProps as DropdownMenuSharedProps,
+} from "@pisagor/props";
+import { dropdownMenuItemRecipe, dropdownMenuRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
@@ -32,43 +32,41 @@ export interface DropdownMenuItemGroupProps extends MenuItemGroupProps {
 
 export interface DropdownMenuItemProps
   extends MenuItemProps,
-    DropdownMenuItemVariantProps {
-  recipe?: typeof dropdownMenuItemRecipe;
-}
+    DropdownMenuItemSharedProps {}
 
 export interface DropdownMenuRadioItemGroupProps
   extends MenuRadioItemGroupProps {
   heading?: string;
 }
 
-export type DropdownMenuRootProps = MenuRootProps;
+export type DropdownMenuRootProps = MenuRootProps & DropdownMenuSharedProps;
 export type DropdownMenuTriggerProps = MenuTriggerProps;
 export type DropdownMenuPositionerProps = MenuPositionerProps;
 
-export interface DropdownMenuCheckboxItemProps extends MenuCheckboxItemProps {
-  recipe?: typeof dropdownMenuItemRecipe;
-}
+export interface DropdownMenuCheckboxItemProps
+  extends MenuCheckboxItemProps,
+    DropdownMenuItemSharedProps {}
 
 export type DropdownMenuItemGroupLabelProps = MenuItemGroupLabelProps;
 
-export interface DropdownMenuRadioItemProps extends MenuRadioItemProps {
-  recipe?: typeof dropdownMenuItemRecipe;
-}
+export interface DropdownMenuRadioItemProps
+  extends MenuRadioItemProps,
+    DropdownMenuItemSharedProps {}
 
-export interface DropdownMenuSubContentProps extends MenuContentProps {
-  recipe?: typeof dropdownMenuRecipe;
-}
+export interface DropdownMenuSubContentProps
+  extends MenuContentProps,
+    DropdownMenuSharedProps {}
 
 export type DropdownMenuArrowProps = MenuArrowProps;
 export type DropdownMenuSeparatorProps = MenuSeparatorProps;
 
-export interface DropdownMenuTriggerItemProps extends MenuTriggerItemProps {
-  recipe?: typeof dropdownMenuItemRecipe;
-}
+export interface DropdownMenuTriggerItemProps
+  extends MenuTriggerItemProps,
+    DropdownMenuItemSharedProps {}
 
-export interface DropdownMenuContentProps extends MenuContentProps {
-  recipe?: typeof dropdownMenuRecipe;
-}
+export interface DropdownMenuContentProps
+  extends MenuContentProps,
+    DropdownMenuSharedProps {}
 
 export type DropdownMenuShortcutProps = ComponentProps<typeof ark.span>;
 

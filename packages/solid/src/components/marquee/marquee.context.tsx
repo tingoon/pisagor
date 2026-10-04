@@ -1,4 +1,4 @@
-import type { MarqueeRecipe } from "@pisagor/recipes/marquee";
+import type { MarqueeRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils";
 
 interface MarqueeContextValue {
@@ -6,6 +6,4 @@ interface MarqueeContextValue {
 }
 
 export const { MarqueeContext, useMarquee } =
-  createContext<MarqueeContextValue>()({
-    name: "Marquee",
-  });
+  createContext("Marquee")<MarqueeContextValue>();

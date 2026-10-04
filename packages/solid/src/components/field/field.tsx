@@ -11,8 +11,8 @@ import {
   Fieldset as FieldsetPrimitive,
   type FieldsetRootProps,
 } from "@ark-ui/solid/fieldset";
-import { type FieldVariantProps, fieldRecipe } from "@pisagor/recipes/field";
-import { formControlSeparatorRecipe } from "@pisagor/recipes/form-control";
+import type { FieldProps as FieldSharedProps } from "@pisagor/props";
+import { fieldRecipe, formControlSeparatorRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { createMemo, Show, splitProps } from "solid-js";
@@ -22,9 +22,7 @@ import { FieldContext, useFieldSlots } from "./field.context";
 
 export interface FieldRootProps
   extends FieldPrimitiveRootProps,
-    FieldVariantProps {
-  recipe?: typeof fieldRecipe;
-}
+    FieldSharedProps {}
 
 export type FieldProps = FieldRootProps;
 
@@ -32,16 +30,14 @@ export interface FieldLegendProps extends FieldsetLegendProps {
   variant?: "legend" | "label";
 }
 
-export interface FieldSetProps extends FieldsetRootProps {
-  recipe?: typeof fieldRecipe;
-}
+export interface FieldSetProps extends FieldsetRootProps, FieldSharedProps {}
 
 export type FieldHelperProps = FieldHelperTextProps;
 export type FieldErrorProps = FieldErrorTextProps;
 
-export interface FieldGroupProps extends ComponentProps<typeof ark.div> {
-  recipe?: typeof fieldRecipe;
-}
+export interface FieldGroupProps
+  extends ComponentProps<typeof ark.div>,
+    FieldSharedProps {}
 
 export type FieldContentProps = ComponentProps<typeof ark.div>;
 export type FieldRequiredIndicatorProps = ComponentProps<typeof ark.span>;

@@ -1,5 +1,9 @@
 import type { CollectionItem } from "@ark-ui/solid/collection";
-import { commandRecipe } from "@pisagor/recipes/command";
+import type {
+  CommandProps as CommandDialogContentSharedProps,
+  CommandProps as CommandSharedProps,
+} from "@pisagor/props";
+import { commandRecipe } from "@pisagor/recipes";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { Portal } from "solid-js/web";
@@ -25,10 +29,11 @@ import { InputGroup } from "../input-group";
 import { Separator } from "../separator";
 import { CommandContext, useCommand } from "./command.context";
 
-export interface CommandDialogContentProps extends DialogContentProps {
+export interface CommandDialogContentProps
+  extends DialogContentProps,
+    CommandDialogContentSharedProps {
   description?: string;
   title?: string;
-  recipe?: typeof commandRecipe;
 }
 
 export interface CommandInputProps
@@ -40,9 +45,9 @@ export type CommandListProps = ComboboxListProps;
 export type CommandContentProps = ComboboxContentProps;
 
 export interface CommandProps<T extends CollectionItem = CollectionItem>
-  extends Omit<ComboboxRootProps<T>, "recipe"> {
+  extends Omit<ComboboxRootProps<T>, "recipe">,
+    CommandSharedProps {
   class?: string;
-  recipe?: typeof commandRecipe;
 }
 
 export type CommandSeparatorProps = ComponentProps<"div">;

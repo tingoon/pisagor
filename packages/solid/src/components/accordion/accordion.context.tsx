@@ -1,4 +1,4 @@
-import type { AccordionItemRecipe } from "@pisagor/recipes/accordion";
+import type { AccordionItemRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils";
 
 interface AccordionItemContextValue {
@@ -6,6 +6,4 @@ interface AccordionItemContextValue {
 }
 
 export const { AccordionItemContext, useAccordionItem } =
-  createContext<AccordionItemContextValue>()({
-    name: "AccordionItem",
-  });
+  createContext("AccordionItem")<AccordionItemContextValue>();

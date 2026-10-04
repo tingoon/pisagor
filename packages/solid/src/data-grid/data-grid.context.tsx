@@ -1,4 +1,4 @@
-import type { DataGridRecipe } from "@pisagor/recipes/data-grid";
+import type { DataGridRecipe } from "@pisagor/recipes";
 import type {
   Cell,
   Column,
@@ -28,28 +28,21 @@ interface DataGridRowContextValue<TData extends RowData> {
   row: Row<DataGridFeatures, TData>;
 }
 
-export const { DataGridContext, useDataGrid } = createContext<
-  DataGridContextValue<RowData>
->()({
-  name: "DataGrid",
-});
+export const { DataGridContext, useDataGrid } =
+  createContext("DataGrid")<DataGridContextValue<RowData>>();
 
 export const { DataGridHeaderGroupContext, useDataGridHeaderGroup } =
-  createContext<DataGridHeaderGroupContextValue<RowData>>()({
-    name: "DataGridHeaderGroup",
-  });
+  createContext("DataGridHeaderGroup")<
+    DataGridHeaderGroupContextValue<RowData>
+  >();
 
 export const { DataGridHeaderCellContext, useDataGridHeaderCell } =
-  createContext<DataGridHeaderCellContextValue<RowData>>()({
-    name: "DataGridHeaderCell",
+  createContext("DataGridHeaderCell")<DataGridHeaderCellContextValue<RowData>>({
     strict: false,
   });
 
-export const { DataGridRowContext, useDataGridRow } = createContext<
-  DataGridRowContextValue<RowData>
->()({
-  name: "DataGridRow",
-});
+export const { DataGridRowContext, useDataGridRow } =
+  createContext("DataGridRow")<DataGridRowContextValue<RowData>>();
 
 export function useDataGridContext<TData extends RowData>() {
   return useDataGrid() as DataGridContextValue<TData>;

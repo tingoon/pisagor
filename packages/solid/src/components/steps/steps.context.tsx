@@ -1,4 +1,4 @@
-import type { StepsItemRecipe, StepsRecipe } from "@pisagor/recipes/steps";
+import type { StepsItemRecipe, StepsRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils";
 
 interface StepsContextValue {
@@ -9,11 +9,8 @@ interface StepsItemContextValue {
   slots: StepsItemRecipe;
 }
 
-export const { StepsContext, useSteps } = createContext<StepsContextValue>()({
-  name: "Steps",
-});
+export const { StepsContext, useSteps } =
+  createContext("Steps")<StepsContextValue>();
 
 export const { StepsItemContext, useStepsItem } =
-  createContext<StepsItemContextValue>()({
-    name: "StepsItem",
-  });
+  createContext("StepsItem")<StepsItemContextValue>();

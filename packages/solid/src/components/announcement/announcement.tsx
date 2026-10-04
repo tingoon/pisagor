@@ -1,5 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
-import { announcementRecipe } from "@pisagor/recipes/announcement";
+import type { AnnouncementProps as AnnouncementSharedProps } from "@pisagor/props";
+import { announcementRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
@@ -7,10 +8,10 @@ import { AnnouncementContext, useAnnouncement } from "./announcement.context";
 
 type AnnouncementTitleProps = ComponentProps<typeof ark.span>;
 
-type AnnouncementRootProps = Omit<ComponentProps<typeof ark.div>, "title"> & {
-  role?: "status" | "alert";
-  recipe?: typeof announcementRecipe;
-};
+type AnnouncementRootProps = Omit<ComponentProps<typeof ark.div>, "title"> &
+  AnnouncementSharedProps & {
+    role?: "status" | "alert";
+  };
 
 export interface AnnouncementProps
   extends Omit<AnnouncementRootProps, "children"> {

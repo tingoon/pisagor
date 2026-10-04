@@ -12,7 +12,11 @@ import type {
   StepsTriggerProps,
 } from "@ark-ui/solid/steps";
 import { Steps as StepsPrimitive } from "@ark-ui/solid/steps";
-import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes/steps";
+import type {
+  StepsItemProps as StepsItemSharedProps,
+  StepsProps as StepsRootSharedProps,
+} from "@pisagor/props";
+import { stepsItemRecipe, stepsRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
@@ -24,13 +28,13 @@ import {
   useStepsItem,
 } from "./steps.context";
 
-export interface StepsRootProps extends StepsPrimitiveRootProps {
-  recipe?: typeof stepsRecipe;
-}
+export interface StepsRootProps
+  extends StepsPrimitiveRootProps,
+    StepsRootSharedProps {}
 
-export interface StepsItemProps extends StepsPrimitiveItemProps {
-  itemRecipe?: typeof stepsItemRecipe;
-}
+export interface StepsItemProps
+  extends StepsPrimitiveItemProps,
+    StepsItemSharedProps {}
 
 export type StepsTitleProps = ComponentProps<typeof ark.span>;
 export type StepsDescriptionProps = ComponentProps<typeof ark.span>;
@@ -63,8 +67,8 @@ export function StepsList(props: StepsListProps): JSX.Element {
 }
 
 export function StepsItem(props: StepsItemProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "itemRecipe", "class"]);
-  const slots = () => (local.itemRecipe ?? stepsItemRecipe)();
+  const [local, rest] = splitProps(props, ["children", "recipe", "class"]);
+  const slots = () => (local.recipe ?? stepsItemRecipe)();
 
   return (
     <StepsItemContext value={{ slots: slots() }}>

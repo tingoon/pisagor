@@ -3,7 +3,8 @@ import {
   ToggleGroup as ToggleGroupPrimitive,
   type ToggleGroupRootProps as ToggleGroupPrimitiveRootProps,
 } from "@ark-ui/solid/toggle-group";
-import { toggleGroupRecipe } from "@pisagor/recipes/toggle-group";
+import type { ToggleGroupProps as ToggleGroupRootSharedProps } from "@pisagor/props";
+import { toggleGroupRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { For, splitProps } from "solid-js";
@@ -22,9 +23,9 @@ interface ToggleGroupPresetItem {
 
 export interface ToggleGroupRootProps
   extends Omit<ToggleGroupPrimitiveRootProps, "onValueChange">,
-    Omit<ToggleGroupContextProps, "slots"> {
+    Omit<ToggleGroupContextProps, "slots">,
+    ToggleGroupRootSharedProps {
   onValueChange?: (value: string[]) => void;
-  recipe?: typeof toggleGroupRecipe;
 }
 
 export interface ToggleGroupProps

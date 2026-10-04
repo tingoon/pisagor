@@ -1,9 +1,10 @@
 import { createListCollection } from "@ark-ui/solid/collection";
+import type { PhoneInputProps as PhoneInputSharedProps } from "@pisagor/props";
 import {
   type PhoneInputRecipeSlot,
   type PhoneInputVariantProps,
   phoneInputRecipe,
-} from "@pisagor/recipes/phone-input";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import {
   AsYouType,
@@ -38,7 +39,7 @@ interface CountrySelectOption {
   value: Country;
 }
 
-export interface PhoneInputProps extends PhoneInputVariantProps {
+export interface PhoneInputProps extends PhoneInputSharedProps {
   variant?: FormControlVariant;
   defaultCountry?: Country;
   invalid?: boolean;
@@ -52,7 +53,6 @@ export interface PhoneInputProps extends PhoneInputVariantProps {
   name?: string;
   id?: string;
   class?: string;
-  recipe?: typeof phoneInputRecipe;
   classNames?: PhoneInputClassNames;
   inputProps?: Omit<
     InputProps,

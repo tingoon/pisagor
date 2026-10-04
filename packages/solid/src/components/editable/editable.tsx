@@ -9,8 +9,8 @@ import type {
   EditableSubmitTriggerProps,
 } from "@ark-ui/solid/editable";
 import { Editable as EditablePrimitive } from "@ark-ui/solid/editable";
-import { buttonRecipe } from "@pisagor/recipes/button";
-import { editableRecipe } from "@pisagor/recipes/editable";
+import type { EditableProps as EditableSharedProps } from "@pisagor/props";
+import { buttonRecipe, editableRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
@@ -25,12 +25,11 @@ export type EditableRootProps = Omit<
   "onValueChange" | "value" | "defaultValue"
 >;
 
-export interface EditableProps extends EditableRootProps {
+export interface EditableProps extends EditableRootProps, EditableSharedProps {
   orientation?: "horizontal" | "vertical";
   defaultValue?: string;
   value?: string;
   onValueChange?: (value: string) => void;
-  recipe?: typeof editableRecipe;
 }
 
 export interface EditableInputProps

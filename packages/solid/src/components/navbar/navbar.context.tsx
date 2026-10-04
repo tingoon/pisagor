@@ -1,12 +1,9 @@
-import type { NavbarRecipe } from "@pisagor/recipes/navbar";
+import type { NavbarRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils";
 
 interface NavbarContextValue {
   slots: NavbarRecipe;
 }
 
-export const { NavbarContext, useNavbar } = createContext<NavbarContextValue>()(
-  {
-    name: "Navbar",
-  },
-);
+export const { NavbarContext, useNavbar } =
+  createContext("Navbar")<NavbarContextValue>();

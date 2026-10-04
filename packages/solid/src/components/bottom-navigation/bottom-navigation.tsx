@@ -5,10 +5,14 @@ import {
   type TabsRootProps,
   type TabTriggerProps,
 } from "@ark-ui/solid/tabs";
+import type {
+  BottomNavigationItemProps as BottomNavigationItemSharedProps,
+  BottomNavigationProps as BottomNavigationSharedProps,
+} from "@pisagor/props";
 import {
   bottomNavigationItemRecipe,
   bottomNavigationRecipe,
-} from "@pisagor/recipes/bottom-navigation";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
@@ -19,16 +23,16 @@ import {
   useBottomNavigationItem,
 } from "./bottom-navigation.context";
 
-export interface BottomNavigationRootProps extends TabsRootProps {
-  recipe?: typeof bottomNavigationRecipe;
-}
+export interface BottomNavigationRootProps
+  extends TabsRootProps,
+    BottomNavigationSharedProps {}
 
 export type BottomNavigationProps = BottomNavigationRootProps;
 export type BottomNavigationListProps = TabListProps;
 
-export interface BottomNavigationItemProps extends TabTriggerProps {
-  itemRecipe?: typeof bottomNavigationItemRecipe;
-}
+export interface BottomNavigationItemProps
+  extends TabTriggerProps,
+    BottomNavigationItemSharedProps {}
 
 export type BottomNavigationItemIconProps = ComponentProps<typeof ark.span>;
 export type BottomNavigationItemLabelProps = ComponentProps<typeof ark.span>;
@@ -65,8 +69,8 @@ export function BottomNavigationList(
 export function BottomNavigationItem(
   props: BottomNavigationItemProps,
 ): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "itemRecipe", "class"]);
-  const slots = () => (local.itemRecipe ?? bottomNavigationItemRecipe)();
+  const [local, rest] = splitProps(props, ["children", "recipe", "class"]);
+  const slots = () => (local.recipe ?? bottomNavigationItemRecipe)();
 
   return (
     <BottomNavigationItemContext value={{ slots: slots() }}>

@@ -4,8 +4,11 @@ import {
   type NumberInputRootProps as NumberInputPrimitiveRootProps,
   type NumberInputScrubberProps,
 } from "@ark-ui/solid/number-input";
-import { formControlGroupShellRecipe } from "@pisagor/recipes/form-control";
-import { numberInputRecipe } from "@pisagor/recipes/number-input";
+import type { NumberInputProps as NumberInputSharedProps } from "@pisagor/props";
+import {
+  formControlGroupShellRecipe,
+  numberInputRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
@@ -23,11 +26,12 @@ export type NumberInputRootProps = Omit<
 > &
   Pick<InputProps, "size" | "variant">;
 
-export interface NumberInputProps extends NumberInputRootProps {
+export interface NumberInputProps
+  extends NumberInputRootProps,
+    NumberInputSharedProps {
   clearable?: boolean;
   placeholder?: string;
   onValueChange?: (value: number) => void;
-  recipe?: typeof numberInputRecipe;
 }
 
 export interface NumberInputControlProps

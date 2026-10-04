@@ -1,9 +1,6 @@
 import { ark } from "@ark-ui/solid/factory";
-import {
-  type AlertRecipeSlot,
-  type AlertVariantProps,
-  alertRecipe,
-} from "@pisagor/recipes/alert";
+import type { AlertProps as AlertSharedProps } from "@pisagor/props";
+import { type AlertRecipeSlot, alertRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
@@ -16,9 +13,7 @@ type AlertActionProps = ComponentProps<typeof ark.div>;
 type AlertClassNames = VariantClassNames<AlertRecipeSlot>;
 
 type AlertRootProps = Omit<ComponentProps<typeof ark.div>, "title"> &
-  AlertVariantProps & {
-    recipe?: typeof alertRecipe;
-  };
+  AlertSharedProps;
 
 export interface AlertProps extends Omit<AlertRootProps, "children"> {
   action?: JSX.Element;

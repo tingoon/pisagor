@@ -1,13 +1,14 @@
 import { ark } from "@ark-ui/solid/factory";
-import { type CardVariantProps, cardRecipe } from "@pisagor/recipes/card";
+import type { CardProps as CardRootSharedProps } from "@pisagor/props";
+import { type CardVariantProps, cardRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
 import { CardContext, useCard } from "./card.context";
 
-export interface CardRootProps extends ComponentProps<typeof ark.div> {
-  recipe?: typeof cardRecipe;
-}
+export interface CardRootProps
+  extends ComponentProps<typeof ark.div>,
+    CardRootSharedProps {}
 
 export type CardMediaProps = ComponentProps<typeof ark.div> & CardVariantProps;
 

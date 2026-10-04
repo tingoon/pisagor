@@ -20,12 +20,17 @@ import {
   createTreeCollection as arkCreateTreeCollection,
   TreeView as TreeViewPrimitive,
 } from "@ark-ui/solid/tree-view";
-import { formControlToggleRecipe } from "@pisagor/recipes/form-control";
+import type {
+  TreeViewBranchProps as TreeViewBranchSharedProps,
+  TreeViewItemProps as TreeViewItemSharedProps,
+  TreeViewProps as TreeViewSharedProps,
+} from "@pisagor/props";
 import {
+  formControlToggleRecipe,
   treeViewBranchRecipe,
   treeViewItemRecipe,
   treeViewRecipe,
-} from "@pisagor/recipes/tree-view";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { Component, ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
@@ -60,17 +65,16 @@ export type TreeCollection = arkTreeCollection;
 
 export interface TreeViewProps
   extends TreeViewRootComponentProps,
-    TreeViewContextProps {
-  recipe?: typeof treeViewRecipe;
-}
+    TreeViewContextProps,
+    TreeViewSharedProps {}
 
-export interface TreeViewBranchProps extends TreeViewPrimitiveBranchProps {
-  branchRecipe?: typeof treeViewBranchRecipe;
-}
+export interface TreeViewBranchProps
+  extends TreeViewPrimitiveBranchProps,
+    TreeViewBranchSharedProps {}
 
-export interface TreeViewItemProps extends TreeViewPrimitiveItemProps {
-  itemRecipe?: typeof treeViewItemRecipe;
-}
+export interface TreeViewItemProps
+  extends TreeViewPrimitiveItemProps,
+    TreeViewItemSharedProps {}
 
 export type NodeProviderProps<T extends TreeNodeType = TreeNodeType> =
   TreeViewNodeProviderProps<T>;
@@ -152,12 +156,8 @@ export function TreeViewNodeProvider<T extends TreeNodeType>(
 }
 
 export function TreeViewBranch(props: TreeViewBranchProps): JSX.Element {
-  const [local, rest] = splitProps(props, [
-    "children",
-    "branchRecipe",
-    "class",
-  ]);
-  const slots = () => (local.branchRecipe ?? treeViewBranchRecipe)();
+  const [local, rest] = splitProps(props, ["children", "recipe", "class"]);
+  const slots = () => (local.recipe ?? treeViewBranchRecipe)();
 
   return (
     <TreeViewBranchContext value={{ slots: slots() }}>
@@ -294,9 +294,9 @@ function TreeViewBranchIndentGuide(
 }
 
 export function TreeViewItem(props: TreeViewItemProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "itemRecipe", "class"]);
+  const [local, rest] = splitProps(props, ["children", "recipe", "class"]);
   const { slots } = useTreeView();
-  const itemSlots = () => (local.itemRecipe ?? treeViewItemRecipe)();
+  const itemSlots = () => (local.recipe ?? treeViewItemRecipe)();
 
   return (
     <TreeViewItemContext value={{ slots: itemSlots() }}>

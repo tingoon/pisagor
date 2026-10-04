@@ -1,4 +1,4 @@
-import type { ProgressRecipe } from "@pisagor/recipes/progress";
+import type { ProgressRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils";
 
 interface ProgressContextValue {
@@ -6,6 +6,4 @@ interface ProgressContextValue {
 }
 
 export const { ProgressContext, useProgress } =
-  createContext<ProgressContextValue>()({
-    name: "Progress",
-  });
+  createContext("Progress")<ProgressContextValue>();

@@ -1,4 +1,4 @@
-import type { PopoverRecipe } from "@pisagor/recipes/popover";
+import type { PopoverRecipe } from "@pisagor/recipes";
 import { createContext } from "../../utils";
 
 interface PopoverContentContextValue {
@@ -6,6 +6,4 @@ interface PopoverContentContextValue {
 }
 
 export const { PopoverContentContext, usePopoverContent } =
-  createContext<PopoverContentContextValue>()({
-    name: "PopoverContent",
-  });
+  createContext("PopoverContent")<PopoverContentContextValue>();

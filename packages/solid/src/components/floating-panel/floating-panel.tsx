@@ -13,7 +13,8 @@ import type {
   FloatingPanelTriggerProps,
 } from "@ark-ui/solid/floating-panel";
 import { FloatingPanel as FloatingPanelPrimitive } from "@ark-ui/solid/floating-panel";
-import { floatingPanelRecipe } from "@pisagor/recipes/floating-panel";
+import type { FloatingPanelProps as FloatingPanelRootSharedProps } from "@pisagor/props";
+import { floatingPanelRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { Show, splitProps } from "solid-js";
@@ -27,9 +28,8 @@ import {
 } from "./floating-panel.context";
 
 export interface FloatingPanelRootProps
-  extends FloatingPanelPrimitiveRootProps {
-  recipe?: typeof floatingPanelRecipe;
-}
+  extends FloatingPanelPrimitiveRootProps,
+    FloatingPanelRootSharedProps {}
 
 export interface FloatingPanelContentProps
   extends FloatingPanelPrimitiveContentProps {

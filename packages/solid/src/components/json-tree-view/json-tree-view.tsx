@@ -3,10 +3,11 @@ import {
   type JsonTreeViewRootProps as JsonTreeViewPrimitiveRootProps,
   type JsonTreeViewTreeProps,
 } from "@ark-ui/solid/json-tree-view";
+import type { JsonTreeViewProps as JsonTreeViewRootSharedProps } from "@pisagor/props";
 import {
   type JsonTreeViewRecipeSlot,
   jsonTreeViewRecipe,
-} from "@pisagor/recipes/json-tree-view";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
@@ -14,9 +15,9 @@ import { CaretRightIcon } from "../../internal/icons";
 import type { VariantClassNames } from "../../internal/types";
 import { JsonTreeViewContext, useJsonTreeView } from "./json-tree-view.context";
 
-export interface JsonTreeViewRootProps extends JsonTreeViewPrimitiveRootProps {
-  recipe?: typeof jsonTreeViewRecipe;
-}
+export interface JsonTreeViewRootProps
+  extends JsonTreeViewPrimitiveRootProps,
+    JsonTreeViewRootSharedProps {}
 
 type JsonTreeViewClassNames = VariantClassNames<JsonTreeViewRecipeSlot>;
 

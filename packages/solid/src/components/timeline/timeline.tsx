@@ -1,9 +1,9 @@
 import { ark } from "@ark-ui/solid/factory";
-import {
-  type TimelineVariantProps,
-  timelineItemRecipe,
-  timelineRecipe,
-} from "@pisagor/recipes/timeline";
+import type {
+  TimelineItemProps as TimelineItemSharedProps,
+  TimelineProps as TimelineRootSharedProps,
+} from "@pisagor/props";
+import { timelineItemRecipe, timelineRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
@@ -11,13 +11,11 @@ import { TimelineItemContext, useTimelineItem } from "./timeline.context";
 
 export interface TimelineRootProps
   extends ComponentProps<typeof ark.ol>,
-    TimelineVariantProps {
-  recipe?: typeof timelineRecipe;
-}
+    TimelineRootSharedProps {}
 
-export interface TimelineItemProps extends ComponentProps<typeof ark.li> {
-  itemRecipe?: typeof timelineItemRecipe;
-}
+export interface TimelineItemProps
+  extends ComponentProps<typeof ark.li>,
+    TimelineItemSharedProps {}
 
 export type TimelineIndicatorProps = ComponentProps<typeof ark.div>;
 export type TimelineContentProps = ComponentProps<typeof ark.div>;
@@ -53,8 +51,8 @@ export function TimelineRoot(props: TimelineRootProps): JSX.Element {
 }
 
 export function TimelineItem(props: TimelineItemProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "itemRecipe", "class"]);
-  const slots = () => (local.itemRecipe ?? timelineItemRecipe)();
+  const [local, rest] = splitProps(props, ["children", "recipe", "class"]);
+  const slots = () => (local.recipe ?? timelineItemRecipe)();
   return (
     <TimelineItemContext value={{ slots: slots() }}>
       <ark.li

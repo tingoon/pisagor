@@ -5,16 +5,17 @@ import {
   type AccordionItemProps as AccordionPrimitiveItemProps,
   type AccordionRootProps,
 } from "@ark-ui/solid/accordion";
-import { accordionItemRecipe } from "@pisagor/recipes/accordion";
+import type { AccordionItemProps as AccordionItemSharedProps } from "@pisagor/props";
+import { accordionItemRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { For, splitProps } from "solid-js";
 import { CaretDownIcon } from "../../internal/icons";
 import { AccordionItemContext, useAccordionItem } from "./accordion.context";
 
-export interface AccordionItemProps extends AccordionPrimitiveItemProps {
-  itemRecipe?: typeof accordionItemRecipe;
-}
+export interface AccordionItemProps
+  extends AccordionPrimitiveItemProps,
+    AccordionItemSharedProps {}
 
 interface AccordionPresetItem {
   value: string;
@@ -37,8 +38,8 @@ export function AccordionRoot(props: AccordionRootProps): JSX.Element {
 }
 
 export function AccordionItem(props: AccordionItemProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "itemRecipe", "class"]);
-  const slots = () => (local.itemRecipe ?? accordionItemRecipe)();
+  const [local, rest] = splitProps(props, ["children", "recipe", "class"]);
+  const slots = () => (local.recipe ?? accordionItemRecipe)();
 
   return (
     <AccordionItemContext value={{ slots: slots() }}>

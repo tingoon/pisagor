@@ -14,11 +14,15 @@ import {
   FileUpload as FileUploadPrimitive,
   useFileUploadContext,
 } from "@ark-ui/solid/file-upload";
+import type {
+  FileUploadItemProps as FileUploadItemRootSharedProps,
+  FileUploadProps as FileUploadSharedProps,
+} from "@pisagor/props";
 import {
   fileUploadItemRecipe,
   fileUploadRecipe,
-} from "@pisagor/recipes/file-upload";
-import { formControlZoneRecipe } from "@pisagor/recipes/form-control";
+  formControlZoneRecipe,
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { For, Show, splitProps } from "solid-js";
@@ -34,15 +38,16 @@ import {
 
 type FormControlVariant = "primary" | "secondary";
 
-export interface FileUploadItemRootProps extends FileUploadItemProps {
-  itemRecipe?: typeof fileUploadItemRecipe;
-}
+export interface FileUploadItemRootProps
+  extends FileUploadItemProps,
+    FileUploadItemRootSharedProps {}
 
 export type FileUploadListProps = Omit<FileUploadItemRootProps, "file">;
 
-export interface FileUploadRootProps extends FileUploadPrimitiveRootProps {
+export interface FileUploadRootProps
+  extends FileUploadPrimitiveRootProps,
+    FileUploadSharedProps {
   onValueChange?: (value: File[]) => void;
-  recipe?: typeof fileUploadRecipe;
 }
 
 export interface FileUploadDropzoneProps
@@ -180,11 +185,11 @@ export function FileUploadItemGroup(
 }
 
 export function FileUploadList(props: FileUploadListProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["class", "itemRecipe"]);
+  const [local, rest] = splitProps(props, ["class", "recipe"]);
   const fileUpload = useFileUploadContext();
   const { slots } = useFileUpload();
-  const itemRecipe = () => local.itemRecipe ?? fileUploadItemRecipe;
-  const itemSlots = () => itemRecipe()();
+  const recipe = () => local.recipe ?? fileUploadItemRecipe;
+  const itemSlots = () => recipe()();
   const files = () => fileUpload().acceptedFiles;
 
   return (
@@ -199,7 +204,7 @@ export function FileUploadList(props: FileUploadListProps): JSX.Element {
                 {...rest}
                 class={itemSlots().listItem({ class: cn(local.class) })}
                 file={file}
-                itemRecipe={itemRecipe()}
+                recipe={recipe()}
               >
                 <FileUploadItemPreview
                   class={itemSlots().listPreview()}
@@ -240,8 +245,8 @@ export function FileUploadList(props: FileUploadListProps): JSX.Element {
 }
 
 export function FileUploadItem(props: FileUploadItemRootProps): JSX.Element {
-  const [local, rest] = splitProps(props, ["children", "itemRecipe", "class"]);
-  const slots = () => (local.itemRecipe ?? fileUploadItemRecipe)();
+  const [local, rest] = splitProps(props, ["children", "recipe", "class"]);
+  const slots = () => (local.recipe ?? fileUploadItemRecipe)();
 
   return (
     <FileUploadItemContext value={{ slots: slots() }}>

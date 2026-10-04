@@ -1,26 +1,24 @@
 import { ark } from "@ark-ui/solid/factory";
-import {
-  type MenuItemVariantProps,
-  menuItemRecipe,
-  menuRecipe,
-} from "@pisagor/recipes/menu";
+import type {
+  MenuItemProps as MenuItemSharedProps,
+  MenuProps as MenuRootSharedProps,
+} from "@pisagor/props";
+import { menuItemRecipe, menuRecipe } from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { ComponentProps, JSX } from "solid-js";
 import { splitProps } from "solid-js";
 import { MenuContext, useMenu } from "./menu.context";
 
-export interface MenuRootProps extends ComponentProps<typeof ark.nav> {
-  recipe?: typeof menuRecipe;
-}
+export interface MenuRootProps
+  extends ComponentProps<typeof ark.nav>,
+    MenuRootSharedProps {}
 
 export type MenuPartProps = ComponentProps<typeof ark.div>;
 export type MenuListProps = ComponentProps<typeof ark.ul>;
 
 export interface MenuItemProps
   extends ComponentProps<typeof ark.button>,
-    MenuItemVariantProps {
-  recipe?: typeof menuItemRecipe;
-}
+    MenuItemSharedProps {}
 
 export interface MenuLinkProps extends ComponentProps<typeof ark.a> {
   active?: boolean;

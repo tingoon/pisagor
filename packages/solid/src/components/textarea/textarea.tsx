@@ -2,11 +2,12 @@ import {
   Field as FieldPrimitive,
   type FieldTextareaProps,
 } from "@ark-ui/solid/field";
-import { formControlShellRecipe } from "@pisagor/recipes/form-control";
+import type { TextareaProps as TextareaSharedProps } from "@pisagor/props";
 import {
+  formControlShellRecipe,
   type TextareaRecipeSlot,
   textareaRecipe,
-} from "@pisagor/recipes/textarea";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX, ParentProps } from "solid-js";
 import { Show, splitProps } from "solid-js";
@@ -30,15 +31,14 @@ type TextareaRootProps = FieldTextareaProps & {
   defaultValue?: string | number | readonly string[];
 };
 
-export interface TextareaProps extends TextareaRootProps {
+export interface TextareaProps extends TextareaRootProps, TextareaSharedProps {
   clearable?: boolean;
   onValueChange?: (value: string) => void;
-  recipe?: typeof textareaRecipe;
   classNames?: TextareaClassNames;
 }
 
 function TextareaProvider(
-  props: ParentProps<{ recipe?: typeof textareaRecipe }>,
+  props: ParentProps<Pick<TextareaSharedProps, "recipe">>,
 ): JSX.Element {
   const slots = () => (props.recipe ?? textareaRecipe)();
   return (

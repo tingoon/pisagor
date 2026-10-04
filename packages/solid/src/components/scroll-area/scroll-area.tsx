@@ -5,11 +5,12 @@ import type {
   ScrollAreaViewportProps,
 } from "@ark-ui/solid/scroll-area";
 import { ScrollArea as ScrollAreaPrimitive } from "@ark-ui/solid/scroll-area";
+import type { ScrollAreaProps as ScrollAreaRootSharedProps } from "@pisagor/props";
 import {
   type ScrollAreaRecipeSlot,
   type ScrollAreaVariantProps,
   scrollAreaRecipe,
-} from "@pisagor/recipes/scroll-area";
+} from "@pisagor/recipes";
 import { cn } from "@pisagor/utils";
 import type { JSX } from "solid-js";
 import { splitProps } from "solid-js";
@@ -19,9 +20,8 @@ import { ScrollAreaContext, useScrollArea } from "./scroll-area.context";
 type ScrollAreaClassNames = VariantClassNames<ScrollAreaRecipeSlot>;
 
 type ScrollAreaRootProps = ScrollAreaPrimitiveRootProps &
-  ScrollAreaVariantProps & {
-    recipe?: typeof scrollAreaRecipe;
-  };
+  ScrollAreaVariantProps &
+  ScrollAreaRootSharedProps;
 
 export interface ScrollAreaProps extends Omit<ScrollAreaRootProps, "children"> {
   children?: JSX.Element;
