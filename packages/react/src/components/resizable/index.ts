@@ -8,26 +8,25 @@ import {
   ResizableRootProvider,
 } from "./resizable";
 
-export {
-  createRegistry,
-  type ExpandCollapseDetails,
-  type PanelData,
-  type ResizableContextProps,
-  type ResizableEdgeHandleProps,
-  type ResizableEdgePlacement,
-  type ResizableHandlePosition,
-  type ResizablePanelProps,
-  type ResizableResizeTriggerIndicatorProps,
-  type ResizableResizeTriggerProps,
-  type ResizableRootProps,
-  type ResizableRootProviderProps,
-  type ResizeDetails,
-  type ResizeEndDetails,
-  type UseSplitterProps,
-  type UseSplitterReturn,
-  useSplitter,
-  useSplitterContext,
+export type {
+  ExpandCollapseDetails,
+  PanelData,
+  ResizableContextProps,
+  ResizableEdgeHandleProps,
+  ResizableEdgePlacement,
+  ResizableHandlePosition,
+  ResizablePanelProps,
+  ResizableResizeTriggerIndicatorProps,
+  ResizableResizeTriggerProps,
+  ResizableRootProps,
+  ResizableRootProviderProps,
+  ResizeDetails,
+  ResizeEndDetails,
+  UseSplitterProps,
+  UseSplitterReturn,
 } from "./resizable";
+
+export { createRegistry, useSplitter, useSplitterContext } from "./resizable";
 
 export const Resizable = Object.assign(ResizableRoot, {
   Context: ResizableContext,

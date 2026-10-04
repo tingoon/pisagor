@@ -4,5 +4,4 @@ export type {
   SwitchThumbProps,
 } from "@ark-ui/react/switch";
 
-export type { SwitchProps } from "./switch";
-export { Switch } from "./switch";
+export { Switch, type SwitchProps } from "./switch";

@@ -4,5 +4,4 @@ export type {
   ProgressValueTextProps,
 } from "@ark-ui/react/progress";
 
-export type { ProgressProps } from "./progress";
-export { Progress } from "./progress";
+export { Progress, type ProgressProps } from "./progress";

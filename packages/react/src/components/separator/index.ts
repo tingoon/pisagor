@@ -1,2 +1,1 @@
-export type { SeparatorProps } from "./separator";
-export { Separator } from "./separator";
+export { Separator, type SeparatorProps } from "./separator";

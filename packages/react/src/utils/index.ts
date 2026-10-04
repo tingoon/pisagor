@@ -1,1 +1,2 @@
-export { type CreateContextOptions, createContext } from "./create-context";
+export type { CreateContextOptions } from "./create-context";
+export { createContext } from "./create-context";
