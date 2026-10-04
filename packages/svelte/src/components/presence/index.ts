@@ -1,6 +1,6 @@
-export {
-  Presence,
-  type PresenceBaseProps,
-  type PresenceProps,
-  type UsePresenceProps,
+export type {
+  PresenceBaseProps,
+  PresenceProps,
+  UsePresenceProps,
 } from "./presence";
+export { Presence } from "./presence";

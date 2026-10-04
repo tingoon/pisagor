@@ -10,11 +10,10 @@ import TreeViewNodeProvider from "./tree-view-node-provider.svelte";
 import TreeViewRoot from "./tree-view-root.svelte";
 import TreeViewTree from "./tree-view-tree.svelte";
 
+export type { TreeCollection, TreeNodeType } from "./create-tree-collection";
 export {
   createFileIcons,
   createTreeCollection,
-  type TreeCollection,
-  type TreeNodeType,
 } from "./create-tree-collection";
 
 export const TreeView = Object.assign(TreeViewRoot, {
